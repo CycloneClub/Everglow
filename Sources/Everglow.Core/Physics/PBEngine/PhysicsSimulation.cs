@@ -111,7 +111,8 @@ namespace Everglow.Commons.Physics.PBEngine
 		/// <param name="deltaTime"></param>
         public void Update(float deltaTime)
         {
-            foreach (PhysicsObject pobj in _dynamicPhysObjects)
+			CleanThisFrame();
+			foreach (PhysicsObject pobj in _dynamicPhysObjects)
             {
                 pobj.ApplyGravity(new Vector2(0, -_gravity));
             }
@@ -128,7 +129,7 @@ namespace Everglow.Commons.Physics.PBEngine
 
                 Resolve(dt, _stopwatchBroadPhase, _stopwatchNarrowPhase);
             }
-            CleanThisFrame();
+
         }
 
         public void CleanThisFrame()

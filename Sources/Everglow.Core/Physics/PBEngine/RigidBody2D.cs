@@ -130,6 +130,11 @@ namespace Everglow.Commons.Physics.PBEngine
             set => _friction = value;
         }
 
+		public Vector2 TangetRelativeVelocity
+		{
+			get => _tangentRelativeVelocity;
+		}
+
         private double _localInverseInertiaTensor;
         private double _globalInverseInertiaTensor;
 
@@ -145,6 +150,8 @@ namespace Everglow.Commons.Physics.PBEngine
         private float _angularDrag;
         private float _stiffness;
         private float _friction;
+
+		private Vector2 _tangentRelativeVelocity;
 
         private List<ImpluseEntry> _impluses;
 
@@ -165,7 +172,9 @@ namespace Everglow.Commons.Physics.PBEngine
             _impluses = new List<ImpluseEntry>();
             _stiffness = 0.5f;
             _friction = 0.5f;
-        }
+			_tangentRelativeVelocity = Vector2.Zero;
+
+		}
 
 
         private void CalculateMassCentroidAndMoI()
@@ -243,55 +252,56 @@ namespace Everglow.Commons.Physics.PBEngine
 
             _linearVelocity *= 1 - _drag * _drag;
             _angularVelocity *= 1 - _angularDrag * _angularDrag;
-        }
+			_tangentRelativeVelocity = Vector2.Zero;
+		}
 
-        //public void RespondToEvents(List<CollisionEvent2D> events, float deltaTime)
-        //{
-        //    var ri0 = events[0].LocalOffsetSrc;
-        //    var rb0 = events[0].LocalOffsetTarget;
-        //    var n0 = events[0].Normal;
-        //    var va0 = _linearVelocity + Utils.AnuglarVelocityToLinearVelocity(ri0, _angularVelocity);
-        //    var vb0 = events[0].Target.RigidBody._linearVelocity
-        //        + Utils.AnuglarVelocityToLinearVelocity(rb0, events[0].Target.RigidBody._angularVelocity);
-        //    float relv0_n = Vector2.Dot(va0 - vb0, n0);
+		//public void RespondToEvents(List<CollisionEvent2D> events, float deltaTime)
+		//{
+		//    var ri0 = events[0].LocalOffsetSrc;
+		//    var rb0 = events[0].LocalOffsetTarget;
+		//    var n0 = events[0].Normal;
+		//    var va0 = _linearVelocity + Utils.AnuglarVelocityToLinearVelocity(ri0, _angularVelocity);
+		//    var vb0 = events[0].Target.RigidBody._linearVelocity
+		//        + Utils.AnuglarVelocityToLinearVelocity(rb0, events[0].Target.RigidBody._angularVelocity);
+		//    float relv0_n = Vector2.Dot(va0 - vb0, n0);
 
-        //    var ri1 = events[1].LocalOffsetSrc;
-        //    var rb1 = events[1].LocalOffsetTarget;
-        //    var n1 = events[1].Normal;
-        //    var va1 = _linearVelocity + Utils.AnuglarVelocityToLinearVelocity(ri1, _angularVelocity);
-        //    var vb1 = events[1].Target.RigidBody._linearVelocity
-        //        + Utils.AnuglarVelocityToLinearVelocity(rb1, events[1].Target.RigidBody._angularVelocity);
-        //    float relv1_n = Vector2.Dot(va1 - vb1, n1);
-        //    Matrix2x2 matrix = new Matrix2x2()
-        //    {
-        //        [0, 0] = InvMass + events[0].Target.RigidBody.InvMass
-        //        + Vector2.Dot(Utils.AnuglarVelocityToLinearVelocity(ri0, (float)(GlobalInverseInertiaTensor
-        //        * Utils.Cross(ri0, n0))), n0)
-        //        + Vector2.Dot(Utils.AnuglarVelocityToLinearVelocity(rb0, (float)(events[0].Target.RigidBody.GlobalInverseInertiaTensor
-        //        * Utils.Cross(rb0, n0))), n0),
-        //        [0, 1] = InvMass * Vector2.Dot(n0, n1) + Vector2.Dot(Utils.AnuglarVelocityToLinearVelocity(ri0, (float)(GlobalInverseInertiaTensor
-        //        * Utils.Cross(ri1, n1))), n0),
+		//    var ri1 = events[1].LocalOffsetSrc;
+		//    var rb1 = events[1].LocalOffsetTarget;
+		//    var n1 = events[1].Normal;
+		//    var va1 = _linearVelocity + Utils.AnuglarVelocityToLinearVelocity(ri1, _angularVelocity);
+		//    var vb1 = events[1].Target.RigidBody._linearVelocity
+		//        + Utils.AnuglarVelocityToLinearVelocity(rb1, events[1].Target.RigidBody._angularVelocity);
+		//    float relv1_n = Vector2.Dot(va1 - vb1, n1);
+		//    Matrix2x2 matrix = new Matrix2x2()
+		//    {
+		//        [0, 0] = InvMass + events[0].Target.RigidBody.InvMass
+		//        + Vector2.Dot(Utils.AnuglarVelocityToLinearVelocity(ri0, (float)(GlobalInverseInertiaTensor
+		//        * Utils.Cross(ri0, n0))), n0)
+		//        + Vector2.Dot(Utils.AnuglarVelocityToLinearVelocity(rb0, (float)(events[0].Target.RigidBody.GlobalInverseInertiaTensor
+		//        * Utils.Cross(rb0, n0))), n0),
+		//        [0, 1] = InvMass * Vector2.Dot(n0, n1) + Vector2.Dot(Utils.AnuglarVelocityToLinearVelocity(ri0, (float)(GlobalInverseInertiaTensor
+		//        * Utils.Cross(ri1, n1))), n0),
 
-        //        [1, 0] = InvMass * Vector2.Dot(n0, n1) + Vector2.Dot(Utils.AnuglarVelocityToLinearVelocity(ri1, (float)(GlobalInverseInertiaTensor
-        //        * Utils.Cross(ri0, n0))), n1),
-        //        [1, 1] = InvMass + events[1].Target.RigidBody.InvMass
-        //        + Vector2.Dot(Utils.AnuglarVelocityToLinearVelocity(ri1, (float)(GlobalInverseInertiaTensor
-        //        * Utils.Cross(ri1, n1))), n1)
-        //        + Vector2.Dot(Utils.AnuglarVelocityToLinearVelocity(rb1, (float)(events[1].Target.RigidBody.GlobalInverseInertiaTensor
-        //        * Utils.Cross(rb1, n1))), n1),
-        //    };
-        //    float C = 0.4f;
-        //    var J = matrix.Inverse().Multiply(new Vector2(-(1 + C) * relv0_n, -(1 + C) * relv1_n));
-        //    if (!J.HasNaNs())
-        //    {
-        //        AddImpluse(J.X * events[0].Normal, ri0, events[0].Time, events[0].Normal);
-        //        AddImpluse(J.Y * events[1].Normal, ri1, events[1].Time, events[1].Normal);
-        //    }
-        //    var t = matrix.Multiply(J);
-        //    if (true)
-        //        ;
-        //}
-        public void ApplyAngularVelocity(float w)
+		//        [1, 0] = InvMass * Vector2.Dot(n0, n1) + Vector2.Dot(Utils.AnuglarVelocityToLinearVelocity(ri1, (float)(GlobalInverseInertiaTensor
+		//        * Utils.Cross(ri0, n0))), n1),
+		//        [1, 1] = InvMass + events[1].Target.RigidBody.InvMass
+		//        + Vector2.Dot(Utils.AnuglarVelocityToLinearVelocity(ri1, (float)(GlobalInverseInertiaTensor
+		//        * Utils.Cross(ri1, n1))), n1)
+		//        + Vector2.Dot(Utils.AnuglarVelocityToLinearVelocity(rb1, (float)(events[1].Target.RigidBody.GlobalInverseInertiaTensor
+		//        * Utils.Cross(rb1, n1))), n1),
+		//    };
+		//    float C = 0.4f;
+		//    var J = matrix.Inverse().Multiply(new Vector2(-(1 + C) * relv0_n, -(1 + C) * relv1_n));
+		//    if (!J.HasNaNs())
+		//    {
+		//        AddImpluse(J.X * events[0].Normal, ri0, events[0].Time, events[0].Normal);
+		//        AddImpluse(J.Y * events[1].Normal, ri1, events[1].Time, events[1].Normal);
+		//    }
+		//    var t = matrix.Multiply(J);
+		//    if (true)
+		//        ;
+		//}
+		public void ApplyAngularVelocity(float w)
         {
             _angularVelocity += w;
         }
@@ -348,6 +358,8 @@ namespace Everglow.Commons.Physics.PBEngine
 
             float vel_n = Vector2.Dot(va - vb, e.Normal);
             Vector2 vt = (va - vb) - vel_n * e.Normal;
+			_tangentRelativeVelocity -= vb / count;
+			e.Target.RigidBody._tangentRelativeVelocity -= va / count;
             float vel_t = vt.Length();
             float friction = Math.Max(0, (_friction + e.Target.RigidBody.Friction) / 2);
 
