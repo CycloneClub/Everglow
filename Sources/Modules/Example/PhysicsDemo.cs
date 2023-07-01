@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework.Input;
 using Everglow.Commons.Physics.PBEngine.Collision.BroadPhase;
 using Everglow.Commons.Physics.PBEngine.GameInteraction;
 using Everglow.Commons.Physics.PBEngine.Collision;
+using Everglow.Commons.Physics.PBEngine.Constrains;
 
 namespace Everglow.Example;
 
@@ -25,7 +26,6 @@ internal class PhysicsPlayer : ModPlayer
 	}
 	public override void PostUpdate()
 	{
-		Main.LocalPlayer.velocity = _saveVelocity;
 	}
 
 	public override void PreUpdateMovement()
@@ -40,8 +40,7 @@ internal class PhysicsPlayer : ModPlayer
 
 		// Main.LocalPlayer.Center = Physics.Utils.ConvertToPhysicsSpace(Display.Instance._dummyPlayer.Position);
 		Main.LocalPlayer.velocity = GeometryUtils.ConvertToPhysicsSpace(PhysicsDemo.Instance._dummyPlayer.RigidBody.LinearVelocity * dt);
-		_saveVelocity = Main.LocalPlayer.velocity;
-		if (preVelY > 0 && Math.Abs(Main.LocalPlayer.velocity.Y) < 0.01f)
+		if (preVelY > 0 && Math.Abs(Main.LocalPlayer.velocity.Y) < 0.04f)
 		{
 			Main.LocalPlayer.velocity.Y = 0;
 		}
@@ -50,14 +49,14 @@ internal class PhysicsPlayer : ModPlayer
 		if (_movingPanel != null)
 		{
 
-			if (Main.time % 1200 < 600)
-			{
-				_movingPanel.RigidBody.LinearVelocity = new Vector2(-3, 0);
-			}
-			else if (Main.time % 1200 >= 600)
-			{
-				_movingPanel.RigidBody.LinearVelocity = new Vector2(3, 0);
-			}
+			//if (Main.time % 1200 < 600)
+			//{
+			//	_movingPanel.RigidBody.LinearVelocity = new Vector2(-3, 0);
+			//}
+			//else if (Main.time % 1200 >= 600)
+			//{
+			//	_movingPanel.RigidBody.LinearVelocity = new Vector2(3, 0);
+			//}
 		}
 
 		base.PreUpdateMovement();
@@ -87,11 +86,10 @@ internal class PhysicsPlayer : ModPlayer
 		if (Main.keyState[Keys.T] == KeyState.Down && Main.oldKeyState[Keys.T] == KeyState.Up)
 		{
 			var dynamicBox = new PhysicsObject(
-				new BoxCollider(256, 64), new RigidBody2D(10233));
+				new BoxCollider(256, 64), new RigidBody2D(1000));
 			dynamicBox.Position = GeometryUtils.ConvertToPhysicsSpace(Main.LocalPlayer.Center - new Vector2(0, 200));
 			dynamicBox.Rotation = 0.0f;
-			dynamicBox.RigidBody.MovementType = MovementType.Kinematic;
-			dynamicBox.RigidBody.UseGravity = false;
+			dynamicBox.RigidBody.MovementType = MovementType.Dynamic;
 			PhysicsDemo.Instance._realSimulation.AddPhysicsObject(dynamicBox);
 			_movingPanel = dynamicBox;
 
@@ -103,14 +101,14 @@ internal class PhysicsPlayer : ModPlayer
 			var staticPlane1 = new PhysicsObject(
 				new BoxCollider(300, 32), null);
 			staticPlane1.Position = GeometryUtils.ConvertToPhysicsSpace(Main.LocalPlayer.Center - new Vector2(0, 400));
-			staticPlane1.Rotation = 0.4f;
+			staticPlane1.Rotation = 0.0f;
 			PhysicsDemo.Instance._realSimulation.AddPhysicsObject(staticPlane1);
 
-			//var joint = new Spring(staticPlane1, dynamicBox, 40f, 200f, new Vector2(100, 0), new Vector2(100, 0));
-			//Display.Instance._realSimulation.AddConstrain(joint);
+			var joint = new SpringConstrain(staticPlane1, dynamicBox, 40f, 200f, new Vector2(100, 0), new Vector2(100, 0));
+			PhysicsDemo.Instance._realSimulation.AddConstrain(joint);
 
-			//var joint1 = new Spring(staticPlane1, dynamicBox, 40f, 200f, new Vector2(-100, 0), new Vector2(-100, 0));
-			//Display.Instance._realSimulation.AddConstrain(joint1);
+			var joint1 = new SpringConstrain(staticPlane1, dynamicBox, 100f, 200f, new Vector2(-100, 0), new Vector2(-100, 0));
+			PhysicsDemo.Instance._realSimulation.AddConstrain(joint1);
 
 			//if (Main.rand.NextBool(2))
 			//{

@@ -507,6 +507,12 @@ namespace Everglow.Commons.Physics.PBEngine
         //    return impluseArray;
         //}
 
+		public void AddForce(Vector2 force, Vector2 relPos)
+		{
+			_force += force;
+			_torque += GeometryUtils.Cross(relPos, force);
+		}
+
 		/// <summary>
 		/// 把冲量数据累加到这个刚体上
 		/// </summary>

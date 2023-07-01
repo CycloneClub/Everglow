@@ -40,7 +40,25 @@ namespace Everglow.Commons.Physics.PBEngine.Constrains
             _localPosB = localPosB;
         }
 
-        public override void Apply(float deltaTime)
+		public static double CalculateShortestAngleDifference(double angle1, double angle2)
+		{
+			double difference = angle2 - angle1;
+			difference = (difference + Math.PI) % (2 * Math.PI) - Math.PI;
+
+			// Adjust the difference to the shortest rotating radians
+			if (difference < -Math.PI)
+			{
+				difference += 2 * Math.PI;
+			}
+			else if (difference >= Math.PI)
+			{
+				difference -= 2 * Math.PI;
+			}
+
+			return difference;
+		}
+
+		public override void Apply(float deltaTime)
         {
             var pA = _objA.LocalToWorldPos(_localPosA);
             var pB = _objB.LocalToWorldPos(_localPosB);
@@ -54,32 +72,51 @@ namespace Everglow.Commons.Physics.PBEngine.Constrains
             var curPosA = pA + _lambda * _objA.RigidBody.InvMass * -unit;
             var curPosB = pB + _lambda * _objB.RigidBody.InvMass * unit;
 
-            var ra = Matrix2x2.CreateRotationMatrix(_objA.Rotation).Multiply(_localPosA);
-            var rb = Matrix2x2.CreateRotationMatrix(_objB.Rotation).Multiply(_localPosB);
-            var da = (_lambda * _objA.RigidBody.InvMass * -unit).SafeNormalize(Vector2.Zero);
-            var db = (_lambda * _objB.RigidBody.InvMass * unit).SafeNormalize(Vector2.Zero);
-            var oldVelA = Vector2.Dot(_objA.RigidBody.LinearVelocity + GeometryUtils.AnuglarVelocityToLinearVelocity(ra, _objA.RigidBody.AngularVelocity), da);
-            var oldVelB = Vector2.Dot(_objB.RigidBody.LinearVelocity + GeometryUtils.AnuglarVelocityToLinearVelocity(rb, _objB.RigidBody.AngularVelocity), db);
 
-            double rAdotN = Vector2.Dot(GeometryUtils.Rotate90(ra), da);
-            double rBdotN = Vector2.Dot(GeometryUtils.Rotate90(rb), db);
-            double R1 = rAdotN * rAdotN * _objA.RigidBody.GlobalInverseInertiaTensor;
-            double R2 = rBdotN * rBdotN * _objB.RigidBody.GlobalInverseInertiaTensor;
-            var impluseA = ((curPosA - pA).Length() / deltaTime - oldVelA) / (_objA.RigidBody.InvMass + (float)R1);
-            var impluseB = ((curPosB - pB).Length() / deltaTime - oldVelB) / (_objB.RigidBody.InvMass + (float)R2);
+			_objB.RigidBody.AddForce(40 * (L - _restLength) * -unit, _localPosB);
+			//float rotB_p = (pB - _objB.RigidBody.CentroidWorldSpace).ToRotation() - _localPosB.ToRotation();
+			//float rotB = (curPosB - _objB.RigidBody.CentroidWorldSpace).ToRotation() - _localPosB.ToRotation();
 
-            if (_objA.RigidBody.InvMass != 0)
+			//_objB.Rotation = rotB;
+
+			//_objB.RigidBody.CentroidWorldSpace += curPosB - _objB.LocalToWorldPos(_localPosB);
+			//_objB.RigidBody.LinearVelocity = (_objB.Position - _objB.OldPosition) / deltaTime;
+			//_objB.RigidBody.AngularVelocity = (float)CalculateShortestAngleDifference(_objB.OldRotation, _objB.Rotation) / deltaTime;
+
+			//var ra = Matrix2x2.CreateRotationMatrix(_objA.Rotation).Multiply(_localPosA);
+			//var rb = Matrix2x2.CreateRotationMatrix(_objB.Rotation).Multiply(_localPosB);
+			//var da = (_lambda * _objA.RigidBody.InvMass * -unit).SafeNormalize(Vector2.Zero);
+			//var db = (_lambda * _objB.RigidBody.InvMass * unit).SafeNormalize(Vector2.Zero);
+			//var oldVelA = Vector2.Dot(_objA.RigidBody.LinearVelocity + GeometryUtils.AnuglarVelocityToLinearVelocity(ra, _objA.RigidBody.AngularVelocity), da);
+			//var oldVelB = Vector2.Dot(_objB.RigidBody.LinearVelocity + GeometryUtils.AnuglarVelocityToLinearVelocity(rb, _objB.RigidBody.AngularVelocity), db);
+
+			//double rAdotN = Vector2.Dot(GeometryUtils.Rotate90(ra), da);
+			//double rBdotN = Vector2.Dot(GeometryUtils.Rotate90(rb), db);
+			//double R1 = rAdotN * rAdotN * _objA.RigidBody.GlobalInverseInertiaTensor;
+			//double R2 = rBdotN * rBdotN * _objB.RigidBody.GlobalInverseInertiaTensor;
+			//var impluseA = ((curPosA - pA).Length() / deltaTime - oldVelA) / (_objA.RigidBody.InvMass + (float)R1);
+			//var impluseB = ((curPosB - pB).Length() / deltaTime - oldVelB) / (_objB.RigidBody.InvMass + (float)R2);
+
+			if (_objA.RigidBody.InvMass != 0)
             {
-                _objA.RigidBody.AddImpluseImmediate(impluseA * da, ra);
+                // _objA.RigidBody.AddImpluseImmediate(impluseA * da, ra);
                 _objA.Position += _objA.RigidBody.LinearVelocity * deltaTime;
                 _objA.Rotation += _objA.RigidBody.AngularVelocity * deltaTime;
-            }
+
+				_objA.RigidBody.LinearVelocity = (_objA.Position - _objA.OldPosition) / deltaTime;
+			}
             if (_objB.RigidBody.InvMass != 0)
             {
-                _objB.RigidBody.AddImpluseImmediate(impluseB * db, rb);
-                _objB.Position += _objB.RigidBody.LinearVelocity * deltaTime;
-                _objB.Rotation += _objB.RigidBody.AngularVelocity * deltaTime;
-            }
+                // _objB.RigidBody.AddImpluseImmediate(impluseB * db, rb);
+				//_objB.Position += _objB.RigidBody.LinearVelocity * deltaTime;
+				//_objB.Rotation += _objB.RigidBody.AngularVelocity * deltaTime;
+				//var test = _objB.LocalToWorldPos(_localPosB);
+				//if (true)
+				//	;
+
+				//_objB.RigidBody.LinearVelocity = (_objB.Position - _objB.OldPosition) / deltaTime;
+				//_objB.RigidBody.AngularVelocity = (_objB.Rotation - _objB.OldRotation) / deltaTime;
+			}
             //_objA.RigidBody.AngularVelocity = Utils.Cross(_localPosA, _objA.RigidBody.LinearVelocity);
             //_objB.RigidBody.AngularVelocity = Utils.Cross(_localPosB, _objB.RigidBody.LinearVelocity);
         }

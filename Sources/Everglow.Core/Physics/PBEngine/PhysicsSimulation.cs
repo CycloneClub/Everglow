@@ -160,7 +160,11 @@ namespace Everglow.Commons.Physics.PBEngine
 		/// <param name="deltaTime"></param>
         private void PreIntegration(float deltaTime)
         {
-            foreach (PhysicsObject pobj in _staticPhysObjects)
+			foreach (var joint in _constrains)
+			{
+				joint.Apply(deltaTime);
+			}
+			foreach (PhysicsObject pobj in _staticPhysObjects)
             {
                 pobj.RecordOldState();
             }
@@ -185,10 +189,6 @@ namespace Everglow.Commons.Physics.PBEngine
             broadPhase.Stop();
 
             narrowPhase.Start();
-            foreach (var joint in _constrains)
-            {
-                joint.Apply(deltaTime);
-            }
             foreach (var pair in pairs)
             {
                 CollisionInfo info;
