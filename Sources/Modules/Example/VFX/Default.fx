@@ -1,3 +1,4 @@
+// 用于线框的绘制
 sampler uImage0 : register(s0);
 
 float4x4 uTransform;
