@@ -219,7 +219,7 @@ internal class PhysicsDemo : ModSystem
 		rigidb.AngularDrag = 0;
 		rigidb.Drag = 0;
 		rigidb.Stiffness = -1;
-		rigidb.Friction = -1;
+		rigidb.Friction = 0;
 		_realSimulation.AddPhysicsObject(_dummyPlayer);
 		_realSimulation.Initialize();
 	}
