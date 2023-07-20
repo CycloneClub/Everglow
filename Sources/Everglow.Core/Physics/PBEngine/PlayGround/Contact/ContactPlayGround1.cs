@@ -304,5 +304,56 @@ namespace Everglow.Commons.Physics.PBEngine.PlayGround.Contact
             world.AddPhysicsObject(staticPlane1);
             return world;
         }
+
+        public static PhysicsSimulation Box2()
+        {
+            var world = new PhysicsSimulation();
+
+            var dynamicBox = new PhysicsObject(
+                        new BoxCollider(32, 32), new RigidBody2D(256));
+            dynamicBox.Position = new Vector2(512, 700);
+            dynamicBox.RigidBody.Restitution = 0.3f;
+            world.AddPhysicsObject(dynamicBox);
+
+            var dynamicBox1 = new PhysicsObject(
+            new BoxCollider(32, 32), new RigidBody2D(256));
+            dynamicBox1.Position = new Vector2(512, 734);
+            dynamicBox1.RigidBody.Restitution = 0.3f;
+            world.AddPhysicsObject(dynamicBox1);
+
+
+            var staticPlane1 = new PhysicsObject(
+                new BoxCollider(600, 32), null);
+            staticPlane1.Position = new Vector2(512, 200);
+            staticPlane1.Rotation = 0f;
+            world.AddPhysicsObject(staticPlane1);
+            return world;
+        }
+
+        public static PhysicsSimulation BoxStack()
+        {
+            var world = new PhysicsSimulation();
+
+            for (int i = 0; i < 5; i++)
+            {
+
+                for (int j = 1; j <= i + 1; j++)
+                {
+                    var dynamicBox = new PhysicsObject(
+                        new BoxCollider(32, 32), new RigidBody2D(256));
+                    dynamicBox.Position = new Vector2(512 + (j - 2) * 38 - 16 * i, 500 - i * 34);
+                    dynamicBox.RigidBody.Restitution = 0.3f;
+                    world.AddPhysicsObject(dynamicBox);
+                }
+            }
+
+
+            var staticPlane1 = new PhysicsObject(
+                new BoxCollider(600, 32), null);
+            staticPlane1.Position = new Vector2(512, 200);
+            staticPlane1.Rotation = 0f;
+            world.AddPhysicsObject(staticPlane1);
+            return world;
+        }
     }
 }

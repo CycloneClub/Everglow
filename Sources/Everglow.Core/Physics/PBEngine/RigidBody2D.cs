@@ -7,69 +7,70 @@ using System.Text;
 using System.Threading.Tasks;
 using Everglow.Commons.Physics.PBEngine.Collision;
 using Everglow.Commons.Physics.PBEngine.Collision.Colliders;
+using Everglow.Commons.Utilities;
 using Terraria;
 
 namespace Everglow.Commons.Physics.PBEngine
 {
-	/// <summary>
-	/// 2D刚体物理组件，用于实际的刚体运动模拟和响应的模块
-	/// </summary>
-	public class RigidBody2D
+    /// <summary>
+    /// 2D刚体物理组件，用于实际的刚体运动模拟和响应的模块
+    /// </summary>
+    public class RigidBody2D
     {
-		/// <summary>
-		/// 指向物理对象的指针
-		/// </summary>
+        /// <summary>
+        /// 指向物理对象的指针
+        /// </summary>
         public PhysicsObject ParentObject
         {
             get => _bindObject;
             set => _bindObject = value;
         }
 
-		/// <summary>
-		/// 世界坐标下的质心坐标（指物理世界
-		/// </summary>
+        /// <summary>
+        /// 世界坐标下的质心坐标（指物理世界
+        /// </summary>
         public Vector2 CentroidWorldSpace
         {
             get => _globalCentroid;
             set => _globalCentroid = value;
         }
 
-		/// <summary>
-		/// 质量
-		/// </summary>
+        /// <summary>
+        /// 质量
+        /// </summary>
         public float Mass
         {
             get => _mass;
             set => _mass = value;
         }
 
-		/// <summary>
-		/// 质量的倒数
-		/// </summary>
+        /// <summary>
+        /// 质量的倒数
+        /// </summary>
         public float InvMass
         {
             get => (MovementType == MovementType.Dynamic || MovementType == MovementType.Player) ? 1 / _mass : 0;
         }
 
-		/// <summary>
-		/// 世界坐标下惯性张量的倒数
-		/// </summary>
+        /// <summary>
+        /// 世界坐标下惯性张量的倒数
+        /// </summary>
         public double GlobalInverseInertiaTensor
         {
             get => MovementType == MovementType.Dynamic ? _globalInverseInertiaTensor : 0;
         }
 
-		/// <summary>
-		/// 是否启用重力
-		/// </summary>
+        /// <summary>
+        /// 是否启用重力
+        /// </summary>
         public bool UseGravity
         {
             get; set;
         }
 
-		/// <summary>
-		/// 线速度
-		/// </summary>
+        /// <summary>
+        /// 线速度
+        /// </summary>
         public Vector2 LinearVelocity
         {
             get => MovementType == MovementType.Static ? Vector2.Zero : _linearVelocity;
@@ -77,63 +78,98 @@ namespace Everglow.Commons.Physics.PBEngine
         }
 
 
-		/// <summary>
-		/// 角速度
-		/// </summary>
+        /// <summary>
+        /// 角速度
+        /// </summary>
         public float AngularVelocity
         {
             get => MovementType == MovementType.Static ? 0 : _angularVelocity;
             set => _angularVelocity = value;
         }
 
-		/// <summary>
-		/// 移动模式
-		/// </summary>
+        /// <summary>
+        /// 移动模式
+        /// </summary>
         public MovementType MovementType
         {
-            get; set; 
+            get; set;
         }
 
-		/// <summary>
-		/// 线速度的阻尼
-		/// </summary>
+        /// <summary>
+        /// 线速度的阻尼
+        /// </summary>
         public float Drag
         {
-            get => _drag; 
+            get => _drag;
             set => _drag = value;
         }
 
-		/// <summary>
-		/// 角速度的阻尼
-		/// </summary>
+        /// <summary>
+        /// 角速度的阻尼
+        /// </summary>
         public float AngularDrag
         {
             get => _angularDrag;
             set => _angularDrag = value;
         }
 
-		/// <summary>
-		/// 碰撞弹出的系数
-		/// </summary>
-        public float Stiffness
+        /// <summary>
+        /// 碰撞弹出的系数
+        /// </summary>
+        public float Restitution
         {
-            get => _stiffness; 
-            set => _stiffness = value;
+            get => _restitution;
+            set => _restitution = value;
         }
 
-		/// <summary>
-		/// 摩擦力系数
-		/// </summary>
+        /// <summary>
+        /// 摩擦力系数
+        /// </summary>
         public float Friction
         {
             get => _friction;
             set => _friction = value;
         }
 
-		public Vector2 TangetRelativeVelocity
-		{
-			get => _tangentRelativeVelocity;
-		}
+        public List<Vector2> TangetRelativeVelocity
+        {
+            get => _contactTangentVels;
+        }
+
+        public List<Vector2> ContactNormals
+        {
+            get => _contactNormals;
+        }
+
+        /// <summary>
+        /// 物体是否是唤醒状态，如果唤醒那么可以进行运动模拟，注意唤醒时会重置运动值
+        /// </summary>
+        public bool IsAwake
+        {
+            get => _isAwake;
+            set
+            {
+                if (value && !_isAwake)
+                {
+                    _motion = SleepEPS * 2;
+                }
+                else if (!value && _isAwake)
+                {
+                    _linearVelocity = Vector2.Zero;
+                    _angularVelocity = 0;
+                }
+                _isAwake = value;
+            }
+        }
+
+        /// <summary>
+        /// 物体是否可以进入沉睡状态，用户能控制的物体应该设为false
+        /// </summary>
+        public bool CanSleep
+        {
+            get => _canSleep;
+            set => _canSleep = value;
+        }
 
         private double _localInverseInertiaTensor;
         private double _globalInverseInertiaTensor;
@@ -148,16 +184,21 @@ namespace Everglow.Commons.Physics.PBEngine
         private float _mass;
         private float _drag;
         private float _angularDrag;
-        private float _stiffness;
+        private float _restitution;
         private float _friction;
 
-		private Vector2 _tangentRelativeVelocity;
+        private List<Vector2> _contactTangentVels;
+        private List<Vector2> _contactNormals;
 
         private List<ImpluseEntry> _impluses;
 
         private bool _isAwake;
+        private bool _canSleep;
+        private double _motion;
 
         private PhysicsObject _bindObject;
+
+        private const double SleepEPS = 1e-2;
 
         public RigidBody2D(float mass)
         {
@@ -165,16 +206,19 @@ namespace Everglow.Commons.Physics.PBEngine
             MovementType = MovementType.Dynamic;
             UseGravity = true;
             _isAwake = true;
+            _canSleep = true;
             _linearVelocity = Vector2.Zero;
             _angularVelocity  = 0;
             _drag = 0.06f;
             _angularDrag = 0.06f;
             _impluses = new List<ImpluseEntry>();
-            _stiffness = 0.5f;
+            _restitution = 0.5f;
             _friction = 0.5f;
-			_tangentRelativeVelocity = Vector2.Zero;
+            _contactTangentVels = new List<Vector2>();
+            _contactNormals = new List<Vector2>();
 
-		}
+            _motion = SleepEPS * 2;
+        }
 
 
         private void CalculateMassCentroidAndMoI()
@@ -187,12 +231,6 @@ namespace Everglow.Commons.Physics.PBEngine
             CalculateMassCentroidAndMoI();
         }
 
-        private void UpdateGlobalInertiaTensor()
-        {
-            // var R = Matrix2x2.CreateRotationMatrix(_rotation);
-            // _globalInertiaTensor = R.Multiply(_localInverseInertiaTensor).Multiply(R.Transpose());
-            _globalInverseInertiaTensor = _localInverseInertiaTensor;
-        }
 
 		/// <summary>
 		/// 进行一次运动积分
@@ -200,7 +238,7 @@ namespace Everglow.Commons.Physics.PBEngine
 		/// <param name="deltaTime"></param>
         public void Update(float deltaTime)
         {
-            if (MovementType == MovementType.Static)
+            if (!_isAwake || MovementType == MovementType.Static)
             {
                 return;
             }
@@ -226,10 +264,13 @@ namespace Everglow.Commons.Physics.PBEngine
 
         private void StabilizeBody()
         {
-            if (Math.Abs(_linearVelocity.X) < PhysicsSimulation.EPS 
-                && Math.Abs(_linearVelocity.Y) < PhysicsSimulation.EPS)
+            if (Math.Abs(_linearVelocity.X) < PhysicsSimulation.EPS)
             {
-                _linearVelocity = Vector2.Zero;
+                _linearVelocity.X = 0;
+            }
+            if (Math.Abs(_linearVelocity.Y) < PhysicsSimulation.EPS)
+            {
+                _linearVelocity.Y = 0;
             }
 
             if(Math.Abs(_angularVelocity) < PhysicsSimulation.EPS)
@@ -240,71 +281,92 @@ namespace Everglow.Commons.Physics.PBEngine
 
         public void ApplyForce(Vector2 force)
         {
+            if (MovementType == MovementType.Static)
+            {
+                return;
+            }
             _force += force;
         }
 
-        public void CleanUp()
+        public void CleanInformationSubstep(float deltaTime)
         {
             _torque = 0;
             _force = Vector2.Zero;
             _impluses.Clear();
             // Main.NewText((_linearVelocity.LengthSquared() * _mass * 0.5f + _mass * 9.8f * _globalCentroid.Y).ToString("F1"));
-
-            _linearVelocity *= 1 - _drag * _drag;
-            _angularVelocity *= 1 - _angularDrag * _angularDrag;
-			_tangentRelativeVelocity = Vector2.Zero;
 		}
 
-		//public void RespondToEvents(List<CollisionEvent2D> events, float deltaTime)
-		//{
-		//    var ri0 = events[0].LocalOffsetSrc;
-		//    var rb0 = events[0].LocalOffsetTarget;
-		//    var n0 = events[0].Normal;
-		//    var va0 = _linearVelocity + Utils.AnuglarVelocityToLinearVelocity(ri0, _angularVelocity);
-		//    var vb0 = events[0].Target.RigidBody._linearVelocity
-		//        + Utils.AnuglarVelocityToLinearVelocity(rb0, events[0].Target.RigidBody._angularVelocity);
-		//    float relv0_n = Vector2.Dot(va0 - vb0, n0);
+        public void CleanInformationThisFrame(float deltaTime)
+        {
+            _linearVelocity *= 1 - _drag * _drag;
+            _angularVelocity *= 1 - _angularDrag * _angularDrag;
+            _contactTangentVels.Clear();
+            _contactNormals.Clear();
+        }
 
-		//    var ri1 = events[1].LocalOffsetSrc;
-		//    var rb1 = events[1].LocalOffsetTarget;
-		//    var n1 = events[1].Normal;
-		//    var va1 = _linearVelocity + Utils.AnuglarVelocityToLinearVelocity(ri1, _angularVelocity);
-		//    var vb1 = events[1].Target.RigidBody._linearVelocity
-		//        + Utils.AnuglarVelocityToLinearVelocity(rb1, events[1].Target.RigidBody._angularVelocity);
-		//    float relv1_n = Vector2.Dot(va1 - vb1, n1);
-		//    Matrix2x2 matrix = new Matrix2x2()
-		//    {
-		//        [0, 0] = InvMass + events[0].Target.RigidBody.InvMass
-		//        + Vector2.Dot(Utils.AnuglarVelocityToLinearVelocity(ri0, (float)(GlobalInverseInertiaTensor
-		//        * Utils.Cross(ri0, n0))), n0)
-		//        + Vector2.Dot(Utils.AnuglarVelocityToLinearVelocity(rb0, (float)(events[0].Target.RigidBody.GlobalInverseInertiaTensor
-		//        * Utils.Cross(rb0, n0))), n0),
-		//        [0, 1] = InvMass * Vector2.Dot(n0, n1) + Vector2.Dot(Utils.AnuglarVelocityToLinearVelocity(ri0, (float)(GlobalInverseInertiaTensor
-		//        * Utils.Cross(ri1, n1))), n0),
+        public bool TryRespondTo2Events(List<CollisionEvent2D> events, float deltaTime)
+        {
+            Debug.Assert(events.Count == 2);
+            Debug.Assert(events[0].Target == events[1].Target);
+            var target = events[0].Target;
 
-		//        [1, 0] = InvMass * Vector2.Dot(n0, n1) + Vector2.Dot(Utils.AnuglarVelocityToLinearVelocity(ri1, (float)(GlobalInverseInertiaTensor
-		//        * Utils.Cross(ri0, n0))), n1),
-		//        [1, 1] = InvMass + events[1].Target.RigidBody.InvMass
-		//        + Vector2.Dot(Utils.AnuglarVelocityToLinearVelocity(ri1, (float)(GlobalInverseInertiaTensor
-		//        * Utils.Cross(ri1, n1))), n1)
-		//        + Vector2.Dot(Utils.AnuglarVelocityToLinearVelocity(rb1, (float)(events[1].Target.RigidBody.GlobalInverseInertiaTensor
-		//        * Utils.Cross(rb1, n1))), n1),
-		//    };
-		//    float C = 0.4f;
-		//    var J = matrix.Inverse().Multiply(new Vector2(-(1 + C) * relv0_n, -(1 + C) * relv1_n));
-		//    if (!J.HasNaNs())
-		//    {
-		//        AddImpluse(J.X * events[0].Normal, ri0, events[0].Time, events[0].Normal);
-		//        AddImpluse(J.Y * events[1].Normal, ri1, events[1].Time, events[1].Normal);
-		//    }
-		//    var t = matrix.Multiply(J);
-		//    if (true)
-		//        ;
-		//}
-		public void ApplyAngularVelocity(float w)
+            var ri0 = events[0].LocalOffsetSrc;
+            var rb0 = events[0].LocalOffsetTarget;
+            var n0 = events[0].Normal;
+            var va0 = _linearVelocity + GeometryUtils.AnuglarVelocityToLinearVelocity(ri0, _angularVelocity);
+            var vb0 = events[0].Target.RigidBody._linearVelocity
+                + GeometryUtils.AnuglarVelocityToLinearVelocity(rb0, events[0].Target.RigidBody._angularVelocity);
+            float relv0_n = Vector2.Dot(va0 - vb0, n0);
+            if (relv0_n >= 0)
+            {
+                return false;
+            }
+
+            var ri1 = events[1].LocalOffsetSrc;
+            var rb1 = events[1].LocalOffsetTarget;
+            var n1 = events[1].Normal;
+            var va1 = _linearVelocity + GeometryUtils.AnuglarVelocityToLinearVelocity(ri1, _angularVelocity);
+            var vb1 = events[1].Target.RigidBody._linearVelocity
+                + GeometryUtils.AnuglarVelocityToLinearVelocity(rb1, events[1].Target.RigidBody._angularVelocity);
+            float relv1_n = Vector2.Dot(va1 - vb1, n1);
+            if (relv1_n >= 0)
+            {
+                return false;
+            }
+            Matrix2x2 matrix = new Matrix2x2()
+            {
+                [0, 0] = InvMass + events[0].Target.RigidBody.InvMass
+                + Vector2.Dot(GeometryUtils.AnuglarVelocityToLinearVelocity(ri0, (float)(GlobalInverseInertiaTensor
+                * GeometryUtils.Cross(ri0, n0))), n0)
+                + Vector2.Dot(GeometryUtils.AnuglarVelocityToLinearVelocity(rb0, (float)(events[0].Target.RigidBody.GlobalInverseInertiaTensor
+                * GeometryUtils.Cross(rb0, n0))), n0),
+                [0, 1] = InvMass * Vector2.Dot(n0, n1) + Vector2.Dot(GeometryUtils.AnuglarVelocityToLinearVelocity(ri0, (float)(GlobalInverseInertiaTensor
+                * GeometryUtils.Cross(ri1, n1))), n0),
+
+                [1, 0] = InvMass * Vector2.Dot(n0, n1) + Vector2.Dot(GeometryUtils.AnuglarVelocityToLinearVelocity(ri1, (float)(GlobalInverseInertiaTensor
+                * GeometryUtils.Cross(ri0, n0))), n1),
+                [1, 1] = InvMass + events[1].Target.RigidBody.InvMass
+                + Vector2.Dot(GeometryUtils.AnuglarVelocityToLinearVelocity(ri1, (float)(GlobalInverseInertiaTensor
+                * GeometryUtils.Cross(ri1, n1))), n1)
+                + Vector2.Dot(GeometryUtils.AnuglarVelocityToLinearVelocity(rb1, (float)(events[1].Target.RigidBody.GlobalInverseInertiaTensor
+                * GeometryUtils.Cross(rb1, n1))), n1),
+            };
+            float C = 0.4f;
+            var J = matrix.Inverse().Multiply(new Vector2(-(1 + C) * relv0_n, -(1 + C) * relv1_n));
+            if (!J.HasNaNs())
+            {
+                AddImpluse(J.X * events[0].Normal, ri0, target.RigidBody, - J.X * events[0].Normal, rb0);
+                AddImpluse(J.Y * events[1].Normal, ri1, target.RigidBody, - J.Y * events[1].Normal, rb1);
+            }
+            return true;
+        }
+        public void ApplyAngularVelocity(float w)
         {
             _angularVelocity += w;
         }
+
+
+
         private void SolveContactImpluse(CollisionEvent2D e, int count, float deltaTime)
         {
             var ri = e.LocalOffsetSrc;
@@ -318,12 +380,20 @@ namespace Everglow.Commons.Physics.PBEngine
             
 
             float va_n = Vector2.Dot(va - vb, e.Normal);
+            if (MovementType == MovementType.Player)
+            {
+                _contactNormals.Add(e.Normal);
+            }
+            if(e.Target.RigidBody.MovementType == MovementType.Player)
+            {
+                e.Target.RigidBody._contactNormals.Add(-e.Normal);
+            }
             if (va_n >= 0)
             {
                 e.NormalVelOld = 0;
                 return;
             }
-            float stiffness = Math.Max(0, (_stiffness + e.Target.RigidBody.Stiffness) / 2);
+            float stiffness = Math.Max(0, (_restitution + e.Target.RigidBody.Restitution) / 2);
             float vnew_n = stiffness * Math.Max(-va_n - 20 * deltaTime, 0);
 
             // (a × b) × c = (c • a)b - (c • b)a
@@ -339,6 +409,7 @@ namespace Everglow.Commons.Physics.PBEngine
 
             // var offset = e.Position - (_globalCentroid + ri);
             AddImpluse(J, ri, e.Target.RigidBody, -J, rb);
+            Debug.Assert(!float.IsNaN(J.X) && !float.IsNaN(J.Y));
         }
 
         private void SolveFrictionImpluse(CollisionEvent2D e, int count, float deltaTime)
@@ -358,24 +429,38 @@ namespace Everglow.Commons.Physics.PBEngine
 
             float vel_n = Vector2.Dot(va - vb, e.Normal);
             Vector2 vt = (va - vb) - vel_n * e.Normal;
-			_tangentRelativeVelocity -= vb / count;
-			e.Target.RigidBody._tangentRelativeVelocity -= va / count;
+
             float vel_t = vt.Length();
             float friction = Math.Max(0, (_friction + e.Target.RigidBody.Friction) / 2);
 
-            vt = vt.SafeNormalize(Vector2.Zero);
 
-            double effectiveMass = (InvMass + e.Target.RigidBody.InvMass
-                + Vector2.Dot(GeometryUtils.AnuglarVelocityToLinearVelocity(ri, (float)(GlobalInverseInertiaTensor
-                * GeometryUtils.Cross(ri, vt))), vt)
-                + Vector2.Dot(GeometryUtils.AnuglarVelocityToLinearVelocity(rb, (float)(e.Target.RigidBody.GlobalInverseInertiaTensor
-                * GeometryUtils.Cross(rb, vt))), vt));
+            vt = vt.SafeNormalize(Vector2.Zero);
+            if (vt.Length() == 0)
+            {
+                return;
+            }
+
+            _contactTangentVels.Add(-Vector2.Dot(vt, vb) * vt);
+            e.Target.RigidBody._contactTangentVels.Add(-Vector2.Dot(vt, va) * vt);
+            if (friction == 0)
+            {
+                return;
+            }
+
+            double rAdotN = Vector2.Dot(GeometryUtils.Rotate90(ri), vt);
+            double rBdotN = Vector2.Dot(GeometryUtils.Rotate90(rb), vt);
+            double R1 = rAdotN * rAdotN * GlobalInverseInertiaTensor; // Vector2.Dot(Utils.AnuglarVelocityToLinearVelocity(ri, (float)(GlobalInverseInertiaTensor
+                                                                      // * Utils.Cross(ri, e.Normal))), e.Normal);
+            double R2 = rBdotN * rBdotN * e.Target.RigidBody.GlobalInverseInertiaTensor;//Vector2.Dot(Utils.AnuglarVelocityToLinearVelocity(rb, (float)(e.Target.RigidBody.GlobalInverseInertiaTensor
+                                                                                        //* Utils.Cross(rb, e.Normal))), e.Normal);
+            double effectiveMass = (InvMass + e.Target.RigidBody.InvMass + R1 + R2);
 
             // (a × b) × c = (c • a)b - (c • b)a
             double J_n = -Math.Min(friction * e.NormalVelOld, vel_t / effectiveMass);
             Vector2 J = (float)J_n * vt / count;// + (float)J_t * va_t_unit;
 
             AddImpluse(J, ri, e.Target.RigidBody, -J, rb);
+            Debug.Assert(!float.IsNaN(J.X) && !float.IsNaN(J.Y));
         }
 
 		/// <summary>
@@ -393,6 +478,7 @@ namespace Everglow.Commons.Physics.PBEngine
             foreach (var e in events)
             {
                 SolveFrictionImpluse(e, events.Count, deltaTime);
+                MatchAwakeState(e.Target.RigidBody, deltaTime);
             }
             ApplyImpluses();
         }
@@ -575,6 +661,9 @@ namespace Everglow.Commons.Physics.PBEngine
 
                 }
             }
+
+            Debug.Assert(!float.IsNaN(_linearVelocity.X) && !float.IsNaN(_linearVelocity.Y));
+            Debug.Assert(!float.IsNaN(_angularVelocity));
             StabilizeBody();
             _impluses.Clear();
         }
@@ -584,19 +673,68 @@ namespace Everglow.Commons.Physics.PBEngine
 		/// </summary>
 		/// <param name="J"></param>
 		/// <param name="relativePos"></param>
-        public void AddImpluseImmediate(Vector2 J, Vector2 relativePos)
+        public void AddImpluseImmediate(Vector2 J, Vector2 relativePos, RigidBody2D other, Vector2 J2, Vector2 relativePos2)
         {
-            _linearVelocity += 1.0f / _mass * J;
-            Debug.Assert(!float.IsNaN(_linearVelocity.X) && !float.IsNaN(_linearVelocity.Y));
-            _angularVelocity += (float)(GeometryUtils.Cross(relativePos,
-                J * (float)_globalInverseInertiaTensor));
-            Debug.Assert(!float.IsNaN(_angularVelocity));
+            if (MovementType != MovementType.Static && MovementType != MovementType.Kinematic)
+            {
+                _linearVelocity += 1.0f / _mass * J;
+                Debug.Assert(!float.IsNaN(_linearVelocity.X) && !float.IsNaN(_linearVelocity.Y));
+                _angularVelocity += (float)(GeometryUtils.Cross(relativePos,
+                    J * (float)GlobalInverseInertiaTensor));
+                Debug.Assert(!float.IsNaN(_angularVelocity));
+            }
+
+            if (other.MovementType != MovementType.Static && MovementType != MovementType.Kinematic)
+            {
+                other._linearVelocity += other.InvMass * J2;
+                other._angularVelocity += (float)(GeometryUtils.Cross(relativePos2,
+                    J2 * (float)other.GlobalInverseInertiaTensor));
+            }
         }
 
         public void MoveBody(Vector2 dir, float deltaTime)
         {
             _globalCentroid += dir;
             // _linearVelocity = (_globalCentroid - ParentObject.OldPosition) / deltaTime;
+        }
+
+        public void MatchAwakeState(RigidBody2D other, float deltaTime)
+        {
+            if (other.MovementType == MovementType.Static)
+            {
+                return;
+            }
+            if (!_isAwake && !other._isAwake)
+            {
+                return;
+            }
+            if (_isAwake && !other._isAwake)
+            {
+                other.IsAwake = true;
+            }
+            else if (!_isAwake && other._isAwake)
+            {
+                IsAwake = true;
+            }
+        }
+
+        public void CheckAwake(float deltaTime)
+        {
+            if (MovementType == MovementType.Static || MovementType == MovementType.Kinematic)
+            {
+                return;
+            }
+            double bias = Math.Pow(0.6, deltaTime);
+            _motion = bias * _motion + (1 - bias) * (_linearVelocity.LengthSquared() + 
+                3 * _angularVelocity * _angularVelocity);
+
+            if (_motion > 16 * SleepEPS)
+                _motion = 16 * SleepEPS;
+
+            if (_motion < SleepEPS)
+            {
+                IsAwake = false;
+            }
         }
     }
 }

@@ -1,3 +1,4 @@
+using ChatGPT.Core;
 using Everglow.Commons.Physics.PBEngine.Collision;
 using Everglow.Commons.Physics.PBEngine.Collision.Colliders;
 using Everglow.Commons.Physics.PBEngine.PlayGround.Constrain;
@@ -58,9 +59,9 @@ namespace Everglow.Commons.Physics.PBEngine
         {
             List<Vertex2D> vertices = new List<Vertex2D>();
 
-            foreach (var p in _physicsSimulation.GetCurrentWireFrames())
+            foreach (var (p, c) in _physicsSimulation.GetCurrentWireFrames())
             {
-                vertices.Add(new Vertex2D(p, Color.White, Vector3.Zero));
+                vertices.Add(new Vertex2D(p, c, Vector3.Zero));
             }
 
             Main.graphics.GraphicsDevice.SetRenderTarget(_canvasTarget);
@@ -73,8 +74,7 @@ namespace Everglow.Commons.Physics.PBEngine
 
         public void ReInitPhysWorld()
         {
-            _physicsSimulation = JointPlayground.SpringTriganluar();
-
+            _physicsSimulation = ContactPlayGround1.DoubleSlope();
             //var staticPlane3 = new PhysicsObject(
             //    new AABBCollider(1, 40), null);
             //staticPlane3.Position = new Vector2(200, 300);
@@ -91,7 +91,7 @@ namespace Everglow.Commons.Physics.PBEngine
             {
                 _canvasTarget = new RenderTarget2D(Main.graphics.GraphicsDevice, 1024, 1024);
             });
-            _renderShader = ModContent.Request<Effect>("ChatGPT/Core/Physics/Shaders/Default");
+            _renderShader = ModContent.Request<Effect>("Everglow/Example/VFX/Default");
         }
     }
 }

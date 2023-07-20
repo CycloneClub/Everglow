@@ -1,6 +1,7 @@
 using Everglow.Commons.Physics.PBEngine.Collision;
 using Everglow.Commons.Utilities;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,16 @@ namespace Everglow.Commons.Physics.PBEngine
 {
 	public static class GeometryUtils
     {
+
+        public static AABB ToAABBPhysSpace(this Rectangle rect)
+        {
+            return new AABB()
+            {
+                MinPoint = new Vector2(rect.X, -(rect.Y + rect.Height)),
+                MaxPoint = new Vector2(rect.X + rect.Width, -rect.Y)
+            };
+        }
+
         public static bool ApproxEqual(float a, float b)
         {
             return Math.Abs(a - b) < 1e-6;
@@ -115,19 +126,22 @@ namespace Everglow.Commons.Physics.PBEngine
             return -crossProductMagnitude / ABLength;
         }
 
-        public static float PointSignedDistanceToSegment(Vector2 p, Vector2 start, Vector2 end)
+        public static float PointSignedDistanceToSegmentGetNearest(Vector2 p, Vector2 start, Vector2 end, out Vector2 pointOnSeg)
         {
             var u = (end - start).SafeNormalize(Vector2.Zero);
             float d = Vector2.Dot(u, p - start);
             float sign = GeometryUtils.Cross(u, p - start) > 0 ? -1 : 1;
             if (d <= 0)
             {
+                pointOnSeg = start;
                 return Vector2.Distance(p, start) * sign;
             }
             else if (d >= Vector2.Distance(start, end))
             {
+                pointOnSeg = end;
                 return Vector2.Distance(p, end) * sign;
             }
+            pointOnSeg = start + d * u;
             return (p - (start + d * u)).Length() * sign;
         }
 
@@ -145,6 +159,25 @@ namespace Everglow.Commons.Physics.PBEngine
             }
             return (p - (start + d * u)).LengthSquared();
         }
+
+        public static float PointDistance2ToSegmentGetNearest(Vector2 p, Vector2 start, Vector2 end, out Vector2 pointOnSeg)
+        {
+            var u = (end - start).SafeNormalize(Vector2.Zero);
+            float d = Vector2.Dot(u, p - start);
+            if (d <= 0)
+            {
+                pointOnSeg = start;
+                return Vector2.DistanceSquared(p, start);
+            }
+            else if (d * d >= Vector2.DistanceSquared(start, end))
+            {
+                pointOnSeg = end;
+                return Vector2.DistanceSquared(p, end);
+            }
+            pointOnSeg = start + d * u;
+            return (p - (start + d * u)).LengthSquared();
+        }
+
         public static float PointDistance2ToSegmentWithClip(Vector2 p, Vector2 start, Vector2 end)
         {
             var u = (end - start).SafeNormalize(Vector2.Zero);
@@ -160,7 +193,7 @@ namespace Everglow.Commons.Physics.PBEngine
             return (p - (start + d * u)).LengthSquared();
         }
 
-        public static void CirclePolygonContactInfo(Vector2 cSphere, float radius, List<Edge2D> edges,
+        public static void SphereConvexPolygonContactInfo(Vector2 cSphere, float radius, List<Edge2D> edges,
             List<Vector2> corners, Vector2 centerPoly,
             List<KeyValuePair<Vector2, Vector2>> localPositions)
         {
@@ -207,60 +240,59 @@ namespace Everglow.Commons.Physics.PBEngine
             }
         }
 
-        public static bool CirclePolygonCollisionInfo(Vector2 cSphere, float radius, List<Edge2D> edges, List<Vector2> corners,
+        public static bool SphereConvexPolygonCollisionInfo(Vector2 cSphere, float radius, List<Edge2D> edges, List<Vector2> corners,
             out float depth, out Vector2 normal)
         {
             float maxDepth = float.NegativeInfinity;
-            float maxDepth2 = float.NegativeInfinity;
-            Edge2D keyEdge = null;
+            normal = Vector2.Zero;
+            bool anyOutside = false;
             foreach (var edge in edges)
             {
-                float d = GeometryUtils.PointSignedDistanceToLine(cSphere, edge._pA, edge._pB);
-                float d2 = GeometryUtils.PointSignedDistanceToSegment(cSphere, edge._pA, edge._pB);
-                if (d2 > maxDepth2)
-                {
-                    maxDepth2 = d2;
-                }
-                if (d > maxDepth)
+                float d = GeometryUtils.PointDistance2ToSegmentGetNearest(cSphere, edge._pA, edge._pB, out Vector2 pointOnSeg);
+                // 如果点在某一个线段的外面，那么就说明点在多边形的外面
+                if (d > maxDepth && GeometryUtils.Cross(edge._pB - edge._pA, cSphere - edge._pA) <= 0)
                 {
                     maxDepth = d;
-                    keyEdge = edge;
+                    normal = (cSphere - pointOnSeg).SafeNormalize(Vector2.Zero);
                 }
+                
+                //if (GeometryUtils.Cross(cSphere - edge._pA, edge._pB - edge._pA) <= 0)
+                //{
+                //    anyOutside = true;
+                //}
+                //if (d > maxDepth)
+                //{
+                //    maxDepth = d;
+                //    keyEdge = edge;
+                //}
             }
-
-            normal = keyEdge.GetNormal();
+            if (maxDepth < 0)
+            {
+                depth = 0;
+                return false;
+            }
+            maxDepth = (float)Math.Sqrt(maxDepth);
             depth = radius - maxDepth;
-            if (maxDepth2 > radius)
+            if (maxDepth >= radius)
             {
                 return false;
             }
-
-            foreach (var corner in corners)
-            {
-                float d = Vector2.Distance(corner, cSphere);
-                if (d <= radius && d > maxDepth)
-                {
-                    maxDepth = d;
-                    normal = Vector2.Normalize(cSphere - corner);
-                    depth = radius - maxDepth;
-                }
-            }
-            return maxDepth < radius;
+            return true;
         }
 
-        public static bool CirclePolygonIsCollide(Vector2 cSphere, float radius, List<Edge2D> edges, Vector2 centerPoly)
-        {
-            float maxDepth = float.NegativeInfinity;
-            foreach (var edge in edges)
-            {
-                float d = GeometryUtils.PointSignedDistanceToSegment(cSphere, edge._pA, edge._pB);
-                if (d > maxDepth)
-                {
-                    maxDepth = d;
-                }
-            }
-            return maxDepth < radius;
-        }
+        //public static bool SphereConvexPolygonIsCollide(Vector2 cSphere, float radius, List<Edge2D> edges, Vector2 centerPoly)
+        //{
+        //    float maxDepth = float.NegativeInfinity;
+        //    foreach (var edge in edges)
+        //    {
+        //        float d = GeometryUtils.PointSignedDistanceToSegment(cSphere, edge._pA, edge._pB);
+        //        if (d > maxDepth)
+        //        {
+        //            maxDepth = d;
+        //        }
+        //    }
+        //    return maxDepth < radius;
+        //}
 
         private static (float, float) GetProjectedInterval(List<Vector2> vertices, Vector2 start, Vector2 dir)
         {
@@ -275,7 +307,7 @@ namespace Everglow.Commons.Physics.PBEngine
             return (minA, maxA);
         }
 
-        public static bool PolygonPolygonCollisionInfo(List<Edge2D> edgesA, List<Vector2> cornersA,
+        public static bool ConvexPolygonPolygonCollisionInfo(List<Edge2D> edgesA, List<Vector2> cornersA,
             List<Edge2D> edgesB, List<Vector2> cornersB, out float depth, out Vector2 normal)
         {
             depth = float.PositiveInfinity;
@@ -293,7 +325,7 @@ namespace Everglow.Commons.Physics.PBEngine
                     return false;
                 }
 
-                float d = Math.Min(amax, bmax) - Math.Max(amin, bmin);
+                float d = MinimumSeparatingDistance(amin, amax, bmin, bmax);
                 if (d < depth)
                 {
                     depth = d;
@@ -313,7 +345,7 @@ namespace Everglow.Commons.Physics.PBEngine
                     return false;
                 }
 
-                float d = Math.Min(amax, bmax) - Math.Max(amin, bmin);
+                float d = MinimumSeparatingDistance(amin, amax, bmin, bmax);
                 if (d < depth)
                 {
                     depth = d;
@@ -323,7 +355,7 @@ namespace Everglow.Commons.Physics.PBEngine
             return true;
         }
 
-        public static void PolygonPolygonContactInfo(List<Edge2D> edgesA, List<Vector2> cornersA,
+        public static void ConvexPolygonPolygonContactInfo(List<Edge2D> edgesA, List<Vector2> cornersA,
             List<Edge2D> edgesB, List<Vector2> cornersB,
             Vector2 polyCenterA, Vector2 polyCenterB, List<KeyValuePair<Vector2, Vector2>> localPositions)
         {
@@ -343,7 +375,7 @@ namespace Everglow.Commons.Physics.PBEngine
                                                    - polyCenterB
                         ));
                     }
-                    else if (Math.Abs(dist - closestDistance) < 1e-6)
+                    else if (Math.Abs(dist - closestDistance) < 1e-3)
                     {
                         localPositions.Add(new KeyValuePair<Vector2, Vector2>(
                             curPoint - polyCenterA,
@@ -378,14 +410,315 @@ namespace Everglow.Commons.Physics.PBEngine
             }
         }
 
+        public static bool SphereCapsuleCollisionInfo(Vector2 center, float radius, Vector2 segA, Vector2 segB, 
+            float radius2, out float depth, out Vector2 normal)
+        {
+            float d = PointDistance2ToSegmentGetNearest(center, segA, segB, out Vector2 p);
+            depth = radius + radius2 - (float)Math.Sqrt(d);
+            normal = Vector2.Zero;
+            if (d >= (radius + radius2) * (radius + radius2))
+            {
+                return false;
+            }
+            normal = (p - center).SafeNormalize(Vector2.Zero);
+            return true;
+        }
+
+        public static void SphereCapsuleContactInfo(Vector2 center, float radius, Vector2 segA, Vector2 segB,
+            float radius2, List<KeyValuePair<Vector2, Vector2>> localPositions)
+        {
+            var u = (segB - segA).SafeNormalize(Vector2.Zero);
+            float d_plane = Vector2.Dot(u, center - segA);
+            float length = (segA - segB).Length();
+            Vector2 capsuleCenter = (segA + segB) / 2;
+            d_plane = MathHelper.Clamp(d_plane, 0, length);
+
+            Vector2 vcenter = segA + u * d_plane;
+            Vector2 unit = (center - vcenter).SafeNormalize(Vector2.Zero);
+            localPositions.Add(new KeyValuePair<Vector2, Vector2>(
+                  -unit * radius,
+                  vcenter + unit * radius2 - capsuleCenter
+            ));
+        }
+
+        public static bool CapsuleCapsuleCollisionInfo(Vector2 segA1, Vector2 segB1,
+            float radius1, Vector2 segA2, Vector2 segB2,
+            float radius2, out float depth, out Vector2 normal)
+        {
+            Vector2 pointA = segA2;
+            bool flipSign = false;
+            float d = PointDistance2ToSegmentGetNearest(segA2, segA1, segB1, out Vector2 pointB);
+            float d2;
+            if ((d2 = PointDistance2ToSegmentGetNearest(segB2, segA1, segB1, out Vector2 p)) < d)
+            {
+                d = d2;
+                pointA = segB2;
+                pointB = p;
+            }
+
+            if ((d2 = PointDistance2ToSegmentGetNearest(segA1, segA2, segB2, out p)) < d)
+            {
+                d = d2;
+                pointA = segA1;
+                pointB = p;
+                flipSign = true;
+            }
+
+            if ((d2 = PointDistance2ToSegmentGetNearest(segB1, segA2, segB2, out p)) < d)
+            {
+                d = d2;
+                pointA = segB1;
+                pointB = p;
+                flipSign = true;
+            }
+
+
+            depth = radius1 + radius2 - (float)Math.Sqrt(d);
+            normal = (pointA - pointB).SafeNormalize(Vector2.UnitX);
+            // 法线方向必须朝向Sphere碰撞体
+            if (flipSign)
+            {
+                normal = -normal;   
+            }
+            if (depth <= 0)
+                return false;
+            return true;
+        }
+
+        public static void CapsuleCapsuleContactInfo(Vector2 segA1, Vector2 segB1,
+           float radius1, Vector2 segA2, Vector2 segB2,
+           float radius2, List<KeyValuePair<Vector2, Vector2>> localPositions)
+        {
+            Vector2 pointA = segA2;
+            Vector2 capsuleCenter1 = (segA1 + segB1) / 2;
+            Vector2 capsuleCenter2 = (segA2 + segB2) / 2;
+            float d = PointDistance2ToSegmentGetNearest(segA2, segA1, segB1, out Vector2 pointB);
+            Vector2 N = (pointA - pointB).SafeNormalize(Vector2.UnitX);
+            localPositions.Add(new KeyValuePair<Vector2, Vector2>(
+                pointB + N * radius1 - capsuleCenter1,
+                pointA - N * radius2 - capsuleCenter2
+                ));
+            float d2;
+            if ((d2 = PointDistance2ToSegmentGetNearest(segB2, segA1, segB1, out Vector2 p)) < d)
+            {
+                d = d2;
+                pointA = segB2;
+                pointB = p;
+                localPositions.Clear();
+                N = (pointA - pointB).SafeNormalize(Vector2.UnitX);
+                localPositions.Add(new KeyValuePair<Vector2, Vector2>(
+                pointB + N * radius1 - capsuleCenter1,
+                pointA - N * radius2 - capsuleCenter2
+                ));
+            }
+            else if (d2 == d)
+            {
+                pointA = segB2;
+                pointB = p;
+                N = (pointA - pointB).SafeNormalize(Vector2.UnitX);
+                localPositions.Add(new KeyValuePair<Vector2, Vector2>(
+                    pointB + N * radius1 - capsuleCenter1,
+                    pointA - N * radius2 - capsuleCenter2
+               ));
+            }
+
+            // 防止四个点全都被取，最多只能保留两个接触点
+            if ((d2 = PointDistance2ToSegmentGetNearest(segA1, segA2, segB2, out p)) <= d)
+            {
+                d = d2;
+                pointA = segA1;
+                pointB = p;
+                N = (pointA - pointB).SafeNormalize(Vector2.UnitX);
+                localPositions.Clear();
+                localPositions.Add(new KeyValuePair<Vector2, Vector2>(
+                    pointA - N * radius1 - capsuleCenter1,
+                    pointB + N * radius2 - capsuleCenter2
+                ));
+            }
+
+            if ((d2 = PointDistance2ToSegmentGetNearest(segB1, segA2, segB2, out p)) < d)
+            {
+                d = d2;
+                pointA = segB1;
+                pointB = p;
+                N = (pointA - pointB).SafeNormalize(Vector2.UnitX);
+                localPositions.Clear();
+                localPositions.Add(new KeyValuePair<Vector2, Vector2>(
+                    pointA - N * radius1 - capsuleCenter1,
+                    pointB + N * radius2 - capsuleCenter2
+                ));
+            }
+            else if (d2 == d)
+            {
+                pointA = segB1;
+                pointB = p;
+                N = (pointA - pointB).SafeNormalize(Vector2.UnitX);
+                localPositions.Add(new KeyValuePair<Vector2, Vector2>(
+                    pointA - N * radius1 - capsuleCenter1,
+                    pointB + N * radius2 - capsuleCenter2
+               ));
+            }
+
+            if (localPositions.Count > 2)
+            {
+                // Remove all elements after the first two
+                localPositions.RemoveRange(2, localPositions.Count - 2);
+            }
+        }
+
+
+        public static bool CapsuleConvexPolygonCollisionInfo(Vector2 segA1, Vector2 segB1,
+            float radius1, List<Vector2> corners, List<Edge2D> edges, out float depth, out Vector2 normal)
+        {
+            depth = float.PositiveInfinity;
+            normal = Vector2.Zero;
+
+            {
+                // 中轴线段的法线和中轴线段本身都是关键分离轴
+                Edge2D edge = new Edge2D(segA1, segB1);
+                Vector2 axis = edge.GetNormal();
+                var (amin, amax) = GetProjectedInterval(new List<Vector2>() { segA1, segB1 }, edge._pA, axis);
+                var (bmin, bmax) = GetProjectedInterval(corners, edge._pA, axis);
+
+                amin -= radius1;
+                amax += radius1;
+
+                if (Math.Max(amin, bmin) > Math.Min(amax, bmax))
+                {
+                    return false;
+                }
+
+                float d = MinimumSeparatingDistance(amin, amax, bmin, bmax);
+                if (d < depth)
+                {
+                    depth = d;
+                    normal = axis;
+                }
+
+                axis = (segB1 - segA1).SafeNormalize(Vector2.Zero);
+                (amin, amax) = GetProjectedInterval(new List<Vector2>() { segA1, segB1 }, edge._pA, axis);
+                (bmin, bmax) = GetProjectedInterval(corners, edge._pA, axis);
+
+                amin -= radius1;
+                amax += radius1;
+
+                if (Math.Max(amin, bmin) > Math.Min(amax, bmax))
+                {
+                    return false;
+                }
+
+                d = MinimumSeparatingDistance(amin, amax, bmin, bmax);
+                if (d < depth)
+                {
+                    depth = d;
+                    normal = axis;
+                }
+            }
+
+            var capsuleCorners = new List<Vector2>() { segA1, segB1 };
+            for (int i = 0; i < edges.Count; i++)
+            {
+                Edge2D edge = edges[i];
+                Vector2 axis = edge.GetNormal();
+
+                var (amin, amax) = GetProjectedInterval(capsuleCorners, edge._pA, axis);
+                var (bmin, bmax) = GetProjectedInterval(corners, edge._pA, axis);
+
+                amin -= radius1;
+                amax += radius1;
+
+                if (Math.Max(amin, bmin) > Math.Min(amax, bmax))
+                {
+                    return false;
+                }
+
+                float d = MinimumSeparatingDistance(amin, amax, bmin, bmax);
+                if (d < depth)
+                {
+                    depth = d;
+                    normal = axis;
+                }
+            }
+            return true;
+        }
+
+        public static void CapsuleConvexPolygonContactInfo(Vector2 segA1, Vector2 segB1,
+            float radius1, List<Vector2> corners, List<Edge2D> edges, Vector2 polyCenter, List<KeyValuePair<Vector2, Vector2>> localPositions)
+        {
+            float closestDistance = float.PositiveInfinity;
+            Edge2D edgeSeg = new Edge2D(segA1, segB1);
+            List<Vector2> capsuleVertices = new List<Vector2>() { segA1, segB1 };
+            Vector2 capsuleCenter = (segA1 + segB1) / 2;
+            Vector2 ultimateDir = (polyCenter - capsuleCenter).SafeNormalize(Vector2.Zero);
+            foreach (var curPoint in corners)
+            {
+                float dist = GeometryUtils.PointDistance2ToSegmentGetNearest(curPoint, edgeSeg._pA, edgeSeg._pB, out Vector2 p);
+                if (dist < closestDistance)
+                {
+                    closestDistance = dist;
+                    localPositions.Clear();
+                    localPositions.Add(new KeyValuePair<Vector2, Vector2>(
+                        p + (curPoint - p).SafeNormalize(ultimateDir) * radius1 - capsuleCenter,
+                        curPoint - polyCenter
+                    ));
+                }
+                else if (Math.Abs(dist - closestDistance) < 1e-6)
+                {
+                    localPositions.Add(new KeyValuePair<Vector2, Vector2>(
+                        p + (curPoint - p).SafeNormalize(ultimateDir) * radius1 - capsuleCenter,
+                        curPoint - polyCenter
+                    ));
+                }
+
+            }
+            foreach (var capsulePoint in capsuleVertices)
+            {
+                foreach (var curEdge in edges)
+                {
+                    float dist = GeometryUtils.PointDistance2ToSegmentGetNearest(capsulePoint, curEdge._pA, curEdge._pB, out Vector2 p);
+                    if (dist < closestDistance)
+                    {
+                        closestDistance = dist;
+                        localPositions.Clear();
+                        localPositions.Add(new KeyValuePair<Vector2, Vector2>(
+                            capsulePoint + (p - capsulePoint).SafeNormalize(ultimateDir) * radius1 - capsuleCenter,
+                            p - polyCenter
+                        ));
+                    }
+                    else if (Math.Abs(dist - closestDistance) < 1e-6)
+                    {
+                        localPositions.Add(new KeyValuePair<Vector2, Vector2>(
+                             capsulePoint + (p - capsulePoint).SafeNormalize(ultimateDir) * radius1 - capsuleCenter,
+                            p - polyCenter
+                        ));
+                    }
+                }
+            }
+
+            if (localPositions.Count > 2)
+            {
+                // Remove all elements after the first two
+                localPositions.RemoveRange(2, localPositions.Count - 2);
+            }
+        }
+
+
+        public static float MinimumSeparatingDistance(float amin, float amax, float bmin, float bmax)
+        {
+            float d = Math.Min(amax, bmax) - Math.Max(amin, bmin);
+            if ((amin >= bmin && amax <= bmax) || (amin <= bmin && amax >= bmax))
+            {
+                d = Math.Min(amax - bmin, bmax - amin);
+            }
+            return d;
+        }
+
         public static Vector2 ConvertToPhysicsSpace(Vector2 pos)
         {
             return new Vector2(pos.X, -pos.Y);
         }
 
-        private static Random rng = new Random();
-
-        public static void FisherYatesShuffle<T>(this IList<T> list)
+        public static void FisherYatesShuffle<T>(this IList<T> list, Random rng)
         {
             int n = list.Count;
             while (n > 1)

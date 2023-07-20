@@ -13,7 +13,7 @@ namespace Everglow.Commons.Physics.PBEngine.Collision.BroadPhase
 	public class CollisionGraph
     {
         public static CollisionGraph DefualtGraph 
-            = new CollisionGraph(new Dictionary<string, List<string>>() { { "Default", new List<string>() } });
+            = new CollisionGraph(new Dictionary<string, List<string>>() { { "Default", new List<string>() { "Default"} } });
         public Dictionary<string, List<string>> Graph
         {
             get;
@@ -47,8 +47,6 @@ namespace Everglow.Commons.Physics.PBEngine.Collision.BroadPhase
 
         public void AddSingleEdge(string groupA, string groupB)
         {
-            if (groupA == groupB)
-                return;
             if (Graph.ContainsKey(groupA))
             {
                 Graph[groupA].Add(groupB);

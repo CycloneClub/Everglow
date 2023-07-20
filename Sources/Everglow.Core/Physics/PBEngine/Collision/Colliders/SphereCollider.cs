@@ -1,3 +1,4 @@
+using ChatGPT.Core.PBEngine.Collision.Colliders;
 using Everglow.Commons.Physics.PBEngine.GameInteraction;
 using Everglow.Commons.Utilities;
 using System;
@@ -73,7 +74,7 @@ namespace Everglow.Commons.Physics.PBEngine.Collision.Colliders
                 };
 
                 List<KeyValuePair<Vector2, Vector2>> contacts = new List<KeyValuePair<Vector2, Vector2>>();
-                GeometryUtils.CirclePolygonContactInfo(ParentObject.RigidBody.CentroidWorldSpace, _radius, b.GetEdges(deltaTime),
+                GeometryUtils.SphereConvexPolygonContactInfo(ParentObject.RigidBody.CentroidWorldSpace, _radius, b.GetEdges(deltaTime),
                     b.GetCornerPoints(deltaTime), b.ParentObject.RigidBody.CentroidWorldSpace, contacts);
                 foreach (var c in contacts)
                 {
@@ -88,6 +89,33 @@ namespace Everglow.Commons.Physics.PBEngine.Collision.Colliders
             {
                 TileCollisionUtils.GetSphereTileContactInfo(ParentObject.RigidBody.CentroidWorldSpace, _radius,
                    ParentObject, info.Target, deltaTime, collisionEvents);
+            }
+            else if (info.Target.Collider is CapsuleCollider)
+            {
+                CapsuleCollider b = (CapsuleCollider)info.Target.Collider;
+                var e = new CollisionEvent2D()
+                {
+                    Time = info.Time,
+                    Source = this.ParentObject,
+                    Target = b.ParentObject,
+                    LocalOffsetSrc = Vector2.Zero,
+                    LocalOffsetTarget = Vector2.Zero,
+                    Normal = info.Normal,
+                    Position = Vector2.Zero,
+                    Depth = info.Depth,
+                };
+                b.GetSegment(deltaTime, out Vector2 A, out Vector2 B);
+                List<KeyValuePair<Vector2, Vector2>> contacts = new List<KeyValuePair<Vector2, Vector2>>();
+                GeometryUtils.SphereCapsuleContactInfo(ParentObject.RigidBody.CentroidWorldSpace,
+                    _radius, A, B, b.Radius, contacts);
+                foreach (var c in contacts)
+                {
+                    collisionEvents.Add(new CollisionEvent2D(e)
+                    {
+                        LocalOffsetSrc = c.Key,
+                        LocalOffsetTarget = c.Value,
+                    });
+                }
             }
         }
 
@@ -138,7 +166,7 @@ namespace Everglow.Commons.Physics.PBEngine.Collision.Colliders
                 lines.Add(((i + 1) * da).ToRotationVector2() * _radius);
             }
             lines.Add(Vector2.Zero);
-            lines.Add(Matrix2x2.CreateRotationMatrix(ParentObject.Rotation).Multiply(new Vector2(_radius, 0)));
+            lines.Add(ParentObject.CachedRotationalMatrix.Multiply(new Vector2(_radius, 0)));
             return lines;
         }
 
@@ -169,7 +197,7 @@ namespace Everglow.Commons.Physics.PBEngine.Collision.Colliders
                 BoxCollider b = (BoxCollider)other;
                 float depth;
                 Vector2 normal;
-                if (GeometryUtils.CirclePolygonCollisionInfo(ParentObject.RigidBody.CentroidWorldSpace, _radius,
+                if (GeometryUtils.SphereConvexPolygonCollisionInfo(ParentObject.RigidBody.CentroidWorldSpace, _radius,
                    b.GetEdges(deltaTime), b.GetCornerPoints(deltaTime), out depth, out normal))
                 {
                     info.Source = this.ParentObject;
@@ -189,6 +217,21 @@ namespace Everglow.Commons.Physics.PBEngine.Collision.Colliders
                 {
                     info.Source = this.ParentObject;
                     info.Target = other.ParentObject;
+                    info.Time = deltaTime;
+                    info.Depth = depth;
+                    info.Normal = normal;
+                    return true;
+                }
+            }
+            else if (other is CapsuleCollider)
+            {
+                CapsuleCollider b = (CapsuleCollider)other;
+                b.GetSegment(deltaTime, out Vector2 A, out Vector2 B);
+                if (GeometryUtils.SphereCapsuleCollisionInfo(ParentObject.RigidBody.CentroidWorldSpace, Radius,
+                    A, B, b.Radius, out float depth, out Vector2 normal))
+                {
+                    info.Source = this.ParentObject;
+                    info.Target = b.ParentObject;
                     info.Time = deltaTime;
                     info.Depth = depth;
                     info.Normal = normal;

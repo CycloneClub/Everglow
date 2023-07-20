@@ -51,11 +51,16 @@ namespace Everglow.Commons.Physics.PBEngine.Constrains
             //_objB.RigidBody.AngularVelocity = MathHelper.WrapAngle(_objB.Rotation - _objB.OldRotation) / deltaTime;
         }
 
-        public override List<Vector2> GetDrawMesh()
+        public override void ApplyForce(float deltaTime)
         {
-            List<Vector2> drawMesh = new List<Vector2>();
-            drawMesh.Add(_objA.LocalToWorldPos(_localPosA));
-            drawMesh.Add(_objB.RigidBody.CentroidWorldSpace);
+            throw new NotImplementedException();
+        }
+
+        public override List<(Vector2, Color)> GetDrawMesh()
+        {
+            List<(Vector2, Color)> drawMesh = new List<(Vector2, Color)>();
+            drawMesh.Add((_objA.LocalToWorldPos(_localPosA), Color.Green));
+            drawMesh.Add((_objB.RigidBody.CentroidWorldSpace, Color.Green));
 
             return drawMesh;
         }

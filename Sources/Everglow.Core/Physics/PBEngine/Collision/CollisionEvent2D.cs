@@ -29,7 +29,9 @@ namespace Everglow.Commons.Physics.PBEngine.Collision
         /// From centroid of target object to hit point
         /// </summary>
         public Vector2 LocalOffsetTarget;
+
         public float NormalVelOld;
+        public Vector2 TangentDir;
 
         public CollisionEvent2D(CollisionEvent2D e)
         {

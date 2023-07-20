@@ -46,8 +46,17 @@ namespace Everglow.Commons.Physics.PBEngine
         public float Rotation
         {
             get => _rotation;
-            set => _rotation = value;
+            set
+            {
+                _rotation = value;
+                _cachedRotationalMatrix = Matrix2x2.CreateRotationMatrix(_rotation);
+            }
         }
+        internal Matrix2x2 CachedRotationalMatrix
+        {
+            get => _cachedRotationalMatrix;
+        }
+        private Matrix2x2 _cachedRotationalMatrix;
 
 		/// <summary>
 		/// 物体在迭代开始的时候的位置
@@ -85,6 +94,12 @@ namespace Everglow.Commons.Physics.PBEngine
             set => _tag = value;
         }
 
+        public bool IsActive
+        {
+            get => _isActive;
+            set => _isActive = value;
+        }
+
         private Collider2D _collider;
         private RigidBody2D _rigidBody;
         private Vector2 _oldPos;
@@ -92,12 +107,15 @@ namespace Everglow.Commons.Physics.PBEngine
         private float _oldRot;
         private int _guid;
         private string _tag;
+        private bool _isActive;
 
         public PhysicsObject(Collider2D collider, RigidBody2D rigidBody)
         {
             _collider = collider;
             _rigidBody = rigidBody;
             _tag = "Default";
+            _isActive = true;
+
 
             if (_rigidBody == null)
             {
@@ -107,6 +125,9 @@ namespace Everglow.Commons.Physics.PBEngine
                     UseGravity = false,
                 };
             }
+
+            Rotation = 0;
+            Position = Vector2.Zero;
 
             _collider.ParentObject = this;
             _rigidBody.ParentObject = this;
@@ -123,20 +144,24 @@ namespace Everglow.Commons.Physics.PBEngine
             _oldRot = _rotation;
         }
 
-        public List<Vector2> GetWireFrameWires()
+        public List<(Vector2, Color)> GetWireFrameWires()
         {
+            List<(Vector2, Color)> wires_color = new List<(Vector2, Color)>();
             List<Vector2> wires = _collider.GetWireFrameWires();
-            var R = Matrix2x2.CreateRotationMatrix(_rotation);
             for (int i = 0; i < wires.Count; i++)
             {
-                wires[i] = R.Multiply(wires[i]) + Position;
+                wires_color.Add((_cachedRotationalMatrix.Multiply(wires[i]) + Position, RigidBody.IsAwake ? Color.White : Color.Gray));
             }
-            return wires;
+            return wires_color;
         }
-        public void CleanUp()
+        public void CleanThisFrame(float deltaTime)
         {
-            _rigidBody?.CleanUp();
-            _rotation = MathHelper.WrapAngle(_rotation);
+            _rigidBody?.CleanInformationThisFrame(deltaTime);
+        }
+        public void CleanThisSubstep(float deltaTime)
+        {
+            _rigidBody?.CleanInformationSubstep(deltaTime);
+            Rotation = MathHelper.WrapAngle(Rotation);
         }
         public void Update(float deltaTime)
         {
@@ -145,6 +170,10 @@ namespace Everglow.Commons.Physics.PBEngine
 
         public void ApplyGravity(Vector2 gravity)
         {
+            if (!_isActive)
+            {
+                return;
+            }
             if(_rigidBody != null)
             {
                 if (_rigidBody.UseGravity)
@@ -156,7 +185,7 @@ namespace Everglow.Commons.Physics.PBEngine
         
         public Vector2 LocalToWorldPos(Vector2 localPos)
         {
-            return _rigidBody.CentroidWorldSpace + Matrix2x2.CreateRotationMatrix(_rotation).Multiply(localPos);
+            return _rigidBody.CentroidWorldSpace + _cachedRotationalMatrix.Multiply(localPos);
         }
     }
 }

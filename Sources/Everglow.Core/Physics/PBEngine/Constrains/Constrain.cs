@@ -9,7 +9,8 @@ namespace Everglow.Commons.Physics.PBEngine.Constrains
 	public abstract class Constrain
     {
         public abstract void Apply(float deltaTime);
+        public abstract void ApplyForce(float deltaTime);
 
-        public abstract List<Vector2> GetDrawMesh();
+        public abstract List<(Vector2, Color)> GetDrawMesh();
     }
 }
