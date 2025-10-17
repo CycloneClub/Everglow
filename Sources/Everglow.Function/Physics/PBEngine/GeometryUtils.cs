@@ -249,7 +249,7 @@ namespace Everglow.Commons.Physics.PBEngine
             foreach (var edge in edges)
             {
                 float d = GeometryUtils.PointDistance2ToSegmentGetNearest(cSphere, edge._pA, edge._pB, out Vector2 pointOnSeg);
-                // Èç¹ûµãÔÚÄ³Ò»¸öÏß¶ÎµÄÍâÃæ£¬ÄÇÃ´¾ÍËµÃ÷µãÔÚ¶à±ßÐÎµÄÍâÃæ
+                // å¦‚æžœç‚¹åœ¨æŸä¸€ä¸ªçº¿æ®µçš„å¤–é¢ï¼Œé‚£ä¹ˆå°±è¯´æ˜Žç‚¹åœ¨å¤šè¾¹å½¢çš„å¤–é¢
                 if (d > maxDepth && GeometryUtils.Cross(edge._pB - edge._pA, cSphere - edge._pA) <= 0)
                 {
                     maxDepth = d;
@@ -475,7 +475,7 @@ namespace Everglow.Commons.Physics.PBEngine
 
             depth = radius1 + radius2 - (float)Math.Sqrt(d);
             normal = (pointA - pointB).SafeNormalize(Vector2.UnitX);
-            // ·¨Ïß·½Ïò±ØÐë³¯ÏòSphereÅö×²Ìå
+            // æ³•çº¿æ–¹å‘å¿…é¡»æœå‘Sphereç¢°æ’žä½“
             if (flipSign)
             {
                 normal = -normal;   
@@ -522,7 +522,7 @@ namespace Everglow.Commons.Physics.PBEngine
                ));
             }
 
-            // ·ÀÖ¹ËÄ¸öµãÈ«¶¼±»È¡£¬×î¶àÖ»ÄÜ±£ÁôÁ½¸ö½Ó´¥µã
+            // é˜²æ­¢å››ä¸ªç‚¹å…¨éƒ½è¢«å–ï¼Œæœ€å¤šåªèƒ½ä¿ç•™ä¸¤ä¸ªæŽ¥è§¦ç‚¹
             if ((d2 = PointDistance2ToSegmentGetNearest(segA1, segA2, segB2, out p)) <= d)
             {
                 d = d2;
@@ -574,7 +574,7 @@ namespace Everglow.Commons.Physics.PBEngine
             normal = Vector2.Zero;
 
             {
-                // ÖÐÖáÏß¶ÎµÄ·¨ÏßºÍÖÐÖáÏß¶Î±¾Éí¶¼ÊÇ¹Ø¼ü·ÖÀëÖá
+                // ä¸­è½´çº¿æ®µçš„æ³•çº¿å’Œä¸­è½´çº¿æ®µæœ¬èº«éƒ½æ˜¯å…³é”®åˆ†ç¦»è½´
                 Edge2D edge = new Edge2D(segA1, segB1);
                 Vector2 axis = edge.GetNormal();
                 var (amin, amax) = GetProjectedInterval(new List<Vector2>() { segA1, segB1 }, edge._pA, axis);
