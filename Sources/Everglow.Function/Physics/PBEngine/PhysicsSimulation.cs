@@ -85,6 +85,17 @@ namespace Everglow.Commons.Physics.PBEngine
 		{
 		}
 
+		public void ClearPhysicsObjects()
+		{
+			foreach (PhysicsObject pobj in _objects)
+			{
+				if(pobj.IsActive)
+				{
+					RemoveObject(pobj);
+				}
+			}
+		}
+
 		public PhysicsSimulation(CollisionGraph graph)
 		{
 			_objectFreeList = new LinkedList<int>();
@@ -111,6 +122,7 @@ namespace Everglow.Commons.Physics.PBEngine
 		/// <param name="pobj"></param>
 		public void AddPhysicsObject(PhysicsObject pobj)
 		{
+			//Main.NewText(pobj.RigidBody.Mass, Color.Red);
 			pobj.GUID = AllocateGUID();
 			if (pobj.GUID == _objects.Count)
 			{
@@ -184,21 +196,6 @@ namespace Everglow.Commons.Physics.PBEngine
 			foreach (Constrain joint in _constrains)
 			{
 				result.AddRange(joint.GetDrawMesh());
-			}
-			return result;
-		}
-
-		public List<Vertex2D> EmitVertices()
-		{
-			List<Vertex2D> result = new List<Vertex2D>();
-			foreach (PhysicsObject pobj in _objects)
-			{
-				if (!pobj.IsActive)
-				{
-					continue;
-				}
-
-				result.AddRange(pobj.Draw());
 			}
 			return result;
 		}

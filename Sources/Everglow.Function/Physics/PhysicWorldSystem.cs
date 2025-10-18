@@ -116,10 +116,7 @@ public class PhysicsPlayer : ModPlayer
 		// Main.NewText(Main.LocalPlayer.velocity, Color.Lime);
 		PhysicWorldSystem.Instance._dummyPlayer.RigidBody.LinearVelocity = GeometryUtils.ConvertToPhysicsSpace(Main.LocalPlayer.velocity / dt);
 		PhysicWorldSystem.Instance._dummyPlayer.Position = GeometryUtils.ConvertToPhysicsSpace(oldPos);
-		if (!PhysicWorldSystem.EnableRigidBodyTestPlayground)
-		{
-			PhysicWorldSystem.Instance._realSimulation.Update(dt);
-		}
+		PhysicWorldSystem.Instance._realSimulation.Update(dt);
 
 		foreach (var obj in temporaryObjects)
 		{
@@ -263,57 +260,20 @@ public class PhysicsPlayer : ModPlayer
 
 public class PhysicWorldSystem : ModSystem
 {
-	private RigidBodyRenderer rigidBodyRenderer;
-	private Asset<Effect> _renderShader;
 	public PhysicsSimulation _realSimulation;
 	public static PhysicWorldSystem Instance;
 	public PhysicsObject _dummyPlayer;
 
-	public static bool EnableRigidBodyTestPlayground = false;
 	public const float Simulation_DeltaTime = 0.1f;
 
 	public override void PostUpdateEverything()
 	{
-		if (EnableRigidBodyTestPlayground)
-		{
-			rigidBodyRenderer.Update();
-		}
-	}
-
-	public override void PostDrawTiles()
-	{
-		if (EnableRigidBodyTestPlayground)
-		{
-			rigidBodyRenderer.Draw(Main.spriteBatch);
-		}
-
-		var vertices = new List<Vertex2D>();
-
-		if (vertices.Count > 0)
-		{
-			// _renderShader.Value.Parameters["uColor"].SetValue(Color.White.ToVector4());
-			_renderShader.Value.Parameters["uTransform"].SetValue(Main.GameViewMatrix.TransformationMatrix * Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1));
-			_renderShader.Value.CurrentTechnique.Passes[0].Apply();
-			Main.graphics.GraphicsDevice.Textures[0] = TextureAssets.MagicPixel.Value;
-			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.LineList, vertices.ToArray(), 0, vertices.Count / 2);
-		}
-
-		_realSimulation.BroadPhaseCollisionDetector.DrawDebugInfo(Main.spriteBatch);
-		base.PostDrawTiles();
 	}
 
 	public override void Load()
 	{
-		if (EnableRigidBodyTestPlayground)
-		{
-			rigidBodyRenderer = new RigidBodyRenderer();
-			rigidBodyRenderer.Initialize();
-		}
-
 		Instance = this;
 		ReStart();
-		_renderShader = ModContent.Request<Effect>("Everglow/Example/VFX/Default");
-
 		On_Player.PlayerFrame += On_Player_PlayerFrame;
 		On_Collision.TileCollision += On_Collision_TileCollision;
 		base.Load();
@@ -444,22 +404,15 @@ public class PhysicWorldSystem : ModSystem
 
 	public override void PostDrawInterface(SpriteBatch sb)
 	{
-		if (EnableRigidBodyTestPlayground)
-		{
-			var start = Main.LocalPlayer.Center - new Vector2(1024 / 2, 1024 / 2) - Main.screenPosition;
 
-			sb.DrawString(FontAssets.MouseText.Value, "[Profiler]", start, Color.Red);
-			sb.DrawString(FontAssets.MouseText.Value, $"PreIntegration Time: {_realSimulation.MeasuredPreIntegrationTimeInMs} ms", start + new Vector2(0, 28), Color.Red);
-			sb.DrawString(FontAssets.MouseText.Value, $"BroadPhase Time: {_realSimulation.MeasuredBroadPhaseTimeInMs} ms", start + new Vector2(0, 56), Color.Red);
-			sb.DrawString(FontAssets.MouseText.Value, $"NarrowPhase Time: {_realSimulation.MeasuredNarrowPhaseTimeInMs} ms", start + new Vector2(0, 74), Color.Red);
-
-			double percent = _realSimulation.NumOfBroadPhasePairs == 0 ? 1 : (double)_realSimulation.NumOfNarrowPhasePairs / _realSimulation.NumOfBroadPhasePairs;
-			sb.DrawString(FontAssets.MouseText.Value, $"Detected Pairs: {_realSimulation.NumOfNarrowPhasePairs} / {_realSimulation.NumOfBroadPhasePairs}, {percent:F2}% of accuracy", start + new Vector2(0, 108), Color.Red);
-		}
 	}
 
 	public void ReStart()
 	{
+		if(_realSimulation is not null)
+		{
+			_realSimulation.ClearPhysicsObjects();
+		}
 		var terrariaCollisionGroup = new CollisionGraph();
 		_realSimulation = new PhysicsSimulation(terrariaCollisionGroup);
 		terrariaCollisionGroup.AddSingleEdge("Default", "Default");

@@ -1,6 +1,5 @@
 using Everglow.Commons.Physics;
 using Everglow.Commons.Physics.PBEngine;
-using Everglow.Commons.Physics.PBEngine.Collision;
 using Everglow.Commons.Physics.PBEngine.Collision.Colliders;
 using static Everglow.Commons.VFX.VFXBatchExtension;
 
@@ -9,7 +8,7 @@ namespace Everglow.Example.Test;
 /// <summary>
 /// Devs only.
 /// </summary>
-public class PhysicsBody_TestSystem : ModItem
+public class Diamond_Physics_Item : ModItem
 {
 	public override void SetDefaults()
 	{
@@ -17,35 +16,33 @@ public class PhysicsBody_TestSystem : ModItem
 		Item.useAnimation = 21;
 	}
 
-	public int soundID = 0;
-
 	public override void HoldItem(Player player)
 	{
 		if (Main.mouseLeft && Main.mouseLeftRelease)
 		{
 			if (!Collision.IsWorldPointSolid(Main.MouseWorld))
 			{
-				var rigBody = new RigidBody2D(1)
-				{
-					MovementType = MovementType.Kinematic,
-					UseGravity = false,
-				};
+				var rigBody = new SphereCollider(12);
+
 				var box = new PhysicsObject(
-				new BoxCollider(192, 16),
-				null);
+				new SphereCollider(12),
+				new RigidBody2D(20) { });
 
 				PhysicWorldSystem.Instance._realSimulation.AddPhysicsObject(box);
 				box.Position = GeometryUtils.ConvertToPhysicsSpace(Main.MouseWorld);
 				box.RigidBody.LinearVelocity = new Vector2(0, 0);
 
 				var vfx = new VisualPhysicsUnit();
-				vfx.Timer = 0;
 				vfx.physicsObject = box;
 				vfx.Active = true;
 				vfx.Visible = true;
 				vfx.RegisterCustomCode(Draw, Update);
 				Ins.VFXManager.Add(vfx);
 			}
+		}
+		if (Main.mouseRight && Main.mouseRightRelease)
+		{
+			PhysicWorldSystem.Instance.ReStart();
 		}
 	}
 
@@ -55,31 +52,35 @@ public class PhysicsBody_TestSystem : ModItem
 		pos.Y *= -1;
 		Color c = Lighting.GetColor(pos.ToTileCoordinates());
 		c.A = 200;
-		Texture2D tex = ModAsset.MovePlatform.Value;
+		Texture2D tex = ModAsset.Diamond.Value;
 		float rot = vpu.physicsObject.Rotation;
 		Ins.Batch.Draw(tex, pos, null, c, rot, tex.Size() * 0.5f, 1f, 0);
+		for (int i = 0; i < 9; i++)
+		{
+			tex = ModContent.Request<Texture2D>(ModAsset.Diamond_Mod + "_glow" + i).Value;
+			float value = (pos.X + pos.Y) * 0.03f + rot + i;
+			float valueR = Math.Max(MathF.Sin(value), 0);
+			float valueG = Math.Max(MathF.Sin(value + 0.5f), 0);
+			float valueB = Math.Max(MathF.Sin(value + 1f), 0);
+			valueR = MathF.Pow(valueR, 4);
+			valueG = MathF.Pow(valueG, 4);
+			valueB = MathF.Pow(valueB, 4);
+			Color reflectColor = new Color(valueR, valueG, valueB, 0);
+			reflectColor = Lighting.GetColor(pos.ToTileCoordinates(), reflectColor) * 2;
+			reflectColor.A = 0;
+			if (i == 3 || i == 4)
+			{
+				reflectColor *= 0.2f;
+			}
+			Ins.Batch.Draw(tex, pos, null, reflectColor, rot, tex.Size() * 0.5f, 1f, 0);
+		}
 	}
 
 	public void Update(VisualPhysicsUnit vpu)
 	{
-		Vector2 vel;
-		var timer = vpu.Timer % 600;
-		if (timer < 100)
-		{
-			vel = Vector2.zeroVector;
-		}
-		else if(timer >= 100 && timer < 300)
-		{
-			vel = new Vector2(0, -2);
-		}
-		else if (timer >= 300 && timer < 400)
-		{
-			vel = Vector2.zeroVector;
-		}
-		else
-		{
-			vel = new Vector2(0, 2);
-		}
-		vpu.physicsObject.Position += vel;
+		// if(vpu.Timer > 150)
+		// {
+		// vpu.Kill();
+		// }
 	}
 }
