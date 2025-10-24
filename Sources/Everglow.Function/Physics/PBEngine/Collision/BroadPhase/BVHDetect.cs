@@ -16,7 +16,7 @@ namespace Everglow.Commons.Physics.PBEngine.Collision.BroadPhase
     /// <summary>
     /// 使用BVH辅助加速碰撞检测
     /// </summary>
-    public class BVHDetect : IBroadPhase
+    public class BVHDetect : BroadPhase
     {
         private List<Collider2D> _colliders;
         private Dictionary<string, List<ColliderEntry>> _groups;

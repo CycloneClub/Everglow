@@ -10,7 +10,7 @@ namespace Everglow.Commons.Physics.PBEngine.Collision.BroadPhase
     /// <summary>
     /// 暴力遍历AABB的粗粒度碰撞检测算法
     /// </summary>
-    public class BruteForceDetect : IBroadPhase
+    public class BruteForceDetect : BroadPhase
     {
         private List<Collider2D> _colliders;
         private Dictionary<string, List<ColliderEntry>> _groups;

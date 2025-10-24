@@ -25,7 +25,7 @@ namespace Everglow.Commons.Physics.PBEngine
 		private LinkedList<int> _objectFreeList;
 		private int _maximumAllocatedId;
 		private List<Constraint> _constraints;
-		private IBroadPhase _broadPhase;
+		private BroadPhase _broadPhase;
 		private float _gravity;
 
 		private Stopwatch _stopwatchPreIntegration;
@@ -75,7 +75,7 @@ namespace Everglow.Commons.Physics.PBEngine
 			get => _gravity;
 		}
 
-		public IBroadPhase BroadPhaseCollisionDetector
+		public BroadPhase BroadPhaseCollisionDetector
 		{
 			get => _broadPhase;
 		}

@@ -10,10 +10,10 @@ namespace Everglow.Commons.Physics.PBEngine.Collision.BroadPhase
 	/// <summary>
 	/// 粗粒度碰撞检测的基类
 	/// </summary>
-	public abstract class IBroadPhase
+	public abstract class BroadPhase
     {
         protected CollisionGraph _collisionGraph;
-        public IBroadPhase(CollisionGraph graph)
+        public BroadPhase(CollisionGraph graph)
         {
             _collisionGraph = graph;
         }
@@ -27,12 +27,5 @@ namespace Everglow.Commons.Physics.PBEngine.Collision.BroadPhase
 
 
         public abstract void DrawDebugInfo(SpriteBatch sb);
-    }
-
-    public struct ColliderEntry
-    {
-        public int ColliderId;
-        public AABB BoundingBox;
-        public bool IsDynamic;
     }
 }

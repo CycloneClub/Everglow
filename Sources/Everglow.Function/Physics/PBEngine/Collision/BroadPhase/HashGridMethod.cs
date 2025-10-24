@@ -10,7 +10,7 @@ using Terraria.GameContent;
 
 namespace Everglow.Commons.Physics.PBEngine.Collision.BroadPhase
 {
-    internal class HashGridMethod : IBroadPhase
+    internal class HashGridMethod : BroadPhase
     {
         private List<Collider2D> _colliders;
         private Dictionary<string, MultiLevelHashGrid> _groups;
