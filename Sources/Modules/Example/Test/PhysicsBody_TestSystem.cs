@@ -34,7 +34,7 @@ public class PhysicsBody_TestSystem : ModItem
 				new BoxCollider(192, 16),
 				null);
 
-				PhysicWorldSystem.Instance._realSimulation.AddPhysicsObject(box);
+				PhysicsWorldSystem.Instance._realSimulation.AddPhysicsObject(box);
 				box.Position = GeometryUtils.ConvertToPhysicsSpace(Main.MouseWorld);
 				box.RigidBody.LinearVelocity = new Vector2(0, 0);
 

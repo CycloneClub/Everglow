@@ -5,7 +5,7 @@ namespace Everglow.Commons.Physics.PBEngine.Collision.BroadPhase
 	/// </summary>
 	public class CollisionGraph
 	{
-		public static CollisionGraph DefualtGraph
+		public static CollisionGraph DefaultGraph
 			= new CollisionGraph(new Dictionary<string, List<string>>() { { "Default", new List<string>() { "Default" } } });
 
 		public Dictionary<string, List<string>> Graph

@@ -5,18 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 
-namespace Everglow.Commons.Physics.PBEngine.Constrains
+namespace Everglow.Commons.Physics.PBEngine.Constraints
 {
 	/// <summary>
 	/// TODO: 待定约束
 	/// </summary>
-	public class JointConstrain : Constrain
+	public class JointConstraint : Constraint
     {
         private PhysicsObject _objA;
         private PhysicsObject _objB;
         private Vector2 _localPosA;
         private Vector2 _localPosB;
-        public JointConstrain(PhysicsObject A, PhysicsObject B, Vector2 localPos1, Vector2 localPos2)
+        public JointConstraint(PhysicsObject A, PhysicsObject B, Vector2 localPos1, Vector2 localPos2)
         {
             _objA = A;
             _objB = B;
@@ -43,7 +43,7 @@ namespace Everglow.Commons.Physics.PBEngine.Constrains
             Vector2 addB = newCenter - _objB.LocalToWorldPos(_localPosB);
             Vector2 oldPosB = _objB.Position;
             _objA.Position += addA;
-            _objB.Position = (newCenter - dirB * 200);
+            _objB.Position = newCenter - dirB * 200;
 
             _objA.RigidBody.LinearVelocity = (_objA.Position - _objA.OldPosition) / deltaTime;
             _objB.RigidBody.LinearVelocity = (_objB.Position - _objB.OldPosition) / deltaTime;
@@ -58,7 +58,7 @@ namespace Everglow.Commons.Physics.PBEngine.Constrains
 
         public override List<(Vector2, Color)> GetDrawMesh()
         {
-            List<(Vector2, Color)> drawMesh = new List<(Vector2, Color)>();
+            var drawMesh = new List<(Vector2, Color)>();
             drawMesh.Add((_objA.LocalToWorldPos(_localPosA), Color.Green));
             drawMesh.Add((_objB.RigidBody.CentroidWorldSpace, Color.Green));
 

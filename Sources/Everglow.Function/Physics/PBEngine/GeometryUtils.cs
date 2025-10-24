@@ -99,7 +99,7 @@ namespace Everglow.Commons.Physics.PBEngine
         /// </summary>
         /// <param name="w"></param>
         /// <returns></returns>
-        public static Vector2 AnuglarVelocityToLinearVelocity(Vector2 a, float w)
+        public static Vector2 AngularVelocityToLinearVelocity(Vector2 a, float w)
         {
             return new Vector2(-a.Y, a.X) * w;
         }

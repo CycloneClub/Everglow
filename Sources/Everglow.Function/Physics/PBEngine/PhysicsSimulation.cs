@@ -2,7 +2,7 @@ using Everglow.Commons.DataStructures;
 using Everglow.Commons.Physics.PBEngine.Collision;
 using Everglow.Commons.Physics.PBEngine.Collision.BroadPhase;
 using Everglow.Commons.Physics.PBEngine.Collision.Colliders;
-using Everglow.Commons.Physics.PBEngine.Constrains;
+using Everglow.Commons.Physics.PBEngine.Constraints;
 using Everglow.Commons.Vertex;
 using Terraria;
 
@@ -24,7 +24,7 @@ namespace Everglow.Commons.Physics.PBEngine
 		private List<PhysicsObject> _objects;
 		private LinkedList<int> _objectFreeList;
 		private int _maximumAllocatedId;
-		private List<Constrain> _constrains;
+		private List<Constraint> _constraints;
 		private IBroadPhase _broadPhase;
 		private float _gravity;
 
@@ -81,7 +81,7 @@ namespace Everglow.Commons.Physics.PBEngine
 		}
 
 		public PhysicsSimulation()
-			: this(CollisionGraph.DefualtGraph)
+			: this(CollisionGraph.DefaultGraph)
 		{
 		}
 
@@ -101,7 +101,7 @@ namespace Everglow.Commons.Physics.PBEngine
 			_objectFreeList = new LinkedList<int>();
 			_objects = new List<PhysicsObject>();
 			_maximumAllocatedId = 0;
-			_constrains = new List<Constrain>();
+			_constraints = new List<Constraint>();
 			_broadPhase = new HashGridMethod(graph);
 
 			_gravity = 9.8f;
@@ -139,9 +139,9 @@ namespace Everglow.Commons.Physics.PBEngine
 		/// 向物理世界添加约束对象
 		/// </summary>
 		/// <param name="constrain"></param>
-		public void AddConstrain(Constrain constrain)
+		public void AddConstrain(Constraint constrain)
 		{
-			_constrains.Add(constrain);
+			_constraints.Add(constrain);
 		}
 
 		/// <summary>
@@ -193,7 +193,7 @@ namespace Everglow.Commons.Physics.PBEngine
 
 				result.AddRange(pobj.GetWireFrameWires());
 			}
-			foreach (Constrain joint in _constrains)
+			foreach (Constraint joint in _constraints)
 			{
 				result.AddRange(joint.GetDrawMesh());
 			}
@@ -232,7 +232,7 @@ namespace Everglow.Commons.Physics.PBEngine
 				}
 				pobj.ApplyGravity(new Vector2(0, -_gravity));
 			}
-			foreach (var constrain in _constrains)
+			foreach (var constrain in _constraints)
 			{
 				constrain.ApplyForce(deltaTime);
 			}
@@ -245,7 +245,7 @@ namespace Everglow.Commons.Physics.PBEngine
 				pobj.RecordOldState();
 				pobj.Update(deltaTime);
 			}
-			foreach (var constrain in _constrains)
+			foreach (var constrain in _constraints)
 			{
 				constrain.Apply(deltaTime);
 			}
@@ -365,9 +365,9 @@ namespace Everglow.Commons.Physics.PBEngine
 			var ri = e.LocalOffsetSrc;
 			var rb = e.LocalOffsetTarget;
 
-			var va = e.Source.RigidBody.LinearVelocity + GeometryUtils.AnuglarVelocityToLinearVelocity(ri, e.Source.RigidBody.AngularVelocity);
+			var va = e.Source.RigidBody.LinearVelocity + GeometryUtils.AngularVelocityToLinearVelocity(ri, e.Source.RigidBody.AngularVelocity);
 			var vb = e.Target.RigidBody.LinearVelocity
-				+ GeometryUtils.AnuglarVelocityToLinearVelocity(rb, e.Target.RigidBody.AngularVelocity);
+				+ GeometryUtils.AngularVelocityToLinearVelocity(rb, e.Target.RigidBody.AngularVelocity);
 
 			if (e.NormalVelOld == 0)
 			{
@@ -399,7 +399,7 @@ namespace Everglow.Commons.Physics.PBEngine
 			Vector2 J = (float)J_n * vt; // + (float)J_t * va_t_unit;
 
 			// var offset = e.Position - (_globalCentroid + ri);
-			e.Source.RigidBody.AddImpluseImmediate(J, ri, e.Target.RigidBody, -J, rb);
+			e.Source.RigidBody.AddImpulseImmediate(J, ri, e.Target.RigidBody, -J, rb);
 			Debug.Assert(!float.IsNaN(J.X) && !float.IsNaN(J.Y));
 		}
 
@@ -408,9 +408,9 @@ namespace Everglow.Commons.Physics.PBEngine
 			var ri = e.LocalOffsetSrc;
 			var rb = e.LocalOffsetTarget;
 
-			var va = e.Source.RigidBody.LinearVelocity + GeometryUtils.AnuglarVelocityToLinearVelocity(ri, e.Source.RigidBody.AngularVelocity);
+			var va = e.Source.RigidBody.LinearVelocity + GeometryUtils.AngularVelocityToLinearVelocity(ri, e.Source.RigidBody.AngularVelocity);
 			var vb = e.Target.RigidBody.LinearVelocity
-				+ GeometryUtils.AnuglarVelocityToLinearVelocity(rb, e.Target.RigidBody.AngularVelocity);
+				+ GeometryUtils.AngularVelocityToLinearVelocity(rb, e.Target.RigidBody.AngularVelocity);
 
 			float vrel_n = Vector2.Dot(va - vb, e.Normal);
 
@@ -443,7 +443,7 @@ namespace Everglow.Commons.Physics.PBEngine
 			e.NormalVelOld += (float)J_n;
 
 			// var offset = e.Position - (_globalCentroid + ri);
-			e.Source.RigidBody.AddImpluseImmediate(J, ri, e.Target.RigidBody, -J, rb);
+			e.Source.RigidBody.AddImpulseImmediate(J, ri, e.Target.RigidBody, -J, rb);
 			Debug.Assert(!float.IsNaN(J.X) && !float.IsNaN(J.Y));
 
 			return vrel_n > -0.1f;

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using Everglow.Commons.Utilities;
 using Terraria;
 
-namespace Everglow.Commons.Physics.PBEngine.Constrains
+namespace Everglow.Commons.Physics.PBEngine.Constraints
 {
 	/// <summary>
 	/// 弹簧约束
 	/// </summary>
-	public class SpringConstrain : Constrain
+	public class SpringConstraint : Constraint
     {
         private PhysicsObject _objA;
         private PhysicsObject _objB;
@@ -21,7 +21,7 @@ namespace Everglow.Commons.Physics.PBEngine.Constrains
         private Vector2 _localPosA;
         private Vector2 _localPosB;
 
-        public SpringConstrain(PhysicsObject A, PhysicsObject B, float elasticity, float restLength)
+        public SpringConstraint(PhysicsObject A, PhysicsObject B, float elasticity, float restLength)
         {
             _objA = A;
             _objB = B;
@@ -32,7 +32,7 @@ namespace Everglow.Commons.Physics.PBEngine.Constrains
             _localPosB = Vector2.Zero;
         }
 
-        public SpringConstrain(PhysicsObject A, PhysicsObject B, float elasticity, float restLength,
+        public SpringConstraint(PhysicsObject A, PhysicsObject B, float elasticity, float restLength,
             Vector2 localPosA,
             Vector2 localPosB) : this(A, B, elasticity, restLength)
         {
@@ -167,7 +167,7 @@ namespace Everglow.Commons.Physics.PBEngine.Constrains
 
         public override List<(Vector2, Color)> GetDrawMesh()
         {
-            List<(Vector2, Color)> drawMesh = new List<(Vector2, Color)>();
+            var drawMesh = new List<(Vector2, Color)>();
             drawMesh.Add((_objA.LocalToWorldPos(_localPosA), Color.Green));
             drawMesh.Add((_objB.LocalToWorldPos(_localPosB), Color.Green));
 

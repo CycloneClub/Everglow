@@ -1,5 +1,5 @@
 using Everglow.Commons.Physics.PBEngine.Collision.Colliders;
-using Everglow.Commons.Physics.PBEngine.Constrains;
+using Everglow.Commons.Physics.PBEngine.Constraints;
 
 namespace Everglow.Commons.Physics.PBEngine.PlayGround.Constrain
 {
@@ -24,7 +24,7 @@ namespace Everglow.Commons.Physics.PBEngine.PlayGround.Constrain
 			staticPlane1.Rotation = 0f;
 			world.AddPhysicsObject(staticPlane1);
 
-			var joint = new JointConstrain(staticPlane1, dynamicBox, new Vector2(0, -40), new Vector2(0, 64));
+			var joint = new JointConstraint(staticPlane1, dynamicBox, new Vector2(0, -40), new Vector2(0, 64));
 			world.AddConstrain(joint);
 
 			return world;
@@ -52,10 +52,10 @@ namespace Everglow.Commons.Physics.PBEngine.PlayGround.Constrain
 			dynamicBox1.Rotation = 0.0f;
 			world.AddPhysicsObject(dynamicBox1);
 
-			var joint = new JointConstrain(staticPlane1, dynamicBox, new Vector2(0, -50), new Vector2(0, 50));
+			var joint = new JointConstraint(staticPlane1, dynamicBox, new Vector2(0, -50), new Vector2(0, 50));
 			world.AddConstrain(joint);
 
-			var joint2 = new JointConstrain(dynamicBox, dynamicBox1, new Vector2(0, -70), new Vector2(0, 70));
+			var joint2 = new JointConstraint(dynamicBox, dynamicBox1, new Vector2(0, -70), new Vector2(0, 70));
 			world.AddConstrain(joint2);
 
 			// var kPlane = new PhysicsObject(
@@ -84,7 +84,7 @@ namespace Everglow.Commons.Physics.PBEngine.PlayGround.Constrain
 			dynamicBox1.Rotation = 0.3f;
 			world.AddPhysicsObject(dynamicBox1);
 
-			var joint2 = new JointConstrain(dynamicBox, dynamicBox1, new Vector2(0, -50), new Vector2(0, 50));
+			var joint2 = new JointConstraint(dynamicBox, dynamicBox1, new Vector2(0, -50), new Vector2(0, 50));
 			world.AddConstrain(joint2);
 
 			var staticPlane1 = new PhysicsObject(
@@ -123,7 +123,7 @@ namespace Everglow.Commons.Physics.PBEngine.PlayGround.Constrain
 					dynamicBox.RigidBody.LinearVelocity = new Vector2(-50, 0);
 				}
 
-				var joint1 = new JointConstrain(staticPlane1, dynamicBox, new Vector2(64 * (i - 2), -16), new Vector2(0, 200));
+				var joint1 = new JointConstraint(staticPlane1, dynamicBox, new Vector2(64 * (i - 2), -16), new Vector2(0, 200));
 				world.AddConstrain(joint1);
 			}
 
@@ -164,7 +164,7 @@ namespace Everglow.Commons.Physics.PBEngine.PlayGround.Constrain
 			staticPlane1.Rotation = 0f;
 			world.AddPhysicsObject(staticPlane1);
 
-			var joint = new SpringConstrain(staticPlane1, dynamicBox, 29f, 200);
+			var joint = new SpringConstraint(staticPlane1, dynamicBox, 29f, 200);
 			world.AddConstrain(joint);
 
 			var dynamicBox1 = new PhysicsObject(
@@ -173,7 +173,7 @@ namespace Everglow.Commons.Physics.PBEngine.PlayGround.Constrain
 			dynamicBox1.Rotation = 0.0f;
 			world.AddPhysicsObject(dynamicBox1);
 
-			var joint1 = new SpringConstrain(dynamicBox, dynamicBox1, 29f, 200);
+			var joint1 = new SpringConstraint(dynamicBox, dynamicBox1, 29f, 200);
 			world.AddConstrain(joint1);
 
 			return world;
@@ -207,12 +207,12 @@ namespace Everglow.Commons.Physics.PBEngine.PlayGround.Constrain
 			staticPlane3.Rotation = 0f;
 			world.AddPhysicsObject(staticPlane3);
 
-			var joint = new SpringConstrain(staticPlane1, dynamicBox, 29f, 200);
+			var joint = new SpringConstraint(staticPlane1, dynamicBox, 29f, 200);
 			world.AddConstrain(joint);
-			var joint1 = new SpringConstrain(staticPlane2, dynamicBox, 29f, 200);
+			var joint1 = new SpringConstraint(staticPlane2, dynamicBox, 29f, 200);
 			world.AddConstrain(joint1);
 
-			var joint2 = new SpringConstrain(staticPlane3, dynamicBox, 29f, 200);
+			var joint2 = new SpringConstraint(staticPlane3, dynamicBox, 29f, 200);
 			world.AddConstrain(joint2);
 
 			return world;

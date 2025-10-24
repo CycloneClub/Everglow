@@ -28,7 +28,7 @@ public class Diamond_Physics_Item : ModItem
 				new SphereCollider(12),
 				new RigidBody2D(20) { });
 
-				PhysicWorldSystem.Instance._realSimulation.AddPhysicsObject(box);
+				PhysicsWorldSystem.Instance._realSimulation.AddPhysicsObject(box);
 				box.Position = GeometryUtils.ConvertToPhysicsSpace(Main.MouseWorld);
 				box.RigidBody.LinearVelocity = new Vector2(0, 0);
 
@@ -42,7 +42,7 @@ public class Diamond_Physics_Item : ModItem
 		}
 		if (Main.mouseRight && Main.mouseRightRelease)
 		{
-			PhysicWorldSystem.Instance.ReStart();
+			PhysicsWorldSystem.Instance.ReStart();
 		}
 	}
 
