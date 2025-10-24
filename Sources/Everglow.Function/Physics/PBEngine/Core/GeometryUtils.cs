@@ -1,4 +1,5 @@
 using Everglow.Commons.Physics.PBEngine.Collision;
+using Everglow.Commons.Physics.PBEngine.Collision.Shapes;
 using Everglow.Commons.Utilities;
 using System;
 using System.Collections;
@@ -8,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 
-namespace Everglow.Commons.Physics.PBEngine
+namespace Everglow.Commons.Physics.PBEngine.Core
 {
 	public static class GeometryUtils
     {
@@ -120,7 +121,7 @@ namespace Everglow.Commons.Physics.PBEngine
             Vector2 ab = end - start;
             Vector2 ax = p - start;
 
-            float crossProductMagnitude = GeometryUtils.Cross(ab, ax);
+            float crossProductMagnitude = ab.Cross(ax);
             float ABLength = ab.Length();
 
             return -crossProductMagnitude / ABLength;
@@ -130,7 +131,7 @@ namespace Everglow.Commons.Physics.PBEngine
         {
             var u = (end - start).SafeNormalize(Vector2.Zero);
             float d = Vector2.Dot(u, p - start);
-            float sign = GeometryUtils.Cross(u, p - start) > 0 ? -1 : 1;
+            float sign = u.Cross(p - start) > 0 ? -1 : 1;
             if (d <= 0)
             {
                 pointOnSeg = start;
@@ -200,7 +201,7 @@ namespace Everglow.Commons.Physics.PBEngine
             float minDepth = float.PositiveInfinity;
             foreach (var edge in edges)
             {
-                float d = GeometryUtils.PointDistance2ToSegmentWithClip(cSphere, edge._pA, edge._pB);
+                float d = PointDistance2ToSegmentWithClip(cSphere, edge._pA, edge._pB);
                 if (d < minDepth)
                 {
                     minDepth = d;
@@ -217,10 +218,10 @@ namespace Everglow.Commons.Physics.PBEngine
 
             foreach (var edge in edges)
             {
-                float d = GeometryUtils.PointDistance2ToSegmentWithClip(cSphere, edge._pA, edge._pB);
+                float d = PointDistance2ToSegmentWithClip(cSphere, edge._pA, edge._pB);
                 if (d == minDepth)
                 {
-                    var p = GeometryUtils.ProjectPointOnSegment(cSphere, edge._pA, edge._pB);
+                    var p = ProjectPointOnSegment(cSphere, edge._pA, edge._pB);
                     localPositions.Add(new KeyValuePair<Vector2, Vector2>(
                          (p - cSphere).SafeNormalize(Vector2.Zero) * radius,
                          p - centerPoly
@@ -248,9 +249,9 @@ namespace Everglow.Commons.Physics.PBEngine
             bool anyOutside = false;
             foreach (var edge in edges)
             {
-                float d = GeometryUtils.PointDistance2ToSegmentGetNearest(cSphere, edge._pA, edge._pB, out Vector2 pointOnSeg);
+                float d = PointDistance2ToSegmentGetNearest(cSphere, edge._pA, edge._pB, out Vector2 pointOnSeg);
                 // 如果点在某一个线段的外面，那么就说明点在多边形的外面
-                if (d > maxDepth && GeometryUtils.Cross(edge._pB - edge._pA, cSphere - edge._pA) <= 0)
+                if (d > maxDepth && (edge._pB - edge._pA).Cross(cSphere - edge._pA) <= 0)
                 {
                     maxDepth = d;
                     normal = (cSphere - pointOnSeg).SafeNormalize(Vector2.Zero);
@@ -364,14 +365,14 @@ namespace Everglow.Commons.Physics.PBEngine
             {
                 foreach (var curEdge in edgesB)
                 {
-                    float dist = GeometryUtils.PointDistance2ToSegment(curPoint, curEdge._pA, curEdge._pB);
+                    float dist = PointDistance2ToSegment(curPoint, curEdge._pA, curEdge._pB);
                     if (dist < closestDistance)
                     {
                         closestDistance = dist;
                         localPositions.Clear();
                         localPositions.Add(new KeyValuePair<Vector2, Vector2>(
                             curPoint - polyCenterA,
-                            GeometryUtils.ProjectPointOnSegment(curPoint, curEdge._pA, curEdge._pB)
+                            ProjectPointOnSegment(curPoint, curEdge._pA, curEdge._pB)
                                                    - polyCenterB
                         ));
                     }
@@ -379,7 +380,7 @@ namespace Everglow.Commons.Physics.PBEngine
                     {
                         localPositions.Add(new KeyValuePair<Vector2, Vector2>(
                             curPoint - polyCenterA,
-                            GeometryUtils.ProjectPointOnSegment(curPoint, curEdge._pA, curEdge._pB)
+                            ProjectPointOnSegment(curPoint, curEdge._pA, curEdge._pB)
                                                    - polyCenterB
                         ));
                     }
@@ -389,20 +390,20 @@ namespace Everglow.Commons.Physics.PBEngine
             {
                 foreach (var curEdge in edgesA)
                 {
-                    float dist = GeometryUtils.PointDistance2ToSegment(curPoint, curEdge._pA, curEdge._pB);
+                    float dist = PointDistance2ToSegment(curPoint, curEdge._pA, curEdge._pB);
                     if (dist < closestDistance)
                     {
                         closestDistance = dist;
                         localPositions.Clear();
                         localPositions.Add(new KeyValuePair<Vector2, Vector2>(
-                            GeometryUtils.ProjectPointOnSegment(curPoint, curEdge._pA, curEdge._pB) - polyCenterA,
+                            ProjectPointOnSegment(curPoint, curEdge._pA, curEdge._pB) - polyCenterA,
                             curPoint - polyCenterB
                         ));
                     }
                     else if (Math.Abs(dist - closestDistance) < 1e-6)
                     {
                         localPositions.Add(new KeyValuePair<Vector2, Vector2>(
-                            GeometryUtils.ProjectPointOnSegment(curPoint, curEdge._pA, curEdge._pB) - polyCenterA,
+                            ProjectPointOnSegment(curPoint, curEdge._pA, curEdge._pB) - polyCenterA,
                             curPoint - polyCenterB
                         ));
                     }
@@ -575,7 +576,7 @@ namespace Everglow.Commons.Physics.PBEngine
 
             {
                 // 中轴线段的法线和中轴线段本身都是关键分离轴
-                Edge2D edge = new Edge2D(segA1, segB1);
+                var edge = new Edge2D(segA1, segB1);
                 Vector2 axis = edge.GetNormal();
                 var (amin, amax) = GetProjectedInterval(new List<Vector2>() { segA1, segB1 }, edge._pA, axis);
                 var (bmin, bmax) = GetProjectedInterval(corners, edge._pA, axis);
@@ -646,13 +647,13 @@ namespace Everglow.Commons.Physics.PBEngine
             float radius1, List<Vector2> corners, List<Edge2D> edges, Vector2 polyCenter, List<KeyValuePair<Vector2, Vector2>> localPositions)
         {
             float closestDistance = float.PositiveInfinity;
-            Edge2D edgeSeg = new Edge2D(segA1, segB1);
-            List<Vector2> capsuleVertices = new List<Vector2>() { segA1, segB1 };
+            var edgeSeg = new Edge2D(segA1, segB1);
+            var capsuleVertices = new List<Vector2>() { segA1, segB1 };
             Vector2 capsuleCenter = (segA1 + segB1) / 2;
             Vector2 ultimateDir = (polyCenter - capsuleCenter).SafeNormalize(Vector2.Zero);
             foreach (var curPoint in corners)
             {
-                float dist = GeometryUtils.PointDistance2ToSegmentGetNearest(curPoint, edgeSeg._pA, edgeSeg._pB, out Vector2 p);
+                float dist = PointDistance2ToSegmentGetNearest(curPoint, edgeSeg._pA, edgeSeg._pB, out Vector2 p);
                 if (dist < closestDistance)
                 {
                     closestDistance = dist;
@@ -675,7 +676,7 @@ namespace Everglow.Commons.Physics.PBEngine
             {
                 foreach (var curEdge in edges)
                 {
-                    float dist = GeometryUtils.PointDistance2ToSegmentGetNearest(capsulePoint, curEdge._pA, curEdge._pB, out Vector2 p);
+                    float dist = PointDistance2ToSegmentGetNearest(capsulePoint, curEdge._pA, curEdge._pB, out Vector2 p);
                     if (dist < closestDistance)
                     {
                         closestDistance = dist;
@@ -706,7 +707,7 @@ namespace Everglow.Commons.Physics.PBEngine
         public static float MinimumSeparatingDistance(float amin, float amax, float bmin, float bmax)
         {
             float d = Math.Min(amax, bmax) - Math.Max(amin, bmin);
-            if ((amin >= bmin && amax <= bmax) || (amin <= bmin && amax >= bmax))
+            if (amin >= bmin && amax <= bmax || amin <= bmin && amax >= bmax)
             {
                 d = Math.Min(amax - bmin, bmax - amin);
             }

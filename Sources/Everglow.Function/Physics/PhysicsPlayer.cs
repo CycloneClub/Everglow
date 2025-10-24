@@ -1,9 +1,9 @@
 using System.Data;
 using Everglow.Commons.Physics.PBEngine;
-using Everglow.Commons.Physics.PBEngine.Collision;
 using Everglow.Commons.Physics.PBEngine.Collision.BroadPhase;
 using Everglow.Commons.Physics.PBEngine.Collision.Colliders;
 using Everglow.Commons.Physics.PBEngine.Constraints;
+using Everglow.Commons.Physics.PBEngine.Core;
 using Everglow.Commons.Physics.PBEngine.GameInteraction;
 using Everglow.Commons.Vertex;
 using Microsoft.Xna.Framework.Input;

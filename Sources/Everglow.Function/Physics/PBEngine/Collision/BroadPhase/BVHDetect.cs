@@ -1,6 +1,3 @@
-using Everglow.Commons.Physics.PBEngine;
-using Everglow.Commons.Physics.PBEngine.Collision;
-using Everglow.Commons.Physics.PBEngine.Collision.BroadPhase;
 using Everglow.Commons.Physics.PBEngine.Collision.BroadPhase.Structure;
 using Everglow.Commons.Physics.PBEngine.Collision.Colliders;
 using System;
@@ -10,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria.GameContent;
 using Terraria;
+using Everglow.Commons.Physics.PBEngine.Core;
 
 namespace Everglow.Commons.Physics.PBEngine.Collision.BroadPhase
 {

@@ -2,7 +2,7 @@ using Everglow.Commons.Physics.PBEngine.Collision;
 using Everglow.Commons.Utilities;
 using Terraria;
 
-namespace Everglow.Commons.Physics.PBEngine
+namespace Everglow.Commons.Physics.PBEngine.Core
 {
 	/// <summary>
 	/// 2D刚体物理组件，用于实际的刚体运动模拟和响应的模块
@@ -41,7 +41,7 @@ namespace Everglow.Commons.Physics.PBEngine
 		/// </summary>
 		public float InvMass
 		{
-			get => (MovementType == MovementType.Dynamic || MovementType == MovementType.Player) ? 1 / _mass : 0;
+			get => MovementType == MovementType.Dynamic || MovementType == MovementType.Player ? 1 / _mass : 0;
 		}
 
 		/// <summary>
@@ -322,29 +322,29 @@ namespace Everglow.Commons.Physics.PBEngine
 			{
 				return false;
 			}
-			Matrix2x2 matrix = new Matrix2x2()
+			var matrix = new Matrix2x2()
 			{
 				[0, 0] = InvMass + events[0].Target.RigidBody.InvMass
 				+ Vector2.Dot(
 					GeometryUtils.AngularVelocityToLinearVelocity(ri0, (float)(GlobalInverseInertiaTensor
-				* GeometryUtils.Cross(ri0, n0))), n0)
+				* ri0.Cross(n0))), n0)
 				+ Vector2.Dot(
 					GeometryUtils.AngularVelocityToLinearVelocity(rb0, (float)(events[0].Target.RigidBody.GlobalInverseInertiaTensor
-				* GeometryUtils.Cross(rb0, n0))), n0),
+				* rb0.Cross(n0))), n0),
 				[0, 1] = InvMass * Vector2.Dot(n0, n1) + Vector2.Dot(
 					GeometryUtils.AngularVelocityToLinearVelocity(ri0, (float)(GlobalInverseInertiaTensor
-				* GeometryUtils.Cross(ri1, n1))), n0),
+				* ri1.Cross(n1))), n0),
 
 				[1, 0] = InvMass * Vector2.Dot(n0, n1) + Vector2.Dot(
 					GeometryUtils.AngularVelocityToLinearVelocity(ri1, (float)(GlobalInverseInertiaTensor
-				* GeometryUtils.Cross(ri0, n0))), n1),
+				* ri0.Cross(n0))), n1),
 				[1, 1] = InvMass + events[1].Target.RigidBody.InvMass
 				+ Vector2.Dot(
 					GeometryUtils.AngularVelocityToLinearVelocity(ri1, (float)(GlobalInverseInertiaTensor
-				* GeometryUtils.Cross(ri1, n1))), n1)
+				* ri1.Cross(n1))), n1)
 				+ Vector2.Dot(
 					GeometryUtils.AngularVelocityToLinearVelocity(rb1, (float)(events[1].Target.RigidBody.GlobalInverseInertiaTensor
-				* GeometryUtils.Cross(rb1, n1))), n1),
+				* rb1.Cross(n1))), n1),
 			};
 			float C = 0.4f;
 			var J = matrix.Inverse().Multiply(new Vector2(-(1 + C) * relv0_n, -(1 + C) * relv1_n));
@@ -423,7 +423,7 @@ namespace Everglow.Commons.Physics.PBEngine
 			}
 
 			float vel_n = Vector2.Dot(va - vb, e.Normal);
-			Vector2 vt = (va - vb) - vel_n * e.Normal;
+			Vector2 vt = va - vb - vel_n * e.Normal;
 
 			float vel_t = vt.Length();
 			float friction = Math.Max(0, (_friction + e.Target.RigidBody.Friction) / 2);
@@ -600,7 +600,7 @@ namespace Everglow.Commons.Physics.PBEngine
 		public void AddForce(Vector2 force, Vector2 relPos)
 		{
 			_force += force;
-			_torque += GeometryUtils.Cross(relPos, force);
+			_torque += relPos.Cross(force);
 		}
 
 		/// <summary>
@@ -639,7 +639,7 @@ namespace Everglow.Commons.Physics.PBEngine
 						_linearVelocity += 1.0f / _mass * imp.ImpulseSource;
 						if (imp.Source.MovementType != MovementType.Player)
 						{
-							_angularVelocity += GeometryUtils.Cross(imp.RelativePositionSource, imp.ImpulseSource * (float)_globalInverseInertiaTensor);
+							_angularVelocity += imp.RelativePositionSource.Cross(imp.ImpulseSource * (float)_globalInverseInertiaTensor);
 						}
 					}
 					if (imp.Target.MovementType == MovementType.Dynamic || imp.Target.MovementType == MovementType.Player)
@@ -670,8 +670,7 @@ namespace Everglow.Commons.Physics.PBEngine
 			{
 				_linearVelocity += 1.0f / _mass * J;
 				Debug.Assert(!float.IsNaN(_linearVelocity.X) && !float.IsNaN(_linearVelocity.Y));
-				_angularVelocity += GeometryUtils.Cross(
-					relativePos,
+				_angularVelocity += relativePos.Cross(
 					J * (float)GlobalInverseInertiaTensor);
 				Debug.Assert(!float.IsNaN(_angularVelocity));
 			}
@@ -679,8 +678,7 @@ namespace Everglow.Commons.Physics.PBEngine
 			if (other.MovementType != MovementType.Static && MovementType != MovementType.Kinematic)
 			{
 				other._linearVelocity += other.InvMass * J2;
-				other._angularVelocity += GeometryUtils.Cross(
-					relativePos2,
+				other._angularVelocity += relativePos2.Cross(
 					J2 * (float)other.GlobalInverseInertiaTensor);
 			}
 		}

@@ -1,8 +1,10 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Commons.Physics.PBEngine.Collision;
 using Everglow.Commons.Physics.PBEngine.Collision.BroadPhase;
+using Everglow.Commons.Physics.PBEngine.Collision.BroadPhase.Structure;
 using Everglow.Commons.Physics.PBEngine.Collision.Colliders;
 using Everglow.Commons.Physics.PBEngine.Constraints;
+using Everglow.Commons.Physics.PBEngine.Core;
 using Everglow.Commons.Vertex;
 using Terraria;
 

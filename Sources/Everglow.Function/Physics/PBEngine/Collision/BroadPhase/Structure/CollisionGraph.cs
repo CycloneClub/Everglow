@@ -1,4 +1,4 @@
-namespace Everglow.Commons.Physics.PBEngine.Collision.BroadPhase
+namespace Everglow.Commons.Physics.PBEngine.Collision.BroadPhase.Structure
 {
 	/// <summary>
 	/// 存储碰撞组的碰撞关系的图结构

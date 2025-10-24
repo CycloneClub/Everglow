@@ -1,4 +1,4 @@
-namespace Everglow.Commons.Physics.PBEngine.Collision
+namespace Everglow.Commons.Physics.PBEngine.Core
 {
 	/// <summary>
 	/// 刚体的移动模式，用于区分模拟方法以及提升性能

@@ -1,9 +1,8 @@
-using Everglow.Commons.Physics.PBEngine.Collision;
 using Everglow.Commons.Physics.PBEngine.Collision.Colliders;
 using Everglow.Commons.Utilities;
 using Everglow.Commons.Vertex;
 
-namespace Everglow.Commons.Physics.PBEngine
+namespace Everglow.Commons.Physics.PBEngine.Core
 {
 	/// <summary>
 	/// 物理对象的容器，可以容纳Rigidbody，Collider等组件
@@ -143,7 +142,7 @@ namespace Everglow.Commons.Physics.PBEngine
 
 		public List<(Vector2, Color)> GetWireFrameWires()
 		{
-			List<(Vector2, Color)> wires_color = new List<(Vector2, Color)>();
+			var wires_color = new List<(Vector2, Color)>();
 			List<Vector2> wires = _collider.GetWireFrameWires();
 			for (int i = 0; i < wires.Count; i++)
 			{

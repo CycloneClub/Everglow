@@ -1,6 +1,7 @@
 using Everglow.Commons.Physics;
 using Everglow.Commons.Physics.PBEngine;
 using Everglow.Commons.Physics.PBEngine.Collision.Colliders;
+using Everglow.Commons.Physics.PBEngine.Core;
 using static Everglow.Commons.VFX.VFXBatchExtension;
 
 namespace Everglow.Example.Test;

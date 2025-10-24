@@ -1,5 +1,5 @@
 using Everglow.Commons.Enums;
-using Everglow.Commons.Physics.PBEngine;
+using Everglow.Commons.Physics.PBEngine.Core;
 using Everglow.Commons.VFX;
 using Everglow.Commons.VFX.Pipelines;
 

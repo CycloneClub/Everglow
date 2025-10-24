@@ -1,4 +1,4 @@
-namespace Everglow.Commons.Physics.PBEngine.Collision.BroadPhase
+namespace Everglow.Commons.Physics.PBEngine.Collision.BroadPhase.Structure
 {
 	public struct ColliderEntry
     {

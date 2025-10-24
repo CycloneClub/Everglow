@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Everglow.Commons.Physics.PBEngine.Core;
 using Everglow.Commons.Utilities;
 using Terraria;
 
-namespace Everglow.Commons.Physics.PBEngine.Collision
+namespace Everglow.Commons.Physics.PBEngine.Collision.Shapes
 {
 	public class Edge2D
     {
@@ -29,7 +30,7 @@ namespace Everglow.Commons.Physics.PBEngine.Collision
 
         public bool Segment_Segment_Collision(Vector2 a, Vector2 b, out CollisionEvent2D collisionEvent)
         {
-            Matrix2x2 M = new Matrix2x2
+            var M = new Matrix2x2
             {
                 [0, 0] = _pB.X - _pA.X,
                 [0, 1] = -(b.X - a.X),

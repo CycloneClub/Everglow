@@ -1,4 +1,5 @@
 using Everglow.Commons.Physics.PBEngine.Collision.Colliders;
+using Everglow.Commons.Physics.PBEngine.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -101,7 +102,7 @@ namespace Everglow.Commons.Physics.PBEngine.PlayGround.Contact
             kPlane.Rotation = 0;
             kPlane.RigidBody.Drag = 0;
             kPlane.RigidBody.LinearVelocity = new Vector2(10, 0);
-            kPlane.RigidBody.MovementType = Collision.MovementType.Kinematic;
+            kPlane.RigidBody.MovementType = MovementType.Kinematic;
             world.AddPhysicsObject(kPlane);
 
             return world;

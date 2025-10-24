@@ -1,3 +1,5 @@
+using Everglow.Commons.Physics.PBEngine.Core;
+
 namespace Everglow.Commons.Physics.PBEngine.Collision.Colliders
 {
 	/// <summary>

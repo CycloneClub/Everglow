@@ -1,5 +1,7 @@
 using Everglow.Commons.Physics.PBEngine.Collision;
 using Everglow.Commons.Physics.PBEngine.Collision.Colliders;
+using Everglow.Commons.Physics.PBEngine.Collision.Shapes;
+using Everglow.Commons.Physics.PBEngine.Core;
 using Terraria;
 
 namespace Everglow.Commons.Physics.PBEngine.GameInteraction

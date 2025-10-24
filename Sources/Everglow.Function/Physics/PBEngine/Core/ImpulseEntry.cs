@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Everglow.Commons.Physics.PBEngine.Collision
+namespace Everglow.Commons.Physics.PBEngine.Core
 {
 	public struct ImpulseEntry
     {
