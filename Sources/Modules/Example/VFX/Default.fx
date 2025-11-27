@@ -1,4 +1,4 @@
-// ÓÃÓÚÏß¿òµÄ»æÖÆ
+// ç”¨äºçº¿æ¡†çš„ç»˜åˆ¶
 sampler uImage0 : register(s0);
 
 float4x4 uTransform;
