@@ -31,7 +31,7 @@ public class SplashPipeline : Pipeline
 			effect.Parameters["uvMulti"].SetValue(0.2f);
 
 			effect.Parameters["uTransform"].SetValue(
-				Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) *
+				Matrix.CreateTranslation(new Vector3(-Main.screenPosition, 0)) *
 				Main.GameViewMatrix.TransformationMatrix *
 				Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1));
 

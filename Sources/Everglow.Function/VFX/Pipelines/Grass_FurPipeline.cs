@@ -160,7 +160,7 @@ public class Grass_FurPipeline : Pipeline
 		sb.End();
 		Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.None, SamplerState.PointClamp, RasterizerState.CullNone);
 		effect.Value.Parameters["uTransform"].SetValue(
-			Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) *
+			Matrix.CreateTranslation(new Vector3(-Main.screenPosition, 0)) *
 			Main.GameViewMatrix.EffectMatrix *
 			Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1));
 		effect.Value.CurrentTechnique.Passes[0].Apply();
@@ -184,7 +184,7 @@ public class Grass_FurPipeline : Pipeline
 
 		Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.None, SamplerState.PointClamp, RasterizerState.CullNone);
 		effect.Value.Parameters["uTransform"].SetValue(
-			Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) *
+			Matrix.CreateTranslation(new Vector3(-Main.screenPosition, 0)) *
 			Main.GameViewMatrix.EffectMatrix *
 			Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1));
 		effect.Value.CurrentTechnique.Passes[0].Apply();
@@ -253,7 +253,7 @@ public class Grass_FurPipeline : Pipeline
 			// RenderStyle = 1;
 			// Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.None, SamplerState.PointClamp, RasterizerState.CullNone);
 			// effect.Value.Parameters["uTransform"].SetValue(
-			// Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) *
+			// Matrix.CreateTranslation(new Vector3(-Main.screenPosition, 0)) *
 			// Main.GameViewMatrix.EffectMatrix *
 			// Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1));
 			// effect.Value.CurrentTechnique.Passes[0].Apply();
