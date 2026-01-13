@@ -8,6 +8,15 @@ public static class CustomBlendStates
 
 	public static readonly BlendState SoftAdditive = NewBlendState("BlendState.SoftAdditve", Blend.InverseDestinationColor, Blend.SourceAlpha, Blend.One, Blend.One);
 
+	public static readonly BlendState MinAlpha = NewMinAlpha();
+
+	public static BlendState NewMinAlpha()
+	{
+		BlendState bs = NewBlendState("BlendState.MinAlpha", Blend.One, Blend.One, Blend.Zero, Blend.Zero);
+		bs.ColorBlendFunction = BlendFunction.Add;
+		bs.AlphaBlendFunction = BlendFunction.Min;
+		return bs;
+	}
 
 	public static BlendState NewSubtract()
 	{
