@@ -8,8 +8,12 @@ float moveStep;
 float viscosity;
 float kinematic;
 float timeStep;
+float rho;
 float VORTICITY_AMOUNT;
 float offset_small_RT2D;
+float successive_over_relation_value;
+float pressure_move_value;
+float velocity_apply_to_pressure_value;
 
 struct VSInput
 {
@@ -57,7 +61,7 @@ float4 PixelShaderFunction_Fluid(PSInput input) : COLOR0
 	float dt = timeStep;
 	float moveScale = moveStep;
 	
-	float4 mid = (tex2D(uImage0, input.Texcoord) - float4(0.5, 0.5, 0.5, 0.5)) * moveScale;
+	float4 finalVel = (tex2D(uImage0, input.Texcoord) - float4(0.5, 0.5, 0.5, 0.5)) * moveScale;
 	float4 up = (tex2D(uImage0, input.Texcoord - float2(0, dy)) - float4(0.5, 0.5, 0.5, 0.5)) * moveScale;
 	float4 down = (tex2D(uImage0, input.Texcoord + float2(0, dy)) - float4(0.5, 0.5, 0.5, 0.5)) * moveScale;
 	float4 left = (tex2D(uImage0, input.Texcoord - float2(dx, 0)) - float4(0.5, 0.5, 0.5, 0.5)) * moveScale;
@@ -65,35 +69,113 @@ float4 PixelShaderFunction_Fluid(PSInput input) : COLOR0
 	
 	// Gradient
 	float3 gx = (right.xyz - left.xyz) * 0.5;
-	float3 gy = (up.xyz - down.xyz) * 0.5;
+	float3 gy = (down.xyz - up.xyz) * 0.5;
 	float2 gDensity = float2(gx.z, gy.z); //density
 	
-	mid.z -= dt * dot(float3(gDensity.xy, gx.x + gy.y), mid.xyz);
+	finalVel.z -= dt * dot(float3(gDensity.xy, gx.x + gy.y), finalVel.xyz);
 	
-	float2 laplacian = up.xy + down.xy + left.xy + right.xy - mid.xy * 4;
+	float2 laplacian = up.xy + down.xy + left.xy + right.xy - finalVel.xy * 4;
 	float2 viscForce = viscosity * laplacian;
 
-	mid.xyw = (tex2D(uImage0, input.Texcoord - mid.xy * float2(dx, dy) * dt).xyw - float3(0.5, 0.5, 0.5)) * moveScale;
+	finalVel.xyw = (tex2D(uImage0, input.Texcoord - finalVel.xy * float2(dx, dy) * dt).xyw - float3(0.5, 0.5, 0.5)) * moveScale;
 	
 	float2 newForce = float2(0, 0);
-	//newForce.xy += 0.75 * uMouseVel / (mag2(input.Texcoord - uMousePos) + 0.0001);
-	//newForce.xy -= 0.75 * float2(0.0003, 0.00015) / (mag2(input.Texcoord - point2(uTime)) + 0.0001);
 
-	mid.xy += dt * (viscForce - kinematic / dt * gDensity + newForce);
-	mid.xy = max(float2(0, 0), abs(mid.xy) - 1e-4) * sign(mid.xy); //decay
+	// viscosity
+	finalVel.xy += dt * (viscForce - kinematic / dt * gDensity + newForce);
+	finalVel.xy = max(float2(0, 0), abs(finalVel.xy) - 1e-3) * sign(finalVel.xy); //decay
 	
-	mid.w = (right.y - left.y - up.x + down.x);
+	// vortex
+	finalVel.w = (right.y - left.y - up.x + down.x);
 	float2 vort = float2(abs(up.w) - abs(down.w), abs(left.w) - abs(right.w));
-	vort *= VORTICITY_AMOUNT / length(vort + 1e-9) * mid.w;
-	mid.xy += vort;
+	vort *= VORTICITY_AMOUNT / length(vort + 1e-9) * finalVel.w;
+	finalVel.xy += vort;
 
 	float halfStep = moveScale / 2;
-	mid.y *= smoothstep(0.5, 0.48, abs(input.Texcoord.y - 0.5)); //Boundaries
-	mid.x *= smoothstep(0.5, 0.48, abs(input.Texcoord.x - 0.5)); //Boundaries
-	mid = clamp(mid, float4(-halfStep, -halfStep, halfStep * 0.05, -halfStep), float4(halfStep, halfStep, halfStep * 0.3, halfStep));
+	finalVel.y *= smoothstep(0.5, 0.48, abs(input.Texcoord.y - 0.5)); //Boundaries
+	finalVel.x *= smoothstep(0.5, 0.48, abs(input.Texcoord.x - 0.5)); //Boundaries
+	finalVel = clamp(finalVel, float4(-halfStep, -halfStep, halfStep * 0.05, -halfStep), float4(halfStep, halfStep, halfStep * 0.3, halfStep));
 	
-	float4 col = mid / moveScale + float4(0.5, 0.5, 0.5, 0.5);
+	float4 col = finalVel / moveScale + float4(0.5, 0.5, 0.5, 0.5);
 	return col;
+}
+
+float4 PixelShaderFunction_Fluid_Simple(PSInput input) : COLOR0
+{
+	float dx = 1.0 / uResolutionX;
+	float dy = 1.0 / uResolutionY;
+	float dt = timeStep;
+	float moveScale = moveStep;
+	
+	float4 finalVel = (tex2D(uImage0, input.Texcoord) - float4(0.5, 0.5, 0.5, 0.5)) * moveScale;
+
+	finalVel.xy = (tex2D(uImage0, input.Texcoord - finalVel.xy * float2(dx, dy) * dt).xy - float2(0.5, 0.5)) * moveScale;
+
+	float halfStep = moveScale / 2;
+	finalVel.y *= smoothstep(0.5, 0.48, abs(input.Texcoord.y - 0.5)); //Boundaries
+	finalVel.x *= smoothstep(0.5, 0.48, abs(input.Texcoord.x - 0.5)); //Boundaries
+	finalVel = clamp(finalVel, float4(-halfStep, -halfStep, halfStep * 0.05, -halfStep), float4(halfStep, halfStep, halfStep * 0.3, halfStep));
+	
+	float4 col = finalVel / moveScale + float4(0.5, 0.5, 0.5, 0.5);
+	return col;
+}
+
+float SolveDivergence(sampler2D tex, float2 coord)
+{
+	float dx = 1.0 / uResolutionX;
+	float dy = 1.0 / uResolutionY;
+
+	float up = tex2D(tex, coord - float2(0, dy)).y - 0.5;
+	float down = tex2D(tex, coord + float2(0, dy)).y - 0.5;
+	float left = tex2D(tex, coord - float2(dx, 0)).x - 0.5;
+	float right = tex2D(tex, coord + float2(dx, 0)).x - 0.5;
+	
+	up *= dx / dy;
+	down *= dx / dy;
+	
+	float divergence = (right - left + down - up) * 0.5 * velocity_apply_to_pressure_value;
+	return divergence;
+}
+
+float4 PixelShaderFunction_JacobiPressure(PSInput input) : COLOR0
+{
+	float dx = 1.0 / uResolutionX;
+	float dy = 1.0 / uResolutionY;
+	//float delta2 = dx * dx;
+	
+	float finalVel = tex2D(uImage0, input.Texcoord).x - 0.5;
+	float up = tex2D(uImage0, input.Texcoord - float2(0, dy)).x - 0.5;
+	float down = tex2D(uImage0, input.Texcoord + float2(0, dy)).x - 0.5;
+	float left = tex2D(uImage0, input.Texcoord - float2(dx, 0)).x - 0.5;
+	float right = tex2D(uImage0, input.Texcoord + float2(dx, 0)).x - 0.5;
+	
+	float divergence = SolveDivergence(uImage1, input.Texcoord);
+	float pressure = (left + right + up + down - divergence) * 0.25;
+	
+	pressure = finalVel + (pressure - finalVel) * successive_over_relation_value;
+	float4 col = float4(pressure + 0.5, 0, 0, 1);
+	return col;
+}
+
+float4 PixelShaderFunction_ApplyPressure(PSInput input) : COLOR0
+{
+	float dx = 1.0 / uResolutionX;
+	float dy = 1.0 / uResolutionY;
+	float dt = timeStep / rho;
+	
+	float up = tex2D(uImage0, input.Texcoord - float2(0, dy)).x;
+	float down = tex2D(uImage0, input.Texcoord + float2(0, dy)).x;
+	float left = tex2D(uImage0, input.Texcoord - float2(dx, 0)).x;
+	float right = tex2D(uImage0, input.Texcoord + float2(dx, 0)).x;
+	
+	float gradX = (right - left) * 0.5;
+	float gradY = (down - up) * 0.5;
+
+	float4 vel = (tex2D(uImage1, input.Texcoord) - float4(0.5, 0.5, 0.5, 0.5));
+	float2 finalVel = vel.xy - dt * float2(gradX, gradY) * pressure_move_value;
+	float halfStep = 0.5;
+	finalVel = clamp(finalVel, float2(-halfStep, -halfStep), float2(halfStep, halfStep));
+	return float4(finalVel, vel.zw) + float4(0.5, 0.5, 0.5, 0.5);
 }
 
 float4 PixelShaderFunction_Fade(PSInput input) : COLOR0
@@ -131,6 +213,12 @@ technique Technique1
         PixelShader = compile ps_3_0 PixelShaderFunction_Fluid();
     }
 
+	pass Fluid_Simple
+	{
+		VertexShader = compile vs_3_0 VertexShaderFunction();
+		PixelShader = compile ps_3_0 PixelShaderFunction_Fluid_Simple();
+	}
+
 	pass Fade
 	{
 		VertexShader = compile vs_3_0 VertexShaderFunction();
@@ -141,5 +229,17 @@ technique Technique1
 	{
 		VertexShader = compile vs_3_0 VertexShaderFunction();
 		PixelShader = compile ps_3_0 PixelShaderFunction_Push();
+	}
+
+	pass Jacobi
+	{
+		VertexShader = compile vs_3_0 VertexShaderFunction();
+		PixelShader = compile ps_3_0 PixelShaderFunction_JacobiPressure();
+	}
+
+	pass ApplyPressure
+	{
+		VertexShader = compile vs_3_0 VertexShaderFunction();
+		PixelShader = compile ps_3_0 PixelShaderFunction_ApplyPressure();
 	}
 }
