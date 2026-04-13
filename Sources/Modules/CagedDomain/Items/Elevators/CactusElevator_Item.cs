@@ -17,7 +17,7 @@ public class CactusElevator_Item : ModItem
 	public override void AddRecipes()
 	{
 		CreateRecipe()
-			.AddIngredient(ItemID.Wood, 40)
+			.AddIngredient(ItemID.Cactus, 40)
 			.AddIngredient(RecipeGroupID.IronBar, 10)
 			.AddIngredient(ItemID.Chain, 20)
 			.AddIngredient(ItemID.Wire, 5)
