@@ -22,6 +22,7 @@ public class LivingWoodElevator_Item : ModItem
 			.AddIngredient(ItemID.Chain, 20)
 			.AddIngredient(ItemID.Wire, 5)
 			.AddTile(TileID.HeavyWorkBench)
+			.AddTile(TileID.LivingLoom)
 			.Register();
 	}
 }
