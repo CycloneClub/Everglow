@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+using Everglow.Commons.DataStructures;
 using Terraria.DataStructures;
 using static Everglow.Myth.LanternMoon.Projectiles.Item_Shoot.FireworkProjectile;
 
@@ -621,279 +623,284 @@ public class FireworkProjectileDraw : GlobalProjectile
 	// 全部合批
 	public override bool PreDraw(Projectile projectile, ref Color lightColor)
 	{
-		Texture2D flame = Commons.ModAsset.LightPoint.Value;
-		var trailBars0 = new List<Vertex2D>();
-		var trailBars1 = new List<Vertex2D>();
-		var trailBars2 = new List<Vertex2D>();
-		var trailBars3 = new List<Vertex2D>();
-		var trailBars4 = new List<Vertex2D>();
-		if (projectile.ModProjectile is FireworkProjectile)
+		// 1. Early exit as soon as possible before any logic or casting occurs
+		if (projectile.ModProjectile is not FireworkProjectile fireProj)
 		{
-			var fireProj = projectile.ModProjectile as FireworkProjectile;
-			if (fireProj != null)
+			return base.PreDraw(projectile, ref lightColor);
+		}
+
+		Texture2D flame = Commons.ModAsset.LightPoint.Value;
+
+		// 2. Reuse buffers across frames if possible, or keep them local but perfectly sized
+		var normalTrail = new List<Vertex2D>();
+		var sparkTrail = new List<Vertex2D>();
+
+		int estimatedCapacity = 0;
+		foreach (FlameTrail flameTrail in fireProj.Stars)
+		{
+			// Cache count to avoid repeated property access overhead
+			int count = flameTrail.OldPos.Count;
+			estimatedCapacity += (count * 2) + 68;
+		}
+		estimatedCapacity += 256;
+
+		int index0 = 0;
+		CollectionsMarshal.SetCount(normalTrail, estimatedCapacity);
+		Span<Vertex2D> span0 = CollectionsMarshal.AsSpan(normalTrail);
+
+		int index1 = 0;
+		CollectionsMarshal.SetCount(sparkTrail, estimatedCapacity);
+		Span<Vertex2D> span1 = CollectionsMarshal.AsSpan(sparkTrail);
+
+		// 3. Define a high-performance inline Lambda Closure for adding vertices
+		// Using 'ref' parameters inside a local function ensures zero allocation and inlines cleanly
+		void AddSpanVertex(Span<Vertex2D> targetSpan, ref int index, in Vector2 pos, in Color drawColor, in Vector3 coord)
+		{
+			targetSpan[index] = new Vertex2D(pos, drawColor, coord);
+			index++;
+		}
+
+		// Cache camera metrics to avoid repeated property lookups inside the deep loops
+		Vector2 halfScreen = new Vector2(Main.screenWidth, Main.screenHeight) * 0.5f;
+		Vector2 projScreenOffset = projectile.Center - Main.screenPosition;
+		bool isVisualHigh = Ins.VisualQuality.High;
+
+		foreach (FlameTrail flameTrail in fireProj.Stars)
+		{
+			if (!flameTrail.Active)
 			{
-				foreach (FlameTrail flameTrail in fireProj.Stars)
+				continue;
+			}
+
+			Vector3 drawPos3D = flameTrail.Postion;
+			drawPos3D.X += projScreenOffset.X;
+			drawPos3D.Y += projScreenOffset.Y;
+
+			Vector2 v2Pos = Projection2D(drawPos3D, halfScreen, 7500, out float scale);
+
+			// 4. OPTIMIZATION: Removed .Reverse().ToArray()! Read the original list/array backwards.
+			var trailPos = flameTrail.OldPos;
+			int trailLength = trailPos.Count;
+			if (trailLength <= 2)
+			{
+				continue;
+			}
+
+			if (isVisualHigh)
+			{
+				// Reverse loop logic mapping: original index 'i' mapping from the end
+				// Old LINQ logic: trailPos[1] was the second element of the reversed array (second to last of original)
+				for (int i = 1; i < trailLength; i++)
 				{
-					if (flameTrail.Active)
+					if (i % 24 != 1 && i < trailLength - 24 && i > 8)
 					{
-						Vector3 drawPos3D = flameTrail.Postion;
-						drawPos3D.X += (projectile.Center - Main.screenPosition).X;
-						drawPos3D.Y += (projectile.Center - Main.screenPosition).Y;
-						float scale;
-						Vector2 v2Pos = Projection2D(drawPos3D, new Vector2(Main.screenWidth, Main.screenHeight) / 2, 1000, out scale);
+						continue;
+					}
 
-						Vector3[] trailPos = flameTrail.OldPos.Reverse<Vector3>().ToArray();
-						int len = trailPos.Length;
-						if (len <= 2)
-						{
-							continue;
-						}
+					// Map 'i' and 'i - 1' smoothly from the back of the collection
+					Vector3 oldPos3D0 = trailPos[trailLength - 1 - i];
+					oldPos3D0.X += projScreenOffset.X;
+					oldPos3D0.Y += projScreenOffset.Y;
+					Vector2 old0 = Projection2D(oldPos3D0, halfScreen, 1000, out float scale0);
 
-						if (Ins.VisualQuality.High)
+					Vector3 oldPos3D1 = trailPos[trailLength - 1 - (i - 1)];
+					oldPos3D1.X += projScreenOffset.X;
+					oldPos3D1.Y += projScreenOffset.Y;
+					Vector2 old1 = Projection2D(oldPos3D1, halfScreen, 1000, out float scale1);
+
+					Vector2 normal = old0 - old1;
+					normal = Vector2.Normalize(normal).RotatedBy(MathHelper.PiOver2);
+
+					Color light = Lighting.GetColor((int)((old0.X + Main.screenPosition.X) / 16f), (int)((old0.Y + Main.screenPosition.Y) / 16f));
+					light.A = 0;
+
+					float scale0Times5FlameScale = scale0 * 5f * flameTrail.Scale;
+
+					if (i == 1)
+					{
+						Vector2 addVel = normal.RotatedBy(-MathHelper.PiOver2) * scale0Times5FlameScale;
+						//AddSpanVertex(span0, ref index0, old0 - addVel + normal * scale0Times5FlameScale, Color.Transparent, new Vector3(0.5f, 0, 0));
+						//AddSpanVertex(span0, ref index0, old0 - addVel - normal * scale0Times5FlameScale, Color.Transparent, new Vector3(0.5f, 1, 0));
+					}
+
+					float logScale = MathF.Log(i * 0.1f + 1f);
+					float powScale = MathF.Pow(0.965f, i) * 0.04f;
+					Vector2 offsetNormal = normal * scale0Times5FlameScale * logScale;
+
+					//AddSpanVertex(span0, ref index0, old0 + offsetNormal, light * powScale, new Vector3(0.5f, 0, 0));
+					//AddSpanVertex(span0, ref index0, old0 - offsetNormal, light * powScale, new Vector3(0.5f, 1, 0));
+
+					if (i == trailLength - 1)
+					{
+						Vector2 addVel = normal.RotatedBy(-MathHelper.PiOver2) * scale0 * 2f * flameTrail.Scale;
+						//AddSpanVertex(span0, ref index0, old0 + addVel + normal * scale0Times5FlameScale, Color.Transparent, new Vector3(0.5f, 0, 0));
+						//AddSpanVertex(span0, ref index0, old0 + addVel - normal * scale0Times5FlameScale, Color.Transparent, new Vector3(0.5f, 1, 0));
+					}
+
+					if (flameTrail.TrailStyle == 1)
+					{
+						float zValue = (fireProj.TrailLength - i) / (float)fireProj.TrailLength;
+						if (flameTrail.FlameTimer > 60)
 						{
-							for (int i = 1; i < len; i++)
+							zValue -= (flameTrail.FlameTimer - 60) / 60f;
+							if (zValue < 0)
 							{
-								if (i % 12 != 1 && i < len - 24 && i > 8)
-								{
-									continue;
-								}
-								float scale0;
-								Vector3 oldPos3D0 = trailPos[i];
-								oldPos3D0.X += (projectile.Center - Main.screenPosition).X;
-								oldPos3D0.Y += (projectile.Center - Main.screenPosition).Y;
-								Vector2 old0 = Projection2D(oldPos3D0, new Vector2(Main.screenWidth, Main.screenHeight) / 2, 1000, out scale0);
-
-								float scale1;
-								Vector3 oldPos3D1 = trailPos[i - 1];
-								oldPos3D1.X += (projectile.Center - Main.screenPosition).X;
-								oldPos3D1.Y += (projectile.Center - Main.screenPosition).Y;
-								Vector2 old1 = Projection2D(oldPos3D1, new Vector2(Main.screenWidth, Main.screenHeight) / 2, 1000, out scale1);
-
-								Vector2 normal = old0 - old1;
-								normal = Vector2.Normalize(normal).RotatedBy(MathHelper.PiOver2);
-
-								Color light = Lighting.GetColor((int)((old0 + Main.screenPosition).X / 16f), (int)((old0 + Main.screenPosition).Y / 16f));
-								light.A = 0;
-								if (i == 1)
-								{
-									Vector2 addVel = normal.RotatedBy(-MathHelper.PiOver2) * scale0 * 5 * flameTrail.Scale;
-									trailBars0.Add(old0 - addVel + normal * scale0 * 5 * flameTrail.Scale, Color.Transparent, new Vector3(0.5f, 0, 0));
-									trailBars0.Add(old0 - addVel - normal * scale0 * 5 * flameTrail.Scale, Color.Transparent, new Vector3(0.5f, 1, 0));
-								}
-								trailBars0.Add(old0 + normal * scale0 * 5 * flameTrail.Scale * MathF.Log(i * 0.1f + 1), light * MathF.Pow(0.965f, i) * 0.1f, new Vector3(0.5f, 0, 0));
-								trailBars0.Add(old0 - normal * scale0 * 5 * flameTrail.Scale * MathF.Log(i * 0.1f + 1), light * MathF.Pow(0.965f, i) * 0.1f, new Vector3(0.5f, 1, 0));
-								if (i == len - 1)
-								{
-									Vector2 addVel = normal.RotatedBy(-MathHelper.PiOver2) * scale0 * 2 * flameTrail.Scale;
-									trailBars0.Add(old0 + addVel + normal * scale0 * 5 * flameTrail.Scale, Color.Transparent, new Vector3(0.5f, 0, 0));
-									trailBars0.Add(old0 + addVel - normal * scale0 * 5 * flameTrail.Scale, Color.Transparent, new Vector3(0.5f, 1, 0));
-								}
-
-								if (flameTrail.TrailStyle == 1)
-								{
-									float zValue = (fireProj.TrailLength - i) / (float)fireProj.TrailLength;
-									if (flameTrail.FlameTimer > 60)
-									{
-										zValue -= (flameTrail.FlameTimer - 60) / 60f;
-										if (zValue < 0)
-										{
-											zValue = 0;
-										}
-									}
-									float width = 1f;
-									if (len < 75)
-									{
-										width *= len / 75f;
-									}
-									if (fireProj.Timer - i < flameTrail.ai[1])
-									{
-										zValue = 0;
-									}
-									if (fireProj.Timer - i < flameTrail.ai[1] + 10)
-									{
-										zValue *= (fireProj.Timer - i - flameTrail.ai[1]) / 10f;
-									}
-									if (i == 1)
-									{
-										Vector2 addVel = normal.RotatedBy(-MathHelper.PiOver2) * scale0 * 5 * flameTrail.Scale;
-										trailBars1.Add(old0 - addVel + normal * scale0 * 15 * flameTrail.Scale * MathF.Log(i * 0.1f + 1) * width, Color.Transparent, new Vector3(i / 40f, 0, 1));
-										trailBars1.Add(old0 - addVel - normal * scale0 * 15 * flameTrail.Scale * MathF.Log(i * 0.1f + 1) * width, Color.Transparent, new Vector3(i / 40f, 1, 1));
-									}
-									trailBars1.Add(old0 + normal * scale0 * 15 * flameTrail.Scale * MathF.Log(i * 0.1f + 1) * width, new Color(1f, 0.7f, 0.4f, 0), new Vector3(i / 40f, 0, zValue));
-									trailBars1.Add(old0 - normal * scale0 * 15 * flameTrail.Scale * MathF.Log(i * 0.1f + 1) * width, new Color(1f, 0.7f, 0.4f, 0), new Vector3(i / 40f, 1, zValue));
-									if (i == len - 1)
-									{
-										Vector2 addVel = normal.RotatedBy(-MathHelper.PiOver2) * scale0 * 2 * flameTrail.Scale;
-										trailBars1.Add(old0 + addVel + normal * scale0 * 15 * flameTrail.Scale * MathF.Log(i * 0.1f + 1) * width, Color.Transparent, new Vector3(i / 40f, 0, 0));
-										trailBars1.Add(old0 + addVel - normal * scale0 * 15 * flameTrail.Scale * MathF.Log(i * 0.1f + 1) * width, Color.Transparent, new Vector3(i / 40f, 1, 0));
-									}
-								}
-								if (flameTrail.TrailStyle == 2)
-								{
-									float zValue = (fireProj.TrailLength - i) / (float)fireProj.TrailLength;
-									float factor = zValue;
-									if (flameTrail.FlameTimer > 60)
-									{
-										zValue -= (flameTrail.FlameTimer - 60) / 60f;
-										if (zValue < 0)
-										{
-											zValue = 0;
-										}
-									}
-									float width = 0.6f;
-									if (len < 75)
-									{
-										width *= len / 75f;
-									}
-									if (fireProj.Timer - i < flameTrail.ai[1])
-									{
-										zValue = 0;
-									}
-									if (fireProj.Timer - i < flameTrail.ai[1] + 10)
-									{
-										zValue *= (fireProj.Timer - i - flameTrail.ai[1]) / 10f;
-									}
-									if (i == 1)
-									{
-										Vector2 addVel = normal.RotatedBy(-MathHelper.PiOver2) * scale0 * 5 * flameTrail.Scale;
-										trailBars1.Add(old0 - addVel + normal * scale0 * 15 * flameTrail.Scale * MathF.Log(i * 0.1f + 1) * width, Color.Transparent, new Vector3(i / 40f, 0, 1));
-										trailBars1.Add(old0 - addVel - normal * scale0 * 15 * flameTrail.Scale * MathF.Log(i * 0.1f + 1) * width, Color.Transparent, new Vector3(i / 40f, 1, 1));
-									}
-									var c0 = Color.Lerp(new Color(64, 18, 18, 0), new Color(255, 246, 196, 0), MathF.Pow(factor, 12f));
-									trailBars1.Add(old0 + normal * scale0 * 15 * flameTrail.Scale * MathF.Log(i * 0.1f + 1) * width, c0, new Vector3(i / 40f, 0, zValue));
-									trailBars1.Add(old0 - normal * scale0 * 15 * flameTrail.Scale * MathF.Log(i * 0.1f + 1) * width, c0, new Vector3(i / 40f, 1, zValue));
-									if (i == len - 1)
-									{
-										Vector2 addVel = normal.RotatedBy(-MathHelper.PiOver2) * scale0 * 2 * flameTrail.Scale;
-										trailBars1.Add(old0 + addVel + normal * scale0 * 15 * flameTrail.Scale * MathF.Log(i * 0.1f + 1) * width, Color.Transparent, new Vector3(i / 40f, 0, 0));
-										trailBars1.Add(old0 + addVel - normal * scale0 * 15 * flameTrail.Scale * MathF.Log(i * 0.1f + 1) * width, Color.Transparent, new Vector3(i / 40f, 1, 0));
-									}
-								}
+								zValue = 0;
 							}
 						}
-						if (flameTrail.Color != new Color(0, 0, 0, 0))
+						float width = trailLength < 75 ? trailLength / 75f : 1f;
+
+						if (fireProj.Timer - i < flameTrail.ai[1])
 						{
-							float sizeValue = flame.Width * flameTrail.Scale * scale;
-							if (flameTrail.ai[3] != 0 && flameTrail.FlameTimer > flameTrail.ai[3])
-							{
-								sizeValue *= MathF.Sin(flameTrail.FlameTimer * 0.5f + flameTrail.Postion.Z * 0.1f) + 1;
-								flameTrail.ai[2] = sizeValue * 2 - 2;
-							}
-							float scaleValue2 = sizeValue * flameTrail.Scale * 0.4f;
-							if (scaleValue2 > 10f)
-							{
-								scaleValue2 = 10f;
-							}
-							if (flameTrail.ai[2] > 0)
-							{
-								for (int j = 0; j < 3; j++)
-								{
-									float rot = j * MathHelper.TwoPi / 3f;
-									float length = (flameTrail.ai[2] + 1) / 6f;
-									if (length > 10)
-									{
-										length = 10;
-									}
-									float brightness = flameTrail.ai[2] / 4f;
-									if (brightness > 1)
-									{
-										brightness = 1;
-									}
-									trailBars0.Add(v2Pos + new Vector2(-length, -0.5f).RotatedBy(rot) * scaleValue2, Color.Transparent, new Vector3(0, 0, 0));
-									trailBars0.Add(v2Pos + new Vector2(length, -0.5f).RotatedBy(rot) * scaleValue2, Color.Transparent, new Vector3(1, 0, 0));
+							zValue = 0;
+						}
+						else if (fireProj.Timer - i < flameTrail.ai[1] + 10)
+						{
+							zValue *= (fireProj.Timer - i - flameTrail.ai[1]) / 10f;
+						}
 
-									trailBars0.Add(v2Pos + new Vector2(-length, -0.5f).RotatedBy(rot) * scaleValue2, flameTrail.Color * brightness * 0.14f, new Vector3(0, 0f, 0));
-									trailBars0.Add(v2Pos + new Vector2(length, -0.5f).RotatedBy(rot) * scaleValue2, flameTrail.Color * brightness * 0.14f, new Vector3(1, 0f, 0));
+						float coordX = i / 40f;
+						Vector2 sparkNormal = normal * scale0 * 15f * flameTrail.Scale * logScale * width;
 
-									trailBars0.Add(v2Pos + new Vector2(-length, 0.5f).RotatedBy(rot) * scaleValue2, flameTrail.Color * brightness * 0.14f, new Vector3(0, 1f, 0));
-									trailBars0.Add(v2Pos + new Vector2(length, 0.5f).RotatedBy(rot) * scaleValue2, flameTrail.Color * brightness * 0.14f, new Vector3(1, 1f, 0));
+						if (i == 1)
+						{
+							Vector2 addVel = normal.RotatedBy(-MathHelper.PiOver2) * scale0Times5FlameScale;
+							AddSpanVertex(span1, ref index1, old0 - addVel + sparkNormal, Color.Transparent, new Vector3(coordX, 0, 1));
+							AddSpanVertex(span1, ref index1, old0 - addVel - sparkNormal, Color.Transparent, new Vector3(coordX, 1, 1));
+						}
 
-									trailBars0.Add(v2Pos + new Vector2(-length, 0.5f).RotatedBy(rot) * scaleValue2, Color.Transparent, new Vector3(0, 1, 0));
-									trailBars0.Add(v2Pos + new Vector2(length, 0.5f).RotatedBy(rot) * scaleValue2, Color.Transparent, new Vector3(1, 1, 0));
-								}
-								for (int j = 0; j < 3; j++)
-								{
-									float rot = j * MathHelper.TwoPi / 3f + MathHelper.PiOver2;
-									float length = (flameTrail.ai[2] + 1) / 20f;
-									if (length > 10)
-									{
-										length = 10;
-									}
-									float brightness = flameTrail.ai[2] / 8f;
-									if (brightness > 1)
-									{
-										brightness = 1;
-									}
-									trailBars0.Add(v2Pos + new Vector2(-length, -0.5f).RotatedBy(rot) * scaleValue2, Color.Transparent, new Vector3(0, 0, 0));
-									trailBars0.Add(v2Pos + new Vector2(length, -0.5f).RotatedBy(rot) * scaleValue2, Color.Transparent, new Vector3(1, 0, 0));
+						Color sparkColor = new Color(1f, 0.7f, 0.4f, 0f);
+						AddSpanVertex(span1, ref index1, old0 + sparkNormal, sparkColor, new Vector3(coordX, 0, zValue));
+						AddSpanVertex(span1, ref index1, old0 - sparkNormal, sparkColor, new Vector3(coordX, 1, zValue));
 
-									trailBars0.Add(v2Pos + new Vector2(-length, -0.5f).RotatedBy(rot) * scaleValue2, flameTrail.Color * brightness * 0.24f, new Vector3(0, 0f, 0));
-									trailBars0.Add(v2Pos + new Vector2(length, -0.5f).RotatedBy(rot) * scaleValue2, flameTrail.Color * brightness * 0.24f, new Vector3(1, 0f, 0));
-
-									trailBars0.Add(v2Pos + new Vector2(-length, 0.5f).RotatedBy(rot) * scaleValue2, flameTrail.Color * brightness * 0.24f, new Vector3(0, 1f, 0));
-									trailBars0.Add(v2Pos + new Vector2(length, 0.5f).RotatedBy(rot) * scaleValue2, flameTrail.Color * brightness * 0.24f, new Vector3(1, 1f, 0));
-
-									trailBars0.Add(v2Pos + new Vector2(-length, 0.5f).RotatedBy(rot) * scaleValue2, Color.Transparent, new Vector3(0, 1, 0));
-									trailBars0.Add(v2Pos + new Vector2(length, 0.5f).RotatedBy(rot) * scaleValue2, Color.Transparent, new Vector3(1, 1, 0));
-								}
-							}
-							float mulLight = (20 + flameTrail.ai[0] - flameTrail.FlameTimer) / 30f;
-							mulLight = Math.Clamp(mulLight, 0, 1);
-							for (int j = 1; j < 5 * mulLight; j++)
-							{
-								trailBars0.Add(v2Pos + new Vector2(-0.5f, -0.5f) * sizeValue * j * 2, Color.Transparent, new Vector3(0, 0, 0));
-								trailBars0.Add(v2Pos + new Vector2(0.5f, -0.5f) * sizeValue * j * 2, Color.Transparent, new Vector3(1, 0, 0));
-
-								trailBars0.Add(v2Pos + new Vector2(-0.5f, -0.5f) * sizeValue * j * 2, flameTrail.Color * (0.1f / j), new Vector3(0, 0, 0));
-								trailBars0.Add(v2Pos + new Vector2(0.5f, -0.5f) * sizeValue * j * 2, flameTrail.Color * (0.1f / j), new Vector3(1, 0, 0));
-
-								trailBars0.Add(v2Pos + new Vector2(-0.5f, 0.5f) * sizeValue * j * 2, flameTrail.Color * (0.1f / j), new Vector3(0, 1, 0));
-								trailBars0.Add(v2Pos + new Vector2(0.5f, 0.5f) * sizeValue * j * 2, flameTrail.Color * (0.1f / j), new Vector3(1, 1, 0));
-
-								trailBars0.Add(v2Pos + new Vector2(-0.5f, 0.5f) * sizeValue * j * 2, Color.Transparent, new Vector3(0, 1, 0));
-								trailBars0.Add(v2Pos + new Vector2(0.5f, 0.5f) * sizeValue * j * 2, Color.Transparent, new Vector3(1, 1, 0));
-							}
-
-							trailBars0.Add(v2Pos + new Vector2(-0.5f, -0.5f) * scaleValue2, Color.Transparent, new Vector3(0, 0, 0));
-							trailBars0.Add(v2Pos + new Vector2(0.5f, -0.5f) * scaleValue2, Color.Transparent, new Vector3(1, 0, 0));
-
-							trailBars0.Add(v2Pos + new Vector2(-0.5f, -0.5f) * scaleValue2, flameTrail.Color * 6f, new Vector3(0, 0, 0));
-							trailBars0.Add(v2Pos + new Vector2(0.5f, -0.5f) * scaleValue2, flameTrail.Color * 6f, new Vector3(1, 0, 0));
-
-							trailBars0.Add(v2Pos + new Vector2(-0.5f, 0.5f) * scaleValue2, flameTrail.Color * 6f, new Vector3(0, 1, 0));
-							trailBars0.Add(v2Pos + new Vector2(0.5f, 0.5f) * scaleValue2, flameTrail.Color * 6f, new Vector3(1, 1, 0));
-
-							trailBars0.Add(v2Pos + new Vector2(-0.5f, 0.5f) * scaleValue2, Color.Transparent, new Vector3(0, 1, 0));
-							trailBars0.Add(v2Pos + new Vector2(0.5f, 0.5f) * scaleValue2, Color.Transparent, new Vector3(1, 1, 0));
+						if (i == trailLength - 1)
+						{
+							Vector2 addVel = normal.RotatedBy(-MathHelper.PiOver2) * scale0 * 2f * flameTrail.Scale;
+							AddSpanVertex(span1, ref index1, old0 + addVel + sparkNormal, Color.Transparent, new Vector3(coordX, 0, 0));
+							AddSpanVertex(span1, ref index1, old0 + addVel - sparkNormal, Color.Transparent, new Vector3(coordX, 1, 0));
 						}
 					}
 				}
 			}
-		}
-		Main.graphics.GraphicsDevice.Textures[0] = flame;
-		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
-		if (trailBars0.Count > 3)
-		{
-			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, trailBars0.ToArray(), 0, trailBars0.Count - 2);
+
+			if (flameTrail.Color != Color.Transparent)
+			{
+				float sizeValue = flame.Width * flameTrail.Scale * scale;
+				if (flameTrail.ai[3] != 0 && flameTrail.FlameTimer > flameTrail.ai[3])
+				{
+					sizeValue *= MathF.Sin(flameTrail.FlameTimer * 0.5f + flameTrail.Postion.Z * 0.1f) + 1f;
+					flameTrail.ai[2] = sizeValue * 2f - 2f;
+				}
+				float scaleValue2 = MathF.Min(sizeValue * flameTrail.Scale * 0.4f, 10f);
+
+				if (flameTrail.ai[2] > 0)
+				{
+					for (int j = 0; j < 3; j++)
+					{
+						float rot = j * MathHelper.TwoPi / 3f;
+						float length = MathF.Min((flameTrail.ai[2] + 1f) / 6f, 10f);
+						float brightness = MathF.Min(flameTrail.ai[2] / 4f, 1f);
+						Color trailBrightnessColor = flameTrail.Color * brightness * 0.14f;
+
+						Vector2 rotOffsetNeg = new Vector2(-length, -0.5f).RotatedBy(rot) * scaleValue2;
+						Vector2 rotOffsetPos = new Vector2(length, -0.5f).RotatedBy(rot) * scaleValue2;
+						Vector2 rotOffsetNegY = new Vector2(-length, 0.5f).RotatedBy(rot) * scaleValue2;
+						Vector2 rotOffsetPosY = new Vector2(length, 0.5f).RotatedBy(rot) * scaleValue2;
+
+						AddSpanVertex(span0, ref index0, v2Pos + rotOffsetNeg, Color.Transparent, new Vector3(0, 0, 0));
+						AddSpanVertex(span0, ref index0, v2Pos + rotOffsetPos, Color.Transparent, new Vector3(1, 0, 0));
+						AddSpanVertex(span0, ref index0, v2Pos + rotOffsetNeg, trailBrightnessColor, new Vector3(0, 0f, 0));
+						AddSpanVertex(span0, ref index0, v2Pos + rotOffsetPos, trailBrightnessColor, new Vector3(1, 0f, 0));
+						AddSpanVertex(span0, ref index0, v2Pos + rotOffsetNegY, trailBrightnessColor, new Vector3(0, 1f, 0));
+						AddSpanVertex(span0, ref index0, v2Pos + rotOffsetPosY, trailBrightnessColor, new Vector3(1, 1f, 0));
+						AddSpanVertex(span0, ref index0, v2Pos + rotOffsetNegY, Color.Transparent, new Vector3(0, 1, 0));
+						AddSpanVertex(span0, ref index0, v2Pos + rotOffsetPosY, Color.Transparent, new Vector3(1, 1, 0));
+					}
+					for (int j = 0; j < 3; j++)
+					{
+						float rot = (j * MathHelper.TwoPi / 3f) + MathHelper.PiOver2;
+						float length = MathF.Min((flameTrail.ai[2] + 1f) / 20f, 10f);
+						float brightness = MathF.Min(flameTrail.ai[2] / 8f, 1f);
+						Color trailBrightnessColor = flameTrail.Color * brightness * 0.24f;
+
+						Vector2 rotOffsetNeg = new Vector2(-length, -0.5f).RotatedBy(rot) * scaleValue2;
+						Vector2 rotOffsetPos = new Vector2(length, -0.5f).RotatedBy(rot) * scaleValue2;
+						Vector2 rotOffsetNegY = new Vector2(-length, 0.5f).RotatedBy(rot) * scaleValue2;
+						Vector2 rotOffsetPosY = new Vector2(length, 0.5f).RotatedBy(rot) * scaleValue2;
+
+						AddSpanVertex(span0, ref index0, v2Pos + rotOffsetNeg, Color.Transparent, new Vector3(0, 0, 0));
+						AddSpanVertex(span0, ref index0, v2Pos + rotOffsetPos, Color.Transparent, new Vector3(1, 0, 0));
+						AddSpanVertex(span0, ref index0, v2Pos + rotOffsetNeg, trailBrightnessColor, new Vector3(0, 0f, 0));
+						AddSpanVertex(span0, ref index0, v2Pos + rotOffsetPos, trailBrightnessColor, new Vector3(1, 0f, 0));
+						AddSpanVertex(span0, ref index0, v2Pos + rotOffsetNegY, trailBrightnessColor, new Vector3(0, 1f, 0));
+						AddSpanVertex(span0, ref index0, v2Pos + rotOffsetPosY, trailBrightnessColor, new Vector3(1, 1f, 0));
+						AddSpanVertex(span0, ref index0, v2Pos + rotOffsetNegY, Color.Transparent, new Vector3(0, 1, 0));
+						AddSpanVertex(span0, ref index0, v2Pos + rotOffsetPosY, Color.Transparent, new Vector3(1, 1, 0));
+					}
+				}
+
+				Color sizeColor = flameTrail.Color * 0.4f;
+				AddSpanVertex(span0, ref index0, v2Pos + (new Vector2(-0.5f, -0.5f) * sizeValue), Color.Transparent, new Vector3(0, 0, 0));
+				AddSpanVertex(span0, ref index0, v2Pos + (new Vector2(0.5f, -0.5f) * sizeValue), Color.Transparent, new Vector3(1, 0, 0));
+				AddSpanVertex(span0, ref index0, v2Pos + (new Vector2(-0.5f, -0.5f) * sizeValue), sizeColor, new Vector3(0, 0, 0));
+				AddSpanVertex(span0, ref index0, v2Pos + (new Vector2(0.5f, -0.5f) * sizeValue), sizeColor, new Vector3(1, 0, 0));
+				AddSpanVertex(span0, ref index0, v2Pos + (new Vector2(-0.5f, 0.5f) * sizeValue), sizeColor, new Vector3(0, 1, 0));
+				AddSpanVertex(span0, ref index0, v2Pos + (new Vector2(0.5f, 0.5f) * sizeValue), sizeColor, new Vector3(1, 1, 0));
+				AddSpanVertex(span0, ref index0, v2Pos + (new Vector2(-0.5f, 0.5f) * sizeValue), Color.Transparent, new Vector3(0, 1, 0));
+				AddSpanVertex(span0, ref index0, v2Pos + (new Vector2(0.5f, 0.5f) * sizeValue), Color.Transparent, new Vector3(1, 1, 0));
+
+				Color scaleColor = flameTrail.Color * 6f;
+				AddSpanVertex(span0, ref index0, v2Pos + (new Vector2(-0.5f, -0.5f) * scaleValue2), Color.Transparent, new Vector3(0, 0, 0));
+				AddSpanVertex(span0, ref index0, v2Pos + (new Vector2(0.5f, -0.5f) * scaleValue2), Color.Transparent, new Vector3(1, 0, 0));
+				AddSpanVertex(span0, ref index0, v2Pos + (new Vector2(-0.5f, -0.5f) * scaleValue2), scaleColor, new Vector3(0, 0, 0));
+				AddSpanVertex(span0, ref index0, v2Pos + (new Vector2(0.5f, -0.5f) * scaleValue2), scaleColor, new Vector3(1, 0, 0));
+				AddSpanVertex(span0, ref index0, v2Pos + (new Vector2(-0.5f, 0.5f) * scaleValue2), scaleColor, new Vector3(0, 1, 0));
+				AddSpanVertex(span0, ref index0, v2Pos + (new Vector2(0.5f, 0.5f) * scaleValue2), scaleColor, new Vector3(1, 1, 0));
+				AddSpanVertex(span0, ref index0, v2Pos + (new Vector2(-0.5f, 0.5f) * scaleValue2), Color.Transparent, new Vector3(0, 1, 0));
+				AddSpanVertex(span0, ref index0, v2Pos + (new Vector2(0.5f, 0.5f) * scaleValue2), Color.Transparent, new Vector3(1, 1, 0));
+			}
 		}
 
-		if (trailBars1.Count > 3)
+		CollectionsMarshal.SetCount(normalTrail, index0);
+		CollectionsMarshal.SetCount(sparkTrail, index1);
+
+		// 5. Drawing optimizations: Use .ToArray() only where required by XNA framework signature
+		SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;
+		Main.spriteBatch.End();
+
+		var device = Main.graphics.GraphicsDevice;
+		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
+		device.Textures[0] = flame;
+		device.SamplerStates[0] = SamplerState.PointWrap;
+
+		if (normalTrail.Count > 3)
+		{
+			device.DrawUserPrimitives(PrimitiveType.TriangleStrip, normalTrail.ToArray(), 0, normalTrail.Count - 2);
+		}
+		Main.spriteBatch.End();
+		Main.spriteBatch.Begin(sBS);
+
+		if (sparkTrail.Count > 3)
 		{
 			Main.spriteBatch.End();
 			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_1.Value;
+			device.Textures[0] = Commons.ModAsset.Trail_1.Value;
+
 			Effect effect = ModAsset.FireworkTrailStyle1.Value;
 			effect.Parameters["uPerlin"].SetValue(ModAsset.CorruptDustFadePowderII.Value);
+
 			var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
-			var model = Matrix.CreateTranslation(new Vector3(0, 0, 0)) * Main.GameViewMatrix.TransformationMatrix;
+			var model = Main.GameViewMatrix.TransformationMatrix; // Translation by vector zero is identity math, removed multiplication
 			effect.Parameters["uTransform"].SetValue(model * projection);
 			effect.CurrentTechnique.Passes["Test"].Apply();
-			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, trailBars1.ToArray(), 0, trailBars1.Count - 2);
+
+			device.DrawUserPrimitives(PrimitiveType.TriangleStrip, sparkTrail.ToArray(), 0, sparkTrail.Count - 2);
 
 			Main.spriteBatch.End();
-			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-			Main.graphics.GraphicsDevice.Textures[0] = flame;
+			Main.spriteBatch.Begin(sBS);
+			device.Textures[0] = flame;
 		}
+
 		return base.PreDraw(projectile, ref lightColor);
 	}
 }
