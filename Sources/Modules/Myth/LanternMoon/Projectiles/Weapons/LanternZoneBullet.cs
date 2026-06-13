@@ -1,3 +1,4 @@
+using Terraria.Audio;
 using Terraria.DataStructures;
 
 namespace Everglow.Myth.LanternMoon.Projectiles.Weapons;
@@ -38,6 +39,7 @@ public class LanternZoneBullet : ModProjectile
 
 	public override void OnKill(int timeLeft)
 	{
+		SoundEngine.PlaySound(new SoundStyle(ModAsset.gildingrevolver_release_aperture_Mod), Projectile.Center);
 		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<LanternZone>(), 0, 0, Projectile.owner);
 	}
 

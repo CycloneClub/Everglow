@@ -27,24 +27,6 @@ public class Lantern_ExplosionEffect : ModProjectile
 
 	public override void OnSpawn(IEntitySource source)
 	{
-		SoundStyle sound;
-		switch (Projectile.whoAmI % 3)
-		{
-			case 0:
-				sound = new SoundStyle(ModAsset.LanternYoyo_Burst0_Mod);
-				break;
-			case 1:
-				sound = new SoundStyle(ModAsset.LanternYoyo_Burst1_Mod);
-				break;
-			case 2:
-				sound = new SoundStyle(ModAsset.LanternYoyo_Burst2_Mod);
-				break;
-			default:
-				sound = new SoundStyle(ModAsset.LanternYoyo_Burst0_Mod);
-				break;
-		}
-
-		SoundEngine.PlaySound(sound.WithVolume(Main.rand.NextFloat(0.7f, 0.9f)), Projectile.Center);
 		for (int g = 0; g < 6; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(12f, 20f)).RotatedByRandom(MathHelper.TwoPi);

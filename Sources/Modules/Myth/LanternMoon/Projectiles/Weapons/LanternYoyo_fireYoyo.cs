@@ -1,5 +1,6 @@
 using Everglow.Myth.LanternMoon.VFX;
 using Spine;
+using Terraria.Audio;
 
 namespace Everglow.Myth.LanternMoon.Projectiles.Weapons;
 
@@ -123,6 +124,23 @@ public class LanternYoyo_fireYoyo : ModProjectile
 	{
 		if (timeLeft > 15)
 		{
+			SoundStyle sound;
+			switch (Projectile.whoAmI % 3)
+			{
+				case 0:
+					sound = new SoundStyle(ModAsset.LanternYoyo_Burst0_Mod);
+					break;
+				case 1:
+					sound = new SoundStyle(ModAsset.LanternYoyo_Burst1_Mod);
+					break;
+				case 2:
+					sound = new SoundStyle(ModAsset.LanternYoyo_Burst2_Mod);
+					break;
+				default:
+					sound = new SoundStyle(ModAsset.LanternYoyo_Burst0_Mod);
+					break;
+			}
+			SoundEngine.PlaySound(sound.WithVolume(Main.rand.NextFloat(0.7f, 0.9f)), Projectile.Center);
 			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<Lantern_ExplosionEffect>(), Projectile.damage, 2, Projectile.owner, 3);
 		}
 		base.OnKill(timeLeft);

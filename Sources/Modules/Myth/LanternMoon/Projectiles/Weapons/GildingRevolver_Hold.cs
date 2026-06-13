@@ -50,6 +50,22 @@ public class GildingRevolver_Hold : HandholdProjectile
 			if (NormalBulletTimer < 120)
 			{
 				NormalBulletTimer += 6 * (5f / Main.LocalPlayer.itemTimeMax);
+				//if(NormalBulletTimer % 20 < 6 * (5f / Main.LocalPlayer.itemTimeMax))
+				//{
+				//	SoundEngine.PlaySound(new SoundStyle(ModAsset.gildingrevolver_bullet_Mod), Projectile.Center);
+				//}
+				if(NormalBulletTimer >= 120)
+				{
+					switch (Main.rand.Next(2))
+					{
+						case 0:
+							SoundEngine.PlaySound(new SoundStyle(ModAsset.gildingrevolver_reloadcomplete_1_Mod), Projectile.Center);
+							break;
+						case 1:
+							SoundEngine.PlaySound(new SoundStyle(ModAsset.gildingrevolver_reloadcomplete_2_Mod), Projectile.Center);
+							break;
+					}
+				}
 			}
 
 			if (NormalBulletTimer > 120)
@@ -60,6 +76,18 @@ public class GildingRevolver_Hold : HandholdProjectile
 		else
 		{
 			ReloadCooling--;
+			if(ReloadCooling == 0)
+			{
+				switch (Main.rand.Next(2))
+				{
+					case 0:
+						SoundEngine.PlaySound(new SoundStyle(ModAsset.gildingrevolver_reloading_1_Mod), Projectile.Center);
+						break;
+					case 1:
+						SoundEngine.PlaySound(new SoundStyle(ModAsset.gildingrevolver_reloading_2_Mod), Projectile.Center);
+						break;
+				}
+			}
 		}
 		if (LanternBulletCooling <= 0)
 		{
@@ -163,6 +191,19 @@ public class GildingRevolver_Hold : HandholdProjectile
 			&& item.ModItem is GildingRevolver gildingRevolver
 			&& gildingRevolver.ShootType >= 0)
 		{
+			switch (Main.rand.Next(3))
+			{
+				case 0:
+					SoundEngine.PlaySound(new SoundStyle(ModAsset.gildingrevolver_shoot_1_Mod).WithVolume(0.5f), Projectile.Center);
+					break;
+				case 1:
+					SoundEngine.PlaySound(new SoundStyle(ModAsset.gildingrevolver_shoot_2_Mod).WithVolume(0.5f), Projectile.Center);
+					break;
+				case 2:
+					SoundEngine.PlaySound(new SoundStyle(ModAsset.gildingrevolver_shoot_3_Mod).WithVolume(0.5f), Projectile.Center);
+					break;
+			}
+
 			Vector2 vel = (Projectile.rotation - MathHelper.PiOver4).ToRotationVector2().RotatedByRandom(0.02f) * item.shootSpeed;
 			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + vel.NormalizeSafe() * -2 + DrawOffset, vel, gildingRevolver.ShootType, item.damage, item.knockBack, Projectile.owner);
 			UsedBulletsCount++;
@@ -183,6 +224,18 @@ public class GildingRevolver_Hold : HandholdProjectile
 		{
 			return;
 		}
+		switch (Main.rand.Next(3))
+		{
+			case 0:
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.gildingrevolver_aperture_hit_1_Mod), Projectile.Center);
+				break;
+			case 1:
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.gildingrevolver_aperture_hit_2_Mod), Projectile.Center);
+				break;
+			case 2:
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.gildingrevolver_aperture_hit_3_Mod), Projectile.Center);
+				break;
+		}
 		Vector2 vel = (Main.MouseWorld - Projectile.Center).NormalizeSafe().RotatedByRandom(0.03f) * item.shootSpeed * 1.5f;
 		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + vel.NormalizeSafe() * -2 + DrawOffset, vel, ModContent.ProjectileType<LanternPhantomBullet>(), (int)(item.damage * 0.7f), item.knockBack, Projectile.owner);
 	}
@@ -196,6 +249,18 @@ public class GildingRevolver_Hold : HandholdProjectile
 			return;
 		}
 		Vector2 vel = (Main.MouseWorld - Projectile.Center).NormalizeSafe() * item.shootSpeed * 1.5f;
+		switch (Main.rand.Next(3))
+		{
+			case 0:
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.gildingrevolver_aperture_hit_1_Mod), Projectile.Center);
+				break;
+			case 1:
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.gildingrevolver_aperture_hit_2_Mod), Projectile.Center);
+				break;
+			case 2:
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.gildingrevolver_aperture_hit_3_Mod), Projectile.Center);
+				break;
+		}
 		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + vel.NormalizeSafe() * -2 + DrawOffset, vel, ModContent.ProjectileType<LanternZoneBullet>(), item.damage, item.knockBack, Projectile.owner);
 		UsedBulletsCount++;
 	}

@@ -1,3 +1,5 @@
+using Terraria.Audio;
+
 namespace Everglow.Myth.LanternMoon.Projectiles.Weapons;
 
 public class LanternFlameBullet : ModProjectile
@@ -37,6 +39,18 @@ public class LanternFlameBullet : ModProjectile
 	public override void OnKill(int timeLeft)
 	{
 		base.OnKill(timeLeft);
+		switch (Main.rand.Next(3))
+		{
+			case 0:
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.gildingrevolver_hit_1_Mod), Projectile.Center);
+				break;
+			case 1:
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.gildingrevolver_hit_2_Mod), Projectile.Center);
+				break;
+			case 2:
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.gildingrevolver_hit_3_Mod), Projectile.Center);
+				break;
+		}
 		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<Lantern_ExplosionEffect>(), Projectile.damage, 2, Projectile.owner, 3);
 	}
 
