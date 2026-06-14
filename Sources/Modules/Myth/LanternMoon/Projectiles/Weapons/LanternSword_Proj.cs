@@ -15,6 +15,8 @@ public class LanternSword_Proj : MeleeProj_3D
 
 	public int NextTargetAvailableTimer = 0;
 
+	public int AttackStyle = 0;
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		EnableSphereCoordDraw = false;
@@ -75,7 +77,16 @@ public class LanternSword_Proj : MeleeProj_3D
 					};
 					Ins.VFXManager.Add(trail);
 					Owner.Center = des;
-					SoundEngine.PlaySound(new SoundStyle(ModAsset.LanternSwordTeleportation_Mod), Owner.Center);
+					switch (Main.rand.Next(2))
+					{
+						case 0:
+							SoundEngine.PlaySound(new SoundStyle(ModAsset.redoiledpapersword_teleport_1_Mod).WithPitchOffset(Main.rand.NextFloat(-0.3f, 0.3f)), Owner.Center);
+							break;
+						case 1:
+							SoundEngine.PlaySound(new SoundStyle(ModAsset.redoiledpapersword_teleport_2_Mod).WithPitchOffset(Main.rand.NextFloat(-0.3f, 0.3f)), Owner.Center);
+							break;
+					}
+
 					for (int i = 0; i < 24; i++)
 					{
 						var dust = new LanternSwordDust
@@ -94,10 +105,56 @@ public class LanternSword_Proj : MeleeProj_3D
 						Ins.VFXManager.Add(dust);
 					}
 					Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Owner.Center, slashVel, ModContent.ProjectileType<LanternSword_Slash>(), Projectile.damage, 2f, Projectile.owner);
+					switch (Main.rand.Next(2))
+					{
+						case 0:
+							SoundEngine.PlaySound(new SoundStyle(ModAsset.redoiledpapersword_dimensionslash_1_b_Mod), Owner.Center);
+							break;
+						case 1:
+							SoundEngine.PlaySound(new SoundStyle(ModAsset.redoiledpapersword_dimensionslash_2_b_Mod), Owner.Center);
+							break;
+					}
 					NextTarget = null;
 				}
 			}
 		}
+	}
+
+	public override void NewAttack()
+	{
+		CurrentAttackType++;
+		if (Main.MouseWorld.X > Owner.MountedCenter.X)
+		{
+			Owner.direction = 1;
+		}
+		else
+		{
+			Owner.direction = -1;
+		}
+
+		Vector2 mouseDir = Main.MouseWorld - Owner.MountedCenter;
+		mouseDir = mouseDir.SafeNormalize(Vector2.zeroVector);
+		AttackTimer = 0;
+		float meleeSpeed = Owner.meleeSpeed;
+		Attack_RotativeSwing(mouseDir, meleeSpeed);
+
+		switch (AttackStyle)
+		{
+			case 0:
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.redoiledpapersword_attack_1_Mod).WithPitchOffset(Main.rand.NextFloat(-0.3f, 0.3f)), Owner.Center);
+				break;
+			case 1:
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.redoiledpapersword_attack_2_Mod).WithPitchOffset(Main.rand.NextFloat(-0.3f, 0.3f)), Owner.Center);
+				break;
+		}
+		AttackStyle++;
+		if (AttackStyle >= 2)
+		{
+			AttackStyle = 0;
+		}
+		float itemUseTime = Owner.HeldItem.useTime;
+		float maxTime = itemUseTime / 0.4f;
+		AddSlashEffect(maxTime, itemUseTime, (int)(maxTime + 1));
 	}
 
 	public Vector2 TeleportDestination(NPC target)
