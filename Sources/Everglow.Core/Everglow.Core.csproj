@@ -6,9 +6,20 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<Reference Remove="$(tMLPath)" />
+		<AdditionalFiles Remove="Physics\Everglow.Commons.Physics.PBEngine\**" />
+		<Compile Remove="Physics\Everglow.Commons.Physics.PBEngine\**" />
+		<EmbeddedResource Remove="Physics\Everglow.Commons.Physics.PBEngine\**" />
+		<None Remove="Physics\Everglow.Commons.Physics.PBEngine\**" />
 		<Reference Remove="$(tMLLibraryPath)\**\tModPorter.dll" />
 		<Reference Remove="$(tMLLibraryPath)\**\TerrariaHooks.dll" />
 		<Reference Remove="$(tMLLibraryPath)\**\ReLogic.dll" />
+		<Solaestas-EffectFile Remove="Physics\Everglow.Commons.Physics.PBEngine\**" />
+		<Solaestas-HjsonFile Remove="Physics\Everglow.Commons.Physics.PBEngine\**" />
+		<Solaestas-ImageFile Remove="Physics\Everglow.Commons.Physics.PBEngine\**" />
+		<Solaestas-JsonFile Remove="Physics\Everglow.Commons.Physics.PBEngine\**" />
+		<Solaestas-MusicFile Remove="Physics\Everglow.Commons.Physics.PBEngine\**" />
+		<Solaestas-ResourceFile Remove="Physics\Everglow.Commons.Physics.PBEngine\**" />
+		<Solaestas-TextFile Remove="Physics\Everglow.Commons.Physics.PBEngine\**" />
 	</ItemGroup>
 	<ItemGroup>
 		<Reference Include="$(MSBuildThisFileDirectory)\..\..\Libraries\*.dll" />
