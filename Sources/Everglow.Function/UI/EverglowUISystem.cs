@@ -2,7 +2,7 @@ using Everglow.Commons.UI.UIElements;
 
 namespace Everglow.Commons.UI
 {
-	internal class EverglowUISystem
+	public class EverglowUISystem
 	{
 		/// <summary>
 		/// 存放着所有<see cref="UIContainerElement"/>实例的字典
@@ -110,9 +110,11 @@ namespace Everglow.Commons.UI
 				if (child != null && child.IsVisible)
 				{
 					child.Update(gt);
-					interact = child.GetElementsContainsPoint(mousePos);
-					if (interact.Count > 0)
+					interact.AddRange(child.GetElementsContainsPoint(mousePos));
+					if (interact.Count > 0 && child.Info.InteractiveMask)
+					{
 						break;
+					}
 				}
 			}
 
@@ -123,11 +125,19 @@ namespace Everglow.Commons.UI
 			}
 
 			foreach (var ce in interact)
+			{
 				if (!interactContainerElementsBuffer.Contains(ce))
+				{
 					ce.Events.MouseOver(ce);
+				}
+			}
 			foreach (var ce in interactContainerElementsBuffer)
+			{
 				if (!interact.Contains(ce))
+				{
 					ce.Events.MouseOut(ce);
+				}
+			}
 			interactContainerElementsBuffer = interact;
 
 			if (mouseLeftDown != Main.mouseLeft)

@@ -28,7 +28,7 @@
     <Publicize Include="ReLogic" />
     <Publicize Include="MonoMod.RuntimeDetour" />
     <Publicize Include="MonoMod.Utils" />
-    <AdditionalFiles Include="**\*.obj;**\*.bmp;**\*.mapio" Pack="true" ModPath="%(Identity)" Exclude="bin\**\*;obj\**\*" />
+    <AdditionalFiles Include="**\*.obj;**\*.bmp;**\*.mapio;**\*.ttf" Pack="true" ModPath="%(Identity)" Exclude="bin\**\*;obj\**\*" />
     <AdditionalFiles Include="$(MSBuildThisFileFullPath)" Pack="false" Visible="false" />
   </ItemGroup>
 </Project>

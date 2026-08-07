@@ -1,6 +1,6 @@
 namespace Everglow.Commons.UI.UIElements
 {
-	internal class UIImagePanel : UIImage
+	public class UIImagePanel : UIImage
 	{
 		public bool CanDrag = true;
 		private bool dragging = false;

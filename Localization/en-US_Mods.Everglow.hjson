@@ -4529,6 +4529,7 @@ Projectiles: {
 	NormalAmmo.DisplayName: Normal Ammo
 	NormalHit.DisplayName: Normal Hit
 	StarAmmo.DisplayName: Star Ammo
+	SlashProjectile3D.DisplayName: Slash Projectile3 D
 	HolyCrystalProjectile.DisplayName: Holy Crystal Projectile
 	PlanetBeFall.DisplayName: Planet Be Fall
 	PlanetBefallExplosion.DisplayName: Planet Befall Explosion
@@ -4901,7 +4902,6 @@ Projectiles: {
 	AcytaeaMagicArray.DisplayName: Acytaea Magic Array
 	AcytaeaMagicArraySword.DisplayName: Acytaea Magic Array Sword
 	AcytaeaScratch.DisplayName: Acytaea Scratch
-	AcytaeaScratch_TownNPC.DisplayName: Acytaea Scratch_ Town N P C
 	AcytaeaSwordArray_0.DisplayName: Acytaea Sword Array_0
 	AcytaeaSwordArray_1.DisplayName: Acytaea Sword Array_1
 	AcytaeaSwordRain.DisplayName: Acytaea Sword Rain

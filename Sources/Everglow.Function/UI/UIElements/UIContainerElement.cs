@@ -1,14 +1,17 @@
 namespace Everglow.Commons.UI.UIElements
 {
-	internal abstract class UIContainerElement : BaseElement
+	public abstract class UIContainerElement : BaseElement
 	{
 		public virtual string Name { get => GetType().FullName; }
+
 		public virtual bool AutoLoad { get => true; }
+
 		public virtual bool IsInteractiveMask { get => false; }
 
 		public UIContainerElement()
 		{
 			Info.IsVisible = false;
+			Info.InteractiveMask = true;
 		}
 
 		public override void OnInitialization()

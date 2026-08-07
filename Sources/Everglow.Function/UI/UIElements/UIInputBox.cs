@@ -6,9 +6,9 @@ using ReLogic.OS;
 
 namespace Everglow.Commons.UI.UIElements
 {
-	internal delegate void TextChange(UIInputBox inputBox, string text);
+	public delegate void TextChange(UIInputBox inputBox, string text);
 
-	internal class UIInputBox : UIPanel
+	public class UIInputBox : UIPanel
 	{
 		private const string cursorSym = "|";
 		public string Text { get => _text; set => _text = value; }
@@ -104,7 +104,11 @@ namespace Everglow.Commons.UI.UIElements
 		private Rectangle symHitBox;
 		private Vector2 offset;
 		private bool isEnableIME = false;
-		private KeyCooldown up, down, left, right, enter;
+		private KeyCooldown up;
+		private KeyCooldown down;
+		private KeyCooldown left;
+		private KeyCooldown right;
+		private KeyCooldown enter;
 		private DynamicSpriteFont _font;
 		private float LineYHight = 0f;
 

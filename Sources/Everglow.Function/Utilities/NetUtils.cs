@@ -1,3 +1,5 @@
+using SubworldLibrary;
+
 namespace Everglow.Commons.Utilities;
 
 public static class NetUtils
@@ -14,4 +16,12 @@ public static class NetUtils
 	public static bool NotSingle => Main.netMode != NetmodeID.SinglePlayer;
 
 	public static bool NotClient => Main.netMode != NetmodeID.MultiplayerClient;
+
+	public static bool IsMainServer => SubworldSystem.Current == null && Main.netMode == NetmodeID.Server;
+
+	public static bool IsMainClient => SubworldSystem.Current == null && Main.netMode == NetmodeID.MultiplayerClient;
+
+	public static bool IsSubServer => SubworldSystem.Current != null && Main.netMode == NetmodeID.Server;
+
+	public static bool IsSubClient => SubworldSystem.Current != null && Main.netMode == NetmodeID.MultiplayerClient;
 }

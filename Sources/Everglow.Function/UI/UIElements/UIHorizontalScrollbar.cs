@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Everglow.Commons.UI.UIElements
 {
-	internal class UIHorizontalScrollbar : BaseElement, IScrollbar
+	public class UIHorizontalScrollbar : BaseElement, IScrollbar
 	{
 		private const int LEFT_HEIGHT = 1;
 		private const int RIGHT_HEIGHT = 1;
@@ -97,7 +97,7 @@ namespace Everglow.Commons.UI.UIElements
 					alpha -= 0.01f;
 			}
 
-			inner.ChangeColor(Color.White * alpha);
+			inner.Color = Color.White * alpha;
 
 			MouseState state = Mouse.GetState();
 			float width = Info.Size.X - LeftMin - LeftMax - inner.Info.Size.X;

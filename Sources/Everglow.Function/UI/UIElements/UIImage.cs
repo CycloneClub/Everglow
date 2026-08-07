@@ -1,74 +1,84 @@
-namespace Everglow.Commons.UI.UIElements
+namespace Everglow.Commons.UI.UIElements;
+
+public class UIImage : BaseElement
 {
-	internal class UIImage : BaseElement
+	/// <summary>
+	/// 计算实际大小时的方式
+	/// </summary>
+	public enum CalculationStyle
 	{
 		/// <summary>
-		/// 计算实际位置时的方式
+		/// 不计算
 		/// </summary>
-		internal enum CalculationStyle
+		None,
+
+		/// <summary>
+		/// 锁定宽高比，以宽为参考轴
+		/// </summary>
+		LockAspectRatioMainWidth,
+
+		/// <summary>
+		/// 锁定宽高比，以高为参考轴
+		/// </summary>
+		LockedAspectRatioMainHeight,
+	}
+
+	protected Texture2D texture;
+	protected Color color;
+
+	/// <summary>
+	/// 计算实际大小时的方式
+	/// </summary>
+	public CalculationStyle Style { get; set; } = CalculationStyle.None;
+
+	public Vector2 Origin { get; set; } = Vector2.Zero;
+
+	public SpriteEffects SpriteEffects { get; set; } = SpriteEffects.None;
+
+	public float Rotation { get; set; } = 0f;
+
+	public Rectangle? SourceRectangle { get; set; } = null;
+
+	public Texture2D Texture { get => texture; set => texture = value; }
+
+	public Color Color { get => color; set => color = value; }
+
+	public UIImage(Texture2D texture, Color color)
+	{
+		this.color = color;
+
+		if (texture != null)
 		{
-			/// <summary>
-			/// 默认
-			/// </summary>
-			None,
-
-			/// <summary>
-			/// 锁定宽高比，以宽为参考轴
-			/// </summary>
-			LockAspectRatioMainWidth,
-
-			/// <summary>
-			/// 锁定宽高比，以高为参考轴
-			/// </summary>
-			LockedAspectRatioMainHeight,
-		}
-
-		private Texture2D _texture;
-		private Color _color;
-		public CalculationStyle Style = CalculationStyle.None;
-		public Vector2 Origin = Vector2.Zero;
-		public SpriteEffects SpriteEffects = SpriteEffects.None;
-		public float Rotation = 0f;
-		public Rectangle? SourceRectangle = null;
-
-		public UIImage(Texture2D texture, Color color)
-		{
-			_texture = texture;
-			_color = color;
+			this.texture = texture;
 			Info.Width.Pixel = texture.Width;
 			Info.Height.Pixel = texture.Height;
 		}
+	}
 
-		protected override void DrawSelf(SpriteBatch sb)
+	protected override void DrawSelf(SpriteBatch sb)
+	{
+		base.DrawSelf(sb);
+
+		if (texture != null)
 		{
-			base.DrawSelf(sb);
-			sb.Draw(_texture, Info.TotalHitBox, SourceRectangle,
-				_color, Rotation, Origin, SpriteEffects, 0f);
+			sb.Draw(texture, Info.TotalHitBox, SourceRectangle, color, Rotation, Origin, SpriteEffects, 0f);
 		}
+	}
 
-		public void ChangeColor(Color color) => _color = color;
-
-		public override void Calculation()
+	public override void Calculation()
+	{
+		base.Calculation();
+		if (Style == CalculationStyle.LockAspectRatioMainWidth)
 		{
+			float aspectRatio = (float)texture.Width / (float)texture.Height;
+			Info.Height.Pixel = Info.Size.X / aspectRatio;
 			base.Calculation();
-			if (Style == CalculationStyle.LockAspectRatioMainWidth)
-			{
-				float aspectRatio = (float)_texture.Width / (float)_texture.Height;
-				Info.Height.Pixel = Info.Size.X / aspectRatio;
-				base.Calculation();
-			}
-			else if (Style == CalculationStyle.LockedAspectRatioMainHeight)
-			{
-				float aspectRatio = (float)_texture.Width / (float)_texture.Height;
-				Info.Width.Pixel = Info.Size.Y * aspectRatio;
-				base.Calculation();
-			}
 		}
-
-		public void ChangeImage(Texture2D texture) => _texture = texture;
-
-		public Texture2D GetImage() => _texture;
-
-		public Color GetColor() => _color;
+		else if (Style == CalculationStyle.LockedAspectRatioMainHeight)
+		{
+			float aspectRatio = (float)texture.Width / (float)texture.Height;
+			Info.Width.Pixel = Info.Size.Y * aspectRatio;
+			base.Calculation();
+		}
 	}
 }
