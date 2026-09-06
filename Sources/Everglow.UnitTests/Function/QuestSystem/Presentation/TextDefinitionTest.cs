@@ -42,38 +42,164 @@ public class TextDefinitionTest
 	}
 
 	[TestMethod]
-	public void GetQuestObjectivesText_FormatsCompletedAndBranchObjectives()
+	public void GetQuestObjectivesText_ShowsOnlyCurrentDescriptionAndDefaultText()
 	{
 		var quest = new QuestView
 		{
+			State = QuestViewState.Active,
 			ObjectiveNodes =
 			[
-				new LeafObjectiveNodeView(new ObjectiveView
-				{
-					Description = "must not render",
-					ObjectiveText = "First",
-					State = ObjectiveViewState.Completed,
-				}),
+				new LeafObjectiveNodeView(new ObjectiveView { ObjectiveText = "Past", State = ObjectiveViewState.Completed }),
 				new BranchObjectiveNodeView(
 				[
 					new ObjectiveBranchView(
-						ObjectiveBranchState.Candidate,
-						[new ObjectiveView
-						{
-							Description = "must not render",
-							ObjectiveText = "Second",
-						}
+						ObjectiveBranchState.Selected,
+						[
+							new ObjectiveView { Description = "Current context", ObjectiveText = "Current action", State = ObjectiveViewState.Active },
+							new ObjectiveView { ObjectiveText = "Future", State = ObjectiveViewState.Pending },
+						]),
+					new ObjectiveBranchView(
+						ObjectiveBranchState.Skipped,
+						[
+							new ObjectiveView { ObjectiveText = "Skipped", State = ObjectiveViewState.Skipped },
 						]),
 				]),
 			],
 		};
 
-		string text = TextDefinition.GetQuestObjectivesText(quest);
+		Assert.AreEqual("目标：\nCurrent context\nCurrent action\n", TextDefinition.GetQuestObjectivesText(quest));
+	}
 
-		Assert.AreEqual(
-			"目标：\n1.1 [TextDrawer,Text='(已完成)',Color='100,100,100,255'] First\n2.1 [TextDrawer,Text='(Branch 1)',Color='100,180,120,255'] Second\n",
-			text);
-		Assert.DoesNotContain("must not render", text);
+	[TestMethod]
+	[DataRow(QuestSide.Player, QuestViewState.Available)]
+	[DataRow(QuestSide.World, QuestViewState.Locked)]
+	public void GetQuestObjectiveLines_PreviewsPendingCurrentNodeRegardlessOfHideMode(QuestSide side, QuestViewState state)
+	{
+		foreach (QuestHideMode mode in Enum.GetValues<QuestHideMode>())
+		{
+			var first = new ObjectiveView { Description = "Context", ObjectiveText = "First", State = ObjectiveViewState.Pending };
+			var second = new ObjectiveView { ObjectiveText = "Second", State = ObjectiveViewState.Pending };
+			var quest = new QuestView
+			{
+				Identity = new QuestIdentity(side, "quest", "quest"),
+				State = state,
+				HideMode = mode,
+				ObjectiveNodes =
+				[
+					new ParallelObjectiveNodeView([first, second]),
+					new LeafObjectiveNodeView(new ObjectiveView { ObjectiveText = "Future", State = ObjectiveViewState.Pending }),
+				],
+			};
+
+			Assert.AreEqual("目标：\nContext\nFirst\nSecond\n", TextDefinition.GetQuestObjectivesText(quest));
+			Assert.AreEqual(ObjectiveViewState.Pending, first.State);
+			Assert.AreEqual(ObjectiveViewState.Pending, second.State);
+		}
+	}
+
+	[TestMethod]
+	[DataRow(ObjectiveBranchState.Candidate)]
+	[DataRow(ObjectiveBranchState.Selected)]
+	public void GetQuestObjectiveLines_PreviewsOnlyNextPendingObjectiveInEachBranch(ObjectiveBranchState branchState)
+	{
+		var quest = new QuestView
+		{
+			State = QuestViewState.Active,
+			ObjectiveNodes =
+			[
+				new BranchObjectiveNodeView(
+				[
+					new ObjectiveBranchView(
+						branchState,
+						[
+							new ObjectiveView { ObjectiveText = "First", State = ObjectiveViewState.Pending },
+							new ObjectiveView { ObjectiveText = "Future", State = ObjectiveViewState.Pending },
+						]),
+					new ObjectiveBranchView(
+						ObjectiveBranchState.Skipped,
+						[
+							new ObjectiveView { ObjectiveText = "Excluded", State = ObjectiveViewState.Skipped },
+						]),
+				]),
+			],
+		};
+
+		Assert.AreEqual("目标：\nFirst\n", TextDefinition.GetQuestObjectivesText(quest));
+	}
+
+	[TestMethod]
+	[DataRow(QuestViewState.Locked, "First")]
+	[DataRow(QuestViewState.Available, "First")]
+	[DataRow(QuestViewState.Active, "Current")]
+	[DataRow(QuestViewState.Failed, "Current")]
+	[DataRow(QuestViewState.Completed, "Last")]
+	public void GetQuestObjectivesText_PreservesTheStageForEachQuestState(QuestViewState state, string expected)
+	{
+		var quest = new QuestView
+		{
+			State = state,
+			ObjectiveNodes =
+			[
+				new LeafObjectiveNodeView(new ObjectiveView { ObjectiveText = "First", State = ObjectiveViewState.Completed }),
+				new LeafObjectiveNodeView(new ObjectiveView
+				{
+					ObjectiveText = "Current",
+					State = state == QuestViewState.Completed ? ObjectiveViewState.Completed : ObjectiveViewState.Pending,
+				}),
+				new LeafObjectiveNodeView(new ObjectiveView { ObjectiveText = "Last", State = ObjectiveViewState.Completed }),
+			],
+		};
+
+		Assert.AreEqual("目标：\n" + expected + "\n", TextDefinition.GetQuestObjectivesText(quest));
+	}
+
+	[TestMethod]
+	public void GetQuestObjectivesText_CompletedBranchShowsSelectedBranchFinalObjective()
+	{
+		var quest = new QuestView
+		{
+			State = QuestViewState.Completed,
+			ObjectiveNodes =
+			[
+				new BranchObjectiveNodeView(
+				[
+					new ObjectiveBranchView(
+						ObjectiveBranchState.Selected,
+						[
+							new ObjectiveView { ObjectiveText = "Earlier", State = ObjectiveViewState.Completed },
+							new ObjectiveView { ObjectiveText = "Final", State = ObjectiveViewState.Completed },
+						]),
+					new ObjectiveBranchView(
+						ObjectiveBranchState.Skipped,
+						[
+							new ObjectiveView { ObjectiveText = "Excluded", State = ObjectiveViewState.Skipped },
+						]),
+				]),
+			],
+		};
+
+		Assert.AreEqual("目标：\nFinal\n", TextDefinition.GetQuestObjectivesText(quest));
+	}
+
+	[TestMethod]
+	public void GetQuestObjectiveLines_DoesNotKeepTimedOutAlternativeFromCompletedNode()
+	{
+		var quest = new QuestView
+		{
+			State = QuestViewState.Active,
+			ObjectiveNodes =
+			[
+				new AnyOfObjectiveNodeView(
+				[
+					new ObjectiveView { ObjectiveText = "Old timeout", State = ObjectiveViewState.TimedOut },
+					new ObjectiveView { ObjectiveText = "Done", State = ObjectiveViewState.Completed },
+				]),
+				new LeafObjectiveNodeView(new ObjectiveView { ObjectiveText = "Current", State = ObjectiveViewState.Active }),
+				new LeafObjectiveNodeView(new ObjectiveView { ObjectiveText = "Future timeout", State = ObjectiveViewState.TimedOut }),
+			],
+		};
+
+		Assert.AreEqual("目标：\nCurrent\n", TextDefinition.GetQuestObjectivesText(quest));
 	}
 
 	[TestMethod]
@@ -90,11 +216,12 @@ public class TextDefinitionTest
 		var secondObjective = new ObjectiveView
 		{
 			ObjectiveText = "Second",
-			State = ObjectiveViewState.Pending,
+			State = ObjectiveViewState.Active,
 			Timer = secondTimer,
 		};
 		var quest = new QuestView
 		{
+			State = QuestViewState.Active,
 			ObjectiveNodes =
 			[
 				new ParallelObjectiveNodeView([firstObjective, secondObjective]),
@@ -106,10 +233,10 @@ public class TextDefinitionTest
 		Assert.AreEqual(2, lines.Count);
 		Assert.AreSame(firstObjective, lines[0].Objective);
 		Assert.AreSame(firstTimer, lines[0].Timer);
-		Assert.StartsWith("1.1 First", lines[0].Text);
+		Assert.StartsWith("First", lines[0].Text);
 		Assert.AreSame(secondObjective, lines[1].Objective);
 		Assert.AreSame(secondTimer, lines[1].Timer);
-		Assert.StartsWith("1.2 Second", lines[1].Text);
+		Assert.StartsWith("Second", lines[1].Text);
 	}
 
 	[TestMethod]
@@ -139,6 +266,7 @@ public class TextDefinitionTest
 	{
 		var quest = new QuestView
 		{
+			State = QuestViewState.Active,
 			ObjectiveNodes =
 			[
 				new ParallelObjectiveNodeView(
@@ -152,7 +280,7 @@ public class TextDefinitionTest
 					new ObjectiveView
 					{
 						ObjectiveText = "Second",
-						State = ObjectiveViewState.Pending,
+						State = ObjectiveViewState.Active,
 						Timer = new TimerView { TimeLimit = 120, ElapsedTime = 0 },
 					},
 				]),
@@ -161,8 +289,8 @@ public class TextDefinitionTest
 
 		IReadOnlyList<ObjectiveLineView> lines = TextDefinition.GetQuestObjectiveLines(quest);
 
-		Assert.AreEqual("1.1 First", lines[0].Text);
-		Assert.AreEqual("1.2 Second", lines[1].Text);
+		Assert.AreEqual("First", lines[0].Text);
+		Assert.AreEqual("Second", lines[1].Text);
 	}
 
 	[TestMethod]
@@ -170,6 +298,7 @@ public class TextDefinitionTest
 	{
 		var quest = new QuestView
 		{
+			State = QuestViewState.Active,
 			ObjectiveNodes =
 			[
 				new LeafObjectiveNodeView(new ObjectiveView
@@ -192,13 +321,14 @@ public class TextDefinitionTest
 	{
 		var quest = new QuestView
 		{
+			State = QuestViewState.Active,
 			ObjectiveNodes =
 			[
-				new LeafObjectiveNodeView(new ObjectiveView { ObjectiveText = "Untimed" }),
+				new LeafObjectiveNodeView(new ObjectiveView { ObjectiveText = "Untimed", State = ObjectiveViewState.Active }),
 			],
 		};
 
-		Assert.AreEqual("目标：\n1.1 Untimed\n", TextDefinition.GetQuestObjectivesText(quest));
+		Assert.AreEqual("目标：\nUntimed\n", TextDefinition.GetQuestObjectivesText(quest));
 	}
 
 	[TestMethod]

@@ -40,12 +40,13 @@ public class QuestContainer : UIContainerElement
 	// private UIBlock _panelCoverContainer;
 	// private UIImage _panelCover;
 	private UIQuestDetail _questDetail;
+	private UIQuestHint _questHint;
 	private UIQuestDetailSubContent _questDetailSubContent;
 	private UIQuestDetailTipContent _questDetailTip;
 
 	private UIQuestList _questList;
 	private UIQuestFilter _questFilter;
-	private UIQuestSource _questSourceHeadshot;
+	private QuestSourceBase _sourceFilter;
 
 	private UIBlock _close;
 
@@ -70,6 +71,7 @@ public class QuestContainer : UIContainerElement
 	public string MouseText { get; set; } = string.Empty;
 
 	private QuestIdentity? _selectedQuest;
+	private int _entryRefreshTimer;
 
 	/// <summary>
 	/// UI instance of the selected quest.
@@ -161,15 +163,15 @@ public class QuestContainer : UIContainerElement
 		_questFilter = new UIQuestFilter();
 		_panel.Register(_questFilter);
 
-		// Quest source headshot
-		_questSourceHeadshot = new UIQuestSource();
-		_panel.Register(_questSourceHeadshot);
-
 		// Quest details
 		_questDetail = new UIQuestDetail();
 		_questDetail.PanelColor = Color.Transparent;
 		_questDetail.BorderWidth = 0;
 		_panel.Register(_questDetail);
+
+		// Persistent hint content shares the detail bounds and replaces its whole subtree.
+		_questHint = new UIQuestHint();
+		_panel.Register(_questHint);
 
 		// Quest detail mask
 		_questDetailSubContent = new UIQuestDetailSubContent();
@@ -254,9 +256,6 @@ public class QuestContainer : UIContainerElement
 		_panelBackground.Info.Width.SetFull();
 		_panelBackground.Info.Height.SetFull();
 
-		_questSourceHeadshot.Info.Top.SetValue((210 - 40) * ResolutionFactor);
-		_questSourceHeadshot.Info.Left.SetValue((270 - 40) * ResolutionFactor);
-
 		int squzzeLeftLimit = 1500;
 		float leftPartWidth = 740;
 		float detailWidth = width - 800;
@@ -269,6 +268,11 @@ public class QuestContainer : UIContainerElement
 		_questDetail.Info.Top.SetValue(60);
 		_questDetail.Info.Width.SetValue(detailWidth);
 		_questDetail.Info.Height.SetValue(height - 120);
+
+		_questHint.Info.Left.SetValue(leftPartWidth, 0);
+		_questHint.Info.Top.SetValue(60);
+		_questHint.Info.Width.SetValue(detailWidth);
+		_questHint.Info.Height.SetValue(height - 120);
 
 		_questDetailSubContent.Info.Left.SetValue(leftPartWidth, 0);
 		_questDetailSubContent.Info.Top.SetValue(60);
@@ -310,8 +314,37 @@ public class QuestContainer : UIContainerElement
 
 	public override void Update(GameTime gt)
 	{
+		// Available/Locked quests do not emit the periodic active-objective events.
+		if (++_entryRefreshTimer >= 20)
+		{
+			_entryRefreshTimer = 0;
+			RefreshEntries();
+		}
 		base.Update(gt);
 		Calculation();
+	}
+
+	private void RefreshEntries()
+	{
+		if (Service is null)
+		{
+			return;
+		}
+
+		var entries = Service.GetAll().ToDictionary(entry => entry.View.Identity);
+		foreach (UIQuestItem item in _questList.QuestItems)
+		{
+			if (!entries.TryGetValue(item.View.Identity, out QuestPresentationEntry entry)
+				|| item.View.State != entry.View.State
+				|| item.View.Type != entry.View.Type
+				|| item.View.Source != entry.View.Source
+				|| item.View.SubSource != entry.View.SubSource)
+			{
+				RefreshList();
+				return;
+			}
+			UpdateEntry(item, entry);
+		}
 	}
 
 	/// <summary>
@@ -335,7 +368,7 @@ public class QuestContainer : UIContainerElement
 			if (args[0] is QuestSourceBase source)
 			{
 				// Set NPC mode and source NPC.
-				_questSourceHeadshot.Source = source;
+				_sourceFilter = source;
 			}
 			else
 			{
@@ -345,10 +378,11 @@ public class QuestContainer : UIContainerElement
 		}
 		else // Open global quest panel
 		{
-			_questSourceHeadshot.Source = null;
+			_sourceFilter = null;
 		}
 
 		RefreshQuestContainer();
+		_entryRefreshTimer = 0;
 
 		// Display the quest panel.
 		base.Show(args);
@@ -378,7 +412,7 @@ public class QuestContainer : UIContainerElement
 	public void RefreshList()
 	{
 		QuestIdentity? selectedQuest = _selectedQuest;
-		_questList.RefreshList(_questFilter.QuestStateValue, _questFilter.QuestTypeValue, _questSourceHeadshot.Source);
+		_questList.RefreshList(_questFilter.QuestStateValue, _questFilter.QuestTypeValue, _sourceFilter);
 
 		if (selectedQuest is QuestIdentity identity)
 		{
@@ -393,15 +427,39 @@ public class QuestContainer : UIContainerElement
 
 	private void OnQuestObjectiveUpdated(QuestIdentity identity)
 	{
-		if (SelectedItem is not { } selectedItem
-			|| selectedItem.View.Identity != identity
+		UIQuestItem item = _questList.QuestItems.FirstOrDefault(item => item.View.Identity == identity);
+		if (item is null
 			|| !Service.TryGet(identity, out QuestPresentationEntry entry))
 		{
 			return;
 		}
 
-		selectedItem.UpdateEntry(entry);
-		_questDetail.RefreshObjectives(entry.View);
+		UpdateEntry(item, entry);
+	}
+
+	private void UpdateEntry(UIQuestItem item, QuestPresentationEntry entry)
+	{
+		QuestView previous = item.View;
+		item.UpdateEntry(entry);
+		if (SelectedItem != item)
+		{
+			return;
+		}
+
+		if (previous.State != entry.View.State
+			|| QuestHintDisplay.IsVisible(previous) != QuestHintDisplay.IsVisible(entry.View))
+		{
+			ChangeSelectedItem(item);
+		}
+		else if (QuestHintDisplay.IsVisible(entry.View))
+		{
+			_questHint.SetEntry(entry);
+		}
+		else
+		{
+			_questDetail.RefreshObjectives(entry.View);
+			_questDetail.RefreshActions();
+		}
 	}
 
 	/// <summary>
@@ -418,7 +476,9 @@ public class QuestContainer : UIContainerElement
 		oldSelectedItem?.OnUnselected();
 		SelectedItem?.OnSelected();
 
-		_questDetail.UpdateChangeButton("45,38,33");
+		_questHint.SetEntry(item?.Entry);
+		_questDetail.Info.IsVisible = !_questHint.IsVisible;
+		_questDetail.RefreshActions();
 		_questDetail.SetQuestDetail(item);
 
 		if (item is not null && item.View.State == QuestViewState.Failed)

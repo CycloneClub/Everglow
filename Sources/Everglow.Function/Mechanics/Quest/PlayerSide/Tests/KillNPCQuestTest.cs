@@ -20,5 +20,9 @@ public class KillNPCQuestTest : PlayerQuestBase
 
 	public override string DisplayName => nameof(KillNPCQuestTest);
 
+	public override string Hint => "Talk to the Example Person and choose \"Accept Source A quests\".";
+
+	public override QuestHideMode HideMode => QuestHideMode.Name;
+
 	public override QuestType Type => QuestType.MainStory;
 }
