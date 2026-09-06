@@ -169,6 +169,35 @@ public abstract partial class PlayerQuestBase : ITagCompoundEntity
 		Objectives.Deactivate();
 	}
 
+	public bool CanRetryObjective(int objectiveId)
+	{
+		if (State != PlayerQuestState.Accepted
+			|| Objectives.Current is null
+			|| !ReferenceEquals(Objectives.Current, Objectives.FindCurrentNode())
+			|| (uint)objectiveId >= (uint)Objectives.AllObjectives.Count)
+		{
+			return false;
+		}
+
+		PlayerObjectiveBase objective = Objectives.AllObjectives[objectiveId];
+		return !objective.Completed
+			&& objective.IsRetriable
+			&& objective.Timer?.IsExpired == true
+			&& Objectives.Current.FindAllEntrances().Contains(objective);
+	}
+
+	public bool TryRetryObjectiveCore(int objectiveId)
+	{
+		if (!CanRetryObjective(objectiveId))
+		{
+			return false;
+		}
+
+		Objectives.AllObjectives[objectiveId].ResetProgress();
+		Objectives.RefreshActivatedObjectives(this);
+		return true;
+	}
+
 	/// <summary>
 	/// 重置任务进度
 	/// </summary>

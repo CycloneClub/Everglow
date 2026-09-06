@@ -15,6 +15,8 @@ public abstract class PlayerObjectiveBase : ITagCompoundEntity
 
 	public bool IsTimedOut => Timer?.IsExpired == true;
 
+	public bool IsRetriable { get; private set; }
+
 	internal bool CanProgress => !Completed && !IsTimedOut;
 
 	public int ObjectiveID { get; set; }
@@ -74,9 +76,10 @@ public abstract class PlayerObjectiveBase : ITagCompoundEntity
 		return this;
 	}
 
-	public PlayerObjectiveBase WithTimeLimit(int timeLimit)
+	public PlayerObjectiveBase WithTimeLimit(int timeLimit, bool retriable = true)
 	{
 		Timer = new QuestTimer(timeLimit);
+		IsRetriable = retriable;
 		return this;
 	}
 

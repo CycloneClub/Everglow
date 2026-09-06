@@ -186,6 +186,26 @@ public class PlayerObjectiveContainer
 		}
 	}
 
+	/// <summary>
+	/// Reconciles active subscriptions after a local retry without reactivating unaffected objectives.
+	/// </summary>
+	internal void RefreshActivatedObjectives(PlayerQuestBase quest)
+	{
+		List<PlayerObjectiveBase> desiredObjectives = FindCurrentObjectives()
+			.Where(objective => objective.CanProgress).ToList();
+		foreach (PlayerObjectiveBase objective in _activeObjectives.Except(desiredObjectives).ToList())
+		{
+			objective.Deactivate();
+			_activeObjectives.Remove(objective);
+		}
+
+		foreach (PlayerObjectiveBase objective in desiredObjectives.Except(_activeObjectives).ToList())
+		{
+			objective.Activate(quest);
+			_activeObjectives.Add(objective);
+		}
+	}
+
 	#endregion
 
 	#region Presentation

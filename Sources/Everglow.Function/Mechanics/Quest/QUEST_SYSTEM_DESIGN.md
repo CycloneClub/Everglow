@@ -69,6 +69,10 @@ Player `InstanceId` 随任务写入玩家存档；加载时只有合法 N 格式
 
 Player 的 `Submit` 只在 Accepted、已完成且未被 Hint 遮蔽时提供；执行时调用任务既有完成入口，并以是否进入 Completed 作为结果。World 不提供 Submit；Failed 状态下的 `Retry` 仍只在单机导出。Completed 状态下，当前玩家名不在 Ordinal 领取名单时导出 `ClaimReward`。单机执行后直接记录并发奖；多人执行只发送任务名并等待主服快照，玩家身份不进入 `QuestAction`。
 
+Player 的目标级重试沿用 World 的 `CanRetryObjective` / `TryRetryObjectiveCore`：任务必须为 Accepted，目标必须是当前结构入口中未完成、已超时且 `IsRetriable` 的目标。`WithTimeLimit` 默认允许重试，也可显式关闭。仅重置该目标的进度与计时；玩家容器按差异恢复活动订阅，保留其他目标、分支游标、任务总计时、实例 ID 和目标奖励领取标记。Manager 在成功后发送一次目标更新事件，不触发任务状态转换。沿用既有玩家存档字段，加载后的超时目标也可重试。
+
+目标沙漏读取 `ObjectiveView.CanRetry` 并发送 `QuestAction(Retry, objectiveId)`，不占用任务级操作按钮。Player Actions 重新校验完整实例身份和 Hint，再交由 Manager 执行；Player adapter 在 Hint 有内容时不导出目标重试能力。单机和多人客户端均在本地处理玩家目标重试，不发送 WorldSide 重试数据包。
+
 WorldSide 领奖只保存 `RewardClaimedPlayers`，不保存全局 bool。主服根据经 `PacketResolver` 校正的真实槽位读取 `Netplay.Clients[whoAmI].Name`：主世界活动玩家本地发奖，子世界玩家通过 `AllDownstream` 授权包交由持有匹配活动槽位的子服发奖。授权包要求服务器来源 `sourceWhoAmI == -1`；普通客户端的来源会被强制改为真实槽位，不能伪造。主服随后广播完整任务快照，`NetReceive` 以服务器名单覆盖本地名单。
 
 ## 运行期组合
