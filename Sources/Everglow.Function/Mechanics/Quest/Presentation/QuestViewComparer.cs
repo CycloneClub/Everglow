@@ -9,9 +9,10 @@ public class QuestViewComparer : IComparer<QuestView>
 
 	public int Compare(QuestView x, QuestView y)
 	{
-		if (x.State != y.State)
+		int stateOrderComparison = GetStateSortOrder(x.State).CompareTo(GetStateSortOrder(y.State));
+		if (stateOrderComparison != 0)
 		{
-			return x.State.CompareTo(y.State);
+			return stateOrderComparison;
 		}
 		else if (x.Type != y.Type)
 		{
@@ -23,6 +24,16 @@ public class QuestViewComparer : IComparer<QuestView>
 			return string.Compare(x.DisplayName, y.DisplayName);
 		}
 	}
+
+	private static int GetStateSortOrder(QuestViewState state) => state switch
+	{
+		QuestViewState.Active => 0,
+		QuestViewState.Available => 1,
+		QuestViewState.Completed => 2,
+		QuestViewState.Failed => 3,
+		QuestViewState.Locked => 4,
+		_ => 5,
+	};
 
 	private static int GetTypeSortOrder(QuestType type) => type switch
 	{

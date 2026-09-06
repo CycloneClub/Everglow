@@ -28,7 +28,7 @@ public partial class WorldQuestViewAdapterTest
 
 		public QuestType TypeValue { get; set; } = QuestType.None;
 
-		public bool VisibleValue { get; set; } = true;
+		public QuestHideMode HideModeValue { get; set; }
 
 		public float ProgressValue { get; set; }
 
@@ -46,7 +46,7 @@ public partial class WorldQuestViewAdapterTest
 
 		public override QuestType Type => TypeValue;
 
-		public override bool Visible => VisibleValue;
+		public override QuestHideMode HideMode => HideModeValue;
 
 		public override float Progress => ProgressValue;
 
@@ -211,7 +211,7 @@ public partial class WorldQuestViewAdapterTest
 			DescriptionValue = description,
 			SourceValue = source,
 			TypeValue = QuestType.Legend,
-			VisibleValue = false,
+			HideModeValue = QuestHideMode.Name,
 		};
 
 		QuestView view = WorldQuestViewAdapter.Create(quest);
@@ -222,7 +222,7 @@ public partial class WorldQuestViewAdapterTest
 		Assert.AreEqual("Mapped world quest", view.DisplayName);
 		Assert.AreEqual(description, view.Description);
 		Assert.AreEqual(string.Empty, view.Hint);
-		Assert.IsFalse(view.Visible);
+		Assert.AreEqual(QuestHideMode.Name, view.HideMode);
 
 		quest.HintValue = hint;
 		QuestView hintedView = WorldQuestViewAdapter.Create(quest);
@@ -279,9 +279,13 @@ public partial class WorldQuestViewAdapterTest
 	}
 
 	[TestMethod]
-	[DataRow("Follow the trail")]
-	[DataRow(QuestHintText.Masked)]
-	public void Create_NonWhitespaceHintPreservesCompleteView(string hint)
+	[DataRow(WorldQuestState.Locked, QuestHideMode.None, "Follow the trail")]
+	[DataRow(WorldQuestState.Locked, QuestHideMode.Name, QuestHintText.Masked)]
+	[DataRow(WorldQuestState.Locked, QuestHideMode.NameAndConditions, "")]
+	[DataRow(WorldQuestState.Active, QuestHideMode.None, QuestHintText.Masked)]
+	[DataRow(WorldQuestState.Active, QuestHideMode.Name, "")]
+	[DataRow(WorldQuestState.Active, QuestHideMode.NameAndConditions, "Follow the trail")]
+	public void Create_HideModePreservesCompleteView(WorldQuestState state, QuestHideMode hideMode, string hint)
 	{
 		var reward = new Item { type = 1, stack = 2 };
 		var objective = new StubObjective
@@ -292,12 +296,13 @@ public partial class WorldQuestViewAdapterTest
 		var quest = new StubQuest
 		{
 			HintValue = hint,
+			HideModeValue = hideMode,
+			DisplayNameValue = "Real world quest title",
 			DescriptionValue = "secret description",
-			VisibleValue = false,
 			ProgressValue = 0.75f,
 			TimeLimitValue = 120,
 		};
-		quest.SetState(WorldQuestState.Active);
+		quest.SetState(state);
 		quest.SetTime(45);
 		quest.Objectives.Add(objective);
 		quest.SetRewards(reward);
@@ -305,8 +310,10 @@ public partial class WorldQuestViewAdapterTest
 		QuestView view = WorldQuestViewAdapter.Create(quest);
 
 		Assert.AreEqual(hint, view.Hint);
-		Assert.IsFalse(view.Visible);
-		Assert.AreEqual(QuestViewState.Active, view.State);
+		Assert.AreEqual(hideMode, view.HideMode);
+		Assert.AreEqual("Real world quest title", view.DisplayName);
+		Assert.AreEqual(quest.Name, view.Identity.DefinitionId);
+		Assert.AreEqual(quest.Name, view.Identity.InstanceId);
 		Assert.AreEqual("secret description", view.Description);
 		Assert.HasCount(1, view.ObjectiveNodes);
 		Assert.AreEqual("secret objective", ((LeafObjectiveNodeView)view.ObjectiveNodes[0]).Objective.ObjectiveText);

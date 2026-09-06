@@ -199,7 +199,7 @@ public class WorldQuestManager
 		}
 
 		WorldQuestBase quest = GetQuest(questName);
-		if (quest is null || QuestHintRules.HasContent(quest.Hint))
+		if (quest is null)
 		{
 			return false;
 		}
@@ -248,7 +248,6 @@ public class WorldQuestManager
 
 		WorldQuestBase quest = GetQuest(questName);
 		if (quest is null
-			|| QuestHintRules.HasContent(quest.Hint)
 			|| !quest.TryRecordRewardClaim(expectedPlayerName))
 		{
 			return false;

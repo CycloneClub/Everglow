@@ -114,8 +114,6 @@ public abstract partial class PlayerQuestBase : ITagCompoundEntity
 
 		PlayerQuestManager.Instance.ChangeQuestState(this, PlayerQuestState.Accepted, PlayerQuestState.Completed);
 
-		IsVisible = true;
-
 		Main.NewText($"[{Name}]任务已完成", 150, 250, 150);
 
 		PostComplete();

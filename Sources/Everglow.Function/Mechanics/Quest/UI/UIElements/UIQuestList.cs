@@ -106,11 +106,6 @@ public class UIQuestList : UIBlock
 		PositionStyle top = (4 * QuestContainer.Scale, 0f);
 		foreach (QuestPresentationEntry entry in quests)
 		{
-			if (!entry.View.Visible)
-			{
-				continue;
-			}
-
 			var element = new UIQuestItem(entry);
 			element.OnInitialization();
 			element.Info.Top.SetValue(top);
