@@ -47,9 +47,17 @@ public sealed class PlayerQuestActions
 		var quest = _manager.GetQuest(identity.DefinitionId);
 		if (quest is null
 			|| !string.Equals(quest.InstanceId, identity.InstanceId, StringComparison.Ordinal)
-			|| action.Args is not null
-			|| QuestHintRules.HasContent(quest.Hint)
-			|| !GetAvailableTypes(quest).Contains(action.Type))
+			|| QuestHintRules.HasContent(quest.Hint))
+		{
+			return false;
+		}
+
+		if (action is { Type: QuestActionType.Retry, Args: int objectiveId })
+		{
+			return _manager.TryRetryObjective(quest.Name, objectiveId);
+		}
+
+		if (action.Args is not null || !GetAvailableTypes(quest).Contains(action.Type))
 		{
 			return false;
 		}

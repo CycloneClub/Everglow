@@ -14,10 +14,12 @@ public partial class PlayerQuestViewAdapterTest
 		objective.Timer.Update(40);
 		var quest = new StubQuest { State = PlayerQuestState.Accepted };
 		quest.Objectives.Add(objective);
+		quest.Activate();
 
 		var activeView = ((LeafObjectiveNodeView)PlayerQuestViewAdapter.Create(quest).ObjectiveNodes.Single()).Objective;
 
 		Assert.AreEqual(ObjectiveViewState.Active, activeView.State);
+		Assert.IsFalse(activeView.CanRetry);
 		Assert.IsNotNull(activeView.Timer);
 		Assert.AreEqual(100, activeView.Timer.TimeLimit);
 		Assert.AreEqual(40, activeView.Timer.ElapsedTime);
@@ -27,9 +29,14 @@ public partial class PlayerQuestViewAdapterTest
 		var timedOutView = ((LeafObjectiveNodeView)PlayerQuestViewAdapter.Create(quest).ObjectiveNodes.Single()).Objective;
 
 		Assert.AreEqual(ObjectiveViewState.TimedOut, timedOutView.State);
-		Assert.IsFalse(timedOutView.CanRetry);
+		Assert.IsTrue(timedOutView.CanRetry);
 		Assert.IsNotNull(timedOutView.Timer);
 		Assert.AreEqual(0, timedOutView.Timer.RemainingTime);
+		Assert.AreEqual(40, activeView.Timer.ElapsedTime);
+
+		quest.State = PlayerQuestState.Failed;
+		var failedView = ((LeafObjectiveNodeView)PlayerQuestViewAdapter.Create(quest).ObjectiveNodes.Single()).Objective;
+		Assert.IsFalse(failedView.CanRetry);
 	}
 
 	[TestMethod]
@@ -41,6 +48,34 @@ public partial class PlayerQuestViewAdapterTest
 		var view = ((LeafObjectiveNodeView)PlayerQuestViewAdapter.Create(quest).ObjectiveNodes.Single()).Objective;
 
 		Assert.IsNull(view.Timer);
+	}
+
+	[TestMethod]
+	public void Create_ObjectiveRetryCapabilityTracksHintAndRetryWithoutMutatingOldSnapshot()
+	{
+		var objective = new StubObjective("timed");
+		objective.WithTimeLimit(20);
+		var quest = new StubQuest { State = PlayerQuestState.Accepted };
+		quest.Objectives.Add(objective);
+		quest.Activate();
+		quest.Objectives.Update(quest);
+		var expiredView = ((LeafObjectiveNodeView)PlayerQuestViewAdapter.Create(quest).ObjectiveNodes.Single()).Objective;
+		Assert.IsTrue(expiredView.CanRetry);
+		Assert.AreEqual(20, objective.Timer.ElapsedTime);
+
+		quest.HintValue = "Hidden details";
+		var hintedView = ((LeafObjectiveNodeView)PlayerQuestViewAdapter.Create(quest).ObjectiveNodes.Single()).Objective;
+		Assert.IsFalse(hintedView.CanRetry);
+		quest.HintValue = " ";
+		Assert.IsTrue(quest.TryRetryObjectiveCore(objective.ObjectiveID));
+		var retriedView = ((LeafObjectiveNodeView)PlayerQuestViewAdapter.Create(quest).ObjectiveNodes.Single()).Objective;
+
+		Assert.AreEqual(ObjectiveViewState.Active, retriedView.State);
+		Assert.IsFalse(retriedView.CanRetry);
+		Assert.AreEqual(0, retriedView.Timer.ElapsedTime);
+		Assert.AreEqual(ObjectiveViewState.TimedOut, expiredView.State);
+		Assert.IsTrue(expiredView.CanRetry);
+		Assert.AreEqual(20, expiredView.Timer.ElapsedTime);
 	}
 
 	[TestMethod]

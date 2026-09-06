@@ -218,6 +218,7 @@ public abstract partial class WorldQuestBase
 
 		WorldObjectiveBase objective = Objectives.AllObjectives[objectiveId];
 		return !objective.Completed
+			&& objective.IsRetriable
 			&& objective.Timer?.IsExpired == true
 			&& Objectives.Current.FindAllEntrances().Contains(objective);
 	}

@@ -13,14 +13,24 @@ public class WorldKillNPCObjective : WorldObjectiveBase
 	}
 
 	public WorldKillNPCObjective(int type, int count)
+		: this([type], count)
 	{
-		NPCType = type;
-		NPCCount = count;
+	}
+
+	public WorldKillNPCObjective(List<int> npcTypes, int npcCount)
+	{
+		if (npcTypes.Count == 0 || npcCount <= 0)
+		{
+			throw new InvalidDataException();
+		}
+
+		NPCTypes = npcTypes;
+		NPCCount = npcCount;
 	}
 
 	private int _localKillCount = 0;
 
-	public int NPCType { get; private set; }
+	public List<int> NPCTypes { get; private set; } = [];
 
 	public int NPCCount { get; private set; }
 
@@ -34,16 +44,32 @@ public class WorldKillNPCObjective : WorldObjectiveBase
 
 	public override void GetObjectivesIcon(QuestIconGroup iconGroup)
 	{
-		var npc = new NPC();
-		npc.SetDefaults(NPCType);
-		iconGroup.Add(NPCQuestIcon.Create(NPCType, npc.TypeName));
+		foreach (var npcType in NPCTypes)
+		{
+			var npc = new NPC();
+			npc.SetDefaults(npcType);
+			iconGroup.Add(NPCQuestIcon.Create(npcType, npc.TypeName));
+		}
 	}
 
 	public override string GetObjectiveText()
 	{
-		var npc = new NPC();
-		npc.SetDefaults(NPCType);
-		return $"击杀 {npc.TypeName} {NPCCount}个 ({KilledCount}/{NPCCount})";
+		string progress = $"({KilledCount}/{NPCCount})";
+
+		if (NPCTypes.Count > 1)
+		{
+			var npcString = string.Join(',', NPCTypes.ConvertAll(npcType =>
+			{
+				var npc = new NPC();
+				npc.SetDefaults(npcType);
+				return npc.TypeName;
+			}));
+			return $"击杀 {npcString} 合计{NPCCount}个 {progress}";
+		}
+
+		var single = new NPC();
+		single.SetDefaults(NPCTypes.First());
+		return $"击杀 {single.TypeName} {NPCCount}个 {progress}";
 	}
 
 	public override void Activate(WorldQuestBase sourceQuest)
@@ -54,6 +80,16 @@ public class WorldKillNPCObjective : WorldObjectiveBase
 	public override void Deactivate()
 	{
 		QuestGlobalNPC.OnNPCKilled -= WorldQuestGlobalNPC_OnNPCKilled;
+	}
+
+	public void CountKill(NPC npc)
+	{
+		if (!NPCTypes.Contains(npc.netID))
+		{
+			return;
+		}
+
+		CountKill();
 	}
 
 	private void CountKill(int count = 1)
@@ -67,22 +103,24 @@ public class WorldKillNPCObjective : WorldObjectiveBase
 
 	private void WorldQuestGlobalNPC_OnNPCKilled(NPC npc)
 	{
-		if (npc.netID == NPCType)
+		if (!NPCTypes.Contains(npc.netID))
 		{
-			if (NetUtils.IsSingle)
-			{
-				CountKill();
-			}
-			else if (NetUtils.IsMainServer)
-			{
-				CountKill();
-				NeedDeltaSync = true;
-			}
-			else if (NetUtils.IsSubServer)
-			{
-				_localKillCount++;
-				NeedDeltaSync = true;
-			}
+			return;
+		}
+
+		if (NetUtils.IsSingle)
+		{
+			CountKill();
+		}
+		else if (NetUtils.IsMainServer)
+		{
+			CountKill();
+			NeedDeltaSync = true;
+		}
+		else if (NetUtils.IsSubServer)
+		{
+			_localKillCount++;
+			NeedDeltaSync = true;
 		}
 	}
 
