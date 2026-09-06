@@ -21,7 +21,7 @@ public static class PlayerQuestViewAdapter
 		ObjectiveNodeView[] objectiveNodes = CreateObjectiveNodes(quest);
 		RewardView[] rewards = CreateRewards(quest);
 
-		QuestIconBase[] icons = CreateIcons(quest);
+		QuestIconBase[] icons = CreateIcons(quest, objectiveNodes);
 
 		return new QuestView
 		{
@@ -32,7 +32,7 @@ public static class PlayerQuestViewAdapter
 			DisplayName = quest.DisplayName ?? string.Empty,
 			Description = quest.Description ?? string.Empty,
 			Hint = hint,
-			Visible = quest.IsVisible,
+			HideMode = quest.HideMode,
 			Icons = icons,
 			State = MapState(quest.State),
 			Progress = progress,
@@ -43,11 +43,13 @@ public static class PlayerQuestViewAdapter
 		};
 	}
 
-	private static QuestIconBase[] CreateIcons(PlayerQuestBase quest)
+	private static QuestIconBase[] CreateIcons(PlayerQuestBase quest, IReadOnlyList<ObjectiveNodeView> nodes)
 	{
 		var iconGroup = new QuestIconGroup();
-		iconGroup.Add(QuestSourceIcon.Create(quest.Source ?? QuestSourceBase.Default, quest.SubSource));
-		quest.Objectives.GetObjectivesIcon(iconGroup);
+		foreach (ObjectiveView objective in QuestObjectiveDisplay.GetObjectives(MapState(quest.State), nodes))
+		{
+			quest.Objectives.AllObjectives[objective.Id].GetObjectivesIcon(iconGroup);
+		}
 		return iconGroup.Icons.ToArray();
 	}
 
@@ -149,7 +151,7 @@ public static class PlayerQuestViewAdapter
 			ObjectiveText = objective.GetObjectiveText(),
 			Progress = progress,
 			State = state,
-			CanRetry = !QuestHintRules.HasContent(quest.Hint) && quest.CanRetryObjective(objective.ObjectiveID),
+			CanRetry = quest.CanRetryObjective(objective.ObjectiveID),
 			Timer = objective.Timer is null
 				? null
 				: new TimerView

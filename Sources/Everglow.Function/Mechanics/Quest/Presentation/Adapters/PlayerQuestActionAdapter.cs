@@ -10,11 +10,6 @@ public static class PlayerQuestActionAdapter
 	{
 		ArgumentNullException.ThrowIfNull(quest);
 
-		if (QuestHintRules.HasContent(quest.Hint))
-		{
-			return [];
-		}
-
 		var identity = new QuestIdentity(QuestSide.Player, quest.Name, quest.InstanceId);
 		return PlayerQuestActions.GetAvailableTypes(quest)
 			.Select(type => new QuestAction(identity, type))

@@ -273,13 +273,14 @@ public class PlayerObjectiveRetryTest
 	}
 
 	[TestMethod]
-	public void RetryAction_RejectsReplacedInstanceAndHintAddedAfterExport()
+	public void RetryAction_AllowsHintAddedAfterExportButRejectsReplacedInstance()
 	{
 		var (quest, timed) = CreateExpiredQuest();
 		QuestAction staleAction = RetryAction(quest, timed);
 		quest.HintValue = QuestHintText.Masked;
+		Assert.IsTrue(_actions.TryExecute(staleAction));
 		Assert.IsFalse(_actions.TryExecute(staleAction));
-		Assert.IsTrue(timed.IsTimedOut);
+		Assert.IsFalse(timed.IsTimedOut);
 		_manager.RemoveQuest(quest.Name);
 		var (replacement, replacementObjective) = CreateExpiredQuest();
 

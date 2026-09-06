@@ -46,8 +46,7 @@ public sealed class PlayerQuestActions
 
 		var quest = _manager.GetQuest(identity.DefinitionId);
 		if (quest is null
-			|| !string.Equals(quest.InstanceId, identity.InstanceId, StringComparison.Ordinal)
-			|| QuestHintRules.HasContent(quest.Hint))
+			|| !string.Equals(quest.InstanceId, identity.InstanceId, StringComparison.Ordinal))
 		{
 			return false;
 		}

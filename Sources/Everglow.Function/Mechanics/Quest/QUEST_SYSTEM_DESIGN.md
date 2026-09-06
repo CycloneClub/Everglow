@@ -27,11 +27,21 @@ PlayerSide/WorldSide Actions <──────────── QuestPresenta
 
 统一展示状态为 Locked、Available、Active、Completed、Failed。Player 的 Available/Accepted/Completed/Failed 分别映射到同名语义（Accepted 映射 Active）；World 的 Locked/Active/Completed/Failed 直接映射。任务到期与其他失败原因统一进入 Failed；展示状态不推导重试、领奖或按钮能力。
 
-## 文本、Hint 与可见性
+## 文本、Hint 与 UI 遮罩
 
-DisplayName、Description、Hint、Objective 描述和非物品奖励描述均为 `string`，默认空字符串，并可继续携带现有 StringDrawer 标记。包含非空白内容的 Hint 由 adapter 在快照层替换详情：Description 为空、ObjectiveNodes 与 Rewards 为空、Progress 和 ElapsedTime 为 0、TimeLimit 为 `null`；纯空白 Hint 不触发遮蔽。统一遮蔽文本使用 `QuestHintText.Masked`（`"???"`）。
+DisplayName、Description、Hint、Objective 描述和非物品奖励描述均为 `string`，默认空字符串，并可继续携带现有 StringDrawer 标记。两侧 adapter 始终导出完整真实数据与 `HideMode`，不清空名称、描述、目标、奖励或计时，也不按提示文本删减 Actions。
 
-Hint 与 `Visible` 相互独立；adapter 原样导出 Player `IsVisible` 或 World `Visible`，不新增 `IsListed`，也不把不可见自动转换为 Masked Hint。
+UI 仅按状态推导遮罩：Player Available、World Locked 显示独立 Hint 面板，其他状态显示普通详情。HideMode.None 表示不隐藏名称和 Hint 文案，不控制面板是否显示。空字符串、纯空白或字面量 `???` 都不改变遮罩状态。`QuestHideMode` 是普通枚举，按顺序声明 `None`、`Name`、`NameAndConditions`，默认 `None`；遮罩期间的显示矩阵如下：
+
+| HideMode | 列表名称 / Hint 标题 | Hint 内容 |
+| --- | --- | --- |
+| `None` | 真实名称 | 真实 Hint |
+| `Name` | `???` | 真实 Hint |
+| `NameAndConditions` | `???` | `???` |
+
+统一遮罩文本使用 `QuestHintText.Masked`（`"???"`）。列表和 Hint 面板共用 UI 显示规则；接取/解锁后恢复真实名称和普通详情。Hint 允许为空，不回退到任务描述。Hint 与 Detail 共用任务动作按钮控件，文字和可执行操作来自当前 Entry.Actions，点击仍交由 Service 校验执行。Hint 仅在存在操作时显示按钮，玩家 Available 的 Accept 因而可以在 Hint 面板执行；世界 Locked 不添加手动接取入口，仍由领域条件自动激活。普通详情根与 Hint 根互斥，切换时关闭临时详情层并清除旧交互状态。面板打开期间定期重读列表条目，使未激活任务的名称和 Hint 变化也能刷新；文本不变时不重建文本控件。
+
+旧 Player `IsVisible`、World `Visible` 及其列表省略行为已移除，不新增持久化可见性布尔值。旧玩家存档的 `IsVisible` 键被忽略，其他身份、状态、目标进度和计时照常恢复，无需重置存档。Hint 只提供文本，不参与解锁条件求值或操作权限。
 
 ## 进度、时间、来源、图标与奖励
 
@@ -39,14 +49,14 @@ Hint 与 `Visible` 相互独立；adapter 原样导出 Player `IsVisible` 或 Wo
 - 时间统一使用游戏帧。Quest 的 ElapsedTime 来自两侧 `Time`；`TimeLimit <= 0` 归一化为 `null`；RemainingTime 不小于 0。Objective 可通过 `WithTimeLimit` 持有独立 `QuestTimer`，只有当前激活目标推进计时，完成判定优先于同一时间片的到期判定。超时目标保持未完成并停止推进，任务重置或重试时计时归零。UI 负责换算秒或分钟。
 - QuestType 原样导出，仅作为无行为的展示和筛选标签，不推导状态、操作能力或 UI 布局。
 - Source 继续使用 `QuestSourceBase`，空值归一化为 `Default`；仅 Player 有 SubSource。来源图标与任务图标分离，UI 可按 Source/SubSource 单独创建来源图标。
-- Icons 永不为 `null`。Player adapter 对现有图标结果生成数组快照并过滤 `QuestSourceIcon`，保留普通任务及汇总后的 Objective 图标；World 当前导出空数组。轮播状态和默认占位图属于 UI，`DrawerItem` 不进入 View。
+- Icons 永不为 `null`。两侧 adapter 使用与目标文字相同的阶段选择规则生成图标快照，不混入来源图标：Available/Locked 显示首个阶段，Active 显示当前阶段，Failed 保留失败时停留的阶段，Completed 保留最后阶段。UI 在详情目标面板底部左侧单独显示 Source/SubSource，与右侧动作按钮在分隔花纹和底边之间垂直居中，目标图标随当前目标变化刷新；来源显示不参与来源筛选。轮播状态属于 UI，`DrawerItem` 不进入 View。
 - Rewards 是 `RewardView` 快照。物品奖励保留任务创建的 `Item` 引用，由 UI 只读展示 Terraria 名称、数量和 tooltip；`Item == null` 时使用 Description 表示非物品奖励。领奖与发放仍属于领域层。
 
 ## Presentation Objective 树
 
 `QuestView.ObjectiveNodes` 按领域定义顺序保存互斥的只读节点：Leaf、Parallel、AnyOf（映射 Optional）和 Branch。Branch 包含有序 `ObjectiveBranchView`；未选择、已选择、已排除分别为 Candidate、Selected、Skipped。已完成的已选分支仍为 Selected，不另设分支完成态。
 
-`ObjectiveView` 只含实例内 ID、Description、Progress、可空 Timer 和 Pending/Active/Completed/TimedOut/Skipped 状态。状态优先级固定为：位于已排除分支、Objective 已完成、Objective 已超时、Quest 为 Active 且属于 `FindCurrentObjectives()`、其他。两侧 adapter 都将领域 `QuestTimer` 导出为独立 `TimerView` 快照。Player adapter 通过 `GetObjectivesText(List<string>)` 收集多行描述；World adapter 导出目标定义提供的描述。
+`ObjectiveView` 只含实例内 ID、Description、Progress、可空 Timer 和 Pending/Active/Completed/TimedOut/Skipped 状态。状态优先级固定为：位于已排除分支、Objective 已完成、Objective 已超时、Quest 为 Active 且属于 `FindCurrentObjectives()`、其他。两侧 adapter 都将领域 `QuestTimer` 导出为独立 `TimerView` 快照。两侧 adapter 分别导出目标的 Description 和 GetObjectiveText()。详情目标区将所选阶段的描述与默认目标文案分行显示，Pending 不再导致预览为空，完成后仍保留最后阶段。分支仅显示候选分支的首个目标或已选分支的当前/最后目标，不展示后续阶段或被排除分支。完整结构和真实状态仍由 adapter 导出，阶段选择不读取 Hint/HideMode，遮罩只由 UI 决定。详情中的星级、任务树按钮和进度旗帜暂不显示。
 
 两侧具体节点仅向同程序集 adapter 提供最小 `internal` 只读出口：Leaf 的 Objective，Parallel/Optional 的 Objective 序列，Branch 的嵌套分支序列与可空 SelectedBranchIndex。出口使用只读包装，不暴露内部 List、游标、存档键或行为，也不让领域层依赖 Presentation。
 
@@ -64,14 +74,16 @@ Player `InstanceId` 随任务写入玩家存档；加载时只有合法 N 格式
 
 - `GetAll()` 投影并返回两侧全部 entry。
 - `TryGet` 使用完整 `QuestIdentity` 做 Ordinal 匹配。Player 必须同时匹配定义名与当前实例 GUID；World 必须满足 `DefinitionId == InstanceId == Name`。
-- `TryExecute` 根据 `QuestSide` 调用与对应 Manager 成对的既有 Actions；Actions 重新校验完整 Identity、Hint 和当前可用操作，并以 `bool` 表示执行结果。
+- `TryExecute` 根据 `QuestSide` 调用与对应 Manager 成对的既有 Actions；Actions 重新校验完整 Identity 和当前可用操作，并以 `bool` 表示执行结果。Hint 与 HideMode 不参与接取、提交、重试或领奖授权。
 - 未知 Side、任务缺失或 Player 实例过期时返回 `false`。adapter 的投影异常直接向调用方暴露。
 
-Player 的 `Submit` 只在 Accepted、已完成且未被 Hint 遮蔽时提供；执行时调用任务既有完成入口，并以是否进入 Completed 作为结果。World 不提供 Submit；Failed 状态下的 `Retry` 仍只在单机导出。Completed 状态下，当前玩家名不在 Ordinal 领取名单时导出 `ClaimReward`。单机执行后直接记录并发奖；多人执行只发送任务名并等待主服快照，玩家身份不进入 `QuestAction`。
+Player 的 `Accept` 由 NPC、物品等外部交互调用 `PlayerQuestSystem.Actions.TryExecute(new QuestAction(identity, QuestActionType.Accept))`。入口从当前 Manager 取得任务身份；批量入口先按自身 Source/SubSource 与 Available 状态快照候选身份，再逐项执行。Actions 重新校验实例与状态，重复交互或过期快照不会重复激活；入口不直接写 State，也不重新创建同名任务覆盖已有 Available 实例。Hint 面板不提供接取按钮。DEBUG 示例由 `QuestPlayer` 集中注册为 Available，Source A NPC 与 Default 来源物品分别接取各自集合，具体代码见 [README.md](README.md#hint-遮罩与外部接取)。
+
+Player 的 `Submit` 只在 Accepted 且目标已完成时提供；执行时调用任务既有完成入口，并以是否进入 Completed 作为结果。自动完成与手动提交继续遵守既有配置。World 不提供 Submit；Failed 状态下的 `Retry` 仍只在单机导出。Completed 状态下，当前玩家名不在 Ordinal 领取名单时导出 `ClaimReward`。单机执行后直接记录并发奖；多人执行只发送任务名并等待主服快照，玩家身份不进入 `QuestAction`。
 
 Player 的目标级重试沿用 World 的 `CanRetryObjective` / `TryRetryObjectiveCore`：任务必须为 Accepted，目标必须是当前结构入口中未完成、已超时且 `IsRetriable` 的目标。`WithTimeLimit` 默认允许重试，也可显式关闭。仅重置该目标的进度与计时；玩家容器按差异恢复活动订阅，保留其他目标、分支游标、任务总计时、实例 ID 和目标奖励领取标记。Manager 在成功后发送一次目标更新事件，不触发任务状态转换。沿用既有玩家存档字段，加载后的超时目标也可重试。
 
-目标沙漏读取 `ObjectiveView.CanRetry` 并发送 `QuestAction(Retry, objectiveId)`，不占用任务级操作按钮。Player Actions 重新校验完整实例身份和 Hint，再交由 Manager 执行；Player adapter 在 Hint 有内容时不导出目标重试能力。单机和多人客户端均在本地处理玩家目标重试，不发送 WorldSide 重试数据包。
+目标沙漏读取 `ObjectiveView.CanRetry` 并发送 `QuestAction(Retry, objectiveId)`，不占用任务级操作按钮。Player Actions 重新校验完整实例身份，再交由 Manager 验证当前目标的重试资格；Hint 不改变重试能力。单机和多人客户端均在本地处理玩家目标重试，不发送 WorldSide 重试数据包。
 
 WorldSide 领奖只保存 `RewardClaimedPlayers`，不保存全局 bool。主服根据经 `PacketResolver` 校正的真实槽位读取 `Netplay.Clients[whoAmI].Name`：主世界活动玩家本地发奖，子世界玩家通过 `AllDownstream` 授权包交由持有匹配活动槽位的子服发奖。授权包要求服务器来源 `sourceWhoAmI == -1`；普通客户端的来源会被强制改为真实槽位，不能伪造。主服随后广播完整任务快照，`NetReceive` 以服务器名单覆盖本地名单。
 

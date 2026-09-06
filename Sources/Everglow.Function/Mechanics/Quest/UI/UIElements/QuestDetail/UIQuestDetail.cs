@@ -13,15 +13,13 @@ namespace Everglow.Commons.Mechanics.Quest.UI.UIElements.QuestDetail;
 public class UIQuestDetail : UIBlock, IDrawable_InRt2D
 {
 	private static readonly Color ComponentColor = new Color(0.2f, 0.2f, 0.2f, 0.005f);
-	private static readonly Color ChangeButtonHoverColor = Color.White;
-	private static readonly Color MaskButtonColor = Color.White;
-	private static readonly Color MaskButtonHoverColor = new Color(1f, 1f, 1f, 0f);
 
 	private static UIQuestItem SelectedItem => Instance.SelectedItem;
 
 	private static float FontSize => 30f * Instance.ResolutionFactor;
 
 	private UIQuestIcon _icon;
+	private UIQuestSource _source;
 
 	private UIQuestBlock _description;
 	private UIContainerPanel _descriptionContainer;
@@ -33,18 +31,11 @@ public class UIQuestDetail : UIBlock, IDrawable_InRt2D
 	private UITextPlus _objectiveHeader;
 	private readonly List<UIQuestObjectiveItem> _objectiveItems = [];
 
-	private UIQuestDurationBar _objectiveDurationBar;
+	private int[] _iconObjectiveIds = [];
 
-	private UIBlock _objectiveTree;
-	private UIImage _objectiveTreeIcon;
-
-	private UIQuestButton _objectiveChangeQuest;
-	private UITextPlus _objectiveChangeText;
+	private UIQuestActionButton _objectiveChangeQuest;
 
 	private UIRewardsStripe _rewardsPanel;
-
-	// TODO: Add QuestStar to a quest(default 1);
-	private UIQuestStarLevel _questLevel;
 
 	private float oldWidth;
 
@@ -68,13 +59,6 @@ public class UIQuestDetail : UIBlock, IDrawable_InRt2D
 		_icon = new UIQuestIcon(null);
 		Register(_icon);
 
-		// Stars
-		_questLevel = new UIQuestStarLevel();
-		_questLevel.Stars = 3;
-		_questLevel.Info.Width.SetValue(100);
-		_questLevel.Info.Height.SetValue(40);
-		Register(_questLevel);
-
 		// Description
 		_description = new UIQuestBlock();
 		_description.PanelColor = ComponentColor;
@@ -96,6 +80,9 @@ public class UIQuestDetail : UIBlock, IDrawable_InRt2D
 		_objective.QuestBlockStyle = 1;
 		Register(_objective);
 
+		_source = new UIQuestSource();
+		_objective.Register(_source);
+
 		_objectiveTextScrollbar = new UIQuestTextVerticalScrollbar();
 		_objective.Register(_objectiveTextScrollbar);
 
@@ -103,70 +90,8 @@ public class UIQuestDetail : UIBlock, IDrawable_InRt2D
 		_objectiveContainer.SetVerticalScrollbar(_objectiveTextScrollbar);
 		_objective.Register(_objectiveContainer);
 
-		_objectiveDurationBar = new UIQuestDurationBar();
-		_objectiveDurationBar.Events.OnMouseHover += e =>
-		{
-			Instance.MouseText = TextDefinition.GetObjectiveDurationTooltip(_objectiveDurationBar.CurrentDuration, _objectiveDurationBar.MaxDuration);
-			_objectiveDurationBar.OnSelect = true;
-		};
-		_objectiveDurationBar.Events.OnMouseOut += e =>
-		{
-			_objectiveDurationBar.OnSelect = false;
-		};
-		_objective.Register(_objectiveDurationBar);
-
-		_objectiveTree = new UIBlock();
-		_objectiveTree.Info.SetMargin(0);
-		_objectiveTree.PanelColor = Color.Transparent;
-		_objectiveTree.BorderWidth = 0;
-		_objectiveTree.Info.IsSensitive = true;
-		_objectiveTree.Events.OnMouseHover += e => Instance.MouseText = "Quest Tree";
-		_objectiveTree.Events.OnLeftClick += e =>
-		{
-			DetailSub.Show<UIQuestTree>(SelectedItem?.View);
-		};
-		_objective.Register(_objectiveTree);
-
-		_objectiveTreeIcon = new UIImage(ModAsset.ToQuestTreeSurface.Value, Color.White);
-		_objectiveTreeIcon.SourceRectangle = new Rectangle(0, 0, 38, 85);
-		_objectiveTreeIcon.Events.OnMouseHover += e =>
-		{
-			_objectiveTreeIcon.Color = MaskButtonHoverColor;
-			_objectiveTreeIcon.SourceRectangle = new Rectangle(38, 0, 38, 85);
-		};
-		_objectiveTreeIcon.Events.OnMouseOut += e =>
-		{
-			_objectiveTreeIcon.Color = MaskButtonColor;
-			_objectiveTreeIcon.SourceRectangle = new Rectangle(0, 0, 38, 85);
-		};
-		_objectiveTree.Register(_objectiveTreeIcon);
-
-		// Button
-		_objectiveChangeQuest = new UIQuestButton();
-		_objectiveChangeQuest.Info.IsSensitive = true;
-		_objectiveChangeQuest.PanelColor = ChangeButtonHoverColor;
-		_objectiveChangeQuest.Events.OnLeftDown += OnClickChange;
-		_objectiveChangeQuest.Events.OnMouseHover += e =>
-		{
-			if (GetFirstAction(SelectedItem?.Entry).HasValue)
-			{
-				_objectiveChangeQuest.PanelColor = Color.White;
-				_objectiveChangeQuest.OnSelect = true;
-				UpdateChangeButton("255,245,193");
-			}
-		};
-		_objectiveChangeQuest.Events.OnMouseOut += e =>
-		{
-			_objectiveChangeQuest.PanelColor = Color.White;
-			_objectiveChangeQuest.OnSelect = false;
-			UpdateChangeButton("45,38,33");
-		};
+		_objectiveChangeQuest = new UIQuestActionButton(OnClickChange);
 		_objective.Register(_objectiveChangeQuest);
-
-		_objectiveChangeText = new UITextPlus(string.Empty);
-		_objectiveChangeText.StringDrawer.DefaultParameters.SetParameter("FontSize", FontSize);
-		_objectiveChangeText.StringDrawer.Init(_objectiveChangeText.Text);
-		_objectiveChangeQuest.Register(_objectiveChangeText);
 
 		_rewardsPanel = new UIRewardsStripe();
 		Register(_rewardsPanel);
@@ -177,7 +102,6 @@ public class UIQuestDetail : UIBlock, IDrawable_InRt2D
 		base.Calculation();
 		Info.CanBeInteract = AnimationState == 0;
 		Info.HiddenOverflow = true;
-		_objectiveChangeQuest.Info.CanBeInteract = GetFirstAction(SelectedItem?.Entry).HasValue;
 
 		float detailPanelWidth = (Info.Width.Pixel - 120) / 2f;
 		float detailPanelDistance = 40;
@@ -186,11 +110,6 @@ public class UIQuestDetail : UIBlock, IDrawable_InRt2D
 		_icon.Info.Height.SetValue(256 * Scale);
 		_icon.Info.Left.SetValue(detailPanelDistance + detailPanelWidth / 2f - 240);
 		_icon.Info.Top.SetValue(93 * Scale);
-
-		_questLevel.Info.Width.SetValue(detailPanelWidth * Scale);
-		_questLevel.Info.Height.SetValue(40);
-		_questLevel.Info.Left.SetValue(detailPanelDistance * Scale);
-		_questLevel.Info.Top.SetValue(354);
 
 		_description.Info.Width.SetValue(detailPanelWidth * Scale);
 		_description.Info.Height.SetValue((ParentElement.Info.Height.Pixel - 560) * Scale);
@@ -220,24 +139,19 @@ public class UIQuestDetail : UIBlock, IDrawable_InRt2D
 		_objectiveTextScrollbar.Info.SetToCenter();
 		_objectiveTextScrollbar.Info.Left.SetValue(-20f, 1f);
 
-		_objectiveTree.Info.Width.SetValue(38 * Scale);
-		_objectiveTree.Info.Height.SetValue(85 * Scale);
-		_objectiveTree.Info.Left.SetValue(100 * Scale);
-		_objectiveTree.Info.Top.SetValue(-130f, 1f);
-
-		_objectiveTreeIcon.Info.Width = _objectiveTree.Info.Width;
-		_objectiveTreeIcon.Info.Height = _objectiveTree.Info.Height;
+		// UIQuestBlock draws the divider at bottom - 180 (15 high) and the bottom trim 13 high.
+		float footerCenterOffset = (180 - 15 + 13) * 0.5f;
+		float sourceSize = 64 * Scale;
+		_source.Info.Width.SetValue(sourceSize);
+		_source.Info.Height.SetValue(sourceSize);
+		_source.Info.Left.SetValue(48 * Scale);
+		_source.Info.Top.SetValue(-footerCenterOffset - sourceSize * 0.5f, 1f);
 
 		float changeButtonWidth = (_objective.Info.HitBox.Width - 200) * Scale;
 		_objectiveChangeQuest.Info.Width.SetValue(changeButtonWidth);
 		_objectiveChangeQuest.Info.Height.SetValue(40 * Scale);
 		_objectiveChangeQuest.Info.Left.SetValue((-changeButtonWidth - 50) * Scale, 1);
-		_objectiveChangeQuest.Info.Top.SetValue(-70 * Scale, 1);
-
-		_objectiveDurationBar.Info.Left.SetValue((-changeButtonWidth - 20) * Scale, 1);
-		_objectiveDurationBar.Info.Top.SetValue(-120f, 1f);
-		_objectiveDurationBar.Info.Width.SetValue(changeButtonWidth - 60);
-		_objectiveDurationBar.Info.Height.SetValue(46);
+		_objectiveChangeQuest.Info.Top.SetValue(-footerCenterOffset - _objectiveChangeQuest.Info.Height.Pixel * 0.5f, 1f);
 
 		_rewardsPanel.Info.Width.SetValue(detailPanelWidth);
 		_rewardsPanel.Info.Height.SetValue(256 * Scale);
@@ -266,7 +180,10 @@ public class UIQuestDetail : UIBlock, IDrawable_InRt2D
 		HideQuestSubContent();
 		HideQuestTip();
 
+		_source.SetSource(null);
 		_icon.SetIconGroup(null);
+		_icon.Info.IsVisible = false;
+		_iconObjectiveIds = [];
 		_rewardsPanel.SetRewards([]);
 		ResetTexts();
 	}
@@ -280,8 +197,9 @@ public class UIQuestDetail : UIBlock, IDrawable_InRt2D
 			HideQuestSubContent();
 
 			QuestView quest = questItem.View;
-			var iconGroup = new QuestIconGroup(quest.Icons);
-			_icon.SetIconGroup(iconGroup);
+			_source.SetSource(quest.Source, quest.SubSource);
+			_icon.SetIconGroup(new QuestIconGroup(quest.Icons));
+			_icon.Info.IsVisible = quest.Icons.Count > 0;
 			_rewardsPanel.SetRewards(quest.Rewards);
 			_descriptionTextScrollbar.WheelValue = 0f;
 
@@ -305,6 +223,14 @@ public class UIQuestDetail : UIBlock, IDrawable_InRt2D
 	private void SetObjectiveText(QuestView quest)
 	{
 		IReadOnlyList<ObjectiveLineView> lines = TextDefinition.GetQuestObjectiveLines(quest);
+		int[] objectiveIds = lines.Select(line => line.Objective.Id).ToArray();
+		if (!_iconObjectiveIds.SequenceEqual(objectiveIds))
+		{
+			_icon.SetIconGroup(new QuestIconGroup(quest.Icons));
+			_icon.Info.IsVisible = quest.Icons.Count > 0;
+			_iconObjectiveIds = objectiveIds;
+		}
+
 		if (_objectiveHeader is null || _objectiveItems.Count != lines.Count)
 		{
 			RebuildObjectiveItems(quest.Identity, lines);
@@ -381,21 +307,15 @@ public class UIQuestDetail : UIBlock, IDrawable_InRt2D
 	/// <summary>
 	/// Base operations for quest
 	/// </summary>
-	/// <param name="e"></param>
-	public void OnClickChange(BaseElement e)
+	/// <param name="action"></param>
+	private void OnClickChange(QuestAction action)
 	{
-		if (SelectedItem == null)
+		if (!IsVisible || SelectedItem == null)
 		{
 			return;
 		}
 
-		QuestAction? action = GetFirstAction(SelectedItem.Entry);
-		if (!action.HasValue)
-		{
-			return;
-		}
-
-		if (action.Value.Type == QuestActionType.Cancel)
+		if (action.Type == QuestActionType.Cancel)
 		{
 			AnimationState = 1;
 			var tip = new UIQuestOperationTip(SelectedItem.Entry, UIQuestOperationTip.TipType.Confirmation, "是否放弃任务", DiscardQuest, "是", "否");
@@ -404,7 +324,7 @@ public class UIQuestDetail : UIBlock, IDrawable_InRt2D
 		}
 		else
 		{
-			Service.TryExecute(action.Value);
+			Service.TryExecute(action);
 		}
 	}
 
@@ -431,9 +351,6 @@ public class UIQuestDetail : UIBlock, IDrawable_InRt2D
 		}
 	}
 
-	private static QuestAction? GetFirstAction(QuestPresentationEntry entry) =>
-		entry is not null && entry.Actions.Count > 0 ? entry.Actions[0] : null;
-
 	private static QuestAction? FindAction(QuestPresentationEntry entry, QuestActionType type)
 	{
 		if (entry is null)
@@ -452,18 +369,7 @@ public class UIQuestDetail : UIBlock, IDrawable_InRt2D
 		return null;
 	}
 
-	/// <summary>
-	/// 更新按钮的文字, color示例:"45,38,33"
-	/// </summary>
-	public void UpdateChangeButton(string color)
-	{
-		_objectiveChangeText.Text = TextDefinition.GetQuestActionText(SelectedItem?.Entry, color);
-		if (SelectedItem is not null)
-		{
-			_objectiveChangeText.Calculation();
-			_objectiveChangeText.Info.SetToCenter();
-		}
-	}
+	public void RefreshActions() => _objectiveChangeQuest.SetEntry(SelectedItem?.Entry);
 
 	public override void Draw(SpriteBatch sb)
 	{

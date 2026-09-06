@@ -1,5 +1,4 @@
 using Everglow.Commons.Mechanics.Quest.Presentation.Adapters;
-using Everglow.Commons.Mechanics.Quest.Presentation.Icons;
 using Everglow.Commons.Mechanics.Quest.Presentation.Views;
 
 namespace Everglow.UnitTests.Function.QuestSystem;
@@ -7,53 +6,43 @@ namespace Everglow.UnitTests.Function.QuestSystem;
 public partial class PlayerQuestViewAdapterTest
 {
 	[TestMethod]
-	public void Create_IncludesSourceAndObjectiveIcons()
+	public void Create_OnlyIncludesCurrentObjectiveIconsAndKeepsSourceSeparate()
 	{
 		var source = new StubSource("source");
-		var subSource = new StubSource("sub-source");
-		var icon = new StubIcon();
-		var quest = new StubQuest
-		{
-			SourceValue = source,
-			SubSourceValue = subSource,
-		};
-		quest.Objectives.Add(new StubObjective("objective") { Icon = icon });
+		var currentIcon = new StubIcon();
+		var futureIcon = new StubIcon();
+		var quest = new StubQuest { SourceValue = source };
+		quest.Objectives.Add(new StubObjective("current") { Icon = currentIcon });
+		quest.Objectives.Add(new StubObjective("current") { Icon = futureIcon });
 
 		QuestView view = PlayerQuestViewAdapter.Create(quest);
 
-		Assert.HasCount(2, view.Icons);
-		var sourceIcon = (QuestSourceIcon)view.Icons[0];
-		Assert.AreSame(source, sourceIcon.Source);
-		Assert.AreSame(subSource, sourceIcon.SubSource);
-		Assert.AreSame(icon, view.Icons[1]);
+		Assert.AreSame(source, view.Source);
+		Assert.HasCount(1, view.Icons);
+		Assert.AreSame(currentIcon, view.Icons[0]);
 	}
 
 	[TestMethod]
-	public void Create_SnapshotsObjectiveIcons()
+	public void Create_ParallelObjectivesBothContributeIcons()
 	{
-		var objectiveIcon = new StubIcon();
-		var addedLater = new StubIcon();
-		var objective = new StubObjective("objective") { Icon = objectiveIcon };
+		var firstIcon = new StubIcon();
+		var secondIcon = new StubIcon();
 		var quest = new StubQuest();
-		quest.Objectives.Add(objective);
+		quest.Objectives.AddParallel(new StubObjective("current") { Icon = firstIcon }, new StubObjective("current") { Icon = secondIcon });
 
 		QuestView view = PlayerQuestViewAdapter.Create(quest);
-		objective.Icon = addedLater;
 
-		Assert.HasCount(2, view.Icons);
-		Assert.IsInstanceOfType<QuestSourceIcon>(view.Icons[0]);
-		Assert.AreSame(objectiveIcon, view.Icons[1]);
+		CollectionAssert.AreEqual(new[] { firstIcon, secondIcon }, view.Icons.ToArray());
 	}
 
 	[TestMethod]
-	public void Create_NoObjectiveIconsProducesSourceIcon()
+	public void Create_NoObjectiveIconsProducesEmptyIcons()
 	{
 		var quest = new StubQuest();
 
 		QuestView view = PlayerQuestViewAdapter.Create(quest);
 
 		Assert.IsNotNull(view.Icons);
-		Assert.HasCount(1, view.Icons);
-		Assert.IsInstanceOfType<QuestSourceIcon>(view.Icons[0]);
+		Assert.IsEmpty(view.Icons);
 	}
 }

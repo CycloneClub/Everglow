@@ -1,3 +1,5 @@
+using Everglow.Commons.Mechanics.Quest.Core;
+using Everglow.Commons.Mechanics.Quest.PlayerSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.UI;
 
 namespace Everglow.Commons.Mechanics.Quest.PlayerSide.Tests;
@@ -28,7 +30,23 @@ public class TestOpenQuestPanelWithSelectQuestItem : ModItem
 			return false;
 		}
 
+		// Snapshot this entry's Available quests before Actions activates objectives and raises events.
+		var system = ModContent.GetInstance<PlayerQuestSystem>();
+		var candidates = system.Manager.Quests
+			.Where(quest => quest.State == PlayerQuestState.Available && quest.Source == QuestSourceBase.Default)
+			.Select(quest => new QuestIdentity(QuestSide.Player, quest.Name, quest.InstanceId))
+			.ToArray();
+		foreach (QuestIdentity identity in candidates)
+		{
+			system.Actions.TryExecute(new QuestAction(identity, QuestActionType.Accept));
+		}
+
 		QuestContainer.Instance.ShowWithQuest(nameof(OpenPanelQuestTest));
 		return true;
+	}
+
+	public override void ModifyTooltips(List<TooltipLine> tooltips)
+	{
+		tooltips.Add(new TooltipLine(Mod, "AcceptDefaultQuests", "Accept all available default-source DEBUG quests, then open OpenPanelQuestTest."));
 	}
 }
