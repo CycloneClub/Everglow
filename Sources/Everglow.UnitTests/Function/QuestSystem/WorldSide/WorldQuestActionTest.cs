@@ -12,6 +12,10 @@ namespace Everglow.UnitTests.Function.QuestSystem;
 [DoNotParallelize]
 public class WorldQuestActionTest
 {
+	private int _originalNetMode;
+	private int _originalMyPlayer;
+	private Player _originalPlayer;
+
 	private sealed class StubQuest : WorldQuestBase
 	{
 		public string HintValue { get; set; } = string.Empty;
@@ -54,9 +58,20 @@ public class WorldQuestActionTest
 	public void Initialize()
 	{
 		Terraria.Program.SavePath = string.Empty;
+		_originalNetMode = Main.netMode;
+		_originalMyPlayer = Main.myPlayer;
+		_originalPlayer = Main.player[0];
 		Main.netMode = NetmodeID.SinglePlayer;
 		Main.myPlayer = 0;
 		Main.player[Main.myPlayer] = new Player { name = "ActionTester" };
+	}
+
+	[TestCleanup]
+	public void Cleanup()
+	{
+		Main.netMode = _originalNetMode;
+		Main.myPlayer = _originalMyPlayer;
+		Main.player[0] = _originalPlayer;
 	}
 
 	[TestMethod]

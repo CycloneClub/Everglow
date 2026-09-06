@@ -254,7 +254,11 @@ public class ExamplePerson : ModNPC
 	public override void SetChatButtons(ref string button, ref string button2)
 	{ // What the chat buttons are when you open up the chat UI
 		button = Language.GetTextValue("LegacyInterface.28");
+#if DEBUG
 		button2 = "Quest Panel";
+#else
+		button2 = string.Empty;
+#endif
 		if (Main.LocalPlayer.HasItem(ItemID.HiveBackpack))
 		{
 			button = "Upgrade " + Lang.GetItemNameValue(ItemID.HiveBackpack);
@@ -286,8 +290,15 @@ public class ExamplePerson : ModNPC
 		}
 		else
 		{
+#if DEBUG
+			if (Main.dedServ || !Main.LocalPlayer.active)
+			{
+				return;
+			}
+
 			// Open quest panel
 			QuestContainer.Instance.Show(QuestSourceTest1.Instance);
+#endif
 		}
 	}
 

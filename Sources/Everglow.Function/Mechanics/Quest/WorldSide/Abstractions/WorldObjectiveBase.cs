@@ -19,6 +19,8 @@ public abstract class WorldObjectiveBase : IDeltaSyncObjective
 
 	public bool IsTimedOut => Timer?.IsExpired == true;
 
+	public bool IsRetriable { get; private set; }
+
 	internal bool CanProgress => !Completed && !IsTimedOut;
 
 	public int ObjectiveID { get; set; }
@@ -42,9 +44,10 @@ public abstract class WorldObjectiveBase : IDeltaSyncObjective
 		return this;
 	}
 
-	public WorldObjectiveBase WithTimeLimit(int timeLimit)
+	public WorldObjectiveBase WithTimeLimit(int timeLimit, bool retriable = true)
 	{
 		Timer = new QuestTimer(timeLimit);
+		IsRetriable = retriable;
 		return this;
 	}
 

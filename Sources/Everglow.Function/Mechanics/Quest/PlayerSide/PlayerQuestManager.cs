@@ -208,6 +208,18 @@ public class PlayerQuestManager
 	public PlayerQuestBase GetQuest(string questName) =>
 		_quests.FirstOrDefault(m => m.Name == questName);
 
+	internal bool TryRetryObjective(string questName, int objectiveId)
+	{
+		PlayerQuestBase quest = GetQuest(questName);
+		if (quest is null || !quest.TryRetryObjectiveCore(objectiveId))
+		{
+			return false;
+		}
+
+		OnQuestObjectiveUpdated(quest);
+		return true;
+	}
+
 	/// <summary>
 	/// 添加任务
 	/// </summary>

@@ -11,4 +11,6 @@ public class QuestTimerTest : PlayerQuestBase
 	}
 
 	public override string DisplayName => GetType().Name;
+
+	public override bool Cancellable => true;
 }
