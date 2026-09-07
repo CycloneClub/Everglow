@@ -6,6 +6,15 @@ public class TestOpenQuestPanelWithSelectQuestItem : ModItem
 {
 	public override string Texture => ModAsset.Point_Mod;
 
+	public override bool IsLoadingEnabled(Mod mod)
+	{
+#if DEBUG
+		return true;
+#else
+		return false;
+#endif
+	}
+
 	public override void SetDefaults()
 	{
 		Item.useStyle = ItemUseStyleID.Swing;
@@ -14,7 +23,12 @@ public class TestOpenQuestPanelWithSelectQuestItem : ModItem
 
 	public override bool? UseItem(Player player)
 	{
-		QuestContainer.Instance.ShowWithQuest(new OpenPanelQuestTest().Name);
+		if (Main.dedServ || player.whoAmI != Main.myPlayer || !player.active)
+		{
+			return false;
+		}
+
+		QuestContainer.Instance.ShowWithQuest(nameof(OpenPanelQuestTest));
 		return true;
 	}
 }

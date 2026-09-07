@@ -40,7 +40,8 @@ public class QuestPlayer : ModPlayer
 		}
 
 #if DEBUG
-		if (PlayerQuestManager.Instance.Quests.Count == 0)
+		// Register DEBUG samples only for the local player when its quest list is empty.
+		if (!Main.dedServ && Player.whoAmI == Main.myPlayer && PlayerQuestManager.Instance.Quests.Count == 0)
 		{
 			PlayerQuestManager.Instance.AddQuest(new KillNPCQuestTest(), PlayerQuestState.Available);
 			PlayerQuestManager.Instance.AddQuest(new ParallelQuestTest(), PlayerQuestState.Available);
