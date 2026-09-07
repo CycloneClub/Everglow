@@ -298,6 +298,12 @@ public class UIQuestItem : UIBlock, IDrawable_InRt2D
 	public void UpdateEntry(QuestPresentationEntry entry)
 	{
 		Entry = entry;
+		string displayName = View.DisplayName;
+		if (name.Text != displayName)
+		{
+			name.Text = displayName;
+			name.Calculation();
+		}
 	}
 
 	public void Draw_InRt2D(SpriteBatch sb)
