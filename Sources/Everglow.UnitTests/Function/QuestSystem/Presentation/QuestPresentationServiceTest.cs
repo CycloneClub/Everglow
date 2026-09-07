@@ -17,6 +17,8 @@ namespace Everglow.UnitTests.Function.QuestSystem;
 public class QuestPresentationServiceTest
 {
 	private int _originalNetMode;
+	private int _originalMyPlayer;
+	private Player _originalPlayer;
 
 	private sealed class StubPlayerQuest : PlayerQuestBase
 	{
@@ -94,13 +96,19 @@ public class QuestPresentationServiceTest
 	{
 		Terraria.Program.SavePath = string.Empty;
 		_originalNetMode = Main.netMode;
+		_originalMyPlayer = Main.myPlayer;
+		_originalPlayer = Main.player[0];
 		Main.netMode = NetmodeID.SinglePlayer;
+		Main.myPlayer = 0;
+		Main.player[0] = new Player { name = "PresentationTester" };
 	}
 
 	[TestCleanup]
 	public void Cleanup()
 	{
 		Main.netMode = _originalNetMode;
+		Main.myPlayer = _originalMyPlayer;
+		Main.player[0] = _originalPlayer;
 	}
 
 	[TestMethod]
