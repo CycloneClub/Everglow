@@ -26,8 +26,9 @@ public class PearShapedNeedle : ModItem
 		Item.noUseGraphic = true;
 		Item.noMelee = true;
 		Item.autoReuse = false;
-		Item.rare = ItemRarityID.Green;
-		Item.value = 50000;
+
+		Item.rare = ItemRarityID.Blue;
+		Item.value = 4000;
 
 		Item.shoot = ModContent.ProjectileType<PearShapedNeedle_HeldProj>();
 		Item.shootSpeed = 8;

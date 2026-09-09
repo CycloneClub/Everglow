@@ -197,7 +197,7 @@ public class YggdrasilTownFurnaceSystem : ModSystem
 		if (CurrentPlayer != null)
 		{
 			FurnacePlayer fPlayer = CurrentPlayer.GetModPlayer<FurnacePlayer>();
-			CurrentScore = fPlayer.FurnaceScore;
+			CurrentScore = fPlayer.TotalFurnaceScore;
 		}
 		if (CurrentEnergy >= 1000)
 		{
@@ -232,51 +232,5 @@ public class YggdrasilTownFurnaceSystem : ModSystem
 			}
 		}
 		base.PostUpdateEverything();
-	}
-}
-
-public class FurnacePlayer : ModPlayer
-{
-	public int FurnaceScore;
-
-	public override void SyncPlayer(int toWho, int fromWho, bool newPlayer)
-	{
-		// ModPacket packet = Mod.GetPacket();
-		// packet.Write(MessageID.PlayerLifeMana);
-		// packet.Write((byte)Player.whoAmI);
-		// packet.Write((byte)FurnaceScore);
-		// packet.Send(toWho, fromWho);
-	}
-
-	// Called in ExampleMod.Networking.cs
-	public void ReceivePlayerSync(BinaryReader reader)
-	{
-		FurnaceScore = reader.ReadByte();
-	}
-
-	public override void CopyClientState(ModPlayer targetCopy)
-	{
-		var clone = (FurnacePlayer)targetCopy;
-		clone.FurnaceScore = FurnaceScore;
-	}
-
-	public override void SendClientChanges(ModPlayer clientPlayer)
-	{
-		var clone = (FurnacePlayer)clientPlayer;
-
-		if (FurnaceScore != clone.FurnaceScore)
-		{
-			SyncPlayer(toWho: -1, fromWho: Main.myPlayer, newPlayer: false);
-		}
-	}
-
-	public override void SaveData(TagCompound tag)
-	{
-		tag["FurnaceScore"] = FurnaceScore;
-	}
-
-	public override void LoadData(TagCompound tag)
-	{
-		FurnaceScore = tag.GetInt("FurnaceScore");
 	}
 }

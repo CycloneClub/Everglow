@@ -23,8 +23,8 @@ public class ChainGrenade : ModItem
 		Item.noMelee = true;
 		Item.noUseGraphic = true;
 
-		Item.rare = ItemRarityID.Green;
-		Item.value = 50000;
+		Item.rare = ItemRarityID.Blue;
+		Item.value = 4000;
 
 		Item.shoot = ModContent.ProjectileType<ChainGrenadeProj>();
 		Item.shootSpeed = 6;

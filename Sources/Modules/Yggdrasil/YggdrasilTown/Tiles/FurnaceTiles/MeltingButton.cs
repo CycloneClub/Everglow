@@ -108,7 +108,8 @@ public class MeltingButton : ModTile
 						{
 							Player player = YggdrasilTownFurnaceSystem.CurrentPlayer;
 							FurnacePlayer fPlayer = player.GetModPlayer<FurnacePlayer>();
-							fPlayer.FurnaceScore += totalValue;
+							fPlayer.TotalFurnaceScore += totalValue;
+							fPlayer.CurrentFurnaceScore += totalValue;
 						}
 						YggdrasilTownFurnaceSystem.CurrentEnergy += totalValue;
 						YggdrasilTownFurnaceSystem.MeltingAnimationTimer.Add(120);
