@@ -1,6 +1,6 @@
 using Everglow.Commons.Mechanics.Quest.PlayerSide;
 using Everglow.Commons.Mechanics.Quest.PlayerSide.Abstractions;
-using Everglow.Commons.Mechanics.Quest.PlayerSide;
+using Everglow.Commons.Mechanics.Quest.PlayerSide.Objectives;
 using Terraria.ModLoader.IO;
 
 namespace Everglow.UnitTests.Function.QuestSystem;
@@ -23,15 +23,9 @@ public class PlayerQuestBasePersistenceTest
 		var saved = new PersistenceStubQuest { State = state };
 		var tag = new TagCompound();
 
-		// The headless test TagCompound currently rejects bool payloads even though player saves accept them at runtime.
-		try
-		{
-			saved.SaveData(tag);
-		}
-		catch (IOException)
-		{
-		}
+		saved.SaveData(tag);
 
+		Assert.IsFalse(tag.ContainsKey("IsVisible"));
 		Assert.IsTrue(tag.TryGet<int>(nameof(PlayerQuestBase.State), out var stored));
 		Assert.AreEqual((int)state, stored);
 		Assert.IsTrue(tag.TryGet<string>(nameof(PlayerQuestBase.InstanceId), out var storedInstanceId));
@@ -50,17 +44,61 @@ public class PlayerQuestBasePersistenceTest
 		var saved = new PersistenceStubQuest { Time = 120 };
 		var tag = new TagCompound();
 
-		// The headless test TagCompound currently rejects bool payloads even though player saves accept them at runtime.
-		try
-		{
-			saved.SaveData(tag);
-		}
-		catch (IOException)
-		{
-		}
+		saved.SaveData(tag);
 
 		Assert.IsInstanceOfType<int>(tag[PlayerQuestBase.TimeSaveKey]);
 		Assert.AreEqual(120, tag.GetInt(PlayerQuestBase.TimeSaveKey));
+	}
+
+	[TestMethod]
+	[DataRow(false)]
+	[DataRow(true)]
+	public void LoadData_LegacyVisibilityPreservesIdentityStateAndObjectiveProgress(bool legacyVisible)
+	{
+		const string instanceId = "00112233445566778899aabbccddeeff";
+		var completed = new KillNPCObjective([1], 10, enableIndividualCounter: true);
+		var current = new KillNPCObjective([1], 10, enableIndividualCounter: true);
+		current.WithTimeLimit(120);
+		var loaded = new PersistenceStubQuest();
+		loaded.Objectives.Add(completed).Add(current);
+		var tag = new TagCompound
+		{
+			{ "State", (int)PlayerQuestState.Accepted },
+			{ "QuestTime", 60 },
+			{ "InstanceId", instanceId },
+			{ "StructuralObjectives", new List<TagCompound>
+				{
+					new()
+					{
+						{ "KilledCount", 10 },
+						{ "StructuralCompletionState", 1 },
+					},
+					new()
+					{
+						{ "KilledCount", 7 },
+						{ "TimerElapsedTime", 45 },
+						{ "StructuralCompletionState", 0 },
+					},
+				}
+			},
+		};
+		var values = (Dictionary<string, object>)typeof(TagCompound)
+			.GetField("dict", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)!
+			.GetValue(tag)!;
+		values["IsVisible"] = legacyVisible;
+
+		loaded.LoadData(tag);
+
+		Assert.AreEqual(instanceId, loaded.InstanceId);
+		Assert.AreEqual(PlayerQuestState.Accepted, loaded.State);
+		Assert.AreEqual(60, loaded.Time);
+		Assert.IsTrue(completed.Completed);
+		Assert.AreEqual(10, completed.KilledCount);
+		Assert.IsFalse(current.Completed);
+		Assert.AreEqual(7, current.KilledCount);
+		Assert.AreEqual(45, current.Timer.ElapsedTime);
+		Assert.AreEqual(0.85f, loaded.Progress, 0.0001f);
+		Assert.AreSame(current, loaded.Objectives.FindCurrentObjectives().Single());
 	}
 
 	[TestMethod]

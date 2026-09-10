@@ -1,3 +1,5 @@
+using Everglow.Commons.Mechanics.Quest.Core;
+using Everglow.Commons.Mechanics.Quest.PlayerSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.PlayerSide.Tests;
 using Everglow.Commons.Mechanics.Quest.UI;
 using Terraria.Audio;
@@ -255,7 +257,7 @@ public class ExamplePerson : ModNPC
 	{ // What the chat buttons are when you open up the chat UI
 		button = Language.GetTextValue("LegacyInterface.28");
 #if DEBUG
-		button2 = "Quest Panel";
+		button2 = "Accept Source A quests";
 #else
 		button2 = string.Empty;
 #endif
@@ -296,7 +298,18 @@ public class ExamplePerson : ModNPC
 				return;
 			}
 
-			// Open quest panel
+			// This NPC accepts only its own source; unrelated default-source samples use the DEBUG item.
+			var system = ModContent.GetInstance<PlayerQuestSystem>();
+			var candidates = system.Manager.Quests
+				.Where(quest => quest.State == PlayerQuestState.Available
+					&& (quest.Source == QuestSourceTest1.Instance || quest.SubSource == QuestSourceTest1.Instance))
+				.Select(quest => new QuestIdentity(QuestSide.Player, quest.Name, quest.InstanceId))
+				.ToArray();
+			foreach (QuestIdentity identity in candidates)
+			{
+				system.Actions.TryExecute(new QuestAction(identity, QuestActionType.Accept));
+			}
+
 			QuestContainer.Instance.Show(QuestSourceTest1.Instance);
 #endif
 		}

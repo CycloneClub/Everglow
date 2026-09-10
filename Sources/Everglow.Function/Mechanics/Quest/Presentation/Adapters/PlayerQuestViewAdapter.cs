@@ -32,7 +32,7 @@ public static class PlayerQuestViewAdapter
 			DisplayName = quest.DisplayName ?? string.Empty,
 			Description = quest.Description ?? string.Empty,
 			Hint = hint,
-			Visible = quest.IsVisible,
+			HideMode = quest.HideMode,
 			Icons = icons,
 			State = MapState(quest.State),
 			Progress = progress,
@@ -149,7 +149,7 @@ public static class PlayerQuestViewAdapter
 			ObjectiveText = objective.GetObjectiveText(),
 			Progress = progress,
 			State = state,
-			CanRetry = !QuestHintRules.HasContent(quest.Hint) && quest.CanRetryObjective(objective.ObjectiveID),
+			CanRetry = quest.CanRetryObjective(objective.ObjectiveID),
 			Timer = objective.Timer is null
 				? null
 				: new TimerView

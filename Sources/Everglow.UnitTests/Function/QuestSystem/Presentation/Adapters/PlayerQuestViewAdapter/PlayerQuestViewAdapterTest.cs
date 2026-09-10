@@ -23,6 +23,8 @@ public partial class PlayerQuestViewAdapterTest
 
 		public string HintValue { get; set; } = string.Empty;
 
+		public QuestHideMode HideModeValue { get; set; }
+
 		public QuestSourceBase? SourceValue { get; set; } = QuestSourceBase.Default;
 
 		public QuestSourceBase? SubSourceValue { get; set; }
@@ -40,6 +42,8 @@ public partial class PlayerQuestViewAdapterTest
 		public override string Description => DescriptionValue;
 
 		public override string Hint => HintValue;
+
+		public override QuestHideMode HideMode => HideModeValue;
 
 		public override QuestSourceBase Source => SourceValue!;
 
@@ -102,7 +106,7 @@ public partial class PlayerQuestViewAdapterTest
 	}
 
 	[TestMethod]
-	public void Create_MapsIdentityMetadataSourcesAndVisibility()
+	public void Create_MapsIdentityMetadataSourcesAndHideMode()
 	{
 		const string description = "[TextDrawer,Text='quest body',Color='1,2,3,255']";
 		const string hint = "[TextDrawer,Text='quest hint',Color='4,5,6,255']";
@@ -116,7 +120,7 @@ public partial class PlayerQuestViewAdapterTest
 			SourceValue = source,
 			SubSourceValue = subSource,
 			TypeValue = QuestType.Legend,
-			IsVisible = false,
+			HideModeValue = QuestHideMode.Name,
 			State = PlayerQuestState.Available,
 		};
 
@@ -132,7 +136,7 @@ public partial class PlayerQuestViewAdapterTest
 		Assert.AreEqual("Quest title", view.DisplayName);
 		Assert.AreEqual(description, view.Description);
 		Assert.AreEqual(string.Empty, view.Hint);
-		Assert.IsFalse(view.Visible);
+		Assert.AreEqual(QuestHideMode.Name, view.HideMode);
 
 		quest.HintValue = hint;
 		QuestView hintedView = PlayerQuestViewAdapter.Create(quest);
@@ -211,9 +215,13 @@ public partial class PlayerQuestViewAdapterTest
 	}
 
 	[TestMethod]
-	[DataRow("Follow the trail")]
-	[DataRow(QuestHintText.Masked)]
-	public void Create_NonWhitespaceHintPreservesCompleteView(string hint)
+	[DataRow(PlayerQuestState.Available, QuestHideMode.None, "Follow the trail")]
+	[DataRow(PlayerQuestState.Available, QuestHideMode.Name, QuestHintText.Masked)]
+	[DataRow(PlayerQuestState.Available, QuestHideMode.NameAndConditions, "")]
+	[DataRow(PlayerQuestState.Accepted, QuestHideMode.None, QuestHintText.Masked)]
+	[DataRow(PlayerQuestState.Accepted, QuestHideMode.Name, "")]
+	[DataRow(PlayerQuestState.Accepted, QuestHideMode.NameAndConditions, "Follow the trail")]
+	public void Create_HideModePreservesCompleteView(PlayerQuestState state, QuestHideMode hideMode, string hint)
 	{
 		var visibleIcon = new StubIcon();
 		var objective = new StubObjective("secret objective")
@@ -224,12 +232,13 @@ public partial class PlayerQuestViewAdapterTest
 		var quest = new StubQuest
 		{
 			HintValue = hint,
+			HideModeValue = hideMode,
+			DisplayNameValue = "Real quest title",
 			DescriptionValue = "secret description",
 			ProgressValue = 0.75f,
 			Time = 45,
 			TimeLimitValue = 120,
-			IsVisible = false,
-			State = PlayerQuestState.Accepted,
+			State = state,
 		};
 		quest.Objectives.Add(objective);
 		quest.RewardItems.Add(new Item());
@@ -237,7 +246,10 @@ public partial class PlayerQuestViewAdapterTest
 		QuestView view = PlayerQuestViewAdapter.Create(quest);
 
 		Assert.AreEqual(hint, view.Hint);
-		Assert.IsFalse(view.Visible);
+		Assert.AreEqual(hideMode, view.HideMode);
+		Assert.AreEqual("Real quest title", view.DisplayName);
+		Assert.AreEqual(quest.Name, view.Identity.DefinitionId);
+		Assert.AreEqual(quest.InstanceId, view.Identity.InstanceId);
 		Assert.AreEqual("secret description", view.Description);
 		Assert.HasCount(1, view.ObjectiveNodes);
 		Assert.AreEqual("secret objective", ((LeafObjectiveNodeView)view.ObjectiveNodes[0]).Objective.ObjectiveText);

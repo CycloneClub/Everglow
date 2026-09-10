@@ -64,7 +64,7 @@ public class UIQuestItem : UIBlock, IDrawable_InRt2D
 		block.Register(nameContainer);
 
 		var font = FontManager.FusionPixel12.GetFont(40f * Scale);
-		name = new UITextPlus(View.DisplayName);
+		name = new UITextPlus(QuestHintDisplay.GetDisplayName(View));
 		name.StringDrawer.DefaultParameters.SetParameter("FontSize", 36f * Scale);
 		name.StringDrawer.Init(name.Text);
 		nameContainer.Register(name);
@@ -92,7 +92,7 @@ public class UIQuestItem : UIBlock, IDrawable_InRt2D
 			oldScale = Scale;
 
 			nameContainer.ChildrenElements.RemoveAll(m => m is UITextPlus);
-			name = new UITextPlus(View.DisplayName);
+			name = new UITextPlus(QuestHintDisplay.GetDisplayName(View));
 			name.StringDrawer.DefaultParameters.SetParameter("FontSize", 36f * Scale);
 			name.StringDrawer.Init(name.Text);
 			nameContainer.Register(name);
@@ -298,7 +298,7 @@ public class UIQuestItem : UIBlock, IDrawable_InRt2D
 	public void UpdateEntry(QuestPresentationEntry entry)
 	{
 		Entry = entry;
-		string displayName = View.DisplayName;
+		string displayName = QuestHintDisplay.GetDisplayName(View);
 		if (name.Text != displayName)
 		{
 			name.Text = displayName;

@@ -51,7 +51,7 @@ public partial class PlayerQuestViewAdapterTest
 	}
 
 	[TestMethod]
-	public void Create_ObjectiveRetryCapabilityTracksHintAndRetryWithoutMutatingOldSnapshot()
+	public void Create_ObjectiveRetryCapabilityIgnoresHintAndTracksRetryWithoutMutatingOldSnapshot()
 	{
 		var objective = new StubObjective("timed");
 		objective.WithTimeLimit(20);
@@ -65,8 +65,7 @@ public partial class PlayerQuestViewAdapterTest
 
 		quest.HintValue = "Hidden details";
 		var hintedView = ((LeafObjectiveNodeView)PlayerQuestViewAdapter.Create(quest).ObjectiveNodes.Single()).Objective;
-		Assert.IsFalse(hintedView.CanRetry);
-		quest.HintValue = " ";
+		Assert.IsTrue(hintedView.CanRetry);
 		Assert.IsTrue(quest.TryRetryObjectiveCore(objective.ObjectiveID));
 		var retriedView = ((LeafObjectiveNodeView)PlayerQuestViewAdapter.Create(quest).ObjectiveNodes.Single()).Objective;
 

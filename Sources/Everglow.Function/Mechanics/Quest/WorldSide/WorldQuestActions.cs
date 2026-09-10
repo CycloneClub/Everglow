@@ -62,8 +62,7 @@ public sealed class WorldQuestActions
 		}
 
 		string playerName = Main.LocalPlayer.name;
-		if (QuestHintRules.HasContent(quest.Hint)
-			|| !GetAvailableTypesForPlayer(quest, playerName).Contains(action.Type))
+		if (!GetAvailableTypesForPlayer(quest, playerName).Contains(action.Type))
 		{
 			return false;
 		}

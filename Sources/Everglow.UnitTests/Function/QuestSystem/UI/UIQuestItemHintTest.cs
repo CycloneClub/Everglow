@@ -5,6 +5,7 @@ using Everglow.Commons.Mechanics.Quest.Presentation;
 using Everglow.Commons.Mechanics.Quest.Presentation.Views;
 using Everglow.Commons.Mechanics.Quest.UI;
 using Everglow.Commons.Mechanics.Quest.UI.UIElements;
+using Everglow.Commons.Mechanics.Quest.UI.UIElements.QuestDetail;
 using Everglow.Commons.UI;
 using Everglow.Commons.UI.UIElements;
 
@@ -64,6 +65,43 @@ public class UIQuestItemHintTest
 			new QuestView { Identity = identity, State = QuestViewState.Active, DisplayName = "Updated title" }, []));
 
 		Assert.AreEqual("Updated title", GetName(item).Text);
+		Assert.AreEqual(identity, item.View.Identity);
+	}
+
+	[TestMethod]
+	[DataRow(QuestSide.Player, QuestViewState.Available)]
+	[DataRow(QuestSide.World, QuestViewState.Locked)]
+	public void AcceptanceOrUnlock_RevealsListNameAndRemovesHintRoot(QuestSide side, QuestViewState initialState)
+	{
+		var identity = new QuestIdentity(side, "quest", "instance");
+		var initial = new QuestView
+		{
+			Identity = identity,
+			State = initialState,
+			DisplayName = "Revealed name",
+			Hint = string.Empty,
+			HideMode = QuestHideMode.NameAndConditions,
+		};
+		var item = new UIQuestItem(new QuestPresentationEntry(initial, []));
+		var hint = new UIQuestHint();
+		hint.SetQuest(initial);
+
+		Assert.AreEqual("???", GetName(item).Text);
+		Assert.IsTrue(hint.IsVisible);
+
+		var active = new QuestView
+		{
+			Identity = identity,
+			State = QuestViewState.Active,
+			DisplayName = "Revealed name",
+			Hint = "Still retains condition text",
+			HideMode = QuestHideMode.NameAndConditions,
+		};
+		item.UpdateEntry(new QuestPresentationEntry(active, []));
+		hint.SetQuest(active);
+
+		Assert.AreEqual("Revealed name", GetName(item).Text);
+		Assert.IsFalse(hint.IsVisible);
 		Assert.AreEqual(identity, item.View.Identity);
 	}
 

@@ -30,6 +30,11 @@ public abstract partial class PlayerQuestBase : ITagCompoundEntity
 	public virtual string Hint => string.Empty;
 
 	/// <summary>
+	/// 任务可接取时的提示遮蔽方式
+	/// </summary>
+	public virtual QuestHideMode HideMode => QuestHideMode.None;
+
+	/// <summary>
 	/// 任务来源
 	/// </summary>
 	public virtual QuestSourceBase Source { get; private set; } = QuestSourceBase.Default;
@@ -48,11 +53,6 @@ public abstract partial class PlayerQuestBase : ITagCompoundEntity
 	/// 任务奖励物品
 	/// </summary>
 	public virtual List<Item> RewardItems { get; init; }
-
-	/// <summary>
-	/// 是否显示在任务列表中
-	/// </summary>
-	public virtual bool IsVisible { get; set; } = true;
 
 	/// <summary>
 	/// 是否由任务管理器自动检测完成并提交

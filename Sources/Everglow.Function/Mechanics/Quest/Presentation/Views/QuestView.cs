@@ -19,7 +19,7 @@ public sealed class QuestView
 
 	public string Hint { get; init; } = string.Empty;
 
-	public bool Visible { get; init; }
+	public QuestHideMode HideMode { get; init; } = QuestHideMode.None;
 
 	public IReadOnlyList<QuestIconBase> Icons { get; init; } = [];
 

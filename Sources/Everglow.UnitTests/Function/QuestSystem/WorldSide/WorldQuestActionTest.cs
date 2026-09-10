@@ -89,9 +89,12 @@ public class WorldQuestActionTest
 	}
 
 	[TestMethod]
-	public void CompletedUnclaimedSinglePlayerQuest_ExportsOnlyClaimRewardAction()
+	[DataRow("")]
+	[DataRow("Follow the trail")]
+	[DataRow(QuestHintText.Masked)]
+	public void CompletedUnclaimedSinglePlayerQuest_ExportsOnlyClaimRewardAction(string hint)
 	{
-		var quest = new StubQuest();
+		var quest = new StubQuest { HintValue = hint };
 		quest.SetState(WorldQuestState.Completed);
 
 		IReadOnlyList<QuestAction> actions = WorldQuestActionAdapter.GetActions(quest);
@@ -188,7 +191,10 @@ public class WorldQuestActionTest
 	}
 
 	[TestMethod]
-	public void ClaimRewardAction_ClaimsOnceForLocalPlayer()
+	[DataRow("")]
+	[DataRow("Follow the trail")]
+	[DataRow(QuestHintText.Masked)]
+	public void ClaimRewardAction_ClaimsOnceForLocalPlayer(string hint)
 	{
 		var quest = new StubQuest();
 		quest.SetState(WorldQuestState.Completed);
@@ -196,6 +202,7 @@ public class WorldQuestActionTest
 		manager.AddQuest(quest);
 		var actions = new WorldQuestActions(manager);
 		QuestAction action = WorldQuestActionAdapter.GetActions(quest).Single();
+		quest.HintValue = hint;
 
 		bool applied = actions.TryExecute(action);
 		bool repeated = actions.TryExecute(action);
@@ -224,14 +231,21 @@ public class WorldQuestActionTest
 	[TestMethod]
 	[DataRow("Follow the trail")]
 	[DataRow(QuestHintText.Masked)]
-	public void HintedFailedSinglePlayerQuest_ExportsNoActions(string hint)
+	public void HintedFailedSinglePlayerQuest_ExportsAndExecutesRetryAction(string hint)
 	{
 		var quest = new StubQuest { HintValue = hint };
 		quest.SetState(WorldQuestState.Failed);
+		var manager = new WorldQuestManager(new StubGameStateProvider());
+		manager.AddQuest(quest);
+		var worldActions = new WorldQuestActions(manager);
 
 		IReadOnlyList<QuestAction> actions = WorldQuestActionAdapter.GetActions(quest);
 
-		Assert.IsEmpty(actions);
+		Assert.HasCount(1, actions);
+		Assert.AreEqual(QuestActionType.Retry, actions[0].Type);
+		Assert.IsTrue(worldActions.TryExecute(actions[0]));
+		Assert.IsFalse(worldActions.TryExecute(actions[0]));
+		Assert.AreEqual(WorldQuestState.Active, quest.State);
 	}
 
 	[TestMethod]

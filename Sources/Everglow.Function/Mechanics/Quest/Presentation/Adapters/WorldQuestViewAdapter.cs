@@ -35,7 +35,7 @@ public static class WorldQuestViewAdapter
 			DisplayName = quest.DisplayName ?? string.Empty,
 			Description = quest.Description ?? string.Empty,
 			Hint = hint,
-			Visible = quest.Visible,
+			HideMode = quest.HideMode,
 			Icons = icons,
 			State = MapState(quest.State),
 			Progress = progress,

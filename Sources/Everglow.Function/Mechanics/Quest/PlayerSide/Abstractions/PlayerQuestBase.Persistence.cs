@@ -13,7 +13,6 @@ public abstract partial class PlayerQuestBase : ITagCompoundEntity
 		tag.Add(nameof(State), (int)State);
 		tag.Add(TimeSaveKey, Time);
 		tag.Add(nameof(InstanceId), InstanceId);
-		tag.Add(nameof(IsVisible), IsVisible);
 
 		Objectives.SaveData(tag);
 	}
@@ -67,11 +66,6 @@ public abstract partial class PlayerQuestBase : ITagCompoundEntity
 		else if (tag.ContainsKey(TimeSaveKey) && tag[TimeSaveKey] is long legacyMt)
 		{
 			Time = (int)Math.Clamp(legacyMt, int.MinValue, int.MaxValue);
-		}
-
-		if (tag.TryGet<bool>(nameof(IsVisible), out var isVisible))
-		{
-			IsVisible = isVisible;
 		}
 
 		Objectives.LoadData(tag);

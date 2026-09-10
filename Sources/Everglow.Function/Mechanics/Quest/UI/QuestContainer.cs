@@ -40,6 +40,7 @@ public class QuestContainer : UIContainerElement
 	// private UIBlock _panelCoverContainer;
 	// private UIImage _panelCover;
 	private UIQuestDetail _questDetail;
+	private UIQuestHint _questHint;
 	private UIQuestDetailSubContent _questDetailSubContent;
 	private UIQuestDetailTipContent _questDetailTip;
 
@@ -70,6 +71,7 @@ public class QuestContainer : UIContainerElement
 	public string MouseText { get; set; } = string.Empty;
 
 	private QuestIdentity? _selectedQuest;
+	private int _entryRefreshTimer;
 
 	/// <summary>
 	/// UI instance of the selected quest.
@@ -171,6 +173,10 @@ public class QuestContainer : UIContainerElement
 		_questDetail.BorderWidth = 0;
 		_panel.Register(_questDetail);
 
+		// Persistent hint content shares the detail bounds and replaces its whole subtree.
+		_questHint = new UIQuestHint();
+		_panel.Register(_questHint);
+
 		// Quest detail mask
 		_questDetailSubContent = new UIQuestDetailSubContent();
 		_questDetailSubContent.BorderWidth = 0;
@@ -270,6 +276,11 @@ public class QuestContainer : UIContainerElement
 		_questDetail.Info.Width.SetValue(detailWidth);
 		_questDetail.Info.Height.SetValue(height - 120);
 
+		_questHint.Info.Left.SetValue(leftPartWidth, 0);
+		_questHint.Info.Top.SetValue(60);
+		_questHint.Info.Width.SetValue(detailWidth);
+		_questHint.Info.Height.SetValue(height - 120);
+
 		_questDetailSubContent.Info.Left.SetValue(leftPartWidth, 0);
 		_questDetailSubContent.Info.Top.SetValue(60);
 		_questDetailSubContent.Info.Width.SetValue(detailWidth);
@@ -310,8 +321,37 @@ public class QuestContainer : UIContainerElement
 
 	public override void Update(GameTime gt)
 	{
+		// Available/Locked quests do not emit the periodic active-objective events.
+		if (++_entryRefreshTimer >= 20)
+		{
+			_entryRefreshTimer = 0;
+			RefreshEntries();
+		}
 		base.Update(gt);
 		Calculation();
+	}
+
+	private void RefreshEntries()
+	{
+		if (Service is null)
+		{
+			return;
+		}
+
+		var entries = Service.GetAll().ToDictionary(entry => entry.View.Identity);
+		foreach (UIQuestItem item in _questList.QuestItems)
+		{
+			if (!entries.TryGetValue(item.View.Identity, out QuestPresentationEntry entry)
+				|| item.View.State != entry.View.State
+				|| item.View.Type != entry.View.Type
+				|| item.View.Source != entry.View.Source
+				|| item.View.SubSource != entry.View.SubSource)
+			{
+				RefreshList();
+				return;
+			}
+			UpdateEntry(item, entry);
+		}
 	}
 
 	/// <summary>
@@ -349,6 +389,7 @@ public class QuestContainer : UIContainerElement
 		}
 
 		RefreshQuestContainer();
+		_entryRefreshTimer = 0;
 
 		// Display the quest panel.
 		base.Show(args);
@@ -393,15 +434,39 @@ public class QuestContainer : UIContainerElement
 
 	private void OnQuestObjectiveUpdated(QuestIdentity identity)
 	{
-		if (SelectedItem is not { } selectedItem
-			|| selectedItem.View.Identity != identity
+		UIQuestItem item = _questList.QuestItems.FirstOrDefault(item => item.View.Identity == identity);
+		if (item is null
 			|| !Service.TryGet(identity, out QuestPresentationEntry entry))
 		{
 			return;
 		}
 
-		selectedItem.UpdateEntry(entry);
-		_questDetail.RefreshObjectives(entry.View);
+		UpdateEntry(item, entry);
+	}
+
+	private void UpdateEntry(UIQuestItem item, QuestPresentationEntry entry)
+	{
+		QuestView previous = item.View;
+		item.UpdateEntry(entry);
+		if (SelectedItem != item)
+		{
+			return;
+		}
+
+		if (previous.State != entry.View.State
+			|| QuestHintDisplay.IsVisible(previous) != QuestHintDisplay.IsVisible(entry.View))
+		{
+			ChangeSelectedItem(item);
+		}
+		else if (QuestHintDisplay.IsVisible(entry.View))
+		{
+			_questHint.SetQuest(entry.View);
+		}
+		else
+		{
+			_questDetail.RefreshObjectives(entry.View);
+			_questDetail.UpdateChangeButton("45,38,33");
+		}
 	}
 
 	/// <summary>
@@ -410,6 +475,12 @@ public class QuestContainer : UIContainerElement
 	/// <param name="item"></param>
 	public void ChangeSelectedItem(UIQuestItem item)
 	{
+		ResetPointerState(_questDetail);
+		ResetPointerState(_questHint);
+		MouseText = string.Empty;
+		Main.hoverItemName = string.Empty;
+		Main.HoverItem = new Item();
+
 		// 更新选中的任务
 		var oldSelectedItem = SelectedItem;
 		_selectedQuest = item?.View.Identity;
@@ -418,8 +489,10 @@ public class QuestContainer : UIContainerElement
 		oldSelectedItem?.OnUnselected();
 		SelectedItem?.OnSelected();
 
+		_questHint.SetQuest(item?.View);
+		_questDetail.Info.IsVisible = !_questHint.IsVisible;
 		_questDetail.UpdateChangeButton("45,38,33");
-		_questDetail.SetQuestDetail(item);
+		_questDetail.SetQuestDetail(_questHint.IsVisible ? null : item);
 
 		if (item is not null && item.View.State == QuestViewState.Failed)
 		{
@@ -432,6 +505,16 @@ public class QuestContainer : UIContainerElement
 			_questDetail.AnimationState = 0;
 			_questDetail.AnimationTimer = 0;
 			DetailTip.HideCurrent();
+		}
+	}
+
+	private static void ResetPointerState(BaseElement element)
+	{
+		element.Events.LeftUp(element);
+		element.Events.MouseOut(element);
+		foreach (BaseElement child in element.ChildrenElements)
+		{
+			ResetPointerState(child);
 		}
 	}
 
