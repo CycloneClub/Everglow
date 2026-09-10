@@ -27,10 +27,7 @@ public class UIQuestHint : UIBlock
 	public override void OnInitialization()
 	{
 		base.OnInitialization();
-		_scrollbar = new UIQuestTextVerticalScrollbar();
-		Register(_scrollbar);
 		_content = new UIContainerPanel();
-		_content.SetVerticalScrollbar(_scrollbar);
 		Register(_content);
 
 		_title = new UITextPlus(string.Empty);
@@ -55,10 +52,6 @@ public class UIQuestHint : UIBlock
 		{
 			_title.Text = title;
 			_hint.Text = hint;
-			if (changedQuest)
-			{
-				_scrollbar.WheelValue = 0f;
-			}
 			_layoutWidth = -1f;
 			Calculation();
 		}
@@ -73,13 +66,9 @@ public class UIQuestHint : UIBlock
 		}
 
 		float margin = 36f * QuestContainer.Scale;
-		_scrollbar.Info.Top.SetValue(margin);
-		_scrollbar.Info.Left.SetValue(-margin, 1f);
-		_scrollbar.Info.Height.SetValue(-2f * margin, 1f);
-		_scrollbar.Calculation();
 		_content.Info.Left.SetValue(margin);
 		_content.Info.Top.SetValue(margin);
-		_content.Info.Width.SetValue(-2f * margin - _scrollbar.InnerScale.X, 1f);
+		_content.Info.Width.SetValue(-2f * margin, 1f);
 		_content.Info.Height.SetValue(-2f * margin, 1f);
 		_content.Calculation();
 

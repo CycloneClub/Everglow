@@ -246,7 +246,7 @@ public class UIQuestDetail : UIBlock, IDrawable_InRt2D
 
 		if (oldWidth != Info.Width.Pixel || oldHeight != Info.Height.Pixel)
 		{
-			if (Info.IsVisible && SelectedItem != null)
+			if (SelectedItem != null)
 			{
 				ResetTexts();
 				SetTexts(SelectedItem.View);

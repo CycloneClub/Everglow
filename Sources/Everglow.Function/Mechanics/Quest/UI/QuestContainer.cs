@@ -475,12 +475,6 @@ public class QuestContainer : UIContainerElement
 	/// <param name="item"></param>
 	public void ChangeSelectedItem(UIQuestItem item)
 	{
-		ResetPointerState(_questDetail);
-		ResetPointerState(_questHint);
-		MouseText = string.Empty;
-		Main.hoverItemName = string.Empty;
-		Main.HoverItem = new Item();
-
 		// 更新选中的任务
 		var oldSelectedItem = SelectedItem;
 		_selectedQuest = item?.View.Identity;
@@ -492,7 +486,7 @@ public class QuestContainer : UIContainerElement
 		_questHint.SetQuest(item?.View);
 		_questDetail.Info.IsVisible = !_questHint.IsVisible;
 		_questDetail.UpdateChangeButton("45,38,33");
-		_questDetail.SetQuestDetail(_questHint.IsVisible ? null : item);
+		_questDetail.SetQuestDetail(item);
 
 		if (item is not null && item.View.State == QuestViewState.Failed)
 		{
@@ -505,16 +499,6 @@ public class QuestContainer : UIContainerElement
 			_questDetail.AnimationState = 0;
 			_questDetail.AnimationTimer = 0;
 			DetailTip.HideCurrent();
-		}
-	}
-
-	private static void ResetPointerState(BaseElement element)
-	{
-		element.Events.LeftUp(element);
-		element.Events.MouseOut(element);
-		foreach (BaseElement child in element.ChildrenElements)
-		{
-			ResetPointerState(child);
 		}
 	}
 
