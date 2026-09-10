@@ -95,8 +95,11 @@ public class ChainGrenadeSub_Proj : ModProjectile
 
 	public override void OnKill(int timeLeft)
 	{
-		SoundEngine.PlaySound(SoundID.DD2_GoblinBomb.WithVolume(0.5f), Projectile.Center);
-		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<ChainGrenadeSub_ProjExplosion>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+		if (Main.myPlayer == Projectile.owner)
+		{
+			SoundEngine.PlaySound(SoundID.DD2_GoblinBomb.WithVolume(0.5f), Projectile.Center);
+			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<ChainGrenadeSub_ProjExplosion>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+		}
 		base.OnKill(timeLeft);
 	}
 

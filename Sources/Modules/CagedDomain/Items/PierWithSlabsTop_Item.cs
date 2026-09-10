@@ -26,9 +26,12 @@ public class PierWithSlabsTop_Item : ModItem
 		{
 			int x = (int)(Main.MouseWorld.X / 16);
 			int y = (int)(Main.MouseWorld.Y / 16);
-			pWST.PlaceAtTileObjectDataOrigin(x, y);
-			Item.stack--;
-			return false;
+			if (pWST.NoCollideInSolidGrid(x, y, false))
+			{
+				pWST.PlaceAtTileObjectDataOrigin(x, y);
+				Item.stack--;
+				return false;
+			}
 		}
 		return false;
 	}

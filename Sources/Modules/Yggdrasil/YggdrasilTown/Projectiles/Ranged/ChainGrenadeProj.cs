@@ -95,13 +95,16 @@ public class ChainGrenadeProj : ModProjectile
 
 	public override void OnKill(int timeLeft)
 	{
-		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<ChainGrenadeProjExplosion>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
-		for (int i = 0; i < 3; i++)
+		if (Main.myPlayer == Projectile.owner)
 		{
-			Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, new Vector2(0, Main.rand.NextFloat(4, 12)).RotatedByRandom(MathHelper.TwoPi), ModContent.ProjectileType<ChainGrenadeSub_Proj>(), (int)(Projectile.damage * 0.6f), Projectile.knockBack, Projectile.owner);
-			proj.timeLeft = Main.rand.Next(14, 30);
+			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<ChainGrenadeProjExplosion>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+			for (int i = 0; i < 3; i++)
+			{
+				Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, new Vector2(0, Main.rand.NextFloat(4, 12)).RotatedByRandom(MathHelper.TwoPi), ModContent.ProjectileType<ChainGrenadeSub_Proj>(), (int)(Projectile.damage * 0.6f), Projectile.knockBack, Projectile.owner);
+				proj.timeLeft = Main.rand.Next(14, 30);
+			}
+			SoundEngine.PlaySound(SoundID.DD2_BetsyFireballImpact, Projectile.Center);
 		}
-		SoundEngine.PlaySound(SoundID.DD2_BetsyFireballImpact, Projectile.Center);
 		base.OnKill(timeLeft);
 	}
 

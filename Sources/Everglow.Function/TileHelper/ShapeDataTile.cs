@@ -205,17 +205,13 @@ public abstract class ShapeDataTile : ModTile
 
 	public virtual void PlaceAtTileObjectDataOrigin(int i, int j)
 	{
-		if (i > Main.maxTilesX - TotalWidth || i < 0 || j > Main.maxTilesY || j - TotalHeight < 0)
-		{
-			return;
-		}
-		if (Main.dedServ)
-		{
-			return;
-		}
 		TileObjectData tileObjectData = TileObjectData.GetTileData(Type, Main.LocalPlayer.HeldItem.placeStyle);
 		i -= tileObjectData.Origin.X;
 		j -= tileObjectData.Origin.Y;
+		if (i + TotalWidth > Main.maxTilesX || i < 0 || j + TotalHeight > Main.maxTilesY || j < 0)
+		{
+			return;
+		}
 		for (int x = 0; x < TotalWidth; x++)
 		{
 			for (int y = 0; y < TotalHeight; y++)
@@ -230,6 +226,7 @@ public abstract class ShapeDataTile : ModTile
 				}
 			}
 		}
+		NetMessage.SendTileSquare(-1, i, j, TotalWidth, TotalHeight);
 	}
 
 	/// <summary>

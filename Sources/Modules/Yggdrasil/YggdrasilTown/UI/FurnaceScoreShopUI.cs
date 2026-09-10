@@ -61,7 +61,7 @@ public class FurnaceScoreShopUI : UIContainerElement
 	public override void Update(GameTime gt)
 	{
 		base.Update(gt);
-		if (Main.LocalPlayer.chest > -1)
+		if (Main.LocalPlayer.chest > -1 || Main.LocalPlayer.talkNPC > -1)
 		{
 			Instance.Close();
 		}

@@ -46,8 +46,6 @@ namespace Everglow.Commons.UI
 			instance = this;
 		}
 
-		public int HookIndex = 0;
-
 		public Chest CurrentShop = new Chest(false);
 
 		public Chest OldChest = new Chest(false);
@@ -279,7 +277,6 @@ namespace Everglow.Commons.UI
 
 		private void On_Main_DrawInventory(On_Main.orig_DrawInventory orig, Main self)
 		{
-			//HookIndex = 0;
 			CheckFurnaceShopEnable_ModifyNpcShop();
 			orig(self);
 			DisposeFurnaceShopEnable_ModifyNpcShop();
@@ -287,8 +284,6 @@ namespace Everglow.Commons.UI
 
 		private void CheckFurnaceShopEnable_ModifyNpcShop()
 		{
-			//HookIndex++;
-			//Main.NewText(Main.npcShop + ", " + HookIndex);
 			if (CurrentSpecialShop >= 0 && Main.npcShop == 0)
 			{
 				Main.npcShop = 65536 + CurrentSpecialShop;
@@ -300,27 +295,6 @@ namespace Everglow.Commons.UI
 			if (Main.npcShop >= 65536)
 			{
 				Main.npcShop = 0;
-			}
-		}
-
-		private void CheckFurnaceShopEnable_ModifyTalkNPC()
-		{
-			if (CurrentSpecialShop >= 0 && Main.LocalPlayer.talkNPC < 0)
-			{
-				OldTalkNPC = Main.LocalPlayer.talkNPC;
-				Main.LocalPlayer.talkNPC = 65536 + CurrentSpecialShop;
-				Main.npcShop = 0;
-				OldChest = Main.instance.shop[0];
-				SetupShop(CurrentShop);
-			}
-		}
-
-		private void DisposeFurnaceShopEnable_ModifyTalkNPC()
-		{
-			if (Main.LocalPlayer.talkNPC >= 65536)
-			{
-				Main.LocalPlayer.talkNPC = OldTalkNPC;
-				Main.instance.shop[0] = OldChest;
 			}
 		}
 

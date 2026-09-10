@@ -2146,8 +2146,8 @@ public partial class TileUtils
 		var bounds = MathUtils.GetPolygonAABBBound_Vector4(polygon);
 		bounds.X = bounds.X - bounds.X % 16 - 8;
 		bounds.Y = bounds.Y - bounds.Y % 16 - 8;
-		bounds.Z = bounds.Z - bounds.Z % 16 - 8;
-		bounds.W = bounds.W - bounds.W % 16 - 8;
+		bounds.Z = bounds.Z - bounds.Z % 16 + 8;
+		bounds.W = bounds.W - bounds.W % 16 + 8;
 		for (int x = (int)bounds.X; x <= bounds.Z; x += 16)
 		{
 			for (int y = (int)bounds.Y; y <= bounds.W; y += 16)

@@ -393,9 +393,11 @@ public abstract class HangingTile : ModTile, ITileFluentlyDrawn
 			return;
 		}
 		hTP.SwitchVineCoolTimer = 30;
-		hTP.Grasping = true;
-		RopeGraspingPlayer.Add(tilePos, player);
-		PushRope(ref rope, player.velocity * 12f);
+		if (RopeGraspingPlayer.TryAdd(tilePos, player))
+		{
+			hTP.Grasping = true;
+			PushRope(ref rope, player.velocity * 12f);
+		}
 	}
 
 	public void RemovePlayerFromRope(Player player, Rope rope, Point tilePos)

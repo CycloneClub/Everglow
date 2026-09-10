@@ -107,6 +107,10 @@ public class FurnaceScoreShop : BackgroundSlideBase
 			}
 			else
 			{
+				if (player.talkNPC != -1)
+				{
+					player.talkNPC = -1;
+				}
 				FurnaceScoreShopUI.Instance.Show();
 			}
 		}

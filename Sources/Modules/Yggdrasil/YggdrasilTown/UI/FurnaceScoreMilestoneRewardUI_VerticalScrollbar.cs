@@ -66,6 +66,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.UI
 			mask.ShowBorder = (false, false, false, false);
 			mask.PanelColor = _scrollbarArrow.PanelColor;
 			Register(mask);
+
+			_wheelValue = 1f;
 		}
 
 		public override void Update(GameTime gt)

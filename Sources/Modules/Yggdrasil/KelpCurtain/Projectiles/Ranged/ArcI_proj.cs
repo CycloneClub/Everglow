@@ -80,7 +80,14 @@ public class ArcI_proj : ModProjectile
 		{
 			if (Projectile.timeLeft % Owner.HeldItem.useTime == 0)
 			{
-				Shoot();
+				if (Owner.HasAmmo(Owner.HeldItem))
+				{
+					Shoot();
+				}
+				else
+				{
+					Projectile.Kill();
+				}
 			}
 			controlCount++;
 		}

@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent.ItemDropRules;
+using Terraria.ModLoader.IO;
 
 namespace Everglow.Yggdrasil.KelpCurtain.NPCs.VampireMat;
 
@@ -91,9 +92,6 @@ public class VampireMat : ModNPC
 	{
 		NPC.localAI[0] = 0;
 		NPC.TargetClosest();
-		BodyRope = Rope.Create_Vine(NPC.Center, 20, 1, 1, 17.3f);
-		EularSys.AddMassSpringMesh(BodyRope);
-		GlobalRopeSystem.EulerContainers.Add(EularSys);
 		AICoroutine.StartCoroutine(new Coroutine(ChasePlayer()));
 		RealCenter = NPC.Center;
 		VortexStyle = Main.rand.Next(2);
@@ -108,6 +106,12 @@ public class VampireMat : ModNPC
 	{
 		AICoroutine.Update();
 		RealCenter += NPC.velocity;
+		if (BodyRope is null)
+		{
+			BodyRope = Rope.Create_Vine(NPC.Center, 20, 1, 1, 17.3f);
+			EularSys.AddMassSpringMesh(BodyRope);
+			GlobalRopeSystem.EulerContainers.Add(EularSys);
+		}
 		BodyRope.Masses[0].Position = RealCenter;
 		BodyRope.ApplyForce_VelocityDecay(0.2f);
 		if (NPCTextureState == (int)TextureState.Flat)
