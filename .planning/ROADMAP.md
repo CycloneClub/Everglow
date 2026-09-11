@@ -39,7 +39,13 @@ Phase 1 owns the source/inventory reconciliation record for the label discrepanc
   3. Players can obtain, craft, equip, or use every unblocked item and completed-art biology drop in this tranche with the documented recipe, value, effect, and localization behavior; no placeholder art is introduced.
   4. Every completed-art item accepted in this phase has an XML-full-fetch comparison record; exact matches are eligible for green/check status, while partial/conflicting or blocked entries remain yellow/unchecked with reasons.
 **Verification needs:** XML `--detail full` fetches and per-item matrix; source-label taxonomy; item recipe/effect/drop checks; asset/localization convention review; `dotnet build`; blocker and dependency audit.
-**Plans:** TBD
+**Plans:** 5 plans
+Plans:
+- [ ] 01-01-PLAN.md — Inventory pipeline tracer: committed XML evidence + one-category inventory + validator
+- [ ] 01-02-PLAN.md — Full inventory reconciliation, five-label taxonomy, deferred/assumption record
+- [ ] 01-03-PLAN.md — Completed-art tranche A: weapons, ammo, materials, accessories, misc, boss summon
+- [ ] 01-04-PLAN.md — Completed-art tranche B: armor, placeables, tools, boosters, pets, critters
+- [ ] 01-05-PLAN.md — Localization parity, deviation ledger, final Phase 1 gate
 
 ### Phase 2: Remaining Items & Unfinished-Art Materials
 **Goal:** The remaining non-boss item scope is implemented in dependency order, including entries and biology-design drops/materials whose design artwork or textures were not complete during Phase 1.
@@ -139,7 +145,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8. Th
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Item Inventory & Completed-Art Items | 0/TBD | Not started | - |
+| 1. Item Inventory & Completed-Art Items | 0/5 | Not started | - |
 | 2. Remaining Items & Unfinished-Art Materials | 0/TBD | Not started | - |
 | 3. Completed-Art Ordinary Monsters | 0/TBD | Not started | - |
 | 4. Remaining Ordinary Monsters | 0/TBD | Not started | - |
