@@ -129,7 +129,6 @@ if ($bom) { $bom | ForEach-Object { "UTF-8 BOM: $_" }; exit 1 }
 
 - Any structural change to `Sources/Directory.Build.props`, a project file, the solution, module activation, or resource-packing configuration.
 - Adding a dependency, renaming/deleting files or public content names, creating new art assets, or changing build/CI behavior.
-- Any Git state change: branch creation, staging, commit, push, rebase, merge, or reset.
 
 ### Never
 
