@@ -67,6 +67,7 @@ After each implementation item is individually verified:
 2. Mark all relevant checkboxes in a fully implemented row and apply the same green background to every cell in that row: `rgb(217,245,214)`.
 3. Apply the same yellow background to every cell in a partially implemented, conflicting, or known-exception row: `rgb(255,255,204)`. Keep each checkbox truthful to the specific sub-deliverable, and explain the yellow reason in the audit report and user-facing summary.
 4. Keep unimplemented or blocked rows unchecked and without a completion-status background. The legacy light-orange texture-column and light-green code-column fills are not completion status and must not be interpreted or reported as such.
+5. Code-only implementation without approved artwork is not a completed or partial row for color purposes: keep the artwork checkbox false, keep the code checkbox truthful, and leave the entire row uncolored until the artwork exists.
 
 The repository planning artifacts are the audit trail for the comparison; the Feishu documents remain the design-status source of truth. Use the `lark-doc` update workflow with block IDs obtained from XML full fetches for status writes.
 
