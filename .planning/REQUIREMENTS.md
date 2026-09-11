@@ -5,7 +5,7 @@
 
 ## v1 Requirements
 
-Requirements for the current second-layer milestone. Each maps to one roadmap phase.
+Requirements for the current second-layer milestone. Each maps to exactly one roadmap phase. Implementation follows the roadmap's content order: items first, then ordinary monsters, then terrain/generation, then bosses, then final integration. Within each category, design artwork/texture-complete entries precede incomplete-art entries.
 
 ### Terrain and World Generation
 
@@ -28,13 +28,15 @@ Requirements for the current second-layer milestone. Each maps to one roadmap ph
 
 ### Items, Materials, and Rewards
 
-- [ ] **ITEM-01**: The planned natural-themed weapons, ammunition, materials, and utility items are implemented with the documented recipes, values, effects, and localization.
-- [ ] **ITEM-02**: The Devil Heart Iron, Witherbark, Molluscs, and other planned armor/accessory sets are implemented with documented class effects, set effects, materials, and progression placement.
-- [ ] **ITEM-03**: Underwater treasury, underwater maze, regional chest, fishing, and collection rewards are implemented with the documented loot sources, access conditions, and effects.
-- [ ] **ITEM-04**: Quest-exclusive, NPC-trade, settlement-restoration, purification, and mission rewards are implemented with the documented unlock conditions and progression dependencies.
+- [ ] **ITEM-01**: The planned natural-themed weapons, ammunition, materials, utility items, and biology-design creature drops/materials belonging to those item families are implemented with the documented recipes, values, effects, and localization.
+- [ ] **ITEM-02**: The Devil Heart Iron, Witherbark, Molluscs, and other planned armor/accessory sets, including biology-design materials/drops used by those sets, are implemented with documented class effects, set effects, materials, and progression placement.
+- [ ] **ITEM-03**: Underwater treasury, underwater maze, regional chest, fishing, collection rewards, and biology-design exploration/fishing/collection drops are implemented with the documented loot sources, access conditions, and effects.
+- [ ] **ITEM-04**: Quest-exclusive, NPC-trade, settlement-restoration, purification, mission rewards, and biology-design drops/materials used by those progression paths are implemented with the documented unlock conditions and progression dependencies.
 - [ ] **ITEM-05**: The Klein Snake series and its parasite/seed gameplay loop are implemented with the documented weapon behavior, debuff, drops, and class coverage.
 - [ ] **ITEM-06**: Giant Winged Dragon rewards and craftable equipment are implemented with the documented drop conditions, special tail-kill rewards, recipes, and encounter progression.
 - [ ] **ITEM-07**: Each implemented item is localized in both supported languages and uses the repository's generated asset and localization conventions.
+
+**Biology-drop classification rule:** Every drop named by the biology design is item scope. Ordinary-creature drops/materials are counted in ITEM-01 through ITEM-04 and implemented in Phases 1–2 before monster behavior is accepted in Phases 3–4. Boss and special-encounter rewards remain item scope in ITEM-05 and ITEM-06 and are implemented with their encounters in Phase 7. No biology drop may be left only in a monster requirement.
 
 ### Progression and Gameplay Loops
 
@@ -80,17 +82,42 @@ Updated during roadmap creation. Each v1 requirement must map to exactly one pha
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| TERR-01 through TERR-07 | Pending | Pending |
-| BIO-01 through BIO-06 | Pending | Pending |
-| ITEM-01 through ITEM-07 | Pending | Pending |
-| GAME-01 through GAME-05 | Pending | Pending |
-| QUAL-01 through QUAL-05 | Pending | Pending |
+| TERR-01 | Phase 6 | Pending |
+| TERR-02 | Phase 6 | Pending |
+| TERR-03 | Phase 6 | Pending |
+| TERR-04 | Phase 6 | Pending |
+| TERR-05 | Phase 6 | Pending |
+| TERR-06 | Phase 6 | Pending |
+| TERR-07 | Phase 6 | Pending |
+| BIO-01 | Phase 4 | Pending |
+| BIO-02 | Phase 4 | Pending |
+| BIO-03 | Phase 4 | Pending |
+| BIO-04 | Phase 7 | Pending |
+| BIO-05 | Phase 7 | Pending |
+| BIO-06 | Phase 8 | Pending |
+| ITEM-01 | Phase 2 | Pending |
+| ITEM-02 | Phase 2 | Pending |
+| ITEM-03 | Phase 2 | Pending |
+| ITEM-04 | Phase 2 | Pending |
+| ITEM-05 | Phase 7 | Pending |
+| ITEM-06 | Phase 7 | Pending |
+| ITEM-07 | Phase 8 | Pending |
+| GAME-01 | Phase 6 | Pending |
+| GAME-02 | Phase 6 | Pending |
+| GAME-03 | Phase 6 | Pending |
+| GAME-04 | Phase 7 | Pending |
+| GAME-05 | Phase 8 | Pending |
+| QUAL-01 | Phase 8 | Pending |
+| QUAL-02 | Phase 8 | Pending |
+| QUAL-03 | Phase 8 | Pending |
+| QUAL-04 | Phase 8 | Pending |
+| QUAL-05 | Phase 1 | Pending |
 
 **Coverage:**
 - v1 requirements: 30 total
-- Mapped to phases: 0
-- Unmapped: 30 ⚠️
+- Mapped to phases: 30
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-09-11*
-*Last updated: 2026-09-11 after initial project definition*
+*Last updated: 2026-09-11 after roadmap priority revision*
