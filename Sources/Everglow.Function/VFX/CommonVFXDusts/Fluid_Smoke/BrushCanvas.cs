@@ -34,7 +34,7 @@ public class BrushCanvas : Visual
 			float velXToR = TransformVelocityToChannel(vel.X);
 			float velYToG = TransformVelocityToChannel(vel.Y);
 			Ins.Batch.Draw(blackPoint, Main.MouseWorld, null, Color.White, (float)Main.timeForVisualEffects * 0.15f, blackPoint.Size() * 0.5f, brushScale, SpriteEffects.None);
-			Ins.Batch.Draw(whitePoint, Main.MouseWorld, null, new Color(velXToR + 1 / 256f, velYToG + 1 / 256f, 0f, 0f), (float)Main.timeForVisualEffects * 0.15f, whitePoint.Size() * 0.5f, brushScale, SpriteEffects.None);
+			Ins.Batch.Draw(whitePoint, Main.MouseWorld, null, new Color(velXToR + 1 / 256f, velYToG + 1 / 256f, 0f, 1f), (float)Main.timeForVisualEffects * 0.15f, whitePoint.Size() * 0.5f, brushScale, SpriteEffects.None);
 		}
 		else
 		{
@@ -43,7 +43,7 @@ public class BrushCanvas : Visual
 				float velXToR = TransformVelocityToChannel((vel.X * i + OldVel.X * (length - i)) / length);
 				float velYToG = TransformVelocityToChannel((vel.Y * i + OldVel.Y * (length - i)) / length);
 				Ins.Batch.Draw(blackPoint, (Main.MouseWorld * i + Position * (length - i)) / length, null, Color.White, (float)Main.timeForVisualEffects * 0.15f, blackPoint.Size() * 0.5f, brushScale, SpriteEffects.None);
-				Ins.Batch.Draw(whitePoint, (Main.MouseWorld * i + Position * (length - i)) / length, null, new Color(velXToR + 1 / 256f, velYToG + 1 / 256f, 0f, 0f), (float)Main.timeForVisualEffects * 0.15f, whitePoint.Size() * 0.5f, brushScale, SpriteEffects.None);
+				Ins.Batch.Draw(whitePoint, (Main.MouseWorld * i + Position * (length - i)) / length, null, new Color(velXToR + 1 / 256f, velYToG + 1 / 256f, 0f, 1f), (float)Main.timeForVisualEffects * 0.15f, whitePoint.Size() * 0.5f, brushScale, SpriteEffects.None);
 			}
 		}
 

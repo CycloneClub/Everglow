@@ -4,7 +4,9 @@ public class Fluid_field_pipeline : Pipeline
 {
 	public override void BeginRender()
 	{
-		Ins.Batch.Begin();
+		// 笔刷把速度写在 RGB、把形状写在贴图亮度里 (alpha=1), 因此必须用非预乘 alpha
+		// 混合, 否则默认的 AlphaBlend 会把 RGB 乘以材质 alpha 而写不进速度。
+		Ins.Batch.Begin(BlendState.NonPremultiplied);
 		effect.Value.Parameters["uTransform"].SetValue(
 			Matrix.CreateTranslation(new Vector3(-Main.screenPosition, 0)) *
 			Main.GameViewMatrix.TransformationMatrix *
