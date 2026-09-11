@@ -65,7 +65,7 @@ After each implementation item is individually verified:
 
 1. Treat the complete design row as one status unit. Do not use different status colors for the artwork/texture cell and code cell.
 2. Mark all relevant checkboxes in a fully implemented row and apply the same green background to every cell in that row: `rgb(217,245,214)`.
-3. Apply the same yellow background to every cell in a partially implemented, conflicting, or known-exception row: `rgb(255,255,204)`. Keep each checkbox truthful to the specific sub-deliverable, and explain the yellow reason in the audit report and user-facing summary.
+3. Only rows whose artwork and code checkboxes are both complete may receive a status color. Use green for an exact match; use the same yellow background on every cell for a conflict or known exception: `rgb(255,255,204)`. Keep each checkbox truthful to the specific sub-deliverable, and explain every yellow reason with a local Feishu comment and in the user-facing summary.
 4. Keep unimplemented or blocked rows unchecked and without a completion-status background. The legacy light-orange texture-column and light-green code-column fills are not completion status and must not be interpreted or reported as such.
 5. Code-only implementation without approved artwork is not a completed or partial row for color purposes: keep the artwork checkbox false, keep the code checkbox truthful, and leave the entire row uncolored until the artwork exists.
 
