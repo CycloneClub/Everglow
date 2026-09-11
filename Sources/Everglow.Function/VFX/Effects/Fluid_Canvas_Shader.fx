@@ -161,7 +161,6 @@ float4 PixelShaderFunction_ApplyPressure(PSInput input) : COLOR0
 {
 	float dx = 1.0 / uResolutionX;
 	float dy = 1.0 / uResolutionY;
-	float dt = timeStep / rho;
 	
 	float up = tex2D(uImage0, input.Texcoord - float2(0, dy)).x;
 	float down = tex2D(uImage0, input.Texcoord + float2(0, dy)).x;
@@ -171,8 +170,11 @@ float4 PixelShaderFunction_ApplyPressure(PSInput input) : COLOR0
 	float gradX = (right - left) * 0.5;
 	float gradY = (down - up) * 0.5;
 
+	// The Jacobi solve produces a pressure satisfying laplacian(p) = divergence, so the
+	// exact projection is v' = v - grad(p). Previously this subtracted dt * grad(p)
+	// (dt = 0.15), which removed only ~15% of the divergence per projection.
 	float4 vel = (tex2D(uImage1, input.Texcoord) - float4(0.5, 0.5, 0.5, 0.5));
-	float2 finalVel = vel.xy - dt * float2(gradX, gradY) * pressure_move_value;
+	float2 finalVel = vel.xy - float2(gradX, gradY) * pressure_move_value;
 	float halfStep = 0.5;
 	finalVel = clamp(finalVel, float2(-halfStep, -halfStep), float2(halfStep, halfStep));
 	return float4(finalVel, vel.zw) + float4(0.5, 0.5, 0.5, 0.5);

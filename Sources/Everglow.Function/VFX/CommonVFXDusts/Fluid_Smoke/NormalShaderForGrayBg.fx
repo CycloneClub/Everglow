@@ -27,7 +27,12 @@ PSInput VertexShaderFunction(VSInput input)
 
 float4 PixelShaderFunction(PSInput input) : COLOR0
 {
-    return tex2D(uImage0, input.Texcoord) * input.Color;
+    float4 tex = tex2D(uImage0, input.Texcoord);
+    // 速度存储在 RGB, alpha 只当作遮罩: 用纹理亮度作为混合权重,
+    // 让绘制的速度颜色按笔刷形状插值, 同时保留 RT 的 0.5 背景。
+    float4 col = input.Color;
+    col.a = tex.r * input.Color.a;
+    return col;
 }
 
 technique Technique1
