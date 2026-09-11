@@ -28,113 +28,156 @@ Phase 1 owns the source/inventory reconciliation record for the label discrepanc
 ## Phase Details
 
 ### Phase 1: Item Inventory & Completed-Art Items
+
 **Goal:** The complete item inventory is reconciled against the authoritative designs, and every item or biology-design drop with finished design artwork is usable without introducing placeholder assets.
 **Mode:** mvp
 **Depends on:** Nothing (first phase)
 **Requirements:** QUAL-05
 **Scope anchor:** Primary item requirements are assigned to Phase 2; this phase delivers their completed-art tranche and the source/dependency record needed by Phase 2.
 **Success Criteria** (what must be TRUE):
+
   1. The inventory identifies every in-scope item, material, and biology-design drop, records whether its design artwork/texture is complete, and records dependencies, missing assets, hardmode-deferred entries, and undefined future entries.
   2. The biology/terrain source-label discrepancy is classified in an auditable record before geography-specific implementation is accepted.
   3. Players can obtain, craft, equip, or use every unblocked item and completed-art biology drop in this tranche with the documented recipe, value, effect, and localization behavior; no placeholder art is introduced.
   4. Every completed-art item accepted in this phase has an XML-full-fetch comparison record; exact matches are eligible for green/check status, while partial/conflicting or blocked entries remain yellow/unchecked with reasons.
+
 **Verification needs:** XML `--detail full` fetches and per-item matrix; source-label taxonomy; item recipe/effect/drop checks; asset/localization convention review; `dotnet build`; blocker and dependency audit.
 **Plans:** 5 plans
 Plans:
+**Wave 1**
+
 - [ ] 01-01-PLAN.md — Inventory pipeline tracer: committed XML evidence + one-category inventory + validator
+
+**Wave 2** *(blocked on Wave 1 completion)*
+
 - [ ] 01-02-PLAN.md — Full inventory reconciliation, five-label taxonomy, deferred/assumption record
+
+**Wave 3** *(blocked on Wave 2 completion)*
+
 - [ ] 01-03-PLAN.md — Completed-art tranche A: weapons, ammo, materials, accessories, misc, boss summon
+
+**Wave 4** *(blocked on Wave 3 completion)*
+
 - [ ] 01-04-PLAN.md — Completed-art tranche B: armor, placeables, tools, boosters, pets, critters
+
+**Wave 5** *(blocked on Wave 4 completion)*
+
 - [ ] 01-05-PLAN.md — Localization parity, deviation ledger, final Phase 1 gate
 
+**Cross-cutting constraints:**
+
+- `dotnet build /p:Configuration=Release /p:WarningLevel=0` passes.
+- No `.png` or other binary asset is added or modified.
+
 ### Phase 2: Remaining Items & Unfinished-Art Materials
+
 **Goal:** The remaining non-boss item scope is implemented in dependency order, including entries and biology-design drops/materials whose design artwork or textures were not complete during Phase 1.
 **Mode:** mvp
 **Depends on:** Phase 1 inventory, source reconciliation, and dependency ledger
 **Requirements:** ITEM-01, ITEM-02, ITEM-03, ITEM-04
 **Success Criteria** (what must be TRUE):
+
   1. Players can obtain, craft, equip, or use every unblocked remaining natural weapon, ammunition, material, utility item, armor/accessory, exploration reward, collection reward, quest reward, trade reward, restoration reward, and associated biology-design drop in the documented progression.
   2. Unfinished-art drops and materials are counted in item implementation and are not deferred to the monster phases; entries blocked by unavailable approved art remain explicitly unchecked rather than receiving placeholder assets.
   3. Recipes, values, effects, set effects, access conditions, and progression dependencies discovered in Phase 1 work together without bypassing the intended item progression.
   4. Each accepted remaining item has an individual XML-full-fetch comparison and an evidence record that supports green for exact completion or yellow/unchecked for partial/conflicting/blocked work.
+
 **Verification needs:** Phase 1 dependency ledger; per-item source matrix; craft/loot/quest/trade/restoration checks; both localization targets for available items; `dotnet build`; blocker review.
 **Plans:** TBD
 
 ### Phase 3: Completed-Art Ordinary Monsters
+
 **Goal:** Ordinary creatures with complete design textures are playable across the designed Kelp Curtain contexts, while their drops are supplied by the completed item work rather than deferred into creature implementation.
 **Mode:** mvp
 **Depends on:** Phase 2
 **Requirements:** No additional v1 IDs; completed-art tranche of BIO-01, BIO-02, and BIO-03 is the primary dependency for Phase 4.
 **Success Criteria** (what must be TRUE):
+
   1. Every unblocked ordinary creature whose design texture is complete spawns in its intended context and exhibits the documented water/land behavior, hostility, status effects, capture rules, combat states, variants, or neutral behavior.
   2. Players can encounter these creatures and receive the already-implemented documented drops; no biology drop is first introduced or left unfinished in this monster phase.
   3. Completed-art creature entries are individually compared to XML-full-fetch source records, with exact completion, partial/conflict, and blocked states visible for the later remaining-creature tranche.
+
 **Verification needs:** Completed-art biology matrix; client spawn/combat/capture checks; drop-source checks against Phases 1–2; dedicated-server context checks; `dotnet build`.
 **Plans:** TBD
 
 ### Phase 4: Remaining Ordinary Monsters
+
 **Goal:** Ordinary creatures without complete design textures are implemented after the completed-art tranche, with all ordinary-creature behavior integrated against the item drops already classified and implemented in Phases 1–2.
 **Mode:** mvp
 **Depends on:** Phase 3
 **Requirements:** BIO-01, BIO-02, BIO-03
 **Success Criteria** (what must be TRUE):
+
   1. The remaining aquatic, amphibious, surface-water, passive, predator, Witherbark, command, giant-tree, Brody dragonfly, valley, disguised-hazard, neutral, and mini-boss entries that are unblocked by approved assets spawn and behave according to their designs.
   2. Ordinary-creature behavior, spawn weights, hostility, environmental interaction, variants, and status effects do not leak into the main world or bypass the documented item/progression dependencies.
   3. Associated drops are obtainable from the item implementations in Phases 1–2, including unfinished-art drops/materials; monster completion does not become a substitute for item completion.
   4. Every ordinary-creature entry has an individual source comparison and an explicit exact/partial-conflicting/blocked result; hardmode-deferred and undefined future entries remain out of scope.
+
 **Verification needs:** Remaining biology matrix; client spawn/behavior/combat checks; drop and progression integration checks; dedicated-server safety; `dotnet build`; unresolved-source audit.
 **Plans:** TBD
 
 ### Phase 5: Completed-Art Terrain & Structures
+
 **Goal:** Terrain and structures with complete design textures are implemented as usable, traversable building blocks for the later integrated Kelp Curtain generation.
 **Mode:** mvp
 **Depends on:** Phase 4
 **Requirements:** No additional v1 IDs; completed-art tranche of TERR-01 through TERR-07 is the primary dependency for Phase 6.
 **Success Criteria** (what must be TRUE):
+
   1. Every unblocked completed-art block, wall, plant, furniture piece, chest, decorative element, and structure can be placed or generated with its documented mining and interaction rules.
   2. Completed-art traversal structures, hazards, ruins, caves, underwater cells, and safe-area elements are reachable in isolation without requiring unfinished-art replacements.
   3. Terrain entries are individually checked against XML-full-fetch source records, and missing/conflicting art or source ambiguity remains visible for Phase 6.
+
 **Verification needs:** Completed-art terrain matrix; tile interaction and structure reachability checks; resource-packing review; dedicated-server generation-context check; `dotnet build`.
 **Plans:** TBD
 
 ### Phase 6: Remaining Terrain, Generation & Integration
+
 **Goal:** The remaining terrain and structures are completed and the full Kelp Curtain layer generates, connects, and supports its designed traversal, hazards, restoration, and exploration-to-reward progression.
 **Mode:** mvp
 **Depends on:** Phase 5 and the completed item/ordinary-monster tranches
 **Requirements:** TERR-01, TERR-02, TERR-03, TERR-04, TERR-05, TERR-06, TERR-07, GAME-01, GAME-02, GAME-03
 **Success Criteria** (what must be TRUE):
+
   1. Players can enter and leave Yggdrasil with the Kelp Curtain generated in the intended vertical progression and without corrupting the main world; Death Jade Lake, Isle of Bloom, Spiny Moss Court, Town of Decaying Wood, Wilted Zones, Valley of Lush and Moist, Green Tundra, and nested/transition labels follow the Phase 1 reconciliation.
   2. Remaining blocks, walls, plants, furniture, chests, caves, ruins, traps, traversal structures, underwater cells, boat/oxygen routes, treasury/maze access, hazards, settlement functions, and restoration spaces work with the documented rules and remain explorable/recoverable.
   3. The exploration-to-reward loop connects resources, structures, combat, chests, fishing, purification, and progression gates without soft-locking or allowing unintended order bypasses.
   4. Wilted Zones spread, spawn intended enemies, accept the intended purification item, restore terrain, and increment non-repeatable progression exactly once per eligible restoration.
   5. Generation uses Yggdrasil context and resource boundaries, has an acceptable measured generation budget, and performs no client-only work on a dedicated server.
+
 **Verification needs:** Remaining terrain XML matrix; clean client generation and return-flow checks; region/traversal/hazard/restoration/progression playthrough; generation timing; dedicated-server load; `dotnet build`.
 **Plans:** TBD
 
 ### Phase 7: Bosses, Special Encounters & Rewards
+
 **Goal:** After all item, ordinary-monster, and terrain work is available, players can complete the Klein Snake and Giant Winged Dragon encounters and receive their documented reward chains.
 **Mode:** mvp
 **Depends on:** Phase 6
 **Requirements:** BIO-04, BIO-05, ITEM-05, ITEM-06, GAME-04
 **Success Criteria** (what must be TRUE):
+
   1. The Klein Snake arena, trigger, phases, organs, healing projectiles, minions, attacks, transitions, defeat sequence, parasite/seed loop, debuff, and class coverage behave as documented.
   2. The blood mica trigger starts the correct Giant Winged Dragon encounter; protection, phases, tail destruction, tail-kill transition, failure, retry, and completion rules cannot be skipped or falsely satisfied.
   3. Klein Snake and Giant Winged Dragon drops, tail-kill rewards, recipes, craftable equipment, boss-access progression, missions, purchases, and restoration-stage dependencies are granted only under documented conditions.
   4. A player can reach and complete both encounters after the preceding item, ordinary-monster, and terrain prerequisites without receiving rewards from an interrupted or invalid encounter.
+
 **Verification needs:** Repeated client boss/encounter runs; phase, projectile, minion, organ, protection, tail, failure, and retry checks; reward/crafting/source matrix checks; multiplayer cases carried into Phase 8; `dotnet build`.
 **Plans:** TBD
 
 ### Phase 8: Publishable Integration & Source Acceptance
+
 **Goal:** The Kelp Curtain is a publishable, localized, persistent, network-safe layer whose implementation and every design item are reconciled against the authoritative Feishu documents.
 **Mode:** mvp
 **Depends on:** Phase 7
 **Requirements:** BIO-06, ITEM-07, GAME-05, QUAL-01, QUAL-02, QUAL-03, QUAL-04
 **Success Criteria** (what must be TRUE):
+
   1. Creature behavior, environmental interaction, status effects, spawn weights, and combat difficulty match the three designs or have explicit documented exceptions, with no unintended main-world behavior.
   2. Every implemented item has complete `en-US` and `zh-Hans` localization and follows generated asset/localization conventions; missing approved art is not hidden by placeholders.
   3. Player state, world state, subworld transitions, permanent rewards, NPC/projectile state, quest state, and network state remain consistent across save/load, exit/re-entry, dedicated-server, and multiplayer scenarios.
   4. The repository `dotnet build` workflow passes without compiler, resource-packing, or shader errors, and client verification covers entry, generation, exploration, rendering, combat, progression, localization, and reward acquisition.
   5. Every design item is individually synchronized from XML-full-fetch evidence: exact completion is checked/green, partial or conflicting implementation is yellow with a concise explanation, and blocked/unimplemented work remains unchecked with its blocker recorded.
+
 **Verification needs:** Clean build and relevant tests; full client regression; dedicated-server and multiplayer verification for changed networked/persistent/subworld/NPC/projectile/quest/reward paths; final per-item Feishu status writes; planning evidence and blocker audit.
 **Plans:** TBD
 
