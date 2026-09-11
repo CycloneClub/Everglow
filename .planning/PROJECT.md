@@ -63,9 +63,10 @@ Use XML with `--detail full` when checking checkbox state, block IDs, or formatt
 
 After each implementation item is individually verified:
 
-1. Mark the corresponding design item complete in the Feishu source and apply a green background when implementation matches the design and the acceptance checks pass.
-2. Apply a yellow background when implementation is partial, materially differs from the design, or has a known exception; retain a concise explanation of the mismatch.
-3. Keep unimplemented or blocked items unchecked and record the dependency or blocker in the repository planning artifacts.
+1. Treat the complete design row as one status unit. Do not use different status colors for the artwork/texture cell and code cell.
+2. Mark all relevant checkboxes in a fully implemented row and apply the same green background to every cell in that row: `rgb(217,245,214)`.
+3. Apply the same yellow background to every cell in a partially implemented, conflicting, or known-exception row: `rgb(255,255,204)`. Keep each checkbox truthful to the specific sub-deliverable, and explain the yellow reason in the audit report and user-facing summary.
+4. Keep unimplemented or blocked rows unchecked and without a completion-status background. The legacy light-orange texture-column and light-green code-column fills are not completion status and must not be interpreted or reported as such.
 
 The repository planning artifacts are the audit trail for the comparison; the Feishu documents remain the design-status source of truth. Use the `lark-doc` update workflow with block IDs obtained from XML full fetches for status writes.
 
