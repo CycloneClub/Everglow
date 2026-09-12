@@ -1,44 +1,45 @@
 ---
-gsd_state_version: "1.0"
-current_phase: 01
-current_phase_name: Item Inventory & Completed-Art Items
-status: executing
+gsd_state_version: 1.0
+milestone: v1.0
+milestone_name: milestone
+current_phase: 2
+current_phase_name: Remaining Items & Unfinished-Art Materials
+status: planning
 stopped_at: Completed 01-05-PLAN.md - code portion gated green; localization deferred by user directive (45/58 covered, 13 deferred)
-last_updated: "2026-09-12T10:55:26.381Z"
+last_updated: "2026-09-12T14:31:57.578Z"
 last_activity: 2026-09-12
 last_activity_desc: Phase 01 execution started
-state_head: aa5b346ba596a0976ed1c56dbc7232619d406c5c
 progress:
   total_phases: 8
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 5
   completed_plans: 5
-  percent: 0
+state_head: aa5b346ba596a0976ed1c56dbc7232619d406c5c
 ---
 
 # Project State
 
 ## Project Reference
 
-See: `.planning/PROJECT.md` (updated 2026-09-11)
+See: `.planning/PROJECT.md` (updated 2026-09-12)
 
 **Core value:** Deliver a complete, publishable Kelp Curtain layer whose designed regions, gameplay loop, creatures, terrain, items, bosses, encounters, and rewards work together as a coherent Terraria experience.
-**Current focus:** Phase 01 — Item Inventory & Completed-Art Items
+**Current focus:** Phase 2 — Remaining Items & Unfinished-Art Materials
 
 ## Current Position
 
-Phase: 01 (Item Inventory & Completed-Art Items) — READY FOR VERIFICATION
-Plan: 5 of 5
-Status: Plan 01-05 complete — deviation ledger consolidated, four Tools/Developer items classified, final Phase 1 code gates green; localization deferred by user directive (13 entries, 45/58 covered)
-Last activity: 2026-09-12 — 01-05 completed: 3 tasks committed; code gates green (reconciliation, validate-inventory, tranche-A 38/38, tranche-B 20/20, Release build 0 errors, BOM); localization advisory (-AllowMissing)
+Phase: 2 — Remaining Items & Unfinished-Art Materials
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-09-12 — Phase 01 complete, transitioned to Phase 2
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [██░░░░░░░░] 13%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 0
+- Total plans completed: 5
 - Average duration: n/a
 - Total execution time: 0 hours
 
@@ -47,6 +48,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 1–8 | 0 | TBD | n/a |
+| 01 | 5 | - | - |
 
 **Recent Trend:** No execution data yet.
 **Per-Plan Metrics:**
@@ -103,6 +105,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-09-12T10:55:26.346Z
-Stopped at: Completed 01-05-PLAN.md - code portion gated green; localization deferred by user directive (45/58 covered, 13 deferred)
+Last session: 2026-09-12T20:33:00Z
+Stopped at: Phase 1 complete (UAT 4/4, security secured, verification passed), ready to plan Phase 2
 Resume file: None
