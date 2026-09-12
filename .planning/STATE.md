@@ -3,16 +3,16 @@ gsd_state_version: "1.0"
 current_phase: 01
 current_phase_name: Item Inventory & Completed-Art Items
 status: executing
-stopped_at: "Halted at 01-03 Task 2: PHASE SPLIT RECOMMENDED"
-last_updated: "2026-09-12T09:23:31.114Z"
+stopped_at: Completed 01-03-PLAN.md (replanned) - all 3 tasks committed
+last_updated: "2026-09-12T10:05:33.598Z"
 last_activity: 2026-09-12
 last_activity_desc: Phase 01 execution started
-state_head: 8b063eba54e39641e797cecd8de19a526880bc3c
+state_head: d2bd94c1105b1f28028dd89e519df3a68d495bd4
 progress:
   total_phases: 8
   completed_phases: 0
   total_plans: 5
-  completed_plans: 2
+  completed_plans: 3
   percent: 0
 ---
 
@@ -28,7 +28,7 @@ See: `.planning/PROJECT.md` (updated 2026-09-11)
 ## Current Position
 
 Phase: 01 (Item Inventory & Completed-Art Items) — READY TO EXECUTE
-Plan: 3 of 5
+Plan: 4 of 5
 Status: Halted at 01-03 Task 2 — PHASE SPLIT RECOMMENDED (plan 01-03 incomplete)
 Last activity: 2026-09-12 — 01-03 Task 1 committed; Task 2 bound tripped (18 > 8)
 
@@ -55,6 +55,7 @@ Progress: [░░░░░░░░░░] 0%
 |------|----------|-------|-------|
 | Phase 01 P01 | 21min | 3 tasks | 9 files |
 | Phase 01 P02 | ~7min | 3 tasks | 3 files |
+| Phase 01 P03 | 18min | 3 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -71,6 +72,9 @@ Progress: [░░░░░░░░░░] 0%
 - [Phase 01]: A shared-placeholder-texture class (RadialCarapace -> White_Mod) is recorded artwork-incomplete/yellow despite the Feishu checkbox; Green Tundra stays unresolved with a blocker.
 - [Phase 01]: Design 价格 maps to Item.value (buyPrice/raw value); oversized sellPrice(...) usages are completed-art deviations corrected in 01-03.
 - [Phase 01]: 01-03 tranche A halted at Task 2 by its >8 bound (18 class-less completed-art entries); PHASE SPLIT RECOMMENDED with a per-category breakdown.
+- [Phase 01]: Replanned 01-03 completed the D-12 effect/recipe/set-bonus remainder: 7 recipes exact, 34 effects matched to wired projectiles/buffs, 4 effect blockers recorded.
+- [Phase 01]: All 43 class-less entries routed to Phase 2 (phase=2); 18 completed-art entries also deferred with a reason; RadialCarapace and VineRepairWand stay phase 1 per D-11.
+- [Phase 01]: ThornTurtleShell run-speed corrected to the design -10%; check-tranche-A.ps1 gates the 38 completed-art tranche-A entries.
 
 ### Pending Todos
 
@@ -92,6 +96,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-09-12T06:28:05.062Z
-Stopped at: Halted at 01-03 Task 2: PHASE SPLIT RECOMMENDED
+Last session: 2026-09-12T10:05:33.562Z
+Stopped at: Completed 01-03-PLAN.md (replanned) - all 3 tasks committed
 Resume file: None
