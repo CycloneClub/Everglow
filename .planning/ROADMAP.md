@@ -54,11 +54,11 @@ Plans:
 
 **Wave 3** *(blocked on Wave 2 completion)*
 
-- [ ] 01-03-PLAN.md — Completed-art tranche A: weapons, ammo, materials, accessories, misc, boss summon
+- [ ] 01-03-PLAN.md — Completed-art tranche A parity (weapons, ammo, materials, accessories) + class-less Phase 2 routing + coverage gate
 
 **Wave 4** *(blocked on Wave 3 completion)*
 
-- [ ] 01-04-PLAN.md — Completed-art tranche B: armor, placeables, tools, boosters, pets, critters
+- [ ] 01-04-PLAN.md — Completed-art tranche B parity (armor, placeables, pets, boosters) + placeable categories + coverage gate
 
 **Wave 5** *(blocked on Wave 4 completion)*
 
@@ -68,6 +68,7 @@ Plans:
 
 - `dotnet build /p:Configuration=Release /p:WarningLevel=0` passes.
 - No `.png` or other binary asset is added or modified.
+- Class-less entries (no repository implementation target and/or false Feishu design-code checkbox) are recorded as blocked and routed to Phase 2 (`phase=2` plus `deferred_reason`) rather than force-implemented in Phase 1; the completed-art tranche implemented here is the 58 entries that already map to a repository class. See `.planning/phases/01-item-inventory-completed-art-items/01-INVENTORY.json`.
 
 ### Phase 2: Remaining Items & Unfinished-Art Materials
 
