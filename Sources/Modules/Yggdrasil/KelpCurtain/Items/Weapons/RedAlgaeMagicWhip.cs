@@ -18,8 +18,9 @@ public class RedAlgaeMagicWhip : WhipItem
 		Item.value = 35000;
 		Item.rare = ItemRarityID.Orange;
 		Item.damage = 59;
-		Item.useAnimation = 30;
-		Item.useTime = 30;
+		Item.knockBack = 1.5f;
+		Item.useAnimation = 22;
+		Item.useTime = 22;
 	}
 
 	public override void AddRecipes()

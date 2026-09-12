@@ -17,8 +17,8 @@ public class RedAlgaeMagicSpellBook : SpellTomeItem
 		Item.mana = 4;
 		Item.width = 38;
 		Item.height = 36;
-		Item.useTime = 4;
-		Item.useAnimation = 4;
+		Item.useTime = 6;
+		Item.useAnimation = 6;
 		Item.useStyle = ItemUseStyleID.Shoot;
 		Item.noMelee = true;
 		Item.knockBack = 0.5f;

@@ -9,7 +9,7 @@ public class DevilHeartBayonet : StabbingSwordItem
 
 	public override void SetDefaults()
 	{
-		Item.damage = 22;
+		Item.damage = 13;
 		Item.knockBack = 1.5f;
 		Item.rare = ItemRarityID.Green;
 		Item.value = Item.sellPrice(0, 2, 0, 0);

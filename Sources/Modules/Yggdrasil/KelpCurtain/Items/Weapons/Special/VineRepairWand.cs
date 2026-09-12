@@ -5,6 +5,8 @@ namespace Everglow.Yggdrasil.KelpCurtain.Items.Weapons.Special;
 /// </summary>
 public class VineRepairWand : ModItem
 {
+	public override string LocalizationCategory => LocalizationUtils.Categories.MagicWeapons;
+
 	// 存储当前调整状态
 	private AdjustmentData currentAdjustment;
 

@@ -18,9 +18,9 @@ public class RedAlgaeMinionGyroscope : ModItem
 
 		Item.DamageType = DamageClass.Summon;
 		Item.damage = 44;
-		Item.knockBack = 0.2f;
+		Item.knockBack = 1.5f;
 
-		Item.useTime = Item.useAnimation = 16;
+		Item.useTime = Item.useAnimation = 42;
 		Item.useStyle = ItemUseStyleID.Shoot;
 		Item.UseSound = SoundID.Item117;
 		Item.autoReuse = true;

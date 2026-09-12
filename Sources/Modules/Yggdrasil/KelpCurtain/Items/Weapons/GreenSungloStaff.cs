@@ -4,6 +4,8 @@ namespace Everglow.Yggdrasil.KelpCurtain.Items.Weapons;
 
 public class GreenSungloStaff : ModItem
 {
+	public override string LocalizationCategory => LocalizationUtils.Categories.MagicWeapons;
+
 	public override void SetStaticDefaults()
 	{
 		Item.staff[Type] = true;
@@ -25,7 +27,7 @@ public class GreenSungloStaff : ModItem
 		Item.noMelee = true;
 		Item.autoReuse = false;
 		Item.rare = ItemRarityID.Green;
-		Item.value = Item.sellPrice(0, 2, 0, 0);
+		Item.value = Item.buyPrice(silver: 80);
 
 		Item.shoot = ModContent.ProjectileType<GreenSungloSpore>();
 		Item.shootSpeed = 15;

@@ -23,7 +23,7 @@ public class BladeOfGreenMoss : ModItem
 		Item.noMelee = true;
 		Item.noUseGraphic = true;
 
-		Item.value = Item.sellPrice(gold: 1);
+		Item.value = Item.buyPrice(silver: 80);
 	}
 	public override bool CanUseItem(Player player)
 	{

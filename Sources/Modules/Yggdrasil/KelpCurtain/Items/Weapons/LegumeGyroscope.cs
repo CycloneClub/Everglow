@@ -16,7 +16,7 @@ public class LegumeGyroscope : ModItem
 
 		Item.DamageType = DamageClass.Summon;
 		Item.damage = 17;
-		Item.knockBack = 0.2f;
+		Item.knockBack = 0.8f;
 
 		Item.useTime = Item.useAnimation = 16;
 		Item.useStyle = ItemUseStyleID.Shoot;
@@ -26,8 +26,8 @@ public class LegumeGyroscope : ModItem
 		Item.noUseGraphic = true;
 		Item.channel = true;
 
-		Item.value = 11700;
-		Item.rare = ItemRarityID.Green;
+		Item.value = 20000;
+		Item.rare = ItemRarityID.Blue;
 
 		Item.shoot = ModContent.ProjectileType<LegumeGyroscope_Proj>();
 		Item.shootSpeed = 0;
