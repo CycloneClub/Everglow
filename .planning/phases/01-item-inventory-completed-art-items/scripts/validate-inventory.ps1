@@ -7,6 +7,7 @@
 	  0  valid
 	  2  no weapons rows were parsed into entries[]
 	  3  an entry is missing a required field
+	  4  completeness/audit failure
 
 	Required per entry: non-empty `id`, boolean `artwork_complete`, boolean
 	`code_complete`, non-empty `status` in {green, yellow, unchecked}. A non-empty
@@ -14,6 +15,13 @@
 	non-empty blocker. Real design rows exist whose table has resolvable texture and
 	code columns but whose cells have never been filled in; those rows must be kept
 	(not dropped) and are represented by a blocker instead of a checkbox id.
+
+	Completeness gate (exit 4) fails when:
+	  - the parse_audit block is missing,
+	  - a source document with a name-header table emitted zero entries,
+	  - parse_audit.biology.tables_with_name_header is 0, or
+	  - parse_audit.biology.rows_recorded_without_checkboxes exceeds the number of
+	    biology_drop entries that carry the "checkbox columns not found" blocker.
 
 	This script is deliberately 100% ASCII: PowerShell 5.1 reads a BOM-less script
 	as the system ANSI code page (see parse-design-xml.ps1), and the inventory JSON
@@ -65,6 +73,47 @@ if ($bad.Count -gt 0) {
 	Write-Output "FAIL(3): $($bad.Count) invalid entry field(s):"
 	$bad | Select-Object -First 20 | ForEach-Object { Write-Output "  - $_" }
 	exit 3
+}
+
+# --- completeness gate (exit 4) -------------------------------------------
+$auditIssues = New-Object System.Collections.Generic.List[string]
+if ($null -eq $inv.parse_audit) {
+	$auditIssues.Add('parse_audit block missing')
+}
+else {
+	if ($null -ne $inv.source) {
+		foreach ($p in $inv.source.PSObject.Properties) {
+			$doc = $p.Name
+			$ad = $inv.parse_audit.$doc
+			if ($null -eq $ad) { $auditIssues.Add("parse_audit.$doc missing"); continue }
+			if ([int]$ad.tables_with_name_header -gt 0 -and [int]$ad.rows_emitted -eq 0) {
+				$auditIssues.Add("parse_audit.$doc : tables_with_name_header=$($ad.tables_with_name_header) but rows_emitted=0")
+			}
+		}
+	}
+
+	$bio = $inv.parse_audit.biology
+	if ($null -eq $bio) {
+		$auditIssues.Add('parse_audit.biology missing')
+	}
+	else {
+		if ([int]$bio.tables_with_name_header -eq 0) {
+			$auditIssues.Add('parse_audit.biology.tables_with_name_header == 0')
+		}
+		$blockedBio = @($entries | Where-Object {
+			$_.source_kind -eq 'biology_drop' -and
+			(@($_.blockers) | Where-Object { $_ -like '*checkbox columns not found*' }).Count -gt 0
+		}).Count
+		if ([int]$bio.rows_recorded_without_checkboxes -gt $blockedBio) {
+			$auditIssues.Add("parse_audit.biology.rows_recorded_without_checkboxes=$($bio.rows_recorded_without_checkboxes) exceeds blocked biology_drop entries=$blockedBio")
+		}
+	}
+}
+
+if ($auditIssues.Count -gt 0) {
+	Write-Output "FAIL(4): $($auditIssues.Count) completeness issue(s):"
+	$auditIssues | ForEach-Object { Write-Output "  - $_" }
+	exit 4
 }
 
 $green = @($entries | Where-Object { $_.status -eq 'green' }).Count
