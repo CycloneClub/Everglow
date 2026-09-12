@@ -74,6 +74,40 @@ foreach ($e in $entries) {
 	}
 }
 
+# --- source label taxonomy gate -------------------------------------------
+$labels = @($inv.labels)
+$validClassifications = @('region','nested_area','structure','transition','alias')
+if ($labels.Count -ne 5) {
+	$failures.Add("labels : expected exactly 5 objects, found $($labels.Count)")
+}
+$entryById = @{}
+foreach ($e in $entries) { $entryById[[string]$e.id] = $e }
+foreach ($l in $labels) {
+	$name = [string]$l.label_en
+	if ([string]::IsNullOrWhiteSpace($name)) { $name = '<missing label_en>' }
+	if ([string]::IsNullOrWhiteSpace([string]$l.label_zh)) { $failures.Add("label $name : missing label_zh") }
+	if ($validClassifications -notcontains [string]$l.classification) {
+		$failures.Add("label $name : classification '$($l.classification)' not in {region,nested_area,structure,transition,alias}")
+	}
+	if ([string]::IsNullOrWhiteSpace([string]$l.rationale)) {
+		$failures.Add("label $name : rationale is empty")
+	}
+	if ($l.PSObject.Properties.Name -notcontains 'resolved') {
+		$failures.Add("label $name : resolved boolean missing")
+	}
+	elseif (-not [bool]$l.resolved) {
+		$hasBlocker = -not [string]::IsNullOrWhiteSpace([string]$l.blocker)
+		if (-not $hasBlocker) {
+			$blockedEntry = $false
+			foreach ($rid in @($l.affected_entry_ids)) {
+				$re = $entryById[[string]$rid]
+				if ($null -ne $re -and $re.status -ne 'green' -and @($re.blockers | Where-Object { -not [string]::IsNullOrWhiteSpace($_) }).Count -gt 0) { $blockedEntry = $true }
+			}
+			if (-not $blockedEntry) { $failures.Add("label $name : unresolved label has no blocking entry and no blocker") }
+		}
+	}
+}
+
 if ($failures.Count -gt 0) {
 	Write-Output "FAIL($($failures.Count)):"
 	$failures | Select-Object -First 40 | ForEach-Object { Write-Output "  - $_" }
@@ -84,5 +118,5 @@ $green = @($entries | Where-Object { $_.status -eq 'green' }).Count
 $yellow = @($entries | Where-Object { $_.status -eq 'yellow' }).Count
 $unchecked = @($entries | Where-Object { $_.status -eq 'unchecked' }).Count
 $matched = @($entries | Where-Object { -not [string]::IsNullOrWhiteSpace([string]$_.internal_name) }).Count
-Write-Output "OK(0): $($entries.Count) entries; matched=$matched; green=$green yellow=$yellow unchecked=$unchecked"
+Write-Output "OK(0): $($entries.Count) entries; matched=$matched; green=$green yellow=$yellow unchecked=$unchecked; labels=$($labels.Count)"
 exit 0
