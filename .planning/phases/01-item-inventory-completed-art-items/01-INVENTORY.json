@@ -2675,7 +2675,7 @@
                                          "ITEM-07"
                                      ],
                         "blockers":  [
-
+                                         "效果: the Photophore class currently implements the Jade Fruit permanent-booster behaviour (permanent +5 max life, 10 uses, LocalizationCategory PermanentBoosters) instead of the designed light pet (an anglerfish lamp fixed above/front of the player with a faint glow that brightens underwater); implementing the pet would add new buff/projectile content and asset, so the effect is unreconciled"
                                      ],
                         "phase":  1,
                         "notes":  "",

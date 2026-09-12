@@ -9,5 +9,6 @@ public class JadeizedBone_Item : ModItem
 	public override void SetDefaults()
 	{
 		Item.DefaultToPlaceableTile(ModContent.TileType<JadeizedBone>());
+		Item.rare = ItemRarityID.Green;
 	}
 }
