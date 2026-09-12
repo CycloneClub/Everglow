@@ -40,6 +40,32 @@ Columns: entry id, class file, field, before, after, source (design header / row
 
 Total fixed design deviations: 25 (14 on design-row-backed entries, 11 repo-only classification fixes moved to plan 05 from plan 04).
 
+## Deferred Localization (User Directive)
+
+Status: **deferred**. Reason: `localization deferred by user directive (2026-09-12)`.
+
+Plan 05 Task 2 was a `checkpoint:human-action` whose only source of missing keys is the in-game `OutputLocalizationHjsonItem` exporter (a consumable `ModItem` fired from a running tModLoader client). The user directed that localization not be considered for Phase 1 — "记录：不考虑本地化，把代码部分完成即可" (record it; do not consider localization; just complete the code portion). The exporter was therefore **not run**, no key was fabricated, and **no `Localization/**/*.hjson` file was hand-edited** (AGENTS.md forbids hand-created classification keys and the plan's T-05-01 mitigation forbids hand-classification).
+
+`scripts/check-localization-coverage.ps1 -AllowMissing` selects **58** Phase 1 completed-art entries (`phase == 1`, `artwork_complete == true`, non-empty `internal_name`, `localization.blocked != true`) and reports **45 covered / 13 missing**. The 13 entries below are recorded with `status: deferred` and the reason above; the same 13 records are mirrored in `01-INVENTORY.json` `deviations[]`, and the deferral is recorded as `phase1_actions[]` P1A-11. The strict coverage gate (no switch) consequently fails by design; Phase 1 treats both-culture key coverage as advisory per the directive.
+
+| Entry id | Class file | Missing cultures | Status | Reason |
+| --- | --- | --- | --- | --- |
+| `item-weapons.melee-evil-halbert-barnacle` | `Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/UnderwaterTreasury/EvilHalbertBarnacle.cs` | en-US, zh-Hans | deferred | localization deferred by user directive (2026-09-12) |
+| `item-weapons.misc-arc-i` | `Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/UnderwaterTreasury/ArcI.cs` | en-US, zh-Hans | deferred | localization deferred by user directive (2026-09-12) |
+| `item-weapons.misc-crimson-moon-algae-magic-staff` | `Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/RedAlgaeMagicStaff.cs` | en-US, zh-Hans | deferred | localization deferred by user directive (2026-09-12) |
+| `item-weapons.misc-crimson-moon-algae-spell-book` | `Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/RedAlgaeMagicSpellBook.cs` | en-US, zh-Hans | deferred | localization deferred by user directive (2026-09-12) |
+| `item-weapons.misc-crimson-moon-algae-whip` | `Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/RedAlgaeMagicWhip.cs` | en-US, zh-Hans | deferred | localization deferred by user directive (2026-09-12) |
+| `item-weapons.misc-crimson-moon-sap` | `Sources/Modules/Yggdrasil/KelpCurtain/Items/Materials/CrimsonMoonSap.cs` | en-US, zh-Hans | deferred | localization deferred by user directive (2026-09-12) |
+| `item-weapons.misc-empty-water-staff` | `Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/UnderwaterTreasury/EmptyWaterStaff.cs` | en-US, zh-Hans | deferred | localization deferred by user directive (2026-09-12) |
+| `item-weapons.misc-jade-lake-red-algae` | `Sources/Modules/Yggdrasil/KelpCurtain/Items/Placeables/JadeLakeRedAlgae_Item.cs` | en-US, zh-Hans | deferred | localization deferred by user directive (2026-09-12) |
+| `item-weapons.misc-photophore` | `Sources/Modules/Yggdrasil/KelpCurtain/Items/Pets/Photophore.cs` | en-US, zh-Hans | deferred | localization deferred by user directive (2026-09-12) |
+| `item-weapons.misc-青须手杖` | `Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/GreenSungloStaff.cs` | en-US, zh-Hans | deferred | localization deferred by user directive (2026-09-12) |
+| `item-weapons.summon-activated-dog-staff` | `Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/ActivatedDogStaff.cs` | en-US, zh-Hans | deferred | localization deferred by user directive (2026-09-12) |
+| `item-weapons.summon-crimson-moon-algae-gyroscope` | `Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/RedAlgaeMinionGyroscope.cs` | en-US, zh-Hans | deferred | localization deferred by user directive (2026-09-12) |
+| `item-weapons.summon-crimson-moon-algae-summon-staff` | `Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/RedAlgaeMinionStaff.cs` | en-US, zh-Hans | deferred | localization deferred by user directive (2026-09-12) |
+
+Deferred localization deviations: 13. These are **not** marked `localization.blocked` — blocking is the plan's mechanism for a post-exporter failure with a named missing culture; this is an explicit user-directed deferral, recorded as deferred so the strict gate stays honestly red and the advisory `-AllowMissing` baseline is the Phase 1 evidence.
+
 ## Tranche Advances (ITEM IDs preserved for Phase 2)
 
 The inventory entry `advances` arrays were not modified by plans 03/04/05; they remain visible in `01-INVENTORY.json` for Phase 2 to consume:
@@ -67,3 +93,4 @@ See `01-INVENTORY.json` `phase1_actions[]` for the machine-readable list. Summar
 5. Classified the four `Tools/Developer` items as `Items.Tools` before the exporter run.
 6. Captured the pre-exporter localization baseline in `01-05-SUMMARY.md`.
 7. Consolidated the plan 03/04 deviation ledgers into this file and the inventory.
+8. Deferred Phase 1 localization by user directive (2026-09-12); recorded the 13 missing-key entries as deferred deviations — no key was fabricated and no HJSON file was edited.
