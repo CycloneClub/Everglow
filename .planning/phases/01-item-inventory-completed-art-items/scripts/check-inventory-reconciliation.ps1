@@ -108,6 +108,30 @@ foreach ($l in $labels) {
 	}
 }
 
+# --- deferred / assumptions / markdown consistency gate -------------------
+foreach ($e in $entries) {
+	if ([bool]$e.deferred -and [string]::IsNullOrWhiteSpace([string]$e.deferred_reason)) {
+		$failures.Add("$($e.id) : deferred entry has no deferred_reason")
+	}
+}
+
+$assumptions = @($inv.assumptions)
+if ($assumptions.Count -eq 0) {
+	$failures.Add('assumptions : array is empty')
+}
+
+$mdPath = Join-Path $phaseDir '01-INVENTORY.md'
+if (-not (Test-Path -LiteralPath $mdPath)) {
+	$failures.Add("markdown mirror not found: $mdPath")
+}
+else {
+	$mdLines = [IO.File]::ReadAllLines($mdPath)
+	$mdRows = @($mdLines | Where-Object { $_ -match '^\|.*\|\s*(done|no)\s*\|\s*(done|no)\s*\|\s*(green|yellow|unchecked)\s*\|' })
+	if ($mdRows.Count -ne $entries.Count) {
+		$failures.Add("markdown row count ($($mdRows.Count)) != JSON entries ($($entries.Count))")
+	}
+}
+
 if ($failures.Count -gt 0) {
 	Write-Output "FAIL($($failures.Count)):"
 	$failures | Select-Object -First 40 | ForEach-Object { Write-Output "  - $_" }
@@ -118,5 +142,6 @@ $green = @($entries | Where-Object { $_.status -eq 'green' }).Count
 $yellow = @($entries | Where-Object { $_.status -eq 'yellow' }).Count
 $unchecked = @($entries | Where-Object { $_.status -eq 'unchecked' }).Count
 $matched = @($entries | Where-Object { -not [string]::IsNullOrWhiteSpace([string]$_.internal_name) }).Count
-Write-Output "OK(0): $($entries.Count) entries; matched=$matched; green=$green yellow=$yellow unchecked=$unchecked; labels=$($labels.Count)"
+$deferred = @($entries | Where-Object { [bool]$_.deferred }).Count
+Write-Output "OK(0): $($entries.Count) entries; matched=$matched; green=$green yellow=$yellow unchecked=$unchecked; labels=$($labels.Count) deferred=$deferred assumptions=$($assumptions.Count)"
 exit 0

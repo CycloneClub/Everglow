@@ -4435,6 +4435,40 @@
                     }
                 ],
     "assumptions":  [
-
+                        {
+                            "id":  "A1",
+                            "text":  "Item-document table column order is assumed to be name, texture (artwork), code, ... for every item table, so the parser resolves artwork/code by header name rather than cell position. The committed snapshot is header-anchored, but a table without a resolvable header could flip the two states.",
+                            "source":  "RESEARCH Assumptions Log A1"
+                        },
+                        {
+                            "id":  "A2",
+                            "text":  "Green Tundra is listed among the layer subterrains but has no dedicated design section; it is classified as region (strongest supported value) with resolved=false and a blocker. Affected geography and items must stay blocked until the label is confirmed.",
+                            "source":  "RESEARCH Open Question 1 / Assumptions Log A2"
+                        },
+                        {
+                            "id":  "A3",
+                            "text":  "Placeable classes with the _Item suffix may carry their display key under the item name or under the tile name (e.g. OldMoss exists while OldMoss_Item does not). Key-name resolution is deferred to the localization parity plan; no localization key is renamed or removed here.",
+                            "source":  "RESEARCH Open Question 3 / Assumptions Log A3"
+                        },
+                        {
+                            "id":  "A4",
+                            "text":  "An item whose class resolves to a shared texture (Commons.ModAsset.White_Mod / Point_Mod) with no local .png is recorded artwork-incomplete even when the Feishu texture checkbox is true (RadialCarapace). This is recorded as a yellow status with a blocker, not dropped.",
+                            "source":  "RESEARCH Pitfall 4 / Assumptions Log A4"
+                        },
+                        {
+                            "id":  "A5",
+                            "text":  "Committed design rows expose no structured ingredient column, so entry dependencies are derived from repository AddRecipes() references to other Everglow items; unmatched entries keep an empty dependencies array. Dependencies are corroborating, not design-authored.",
+                            "source":  "plan 02 task 1 reconciliation method"
+                        },
+                        {
+                            "id":  "A6",
+                            "text":  "Item-design rows carry no region tag in the committed snapshot, so the label-to-entry mapping is left empty rather than fabricated; label reconciliation records classification and rationale only.",
+                            "source":  "plan 02 task 2 method / orchestrator instruction to record blockers rather than invent reconciliation data"
+                        },
+                        {
+                            "id":  "A7",
+                            "text":  "Rows whose design name is a bare placeholder (A, B, C) with only a generic \"array repair material\" description are marked deferred with an undefined-future reason; they remain in the inventory and are re-evaluated when the design is defined.",
+                            "source":  "plan 02 task 3 judgment"
+                        }
                     ]
 }
