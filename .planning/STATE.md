@@ -3,16 +3,16 @@ gsd_state_version: "1.0"
 current_phase: 01
 current_phase_name: Item Inventory & Completed-Art Items
 status: executing
-stopped_at: Completed 01-03-PLAN.md (replanned) - all 3 tasks committed
-last_updated: "2026-09-12T10:05:33.598Z"
+stopped_at: Completed 01-04-PLAN.md - all 3 tasks committed (tranche-B parity and gate)
+last_updated: "2026-09-12T10:29:00.145Z"
 last_activity: 2026-09-12
 last_activity_desc: Phase 01 execution started
-state_head: d2bd94c1105b1f28028dd89e519df3a68d495bd4
+state_head: bf63036498e54c12de6b85f6ca1491f7ac220465
 progress:
   total_phases: 8
   completed_phases: 0
   total_plans: 5
-  completed_plans: 3
+  completed_plans: 4
   percent: 0
 ---
 
@@ -28,7 +28,7 @@ See: `.planning/PROJECT.md` (updated 2026-09-11)
 ## Current Position
 
 Phase: 01 (Item Inventory & Completed-Art Items) — READY TO EXECUTE
-Plan: 4 of 5
+Plan: 5 of 5
 Status: Plan 01-03 (replanned) complete — tranche-A parity, class-less Phase 2 routing, coverage gate; ready to execute plan 01-04
 Last activity: 2026-09-12 — 01-03 (replanned) completed: 3 tasks committed, all gates green, Release build 0 errors
 
@@ -56,6 +56,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 01 P01 | 21min | 3 tasks | 9 files |
 | Phase 01 P02 | ~7min | 3 tasks | 3 files |
 | Phase 01 P03 | 18min | 3 tasks | 4 files |
+| Phase 01 P04 | ~19min | 3 tasks | 21 files |
 
 ## Accumulated Context
 
@@ -75,6 +76,8 @@ Progress: [░░░░░░░░░░] 0%
 - [Phase 01]: Replanned 01-03 completed the D-12 effect/recipe/set-bonus remainder: 7 recipes exact, 34 effects matched to wired projectiles/buffs, 4 effect blockers recorded.
 - [Phase 01]: All 43 class-less entries routed to Phase 2 (phase=2); 18 completed-art entries also deferred with a reason; RadialCarapace and VineRepairWand stay phase 1 per D-11.
 - [Phase 01]: ThornTurtleShell run-speed corrected to the design -10%; check-tranche-A.ps1 gates the 38 completed-art tranche-A entries.
+- [Phase 01]: Tranche-B design rows were header-anchored; the recipe embedded after '=' in the 效果 cell is a recipe (DevilHeart armor 18/20/32/24 bars at an Anvil).
+- [Phase 01]: The four missing DevilHeart armor recipes and the Ruin/material rarity+value deviations were fixed (D-12); the Witherbark minion pattern, set-bonus display text, and Photophore misimplementation were recorded as blockers outside plan 04's file scope.
 
 ### Pending Todos
 
@@ -97,6 +100,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-09-12T10:05:33.562Z
-Stopped at: Completed 01-03-PLAN.md (replanned) - all 3 tasks committed
+Last session: 2026-09-12T10:28:46.379Z
+Stopped at: Completed 01-04-PLAN.md - all 3 tasks committed (tranche-B parity and gate)
 Resume file: None
