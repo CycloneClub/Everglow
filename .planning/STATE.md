@@ -3,11 +3,11 @@ gsd_state_version: "1.0"
 current_phase: 01
 current_phase_name: Item Inventory & Completed-Art Items
 status: executing
-stopped_at: Completed 01-02-PLAN.md
-last_updated: "2026-09-12T06:08:51.110Z"
+stopped_at: "Halted at 01-03 Task 2: PHASE SPLIT RECOMMENDED"
+last_updated: "2026-09-12T06:28:05.093Z"
 last_activity: 2026-09-12
 last_activity_desc: Phase 01 execution started
-state_head: cd831e0f8803850d95de720c92a6f3824e93bd9d
+state_head: 261996ecfc5db133c2279d557724bc66020c27c7
 progress:
   total_phases: 8
   completed_phases: 0
@@ -29,8 +29,8 @@ See: `.planning/PROJECT.md` (updated 2026-09-11)
 
 Phase: 01 (Item Inventory & Completed-Art Items) — EXECUTING
 Plan: 3 of 5
-Status: Ready to execute
-Last activity: 2026-09-12 — Phase 01 execution started
+Status: Halted at 01-03 Task 2 — PHASE SPLIT RECOMMENDED (plan 01-03 incomplete)
+Last activity: 2026-09-12 — 01-03 Task 1 committed; Task 2 bound tripped (18 > 8)
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -69,6 +69,8 @@ Progress: [░░░░░░░░░░] 0%
 - [Phase 01]: Tranche is assigned from the resolved repo class content family (or parser category when class-less); the terrain-sourced row takes an empty tranche.
 - [Phase 01]: advances is type-based (ITEM-01/ITEM-02) with procurement overrides to ITEM-03/ITEM-04 and ITEM-07 on every entry.
 - [Phase 01]: A shared-placeholder-texture class (RadialCarapace -> White_Mod) is recorded artwork-incomplete/yellow despite the Feishu checkbox; Green Tundra stays unresolved with a blocker.
+- [Phase 01]: Design 价格 maps to Item.value (buyPrice/raw value); oversized sellPrice(...) usages are completed-art deviations corrected in 01-03.
+- [Phase 01]: 01-03 tranche A halted at Task 2 by its >8 bound (18 class-less completed-art entries); PHASE SPLIT RECOMMENDED with a per-category breakdown.
 
 ### Pending Todos
 
@@ -79,6 +81,7 @@ None yet.
 - Phase 1: Feishu source reconciliation must classify all five terrain labels and inventory every item/drop before implementation acceptance.
 - Missing approved artwork must remain a visible blocker; no placeholder art may be introduced.
 - Yggdrasil generation, rendering, subworld, persistence, and multiplayer behavior require live tModLoader verification beyond unit-test coverage.
+- 01-03 halted at Task 2: 18 class-less completed-art tranche-A entries exceed the >8 bound -> PHASE SPLIT RECOMMENDED. Task 3 gate not authored; tranche A implementation deferred to a data-driven split. Prose effect/set-bonus/recipe fields on completed-art entries remain un-reconciled.
 
 ## Deferred Items
 
@@ -89,6 +92,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-09-12T06:08:51.080Z
-Stopped at: Completed 01-02-PLAN.md
+Last session: 2026-09-12T06:28:05.062Z
+Stopped at: Halted at 01-03 Task 2: PHASE SPLIT RECOMMENDED
 Resume file: None
