@@ -42,7 +42,86 @@
                                     }
                     },
     "labels":  [
+                   {
+                       "label_en":  "Death Jade Lake",
+                       "label_zh":  "亡碧湖",
+                       "classification":  "region",
+                       "rationale":  "Terrain opens a top-level h1 region \"Death Jade Lake\" (block HDj4dPMjCoRMJExdmvDcvze0nAd) whose sub-parts Dragon Pond, Isle of Bloom and Maze Under Water are h2 sections; Biology repeats it as a top-level creature h1 (block JITOdS5VOofnlCxo5tecFn7Nn4g); the overview sentence (block doxcnCoWSGexMstAlFUKqqvFoRg) names it among the layer subterrains. Classified region.",
+                       "evidence_block_ids":  [
+                                                  "doxcnCoWSGexMstAlFUKqqvFoRg",
+                                                  "HDj4dPMjCoRMJExdmvDcvze0nAd",
+                                                  "JITOdS5VOofnlCxo5tecFn7Nn4g",
+                                                  "doxcnv6IWHahdUTQyx7QKw0p7dJ"
+                                              ],
+                       "affected_entry_ids":  [
 
+                                              ],
+                       "resolved":  true,
+                       "blocker":  ""
+                   },
+                   {
+                       "label_en":  "Spiny Moss Court",
+                       "label_zh":  "刺苔庭园",
+                       "classification":  "region",
+                       "rationale":  "Terrain opens a top-level h1 region \"Spiny Moss Court\" (block EewKdG2owoi9uNxNeGdco7jqnec) that nests the h2 sections Town Of Decaying Wood, Elftigern and Parasitic Cavity; Biology repeats it as a top-level creature h1 (block YCYwdeYPEomoMVxotFOcE8gZnUh). Classified region.",
+                       "evidence_block_ids":  [
+                                                  "EewKdG2owoi9uNxNeGdco7jqnec",
+                                                  "YCYwdeYPEomoMVxotFOcE8gZnUh",
+                                                  "FzR8d1wdfoIKcyxago0czMkVnFJ"
+                                              ],
+                       "affected_entry_ids":  [
+
+                                              ],
+                       "resolved":  true,
+                       "blocker":  ""
+                   },
+                   {
+                       "label_en":  "Valley of Lush and Moist",
+                       "label_zh":  "森雨幽谷",
+                       "classification":  "region",
+                       "rationale":  "Terrain opens a top-level h1 region \"Valley Of Lush And Moist\" (block doxcnqyNVBoRDTYY1LgXk5uwHJb) with the nested h2 climber outpost; Biology repeats it as a top-level creature h1 (block WxatdnICsojUQoxS6VXcXeYgnwd); the overview sentence (block doxcnCoWSGexMstAlFUKqqvFoRg) names it among the layer subterrains. Classified region.",
+                       "evidence_block_ids":  [
+                                                  "doxcnCoWSGexMstAlFUKqqvFoRg",
+                                                  "doxcnqyNVBoRDTYY1LgXk5uwHJb",
+                                                  "WxatdnICsojUQoxS6VXcXeYgnwd"
+                                              ],
+                       "affected_entry_ids":  [
+
+                                              ],
+                       "resolved":  true,
+                       "blocker":  ""
+                   },
+                   {
+                       "label_en":  "Town of Decaying Wood",
+                       "label_zh":  "朽木王庭",
+                       "classification":  "nested_area",
+                       "rationale":  "The overview sentence (block doxcnCoWSGexMstAlFUKqqvFoRg) names \"Town of Decaying Wood\" among the layer subterrains, but the strongest structural evidence is that its design section is an h2 (block FzR8d1wdfoIKcyxago0czMkVnFJ) nested under the Spiny Moss Court h1 (block EewKdG2owoi9uNxNeGdco7jqnec) rather than a peer top-level region. Classified nested_area (not folded into a peer region).",
+                       "evidence_block_ids":  [
+                                                  "doxcnCoWSGexMstAlFUKqqvFoRg",
+                                                  "FzR8d1wdfoIKcyxago0czMkVnFJ",
+                                                  "EewKdG2owoi9uNxNeGdco7jqnec"
+                                              ],
+                       "affected_entry_ids":  [
+
+                                              ],
+                       "resolved":  true,
+                       "blocker":  ""
+                   },
+                   {
+                       "label_en":  "Green Tundra",
+                       "label_zh":  "碧绿苔原",
+                       "classification":  "region",
+                       "rationale":  "Only the overview sentence (block doxcnCoWSGexMstAlFUKqqvFoRg) names Green Tundra among the layer subterrains; it reappears only in the array-repair purification list (block doxcnj949SQHOWtZrrOmrvKBwyb). No h1-h6 heading for it exists in the terrain or biology outline, so no dedicated design section can be found; classification region is the strongest supported value and remains unconfirmed.",
+                       "evidence_block_ids":  [
+                                                  "doxcnCoWSGexMstAlFUKqqvFoRg",
+                                                  "doxcnj949SQHOWtZrrOmrvKBwyb"
+                                              ],
+                       "affected_entry_ids":  [
+
+                                              ],
+                       "resolved":  false,
+                       "blocker":  "unresolved source label: Green Tundra is named among the subterrains but has no dedicated design section; classification region is unconfirmed and affected geography/items must stay blocked until resolved."
+                   }
                ],
     "entries":  [
                     {
