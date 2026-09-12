@@ -29,8 +29,8 @@ See: `.planning/PROJECT.md` (updated 2026-09-11)
 
 Phase: 01 (Item Inventory & Completed-Art Items) — READY TO EXECUTE
 Plan: 4 of 5
-Status: Halted at 01-03 Task 2 — PHASE SPLIT RECOMMENDED (plan 01-03 incomplete)
-Last activity: 2026-09-12 — 01-03 Task 1 committed; Task 2 bound tripped (18 > 8)
+Status: Plan 01-03 (replanned) complete — tranche-A parity, class-less Phase 2 routing, coverage gate; ready to execute plan 01-04
+Last activity: 2026-09-12 — 01-03 (replanned) completed: 3 tasks committed, all gates green, Release build 0 errors
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -85,7 +85,8 @@ None yet.
 - Phase 1: Feishu source reconciliation must classify all five terrain labels and inventory every item/drop before implementation acceptance.
 - Missing approved artwork must remain a visible blocker; no placeholder art may be introduced.
 - Yggdrasil generation, rendering, subworld, persistence, and multiplayer behavior require live tModLoader verification beyond unit-test coverage.
-- 01-03 halted at Task 2: 18 class-less completed-art tranche-A entries exceed the >8 bound -> PHASE SPLIT RECOMMENDED. Task 3 gate not authored; tranche A implementation deferred to a data-driven split. Prose effect/set-bonus/recipe fields on completed-art entries remain un-reconciled.
+- 01-03 (replanned) resolved the halt: the 18 class-less completed-art tranche-A entries and the 25 art-incomplete class-less entries are routed to Phase 2 (phase=2); the tranche gate `check-tranche-A.ps1` is authored (38 covered). Four tranche-A weapons carry 效果 blockers (MossySpell, CyatheaArrow, GreenSungloStaff, EvilHalbertBarnacle) whose design behavior lives in projectiles outside the item-class modify set.
+- RadialCarapace and VineRepairWand remain Phase 1 tracked blockers (code-complete, artwork-missing per D-11); their design deviations are queued to Phase 2 (D-12).
 
 ## Deferred Items
 
