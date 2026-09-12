@@ -49,7 +49,7 @@
                         "id":  "biology_drop-weapons.melee-龙骸巨块大剑",
                         "source_kind":  "biology_drop",
                         "category":  "weapons.melee",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "特殊：",
                         "name_en":  "",
                         "name_zh":  "龙骸巨块大剑",
@@ -75,10 +75,12 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-01",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -89,7 +91,7 @@
                         "id":  "biology_drop-weapons.misc-血肉聚合物",
                         "source_kind":  "biology_drop",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "特殊：",
                         "name_en":  "",
                         "name_zh":  "血肉聚合物",
@@ -115,10 +117,12 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-01",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -129,7 +133,7 @@
                         "id":  "biology_drop-weapons.misc-巨翼龙面具",
                         "source_kind":  "biology_drop",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "特殊：",
                         "name_en":  "",
                         "name_zh":  "巨翼龙面具",
@@ -155,11 +159,13 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-01",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -170,7 +176,7 @@
                         "id":  "biology_drop-weapons.melee-狂战士角盔",
                         "source_kind":  "biology_drop",
                         "category":  "weapons.melee",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "特殊：",
                         "name_en":  "",
                         "name_zh":  "狂战士角盔",
@@ -196,10 +202,12 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-01",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -210,7 +218,7 @@
                         "id":  "biology_drop-weapons.melee-狂战士板甲",
                         "source_kind":  "biology_drop",
                         "category":  "weapons.melee",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "特殊：",
                         "name_en":  "",
                         "name_zh":  "狂战士板甲",
@@ -236,10 +244,12 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-01",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -250,7 +260,7 @@
                         "id":  "biology_drop-weapons.melee-狂战士胫甲",
                         "source_kind":  "biology_drop",
                         "category":  "weapons.melee",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "特殊：",
                         "name_en":  "",
                         "name_zh":  "狂战士胫甲",
@@ -276,10 +286,12 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-01",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -290,7 +302,7 @@
                         "id":  "biology_drop-weapons.misc-巨翼龙圣物-大师",
                         "source_kind":  "biology_drop",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "特殊：",
                         "name_en":  "",
                         "name_zh":  "巨翼龙圣物（大师）",
@@ -316,10 +328,12 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-01",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -330,7 +344,7 @@
                         "id":  "biology_drop-weapons.misc-巨翼龙纪念章",
                         "source_kind":  "biology_drop",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "特殊：",
                         "name_en":  "",
                         "name_zh":  "巨翼龙纪念章",
@@ -356,10 +370,12 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-01",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -370,7 +386,7 @@
                         "id":  "biology_drop-weapons.ranged-肌腱巨弓",
                         "source_kind":  "biology_drop",
                         "category":  "weapons.ranged",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "特殊：",
                         "name_en":  "",
                         "name_zh":  "肌腱巨弓",
@@ -396,11 +412,13 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-01",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -411,7 +429,7 @@
                         "id":  "biology_drop-weapons.magic-崩解阈限",
                         "source_kind":  "biology_drop",
                         "category":  "weapons.magic",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "特殊：",
                         "name_en":  "",
                         "name_zh":  "崩解阈限",
@@ -437,10 +455,12 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-01",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -451,7 +471,7 @@
                         "id":  "biology_drop-weapons.summon-re01",
                         "source_kind":  "biology_drop",
                         "category":  "weapons.summon",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "特殊：",
                         "name_en":  "-RE01",
                         "name_zh":  "限制机",
@@ -477,11 +497,13 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-01",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -492,7 +514,7 @@
                         "id":  "biology_drop-weapons.melee-骇翼链剑",
                         "source_kind":  "biology_drop",
                         "category":  "weapons.melee",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "特殊：",
                         "name_en":  "",
                         "name_zh":  "骇翼链剑",
@@ -518,10 +540,12 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-01",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -532,7 +556,7 @@
                         "id":  "biology_drop-weapons.summon-腥臭的诱饵",
                         "source_kind":  "biology_drop",
                         "category":  "weapons.summon",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "特殊：",
                         "name_en":  "",
                         "name_zh":  "腥臭的诱饵",
@@ -558,11 +582,13 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-01",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -573,11 +599,11 @@
                         "id":  "item-weapons.magic-mossy-spell",
                         "source_kind":  "item",
                         "category":  "weapons.magic",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Mossy Spell",
                         "name_zh":  "附苔",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Weapons.MossySpell",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "Ryivdh11xo6dSIxK7aWcDafon1n",
@@ -589,17 +615,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Weapons/MossySpell.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-01",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -613,11 +640,11 @@
                         "id":  "item-weapons.summon-green-vine-whip",
                         "source_kind":  "item",
                         "category":  "weapons.summon",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Green Vine Whip",
                         "name_zh":  "青蔓鞭",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Weapons.GreenVineWhip",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "Ryivdh11xo6dSIxK7aWcDafon1n",
@@ -629,17 +656,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Weapons/GreenVineWhip.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-01",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -653,11 +681,11 @@
                         "id":  "item-weapons.ranged-mossy-cyathea-bow",
                         "source_kind":  "item",
                         "category":  "weapons.ranged",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Mossy Cyathea Bow",
                         "name_zh":  "青苔桫椤弓",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Weapons.MossyCyatheaBow",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "Ryivdh11xo6dSIxK7aWcDafon1n",
@@ -669,17 +697,19 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Weapons/MossyCyatheaBow.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
-
+                                             "CyanVineBar",
+                                             "StoneDragonScaleWood"
                                          ],
                         "advances":  [
-
+                                         "ITEM-01",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -693,11 +723,11 @@
                         "id":  "item-weapons.ranged-cyathea-arrow",
                         "source_kind":  "item",
                         "category":  "weapons.ranged",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Cyathea Arrow",
                         "name_zh":  "桫椤箭",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Ammos.CyatheaArrow",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "Ryivdh11xo6dSIxK7aWcDafon1n",
@@ -709,17 +739,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Ammos/CyatheaArrow.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-01",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -733,11 +764,11 @@
                         "id":  "item-weapons.misc-huskburst-bullet",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Huskburst Bullet",
                         "name_zh":  "碎壳弹",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Ammos.HuskburstBullet",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "Ryivdh11xo6dSIxK7aWcDafon1n",
@@ -749,17 +780,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Ammos/HuskburstBullet.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-01",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -773,11 +805,11 @@
                         "id":  "item-weapons.misc-legume-gyroscope",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Legume Gyroscope",
                         "name_zh":  "裂荚陀螺",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Weapons.LegumeGyroscope",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "Ryivdh11xo6dSIxK7aWcDafon1n",
@@ -789,17 +821,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Weapons/LegumeGyroscope.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-01",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -813,11 +846,11 @@
                         "id":  "item-armor-魔心发簪",
                         "source_kind":  "item",
                         "category":  "armor",
-                        "tranche":  "",
+                        "tranche":  "B",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "魔心发簪",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Armors.DevilHeart.DevilHeartHairpin",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "TK7ddgDgMosNN8xzvs1cS0H0nBH",
@@ -829,17 +862,19 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Armors/DevilHeart/DevilHeartHairpin.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
-
+                                             "DevilHeartLeggings",
+                                             "DevilHeartLightBreastPlate"
                                          ],
                         "advances":  [
-
+                                         "ITEM-02",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -853,11 +888,11 @@
                         "id":  "item-armor-魔心笼盔",
                         "source_kind":  "item",
                         "category":  "armor",
-                        "tranche":  "",
+                        "tranche":  "B",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "魔心笼盔",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Armors.DevilHeart.DevilHeartHelmet",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "TK7ddgDgMosNN8xzvs1cS0H0nBH",
@@ -869,17 +904,19 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Armors/DevilHeart/DevilHeartHelmet.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
-
+                                             "DevilHeartLeggings",
+                                             "DevilHeartLightBreastPlate"
                                          ],
                         "advances":  [
-
+                                         "ITEM-02",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -893,11 +930,11 @@
                         "id":  "item-armor-魔心轻甲",
                         "source_kind":  "item",
                         "category":  "armor",
-                        "tranche":  "",
+                        "tranche":  "B",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "魔心轻甲",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Armors.DevilHeart.DevilHeartLightBreastPlate",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "TK7ddgDgMosNN8xzvs1cS0H0nBH",
@@ -909,17 +946,20 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Armors/DevilHeart/DevilHeartLightBreastPlate.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
-
+                                             "DevilHeartHairpin",
+                                             "DevilHeartHelmet",
+                                             "DevilHeartLeggings"
                                          ],
                         "advances":  [
-
+                                         "ITEM-02",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -933,11 +973,11 @@
                         "id":  "item-armor-魔心靴",
                         "source_kind":  "item",
                         "category":  "armor",
-                        "tranche":  "",
+                        "tranche":  "B",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "魔心靴",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Armors.DevilHeart.DevilHeartLeggings",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "TK7ddgDgMosNN8xzvs1cS0H0nBH",
@@ -949,17 +989,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Armors/DevilHeart/DevilHeartLeggings.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-02",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -973,11 +1014,11 @@
                         "id":  "item-armor-devil-heart-gun",
                         "source_kind":  "item",
                         "category":  "armor",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Devil Heart Gun",
                         "name_zh":  "魔心手枪",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Weapons.DevilHeart.DevilHeartGun",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "TK7ddgDgMosNN8xzvs1cS0H0nBH",
@@ -989,17 +1030,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Weapons/DevilHeart/DevilHeartGun.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-01",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -1013,11 +1055,11 @@
                         "id":  "item-armor-devil-heart-staff",
                         "source_kind":  "item",
                         "category":  "armor",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Devil Heart Staff",
                         "name_zh":  "魔心法杖",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Weapons.DevilHeart.DevilHeartStaff",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "TK7ddgDgMosNN8xzvs1cS0H0nBH",
@@ -1029,17 +1071,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Weapons/DevilHeart/DevilHeartStaff.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-01",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -1053,11 +1096,11 @@
                         "id":  "item-armor-devil-heart-gyroscope",
                         "source_kind":  "item",
                         "category":  "armor",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Devil Heart Gyroscope",
                         "name_zh":  "魔心陀螺",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Weapons.DevilHeart.DevilHeartGyroscope",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "TK7ddgDgMosNN8xzvs1cS0H0nBH",
@@ -1069,17 +1112,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Weapons/DevilHeart/DevilHeartGyroscope.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-01",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -1093,11 +1137,11 @@
                         "id":  "item-armor-devil-heart-bayonet",
                         "source_kind":  "item",
                         "category":  "armor",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Devil Heart Bayonet",
                         "name_zh":  "魔心刺剑",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Weapons.DevilHeart.DevilHeartBayonet",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "TK7ddgDgMosNN8xzvs1cS0H0nBH",
@@ -1109,17 +1153,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Weapons/DevilHeart/DevilHeartBayonet.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-01",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -1133,11 +1178,11 @@
                         "id":  "item-armor-devil-heart-bow",
                         "source_kind":  "item",
                         "category":  "armor",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Devil Heart Bow",
                         "name_zh":  "魔心弓",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Weapons.DevilHeart.DevilHeartBow",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "TK7ddgDgMosNN8xzvs1cS0H0nBH",
@@ -1149,17 +1194,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Weapons/DevilHeart/DevilHeartBow.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-01",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -1173,11 +1219,11 @@
                         "id":  "item-armor-devil-heart-iron-ore",
                         "source_kind":  "item",
                         "category":  "armor",
-                        "tranche":  "",
+                        "tranche":  "B",
                         "region":  "",
                         "name_en":  "Devil Heart Iron Ore",
                         "name_zh":  "魔心铁矿",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Placeables.DevilHeartIronOre_Item",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "TK7ddgDgMosNN8xzvs1cS0H0nBH",
@@ -1189,17 +1235,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Placeables/DevilHeartIronOre_Item.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-01",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -1213,11 +1260,11 @@
                         "id":  "item-armor-devil-heart-iron-bar",
                         "source_kind":  "item",
                         "category":  "armor",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Devil Heart Iron Bar",
                         "name_zh":  "魔心铁锭",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Materials.DevilHeartIronBar_Item",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "TK7ddgDgMosNN8xzvs1cS0H0nBH",
@@ -1229,17 +1276,19 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Materials/DevilHeartIronBar_Item.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
-
+                                             "DevilHeartIronOre_Item",
+                                             "JadeizedBone_Item"
                                          ],
                         "advances":  [
-
+                                         "ITEM-01",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -1253,11 +1302,11 @@
                         "id":  "item-armor-jadeized-bone",
                         "source_kind":  "item",
                         "category":  "armor",
-                        "tranche":  "",
+                        "tranche":  "B",
                         "region":  "",
                         "name_en":  "Jadeized Bone",
                         "name_zh":  "玉化龙骨",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Placeables.JadeizedBone_Item",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "TK7ddgDgMosNN8xzvs1cS0H0nBH",
@@ -1269,17 +1318,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Placeables/JadeizedBone_Item.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-01",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -1293,11 +1343,11 @@
                         "id":  "item-armor-枯木头盔",
                         "source_kind":  "item",
                         "category":  "armor",
-                        "tranche":  "",
+                        "tranche":  "B",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "枯木头盔",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Armors.Witherbark.WitherbarkHelmet",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "KsIRdhfYuoxhYzxt4bOcinSlnbh",
@@ -1309,17 +1359,19 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Armors/Witherbark/WitherbarkHelmet.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
-
+                                             "WitherbarkBreastPlate",
+                                             "WitherbarkLeggings"
                                          ],
                         "advances":  [
-
+                                         "ITEM-02",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -1333,11 +1385,11 @@
                         "id":  "item-armor-枯木胸甲",
                         "source_kind":  "item",
                         "category":  "armor",
-                        "tranche":  "",
+                        "tranche":  "B",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "枯木胸甲",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Armors.Witherbark.WitherbarkBreastPlate",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "KsIRdhfYuoxhYzxt4bOcinSlnbh",
@@ -1349,17 +1401,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Armors/Witherbark/WitherbarkBreastPlate.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-02",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -1373,11 +1426,11 @@
                         "id":  "item-armor-枯木护腿",
                         "source_kind":  "item",
                         "category":  "armor",
-                        "tranche":  "",
+                        "tranche":  "B",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "枯木护腿",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Armors.Witherbark.WitherbarkLeggings",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "KsIRdhfYuoxhYzxt4bOcinSlnbh",
@@ -1389,17 +1442,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Armors/Witherbark/WitherbarkLeggings.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-02",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -1413,11 +1467,11 @@
                         "id":  "item-armor-珍珠软体头壳",
                         "source_kind":  "item",
                         "category":  "armor",
-                        "tranche":  "",
+                        "tranche":  "B",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "珍珠软体头壳",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Armors.Molluscs.PearlMolluscsHelmet",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "SgUPdGf2uoUWVlxMY2Qc8Yc5nrb",
@@ -1429,17 +1483,19 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Armors/Molluscs/PearlMolluscsHelmet.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
-
+                                             "MolluscsLeggings",
+                                             "ShellMolluscsBreastPlate"
                                          ],
                         "advances":  [
-
+                                         "ITEM-02",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -1453,11 +1509,11 @@
                         "id":  "item-armor-附苔软体头壳",
                         "source_kind":  "item",
                         "category":  "armor",
-                        "tranche":  "",
+                        "tranche":  "B",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "附苔软体头壳",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Armors.Molluscs.MossyMolluscsHelmet",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "SgUPdGf2uoUWVlxMY2Qc8Yc5nrb",
@@ -1469,17 +1525,19 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Armors/Molluscs/MossyMolluscsHelmet.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
-
+                                             "MolluscsLeggings",
+                                             "ShellMolluscsBreastPlate"
                                          ],
                         "advances":  [
-
+                                         "ITEM-02",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -1493,11 +1551,11 @@
                         "id":  "item-armor-软体外壳护甲",
                         "source_kind":  "item",
                         "category":  "armor",
-                        "tranche":  "",
+                        "tranche":  "B",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "软体外壳护甲",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Armors.Molluscs.ShellMolluscsBreastPlate",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "SgUPdGf2uoUWVlxMY2Qc8Yc5nrb",
@@ -1509,17 +1567,20 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Armors/Molluscs/ShellMolluscsBreastPlate.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
-
+                                             "MolluscsLeggings",
+                                             "MossyMolluscsHelmet",
+                                             "PearlMolluscsHelmet"
                                          ],
                         "advances":  [
-
+                                         "ITEM-02",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -1533,11 +1594,11 @@
                         "id":  "item-armor-软体足部",
                         "source_kind":  "item",
                         "category":  "armor",
-                        "tranche":  "",
+                        "tranche":  "B",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "软体足部",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Armors.Molluscs.MolluscsLeggings",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "SgUPdGf2uoUWVlxMY2Qc8Yc5nrb",
@@ -1549,17 +1610,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Armors/Molluscs/MolluscsLeggings.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-02",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -1573,11 +1635,11 @@
                         "id":  "item-weapons.misc-radial-carapace",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Radial Carapace",
                         "name_zh":  "放射状甲壳",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Accessories.RadialCarapace",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "HkdvdyBRroWjHJxNY4YcXCTsnRb",
@@ -1586,23 +1648,24 @@
                                        "code_checkbox_id":  "O1fQd9qhUoRg94xZEuzcH3KGnxh",
                                        "row_color":  "green"
                                    },
-                        "artwork_complete":  true,
+                        "artwork_complete":  false,
                         "code_complete":  true,
-                        "status":  "green",
+                        "status":  "yellow",
                         "repo_asset":  "",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-02",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
-
+                                         "repo asset is a shared placeholder texture (White_Mod/Point_Mod); no local artwork (RESEARCH Pitfall 4)"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -1613,11 +1676,11 @@
                         "id":  "item-weapons.melee-肉食性提灯",
                         "source_kind":  "item",
                         "category":  "weapons.melee",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "肉食性提灯",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Weapons.MeatLantern",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "HkdvdyBRroWjHJxNY4YcXCTsnRb",
@@ -1629,17 +1692,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Weapons/MeatLantern.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-01",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -1653,11 +1717,11 @@
                         "id":  "item-weapons.misc-hardened-witherbark-heart",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Hardened Witherbark Heart",
                         "name_zh":  "硬化枯木心脏",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Accessories.HardenedWitherbarkHeart",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "HkdvdyBRroWjHJxNY4YcXCTsnRb",
@@ -1669,17 +1733,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Accessories/HardenedWitherbarkHeart.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-02",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -1693,11 +1758,11 @@
                         "id":  "item-weapons.misc-thorn-turtle-shell",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Thorn Turtle Shell",
                         "name_zh":  "荆棘龟壳",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Accessories.ThornTurtleShell",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "HkdvdyBRroWjHJxNY4YcXCTsnRb",
@@ -1709,17 +1774,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Accessories/ThornTurtleShell.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-02",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -1733,11 +1799,11 @@
                         "id":  "item-weapons.misc-guppy-shell",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Guppy Shell",
                         "name_zh":  "格普螺外壳",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Accessories.GuppyShell",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "HkdvdyBRroWjHJxNY4YcXCTsnRb",
@@ -1749,17 +1815,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Accessories/GuppyShell.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-02",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -1773,7 +1840,7 @@
                         "id":  "item-weapons.misc-竹节步符",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "竹节步符",
@@ -1799,11 +1866,13 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -1814,7 +1883,7 @@
                         "id":  "item-weapons.misc-竹制武器",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "竹制武器",
@@ -1840,11 +1909,13 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -1855,7 +1926,7 @@
                         "id":  "item-weapons.misc-熊猫宠物",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "熊猫宠物",
@@ -1881,11 +1952,13 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -1896,7 +1969,7 @@
                         "id":  "item-weapons.misc-a",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "A",
                         "name_zh":  "阵法修复材料",
@@ -1922,22 +1995,24 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
-                        "deferred":  false,
-                        "deferred_reason":  ""
+                        "deferred":  true,
+                        "deferred_reason":  "undefined future design (placeholder design name; not yet schedulable for implementation)"
                     },
                     {
                         "id":  "item-weapons.misc-桃枝护符",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "桃枝护符",
@@ -1963,11 +2038,13 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -1978,7 +2055,7 @@
                         "id":  "item-weapons.melee-弟子剑",
                         "source_kind":  "item",
                         "category":  "weapons.melee",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "弟子剑",
@@ -2004,11 +2081,13 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -2019,7 +2098,7 @@
                         "id":  "item-weapons.misc-技能竹简",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "技能竹简",
@@ -2045,11 +2124,13 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -2060,7 +2141,7 @@
                         "id":  "item-weapons.misc-区域放置物品制作台",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "区域放置物品制作台",
@@ -2086,11 +2167,13 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -2101,7 +2184,7 @@
                         "id":  "item-weapons.misc-弟子时装",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "弟子时装",
@@ -2127,11 +2210,13 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -2142,7 +2227,7 @@
                         "id":  "item-weapons.misc-桃花纸鸢-风筝",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "桃花纸鸢（风筝）",
@@ -2168,11 +2253,13 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -2183,7 +2270,7 @@
                         "id":  "item-weapons.misc-b",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "B",
                         "name_zh":  "阵法修复材料",
@@ -2209,22 +2296,24 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
-                        "deferred":  false,
-                        "deferred_reason":  ""
+                        "deferred":  true,
+                        "deferred_reason":  "undefined future design (placeholder design name; not yet schedulable for implementation)"
                     },
                     {
                         "id":  "item-weapons.misc-若干酒类",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "若干酒类",
@@ -2250,11 +2339,13 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -2265,7 +2356,7 @@
                         "id":  "item-weapons.misc-竹簪子",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "竹簪子",
@@ -2291,11 +2382,13 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -2306,7 +2399,7 @@
                         "id":  "item-weapons.misc-c-名字要普通",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "C（名字要普通）",
                         "name_zh":  "阵法修复材料",
@@ -2332,26 +2425,28 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
-                        "deferred":  false,
-                        "deferred_reason":  ""
+                        "deferred":  true,
+                        "deferred_reason":  "undefined future design (placeholder design name; not yet schedulable for implementation)"
                     },
                     {
                         "id":  "item-weapons.misc-empty-water-staff",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Empty Water Staff",
                         "name_zh":  "空水杖",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Weapons.UnderwaterTreasury.EmptyWaterStaff",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "doxcnnJSAMpWWmUqUwHGBjnoX3d",
@@ -2363,7 +2458,7 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Weapons/UnderwaterTreasury/EmptyWaterStaff.png",
                         "localization":  {
                                              "en_us":  false,
                                              "zh_hans":  false,
@@ -2373,7 +2468,8 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -2387,11 +2483,11 @@
                         "id":  "item-weapons.misc-arc-i",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Arc I",
                         "name_zh":  "电弧一号",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Weapons.UnderwaterTreasury.ArcI",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "doxcnnJSAMpWWmUqUwHGBjnoX3d",
@@ -2403,7 +2499,7 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Weapons/UnderwaterTreasury/ArcI.png",
                         "localization":  {
                                              "en_us":  false,
                                              "zh_hans":  false,
@@ -2413,7 +2509,8 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -2427,11 +2524,11 @@
                         "id":  "item-weapons.melee-evil-halbert-barnacle",
                         "source_kind":  "item",
                         "category":  "weapons.melee",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Evil Halbert Barnacle",
                         "name_zh":  "魔戟藤壶",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Weapons.UnderwaterTreasury.EvilHalbertBarnacle",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "doxcnnJSAMpWWmUqUwHGBjnoX3d",
@@ -2443,7 +2540,7 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Weapons/UnderwaterTreasury/EvilHalbertBarnacle.png",
                         "localization":  {
                                              "en_us":  false,
                                              "zh_hans":  false,
@@ -2453,7 +2550,8 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -2467,11 +2565,11 @@
                         "id":  "item-weapons.misc-photophore",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "B",
                         "region":  "",
                         "name_en":  "Photophore",
                         "name_zh":  "灵灯",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Pets.Photophore",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "doxcnnJSAMpWWmUqUwHGBjnoX3d",
@@ -2483,7 +2581,7 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Pets/Photophore.png",
                         "localization":  {
                                              "en_us":  false,
                                              "zh_hans":  false,
@@ -2493,7 +2591,8 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -2507,11 +2606,11 @@
                         "id":  "item-weapons.summon-activated-dog-staff",
                         "source_kind":  "item",
                         "category":  "weapons.summon",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Activated Dog Staff",
                         "name_zh":  "活化之犬召唤杖",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Weapons.ActivatedDogStaff",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "doxcnnJSAMpWWmUqUwHGBjnoX3d",
@@ -2523,7 +2622,7 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Weapons/ActivatedDogStaff.png",
                         "localization":  {
                                              "en_us":  false,
                                              "zh_hans":  false,
@@ -2533,7 +2632,8 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -2547,7 +2647,7 @@
                         "id":  "item-weapons.misc-arm-of-giant-tree",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Arm of Giant Tree",
                         "name_zh":  "巨树之臂",
@@ -2573,10 +2673,12 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -2587,7 +2689,7 @@
                         "id":  "item-weapons.misc-巨石弹射装置",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "巨石弹射装置",
@@ -2613,11 +2715,13 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -2628,11 +2732,11 @@
                         "id":  "item-weapons.misc-anti-corrosive-sole",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Anti-corrosive Sole",
                         "name_zh":  "抗腐蚀鞋底",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Accessories.AntiCorrosiveSole",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "doxcnlTJMIxnmaRlOltbxZDYzGc",
@@ -2644,17 +2748,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Accessories/AntiCorrosiveSole.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -2668,11 +2773,11 @@
                         "id":  "item-weapons.misc-藻类提取机",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "B",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "藻类提取机",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Placeables.AlgaeExtractor_Item",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "doxcnlTJMIxnmaRlOltbxZDYzGc",
@@ -2684,17 +2789,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Placeables/AlgaeExtractor_Item.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -2708,11 +2814,11 @@
                         "id":  "item-weapons.misc-绿苔之刃",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "绿苔之刃",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Weapons.BladeOfGreenMoss",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "doxcnlTJMIxnmaRlOltbxZDYzGc",
@@ -2724,17 +2830,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Weapons/BladeOfGreenMoss.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -2748,11 +2855,11 @@
                         "id":  "item-weapons.misc-青须手杖",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "青须手杖",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Weapons.GreenSungloStaff",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "doxcnlTJMIxnmaRlOltbxZDYzGc",
@@ -2764,7 +2871,7 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Weapons/GreenSungloStaff.png",
                         "localization":  {
                                              "en_us":  false,
                                              "zh_hans":  false,
@@ -2774,7 +2881,8 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -2788,11 +2896,11 @@
                         "id":  "item-weapons.summon-corroded-pearl",
                         "source_kind":  "item",
                         "category":  "weapons.summon",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Corroded Pearl",
                         "name_zh":  "被腐蚀的珍珠",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Accessories.CorrodedPearl",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "doxcnlTJMIxnmaRlOltbxZDYzGc",
@@ -2804,17 +2912,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Accessories/CorrodedPearl.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -2828,11 +2937,11 @@
                         "id":  "item-weapons.ranged-green-thorn-launcher",
                         "source_kind":  "item",
                         "category":  "weapons.ranged",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Green Thorn Launcher",
                         "name_zh":  "青刺球发射器",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Weapons.GreenThornBallLauncher",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "doxcnlTJMIxnmaRlOltbxZDYzGc",
@@ -2844,17 +2953,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Weapons/GreenThornBallLauncher.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -2868,7 +2978,7 @@
                         "id":  "item-weapons.misc-森林之息",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "森林之息",
@@ -2894,10 +3004,12 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -2908,7 +3020,7 @@
                         "id":  "item-weapons.summon-荧光水螅召唤杖",
                         "source_kind":  "item",
                         "category":  "weapons.summon",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "荧光水螅召唤杖",
@@ -2934,11 +3046,13 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -2949,11 +3063,11 @@
                         "id":  "item-weapons.misc-crimson-moon-sap",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Crimson Moon Sap",
                         "name_zh":  "红月髓",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Materials.CrimsonMoonSap",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "D48ndhX87o9stux04tDc3aBonZd",
@@ -2965,7 +3079,7 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Materials/CrimsonMoonSap.png",
                         "localization":  {
                                              "en_us":  false,
                                              "zh_hans":  false,
@@ -2975,7 +3089,8 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -2989,11 +3104,11 @@
                         "id":  "item-weapons.misc-jade-lake-red-algae",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "B",
                         "region":  "",
                         "name_en":  "Jade Lake Red Algae",
                         "name_zh":  "碧湖红藻",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Placeables.JadeLakeRedAlgae_Item",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "D48ndhX87o9stux04tDc3aBonZd",
@@ -3005,7 +3120,7 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Placeables/JadeLakeRedAlgae_Item.png",
                         "localization":  {
                                              "en_us":  false,
                                              "zh_hans":  false,
@@ -3015,7 +3130,8 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -3029,11 +3145,11 @@
                         "id":  "item-weapons.misc-crimson-moon-algae-magic-staff",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Crimson Moon Algae Magic Staff",
                         "name_zh":  "红月水藻法杖",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Weapons.RedAlgaeMagicStaff",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "D48ndhX87o9stux04tDc3aBonZd",
@@ -3045,17 +3161,19 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Weapons/RedAlgaeMagicStaff.png",
                         "localization":  {
                                              "en_us":  false,
                                              "zh_hans":  false,
                                              "blocked":  false
                                          },
                         "dependencies":  [
-
+                                             "CrimsonMoonSap",
+                                             "JadeLakeRedAlgae_Item"
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -3069,11 +3187,11 @@
                         "id":  "item-weapons.summon-crimson-moon-algae-gyroscope",
                         "source_kind":  "item",
                         "category":  "weapons.summon",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Crimson Moon Algae Gyroscope",
                         "name_zh":  "红月水藻陀螺",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Weapons.RedAlgaeMinionGyroscope",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "D48ndhX87o9stux04tDc3aBonZd",
@@ -3085,17 +3203,19 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Weapons/RedAlgaeMinionGyroscope.png",
                         "localization":  {
                                              "en_us":  false,
                                              "zh_hans":  false,
                                              "blocked":  false
                                          },
                         "dependencies":  [
-
+                                             "CrimsonMoonSap",
+                                             "JadeLakeRedAlgae_Item"
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -3109,11 +3229,11 @@
                         "id":  "item-weapons.misc-crimson-moon-algae-spell-book",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Crimson Moon Algae Spell Book",
                         "name_zh":  "红月水藻魔典",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Weapons.RedAlgaeMagicSpellBook",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "D48ndhX87o9stux04tDc3aBonZd",
@@ -3125,17 +3245,19 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Weapons/RedAlgaeMagicSpellBook.png",
                         "localization":  {
                                              "en_us":  false,
                                              "zh_hans":  false,
                                              "blocked":  false
                                          },
                         "dependencies":  [
-
+                                             "CrimsonMoonSap",
+                                             "JadeLakeRedAlgae_Item"
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -3149,11 +3271,11 @@
                         "id":  "item-weapons.misc-crimson-moon-algae-whip",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Crimson Moon Algae Whip",
                         "name_zh":  "红月水藻鞭",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Weapons.RedAlgaeMagicWhip",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "D48ndhX87o9stux04tDc3aBonZd",
@@ -3165,17 +3287,19 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Weapons/RedAlgaeMagicWhip.png",
                         "localization":  {
                                              "en_us":  false,
                                              "zh_hans":  false,
                                              "blocked":  false
                                          },
                         "dependencies":  [
-
+                                             "CrimsonMoonSap",
+                                             "JadeLakeRedAlgae_Item"
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -3189,11 +3313,11 @@
                         "id":  "item-weapons.summon-crimson-moon-algae-summon-staff",
                         "source_kind":  "item",
                         "category":  "weapons.summon",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Crimson Moon Algae Summon Staff",
                         "name_zh":  "红月水藻灵杖",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Weapons.RedAlgaeMinionStaff",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "D48ndhX87o9stux04tDc3aBonZd",
@@ -3205,17 +3329,19 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Weapons/RedAlgaeMinionStaff.png",
                         "localization":  {
                                              "en_us":  false,
                                              "zh_hans":  false,
                                              "blocked":  false
                                          },
                         "dependencies":  [
-
+                                             "CrimsonMoonSap",
+                                             "JadeLakeRedAlgae_Item"
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -3229,7 +3355,7 @@
                         "id":  "item-weapons.magic-红月水藻头饰",
                         "source_kind":  "item",
                         "category":  "weapons.magic",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "红月水藻头饰",
@@ -3255,11 +3381,13 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -3270,7 +3398,7 @@
                         "id":  "item-weapons.summon-红月水藻面具",
                         "source_kind":  "item",
                         "category":  "weapons.summon",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "红月水藻面具",
@@ -3296,11 +3424,13 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -3311,7 +3441,7 @@
                         "id":  "item-weapons.misc-红月水藻板甲",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "红月水藻板甲",
@@ -3337,11 +3467,13 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -3352,7 +3484,7 @@
                         "id":  "item-weapons.misc-红月水藻护胫",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "红月水藻护胫",
@@ -3378,11 +3510,13 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-03",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -3393,11 +3527,11 @@
                         "id":  "item-weapons.misc-forest-mino",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Forest Mino",
                         "name_zh":  "森之蓑衣",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Accessories.ForestMino",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "doxcnF5NkT1L8TXx60UT6do5YKc",
@@ -3409,17 +3543,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Accessories/ForestMino.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-04",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -3433,11 +3568,11 @@
                         "id":  "item-weapons.misc-orfeo-boots",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Orfeo Boots",
                         "name_zh":  "奥菲欧之靴",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Accessories.OrfeoBoots",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "doxcnF5NkT1L8TXx60UT6do5YKc",
@@ -3449,17 +3584,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Accessories/OrfeoBoots.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-04",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -3473,11 +3609,11 @@
                         "id":  "item-weapons.magic-empty-fowlbeast",
                         "source_kind":  "item",
                         "category":  "weapons.magic",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Empty Fowlbeast",
                         "name_zh":  "空羽兽",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Accessories.EmptyFowlbeast",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "doxcnF5NkT1L8TXx60UT6do5YKc",
@@ -3489,17 +3625,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Accessories/EmptyFowlbeast.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-04",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -3513,11 +3650,11 @@
                         "id":  "item-weapons.ranged-razorbeak-bow",
                         "source_kind":  "item",
                         "category":  "weapons.ranged",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Razorbeak Bow",
                         "name_zh":  "尖喙弓",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Weapons.RazorbeakBow",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "doxcnF5NkT1L8TXx60UT6do5YKc",
@@ -3529,17 +3666,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Weapons/RazorbeakBow.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-04",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -3553,7 +3691,7 @@
                         "id":  "item-weapons.summon-灵蛇玉卵",
                         "source_kind":  "item",
                         "category":  "weapons.summon",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "灵蛇玉卵",
@@ -3579,11 +3717,13 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-04",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -3594,7 +3734,7 @@
                         "id":  "item-weapons.misc-厄佛提根的净化粉末",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "厄佛提根的净化粉末",
@@ -3620,10 +3760,12 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-04",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -3634,7 +3776,7 @@
                         "id":  "item-weapons.misc-枯萎面具",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "枯萎面具",
@@ -3660,10 +3802,12 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-04",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -3674,11 +3818,11 @@
                         "id":  "item-weapons.misc-living-woodplate",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Living Woodplate",
                         "name_zh":  "活木甲",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Accessories.LivingWoodplate",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "doxcnK1twRSRyYrOvXg4tyBBkxf",
@@ -3690,17 +3834,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Accessories/LivingWoodplate.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-04",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -3714,11 +3859,11 @@
                         "id":  "item-weapons.summon-ruin-mask",
                         "source_kind":  "item",
                         "category":  "weapons.summon",
-                        "tranche":  "",
+                        "tranche":  "B",
                         "region":  "",
                         "name_en":  "Ruin Mask",
                         "name_zh":  "归墟面罩",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Armors.Ruin.RuinMask",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "doxcnK1twRSRyYrOvXg4tyBBkxf",
@@ -3730,17 +3875,20 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Armors/Ruin/RuinMask.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
-
+                                             "RuinLeggings",
+                                             "RuinMagicRobe",
+                                             "WoodlandWraithStaff"
                                          ],
                         "advances":  [
-
+                                         "ITEM-04",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -3754,11 +3902,11 @@
                         "id":  "item-weapons.summon-ruin-magic-rob",
                         "source_kind":  "item",
                         "category":  "weapons.summon",
-                        "tranche":  "",
+                        "tranche":  "B",
                         "region":  "",
                         "name_en":  "Ruin Magic Rob",
                         "name_zh":  "归墟咒袍",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Armors.Ruin.RuinMagicRobe",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "doxcnK1twRSRyYrOvXg4tyBBkxf",
@@ -3770,17 +3918,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Armors/Ruin/RuinMagicRobe.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-04",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -3794,11 +3943,11 @@
                         "id":  "item-weapons.summon-ruin-leggings",
                         "source_kind":  "item",
                         "category":  "weapons.summon",
-                        "tranche":  "",
+                        "tranche":  "B",
                         "region":  "",
                         "name_en":  "Ruin Leggings",
                         "name_zh":  "归墟护胫",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Armors.Ruin.RuinLeggings",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "doxcnK1twRSRyYrOvXg4tyBBkxf",
@@ -3810,17 +3959,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Armors/Ruin/RuinLeggings.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-04",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -3834,11 +3984,11 @@
                         "id":  "item-weapons.summon-woodland-wraith-staff",
                         "source_kind":  "item",
                         "category":  "weapons.summon",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "Woodland Wraith Staff",
                         "name_zh":  "森宇幽魂法杖",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Weapons.Ruin.WoodlandWraithStaff",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "doxcnK1twRSRyYrOvXg4tyBBkxf",
@@ -3850,17 +4000,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Weapons/Ruin/WoodlandWraithStaff.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-04",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -3874,7 +4025,7 @@
                         "id":  "item-weapons.ranged-魁札尔的愿望",
                         "source_kind":  "item",
                         "category":  "weapons.ranged",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "魁札尔的愿望",
@@ -3900,10 +4051,12 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-04",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -3914,11 +4067,11 @@
                         "id":  "item-weapons.misc-thegreensolar",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "TheGreenSolar",
                         "name_zh":  "绿阳之石",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Accessories.TheGreenSolar",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "doxcnK1twRSRyYrOvXg4tyBBkxf",
@@ -3930,17 +4083,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "Accessories/TheGreenSolar.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-04",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -3954,7 +4108,7 @@
                         "id":  "item-weapons.melee-碧绿玉髓扇",
                         "source_kind":  "item",
                         "category":  "weapons.melee",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "碧绿玉髓扇",
@@ -3980,10 +4134,12 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-01",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -3994,7 +4150,7 @@
                         "id":  "item-weapons.ranged-龙骨猎枪",
                         "source_kind":  "item",
                         "category":  "weapons.ranged",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "龙骨猎枪",
@@ -4020,10 +4176,12 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-01",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -4034,7 +4192,7 @@
                         "id":  "item-weapons.melee-碧玉弯刀",
                         "source_kind":  "item",
                         "category":  "weapons.melee",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "碧玉弯刀",
@@ -4060,10 +4218,12 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-01",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -4074,7 +4234,7 @@
                         "id":  "item-weapons.summon-魂蛇手杖",
                         "source_kind":  "item",
                         "category":  "weapons.summon",
-                        "tranche":  "",
+                        "tranche":  "A",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "魂蛇手杖",
@@ -4100,10 +4260,12 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-01",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
-                                         "design code not complete (Feishu code checkbox false)"
+                                         "design code not complete (Feishu code checkbox false)",
+                                         "no repo implementation found"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -4114,11 +4276,11 @@
                         "id":  "item-weapons.misc-绿琉璃果",
                         "source_kind":  "item",
                         "category":  "weapons.misc",
-                        "tranche":  "",
+                        "tranche":  "B",
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "绿琉璃果",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.PermanentBoosters.JadeFruit",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "doxcn8LaEaSegCa81vMthGjpd1d",
@@ -4130,17 +4292,18 @@
                         "artwork_complete":  true,
                         "code_complete":  true,
                         "status":  "green",
-                        "repo_asset":  "",
+                        "repo_asset":  "PermanentBoosters/JadeFruit.png",
                         "localization":  {
-                                             "en_us":  false,
-                                             "zh_hans":  false,
+                                             "en_us":  true,
+                                             "zh_hans":  true,
                                              "blocked":  false
                                          },
                         "dependencies":  [
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-01",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
 
@@ -4158,7 +4321,7 @@
                         "region":  "特殊植物",
                         "name_en":  "VineRepairWand",
                         "name_zh":  "藤蔓修理魔杖",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Weapons.Special.VineRepairWand",
                         "feishu":  {
                                        "doc":  "terrain",
                                        "table_block_id":  "doxcnGi5o6mc4k05yPXJ8gVydLc",
@@ -4170,7 +4333,7 @@
                         "artwork_complete":  false,
                         "code_complete":  true,
                         "status":  "yellow",
-                        "repo_asset":  "",
+                        "repo_asset":  "Weapons/Special/VineRepairWand.png",
                         "localization":  {
                                              "en_us":  false,
                                              "zh_hans":  false,
@@ -4180,7 +4343,8 @@
 
                                          ],
                         "advances":  [
-
+                                         "ITEM-04",
+                                         "ITEM-07"
                                      ],
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)"
