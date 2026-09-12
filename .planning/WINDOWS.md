@@ -1,10 +1,10 @@
 ---
 schema_version: 1
-open_count: 6
+open_count: 7
 waived_count: 0
 fixed_count: 0
-total_count: 6
-last_updated: 2026-09-12T10:27:22.325Z
+total_count: 7
+last_updated: 2026-09-12T10:54:35.876Z
 ---
 
 # Broken Windows Ledger
@@ -21,6 +21,7 @@ last_updated: 2026-09-12T10:27:22.325Z
 | 4 | 01 | deviation | .planning/phases/01-item-inventory-completed-art-items/01-03-SUMMARY.md |  | 01-03 Task 1 expanded from 2 declared files to 20 (D-12 numeric design parity); prose effects/set bonuses/recipes remain un-reconciled. | open |  | 2026-09-12T06:29:40.352Z |  |
 | 5 | 01 | stub | Sources/Modules/Yggdrasil/KelpCurtain/Items/Pets/Photophore.cs |  | Photophore implements the Jade Fruit permanent-booster behaviour instead of the designed light pet; blocked, no pet asset exists | open |  | 2026-09-12T10:27:09.847Z |  |
 | 6 | 01 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/Items/Armors/Witherbark/WitherbarkHelmet.cs |  | Witherbark set-bonus summoned minion attack pattern differs from the design (spikes 14 dmg/30f vs the wired dash+8-leaf burst in Projectiles/Summon); recorded as a 套装效果 blocker | open |  | 2026-09-12T10:27:22.325Z |  |
+| 7 | 01 | stub | Sources/Everglow/Localization/en-US/Mods.Everglow.Items.*.hjson |  | 13 Phase 1 completed-art item display keys deferred by user directive (localization out of Phase 1): EvilHalbertBarnacle, ArcI, RedAlgaeMagicStaff, RedAlgaeMagicSpellBook, RedAlgaeMagicWhip, CrimsonMoonSap, EmptyWaterStaff, JadeLakeRedAlgae_Item, Photophore, GreenSungloStaff, ActivatedDogStaff, RedAlgaeMinionGyroscope, RedAlgaeMinionStaff | open |  | 2026-09-12T10:54:35.876Z |  |
 
 ````json
 [
@@ -94,6 +95,18 @@ last_updated: 2026-09-12T10:27:22.325Z
     "status": "open",
     "reason": "",
     "recorded_at": "2026-09-12T10:27:22.325Z",
+    "resolved_at": null
+  },
+  {
+    "id": 7,
+    "kind": "stub",
+    "phase": "01",
+    "file": "Sources/Everglow/Localization/en-US/Mods.Everglow.Items.*.hjson",
+    "line": null,
+    "description": "13 Phase 1 completed-art item display keys deferred by user directive (localization out of Phase 1): EvilHalbertBarnacle, ArcI, RedAlgaeMagicStaff, RedAlgaeMagicSpellBook, RedAlgaeMagicWhip, CrimsonMoonSap, EmptyWaterStaff, JadeLakeRedAlgae_Item, Photophore, GreenSungloStaff, ActivatedDogStaff, RedAlgaeMinionGyroscope, RedAlgaeMinionStaff",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-12T10:54:35.876Z",
     "resolved_at": null
   }
 ]
