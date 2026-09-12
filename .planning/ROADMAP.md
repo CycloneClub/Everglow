@@ -8,11 +8,12 @@ Complete the Kelp Curtain second layer in explicit content-priority order: recon
 
 Each phase plan maintains an item-level comparison matrix for the biology, item, and terrain documents named in `.planning/PROJECT.md`. Before implementation or acceptance, fetch the relevant Feishu document with **XML and full detail** so block IDs, checkbox state, and formatting are available; verify each item individually against the source. The acceptance status is:
 
-- **Green and checked:** exact design completion with acceptance checks passing.
-- **Yellow:** partial, conflicting, materially different, or known-exception implementation, with a concise explanation retained.
-- **Unchecked:** blocked or not implemented, with the dependency/blocker recorded in planning artifacts.
+- **Status colour applies only when both the artwork and code checkboxes are complete.** When either checkbox is incomplete the row is **unchecked — no colour**, whatever the repository asset state, and the conflict is recorded as a blocker.
+- **Green and checked:** both checkboxes complete, exact design match, acceptance checks passing.
+- **Yellow:** both checkboxes complete but a content/description conflict, materially different behavior, or known exception exists, with a concise explanation retained.
+- **Unchecked (no colour):** artwork and/or code incomplete, or implementation blocked/not done, with the dependency/blocker recorded in planning artifacts.
 
-Phase 1 owns the source/inventory reconciliation record for the label discrepancy: Biology names Death Jade Lake, Spiny Moss Court, and Valley of Lush and Moist, while Terrain also names Green Tundra and Town of Decaying Wood. The record must classify each label as a region, nested area, structure, transition, or alias before affected work is accepted. This reconciliation is an inventory prerequisite, not a reason to make region geography the first implementation priority. If a label cannot be resolved, its affected item stays yellow/blocked rather than being silently folded into another region. Phase 8 performs the final per-item Feishu status synchronization and audit.
+Phase 1 owns the source/inventory reconciliation record for the label discrepancy: Biology names Death Jade Lake, Spiny Moss Court, and Valley of Lush and Moist, while Terrain also names Green Tundra and Town of Decaying Wood. The record must classify each label as a region, nested area, structure, transition, or alias before affected work is accepted. This reconciliation is an inventory prerequisite, not a reason to make region geography the first implementation priority. If a label cannot be resolved, its affected item stays unchecked (no colour)/blocked rather than being silently folded into another region. Phase 8 performs the final per-item Feishu status synchronization and audit.
 
 ## Phases
 
@@ -39,7 +40,7 @@ Phase 1 owns the source/inventory reconciliation record for the label discrepanc
   1. The inventory identifies every in-scope item, material, and biology-design drop, records whether its design artwork/texture is complete, and records dependencies, missing assets, hardmode-deferred entries, and undefined future entries.
   2. The biology/terrain source-label discrepancy is classified in an auditable record before geography-specific implementation is accepted.
   3. Players can obtain, craft, equip, or use every unblocked item and completed-art biology drop in this tranche with the documented recipe, value, effect, and localization behavior; no placeholder art is introduced.
-  4. Every completed-art item accepted in this phase has an XML-full-fetch comparison record; exact matches are eligible for green/check status, while partial/conflicting or blocked entries remain yellow/unchecked with reasons.
+  4. Every completed-art item accepted in this phase has an XML-full-fetch comparison record; both-checkbox-complete exact matches are eligible for green/check status, both-checkbox-complete conflicts or known exceptions are yellow with reasons, and entries with an incomplete checkbox or a blocker remain unchecked (no colour) with reasons.
 
 **Verification needs:** XML `--detail full` fetches and per-item matrix; source-label taxonomy; item recipe/effect/drop checks; asset/localization convention review; `dotnet build`; blocker and dependency audit.
 **Plans:** 5/5 plans executed
@@ -81,7 +82,7 @@ Plans:
   1. Players can obtain, craft, equip, or use every unblocked remaining natural weapon, ammunition, material, utility item, armor/accessory, exploration reward, collection reward, quest reward, trade reward, restoration reward, and associated biology-design drop in the documented progression.
   2. Unfinished-art drops and materials are counted in item implementation and are not deferred to the monster phases; entries blocked by unavailable approved art remain explicitly unchecked rather than receiving placeholder assets.
   3. Recipes, values, effects, set effects, access conditions, and progression dependencies discovered in Phase 1 work together without bypassing the intended item progression.
-  4. Each accepted remaining item has an individual XML-full-fetch comparison and an evidence record that supports green for exact completion or yellow/unchecked for partial/conflicting/blocked work.
+  4. Each accepted remaining item has an individual XML-full-fetch comparison and an evidence record that supports green for both-checkbox-complete exact completion, yellow for both-checkbox-complete conflicts or known exceptions, and unchecked (no colour) for work with an incomplete checkbox or a blocker.
 
 **Verification needs:** Phase 1 dependency ledger; per-item source matrix; craft/loot/quest/trade/restoration checks; both localization targets for available items; `dotnet build`; blocker review.
 **Plans:** TBD
@@ -177,7 +178,7 @@ Plans:
   2. Every implemented item has complete `en-US` and `zh-Hans` localization and follows generated asset/localization conventions; missing approved art is not hidden by placeholders.
   3. Player state, world state, subworld transitions, permanent rewards, NPC/projectile state, quest state, and network state remain consistent across save/load, exit/re-entry, dedicated-server, and multiplayer scenarios.
   4. The repository `dotnet build` workflow passes without compiler, resource-packing, or shader errors, and client verification covers entry, generation, exploration, rendering, combat, progression, localization, and reward acquisition.
-  5. Every design item is individually synchronized from XML-full-fetch evidence: exact completion is checked/green, partial or conflicting implementation is yellow with a concise explanation, and blocked/unimplemented work remains unchecked with its blocker recorded.
+  5. Every design item is individually synchronized from XML-full-fetch evidence: both-checkbox-complete exact completion is checked/green, both-checkbox-complete conflicts or known exceptions are yellow with a concise explanation, and work with an incomplete checkbox or otherwise blocked remains unchecked (no colour) with its blocker recorded.
 
 **Verification needs:** Clean build and relevant tests; full client regression; dedicated-server and multiplayer verification for changed networked/persistent/subworld/NPC/projectile/quest/reward paths; final per-item Feishu status writes; planning evidence and blocker audit.
 **Plans:** TBD

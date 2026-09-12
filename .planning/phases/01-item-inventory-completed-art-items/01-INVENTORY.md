@@ -5,24 +5,26 @@ Machine source of truth: `01-INVENTORY.json`. This file mirrors that row set, on
 
 Artwork/Code cells mirror the Feishu texture/code checkbox state; Feishu is authoritative (D-05).
 
+**Status colour rule:** a row is coloured only when **both** Artwork and Code are `done`. **Green** = both complete and matching the design; **Yellow** = both complete but a content/description conflict or known exception exists (see Blockers). If either cell is `no`, the row is **unchecked** and carries no colour, whatever the repository asset state.
+
 ## Weapons
 
 | Name (en) | Name (zh) | Category | Region | Artwork | Code | Status | Blockers |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 |  | 区域放置物品制作台 | weapons.misc |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
-|  | 厄佛提根的净化粉末 | weapons.misc |  | done | no | yellow | design code not complete (Feishu code checkbox false); no repo implementation found |
+|  | 厄佛提根的净化粉末 | weapons.misc |  | done | no | unchecked | design code not complete (Feishu code checkbox false); no repo implementation found |
 |  | 巨石弹射装置 | weapons.misc |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
 |  | 弟子剑 | weapons.melee |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
 |  | 弟子时装 | weapons.misc |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
 |  | 技能竹简 | weapons.misc |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
-|  | 枯萎面具 | weapons.misc |  | done | no | yellow | design code not complete (Feishu code checkbox false); no repo implementation found |
+|  | 枯萎面具 | weapons.misc |  | done | no | unchecked | design code not complete (Feishu code checkbox false); no repo implementation found |
 |  | 桃枝护符 | weapons.misc |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
 |  | 桃花纸鸢（风筝） | weapons.misc |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
-|  | 森林之息 | weapons.misc |  | done | no | yellow | design code not complete (Feishu code checkbox false); no repo implementation found |
+|  | 森林之息 | weapons.misc |  | done | no | unchecked | design code not complete (Feishu code checkbox false); no repo implementation found |
 |  | 灵蛇玉卵 | weapons.summon |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
 |  | 熊猫宠物 | weapons.misc |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
-|  | 碧玉弯刀 | weapons.melee |  | done | no | yellow | design code not complete (Feishu code checkbox false); no repo implementation found |
-|  | 碧绿玉髓扇 | weapons.melee |  | done | no | yellow | design code not complete (Feishu code checkbox false); no repo implementation found |
+|  | 碧玉弯刀 | weapons.melee |  | done | no | unchecked | design code not complete (Feishu code checkbox false); no repo implementation found |
+|  | 碧绿玉髓扇 | weapons.melee |  | done | no | unchecked | design code not complete (Feishu code checkbox false); no repo implementation found |
 |  | 竹制武器 | weapons.misc |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
 |  | 竹簪子 | weapons.misc |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
 |  | 竹节步符 | weapons.misc |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
@@ -36,15 +38,15 @@ Artwork/Code cells mirror the Feishu texture/code checkbox state; Feishu is auth
 |  | 若干酒类 | weapons.misc |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
 |  | 荧光水螅召唤杖 | weapons.summon |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
 |  | 藻类提取机 | weapons.misc |  | done | done | green |  |
-|  | 青须手杖 | weapons.misc |  | done | done | green |  |
-|  | 魁札尔的愿望 | weapons.ranged |  | done | no | yellow | design code not complete (Feishu code checkbox false); no repo implementation found |
-|  | 魂蛇手杖 | weapons.summon |  | done | no | yellow | design code not complete (Feishu code checkbox false); no repo implementation found |
-|  | 龙骨猎枪 | weapons.ranged |  | done | no | yellow | design code not complete (Feishu code checkbox false); no repo implementation found |
+|  | 青须手杖 | weapons.misc |  | done | done | yellow | effect (效果) unreconciled: design thorn lifetime 20s not confirmed (GreenSungloThorns timeLeft 10000 frames) |
+|  | 魁札尔的愿望 | weapons.ranged |  | done | no | unchecked | design code not complete (Feishu code checkbox false); no repo implementation found |
+|  | 魂蛇手杖 | weapons.summon |  | done | no | unchecked | design code not complete (Feishu code checkbox false); no repo implementation found |
+|  | 龙骨猎枪 | weapons.ranged |  | done | no | unchecked | design code not complete (Feishu code checkbox false); no repo implementation found |
 | A | 阵法修复材料 | weapons.misc |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
 | Activated Dog Staff | 活化之犬召唤杖 | weapons.summon |  | done | done | green |  |
 | Anti-corrosive Sole | 抗腐蚀鞋底 | weapons.misc |  | done | done | green |  |
 | Arc I | 电弧一号 | weapons.misc |  | done | done | green |  |
-| Arm of Giant Tree | 巨树之臂 | weapons.misc |  | done | no | yellow | design code not complete (Feishu code checkbox false); no repo implementation found |
+| Arm of Giant Tree | 巨树之臂 | weapons.misc |  | done | no | unchecked | design code not complete (Feishu code checkbox false); no repo implementation found |
 | B | 阵法修复材料 | weapons.misc |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
 | C（名字要普通） | 阵法修复材料 | weapons.misc |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
 | Corroded Pearl | 被腐蚀的珍珠 | weapons.summon |  | done | done | green |  |
@@ -54,10 +56,10 @@ Artwork/Code cells mirror the Feishu texture/code checkbox state; Feishu is auth
 | Crimson Moon Algae Summon Staff | 红月水藻灵杖 | weapons.summon |  | done | done | green |  |
 | Crimson Moon Algae Whip | 红月水藻鞭 | weapons.misc |  | done | done | green |  |
 | Crimson Moon Sap | 红月髓 | weapons.misc |  | done | done | green |  |
-| Cyathea Arrow | 桫椤箭 | weapons.ranged |  | done | done | green |  |
+| Cyathea Arrow | 桫椤箭 | weapons.ranged |  | done | done | yellow | effect (效果) unreconciled: design spike damage 1 differs from CyatheaArrow_proj Projectile.damage/2 |
 | Empty Fowlbeast | 空羽兽 | weapons.magic |  | done | done | green |  |
 | Empty Water Staff | 空水杖 | weapons.misc |  | done | done | green |  |
-| Evil Halbert Barnacle | 魔戟藤壶 | weapons.melee |  | done | done | green |  |
+| Evil Halbert Barnacle | 魔戟藤壶 | weapons.melee |  | done | done | yellow | effect (效果) unreconciled: design right-click 60% panel damage and 16 defense-pierce not confirmed in EvilHalbertBarnacle shuttle |
 | Forest Mino | 森之蓑衣 | weapons.misc |  | done | done | green |  |
 | Green Thorn Launcher | 青刺球发射器 | weapons.ranged |  | done | done | green |  |
 | Green Vine Whip | 青蔓鞭 | weapons.summon |  | done | done | green |  |
@@ -68,41 +70,41 @@ Artwork/Code cells mirror the Feishu texture/code checkbox state; Feishu is auth
 | Legume Gyroscope | 裂荚陀螺 | weapons.misc |  | done | done | green |  |
 | Living Woodplate | 活木甲 | weapons.misc |  | done | done | green |  |
 | Mossy Cyathea Bow | 青苔桫椤弓 | weapons.ranged |  | done | done | green |  |
-| Mossy Spell | 附苔 | weapons.magic |  | done | done | green |  |
+| Mossy Spell | 附苔 | weapons.magic |  | done | done | yellow | effect (效果) unreconciled: design 25% poison for 5s on hit is absent from MossySpell_proj |
 | Orfeo Boots | 奥菲欧之靴 | weapons.misc |  | done | done | green |  |
-| Photophore | 灵灯 | weapons.misc |  | done | done | green |  |
-| Radial Carapace | 放射状甲壳 | weapons.misc |  | no | done | yellow | repo asset is a shared placeholder texture (White_Mod/Point_Mod); no local artwork (RESEARCH Pitfall 4) |
+| Photophore | 灵灯 | weapons.misc |  | done | done | yellow | 效果: the Photophore class currently implements the Jade Fruit permanent-booster behaviour (permanent +5 max life, 10 uses, LocalizationCategory PermanentBoosters) instead of the designed light pet (an anglerfish lamp fixed above/front of the player with a faint glow that brightens underwater); implementing the pet would add new buff/projectile content and asset, so the effect is unreconciled |
+| Radial Carapace | 放射状甲壳 | weapons.misc |  | no | done | unchecked | repo asset is a shared placeholder texture (White_Mod/Point_Mod); no local artwork (RESEARCH Pitfall 4) |
 | Razorbeak Bow | 尖喙弓 | weapons.ranged |  | done | done | green |  |
 | Ruin Leggings | 归墟护胫 | weapons.summon |  | done | done | green |  |
 | Ruin Magic Rob | 归墟咒袍 | weapons.summon |  | done | done | green |  |
-| Ruin Mask | 归墟面罩 | weapons.summon |  | done | done | green |  |
+| Ruin Mask | 归墟面罩 | weapons.summon |  | done | done | yellow | 套装效果: set-bonus display text (player.setBonus) not implemented and no localization key exists; +1 minion and the RuinSetBuff (+10% summon damage, +25% move speed) are implemented, while the design +10% Ruin-series minion speed and -10% attack interval are not confirmed from the buff handler |
 | TheGreenSolar | 绿阳之石 | weapons.misc |  | done | done | green |  |
 | Thorn Turtle Shell | 荆棘龟壳 | weapons.misc |  | done | done | green |  |
 | Woodland Wraith Staff | 森宇幽魂法杖 | weapons.summon |  | done | done | green |  |
-|  | 崩解阈限 | weapons.magic | 特殊： | done | no | yellow | design code not complete (Feishu code checkbox false); no repo implementation found |
-|  | 巨翼龙圣物（大师） | weapons.misc | 特殊： | done | no | yellow | design code not complete (Feishu code checkbox false); no repo implementation found |
-|  | 巨翼龙纪念章 | weapons.misc | 特殊： | done | no | yellow | design code not complete (Feishu code checkbox false); no repo implementation found |
+|  | 崩解阈限 | weapons.magic | 特殊： | done | no | unchecked | design code not complete (Feishu code checkbox false); no repo implementation found |
+|  | 巨翼龙圣物（大师） | weapons.misc | 特殊： | done | no | unchecked | design code not complete (Feishu code checkbox false); no repo implementation found |
+|  | 巨翼龙纪念章 | weapons.misc | 特殊： | done | no | unchecked | design code not complete (Feishu code checkbox false); no repo implementation found |
 |  | 巨翼龙面具 | weapons.misc | 特殊： | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
-|  | 狂战士板甲 | weapons.melee | 特殊： | done | no | yellow | design code not complete (Feishu code checkbox false); no repo implementation found |
-|  | 狂战士胫甲 | weapons.melee | 特殊： | done | no | yellow | design code not complete (Feishu code checkbox false); no repo implementation found |
-|  | 狂战士角盔 | weapons.melee | 特殊： | done | no | yellow | design code not complete (Feishu code checkbox false); no repo implementation found |
+|  | 狂战士板甲 | weapons.melee | 特殊： | done | no | unchecked | design code not complete (Feishu code checkbox false); no repo implementation found |
+|  | 狂战士胫甲 | weapons.melee | 特殊： | done | no | unchecked | design code not complete (Feishu code checkbox false); no repo implementation found |
+|  | 狂战士角盔 | weapons.melee | 特殊： | done | no | unchecked | design code not complete (Feishu code checkbox false); no repo implementation found |
 |  | 肌腱巨弓 | weapons.ranged | 特殊： | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
 |  | 腥臭的诱饵 | weapons.summon | 特殊： | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
-|  | 血肉聚合物 | weapons.misc | 特殊： | done | no | yellow | design code not complete (Feishu code checkbox false); no repo implementation found |
-|  | 骇翼链剑 | weapons.melee | 特殊： | done | no | yellow | design code not complete (Feishu code checkbox false); no repo implementation found |
-|  | 龙骸巨块大剑 | weapons.melee | 特殊： | done | no | yellow | design code not complete (Feishu code checkbox false); no repo implementation found |
+|  | 血肉聚合物 | weapons.misc | 特殊： | done | no | unchecked | design code not complete (Feishu code checkbox false); no repo implementation found |
+|  | 骇翼链剑 | weapons.melee | 特殊： | done | no | unchecked | design code not complete (Feishu code checkbox false); no repo implementation found |
+|  | 龙骸巨块大剑 | weapons.melee | 特殊： | done | no | unchecked | design code not complete (Feishu code checkbox false); no repo implementation found |
 | -RE01 | 限制机 | weapons.summon | 特殊： | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
-| VineRepairWand | 藤蔓修理魔杖 | weapons.magic | 特殊植物 | no | done | yellow | design artwork not complete (Feishu texture checkbox false) |
+| VineRepairWand | 藤蔓修理魔杖 | weapons.magic | 特殊植物 | no | done | unchecked | design artwork not complete (Feishu texture checkbox false) |
 
 ## Armor
 
 | Name (en) | Name (zh) | Category | Region | Artwork | Code | Status | Blockers |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|  | 枯木头盔 | armor |  | done | done | green |  |
+|  | 枯木头盔 | armor |  | done | done | yellow | 套装效果: summoned Witherbark Guard attack pattern not reconciled - the design fires spikes at the nearest enemy for 14 summon damage every 30 frames, while the wired WitherbarkMinion dash/8-leaf burst lives in Projectiles/Summon outside this task modify set; 套装效果: set-bonus display text (player.setBonus) not implemented and no localization key exists; the mechanical set-bonus effects (+3 minions, -30% summon damage, guard summon) are implemented |
 |  | 枯木护腿 | armor |  | done | done | green |  |
 |  | 枯木胸甲 | armor |  | done | done | green |  |
 |  | 珍珠软体头壳 | armor |  | done | done | green |  |
-|  | 软体外壳护甲 | armor |  | done | done | green |  |
+|  | 软体外壳护甲 | armor |  | done | done | yellow | 套装效果: set-bonus display text (player.setBonus) not implemented and no localization key exists; the general/melee/ranged set-bonus effects are implemented (MolluscsSetBuff plus the head variants) |
 |  | 软体足部 | armor |  | done | done | green |  |
 |  | 附苔软体头壳 | armor |  | done | done | green |  |
 |  | 魔心发簪 | armor |  | done | done | green |  |

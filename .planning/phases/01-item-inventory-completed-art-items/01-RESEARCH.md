@@ -7,7 +7,7 @@
 - **D-03:** Both files live in the phase directory: `.planning/phases/01-item-inventory-completed-art-items/01-INVENTORY.{md,json}`.
 - **D-04:** The five terrain labels get a dedicated "Source Label Reconciliation" table in `01-INVENTORY.md` plus a `labels` array in the JSON, each classified as region / nested area / structure / transition / alias with rationale and affected entries.
 - **D-05:** Feishu artwork/texture checkbox state is authoritative for whether artwork is complete; repository asset presence is corroborating evidence only.
-- **D-06:** On conflict, Feishu wins: Feishu-complete but no repo asset → blocked (not Phase 1 scope); repo asset present but Feishu unchecked → yellow/conflict requiring human resolution before implementation.
+- **D-06:** On conflict, Feishu wins: Feishu-complete but no repo asset → blocked (not Phase 1 scope); repo asset present but either Feishu checkbox unchecked → unchecked (no status colour) with the conflict recorded as a blocker requiring human resolution before implementation. A status colour is applied only when BOTH Feishu checkboxes are complete (D-07; PROJECT.md "Design Status Synchronization").
 - **D-07:** Each JSON row carries separate `artwork_complete` and `code_complete` booleans plus a composite `status` (green / yellow / unchecked), mirroring the two Feishu checkboxes. The Markdown matrix shows both sub-columns and the composite state.
 - **D-08:** Fetch all three documents once at phase start with `lark-cli docs +fetch --doc-format xml --detail full` and treat the snapshot as the reconciliation basis (reproducible).
 - **D-09:** Raw XML snapshots are committed under `.planning/phases/01-item-inventory-completed-art-items/evidence/`, and the JSON sidecar references the relevant `block_id`s for later Phase 8 status writes.
@@ -177,6 +177,7 @@ public class OldMoss_Item : ModItem
 ```
 [VERIFIED: terrain doc `OCK2di9Zvoa8Blx3bfyczI0xn0b`, `--scope keyword --keyword 绿` this session]
 **Status colors** (row-as-status-unit): green `rgb(217,245,214)`; yellow `rgb(255,255,204)`. Neutral/header gray `rgb(239,240,241)`. The legacy light-orange texture-column and light-green code-column fills are **not** status and must not be read as status [CITED: .planning/PROJECT.md:62-72].
+A status colour is applied only when **both** checkboxes are complete (green = exact match; yellow = both complete with a conflict or known exception). If either checkbox is incomplete the composite status is **unchecked** (no colour), whatever the repository asset state [CITED: .planning/PROJECT.md:67-70].
 
 ### Pattern 4: Inventory JSON schema (agent discretion — recommended)
 **What:** A stable, versioned sidecar that Phases 2–8 can filter.
@@ -204,11 +205,11 @@ public class OldMoss_Item : ModItem
       "internal_name": "Everglow.Yggdrasil.KelpCurtain.Items.Weapons.MossyCyatheaBow",
       "feishu": { "doc": "item", "table_block_id": "...", "row_name_block_id": "...",
                   "texture_checkbox_id": "...", "code_checkbox_id": "..." },
-      "artwork_complete": true, "code_complete": false, "status": "yellow",
+      "artwork_complete": true, "code_complete": false, "status": "unchecked",
       "repo_asset": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/MossyCyatheaBow.png",
       "localization": { "en_us": true, "zh_hans": true },
       "dependencies": ["material-..."],
-      "blockers": ["design artwork not complete (Feishu texture checkbox false)"],
+      "blockers": ["design code not complete (Feishu code checkbox false)"],
       "phase": 1,
       "notes": "..."
     }

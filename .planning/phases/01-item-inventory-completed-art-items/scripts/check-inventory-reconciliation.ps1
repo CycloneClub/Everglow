@@ -10,8 +10,12 @@
 	  - any advances array is empty;
 	  - any localization object lacks the blocked boolean;
 	  - any status yellow entry has an empty blockers array;
-	  - any entry has code_complete true and artwork_complete true yet status
-	    is not green;
+	  - any entry with an incomplete checkbox does not have status unchecked
+	    (a status colour requires BOTH checkboxes complete);
+	  - any entry with both checkboxes complete and no blocker does not have
+	    status green;
+	  - any entry with both checkboxes complete and a blocker does not have
+	    status yellow;
 	  - any source_kind item entry with a non-empty internal_name has an empty
 	    repo_asset while artwork_complete is true.
 
@@ -64,8 +68,15 @@ foreach ($e in $entries) {
 	if ($e.status -eq 'yellow' -and $blockers.Count -eq 0) {
 		$failures.Add("$id : status yellow with no blocker")
 	}
-	if ([bool]$e.code_complete -and [bool]$e.artwork_complete -and $e.status -ne 'green') {
-		$failures.Add("$id : both complete but status '$($e.status)' is not green")
+	$bothComplete = ([bool]$e.code_complete) -and ([bool]$e.artwork_complete)
+	if (-not $bothComplete -and $e.status -ne 'unchecked') {
+		$failures.Add("$id : a checkbox is incomplete, so status must be unchecked (no colour) but is '$($e.status)'")
+	}
+	if ($bothComplete -and $blockers.Count -eq 0 -and $e.status -ne 'green') {
+		$failures.Add("$id : both checkboxes complete with no blocker must be green but is '$($e.status)'")
+	}
+	if ($bothComplete -and $blockers.Count -gt 0 -and $e.status -ne 'yellow') {
+		$failures.Add("$id : both checkboxes complete with a blocker must be yellow but is '$($e.status)'")
 	}
 	if ($e.source_kind -eq 'item' -and -not [string]::IsNullOrWhiteSpace([string]$e.internal_name)) {
 		if ([string]::IsNullOrWhiteSpace([string]$e.repo_asset) -and [bool]$e.artwork_complete) {

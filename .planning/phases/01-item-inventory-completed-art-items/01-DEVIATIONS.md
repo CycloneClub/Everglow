@@ -94,3 +94,18 @@ See `01-INVENTORY.json` `phase1_actions[]` for the machine-readable list. Summar
 6. Captured the pre-exporter localization baseline in `01-05-SUMMARY.md`.
 7. Consolidated the plan 03/04 deviation ledgers into this file and the inventory.
 8. Deferred Phase 1 localization by user directive (2026-09-12); recorded the 13 missing-key entries as deferred deviations — no key was fabricated and no HJSON file was edited.
+
+## Status-Colour Rule Correction (2026-09-12)
+
+Factual error corrected after Phase 1 review: the composite `status` had been computed as `green` when both Feishu checkboxes are complete, `yellow` when exactly one is complete, and `unchecked` when neither is complete. That contradicts the authoritative rule in `PROJECT.md` "Design Status Synchronization" (lines 67-70).
+
+Corrected rule (now enforced by `parse-design-xml.ps1` `Get-Status`, `validate-inventory.ps1`, and `check-inventory-reconciliation.ps1`, and restated in `.planning/ROADMAP.md`, `.planning/REQUIREMENTS.md`, `01-CONTEXT.md` D-06, `01-RESEARCH.md`, and `01-INVENTORY.md`):
+
+- A status colour applies **only** when **both** `artwork_complete` and `code_complete` are true.
+- **Green:** both complete with an exact design match (no conflict/known-exception blocker).
+- **Yellow:** both complete but a content/description conflict or known exception is recorded as a blocker.
+- **Unchecked (no colour):** either checkbox incomplete, whatever the repository asset state.
+
+Recomputed `01-INVENTORY.json` / `01-INVENTORY.md`: green 50, yellow 8, unchecked 45 (previously green 58, yellow 20, unchecked 25). The 8 both-complete entries carrying tranche effect/set-bonus blockers are now yellow: `MossySpell`, `CyatheaArrow`, `GreenSungloStaff`, `EvilHalbertBarnacle`, `Photophore`, `WitherbarkHelmet` (`枯木头盔`), `ShellMolluscsBreastPlate` (`软体外壳护甲`), `RuinMask`. The 8 Markdown rows whose Blockers cell had not been refreshed after the plan-03/04 blocker edits were re-synced from the JSON at the same time.
+
+The earlier gate lines in the `01-01`/`01-02`/`01-03`/`01-04`/`01-05` SUMMARY.md files that printed `green=58 yellow=20 unchecked=25` record the superseded computation and are left as historical execution evidence.

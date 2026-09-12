@@ -16,6 +16,12 @@
 	code columns but whose cells have never been filled in; those rows must be kept
 	(not dropped) and are represented by a blocker instead of a checkbox id.
 
+	Status-colour rule (mirrors PROJECT.md "Design Status Synchronization"): a
+	status colour is applied ONLY when both `artwork_complete` and `code_complete`
+	are true. Both true with no blocker -> green; both true with a blocker (a
+	content/description conflict or known exception) -> yellow; either checkbox
+	false -> unchecked (no colour), whatever the repository asset state.
+
 	Completeness gate (exit 4) fails when:
 	  - the parse_audit block is missing,
 	  - a source document with a name-header table emitted zero entries,
@@ -66,6 +72,16 @@ foreach ($e in $entries) {
 	$blockers = @($e.blockers | Where-Object { -not [string]::IsNullOrWhiteSpace($_) })
 	if ([string]::IsNullOrWhiteSpace($texId) -and $blockers.Count -eq 0) {
 		$bad.Add("$id : feishu.texture_checkbox_id empty and no blocker recorded")
+	}
+	$bothComplete = ([bool]$e.artwork_complete) -and ([bool]$e.code_complete)
+	if (-not $bothComplete -and $e.status -ne 'unchecked') {
+		$bad.Add("$id : a checkbox is incomplete, so status must be unchecked (no colour) but is '$($e.status)'")
+	}
+	elseif ($bothComplete -and $blockers.Count -eq 0 -and $e.status -ne 'green') {
+		$bad.Add("$id : both checkboxes complete with no blocker must be green but is '$($e.status)'")
+	}
+	elseif ($bothComplete -and $blockers.Count -gt 0 -and $e.status -ne 'yellow') {
+		$bad.Add("$id : both checkboxes complete with a blocker must be yellow but is '$($e.status)'")
 	}
 }
 

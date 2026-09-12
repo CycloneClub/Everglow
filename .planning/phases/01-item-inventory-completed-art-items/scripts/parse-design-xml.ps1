@@ -18,8 +18,14 @@
 
 	Completion (artwork_complete / code_complete) is read from the Feishu texture
 	checkbox (\u8d34\u56fe) and code checkbox (\u4ee3\u7801) `done` attributes.
-	status is the composite: green when both are true, yellow when exactly one is
-	true, unchecked when both are false.
+	A status colour is applied ONLY when BOTH checkboxes are complete: green for a
+	both-complete entry with no recorded conflict, yellow for a both-complete entry
+	whose reconciliation record carries a conflict/known-exception blocker. If
+	either checkbox is incomplete the status is unchecked (no colour), whatever the
+	repository asset state. The parser has no reconciliation record yet, so it
+	emits green for every both-complete entry and unchecked otherwise; plan-02
+	reconciliation downgrades a both-complete entry that carries a blocker to
+	yellow (see check-inventory-reconciliation.ps1).
 
 	Rows from a table that has an item-name header but no resolvable texture/code
 	checkbox columns are still emitted as entries, each carrying the blocker
@@ -253,8 +259,10 @@ function Get-Category {
 
 function Get-Status {
 	param([bool]$Artwork, [bool]$Code)
+	# Colour requires BOTH checkboxes complete. A both-complete entry with a
+	# conflict/known-exception blocker is downgraded to yellow by reconciliation,
+	# which owns the blocker record; the parser emits green here.
 	if ($Artwork -and $Code) { return 'green' }
-	if ($Artwork -or $Code) { return 'yellow' }
 	return 'unchecked'
 }
 

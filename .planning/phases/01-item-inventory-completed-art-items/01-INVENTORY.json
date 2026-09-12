@@ -143,7 +143,7 @@
                                    },
                         "artwork_complete":  true,
                         "code_complete":  false,
-                        "status":  "yellow",
+                        "status":  "unchecked",
                         "repo_asset":  "",
                         "localization":  {
                                              "en_us":  false,
@@ -185,7 +185,7 @@
                                    },
                         "artwork_complete":  true,
                         "code_complete":  false,
-                        "status":  "yellow",
+                        "status":  "unchecked",
                         "repo_asset":  "",
                         "localization":  {
                                              "en_us":  false,
@@ -270,7 +270,7 @@
                                    },
                         "artwork_complete":  true,
                         "code_complete":  false,
-                        "status":  "yellow",
+                        "status":  "unchecked",
                         "repo_asset":  "",
                         "localization":  {
                                              "en_us":  false,
@@ -312,7 +312,7 @@
                                    },
                         "artwork_complete":  true,
                         "code_complete":  false,
-                        "status":  "yellow",
+                        "status":  "unchecked",
                         "repo_asset":  "",
                         "localization":  {
                                              "en_us":  false,
@@ -354,7 +354,7 @@
                                    },
                         "artwork_complete":  true,
                         "code_complete":  false,
-                        "status":  "yellow",
+                        "status":  "unchecked",
                         "repo_asset":  "",
                         "localization":  {
                                              "en_us":  false,
@@ -396,7 +396,7 @@
                                    },
                         "artwork_complete":  true,
                         "code_complete":  false,
-                        "status":  "yellow",
+                        "status":  "unchecked",
                         "repo_asset":  "",
                         "localization":  {
                                              "en_us":  false,
@@ -438,7 +438,7 @@
                                    },
                         "artwork_complete":  true,
                         "code_complete":  false,
-                        "status":  "yellow",
+                        "status":  "unchecked",
                         "repo_asset":  "",
                         "localization":  {
                                              "en_us":  false,
@@ -523,7 +523,7 @@
                                    },
                         "artwork_complete":  true,
                         "code_complete":  false,
-                        "status":  "yellow",
+                        "status":  "unchecked",
                         "repo_asset":  "",
                         "localization":  {
                                              "en_us":  false,
@@ -608,7 +608,7 @@
                                    },
                         "artwork_complete":  true,
                         "code_complete":  false,
-                        "status":  "yellow",
+                        "status":  "unchecked",
                         "repo_asset":  "",
                         "localization":  {
                                              "en_us":  false,
@@ -693,7 +693,7 @@
                                    },
                         "artwork_complete":  true,
                         "code_complete":  true,
-                        "status":  "green",
+                        "status":  "yellow",
                         "repo_asset":  "Weapons/MossySpell.png",
                         "localization":  {
                                              "en_us":  true,
@@ -817,7 +817,7 @@
                                    },
                         "artwork_complete":  true,
                         "code_complete":  true,
-                        "status":  "green",
+                        "status":  "yellow",
                         "repo_asset":  "Ammos/CyatheaArrow.png",
                         "localization":  {
                                              "en_us":  true,
@@ -1437,7 +1437,7 @@
                                    },
                         "artwork_complete":  true,
                         "code_complete":  true,
-                        "status":  "green",
+                        "status":  "yellow",
                         "repo_asset":  "Armors/Witherbark/WitherbarkHelmet.png",
                         "localization":  {
                                              "en_us":  true,
@@ -1646,7 +1646,7 @@
                                    },
                         "artwork_complete":  true,
                         "code_complete":  true,
-                        "status":  "green",
+                        "status":  "yellow",
                         "repo_asset":  "Armors/Molluscs/ShellMolluscsBreastPlate.png",
                         "localization":  {
                                              "en_us":  true,
@@ -1730,7 +1730,7 @@
                                    },
                         "artwork_complete":  false,
                         "code_complete":  true,
-                        "status":  "yellow",
+                        "status":  "unchecked",
                         "repo_asset":  "",
                         "localization":  {
                                              "en_us":  true,
@@ -2619,7 +2619,7 @@
                                    },
                         "artwork_complete":  true,
                         "code_complete":  true,
-                        "status":  "green",
+                        "status":  "yellow",
                         "repo_asset":  "Weapons/UnderwaterTreasury/EvilHalbertBarnacle.png",
                         "localization":  {
                                              "en_us":  false,
@@ -2660,7 +2660,7 @@
                                    },
                         "artwork_complete":  true,
                         "code_complete":  true,
-                        "status":  "green",
+                        "status":  "yellow",
                         "repo_asset":  "Pets/Photophore.png",
                         "localization":  {
                                              "en_us":  false,
@@ -2742,7 +2742,7 @@
                                    },
                         "artwork_complete":  true,
                         "code_complete":  false,
-                        "status":  "yellow",
+                        "status":  "unchecked",
                         "repo_asset":  "",
                         "localization":  {
                                              "en_us":  false,
@@ -2950,7 +2950,7 @@
                                    },
                         "artwork_complete":  true,
                         "code_complete":  true,
-                        "status":  "green",
+                        "status":  "yellow",
                         "repo_asset":  "Weapons/GreenSungloStaff.png",
                         "localization":  {
                                              "en_us":  false,
@@ -3073,7 +3073,7 @@
                                    },
                         "artwork_complete":  true,
                         "code_complete":  false,
-                        "status":  "yellow",
+                        "status":  "unchecked",
                         "repo_asset":  "",
                         "localization":  {
                                              "en_us":  false,
@@ -3829,7 +3829,7 @@
                                    },
                         "artwork_complete":  true,
                         "code_complete":  false,
-                        "status":  "yellow",
+                        "status":  "unchecked",
                         "repo_asset":  "",
                         "localization":  {
                                              "en_us":  false,
@@ -3871,7 +3871,7 @@
                                    },
                         "artwork_complete":  true,
                         "code_complete":  false,
-                        "status":  "yellow",
+                        "status":  "unchecked",
                         "repo_asset":  "",
                         "localization":  {
                                              "en_us":  false,
@@ -3954,7 +3954,7 @@
                                    },
                         "artwork_complete":  true,
                         "code_complete":  true,
-                        "status":  "green",
+                        "status":  "yellow",
                         "repo_asset":  "Armors/Ruin/RuinMask.png",
                         "localization":  {
                                              "en_us":  true,
@@ -4120,7 +4120,7 @@
                                    },
                         "artwork_complete":  true,
                         "code_complete":  false,
-                        "status":  "yellow",
+                        "status":  "unchecked",
                         "repo_asset":  "",
                         "localization":  {
                                              "en_us":  false,
@@ -4203,7 +4203,7 @@
                                    },
                         "artwork_complete":  true,
                         "code_complete":  false,
-                        "status":  "yellow",
+                        "status":  "unchecked",
                         "repo_asset":  "",
                         "localization":  {
                                              "en_us":  false,
@@ -4245,7 +4245,7 @@
                                    },
                         "artwork_complete":  true,
                         "code_complete":  false,
-                        "status":  "yellow",
+                        "status":  "unchecked",
                         "repo_asset":  "",
                         "localization":  {
                                              "en_us":  false,
@@ -4287,7 +4287,7 @@
                                    },
                         "artwork_complete":  true,
                         "code_complete":  false,
-                        "status":  "yellow",
+                        "status":  "unchecked",
                         "repo_asset":  "",
                         "localization":  {
                                              "en_us":  false,
@@ -4329,7 +4329,7 @@
                                    },
                         "artwork_complete":  true,
                         "code_complete":  false,
-                        "status":  "yellow",
+                        "status":  "unchecked",
                         "repo_asset":  "",
                         "localization":  {
                                              "en_us":  false,
@@ -4412,7 +4412,7 @@
                                    },
                         "artwork_complete":  false,
                         "code_complete":  true,
-                        "status":  "yellow",
+                        "status":  "unchecked",
                         "repo_asset":  "Weapons/Special/VineRepairWand.png",
                         "localization":  {
                                              "en_us":  false,
