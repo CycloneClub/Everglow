@@ -1,3 +1,4 @@
+using Everglow.Yggdrasil.KelpCurtain.Items.Materials;
 using Terraria.GameContent.Creative;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Items.Armors.DevilHeart;
@@ -5,7 +6,7 @@ namespace Everglow.Yggdrasil.KelpCurtain.Items.Armors.DevilHeart;
 [AutoloadEquip(EquipType.Head)]
 public class DevilHeartHairpin : ModItem
 {
-	public override string LocalizationCategory => base.LocalizationCategory;
+	public override string LocalizationCategory => LocalizationUtils.Categories.Armor;
 
 	public override void SetStaticDefaults()
 	{
@@ -40,5 +41,13 @@ public class DevilHeartHairpin : ModItem
 		player.manaCost -= 0.1f; // Reduces mana cost by 10%
 		player.GetDamage<MagicDamageClass>() += 0.08f; // Increases magic damage by 8%
 		player.setBonus = this.GetLocalizedValue(LocalizationUtils.LocalizationKeys.SetBonus);
+	}
+
+	public override void AddRecipes()
+	{
+		CreateRecipe(1)
+			.AddIngredient(ModContent.ItemType<DevilHeartIronBar_Item>(), 18)
+			.AddTile(TileID.Anvils)
+			.Register();
 	}
 }
