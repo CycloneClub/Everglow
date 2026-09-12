@@ -180,3 +180,9 @@ The remaining 25 class-less entries carry `phase = 2` and keep their artwork/no-
 - Item-design rows carry no region tag in the committed snapshot, so the label-to-entry mapping is left empty rather than fabricated; label reconciliation records classification and rationale only.
 - Rows whose design name is a bare placeholder (A, B, C) with only a generic "array repair material" description are marked deferred with an undefined-future reason; they remain in the inventory and are re-evaluated when the design is defined.
 
+## Phase 1 Deviations & Actions
+
+Consolidated in `01-DEVIATIONS.md` and mirrored in `01-INVENTORY.json` `deviations[]` / `phase1_actions[]` (QUAL-05 audit trail). No Feishu document was mutated and no localization key was renamed or removed.
+
+Fixed design deviations: 25 (14 design-row-backed; 11 repo-only localization-category fixes). Tranche advances (`ITEM-01`…`ITEM-04`, `ITEM-07`) remain on every entry's `advances` array for Phase 2. All 43 class-less entries remain `phase = 2`; `RadialCarapace` and `VineRepairWand` remain `phase = 1` tracked blockers per D-11.
+
