@@ -161,10 +161,10 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
-                        "deferred":  false,
-                        "deferred_reason":  ""
+                        "deferred":  true,
+                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
                     },
                     {
                         "id":  "biology_drop-weapons.misc-血肉聚合物",
@@ -203,10 +203,10 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
-                        "deferred":  false,
-                        "deferred_reason":  ""
+                        "deferred":  true,
+                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
                     },
                     {
                         "id":  "biology_drop-weapons.misc-巨翼龙面具",
@@ -246,7 +246,7 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
                         "deferred":  false,
                         "deferred_reason":  ""
@@ -288,10 +288,10 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
-                        "deferred":  false,
-                        "deferred_reason":  ""
+                        "deferred":  true,
+                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
                     },
                     {
                         "id":  "biology_drop-weapons.melee-狂战士板甲",
@@ -330,10 +330,10 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
-                        "deferred":  false,
-                        "deferred_reason":  ""
+                        "deferred":  true,
+                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
                     },
                     {
                         "id":  "biology_drop-weapons.melee-狂战士胫甲",
@@ -372,10 +372,10 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
-                        "deferred":  false,
-                        "deferred_reason":  ""
+                        "deferred":  true,
+                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
                     },
                     {
                         "id":  "biology_drop-weapons.misc-巨翼龙圣物-大师",
@@ -414,10 +414,10 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
-                        "deferred":  false,
-                        "deferred_reason":  ""
+                        "deferred":  true,
+                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
                     },
                     {
                         "id":  "biology_drop-weapons.misc-巨翼龙纪念章",
@@ -456,10 +456,10 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
-                        "deferred":  false,
-                        "deferred_reason":  ""
+                        "deferred":  true,
+                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
                     },
                     {
                         "id":  "biology_drop-weapons.ranged-肌腱巨弓",
@@ -499,7 +499,7 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
                         "deferred":  false,
                         "deferred_reason":  ""
@@ -541,10 +541,10 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
-                        "deferred":  false,
-                        "deferred_reason":  ""
+                        "deferred":  true,
+                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
                     },
                     {
                         "id":  "biology_drop-weapons.summon-re01",
@@ -584,7 +584,7 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
                         "deferred":  false,
                         "deferred_reason":  ""
@@ -626,10 +626,10 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
-                        "deferred":  false,
-                        "deferred_reason":  ""
+                        "deferred":  true,
+                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
                     },
                     {
                         "id":  "biology_drop-weapons.summon-腥臭的诱饵",
@@ -669,7 +669,7 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
                         "deferred":  false,
                         "deferred_reason":  ""
@@ -1953,7 +1953,7 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
                         "deferred":  false,
                         "deferred_reason":  ""
@@ -1996,7 +1996,7 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
                         "deferred":  false,
                         "deferred_reason":  ""
@@ -2039,7 +2039,7 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
                         "deferred":  false,
                         "deferred_reason":  ""
@@ -2082,7 +2082,7 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
                         "deferred":  true,
                         "deferred_reason":  "undefined future design (placeholder design name; not yet schedulable for implementation)"
@@ -2125,7 +2125,7 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
                         "deferred":  false,
                         "deferred_reason":  ""
@@ -2168,7 +2168,7 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
                         "deferred":  false,
                         "deferred_reason":  ""
@@ -2211,7 +2211,7 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
                         "deferred":  false,
                         "deferred_reason":  ""
@@ -2254,7 +2254,7 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
                         "deferred":  false,
                         "deferred_reason":  ""
@@ -2297,7 +2297,7 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
                         "deferred":  false,
                         "deferred_reason":  ""
@@ -2340,7 +2340,7 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
                         "deferred":  false,
                         "deferred_reason":  ""
@@ -2383,7 +2383,7 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
                         "deferred":  true,
                         "deferred_reason":  "undefined future design (placeholder design name; not yet schedulable for implementation)"
@@ -2426,7 +2426,7 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
                         "deferred":  false,
                         "deferred_reason":  ""
@@ -2469,7 +2469,7 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
                         "deferred":  false,
                         "deferred_reason":  ""
@@ -2512,7 +2512,7 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
                         "deferred":  true,
                         "deferred_reason":  "undefined future design (placeholder design name; not yet schedulable for implementation)"
@@ -2759,10 +2759,10 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
-                        "deferred":  false,
-                        "deferred_reason":  ""
+                        "deferred":  true,
+                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
                     },
                     {
                         "id":  "item-weapons.misc-巨石弹射装置",
@@ -2802,7 +2802,7 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
                         "deferred":  false,
                         "deferred_reason":  ""
@@ -3090,10 +3090,10 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
-                        "deferred":  false,
-                        "deferred_reason":  ""
+                        "deferred":  true,
+                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
                     },
                     {
                         "id":  "item-weapons.summon-荧光水螅召唤杖",
@@ -3133,7 +3133,7 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
                         "deferred":  false,
                         "deferred_reason":  ""
@@ -3468,7 +3468,7 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
                         "deferred":  false,
                         "deferred_reason":  ""
@@ -3511,7 +3511,7 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
                         "deferred":  false,
                         "deferred_reason":  ""
@@ -3554,7 +3554,7 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
                         "deferred":  false,
                         "deferred_reason":  ""
@@ -3597,7 +3597,7 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
                         "deferred":  false,
                         "deferred_reason":  ""
@@ -3804,7 +3804,7 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
                         "deferred":  false,
                         "deferred_reason":  ""
@@ -3846,10 +3846,10 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
-                        "deferred":  false,
-                        "deferred_reason":  ""
+                        "deferred":  true,
+                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
                     },
                     {
                         "id":  "item-weapons.misc-枯萎面具",
@@ -3888,10 +3888,10 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
-                        "deferred":  false,
-                        "deferred_reason":  ""
+                        "deferred":  true,
+                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
                     },
                     {
                         "id":  "item-weapons.misc-living-woodplate",
@@ -4137,10 +4137,10 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
-                        "deferred":  false,
-                        "deferred_reason":  ""
+                        "deferred":  true,
+                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
                     },
                     {
                         "id":  "item-weapons.misc-thegreensolar",
@@ -4220,10 +4220,10 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
-                        "deferred":  false,
-                        "deferred_reason":  ""
+                        "deferred":  true,
+                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
                     },
                     {
                         "id":  "item-weapons.ranged-龙骨猎枪",
@@ -4262,10 +4262,10 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
-                        "deferred":  false,
-                        "deferred_reason":  ""
+                        "deferred":  true,
+                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
                     },
                     {
                         "id":  "item-weapons.melee-碧玉弯刀",
@@ -4304,10 +4304,10 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
-                        "deferred":  false,
-                        "deferred_reason":  ""
+                        "deferred":  true,
+                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
                     },
                     {
                         "id":  "item-weapons.summon-魂蛇手杖",
@@ -4346,10 +4346,10 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  1,
+                        "phase":  2,
                         "notes":  "",
-                        "deferred":  false,
-                        "deferred_reason":  ""
+                        "deferred":  true,
+                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
                     },
                     {
                         "id":  "item-weapons.misc-绿琉璃果",

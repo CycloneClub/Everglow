@@ -140,6 +140,36 @@ Item-design rows in the committed snapshot carry no region tag, so no inventory 
 
 The biology hardmode section (temporarily-unused / moved-to-hardmode) contains only the Withered Seed / Witherbark Guard creature stat rows, not item-design rows, so it contributes no inventory entry.
 
+### Phase 2 routing (class-less entries)
+
+All 43 class-less entries (no repository implementation target) are Phase 2 scope; each carries `phase = 2` in `01-INVENTORY.json`. The 18 completed-art class-less entries additionally carry `deferred = true` and the reason "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)":
+
+- `biology_drop-weapons.melee-龙骸巨块大剑` (龙骸巨块大剑)
+- `biology_drop-weapons.misc-血肉聚合物` (血肉聚合物)
+- `biology_drop-weapons.melee-狂战士角盔` (狂战士角盔)
+- `biology_drop-weapons.melee-狂战士板甲` (狂战士板甲)
+- `biology_drop-weapons.melee-狂战士胫甲` (狂战士胫甲)
+- `biology_drop-weapons.misc-巨翼龙圣物-大师` (巨翼龙圣物（大师）)
+- `biology_drop-weapons.misc-巨翼龙纪念章` (巨翼龙纪念章)
+- `biology_drop-weapons.magic-崩解阈限` (崩解阈限)
+- `biology_drop-weapons.melee-骇翼链剑` (骇翼链剑)
+- `item-weapons.misc-arm-of-giant-tree` (Arm of Giant Tree)
+- `item-weapons.misc-森林之息` (森林之息)
+- `item-weapons.misc-厄佛提根的净化粉末` (厄佛提根的净化粉末)
+- `item-weapons.misc-枯萎面具` (枯萎面具)
+- `item-weapons.ranged-魁札尔的愿望` (魁札尔的愿望)
+- `item-weapons.melee-碧绿玉髓扇` (碧绿玉髓扇)
+- `item-weapons.ranged-龙骨猎枪` (龙骨猎枪)
+- `item-weapons.melee-碧玉弯刀` (碧玉弯刀)
+- `item-weapons.summon-魂蛇手杖` (魂蛇手杖)
+
+The remaining 25 class-less entries carry `phase = 2` and keep their artwork/no-repo blockers unchanged; their `deferred` flag is not set (they are artwork-incomplete, not undefined-future).
+
+### Phase 1 tracked blockers (not routed to Phase 2)
+
+- `item-weapons.misc-radial-carapace` (RadialCarapace) stays `phase = 1`: `code_complete = true` / `artwork_complete = false`, so per D-11 it still counts toward Phase 1 completion; its design deviations are queued to Phase 2 per D-12.
+- `terrain-weapons.magic-vinerepairwand` (VineRepairWand) stays `phase = 1`: `code_complete = true` / `artwork_complete = false`, so per D-11 it still counts toward Phase 1 completion; its design deviations are queued to Phase 2 per D-12.
+
 ### Flagged assumptions
 
 - Item-document table column order is assumed to be name, texture (artwork), code, ... for every item table, so the parser resolves artwork/code by header name rather than cell position. The committed snapshot is header-anchored, but a table without a resolvable header could flip the two states.
