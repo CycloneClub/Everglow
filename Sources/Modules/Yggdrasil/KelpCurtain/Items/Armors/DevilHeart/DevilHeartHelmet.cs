@@ -1,3 +1,4 @@
+using Everglow.Yggdrasil.KelpCurtain.Items.Materials;
 using Terraria.GameContent.Creative;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Items.Armors.DevilHeart;
@@ -40,5 +41,13 @@ public class DevilHeartHelmet : ModItem
 		player.slotsMinions += 1; // Increases the number of minions the player can summon by 1
 		player.GetAttackSpeed<SummonDamageClass>() += 0.15f; // Increases summon attack speed by 15%
 		player.setBonus = this.GetLocalizedValue(LocalizationUtils.LocalizationKeys.SetBonus);
+	}
+
+	public override void AddRecipes()
+	{
+		CreateRecipe(1)
+			.AddIngredient(ModContent.ItemType<DevilHeartIronBar_Item>(), 20)
+			.AddTile(TileID.Anvils)
+			.Register();
 	}
 }

@@ -1453,7 +1453,8 @@
                                          "ITEM-07"
                                      ],
                         "blockers":  [
-
+                                         "套装效果: summoned Witherbark Guard attack pattern not reconciled - the design fires spikes at the nearest enemy for 14 summon damage every 30 frames, while the wired WitherbarkMinion dash/8-leaf burst lives in Projectiles/Summon outside this task modify set",
+                                         "套装效果: set-bonus display text (player.setBonus) not implemented and no localization key exists; the mechanical set-bonus effects (+3 minions, -30% summon damage, guard summon) are implemented"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -1662,7 +1663,7 @@
                                          "ITEM-07"
                                      ],
                         "blockers":  [
-
+                                         "套装效果: set-bonus display text (player.setBonus) not implemented and no localization key exists; the general/melee/ranged set-bonus effects are implemented (MolluscsSetBuff plus the head variants)"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -3970,7 +3971,7 @@
                                          "ITEM-07"
                                      ],
                         "blockers":  [
-
+                                         "套装效果: set-bonus display text (player.setBonus) not implemented and no localization key exists; +1 minion and the RuinSetBuff (+10% summon damage, +25% move speed) are implemented, while the design +10% Ruin-series minion speed and -10% attack interval are not confirmed from the buff handler"
                                      ],
                         "phase":  1,
                         "notes":  "",

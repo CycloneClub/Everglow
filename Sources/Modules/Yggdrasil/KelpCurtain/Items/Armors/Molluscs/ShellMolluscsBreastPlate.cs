@@ -8,8 +8,8 @@ public class ShellMolluscsBreastPlate : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	public const int BuffDuration = 25 * 60; // 10 seconds in frames
-	public const int CooldownDuration = 40 * 60; // 35 seconds in frames
+	public const int BuffDuration = 25 * 60; // 25 seconds in frames
+	public const int CooldownDuration = 40 * 60; // 40 seconds in frames
 
 	// The equip texture name for the alternate equip texture.
 	private const string AltTextureName = "Blue";

@@ -1,3 +1,4 @@
+using Everglow.Yggdrasil.KelpCurtain.Items.Materials;
 using Terraria.GameContent.Creative;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Items.Armors.DevilHeart;
@@ -26,5 +27,13 @@ public class DevilHeartLeggings : ModItem
 	public override void UpdateEquip(Player player)
 	{
 		player.moveSpeed += 0.1f; // Increases movement speed by 10%
+	}
+
+	public override void AddRecipes()
+	{
+		CreateRecipe(1)
+			.AddIngredient(ModContent.ItemType<DevilHeartIronBar_Item>(), 24)
+			.AddTile(TileID.Anvils)
+			.Register();
 	}
 }
