@@ -9,7 +9,7 @@ public class ForestMino : ModItem
 		Item.width = 40;
 		Item.height = 48;
 
-		Item.value = Item.sellPrice(gold: 2);
+		Item.value = Item.buyPrice(gold: 2);
 		Item.rare = ItemRarityID.Green;
 
 		Item.defense = 4;

@@ -19,16 +19,16 @@ public class ActivatedDogStaff : ModItem
 	public override void SetDefaults()
 	{
 		Item.DamageType = DamageClass.Summon;
-		Item.damage = 8;
-		Item.knockBack = 1.1f;
+		Item.damage = 16;
+		Item.knockBack = 4f;
 		Item.mana = LeftManaCost;
 
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = Item.useAnimation = 20;
+		Item.useTime = Item.useAnimation = 29;
 		Item.noMelee = true;
 
-		Item.rare = ItemRarityID.Green;
-		Item.value = Item.buyPrice(gold: 1);
+		Item.rare = ItemRarityID.Orange;
+		Item.value = Item.buyPrice(silver: 80);
 
 		Item.shoot = ModContent.ProjectileType<Wither_Activated_Dog_Summon>();
 		Item.shootSpeed = 12f;

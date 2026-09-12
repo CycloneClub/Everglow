@@ -30,7 +30,7 @@ public class RazorbeakBow : ModItem
 		Item.autoReuse = true;
 		Item.noMelee = true;
 
-		Item.useTime = 12;
+		Item.useTime = 11;
 		Item.useAnimation = 30;
 		Item.useLimitPerAnimation = ProjectileCountPerUse;
 		Item.reuseDelay = BaseDelay;

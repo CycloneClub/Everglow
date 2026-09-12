@@ -13,6 +13,7 @@ public class DevilHeartIronBar_Item : ModItem
 		Item.width = 30;
 		Item.height = 24;
 		Item.value = 1800;
+		Item.rare = ItemRarityID.Green;
 	}
 
 	public override void AddRecipes()

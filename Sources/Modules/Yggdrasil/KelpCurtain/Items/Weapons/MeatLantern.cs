@@ -23,7 +23,7 @@ public class MeatLantern : ModItem
 		Item.noMelee = true;
 		Item.noUseGraphic = true;
 
-		Item.value = Item.sellPrice(gold: 1);
+		Item.value = Item.buyPrice(gold: 1);
 	}
 	public override bool CanUseItem(Player player)
 	{
