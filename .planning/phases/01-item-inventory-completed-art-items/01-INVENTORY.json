@@ -1,6 +1,6 @@
 {
     "schema_version":  1,
-    "generated_at":  "2026-09-12T05:36:14Z",
+    "generated_at":  "2026-09-12T05:36:45Z",
     "source":  {
                    "biology":  {
                                    "token":  "Jp5ndsvNBoCpljxq1eGc9S7vnfe",
@@ -22,22 +22,22 @@
                                }
                },
     "parse_audit":  {
+                        "biology":  {
+                                        "tables_total":  29,
+                                        "tables_with_name_header":  2,
+                                        "rows_emitted":  13,
+                                        "rows_recorded_without_checkboxes":  0
+                                    },
                         "item":  {
                                      "tables_total":  16,
                                      "tables_with_name_header":  15,
-                                     "rows_emitted":  70,
+                                     "rows_emitted":  89,
                                      "rows_recorded_without_checkboxes":  0
                                  },
-                        "biology":  {
-                                        "tables_total":  0,
-                                        "tables_with_name_header":  0,
-                                        "rows_emitted":  0,
-                                        "rows_recorded_without_checkboxes":  0
-                                    },
                         "terrain":  {
-                                        "tables_total":  0,
-                                        "tables_with_name_header":  0,
-                                        "rows_emitted":  0,
+                                        "tables_total":  8,
+                                        "tables_with_name_header":  1,
+                                        "rows_emitted":  1,
                                         "rows_recorded_without_checkboxes":  0
                                     }
                     },
@@ -45,6 +45,530 @@
 
                ],
     "entries":  [
+                    {
+                        "id":  "biology_drop-weapons.melee-龙骸巨块大剑",
+                        "source_kind":  "biology_drop",
+                        "category":  "weapons.melee",
+                        "tranche":  "",
+                        "region":  "特殊：",
+                        "name_en":  "",
+                        "name_zh":  "龙骸巨块大剑",
+                        "internal_name":  "",
+                        "feishu":  {
+                                       "doc":  "biology",
+                                       "table_block_id":  "Q0ujdFxxrodsRmxhREzciEC9n8b",
+                                       "row_name_block_id":  "DFJEd27S6oHNm2xDJ9bcabaUn9b",
+                                       "texture_checkbox_id":  "JbDld1Yw9ols7PxT1wecBxsHnBc",
+                                       "code_checkbox_id":  "NggWdMTkHoeCbjx5gNDcGC1Unog",
+                                       "row_color":  "neutral"
+                                   },
+                        "artwork_complete":  true,
+                        "code_complete":  false,
+                        "status":  "yellow",
+                        "repo_asset":  "",
+                        "localization":  {
+                                             "en_us":  false,
+                                             "zh_hans":  false,
+                                             "blocked":  false
+                                         },
+                        "dependencies":  [
+
+                                         ],
+                        "advances":  [
+
+                                     ],
+                        "blockers":  [
+                                         "design code not complete (Feishu code checkbox false)"
+                                     ],
+                        "phase":  1,
+                        "notes":  "",
+                        "deferred":  false,
+                        "deferred_reason":  ""
+                    },
+                    {
+                        "id":  "biology_drop-weapons.misc-血肉聚合物",
+                        "source_kind":  "biology_drop",
+                        "category":  "weapons.misc",
+                        "tranche":  "",
+                        "region":  "特殊：",
+                        "name_en":  "",
+                        "name_zh":  "血肉聚合物",
+                        "internal_name":  "",
+                        "feishu":  {
+                                       "doc":  "biology",
+                                       "table_block_id":  "Q0ujdFxxrodsRmxhREzciEC9n8b",
+                                       "row_name_block_id":  "XlOQdnaI6ouEruxnhFdchU5Qn9j",
+                                       "texture_checkbox_id":  "LCzsdkBH1oCFgyx4Q6lcBQx6npf",
+                                       "code_checkbox_id":  "HpNkd7Pi8oWGScxwqa3c6CYBnCe",
+                                       "row_color":  "neutral"
+                                   },
+                        "artwork_complete":  true,
+                        "code_complete":  false,
+                        "status":  "yellow",
+                        "repo_asset":  "",
+                        "localization":  {
+                                             "en_us":  false,
+                                             "zh_hans":  false,
+                                             "blocked":  false
+                                         },
+                        "dependencies":  [
+
+                                         ],
+                        "advances":  [
+
+                                     ],
+                        "blockers":  [
+                                         "design code not complete (Feishu code checkbox false)"
+                                     ],
+                        "phase":  1,
+                        "notes":  "",
+                        "deferred":  false,
+                        "deferred_reason":  ""
+                    },
+                    {
+                        "id":  "biology_drop-weapons.misc-巨翼龙面具",
+                        "source_kind":  "biology_drop",
+                        "category":  "weapons.misc",
+                        "tranche":  "",
+                        "region":  "特殊：",
+                        "name_en":  "",
+                        "name_zh":  "巨翼龙面具",
+                        "internal_name":  "",
+                        "feishu":  {
+                                       "doc":  "biology",
+                                       "table_block_id":  "Q0ujdFxxrodsRmxhREzciEC9n8b",
+                                       "row_name_block_id":  "Gjedd1bcQofIBWxo9Dicvccpn9d",
+                                       "texture_checkbox_id":  "EKPzdmzRjorn8cxbBQJc5BShnxf",
+                                       "code_checkbox_id":  "YLlnd9J5RoqkBexRrnscZVZbn9e",
+                                       "row_color":  "neutral"
+                                   },
+                        "artwork_complete":  false,
+                        "code_complete":  false,
+                        "status":  "unchecked",
+                        "repo_asset":  "",
+                        "localization":  {
+                                             "en_us":  false,
+                                             "zh_hans":  false,
+                                             "blocked":  false
+                                         },
+                        "dependencies":  [
+
+                                         ],
+                        "advances":  [
+
+                                     ],
+                        "blockers":  [
+                                         "design artwork not complete (Feishu texture checkbox false)",
+                                         "design code not complete (Feishu code checkbox false)"
+                                     ],
+                        "phase":  1,
+                        "notes":  "",
+                        "deferred":  false,
+                        "deferred_reason":  ""
+                    },
+                    {
+                        "id":  "biology_drop-weapons.melee-狂战士角盔",
+                        "source_kind":  "biology_drop",
+                        "category":  "weapons.melee",
+                        "tranche":  "",
+                        "region":  "特殊：",
+                        "name_en":  "",
+                        "name_zh":  "狂战士角盔",
+                        "internal_name":  "",
+                        "feishu":  {
+                                       "doc":  "biology",
+                                       "table_block_id":  "Q0ujdFxxrodsRmxhREzciEC9n8b",
+                                       "row_name_block_id":  "L685d8WbMoOUfKxT5tVcdfL5n6e",
+                                       "texture_checkbox_id":  "Pk1idSJRxolfqHxEyj8cPHZmngd",
+                                       "code_checkbox_id":  "LQK5dyZHZoYIZvx4gzycCSTBnM4",
+                                       "row_color":  "neutral"
+                                   },
+                        "artwork_complete":  true,
+                        "code_complete":  false,
+                        "status":  "yellow",
+                        "repo_asset":  "",
+                        "localization":  {
+                                             "en_us":  false,
+                                             "zh_hans":  false,
+                                             "blocked":  false
+                                         },
+                        "dependencies":  [
+
+                                         ],
+                        "advances":  [
+
+                                     ],
+                        "blockers":  [
+                                         "design code not complete (Feishu code checkbox false)"
+                                     ],
+                        "phase":  1,
+                        "notes":  "",
+                        "deferred":  false,
+                        "deferred_reason":  ""
+                    },
+                    {
+                        "id":  "biology_drop-weapons.melee-狂战士板甲",
+                        "source_kind":  "biology_drop",
+                        "category":  "weapons.melee",
+                        "tranche":  "",
+                        "region":  "特殊：",
+                        "name_en":  "",
+                        "name_zh":  "狂战士板甲",
+                        "internal_name":  "",
+                        "feishu":  {
+                                       "doc":  "biology",
+                                       "table_block_id":  "Q0ujdFxxrodsRmxhREzciEC9n8b",
+                                       "row_name_block_id":  "BvLWdWCDaoieuqxSV6ocmqYGnro",
+                                       "texture_checkbox_id":  "Pk1idSJRxolfqHxEyj8cPHZmngd",
+                                       "code_checkbox_id":  "LQK5dyZHZoYIZvx4gzycCSTBnM4",
+                                       "row_color":  "neutral"
+                                   },
+                        "artwork_complete":  true,
+                        "code_complete":  false,
+                        "status":  "yellow",
+                        "repo_asset":  "",
+                        "localization":  {
+                                             "en_us":  false,
+                                             "zh_hans":  false,
+                                             "blocked":  false
+                                         },
+                        "dependencies":  [
+
+                                         ],
+                        "advances":  [
+
+                                     ],
+                        "blockers":  [
+                                         "design code not complete (Feishu code checkbox false)"
+                                     ],
+                        "phase":  1,
+                        "notes":  "",
+                        "deferred":  false,
+                        "deferred_reason":  ""
+                    },
+                    {
+                        "id":  "biology_drop-weapons.melee-狂战士胫甲",
+                        "source_kind":  "biology_drop",
+                        "category":  "weapons.melee",
+                        "tranche":  "",
+                        "region":  "特殊：",
+                        "name_en":  "",
+                        "name_zh":  "狂战士胫甲",
+                        "internal_name":  "",
+                        "feishu":  {
+                                       "doc":  "biology",
+                                       "table_block_id":  "Q0ujdFxxrodsRmxhREzciEC9n8b",
+                                       "row_name_block_id":  "T5zUdWNHboMOmuxsOcscBX5gn4f",
+                                       "texture_checkbox_id":  "Pk1idSJRxolfqHxEyj8cPHZmngd",
+                                       "code_checkbox_id":  "LQK5dyZHZoYIZvx4gzycCSTBnM4",
+                                       "row_color":  "neutral"
+                                   },
+                        "artwork_complete":  true,
+                        "code_complete":  false,
+                        "status":  "yellow",
+                        "repo_asset":  "",
+                        "localization":  {
+                                             "en_us":  false,
+                                             "zh_hans":  false,
+                                             "blocked":  false
+                                         },
+                        "dependencies":  [
+
+                                         ],
+                        "advances":  [
+
+                                     ],
+                        "blockers":  [
+                                         "design code not complete (Feishu code checkbox false)"
+                                     ],
+                        "phase":  1,
+                        "notes":  "",
+                        "deferred":  false,
+                        "deferred_reason":  ""
+                    },
+                    {
+                        "id":  "biology_drop-weapons.misc-巨翼龙圣物-大师",
+                        "source_kind":  "biology_drop",
+                        "category":  "weapons.misc",
+                        "tranche":  "",
+                        "region":  "特殊：",
+                        "name_en":  "",
+                        "name_zh":  "巨翼龙圣物（大师）",
+                        "internal_name":  "",
+                        "feishu":  {
+                                       "doc":  "biology",
+                                       "table_block_id":  "Q0ujdFxxrodsRmxhREzciEC9n8b",
+                                       "row_name_block_id":  "PlFjdNE1CotwgkxFnBZc1Vhbn5c",
+                                       "texture_checkbox_id":  "PcBudhoN4oZ5ysx3lONczPgqnpc",
+                                       "code_checkbox_id":  "KnUGd4W4yoy8l8xCb6tcVTqMnXd",
+                                       "row_color":  "neutral"
+                                   },
+                        "artwork_complete":  true,
+                        "code_complete":  false,
+                        "status":  "yellow",
+                        "repo_asset":  "",
+                        "localization":  {
+                                             "en_us":  false,
+                                             "zh_hans":  false,
+                                             "blocked":  false
+                                         },
+                        "dependencies":  [
+
+                                         ],
+                        "advances":  [
+
+                                     ],
+                        "blockers":  [
+                                         "design code not complete (Feishu code checkbox false)"
+                                     ],
+                        "phase":  1,
+                        "notes":  "",
+                        "deferred":  false,
+                        "deferred_reason":  ""
+                    },
+                    {
+                        "id":  "biology_drop-weapons.misc-巨翼龙纪念章",
+                        "source_kind":  "biology_drop",
+                        "category":  "weapons.misc",
+                        "tranche":  "",
+                        "region":  "特殊：",
+                        "name_en":  "",
+                        "name_zh":  "巨翼龙纪念章",
+                        "internal_name":  "",
+                        "feishu":  {
+                                       "doc":  "biology",
+                                       "table_block_id":  "Q0ujdFxxrodsRmxhREzciEC9n8b",
+                                       "row_name_block_id":  "DbXOdEel6oK9UVxueehcFjg4n6c",
+                                       "texture_checkbox_id":  "NaZodB2C0o3ktjxC4bWc6LHZncg",
+                                       "code_checkbox_id":  "MQdFd60Zco0Pjcx3ypEclNy0nsf",
+                                       "row_color":  "neutral"
+                                   },
+                        "artwork_complete":  true,
+                        "code_complete":  false,
+                        "status":  "yellow",
+                        "repo_asset":  "",
+                        "localization":  {
+                                             "en_us":  false,
+                                             "zh_hans":  false,
+                                             "blocked":  false
+                                         },
+                        "dependencies":  [
+
+                                         ],
+                        "advances":  [
+
+                                     ],
+                        "blockers":  [
+                                         "design code not complete (Feishu code checkbox false)"
+                                     ],
+                        "phase":  1,
+                        "notes":  "",
+                        "deferred":  false,
+                        "deferred_reason":  ""
+                    },
+                    {
+                        "id":  "biology_drop-weapons.ranged-肌腱巨弓",
+                        "source_kind":  "biology_drop",
+                        "category":  "weapons.ranged",
+                        "tranche":  "",
+                        "region":  "特殊：",
+                        "name_en":  "",
+                        "name_zh":  "肌腱巨弓",
+                        "internal_name":  "",
+                        "feishu":  {
+                                       "doc":  "biology",
+                                       "table_block_id":  "Q528dhm8XopDyExdUJUcLGIMn6e",
+                                       "row_name_block_id":  "GJ9ZdHtZ1omJhpxDT8PcxBxVneb",
+                                       "texture_checkbox_id":  "AmaadEnVtoeI6oxSyevcEd3nnvh",
+                                       "code_checkbox_id":  "IrB5dceoVo9zTwx5JCKcB1rKnFc",
+                                       "row_color":  "neutral"
+                                   },
+                        "artwork_complete":  false,
+                        "code_complete":  false,
+                        "status":  "unchecked",
+                        "repo_asset":  "",
+                        "localization":  {
+                                             "en_us":  false,
+                                             "zh_hans":  false,
+                                             "blocked":  false
+                                         },
+                        "dependencies":  [
+
+                                         ],
+                        "advances":  [
+
+                                     ],
+                        "blockers":  [
+                                         "design artwork not complete (Feishu texture checkbox false)",
+                                         "design code not complete (Feishu code checkbox false)"
+                                     ],
+                        "phase":  1,
+                        "notes":  "",
+                        "deferred":  false,
+                        "deferred_reason":  ""
+                    },
+                    {
+                        "id":  "biology_drop-weapons.magic-崩解阈限",
+                        "source_kind":  "biology_drop",
+                        "category":  "weapons.magic",
+                        "tranche":  "",
+                        "region":  "特殊：",
+                        "name_en":  "",
+                        "name_zh":  "崩解阈限",
+                        "internal_name":  "",
+                        "feishu":  {
+                                       "doc":  "biology",
+                                       "table_block_id":  "Q528dhm8XopDyExdUJUcLGIMn6e",
+                                       "row_name_block_id":  "ZLvhdfP52ogGDIxR6M5cdzrtndc",
+                                       "texture_checkbox_id":  "G7GLdzwj7ohmlyxU1Hlcx8BWnyh",
+                                       "code_checkbox_id":  "IzoHdi4z1o8YcaxYn5kc8yJjn4b",
+                                       "row_color":  "neutral"
+                                   },
+                        "artwork_complete":  true,
+                        "code_complete":  false,
+                        "status":  "yellow",
+                        "repo_asset":  "",
+                        "localization":  {
+                                             "en_us":  false,
+                                             "zh_hans":  false,
+                                             "blocked":  false
+                                         },
+                        "dependencies":  [
+
+                                         ],
+                        "advances":  [
+
+                                     ],
+                        "blockers":  [
+                                         "design code not complete (Feishu code checkbox false)"
+                                     ],
+                        "phase":  1,
+                        "notes":  "",
+                        "deferred":  false,
+                        "deferred_reason":  ""
+                    },
+                    {
+                        "id":  "biology_drop-weapons.summon-re01",
+                        "source_kind":  "biology_drop",
+                        "category":  "weapons.summon",
+                        "tranche":  "",
+                        "region":  "特殊：",
+                        "name_en":  "-RE01",
+                        "name_zh":  "限制机",
+                        "internal_name":  "",
+                        "feishu":  {
+                                       "doc":  "biology",
+                                       "table_block_id":  "Q528dhm8XopDyExdUJUcLGIMn6e",
+                                       "row_name_block_id":  "EjlsdeZZUoyAFQx7XT5cTBDMnUh",
+                                       "texture_checkbox_id":  "ZgoRdF11Aoq7D9xydK3cXTSTnwf",
+                                       "code_checkbox_id":  "E4kadhITKoQqrRxYhjic5EShnXg",
+                                       "row_color":  "neutral"
+                                   },
+                        "artwork_complete":  false,
+                        "code_complete":  false,
+                        "status":  "unchecked",
+                        "repo_asset":  "",
+                        "localization":  {
+                                             "en_us":  false,
+                                             "zh_hans":  false,
+                                             "blocked":  false
+                                         },
+                        "dependencies":  [
+
+                                         ],
+                        "advances":  [
+
+                                     ],
+                        "blockers":  [
+                                         "design artwork not complete (Feishu texture checkbox false)",
+                                         "design code not complete (Feishu code checkbox false)"
+                                     ],
+                        "phase":  1,
+                        "notes":  "",
+                        "deferred":  false,
+                        "deferred_reason":  ""
+                    },
+                    {
+                        "id":  "biology_drop-weapons.melee-骇翼链剑",
+                        "source_kind":  "biology_drop",
+                        "category":  "weapons.melee",
+                        "tranche":  "",
+                        "region":  "特殊：",
+                        "name_en":  "",
+                        "name_zh":  "骇翼链剑",
+                        "internal_name":  "",
+                        "feishu":  {
+                                       "doc":  "biology",
+                                       "table_block_id":  "Q528dhm8XopDyExdUJUcLGIMn6e",
+                                       "row_name_block_id":  "Lsmndofi6o0KsTxeIsycquF7nLh",
+                                       "texture_checkbox_id":  "OOlzdTRx1oRtsixeQm3cn4vanMb",
+                                       "code_checkbox_id":  "ALKKdFV4NofFC9xHavmc6woKnKv",
+                                       "row_color":  "neutral"
+                                   },
+                        "artwork_complete":  true,
+                        "code_complete":  false,
+                        "status":  "yellow",
+                        "repo_asset":  "",
+                        "localization":  {
+                                             "en_us":  false,
+                                             "zh_hans":  false,
+                                             "blocked":  false
+                                         },
+                        "dependencies":  [
+
+                                         ],
+                        "advances":  [
+
+                                     ],
+                        "blockers":  [
+                                         "design code not complete (Feishu code checkbox false)"
+                                     ],
+                        "phase":  1,
+                        "notes":  "",
+                        "deferred":  false,
+                        "deferred_reason":  ""
+                    },
+                    {
+                        "id":  "biology_drop-weapons.summon-腥臭的诱饵",
+                        "source_kind":  "biology_drop",
+                        "category":  "weapons.summon",
+                        "tranche":  "",
+                        "region":  "特殊：",
+                        "name_en":  "",
+                        "name_zh":  "腥臭的诱饵",
+                        "internal_name":  "",
+                        "feishu":  {
+                                       "doc":  "biology",
+                                       "table_block_id":  "Q528dhm8XopDyExdUJUcLGIMn6e",
+                                       "row_name_block_id":  "VJhMdMbirobSspxpz9Ucekudn2s",
+                                       "texture_checkbox_id":  "CJvNdC6VJoFRrRxOOxickEd4njb",
+                                       "code_checkbox_id":  "Jx22deJIWoFMLex6naYcbVcvngd",
+                                       "row_color":  "neutral"
+                                   },
+                        "artwork_complete":  false,
+                        "code_complete":  false,
+                        "status":  "unchecked",
+                        "repo_asset":  "",
+                        "localization":  {
+                                             "en_us":  false,
+                                             "zh_hans":  false,
+                                             "blocked":  false
+                                         },
+                        "dependencies":  [
+
+                                         ],
+                        "advances":  [
+
+                                     ],
+                        "blockers":  [
+                                         "design artwork not complete (Feishu texture checkbox false)",
+                                         "design code not complete (Feishu code checkbox false)"
+                                     ],
+                        "phase":  1,
+                        "notes":  "",
+                        "deferred":  false,
+                        "deferred_reason":  ""
+                    },
                     {
                         "id":  "item-weapons.magic-mossy-spell",
                         "source_kind":  "item",
@@ -260,6 +784,766 @@
                                        "row_name_block_id":  "ZEQ6dnwUbogmUHxjiOucll2Knuc",
                                        "texture_checkbox_id":  "GnPAdVU6Vo2hZZxOjlJcc1zKnhd",
                                        "code_checkbox_id":  "O3FudHJjRoLbiyxSiQvckZ0onGf",
+                                       "row_color":  "green"
+                                   },
+                        "artwork_complete":  true,
+                        "code_complete":  true,
+                        "status":  "green",
+                        "repo_asset":  "",
+                        "localization":  {
+                                             "en_us":  false,
+                                             "zh_hans":  false,
+                                             "blocked":  false
+                                         },
+                        "dependencies":  [
+
+                                         ],
+                        "advances":  [
+
+                                     ],
+                        "blockers":  [
+
+                                     ],
+                        "phase":  1,
+                        "notes":  "",
+                        "deferred":  false,
+                        "deferred_reason":  ""
+                    },
+                    {
+                        "id":  "item-armor-魔心发簪",
+                        "source_kind":  "item",
+                        "category":  "armor",
+                        "tranche":  "",
+                        "region":  "",
+                        "name_en":  "",
+                        "name_zh":  "魔心发簪",
+                        "internal_name":  "",
+                        "feishu":  {
+                                       "doc":  "item",
+                                       "table_block_id":  "TK7ddgDgMosNN8xzvs1cS0H0nBH",
+                                       "row_name_block_id":  "Z2hqdY9tJo6qifx7EzmcRZhXn4g",
+                                       "texture_checkbox_id":  "DurcdP4ADolxJvxSg48cq3GvnJe",
+                                       "code_checkbox_id":  "ZDhsdX0VBoyDMkxGdgWc7u6rnQe",
+                                       "row_color":  "green"
+                                   },
+                        "artwork_complete":  true,
+                        "code_complete":  true,
+                        "status":  "green",
+                        "repo_asset":  "",
+                        "localization":  {
+                                             "en_us":  false,
+                                             "zh_hans":  false,
+                                             "blocked":  false
+                                         },
+                        "dependencies":  [
+
+                                         ],
+                        "advances":  [
+
+                                     ],
+                        "blockers":  [
+
+                                     ],
+                        "phase":  1,
+                        "notes":  "",
+                        "deferred":  false,
+                        "deferred_reason":  ""
+                    },
+                    {
+                        "id":  "item-armor-魔心笼盔",
+                        "source_kind":  "item",
+                        "category":  "armor",
+                        "tranche":  "",
+                        "region":  "",
+                        "name_en":  "",
+                        "name_zh":  "魔心笼盔",
+                        "internal_name":  "",
+                        "feishu":  {
+                                       "doc":  "item",
+                                       "table_block_id":  "TK7ddgDgMosNN8xzvs1cS0H0nBH",
+                                       "row_name_block_id":  "LUhDdMyp5orzkYxg1atcbUbvnah",
+                                       "texture_checkbox_id":  "JobHdXKoCoXFHLxaSzKcTxBdnNd",
+                                       "code_checkbox_id":  "HWCwdXHbBoVS4fxSjKdcsPeBndc",
+                                       "row_color":  "green"
+                                   },
+                        "artwork_complete":  true,
+                        "code_complete":  true,
+                        "status":  "green",
+                        "repo_asset":  "",
+                        "localization":  {
+                                             "en_us":  false,
+                                             "zh_hans":  false,
+                                             "blocked":  false
+                                         },
+                        "dependencies":  [
+
+                                         ],
+                        "advances":  [
+
+                                     ],
+                        "blockers":  [
+
+                                     ],
+                        "phase":  1,
+                        "notes":  "",
+                        "deferred":  false,
+                        "deferred_reason":  ""
+                    },
+                    {
+                        "id":  "item-armor-魔心轻甲",
+                        "source_kind":  "item",
+                        "category":  "armor",
+                        "tranche":  "",
+                        "region":  "",
+                        "name_en":  "",
+                        "name_zh":  "魔心轻甲",
+                        "internal_name":  "",
+                        "feishu":  {
+                                       "doc":  "item",
+                                       "table_block_id":  "TK7ddgDgMosNN8xzvs1cS0H0nBH",
+                                       "row_name_block_id":  "Q5FAdxhPuoquJ3xL5HzcxiMDnwd",
+                                       "texture_checkbox_id":  "AyqNdX3zSohwiOxJVq7ccAUPnoe",
+                                       "code_checkbox_id":  "QHGkdfMjXokRJXxEr2JcnnZinsc",
+                                       "row_color":  "green"
+                                   },
+                        "artwork_complete":  true,
+                        "code_complete":  true,
+                        "status":  "green",
+                        "repo_asset":  "",
+                        "localization":  {
+                                             "en_us":  false,
+                                             "zh_hans":  false,
+                                             "blocked":  false
+                                         },
+                        "dependencies":  [
+
+                                         ],
+                        "advances":  [
+
+                                     ],
+                        "blockers":  [
+
+                                     ],
+                        "phase":  1,
+                        "notes":  "",
+                        "deferred":  false,
+                        "deferred_reason":  ""
+                    },
+                    {
+                        "id":  "item-armor-魔心靴",
+                        "source_kind":  "item",
+                        "category":  "armor",
+                        "tranche":  "",
+                        "region":  "",
+                        "name_en":  "",
+                        "name_zh":  "魔心靴",
+                        "internal_name":  "",
+                        "feishu":  {
+                                       "doc":  "item",
+                                       "table_block_id":  "TK7ddgDgMosNN8xzvs1cS0H0nBH",
+                                       "row_name_block_id":  "RGyUdRbWUokxLKx0DwgcRgMgnTe",
+                                       "texture_checkbox_id":  "LNn1dF4qKo6pwKxCfslcVJC3n7e",
+                                       "code_checkbox_id":  "PdLjdBRW1oTEj0xIQ0Xcdn4RnWc",
+                                       "row_color":  "green"
+                                   },
+                        "artwork_complete":  true,
+                        "code_complete":  true,
+                        "status":  "green",
+                        "repo_asset":  "",
+                        "localization":  {
+                                             "en_us":  false,
+                                             "zh_hans":  false,
+                                             "blocked":  false
+                                         },
+                        "dependencies":  [
+
+                                         ],
+                        "advances":  [
+
+                                     ],
+                        "blockers":  [
+
+                                     ],
+                        "phase":  1,
+                        "notes":  "",
+                        "deferred":  false,
+                        "deferred_reason":  ""
+                    },
+                    {
+                        "id":  "item-armor-devil-heart-gun",
+                        "source_kind":  "item",
+                        "category":  "armor",
+                        "tranche":  "",
+                        "region":  "",
+                        "name_en":  "Devil Heart Gun",
+                        "name_zh":  "魔心手枪",
+                        "internal_name":  "",
+                        "feishu":  {
+                                       "doc":  "item",
+                                       "table_block_id":  "TK7ddgDgMosNN8xzvs1cS0H0nBH",
+                                       "row_name_block_id":  "TjKBdfTiSo2CO4xmLtEcDidUn1e",
+                                       "texture_checkbox_id":  "LMuqdhoujoIrT1xCKBKcgifEnLb",
+                                       "code_checkbox_id":  "Rck3d35BXol4u7xjf4WcNcRmnqd",
+                                       "row_color":  "green"
+                                   },
+                        "artwork_complete":  true,
+                        "code_complete":  true,
+                        "status":  "green",
+                        "repo_asset":  "",
+                        "localization":  {
+                                             "en_us":  false,
+                                             "zh_hans":  false,
+                                             "blocked":  false
+                                         },
+                        "dependencies":  [
+
+                                         ],
+                        "advances":  [
+
+                                     ],
+                        "blockers":  [
+
+                                     ],
+                        "phase":  1,
+                        "notes":  "",
+                        "deferred":  false,
+                        "deferred_reason":  ""
+                    },
+                    {
+                        "id":  "item-armor-devil-heart-staff",
+                        "source_kind":  "item",
+                        "category":  "armor",
+                        "tranche":  "",
+                        "region":  "",
+                        "name_en":  "Devil Heart Staff",
+                        "name_zh":  "魔心法杖",
+                        "internal_name":  "",
+                        "feishu":  {
+                                       "doc":  "item",
+                                       "table_block_id":  "TK7ddgDgMosNN8xzvs1cS0H0nBH",
+                                       "row_name_block_id":  "UQjpdZuEzo1i90xAyQScqDuLnZd",
+                                       "texture_checkbox_id":  "JjbfdLr5Sof61cxgqblcw82znac",
+                                       "code_checkbox_id":  "IqaKdEJuIoFOqKxap5RcLjrEnsg",
+                                       "row_color":  "green"
+                                   },
+                        "artwork_complete":  true,
+                        "code_complete":  true,
+                        "status":  "green",
+                        "repo_asset":  "",
+                        "localization":  {
+                                             "en_us":  false,
+                                             "zh_hans":  false,
+                                             "blocked":  false
+                                         },
+                        "dependencies":  [
+
+                                         ],
+                        "advances":  [
+
+                                     ],
+                        "blockers":  [
+
+                                     ],
+                        "phase":  1,
+                        "notes":  "",
+                        "deferred":  false,
+                        "deferred_reason":  ""
+                    },
+                    {
+                        "id":  "item-armor-devil-heart-gyroscope",
+                        "source_kind":  "item",
+                        "category":  "armor",
+                        "tranche":  "",
+                        "region":  "",
+                        "name_en":  "Devil Heart Gyroscope",
+                        "name_zh":  "魔心陀螺",
+                        "internal_name":  "",
+                        "feishu":  {
+                                       "doc":  "item",
+                                       "table_block_id":  "TK7ddgDgMosNN8xzvs1cS0H0nBH",
+                                       "row_name_block_id":  "N0nEdIIK2o6zhsxBPR9coF0znbh",
+                                       "texture_checkbox_id":  "R3RFdZyB0oMaTNx4L7CceWqsn9d",
+                                       "code_checkbox_id":  "QB6rdWeXloMjeVxsdYsc32vhnpf",
+                                       "row_color":  "green"
+                                   },
+                        "artwork_complete":  true,
+                        "code_complete":  true,
+                        "status":  "green",
+                        "repo_asset":  "",
+                        "localization":  {
+                                             "en_us":  false,
+                                             "zh_hans":  false,
+                                             "blocked":  false
+                                         },
+                        "dependencies":  [
+
+                                         ],
+                        "advances":  [
+
+                                     ],
+                        "blockers":  [
+
+                                     ],
+                        "phase":  1,
+                        "notes":  "",
+                        "deferred":  false,
+                        "deferred_reason":  ""
+                    },
+                    {
+                        "id":  "item-armor-devil-heart-bayonet",
+                        "source_kind":  "item",
+                        "category":  "armor",
+                        "tranche":  "",
+                        "region":  "",
+                        "name_en":  "Devil Heart Bayonet",
+                        "name_zh":  "魔心刺剑",
+                        "internal_name":  "",
+                        "feishu":  {
+                                       "doc":  "item",
+                                       "table_block_id":  "TK7ddgDgMosNN8xzvs1cS0H0nBH",
+                                       "row_name_block_id":  "HvjJdHf5WoJxKlxYnMQcspR6nRh",
+                                       "texture_checkbox_id":  "FODKdjS4Zo9eZKxAlZlcTsfunWe",
+                                       "code_checkbox_id":  "JxZOdBEh7o0YXQxid6HcgI3znTb",
+                                       "row_color":  "green"
+                                   },
+                        "artwork_complete":  true,
+                        "code_complete":  true,
+                        "status":  "green",
+                        "repo_asset":  "",
+                        "localization":  {
+                                             "en_us":  false,
+                                             "zh_hans":  false,
+                                             "blocked":  false
+                                         },
+                        "dependencies":  [
+
+                                         ],
+                        "advances":  [
+
+                                     ],
+                        "blockers":  [
+
+                                     ],
+                        "phase":  1,
+                        "notes":  "",
+                        "deferred":  false,
+                        "deferred_reason":  ""
+                    },
+                    {
+                        "id":  "item-armor-devil-heart-bow",
+                        "source_kind":  "item",
+                        "category":  "armor",
+                        "tranche":  "",
+                        "region":  "",
+                        "name_en":  "Devil Heart Bow",
+                        "name_zh":  "魔心弓",
+                        "internal_name":  "",
+                        "feishu":  {
+                                       "doc":  "item",
+                                       "table_block_id":  "TK7ddgDgMosNN8xzvs1cS0H0nBH",
+                                       "row_name_block_id":  "CtD2dIvR3ojaasxpw4ZcwSFxn0d",
+                                       "texture_checkbox_id":  "N1GTd0Qeco0s2KxvDuvcIDP4nHd",
+                                       "code_checkbox_id":  "VDe3dXk4rodCCPxsaplclHxsn6s",
+                                       "row_color":  "green"
+                                   },
+                        "artwork_complete":  true,
+                        "code_complete":  true,
+                        "status":  "green",
+                        "repo_asset":  "",
+                        "localization":  {
+                                             "en_us":  false,
+                                             "zh_hans":  false,
+                                             "blocked":  false
+                                         },
+                        "dependencies":  [
+
+                                         ],
+                        "advances":  [
+
+                                     ],
+                        "blockers":  [
+
+                                     ],
+                        "phase":  1,
+                        "notes":  "",
+                        "deferred":  false,
+                        "deferred_reason":  ""
+                    },
+                    {
+                        "id":  "item-armor-devil-heart-iron-ore",
+                        "source_kind":  "item",
+                        "category":  "armor",
+                        "tranche":  "",
+                        "region":  "",
+                        "name_en":  "Devil Heart Iron Ore",
+                        "name_zh":  "魔心铁矿",
+                        "internal_name":  "",
+                        "feishu":  {
+                                       "doc":  "item",
+                                       "table_block_id":  "TK7ddgDgMosNN8xzvs1cS0H0nBH",
+                                       "row_name_block_id":  "HtPMdRS6xoH9hmxahBGcYPSbnyf",
+                                       "texture_checkbox_id":  "Cmmcd0fMvowLISx4Futcc6QJnTh",
+                                       "code_checkbox_id":  "ItZKd6xdpoQfibxejsrc2FfRnud",
+                                       "row_color":  "green"
+                                   },
+                        "artwork_complete":  true,
+                        "code_complete":  true,
+                        "status":  "green",
+                        "repo_asset":  "",
+                        "localization":  {
+                                             "en_us":  false,
+                                             "zh_hans":  false,
+                                             "blocked":  false
+                                         },
+                        "dependencies":  [
+
+                                         ],
+                        "advances":  [
+
+                                     ],
+                        "blockers":  [
+
+                                     ],
+                        "phase":  1,
+                        "notes":  "",
+                        "deferred":  false,
+                        "deferred_reason":  ""
+                    },
+                    {
+                        "id":  "item-armor-devil-heart-iron-bar",
+                        "source_kind":  "item",
+                        "category":  "armor",
+                        "tranche":  "",
+                        "region":  "",
+                        "name_en":  "Devil Heart Iron Bar",
+                        "name_zh":  "魔心铁锭",
+                        "internal_name":  "",
+                        "feishu":  {
+                                       "doc":  "item",
+                                       "table_block_id":  "TK7ddgDgMosNN8xzvs1cS0H0nBH",
+                                       "row_name_block_id":  "Rup1drW7OoeGxAx65OtcPSwtnMh",
+                                       "texture_checkbox_id":  "WMqqdATkgorYsMxUMqucvYLunad",
+                                       "code_checkbox_id":  "Hctvd48bzoEB3bx6JFecCAQQnoh",
+                                       "row_color":  "green"
+                                   },
+                        "artwork_complete":  true,
+                        "code_complete":  true,
+                        "status":  "green",
+                        "repo_asset":  "",
+                        "localization":  {
+                                             "en_us":  false,
+                                             "zh_hans":  false,
+                                             "blocked":  false
+                                         },
+                        "dependencies":  [
+
+                                         ],
+                        "advances":  [
+
+                                     ],
+                        "blockers":  [
+
+                                     ],
+                        "phase":  1,
+                        "notes":  "",
+                        "deferred":  false,
+                        "deferred_reason":  ""
+                    },
+                    {
+                        "id":  "item-armor-jadeized-bone",
+                        "source_kind":  "item",
+                        "category":  "armor",
+                        "tranche":  "",
+                        "region":  "",
+                        "name_en":  "Jadeized Bone",
+                        "name_zh":  "玉化龙骨",
+                        "internal_name":  "",
+                        "feishu":  {
+                                       "doc":  "item",
+                                       "table_block_id":  "TK7ddgDgMosNN8xzvs1cS0H0nBH",
+                                       "row_name_block_id":  "WIJxdBV94oNHRhxq9jdcN3qpnHb",
+                                       "texture_checkbox_id":  "NJfHdl8rfo3PZPx2PJ2cTqnLnng",
+                                       "code_checkbox_id":  "Xfoodz3lAoHSsAxE43PcSpmMnje",
+                                       "row_color":  "green"
+                                   },
+                        "artwork_complete":  true,
+                        "code_complete":  true,
+                        "status":  "green",
+                        "repo_asset":  "",
+                        "localization":  {
+                                             "en_us":  false,
+                                             "zh_hans":  false,
+                                             "blocked":  false
+                                         },
+                        "dependencies":  [
+
+                                         ],
+                        "advances":  [
+
+                                     ],
+                        "blockers":  [
+
+                                     ],
+                        "phase":  1,
+                        "notes":  "",
+                        "deferred":  false,
+                        "deferred_reason":  ""
+                    },
+                    {
+                        "id":  "item-armor-枯木头盔",
+                        "source_kind":  "item",
+                        "category":  "armor",
+                        "tranche":  "",
+                        "region":  "",
+                        "name_en":  "",
+                        "name_zh":  "枯木头盔",
+                        "internal_name":  "",
+                        "feishu":  {
+                                       "doc":  "item",
+                                       "table_block_id":  "KsIRdhfYuoxhYzxt4bOcinSlnbh",
+                                       "row_name_block_id":  "QMf3dRJSqolRxyxOziRcBEPEn7b",
+                                       "texture_checkbox_id":  "VV5IdVaQiorEo1xA7YxctrGtnzc",
+                                       "code_checkbox_id":  "FtpJddfiSotWG8xl4MRcazFAnxh",
+                                       "row_color":  "green"
+                                   },
+                        "artwork_complete":  true,
+                        "code_complete":  true,
+                        "status":  "green",
+                        "repo_asset":  "",
+                        "localization":  {
+                                             "en_us":  false,
+                                             "zh_hans":  false,
+                                             "blocked":  false
+                                         },
+                        "dependencies":  [
+
+                                         ],
+                        "advances":  [
+
+                                     ],
+                        "blockers":  [
+
+                                     ],
+                        "phase":  1,
+                        "notes":  "",
+                        "deferred":  false,
+                        "deferred_reason":  ""
+                    },
+                    {
+                        "id":  "item-armor-枯木胸甲",
+                        "source_kind":  "item",
+                        "category":  "armor",
+                        "tranche":  "",
+                        "region":  "",
+                        "name_en":  "",
+                        "name_zh":  "枯木胸甲",
+                        "internal_name":  "",
+                        "feishu":  {
+                                       "doc":  "item",
+                                       "table_block_id":  "KsIRdhfYuoxhYzxt4bOcinSlnbh",
+                                       "row_name_block_id":  "CvUPdhDQjowmt5xGXhbcT0fZnhf",
+                                       "texture_checkbox_id":  "R4jAdUvoCobYZxx1gqOcTvkhnpe",
+                                       "code_checkbox_id":  "SMM0dqmadocmq6xqWDxc5xIEnuJ",
+                                       "row_color":  "green"
+                                   },
+                        "artwork_complete":  true,
+                        "code_complete":  true,
+                        "status":  "green",
+                        "repo_asset":  "",
+                        "localization":  {
+                                             "en_us":  false,
+                                             "zh_hans":  false,
+                                             "blocked":  false
+                                         },
+                        "dependencies":  [
+
+                                         ],
+                        "advances":  [
+
+                                     ],
+                        "blockers":  [
+
+                                     ],
+                        "phase":  1,
+                        "notes":  "",
+                        "deferred":  false,
+                        "deferred_reason":  ""
+                    },
+                    {
+                        "id":  "item-armor-枯木护腿",
+                        "source_kind":  "item",
+                        "category":  "armor",
+                        "tranche":  "",
+                        "region":  "",
+                        "name_en":  "",
+                        "name_zh":  "枯木护腿",
+                        "internal_name":  "",
+                        "feishu":  {
+                                       "doc":  "item",
+                                       "table_block_id":  "KsIRdhfYuoxhYzxt4bOcinSlnbh",
+                                       "row_name_block_id":  "VJTydV00IowDAex5K87cWDGvnod",
+                                       "texture_checkbox_id":  "J4L5dVRZGoTYZ1xCC29c4EGhnrb",
+                                       "code_checkbox_id":  "HnHddfa7yoqinOx0cArcJLZNnyf",
+                                       "row_color":  "green"
+                                   },
+                        "artwork_complete":  true,
+                        "code_complete":  true,
+                        "status":  "green",
+                        "repo_asset":  "",
+                        "localization":  {
+                                             "en_us":  false,
+                                             "zh_hans":  false,
+                                             "blocked":  false
+                                         },
+                        "dependencies":  [
+
+                                         ],
+                        "advances":  [
+
+                                     ],
+                        "blockers":  [
+
+                                     ],
+                        "phase":  1,
+                        "notes":  "",
+                        "deferred":  false,
+                        "deferred_reason":  ""
+                    },
+                    {
+                        "id":  "item-armor-珍珠软体头壳",
+                        "source_kind":  "item",
+                        "category":  "armor",
+                        "tranche":  "",
+                        "region":  "",
+                        "name_en":  "",
+                        "name_zh":  "珍珠软体头壳",
+                        "internal_name":  "",
+                        "feishu":  {
+                                       "doc":  "item",
+                                       "table_block_id":  "SgUPdGf2uoUWVlxMY2Qc8Yc5nrb",
+                                       "row_name_block_id":  "GZTgdaxxMoUNC9xkJC2csJyRnvh",
+                                       "texture_checkbox_id":  "BsgEdHDmcoAc9ixJk2wcImlHn4f",
+                                       "code_checkbox_id":  "IOymde3oMotwbzxWEd4ck1OBnkb",
+                                       "row_color":  "green"
+                                   },
+                        "artwork_complete":  true,
+                        "code_complete":  true,
+                        "status":  "green",
+                        "repo_asset":  "",
+                        "localization":  {
+                                             "en_us":  false,
+                                             "zh_hans":  false,
+                                             "blocked":  false
+                                         },
+                        "dependencies":  [
+
+                                         ],
+                        "advances":  [
+
+                                     ],
+                        "blockers":  [
+
+                                     ],
+                        "phase":  1,
+                        "notes":  "",
+                        "deferred":  false,
+                        "deferred_reason":  ""
+                    },
+                    {
+                        "id":  "item-armor-附苔软体头壳",
+                        "source_kind":  "item",
+                        "category":  "armor",
+                        "tranche":  "",
+                        "region":  "",
+                        "name_en":  "",
+                        "name_zh":  "附苔软体头壳",
+                        "internal_name":  "",
+                        "feishu":  {
+                                       "doc":  "item",
+                                       "table_block_id":  "SgUPdGf2uoUWVlxMY2Qc8Yc5nrb",
+                                       "row_name_block_id":  "WWfidoR3tokkB2x93E3cdzNRnIe",
+                                       "texture_checkbox_id":  "EUvidCv89o4lmoxo9eqcEoz2nZr",
+                                       "code_checkbox_id":  "N1w6dKnhvoFtMPxAUurcukhGnVc",
+                                       "row_color":  "green"
+                                   },
+                        "artwork_complete":  true,
+                        "code_complete":  true,
+                        "status":  "green",
+                        "repo_asset":  "",
+                        "localization":  {
+                                             "en_us":  false,
+                                             "zh_hans":  false,
+                                             "blocked":  false
+                                         },
+                        "dependencies":  [
+
+                                         ],
+                        "advances":  [
+
+                                     ],
+                        "blockers":  [
+
+                                     ],
+                        "phase":  1,
+                        "notes":  "",
+                        "deferred":  false,
+                        "deferred_reason":  ""
+                    },
+                    {
+                        "id":  "item-armor-软体外壳护甲",
+                        "source_kind":  "item",
+                        "category":  "armor",
+                        "tranche":  "",
+                        "region":  "",
+                        "name_en":  "",
+                        "name_zh":  "软体外壳护甲",
+                        "internal_name":  "",
+                        "feishu":  {
+                                       "doc":  "item",
+                                       "table_block_id":  "SgUPdGf2uoUWVlxMY2Qc8Yc5nrb",
+                                       "row_name_block_id":  "G8NadCO4uoVhJdxxXNgcKVJun3B",
+                                       "texture_checkbox_id":  "XNMLdd29XoGEVYxDMJ5c9QmMn3c",
+                                       "code_checkbox_id":  "OkpBd01DloLlD2xjRpqcwG3on3b",
+                                       "row_color":  "green"
+                                   },
+                        "artwork_complete":  true,
+                        "code_complete":  true,
+                        "status":  "green",
+                        "repo_asset":  "",
+                        "localization":  {
+                                             "en_us":  false,
+                                             "zh_hans":  false,
+                                             "blocked":  false
+                                         },
+                        "dependencies":  [
+
+                                         ],
+                        "advances":  [
+
+                                     ],
+                        "blockers":  [
+
+                                     ],
+                        "phase":  1,
+                        "notes":  "",
+                        "deferred":  false,
+                        "deferred_reason":  ""
+                    },
+                    {
+                        "id":  "item-armor-软体足部",
+                        "source_kind":  "item",
+                        "category":  "armor",
+                        "tranche":  "",
+                        "region":  "",
+                        "name_en":  "",
+                        "name_zh":  "软体足部",
+                        "internal_name":  "",
+                        "feishu":  {
+                                       "doc":  "item",
+                                       "table_block_id":  "SgUPdGf2uoUWVlxMY2Qc8Yc5nrb",
+                                       "row_name_block_id":  "DlK9dnFAFoOzxixiGVYcjURdnug",
+                                       "texture_checkbox_id":  "V8NhdN3WSov1M8xOz6lcjkRBnxd",
+                                       "code_checkbox_id":  "JAqhdXegLouzVaxIZ8WcnXSinJe",
                                        "row_color":  "green"
                                    },
                         "artwork_complete":  true,
@@ -2860,6 +4144,46 @@
                                      ],
                         "blockers":  [
 
+                                     ],
+                        "phase":  1,
+                        "notes":  "",
+                        "deferred":  false,
+                        "deferred_reason":  ""
+                    },
+                    {
+                        "id":  "terrain-weapons.magic-vinerepairwand",
+                        "source_kind":  "terrain",
+                        "category":  "weapons.magic",
+                        "tranche":  "",
+                        "region":  "特殊植物",
+                        "name_en":  "VineRepairWand",
+                        "name_zh":  "藤蔓修理魔杖",
+                        "internal_name":  "",
+                        "feishu":  {
+                                       "doc":  "terrain",
+                                       "table_block_id":  "doxcnGi5o6mc4k05yPXJ8gVydLc",
+                                       "row_name_block_id":  "doxcnAygXudkDkLdNZK9GOJO0qe",
+                                       "texture_checkbox_id":  "doxcnuTHSJtzh5bre3VO0PImFcb",
+                                       "code_checkbox_id":  "doxcnzqPyfvNftV67WZXrW5rg2b",
+                                       "row_color":  "neutral"
+                                   },
+                        "artwork_complete":  false,
+                        "code_complete":  true,
+                        "status":  "yellow",
+                        "repo_asset":  "",
+                        "localization":  {
+                                             "en_us":  false,
+                                             "zh_hans":  false,
+                                             "blocked":  false
+                                         },
+                        "dependencies":  [
+
+                                         ],
+                        "advances":  [
+
+                                     ],
+                        "blockers":  [
+                                         "design artwork not complete (Feishu texture checkbox false)"
                                      ],
                         "phase":  1,
                         "notes":  "",
