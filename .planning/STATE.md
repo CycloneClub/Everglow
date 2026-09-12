@@ -3,16 +3,16 @@ gsd_state_version: "1.0"
 current_phase: 01
 current_phase_name: Item Inventory & Completed-Art Items
 status: executing
-stopped_at: Completed 01-01-PLAN.md
-last_updated: "2026-09-12T05:42:07.710Z"
+stopped_at: Completed 01-02-PLAN.md
+last_updated: "2026-09-12T06:08:51.110Z"
 last_activity: 2026-09-12
 last_activity_desc: Phase 01 execution started
-state_head: 4d8570e7f5046ab37ffffd2cfdc7ca8de77eae64
+state_head: cd831e0f8803850d95de720c92a6f3824e93bd9d
 progress:
   total_phases: 8
   completed_phases: 0
   total_plans: 5
-  completed_plans: 1
+  completed_plans: 2
   percent: 0
 ---
 
@@ -28,7 +28,7 @@ See: `.planning/PROJECT.md` (updated 2026-09-11)
 ## Current Position
 
 Phase: 01 (Item Inventory & Completed-Art Items) — EXECUTING
-Plan: 2 of 5
+Plan: 3 of 5
 Status: Ready to execute
 Last activity: 2026-09-12 — Phase 01 execution started
 
@@ -54,6 +54,7 @@ Progress: [░░░░░░░░░░] 0%
 | Plan | Duration | Tasks | Files |
 |------|----------|-------|-------|
 | Phase 01 P01 | 21min | 3 tasks | 9 files |
+| Phase 01 P02 | ~7min | 3 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -65,6 +66,9 @@ Progress: [░░░░░░░░░░] 0%
 - Phase 1 owns source/inventory reconciliation, including Biology's three region labels and Terrain's additional Green Tundra and Town of Decaying Wood labels; Phase 8 owns final source-status synchronization.
 - Explicit hardmode-deferred entries and undefined future designs remain outside this milestone.
 - [Phase 01]: Evidence snapshots are committed as well-formed <fragment> XML; the offline parser is header-anchored and rowspan-aware, and validator exit 3 accepts an empty texture checkbox id only when a blocker is recorded.
+- [Phase 01]: Tranche is assigned from the resolved repo class content family (or parser category when class-less); the terrain-sourced row takes an empty tranche.
+- [Phase 01]: advances is type-based (ITEM-01/ITEM-02) with procurement overrides to ITEM-03/ITEM-04 and ITEM-07 on every entry.
+- [Phase 01]: A shared-placeholder-texture class (RadialCarapace -> White_Mod) is recorded artwork-incomplete/yellow despite the Feishu checkbox; Green Tundra stays unresolved with a blocker.
 
 ### Pending Todos
 
@@ -85,6 +89,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-09-12T05:42:07.677Z
-Stopped at: Completed 01-01-PLAN.md
+Last session: 2026-09-12T06:08:51.080Z
+Stopped at: Completed 01-02-PLAN.md
 Resume file: None
