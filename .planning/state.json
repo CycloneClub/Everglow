@@ -1,0 +1,53 @@
+{
+  "contract": "1.0.0",
+  "flavor": "core",
+  "milestone": null,
+  "phases": [
+    {
+      "number": "1",
+      "name": "Item Inventory & Completed-Art Items",
+      "status": "in_progress"
+    },
+    {
+      "number": "2",
+      "name": "Remaining Items & Unfinished-Art Materials",
+      "status": "pending"
+    },
+    {
+      "number": "3",
+      "name": "Completed-Art Ordinary Monsters",
+      "status": "pending"
+    },
+    {
+      "number": "4",
+      "name": "Remaining Ordinary Monsters",
+      "status": "pending"
+    },
+    {
+      "number": "5",
+      "name": "Completed-Art Terrain & Structures",
+      "status": "pending"
+    },
+    {
+      "number": "6",
+      "name": "Remaining Terrain, Generation & Integration",
+      "status": "pending"
+    },
+    {
+      "number": "7",
+      "name": "Bosses, Special Encounters & Rewards",
+      "status": "pending"
+    },
+    {
+      "number": "8",
+      "name": "Publishable Integration & Source Acceptance",
+      "status": "pending"
+    }
+  ],
+  "next": {
+    "command": "/gsd:progress --next",
+    "label": "Advance to the next step",
+    "reason": "Phase 01 of 8 · 0% · executing"
+  },
+  "updated_at": "2026-09-12T10:28:29.305Z"
+}
