@@ -3,16 +3,16 @@ gsd_state_version: "1.0"
 current_phase: 01
 current_phase_name: Item Inventory & Completed-Art Items
 status: executing
-stopped_at: Completed 01-04-PLAN.md - all 3 tasks committed (tranche-B parity and gate)
-last_updated: "2026-09-12T10:29:00.145Z"
+stopped_at: Completed 01-05-PLAN.md - code portion gated green; localization deferred by user directive (45/58 covered, 13 deferred)
+last_updated: "2026-09-12T10:55:26.381Z"
 last_activity: 2026-09-12
 last_activity_desc: Phase 01 execution started
-state_head: bf63036498e54c12de6b85f6ca1491f7ac220465
+state_head: aa5b346ba596a0976ed1c56dbc7232619d406c5c
 progress:
   total_phases: 8
   completed_phases: 0
   total_plans: 5
-  completed_plans: 4
+  completed_plans: 5
   percent: 0
 ---
 
@@ -27,10 +27,10 @@ See: `.planning/PROJECT.md` (updated 2026-09-11)
 
 ## Current Position
 
-Phase: 01 (Item Inventory & Completed-Art Items) — READY TO EXECUTE
+Phase: 01 (Item Inventory & Completed-Art Items) — READY FOR VERIFICATION
 Plan: 5 of 5
-Status: Plan 01-03 (replanned) complete — tranche-A parity, class-less Phase 2 routing, coverage gate; ready to execute plan 01-04
-Last activity: 2026-09-12 — 01-03 (replanned) completed: 3 tasks committed, all gates green, Release build 0 errors
+Status: Plan 01-05 complete — deviation ledger consolidated, four Tools/Developer items classified, final Phase 1 code gates green; localization deferred by user directive (13 entries, 45/58 covered)
+Last activity: 2026-09-12 — 01-05 completed: 3 tasks committed; code gates green (reconciliation, validate-inventory, tranche-A 38/38, tranche-B 20/20, Release build 0 errors, BOM); localization advisory (-AllowMissing)
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -57,6 +57,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 01 P02 | ~7min | 3 tasks | 3 files |
 | Phase 01 P03 | 18min | 3 tasks | 4 files |
 | Phase 01 P04 | ~19min | 3 tasks | 21 files |
+| Phase 01 P05 | ~14min | 3 tasks | 8 files |
 
 ## Accumulated Context
 
@@ -78,6 +79,7 @@ Progress: [░░░░░░░░░░] 0%
 - [Phase 01]: ThornTurtleShell run-speed corrected to the design -10%; check-tranche-A.ps1 gates the 38 completed-art tranche-A entries.
 - [Phase 01]: Tranche-B design rows were header-anchored; the recipe embedded after '=' in the 效果 cell is a recipe (DevilHeart armor 18/20/32/24 bars at an Anvil).
 - [Phase 01]: The four missing DevilHeart armor recipes and the Ruin/material rarity+value deviations were fixed (D-12); the Witherbark minion pattern, set-bonus display text, and Photophore misimplementation were recorded as blockers outside plan 04's file scope.
+- [Phase 01]: Phase 1 localization is deferred by user directive (2026-09-12, 'record it; do not consider localization, just complete the code portion'); the in-game exporter was not run, no key was fabricated, and no HJSON was hand-edited. The 13 missing-key entries are recorded as status=deferred deviations (45/58 covered; advisory -AllowMissing baseline).
 
 ### Pending Todos
 
@@ -90,6 +92,7 @@ None yet.
 - Yggdrasil generation, rendering, subworld, persistence, and multiplayer behavior require live tModLoader verification beyond unit-test coverage.
 - 01-03 (replanned) resolved the halt: the 18 class-less completed-art tranche-A entries and the 25 art-incomplete class-less entries are routed to Phase 2 (phase=2); the tranche gate `check-tranche-A.ps1` is authored (38 covered). Four tranche-A weapons carry 效果 blockers (MossySpell, CyatheaArrow, GreenSungloStaff, EvilHalbertBarnacle) whose design behavior lives in projectiles outside the item-class modify set.
 - RadialCarapace and VineRepairWand remain Phase 1 tracked blockers (code-complete, artwork-missing per D-11); their design deviations are queued to Phase 2 (D-12).
+- Phase 1 localization is deferred by user directive: 13 completed-art items lack both-culture display keys (EvilHalbertBarnacle, ArcI, RedAlgaeMagicStaff, RedAlgaeMagicSpellBook, RedAlgaeMagicWhip, CrimsonMoonSap, EmptyWaterStaff, JadeLakeRedAlgae_Item, Photophore, GreenSungloStaff, ActivatedDogStaff, RedAlgaeMinionGyroscope, RedAlgaeMinionStaff). Run the in-game OutputLocalizationHjsonItem exporter (or resolve in Phase 2). Recorded in 01-DEVIATIONS.md and 01-INVENTORY.json.
 
 ## Deferred Items
 
@@ -100,6 +103,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-09-12T10:28:46.379Z
-Stopped at: Completed 01-04-PLAN.md - all 3 tasks committed (tranche-B parity and gate)
+Last session: 2026-09-12T10:55:26.346Z
+Stopped at: Completed 01-05-PLAN.md - code portion gated green; localization deferred by user directive (45/58 covered, 13 deferred)
 Resume file: None
