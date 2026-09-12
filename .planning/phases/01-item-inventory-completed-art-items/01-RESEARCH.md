@@ -371,21 +371,21 @@ dotnet test --verbosity normal /p:WarningLevel=0
 
 ## Open Questions
 
-1. **How should "Green Tundra" be classified?**
+1. **How should "Green Tundra" be classified?** — **(RESOLVED: classified `region` with `resolved=false` plus a blocker in `01-INVENTORY.json` `labels`; affected geography/items stay blocked — Assumptions A2.)**
    - What we know: The terrain doc states (verbatim) "The subterrains of **Kelp Curtains** are **Death Jade Lake, Green Tundra, Town of Decaying Wood, Valley of Lush and Moist**", and Chinese "苍苔帘幕的次级地形主要分为 亡碧湖、碧绿苔原、朽木王庭、森雨幽谷". No heading for Green Tundra exists in the terrain outline; the biology doc never names it.
    - What's unclear: Whether Green Tundra is a top-level region, an alias for the surface/green portion, or a planned-but-untitled area.
    - Recommendation: Classify in the Phase 1 reconciliation table with the strongest evidence (prose lists it among subterrains → likely top-level region, but no dedicated design section), tag the row yellow, and mark affected items/terrain blocked until confirmed.
 
-2. **What exactly is "Elftigern" (H2 under Spiny Moss Court)?**
+2. **What exactly is "Elftigern" (H2 under Spiny Moss Court)?** — **(RESOLVED: not one of the five labels; recorded as an H2 nested under Spiny Moss Court in that label's `rationale`/evidence (block `EewKdG2owoi9uNxNeGdco7jqnec`); no Phase 1 item impact, deferred to terrain reconciliation.)**
    - What we know: Terrain outline has H2 `厁…|Elftigern` alongside `朽木王庭城寨|Town Of Decaying Wood` and `殖蛊腔|Parasitic Cavity` under H1 `刺苔庭园|Spiny Moss Court`.
    - What's unclear: Whether this maps to the five labels at all.
    - Recommendation: Read the section during reconciliation; do not fold into another label without evidence.
 
-3. **Do `_Item` placeables need keys under the item name or the tile name?**
+3. **Do `_Item` placeables need keys under the item name or the tile name?** — **(RESOLVED: keys are resolved additively by the in-game exporter from the class `LocalizationCategory`, never bulk-renamed — Assumptions A3 and plans 04/05.)**
    - What we know: `OldMoss` exists but `OldMoss_Item` does not; the item still needs a display name.
    - Recommendation: Verify in-game behavior or with the exporter, then add keys additively; don't bulk-rename.
 
-4. **Which entries are hardmode-deferred / undefined-future?**
+4. **Which entries are hardmode-deferred / undefined-future?** — **(RESOLVED: enumerated in `01-INVENTORY.json` as `deferred: true` with a `deferred_reason` (placeholder rows `item-weapons.misc-a`/`-b`/`-c-名字要普通`) — Assumptions A7.)**
    - What we know: Requirement V2-HARD-01 names Withered Seed and Witherbark Guard; the biology doc has an H1 `暂时不用（挪到困难模式）` and `特殊`. UNDEFINED-future = V2-FUT.
    - Recommendation: Enumerate explicitly in the JSON (`deferred: true`, `deferred_reason`), not just prose.
 
