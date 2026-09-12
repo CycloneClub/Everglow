@@ -708,7 +708,7 @@
                                          "ITEM-07"
                                      ],
                         "blockers":  [
-
+                                         "effect (效果) unreconciled: design 25% poison for 5s on hit is absent from MossySpell_proj"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -832,7 +832,7 @@
                                          "ITEM-07"
                                      ],
                         "blockers":  [
-
+                                         "effect (效果) unreconciled: design spike damage 1 differs from CyatheaArrow_proj Projectile.damage/2"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -2633,7 +2633,7 @@
                                          "ITEM-07"
                                      ],
                         "blockers":  [
-
+                                         "effect (效果) unreconciled: design right-click 60% panel damage and 16 defense-pierce not confirmed in EvilHalbertBarnacle shuttle"
                                      ],
                         "phase":  1,
                         "notes":  "",
@@ -2964,7 +2964,7 @@
                                          "ITEM-07"
                                      ],
                         "blockers":  [
-
+                                         "effect (效果) unreconciled: design thorn lifetime 20s not confirmed (GreenSungloThorns timeLeft 10000 frames)"
                                      ],
                         "phase":  1,
                         "notes":  "",
