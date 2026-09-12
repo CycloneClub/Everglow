@@ -65,6 +65,7 @@ Progress: [██░░░░░░░░] 13%
 
 ### Decisions
 
+- **2026-09-12 correction — item allocation is by design-artwork state only.** A completed-art entry belongs to the completed-art item tranche (Phase 1) whether or not the repository already has a class for it; class-less status must never defer an entry to a later phase. Consequently the 18 artwork-complete class-less entries previously routed to Phase 2 are Phase 1 carry-over, and Phase 2 contains only unfinished-art entries.
 - The three Feishu second-layer documents are authoritative; every item is compared through XML full fetch and receives green/exact, yellow/partial-conflicting, or unchecked/blocked status.
 - Execution order is mandatory: items, ordinary monsters, terrain/generation, bosses and special encounters, then publishable integration.
 - Within each content category, complete design artwork/textures precede incomplete artwork/textures; biology-design drops are item work and are not deferred to monster phases.
@@ -89,6 +90,7 @@ None yet.
 
 ### Blockers/Concerns
 
+- ⚠️ **[Phase 1 carry-over, reopened 2026-09-12]** 18 artwork-complete class-less entries were mis-routed to Phase 2 under the retired "class-less → Phase 2" rule. They are Phase 1 work and need a carry-over plan (`/gsd-plan-phase 1` replan or an explicit carry-over plan) before Phase 1 is truly complete. The data move (`phase` 2→1 in `01-INVENTORY.json` for those 18) is owned by that plan/executor, not applied ad hoc.
 - Phase 1: Feishu source reconciliation must classify all five terrain labels and inventory every item/drop before implementation acceptance.
 - Missing approved artwork must remain a visible blocker; no placeholder art may be introduced.
 - Yggdrasil generation, rendering, subworld, persistence, and multiplayer behavior require live tModLoader verification beyond unit-test coverage.

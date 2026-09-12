@@ -17,7 +17,7 @@ Phase 1 owns the source/inventory reconciliation record for the label discrepanc
 
 ## Phases
 
-- [x] **Phase 1: Item Inventory & Completed-Art Items** - Reconcile source labels and inventory every item and biology-design drop, then implement entries with complete design textures. (completed 2026-09-12)
+- [ ] **Phase 1: Item Inventory & Completed-Art Items** - Reconcile source labels and inventory every item and biology-design drop, then implement entries with complete design textures. (reopened 2026-09-12 — 18-entry completed-art class-less carry-over; original tranche complete 2026-09-12)
 - [ ] **Phase 2: Remaining Items & Unfinished-Art Materials** - Complete item entries without finished design textures, including unfinished-art drops/materials, using Phase 1 dependencies.
 - [ ] **Phase 3: Completed-Art Ordinary Monsters** - Implement ordinary creature behavior for entries whose design textures are complete; their drops are already item work.
 - [ ] **Phase 4: Remaining Ordinary Monsters** - Implement ordinary creatures without complete design textures and their behavior after the completed-art tranche.
@@ -69,13 +69,15 @@ Plans:
 
 - `dotnet build /p:Configuration=Release /p:WarningLevel=0` passes.
 - No `.png` or other binary asset is added or modified.
-- Class-less entries (no repository implementation target and/or false Feishu design-code checkbox) are recorded as blocked and routed to Phase 2 (`phase=2` plus `deferred_reason`) rather than force-implemented in Phase 1; the completed-art tranche implemented here is the 58 entries that already map to a repository class. See `.planning/phases/01-item-inventory-completed-art-items/01-INVENTORY.json`.
+- **Entry allocation is by design-artwork state only.** Every entry whose Feishu texture/artwork checkbox is complete belongs to the completed-art item tranche (Phase 1); every remaining entry belongs to Phase 2. Whether the repository already contains an implementation class for an entry does **not** affect its allocation — a completed-art entry with no existing class is still Phase 1 work, and class-less entries are never deferred to a later phase on that basis.
+- **2026-09-12 correction (carry-over):** the earlier rule ("class-less → route to Phase 2") mis-allocated 18 entries that are artwork-complete but had no repository class. Those 18 completed-art class-less entries are Phase 1 carry-over work and are not part of Phase 2's scope. Phase 1 is reopened pending a carry-over plan for them. See `.planning/phases/01-item-inventory-completed-art-items/01-INVENTORY.json` (`phase=2` entries with `artwork_complete=true`).
 
 ### Phase 2: Remaining Items & Unfinished-Art Materials
 
 **Goal:** The remaining non-boss item scope is implemented in dependency order, including entries and biology-design drops/materials whose design artwork or textures were not complete during Phase 1.
 **Mode:** mvp
 **Depends on:** Phase 1 inventory, source reconciliation, and dependency ledger
+**Allocation note:** Phase 2 contains only entries whose Feishu design artwork/texture checkbox is incomplete. Existing repository classes are irrelevant to allocation; the 18 completed-art class-less entries are Phase 1 carry-over, not Phase 2 scope.
 **Requirements:** ITEM-01, ITEM-02, ITEM-03, ITEM-04
 **Success Criteria** (what must be TRUE):
 
@@ -190,7 +192,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8. Th
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Item Inventory & Completed-Art Items | 5/5 | Complete    | 2026-09-12 |
+| 1. Item Inventory & Completed-Art Items | 5/5 + carry-over | In Progress (reopened 2026-09-12) | - |
 | 2. Remaining Items & Unfinished-Art Materials | 0/TBD | Not started | - |
 | 3. Completed-Art Ordinary Monsters | 0/TBD | Not started | - |
 | 4. Remaining Ordinary Monsters | 0/TBD | Not started | - |
