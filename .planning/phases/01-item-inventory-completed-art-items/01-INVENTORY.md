@@ -130,3 +130,23 @@ Artwork/Code cells mirror the Feishu texture/code checkbox state; Feishu is auth
 
 Item-design rows in the committed snapshot carry no region tag, so no inventory entry is mapped to a label here; the label-to-entry mapping is deferred rather than fabricated. Unresolved labels keep a blocker and stay unmerged.
 
+## Deferred & Flagged
+
+### Deferred entries
+
+- `item-weapons.misc-a` (A): undefined future design (placeholder design name; not yet schedulable for implementation)
+- `item-weapons.misc-b` (B): undefined future design (placeholder design name; not yet schedulable for implementation)
+- `item-weapons.misc-c-名字要普通` (C（名字要普通）): undefined future design (placeholder design name; not yet schedulable for implementation)
+
+The biology hardmode section (temporarily-unused / moved-to-hardmode) contains only the Withered Seed / Witherbark Guard creature stat rows, not item-design rows, so it contributes no inventory entry.
+
+### Flagged assumptions
+
+- Item-document table column order is assumed to be name, texture (artwork), code, ... for every item table, so the parser resolves artwork/code by header name rather than cell position. The committed snapshot is header-anchored, but a table without a resolvable header could flip the two states.
+- Green Tundra is listed among the layer subterrains but has no dedicated design section; it is classified as region (strongest supported value) with resolved=false and a blocker. Affected geography and items must stay blocked until the label is confirmed.
+- Placeable classes with the _Item suffix may carry their display key under the item name or under the tile name (e.g. OldMoss exists while OldMoss_Item does not). Key-name resolution is deferred to the localization parity plan; no localization key is renamed or removed here.
+- An item whose class resolves to a shared texture (Commons.ModAsset.White_Mod / Point_Mod) with no local .png is recorded artwork-incomplete even when the Feishu texture checkbox is true (RadialCarapace). This is recorded as a yellow status with a blocker, not dropped.
+- Committed design rows expose no structured ingredient column, so entry dependencies are derived from repository AddRecipes() references to other Everglow items; unmatched entries keep an empty dependencies array. Dependencies are corroborating, not design-authored.
+- Item-design rows carry no region tag in the committed snapshot, so the label-to-entry mapping is left empty rather than fabricated; label reconciliation records classification and rationale only.
+- Rows whose design name is a bare placeholder (A, B, C) with only a generic "array repair material" description are marked deferred with an undefined-future reason; they remain in the inventory and are re-evaluated when the design is defined.
+
