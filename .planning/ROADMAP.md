@@ -42,7 +42,7 @@ Phase 1 owns the source/inventory reconciliation record for the label discrepanc
   4. Every completed-art item accepted in this phase has an XML-full-fetch comparison record; exact matches are eligible for green/check status, while partial/conflicting or blocked entries remain yellow/unchecked with reasons.
 
 **Verification needs:** XML `--detail full` fetches and per-item matrix; source-label taxonomy; item recipe/effect/drop checks; asset/localization convention review; `dotnet build`; blocker and dependency audit.
-**Plans:** 1/5 plans executed
+**Plans:** 2/5 plans executed
 Plans:
 **Wave 1**
 
@@ -50,7 +50,7 @@ Plans:
 
 **Wave 2** *(blocked on Wave 1 completion)*
 
-- [ ] 01-02-PLAN.md — Full inventory reconciliation, five-label taxonomy, deferred/assumption record
+- [x] 01-02-PLAN.md — Full inventory reconciliation, five-label taxonomy, deferred/assumption record
 
 **Wave 3** *(blocked on Wave 2 completion)*
 
@@ -188,7 +188,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8. Th
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Item Inventory & Completed-Art Items | 1/5 | In Progress|  |
+| 1. Item Inventory & Completed-Art Items | 2/5 | In Progress|  |
 | 2. Remaining Items & Unfinished-Art Materials | 0/TBD | Not started | - |
 | 3. Completed-Art Ordinary Monsters | 0/TBD | Not started | - |
 | 4. Remaining Ordinary Monsters | 0/TBD | Not started | - |
