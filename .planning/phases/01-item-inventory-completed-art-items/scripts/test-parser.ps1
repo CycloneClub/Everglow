@@ -148,7 +148,8 @@ try {
 	if ($e1) {
 		Assert-True ($e1.artwork_complete -eq $true) 'Mixed Weapon artwork_complete should be true (texture checkbox read)'
 		Assert-True ($e1.code_complete -eq $false) 'Mixed Weapon code_complete should be false (code checkbox read)'
-		Assert-True ($e1.status -eq 'yellow') "Mixed Weapon status should be yellow, got '$($e1.status)'"
+		# Colour requires BOTH checkboxes complete: exactly one true must stay unchecked.
+		Assert-True ($e1.status -eq 'unchecked') "Mixed Weapon status should be unchecked (no colour when a checkbox is missing), got '$($e1.status)'"
 		Assert-True ($e1.feishu.texture_checkbox_id -eq 'tex-r1') "Mixed Weapon texture id mismatch: '$($e1.feishu.texture_checkbox_id)'"
 		Assert-True ($e1.feishu.code_checkbox_id -eq 'code-r1') "Mixed Weapon code id mismatch: '$($e1.feishu.code_checkbox_id)'"
 		Assert-True ($e1.feishu.row_color -eq 'neutral') "Mixed Weapon row_color should be neutral, got '$($e1.feishu.row_color)'"

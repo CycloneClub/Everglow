@@ -23,7 +23,7 @@ This phase owns the source/inventory reconciliation record and the completed-art
 
 ### Artwork-Completeness Determination
 - **D-05:** Feishu artwork/texture checkbox state is authoritative for whether artwork is complete; repository asset presence is corroborating evidence only.
-- **D-06:** On conflict, Feishu wins: Feishu-complete but no repo asset → blocked (not Phase 1 scope); repo asset present but Feishu unchecked → yellow/conflict requiring human resolution before implementation.
+- **D-06:** On conflict, Feishu wins: Feishu-complete but no repo asset → blocked (not Phase 1 scope); repo asset present but either Feishu checkbox unchecked → unchecked (no status colour) with the conflict recorded as a blocker requiring human resolution before implementation. A status colour is applied only when BOTH Feishu checkboxes are complete (D-07; PROJECT.md "Design Status Synchronization").
 - **D-07:** Each JSON row carries separate `artwork_complete` and `code_complete` booleans plus a composite `status` (green / yellow / unchecked), mirroring the two Feishu checkboxes. The Markdown matrix shows both sub-columns and the composite state.
 
 ### Feishu Source Fetch

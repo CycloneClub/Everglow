@@ -51,7 +51,7 @@ Requirements for the current second-layer milestone. Each maps to exactly one ro
 - [ ] **QUAL-01**: The project builds successfully with the repository-required `dotnet build` workflow and does not introduce compiler, resource-packing, or shader errors.
 - [ ] **QUAL-02**: The second layer is verified in a tModLoader client for world entry, generation, exploration, representative combat, progression, rendering, assets, localization, and reward acquisition.
 - [ ] **QUAL-03**: Multiplayer behavior is verified for every changed networked, persistent, subworld, NPC, projectile, quest, and reward system; dedicated-server safety is checked where applicable.
-- [ ] **QUAL-04**: Every design item is individually compared with the implementation after verification: matching completed items are checked and marked green in Feishu, while partial or conflicting items are marked yellow with a concise explanation.
+- [ ] **QUAL-04**: Every design item is individually compared with the implementation after verification: matching completed items are checked and marked green in Feishu; items whose artwork and code checkboxes are both complete but whose implementation conflicts with the design are marked yellow with a concise explanation; items with either checkbox incomplete remain unchecked (no colour).
 - [x] **QUAL-05**: Repository planning artifacts record unresolved blockers, known deviations, verification evidence, and newly discovered scope without silently changing the Feishu design source.
 
 ## v2 Requirements
