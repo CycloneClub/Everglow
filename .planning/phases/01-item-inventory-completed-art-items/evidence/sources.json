@@ -1,0 +1,20 @@
+{
+    "biology":  {
+                    "token":  "Jp5ndsvNBoCpljxq1eGc9S7vnfe",
+                    "revision_id":  7333,
+                    "file":  "evidence/biology.xml",
+                    "fetched_at":  "2026-09-12T05:24:36Z"
+                },
+    "item":  {
+                 "token":  "FSlSdNlE1owUaAxXyFBcRSaznOe",
+                 "revision_id":  5144,
+                 "file":  "evidence/item.xml",
+                 "fetched_at":  "2026-09-12T05:24:36Z"
+             },
+    "terrain":  {
+                    "token":  "OCK2di9Zvoa8Blx3bfyczI0xn0b",
+                    "revision_id":  5281,
+                    "file":  "evidence/terrain.xml",
+                    "fetched_at":  "2026-09-12T05:24:36Z"
+                }
+}
