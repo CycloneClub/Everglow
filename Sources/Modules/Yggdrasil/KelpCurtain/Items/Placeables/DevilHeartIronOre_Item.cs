@@ -9,5 +9,6 @@ public class DevilHeartIronOre_Item : ModItem
 	public override void SetDefaults()
 	{
 		Item.DefaultToPlaceableTile(ModContent.TileType<DevilHeartIronOre>());
+		Item.rare = ItemRarityID.Green;
 	}
 }

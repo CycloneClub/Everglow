@@ -4,6 +4,8 @@ namespace Everglow.Yggdrasil.KelpCurtain.Items.Placeables;
 
 public class ForestRainVineTile_Thin_Item : ModItem
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Placeables;
+
 	public override void SetDefaults()
 	{
 		Item.width = 24;
