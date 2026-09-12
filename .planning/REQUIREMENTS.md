@@ -52,7 +52,7 @@ Requirements for the current second-layer milestone. Each maps to exactly one ro
 - [ ] **QUAL-02**: The second layer is verified in a tModLoader client for world entry, generation, exploration, representative combat, progression, rendering, assets, localization, and reward acquisition.
 - [ ] **QUAL-03**: Multiplayer behavior is verified for every changed networked, persistent, subworld, NPC, projectile, quest, and reward system; dedicated-server safety is checked where applicable.
 - [ ] **QUAL-04**: Every design item is individually compared with the implementation after verification: matching completed items are checked and marked green in Feishu, while partial or conflicting items are marked yellow with a concise explanation.
-- [ ] **QUAL-05**: Repository planning artifacts record unresolved blockers, known deviations, verification evidence, and newly discovered scope without silently changing the Feishu design source.
+- [x] **QUAL-05**: Repository planning artifacts record unresolved blockers, known deviations, verification evidence, and newly discovered scope without silently changing the Feishu design source.
 
 ## v2 Requirements
 
@@ -111,9 +111,10 @@ Updated during roadmap creation. Each v1 requirement must map to exactly one pha
 | QUAL-02 | Phase 8 | Pending |
 | QUAL-03 | Phase 8 | Pending |
 | QUAL-04 | Phase 8 | Pending |
-| QUAL-05 | Phase 1 | Pending |
+| QUAL-05 | Phase 1 | Complete |
 
 **Coverage:**
+
 - v1 requirements: 30 total
 - Mapped to phases: 30
 - Unmapped: 0 ✓
