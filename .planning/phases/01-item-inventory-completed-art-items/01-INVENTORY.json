@@ -4695,10 +4695,153 @@
                            "field":  "LocalizationCategory",
                            "before":  "Items (unset)",
                            "after":  "Items.Tools",
-                           "source":  "repo developer tool; no design row",
-                           "plan":  "01-05"
-                       }
-                   ],
+                            "source":  "repo developer tool; no design row",
+                            "plan":  "01-05"
+                        },
+                        {
+                            "entry_id":  "item-weapons.melee-evil-halbert-barnacle",
+                            "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/UnderwaterTreasury/EvilHalbertBarnacle.cs",
+                            "field":  "localization",
+                            "before":  "no display key in en-US or zh-Hans item category files",
+                            "after":  "not generated (in-game exporter not run)",
+                            "source":  "plan 01-05 Task 2 (checkpoint:human-action); user directive 2026-09-12",
+                            "plan":  "01-05",
+                            "status":  "deferred",
+                            "reason":  "localization deferred by user directive (2026-09-12)"
+                        },
+                        {
+                            "entry_id":  "item-weapons.misc-arc-i",
+                            "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/UnderwaterTreasury/ArcI.cs",
+                            "field":  "localization",
+                            "before":  "no display key in en-US or zh-Hans item category files",
+                            "after":  "not generated (in-game exporter not run)",
+                            "source":  "plan 01-05 Task 2 (checkpoint:human-action); user directive 2026-09-12",
+                            "plan":  "01-05",
+                            "status":  "deferred",
+                            "reason":  "localization deferred by user directive (2026-09-12)"
+                        },
+                        {
+                            "entry_id":  "item-weapons.misc-crimson-moon-algae-magic-staff",
+                            "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/RedAlgaeMagicStaff.cs",
+                            "field":  "localization",
+                            "before":  "no display key in en-US or zh-Hans item category files",
+                            "after":  "not generated (in-game exporter not run)",
+                            "source":  "plan 01-05 Task 2 (checkpoint:human-action); user directive 2026-09-12",
+                            "plan":  "01-05",
+                            "status":  "deferred",
+                            "reason":  "localization deferred by user directive (2026-09-12)"
+                        },
+                        {
+                            "entry_id":  "item-weapons.misc-crimson-moon-algae-spell-book",
+                            "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/RedAlgaeMagicSpellBook.cs",
+                            "field":  "localization",
+                            "before":  "no display key in en-US or zh-Hans item category files",
+                            "after":  "not generated (in-game exporter not run)",
+                            "source":  "plan 01-05 Task 2 (checkpoint:human-action); user directive 2026-09-12",
+                            "plan":  "01-05",
+                            "status":  "deferred",
+                            "reason":  "localization deferred by user directive (2026-09-12)"
+                        },
+                        {
+                            "entry_id":  "item-weapons.misc-crimson-moon-algae-whip",
+                            "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/RedAlgaeMagicWhip.cs",
+                            "field":  "localization",
+                            "before":  "no display key in en-US or zh-Hans item category files",
+                            "after":  "not generated (in-game exporter not run)",
+                            "source":  "plan 01-05 Task 2 (checkpoint:human-action); user directive 2026-09-12",
+                            "plan":  "01-05",
+                            "status":  "deferred",
+                            "reason":  "localization deferred by user directive (2026-09-12)"
+                        },
+                        {
+                            "entry_id":  "item-weapons.misc-crimson-moon-sap",
+                            "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Materials/CrimsonMoonSap.cs",
+                            "field":  "localization",
+                            "before":  "no display key in en-US or zh-Hans item category files",
+                            "after":  "not generated (in-game exporter not run)",
+                            "source":  "plan 01-05 Task 2 (checkpoint:human-action); user directive 2026-09-12",
+                            "plan":  "01-05",
+                            "status":  "deferred",
+                            "reason":  "localization deferred by user directive (2026-09-12)"
+                        },
+                        {
+                            "entry_id":  "item-weapons.misc-empty-water-staff",
+                            "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/UnderwaterTreasury/EmptyWaterStaff.cs",
+                            "field":  "localization",
+                            "before":  "no display key in en-US or zh-Hans item category files",
+                            "after":  "not generated (in-game exporter not run)",
+                            "source":  "plan 01-05 Task 2 (checkpoint:human-action); user directive 2026-09-12",
+                            "plan":  "01-05",
+                            "status":  "deferred",
+                            "reason":  "localization deferred by user directive (2026-09-12)"
+                        },
+                        {
+                            "entry_id":  "item-weapons.misc-jade-lake-red-algae",
+                            "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Placeables/JadeLakeRedAlgae_Item.cs",
+                            "field":  "localization",
+                            "before":  "no display key in en-US or zh-Hans item category files",
+                            "after":  "not generated (in-game exporter not run)",
+                            "source":  "plan 01-05 Task 2 (checkpoint:human-action); user directive 2026-09-12",
+                            "plan":  "01-05",
+                            "status":  "deferred",
+                            "reason":  "localization deferred by user directive (2026-09-12)"
+                        },
+                        {
+                            "entry_id":  "item-weapons.misc-photophore",
+                            "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Pets/Photophore.cs",
+                            "field":  "localization",
+                            "before":  "no display key in en-US or zh-Hans item category files",
+                            "after":  "not generated (in-game exporter not run)",
+                            "source":  "plan 01-05 Task 2 (checkpoint:human-action); user directive 2026-09-12",
+                            "plan":  "01-05",
+                            "status":  "deferred",
+                            "reason":  "localization deferred by user directive (2026-09-12)"
+                        },
+                        {
+                            "entry_id":  "item-weapons.misc-青须手杖",
+                            "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/GreenSungloStaff.cs",
+                            "field":  "localization",
+                            "before":  "no display key in en-US or zh-Hans item category files",
+                            "after":  "not generated (in-game exporter not run)",
+                            "source":  "plan 01-05 Task 2 (checkpoint:human-action); user directive 2026-09-12",
+                            "plan":  "01-05",
+                            "status":  "deferred",
+                            "reason":  "localization deferred by user directive (2026-09-12)"
+                        },
+                        {
+                            "entry_id":  "item-weapons.summon-activated-dog-staff",
+                            "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/ActivatedDogStaff.cs",
+                            "field":  "localization",
+                            "before":  "no display key in en-US or zh-Hans item category files",
+                            "after":  "not generated (in-game exporter not run)",
+                            "source":  "plan 01-05 Task 2 (checkpoint:human-action); user directive 2026-09-12",
+                            "plan":  "01-05",
+                            "status":  "deferred",
+                            "reason":  "localization deferred by user directive (2026-09-12)"
+                        },
+                        {
+                            "entry_id":  "item-weapons.summon-crimson-moon-algae-gyroscope",
+                            "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/RedAlgaeMinionGyroscope.cs",
+                            "field":  "localization",
+                            "before":  "no display key in en-US or zh-Hans item category files",
+                            "after":  "not generated (in-game exporter not run)",
+                            "source":  "plan 01-05 Task 2 (checkpoint:human-action); user directive 2026-09-12",
+                            "plan":  "01-05",
+                            "status":  "deferred",
+                            "reason":  "localization deferred by user directive (2026-09-12)"
+                        },
+                        {
+                            "entry_id":  "item-weapons.summon-crimson-moon-algae-summon-staff",
+                            "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/RedAlgaeMinionStaff.cs",
+                            "field":  "localization",
+                            "before":  "no display key in en-US or zh-Hans item category files",
+                            "after":  "not generated (in-game exporter not run)",
+                            "source":  "plan 01-05 Task 2 (checkpoint:human-action); user directive 2026-09-12",
+                            "plan":  "01-05",
+                            "status":  "deferred",
+                            "reason":  "localization deferred by user directive (2026-09-12)"
+                        }
+                    ],
     "phase1_actions":  [
                            {
                                "id":  "P1A-01",
@@ -4758,7 +4901,13 @@
                                "id":  "P1A-10",
                                "action":  "Consolidate the plan 03/04 deviation ledgers",
                                "detail":  "01-DEVIATIONS.md merges the plan 03 and plan 04 deviation ledgers; the same records are mirrored in this deviations array (QUAL-05 audit trail).",
-                               "source":  "01-05"
-                           }
-                       ]
+                                "source":  "01-05"
+                            },
+                            {
+                                "id":  "P1A-11",
+                                "action":  "Defer Phase 1 localization by user directive",
+                                "detail":  "Plan 01-05 Task 2 (checkpoint:human-action) was not executed: the in-game OutputLocalizationHjsonItem exporter was never run. Per the user directive of 2026-09-12 ('record it; do not consider localization, just complete the code portion'), localization is deferred for Phase 1. The 13 Phase 1 completed-art entries reported missing a class-name key in both cultures by check-localization-coverage.ps1 -AllowMissing are recorded as deferred deviations (status=deferred, reason='localization deferred by user directive (2026-09-12)'); no key was fabricated and no HJSON file was hand-edited.",
+                                "source":  "01-05 / user directive 2026-09-12"
+                            }
+                        ]
 }
