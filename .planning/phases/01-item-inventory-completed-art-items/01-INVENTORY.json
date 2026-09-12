@@ -4471,5 +4471,294 @@
                             "text":  "Rows whose design name is a bare placeholder (A, B, C) with only a generic \"array repair material\" description are marked deferred with an undefined-future reason; they remain in the inventory and are re-evaluated when the design is defined.",
                             "source":  "plan 02 task 3 judgment"
                         }
-                    ]
+                    ],
+    "deviations":  [
+                       {
+                           "entry_id":  "item-weapons.misc-thorn-turtle-shell",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Accessories/ThornTurtleShell.cs",
+                           "field":  "maxRunSpeed",
+                           "before":  "-5% run speed",
+                           "after":  "-10% run speed",
+                           "source":  "item table HkdvdyBRroWjHJxNY4YcXCTsnRb row RCQWdF1jLoM91rxt4F0chgaenYf",
+                           "plan":  "01-03"
+                       },
+                       {
+                           "entry_id":  "item-armor-魔心发簪",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Armors/DevilHeart/DevilHeartHairpin.cs",
+                           "field":  "LocalizationCategory",
+                           "before":  "Items (base default)",
+                           "after":  "Items.Armor",
+                           "source":  "armor table TK7ddgDgMosNN8xzvs1cS0H0nBH row Z2hqdY9tJo6qifx7EzmcRZhXn4g",
+                           "plan":  "01-04"
+                       },
+                       {
+                           "entry_id":  "item-armor-魔心发簪",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Armors/DevilHeart/DevilHeartHairpin.cs",
+                           "field":  "AddRecipes",
+                           "before":  "none",
+                           "after":  "Anvil recipe: Devil Heart Iron Bar x18",
+                           "source":  "armor table TK7ddgDgMosNN8xzvs1cS0H0nBH row Z2hqdY9tJo6qifx7EzmcRZhXn4g",
+                           "plan":  "01-04"
+                       },
+                       {
+                           "entry_id":  "item-armor-魔心笼盔",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Armors/DevilHeart/DevilHeartHelmet.cs",
+                           "field":  "AddRecipes",
+                           "before":  "none",
+                           "after":  "Anvil recipe: Devil Heart Iron Bar x20",
+                           "source":  "armor table TK7ddgDgMosNN8xzvs1cS0H0nBH row LUhDdMyp5orzkYxg1atcbUbvnah",
+                           "plan":  "01-04"
+                       },
+                       {
+                           "entry_id":  "item-armor-魔心轻甲",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Armors/DevilHeart/DevilHeartLightBreastPlate.cs",
+                           "field":  "AddRecipes",
+                           "before":  "none",
+                           "after":  "Anvil recipe: Devil Heart Iron Bar x32",
+                           "source":  "armor table TK7ddgDgMosNN8xzvs1cS0H0nBH row Q5FAdxhPuoquJ3xL5HzcxiMDnwd",
+                           "plan":  "01-04"
+                       },
+                       {
+                           "entry_id":  "item-armor-魔心靴",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Armors/DevilHeart/DevilHeartLeggings.cs",
+                           "field":  "AddRecipes",
+                           "before":  "none",
+                           "after":  "Anvil recipe: Devil Heart Iron Bar x24",
+                           "source":  "armor table TK7ddgDgMosNN8xzvs1cS0H0nBH row RGyUdRbWUokxLKx0DwgcRgMgnTe",
+                           "plan":  "01-04"
+                       },
+                       {
+                           "entry_id":  "item-weapons.summon-ruin-mask",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Armors/Ruin/RuinMask.cs",
+                           "field":  "Item.rare",
+                           "before":  "Gray",
+                           "after":  "Green",
+                           "source":  "item table doxcnK1twRSRyYrOvXg4tyBBkxf row doxcnkJfbN3VxSujhhJE4JsAdjd",
+                           "plan":  "01-04"
+                       },
+                       {
+                           "entry_id":  "item-weapons.summon-ruin-magic-rob",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Armors/Ruin/RuinMagicRobe.cs",
+                           "field":  "Item.rare",
+                           "before":  "Gray",
+                           "after":  "Green",
+                           "source":  "item table doxcnK1twRSRyYrOvXg4tyBBkxf row doxcnFTjXG53qDd8GZW4qgWcryh",
+                           "plan":  "01-04"
+                       },
+                       {
+                           "entry_id":  "item-weapons.summon-ruin-leggings",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Armors/Ruin/RuinLeggings.cs",
+                           "field":  "Item.rare",
+                           "before":  "Gray",
+                           "after":  "Green",
+                           "source":  "item table doxcnK1twRSRyYrOvXg4tyBBkxf row doxcnyG6nOqRzArF3PJhsH7ZuUb",
+                           "plan":  "01-04"
+                       },
+                       {
+                           "entry_id":  "item-armor-devil-heart-iron-ore",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Placeables/DevilHeartIronOre_Item.cs",
+                           "field":  "Item.rare",
+                           "before":  "White (unset)",
+                           "after":  "Green",
+                           "source":  "armor table TK7ddgDgMosNN8xzvs1cS0H0nBH row HtPMdRS6xoH9hmxahBGcYPSbnyf",
+                           "plan":  "01-04"
+                       },
+                       {
+                           "entry_id":  "item-armor-jadeized-bone",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Placeables/JadeizedBone_Item.cs",
+                           "field":  "Item.rare",
+                           "before":  "White (unset)",
+                           "after":  "Green",
+                           "source":  "armor table TK7ddgDgMosNN8xzvs1cS0H0nBH row WIJxdBV94oNHRhxq9jdcN3qpnHb",
+                           "plan":  "01-04"
+                       },
+                       {
+                           "entry_id":  "item-weapons.misc-藻类提取机",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Placeables/AlgaeExtractor_Item.cs",
+                           "field":  "Item.value",
+                           "before":  "unset (0)",
+                           "after":  "20000 (2 gold)",
+                           "source":  "item table doxcnlTJMIxnmaRlOltbxZDYzGc row doxcndsOZ8HadK2TCsufoaQ9fpJ",
+                           "plan":  "01-04"
+                       },
+                       {
+                           "entry_id":  "item-weapons.misc-绿琉璃果",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/PermanentBoosters/JadeFruit.cs",
+                           "field":  "Item.value",
+                           "before":  "15000",
+                           "after":  "2500 (25 silver)",
+                           "source":  "item table doxcn8LaEaSegCa81vMthGjpd1d row doxcnqF2ygEU5utPUl6ucSJnLcg",
+                           "plan":  "01-04"
+                       },
+                       {
+                           "entry_id":  "item-armor-软体外壳护甲",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Armors/Molluscs/ShellMolluscsBreastPlate.cs",
+                           "field":  "buff/cooldown comments",
+                           "before":  "10 s / 35 s",
+                           "after":  "25 s / 40 s (values already correct)",
+                           "source":  "armor table SgUPdGf2uoUWVlxMY2Qc8Yc5nrb row G8NadCO4uoVhJdxxXNgcKVJun3B",
+                           "plan":  "01-04"
+                       },
+                       {
+                           "entry_id":  "GreenCourtBrick_Item (repo class; no design row)",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Placeables/GreenCourtBrick_Item.cs",
+                           "field":  "LocalizationCategory",
+                           "before":  "Items (unset)",
+                           "after":  "Items.Placeables",
+                           "source":  "repo placeable; no design row",
+                           "plan":  "01-04"
+                       },
+                       {
+                           "entry_id":  "AgedGreenCourtBrick_Item (repo class; no design row)",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Placeables/AgedGreenCourtBrick_Item.cs",
+                           "field":  "LocalizationCategory",
+                           "before":  "Items (unset)",
+                           "after":  "Items.Placeables",
+                           "source":  "repo placeable; no design row",
+                           "plan":  "01-04"
+                       },
+                       {
+                           "entry_id":  "WaterErodedGreenBrick_Item (repo class; no design row)",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Placeables/WaterErodedGreenBrick_Item.cs",
+                           "field":  "LocalizationCategory",
+                           "before":  "Items (unset)",
+                           "after":  "Items.Placeables",
+                           "source":  "repo placeable; no design row",
+                           "plan":  "01-04"
+                       },
+                       {
+                           "entry_id":  "ForestRainVineTile_Thick_Item (repo class; no design row)",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Placeables/ForestRainVineTile_Thick_Item.cs",
+                           "field":  "LocalizationCategory",
+                           "before":  "Items (unset)",
+                           "after":  "Items.Placeables",
+                           "source":  "repo placeable; no design row",
+                           "plan":  "01-04"
+                       },
+                       {
+                           "entry_id":  "ForestRainVineTile_Thin_Item (repo class; no design row)",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Placeables/ForestRainVineTile_Thin_Item.cs",
+                           "field":  "LocalizationCategory",
+                           "before":  "Items (unset)",
+                           "after":  "Items.Placeables",
+                           "source":  "repo placeable; no design row",
+                           "plan":  "01-04"
+                       },
+                       {
+                           "entry_id":  "AgedGreenCourtWall_Item (repo class; no design row)",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Placeables/Walls/AgedGreenCourtWall_Item.cs",
+                           "field":  "LocalizationCategory",
+                           "before":  "Items (unset)",
+                           "after":  "Items.Placeables",
+                           "source":  "repo placeable; no design row",
+                           "plan":  "01-04"
+                       },
+                       {
+                           "entry_id":  "CrackedForestThrone_Item (repo class; no design row)",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Placeables/DecayingWoodCourt/CrackedForestThrone_Item.cs",
+                           "field":  "LocalizationCategory",
+                           "before":  "Items (unset)",
+                           "after":  "Items.Placeables",
+                           "source":  "repo placeable; no design row",
+                           "plan":  "01-04"
+                       },
+                       {
+                           "entry_id":  "GenerateMazeRoom (repo developer tool; no design row)",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Tools/Developer/GenerateMazeRoom.cs",
+                           "field":  "LocalizationCategory",
+                           "before":  "Items (unset)",
+                           "after":  "Items.Tools",
+                           "source":  "repo developer tool; no design row",
+                           "plan":  "01-05"
+                       },
+                       {
+                           "entry_id":  "ResetIsleOfBloom (repo developer tool; no design row)",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Tools/Developer/ResetIsleOfBloom.cs",
+                           "field":  "LocalizationCategory",
+                           "before":  "Items (unset)",
+                           "after":  "Items.Tools",
+                           "source":  "repo developer tool; no design row",
+                           "plan":  "01-05"
+                       },
+                       {
+                           "entry_id":  "ResetKelpCurtain (repo developer tool; no design row)",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Tools/Developer/ResetKelpCurtain.cs",
+                           "field":  "LocalizationCategory",
+                           "before":  "Items (unset)",
+                           "after":  "Items.Tools",
+                           "source":  "repo developer tool; no design row",
+                           "plan":  "01-05"
+                       },
+                       {
+                           "entry_id":  "UnderWaterDungeon (repo developer tool; no design row)",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Tools/Developer/UnderWaterDungeon.cs",
+                           "field":  "LocalizationCategory",
+                           "before":  "Items (unset)",
+                           "after":  "Items.Tools",
+                           "source":  "repo developer tool; no design row",
+                           "plan":  "01-05"
+                       }
+                   ],
+    "phase1_actions":  [
+                           {
+                               "id":  "P1A-01",
+                               "action":  "Record tranche-A advances ITEM IDs",
+                               "detail":  "The completed-art tranche-A entries carry ITEM-01/ITEM-02 (procurement overrides ITEM-03/ITEM-04) and ITEM-07; preserved in every entry's advances array for Phase 2.",
+                               "source":  "01-03"
+                           },
+                           {
+                               "id":  "P1A-02",
+                               "action":  "Record tranche-B advances ITEM IDs",
+                               "detail":  "The completed-art tranche-B entries carry ITEM-01/ITEM-02 (procurement overrides ITEM-03/ITEM-04) and ITEM-07; preserved in every entry's advances array for Phase 2.",
+                               "source":  "01-04"
+                           },
+                           {
+                               "id":  "P1A-03",
+                               "action":  "Route class-less entries to Phase 2",
+                               "detail":  "All 43 class-less entries set phase=2; the 18 completed-art ones additionally deferred=true with a reason naming the missing repository target and the false Feishu design-code checkbox.",
+                               "source":  "01-03 / D-12 / D-11"
+                           },
+                           {
+                               "id":  "P1A-04",
+                               "action":  "Keep RadialCarapace and VineRepairWand in Phase 1",
+                               "detail":  "Both remain phase=1 (code_complete=true, artwork_complete=false per D-11) with an artwork blocker; their design deviations are queued to Phase 2 per D-12.",
+                               "source":  "01-03 / D-11"
+                           },
+                           {
+                               "id":  "P1A-05",
+                               "action":  "Record tranche-A effect blockers",
+                               "detail":  "Four 效果 blockers recorded on MossySpell, CyatheaArrow, GreenSungloStaff and EvilHalbertBarnacle because their design behaviour lives in projectiles outside the item-class modify set.",
+                               "source":  "01-03"
+                           },
+                           {
+                               "id":  "P1A-06",
+                               "action":  "Record tranche-B set-bonus/effect blockers",
+                               "detail":  "Photophore carries an 效果 blocker; WitherbarkHelmet, ShellMolluscsBreastPlate and RuinMask carry 套装效果 blockers (set-bonus display text / minion attack pattern).",
+                               "source":  "01-04"
+                           },
+                           {
+                               "id":  "P1A-07",
+                               "action":  "Reset the plan ledger base",
+                               "detail":  "gsd-plan-head-before-01-03 was reset to the spawn-time HEAD so the run's actuals measured only its own commits.",
+                               "source":  "01-03"
+                           },
+                           {
+                               "id":  "P1A-08",
+                               "action":  "Classify the four Tools/Developer items",
+                               "detail":  "GenerateMazeRoom, ResetIsleOfBloom, ResetKelpCurtain and UnderWaterDungeon declare LocalizationCategory Items.Tools before the in-game exporter runs.",
+                               "source":  "01-05"
+                           },
+                           {
+                               "id":  "P1A-09",
+                               "action":  "Record the pre-exporter localization baseline",
+                               "detail":  "check-localization-coverage.ps1 -AllowMissing selects 58 Phase 1 completed-art entries and reports the entries still lacking a class-name key in both cultures before the exporter run.",
+                               "source":  "01-05"
+                           },
+                           {
+                               "id":  "P1A-10",
+                               "action":  "Consolidate the plan 03/04 deviation ledgers",
+                               "detail":  "01-DEVIATIONS.md merges the plan 03 and plan 04 deviation ledgers; the same records are mirrored in this deviations array (QUAL-05 audit trail).",
+                               "source":  "01-05"
+                           }
+                       ]
 }
