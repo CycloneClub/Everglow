@@ -186,3 +186,5 @@ Consolidated in `01-DEVIATIONS.md` and mirrored in `01-INVENTORY.json` `deviatio
 
 Fixed design deviations: 25 (14 design-row-backed; 11 repo-only localization-category fixes). Tranche advances (`ITEM-01`…`ITEM-04`, `ITEM-07`) remain on every entry's `advances` array for Phase 2. All 43 class-less entries remain `phase = 2`; `RadialCarapace` and `VineRepairWand` remain `phase = 1` tracked blockers per D-11.
 
+Deferred localization: Phase 1 localization is **deferred by user directive (2026-09-12)**. The in-game `OutputLocalizationHjsonItem` exporter was not run; no key was fabricated and no `Localization/**/*.hjson` file was hand-edited. `check-localization-coverage.ps1 -AllowMissing` selects 58 Phase 1 completed-art entries and reports 45 covered / 13 missing; the 13 missing-key entries are recorded as `deferred` deviations in `01-DEVIATIONS.md` and `01-INVENTORY.json` `deviations[]` (see `phase1_actions[]` P1A-11). Both-culture key coverage is therefore advisory for Phase 1, not complete.
+
