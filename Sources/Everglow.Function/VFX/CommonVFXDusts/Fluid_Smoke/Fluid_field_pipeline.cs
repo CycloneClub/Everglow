@@ -14,7 +14,8 @@ public class Fluid_field_pipeline : Pipeline
 		effect.Value.CurrentTechnique.Passes[0].Apply();
 		if (Ins.VisualQuality.High)
 		{
-			Main.instance.GraphicsDevice.Clear(new Color(128, 128, 0, 128));
+			// 背景 = 零速度(0.5 偏置)。8bit 无法精确表示 0.5, Push 里用死区消除量化残差。
+			Main.instance.GraphicsDevice.Clear(new Color(0.5f, 0.5f, 0f, 0.5f));
 		}
 	}
 

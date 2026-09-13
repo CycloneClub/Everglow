@@ -200,6 +200,9 @@ float4 PixelShaderFunction_Push(PSInput input) : COLOR0
 	float2 move = input.Texcoord - float2(0.5, 0.5);
 	float2 offsetTexcoord = float2(0.5, 0.5) + move * float2(uResolutionX / (uResolutionX - offset_small_RT2D * 2), uResolutionY / (uResolutionY - offset_small_RT2D * 2));
 	float4 vel = (tex2D(uImage1, offsetTexcoord) - float4(0.5, 0.5, 0.5, 0.5));
+	// 笔刷 RT 是 8bit, 无法精确表示 0.5, 背景会残留 ±1/255 的偏置。若不消除,
+	// 它会被 Push 逐帧累加到速度场里, 表现为持续的单方向力(右下)。这里用死区滤掉量化噪声。
+	vel.xy = sign(vel.xy) * max(abs(vel.xy) - 1.0 / 255.0, 0.0);
 	float4 col = tex2D(uImage0, input.Texcoord);
 	col.xy += vel.xy;
 	return col;
