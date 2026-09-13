@@ -43,11 +43,11 @@ Phase 1 owns the source/inventory reconciliation record for the label discrepanc
   4. Every completed-art item accepted in this phase has an XML-full-fetch comparison record; both-checkbox-complete exact matches are eligible for green/check status, both-checkbox-complete conflicts or known exceptions are yellow with reasons, and entries with an incomplete checkbox or a blocker remain unchecked (no colour) with reasons.
 
 **Verification needs:** XML `--detail full` fetches and per-item matrix; source-label taxonomy; item recipe/effect/drop checks; asset/localization convention review; `dotnet build`; blocker and dependency audit.
-**Plans:** 7 plans (6 executed; 1 gap-closure plan 01-07)
+**Plans:** 7/7 plans executed (6 executed; 1 gap-closure plan 01-07)
 Plans:
 
 - [x] 01-06-PLAN.md
-- [ ] 01-07-PLAN.md — Gap closure: ArmOfGiantTree per-player charge + server-authoritative shockwave (SC3 / CR-01, WR-01, WR-02)
+- [x] 01-07-PLAN.md — Gap closure: ArmOfGiantTree per-player charge + server-authoritative shockwave (SC3 / CR-01, WR-01, WR-02)
 
 **Wave 1**
 
@@ -197,7 +197,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8. Th
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Item Inventory & Completed-Art Items | 6/7 | In Progress|  |
+| 1. Item Inventory & Completed-Art Items | 7/7 | In Progress|  |
 | 2. Remaining Items & Unfinished-Art Materials | 0/TBD | Not started | - |
 | 3. Completed-Art Ordinary Monsters | 0/TBD | Not started | - |
 | 4. Remaining Ordinary Monsters | 0/TBD | Not started | - |

@@ -4,16 +4,16 @@ milestone: v1.0
 current_phase: 01
 current_phase_name: Item Inventory & Completed-Art Items
 status: executing
-stopped_at: Completed 01-06-PLAN.md - carry-over allocation corrected; 5 items implemented; all Phase 1 gates green; localization deferred (45/63 covered, 18 deferred)
-last_updated: "2026-09-13T06:29:05.420Z"
+stopped_at: Completed 01-07-PLAN.md - ArmOfGiantTree per-player/per-stack charge + server-authoritative shockwave; all Phase 1 gates green
+last_updated: "2026-09-13T07:26:09.703Z"
 last_activity: 2026-09-13
 last_activity_desc: Phase 01 execution started
-state_head: 060f9e1883b06cb3905e33c43ef079387928612b
+state_head: 06d8cf0f4b53702a023d99eb24ef3fa15842eca6
 progress:
   total_phases: 8
   completed_phases: 0
   total_plans: 7
-  completed_plans: 6
+  completed_plans: 7
 milestone_name: milestone
 ---
 
@@ -28,10 +28,10 @@ See: `.planning/PROJECT.md` (updated 2026-09-12)
 
 ## Current Position
 
-Phase: 01 (Item Inventory & Completed-Art Items) — READY TO EXECUTE
-Plan: 6 of 6
-Status: Phase 1 carry-over complete — all runnable gates green; awaiting phase verification
-Last activity: 2026-09-13 — Executed plan 01-06 (carry-over allocation + five items)
+Phase: 01 (Item Inventory & Completed-Art Items) — EXECUTING
+Plan: 2 of 7
+Status: Ready to execute
+Last activity: 2026-09-13 — Phase 01 execution started
 
 Progress: [██░░░░░░░░] 13%
 
@@ -61,6 +61,7 @@ Progress: [██░░░░░░░░] 13%
 | Phase 01 P04 | ~19min | 3 tasks | 21 files |
 | Phase 01 P05 | ~14min | 3 tasks | 8 files |
 | Phase 01 P06 | ~30min | 3 tasks | 12 files |
+| Phase 01 P07 | ~7min | 3 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -88,6 +89,10 @@ Progress: [██░░░░░░░░] 13%
 - [Phase 01]: The three carry-over entries with no repository texture (ForestBreath, WitheredMask, QuetzalsWish) reuse the shared Commons.ModAsset.White_Mod fallback (RadialCarapace precedent) so the mod loads, and carry named artwork blockers with repo_asset empty; no placeholder art was created.
 - [Phase 01]: Localization deferral (2026-09-12 directive) extended to the five plan 01-06 entries via P1A-13; check-localization-coverage.ps1 -AllowMissing selects 63 (45 covered / 18 missing); no key fabricated and no HJSON edited.
 - [Phase 01]: scripts/check-carryover.ps1 gates the 5 carry-over entries (class or texture|artwork blocker) and check-inventory-reconciliation.ps1 now accepts the D-06 recorded-artwork-blocker repo_asset exception.
+- [Phase 01]: 01-07 moved ArmOfGiantTree charge off the shared per-type ModItem to KelpCurtainPlayer.ArmOfGiantTreeCharge (per-player) with an ArmOfGiantTreeChargedSlot discriminator keyed on player.selectedItem (per-stack); CR-01 closed.
+- [Phase 01]: 01-07 made the ArmOfGiantTree full-charge shockwave server-authoritative via ArmOfGiantTreeChargePacket ReleaseSmash (client signals, handler clamps Charge + requires the sender to hold the item, ApplyShockwave sets npc.netUpdate); WR-01 closed.
+- [Phase 01]: 01-07 gated the 0.75x..2x charge damage scaling on player.altFunctionUse != 2 so the right-click ordinary swing keeps base damage; WR-02 closed.
+- [Phase 01]: 01-07 verification used the phase baseline 8ed6f5862 instead of the plan's stale origin/master anchor (origin/master predates the whole phase; 1312-file false-positive diff).
 
 ### Pending Todos
 
@@ -112,6 +117,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-09-13T05:15:24.364Z
-Stopped at: Completed 01-06-PLAN.md - carry-over allocation corrected; 5 items implemented; all Phase 1 gates green; localization deferred (45/63 covered, 18 deferred)
+Last session: 2026-09-13T07:26:09.660Z
+Stopped at: Completed 01-07-PLAN.md - ArmOfGiantTree per-player/per-stack charge + server-authoritative shockwave; all Phase 1 gates green
 Resume file: None
