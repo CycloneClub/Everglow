@@ -50,7 +50,7 @@ Status: **deferred**. Reason: `localization deferred by user directive (2026-09-
 
 Plan 05 Task 2 was a `checkpoint:human-action` whose only source of missing keys is the in-game `OutputLocalizationHjsonItem` exporter (a consumable `ModItem` fired from a running tModLoader client). The user directed that localization not be considered for Phase 1 — "记录：不考虑本地化，把代码部分完成即可" (record it; do not consider localization; just complete the code portion). The exporter was therefore **not run**, no key was fabricated, and **no `Localization/**/*.hjson` file was hand-edited** (AGENTS.md forbids hand-created classification keys and the plan's T-05-01 mitigation forbids hand-classification).
 
-`scripts/check-localization-coverage.ps1 -AllowMissing` selects **58** Phase 1 completed-art entries (`phase == 1`, `artwork_complete == true`, non-empty `internal_name`, `localization.blocked != true`) and reports **45 covered / 13 missing**. The 13 entries below are recorded with `status: deferred` and the reason above; the same 13 records are mirrored in `01-INVENTORY.json` `deviations[]`, and the deferral is recorded as `phase1_actions[]` P1A-11. The strict coverage gate (no switch) consequently fails by design; Phase 1 treats both-culture key coverage as advisory per the directive.
+`scripts/check-localization-coverage.ps1 -AllowMissing` selects **63** Phase 1 completed-art entries (`phase == 1`, `artwork_complete == true`, non-empty `internal_name`, `localization.blocked != true`) and reports **45 covered / 18 missing**. The 18 entries below are recorded with `status: deferred` and the reason above; the same 18 records are mirrored in `01-INVENTORY.json` `deviations[]`, and the deferral is recorded as `phase1_actions[]` P1A-11 and P1A-13. The strict coverage gate (no switch) consequently fails by design; Phase 1 treats both-culture key coverage as advisory per the directive.
 
 | Entry id | Class file | Missing cultures | Status | Reason |
 | --- | --- | --- | --- | --- |
@@ -67,8 +67,13 @@ Plan 05 Task 2 was a `checkpoint:human-action` whose only source of missing keys
 | `item-weapons.summon-activated-dog-staff` | `Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/ActivatedDogStaff.cs` | en-US, zh-Hans | deferred | localization deferred by user directive (2026-09-12) |
 | `item-weapons.summon-crimson-moon-algae-gyroscope` | `Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/RedAlgaeMinionGyroscope.cs` | en-US, zh-Hans | deferred | localization deferred by user directive (2026-09-12) |
 | `item-weapons.summon-crimson-moon-algae-summon-staff` | `Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/RedAlgaeMinionStaff.cs` | en-US, zh-Hans | deferred | localization deferred by user directive (2026-09-12) |
+| `item-weapons.misc-arm-of-giant-tree` | `Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/UnderwaterTreasury/ArmOfGiantTree.cs` | en-US, zh-Hans | deferred | localization deferred by user directive (2026-09-12) |
+| `item-weapons.misc-森林之息` | `Sources/Modules/Yggdrasil/KelpCurtain/Items/Misc/ForestBreath.cs` | en-US, zh-Hans | deferred | localization deferred by user directive (2026-09-12) |
+| `item-weapons.misc-厄佛提根的净化粉末` | `Sources/Modules/Yggdrasil/KelpCurtain/Items/Materials/ElftigernPowder.cs` | en-US, zh-Hans | deferred | localization deferred by user directive (2026-09-12) |
+| `item-weapons.misc-枯萎面具` | `Sources/Modules/Yggdrasil/KelpCurtain/Items/Misc/WitheredMask.cs` | en-US, zh-Hans | deferred | localization deferred by user directive (2026-09-12) |
+| `item-weapons.ranged-魁札尔的愿望` | `Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/QuetzalsWish.cs` | en-US, zh-Hans | deferred | localization deferred by user directive (2026-09-12) |
 
-Deferred localization deviations: 13. These are **not** marked `localization.blocked` — blocking is the plan's mechanism for a post-exporter failure with a named missing culture; this is an explicit user-directed deferral, recorded as deferred so the strict gate stays honestly red and the advisory `-AllowMissing` baseline is the Phase 1 evidence.
+Deferred localization deviations: 18 (13 from plan 01-05; 5 carried over from plan 01-06). These are **not** marked `localization.blocked` — blocking is the plan's mechanism for a post-exporter failure with a named missing culture; this is an explicit user-directed deferral, recorded as deferred so the strict gate stays honestly red and the advisory `-AllowMissing` baseline is the Phase 1 evidence.
 
 ## Tranche Advances (ITEM IDs preserved for Phase 2)
 
@@ -98,6 +103,7 @@ See `01-INVENTORY.json` `phase1_actions[]` for the machine-readable list. Summar
 6. Captured the pre-exporter localization baseline in `01-05-SUMMARY.md`.
 7. Consolidated the plan 03/04 deviation ledgers into this file and the inventory.
 8. Deferred Phase 1 localization by user directive (2026-09-12); recorded the 13 missing-key entries as deferred deviations — no key was fabricated and no HJSON file was edited.
+9. Extended P1A-11 to the five plan 01-06 carry-over entries (P1A-13); the deferred-localization set is now 18 (45/63 covered).
 
 ## Status-Colour Rule Correction (2026-09-12)
 
@@ -147,3 +153,15 @@ The 9 Giant Winged Dragon rows come from the biology-design section `特殊：/�
 | `item-weapons.ranged-龙骨猎枪` | 龙骨猎枪 | Klein Snake series -> ITEM-05 |
 | `item-weapons.melee-碧玉弯刀` | 碧玉弯刀 | Klein Snake series -> ITEM-05 |
 | `item-weapons.summon-魂蛇手杖` | 魂蛇手杖 | Klein Snake series -> ITEM-05 |
+
+## Carry-Over Gate (Plan 01-06)
+
+Plan 01-06 closes the Phase 1 carry-over:
+
+- **Allocation:** 18 artwork-complete class-less entries split **5 Phase 1 / 13 Phase 7**; phase counts `{1: 65, 2: 25, 7: 13}`. No `scripts/parse-design-xml.ps1` re-run (CR-01); the inventory was edited in place and P1A-12 records the correction.
+- **Implemented (5):** `ArmOfGiantTree` (charge smash + shockwave; repo texture reused), `ElftigernPowder` (material; purification gated to GAME-03/Phase 6), `ForestBreath` (quest item; underwater-maze chest), `WitheredMask` (vanity), `QuetzalsWish` (melee giant blade; design row Melee vs parser `weapons.ranged`).
+- **Artwork blockers (3):** `ForestBreath`, `WitheredMask` and `QuetzalsWish` carry "approved texture (贴图) missing from repository despite Feishu artwork checkbox; class implemented, art pending" and `repo_asset` empty. They reuse the existing shared `Commons.ModAsset.White_Mod` fallback (the `RadialCarapace` precedent) so the mod still loads; **no placeholder art was created and no `.png`/binary asset was added or modified**.
+- **Effect blockers:** `ElftigernPowder` (Wilted Zone restoration, GAME-03/Phase 6) and `QuetzalsWish` (four-stage combo, charged throw/explosion, wound debuff need absent projectile/buff/VFX assets).
+- **Phase 2 remainder:** the 25 remaining `phase == 2` entries are artwork-incomplete; none are Phase 1 carry-over.
+- **Localization:** still deferred by the 2026-09-12 user directive. The five new entries are added to the deferred ledger (P1A-13); `check-localization-coverage.ps1 -AllowMissing` now selects 63 entries (45 covered / 18 missing). No key was fabricated and no HJSON file was hand-edited.
+- **Gates:** `validate-inventory.ps1` (103), `check-inventory-reconciliation.ps1` (103, deferred=3), `check-tranche-A.ps1` (43/43), `check-tranche-B.ps1` (20/20), `check-carryover.ps1` (5/5), `check-localization-coverage.ps1 -AllowMissing` (advisory), `dotnet build /p:Configuration=Release /p:WarningLevel=0` (0 errors), byte-level BOM check, and the no-placeholder `.png` guard all pass.
