@@ -40,6 +40,10 @@ Columns: entry id, class file, field, before, after, source (design header / row
 
 Total fixed design deviations: 25 (14 on design-row-backed entries, 11 repo-only classification fixes moved to plan 05 from plan 04).
 
+### Parser Category Discrepancy (recorded in plan 01-06, not fixed)
+
+The parser's category heuristic set `item-weapons.ranged-魁札尔的愿望` to `weapons.ranged`, but the design row (`doxcnD2XMx9mBf5DL0hUqX98vqb`, table `doxcnK1twRSRyYrOvXg4tyBBkxf`) is Melee (`mel37`, 巨刃类武器). `Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/QuetzalsWish.cs` is implemented as Melee; the entry `id` and inventory `category` field are left unchanged because the id is a compatibility-sensitive key. Machine mirror: `01-INVENTORY.json` `deviations[]` (`field: category`, `plan: 01-06`).
+
 ## Deferred Localization (User Directive)
 
 Status: **deferred**. Reason: `localization deferred by user directive (2026-09-12)`.
