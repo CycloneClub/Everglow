@@ -77,6 +77,23 @@ updated: "2026-09-13"
 | T-06-06 | Information Disclosure | Feishu credential/token committed | medium | mitigate | Only committed XML snapshots + non-secret block ids read; no token written | closed |
 | T-06-SC | Tampering | Package supply chain | low | accept | No package installed in plan 01-06 | closed |
 
+### Plan 01-07 gap-closure threats (added 2026-09-13)
+
+| Threat ID | Category | Component | Severity | Disposition | Mitigation | Status |
+|-----------|----------|-----------|----------|-------------|------------|--------|
+| T-07-01 | Tampering | Client-authoritative shockwave damage (WR-01) | high | mitigate | `ArmOfGiantTree.UseItem` no longer applies damage from the owning client: the `MultiplayerClient` branch only sends `ArmOfGiantTreeChargePacket{ReleaseSmash}`; the server handler (and singleplayer) call `ArmOfGiantTree.ApplyShockwave`, which sets `npc.netUpdate = true`. `check-armofgianttree-charge.ps1` asserts the release branch, `SimpleStrikeNPC`/`netUpdate`, and the absence of the old `Main.myPlayer == player.whoAmI` gate | closed |
+| T-07-02 | Tampering | Cross-player / cross-stack charge bleed (CR-01) | high | mitigate | Charge + `player.selectedItem` discriminator live on per-player `KelpCurtainPlayer` (`ArmOfGiantTreeCharge`/`ArmOfGiantTreeChargedSlot`); the shared per-type `ModItem` `ChargeTimer` field is removed; `HoldItem` resets on any slot change; the gate forbids re-declaring `public int ChargeTimer` | closed |
+| T-07-03 | Spoofing | Packet writes another player's charge | medium | mitigate | Handler resolves `Main.player[whoAmI]` and writes only that sender's `KelpCurtainPlayer` | closed |
+| T-07-04 | Denial of Service | Per-tick charge sync spam | low | accept | Change-detected `SendClientChanges`, bounded to the 150-tick window; accepted as below vanilla player traffic | closed |
+| T-07-05 | Repudiation | Undocumented closure of a verified gap | medium | mitigate | `01-DEVIATIONS.md` `Gap Closure (01-07)` ledger + SUMMARY gate output record the closure | closed |
+| T-07-06 | Tampering | Spoofed `ReleaseSmash` / out-of-range charge from a client | medium | mitigate | Handler clamps `Charge` to `[0, MaxChargeFrames]` and requires `ArmOfGiantTree.IsHeldBy(Main.player[whoAmI])` before `ApplyShockwave` | closed |
+| T-07-SC | Tampering | Package supply chain | low | accept | No package installed in plan 01-07 | closed |
+
+Residual (non-blocking, below the `high` block threshold): the handler gates `ReleaseSmash` on
+item possession but not on `Charge >= MaxChargeFrames`, so a modified client can signal an
+unearned shockwave (recorded as WR-01 in `01-REVIEW.md`). Severity medium; below `security_block_on: high`,
+so it does not count toward `threats_open`.
+
 *Status: open · closed · open — below high threshold (non-blocking)*
 *Severity: critical > high > medium > low — only open threats at or above workflow.security_block_on count toward threats_open*
 *Disposition: mitigate (implementation required) · accept (documented risk) · transfer (third-party)*
@@ -101,6 +118,7 @@ updated: "2026-09-13"
 |------------|---------------|--------|------|--------|
 | 2026-09-12 | 30 | 30 | 0 | gsd-manager (secure-phase, ASVS L1) |
 | 2026-09-13 | 37 | 37 | 0 | gsd-secure-phase (plan 01-06 re-audit, ASVS L1) |
+| 2026-09-13 | 44 | 44 | 0 | gsd-secure-phase (plan 01-07 re-audit, ASVS L1) |
 
 ### Security Audit 2026-09-13
 
@@ -120,6 +138,24 @@ shows 0 `.png`/`.hjson` changes and no `parse-design-xml.ps1` change;
 deferred=3) and `check-carryover.ps1` (5/5 covered) all exit 0. No new trust boundary or
 credential path was introduced.
 
+### Security Audit 2026-09-13 (plan 01-07)
+
+| Metric | Count |
+|--------|-------|
+| Threats found | 7 |
+| Closed | 7 |
+| Open | 0 |
+
+Plan 01-07 was a gap-closure reopen moving `ArmOfGiantTree` charge to per-player/per-stack
+state and making the full-charge shockwave server-authoritative. Its 7 threats
+(T-07-01..T-07-06, T-07-SC) are all classified CLOSED at L1 grep depth. Short-circuit applied:
+`threats_open: 0` AND `register_authored_at_plan_time: true` (01-07-PLAN has a
+`<threat_model>` block) AND `asvs_level == 1`, so no deep auditor was spawned (L1 is sufficient
+at ASVS 1). Evidence: `check-armofgianttree-charge.ps1` `OK(0)`; handler resolves
+`Main.player[whoAmI]`, clamps `Charge`, and requires `IsHeldBy`; the shared `ChargeTimer` field
+is absent; no `.png`/`.hjson`/parser change. Residual medium risk (unvalidated full-charge
+release) is recorded above and is below `security_block_on: high`.
+
 ---
 
 ## Sign-Off
@@ -129,4 +165,4 @@ credential path was introduced.
 - [x] `threats_open: 0` confirmed
 - [x] `status: verified` set in frontmatter
 
-**Approval:** verified 2026-09-12; re-verified 2026-09-13 (plan 01-06, threats_open: 0)
+**Approval:** verified 2026-09-12; re-verified 2026-09-13 (plan 01-06, threats_open: 0); re-verified 2026-09-13 (plan 01-07, threats_open: 0)
