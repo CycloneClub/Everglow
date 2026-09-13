@@ -1,10 +1,11 @@
 ---
 phase: 01-item-inventory-completed-art-items
-verified: 2026-09-12T20:09:30Z
-status: passed
-score: 18/20 must-haves verified
-canonicalized: 2026-09-12 (UAT 4/4 passed, 0 issues — verify-work)
+verified: 2026-09-13T06:20:00Z
+status: gaps_found
+score: 12/14 must-haves verified
 covered_files:
+  - .planning/REQUIREMENTS.md
+  - .planning/ROADMAP.md
   - .planning/phases/01-item-inventory-completed-art-items/01-01-PLAN.md
   - .planning/phases/01-item-inventory-completed-art-items/01-01-SUMMARY.md
   - .planning/phases/01-item-inventory-completed-art-items/01-02-PLAN.md
@@ -15,92 +16,93 @@ covered_files:
   - .planning/phases/01-item-inventory-completed-art-items/01-04-SUMMARY.md
   - .planning/phases/01-item-inventory-completed-art-items/01-05-PLAN.md
   - .planning/phases/01-item-inventory-completed-art-items/01-05-SUMMARY.md
+  - .planning/phases/01-item-inventory-completed-art-items/01-06-PLAN.md
+  - .planning/phases/01-item-inventory-completed-art-items/01-06-SUMMARY.md
   - .planning/phases/01-item-inventory-completed-art-items/01-CONTEXT.md
   - .planning/phases/01-item-inventory-completed-art-items/01-DEVIATIONS.md
-  - .planning/phases/01-item-inventory-completed-art-items/01-DISCUSSION-LOG.md
   - .planning/phases/01-item-inventory-completed-art-items/01-INVENTORY.json
   - .planning/phases/01-item-inventory-completed-art-items/01-INVENTORY.md
-  - .planning/phases/01-item-inventory-completed-art-items/01-PATTERNS.md
-  - .planning/phases/01-item-inventory-completed-art-items/01-RESEARCH.md
+  - .planning/phases/01-item-inventory-completed-art-items/01-REVIEW.md
+  - .planning/phases/01-item-inventory-completed-art-items/01-SECURITY.md
+  - .planning/phases/01-item-inventory-completed-art-items/01-UAT.md
   - .planning/phases/01-item-inventory-completed-art-items/01-VALIDATION.md
   - .planning/phases/01-item-inventory-completed-art-items/COVERAGE.md
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Accessories/AntiCorrosiveSole.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Accessories/CorrodedPearl.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Accessories/ForestMino.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Accessories/ThornTurtleShell.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Ammos/HuskburstBullet.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Armors/DevilHeart/DevilHeartHairpin.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Armors/DevilHeart/DevilHeartHelmet.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Armors/DevilHeart/DevilHeartLeggings.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Armors/DevilHeart/DevilHeartLightBreastPlate.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Armors/Molluscs/ShellMolluscsBreastPlate.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Armors/Ruin/RuinLeggings.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Armors/Ruin/RuinMagicRobe.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Armors/Ruin/RuinMask.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Materials/DevilHeartIronBar_Item.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/PermanentBoosters/JadeFruit.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Placeables/AgedGreenCourtBrick_Item.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Placeables/AlgaeExtractor_Item.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Placeables/DecayingWoodCourt/CrackedForestThrone_Item.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Placeables/DevilHeartIronOre_Item.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Placeables/ForestRainVineTile_Thick_Item.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Placeables/ForestRainVineTile_Thin_Item.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Placeables/GreenCourtBrick_Item.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Placeables/JadeizedBone_Item.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Placeables/Walls/AgedGreenCourtWall_Item.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Placeables/WaterErodedGreenBrick_Item.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Tools/Developer/GenerateMazeRoom.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Tools/Developer/ResetIsleOfBloom.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Tools/Developer/ResetKelpCurtain.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Tools/Developer/UnderWaterDungeon.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/ActivatedDogStaff.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/BladeOfGreenMoss.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/DevilHeart/DevilHeartBayonet.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/DevilHeart/DevilHeartGyroscope.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/GreenSungloStaff.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/GreenVineWhip.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/LegumeGyroscope.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/MeatLantern.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/MossySpell.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/RazorbeakBow.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/RedAlgaeMagicSpellBook.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/RedAlgaeMagicWhip.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/RedAlgaeMinionGyroscope.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/Special/VineRepairWand.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/UnderwaterTreasury/ArcI.cs
-covered_digest: "v1:sha256:29d4d9488a286da7cb7da5a265834f73f97bfa16fd8dc70086ce5b801f74d372"
+  - .planning/phases/01-item-inventory-completed-art-items/scripts/check-carryover.ps1
+  - .planning/phases/01-item-inventory-completed-art-items/scripts/check-inventory-reconciliation.ps1
+  - .planning/phases/01-item-inventory-completed-art-items/scripts/check-localization-coverage.ps1
+  - .planning/phases/01-item-inventory-completed-art-items/scripts/check-tranche-A.ps1
+  - .planning/phases/01-item-inventory-completed-art-items/scripts/check-tranche-B.ps1
+  - .planning/phases/01-item-inventory-completed-art-items/scripts/parse-design-xml.ps1
+  - .planning/phases/01-item-inventory-completed-art-items/scripts/test-parser.ps1
+  - .planning/phases/01-item-inventory-completed-art-items/scripts/validate-inventory.ps1
+  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Materials/ElftigernPowder.cs
+  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Misc/ForestBreath.cs
+  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Misc/WitheredMask.cs
+  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/QuetzalsWish.cs
+  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/UnderwaterTreasury/ArmOfGiantTree.cs
+covered_digest: "v1:sha256:23d7c358ad63e9bf31b0caac8baf381b202e1e3c479ad09fb7db3a4d84aa547a"
 behavior_unverified: 0
 overrides_applied: 1
 overrides:
-  - must_have: "Completed-art tranche has documented localization behaviour in both en-US and zh-Hans"
-    reason: "Phase 1 localization deferred by explicit user directive (2026-09-12: '记录：不考虑本地化，把代码部分完成即可'). Exporter was not run, no key was fabricated, and no HJSON was hand-edited; the 13 missing-key entries are recorded as status=deferred deviations in 01-DEVIATIONS.md and 01-INVENTORY.json deviations[]. The strict coverage gate is red by design (45/58 covered); the authoritative completion path is Phase 2 verification ('both localization targets for available items') / Phase 8 success criterion 2."
+  - must_have: "Completed-art tranche has documented localization behaviour in both en-US and zh-Hans (SC3 localization clause)"
+    reason: "Phase 1 localization deferred by explicit user directive (2026-09-12: '记录：不考虑本地化，把代码部分完成即可'). The exporter was not run, no HJSON key was fabricated or hand-edited, and the 18 missing-key entries (13 original + 5 carry-over) are recorded as status=deferred deviations in 01-DEVIATIONS.md and 01-INVENTORY.json deviations[] (P1A-11/P1A-13). The strict coverage gate is red by design (45/63 covered); the authoritative completion path is Phase 2 ('both localization targets for available items') / Phase 8 SC2."
     accepted_by: "user (explicit phase directive 2026-09-12)"
     accepted_at: "2026-09-12T18:54:00+08:00"
+re_verification:
+  previous_status: passed
+  previous_score: 18/20
+  gaps_closed:
+    - "18 class-less completed-art entries were mis-routed to Phase 2; plan 01-06 re-allocates them 5 Phase 1 / 13 Phase 7 (ITEM-05/ITEM-06) and implements the 5 Phase 1 carry-over classes"
+    - "5 Phase 1 carry-over entries now resolve to git-tracked .cs classes"
+  gaps_remaining:
+    - "ArmOfGiantTree documented charged-smash effect is incorrect (CR-01: mutable ChargeTimer on the shared ModItem singleton)"
+  regressions: []
+gaps:
+  - truth: "Players can use every unblocked completed-art item with its documented recipe, value, and effect (SC3)"
+    status: failed
+    reason: "ArmOfGiantTree (an unblocked completed-art carry-over item, texture present) implements its core documented charge effect with public mutable state on the shared per-type ModItem instance, so the charge accumulates globally across players and across stacks. A second stack can inherit a full charge and fire the shockwave without charging; in multiplayer both players' charge bleeds together. This is a correctness defect in the documented effect, not merely an unexercised path. 01-REVIEW.md CR-01 (critical)."
+    artifacts:
+      - path: "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/UnderwaterTreasury/ArmOfGiantTree.cs"
+        issue: "public int ChargeTimer (line 16) is per-Type state on a shared ModItem; read/written in HoldItem/ModifyWeaponDamage/UseItem (lines 37-71, 75-95). No per-player charge field exists in KelpCurtainPlayer.cs."
+    missing:
+      - "Move the charge to per-player state (e.g. a synced int on KelpCurtainPlayer reset in ResetEffects) or override CloneNewInstances; never keep cross-player gameplay state on the ModItem singleton"
+      - "WR-01: shockwave damage is applied client-side only (Main.myPlayer gate) with no server authority/netUpdate; make it server-authoritative or send a packet"
+      - "WR-02: the right-click ordinary swing still receives the 0.75x charge floor in ModifyWeaponDamage; only the charged left-click should scale"
+deferred:
+  - truth: "Both-culture display keys for the 18 completed-art entries (5 carry-over + 13)"
+    addressed_in: "Phase 2 / Phase 8"
+    evidence: "Phase 2 verification needs: 'both localization targets for available items'; Phase 8 SC2: 'Every implemented item has complete en-US and zh-Hans localization'"
+  - truth: "Recorded effect/artwork blockers for ForestBreath, WitheredMask, QuetzalsWish (art + effect) and ElftigernPowder (GAME-03/Phase 6)"
+    addressed_in: "Phase 6 / Phase 7 / Phase 8"
+    evidence: "GAME-03/Phase 6 Wilted Zone restoration; Phase 7 reward/equipment chains; Phase 8 SC2 approved-art resolution. Blocker text recorded in 01-INVENTORY.json"
+  - truth: "Green Tundra source-label resolution (resolved=false)"
+    addressed_in: "Phase 6"
+    evidence: "Phase 6 SC1: 'Green Tundra, and nested/transition labels follow the Phase 1 reconciliation'"
 human_verification:
-  - test: "In a tModLoader client, obtain/craft/equip/use one representative completed-art item from tranche A (e.g. DevilHeartHelmet with its new Anvil recipe; ThornTurtleShell run-speed reduction) and one from tranche B (e.g. RuinMask rarity Green; a classified placeable), checking the inventory recipe/value/effect against the committed evidence snapshot."
-    expected: "Each item is obtainable/craftable/equippable and behaves as the design row states, or the recorded yellow blocker is confirmed acceptable."
-    why_human: "The core phase success criterion ('usable with the documented recipe, value, effect, and localization behaviour') is an in-client gameplay property; no offline script can prove obtainability or runtime effect behaviour."
-  - test: "Run the in-game OutputLocalizationHjsonItem exporter once and confirm the 13 deferred entries receive both-culture keys; then open the client and confirm each completed-art item's localized display name/tooltip renders in en-US and zh-Hans."
-    expected: "Exporter reports zero unclassified items; all 58 completed-art items show localized names/tooltips in both cultures; no pre-existing key is removed."
-    why_human: "This is the plan-05 backstop truth (non-inferable). It is explicitly unverified: the exporter was not run (user directive) and the strict coverage gate reports 45/58. Requires a running client + the user's acceptance of the deferral."
-  - test: "Review the 8 recorded effect/set-bonus blocker dispositions (MossySpell, CyatheaArrow, GreenSungloStaff, EvilHalbertBarnacle, Photophore, WitherbarkHelmet, ShellMolluscsBreastPlate, RuinMask) and decide whether the blocker is acceptable or the fix should be pulled into Phase 1."
-    expected: "Each blocker is judged defensible (fix lives in projectile/buff/localization outside the phase modify set) or scheduled."
-    why_human: "Plans 03/04 flag this as a scoping judgment (their coverage D5, human_judgment: true)."
-  - test: "Compare 01-INVENTORY.md (103 matrix rows, Source Label Reconciliation table, Deferred & Flagged section) against the committed evidence/*.xml snapshots and confirm the yellow/unchecked reasons are defensible, including the unresolved Green Tundra label (resolved=false)."
-    expected: "Every yellow/blocked row has a real, evidence-backed reason; no placeholder art is recorded as complete; Green Tundra remains unmerged."
-    why_human: "Plan 02 task-3 human-check; matrix-vs-source judgment cannot be automated."
+  - test: "In a tModLoader client, obtain/craft/equip/use the five Phase 1 carry-over items via their designed chest/trade sources (once Phase 6 loot tables exist) and compare behaviour to the committed evidence rows."
+    expected: "ArmOfGiantTree charges and delivers the documented smash; ElftigernPowder/ForestBreath/WitheredMask/QuetzalsWish match their recorded disposition, or their recorded blockers (art pending / GAME-03 / effect) are confirmed acceptable."
+    why_human: "Plan 01-06 backstop truth; requires a running client and Phase 6 loot tables. No offline script can prove obtainability or runtime effect."
+  - test: "After the CR-01 fix, verify ArmOfGiantTree charge isolation: hold a full charge with one stack, switch to a second ArmOfGiantTree stack in the same inventory, and (in multiplayer) have two players charge simultaneously."
+    expected: "Each stack/player charges independently; a fresh stack starts uncharged and cannot fire the shockwave without charging."
+    why_human: "Behaviour-dependent (state transition across shared/player state); presence checks cannot observe it and there is no test exercising it."
+  - test: "Run the in-game OutputLocalizationHjsonItem exporter once and confirm the 18 deferred entries receive both-culture keys; confirm no pre-existing key is removed."
+    expected: "All completed-art items display localized names/tooltips in en-US and zh-Hans; exporter reports zero unclassified."
+    why_human: "Deferred by user directive; requires a running client and explicit acceptance of the deferral."
+  - test: "Review the recorded effect/artwork blockers (3 carry-over artwork blockers + QuetzalsWish effect + ElftigernPowder GAME-03 + the earlier 8 effect/set-bonus dispositions) and decide whether each is acceptable or should be pulled earlier."
+    expected: "Each blocker is defensible (fix/art lives outside the phase modify set) or scheduled."
+    why_human: "Scoping judgment flagged human_judgment:true in the plan coverage ledgers."
 ---
 
 # Phase 1: Item Inventory & Completed-Art Items Verification Report
 
 **Phase Goal:** The complete item inventory is reconciled against the authoritative designs, and every item or biology-design drop with finished design artwork is usable without introducing placeholder assets.
-**Verified:** 2026-09-12T20:09:30Z
-**Status:** human_needed
-**Re-verification:** No — initial verification
+**Verified:** 2026-09-13T06:20:00Z
+**Status:** gaps_found
+**Re-verification:** Yes — after plan 01-06 (carry-over) closed the prior verification on 2026-09-13.
 
-> **MVP-mode caveat:** ROADMAP Phase 1 declares `Mode: mvp`, but the goal is not authored in User Story form (plan 01 itself notes "the roadmap goal is not authored in user-story form"). Per the MVP guard this would normally route back to `/gsd mvp-phase 1`. Because the phase carries explicit, detailed Success Criteria, this verification proceeded goal-backward against those criteria (the roadmap contract) rather than refusing.
+> **MVP-mode caveat:** ROADMAP Phase 1 declares `Mode: mvp` but the goal is not authored in User Story form (plan 01 itself notes this). Per the MVP guard this would normally route back to `/gsd mvp-phase 1`; because the phase carries explicit, detailed Success Criteria, this verification proceeded goal-backward against those criteria (the roadmap contract).
 
-> **User-directed deferral (explicit, recorded):** Phase 1 localization is deferred by user directive (2026-09-12). 13 of 58 completed-art entries lack display keys in both cultures; recorded as `status: deferred` in `01-DEVIATIONS.md` and `01-INVENTORY.json` `deviations[]` (P1A-11). This is treated as a known, recorded deviation (accepted override) — **not** an unrecorded gap. It is also tracked in `.planning/WINDOWS.md` as an open stub.
+> **Re-verification scope:** The prior 2026-09-12 verification covered plans 01-01..01-05 (18/20 truth set) and closed with `status: human_needed` in its body. Plan 01-06 (2026-09-13) added new scope: re-allocating 18 class-less completed-art entries (5 Phase 1 / 13 Phase 7) and implementing the 5 Phase 1 carry-over classes. This report re-verifies the roadmap Success Criteria and the 01-06 must-haves, and folds in the fresh 01-REVIEW.md findings.
 
 ---
 
@@ -110,167 +112,114 @@ human_verification:
 
 | # | Truth | Status | Evidence |
 | --- | --- | --- | --- |
-| 1 | **(SC1)** Inventory identifies every in-scope item/material/biology drop and records artwork completeness, dependencies, missing assets, hardmode-deferred and undefined-future entries | ✓ VERIFIED | `01-INVENTORY.json` parses: 103 entries (item 89 / biology_drop 13 / terrain 1); `parse_audit` per document; 21 `deferred` entries with reasons; 7 `assumptions`; `dependencies`/`repo_asset`/`blockers` populated; all 103 field checks pass |
-| 2 | **(SC2)** Biology/terrain source-label discrepancy classified in an auditable record before geography work | ✓ VERIFIED | `labels[]` = exactly 5 (Death Jade Lake/region, Spiny Moss Court/region, Valley of Lush and Moist/region, Town of Decaying Wood/nested_area, Green Tundra/region `resolved:false` + blocker); each cites evidence block IDs; MD Source Label Reconciliation table present |
-| 3 | **(SC3-code)** Every unblocked completed-art item/drop is obtainable/craftable/equippable/usable with documented recipe, value, effect (or a recorded blocker) | ✓ VERIFIED | 38 tranche-A + 20 tranche-B completed-art entries reconciled; tranche gates 38/38 and 20/20; specific fixes verified in code (ThornTurtleShell `-10%`, 4 DevilHeart Anvil recipes, Ruin rarity Green, placeable categories); 8 effect/set-bonus deviations recorded as blockers rather than silently accepted |
-| 4 | **(SC3-loc)** Completed-art tranche has documented localization behaviour in both en-US and zh-Hans | PASSED (override) | Override: 45/58 covered, 13 missing keys deferred by user directive (see frontmatter `overrides`). Strict gate exits 1 by design |
-| 5 | **(SC3-placeholder)** No placeholder art introduced; no binary/art asset added or modified | ✓ VERIFIED | Phase diff vs base `5c025ff7`: 0 deletions, 0 binary files in `--numstat`; `check-tranche-A/B.ps1` `.png` git guards active; RadialCarapace's shared placeholder texture recorded as artwork-incomplete/yellow |
-| 6 | **(SC4)** Every completed-art item has an XML-full-fetch comparison record; green/yellow/unchecked rule honoured | ✓ VERIFIED | 3 committed XML snapshots + `sources.json` (tokens/revisions); per-entry Feishu table/row/checkbox block IDs; corrected status rule enforced by parser + validator + reconciliation gate (green=50/yellow=8/unchecked=45) |
-| 7 | Three authoritative Feishu docs committed as XML exposing block IDs and checkbox `done` state | ✓ VERIFIED | `evidence/{biology,item,terrain}.xml` load with `[xml]` (928/1440/739 `id=` attrs; checkbox refs 66/456/498); `sources.json` carries token/revision_id/fetched_at |
-| 8 | JSON parses; every entry carries `id`, boolean `artwork_complete`, boolean `code_complete`, non-empty `status`, non-empty texture checkbox id (or blocker) | ✓ VERIFIED | Independent scan: 0 of 103 entries with field issues; whitespace `id`/bool/status checks pass; texture id absent only with a blocker (validate-inventory exit 0) |
-| 9 | Header-anchored `贴图`/`代码` resolution + `rowspan` + status-colour rules locked by fixture test | ✓ VERIFIED | `test-parser.ps1` exits 0 (column anchoring, rowspan, status colours, blocker emission); parser never resolves texture/code positionally |
-| 10 | `01-INVENTORY.md` reproduces the JSON entry set | ✓ VERIFIED | Reconciliation gate enforces MD row count == JSON entries; gate exits 0 (103 == 103); Weapons + Armor sections render one row per entry |
-| 11 | Checkbox-less biology-drop rows preserved with a blocker; `parse_audit` proves per-document completeness | ✓ VERIFIED | `parse_audit`: biology 2 name-header tables → 13 rows, item 15 → 89, terrain 1 → 1; `rows_recorded_without_checkboxes=0`; validator exit-4 audit rules pass; unfilled-cell rows retained with blockers |
-| 12 | Every entry reconciled (`internal_name`→class or blocker), `tranche` A/B/empty, non-empty `advances`, `localization.{en_us,zh_hans,blocked}` | ✓ VERIFIED | Reconciliation gate: 103 entries, matched=60, 43 class-less with `no repo implementation found`; all entry `advances` non-empty; 0 entries with incomplete localization object; tranches A=82 / B=20 / ''=1 |
-| 13 | All 43 class-less entries routed out of Phase 1 (`phase=2`); 18 completed-art ones `deferred:true` + reason | ✓ VERIFIED | 43/43 class-less are `phase=2`; 18 have `artwork_complete=true` + `deferred=true` + non-empty reason; 21 total deferred |
-| 14 | Tranche-A gate selects `phase==1` + `tranche=="A"` + `artwork_complete==true`; tranche-B likewise | ✓ VERIFIED | `check-tranche-A.ps1` → 38/38 exit 0; `check-tranche-B.ps1` → 20/20 exit 0 |
-| 15 | Placeable/`Tools` classes correctly categorized; no tranche-B `ModItem` defaults to `Items` | ✓ VERIFIED | 7 placeable `_Item` classes + 4 `Tools/Developer` classes declare `LocalizationCategory`; recursive scan of Armors/Placeables/Pets/PermanentBoosters found no `ModItem` lacking the override; DevilHeartHairpin is `Armor` |
-| 16 | `01-DEVIATIONS.md` consolidated; inventory `deviations[]`/`phase1_actions[]` present; `advances` preserved | ✓ VERIFIED | `01-DEVIATIONS.md` present (25 fixed design deviations + 13 deferred localization); JSON `deviations`=38, `phase1_actions`=11; every entry retains ITEM-01..07 IDs |
-| 17 | `dotnet build /p:Configuration=Release /p:WarningLevel=0` passes | ✓ VERIFIED | Re-ran build: `Everglow.tmod` packaged, **0 warnings, 0 errors** |
-| 18 | Fetched Feishu content treated strictly as data (plan-01 backstop) | ✓ VERIFIED | Parser is an offline deterministic table reader (cell text/attrs only); no eval/exec/command path from document content; no `docs +update` used |
-| 19 | Composite status is honest — code-complete/artwork-incomplete never receives a completed colour (plan-02 backstop) | ✓ VERIFIED | Reconciliation gate enforces green⇒both-complete, yellow⇒non-empty blocker; 8 both-complete-with-conflict entries are yellow after the post-phase correction |
-| 20 | A tModLoader client displays each completed-art item's localized name/tooltip in both languages (plan-05 backstop) | ⚠️ ABSTAINED (`insufficient_spec`) | Non-inferable; no client session performed and exporter not run (user directive). Routes to Human Verification — see item 2 |
+| 1 | **(SC1)** Inventory identifies every in-scope item/material/biology drop and records artwork completeness, dependencies, missing assets, hardmode-deferred and undefined-future entries | ✓ VERIFIED | `01-INVENTORY.json` parses: **103 entries**; `validate-inventory.ps1` → `OK(0): 103 entries (84 weapons) - green=50 yellow=8 unchecked=45` |
+| 2 | **(SC2)** Biology/terrain source-label discrepancy classified in an auditable record before geography work | ✓ VERIFIED | `check-inventory-reconciliation.ps1` → `labels=5`; Source Label Reconciliation table present; Green Tundra `resolved:false` + blocker |
+| 3 | **(SC3)** Players can obtain/craft/equip/use every unblocked completed-art item/drop with documented recipe, value, effect (or recorded blocker) | ✗ FAILED | `ArmOfGiantTree` documented charged-smash effect is defective (CR-01): `public int ChargeTimer` is shared per-Type state on the ModItem singleton; the other four carry-over items either carry recorded blockers (ForestBreath/WitheredMask/QuetzalsWish art+effect; ElftigernPowder GAME-03) or are passive identities. See Gap 1 |
+| 4 | **(SC3-placeholder)** No placeholder art introduced; no binary/art asset added or modified | ✓ VERIFIED | Phase diff since `8ed6f5862`: `.png`/binary numstat empty; `check-carryover.ps1`/`check-tranche-A.ps1` no-placeholder guards exit 0; orphan textures beside `ArmOfGiantTree.cs`/`ElftigernPowder.cs` are tracked and unmodified |
+| 5 | **(SC4)** Every completed-art item has an XML-full-fetch comparison record; green/yellow/unchecked rule honoured | ✓ VERIFIED | Committed `evidence/*.xml` + `sources.json`; validator reports `green=50 yellow=8 unchecked=45`; reconciliation enforces the colour rule |
+| 6 | **(01-06 T1)** Allocation by design-artwork state: of the 18 `phase==2` completed-art class-less entries, 5 are `phase==1` and 13 are `phase==7` | ✓ VERIFIED | JSON grouping: `{1: 65, 2: 25, 7: 13}`; 5 entries carry `carry_over=true`; 13 are `phase 7` |
+| 7 | **(01-06 T2)** Every Phase 1 carry-over entry resolves its `internal_name` to a git-tracked `.cs` class or carries a recorded missing-artwork blocker | ✓ VERIFIED | `check-carryover.ps1` → `OK(0): carry-over covered entries = 5 (of 5 selected)`; all 5 classes tracked (`git ls-files`); 3 carry the missing-texture blocker |
+| 8 | **(01-06 T3)** The 13 boss entries map to ITEM-06 (9 Giant Winged Dragon) / ITEM-05 (4 Klein Snake) and are not Phase 1/2 work | ✓ VERIFIED | JSON: 9 rows `advances⧺ITEM-06`, 4 rows `advances⧺ITEM-05`; ROADMAP Phase 7 carry-over note records the split |
+| 9 | **(01-06 T4)** No placeholder art; the two orphan textures are consumed and the three texture-less entries carry named blockers | ✓ VERIFIED | `ArmOfGiantTree.PNG`/`ElftigernPowder.png` exist and are used (no `Texture` override); ForestBreath/WitheredMask/QuetzalsWish carry the "approved texture … missing" blocker and `repo_asset:''` |
+| 10 | **(01-06 T5)** Matrix has exactly 103 rows; JSON/Markdown mirrors consistent (QUAL-05) | ✓ VERIFIED | Reconciliation gate enforces parity → exit 0 (103 == 103) |
+| 11 | **(01-06 T6)** `dotnet build /p:Configuration=Release /p:WarningLevel=0` exits 0 | ✓ VERIFIED | Re-ran: `Everglow.tmod` packaged, **0 warnings, 0 errors** (00:01:05) |
+| 12 | **(01-06 T7)** Localization stays deferred (exporter not run, no HJSON hand-edit), `-AllowMissing` advisory evidence | ✓ PASSED (override) | `check-localization-coverage.ps1 -AllowMissing` → MISSING(18)/63, exit 0; strict → exit 1 by design; no `Localization/**` change in phase diff. See frontmatter override |
+| 13 | **(01-06 T8)** `parse-design-xml.ps1` not re-run; Feishu design source not mutated | ✓ VERIFIED | `git diff HEAD` for the parser is empty; no `evidence/*.xml` change; no Feishu write path used |
+| 14 | **(01-06 backstop)** A tML client can obtain the five carry-over items and use each once Phase 6 loot tables exist | ? ABSTAINED (`insufficient_spec`) | Non-inferable; no client session performed. Routes to Human Verification |
 
-**Score:** 18/20 truths verified (17 ✓ VERIFIED + 1 PASSED (override); 1 abstained backstop routed to human verification; 0 present-behavior-unverified)
+**Score:** 12/14 truths verified (11 ✓ VERIFIED + 1 PASSED (override); 1 FAILED; 1 abstained backstop routed to human verification; 0 present-behavior-unverified).
+
+### Deferred Items
+
+Items not yet met but explicitly addressed in later milestone phases.
+
+| # | Item | Addressed In | Evidence |
+|---|------|-------------|----------|
+| 1 | Both-culture display keys for the 18 completed-art entries | Phase 2 / Phase 8 | Phase 2 verification needs "both localization targets for available items"; Phase 8 SC2 |
+| 2 | Recorded effect/artwork blockers (3 carry-over art, QuetzalsWish effect, ElftigernPowder GAME-03) | Phase 6 / Phase 7 / Phase 8 | GAME-03/Phase 6; Phase 7 reward chains; Phase 8 SC2 approved-art |
+| 3 | Green Tundra source-label resolution | Phase 6 | Phase 6 SC1 "Green Tundra … follow the Phase 1 reconciliation" |
 
 ### Required Artifacts
 
 | Artifact | Expected | Status | Details |
 | --- | --- | --- | --- |
-| `evidence/biology.xml`, `item.xml`, `terrain.xml` | Committed XML snapshots w/ block IDs + checkbox state | ✓ VERIFIED | Exist, non-empty (82/130/84 KB), load as XML |
-| `evidence/sources.json` | token/revision_id/fetched_at sidecar | ✓ VERIFIED | 735 B; matches JSON `source` block |
-| `scripts/parse-design-xml.ps1` | Deterministic header-anchored parser | ✓ VERIFIED | 18 KB; exercised by fixture test + full run |
-| `scripts/validate-inventory.ps1` | Reusable offline gate (exit 0/2/3/4) | ✓ VERIFIED | Re-ran → exit 0 (103 entries) |
-| `scripts/test-parser.ps1` | Fixture regression test | ✓ VERIFIED | Re-ran → exit 0 (PASSED) |
-| `scripts/check-inventory-reconciliation.ps1` | Entry/label/consistency gate | ✓ VERIFIED | Re-ran → exit 0 (103; matched=60; labels=5) |
-| `scripts/check-tranche-A.ps1` | Tranche-A coverage + no-placeholder gate | ✓ VERIFIED | Re-ran → exit 0 (38/38) |
-| `scripts/check-tranche-B.ps1` | Tranche-B coverage + no-placeholder gate | ✓ VERIFIED | Re-ran → exit 0 (20/20) |
-| `scripts/check-localization-coverage.ps1` | Both-culture key gate (+ `-AllowMissing`) | ✓ VERIFIED | `-AllowMissing` → exit 0 (45/58); strict → exit 1 (13 missing, by design) |
-| `01-INVENTORY.json` | Machine source of truth | ✓ VERIFIED | 103 entries, 5 labels, 7 assumptions, 38 deviations, 11 actions; parses; BOM-free |
-| `01-INVENTORY.md` | Human matrix + label table + deferred section | ✓ VERIFIED | 103 matrix rows; Source Label Reconciliation; Deferred & Flagged |
-| `01-DEVIATIONS.md` | Consolidated deviation ledger | ✓ VERIFIED | 25 fixed + 13 deferred; status-colour correction documented |
-| `COVERAGE.md` | No-external-API-integration declaration | ✓ VERIFIED | Present (929 B) |
+| `scripts/check-carryover.ps1` | class-or-recorded-blocker gate + no-placeholder guard | ✓ VERIFIED | 3.8 KB; re-ran → 5/5 |
+| `ArmOfGiantTree.cs` | charge smash melee, sibling texture | ⚠️ PRESENT — WIRING FLAW | Compiles; documented effect incorrect (CR-01) |
+| `ElftigernPowder.cs` | material identity, purification gated | ✓ VERIFIED | Compiles; `CanUseItem=false` + GAME-03 blocker |
+| `ForestBreath.cs` / `WitheredMask.cs` / `QuetzalsWish.cs` | identity + recorded art/effect blocker + shared fallback | ✓ VERIFIED (recorded blockers) | Compile; `Texture => Commons.ModAsset.White_Mod`; `repo_asset:''` |
+| `01-INVENTORY.json` / `.md` | 103 entries, allocation corrected, mirror aligned | ✓ VERIFIED | 103 entries; `{1:65,2:25,7:13}`; reconciliation exit 0 |
+| `01-DEVIATIONS.md` | allocation correction + deferrals + carry-over gate section | ✓ VERIFIED | §Allocation Correction, §Parser Category Discrepancy, §Deferred Localization, §Carry-Over Gate |
+| `evidence/*.xml` + `sources.json` | committed Feishu snapshots | ✓ VERIFIED | Unchanged in phase diff |
 
 ### Key Link Verification
 
 | From | To | Via | Status | Details |
 | --- | --- | --- | --- | --- |
-| `evidence/*.xml` | `01-INVENTORY.json` | `parse-design-xml.ps1` | ✓ WIRED | Parser run reproduces inventory; validator exit 0 |
-| `01-INVENTORY.json` | `01-INVENTORY.md` | row parity | ✓ WIRED | Gate enforces 103 == 103 |
-| JSON `entries` (`internal_name`) | `Sources/…/KelpCurtain/Items/**/*.cs` | reflection by short name | ✓ WIRED | 60 matched; 43 class-less carry blockers |
-| JSON `labels[]` | MD Source Label Reconciliation | table | ✓ WIRED | 5 rows present |
-| tranche files | tranche gates | `phase`/`tranche`/`artwork_complete` predicate | ✓ WIRED | A 38/38, B 20/20 |
-| C# changes | build/package | `dotnet build` | ✓ WIRED | 0 errors; `.tmod` packaged |
-| `LocalizationCategory` | exporter category files | convention | ⚠️ PARTIAL | Category overrides verified; keys not generated (localization deferred) |
+| carry-over JSON entries | tracked `.cs` classes | `check-carryover.ps1` (`git ls-files`) | ✓ WIRED | 5/5 |
+| orphan textures | `ArmOfGiantTree` / `ElftigernPowder` | default `ModAsset` beside `.cs` | ✓ WIRED | Both `.png` tracked, unmodified, consumed |
+| JSON entries | `01-INVENTORY.md` | row parity | ✓ WIRED | 103 == 103 |
+| JSON `phase` | ROADMAP Phase 7 mapping | `advances[]` ITEM-05/06 | ✓ WIRED | 9 + 4 rows |
+| `ChargeTimer` | per-player charge state | — | ✗ NOT_WIRED | State lives on the shared ModItem singleton; no `KelpCurtainPlayer` charge field |
+| C# changes | build/package | `dotnet build` | ✓ WIRED | 0 warnings, 0 errors, `.tmod` packaged |
 
 ### Data-Flow Trace (Level 4)
 
 | Artifact | Data Variable | Source | Produces Real Data | Status |
 | --- | --- | --- | --- | --- |
-| `01-INVENTORY.json` | `entries[]` | committed XML via parser (`parse_audit` proof) | Yes — 103 rows from real tables | ✓ FLOWING |
-| `01-INVENTORY.md` | matrix rows | `01-INVENTORY.json` | Yes — 103 rows, gate-checked | ✓ FLOWING |
-| Item classes | `Item.value`/`rare`/`AddRecipes`/effects | design rows (header-anchored) | Yes — design values transcribed; 8 blockers recorded | ✓ FLOWING (with recorded exceptions) |
-| Localization display keys | class short-name keys | HJSON trees | Partial — 45/58 present | ⚠️ STATIC (deferred) |
+| `01-INVENTORY.json` | `entries[]` | committed XML via parser | Yes — 103 rows | ✓ FLOWING |
+| `01-INVENTORY.md` | matrix rows | `01-INVENTORY.json` | Yes — 103 rows | ✓ FLOWING |
+| `ArmOfGiantTree` | `ChargeTimer` | field on shared ModItem | Yes, but globally shared (incorrect scope) | ✗ INCORRECT |
+| Item classes | `Item.value`/`rare`/recipe | design rows | Yes (recorded blockers) | ✓ FLOWING |
 
 ### Behavioral Spot-Checks
 
 | Behavior | Command | Result | Status |
 | --- | --- | --- | --- |
-| Inventory valid | `validate-inventory.ps1` | `OK(0): 103 entries (84 weapons) - green=50 yellow=8 unchecked=45` | ✓ PASS |
-| Reconciliation consistent | `check-inventory-reconciliation.ps1` | `OK(0): 103 entries; matched=60; … labels=5 deferred=21 assumptions=7` | ✓ PASS |
-| Parser fixture rules | `test-parser.ps1` | `PASSED (column anchoring, rowspan, status colours, blocker emission)` | ✓ PASS |
-| Tranche-A coverage | `check-tranche-A.ps1` | `OK(0): tranche-A covered entries = 38 (of 38 selected)` | ✓ PASS |
-| Tranche-B coverage | `check-tranche-B.ps1` | `OK(0): tranche-B covered entries = 20 (of 20 selected)` | ✓ PASS |
-| Localization advisory baseline | `check-localization-coverage.ps1 -AllowMissing` | `MISSING(13) of 58 selected (45 covered)` exit 0 | ✓ PASS |
-| Localization strict gate | `check-localization-coverage.ps1` | `FAIL: … lack a key …` exit 1 | ✗ as-designed (deferred) |
-| Release build | `dotnet build /p:Configuration=Release /p:WarningLevel=0` | `0 warnings, 0 errors`, `Everglow.tmod` packaged | ✓ PASS |
-| Byte-level BOM check | AGENTS.md PowerShell check over 76 changed files | `UTF-8 BOM check passed (76 files).` | ✓ PASS |
+| Inventory valid | `validate-inventory.ps1` | `OK(0): 103 entries … green=50 yellow=8 unchecked=45` | ✓ PASS |
+| Reconciliation consistent | `check-inventory-reconciliation.ps1` | `OK(0): 103 entries; matched=65; labels=5 deferred=3 assumptions=7` | ✓ PASS |
+| Carry-over coverage | `check-carryover.ps1` | `OK(0): carry-over covered entries = 5 (of 5 selected)` | ✓ PASS |
+| Tranche-A coverage | `check-tranche-A.ps1` | `OK(0): 43 (of 43 selected)` | ✓ PASS |
+| Tranche-B coverage | `check-tranche-B.ps1` | `OK(0): 20 (of 20 selected)` | ✓ PASS |
+| Localization advisory | `check-localization-coverage.ps1 -AllowMissing` | `MISSING(18) of 63 (45 covered)` exit 0 | ✓ PASS (deferred) |
+| Localization strict | `check-localization-coverage.ps1` | exit 1 | ✗ as-designed (deferred) |
+| Release build | `dotnet build /p:Configuration=Release /p:WarningLevel=0` | `0 warnings, 0 errors`, `.tmod` packaged | ✓ PASS |
+| ArmOfGiantTree charge isolation | (single named test) | no test exists; CR-01 static evidence of defect | ✗ FAIL |
+
+### Probe Execution
+
+No `scripts/*/tests/probe-*.sh` probes exist and the phase declares none — SKIPPED.
 
 ### Requirements Coverage
 
 | Requirement | Source Plan | Description | Status | Evidence |
 | --- | --- | --- | --- | --- |
-| QUAL-05 | 01-01…01-05 | Repository planning artifacts record unresolved blockers, known deviations, verification evidence, and newly discovered scope without silently changing the Feishu design source | ✓ SATISFIED | `01-INVENTORY.json` (43 class-less blockers, 8 effect/set-bonus blockers, 38 deviations, 11 actions, 7 assumptions), `01-DEVIATIONS.md`, committed `evidence/*.xml`; no Feishu `docs +update`; REQUIREMENTS.md marks QUAL-05 `[x]` Complete |
+| QUAL-05 | 01-01…01-06 | Planning artifacts record blockers, deviations, evidence, newly discovered scope without silently changing the Feishu source | ✓ SATISFIED | `01-INVENTORY.json` (103 entries, 5 labels, 13 Phase-7 corrections, deviations, P1A-12/13), `01-DEVIATIONS.md`, committed evidence, ROADMAP correction; REQUIREMENTS.md marks QUAL-05 `[x]`; no Feishu write |
 
-No orphaned Phase-1 requirements: `REQUIREMENTS.md` maps only QUAL-05 to Phase 1, and all five plans declare `requirements: [QUAL-05]`.
+No orphaned Phase-1 requirements: REQUIREMENTS.md maps only QUAL-05 to Phase 1, and all six plans declare `requirements: [QUAL-05]`.
 
 ### Anti-Patterns Found
 
 | File | Line | Pattern | Severity | Impact |
 | --- | --- | --- | --- | --- |
-| `.planning/ROADMAP.md` | 88,103,119,… | `TBD` (future phase "Plans: TBD") | ℹ️ Info | Pre-existing roadmap scaffolding for not-yet-planned Phases 2–8; **no `TBD` added or removed by this phase's diff** — not phase debt |
-| `Sources/…/Tools/Developer/UnderWaterDungeon.cs` | 502, 530 | `// TODO:Enable this.` | ℹ️ Info | Pre-existing; the phase's only change to this file is the added `LocalizationCategory` override (no TODO added by the phase) |
-| Phase SUMMARies (`01-01`…`01-05`) | gate lines | stale `green=58 yellow=20 unchecked=25` | ⚠️ Warning | Superseded by post-phase correction commit `795192c31`; actual corrected counts are green=50/yellow=8/unchecked=45. The ledger documents this; SUMMARY narrative is stale but the code gates are correct |
+| `ArmOfGiantTree.cs` | 16 | `public int ChargeTimer` mutable shared ModItem state | 🛑 BLOCKER | CR-01 — cross-player / cross-stack charge bleed; documented effect incorrect |
+| `ArmOfGiantTree.cs` | 75-93 | client-only `SimpleStrikeNPC` shockwave, no server authority/netUpdate | ⚠️ Warning | WR-01 — multiplayer desync/ghost damage |
+| `ArmOfGiantTree.cs` | 45-71 | right-click swing incurs 0.75x charge floor | ⚠️ Warning | WR-02 — undocumented alt-swing penalty |
+| `ForestBreath.cs` | 15-22 | doc says quest item but `Item.questItem` unset | ℹ️ Info | IN-03 — Phase 6 consumer may mis-handle |
+| `WitheredMask.cs`/`QuetzalsWish.cs` | 16-32 | vanity/weapon identity without equip texture / projectile | ℹ️ Info | IN-05 — recorded blockers, Phase 7 follow-ups |
 
-No 🛑 Blockers: no debt markers were introduced by this phase, no stub/hollow implementation in the changed C# (the changes are value/rarity/recipe/category edits plus one accessory parity fix), no placeholder art.
+No debt markers (`TBD`/`FIXME`/`XXX`/`TODO`) in any of the five new classes (grep clean). No `.png`/binary change.
 
-### Test Quality Audit
+### Human Verification Required
 
-| Test File | Linked Req | Active | Skipped | Circular | Assertion Level | Verdict |
-| --- | --- | --- | --- | --- | --- | --- |
-| `scripts/test-parser.ps1` | QUAL-05 | 1 (fixture) | 0 | No | Behavioral (7 assertions) | ✓ PASS |
-| `scripts/validate-inventory.ps1` | QUAL-05 | 1 | 0 | No | Value (per-entry field/status/audit) | ✓ PASS |
-| `scripts/check-inventory-reconciliation.ps1` | QUAL-05 | 1 | 0 | No | Value (entry/label/consistency) | ✓ PASS |
-| `scripts/check-tranche-A.ps1` / `check-tranche-B.ps1` | QUAL-05 | 2 | 0 | No | Value (coverage predicate + git guard) | ✓ PASS |
-| `scripts/check-localization-coverage.ps1` | QUAL-05 | 1 | 0 | No | Value (both-culture key presence) | ⚠️ FAIL by design (deferred override) |
+See frontmatter `human_verification` for the structured list. Summary: (1) in-client obtain/use of the five carry-over items (backstop); (2) post-fix ArmOfGiantTree charge isolation in MP/two-stack; (3) both-culture localization exporter run (deferred override); (4) blocker disposition review.
 
-**Disabled tests on requirements:** 0 · **Circular patterns detected:** 0 · **Insufficient assertions:** 0
+### Gaps Summary
 
-### Requirements coverage provenance note
+**One blocking gap.** All inventory/reconciliation/allocation/build/no-placeholder/localization-deferral must-haves pass and QUAL-05 is satisfied. However, roadmap SC3 ("Players can use every unblocked item … with the documented … effect") is **FAILED** for `ArmOfGiantTree`: the fresh `01-REVIEW.md` (CR-01, critical) shows the charged-smash effect stores `ChargeTimer` as public mutable state on the shared per-type `ModItem` instance. Because gameplay charge state must be per-player/per-stack, a second `ArmOfGiantTree` stack inherits a full charge and can fire the shockwave without charging, and in multiplayer both players' charge bleeds into one field. This is a defect in the documented effect of a completed-art item — not a merely unexercised path — so it is a BLOCKER (Step 9 rule 1 → `gaps_found`), with WR-01/WR-02 as supporting warnings.
 
-Expected values for the fixture test are authored from the design rule (header-anchored `贴图`/`代码`, status colours), not captured from the parser under test — provenance VALID. The tranche gates derive their worklist from `01-INVENTORY.json` (an artifact the phase authored), but they assert class-file existence + blocker presence, which is an independent filesystem check, not a self-comparison.
-
-### Decision Coverage
-
-CONTEXT.md `<decisions>` D-01…D-12 are all represented in shipped artifacts: D-01..D-03 (INVENTORY.md/json), D-04 (labels[]), D-05/D-06 (Feishu-authoritative rule + status-colour enforcement), D-07 (artwork/code/status fields), D-08/D-09 (one-time snapshot + evidence/), D-10 (no wholesale rewrite; parity edits), D-11 (RadialCarapace/VineRepairWand kept phase=1), D-12 (fixed deviations + queued blockers). No decision is unaccounted for.
+The four other carry-over items are acceptable under the phase contract: ForestBreath/WitheredMask/QuetzalsWish carry named recorded artwork/effect blockers and reuse the existing shared `White_Mod` fallback (no placeholder art created), and ElftigernPowder is a passive identity with its GAME-03/Phase 6 dependency recorded and use gated off.
 
 ---
 
-## Human Verification Required
-
-### 1. In-client usability of the 58 completed-art items
-
-**Test:** In a tModLoader client, obtain/craft/equip/use representative tranche-A and tranche-B items (e.g. DevilHeartHelmet's new Anvil recipe, ThornTurtleShell's `-10%` run speed, RuinMask rarity, a classified placeable) and compare them to the committed evidence rows.
-**Expected:** Each item is obtainable/craftable/equippable and behaves as the design states, or its recorded yellow blocker is confirmed acceptable.
-**Why human:** The core criterion ("usable with the documented recipe, value, effect") is a runtime gameplay property offline scripts cannot prove.
-
-### 2. Both-culture localization display (deferred — confirm acceptance or run exporter)
-
-**Test:** Run the in-game `OutputLocalizationHjsonItem` exporter once, then confirm each completed-art item's localized name/tooltip renders in en-US and zh-Hans.
-**Expected:** Exporter reports zero unclassified; all 58 show localized text; no pre-existing key removed.
-**Why human:** Plan-05 backstop truth, explicitly unverified (exporter not run per user directive). 13 entries are recorded as deferred.
-
-### 3. Effect/set-bonus blocker disposition review
-
-**Test:** Review the 8 recorded blockers (MossySpell, CyatheaArrow, GreenSungloStaff, EvilHalbertBarnacle, Photophore, WitherbarkHelmet, ShellMolluscsBreastPlate, RuinMask).
-**Expected:** Each is judged defensible (fix lives in projectiles/buffs/localization outside the modify set) or scheduled.
-**Why human:** Plans 03/04 flag this as a scoping judgment (`human_judgment: true`).
-
-### 4. Matrix vs evidence human review
-
-**Test:** Compare `01-INVENTORY.md` (103 rows + label table + deferred section) against `evidence/*.xml`; check every yellow/unchecked reason and the unresolved Green Tundra label.
-**Expected:** No placeholder art recorded as complete; unresolved label remains unmerged/blocked.
-**Why human:** Plan-02 task-3 human-check; source-comparison judgment.
-
----
-
-## Gaps Summary
-
-**No blocking gaps.** All automated gates pass (reconciliation, validate-inventory, parser fixture, tranche-A 38/38, tranche-B 20/20, Release build 0 errors, BOM, no-placeholder). Requirement QUAL-05 is satisfied in full.
-
-One must-have — **both-culture localization for the completed-art tranche** — is objectively not complete (45/58; 13 missing keys). It is **not** reported as a `gaps:` blocker because it is an explicit, recorded **user-directed deferral** (2026-09-12), documented in `01-DEVIATIONS.md` and `01-INVENTORY.json` (`status: deferred`, P1A-11), and accepted here as an override. The strict coverage gate is red by design; the advisory `-AllowMissing` baseline is the Phase 1 evidence. The authoritative completion path is Phase 2 (both localization targets for available items) / Phase 8 success criterion 2.
-
-Two non-blocking observations: (a) the phase SUMMARies record the superseded `green=58/yellow=20/unchecked=25` status split — the current corrected counts are `green=50/yellow=8/unchecked=45` (post-phase commit `795192c31`, documented in `01-DEVIATIONS.md`); (b) 8 completed-art entries carry recorded effect/set-bonus blockers, which the plan must-haves explicitly permit ("or carries a recorded blocker").
-
-**Deferred items (addressed in later milestone phases):**
-
-| # | Item | Addressed In | Evidence |
-| --- | --- | --- | --- |
-| 1 | Both-culture display keys for 13 completed-art item entries | Phase 2 / Phase 8 | Phase 2 verification needs: "both localization targets for available items"; Phase 8 SC2: "Every implemented item has complete en-US and zh-Hans localization" |
-| 2 | 4 tranche-A effect blockers + 4 tranche-B set-bonus/effect blockers | Phase 2 (D-12 queued deviations) | `01-DEVIATIONS.md` §Planned Blockers; Phase 2 SC4 accepts remaining items |
-| 3 | Green Tundra source-label resolution (`resolved:false`) | Phase 6 | Phase 6 SC1: "Green Tundra, and nested/transition labels follow the Phase 1 reconciliation" |
-
----
-
-_Verified: 2026-09-12T20:09:30Z_
+_Verified: 2026-09-13T06:20:00Z_
 _Verifier: the agent (gsd-verifier)_
