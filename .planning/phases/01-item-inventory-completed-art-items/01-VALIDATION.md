@@ -57,6 +57,9 @@ updated: "2026-09-13"
 | 1-06-01 | 06 | 6 | QUAL-05 | T-06-01 / T-06-03 | Recorded-artwork-blocker exception keeps the no-silent-gap guard; 103 rows preserved | static | `validate-inventory.ps1` + `check-inventory-reconciliation.ps1` | ✅ existing | ✅ green |
 | 1-06-02 | 06 | 6 | QUAL-05 | T-06-02 / T-06-05 | No placeholder art; orphan textures consumed; class-or-blocker gate cannot pass a generic marker | build + static | `dotnet build /p:Configuration=Release /p:WarningLevel=0` + `check-carryover.ps1` + `check-tranche-A.ps1` + `check-inventory-reconciliation.ps1` | ✅ existing | ✅ green |
 | 1-06-03 | 06 | 6 | QUAL-05 | T-06-04 | Localization stays deferred; no HJSON hand-edit; parser not re-run | static + build | `check-carryover.ps1` + `check-tranche-A.ps1` + `check-inventory-reconciliation.ps1` + `check-localization-coverage.ps1 -AllowMissing` + `dotnet build` | ✅ existing | ✅ green |
+| 1-07-01 | 07 | 7 | QUAL-05 | T-07-06 | Per-player/per-stack charge (shared `ModItem` field removed); right-click exempt from the 0.75x floor | static + build | `check-armofgianttree-charge.ps1` + `dotnet build /p:Configuration=Release /p:WarningLevel=0` | ✅ existing | ✅ green |
+| 1-07-02 | 07 | 7 | QUAL-05 | T-07-06 | Server-authoritative shockwave; sender-held-item spoof rejection; charge clamped to `[0, MaxChargeFrames]` | static + manual | `check-armofgianttree-charge.ps1` + human-check | ✅ existing | ✅ green (structure); manual (runtime) |
+| 1-07-03 | 07 | 7 | QUAL-05 | T-06-01 | Parser not re-run; no art/HJSON change; prior Phase 1 gates stay green | static + build | `check-carryover.ps1` + `validate-inventory.ps1` + `dotnet build /p:Configuration=Release /p:WarningLevel=0` | ✅ existing | ✅ green |
 
 *Status: ⬜ pending · ✅ green · ❌ red · ⚠️ flaky*
 
@@ -86,6 +89,7 @@ Wave 0 decision made: use committed offline PowerShell validators rather than a 
 | Design-status reconciliation per item | QUAL-05 | Requires reading the Feishu source snapshot and human judgment on green/yellow/unchecked | Compare each inventory row to the cached XML; confirm `artwork_complete`/`code_complete` and reasons for yellow/blocked |
 | No placeholder art introduced | QUAL-05 | Visual/asset judgment; repo rule | Confirm no new `.png`/binary file was added or modified and no placeholder art was fabricated. A `Commons.ModAsset.White_Mod` fallback is allowed only for an entry that carries a recorded `texture\|artwork` blocker (D-06 carry-over rule), not as a general shortcut. |
 | Carry-over entries usable in game | QUAL-05 / ITEM-03 / ITEM-04 | Requires a running tML client and Phase 6 loot tables | Once Phase 6 sources exist, obtain each of the five carry-over items via its designed chest/trade source and use the behaviour (charge smash, purification, quest turn-in, vanity equip, melee combo) |
+| ArmOfGiantTree charge sync + server-authoritative shockwave in multiplayer | QUAL-05 (coverage D2/D3) | The client→server charge observation, the server-side `ReleaseSmash` shockwave and its NPC propagation, and two-client charge/slot isolation require a live tModLoader client + server; `check-armofgianttree-charge.ps1` proves structure only | Run a 2-client dedicated server: charge on client A, confirm the server receives the charge and applies the AoE once on full release, and confirm client B / a second same-type stack does not inherit A's charge |
 
 ---
 
@@ -121,3 +125,22 @@ Audit notes:
   `check-carryover.ps1` → `OK(0): carry-over covered entries = 5 (of 5 selected)`.
 - No MSTest gap: the phase's verification is documentation/asset-driven and covered by
   committed offline validators plus the mandatory `dotnet build` gate, per the Wave-0 decision.
+
+## Validation Audit 2026-09-13 (plan 01-07 gap closure)
+
+| Metric | Count |
+|--------|-------|
+| Gaps found | 1 |
+| Resolved | 1 |
+| Escalated | 1 (manual-only) |
+
+Audit notes:
+- Plan 01-07 (ArmOfGiantTree per-player/per-stack charge + server-authoritative shockwave)
+  was absent from the per-task map; tasks 1-07-01..03 added above.
+- Re-ran the new structural gate (no source changes made by this audit):
+  `check-armofgianttree-charge.ps1` → `OK(0): ... per-stack slot-keyed, synced, and
+  server-authoritative`; `check-carryover.ps1` → `OK(0): 5 (of 5 selected)`.
+- Escalated to Manual-Only: the client↔server charge sync, the `ReleaseSmash` shockwave
+  propagation and the two-client isolation cannot be observed offline (coverage D2/D3);
+  the structural gate proves presence, and a live 2-client session is required for behavior.
+- No new MSTest gap, consistent with the Wave-0 offline-validator decision.
