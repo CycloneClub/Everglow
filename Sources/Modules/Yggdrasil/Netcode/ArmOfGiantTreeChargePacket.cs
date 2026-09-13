@@ -12,6 +12,11 @@ public class ArmOfGiantTreeChargePacket : IPacket
 {
 	public int Charge = 0;
 
+	/// <summary>
+	/// Set by the owning client when it performs a full-charge left-click smash. The
+	/// authoritative side (server handler / singleplayer) is the only place that applies
+	/// the shockwave damage; a release from a sender who does not hold the item is ignored.
+	/// </summary>
 	public bool ReleaseSmash = false;
 
 	public void Receive(BinaryReader reader, int whoAmI)
