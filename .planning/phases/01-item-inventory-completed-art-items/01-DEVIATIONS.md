@@ -165,3 +165,32 @@ Plan 01-06 closes the Phase 1 carry-over:
 - **Phase 2 remainder:** the 25 remaining `phase == 2` entries are artwork-incomplete; none are Phase 1 carry-over.
 - **Localization:** still deferred by the 2026-09-12 user directive. The five new entries are added to the deferred ledger (P1A-13); `check-localization-coverage.ps1 -AllowMissing` now selects 63 entries (45 covered / 18 missing). No key was fabricated and no HJSON file was hand-edited.
 - **Gates:** `validate-inventory.ps1` (103), `check-inventory-reconciliation.ps1` (103, deferred=3), `check-tranche-A.ps1` (43/43), `check-tranche-B.ps1` (20/20), `check-carryover.ps1` (5/5), `check-localization-coverage.ps1 -AllowMissing` (advisory), `dotnet build /p:Configuration=Release /p:WarningLevel=0` (0 errors), byte-level BOM check, and the no-placeholder `.png` guard all pass.
+
+## Gap Closure (01-07)
+
+Closes the single blocking SC3 gap recorded by `01-VERIFICATION.md` plus its two supporting warnings from `01-REVIEW.md`. The fix is source-level, not documentation-only (D-12).
+
+### Defects closed
+
+| ID | File | Defect | Status |
+| --- | --- | --- | --- |
+| CR-01 (critical) | `Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/UnderwaterTreasury/ArmOfGiantTree.cs` | `public int ChargeTimer` was mutable gameplay state on the shared per-type `ModItem` singleton, so charge accumulated across players and across same-type stacks; a second stack inherited a full charge and could fire the shockwave without charging. | **Closed** |
+| WR-01 (warning) | `ArmOfGiantTree.cs` | The full-charge shockwave called `NPC.SimpleStrikeNPC` under a `Main.myPlayer == player.whoAmI` client-only gate, so the area damage was client-local with no server authority and no `netUpdate`. | **Closed** |
+| WR-02 (warning) | `ArmOfGiantTree.cs` | `ModifyWeaponDamage` applied the `MathHelper.Lerp(0.75f, 2f, charge)` scaling unconditionally, so the right-click ordinary swing incurred the 0.75x charge floor. | **Closed** |
+
+### Fix applied
+
+- **Per-player, per-stack charge (CR-01).** Charge state moved to `KelpCurtainPlayer.ArmOfGiantTreeCharge` (bounded `0..ArmOfGiantTree.MaxChargeFrames`) plus a new `ArmOfGiantTreeChargedSlot` discriminator. `ArmOfGiantTree.HoldItem` resets the charge and adopts `player.selectedItem` whenever the held slot differs from the stored one, so two same-type stacks (which share `Item.type` but occupy different slots) charge independently. The shared per-type field was removed entirely and the gate forbids re-declaring it. The state is transient: it is not written to `SaveData`/`LoadData`.
+- **Client-to-server sync.** `KelpCurtainPlayer` overrides `CopyClientState` and `SendClientChanges`, sending the new `ArmOfGiantTreeChargePacket` through `ModIns.PacketResolver` on a detected change, mirroring `Everglow.Yggdrasil.Common.YggdrasilPlayer`.
+- **Server-authoritative shockwave (WR-01).** `ArmOfGiantTree.ApplyShockwave(Player)` is a static helper that reads `player.HeldItem` damage/knockback and sets `npc.netUpdate = true`. The owning client in multiplayer only sends a `ReleaseSmash` packet; singleplayer calls the helper directly; the dedicated server is an explicit no-op in `UseItem` and applies the shockwave exactly once from the packet handler. The handler clamps `Charge` to `[0, MaxChargeFrames]` and requires the sender to actually hold `ArmOfGiantTree` before applying (spoof rejection, T-07-06).
+- **Right-click damage fix (WR-02).** The `0.75x..2x` scaling is applied only under `player.altFunctionUse != 2`; the ordinary right-click swing keeps its unscaled base damage.
+- **Gate.** New `.planning/phases/01-item-inventory-completed-art-items/scripts/check-armofgianttree-charge.ps1` (100% ASCII, offline) enforces the per-player/per-stack state, the sync hooks, the absence of the shared field, the packet, the charged-left-click damage gate, the server-authoritative release branch, and the absence of the old `Main.myPlayer` damage gate and bare static-scope item-member access.
+
+### Files changed
+
+- `Sources/Modules/Yggdrasil/KelpCurtain/KelpCurtainPlayer.cs`
+- `Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/UnderwaterTreasury/ArmOfGiantTree.cs`
+- `Sources/Modules/Yggdrasil/Netcode/ArmOfGiantTreeChargePacket.cs` (new)
+- `.planning/phases/01-item-inventory-completed-art-items/scripts/check-armofgianttree-charge.ps1` (new)
+
+No `.png` or other binary/art asset, no `Localization/**` file, and no Feishu design source was touched (QUAL-05). `scripts/parse-design-xml.ps1` was not re-run. The remaining deferred items (localization for the 18 completed-art entries, the recorded artwork/effect blockers, and Green Tundra label resolution) stay scheduled for Phases 2/6/7/8 and are not part of this closure.
