@@ -7,6 +7,8 @@ Artwork/Code cells mirror the Feishu texture/code checkbox state; Feishu is auth
 
 **Status colour rule:** a row is coloured only when **both** Artwork and Code are `done`. **Green** = both complete and matching the design; **Yellow** = both complete but a content/description conflict or known exception exists (see Blockers). If either cell is `no`, the row is **unchecked** and carries no colour, whatever the repository asset state.
 
+**Allocation correction (2026-09-12):** of the 18 artwork-complete class-less entries formerly routed to Phase 2, the 5 non-boss item-table entries are Phase 1 carry-over and the 13 boss/special-encounter rows are Phase 7 (9 Giant Winged Dragon rows -> ITEM-06, 4 Klein Snake rows -> ITEM-05). Allocation is by design section then Feishu artwork state only; repository class presence never defers an entry. The 25 remaining `phase = 2` entries are artwork-incomplete. See `01-DEVIATIONS.md` §Allocation Correction and `01-INVENTORY.json` `phase1_actions[]` P1A-12.
+
 ## Weapons
 
 | Name (en) | Name (zh) | Category | Region | Artwork | Code | Status | Blockers |

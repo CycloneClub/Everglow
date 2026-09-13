@@ -80,7 +80,14 @@ foreach ($e in $entries) {
 	}
 	if ($e.source_kind -eq 'item' -and -not [string]::IsNullOrWhiteSpace([string]$e.internal_name)) {
 		if ([string]::IsNullOrWhiteSpace([string]$e.repo_asset) -and [bool]$e.artwork_complete) {
-			$failures.Add("$id : artwork-complete item with a repo class but no repo_asset")
+			# D-06 recorded-artwork-blocker exception: the Feishu artwork checkbox is
+			# complete but no repository texture exists. Accept the conflict only when
+			# the entry carries an explicit texture/artwork blocker, so a silent
+			# artwork gap still fails.
+			$hasArtBlocker = @($blockers | Where-Object { [string]$_ -match 'texture|artwork' }).Count -gt 0
+			if (-not $hasArtBlocker) {
+				$failures.Add("$id : artwork-complete item with a repo class but no repo_asset")
+			}
 		}
 	}
 }

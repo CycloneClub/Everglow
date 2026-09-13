@@ -70,14 +70,14 @@ Plans:
 - `dotnet build /p:Configuration=Release /p:WarningLevel=0` passes.
 - No `.png` or other binary asset is added or modified.
 - **Entry allocation is by design-artwork state only.** Every entry whose Feishu texture/artwork checkbox is complete belongs to the completed-art item tranche (Phase 1); every remaining entry belongs to Phase 2. Whether the repository already contains an implementation class for an entry does **not** affect its allocation — a completed-art entry with no existing class is still Phase 1 work, and class-less entries are never deferred to a later phase on that basis.
-- **2026-09-12 correction (carry-over):** the earlier rule ("class-less → route to Phase 2") mis-allocated 18 entries that are artwork-complete but had no repository class. Those 18 completed-art class-less entries are Phase 1 carry-over work and are not part of Phase 2's scope. Phase 1 is reopened pending a carry-over plan for them. See `.planning/phases/01-item-inventory-completed-art-items/01-INVENTORY.json` (`phase=2` entries with `artwork_complete=true`).
+- **2026-09-12 correction (carry-over):** the earlier rule ("class-less → route to Phase 2") mis-allocated 18 entries that are artwork-complete but had no repository class. Allocation is two-step: (1) design section → phase (non-boss item tables stay in the item phases; the Giant Winged Dragon and Klein Snake sections are Phase 7 via ITEM-06/ITEM-05); (2) within the item phases, Feishu artwork state → Phase 1 (complete) or Phase 2 (incomplete). Applying that rule, **5 of the 18 are Phase 1 carry-over** (implemented in plan 01-06) and **13 are Phase 7 encounter rewards**; resulting counts are `{1: 65, 2: 25, 7: 13}`. See `.planning/phases/01-item-inventory-completed-art-items/01-INVENTORY.json` (`phase1_actions[]` P1A-12) and `01-DEVIATIONS.md` §Allocation Correction.
 
 ### Phase 2: Remaining Items & Unfinished-Art Materials
 
 **Goal:** The remaining non-boss item scope is implemented in dependency order, including entries and biology-design drops/materials whose design artwork or textures were not complete during Phase 1.
 **Mode:** mvp
 **Depends on:** Phase 1 inventory, source reconciliation, and dependency ledger
-**Allocation note:** Phase 2 contains only entries whose Feishu design artwork/texture checkbox is incomplete. Existing repository classes are irrelevant to allocation; the 18 completed-art class-less entries are Phase 1 carry-over, not Phase 2 scope.
+**Allocation note:** Phase 2 contains only entries whose Feishu design artwork/texture checkbox is incomplete. Existing repository classes are irrelevant to allocation; of the former 18 completed-art class-less entries, the 5 non-boss item-table rows are Phase 1 carry-over and the 13 boss/special-encounter rows are Phase 7, so none are Phase 2 scope.
 **Requirements:** ITEM-01, ITEM-02, ITEM-03, ITEM-04
 **Success Criteria** (what must be TRUE):
 
@@ -158,6 +158,7 @@ Plans:
 **Mode:** mvp
 **Depends on:** Phase 6
 **Requirements:** BIO-04, BIO-05, ITEM-05, ITEM-06, GAME-04
+**Carry-over note (2026-09-12):** the 13 artwork-complete class-less boss/special-encounter rows are Phase 7 item scope: 9 Giant Winged Dragon rows (tail-kill drops, relic/medal, craftable equipment) advance ITEM-06 and 4 Klein Snake series rows advance ITEM-05. They were mis-routed to Phase 2 and are recorded in `01-DEVIATIONS.md` §Allocation Correction / `01-INVENTORY.json` P1A-12.
 **Success Criteria** (what must be TRUE):
 
   1. The Klein Snake arena, trigger, phases, organs, healing projectiles, minions, attacks, transitions, defeat sequence, parasite/seed loop, debuff, and class coverage behave as documented.
