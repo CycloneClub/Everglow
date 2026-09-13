@@ -6,6 +6,7 @@ status: verified
 threats_open: 0
 asvs_level: 1
 created: "2026-09-12"
+updated: "2026-09-13"
 ---
 
 # Phase 01 — Security
@@ -64,6 +65,18 @@ created: "2026-09-12"
 | T-05-06 | Repudiation | Phase 2-routed entries silently counted as Phase 1 misses | medium | mitigate | Coverage gate filters `phase == 1`; final task confirms the 43 entries remain `phase=2` | closed |
 | T-05-SC | Tampering | Package supply chain | low | accept | No installs in this phase | closed |
 
+### Plan 01-06 carry-over threats (added 2026-09-13)
+
+| Threat ID | Category | Component | Severity | Disposition | Mitigation | Status |
+|-----------|----------|-----------|----------|-------------|------------|--------|
+| T-06-01 | Tampering | Re-running `parse-design-xml.ps1` destroys the reconciled inventory | high | mitigate | Prohibition block + in-place JSON edit; verified `8ed6f5862..HEAD` has 0 changes to `scripts/parse-design-xml.ps1` | closed |
+| T-06-02 | Tampering | Placeholder art hiding missing approved artwork | high | mitigate | Only pre-existing repo textures reused; 3 entries carry a missing-texture blocker; `check-carryover.ps1` no-placeholder `.png` guard `OK(0)`; 0 `.png` in phase diff | closed |
+| T-06-03 | Repudiation | Boss rewards silently re-routed into Phase 1/2 | medium | mitigate | 13 Phase 7 entries listed with ITEM-05/ITEM-06 mapping; `check-inventory-reconciliation.ps1` exits 0 (103 entries, matched=65); phase counts `{1:65, 2:25, 7:13}` | closed |
+| T-06-04 | Tampering | Hand-created localization keys | high | mitigate | Exporter not run; `8ed6f5862..HEAD` has 0 `.hjson` changes; deferral recorded (P1A-13) | closed |
+| T-06-05 | Repudiation | Inventory/Markdown mirror divergence | medium | mitigate | `check-inventory-reconciliation.ps1` re-checks 103 rows/field invariants; `validate-inventory.ps1` `OK(0)` | closed |
+| T-06-06 | Information Disclosure | Feishu credential/token committed | medium | mitigate | Only committed XML snapshots + non-secret block ids read; no token written | closed |
+| T-06-SC | Tampering | Package supply chain | low | accept | No package installed in plan 01-06 | closed |
+
 *Status: open · closed · open — below high threshold (non-blocking)*
 *Severity: critical > high > medium > low — only open threats at or above workflow.security_block_on count toward threats_open*
 *Disposition: mitigate (implementation required) · accept (documented risk) · transfer (third-party)*
@@ -87,6 +100,25 @@ created: "2026-09-12"
 | Audit Date | Threats Total | Closed | Open | Run By |
 |------------|---------------|--------|------|--------|
 | 2026-09-12 | 30 | 30 | 0 | gsd-manager (secure-phase, ASVS L1) |
+| 2026-09-13 | 37 | 37 | 0 | gsd-secure-phase (plan 01-06 re-audit, ASVS L1) |
+
+### Security Audit 2026-09-13
+
+| Metric | Count |
+|--------|-------|
+| Threats found | 7 |
+| Closed | 7 |
+| Open | 0 |
+
+Plan 01-06 was a phase reopen adding the five carry-over item classes and the
+`check-carryover.ps1` gate. Its 7 threats (T-06-01..T-06-06, T-06-SC) were all classified
+CLOSED at L1 grep depth. Short-circuit applied: `threats_open: 0` AND
+`register_authored_at_plan_time: true` AND `asvs_level == 1`, so no deep auditor was
+spawned (L1 is sufficient at ASVS 1). Verification evidence: `git diff 8ed6f5862..HEAD`
+shows 0 `.png`/`.hjson` changes and no `parse-design-xml.ps1` change;
+`validate-inventory.ps1`, `check-inventory-reconciliation.ps1` (103 entries, matched=65,
+deferred=3) and `check-carryover.ps1` (5/5 covered) all exit 0. No new trust boundary or
+credential path was introduced.
 
 ---
 
@@ -97,4 +129,4 @@ created: "2026-09-12"
 - [x] `threats_open: 0` confirmed
 - [x] `status: verified` set in frontmatter
 
-**Approval:** verified 2026-09-12
+**Approval:** verified 2026-09-12; re-verified 2026-09-13 (plan 01-06, threats_open: 0)
