@@ -14,15 +14,15 @@ Artwork/Code cells mirror the Feishu texture/code checkbox state; Feishu is auth
 | Name (en) | Name (zh) | Category | Region | Artwork | Code | Status | Blockers |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 |  | 区域放置物品制作台 | weapons.misc |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
-|  | 厄佛提根的净化粉末 | weapons.misc |  | done | no | unchecked | design code not complete (Feishu code checkbox false); no repo implementation found |
+|  | 厄佛提根的净化粉末 | weapons.misc |  | done | no | unchecked | design code not complete (Feishu code checkbox false); effect requires the Wilted Zone restoration system (GAME-03/Phase 6) |
 |  | 巨石弹射装置 | weapons.misc |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
 |  | 弟子剑 | weapons.melee |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
 |  | 弟子时装 | weapons.misc |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
 |  | 技能竹简 | weapons.misc |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
-|  | 枯萎面具 | weapons.misc |  | done | no | unchecked | design code not complete (Feishu code checkbox false); no repo implementation found |
+|  | 枯萎面具 | weapons.misc |  | done | no | unchecked | design code not complete (Feishu code checkbox false); approved texture (贴图) missing from repository despite Feishu artwork checkbox; class implemented, art pending |
 |  | 桃枝护符 | weapons.misc |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
 |  | 桃花纸鸢（风筝） | weapons.misc |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
-|  | 森林之息 | weapons.misc |  | done | no | unchecked | design code not complete (Feishu code checkbox false); no repo implementation found |
+|  | 森林之息 | weapons.misc |  | done | no | unchecked | design code not complete (Feishu code checkbox false); approved texture (贴图) missing from repository despite Feishu artwork checkbox; class implemented, art pending |
 |  | 灵蛇玉卵 | weapons.summon |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
 |  | 熊猫宠物 | weapons.misc |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
 |  | 碧玉弯刀 | weapons.melee |  | done | no | unchecked | design code not complete (Feishu code checkbox false); no repo implementation found |
@@ -41,14 +41,14 @@ Artwork/Code cells mirror the Feishu texture/code checkbox state; Feishu is auth
 |  | 荧光水螅召唤杖 | weapons.summon |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
 |  | 藻类提取机 | weapons.misc |  | done | done | green |  |
 |  | 青须手杖 | weapons.misc |  | done | done | yellow | effect (效果) unreconciled: design thorn lifetime 20s not confirmed (GreenSungloThorns timeLeft 10000 frames) |
-|  | 魁札尔的愿望 | weapons.ranged |  | done | no | unchecked | design code not complete (Feishu code checkbox false); no repo implementation found |
+|  | 魁札尔的愿望 | weapons.ranged |  | done | no | unchecked | design code not complete (Feishu code checkbox false); approved texture (贴图) missing from repository despite Feishu artwork checkbox; class implemented, art pending; effect (效果) unreconciled: the four-stage left-click combo, the charged right-click throw/explosion and the wound debuff require new projectile/buff/VFX assets that are absent |
 |  | 魂蛇手杖 | weapons.summon |  | done | no | unchecked | design code not complete (Feishu code checkbox false); no repo implementation found |
 |  | 龙骨猎枪 | weapons.ranged |  | done | no | unchecked | design code not complete (Feishu code checkbox false); no repo implementation found |
 | A | 阵法修复材料 | weapons.misc |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
 | Activated Dog Staff | 活化之犬召唤杖 | weapons.summon |  | done | done | green |  |
 | Anti-corrosive Sole | 抗腐蚀鞋底 | weapons.misc |  | done | done | green |  |
 | Arc I | 电弧一号 | weapons.misc |  | done | done | green |  |
-| Arm of Giant Tree | 巨树之臂 | weapons.misc |  | done | no | unchecked | design code not complete (Feishu code checkbox false); no repo implementation found |
+| Arm of Giant Tree | 巨树之臂 | weapons.misc |  | done | no | unchecked | design code not complete (Feishu code checkbox false) |
 | B | 阵法修复材料 | weapons.misc |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
 | C（名字要普通） | 阵法修复材料 | weapons.misc |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
 | Corroded Pearl | 被腐蚀的珍珠 | weapons.summon |  | done | done | green |  |

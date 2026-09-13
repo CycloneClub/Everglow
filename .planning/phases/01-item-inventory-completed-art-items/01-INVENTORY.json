@@ -2740,7 +2740,7 @@
                         "region":  "",
                         "name_en":  "Arm of Giant Tree",
                         "name_zh":  "巨树之臂",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Weapons.UnderwaterTreasury.ArmOfGiantTree",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "doxcnnJSAMpWWmUqUwHGBjnoX3d",
@@ -2752,7 +2752,7 @@
                         "artwork_complete":  true,
                         "code_complete":  false,
                         "status":  "unchecked",
-                        "repo_asset":  "",
+                        "repo_asset":  "Weapons/UnderwaterTreasury/ArmOfGiantTree.png",
                         "localization":  {
                                              "en_us":  false,
                                              "zh_hans":  false,
@@ -2766,11 +2766,10 @@
                                          "ITEM-07"
                                      ],
                         "blockers":  [
-                                         "design code not complete (Feishu code checkbox false)",
-                                         "no repo implementation found"
+                                         "design code not complete (Feishu code checkbox false)"
                                      ],
                         "phase":  1,
-                        "notes":  "2026-09-12 allocation: artwork complete, no repository class -> Phase 1 carry-over (design section doxcnnJSAMpWWmUqUwHGBjnoX3d).",
+                        "notes":  "2026-09-12 allocation: artwork complete, no repository class -> Phase 1 carry-over (design section doxcnnJSAMpWWmUqUwHGBjnoX3d). Implemented in plan 01-06: ArmOfGiantTree reuses the sibling repository texture; charge (up to 2.5 s -> 200% + 100% shockwave, floor 75%) and right-click swing implemented.",
                         "deferred":  false,
                         "deferred_reason":  "",
                         "carry_over":  true
@@ -3072,7 +3071,7 @@
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "森林之息",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Misc.ForestBreath",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "doxcnlTJMIxnmaRlOltbxZDYzGc",
@@ -3099,10 +3098,10 @@
                                      ],
                         "blockers":  [
                                          "design code not complete (Feishu code checkbox false)",
-                                         "no repo implementation found"
+                                         "approved texture (贴图) missing from repository despite Feishu artwork checkbox; class implemented, art pending"
                                      ],
                         "phase":  1,
-                        "notes":  "2026-09-12 allocation: artwork complete, no repository class -> Phase 1 carry-over (design section doxcnlTJMIxnmaRlOltbxZDYzGc).",
+                        "notes":  "2026-09-12 allocation: artwork complete, no repository class -> Phase 1 carry-over (design section doxcnlTJMIxnmaRlOltbxZDYzGc). Implemented in plan 01-06: procurement is the underwater-maze chest and its consumer is Phase 6 quest content.",
                         "deferred":  false,
                         "deferred_reason":  "",
                         "carry_over":  true
@@ -3829,7 +3828,7 @@
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "厄佛提根的净化粉末",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Materials.ElftigernPowder",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "doxcnK1twRSRyYrOvXg4tyBBkxf",
@@ -3841,7 +3840,7 @@
                         "artwork_complete":  true,
                         "code_complete":  false,
                         "status":  "unchecked",
-                        "repo_asset":  "",
+                        "repo_asset":  "Materials/ElftigernPowder.png",
                         "localization":  {
                                              "en_us":  false,
                                              "zh_hans":  false,
@@ -3856,10 +3855,10 @@
                                      ],
                         "blockers":  [
                                          "design code not complete (Feishu code checkbox false)",
-                                         "no repo implementation found"
+                                         "effect requires the Wilted Zone restoration system (GAME-03/Phase 6)"
                                      ],
                         "phase":  1,
-                        "notes":  "2026-09-12 allocation: artwork complete, no repository class -> Phase 1 carry-over (design section doxcnK1twRSRyYrOvXg4tyBBkxf).",
+                        "notes":  "2026-09-12 allocation: artwork complete, no repository class -> Phase 1 carry-over (design section doxcnK1twRSRyYrOvXg4tyBBkxf). Implemented in plan 01-06: ElftigernPowder reuses the sibling repository texture; the purification use is gated off until the Wilted Zone system exists.",
                         "deferred":  false,
                         "deferred_reason":  "",
                         "carry_over":  true
@@ -3872,7 +3871,7 @@
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "枯萎面具",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Misc.WitheredMask",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "doxcnK1twRSRyYrOvXg4tyBBkxf",
@@ -3899,10 +3898,10 @@
                                      ],
                         "blockers":  [
                                          "design code not complete (Feishu code checkbox false)",
-                                         "no repo implementation found"
+                                         "approved texture (贴图) missing from repository despite Feishu artwork checkbox; class implemented, art pending"
                                      ],
                         "phase":  1,
-                        "notes":  "2026-09-12 allocation: artwork complete, no repository class -> Phase 1 carry-over (design section doxcnK1twRSRyYrOvXg4tyBBkxf).",
+                        "notes":  "2026-09-12 allocation: artwork complete, no repository class -> Phase 1 carry-over (design section doxcnK1twRSRyYrOvXg4tyBBkxf). Implemented in plan 01-06: vanity identity only (no combat stats); the head-equip art is absent so no EquipType.Head autoload.",
                         "deferred":  false,
                         "deferred_reason":  "",
                         "carry_over":  true
@@ -4122,7 +4121,7 @@
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "魁札尔的愿望",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Weapons.QuetzalsWish",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "doxcnK1twRSRyYrOvXg4tyBBkxf",
@@ -4149,10 +4148,11 @@
                                      ],
                         "blockers":  [
                                          "design code not complete (Feishu code checkbox false)",
-                                         "no repo implementation found"
+                                         "approved texture (贴图) missing from repository despite Feishu artwork checkbox; class implemented, art pending",
+                                         "effect (效果) unreconciled: the four-stage left-click combo, the charged right-click throw/explosion and the wound debuff require new projectile/buff/VFX assets that are absent"
                                      ],
                         "phase":  1,
-                        "notes":  "2026-09-12 allocation: artwork complete, no repository class -> Phase 1 carry-over (design section doxcnK1twRSRyYrOvXg4tyBBkxf).",
+                        "notes":  "2026-09-12 allocation: artwork complete, no repository class -> Phase 1 carry-over (design section doxcnK1twRSRyYrOvXg4tyBBkxf). Implemented in plan 01-06: design row is Melee (mel37, 巨刃类武器) while the parser heuristic set the inventory category to weapons.ranged; the class is implemented as Melee and the id/category stay unchanged.",
                         "deferred":  false,
                         "deferred_reason":  "",
                         "carry_over":  true
@@ -4858,6 +4858,16 @@
                             "plan":  "01-05",
                             "status":  "deferred",
                             "reason":  "localization deferred by user directive (2026-09-12)"
+                        }
+                    ,
+                        {
+                            "entry_id":  "item-weapons.ranged-魁札尔的愿望",
+                            "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/QuetzalsWish.cs",
+                            "field":  "category",
+                            "before":  "weapons.ranged (parser heuristic)",
+                            "after":  "Melee (design row mel37, 巨刃类武器); id and matrix category unchanged",
+                            "source":  "item table doxcnK1twRSRyYrOvXg4tyBBkxf row doxcnD2XMx9mBf5DL0hUqX98vqb",
+                            "plan":  "01-06"
                         }
                     ],
     "phase1_actions":  [
