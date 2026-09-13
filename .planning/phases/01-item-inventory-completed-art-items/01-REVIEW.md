@@ -1,147 +1,118 @@
 ---
 phase: 01-item-inventory-completed-art-items
-reviewed: 2026-09-13T05:40:55Z
+reviewed: 2026-09-13T15:35:00Z
 depth: standard
-base_ref: 8ed6f5862bdf12b2662cb527127da80e69a2064c
-files_reviewed: 5
+base_ref: 6007fd9525fdf419a1b213ca8811e7dc94d0c39e
+files_reviewed: 3
 files_reviewed_list:
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Materials/ElftigernPowder.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Misc/ForestBreath.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Misc/WitheredMask.cs
-  - Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/QuetzalsWish.cs
   - Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/UnderwaterTreasury/ArmOfGiantTree.cs
+  - Sources/Modules/Yggdrasil/KelpCurtain/KelpCurtainPlayer.cs
+  - Sources/Modules/Yggdrasil/Netcode/ArmOfGiantTreeChargePacket.cs
 findings:
-  critical: 1
+  critical: 0
   warning: 2
-  info: 5
-  total: 8
+  info: 4
+  total: 6
 status: issues_found
 ---
 
 # Phase 01: Code Review Report
 
-**Reviewed:** 2026-09-13T05:40:55Z
+**Reviewed:** 2026-09-13T15:35:00Z
 **Depth:** standard
-**Base ref:** `8ed6f5862` (prior phase review commit)
-**Files Reviewed:** 5
+**Base ref:** `6007fd9525` (previous 01-REVIEW.md commit; plan-07 delta)
+**Files Reviewed:** 3
 **Status:** issues_found
 
 ## Summary
 
-Wave-scoped review of the five Phase 1 carry-over item classes added by plan 01-06
-(`ArmOfGiantTree`, `ElftigernPowder`, `ForestBreath`, `WitheredMask`, `QuetzalsWish`).
-The four "identity-only" items (`ElftigernPowder`, `ForestBreath`, `WitheredMask`,
-`QuetzalsWish`) are small, conventional `ModItem` defs; the shared
-`Commons.ModAsset.White_Mod` fallback matches the existing `RadialCarapace` precedent,
-and the `LocalizationUtils.Categories.*` values all resolve to real constants
-(`Weapons.Melee`, `Materials`, `Miscs`, `Vanity`). No binary/art asset was added or
-modified, and no BOM/CRLF violations appear in the new files.
+Wave-scoped review of the three source files touched by gap-closure plan 01-07
+(`ArmOfGiantTree`, `KelpCurtainPlayer`, `ArmOfGiantTreeChargePacket`). The plan's
+three focal fixes land as described: the shared `ChargeTimer` is gone (prior **CR-01**
+and **IN-01** closed), the right-click swing is exempted from the charge scaling via the
+`altFunctionUse != 2` gate (prior **WR-02** closed), and the shockwave now runs from the
+authoritative packet handler rather than the owner's client (prior **WR-01** substantially
+closed). The new fields are transient (no `SaveData`/`LoadData`), the packet reader/writer
+order matches, `LocalizationCategory` is present, and no binary/art asset was touched.
 
-`ArmOfGiantTree` is the only class with behaviour and carries all findings below.
-
-Note: plans 01-01..01-05 were covered by the prior deep review (59 files) now in git
-history; this report is the incremental scope since that review
-(`8ed6f5862..HEAD`).
-
-## Critical Issues
-
-### CR-01: `ChargeTimer` is mutable per-type state on a shared `ModItem` singleton
-
-**File:** `Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/UnderwaterTreasury/ArmOfGiantTree.cs:16`
-**Issue:** tModLoader creates one `ModItem` instance per item type and shares it across
-every stack/copy and every player (`ModItem` has no `CloneNewInstances` in 1.4; the repo
-only overrides it on `ModProjectile`/`ModPlayer`). `public int ChargeTimer;` therefore
-holds global, cross-player state. In multiplayer both players' charge accumulates into
-the same field, and two `ArmOfGiantTree` copies in one inventory share it (holding one
-and charging, then holding the other, skips the reset because both have the same `Type`).
-The result is a free/instant full-charge shockwave — incorrect behaviour, not just a
-robustness concern.
-**Fix:** Move the charge to per-player state:
-```csharp
-// ArmOfGiantTree.cs
-public override void HoldItem(Player player)
-{
-    var mp = player.GetModPlayer<KelpCurtainPlayer>();
-    // ... read/write mp.ArmOfGiantTreeCharge instead of this.ChargeTimer
-}
-
-public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
-{
-    float charge = player.GetModPlayer<KelpCurtainPlayer>().ArmOfGiantTreeCharge / (float)MaxChargeFrames;
-    damage *= MathHelper.Lerp(0.75f, 2f, charge);
-}
-```
-(Add a synced `int ArmOfGiantTreeCharge` to `KelpCurtainPlayer`; reset it in `ResetEffects`.)
+Two robustness/authority gaps remain in the new networking code (WR-01/WR-02 below); the
+prior report's remaining Info items on unrelated carry-over items were out of this wave's
+scope. The earlier 5-file review of plan 01-06 is preserved in git history.
 
 ## Warnings
 
-### WR-01: Shockwave damage is applied client-side only, with no multiplayer sync
+### WR-01: The authoritative shockwave trusts a client-controlled release flag
 
-**File:** `Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/UnderwaterTreasury/ArmOfGiantTree.cs:75-93`
-**Issue:** The shockwave loop is gated on `Main.myPlayer == player.whoAmI`, i.e. it runs
-only on the owner's client, and calls `npc.SimpleStrikeNPC(...)` directly. `SimpleStrikeNPC`
-does not perform server-authoritative damage or `netUpdate` on its own, so in multiplayer
-the area damage is client-local (desync / ghost damage) and can be rejected or double-applied
-relative to the normal melee hit. This path could not be verified at runtime here.
-**Fix:** Gate on server authority and let the normal netcode carry it, e.g. run the loop when
-`Main.netMode != NetmodeID.MultiplayerClient` (or send a `ModPacket` from owner → server) and
-keep client-side only the sound/visual.
+**File:** `Sources/Modules/Yggdrasil/Netcode/ArmOfGiantTreeChargePacket.cs:51-56`
+**Issue:** `Handle` applies the full-charge AoE whenever `packetData.ReleaseSmash && IsHeldBy(player)`.
+`ReleaseSmash` is a plain client-supplied bool, and the handler never checks that
+`packetData.Charge` actually reached `ArmOfGiantTree.MaxChargeFrames` (it clamps the
+value but does not gate on it). A modified client can send `ReleaseSmash = true,
+Charge = 0` and get the 200-px server-authoritative shockwave (plus the locally scaled
+primary hit) without ever charging, defeating the "server-authoritative" intent of WR-01.
+`IsHeldBy` only proves item possession, not that the charge was earned.
+**Fix:** Gate the release on the replicated charge, e.g.:
+```csharp
+if (packetData.ReleaseSmash
+    && ArmOfGiantTree.IsHeldBy(player)
+    && packetData.Charge >= ArmOfGiantTree.MaxChargeFrames)
+{
+    ArmOfGiantTree.ApplyShockwave(player);
+}
+```
 
-### WR-02: Right-click "ordinary swing" still receives the 0.75x charge penalty
+### WR-02: The per-stack slot discriminator is never synchronized
 
-**File:** `Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/UnderwaterTreasury/ArmOfGiantTree.cs:45-53,67-71`
-**Issue:** `HoldItem` resets `ChargeTimer = 0` for the right-click ordinary swing (and the
-comment calls it "ordinary"), but `ModifyWeaponDamage` unconditionally applies
-`MathHelper.Lerp(0.75f, 2f, charge)`, so with `charge == 0` the ordinary swing deals only
-75% of base damage. The stated design reserves the 75%..200% scaling for the *charged*
-left-click smash, so the alt swing either should not be penalised or the doc/design must
-say it is.
-**Fix:** Only apply the charge modifier when the current use is the charged left-click,
-e.g. branch on `player.altFunctionUse != 2`, or document the 75% floor as intentional.
+**File:** `Sources/Modules/Yggdrasil/KelpCurtain/KelpCurtainPlayer.cs:77-97`
+**Issue:** `CopyClientState`/`SendClientChanges` and `ArmOfGiantTreeChargePacket` carry only
+`ArmOfGiantTreeCharge`; `ArmOfGiantTreeChargedSlot` stays at its `-1` sentinel on every
+non-owner instance. `ArmOfGiantTree.HoldItem` (`ArmOfGiantTree.cs:47-51`) treats
+`player.selectedItem != ArmOfGiantTreeChargedSlot` as a slot switch and zeroes the charge,
+so wherever the replicated state is evaluated on the sender's behalf (e.g. the server, if
+`HoldItem` runs there) the received charge is cleared on the next tick. The observable
+consequence is that the replicated `Charge` has no durable consumer, and the WR-01 fix
+above cannot be implemented because the authoritative side never has a trustworthy
+full-charge signal. The client-side per-stack isolation itself works.
+**Fix:** Include `ArmOfGiantTreeChargedSlot` in `CopyClientState`/`SendClientChanges` and in
+the packet payload (read/write order kept in lockstep), or drop the slot-coupled reset on
+the authoritative side and validate from the packet's `Charge` value.
 
 ## Info
 
-### IN-01: `ChargeTimer` should not be public
+### IN-01: `SendClientChanges` reaches only the server, not other clients
 
-**File:** `Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/UnderwaterTreasury/ArmOfGiantTree.cs:16`
-**Issue:** No external consumer; a mutable public field invites accidental cross-class use.
-**Fix:** Make it `private` (or remove entirely per CR-01).
+**File:** `Sources/Modules/Yggdrasil/KelpCurtain/KelpCurtainPlayer.cs:88-95`
+**Issue:** The comment says the change is sent "to the world (server and other clients)",
+but `ModIns.PacketResolver.Send(..., RouteDestination.WorldOnly)` from a client is executed
+by the server and is not forwarded (`PacketResolver.Resolve` returns `Forward = false` for
+`WorldOnly` from a client slot), so other clients never receive it. Harmless today because
+no other client consumes the charge.
+**Fix:** Correct the comment, or route via `AllDownstream` if remote-client replication is
+actually intended.
 
-### IN-02: Shockwave uses raw `Item.damage`, not the charged weapon damage
+### IN-02: `npc.netUpdate = true` is redundant after `SimpleStrikeNPC`
 
-**File:** `Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/UnderwaterTreasury/ArmOfGiantTree.cs:78`
-**Issue:** `int shockDamage = Math.Max(1, Item.damage)` is the unmodified base (55), while
-the comment calls it "100% shockwave" next to a 200% charged smash. If "100%" means 100% of
-the *charged* hit (200% base), this under-delivers; if it means 100% of base, it is correct.
-**Fix:** Clarify intent in the comment/design; if scaled, multiply by the resolved charge.
+**File:** `Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/UnderwaterTreasury/ArmOfGiantTree.cs:142-143`
+**Issue:** `SimpleStrikeNPC` already handles multiplayer synchronization for the damage;
+setting `netUpdate` again is a no-op for correctness.
+**Fix:** Drop the extra assignment (or keep with a comment noting intent).
 
-### IN-03: `ForestBreath` lacks the quest-item flag
+### IN-03: Unreachable null guard on `Main.player[whoAmI]`
 
-**File:** `Sources/Modules/Yggdrasil/KelpCurtain/Items/Misc/ForestBreath.cs:15-22`
-**Issue:** The class doc calls it a 任务道具 (quest item), but `Item.questItem` is never set,
-so Phase 6 consumers that check it may not treat it as one.
-**Fix:** Set `Item.questItem = true;` if the Phase 6 consumer expects it; otherwise leave as-is.
+**File:** `Sources/Modules/Yggdrasil/Netcode/ArmOfGiantTreeChargePacket.cs:40-44`
+**Issue:** `Main.player[whoAmI]` is a pre-allocated array element and is never null; the
+`player is null` branch is dead. `whoAmI` is always a valid transport index.
+**Fix:** Keep `!player.active` if desired; the null check can be removed.
 
-### IN-04: `ElftigernPowder` uses dead use-configuration
+### IN-04: Packet payload uses mutable public fields
 
-**File:** `Sources/Modules/Yggdrasil/KelpCurtain/Items/Materials/ElftigernPowder.cs:19-28`
-**Issue:** `consumable`, `useStyle`, `useTime`, `useAnimation` are configured but
-`CanUseItem` always returns `false`, so the item can never be used/consumed (documented
-Phase 6 blocker). The config is unused surface.
-**Fix:** Keep (harmless) but ensure the Phase 6 purge hook flips `CanUseItem`; or drop the
-unused fields until then.
-
-### IN-05: Deferred equip/projectile wiring for `WitheredMask` and `QuetzalsWish`
-
-**File:** `Sources/Modules/Yggdrasil/KelpCurtain/Items/Misc/WitheredMask.cs:16-23` and `Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/QuetzalsWish.cs:17-32`
-**Issue:** `WitheredMask` sets `Item.vanity = true` without a `headSlot`/equip texture, and
-`QuetzalsWish` sets melee stats with no `Item.shoot`/projectile/buff. Both are recorded as
-named artwork/effect blockers, so this is expected, but neither is loadable beyond a plain
-item.
-**Fix:** Track these as Phase 7 follow-ups so the blockers are not silently dropped.
+**File:** `Sources/Modules/Yggdrasil/Netcode/ArmOfGiantTreeChargePacket.cs:13,20`
+**Issue:** `Charge`/`ReleaseSmash` are public mutable fields. Matches the existing
+`PermanentBoostPacket` convention, so this is a consistency note rather than a defect.
+**Fix:** Prefer auto-properties if the local pattern is later tightened.
 
 ---
 
-_Reviewed: 2026-09-13T05:40:55Z_
+_Reviewed: 2026-09-13T15:35:00Z_
 _Reviewer: gsd-code-reviewer (orchestrator-inline; subagent runtime unavailable)_
 _Depth: standard_
