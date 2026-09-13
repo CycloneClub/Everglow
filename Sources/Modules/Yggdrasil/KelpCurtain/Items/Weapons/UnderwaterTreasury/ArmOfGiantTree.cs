@@ -110,8 +110,9 @@ public class ArmOfGiantTree : ModItem
 			}
 		}
 
-		// On a dedicated server UseItem does nothing: the ReleaseSmash handler owns the
-		// authoritative application, so there is no double application.
+		// Main.netMode == NetmodeID.Server: intentionally a no-op. The dedicated server
+		// never applies the shockwave from UseItem; it is applied exactly once by the
+		// ReleaseSmash packet handler (server authority, WR-01).
 		mp.ArmOfGiantTreeCharge = 0;
 		return true;
 	}
