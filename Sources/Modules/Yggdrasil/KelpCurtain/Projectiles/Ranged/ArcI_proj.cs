@@ -108,10 +108,13 @@ public class ArcI_proj : ModProjectile
 		Item item = player.HeldItem;
 		if (item.ModItem is ArcI)
 		{
-			ScreenShaker Gsplayer = player.GetModPlayer<ScreenShaker>();
-			Gsplayer.FlyCamPosition = new Vector2(0, 2).RotatedByRandom(6.283);
+			ShakerManager.AddShaker(Projectile.Center, new Vector2(0, -1).RotatedByRandom(MathHelper.TwoPi), 1, 5, 15, 0.9f, 0.8f, 120);
 			var arc = item.ModItem as ArcI;
 			arc.Power++;
+			float kb = item.knockBack;
+			float speed = 1f;
+			player.PickAmmo(item, out arc.ShootType, out speed, out overridedamage, out kb, out _, useCount == 0);
+			speed /= 20f;
 			if (arc.Power >= 5)
 			{
 				arc.Power = 0;
@@ -124,10 +127,10 @@ public class ArcI_proj : ModProjectile
 			var p = Projectile.NewProjectileDirect(
 				shootSource,
 				Projectile.Center + toMuzzle,
-				velocity,
+				velocity * speed,
 				arc.ShootType,
 				overridedamage == -1 ? item.damage : overridedamage,
-				item.knockBack,
+				kb,
 				player.whoAmI);
 			p.CritChance = (int)(item.crit + player.GetCritChance(DamageClass.Generic));
 			if (arc.CurrencyCount > 0)
@@ -156,7 +159,7 @@ public class ArcI_proj : ModProjectile
 		int index = -1;
 		foreach (var npc in Main.npc)
 		{
-			if (npc is not null && npc.active && !npc.dontTakeDamage)
+			if (npc is not null && npc.active && !npc.dontTakeDamage && !npc.friendly)
 			{
 				float distance = (npc.Center - Projectile.Center).Length();
 				if (distance < closest)

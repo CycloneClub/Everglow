@@ -1,11 +1,13 @@
 using Terraria.GameContent;
 
-namespace Everglow.Yggdrasil.KelpCurtain.Items.Weapons.Special;
+namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Miscs.VineWand;
 
 public class VineEnergyOrb : ModProjectile
 {
 	public Vector2 StartPosition;
 	public Vector2 EndPosition;
+
+	public Vector2 TileDestination = Vector2.zeroVector;
 	public float Progress = 0f;
 	public float Speed = 0.03f;
 
@@ -40,19 +42,20 @@ public class VineEnergyOrb : ModProjectile
 
 	public override void AI()
 	{
-		// 更新计时器
-		timer += 0.1f;
-		pulseTimer += 0.2f;
-		pulse = (float)Math.Sin(pulseTimer) * 0.3f + 0.7f;
+		Player player = Main.player[Projectile.owner];
 
 		// 如果位置信息为零，则从ai参数读取
 		if (StartPosition == Vector2.Zero)
 		{
 			StartPosition = Projectile.Center;
 		}
-		if (EndPosition == Vector2.Zero)
+		if (TileDestination == Vector2.zeroVector)
 		{
-			EndPosition = new Vector2(Projectile.ai[0], Projectile.ai[1]);
+			EndPosition = player.Center;
+		}
+		else
+		{
+			EndPosition = TileDestination;
 		}
 
 		// 移动能量球：沿着贝塞尔曲线从起点移动到终点
@@ -88,7 +91,7 @@ public class VineEnergyOrb : ModProjectile
 	private void SpawnParticles(Vector2 position)
 	{
 		// 随机生成粒子
-		if (Main.rand.NextBool(3))
+		if (Main.rand.NextBool(60))
 		{
 			Color[] dustColors = new Color[]
 			{
@@ -104,7 +107,7 @@ public class VineEnergyOrb : ModProjectile
 				position + Main.rand.NextVector2Circular(10, 10),
 				DustID.TerraBlade,
 				Main.rand.NextVector2Circular(2, 2),
-				0, dustColor, 1f);
+				0, dustColor, 0.5f);
 			dust.noGravity = true;
 			dust.fadeIn = 1f;
 		}
@@ -155,92 +158,16 @@ public class VineEnergyOrb : ModProjectile
 		// 绘制能量球头部
 		DrawHead();
 
+
 		return false;
 	}
 
 	private void DrawHead()
 	{
-		Texture2D texture = GetOrbTexture();
-		Vector2 headPosition = Projectile.Center - Main.screenPosition;
-		float baseScale = Projectile.scale * 0.4f; // 头部大小减半
-
-		// 1. 外层辉光
-		Color outerGlow = new Color(40, 160, 40, 60) * (Projectile.alpha / 255f);
-		float outerScale = baseScale * 1.8f * pulse;
-
-		Main.EntitySpriteDraw(
-			texture,
-			headPosition,
-			null,
-			outerGlow,
-			0f,
-			texture.Size() * 0.5f,
-			outerScale,
-			SpriteEffects.None,
-			0);
-
-		// 2. 中层光晕
-		Color middleGlow = new Color(80, 200, 80, 100) * (Projectile.alpha / 255f);
-		float middleScale = baseScale * 1.3f * pulse;
-
-		Main.EntitySpriteDraw(
-			texture,
-			headPosition,
-			null,
-			middleGlow,
-			0f,
-			texture.Size() * 0.5f,
-			middleScale,
-			SpriteEffects.None,
-			0);
-
-		// 3. 主能量球
-		Color mainColor = new Color(120, 240, 120, 160) * (Projectile.alpha / 255f);
-		float mainScale = baseScale * pulse;
-
-		Main.EntitySpriteDraw(
-			texture,
-			headPosition,
-			null,
-			mainColor,
-			0f,
-			texture.Size() * 0.5f,
-			mainScale,
-			SpriteEffects.None,
-			0
-		);
-
-		// 4. 内层高光
-		Color innerColor = new Color(180, 255, 150, 200) * (Projectile.alpha / 255f);
-		float innerScale = baseScale * 0.5f * pulse;
-
-		Main.EntitySpriteDraw(
-			texture,
-			headPosition,
-			null,
-			innerColor,
-			0f,
-			texture.Size() * 0.5f,
-			innerScale,
-			SpriteEffects.None,
-			0
-		);
-
-		// 5. 中心亮点
-		Color centerColor = new Color(220, 255, 200, 220) * (Projectile.alpha / 255f);
-		float centerScale = baseScale * 0.2f;
-
-		Main.EntitySpriteDraw(
-			texture,
-			headPosition,
-			null,
-			centerColor,
-			0f,
-			texture.Size() * 0.5f,
-			centerScale,
-			SpriteEffects.None,
-			0
-		);
+		Texture2D tex = ModAsset.ForestRainVine_Cut.Value;
+		Texture2D bloom = ModAsset.ForestRainVine_Cut_Bloom.Value;
+		Main.spriteBatch.Draw(bloom, Projectile.Center - Main.screenPosition, null, new Color(0.13f, 0.4f, 0.04f, 0f), Projectile.rotation + MathHelper.PiOver2, bloom.Size() * 0.5f, Projectile.ai[0], SpriteEffects.None, 0);
+		Main.spriteBatch.Draw(tex, Projectile.Center - Main.screenPosition, null, new Color(0.7f, 1f, 0.4f, 1f), Projectile.rotation + MathHelper.PiOver2, tex.Size() * 0.5f, Projectile.ai[0], SpriteEffects.None, 0);
 	}
 
 	private void DrawTrail()
@@ -269,17 +196,21 @@ public class VineEnergyOrb : ModProjectile
 
 				// 根据拖尾位置使用不同颜色
 				Color trailColor;
-				if (progress < 0.3f)
+				if (progress < 0.2f)
 				{
-					trailColor = new Color(80, 220, 80, (int)(180 * trailAlpha));
+					trailColor = new Color(140, 250, 160, 255);
+				}
+				else if (progress < 0.3f)
+				{
+					trailColor = new Color(60, 140, 60, 30);
 				}
 				else if (progress < 0.7f)
 				{
-					trailColor = new Color(60, 200, 60, (int)(150 * trailAlpha));
+					trailColor = new Color(20, 90, 120, 15);
 				}
 				else
 				{
-					trailColor = new Color(40, 180, 40, (int)(120 * trailAlpha));
+					trailColor = new Color(1, 12, 70, 6);
 				}
 
 				trailColor *= Projectile.alpha / 255f;
@@ -289,27 +220,22 @@ public class VineEnergyOrb : ModProjectile
 					texture,
 					currentPos,
 					sourceRect,
-					trailColor,
+					Color.Black * (1 - progress) * 0.5f,
 					segmentRotation,
 					new Vector2(0, 0.5f),
-					new Vector2(segmentLength, trailWidth),
+					new Vector2(segmentLength, trailWidth * Projectile.ai[0]),
 					SpriteEffects.None,
 					0);
-
-				Color innerTrailColor = new Color(120, 255, 120, (int)(200 * trailAlpha)) * (Projectile.alpha / 255f);
-				float innerTrailWidth = trailWidth * 0.4f;
-
 				Main.EntitySpriteDraw(
 					texture,
 					currentPos,
 					sourceRect,
-					innerTrailColor,
+					trailColor,
 					segmentRotation,
 					new Vector2(0, 0.5f),
-					new Vector2(segmentLength, innerTrailWidth),
+					new Vector2(segmentLength, trailWidth * Projectile.ai[0]),
 					SpriteEffects.None,
-					0
-				);
+					0);
 			}
 
 			if (i % 3 == 0)
@@ -325,10 +251,9 @@ public class VineEnergyOrb : ModProjectile
 					pointColor,
 					0f,
 					orbTexture.Size() * 0.5f,
-					pointScale,
+					pointScale * Projectile.ai[0],
 					SpriteEffects.None,
-					0
-				);
+					0);
 			}
 		}
 	}

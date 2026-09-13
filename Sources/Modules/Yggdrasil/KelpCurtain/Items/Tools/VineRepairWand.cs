@@ -1,4 +1,7 @@
-namespace Everglow.Yggdrasil.KelpCurtain.Items.Weapons.Special;
+using Everglow.Yggdrasil.KelpCurtain.Projectiles.Miscs.VineWand;
+using Everglow.Yggdrasil.KelpCurtain.Tiles.ForestRainVines;
+
+namespace Everglow.Yggdrasil.KelpCurtain.Items.Tools;
 
 /// <summary>
 /// 控制森雨藤曼长度的魔杖 - 藤曼修理魔杖
@@ -24,18 +27,16 @@ public class VineRepairWand : ModItem
 	{
 		Item.width = 34;
 		Item.height = 34;
-		Item.DamageType = DamageClass.Magic;
-		Item.damage = 0;
-		Item.knockBack = 0f;
-		Item.crit = 0;
+		Item.damage = 1;
 		Item.useTime = 12;
 		Item.useAnimation = 12;
 		Item.useStyle = ItemUseStyleID.Shoot;
 		Item.autoReuse = false;
-		Item.mana = 0;
-		Item.value = Item.buyPrice(copper: 10000);
+		Item.mana = 6;
+		Item.value = 13320;
 		Item.rare = ItemRarityID.Green;
 		Item.noMelee = true;
+		Item.tileBoost = 60;
 	}
 
 	public override void HoldItem(Player player)
@@ -46,6 +47,9 @@ public class VineRepairWand : ModItem
 			Lighting.AddLight(player.Center, new Vector3(0.2f, 0.8f, 0.2f));
 			Item.useTime = 0;
 			Item.useAnimation = 0;
+
+			float rot = (player.Center - currentAdjustment.FixPoint.ToWorldCoordinates()).ToRotation();
+			player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, rot + MathHelper.PiOver2);
 
 			// 更新静态能量线位置
 			UpdateStaticBeam(player);
@@ -87,7 +91,7 @@ public class VineRepairWand : ModItem
 				FixPoint = fixPoint,
 				IsAdjusting = true,
 				LastManaChange = 10,
-				PendingOrbs = 0
+				PendingOrbs = 0,
 			};
 
 			// 创建静态能量线
@@ -178,7 +182,9 @@ public class VineRepairWand : ModItem
 	private void GeneratePendingOrbs(Player player)
 	{
 		if (currentAdjustment == null || currentAdjustment.PendingOrbs <= 0)
+		{
 			return;
+		}
 
 		// 计算当前可以生成的能量球数量（不超过4个同时存在）
 		int availableSlots = 4 - movingOrbIndices.Count;
@@ -222,9 +228,7 @@ public class VineRepairWand : ModItem
 				Vector2.Zero,
 				ModContent.ProjectileType<VineEnergyBeam>(),
 				0, 0, player.whoAmI,
-				ai0: endPos.X,
-				ai1: endPos.Y
-			);
+				TileUtils.SafeGetTile(targetPoint).TileType == ModContent.TileType<ForestRainVineTile_Thin>() ? 0.5f : 1);
 
 			// 设置弹幕属性
 			Projectile projectile = Main.projectile[projectileIndex];
@@ -240,21 +244,8 @@ public class VineRepairWand : ModItem
 
 	private void UpdateStaticBeam(Player player)
 	{
-		if (staticBeamIndex != -1 && Main.projectile[staticBeamIndex].active &&
-			Main.projectile[staticBeamIndex].ModProjectile is VineEnergyBeam beam)
+		if (player.ownedProjectileCounts[ModContent.ProjectileType<VineEnergyBeam>()] <= 0)
 		{
-			// 更新静态线的起点（跟随玩家）
-			beam.StartPosition = player.Center;
-
-			// 由于生命周期短，需要每帧重新创建静态线
-			if (Main.projectile[staticBeamIndex].timeLeft <= 1)
-			{
-				CreateStaticBeam(player, currentAdjustment.FixPoint);
-			}
-		}
-		else
-		{
-			// 如果静态线不存在了，重新创建
 			CreateStaticBeam(player, currentAdjustment.FixPoint);
 		}
 	}
@@ -283,9 +274,7 @@ public class VineRepairWand : ModItem
 				Vector2.Zero,
 				ModContent.ProjectileType<VineEnergyOrb>(),
 				0, 0, player.whoAmI,
-				ai0: endPos.X,
-				ai1: endPos.Y
-			);
+				TileUtils.SafeGetTile(targetPoint).TileType == ModContent.TileType<ForestRainVineTile_Thin>() ? 0.5f : 1);
 
 			Projectile projectile = Main.projectile[projectileIndex];
 			if (projectile.ModProjectile is VineEnergyOrb orb)
@@ -294,6 +283,10 @@ public class VineRepairWand : ModItem
 				orb.EndPosition = endPos;
 				orb.Speed = 0.02f + Main.rand.NextFloat(0.01f); // 稍微随机化速度
 				orb.Progress = 0f;
+				if (endPos != player.Center)
+				{
+					orb.TileDestination = endPos;
+				}
 			}
 
 			movingOrbIndices.Add(projectileIndex);
