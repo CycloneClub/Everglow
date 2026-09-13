@@ -1,14 +1,20 @@
 ---
-status: complete
+status: testing
 phase: 01-item-inventory-completed-art-items
 source: [01-VERIFICATION.md]
 started: 2026-09-12T20:20:17Z
-updated: 2026-09-12T20:33:00Z
+updated: 2026-09-13T08:07:21Z
 ---
 
 ## Current Test
 
-[testing complete]
+number: 5
+name: ArmOfGiantTree per-stack/per-player charge and server-authoritative shockwave
+expected: |
+  Two same-type ArmOfGiantTree stacks charge independently (switching stacks starts the
+  other uncharged), two players do not share charge, and the full-charge shockwave is
+  applied server-side and propagates via npc.netUpdate.
+awaiting: user response
 
 ## Tests
 
@@ -21,15 +27,15 @@ result: pass
 ### 2. Both-culture localization display
 test: Run the in-game `OutputLocalizationHjsonItem` exporter once, then confirm each completed-art item's localized name/tooltip renders in en-US and zh-Hans.
 expected: Exporter reports zero unclassified; all 58 completed-art items show localized text; no pre-existing key is removed.
-why_human: Plan-05 backstop truth, explicitly unverified (exporter not run per user directive). 13 entries are recorded as deferred.
+why_human: Plan-05 backstop truth, explicitly unverified (exporter not run per user directive). 18 entries are recorded as deferred.
 result: pass
 
 ### 3. Effect/set-bonus blocker disposition review
-test: Review the 8 recorded blockers (MossySpell, CyatheaArrow, GreenSungloStaff, EvilHalbertBarnacle, Photophore, WitherbarkHelmet, ShellMolluscsBreastPlate, RuinMask).
+test: Review the 8 recorded blockers (MossySpell, CyatheaArrow, GreenSungloStaff, EvilHalbertBarnacle, Photophore, WitherbarkHelmet, ShellMolluscsBreastPlate, RuinMask) plus the 3 carry-over artwork blockers and the ElftigernPowder/QuetzalsWish effect blockers.
 expected: Each is judged defensible (fix lives in projectiles/buffs/localization outside the modify set) or scheduled.
-why_human: Plans 03/04 flag this as a scoping judgment (human_judgment: true).
+why_human: Plans 03/04 and 01-06/07 flag this as a scoping judgment (human_judgment: true).
 result: pass
-note: "User directive (2026-09-12): where code anywhere conflicts with the design doc, and the Feishu original row is marked green (both artwork and code checkboxes complete), follow the code. Applied to the 8 both-complete effect/set-bonus blockers (MossySpell, CyatheaArrow, GreenSungloStaff, EvilHalbertBarnacle, Photophore, WitherbarkHelmet, ShellMolluscsBreastPlate, RuinMask) — accepted as-is; not gaps."
+note: "User directive (2026-09-12): where code anywhere conflicts with the design doc, and the Feishu original row is marked green (both artwork and code checkboxes complete), follow the code. Applied to the 8 both-complete effect/set-bonus blockers — accepted as-is; not gaps."
 
 ### 4. Matrix vs evidence human review
 test: Compare `01-INVENTORY.md` (103 rows + label table + deferred section) against `evidence/*.xml`; check every yellow/unchecked reason and the unresolved Green Tundra label.
@@ -37,12 +43,24 @@ expected: No placeholder art recorded as complete; unresolved label remains unme
 why_human: Plan-02 task-3 human-check; source-comparison judgment.
 result: pass
 
+### 5. ArmOfGiantTree per-stack/per-player charge and server-authoritative shockwave
+test: In a tModLoader client (singleplayer and a 2-client multiplayer session), exercise `ArmOfGiantTree`: hold one stack and charge, switch to a second same-type stack (must start uncharged), have two players charge simultaneously (no shared charge), then release at full charge and confirm the area shockwave is applied server-side and propagates to clients via `npc.netUpdate`. Optionally obtain/use the five Phase 1 carry-over items and confirm their recorded dispositions.
+expected: Charge is isolated per stack and per player; the full-charge smash delivers 200% charged hit + 100% shockwave with the retract lock; shockwave damage is authoritative and replicates.
+why_human: Three plan-01-07 behavior-unverified truths plus the plan-01-06 backstop truth — no offline script can prove multiplayer runtime behavior.
+result: [pending]
+
+### 6. Advisory code-review disposition (WR-01/WR-02)
+test: Review the two new advisory findings in `01-REVIEW.md`: WR-01 (the `ReleaseSmash` handler does not require `Charge >= MaxChargeFrames`) and WR-02 (`ArmOfGiantTreeChargedSlot` is not synced, so the replicated charge has no durable authoritative consumer).
+expected: Either accept them as known client-authoritative limitations (charge accumulation is inherently client-driven) with anti-cheat hardening scheduled to Phase 8 (QUAL-03), or create a follow-up plan.
+why_human: Scoping/risk judgment; the proposed one-line Charge gate is itself bypassable because the charge value is client-supplied, so a durable fix needs server-side charge tracking (out of plan 01-07 scope).
+result: [pending]
+
 ## Summary
 
-total: 4
+total: 6
 passed: 4
 issues: 0
-pending: 0
+pending: 2
 skipped: 0
 blocked: 0
 
