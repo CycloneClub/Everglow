@@ -109,3 +109,37 @@ Corrected rule (now enforced by `parse-design-xml.ps1` `Get-Status`, `validate-i
 Recomputed `01-INVENTORY.json` / `01-INVENTORY.md`: green 50, yellow 8, unchecked 45 (previously green 58, yellow 20, unchecked 25). The 8 both-complete entries carrying tranche effect/set-bonus blockers are now yellow: `MossySpell`, `CyatheaArrow`, `GreenSungloStaff`, `EvilHalbertBarnacle`, `Photophore`, `WitherbarkHelmet` (`枯木头盔`), `ShellMolluscsBreastPlate` (`软体外壳护甲`), `RuinMask`. The 8 Markdown rows whose Blockers cell had not been refreshed after the plan-03/04 blocker edits were re-synced from the JSON at the same time.
 
 The earlier gate lines in the `01-01`/`01-02`/`01-03`/`01-04`/`01-05` SUMMARY.md files that printed `green=58 yellow=20 unchecked=25` record the superseded computation and are left as historical execution evidence.
+
+## Allocation Correction (2026-09-12)
+
+Corrects the routing recorded by `phase1_actions[]` P1A-03 ("Route class-less entries to Phase 2"). P1A-03 is **superseded**: class-less status never defers an entry. Allocation is now two-step: (1) design section -> phase (non-boss item tables stay in the item phases; the Giant Winged Dragon and Klein Snake sections belong to Phase 7 via ITEM-06/ITEM-05); (2) within the item phases, Feishu artwork state -> Phase 1 (complete) or Phase 2 (incomplete). Of the 18 artwork-complete class-less entries, **5 are Phase 1 carry-over** and **13 are Phase 7**. Phase counts: `{1: 65, 2: 25, 7: 13}` (was `{1: 60, 2: 43}`). The 25 remaining `phase = 2` entries are artwork-incomplete. Machine record: `01-INVENTORY.json` `phase1_actions[]` P1A-12.
+
+### Phase 1 Carry-Over (5) — implemented in plan 01-06
+
+| Entry id | Name (zh) | Evidence section | Advances | Class / texture |
+| --- | --- | --- | --- | --- |
+| `item-weapons.misc-arm-of-giant-tree` | 巨树之臂 | `item.xml` H2 水下宝库物品, table `doxcnnJSAMpWWmUqUwHGBjnoX3d` | ITEM-03 | `ArmOfGiantTree.cs` / repo texture exists |
+| `item-weapons.misc-森林之息` | 森林之息 | `item.xml` H2 水下迷宫宝箱物品, table `doxcnlTJMIxnmaRlOltbxZDYzGc` | ITEM-03 | `ForestBreath.cs` / no repo texture (artwork blocker) |
+| `item-weapons.misc-厄佛提根的净化粉末` | 厄佛提根的净化粉末 | `item.xml` H2 NPC交易物品, table `doxcnK1twRSRyYrOvXg4tyBBkxf` | ITEM-04 | `ElftigernPowder.cs` / repo texture exists |
+| `item-weapons.misc-枯萎面具` | 枯萎面具 | `item.xml` H2 NPC交易物品, table `doxcnK1twRSRyYrOvXg4tyBBkxf` | ITEM-04 | `WitheredMask.cs` / no repo texture (artwork blocker) |
+| `item-weapons.ranged-魁札尔的愿望` | 魁札尔的愿望 | `item.xml` H2 NPC交易物品, table `doxcnK1twRSRyYrOvXg4tyBBkxf` | ITEM-04 | `QuetzalsWish.cs` / no repo texture (artwork blocker) |
+
+### Phase 7 Correction (13) — no implementation in Phase 1/2
+
+The 9 Giant Winged Dragon rows come from the biology-design section `特殊：/巨翼龙` (tail-kill text and the 掉落物 / 可制作装备 tables) and advance **ITEM-06**; the 4 Klein Snake rows come from the item-design H1 `克莱因蛇系列` (table `N4W9drIpio4C86xx8rDc04JJn3e`) and advance **ITEM-05**. Neither group is Phase 1 or Phase 2 scope.
+
+| Entry id | Name (zh) | Owner / mapping |
+| --- | --- | --- |
+| `biology_drop-weapons.melee-龙骸巨块大剑` | 龙骸巨块大剑 | Giant Winged Dragon tail-kill drop -> ITEM-06 |
+| `biology_drop-weapons.misc-血肉聚合物` | 血肉聚合物 | Giant Winged Dragon tail-kill drop -> ITEM-06 |
+| `biology_drop-weapons.melee-狂战士角盔` | 狂战士角盔 | Giant Winged Dragon tail-kill drop -> ITEM-06 |
+| `biology_drop-weapons.melee-狂战士板甲` | 狂战士板甲 | Giant Winged Dragon tail-kill drop -> ITEM-06 |
+| `biology_drop-weapons.melee-狂战士胫甲` | 狂战士胫甲 | Giant Winged Dragon tail-kill drop -> ITEM-06 |
+| `biology_drop-weapons.misc-巨翼龙圣物-大师` | 巨翼龙圣物（大师） | Giant Winged Dragon relic -> ITEM-06 |
+| `biology_drop-weapons.misc-巨翼龙纪念章` | 巨翼龙纪念章 | Giant Winged Dragon medal -> ITEM-06 |
+| `biology_drop-weapons.magic-崩解阈限` | 崩解阈限 | Giant Winged Dragon craftable -> ITEM-06 |
+| `biology_drop-weapons.melee-骇翼链剑` | 骇翼链剑 | Giant Winged Dragon craftable -> ITEM-06 |
+| `item-weapons.melee-碧绿玉髓扇` | 碧绿玉髓扇 | Klein Snake series -> ITEM-05 |
+| `item-weapons.ranged-龙骨猎枪` | 龙骨猎枪 | Klein Snake series -> ITEM-05 |
+| `item-weapons.melee-碧玉弯刀` | 碧玉弯刀 | Klein Snake series -> ITEM-05 |
+| `item-weapons.summon-魂蛇手杖` | 魂蛇手杖 | Klein Snake series -> ITEM-05 |

@@ -155,16 +155,17 @@
                                          ],
                         "advances":  [
                                          "ITEM-01",
-                                         "ITEM-07"
+                                         "ITEM-07",
+                                         "ITEM-06"
                                      ],
                         "blockers":  [
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  2,
-                        "notes":  "",
-                        "deferred":  true,
-                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
+                        "phase":  7,
+                        "notes":  "2026-09-12 allocation: Giant Winged Dragon encounter reward (biology design section 特殊：/巨翼龙) -> Phase 7 encounter rewards, advanced by ITEM-06; not Phase 1 or Phase 2 item scope.",
+                        "deferred":  false,
+                        "deferred_reason":  ""
                     },
                     {
                         "id":  "biology_drop-weapons.misc-血肉聚合物",
@@ -197,16 +198,17 @@
                                          ],
                         "advances":  [
                                          "ITEM-01",
-                                         "ITEM-07"
+                                         "ITEM-07",
+                                         "ITEM-06"
                                      ],
                         "blockers":  [
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  2,
-                        "notes":  "",
-                        "deferred":  true,
-                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
+                        "phase":  7,
+                        "notes":  "2026-09-12 allocation: Giant Winged Dragon encounter reward (biology design section 特殊：/巨翼龙) -> Phase 7 encounter rewards, advanced by ITEM-06; not Phase 1 or Phase 2 item scope.",
+                        "deferred":  false,
+                        "deferred_reason":  ""
                     },
                     {
                         "id":  "biology_drop-weapons.misc-巨翼龙面具",
@@ -282,16 +284,17 @@
                                          ],
                         "advances":  [
                                          "ITEM-01",
-                                         "ITEM-07"
+                                         "ITEM-07",
+                                         "ITEM-06"
                                      ],
                         "blockers":  [
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  2,
-                        "notes":  "",
-                        "deferred":  true,
-                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
+                        "phase":  7,
+                        "notes":  "2026-09-12 allocation: Giant Winged Dragon encounter reward (biology design section 特殊：/巨翼龙) -> Phase 7 encounter rewards, advanced by ITEM-06; not Phase 1 or Phase 2 item scope.",
+                        "deferred":  false,
+                        "deferred_reason":  ""
                     },
                     {
                         "id":  "biology_drop-weapons.melee-狂战士板甲",
@@ -324,16 +327,17 @@
                                          ],
                         "advances":  [
                                          "ITEM-01",
-                                         "ITEM-07"
+                                         "ITEM-07",
+                                         "ITEM-06"
                                      ],
                         "blockers":  [
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  2,
-                        "notes":  "",
-                        "deferred":  true,
-                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
+                        "phase":  7,
+                        "notes":  "2026-09-12 allocation: Giant Winged Dragon encounter reward (biology design section 特殊：/巨翼龙) -> Phase 7 encounter rewards, advanced by ITEM-06; not Phase 1 or Phase 2 item scope.",
+                        "deferred":  false,
+                        "deferred_reason":  ""
                     },
                     {
                         "id":  "biology_drop-weapons.melee-狂战士胫甲",
@@ -366,16 +370,17 @@
                                          ],
                         "advances":  [
                                          "ITEM-01",
-                                         "ITEM-07"
+                                         "ITEM-07",
+                                         "ITEM-06"
                                      ],
                         "blockers":  [
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  2,
-                        "notes":  "",
-                        "deferred":  true,
-                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
+                        "phase":  7,
+                        "notes":  "2026-09-12 allocation: Giant Winged Dragon encounter reward (biology design section 特殊：/巨翼龙) -> Phase 7 encounter rewards, advanced by ITEM-06; not Phase 1 or Phase 2 item scope.",
+                        "deferred":  false,
+                        "deferred_reason":  ""
                     },
                     {
                         "id":  "biology_drop-weapons.misc-巨翼龙圣物-大师",
@@ -408,16 +413,17 @@
                                          ],
                         "advances":  [
                                          "ITEM-01",
-                                         "ITEM-07"
+                                         "ITEM-07",
+                                         "ITEM-06"
                                      ],
                         "blockers":  [
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  2,
-                        "notes":  "",
-                        "deferred":  true,
-                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
+                        "phase":  7,
+                        "notes":  "2026-09-12 allocation: Giant Winged Dragon encounter reward (biology design section 特殊：/巨翼龙) -> Phase 7 encounter rewards, advanced by ITEM-06; not Phase 1 or Phase 2 item scope.",
+                        "deferred":  false,
+                        "deferred_reason":  ""
                     },
                     {
                         "id":  "biology_drop-weapons.misc-巨翼龙纪念章",
@@ -450,16 +456,17 @@
                                          ],
                         "advances":  [
                                          "ITEM-01",
-                                         "ITEM-07"
+                                         "ITEM-07",
+                                         "ITEM-06"
                                      ],
                         "blockers":  [
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  2,
-                        "notes":  "",
-                        "deferred":  true,
-                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
+                        "phase":  7,
+                        "notes":  "2026-09-12 allocation: Giant Winged Dragon encounter reward (biology design section 特殊：/巨翼龙) -> Phase 7 encounter rewards, advanced by ITEM-06; not Phase 1 or Phase 2 item scope.",
+                        "deferred":  false,
+                        "deferred_reason":  ""
                     },
                     {
                         "id":  "biology_drop-weapons.ranged-肌腱巨弓",
@@ -535,16 +542,17 @@
                                          ],
                         "advances":  [
                                          "ITEM-01",
-                                         "ITEM-07"
+                                         "ITEM-07",
+                                         "ITEM-06"
                                      ],
                         "blockers":  [
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  2,
-                        "notes":  "",
-                        "deferred":  true,
-                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
+                        "phase":  7,
+                        "notes":  "2026-09-12 allocation: Giant Winged Dragon encounter reward (biology design section 特殊：/巨翼龙) -> Phase 7 encounter rewards, advanced by ITEM-06; not Phase 1 or Phase 2 item scope.",
+                        "deferred":  false,
+                        "deferred_reason":  ""
                     },
                     {
                         "id":  "biology_drop-weapons.summon-re01",
@@ -620,16 +628,17 @@
                                          ],
                         "advances":  [
                                          "ITEM-01",
-                                         "ITEM-07"
+                                         "ITEM-07",
+                                         "ITEM-06"
                                      ],
                         "blockers":  [
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  2,
-                        "notes":  "",
-                        "deferred":  true,
-                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
+                        "phase":  7,
+                        "notes":  "2026-09-12 allocation: Giant Winged Dragon encounter reward (biology design section 特殊：/巨翼龙) -> Phase 7 encounter rewards, advanced by ITEM-06; not Phase 1 or Phase 2 item scope.",
+                        "deferred":  false,
+                        "deferred_reason":  ""
                     },
                     {
                         "id":  "biology_drop-weapons.summon-腥臭的诱饵",
@@ -2760,10 +2769,11 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  2,
-                        "notes":  "",
-                        "deferred":  true,
-                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
+                        "phase":  1,
+                        "notes":  "2026-09-12 allocation: artwork complete, no repository class -> Phase 1 carry-over (design section doxcnnJSAMpWWmUqUwHGBjnoX3d).",
+                        "deferred":  false,
+                        "deferred_reason":  "",
+                        "carry_over":  true
                     },
                     {
                         "id":  "item-weapons.misc-巨石弹射装置",
@@ -3091,10 +3101,11 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  2,
-                        "notes":  "",
-                        "deferred":  true,
-                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
+                        "phase":  1,
+                        "notes":  "2026-09-12 allocation: artwork complete, no repository class -> Phase 1 carry-over (design section doxcnlTJMIxnmaRlOltbxZDYzGc).",
+                        "deferred":  false,
+                        "deferred_reason":  "",
+                        "carry_over":  true
                     },
                     {
                         "id":  "item-weapons.summon-荧光水螅召唤杖",
@@ -3847,10 +3858,11 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  2,
-                        "notes":  "",
-                        "deferred":  true,
-                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
+                        "phase":  1,
+                        "notes":  "2026-09-12 allocation: artwork complete, no repository class -> Phase 1 carry-over (design section doxcnK1twRSRyYrOvXg4tyBBkxf).",
+                        "deferred":  false,
+                        "deferred_reason":  "",
+                        "carry_over":  true
                     },
                     {
                         "id":  "item-weapons.misc-枯萎面具",
@@ -3889,10 +3901,11 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  2,
-                        "notes":  "",
-                        "deferred":  true,
-                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
+                        "phase":  1,
+                        "notes":  "2026-09-12 allocation: artwork complete, no repository class -> Phase 1 carry-over (design section doxcnK1twRSRyYrOvXg4tyBBkxf).",
+                        "deferred":  false,
+                        "deferred_reason":  "",
+                        "carry_over":  true
                     },
                     {
                         "id":  "item-weapons.misc-living-woodplate",
@@ -4138,10 +4151,11 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  2,
-                        "notes":  "",
-                        "deferred":  true,
-                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
+                        "phase":  1,
+                        "notes":  "2026-09-12 allocation: artwork complete, no repository class -> Phase 1 carry-over (design section doxcnK1twRSRyYrOvXg4tyBBkxf).",
+                        "deferred":  false,
+                        "deferred_reason":  "",
+                        "carry_over":  true
                     },
                     {
                         "id":  "item-weapons.misc-thegreensolar",
@@ -4215,16 +4229,17 @@
                                          ],
                         "advances":  [
                                          "ITEM-01",
-                                         "ITEM-07"
+                                         "ITEM-07",
+                                         "ITEM-05"
                                      ],
                         "blockers":  [
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  2,
-                        "notes":  "",
-                        "deferred":  true,
-                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
+                        "phase":  7,
+                        "notes":  "2026-09-12 allocation: Klein Snake series (item design H1 克莱因蛇系列, table N4W9drIpio4C86xx8rDc04JJn3e) -> Phase 7 encounter rewards, advanced by ITEM-05; not Phase 1 or Phase 2 item scope.",
+                        "deferred":  false,
+                        "deferred_reason":  ""
                     },
                     {
                         "id":  "item-weapons.ranged-龙骨猎枪",
@@ -4257,16 +4272,17 @@
                                          ],
                         "advances":  [
                                          "ITEM-01",
-                                         "ITEM-07"
+                                         "ITEM-07",
+                                         "ITEM-05"
                                      ],
                         "blockers":  [
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  2,
-                        "notes":  "",
-                        "deferred":  true,
-                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
+                        "phase":  7,
+                        "notes":  "2026-09-12 allocation: Klein Snake series (item design H1 克莱因蛇系列, table N4W9drIpio4C86xx8rDc04JJn3e) -> Phase 7 encounter rewards, advanced by ITEM-05; not Phase 1 or Phase 2 item scope.",
+                        "deferred":  false,
+                        "deferred_reason":  ""
                     },
                     {
                         "id":  "item-weapons.melee-碧玉弯刀",
@@ -4299,16 +4315,17 @@
                                          ],
                         "advances":  [
                                          "ITEM-01",
-                                         "ITEM-07"
+                                         "ITEM-07",
+                                         "ITEM-05"
                                      ],
                         "blockers":  [
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  2,
-                        "notes":  "",
-                        "deferred":  true,
-                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
+                        "phase":  7,
+                        "notes":  "2026-09-12 allocation: Klein Snake series (item design H1 克莱因蛇系列, table N4W9drIpio4C86xx8rDc04JJn3e) -> Phase 7 encounter rewards, advanced by ITEM-05; not Phase 1 or Phase 2 item scope.",
+                        "deferred":  false,
+                        "deferred_reason":  ""
                     },
                     {
                         "id":  "item-weapons.summon-魂蛇手杖",
@@ -4341,16 +4358,17 @@
                                          ],
                         "advances":  [
                                          "ITEM-01",
-                                         "ITEM-07"
+                                         "ITEM-07",
+                                         "ITEM-05"
                                      ],
                         "blockers":  [
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  2,
-                        "notes":  "",
-                        "deferred":  true,
-                        "deferred_reason":  "no repository implementation target and Feishu design-code checkbox false; routed to Phase 2 (remaining non-boss item scope)"
+                        "phase":  7,
+                        "notes":  "2026-09-12 allocation: Klein Snake series (item design H1 克莱因蛇系列, table N4W9drIpio4C86xx8rDc04JJn3e) -> Phase 7 encounter rewards, advanced by ITEM-05; not Phase 1 or Phase 2 item scope.",
+                        "deferred":  false,
+                        "deferred_reason":  ""
                     },
                     {
                         "id":  "item-weapons.misc-绿琉璃果",
@@ -4908,6 +4926,12 @@
                                 "action":  "Defer Phase 1 localization by user directive",
                                 "detail":  "Plan 01-05 Task 2 (checkpoint:human-action) was not executed: the in-game OutputLocalizationHjsonItem exporter was never run. Per the user directive of 2026-09-12 ('record it; do not consider localization, just complete the code portion'), localization is deferred for Phase 1. The 13 Phase 1 completed-art entries reported missing a class-name key in both cultures by check-localization-coverage.ps1 -AllowMissing are recorded as deferred deviations (status=deferred, reason='localization deferred by user directive (2026-09-12)'); no key was fabricated and no HJSON file was hand-edited.",
                                 "source":  "01-05 / user directive 2026-09-12"
+                            },
+                            {
+                                "id":  "P1A-12",
+                                "action":  "Allocation correction (2026-09-12): completed-art class-less entries split 5 Phase 1 / 13 Phase 7",
+                                "detail":  "Two-step allocation by design-artwork state only. Step 1: design section -> phase (non-boss item tables stay in the item phases; the Giant Winged Dragon and Klein Snake sections belong to Phase 7 via ITEM-06/ITEM-05). Step 2: within the item phases, Feishu artwork state -> Phase 1 (complete) or Phase 2 (incomplete). Result: of the 18 formerly phase==2 completed-art class-less entries, 5 are Phase 1 carry-over and 13 are Phase 7. Phase counts become {1: 65, 2: 25, 7: 13}; the 25 remaining phase==2 entries are artwork-incomplete.",
+                                "source":  "01-06 / 2026-09-12 ROADMAP correction"
                             }
                         ]
 }
