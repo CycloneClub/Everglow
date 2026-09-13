@@ -4869,6 +4869,62 @@
                             "source":  "item table doxcnK1twRSRyYrOvXg4tyBBkxf row doxcnD2XMx9mBf5DL0hUqX98vqb",
                             "plan":  "01-06"
                         }
+                    ,
+                        {
+                            "entry_id":  "item-weapons.misc-arm-of-giant-tree",
+                            "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/UnderwaterTreasury/ArmOfGiantTree.cs",
+                            "field":  "localization",
+                            "before":  "no display key in en-US or zh-Hans item category files",
+                            "after":  "not generated (in-game exporter not run)",
+                            "source":  "plan 01-06 Task 3; user directive 2026-09-12",
+                            "plan":  "01-06",
+                            "status":  "deferred",
+                            "reason":  "localization deferred by user directive (2026-09-12)"
+                        },
+                        {
+                            "entry_id":  "item-weapons.misc-森林之息",
+                            "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Misc/ForestBreath.cs",
+                            "field":  "localization",
+                            "before":  "no display key in en-US or zh-Hans item category files",
+                            "after":  "not generated (in-game exporter not run)",
+                            "source":  "plan 01-06 Task 3; user directive 2026-09-12",
+                            "plan":  "01-06",
+                            "status":  "deferred",
+                            "reason":  "localization deferred by user directive (2026-09-12)"
+                        },
+                        {
+                            "entry_id":  "item-weapons.misc-厄佛提根的净化粉末",
+                            "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Materials/ElftigernPowder.cs",
+                            "field":  "localization",
+                            "before":  "no display key in en-US or zh-Hans item category files",
+                            "after":  "not generated (in-game exporter not run)",
+                            "source":  "plan 01-06 Task 3; user directive 2026-09-12",
+                            "plan":  "01-06",
+                            "status":  "deferred",
+                            "reason":  "localization deferred by user directive (2026-09-12)"
+                        },
+                        {
+                            "entry_id":  "item-weapons.misc-枯萎面具",
+                            "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Misc/WitheredMask.cs",
+                            "field":  "localization",
+                            "before":  "no display key in en-US or zh-Hans item category files",
+                            "after":  "not generated (in-game exporter not run)",
+                            "source":  "plan 01-06 Task 3; user directive 2026-09-12",
+                            "plan":  "01-06",
+                            "status":  "deferred",
+                            "reason":  "localization deferred by user directive (2026-09-12)"
+                        },
+                        {
+                            "entry_id":  "item-weapons.ranged-魁札尔的愿望",
+                            "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/QuetzalsWish.cs",
+                            "field":  "localization",
+                            "before":  "no display key in en-US or zh-Hans item category files",
+                            "after":  "not generated (in-game exporter not run)",
+                            "source":  "plan 01-06 Task 3; user directive 2026-09-12",
+                            "plan":  "01-06",
+                            "status":  "deferred",
+                            "reason":  "localization deferred by user directive (2026-09-12)"
+                        }
                     ],
     "phase1_actions":  [
                            {
@@ -4942,6 +4998,12 @@
                                 "action":  "Allocation correction (2026-09-12): completed-art class-less entries split 5 Phase 1 / 13 Phase 7",
                                 "detail":  "Two-step allocation by design-artwork state only. Step 1: design section -> phase (non-boss item tables stay in the item phases; the Giant Winged Dragon and Klein Snake sections belong to Phase 7 via ITEM-06/ITEM-05). Step 2: within the item phases, Feishu artwork state -> Phase 1 (complete) or Phase 2 (incomplete). Result: of the 18 formerly phase==2 completed-art class-less entries, 5 are Phase 1 carry-over and 13 are Phase 7. Phase counts become {1: 65, 2: 25, 7: 13}; the 25 remaining phase==2 entries are artwork-incomplete.",
                                 "source":  "01-06 / 2026-09-12 ROADMAP correction"
+                            },
+                            {
+                                "id":  "P1A-13",
+                                "action":  "Extend P1A-11 to the five Phase 1 carry-over entries",
+                                "detail":  "The five plan 01-06 carry-over entries (ArmOfGiantTree, ForestBreath, ElftigernPowder, WitheredMask, QuetzalsWish) are added to the deferred-localization ledger with status=deferred and reason 'localization deferred by user directive (2026-09-12)', mirroring P1A-11. localization.blocked stays false; no key was fabricated and no HJSON file was hand-edited. check-localization-coverage.ps1 -AllowMissing now selects 63 entries (45 covered / 18 missing).",
+                                "source":  "01-06 / user directive 2026-09-12"
                             }
                         ]
 }
