@@ -192,3 +192,9 @@ Fixed design deviations: 25 (14 design-row-backed; 11 repo-only localization-cat
 
 Deferred localization: Phase 1 localization is **deferred by user directive (2026-09-12)**. The in-game `OutputLocalizationHjsonItem` exporter was not run; no key was fabricated and no `Localization/**/*.hjson` file was hand-edited. `check-localization-coverage.ps1 -AllowMissing` selects 58 Phase 1 completed-art entries and reports 45 covered / 13 missing; the 13 missing-key entries are recorded as `deferred` deviations in `01-DEVIATIONS.md` and `01-INVENTORY.json` `deviations[]` (see `phase1_actions[]` P1A-11). Both-culture key coverage is therefore advisory for Phase 1, not complete.
 
+## Phase 2 Close-Out
+
+Recorded by plan 02-05 (2026-09-14). Machine mirror: `01-INVENTORY.json` `phase2_closeout`.
+
+25 `phase == 2` rows were allocated; D-15 keeps the three `阵法修复材料` placeholders `deferred` and D-16 reallocates `巨翼龙面具` to Phase 7 (ITEM-06), leaving 24 `phase == 2` rows and 21 implemented. The 21 implemented entries split into **9 full implementations** and **12 identity-only shell classes** (D-18). Every implemented entry is **code-complete and art-incomplete** (`artwork_complete: false`, `code_complete: true`, `status: "unchecked"`) with a recorded artwork/system/effect/recipe blocker and an unchecked Feishu row (D-11/D-22); localization is deferred by user directive (D-20) and the runtime checks remain outstanding (D-21). Per-entry evidence: `02-DEVIATIONS.md` and `02-CLASSIFICATION.json`. Plan 02-05 added 21 Phase 2 localization deferral records to `deviations[]`.
+

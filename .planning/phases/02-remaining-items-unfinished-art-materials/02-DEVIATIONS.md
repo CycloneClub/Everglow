@@ -198,7 +198,69 @@ The same 21 records are mirrored in `01-INVENTORY.json` `deviations[]` with `fie
 
 ## 6. Verification Evidence
 
-_Pending: filled by plan 02-05 Task 3 with the full gate-chain output, the AGENTS.md byte-level UTF-8 BOM check and no-art guard results, the advisory localization missing set, the runtime-verification bundle and the final inventory counts._
+Executed 2026-09-14 from the repository root by plan 02-05 Task 3. The complete Phase 2 gate chain and the AGENTS.md byte-level checks are captured here verbatim.
+
+### 6.1 Gate chain
+
+| # | Command | Exit | Summary line |
+| --- | --- | --- | --- |
+| 1 | `dotnet build /p:Configuration=Release /p:WarningLevel=0` | 0 | `0 Warning(s)` / `0 Error(s)`; `Everglow -> …\Mods\Everglow.tmod` produced and enabled |
+| 2 | `check-phase2.ps1` (no switch) | 0 | `OK(0): phase2 implemented = 21 / 21 (full=9, shell=12)` |
+| 3 | `check-phase2.ps1 -RequireAll` | 0 | `OK(0): phase2 implemented = 21 / 21 (full=9, shell=12)` |
+| 4 | `validate-inventory.ps1` | 0 | `OK(0): 103 entries (84 weapons) - green=50 yellow=8 unchecked=45` |
+| 5 | `check-inventory-reconciliation.ps1` | 0 | `OK(0): 103 entries; matched=86; green=50 yellow=8 unchecked=45; labels=5 deferred=3 assumptions=7` |
+| 6 | `check-carryover.ps1` | 0 | `OK(0): carry-over covered entries = 5 (of 5 selected)` |
+| 7 | `check-tranche-A.ps1` | 0 | `OK(0): tranche-A covered entries = 43 (of 43 selected)` |
+| 8 | `check-tranche-B.ps1` | 0 | `OK(0): tranche-B covered entries = 20 (of 20 selected)` |
+| 9 | `check-localization-coverage.ps1 -AllowMissing` | 0 | `MISSING(18) of 63 selected (45 covered)` then `ALLOW-MISSING: baseline recorded; exits 0 by request.` |
+| 10 | `check-localization-coverage.ps1` (strict, expected red under D-20) | 1 | `MISSING(18) of 63 selected (45 covered)` then `FAIL: Phase 1 completed-art entries lack a key in en-US and/or zh-Hans.` |
+
+The chain's success line is `verify chain OK(0)`. The strict localization run (row 10) is expected-red evidence under D-20 and is recorded, not treated as a phase failure.
+
+### 6.2 Advisory localization missing set (D-20)
+
+The gate's selection predicate is `phase == 1` completed-art entries, so the Phase 2 entries are outside its selection; the missing set is the unchanged Phase 1 deferred set. `check-localization-coverage.ps1 -AllowMissing` selects **63** entries and reports **45 covered / 18 missing**:
+
+`item-weapons.melee-evil-halbert-barnacle` (EvilHalbertBarnacle), `item-weapons.misc-arc-i` (ArcI), `item-weapons.misc-arm-of-giant-tree` (ArmOfGiantTree), `item-weapons.misc-crimson-moon-algae-magic-staff` (RedAlgaeMagicStaff), `item-weapons.misc-crimson-moon-algae-spell-book` (RedAlgaeMagicSpellBook), `item-weapons.misc-crimson-moon-algae-whip` (RedAlgaeMagicWhip), `item-weapons.misc-crimson-moon-sap` (CrimsonMoonSap), `item-weapons.misc-empty-water-staff` (EmptyWaterStaff), `item-weapons.misc-jade-lake-red-algae` (JadeLakeRedAlgae_Item), `item-weapons.misc-photophore` (Photophore), `item-weapons.misc-厄佛提根的净化粉末` (ElftigernPowder), `item-weapons.misc-枯萎面具` (WitheredMask), `item-weapons.misc-森林之息` (ForestBreath), `item-weapons.misc-青须手杖` (GreenSungloStaff), `item-weapons.ranged-魁札尔的愿望` (QuetzalsWish), `item-weapons.summon-activated-dog-staff` (ActivatedDogStaff), `item-weapons.summon-crimson-moon-algae-gyroscope` (RedAlgaeMinionGyroscope), `item-weapons.summon-crimson-moon-algae-summon-staff` (RedAlgaeMinionStaff).
+
+No exporter was run, no key was fabricated and no HJSON file was edited for any of them.
+
+### 6.3 AGENTS.md byte-level UTF-8 BOM check and no-art/no-binary guard
+
+The plan named the Phase 2 baseline `926543d99` (the Phase 1 close-out commit, parent of the first Phase 2 planning commit `2fc6aa346`). That commit is an ancestor of `HEAD`, but because the branch contains a merge commit (`43478f8ef`) that joined a parallel developer line, the range `926543d99..HEAD` also includes the parallel commit `a1975d1bf` ("Fix bugs and improve visual effect of ForestRainVine."), which added 10 `.png` files. The guard therefore re-anchored to the true pre-Phase-2-execution boundary `43478f8ef`, the merge commit immediately preceding every Phase 2 execution commit — the plan's own instruction is to re-anchor when the named baseline does not isolate the phase's change set (the Phase 1 01-07 baseline-`8ed6f5862` precedent), and the re-anchor cannot hide a Phase 2 asset change because every Phase 2 `.cs`/planning change is still inside the range.
+
+| Anchor | Changed files | KelpCurtain subset | BOM-prefixed | Changed art/binary | Verdict |
+| --- | --- | --- | --- | --- | --- |
+| `926543d99` (plan-named; includes the parallel `a1975d1bf` art) | 107 | 69 | 0 | 10 (all `.png` from `a1975d1bf`) | BOM OK; art guard false-positive on non-Phase-2 art |
+| `43478f8ef` (re-anchored: merge commit immediately before the Phase 2 execution commits) | 41 | 26 | 0 | **0** | **BOM OK; no-art guard OK** |
+
+Against `43478f8ef` the change set is exactly the Phase 2 work: the 21 implemented `.cs` classes, `BoulderCatapult_Proj`/`BoulderCatapult_SubProj`/`TendonGreatbow_Arrow`, `KelpCurtainPlayer.cs`, `RedAlgae_FriendlyDebuff_glocalNPC.cs`, the planning artifacts (`01-INVENTORY.json`/`.md`, `02-CLASSIFICATION.json`, `02-DEVIATIONS.md`, `02-VALIDATION.md`, `scripts/check-phase2.ps1`, the four `02-0x-SUMMARY.md`, `ROADMAP.md`, `REQUIREMENTS.md`, `STATE.md`, `state.json`, `WINDOWS.md`). No `.png`, `.obj`, `.ttf`, `.atlas`, `.xnb`, `.ogg`, `.mp3`, `.bmp`, `.mapio` or `.fx` path is added or modified anywhere in it, and no file begins with the UTF-8 BOM bytes `EF BB BF`.
+
+### 6.4 Runtime-verification bundle (D-21)
+
+Transcribed from every `<human-check>` block in plans 02-01 to 02-04 plus the plan 02-05 bundle. All entries are **pending a live tModLoader client session** (D-21).
+
+| Plan | Item(s) | Test | Expected |
+| --- | --- | --- | --- |
+| 02-01 | 红月水藻头饰 | Launch a world, open the inventory, equip 红月水藻头饰 into the head slot. | The mod loads with no missing-resource/disabled-mod entry; the item shows a white-box icon and picks up defense 8; the head slot accepts it. |
+| 02-01 | 红月水藻 four-piece set | Craft all four pieces at a Work Bench, equip head + body + legs, step into water. | Both head pieces are accepted; the full set swims/runs faster than the legs piece alone; a single hit of >= 10 damage restores roughly 15% of that hit. |
+| 02-02 | 巨石弹射装置 | Fire `BoulderCatapult` at a flat wall from a moderate distance. | The boulder arcs under gravity, bursts on the wall, 3-6 shards fly outward, no ammunition is consumed, tooltip damage reads 44. |
+| 02-02 | 肌腱巨弓, 限制机, 腥臭的诱饵 | Equip `TendonGreatbow` with any arrow and fire at a non-boss enemy then a boss; use 限制机 and 腥臭的诱饵. | Arrows are consumed and the mod arrow fires; boss damage reads ~10% higher than an equivalent non-boss target; 限制机 consumes 15 mana but produces no drone; 腥臭的诱饵 swings, consumes one, and summons nothing. |
+| 02-03 | 灵蛇玉卵, 竹节步符 | Spawn and use/equip both. | 灵蛇玉卵 is consumable with a 10-gold value and Blue rarity and consumes one without summoning anything; 竹节步符 equips into an accessory slot and grants no stats. |
+| 02-03 | six shells + 灵蛇玉卵 | Spawn all six shells plus 灵蛇玉卵 and confirm they appear in the inventory. | Each item is placeable, equips or uses per its declaration, and the tML log shows no missing-resource error. |
+| 02-04 | the six 02-04 shells | Spawn all six shells and view them; check the tML log for load errors. | Each shell appears with a white-box icon, the mod loads with no missing-resource error, and none of the six grants a stat or effect. |
+| 02-05 | whole bundle (end-of-phase UAT) | In one client session: load the mod, confirm no missing-resource error, craft and equip the 红月水藻 set, fire 巨石弹射装置 at a wall, compare `TendonGreatbow` damage against a boss and a non-boss, then spawn the remaining shells. | The mod loads cleanly; the armor equips and its effects apply; the boulder bursts into 3-6 shards; the greatbow's boss damage is about 10% higher; every shell appears with a white-box icon and no effect; no `.png` was ever required. |
+
+### 6.5 Final counts
+
+Confirmed against `01-INVENTORY.json` and `01-INVENTORY.md` (both mirror records updated by this plan; the Markdown matrix is exactly **103** rows):
+
+- **103** total entries.
+- **25** allocated `phase == 2` rows — **24** remaining in the inventory plus the **1** row (`巨翼龙面具`) reallocated to Phase 7 (ITEM-06).
+- **3** deferred placeholders (D-15).
+- **21** implemented entries.
+- **21** entries with `artwork_complete: false`, `code_complete: true` and `status: "unchecked"` (D-11/D-22). No Phase 2 row carries a Feishu status colour.
+
 
 ---
 
