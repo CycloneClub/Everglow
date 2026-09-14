@@ -89,7 +89,7 @@ public override void ModifyShootStats(Player player, ref Vector2 position, ref V
 ```
 
 **Design values to encode** (from `02-RESEARCH.md` §Design Data; do NOT copy blindly — use the mapped rarity):
-- 肌腱巨弓: damage 28 (`固定`→ not fixed; design 28), crit 12%, `useTime` 28, value `Item.buyPrice(gold: 4)`, `ItemRarityID.Pink` (粉), boss-only +10% and charge behaviour → **effect blocker** (no projectile art), recipe ingredients `血云母`/`血肉聚合物` → **recipe blocker** (Pitfall 2).
+- 肌腱巨弓: damage 58 (`58Ra` — the committed evidence row `["肌腱巨弓","","","58Ra","强","12%","28（慢）","血云母+血肉聚合物+玉化龙骨","4g","粉",…]` gives 伤害 58 and 使用时间 28; the `28（慢）` cell is the use time, not the damage), crit 12%, `useTime` 28, value `Item.buyPrice(gold: 4)`, `ItemRarityID.Pink` (粉), boss-only +10% and charge behaviour → **effect blocker** (no projectile art), recipe ingredients `血云母`/`血肉聚合物` → **recipe blocker** (Pitfall 2).
 - 巨石弹射装置: damage `44 R`/`Item.damage = 44`, `Item.value = Item.buyPrice(gold: 2)`, `ItemRarityID.Orange` (橙色), self-contained projectile (A4) → real `BoulderCatapult_Proj`; 150% direct / 3–6 shrapnel at 15%.
 
 **Per D-13 fallback texture** — add the same override every art-missing class uses (see Shared Patterns).
