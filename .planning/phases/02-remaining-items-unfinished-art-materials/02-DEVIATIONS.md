@@ -87,6 +87,56 @@ For the four 红月水藻 entries the inventory `localization` block is left exa
 
 `blocked` stays `false` because this is an explicit user-directed deferral, not a post-exporter failure with a named missing culture — the Phase 1 deferred-localization ledger convention. The deferral makes the strict localization coverage gate stay honestly red while the advisory `-AllowMissing` baseline remains the recorded evidence.
 
+## 5. Plan 02-02 — Biology-Design Weapon Drops
+
+### 5.1 Design values implemented
+
+| Entry id | Class | 伤害 | 击退 | 暴击 | 使用时间 | 价格 | 稀有度 | Implemented effect |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `item-weapons.misc-巨石弹射装置` | `BoulderCatapult` (+ `BoulderCatapult_Proj` / `BoulderCatapult_SubProj`) | 44 | 15 | — | 77 | 2金 -> `Item.buyPrice(gold: 2)` | 橙色 -> `ItemRarityID.Orange` | Fires its own boulder (no `Item.useAmmo`, 不消耗子弹); the direct hit totals 150% (base hit plus a 50% owner-guarded second hit); on death it bursts into 3-6 `BoulderCatapult_SubProj` at 15% damage |
+| `biology_drop-weapons.ranged-肌腱巨弓` | `TendonGreatbow` (+ `TendonGreatbow_Arrow`) | 58 | 强 | 12% | 28 | 4g -> `Item.buyPrice(gold: 4)` | 粉 -> `ItemRarityID.Pink` | Consumes arrows and fires `TendonGreatbow_Arrow`; +10% final damage against boss targets |
+| `biology_drop-weapons.summon-re01` | `RestrictionDeviceRE01` | 18 | 弱 | / | 21 | 4g -> `Item.buyPrice(gold: 4)` | 粉 -> `ItemRarityID.Pink` | Identity and stats only: no `Item.shoot` and no recipe (blockers in 5.2 / 5.3) |
+| `biology_drop-weapons.summon-腥臭的诱饵` | `ReekingBait` | — | — | — | — | 20S -> `Item.buyPrice(silver: 20)` | 蓝 -> `ItemRarityID.Blue` | Consumable summon identity only: no NPC spawn and no recipe (blockers in 5.2 / 5.3) |
+
+### 5.2 Recipe blockers
+
+No `AddRecipes` body is written for `肌腱巨弓`, `限制机` or `腥臭的诱饵`. Each design 合成方式 cell names only Phase 7 Giant Winged Dragon items that are absent from the repository, and an item-type reference to an absent type does not compile (T-02-01).
+
+| Entry id | Design 合成方式 | Absent Phase 7 types | Reason no recipe |
+| --- | --- | --- | --- |
+| `biology_drop-weapons.ranged-肌腱巨弓` | 血云母 + 血肉聚合物 + 玉化龙骨 | 血云母, 血肉聚合物, 玉化龙骨 | Giant Winged Dragon reward items, Phase 7 |
+| `biology_drop-weapons.summon-re01` | 血云母 + 血肉聚合物 + 熔炉钢 + 隐生之眼 | 血云母, 血肉聚合物, 熔炉钢, 隐生之眼 | Giant Winged Dragon reward items, Phase 7 |
+| `biology_drop-weapons.summon-腥臭的诱饵` | 血云母 + 干枯心脏 | 血云母, 干枯心脏 | Giant Winged Dragon reward items, Phase 7 |
+
+### 5.3 Effect blockers
+
+| Entry id | Unimplemented effect | Why |
+| --- | --- | --- |
+| `biology_drop-weapons.ranged-肌腱巨弓` | 按住左键蓄力拉出大弓 charge clause | The design documents no charge time, damage curve or release behaviour, so there is nothing precise to implement; the documented 对Boss单位额外造成10%伤害 clause IS implemented |
+| `biology_drop-weapons.summon-re01` | 限制无人机 summon, 聚能射线, multi-target damage splitting, 浊燃 accumulation | The summon projectile and beam types do not exist in the repository; `Item.shoot` is deliberately not set |
+| `biology_drop-weapons.summon-腥臭的诱饵` | 召唤巨翼龙 | The 巨翼龙 encounter is Phase 7; the item references no NPC type and spawns nothing |
+
+No dust or sound call runs on a dedicated server: every client-only call in `BoulderCatapult_Proj.OnKill` and in `BoulderCatapult_SubProj` is wrapped in `if (!Main.dedServ)` (T-02-04). No projectile overrides `PreDraw` or assigns `Main.projFrames` (T-02-03).
+
+### 5.4 Qualitative 击退 mapping (DD-05)
+
+The biology design's 击退 cell is qualitative (强 / 弱); no documented numeric mapping exists. The planner-chosen values keep the branch on the accepted family scale (`GreenThornBallLauncher` 5.5, `QuetzalsWish` 6, `RedAlgaeMinionStaff` 2):
+
+| Entry id | Design 击退 | `Item.knockBack` |
+| --- | --- | --- |
+| `biology_drop-weapons.ranged-肌腱巨弓` | 强 | 8f |
+| `biology_drop-weapons.summon-re01` | 弱 | 2f |
+
+Pending designer confirmation.
+
+### 5.5 Design value corrections (DD-06)
+
+An earlier draft of `02-RESEARCH.md` §Design Data reported `肌腱巨弓` 伤害 28 by misreading the `28（慢）` use-time cell as its damage. The revised RESEARCH (line 383) and the committed evidence table header and row both give 伤害 58. The implementation follows the committed `evidence/biology.xml` row: 伤害 58, 击退 强, 暴击 12%, 使用时间 28, 价格 4g, 稀有度 粉. Recorded per D-23 and T-02-08.
+
+### 5.6 Localization (D-20)
+
+The four entries' display keys remain deferred under D-20: the in-game exporter was not run and no HJSON file was created or hand-edited. Each row's `localization` block keeps `en_us: false` / `zh_hans: false` / `blocked: false` (the user-directed-deferral convention).
+
 ---
 
-*Phase 2 · plan 02-01 opened this ledger; later plans append their own rows.*
+*Phase 2 · plan 02-01 opened this ledger; plan 02-02 (biology-design weapon drops) appended §5.*

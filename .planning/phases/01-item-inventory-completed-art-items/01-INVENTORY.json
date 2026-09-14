@@ -477,7 +477,7 @@
                         "region":  "特殊：",
                         "name_en":  "",
                         "name_zh":  "肌腱巨弓",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Weapons.TendonGreatbow",
                         "feishu":  {
                                        "doc":  "biology",
                                        "table_block_id":  "Q528dhm8XopDyExdUJUcLGIMn6e",
@@ -487,7 +487,7 @@
                                        "row_color":  "neutral"
                                    },
                         "artwork_complete":  false,
-                        "code_complete":  false,
+                        "code_complete":  true,
                         "status":  "unchecked",
                         "repo_asset":  "",
                         "localization":  {
@@ -505,10 +505,12 @@
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
                                          "design code not complete (Feishu code checkbox false)",
-                                         "no repo implementation found"
+                                         "approved texture (贴图) missing from repository despite Feishu artwork checkbox; class implemented, art pending",
+                                         "recipe blocked (Phase 7 dependency absent): design 合成方式 lists 血云母 / 血肉聚合物 / 玉化龙骨, Phase 7 Giant Winged Dragon items that do not exist in the repository, so no AddRecipes body was written",
+                                         "effect blocked (missing design parameters): 按住左键蓄力拉出大弓 documents no charge time, damage curve or release behaviour"
                                      ],
                         "phase":  2,
-                        "notes":  "",
+                        "notes":  "2026-09-14 Phase 2 (plan 02-02): committed biology table row reads 伤害 58 / 击退 强 / 暴击 12% / 使用时间 28 / 价格 4g / 稀有度 粉; the qualitative 击退 强 maps to Item.knockBack = 8f (02-DEVIATIONS DD-05).",
                         "deferred":  false,
                         "deferred_reason":  ""
                     },
@@ -563,7 +565,7 @@
                         "region":  "特殊：",
                         "name_en":  "-RE01",
                         "name_zh":  "限制机",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Weapons.RestrictionDeviceRE01",
                         "feishu":  {
                                        "doc":  "biology",
                                        "table_block_id":  "Q528dhm8XopDyExdUJUcLGIMn6e",
@@ -573,7 +575,7 @@
                                        "row_color":  "neutral"
                                    },
                         "artwork_complete":  false,
-                        "code_complete":  false,
+                        "code_complete":  true,
                         "status":  "unchecked",
                         "repo_asset":  "",
                         "localization":  {
@@ -591,10 +593,12 @@
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
                                          "design code not complete (Feishu code checkbox false)",
-                                         "no repo implementation found"
+                                         "approved texture (贴图) missing from repository despite Feishu artwork checkbox; class implemented, art pending",
+                                         "recipe blocked (Phase 7 dependency absent): design 合成方式 lists 血云母 / 血肉聚合物 / 熔炉钢 / 隐生之眼, Phase 7 Giant Winged Dragon items absent from the repository",
+                                         "effect blocked (absent repository type): the 限制无人机 summon projectile, its 聚能射线 beam, multi-target damage splitting and 浊燃 accumulation do not exist in the repository; Item.shoot is deliberately not set"
                                      ],
                         "phase":  2,
-                        "notes":  "",
+                        "notes":  "2026-09-14 Phase 2 (plan 02-02): qualitative 击退 弱 maps to Item.knockBack = 2f (02-DEVIATIONS DD-05); the summon projectile is absent so Item.shoot is not set.",
                         "deferred":  false,
                         "deferred_reason":  ""
                     },
@@ -649,7 +653,7 @@
                         "region":  "特殊：",
                         "name_en":  "",
                         "name_zh":  "腥臭的诱饵",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Weapons.ReekingBait",
                         "feishu":  {
                                        "doc":  "biology",
                                        "table_block_id":  "Q528dhm8XopDyExdUJUcLGIMn6e",
@@ -659,7 +663,7 @@
                                        "row_color":  "neutral"
                                    },
                         "artwork_complete":  false,
-                        "code_complete":  false,
+                        "code_complete":  true,
                         "status":  "unchecked",
                         "repo_asset":  "",
                         "localization":  {
@@ -677,10 +681,12 @@
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
                                          "design code not complete (Feishu code checkbox false)",
-                                         "no repo implementation found"
+                                         "approved texture (贴图) missing from repository despite Feishu artwork checkbox; class implemented, art pending",
+                                         "recipe blocked (Phase 7 dependency absent): design 合成方式 lists 血云母 / 干枯心脏, Phase 7 Giant Winged Dragon items absent from the repository",
+                                         "effect blocked (absent encounter): the 巨翼龙 encounter is Phase 7; the item consumes without spawning anything and references no NPC type"
                                      ],
                         "phase":  2,
-                        "notes":  "",
+                        "notes":  "2026-09-14 Phase 2 (plan 02-02): the design row is column-sparse; 20S maps to Item.buyPrice(silver: 20) and 蓝 to ItemRarityID.Blue.",
                         "deferred":  false,
                         "deferred_reason":  ""
                     },
@@ -2783,7 +2789,7 @@
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "巨石弹射装置",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Weapons.BoulderCatapult",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "doxcnnJSAMpWWmUqUwHGBjnoX3d",
@@ -2793,7 +2799,7 @@
                                        "row_color":  "neutral"
                                    },
                         "artwork_complete":  false,
-                        "code_complete":  false,
+                        "code_complete":  true,
                         "status":  "unchecked",
                         "repo_asset":  "",
                         "localization":  {
@@ -2811,10 +2817,10 @@
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
                                          "design code not complete (Feishu code checkbox false)",
-                                         "no repo implementation found"
+                                         "approved texture (贴图) missing from repository despite Feishu artwork checkbox; class implemented, art pending"
                                      ],
                         "phase":  2,
-                        "notes":  "",
+                        "notes":  "2026-09-14 Phase 2 (plan 02-02): no blocker beyond the missing approved texture remains; BoulderCatapult and both projectiles (BoulderCatapult_Proj 150% direct hit plus 3-6 shard burst, BoulderCatapult_SubProj) are fully implemented.",
                         "deferred":  false,
                         "deferred_reason":  ""
                     },

@@ -8,21 +8,21 @@
       "mode": "full",
       "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/TendonGreatbow.cs",
       "blocker_kind": "artwork",
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "biology_drop-weapons.summon-re01",
       "mode": "full",
       "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/RestrictionDeviceRE01.cs",
       "blocker_kind": "artwork",
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "biology_drop-weapons.summon-腥臭的诱饵",
       "mode": "full",
       "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/ReekingBait.cs",
       "blocker_kind": "artwork",
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "item-weapons.misc-竹节步符",
@@ -106,7 +106,7 @@
       "mode": "full",
       "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/BoulderCatapult.cs",
       "blocker_kind": "artwork",
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "item-weapons.summon-荧光水螅召唤杖",
