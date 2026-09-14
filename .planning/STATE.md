@@ -3,18 +3,18 @@ gsd_state_version: "1.0"
 milestone: v1.0
 current_phase: 02
 current_phase_name: Remaining Items & Unfinished-Art Materials
-current_plan: 3
+current_plan: 4
 status: executing
-stopped_at: Completed 02-02-PLAN.md
-last_updated: "2026-09-14T10:26:27.583Z"
+stopped_at: Completed 02-03-PLAN.md
+last_updated: "2026-09-14T10:41:38.671Z"
 last_activity: 2026-09-14
-last_activity_desc: Phase 2 in progress — 02-02 complete (biology-design drop weapons; gate at 8/21)
-state_head: bdef8269f672ec5ddf93a2fb37831d83f79a3530
+last_activity_desc: Phase 2 in progress — 02-03 complete (snake egg use item + six art-pending shells; gate at 15/21)
+state_head: e5d43b4d4fd5fdfab3b1377507c012d5a551e782
 progress:
   total_phases: 8
   completed_phases: 1
   total_plans: 12
-  completed_plans: 9
+  completed_plans: 10
 milestone_name: milestone
 ---
 
@@ -29,20 +29,20 @@ See: `.planning/PROJECT.md` (updated 2026-09-12)
 
 ## Current Position
 
-Current Plan: 3
+Current Plan: 4
 Total Plans in Phase: 5
 Phase: 02 (Remaining Items & Unfinished-Art Materials) — EXECUTING
-Plans complete: 2 of 5 (02-01, 02-02 done; 02-03 next)
-Status: Executing
+Plans complete: 3 of 5 (02-01, 02-02, 02-03 done; 02-04 next)
+Status: Ready to execute
 Last activity: 2026-09-14 — 02-02 complete (biology-design drop weapons; gate at 8/21)
 
-Progress: [████████░░] 75%
+Progress: [█████████░] 83%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 9
+- Total plans completed: 10
 - Average duration: n/a
 - Total execution time: 0 hours
 
@@ -68,6 +68,7 @@ Progress: [████████░░] 75%
 | Phase 01 P07 | ~7min | 3 tasks | 5 files |
 | Phase 02 P01 | 17min | 3 tasks | 11 files |
 | Phase 02 P02 | 10min | 3 tasks | 11 files |
+| Phase 02 P03 | 7min | 3 tasks | 11 files |
 
 ## Accumulated Context
 
@@ -108,6 +109,9 @@ Progress: [████████░░] 75%
 - [Phase 02]: No AddRecipes body is written for TendonGreatbow/RestrictionDeviceRE01/ReekingBait because their design 合成方式 cells name only absent Phase 7 Giant Winged Dragon items; an item-type reference to an absent type is a compile error (T-02-01).
 - [Phase 02]: The qualitative 击退 强/弱 maps to Item.knockBack 8f/2f on the accepted family scale (DD-05), and TendonGreatbow damage 58 comes from the committed evidence row (DD-06), superseding the RESEARCH draft 28 (a use-time 28（慢） misread).
 - [Phase 02]: Both new projectile classes wrap every dust/sound call in if (!Main.dedServ), unlike the GreenThornLauncher analog (T-02-04); no PreDraw and no Main.projFrames (T-02-03).
+- [Phase 02]: 灵蛇玉卵 is implemented as a consumable SummonItems use item (10 gold, Blue, 12-frame swing) that spawns nothing; the Phase 7 苍翠灵蛇 encounter and the 在森雨幽谷顶部使用 location gate are recorded as one precise effect blocker (T-02-04).
+- [Phase 02]: The six plan-02-03 shells are identity-only classes (D-18) with ForestBreath's conservative defaults (20x20, 50 silver, Blue) and their family LocalizationCategory: Accessories (竹节步符/桃枝护符), MeleeWeapons (竹制武器), Vanity (竹簪子), Miscs (桃花纸鸢), Pets (熊猫宠物); no recipe, Item.shoot, UpdateAccessory or equip slot.
+- [Phase 02]: Both vanity shells live in Items/Misc (no Items/Vanity directory exists; WitheredMask precedent); 02-CLASSIFICATION.json's 竹簪子 class_file was corrected from Items/Vanity to Items/Misc (DD-07).
 
 ### Pending Todos
 
@@ -124,6 +128,7 @@ None yet.
 - Phase 1 localization is deferred by user directive: 18 completed-art items lack both-culture display keys (the plan 01-05 13 — EvilHalbertBarnacle, ArcI, RedAlgaeMagicStaff, RedAlgaeMagicSpellBook, RedAlgaeMagicWhip, CrimsonMoonSap, EmptyWaterStaff, JadeLakeRedAlgae_Item, Photophore, GreenSungloStaff, ActivatedDogStaff, RedAlgaeMinionGyroscope, RedAlgaeMinionStaff — plus the plan 01-06 carry-over 5: ArmOfGiantTree, ForestBreath, ElftigernPowder, WitheredMask, QuetzalsWish; 45/63 covered). Run the in-game OutputLocalizationHjsonItem exporter (or resolve in Phase 2/8). Recorded in 01-DEVIATIONS.md and 01-INVENTORY.json.
 
 - [Phase 02] The four biology-design weapon rows (巨石弹射装置, 肌腱巨弓, 限制机, 腥臭的诱饵) are code-complete / art-incomplete. Outstanding blockers: approved textures (all four); the TendonGreatbow charge curve; the absent Phase 7 dependencies (限制无人机/聚能射线/浊燃 system, 巨翼龙 encounter, and the 血云母/血肉聚合物/熔炉钢/隐生之眼/干枯心脏/玉化龙骨 ingredients). Runtime verification (D-21) of both weapon chains is outstanding.
+- [Phase 02] The plan-02-03 rows (灵蛇玉卵, 竹节步符, 竹制武器, 竹簪子, 桃枝护符, 桃花纸鸢（风筝）, 熊猫宠物) are code-complete / art-incomplete. Outstanding blockers: approved textures (all seven); the 苍翠灵蛇 Phase 7 encounter and its 在森雨幽谷顶部使用 location gate for 灵蛇玉卵; runtime verification (D-21) of the seven entries. Phase gate advanced to 15/21.
 
 ### Quick Tasks Completed
 
@@ -140,6 +145,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-09-14T10:26:13.792Z
-Stopped at: Completed 02-02-PLAN.md
+Last session: 2026-09-14T10:41:38.566Z
+Stopped at: Completed 02-03-PLAN.md
 Resume file: None
