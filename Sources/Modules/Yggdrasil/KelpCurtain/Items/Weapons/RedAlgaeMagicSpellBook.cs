@@ -37,7 +37,7 @@ public class RedAlgaeMagicSpellBook : SpellTomeItem
 	{
 		if (player.GetModPlayer<SpellAndSkull.GlobalItems.MagicBookPlayer>().MagicBookLevel > 0)
 		{
-			return false;
+			return false; // TODO: Adapt to the crystal skull
 		}
 		if (player.ownedProjectileCounts[type] > 0)
 		{
