@@ -92,6 +92,7 @@ Plans:
 
 **Verification needs:** Phase 1 dependency ledger; per-item source matrix; craft/loot/quest/trade/restoration checks; both localization targets for available items; `dotnet build`; blocker review.
 **Plans:** 4/5 plans executed
+**Phase 2 close-out (2026-09-14, plan 02-05):** 21 of the 24 in-scope `phase==2` rows are implemented (the 25 `phase==2` rows minus the one `巨翼龙面具` row reallocated to Phase 7 by D-16); the three `阵法修复材料` placeholders remain deferred by D-15. The 21 entries split **9 full implementations / 12 identity-only shell classes** (D-18). Every implemented entry is **code-complete and art-incomplete** (`code_complete:true`, `artwork_complete:false`, `status:"unchecked"`) with a recorded artwork/system/effect/recipe blocker and an unchecked Feishu row (D-11/D-22); localization is deferred by user directive (D-20); the runtime checks remain outstanding for the end-of-phase UAT batch (D-21). Per-entry evidence lives in `02-DEVIATIONS.md` and `02-CLASSIFICATION.json`.
 **Scope anchor:** 25 `phase:2` rows; D-15 keeps the three `阵法修复材料` placeholders `deferred` and D-16 reallocates `巨翼龙面具` to Phase 7 (ITEM-06), so 21 entries are implemented — 9 full implementations and 12 identity-only shell classes (D-18), all code-complete / art-incomplete with a recorded blocker and an unchecked Feishu row (D-22).
 Plans:
 
