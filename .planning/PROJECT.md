@@ -70,6 +70,7 @@ After each implementation item is individually verified:
 3. Only rows whose artwork and code checkboxes are both complete may receive a status color. Use green for an exact match; use the same yellow background on every cell for a conflict or known exception: `rgb(255,255,204)`. Keep each checkbox truthful to the specific sub-deliverable, and explain every yellow reason with a local Feishu comment and in the user-facing summary.
 4. Keep unimplemented or blocked rows unchecked and without a completion-status background. The legacy light-orange texture-column and light-green code-column fills are not completion status and must not be interpreted or reported as such.
 5. Code-only implementation without approved artwork is not a completed or partial row for color purposes: keep the artwork checkbox false, keep the code checkbox truthful, and leave the entire row uncolored until the artwork exists.
+6. **Conflict resolution:** when implemented code conflicts with the design, follow the code unless the Feishu row is marked yellow with a corresponding explanation. A yellow row carrying its explanation overrides the implemented value; otherwise the implemented code wins and the design row is the item to correct.
 
 The repository planning artifacts are the audit trail for the comparison; the Feishu documents remain the design-status source of truth. Use the `lark-doc` update workflow with block IDs obtained from XML full fetches for status writes.
 
@@ -79,6 +80,7 @@ The repository planning artifacts are the audit trail for the comparison; the Fe
 - **Architecture:** Keep Core Terraria-independent, place tML-facing behavior in Function or modules, and keep Kelp Curtain-specific code under the Yggdrasil module boundaries.
 - **Compatibility:** Treat content names, resource paths, world behavior, network state, and persisted player/world data as compatibility-sensitive.
 - **Verification:** Run `dotnet build` for code changes; client, dedicated-server, and multiplayer behavior require the runtime checks appropriate to the changed feature.
+- **Conflict resolution:** when implemented code conflicts with the design, follow the code unless the Feishu row is marked yellow with a corresponding explanation.
 - **Resources:** Do not create placeholder art or modify existing binary/art assets without an explicit requirement and approval.
 - **Scope:** Include all current-milestone second-layer design content, while retaining explicit freedom to add new plans later as design decisions become available.
 - **Tracking:** Planning documents and design-source status are tracked; each accepted item must have an auditable implementation and verification result.
@@ -92,6 +94,7 @@ The repository planning artifacts are the audit trail for the comparison; the Fe
 | Include bosses, special encounters, and their full reward chains | The milestone is intended to complete the designed layer rather than only its common content | — Pending |
 | Verify at publishable quality | A completed content layer must build and function in the client, with multiplayer checks where relevant | — Pending |
 | Synchronize design status item by item | Per-item status keeps partial implementation and design conflicts visible | — Pending |
+| Follow the implemented code when it conflicts with the design, unless the Feishu row is yellow with a corresponding explanation | Live testing showed the Feishu design numbers were unreasonable; the original code values were correct | Reverted Phase 1 numeric edits (2026-09-14) |
 
 | Defer the live multiplayer test of ArmOfGiantTree to a later session | Live client testing was inconvenient at phase-completion time; the SC3 fix is source-verified and offline-gated | Deferred (Phase 1, user-authorized override) |
 
@@ -113,4 +116,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-09-14 after Phase 1*
+*Last updated: 2026-09-14 after Phase 1 follow-the-code value reversion*

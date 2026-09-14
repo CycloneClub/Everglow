@@ -194,3 +194,43 @@ Closes the single blocking SC3 gap recorded by `01-VERIFICATION.md` plus its two
 - `.planning/phases/01-item-inventory-completed-art-items/scripts/check-armofgianttree-charge.ps1` (new)
 
 No `.png` or other binary/art asset, no `Localization/**` file, and no Feishu design source was touched (QUAL-05). `scripts/parse-design-xml.ps1` was not re-run. The remaining deferred items (localization for the 18 completed-art entries, the recorded artwork/effect blockers, and Green Tundra label resolution) stay scheduled for Phases 2/6/7/8 and are not part of this closure.
+
+## Reversion Ledger (2026-09-14)
+
+Entry type: `reversion` — a Phase 1 design value superseded by the developer's follow-the-code ruling, not a defect repair. Rule: when implemented code conflicts with the design, follow the code unless the Feishu row is marked yellow with a corresponding explanation. Under this rule the Phase 1 numeric parity edits were reverted to the pre-Phase-1 code baseline at commit `5c025ff7e` (developer decision of 2026-09-14; carried forward as D-23 in `02-CONTEXT.md`).
+
+Columns: `File | Pre-revert (Phase 1) | Reverted to (5c025ff7e)`.
+
+| File | Pre-revert (Phase 1) | Reverted to (5c025ff7e) |
+| --- | --- | --- |
+| `Weapons/MossySpell.cs` | damage 29, mana 12, useTime/useAnimation 50, rare Orange | damage 13, mana 4, useTime/useAnimation 16, rare Green |
+| `Weapons/ActivatedDogStaff.cs` | damage 16, knockBack 4, useTime 29, rare Orange | damage 8, knockBack 1.1, useTime 20, rare Green |
+| `Weapons/UnderwaterTreasury/ArcI.cs` | damage 21, knockBack 1, crit 14 | damage 39, knockBack 6, crit 8 |
+| `Weapons/DevilHeart/DevilHeartBayonet.cs` | damage 13 | damage 22 |
+| `Weapons/DevilHeart/DevilHeartGyroscope.cs` | damage 24 | damage 17 |
+| `Weapons/LegumeGyroscope.cs` | knockBack 0.8, value 20000, rare Blue | knockBack 0.2, value 11700, rare Green |
+| `Weapons/RedAlgaeMinionGyroscope.cs` | knockBack 1.5, useTime/useAnimation 42 | knockBack 0.2, useTime/useAnimation 16 |
+| `Weapons/RedAlgaeMagicWhip.cs` | knockBack 1.5, useAnimation/useTime 22 | no knockBack override, useAnimation/useTime 30 |
+| `Weapons/RedAlgaeMagicSpellBook.cs` | useTime/useAnimation 6 | useTime/useAnimation 4 |
+| `Weapons/RazorbeakBow.cs` | useTime 11 | useTime 12 |
+| `Ammos/HuskburstBullet.cs` | damage 6, knockBack 1.15, shootSpeed 18 | damage 10, no knockBack override, shootSpeed 16 |
+| `Accessories/ThornTurtleShell.cs` | maxRunSpeed penalty 10% | maxRunSpeed penalty 5% |
+| `Accessories/AntiCorrosiveSole.cs` | value `buyPrice(gold:1)` | value `sellPrice(gold:1)` |
+| `Accessories/CorrodedPearl.cs` | value `buyPrice(gold:1)` | value `sellPrice(gold:1)` |
+| `Accessories/ForestMino.cs` | value `buyPrice(gold:2)` | value `sellPrice(gold:2)` |
+| `Weapons/MeatLantern.cs` | value `buyPrice(gold:1)` | value `sellPrice(gold:1)` |
+| `Weapons/BladeOfGreenMoss.cs` | value `buyPrice(silver:80)` | value `sellPrice(gold:1)` |
+| `Weapons/GreenSungloStaff.cs` (special case: value only; `LocalizationCategory` kept) | value `buyPrice(silver:80)` | value `sellPrice(0, 2, 0, 0)`; `LocalizationCategory => LocalizationUtils.Categories.MagicWeapons` retained |
+| `Weapons/GreenVineWhip.cs` | value 10000, rare Orange | value `sellPrice(0, 1, 0, 0)`, rare Blue |
+| `PermanentBoosters/JadeFruit.cs` | value 2500 | value 15000 |
+| `Placeables/AlgaeExtractor_Item.cs` | value 20000 (2 gold) | value unset (0) |
+| `Armors/Ruin/RuinMask.cs` | rare Green | rare Gray |
+| `Armors/Ruin/RuinMagicRobe.cs` | rare Green | rare Gray |
+| `Armors/Ruin/RuinLeggings.cs` | rare Green | rare Gray |
+| `Materials/DevilHeartIronBar_Item.cs` | rare Green | rare White (unset) |
+| `Placeables/DevilHeartIronOre_Item.cs` | rare Green | rare White (unset) |
+| `Placeables/JadeizedBone_Item.cs` | rare Green | rare White (unset) |
+
+Total reverted files: 27 (26 full reverts to `5c025ff7e` plus the `GreenSungloStaff` value-only special case). The kept non-numeric Phase 1 changes (four DevilHeart armor recipes, added `LocalizationCategory` overrides, and the `ShellMolluscsBreastPlate` comment correction) are unaffected.
+
+Machine mirror: `01-INVENTORY.json` `deviations[]` (design deviations) and `phase1_actions[]` (process/routing actions) are **unchanged** by this reversion — the reversion supersedes those concrete field values at the developer-decision level and is recorded here and in `01-CHANGE-RECORD.md`, `.planning/PROJECT.md`, and `02-CONTEXT.md` (D-23) rather than by rewriting the machine inventory.
