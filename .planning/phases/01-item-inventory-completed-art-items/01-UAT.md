@@ -37,14 +37,14 @@ expected: No placeholder art recorded as complete; unresolved label remains unme
 why_human: Plan-02 task-3 human-check; source-comparison judgment.
 result: pass
 
-### 5. ArmOfGiantTree per-stack/per-player charge and server-authoritative shockwave
+### Deferred (not a phase test — moved out of the test list): ArmOfGiantTree per-stack/per-player charge and server-authoritative shockwave
 test: In a tModLoader client (singleplayer and a 2-client multiplayer session), exercise `ArmOfGiantTree`: hold one stack and charge, switch to a second same-type stack (must start uncharged), have two players charge simultaneously (no shared charge), then release at full charge and confirm the area shockwave is applied server-side and propagates to clients via `npc.netUpdate`. Optionally obtain/use the five Phase 1 carry-over items and confirm their recorded dispositions.
 expected: Charge is isolated per stack and per player; the full-charge smash delivers 200% charged hit + 100% shockwave with the retract lock; shockwave damage is authoritative and replicates.
 why_human: Three plan-01-07 behavior-unverified truths plus the plan-01-06 backstop truth — no offline script can prove multiplayer runtime behavior.
 result: skipped
-reason: "Deferred follow-up: live tModLoader client testing deferred (2026-09-13) — ArmOfGiantTree per-stack/per-player charge isolation and server-authoritative shockwave propagation not yet exercised."
+reason: "Deferred follow-up (user directive 2026-09-13): live tModLoader client testing deferred — ArmOfGiantTree per-stack/per-player charge isolation and server-authoritative shockwave propagation not yet exercised. Phase 1 was completed on explicit user authorization with this runtime check outstanding; offline evidence (all gates + Release build) is green and the SC3 source-level fix was independently verified."
 
-### 6. Advisory code-review disposition (WR-01/WR-02)
+### 5. Advisory code-review disposition (WR-01/WR-02)
 test: Review the two new advisory findings in `01-REVIEW.md`: WR-01 (the `ReleaseSmash` handler does not require `Charge >= MaxChargeFrames`) and WR-02 (`ArmOfGiantTreeChargedSlot` is not synced, so the replicated charge has no durable authoritative consumer).
 expected: Either accept them as known client-authoritative limitations (charge accumulation is inherently client-driven) with anti-cheat hardening scheduled to Phase 8 (QUAL-03), or create a follow-up plan.
 why_human: Scoping/risk judgment; the proposed one-line Charge gate is itself bypassable because the charge value is client-supplied, so a durable fix needs server-side charge tracking (out of plan 01-07 scope).
@@ -53,20 +53,21 @@ note: "User (2026-09-13): accepted as a known client-authoritative limitation �
 
 ## Summary
 
-total: 6
+total: 5
 passed: 5
 issues: 0
 pending: 0
-skipped: 1
+skipped: 0
 blocked: 0
 
 ## Gaps
 
 ## Deferred Follow-Ups
 
-- test: 5
-  idea: "Live multiplayer verification of ArmOfGiantTree per-stack/per-player charge isolation and server-authoritative shockwave propagation — run in a tModLoader client (singleplayer + 2-client) when convenient."
+- item: "ArmOfGiantTree live run — per-stack/per-player charge isolation + server-authoritative shockwave propagation"
+  idea: "Run in a tModLoader client (singleplayer + 2-client multiplayer) when convenient and report back."
   deferred_at: 2026-09-13
-- test: 6
-  idea: "Optional anti-cheat hardening of the client-authoritative ReleaseSmash signal (WR-01) requires durable server-side charge tracking; schedule to Phase 8 (QUAL-03) if ever desired."
+  authorized_by: "explicit user directive (live testing inconvenient at completion time)"
+- item: "Optional anti-cheat hardening of the client-authoritative ReleaseSmash signal (WR-01)"
+  idea: "Requires durable server-side charge tracking; schedule to Phase 8 (QUAL-03) if ever desired."
   deferred_at: 2026-09-13
