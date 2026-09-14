@@ -91,7 +91,7 @@ Plans:
   4. Each accepted remaining item has an individual XML-full-fetch comparison and an evidence record that supports green for both-checkbox-complete exact completion, yellow for both-checkbox-complete conflicts or known exceptions, and unchecked (no colour) for work with an incomplete checkbox or a blocker.
 
 **Verification needs:** Phase 1 dependency ledger; per-item source matrix; craft/loot/quest/trade/restoration checks; both localization targets for available items; `dotnet build`; blocker review.
-**Plans:** 4/5 plans executed
+**Plans:** 5/5 plans executed
 **Phase 2 close-out (2026-09-14, plan 02-05):** 21 of the 24 in-scope `phase==2` rows are implemented (the 25 `phase==2` rows minus the one `巨翼龙面具` row reallocated to Phase 7 by D-16); the three `阵法修复材料` placeholders remain deferred by D-15. The 21 entries split **9 full implementations / 12 identity-only shell classes** (D-18). Every implemented entry is **code-complete and art-incomplete** (`code_complete:true`, `artwork_complete:false`, `status:"unchecked"`) with a recorded artwork/system/effect/recipe blocker and an unchecked Feishu row (D-11/D-22); localization is deferred by user directive (D-20); the runtime checks remain outstanding for the end-of-phase UAT batch (D-21). Per-entry evidence lives in `02-DEVIATIONS.md` and `02-CLASSIFICATION.json`.
 **Scope anchor:** 25 `phase:2` rows; D-15 keeps the three `阵法修复材料` placeholders `deferred` and D-16 reallocates `巨翼龙面具` to Phase 7 (ITEM-06), so 21 entries are implemented — 9 full implementations and 12 identity-only shell classes (D-18), all code-complete / art-incomplete with a recorded blocker and an unchecked Feishu row (D-22).
 Plans:
@@ -114,7 +114,7 @@ Plans:
 
 **Wave 5** *(blocked on Wave 4 completion)*
 
-- [ ] 02-05-PLAN.md — Consolidated deviation/blocker ledger, validation map, full Phase 2 gate chain (ITEM-01…ITEM-04)
+- [x] 02-05-PLAN.md — Consolidated deviation/blocker ledger, validation map, full Phase 2 gate chain (ITEM-01…ITEM-04)
 
 ### Phase 3: Completed-Art Ordinary Monsters
 
@@ -221,7 +221,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8. Th
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Item Inventory & Completed-Art Items | 7/7 | Complete    | 2026-09-14 |
-| 2. Remaining Items & Unfinished-Art Materials | 4/5 | In Progress|  |
+| 2. Remaining Items & Unfinished-Art Materials | 5/5 | In Progress|  |
 | 3. Completed-Art Ordinary Monsters | 0/TBD | Not started | - |
 | 4. Remaining Ordinary Monsters | 0/TBD | Not started | - |
 | 5. Completed-Art Terrain & Structures | 0/TBD | Not started | - |
