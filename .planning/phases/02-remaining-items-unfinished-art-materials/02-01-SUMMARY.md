@@ -63,10 +63,10 @@ coverage:
     description: "The 红月水藻 four-piece armor set exists as full ModItem implementations that load with no approved art, register their equip slots against the shared fallback, and apply the documented per-piece and set effects"
     requirement: "ITEM-02"
     verification:
-      - kind: automated
+      - kind: integration
         ref: "dotnet build /p:Configuration=Release /p:WarningLevel=0 (exit 0, 0 errors)"
         status: pass
-      - kind: automated
+      - kind: integration
         ref: "pwsh -File .planning/phases/02-remaining-items-unfinished-art-materials/scripts/check-phase2.ps1 (OK 4/21)"
         status: pass
     human_judgment: true
