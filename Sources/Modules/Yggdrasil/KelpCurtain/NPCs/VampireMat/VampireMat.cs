@@ -89,6 +89,16 @@ public class VampireMat : ModNPC
 		NPC.aiStyle = -1;
 	}
 
+	private void SpawnAttackProjectile(Vector2 position, Vector2 velocity, int type, int damage, float knockback, float initialRotation = 0)
+	{
+		if (NetUtils.IsClient)
+		{
+			return;
+		}
+		Projectile.NewProjectile(NPC.GetSource_FromAI(), position, velocity, type, damage, knockback,
+			Owner: Main.myPlayer, ai0: NPC.target, ai1: NPC.whoAmI, ai2: initialRotation);
+	}
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		NPC.localAI[0] = 0;
@@ -404,35 +414,36 @@ public class VampireMat : ModNPC
 		{
 			if (k % 7 == 0)
 			{
-				Projectile proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<VampireMat_Tentacle>(), 88, 5, NPC.target);
+				float rotation = 0;
 				int number = projRots[Main.rand.Next(projRots.Count)];
 				switch (number)
 				{
 					case 0:
-						proj.rotation = -15.8f / 360f * MathHelper.TwoPi;
+						rotation = -15.8f / 360f * MathHelper.TwoPi;
 						break;
 					case 1:
-						proj.rotation = 25.54f / 360f * MathHelper.TwoPi;
+						rotation = 25.54f / 360f * MathHelper.TwoPi;
 						break;
 					case 2:
-						proj.rotation = 84.36f / 360f * MathHelper.TwoPi;
+						rotation = 84.36f / 360f * MathHelper.TwoPi;
 						break;
 					case 3:
-						proj.rotation = 143.07f / 360f * MathHelper.TwoPi;
+						rotation = 143.07f / 360f * MathHelper.TwoPi;
 						break;
 					case 4:
-						proj.rotation = -162.52f / 360f * MathHelper.TwoPi;
+						rotation = -162.52f / 360f * MathHelper.TwoPi;
 						break;
 					case 5:
-						proj.rotation = -114.61f / 360f * MathHelper.TwoPi;
+						rotation = -114.61f / 360f * MathHelper.TwoPi;
 						break;
 					case 6:
-						proj.rotation = -59.09f / 360f * MathHelper.TwoPi;
+						rotation = -59.09f / 360f * MathHelper.TwoPi;
 						break;
 				}
+				SpawnAttackProjectile(NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<VampireMat_Tentacle>(), 88, 5, rotation);
 				for (int j = 0; j < 2; j++)
 				{
-					Projectile proj_tusk = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, new Vector2(4, 0).RotatedBy((j - 0.5f) * 0.6f + proj.rotation), ModContent.ProjectileType<VampireMat_Attack_Proj_Tusk>(), 55, 2.5f, NPC.target);
+					SpawnAttackProjectile(NPC.Center, new Vector2(4, 0).RotatedBy((j - 0.5f) * 0.6f + rotation), ModContent.ProjectileType<VampireMat_Attack_Proj_Tusk>(), 55, 2.5f);
 				}
 				projRots.Remove(number);
 			}
@@ -483,7 +494,7 @@ public class VampireMat : ModNPC
 			}
 			if (k == 25)
 			{
-				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, toTarget.NormalizeSafe() * 6f, ModContent.ProjectileType<VampireMat_Attack_Proj_Ball>(), 48, 2.5f, Main.myPlayer);
+				SpawnAttackProjectile(NPC.Center, toTarget.NormalizeSafe() * 6f, ModContent.ProjectileType<VampireMat_Attack_Proj_Ball>(), 48, 2.5f);
 				NPC.velocity -= toTarget.NormalizeSafe() * 12f;
 			}
 			NPC.velocity *= 0.9f;
@@ -539,35 +550,36 @@ public class VampireMat : ModNPC
 		{
 			if (k % 5 == 0)
 			{
-				Projectile proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<VampireMat_Tentacle>(), 88, 5, NPC.target);
+				float rotation = 0;
 				int number = projRots[Main.rand.Next(projRots.Count)];
 				switch (number)
 				{
 					case 0:
-						proj.rotation = -15.8f / 360f * MathHelper.TwoPi;
+						rotation = -15.8f / 360f * MathHelper.TwoPi;
 						break;
 					case 1:
-						proj.rotation = 25.54f / 360f * MathHelper.TwoPi;
+						rotation = 25.54f / 360f * MathHelper.TwoPi;
 						break;
 					case 2:
-						proj.rotation = 84.36f / 360f * MathHelper.TwoPi;
+						rotation = 84.36f / 360f * MathHelper.TwoPi;
 						break;
 					case 3:
-						proj.rotation = 143.07f / 360f * MathHelper.TwoPi;
+						rotation = 143.07f / 360f * MathHelper.TwoPi;
 						break;
 					case 4:
-						proj.rotation = -162.52f / 360f * MathHelper.TwoPi;
+						rotation = -162.52f / 360f * MathHelper.TwoPi;
 						break;
 					case 5:
-						proj.rotation = -114.61f / 360f * MathHelper.TwoPi;
+						rotation = -114.61f / 360f * MathHelper.TwoPi;
 						break;
 					case 6:
-						proj.rotation = -59.09f / 360f * MathHelper.TwoPi;
+						rotation = -59.09f / 360f * MathHelper.TwoPi;
 						break;
 				}
+				SpawnAttackProjectile(NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<VampireMat_Tentacle>(), 88, 5, rotation);
 				for (int j = 0; j < 2; j++)
 				{
-					Projectile proj_tusk = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, new Vector2(6, 0).RotatedBy((j - 0.5f) * 0.6f + proj.rotation), ModContent.ProjectileType<VampireMat_Attack_Proj_Tusk>(), 55, 2.5f, NPC.target);
+					SpawnAttackProjectile(NPC.Center, new Vector2(6, 0).RotatedBy((j - 0.5f) * 0.6f + rotation), ModContent.ProjectileType<VampireMat_Attack_Proj_Tusk>(), 55, 2.5f);
 				}
 				projRots.Remove(number);
 			}
@@ -632,14 +644,14 @@ public class VampireMat : ModNPC
 		}
 		TowardScreenAndAttacking = true;
 		yield return new WaitForFrames(6);
-		Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<VampireMat_Attack_Proj_Absorb>(), 1, 0, NPC.target);
+		SpawnAttackProjectile(NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<VampireMat_Attack_Proj_Absorb>(), 1, 0);
 		switch (VortexStyle)
 		{
 			case 0:
-				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<VampireMat_Attack_Proj_Ball_In_AbsorbVortex>(), 88, 5, NPC.target);
+				SpawnAttackProjectile(NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<VampireMat_Attack_Proj_Ball_In_AbsorbVortex>(), 88, 5);
 				break;
 			case 1:
-				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<VampireMat_Attack_Proj_Ball_In_AbsorbVortex2>(), 88, 5, NPC.target);
+				SpawnAttackProjectile(NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<VampireMat_Attack_Proj_Ball_In_AbsorbVortex2>(), 88, 5);
 				break;
 		}
 		VortexStyle++;
@@ -716,8 +728,7 @@ public class VampireMat : ModNPC
 				}
 				possiblePos.Remove(releasePos);
 				Vector2 truePos = releasePos + KelpCurtainGeneration.VampireMatCaveCenter - new Vector2(1000);
-				Projectile proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), truePos, Vector2.zeroVector, ModContent.ProjectileType<VampireMat_Tentacle_FromBackground>(), 88, 5, NPC.target);
-				proj.rotation = (player.Center - truePos).ToRotationSafe();
+				SpawnAttackProjectile(truePos, Vector2.zeroVector, ModContent.ProjectileType<VampireMat_Tentacle_FromBackground>(), 88, 5, (player.Center - truePos).ToRotationSafe());
 			}
 			yield return new SkipThisFrame();
 		}

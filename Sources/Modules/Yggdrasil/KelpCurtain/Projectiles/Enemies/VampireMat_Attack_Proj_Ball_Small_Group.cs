@@ -1,12 +1,15 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Commons.Graphics;
 using Everglow.Yggdrasil.KelpCurtain.NPCs.VampireMat;
-using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Enemies;
 
 public class VampireMat_Attack_Proj_Ball_Small_Group : ModProjectile
 {
+	public int TargetPlayerIndex => (int)Projectile.ai[0];
+
+	public int ParentNPCIndex => (int)Projectile.ai[1];
+
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
 
 	public struct SubProj
@@ -35,8 +38,15 @@ public class VampireMat_Attack_Proj_Ball_Small_Group : ModProjectile
 		ProjectileID.Sets.DrawScreenCheckFluff[Type] = 4096;
 	}
 
-	public override void OnSpawn(IEntitySource source)
+	private bool initialized;
+
+	public override bool PreAI()
 	{
+		if (initialized)
+		{
+			return true;
+		}
+		initialized = true;
 		for (int k = 0; k < 24; k++)
 		{
 			var sproj = default(SubProj);
@@ -48,6 +58,7 @@ public class VampireMat_Attack_Proj_Ball_Small_Group : ModProjectile
 			sproj.Timer = 0;
 			SubProjs.Add(sproj);
 		}
+		return true;
 	}
 
 	public override void AI()

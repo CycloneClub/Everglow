@@ -7,7 +7,24 @@ namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Enemies;
 
 public class VampireMat_Tentacle : ModProjectile
 {
-	public NPC ParentVampireMat = null;
+	public int TargetPlayerIndex => (int)Projectile.ai[0];
+
+	public int ParentNPCIndex => (int)Projectile.ai[1];
+
+	private float InitialRotation => Projectile.ai[2];
+
+	public NPC ParentVampireMat
+	{
+		get
+		{
+			if (ParentNPCIndex < 0 || ParentNPCIndex >= Main.maxNPCs)
+			{
+				return null;
+			}
+			NPC parent = Main.npc[ParentNPCIndex];
+			return parent is { active: true, ModNPC: VampireMat } ? parent : null;
+		}
+	}
 
 	public int Timer;
 
@@ -28,19 +45,7 @@ public class VampireMat_Tentacle : ModProjectile
 
 	public override void OnSpawn(IEntitySource source)
 	{
-		if (ParentVampireMat is null)
-		{
-			var npc = NPCUtils.FindNearest(Projectile.Center, ModContent.NPCType<VampireMat>());
-			if (npc is not null)
-			{
-				ParentVampireMat = npc;
-			}
-			else
-			{
-				Projectile.active = false;
-				return;
-			}
-		}
+		Projectile.rotation = InitialRotation;
 	}
 
 	public override void AI()
@@ -50,6 +55,7 @@ public class VampireMat_Tentacle : ModProjectile
 			Projectile.active = false;
 			return;
 		}
+		Projectile.rotation = InitialRotation;
 		Projectile.Center = ParentVampireMat.Center;
 		Timer++;
 	}

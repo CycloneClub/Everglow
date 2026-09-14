@@ -6,6 +6,10 @@ namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Enemies;
 
 public class VampireMat_Attack_Proj_Ball : ModProjectile
 {
+	public int TargetPlayerIndex => (int)Projectile.ai[0];
+
+	public int ParentNPCIndex => (int)Projectile.ai[1];
+
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
 
 	public override void SetDefaults()
@@ -23,9 +27,12 @@ public class VampireMat_Attack_Proj_Ball : ModProjectile
 
 	public override void AI()
 	{
-		Lighting.AddLight(Projectile.Center, new Vector3(1f, 0.1f, 0.2f) * Projectile.scale * 5f);
-		var playerWhoAmI = Player.FindClosest(Projectile.Center, 0, 0);
-		if (playerWhoAmI < 0)
+		if (!Main.dedServ)
+		{
+			Lighting.AddLight(Projectile.Center, new Vector3(1f, 0.1f, 0.2f) * Projectile.scale * 5f);
+		}
+		int playerWhoAmI = TargetPlayerIndex;
+		if (playerWhoAmI < 0 || playerWhoAmI >= Main.maxPlayers || Main.player[playerWhoAmI] is not { active: true, dead: false })
 		{
 			return;
 		}
@@ -46,13 +53,18 @@ public class VampireMat_Attack_Proj_Ball : ModProjectile
 
 	public override void OnKill(int timeLeft)
 	{
+		if (NetUtils.IsClient)
+		{
+			return;
+		}
+
 		if (Main.rand.NextBool())
 		{
-			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<VampireMat_Attack_Proj_Ball_Small_Group>(), 36, 2.5f, Main.myPlayer);
+			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<VampireMat_Attack_Proj_Ball_Small_Group>(), 36, 2.5f, Main.myPlayer, TargetPlayerIndex, ParentNPCIndex);
 		}
 		else
 		{
-			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<VampireMat_Attack_Proj_Ball_Small_Group_1>(), 36, 2.5f, Main.myPlayer);
+			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<VampireMat_Attack_Proj_Ball_Small_Group_1>(), 36, 2.5f, Main.myPlayer, TargetPlayerIndex, ParentNPCIndex);
 		}
 	}
 

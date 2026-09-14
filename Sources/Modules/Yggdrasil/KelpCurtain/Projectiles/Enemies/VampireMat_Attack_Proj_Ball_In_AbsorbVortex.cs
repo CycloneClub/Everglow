@@ -1,12 +1,15 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Commons.Graphics;
 using Everglow.Yggdrasil.KelpCurtain.NPCs.VampireMat;
-using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Enemies;
 
 public class VampireMat_Attack_Proj_Ball_In_AbsorbVortex : ModProjectile
 {
+	public int TargetPlayerIndex => (int)Projectile.ai[0];
+
+	public int ParentNPCIndex => (int)Projectile.ai[1];
+
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
 
 	public int Timer = 0;
@@ -40,8 +43,15 @@ public class VampireMat_Attack_Proj_Ball_In_AbsorbVortex : ModProjectile
 		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Type] = true;
 	}
 
-	public override void OnSpawn(IEntitySource source)
+	private bool initialized;
+
+	public override bool PreAI()
 	{
+		if (initialized)
+		{
+			return true;
+		}
+		initialized = true;
 		for (int k = 0; k < 15; k++)
 		{
 			for (int j = 0; j < 8; j++)
@@ -56,6 +66,7 @@ public class VampireMat_Attack_Proj_Ball_In_AbsorbVortex : ModProjectile
 				SubProjs_Style2.Add(sproj);
 			}
 		}
+		return true;
 	}
 
 	public override void AI()

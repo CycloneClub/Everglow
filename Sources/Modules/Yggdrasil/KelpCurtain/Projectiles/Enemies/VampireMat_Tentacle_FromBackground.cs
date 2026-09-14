@@ -6,7 +6,24 @@ namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Enemies;
 
 public class VampireMat_Tentacle_FromBackground : ModProjectile
 {
-	public NPC ParentVampireMat = null;
+	public int TargetPlayerIndex => (int)Projectile.ai[0];
+
+	public int ParentNPCIndex => (int)Projectile.ai[1];
+
+	private float InitialRotation => Projectile.ai[2];
+
+	public NPC ParentVampireMat
+	{
+		get
+		{
+			if (ParentNPCIndex < 0 || ParentNPCIndex >= Main.maxNPCs)
+			{
+				return null;
+			}
+			NPC parent = Main.npc[ParentNPCIndex];
+			return parent is { active: true, ModNPC: VampireMat } ? parent : null;
+		}
+	}
 
 	public int Timer = 0;
 
@@ -31,19 +48,7 @@ public class VampireMat_Tentacle_FromBackground : ModProjectile
 
 	public override void OnSpawn(IEntitySource source)
 	{
-		if (ParentVampireMat is null)
-		{
-			var npc = NPCUtils.FindNearest(Projectile.Center, ModContent.NPCType<VampireMat>());
-			if (npc is not null)
-			{
-				ParentVampireMat = npc;
-			}
-			else
-			{
-				Projectile.active = false;
-				return;
-			}
-		}
+		Projectile.rotation = InitialRotation;
 	}
 
 	public override void AI()
@@ -53,6 +58,10 @@ public class VampireMat_Tentacle_FromBackground : ModProjectile
 			Projectile.active = false;
 			return;
 		}
+		if (Timer == 0)
+		{
+			Projectile.rotation = InitialRotation;
+		}
 		Timer++;
 		if (Timer < 10 || Timer > 90)
 		{
@@ -60,8 +69,8 @@ public class VampireMat_Tentacle_FromBackground : ModProjectile
 		}
 		else
 		{
-			int playerIndex = Player.FindClosest(Projectile.Center, 1, 1);
-			if (playerIndex >= 0)
+			int playerIndex = TargetPlayerIndex;
+			if (playerIndex >= 0 && playerIndex < Main.maxPlayers && Main.player[playerIndex] is { active: true, dead: false })
 			{
 				Player target = Main.player[playerIndex];
 				Projectile.rotation = (target.Center - Projectile.Center).ToRotationSafe();

@@ -8,6 +8,10 @@ namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Enemies;
 
 public class VampireMat_Attack_Proj_Absorb : ModProjectile
 {
+	public int TargetPlayerIndex => (int)Projectile.ai[0];
+
+	public int ParentNPCIndex => (int)Projectile.ai[1];
+
 	public int Timer = 0;
 
 	public float Fade = 1f;
