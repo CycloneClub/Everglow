@@ -1860,7 +1860,7 @@ public class KelpCurtainGeneration
 					}
 				}
 			}
-			List<int> noSolidMazeTile = WaterDeliveryHoleTiles;
+			List<int> noSolidMazeTile = new List<int>(WaterDeliveryHoleTiles);
 			noSolidMazeTile.Add(ModContent.TileType<CrimsonMoonAlgea>());
 			noSolidMazeTile.Add(ModContent.TileType<CrimsonMoonAlgea_fruit>());
 			noSolidMazeTile.Add(ModContent.TileType<JadeLakeBloodVineAlgea>());

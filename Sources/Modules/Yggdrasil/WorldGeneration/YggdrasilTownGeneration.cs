@@ -350,8 +350,8 @@ public class YggdrasilTownGeneration
 		Minerization(40, Main.maxTilesY - 820, Main.maxTilesX / 2 + 50, Main.maxTilesY - 50);
 		for (int i = 0; i < 200; i++)
 		{
-			Vector2 pos = new Vector2(Main.rand.Next(40, Main.maxTilesX / 2 + 50), Main.rand.Next(Main.maxTilesY - 700, Main.maxTilesY - 20));
-			FillLiquid(pos.ToTileCoordinates());
+			Point pos = new Point(Main.rand.Next(40, Main.maxTilesX / 2 + 50), Main.rand.Next(Main.maxTilesY - 700, Main.maxTilesY - 20));
+			FillLiquid(pos);
 		}
 	}
 
