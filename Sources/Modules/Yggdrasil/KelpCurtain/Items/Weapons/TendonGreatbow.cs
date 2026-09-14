@@ -1,5 +1,4 @@
 using Everglow.Yggdrasil.KelpCurtain.Projectiles.Ranged;
-using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Items.Weapons;
 
@@ -35,13 +34,12 @@ public class TendonGreatbow : ModItem
 		Item.shootSpeed = 12f;
 	}
 
-	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+	public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
 	{
-		if (type == ProjectileID.WoodenArrowFriendly)
-		{
-			type = ModContent.ProjectileType<TendonGreatbow_Arrow>();
-		}
-		return true;
+		// Design/UAT: the greatbow fires its own tendon arrow (with the +10% boss clause
+		// in TendonGreatbow_Arrow) for any arrow ammo, so the substitution must happen on
+		// the `ref int type` the spawn call reads (ModItem.Shoot receives `type` by value).
+		type = ModContent.ProjectileType<TendonGreatbow_Arrow>();
 	}
 
 	// The design 合成方式 cell lists 血云母 + 血肉聚合物 + 玉化龙骨. All three are Phase 7
