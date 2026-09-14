@@ -1,20 +1,14 @@
 ---
-status: testing
+status: partial
 phase: 01-item-inventory-completed-art-items
 source: [01-VERIFICATION.md]
 started: 2026-09-12T20:20:17Z
-updated: 2026-09-13T08:07:21Z
+updated: 2026-09-13T09:10:00Z
 ---
 
 ## Current Test
 
-number: 5
-name: ArmOfGiantTree per-stack/per-player charge and server-authoritative shockwave
-expected: |
-  Two same-type ArmOfGiantTree stacks charge independently (switching stacks starts the
-  other uncharged), two players do not share charge, and the full-charge shockwave is
-  applied server-side and propagates via npc.netUpdate.
-awaiting: user response
+[testing complete]
 
 ## Tests
 
@@ -47,21 +41,24 @@ result: pass
 test: In a tModLoader client (singleplayer and a 2-client multiplayer session), exercise `ArmOfGiantTree`: hold one stack and charge, switch to a second same-type stack (must start uncharged), have two players charge simultaneously (no shared charge), then release at full charge and confirm the area shockwave is applied server-side and propagates to clients via `npc.netUpdate`. Optionally obtain/use the five Phase 1 carry-over items and confirm their recorded dispositions.
 expected: Charge is isolated per stack and per player; the full-charge smash delivers 200% charged hit + 100% shockwave with the retract lock; shockwave damage is authoritative and replicates.
 why_human: Three plan-01-07 behavior-unverified truths plus the plan-01-06 backstop truth — no offline script can prove multiplayer runtime behavior.
-result: [pending]
+result: blocked
+blocked_by: other
+reason: "User (2026-09-13): live client testing not convenient right now — temporarily skip this verification, do it later. Needs a running tModLoader client (singleplayer + 2-client multiplayer)."
 
 ### 6. Advisory code-review disposition (WR-01/WR-02)
 test: Review the two new advisory findings in `01-REVIEW.md`: WR-01 (the `ReleaseSmash` handler does not require `Charge >= MaxChargeFrames`) and WR-02 (`ArmOfGiantTreeChargedSlot` is not synced, so the replicated charge has no durable authoritative consumer).
 expected: Either accept them as known client-authoritative limitations (charge accumulation is inherently client-driven) with anti-cheat hardening scheduled to Phase 8 (QUAL-03), or create a follow-up plan.
 why_human: Scoping/risk judgment; the proposed one-line Charge gate is itself bypassable because the charge value is client-supplied, so a durable fix needs server-side charge tracking (out of plan 01-07 scope).
-result: [pending]
+result: pass
+note: "User (2026-09-13): accepted as a known client-authoritative limitation — normal multiplayer is unaffected (the shockwave is computed from player.HeldItem, not the replicated charge); anti-cheat hardening is out of scope for a sandbox mod and may be scheduled to Phase 8 (QUAL-03)."
 
 ## Summary
 
 total: 6
-passed: 4
+passed: 5
 issues: 0
-pending: 2
+pending: 0
 skipped: 0
-blocked: 0
+blocked: 1
 
 ## Gaps
