@@ -20,7 +20,7 @@ public class RuinLeggings : ModItem
 		Item.defense = 1;
 
 		Item.value = Item.buyPrice(gold: 1);
-		Item.rare = ItemRarityID.Green;
+		Item.rare = ItemRarityID.Gray;
 	}
 
 	public override void UpdateEquip(Player player)

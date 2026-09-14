@@ -19,9 +19,9 @@ public class ArcI : ModItem
 		Item.height = 20;
 
 		Item.DamageType = DamageClass.Ranged;
-		Item.damage = 21;
-		Item.knockBack = 1f;
-		Item.crit = 14;
+		Item.damage = 39;
+		Item.knockBack = 6f;
+		Item.crit = 8;
 
 		Item.noUseGraphic = true;
 		Item.useStyle = ItemUseStyleID.Shoot;

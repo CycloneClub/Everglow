@@ -15,7 +15,7 @@ public class DevilHeartGyroscope : ModItem
 		Item.height = 32;
 
 		Item.DamageType = DamageClass.Summon;
-		Item.damage = 24;
+		Item.damage = 17;
 		Item.knockBack = 0.2f;
 
 		Item.useTime = Item.useAnimation = 16;

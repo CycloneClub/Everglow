@@ -27,7 +27,7 @@ public class GreenSungloStaff : ModItem
 		Item.noMelee = true;
 		Item.autoReuse = false;
 		Item.rare = ItemRarityID.Green;
-		Item.value = Item.buyPrice(silver: 80);
+		Item.value = Item.sellPrice(0, 2, 0, 0);
 
 		Item.shoot = ModContent.ProjectileType<GreenSungloSpore>();
 		Item.shootSpeed = 15;
