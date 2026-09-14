@@ -133,3 +133,23 @@ Please confirm or correct each item before these values are treated as final:
    category to `weapons.ranged`; implemented as Melee, discrepancy recorded. Confirm.
 6. **`ArmOfGiantTree`** — confirm the intended charge behaviour (2.5 s cap, 200 % charged hit +
    100 % shockwave) and that client-authoritative charge + server-applied shockwave is acceptable.
+
+## Reversion (2026-09-14) — Phase 1 design-value edits reverted
+
+**Developer decision: follow-the-code.** The governing rule is: when implemented code conflicts with the design, follow the code unless the Feishu row is marked yellow with a corresponding explanation. During live testing the Feishu design numbers were found unreasonable, so the original code values were correct.
+
+The Phase 1 numeric parity edits below were therefore reverted to the pre-Phase-1 code baseline at commit **`5c025ff7e`** (26 files restored byte-identical to that commit). The kept non-numeric Phase 1 changes — the four DevilHeart armor recipes, every added `LocalizationCategory` override, and the `ShellMolluscsBreastPlate` comment correction — remain in the tree.
+
+Sections 1 (stat parity) and 2 (value/rarity) of "Modified files (45)" above are **superseded by this reversion** and describe the now-reverted Phase 1 numeric edits; they are retained as historical execution evidence only.
+
+### Reverted files (27)
+
+Stat-parity reverts (12): `Weapons/MossySpell.cs`, `Weapons/ActivatedDogStaff.cs`, `Weapons/UnderwaterTreasury/ArcI.cs`, `Weapons/DevilHeart/DevilHeartBayonet.cs`, `Weapons/DevilHeart/DevilHeartGyroscope.cs`, `Weapons/LegumeGyroscope.cs`, `Weapons/RedAlgaeMinionGyroscope.cs`, `Weapons/RedAlgaeMagicWhip.cs`, `Weapons/RedAlgaeMagicSpellBook.cs`, `Weapons/RazorbeakBow.cs`, `Ammos/HuskburstBullet.cs`, `Accessories/ThornTurtleShell.cs`.
+
+Value/rarity reverts (16, `Weapons/LegumeGyroscope.cs` overlapping): `Accessories/AntiCorrosiveSole.cs`, `Accessories/CorrodedPearl.cs`, `Accessories/ForestMino.cs`, `Weapons/MeatLantern.cs`, `Weapons/BladeOfGreenMoss.cs`, `Weapons/GreenSungloStaff.cs` (special case), `Weapons/GreenVineWhip.cs`, `Weapons/LegumeGyroscope.cs`, `PermanentBoosters/JadeFruit.cs`, `Placeables/AlgaeExtractor_Item.cs`, `Armors/Ruin/RuinMask.cs`, `Armors/Ruin/RuinMagicRobe.cs`, `Armors/Ruin/RuinLeggings.cs`, `Materials/DevilHeartIronBar_Item.cs`, `Placeables/DevilHeartIronOre_Item.cs`, `Placeables/JadeizedBone_Item.cs`.
+
+### Special case — `Weapons/GreenSungloStaff.cs`
+
+`Item.value` was reverted to `Item.sellPrice(0, 2, 0, 0);`, but the file was **not** full-checked-out from the base: the `public override string LocalizationCategory => LocalizationUtils.Categories.MagicWeapons;` override (row 4 above) is intentionally **kept**.
+
+The revert commit is `revert(260914-kl8): restore pre-Phase-1 code values for design-parity edits`; the rule is also recorded in `01-DEVIATIONS.md`, `.planning/PROJECT.md`, and `.planning/phases/02-remaining-items-unfinished-art-materials/02-CONTEXT.md` (D-23).

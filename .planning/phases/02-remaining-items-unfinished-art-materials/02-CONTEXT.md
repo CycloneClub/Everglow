@@ -36,6 +36,7 @@ This phase owns item code (full implementations and identity shell classes) and 
 ### Verification
 - **D-21:** Phase 2 requires **in-client runtime verification** of representative items (obtainable/craftable/usable with the documented effect) in addition to offline gates and `dotnet build /p:Configuration=Release /p:WarningLevel=0` (exit 0, no `error CS`). Runtime verification needs a running tModLoader client.
 - **D-22:** Item marking follows Phase 1 D-11: code-complete + art-incomplete → `code_complete=true` / `artwork_complete=false`, Feishu row unchecked (no colour), art tracked as a blocker. A row only receives a status colour when both checkboxes are complete (D-05/D-07).
+- **D-23:** Carried-forward project rule: when implemented code conflicts with the design, follow the code unless the Feishu row is marked yellow with a corresponding explanation. Under this rule Phase 1's numeric design-parity edits were reverted to the pre-Phase-1 code baseline `5c025ff7e` (2026-09-14, `revert(260914-kl8)`); Phase 2 must apply the same rule to every conflict it meets — prefer the implemented code and correct the design, unless the Feishu row is yellow with a corresponding explanation. — **Reversibility:** costly — the ruling is now the project's conflict policy and is recorded in `PROJECT.md` "Design Status Synchronization" and "Constraints".
 
 ### the agent's Discretion
 - Exact shell-class contents (minimal `SetDefaults` values, folder placement) and which adjacent existing item class to mirror.

@@ -108,6 +108,12 @@ None yet.
 - RadialCarapace and VineRepairWand remain Phase 1 tracked blockers (code-complete, artwork-missing per D-11); their design deviations are queued to Phase 2 (D-12).
 - Phase 1 localization is deferred by user directive: 18 completed-art items lack both-culture display keys (the plan 01-05 13 — EvilHalbertBarnacle, ArcI, RedAlgaeMagicStaff, RedAlgaeMagicSpellBook, RedAlgaeMagicWhip, CrimsonMoonSap, EmptyWaterStaff, JadeLakeRedAlgae_Item, Photophore, GreenSungloStaff, ActivatedDogStaff, RedAlgaeMinionGyroscope, RedAlgaeMinionStaff — plus the plan 01-06 carry-over 5: ArmOfGiantTree, ForestBreath, ElftigernPowder, WitheredMask, QuetzalsWish; 45/63 covered). Run the in-game OutputLocalizationHjsonItem exporter (or resolve in Phase 2/8). Recorded in 01-DEVIATIONS.md and 01-INVENTORY.json.
 
+### Quick Tasks Completed
+
+| # | Description | Date | Commit | Directory |
+|---|-------------|------|--------|-----------|
+| 260914-kl8 | Revert Phase 1 design-value parity edits to pre-Phase-1 code values; document code-wins-unless-Feishu-yellow rule | 2026-09-14 | e8103ff90 | [260914-kl8-revert-phase-1-design-value-parity-edits](./quick/260914-kl8-revert-phase-1-design-value-parity-edits/) |
+
 ## Deferred Items
 
 | Category | Item | Status | Deferred At | Milestone |
