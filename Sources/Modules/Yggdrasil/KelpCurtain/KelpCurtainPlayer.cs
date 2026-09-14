@@ -97,19 +97,15 @@ public class KelpCurtainPlayer : ModPlayer
 
 	/// <summary>
 	/// The 红月水藻 breastplate heals 15% of any single hit of 10 or more damage
-	/// (design: 受到大于等于10的伤害时治疗该伤害的15%). The life value is synchronized by
-	/// the base game; only the client-local heal effect is gated on the owner.
+	/// (design: 受到大于等于10的伤害时治疗该伤害的15%). PostHurt runs after health is
+	/// reduced, so the heal is not swallowed by the max-life clamp, and Player.Heal applies
+	/// the clamp and synchronizes the life value; no extra client-side gating is required.
 	/// </summary>
-	public override void OnHurt(Player.HurtInfo info)
+	public override void PostHurt(Player.HurtInfo info)
 	{
 		if (CrimsonMoonAlgaeBreastPlate && info.Damage >= 10)
 		{
-			int heal = (int)(info.Damage * 0.15f);
-			Player.statLife = Math.Min(Player.statLife + heal, Player.statLifeMax2);
-			if (Player.whoAmI == Main.myPlayer)
-			{
-				Player.HealEffect(heal);
-			}
+			Player.Heal((int)(info.Damage * 0.15f));
 		}
 	}
 
