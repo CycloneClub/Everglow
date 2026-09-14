@@ -3,18 +3,18 @@ gsd_state_version: "1.0"
 milestone: v1.0
 current_phase: 02
 current_phase_name: Remaining Items & Unfinished-Art Materials
-current_plan: 2
+current_plan: 3
 status: executing
-stopped_at: Completed 02-01-PLAN.md
-last_updated: "2026-09-14T10:07:45.003Z"
+stopped_at: Completed 02-02-PLAN.md
+last_updated: "2026-09-14T10:26:27.583Z"
 last_activity: 2026-09-14
-last_activity_desc: Phase 1 complete, transitioned to Phase 2
-state_head: 94ff12fbb4d0e10f78a9b31b379f8aeba3d6b021
+last_activity_desc: Phase 2 in progress — 02-02 complete (biology-design drop weapons; gate at 8/21)
+state_head: bdef8269f672ec5ddf93a2fb37831d83f79a3530
 progress:
   total_phases: 8
   completed_phases: 1
   total_plans: 12
-  completed_plans: 8
+  completed_plans: 9
 milestone_name: milestone
 ---
 
@@ -29,20 +29,20 @@ See: `.planning/PROJECT.md` (updated 2026-09-12)
 
 ## Current Position
 
-Current Plan: 2
+Current Plan: 3
 Total Plans in Phase: 5
 Phase: 02 (Remaining Items & Unfinished-Art Materials) — EXECUTING
-Plan: 1 of 5 complete (02-01 done; 02-02 next)
+Plans complete: 2 of 5 (02-01, 02-02 done; 02-03 next)
 Status: Executing
-Last activity: 2026-09-14 — 02-01 complete (红月水藻 armor set + phase-2 gate)
+Last activity: 2026-09-14 — 02-02 complete (biology-design drop weapons; gate at 8/21)
 
-Progress: [███████░░░] 67%
+Progress: [████████░░] 75%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 7
+- Total plans completed: 9
 - Average duration: n/a
 - Total execution time: 0 hours
 
@@ -52,6 +52,7 @@ Progress: [███████░░░] 67%
 |-------|-------|-------|----------|
 | 1–8 | 0 | TBD | n/a |
 | 1 | 7 | - | - |
+| 2 | 2 | 5 | 10min |
 
 **Recent Trend:** No execution data yet.
 **Per-Plan Metrics:**
@@ -66,6 +67,7 @@ Progress: [███████░░░] 67%
 | Phase 01 P06 | ~30min | 3 tasks | 12 files |
 | Phase 01 P07 | ~7min | 3 tasks | 5 files |
 | Phase 02 P01 | 17min | 3 tasks | 11 files |
+| Phase 02 P02 | 10min | 3 tasks | 11 files |
 
 ## Accumulated Context
 
@@ -102,6 +104,10 @@ Progress: [███████░░░] 67%
 - [Phase 02]: The 红月水藻 set mirrors the accepted red-algae family recipe (15 x JadeLakeRedAlgae_Item + 1 x CrimsonMoonSap at Work Benches) because the design supplies none; recorded as a designer-confirmation deviation in 02-DEVIATIONS.md.
 - [Phase 02]: The set bonus scales red-algae toxin detonation 2.5x in RedAlgae_FriendlyDebuff_glocalNPC when CrimsonMoonAlgaeSetBuff is set; the 15s->30s toxin-duration doubling is recorded as a blocker naming the seven accepted Phase-1 applier files.
 - [Phase 02]: scripts/check-phase2.ps1 resolves implemented classes from the working tree via Get-ChildItem (not git ls-files) and builds the CJK inventory ids from [char]0x.... codepoints so the gate script stays 100% ASCII.
+- [Phase 02]: The biology weapon plan implements only the two fully-specified effects (150% direct hit + 3-6 shards; +10% final damage to bosses) and records the TendonGreatbow charge curve, the RestrictionDeviceRE01 限制无人机/聚能射线/浊燃 system and the ReekingBait 巨翼龙 encounter as precise blockers.
+- [Phase 02]: No AddRecipes body is written for TendonGreatbow/RestrictionDeviceRE01/ReekingBait because their design 合成方式 cells name only absent Phase 7 Giant Winged Dragon items; an item-type reference to an absent type is a compile error (T-02-01).
+- [Phase 02]: The qualitative 击退 强/弱 maps to Item.knockBack 8f/2f on the accepted family scale (DD-05), and TendonGreatbow damage 58 comes from the committed evidence row (DD-06), superseding the RESEARCH draft 28 (a use-time 28（慢） misread).
+- [Phase 02]: Both new projectile classes wrap every dust/sound call in if (!Main.dedServ), unlike the GreenThornLauncher analog (T-02-04); no PreDraw and no Main.projFrames (T-02-03).
 
 ### Pending Todos
 
@@ -116,6 +122,8 @@ None yet.
 - 01-03 (replanned) resolved the halt: the 18 class-less completed-art tranche-A entries and the 25 art-incomplete class-less entries are routed to Phase 2 (phase=2); the tranche gate `check-tranche-A.ps1` is authored (43 covered after plan 01-06). Four tranche-A weapons carry 效果 blockers (MossySpell, CyatheaArrow, GreenSungloStaff, EvilHalbertBarnacle) whose design behavior lives in projectiles outside the item-class modify set.
 - RadialCarapace and VineRepairWand remain Phase 1 tracked blockers (code-complete, artwork-missing per D-11); their design deviations are queued to Phase 2 (D-12).
 - Phase 1 localization is deferred by user directive: 18 completed-art items lack both-culture display keys (the plan 01-05 13 — EvilHalbertBarnacle, ArcI, RedAlgaeMagicStaff, RedAlgaeMagicSpellBook, RedAlgaeMagicWhip, CrimsonMoonSap, EmptyWaterStaff, JadeLakeRedAlgae_Item, Photophore, GreenSungloStaff, ActivatedDogStaff, RedAlgaeMinionGyroscope, RedAlgaeMinionStaff — plus the plan 01-06 carry-over 5: ArmOfGiantTree, ForestBreath, ElftigernPowder, WitheredMask, QuetzalsWish; 45/63 covered). Run the in-game OutputLocalizationHjsonItem exporter (or resolve in Phase 2/8). Recorded in 01-DEVIATIONS.md and 01-INVENTORY.json.
+
+- [Phase 02] The four biology-design weapon rows (巨石弹射装置, 肌腱巨弓, 限制机, 腥臭的诱饵) are code-complete / art-incomplete. Outstanding blockers: approved textures (all four); the TendonGreatbow charge curve; the absent Phase 7 dependencies (限制无人机/聚能射线/浊燃 system, 巨翼龙 encounter, and the 血云母/血肉聚合物/熔炉钢/隐生之眼/干枯心脏/玉化龙骨 ingredients). Runtime verification (D-21) of both weapon chains is outstanding.
 
 ### Quick Tasks Completed
 
@@ -132,6 +140,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-09-14T10:07:27.582Z
-Stopped at: Completed 02-01-PLAN.md
+Last session: 2026-09-14T10:26:13.792Z
+Stopped at: Completed 02-02-PLAN.md
 Resume file: None
