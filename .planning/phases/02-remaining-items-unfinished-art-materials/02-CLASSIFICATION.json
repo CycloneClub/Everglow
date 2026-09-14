@@ -29,28 +29,28 @@
       "mode": "shell",
       "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Accessories/BambooStepTalisman.cs",
       "blocker_kind": "artwork",
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "item-weapons.misc-竹制武器",
       "mode": "shell",
       "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/BambooWeapon.cs",
       "blocker_kind": "artwork",
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "item-weapons.misc-熊猫宠物",
       "mode": "shell",
       "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Pets/PandaPet.cs",
       "blocker_kind": "artwork",
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "item-weapons.misc-桃枝护符",
       "mode": "shell",
       "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Accessories/PeachBranchAmulet.cs",
       "blocker_kind": "artwork",
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "item-weapons.melee-弟子剑",
@@ -85,7 +85,7 @@
       "mode": "shell",
       "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Misc/PeachBlossomKite.cs",
       "blocker_kind": "artwork",
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "item-weapons.misc-若干酒类",
@@ -97,9 +97,9 @@
     {
       "id": "item-weapons.misc-竹簪子",
       "mode": "shell",
-      "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Vanity/BambooHairpin.cs",
+      "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Misc/BambooHairpin.cs",
       "blocker_kind": "artwork",
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "item-weapons.misc-巨石弹射装置",
@@ -148,7 +148,7 @@
       "mode": "full",
       "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Misc/JadeSnakeEgg.cs",
       "blocker_kind": "artwork",
-      "implemented": false
+      "implemented": true
     }
   ]
 }

@@ -1940,7 +1940,7 @@
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "竹节步符",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Accessories.BambooStepTalisman",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "PI6XdIIVBoF8TbxlMAxcttdkn7f",
@@ -1950,7 +1950,7 @@
                                        "row_color":  "neutral"
                                    },
                         "artwork_complete":  false,
-                        "code_complete":  false,
+                        "code_complete":  true,
                         "status":  "unchecked",
                         "repo_asset":  "",
                         "localization":  {
@@ -1968,7 +1968,8 @@
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
                                          "design code not complete (Feishu code checkbox false)",
-                                         "no repo implementation found"
+                                         "approved texture (贴图) missing from repository despite Feishu artwork checkbox; class implemented, art pending",
+                                         "artwork blocked + identity-only shell (D-18): the design row carries empty 伤害 / 价格 / 稀有度 / 效果 cells, so the approved artwork and behaviour are undefined; the class declares an item identity only"
                                      ],
                         "phase":  2,
                         "notes":  "",
@@ -1983,7 +1984,7 @@
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "竹制武器",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Weapons.BambooWeapon",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "PI6XdIIVBoF8TbxlMAxcttdkn7f",
@@ -1993,7 +1994,7 @@
                                        "row_color":  "neutral"
                                    },
                         "artwork_complete":  false,
-                        "code_complete":  false,
+                        "code_complete":  true,
                         "status":  "unchecked",
                         "repo_asset":  "",
                         "localization":  {
@@ -2011,7 +2012,8 @@
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
                                          "design code not complete (Feishu code checkbox false)",
-                                         "no repo implementation found"
+                                         "approved texture (贴图) missing from repository despite Feishu artwork checkbox; class implemented, art pending",
+                                         "artwork blocked + identity-only shell (D-18): the design row carries empty 伤害 / 价格 / 稀有度 / 效果 cells, so the approved artwork and behaviour are undefined; the class declares an item identity only"
                                      ],
                         "phase":  2,
                         "notes":  "",
@@ -2026,7 +2028,7 @@
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "熊猫宠物",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Pets.PandaPet",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "PI6XdIIVBoF8TbxlMAxcttdkn7f",
@@ -2036,7 +2038,7 @@
                                        "row_color":  "neutral"
                                    },
                         "artwork_complete":  false,
-                        "code_complete":  false,
+                        "code_complete":  true,
                         "status":  "unchecked",
                         "repo_asset":  "",
                         "localization":  {
@@ -2054,7 +2056,8 @@
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
                                          "design code not complete (Feishu code checkbox false)",
-                                         "no repo implementation found"
+                                         "approved texture (贴图) missing from repository despite Feishu artwork checkbox; class implemented, art pending",
+                                         "artwork blocked + identity-only shell (D-18): the design row carries empty 伤害 / 价格 / 稀有度 / 效果 cells, so the approved artwork and behaviour are undefined; the class declares an item identity only"
                                      ],
                         "phase":  2,
                         "notes":  "",
@@ -2112,7 +2115,7 @@
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "桃枝护符",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Accessories.PeachBranchAmulet",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "WuYSdAC6lozlj1xJ0o0cwnYjn3b",
@@ -2122,7 +2125,7 @@
                                        "row_color":  "neutral"
                                    },
                         "artwork_complete":  false,
-                        "code_complete":  false,
+                        "code_complete":  true,
                         "status":  "unchecked",
                         "repo_asset":  "",
                         "localization":  {
@@ -2140,10 +2143,11 @@
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
                                          "design code not complete (Feishu code checkbox false)",
-                                         "no repo implementation found"
+                                         "approved texture (贴图) missing from repository despite Feishu artwork checkbox; class implemented, art pending",
+                                         "artwork blocked + identity-only shell (D-18): the design row carries empty 伤害 / 价格 / 稀有度 / 效果 cells, so the approved artwork and behaviour are undefined; the class declares an item identity only"
                                      ],
                         "phase":  2,
-                        "notes":  "",
+                        "notes":  "Design 描述 cell reads 饰品 (accessory), which selects LocalizationCategory Accessories.",
                         "deferred":  false,
                         "deferred_reason":  ""
                     },
@@ -2327,7 +2331,7 @@
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "桃花纸鸢（风筝）",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Misc.PeachBlossomKite",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "WuYSdAC6lozlj1xJ0o0cwnYjn3b",
@@ -2337,7 +2341,7 @@
                                        "row_color":  "neutral"
                                    },
                         "artwork_complete":  false,
-                        "code_complete":  false,
+                        "code_complete":  true,
                         "status":  "unchecked",
                         "repo_asset":  "",
                         "localization":  {
@@ -2355,7 +2359,8 @@
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
                                          "design code not complete (Feishu code checkbox false)",
-                                         "no repo implementation found"
+                                         "approved texture (贴图) missing from repository despite Feishu artwork checkbox; class implemented, art pending",
+                                         "artwork blocked + identity-only shell (D-18): the design row carries empty 伤害 / 价格 / 稀有度 / 效果 cells and the 描述 宝箱的副掉落，非核心物品, so the approved artwork and behaviour are undefined; the class declares an item identity only"
                                      ],
                         "phase":  2,
                         "notes":  "",
@@ -2456,7 +2461,7 @@
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "竹簪子",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Misc.BambooHairpin",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "MWZzdiSfNoFDmdxNeiscNELFnDh",
@@ -2466,7 +2471,7 @@
                                        "row_color":  "neutral"
                                    },
                         "artwork_complete":  false,
-                        "code_complete":  false,
+                        "code_complete":  true,
                         "status":  "unchecked",
                         "repo_asset":  "",
                         "localization":  {
@@ -2484,10 +2489,11 @@
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
                                          "design code not complete (Feishu code checkbox false)",
-                                         "no repo implementation found"
+                                         "approved texture (贴图) missing from repository despite Feishu artwork checkbox; class implemented, art pending",
+                                         "artwork blocked + identity-only shell (D-18): the design row carries empty 伤害 / 价格 / 稀有度 / 效果 cells, so the approved artwork and behaviour are undefined; the class declares an item identity only"
                                      ],
                         "phase":  2,
-                        "notes":  "",
+                        "notes":  "Design 描述 cell reads 时装 (vanity), which selects LocalizationCategory Vanity; placed in Items/Misc because no Items/Vanity directory exists in the repository (WitheredMask precedent).",
                         "deferred":  false,
                         "deferred_reason":  ""
                     },
@@ -3800,7 +3806,7 @@
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "灵蛇玉卵",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Misc.JadeSnakeEgg",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "doxcnF5NkT1L8TXx60UT6do5YKc",
@@ -3810,7 +3816,7 @@
                                        "row_color":  "neutral"
                                    },
                         "artwork_complete":  false,
-                        "code_complete":  false,
+                        "code_complete":  true,
                         "status":  "unchecked",
                         "repo_asset":  "",
                         "localization":  {
@@ -3828,10 +3834,11 @@
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
                                          "design code not complete (Feishu code checkbox false)",
-                                         "no repo implementation found"
+                                         "approved texture (贴图) missing from repository despite Feishu artwork checkbox; class implemented, art pending",
+                                         "effect blocked (absent encounter + location gate): the 苍翠灵蛇 encounter is Phase 7 scope, and the documented use condition 在森雨幽谷顶部使用 (use at the top of the Valley of Lush and Moist) requires a location gate that the encounter phase owns; the item consumes without summoning anything and references no NPC type"
                                      ],
                         "phase":  2,
-                        "notes":  "",
+                        "notes":  "Parser category artefact (D-23): the inventory category is weapons.summon from the parser heuristic while the design row is a use-item egg, so the content is implemented as a consumable use item; the id is unchanged because it is compatibility-sensitive.",
                         "deferred":  false,
                         "deferred_reason":  ""
                     },

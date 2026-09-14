@@ -137,6 +137,59 @@ An earlier draft of `02-RESEARCH.md` §Design Data reported `肌腱巨弓` 伤�
 
 The four entries' display keys remain deferred under D-20: the in-game exporter was not run and no HJSON file was created or hand-edited. Each row's `localization` block keeps `en_us: false` / `zh_hans: false` / `blocked: false` (the user-directed-deferral convention).
 
+## 6. Plan 02-03 — Snake Egg Use Item and the Six Art-Pending Shells (Group A)
+
+### 6.1 Design values implemented
+
+| Entry id | Class | 价格 | 稀有度 | Implemented effect |
+| --- | --- | --- | --- | --- |
+| `item-weapons.summon-灵蛇玉卵` | `JadeSnakeEgg` | 10金 -> `Item.buyPrice(gold: 10)` | 蓝色 -> `ItemRarityID.Blue` | Consumable use item (`SummonItems` category, 12-frame swing, `UseSound = SoundID.Roar`); consumes one without summoning anything — the 苍翠灵蛇 encounter is Phase 7 scope and the 在森雨幽谷顶部使用 location condition is a gate that encounter phase owns (blocker 6.3) |
+
+All six shells created by this plan (竹节步符, 竹制武器, 竹簪子, 桃枝护符, 桃花纸鸢（风筝）, 熊猫宠物) share the identity-only shape (D-18): `Item.width = Item.height = 20`, `Item.value = Item.buyPrice(silver: 50)`, `Item.rare = ItemRarityID.Blue`, and the D-13 `Texture => Commons.ModAsset.White_Mod` override with the standard two-line comment. 竹制武器 adds `Item.maxStack = 1`; 桃花纸鸢（风筝） adds `Item.maxStack = Item.CommonMaxStack`; 竹节步符 and 桃枝护符 add `Item.accessory = true`; 竹簪子 adds `Item.vanity = true`. The extents, value and rarity mirror the accepted art-missing precedent `Items/Misc/ForestBreath.cs` because the design rows supply none; no shell declares `AddRecipes`, `Item.shoot`, `UpdateAccessory` or an equip slot.
+
+### 6.2 Identity-only shells (D-18)
+
+The 12 shell entries and their `blocker_kind` in `02-CLASSIFICATION.json`:
+
+| Entry id | Class | `blocker_kind` | Why identity-only | Owning plan |
+| --- | --- | --- | --- | --- |
+| `item-weapons.misc-竹节步符` | `BambooStepTalisman` | artwork | empty design row (no 伤害 / 价格 / 稀有度 / 效果); approved art absent | 02-03 |
+| `item-weapons.misc-竹制武器` | `BambooWeapon` | artwork | same | 02-03 |
+| `item-weapons.misc-竹簪子` | `BambooHairpin` | artwork | same (design 描述 reads 时装) | 02-03 |
+| `item-weapons.misc-桃枝护符` | `PeachBranchAmulet` | artwork | same (design 描述 reads 饰品) | 02-03 |
+| `item-weapons.misc-桃花纸鸢-风筝` | `PeachBlossomKite` | artwork | same (design 描述 reads 宝箱的副掉落，非核心物品) | 02-03 |
+| `item-weapons.misc-熊猫宠物` | `PandaPet` | artwork | same | 02-03 |
+| `item-weapons.misc-若干酒类` | `AlcoholicDrinks` | artwork | same | 02-04 |
+| `item-weapons.summon-荧光水螅召唤杖` | `FluorescentHydraStaff` | artwork | same | 02-04 |
+| `item-weapons.melee-弟子剑` | `DiscipleSword` | system | the design implies the unimplemented 弟子 system (D-19) | 02-04 |
+| `item-weapons.misc-技能竹简` | `SkillBambooSlip` | system | the design implies the unimplemented skill system (D-19) | 02-04 |
+| `item-weapons.misc-区域放置物品制作台` | `RegionalCraftingStation` | system | the design implies the unimplemented regional-crafting system (D-19) | 02-04 |
+| `item-weapons.misc-弟子时装` | `DiscipleVanity` | system | the design implies the unimplemented 弟子 system (D-19) | 02-04 |
+
+D-18 rule: a design row with no 伤害 / 价格 / 稀有度 / 效果 yields an identity-only class rather than invented numbers, because a shell is an identity, not a guessed stat block. A shell declares an item identity only — no `AddRecipes`, no `Item.shoot`, no `UpdateAccessory`, no equip slot. The eight art-pending shells carry `blocker_kind` `artwork`; the four system-dependent shells carry `system` (D-19).
+
+### 6.3 Blockers
+
+| Entry id | Blocker kind | Exact text | Why |
+| --- | --- | --- | --- |
+| `item-weapons.summon-灵蛇玉卵` | effect | `effect blocked (absent encounter + location gate): the 苍翠灵蛇 encounter is Phase 7 scope, and the documented use condition 在森雨幽谷顶部使用 (use at the top of the Valley of Lush and Moist) requires a location gate that the encounter phase owns; the item consumes without summoning anything and references no NPC type` | The encounter and its location are Phase 7; the item references no NPC type (T-02-04). |
+| the six shell rows of this plan | artwork | `artwork blocked + identity-only shell (D-18): the design row carries empty 伤害 / 价格 / 稀有度 / 效果 cells, so the approved artwork and behaviour are undefined; the class declares an item identity only` | Empty design row plus absent approved artwork (T-02-01/T-02-02). |
+
+Every entry additionally carries the D-13 texture blocker: `approved texture (贴图) missing from repository despite Feishu artwork checkbox; class implemented, art pending`.
+
+### 6.4 Deviations
+
+| # | Entry / scope | Deviation | Rationale |
+| --- | --- | --- | --- |
+| DD-07 | 竹簪子 (this plan) and 弟子时装 (02-04) | **Vanity placement.** Both vanity shells live in `Items/Misc/` rather than a new `Items/Vanity/` folder: no `Items/Vanity/` directory exists anywhere in the repository and the only tracked vanity item, `Items/Misc/WitheredMask.cs`, lives beside the misc items. The pre-existing `02-CLASSIFICATION.json` path `Items/Vanity/BambooHairpin.cs` was corrected to `Items/Misc/BambooHairpin.cs`; `弟子时装` is 02-04's row and is not touched here. | The vanity folder was a planner assumption, not repository structure; the tracked `WitheredMask` precedent is authoritative. |
+| DD-08 | 灵蛇玉卵 | **Use-item category artefact.** The inventory category is `weapons.summon` from the parser heuristic while the design row is a use-item egg; the content is implemented as a consumable use item and the artefact is recorded (D-23), leaving the entry id unchanged because it is compatibility-sensitive (Pitfall 5). | The parser heuristic keys off the design table section, not the content type. |
+| DD-09 | 竹簪子, 桃枝护符 | **Category from the 描述 cell.** 竹簪子's design 描述 reads 时装 (vanity) and 桃枝护符's reads 饰品 (accessory), which select the `Vanity` and `Accessories` categories; both rows are otherwise empty. | The 描述 cell is the only category evidence in the row. |
+| DD-10 | 桃花纸鸢（风筝） | **Non-core chest side drop.** The design 描述 reads 宝箱的副掉落，非核心物品, so no behaviour is defined beyond the item identity. | Recorded so the shell is not mistaken for an unfinished core item. |
+
+### 6.5 Localization (D-20)
+
+The seven entries created by this plan keep their display keys deferred under D-20: the in-game exporter was not run and no HJSON file was created or hand-edited. Each row's `localization` block keeps `en_us: false` / `zh_hans: false` / `blocked: false` (the user-directed-deferral convention).
+
 ---
 
-*Phase 2 · plan 02-01 opened this ledger; plan 02-02 (biology-design weapon drops) appended §5.*
+*Phase 2 · plan 02-01 opened this ledger; plan 02-02 (biology-design weapon drops) appended §5; plan 02-03 (snake egg use item and six art-pending shells) appended §6.*
