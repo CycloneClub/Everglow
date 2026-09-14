@@ -11,7 +11,7 @@
     {
       "number": "2",
       "name": "Remaining Items & Unfinished-Art Materials",
-      "status": "pending"
+      "status": "in_progress"
     },
     {
       "number": "3",
@@ -49,5 +49,5 @@
     "label": "Advance to the next step",
     "reason": "Phase 02 of 8 · executing"
   },
-  "updated_at": "2026-09-14T10:07:14.062Z"
+  "updated_at": "2026-09-14T10:40:15.817Z"
 }
