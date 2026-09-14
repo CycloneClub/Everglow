@@ -71,7 +71,7 @@ public class MeltingButton : ModTile
 
 	public override bool RightClick(int i, int j)
 	{
-		if (Main.LocalPlayer.chest == -1)
+		if (YggdrasilTownFurnaceSystem.CurrentPlayer is not null && Main.LocalPlayer.chest == -1)
 		{
 			MeltDown(i, j);
 		}

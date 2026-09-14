@@ -8,10 +8,6 @@ public class VineEnergyBeam : ModProjectile
 	public Vector2 StartPosition;
 	public Vector2 EndPosition;
 
-	private float timer = 0f;
-	private float pulseTimer = 0f;
-	private float pulse = 0f;
-
 	public override void SetStaticDefaults()
 	{
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 0;
@@ -42,6 +38,13 @@ public class VineEnergyBeam : ModProjectile
 			if (!vWand.IsAdjusting(EndPosition.ToTileCoordinates()))
 			{
 				ReadyToKill();
+			}
+			else
+			{
+				if (Projectile.timeLeft < 2000000)
+				{
+					Projectile.timeLeft = 3000000;
+				}
 			}
 		}
 		else
@@ -126,6 +129,15 @@ public class VineEnergyBeam : ModProjectile
 				Dust dust = Dust.NewDustPerfect(randomPos, DustID.TerraBlade, Vector2.Zero, 0, dustColor, 0.8f);
 				dust.rotation = Main.rand.NextFloat(MathHelper.TwoPi);
 				dust.noGravity = true;
+
+				if (k + 45 + TileUtils.GetFixedRandomNumber(Projectile.whoAmI, k, 45) >= length - 45)
+				{
+					randomPos = Vector2.Lerp(end, start + direction * k + wave, Main.rand.NextFloat()) + Main.screenPosition;
+					dustColor = dustColors[Main.rand.Next(dustColors.Length)];
+					Dust dust2 = Dust.NewDustPerfect(randomPos, DustID.TerraBlade, Vector2.Zero, 0, dustColor, 0.8f);
+					dust2.rotation = Main.rand.NextFloat(MathHelper.TwoPi);
+					dust2.noGravity = true;
+				}
 			}
 
 			dustPosOld = start + direction * k + wave;
@@ -151,9 +163,5 @@ public class VineEnergyBeam : ModProjectile
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(sBS);
 		return false;
-	}
-
-	private void DrawEnergyNode(Vector2 position, bool isStart)
-	{
 	}
 }

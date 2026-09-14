@@ -1,11 +1,6 @@
 using Everglow.Commons.UI;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles.FurnaceTiles;
-using Everglow.Yggdrasil.YggdrasilTown.UI;
-using MonoMod.Cil;
-using ReLogic.Graphics;
 using Terraria.GameContent;
-using Terraria.ModLoader.IO;
-using Terraria.UI;
 
 namespace Everglow.Yggdrasil.YggdrasilTown;
 
@@ -65,7 +60,7 @@ public class YggdrasilTownFurnaceSystem : ModSystem
 				}
 				if (EnquiryMeltingDown)
 				{
-					Utils.DrawBorderStringFourWay(spriteBatch,FontAssets.MouseText.Value, "Clear the chest and get points?", 86, 436, Color.White, Color.Black, Vector2.zeroVector);
+					Utils.DrawBorderStringFourWay(spriteBatch, FontAssets.MouseText.Value, "Clear the chest and get points?", 86, 436, Color.White, Color.Black, Vector2.zeroVector);
 				}
 				else
 				{
@@ -154,7 +149,7 @@ public class YggdrasilTownFurnaceSystem : ModSystem
 				}
 				Vector2 yesPos = yes_button.Center() - new Vector2(12, 12);
 				Vector2 noPos = no_button.Center() - new Vector2(12, 12);
-				Utils.DrawBorderStringFourWay(spriteBatch, FontAssets.MouseText.Value, "Yes", yesPos.X, yesPos.Y, yesTextColor,Color.Black,Vector2.zeroVector);
+				Utils.DrawBorderStringFourWay(spriteBatch, FontAssets.MouseText.Value, "Yes", yesPos.X, yesPos.Y, yesTextColor, Color.Black, Vector2.zeroVector);
 				Utils.DrawBorderStringFourWay(spriteBatch, FontAssets.MouseText.Value, "No", noPos.X, noPos.Y, noTextColor, Color.Black, Vector2.zeroVector);
 			}
 		}

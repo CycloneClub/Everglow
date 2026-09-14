@@ -36,19 +36,25 @@ public class HangingTileUpdateSystem : ModSystem
 
 	public override void OnWorldLoad()
 	{
-		foreach (var HangingTile in TileLoader.tiles.OfType<HangingTile>())
+		foreach (var hangingTile in TileLoader.tiles.OfType<HangingTile>())
 		{
-			HangingTile.RopesOfAllThisTileInTheWorld.Clear();
+			hangingTile.RopesOfAllThisTileInTheWorld.Clear();
+			hangingTile.WinchAdjustingPlayers.Clear();
+			hangingTile.MouseOverWinchPlayers.Clear();
 		}
+		HangingTile.RopeGraspingPlayer.Clear();
 		base.OnWorldLoad();
 	}
 
 	public override void OnWorldUnload()
 	{
-		foreach (var HangingTile in TileLoader.tiles.OfType<HangingTile>())
+		foreach (var hangingTile in TileLoader.tiles.OfType<HangingTile>())
 		{
-			HangingTile.RopesOfAllThisTileInTheWorld.Clear();
+			hangingTile.RopesOfAllThisTileInTheWorld.Clear();
+			hangingTile.WinchAdjustingPlayers.Clear();
+			hangingTile.MouseOverWinchPlayers.Clear();
 		}
+		HangingTile.RopeGraspingPlayer.Clear();
 		base.OnWorldUnload();
 	}
 }

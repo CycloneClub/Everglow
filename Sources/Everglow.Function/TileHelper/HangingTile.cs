@@ -99,11 +99,6 @@ public abstract class HangingTile : ModTile, ITileFluentlyDrawn
 	/// </summary>
 	public static Dictionary<Point, Player> RopeGraspingPlayer = new Dictionary<Point, Player>();
 
-	/// <summary>
-	/// Winch position and rope
-	/// </summary>
-	public Dictionary<Point, Player> ChainPlayer = new Dictionary<Point, Player>();
-
 	public struct DrawStack
 	{
 		public Texture2D Texture;
@@ -507,16 +502,17 @@ public abstract class HangingTile : ModTile, ITileFluentlyDrawn
 	{
 		Player player = Main.LocalPlayer;
 		Point point = new Point(i, j);
+		if (!IsCanRightClick(i, j))
+		{
+			return;
+		}
 		if (LengthAdjustable && !RopeGraspingPlayer.ContainsKey(point))
 		{
 			if (!MouseOverWinchPlayers.ContainsKey(player) && TileUtils.CanPlayerInteractWithTile(i, j, player))
 			{
-				if (IsCanRightClick(i, j))
-				{
-					MouseOverWinchPlayers.Add(player, point);
-					HangingTileAdjustingHelper vfx = new HangingTileAdjustingHelper { FixPoint = point, Active = true, Visible = true, Style = 0 };
-					Ins.VFXManager.Add(vfx);
-				}
+				MouseOverWinchPlayers.Add(player, point);
+				HangingTileAdjustingHelper vfx = new HangingTileAdjustingHelper { FixPoint = point, Active = true, Visible = true, Style = 0 };
+				Ins.VFXManager.Add(vfx);
 			}
 			else if (MouseOverWinchPlayers[player] != point)
 			{
@@ -524,7 +520,7 @@ public abstract class HangingTile : ModTile, ITileFluentlyDrawn
 			}
 			if (MouseOverWinchPlayers.ContainsKey(player))
 			{
-				if (IsCanRightClick(i, j) && Main.mouseRight && Main.mouseRightRelease)
+				if (Main.mouseRight && Main.mouseRightRelease)
 				{
 					if (LengthAdjustable && !RopeGraspingPlayer.ContainsKey(point))
 					{

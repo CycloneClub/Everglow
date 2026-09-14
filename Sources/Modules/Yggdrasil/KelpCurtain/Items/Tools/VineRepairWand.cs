@@ -82,10 +82,8 @@ public class VineRepairWand : ModItem
 	public bool StartAdjustment(Player player, Point fixPoint)
 	{
 		// 消耗初始10点蓝
-		if (player.statMana >= 10)
+		if (player.CheckMana(10, true))
 		{
-			player.statMana -= 10;
-
 			currentAdjustment = new AdjustmentData
 			{
 				FixPoint = fixPoint,
@@ -315,7 +313,7 @@ public class VineRepairWand : ModItem
 
 	public override bool CanUseItem(Player player)
 	{
-		return currentAdjustment != null && currentAdjustment.IsAdjusting;
+		return false;
 	}
 
 	public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

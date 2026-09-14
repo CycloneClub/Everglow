@@ -299,6 +299,7 @@ public class ForestRainVineTile_Thick : HangingTile
 		Texture2D tex = ModAsset.VineRepairWand.Value;
 		Texture2D tex_glow = ModAsset.VineRepairWand_glow.Value;
 		Texture2D tex_bloom = ModAsset.VineRepairWand_bloom.Value;
+		Texture2D star = Commons.ModAsset.StarSlash.Value;
 		Vector2 toCenter = rotCenter - player.Center;
 		float rot = toCenter.ToRotationSafe() + MathHelper.PiOver4;
 		if (toCenter.X > 1)
@@ -309,9 +310,11 @@ public class ForestRainVineTile_Thick : HangingTile
 		{
 			player.direction = -1;
 		}
+
 		Ins.Batch.Draw(tex, player.Center, null, Lighting.GetColor(player.Center.ToTileCoordinates()), rot, new Vector2(0, 34), 1f, SpriteEffects.None);
 		Ins.Batch.Draw(tex_glow, player.Center, null, Color.White, rot, new Vector2(0, 34), 1f, SpriteEffects.None);
 		Ins.Batch.Draw(tex_bloom, player.Center, null, new Color(1f, 1f, 1f, 0), rot, new Vector2(0, 80), 1f, SpriteEffects.None);
+		Ins.Batch.Draw(star, player.Center + new Vector2(28, -28).RotatedBy(rot), null, new Color(0.02f, 0.08f, 0.04f, 0f), MathHelper.PiOver2, star.Size() * 0.5f, 1f, SpriteEffects.None);
 	}
 
 	public override void DrawLine(Vector2 pos1, Vector2 pos2, float width, Color color, float highlight, ref Queue<DrawStack> drawStacks)
