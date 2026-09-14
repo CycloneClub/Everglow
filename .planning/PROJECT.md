@@ -19,6 +19,8 @@ Deliver a complete, publishable Kelp Curtain layer whose designed regions, gamep
 - ✓ The Yggdrasil module already contains the Kelp Curtain area and related gameplay content — existing codebase
 - ✓ A seven-document evidence-backed codebase map exists under `.planning/codebase/` — onboarding
 
+- [x] Complete item inventory reconciled against the authoritative Feishu designs (103 entries, 5-label taxonomy, allocation ledger `{1:65, 2:25, 7:13}`) — Phase 1
+
 ### Active
 
 - [ ] Complete the Kelp Curtain second-layer scope from the Feishu biology, item, and terrain design documents.
@@ -91,6 +93,8 @@ The repository planning artifacts are the audit trail for the comparison; the Fe
 | Verify at publishable quality | A completed content layer must build and function in the client, with multiplayer checks where relevant | — Pending |
 | Synchronize design status item by item | Per-item status keeps partial implementation and design conflicts visible | — Pending |
 
+| Defer the live multiplayer test of ArmOfGiantTree to a later session | Live client testing was inconvenient at phase-completion time; the SC3 fix is source-verified and offline-gated | Deferred (Phase 1, user-authorized override) |
+
 ## Evolution
 
 This document evolves at phase transitions and milestone boundaries.
@@ -109,4 +113,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-09-11 after project initialization questioning*
+*Last updated: 2026-09-14 after Phase 1*
