@@ -29,7 +29,7 @@ Requirements for the current second-layer milestone. Each maps to exactly one ro
 ### Items, Materials, and Rewards
 
 - [ ] **ITEM-01**: The planned natural-themed weapons, ammunition, materials, utility items, and biology-design creature drops/materials belonging to those item families are implemented with the documented recipes, values, effects, and localization.
-- [ ] **ITEM-02**: The Devil Heart Iron, Witherbark, Molluscs, and other planned armor/accessory sets, including biology-design materials/drops used by those sets, are implemented with documented class effects, set effects, materials, and progression placement.
+- [x] **ITEM-02**: The Devil Heart Iron, Witherbark, Molluscs, and other planned armor/accessory sets, including biology-design materials/drops used by those sets, are implemented with documented class effects, set effects, materials, and progression placement.
 - [ ] **ITEM-03**: Underwater treasury, underwater maze, regional chest, fishing, collection rewards, and biology-design exploration/fishing/collection drops are implemented with the documented loot sources, access conditions, and effects.
 - [ ] **ITEM-04**: Quest-exclusive, NPC-trade, settlement-restoration, purification, mission rewards, and biology-design drops/materials used by those progression paths are implemented with the documented unlock conditions and progression dependencies.
 - [ ] **ITEM-05**: The Klein Snake series and its parasite/seed gameplay loop are implemented with the documented weapon behavior, debuff, drops, and class coverage.
@@ -96,7 +96,7 @@ Updated during roadmap creation. Each v1 requirement must map to exactly one pha
 | BIO-05 | Phase 7 | Pending |
 | BIO-06 | Phase 8 | Pending |
 | ITEM-01 | Phase 2 | Pending |
-| ITEM-02 | Phase 2 | Pending |
+| ITEM-02 | Phase 2 | Complete |
 | ITEM-03 | Phase 2 | Pending |
 | ITEM-04 | Phase 2 | Pending |
 | ITEM-05 | Phase 7 | Pending |

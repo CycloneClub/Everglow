@@ -91,13 +91,13 @@ Plans:
   4. Each accepted remaining item has an individual XML-full-fetch comparison and an evidence record that supports green for both-checkbox-complete exact completion, yellow for both-checkbox-complete conflicts or known exceptions, and unchecked (no colour) for work with an incomplete checkbox or a blocker.
 
 **Verification needs:** Phase 1 dependency ledger; per-item source matrix; craft/loot/quest/trade/restoration checks; both localization targets for available items; `dotnet build`; blocker review.
-**Plans:** 5 plans
+**Plans:** 1/5 plans executed
 **Scope anchor:** 25 `phase:2` rows; D-15 keeps the three `阵法修复材料` placeholders `deferred` and D-16 reallocates `巨翼龙面具` to Phase 7 (ITEM-06), so 21 entries are implemented — 9 full implementations and 12 identity-only shell classes (D-18), all code-complete / art-incomplete with a recorded blocker and an unchecked Feishu row (D-22).
 Plans:
 
 **Wave 1**
 
-- [ ] 02-01-PLAN.md — 红月水藻 armor set tracer: art-missing equip registration proven end-to-end, phase gate + classification manifest (ITEM-02)
+- [x] 02-01-PLAN.md — 红月水藻 armor set tracer: art-missing equip registration proven end-to-end, phase gate + classification manifest (ITEM-02)
 
 **Wave 2** *(blocked on Wave 1 completion)*
 
@@ -220,7 +220,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8. Th
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Item Inventory & Completed-Art Items | 7/7 | Complete    | 2026-09-14 |
-| 2. Remaining Items & Unfinished-Art Materials | 0/5 | Not started | - |
+| 2. Remaining Items & Unfinished-Art Materials | 1/5 | In Progress|  |
 | 3. Completed-Art Ordinary Monsters | 0/TBD | Not started | - |
 | 4. Remaining Ordinary Monsters | 0/TBD | Not started | - |
 | 5. Completed-Art Terrain & Structures | 0/TBD | Not started | - |

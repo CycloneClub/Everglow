@@ -3,17 +3,18 @@ gsd_state_version: "1.0"
 milestone: v1.0
 current_phase: 02
 current_phase_name: Remaining Items & Unfinished-Art Materials
+current_plan: 2
 status: executing
-stopped_at: Phase 2 context gathered
-last_updated: "2026-09-14T08:53:17.324Z"
+stopped_at: Completed 02-01-PLAN.md
+last_updated: "2026-09-14T10:07:45.003Z"
 last_activity: 2026-09-14
 last_activity_desc: Phase 1 complete, transitioned to Phase 2
-state_head: af94e27394f5e978f7b170dd91965bdafd03a32a
+state_head: 94ff12fbb4d0e10f78a9b31b379f8aeba3d6b021
 progress:
   total_phases: 8
   completed_phases: 1
   total_plans: 12
-  completed_plans: 7
+  completed_plans: 8
 milestone_name: milestone
 ---
 
@@ -24,16 +25,18 @@ milestone_name: milestone
 See: `.planning/PROJECT.md` (updated 2026-09-12)
 
 **Core value:** Deliver a complete, publishable Kelp Curtain layer whose designed regions, gameplay loop, creatures, terrain, items, bosses, encounters, and rewards work together as a coherent Terraria experience.
-**Current focus:** Phase 01 — Item Inventory & Completed-Art Items
+**Current focus:** Phase 02 — Remaining Items & Unfinished-Art Materials
 
 ## Current Position
 
-Phase: 02 (Remaining Items & Unfinished-Art Materials) — READY TO EXECUTE
-Plan: Not started
-Status: Ready to execute
-Last activity: 2026-09-14 — Phase 1 complete, transitioned to Phase 2
+Current Plan: 2
+Total Plans in Phase: 5
+Phase: 02 (Remaining Items & Unfinished-Art Materials) — EXECUTING
+Plan: 1 of 5 complete (02-01 done; 02-02 next)
+Status: Executing
+Last activity: 2026-09-14 — 02-01 complete (红月水藻 armor set + phase-2 gate)
 
-Progress: [██░░░░░░░░] 13%
+Progress: [███████░░░] 67%
 
 ## Performance Metrics
 
@@ -62,6 +65,7 @@ Progress: [██░░░░░░░░] 13%
 | Phase 01 P05 | ~14min | 3 tasks | 8 files |
 | Phase 01 P06 | ~30min | 3 tasks | 12 files |
 | Phase 01 P07 | ~7min | 3 tasks | 5 files |
+| Phase 02 P01 | 17min | 3 tasks | 11 files |
 
 ## Accumulated Context
 
@@ -93,6 +97,11 @@ Progress: [██░░░░░░░░] 13%
 - [Phase 01]: 01-07 made the ArmOfGiantTree full-charge shockwave server-authoritative via ArmOfGiantTreeChargePacket ReleaseSmash (client signals, handler clamps Charge + requires the sender to hold the item, ApplyShockwave sets npc.netUpdate); WR-01 closed.
 - [Phase 01]: 01-07 gated the 0.75x..2x charge damage scaling on player.altFunctionUse != 2 so the right-click ordinary swing keeps base damage; WR-02 closed.
 - [Phase 01]: 01-07 verification used the phase baseline 8ed6f5862 instead of the plan's stale origin/master anchor (origin/master predates the whole phase; 1312-file false-positive diff).
+- [Phase 02]: Art-missing armor registers its equip slot explicitly via EquipLoader.AddEquipTexture(Mod, Commons.ModAsset.White_Mod, type, this, nameof(Class)) in a Main.dedServ-guarded Load(); the autoload-equip attribute is forbidden while _Head/_Body/_Legs art is absent (02-RESEARCH Pitfall 1).
+- [Phase 02]: Inventory rows mark code_complete=true once the class is implemented (D-11/D-22), superseding the plan-01-06 assumption that it mirrors the Feishu code checkbox; status stays unchecked because artwork is incomplete.
+- [Phase 02]: The 红月水藻 set mirrors the accepted red-algae family recipe (15 x JadeLakeRedAlgae_Item + 1 x CrimsonMoonSap at Work Benches) because the design supplies none; recorded as a designer-confirmation deviation in 02-DEVIATIONS.md.
+- [Phase 02]: The set bonus scales red-algae toxin detonation 2.5x in RedAlgae_FriendlyDebuff_glocalNPC when CrimsonMoonAlgaeSetBuff is set; the 15s->30s toxin-duration doubling is recorded as a blocker naming the seven accepted Phase-1 applier files.
+- [Phase 02]: scripts/check-phase2.ps1 resolves implemented classes from the working tree via Get-ChildItem (not git ls-files) and builds the CJK inventory ids from [char]0x.... codepoints so the gate script stays 100% ASCII.
 
 ### Pending Todos
 
@@ -123,6 +132,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-09-14T06:25:58.334Z
-Stopped at: Phase 2 context gathered
-Resume file: .planning/phases/02-remaining-items-unfinished-art-materials/02-CONTEXT.md
+Last session: 2026-09-14T10:07:27.582Z
+Stopped at: Completed 02-01-PLAN.md
+Resume file: None
