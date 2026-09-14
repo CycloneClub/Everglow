@@ -28,6 +28,23 @@ public class KelpCurtainPlayer : ModPlayer
 	public bool CorrodedPearl { get; set; }
 
 	/// <summary>
+	/// <see cref="Items.Armors.CrimsonMoonAlgae.CrimsonMoonAlgaeBreastPlate"/>
+	/// </summary>
+	public bool CrimsonMoonAlgaeBreastPlate { get; set; }
+
+	/// <summary>
+	/// <see cref="Items.Armors.CrimsonMoonAlgae.CrimsonMoonAlgaeGreaves"/>
+	/// </summary>
+	public bool CrimsonMoonAlgaeGreaves { get; set; }
+
+	/// <summary>
+	/// Set-buff flag of the 红月水藻 armor set, set by
+	/// <see cref="Items.Armors.CrimsonMoonAlgae.CrimsonMoonAlgaeHeaddress"/> and
+	/// <see cref="Items.Armors.CrimsonMoonAlgae.CrimsonMoonAlgaeMask"/> when the full set is worn.
+	/// </summary>
+	public bool CrimsonMoonAlgaeSetBuff { get; set; }
+
+	/// <summary>
 	/// Charged-smash accumulator for <see cref="ArmOfGiantTree"/>, bounded 0 to
 	/// <see cref="ArmOfGiantTree.MaxChargeFrames"/>. Transient combat state: it lives
 	/// on the per-player ModPlayer (never on the shared ModItem) and is not persisted.
@@ -48,6 +65,9 @@ public class KelpCurtainPlayer : ModPlayer
 		MolluscsSetBuff = false;
 		RadialCarapace = false;
 		CorrodedPearl = false;
+		CrimsonMoonAlgaeBreastPlate = false;
+		CrimsonMoonAlgaeGreaves = false;
+		CrimsonMoonAlgaeSetBuff = false;
 	}
 
 	public override void FrameEffects()
@@ -67,10 +87,29 @@ public class KelpCurtainPlayer : ModPlayer
 				+ (MolluscsSetBuff ? 0.3f : 0f)
 				+ (MolluscsLeggings ? 0.35f : 0f)
 				+ (RadialCarapace ? 0.35f : 0f)
-				+ (CorrodedPearl ? 0.2f : 0f);
+				+ (CorrodedPearl ? 0.2f : 0f)
+				+ (CrimsonMoonAlgaeGreaves ? 0.24f : 0f); // Design: 护胫 水下额外增加24%
 
 			Player.runAcceleration *= multiplier;
 			Player.maxRunSpeed *= multiplier;
+		}
+	}
+
+	/// <summary>
+	/// The 红月水藻 breastplate heals 15% of any single hit of 10 or more damage
+	/// (design: 受到大于等于10的伤害时治疗该伤害的15%). The life value is synchronized by
+	/// the base game; only the client-local heal effect is gated on the owner.
+	/// </summary>
+	public override void OnHurt(Player.HurtInfo info)
+	{
+		if (CrimsonMoonAlgaeBreastPlate && info.Damage >= 10)
+		{
+			int heal = (int)(info.Damage * 0.15f);
+			Player.statLife = Math.Min(Player.statLife + heal, Player.statLifeMax2);
+			if (Player.whoAmI == Main.myPlayer)
+			{
+				Player.HealEffect(heal);
+			}
 		}
 	}
 
