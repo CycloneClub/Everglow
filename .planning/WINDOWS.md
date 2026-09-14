@@ -1,10 +1,10 @@
 ---
 schema_version: 1
-open_count: 12
+open_count: 14
 waived_count: 0
 fixed_count: 0
-total_count: 12
-last_updated: 2026-09-14T10:55:25.450Z
+total_count: 14
+last_updated: 2026-09-14T11:21:22.699Z
 ---
 
 # Broken Windows Ledger
@@ -27,6 +27,8 @@ last_updated: 2026-09-14T10:55:25.450Z
 | 10 | 02 | unrun-verify | .planning/phases/02-remaining-items-unfinished-art-materials/02-03-PLAN.md |  | Plan 02-03 Task 1 human-check (D-21) not run offline: JadeSnakeEgg must be verified in a tModLoader client as consumable (10-gold, Blue) and consuming one without summoning (recorded blocker); BambooStepTalisman must equip into an accessory slot and grant no stats. | open |  | 2026-09-14T10:43:46.626Z |  |
 | 11 | 02 | unrun-verify | .planning/phases/02-remaining-items-unfinished-art-materials/02-03-PLAN.md |  | Plan 02-03 Task 3 human-check (D-21) not run offline: all six shells plus JadeSnakeEgg must appear in the inventory with a white-box icon, equip/use per declaration, and the tML log must show no missing-resource error. | open |  | 2026-09-14T10:43:47.338Z |  |
 | 12 | 02 | unrun-verify | .planning/phases/02-remaining-items-unfinished-art-materials/02-04-PLAN.md |  | Runtime human-check (D-21): in a tModLoader client spawn all six 02-04 shells and confirm each appears with a white-box icon, the mod loads with no missing-resource error, and none grants a stat or effect. | open |  | 2026-09-14T10:55:25.450Z |  |
+| 13 | 02 | unrun-verify | .planning/phases/02-remaining-items-unfinished-art-materials/02-01-PLAN.md |  | Plan 02-01 runtime human-checks (D-21) not run offline: verify in a tModLoader client that CrimsonMoonAlgaeHeaddress equips into the head slot with a white-box icon and defense 8, and that the full four-piece set (crafted at a Work Bench) produces the faster wet swim/run and the ~15% self-heal on a >=10-damage hit. | open |  | 2026-09-14T11:21:21.999Z |  |
+| 14 | 02 | unrun-verify | .planning/phases/02-remaining-items-unfinished-art-materials/02-05-PLAN.md |  | Plan 02-05 end-of-phase UAT bundle (D-21) not run offline: one tModLoader client session working the consolidated runtime-verification bundle from plans 02-01..02-04 (armor equip/set, BoulderCatapult arc/shards, TendonGreatbow boss +10%, shell loads with no missing-resource error). | open |  | 2026-09-14T11:21:22.699Z |  |
 
 ````json
 [
@@ -172,6 +174,30 @@ last_updated: 2026-09-14T10:55:25.450Z
     "status": "open",
     "reason": "",
     "recorded_at": "2026-09-14T10:55:25.450Z",
+    "resolved_at": null
+  },
+  {
+    "id": 13,
+    "kind": "unrun-verify",
+    "phase": "02",
+    "file": ".planning/phases/02-remaining-items-unfinished-art-materials/02-01-PLAN.md",
+    "line": null,
+    "description": "Plan 02-01 runtime human-checks (D-21) not run offline: verify in a tModLoader client that CrimsonMoonAlgaeHeaddress equips into the head slot with a white-box icon and defense 8, and that the full four-piece set (crafted at a Work Bench) produces the faster wet swim/run and the ~15% self-heal on a >=10-damage hit.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-14T11:21:21.999Z",
+    "resolved_at": null
+  },
+  {
+    "id": 14,
+    "kind": "unrun-verify",
+    "phase": "02",
+    "file": ".planning/phases/02-remaining-items-unfinished-art-materials/02-05-PLAN.md",
+    "line": null,
+    "description": "Plan 02-05 end-of-phase UAT bundle (D-21) not run offline: one tModLoader client session working the consolidated runtime-verification bundle from plans 02-01..02-04 (armor equip/set, BoulderCatapult arc/shards, TendonGreatbow boss +10%, shell loads with no missing-resource error).",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-14T11:21:22.699Z",
     "resolved_at": null
   }
 ]
