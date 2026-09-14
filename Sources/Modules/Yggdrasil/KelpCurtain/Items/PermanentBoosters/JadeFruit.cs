@@ -26,7 +26,7 @@ public class JadeFruit : ModItem
 		Item.width = 30;
 		Item.height = 34;
 		Item.rare = ItemRarityID.Blue;
-		Item.value = 2500;
+		Item.value = 15000;
 		Item.maxStack = Item.CommonMaxStack;
 		Item.useStyle = ItemUseStyleID.EatFood;
 	}

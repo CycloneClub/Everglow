@@ -11,18 +11,18 @@ public class MossySpell : SpellTomeItem
 
 	public override void SetDefaults()
 	{
-		Item.damage = 29;
+		Item.damage = 13;
 		Item.DamageType = DamageClass.Magic;
-		Item.mana = 12;
+		Item.mana = 4;
 		Item.width = 34;
 		Item.height = 46;
-		Item.useTime = 50;
-		Item.useAnimation = 50;
+		Item.useTime = 16;
+		Item.useAnimation = 16;
 		Item.useStyle = ItemUseStyleID.Shoot;
 		Item.noMelee = true;
 		Item.knockBack = 2.5f;
 		Item.value = Item.sellPrice(0, 0, 20, 0);
-		Item.rare = ItemRarityID.Orange;
+		Item.rare = ItemRarityID.Green;
 		Item.UseSound = SoundID.Item42;
 		Item.autoReuse = true;
 		Item.shoot = ModContent.ProjectileType<MossySpell_proj>();
