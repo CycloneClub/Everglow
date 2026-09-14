@@ -30,7 +30,7 @@ Artwork/Code cells mirror the Feishu texture/code checkbox state; Feishu is auth
 |  | 竹制武器 | weapons.misc |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
 |  | 竹簪子 | weapons.misc |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
 |  | 竹节步符 | weapons.misc |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
-|  | 红月水藻头饰 | weapons.magic |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
+|  | 红月水藻头饰 | weapons.magic |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); approved texture (贴图) missing from repository despite Feishu artwork checkbox; class implemented, art pending; effect blocked (outside this plan's file scope): set toxin clauses (红藻毒素Buff duration doubling, 免疫和红藻相关的所有伤害) and the greaves 免疫红藻减速 clause need the red-algae toxin/slow system or edits to accepted Phase-1 applier projectiles |
 |  | 红月水藻护胫 | weapons.misc |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
 |  | 红月水藻板甲 | weapons.misc |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
 |  | 红月水藻面具 | weapons.summon |  | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
@@ -86,7 +86,7 @@ Artwork/Code cells mirror the Feishu texture/code checkbox state; Feishu is auth
 |  | 崩解阈限 | weapons.magic | 特殊： | done | no | unchecked | design code not complete (Feishu code checkbox false); no repo implementation found |
 |  | 巨翼龙圣物（大师） | weapons.misc | 特殊： | done | no | unchecked | design code not complete (Feishu code checkbox false); no repo implementation found |
 |  | 巨翼龙纪念章 | weapons.misc | 特殊： | done | no | unchecked | design code not complete (Feishu code checkbox false); no repo implementation found |
-|  | 巨翼龙面具 | weapons.misc | 特殊： | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found |
+|  | 巨翼龙面具 | weapons.misc | 特殊： | no | no | unchecked | design artwork not complete (Feishu texture checkbox false); design code not complete (Feishu code checkbox false); no repo implementation found; reallocated from Phase 2 to Phase 7 (ITEM-06) by D-16 - Giant Winged Dragon reward |
 |  | 狂战士板甲 | weapons.melee | 特殊： | done | no | unchecked | design code not complete (Feishu code checkbox false); no repo implementation found |
 |  | 狂战士胫甲 | weapons.melee | 特殊： | done | no | unchecked | design code not complete (Feishu code checkbox false); no repo implementation found |
 |  | 狂战士角盔 | weapons.melee | 特殊： | done | no | unchecked | design code not complete (Feishu code checkbox false); no repo implementation found |

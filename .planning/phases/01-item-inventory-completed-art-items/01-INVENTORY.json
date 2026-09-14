@@ -241,6 +241,7 @@
                                          ],
                         "advances":  [
                                          "ITEM-01",
+                                         "ITEM-06",
                                          "ITEM-07"
                                      ],
                         "blockers":  [
@@ -248,8 +249,8 @@
                                          "design code not complete (Feishu code checkbox false)",
                                          "no repo implementation found"
                                      ],
-                        "phase":  2,
-                        "notes":  "",
+                        "phase":  7,
+                        "notes":  "2026-09-14 reallocation (D-16): this entry is a Giant Winged Dragon reward reallocated from Phase 2 to Phase 7 (ITEM-06); Feishu fields, checkboxes and status are unchanged.",
                         "deferred":  false,
                         "deferred_reason":  ""
                     },
@@ -3449,7 +3450,7 @@
                         "region":  "",
                         "name_en":  "",
                         "name_zh":  "红月水藻头饰",
-                        "internal_name":  "",
+                        "internal_name":  "Everglow.Yggdrasil.KelpCurtain.Items.Armors.CrimsonMoonAlgae.CrimsonMoonAlgaeHeaddress",
                         "feishu":  {
                                        "doc":  "item",
                                        "table_block_id":  "D48ndhX87o9stux04tDc3aBonZd",
@@ -3459,7 +3460,7 @@
                                        "row_color":  "neutral"
                                    },
                         "artwork_complete":  false,
-                        "code_complete":  false,
+                        "code_complete":  true,
                         "status":  "unchecked",
                         "repo_asset":  "",
                         "localization":  {
@@ -3471,16 +3472,18 @@
 
                                          ],
                         "advances":  [
+                                         "ITEM-02",
                                          "ITEM-03",
                                          "ITEM-07"
                                      ],
                         "blockers":  [
                                          "design artwork not complete (Feishu texture checkbox false)",
                                          "design code not complete (Feishu code checkbox false)",
-                                         "no repo implementation found"
+                                         "approved texture (贴图) missing from repository despite Feishu artwork checkbox; class implemented, art pending",
+                                         "effect blocked (outside this plan's file scope): set toxin clauses (红藻毒素Buff duration doubling, 免疫和红藻相关的所有伤害) and the greaves 免疫红藻减速 clause need the red-algae toxin/slow system or edits to accepted Phase-1 applier projectiles"
                                      ],
                         "phase":  2,
-                        "notes":  "",
+                        "notes":  "2026-09-14 Phase 2 (plan 02-01): the design's shared rowspan=\"4\" description cell on the head row is the armor set bonus; the inventory category (weapons.magic) is a parser artefact while the content is armor (D-23).",
                         "deferred":  false,
                         "deferred_reason":  ""
                     },

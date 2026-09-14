@@ -1,0 +1,154 @@
+{
+  "phase": "02-remaining-items-unfinished-art-materials",
+  "generated": "2026-09-14",
+  "rule": "mode: full = design row with a defined checkbox/description (D-18); shell = identity-only class. blocker_kind: artwork = approved texture missing; system = implies an unimplemented system (D-19). implemented = class exists in the repository on disk.",
+  "rows": [
+    {
+      "id": "biology_drop-weapons.ranged-肌腱巨弓",
+      "mode": "full",
+      "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/TendonGreatbow.cs",
+      "blocker_kind": "artwork",
+      "implemented": false
+    },
+    {
+      "id": "biology_drop-weapons.summon-re01",
+      "mode": "full",
+      "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/RestrictionDeviceRE01.cs",
+      "blocker_kind": "artwork",
+      "implemented": false
+    },
+    {
+      "id": "biology_drop-weapons.summon-腥臭的诱饵",
+      "mode": "full",
+      "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/ReekingBait.cs",
+      "blocker_kind": "artwork",
+      "implemented": false
+    },
+    {
+      "id": "item-weapons.misc-竹节步符",
+      "mode": "shell",
+      "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Accessories/BambooStepTalisman.cs",
+      "blocker_kind": "artwork",
+      "implemented": false
+    },
+    {
+      "id": "item-weapons.misc-竹制武器",
+      "mode": "shell",
+      "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/BambooWeapon.cs",
+      "blocker_kind": "artwork",
+      "implemented": false
+    },
+    {
+      "id": "item-weapons.misc-熊猫宠物",
+      "mode": "shell",
+      "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Pets/PandaPet.cs",
+      "blocker_kind": "artwork",
+      "implemented": false
+    },
+    {
+      "id": "item-weapons.misc-桃枝护符",
+      "mode": "shell",
+      "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Accessories/PeachBranchAmulet.cs",
+      "blocker_kind": "artwork",
+      "implemented": false
+    },
+    {
+      "id": "item-weapons.melee-弟子剑",
+      "mode": "shell",
+      "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/DiscipleSword.cs",
+      "blocker_kind": "system",
+      "implemented": false
+    },
+    {
+      "id": "item-weapons.misc-技能竹简",
+      "mode": "shell",
+      "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/SkillBambooSlip.cs",
+      "blocker_kind": "system",
+      "implemented": false
+    },
+    {
+      "id": "item-weapons.misc-区域放置物品制作台",
+      "mode": "shell",
+      "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Placeables/RegionalCraftingStation.cs",
+      "blocker_kind": "system",
+      "implemented": false
+    },
+    {
+      "id": "item-weapons.misc-弟子时装",
+      "mode": "shell",
+      "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Vanity/DiscipleVanity.cs",
+      "blocker_kind": "system",
+      "implemented": false
+    },
+    {
+      "id": "item-weapons.misc-桃花纸鸢-风筝",
+      "mode": "shell",
+      "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Misc/PeachBlossomKite.cs",
+      "blocker_kind": "artwork",
+      "implemented": false
+    },
+    {
+      "id": "item-weapons.misc-若干酒类",
+      "mode": "shell",
+      "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Misc/AlcoholicDrinks.cs",
+      "blocker_kind": "artwork",
+      "implemented": false
+    },
+    {
+      "id": "item-weapons.misc-竹簪子",
+      "mode": "shell",
+      "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Vanity/BambooHairpin.cs",
+      "blocker_kind": "artwork",
+      "implemented": false
+    },
+    {
+      "id": "item-weapons.misc-巨石弹射装置",
+      "mode": "full",
+      "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/BoulderCatapult.cs",
+      "blocker_kind": "artwork",
+      "implemented": false
+    },
+    {
+      "id": "item-weapons.summon-荧光水螅召唤杖",
+      "mode": "shell",
+      "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/FluorescentHydraStaff.cs",
+      "blocker_kind": "artwork",
+      "implemented": false
+    },
+    {
+      "id": "item-weapons.magic-红月水藻头饰",
+      "mode": "full",
+      "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Armors/CrimsonMoonAlgae/CrimsonMoonAlgaeHeaddress.cs",
+      "blocker_kind": "artwork",
+      "implemented": true
+    },
+    {
+      "id": "item-weapons.summon-红月水藻面具",
+      "mode": "full",
+      "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Armors/CrimsonMoonAlgae/CrimsonMoonAlgaeMask.cs",
+      "blocker_kind": "artwork",
+      "implemented": false
+    },
+    {
+      "id": "item-weapons.misc-红月水藻板甲",
+      "mode": "full",
+      "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Armors/CrimsonMoonAlgae/CrimsonMoonAlgaeBreastPlate.cs",
+      "blocker_kind": "artwork",
+      "implemented": false
+    },
+    {
+      "id": "item-weapons.misc-红月水藻护胫",
+      "mode": "full",
+      "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Armors/CrimsonMoonAlgae/CrimsonMoonAlgaeGreaves.cs",
+      "blocker_kind": "artwork",
+      "implemented": false
+    },
+    {
+      "id": "item-weapons.summon-灵蛇玉卵",
+      "mode": "full",
+      "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Misc/JadeSnakeEgg.cs",
+      "blocker_kind": "artwork",
+      "implemented": false
+    }
+  ]
+}
