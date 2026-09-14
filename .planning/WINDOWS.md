@@ -1,10 +1,10 @@
 ---
 schema_version: 1
-open_count: 7
+open_count: 9
 waived_count: 0
 fixed_count: 0
-total_count: 7
-last_updated: 2026-09-12T10:54:35.876Z
+total_count: 9
+last_updated: 2026-09-14T10:29:33.546Z
 ---
 
 # Broken Windows Ledger
@@ -22,6 +22,8 @@ last_updated: 2026-09-12T10:54:35.876Z
 | 5 | 01 | stub | Sources/Modules/Yggdrasil/KelpCurtain/Items/Pets/Photophore.cs |  | Photophore implements the Jade Fruit permanent-booster behaviour instead of the designed light pet; blocked, no pet asset exists | open |  | 2026-09-12T10:27:09.847Z |  |
 | 6 | 01 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/Items/Armors/Witherbark/WitherbarkHelmet.cs |  | Witherbark set-bonus summoned minion attack pattern differs from the design (spikes 14 dmg/30f vs the wired dash+8-leaf burst in Projectiles/Summon); recorded as a 套装效果 blocker | open |  | 2026-09-12T10:27:22.325Z |  |
 | 7 | 01 | stub | Sources/Everglow/Localization/en-US/Mods.Everglow.Items.*.hjson |  | 13 Phase 1 completed-art item display keys deferred by user directive (localization out of Phase 1): EvilHalbertBarnacle, ArcI, RedAlgaeMagicStaff, RedAlgaeMagicSpellBook, RedAlgaeMagicWhip, CrimsonMoonSap, EmptyWaterStaff, JadeLakeRedAlgae_Item, Photophore, GreenSungloStaff, ActivatedDogStaff, RedAlgaeMinionGyroscope, RedAlgaeMinionStaff | open |  | 2026-09-12T10:54:35.876Z |  |
+| 8 | 02 | unrun-verify | .planning/phases/02-remaining-items-unfinished-art-materials/02-02-PLAN.md |  | Plan 02-02 Task 1 human-check (D-21) not run offline: BoulderCatapult must be verified in a tModLoader client to arc under gravity, burst into 3-6 shards, consume no ammo and show damage 44. | open |  | 2026-09-14T10:29:32.758Z |  |
+| 9 | 02 | unrun-verify | .planning/phases/02-remaining-items-unfinished-art-materials/02-02-PLAN.md |  | Plan 02-02 Task 2 human-check (D-21) not run offline: TendonGreatbow boss-target +10% damage, RestrictionDeviceRE01 consuming 15 mana with no drone, and ReekingBait consuming without spawning require an in-client check. | open |  | 2026-09-14T10:29:33.546Z |  |
 
 ````json
 [
@@ -107,6 +109,30 @@ last_updated: 2026-09-12T10:54:35.876Z
     "status": "open",
     "reason": "",
     "recorded_at": "2026-09-12T10:54:35.876Z",
+    "resolved_at": null
+  },
+  {
+    "id": 8,
+    "kind": "unrun-verify",
+    "phase": "02",
+    "file": ".planning/phases/02-remaining-items-unfinished-art-materials/02-02-PLAN.md",
+    "line": null,
+    "description": "Plan 02-02 Task 1 human-check (D-21) not run offline: BoulderCatapult must be verified in a tModLoader client to arc under gravity, burst into 3-6 shards, consume no ammo and show damage 44.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-14T10:29:32.758Z",
+    "resolved_at": null
+  },
+  {
+    "id": 9,
+    "kind": "unrun-verify",
+    "phase": "02",
+    "file": ".planning/phases/02-remaining-items-unfinished-art-materials/02-02-PLAN.md",
+    "line": null,
+    "description": "Plan 02-02 Task 2 human-check (D-21) not run offline: TendonGreatbow boss-target +10% damage, RestrictionDeviceRE01 consuming 15 mana with no drone, and ReekingBait consuming without spawning require an in-client check.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-14T10:29:33.546Z",
     "resolved_at": null
   }
 ]
