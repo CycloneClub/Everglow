@@ -25,11 +25,15 @@ public class ReekingBait : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 	}
 
-	// Encounter blocker: the design summons 巨翼龙, a Phase 7 Giant Winged Dragon encounter.
-	// CanUseItem/UseItem are deliberately not overridden and no NPC type is referenced, so the
-	// item consumes without spawning anything until that encounter exists.
+	// Encounter blocker (Phase 7): the design summons 巨翼龙, a Phase 7 Giant Winged Dragon
+	// encounter. CanUseItem is gated off and no NPC type is referenced, so the item is not
+	// consumed while it would spawn nothing; revert the gate when that encounter exists.
 	//
 	// Recipe blocker: the design 合成方式 cell lists 血云母 + 干枯心脏, both Phase 7 Giant Winged
 	// Dragon items absent from the repository; referencing an absent type is a compile error,
 	// so no AddRecipes body is written.
+	public override bool CanUseItem(Player player)
+	{
+		return false;
+	}
 }

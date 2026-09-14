@@ -5,8 +5,9 @@ namespace Everglow.Yggdrasil.KelpCurtain.Items.Misc;
 /// The design row gives 10金 (10 gold) and 蓝色 (Blue rarity) and the effect
 /// 在森雨幽谷顶部使用以召唤苍翠灵蛇 (use at the top of the Valley of Lush and Moist to summon
 /// the Emerald Snake). The encounter itself is Phase 7 scope and the documented use
-/// location needs a gate that the encounter's phase owns, so the item consumes without
-/// summoning anything and both conditions are recorded as blockers.
+/// location needs a gate that the encounter's phase owns, so CanUseItem is gated off and
+/// the item is not consumed while it would summon nothing; both conditions are recorded
+/// as blockers.
 /// </summary>
 public class JadeSnakeEgg : ModItem
 {
@@ -29,5 +30,12 @@ public class JadeSnakeEgg : ModItem
 		Item.useTurn = true;
 		Item.UseSound = SoundID.Roar;
 		Item.useStyle = ItemUseStyleID.Swing;
+	}
+
+	// Encounter blocker (Phase 7): the 苍翠灵蛇 summon does not exist yet, so use is blocked
+	// rather than consuming the stack with no effect. Revert when the encounter is implemented.
+	public override bool CanUseItem(Player player)
+	{
+		return false;
 	}
 }
