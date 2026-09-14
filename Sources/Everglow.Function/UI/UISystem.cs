@@ -8,6 +8,8 @@ namespace Everglow.Commons.UI
 {
 	public class UISystem : ModSystem
 	{
+		private const int SpecialShopWhoAmI_Zero = 65536;
+
 		public static EverglowUISystem EverglowUISystem
 		{
 			get => Instance.system;
@@ -28,11 +30,17 @@ namespace Everglow.Commons.UI
 		public bool BottomResizing = false;
 
 		/// <summary>
-		/// ID: -1:None; 0: FurnaceScoreShop
+		/// The current special shop whoami.
+		/// <list type="bullet">
+		/// <item>
+		/// <description>-1: Disabled</description>
+		/// </item>
+		/// <item>
+		/// <description>0: Furnace Shop</description>
+		/// </item>
+		/// </list>
 		/// </summary>
 		public int CurrentSpecialShop = -1;
-
-		public int OldTalkNPC = -1;
 
 		public delegate void ChestUIDraw(UISystem system, SpriteBatch spriteBatch);
 
@@ -265,7 +273,7 @@ namespace Everglow.Commons.UI
 				x => x.MatchLdcI4(0),
 				x => x.MatchStloc(out _)))
 			{
-				c.EmitDelegate(CheckFurnaceShopEnable_ModifyNpcShop);
+				c.EmitDelegate(CheckSpecialShopEnable_ModifyNpcShop);
 			}
 		}
 
@@ -277,30 +285,25 @@ namespace Everglow.Commons.UI
 
 		private void On_Main_DrawInventory(On_Main.orig_DrawInventory orig, Main self)
 		{
-			CheckFurnaceShopEnable_ModifyNpcShop();
+			CheckSpecialShopEnable_ModifyNpcShop();
 			orig(self);
-			DisposeFurnaceShopEnable_ModifyNpcShop();
+			DisposeSpecialShopEnable_ModifyNpcShop();
 		}
 
-		private void CheckFurnaceShopEnable_ModifyNpcShop()
+		private void CheckSpecialShopEnable_ModifyNpcShop()
 		{
 			if (CurrentSpecialShop >= 0 && Main.npcShop == 0)
 			{
-				Main.npcShop = 65536 + CurrentSpecialShop;
+				Main.npcShop = SpecialShopWhoAmI_Zero + CurrentSpecialShop;
 			}
 		}
 
-		private void DisposeFurnaceShopEnable_ModifyNpcShop()
+		private void DisposeSpecialShopEnable_ModifyNpcShop()
 		{
-			if (Main.npcShop >= 65536)
+			if (Main.npcShop >= SpecialShopWhoAmI_Zero)
 			{
 				Main.npcShop = 0;
 			}
-		}
-
-		public void SetupShop(Chest chest)
-		{
-			Main.instance.shop[0] = chest;
 		}
 	}
 }
