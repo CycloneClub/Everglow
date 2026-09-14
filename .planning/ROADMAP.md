@@ -91,7 +91,29 @@ Plans:
   4. Each accepted remaining item has an individual XML-full-fetch comparison and an evidence record that supports green for both-checkbox-complete exact completion, yellow for both-checkbox-complete conflicts or known exceptions, and unchecked (no colour) for work with an incomplete checkbox or a blocker.
 
 **Verification needs:** Phase 1 dependency ledger; per-item source matrix; craft/loot/quest/trade/restoration checks; both localization targets for available items; `dotnet build`; blocker review.
-**Plans:** TBD
+**Plans:** 5 plans
+**Scope anchor:** 25 `phase:2` rows; D-15 keeps the three `阵法修复材料` placeholders `deferred` and D-16 reallocates `巨翼龙面具` to Phase 7 (ITEM-06), so 21 entries are implemented — 9 full implementations and 12 identity-only shell classes (D-18), all code-complete / art-incomplete with a recorded blocker and an unchecked Feishu row (D-22).
+Plans:
+
+**Wave 1**
+
+- [ ] 02-01-PLAN.md — 红月水藻 armor set tracer: art-missing equip registration proven end-to-end, phase gate + classification manifest (ITEM-02)
+
+**Wave 2** *(blocked on Wave 1 completion)*
+
+- [ ] 02-02-PLAN.md — Biology-design drop weapons: boulder catapult projectile chain, tendon greatbow + arrow, restriction device, reeking bait (ITEM-01, ITEM-03)
+
+**Wave 3** *(blocked on Wave 2 completion)*
+
+- [ ] 02-03-PLAN.md — 灵蛇玉卵 use item + the six art-pending shells group A (ITEM-03, ITEM-04)
+
+**Wave 4** *(blocked on Wave 3 completion)*
+
+- [ ] 02-04-PLAN.md — The four system-dependent shells + the two remaining art-pending shells; closes item coverage at 21/21 (ITEM-02, ITEM-03)
+
+**Wave 5** *(blocked on Wave 4 completion)*
+
+- [ ] 02-05-PLAN.md — Consolidated deviation/blocker ledger, validation map, full Phase 2 gate chain (ITEM-01…ITEM-04)
 
 ### Phase 3: Completed-Art Ordinary Monsters
 
@@ -198,7 +220,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8. Th
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Item Inventory & Completed-Art Items | 7/7 | Complete    | 2026-09-14 |
-| 2. Remaining Items & Unfinished-Art Materials | 0/TBD | Not started | - |
+| 2. Remaining Items & Unfinished-Art Materials | 0/5 | Not started | - |
 | 3. Completed-Art Ordinary Monsters | 0/TBD | Not started | - |
 | 4. Remaining Ordinary Monsters | 0/TBD | Not started | - |
 | 5. Completed-Art Terrain & Structures | 0/TBD | Not started | - |
