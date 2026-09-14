@@ -380,6 +380,8 @@ If the 红月水藻 set needs new flags, add them to `KelpCurtainPlayer` followi
 `肌腱巨弓` (biology table `Q528dhm8XopDyExdUJUcLGIMn6e`, row `GJ9ZdHtZ1omJhpxDT8PcxBxVneb`) [VERIFIED: .planning/phases/01-item-inventory-completed-art-items/evidence/biology.xml]:
 `["肌腱巨弓","","","58Ra","强","12%","28（慢）","血云母+血肉聚合物+玉化龙骨","4g","粉","按住左键蓄力拉出大弓对Boss单位额外造成10%伤害","巨翼龙肌腱制成的巨大弓…"]`
 
+> **Field mapping for this row** — header `物品名 | 贴图 | 代码 | 伤害 | 击退 | 暴击 | 使用时间 | 其他数值 | 价格 | 稀有度 | 效果 | 描述`, re-read from the committed `evidence/biology.xml` row `GJ9ZdHtZ1omJhpxDT8PcxBxVneb`: 伤害 **58** (`58Ra`), 击退 强, 暴击 12%, 使用时间 **28** (`28（慢）`), 其他数值 `血云母+血肉聚合物+玉化龙骨`, 价格 4g, 稀有度 粉. The damage value is **58** — the `28（慢）` cell is the use time (使用时间), not the damage. `02-PATTERNS.md` §`Items/Weapons/TendonGreatbow.cs` and `02-02-PLAN.md` Task 2 carry the same 58 / useTime 28 mapping, and `02-02-PLAN.md` records the earlier misread as a deviation.
+
 `限制机-RE01` / `腥臭的诱饵` (same table, rows `EjlsdeZZUoyAFQx7XT5cTBDMnUh` / `VJhMdMbirobSspxpz9Ucekudn2s`) [VERIFIED: evidence/biology.xml]:
 - `["限制机-RE01","","","18Su","弱","/","21（普通）","血云母+血肉聚合物+熔炉钢+隐生之眼","4g","粉","消耗15魔力召唤高速飞行的限制无人机…"]`
 - `["腥臭的诱饵","","","/","血云母+干枯心脏","20S","蓝","召唤巨翼龙",""]` (design row is column-sparse — do not over-read it)
@@ -508,22 +510,22 @@ Phase 1 gates are ASCII PowerShell 5.1 scripts under
 
 **If this table is empty:** not applicable — see rows above; A1/A2/A3/A5 need confirmation before becoming locked decisions.
 
-## Open Questions
+## Open Questions (RESOLVED)
 
-1. **Armor fallback strategy (highest priority).**
+1. **Armor fallback strategy (highest priority).** **RESOLVED: strategy (a)** — every 红月水藻 piece registers the equip texture explicitly with `EquipLoader.AddEquipTexture(Mod, Commons.ModAsset.White_Mod, EquipType.X, this, nameof(Class))` and deliberately omits `[AutoloadEquip]`; `02-01-PLAN.md` Tasks 1–2 implement this and its gate asserts the call is present and the autoload attribute absent, so ITEM-02 is equippable on the shared fallback (D-13) and D-14 needs no class edit.
    - What we know: `[AutoloadEquip]` requires `_Head/_Body/_Legs.png`; `EquipLoader.AddEquipTexture` throws on a missing texture; no placeholder art may be created.
    - What's unclear: whether the team prefers (a) explicit `EquipLoader.AddEquipTexture` with `White_Mod` (equippable, white-box visuals) or (b) omit the equip slot and record a blocker (not equippable until art).
-   - Recommendation: choose (a) for the 4 armor pieces so ITEM-02 is actually usable; also author the helper to detect future art so D-14 needs no class edit. Confirm with the user if a white-box body is unacceptable.
+   - Recommendation (adopted): choose (a) for the 4 armor pieces so ITEM-02 is actually usable; author the helper so D-14 needs no class edit.
 
-2. **`红月水藻` recipe source.**
+2. **`红月水藻` recipe source.** **RESOLVED: mirror the family recipe** — 15 × `JadeLakeRedAlgae_Item` + 1 × `CrimsonMoonSap` at `TileID.WorkBenches` for all four pieces (assumption A3); `02-01-PLAN.md` Task 3 implements it and `02-DEVIATIONS.md` records it for designer confirmation.
    - What we know: the design table shows no recipe; the family's existing weapons use `CrimsonMoonSap` + `JadeLakeRedAlgae_Item` at a Work Bench.
-   - What's unclear: exact quantities/tile for the armor.
-   - Recommendation: mirror the family pattern, record as an assumption/deviation (A3).
+   - What's unclear: exact quantities/tile for the armor — settled to the existing family quantities above.
+   - Recommendation (adopted): mirror the family pattern, record as an assumption/deviation (A3).
 
-3. **`腥臭的诱饵` design row is column-shifted/sparse.**
+3. **`腥臭的诱饵` design row is column-shifted/sparse.** **RESOLVED: implement identity only** — `SummonItems` category with the consumable summon-item shape, no `Item.shoot` and no `AddRecipes`; the column-shifted cells are not guessed, and a `recipe` blocker (`血云母` + `干枯心脏`) plus a Phase 7 巨翼龙 encounter `effect` blocker are recorded instead; `02-02-PLAN.md` Task 2 implements it (D-18 discretion).
    - What we know: row text is `["腥臭的诱饵","","","/","血云母+干枯心脏","20S","蓝","召唤巨翼龙",""]`.
    - What's unclear: which value is the use-time/value and whether rarity is truly Blue.
-   - Recommendation: implement identity + `SummonItems` category + record both the recipe and the missing-encounter blocker rather than guess.
+   - Recommendation (adopted): implement identity + `SummonItems` category + record both the recipe and the missing-encounter blocker rather than guess.
 
 ## Environment Availability
 
