@@ -190,6 +190,42 @@ Every entry additionally carries the D-13 texture blocker: `approved texture (�
 
 The seven entries created by this plan keep their display keys deferred under D-20: the in-game exporter was not run and no HJSON file was created or hand-edited. Each row's `localization` block keeps `en_us: false` / `zh_hans: false` / `blocked: false` (the user-directed-deferral convention).
 
+## 7. Plan 02-04 — The Four System-Dependent Shells and the Remaining Two Art-Pending Shells
+
+### 7.1 System blockers (D-19)
+
+Four of the six entries in this plan imply a system that Phase 2 must not build. Each is an identity-only shell whose blocker names the missing system exactly; **none of those systems (disciple, skill, regional-crafting) is implemented anywhere in this phase's diff — no system class, no `ModTile`, no recipe.**
+
+| Entry id | Class | Missing system | Blocker text |
+| --- | --- | --- | --- |
+| `item-weapons.melee-弟子剑` | `DiscipleSword` | 弟子 (disciple) progression system | `system blocked (D-19): the item belongs to the 弟子 (disciple) progression system, which is not implemented in this phase; the class is an identity only and no disciple-system code exists` |
+| `item-weapons.misc-弟子时装` | `DiscipleVanity` | 弟子 (disciple) progression system | `system blocked (D-19): the item belongs to the 弟子 (disciple) progression system, which is not implemented in this phase; the vanity declares no equip slot and the class is an identity only` |
+| `item-weapons.misc-技能竹简` | `SkillBambooSlip` | skill system | `system blocked (D-19): the design 描述 提交给NPC后学习 places the item in the skill system, which is not implemented in this phase; the class is an identity only` |
+| `item-weapons.misc-区域放置物品制作台` | `RegionalCraftingStation` | regional-crafting system **plus** its placement tile | `system blocked (D-19): the item belongs to the regional-crafting system, which is not implemented in this phase, and the placement tile it will need does not exist either; the plain ModItem declares no ModTile, no Item.createTile and no DefaultToPlaceableTile call (design 描述 宝箱的副掉落，非核心物品)` |
+
+`RegionalCraftingStation` is deliberately a plain `ModItem`: it declares no `ModTile` subclass, sets no `Item.createTile` and calls no `Item.DefaultToPlaceableTile`, so no half-built tile is introduced while the regional-crafting system is absent (T-02-04).
+
+`荧光水螅召唤杖` is **not** a system entry — it needs no system. It is recorded under the absent-summon-projectile/effect blockers instead (§7.3): the 荧光水螅 summon projectile does not exist in the repository, so `Item.shoot` is deliberately not set and the class is an identity only.
+
+### 7.2 Shell placement
+
+| # | Entry | Placement | Why |
+| --- | --- | --- | --- |
+| DD-11 | 技能竹简 | `Items/Misc/SkillBambooSlip.cs` | 02-PATTERNS.md proposed `Items/Weapons/`, but the design 描述 提交给NPC后学习 (learned after submission to an NPC) and the empty combat columns make it a quest submission item; `Items/Misc/ForestBreath.cs` is the closer analog. The pre-existing `02-CLASSIFICATION.json` path `Items/Weapons/SkillBambooSlip.cs` was corrected. |
+| DD-12 | 弟子时装 | `Items/Misc/DiscipleVanity.cs` | Same vanity-placement rule as DD-07: no `Items/Vanity/` directory exists anywhere in the repository and `Items/Misc/WitheredMask.cs` is the tracked vanity precedent. The pre-existing `02-CLASSIFICATION.json` path `Items/Vanity/DiscipleVanity.cs` was corrected. |
+| DD-13 | 区域放置物品制作台 | `Items/Placeables/RegionalCraftingStation.cs` | Chosen to keep its intended content type (`Placeables`) visible even though it stays a plain `ModItem` until the regional-crafting system and its tile exist. |
+
+### 7.3 Effect/artwork blockers
+
+| Entry id | Blocker kind | Exact text | Why |
+| --- | --- | --- | --- |
+| `item-weapons.misc-若干酒类` | artwork | `artwork blocked + identity-only shell (D-18): the design row carries no 伤害 / 价格 / 稀有度 / 效果 cells (its only populated cell is 描述 只喝了一两口就丢进去了), so the approved artwork and behaviour are undefined; the class declares an item identity only` | Empty design row (no consumable effect defined) plus absent approved artwork. |
+| `item-weapons.summon-荧光水螅召唤杖` | artwork | `artwork blocked + identity-only shell (D-18): the design row carries no 伤害 / 价格 / 稀有度 / 效果 cells, so the approved artwork and behaviour are undefined; the 荧光水螅 summon projectile does not exist in the repository, so Item.shoot is not set and the class declares an item identity only` | Empty design row plus the absent summon projectile; no system is implicated. |
+
+### 7.4 Localization (D-20)
+
+The six entries of this plan extend the D-20 deferral: the in-game exporter was not run and no HJSON file was created or hand-edited. Each row's `localization` block keeps `en_us: false` / `zh_hans: false` / `blocked: false` (the user-directed-deferral convention).
+
 ---
 
-*Phase 2 · plan 02-01 opened this ledger; plan 02-02 (biology-design weapon drops) appended §5; plan 02-03 (snake egg use item and six art-pending shells) appended §6.*
+*Phase 2 · plan 02-01 opened this ledger; plan 02-02 (biology-design weapon drops) appended §5; plan 02-03 (snake egg use item and six art-pending shells) appended §6; plan 02-04 (the four system-dependent shells and the last two art-pending shells) appended §7.*

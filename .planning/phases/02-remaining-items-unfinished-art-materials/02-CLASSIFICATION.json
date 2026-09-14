@@ -57,28 +57,28 @@
       "mode": "shell",
       "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/DiscipleSword.cs",
       "blocker_kind": "system",
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "item-weapons.misc-技能竹简",
       "mode": "shell",
-      "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/SkillBambooSlip.cs",
+      "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Misc/SkillBambooSlip.cs",
       "blocker_kind": "system",
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "item-weapons.misc-区域放置物品制作台",
       "mode": "shell",
       "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Placeables/RegionalCraftingStation.cs",
       "blocker_kind": "system",
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "item-weapons.misc-弟子时装",
       "mode": "shell",
-      "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Vanity/DiscipleVanity.cs",
+      "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Misc/DiscipleVanity.cs",
       "blocker_kind": "system",
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "item-weapons.misc-桃花纸鸢-风筝",
@@ -92,7 +92,7 @@
       "mode": "shell",
       "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Misc/AlcoholicDrinks.cs",
       "blocker_kind": "artwork",
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "item-weapons.misc-竹簪子",
@@ -113,7 +113,7 @@
       "mode": "shell",
       "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/FluorescentHydraStaff.cs",
       "blocker_kind": "artwork",
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "item-weapons.magic-红月水藻头饰",
