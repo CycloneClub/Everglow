@@ -3,18 +3,18 @@ gsd_state_version: "1.0"
 milestone: v1.0
 current_phase: 02
 current_phase_name: Remaining Items & Unfinished-Art Materials
-current_plan: 4
+current_plan: 5
 status: executing
-stopped_at: Completed 02-03-PLAN.md
-last_updated: "2026-09-14T10:41:38.671Z"
+stopped_at: Completed 02-04-PLAN.md
+last_updated: "2026-09-14T10:57:13.514Z"
 last_activity: 2026-09-14
-last_activity_desc: Phase 2 in progress — 02-03 complete (snake egg use item + six art-pending shells; gate at 15/21)
-state_head: e5d43b4d4fd5fdfab3b1377507c012d5a551e782
+last_activity_desc: Phase 2 in progress — 02-04 complete (four system-dependent shells + last two art-pending shells; item coverage closed at 21/21)
+state_head: 15ce556647b27e912087ec8da1bac21d65e84eec
 progress:
   total_phases: 8
-  completed_phases: 1
+  completed_phases: 0
   total_plans: 12
-  completed_plans: 10
+  completed_plans: 11
 milestone_name: milestone
 ---
 
@@ -29,12 +29,12 @@ See: `.planning/PROJECT.md` (updated 2026-09-12)
 
 ## Current Position
 
-Current Plan: 4
+Current Plan: 5
 Total Plans in Phase: 5
 Phase: 02 (Remaining Items & Unfinished-Art Materials) — EXECUTING
-Plans complete: 3 of 5 (02-01, 02-02, 02-03 done; 02-04 next)
+Plans complete: 4 of 5 (02-01, 02-02, 02-03, 02-04 done; 02-05 next)
 Status: Ready to execute
-Last activity: 2026-09-14 — 02-02 complete (biology-design drop weapons; gate at 8/21)
+Last activity: 2026-09-14 — 02-04 complete (system-dependent shells; gate closed at 21/21)
 
 Progress: [█████████░] 83%
 
@@ -42,7 +42,7 @@ Progress: [█████████░] 83%
 
 **Velocity:**
 
-- Total plans completed: 10
+- Total plans completed: 11
 - Average duration: n/a
 - Total execution time: 0 hours
 
@@ -52,7 +52,7 @@ Progress: [█████████░] 83%
 |-------|-------|-------|----------|
 | 1–8 | 0 | TBD | n/a |
 | 1 | 7 | - | - |
-| 2 | 2 | 5 | 10min |
+| 2 | 4 | 5 | 10min |
 
 **Recent Trend:** No execution data yet.
 **Per-Plan Metrics:**
@@ -69,6 +69,7 @@ Progress: [█████████░] 83%
 | Phase 02 P01 | 17min | 3 tasks | 11 files |
 | Phase 02 P02 | 10min | 3 tasks | 11 files |
 | Phase 02 P03 | 7min | 3 tasks | 11 files |
+| Phase 02 P04 | 8min | 3 tasks | 10 files |
 
 ## Accumulated Context
 
@@ -112,6 +113,8 @@ Progress: [█████████░] 83%
 - [Phase 02]: 灵蛇玉卵 is implemented as a consumable SummonItems use item (10 gold, Blue, 12-frame swing) that spawns nothing; the Phase 7 苍翠灵蛇 encounter and the 在森雨幽谷顶部使用 location gate are recorded as one precise effect blocker (T-02-04).
 - [Phase 02]: The six plan-02-03 shells are identity-only classes (D-18) with ForestBreath's conservative defaults (20x20, 50 silver, Blue) and their family LocalizationCategory: Accessories (竹节步符/桃枝护符), MeleeWeapons (竹制武器), Vanity (竹簪子), Miscs (桃花纸鸢), Pets (熊猫宠物); no recipe, Item.shoot, UpdateAccessory or equip slot.
 - [Phase 02]: Both vanity shells live in Items/Misc (no Items/Vanity directory exists; WitheredMask precedent); 02-CLASSIFICATION.json's 竹簪子 class_file was corrected from Items/Vanity to Items/Misc (DD-07).
+- [Phase 02]: [Phase 02] The last six shells (AlcoholicDrinks, FluorescentHydraStaff, DiscipleSword, DiscipleVanity, SkillBambooSlip, RegionalCraftingStation) are identity-only classes (D-18) with ForestBreath's conservative defaults and their family LocalizationCategory: Miscs, SummonWeapons, MeleeWeapons, Vanity, Miscs, Placeables; no recipe, Item.shoot, UpdateAccessory, equip slot, ModTile or createTile.
+- [Phase 02]: [Phase 02] The four system-dependent shells name the missing 弟子/skill/regional-crafting systems exactly and none of those systems is implemented (D-19); RegionalCraftingStation stays a plain ModItem because a tile without its system would be half-built; 02-CLASSIFICATION.json's SkillBambooSlip and DiscipleVanity class_file paths were corrected to Items/Misc (DD-11/DD-12).
 
 ### Pending Todos
 
@@ -129,6 +132,7 @@ None yet.
 
 - [Phase 02] The four biology-design weapon rows (巨石弹射装置, 肌腱巨弓, 限制机, 腥臭的诱饵) are code-complete / art-incomplete. Outstanding blockers: approved textures (all four); the TendonGreatbow charge curve; the absent Phase 7 dependencies (限制无人机/聚能射线/浊燃 system, 巨翼龙 encounter, and the 血云母/血肉聚合物/熔炉钢/隐生之眼/干枯心脏/玉化龙骨 ingredients). Runtime verification (D-21) of both weapon chains is outstanding.
 - [Phase 02] The plan-02-03 rows (灵蛇玉卵, 竹节步符, 竹制武器, 竹簪子, 桃枝护符, 桃花纸鸢（风筝）, 熊猫宠物) are code-complete / art-incomplete. Outstanding blockers: approved textures (all seven); the 苍翠灵蛇 Phase 7 encounter and its 在森雨幽谷顶部使用 location gate for 灵蛇玉卵; runtime verification (D-21) of the seven entries. Phase gate advanced to 15/21.
+- [Phase 02] The plan-02-04 rows (若干酒类, 荧光水螅召唤杖, 弟子剑, 弟子时装, 技能竹简, 区域放置物品制作台) are code-complete / art-incomplete. Outstanding blockers: approved textures (all six); the 弟子 (disciple) progression system for 弟子剑/弟子时装; the skill system for 技能竹简; the regional-crafting system plus its placement tile for 区域放置物品制作台; the absent 荧光水螅 summon projectile for 荧光水螅召唤杖. No system was implemented (D-19). Item coverage is closed at 21/21; runtime verification (D-21) of the six shells is outstanding (WINDOWS.md entry 12).
 
 ### Quick Tasks Completed
 
@@ -145,6 +149,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-09-14T10:41:38.566Z
-Stopped at: Completed 02-03-PLAN.md
+Last session: 2026-09-14T10:57:13.409Z
+Stopped at: Completed 02-04-PLAN.md
 Resume file: None
