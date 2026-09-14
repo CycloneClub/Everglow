@@ -127,21 +127,21 @@
       "mode": "full",
       "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Armors/CrimsonMoonAlgae/CrimsonMoonAlgaeMask.cs",
       "blocker_kind": "artwork",
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "item-weapons.misc-红月水藻板甲",
       "mode": "full",
       "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Armors/CrimsonMoonAlgae/CrimsonMoonAlgaeBreastPlate.cs",
       "blocker_kind": "artwork",
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "item-weapons.misc-红月水藻护胫",
       "mode": "full",
       "class_file": "Sources/Modules/Yggdrasil/KelpCurtain/Items/Armors/CrimsonMoonAlgae/CrimsonMoonAlgaeGreaves.cs",
       "blocker_kind": "artwork",
-      "implemented": false
+      "implemented": true
     },
     {
       "id": "item-weapons.summon-灵蛇玉卵",
