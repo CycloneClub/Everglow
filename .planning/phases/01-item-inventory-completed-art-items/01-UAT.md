@@ -1,9 +1,9 @@
 ---
-status: partial
+status: complete
 phase: 01-item-inventory-completed-art-items
 source: [01-VERIFICATION.md]
 started: 2026-09-12T20:20:17Z
-updated: 2026-09-13T09:10:00Z
+updated: 2026-09-13T09:20:00Z
 ---
 
 ## Current Test
@@ -41,9 +41,8 @@ result: pass
 test: In a tModLoader client (singleplayer and a 2-client multiplayer session), exercise `ArmOfGiantTree`: hold one stack and charge, switch to a second same-type stack (must start uncharged), have two players charge simultaneously (no shared charge), then release at full charge and confirm the area shockwave is applied server-side and propagates to clients via `npc.netUpdate`. Optionally obtain/use the five Phase 1 carry-over items and confirm their recorded dispositions.
 expected: Charge is isolated per stack and per player; the full-charge smash delivers 200% charged hit + 100% shockwave with the retract lock; shockwave damage is authoritative and replicates.
 why_human: Three plan-01-07 behavior-unverified truths plus the plan-01-06 backstop truth — no offline script can prove multiplayer runtime behavior.
-result: blocked
-blocked_by: other
-reason: "User (2026-09-13): live client testing not convenient right now — temporarily skip this verification, do it later. Needs a running tModLoader client (singleplayer + 2-client multiplayer)."
+result: skipped
+reason: "Deferred follow-up: live tModLoader client testing deferred (2026-09-13) — ArmOfGiantTree per-stack/per-player charge isolation and server-authoritative shockwave propagation not yet exercised."
 
 ### 6. Advisory code-review disposition (WR-01/WR-02)
 test: Review the two new advisory findings in `01-REVIEW.md`: WR-01 (the `ReleaseSmash` handler does not require `Charge >= MaxChargeFrames`) and WR-02 (`ArmOfGiantTreeChargedSlot` is not synced, so the replicated charge has no durable authoritative consumer).
@@ -58,7 +57,16 @@ total: 6
 passed: 5
 issues: 0
 pending: 0
-skipped: 0
-blocked: 1
+skipped: 1
+blocked: 0
 
 ## Gaps
+
+## Deferred Follow-Ups
+
+- test: 5
+  idea: "Live multiplayer verification of ArmOfGiantTree per-stack/per-player charge isolation and server-authoritative shockwave propagation — run in a tModLoader client (singleplayer + 2-client) when convenient."
+  deferred_at: 2026-09-13
+- test: 6
+  idea: "Optional anti-cheat hardening of the client-authoritative ReleaseSmash signal (WR-01) requires durable server-side charge tracking; schedule to Phase 8 (QUAL-03) if ever desired."
+  deferred_at: 2026-09-13
