@@ -6,8 +6,6 @@ namespace Everglow.Commons.Mechanics.Quest.UI.UIElements.QuestDetail;
 public class UIQuestHint : UIBlock
 {
 	private QuestView _quest;
-	private UIContainerPanel _content;
-	private UIQuestTextVerticalScrollbar _scrollbar;
 	private UITextPlus _title;
 	private UITextPlus _hint;
 	private float _layoutWidth = -1f;
@@ -27,12 +25,12 @@ public class UIQuestHint : UIBlock
 	public override void OnInitialization()
 	{
 		base.OnInitialization();
-		_content = new UIContainerPanel();
-		Register(_content);
 
 		_title = new UITextPlus(string.Empty);
 		_hint = new UITextPlus(string.Empty);
-		_content.AddElements([_title, _hint]);
+		_title.CenterX = _hint.CenterX = PositionStyle.Half;
+		Register(_title);
+		Register(_hint);
 		SetQuest(_quest);
 	}
 
@@ -60,19 +58,13 @@ public class UIQuestHint : UIBlock
 	public override void Calculation()
 	{
 		base.Calculation();
-		if (_content is null)
+		if (_title is null)
 		{
 			return;
 		}
 
 		float margin = 36f * QuestContainer.Scale;
-		_content.Info.Left.SetValue(margin);
-		_content.Info.Top.SetValue(margin);
-		_content.Info.Width.SetValue(-2f * margin, 1f);
-		_content.Info.Height.SetValue(-2f * margin, 1f);
-		_content.Calculation();
-
-		float width = Math.Max(1f, _content.HitBox.Width - 8f);
+		float width = Math.Max(1f, Info.Size.X - 2f * margin);
 		float fontSize = 30f * QuestContainer.Scale;
 		if (_layoutWidth != width || _fontSize != fontSize)
 		{
@@ -80,12 +72,15 @@ public class UIQuestHint : UIBlock
 			_fontSize = fontSize;
 			FormatText(_title, fontSize * 1.2f, width);
 			FormatText(_hint, fontSize, width);
-			_title.Info.Top.SetValue(0f);
-			_hint.Info.Top.SetValue(_title.Info.Height.Pixel + margin);
-			_title.Calculation();
-			_hint.Calculation();
-			_content.Calculation();
 		}
+
+		float titleHeight = _title.Info.Height.Pixel;
+		float hintHeight = _hint.Info.Height.Pixel;
+		float spacing = titleHeight > 0f && hintHeight > 0f ? margin : 0f;
+		_title.CenterY = (-(hintHeight + spacing) / 2f, 0.5f);
+		_hint.CenterY = ((titleHeight + spacing) / 2f, 0.5f);
+		_title.Calculation();
+		_hint.Calculation();
 	}
 
 	private static void FormatText(UITextPlus text, float fontSize, float width)
