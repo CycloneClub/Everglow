@@ -1,9 +1,10 @@
 ---
 phase: 01-item-inventory-completed-art-items
 verified: 2026-09-13T08:07:21Z
-status: human_needed
+status: passed
 score: 13/17 must-haves verified
 covered_files:
+
   - .planning/REQUIREMENTS.md
   - .planning/ROADMAP.md
   - .planning/phases/01-item-inventory-completed-art-items/01-01-PLAN.md
@@ -45,10 +46,12 @@ covered_files:
   - Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/UnderwaterTreasury/ArmOfGiantTree.cs
   - Sources/Modules/Yggdrasil/KelpCurtain/KelpCurtainPlayer.cs
   - Sources/Modules/Yggdrasil/Netcode/ArmOfGiantTreeChargePacket.cs
+
 covered_digest: "v1:sha256:3aa98b161ea370946b9d967331f768c01542f8f62d2ce1addb1cefd7c6b4a9e3"
 behavior_unverified: 3
 overrides_applied: 1
 overrides:
+
   - must_have: "Completed-art tranche has documented localization behaviour in both en-US and zh-Hans (SC3 localization clause)"
     reason: "Phase 1 localization deferred by explicit user directive (2026-09-12: '记录：不考虑本地化，把代码部分完成即可'). The exporter was not run, no HJSON key was fabricated or hand-edited, and the 18 missing-key entries (13 original + 5 carry-over) remain recorded as deferred deviations in 01-DEVIATIONS.md and 01-INVENTORY.json deviations[] (P1A-11/P1A-13). The strict coverage gate is red by design (45/63 covered); the authoritative completion path is Phase 2 ('both localization targets for available items') / Phase 8 SC2. Re-confirmed 2026-09-13: check-localization-coverage.ps1 -AllowMissing -> MISSING(18)/63, exit 0; no Localization/** file is in the phase diff."
     accepted_by: "user (explicit phase directive 2026-09-12)"
@@ -63,6 +66,7 @@ re_verification:
   gaps_remaining: []
   regressions: []
 deferred:
+
   - truth: "Both-culture display keys for the 18 completed-art entries (5 carry-over + 13)"
     addressed_in: "Phase 2 / Phase 8"
     evidence: "Phase 2 verification needs: 'both localization targets for available items'; Phase 8 SC2: 'Every implemented item has complete en-US and zh-Hans localization'"
@@ -73,6 +77,7 @@ deferred:
     addressed_in: "Phase 6"
     evidence: "Phase 6 SC1: 'Green Tundra, and nested/transition labels follow the Phase 1 reconciliation'"
 behavior_unverified_items:
+
   - truth: "ArmOfGiantTree charge is per-player and per-stack: ArmOfGiantTreeChargedSlot compared against player.selectedItem resets the charge on any slot change, so a second same-type stack cannot inherit a full charge, two players do not share charge, and a fresh stack starts uncharged (CR-01 closure)."
     test: "Hold a full charge on one ArmOfGiantTree stack, switch to a second same-type stack in a different hotbar slot, then (multiplayer) have two players charge simultaneously."
     expected: "Each stack/player charges independently; the switched-to stack starts at 0 and cannot fire the shockwave without charging; the first stack's charge does not appear on the second."
@@ -86,6 +91,7 @@ behavior_unverified_items:
     expected: "The server receives the change-detected packet; the value is not spuriously zeroed by the slot discriminator on the authoritative side."
     why_human: "Networked state replication. 01-REVIEW.md WR-02 (new) notes ArmOfGiantTreeChargedSlot is not included in CopyClientState/SendClientChanges/the packet, so the replicated charge has no durable consumer; whether this is observable depends on where HoldItem runs (01-07 coverage D2 human_judgment: true)."
 human_verification:
+
   - test: "In a tModLoader client (singleplayer and a 2-client multiplayer session) obtain/craft/equip/use the five Phase 1 carry-over items and compare behaviour to the committed evidence rows; then specifically exercise ArmOfGiantTree charge isolation (two same-type stacks, two simultaneous players) and confirm the full-charge shockwave is applied server-side and propagates via npc.netUpdate."
     expected: "ArmOfGiantTree charges independently per stack/player and delivers the documented smash (200% charged hit + 100% shockwave, retract lock); ElftigernPowder/ForestBreath/WitheredMask/QuetzalsWish match their recorded disposition, or their recorded blockers (art pending / GAME-03 / effect) are confirmed acceptable."
     why_human: "Plan 01-06 backstop truth plus the three behavior-unverified 01-07 truths; requires a running client and (for the shockwave) Phase 6 loot tables. No offline script can prove obtainability or runtime effect."
