@@ -4952,7 +4952,238 @@
                             "plan":  "01-06",
                             "status":  "deferred",
                             "reason":  "localization deferred by user directive (2026-09-12)"
-                        }
+                        },
+                       {
+                           "entry_id":  "biology_drop-weapons.ranged-肌腱巨弓",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/TendonGreatbow.cs",
+                           "field":  "localization",
+                           "before":  "no display key in en-US or zh-Hans item category files",
+                           "after":  "not generated (in-game exporter not run)",
+                           "source":  "plan 02-05; user directive 2026-09-12",
+                           "plan":  "02-05",
+                           "status":  "deferred",
+                           "reason":  "localization deferred by user directive (2026-09-12)"
+                       },
+                       {
+                           "entry_id":  "biology_drop-weapons.summon-re01",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/RestrictionDeviceRE01.cs",
+                           "field":  "localization",
+                           "before":  "no display key in en-US or zh-Hans item category files",
+                           "after":  "not generated (in-game exporter not run)",
+                           "source":  "plan 02-05; user directive 2026-09-12",
+                           "plan":  "02-05",
+                           "status":  "deferred",
+                           "reason":  "localization deferred by user directive (2026-09-12)"
+                       },
+                       {
+                           "entry_id":  "biology_drop-weapons.summon-腥臭的诱饵",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/ReekingBait.cs",
+                           "field":  "localization",
+                           "before":  "no display key in en-US or zh-Hans item category files",
+                           "after":  "not generated (in-game exporter not run)",
+                           "source":  "plan 02-05; user directive 2026-09-12",
+                           "plan":  "02-05",
+                           "status":  "deferred",
+                           "reason":  "localization deferred by user directive (2026-09-12)"
+                       },
+                       {
+                           "entry_id":  "item-weapons.magic-红月水藻头饰",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Armors/CrimsonMoonAlgae/CrimsonMoonAlgaeHeaddress.cs",
+                           "field":  "localization",
+                           "before":  "no display key in en-US or zh-Hans item category files",
+                           "after":  "not generated (in-game exporter not run)",
+                           "source":  "plan 02-05; user directive 2026-09-12",
+                           "plan":  "02-05",
+                           "status":  "deferred",
+                           "reason":  "localization deferred by user directive (2026-09-12)"
+                       },
+                       {
+                           "entry_id":  "item-weapons.melee-弟子剑",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/DiscipleSword.cs",
+                           "field":  "localization",
+                           "before":  "no display key in en-US or zh-Hans item category files",
+                           "after":  "not generated (in-game exporter not run)",
+                           "source":  "plan 02-05; user directive 2026-09-12",
+                           "plan":  "02-05",
+                           "status":  "deferred",
+                           "reason":  "localization deferred by user directive (2026-09-12)"
+                       },
+                       {
+                           "entry_id":  "item-weapons.misc-区域放置物品制作台",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Placeables/RegionalCraftingStation.cs",
+                           "field":  "localization",
+                           "before":  "no display key in en-US or zh-Hans item category files",
+                           "after":  "not generated (in-game exporter not run)",
+                           "source":  "plan 02-05; user directive 2026-09-12",
+                           "plan":  "02-05",
+                           "status":  "deferred",
+                           "reason":  "localization deferred by user directive (2026-09-12)"
+                       },
+                       {
+                           "entry_id":  "item-weapons.misc-巨石弹射装置",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/BoulderCatapult.cs",
+                           "field":  "localization",
+                           "before":  "no display key in en-US or zh-Hans item category files",
+                           "after":  "not generated (in-game exporter not run)",
+                           "source":  "plan 02-05; user directive 2026-09-12",
+                           "plan":  "02-05",
+                           "status":  "deferred",
+                           "reason":  "localization deferred by user directive (2026-09-12)"
+                       },
+                       {
+                           "entry_id":  "item-weapons.misc-弟子时装",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Misc/DiscipleVanity.cs",
+                           "field":  "localization",
+                           "before":  "no display key in en-US or zh-Hans item category files",
+                           "after":  "not generated (in-game exporter not run)",
+                           "source":  "plan 02-05; user directive 2026-09-12",
+                           "plan":  "02-05",
+                           "status":  "deferred",
+                           "reason":  "localization deferred by user directive (2026-09-12)"
+                       },
+                       {
+                           "entry_id":  "item-weapons.misc-技能竹简",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Misc/SkillBambooSlip.cs",
+                           "field":  "localization",
+                           "before":  "no display key in en-US or zh-Hans item category files",
+                           "after":  "not generated (in-game exporter not run)",
+                           "source":  "plan 02-05; user directive 2026-09-12",
+                           "plan":  "02-05",
+                           "status":  "deferred",
+                           "reason":  "localization deferred by user directive (2026-09-12)"
+                       },
+                       {
+                           "entry_id":  "item-weapons.misc-桃枝护符",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Accessories/PeachBranchAmulet.cs",
+                           "field":  "localization",
+                           "before":  "no display key in en-US or zh-Hans item category files",
+                           "after":  "not generated (in-game exporter not run)",
+                           "source":  "plan 02-05; user directive 2026-09-12",
+                           "plan":  "02-05",
+                           "status":  "deferred",
+                           "reason":  "localization deferred by user directive (2026-09-12)"
+                       },
+                       {
+                           "entry_id":  "item-weapons.misc-桃花纸鸢-风筝",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Misc/PeachBlossomKite.cs",
+                           "field":  "localization",
+                           "before":  "no display key in en-US or zh-Hans item category files",
+                           "after":  "not generated (in-game exporter not run)",
+                           "source":  "plan 02-05; user directive 2026-09-12",
+                           "plan":  "02-05",
+                           "status":  "deferred",
+                           "reason":  "localization deferred by user directive (2026-09-12)"
+                       },
+                       {
+                           "entry_id":  "item-weapons.misc-熊猫宠物",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Pets/PandaPet.cs",
+                           "field":  "localization",
+                           "before":  "no display key in en-US or zh-Hans item category files",
+                           "after":  "not generated (in-game exporter not run)",
+                           "source":  "plan 02-05; user directive 2026-09-12",
+                           "plan":  "02-05",
+                           "status":  "deferred",
+                           "reason":  "localization deferred by user directive (2026-09-12)"
+                       },
+                       {
+                           "entry_id":  "item-weapons.misc-竹制武器",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/BambooWeapon.cs",
+                           "field":  "localization",
+                           "before":  "no display key in en-US or zh-Hans item category files",
+                           "after":  "not generated (in-game exporter not run)",
+                           "source":  "plan 02-05; user directive 2026-09-12",
+                           "plan":  "02-05",
+                           "status":  "deferred",
+                           "reason":  "localization deferred by user directive (2026-09-12)"
+                       },
+                       {
+                           "entry_id":  "item-weapons.misc-竹簪子",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Misc/BambooHairpin.cs",
+                           "field":  "localization",
+                           "before":  "no display key in en-US or zh-Hans item category files",
+                           "after":  "not generated (in-game exporter not run)",
+                           "source":  "plan 02-05; user directive 2026-09-12",
+                           "plan":  "02-05",
+                           "status":  "deferred",
+                           "reason":  "localization deferred by user directive (2026-09-12)"
+                       },
+                       {
+                           "entry_id":  "item-weapons.misc-竹节步符",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Accessories/BambooStepTalisman.cs",
+                           "field":  "localization",
+                           "before":  "no display key in en-US or zh-Hans item category files",
+                           "after":  "not generated (in-game exporter not run)",
+                           "source":  "plan 02-05; user directive 2026-09-12",
+                           "plan":  "02-05",
+                           "status":  "deferred",
+                           "reason":  "localization deferred by user directive (2026-09-12)"
+                       },
+                       {
+                           "entry_id":  "item-weapons.misc-红月水藻护胫",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Armors/CrimsonMoonAlgae/CrimsonMoonAlgaeGreaves.cs",
+                           "field":  "localization",
+                           "before":  "no display key in en-US or zh-Hans item category files",
+                           "after":  "not generated (in-game exporter not run)",
+                           "source":  "plan 02-05; user directive 2026-09-12",
+                           "plan":  "02-05",
+                           "status":  "deferred",
+                           "reason":  "localization deferred by user directive (2026-09-12)"
+                       },
+                       {
+                           "entry_id":  "item-weapons.misc-红月水藻板甲",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Armors/CrimsonMoonAlgae/CrimsonMoonAlgaeBreastPlate.cs",
+                           "field":  "localization",
+                           "before":  "no display key in en-US or zh-Hans item category files",
+                           "after":  "not generated (in-game exporter not run)",
+                           "source":  "plan 02-05; user directive 2026-09-12",
+                           "plan":  "02-05",
+                           "status":  "deferred",
+                           "reason":  "localization deferred by user directive (2026-09-12)"
+                       },
+                       {
+                           "entry_id":  "item-weapons.misc-若干酒类",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Misc/AlcoholicDrinks.cs",
+                           "field":  "localization",
+                           "before":  "no display key in en-US or zh-Hans item category files",
+                           "after":  "not generated (in-game exporter not run)",
+                           "source":  "plan 02-05; user directive 2026-09-12",
+                           "plan":  "02-05",
+                           "status":  "deferred",
+                           "reason":  "localization deferred by user directive (2026-09-12)"
+                       },
+                       {
+                           "entry_id":  "item-weapons.summon-灵蛇玉卵",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Misc/JadeSnakeEgg.cs",
+                           "field":  "localization",
+                           "before":  "no display key in en-US or zh-Hans item category files",
+                           "after":  "not generated (in-game exporter not run)",
+                           "source":  "plan 02-05; user directive 2026-09-12",
+                           "plan":  "02-05",
+                           "status":  "deferred",
+                           "reason":  "localization deferred by user directive (2026-09-12)"
+                       },
+                       {
+                           "entry_id":  "item-weapons.summon-红月水藻面具",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Armors/CrimsonMoonAlgae/CrimsonMoonAlgaeMask.cs",
+                           "field":  "localization",
+                           "before":  "no display key in en-US or zh-Hans item category files",
+                           "after":  "not generated (in-game exporter not run)",
+                           "source":  "plan 02-05; user directive 2026-09-12",
+                           "plan":  "02-05",
+                           "status":  "deferred",
+                           "reason":  "localization deferred by user directive (2026-09-12)"
+                       },
+                       {
+                           "entry_id":  "item-weapons.summon-荧光水螅召唤杖",
+                           "class_file":  "Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/FluorescentHydraStaff.cs",
+                           "field":  "localization",
+                           "before":  "no display key in en-US or zh-Hans item category files",
+                           "after":  "not generated (in-game exporter not run)",
+                           "source":  "plan 02-05; user directive 2026-09-12",
+                           "plan":  "02-05",
+                           "status":  "deferred",
+                           "reason":  "localization deferred by user directive (2026-09-12)"
+                       }
                     ],
     "phase1_actions":  [
                            {
