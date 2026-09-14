@@ -47,7 +47,7 @@ covered_files:
   - Sources/Modules/Yggdrasil/KelpCurtain/KelpCurtainPlayer.cs
   - Sources/Modules/Yggdrasil/Netcode/ArmOfGiantTreeChargePacket.cs
 
-covered_digest: "v1:sha256:3aa98b161ea370946b9d967331f768c01542f8f62d2ce1addb1cefd7c6b4a9e3"
+covered_digest: "v1:sha256:b8b396097fd8145338fe4bff83d8588cf8d9075b4c411008686d35161f80ace4"
 behavior_unverified: 3
 overrides_applied: 1
 overrides:
