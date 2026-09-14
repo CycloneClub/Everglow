@@ -94,7 +94,7 @@ public class VampireMat_Attack_Proj_Ball_Small_Group : ModProjectile
 
 	public override void OnHitPlayer(Player target, Player.HurtInfo info)
 	{
-		VampireMat.VampireMatHitCommonEffect(target, info.Damage);
+		VampireMat.OnVampireMatHitPlayer(target, info.Damage);
 		base.OnHitPlayer(target, info);
 	}
 

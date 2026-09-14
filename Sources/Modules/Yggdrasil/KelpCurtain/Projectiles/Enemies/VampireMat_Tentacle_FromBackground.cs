@@ -81,7 +81,7 @@ public class VampireMat_Tentacle_FromBackground : ModProjectile
 
 	public override void OnHitPlayer(Player target, Player.HurtInfo info)
 	{
-		VampireMat.VampireMatHitCommonEffect(target, info.Damage);
+		VampireMat.OnVampireMatHitPlayer(target, info.Damage);
 		base.OnHitPlayer(target, info);
 	}
 

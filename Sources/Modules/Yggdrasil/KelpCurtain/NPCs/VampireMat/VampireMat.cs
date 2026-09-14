@@ -7,6 +7,7 @@ using Everglow.Yggdrasil.KelpCurtain.Items.Consumables;
 using Everglow.Yggdrasil.KelpCurtain.Items.Misc;
 using Everglow.Yggdrasil.KelpCurtain.Projectiles.Enemies;
 using Everglow.Yggdrasil.KelpCurtain.VFXs.VampireMat;
+using Everglow.Yggdrasil.Netcode;
 using Everglow.Yggdrasil.WorldGeneration;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -905,11 +906,23 @@ public class VampireMat : ModNPC
 
 	public override void OnHitPlayer(Player target, Player.HurtInfo info)
 	{
-		VampireMatHitCommonEffect(target, info.Damage);
+		OnVampireMatHitPlayer(target, info.Damage);
 		base.OnHitPlayer(target, info);
 	}
 
-	public static void VampireMatHitCommonEffect(Player target, int damage)
+	public static void OnVampireMatHitPlayer(Player target, int damage)
+	{
+		if (NetUtils.IsSingle)
+		{
+			VampireHitCommonEffect(target, damage);
+		}
+		else if (NetUtils.IsClient)
+		{
+			ModIns.PacketResolver.Send(new VampireMatHitPacket(damage));
+		}
+	}
+
+	public static void VampireHitCommonEffect(Player target, int damage)
 	{
 		if (target.HasBuff(BuffID.Gills))
 		{
