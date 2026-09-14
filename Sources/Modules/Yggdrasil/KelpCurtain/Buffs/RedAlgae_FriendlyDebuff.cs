@@ -4,6 +4,13 @@ namespace Everglow.Yggdrasil.KelpCurtain.Buffs;
 
 public class RedAlgae_FriendlyDebuff : ModBuff
 {
+	/// <summary>
+	/// The toxin accumulation window in frames. Applicators apply the buff with this duration
+	/// and the detonation scales its damage by the elapsed time; the constant is the single
+	/// source of truth for both sides so they cannot silently drift apart.
+	/// </summary>
+	public const int Duration = 900;
+
 	public override void SetStaticDefaults()
 	{
 		Main.debuff[Type] = true;

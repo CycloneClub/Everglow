@@ -36,7 +36,7 @@ public class RedAlgae_FriendlyDebuff_glocalNPC : GlobalNPC
 		{
 			int index = npc.FindBuffIndex(buffType);
 			int buffTime = npc.buffTime[index];
-			int damage = 900 - buffTime;
+			int damage = RedAlgae_FriendlyDebuff.Duration - buffTime;
 			if (damage > 10)
 			{
 				bool setBonus = attacker != null
