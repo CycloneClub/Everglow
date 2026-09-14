@@ -35,7 +35,15 @@ findings:
   warning: 2
   info: 5
   total: 9
-status: issues_found
+status: fixed
+fixes_applied: [CR-01, CR-02, WR-01, WR-02]
+fixes_unresolved: [IN-01, IN-02, IN-03, IN-04, IN-05]
+fixed_at: 2026-09-14
+fix_commits:
+  CR-01: 05e48b1ea
+  CR-02: 737cefb7f
+  WR-01: 8d06b7a34
+  WR-02: 7647291e2
 ---
 
 # Phase 02: Code Review Report
@@ -43,7 +51,7 @@ status: issues_found
 **Reviewed:** 2026-09-14T12:05:05Z
 **Depth:** standard
 **Files Reviewed:** 26
-**Status:** issues_found
+**Status:** fixed — CR-01, CR-02, WR-01 and WR-02 resolved (see the resolution note under each finding); IN-01..IN-05 are advisory and were intentionally left unresolved.
 
 ## Summary
 
@@ -65,6 +73,8 @@ Reviewed the 26 Phase-2 `.cs` files under `Sources/Modules/Yggdrasil/KelpCurtain
 ## Critical Issues
 
 ### CR-01 [BLOCKER]: `TendonGreatbow.Shoot` mutates a by-value `type` and returns `true`, so `TendonGreatbow_Arrow` is never spawned
+
+**Status:** ✅ Fixed in `05e48b1ea`. The type substitution now runs in `ModifyShootStats(Player, ref Vector2, ref Vector2, ref int type, ref int, ref float)` on the value the vanilla spawn call actually reads, so `TendonGreatbow_Arrow` (and its +10% boss clause) fires for any arrow ammo. The inert `Shoot` override and the then-unused `Terraria.DataStructures` using were removed; `ProjectileID.WoodenArrowFriendly` remains the no-ammo fallback in `SetDefaults`.
 
 **File:** `Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/TendonGreatbow.cs:38-45`
 
@@ -107,6 +117,8 @@ Remove the now-inert `Shoot` override. If special arrows are meant to keep their
 
 ### CR-02 [BLOCKER]: Breastplate heal is applied before damage and clamped, so it does nothing at full HP
 
+**Status:** ✅ Fixed in `737cefb7f`. The override moved from `OnHurt` (runs before health is reduced) to `PostHurt` (runs after), and uses `Player.Heal((int)(info.Damage * 0.15f))` instead of writing `Player.statLife` directly. `Player.Heal` applies the `statLifeMax2` clamp and handles the heal effect/state update, so the 15% heal now survives at full HP and the ad-hoc `whoAmI == Main.myPlayer`/`HealEffect` guard is gone. The `info.Damage >= 10` gate is preserved. Remaining unverified: live-client confirmation of the exact heal amount (runtime check is in the phase UAT bundle).
+
 **File:** `Sources/Modules/Yggdrasil/KelpCurtain/KelpCurtainPlayer.cs:103-114`
 
 **Issue:** `ModPlayer.OnHurt` is documented by tML as: *"Called on the local client taking damage. Called right before health is reduced."* The code:
@@ -145,6 +157,8 @@ public override void PostHurt(Player.HurtInfo info)
 
 ### WR-01 [WARNING]: Detonation damage hardcodes the buff's max duration (`900 - buffTime`) and duplicates a literal spread across seven call sites
 
+**Status:** ✅ Fixed in `8d06b7a34`. `RedAlgae_FriendlyDebuff` now exposes `public const int Duration = 900;` as the single source of truth. The detonation uses `RedAlgae_FriendlyDebuff.Duration - buffTime`, and all seven applicator sites (`RedAlgaeMagicStaff_Proj`, `RedAlgaeMagicWhip_Proj`, `RedAlgaeMagicSpellBook_proj`, `CrimsonMoonAlgaeSummonStaff_minion_spore`, `CrimsonMoonAlgaeSummonStaff_minion_Explosion`, `RedAlgaeMinionGyroscope_Proj` ×2) apply the buff with the constant. Values are unchanged (all 900 frames), so behaviour is identical; the numeric coupling is removed. Note: this edits the accepted Phase-1 appliers referenced by blocker E-1, but only re-points the duration literal — the E-1 duration-doubling clause itself remains open.
+
 **File:** `Sources/Modules/Yggdrasil/KelpCurtain/Buffs/RedAlgae_FriendlyDebuff_glocalNPC.cs:39`
 
 **Issue:** `int damage = 900 - buffTime;` assumes `RedAlgae_FriendlyDebuff` is always applied with a 900-frame duration. That 900 is currently a bare literal repeated at every applicator: `RedAlgaeMagicStaff_Proj.cs:102`, `RedAlgaeMagicWhip_Proj.cs:130`, `RedAlgaeMagicSpellBook_proj.cs:175`, `CrimsonMoonAlgaeSummonStaff_minion_spore.cs:59`, `CrimsonMoonAlgaeSummonStaff_minion_Explosion.cs:89`, and `RedAlgaeMinionGyroscope_Proj.cs:86,165`. The detonation and the application are coupled only by a shared magic number; changing any one applicator (or refreshing the buff with a different duration) silently distorts the detonation damage — including making it negative (no detonation) if a longer duration is ever used.
@@ -163,6 +177,8 @@ target.AddBuff(type, RedAlgae_FriendlyDebuff.Duration);
 ```
 
 ### WR-02 [WARNING]: No-op consumables (`JadeSnakeEgg`, `ReekingBait`) silently destroy the item on use
+
+**Status:** ✅ Fixed in `7647291e2`. Both items now override `CanUseItem(Player)` to return `false`, so they no longer consume a stack while the Phase-7 summon encounter does not exist. `Item.consumable = true` is retained so the intended behaviour is a one-line gate flip when the encounter lands; the recorded blockers in the inventory/ledger are unchanged. All changes are guarded so no new gameplay system was invented.
 
 **Files:** `Sources/Modules/Yggdrasil/KelpCurtain/Items/Misc/JadeSnakeEgg.cs:20-32`, `Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/ReekingBait.cs:11-26`
 

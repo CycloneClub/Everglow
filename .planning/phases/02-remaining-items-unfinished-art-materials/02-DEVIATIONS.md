@@ -99,7 +99,7 @@ The 红月水藻 four-piece set carries one `effect` blocker. Two of its design 
 
 **Blocker E-2 — 免疫红藻减速.** No player-facing red-algae **slow** effect exists in the repository, so there is nothing additional to immunize against beyond the one player red-algae effect that does exist: `RedAlgaeDebuff` (its `lifeRegen` drain). The implementable part of the immunity clause is applied — both head pieces set `player.buffImmune[ModContent.BuffType<RedAlgaeDebuff>()] = true` in `UpdateArmorSet`, which immunizes the set wearer against that debuff. The 减速 clause stays recorded until a red-algae slow effect is designed/implemented.
 
-The hard-coded `900` accumulation reference, the `damage > 10` gate and the `DelBuff` call in `RedAlgae_FriendlyDebuff_glocalNPC` are unchanged.
+The hard-coded `900` accumulation reference has since been replaced by the shared `RedAlgae_FriendlyDebuff.Duration` constant (code-review fix WR-01, commit `8d06b7a34`); the `damage > 10` gate and the `DelBuff` call in `RedAlgae_FriendlyDebuff_glocalNPC` are unchanged.
 
 ### 2.3 Recipe blockers
 
@@ -261,6 +261,20 @@ Confirmed against `01-INVENTORY.json` and `01-INVENTORY.md` (both mirror records
 - **21** implemented entries.
 - **21** entries with `artwork_complete: false`, `code_complete: true` and `status: "unchecked"` (D-11/D-22). No Phase 2 row carries a Feishu status colour.
 
+## 7. Code-Review Fixes (2026-09-14)
+
+`02-REVIEW.md` raised two blockers and two warnings against the phase-2 sources. All four were resolved by the code-fixer after review; the Info findings (IN-01..IN-05) remain advisory and were intentionally not actioned. The fixes are behaviour-preserving except where a defect is corrected, and no `.png`, other binary/art asset, or HJSON/localization file was touched.
+
+| Finding | Class / file | Fix commit | Summary |
+| --- | --- | --- | --- |
+| CR-01 | `Items/Weapons/TendonGreatbow.cs` | `05e48b1ea` | Moved the arrow substitution into `ModifyShootStats(..., ref int type, ...)` and deleted the inert `Shoot` override, so `TendonGreatbow_Arrow` (and its +10% boss clause) actually fires. `ProjectileID.WoodenArrowFriendly` remains the no-ammo fallback. |
+| CR-02 | `KelpCurtainPlayer.cs` | `737cefb7f` | Moved the breastplate heal from `OnHurt` (pre-damage) to `PostHurt` and switched to `Player.Heal`, so the 15% heal is no longer swallowed by the max-life clamp at full HP. The `info.Damage >= 10` gate is preserved. |
+| WR-01 | `Buffs/RedAlgae_FriendlyDebuff.cs` + detonation + 7 appliers | `8d06b7a34` | Promoted the toxin window to `RedAlgae_FriendlyDebuff.Duration = 900`; the detonation and all applicator sites now share it. Values are unchanged (all 900 frames). |
+| WR-02 | `Items/Misc/JadeSnakeEgg.cs`, `Items/Weapons/ReekingBait.cs` | `7647291e2` | Added `CanUseItem => false` so the no-op consumables no longer destroy a stack before the Phase-7 summon encounter exists; `Item.consumable` stays `true` and the gate is a one-line flip when the encounter lands. |
+
+**Superseded descriptions.** The §2.4 rows for 腥臭的诱饵 and 灵蛇玉卵 still record the pre-fix "consumes without summoning anything" behaviour; after WR-02 both items block use entirely (`CanUseItem` returns `false`) and are **not** consumed while the encounter is absent, so the corresponding §6.4 UAT expectations ("swings, consumes one") are superseded. The inventory `blockers` arrays themselves are unchanged. The §2.2 note about the "hard-coded `900`" reference is likewise superseded by WR-01 (now the shared `Duration` constant), while the E-1 duration-doubling clause remains open.
+
+**Verification.** `dotnet build /p:Configuration=Release /p:WarningLevel=0` exits 0 (0 warnings, 0 errors) in the main checkout — the isolated worktree could not locate `tModLoader.targets`, so the gates ran in the main checkout after the fix commits were fast-forwarded onto the branch. `check-phase2.ps1 -RequireAll` reports `OK(0): phase2 implemented = 21 / 21 (full=9, shell=12)`.
 
 ---
 
