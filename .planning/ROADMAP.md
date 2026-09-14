@@ -17,7 +17,7 @@ Phase 1 owns the source/inventory reconciliation record for the label discrepanc
 
 ## Phases
 
-- [ ] **Phase 1: Item Inventory & Completed-Art Items** - Reconcile source labels and inventory every item and biology-design drop, then implement entries with complete design textures. (reopened 2026-09-12 — 18-entry completed-art class-less carry-over; original tranche complete 2026-09-12)
+- [x] **Phase 1: Item Inventory & Completed-Art Items** - Reconcile source labels and inventory every item and biology-design drop, then implement entries with complete design textures. (reopened 2026-09-12 — 18-entry completed-art class-less carry-over; original tranche complete 2026-09-12) (completed 2026-09-14)
 - [ ] **Phase 2: Remaining Items & Unfinished-Art Materials** - Complete item entries without finished design textures, including unfinished-art drops/materials, using Phase 1 dependencies.
 - [ ] **Phase 3: Completed-Art Ordinary Monsters** - Implement ordinary creature behavior for entries whose design textures are complete; their drops are already item work.
 - [ ] **Phase 4: Remaining Ordinary Monsters** - Implement ordinary creatures without complete design textures and their behavior after the completed-art tranche.
@@ -43,7 +43,7 @@ Phase 1 owns the source/inventory reconciliation record for the label discrepanc
   4. Every completed-art item accepted in this phase has an XML-full-fetch comparison record; both-checkbox-complete exact matches are eligible for green/check status, both-checkbox-complete conflicts or known exceptions are yellow with reasons, and entries with an incomplete checkbox or a blocker remain unchecked (no colour) with reasons.
 
 **Verification needs:** XML `--detail full` fetches and per-item matrix; source-label taxonomy; item recipe/effect/drop checks; asset/localization convention review; `dotnet build`; blocker and dependency audit.
-**Plans:** 7/7 plans executed (6 executed; 1 gap-closure plan 01-07)
+**Plans:** 7/7 plans complete
 Plans:
 
 - [x] 01-06-PLAN.md
@@ -197,7 +197,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8. Th
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Item Inventory & Completed-Art Items | 7/7 | In Progress|  |
+| 1. Item Inventory & Completed-Art Items | 7/7 | Complete    | 2026-09-14 |
 | 2. Remaining Items & Unfinished-Art Materials | 0/TBD | Not started | - |
 | 3. Completed-Art Ordinary Monsters | 0/TBD | Not started | - |
 | 4. Remaining Ordinary Monsters | 0/TBD | Not started | - |
