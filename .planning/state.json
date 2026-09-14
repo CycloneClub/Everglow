@@ -6,7 +6,7 @@
     {
       "number": "1",
       "name": "Item Inventory & Completed-Art Items",
-      "status": "in_progress"
+      "status": "complete"
     },
     {
       "number": "2",
@@ -46,8 +46,8 @@
   ],
   "next": {
     "command": "/gsd:progress --next",
-    "label": "Advance to the next step",
-    "reason": "Phase 01 of 8 · executing"
+    "label": "Advance to the next step (plan phase 2)",
+    "reason": "Phase 2 of 8 — needs a plan"
   },
-  "updated_at": "2026-09-13T07:25:27.790Z"
+  "updated_at": "2026-09-14T05:50:05.928Z"
 }
