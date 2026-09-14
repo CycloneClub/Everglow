@@ -28,7 +28,7 @@ public class YggdrasilGravelStoreGate_Exit : RoomDoorTile
 	public override bool RightClick(int i, int j)
 	{
 		RoomManager.ExitALevelOfRoom();
-		return base.RightClick(i, j);
+		return true;
 	}
 
 	public override void MouseOver(int i, int j)
