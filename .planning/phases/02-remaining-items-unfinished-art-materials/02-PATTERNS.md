@@ -1,17 +1,19 @@
 # Phase 2: Remaining Items & Unfinished-Art Materials - Pattern Map
 
 **Mapped:** 2026-09-14
-**Files analyzed:** 24 (21 item classes + 1 projectile + 1 modified ModPlayer + 2 planning artifacts; 4 rows are decision-only and create no file)
-**Analogs found:** 24 / 24 (every new file has a tracked in-repo analog)
+**Files analyzed:** 28 (21 item classes + 3 projectiles + 1 modified ModPlayer (`KelpCurtainPlayer.cs`) + 1 modified global-NPC buff (`RedAlgae_FriendlyDebuff_glocalNPC.cs`) + 2 planning artifacts; 4 rows are decision-only and create no file)
+**Analogs found:** 28 / 28 (every new or modified file has a tracked in-repo analog)
 
 ## File Classification
 
 | New/Modified File | Role | Data Flow | Closest Analog | Match Quality |
 |-------------------|------|-----------|----------------|---------------|
 | `Sources/Modules/Yggdrasil/KelpCurtain/Items/Weapons/TendonGreatbow.cs` (肌腱巨弓, full) | item | request-response (ranged) | `Items/Weapons/MossyCyatheaBow.cs` | exact |
+| `.../Projectiles/Ranged/TendonGreatbow_Arrow.cs` (new projectile) | projectile | request-response (arrow) | `Projectiles/Ranged/CyatheaArrow_proj.cs` | exact |
 | `.../Items/Weapons/RestrictionDeviceRE01.cs` (限制机, full) | item | event-driven (summon) | `Items/Weapons/RedAlgaeMinionStaff.cs` | exact |
 | `.../Items/Weapons/BoulderCatapult.cs` (巨石弹射装置, full) | item | request-response (ranged) | `Items/Weapons/GreenThornBallLauncher.cs` | exact |
 | `.../Projectiles/Ranged/BoulderCatapult_Proj.cs` (new projectile) | projectile | event-driven (explode/shrapnel) | `Projectiles/Ranged/GreenThornLauncher_Proj.cs` | exact |
+| `.../Projectiles/Ranged/BoulderCatapult_SubProj.cs` (new projectile) | projectile | event-driven (shrapnel) | `Projectiles/Ranged/GreenThornLauncher_SubProj.cs` | exact |
 | `.../Items/Weapons/ReekingBait.cs` (腥臭的诱饵, full) | item | event-driven (summon-use) | `Items/BossSummon/MossyRuby.cs` | role-match |
 | `.../Items/Armors/CrimsonMoonAlgae/CrimsonMoonAlgaeHeaddress.cs` (full) | item (armor head) | event-driven (equip) | `Items/Armors/Molluscs/MossyMolluscsHelmet.cs` + `ShellMolluscsBreastPlate.cs` | exact |
 | `.../Armors/CrimsonMoonAlgae/CrimsonMoonAlgaeMask.cs` (full) | item (armor head) | event-driven (equip) | `MossyMolluscsHelmet.cs` | exact |
@@ -31,6 +33,7 @@
 | `.../Items/Pets/PandaPet.cs` (shell) | item (pet) | event-driven | `Items/Misc/ForestBreath.cs` | role-match |
 | `.../Items/Placeables/RegionalCraftingStation.cs` (shell, no tile) | item (plain) | request-response | `Items/Misc/ForestBreath.cs` | role-match |
 | `Sources/Modules/Yggdrasil/KelpCurtain/KelpCurtainPlayer.cs` (modify, only if set needs state) | player-state | event-driven | itself (existing `RadialCarapace` flag pattern) | exact |
+| `Sources/Modules/Yggdrasil/KelpCurtain/Buffs/RedAlgae_FriendlyDebuff_glocalNPC.cs` (modify) | global NPC buff | event-driven (toxin detonation) | itself (existing `DoDamageRedAlgaeBuff` detonation) | exact |
 | `.planning/phases/02-.../scripts/check-phase2.ps1` | gate script | file-I/O | `.planning/phases/01-item-inventory-completed-art-items/scripts/check-carryover.ps1` | exact |
 | `.planning/phases/02-.../02-CLASSIFICATION.json` | manifest | transform | `.planning/phases/01-item-inventory-completed-art-items/01-INVENTORY.json` | role-match |
 
@@ -445,7 +448,7 @@ foreach ($line in @($statusLines)) {
 
 ## Shared Patterns
 
-### Fallback texture (ALL 21 item classes + projectile)
+### Fallback texture (ALL 21 item classes + 3 projectiles)
 **Source:** `Items/Misc/ForestBreath.cs:11-13` (Phase 1 D-13 precedent)
 ```csharp
 // Approved artwork is missing from the repository despite the Feishu artwork checkbox;
