@@ -1,10 +1,10 @@
 ---
 schema_version: 1
-open_count: 11
+open_count: 12
 waived_count: 0
 fixed_count: 0
-total_count: 11
-last_updated: 2026-09-14T10:43:47.338Z
+total_count: 12
+last_updated: 2026-09-14T10:55:25.450Z
 ---
 
 # Broken Windows Ledger
@@ -26,6 +26,7 @@ last_updated: 2026-09-14T10:43:47.338Z
 | 9 | 02 | unrun-verify | .planning/phases/02-remaining-items-unfinished-art-materials/02-02-PLAN.md |  | Plan 02-02 Task 2 human-check (D-21) not run offline: TendonGreatbow boss-target +10% damage, RestrictionDeviceRE01 consuming 15 mana with no drone, and ReekingBait consuming without spawning require an in-client check. | open |  | 2026-09-14T10:29:33.546Z |  |
 | 10 | 02 | unrun-verify | .planning/phases/02-remaining-items-unfinished-art-materials/02-03-PLAN.md |  | Plan 02-03 Task 1 human-check (D-21) not run offline: JadeSnakeEgg must be verified in a tModLoader client as consumable (10-gold, Blue) and consuming one without summoning (recorded blocker); BambooStepTalisman must equip into an accessory slot and grant no stats. | open |  | 2026-09-14T10:43:46.626Z |  |
 | 11 | 02 | unrun-verify | .planning/phases/02-remaining-items-unfinished-art-materials/02-03-PLAN.md |  | Plan 02-03 Task 3 human-check (D-21) not run offline: all six shells plus JadeSnakeEgg must appear in the inventory with a white-box icon, equip/use per declaration, and the tML log must show no missing-resource error. | open |  | 2026-09-14T10:43:47.338Z |  |
+| 12 | 02 | unrun-verify | .planning/phases/02-remaining-items-unfinished-art-materials/02-04-PLAN.md |  | Runtime human-check (D-21): in a tModLoader client spawn all six 02-04 shells and confirm each appears with a white-box icon, the mod loads with no missing-resource error, and none grants a stat or effect. | open |  | 2026-09-14T10:55:25.450Z |  |
 
 ````json
 [
@@ -159,6 +160,18 @@ last_updated: 2026-09-14T10:43:47.338Z
     "status": "open",
     "reason": "",
     "recorded_at": "2026-09-14T10:43:47.338Z",
+    "resolved_at": null
+  },
+  {
+    "id": 12,
+    "kind": "unrun-verify",
+    "phase": "02",
+    "file": ".planning/phases/02-remaining-items-unfinished-art-materials/02-04-PLAN.md",
+    "line": null,
+    "description": "Runtime human-check (D-21): in a tModLoader client spawn all six 02-04 shells and confirm each appears with a white-box icon, the mod loads with no missing-resource error, and none grants a stat or effect.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-14T10:55:25.450Z",
     "resolved_at": null
   }
 ]
