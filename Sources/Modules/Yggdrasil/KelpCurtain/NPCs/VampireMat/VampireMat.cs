@@ -914,20 +914,19 @@ public class VampireMat : ModNPC
 	{
 		if (NetUtils.IsSingle)
 		{
-			VampireHitCommonEffect(target, damage);
+			VampireHitHealEffect(target, damage);
 		}
 		else if (NetUtils.IsClient)
 		{
 			ModIns.PacketResolver.Send(new VampireMatHitPacket(damage));
-		}
-	}
 
-	public static void VampireHitCommonEffect(Player target, int damage)
-	{
-		if (target.HasBuff(BuffID.Gills))
-		{
-			target.ClearBuff(BuffID.Gills);
+			if (target.HasBuff(BuffID.Gills))
+			{
+				target.ClearBuff(BuffID.Gills);
+			}
 		}
+
+		// Add screen effect
 		var screenEffectVFX = new ScreenScaringEffect()
 		{
 			Active = true,
@@ -936,6 +935,16 @@ public class VampireMat : ModNPC
 			MaxTime = 120,
 		};
 		Ins.VFXManager.Add(screenEffectVFX);
+	}
+
+	public static void VampireHitHealEffect(Player target, int damage)
+	{
+		// Sync the buff removal on the server side
+		if (target.HasBuff(BuffID.Gills))
+		{
+			target.ClearBuff(BuffID.Gills);
+		}
+
 		NPC owner = NPCUtils.FindNearest(target.Center, ModContent.NPCType<VampireMat>());
 		if (owner is not null)
 		{

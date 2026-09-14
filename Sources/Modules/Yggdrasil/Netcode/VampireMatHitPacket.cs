@@ -7,6 +7,10 @@ public class VampireMatHitPacket : IPacket
 {
 	private int damage;
 
+	public VampireMatHitPacket()
+	{
+	}
+
 	public VampireMatHitPacket(int damage)
 	{
 		this.damage = damage;
@@ -28,7 +32,7 @@ public class VampireMatHitPacket : IPacket
 		public void Handle(IPacket packet, int whoAmI)
 		{
 			var packetData = (VampireMatHitPacket)packet;
-			VampireMat.VampireHitCommonEffect(Main.player[whoAmI], packetData.damage);
+			VampireMat.VampireHitHealEffect(Main.player[whoAmI], packetData.damage);
 		}
 	}
 }
