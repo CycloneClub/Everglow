@@ -959,15 +959,24 @@ public class VampireMat : ModNPC
 		}
 	}
 
+	public override bool SpecialOnKill()
+	{
+		if (!NetUtils.IsServer)
+		{
+			for (int i = 0; i < 8; i++)
+			{
+				Vector2 v0 = new Vector2(0, Main.rand.NextFloat(0, 6f)).RotatedByRandom(MathHelper.TwoPi);
+				int type = ModContent.Find<ModGore>("Everglow/VampireMat_Gore_" + i).Type;
+				Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(Main.rand.Next(NPC.width), Main.rand.Next(NPC.height)), v0, type, NPC.scale);
+			}
+		}
+
+		return base.SpecialOnKill();
+	}
+
 	public override void OnKill()
 	{
 		VampireMat_Summon.VampireMatSummonCD = 600;
-		for (int i = 0; i < 8; i++)
-		{
-			Vector2 v0 = new Vector2(0, Main.rand.NextFloat(0, 6f)).RotatedByRandom(MathHelper.TwoPi);
-			int type = ModContent.Find<ModGore>("Everglow/VampireMat_Gore_" + i).Type;
-			Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(Main.rand.Next(NPC.width), Main.rand.Next(NPC.height)), v0, type, NPC.scale);
-		}
 	}
 
 	public override void ModifyNPCLoot(NPCLoot npcLoot)
