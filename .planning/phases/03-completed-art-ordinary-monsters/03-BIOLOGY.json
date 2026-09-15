@@ -116,7 +116,7 @@
                      "region":  "Death Jade Lake",
                      "name_zh":  "叶飞棍",
                      "name_en":  "Verdant Rods",
-                     "internal_name":  "",
+                     "internal_name":  "Everglow.Yggdrasil.KelpCurtain.NPCs.VerdantRods",
                      "repo_asset":  "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/VerdantRods.png",
                      "feishu":  {
                                     "heading_block_id":  "RPs8db7IMof8ilxWLPNccOtPnBe",
@@ -127,12 +127,13 @@
                                 },
                      "design_art":  false,
                      "texture_complete":  true,
-                     "code_complete":  false,
+                     "code_complete":  true,
                      "status":  "unchecked",
-                     "frame_count":  1,
+                     "frame_count":  8,
                      "mapping_confidence":  "assumed",
                      "blockers":  [
-                                      "texture present in repository; runtime and localization verification outstanding (D-20/D-21)"
+                                      "drop blocked (absent items): design 33% 飞棍毛发 and 11% 毒腺 have no repository ModItem, so ModifyNPCLoot is deliberately empty (D-39)",
+                                      "localization deferred (D-20); runtime verification outstanding (D-21)"
                                   ],
                      "deferred":  false,
                      "deferred_reason":  ""
@@ -685,7 +686,7 @@
                      "region":  "Valley of Lush and Moist",
                      "name_zh":  "格普螺",
                      "name_en":  "Guppy Conch",
-                     "internal_name":  "",
+                     "internal_name":  "Everglow.Yggdrasil.KelpCurtain.NPCs.GuppyConch",
                      "repo_asset":  "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/GuppyConch.png",
                      "feishu":  {
                                     "heading_block_id":  "K2TldVE5woR5xQxjJA8cGswqnnd",
@@ -696,12 +697,13 @@
                                 },
                      "design_art":  false,
                      "texture_complete":  true,
-                     "code_complete":  false,
+                     "code_complete":  true,
                      "status":  "unchecked",
                      "frame_count":  1,
                      "mapping_confidence":  "high",
                      "blockers":  [
-                                      "texture present in repository; runtime and localization verification outstanding (D-20/D-21)"
+                                      "drop blocked (absent item): design 0~2 软体甲壳碎片 has no repository ModItem; the 11% 格普螺外壳 rule is wired to GuppyShell (Phase 1)",
+                                      "localization deferred (D-20); runtime verification outstanding (D-21)"
                                   ],
                      "deferred":  false,
                      "deferred_reason":  ""
