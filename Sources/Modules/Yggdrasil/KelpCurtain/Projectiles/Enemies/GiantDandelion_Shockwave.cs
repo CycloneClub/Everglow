@@ -35,12 +35,12 @@ public class GiantDandelion_Shockwave : ModProjectile
 
 	public override void AI()
 	{
-		// Ground-hugging: the wave keeps its horizontal speed and never arcs.
+		// Ground-hugging: the wave keeps its horizontal speed while it is anchored to a floor.
 		Projectile.velocity.Y = 0f;
 
-		int centerTileX = (int)(Projectile.Center.X / 16f);
-		int floorTileY = (int)((Projectile.Bottom.Y + 8f) / 16f);
-		if (WorldGen.InWorld(centerTileX, floorTileY, 1) && Main.tile[centerTileX, floorTileY].HasTile)
+		int floorTileY = FindFloorTileY();
+
+		if (floorTileY >= 0)
 		{
 			// A floor tile sits just below the wave: anchor it to that tile's top edge so it reads
 			// as a ground shockwave rather than a floating bar.
@@ -61,5 +61,38 @@ public class GiantDandelion_Shockwave : ModProjectile
 				Main.dust[dust].scale = Main.rand.NextFloat(0.9f, 1.4f);
 			}
 		}
+	}
+
+	/// <summary>
+	/// The floor tile just below the 200 px-wide wave, or <c>-1</c> when no sampled column has a
+	/// floor there. The leading edge, the centre and the trailing edge are all sampled and the
+	/// deepest surface (largest tile Y) wins, so an isolated hole under one column does not drop
+	/// the whole hit box and a higher terrace caught by the centre does not lift it off the ground
+	/// its other half is over. While the wave is still falling, no column has a floor at its
+	/// current height and the probe returns <c>-1</c>, so the wave keeps sinking until it lands.
+	/// </summary>
+	private int FindFloorTileY()
+	{
+		int probeTileY = (int)((Projectile.Bottom.Y + 8f) / 16f);
+		int leadingTileX = (int)((Projectile.velocity.X >= 0f ? Projectile.Right.X : Projectile.Left.X) / 16f);
+		int centerTileX = (int)(Projectile.Center.X / 16f);
+		int trailingTileX = (int)((Projectile.velocity.X >= 0f ? Projectile.Left.X : Projectile.Right.X) / 16f);
+
+		int deepestTileY = -1;
+		deepestTileY = Math.Max(deepestTileY, ProbeFloorTileY(leadingTileX, probeTileY));
+		deepestTileY = Math.Max(deepestTileY, ProbeFloorTileY(centerTileX, probeTileY));
+		deepestTileY = Math.Max(deepestTileY, ProbeFloorTileY(trailingTileX, probeTileY));
+		return deepestTileY;
+	}
+
+	/// <summary>Returns <paramref name="tileY"/> when that tile is in the world and solid, else <c>-1</c>.</summary>
+	private static int ProbeFloorTileY(int tileX, int tileY)
+	{
+		if (WorldGen.InWorld(tileX, tileY, 1) && Main.tile[tileX, tileY].HasTile)
+		{
+			return tileY;
+		}
+
+		return -1;
 	}
 }
