@@ -12,7 +12,7 @@ last_activity_desc: Phase 3 plans complete — 03-04 close-out done (tranche rec
 state_head: 3f942ca0fef9b9ade907c02710305c7c400781dd
 progress:
   total_phases: 8
-  completed_phases: 2
+  completed_phases: 3
   total_plans: 16
   completed_plans: 16
 milestone_name: milestone
@@ -31,9 +31,9 @@ See: `.planning/PROJECT.md` (updated 2026-09-12)
 
 Current Plan: 4
 Total Plans in Phase: 4
-Phase: 03 (Completed-Art Ordinary Monsters) — ALL PLANS EXECUTED, AWAITING VERIFICATION
+Phase: 03 (Completed-Art Ordinary Monsters) — COMPLETE (runtime UAT deferred by user authorization)
 Plans complete: 4 of 4 (03-01, 03-02, 03-03 and 03-04 done; runtime verification outstanding per D-21)
-Status: Phase 3 plans complete — ready for /gsd-verify-work
+Status: Marked complete 2026-09-15 with the D-21 runtime UAT deferred — `03-VERIFICATION.md` remains `human_needed` and `03-UAT.md` is unexecuted
 Last activity: 2026-09-15 — 03-04 complete (all five tranche rows reconciled at `code_complete` 5 / 5, one consolidated deviation ledger with a mechanically generated 14-row blocker register, the full offline chain + Release build green in a single run, and the D-21 client bundle recorded as 8 unexecuted checks in `03-UAT.md`)
 
 Progress: [██████████] 100%
@@ -81,6 +81,7 @@ Progress: [██████████] 100%
 
 ### Decisions
 
+- **2026-09-15 — Phase 3 marked complete with runtime UAT deferred (user-authorized override).** Phase 3's four plans are code-complete (Release build 0/0; full gate chain green; `check-biology.ps1 -RequireAll` = `phase3 tranche 5 / 5`, `implemented classes 5 / 5`), but the D-21 in-client runtime verification in `03-UAT.md` was not executed because the tModLoader client environment was unavailable. The user authorized marking the phase complete and deferring the runtime UAT (same pattern as the Phase 1 ArmOfGiantTree multiplayer deferral). `03-VERIFICATION.md` remains `human_needed`, `03-UAT.md` stays unexecuted, and the deferral is tracked as an open `unrun-verify` item in `.planning/WINDOWS.md`. No verification result was fabricated.
 - **2026-09-12 correction — item allocation is by design-artwork state only.** A completed-art entry belongs to the completed-art item tranche (Phase 1) whether or not the repository already has a class for it; class-less status must never defer an entry to a later phase. Plan 01-06 refined the routing: of the 18 artwork-complete class-less entries, the 5 non-boss item-table rows are Phase 1 carry-over and the 13 boss/special-encounter rows are Phase 7 (ITEM-05/ITEM-06); Phase 2 contains only unfinished-art entries (25).
 - The three Feishu second-layer documents are authoritative; every item is compared through XML full fetch and receives green/exact, yellow/partial-conflicting, or unchecked/blocked status.
 - Execution order is mandatory: items, ordinary monsters, terrain/generation, bosses and special encounters, then publishable integration.
@@ -155,6 +156,7 @@ None yet.
 
 ### Blockers/Concerns
 
+- ⏸ **[Phase 3 — deferred, user-authorized 2026-09-15]** Runtime UAT for the five-creature tranche is unexecuted: `03-UAT.md` (8 checks: spawn isolation per BIO-06, behavior/combat/immunities, drops, dedicated-server/multiplayer per QUAL-03, localization fallback) and the 4 D-21 backstop items in `03-VERIFICATION.md` await a tModLoader client. The phase is marked complete on code grounds only; run `/gsd-verify-work 3` when the client is available. Also open: approved art for the two `GiantDandelion` projectiles, and 森雨幽谷/刺苔庭园 regional spawn predicates (Phases 5–6).
 - ✅ **[Phase 1 carry-over — resolved 2026-09-13 by plan 01-06]** The 18 artwork-complete class-less entries were reallocated 5 Phase 1 / 13 Phase 7 (P1A-12); the five Phase 1 items are implemented and gated (`check-carryover.ps1` 5/5). No parser re-run (CR-01).
 - Phase 1: Feishu source reconciliation must classify all five terrain labels and inventory every item/drop before implementation acceptance.
 - Missing approved artwork must remain a visible blocker; no placeholder art may be introduced.

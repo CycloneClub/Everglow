@@ -97,6 +97,7 @@ The repository planning artifacts are the audit trail for the comparison; the Fe
 | Follow the implemented code when it conflicts with the design, unless the Feishu row is yellow with a corresponding explanation | Live testing showed the Feishu design numbers were unreasonable; the original code values were correct | Reverted Phase 1 numeric edits (2026-09-14) |
 
 | Defer the live multiplayer test of ArmOfGiantTree to a later session | Live client testing was inconvenient at phase-completion time; the SC3 fix is source-verified and offline-gated | Deferred (Phase 1, user-authorized override) |
+| Mark Phase 3 complete with its runtime UAT deferred | The tModLoader client environment was unavailable at phase-completion time; the code, Release build (0/0), and full offline gate chain (`check-biology.ps1 -RequireAll` = 5/5 tranche, 5/5 classes) are green | Deferred (Phase 3, user-authorized override) |
 
 ## Evolution
 

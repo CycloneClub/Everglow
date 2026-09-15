@@ -328,3 +328,11 @@ The five implemented tranche rows — every one `code_complete: true` with a non
 | Regional spawn refinement | 森雨幽谷 and 刺苔庭园 biome/tile predicates | Open — Phase 5–6 terrain work (D-30, §6) | Phases 5–6 |
 
 **Phase 3 close-out statement (plan 03-04).** The phase closes with its tranche **code-complete**: all five rows implemented, the matrix and its mirror reconciled cell-for-cell, the consolidated ledger written, the full offline chain and the Release build green in one run (§8.1) and the D-21 client bundle recorded in `03-UAT.md`. **Every row of the table above stays open** — none was closed by this plan, and none was silently dropped. The two runtime-facing rows (live runtime verification, regional spawn refinement) and the two art rows (the six Phase 4 creatures, the two untextured attack projectiles) are the phase's explicit residue, and the localization and absent-material rows are carried by user directive (D-20) and by D-37/D-43 respectively. No `.png` or other binary/art asset was created, moved, renamed or modified by this phase; no HJSON file was created or hand-edited; no localization key was fabricated; and the Feishu design source was neither re-fetched nor mutated (D-25).
+
+## 14. Phase completion override (2026-09-15, user-authorized)
+
+After `03-VERIFICATION.md` returned `human_needed` (21/25 must-haves verified, 0 gaps; the four unverified truths are D-21 runtime backstops), the user authorized marking Phase 3 **complete** with the runtime UAT **deferred**, because the tModLoader client environment was unavailable — the same pattern as the Phase 1 ArmOfGiantTree multiplayer deferral.
+
+- No verification result was fabricated: `03-VERIFICATION.md` remains `human_needed`, `03-UAT.md` stays unexecuted, and the deferral is tracked as an open `unrun-verify` item in `.planning/WINDOWS.md`.
+- Completion is recorded on code grounds only: Release build 0 warnings / 0 errors; the full offline gate chain green; `check-biology.ps1 -RequireAll` = `phase3 tranche 5 / 5`, `implemented classes 5 / 5`.
+- Resume the runtime checks with `/gsd-verify-work 3` when a client is available. The residue in §10/§13 is unchanged by this override.
