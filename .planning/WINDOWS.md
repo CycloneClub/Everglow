@@ -1,10 +1,10 @@
 ---
 schema_version: 1
-open_count: 17
+open_count: 20
 waived_count: 0
 fixed_count: 1
-total_count: 18
-last_updated: 2026-09-15T07:59:28.473Z
+total_count: 21
+last_updated: 2026-09-15T08:31:28.332Z
 ---
 
 # Broken Windows Ledger
@@ -33,6 +33,9 @@ last_updated: 2026-09-15T07:59:28.473Z
 | 16 | 03 | unrun-verify | .planning/phases/03-completed-art-ordinary-monsters/03-02-PLAN.md |  | Placeholder probe | fixed |  | 2026-09-15T07:58:20.485Z | 2026-09-15T07:59:10.116Z |
 | 17 | 03 | unrun-verify | .planning/phases/03-completed-art-ordinary-monsters/03-02-PLAN.md |  | Plan 03-02 runtime human-checks (D-21) not run offline: in a tModLoader client GuppyConch must crawl slowly in the Kelp Curtain, never attack, deal contact damage, retract for ~2 s after a hit with reduced damage while shelled, drop GuppyShell at 11 percent and never appear in an ordinary world; VerdantRods must drift/circle without chasing, apply poison on ~50 percent of contacts, lose life while submerged and fly back out. | open |  | 2026-09-15T07:59:28.453Z |  |
 | 18 | 03 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/GuppyConch.cs |  | Plan 03-02 shell-state transition was placed in HitEffect instead of ModifyIncomingHit: tML documents ModifyIncomingHit as ONLY for HitModifiers properties with side effects belonging to OnHit hooks, and HitEffect is the documented on-hit hook that also runs on the server, so the server-authoritative transition (netmode guard + netUpdate) lives there while ModifyIncomingHit keeps the 0.85/0.70 damage scaling the plan's acceptance criteria require. | open |  | 2026-09-15T07:59:28.473Z |  |
+| 19 | 3 | unrun-verify | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/GiantDandelion.cs |  | D-21 client checks for 巨树人 and its two attack projectiles (state cycle, smash wave, boulder arc, vulnerability window) are not yet executed; referred to plan 03-04's UAT bundle | open |  | 2026-09-15T08:30:32.937Z |  |
+| 20 | 3 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/GiantDandelion.cs |  | Plan 03-03 applied the two Rule 1 API-name corrections the plan prose repeated: spawnInfo.player to NPCSpawnInfo.Player (the field) and NPC.rare to NPC.rarity (the engine's only NPC rarity field); both compile-verified by the Release build | open |  | 2026-09-15T08:31:27.481Z |  |
+| 21 | 3 | stub | Sources/Modules/Yggdrasil/KelpCurtain/Projectiles/Enemies/GiantDandelion_Shockwave.cs |  | Approved art missing for both 巨树人 attack projectiles: GiantDandelion_Shockwave and GiantDandelion_Boulder request the shared Commons.ModAsset.White_Mod fallback because creating placeholder art is forbidden (D-13 policy); a ground-wave sprite and a boulder sprite are needed from the designer (03-DEVIATIONS.md section 9) | open |  | 2026-09-15T08:31:28.332Z |  |
 
 ````json
 [
@@ -250,6 +253,42 @@ last_updated: 2026-09-15T07:59:28.473Z
     "status": "open",
     "reason": "",
     "recorded_at": "2026-09-15T07:59:28.473Z",
+    "resolved_at": null
+  },
+  {
+    "id": 19,
+    "kind": "unrun-verify",
+    "phase": "3",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/GiantDandelion.cs",
+    "line": null,
+    "description": "D-21 client checks for 巨树人 and its two attack projectiles (state cycle, smash wave, boulder arc, vulnerability window) are not yet executed; referred to plan 03-04's UAT bundle",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-15T08:30:32.937Z",
+    "resolved_at": null
+  },
+  {
+    "id": 20,
+    "kind": "deviation",
+    "phase": "3",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/GiantDandelion.cs",
+    "line": null,
+    "description": "Plan 03-03 applied the two Rule 1 API-name corrections the plan prose repeated: spawnInfo.player to NPCSpawnInfo.Player (the field) and NPC.rare to NPC.rarity (the engine's only NPC rarity field); both compile-verified by the Release build",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-15T08:31:27.481Z",
+    "resolved_at": null
+  },
+  {
+    "id": 21,
+    "kind": "stub",
+    "phase": "3",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/Projectiles/Enemies/GiantDandelion_Shockwave.cs",
+    "line": null,
+    "description": "Approved art missing for both 巨树人 attack projectiles: GiantDandelion_Shockwave and GiantDandelion_Boulder request the shared Commons.ModAsset.White_Mod fallback because creating placeholder art is forbidden (D-13 policy); a ground-wave sprite and a boulder sprite are needed from the designer (03-DEVIATIONS.md section 9)",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-15T08:31:28.332Z",
     "resolved_at": null
   }
 ]

@@ -3,18 +3,18 @@ gsd_state_version: "1.0"
 milestone: v1.0
 current_phase: 03
 current_phase_name: Completed-Art Ordinary Monsters
-current_plan: 2
+current_plan: 3
 status: executing
-stopped_at: Completed 03-02-PLAN.md
-last_updated: "2026-09-15T08:00:42.102Z"
+stopped_at: Completed 03-03-PLAN.md
+last_updated: "2026-09-15T08:31:00.000Z"
 last_activity: 2026-09-15
-last_activity_desc: Phase 3 in progress — 03-02 complete (GuppyConch + VerdantRods implemented; wave-2 gate green at 4 / 5)
-state_head: 86a5e7e2de34af17b16a1ed88898ca5bee8646ae
+last_activity_desc: Phase 3 in progress — 03-03 complete (GiantDandelion + its two enemy projectiles implemented; wave-3 gate green at 5 / 5)
+state_head: 5ad16f4ce9e6667def4e22dd07371b3ba5dc522f
 progress:
   total_phases: 8
   completed_phases: 2
   total_plans: 16
-  completed_plans: 14
+  completed_plans: 15
 milestone_name: milestone
 ---
 
@@ -29,14 +29,14 @@ See: `.planning/PROJECT.md` (updated 2026-09-12)
 
 ## Current Position
 
-Current Plan: 2
+Current Plan: 3
 Total Plans in Phase: 4
 Phase: 03 (Completed-Art Ordinary Monsters) — EXECUTING
-Plans complete: 2 of 4 (03-01 and 03-02 done; 03-03 next)
+Plans complete: 3 of 4 (03-01, 03-02 and 03-03 done; 03-04 next)
 Status: Ready to execute
-Last activity: 2026-09-15 — 03-02 complete (GuppyConch shell-up neutral crawler with its GuppyShell drop and VerdantRods neutral flying rod with water suffocation + 50% poison; wave-2 gate green at 4 / 5)
+Last activity: 2026-09-15 — 03-03 complete (巨树人 `GiantDandelion` three-range state machine with smash shockwave, thrown boulder and post-smash vulnerability window, plus its three guaranteed Phase 1 drops; wave-3 gate green at 5 / 5)
 
-Progress: [█████████░] 88%
+Progress: [█████████░] 94%
 
 ## Performance Metrics
 
@@ -53,7 +53,7 @@ Progress: [█████████░] 88%
 | 1–8 | 0 | TBD | n/a |
 | 1 | 7 | 7 | ~17min |
 | 2 | 4 | 5 | 10min |
-| 3 | 2 | 4 | ~170min |
+| 3 | 3 | 4 | ~117min |
 
 **Recent Trend:** No execution data yet.
 **Per-Plan Metrics:**
@@ -74,6 +74,7 @@ Progress: [█████████░] 88%
 | Phase 02 P05 | 10min | 3 tasks | 5 files |
 | Phase 03 P01 | 184min | 2 tasks | 6 files |
 | Phase 03 P02 | 157min | 3 tasks | 5 files |
+| Phase 03 P03 | 11min | 3 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -134,6 +135,12 @@ Progress: [█████████░] 88%
 - [Phase 03]: Both plan-03-02 creatures reject spawnInfo.Water — 格普螺 is a land crawler and 叶飞棍 an open-air flier — so the design's water interaction lives in the leaf rod's AI (occasional skim, suffocation, escape bias) rather than in a spawn requirement; both reuse the server-safe KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player) and never IsBiomeActive.
 - [Phase 03]: Absent designed drops stay absent: 格普螺 writes only the 11% GuppyShell rule (软体甲壳碎片 blocked) and 叶飞棍 ships an explicitly empty, commented ModifyNPCLoot (飞棍毛发 / 毒腺 blocked); neither class contains a type reference to an absent material (D-37/D-39).
 - [Phase 03]: Plan 03-02 advances BIO-01/BIO-03/BIO-06/QUAL-03 but completes none of them; REQUIREMENTS.md is left untouched and the traceability rows stay Pending until 03-04 closes the phase.
+- [Phase 03]: Plan 03-03 implements 巨树人 (`GiantDandelion`) as the tranche's only multi-range state machine: a private `GiantDandelionState` enum over a wrapped `NPC.ai[0]` with named timer wrappers over `NPC.localAI[0]`/`NPC.localAI[1]`, the design-exact 120-tick smash wind-up / 300-tick recovery / 240-tick mid-range gap, the 5-15 tile boulder branch and the beyond-15-tile faster chase, at a deliberately rare 0.25f spawn weight.
+- [Phase 03]: The 巨树人 defense swing (防御 30 -> 0 -> 30) is owned by the `EnterState` helper rather than by hand-written exit branches, so every exit from `SmashRecovery` — including a target lost mid-recovery — restores the normal value under the server guard with `NPC.netUpdate`; `ModifyIncomingHit` keeps only the design's 1.5f FinalDamage scale.
+- [Phase 03]: The two new attack projectiles (`GiantDandelion_Shockwave`, `GiantDandelion_Boulder`) use the shared `Commons.ModAsset.White_Mod` fallback because no approved art exists (creating art is forbidden), are spawned from `NPC.GetSource_FromAI()` inside `Main.netMode != NetmodeID.MultiplayerClient`, and guard every dust call with `!Main.dedServ`; `BoulderCatapult_Proj` was NOT reused because it is a friendly player-owned projectile (D-13 art policy, T-03-18/T-03-19/T-03-20).
+- [Phase 03]: 巨树人's `ModifyNPCLoot` is the tranche's first real multi-item table (three guaranteed Phase 1-2 drops: `ArmOfGiantTree`, `HardenedWitherbarkHeart`, `BoulderCatapult`); the design's 4~6 枯木碎块 stays an absent-drop blocker with no type reference (D-37/D-39).
+- [Phase 03]: 巨树人的 sprite-derived extents are `214x263` (about 13x16 tiles), which is larger than any hit box in this repository; it is flagged in `03-DEVIATIONS.md` section 8 as the first thing to revisit if the creature never finds a spawn area, rather than silently shrinking the design's creature.
+- [Phase 03]: Plan 03-03 advances BIO-02/BIO-06/QUAL-03 but completes none of them; after it the wave-3 gate reports `implemented classes = 5 / 5`, and REQUIREMENTS.md is still left untouched until 03-04 closes the phase.
 
 ### Pending Todos
 
@@ -153,8 +160,9 @@ None yet.
 - [Phase 02] The plan-02-03 rows (灵蛇玉卵, 竹节步符, 竹制武器, 竹簪子, 桃枝护符, 桃花纸鸢（风筝）, 熊猫宠物) are code-complete / art-incomplete. Outstanding blockers: approved textures (all seven); the 苍翠灵蛇 Phase 7 encounter and its 在森雨幽谷顶部使用 location gate for 灵蛇玉卵; runtime verification (D-21) of the seven entries. Phase gate advanced to 15/21.
 - [Phase 02] The plan-02-04 rows (若干酒类, 荧光水螅召唤杖, 弟子剑, 弟子时装, 技能竹简, 区域放置物品制作台) are code-complete / art-incomplete. Outstanding blockers: approved textures (all six); the 弟子 (disciple) progression system for 弟子剑/弟子时装; the skill system for 技能竹简; the regional-crafting system plus its placement tile for 区域放置物品制作台; the absent 荧光水螅 summon projectile for 荧光水螅召唤杖. No system was implemented (D-19). Item coverage is closed at 21/21; runtime verification (D-21) of the six shells is outstanding (WINDOWS.md entry 12).
 - [Phase 03] Plan 03-01 froze the repository-art tranche and implemented 荆棘苔龟 (`MossyThornTurtle`) end-to-end. Outstanding: runtime verification (D-21) for spawn isolation, the spin-state defence/damage switch, the melee reflect and the 5% 荆棘龟壳 drop; a dedicated-server run confirming `KelpCurtainBiome.IsKelpCurtainLayer` evaluates the same band as the camera-driven `IsBiomeActive`; designer confirmation of the five asset-to-creature mappings and of the six design-art-only creatures that D-41 sends to Phase 4; and a per-region spawn refinement once 刺苔庭园/森雨幽谷 biome predicates exist (03-DEVIATIONS.md sections 2, 3, 6, 8).
-- [Phase 03] After plan 03-02 only one tranche row remains `code_complete:false` with an empty `internal_name` (`bio-spiny-moss-court-giant-tree-man`); it is the plan-frozen record of a class not yet created, not a back-fill defect, and plan 03-03 fills it together with its class.
+- ✅ **[Phase 03 — resolved 2026-09-15 by plan 03-03]** No tranche row is left `code_complete:false`: the last one (`bio-spiny-moss-court-giant-tree-man`) was flipped together with its class in Task 3, and `scripts/check-biology.ps1` now prints `OK: implemented classes = 5 / 5`. The plan-03-01/03-02 rule that `internal_name` is populated only once its class exists held at every wave boundary, so no row was ever mis-recorded.
 - [Phase 03] Plan 03-02 implemented 格普螺 (`GuppyConch`) and 叶飞棍 (`VerdantRods`). Outstanding: runtime verification (D-21) for the shell retract feel and the 防御 10/20 + 0.85/0.70 减伤 switch, the crawl reversal at walls/ledges, the 11% 格普螺外壳 drop, the leaf rod's neutral circling without chasing, its 50% 中毒 and its submerged life drain with the escape flight (WINDOWS.md entries 17 and 18); the per-region spawn refinement for 叶飞棍 (亡碧湖 vs 森雨幽谷) once a regional predicate exists; and the same dedicated-server band check recorded for plan 03-01 (03-DEVIATIONS.md sections 4, 5, 6, 8).
+- [Phase 03] Plan 03-03 implemented 巨树人 (`GiantDandelion`) and its two hostile projectiles (`GiantDandelion_Shockwave`, `GiantDandelion_Boulder`). Outstanding: runtime verification (D-21) of the full state cycle — the visible ground wave, the 300-tick amplified-damage window, the mid-range wind-up/swing/arc and the beyond-15-tile chase; **approved art for both projectiles** (they use `Commons.ModAsset.White_Mod` today; creating art is forbidden, so the designer must supply a ground-wave sprite and a boulder sprite — `03-DEVIATIONS.md` section 9); the 214x263 spawn-area question and the floor-anchored wave hit box on uneven terrain (`03-DEVIATIONS.md` section 8); the per-region spawn refinement for 刺苔庭园 once a regional predicate exists; and the dedicated-server check that the two projectiles emit no dust and spawn once (WINDOWS.md entries for plan 03-03).
 
 ### Quick Tasks Completed
 
@@ -171,6 +179,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-09-15T16:00:00Z
-Stopped at: Completed 03-02-PLAN.md
+Last session: 2026-09-15T08:31:00Z
+Stopped at: Completed 03-03-PLAN.md
 Resume file: None
