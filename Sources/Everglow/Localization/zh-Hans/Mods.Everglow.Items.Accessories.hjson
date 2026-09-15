@@ -456,7 +456,7 @@ SkullCollection: {
 	Tooltip: "玩家近身存在敌怪时，玩家获得魔力再生"
 }
 
-SpicyShield: {
+SpikedParma: {
 	DisplayName: 尖刺盾牌
 	Tooltip: 
 	'''

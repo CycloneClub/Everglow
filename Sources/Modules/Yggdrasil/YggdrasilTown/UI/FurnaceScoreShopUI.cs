@@ -1,5 +1,6 @@
 using Everglow.Commons.UI;
 using Everglow.Commons.UI.UIElements;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles.FurnaceTiles;
 using Terraria.GameContent;
@@ -98,6 +99,26 @@ public class FurnaceScoreShopUI : UIContainerElement
 				case 3:
 					rewardType = ModContent.ItemType<ArmorPiercingBlaster>();
 					FurnaceScoreShop.SellPricesInFurnaceScore[rewardType] = 14000;
+					FurnaceScoreShopItemSlots[i].ShopSlot = true;
+					break;
+				case 4:
+					rewardType = ModContent.ItemType<Caltrop>();
+					FurnaceScoreShop.SellPricesInFurnaceScore[rewardType] = 12800;
+					FurnaceScoreShopItemSlots[i].ShopSlot = true;
+					break;
+				case 5:
+					rewardType = ModContent.ItemType<AnemoShell>();
+					FurnaceScoreShop.SellPricesInFurnaceScore[rewardType] = 26200;
+					FurnaceScoreShopItemSlots[i].ShopSlot = true;
+					break;
+				case 6:
+					rewardType = ModContent.ItemType<TelescopicPlatformAlpha>();
+					FurnaceScoreShop.SellPricesInFurnaceScore[rewardType] = 75000;
+					FurnaceScoreShopItemSlots[i].ShopSlot = true;
+					break;
+				case 7:
+					rewardType = ModContent.ItemType<TelescopicPlatformBeta>();
+					FurnaceScoreShop.SellPricesInFurnaceScore[rewardType] = 900000;
 					FurnaceScoreShopItemSlots[i].ShopSlot = true;
 					break;
 			}

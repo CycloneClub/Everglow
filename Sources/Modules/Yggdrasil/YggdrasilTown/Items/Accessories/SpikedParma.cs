@@ -1,6 +1,6 @@
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
 
-public class SpicyShield : ModItem
+public class SpikedParma : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
@@ -24,32 +24,32 @@ public class SpicyShield : ModItem
 		player.allDamage += 0.04f;
 
 		// 3. Add a 30s thorn buff after hurt
-		player.GetModPlayer<SpicyShieldPlayer>().HasSpicyShield = true;
+		player.GetModPlayer<SpikedParmaPlayer>().HasSpikedParma = true;
 	}
 }
 
-public class SpicyShieldPlayer : ModPlayer
+public class SpikedParmaPlayer : ModPlayer
 {
-	public bool HasSpicyShield = false;
+	public bool HasSpikedParma = false;
 
 	public override void ResetEffects()
 	{
-		HasSpicyShield = false;
+		HasSpikedParma = false;
 	}
 
 	public override void PostHurt(Player.HurtInfo info)
 	{
-		if (HasSpicyShield)
+		if (HasSpikedParma)
 		{
 			if (!Player.HasBuff(BuffID.Thorns))
 			{
-				Player.AddBuff(BuffID.Thorns, SpicyShield.ThornBuffDuration);
+				Player.AddBuff(BuffID.Thorns, SpikedParma.ThornBuffDuration);
 			}
 			if (Player.FindBuffIndex(BuffID.Thorns) >= 0)
 			{
-				if (Player.buffTime[Player.FindBuffIndex(BuffID.Thorns)] < SpicyShield.ThornBuffDuration)
+				if (Player.buffTime[Player.FindBuffIndex(BuffID.Thorns)] < SpikedParma.ThornBuffDuration)
 				{
-					Player.AddBuff(BuffID.Thorns, SpicyShield.ThornBuffDuration);
+					Player.AddBuff(BuffID.Thorns, SpikedParma.ThornBuffDuration);
 				}
 			}
 		}

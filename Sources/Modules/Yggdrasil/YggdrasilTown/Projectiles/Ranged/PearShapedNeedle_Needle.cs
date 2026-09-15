@@ -1,3 +1,4 @@
+using Everglow.Commons.VFX.CommonVFXDusts;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
 using Terraria.DataStructures;
 
@@ -47,6 +48,22 @@ public class PearShapedNeedle_Needle : ModProjectile
 			}
 			if (hit)
 			{
+				for (int g = 0; g < 6; g++)
+				{
+					Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(2f, 6f)).RotatedByRandom(MathHelper.TwoPi);
+					var spark = new FireSpark_MetalStabDust
+					{
+						velocity = newVelocity,
+						Active = true,
+						Visible = true,
+						position = endPos,
+						maxTime = Main.rand.Next(1, 25),
+						scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(10f, 27.0f)),
+						rotation = Main.rand.NextFloat(6.283f),
+						ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.13f, 0.13f) },
+					};
+					Ins.VFXManager.Add(spark);
+				}
 				break;
 			}
 		}
@@ -67,6 +84,7 @@ public class PearShapedNeedle_Needle : ModProjectile
 			};
 			Ins.VFXManager.Add(dust);
 		}
+
 		var trail = new PearShapedNeedle_Trail
 		{
 			Active = true,

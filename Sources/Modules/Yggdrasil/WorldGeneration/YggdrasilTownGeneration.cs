@@ -99,7 +99,7 @@ public class YggdrasilTownGeneration
 			ModContent.ItemType<BloodTearCrystalCrown>(),
 			ModContent.ItemType<CelesteStoneWaistPendant>(),
 			ModContent.ItemType<CyanVineRing>(),
-			ModContent.ItemType<SpicyShield>(),
+			ModContent.ItemType<SpikedParma>(),
 			ModContent.ItemType<DarkMassacreDagger>(),
 			ModContent.ItemType<AmberFlowerHook>(),
 		};
