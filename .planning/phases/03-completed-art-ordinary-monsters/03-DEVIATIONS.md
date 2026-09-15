@@ -2,11 +2,13 @@
 
 Generated: 2026-09-15
 Opened by plan 03-01; extended by plans 03-02 and 03-03 and consolidated by plan 03-04.
-Machine source of truth: `03-BIOLOGY.json` (per-row `status`, `blockers`, `deferred`, `deferred_reason`, plus the `assumptions[]` and `deviations[]` arrays), mirrored by `03-BIOLOGY.md`.
+Machine source of truth: `03-BIOLOGY.json` (per-row `status`, `blockers`, `deferred`, `deferred_reason`, plus the `assumptions[]` and `deviations[]` arrays), mirrored by `03-BIOLOGY.md`. The consolidated blocker register in §10 is generated mechanically from that JSON, so its **Exact blocker text** cells cannot drift from the matrix, and gate invariant 11 re-asserts the row-id set and the per-row `status` on every run.
 
 This is the deviation and blocker ledger for the Phase 3 repository-art ordinary-creature tranche (D-28 full implementations) and for the frozen Phase 3–4 biology matrix (D-24). It is the audit trail for D-25 (committed snapshot only), D-34 (conservative defaults), D-37/D-38/D-39 (a drop rule references only implemented items), D-41/D-42 (the tranche rule) and D-43 (the drop-availability correction). No field below was changed by editing the Feishu design source, no localization key was created or renamed, and no `.png` or other binary/art asset was created or modified.
 
-**Coverage claim.** This ledger covers all five Phase 3 tranche rows and every blocker they carry. A tranche row absent from §1, §5, §7 or §8 is a defect.
+**Coverage claim.** This ledger covers all five Phase 3 tranche rows — `bio-valley-of-lush-and-moist-mossy-thorn-turtle` (荆棘苔龟), `bio-valley-of-lush-and-moist-guppy-conch` (格普螺), `bio-death-jade-lake-verdant-rods` (叶飞棍), `bio-spiny-moss-court-giant-tree-man` (巨树人) and `bio-death-jade-lake-river-slug` (水蛞蝓) — and every blocker they carry. Each row appears in §1 (tranche and asset allocation), §5 (drop disposition), §7 (localization state), §8 (runtime checks) and §10 (its exact blocker rows). A tranche row absent from any of those sections is a defect.
+
+**Navigation.** §1 tranche rule and allocation · §2 repository-art vs design-art discrepancy · §3 mapping assumptions · §4 conservative defaults · §5 drop availability · §6 spawn-region gap · §7 localization (D-20) · §8 runtime verification (D-21) · §9 attack projectiles · **§10 consolidated blocker register (mechanical)** · **§11 Phase 3 close-out** · **§12 decision disposition** · **§13 deferred registry**.
 
 ## 1. Tranche rule (D-41/D-42, supersedes 03-RESEARCH)
 
@@ -69,7 +71,9 @@ Every repository asset is mapped to a design row by name/description/geometry in
 
 ## 4. Conservative defaults (D-34/D-38)
 
-Where the design is silent or gives a progression rather than one number, a conservative default is used and recorded here. The machine copy of this section is the JSON `assumptions[]` arrays (one entry per §1–§6 of this ledger).
+Where the design is silent or gives a progression rather than one number, a conservative default is used and recorded here. The machine copy of this section is the JSON `assumptions[]` array (one entry per §1–§6 of this ledger), and the JSON `deviations[]` array carries the phase's recorded deviations.
+
+**Plan 03-04 repair note (Rule 1).** Both arrays shipped from the plan-03-01 tracer commit as the six-element placeholder `["e", "e", "e", "e", "e", "e"]` — an automation defect that was present from commit `421f2a09a` onward, invisible to every gate because no invariant reads them. Plan 03-04 restored the machine copy: `assumptions[]` now holds one entry per §1–§6 and `deviations[]` holds the six deviations the phase actually recorded (the two Rule 1 API-name corrections, the plan-03-02 `HitEffect` placement, the D-23 `RiverSlug` acceptance, the `White_Mod` projectile art deferral, the absent-drop dispositions and the plan-03-03 seam staging). No other field of `03-BIOLOGY.json` changed.
 
 | Default | Value | Rows | Reason |
 | --- | --- | --- | --- |
@@ -216,3 +220,67 @@ Both are spawned from `GiantDandelion` with `Projectile.NewProjectile(NPC.GetSou
 **Artwork blocker (raised here; not solvable in this phase).** No approved art exists in the repository for either projectile, and AGENTS.md forbids creating placeholder art, so both request only the existing shared `Commons.ModAsset.White_Mod` path — the same D-13 fallback policy the Phase 2 item `BoulderCatapult` and the accessory `RadialCarapace` already use. A real ground-wave sprite and a real boulder sprite are needed from the designer; until then the attacks are mechanically complete but visually untextured. This is the plan's contribution to the tranche's art-deferral family, and the row carries the `effect parameters provisional` blocker alongside this note.
 
 **Why `BoulderCatapult_Proj` was not reused.** That class is a *friendly, player-owned* ranged projectile (`Projectile.friendly = true`, `owner`-relative direct-hit bonus, `Main.myPlayer == Projectile.owner` sub-projectile spawning) that assumes a player owner. Reusing it for a hostile attack would invert its ownership model and its 150% direct-hit bonus, and the plan's prohibitions forbid it outright. `GiantDandelion_Boulder` therefore imitates only its arc-and-rotate motion; the projectile was written fresh under `Projectiles/Enemies/`.
+
+## 10. Blockers
+
+The consolidated register: one row per blocker across the five Phase 3 tranche rows, generated mechanically from the `blockers` arrays of `03-BIOLOGY.json` by plan 03-04. Each **Exact blocker text** cell is byte-identical to the corresponding element of that row blocker array, so the ledger and the machine source of truth cannot disagree (T-03-25).
+
+| Row id | Design name | Blocker kind | Exact blocker text | Why |
+| --- | --- | --- | --- | --- |
+| `bio-death-jade-lake-verdant-rods` | 叶飞棍 | drop | `drop blocked (absent items): design 33% 飞棍毛发 and 11% 毒腺 have no repository ModItem, so ModifyNPCLoot is deliberately empty (D-39)` | Phase 3 consumes Phases 1-2 item scope only: every designed drop is either wired to an implemented item or recorded as an absent-material blocker with no type reference written, because a reference to an absent type would not compile (D-36/D-37/D-39). |
+| `bio-death-jade-lake-verdant-rods` | 叶飞棍 | localization | `localization deferred (D-20); runtime verification outstanding (D-21)` | Localization is deferred by user directive (D-20) and no live tModLoader client session is part of this phase (D-21); every row keeps status unchecked and no localization key was fabricated. |
+| `bio-death-jade-lake-river-slug` | 水蛞蝓 | runtime | `pre-existing accepted implementation (D-23): class not modified by Phase 3; subworld isolation relies on SpawnModBiomes + KelpCurtainBiome and its HitEffect dust is not Main.dedServ-guarded (gate allowlist)` | D-23: RiverSlug is a pre-existing accepted implementation that Phase 3 does not modify; its HitEffect dust is not Main.dedServ-guarded, and the gate preExistingAllowlist exempts it from the Phase 3 structural guards. |
+| `bio-death-jade-lake-river-slug` | 水蛞蝓 | localization | `localization deferred (D-20); runtime verification outstanding (D-21)` | Localization is deferred by user directive (D-20) and no live tModLoader client session is part of this phase (D-21); every row keeps status unchecked and no localization key was fabricated. |
+| `bio-spiny-moss-court-giant-tree-man` | 巨树人 | drop | `drop blocked (absent item): design 4~6 枯木碎块 has no repository ModItem; the guaranteed 巨树之臂, 硬化枯木心脏 and 巨石弹射装置 rules are wired to Phase 1 items` | Phase 3 consumes Phases 1-2 item scope only: every designed drop is either wired to an implemented item or recorded as an absent-material blocker with no type reference written, because a reference to an absent type would not compile (D-36/D-37/D-39). |
+| `bio-spiny-moss-court-giant-tree-man` | 巨树人 | effect | `effect parameters provisional: the design gives no shockwave radius, boulder speed or pierce values, so conservative values are used` | The design supplies no value for this parameter, so the tranche conservative default is used and recorded here rather than silently chosen (D-34). |
+| `bio-spiny-moss-court-giant-tree-man` | 巨树人 | spawn | `spawn context partial (D-30): the design's 刺苔庭园 swamp has no biome or tile predicate yet; the gate uses the layer-level KelpCurtainBiome plus land conditions` | No regional biome or tile predicate exists yet for the design region, so spawn gating uses the server-safe layer-level predicate and the per-region refinement is Phase 5-6 terrain work (D-30). |
+| `bio-spiny-moss-court-giant-tree-man` | 巨树人 | localization | `localization deferred (D-20); runtime verification outstanding (D-21)` | Localization is deferred by user directive (D-20) and no live tModLoader client session is part of this phase (D-21); every row keeps status unchecked and no localization key was fabricated. |
+| `bio-valley-of-lush-and-moist-mossy-thorn-turtle` | 荆棘苔龟（Thorn Mossy Tortoise） | drop | `drop disposition: the design's 荆棘龟壳 is wired to the Phase 1 item ThornTurtleShell at 5% (ItemDropRule.Common(..., 20, 1, 1)); the design names no other drop` | Phase 3 consumes Phases 1-2 item scope only: every designed drop is either wired to an implemented item or recorded as an absent-material blocker with no type reference written, because a reference to an absent type would not compile (D-36/D-37/D-39). |
+| `bio-valley-of-lush-and-moist-mossy-thorn-turtle` | 荆棘苔龟（Thorn Mossy Tortoise） | effect | `effect parameters provisional: the design supplies no spawn weight, hit box or knockback values, so the tranche's conservative defaults are used (D-34)` | The design supplies no value for this parameter, so the tranche conservative default is used and recorded here rather than silently chosen (D-34). |
+| `bio-valley-of-lush-and-moist-mossy-thorn-turtle` | 荆棘苔龟（Thorn Mossy Tortoise） | localization | `localization deferred (D-20); runtime verification outstanding (D-21)` | Localization is deferred by user directive (D-20) and no live tModLoader client session is part of this phase (D-21); every row keeps status unchecked and no localization key was fabricated. |
+| `bio-valley-of-lush-and-moist-guppy-conch` | 格普螺 | drop | `drop blocked (absent item): design 0~2 软体甲壳碎片 has no repository ModItem; the 11% 格普螺外壳 rule is wired to GuppyShell (Phase 1)` | Phase 3 consumes Phases 1-2 item scope only: every designed drop is either wired to an implemented item or recorded as an absent-material blocker with no type reference written, because a reference to an absent type would not compile (D-36/D-37/D-39). |
+| `bio-valley-of-lush-and-moist-guppy-conch` | 格普螺 | localization | `localization deferred (D-20); runtime verification outstanding (D-21)` | Localization is deferred by user directive (D-20) and no live tModLoader client session is part of this phase (D-21); every row keeps status unchecked and no localization key was fabricated. |
+
+Every tranche row carries the canonical `localization deferred (D-20); runtime verification outstanding (D-21)` element, so the D-20/D-21 disposition is uniform across the tranche and cannot be dropped from one row without failing the mechanical regeneration. The missing spawn predicate is carried per-row by 巨树人's `spawn context partial (D-30)` element and, for the whole tranche, in the prose of §6; the `drop` rows are the D-37/D-39 contract, and the single `runtime` row is the D-23 acceptance of the pre-existing 水蛞蝓 class.
+
+## 11. Phase 3 close-out
+
+Frozen counts, unchanged by this plan: **rows 31**, **phase3 5**, **phase4 23**, **phase7 3**, **deferred 2**, with `texture_complete_true` 6 and `design_art_true` 9. `03-BIOLOGY.json` is the machine source of truth (D-24) and `03-BIOLOGY.md` mirrors it row-for-row; gate invariant 11 re-asserts the row-id set and every row's `status` on each run, and `check-biology.ps1 -RequireAll` closes the tranche at `OK(0): phase3 tranche = 5 / 5 (rows=31)` / `OK: implemented classes = 5 / 5`.
+
+The five implemented tranche rows — every one `code_complete: true` with a non-empty `internal_name` that resolves to a class file on disk:
+
+| Row id | Design name | Class | Drops wired | Drops absent |
+| --- | --- | --- | --- | --- |
+| `bio-death-jade-lake-river-slug` | 水蛞蝓 | `RiverSlug` (pre-existing, D-23) | none (the design names none) | none |
+| `bio-death-jade-lake-verdant-rods` | 叶飞棍 | `VerdantRods` | none | 飞棍毛发, 毒腺 |
+| `bio-spiny-moss-court-giant-tree-man` | 巨树人 | `GiantDandelion` | `ArmOfGiantTree`, `HardenedWitherbarkHeart`, `BoulderCatapult` | 枯木碎块 |
+| `bio-valley-of-lush-and-moist-mossy-thorn-turtle` | 荆棘苔龟 | `MossyThornTurtle` | `ThornTurtleShell` | none |
+| `bio-valley-of-lush-and-moist-guppy-conch` | 格普螺 | `GuppyConch` | `GuppyShell` | 软体甲壳碎片 |
+
+**Six design-art-only creatures stay in Phase 4.** They carry an inline design `<img>` but no approved repository texture, so D-41 places them in Phase 4 (`design_art: true`, `texture_complete: false`, `phase: 4`): 水黾, 幽光蝾螈（美西螈）, 装甲虾, 帆鳍鳢, 覆藻章鱼 and 大型覆藻章鱼. A later designer confirmation may move them back into Phase 3.
+
+**One boss row also has repository art.** `bio-out-of-phase-kelp-snake` (苍带帘蛇/克莱因蛇, `NPCs/AcroporaSnake.png`) is `texture_complete: true` but `phase: 7`: it is the Phase 7 boss art, not tranche material.
+
+**No item scope was promoted into this phase (D-37/D-43).** Phase 3 introduces no item, tile, wall, buff or localization artifact; it consumes Phases 1–2. The tranche's drop obligations are satisfied by wiring **five Phase 1–2 item types** — `ThornTurtleShell`, `GuppyShell`, `ArmOfGiantTree`, `HardenedWitherbarkHeart` and `BoulderCatapult` — and by recording **four** absent materials as blockers: 软体甲壳碎片, 飞棍毛发, 毒腺 and 枯木碎块. That is four distinct materials across the five tranche rows, not five, and no drop rule, type reference or placeholder item exists for any of them.
+
+## 12. Decision disposition
+
+| Decision | Applied? | Disposition |
+| --- | --- | --- |
+| D-28 (full implementation where the design row is complete) | yes — all five tranche rows | Every tranche row is a full `ModNPC` implementation (spawn, AI/movement, hostility, status effects, hit behaviour and drop wiring), not an identity shell. |
+| D-29 (identity-only shell where behaviour is undefined) | **not triggered in this phase** | Every repository-art creature has a defined behaviour row, so no shell class was needed. The shell candidates are the Phase 4 rows whose design section defines no behaviour — 荧光水螅, 巨型虎虾, 吸血魔毯 and 炮弹藤壶 — each labelled `D-29 shell` in the matrix `blockers`. |
+| D-30 (implement the independently completable part; name the missing system) | applied only to 巨树人 | Its design region 刺苔庭园 (Spiny Moss Court) has no biome or tile predicate yet, so the row carries `spawn context partial (D-30)`; the other tranche rows reuse the same server-safe layer-level gate, and the tranche-wide per-region refinement is recorded in §6. |
+| D-31 (vanilla `aiStyle` where it fits; a local `AI()` only where necessary) | 荆棘苔龟 only | 荆棘苔龟 uses `CloneDefaults(NPCID.GiantTortoise)` with `defDamage`/`defDefense` pinned and the spin state wrapped over `NPC.ai[]`. 格普螺, 叶飞棍 and 巨树人 each write a local `AI()`, justified in §4: no vanilla style provides a hit-triggered shell retract, a neutral hover-and-circle, or a three-range charge/smash/recovery machine. |
+
+## 13. Deferred registry
+
+| Category | Item | Status | Owner |
+| --- | --- | --- | --- |
+| Unfinished art | The six design-art-only creatures (水黾, 幽光蝾螈（美西螈）, 装甲虾, 帆鳍鳢, 覆藻章鱼, 大型覆藻章鱼) | Deferred to Phase 4 (D-41) | Phase 4 |
+| Unfinished art | Approved sprites for the two 巨树人 attack projectiles (`GiantDandelion_Shockwave`, `GiantDandelion_Boulder`), which use `Commons.ModAsset.White_Mod` today | Open — the designer must supply the art (§9) | Designer / Phase 8 |
+| Boss / special encounter | 苍带帘蛇/克莱因蛇 (`bio-out-of-phase-kelp-snake`) and 巨翼龙 (`bio-out-of-phase-giant-winged-dragon`) | Deferred to Phase 7 | Phase 7 |
+| Hardmode-deferred designs | 枯萎之种 and 枯木人卫士 (design moved to hardmode, 暂时不用，挪到困难模式) | Deferred — outside this milestone | V2-HARD-01 |
+| Absent drop materials | 软体甲壳碎片, 飞棍毛发, 毒腺, 枯木碎块 (plus the Phase 4 materials 亡碧膏, 牛黄, 干涸心脏) | Open — item scope, not this phase (D-37/D-43) | Phase 1–2 follow-up / Phase 8 |
+| Localization | All five tranche rows and the two attack projectiles | Deferred by user directive (D-20) — no exporter run, no key fabricated, no HJSON edited | Phase 8 |
+| Live runtime verification | The D-21 client bundle in `03-UAT.md` (spawn, isolation, behaviour, combat, drops, dedicated server, localization fallback) | Recorded, not executed (D-21) | Client session / Phase 8 |
+| Regional spawn refinement | 森雨幽谷 and 刺苔庭园 biome/tile predicates | Open — Phase 5–6 terrain work (D-30, §6) | Phases 5–6 |

@@ -160,7 +160,8 @@
                      "frame_count":  4,
                      "mapping_confidence":  "high",
                      "blockers":  [
-                                      "pre-existing accepted implementation (D-23): class untouched by Phase 3; its SpawnChance relies on SpawnModBiomes for subworld isolation and its HitEffect dust is not Main.dedServ-guarded"
+                                      "pre-existing accepted implementation (D-23): class not modified by Phase 3; subworld isolation relies on SpawnModBiomes + KelpCurtainBiome and its HitEffect dust is not Main.dedServ-guarded (gate allowlist)",
+                                      "localization deferred (D-20); runtime verification outstanding (D-21)"
                                   ],
                      "deferred":  false,
                      "deferred_reason":  ""
@@ -597,7 +598,9 @@
                      "frame_count":  1,
                      "mapping_confidence":  "high",
                      "blockers":  [
-                                      "texture present in repository; runtime and localization verification outstanding (D-20/D-21)"
+                                      "drop disposition: the design's 荆棘龟壳 is wired to the Phase 1 item ThornTurtleShell at 5% (ItemDropRule.Common(..., 20, 1, 1)); the design names no other drop",
+                                      "effect parameters provisional: the design supplies no spawn weight, hit box or knockback values, so the tranche's conservative defaults are used (D-34)",
+                                      "localization deferred (D-20); runtime verification outstanding (D-21)"
                                   ],
                      "deferred":  false,
                      "deferred_reason":  ""
@@ -875,19 +878,19 @@
                  }
              ],
     "assumptions":  [
-                        "e",
-                        "e",
-                        "e",
-                        "e",
-                        "e",
-                        "e"
+                        "tranche rule (03-DEVIATIONS.md section 1): D-41/D-42 - texture-complete is the repository already containing the creature approved .png, not a design-row checkbox or inline design <img>; the five phase:3 rows are 水蛞蝓, 荆棘苔龟, 格普螺, 叶飞棍 and 巨树人, and the six design-art-only creatures fall to Phase 4",
+                        "repository-art vs design-art discrepancy (section 2): design_art (the design source inline <img> marker) is independent of texture_complete, the two flags disagree on this snapshot, and the discrepancy is recorded for designer confirmation rather than treated as out of scope",
+                        "mapping assumptions (section 3): every repository asset is mapped to a design row by name, description and geometry inference, and every name_en except 荆棘苔龟 is executor-supplied; the mappings are recorded for designer confirmation, not treated as design statements",
+                        "conservative defaults (section 4): where the design is silent or gives a difficulty progression, the recorded conservative default is used - spawn weights, sprite-derived hit boxes, the 1:1 copper NPC.value transpose, NPC.rarity read from the empty 稀有度 cell, and the D-31 aiStyle choice",
+                        "drop availability (section 5): Phase 3 consumes Phases 1-2 item scope only - five item types are wired (ThornTurtleShell, GuppyShell, ArmOfGiantTree, HardenedWitherbarkHeart, BoulderCatapult) and four designed materials stay absent blockers (软体甲壳碎片, 飞棍毛发, 毒腺, 枯木碎块) with no type reference written (D-37/D-39)",
+                        "spawn-region gap (section 6): no 森雨幽谷 or 刺苔庭园 biome predicate exists yet, so spawn gating uses the server-safe layer-level KelpCurtainBiome.IsKelpCurtainLayer plus SubworldSystem.IsActive<YggdrasilWorld>(), and the per-region refinement is a Phase 5-6 terrain blocker (D-30)"
                     ],
     "deviations":  [
-                       "e",
-                       "e",
-                       "e",
-                       "e",
-                       "e",
-                       "e"
+                       "plan API-name corrections (Rule 1): the plan prose's spawnInfo.player and NPC.rare do not exist in this tModLoader version and were corrected to NPCSpawnInfo.Player and NPC.rarity; applied by plans 03-01 and 03-03 and compile-verified by the Release build",
+                       "plan 03-02 (Rule 2): the 格普螺 shell-state transition lives in HitEffect rather than ModifyIncomingHit, because tML documents ModifyIncomingHit as modifiers-only with side effects belonging to the OnHit hooks; ModifyIncomingHit keeps the design's 0.85/0.70 FinalDamage scales",
+                       "D-23: RiverSlug is a pre-existing accepted implementation that Phase 3 does not modify; its HitEffect dust is not Main.dedServ-guarded and the gate's preExistingAllowlist exempts it from the Phase 3 structural guards",
+                       "the two 巨树人 attack projectiles request only the shared Commons.ModAsset.White_Mod fallback because no approved art exists and creating placeholder art is forbidden; the missing ground-wave and boulder sprites are a named blocker (section 9)",
+                       "absent designed drops stay absent: 格普螺's 软体甲壳碎片 and 叶飞棍's 飞棍毛发/毒腺 produce no type reference at all, so 格普螺's loot table is partial and 叶飞棍's is deliberately empty (D-37/D-39)",
+                       "plan 03-03 staged the two projectile spawns as clearly-marked compile-safe seams in Task 1 and filled them in Task 2; no seam marker remains, so the intermediate state is not unfinished work"
                    ]
 }
