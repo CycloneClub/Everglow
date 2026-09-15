@@ -1,10 +1,10 @@
 ---
 schema_version: 1
-open_count: 15
+open_count: 17
 waived_count: 0
-fixed_count: 0
-total_count: 15
-last_updated: 2026-09-15T05:21:05.134Z
+fixed_count: 1
+total_count: 18
+last_updated: 2026-09-15T07:59:28.473Z
 ---
 
 # Broken Windows Ledger
@@ -30,6 +30,9 @@ last_updated: 2026-09-15T05:21:05.134Z
 | 13 | 02 | unrun-verify | .planning/phases/02-remaining-items-unfinished-art-materials/02-01-PLAN.md |  | Plan 02-01 runtime human-checks (D-21) not run offline: verify in a tModLoader client that CrimsonMoonAlgaeHeaddress equips into the head slot with a white-box icon and defense 8, and that the full four-piece set (crafted at a Work Bench) produces the faster wet swim/run and the ~15% self-heal on a >=10-damage hit. | open |  | 2026-09-14T11:21:21.999Z |  |
 | 14 | 02 | unrun-verify | .planning/phases/02-remaining-items-unfinished-art-materials/02-05-PLAN.md |  | Plan 02-05 end-of-phase UAT bundle (D-21) not run offline: one tModLoader client session working the consolidated runtime-verification bundle from plans 02-01..02-04 (armor equip/set, BoulderCatapult arc/shards, TendonGreatbow boss +10%, shell loads with no missing-resource error). | open |  | 2026-09-14T11:21:22.699Z |  |
 | 15 | 03 | unrun-verify | .planning/phases/03-completed-art-ordinary-monsters/03-01-PLAN.md |  | Plan 03-01 Task 1 runtime human-check (D-21) not run offline: in a tModLoader client the mossy thorn tortoise must spawn walking in the Kelp Curtain, retract and spin as a vanilla tortoise, show the design spin-state defence/damage switch (10/50 walking, 20/75 spinning), reflect a melee hit taken during the spin, and never appear in an ordinary world (BIO-06). | open |  | 2026-09-15T05:21:05.134Z |  |
+| 16 | 03 | unrun-verify | .planning/phases/03-completed-art-ordinary-monsters/03-02-PLAN.md |  | Placeholder probe | fixed |  | 2026-09-15T07:58:20.485Z | 2026-09-15T07:59:10.116Z |
+| 17 | 03 | unrun-verify | .planning/phases/03-completed-art-ordinary-monsters/03-02-PLAN.md |  | Plan 03-02 runtime human-checks (D-21) not run offline: in a tModLoader client GuppyConch must crawl slowly in the Kelp Curtain, never attack, deal contact damage, retract for ~2 s after a hit with reduced damage while shelled, drop GuppyShell at 11 percent and never appear in an ordinary world; VerdantRods must drift/circle without chasing, apply poison on ~50 percent of contacts, lose life while submerged and fly back out. | open |  | 2026-09-15T07:59:28.453Z |  |
+| 18 | 03 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/GuppyConch.cs |  | Plan 03-02 shell-state transition was placed in HitEffect instead of ModifyIncomingHit: tML documents ModifyIncomingHit as ONLY for HitModifiers properties with side effects belonging to OnHit hooks, and HitEffect is the documented on-hit hook that also runs on the server, so the server-authoritative transition (netmode guard + netUpdate) lives there while ModifyIncomingHit keeps the 0.85/0.70 damage scaling the plan's acceptance criteria require. | open |  | 2026-09-15T07:59:28.473Z |  |
 
 ````json
 [
@@ -211,6 +214,42 @@ last_updated: 2026-09-15T05:21:05.134Z
     "status": "open",
     "reason": "",
     "recorded_at": "2026-09-15T05:21:05.134Z",
+    "resolved_at": null
+  },
+  {
+    "id": 16,
+    "kind": "unrun-verify",
+    "phase": "03",
+    "file": ".planning/phases/03-completed-art-ordinary-monsters/03-02-PLAN.md",
+    "line": null,
+    "description": "Placeholder probe",
+    "status": "fixed",
+    "reason": "",
+    "recorded_at": "2026-09-15T07:58:20.485Z",
+    "resolved_at": "2026-09-15T07:59:10.116Z"
+  },
+  {
+    "id": 17,
+    "kind": "unrun-verify",
+    "phase": "03",
+    "file": ".planning/phases/03-completed-art-ordinary-monsters/03-02-PLAN.md",
+    "line": null,
+    "description": "Plan 03-02 runtime human-checks (D-21) not run offline: in a tModLoader client GuppyConch must crawl slowly in the Kelp Curtain, never attack, deal contact damage, retract for ~2 s after a hit with reduced damage while shelled, drop GuppyShell at 11 percent and never appear in an ordinary world; VerdantRods must drift/circle without chasing, apply poison on ~50 percent of contacts, lose life while submerged and fly back out.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-15T07:59:28.453Z",
+    "resolved_at": null
+  },
+  {
+    "id": 18,
+    "kind": "deviation",
+    "phase": "03",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/GuppyConch.cs",
+    "line": null,
+    "description": "Plan 03-02 shell-state transition was placed in HitEffect instead of ModifyIncomingHit: tML documents ModifyIncomingHit as ONLY for HitModifiers properties with side effects belonging to OnHit hooks, and HitEffect is the documented on-hit hook that also runs on the server, so the server-authoritative transition (netmode guard + netUpdate) lives there while ModifyIncomingHit keeps the 0.85/0.70 damage scaling the plan's acceptance criteria require.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-15T07:59:28.473Z",
     "resolved_at": null
   }
 ]

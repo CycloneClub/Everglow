@@ -46,8 +46,8 @@
   ],
   "next": {
     "command": "/gsd:progress --next",
-    "label": "Continue to next plan",
-    "reason": "Phase 03 of 8 · plan 03-01 complete · 03-02 (格普螺 and 叶飞棍) is next in Wave 2"
+    "label": "Advance to the next step",
+    "reason": "Phase 03 of 8 · executing"
   },
-  "updated_at": "2026-09-15T05:20:00.000Z"
+  "updated_at": "2026-09-15T08:00:42.212Z"
 }

@@ -1,21 +1,21 @@
 ---
-gsd_state_version: 1.0
+gsd_state_version: "1.0"
 milestone: v1.0
-milestone_name: milestone
 current_phase: 03
 current_phase_name: Completed-Art Ordinary Monsters
-current_plan: 1
+current_plan: 2
 status: executing
-stopped_at: Completed 03-01-PLAN.md
-last_updated: "2026-09-15T05:20:00.000Z"
+stopped_at: Completed 03-02-PLAN.md
+last_updated: "2026-09-15T08:00:42.102Z"
 last_activity: 2026-09-15
-last_activity_desc: Phase 3 in progress — 03-01 complete (biology matrix tracer + MossyThornTurtle end-to-end; wave-1 gate green)
+last_activity_desc: Phase 3 in progress — 03-02 complete (GuppyConch + VerdantRods implemented; wave-2 gate green at 4 / 5)
+state_head: 86a5e7e2de34af17b16a1ed88898ca5bee8646ae
 progress:
   total_phases: 8
   completed_phases: 2
   total_plans: 16
-  completed_plans: 13
-state_head: f7dfa1ac060d1bdb0df1d96aff0353323a35f99d
+  completed_plans: 14
+milestone_name: milestone
 ---
 
 # Project State
@@ -29,20 +29,20 @@ See: `.planning/PROJECT.md` (updated 2026-09-12)
 
 ## Current Position
 
-Current Plan: 1
+Current Plan: 2
 Total Plans in Phase: 4
 Phase: 03 (Completed-Art Ordinary Monsters) — EXECUTING
-Plans complete: 1 of 4 (03-01 done; 03-02 next)
+Plans complete: 2 of 4 (03-01 and 03-02 done; 03-03 next)
 Status: Ready to execute
-Last activity: 2026-09-15 — 03-01 complete (biology matrix tracer + MossyThornTurtle end-to-end; wave-1 gate green)
+Last activity: 2026-09-15 — 03-02 complete (GuppyConch shell-up neutral crawler with its GuppyShell drop and VerdantRods neutral flying rod with water suffocation + 50% poison; wave-2 gate green at 4 / 5)
 
-Progress: [████████░░] 81%
+Progress: [█████████░] 88%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 13
+- Total plans completed: 14
 - Average duration: n/a
 - Total execution time: 0 hours
 
@@ -53,7 +53,7 @@ Progress: [████████░░] 81%
 | 1–8 | 0 | TBD | n/a |
 | 1 | 7 | 7 | ~17min |
 | 2 | 4 | 5 | 10min |
-| 3 | 1 | 4 | 184min |
+| 3 | 2 | 4 | ~170min |
 
 **Recent Trend:** No execution data yet.
 **Per-Plan Metrics:**
@@ -73,6 +73,7 @@ Progress: [████████░░] 81%
 | Phase 02 P04 | 8min | 3 tasks | 10 files |
 | Phase 02 P05 | 10min | 3 tasks | 5 files |
 | Phase 03 P01 | 184min | 2 tasks | 6 files |
+| Phase 03 P02 | 157min | 3 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -128,6 +129,11 @@ Progress: [████████░░] 81%
 - [Phase 03]: The 荆棘苔龟 melee reflect runs once on the client doing the damage under a player.whoAmI != Main.myPlayer guard because tML never invokes OnHitByItem on the server; the ModIns.PacketResolver alternative is recorded as not taken.
 - [Phase 03]: Two plan-named API members do not exist and were corrected (Rule 1): spawnInfo.player -> NPCSpawnInfo.Player, and NPC.rare -> NPC.rarity (a no-op recording the design's empty 稀有度 cell).
 - [Phase 03]: BIO-01/BIO-02/BIO-03/BIO-06 are advanced by plan 03-01 but complete in none of it; REQUIREMENTS.md is left untouched and the traceability rows stay Pending until 03-04 closes the phase.
+- [Phase 03]: Plan 03-02's shell-state transition lives in HitEffect (the documented on-hit hook, called on the server) under Main.netMode != NetmodeID.MultiplayerClient with NPC.netUpdate, while ModifyIncomingHit keeps the design's 0.85/0.70 FinalDamage scales; tML documents ModifyIncomingHit as modifiers-only with side effects belonging to OnHit hooks.
+- [Phase 03]: 叶飞棍's 50% 中毒 is applied unguarded in OnHitPlayer (tML runs that hook on the local client and Player.AddBuff performs the buff sync), while its water-suffocation NPC.life drain is netmode-guarded and clamped at 1 life; a multiplayer-client guard on the poison would have made it dead code in multiplayer.
+- [Phase 03]: Both plan-03-02 creatures reject spawnInfo.Water — 格普螺 is a land crawler and 叶飞棍 an open-air flier — so the design's water interaction lives in the leaf rod's AI (occasional skim, suffocation, escape bias) rather than in a spawn requirement; both reuse the server-safe KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player) and never IsBiomeActive.
+- [Phase 03]: Absent designed drops stay absent: 格普螺 writes only the 11% GuppyShell rule (软体甲壳碎片 blocked) and 叶飞棍 ships an explicitly empty, commented ModifyNPCLoot (飞棍毛发 / 毒腺 blocked); neither class contains a type reference to an absent material (D-37/D-39).
+- [Phase 03]: Plan 03-02 advances BIO-01/BIO-03/BIO-06/QUAL-03 but completes none of them; REQUIREMENTS.md is left untouched and the traceability rows stay Pending until 03-04 closes the phase.
 
 ### Pending Todos
 
@@ -147,7 +153,8 @@ None yet.
 - [Phase 02] The plan-02-03 rows (灵蛇玉卵, 竹节步符, 竹制武器, 竹簪子, 桃枝护符, 桃花纸鸢（风筝）, 熊猫宠物) are code-complete / art-incomplete. Outstanding blockers: approved textures (all seven); the 苍翠灵蛇 Phase 7 encounter and its 在森雨幽谷顶部使用 location gate for 灵蛇玉卵; runtime verification (D-21) of the seven entries. Phase gate advanced to 15/21.
 - [Phase 02] The plan-02-04 rows (若干酒类, 荧光水螅召唤杖, 弟子剑, 弟子时装, 技能竹简, 区域放置物品制作台) are code-complete / art-incomplete. Outstanding blockers: approved textures (all six); the 弟子 (disciple) progression system for 弟子剑/弟子时装; the skill system for 技能竹简; the regional-crafting system plus its placement tile for 区域放置物品制作台; the absent 荧光水螅 summon projectile for 荧光水螅召唤杖. No system was implemented (D-19). Item coverage is closed at 21/21; runtime verification (D-21) of the six shells is outstanding (WINDOWS.md entry 12).
 - [Phase 03] Plan 03-01 froze the repository-art tranche and implemented 荆棘苔龟 (`MossyThornTurtle`) end-to-end. Outstanding: runtime verification (D-21) for spawn isolation, the spin-state defence/damage switch, the melee reflect and the 5% 荆棘龟壳 drop; a dedicated-server run confirming `KelpCurtainBiome.IsKelpCurtainLayer` evaluates the same band as the camera-driven `IsBiomeActive`; designer confirmation of the five asset-to-creature mappings and of the six design-art-only creatures that D-41 sends to Phase 4; and a per-region spawn refinement once 刺苔庭园/森雨幽谷 biome predicates exist (03-DEVIATIONS.md sections 2, 3, 6, 8).
-- [Phase 03] The three tranche rows still `code_complete:false` with an empty `internal_name` (`bio-death-jade-lake-verdant-rods`, `bio-valley-of-lush-and-moist-guppy-conch`, `bio-spiny-moss-court-giant-tree-man`) are the plan-frozen record of classes not yet created, not back-fill defects; plans 03-02/03-03 fill each one together with its class.
+- [Phase 03] After plan 03-02 only one tranche row remains `code_complete:false` with an empty `internal_name` (`bio-spiny-moss-court-giant-tree-man`); it is the plan-frozen record of a class not yet created, not a back-fill defect, and plan 03-03 fills it together with its class.
+- [Phase 03] Plan 03-02 implemented 格普螺 (`GuppyConch`) and 叶飞棍 (`VerdantRods`). Outstanding: runtime verification (D-21) for the shell retract feel and the 防御 10/20 + 0.85/0.70 减伤 switch, the crawl reversal at walls/ledges, the 11% 格普螺外壳 drop, the leaf rod's neutral circling without chasing, its 50% 中毒 and its submerged life drain with the escape flight (WINDOWS.md entries 17 and 18); the per-region spawn refinement for 叶飞棍 (亡碧湖 vs 森雨幽谷) once a regional predicate exists; and the same dedicated-server band check recorded for plan 03-01 (03-DEVIATIONS.md sections 4, 5, 6, 8).
 
 ### Quick Tasks Completed
 
@@ -164,6 +171,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-09-15T05:16:43Z
-Stopped at: Completed 03-01-PLAN.md
+Last session: 2026-09-15T16:00:00Z
+Stopped at: Completed 03-02-PLAN.md
 Resume file: None
