@@ -9,7 +9,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.UI;
 
 public class FurnaceScoreShopUI : SpecialShopUI
 {
-	public static FurnaceScoreShopUI Instance => (FurnaceScoreShopUI)UISystem.EverglowUISystem.Elements[typeof(FurnaceScoreShopUI).FullName];
+	public static FurnaceScoreShopUI Instance => SpecialShopSystem.Instance.Get<FurnaceScoreShopUI>();
 
 	// ==================== UI elements ==================== //
 	public FurnaceScoreShop_Itemslot[] FurnaceScoreShopItemSlots;
@@ -64,7 +64,7 @@ public class FurnaceScoreShopUI : SpecialShopUI
 		base.Update(gt);
 		if (Main.LocalPlayer.chest > -1 || Main.LocalPlayer.talkNPC > -1)
 		{
-			Instance.Close();
+			Close();
 		}
 		Calculation();
 		if (ShouldSetupShopItems)
@@ -75,7 +75,7 @@ public class FurnaceScoreShopUI : SpecialShopUI
 
 	public void SetupShopItems()
 	{
-		FurnaceScoreShop.SellPricesInFurnaceScore = new Dictionary<int, int>();
+		FurnaceScoreShop.SellPricesInFurnaceScore.Clear();
 		for (int i = 0; i < FurnaceScoreShopItemSlots.Length; i++)
 		{
 			int rewardType = 0;

@@ -6,13 +6,13 @@ namespace Everglow.Commons.UI;
 /// <summary>
 /// Reuses registered UI instances and keeps at most one special shop open.
 /// </summary>
-public class SpecialShopRegistry : ModSystem
+public class SpecialShopSystem : ModSystem
 {
 	private const int SpecialShopWhoAmI = 65536;
-	private readonly Dictionary<Type, SpecialShopUI> shops = new();
+	private readonly Dictionary<Type, SpecialShopUI> shops = [];
 	private SpecialShopUI currentShop;
 
-	public static SpecialShopRegistry Instance => ModContent.GetInstance<SpecialShopRegistry>();
+	public static SpecialShopSystem Instance => ModContent.GetInstance<SpecialShopSystem>();
 
 	public SpecialShopUI CurrentShop => currentShop is { IsVisible: true } ? currentShop : null;
 
@@ -25,13 +25,19 @@ public class SpecialShopRegistry : ModSystem
 		}
 	}
 
+	public override void Unload()
+	{
+		Close();
+		shops.Clear();
+	}
+
 	public override void PostSetupContent()
 	{
 		if (Main.dedServ)
 		{
 			return;
 		}
-		// UI containers have already been created during Load; reuse their instances.
+
 		foreach (var shop in UISystem.EverglowUISystem.Elements.Values.OfType<SpecialShopUI>())
 		{
 			shops.Add(shop.GetType(), shop);
@@ -51,7 +57,8 @@ public class SpecialShopRegistry : ModSystem
 		Close();
 	}
 
-	public T Open<T>() where T : SpecialShopUI
+	public T Open<T>()
+		where T : SpecialShopUI
 	{
 		T shop = (T)shops[typeof(T)];
 		Main.playerInventory = true;
@@ -70,11 +77,10 @@ public class SpecialShopRegistry : ModSystem
 		currentShop = null;
 	}
 
-	public override void Unload()
+	public T Get<T>()
+		where T : SpecialShopUI
 	{
-		Close();
-		shops.Clear();
-		// tModLoader removes On_/IL_ hooks when the mod unloads.
+		return (T)shops[typeof(T)];
 	}
 
 	private void IL_Main_DrawInventory(ILContext il)

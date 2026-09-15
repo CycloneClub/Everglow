@@ -9,14 +9,14 @@ public class FurnaceScoreShop : BackgroundSlideBase
 {
 	public Point TileAnchor;
 
-	public List<Point> BgTiles = new List<Point>();
+	public List<Point> BgTiles = [];
 
-	public List<Rectangle> GlowFrames = new List<Rectangle>();
+	public List<Rectangle> GlowFrames = [];
 
 	/// <summary>
 	/// A dictionary mapping item types to their sell prices in furnace scores(type, sellPrice).
 	/// </summary>
-	public static Dictionary<int, int> SellPricesInFurnaceScore = new Dictionary<int, int>();
+	public static readonly Dictionary<int, int> SellPricesInFurnaceScore = [];
 
 	/// <summary>
 	/// 0:Normal, 1:Talk, 2:Play
@@ -43,7 +43,6 @@ public class FurnaceScoreShop : BackgroundSlideBase
 	{
 		base.Update();
 		Player player = Main.LocalPlayer;
-		SpecialShopRegistry shops = SpecialShopRegistry.Instance;
 		if (SaleGirlAnimationTimer == 0)
 		{
 			int k = Main.rand.Next(10);
@@ -85,19 +84,19 @@ public class FurnaceScoreShop : BackgroundSlideBase
 			MouseOverSaleGirl = true;
 			if (Main.mouseRight && Main.mouseRightRelease && CanInteract())
 			{
-				shops.Open<FurnaceScoreShopUI>();
+				SpecialShopSystem.Instance.Open<FurnaceScoreShopUI>();
 				OpenShop = true;
 			}
 		}
 		if (OpenShop)
 		{
-			if (shops.CurrentShop != FurnaceScoreShopUI.Instance)
+			if (SpecialShopSystem.Instance.CurrentShop is not FurnaceScoreShopUI)
 			{
 				OpenShop = false;
 			}
 			else if (!Main.playerInventory || !CanInteract())
 			{
-				shops.Close();
+				SpecialShopSystem.Instance.Close();
 				OpenShop = false;
 			}
 			else if (player.talkNPC != -1)
@@ -112,7 +111,6 @@ public class FurnaceScoreShop : BackgroundSlideBase
 		var bars = new List<Vertex2D>();
 		BackgroundHigherPerformanceHelper.Add_TileBgVertice(this, BgTiles, bars, 1);
 		DrawVertexBackground(this, PrimitiveType.TriangleStrip, bars);
-		Player player = Main.LocalPlayer;
 
 		Texture2D girl = ModAsset.FurnaceScoreShop_SaleGirl.Value;
 		Vector2 pos = WorldAnchor + new Vector2(1964, 528);
