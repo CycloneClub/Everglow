@@ -16,7 +16,11 @@ findings:
   warning: 5
   info: 6
   total: 11
-status: issues_found
+status: warnings_resolved
+fix_iteration: 1
+fixed_at: 2026-09-15
+resolved_warnings: [WR-01, WR-02, WR-03, WR-04, WR-05]
+remaining_findings: [IN-01, IN-02, IN-03, IN-04, IN-05, IN-06]
 ---
 
 # Phase 3: Code Review Report
@@ -154,6 +158,19 @@ or change the doc comment to state explicitly that the spawn band is deliberatel
 
 ---
 
+## Fix Resolution
+
+**Resolved:** 2026-09-15, iteration 1. The five Warning findings were fixed against the committed design snapshot (`../01-item-inventory-completed-art-items/evidence/biology.xml`) and committed atomically. The six Info findings were intentionally left for a future pass (the requested scope was Warning-and-above). Full report: `03-REVIEW-FIX.md`.
+
+| Finding | Status | Commit | Change and design row |
+| --- | --- | --- | --- |
+| WR-01 | resolved | `5183f8bcb` | `MossyThornTurtle.PostAI` now applies the design's 防御 20（旋转/缩壳） through the 缩壳 (`Retracting`) state as well as 旋转 (`Spinning`), while the 缩壳 state keeps the normal 伤害 50（旋转 keeps 75). The class doc comment states the three-state mapping. Design row: stats table `Cqvwdoc54o8vsWx3mIpcoKpinVg`, 伤害 `50（正常）/75（旋转）`, 防御 `10 / 20（旋转/缩壳）`. |
+| WR-02 | resolved | `b2f74f5b2` | `GiantDandelion.ThrowBoulder` now takes an `armMidRangeCooldown` flag: the 240-tick gap is armed only from the mid-range `BoulderThrow` path, and the post-smash yank passes `false`, so a smash no longer suppresses the next mid-range attack. Design row: 这个状态下两段攻击间隔不低于240帧. |
+| WR-03 | resolved | `0d4cc4ea8` | `GiantDandelion.RunStateMachine` gates the three locomotion states behind the new `AggroRangeTiles` (conservative 30-tile default, recorded in `03-DEVIATIONS.md` §4) and falls back to the no-aggro Idle wander when the player escapes it, so the design's state (0) is reachable. Design row: 游荡在刺苔庭院的沼泽中 / 玩家超过15格且有仇恨时. |
+| WR-04 | resolved | `fe20e019d` | `GiantDandelion_Shockwave` now probes the leading edge, the centre and the trailing edge and anchors to the deepest floor found, so the 200 px hit box follows the ground across uneven terrain instead of a single centre column (the `200x32` size itself remains the D-34 default). |
+| WR-05 | resolved | `49db5a865` | `KelpCurtainBiome.IsKelpCurtainLayer`'s doc now states the actual server-safe band intent — a player-centred band deliberately about half a screen below the camera-driven `IsBiomeActive` band — instead of claiming to reproduce it. The predicate keeps using `player.Center.Y` and never `Main.screenPosition`, so it stays server-safe (no band bound changed). |
+
 _Reviewed: 2026-09-15_
 _Reviewer: the agent (gsd-code-reviewer)_
 _Depth: standard_
+_Fixed: 2026-09-15 (iteration 1, all five Warnings resolved; six Info findings remain)_
