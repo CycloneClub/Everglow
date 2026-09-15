@@ -1,0 +1,888 @@
+{
+    "schema_version":  1,
+    "generated_at":  "2026-09-15T05:04:20Z",
+    "source":  {
+                   "biology":  {
+                                   "token":  "Jp5ndsvNBoCpljxq1eGc9S7vnfe",
+                                   "file":  ".planning/phases/01-item-inventory-completed-art-items/evidence/biology.xml",
+                                   "read_only":  true
+                               }
+               },
+    "tranche_rule":  "D-41 (verbatim): \"Texture-complete\" - the Phase 3/4 split criterion - is the repository already containing the creature approved art (a corresponding .png in the KelpCurtain creature asset tree), not a design-row checkbox or inline design <img>. Research proved evidence/biology.xml carries no per-creature texture checkbox and that the only per-creature artwork marker is an inline <img>. D-42 (verbatim): Creatures that have repository art but no design artwork marker (e.g. 荆棘苔龟, 格普螺, 叶飞棍) are in Phase 3. The repository-art-vs-design-art discrepancy is recorded in 03-DEVIATIONS.md for later designer confirmation, not treated as out-of-scope. Enumerated with Get-ChildItem -Recurse Sources/Modules/Yggdrasil/KelpCurtain/NPCs -File -Filter *.png: MossyThornTurtle.png, GuppyConch.png, VerdantRods.png, GiantDandelion.png, RiverSlug.png and AcroporaSnake.png (the last is the boss art consumed by Phase 7). This CRITICAL_OVERRIDE supersedes 03-RESEARCH.md Finding 1 / Open Question 1, which proposed an inline design-<img> proxy.",
+    "naming_rule":  "A new creature class takes its class name and internal name from the existing repository art basename (MossyThornTurtle.png -> MossyThornTurtle), keeping the tML default texture resolution working with no Texture override, no handwritten asset path and no asset move. Never place a ModNPC class in a subfolder of NPCs/ for a creature whose approved art sits directly in NPCs/. No asset is created, moved or renamed.",
+    "counts":  {
+                   "rows":  31,
+                   "phase3":  5,
+                   "phase4":  23,
+                   "phase7":  3,
+                   "deferred":  2,
+                   "texture_complete_true":  6,
+                   "design_art_true":  9
+               },
+    "phase3_tranche":  [
+                           "bio-death-jade-lake-river-slug",
+                           "bio-death-jade-lake-verdant-rods",
+                           "bio-spiny-moss-court-giant-tree-man",
+                           "bio-valley-of-lush-and-moist-mossy-thorn-turtle",
+                           "bio-valley-of-lush-and-moist-guppy-conch"
+                       ],
+    "rows":  [
+                 {
+                     "id":  "bio-death-jade-lake-fluorescent-hydra",
+                     "phase":  4,
+                     "region":  "Death Jade Lake",
+                     "name_zh":  "荧光水螅",
+                     "name_en":  "Fluorescent Hydra",
+                     "internal_name":  "",
+                     "repo_asset":  "",
+                     "feishu":  {
+                                    "heading_block_id":  "CvAGdz87Son7TQxKZY8c9Dt5nke",
+                                    "stats_table_block_id":  "",
+                                    "behavior_block_id":  "",
+                                    "drop_block_id":  "",
+                                    "design_image_block_id":  ""
+                                },
+                     "design_art":  false,
+                     "texture_complete":  false,
+                     "code_complete":  false,
+                     "status":  "unchecked",
+                     "frame_count":  1,
+                     "mapping_confidence":  "assumed",
+                     "blockers":  [
+                                      "artwork: no approved repository texture; Phase 4 (D-41)",
+                                      "behavior undefined in the design row (D-29 shell)"
+                                  ],
+                     "deferred":  false,
+                     "deferred_reason":  ""
+                 },
+                 {
+                     "id":  "bio-death-jade-lake-giant-tiger-shrimp",
+                     "phase":  4,
+                     "region":  "Death Jade Lake",
+                     "name_zh":  "巨型虎虾",
+                     "name_en":  "Giant Tiger Shrimp",
+                     "internal_name":  "",
+                     "repo_asset":  "",
+                     "feishu":  {
+                                    "heading_block_id":  "UJw8dvF1qozy1AxjEBMcne0Ln5f",
+                                    "stats_table_block_id":  "",
+                                    "behavior_block_id":  "",
+                                    "drop_block_id":  "",
+                                    "design_image_block_id":  ""
+                                },
+                     "design_art":  false,
+                     "texture_complete":  false,
+                     "code_complete":  false,
+                     "status":  "unchecked",
+                     "frame_count":  1,
+                     "mapping_confidence":  "assumed",
+                     "blockers":  [
+                                      "artwork: no approved repository texture; Phase 4 (D-41)",
+                                      "behavior undefined in the design row (D-29 shell)"
+                                  ],
+                     "deferred":  false,
+                     "deferred_reason":  ""
+                 },
+                 {
+                     "id":  "bio-death-jade-lake-water-strider",
+                     "phase":  4,
+                     "region":  "Death Jade Lake",
+                     "name_zh":  "水黾",
+                     "name_en":  "Water Strider",
+                     "internal_name":  "",
+                     "repo_asset":  "",
+                     "feishu":  {
+                                    "heading_block_id":  "Gca8ddqq9on2lhxraxRcBNkmn6d",
+                                    "stats_table_block_id":  "SqdydxBlPoASZtx5drwc9mZcnfe",
+                                    "behavior_block_id":  "Frl7dwvbGoXf8sxSJozc3QfCnF2",
+                                    "drop_block_id":  "",
+                                    "design_image_block_id":  "Hx6vdtlOIoEw7lx1SSYcFwPjn3f"
+                                },
+                     "design_art":  true,
+                     "texture_complete":  false,
+                     "code_complete":  false,
+                     "status":  "unchecked",
+                     "frame_count":  1,
+                     "mapping_confidence":  "assumed",
+                     "blockers":  [
+                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                  ],
+                     "deferred":  false,
+                     "deferred_reason":  ""
+                 },
+                 {
+                     "id":  "bio-death-jade-lake-verdant-rods",
+                     "phase":  3,
+                     "region":  "Death Jade Lake",
+                     "name_zh":  "叶飞棍",
+                     "name_en":  "Verdant Rods",
+                     "internal_name":  "",
+                     "repo_asset":  "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/VerdantRods.png",
+                     "feishu":  {
+                                    "heading_block_id":  "RPs8db7IMof8ilxWLPNccOtPnBe",
+                                    "stats_table_block_id":  "EU6pdMiwLoZxqNxi0KDcnceonBb",
+                                    "behavior_block_id":  "CFCDdFU78ozdhSxpAQsc64btnyd",
+                                    "drop_block_id":  "H2dQdrngYoGevPxYaDlc5oganOg",
+                                    "design_image_block_id":  ""
+                                },
+                     "design_art":  false,
+                     "texture_complete":  true,
+                     "code_complete":  false,
+                     "status":  "unchecked",
+                     "frame_count":  1,
+                     "mapping_confidence":  "assumed",
+                     "blockers":  [
+                                      "texture present in repository; runtime and localization verification outstanding (D-20/D-21)"
+                                  ],
+                     "deferred":  false,
+                     "deferred_reason":  ""
+                 },
+                 {
+                     "id":  "bio-death-jade-lake-river-slug",
+                     "phase":  3,
+                     "region":  "Death Jade Lake",
+                     "name_zh":  "水蛞蝓",
+                     "name_en":  "River Slug",
+                     "internal_name":  "Everglow.Yggdrasil.KelpCurtain.NPCs.RiverSlug",
+                     "repo_asset":  "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/RiverSlug.png",
+                     "feishu":  {
+                                    "heading_block_id":  "doxcnnaHMkf1Q1grLuoVOb1vOrh",
+                                    "stats_table_block_id":  "Ut3ydby3Co4aCNxZXdBcitvGnPc",
+                                    "behavior_block_id":  "Z3oNdznu9oCJYmxJeM9c4wa2nBg",
+                                    "drop_block_id":  "",
+                                    "design_image_block_id":  "PhXZds7oNobxdFx0ZN3cWeSHngg"
+                                },
+                     "design_art":  true,
+                     "texture_complete":  true,
+                     "code_complete":  true,
+                     "status":  "unchecked",
+                     "frame_count":  4,
+                     "mapping_confidence":  "high",
+                     "blockers":  [
+                                      "pre-existing accepted implementation (D-23): class untouched by Phase 3; its SpawnChance relies on SpawnModBiomes for subworld isolation and its HitEffect dust is not Main.dedServ-guarded"
+                                  ],
+                     "deferred":  false,
+                     "deferred_reason":  ""
+                 },
+                 {
+                     "id":  "bio-death-jade-lake-toxic-toad",
+                     "phase":  4,
+                     "region":  "Death Jade Lake",
+                     "name_zh":  "剧毒蟾蜍",
+                     "name_en":  "Toxic Toad",
+                     "internal_name":  "",
+                     "repo_asset":  "",
+                     "feishu":  {
+                                    "heading_block_id":  "KicYd5bbPo4psdxHl1ScX90Bnpf",
+                                    "stats_table_block_id":  "EkMUd1HFuofbZ1xZ25CcGGwxngf",
+                                    "behavior_block_id":  "GjwedzoyPouXssx66zpcBbo5nWd",
+                                    "drop_block_id":  "GftbdkuVuovYXoxpZm7cAE4Mndb",
+                                    "design_image_block_id":  ""
+                                },
+                     "design_art":  false,
+                     "texture_complete":  false,
+                     "code_complete":  false,
+                     "status":  "unchecked",
+                     "frame_count":  1,
+                     "mapping_confidence":  "assumed",
+                     "blockers":  [
+                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                  ],
+                     "deferred":  false,
+                     "deferred_reason":  ""
+                 },
+                 {
+                     "id":  "bio-death-jade-lake-glow-salamander",
+                     "phase":  4,
+                     "region":  "Death Jade Lake",
+                     "name_zh":  "幽光蝾螈（美西螈）",
+                     "name_en":  "Glow Salamander (Axolotl)",
+                     "internal_name":  "",
+                     "repo_asset":  "",
+                     "feishu":  {
+                                    "heading_block_id":  "AnOud27JsouukSxerW4cQ3zWnwb",
+                                    "stats_table_block_id":  "HQIodexmAoHMu2x6as0ciTTjnjh",
+                                    "behavior_block_id":  "Dfkidik2VoSGuwxq8YKcjUVpnRg",
+                                    "drop_block_id":  "XExidTYSHop1qHxY3r6c1Co3nEd",
+                                    "design_image_block_id":  "RTqrdfAfLord5Nxt1Zvck3ZjnVg"
+                                },
+                     "design_art":  true,
+                     "texture_complete":  false,
+                     "code_complete":  false,
+                     "status":  "unchecked",
+                     "frame_count":  1,
+                     "mapping_confidence":  "assumed",
+                     "blockers":  [
+                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                  ],
+                     "deferred":  false,
+                     "deferred_reason":  ""
+                 },
+                 {
+                     "id":  "bio-death-jade-lake-armored-shrimp",
+                     "phase":  4,
+                     "region":  "Death Jade Lake",
+                     "name_zh":  "装甲虾",
+                     "name_en":  "Armored Shrimp",
+                     "internal_name":  "",
+                     "repo_asset":  "",
+                     "feishu":  {
+                                    "heading_block_id":  "Z94rdc53uoe4Wyx7TRPck6g5nQb",
+                                    "stats_table_block_id":  "T9xpdYaL7oDHsTxNkkUcNRUYnWh",
+                                    "behavior_block_id":  "ELQgdcR30oJFwAxNBgjcmXmQnXd",
+                                    "drop_block_id":  "",
+                                    "design_image_block_id":  "BIm6dfbxAo2HEmx7IFgcjfPknSw"
+                                },
+                     "design_art":  true,
+                     "texture_complete":  false,
+                     "code_complete":  false,
+                     "status":  "unchecked",
+                     "frame_count":  1,
+                     "mapping_confidence":  "assumed",
+                     "blockers":  [
+                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                  ],
+                     "deferred":  false,
+                     "deferred_reason":  ""
+                 },
+                 {
+                     "id":  "bio-death-jade-lake-bomb-jellyfish",
+                     "phase":  4,
+                     "region":  "Death Jade Lake",
+                     "name_zh":  "爆弹水母",
+                     "name_en":  "Bomb Jellyfish",
+                     "internal_name":  "",
+                     "repo_asset":  "",
+                     "feishu":  {
+                                    "heading_block_id":  "LDXndBembo98qsxPzlLcPt0An9d",
+                                    "stats_table_block_id":  "Pz4XdAiuIo64cnxXvtRcERtqnzd",
+                                    "behavior_block_id":  "OwnZdVZaJogXNSxk6M7cSF2enHW",
+                                    "drop_block_id":  "",
+                                    "design_image_block_id":  ""
+                                },
+                     "design_art":  false,
+                     "texture_complete":  false,
+                     "code_complete":  false,
+                     "status":  "unchecked",
+                     "frame_count":  1,
+                     "mapping_confidence":  "assumed",
+                     "blockers":  [
+                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                  ],
+                     "deferred":  false,
+                     "deferred_reason":  ""
+                 },
+                 {
+                     "id":  "bio-death-jade-lake-sailfin-snakehead",
+                     "phase":  4,
+                     "region":  "Death Jade Lake",
+                     "name_zh":  "帆鳍鳢",
+                     "name_en":  "Sailfin Snakehead",
+                     "internal_name":  "",
+                     "repo_asset":  "",
+                     "feishu":  {
+                                    "heading_block_id":  "BJVjdHX2FoW4MLxOk6ocVw82nUd",
+                                    "stats_table_block_id":  "BiiNdL85hoJC6axx5lbcy5Zsnnf",
+                                    "behavior_block_id":  "UUgpdyHQjopoSHx7wCzczqxwnPc",
+                                    "drop_block_id":  "QLkTdqtHoowbKexZttGc71byn5e",
+                                    "design_image_block_id":  "J2rxdqCDxo4EX5xY45PccPUNngb"
+                                },
+                     "design_art":  true,
+                     "texture_complete":  false,
+                     "code_complete":  false,
+                     "status":  "unchecked",
+                     "frame_count":  1,
+                     "mapping_confidence":  "assumed",
+                     "blockers":  [
+                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                  ],
+                     "deferred":  false,
+                     "deferred_reason":  ""
+                 },
+                 {
+                     "id":  "bio-death-jade-lake-radiolarian",
+                     "phase":  4,
+                     "region":  "Death Jade Lake",
+                     "name_zh":  "放射虫",
+                     "name_en":  "Radiolarian",
+                     "internal_name":  "",
+                     "repo_asset":  "",
+                     "feishu":  {
+                                    "heading_block_id":  "Z1hzdRHyToqCUHxN6qScwKeGnVd",
+                                    "stats_table_block_id":  "KXX6dTTJNooexbxnCRYc2062nlb",
+                                    "behavior_block_id":  "TdwNdpn2XoFla9x8OUKc8AQanrd",
+                                    "drop_block_id":  "PAord6A0NomliPxRzQlcw0wEnMc",
+                                    "design_image_block_id":  ""
+                                },
+                     "design_art":  false,
+                     "texture_complete":  false,
+                     "code_complete":  false,
+                     "status":  "unchecked",
+                     "frame_count":  1,
+                     "mapping_confidence":  "assumed",
+                     "blockers":  [
+                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                  ],
+                     "deferred":  false,
+                     "deferred_reason":  ""
+                 },
+                 {
+                     "id":  "bio-death-jade-lake-algae-octopus",
+                     "phase":  4,
+                     "region":  "Death Jade Lake",
+                     "name_zh":  "覆藻章鱼",
+                     "name_en":  "Algae-Covered Octopus",
+                     "internal_name":  "",
+                     "repo_asset":  "",
+                     "feishu":  {
+                                    "heading_block_id":  "K8PmdSvk3okdbbxo7vYc4flKnKd",
+                                    "stats_table_block_id":  "Ef2vderqeo3CgJxyazwcDKbAngd",
+                                    "behavior_block_id":  "WwyUddu8SooiTDxy6tPcrgGEn3b",
+                                    "drop_block_id":  "GON0deHa0ogLjcxYOI9cE0SxnGh",
+                                    "design_image_block_id":  "TqdRdg0p2oy914xfPZEcDM53nFh"
+                                },
+                     "design_art":  true,
+                     "texture_complete":  false,
+                     "code_complete":  false,
+                     "status":  "unchecked",
+                     "frame_count":  1,
+                     "mapping_confidence":  "assumed",
+                     "blockers":  [
+                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                  ],
+                     "deferred":  false,
+                     "deferred_reason":  ""
+                 },
+                 {
+                     "id":  "bio-death-jade-lake-large-algae-octopus",
+                     "phase":  4,
+                     "region":  "Death Jade Lake",
+                     "name_zh":  "大型覆藻章鱼",
+                     "name_en":  "Large Algae-Covered Octopus",
+                     "internal_name":  "",
+                     "repo_asset":  "",
+                     "feishu":  {
+                                    "heading_block_id":  "AKGxdQG2foyNqBxGXjOcomLVnBb",
+                                    "stats_table_block_id":  "Bp4GdMk1ropekoxCXP2cNYwqnLb",
+                                    "behavior_block_id":  "ZyROdHeOZoAGLsxHnTUcIK7unSb",
+                                    "drop_block_id":  "Hco0dB4t1oqGjbx1nXRczxm4nsg",
+                                    "design_image_block_id":  "GQcadbcPoofAMTx4gtwcCeyIngb"
+                                },
+                     "design_art":  true,
+                     "texture_complete":  false,
+                     "code_complete":  false,
+                     "status":  "unchecked",
+                     "frame_count":  1,
+                     "mapping_confidence":  "assumed",
+                     "blockers":  [
+                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                  ],
+                     "deferred":  false,
+                     "deferred_reason":  ""
+                 },
+                 {
+                     "id":  "bio-death-jade-lake-jade-anglerfish",
+                     "phase":  4,
+                     "region":  "Death Jade Lake",
+                     "name_zh":  "碧灵鮟鱇",
+                     "name_en":  "Jade Spirit Anglerfish",
+                     "internal_name":  "",
+                     "repo_asset":  "",
+                     "feishu":  {
+                                    "heading_block_id":  "RbODdEzlYo9XtHxQ6z7cmc5Wn2q",
+                                    "stats_table_block_id":  "GfdvdtB0MooyyFxY1ZmchFxinlb",
+                                    "behavior_block_id":  "E0aLdZ0tmoEvhTxQvJNcYFeEnxe",
+                                    "drop_block_id":  "GMYGdtpeZo4oHMx05TdcHK0WnGd",
+                                    "design_image_block_id":  ""
+                                },
+                     "design_art":  false,
+                     "texture_complete":  false,
+                     "code_complete":  false,
+                     "status":  "unchecked",
+                     "frame_count":  1,
+                     "mapping_confidence":  "assumed",
+                     "blockers":  [
+                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                  ],
+                     "deferred":  false,
+                     "deferred_reason":  ""
+                 },
+                 {
+                     "id":  "bio-death-jade-lake-vampire-mat",
+                     "phase":  7,
+                     "region":  "Death Jade Lake",
+                     "name_zh":  "吸血魔毯",
+                     "name_en":  "Vampire Mat",
+                     "internal_name":  "Everglow.Yggdrasil.KelpCurtain.NPCs.VampireMat.VampireMat",
+                     "repo_asset":  "",
+                     "feishu":  {
+                                    "heading_block_id":  "doxcnKY1A2Ft9fhOXnaJSN6HQPg",
+                                    "stats_table_block_id":  "",
+                                    "behavior_block_id":  "",
+                                    "drop_block_id":  "",
+                                    "design_image_block_id":  ""
+                                },
+                     "design_art":  false,
+                     "texture_complete":  false,
+                     "code_complete":  false,
+                     "status":  "unchecked",
+                     "frame_count":  1,
+                     "mapping_confidence":  "assumed",
+                     "blockers":  [
+                                      "artwork: no approved repository texture; Phase 7 (D-41)",
+                                      "behavior undefined in the design row (D-29 shell)"
+                                  ],
+                     "deferred":  false,
+                     "deferred_reason":  ""
+                 },
+                 {
+                     "id":  "bio-death-jade-lake-cannon-barnacle",
+                     "phase":  4,
+                     "region":  "Death Jade Lake",
+                     "name_zh":  "炮弹藤壶",
+                     "name_en":  "Cannon Barnacle",
+                     "internal_name":  "",
+                     "repo_asset":  "",
+                     "feishu":  {
+                                    "heading_block_id":  "K4q2dw6hUoGkRrxIn3OcIuVenEb",
+                                    "stats_table_block_id":  "",
+                                    "behavior_block_id":  "",
+                                    "drop_block_id":  "",
+                                    "design_image_block_id":  ""
+                                },
+                     "design_art":  false,
+                     "texture_complete":  false,
+                     "code_complete":  false,
+                     "status":  "unchecked",
+                     "frame_count":  1,
+                     "mapping_confidence":  "assumed",
+                     "blockers":  [
+                                      "artwork: no approved repository texture; Phase 4 (D-41)",
+                                      "behavior undefined in the design row (D-29 shell)"
+                                  ],
+                     "deferred":  false,
+                     "deferred_reason":  ""
+                 },
+                 {
+                     "id":  "bio-spiny-moss-court-withered-soldier",
+                     "phase":  4,
+                     "region":  "Spiny Moss Court",
+                     "name_zh":  "枯木活化士兵",
+                     "name_en":  "Animated Witherbark Soldier",
+                     "internal_name":  "",
+                     "repo_asset":  "",
+                     "feishu":  {
+                                    "heading_block_id":  "S4Jadlq0colTtbx8UagceDb7nCq",
+                                    "stats_table_block_id":  "NNe6dSQqxoxXllxT9PvcVmApn1c",
+                                    "behavior_block_id":  "BYhvdnXwrogK3Jx1z35cwgS7nhg",
+                                    "drop_block_id":  "",
+                                    "design_image_block_id":  ""
+                                },
+                     "design_art":  false,
+                     "texture_complete":  false,
+                     "code_complete":  false,
+                     "status":  "unchecked",
+                     "frame_count":  1,
+                     "mapping_confidence":  "assumed",
+                     "blockers":  [
+                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                  ],
+                     "deferred":  false,
+                     "deferred_reason":  ""
+                 },
+                 {
+                     "id":  "bio-spiny-moss-court-court-commander",
+                     "phase":  4,
+                     "region":  "Spiny Moss Court",
+                     "name_zh":  "王庭号令者",
+                     "name_en":  "Court Commander",
+                     "internal_name":  "",
+                     "repo_asset":  "",
+                     "feishu":  {
+                                    "heading_block_id":  "M0h6dc7myo8FQTxx1nQcYb2Xn4b",
+                                    "stats_table_block_id":  "YVgWdPMdToFnOTxZXKJcGgDqnDf",
+                                    "behavior_block_id":  "PQU5dPXNQo1pnyxAWWpchZ5wnkg",
+                                    "drop_block_id":  "OB6sdTaOPoUc70x3zeWcKrHzn2b",
+                                    "design_image_block_id":  ""
+                                },
+                     "design_art":  false,
+                     "texture_complete":  false,
+                     "code_complete":  false,
+                     "status":  "unchecked",
+                     "frame_count":  1,
+                     "mapping_confidence":  "assumed",
+                     "blockers":  [
+                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                  ],
+                     "deferred":  false,
+                     "deferred_reason":  ""
+                 },
+                 {
+                     "id":  "bio-spiny-moss-court-giant-tree-man",
+                     "phase":  3,
+                     "region":  "Spiny Moss Court",
+                     "name_zh":  "巨树人",
+                     "name_en":  "Giant Tree Man",
+                     "internal_name":  "",
+                     "repo_asset":  "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/GiantDandelion.png",
+                     "feishu":  {
+                                    "heading_block_id":  "Pm9jdOm1Zo9Tc4xy4lncGRtbnJh",
+                                    "stats_table_block_id":  "DLQGdWm3koGgwPxfI0qcU53gnec",
+                                    "behavior_block_id":  "Zm3ZdguPboviV1xCmcmcSIEznZd; Jmakdj0iIoqBkexBLoEcYHNUn1b",
+                                    "drop_block_id":  "P1G9d2RrZovO8yxfXNucPNPInBh",
+                                    "design_image_block_id":  ""
+                                },
+                     "design_art":  false,
+                     "texture_complete":  true,
+                     "code_complete":  false,
+                     "status":  "unchecked",
+                     "frame_count":  1,
+                     "mapping_confidence":  "assumed",
+                     "blockers":  [
+                                      "texture present in repository; runtime and localization verification outstanding (D-20/D-21)"
+                                  ],
+                     "deferred":  false,
+                     "deferred_reason":  ""
+                 },
+                 {
+                     "id":  "bio-spiny-moss-court-brodie-flydragon",
+                     "phase":  4,
+                     "region":  "Spiny Moss Court",
+                     "name_zh":  "布罗迪蝇蜓",
+                     "name_en":  "Brodie Flydragon",
+                     "internal_name":  "",
+                     "repo_asset":  "",
+                     "feishu":  {
+                                    "heading_block_id":  "BAQKdvFlvoy7wJxCglZcUWGCnOh",
+                                    "stats_table_block_id":  "V9zXdPuSdoQD7bxe6IVcdzqrncf",
+                                    "behavior_block_id":  "KLvadaAVTodoIWxPu5kcN4Spnsg",
+                                    "drop_block_id":  "",
+                                    "design_image_block_id":  ""
+                                },
+                     "design_art":  false,
+                     "texture_complete":  false,
+                     "code_complete":  false,
+                     "status":  "unchecked",
+                     "frame_count":  1,
+                     "mapping_confidence":  "assumed",
+                     "blockers":  [
+                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                  ],
+                     "deferred":  false,
+                     "deferred_reason":  ""
+                 },
+                 {
+                     "id":  "bio-valley-of-lush-and-moist-mossy-thorn-turtle",
+                     "phase":  3,
+                     "region":  "Valley of Lush and Moist",
+                     "name_zh":  "荆棘苔龟（Thorn Mossy Tortoise）",
+                     "name_en":  "Thorn Mossy Tortoise",
+                     "internal_name":  "Everglow.Yggdrasil.KelpCurtain.NPCs.MossyThornTurtle",
+                     "repo_asset":  "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/MossyThornTurtle.png",
+                     "feishu":  {
+                                    "heading_block_id":  "GMtsdqCSxo6IbWx0Vlhcdt8gnMS",
+                                    "stats_table_block_id":  "Cqvwdoc54o8vsWx3mIpcoKpinVg",
+                                    "behavior_block_id":  "JIEUdVr7woKnfix4CsMcRfV7nfb",
+                                    "drop_block_id":  "Nsu8daQXbotbppx9Zbfcw1PDnNf",
+                                    "design_image_block_id":  ""
+                                },
+                     "design_art":  false,
+                     "texture_complete":  true,
+                     "code_complete":  true,
+                     "status":  "unchecked",
+                     "frame_count":  1,
+                     "mapping_confidence":  "high",
+                     "blockers":  [
+                                      "texture present in repository; runtime and localization verification outstanding (D-20/D-21)"
+                                  ],
+                     "deferred":  false,
+                     "deferred_reason":  ""
+                 },
+                 {
+                     "id":  "bio-valley-of-lush-and-moist-red-needle-caterpillar",
+                     "phase":  4,
+                     "region":  "Valley of Lush and Moist",
+                     "name_zh":  "红针洋辣子",
+                     "name_en":  "Red-Needle Stinging Caterpillar",
+                     "internal_name":  "",
+                     "repo_asset":  "",
+                     "feishu":  {
+                                    "heading_block_id":  "XrNWdCklJoFPUyxEtANcQ9tWnNe",
+                                    "stats_table_block_id":  "MfTZdJcsbotYz8x6O46cRfw7nig",
+                                    "behavior_block_id":  "Ofr1dFMe4ot9tLxq6hicZfLxnzh",
+                                    "drop_block_id":  "G1ModIH6no6tFXxeuLCcZ8HYnGc",
+                                    "design_image_block_id":  ""
+                                },
+                     "design_art":  false,
+                     "texture_complete":  false,
+                     "code_complete":  false,
+                     "status":  "unchecked",
+                     "frame_count":  1,
+                     "mapping_confidence":  "assumed",
+                     "blockers":  [
+                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                  ],
+                     "deferred":  false,
+                     "deferred_reason":  ""
+                 },
+                 {
+                     "id":  "bio-valley-of-lush-and-moist-assassin-raspberry",
+                     "phase":  4,
+                     "region":  "Valley of Lush and Moist",
+                     "name_zh":  "阿萨辛覆盘子",
+                     "name_en":  "Assassin Raspberry",
+                     "internal_name":  "",
+                     "repo_asset":  "",
+                     "feishu":  {
+                                    "heading_block_id":  "TjICdnhRvowaSdxcAcXchNGDnco",
+                                    "stats_table_block_id":  "SRondaULJoifEhxIwfVcN2U2n0b",
+                                    "behavior_block_id":  "PqdMdnpwQomTTIxDt3PcdyGDnNd",
+                                    "drop_block_id":  "",
+                                    "design_image_block_id":  ""
+                                },
+                     "design_art":  false,
+                     "texture_complete":  false,
+                     "code_complete":  false,
+                     "status":  "unchecked",
+                     "frame_count":  1,
+                     "mapping_confidence":  "assumed",
+                     "blockers":  [
+                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                  ],
+                     "deferred":  false,
+                     "deferred_reason":  ""
+                 },
+                 {
+                     "id":  "bio-valley-of-lush-and-moist-serpent-moss",
+                     "phase":  4,
+                     "region":  "Valley of Lush and Moist",
+                     "name_zh":  "蛇行苔",
+                     "name_en":  "Serpent Moss",
+                     "internal_name":  "",
+                     "repo_asset":  "",
+                     "feishu":  {
+                                    "heading_block_id":  "C8fRdR6uhoYxOKxrWzDc8IHwnud",
+                                    "stats_table_block_id":  "YCXIdRl4wojdfQxY5vvc2Sb7nAi",
+                                    "behavior_block_id":  "RmwmdtUCwoMPI1xMVQrclFS4nuh",
+                                    "drop_block_id":  "",
+                                    "design_image_block_id":  ""
+                                },
+                     "design_art":  false,
+                     "texture_complete":  false,
+                     "code_complete":  false,
+                     "status":  "unchecked",
+                     "frame_count":  1,
+                     "mapping_confidence":  "assumed",
+                     "blockers":  [
+                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                  ],
+                     "deferred":  false,
+                     "deferred_reason":  ""
+                 },
+                 {
+                     "id":  "bio-valley-of-lush-and-moist-guppy-conch",
+                     "phase":  3,
+                     "region":  "Valley of Lush and Moist",
+                     "name_zh":  "格普螺",
+                     "name_en":  "Guppy Conch",
+                     "internal_name":  "",
+                     "repo_asset":  "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/GuppyConch.png",
+                     "feishu":  {
+                                    "heading_block_id":  "K2TldVE5woR5xQxjJA8cGswqnnd",
+                                    "stats_table_block_id":  "IZAjdqbGQoNuYzxnEJGcpTEEnQc",
+                                    "behavior_block_id":  "FsnSd54BHoDUP9xGftGceO7Ynmg",
+                                    "drop_block_id":  "IqEbdZxOKo0CoHxSqmgcen4anCg",
+                                    "design_image_block_id":  ""
+                                },
+                     "design_art":  false,
+                     "texture_complete":  true,
+                     "code_complete":  false,
+                     "status":  "unchecked",
+                     "frame_count":  1,
+                     "mapping_confidence":  "high",
+                     "blockers":  [
+                                      "texture present in repository; runtime and localization verification outstanding (D-20/D-21)"
+                                  ],
+                     "deferred":  false,
+                     "deferred_reason":  ""
+                 },
+                 {
+                     "id":  "bio-valley-of-lush-and-moist-small-guppy-conch",
+                     "phase":  4,
+                     "region":  "Valley of Lush and Moist",
+                     "name_zh":  "小格普螺",
+                     "name_en":  "Small Guppy Conch",
+                     "internal_name":  "",
+                     "repo_asset":  "",
+                     "feishu":  {
+                                    "heading_block_id":  "BY1nd7O1Xokz4dxb8Mlc2MrVnwd",
+                                    "stats_table_block_id":  "ULUhdYr1CoZphOxQWOOclvHOnYe",
+                                    "behavior_block_id":  "MGMFdA62foF8gix4hqYcHHIpnhb",
+                                    "drop_block_id":  "",
+                                    "design_image_block_id":  ""
+                                },
+                     "design_art":  false,
+                     "texture_complete":  false,
+                     "code_complete":  false,
+                     "status":  "unchecked",
+                     "frame_count":  1,
+                     "mapping_confidence":  "assumed",
+                     "blockers":  [
+                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                  ],
+                     "deferred":  false,
+                     "deferred_reason":  ""
+                 },
+                 {
+                     "id":  "bio-valley-of-lush-and-moist-large-mossy-thorn-turtle",
+                     "phase":  4,
+                     "region":  "Valley of Lush and Moist",
+                     "name_zh":  "大型荆棘苔龟",
+                     "name_en":  "Large Mossy Thorn Turtle",
+                     "internal_name":  "",
+                     "repo_asset":  "",
+                     "feishu":  {
+                                    "heading_block_id":  "doxcnzBmJS1yk7hq4csTiRt20ut",
+                                    "stats_table_block_id":  "BKIRdJd9ro9iHUxxFBhcScLunKQ",
+                                    "behavior_block_id":  "TyxWdwlaMoE4mhxYWfEcM9gtnUg",
+                                    "drop_block_id":  "",
+                                    "design_image_block_id":  ""
+                                },
+                     "design_art":  false,
+                     "texture_complete":  false,
+                     "code_complete":  false,
+                     "status":  "unchecked",
+                     "frame_count":  1,
+                     "mapping_confidence":  "assumed",
+                     "blockers":  [
+                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                  ],
+                     "deferred":  false,
+                     "deferred_reason":  ""
+                 },
+                 {
+                     "id":  "bio-out-of-phase-kelp-snake",
+                     "phase":  7,
+                     "region":  "out of phase",
+                     "name_zh":  "苍带帘蛇/克莱因蛇",
+                     "name_en":  "Kelp Snake / Klein Snake",
+                     "internal_name":  "",
+                     "repo_asset":  "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/AcroporaSnake.png",
+                     "feishu":  {
+                                    "heading_block_id":  "UkGgdgBa9oZQ3UxAKS9czGRFnmc",
+                                    "stats_table_block_id":  "QDEGdbuSoowE4xxZSnTc7s0inXc",
+                                    "behavior_block_id":  "TKixdliceo2ONBx9di7ckTlOnJb",
+                                    "drop_block_id":  "",
+                                    "design_image_block_id":  "LZtcdMnCQoP2rjxbwffcq7ionCe"
+                                },
+                     "design_art":  true,
+                     "texture_complete":  true,
+                     "code_complete":  false,
+                     "status":  "unchecked",
+                     "frame_count":  1,
+                     "mapping_confidence":  "assumed",
+                     "blockers":  [
+                                      "boss/special encounter: out of Phase 3 scope; Phase 7 (D-41/D-42)"
+                                  ],
+                     "deferred":  false,
+                     "deferred_reason":  ""
+                 },
+                 {
+                     "id":  "bio-out-of-phase-withered-seed",
+                     "phase":  4,
+                     "region":  "out of phase",
+                     "name_zh":  "枯萎之种",
+                     "name_en":  "Withered Seed",
+                     "internal_name":  "",
+                     "repo_asset":  "",
+                     "feishu":  {
+                                    "heading_block_id":  "Fgn7dqUXBoU4fQxXHDbceXtXnwg",
+                                    "stats_table_block_id":  "Jk4HdYhbEoanxxxT6Xdcd5WMnrf",
+                                    "behavior_block_id":  "",
+                                    "drop_block_id":  "",
+                                    "design_image_block_id":  ""
+                                },
+                     "design_art":  false,
+                     "texture_complete":  false,
+                     "code_complete":  false,
+                     "status":  "unchecked",
+                     "frame_count":  1,
+                     "mapping_confidence":  "assumed",
+                     "blockers":  [
+                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                  ],
+                     "deferred":  true,
+                     "deferred_reason":  "design moved to hardmode (暂时不用，挪到困难模式); not scheduled in Phase 3 or Phase 4"
+                 },
+                 {
+                     "id":  "bio-out-of-phase-withered-tree-guardian",
+                     "phase":  4,
+                     "region":  "out of phase",
+                     "name_zh":  "枯木人卫士",
+                     "name_en":  "Witherbark Guardian",
+                     "internal_name":  "",
+                     "repo_asset":  "",
+                     "feishu":  {
+                                    "heading_block_id":  "Fgn7dqUXBoU4fQxXHDbceXtXnwg",
+                                    "stats_table_block_id":  "Ui3cdWHtJoJ4jGxcyp6c67EPnPQ",
+                                    "behavior_block_id":  "ZKxDdK5phoqSsnxHlqLcpuGmnCh",
+                                    "drop_block_id":  "",
+                                    "design_image_block_id":  ""
+                                },
+                     "design_art":  false,
+                     "texture_complete":  false,
+                     "code_complete":  false,
+                     "status":  "unchecked",
+                     "frame_count":  1,
+                     "mapping_confidence":  "assumed",
+                     "blockers":  [
+                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                  ],
+                     "deferred":  true,
+                     "deferred_reason":  "design moved to hardmode (暂时不用，挪到困难模式); not scheduled in Phase 3 or Phase 4"
+                 },
+                 {
+                     "id":  "bio-out-of-phase-giant-winged-dragon",
+                     "phase":  7,
+                     "region":  "out of phase",
+                     "name_zh":  "巨翼龙",
+                     "name_en":  "Giant Winged Dragon",
+                     "internal_name":  "",
+                     "repo_asset":  "",
+                     "feishu":  {
+                                    "heading_block_id":  "CYrgdMl7co9q1Cxl9ADcBBuXnPf",
+                                    "stats_table_block_id":  "HkQadeOpzoDaX6xrC7NcGGxgnzd",
+                                    "behavior_block_id":  "G8RNdyBbwoQQMpxT4HBcTmdUnmf",
+                                    "drop_block_id":  "",
+                                    "design_image_block_id":  "YHHldVUcEo8DWOxxfCMcmpBDnXf; PZn1ddMJlok8qQxZtLic35d0nzg"
+                                },
+                     "design_art":  true,
+                     "texture_complete":  false,
+                     "code_complete":  false,
+                     "status":  "unchecked",
+                     "frame_count":  1,
+                     "mapping_confidence":  "assumed",
+                     "blockers":  [
+                                      "artwork: no approved repository texture; Phase 7 (D-41)"
+                                  ],
+                     "deferred":  false,
+                     "deferred_reason":  ""
+                 }
+             ],
+    "assumptions":  [
+                        "e",
+                        "e",
+                        "e",
+                        "e",
+                        "e",
+                        "e"
+                    ],
+    "deviations":  [
+                       "e",
+                       "e",
+                       "e",
+                       "e",
+                       "e",
+                       "e"
+                   ]
+}

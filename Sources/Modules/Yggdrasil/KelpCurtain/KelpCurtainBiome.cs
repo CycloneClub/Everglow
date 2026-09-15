@@ -47,6 +47,35 @@ public class KelpCurtainBiome : ModBiome
 		return false;
 	}
 
+	/// <summary>
+	/// The gameplay/server-safe counterpart of <see cref="IsBiomeActive"/>: it repeats the same
+	/// Kelp Curtain vertical band and the same stratum-bound test, but measures them from the synced
+	/// player centre instead of the client-only camera position, so it evaluates identically in single
+	/// player, on a client and on a dedicated server. Gameplay hooks (for example
+	/// <c>ModNPC.SpawnChance</c>, which runs in single player or on the server only) must use this
+	/// predicate; <see cref="IsBiomeActive"/> stays camera-driven because it also drives the
+	/// background and lighting scene transitions, which intentionally follow the camera.
+	/// When <see cref="StratumBoundCurve"/> is empty, <c>FindClosestStratumBoundPointX</c> returns -1,
+	/// which degrades the X test to permissive (it never blocks) on a side that has not run
+	/// <c>BuildBoundOf23Stratum</c>.
+	/// </summary>
+	/// <param name="player">The player whose synced centre is tested.</param>
+	/// <returns>True when the player is inside the Kelp Curtain layer of the Yggdrasil Subworld.</returns>
+	public static bool IsKelpCurtainLayer(Player player)
+	{
+		if (SubworldSystem.IsActive<YggdrasilWorld>())
+		{
+			if (player.Center.Y > Main.maxTilesY * 0.72f * 16 && player.Center.Y < Main.maxTilesY * 0.9f * 16)
+			{
+				if (player.Center.X >= FindClosestStratumBoundPointX(player.Center.Y / 16f) * 16)
+				{
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
 	public float FindClosestStratumBoundPointX(Player player)
 	{
 		if (StratumBoundCurve.Count > 0)
