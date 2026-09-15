@@ -28,6 +28,16 @@ public class GiantDandelion : ModNPC
 	private const float BoulderRangeTiles = 15f;
 
 	/// <summary>
+	/// The aggro radius, in tiles: the 巨树人 only leaves its no-aggro Idle wander once a live
+	/// player is inside this range, and the locomotion states fall back to Idle once the player
+	/// escapes it. The design row gives no radius (its 有仇恨 clause is the only mention), so a
+	/// conservative 30 tiles is used and recorded in 03-DEVIATIONS.md (D-34). It is wider than the
+	/// 15-tile chase threshold, so every designed range — the 5-tile smash, the 5-15 tile mid-range
+	/// and the beyond-15-tile faster chase — stays reachable.
+	/// </summary>
+	private const float AggroRangeTiles = 30f;
+
+	/// <summary>
 	/// The design's state-1 charge: slowly raising the arm and smashing the ground takes 120 ticks
 	/// in total (behaviour block Zm3ZdguPboviV1xCmcmcSIEznZd).
 	/// </summary>
@@ -247,6 +257,21 @@ public class GiantDandelion : ModNPC
 		if (StateTimer > 0)
 		{
 			StateTimer--;
+		}
+
+		// The design's state (0) is a no-aggro wander (行尸走肉般游荡在刺苔庭院的沼泽中) and its chase
+		// clause is explicitly 有仇恨 (has aggro), so the creature only hunts within the aggro radius.
+		// A committed smash or mid-range attack always completes, so the gate covers only the three
+		// locomotion states, which fall back to Idle once the player escapes the radius.
+		if ((State is GiantDandelionState.Idle or GiantDandelionState.Approach or GiantDandelionState.Chase)
+			&& distance > AggroRangeTiles * 16f)
+		{
+			if (State != GiantDandelionState.Idle)
+			{
+				EnterState(GiantDandelionState.Idle);
+			}
+
+			return;
 		}
 
 		switch (State)
