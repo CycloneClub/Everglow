@@ -129,7 +129,25 @@ Plans:
   3. Completed-art creature entries are individually compared to XML-full-fetch source records, with exact completion, partial/conflict, and blocked states visible for the later remaining-creature tranche.
 
 **Verification needs:** Completed-art biology matrix; client spawn/combat/capture checks; drop-source checks against Phases 1–2; dedicated-server context checks; `dotnet build`.
-**Plans:** TBD
+**Scope anchor (D-41/D-42, supersedes 03-RESEARCH):** "texture-complete" is **repository art**, not a design-row checkbox or inline design `<img>` (the snapshot contains no per-creature texture checkbox). The tranche is therefore the five creatures whose approved `.png` already exists under `Sources/Modules/Yggdrasil/KelpCurtain/NPCs/` — 荆棘苔龟, 格普螺, 叶飞棍, 巨树人, plus the already-implemented 水蛞蝓 (`RiverSlug`) — and `03-BIOLOGY.json` records all 31 creature rows for Phases 3–4. Repository-art creatures with no design artwork marker are included (D-42); the six design-art-only creatures fall to Phase 4. `AcroporaSnake.png` is boss art consumed by Phase 7.
+**Plans:** 4 plans
+Plans:
+
+**Wave 1**
+
+- [ ] 03-01-PLAN.md — Biology matrix tracer: repository-art tranche frozen in `03-BIOLOGY.json`/`.md` + `scripts/check-biology.ps1`, proven end-to-end on 荆棘苔龟 (BIO-01, BIO-02, BIO-03, BIO-06)
+
+**Wave 2** *(blocked on Wave 1 completion)*
+
+- [ ] 03-02-PLAN.md — 格普螺 (shell-up neutral snail + `GuppyShell` drop) and 叶飞棍 (neutral eight-frame flying rod, water suffocation, 50% poison) (BIO-01, BIO-03, BIO-06, QUAL-03)
+
+**Wave 3** *(blocked on Wave 2 completion)*
+
+- [ ] 03-03-PLAN.md — 巨树人: three-range giant tree enemy with smash shockwave, thrown boulder, post-smash vulnerability and its three Phase 1 drops (BIO-02, BIO-06, QUAL-03)
+
+**Wave 4** *(blocked on Wave 3 completion)*
+
+- [ ] 03-04-PLAN.md — Tranche close-out: reconciled matrix/ledger, full offline gate chain, Release build and the D-21 client UAT bundle (BIO-01…BIO-03, BIO-06, QUAL-03, QUAL-04)
 
 ### Phase 4: Remaining Ordinary Monsters
 
@@ -222,7 +240,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8. Th
 |-------|----------------|--------|-----------|
 | 1. Item Inventory & Completed-Art Items | 7/7 | Complete    | 2026-09-14 |
 | 2. Remaining Items & Unfinished-Art Materials | 5/5 | In Progress|  |
-| 3. Completed-Art Ordinary Monsters | 0/TBD | Not started | - |
+| 3. Completed-Art Ordinary Monsters | 0/4 | Not started | - |
 | 4. Remaining Ordinary Monsters | 0/TBD | Not started | - |
 | 5. Completed-Art Terrain & Structures | 0/TBD | Not started | - |
 | 6. Remaining Terrain, Generation & Integration | 0/TBD | Not started | - |
