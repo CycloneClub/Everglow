@@ -89,16 +89,24 @@ public class MossyThornTurtle : ModNPC
 	/// <summary>
 	/// Re-asserts the design row's defence and contact damage after both the vanilla AI and
 	/// <c>AI()</c> have run. The cloned vanilla AI escalates its spin damage to <c>defDamage * 2</c>
-	/// (100) and its spin defence to <c>defDefense * 2</c>, but the design row gives
-	/// 防御 10（正常）/20（旋转/缩壳） and 伤害 50（正常）/75（旋转）, so the spin values are expressed
-	/// as ratios of the <c>defDamage</c>/<c>defDefense</c> bases that <see cref="SetDefaults"/> pins.
+	/// (100) and re-asserts <c>defense = defDefense</c> through the retract window, but the design
+	/// row gives 防御 10（正常）/20（旋转/缩壳） and 伤害 50（正常）/75（旋转）, so the three states are
+	/// expressed as ratios of the <c>defDamage</c>/<c>defDefense</c> bases that
+	/// <see cref="SetDefaults"/> pins. The 缩壳 (<see cref="TortoiseState.Retracting"/>) state takes
+	/// the doubled defence but keeps the normal contact damage, because the design brackets
+	/// 旋转/缩壳 together in the 防御 cell while only 旋转 raises the 伤害 cell.
 	/// </summary>
 	public override void PostAI()
 	{
 		if (State == TortoiseState.Spinning)
 		{
-			NPC.damage = (int)(NPC.defDamage * 1.5f); // 75
-			NPC.defense = NPC.defDefense * 2; // 20
+			NPC.damage = (int)(NPC.defDamage * 1.5f); // 75（旋转）
+			NPC.defense = NPC.defDefense * 2; // 20（旋转）
+		}
+		else if (State == TortoiseState.Retracting)
+		{
+			NPC.damage = NPC.defDamage; // 50（缩壳时伤害保持正常值）
+			NPC.defense = NPC.defDefense * 2; // 20（缩壳）
 		}
 		else
 		{
