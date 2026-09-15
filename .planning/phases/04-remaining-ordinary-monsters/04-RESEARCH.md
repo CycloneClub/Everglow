@@ -609,7 +609,14 @@ Phase 3's gate invariants must stay green: the 5-id `phase3_tranche` set, the 6-
 | A8 | The 大型荆棘苔龟's `-12/-8/4` 击退抗性 cell is a difficulty progression whose normal-state value is the first (`-12`), per Phase 3's "slash-separated stats: first value" rule. | Creature Map | `knockBackResist` wrong; note a negative resistance value needs a sanity clamp. |
 | A9 | Water-surface spawning for 水黾 is satisfiable with `spawnInfo.Water` + a dry-tile-above test (there is no tML surface flag). | Pattern 4 | Spawn may occur slightly below the surface; needs client tuning. |
 
-## Open Questions
+## Open Questions (RESOLVED — 2026-09-15)
+
+> **All five resolved before planning; the resolutions are adopted by the plans.** Where a resolution differs from the recommendation below, the resolution wins.
+> - **OQ1 — `CaterpillarJuice`:** RESOLVED — wire it for 红针洋辣子; D-57's intent is "no absent type reference + no new item scope", which an existing implemented item satisfies. The gate's item index spans the whole `Sources/Modules/Yggdrasil` tree. Adopted in `04-07` (gate §6.1) and recorded in `04-DEVIATIONS.md`.
+> - **OQ2 — variants:** RESOLVED — separate classes for stat variants (base variant named in the row's `internal_name`); one class + `NPC.localAI[]` variant index for colour-only (幽光蝾螈). Adopted in `04-01`/`04-06`.
+> - **OQ3 — gate placement:** RESOLVED — new `.planning/phases/04-remaining-ordinary-monsters/scripts/check-biology.ps1` reading the shared `03-BIOLOGY.json`; the Phase 3 script stays byte-identical. Adopted in `04-01` §9.
+> - **OQ4 — projectiles:** RESOLVED — build the self-contained primary-attack projectiles; pure-VFX/system behaviours become effect blockers. Adopted in `04-01` §7/§8 and the wave plans. The built set is **eleven (11)** projectiles: the recommendation in question 4 below plus `ToxicToad_PoisonCloud` (剧毒蟾蜍's death cloud) and `BombJellyfish_Explosion` (爆弹水母's 30/50 death blast), both of which carry a creature's primary threat. That 11 is the frozen list in `04-01` §7 and in the gate's `$phaseProjectiles`, and it is the number the ROADMAP §Phase 4 scope anchor states (26 `ModNPC` classes + 11 projectiles = the 37 guarded classes of gate invariant 7).
+> - **OQ5 — 大型荆棘苔龟:** RESOLVED — implement the full four-state mini-boss machine (no state-3 blocker). Adopted in `04-08` (and `04-01` §8).
 
 1. **Is `CaterpillarJuice` (a pre-existing `YggdrasilTown` item) an allowed drop reference for 红针洋辣子?**
    - What we know: 红针洋辣子's design says *"掉落同树皮刺毛虫"*; `BarkSpicyCaterpillar.cs:288` drops `CaterpillarJuice` 100% ×1–2; `CaterpillarJuice` is implemented but is **not** in `01-INVENTORY.json` (it predates the Kelp Curtain item inventory).
