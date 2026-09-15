@@ -19,7 +19,7 @@ Phase 1 owns the source/inventory reconciliation record for the label discrepanc
 
 - [x] **Phase 1: Item Inventory & Completed-Art Items** - Reconcile source labels and inventory every item and biology-design drop, then implement entries with complete design textures. (reopened 2026-09-12 — 18-entry completed-art class-less carry-over; original tranche complete 2026-09-12) (completed 2026-09-14)
 - [ ] **Phase 2: Remaining Items & Unfinished-Art Materials** - Complete item entries without finished design textures, including unfinished-art drops/materials, using Phase 1 dependencies.
-- [ ] **Phase 3: Completed-Art Ordinary Monsters** - Implement ordinary creature behavior for entries whose design textures are complete; their drops are already item work.
+- [x] **Phase 3: Completed-Art Ordinary Monsters** - Implement ordinary creature behavior for entries whose design textures are complete; their drops are already item work. (completed 2026-09-15; client/runtime verification recorded as outstanding in `03-UAT.md` — D-21)
 - [ ] **Phase 4: Remaining Ordinary Monsters** - Implement ordinary creatures without complete design textures and their behavior after the completed-art tranche.
 - [ ] **Phase 5: Completed-Art Terrain & Structures** - Implement terrain and structures whose design textures are complete.
 - [ ] **Phase 6: Remaining Terrain, Generation & Integration** - Complete unfinished-art terrain and integrate generation, traversal, hazards, and progression systems.
@@ -130,7 +130,7 @@ Plans:
 
 **Verification needs:** Completed-art biology matrix; client spawn/combat/capture checks; drop-source checks against Phases 1–2; dedicated-server context checks; `dotnet build`.
 **Scope anchor (D-41/D-42, supersedes 03-RESEARCH):** "texture-complete" is **repository art**, not a design-row checkbox or inline design `<img>` (the snapshot contains no per-creature texture checkbox). The tranche is therefore the five creatures whose approved `.png` already exists under `Sources/Modules/Yggdrasil/KelpCurtain/NPCs/` — 荆棘苔龟, 格普螺, 叶飞棍, 巨树人, plus the already-implemented 水蛞蝓 (`RiverSlug`) — and `03-BIOLOGY.json` records all 31 creature rows for Phases 3–4. Repository-art creatures with no design artwork marker are included (D-42); the six design-art-only creatures fall to Phase 4. `AcroporaSnake.png` is boss art consumed by Phase 7.
-**Plans:** 3/4 plans executed
+**Plans:** 4/4 plans complete
 Plans:
 
 **Wave 1**
@@ -147,7 +147,7 @@ Plans:
 
 **Wave 4** *(blocked on Wave 3 completion)*
 
-- [ ] 03-04-PLAN.md — Tranche close-out: reconciled matrix/ledger, full offline gate chain, Release build and the D-21 client UAT bundle (BIO-01…BIO-03, BIO-06, QUAL-03, QUAL-04)
+- [x] 03-04-PLAN.md — Tranche close-out: reconciled matrix/ledger, full offline gate chain, Release build and the D-21 client UAT bundle (BIO-01…BIO-03, BIO-06, QUAL-03, QUAL-04)
 
 ### Phase 4: Remaining Ordinary Monsters
 
@@ -240,7 +240,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8. Th
 |-------|----------------|--------|-----------|
 | 1. Item Inventory & Completed-Art Items | 7/7 | Complete    | 2026-09-14 |
 | 2. Remaining Items & Unfinished-Art Materials | 5/5 | Complete    | 2026-09-14 |
-| 3. Completed-Art Ordinary Monsters | 3/4 | In Progress | - |
+| 3. Completed-Art Ordinary Monsters | 4/4 | Complete    | 2026-09-15 |
 | 4. Remaining Ordinary Monsters | 0/TBD | Not started | - |
 | 5. Completed-Art Terrain & Structures | 0/TBD | Not started | - |
 | 6. Remaining Terrain, Generation & Integration | 0/TBD | Not started | - |

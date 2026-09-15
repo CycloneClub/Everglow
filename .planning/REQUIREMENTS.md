@@ -119,6 +119,10 @@ Updated during roadmap creation. Each v1 requirement must map to exactly one pha
 - Mapped to phases: 30
 - Unmapped: 0 ✓
 
+**Phase 3 advance (2026-09-15).** Phase 3 implemented the **completed-art (repository-art) tranche** of BIO-01, BIO-02 and BIO-03 — the five creatures whose approved `.png` already exists under `Sources/Modules/Yggdrasil/KelpCurtain/NPCs/` (水蛞蝓, 荆棘苔龟, 格普螺, 叶飞棍, 巨树人; machine record `03-BIOLOGY.json`, tranche rule D-41/D-42). That is a strict subset of each requirement's scope: 2 of the 14 Death Jade Lake rows (BIO-01), 1 of the 4 Spiny Moss Court rows (BIO-02) and 2 of the 7 Valley of Lush and Moist rows (BIO-03); BIO-06, QUAL-03 and QUAL-04 are advanced only in their structural half (subworld-isolated spawn gates, dedicated-server guards and the per-row comparison record), with their runtime and Feishu-synchronization halves still outstanding (`03-UAT.md`, D-21).
+
+**No requirement's status changes here.** BIO-01/BIO-02/BIO-03 complete in Phase 4 and BIO-06/QUAL-03/QUAL-04 in Phase 8, exactly as the table above maps them, so every row stays `Pending`. ITEM-07 (localization) stays deferred by user directive (D-20): no exporter was run, no key was fabricated and no HJSON was edited. QUAL-05 remains complete — the phase's blockers, deviations and verification evidence are recorded in `03-BIOLOGY.json`/`.md`, `03-DEVIATIONS.md` and `03-UAT.md` without touching the Feishu design source (D-25).
+
 ---
 *Requirements defined: 2026-09-11*
-*Last updated: 2026-09-11 after roadmap priority revision*
+*Last updated: 2026-09-15 — Phase 3 completed-art tranche advance recorded; no requirement status changed*

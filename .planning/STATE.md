@@ -3,18 +3,18 @@ gsd_state_version: "1.0"
 milestone: v1.0
 current_phase: 03
 current_phase_name: Completed-Art Ordinary Monsters
-current_plan: 3
+current_plan: 4
 status: executing
-stopped_at: Completed 03-03-PLAN.md
-last_updated: "2026-09-15T08:31:00.000Z"
+stopped_at: Completed 03-04-PLAN.md
+last_updated: "2026-09-15T09:10:00.000Z"
 last_activity: 2026-09-15
-last_activity_desc: Phase 3 in progress — 03-03 complete (GiantDandelion + its two enemy projectiles implemented; wave-3 gate green at 5 / 5)
-state_head: 5ad16f4ce9e6667def4e22dd07371b3ba5dc522f
+last_activity_desc: Phase 3 plans complete — 03-04 close-out done (tranche reconciled at 5 / 5, consolidated ledger, full offline chain + Release build green, D-21 UAT bundle recorded)
+state_head: 3f942ca0fef9b9ade907c02710305c7c400781dd
 progress:
   total_phases: 8
   completed_phases: 2
   total_plans: 16
-  completed_plans: 15
+  completed_plans: 16
 milestone_name: milestone
 ---
 
@@ -29,20 +29,20 @@ See: `.planning/PROJECT.md` (updated 2026-09-12)
 
 ## Current Position
 
-Current Plan: 3
+Current Plan: 4
 Total Plans in Phase: 4
-Phase: 03 (Completed-Art Ordinary Monsters) — EXECUTING
-Plans complete: 3 of 4 (03-01, 03-02 and 03-03 done; 03-04 next)
-Status: Ready to execute
-Last activity: 2026-09-15 — 03-03 complete (巨树人 `GiantDandelion` three-range state machine with smash shockwave, thrown boulder and post-smash vulnerability window, plus its three guaranteed Phase 1 drops; wave-3 gate green at 5 / 5)
+Phase: 03 (Completed-Art Ordinary Monsters) — ALL PLANS EXECUTED, AWAITING VERIFICATION
+Plans complete: 4 of 4 (03-01, 03-02, 03-03 and 03-04 done; runtime verification outstanding per D-21)
+Status: Phase 3 plans complete — ready for /gsd-verify-work
+Last activity: 2026-09-15 — 03-04 complete (all five tranche rows reconciled at `code_complete` 5 / 5, one consolidated deviation ledger with a mechanically generated 14-row blocker register, the full offline chain + Release build green in a single run, and the D-21 client bundle recorded as 8 unexecuted checks in `03-UAT.md`)
 
-Progress: [█████████░] 94%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 14
+- Total plans completed: 16
 - Average duration: n/a
 - Total execution time: 0 hours
 
@@ -53,7 +53,7 @@ Progress: [█████████░] 94%
 | 1–8 | 0 | TBD | n/a |
 | 1 | 7 | 7 | ~17min |
 | 2 | 4 | 5 | 10min |
-| 3 | 3 | 4 | ~117min |
+| 3 | 4 | 4 | ~96min |
 
 **Recent Trend:** No execution data yet.
 **Per-Plan Metrics:**
@@ -75,6 +75,7 @@ Progress: [█████████░] 94%
 | Phase 03 P01 | 184min | 2 tasks | 6 files |
 | Phase 03 P02 | 157min | 3 tasks | 5 files |
 | Phase 03 P03 | 11min | 3 tasks | 6 files |
+| Phase 03 P04 | ~30min | 2 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -141,6 +142,12 @@ Progress: [█████████░] 94%
 - [Phase 03]: 巨树人's `ModifyNPCLoot` is the tranche's first real multi-item table (three guaranteed Phase 1-2 drops: `ArmOfGiantTree`, `HardenedWitherbarkHeart`, `BoulderCatapult`); the design's 4~6 枯木碎块 stays an absent-drop blocker with no type reference (D-37/D-39).
 - [Phase 03]: 巨树人的 sprite-derived extents are `214x263` (about 13x16 tiles), which is larger than any hit box in this repository; it is flagged in `03-DEVIATIONS.md` section 8 as the first thing to revisit if the creature never finds a spawn area, rather than silently shrinking the design's creature.
 - [Phase 03]: Plan 03-03 advances BIO-02/BIO-06/QUAL-03 but completes none of them; after it the wave-3 gate reports `implemented classes = 5 / 5`, and REQUIREMENTS.md is still left untouched until 03-04 closes the phase.
+- [Phase 03]: Plan 03-04 closed the phase: all five tranche rows read `code_complete: true` with a resolving `internal_name` and final blocker text (each ending with the canonical `localization deferred (D-20); runtime verification outstanding (D-21)` element), the frozen counts / `phase3_tranche` / `texture_complete` / `design_art` sets are unchanged, `03-BIOLOGY.md` mirrors the JSON on all 31 rows × 13 cells, and `check-biology.ps1 -RequireAll` prints `OK(0): phase3 tranche = 5 / 5 (rows=31)` and `OK: implemented classes = 5 / 5`.
+- [Phase 03]: The consolidated blocker register lives in `03-DEVIATIONS.md` **§10**, not §2 as 02-DEVIATIONS.md places it: renumbering §2–§9 would invalidate every section cross-reference carried by STATE.md, the three prior summaries and the plan texts, so the register is appended and a navigation line names the thirteen sections. It is generated mechanically from the JSON `blockers` arrays, so its **Exact blocker text** cells cannot drift from the matrix (T-03-25).
+- [Phase 03]: The matrix's `assumptions[]`/`deviations[]` machine copy shipped from the 03-01 tracer commit `421f2a09a` as six `"e"` placeholders; plan 03-04 repaired it (Rule 1) with one entry per ledger §1–§6 plus the phase's six recorded deviations. No gate invariant reads those fields, so only a close-out could catch the corruption (`WINDOWS.md` entry 23).
+- [Phase 03]: The close-out chain ran green in a single command and is recorded verbatim in `03-DEVIATIONS.md` §8.1/§8.2 — Release build (0 warnings, 0 errors, `Everglow.tmod` packaged), `check-biology.ps1 -RequireAll`, the five Phase 1 gates, `check-phase2.ps1`, `dotnet test --filter "FullyQualifiedName~Yggdrasil"` (3 passed, 0 failed) and the AGENTS.md byte-level BOM check (`UTF-8 BOM check passed (1375 files).`), `CHAIN_EXIT=0`; the `git merge-base HEAD origin/master` anchor is recorded as advisory and non-isolating with `check-biology.ps1` invariant 13 named as the binding phase-scoped gate.
+- [Phase 03]: `REQUIREMENTS.md` keeps BIO-01/BIO-02/BIO-03 (mapped to Phase 4) and BIO-06/QUAL-03/QUAL-04 (mapped to Phase 8) **Pending**: Phase 3 implemented the repository-art tranche only — 5 of the 25 designed ordinary creatures (2 of 14 Death Jade Lake, 1 of 4 Spiny Moss Court, 2 of 7 Valley rows) — so the file records a Phase 3 tranche-advance note instead of a completion it cannot support.
+- [Phase 03]: The D-21 client bundle is `.planning/phases/03-completed-art-ordinary-monsters/03-UAT.md` — 8 checks (per-row spawn, main-world isolation, behaviour, combat, drops, dedicated-server/multiplayer, localization fallback, consolidated end-of-phase run), every one marked not-executed with a header stating the bundle is recorded but not run, so the tranche is never presented as client-verified (T-03-23, `WINDOWS.md` entry 22).
 
 ### Pending Todos
 
@@ -163,6 +170,8 @@ None yet.
 - ✅ **[Phase 03 — resolved 2026-09-15 by plan 03-03]** No tranche row is left `code_complete:false`: the last one (`bio-spiny-moss-court-giant-tree-man`) was flipped together with its class in Task 3, and `scripts/check-biology.ps1` now prints `OK: implemented classes = 5 / 5`. The plan-03-01/03-02 rule that `internal_name` is populated only once its class exists held at every wave boundary, so no row was ever mis-recorded.
 - [Phase 03] Plan 03-02 implemented 格普螺 (`GuppyConch`) and 叶飞棍 (`VerdantRods`). Outstanding: runtime verification (D-21) for the shell retract feel and the 防御 10/20 + 0.85/0.70 减伤 switch, the crawl reversal at walls/ledges, the 11% 格普螺外壳 drop, the leaf rod's neutral circling without chasing, its 50% 中毒 and its submerged life drain with the escape flight (WINDOWS.md entries 17 and 18); the per-region spawn refinement for 叶飞棍 (亡碧湖 vs 森雨幽谷) once a regional predicate exists; and the same dedicated-server band check recorded for plan 03-01 (03-DEVIATIONS.md sections 4, 5, 6, 8).
 - [Phase 03] Plan 03-03 implemented 巨树人 (`GiantDandelion`) and its two hostile projectiles (`GiantDandelion_Shockwave`, `GiantDandelion_Boulder`). Outstanding: runtime verification (D-21) of the full state cycle — the visible ground wave, the 300-tick amplified-damage window, the mid-range wind-up/swing/arc and the beyond-15-tile chase; **approved art for both projectiles** (they use `Commons.ModAsset.White_Mod` today; creating art is forbidden, so the designer must supply a ground-wave sprite and a boulder sprite — `03-DEVIATIONS.md` section 9); the 214x263 spawn-area question and the floor-anchored wave hit box on uneven terrain (`03-DEVIATIONS.md` section 8); the per-region spawn refinement for 刺苔庭园 once a regional predicate exists; and the dedicated-server check that the two projectiles emit no dust and spawn once (WINDOWS.md entries for plan 03-03).
+- ✅ **[Phase 03 — tranche code-complete 2026-09-15 by plan 03-04]** All five repository-art rows are implemented (`implemented classes = 5 / 5`), the matrix and its mirror are reconciled cell-for-cell, and the phase's consolidated ledger, close-out counts and decision disposition are written. The phase's full offline chain is green in one run (Release build + `check-biology.ps1 -RequireAll` + five Phase 1 gates + `check-phase2.ps1` + the Yggdrasil MSTest link + the AGENTS.md BOM check) and recorded in `03-DEVIATIONS.md` §8.
+- [Phase 03] **Outstanding after close-out (all recorded, none hidden):** the D-21 client bundle in `03-UAT.md` (8 not-executed checks: per-row spawn, main-world isolation, behaviour, combat, drops, dedicated-server/multiplayer, localization fallback and the consolidated run — `WINDOWS.md` entry 22); approved art for the two 巨树人 attack projectiles (`WINDOWS.md` entry 21); the 森雨幽谷 / 刺苔庭园 regional spawn predicates (Phase 5–6); localization deferred by user directive (D-20); and the four absent drop materials 软体甲壳碎片 / 飞棍毛发 / 毒腺 / 枯木碎块 (D-37/D-43). Phase 3 changed no Feishu status: every matrix row stays `unchecked` until Phase 8's source synchronization (D-25).
 
 ### Quick Tasks Completed
 
@@ -179,6 +188,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-09-15T08:31:00Z
-Stopped at: Completed 03-03-PLAN.md
+Last session: 2026-09-15T09:10:00Z
+Stopped at: Completed 03-04-PLAN.md
 Resume file: None
