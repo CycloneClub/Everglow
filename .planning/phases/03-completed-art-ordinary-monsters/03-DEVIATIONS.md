@@ -1,0 +1,160 @@
+# Phase 3 Deviation Ledger — Completed-Art Ordinary Monsters
+
+Generated: 2026-09-15
+Opened by plan 03-01; extended by plans 03-02 and 03-03 and consolidated by plan 03-04.
+Machine source of truth: `03-BIOLOGY.json` (per-row `status`, `blockers`, `deferred`, `deferred_reason`, plus the `assumptions[]` and `deviations[]` arrays), mirrored by `03-BIOLOGY.md`.
+
+This is the deviation and blocker ledger for the Phase 3 repository-art ordinary-creature tranche (D-28 full implementations) and for the frozen Phase 3–4 biology matrix (D-24). It is the audit trail for D-25 (committed snapshot only), D-34 (conservative defaults), D-37/D-38/D-39 (a drop rule references only implemented items), D-41/D-42 (the tranche rule) and D-43 (the drop-availability correction). No field below was changed by editing the Feishu design source, no localization key was created or renamed, and no `.png` or other binary/art asset was created or modified.
+
+**Coverage claim.** This ledger covers all five Phase 3 tranche rows and every blocker they carry. A tranche row absent from §1, §5, §7 or §8 is a defect.
+
+## 1. Tranche rule (D-41/D-42, supersedes 03-RESEARCH)
+
+**D-41, verbatim:** "Texture-complete" — the Phase 3/4 split criterion — is **the repository already containing the creature's approved art** (a corresponding `.png` in the KelpCurtain creature asset tree), **not** a design-row checkbox or inline design `<img>`. Research proved `evidence/biology.xml` carries no per-creature texture checkbox (29 tables, 2 with name headers, both Giant Winged Dragon item tables; 22 `<checkbox>` total, 0 on creature rows) and that the only per-creature artwork marker is an inline `<img>` present for just 7 Death Jade Lake creatures.
+
+**D-42, verbatim:** Creatures that have repository art but **no** design artwork marker (e.g. 荆棘苔龟, 格普螺, 叶飞棍) are **in Phase 3**. The repository-art-vs-design-art discrepancy is recorded in `03-DEVIATIONS.md` for later designer confirmation, not treated as out-of-scope.
+
+`03-RESEARCH.md` §Summary Finding 1 and §Open Questions Q1 proposed a **different** rule — "texture-complete" = the creature's design section carries an inline `<img>` — which selected seven Death Jade Lake creatures and no 刺苔庭园 or 森雨幽谷 creature at all (A2 in the research Assumptions Log). CONTEXT D-41 supersedes it. The supersession reached the executor as a `CRITICAL_OVERRIDE` marker inside `03-01-PLAN.md`, not from the research document, so the research's recommendation is retained only as audit trail.
+
+The repository creature art, enumerated from the working tree with `Get-ChildItem -Recurse 'Sources/Modules/Yggdrasil/KelpCurtain/NPCs' -File -Filter '*.png'`, is six git-tracked, approved assets:
+
+| Repository asset | Size | Design row | Region | Phase 3? | Class |
+| --- | --- | --- | --- | --- | --- |
+| `NPCs/MossyThornTurtle.png` | 84x46 | 荆棘苔龟（Thorn Mossy Tortoise） | Valley of Lush and Moist | yes | `MossyThornTurtle` (plan 03-01) |
+| `NPCs/GuppyConch.png` | 114x58 | 格普螺 | Valley of Lush and Moist | yes | `GuppyConch` (plan 03-02) |
+| `NPCs/VerdantRods.png` | 54x432 | 叶飞棍 | Death Jade Lake (+ Valley) | yes | `VerdantRods` (plan 03-02) |
+| `NPCs/GiantDandelion.png` | 214x263 | 巨树人 | Spiny Moss Court | yes | `GiantDandelion` (plan 03-03) |
+| `NPCs/RiverSlug.png` + `RiverSlug.cs` | 36x104 | 水蛞蝓 | Death Jade Lake | yes — already implemented | `RiverSlug` |
+| `NPCs/AcroporaSnake.png` | 132x132 | 苍带帘蛇/克莱因蛇 (boss) | out of phase | no — Phase 7 | — |
+
+`RiverSlug.cs` is already-done evidence for 水蛭蝓: the matrix records `code_complete: true` for its row and no task re-implements it. The five `phase:3` rows are exactly `bio-valley-of-lush-and-moist-mossy-thorn-turtle`, `bio-death-jade-lake-verdant-rods`, `bio-spiny-moss-court-giant-tree-man`, `bio-death-jade-lake-river-slug` and `bio-valley-of-lush-and-moist-guppy-conch`. The one boss row that also has repository art is `bio-out-of-phase-kelp-snake` (`AcroporaSnake.png`, Phase 7).
+
+## 2. Repository-art vs design-art discrepancy (D-42)
+
+The design source's own artwork marker is an inline `<img>` inside the creature's section. It is recorded in the matrix as `design_art`, is derived mechanically from the ten enumerated `<img>` elements in nine sections, and is **independent** of `texture_complete`: the two flags disagree on this snapshot for several rows. `texture_complete` stays governed by D-41 (repository art).
+
+| Creature | Repository asset | Design inline `<img>`? | Matrix disposition |
+| --- | --- | --- | --- |
+| 荆棘苔龟 | `MossyThornTurtle.png` | no | `texture_complete: true`, `design_art: false` — Phase 3 (D-42) |
+| 格普螺 | `GuppyConch.png` | no | `texture_complete: true`, `design_art: false` — Phase 3 (D-42) |
+| 叶飞棍 | `VerdantRods.png` | no | `texture_complete: true`, `design_art: false` — Phase 3 (D-42) |
+| 巨树人 | `GiantDandelion.png` | no | `texture_complete: true`, `design_art: false` — Phase 3 (D-42) |
+| 水蛞蝓 | `RiverSlug.png` | yes (36x27) | `texture_complete: true`, `design_art: true` — Phase 3 |
+| 苍带帘蛇/克莱因蛇 (boss) | `AcroporaSnake.png` | yes | `texture_complete: true`, `design_art: true` — Phase 7 |
+
+Six further creatures carry an inline design `<img>` but **no** repository texture, so D-41 places them in Phase 4 (`design_art: true`, `texture_complete: false`, `phase: 4`): 水黾, 幽光蝾螈（美西螈）, 装甲虾, 帆鳍鳢, 覆藻章鱼 and 大型覆藻章鱼. A later designer confirmation may move them back into Phase 3.
+
+Two traps that would have corrupted this set are recorded so they are not re-introduced: (a) 吸血魔毯 (`bio-death-jade-lake-vampire-mat`) is a Phase 7 row carrying **no** inline design image and therefore `design_art: false`; (b) 水蛞蝓 (`bio-death-jade-lake-river-slug`) **is** one of the nine design-art rows — its 36x27 `<img>` is easy to miss because the row is already implemented, and an earlier six-name list wrongly omitted it.
+
+## 3. Mapping assumptions
+
+Every repository asset is mapped to a design row by name/description/geometry inference. None of these mappings is a design statement, so each is recorded for designer confirmation rather than treated as settled.
+
+| Repository asset | Design row | Evidence | Status |
+| --- | --- | --- | --- |
+| `MossyThornTurtle.png` (84x46) | 荆棘苔龟（Thorn Mossy Tortoise） | The design heading itself gives "Thorn Mossy Tortoise"; the sprite is a single mossy, spiked tortoise. | high confidence, still recorded |
+| `GuppyConch.png` (114x58) | 格普螺 | The design row describes a green-fleshed giant snail named after the warlock 格普; the asset basename is the only conch asset. | assumed |
+| `VerdantRods.png` (54x432) | 叶飞棍 | 432 / 54 = 8, so the asset is an eight-frame rod strip; the design row describes a green leaf-like flying rod ("飞棍", "有叶片状外观"). | assumed |
+| `GiantDandelion.png` (214x263) | 巨树人 | The sprite is a dead tree with a pale puff canopy on root legs; the design row describes a giant walking tree-man of 刺苔庭园. | assumed |
+| `RiverSlug.png` + `RiverSlug.cs` (36x104) | 水蛞蝓 | `RiverSlugItem.bait = 30` implements the design's 提供渔力; `NPCID.Sets.CountsAsCritter` and `catchItem` implement 可以被捕捉. | high confidence |
+| `AcroporaSnake.png` (132x132) | 苍带帘蛇/克莱因蛇 | The existing `KelpSnake`/`AcroporaSpear` asset family ties the `AcroporaSnake` basename to the boss. | assumed |
+
+**Naming rule.** A new creature class takes its class name and internal name from the existing repository asset basename (`MossyThornTurtle.png` -> `MossyThornTurtle`), which keeps tML's default texture resolution working with **no** `Texture` override, **no** handwritten asset path and **no** asset move. A region subfolder was deliberately not used: tML resolves an `ModNPC`'s default texture from its own namespace path, so a class in `NPCs/<Region>/` would request a missing texture and abort mod loading while the approved art sits in `NPCs/`. Creature internal names are compatibility-sensitive once committed (D-28), so they are chosen once and never renamed.
+
+**Class-name verification rule.** `03-BIOLOGY.json` populates a row's `internal_name` **only** once its class file exists on disk. `code_complete == true` therefore implies a non-empty `internal_name` whose `<short name>.cs` file resolves on disk, and `code_complete == false` implies an empty one. The three tranche rows that are still `code_complete: false` with an **empty** `internal_name` after plan 03-01 (`bio-death-jade-lake-verdant-rods`, `bio-valley-of-lush-and-moist-guppy-conch`, `bio-spiny-moss-court-giant-tree-man`) are the plan-frozen record of classes not yet created, not defects to be back-filled; plans 03-02 and 03-03 fill each one in the same task that creates its class. This is what makes the gate's class-resolution invariant jointly satisfiable with the matrix at every point where a plan asserts the gate green.
+
+**English names.** The snapshot carries no English name column; only 荆棘苔龟 has one in its heading. Every other row's `name_en` is an executor-supplied label recorded here as an assumption.
+
+## 4. Conservative defaults (D-34/D-38)
+
+Where the design is silent or gives a progression rather than one number, a conservative default is used and recorded here. The machine copy of this section is the JSON `assumptions[]` arrays (one entry per §1–§6 of this ledger).
+
+| Default | Value | Rows | Reason |
+| --- | --- | --- | --- |
+| Spawn weight | `1.5f` (band 1f–3f) | 荆棘苔龟 (plans 03-02/03-03 use their own 0.5f–2f band) | The design supplies no weight; the band is calibrated against `NPCSpawnManager`'s 0.1f slime weights (A5). |
+| Drop chance denominator | `20` = 5% | 荆棘苔龟 / 荆棘龟壳 | The design gives 5%; `ItemDropRule.Common` takes the denominator. |
+| Slash-separated stats | first value | 巨树人 `500/900/1300`, `70/140/180` | The slashes are the difficulty progression; the normal-state value is the first. |
+| Sprite-derived extents | `NPC.width` / `NPC.height` from the texture | all tranche rows | The design supplies no hitbox; the approved sprite is the only measurement available. |
+| `frame_count` | `1` for 荆棘苔龟 (84x46 is not an integer `textureHeight / textureWidth` multiple); `4` for `RiverSlug` (`Main.npcFrameCount = 4`) | 荆棘苔龟, RiverSlug | Derived from the tracked asset, not invented. |
+| 击退抗性 -> `NPC.knockBackResist` | `1 - percent / 100` | 荆棘苔龟 `0.3f` (70%) | The design's percentage is the resistance, so the reciprocal is the multiplier. |
+| `NPC.value` copper transpose | 1:1, **no** conversion: 荆棘苔龟 `2银50铜` -> `250`; 格普螺 `4银` -> `400`; 叶飞棍 `2银` -> `200`; 巨树人 `2金50银` -> `25000` | tranche | `钱币（铜）` is the copper-coin column and tML documents `NPC.value` as "how many copper coins the NPC will drop", so the design value transposes 1:1. A 100x reading (`25000` / `40000` / `20000` / `250000`) is **explicitly rejected**: it would make an ordinary creature drop more than this repository's bosses, which sit at 32000–81000, while ordinary creatures sit at 200–400. |
+| Rarity | `NPC.rarity = ItemRarityID.White` (= 0, the field's own default) | tranche | The design's trailing 稀有度 cell is **empty** for every row of this plan's table; 普通 is that row's 类型 cell, not a rarity value. 巨树人's headerless table instead leads with 稀有, whose `ItemRarityID.LightPurple` reading is recorded by plan 03-03. |
+| `IsKelpCurtainLayer` degradation | X test returns `-1` when `StratumBoundCurve` is empty | all spawn-gated rows | `FindClosestStratumBoundPointX(float)` returns `-1` for an empty curve, so `player.Center.X >= -1 * 16` is always true: the test degrades to **permissive**, never to blocking, on a side that has not run `BuildBoundOf23Stratum`. |
+| Vanilla tortoise state contract | `NPC.ai[0]` 0 walk / 1 retract / 3 spin / 4 recover | 荆棘苔龟 | Read back from the cloned `AI_039_Tortoise` behaviour installed by `CloneDefaults(NPCID.GiantTortoise)`; the spin branch sets `damage = defDamage * 2` and `defense = defDefense * 2`, which is why `PostAI` re-asserts the design's 75/20 after the vanilla AI. |
+| Melee-reflect locality (D-35 note) | applied once on the client doing the damage | 荆棘苔龟 | D-35 makes subworld behaviour server-authoritative, but tML does **not** invoke `OnHitByItem` on the server at all, so the reflect cannot be applied server-side without a custom `ModIns.PacketResolver` round-trip that this phase does not take. Applying it once on the damaging client under a `player.whoAmI != Main.myPlayer` guard and letting `Player.Hurt` perform its normal hurt sync is the narrowest correct implementation; the not-taken packet alternative is recorded for a later phase. The hook is deliberately **not** wrapped in `Main.netMode != NetmodeID.MultiplayerClient`, which would make it dead code in multiplayer. |
+| `aiStyle` choice | vanilla `CloneDefaults(NPCID.GiantTortoise)` | 荆棘苔龟 | No vanilla style provides a hit-triggered shell-retract state for 格普螺, so that row writes a local `AI()`; D-31 permits local `AI()` only where no vanilla style fits. |
+
+**Plan API-name corrections (Rule 1 — non-existent members).** Two member names written in `03-01-PLAN.md` do not exist in this tModLoader version and were corrected to the real members; both corrections are compile-verified:
+
+| Plan wrote | Actual tML member | Evidence |
+| --- | --- | --- |
+| `spawnInfo.player` | `NPCSpawnInfo.Player` (a public **field**; there is no lowercase `player` member) | The tModLoader XML documentation lists only `F:Terraria.ModLoader.NPCSpawnInfo.Player`, and the in-repo precedent `RiverSlug.cs` reads `spawnInfo.Player`. The plan itself permitted `spawnInfo.Player` as "the property form". |
+| `NPC.rare` | `NPC.rarity` (`F:Terraria.NPC.rarity`, the Lifeform Analyzer rarity; defaults to 0) | `Terraria.NPC` has no `rare` member. `NPC.rarity = ItemRarityID.White` is a no-op that records the design's empty 稀有度 cell. |
+
+## 5. Drop availability (D-43 nuance)
+
+`03-RESEARCH.md` §Finding 2 concluded that Phase 3's drops are **all absent**. That conclusion used the superseded design-art tranche. Under the repository-art tranche it is **false**: three of the five tranche rows have at least one implemented item to wire, and five Phase 1–2 item types are consumed by this phase.
+
+| Design drop | Repository item | Implementing phase | Tranche row(s) | Disposition |
+| --- | --- | --- | --- | --- |
+| 荆棘龟壳 | `ThornTurtleShell` | Phase 1 (`item-weapons.misc-thorn-turtle-shell`) | 荆棘苔龟 | **wired** — `ItemDropRule.Common(..., 20, 1, 1)` (5%) |
+| 格普螺外壳 | `GuppyShell` | Phase 1 (`item-weapons.misc-guppy-shell`) | 格普螺 | **wired** — `ItemDropRule.Common(..., 9, 1, 1)` (11%) |
+| 巨树之臂 | `ArmOfGiantTree` | Phase 1 (`item-weapons.misc-arm-of-giant-tree`) | 巨树人 | **wired** — guaranteed |
+| 硬化枯木心脏 | `HardenedWitherbarkHeart` | Phase 1 (`item-weapons.misc-hardened-witherbark-heart`) | 巨树人 | **wired** — guaranteed |
+| 巨石弹射装置 | `BoulderCatapult` | Phase 2 (`item-weapons.misc-巨石弹射装置`) | 巨树人 | **wired** — guaranteed (the item's own art remains incomplete) |
+| 软体甲壳碎片 | — | — | 格普螺 | **absent** — blocker, no rule written (D-39) |
+| 飞棍毛发 | — | — | 叶飞棍 | **absent** — blocker, no rule written |
+| 毒腺 | — | — | 叶飞棍 | **absent** — blocker, no rule written |
+| 枯木碎块 | — | — | 巨树人 | **absent** — blocker, no rule written |
+
+Per-row disposition of the five tranche rows:
+
+| Row | Drop table |
+| --- | --- |
+| 水蛞蝓 (`RiverSlug`) | The design names no drop for this row, so there is no table to write and no gap. |
+| 荆棘苔龟 (`MossyThornTurtle`) | One rule (荆棘龟壳, 5%); the design names no other drop. |
+| 格普螺 (`GuppyConch`) | One rule (格普螺外壳, 11%); 软体甲壳碎片 0–2 is absent and is a blocker — **partial**. |
+| 叶飞棍 (`VerdantRods`) | Both designed drops (飞棍毛发 33%, 毒腺 11%) are absent, so the table is deliberately **empty** and the row carries the blocker. |
+| 巨树人 (`GiantDandelion`) | Three guaranteed rules (巨树之臂, 硬化枯木心脏, 巨石弹射装置); 枯木碎块 4–6 is absent and is a blocker — **partial**. |
+
+Four distinct absent materials block the five tranche rows — 软体甲壳碎片, 飞棍毛发, 毒腺 and 枯木碎块 — and the Phase 4 creatures add 亡碧膏, 牛黄 and 干涸心脏. No item scope was promoted into this phase (D-37/D-43); the mod still builds and loads.
+
+## 6. Spawn-region gap
+
+No biome predicate exists for 森雨幽谷 (Valley of Lush and Moist) or 刺苔庭园 (Spiny Moss Court), so per-region spawn refinement is impossible today. Spawn gating therefore uses the **layer-level** predicate plus local conditions, and the per-region refinement is a blocker naming the missing regional biome classes (Phase 5–6 terrain work).
+
+The layer test is the new server-safe `KelpCurtainBiome.IsKelpCurtainLayer(Player)`, **not** `KelpCurtainBiome.IsBiomeActive`:
+
+- `ModNPC.SpawnChance` runs "in single player or on the server only" (tModLoader XML documentation), and `IsBiomeActive` measures its vertical band from `Main.screenPosition` — the client-only camera, which is zero on a dedicated server, so the band test would always fail there and the whole tranche could never spawn.
+- `IsKelpCurtainLayer` measures the same band (`player.Center.Y` inside `Main.maxTilesY * 0.72f * 16` … `Main.maxTilesY * 0.9f * 16`) and the same stratum-bound test (`player.Center.X >= FindClosestStratumBoundPointX(player.Center.Y / 16f) * 16`) from the synced player centre, so it evaluates identically in single player, on a client and on a dedicated server.
+- `FindClosestStratumBoundPointX(float)` returns `-1` when `StratumBoundCurve` is empty, which makes the X test permissive rather than blocking on a side that has not run `BuildBoundOf23Stratum`.
+- `IsBiomeActive` itself was left byte-for-byte unchanged: it drives background and lighting scene transitions, which intentionally follow the camera.
+- Every tranche `SpawnChance` also requires `SubworldSystem.IsActive<YggdrasilWorld>()`, because `NPCSpawnManager.EditSpawnPool` returns early outside the subworld and the per-creature gate is therefore the real isolation (BIO-06). The phase gate's invariant 7 fails any Phase 3 class that declares `SpawnChance` without both tokens.
+
+## 7. Localization (D-20)
+
+Localization remains **deferred by user directive** (D-20). The in-game `OutputLocalizationHjsonItem` exporter was not run, no HJSON file was created or hand-edited, and no localization key was fabricated for any Phase 3 row.
+
+| Row | Design name | Class file | Localization state |
+| --- | --- | --- | --- |
+| `bio-death-jade-lake-river-slug` | 水蛞蝓 | `Everglow.Yggdrasil.KelpCurtain.NPCs.RiverSlug` | deferred — pre-existing key untouched |
+| `bio-valley-of-lush-and-moist-mossy-thorn-turtle` | 荆棘苔龟 | `Everglow.Yggdrasil.KelpCurtain.NPCs.MossyThornTurtle` | deferred — no key, exporter not run |
+| `bio-valley-of-lush-and-moist-guppy-conch` | 格普螺 | `Everglow.Yggdrasil.KelpCurtain.NPCs.GuppyConch` | deferred — no key, exporter not run |
+| `bio-death-jade-lake-verdant-rods` | 叶飞棍 | `Everglow.Yggdrasil.KelpCurtain.NPCs.VerdantRods` | deferred — no key, exporter not run |
+| `bio-spiny-moss-court-giant-tree-man` | 巨树人 | `Everglow.Yggdrasil.KelpCurtain.NPCs.GiantDandelion` | deferred — no key, exporter not run |
+
+Every class still overrides `LocalizationCategory` with `LocalizationUtils.Categories.NPCs` as the convention requires, but no key is written into it. Because no Feishu row carries a per-creature texture checkbox and no row's artwork **and** code are both verified in the source document, every row keeps `status: "unchecked"` and no completion colour (PROJECT.md Design Status Synchronization rules 4–5).
+
+## 8. Runtime verification (D-21)
+
+Offline gates and `dotnet build /p:Configuration=Release /p:WarningLevel=0` cannot observe spawn isolation, AI feel, drop acquisition or dedicated-server behaviour. The following client checks are outstanding and are referred forward to plan 03-04's UAT bundle (`03-UAT.md`). Every entry is **not yet executed**; the tranche is therefore not presented as client-verified.
+
+| Row | Client check | Expected |
+| --- | --- | --- |
+| 荆棘苔龟 | Enable the mod, enter Yggdrasil, descend into the Kelp Curtain; then idle in an ordinary world for several minutes. | The tortoise walks, retracts and spins as a vanilla tortoise does; defence/damage switch with the spin (10/50 walking, 20/75 spinning); a melee swing during the spin is reflected; it never appears in the ordinary world. |
+| 格普螺 | Find one in the Kelp Curtain, hit it once, then walk into it. | It crawls slowly, never turns to attack, deals contact damage, retracts for about two seconds after a hit, and takes noticeably less damage while retracted. |
+| 叶飞棍 | Meet one, let it touch the player repeatedly, then drive it into deep water. | It drifts in a wobbling path, circles without chasing, sometimes inflicts 中毒 on contact, loses health while submerged and flies back out. |
+| 巨树人 | Meet one in the Spiny Moss Court area and fight it through a full state cycle. | A ground shockwave travels away from its feet; a boulder arcs toward the player; the post-smash window clears its defence. |
+| 水蛞蝓 | Spawn and capture one, then use it as bait. | It crawls and sinks as before, is capturable, and provides fishing power. |
+
+Also outstanding: a dedicated-server launch confirming the tranche spawns and fights there without client-only code crashing; a normal-world idle run confirming BIO-06 isolation for all five rows; and confirmation that the tML log shows no missing-resource or disabled-mod entry for the new classes (their textures resolve from the tracked assets beside them).
