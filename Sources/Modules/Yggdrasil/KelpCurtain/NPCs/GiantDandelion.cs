@@ -281,7 +281,7 @@ public class GiantDandelion : ModNPC
 			case GiantDandelionState.BoulderThrow:
 				if (StateTimer <= 0)
 				{
-					ThrowBoulder(target);
+					ThrowBoulder(target, armMidRangeCooldown: true);
 					EnterState(GiantDandelionState.BoulderRecover);
 				}
 				break;
@@ -401,7 +401,7 @@ public class GiantDandelion : ModNPC
 	/// </summary>
 	private void ExitSmashRecovery(Player target, float distance)
 	{
-		ThrowBoulder(target);
+		ThrowBoulder(target, armMidRangeCooldown: false);
 
 		if (distance <= SmashRangeTiles * 16f)
 		{
@@ -416,12 +416,22 @@ public class GiantDandelion : ModNPC
 
 	/// <summary>
 	/// The design's throw, used both by the mid-range swing and by the post-recovery yank: a
-	/// boulder is flung toward the current target, and the 240-tick mid-range gap is (re)armed so
-	/// two attacks of that state cannot land closer together than the design allows.
+	/// boulder is flung toward the current target. The 240-tick gap applies only to the two attacks
+	/// of the mid-range state (这个状态下两段攻击间隔不低于240帧), so the cooldown is armed only when
+	/// <paramref name="armMidRangeCooldown"/> is set by the mid-range path; the post-smash yank is a
+	/// different attack and must not suppress the next mid-range boulder.
 	/// </summary>
-	private void ThrowBoulder(Player target)
+	/// <param name="target">The player to fling the boulder toward.</param>
+	/// <param name="armMidRangeCooldown">
+	/// True only from the mid-range <see cref="GiantDandelionState.BoulderThrow"/> path; the
+	/// post-recovery yank passes false.
+	/// </param>
+	private void ThrowBoulder(Player target, bool armMidRangeCooldown)
 	{
-		MidRangeAttackCooldown = MidRangeAttackGapTicks;
+		if (armMidRangeCooldown)
+		{
+			MidRangeAttackCooldown = MidRangeAttackGapTicks;
+		}
 
 		if (Main.netMode != NetmodeID.MultiplayerClient && target is not null)
 		{
