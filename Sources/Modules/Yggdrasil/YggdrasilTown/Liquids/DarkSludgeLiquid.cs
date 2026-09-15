@@ -2,6 +2,7 @@ using Everglow.Yggdrasil.YggdrasilTown.Tiles;
 using ModLiquidLib.ModLoader;
 using ModLiquidLib.Utils.Structs;
 using Terraria.DataStructures;
+using Terraria.GameContent.Liquid;
 using Terraria.Graphics.Light;
 using Terraria.Localization;
 
@@ -76,5 +77,17 @@ public class DarkSludgeLiquid : ModLiquid
 	public override bool OnItemSplash(Item item, bool isEnter)
 	{
 		return true;
+	}
+
+	public override void PostDraw(int i, int j, LiquidRenderer.LiquidDrawCache liquidDrawCache, Vector2 drawOffset, bool isBackgroundDraw)
+	{
+		Vector2 zero = new Vector2(Main.offScreenRange);
+		if (Main.drawToScreen)
+		{
+			zero = Vector2.zeroVector;
+		}
+		var destRect = new Rectangle((int)(i * 16 - Main.screenPosition.X + zero.X), (int)(j * 16 - Main.screenPosition.Y + zero.Y), 16, 16);
+		Main.spriteBatch.Draw(ModContent.Request<Texture2D>(Texture).Value, destRect,liquidDrawCache.SourceRectangle, Color.Black);
+		base.PostDraw(i, j, liquidDrawCache, drawOffset, isBackgroundDraw);
 	}
 }

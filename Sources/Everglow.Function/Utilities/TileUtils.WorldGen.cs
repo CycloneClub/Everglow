@@ -1076,7 +1076,7 @@ public partial class TileUtils
 			}
 			else if (type == -1)
 			{
-				tile.HasTile = false;
+				tile.WallType = WallID.None;
 			}
 			else if (type == -2)
 			{
