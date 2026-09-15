@@ -651,7 +651,9 @@ Gate invariants `check-biology.ps1` should assert (D-27):
 | A8 | The matrix ids use ASCII region/name slugs plus a Chinese `name_zh`, keeping `check-biology.ps1` free of CJK literals. | Design → Matrix Schema | Gate becomes non-ASCII and mis-parses on PS 5.1. |
 | A9 | `03-BIOLOGY.json` will also carry the Phase-4 (non-artwork) rows so Phase 4 consumes one artifact; the gate then checks the Phase 3 subset exactly. | Design → Matrix Schema | If the matrix is Phase 3-only, Phase 4 must extend the schema (D-24 warns this is costly). |
 
-## Open Questions
+## Open Questions (RESOLVED — 2026-09-15)
+
+> **All five resolved before planning.** Q1 → D-41 (tranche rule = repository art, NOT the inline design `<img>` recommended below). Q2 → D-43 (empty/partial loot tables + precise blockers; no item scope added). Q3 → D-41/D-42 (repo-art creatures are Phase 3). Q4 → D-29 (empty sections → undefined-behavior shells/blockers; 吸血魔毯 = the implemented `VampireMat`). Q5 → D-30/D-39 (capture items are item scope → blockers, no new `ModItem`s). The recommendations below are retained for the audit trail only; where they conflict with the resolving decision, the decision wins.
 
 1. **Which rule defines "texture-complete" now that no creature checkbox exists? (BLOCKING — checkpoint before freezing the matrix.)**
    - What we know: the snapshot has 0 creature texture/code checkboxes; 7 creatures have inline design art; D-26 forbids using repository `.png` presence.
