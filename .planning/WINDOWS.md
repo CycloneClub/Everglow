@@ -1,10 +1,10 @@
 ---
 schema_version: 1
-open_count: 14
+open_count: 15
 waived_count: 0
 fixed_count: 0
-total_count: 14
-last_updated: 2026-09-14T11:21:22.699Z
+total_count: 15
+last_updated: 2026-09-15T05:21:05.134Z
 ---
 
 # Broken Windows Ledger
@@ -29,6 +29,7 @@ last_updated: 2026-09-14T11:21:22.699Z
 | 12 | 02 | unrun-verify | .planning/phases/02-remaining-items-unfinished-art-materials/02-04-PLAN.md |  | Runtime human-check (D-21): in a tModLoader client spawn all six 02-04 shells and confirm each appears with a white-box icon, the mod loads with no missing-resource error, and none grants a stat or effect. | open |  | 2026-09-14T10:55:25.450Z |  |
 | 13 | 02 | unrun-verify | .planning/phases/02-remaining-items-unfinished-art-materials/02-01-PLAN.md |  | Plan 02-01 runtime human-checks (D-21) not run offline: verify in a tModLoader client that CrimsonMoonAlgaeHeaddress equips into the head slot with a white-box icon and defense 8, and that the full four-piece set (crafted at a Work Bench) produces the faster wet swim/run and the ~15% self-heal on a >=10-damage hit. | open |  | 2026-09-14T11:21:21.999Z |  |
 | 14 | 02 | unrun-verify | .planning/phases/02-remaining-items-unfinished-art-materials/02-05-PLAN.md |  | Plan 02-05 end-of-phase UAT bundle (D-21) not run offline: one tModLoader client session working the consolidated runtime-verification bundle from plans 02-01..02-04 (armor equip/set, BoulderCatapult arc/shards, TendonGreatbow boss +10%, shell loads with no missing-resource error). | open |  | 2026-09-14T11:21:22.699Z |  |
+| 15 | 03 | unrun-verify | .planning/phases/03-completed-art-ordinary-monsters/03-01-PLAN.md |  | Plan 03-01 Task 1 runtime human-check (D-21) not run offline: in a tModLoader client the mossy thorn tortoise must spawn walking in the Kelp Curtain, retract and spin as a vanilla tortoise, show the design spin-state defence/damage switch (10/50 walking, 20/75 spinning), reflect a melee hit taken during the spin, and never appear in an ordinary world (BIO-06). | open |  | 2026-09-15T05:21:05.134Z |  |
 
 ````json
 [
@@ -198,6 +199,18 @@ last_updated: 2026-09-14T11:21:22.699Z
     "status": "open",
     "reason": "",
     "recorded_at": "2026-09-14T11:21:22.699Z",
+    "resolved_at": null
+  },
+  {
+    "id": 15,
+    "kind": "unrun-verify",
+    "phase": "03",
+    "file": ".planning/phases/03-completed-art-ordinary-monsters/03-01-PLAN.md",
+    "line": null,
+    "description": "Plan 03-01 Task 1 runtime human-check (D-21) not run offline: in a tModLoader client the mossy thorn tortoise must spawn walking in the Kelp Curtain, retract and spin as a vanilla tortoise, show the design spin-state defence/damage switch (10/50 walking, 20/75 spinning), reflect a melee hit taken during the spin, and never appear in an ordinary world (BIO-06).",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-15T05:21:05.134Z",
     "resolved_at": null
   }
 ]

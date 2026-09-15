@@ -135,7 +135,7 @@ Plans:
 
 **Wave 1**
 
-- [ ] 03-01-PLAN.md — Biology matrix tracer: repository-art tranche frozen in `03-BIOLOGY.json`/`.md` + `scripts/check-biology.ps1`, proven end-to-end on 荆棘苔龟 (BIO-01, BIO-02, BIO-03, BIO-06)
+- [x] 03-01-PLAN.md — Biology matrix tracer: repository-art tranche frozen in `03-BIOLOGY.json`/`.md` + `scripts/check-biology.ps1`, proven end-to-end on 荆棘苔龟 (BIO-01, BIO-02, BIO-03, BIO-06)
 
 **Wave 2** *(blocked on Wave 1 completion)*
 
@@ -239,8 +239,8 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8. Th
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Item Inventory & Completed-Art Items | 7/7 | Complete    | 2026-09-14 |
-| 2. Remaining Items & Unfinished-Art Materials | 5/5 | In Progress|  |
-| 3. Completed-Art Ordinary Monsters | 0/4 | Not started | - |
+| 2. Remaining Items & Unfinished-Art Materials | 5/5 | Complete    | 2026-09-14 |
+| 3. Completed-Art Ordinary Monsters | 1/4 | In Progress | - |
 | 4. Remaining Ordinary Monsters | 0/TBD | Not started | - |
 | 5. Completed-Art Terrain & Structures | 0/TBD | Not started | - |
 | 6. Remaining Terrain, Generation & Integration | 0/TBD | Not started | - |

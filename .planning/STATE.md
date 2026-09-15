@@ -2,20 +2,20 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_phase: 02
-current_phase_name: Remaining Items & Unfinished-Art Materials
-current_plan: 5
+current_phase: 03
+current_phase_name: Completed-Art Ordinary Monsters
+current_plan: 1
 status: executing
-stopped_at: Phase 3 context gathered
-last_updated: "2026-09-15T04:31:25.903Z"
-last_activity: 2026-09-14
-last_activity_desc: Phase 2 in progress — 02-04 complete (four system-dependent shells + last two art-pending shells; item coverage closed at 21/21)
+stopped_at: Completed 03-01-PLAN.md
+last_updated: "2026-09-15T05:20:00.000Z"
+last_activity: 2026-09-15
+last_activity_desc: Phase 3 in progress — 03-01 complete (biology matrix tracer + MossyThornTurtle end-to-end; wave-1 gate green)
 progress:
-  total_phases: 3
+  total_phases: 8
   completed_phases: 2
   total_plans: 16
-  completed_plans: 12
-state_head: d5592c26244c5c282cafc9c01c704182f70ade47
+  completed_plans: 13
+state_head: f7dfa1ac060d1bdb0df1d96aff0353323a35f99d
 ---
 
 # Project State
@@ -25,24 +25,24 @@ state_head: d5592c26244c5c282cafc9c01c704182f70ade47
 See: `.planning/PROJECT.md` (updated 2026-09-12)
 
 **Core value:** Deliver a complete, publishable Kelp Curtain layer whose designed regions, gameplay loop, creatures, terrain, items, bosses, encounters, and rewards work together as a coherent Terraria experience.
-**Current focus:** Phase 02 — Remaining Items & Unfinished-Art Materials
+**Current focus:** Phase 03 — Completed-Art Ordinary Monsters
 
 ## Current Position
 
-Current Plan: 5
+Current Plan: 1
 Total Plans in Phase: 4
-Phase: 02 (Remaining Items & Unfinished-Art Materials) — EXECUTING
-Plans complete: 4 of 5 (02-01, 02-02, 02-03, 02-04 done; 02-05 next)
+Phase: 03 (Completed-Art Ordinary Monsters) — EXECUTING
+Plans complete: 1 of 4 (03-01 done; 03-02 next)
 Status: Ready to execute
-Last activity: 2026-09-14 — 02-04 complete (system-dependent shells; gate closed at 21/21)
+Last activity: 2026-09-15 — 03-01 complete (biology matrix tracer + MossyThornTurtle end-to-end; wave-1 gate green)
 
-Progress: [█████████░] 83%
+Progress: [████████░░] 81%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 11
+- Total plans completed: 13
 - Average duration: n/a
 - Total execution time: 0 hours
 
@@ -51,8 +51,9 @@ Progress: [█████████░] 83%
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 1–8 | 0 | TBD | n/a |
-| 1 | 7 | - | - |
+| 1 | 7 | 7 | ~17min |
 | 2 | 4 | 5 | 10min |
+| 3 | 1 | 4 | 184min |
 
 **Recent Trend:** No execution data yet.
 **Per-Plan Metrics:**
@@ -71,6 +72,7 @@ Progress: [█████████░] 83%
 | Phase 02 P03 | 7min | 3 tasks | 11 files |
 | Phase 02 P04 | 8min | 3 tasks | 10 files |
 | Phase 02 P05 | 10min | 3 tasks | 5 files |
+| Phase 03 P01 | 184min | 2 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -118,6 +120,14 @@ Progress: [█████████░] 83%
 - [Phase 02]: [Phase 02] The four system-dependent shells name the missing 弟子/skill/regional-crafting systems exactly and none of those systems is implemented (D-19); RegionalCraftingStation stays a plain ModItem because a tile without its system would be half-built; 02-CLASSIFICATION.json's SkillBambooSlip and DiscipleVanity class_file paths were corrected to Items/Misc (DD-11/DD-12).
 - [Phase 02]: Re-anchored the Phase 2 BOM/no-art guard from the plan-named 926543d99 to the merge commit 43478f8ef because the branch merge pulled a parallel developer art commit (a1975d1bf, 10 .pngs) into 926543d99..HEAD; the re-anchored 41-file change set reports 0 BOM and 0 art/binary (Phase 1 01-07 precedent)
 - [Phase 02]: Generated the consolidated 44-row blocker table mechanically from 01-INVENTORY.json so the ledger, JSON and Markdown blocker text is byte-identical; added 21 Phase 2 localization-deferral records to deviations[] and a phase2_closeout counts block
+- [Phase 03]: The Phase 3/4 tranche is repository art (D-41/D-42), superseding 03-RESEARCH Finding 1 / Open Question 1 (inline design <img>); the five tranche rows are 荆棘苔龟, 格普螺, 叶飞棍, 巨树人 and the already-implemented 水蛞蝓, and the matrix carries 31 rows with counts rows 31 / phase3 5 / phase4 23 / phase7 3 / deferred 2 / texture_complete_true 6 / design_art_true 9.
+- [Phase 03]: design_art is derived mechanically from the ten enumerated inline <img> elements in nine design sections and is independent of texture_complete; 水蛞蝓's 36x27 image is included and 吸血魔毯 (a Phase 7 row with no inline image) is not.
+- [Phase 03]: internal_name is populated only once its class file exists on disk, so a code_complete:false tranche row carries an empty internal_name and plans 03-02/03-03 fill each in the same task that creates its class; that is what keeps the gate's class-resolution biconditional green at every wave boundary.
+- [Phase 03]: scripts/check-biology.ps1 is the 100% ASCII phase gate (13 invariants) resolving classes from the working tree with Get-ChildItem; it ran red before MossyThornTurtle.cs existed and green after, and its invariant 13 is the phase-scoped UTF-8 BOM guard.
+- [Phase 03]: KelpCurtainBiome.IsKelpCurtainLayer(Player) is the shared server-safe layer predicate (band + stratum test from player.Center); IsBiomeActive is left byte-for-byte unchanged because it drives camera-following scene transitions.
+- [Phase 03]: The 荆棘苔龟 melee reflect runs once on the client doing the damage under a player.whoAmI != Main.myPlayer guard because tML never invokes OnHitByItem on the server; the ModIns.PacketResolver alternative is recorded as not taken.
+- [Phase 03]: Two plan-named API members do not exist and were corrected (Rule 1): spawnInfo.player -> NPCSpawnInfo.Player, and NPC.rare -> NPC.rarity (a no-op recording the design's empty 稀有度 cell).
+- [Phase 03]: BIO-01/BIO-02/BIO-03/BIO-06 are advanced by plan 03-01 but complete in none of it; REQUIREMENTS.md is left untouched and the traceability rows stay Pending until 03-04 closes the phase.
 
 ### Pending Todos
 
@@ -136,6 +146,8 @@ None yet.
 - [Phase 02] The four biology-design weapon rows (巨石弹射装置, 肌腱巨弓, 限制机, 腥臭的诱饵) are code-complete / art-incomplete. Outstanding blockers: approved textures (all four); the TendonGreatbow charge curve; the absent Phase 7 dependencies (限制无人机/聚能射线/浊燃 system, 巨翼龙 encounter, and the 血云母/血肉聚合物/熔炉钢/隐生之眼/干枯心脏/玉化龙骨 ingredients). Runtime verification (D-21) of both weapon chains is outstanding.
 - [Phase 02] The plan-02-03 rows (灵蛇玉卵, 竹节步符, 竹制武器, 竹簪子, 桃枝护符, 桃花纸鸢（风筝）, 熊猫宠物) are code-complete / art-incomplete. Outstanding blockers: approved textures (all seven); the 苍翠灵蛇 Phase 7 encounter and its 在森雨幽谷顶部使用 location gate for 灵蛇玉卵; runtime verification (D-21) of the seven entries. Phase gate advanced to 15/21.
 - [Phase 02] The plan-02-04 rows (若干酒类, 荧光水螅召唤杖, 弟子剑, 弟子时装, 技能竹简, 区域放置物品制作台) are code-complete / art-incomplete. Outstanding blockers: approved textures (all six); the 弟子 (disciple) progression system for 弟子剑/弟子时装; the skill system for 技能竹简; the regional-crafting system plus its placement tile for 区域放置物品制作台; the absent 荧光水螅 summon projectile for 荧光水螅召唤杖. No system was implemented (D-19). Item coverage is closed at 21/21; runtime verification (D-21) of the six shells is outstanding (WINDOWS.md entry 12).
+- [Phase 03] Plan 03-01 froze the repository-art tranche and implemented 荆棘苔龟 (`MossyThornTurtle`) end-to-end. Outstanding: runtime verification (D-21) for spawn isolation, the spin-state defence/damage switch, the melee reflect and the 5% 荆棘龟壳 drop; a dedicated-server run confirming `KelpCurtainBiome.IsKelpCurtainLayer` evaluates the same band as the camera-driven `IsBiomeActive`; designer confirmation of the five asset-to-creature mappings and of the six design-art-only creatures that D-41 sends to Phase 4; and a per-region spawn refinement once 刺苔庭园/森雨幽谷 biome predicates exist (03-DEVIATIONS.md sections 2, 3, 6, 8).
+- [Phase 03] The three tranche rows still `code_complete:false` with an empty `internal_name` (`bio-death-jade-lake-verdant-rods`, `bio-valley-of-lush-and-moist-guppy-conch`, `bio-spiny-moss-court-giant-tree-man`) are the plan-frozen record of classes not yet created, not back-fill defects; plans 03-02/03-03 fill each one together with its class.
 
 ### Quick Tasks Completed
 
@@ -152,6 +164,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-09-15T02:10:22.167Z
-Stopped at: Phase 3 context gathered
-Resume file: .planning/phases/03-completed-art-ordinary-monsters/03-CONTEXT.md
+Last session: 2026-09-15T05:16:43Z
+Stopped at: Completed 03-01-PLAN.md
+Resume file: None

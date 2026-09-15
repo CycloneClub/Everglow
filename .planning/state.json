@@ -11,12 +11,12 @@
     {
       "number": "2",
       "name": "Remaining Items & Unfinished-Art Materials",
-      "status": "in_progress"
+      "status": "complete"
     },
     {
       "number": "3",
       "name": "Completed-Art Ordinary Monsters",
-      "status": "pending"
+      "status": "in_progress"
     },
     {
       "number": "4",
@@ -46,8 +46,8 @@
   ],
   "next": {
     "command": "/gsd:progress --next",
-    "label": "Advance to the next step (verify)",
-    "reason": "Phase 02 of 8 · ready to verify"
+    "label": "Continue to next plan",
+    "reason": "Phase 03 of 8 · plan 03-01 complete · 03-02 (格普螺 and 叶飞棍) is next in Wave 2"
   },
-  "updated_at": "2026-09-14T11:19:53.392Z"
+  "updated_at": "2026-09-15T05:20:00.000Z"
 }
