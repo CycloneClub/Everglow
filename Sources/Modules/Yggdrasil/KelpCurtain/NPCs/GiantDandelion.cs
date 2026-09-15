@@ -3,6 +3,7 @@ using Everglow.Yggdrasil.KelpCurtain.Dusts;
 using Everglow.Yggdrasil.KelpCurtain.Items.Accessories;
 using Everglow.Yggdrasil.KelpCurtain.Items.Weapons;
 using Everglow.Yggdrasil.KelpCurtain.Items.Weapons.UnderwaterTreasury;
+using Everglow.Yggdrasil.KelpCurtain.Projectiles.Enemies;
 using SubworldLibrary;
 using Terraria.GameContent.ItemDropRules;
 
@@ -74,6 +75,9 @@ public class GiantDandelion : ModNPC
 
 	/// <summary>The design's 伤害 cell: the boulder row (60 at the normal difficulty scale).</summary>
 	private const int BoulderDamage = 60;
+
+	/// <summary>The ground shockwave's travel speed, in pixels per tick (D-34).</summary>
+	private const float ShockwaveSpeed = 6f;
 
 	/// <summary>The thrown boulder's launch speed, in pixels per tick (D-34).</summary>
 	private const float BoulderSpeed = 9f;
@@ -380,10 +384,13 @@ public class GiantDandelion : ModNPC
 	/// </summary>
 	private void Smash()
 	{
-		// SEAM(Task 2): spawn GiantDandelion_Shockwave here from NPC.GetSource_FromAI() at the
-		// creature's feet, carrying ShockwaveDamage (50, the design's shockwave row) with a
-		// horizontal velocity away from the creature, inside a
-		// Main.netMode != NetmodeID.MultiplayerClient guard.
+		if (Main.netMode != NetmodeID.MultiplayerClient)
+		{
+			// The wave is spawned on the authoritative side and synced, never duplicated per client.
+			int direction = NPC.direction == 0 ? 1 : NPC.direction;
+			Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Bottom, new Vector2(ShockwaveSpeed * direction, 0f), ModContent.ProjectileType<GiantDandelion_Shockwave>(), ShockwaveDamage, 0f);
+		}
+
 		EnterState(GiantDandelionState.SmashRecovery);
 	}
 
@@ -416,9 +423,14 @@ public class GiantDandelion : ModNPC
 	{
 		MidRangeAttackCooldown = MidRangeAttackGapTicks;
 
-		// SEAM(Task 2): spawn GiantDandelion_Boulder here from NPC.GetSource_FromAI() at the arm
-		// position, aimed at the current target and carrying BoulderDamage (60, the design's boulder
-		// row), inside a Main.netMode != NetmodeID.MultiplayerClient guard.
+		if (Main.netMode != NetmodeID.MultiplayerClient && target is not null)
+		{
+			// The boulder is spawned on the authoritative side and synced, never duplicated per client.
+			int direction = NPC.direction == 0 ? 1 : NPC.direction;
+			Vector2 armPosition = NPC.Center + new Vector2(NPC.width * 0.35f * direction, -NPC.height * 0.25f);
+			Vector2 velocity = (target.Center - armPosition).SafeNormalize(new Vector2(direction, 0f)) * BoulderSpeed;
+			Projectile.NewProjectile(NPC.GetSource_FromAI(), armPosition, velocity, ModContent.ProjectileType<GiantDandelion_Boulder>(), BoulderDamage, 0f);
+		}
 	}
 
 	/// <summary>
