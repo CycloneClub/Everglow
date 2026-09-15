@@ -27,8 +27,6 @@ public class FurnaceScoreShop : BackgroundSlideBase
 
 	public bool MouseOverSaleGirl = false;
 
-	public bool OpenShop = false;
-
 	public override void SetDefaults()
 	{
 		base.SetDefaults();
@@ -42,7 +40,7 @@ public class FurnaceScoreShop : BackgroundSlideBase
 	public override void Update()
 	{
 		base.Update();
-		Player player = Main.LocalPlayer;
+
 		if (SaleGirlAnimationTimer == 0)
 		{
 			int k = Main.rand.Next(10);
@@ -85,24 +83,13 @@ public class FurnaceScoreShop : BackgroundSlideBase
 			if (Main.mouseRight && Main.mouseRightRelease && CanInteract())
 			{
 				SpecialShopSystem.Instance.Open<FurnaceScoreShopUI>();
-				OpenShop = true;
 			}
 		}
-		if (OpenShop)
+
+		if (SpecialShopSystem.Instance.CurrentShop is FurnaceScoreShopUI
+			&& !CanInteract())
 		{
-			if (SpecialShopSystem.Instance.CurrentShop is not FurnaceScoreShopUI)
-			{
-				OpenShop = false;
-			}
-			else if (!Main.playerInventory || !CanInteract())
-			{
-				SpecialShopSystem.Instance.Close();
-				OpenShop = false;
-			}
-			else if (player.talkNPC != -1)
-			{
-				player.talkNPC = -1;
-			}
+			SpecialShopSystem.Instance.Close();
 		}
 	}
 
