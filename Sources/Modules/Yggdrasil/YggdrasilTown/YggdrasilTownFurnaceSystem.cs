@@ -24,8 +24,6 @@ public class YggdrasilTownFurnaceSystem : ModSystem
 
 	public static bool MeltingDownButtonClicked = false;
 
-	public static bool FurnaceScoreShopOpen = false;
-
 	public override void Load()
 	{
 		base.Load();

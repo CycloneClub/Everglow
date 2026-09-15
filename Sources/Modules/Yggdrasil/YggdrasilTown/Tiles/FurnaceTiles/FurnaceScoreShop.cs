@@ -43,6 +43,7 @@ public class FurnaceScoreShop : BackgroundSlideBase
 	{
 		base.Update();
 		Player player = Main.LocalPlayer;
+		SpecialShopRegistry shops = SpecialShopRegistry.Instance;
 		if (SaleGirlAnimationTimer == 0)
 		{
 			int k = Main.rand.Next(10);
@@ -84,41 +85,24 @@ public class FurnaceScoreShop : BackgroundSlideBase
 			MouseOverSaleGirl = true;
 			if (Main.mouseRight && Main.mouseRightRelease && CanInteract())
 			{
-				Main.playerInventory = true;
-				YggdrasilTownFurnaceSystem.FurnaceScoreShopOpen = true;
-				UISystem.Instance.CurrentSpecialShop = 0;
+				shops.Open<FurnaceScoreShopUI>();
 				OpenShop = true;
 			}
 		}
-		if (!Main.playerInventory)
-		{
-			YggdrasilTownFurnaceSystem.FurnaceScoreShopOpen = false;
-			UISystem.Instance.CurrentSpecialShop = -1;
-			OpenShop = false;
-		}
 		if (OpenShop)
 		{
-			if (!CanInteract())
+			if (shops.CurrentShop != FurnaceScoreShopUI.Instance)
 			{
-				YggdrasilTownFurnaceSystem.FurnaceScoreShopOpen = false;
-				UISystem.Instance.CurrentSpecialShop = -1;
-				FurnaceScoreShopUI.Instance.Close();
 				OpenShop = false;
 			}
-			else
+			else if (!Main.playerInventory || !CanInteract())
 			{
-				if (player.talkNPC != -1)
-				{
-					player.talkNPC = -1;
-				}
-				FurnaceScoreShopUI.Instance.Show();
+				shops.Close();
+				OpenShop = false;
 			}
-		}
-		else
-		{
-			if (FurnaceScoreShopUI.Instance.IsVisible)
+			else if (player.talkNPC != -1)
 			{
-				FurnaceScoreShopUI.Instance.Close();
+				player.talkNPC = -1;
 			}
 		}
 	}

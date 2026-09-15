@@ -7,7 +7,7 @@ using Terraria.GameContent;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.UI;
 
-public class FurnaceScoreShopUI : UIContainerElement
+public class FurnaceScoreShopUI : SpecialShopUI
 {
 	public static FurnaceScoreShopUI Instance => (FurnaceScoreShopUI)UISystem.EverglowUISystem.Elements[typeof(FurnaceScoreShopUI).FullName];
 

@@ -1,15 +1,12 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Commons.Enums;
 using Everglow.Commons.Utilities;
-using MonoMod.Cil;
 using Terraria.UI;
 
 namespace Everglow.Commons.UI
 {
 	public class UISystem : ModSystem
 	{
-		private const int SpecialShopWhoAmI_Zero = 65536;
-
 		public static EverglowUISystem EverglowUISystem
 		{
 			get => Instance.system;
@@ -28,19 +25,6 @@ namespace Everglow.Commons.UI
 		public bool RightResizing = false;
 		public bool TopResizing = false;
 		public bool BottomResizing = false;
-
-		/// <summary>
-		/// The current special shop whoami.
-		/// <list type="bullet">
-		/// <item>
-		/// <description>-1: Disabled</description>
-		/// </item>
-		/// <item>
-		/// <description>0: Furnace Shop</description>
-		/// </item>
-		/// </list>
-		/// </summary>
-		public int CurrentSpecialShop = -1;
 
 		public delegate void ChestUIDraw(UISystem system, SpriteBatch spriteBatch);
 
@@ -66,8 +50,6 @@ namespace Everglow.Commons.UI
 			On_Main.DrawCursor += ModifyUIBlockResizeCursor;
 			On_Main.DrawThickCursor += ModifyUIBlockResizeThickCursor;
 			On_ChestUI.DrawSlots += On_ChestUI_DrawPanel;
-			On_Main.DrawInventory += On_Main_DrawInventory;
-			IL_Main.DrawInventory += IL_Main_DrawInventory;
 			if (Main.netMode != NetmodeID.Server)
 			{
 				system.Load();
@@ -255,55 +237,11 @@ namespace Everglow.Commons.UI
 			}
 		}
 
-		private void IL_Main_DrawInventory(ILContext il)
-		{
-			ILCursor c = new(il);
-			if (c.TryGotoNext(
-				MoveType.After,
-				x => x.MatchLdindU2(),
-				x => x.MatchLdelemU1(),
-				x => x.MatchBrtrue(out _),
-				x => x.MatchLdsfld(out _),
-				x => x.MatchLdsfld(out _),
-				x => x.MatchLdelemRef(),
-				x => x.MatchLdcI4(-1),
-				x => x.MatchStfld(out _),
-				x => x.MatchLdcI4(0),
-				x => x.MatchCall(out _),
-				x => x.MatchLdcI4(0),
-				x => x.MatchStloc(out _)))
-			{
-				c.EmitDelegate(CheckSpecialShopEnable_ModifyNpcShop);
-			}
-		}
-
 		private void On_ChestUI_DrawPanel(On_ChestUI.orig_DrawSlots orig, SpriteBatch spriteBatch)
 		{
 			orig(spriteBatch);
 			PostDrawChestUI?.Invoke(this, spriteBatch);
 		}
 
-		private void On_Main_DrawInventory(On_Main.orig_DrawInventory orig, Main self)
-		{
-			CheckSpecialShopEnable_ModifyNpcShop();
-			orig(self);
-			DisposeSpecialShopEnable_ModifyNpcShop();
-		}
-
-		private void CheckSpecialShopEnable_ModifyNpcShop()
-		{
-			if (CurrentSpecialShop >= 0 && Main.npcShop == 0)
-			{
-				Main.npcShop = SpecialShopWhoAmI_Zero + CurrentSpecialShop;
-			}
-		}
-
-		private void DisposeSpecialShopEnable_ModifyNpcShop()
-		{
-			if (Main.npcShop >= SpecialShopWhoAmI_Zero)
-			{
-				Main.npcShop = 0;
-			}
-		}
 	}
 }
