@@ -65,6 +65,8 @@ Every repository asset is mapped to a design row by name/description/geometry in
 
 **English names.** The snapshot carries no English name column; only 荆棘苔龟 has one in its heading. Every other row's `name_en` is an executor-supplied label recorded here as an assumption.
 
+**Plan 03-03 mapping note.** `GiantDandelion.png` (214x263) is mapped to 巨树人 with `mapping_confidence: "assumed"`, not high confidence: the sprite is a dead tree with root legs and a pale puff canopy, which matches the design row's 巨树人 (a dead giant tree man of 刺苔庭园) but is a description inference rather than a design statement. It is the only giant-tree creature asset in the Kelp Curtain creature tree, so no competing candidate exists. Recorded here for designer confirmation.
+
 ## 4. Conservative defaults (D-34/D-38)
 
 Where the design is silent or gives a progression rather than one number, a conservative default is used and recorded here. The machine copy of this section is the JSON `assumptions[]` arrays (one entry per §1–§6 of this ledger).
@@ -98,6 +100,26 @@ Where the design is silent or gives a progression rather than one number, a cons
 | `spawnInfo.player` | `NPCSpawnInfo.Player` (a public **field**; there is no lowercase `player` member) | The tModLoader XML documentation lists only `F:Terraria.ModLoader.NPCSpawnInfo.Player`, and the in-repo precedent `RiverSlug.cs` reads `spawnInfo.Player`. The plan itself permitted `spawnInfo.Player` as "the property form". |
 | `NPC.rare` | `NPC.rarity` (`F:Terraria.NPC.rarity`, the Lifeform Analyzer rarity; defaults to 0) | `Terraria.NPC` has no `rare` member. `NPC.rarity = ItemRarityID.White` is a no-op that records the design's empty 稀有度 cell. |
 
+**Implemented by plan 03-03 (as built).** 巨树人 (`GiantDandelion`) is the only tranche creature whose design row specifies real timings, so most of its values are design-exact and only the unsupplied ones are defaults:
+
+| Default | Value | Reason |
+| --- | --- | --- |
+| Smash wind-up / recovery | `120` / `300` ticks | Design-exact: the arm raise plus the smash takes 120 ticks, then a fixed 300-tick immobile recovery with the fist stuck in the floor. |
+| Mid-range attack gap | `240` ticks minimum | Design-exact (至少240帧的间隔 between the state's two attacks); enforced by re-arming a cooldown whenever a boulder is thrown. |
+| Forward arm swing | `20` ticks | The design gives no duration for the fast swing that brings up and releases the boulder (D-34). |
+| Spawn weight | `0.25f` (band 0.1f–0.5f) | The design calls 巨树人 稀有 and supplies no weight; the value is deliberately lower than every other tranche creature (荆棘苔龟 `1.5f`, 叶飞棍 `1f`, 格普螺 `0.75f`). |
+| Shockwave speed / lifetime / hit box | `6` px/tick, `40` ticks, `200x32` | The design gives no speed, lifetime or radius, only "large radius" and "roughly 2 tiles high" (D-34). |
+| Boulder speed / gravity / pierce / spin | `9` px/tick launch, `0.35` px/tick², `1`, `0.2` rad/tick | The design gives no boulder speed, arc or pierce value (D-34). |
+| Walk / approach / chase speeds | `0.5f` / `1.5f` / `3.2f` px/tick | The design only says the beyond-15-tile chase is faster than the 5-15 tile approach; the three values preserve that ordering. |
+| Slash-separated stats | first value | 生命 `500/900/1300` -> `NPC.lifeMax = 500`; melee 伤害 `70/140/180` -> `NPC.damage = 70`. The slashes are the difficulty progression, so the normal-state value is the first. |
+| Shockwave / boulder damage | `50` / `60` | The second and third rows of the 伤害 cell; passed to each projectile at spawn instead of being derived from `NPC.damage`. |
+| `NPC.value` copper transpose | `2金50银` -> `25000`, 1:1 | `钱币（铜）` is the copper-coin column and `NPC.value` is documented in copper coins, so no conversion is applied; the 100x reading `250000` is **explicitly rejected** (it would exceed this repository's bosses, which sit at 32000–81000, while ordinary creatures sit at 200–400). |
+| Rarity | `ItemRarityID.LightPurple` | This row's stats table is headerless with six cells and its leading cell reads `稀有`; the sibling tables' 稀有度 column is empty and absent here, so LightPurple is a conservative reading of that leading cell, not a design-exact value. |
+| `aiStyle` choice | local `AI()`, state wrapped in the `GiantDandelionState` enum over `NPC.ai[0]` | No vanilla `aiStyle` provides a three-range charge/smash/recovery machine with a post-smash vulnerability window (D-31). |
+| Sprite-derived extents | `NPC.width = 214`, `NPC.height = 263` | The approved sprite is the only measurement available. The full-sprite extents are large (about 13x16 tiles); §8 records the resulting spawn-area question as a runtime item. |
+
+**Plan API-name corrections applied by plan 03-03 (Rule 1).** The two non-existent members corrected in plan 03-01 also appear in `03-03-PLAN.md`'s prose and were corrected the same way: `spawnInfo.player` -> `NPCSpawnInfo.Player` and `NPC.rare` -> `NPC.rarity`. Both corrections are compile-verified by the Release build.
+
 ## 5. Drop availability (D-43 nuance)
 
 `03-RESEARCH.md` §Finding 2 concluded that Phase 3's drops are **all absent**. That conclusion used the superseded design-art tranche. Under the repository-art tranche it is **false**: three of the five tranche rows have at least one implemented item to wire, and five Phase 1–2 item types are consumed by this phase.
@@ -128,6 +150,8 @@ Four distinct absent materials block the five tranche rows — 软体甲壳碎�
 
 **Implemented by plan 03-02 (as built).** 格普螺's single rule is written as `ItemDropRule.Common(ModContent.ItemType<GuppyShell>(), 9, 1, 1)` — denominator 9 = 11%, quantity 1 — and the design's other drop, 0~2 软体甲壳碎片, has no repository `ModItem`, so no rule exists for it and the blocker above stands. 叶飞棍's `ModifyNPCLoot` override is present but deliberately **empty**: 飞棍毛发 (33%) and 毒腺 (11%) have no repository `ModItem`, and a `ModContent.ItemType<...>()` for either would be a compile error that breaks the whole mod build (D-37/D-39). Neither class references an absent material as a type; the blockers live in `03-BIOLOGY.json` (overridden in the plan 03-02 task) and in this section.
 
+**Implemented by plan 03-03 (as built).** 巨树人's `ModifyNPCLoot` writes exactly three rules, all guaranteed (chance denominator 1, quantity 1) and all naming already-implemented items: `ItemDropRule.Common(ModContent.ItemType<ArmOfGiantTree>(), 1, 1, 1)`, `ItemDropRule.Common(ModContent.ItemType<HardenedWitherbarkHeart>(), 1, 1, 1)` and `ItemDropRule.Common(ModContent.ItemType<BoulderCatapult>(), 1, 1, 1)` — the design's 一定掉落 for 巨树之臂, 硬化枯木心脏 and 巨石弹射装置. The design's 4~6 枯木碎块 has no repository `ModItem`, so no rule references it and no `ModContent.ItemType<...>()` for it exists anywhere in the class (that would be a compile error, D-37/D-39); the gap is the row's `drop blocked (absent item)` blocker. This makes 巨树人 the first tranche row that exercises a real multi-item drop table rather than only a blocked one.
+
 ## 6. Spawn-region gap
 
 No biome predicate exists for 森雨幽谷 (Valley of Lush and Moist) or 刺苔庭园 (Spiny Moss Court), so per-region spawn refinement is impossible today. Spawn gating therefore uses the **layer-level** predicate plus local conditions, and the per-region refinement is a blocker naming the missing regional biome classes (Phase 5–6 terrain work).
@@ -139,6 +163,8 @@ The layer test is the new server-safe `KelpCurtainBiome.IsKelpCurtainLayer(Playe
 - `FindClosestStratumBoundPointX(float)` returns `-1` when `StratumBoundCurve` is empty, which makes the X test permissive rather than blocking on a side that has not run `BuildBoundOf23Stratum`.
 - `IsBiomeActive` itself was left byte-for-byte unchanged: it drives background and lighting scene transitions, which intentionally follow the camera.
 - Every tranche `SpawnChance` also requires `SubworldSystem.IsActive<YggdrasilWorld>()`, because `NPCSpawnManager.EditSpawnPool` returns early outside the subworld and the per-creature gate is therefore the real isolation (BIO-06). The phase gate's invariant 7 fails any Phase 3 class that declares `SpawnChance` without both tokens.
+
+**Plan 03-03 as-built note.** 巨树人 is the design's 刺苔庭园 (Spiny Moss Court) swamp creature. No Spiny Moss Court biome class, tile predicate or region X/Y range exists yet (the region work is Phase 5–6), so its `SpawnChance` uses the same layer-level server-safe gate as the other tranche rows — `SubworldSystem.IsActive<YggdrasilWorld>()` **and** `KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player)` (never the client-camera `IsBiomeActive`, which would return `0f` on a dedicated server) — plus the land conditions already used by 格普螺 (reject `spawnInfo.Water` and reject a spawn tile whose `LiquidAmount > 0`), because 巨树人 is a land walker. The regional refinement remains a precise blocker on the row (`spawn context partial (D-30)`).
 
 ## 7. Localization (D-20)
 
@@ -156,6 +182,8 @@ Every class still overrides `LocalizationCategory` with `LocalizationUtils.Categ
 
 **Plan 03-02 deferral (extended, not lifted).** `GuppyConch` and `VerdantRods` are now code-complete, and their localization state is unchanged: the in-game `OutputLocalizationHjsonItem` exporter was not run for either row, no HJSON file was created or hand-edited, and no key was fabricated. The two classes override `LocalizationCategory` with `LocalizationUtils.Categories.NPCs` and carry the display names only in their XML doc comments, which are not localization keys.
 
+**Plan 03-03 deferral (extended, not lifted).** `GiantDandelion` is now code-complete, and its localization state is unchanged: the in-game `OutputLocalizationHjsonItem` exporter was not run for this row, no HJSON file was created or hand-edited, and no key was fabricated. The class overrides `LocalizationCategory` with `LocalizationUtils.Categories.NPCs` and carries its display name only in its XML doc comment, which is not a localization key. Its two attack projectiles are not localized either.
+
 ## 8. Runtime verification (D-21)
 
 Offline gates and `dotnet build /p:Configuration=Release /p:WarningLevel=0` cannot observe spawn isolation, AI feel, drop acquisition or dedicated-server behaviour. The following client checks are outstanding and are referred forward to plan 03-04's UAT bundle (`03-UAT.md`). Every entry is **not yet executed**; the tranche is therefore not presented as client-verified.
@@ -171,3 +199,20 @@ Offline gates and `dotnet build /p:Configuration=Release /p:WarningLevel=0` cann
 Also outstanding: a dedicated-server launch confirming the tranche spawns and fights there without client-only code crashing; a normal-world idle run confirming BIO-06 isolation for all five rows; and confirmation that the tML log shows no missing-resource or disabled-mod entry for the new classes (their textures resolve from the tracked assets beside them).
 
 **Plan 03-02 rows (now implemented, checks still outstanding).** 格普螺 (`GuppyConch`) and 叶飞棍 (`VerdantRods`) are code-complete as of plan 03-02, so the two client checks in the table above are now executable for them; they remain **not yet executed**. New behaviours to observe in the D-21 run: the shell retract window (~2 s after a hit, with the normal-state 0.85 and shelled-state 0.70 减伤), the crawl reversal at walls and ledges, the leaf rod's neutral circling without chasing, its 50% 中毒 on contact, and its submerged life drain with the escape flight. A dedicated-server run should also confirm `KelpCurtainBiome.IsKelpCurtainLayer` produces the same band as the camera-driven `IsBiomeActive` for both creatures (the same requirement plan 03-01 recorded).
+
+**Plan 03-03 rows (now implemented, checks still outstanding).** 巨树人 (`GiantDandelion`) and its two attack projectiles (`GiantDandelion_Shockwave`, `GiantDandelion_Boulder`) are code-complete as of plan 03-03, so the 巨树人 client check in the table above is now executable; it remains **not yet executed**. New behaviours to observe in the D-21 run: the 120-tick arm raise that ends in a visible ground wave, the 300-tick immobile recovery during which damage is clearly amplified (defence 0 and 150% incoming), the mid-range 120-tick backwards wind-up followed by the fast swing and the arcing boulder, the beyond-15-tile faster chase, and the ≥240-tick gap between mid-range attacks. Two open runtime questions are also recorded here: (a) whether the sprite-derived `214x263` hitbox is small enough for the creature to find a valid spawn area in the Kelp Curtain swamp — if it never spawns, the extents (not the `0.25f` weight) are the first thing to revisit; and (b) whether the floor-anchored shockwave keeps its 2-tile-high hit box on uneven terrain. A dedicated-server run should also confirm the two new projectiles emit no dust there (every dust call in both files and in the NPC sits inside `!Main.dedServ`), and that the authoritative spawns appear once rather than per client.
+
+## 9. Attack projectiles (plan 03-03)
+
+巨树人 is the only tranche creature with designed attack projectiles, so this plan is the first to add hostile projectiles to the Kelp Curtain `Projectiles/Enemies/` tree. Two classes were written:
+
+| Class | Role | SetDefaults | Visuals and dust |
+| --- | --- | --- | --- |
+| `GiantDandelion_Shockwave` | The state-1 ground smash: a `200x32` hit box (~2 tiles high) with a 40-tick lifetime, floor-anchored and ground-hugging, `tileCollide = false`, `penetrate = -1` | `Projectile.hostile = true`, `Projectile.friendly = false` | Shared fallback texture; every dust call inside `!Main.dedServ` |
+| `GiantDandelion_Boulder` | The mid-range and post-recovery throw: a gravity arc that rotates with its velocity and despawns on the first tile struck (`tileCollide = true`, `penetrate = 1`) | `Projectile.hostile = true`, `Projectile.friendly = false` | Shared fallback texture; every dust call inside `!Main.dedServ` |
+
+Both are spawned from `GiantDandelion` with `Projectile.NewProjectile(NPC.GetSource_FromAI(), ...)` inside a `Main.netMode != NetmodeID.MultiplayerClient` guard, so a single authoritative spawn is synced and never duplicated per client (T-03-18), and each carries the design's own damage row (50 shockwave / 60 boulder).
+
+**Artwork blocker (raised here; not solvable in this phase).** No approved art exists in the repository for either projectile, and AGENTS.md forbids creating placeholder art, so both request only the existing shared `Commons.ModAsset.White_Mod` path — the same D-13 fallback policy the Phase 2 item `BoulderCatapult` and the accessory `RadialCarapace` already use. A real ground-wave sprite and a real boulder sprite are needed from the designer; until then the attacks are mechanically complete but visually untextured. This is the plan's contribution to the tranche's art-deferral family, and the row carries the `effect parameters provisional` blocker alongside this note.
+
+**Why `BoulderCatapult_Proj` was not reused.** That class is a *friendly, player-owned* ranged projectile (`Projectile.friendly = true`, `owner`-relative direct-hit bonus, `Main.myPlayer == Projectile.owner` sub-projectile spawning) that assumes a player owner. Reusing it for a hostile attack would invert its ownership model and its 150% direct-hit bonus, and the plan's prohibitions forbid it outright. `GiantDandelion_Boulder` therefore imitates only its arc-and-rotate motion; the projectile was written fresh under `Projectiles/Enemies/`.

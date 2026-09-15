@@ -524,7 +524,7 @@
                      "region":  "Spiny Moss Court",
                      "name_zh":  "巨树人",
                      "name_en":  "Giant Tree Man",
-                     "internal_name":  "",
+                     "internal_name":  "Everglow.Yggdrasil.KelpCurtain.NPCs.GiantDandelion",
                      "repo_asset":  "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/GiantDandelion.png",
                      "feishu":  {
                                     "heading_block_id":  "Pm9jdOm1Zo9Tc4xy4lncGRtbnJh",
@@ -535,12 +535,15 @@
                                 },
                      "design_art":  false,
                      "texture_complete":  true,
-                     "code_complete":  false,
+                     "code_complete":  true,
                      "status":  "unchecked",
                      "frame_count":  1,
                      "mapping_confidence":  "assumed",
                      "blockers":  [
-                                      "texture present in repository; runtime and localization verification outstanding (D-20/D-21)"
+                                      "drop blocked (absent item): design 4~6 枯木碎块 has no repository ModItem; the guaranteed 巨树之臂, 硬化枯木心脏 and 巨石弹射装置 rules are wired to Phase 1 items",
+                                      "effect parameters provisional: the design gives no shockwave radius, boulder speed or pierce values, so conservative values are used",
+                                      "spawn context partial (D-30): the design's 刺苔庭园 swamp has no biome or tile predicate yet; the gate uses the layer-level KelpCurtainBiome plus land conditions",
+                                      "localization deferred (D-20); runtime verification outstanding (D-21)"
                                   ],
                      "deferred":  false,
                      "deferred_reason":  ""
