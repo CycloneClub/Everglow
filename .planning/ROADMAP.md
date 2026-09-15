@@ -163,7 +163,30 @@ Plans:
   4. Every ordinary-creature entry has an individual source comparison and an explicit exact/partial-conflicting/blocked result; hardmode-deferred and undefined future entries remain out of scope.
 
 **Verification needs:** Remaining biology matrix; client spawn/behavior/combat checks; drop and progression integration checks; dedicated-server safety; `dotnet build`; unresolved-source audit.
-**Plans:** TBD
+**Scope anchor (D-44):** 21 rows = the 23 `phase:4` rows of `03-BIOLOGY.json` minus the two `out of phase` hardmode designs (`枯萎之种`, `枯木人卫士`, V2-HARD-01). They are implemented across **26 `ModNPC` classes** (three D-45 identity shells; four stat-variant sibling groups: 枯木活化士兵 ×4, 爆弹水母 ×2, 布罗迪蝇蜓 ×2, 幽光蝾螈 one class with a variant index) plus **10 hostile projectiles**. No repository art exists for any of them, so every class uses `Commons.ModAsset.White_Mod` and a missing-texture blocker (D-48/D-49).
+**Plans:** 9 plans
+Plans:
+
+**Wave 1**
+
+- [ ] 04-01-PLAN.md — Phase gate + shared spawn-condition helper + matrix reconciliation of the 21 in-scope rows, proven end-to-end on 碧灵鮟鱇; opens `04-DEVIATIONS.md` with the OQ1–OQ5 resolutions (BIO-01, BIO-02, BIO-03)
+
+**Wave 2** *(blocked on Wave 1 completion)*
+
+- [ ] 04-02-PLAN.md — Death Jade Lake surface & amphibious family: 水黾, 剧毒蟾蜍 (+ poison bubble & cloud), 幽光蝾螈 (BIO-01)
+- [ ] 04-03-PLAN.md — Death Jade Lake passive & neutral water family: 装甲虾 (bounded 2–5 group), 爆弹水母 (small/large + explosion), 帆鳍鳢 (neutral rammer) (BIO-01)
+- [ ] 04-04-PLAN.md — Death Jade Lake stealth, ranged & bottom predators: 放射虫 (+ water bolt), 覆藻章鱼, 大型覆藻章鱼 (shared ink cloud) (BIO-01)
+- [ ] 04-05-PLAN.md — The three D-45 identity shells: 荧光水螅, 巨型虎虾, 炮弹藤壶 (BIO-01)
+
+**Wave 3** *(blocked on Wave 1 completion)*
+
+- [ ] 04-06-PLAN.md — Spiny Moss Court: 枯木活化士兵 ×4 variants (+ boulder & spell beam), 王庭号令者, 布罗迪蝇蜓 ×2 (BIO-02)
+- [ ] 04-07-PLAN.md — Valley hazards: 红针洋辣子 (reuses the `Caterpillar` template + `CaterpillarJuice`, OQ1), 阿萨辛覆盘子, 蛇行苔 (BIO-03)
+- [ ] 04-08-PLAN.md — Valley passive & mini boss: 小格普螺, 大型荆棘苔龟 full four-state machine (+ shockwave & boulder) (BIO-03)
+
+**Wave 4** *(blocked on Waves 2–3 completion)*
+
+- [ ] 04-09-PLAN.md — Close-out: reconciled 21-row matrix and mirror, mechanically generated blocker register, full offline chain + Release build, and the D-21 client UAT bundle (BIO-01, BIO-02, BIO-03)
 
 ### Phase 5: Completed-Art Terrain & Structures
 
@@ -241,7 +264,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8. Th
 | 1. Item Inventory & Completed-Art Items | 7/7 | Complete    | 2026-09-14 |
 | 2. Remaining Items & Unfinished-Art Materials | 5/5 | Complete    | 2026-09-14 |
 | 3. Completed-Art Ordinary Monsters | 4/4 | Complete    | 2026-09-15 |
-| 4. Remaining Ordinary Monsters | 0/TBD | Not started | - |
+| 4. Remaining Ordinary Monsters | 0/9 | Planned | - |
 | 5. Completed-Art Terrain & Structures | 0/TBD | Not started | - |
 | 6. Remaining Terrain, Generation & Integration | 0/TBD | Not started | - |
 | 7. Bosses, Special Encounters & Rewards | 0/TBD | Not started | - |
