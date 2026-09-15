@@ -1,10 +1,10 @@
 ---
 schema_version: 1
-open_count: 20
+open_count: 22
 waived_count: 0
 fixed_count: 1
-total_count: 21
-last_updated: 2026-09-15T08:31:28.332Z
+total_count: 23
+last_updated: 2026-09-15T09:06:43.775Z
 ---
 
 # Broken Windows Ledger
@@ -36,6 +36,8 @@ last_updated: 2026-09-15T08:31:28.332Z
 | 19 | 3 | unrun-verify | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/GiantDandelion.cs |  | D-21 client checks for 巨树人 and its two attack projectiles (state cycle, smash wave, boulder arc, vulnerability window) are not yet executed; referred to plan 03-04's UAT bundle | open |  | 2026-09-15T08:30:32.937Z |  |
 | 20 | 3 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/GiantDandelion.cs |  | Plan 03-03 applied the two Rule 1 API-name corrections the plan prose repeated: spawnInfo.player to NPCSpawnInfo.Player (the field) and NPC.rare to NPC.rarity (the engine's only NPC rarity field); both compile-verified by the Release build | open |  | 2026-09-15T08:31:27.481Z |  |
 | 21 | 3 | stub | Sources/Modules/Yggdrasil/KelpCurtain/Projectiles/Enemies/GiantDandelion_Shockwave.cs |  | Approved art missing for both 巨树人 attack projectiles: GiantDandelion_Shockwave and GiantDandelion_Boulder request the shared Commons.ModAsset.White_Mod fallback because creating placeholder art is forbidden (D-13 policy); a ground-wave sprite and a boulder sprite are needed from the designer (03-DEVIATIONS.md section 9) | open |  | 2026-09-15T08:31:28.332Z |  |
+| 22 | 3 | unrun-verify | .planning/phases/03-completed-art-ordinary-monsters/03-UAT.md |  | D-21 client UAT bundle recorded but not executed: all 8 checks (per-row spawn, main-world isolation, behaviour, combat, drops, dedicated-server/multiplayer, localization fallback, consolidated end-of-phase run) are marked not-executed because no live tModLoader client session is part of Phase 3 | open |  | 2026-09-15T09:06:42.913Z |  |
+| 23 | 3 | deviation | .planning/phases/03-completed-art-ordinary-monsters/03-BIOLOGY.json |  | Plan 03-04 repaired the corrupted assumptions[]/deviations[] machine copy of the matrix (six 'e' placeholders present since the plan-03-01 tracer commit 421f2a09a) with one entry per ledger section 1-6 plus the phase's six recorded deviations; no other field changed and check-biology.ps1 -RequireAll stays green | open |  | 2026-09-15T09:06:43.775Z |  |
 
 ````json
 [
@@ -289,6 +291,30 @@ last_updated: 2026-09-15T08:31:28.332Z
     "status": "open",
     "reason": "",
     "recorded_at": "2026-09-15T08:31:28.332Z",
+    "resolved_at": null
+  },
+  {
+    "id": 22,
+    "kind": "unrun-verify",
+    "phase": "3",
+    "file": ".planning/phases/03-completed-art-ordinary-monsters/03-UAT.md",
+    "line": null,
+    "description": "D-21 client UAT bundle recorded but not executed: all 8 checks (per-row spawn, main-world isolation, behaviour, combat, drops, dedicated-server/multiplayer, localization fallback, consolidated end-of-phase run) are marked not-executed because no live tModLoader client session is part of Phase 3",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-15T09:06:42.913Z",
+    "resolved_at": null
+  },
+  {
+    "id": 23,
+    "kind": "deviation",
+    "phase": "3",
+    "file": ".planning/phases/03-completed-art-ordinary-monsters/03-BIOLOGY.json",
+    "line": null,
+    "description": "Plan 03-04 repaired the corrupted assumptions[]/deviations[] machine copy of the matrix (six 'e' placeholders present since the plan-03-01 tracer commit 421f2a09a) with one entry per ledger section 1-6 plus the phase's six recorded deviations; no other field changed and check-biology.ps1 -RequireAll stays green",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-15T09:06:43.775Z",
     "resolved_at": null
   }
 ]

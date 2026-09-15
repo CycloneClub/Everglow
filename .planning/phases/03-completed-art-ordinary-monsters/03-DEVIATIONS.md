@@ -206,6 +206,38 @@ Also outstanding: a dedicated-server launch confirming the tranche spawns and fi
 
 **Plan 03-03 rows (now implemented, checks still outstanding).** 巨树人 (`GiantDandelion`) and its two attack projectiles (`GiantDandelion_Shockwave`, `GiantDandelion_Boulder`) are code-complete as of plan 03-03, so the 巨树人 client check in the table above is now executable; it remains **not yet executed**. New behaviours to observe in the D-21 run: the 120-tick arm raise that ends in a visible ground wave, the 300-tick immobile recovery during which damage is clearly amplified (defence 0 and 150% incoming), the mid-range 120-tick backwards wind-up followed by the fast swing and the arcing boulder, the beyond-15-tile faster chase, and the ≥240-tick gap between mid-range attacks. Two open runtime questions are also recorded here: (a) whether the sprite-derived `214x263` hitbox is small enough for the creature to find a valid spawn area in the Kelp Curtain swamp — if it never spawns, the extents (not the `0.25f` weight) are the first thing to revisit; and (b) whether the floor-anchored shockwave keeps its 2-tile-high hit box on uneven terrain. A dedicated-server run should also confirm the two new projectiles emit no dust there (every dust call in both files and in the NPC sits inside `!Main.dedServ`), and that the authoritative spawns appear once rather than per client.
 
+### 8.1 Close-out gate chain (plan 03-04, 2026-09-15)
+
+Executed from the repository root **in one command** — `dotnet build` first, then each gate via `powershell -NoProfile -ExecutionPolicy Bypass -File`, then the MSTest link, then the AGENTS.md byte-level BOM block — chained with `if ($?)` so a failing link stops the chain. The whole chain exited **0** (`CHAIN_EXIT=0`).
+
+| # | Command | Exit | Recorded success line |
+| --- | --- | --- | --- |
+| 1 | `dotnet build /p:Configuration=Release /p:WarningLevel=0` | 0 | Build succeeded with `0 个警告` / `0 个错误` (0 warnings, 0 errors); `Everglow -> …\Mods\Everglow.tmod` produced and the mod enabled |
+| 2 | `check-biology.ps1 -RequireAll` | 0 | `OK(0): phase3 tranche = 5 / 5 (rows=31)` · `OK: implemented classes = 5 / 5` · `OK: UTF-8 BOM check passed (5 files).` |
+| 3 | `check-inventory-reconciliation.ps1` | 0 | `OK(0): 103 entries; matched=86; green=50 yellow=8 unchecked=45; labels=5 deferred=3 assumptions=7` |
+| 4 | `check-carryover.ps1` | 0 | `OK(0): carry-over covered entries = 5 (of 5 selected)` |
+| 5 | `check-tranche-A.ps1` | 0 | `OK(0): tranche-A covered entries = 43 (of 43 selected)` |
+| 6 | `check-tranche-B.ps1` | 0 | `OK(0): tranche-B covered entries = 20 (of 20 selected)` |
+| 7 | `check-armofgianttree-charge.ps1` | 0 | `OK(0): ArmOfGiantTree charge is per-player + per-stack slot-keyed, synced, and server-authoritative` |
+| 8 | `check-phase2.ps1` | 0 | `OK(0): phase2 implemented = 21 / 21 (full=9, shell=12)` |
+| 9 | `dotnet test --filter "FullyQualifiedName~Yggdrasil"` | 0 | `已通过 - 失败: 0, 通过: 3, 已跳过: 0, 总计: 3, 持续时间: 324 ms - Everglow.UnitTests.dll (net8.0)` (Passed — Failed 0, Passed 3, Skipped 0, Total 3) |
+| 10 | AGENTS.md byte-level UTF-8 BOM block (§8.2) | 0 | `UTF-8 BOM check passed (1375 files).` |
+
+Row 9 is the MSTest link `03-VALIDATION.md` declares part of the full suite command, so the plan and the validation strategy agree: the phase gate is the whole chain, not the build alone.
+
+**Triage outcome: no earlier-phase failure occurred, so no triage was needed.** Phase 3 adds no item, tile, wall, buff or localization artifact, and every earlier gate stayed green: the five Phase 1 gates (rows 3–7) and the Phase 2 gate (row 8) ran unchanged, and no Phase 1 or Phase 2 artifact, gate script or baseline anchor was edited by this plan (T-03-24). Nothing was re-anchored, bypassed or silenced.
+
+### 8.2 AGENTS.md byte-level UTF-8 BOM check (and the phase-scoped equivalent)
+
+The block ran in the AGENTS.md shape: `$base = git merge-base HEAD origin/master`, then the file set from `git -c core.quotepath=false diff --name-only --diff-filter=ACMRTUXB $base --` plus `git -c core.quotepath=false ls-files --others --exclude-standard`, then a `[IO.File]::ReadAllBytes` first-three-bytes test against `0xEF 0xBB 0xBF`. Each of the three `git` calls checks `$LASTEXITCODE` explicitly (`git merge-base failed` / `git diff failed` / `git ls-files failed`) and no `git` call is followed by a shell pipeline, so a git failure aborts with a named message instead of being silently treated as an empty change set.
+
+**Result: `UTF-8 BOM check passed (1375 files).`** — 1375 changed-or-untracked paths measured, 0 BOM-prefixed.
+
+Anchor used: `origin/master`, resolved through `git merge-base HEAD origin/master`. Two facts about that anchor belong here:
+
+- It is the **whole branch** measured against a distant pre-phase ancestor, so it is **advisory and non-isolating**. The binding, phase-scoped equivalent is invariant 13 inside `check-biology.ps1`, which the chain ran first (row 2) over Phase 3's own change set and which reported `OK: UTF-8 BOM check passed (5 files).` The AGENTS.md run is recorded for AGENTS.md compliance; it is not the gate that protects the phase's files.
+- If the `origin/master`-anchored run ever reports a BOM in a path outside Phase 3's change set, that is a **stale-anchor finding** to record here with the offending path — nothing is edited to silence it, following the Phase 1 `01-07-SUMMARY.md` deviation 2 and the Phase 2 `02-05-SUMMARY.md` re-anchor precedent. This run reported no BOM at all.
+
 ## 9. Attack projectiles (plan 03-03)
 
 巨树人 is the only tranche creature with designed attack projectiles, so this plan is the first to add hostile projectiles to the Kelp Curtain `Projectiles/Enemies/` tree. Two classes were written:
@@ -284,3 +316,5 @@ The five implemented tranche rows — every one `code_complete: true` with a non
 | Localization | All five tranche rows and the two attack projectiles | Deferred by user directive (D-20) — no exporter run, no key fabricated, no HJSON edited | Phase 8 |
 | Live runtime verification | The D-21 client bundle in `03-UAT.md` (spawn, isolation, behaviour, combat, drops, dedicated server, localization fallback) | Recorded, not executed (D-21) | Client session / Phase 8 |
 | Regional spawn refinement | 森雨幽谷 and 刺苔庭园 biome/tile predicates | Open — Phase 5–6 terrain work (D-30, §6) | Phases 5–6 |
+
+**Phase 3 close-out statement (plan 03-04).** The phase closes with its tranche **code-complete**: all five rows implemented, the matrix and its mirror reconciled cell-for-cell, the consolidated ledger written, the full offline chain and the Release build green in one run (§8.1) and the D-21 client bundle recorded in `03-UAT.md`. **Every row of the table above stays open** — none was closed by this plan, and none was silently dropped. The two runtime-facing rows (live runtime verification, regional spawn refinement) and the two art rows (the six Phase 4 creatures, the two untextured attack projectiles) are the phase's explicit residue, and the localization and absent-material rows are carried by user directive (D-20) and by D-37/D-43 respectively. No `.png` or other binary/art asset was created, moved, renamed or modified by this phase; no HJSON file was created or hand-edited; no localization key was fabricated; and the Feishu design source was neither re-fetched nor mutated (D-25).
