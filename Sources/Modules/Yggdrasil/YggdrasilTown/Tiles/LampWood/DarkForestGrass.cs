@@ -309,7 +309,7 @@ public class DarkForestGrass : ModTile, ISceneTile
 
 	public void AddScene(int i, int j)
 	{
-		DarkForestGrass_grass_fore leaf = new DarkForestGrass_grass_fore { position = new Vector2(i, j) * 16, Active = true, Visible = true, originTile = new Point(i, j), originType = Type };
+		DarkForestGrass_grass_fore leaf = new DarkForestGrass_grass_fore { Position = new Vector2(i, j) * 16, Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = Type };
 		leaf.scale = 1f;
 		leaf.style = i % 3;
 		Ins.VFXManager.Add(leaf);

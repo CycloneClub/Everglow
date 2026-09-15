@@ -6,10 +6,6 @@ public class GiantFurnace_LavaWindowPipeline : Pipeline
 	public override void BeginRender()
 	{
 		Ins.Batch.Begin();
-		effect.Value.Parameters["uTransform"].SetValue(
-			Matrix.CreateTranslation(new Vector3(-Main.screenPosition, 0)) *
-			Main.GameViewMatrix.TransformationMatrix *
-			Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1));
 		effect.Value.CurrentTechnique.Passes[0].Apply();
 		effect.Value.Parameters["uSize"].SetValue(0.6f);
 		effect.Value.Parameters["uTime"].SetValue((float)Main.time * 0.01f);
@@ -24,6 +20,6 @@ public class GiantFurnace_LavaWindowPipeline : Pipeline
 
 	public override void Load()
 	{
-		effect = ModAsset.LavaWindow;
+		effect = ModAsset.GiantFurnace_LavaWindow_shader;
 	}
 }

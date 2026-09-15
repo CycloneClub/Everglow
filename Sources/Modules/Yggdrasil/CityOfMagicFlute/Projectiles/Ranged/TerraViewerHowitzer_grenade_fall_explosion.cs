@@ -24,12 +24,11 @@ public class TerraViewerHowitzer_grenade_fall_explosion : ModProjectile, IWarpPr
 		Projectile.usesLocalNPCImmunity = true;
 		Projectile.localNPCHitCooldown = 20;
 		Projectile.DamageType = DamageClass.Magic;
-		ProjectileID.Sets.DrawScreenCheckFluff[Projectile.type] = 14400;
 	}
 
-	public void Spark()
+	public void Spark(int count)
 	{
-		for (int g = 0; g < 120; g++)
+		for (int x = 0; x < count; x++)
 		{
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(2f, 22f)).RotatedByRandom(MathHelper.TwoPi);
 			var spark = new FireSparkDust
@@ -47,56 +46,65 @@ public class TerraViewerHowitzer_grenade_fall_explosion : ModProjectile, IWarpPr
 		}
 	}
 
-	public void FlameII()
+	public void FlameII(int count)
 	{
-		var newVelocity = new Vector2(0, -10);
-		Vector2 addPos = new Vector2(Main.rand.NextFloat(40), 0).RotatedByRandom(MathHelper.TwoPi);
-		var fire = new FireDust
+		for (int x = 0; x < count; x++)
 		{
-			velocity = newVelocity,
-			Active = true,
-			Visible = true,
-			position = Projectile.Center + addPos - newVelocity,
-			maxTime = Main.rand.Next(30, 45),
-			scale = Main.rand.NextFloat(20f, 60f),
-			rotation = Main.rand.NextFloat(6.283f),
-			ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), addPos.X * 0.002f },
-		};
-		Ins.VFXManager.Add(fire);
+			var newVelocity = new Vector2(0, -10);
+			Vector2 addPos = new Vector2(Main.rand.NextFloat(40), 0).RotatedByRandom(MathHelper.TwoPi);
+			var fire = new FireDust
+			{
+				velocity = newVelocity,
+				Active = true,
+				Visible = true,
+				position = Projectile.Center + addPos - newVelocity,
+				maxTime = Main.rand.Next(30, 45),
+				scale = Main.rand.NextFloat(20f, 60f),
+				rotation = Main.rand.NextFloat(6.283f),
+				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), addPos.X * 0.002f },
+			};
+			Ins.VFXManager.Add(fire);
+		}
 	}
 
-	public void LargeFlame()
+	public void LargeFlame(int count)
 	{
-		Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(2f, 8f)).RotatedByRandom(MathHelper.TwoPi);
-		var somg = new MissleFlameDust
+		for (int x = 0; x < count; x++)
 		{
-			velocity = newVelocity,
-			Active = true,
-			Visible = true,
-			position = Projectile.Center + new Vector2(Main.rand.NextFloat(40), 0).RotatedByRandom(6.283),
-			maxTime = Main.rand.Next(60, 75),
-			scale = Main.rand.NextFloat(80f, 160f),
-			rotation = Main.rand.NextFloat(6.283f),
-			ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
-		};
-		Ins.VFXManager.Add(somg);
+			Vector2 newVelocity = new Vector2(0, MathF.Sqrt(Main.rand.NextFloat(1f)) * 12f).RotatedByRandom(MathHelper.TwoPi);
+			var somg = new MissleFlameDust
+			{
+				velocity = newVelocity,
+				Active = true,
+				Visible = true,
+				position = Projectile.Center + new Vector2(Main.rand.NextFloat(6), 0).RotatedByRandom(6.283),
+				maxTime = Main.rand.Next(90, 120),
+				scale = Main.rand.NextFloat(24f, 36f),
+				rotation = Main.rand.NextFloat(6.283f),
+				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
+			};
+			Ins.VFXManager.Add(somg);
+		}
 	}
 
-	public void SmallFlame()
+	public void SmallFlame(int count)
 	{
-		Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(2f, 8f)).RotatedByRandom(MathHelper.TwoPi);
-		var somg = new MissleFlameDust
+		for (int x = 0; x < count; x++)
 		{
-			velocity = newVelocity,
-			Active = true,
-			Visible = true,
-			position = Projectile.Center + new Vector2(Main.rand.NextFloat(60), 0).RotatedByRandom(6.283),
-			maxTime = Main.rand.Next(30, 45),
-			scale = Main.rand.NextFloat(50f, 90f),
-			rotation = Main.rand.NextFloat(6.283f),
-			ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
-		};
-		Ins.VFXManager.Add(somg);
+			Vector2 newVelocity = new Vector2(0, MathF.Sqrt(Main.rand.NextFloat(1f)) * 8f).RotatedByRandom(MathHelper.TwoPi);
+			var somg = new MissleFlameDust
+			{
+				velocity = newVelocity,
+				Active = true,
+				Visible = true,
+				position = Projectile.Center + new Vector2(Main.rand.NextFloat(4), 0).RotatedByRandom(6.283),
+				maxTime = Main.rand.Next(50, 70),
+				scale = Main.rand.NextFloat(12f, 20f),
+				rotation = Main.rand.NextFloat(6.283f),
+				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
+			};
+			Ins.VFXManager.Add(somg);
+		}
 	}
 
 	public override void OnSpawn(IEntitySource source)
@@ -109,16 +117,9 @@ public class TerraViewerHowitzer_grenade_fall_explosion : ModProjectile, IWarpPr
 		Projectile.velocity *= 0;
 		if (Projectile.timeLeft == 190)
 		{
-			Spark();
-
-			for (int x = 0; x < 35; x++)
-			{
-				LargeFlame();
-			}
-			for (int x = 0; x < 75; x++)
-			{
-				SmallFlame();
-			}
+			Spark(120);
+			LargeFlame(35);
+			SmallFlame(75);
 		}
 		if (Projectile.timeLeft <= 190)
 		{
@@ -130,10 +131,7 @@ public class TerraViewerHowitzer_grenade_fall_explosion : ModProjectile, IWarpPr
 		}
 		if (Projectile.timeLeft == 180)
 		{
-			for (int x = 0; x < 35; x++)
-			{
-				FlameII();
-			}
+			FlameII(35);
 		}
 	}
 
@@ -199,6 +197,6 @@ public class TerraViewerHowitzer_grenade_fall_explosion : ModProjectile, IWarpPr
 		}
 
 		Texture2D t = Commons.ModAsset.Trail.Value;
-		DrawTexCircle_VFXBatch(spriteBatch, MathF.Sqrt(value) * 150f * Projectile.ai[0], 15 * (1 - value) * Projectile.ai[0], new Color(colorV, colorV * 0.012f, colorV, 0f), Projectile.Center - Main.screenPosition, t, Math.PI * 0.5);
+		DrawTexCircle_VFXBatch(spriteBatch, MathF.Sqrt(value) * 150f * Projectile.ai[0], 15 * (1 - value) * Projectile.ai[0], new Color(colorV, colorV * 0.6f, colorV, 0f), Projectile.Center - Main.screenPosition, t, Math.PI * 0.5);
 	}
 }

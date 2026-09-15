@@ -5,7 +5,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.TwilightForest.Traps;
 
 [Pipeline(typeof(WCSPipeline))]
 
-public class ColorLasersTrap : ForegroundVFX
+public class ColorLasersTrap : TileVFX
 {
 	public float Rotation;
 	public float Omega;
@@ -13,9 +13,11 @@ public class ColorLasersTrap : ForegroundVFX
 	public int Style;
 	private int length;
 
+	public override CodeLayer DrawLayer => CodeLayer.PostDrawPlayers;
+
 	public override void OnSpawn()
 	{
-		texture = ModAsset.ColorLasersTrap.Value;
+		Texture = ModAsset.ColorLasersTrap.Value;
 	}
 
 	public Vector3 GetColor()
@@ -45,15 +47,15 @@ public class ColorLasersTrap : ForegroundVFX
 
 	public override void Update()
 	{
-		Lighting.AddLight(position, GetColor());
-		position = originTile.ToWorldCoordinates() + new Vector2(2) + new Vector2(0, -16).RotatedBy(Rotation);
+		Lighting.AddLight(Position, GetColor());
+		Position = OriginTilePos.ToWorldCoordinates() + new Vector2(2) + new Vector2(0, -16).RotatedBy(Rotation);
 		Rotation = StartRotation;
 		Vector2 collisionUnit = new Vector2(0, -8).RotatedBy(Rotation);
 		int count = 0;
 		for (int step = 1; step < 1000; step++)
 		{
 			count++;
-			if (Collision.SolidCollision(position + step * collisionUnit - new Vector2(4), 8, 8))
+			if (Collision.SolidCollision(Position + step * collisionUnit - new Vector2(4), 8, 8))
 			{
 				break;
 			}
@@ -63,7 +65,7 @@ public class ColorLasersTrap : ForegroundVFX
 		{
 			if (player != null && player.active && player.GetModPlayer<ColorLaserPlayer>().ImmuneStyle != Style)
 			{
-				if (Collision.CheckAABBvLineCollision(player.Hitbox.TopLeft(), player.Hitbox.Size(), position, position + collisionUnit * length))
+				if (Collision.CheckAABBvLineCollision(player.Hitbox.TopLeft(), player.Hitbox.Size(), Position, Position + collisionUnit * length))
 				{
 					player.Hurt(PlayerDeathReason.ByCustomReason("Try to across in a laser net"), 999, player.velocity.X > 0 ? 1 : -1, false, false, -1, false, 999, 0, 0);
 				}
@@ -81,19 +83,19 @@ public class ColorLasersTrap : ForegroundVFX
 		var point2 = new Vector2(-frame.Width * 0.5f, frame.Height * 0.5f);
 		var point3 = new Vector2(frame.Width * 0.5f, frame.Height * 0.5f);
 
-		Color lightColor0 = Lighting.GetColor((position + point0.RotatedBy(Rotation)).ToTileCoordinates());
-		Color lightColor1 = Lighting.GetColor((position + point1.RotatedBy(Rotation)).ToTileCoordinates());
-		Color lightColor2 = Lighting.GetColor((position + point2.RotatedBy(Rotation)).ToTileCoordinates());
-		Color lightColor3 = Lighting.GetColor((position + point3.RotatedBy(Rotation)).ToTileCoordinates());
+		Color lightColor0 = Lighting.GetColor((Position + point0.RotatedBy(Rotation)).ToTileCoordinates());
+		Color lightColor1 = Lighting.GetColor((Position + point1.RotatedBy(Rotation)).ToTileCoordinates());
+		Color lightColor2 = Lighting.GetColor((Position + point2.RotatedBy(Rotation)).ToTileCoordinates());
+		Color lightColor3 = Lighting.GetColor((Position + point3.RotatedBy(Rotation)).ToTileCoordinates());
 		var bars = new List<Vertex2D>()
 		{
-			new Vertex2D(position + point0.RotatedBy(Rotation), lightColor0, new Vector3(frame.X / (float)texture.Width, 0, 0)),
-			new Vertex2D(position + point1.RotatedBy(Rotation), lightColor1, new Vector3((frame.X + 16) / (float)texture.Width, 0, 0)),
-			new Vertex2D(position + point2.RotatedBy(Rotation), lightColor2, new Vector3(frame.X / (float)texture.Width, 16f / texture.Height, 0)),
+			new Vertex2D(Position + point0.RotatedBy(Rotation), lightColor0, new Vector3(frame.X / (float)Texture.Width, 0, 0)),
+			new Vertex2D(Position + point1.RotatedBy(Rotation), lightColor1, new Vector3((frame.X + 16) / (float)Texture.Width, 0, 0)),
+			new Vertex2D(Position + point2.RotatedBy(Rotation), lightColor2, new Vector3(frame.X / (float)Texture.Width, 16f / Texture.Height, 0)),
 
-			new Vertex2D(position + point2.RotatedBy(Rotation), lightColor2, new Vector3(frame.X / (float)texture.Width, 16f / texture.Height, 0)),
-			new Vertex2D(position + point1.RotatedBy(Rotation), lightColor1, new Vector3((frame.X + 16) / (float)texture.Width, 0, 0)),
-			new Vertex2D(position + point3.RotatedBy(Rotation), lightColor3, new Vector3((frame.X + 16) / (float)texture.Width, 16f / texture.Height, 0)),
+			new Vertex2D(Position + point2.RotatedBy(Rotation), lightColor2, new Vector3(frame.X / (float)Texture.Width, 16f / Texture.Height, 0)),
+			new Vertex2D(Position + point1.RotatedBy(Rotation), lightColor1, new Vector3((frame.X + 16) / (float)Texture.Width, 0, 0)),
+			new Vertex2D(Position + point3.RotatedBy(Rotation), lightColor3, new Vector3((frame.X + 16) / (float)Texture.Width, 16f / Texture.Height, 0)),
 		};
 		Vector2 collisionUnit = new Vector2(0, -8).RotatedBy(Rotation);
 		Vector2 normalUnit = collisionUnit.RotatedBy(MathHelper.PiOver2) * 0.5f;
@@ -102,15 +104,15 @@ public class ColorLasersTrap : ForegroundVFX
 		{
 			laserColor *= 0.2f;
 		}
-		bars.Add(position + normalUnit, laserColor, new Vector3(0, 18f / texture.Height, 0));
-		bars.Add(position - normalUnit, laserColor, new Vector3(0, 152f / texture.Height, 0));
-		bars.Add(position + normalUnit + collisionUnit * length, laserColor, new Vector3(length / 24f, 18f / texture.Height, 0));
+		bars.Add(Position + normalUnit, laserColor, new Vector3(0, 18f / Texture.Height, 0));
+		bars.Add(Position - normalUnit, laserColor, new Vector3(0, 152f / Texture.Height, 0));
+		bars.Add(Position + normalUnit + collisionUnit * length, laserColor, new Vector3(length / 24f, 18f / Texture.Height, 0));
 
-		bars.Add(position + normalUnit + collisionUnit * length, laserColor, new Vector3(length / 24f, 18f / texture.Height, 0));
-		bars.Add(position - normalUnit, laserColor, new Vector3(0, 152f / texture.Height, 0));
-		bars.Add(position - normalUnit + collisionUnit * length, laserColor, new Vector3(length / 24f, 152f / texture.Height, 0));
+		bars.Add(Position + normalUnit + collisionUnit * length, laserColor, new Vector3(length / 24f, 18f / Texture.Height, 0));
+		bars.Add(Position - normalUnit, laserColor, new Vector3(0, 152f / Texture.Height, 0));
+		bars.Add(Position - normalUnit + collisionUnit * length, laserColor, new Vector3(length / 24f, 152f / Texture.Height, 0));
 
-		Ins.Batch.Draw(texture, bars, PrimitiveType.TriangleList);
+		Ins.Batch.Draw(Texture, bars, PrimitiveType.TriangleList);
 	}
 }
 

@@ -18,7 +18,7 @@ public class ExampleRopeItem : ModItem
 			AddRope();
 		}
 		ItemRope.Masses[0].Position = Main.MouseWorld;
-		ItemRope.ApplyForce_Gravity();
+		//ItemRope.ApplyForce_Gravity();
 		ItemRope.ApplyForce_VelocityDecay(0.2f);
 
 		// Experimental codes.
@@ -82,7 +82,7 @@ public class ExampleRopeItem : ModItem
 
 	public void AddRope()
 	{
-		ItemRope = Rope.Create_Vine(Main.MouseWorld, 10, 2, 1);
+		ItemRope = Rope.Create_Vine(Main.MouseWorld, 30, 2, 1, 15);
 
 		// Rope.Create_Fixed_StartPos(Main.MouseWorld, 20, 5, 0.5f, 20);
 		EularSys.AddMassSpringMesh(ItemRope);

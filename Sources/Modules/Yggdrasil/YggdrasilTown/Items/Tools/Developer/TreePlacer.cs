@@ -1,5 +1,6 @@
 using Everglow.Yggdrasil.WorldGeneration;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles.TwilightForest;
+using static Everglow.Commons.Utilities.TileUtils;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Tools.Developer;
 
@@ -37,7 +38,7 @@ internal class TreePlacer : ModItem
 		{
 			return;
 		}
-		if (!YggdrasilWorldGeneration.ChestSafe(i, j) || !YggdrasilWorldGeneration.ChestSafe(i + 1, j))
+		if (!ChestSafe(i, j) || !ChestSafe(i + 1, j))
 		{
 			return;
 		}
@@ -47,7 +48,7 @@ internal class TreePlacer : ModItem
 		{
 			Tile tile = TileUtils.SafeGetTile(i, j - g);
 			Tile tileRight = TileUtils.SafeGetTile(i + 1, j - g);
-			if (!YggdrasilWorldGeneration.ChestSafe(i, j - g - 1) || !YggdrasilWorldGeneration.ChestSafe(i + 1, j - g - 1))
+			if (!ChestSafe(i, j - g - 1) || !ChestSafe(i + 1, j - g - 1))
 			{
 				Height = g + 1;
 			}

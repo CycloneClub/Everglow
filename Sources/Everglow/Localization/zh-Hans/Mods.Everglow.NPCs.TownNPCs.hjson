@@ -1,5 +1,5 @@
 CanteenMaid: {
-	DisplayName: Betty, the Canteen Maid
+	DisplayName: 餐厅女仆贝蒂
 
 	TownNPCMood: {
 		Content: I feel pretty fine right now.
@@ -22,25 +22,25 @@ CanteenMaid: {
 }
 
 Fevens: {
-	DisplayName: Fevens
+	DisplayName: 霏文士
 }
 
 Guard_of_YggdrasilTown: {
-	DisplayName: Guard_of_ Yggdrasil Town
+	DisplayName: 天穹引路人
 }
 
 Howard_Warden: {
-	DisplayName: Howard_ Warden
+	DisplayName: 警长霍华德
 }
 
 InnKeeper: {
-	DisplayName: Inn Keeper
+	DisplayName: 酒馆老板格尔格
 }
 
 Restauranteur: {
-	DisplayName: Restauranteur
+	DisplayName: 餐厅老板罗尔
 }
 
 TeahouseLady: {
-	DisplayName: Teahouse Lady
+	DisplayName: 茶馆老板娘夜璃
 }

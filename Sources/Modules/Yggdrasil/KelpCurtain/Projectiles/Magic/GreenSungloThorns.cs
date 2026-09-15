@@ -1,4 +1,11 @@
+using Everglow.Commons.VFX.CommonVFXDusts;
+using Everglow.Yggdrasil.Common.Elevator.Tiles;
+using Everglow.Yggdrasil.KelpCurtain.Dusts;
+using MathNet.Numerics.Distributions;
+using Microsoft.Xna.Framework.Graphics.PackedVector;
 using Terraria.DataStructures;
+using Terraria.GameContent.RGB;
+using Terraria.Graphics.CameraModifiers;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Magic;
 
@@ -6,9 +13,9 @@ internal class GreenSungloThorns : ModProjectile
 {
 	public override void SetDefaults()
 	{
-		Projectile.width = 70;
-		Projectile.height = 78;
-		Projectile.friendly = false;
+		Projectile.width = 48;
+		Projectile.height = 144;
+		Projectile.friendly = true;
 		Projectile.DamageType = DamageClass.Magic;
 		Projectile.aiStyle = -1;
 		Projectile.penetrate = -1;
@@ -16,6 +23,9 @@ internal class GreenSungloThorns : ModProjectile
 		Projectile.hostile = false;
 		Projectile.tileCollide = false;
 		Projectile.ignoreWater = true;
+		Projectile.hide = true;
+		Projectile.usesLocalNPCImmunity = true;
+		Projectile.localNPCHitCooldown = 30;
 	}
 
 	internal Vector2[] Position = new Vector2[900];
@@ -37,6 +47,11 @@ internal class GreenSungloThorns : ModProjectile
 		}
 	}
 
+	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+	{
+		behindNPCsAndTiles.Add(index);
+	}
+
 	public override void AI()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -45,7 +60,10 @@ internal class GreenSungloThorns : ModProjectile
 		Projectile.velocity *= 0;
 
 		UpdateMoving();
-
+		if (t < 550)
+		{
+			t += 3.75f;
+		}
 		if (Projectile.timeLeft <= 2)
 		{
 			for (int i = 0; i < 900; i++)
@@ -199,7 +217,7 @@ internal class GreenSungloThorns : ModProjectile
 				var factor = j / 60f;
 				var w = MathHelper.Lerp(1f, 0.05f, factor);
 				Lighting.AddLight(OldPosition[i, j], colorLight * 0f * (1 - factor), colorLight * 0.3f * (1 - factor), 0);
-				Vector2 DrawPos = Projectile.Center + OldPosition[i, j] - StartPosition[i] + new Vector2(4) - Main.screenPosition;
+				Vector2 DrawPos = Projectile.Center + OldPosition[i, j] - StartPosition[i] + new Vector2(4, 48) - Main.screenPosition;
 				var color = new Color(0.01f, 1f, 0.5f, 0f);
 				if (Smaller[i])
 				{
@@ -235,13 +253,81 @@ internal class GreenSungloThorns : ModProjectile
 			}
 		}
 	}
+
+	private float t = 1f;
+	private float a = Main.rand.NextFloat(2.5f, 3.5f);
+	private float b = Main.rand.NextFloat(2.5f, 3.5f);
+
 	public void DrawThorn()
 	{
-
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
+		float Width = 15f;
+		var thorn1 = new List<Vertex2D>();
+		var thorn2 = new List<Vertex2D>();
+		thorn1.Clear();
+		thorn2.Clear();
+		Main.NewText(t);
 
+		for (float i = 0; i <= t; i++)
+		{
+			Vector2 pos = new Vector2(MathF.Cos(i * 0.01f * 2 - 3) * (MathF.Sqrt(i * 0.01f) - a) * 0.25f, -i * 0.01f) * 25;
+			Vector2 pos2 = new Vector2(MathF.Cos((i + 1) * 0.01f * 2 - 3) * (MathF.Sqrt((i + 1) * 0.01f) - a) * 0.25f, -i * 0.01f - 1) * 25;
+			Vector2 normal = MathUtils.NormalizeSafe(pos - pos2).RotatedBy(MathF.PI * 0.5f);
+			float y = (float)(-i / 320f);
+			float process = MathF.Min(1, (t - i) / t * 5f);
+			Width = 15f * process;
+			thorn1.Add(new Vertex2D(Projectile.Center + pos + normal * Width - Main.screenPosition + Vector2.UnitY * 48, Color.Green, new Vector3(0, y % 1 + 1, Width)));
+			thorn1.Add(new Vertex2D(Projectile.Center + pos - normal * Width - Main.screenPosition + Vector2.UnitY * 48, Color.Green, new Vector3(1, y % 1 + 1, Width)));
+		}
 
+		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.GreenSungloThorns.Value;
 
+		if (thorn1.Count > 3)
+		{
+			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, thorn1.ToArray(), 0, thorn1.Count - 2);
+		}
+
+		for (int i = 0; i <= t; i++)
+		{
+			Vector2 pos = new Vector2(-MathF.Cos(i * 0.01f * 2 - 3) * (MathF.Sqrt(i * 0.01f) - b) * 0.25f, -i * 0.01f) * 25;
+			Vector2 pos2 = new Vector2(-MathF.Cos((i + 1) * 0.01f * 2 - 3) * (MathF.Sqrt((i + 1) * 0.01f) - b) * 0.25f, -i * 0.01f - 1) * 25;
+			Vector2 normal = MathUtils.NormalizeSafe(pos - pos2).RotatedBy(MathF.PI * 0.5f);
+			float y = (float)(-i / 320f);
+			float process = MathF.Min(1, (t - i) / t * 5f);
+			Width = 15f * process;
+			thorn2.Add(new Vertex2D(Projectile.Center + pos + normal * Width - Main.screenPosition + Vector2.UnitY * 48, Color.White, new Vector3(0, y % 1 + 1, Width)));
+			thorn2.Add(new Vertex2D(Projectile.Center + pos - normal * Width - Main.screenPosition + Vector2.UnitY * 48, Color.White, new Vector3(1, y % 1 + 1, Width)));
+		}
+
+		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.GreenSungloThorns.Value;
+
+		if (thorn2.Count > 3)
+		{
+			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, thorn2.ToArray(), 0, thorn2.Count - 2);
+		}
+
+		Main.spriteBatch.End();
+		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
+	}
+
+	public override void OnKill(int timeLeft)
+	{
+		for (int g = 0; g < 100; g++)
+		{
+			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(2f, 15f)).RotatedByRandom(MathHelper.TwoPi);
+			var spark = new JungleSporeDust
+			{
+				velocity = newVelocity,
+				Active = true,
+				Visible = true,
+				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + newVelocity,
+				maxTime = Main.rand.Next(137, 245),
+				scale = Main.rand.NextFloat(12f, Main.rand.NextFloat(8f, 16f)),
+				rotation = Main.rand.NextFloat(6.283f),
+				ai = new float[] { Main.rand.NextFloat(0.0f, Main.rand.NextFloat(0.5f, 1.0f)), Main.rand.NextFloat(-0.03f, 0.03f) },
+			};
+			Ins.VFXManager.Add(spark);
+		}
 	}
 }

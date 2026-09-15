@@ -1,5 +1,6 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.Common.Dusts;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.TwilightForest;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -22,7 +23,7 @@ public class GunOfAvariceAutoReload : ModProjectile
 	{
 		Projectile.width = 62;
 		Projectile.height = 32;
-		Projectile.timeLeft = Items.Weapons.GunOfAvarice.AutoReloadDuration;
+		Projectile.timeLeft = GunOfAvarice.AutoReloadDuration;
 		Projectile.penetrate = -1;
 		Projectile.hide = true;
 		Projectile.scale = 0.75f;

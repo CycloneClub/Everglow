@@ -78,9 +78,9 @@ public class HurricaneMazeBackground : ModSystem
 		var texClose = ModAsset.HurricaneMazeClose.Value;
 		var texMiddle = ModAsset.HurricaneMazeMiddle.Value;
 
-		BackgroundManager.QuickDrawBG(texSky, GetDrawRect(texSky.Size(), 0f), baseColor, 122000, 150000, true, true);
-		BackgroundManager.QuickDrawBG(texMiddle, GetDrawRect(texMiddle.Size(), 0.10f), baseColor, 122000, 150000, false, false);
-		BackgroundManager.QuickDrawBG(texClose, GetDrawRect(texClose.Size(), 0.35f), baseColor, 122000, 150000, false, false);
+		BackgroundManager.DrawBG_RestrictY(texSky, GetDrawRect(texSky.Size(), 0f), baseColor, 122000, 150000, true, true);
+		BackgroundManager.DrawBG_RestrictY(texMiddle, GetDrawRect(texMiddle.Size(), 0.10f), baseColor, 122000, 150000, false, false);
+		BackgroundManager.DrawBG_RestrictY(texClose, GetDrawRect(texClose.Size(), 0.35f), baseColor, 122000, 150000, false, false);
 	}
 
 	/// <summary>

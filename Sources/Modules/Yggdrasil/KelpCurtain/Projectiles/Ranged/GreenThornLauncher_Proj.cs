@@ -150,7 +150,9 @@ public class GreenThornLauncher_Proj : ModProjectile
 		{
 			Vector2 drawPos = Projectile.oldPos[i] + Projectile.Size / 2f - Main.screenPosition;
 			float fade = (Projectile.oldPos.Length - i) / (float)Projectile.oldPos.Length;
-			Color color = Color.Lerp(new Color(131, 219, 0, 100), Color.Transparent, 1f - fade);
+			Color color = Lighting.GetColor(Projectile.Center.ToTileCoordinates(), new Color(131, 219, 0, 100));
+			color.A = 100;
+			color = Color.Lerp(color, Color.Transparent, 1f - fade);
 			color *= 0.5f * fade;
 
 			Main.spriteBatch.Draw(texture, drawPos, null, color, Projectile.rotation, origin, Projectile.scale, SpriteEffects.None, 0f);

@@ -7,7 +7,7 @@ using Terraria.Map;
 
 namespace Everglow.Yggdrasil;
 
-internal class YggdrasilModule : EverglowModule
+public class YggdrasilModule : EverglowModule
 {
 	public override string Name => "Yggdrasil";
 
@@ -125,7 +125,7 @@ internal class YggdrasilModule : EverglowModule
 
 		// 修改小地图绘制颜色在这里写
 		Tile tile = Main.tile[x, y];
-		if (tile.HasTile || tile.wall > 0 || tile.LiquidAmount > 0)
+		if (tile.HasTile || tile.WallType > 0 || tile.LiquidAmount > 0)
 		{
 			return;
 		}

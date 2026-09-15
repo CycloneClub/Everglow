@@ -1,9 +1,9 @@
 Badr: {
-	DisplayName: Badr
+	DisplayName: “巴德尔”
 	Tooltip: ""
 }
 
 LampWoodSeed: {
-	DisplayName: Lamp Wood Seed
+	DisplayName: 灯木种子
 	Tooltip: ""
 }

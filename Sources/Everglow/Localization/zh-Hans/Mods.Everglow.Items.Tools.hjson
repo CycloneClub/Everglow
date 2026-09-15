@@ -1,64 +1,64 @@
 DragonScaleHammer: {
-	DisplayName: Dragon Scale Hammer
+	DisplayName: 龙鳞木锤
 	Tooltip: ""
 }
 
 LampWoodHammer: {
-	DisplayName: Lamp Wood Hammer
+	DisplayName: 灯木锤
 	Tooltip: ""
 }
 
 AmberFlowerHook: {
-	DisplayName: Amber Flower Hook
+	DisplayName: 琥珀花钩
 	Tooltip: ""
 }
 
 ClimbingPickaxe: {
-	DisplayName: Climbing Pickaxe
+	DisplayName: 攀爬镐
 	Tooltip: ""
 }
 
 CyanVineAxe: {
-	DisplayName: Cyan Vine Axe
+	DisplayName: 青缎斧
 	Tooltip: ""
 }
 
 CyanVineHammer: {
-	DisplayName: Cyan Vine Hammer
+	DisplayName: 青缎锤
 	Tooltip: ""
 }
 
 CyanVinePickaxe: {
-	DisplayName: Cyan Vine Pickaxe
+	DisplayName: 青缎镐
 	Tooltip: ""
 }
 
 FlappedHangGlider: {
-	DisplayName: Flapped Hang Glider
+	DisplayName: 折损滑翔翼
 	Tooltip: ""
 }
 
 GlowstickLauncher: {
-	DisplayName: Glowstick Launcher
+	DisplayName: 荧光棒发射器
 	Tooltip: ""
 }
 
 HangGlider: {
-	DisplayName: Hang Glider
+	DisplayName: 滑翔翼
 	Tooltip: ""
 }
 
 MiningPowerPickaxe: {
-	DisplayName: Mining Power Pickaxe
+	DisplayName: 矿用动力镐
 	Tooltip: ""
 }
 
 OldPickaxe: {
-	DisplayName: Old Pickaxe
+	DisplayName: 旧镐
 	Tooltip: ""
 }
 
 OldPortableLamp: {
-	DisplayName: Old Portable Lamp
+	DisplayName: 旧提灯
 	Tooltip: ""
 }

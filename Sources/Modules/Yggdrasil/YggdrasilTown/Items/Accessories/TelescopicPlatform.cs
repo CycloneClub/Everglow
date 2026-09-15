@@ -1,4 +1,3 @@
-using Terraria.DataStructures;
 using Terraria.GameInput;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
@@ -33,6 +32,8 @@ public abstract class TelescopicPlatform : ModItem
 
 	public Texture2D Texture2;
 
+	public Texture2D Texture_Glow;
+
 	public override void SetDefaults()
 	{
 		Item.accessory = true;
@@ -53,6 +54,10 @@ public abstract class TelescopicPlatform : ModItem
 			modPlayer.Platform = this;
 		}
 	}
+
+	public virtual void AddLight()
+	{
+	}
 }
 
 public class TelescopePlatformPlayer : ModPlayer
@@ -65,7 +70,11 @@ public class TelescopePlatformPlayer : ModPlayer
 	public int NowHeight = 0;
 
 	public Vector2 PlatformBasePos;
+
+	public Vector2 PlatformBaseBottom;
 	public bool InPlatform = false;
+
+	public int OldPlatformType;
 
 	public override void ResetEffects()
 	{
@@ -85,45 +94,170 @@ public class TelescopePlatformPlayer : ModPlayer
 	{
 		if (Platform == null)
 		{
-			InPlatform = false;
+			DeactivatePlatform();
 			return;
+		}
+		if (InPlatform)
+		{
+			Player.gfxOffY = 0;
+			Player.velocity *= 0;
 		}
 
 		// 这里不加24的话会有奇怪的 bug 发生，在非常靠近地面的时候角色会飞起来一段距离
 		if (Player.velocity.Length() != 0 && InPlatform)
 		{
-			Player.position = new Vector2(0, -NowHeight - 24) + PlatformBasePos;
-			NowHeight = 0;
-			InPlatform = false;
+			DeactivatePlatform();
 			return;
 		}
 		if (NowHeight != 0)
 		{
 			Player.position = new Vector2(0, -NowHeight - 24) + PlatformBasePos;
-			InPlatform = true;
 		}
 		else
 		{
-			if (InPlatform)
+			DeactivatePlatform();
+		}
+		if (OldPlatformType != 0 && OldPlatformType != Platform.Type)
+		{
+			DeactivatePlatform();
+		}
+		OldPlatformType = Platform.Type;
+	}
+
+	public void ActivatePlatform()
+	{
+		// Visual effects
+		if (!InPlatform)
+		{
+			PlayerSmoke();
+			TelescopicPlatformVFX tPlatformVFX = new TelescopicPlatformVFX
 			{
-				Player.position = new Vector2(0, -NowHeight - 24) + PlatformBasePos;
-				NowHeight = 0;
-				InPlatform = false;
+				Active = true,
+				Visible = true,
+				PlatformTexture = Platform.Texture2,
+				FrontPillarFrame = Platform.PillarFrontRect,
+				BackPillarFrame = Platform.PillarBackRect,
+				PlatformFrame = Platform.BodyRect,
+				CurrentHeight = NowHeight,
+				PillarCount = Platform.PillarCount,
+				BodyDrawOffsetY = (int)Platform.BodyDrawOffsetY,
+			};
+			if (Platform.Texture_Glow != null)
+			{
+				tPlatformVFX.PlatformTexture_Glow = Platform.Texture_Glow;
+				tPlatformVFX.AddLight += Platform.AddLight;
+			}
+			Ins.VFXManager.Add(tPlatformVFX);
+		}
+
+		InPlatform = true;
+		PlatformBaseBottom = Player.Bottom;
+	}
+
+	public void PlayerSmoke()
+	{
+		for (int i = 0; i < 16; i++)
+		{
+			int type;
+			switch (Main.rand.Next(3))
+			{
+				case 0:
+					type = GoreID.Smoke1;
+					break;
+				case 1:
+					type = GoreID.Smoke2;
+					break;
+				case 2:
+					type = GoreID.Smoke3;
+					break;
+				default:
+					type = GoreID.ChimneySmoke1;
+					break;
+			}
+			float scale = Main.rand.NextFloat(1f, 2f);
+			Vector2 vel = new Vector2(MathF.Sqrt(Main.rand.NextFloat()), 0).RotatedByRandom(MathHelper.TwoPi);
+			var gore = Gore.NewGorePerfect(Player.Center + vel * 30 - new Vector2(18), vel * 2f, type, scale);
+			gore.timeLeft = Main.rand.Next(30, 60);
+		}
+	}
+
+	public bool CanActivatePlatform()
+	{
+		// Check there is no gravitation buff or the triggersSet will conflict.
+		// Check there is no mount.
+		// Check player is stand in a flat ground.
+		if (Player.HasBuff(BuffID.Gravitation) || Player.mount.Active)
+		{
+			return false;
+		}
+		return TileSafe(Player.Bottom);
+	}
+
+	public bool TileSafe(Vector2 position)
+	{
+		Vector2 checkTilePos = position;
+		for (int i = -24; i <= 24; i += 16)
+		{
+			if (!Collision.IsWorldPointSolid(checkTilePos + new Vector2(i, 4), true))
+			{
+				return false;
+			}
+			if (Collision.IsWorldPointSolid(checkTilePos + new Vector2(i, -4)))
+			{
+				return false;
 			}
 		}
+		return true;
+	}
+
+	public void DeactivatePlatform()
+	{
+		if (InPlatform)
+		{
+			PlayerSmoke();
+			for (int j = 0; j <= NowHeight; j += 16)
+			{
+				int type;
+				switch (Main.rand.Next(3))
+				{
+					case 0:
+						type = GoreID.Smoke1;
+						break;
+					case 1:
+						type = GoreID.Smoke2;
+						break;
+					case 2:
+						type = GoreID.Smoke3;
+						break;
+					default:
+						type = GoreID.ChimneySmoke1;
+						break;
+				}
+				float scale = Main.rand.NextFloat(1f, 2f);
+				Vector2 vel = new Vector2(MathF.Sqrt(Main.rand.NextFloat()), 0).RotatedByRandom(MathHelper.TwoPi);
+				var gore = Gore.NewGorePerfect(Player.Center + new Vector2(0, j) + vel * 30 - new Vector2(18), vel * 2f, type, scale);
+				gore.timeLeft = Main.rand.Next(30, 60);
+			}
+		}
+		InPlatform = false;
+		NowHeight = 0;
 	}
 
 	public override void ProcessTriggers(TriggersSet triggersSet)
 	{
-		if (Player.velocity.Length() != 0)
+		if (triggersSet.Jump || triggersSet.QuickMount)
 		{
-			InPlatform = false;
+			DeactivatePlatform();
 			return;
 		}
 		if (Platform == null || Platform.MaxHeight == 0)
 		{
-			NowHeight = 0;
-			InPlatform = false;
+			DeactivatePlatform();
+			return;
+		}
+		if (InPlatform && !TileSafe(PlatformBaseBottom))
+		{
+			DeactivatePlatform();
 			return;
 		}
 		int direction = 0;
@@ -148,32 +282,21 @@ public class TelescopePlatformPlayer : ModPlayer
 			PlatformBasePos = Player.position;
 		}
 
-		int move = Platform.MoveSpeed * direction;
-		NowHeight = Math.Clamp(NowHeight + move, 0, Platform.MaxHeight);
-	}
-
-	public override void DrawEffects(PlayerDrawSet drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
-	{
-		if (Platform == null || NowHeight == 0)
+		if (!InPlatform && direction == 1)
 		{
-			return;
+			if (CanActivatePlatform())
+			{
+				ActivatePlatform();
+			}
 		}
-		float perHeight = (float)(NowHeight + 24) / Platform.PillarCount;
-		float pillarLength = MathF.Sqrt(MathF.Pow(Platform.PillarFrontRect.Width, 2) + MathF.Pow(Platform.PillarFrontRect.Height, 2));
-		float pillarAngle = MathF.Asin(perHeight / pillarLength * 1.2f);
-		float pillarWidth = pillarLength * MathF.Cos(pillarAngle);
-		Vector2 bodyPos = Player.Bottom - new Vector2(Platform.BodyRect.Width / 2, Platform.BodyRect.Height - Platform.BodyDrawOffsetY);
 
-		// 下面的支柱
-		for (int i = 0; i < Platform.PillarCount; i++)
+		if (InPlatform)
 		{
-			float height = perHeight * i;
-			Vector2 pos = Player.Bottom + new Vector2(0, height + perHeight / 2) - Main.screenPosition;
-			Point point = new Point((int)Player.Bottom.X / 16, ((int)Player.Bottom.Y + (int)height) / 16);
-			float angle = pillarAngle - MathF.PI / 4;
-			Main.spriteBatch.Draw(Platform.Texture2, pos, Platform.PillarBackRect, Lighting.GetColor(point), angle, Platform.PillarBackRect.Size() / 2, 1f, SpriteEffects.None, 0f);
-			Main.spriteBatch.Draw(Platform.Texture2, pos, Platform.PillarFrontRect, Lighting.GetColor(point), -angle, Platform.PillarFrontRect.Size() / 2, 1f, SpriteEffects.None, 0f);
+			int move = Platform.MoveSpeed * direction;
+			if (!Collision.SolidCollision(Player.position + new Vector2(0, -move), Player.Hitbox.Width, Player.Hitbox.Height - 16))
+			{
+				NowHeight = Math.Clamp(NowHeight + move, 0, Platform.MaxHeight);
+			}
 		}
-		Main.spriteBatch.Draw(Platform.Texture2, bodyPos - Main.screenPosition, Platform.BodyRect, Lighting.GetColor(new Point((int)Player.Center.X / 16, (int)Player.Center.Y / 16)));
 	}
 }

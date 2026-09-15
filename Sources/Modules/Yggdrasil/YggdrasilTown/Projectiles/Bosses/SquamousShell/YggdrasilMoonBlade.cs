@@ -129,7 +129,7 @@ public class YggdrasilMoonBlade : ModProjectile, IWarpProjectile
 		{
 			Vector2 v0 = startVelocity.RotatedBy(x / 20f * Projectile.ai[1]) * 90f;
 			Vector2 pos = Projectile.Center + v0 - Main.screenPosition - startVelocity * 40f;
-			bars.Add(pos, new Color(redValue, 0.02f * (Math.Abs(x) + 12), 0, 0), new Vector3(0.2f + timeValue, x / 35f, 0));
+			bars.Add(pos, new Color(redValue, 0.002f * Math.Abs(x), 0, 0), new Vector3(0.2f + timeValue, x / 35f, 0));
 			bars.Add(pos - startVelocity * 50f, new Color(redValue, 0, 0, 0), new Vector3(0 + timeValue, x / 35f, 0));
 		}
 		Texture2D t = Commons.ModAsset.Noise_melting.Value;

@@ -3,13 +3,15 @@ using Everglow.Yggdrasil.CorruptWormHive.Tiles;
 using Everglow.Yggdrasil.HurricaneMaze.Tiles;
 using Everglow.Yggdrasil.KelpCurtain.Tiles;
 using Everglow.Yggdrasil.KelpCurtain.Walls;
+using Everglow.Yggdrasil.YggdrasilTown.Liquids;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles.CyanVine;
 using Everglow.Yggdrasil.YggdrasilTown.Walls;
+using ModLiquidLib.ModLoader;
 using ReLogic.Utilities;
 using Terraria.IO;
-using Terraria.Utilities;
 using Terraria.WorldBuilding;
+using static Everglow.Commons.Utilities.TileUtils;
 using static Everglow.Yggdrasil.WorldGeneration.KelpCurtainGeneration;
 using static Everglow.Yggdrasil.WorldGeneration.YggdrasilTownGeneration;
 
@@ -28,8 +30,8 @@ public class YggdrasilWorldGeneration : ModSystem
 		{
 			Main.statusText = Terraria.Localization.Language.GetTextValue("Mods.Everglow.Common.WorldSystem.BuildtheTreeWorld");
 			TotalInitialize();
-			Main.spawnTileX = 1400;
-			Main.spawnTileY = 20630;
+			Main.spawnTileX = 1475;
+			Main.spawnTileY = 20600;
 			BuildYggdrasilTown();
 
 			BuildKelpCurtain();
@@ -54,9 +56,6 @@ public class YggdrasilWorldGeneration : ModSystem
 
 	public override void ModifyWorldGenTasks(List<GenPass> tasks, ref double totalWeight) => tasks.Add(new MainWorldPylonRelicGenPass_Yggdrasil());
 
-	public static int[,] PerlinPixelR = new int[1024, 1024];
-	public static int[,] PerlinPixelG = new int[1024, 1024];
-	public static int[,] PerlinPixelB = new int[1024, 1024];
 	public static int[,] PerlinPixel2 = new int[1024, 1024];
 	public static int[,] CellPixel = new int[512, 512];
 	public static int[,] MeltingPixel = new int[256, 256];
@@ -67,40 +66,7 @@ public class YggdrasilWorldGeneration : ModSystem
 	/// <param name="x"></param>
 	/// <param name="y"></param>
 	/// <returns></returns>
-	public static float GetPerlinPixelR(float x, float y)
-	{
-		return PerlinPixelR[(int)Math.Abs(x) % 1024, (int)Math.Abs(y) % 1024] / 255f;
-	}
-
-	/// <summary>
-	/// A float value based on the texture;0.0f~1.0f.
-	/// </summary>
-	/// <param name="x"></param>
-	/// <param name="y"></param>
-	/// <returns></returns>
-	public static float GetPerlinPixeG(float x, float y)
-	{
-		return PerlinPixelG[(int)Math.Abs(x) % 1024, (int)Math.Abs(y) % 1024] / 255f;
-	}
-
-	/// <summary>
-	/// A float value based on the texture;0.0f~1.0f.
-	/// </summary>
-	/// <param name="x"></param>
-	/// <param name="y"></param>
-	/// <returns></returns>
-	public static float GetPerlinPixelB(float x, float y)
-	{
-		return PerlinPixelB[(int)Math.Abs(x) % 1024, (int)Math.Abs(y) % 1024] / 255f;
-	}
-
-	/// <summary>
-	/// A float value based on the texture;0.0f~1.0f.
-	/// </summary>
-	/// <param name="x"></param>
-	/// <param name="y"></param>
-	/// <returns></returns>
-	public static float GetPerlinPixel2(float x, float y)
+	public static float GetLargeSmokeTexturePixel2(float x, float y)
 	{
 		return PerlinPixel2[(int)Math.Abs(x) % 1024, (int)Math.Abs(y) % 1024] / 255f;
 	}
@@ -132,14 +98,11 @@ public class YggdrasilWorldGeneration : ModSystem
 	/// </summary>
 	public static List<Rectangle> ShouldNotSmoothAreas = new List<Rectangle>();
 
-	public static UnifiedRandom GenRand = new UnifiedRandom();
-
 	/// <summary>
 	/// 总初始化
 	/// </summary>
 	public static void TotalInitialize()
 	{
-		GenRand = WorldGen.genRand;
 		FillPerlinPixel();
 	}
 
@@ -148,27 +111,8 @@ public class YggdrasilWorldGeneration : ModSystem
 	/// </summary>
 	public static void FillPerlinPixel()
 	{
-		var imageData = ImageReader.Read<SixLabors.ImageSharp.PixelFormats.Rgb24>("Everglow/Yggdrasil/WorldGeneration/Noise_II_rgb.bmp");
-		Vector2 perlinCoordCenter = new Vector2(GenRand.NextFloat(0f, 1f), GenRand.NextFloat(0f, 1f));
-		imageData.ProcessPixelRows(accessor =>
-		{
-			for (int y = 0; y < accessor.Height; y++)
-			{
-				int newY = (int)(accessor.Height * perlinCoordCenter.Y + y) % accessor.Height;
-				var pixelRow = accessor.GetRowSpan(newY);
-				for (int x = 0; x < pixelRow.Length; x++)
-				{
-					int newX = (int)(accessor.Width * perlinCoordCenter.X + x) % accessor.Width;
-					ref var pixel = ref pixelRow[newX];
-					PerlinPixelR[x, y] = pixel.R;
-					PerlinPixelG[x, y] = pixel.G;
-					PerlinPixelB[x, y] = pixel.B;
-				}
-			}
-		});
-
-		imageData = ImageReader.Read<SixLabors.ImageSharp.PixelFormats.Rgb24>("Everglow/Yggdrasil/WorldGeneration/Noise_perlin.bmp");
-		perlinCoordCenter = new Vector2(GenRand.NextFloat(0f, 1f), GenRand.NextFloat(0f, 1f));
+		var imageData = ImageReader.Read<SixLabors.ImageSharp.PixelFormats.Rgb24>("Everglow/Yggdrasil/WorldGeneration/Noise_perlin.bmp");
+		var perlinCoordCenter = new Vector2(GenRand.NextFloat(0f, 1f), GenRand.NextFloat(0f, 1f));
 		imageData.ProcessPixelRows(accessor =>
 		{
 			for (int y = 0; y < accessor.Height; y++)
@@ -258,7 +202,7 @@ public class YggdrasilWorldGeneration : ModSystem
 				float limit = MathF.Pow(minCosX, 2);
 				if (yValue < limit)
 				{
-					Tile tile = TileUtils.SafeGetTile(i + cX, j + cY);
+					Tile tile = SafeGetTile(i + cX, j + cY);
 					tile.TileType = (ushort)type;
 					tile.HasTile = true;
 				}
@@ -277,7 +221,7 @@ public class YggdrasilWorldGeneration : ModSystem
 					float limit = MathF.Pow(minCosX, 1);
 					if (yValue < limit)
 					{
-						Tile tile = TileUtils.SafeGetTile(i + cX, cY + heightLimit - j);
+						Tile tile = SafeGetTile(i + cX, cY + heightLimit - j);
 						tile.TileType = (ushort)type;
 						tile.HasTile = true;
 					}
@@ -290,93 +234,14 @@ public class YggdrasilWorldGeneration : ModSystem
 			{
 				int x = i + cX;
 				int y = cY - j;
-				float value = j / topThick + (PerlinPixelR[Math.Abs(x) % 1024, Math.Abs(y) % 1024] - 128) / 64f * smoothTopValue;
+				float value = j / topThick + (GetLargeSmokeTexturePixelR(x, y) * 256 - 128) / 64f * smoothTopValue;
 				if (value < 1)
 				{
-					Tile tile = TileUtils.SafeGetTile(x, y);
+					Tile tile = SafeGetTile(x, y);
 					tile.TileType = (ushort)type;
 					tile.HasTile = true;
 				}
 			}
-		}
-	}
-
-	/// <summary>
-	///  Fill all chest by given area if exist.
-	/// </summary>
-	/// <param name="x"></param>
-	/// <param name="y"></param>
-	/// <param name="width"></param>
-	/// <param name="height"></param>
-	/// <param name="contents"></param>
-	public static void FillChestXYWH(int x, int y, int width, int height, List<Item> contents)
-	{
-		for (int i = 0; i < width; i++)
-		{
-			for (int j = 0; j < height; j++)
-			{
-				WorldGenMisc.TryFillChest(x + i, y + j, contents);
-			}
-		}
-	}
-
-	/// <summary>
-	/// Smooth tiles by given area:(x0:left, y0:top, x1:right, y1:bottom)
-	/// </summary>
-	/// <param name="x0"></param>
-	/// <param name="y0"></param>
-	/// <param name="x1"></param>
-	/// <param name="y1"></param>
-	public static void SmoothTile(int x0, int y0, int x1, int y1)
-	{
-		x0 = Math.Clamp(x0, 20, Main.maxTilesX - 20);
-		x1 = Math.Clamp(x1, 20, Main.maxTilesX - 20);
-		y0 = Math.Clamp(y0, 20, Main.maxTilesY - 20);
-		y1 = Math.Clamp(y1, 20, Main.maxTilesY - 20);
-		for (int x = x0; x <= x1; x += 1)
-		{
-			for (int y = y0; y <= y1; y += 1)
-			{
-				if (!ChestSafe(x, y))
-				{
-					continue;
-				}
-				if (!CanLegallySmooth(x, y))
-				{
-					continue;
-				}
-				Tile.SmoothSlope(x, y, false, false);
-				WorldGen.TileFrame(x, y, true, false);
-				WorldGen.SquareWallFrame(x, y, true);
-			}
-		}
-	}
-
-	/// <summary>
-	/// Fill tiles by given area:(x0:left, y0:top, x1:right, y1:bottom)
-	/// </summary>
-	/// <param name="x0"></param>
-	/// <param name="y0"></param>
-	/// <param name="x1"></param>
-	/// <param name="y1"></param>
-	/// <param name="type"></param>
-	public static void PlaceRectangleAreaOfBlock(int x0, int y0, int x1, int y1, int type, bool smooth = true)
-	{
-		for (int x = x0; x <= x1; x += 1)
-		{
-			for (int y = y0; y <= y1; y += 1)
-			{
-				Tile tile = TileUtils.SafeGetTile(x, y);
-				if (ChestSafe(x, y))
-				{
-					tile.TileType = (ushort)type;
-					tile.HasTile = true;
-				}
-			}
-		}
-		if (smooth)
-		{
-			SmoothTile(x0, y0, x1, y1);
 		}
 	}
 
@@ -394,7 +259,7 @@ public class YggdrasilWorldGeneration : ModSystem
 		{
 			for (int y = y0; y <= y1; y += 1)
 			{
-				Tile tile = TileUtils.SafeGetTile(x, y);
+				Tile tile = SafeGetTile(x, y);
 				if (ChestSafe(x, y))
 				{
 					tile.liquid = (byte)type;
@@ -420,7 +285,7 @@ public class YggdrasilWorldGeneration : ModSystem
 			for (int y = 0; y <= halfSideRange * 2; y += 1)
 			{
 				Point check = startPoint + new Point(x, y);
-				Tile tile = TileUtils.SafeGetTile(check);
+				Tile tile = SafeGetTile(check);
 				if (ChestSafe(check.X, check.Y))
 				{
 					if (type >= 0)
@@ -453,7 +318,7 @@ public class YggdrasilWorldGeneration : ModSystem
 			for (int y = 0; y <= halfSideRange * 2; y += 1)
 			{
 				Point check = startPoint + new Point(x, y);
-				Tile tile = TileUtils.SafeGetTile(check);
+				Tile tile = SafeGetTile(check);
 				if (ChestSafe(check.X, check.Y))
 				{
 					tile.liquid = (byte)type;
@@ -479,10 +344,10 @@ public class YggdrasilWorldGeneration : ModSystem
 			for (int y = 0; y <= halfSideRange * 2; y += 1)
 			{
 				Point check = startPoint + new Point(x, y);
-				Tile tile = TileUtils.SafeGetTile(check);
+				Tile tile = SafeGetTile(check);
 				if (ChestSafe(check.X, check.Y))
 				{
-					tile.wall = (ushort)type;
+					tile.WallType = (ushort)type;
 				}
 			}
 		}
@@ -502,11 +367,11 @@ public class YggdrasilWorldGeneration : ModSystem
 		{
 			for (int y = y0; y <= y1; y += 1)
 			{
-				Tile tile = TileUtils.SafeGetTile(x, y);
-				tile.wall = (ushort)type;
+				Tile tile = SafeGetTile(x, y);
+				tile.WallType = (ushort)type;
 			}
 		}
-		SmoothTile(x0, y0, x1, y1);
+		SmoothTile_XXYY(x0, y0, x1, y1);
 	}
 
 	/// <summary>
@@ -523,11 +388,11 @@ public class YggdrasilWorldGeneration : ModSystem
 		{
 			for (int y = y0; y <= y1; y += 1)
 			{
-				Tile tile = TileUtils.SafeGetTile(x, y);
+				Tile tile = SafeGetTile(x, y);
 				tile.ClearEverything();
 			}
 		}
-		SmoothTile(x0, y0, x1, y1);
+		SmoothTile_XXYY(x0, y0, x1, y1);
 	}
 
 	/// <summary>
@@ -544,14 +409,14 @@ public class YggdrasilWorldGeneration : ModSystem
 		{
 			for (int y = y0; y <= y1; y += 1)
 			{
-				Tile tile = TileUtils.SafeGetTile(x, y);
+				Tile tile = SafeGetTile(x, y);
 				if (ChestSafe(x, y))
 				{
 					tile.HasTile = false;
 				}
 			}
 		}
-		SmoothTile(x0, y0, x1, y1);
+		SmoothTile_XXYY(x0, y0, x1, y1);
 	}
 
 	/// <summary>
@@ -567,7 +432,7 @@ public class YggdrasilWorldGeneration : ModSystem
 		{
 			for (int y = y0; y <= y1; y += 1)
 			{
-				Tile tile = TileUtils.SafeGetTile(x, y);
+				Tile tile = SafeGetTile(x, y);
 				tile.LiquidAmount = 0;
 			}
 		}
@@ -586,7 +451,7 @@ public class YggdrasilWorldGeneration : ModSystem
 		{
 			for (int y = y0; y <= y1; y += 1)
 			{
-				Tile tile = TileUtils.SafeGetTile(x, y);
+				Tile tile = SafeGetTile(x, y);
 				tile.RedWire = false;
 				tile.GreenWire = false;
 				tile.BlueWire = false;
@@ -609,11 +474,11 @@ public class YggdrasilWorldGeneration : ModSystem
 		{
 			for (int y = y0; y <= y1; y += 1)
 			{
-				Tile tile = TileUtils.SafeGetTile(x, y);
-				tile.wall = 0;
+				Tile tile = SafeGetTile(x, y);
+				tile.WallType = 0;
 			}
 		}
-		SmoothTile(x0, y0, x1, y1);
+		SmoothTile_XXYY(x0, y0, x1, y1);
 	}
 
 	/// <summary>
@@ -639,190 +504,6 @@ public class YggdrasilWorldGeneration : ModSystem
 	}
 
 	/// <summary>
-	/// Return the summary of air-to-tile distances of given point to top and to bottom.
-	/// </summary>
-	/// <param name="x"></param>
-	/// <param name="y"></param>
-	/// <returns></returns>
-	public static int CheckSpaceHeight(int x, int y)
-	{
-		int count = 0;
-		int x0 = x;
-		int y0 = y;
-		if (x0 > Main.maxTilesX || x0 < 0)
-		{
-			return count;
-		}
-		while (!TileUtils.SafeGetTile(x0, y0).HasTile)
-		{
-			if (y0 > Main.maxTilesY)
-			{
-				break;
-			}
-			y0++;
-			count++;
-		}
-		x0 = x;
-		y0 = y - 1;
-		while (!TileUtils.SafeGetTile(x0, y0).HasTile)
-		{
-			if (y0 < 0)
-			{
-				break;
-			}
-			y0--;
-			count++;
-		}
-		return count;
-	}
-
-	/// <summary>
-	/// Return the summary of air-to-tile distances of given point to left and to right.
-	/// </summary>
-	/// <param name="x"></param>
-	/// <param name="y"></param>
-	/// <returns></returns>
-	public static int CheckSpaceWidth(int x, int y)
-	{
-		int count = 0;
-		int x0 = x;
-		int y0 = y;
-		if (y0 > Main.maxTilesY || y0 < 0)
-		{
-			return count;
-		}
-		while (!TileUtils.SafeGetTile(x0, y0).HasTile)
-		{
-			if (x0 > Main.maxTilesX)
-			{
-				break;
-			}
-			x0++;
-			count++;
-		}
-		x0 = x - 1;
-		y0 = y;
-		while (!TileUtils.SafeGetTile(x0, y0).HasTile)
-		{
-			if (x0 < 0)
-			{
-				break;
-			}
-			x0--;
-			count++;
-		}
-		return count;
-	}
-
-	/// <summary>
-	/// Return the air-to-tile distance from given point to LEFT.
-	/// </summary>
-	/// <param name="x"></param>
-	/// <param name="y"></param>
-	/// <returns></returns>
-	public static int CheckSpaceLeft(int x, int y)
-	{
-		int count = 0;
-		int x0 = x;
-		int y0 = y;
-		if (y0 > Main.maxTilesY || y0 < 0)
-		{
-			return count;
-		}
-		while (!TileUtils.SafeGetTile(x0, y0).HasTile)
-		{
-			if (x0 < 0)
-			{
-				break;
-			}
-			x0--;
-			count++;
-		}
-		return count;
-	}
-
-	/// <summary>
-	/// Return the air-to-tile distance from given point to RIGHT.
-	/// </summary>
-	/// <param name="x"></param>
-	/// <param name="y"></param>
-	/// <returns></returns>
-	public static int CheckSpaceRight(int x, int y)
-	{
-		int count = 0;
-		int x0 = x;
-		int y0 = y;
-		if (y0 > Main.maxTilesY || y0 < 0)
-		{
-			return count;
-		}
-		while (!TileUtils.SafeGetTile(x0, y0).HasTile)
-		{
-			if (x0 > Main.maxTilesX)
-			{
-				break;
-			}
-			x0++;
-			count++;
-		}
-		return count;
-	}
-
-	/// <summary>
-	/// Return the air-to-tile distance from given point to TOP.
-	/// </summary>
-	/// <param name="x"></param>
-	/// <param name="y"></param>
-	/// <returns></returns>
-	public static int CheckSpaceUp(int x, int y)
-	{
-		int count = 0;
-		int x0 = x;
-		int y0 = y;
-		if (x0 > Main.maxTilesX || x0 < 0)
-		{
-			return count;
-		}
-		while (!TileUtils.SafeGetTile(x0, y0).HasTile)
-		{
-			if (y0 < 0)
-			{
-				break;
-			}
-			y0--;
-			count++;
-		}
-		return count;
-	}
-
-	/// <summary>
-	/// Return the air-to-tile distance from given point to BOTTOM.
-	/// </summary>
-	/// <param name="x"></param>
-	/// <param name="y"></param>
-	/// <returns></returns>
-	public static int CheckSpaceDown(int x, int y)
-	{
-		int count = 0;
-		int x0 = x;
-		int y0 = y;
-		if (y0 > Main.maxTilesY || y0 < 0)
-		{
-			return count;
-		}
-		while (!TileUtils.SafeGetTile(x0, y0).HasTile)
-		{
-			if (y0 > Main.maxTilesY)
-			{
-				break;
-			}
-			y0++;
-			count++;
-		}
-		return count;
-	}
-
-	/// <summary>
 	/// Return the tile-embedded-depth by the given point, a float value, but 1 tile's length = 1.0f.
 	/// </summary>
 	/// <returns></returns>
@@ -833,7 +514,7 @@ public class YggdrasilWorldGeneration : ModSystem
 		{
 			for (int j = -maxRange; j <= maxRange; j++)
 			{
-				if (!TileUtils.SafeGetTile(i + x, j + y).HasTile)
+				if (!SafeGetTile(i + x, j + y).HasTile)
 				{
 					if (new Vector2(i, j).Length() <= minDepth)
 					{
@@ -858,7 +539,7 @@ public class YggdrasilWorldGeneration : ModSystem
 			{
 				if (new Vector2(i, j).Length() <= depth)
 				{
-					if (TileUtils.SafeGetTile(i + x, j + y).wall <= 0)
+					if (SafeGetTile(i + x, j + y).wall <= 0)
 					{
 						depth = new Vector2(i, j).Length();
 					}
@@ -881,7 +562,7 @@ public class YggdrasilWorldGeneration : ModSystem
 			{
 				if (new Vector2(i, j).Length() <= maxRange)
 				{
-					Tile tile = TileUtils.SafeGetTile(i + x, j + y);
+					Tile tile = SafeGetTile(i + x, j + y);
 					if (tile.HasTile && tile.TileType == type)
 					{
 						depth++;
@@ -906,7 +587,7 @@ public class YggdrasilWorldGeneration : ModSystem
 				Vector2 v1 = new Vector2(i, j);
 				if (v1.Length() <= maxRange && v1.Length() > 0)
 				{
-					Tile tile = TileUtils.SafeGetTile(i + x, j + y);
+					Tile tile = SafeGetTile(i + x, j + y);
 					if (tile.HasTile && tile.TileType != excludeTileType)
 					{
 						v0 += Vector2.Normalize(v1) / v1.Length();
@@ -939,7 +620,7 @@ public class YggdrasilWorldGeneration : ModSystem
 				Vector2 v1 = new Vector2(i, j);
 				if (v1.Length() <= maxRange && v1.Length() > 0)
 				{
-					Tile tile = TileUtils.SafeGetTile(i + x, j + y);
+					Tile tile = SafeGetTile(i + x, j + y);
 					if (tile.HasTile && tile.TileType != excludeTileType)
 					{
 						v0 += Vector2.Normalize(v1) / v1.Length();
@@ -1012,7 +693,7 @@ public class YggdrasilWorldGeneration : ModSystem
 				Vector2 v1 = new Vector2(i, j);
 				if (v1.Length() <= maxRange && v1.Length() > 0)
 				{
-					Tile tile = TileUtils.SafeGetTile(i + x, j + y);
+					Tile tile = SafeGetTile(i + x, j + y);
 					if (tile.HasTile && tile.TileType == type)
 					{
 						v0 += Vector2.Normalize(v1) / v1.Length();
@@ -1045,7 +726,7 @@ public class YggdrasilWorldGeneration : ModSystem
 				Vector2 v1 = new Vector2(i, j);
 				if (v1.Length() <= maxRange && v1.Length() > 0)
 				{
-					Tile tile = TileUtils.SafeGetTile(i + x, j + y);
+					Tile tile = SafeGetTile(i + x, j + y);
 					if (tile.HasTile && tile.TileType == type)
 					{
 						v0 += Vector2.Normalize(v1) / v1.Length();
@@ -1115,7 +796,7 @@ public class YggdrasilWorldGeneration : ModSystem
 		{
 			for (int j = -100; j <= 100; j++)
 			{
-				Tile tile = TileUtils.SafeGetTile(i + x, j + y);
+				Tile tile = SafeGetTile(i + x, j + y);
 				if (tile.HasTile)
 				{
 					Vector2 v1 = new Vector2(i, j);
@@ -1140,7 +821,7 @@ public class YggdrasilWorldGeneration : ModSystem
 		{
 			for (int j = -100; j <= 100; j++)
 			{
-				Tile tile = TileUtils.SafeGetTile(i + x, j + y);
+				Tile tile = SafeGetTile(i + x, j + y);
 				if (tile.HasTile && tile.TileType == type)
 				{
 					Vector2 v1 = new Vector2(i, j);
@@ -1166,7 +847,7 @@ public class YggdrasilWorldGeneration : ModSystem
 		{
 			for (int j = -100; j <= 100; j++)
 			{
-				Tile tile = TileUtils.SafeGetTile(i + x, j + y);
+				Tile tile = SafeGetTile(i + x, j + y);
 				if (tile.HasTile && tile.TileType != excludeTileType)
 				{
 					Vector2 v1 = new Vector2(i, j);
@@ -1192,7 +873,7 @@ public class YggdrasilWorldGeneration : ModSystem
 		{
 			for (int j = -100; j <= 100; j++)
 			{
-				Tile tile = TileUtils.SafeGetTile(i + x, j + y);
+				Tile tile = SafeGetTile(i + x, j + y);
 				if (!tile.HasTile)
 				{
 					Vector2 v1 = new Vector2(i, j);
@@ -1217,7 +898,7 @@ public class YggdrasilWorldGeneration : ModSystem
 	public static void CrawlCarpetOfTile(int x, int y, int step, int thick, int type, bool clockwise = false)
 	{
 		Point checkPoint = NearestBlockCoordinateIn100Tile(x, y, type);
-		if (!TileUtils.SafeGetTile(checkPoint).HasTile)
+		if (!SafeGetTile(checkPoint).HasTile)
 		{
 			return;
 		}
@@ -1230,7 +911,7 @@ public class YggdrasilWorldGeneration : ModSystem
 			CircleTile(position + normal * thickValue, position, type);
 			position += velocity;
 			int count = 0;
-			while (!TileUtils.SafeGetTile(position).HasTile)
+			while (!SafeGetTile(position).HasTile)
 			{
 				count++;
 				position += TerrianSurfaceNormal((int)position.X, (int)position.Y);
@@ -1254,7 +935,7 @@ public class YggdrasilWorldGeneration : ModSystem
 	public static void CrawlCarpetOfTypeTile(int x, int y, int step, int thick, int type, int backgroundType, bool clockwise = false)
 	{
 		Point checkPoint = NearestBlockCoordinateIn100Tile(x, y, type);
-		if (!TileUtils.SafeGetTile(checkPoint).HasTile)
+		if (!SafeGetTile(checkPoint).HasTile)
 		{
 			return;
 		}
@@ -1267,7 +948,7 @@ public class YggdrasilWorldGeneration : ModSystem
 			CircleTile(position + normal * thickValue, position, type);
 			position += velocity;
 			int count = 0;
-			while (!TileUtils.SafeGetTile(position).HasTile)
+			while (!SafeGetTile(position).HasTile)
 			{
 				count++;
 				position += TerrianTypeTileSurfaceNormal((int)position.X, (int)position.Y, backgroundType);
@@ -1294,40 +975,29 @@ public class YggdrasilWorldGeneration : ModSystem
 		{
 			for (int y = -radiusI; y <= radiusI; y++)
 			{
-				Tile tile = TileUtils.SafeGetTile(center + new Vector2(x, y));
+				Tile tile = SafeGetTile(center + new Vector2(x, y));
 				if (new Vector2(x, y).Length() <= radius)
 				{
 					if (ChestSafe(center + new Vector2(x, y)))
 					{
-						if (force)
+						if (type == -2)
 						{
-							if (type == -2)
-							{
-								tile.ClearEverything();
-							}
-							else if (type == -1)
-							{
-								tile.HasTile = false;
-							}
-							else
+							tile.ClearEverything();
+						}
+						else if (type == -1)
+						{
+							tile.HasTile = false;
+						}
+						else if (type >= 0)
+						{
+							if (force)
 							{
 								tile.TileType = (ushort)type;
 								tile.HasTile = true;
 							}
-						}
-						else
-						{
-							if (!tile.HasTile)
+							else
 							{
-								if (type == -2)
-								{
-									tile.ClearEverything();
-								}
-								else if (type == -1)
-								{
-									tile.HasTile = false;
-								}
-								else
+								if (!tile.HasTile)
 								{
 									tile.TileType = (ushort)type;
 									tile.HasTile = true;
@@ -1338,6 +1008,18 @@ public class YggdrasilWorldGeneration : ModSystem
 				}
 			}
 		}
+	}
+
+	/// <summary>
+	/// Set a center and radius of a circle in tile coordinate, and (type >= 0, place that type of tile, type = -1,clear tiles; tile = -2,clear everything).
+	/// </summary>
+	/// <param name="center"></param>
+	/// <param name="radius"></param>
+	/// <param name="type"></param>
+	/// <param name="force"></param>
+	public static void CircleTile(Point center, float radius, int type, bool force = false)
+	{
+		CircleTile(center.ToVector2(), radius, type, force);
 	}
 
 	/// <summary>
@@ -1368,25 +1050,25 @@ public class YggdrasilWorldGeneration : ModSystem
 		{
 			for (int y = -radiusI; y <= radiusI; y++)
 			{
-				Tile tile = TileUtils.SafeGetTile(center + new Vector2(x, y));
+				Tile tile = SafeGetTile(center + new Vector2(x, y));
 				if (new Vector2(x, y).Length() <= radius)
 				{
-					if (force)
+					if (type == -1)
 					{
-						if (type == -1)
+						tile.ClearEverything();
+					}
+					else if (type >= 0)
+					{
+						if (force)
 						{
-							tile.ClearEverything();
+							tile.WallType = (ushort)type;
 						}
 						else
 						{
-							tile.wall = (ushort)type;
-						}
-					}
-					else
-					{
-						if (tile.wall == 0)
-						{
-							tile.wall = (ushort)type;
+							if (tile.WallType <= 0)
+							{
+								tile.WallType = (ushort)type;
+							}
 						}
 					}
 				}
@@ -1409,7 +1091,8 @@ public class YggdrasilWorldGeneration : ModSystem
 	}
 
 	/// <summary>
-	/// 圆心半径,布设不规则圆形物块(小于半径),=-1清理物块,-2清理全部
+	/// Transform the tile within the circle(center, radius) to the type, but with a random noise affect on the bound.<br/>
+	/// force = true, directly set the tile to the type; force = false, only set the tile to the type when there is no tile. <br/>
 	/// </summary>
 	/// <param name="center"></param>
 	/// <param name="radius"></param>
@@ -1424,36 +1107,48 @@ public class YggdrasilWorldGeneration : ModSystem
 		{
 			for (int y = -radiusI; y <= radiusI; y++)
 			{
-				Tile tile = TileUtils.SafeGetTile(center + new Vector2(x, y));
-				float aValue = PerlinPixelR[Math.Abs((x + x0CoordPerlin) % 1024), Math.Abs((y + y0CoordPerlin) % 1024)] / 255f;
+				Tile tile = SafeGetTile(center + new Vector2(x, y));
+				float aValue = GetLargeSmokeTexturePixelR(x + x0CoordPerlin, y + y0CoordPerlin);
 				if (ChestSafe(center + new Vector2(x, y)))
 				{
 					if (new Vector2(x, y).Length() <= radius - aValue * noiseSize)
 					{
-						if (force)
+						if (type == -1)
 						{
-							if (type == -1)
+							tile.ClearEverything();
+						}
+						else if (type >= 0)
+						{
+							if (force)
 							{
-								tile.ClearEverything();
+								tile.TileType = (ushort)type;
+								tile.HasTile = true;
 							}
 							else
 							{
-								tile.TileType = (ushort)type;
-								tile.HasTile = true;
-							}
-						}
-						else
-						{
-							if (!tile.HasTile)
-							{
-								tile.TileType = (ushort)type;
-								tile.HasTile = true;
+								if (!tile.HasTile)
+								{
+									tile.TileType = (ushort)type;
+									tile.HasTile = true;
+								}
 							}
 						}
 					}
 				}
 			}
 		}
+	}
+
+	/// <summary>
+	/// 圆心半径,布设不规则圆形物块(小于半径),=-1清理物块,-2清理全部
+	/// </summary>
+	/// <param name="center"></param>
+	/// <param name="radius"></param>
+	/// <param name="type"></param>
+	/// <param name="force"></param>
+	public static void CircleTileWithRandomNoise(Point center, float radius, int type, float noiseSize = 10f, bool force = false)
+	{
+		CircleTileWithRandomNoise(center.ToVector2(), radius, type, noiseSize, force);
 	}
 
 	public static void CircleTileWithRandomNoise(Vector2 pointA, Vector2 pointB, int type, float noiseSize = 10f, bool force = false)
@@ -1481,13 +1176,13 @@ public class YggdrasilWorldGeneration : ModSystem
 				for (int x = 0; x < pixelRow.Length; x++)
 				{
 					ref var pixel = ref pixelRow[x];
-					Tile tile = TileUtils.SafeGetTile(x + a, y + b);
+					Tile tile = SafeGetTile(x + a, y + b);
 					switch (type)// 21是箱子
 					{
 						case 0:
 							if (pixel.R == 255 && pixel.G == 0 && pixel.B == 0)
 							{
-								if (tile.TileType != 21 && TileUtils.SafeGetTile(x + a, y + b - 1).TileType != 21)
+								if (tile.TileType != TileID.Containers && SafeGetTile(x + a, y + b - 1).TileType != TileID.Containers)
 								{
 									tile.ClearEverything();
 								}
@@ -1508,8 +1203,8 @@ public class YggdrasilWorldGeneration : ModSystem
 
 							if (pixel.R == 31 && pixel.G == 26 && pixel.B == 45)// 黑淤泥
 							{
-								tile.TileType = (ushort)ModContent.TileType<DarkSludge>();
-								tile.HasTile = true;
+								tile.LiquidType = LiquidLoader.LiquidType<DarkSludgeLiquid>();
+								tile.LiquidAmount = byte.MaxValue;
 							}
 
 							// 苍苔蔓帘
@@ -1565,28 +1260,28 @@ public class YggdrasilWorldGeneration : ModSystem
 						case 2:
 							if (pixel.R == 24 && pixel.G == 0 && pixel.B == 0)// 石化龙鳞木
 							{
-								if (tile.TileType != 21 && TileUtils.SafeGetTile(x + a, y + b - 1).TileType != 21)
+								if (tile.TileType != TileID.Containers && SafeGetTile(x + a, y + b - 1).TileType != TileID.Containers)
 								{
 									tile.WallType = (ushort)ModContent.WallType<StoneDragonScaleWoodWall>();
 								}
 							}
 							if (pixel.R == 40 && pixel.G == 32 && pixel.B == 31)// 龙鳞木
 							{
-								if (tile.TileType != 21 && TileUtils.SafeGetTile(x + a, y + b - 1).TileType != 21)
+								if (tile.TileType != TileID.Containers && SafeGetTile(x + a, y + b - 1).TileType != TileID.Containers)
 								{
 									tile.WallType = (ushort)ModContent.WallType<DragonScaleWoodWall>();
 								}
 							}
 							if (pixel.R == 56 && pixel.G == 56 && pixel.B == 56)// 石墙
 							{
-								if (tile.TileType != 21 && TileUtils.SafeGetTile(x + a, y + b - 1).TileType != 21)
+								if (tile.TileType != TileID.Containers && SafeGetTile(x + a, y + b - 1).TileType != TileID.Containers)
 								{
 									tile.WallType = WallID.Stone;
 								}
 							}
 							if (pixel.R == 25 && pixel.G == 14 && pixel.B == 12)// 天穹土墙
 							{
-								if (tile.TileType != 21 && TileUtils.SafeGetTile(x + a, y + b - 1).TileType != 21)
+								if (tile.TileType != TileID.Containers && SafeGetTile(x + a, y + b - 1).TileType != TileID.Containers)
 								{
 									tile.WallType = (ushort)ModContent.WallType<MossProneSandSoilWall>();
 								}
@@ -1727,7 +1422,7 @@ public class YggdrasilWorldGeneration : ModSystem
 					{
 						if (Math.Abs(j - startX) + Math.Abs(k - startY) < checkSize * (1.0 + GenRand.Next(-10, 11) * 0.005) && j >= 0 && j < Main.maxTilesX && k >= 0 && k < Main.maxTilesY)
 						{
-							Tile tile = TileUtils.SafeGetTile(j, k);
+							Tile tile = SafeGetTile(j, k);
 							if (ChestSafe(j, k))
 							{
 								tile.active(active: false);
@@ -1737,7 +1432,7 @@ public class YggdrasilWorldGeneration : ModSystem
 								}
 								if (wallType != -1)
 								{
-									tile.wall = (ushort)wallType;
+									tile.WallType = (ushort)wallType;
 								}
 							}
 						}
@@ -1818,7 +1513,7 @@ public class YggdrasilWorldGeneration : ModSystem
 					{
 						if (Math.Abs(j - startX) + Math.Abs(k - startY) < checkSize * (1.0 + GenRand.Next(-10, 11) * 0.005) && j >= 0 && j < Main.maxTilesX && k >= 0 && k < Main.maxTilesY)
 						{
-							Tile tile = TileUtils.SafeGetTile(j, k);
+							Tile tile = SafeGetTile(j, k);
 							if (ChestSafe(j, k))
 							{
 								if (tile.TileType == type)
@@ -1830,7 +1525,7 @@ public class YggdrasilWorldGeneration : ModSystem
 									}
 									if (wallType != -1)
 									{
-										tile.wall = (ushort)wallType;
+										tile.WallType = (ushort)wallType;
 									}
 								}
 								else
@@ -1838,7 +1533,7 @@ public class YggdrasilWorldGeneration : ModSystem
 									return new Vector2D(startX, startY);
 								}
 							}
-							Tile tileSafe = TileUtils.SafeGetTile((int)(j + (xVel + xDir) * 3), (int)(k + (yVel + yDir) * 3));
+							Tile tileSafe = SafeGetTile((int)(j + (xVel + xDir) * 3), (int)(k + (yVel + yDir) * 3));
 							if (tile.TileType != type)
 							{
 								return new Vector2D(startX, startY);
@@ -1892,23 +1587,6 @@ public class YggdrasilWorldGeneration : ModSystem
 	}
 
 	/// <summary>
-	/// Return true when the given point can be killed safely(without chest).
-	/// </summary>
-	/// <param name="x"></param>
-	/// <param name="y"></param>
-	/// <returns></returns>
-	public static bool ChestSafe(int x, int y)
-	{
-		Tile tile = TileUtils.SafeGetTile(x, y);
-		Tile tileUp = TileUtils.SafeGetTile(x, y - 1);
-		if (!TileID.Sets.BasicChest[tile.TileType] && !TileID.Sets.BasicChest[tileUp.TileType])
-		{
-			return true;
-		}
-		return false;
-	}
-
-	/// <summary>
 	/// Return true when the given point do not contained by any rectangles in ShouldNotSmoothAreas.
 	/// </summary>
 	/// <param name="x"></param>
@@ -1927,16 +1605,6 @@ public class YggdrasilWorldGeneration : ModSystem
 	}
 
 	/// <summary>
-	/// Return true when the given point can be killed safely(without chest).
-	/// </summary>
-	/// <param name="center"></param>
-	/// <returns></returns>
-	public static bool ChestSafe(Vector2 center)
-	{
-		return ChestSafe((int)center.X, (int)center.Y);
-	}
-
-	/// <summary>
 	/// Return true when no chest in given aren(include one row above).
 	/// </summary>
 	/// <param name="x"></param>
@@ -1950,8 +1618,8 @@ public class YggdrasilWorldGeneration : ModSystem
 		{
 			for (int y0 = y; y0 <= y + height; y0++)
 			{
-				Tile tile = TileUtils.SafeGetTile(x, y);
-				Tile tileUp = TileUtils.SafeGetTile(x, y - 1);
+				Tile tile = SafeGetTile(x, y);
+				Tile tileUp = SafeGetTile(x, y - 1);
 				if (TileID.Sets.BasicChest[tile.TileType] || TileID.Sets.BasicChest[tileUp.TileType])
 				{
 					return false;
@@ -1970,59 +1638,5 @@ public class YggdrasilWorldGeneration : ModSystem
 	public static bool ChestSafeArea(Vector2 center, Vector2 size)
 	{
 		return ChestSafeArea((int)center.X, (int)center.Y, (int)size.X, (int)size.Y);
-	}
-
-	private static readonly (int, int)[] directionsLiquid =
-	{
-		(1, 0),
-		(0, 1),
-		(-1, 0),
-	};
-
-	/// <summary>
-	/// Fill water or other liquid below center.center : in tile coord.
-	/// </summary>
-	/// <param name="center"></param>
-	/// <param name="type"></param>
-	public static void FillLiquid(Vector2 center, int type = 0, int maxCount = 900)
-	{
-		Queue<Point> queueChecked = new Queue<Point>();
-
-		// 将起始点加入队列
-		queueChecked.Enqueue(center.ToPoint());
-		List<Point> visited = new List<Point>();
-
-		while (queueChecked.Count > 0)
-		{
-			var tilePos = queueChecked.Dequeue();
-
-			foreach (var (dx, dy) in directionsLiquid)
-			{
-				int checkX = tilePos.X + dx;
-				int checkY = tilePos.Y + dy;
-				Point point = new Point(checkX, checkY);
-
-				// 检查边界和障碍物
-				if (checkX >= 20 && checkX < Main.maxTilesX - 20 && checkY >= 20 && checkY < Main.maxTilesY - 20 &&
-					!Collision.IsWorldPointSolid(point.ToWorldCoordinates()) && !visited.Contains(point))
-				{
-					queueChecked.Enqueue(point);
-					visited.Add(point);
-				}
-			}
-			if (queueChecked.Count > maxCount || visited.Count > maxCount)
-			{
-				break;
-			}
-		}
-		if (visited.Count < maxCount)
-		{
-			foreach (var pos in visited)
-			{
-				Tile tile = TileUtils.SafeGetTile(pos);
-				tile.LiquidType = (byte)type;
-				tile.LiquidAmount = 255;
-			}
-		}
 	}
 }

@@ -14,12 +14,10 @@ public class SpongeOxygenBubble : ModProjectile
 		Projectile.height = 16;
 		Projectile.friendly = false;
 		Projectile.hostile = true;
-		Projectile.DamageType = DamageClass.Ranged;
 		Projectile.penetrate = -1;
 		Projectile.timeLeft = 120000;
 		Projectile.tileCollide = true;
 		Projectile.ignoreWater = false;
-		//Projectile.extraUpdates = 2;
 	}
 
 	public override void AI()

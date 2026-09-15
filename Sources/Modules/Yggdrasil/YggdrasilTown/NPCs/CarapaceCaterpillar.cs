@@ -1,5 +1,6 @@
 using Everglow.Commons.Coroutines;
 using Everglow.Commons.Templates.Enemies;
+using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;

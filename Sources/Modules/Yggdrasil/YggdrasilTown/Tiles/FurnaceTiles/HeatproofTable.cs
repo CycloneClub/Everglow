@@ -1,5 +1,4 @@
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
-using Terraria.DataStructures;
 using Terraria.Localization;
 using Terraria.ObjectData;
 

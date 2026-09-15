@@ -15,8 +15,8 @@ public class JadeLakeRedAlgae : ModTile, ITileFluentlyDrawn
 	{
 		Main.tileFrameImportant[Type] = false;
 		Main.tileNoAttach[Type] = true;
-		Main.tileCut[Type] = true;
 		Main.tileLavaDeath[Type] = true;
+
 		// TileObjectData assignment
 		// The TileID.Signs TileObjectData doesn't set StyleMultiplier to 5, so we will not be copying from it in this case
 		// Using Style1x1 as a base, we will create a TileObjectData with 5 alternate placements, each anchoring to a different anchor.
@@ -92,7 +92,7 @@ public class JadeLakeRedAlgae : ModTile, ITileFluentlyDrawn
 		var tileRight = Main.tile[tilePos + new Point(1, 0)];
 		var tileUp = Main.tile[tilePos + new Point(0, -1)];
 		var tileDown = Main.tile[tilePos + new Point(0, 1)];
-		if (tile.wall == 0 && (!tileLeft.HasTile || !Main.tileSolid[tileLeft.TileType]) && (!tileRight.HasTile || !Main.tileSolid[tileRight.TileType])
+		if (tile.WallType == 0 && (!tileLeft.HasTile || !Main.tileSolid[tileLeft.TileType]) && (!tileRight.HasTile || !Main.tileSolid[tileRight.TileType])
 			 && (!tileUp.HasTile || !Main.tileSolid[tileUp.TileType]) && (!tileDown.HasTile || !Main.tileSolid[tileDown.TileType]))
 		{
 			WorldGen.KillTile(i, j);
@@ -138,7 +138,7 @@ public class JadeLakeRedAlgae : ModTile, ITileFluentlyDrawn
 		var tileRight = Main.tile[tilePos + new Point(1, 0)];
 		var tileUp = Main.tile[tilePos + new Point(0, -1)];
 		var tileDown = Main.tile[tilePos + new Point(0, 1)];
-		if (tile.wall > 0 && (!tileLeft.HasTile || !Main.tileSolid[tileLeft.TileType]) && (!tileRight.HasTile || !Main.tileSolid[tileRight.TileType])
+		if (tile.WallType > 0 && (!tileLeft.HasTile || !Main.tileSolid[tileLeft.TileType]) && (!tileRight.HasTile || !Main.tileSolid[tileRight.TileType])
 			 && (!tileUp.HasTile || !Main.tileSolid[tileUp.TileType]) && (!tileDown.HasTile || !Main.tileSolid[tileDown.TileType]))
 		{
 			styleWall = true;
@@ -245,9 +245,8 @@ public class JadeLakeRedAlgae : ModTile, ITileFluentlyDrawn
 				windCycle += highestWindGridPushComplexRight;
 				Vector2 movementRight = new Vector2(windCycle * 7.2f * hardness, 0);
 				float midRot = (movementLeft.X + movementRight.X) * 0.015f + totalRot;
-
-				algaes.Add(drawPos - deltaX.RotatedBy(midRot) + algeaPos + movementLeft, tileLight, new Vector3(frame.X / (float)tex.Width, (frame.Y + frame.Height - frame.Height / 16f * j) / tex.Height, 0));
 				algaes.Add(drawPos + deltaX.RotatedBy(midRot) + algeaPos + movementRight, tileLight, new Vector3((frame.X + frame.Width) / (float)tex.Width, (frame.Y + frame.Height - frame.Height / 16f * j) / tex.Height, 0));
+				algaes.Add(drawPos - deltaX.RotatedBy(midRot) + algeaPos + movementLeft, tileLight, new Vector3(frame.X / (float)tex.Width, (frame.Y + frame.Height - frame.Height / 16f * j) / tex.Height, 0));
 				algeaPos += deltaY.RotatedBy(midRot);
 			}
 		}

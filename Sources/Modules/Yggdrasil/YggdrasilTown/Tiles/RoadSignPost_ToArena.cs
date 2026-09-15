@@ -81,7 +81,7 @@ public class RoadSignPost_ToArena : ModTile, ISceneTile
 		Tile tile = TileUtils.SafeGetTile(i, j);
 		if (tile.TileFrameX == 0 && tile.TileFrameY == 0)
 		{
-			RoadSignPost_ToArenaVFX rSV = new RoadSignPost_ToArenaVFX { position = new Vector2(i, j) * 16, Active = true, Visible = true, originTile = new Point(i, j), originType = Type };
+			RoadSignPost_ToArenaVFX rSV = new RoadSignPost_ToArenaVFX { Position = new Vector2(i, j) * 16, Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = Type };
 			Ins.VFXManager.Add(rSV);
 		}
 	}

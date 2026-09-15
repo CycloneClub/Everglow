@@ -48,6 +48,11 @@ public abstract class CableTile : ModTile, ITileFluentlyDrawn
 	/// </summary>
 	public float Elasticity = 60;
 
+	/// <summary>
+	/// How far should start drawing the rope in an area out of screen .
+	/// </summary>
+	public float DrawOffScreenRange = 1200f;
+
 	public override void SetStaticDefaults()
 	{
 		Main.tileFrameImportant[Type] = true;
@@ -467,22 +472,22 @@ public abstract class CableTile : ModTile, ITileFluentlyDrawn
 	/// <summary>
 	/// 鼠标划过点位
 	/// </summary>
-	public Dictionary<Player, Point> MouseOverPoint = new Dictionary<Player, Point>();
+	public Dictionary<Player, Point> MouseOverWinchPlayers = new Dictionary<Player, Point>();
 
 	public override void MouseOver(int i, int j)
 	{
-		if (!MouseOverPoint.ContainsKey(Main.LocalPlayer))
+		if (!MouseOverWinchPlayers.ContainsKey(Main.LocalPlayer))
 		{
-			MouseOverPoint.Add(Main.LocalPlayer, new Point(i, j));
+			MouseOverWinchPlayers.Add(Main.LocalPlayer, new Point(i, j));
 			if (Main.LocalPlayer.HeldItem.ModItem is CableTileItem)
 			{
 				CableTilePlaceHelpingSystem vfx = new CableTilePlaceHelpingSystem { FixPoint = new Point(i, j), Active = true, Visible = true, Style = 0 };
 				Ins.VFXManager.Add(vfx);
 			}
 		}
-		else if (MouseOverPoint[Main.LocalPlayer] != new Point(i, j))
+		else if (MouseOverWinchPlayers[Main.LocalPlayer] != new Point(i, j))
 		{
-			MouseOverPoint.Remove(Main.LocalPlayer);
+			MouseOverWinchPlayers.Remove(Main.LocalPlayer);
 		}
 	}
 
@@ -602,9 +607,9 @@ public class CableTilePlaceHelpingSystem : Visual
 			if (cableTile.HasHoldRope.ContainsKey(Main.LocalPlayer))
 			{
 				Active = false;
-				if (cableTile.MouseOverPoint.ContainsKey(Main.LocalPlayer))
+				if (cableTile.MouseOverWinchPlayers.ContainsKey(Main.LocalPlayer))
 				{
-					cableTile.MouseOverPoint.Remove(Main.LocalPlayer);
+					cableTile.MouseOverWinchPlayers.Remove(Main.LocalPlayer);
 				}
 				return;
 			}
@@ -613,9 +618,9 @@ public class CableTilePlaceHelpingSystem : Visual
 			if (x != FixPoint.X || y != FixPoint.Y)
 			{
 				Active = false;
-				if (cableTile.MouseOverPoint.ContainsKey(Main.LocalPlayer))
+				if (cableTile.MouseOverWinchPlayers.ContainsKey(Main.LocalPlayer))
 				{
-					cableTile.MouseOverPoint.Remove(Main.LocalPlayer);
+					cableTile.MouseOverWinchPlayers.Remove(Main.LocalPlayer);
 				}
 				return;
 			}

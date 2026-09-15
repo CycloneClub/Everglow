@@ -1,19 +1,19 @@
 EnergyDrink: {
-	DisplayName: Energy Drink
+	DisplayName: 能量饮料
 	Tooltip: ""
 }
 
 ShadowPotion: {
-	DisplayName: Shadow Potion
+	DisplayName: 暗影药剂
 	Tooltip: ""
 }
 
 GuidePotion: {
-	DisplayName: Guide Potion
+	DisplayName: 引路药水
 	Tooltip: ""
 }
 
 RayPotion: {
-	DisplayName: Ray Potion
+	DisplayName: 霞光药水
 	Tooltip: ""
 }

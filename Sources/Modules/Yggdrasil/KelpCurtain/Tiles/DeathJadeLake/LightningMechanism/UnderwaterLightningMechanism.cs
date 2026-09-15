@@ -1,7 +1,5 @@
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
 using Everglow.Yggdrasil.KelpCurtain.Projectiles.TileEffect;
-using Everglow.Yggdrasil.KelpCurtain.Tiles.GeyserAirBuds;
-using Everglow.Yggdrasil.WorldGeneration;
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.ObjectData;
@@ -150,6 +148,7 @@ public class UnderwaterLightningMechanism : ModTile
 		};
 		Queue<Point> queueChecked = new Queue<Point>();
 		Tile tile = Main.tile[i, j];
+
 		// 将起始点加入队列
 		queueChecked.Enqueue(new Point(i, j));
 		List<Point> visited = new List<Point>();

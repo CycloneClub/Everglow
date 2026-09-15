@@ -1,24 +1,24 @@
 PineNut: {
-	DisplayName: Pine Nut
+	DisplayName: 巨形松子
 	Tooltip: ""
 }
 
 AntiHeavenSicknessPill: {
-	DisplayName: Anti Heaven Sickness Pill
+	DisplayName: 抗天穹反应药丸
 	Tooltip: ""
 }
 
 LampBorerHoney: {
-	DisplayName: Lamp Borer Honey
+	DisplayName: 甘金蜜
 	Tooltip: ""
 }
 
 SquamousCore: {
-	DisplayName: Squamous Core
+	DisplayName: 龙鳞古壳核心
 	Tooltip: ""
 }
 
 JadeFruit: {
-	DisplayName: Jade Fruit
+	DisplayName: 绿琉璃果
 	Tooltip: ""
 }

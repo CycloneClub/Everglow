@@ -24,7 +24,7 @@ public class ArmorPiercingBlaster : ModItem
 		Item.noUseGraphic = true;
 
 		Item.rare = ItemRarityID.Blue;
-		Item.value = 0;
+		Item.value = 4000;
 
 		Item.shoot = ModContent.ProjectileType<ArmorPiercingBlasterProj>();
 		Item.shootSpeed = 6;

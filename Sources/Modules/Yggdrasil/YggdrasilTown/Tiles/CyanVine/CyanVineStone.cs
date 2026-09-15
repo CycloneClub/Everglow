@@ -1,5 +1,3 @@
-using Terraria.Localization;
-
 namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.CyanVine;
 
 public class CyanVineStone : ModTile
@@ -11,9 +9,9 @@ public class CyanVineStone : ModTile
 		DustType = ModContent.DustType<Dusts.CyanVine>();
 		MineResist = 4f;
 		Main.tileSpelunker[Type] = true;
-		var modTranslation = CreateMapEntryName();
-		AddMapEntry(new Color(155, 173, 183), modTranslation);
+		AddMapEntry(new Color(84, 130, 154));
 	}
+
 	public override bool CanExplode(int i, int j)
 	{
 		return false;

@@ -1,4 +1,3 @@
-using System.Reflection;
 using Everglow.Commons.Mechanics;
 using Everglow.Yggdrasil.KelpCurtain.Buffs;
 using Everglow.Yggdrasil.KelpCurtain.Cooldowns;
@@ -104,32 +103,20 @@ public class YggdrasilPlayer : ModPlayer
 
 	public override bool CloneNewInstances => true;
 
-	public override void Load()
+	public override void ModifyMaxStats(out StatModifier health, out StatModifier mana)
 	{
-		MonoModHooks.Add(typeof(PlayerLoader).GetMethod(nameof(PlayerLoader.ResetMaxStatsToVanilla), BindingFlags.Public | BindingFlags.Static), Hook_ResetMaxStatsToVanilla);
-	}
+		base.ModifyMaxStats(out health, out mana);
 
-	public static void Hook_ResetMaxStatsToVanilla(Action<Player> orig, Player player)
-	{
-		int lifeFix1 = 0, lifeFix2 = 0, lifeFix3 = 0, lifeFix4 = 0, manaFix1 = 0;
-		if (player.TryGetModPlayer(out YggdrasilPlayer modPlayer))
-		{
-			lifeFix1 = AntiHeavenSicknessPill.LifeBonusTable.Take(modPlayer.ConsumedAntiHeavenSicknessPill).Sum(p => p.Value);
-			lifeFix2 = modPlayer.ConsumedJadeGlazeFruit * JadeFruit.LifePerJadeFruit;
-			lifeFix3 = modPlayer.ConsumedSquamousCore * SquamousCore.SquamousCoreLife;
-			lifeFix4 = modPlayer.ConsumedLampBorerHoney * LampBorerHoney.LifePerHoney;
-		}
+		health.Base += AntiHeavenSicknessPill.LifeBonusTable.Take(ConsumedAntiHeavenSicknessPill).Sum(p => p.Value);
+		health.Base += ConsumedJadeGlazeFruit * JadeFruit.LifePerJadeFruit;
+		health.Base += ConsumedSquamousCore * SquamousCore.SquamousCoreLife;
+		health.Base += ConsumedLampBorerHoney * LampBorerHoney.LifePerHoney;
 
 		if (SubworldSystem.IsActive<YggdrasilWorld>())
 		{
-			player.statLifeMax = 100 + player.ConsumedLifeCrystals * 4 + player.ConsumedLifeFruit * 1 + lifeFix1 + lifeFix2 + lifeFix3 + lifeFix4;
-			player.statManaMax = 20 + player.ConsumedManaCrystals * 4 + manaFix1 * 2;
-		}
-		else
-		{
-			orig(player);
-			player.statLifeMax += lifeFix1 + lifeFix2 + lifeFix3 + lifeFix4;
-			player.statManaMax += (int)(manaFix1 * 0.4f);
+			health.Base -= Player.ConsumedLifeCrystals * 16;
+			health.Base -= Player.ConsumedLifeFruit * 4;
+			mana.Base -= Player.ConsumedManaCrystals * 16;
 		}
 	}
 

@@ -1,3 +1,4 @@
+using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 using Terraria.DataStructures;
