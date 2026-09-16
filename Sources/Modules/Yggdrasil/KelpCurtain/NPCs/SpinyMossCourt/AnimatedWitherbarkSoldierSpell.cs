@@ -418,7 +418,10 @@ public class AnimatedWitherbarkSoldierSpell : ModNPC
 				}
 			}
 
-			NPC.Center = new Vector2(tileX * 16f + 8f, tileY * 16f + 8f);
+			// The candidate tile is the lowest free tile of the clearance stack, so centring the body on
+			// it would bury the feet 15 px into the solid floor IsStandableSpot required. Bottom-align
+			// instead: the feet rest on the floor the check validated, inside the cleared stack above it.
+			NPC.Center = new Vector2(tileX * 16f + 8f, (tileY + 1) * 16f - NPC.height / 2f);
 			NPC.velocity = Vector2.Zero;
 			NPC.netUpdate = true;
 			return;
@@ -427,7 +430,8 @@ public class AnimatedWitherbarkSoldierSpell : ModNPC
 
 	/// <summary>
 	/// True when a tile can hold a humanoid: a solid floor directly beneath it and
-	/// <see cref="ClearanceTiles"/> free tiles above it.
+	/// <see cref="ClearanceTiles"/> free tiles above it (this tile and the two above it). The teleport
+	/// bottom-aligns the body on that floor.
 	/// </summary>
 	/// <param name="tileX">The candidate tile X.</param>
 	/// <param name="tileY">The candidate tile Y.</param>
