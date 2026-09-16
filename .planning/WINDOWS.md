@@ -1,10 +1,10 @@
 ---
 schema_version: 1
-open_count: 62
+open_count: 63
 waived_count: 0
 fixed_count: 3
-total_count: 65
-last_updated: 2026-09-16T10:16:02.107Z
+total_count: 66
+last_updated: 2026-09-16T10:49:13.624Z
 ---
 
 # Broken Windows Ledger
@@ -80,6 +80,7 @@ last_updated: 2026-09-16T10:16:02.107Z
 | 63 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/Radiolarian.cs |  | Plan 04-04 Task 1's first build attempt failed twice (Rule 1): Radiolarian.cs called NPCSpawnManager without using Everglow.Yggdrasil.Common, and Radiolarian_WaterBolt.cs set Projectile.noGravity, which does not exist on Projectile in this tML build. Both fixed (import added; the gravity line removed, an aquatic bolt simply never adds gravity), after which the Release build is 0 warnings / 0 errors. Recorded because the task's verify ran red once inside the task rather than red before it. | open |  | 2026-09-16T10:15:30.448Z |  |
 | 64 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/Radiolarian.cs |  | Plan 04-04 realizes the tdd=true task attribute as the Phase 4 gate's monotone guarded-class counter (32 -> 34 -> 36 -> 37, exactly the five files this plan adds) plus the Release build, because the repository has no unit-test infrastructure for ModNPC spawn isolation or AI feel; no test was fabricated and no RED/GREEN pair is claimed (the 04-02/04-03/04-06/04-07/04-08 precedent). | open |  | 2026-09-16T10:16:00.575Z |  |
 | 65 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/AlgaeOctopus.cs |  | Plan 04-04's Design Values/action prose repeats NPC.rare = ItemRarityID.White for all three creatures; NPC.rare does not exist in this tML build and was written as NPC.rarity (the engine's only NPC rarity field, Lifeform Analyzer), with 大型覆藻章鱼's 类型 稀有 written as ItemRarityID.LightPurple. The ninth occurrence of the same Rule 1 correction (Phase 3, 04-01, 04-02, 04-05, 04-06, 04-07, 04-08, 04-03) already recorded in 04-DEVIATIONS.md section 10, so no ledger edit was needed. | open |  | 2026-09-16T10:16:02.107Z |  |
+| 66 | 4 | unrun-verify | .planning/phases/04-remaining-ordinary-monsters/04-UAT.md |  | Plan 04-09 Task 2 records the phase close-out's D-21 client bundle as not executed: 04-UAT.md carries 24 per-row checks (spawn band, isolation, behaviour, combat, drops, dedicated-server/multiplayer and localization) across all 21 in-scope rows, including the LargeMossyThornTurtle target-lost-mid-flight state-machine case and the retracted-reflect case. No live tModLoader client session is part of Phase 4; the whole offline chain (Release build, Phase 4 gate 21/21, Phase 3 gate 5/5, the five Phase 1 gates, the Phase 2 gate, 3 Yggdrasil tests) is green but cannot observe any of these runtime properties. | open |  | 2026-09-16T10:49:13.624Z |  |
 
 ````json
 [
@@ -861,6 +862,18 @@ last_updated: 2026-09-16T10:16:02.107Z
     "status": "open",
     "reason": "",
     "recorded_at": "2026-09-16T10:16:02.107Z",
+    "resolved_at": null
+  },
+  {
+    "id": 66,
+    "kind": "unrun-verify",
+    "phase": "4",
+    "file": ".planning/phases/04-remaining-ordinary-monsters/04-UAT.md",
+    "line": null,
+    "description": "Plan 04-09 Task 2 records the phase close-out's D-21 client bundle as not executed: 04-UAT.md carries 24 per-row checks (spawn band, isolation, behaviour, combat, drops, dedicated-server/multiplayer and localization) across all 21 in-scope rows, including the LargeMossyThornTurtle target-lost-mid-flight state-machine case and the retracted-reflect case. No live tModLoader client session is part of Phase 4; the whole offline chain (Release build, Phase 4 gate 21/21, Phase 3 gate 5/5, the five Phase 1 gates, the Phase 2 gate, 3 Yggdrasil tests) is green but cannot observe any of these runtime properties.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T10:49:13.624Z",
     "resolved_at": null
   }
 ]

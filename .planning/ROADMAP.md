@@ -20,7 +20,7 @@ Phase 1 owns the source/inventory reconciliation record for the label discrepanc
 - [x] **Phase 1: Item Inventory & Completed-Art Items** - Reconcile source labels and inventory every item and biology-design drop, then implement entries with complete design textures. (reopened 2026-09-12 — 18-entry completed-art class-less carry-over; original tranche complete 2026-09-12) (completed 2026-09-14)
 - [ ] **Phase 2: Remaining Items & Unfinished-Art Materials** - Complete item entries without finished design textures, including unfinished-art drops/materials, using Phase 1 dependencies.
 - [x] **Phase 3: Completed-Art Ordinary Monsters** - Implement ordinary creature behavior for entries whose design textures are complete; their drops are already item work. (completed 2026-09-15; client/runtime verification recorded as outstanding in `03-UAT.md` — D-21)
-- [ ] **Phase 4: Remaining Ordinary Monsters** - Implement ordinary creatures without complete design textures and their behavior after the completed-art tranche.
+- [ ] **Phase 4: Remaining Ordinary Monsters** - Implement ordinary creatures without complete design textures and their behavior after the completed-art tranche. (all 9 plans code-complete 2026-09-16; client/runtime verification recorded as outstanding in `04-UAT.md` - D-21; phase verification pending)
 - [ ] **Phase 5: Completed-Art Terrain & Structures** - Implement terrain and structures whose design textures are complete.
 - [ ] **Phase 6: Remaining Terrain, Generation & Integration** - Complete unfinished-art terrain and integrate generation, traversal, hazards, and progression systems.
 - [ ] **Phase 7: Bosses, Special Encounters & Rewards** - Implement Klein Snake, Giant Winged Dragon, and their reward chains last among content.
@@ -164,7 +164,7 @@ Plans:
 
 **Verification needs:** Remaining biology matrix; client spawn/behavior/combat checks; drop and progression integration checks; dedicated-server safety; `dotnet build`; unresolved-source audit.
 **Scope anchor (D-44):** 21 rows = the 23 `phase:4` rows of `03-BIOLOGY.json` minus the two `out of phase` hardmode designs (`枯萎之种`, `枯木人卫士`, V2-HARD-01). They are implemented across **26 `ModNPC` classes** (three D-45 identity shells; four stat-variant sibling groups: 枯木活化士兵 ×4, 爆弹水母 ×2, 布罗迪蝇蜓 ×2, 幽光蝾螈 one class with a variant index) plus **11 hostile projectiles** (the frozen `$phaseProjectiles` list of `04-01` §7 and gate invariant 7: `ToxicToad_PoisonBubble`, `ToxicToad_PoisonCloud`, `Radiolarian_WaterBolt`, `RedNeedleCaterpillar_Spike`, `AssassinRaspberry_Spike`, `AnimatedWitherbarkSoldier_Boulder`, `AnimatedWitherbarkSoldier_SpellBeam`, `AlgaeOctopus_InkCloud`, `BombJellyfish_Explosion`, `LargeMossyThornTurtle_Shockwave`, `LargeMossyThornTurtle_Boulder`), i.e. the 37 guarded classes of gate invariant 7 are 26 region-folder classes + 11 phase projectiles. No repository art exists for any of them, so every class uses `Commons.ModAsset.White_Mod` and a missing-texture blocker (D-48/D-49). Delta vs `04-RESEARCH.md` OQ4's enumeration: `ToxicToad_PoisonCloud` and `BombJellyfish_Explosion` were added because each carries a creature's primary threat (剧毒蟾蜍's death cloud and 爆弹水母's 30/50 death blast), so the RESEARCH recommendation's list is superseded by the plan-and-gate set of 11.
-**Plans:** 8/9 plans executed
+**Plans:** 9/9 plans complete
 Plans:
 
 **Wave 1**
@@ -186,7 +186,7 @@ Plans:
 
 **Wave 4** *(blocked on Waves 2–3 completion)*
 
-- [ ] 04-09-PLAN.md — Close-out: reconciled 21-row matrix and mirror, mechanically generated blocker register, full offline chain + Release build, and the D-21 client UAT bundle (BIO-01, BIO-02, BIO-03)
+- [x] 04-09-PLAN.md — Close-out: reconciled 21-row matrix and mirror, mechanically generated blocker register, full offline chain + Release build, and the D-21 client UAT bundle (BIO-01, BIO-02, BIO-03) - done 2026-09-16
 
 ### Phase 5: Completed-Art Terrain & Structures
 
@@ -264,7 +264,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8. Th
 | 1. Item Inventory & Completed-Art Items | 7/7 | Complete    | 2026-09-14 |
 | 2. Remaining Items & Unfinished-Art Materials | 5/5 | Complete    | 2026-09-14 |
 | 3. Completed-Art Ordinary Monsters | 4/4 | Complete    | 2026-09-15 |
-| 4. Remaining Ordinary Monsters | 8/9 | In Progress | - |
+| 4. Remaining Ordinary Monsters | 9/9 | Code complete; verification pending | - |
 | 5. Completed-Art Terrain & Structures | 0/TBD | Not started | - |
 | 6. Remaining Terrain, Generation & Integration | 0/TBD | Not started | - |
 | 7. Bosses, Special Encounters & Rewards | 0/TBD | Not started | - |
