@@ -1,10 +1,10 @@
 ---
 schema_version: 1
-open_count: 37
+open_count: 41
 waived_count: 0
 fixed_count: 2
-total_count: 39
-last_updated: 2026-09-16T08:13:27.090Z
+total_count: 43
+last_updated: 2026-09-16T08:31:57.941Z
 ---
 
 # Broken Windows Ledger
@@ -54,6 +54,10 @@ last_updated: 2026-09-16T08:13:27.090Z
 | 37 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/SpinyMossCourt/BrodieFlydragon.cs |  | Plan 04-06 prose and acceptance criteria repeat the NPC.rare = ItemRarityID.White; line for all four soldier variants, CourtCommander and both BrodieFlydragon classes; NPC.rare does not exist in this tML build and was written as NPC.rarity (the engine's only NPC rarity field). The fifth occurrence of the same Rule 1 correction (Phase 3, 04-01, 04-02, 04-05, 04-06) already recorded in 04-DEVIATIONS.md section 10. | open |  | 2026-09-16T08:13:14.565Z |  |
 | 38 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/SpinyMossCourt/BrodieFlydragon.cs |  | Plan 04-06's inline Design Values table lists the flydragon 钱币 cells as empty for both sizes, but the design snapshot's own stats table V9zXdPuSdoQD7bxe6IVcdzqrncf gives 20 copper for 普通（标准） and 0 for 普通（小）. Task 3's action instructs reading that table directly, so NPC.value = 20 and NPC.value = 0 were used (D-25: the committed snapshot is the value source). Recorded here because 04-DEVIATIONS.md section 10 may not be edited by this plan. | open |  | 2026-09-16T08:13:26.388Z |  |
 | 39 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/Projectiles/Enemies/AnimatedWitherbarkSoldier_Boulder.cs |  | Plan 04-06's Task 1 acceptance criteria require NPC.GetSource_FromAI inside the two new projectile files, but a ModProjectile exposes no NPC member, so the call cannot exist there. The token is realised at the real spawn sites (AnimatedWitherbarkSoldierRanged.ThrowBoulder and AnimatedWitherbarkSoldierSpell.UpdateCasting) and named in each projectile's XML doc that describes that spawn site - the plan 04-02 precedent, recorded rather than faked with a comment-only token. | open |  | 2026-09-16T08:13:27.090Z |  |
+| 40 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/Projectiles/Enemies/RedNeedleCaterpillar_Spike.cs |  | Plan 04-07 Task 1's acceptance criteria require NPC.GetSource_FromAI inside RedNeedleCaterpillar_Spike.cs, but a ModProjectile exposes no NPC member, so the call cannot exist there. The token is realised at the real spawn site (RedNeedleCaterpillar.UpdateVolley -> FireVolley) and named in the projectile's XML doc that describes that spawn site - the plan 04-02/04-06 precedent, recorded rather than faked with a comment-only token. | open |  | 2026-09-16T08:31:35.001Z |  |
+| 41 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/Projectiles/Enemies/AssassinRaspberry_Spike.cs |  | Plan 04-07 Task 2's acceptance criteria require NPC.GetSource_FromAI inside AssassinRaspberry_Spike.cs, but a ModProjectile exposes no NPC member, so the call cannot exist there. The token is realised at the real spawn site (AssassinRaspberry.FireSpikeScatter) and named in the projectile's XML doc that describes that spawn site - the plan 04-02/04-06 precedent, recorded rather than faked with a comment-only token. | open |  | 2026-09-16T08:31:46.018Z |  |
+| 42 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/ValleyOfLushAndMoist/SerpentMoss.cs |  | Plan 04-07 Task 3's acceptance criteria list Main.rand.NextBool(3) as a required token in SerpentMoss.cs. The 33% roll is implemented, but through the named constant PoisonChanceDenominator (= 3) that the same task's action prescribes, with the literal form named in the adjacent comment; the behaviour is the same 1-in-3 roll, so the missing literal is a literal-grep false negative rather than an unimplemented behaviour. | open |  | 2026-09-16T08:31:46.653Z |  |
+| 43 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/ValleyOfLushAndMoist/RedNeedleCaterpillar.cs |  | Plan 04-07's behavior text repeats NPC.rare = ItemRarityID.White; for 红针洋辣子, 阿萨辛覆盘子 and 蛇行苔; NPC.rare does not exist in this tML build and was written as NPC.rarity (the engine's only NPC rarity field, Lifeform Analyzer). The sixth occurrence of the same Rule 1 correction (Phase 3, 04-01, 04-02, 04-05, 04-06, 04-07) already recorded in 04-DEVIATIONS.md section 10, so no ledger edit was needed. | open |  | 2026-09-16T08:31:57.941Z |  |
 
 ````json
 [
@@ -523,6 +527,54 @@ last_updated: 2026-09-16T08:13:27.090Z
     "status": "open",
     "reason": "",
     "recorded_at": "2026-09-16T08:13:27.090Z",
+    "resolved_at": null
+  },
+  {
+    "id": 40,
+    "kind": "deviation",
+    "phase": "04",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/Projectiles/Enemies/RedNeedleCaterpillar_Spike.cs",
+    "line": null,
+    "description": "Plan 04-07 Task 1's acceptance criteria require NPC.GetSource_FromAI inside RedNeedleCaterpillar_Spike.cs, but a ModProjectile exposes no NPC member, so the call cannot exist there. The token is realised at the real spawn site (RedNeedleCaterpillar.UpdateVolley -> FireVolley) and named in the projectile's XML doc that describes that spawn site - the plan 04-02/04-06 precedent, recorded rather than faked with a comment-only token.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T08:31:35.001Z",
+    "resolved_at": null
+  },
+  {
+    "id": 41,
+    "kind": "deviation",
+    "phase": "04",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/Projectiles/Enemies/AssassinRaspberry_Spike.cs",
+    "line": null,
+    "description": "Plan 04-07 Task 2's acceptance criteria require NPC.GetSource_FromAI inside AssassinRaspberry_Spike.cs, but a ModProjectile exposes no NPC member, so the call cannot exist there. The token is realised at the real spawn site (AssassinRaspberry.FireSpikeScatter) and named in the projectile's XML doc that describes that spawn site - the plan 04-02/04-06 precedent, recorded rather than faked with a comment-only token.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T08:31:46.018Z",
+    "resolved_at": null
+  },
+  {
+    "id": 42,
+    "kind": "deviation",
+    "phase": "04",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/ValleyOfLushAndMoist/SerpentMoss.cs",
+    "line": null,
+    "description": "Plan 04-07 Task 3's acceptance criteria list Main.rand.NextBool(3) as a required token in SerpentMoss.cs. The 33% roll is implemented, but through the named constant PoisonChanceDenominator (= 3) that the same task's action prescribes, with the literal form named in the adjacent comment; the behaviour is the same 1-in-3 roll, so the missing literal is a literal-grep false negative rather than an unimplemented behaviour.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T08:31:46.653Z",
+    "resolved_at": null
+  },
+  {
+    "id": 43,
+    "kind": "deviation",
+    "phase": "04",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/ValleyOfLushAndMoist/RedNeedleCaterpillar.cs",
+    "line": null,
+    "description": "Plan 04-07's behavior text repeats NPC.rare = ItemRarityID.White; for 红针洋辣子, 阿萨辛覆盘子 and 蛇行苔; NPC.rare does not exist in this tML build and was written as NPC.rarity (the engine's only NPC rarity field, Lifeform Analyzer). The sixth occurrence of the same Rule 1 correction (Phase 3, 04-01, 04-02, 04-05, 04-06, 04-07) already recorded in 04-DEVIATIONS.md section 10, so no ledger edit was needed.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T08:31:57.941Z",
     "resolved_at": null
   }
 ]

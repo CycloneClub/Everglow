@@ -1,21 +1,21 @@
 ---
-gsd_state_version: 1.0
+gsd_state_version: "1.0"
 milestone: v1.0
-milestone_name: milestone
 current_phase: 04
 current_phase_name: Remaining Ordinary Monsters
-current_plan: 4
+current_plan: 5
 status: executing
-stopped_at: Completed 04-06-PLAN.md
-last_updated: "2026-09-16T08:14:00.000Z"
+stopped_at: Completed 04-07-PLAN.md
+last_updated: "2026-09-16T08:34:08.898Z"
 last_activity: 2026-09-16
-last_activity_desc: Phase 4 wave 3 plan 04-06 complete — the Spiny Moss Court garrison (枯木活化士兵 ×4 stat variants + boulder & spell beam), 王庭号令者 (CourtCommander) and 布罗迪蝇蜓 ×2 built as loadable, layer-gated, art-blocked, neutral-by-default classes with the morale/command and Valley egg systems left as precise D-46 blockers (gate advanced to guarded classes 18)
+last_activity_desc: Phase 4 wave 3 plan 04-07 complete — the Valley of Lush and Moist hazards (红针洋辣子 on the repository's segmented-worm `Caterpillar` template plus its needle volley, 阿萨辛覆盘子 with its 4–8 tile buried ambush window and ground spike, 蛇行苔 with its 2-tile bind cadence), the OQ1 `CaterpillarJuice` reuse, and the two 伪装 presentations left as precise D-46 blockers (gate advanced to guarded classes 23)
+state_head: c6b843713ab4a5477acfbbf75760b34652bab6d4
 progress:
-  total_phases: 4
+  total_phases: 8
   completed_phases: 3
   total_plans: 25
-  completed_plans: 20
-state_head: 782d9fdad
+  completed_plans: 21
+milestone_name: milestone
 ---
 
 # Project State
@@ -29,20 +29,20 @@ See: `.planning/PROJECT.md` (updated 2026-09-12)
 
 ## Current Position
 
-Current Plan: 4
+Current Plan: 5
 Total Plans in Phase: 9
-Phase: 04 (Remaining Ordinary Monsters) — EXECUTING (tracer 04-01 + wave 2 plans 04-02/04-05 + wave 3 plan 04-06 done; 04-03, 04-04, 04-07, 04-08 and 04-09 outstanding)
-Plans complete: 4 of 9 (04-01, 04-02, 04-05 and 04-06 done; 04-03, 04-04, 04-07, 04-08 and 04-09 outstanding)
-Status: Executing — plan 04-06 landed 2026-09-16 with the whole Spiny Moss Court: the four 枯木活化士兵 stat variants (melee/ranged/spell/hound) plus their boulder and three-ray spell projectiles, 王庭号令者 (`CourtCommander`) with its once-per-aggro 1–3 soldier summon, and both 布罗迪蝇蜓 sizes; all of them neutral-by-default where the design says 中立, all layer-gated, all art-missing (`Commons.ModAsset.White_Mod`), with the morale/command system (D-46), the 森雨幽谷 Valley egg system (D-46) and the 刺苔庭园/森雨幽谷 region split (Phases 5–6) recorded as precise blockers instead of half-builds. The Phase 4 gate now reads `OK: guarded classes = 18` of the 37 that close the phase, and runtime verification (D-21) is outstanding for every Phase 4 row
-Last activity: 2026-09-16 — 04-06 complete (nine classes: the four-variant soldier garrison with its two projectiles, the summoning rally commander and the two-size flydragon pair; the `SpinyMossCourt` region folder is the last of the phase's three region roots to be counted, and it advanced the gate by exactly nine, 9 → 18)
+Phase: 04 (Remaining Ordinary Monsters) — EXECUTING (tracer 04-01 + wave 2 plans 04-02/04-05 + wave 3 plans 04-06/04-07 done; 04-03, 04-04, 04-08 and 04-09 outstanding)
+Plans complete: 5 of 9 (04-01, 04-02, 04-05, 04-06 and 04-07 done; 04-03, 04-04, 04-08 and 04-09 outstanding)
+Status: Executing — plan 04-07 landed 2026-09-16 with the Valley of Lush and Moist's three ordinary hazards: 红针洋辣子 (`RedNeedleCaterpillar`) extends the repository's existing segmented-worm template `Everglow.Commons.Templates.Enemies.Caterpillar` and mirrors `BarkSpicyCaterpillar` (the `-0.12f`/`-0.08f`/`-0.04f` knockback progression, 生命 60/伤害 20/防御 4/钱币 80) while adding the design's 4–6 needle volley every 180 frames at 4+ tiles and the 25%/37.5% 中毒 split, and its loot table wires the pre-existing `CaterpillarJuice` exactly as the precedent does (the OQ1 WIRE decision, `04-DEVIATIONS.md` §6.1); 阿萨辛覆盘子 (`AssassinRaspberry`) is a stationary ambusher with a private `Hidden`/`Extended` state over `NPC.ai[0]` that is 缩回地下 beyond 8 tiles, 伸出 inside 8, silent (but not retracting) below 4 and scattered 4–6 ground spikes only inside the exact 4–8 tile window, with 防御 20（被动）/4（攻击） owned by one `EnterState` helper; 蛇行苔 (`SerpentMoss`) binds a player inside 2 tiles and applies 60 ticks of the mapped 束缚 (`BuffID.Webbed`) plus 15 damage every 60 frames with the 33% 15-second 中毒 roll, its cadence in `NPC.localAI[0]` and never on a `Player`. Both 伪装 presentations are precise D-46 blockers naming the Valley disguised-hazard visual system, the two new projectiles are the frozen OQ4 items 4–5, the `ValleyOfLushAndMoist` region root now exists, and the Phase 4 gate reads `OK: guarded classes = 23` of the 37 that close the phase
+Last activity: 2026-09-16 — 04-07 complete (five files: the template-reusing caterpillar plus its needle, the buried raspberry plus its ground spike and the binding moss; the `ValleyOfLushAndMoist` region root is the third and last of the gate's guarded region folders, and the plan advanced the gate by exactly five, 18 → 23)
 
-Progress: [██████████] 100% — Phase 3 of 4 complete; Phase 4 waves 1–3 of 4 landed
+Progress: [██████████] 100% — Phase 3 of 4 complete; Phase 4 wave 3 in progress (5 of 9 plans)
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 19
+- Total plans completed: 20
 - Average duration: n/a
 - Total execution time: 0 hours
 
@@ -54,7 +54,7 @@ Progress: [██████████] 100% — Phase 3 of 4 complete; Phase
 | 1 | 7 | 7 | ~17min |
 | 2 | 4 | 5 | 10min |
 | 3 | 4 | 4 | ~96min |
-| 4 | 4 | 9 | ~34min |
+| 4 | 5 | 9 | ~29min |
 
 **Recent Trend:** No execution data yet.
 **Per-Plan Metrics:**
@@ -81,6 +81,7 @@ Progress: [██████████] 100% — Phase 3 of 4 complete; Phase
 | Phase 04 P02 | ~80min | 2 tasks | 6 files |
 | Phase 04 P05 | ~16min | 3 tasks | 3 files |
 | Phase 04 P06 | ~14min | 3 tasks | 9 files |
+| Phase 04 P07 | ~11min | 3 tasks | 8 files |
 
 ## Accumulated Context
 
@@ -120,6 +121,13 @@ Progress: [██████████] 100% — Phase 3 of 4 complete; Phase
 - [Phase 04]: `CourtCommander`'s summon is **idempotent per aggro entry** through a single named flag (`HasSummonedThisAggro` over `NPC.localAI[2]`): it fires on `OnSpawn` and on the first staff use of each aggro entry, only while no soldier stands within `SearchRadiusTiles`, is capped at the design's 1–3 randomly chosen variants, and is created with `NPC.NewNPC` under `Main.netMode != NetmodeID.MultiplayerClient` with `NPC.netUpdate` (T-04-37). The staff-raise tell is built; the 意志高涨 buff application is not.
 - [Phase 04]: The flydragon stat rows come from the **design snapshot's own stats table** `V9zXdPuSdoQD7bxe6IVcdzqrncf` (标准 40/25/5/50/中毒/20 copper, 小 20/15/2/50/中毒/0 copper), which differs from the plan's inline table on the two 钱币 cells; Task 3's action explicitly instructs reading the design table directly (D-25), and the discrepancy is recorded in `WINDOWS.md` entry 38 because wave-3 prohibitions forbid editing `04-DEVIATIONS.md`. The 小 variant is reachable through its own lower natural weight (0.5f vs the standard's 1f), which preserves 自然刷新只会刷新标准大小的蝇蜓 while the 森雨幽谷 egg route stays an unimplemented D-46 system — **no egg NPC, projectile or class exists**.
 - [Phase 04]: The plan prose's `NPC.rare` was corrected to `NPC.rarity` for the **fifth** time in this project (Phase 3, 04-01, 04-02, 04-05, 04-06) across all seven creature classes; the correction is already in `04-DEVIATIONS.md` §10, no ledger edit was needed (`WINDOWS.md` entry 37). `03-BIOLOGY.json` / `03-BIOLOGY.md` are still byte-identical to their end-of-04-01 state, `04-DEVIATIONS.md` was not edited, and the byte-identical Phase 3 gate still exits 0 under `-RequireAll` (`phase3 tranche = 5 / 5`, `implemented classes = 5 / 5`).
+
+- [Phase 04]: Plan 04-07 builds the Valley of Lush and Moist's three ordinary hazards and creates the phase's third and last guarded region root (`ValleyOfLushAndMoist`), advancing the gate **18 → 20 → 22 → 23** — exactly the five files it adds. 红针洋辣子 (`RedNeedleCaterpillar`) is the phase's one genuine cross-namespace reuse, done **read-only**: it extends `Everglow.Commons.Templates.Enemies.Caterpillar` and mirrors `YggdrasilTown/NPCs/BarkSpicyCaterpillar.cs` (`[NoGameModeScale]`, the `-0.12f`/`-0.08f`/`-0.04f` progression, 生命 60/伤害 20/防御 4/钱币 80), adds the design's 4–6 needle volley from the head segment every 180 frames at 4+ tiles with the 25% 20 s / 37.5% 10 s 中毒 split on both contact and needles, and wires `ItemDropRule.Common(ModContent.ItemType<CaterpillarJuice>(), 1, 1, 2)` — the OQ1 WIRE decision of `04-DEVIATIONS.md` §6.1, and the reason that ledger's item index spans the whole `Sources/Modules/Yggdrasil` tree. The template, the precedent and `CaterpillarJuice.cs` are unmodified (`git diff --stat` empty before each task commit), and **no `PreKill` override** was copied because the precedent's loads gore art this class does not own (T-04-41).
+- [Phase 04]: 红针洋辣子 sets `DustType = -1` and owns its `HitEffect` instead of enabling the template's dust: the `Caterpillar` template's own `HitEffect` emits `DustType` **without** a dedicated-server guard, so a dust type would have opened an unguarded graphics path from a class the plan forbids editing; the subclass's guarded `HitEffect` emits the same Kelp Curtain dust behind `if (!Main.dedServ)` (D-35/T-04-46) with the template untouched. The needle (`RedNeedleCaterpillar_Spike`, arcing and tile-colliding) and the ground spike (`AssassinRaspberry_Spike`, leaving at the creature's feet with a lift then gravity) are two separate classes because OQ4's frozen eleven-projectile list names them separately.
+- [Phase 04]: 阿萨辛覆盘子 (`AssassinRaspberry`) is a stationary ambusher whose three ranges are named constants over one tile→pixel helper — `ExtendTiles = 8f`, `AttackMinTiles = 4f` — with the design's exact window as their intersection: 缩回地下 beyond 8 tiles, 伸出 inside 8, and **silent below 4 tiles without retracting**. The 防御 20（被动）/4（攻击） switch is a single ternary inside one `EnterState` helper, so both values are reachable only there and no exit path can leave the attacking value stuck (T-04-44); `AnchorPosition` is a public `Vector2` captured once the creature is settled and used by the retract path, mirroring `VerdantRods.TargetPos` rather than adding a floor predicate the plan forbids approximating.
+- [Phase 04]: 蛇行苔 (`SerpentMoss`) applies only the `04-DEVIATIONS.md` §10 mapping its row needs — 束缚 → `BuffID.Webbed` — with the register's 窒息 → `BuffID.Suffocation` entry named in the class comment, so the class stands alone and needs no same-wave sibling (plan 04-04) to have landed first. Its bind cadence lives in `NPC.localAI[0]` and the bound player index in `NPC.localAI[1]`; **no timer is ever stored on a `Player`** (Pitfall 6), and every bind/damage/debuff write happens under `Main.netMode != NetmodeID.MultiplayerClient` with `NPC.netUpdate`.
+- [Phase 04]: Both 伪装 (disguise) presentations of 04-07 — the raspberry's "indistinguishable from scenery while buried" and the moss's "spawns disguised as an environmental plant" — are **precise D-46 blockers naming the Valley disguised-hazard visual system** in each class doc rather than faked with an alpha trick (which would be indistinguishable from a rendering bug), while the trigger, window, scatter, bind, damage and poison rolls they hide behind are fully built. This is the D-46 pattern 04-07 shares with the morale/command and egg-system rows of 04-05/04-06.
+- [Phase 04]: 04-07 corrects the plan prose's `NPC.rare` to `NPC.rarity` for the **sixth** time in this project (Phase 3, 04-01, 04-02, 04-05, 04-06, 04-07); the correction is already in `04-DEVIATIONS.md` §10 and no ledger edit was needed (`WINDOWS.md` entry 43). Three further 04-07 records are ledger-only (`WINDOWS.md` entries 40–42): `NPC.GetSource_FromAI` cannot exist inside a `ModProjectile` (realised at both spawn sites, the 04-02/04-06 precedent), the `Main.rand.NextBool(3)` acceptance token is spelled `Main.rand.NextBool(PoisonChanceDenominator)` with the literal named in the comment (the same 1-in-3 roll), and the two committed classes' netmode guard form was brought to the plan's pinned `!=` spelling in a separate `refactor(04-07)` commit with no behavioural change. `03-BIOLOGY.json` / `03-BIOLOGY.md` / `04-DEVIATIONS.md` are still byte-identical to their end-of-04-01 state, and no `.png`/`.obj`/`.xnb`/`.hjson` changed in the plan range. The plan's `requirement` BIO-03 is advanced but not completed: `REQUIREMENTS.md` stays untouched until plan 04-09 closes the phase.
 
 - **2026-09-15 — Phase 3 marked complete with runtime UAT deferred (user-authorized override).** Phase 3's four plans are code-complete (Release build 0/0; full gate chain green; `check-biology.ps1 -RequireAll` = `phase3 tranche 5 / 5`, `implemented classes 5 / 5`), but the D-21 in-client runtime verification in `03-UAT.md` was not executed because the tModLoader client environment was unavailable. The user authorized marking the phase complete and deferring the runtime UAT (same pattern as the Phase 1 ArmOfGiantTree multiplayer deferral). `03-VERIFICATION.md` remains `human_needed`, `03-UAT.md` stays unexecuted, and the deferral is tracked as an open `unrun-verify` item in `.planning/WINDOWS.md`. No verification result was fabricated.
 - **2026-09-12 correction — item allocation is by design-artwork state only.** A completed-art entry belongs to the completed-art item tranche (Phase 1) whether or not the repository already has a class for it; class-less status must never defer an entry to a later phase. Plan 01-06 refined the routing: of the 18 artwork-complete class-less entries, the 5 non-boss item-table rows are Phase 1 carry-over and the 13 boss/special-encounter rows are Phase 7 (ITEM-05/ITEM-06); Phase 2 contains only unfinished-art entries (25).
@@ -196,7 +204,7 @@ None yet.
 
 ### Blockers/Concerns
 
-- ⏳ **[Phase 4 — waves 1–3 landed 2026-09-16, wave 4 outstanding]** Plans 04-01, 04-02, 04-05 and 04-06 delivered the tracer slice, the Death Jade Lake waterline family, the three D-45 identity shells and the whole Spiny Moss Court: the green Phase 4 gate, the 21-row reconciliation, `KelpCurtainSpawnConditions`, 碧灵鮟鱇 (`JadeSpiritAnglerfish`), 水黾 (`WaterStrider`), 剧毒蟾蜍 (`ToxicToad` + `ToxicToad_PoisonBubble` + `ToxicToad_PoisonCloud`), 幽光蝾螈 (`GlowSalamander`), 荧光水螅 (`FluorescentHydra`), 巨型虎虾 (`GiantTigerShrimp`), 炮弹藤壶 (`CannonBarnacle`), the four 枯木活化士兵 variants (+ `AnimatedWitherbarkSoldier_Boulder` + `AnimatedWitherbarkSoldier_SpellBeam`), 王庭号令者 (`CourtCommander`) and 布罗迪蝇蜓 (`BrodieFlydragon` + `SmallBrodieFlydragon`) — `OK: guarded classes = 18` of the 37 that close the phase, while the matrix still reads `OK: reconciled rows = 1 / 21` (only 04-01 flips a row; plan 04-09 reconciles the remaining twenty). Outstanding and recorded: the D-21 runtime bundle (`04-UAT.md` in plan 04-09) for every spawn predicate on a real lake, the 碧灵鮟鱇 stealth/dash feel, the 水黾 dash cadence and its two recoveries, the 剧毒蟾蜍 preference/bubble/death-cloud kit, the 幽光蝾螈 moisture cycle, the three D-45 shells' spawn isolation and clean `White_Mod` load, the soldier variants' neutral-until-provoked reading and their four attack patterns, the commander's once-per-aggro summon and 10-tile spacing, the two flydragon sizes' relative rarity, and a dedicated-server run; **approved art for 26 `ModNPC` sprites + 11 projectile sprites** (blocker only — no placeholder art was created, D-48/D-51); the 森雨幽谷 / 刺苔庭园 / 亡碧湖 region-level spawn predicates (Phases 5–6, D-52); the unimplemented systems (Spiny Moss Court morale/command, Valley egg system, disguised hazards, capture items, cross-creature hostility); localization (D-20); and the absent drop materials 毒腺 / 牛黄 / 软体甲壳碎片 / 亡碧膏 / 枯木碎块 / 干涸心脏 (D-58). Plan 04-09 must also write the three shell rows' `behavior undefined in the design row (D-45 shell)` blocker. See `04-DEVIATIONS.md` §5, §7, §11, §13 and `.planning/WINDOWS.md` entries 24–39.
+- ⏳ **[Phase 4 — waves 1–3 landed 2026-09-16, wave 4 outstanding]** Plans 04-01, 04-02, 04-05, 04-06 and 04-07 delivered the tracer slice, the Death Jade Lake waterline family, the three D-45 identity shells, the whole Spiny Moss Court and the Valley of Lush and Moist's three ordinary hazards: the green Phase 4 gate, the 21-row reconciliation, `KelpCurtainSpawnConditions`, 碧灵鮟鱇 (`JadeSpiritAnglerfish`), 水黾 (`WaterStrider`), 剧毒蟾蜍 (`ToxicToad` + `ToxicToad_PoisonBubble` + `ToxicToad_PoisonCloud`), 幽光蝾螈 (`GlowSalamander`), 荧光水螅 (`FluorescentHydra`), 巨型虎虾 (`GiantTigerShrimp`), 炮弹藤壶 (`CannonBarnacle`), the four 枯木活化士兵 variants (+ `AnimatedWitherbarkSoldier_Boulder` + `AnimatedWitherbarkSoldier_SpellBeam`), 王庭号令者 (`CourtCommander`) and 布罗迪蝇蜓 (`BrodieFlydragon` + `SmallBrodieFlydragon`) — `OK: guarded classes = 23` of the 37 that close the phase, plus 红针洋辣子 (`RedNeedleCaterpillar` + `RedNeedleCaterpillar_Spike`, on the repository's own `Caterpillar` template with the pre-existing `CaterpillarJuice` drop), 阿萨辛覆盘子 (`AssassinRaspberry` + `AssassinRaspberry_Spike`) and 蛇行苔 (`SerpentMoss`), while the matrix still reads `OK: reconciled rows = 1 / 21` (only 04-01 flips a row; plan 04-09 reconciles the remaining twenty). Outstanding and recorded: the D-21 runtime bundle (`04-UAT.md` in plan 04-09) for every spawn predicate on a real lake, the 碧灵鮟鱇 stealth/dash feel, the 水黾 dash cadence and its two recoveries, the 剧毒蟾蜍 preference/bubble/death-cloud kit, the 幽光蝾螈 moisture cycle, the three D-45 shells' spawn isolation and clean `White_Mod` load, the soldier variants' neutral-until-provoked reading and their four attack patterns, the commander's once-per-aggro summon and 10-tile spacing, the two flydragon sizes' relative rarity, 04-07's 红针洋辣子 needle volley and its 25%/37.5% 中毒 split at real range, 阿萨辛覆盘子's 4–8 tile window and its defence switch under combat, 蛇行苔's 60-frame bind cadence and its release on a player who leaves the 2-tile trigger, and a dedicated-server run; **approved art for 26 `ModNPC` sprites + 11 projectile sprites** (blocker only — no placeholder art was created, D-48/D-51); the 森雨幽谷 / 刺苔庭园 / 亡碧湖 region-level spawn predicates (Phases 5–6, D-52); the unimplemented systems (Spiny Moss Court morale/command, Valley egg system, disguised hazards, capture items, cross-creature hostility); localization (D-20); and the absent drop materials 毒腺 / 牛黄 / 软体甲壳碎片 / 亡碧膏 / 枯木碎块 / 干涸心脏 (D-58). Plan 04-09 must also write the three shell rows' `behavior undefined in the design row (D-45 shell)` blocker. See `04-DEVIATIONS.md` §5, §7, §11, §13 and `.planning/WINDOWS.md` entries 24–43.
 - ⏸ **[Phase 3 — deferred, user-authorized 2026-09-15]** Runtime UAT for the five-creature tranche is unexecuted: `03-UAT.md` (8 checks: spawn isolation per BIO-06, behavior/combat/immunities, drops, dedicated-server/multiplayer per QUAL-03, localization fallback) and the 4 D-21 backstop items in `03-VERIFICATION.md` await a tModLoader client. The phase is marked complete on code grounds only; run `/gsd-verify-work 3` when the client is available. Also open: approved art for the two `GiantDandelion` projectiles, and 森雨幽谷/刺苔庭园 regional spawn predicates (Phases 5–6).
 - ✅ **[Phase 1 carry-over — resolved 2026-09-13 by plan 01-06]** The 18 artwork-complete class-less entries were reallocated 5 Phase 1 / 13 Phase 7 (P1A-12); the five Phase 1 items are implemented and gated (`check-carryover.ps1` 5/5). No parser re-run (CR-01).
 - Phase 1: Feishu source reconciliation must classify all five terrain labels and inventory every item/drop before implementation acceptance.
@@ -231,6 +239,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-09-16T08:14:00.000Z
-Stopped at: Completed 04-06-PLAN.md
+Last session: 2026-09-16T08:34:08.687Z
+Stopped at: Completed 04-07-PLAN.md
 Resume file: .planning/phases/04-remaining-ordinary-monsters/04-03-PLAN.md
