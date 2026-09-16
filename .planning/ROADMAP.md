@@ -174,12 +174,12 @@ Plans:
 **Wave 2** *(blocked on Wave 1 completion)*
 
 - [ ] 04-02-PLAN.md — Death Jade Lake surface & amphibious family: 水黾, 剧毒蟾蜍 (+ poison bubble & cloud), 幽光蝾螈 (BIO-01)
-- [ ] 04-03-PLAN.md — Death Jade Lake passive & neutral water family: 装甲虾 (bounded 2–5 group), 爆弹水母 (small/large + explosion), 帆鳍鳢 (neutral rammer) (BIO-01)
-- [ ] 04-04-PLAN.md — Death Jade Lake stealth, ranged & bottom predators: 放射虫 (+ water bolt), 覆藻章鱼, 大型覆藻章鱼 (shared ink cloud) (BIO-01)
 - [ ] 04-05-PLAN.md — The three D-45 identity shells: 荧光水螅, 巨型虎虾, 炮弹藤壶 (BIO-01)
 
-**Wave 3** *(blocked on Wave 1 completion)*
+**Wave 3** *(blocked on Waves 1-2 completion)*
 
+- [ ] 04-03-PLAN.md — Death Jade Lake passive & neutral water family: 装甲虾 (bounded 2–5 group), 爆弹水母 (small/large + explosion), 帆鳍鳢 (neutral rammer) (BIO-01)
+- [ ] 04-04-PLAN.md — Death Jade Lake stealth, ranged & bottom predators: 放射虫 (+ water bolt), 覆藻章鱼, 大型覆藻章鱼 (shared ink cloud) (BIO-01)
 - [ ] 04-06-PLAN.md — Spiny Moss Court: 枯木活化士兵 ×4 variants (+ boulder & spell beam), 王庭号令者, 布罗迪蝇蜓 ×2 (BIO-02)
 - [ ] 04-07-PLAN.md — Valley hazards: 红针洋辣子 (reuses the `Caterpillar` template + `CaterpillarJuice`, OQ1), 阿萨辛覆盘子, 蛇行苔 (BIO-03)
 - [ ] 04-08-PLAN.md — Valley passive & mini boss: 小格普螺, 大型荆棘苔龟 full four-state machine (+ shockwave & boulder) (BIO-03)

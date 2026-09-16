@@ -44,7 +44,15 @@ created: "2026-09-15"
 
 ## Per-Task Verification Map
 
-Populated from the finalized `04-*-PLAN.md` files after planning (one row per task; every task carries an `<automated>` verify bound to a `<fails_when>`). The requirement→test map above is the stable contract; this table tracks task-level coverage during execution.
+Populated from the finalized `04-*-PLAN.md` files after planning (one row per `<task>` element; every task carries an `<automated>` verify bound to a `<fails_when>`). The requirement→test map above is the stable contract; this table tracks task-level coverage during execution.
+
+**Filled by:** plan `04-09` Task 2 (the phase close-out), because the row set only becomes final once every wave plan exists on disk. The rows are generated mechanically from the plan files — a script that reads them and counts `<task>` elements is preferred — so the map cannot drift from the plans it describes.
+
+| Task id | Plan | Wave | Requirement | Automated command | Fails when | Result |
+|---------|------|------|-------------|-------------------|------------|--------|
+| `04-0X-TN` | `04-0X` | the plan's frontmatter `wave` | the plan's frontmatter `requirements` | the task's `<automated>` text, verbatim | the task's `<fails_when>` text, verbatim | the outcome observed at close-out |
+
+One row per `<task>` element across the nine plans, in plan-then-task order: **23** rows at the current plan revision (04-01 ×2, 04-02 ×2, 04-03 ×3, 04-04 ×3, 04-05 ×3, 04-06 ×3, 04-07 ×3, 04-08 ×2, 04-09 ×2). The plan set is the authority: if the counted row total and the counted `<task>` total disagree, the rows are regenerated from the plans.
 
 ---
 
@@ -80,6 +88,8 @@ Populated from the finalized `04-*-PLAN.md` files after planning (one row per ta
 ---
 
 ## Validation Sign-Off
+
+**Completed by:** plan `04-09` Task 2, from its own close-out run — the boxes below are ticked against what that run observed, and `nyquist_compliant` flips to `true` there. The frontmatter `status` stays `draft` in this file's lifecycle until the `/gsd-validate-phase` §6 step promotes it to `validated`.
 
 - [ ] All tasks have `<automated>` verify or Wave 0 dependencies
 - [ ] Sampling continuity: no 3 consecutive tasks without automated verify
