@@ -1,10 +1,10 @@
 ---
 schema_version: 1
-open_count: 22
+open_count: 25
 waived_count: 0
 fixed_count: 1
-total_count: 23
-last_updated: 2026-09-15T09:06:43.775Z
+total_count: 26
+last_updated: 2026-09-16T06:07:12.736Z
 ---
 
 # Broken Windows Ledger
@@ -38,6 +38,9 @@ last_updated: 2026-09-15T09:06:43.775Z
 | 21 | 3 | stub | Sources/Modules/Yggdrasil/KelpCurtain/Projectiles/Enemies/GiantDandelion_Shockwave.cs |  | Approved art missing for both 巨树人 attack projectiles: GiantDandelion_Shockwave and GiantDandelion_Boulder request the shared Commons.ModAsset.White_Mod fallback because creating placeholder art is forbidden (D-13 policy); a ground-wave sprite and a boulder sprite are needed from the designer (03-DEVIATIONS.md section 9) | open |  | 2026-09-15T08:31:28.332Z |  |
 | 22 | 3 | unrun-verify | .planning/phases/03-completed-art-ordinary-monsters/03-UAT.md |  | D-21 client UAT bundle recorded but not executed: all 8 checks (per-row spawn, main-world isolation, behaviour, combat, drops, dedicated-server/multiplayer, localization fallback, consolidated end-of-phase run) are marked not-executed because no live tModLoader client session is part of Phase 3 | open |  | 2026-09-15T09:06:42.913Z |  |
 | 23 | 3 | deviation | .planning/phases/03-completed-art-ordinary-monsters/03-BIOLOGY.json |  | Plan 03-04 repaired the corrupted assumptions[]/deviations[] machine copy of the matrix (six 'e' placeholders present since the plan-03-01 tracer commit 421f2a09a) with one entry per ledger section 1-6 plus the phase's six recorded deviations; no other field changed and check-biology.ps1 -RequireAll stays green | open |  | 2026-09-15T09:06:43.775Z |  |
+| 24 | 4 | unrun-verify | .planning/phases/04-remaining-ordinary-monsters/04-UAT.md |  | Plan 04-01 Task 1 tracer human-check not executed: the D-21 client bundle (jade spirit anglerfish spawn isolation at the lake floor, its invisibility beyond the reveal range, the reveal dash and its 60/30 damage split, the two drops, a clean loader run with no missing-texture abort, and no main-world spawn in an ordinary world) needs a live tModLoader client; plan 04-09 records it in 04-UAT.md | open |  | 2026-09-16T06:06:59.285Z |  |
+| 25 | 4 | deviation | .planning/phases/04-remaining-ordinary-monsters/04-01-PLAN.md |  | Plan 04-01 Task 1 is type=tracer and its verify carries a genuine human-check with no blocking-human gate; the literal checkpoints.md end-of-phase precedence chain (row 4) reads as STOP before the next task. The plan's own why_human states those client checks are the D-21 batch recorded in plan 04-09, and the identical tracer shape in plan 03-01 was executed the same way, so task 2 ran after the automated verify was re-run green and the human check is carried into 04-UAT.md instead of halting mid-flight. Documented as a process deviation in 04-01-SUMMARY.md and 04-DEVIATIONS.md section 11 | open |  | 2026-09-16T06:07:11.234Z |  |
+| 26 | 4 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/JadeSpiritAnglerfish.cs |  | Plan 04-01 applied the Rule 1 API-name correction the plan prose repeats: NPC.rare does not exist in this tML build and was written as NPC.rarity (the engine's only NPC rarity field), recorded in 04-DEVIATIONS.md section 10; compile-verified by the Release build | open |  | 2026-09-16T06:07:12.736Z |  |
 
 ````json
 [
@@ -315,6 +318,42 @@ last_updated: 2026-09-15T09:06:43.775Z
     "status": "open",
     "reason": "",
     "recorded_at": "2026-09-15T09:06:43.775Z",
+    "resolved_at": null
+  },
+  {
+    "id": 24,
+    "kind": "unrun-verify",
+    "phase": "4",
+    "file": ".planning/phases/04-remaining-ordinary-monsters/04-UAT.md",
+    "line": null,
+    "description": "Plan 04-01 Task 1 tracer human-check not executed: the D-21 client bundle (jade spirit anglerfish spawn isolation at the lake floor, its invisibility beyond the reveal range, the reveal dash and its 60/30 damage split, the two drops, a clean loader run with no missing-texture abort, and no main-world spawn in an ordinary world) needs a live tModLoader client; plan 04-09 records it in 04-UAT.md",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T06:06:59.285Z",
+    "resolved_at": null
+  },
+  {
+    "id": 25,
+    "kind": "deviation",
+    "phase": "4",
+    "file": ".planning/phases/04-remaining-ordinary-monsters/04-01-PLAN.md",
+    "line": null,
+    "description": "Plan 04-01 Task 1 is type=tracer and its verify carries a genuine human-check with no blocking-human gate; the literal checkpoints.md end-of-phase precedence chain (row 4) reads as STOP before the next task. The plan's own why_human states those client checks are the D-21 batch recorded in plan 04-09, and the identical tracer shape in plan 03-01 was executed the same way, so task 2 ran after the automated verify was re-run green and the human check is carried into 04-UAT.md instead of halting mid-flight. Documented as a process deviation in 04-01-SUMMARY.md and 04-DEVIATIONS.md section 11",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T06:07:11.234Z",
+    "resolved_at": null
+  },
+  {
+    "id": 26,
+    "kind": "deviation",
+    "phase": "4",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/JadeSpiritAnglerfish.cs",
+    "line": null,
+    "description": "Plan 04-01 applied the Rule 1 API-name correction the plan prose repeats: NPC.rare does not exist in this tML build and was written as NPC.rarity (the engine's only NPC rarity field), recorded in 04-DEVIATIONS.md section 10; compile-verified by the Release build",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T06:07:12.736Z",
     "resolved_at": null
   }
 ]
