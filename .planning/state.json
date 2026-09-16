@@ -21,7 +21,7 @@
     {
       "number": "4",
       "name": "Remaining Ordinary Monsters",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "number": "5",
@@ -46,8 +46,8 @@
   ],
   "next": {
     "command": "/gsd:progress --next",
-    "label": "Advance to the next step",
-    "reason": "Phase 04 of 8 · executing"
+    "label": "Phase 4 complete (runtime UAT deferred) — advance to Phase 5",
+    "reason": "Phase 04 of 8 - complete (UAT deferred); Phase 05 terrain is next"
   },
-  "updated_at": "2026-09-16T08:33:30.677Z"
+  "updated_at": "2026-09-16T12:01:34.681Z"
 }
