@@ -199,11 +199,19 @@ public class ArmoredShrimp : ModNPC
 	/// <param name="source">The engine's spawn source.</param>
 	public override void OnSpawn(IEntitySource source)
 	{
-		if (Main.netMode == NetmodeID.MultiplayerClient)
+		if (Main.netMode != NetmodeID.MultiplayerClient)
 		{
-			return;
+			CreateShoal();
 		}
+	}
 
+	/// <summary>
+	/// The leader's share of 在水里成群（2~5只）: it rolls the design's group size and creates the remaining
+	/// members around itself. Only ever reached on the authoritative side, because <c>NPC.NewNPC</c> must
+	/// never be called on a multiplayer client (D-55).
+	/// </summary>
+	private void CreateShoal()
+	{
 		if (IsGroupFollower || groupCreationDepth > 0)
 		{
 			// A member created by a leader never starts a further group: that is the whole point of the
@@ -305,26 +313,22 @@ public class ArmoredShrimp : ModNPC
 	/// </summary>
 	private void UpdateWander()
 	{
-		if (Main.netMode == NetmodeID.MultiplayerClient)
+		if (Main.netMode != NetmodeID.MultiplayerClient)
 		{
-			return;
-		}
+			WanderTimer--;
+			if (WanderTimer <= 0)
+			{
+				WanderTimer = WanderInterval;
+				bool hasMate = TryGetNearestShoalMate(out _);
+				State = hasMate ? ArmoredShrimpState.Shoaling : ArmoredShrimpState.Drifting;
+				if (Main.rand.NextBool(2))
+				{
+					Heading = -Heading;
+				}
 
-		WanderTimer--;
-		if (WanderTimer > 0)
-		{
-			return;
+				NPC.netUpdate = true;
+			}
 		}
-
-		WanderTimer = WanderInterval;
-		bool hasMate = TryGetNearestShoalMate(out _);
-		State = hasMate ? ArmoredShrimpState.Shoaling : ArmoredShrimpState.Drifting;
-		if (Main.rand.NextBool(2))
-		{
-			Heading = -Heading;
-		}
-
-		NPC.netUpdate = true;
 	}
 
 	/// <summary>
