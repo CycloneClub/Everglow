@@ -47,7 +47,12 @@ findings:
   warning: 3
   info: 5
   total: 10
-status: issues_found
+status: criticals_and_warnings_resolved
+fix_iteration: 1
+fixed_at: 2026-09-16
+resolved_criticals: [CR-01, CR-02]
+resolved_warnings: [WR-01, WR-02, WR-03]
+remaining_findings: [IN-01, IN-02, IN-03, IN-04, IN-05]
 ---
 
 # Phase 04: Code Review Report
@@ -174,6 +179,27 @@ NPC.Center = new Vector2(tileX * 16f + 8f, (tileY + 1) * 16f - NPC.height / 2f);
 
 ---
 
+## Fix Resolution
+
+**Resolved:** 2026-09-16, iteration 1. All two Critical and all three Warning findings were fixed against the committed Phase 4 source tree and committed atomically (`fix(04): ...`), one commit per finding. The five Info findings were intentionally left unresolved — the requested scope was Critical-and-Warning, which is `/gsd-code-review --fix`'s default `fix_scope: critical_warning`. Full report: `04-REVIEW-FIX.md`.
+
+| Finding | Status | Commit | Change | Design / doctrine row |
+| --- | --- | --- | --- | --- |
+| CR-01 | resolved | `b7d134fe0` | `ToxicToad.OnHitPlayer` and `ToxicToad_PoisonBubble.OnHitPlayer` now roll the 75 % branch with `Main.rand.NextBool(3, 4)` (the documented "X out of Y" overload) instead of `Main.rand.NextBool(3)` (1 in 3 ≈ 33 %), and both doc comments no longer claim the one-argument overload is "3 in 4". | 不论何种方式都会有75%概率造成10秒中毒，剩下25%概率造成7秒酸性毒液; 酸性毒液 → `BuffID.Venom` (`04-DEVIATIONS.md` section 10) |
+| CR-02 | resolved | `dd2572f48` | The five client-visible decision flags moved out of the never-synchronised `NPC.localAI[]` into synced `NPC.ai[]` slots behind their existing named wrappers: `AnimatedWitherbarkHound` / `AnimatedWitherbarkSoldierRanged` / `AnimatedWitherbarkSoldierSpell` `ProvokedFlag` → `ai[1]`; `SailfinSnakehead` `AggroTimer` → `ai[1]` and `ChargeCooldown` → `ai[2]`; `ArmoredShrimp` `Heading` → `ai[2]`. `SailfinSnakehead.UpdateTimers` now runs the two counters on every side so the synced copies stay in step, while the `netUpdate` broadcast stays authoritative. Every existing `NetmodeID.MultiplayerClient` guard and `NPC.netUpdate` write is kept. | AGENTS.md "Synchronize gameplay state with `netUpdate` … use `SendExtraAI`/`ReceiveExtraAI`"; `AnimatedWitherbarkSoldier`'s `ai[0]` precedent |
+| WR-01 | resolved | `0c79bd497` | `LargeMossyThornTurtle.ApplyStateMotion` re-derives `NPC.noTileCollide` / `NPC.noGravity` from the synced `State` on every side (`bool flying = State == AerialSlam`), so a multiplayer client no longer keeps gravity and tile collision through the state-3 dive. `EnterState` keeps its authoritative write. | 3、缩壳，飞天下坠，但是无视物块碰撞 (D-55) |
+| WR-02 | resolved | `86f2ff1f9` | `AnimatedWitherbarkSoldierSpell.TeleportNear` bottom-aligns the 46-px body on the validated floor: `NPC.Center = new Vector2(tileX * 16f + 8f, (tileY + 1) * 16f - NPC.height / 2f)` instead of anchoring on the candidate tile's centre, which buried the feet 15 px into the solid tile the clearance check required. `IsStandableSpot` is unchanged. | 然后随机传送（原版法师AI） |
+| WR-03 | resolved | `043ce97c5` | `RedNeedleCaterpillar.UpdateVolley` anchors the volley on the synced `NPC.Center` instead of `NPC.Center + Segments[0].SelfPosition`, and the now-unneeded `Segments.Count == 0` guard is removed; `FireVolley`'s parameter doc is updated. The `Caterpillar` template's segment simulation is per-side (it consumes `Main.rand` on every side and is never synchronised), so a segment-derived origin did not match the head the client renders. | 在头部发射4~6尖刺 (D-55) |
+
+**Verification (3-tier).** Tier 1 (re-read each modified region) and Tier 2 (the Phase's `dotnet build /p:Configuration=Release /p:WarningLevel=0`, which compiles all five changed classes) both passed for every fix. CR-02, WR-01 and WR-03 change runtime branch/sync logic rather than only syntax, so they are flagged `fixed: requires human verification` in `04-REVIEW-FIX.md`; the compile cannot prove the multiplayer branch now matches the server.
+
+**Build and gate evidence (run in the main checkout, on the committed tree).** `dotnet build /p:Configuration=Release /p:WarningLevel=0` → exit 0, **0 warnings / 0 errors**, `Everglow.tmod` packaged and the mod enabled. `.planning/phases/04-remaining-ordinary-monsters/scripts/check-biology.ps1 -RequireAll` → exit 0, `OK: reconciled rows = 21 / 21`, `OK: guarded classes = 37`, `OK: UTF-8 BOM check passed (3 files).` No Info finding had to be touched to make either pass.
+
+**Left unresolved (Info, outside the requested scope).** IN-01 (unused `using Terraria.GameContent.ItemDropRules;` in nine classes, plus `Terraria.DataStructures` in the two 爆弹水母 classes), IN-02 (`WaterStrider.DashAngle` written but never read), IN-03 (redundant `NPC.netUpdate` when only a projectile was spawned), IN-04 (the three D-45 identity shells can spawn on dry land) and IN-05 (`GlowSalamander` suffocation cadence rides `Main.GameUpdateCount`). Each is listed in `04-REVIEW-FIX.md` so a later pass can pick it up.
+
+---
+
 _Reviewed: 2026-09-16T11:03:36Z_
 _Reviewer: the agent (gsd-code-reviewer)_
 _Depth: standard_
+_Fixed: 2026-09-16 (iteration 1, both Criticals and all three Warnings resolved; five Info findings remain)_
