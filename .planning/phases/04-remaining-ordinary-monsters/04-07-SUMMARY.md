@@ -27,7 +27,7 @@ affects: [04-08, 04-09, phase-5-6-region-terrain, phase-8-source-acceptance]
 actuals:
   tokens: 12114
   tasks: 3
-  commits: 5   # measured: git rev-list --count 16c1ef950..HEAD after the plan-metadata commit (4 task/refactor commits + 1 plan-metadata commit)
+  commits: 6   # measured: git rev-list --count 16c1ef950..HEAD after the plan close-out (3 task commits + 1 guard-form refactor + 1 plan-metadata commit + 1 housekeeping commit)
 plan_head_before: 16c1ef950cdf00ddb03b6b81abae15c0f8732641
 
 tech-stack:
@@ -165,7 +165,7 @@ Each task was committed atomically:
 3. **Guard-form refactor** — `0012b19f3` (refactor; see Deviations 3)
 4. **Task 3: 蛇行苔 `SerpentMoss`** — `c6b843713` (feat)
 
-**Plan metadata:** this SUMMARY, `STATE.md`, `ROADMAP.md` and the four `WINDOWS.md` entries are carried by the plan-metadata commit that follows it (the fifth commit in the `plan_head_before..HEAD` range).
+**Plan metadata:** this SUMMARY, `STATE.md`, `ROADMAP.md` and the four `WINDOWS.md` entries are carried by the plan-metadata commit that follows Task 3 (`54193c3df`), and the generated `.planning/state.json` (synced by the state verbs) together with the closing record of this commit count are carried by the final housekeeping commit — the sixth and last commit in the `plan_head_before..HEAD` range.
 
 ## Files Created/Modified
 
