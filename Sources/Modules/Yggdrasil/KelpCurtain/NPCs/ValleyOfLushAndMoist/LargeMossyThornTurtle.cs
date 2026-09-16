@@ -429,10 +429,18 @@ public class LargeMossyThornTurtle : ModNPC
 	/// The per-state motion, applied on every side from the synced state. The walk states are deterministic
 	/// functions of the synced state and the synced target slot, so a client reproduces them without
 	/// deciding anything; the flight is server-driven and a client follows the synced NPC velocity and
-	/// position instead of re-applying gravity a second time (D-55).
+	/// position instead of re-applying gravity a second time. The flight's <c>noTileCollide</c> /
+	/// <c>noGravity</c> flags are re-derived here on every side too, because they are not part of the NPC
+	/// net message: without this a client keeps gravity and tile collision through the state-3 dive and
+	/// snaps back on the next transition (D-55).
 	/// </summary>
 	private void ApplyStateMotion()
 	{
+		// 无视物块碰撞 and no gravity for the dive only, re-asserted on every side from the synced State.
+		bool flying = State == LargeMossyThornTurtleState.AerialSlam;
+		NPC.noTileCollide = flying;
+		NPC.noGravity = flying;
+
 		switch (State)
 		{
 			case LargeMossyThornTurtleState.Retracted:
