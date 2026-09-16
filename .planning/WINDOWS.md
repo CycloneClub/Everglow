@@ -1,10 +1,10 @@
 ---
 schema_version: 1
-open_count: 56
+open_count: 62
 waived_count: 0
 fixed_count: 3
-total_count: 59
-last_updated: 2026-09-16T09:55:18.211Z
+total_count: 65
+last_updated: 2026-09-16T10:16:02.107Z
 ---
 
 # Broken Windows Ledger
@@ -74,6 +74,12 @@ last_updated: 2026-09-16T09:55:18.211Z
 | 57 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/ArmoredShrimp.cs |  | Plan 04-03 Task 1's acceptance criteria require the token Main.netMode != NetmodeID.MultiplayerClient, so the committed ArmoredShrimp was brought to the plan's != guard form in a separate refactor(04-03) commit with no behavioural change (OnSpawn now delegates to CreateShoal()); the 04-07 precedent for the same normalisation. Two further 04-03 records are ledger-only: the ai[1] follower marker is backed by a static groupCreationDepth guard so a member can never roll a group even if the engine applied NPC.NewNPC's ai0..ai3 values in a different order (the plan's marker remains the primary, synced mechanism, T-04-17), and the three defaulted design cells are D-54 values (ArmoredShrimp knockBackResist 0.8f, BombJellyfish defence 2). | open |  | 2026-09-16T09:55:16.836Z |  |
 | 58 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/SailfinSnakehead.cs |  | Plan 04-03 consumes the GlowSalamander and RiverSlug types through ModContent.NPCType<...>() (the plan's own key_links and fails_when name those two lookups), which is a read of classes created by plan 04-02 and Phase 3 rather than of a same-wave sibling; both were already committed and the lookups are compile-time only, so no same-wave artifact is consumed. The design's inter-creature contact damage itself stays unmodelled per 04-DEVIATIONS.md section 7 (tML has no NPC-versus-NPC damage hook), so the foe rules are the target-and-charge and retreat behaviours. | open |  | 2026-09-16T09:55:17.525Z |  |
 | 59 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/Projectiles/Enemies/BombJellyfish_Explosion.cs |  | Plan 04-03 Task 2's first build attempt failed with error CS0246: the new BombJellyfish_Explosion.cs referenced KelpWaterDrop without using Everglow.Yggdrasil.KelpCurtain.Dusts; fixed by adding the import (Rule 1), after which the Release build is 0 warnings / 0 errors. Recorded because the task's verify ran red once inside the task rather than red before it. | open |  | 2026-09-16T09:55:18.211Z |  |
+| 60 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/Radiolarian.cs |  | Plan 04-04's per-task behavior asked Radiolarian to prefer a nearby GlowSalamander (plan 04-02) and AlgaeOctopus/LargeAlgaeOctopus to exclude JadeSpiritAnglerfish (plan 04-01), but the execution constraint for this plan forbids ModContent.NPCType<...>() references to classes created by other plans. All three creatures therefore take their target from the engine (NPC.TargetClosest) and the design's inter-creature hostility stays the unmodelled system already recorded in 04-DEVIATIONS.md sections 7 and 13 - no new gap, and the phase's existing disposition is preserved. | open |  | 2026-09-16T10:15:02.711Z |  |
+| 61 | 04 | unrun-verify | .planning/phases/04-remaining-ordinary-monsters/04-UAT.md |  | Plan 04-04 runtime human-checks (D-21) not run offline: in a tModLoader client 放射虫 must spawn only in the Kelp Curtain's shallow water inside Yggdrasil and never in an ordinary world, fire water bolts while submerged, dash through a target inside 4 tiles on the 300-frame cooldown and drop RadialCarapace at 6.7%; 覆藻章鱼 must fade in only inside its 24-tile observation range, slow on contact, leave Darkness-causing ink puffs along its dash and burst one on death; 大型覆藻章鱼 must spawn only at the water bottom, hold its prey with Webbed+Suffocation in 2 s pulses every 60 frames, emit the 180-frame four-cloud wave (first aimed, three random), dash fast, flee and ink when under 40% life, and the dedicated-server run must show no graphics access and no Main.LocalPlayer dependency. Plan 04-09 records this in 04-UAT.md. | open |  | 2026-09-16T10:15:12.659Z |  |
+| 62 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/Projectiles/Enemies/Radiolarian_WaterBolt.cs |  | Plan 04-04 Tasks 1 and 2 list NPC.GetSource_FromAI as an acceptance token inside Radiolarian_WaterBolt.cs and AlgaeOctopus_InkCloud.cs, but a ModProjectile exposes no NPC member, so the call cannot exist there. The token is realised at the real spawn sites (Radiolarian.TryFireWaterBolt, AlgaeOctopus.SpawnInkPuff, LargeAlgaeOctopus.SpawnInkCloud) and named in each projectile's XML doc that describes its spawn site - the plan 04-02/04-06/04-07/04-08 precedent, recorded rather than faked with a comment-only token. | open |  | 2026-09-16T10:15:21.518Z |  |
+| 63 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/Radiolarian.cs |  | Plan 04-04 Task 1's first build attempt failed twice (Rule 1): Radiolarian.cs called NPCSpawnManager without using Everglow.Yggdrasil.Common, and Radiolarian_WaterBolt.cs set Projectile.noGravity, which does not exist on Projectile in this tML build. Both fixed (import added; the gravity line removed, an aquatic bolt simply never adds gravity), after which the Release build is 0 warnings / 0 errors. Recorded because the task's verify ran red once inside the task rather than red before it. | open |  | 2026-09-16T10:15:30.448Z |  |
+| 64 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/Radiolarian.cs |  | Plan 04-04 realizes the tdd=true task attribute as the Phase 4 gate's monotone guarded-class counter (32 -> 34 -> 36 -> 37, exactly the five files this plan adds) plus the Release build, because the repository has no unit-test infrastructure for ModNPC spawn isolation or AI feel; no test was fabricated and no RED/GREEN pair is claimed (the 04-02/04-03/04-06/04-07/04-08 precedent). | open |  | 2026-09-16T10:16:00.575Z |  |
+| 65 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/AlgaeOctopus.cs |  | Plan 04-04's Design Values/action prose repeats NPC.rare = ItemRarityID.White for all three creatures; NPC.rare does not exist in this tML build and was written as NPC.rarity (the engine's only NPC rarity field, Lifeform Analyzer), with 大型覆藻章鱼's 类型 稀有 written as ItemRarityID.LightPurple. The ninth occurrence of the same Rule 1 correction (Phase 3, 04-01, 04-02, 04-05, 04-06, 04-07, 04-08, 04-03) already recorded in 04-DEVIATIONS.md section 10, so no ledger edit was needed. | open |  | 2026-09-16T10:16:02.107Z |  |
 
 ````json
 [
@@ -783,6 +789,78 @@ last_updated: 2026-09-16T09:55:18.211Z
     "status": "open",
     "reason": "",
     "recorded_at": "2026-09-16T09:55:18.211Z",
+    "resolved_at": null
+  },
+  {
+    "id": 60,
+    "kind": "deviation",
+    "phase": "04",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/Radiolarian.cs",
+    "line": null,
+    "description": "Plan 04-04's per-task behavior asked Radiolarian to prefer a nearby GlowSalamander (plan 04-02) and AlgaeOctopus/LargeAlgaeOctopus to exclude JadeSpiritAnglerfish (plan 04-01), but the execution constraint for this plan forbids ModContent.NPCType<...>() references to classes created by other plans. All three creatures therefore take their target from the engine (NPC.TargetClosest) and the design's inter-creature hostility stays the unmodelled system already recorded in 04-DEVIATIONS.md sections 7 and 13 - no new gap, and the phase's existing disposition is preserved.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T10:15:02.711Z",
+    "resolved_at": null
+  },
+  {
+    "id": 61,
+    "kind": "unrun-verify",
+    "phase": "04",
+    "file": ".planning/phases/04-remaining-ordinary-monsters/04-UAT.md",
+    "line": null,
+    "description": "Plan 04-04 runtime human-checks (D-21) not run offline: in a tModLoader client 放射虫 must spawn only in the Kelp Curtain's shallow water inside Yggdrasil and never in an ordinary world, fire water bolts while submerged, dash through a target inside 4 tiles on the 300-frame cooldown and drop RadialCarapace at 6.7%; 覆藻章鱼 must fade in only inside its 24-tile observation range, slow on contact, leave Darkness-causing ink puffs along its dash and burst one on death; 大型覆藻章鱼 must spawn only at the water bottom, hold its prey with Webbed+Suffocation in 2 s pulses every 60 frames, emit the 180-frame four-cloud wave (first aimed, three random), dash fast, flee and ink when under 40% life, and the dedicated-server run must show no graphics access and no Main.LocalPlayer dependency. Plan 04-09 records this in 04-UAT.md.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T10:15:12.659Z",
+    "resolved_at": null
+  },
+  {
+    "id": 62,
+    "kind": "deviation",
+    "phase": "04",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/Projectiles/Enemies/Radiolarian_WaterBolt.cs",
+    "line": null,
+    "description": "Plan 04-04 Tasks 1 and 2 list NPC.GetSource_FromAI as an acceptance token inside Radiolarian_WaterBolt.cs and AlgaeOctopus_InkCloud.cs, but a ModProjectile exposes no NPC member, so the call cannot exist there. The token is realised at the real spawn sites (Radiolarian.TryFireWaterBolt, AlgaeOctopus.SpawnInkPuff, LargeAlgaeOctopus.SpawnInkCloud) and named in each projectile's XML doc that describes its spawn site - the plan 04-02/04-06/04-07/04-08 precedent, recorded rather than faked with a comment-only token.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T10:15:21.518Z",
+    "resolved_at": null
+  },
+  {
+    "id": 63,
+    "kind": "deviation",
+    "phase": "04",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/Radiolarian.cs",
+    "line": null,
+    "description": "Plan 04-04 Task 1's first build attempt failed twice (Rule 1): Radiolarian.cs called NPCSpawnManager without using Everglow.Yggdrasil.Common, and Radiolarian_WaterBolt.cs set Projectile.noGravity, which does not exist on Projectile in this tML build. Both fixed (import added; the gravity line removed, an aquatic bolt simply never adds gravity), after which the Release build is 0 warnings / 0 errors. Recorded because the task's verify ran red once inside the task rather than red before it.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T10:15:30.448Z",
+    "resolved_at": null
+  },
+  {
+    "id": 64,
+    "kind": "deviation",
+    "phase": "04",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/Radiolarian.cs",
+    "line": null,
+    "description": "Plan 04-04 realizes the tdd=true task attribute as the Phase 4 gate's monotone guarded-class counter (32 -> 34 -> 36 -> 37, exactly the five files this plan adds) plus the Release build, because the repository has no unit-test infrastructure for ModNPC spawn isolation or AI feel; no test was fabricated and no RED/GREEN pair is claimed (the 04-02/04-03/04-06/04-07/04-08 precedent).",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T10:16:00.575Z",
+    "resolved_at": null
+  },
+  {
+    "id": 65,
+    "kind": "deviation",
+    "phase": "04",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/AlgaeOctopus.cs",
+    "line": null,
+    "description": "Plan 04-04's Design Values/action prose repeats NPC.rare = ItemRarityID.White for all three creatures; NPC.rare does not exist in this tML build and was written as NPC.rarity (the engine's only NPC rarity field, Lifeform Analyzer), with 大型覆藻章鱼's 类型 稀有 written as ItemRarityID.LightPurple. The ninth occurrence of the same Rule 1 correction (Phase 3, 04-01, 04-02, 04-05, 04-06, 04-07, 04-08, 04-03) already recorded in 04-DEVIATIONS.md section 10, so no ledger edit was needed.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T10:16:02.107Z",
     "resolved_at": null
   }
 ]
