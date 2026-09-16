@@ -171,16 +171,14 @@ public class RedNeedleCaterpillar : Caterpillar
 
 	/// <summary>
 	/// 与玩家距离不低于4格时，每过180帧会像尖刺史莱姆一样在头部发射4~6尖刺: the design's volley, run on the
-	/// authoritative side only. The distance is computed from the synced <c>NPC.Center</c> and the target's
-	/// centre, never from a screen or camera value.
+	/// authoritative side only. The origin is the synced <c>NPC.Center</c>, never
+	/// <c>Segments[0].SelfPosition</c>: the template's segment simulation consumes <c>Main.rand</c> on every
+	/// side and is never synchronised, so a segment-derived origin would be per-side state and the needles
+	/// would not leave the head the client is rendering (D-55). The distance is computed from the synced
+	/// <c>NPC.Center</c> and the target's centre, never from a screen or camera value.
 	/// </summary>
 	private void UpdateVolley()
 	{
-		if (Segments.Count == 0)
-		{
-			return;
-		}
-
 		NPC.TargetClosest(false);
 		if (NPC.target < 0 || NPC.target >= Main.maxPlayers)
 		{
@@ -193,9 +191,10 @@ public class RedNeedleCaterpillar : Caterpillar
 			return;
 		}
 
-		// 在头部: the needles leave the worm's head segment, not the worm's centre.
-		Vector2 head = NPC.Center + Segments[0].SelfPosition;
-		if (Vector2.Distance(head, target.Center) < MinVolleyRangeTiles * PixelsPerTile)
+		// 在头部: the design's head is a per-side segment offset with no synced slot, so the volley is
+		// anchored on the synced centre instead; both sides then agree on the origin (D-55).
+		Vector2 origin = NPC.Center;
+		if (Vector2.Distance(origin, target.Center) < MinVolleyRangeTiles * PixelsPerTile)
 		{
 			// 与玩家距离不低于4格时才能发射: closer than four tiles there is no volley at all.
 			return;
@@ -208,7 +207,7 @@ public class RedNeedleCaterpillar : Caterpillar
 		}
 
 		VolleyTimer = 0;
-		FireVolley(head, target.Center);
+		FireVolley(origin, target.Center);
 		NPC.netUpdate = true;
 	}
 
@@ -216,7 +215,7 @@ public class RedNeedleCaterpillar : Caterpillar
 	/// 在头部发射4~6尖刺: one volley of the design's needles, fanned across <see cref="MaxSpreadRadians"/>
 	/// in the design's spiky-slime pattern. Called only from the authoritative side (D-55).
 	/// </summary>
-	/// <param name="origin">The head segment's world position.</param>
+	/// <param name="origin">The volley's world origin, the synced <c>NPC.Center</c>.</param>
 	/// <param name="targetCenter">The prey's centre, used as the volley's aim.</param>
 	private void FireVolley(Vector2 origin, Vector2 targetCenter)
 	{
