@@ -1,10 +1,10 @@
 ---
 schema_version: 1
-open_count: 25
+open_count: 30
 waived_count: 0
-fixed_count: 1
-total_count: 26
-last_updated: 2026-09-16T06:07:12.736Z
+fixed_count: 2
+total_count: 32
+last_updated: 2026-09-16T07:27:49.606Z
 ---
 
 # Broken Windows Ledger
@@ -41,6 +41,12 @@ last_updated: 2026-09-16T06:07:12.736Z
 | 24 | 4 | unrun-verify | .planning/phases/04-remaining-ordinary-monsters/04-UAT.md |  | Plan 04-01 Task 1 tracer human-check not executed: the D-21 client bundle (jade spirit anglerfish spawn isolation at the lake floor, its invisibility beyond the reveal range, the reveal dash and its 60/30 damage split, the two drops, a clean loader run with no missing-texture abort, and no main-world spawn in an ordinary world) needs a live tModLoader client; plan 04-09 records it in 04-UAT.md | open |  | 2026-09-16T06:06:59.285Z |  |
 | 25 | 4 | deviation | .planning/phases/04-remaining-ordinary-monsters/04-01-PLAN.md |  | Plan 04-01 Task 1 is type=tracer and its verify carries a genuine human-check with no blocking-human gate; the literal checkpoints.md end-of-phase precedence chain (row 4) reads as STOP before the next task. The plan's own why_human states those client checks are the D-21 batch recorded in plan 04-09, and the identical tracer shape in plan 03-01 was executed the same way, so task 2 ran after the automated verify was re-run green and the human check is carried into 04-UAT.md instead of halting mid-flight. Documented as a process deviation in 04-01-SUMMARY.md and 04-DEVIATIONS.md section 11 | open |  | 2026-09-16T06:07:11.234Z |  |
 | 26 | 4 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/JadeSpiritAnglerfish.cs |  | Plan 04-01 applied the Rule 1 API-name correction the plan prose repeats: NPC.rare does not exist in this tML build and was written as NPC.rarity (the engine's only NPC rarity field), recorded in 04-DEVIATIONS.md section 10; compile-verified by the Release build | open |  | 2026-09-16T06:07:12.736Z |  |
+| 27 | 04 | stub | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/GlowSalamander.cs |  | probe | fixed |  | 2026-09-16T07:26:36.147Z | 2026-09-16T07:27:25.449Z |
+| 28 | 04 | unrun-verify | .planning/phases/04-remaining-ordinary-monsters/04-UAT.md |  | Plan 04-02 runtime human-checks (D-21) not run offline: in a tModLoader client the WaterStrider must spawn only on the Kelp Curtain water surface inside Yggdrasil and never in an ordinary world, keep the design's 60-200 / 45-150 frame dash cadence, hop back to water from land and swim up from the lake bed; the ToxicToad must spawn on dry land, prefer GlowSalamander/RiverSlug over the player, fire poison bubbles and apply the 75/25 Poisoned/Venom split on contact plus a 180-frame 10-damage Venom death cloud; the GlowSalamander must spawn underwater, dash and melee, flee the toad, and run the 60s / 10s / 30-frame moisture and Suffocation cycle with the synced colour variant. Plan 04-09 records this in 04-UAT.md. | open |  | 2026-09-16T07:27:47.144Z |  |
+| 29 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/ToxicToad.cs |  | Plan 04-02 prose repeats the NPC.rare = ItemRarityID.White; line for all three creatures; NPC.rare does not exist in this tML build and was written as NPC.rarity (the engine's only NPC rarity field), compile-verified by the Release build. The same Rule 1 correction plan 04-01 recorded in 04-DEVIATIONS.md section 10. | open |  | 2026-09-16T07:27:47.754Z |  |
+| 30 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/Projectiles/Enemies/ToxicToad_PoisonCloud.cs |  | The plan's acceptance token NPC.GetSource_FromAI per projectile file is not expressible inside a ModProjectile (neither Projectile nor ModProjectile exposes an NPC member); the real spawn site is ToxicToad.cs, which calls Projectile.NewProjectile(NPC.GetSource_FromAI(), ...) for both the bubble and the death cloud. Recorded rather than faked with a comment-only token. | open |  | 2026-09-16T07:27:48.377Z |  |
+| 31 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/ToxicToad.cs |  | The design's cross-creature hostility is modelled as target preference only: the ToxicToad prefers a nearby GlowSalamander/RiverSlug over the player and the GlowSalamander retreats from a ToxicToad, but tML has no NPC-versus-NPC damage path (hostile projectiles damage players only), so neither actually damages the other. The residual limitation is already recorded in 04-DEVIATIONS.md sections 7 and 13. | open |  | 2026-09-16T07:27:48.982Z |  |
+| 32 | 04 | stub | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/GlowSalamander.cs |  | The synced three-colour variant slot (NPC.localAI[1], drawn in OnSpawn) is inert until approved art arrives: with the shared Commons.ModAsset.White_Mod fallback there is no sprite to tint, so nothing on screen changes with the variant. Intentional per OQ2 - it exists so the D-49 migration maps the colour sheets onto frames without a class rework. | open |  | 2026-09-16T07:27:49.606Z |  |
 
 ````json
 [
@@ -354,6 +360,78 @@ last_updated: 2026-09-16T06:07:12.736Z
     "status": "open",
     "reason": "",
     "recorded_at": "2026-09-16T06:07:12.736Z",
+    "resolved_at": null
+  },
+  {
+    "id": 27,
+    "kind": "stub",
+    "phase": "04",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/GlowSalamander.cs",
+    "line": null,
+    "description": "probe",
+    "status": "fixed",
+    "reason": "",
+    "recorded_at": "2026-09-16T07:26:36.147Z",
+    "resolved_at": "2026-09-16T07:27:25.449Z"
+  },
+  {
+    "id": 28,
+    "kind": "unrun-verify",
+    "phase": "04",
+    "file": ".planning/phases/04-remaining-ordinary-monsters/04-UAT.md",
+    "line": null,
+    "description": "Plan 04-02 runtime human-checks (D-21) not run offline: in a tModLoader client the WaterStrider must spawn only on the Kelp Curtain water surface inside Yggdrasil and never in an ordinary world, keep the design's 60-200 / 45-150 frame dash cadence, hop back to water from land and swim up from the lake bed; the ToxicToad must spawn on dry land, prefer GlowSalamander/RiverSlug over the player, fire poison bubbles and apply the 75/25 Poisoned/Venom split on contact plus a 180-frame 10-damage Venom death cloud; the GlowSalamander must spawn underwater, dash and melee, flee the toad, and run the 60s / 10s / 30-frame moisture and Suffocation cycle with the synced colour variant. Plan 04-09 records this in 04-UAT.md.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T07:27:47.144Z",
+    "resolved_at": null
+  },
+  {
+    "id": 29,
+    "kind": "deviation",
+    "phase": "04",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/ToxicToad.cs",
+    "line": null,
+    "description": "Plan 04-02 prose repeats the NPC.rare = ItemRarityID.White; line for all three creatures; NPC.rare does not exist in this tML build and was written as NPC.rarity (the engine's only NPC rarity field), compile-verified by the Release build. The same Rule 1 correction plan 04-01 recorded in 04-DEVIATIONS.md section 10.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T07:27:47.754Z",
+    "resolved_at": null
+  },
+  {
+    "id": 30,
+    "kind": "deviation",
+    "phase": "04",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/Projectiles/Enemies/ToxicToad_PoisonCloud.cs",
+    "line": null,
+    "description": "The plan's acceptance token NPC.GetSource_FromAI per projectile file is not expressible inside a ModProjectile (neither Projectile nor ModProjectile exposes an NPC member); the real spawn site is ToxicToad.cs, which calls Projectile.NewProjectile(NPC.GetSource_FromAI(), ...) for both the bubble and the death cloud. Recorded rather than faked with a comment-only token.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T07:27:48.377Z",
+    "resolved_at": null
+  },
+  {
+    "id": 31,
+    "kind": "deviation",
+    "phase": "04",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/ToxicToad.cs",
+    "line": null,
+    "description": "The design's cross-creature hostility is modelled as target preference only: the ToxicToad prefers a nearby GlowSalamander/RiverSlug over the player and the GlowSalamander retreats from a ToxicToad, but tML has no NPC-versus-NPC damage path (hostile projectiles damage players only), so neither actually damages the other. The residual limitation is already recorded in 04-DEVIATIONS.md sections 7 and 13.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T07:27:48.982Z",
+    "resolved_at": null
+  },
+  {
+    "id": 32,
+    "kind": "stub",
+    "phase": "04",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/GlowSalamander.cs",
+    "line": null,
+    "description": "The synced three-colour variant slot (NPC.localAI[1], drawn in OnSpawn) is inert until approved art arrives: with the shared Commons.ModAsset.White_Mod fallback there is no sprite to tint, so nothing on screen changes with the variant. Intentional per OQ2 - it exists so the D-49 migration maps the colour sheets onto frames without a class rework.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T07:27:49.606Z",
     "resolved_at": null
   }
 ]

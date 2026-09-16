@@ -4,18 +4,18 @@ milestone: v1.0
 milestone_name: milestone
 current_phase: 04
 current_phase_name: Remaining Ordinary Monsters
-current_plan: 1
+current_plan: 2
 status: executing
-stopped_at: Completed 04-01-PLAN.md
-last_updated: "2026-09-16T06:04:27.987Z"
+stopped_at: Completed 04-02-PLAN.md
+last_updated: "2026-09-16T07:32:00.000Z"
 last_activity: 2026-09-16
-last_activity_desc: Phase 4 tracer 04-01 complete — the new 13-invariant Phase 4 gate (green, red-before-green proven), the 21-row reconciliation of the shared 03-BIOLOGY.json + mirror, KelpCurtainSpawnConditions, 碧灵鮟鱇 (JadeSpiritAnglerfish) and the 04-DEVIATIONS.md ledger
+last_activity_desc: Phase 4 wave 2 plan 04-02 complete — 水黾 (WaterStrider), 剧毒蟾蜍 (ToxicToad + its poison bubble and death cloud) and 幽光蝾螈 (GlowSalamander) implemented end-to-end against all three KelpCurtainSpawnConditions water/land predicates, with the synced moisture budget, the 75%/25% 中毒/酸性毒液 split and an advanced gate (guarded classes 6)
 progress:
   total_phases: 4
   completed_phases: 3
   total_plans: 25
-  completed_plans: 17
-state_head: b18a8d692dd2111ff44f87d1d7a09f9d004be1da
+  completed_plans: 18
+state_head: 5493aed98
 ---
 
 # Project State
@@ -29,20 +29,20 @@ See: `.planning/PROJECT.md` (updated 2026-09-12)
 
 ## Current Position
 
-Current Plan: 1
+Current Plan: 2
 Total Plans in Phase: 9
-Phase: 04 (Remaining Ordinary Monsters) — EXECUTING (tracer 04-01 done; waves 2–4 outstanding)
-Plans complete: 1 of 9 (04-01 done; 04-02 … 04-09 outstanding)
-Status: Executing — the Phase 4 tracer landed 2026-09-16 with a green new gate, the 21-row matrix reconciliation, the shared spawn-predicate helper, 碧灵鮟鱇 implemented end-to-end and the phase ledger opened; runtime verification (D-21) is outstanding for every Phase 4 row
-Last activity: 2026-09-16 — 04-01 complete (new 13-invariant Phase 4 gate over the shared `03-BIOLOGY.json` run red-before-green, the 21 in-scope rows reconciled in place with the D-48 artwork blocker and mirrored cell-for-cell, `KelpCurtainSpawnConditions` with the three server-safe water/land predicates, `JadeSpiritAnglerfish` with its stealth→reveal→dash→chase→return cycle and its two Phase 1 drops, and `04-DEVIATIONS.md` §1–§13 opened with the OQ1–OQ5 resolutions)
+Phase: 04 (Remaining Ordinary Monsters) — EXECUTING (tracer 04-01 + wave 2/4 plan 04-02 done; waves 3–4 outstanding)
+Plans complete: 2 of 9 (04-01 and 04-02 done; 04-03 … 04-09 outstanding)
+Status: Executing — plan 04-02 landed 2026-09-16 with the Death Jade Lake waterline family (水黾, 剧毒蟾蜍 + its two projectiles, 幽光蝾螈), the first consumers of all three shared water predicates, the synced 60 s/10 s/30-frame moisture budget and an advanced Phase 4 gate (`OK: guarded classes = 6` of the 37 that close the phase); runtime verification (D-21) is outstanding for every Phase 4 row
+Last activity: 2026-09-16 — 04-02 complete (`WaterStrider` surface-only skater with the design's 60–200 / 45–150 frame dash cadence and both recovery branches, `ToxicToad` dry-land ambusher with its 蝾螈/水蛞蝓-over-player preference, `ToxicToad_PoisonBubble` and the 180-frame `ToxicToad_PoisonCloud`, and `GlowSalamander` with its synced three-colour variant and the design's exact moisture/suffocation cycle)
 
-Progress: [██████████] 100% — Phase 3 of 4 complete; Phase 4 wave 1 of 4 landed
+Progress: [██████████] 100% — Phase 3 of 4 complete; Phase 4 waves 1–2 of 4 landed
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 17
+- Total plans completed: 18
 - Average duration: n/a
 - Total execution time: 0 hours
 
@@ -54,7 +54,7 @@ Progress: [██████████] 100% — Phase 3 of 4 complete; Phase
 | 1 | 7 | 7 | ~17min |
 | 2 | 4 | 5 | 10min |
 | 3 | 4 | 4 | ~96min |
-| 4 | 1 | 9 | ~26min |
+| 4 | 2 | 9 | ~53min |
 
 **Recent Trend:** No execution data yet.
 **Per-Plan Metrics:**
@@ -78,6 +78,7 @@ Progress: [██████████] 100% — Phase 3 of 4 complete; Phase
 | Phase 03 P03 | 11min | 3 tasks | 6 files |
 | Phase 03 P04 | ~30min | 2 tasks | 5 files |
 | Phase 04 P01 | ~26min | 2 tasks | 6 files |
+| Phase 04 P02 | ~80min | 2 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -95,6 +96,15 @@ Progress: [██████████] 100% — Phase 3 of 4 complete; Phase
 - [Phase 04]: BIO-01/BIO-02/BIO-03 are advanced by 04-01 but complete in none of it (one of 21 rows); `REQUIREMENTS.md` is left untouched and its traceability rows stay Pending until plan 04-09 closes the phase.
 - [Phase 04]: `04-DEVIATIONS.md` is the phase's single ledger (§1–§13, §14 reserved for plan 04-09): the 21-row scope, the OQ2 variant strategy, the D-49 folder rule, missing-art handling, spawn routing, drop wiring with the OQ1 cross-namespace decision in §6.1, the frozen eleven projectiles and every effect blocker, the OQ5 mini-boss call, the OQ3 gate placement, the conservative-defaults register (incl. 酸性毒液 → `BuffID.Venom`, because `BuffID.AcidVenom` was verified absent by reflection over `Terraria.ID.BuffID`) and the deferred registry.
 - [Phase 04]: Tracer feedback gate: 04-01 is `type="tracer"` with a genuine `<human-check>` (no `blocking-human` gate), so the literal `end-of-phase` precedence chain would halt before task 2. The plan's own `<why_human>` states the client checks are the D-21 batch recorded in plan 04-09 (and plan 03-01, the identical tracer shape, was executed the same way), so the automated verify was re-run green before task 2 and the human check is carried into `04-UAT.md` rather than rubber-stamped. Recorded as a documented process deviation in `04-01-SUMMARY.md` and `04-DEVIATIONS.md` §11.
+- [Phase 04]: Plan 04-02's three creatures are the first consumers of all three shared water predicates — `IsWaterSurface` (水黾, 只会在水面上刷新), `IsDryLand` (剧毒蟾蜍, 在地表生成) and plain `spawnInfo.Water` (幽光蝾螈, 在水下生成) — so the D-53 seam is proven rather than merely authored; none of them re-implements its water test and none uses `IsBiomeActive`.
+- [Phase 04]: Every 04-02 state is **derived from synced world reads and only written authoritatively**: the class computes its state from tile/liquid/budget reads on every side and writes `NPC.ai[0]` under `Main.netMode != NetmodeID.MultiplayerClient` with `NPC.netUpdate`, so a client branches identically on the tick before the write lands and the design's "recover from wherever you ended up" clauses cannot flicker (D-55).
+- [Phase 04]: 水黾's land/water recovery works by flipping `NPC.noGravity` from world state (surface tension while in liquid, gravity on land) and using a bounded 30-tile / 4-tile-deep horizontal liquid search with a single persistent direction when nothing is found; the dash cadence is re-picked from the design's own 60–200 / 45–150 frame bands on the authoritative side only and the chosen heading is stored as a rotation in `NPC.localAI[1]`.
+- [Phase 04]: 剧毒蟾蜍 and 幽光蝾螈 are co-authored in one task because `ToxicToad.FindPreferredPrey` names `ModContent.NPCType<GlowSalamander>()` and `GlowSalamander.FindNearestToad` names `ModContent.NPCType<ToxicToad>()`; co-authoring keeps both mutual references inside one Release build, so no task consumes an artifact a later task of the same plan creates (the plan's explicit merge, not a deviation).
+- [Phase 04]: 幽光蝾螈's moisture cycle runs exactly 3600 / 600 / 30 frames over named `NPC.localAI[]` wrappers and is never a `Player` field (Pitfall 6, T-04-14); the budget drains/refills only on the authoritative side, forces an extra `NPC.netUpdate` every 30 drained frames so every side derives the same Returning/Suffocating state, and uses the engine's own `NPC.AddBuff` / `NPC.DelBuff` pair for the 60-tick `BuffID.Suffocation` pulses (the tML-documented authoritative path for NPC debuffs). The pulse cadence is the literal `Main.GameUpdateCount % 30`, so no ninth storage slot is needed.
+- [Phase 04]: The design's cross-creature hostility is modelled as **target preference only** in 04-02 — the toad prefers a nearby 幽光蝾螈/水蛞蝓 over the player and the salamander retreats from a 剧毒蟾蜍, both through synced prey/toad indices in `NPC.ai[]` resolved by `ModContent.NPCType<...>` — because tML has no NPC-versus-NPC damage path and hostile projectiles damage players only; the residual stays the blocker already recorded in `04-DEVIATIONS.md` §7/§13.
+- [Phase 04]: The 幽光蝾螈 colour variant is drawn once in `OnSpawn` on the authoritative side, stored in a synced `NPC.localAI[]` slot and sent through `SendExtraAI`/`ReceiveExtraAI`, and is explicitly documented as **inert until approved art arrives** with `Commons.ModAsset.White_Mod` (OQ2/D-49); it exists so the D-49 migration maps the 灰蓝色/粉色/褐色 sheets onto frames without a class rework.
+- [Phase 04]: 剧毒蟾蜍 and 幽光蝾螈 ship explicitly empty, commented `ModifyNPCLoot` bodies for 毒腺 and 牛黄 with **no** `ModContent.ItemType<...>` token anywhere (D-58, T-04-11), and the plan's per-projectile `NPC.GetSource_FromAI` acceptance token is realised at the real spawn site in `ToxicToad.cs` because a `ModProjectile` exposes no `NPC` member (recorded rather than faked with a comment-only token).
+- [Phase 04]: The plan prose's `NPC.rare` was corrected to `NPC.rarity` for the third time in this project (Phase 3, 04-01, 04-02); the correction is already in `04-DEVIATIONS.md` §10 and no ledger edit was needed. 04-02's gate count advanced from 2 to 6 guarded classes, and `03-BIOLOGY.json` / `03-BIOLOGY.md` are still byte-identical to their end-of-04-01 state (D-24/D-50).
 
 - **2026-09-15 — Phase 3 marked complete with runtime UAT deferred (user-authorized override).** Phase 3's four plans are code-complete (Release build 0/0; full gate chain green; `check-biology.ps1 -RequireAll` = `phase3 tranche 5 / 5`, `implemented classes 5 / 5`), but the D-21 in-client runtime verification in `03-UAT.md` was not executed because the tModLoader client environment was unavailable. The user authorized marking the phase complete and deferring the runtime UAT (same pattern as the Phase 1 ArmOfGiantTree multiplayer deferral). `03-VERIFICATION.md` remains `human_needed`, `03-UAT.md` stays unexecuted, and the deferral is tracked as an open `unrun-verify` item in `.planning/WINDOWS.md`. No verification result was fabricated.
 - **2026-09-12 correction — item allocation is by design-artwork state only.** A completed-art entry belongs to the completed-art item tranche (Phase 1) whether or not the repository already has a class for it; class-less status must never defer an entry to a later phase. Plan 01-06 refined the routing: of the 18 artwork-complete class-less entries, the 5 non-boss item-table rows are Phase 1 carry-over and the 13 boss/special-encounter rows are Phase 7 (ITEM-05/ITEM-06); Phase 2 contains only unfinished-art entries (25).
@@ -171,7 +181,7 @@ None yet.
 
 ### Blockers/Concerns
 
-- ⏳ **[Phase 4 — wave 1 landed 2026-09-16, waves 2–4 outstanding]** Plan 04-01 delivered the tracer slice: the green Phase 4 gate, the 21-row reconciliation, `KelpCurtainSpawnConditions`, 碧灵鮟鱇 (`JadeSpiritAnglerfish`) and the `04-DEVIATIONS.md` ledger. Twenty of the 21 in-scope rows are still `code_complete: false` (04-02 … 04-08 create their classes; 04-09 reconciles them and runs the D-21 bundle). Outstanding and recorded: the D-21 runtime bundle (`04-UAT.md` in plan 04-09) for every spawn predicate, the 碧灵鮟鱇 stealth/dash feel and its drops, the clean-load check for art-missing classes and a dedicated-server run; **approved art for 26 `ModNPC` sprites + 11 projectile sprites** (blocker only — no placeholder art was created, D-48/D-51); the 森雨幽谷 / 刺苔庭园 / 亡碧湖 region-level spawn predicates (Phases 5–6, D-52); the unimplemented systems (Spiny Moss Court morale/command, Valley egg system, disguised hazards, capture items, cross-creature hostility); localization (D-20); and the absent drop materials 毒腺 / 牛黄 / 软体甲壳碎片 / 亡碧膏 / 枯木碎块 / 干涸心脏 (D-58). See `04-DEVIATIONS.md` §5, §7, §11, §13.
+- ⏳ **[Phase 4 — waves 1–2 landed 2026-09-16, waves 3–4 outstanding]** Plans 04-01 and 04-02 delivered the tracer slice and the Death Jade Lake waterline family: the green Phase 4 gate, the 21-row reconciliation, `KelpCurtainSpawnConditions`, 碧灵鮟鱇 (`JadeSpiritAnglerfish`), 水黾 (`WaterStrider`), 剧毒蟾蜍 (`ToxicToad` + `ToxicToad_PoisonBubble` + `ToxicToad_PoisonCloud`) and 幽光蝾螈 (`GlowSalamander`) — `OK: guarded classes = 6` of the 37 that close the phase. Nineteen of the 21 in-scope rows are still `code_complete: false` (04-03 … 04-08 create their classes; 04-09 reconciles them and runs the D-21 bundle). Outstanding and recorded: the D-21 runtime bundle (`04-UAT.md` in plan 04-09) for every spawn predicate on a real lake, the 碧灵鮟鱇 stealth/dash feel, the 水黾 dash cadence and its two recoveries, the 剧毒蟾蜍 preference/bubble/death-cloud kit, the 幽光蝾螈 moisture cycle, the clean-load check for art-missing classes and a dedicated-server run; **approved art for 26 `ModNPC` sprites + 11 projectile sprites** (blocker only — no placeholder art was created, D-48/D-51); the 森雨幽谷 / 刺苔庭园 / 亡碧湖 region-level spawn predicates (Phases 5–6, D-52); the unimplemented systems (Spiny Moss Court morale/command, Valley egg system, disguised hazards, capture items, cross-creature hostility); localization (D-20); and the absent drop materials 毒腺 / 牛黄 / 软体甲壳碎片 / 亡碧膏 / 枯木碎块 / 干涸心脏 (D-58). See `04-DEVIATIONS.md` §5, §7, §11, §13 and `.planning/WINDOWS.md` entries 24–32.
 - ⏸ **[Phase 3 — deferred, user-authorized 2026-09-15]** Runtime UAT for the five-creature tranche is unexecuted: `03-UAT.md` (8 checks: spawn isolation per BIO-06, behavior/combat/immunities, drops, dedicated-server/multiplayer per QUAL-03, localization fallback) and the 4 D-21 backstop items in `03-VERIFICATION.md` await a tModLoader client. The phase is marked complete on code grounds only; run `/gsd-verify-work 3` when the client is available. Also open: approved art for the two `GiantDandelion` projectiles, and 森雨幽谷/刺苔庭园 regional spawn predicates (Phases 5–6).
 - ✅ **[Phase 1 carry-over — resolved 2026-09-13 by plan 01-06]** The 18 artwork-complete class-less entries were reallocated 5 Phase 1 / 13 Phase 7 (P1A-12); the five Phase 1 items are implemented and gated (`check-carryover.ps1` 5/5). No parser re-run (CR-01).
 - Phase 1: Feishu source reconciliation must classify all five terrain labels and inventory every item/drop before implementation acceptance.
@@ -206,6 +216,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-09-16T06:05:00.000Z
-Stopped at: Completed 04-01-PLAN.md
-Resume file: .planning/phases/04-remaining-ordinary-monsters/04-02-PLAN.md
+Last session: 2026-09-16T07:32:00.000Z
+Stopped at: Completed 04-02-PLAN.md
+Resume file: .planning/phases/04-remaining-ordinary-monsters/04-03-PLAN.md
