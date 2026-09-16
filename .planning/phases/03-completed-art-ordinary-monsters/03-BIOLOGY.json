@@ -49,8 +49,9 @@
                      "frame_count":  1,
                      "mapping_confidence":  "assumed",
                      "blockers":  [
-                                      "artwork: no approved repository texture; Phase 4 (D-41)",
-                                      "behavior undefined in the design row (D-29 shell)"
+                                      "artwork: approved texture (贴图) missing from repository; class uses Commons.ModAsset.White_Mod (D-48)",
+                                      "behavior undefined in the design row (D-29/D-45 shell)",
+                                      "localization deferred (D-20); runtime verification outstanding (D-21)"
                                   ],
                      "deferred":  false,
                      "deferred_reason":  ""
@@ -77,8 +78,9 @@
                      "frame_count":  1,
                      "mapping_confidence":  "assumed",
                      "blockers":  [
-                                      "artwork: no approved repository texture; Phase 4 (D-41)",
-                                      "behavior undefined in the design row (D-29 shell)"
+                                      "artwork: approved texture (贴图) missing from repository; class uses Commons.ModAsset.White_Mod (D-48)",
+                                      "behavior undefined in the design row (D-29/D-45 shell)",
+                                      "localization deferred (D-20); runtime verification outstanding (D-21)"
                                   ],
                      "deferred":  false,
                      "deferred_reason":  ""
@@ -105,7 +107,8 @@
                      "frame_count":  1,
                      "mapping_confidence":  "assumed",
                      "blockers":  [
-                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                      "artwork: approved texture (贴图) missing from repository; class uses Commons.ModAsset.White_Mod (D-48)",
+                                      "localization deferred (D-20); runtime verification outstanding (D-21)"
                                   ],
                      "deferred":  false,
                      "deferred_reason":  ""
@@ -188,7 +191,9 @@
                      "frame_count":  1,
                      "mapping_confidence":  "assumed",
                      "blockers":  [
-                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                      "artwork: approved texture (贴图) missing from repository; class uses Commons.ModAsset.White_Mod (D-48)",
+                                      "drop: 毒腺 (33%) and 牛黄 (1%/2%) not implemented (item scope; D-58)",
+                                      "localization deferred (D-20); runtime verification outstanding (D-21)"
                                   ],
                      "deferred":  false,
                      "deferred_reason":  ""
@@ -215,7 +220,9 @@
                      "frame_count":  1,
                      "mapping_confidence":  "assumed",
                      "blockers":  [
-                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                      "artwork: approved texture (贴图) missing from repository; class uses Commons.ModAsset.White_Mod (D-48)",
+                                      "drop: 毒腺 and 牛黄 not implemented (item scope; D-58)",
+                                      "localization deferred (D-20); runtime verification outstanding (D-21)"
                                   ],
                      "deferred":  false,
                      "deferred_reason":  ""
@@ -242,7 +249,10 @@
                      "frame_count":  1,
                      "mapping_confidence":  "assumed",
                      "blockers":  [
-                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                      "artwork: approved texture (贴图) missing from repository; class uses Commons.ModAsset.White_Mod (D-48)",
+                                      "drop: 软体甲壳碎片 not implemented (item scope; D-58)",
+                                      "capture: catch item not implemented (item scope; D-58)",
+                                      "localization deferred (D-20); runtime verification outstanding (D-21)"
                                   ],
                      "deferred":  false,
                      "deferred_reason":  ""
@@ -269,7 +279,9 @@
                      "frame_count":  1,
                      "mapping_confidence":  "assumed",
                      "blockers":  [
-                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                      "artwork: approved texture (贴图) missing from repository; class uses Commons.ModAsset.White_Mod (D-48)",
+                                      "capture: catch item not implemented (item scope; D-58)",
+                                      "localization deferred (D-20); runtime verification outstanding (D-21)"
                                   ],
                      "deferred":  false,
                      "deferred_reason":  ""
@@ -296,7 +308,9 @@
                      "frame_count":  1,
                      "mapping_confidence":  "assumed",
                      "blockers":  [
-                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                      "artwork: approved texture (贴图) missing from repository; class uses Commons.ModAsset.White_Mod (D-48)",
+                                      "drop: 亡碧膏 (33%) not implemented (item scope; D-58)",
+                                      "localization deferred (D-20); runtime verification outstanding (D-21)"
                                   ],
                      "deferred":  false,
                      "deferred_reason":  ""
@@ -323,7 +337,10 @@
                      "frame_count":  1,
                      "mapping_confidence":  "assumed",
                      "blockers":  [
-                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                      "artwork: approved texture (贴图) missing from repository; class uses Commons.ModAsset.White_Mod (D-48)",
+                                      "drop disposition: the design's 6.7% 放射状甲壳 is wired to the Phase 1 item RadialCarapace (denominator 15)",
+                                      "drop: 软体甲壳碎片 (2~5) and 亡碧膏 (1~2) not implemented (item scope; D-58)",
+                                      "localization deferred (D-20); runtime verification outstanding (D-21)"
                                   ],
                      "deferred":  false,
                      "deferred_reason":  ""
@@ -350,7 +367,10 @@
                      "frame_count":  1,
                      "mapping_confidence":  "assumed",
                      "blockers":  [
-                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                      "artwork: approved texture (贴图) missing from repository; class uses Commons.ModAsset.White_Mod (D-48)",
+                                      "drop: 软体甲壳碎片 and 亡碧膏 not implemented (item scope; D-58)",
+                                      "region: 森雨幽谷 sub-biome or tile predicate not implemented (Phase 5-6 terrain work; D-52)",
+                                      "localization deferred (D-20); runtime verification outstanding (D-21)"
                                   ],
                      "deferred":  false,
                      "deferred_reason":  ""
@@ -377,7 +397,10 @@
                      "frame_count":  1,
                      "mapping_confidence":  "assumed",
                      "blockers":  [
-                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                      "artwork: approved texture (贴图) missing from repository; class uses Commons.ModAsset.White_Mod (D-48)",
+                                      "drop: 软体甲壳碎片 (2~4) and 亡碧膏 (3~6) not implemented (item scope; D-58)",
+                                      "region: 森雨幽谷 sub-biome or tile predicate not implemented (Phase 5-6 terrain work; D-52)",
+                                      "localization deferred (D-20); runtime verification outstanding (D-21)"
                                   ],
                      "deferred":  false,
                      "deferred_reason":  ""
@@ -388,7 +411,7 @@
                      "region":  "Death Jade Lake",
                      "name_zh":  "碧灵鮟鱇",
                      "name_en":  "Jade Spirit Anglerfish",
-                     "internal_name":  "",
+                     "internal_name":  "Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake.JadeSpiritAnglerfish",
                      "repo_asset":  "",
                      "feishu":  {
                                     "heading_block_id":  "RbODdEzlYo9XtHxQ6z7cmc5Wn2q",
@@ -399,12 +422,13 @@
                                 },
                      "design_art":  false,
                      "texture_complete":  false,
-                     "code_complete":  false,
+                     "code_complete":  true,
                      "status":  "unchecked",
                      "frame_count":  1,
                      "mapping_confidence":  "assumed",
                      "blockers":  [
-                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                      "artwork: approved texture (贴图) missing from repository; class uses Commons.ModAsset.White_Mod (D-48)",
+                                      "localization deferred (D-20); runtime verification outstanding (D-21)"
                                   ],
                      "deferred":  false,
                      "deferred_reason":  ""
@@ -459,8 +483,9 @@
                      "frame_count":  1,
                      "mapping_confidence":  "assumed",
                      "blockers":  [
-                                      "artwork: no approved repository texture; Phase 4 (D-41)",
-                                      "behavior undefined in the design row (D-29 shell)"
+                                      "artwork: approved texture (贴图) missing from repository; class uses Commons.ModAsset.White_Mod (D-48)",
+                                      "behavior undefined in the design row (D-29/D-45 shell)",
+                                      "localization deferred (D-20); runtime verification outstanding (D-21)"
                                   ],
                      "deferred":  false,
                      "deferred_reason":  ""
@@ -487,7 +512,10 @@
                      "frame_count":  1,
                      "mapping_confidence":  "assumed",
                      "blockers":  [
-                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                      "artwork: approved texture (贴图) missing from repository; class uses Commons.ModAsset.White_Mod (D-48)",
+                                      "drop: 枯木碎块 (1~2, and 1 on the 犬 variant) and 干涸心脏 (morale-gated 50%) not implemented (item scope; D-58)",
+                                      "system: Spiny Moss Court morale/command not implemented (D-46); the 意志高涨 bonus (防御 +4, 攻击 +35%, 移速 +15%) awaits that system",
+                                      "localization deferred (D-20); runtime verification outstanding (D-21)"
                                   ],
                      "deferred":  false,
                      "deferred_reason":  ""
@@ -514,7 +542,10 @@
                      "frame_count":  1,
                      "mapping_confidence":  "assumed",
                      "blockers":  [
-                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                      "artwork: approved texture (贴图) missing from repository; class uses Commons.ModAsset.White_Mod (D-48)",
+                                      "drop: 枯木碎块 (2~4) and 干涸心脏 (50%) not implemented (item scope; D-58)",
+                                      "system: Spiny Moss Court morale/command not implemented (D-46); the summon-and-buff behaviour and the 意志高涨 bonus await that system",
+                                      "localization deferred (D-20); runtime verification outstanding (D-21)"
                                   ],
                      "deferred":  false,
                      "deferred_reason":  ""
@@ -571,7 +602,9 @@
                      "frame_count":  1,
                      "mapping_confidence":  "assumed",
                      "blockers":  [
-                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                      "artwork: approved texture (贴图) missing from repository; class uses Commons.ModAsset.White_Mod (D-48)",
+                                      "system: Valley egg system not implemented (D-46); the 森雨幽谷 egg-breaking small variant awaits that system",
+                                      "localization deferred (D-20); runtime verification outstanding (D-21)"
                                   ],
                      "deferred":  false,
                      "deferred_reason":  ""
@@ -627,7 +660,9 @@
                      "frame_count":  1,
                      "mapping_confidence":  "assumed",
                      "blockers":  [
-                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                      "artwork: approved texture (贴图) missing from repository; class uses Commons.ModAsset.White_Mod (D-48)",
+                                      "drop disposition: 掉落同树皮刺毛虫 is wired to the pre-existing CaterpillarJuice under YggdrasilTown (OQ1/D-57)",
+                                      "localization deferred (D-20); runtime verification outstanding (D-21)"
                                   ],
                      "deferred":  false,
                      "deferred_reason":  ""
@@ -654,7 +689,9 @@
                      "frame_count":  1,
                      "mapping_confidence":  "assumed",
                      "blockers":  [
-                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                      "artwork: approved texture (贴图) missing from repository; class uses Commons.ModAsset.White_Mod (D-48)",
+                                      "system: Valley disguised-hazard visual system not implemented (D-46); the 覆盘子 ground disguise awaits that system",
+                                      "localization deferred (D-20); runtime verification outstanding (D-21)"
                                   ],
                      "deferred":  false,
                      "deferred_reason":  ""
@@ -681,7 +718,9 @@
                      "frame_count":  1,
                      "mapping_confidence":  "assumed",
                      "blockers":  [
-                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                      "artwork: approved texture (贴图) missing from repository; class uses Commons.ModAsset.White_Mod (D-48)",
+                                      "system: Valley disguised-hazard visual system not implemented (D-46); the 环境植物 disguise awaits that system",
+                                      "localization deferred (D-20); runtime verification outstanding (D-21)"
                                   ],
                      "deferred":  false,
                      "deferred_reason":  ""
@@ -736,7 +775,9 @@
                      "frame_count":  1,
                      "mapping_confidence":  "assumed",
                      "blockers":  [
-                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                      "artwork: approved texture (贴图) missing from repository; class uses Commons.ModAsset.White_Mod (D-48)",
+                                      "capture: catch item not implemented (item scope; D-58)",
+                                      "localization deferred (D-20); runtime verification outstanding (D-21)"
                                   ],
                      "deferred":  false,
                      "deferred_reason":  ""
@@ -763,7 +804,9 @@
                      "frame_count":  1,
                      "mapping_confidence":  "assumed",
                      "blockers":  [
-                                      "artwork: no approved repository texture; Phase 4 (D-41)"
+                                      "artwork: approved texture (贴图) missing from repository; class uses Commons.ModAsset.White_Mod (D-48)",
+                                      "drop: design drop list is TBD (死亡掉落物暂定) not implemented (item scope; D-58)",
+                                      "localization deferred (D-20); runtime verification outstanding (D-21)"
                                   ],
                      "deferred":  false,
                      "deferred_reason":  ""
