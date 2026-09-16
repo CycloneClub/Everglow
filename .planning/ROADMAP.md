@@ -164,7 +164,7 @@ Plans:
 
 **Verification needs:** Remaining biology matrix; client spawn/behavior/combat checks; drop and progression integration checks; dedicated-server safety; `dotnet build`; unresolved-source audit.
 **Scope anchor (D-44):** 21 rows = the 23 `phase:4` rows of `03-BIOLOGY.json` minus the two `out of phase` hardmode designs (`枯萎之种`, `枯木人卫士`, V2-HARD-01). They are implemented across **26 `ModNPC` classes** (three D-45 identity shells; four stat-variant sibling groups: 枯木活化士兵 ×4, 爆弹水母 ×2, 布罗迪蝇蜓 ×2, 幽光蝾螈 one class with a variant index) plus **11 hostile projectiles** (the frozen `$phaseProjectiles` list of `04-01` §7 and gate invariant 7: `ToxicToad_PoisonBubble`, `ToxicToad_PoisonCloud`, `Radiolarian_WaterBolt`, `RedNeedleCaterpillar_Spike`, `AssassinRaspberry_Spike`, `AnimatedWitherbarkSoldier_Boulder`, `AnimatedWitherbarkSoldier_SpellBeam`, `AlgaeOctopus_InkCloud`, `BombJellyfish_Explosion`, `LargeMossyThornTurtle_Shockwave`, `LargeMossyThornTurtle_Boulder`), i.e. the 37 guarded classes of gate invariant 7 are 26 region-folder classes + 11 phase projectiles. No repository art exists for any of them, so every class uses `Commons.ModAsset.White_Mod` and a missing-texture blocker (D-48/D-49). Delta vs `04-RESEARCH.md` OQ4's enumeration: `ToxicToad_PoisonCloud` and `BombJellyfish_Explosion` were added because each carries a creature's primary threat (剧毒蟾蜍's death cloud and 爆弹水母's 30/50 death blast), so the RESEARCH recommendation's list is superseded by the plan-and-gate set of 11.
-**Plans:** 6/9 plans executed
+**Plans:** 7/9 plans executed
 Plans:
 
 **Wave 1**
@@ -178,7 +178,7 @@ Plans:
 
 **Wave 3** *(blocked on Waves 1-2 completion)*
 
-- [ ] 04-03-PLAN.md — Death Jade Lake passive & neutral water family: 装甲虾 (bounded 2–5 group), 爆弹水母 (small/large + explosion), 帆鳍鳢 (neutral rammer) (BIO-01)
+- [x] 04-03-PLAN.md — Death Jade Lake passive & neutral water family: 装甲虾 (bounded 2–5 group), 爆弹水母 (small/large + explosion), 帆鳍鳢 (neutral rammer) (BIO-01) — done 2026-09-16
 - [ ] 04-04-PLAN.md — Death Jade Lake stealth, ranged & bottom predators: 放射虫 (+ water bolt), 覆藻章鱼, 大型覆藻章鱼 (shared ink cloud) (BIO-01)
 - [x] 04-06-PLAN.md — Spiny Moss Court: 枯木活化士兵 ×4 variants (+ boulder & spell beam), 王庭号令者, 布罗迪蝇蜓 ×2 (BIO-02) — done 2026-09-16
 - [x] 04-07-PLAN.md — Valley hazards: 红针洋辣子 (reuses the `Caterpillar` template + `CaterpillarJuice`, OQ1), 阿萨辛覆盘子, 蛇行苔 (BIO-03) — done 2026-09-16
@@ -264,7 +264,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8. Th
 | 1. Item Inventory & Completed-Art Items | 7/7 | Complete    | 2026-09-14 |
 | 2. Remaining Items & Unfinished-Art Materials | 5/5 | Complete    | 2026-09-14 |
 | 3. Completed-Art Ordinary Monsters | 4/4 | Complete    | 2026-09-15 |
-| 4. Remaining Ordinary Monsters | 5/9 | In Progress | - |
+| 4. Remaining Ordinary Monsters | 7/9 | In Progress | - |
 | 5. Completed-Art Terrain & Structures | 0/TBD | Not started | - |
 | 6. Remaining Terrain, Generation & Integration | 0/TBD | Not started | - |
 | 7. Bosses, Special Encounters & Rewards | 0/TBD | Not started | - |

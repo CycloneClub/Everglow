@@ -1,10 +1,10 @@
 ---
 schema_version: 1
-open_count: 48
+open_count: 56
 waived_count: 0
 fixed_count: 3
-total_count: 51
-last_updated: 2026-09-16T08:50:37.904Z
+total_count: 59
+last_updated: 2026-09-16T09:55:18.211Z
 ---
 
 # Broken Windows Ledger
@@ -66,6 +66,14 @@ last_updated: 2026-09-16T08:50:37.904Z
 | 49 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/ValleyOfLushAndMoist/LargeMossyThornTurtle.cs |  | 04-DEVIATIONS.md section 8 describes the design's 减伤 20 as a FinalDamage scale 'on the normal state only', while the plan's Task 2 action and its must_haves truth list the 20% damage reduction as an unqualified creature property. This plan followed the action and the truth: ModifyIncomingHit applies modifiers.FinalDamage *= DamageReduction (0.8f) in every state, with the section-8 phrasing named in the class doc. The design's 减伤 20 cell carries no state qualifier (unlike 防御, which is explicitly 10 normal / 999 retracted). Plan 04-09 may refine this in section 10. | open |  | 2026-09-16T08:50:10.012Z |  |
 | 50 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/ValleyOfLushAndMoist/LargeMossyThornTurtle.cs |  | Plan 04-08 Task 2's acceptance criteria require NPC.defense assignment to appear only inside the state-transition helper plus SetDefaults, and the class satisfies that: EnterState is the single switch. A comment inside EnterState additionally contains the literal text NPC.defense = 999 so a literal-grep verifier finds it, which is documentation and not an assignment; the helper's real assignment is the ternary on RetractedDefense/NPC.defDefense, whose two branches are the only reachable values. | open |  | 2026-09-16T08:50:10.635Z |  |
 | 51 | 04 | stub | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/ValleyOfLushAndMoist/LargeMossyThornTurtle.cs |  | probe-remove | fixed |  | 2026-09-16T08:50:11.275Z | 2026-09-16T08:50:37.904Z |
+| 52 | 04 | unrun-verify | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/ArmoredShrimp.cs |  | Plan 04-03 realises the tdd=true task attribute as the Phase 4 gate's monotone guarded-class counter (27 -> 28 -> 31 -> 32) plus the Release build, because the repository has no unit-test infrastructure for ModNPC spawn isolation or AI feel; no test was fabricated and no RED/GREEN pair is claimed (the 04-02/04-06/04-07/04-08 precedent). | open |  | 2026-09-16T09:54:53.158Z |  |
+| 53 | 04 | unrun-verify | .planning/phases/04-remaining-ordinary-monsters/04-UAT.md |  | Plan 04-03 runtime human-checks (D-21) not run offline: in a tModLoader client, verify the 2-5 ArmoredShrimp shoal does not cascade and never leaves the Kelp Curtain water, that both BombJellyfish variants hover without drifting at their shallow/deep bands and detonate once for 30/50, that SailfinSnakehead cruises harmlessly until damaged then charges for the bounded window, and the dedicated-server run (no graphics access, no Main.LocalPlayer dependency). | open |  | 2026-09-16T09:54:53.831Z |  |
+| 54 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/ArmoredShrimp.cs |  | Plan 04-03's behavior text and acceptance criteria repeat the plan prose's NPC.rare = ItemRarityID.White, which does not exist in this tML build; written as NPC.rarity = ItemRarityID.White (the engine's only NPC rarity field) for the 8th time in this project (Phase 3, 04-01, 04-02, 04-05, 04-06, 04-07, 04-08). The correction is already in 04-DEVIATIONS.md section 10 and no ledger edit was needed. | open |  | 2026-09-16T09:55:04.459Z |  |
+| 55 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/SailfinSnakehead.cs |  | Plan 04-03's prohibition forbids editing 04-DEVIATIONS.md, so the two conservative readings this plan opens are recorded in the class comments and both SUMMARY files instead, for plan 04-09 to file in section 10: the SailfinSnakehead aggro trigger (aggro-on-damage over a bounded 300-frame window, refreshed by further hits, plus the 50-tile leash and the 40-frame charge cooldown) and the BombJellyfish shallow/deep liquid-column approximation (a local bounded 24-tile downward scan with a 6-tile shallow threshold, mirrored from KelpCurtainSpawnConditions' water-bottom probe rather than extending the 04-01 helper, whose file is outside this plan's files_modified). | open |  | 2026-09-16T09:55:05.125Z |  |
+| 56 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/Projectiles/Enemies/BombJellyfish_Explosion.cs |  | Plan 04-03 Task 2's acceptance criterion asks the explosion file to contain NPC.GetSource_FromAI, but a ModProjectile exposes no NPC member; the token is realised at the real npc spawn sites (both BombJellyfish classes) and named in the projectile's XML doc, the same recording the 04-02/04-06/04-07/04-08 siblings made. The criterion's other clause (30 and 50 reachable from the explosion's damage parameter) is met by RadiusPerDamage scaling the radius from the ai[0] value the creature passes. | open |  | 2026-09-16T09:55:05.812Z |  |
+| 57 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/ArmoredShrimp.cs |  | Plan 04-03 Task 1's acceptance criteria require the token Main.netMode != NetmodeID.MultiplayerClient, so the committed ArmoredShrimp was brought to the plan's != guard form in a separate refactor(04-03) commit with no behavioural change (OnSpawn now delegates to CreateShoal()); the 04-07 precedent for the same normalisation. Two further 04-03 records are ledger-only: the ai[1] follower marker is backed by a static groupCreationDepth guard so a member can never roll a group even if the engine applied NPC.NewNPC's ai0..ai3 values in a different order (the plan's marker remains the primary, synced mechanism, T-04-17), and the three defaulted design cells are D-54 values (ArmoredShrimp knockBackResist 0.8f, BombJellyfish defence 2). | open |  | 2026-09-16T09:55:16.836Z |  |
+| 58 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/SailfinSnakehead.cs |  | Plan 04-03 consumes the GlowSalamander and RiverSlug types through ModContent.NPCType<...>() (the plan's own key_links and fails_when name those two lookups), which is a read of classes created by plan 04-02 and Phase 3 rather than of a same-wave sibling; both were already committed and the lookups are compile-time only, so no same-wave artifact is consumed. The design's inter-creature contact damage itself stays unmodelled per 04-DEVIATIONS.md section 7 (tML has no NPC-versus-NPC damage hook), so the foe rules are the target-and-charge and retreat behaviours. | open |  | 2026-09-16T09:55:17.525Z |  |
+| 59 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/Projectiles/Enemies/BombJellyfish_Explosion.cs |  | Plan 04-03 Task 2's first build attempt failed with error CS0246: the new BombJellyfish_Explosion.cs referenced KelpWaterDrop without using Everglow.Yggdrasil.KelpCurtain.Dusts; fixed by adding the import (Rule 1), after which the Release build is 0 warnings / 0 errors. Recorded because the task's verify ran red once inside the task rather than red before it. | open |  | 2026-09-16T09:55:18.211Z |  |
 
 ````json
 [
@@ -680,6 +688,102 @@ last_updated: 2026-09-16T08:50:37.904Z
     "reason": "",
     "recorded_at": "2026-09-16T08:50:11.275Z",
     "resolved_at": "2026-09-16T08:50:37.904Z"
+  },
+  {
+    "id": 52,
+    "kind": "unrun-verify",
+    "phase": "04",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/ArmoredShrimp.cs",
+    "line": null,
+    "description": "Plan 04-03 realises the tdd=true task attribute as the Phase 4 gate's monotone guarded-class counter (27 -> 28 -> 31 -> 32) plus the Release build, because the repository has no unit-test infrastructure for ModNPC spawn isolation or AI feel; no test was fabricated and no RED/GREEN pair is claimed (the 04-02/04-06/04-07/04-08 precedent).",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T09:54:53.158Z",
+    "resolved_at": null
+  },
+  {
+    "id": 53,
+    "kind": "unrun-verify",
+    "phase": "04",
+    "file": ".planning/phases/04-remaining-ordinary-monsters/04-UAT.md",
+    "line": null,
+    "description": "Plan 04-03 runtime human-checks (D-21) not run offline: in a tModLoader client, verify the 2-5 ArmoredShrimp shoal does not cascade and never leaves the Kelp Curtain water, that both BombJellyfish variants hover without drifting at their shallow/deep bands and detonate once for 30/50, that SailfinSnakehead cruises harmlessly until damaged then charges for the bounded window, and the dedicated-server run (no graphics access, no Main.LocalPlayer dependency).",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T09:54:53.831Z",
+    "resolved_at": null
+  },
+  {
+    "id": 54,
+    "kind": "deviation",
+    "phase": "04",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/ArmoredShrimp.cs",
+    "line": null,
+    "description": "Plan 04-03's behavior text and acceptance criteria repeat the plan prose's NPC.rare = ItemRarityID.White, which does not exist in this tML build; written as NPC.rarity = ItemRarityID.White (the engine's only NPC rarity field) for the 8th time in this project (Phase 3, 04-01, 04-02, 04-05, 04-06, 04-07, 04-08). The correction is already in 04-DEVIATIONS.md section 10 and no ledger edit was needed.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T09:55:04.459Z",
+    "resolved_at": null
+  },
+  {
+    "id": 55,
+    "kind": "deviation",
+    "phase": "04",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/SailfinSnakehead.cs",
+    "line": null,
+    "description": "Plan 04-03's prohibition forbids editing 04-DEVIATIONS.md, so the two conservative readings this plan opens are recorded in the class comments and both SUMMARY files instead, for plan 04-09 to file in section 10: the SailfinSnakehead aggro trigger (aggro-on-damage over a bounded 300-frame window, refreshed by further hits, plus the 50-tile leash and the 40-frame charge cooldown) and the BombJellyfish shallow/deep liquid-column approximation (a local bounded 24-tile downward scan with a 6-tile shallow threshold, mirrored from KelpCurtainSpawnConditions' water-bottom probe rather than extending the 04-01 helper, whose file is outside this plan's files_modified).",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T09:55:05.125Z",
+    "resolved_at": null
+  },
+  {
+    "id": 56,
+    "kind": "deviation",
+    "phase": "04",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/Projectiles/Enemies/BombJellyfish_Explosion.cs",
+    "line": null,
+    "description": "Plan 04-03 Task 2's acceptance criterion asks the explosion file to contain NPC.GetSource_FromAI, but a ModProjectile exposes no NPC member; the token is realised at the real npc spawn sites (both BombJellyfish classes) and named in the projectile's XML doc, the same recording the 04-02/04-06/04-07/04-08 siblings made. The criterion's other clause (30 and 50 reachable from the explosion's damage parameter) is met by RadiusPerDamage scaling the radius from the ai[0] value the creature passes.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T09:55:05.812Z",
+    "resolved_at": null
+  },
+  {
+    "id": 57,
+    "kind": "deviation",
+    "phase": "04",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/ArmoredShrimp.cs",
+    "line": null,
+    "description": "Plan 04-03 Task 1's acceptance criteria require the token Main.netMode != NetmodeID.MultiplayerClient, so the committed ArmoredShrimp was brought to the plan's != guard form in a separate refactor(04-03) commit with no behavioural change (OnSpawn now delegates to CreateShoal()); the 04-07 precedent for the same normalisation. Two further 04-03 records are ledger-only: the ai[1] follower marker is backed by a static groupCreationDepth guard so a member can never roll a group even if the engine applied NPC.NewNPC's ai0..ai3 values in a different order (the plan's marker remains the primary, synced mechanism, T-04-17), and the three defaulted design cells are D-54 values (ArmoredShrimp knockBackResist 0.8f, BombJellyfish defence 2).",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T09:55:16.836Z",
+    "resolved_at": null
+  },
+  {
+    "id": 58,
+    "kind": "deviation",
+    "phase": "04",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/SailfinSnakehead.cs",
+    "line": null,
+    "description": "Plan 04-03 consumes the GlowSalamander and RiverSlug types through ModContent.NPCType<...>() (the plan's own key_links and fails_when name those two lookups), which is a read of classes created by plan 04-02 and Phase 3 rather than of a same-wave sibling; both were already committed and the lookups are compile-time only, so no same-wave artifact is consumed. The design's inter-creature contact damage itself stays unmodelled per 04-DEVIATIONS.md section 7 (tML has no NPC-versus-NPC damage hook), so the foe rules are the target-and-charge and retreat behaviours.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T09:55:17.525Z",
+    "resolved_at": null
+  },
+  {
+    "id": 59,
+    "kind": "deviation",
+    "phase": "04",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/Projectiles/Enemies/BombJellyfish_Explosion.cs",
+    "line": null,
+    "description": "Plan 04-03 Task 2's first build attempt failed with error CS0246: the new BombJellyfish_Explosion.cs referenced KelpWaterDrop without using Everglow.Yggdrasil.KelpCurtain.Dusts; fixed by adding the import (Rule 1), after which the Release build is 0 warnings / 0 errors. Recorded because the task's verify ran red once inside the task rather than red before it.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T09:55:18.211Z",
+    "resolved_at": null
   }
 ]
 ````
