@@ -180,7 +180,7 @@ Plans:
 
 - [ ] 04-03-PLAN.md — Death Jade Lake passive & neutral water family: 装甲虾 (bounded 2–5 group), 爆弹水母 (small/large + explosion), 帆鳍鳢 (neutral rammer) (BIO-01)
 - [ ] 04-04-PLAN.md — Death Jade Lake stealth, ranged & bottom predators: 放射虫 (+ water bolt), 覆藻章鱼, 大型覆藻章鱼 (shared ink cloud) (BIO-01)
-- [ ] 04-06-PLAN.md — Spiny Moss Court: 枯木活化士兵 ×4 variants (+ boulder & spell beam), 王庭号令者, 布罗迪蝇蜓 ×2 (BIO-02)
+- [x] 04-06-PLAN.md — Spiny Moss Court: 枯木活化士兵 ×4 variants (+ boulder & spell beam), 王庭号令者, 布罗迪蝇蜓 ×2 (BIO-02) — done 2026-09-16
 - [ ] 04-07-PLAN.md — Valley hazards: 红针洋辣子 (reuses the `Caterpillar` template + `CaterpillarJuice`, OQ1), 阿萨辛覆盘子, 蛇行苔 (BIO-03)
 - [ ] 04-08-PLAN.md — Valley passive & mini boss: 小格普螺, 大型荆棘苔龟 full four-state machine (+ shockwave & boulder) (BIO-03)
 
@@ -264,7 +264,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8. Th
 | 1. Item Inventory & Completed-Art Items | 7/7 | Complete    | 2026-09-14 |
 | 2. Remaining Items & Unfinished-Art Materials | 5/5 | Complete    | 2026-09-14 |
 | 3. Completed-Art Ordinary Monsters | 4/4 | Complete    | 2026-09-15 |
-| 4. Remaining Ordinary Monsters | 2/9 | Executing | - |
+| 4. Remaining Ordinary Monsters | 4/9 | Executing | - |
 | 5. Completed-Art Terrain & Structures | 0/TBD | Not started | - |
 | 6. Remaining Terrain, Generation & Integration | 0/TBD | Not started | - |
 | 7. Bosses, Special Encounters & Rewards | 0/TBD | Not started | - |

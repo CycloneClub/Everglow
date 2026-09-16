@@ -1,10 +1,10 @@
 ---
 schema_version: 1
-open_count: 32
+open_count: 37
 waived_count: 0
 fixed_count: 2
-total_count: 34
-last_updated: 2026-09-16T07:44:23.971Z
+total_count: 39
+last_updated: 2026-09-16T08:13:27.090Z
 ---
 
 # Broken Windows Ledger
@@ -49,6 +49,11 @@ last_updated: 2026-09-16T07:44:23.971Z
 | 32 | 04 | stub | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/GlowSalamander.cs |  | The synced three-colour variant slot (NPC.localAI[1], drawn in OnSpawn) is inert until approved art arrives: with the shared Commons.ModAsset.White_Mod fallback there is no sprite to tint, so nothing on screen changes with the variant. Intentional per OQ2 - it exists so the D-49 migration maps the colour sheets onto frames without a class rework. | open |  | 2026-09-16T07:27:49.606Z |  |
 | 33 | 04 | unrun-verify | .planning/phases/04-remaining-ordinary-monsters/04-UAT.md |  | Plan 04-05 runtime human-checks (D-21) not run offline: in a tModLoader client each of the three D-45 identity shells (FluorescentHydra, GiantTigerShrimp, CannonBarnacle) must spawn inside the Kelp Curtain layer of the Yggdrasil subworld only and never in an ordinary world, and each must load cleanly with the Commons.ModAsset.White_Mod fallback (no missing-texture abort). Plan 04-09 records this in 04-UAT.md. | open |  | 2026-09-16T07:44:12.761Z |  |
 | 34 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/FluorescentHydra.cs |  | Plan 04-05 prose and acceptance criteria repeat the NPC.rare = ItemRarityID.White; line for all three D-45 identity shells; NPC.rare does not exist in this tML build and was written as NPC.rarity (the engine's only NPC rarity field), compile-verified by three Release builds. The fourth occurrence of the same Rule 1 correction (Phase 3, 04-01, 04-02, 04-05) already recorded in 04-DEVIATIONS.md section 10. | open |  | 2026-09-16T07:44:23.971Z |  |
+| 35 | 04 | unrun-verify | .planning/phases/04-remaining-ordinary-monsters/04-UAT.md |  | Plan 04-06 runtime human-checks (D-21) not run offline: in a tModLoader client the four AnimatedWitherbarkSoldier variants, CourtCommander and both BrodieFlydragon sizes must spawn inside the Kelp Curtain layer of the Yggdrasil subworld only and never in an ordinary world, the soldiers' neutral-until-provoked reading and each attack pattern must match the design, CourtCommander's summon must stay capped at 1-3 once per aggro entry, and all nine classes must load cleanly with the Commons.ModAsset.White_Mod fallback. Plan 04-09 records this in 04-UAT.md. | open |  | 2026-09-16T08:13:00.787Z |  |
+| 36 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/SpinyMossCourt/AnimatedWitherbarkSoldier.cs |  | Plan 04-06 Task 1 asks the melee variant to mirror the vanilla dungeon skeleton by cloning its AI and to keep a private state enum over NPC.ai[0]; the class instead owns a local fighter AI (walk/jump/contact) with NPC.aiStyle = -1. Reason: the vanilla fighter aiStyle always acquires a player target, which makes the design's explicit neutral-by-default reading (must_haves truth 3) inexpressible, and co-opting NPC.ai[0] while the cloned AI runs would break its own state machine. The mirrored approach, the pinned defDamage/defDefense and the NPC.ai[0] state enum are all kept; compile-verified by the Task 1 Release build. | open |  | 2026-09-16T08:13:13.812Z |  |
+| 37 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/SpinyMossCourt/BrodieFlydragon.cs |  | Plan 04-06 prose and acceptance criteria repeat the NPC.rare = ItemRarityID.White; line for all four soldier variants, CourtCommander and both BrodieFlydragon classes; NPC.rare does not exist in this tML build and was written as NPC.rarity (the engine's only NPC rarity field). The fifth occurrence of the same Rule 1 correction (Phase 3, 04-01, 04-02, 04-05, 04-06) already recorded in 04-DEVIATIONS.md section 10. | open |  | 2026-09-16T08:13:14.565Z |  |
+| 38 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/SpinyMossCourt/BrodieFlydragon.cs |  | Plan 04-06's inline Design Values table lists the flydragon 钱币 cells as empty for both sizes, but the design snapshot's own stats table V9zXdPuSdoQD7bxe6IVcdzqrncf gives 20 copper for 普通（标准） and 0 for 普通（小）. Task 3's action instructs reading that table directly, so NPC.value = 20 and NPC.value = 0 were used (D-25: the committed snapshot is the value source). Recorded here because 04-DEVIATIONS.md section 10 may not be edited by this plan. | open |  | 2026-09-16T08:13:26.388Z |  |
+| 39 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/Projectiles/Enemies/AnimatedWitherbarkSoldier_Boulder.cs |  | Plan 04-06's Task 1 acceptance criteria require NPC.GetSource_FromAI inside the two new projectile files, but a ModProjectile exposes no NPC member, so the call cannot exist there. The token is realised at the real spawn sites (AnimatedWitherbarkSoldierRanged.ThrowBoulder and AnimatedWitherbarkSoldierSpell.UpdateCasting) and named in each projectile's XML doc that describes that spawn site - the plan 04-02 precedent, recorded rather than faked with a comment-only token. | open |  | 2026-09-16T08:13:27.090Z |  |
 
 ````json
 [
@@ -458,6 +463,66 @@ last_updated: 2026-09-16T07:44:23.971Z
     "status": "open",
     "reason": "",
     "recorded_at": "2026-09-16T07:44:23.971Z",
+    "resolved_at": null
+  },
+  {
+    "id": 35,
+    "kind": "unrun-verify",
+    "phase": "04",
+    "file": ".planning/phases/04-remaining-ordinary-monsters/04-UAT.md",
+    "line": null,
+    "description": "Plan 04-06 runtime human-checks (D-21) not run offline: in a tModLoader client the four AnimatedWitherbarkSoldier variants, CourtCommander and both BrodieFlydragon sizes must spawn inside the Kelp Curtain layer of the Yggdrasil subworld only and never in an ordinary world, the soldiers' neutral-until-provoked reading and each attack pattern must match the design, CourtCommander's summon must stay capped at 1-3 once per aggro entry, and all nine classes must load cleanly with the Commons.ModAsset.White_Mod fallback. Plan 04-09 records this in 04-UAT.md.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T08:13:00.787Z",
+    "resolved_at": null
+  },
+  {
+    "id": 36,
+    "kind": "deviation",
+    "phase": "04",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/SpinyMossCourt/AnimatedWitherbarkSoldier.cs",
+    "line": null,
+    "description": "Plan 04-06 Task 1 asks the melee variant to mirror the vanilla dungeon skeleton by cloning its AI and to keep a private state enum over NPC.ai[0]; the class instead owns a local fighter AI (walk/jump/contact) with NPC.aiStyle = -1. Reason: the vanilla fighter aiStyle always acquires a player target, which makes the design's explicit neutral-by-default reading (must_haves truth 3) inexpressible, and co-opting NPC.ai[0] while the cloned AI runs would break its own state machine. The mirrored approach, the pinned defDamage/defDefense and the NPC.ai[0] state enum are all kept; compile-verified by the Task 1 Release build.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T08:13:13.812Z",
+    "resolved_at": null
+  },
+  {
+    "id": 37,
+    "kind": "deviation",
+    "phase": "04",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/SpinyMossCourt/BrodieFlydragon.cs",
+    "line": null,
+    "description": "Plan 04-06 prose and acceptance criteria repeat the NPC.rare = ItemRarityID.White; line for all four soldier variants, CourtCommander and both BrodieFlydragon classes; NPC.rare does not exist in this tML build and was written as NPC.rarity (the engine's only NPC rarity field). The fifth occurrence of the same Rule 1 correction (Phase 3, 04-01, 04-02, 04-05, 04-06) already recorded in 04-DEVIATIONS.md section 10.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T08:13:14.565Z",
+    "resolved_at": null
+  },
+  {
+    "id": 38,
+    "kind": "deviation",
+    "phase": "04",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/SpinyMossCourt/BrodieFlydragon.cs",
+    "line": null,
+    "description": "Plan 04-06's inline Design Values table lists the flydragon 钱币 cells as empty for both sizes, but the design snapshot's own stats table V9zXdPuSdoQD7bxe6IVcdzqrncf gives 20 copper for 普通（标准） and 0 for 普通（小）. Task 3's action instructs reading that table directly, so NPC.value = 20 and NPC.value = 0 were used (D-25: the committed snapshot is the value source). Recorded here because 04-DEVIATIONS.md section 10 may not be edited by this plan.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T08:13:26.388Z",
+    "resolved_at": null
+  },
+  {
+    "id": 39,
+    "kind": "deviation",
+    "phase": "04",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/Projectiles/Enemies/AnimatedWitherbarkSoldier_Boulder.cs",
+    "line": null,
+    "description": "Plan 04-06's Task 1 acceptance criteria require NPC.GetSource_FromAI inside the two new projectile files, but a ModProjectile exposes no NPC member, so the call cannot exist there. The token is realised at the real spawn sites (AnimatedWitherbarkSoldierRanged.ThrowBoulder and AnimatedWitherbarkSoldierSpell.UpdateCasting) and named in each projectile's XML doc that describes that spawn site - the plan 04-02 precedent, recorded rather than faked with a comment-only token.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T08:13:27.090Z",
     "resolved_at": null
   }
 ]

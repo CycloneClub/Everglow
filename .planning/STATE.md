@@ -4,18 +4,18 @@ milestone: v1.0
 milestone_name: milestone
 current_phase: 04
 current_phase_name: Remaining Ordinary Monsters
-current_plan: 3
+current_plan: 4
 status: executing
-stopped_at: Completed 04-05-PLAN.md
-last_updated: "2026-09-16T07:45:00.000Z"
+stopped_at: Completed 04-06-PLAN.md
+last_updated: "2026-09-16T08:14:00.000Z"
 last_activity: 2026-09-16
-last_activity_desc: Phase 4 wave 2 plan 04-05 complete — the three D-45 identity shells 荧光水螅 (FluorescentHydra), 巨型虎虾 (GiantTigerShrimp) and 炮弹藤壶 (CannonBarnacle) created as loadable, registered, layer-gated, art-blocked and behaviour-blocked ModNPC shells with no invented behaviour (gate advanced to guarded classes 9)
+last_activity_desc: Phase 4 wave 3 plan 04-06 complete — the Spiny Moss Court garrison (枯木活化士兵 ×4 stat variants + boulder & spell beam), 王庭号令者 (CourtCommander) and 布罗迪蝇蜓 ×2 built as loadable, layer-gated, art-blocked, neutral-by-default classes with the morale/command and Valley egg systems left as precise D-46 blockers (gate advanced to guarded classes 18)
 progress:
   total_phases: 4
   completed_phases: 3
   total_plans: 25
-  completed_plans: 19
-state_head: e17230dd3
+  completed_plans: 20
+state_head: 782d9fdad
 ---
 
 # Project State
@@ -29,20 +29,20 @@ See: `.planning/PROJECT.md` (updated 2026-09-12)
 
 ## Current Position
 
-Current Plan: 3
+Current Plan: 4
 Total Plans in Phase: 9
-Phase: 04 (Remaining Ordinary Monsters) — EXECUTING (tracer 04-01 + wave 2/4 plans 04-02 and 04-05 done; waves 3–4 outstanding)
-Plans complete: 3 of 9 (04-01, 04-02 and 04-05 done; 04-03, 04-04, 04-06, 04-07, 04-08 and 04-09 outstanding)
-Status: Executing — plan 04-05 landed 2026-09-16 with the three D-45 identity shells (荧光水螅 `FluorescentHydra`, 巨型虎虾 `GiantTigerShrimp`, 炮弹藤壶 `CannonBarnacle`), which keep the layer's roster complete without inventing behaviour for heading-only design rows; the Phase 4 gate now reads `OK: guarded classes = 9` of the 37 that close the phase, and runtime verification (D-21) is outstanding for every Phase 4 row
-Last activity: 2026-09-16 — 04-05 complete (three loadable/registered/layer-gated/art-blocked/behaviour-blocked shells on the vanilla No-AI style, each with `Texture => Commons.ModAsset.White_Mod`, the two server-safe spawn tokens and the neutral `WaterWeight`, and each carrying its heading block id and the D-45/D-49 statements in its class comment)
+Phase: 04 (Remaining Ordinary Monsters) — EXECUTING (tracer 04-01 + wave 2 plans 04-02/04-05 + wave 3 plan 04-06 done; 04-03, 04-04, 04-07, 04-08 and 04-09 outstanding)
+Plans complete: 4 of 9 (04-01, 04-02, 04-05 and 04-06 done; 04-03, 04-04, 04-07, 04-08 and 04-09 outstanding)
+Status: Executing — plan 04-06 landed 2026-09-16 with the whole Spiny Moss Court: the four 枯木活化士兵 stat variants (melee/ranged/spell/hound) plus their boulder and three-ray spell projectiles, 王庭号令者 (`CourtCommander`) with its once-per-aggro 1–3 soldier summon, and both 布罗迪蝇蜓 sizes; all of them neutral-by-default where the design says 中立, all layer-gated, all art-missing (`Commons.ModAsset.White_Mod`), with the morale/command system (D-46), the 森雨幽谷 Valley egg system (D-46) and the 刺苔庭园/森雨幽谷 region split (Phases 5–6) recorded as precise blockers instead of half-builds. The Phase 4 gate now reads `OK: guarded classes = 18` of the 37 that close the phase, and runtime verification (D-21) is outstanding for every Phase 4 row
+Last activity: 2026-09-16 — 04-06 complete (nine classes: the four-variant soldier garrison with its two projectiles, the summoning rally commander and the two-size flydragon pair; the `SpinyMossCourt` region folder is the last of the phase's three region roots to be counted, and it advanced the gate by exactly nine, 9 → 18)
 
-Progress: [██████████] 100% — Phase 3 of 4 complete; Phase 4 waves 1–2 of 4 landed
+Progress: [██████████] 100% — Phase 3 of 4 complete; Phase 4 waves 1–3 of 4 landed
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 18
+- Total plans completed: 19
 - Average duration: n/a
 - Total execution time: 0 hours
 
@@ -54,7 +54,7 @@ Progress: [██████████] 100% — Phase 3 of 4 complete; Phase
 | 1 | 7 | 7 | ~17min |
 | 2 | 4 | 5 | 10min |
 | 3 | 4 | 4 | ~96min |
-| 4 | 3 | 9 | ~41min |
+| 4 | 4 | 9 | ~34min |
 
 **Recent Trend:** No execution data yet.
 **Per-Plan Metrics:**
@@ -80,6 +80,7 @@ Progress: [██████████] 100% — Phase 3 of 4 complete; Phase
 | Phase 04 P01 | ~26min | 2 tasks | 6 files |
 | Phase 04 P02 | ~80min | 2 tasks | 6 files |
 | Phase 04 P05 | ~16min | 3 tasks | 3 files |
+| Phase 04 P06 | ~14min | 3 tasks | 9 files |
 
 ## Accumulated Context
 
@@ -111,6 +112,14 @@ Progress: [██████████] 100% — Phase 3 of 4 complete; Phase
 - [Phase 04]: A shell sits on the **vanilla `aiStyle 0`** — the Official Terraria Wiki's "No AI: does not move" (it only faces the player) — so it needs **no `AI()` body at all**, and the D-49 migration stays an asset drop plus two deletions. No shell overrides `ModifyNPCLoot`, `OnHitPlayer`, `ModifyIncomingHit` or any attack hook; because this plan's acceptance criteria forbid those tokens, the empty drop table is the engine's own (a `ModNPC` with no loot override drops nothing) rather than an empty override body — a deliberate contrast with the 04-01/04-02 siblings, whose rows *name* an absent drop.
 - [Phase 04]: The three shells' conservative defaults (hydra `32x40`/life 60/damage 20/defense 4, shrimp `56x28`/90/25/6, barnacle `28x24`/50/15/10, all `value = 0`, `rarity = White`, `catchItem = 0`) are recorded **in the class comments and in `04-05-SUMMARY.md`**, not in `04-DEVIATIONS.md` §10: this plan's prohibitions forbid editing the ledger and the shared matrix in wave 2, so plan 04-09 writes the rows' `behavior undefined in the design row (D-45 shell)` blocker and flips them at close-out (the exact wording is recorded in the 04-05 SUMMARY because §1 writes the same label as `D-29/D-45 shell`).
 - [Phase 04]: The plan prose's `NPC.rare` was corrected to `NPC.rarity` for the **fourth** time in this project (Phase 3, 04-01, 04-02, 04-05) — 04-05's prose and acceptance criteria repeat a member that does not exist in this tML build; the correction is already in `04-DEVIATIONS.md` §10, no ledger edit was needed, and 04-05's gate count advanced 6 → 9 guarded classes across its three tasks (+3 exactly).
+
+- [Phase 04]: Plan 04-06 completes the Spiny Moss Court: 枯木活化士兵 as **four `ModNPC` classes** (melee `AnimatedWitherbarkSoldier` = the row's `internal_name`, plus `AnimatedWitherbarkSoldierRanged` / `AnimatedWitherbarkSoldierSpell` / `AnimatedWitherbarkHound`) each owning its own `SetDefaults` stat row, plus `CourtCommander`, `BrodieFlydragon` and `SmallBrodieFlydragon` and the two projectiles `AnimatedWitherbarkSoldier_Boulder` / `AnimatedWitherbarkSoldier_SpellBeam`. Nothing mutates `NPC.lifeMax` outside `SetDefaults` (OQ2/Pitfall 5, T-04-38), and the gate's progress counter rose **9 → 15 → 16 → 18** — exactly the nine files the plan adds.
+- [Phase 04]: **中立 is a functional state, not a comment, in all four soldier variants**: no player targeting until a non-lethal hit (`HitEffect`, netmode-guarded) or a player inside the conservative `ProvokeRange` flips the state, with a return to 中立 past the leash range and every transition written under `Main.netMode != NetmodeID.MultiplayerClient` with `NPC.netUpdate`. Each variant also exposes the morale/command seam as named public members (`MoraleDefenseBonus` 0 / `MoraleDamageScale` 1 / `MoraleSpeedScale` 1 plus `IsNeutral`), **read** in `PostAI` and in the movement code, so a later phase applies the design's 意志高涨 bonus (+4 防御, +35% 攻击, +15% 移速) without reworking any AI — the buff itself and the morale-gated 干涸心脏 drop stay D-46 blockers.
+- [Phase 04]: The melee variant **owns a local fighter AI instead of cloning the vanilla skeleton AI** (`NPC.aiStyle = -1`): the vanilla fighter `aiStyle` always acquires a player target, which would make the design's explicit 中立 default inexpressible, and a private state enum over `NPC.ai[0]` cannot coexist with a cloned AI owning that slot. The mirrored dungeon-skeleton *approach* (walk, jump at a wall/ledge/above-prey, contact damage), the pinned `defDamage`/`defDefense` and the `NPC.ai[0]` state enum are all kept; recorded as a deviation (`WINDOWS.md` entry 36).
+- [Phase 04]: The spell variant **clones for bases only** — `NPC.CloneDefaults(NPCID.DarkCaster)` then `NPC.aiStyle = -1` — because the engine's caster AI fires the vanilla caster's own projectile on its own cadence and cannot spray the design's three beams; the design's 固定间隔 cast (150 ticks) then 随机传送 (up to 40 candidate standable tiles within 20×8 tiles of the prey, never into terrain) is implemented locally, with the clone supplying only the collider/sound bases.
+- [Phase 04]: `CourtCommander`'s summon is **idempotent per aggro entry** through a single named flag (`HasSummonedThisAggro` over `NPC.localAI[2]`): it fires on `OnSpawn` and on the first staff use of each aggro entry, only while no soldier stands within `SearchRadiusTiles`, is capped at the design's 1–3 randomly chosen variants, and is created with `NPC.NewNPC` under `Main.netMode != NetmodeID.MultiplayerClient` with `NPC.netUpdate` (T-04-37). The staff-raise tell is built; the 意志高涨 buff application is not.
+- [Phase 04]: The flydragon stat rows come from the **design snapshot's own stats table** `V9zXdPuSdoQD7bxe6IVcdzqrncf` (标准 40/25/5/50/中毒/20 copper, 小 20/15/2/50/中毒/0 copper), which differs from the plan's inline table on the two 钱币 cells; Task 3's action explicitly instructs reading the design table directly (D-25), and the discrepancy is recorded in `WINDOWS.md` entry 38 because wave-3 prohibitions forbid editing `04-DEVIATIONS.md`. The 小 variant is reachable through its own lower natural weight (0.5f vs the standard's 1f), which preserves 自然刷新只会刷新标准大小的蝇蜓 while the 森雨幽谷 egg route stays an unimplemented D-46 system — **no egg NPC, projectile or class exists**.
+- [Phase 04]: The plan prose's `NPC.rare` was corrected to `NPC.rarity` for the **fifth** time in this project (Phase 3, 04-01, 04-02, 04-05, 04-06) across all seven creature classes; the correction is already in `04-DEVIATIONS.md` §10, no ledger edit was needed (`WINDOWS.md` entry 37). `03-BIOLOGY.json` / `03-BIOLOGY.md` are still byte-identical to their end-of-04-01 state, `04-DEVIATIONS.md` was not edited, and the byte-identical Phase 3 gate still exits 0 under `-RequireAll` (`phase3 tranche = 5 / 5`, `implemented classes = 5 / 5`).
 
 - **2026-09-15 — Phase 3 marked complete with runtime UAT deferred (user-authorized override).** Phase 3's four plans are code-complete (Release build 0/0; full gate chain green; `check-biology.ps1 -RequireAll` = `phase3 tranche 5 / 5`, `implemented classes 5 / 5`), but the D-21 in-client runtime verification in `03-UAT.md` was not executed because the tModLoader client environment was unavailable. The user authorized marking the phase complete and deferring the runtime UAT (same pattern as the Phase 1 ArmOfGiantTree multiplayer deferral). `03-VERIFICATION.md` remains `human_needed`, `03-UAT.md` stays unexecuted, and the deferral is tracked as an open `unrun-verify` item in `.planning/WINDOWS.md`. No verification result was fabricated.
 - **2026-09-12 correction — item allocation is by design-artwork state only.** A completed-art entry belongs to the completed-art item tranche (Phase 1) whether or not the repository already has a class for it; class-less status must never defer an entry to a later phase. Plan 01-06 refined the routing: of the 18 artwork-complete class-less entries, the 5 non-boss item-table rows are Phase 1 carry-over and the 13 boss/special-encounter rows are Phase 7 (ITEM-05/ITEM-06); Phase 2 contains only unfinished-art entries (25).
@@ -187,7 +196,7 @@ None yet.
 
 ### Blockers/Concerns
 
-- ⏳ **[Phase 4 — waves 1–2 landed 2026-09-16, waves 3–4 outstanding]** Plans 04-01, 04-02 and 04-05 delivered the tracer slice, the Death Jade Lake waterline family and the three D-45 identity shells: the green Phase 4 gate, the 21-row reconciliation, `KelpCurtainSpawnConditions`, 碧灵鮟鱇 (`JadeSpiritAnglerfish`), 水黾 (`WaterStrider`), 剧毒蟾蜍 (`ToxicToad` + `ToxicToad_PoisonBubble` + `ToxicToad_PoisonCloud`), 幽光蝾螈 (`GlowSalamander`), 荧光水螅 (`FluorescentHydra`), 巨型虎虾 (`GiantTigerShrimp`) and 炮弹藤壶 (`CannonBarnacle`) — `OK: guarded classes = 9` of the 37 that close the phase, while the matrix still reads `OK: reconciled rows = 1 / 21` (04-02 and 04-05 create classes without flipping rows; plan 04-09 reconciles the remaining twenty). Outstanding and recorded: the D-21 runtime bundle (`04-UAT.md` in plan 04-09) for every spawn predicate on a real lake, the 碧灵鮟鱇 stealth/dash feel, the 水黾 dash cadence and its two recoveries, the 剧毒蟾蜍 preference/bubble/death-cloud kit, the 幽光蝾螈 moisture cycle, the three D-45 shells' spawn isolation and clean `White_Mod` load, and a dedicated-server run; **approved art for 26 `ModNPC` sprites + 11 projectile sprites** (blocker only — no placeholder art was created, D-48/D-51); the 森雨幽谷 / 刺苔庭园 / 亡碧湖 region-level spawn predicates (Phases 5–6, D-52); the unimplemented systems (Spiny Moss Court morale/command, Valley egg system, disguised hazards, capture items, cross-creature hostility); localization (D-20); and the absent drop materials 毒腺 / 牛黄 / 软体甲壳碎片 / 亡碧膏 / 枯木碎块 / 干涸心脏 (D-58). Plan 04-09 must also write the three shell rows' `behavior undefined in the design row (D-45 shell)` blocker. See `04-DEVIATIONS.md` §5, §7, §11, §13 and `.planning/WINDOWS.md` entries 24–34.
+- ⏳ **[Phase 4 — waves 1–3 landed 2026-09-16, wave 4 outstanding]** Plans 04-01, 04-02, 04-05 and 04-06 delivered the tracer slice, the Death Jade Lake waterline family, the three D-45 identity shells and the whole Spiny Moss Court: the green Phase 4 gate, the 21-row reconciliation, `KelpCurtainSpawnConditions`, 碧灵鮟鱇 (`JadeSpiritAnglerfish`), 水黾 (`WaterStrider`), 剧毒蟾蜍 (`ToxicToad` + `ToxicToad_PoisonBubble` + `ToxicToad_PoisonCloud`), 幽光蝾螈 (`GlowSalamander`), 荧光水螅 (`FluorescentHydra`), 巨型虎虾 (`GiantTigerShrimp`), 炮弹藤壶 (`CannonBarnacle`), the four 枯木活化士兵 variants (+ `AnimatedWitherbarkSoldier_Boulder` + `AnimatedWitherbarkSoldier_SpellBeam`), 王庭号令者 (`CourtCommander`) and 布罗迪蝇蜓 (`BrodieFlydragon` + `SmallBrodieFlydragon`) — `OK: guarded classes = 18` of the 37 that close the phase, while the matrix still reads `OK: reconciled rows = 1 / 21` (only 04-01 flips a row; plan 04-09 reconciles the remaining twenty). Outstanding and recorded: the D-21 runtime bundle (`04-UAT.md` in plan 04-09) for every spawn predicate on a real lake, the 碧灵鮟鱇 stealth/dash feel, the 水黾 dash cadence and its two recoveries, the 剧毒蟾蜍 preference/bubble/death-cloud kit, the 幽光蝾螈 moisture cycle, the three D-45 shells' spawn isolation and clean `White_Mod` load, the soldier variants' neutral-until-provoked reading and their four attack patterns, the commander's once-per-aggro summon and 10-tile spacing, the two flydragon sizes' relative rarity, and a dedicated-server run; **approved art for 26 `ModNPC` sprites + 11 projectile sprites** (blocker only — no placeholder art was created, D-48/D-51); the 森雨幽谷 / 刺苔庭园 / 亡碧湖 region-level spawn predicates (Phases 5–6, D-52); the unimplemented systems (Spiny Moss Court morale/command, Valley egg system, disguised hazards, capture items, cross-creature hostility); localization (D-20); and the absent drop materials 毒腺 / 牛黄 / 软体甲壳碎片 / 亡碧膏 / 枯木碎块 / 干涸心脏 (D-58). Plan 04-09 must also write the three shell rows' `behavior undefined in the design row (D-45 shell)` blocker. See `04-DEVIATIONS.md` §5, §7, §11, §13 and `.planning/WINDOWS.md` entries 24–39.
 - ⏸ **[Phase 3 — deferred, user-authorized 2026-09-15]** Runtime UAT for the five-creature tranche is unexecuted: `03-UAT.md` (8 checks: spawn isolation per BIO-06, behavior/combat/immunities, drops, dedicated-server/multiplayer per QUAL-03, localization fallback) and the 4 D-21 backstop items in `03-VERIFICATION.md` await a tModLoader client. The phase is marked complete on code grounds only; run `/gsd-verify-work 3` when the client is available. Also open: approved art for the two `GiantDandelion` projectiles, and 森雨幽谷/刺苔庭园 regional spawn predicates (Phases 5–6).
 - ✅ **[Phase 1 carry-over — resolved 2026-09-13 by plan 01-06]** The 18 artwork-complete class-less entries were reallocated 5 Phase 1 / 13 Phase 7 (P1A-12); the five Phase 1 items are implemented and gated (`check-carryover.ps1` 5/5). No parser re-run (CR-01).
 - Phase 1: Feishu source reconciliation must classify all five terrain labels and inventory every item/drop before implementation acceptance.
@@ -222,6 +231,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-09-16T07:45:00.000Z
-Stopped at: Completed 04-05-PLAN.md
+Last session: 2026-09-16T08:14:00.000Z
+Stopped at: Completed 04-06-PLAN.md
 Resume file: .planning/phases/04-remaining-ordinary-monsters/04-03-PLAN.md
