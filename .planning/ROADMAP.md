@@ -264,7 +264,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8. Th
 | 1. Item Inventory & Completed-Art Items | 7/7 | Complete    | 2026-09-14 |
 | 2. Remaining Items & Unfinished-Art Materials | 5/5 | Complete    | 2026-09-14 |
 | 3. Completed-Art Ordinary Monsters | 4/4 | Complete    | 2026-09-15 |
-| 4. Remaining Ordinary Monsters | 9/9 | Code complete; verification pending | - |
+| 4. Remaining Ordinary Monsters | 9/9 | Complete    | 2026-09-16 |
 | 5. Completed-Art Terrain & Structures | 0/TBD | Not started | - |
 | 6. Remaining Terrain, Generation & Integration | 0/TBD | Not started | - |
 | 7. Bosses, Special Encounters & Rewards | 0/TBD | Not started | - |

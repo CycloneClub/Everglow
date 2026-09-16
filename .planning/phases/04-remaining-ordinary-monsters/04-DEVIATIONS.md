@@ -488,3 +488,11 @@ The post-close-out code review wrote `.planning/phases/04-remaining-ordinary-mon
 **Verification, re-run on the committed tree in the main checkout.** `dotnet build /p:Configuration=Release /p:WarningLevel=0` -> exit 0, 0 warnings / 0 errors, `Everglow.tmod` packaged and enabled. Phase 4 gate `scripts/check-biology.ps1 -RequireAll` -> exit 0, `OK: reconciled rows = 21 / 21`, `OK: guarded classes = 37`, `OK: UTF-8 BOM check passed (3 files).` All five modified files are UTF-8 without BOM and LF-only, and no `.png`/`.obj`/`.xnb` was touched (the gate's invariant 9 and 13 stayed green).
 
 **Process note - worktree isolation.** `workflow.use_worktrees` is not defined in `.planning/config.json`, and the fixer's POSIX git-worktree contract is not runnable in this environment: the shell is Windows PowerShell 5.1 and the only `bash.exe` present is the WSL launcher, which cannot resolve `E:\...` paths. With no concurrent writer on the working tree, the five fixes were applied and committed directly on `Yggdrasil/newContent0-ai` (each `fix(04): ...` commit stages only its own files, then the docs commit below follows).
+
+## 15. Phase completion override (2026-09-16, user-authorized)
+
+After `04-VERIFICATION.md` returned `human_needed` (31/53 must-haves verified, 0 gaps; the 22 unverified truths are D-21 runtime backstops), the user authorized marking Phase 4 **complete** with the runtime UAT **deferred**, because the tModLoader client environment was unavailable — the same pattern as the Phase 3 and Phase 1 ArmOfGiantTree deferrals.
+
+- No verification result was fabricated: `04-VERIFICATION.md` remains `human_needed`, `04-UAT.md` (24 checks) stays unexecuted, and the deferral is tracked as an open `unrun-verify` item in `.planning/WINDOWS.md`.
+- Completion is recorded on code grounds only: Release build 0 warnings / 0 errors; the full offline chain green; Phase 4 gate `reconciled rows = 21 / 21`, `guarded classes = 37`.
+- Resume the runtime checks with `/gsd-verify-work 4` when a client is available. Phases 2 and 3 are likewise deferred (`/gsd-verify-work 2`, `/gsd-verify-work 3`). The residue in §14 (art, region predicates, D-46 systems, absent materials, localization) is unchanged by this override.

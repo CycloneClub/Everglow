@@ -98,6 +98,7 @@ The repository planning artifacts are the audit trail for the comparison; the Fe
 
 | Defer the live multiplayer test of ArmOfGiantTree to a later session | Live client testing was inconvenient at phase-completion time; the SC3 fix is source-verified and offline-gated | Deferred (Phase 1, user-authorized override) |
 | Mark Phase 3 complete with its runtime UAT deferred | The tModLoader client environment was unavailable at phase-completion time; the code, Release build (0/0), and full offline gate chain (`check-biology.ps1 -RequireAll` = 5/5 tranche, 5/5 classes) are green | Deferred (Phase 3, user-authorized override) |
+| Mark Phase 4 complete with its runtime UAT deferred | The tModLoader client environment was unavailable at phase-completion time; the code, Release build (0/0), and full offline gate chain (Phase 4 gate `reconciled rows = 21/21`, `guarded classes = 37`) are green | Deferred (Phase 4, user-authorized override) |
 
 ## Evolution
 
