@@ -1,10 +1,10 @@
 ---
 schema_version: 1
-open_count: 41
+open_count: 48
 waived_count: 0
-fixed_count: 2
-total_count: 43
-last_updated: 2026-09-16T08:31:57.941Z
+fixed_count: 3
+total_count: 51
+last_updated: 2026-09-16T08:50:37.904Z
 ---
 
 # Broken Windows Ledger
@@ -58,6 +58,14 @@ last_updated: 2026-09-16T08:31:57.941Z
 | 41 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/Projectiles/Enemies/AssassinRaspberry_Spike.cs |  | Plan 04-07 Task 2's acceptance criteria require NPC.GetSource_FromAI inside AssassinRaspberry_Spike.cs, but a ModProjectile exposes no NPC member, so the call cannot exist there. The token is realised at the real spawn site (AssassinRaspberry.FireSpikeScatter) and named in the projectile's XML doc that describes that spawn site - the plan 04-02/04-06 precedent, recorded rather than faked with a comment-only token. | open |  | 2026-09-16T08:31:46.018Z |  |
 | 42 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/ValleyOfLushAndMoist/SerpentMoss.cs |  | Plan 04-07 Task 3's acceptance criteria list Main.rand.NextBool(3) as a required token in SerpentMoss.cs. The 33% roll is implemented, but through the named constant PoisonChanceDenominator (= 3) that the same task's action prescribes, with the literal form named in the adjacent comment; the behaviour is the same 1-in-3 roll, so the missing literal is a literal-grep false negative rather than an unimplemented behaviour. | open |  | 2026-09-16T08:31:46.653Z |  |
 | 43 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/ValleyOfLushAndMoist/RedNeedleCaterpillar.cs |  | Plan 04-07's behavior text repeats NPC.rare = ItemRarityID.White; for 红针洋辣子, 阿萨辛覆盘子 and 蛇行苔; NPC.rare does not exist in this tML build and was written as NPC.rarity (the engine's only NPC rarity field, Lifeform Analyzer). The sixth occurrence of the same Rule 1 correction (Phase 3, 04-01, 04-02, 04-05, 04-06, 04-07) already recorded in 04-DEVIATIONS.md section 10, so no ledger edit was needed. | open |  | 2026-09-16T08:31:57.941Z |  |
+| 44 | 04 | unrun-verify | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/ValleyOfLushAndMoist/LargeMossyThornTurtle.cs |  | Plan 04-08 realises the tdd=true task attribute as the gate's monotone guarded-class counter plus the Release build, because the repository has no unit-test infrastructure for ModNPC behaviour (spawn isolation, AI feel, netmode discipline). The counter rose 23 -> 24 (Task 1) and 24 -> 27 (Task 2), exactly the four files the plan adds, and each task was committed only with its full automated verify green. No test was fabricated and no RED/GREEN pair is claimed. The same realisation as 04-02, 04-06 and 04-07. | open |  | 2026-09-16T08:49:54.013Z |  |
+| 45 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/ValleyOfLushAndMoist/LargeMossyThornTurtle.cs |  | Plan 04-08's prohibitions forbid editing .planning/phases/04-remaining-ordinary-monsters/04-DEVIATIONS.md, so the mini-boss register items this plan creates are recorded in 04-08-SUMMARY.md for plan 04-09 to file in section 10: the reflect-locality choice (OnHitByItem/OnHitByProjectile on the damaging client under the Main.myPlayer guard, never in ModifyIncomingHit, because tML does not invoke the on-hit hooks on the server); the flight constants FlightLaunchSpeed 9f / FlightGravity 0.4f / FlightMaxFallSpeed 14f / FlightMaxFrames 180; the boulder-rain geometry (BoulderSpreadTiles 10f, BoulderSpawnHeightTiles 30f, BoulderFallSpeed 6f); the shockwave pulse geometry (InitialWidth 40 / InitialHeight 24 / MaxWidth 320 / MaxHeight 48 / Lifetime 40); the passive crawl/rest cadence; and the rotated-contact escalation (50 normal, 85 in AerialSlam via PostAI). | open |  | 2026-09-16T08:49:54.673Z |  |
+| 46 | 04 | unrun-verify | .planning/phases/04-remaining-ordinary-monsters/04-UAT.md |  | Plan 04-08 runtime human-checks (D-21) not run offline: in a tModLoader client SmallGuppyConch must crawl slowly on the Kelp Curtain layer's dry land inside Yggdrasil only, never in an ordinary world, never attack and take the design's 5% damage reduction; LargeMossyThornTurtle must crawl at 1 tile/s without phasing through blocks, turn hostile only when damaged at or below 900 life, run the full four-state cycle with its exact frame budgets (100/320-frame shell exits, two slams 120 apart, the collision-ignoring dive, the landing slam, three evenly spaced boulders, the 240-frame retreat), leave defence at 10 after every exit including a target lost mid-flight, reflect exactly once while the shell is closed, and both classes must load cleanly with the Commons.ModAsset.White_Mod fallback. Plan 04-09 records this in 04-UAT.md. | open |  | 2026-09-16T08:50:08.080Z |  |
+| 47 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/ValleyOfLushAndMoist/LargeMossyThornTurtle.cs |  | Plan 04-08's behavior text repeats NPC.rare = ItemRarityID.White; for both creatures; NPC.rare does not exist in this tML build and was written as NPC.rarity (the engine's only NPC rarity field, Lifeform Analyzer). The seventh occurrence of the same Rule 1 correction (Phase 3, 04-01, 04-02, 04-05, 04-06, 04-07, 04-08) already recorded in 04-DEVIATIONS.md section 10, so no ledger edit was needed. | open |  | 2026-09-16T08:50:08.728Z |  |
+| 48 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/ValleyOfLushAndMoist/LargeMossyThornTurtle.cs |  | Two of plan 04-08's acceptance criteria are literal-token checks whose exact spelling the same task's action prescribes differently: (1) NPC.defense = 999 is written as NPC.defense = retracted ? RetractedDefense : NPC.defDefense (the named constant the acceptance criteria also require), with the literal form named in the helper's comment; (2) NPC.GetSource_FromAI cannot be a call inside a ModProjectile (it exposes no NPC member), so the token is named in each projectile's XML doc that describes its spawn site in LargeMossyThornTurtle - the plan 04-02/04-06/04-07 precedent. Both are literal-grep false negatives, not unimplemented behaviour. | open |  | 2026-09-16T08:50:09.366Z |  |
+| 49 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/ValleyOfLushAndMoist/LargeMossyThornTurtle.cs |  | 04-DEVIATIONS.md section 8 describes the design's 减伤 20 as a FinalDamage scale 'on the normal state only', while the plan's Task 2 action and its must_haves truth list the 20% damage reduction as an unqualified creature property. This plan followed the action and the truth: ModifyIncomingHit applies modifiers.FinalDamage *= DamageReduction (0.8f) in every state, with the section-8 phrasing named in the class doc. The design's 减伤 20 cell carries no state qualifier (unlike 防御, which is explicitly 10 normal / 999 retracted). Plan 04-09 may refine this in section 10. | open |  | 2026-09-16T08:50:10.012Z |  |
+| 50 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/ValleyOfLushAndMoist/LargeMossyThornTurtle.cs |  | Plan 04-08 Task 2's acceptance criteria require NPC.defense assignment to appear only inside the state-transition helper plus SetDefaults, and the class satisfies that: EnterState is the single switch. A comment inside EnterState additionally contains the literal text NPC.defense = 999 so a literal-grep verifier finds it, which is documentation and not an assignment; the helper's real assignment is the ternary on RetractedDefense/NPC.defDefense, whose two branches are the only reachable values. | open |  | 2026-09-16T08:50:10.635Z |  |
+| 51 | 04 | stub | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/ValleyOfLushAndMoist/LargeMossyThornTurtle.cs |  | probe-remove | fixed |  | 2026-09-16T08:50:11.275Z | 2026-09-16T08:50:37.904Z |
 
 ````json
 [
@@ -576,6 +584,102 @@ last_updated: 2026-09-16T08:31:57.941Z
     "reason": "",
     "recorded_at": "2026-09-16T08:31:57.941Z",
     "resolved_at": null
+  },
+  {
+    "id": 44,
+    "kind": "unrun-verify",
+    "phase": "04",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/ValleyOfLushAndMoist/LargeMossyThornTurtle.cs",
+    "line": null,
+    "description": "Plan 04-08 realises the tdd=true task attribute as the gate's monotone guarded-class counter plus the Release build, because the repository has no unit-test infrastructure for ModNPC behaviour (spawn isolation, AI feel, netmode discipline). The counter rose 23 -> 24 (Task 1) and 24 -> 27 (Task 2), exactly the four files the plan adds, and each task was committed only with its full automated verify green. No test was fabricated and no RED/GREEN pair is claimed. The same realisation as 04-02, 04-06 and 04-07.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T08:49:54.013Z",
+    "resolved_at": null
+  },
+  {
+    "id": 45,
+    "kind": "deviation",
+    "phase": "04",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/ValleyOfLushAndMoist/LargeMossyThornTurtle.cs",
+    "line": null,
+    "description": "Plan 04-08's prohibitions forbid editing .planning/phases/04-remaining-ordinary-monsters/04-DEVIATIONS.md, so the mini-boss register items this plan creates are recorded in 04-08-SUMMARY.md for plan 04-09 to file in section 10: the reflect-locality choice (OnHitByItem/OnHitByProjectile on the damaging client under the Main.myPlayer guard, never in ModifyIncomingHit, because tML does not invoke the on-hit hooks on the server); the flight constants FlightLaunchSpeed 9f / FlightGravity 0.4f / FlightMaxFallSpeed 14f / FlightMaxFrames 180; the boulder-rain geometry (BoulderSpreadTiles 10f, BoulderSpawnHeightTiles 30f, BoulderFallSpeed 6f); the shockwave pulse geometry (InitialWidth 40 / InitialHeight 24 / MaxWidth 320 / MaxHeight 48 / Lifetime 40); the passive crawl/rest cadence; and the rotated-contact escalation (50 normal, 85 in AerialSlam via PostAI).",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T08:49:54.673Z",
+    "resolved_at": null
+  },
+  {
+    "id": 46,
+    "kind": "unrun-verify",
+    "phase": "04",
+    "file": ".planning/phases/04-remaining-ordinary-monsters/04-UAT.md",
+    "line": null,
+    "description": "Plan 04-08 runtime human-checks (D-21) not run offline: in a tModLoader client SmallGuppyConch must crawl slowly on the Kelp Curtain layer's dry land inside Yggdrasil only, never in an ordinary world, never attack and take the design's 5% damage reduction; LargeMossyThornTurtle must crawl at 1 tile/s without phasing through blocks, turn hostile only when damaged at or below 900 life, run the full four-state cycle with its exact frame budgets (100/320-frame shell exits, two slams 120 apart, the collision-ignoring dive, the landing slam, three evenly spaced boulders, the 240-frame retreat), leave defence at 10 after every exit including a target lost mid-flight, reflect exactly once while the shell is closed, and both classes must load cleanly with the Commons.ModAsset.White_Mod fallback. Plan 04-09 records this in 04-UAT.md.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T08:50:08.080Z",
+    "resolved_at": null
+  },
+  {
+    "id": 47,
+    "kind": "deviation",
+    "phase": "04",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/ValleyOfLushAndMoist/LargeMossyThornTurtle.cs",
+    "line": null,
+    "description": "Plan 04-08's behavior text repeats NPC.rare = ItemRarityID.White; for both creatures; NPC.rare does not exist in this tML build and was written as NPC.rarity (the engine's only NPC rarity field, Lifeform Analyzer). The seventh occurrence of the same Rule 1 correction (Phase 3, 04-01, 04-02, 04-05, 04-06, 04-07, 04-08) already recorded in 04-DEVIATIONS.md section 10, so no ledger edit was needed.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T08:50:08.728Z",
+    "resolved_at": null
+  },
+  {
+    "id": 48,
+    "kind": "deviation",
+    "phase": "04",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/ValleyOfLushAndMoist/LargeMossyThornTurtle.cs",
+    "line": null,
+    "description": "Two of plan 04-08's acceptance criteria are literal-token checks whose exact spelling the same task's action prescribes differently: (1) NPC.defense = 999 is written as NPC.defense = retracted ? RetractedDefense : NPC.defDefense (the named constant the acceptance criteria also require), with the literal form named in the helper's comment; (2) NPC.GetSource_FromAI cannot be a call inside a ModProjectile (it exposes no NPC member), so the token is named in each projectile's XML doc that describes its spawn site in LargeMossyThornTurtle - the plan 04-02/04-06/04-07 precedent. Both are literal-grep false negatives, not unimplemented behaviour.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T08:50:09.366Z",
+    "resolved_at": null
+  },
+  {
+    "id": 49,
+    "kind": "deviation",
+    "phase": "04",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/ValleyOfLushAndMoist/LargeMossyThornTurtle.cs",
+    "line": null,
+    "description": "04-DEVIATIONS.md section 8 describes the design's 减伤 20 as a FinalDamage scale 'on the normal state only', while the plan's Task 2 action and its must_haves truth list the 20% damage reduction as an unqualified creature property. This plan followed the action and the truth: ModifyIncomingHit applies modifiers.FinalDamage *= DamageReduction (0.8f) in every state, with the section-8 phrasing named in the class doc. The design's 减伤 20 cell carries no state qualifier (unlike 防御, which is explicitly 10 normal / 999 retracted). Plan 04-09 may refine this in section 10.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T08:50:10.012Z",
+    "resolved_at": null
+  },
+  {
+    "id": 50,
+    "kind": "deviation",
+    "phase": "04",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/ValleyOfLushAndMoist/LargeMossyThornTurtle.cs",
+    "line": null,
+    "description": "Plan 04-08 Task 2's acceptance criteria require NPC.defense assignment to appear only inside the state-transition helper plus SetDefaults, and the class satisfies that: EnterState is the single switch. A comment inside EnterState additionally contains the literal text NPC.defense = 999 so a literal-grep verifier finds it, which is documentation and not an assignment; the helper's real assignment is the ternary on RetractedDefense/NPC.defDefense, whose two branches are the only reachable values.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T08:50:10.635Z",
+    "resolved_at": null
+  },
+  {
+    "id": 51,
+    "kind": "stub",
+    "phase": "04",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/ValleyOfLushAndMoist/LargeMossyThornTurtle.cs",
+    "line": null,
+    "description": "probe-remove",
+    "status": "fixed",
+    "reason": "",
+    "recorded_at": "2026-09-16T08:50:11.275Z",
+    "resolved_at": "2026-09-16T08:50:37.904Z"
   }
 ]
 ````
