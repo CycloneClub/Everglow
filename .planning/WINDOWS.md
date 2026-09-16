@@ -1,10 +1,10 @@
 ---
 schema_version: 1
-open_count: 30
+open_count: 32
 waived_count: 0
 fixed_count: 2
-total_count: 32
-last_updated: 2026-09-16T07:27:49.606Z
+total_count: 34
+last_updated: 2026-09-16T07:44:23.971Z
 ---
 
 # Broken Windows Ledger
@@ -47,6 +47,8 @@ last_updated: 2026-09-16T07:27:49.606Z
 | 30 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/Projectiles/Enemies/ToxicToad_PoisonCloud.cs |  | The plan's acceptance token NPC.GetSource_FromAI per projectile file is not expressible inside a ModProjectile (neither Projectile nor ModProjectile exposes an NPC member); the real spawn site is ToxicToad.cs, which calls Projectile.NewProjectile(NPC.GetSource_FromAI(), ...) for both the bubble and the death cloud. Recorded rather than faked with a comment-only token. | open |  | 2026-09-16T07:27:48.377Z |  |
 | 31 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/ToxicToad.cs |  | The design's cross-creature hostility is modelled as target preference only: the ToxicToad prefers a nearby GlowSalamander/RiverSlug over the player and the GlowSalamander retreats from a ToxicToad, but tML has no NPC-versus-NPC damage path (hostile projectiles damage players only), so neither actually damages the other. The residual limitation is already recorded in 04-DEVIATIONS.md sections 7 and 13. | open |  | 2026-09-16T07:27:48.982Z |  |
 | 32 | 04 | stub | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/GlowSalamander.cs |  | The synced three-colour variant slot (NPC.localAI[1], drawn in OnSpawn) is inert until approved art arrives: with the shared Commons.ModAsset.White_Mod fallback there is no sprite to tint, so nothing on screen changes with the variant. Intentional per OQ2 - it exists so the D-49 migration maps the colour sheets onto frames without a class rework. | open |  | 2026-09-16T07:27:49.606Z |  |
+| 33 | 04 | unrun-verify | .planning/phases/04-remaining-ordinary-monsters/04-UAT.md |  | Plan 04-05 runtime human-checks (D-21) not run offline: in a tModLoader client each of the three D-45 identity shells (FluorescentHydra, GiantTigerShrimp, CannonBarnacle) must spawn inside the Kelp Curtain layer of the Yggdrasil subworld only and never in an ordinary world, and each must load cleanly with the Commons.ModAsset.White_Mod fallback (no missing-texture abort). Plan 04-09 records this in 04-UAT.md. | open |  | 2026-09-16T07:44:12.761Z |  |
+| 34 | 04 | deviation | Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/FluorescentHydra.cs |  | Plan 04-05 prose and acceptance criteria repeat the NPC.rare = ItemRarityID.White; line for all three D-45 identity shells; NPC.rare does not exist in this tML build and was written as NPC.rarity (the engine's only NPC rarity field), compile-verified by three Release builds. The fourth occurrence of the same Rule 1 correction (Phase 3, 04-01, 04-02, 04-05) already recorded in 04-DEVIATIONS.md section 10. | open |  | 2026-09-16T07:44:23.971Z |  |
 
 ````json
 [
@@ -432,6 +434,30 @@ last_updated: 2026-09-16T07:27:49.606Z
     "status": "open",
     "reason": "",
     "recorded_at": "2026-09-16T07:27:49.606Z",
+    "resolved_at": null
+  },
+  {
+    "id": 33,
+    "kind": "unrun-verify",
+    "phase": "04",
+    "file": ".planning/phases/04-remaining-ordinary-monsters/04-UAT.md",
+    "line": null,
+    "description": "Plan 04-05 runtime human-checks (D-21) not run offline: in a tModLoader client each of the three D-45 identity shells (FluorescentHydra, GiantTigerShrimp, CannonBarnacle) must spawn inside the Kelp Curtain layer of the Yggdrasil subworld only and never in an ordinary world, and each must load cleanly with the Commons.ModAsset.White_Mod fallback (no missing-texture abort). Plan 04-09 records this in 04-UAT.md.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T07:44:12.761Z",
+    "resolved_at": null
+  },
+  {
+    "id": 34,
+    "kind": "deviation",
+    "phase": "04",
+    "file": "Sources/Modules/Yggdrasil/KelpCurtain/NPCs/DeathJadeLake/FluorescentHydra.cs",
+    "line": null,
+    "description": "Plan 04-05 prose and acceptance criteria repeat the NPC.rare = ItemRarityID.White; line for all three D-45 identity shells; NPC.rare does not exist in this tML build and was written as NPC.rarity (the engine's only NPC rarity field), compile-verified by three Release builds. The fourth occurrence of the same Rule 1 correction (Phase 3, 04-01, 04-02, 04-05) already recorded in 04-DEVIATIONS.md section 10.",
+    "status": "open",
+    "reason": "",
+    "recorded_at": "2026-09-16T07:44:23.971Z",
     "resolved_at": null
   }
 ]
