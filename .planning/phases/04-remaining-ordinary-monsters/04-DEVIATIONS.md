@@ -426,7 +426,27 @@ One row per blocker element across the 21 in-scope rows (83 rows: artwork 21 · 
 
 ### 14.4 Offline chain results
 
-<!-- CHAIN-RESULTS -->
+The complete offline chain ran in one pass on 2026-09-16 (plan 04-09 Task 2) and **every link exited 0**, so no exception had to be triaged. Each link's result line, as printed by the run:
+
+| # | Link | Result |
+| --- | --- | --- |
+| 1 | `dotnet build /p:Configuration=Release /p:WarningLevel=0` | exit 0 - build succeeded, **0 warnings / 0 errors**, 31.56 s; `Everglow.tmod` packaged and the mod enabled (Everglow, HEROsMod, CheatSheet, DragonLens) |
+| 2 | Phase 4 gate `scripts/check-biology.ps1 -RequireAll` | exit 0 - `OK(0): phase4 in-scope set = 21 rows (rows=31)`, `OK: reconciled rows = 21 / 21`, `OK: guarded classes = 37`, `OK: UTF-8 BOM check passed (2 files).` |
+| 3 | Phase 3 gate `../03-completed-art-ordinary-monsters/scripts/check-biology.ps1 -RequireAll` | exit 0 - `OK(0): phase3 tranche = 5 / 5 (rows=31)`, `OK: implemented classes = 5 / 5` (the Phase 3 chain still reproduces; that script is byte-identical, OQ3) |
+| 4 | Phase 1 `check-inventory-reconciliation.ps1` | exit 0 - `OK(0): 103 entries; matched=86; green=50 yellow=8 unchecked=45; labels=5 deferred=3 assumptions=7` |
+| 5 | Phase 1 `check-carryover.ps1` | exit 0 - `OK(0): carry-over covered entries = 5 (of 5 selected)` |
+| 6 | Phase 1 `check-tranche-A.ps1` | exit 0 - `OK(0): tranche-A covered entries = 43 (of 43 selected)` |
+| 7 | Phase 1 `check-tranche-B.ps1` | exit 0 - `OK(0): tranche-B covered entries = 20 (of 20 selected)` |
+| 8 | Phase 1 `check-armofgianttree-charge.ps1` | exit 0 - `OK(0): ArmOfGiantTree charge is per-player + per-stack slot-keyed, synced, and server-authoritative` |
+| 9 | Phase 2 `check-phase2.ps1` | exit 0 - `OK(0): phase2 implemented = 21 / 21 (full=9, shell=12)` |
+| 10 | `dotnet test --filter "FullyQualifiedName~Yggdrasil"` | exit 0 - **3 passed, 0 failed, 0 skipped, 3 total**, 184 ms (`Everglow.UnitTests.dll (net8.0)`) |
+| 11 | AGENTS.md byte-level UTF-8 BOM check | exit 0 - anchor `git merge-base HEAD origin/master` = `f222f9316508c71658a331a1c309776fd862fa2d`; `UTF-8 BOM check passed (1440 files).` |
+
+**Triage outcome: none required.** Phase 4 adds no item, tile, wall, buff or localization artifact, so every earlier gate was expected to stay green and did. No earlier-phase gate or artifact was edited to make a gate pass (T-04-56), and no failure was bypassed. The chain ran as a single command whose per-link exit statuses are the phase's gate (T-04-60).
+
+**The AGENTS.md BOM block, stated in its two parts (the `03-DEVIATIONS.md` section 8.2 precedent).** (a) It is **advisory and non-isolating**: it resolves `$base = git merge-base HEAD origin/master`, and on this long-lived branch that ancestor predates the whole phase, so the block measures 1440 changed and untracked files across the entire branch rather than this phase's change set. It reported no BOM-prefixed file, and the binding, phase-scoped equivalent is **invariant 13 inside the Phase 4 gate**, which ran first (link 2) over the phase's own change set and passed. (b) The block's three `git` stages each checked `$LASTEXITCODE` explicitly (`git merge-base`, `git -c core.quotepath=false diff --name-only`, `git -c core.quotepath=false ls-files --others --exclude-standard`) and each aborts with a named message on failure; the deduplicated file set and the BOM list are assembled with plain `foreach` loops rather than a shell pipeline after a `git` call, so a git failure aborts instead of passing as an empty change set (T-04-60). Should the check ever report a BOM in a path outside Phase 4's change set, that is a stale-anchor finding to record here with the offending path; nothing is edited to silence it, and no such path was found.
+
+**What the chain does not cover.** The runtime half of the phase is untouched by all of this: the D-21 client bundle in `04-UAT.md` records 24 checks, every one not executed (section 14.6).
 
 ### 14.5 Consolidated deferred registry
 
