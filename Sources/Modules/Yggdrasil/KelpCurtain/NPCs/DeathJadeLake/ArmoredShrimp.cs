@@ -103,11 +103,16 @@ public class ArmoredShrimp : ModNPC
 		set => NPC.localAI[0] = value;
 	}
 
-	/// <summary>Named wrapper over <c>NPC.localAI[1]</c>: the heading (<c>1</c> or <c>-1</c>) the shoal drifts along.</summary>
+	/// <summary>
+	/// Named wrapper over the synced <c>NPC.ai[2]</c>: the heading (<c>1</c> or <c>-1</c>) the shoal drifts
+	/// along. It must ride the synced array: <see cref="AI"/> steers <c>NPC.velocity.X</c> from it on every
+	/// side, and <c>NPC.localAI[]</c> never reaches a client (D-55). The <c>ai[1]</c> slot is already the
+	/// follower marker.
+	/// </summary>
 	private int Heading
 	{
-		get => (int)NPC.localAI[1];
-		set => NPC.localAI[1] = value;
+		get => (int)NPC.ai[2];
+		set => NPC.ai[2] = value;
 	}
 
 	/// <summary>
@@ -250,7 +255,7 @@ public class ArmoredShrimp : ModNPC
 	/// 成群移动: the shoal drifts along a shared heading, a follower steers loosely back toward a shoal
 	/// mate so the group holds together, and the creature 不会逃离捕食者 - it never flees and never
 	/// acquires a target, so this is the whole of its behaviour. The heading re-roll is authoritative and
-	/// rides the synced <c>NPC.localAI[]</c> arrays (D-55).
+	/// rides the synced <c>NPC.ai[]</c> array (D-55).
 	/// </summary>
 	public override void AI()
 	{
@@ -308,8 +313,7 @@ public class ArmoredShrimp : ModNPC
 
 	/// <summary>
 	/// 成群移动: re-rolls the shoal state and, on a turn, the heading on the authoritative side only, and
-	/// pushes the new values to the clients through the synced <c>NPC.ai[]</c> / <c>NPC.localAI[]</c>
-	/// arrays (D-55).
+	/// pushes the new values to the clients through the synced <c>NPC.ai[]</c> array (D-55).
 	/// </summary>
 	private void UpdateWander()
 	{

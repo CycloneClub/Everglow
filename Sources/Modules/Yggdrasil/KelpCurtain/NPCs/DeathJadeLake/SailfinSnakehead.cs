@@ -97,20 +97,26 @@ public class SailfinSnakehead : ModNPC
 	}
 
 	/// <summary>
-	/// Named wrapper over <c>NPC.localAI[0]</c>: the remaining frames of the 获得仇恨 window. It is a per-NPC
-	/// timer and never a field on a <c>Player</c> (Pitfall 6).
+	/// Named wrapper over the synced <c>NPC.ai[1]</c>: the remaining frames of the 获得仇恨 window. It is a
+	/// per-NPC timer and never a field on a <c>Player</c> (Pitfall 6). It must ride the synced array:
+	/// every side reads it through <see cref="HasAggro"/> to choose its AI branch, and
+	/// <c>NPC.localAI[]</c> never reaches a client (D-55).
 	/// </summary>
 	private int AggroTimer
 	{
-		get => (int)NPC.localAI[0];
-		set => NPC.localAI[0] = value;
+		get => (int)NPC.ai[1];
+		set => NPC.ai[1] = value;
 	}
 
-	/// <summary>Named wrapper over <c>NPC.localAI[1]</c>: the frames left before the next 撞击 is allowed.</summary>
+	/// <summary>
+	/// Named wrapper over the synced <c>NPC.ai[2]</c>: the frames left before the next 撞击 is allowed.
+	/// <see cref="RamToward"/> reads it on every side to pick the swim speed, so it cannot live in the
+	/// unsynchronised <c>NPC.localAI[]</c> (D-55).
+	/// </summary>
 	private int ChargeCooldown
 	{
-		get => (int)NPC.localAI[1];
-		set => NPC.localAI[1] = value;
+		get => (int)NPC.ai[2];
+		set => NPC.ai[2] = value;
 	}
 
 	/// <summary>True while the design's 获得仇恨 window is open.</summary>
@@ -296,17 +302,12 @@ public class SailfinSnakehead : ModNPC
 	}
 
 	/// <summary>
-	/// Runs the two per-NPC timers on the authoritative side only and pushes them to the clients through the
-	/// synced <c>NPC.localAI[]</c> array (D-55). The 获得仇恨 window is the bound that keeps a provoked
-	/// creature from staying hostile forever (T-04-22).
+	/// Runs the two per-NPC timers on every side so the synced <c>NPC.ai[]</c> counters stay in step; only
+	/// the authoritative side broadcasts the window closing (D-55). The 获得仇恨 window is the bound that
+	/// keeps a provoked creature from staying hostile forever (T-04-22).
 	/// </summary>
 	private void UpdateTimers()
 	{
-		if (Main.netMode == NetmodeID.MultiplayerClient)
-		{
-			return;
-		}
-
 		bool changed = false;
 		if (AggroTimer > 0)
 		{
@@ -319,7 +320,7 @@ public class SailfinSnakehead : ModNPC
 			ChargeCooldown--;
 		}
 
-		if (changed)
+		if (changed && Main.netMode != NetmodeID.MultiplayerClient)
 		{
 			NPC.netUpdate = true;
 		}

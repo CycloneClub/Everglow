@@ -93,13 +93,15 @@ public class AnimatedWitherbarkHound : ModNPC
 	}
 
 	/// <summary>
-	/// The neutral flag, kept in a named wrapper over <c>NPC.localAI[1]</c> (1 once provoked, 0 while the
-	/// design's 中立 default still holds).
+	/// The neutral flag, kept in a named wrapper over the synced <c>NPC.ai[1]</c> (1 once provoked, 0 while
+	/// the design's 中立 default still holds). It must ride the synced array: every side reads it through
+	/// <see cref="IsNeutral"/> to choose its AI branch, and <c>NPC.localAI[]</c> never reaches a client
+	/// (D-55).
 	/// </summary>
 	private int ProvokedFlag
 	{
-		get => (int)NPC.localAI[1];
-		set => NPC.localAI[1] = value;
+		get => (int)NPC.ai[1];
+		set => NPC.ai[1] = value;
 	}
 
 	/// <summary>

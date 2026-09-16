@@ -107,13 +107,15 @@ public class AnimatedWitherbarkSoldierRanged : ModNPC
 	}
 
 	/// <summary>
-	/// The provocation flag, kept in a named wrapper over <c>NPC.localAI[1]</c> (1 once the design's 中立 has
-	/// been broken, 0 while it still holds), because <c>NPC.ai[0]</c> is already the attack cycle.
+	/// The provocation flag, kept in a named wrapper over the synced <c>NPC.ai[1]</c> (1 once the design's
+	/// 中立 has been broken, 0 while it still holds), because <c>NPC.ai[0]</c> is already the attack cycle.
+	/// It must ride the synced array: every side reads it through <see cref="IsNeutral"/> to choose its AI
+	/// branch, and <c>NPC.localAI[]</c> never reaches a client (D-55).
 	/// </summary>
 	private int ProvokedFlag
 	{
-		get => (int)NPC.localAI[1];
-		set => NPC.localAI[1] = value;
+		get => (int)NPC.ai[1];
+		set => NPC.ai[1] = value;
 	}
 
 	/// <summary>
