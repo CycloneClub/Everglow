@@ -22,7 +22,8 @@ public class ToxicToad_PoisonBubble : ModProjectile
 
 	/// <summary>
 	/// 不论何种方式都会有75%概率造成10秒中毒: 10 s = 600 ticks. The design's 75% branch is
-	/// <c>Main.rand.NextBool(3)</c> (3 in 4).
+	/// <c>Main.rand.NextBool(3, 4)</c> (3 in 4), the documented "X out of Y" overload; the one-argument
+	/// <c>NextBool(n)</c> is 1 in n, not n-1 in n.
 	/// </summary>
 	private const int PoisonTicks = 600;
 
@@ -81,7 +82,7 @@ public class ToxicToad_PoisonBubble : ModProjectile
 	/// <param name="info">The resolved hit.</param>
 	public override void OnHitPlayer(Player target, Player.HurtInfo info)
 	{
-		if (Main.rand.NextBool(3))
+		if (Main.rand.NextBool(3, 4))
 		{
 			// 75% -> 10 s (600 ticks) of 中毒.
 			target.AddBuff(BuffID.Poisoned, PoisonTicks);
