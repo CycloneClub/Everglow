@@ -163,11 +163,19 @@ public class RedNeedleCaterpillar : Caterpillar
 	{
 		base.AI();
 
-		if (Main.netMode == NetmodeID.MultiplayerClient)
+		if (Main.netMode != NetmodeID.MultiplayerClient)
 		{
-			return;
+			UpdateVolley();
 		}
+	}
 
+	/// <summary>
+	/// 与玩家距离不低于4格时，每过180帧会像尖刺史莱姆一样在头部发射4~6尖刺: the design's volley, run on the
+	/// authoritative side only. The distance is computed from the synced <c>NPC.Center</c> and the target's
+	/// centre, never from a screen or camera value.
+	/// </summary>
+	private void UpdateVolley()
+	{
 		if (Segments.Count == 0)
 		{
 			return;

@@ -195,13 +195,24 @@ public class AssassinRaspberry : ModNPC
 			return;
 		}
 
-		if (Main.netMode == NetmodeID.MultiplayerClient)
+		if (Main.netMode != NetmodeID.MultiplayerClient)
 		{
-			return;
+			UpdateVolley(hasTarget, target, distance, extendRange);
 		}
+	}
 
-		// 少于4格无法攻击但是不会缩回去: closer than 4 tiles there is no attack, and no retract either.
-		if (!hasTarget || distance < AttackMinTiles * PixelsPerTile || distance > extendRange)
+	/// <summary>
+	/// 玩家在距离恰好为4~8格时...随机散射4~6颗地刺: the design's attack window, run on the authoritative side
+	/// only. 少于4格无法攻击但是不会缩回去, so a player closer than 4 tiles silences the ambusher without
+	/// retracting it, and a player beyond 8 tiles has already driven it back underground.
+	/// </summary>
+	/// <param name="hasTarget">Whether a live player target exists.</param>
+	/// <param name="target">The player target, or <c>null</c>.</param>
+	/// <param name="distance">The distance to that target.</param>
+	/// <param name="extendRange">The <see cref="ExtendTiles"/> range in pixels.</param>
+	private void UpdateVolley(bool hasTarget, Player target, float distance, float extendRange)
+	{
+		if (!hasTarget || target is null || distance < AttackMinTiles * PixelsPerTile || distance > extendRange)
 		{
 			return;
 		}
@@ -231,23 +242,21 @@ public class AssassinRaspberry : ModNPC
 			return;
 		}
 
-		if (Main.netMode == NetmodeID.MultiplayerClient)
+		if (Main.netMode != NetmodeID.MultiplayerClient)
 		{
-			return;
+			State = nextState;
+			NPC.defense = nextState == AssassinRaspberryState.Extended ? 4 : 20;
+
+			if (nextState == AssassinRaspberryState.Hidden)
+			{
+				// 缩回地下: the stationary creature returns to its own anchor.
+				NPC.Center = AnchorPosition;
+				NPC.velocity = Vector2.Zero;
+				VolleyTimer = 0;
+			}
+
+			NPC.netUpdate = true;
 		}
-
-		State = nextState;
-		NPC.defense = nextState == AssassinRaspberryState.Extended ? 4 : 20;
-
-		if (nextState == AssassinRaspberryState.Hidden)
-		{
-			// 缩回地下: the stationary creature returns to its own anchor.
-			NPC.Center = AnchorPosition;
-			NPC.velocity = Vector2.Zero;
-			VolleyTimer = 0;
-		}
-
-		NPC.netUpdate = true;
 	}
 
 	/// <summary>
