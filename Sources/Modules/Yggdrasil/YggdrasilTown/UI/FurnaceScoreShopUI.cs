@@ -47,7 +47,7 @@ public class FurnaceScoreShopUI : SpecialShopUI
 	{
 		base.Calculation();
 		Info.Left.SetValue(0, 0f);
-		Info.Top.SetValue(286, 0f);
+		Info.Top.SetValue(240, 0f);
 		Info.Width.SetValue(480, 0f);
 		Info.Height.SetValue(300, 0f);
 		for (int i = 0; i < FurnaceScoreShopItemSlots.Length; i++)

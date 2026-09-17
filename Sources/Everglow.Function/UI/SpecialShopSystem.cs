@@ -1,4 +1,7 @@
 using Everglow.Commons.UI.UIElements;
+using Mono.Cecil.Cil;
+using MonoMod.Cil;
+using Terraria.UI;
 
 namespace Everglow.Commons.UI;
 
@@ -7,12 +10,24 @@ namespace Everglow.Commons.UI;
 /// </summary>
 public class SpecialShopSystem : ModSystem
 {
+	private const int SpecialShopWhoAmI = 65536;
+
 	private readonly Dictionary<Type, SpecialShopUI> shops = [];
 	private SpecialShopUI currentShop;
 
 	public static SpecialShopSystem Instance => ModContent.GetInstance<SpecialShopSystem>();
 
 	public SpecialShopUI CurrentShop => currentShop is { IsVisible: true } ? currentShop : null;
+
+	public override void Load()
+	{
+		if (!Main.dedServ)
+		{
+			On_Main.DrawInventory += On_Main_DrawInventory;
+			IL_Main.DrawInventory += IL_Main_DrawInventory;
+			IL_ItemSlot.SellOrTrash += IL_ItemSlot_SellOrTrash;
+		}
+	}
 
 	public override void Unload()
 	{
@@ -74,5 +89,68 @@ public class SpecialShopSystem : ModSystem
 		where T : SpecialShopUI
 	{
 		return (T)shops[typeof(T)];
+	}
+
+	private void IL_ItemSlot_SellOrTrash(ILContext il)
+	{
+		ILCursor c = new(il);
+		ILLabel elseLabel = null;
+		if (!c.TryGotoNext(
+			MoveType.After,
+			i => i.MatchLdfld<Item>(nameof(Item.favorited)),
+			i => i.MatchBrtrue(out elseLabel)))
+		{
+			throw new InvalidOperationException("Can't find sell condition. Check tmodloader version.");
+		}
+
+		c.EmitDelegate(() => currentShop is null);
+		c.Emit(OpCodes.Brfalse, elseLabel);
+	}
+
+	private void IL_Main_DrawInventory(ILContext il)
+	{
+		ILCursor restoreCursor = new(il);
+		if (!restoreCursor.TryGotoNext(
+			MoveType.After,
+			x => x.MatchLdindU2(),
+			x => x.MatchLdelemU1(),
+			x => x.MatchBrtrue(out _),
+			x => x.MatchLdsfld(out _),
+			x => x.MatchLdsfld(out _),
+			x => x.MatchLdelemRef(),
+			x => x.MatchLdcI4(-1),
+			x => x.MatchStfld(out _),
+			x => x.MatchLdcI4(0),
+			x => x.MatchCall(out _),
+			x => x.MatchLdcI4(0),
+			x => x.MatchStloc(out _)))
+		{
+			throw new InvalidOperationException("Can't find sell condition. Check tmodloader version.");
+		}
+
+		restoreCursor.EmitDelegate(CheckSpecialShopEnable_ModifyNpcShop);
+	}
+
+	private void On_Main_DrawInventory(On_Main.orig_DrawInventory orig, Main self)
+	{
+		CheckSpecialShopEnable_ModifyNpcShop();
+		orig(self);
+		DisposeSpecialShopEnable_ModifyNpcShop();
+	}
+
+	private void CheckSpecialShopEnable_ModifyNpcShop()
+	{
+		if (CurrentShop is not null && Main.npcShop == 0)
+		{
+			Main.npcShop = SpecialShopWhoAmI;
+		}
+	}
+
+	private void DisposeSpecialShopEnable_ModifyNpcShop()
+	{
+		if (Main.npcShop >= SpecialShopWhoAmI)
+		{
+			Main.npcShop = 0;
+		}
 	}
 }
