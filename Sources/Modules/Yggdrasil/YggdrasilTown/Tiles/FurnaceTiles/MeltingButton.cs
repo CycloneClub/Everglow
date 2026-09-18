@@ -40,35 +40,45 @@ public class MeltingButton : ModTile
 
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{
-		// Tile tile = Main.tile[i, j];
-		// var zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
-
-		// if (Main.drawToScreen)
-		// {
-		// zero = Vector2.Zero;
-		// }
-		// var texture = ModContent.Request<Texture2D>(Texture).Value;
-		// spriteBatch.Draw(texture, new Vector2(i, j) * 16 - Main.screenPosition + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY + 36, 16, 16), new Color(1f, 0.3f, 0.1f, 0), 0, Vector2.zeroVector, 1, SpriteEffects.None, 0);
 		return base.PreDraw(i, j, spriteBatch);
 	}
 
 	public override void NearbyEffects(int i, int j, bool closer)
 	{
 		Tile tile = TileUtils.SafeGetTile(i, j);
-		tile.TileFrameX = 0;
+		if (YggdrasilTownFurnaceSystem.CurrentPlayer is not null)
+		{
+			tile.TileFrameX = 0;
+		}
+		else
+		{
+			tile.TileFrameX = 36;
+		}
 		base.NearbyEffects(i, j, closer);
 	}
 
 	public override void MouseOver(int i, int j)
 	{
-		Tile tile = TileUtils.SafeGetTile(i, j);
-		tile.TileFrameX = 18;
-		string text = "Meltdown";
-		Main.instance.MouseText(text, ItemRarityID.Red);
+		if (YggdrasilTownFurnaceSystem.CurrentPlayer is not null && Main.LocalPlayer.chest == -1)
+		{
+			Tile tile = TileUtils.SafeGetTile(i, j);
+			tile.TileFrameX = 18;
+			string text = "Meltdown";
+			Main.instance.MouseText(text, ItemRarityID.Red);
+		}
 		base.MouseOver(i, j);
 	}
 
 	public override bool RightClick(int i, int j)
+	{
+		if (YggdrasilTownFurnaceSystem.CurrentPlayer is not null && Main.LocalPlayer.chest == -1)
+		{
+			MeltDown(i, j);
+		}
+		return base.RightClick(i, j);
+	}
+
+	public static void MeltDown(int i, int j)
 	{
 		for (int x = -15; x <= 15; x++)
 		{
@@ -77,7 +87,7 @@ public class MeltingButton : ModTile
 				if (new Vector2(x, y).Length() <= 15)
 				{
 					int chestIndex = Chest.FindChest(i + x, j + y);
-					if (chestIndex >= 0)
+					if (chestIndex >= 0 && TileUtils.SafeGetTile(i + x, j + y).TileType == ModContent.TileType<FurnaceMeltingChest>())
 					{
 						Chest chest = Main.chest[chestIndex];
 						int totalValue = 0;
@@ -90,34 +100,23 @@ public class MeltingButton : ModTile
 								int rare = Math.Min(10, item.rare);
 								float rareValue = 6f - (rare - 10) * (rare - 10) / 20f;
 								int value = (int)(rareValue * itemValue * item.stack);
-								item.stack = 0;
-								item.active = false;
-								item.type = ItemID.None;
-								item.ModItem = null;
-
-								// if(item.stack > 0)
-								// {
-								// Main.NewText(rareValue, Color.Yellow);
-								// Main.NewText(itemValue, Color.Red);
-								// Main.NewText(item.stack, Color.Green);
-								// }
+								item.TurnToAir();
 								totalValue += value;
 							}
 						}
-						string name = chest.name;
-						chest = new Chest();
-						chest.name = name;
 						if (YggdrasilTownFurnaceSystem.CurrentPlayer != null)
 						{
 							Player player = YggdrasilTownFurnaceSystem.CurrentPlayer;
 							FurnacePlayer fPlayer = player.GetModPlayer<FurnacePlayer>();
-							fPlayer.FurnaceScore += totalValue;
+							fPlayer.TotalFurnaceScore += totalValue;
+							fPlayer.CurrentFurnaceScore += totalValue;
 						}
 						YggdrasilTownFurnaceSystem.CurrentEnergy += totalValue;
+						YggdrasilTownFurnaceSystem.MeltingAnimationTimer.Add(120);
+						CombatText.NewText(Main.LocalPlayer.Hitbox, new Color(1f, 0.45f, 0.02f, 1f), "Furnace Energy + " + totalValue);
 					}
 				}
 			}
 		}
-		return base.RightClick(i, j);
 	}
 }

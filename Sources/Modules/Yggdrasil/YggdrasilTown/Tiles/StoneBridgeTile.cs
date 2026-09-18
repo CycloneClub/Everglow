@@ -48,36 +48,36 @@ public class StoneBridgeTile : ModTile, ISceneTile
 		Tile tile = TileUtils.SafeGetTile(i, j);
 		if (tile.TileFrameX == 0 && tile.TileFrameY == 0)
 		{
-			StoneBridge_fence sBF = new StoneBridge_fence { position = new Vector2(i, j - 3) * 16 - new Vector2(0, 14), Active = true, Visible = true, originTile = new Point(i, j), originType = ModContent.TileType<StoneBridgeTile>() };
+			StoneBridge_fence sBF = new StoneBridge_fence { Position = new Vector2(i, j - 3) * 16 - new Vector2(0, 14), Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = ModContent.TileType<StoneBridgeTile>() };
 			Ins.VFXManager.Add(sBF);
-			StoneBridge_foreground sBF2 = new StoneBridge_foreground { position = new Vector2(i, j - 3) * 16 - new Vector2(0, 4), Active = true, Visible = true, originTile = new Point(i, j), originType = ModContent.TileType<StoneBridgeTile>() };
+			StoneBridge_foreground sBF2 = new StoneBridge_foreground { Position = new Vector2(i, j - 3) * 16 - new Vector2(0, 4), Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = ModContent.TileType<StoneBridgeTile>() };
 			Ins.VFXManager.Add(sBF2);
-			StoneBridge_Pier_foreground sBF3 = new StoneBridge_Pier_foreground { position = new Vector2(i, j - 3) * 16 + new Vector2(-120, 316), Active = true, Visible = true, originTile = new Point(i, j), originType = ModContent.TileType<StoneBridgeTile>() };
+			StoneBridge_Pier_foreground sBF3 = new StoneBridge_Pier_foreground { Position = new Vector2(i, j - 3) * 16 + new Vector2(-120, 316), Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = ModContent.TileType<StoneBridgeTile>() };
 			Ins.VFXManager.Add(sBF3);
-			StoneBridge_Pier2_foreground sBF4 = new StoneBridge_Pier2_foreground { position = new Vector2(i, j - 3) * 16 + new Vector2(-4, 630), Active = true, Visible = true, originTile = new Point(i, j), originType = ModContent.TileType<StoneBridgeTile>() };
+			StoneBridge_Pier2_foreground sBF4 = new StoneBridge_Pier2_foreground { Position = new Vector2(i, j - 3) * 16 + new Vector2(-4, 630), Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = ModContent.TileType<StoneBridgeTile>() };
 			Ins.VFXManager.Add(sBF4);
 		}
 		if (tile.TileFrameX == 0 && tile.TileFrameY == 18)
 		{
-			StoneBridge_Leftside_foreground sBF2 = new StoneBridge_Leftside_foreground { position = new Vector2(i, j - 3) * 16 + new Vector2(-272, -4), Active = true, Visible = true, originTile = new Point(i, j), originType = ModContent.TileType<StoneBridgeTile>() };
+			StoneBridge_Leftside_foreground sBF2 = new StoneBridge_Leftside_foreground { Position = new Vector2(i, j - 3) * 16 + new Vector2(-272, -4), Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = ModContent.TileType<StoneBridgeTile>() };
 			Ins.VFXManager.Add(sBF2);
 		}
 		if (tile.TileFrameX == 0 && tile.TileFrameY == 54)
 		{
-			StoneBridge_Rightside_foreground sBF2 = new StoneBridge_Rightside_foreground { position = new Vector2(i, j - 3) * 16 + new Vector2(0, -4), Active = true, Visible = true, originTile = new Point(i, j), originType = ModContent.TileType<StoneBridgeTile>() };
+			StoneBridge_Rightside_foreground sBF2 = new StoneBridge_Rightside_foreground { Position = new Vector2(i, j - 3) * 16 + new Vector2(0, -4), Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = ModContent.TileType<StoneBridgeTile>() };
 			Ins.VFXManager.Add(sBF2);
-			StoneBridge_Pier_foreground sBF3 = new StoneBridge_Pier_foreground { position = new Vector2(i, j - 3) * 16 + new Vector2(-120, 316), Active = true, Visible = true, originTile = new Point(i, j), originType = ModContent.TileType<StoneBridgeTile>() };
+			StoneBridge_Pier_foreground sBF3 = new StoneBridge_Pier_foreground { Position = new Vector2(i, j - 3) * 16 + new Vector2(-120, 316), Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = ModContent.TileType<StoneBridgeTile>() };
 			Ins.VFXManager.Add(sBF3);
-			StoneBridge_Pier2_foreground sBF4 = new StoneBridge_Pier2_foreground { position = new Vector2(i, j - 3) * 16 + new Vector2(-4, 630), Active = true, Visible = true, originTile = new Point(i, j), originType = ModContent.TileType<StoneBridgeTile>() };
+			StoneBridge_Pier2_foreground sBF4 = new StoneBridge_Pier2_foreground { Position = new Vector2(i, j - 3) * 16 + new Vector2(-4, 630), Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = ModContent.TileType<StoneBridgeTile>() };
 			Ins.VFXManager.Add(sBF4);
 		}
 		if (tile.TileFrameX == 0 && tile.TileFrameY == 72)
 		{
-			StoneBridge_Middleside_foreground sBF2 = new StoneBridge_Middleside_foreground { position = new Vector2(i, j - 3) * 16 + new Vector2(0, -116), Active = true, Visible = true, originTile = new Point(i, j), originType = ModContent.TileType<StoneBridgeTile>() };
+			StoneBridge_Middleside_foreground sBF2 = new StoneBridge_Middleside_foreground { Position = new Vector2(i, j - 3) * 16 + new Vector2(0, -116), Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = ModContent.TileType<StoneBridgeTile>() };
 			Ins.VFXManager.Add(sBF2);
-			StoneBridge_Pier_foreground sBF3 = new StoneBridge_Pier_foreground { position = new Vector2(i + 7, j - 10) * 16 + new Vector2(-112, 316), Active = true, Visible = true, originTile = new Point(i, j), originType = ModContent.TileType<StoneBridgeTile>() };
+			StoneBridge_Pier_foreground sBF3 = new StoneBridge_Pier_foreground { Position = new Vector2(i + 7, j - 10) * 16 + new Vector2(-112, 316), Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = ModContent.TileType<StoneBridgeTile>() };
 			Ins.VFXManager.Add(sBF3);
-			StoneBridge_Pier2_foreground sBF4 = new StoneBridge_Pier2_foreground { position = new Vector2(i + 7, j - 10) * 16 + new Vector2(4, 630), Active = true, Visible = true, originTile = new Point(i, j), originType = ModContent.TileType<StoneBridgeTile>() };
+			StoneBridge_Pier2_foreground sBF4 = new StoneBridge_Pier2_foreground { Position = new Vector2(i + 7, j - 10) * 16 + new Vector2(4, 630), Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = ModContent.TileType<StoneBridgeTile>() };
 			Ins.VFXManager.Add(sBF4);
 		}
 	}

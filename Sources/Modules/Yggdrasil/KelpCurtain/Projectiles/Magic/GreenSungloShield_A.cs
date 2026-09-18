@@ -50,15 +50,13 @@ public class GreenSungloShield_A : ModProjectile
 			timer -= 0.2f;
 		}
 
-		if (timer == 0)
+		if (timer <= 0)
 		{
 			Projectile.Kill();
 		}
 
 		Lighting.AddLight(Projectile.Center, new Vector3(0.375f, 0.75f, 0.375f) * timer / 157);
 	}
-
-
 
 	public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 	{

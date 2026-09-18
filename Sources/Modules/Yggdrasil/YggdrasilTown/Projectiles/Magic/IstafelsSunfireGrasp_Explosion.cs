@@ -37,64 +37,58 @@ public class IstafelsSunfireGrasp_Explosion : ModProjectile, IWarpProjectile_war
 		Timer++;
 		if (Timer < 20 && Timer % 5 == 0)
 		{
-			for (int x = 0; x < 60; x++)
-			{
-				LargeFlame();
-			}
-			for (int x = 0; x < 30; x++)
-			{
-				SmallFlame();
-			}
+			LargeFlame(60);
+			SmallFlame(30);
 		}
 		base.AI();
 	}
 
-	public void LargeFlame()
+	public void LargeFlame(int count)
 	{
-		Vector2 newVelocity = new Vector2(0, MathF.Sqrt(Main.rand.NextFloat(1f)) * 12f).RotatedByRandom(MathHelper.TwoPi);
-		var somg = new MissleFlameDust
+		for (int x = 0; x < count; x++)
 		{
-			velocity = newVelocity,
-			Active = true,
-			Visible = true,
-			position = Projectile.Center + new Vector2(Main.rand.NextFloat(6), 0).RotatedByRandom(6.283),
-			maxTime = Main.rand.Next(90, 120),
-			scale = Main.rand.NextFloat(24f, 36f),
-			rotation = Main.rand.NextFloat(6.283f),
-			ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
-		};
-		Ins.VFXManager.Add(somg);
+			Vector2 newVelocity = new Vector2(0, MathF.Sqrt(Main.rand.NextFloat(1f)) * 12f).RotatedByRandom(MathHelper.TwoPi);
+			var somg = new MissleFlameDust
+			{
+				velocity = newVelocity,
+				Active = true,
+				Visible = true,
+				position = Projectile.Center + new Vector2(Main.rand.NextFloat(6), 0).RotatedByRandom(6.283),
+				maxTime = Main.rand.Next(90, 120),
+				scale = Main.rand.NextFloat(24f, 36f),
+				rotation = Main.rand.NextFloat(6.283f),
+				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
+			};
+			Ins.VFXManager.Add(somg);
+		}
 	}
 
-	public void SmallFlame()
+	public void SmallFlame(int count)
 	{
-		Vector2 newVelocity = new Vector2(0, MathF.Sqrt(Main.rand.NextFloat(1f)) * 8f).RotatedByRandom(MathHelper.TwoPi);
-		var somg = new MissleFlameDust
+		for (int x = 0; x < count; x++)
 		{
-			velocity = newVelocity,
-			Active = true,
-			Visible = true,
-			position = Projectile.Center + new Vector2(Main.rand.NextFloat(4), 0).RotatedByRandom(6.283),
-			maxTime = Main.rand.Next(50, 70),
-			scale = Main.rand.NextFloat(12f, 20f),
-			rotation = Main.rand.NextFloat(6.283f),
-			ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
-		};
-		Ins.VFXManager.Add(somg);
+			Vector2 newVelocity = new Vector2(0, MathF.Sqrt(Main.rand.NextFloat(1f)) * 8f).RotatedByRandom(MathHelper.TwoPi);
+			var somg = new MissleFlameDust
+			{
+				velocity = newVelocity,
+				Active = true,
+				Visible = true,
+				position = Projectile.Center + new Vector2(Main.rand.NextFloat(4), 0).RotatedByRandom(6.283),
+				maxTime = Main.rand.Next(50, 70),
+				scale = Main.rand.NextFloat(12f, 20f),
+				rotation = Main.rand.NextFloat(6.283f),
+				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
+			};
+			Ins.VFXManager.Add(somg);
+		}
 	}
 
 	public override void OnSpawn(IEntitySource source)
 	{
 		Projectile.ai[2] = 600;
 		Projectile.velocity *= 0;
-		for (int x = 0; x < 60; x++)
-		{
-			LargeFlame();
-		}
-		for (int x = 0; x < 30; x++)
-		{
-			SmallFlame();
-		}
+		LargeFlame(60);
+		SmallFlame(30);
 		for (int g = 0; g < 40; g++)
 		{
 			Vector2 afterVelocity = new Vector2(0, Main.rand.NextFloat(2, 7)).RotatedByRandom(MathHelper.TwoPi);

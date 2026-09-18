@@ -22,7 +22,8 @@ public static class BackgroundHigherPerformanceHelper
 	public static void Add_TileBgVertice(
 		BackgroundSlideBase bg,
 		List<Point> tiles,
-		List<Vertex2D> bars)
+		List<Vertex2D> bars,
+		int samplingUnit = 1)
 	{
 		if (bg.UseColorStyle != 1)
 		{
@@ -62,7 +63,6 @@ public static class BackgroundHigherPerformanceHelper
 		int lastY = visibleTiles[0].Pos.Y;
 		int lastX = visibleTiles[0].Pos.X;
 
-		int samplingUnit = 1;
 		if (bg is UnderBackgroundBackgroundSlideBase)
 		{
 			UnderBackgroundBackgroundSlideBase ubg = bg as UnderBackgroundBackgroundSlideBase;
@@ -261,6 +261,26 @@ public static class BackgroundHigherPerformanceHelper
 
 		// Update size.
 		CollectionsMarshal.SetCount(bars, currentSize);
+	}
+
+	public static void Add_WorldPosVertex(BackgroundSlideBase bg, Vector2 position, Span<Vertex2D> span, ref int currentSize)
+	{
+		Vector2 screenCenter = Main.screenPosition + new Vector2(Main.screenWidth, Main.screenHeight) * 0.5f;
+		Vector2 move = (screenCenter - bg.WorldAnchor) / bg.Distance;
+		Vector2 texcoord_Move = move / bg.Texture.Size();
+		Vector2 screenPoint = position - screenCenter;
+		Vector2 screen_move = screenPoint / bg.Texture.Size() + texcoord_Move;
+
+		Color drawColor = GetColor(bg, position);
+		span[currentSize] = new Vertex2D(position - Main.screenPosition, drawColor, new Vector3(screen_move + new Vector2(0.5f), 0));
+		currentSize++;
+	}
+
+	public static void Add_WorldTriangle(BackgroundSlideBase bg, Vector2 v0, Vector2 v1, Vector2 v2, Span<Vertex2D> span, ref int currentSize)
+	{
+		Add_WorldPosVertex(bg, v0, span, ref currentSize);
+		Add_WorldPosVertex(bg, v1, span, ref currentSize);
+		Add_WorldPosVertex(bg, v2, span, ref currentSize);
 	}
 
 	private static Color GetColor(BackgroundSlideBase bg, Vector2 worldPos)

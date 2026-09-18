@@ -51,7 +51,7 @@ public class TotalFurnaceScoreBoard : ModTile, ISceneTile
 		Tile tile = Main.tile[i, j];
 		if (tile.TileFrameX == 0 && tile.TileFrameY == 0)
 		{
-			var scene = new FurnaceNumberAxis { position = new Vector2(i, j) * 16, Active = true, originTile = new Point(i, j), originType = Type };
+			var scene = new FurnaceNumberAxis { Position = new Vector2(i, j) * 16, Active = true, OriginTilePos = new Point(i, j), OriginTileType = Type };
 			Ins.VFXManager.Add(scene);
 		}
 	}

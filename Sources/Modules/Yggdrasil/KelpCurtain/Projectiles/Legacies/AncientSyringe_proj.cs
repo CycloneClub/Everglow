@@ -17,12 +17,14 @@ public class AncientSyringe_proj : HandholdProjectile
 		Projectile.localNPCHitCooldown = 20;
 		base.SetDef();
 	}
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		Player player = Main.player[Projectile.owner];
 		int timeMax = (int)(player.itemTimeMax / player.meleeSpeed);
 		player.itemTime = timeMax;
 	}
+
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		int times = 10;
@@ -37,7 +39,7 @@ public class AncientSyringe_proj : HandholdProjectile
 				position = target.Center,
 				maxTime = Main.rand.Next(12, 28),
 				scale = Main.rand.NextFloat(6f, 18f),
-				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0, Main.rand.NextFloat(20.0f, 40.0f) }
+				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0, Main.rand.NextFloat(20.0f, 40.0f) },
 			};
 			Ins.VFXManager.Add(splash);
 		}
@@ -54,17 +56,19 @@ public class AncientSyringe_proj : HandholdProjectile
 				maxTime = Main.rand.Next(32, 64),
 				scale = mulScale,
 				rotation = Main.rand.NextFloat(6.283f),
-				ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) }
+				ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 			};
 			Ins.VFXManager.Add(blood);
 		}
 		target.AddBuff(ModContent.BuffType<LichenInfected>(), 480);
 		base.OnHitNPC(target, hit, damageDone);
 	}
+
 	public override void AI()
 	{
 		base.AI();
 	}
+
 	public override void HeldProjectileAI()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -112,26 +116,31 @@ public class AncientSyringe_proj : HandholdProjectile
 
 			Projectile.Center = ArmRootPos + new Vector2(0, 1).RotatedBy(Projectile.rotation - Math.PI * 0.75) * DepartLength;
 			Projectile.timeLeft = timeMax;
-
 		}
 		if (!player.controlUseItem)
 		{
 			Projectile.Kill();
 		}
 		if (Projectile.Center.X < ArmRootPos.X)
+		{
 			player.direction = -1;
+		}
 		else
 		{
 			player.direction = 1;
 		}
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Player player = Main.player[Projectile.owner];
 		var texMain = (Texture2D)ModContent.Request<Texture2D>(Texture);
 		SpriteEffects se = SpriteEffects.None;
 		if (player.direction == -1)
+		{
 			se = SpriteEffects.FlipVertically;
+		}
+
 		float rot = Projectile.rotation - (float)(Math.PI * 0.25) + TextureRotation * player.direction;
 		Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition + DrawOffset - new Vector2(54, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), null, lightColor, rot, texMain.Size() / 2f, 1f, se, 0);
 		int timeMax = (int)(player.itemTimeMax / player.meleeSpeed);

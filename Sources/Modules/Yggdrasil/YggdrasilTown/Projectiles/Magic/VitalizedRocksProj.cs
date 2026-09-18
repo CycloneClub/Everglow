@@ -1,6 +1,6 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
-using Terraria;
+using Terraria.Audio;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
 
@@ -123,6 +123,21 @@ public class VitalizedRocksProj : ModProjectile
 					}
 				}
 				Projectile.NewProjectileDirect(player.GetSource_FromAI(), Pos, toMouse * speed, type, (int)(Projectile.damage * damageScale), Projectile.knockBack, player.whoAmI);
+				switch (Main.rand.Next(4))
+				{
+					case 0:
+						SoundEngine.PlaySound(new SoundStyle(ModAsset.vitalizedrocks_attack_1_Mod), Projectile.Center);
+						break;
+					case 1:
+						SoundEngine.PlaySound(new SoundStyle(ModAsset.vitalizedrocks_attack_2_Mod), Projectile.Center);
+						break;
+					case 2:
+						SoundEngine.PlaySound(new SoundStyle(ModAsset.vitalizedrocks_attack_3_Mod), Projectile.Center);
+						break;
+					case 3:
+						SoundEngine.PlaySound(new SoundStyle(ModAsset.vitalizedrocks_attack_4_Mod), Projectile.Center);
+						break;
+				}
 			}
 		}
 		Lighting.AddLight(Projectile.Center, new Vector3(0.7f, 0.2f, 1f) * Projectile.ai[0] / 60f);

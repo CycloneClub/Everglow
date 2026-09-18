@@ -1,5 +1,9 @@
-using Everglow.Yggdrasil.WorldGeneration;
+using Everglow.Commons.DeveloperContent.Items;
+using Everglow.Commons.Utilities.BackgroundHelper;
+using Everglow.Yggdrasil.KelpCurtain.Background;
+using Everglow.Yggdrasil.YggdrasilTown.Background;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles;
+using Everglow.Yggdrasil.YggdrasilTown.Tiles.FurnaceTiles;
 using SubworldLibrary;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Biomes;
@@ -142,6 +146,74 @@ public class YggdrasilTownBiome : ModBiome
 			Main.StopSlimeRain();
 		}
 		Main.bloodMoon = false;
+
+		BackgroundSystem bgSystem = ModContent.GetInstance<BackgroundSystem>();
+		Town_Sky town_Sky = new Town_Sky();
+		town_Sky.WorldAnchor = BiomeCenter;
+		bgSystem.AddBackgroundSlide(town_Sky);
+
+		Town_Far town_Far = new Town_Far();
+		town_Far.WorldAnchor = BiomeCenter;
+		bgSystem.AddBackgroundSlide(town_Far);
+
+		Town_Middle town_Middle = new Town_Middle();
+		town_Middle.WorldAnchor = BiomeCenter + new Vector2(0, -500);
+		bgSystem.AddBackgroundSlide(town_Middle);
+
+		Town_Close town_Close = new Town_Close();
+		town_Close.WorldAnchor = BiomeCenter + new Vector2(0, -900);
+		bgSystem.AddBackgroundSlide(town_Close);
+		if (!bgSystem.HasBgSlide("Everglow.Yggdrasil.YggdrasilTown.Background.YggdrasilTown_Construct"))
+		{
+			AddBackground(bgSystem);
+		}
 		base.OnInBiome(player);
+	}
+
+	public void AddBackground(BackgroundSystem bgSystem)
+	{
+		List<Vector2> polygon = new List<Vector2>();
+		Vector2 centerPosWorld = BiomeCenter + new Vector2(228, -464);
+		polygon.Add(centerPosWorld + new Vector2(-210, 0) * 16);
+		polygon.Add(centerPosWorld + new Vector2(-210, -30) * 16);
+		polygon.Add(centerPosWorld + new Vector2(-150, -60) * 16);
+		polygon.Add(centerPosWorld + new Vector2(-50, -89) * 16);
+		polygon.Add(centerPosWorld + new Vector2(-20, -89) * 16);
+		polygon.Add(centerPosWorld + new Vector2(60, -50) * 16);
+		polygon.Add(centerPosWorld + new Vector2(120, -65) * 16);
+		polygon.Add(centerPosWorld + new Vector2(170, -60) * 16);
+		polygon.Add(centerPosWorld + new Vector2(210, -20) * 16);
+		polygon.Add(centerPosWorld + new Vector2(210, 0) * 16);
+		List<Point> bgArea = TileUtils.GetPolygonAreaOfTilePos(polygon);
+
+		YggdrasilTown_Construct ytc = new YggdrasilTown_Construct();
+		ytc.WorldAnchor = centerPosWorld + new Vector2(32, 704);
+		ytc.TileAnchor = centerPosWorld.ToTileCoordinates() + new Point(-14, 29);
+		ytc.BgTiles = bgArea;
+		bgSystem.AddBackgroundSlide(ytc);
+
+		GiantFurnace_Construct gfc = new GiantFurnace_Construct();
+		gfc.WorldAnchor = centerPosWorld + new Vector2(183, 63) * 16 + new Vector2(4, 24);
+		gfc.BgTiles = TileUtils.GetAABBAreaOfTile((int)centerPosWorld.X / 16 + 134, (int)centerPosWorld.Y / 16 + 32, 92, 60);
+		gfc.TileAnchor = centerPosWorld.ToTileCoordinates() + new Point(-14, 29);
+		bgSystem.AddBackgroundSlide(gfc);
+
+		GiantFurnace_Construct_far gfcf = new GiantFurnace_Construct_far();
+		gfcf.WorldAnchor = centerPosWorld + new Vector2(183, 63) * 16 + new Vector2(-264, -164);
+		gfcf.BgTiles = TileUtils.GetAABBAreaOfTile((int)centerPosWorld.X / 16 + 106, (int)centerPosWorld.Y / 16 + 34, 112, 60);
+		gfcf.TileAnchor = centerPosWorld.ToTileCoordinates() + new Point(-14, 29);
+		bgSystem.AddBackgroundSlide(gfcf);
+
+		GiantFurnace_Construct_sky gfcs = new GiantFurnace_Construct_sky();
+		gfcs.WorldAnchor = centerPosWorld + new Vector2(0, -240);
+		gfcs.BgTiles = TileUtils.GetAABBAreaOfTile((int)centerPosWorld.X / 16 + 106, (int)centerPosWorld.Y / 16 + 4, 112, 90);
+		gfcs.TileAnchor = centerPosWorld.ToTileCoordinates() + new Point(-14, 29);
+		bgSystem.AddBackgroundSlide(gfcs);
+
+		FurnaceScoreShop fSS = new FurnaceScoreShop();
+		fSS.WorldAnchor = centerPosWorld + new Vector2(-124, 920);
+		fSS.BgTiles = TileUtils.GetAABBAreaOfTile((int)centerPosWorld.X / 16 + 102, (int)centerPosWorld.Y / 16 + 78, 20, 14);
+		fSS.TileAnchor = centerPosWorld.ToTileCoordinates() + new Point(-14, 29);
+		bgSystem.AddBackgroundSlide(fSS);
 	}
 }

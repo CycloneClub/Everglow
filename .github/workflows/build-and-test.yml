@@ -5,9 +5,9 @@ name: .NET Build and Test
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "Yggdrasil/newContent0"]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "master", "Yggdrasil/newContent0"]
 
 jobs:
   build-and-test:

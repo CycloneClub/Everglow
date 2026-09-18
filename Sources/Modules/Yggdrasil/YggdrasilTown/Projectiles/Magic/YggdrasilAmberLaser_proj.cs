@@ -1,4 +1,3 @@
-using System.Net;
 using Everglow.Commons.DataStructures;
 using Everglow.Commons.Templates.Weapons;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
@@ -225,7 +224,7 @@ public class YggdrasilAmberLaser_proj : HandholdProjectile
 		effect.CurrentTechnique.Passes[0].Apply();
 		Vector2 mouseToPlayer = new Vector2(0, 1).RotatedBy(Projectile.rotation - Math.PI * 0.75);
 		float timeValue = (float)Main.time * 0.06f;
-		var bars = new List<Vertex2D>();
+
 		int step = -6;
 		while (!Collision.SolidCollision(Projectile.Center + mouseToPlayer * step * 8, 0, 0))
 		{
@@ -235,16 +234,6 @@ public class YggdrasilAmberLaser_proj : HandholdProjectile
 				break;
 			}
 			Vector2 checkPoint = Projectile.Center + mouseToPlayer * step * 8;
-			Vector2 toMouseLeft = mouseToPlayer.RotatedBy(MathHelper.PiOver2);
-			float width = duration * 25;
-			Color drawColor = Color.White;
-			float mulWidth = 1f;
-			if (step + 4 <= 10)
-			{
-				mulWidth = MathF.Pow((step + 4) / 10f, 0.3f);
-			}
-			bars.Add(checkPoint + toMouseLeft * width, drawColor, new Vector3(step * 0.03f - timeValue, 0, mulWidth));
-			bars.Add(checkPoint - toMouseLeft * width, drawColor, new Vector3(step * 0.03f - timeValue, 1, mulWidth));
 			if (!Main.gamePaused && Main.rand.NextBool(30))
 			{
 				Vector2 newVelocity = mouseToPlayer.RotatedBy(Main.rand.NextFloat(-0.4f, 0.4f)) * 4f * duration;
@@ -264,12 +253,7 @@ public class YggdrasilAmberLaser_proj : HandholdProjectile
 			MaxStep = step;
 			EndPoint = Projectile.Center + MaxStep * mouseToPlayer * 8;
 		}
-		if (bars.Count > 2)
-		{
-			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_1_black.Value;
-			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
-		}
-		bars = new List<Vertex2D>();
+		var bars = new List<Vertex2D>();
 		step = -6;
 		while (!Collision.SolidCollision(Projectile.Center + mouseToPlayer * step * 8, 0, 0))
 		{
@@ -280,9 +264,9 @@ public class YggdrasilAmberLaser_proj : HandholdProjectile
 			}
 			Vector2 checkPoint = Projectile.Center + mouseToPlayer * step * 8;
 			Vector2 toMouseLeft = mouseToPlayer.RotatedBy(MathHelper.PiOver2);
-			float width = duration * duration * 25;
+			float width = 25f;
 			float duration2 = Math.Max(duration, 0);
-			var drawColor = new Color(duration * 0.7f, duration2 * duration2 * 0.52f, 0, 0);
+			var drawColor = new Color(duration * 0.7f, duration2 * duration2 * 0.52f, 0, 0) * 0.1f;
 			float mulWidth = 1f;
 			if (step + 4 <= 10)
 			{
@@ -291,9 +275,25 @@ public class YggdrasilAmberLaser_proj : HandholdProjectile
 			bars.Add(checkPoint + toMouseLeft * width, drawColor, new Vector3(step * 0.03f - timeValue, 0, mulWidth));
 			bars.Add(checkPoint - toMouseLeft * width, drawColor, new Vector3(step * 0.03f - timeValue, 1, mulWidth));
 		}
+		for (int k = 0; k < 24; k++)
+		{
+			if (bars.Count <= k * 2)
+			{
+				break;
+			}
+			Vertex2D v0 = bars[^(k * 2 + 1)];
+			Vertex2D v1 = bars[^(k * 2 + 2)];
+			float value = 24 - k;
+			value /= 4f;
+			value += 1f;
+			v0 = new Vertex2D(v0.position, v0.color * value, v0.texCoord);
+			v1 = new Vertex2D(v1.position, v1.color * value, v1.texCoord);
+			bars[^(k * 2 + 1)] = v0;
+			bars[^(k * 2 + 2)] = v1;
+		}
 		if (bars.Count > 2)
 		{
-			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_1.Value;
+			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_10.Value;
 			Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}

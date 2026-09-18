@@ -56,6 +56,7 @@ public class WhiteTriangle : Visual
 	{
 		Vector2 toCorner = new Vector2(0, scale).RotatedBy(rotation);
 		Color lightColor = Color.White;
+
 		// lightColor = Color.Lerp(color2, color1, Math.Clamp((606 * 16 - position.X) / (8f * 16),0, 1));
 		int maxLength = 15;
 		for (int y = 0; y < maxLength; y++)

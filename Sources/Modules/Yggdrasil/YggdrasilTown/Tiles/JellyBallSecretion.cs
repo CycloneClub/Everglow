@@ -21,6 +21,7 @@ public class JellyBallSecretion : ModTile
 
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{
+		Lighting.AddLight(i, j, 0, 0.5f, 0.94f);
 		return base.PreDraw(i, j, spriteBatch);
 	}
 

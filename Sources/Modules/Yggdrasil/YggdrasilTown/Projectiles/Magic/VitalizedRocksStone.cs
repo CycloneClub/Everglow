@@ -78,9 +78,17 @@ public class VitalizedRocksStone : ModProjectile
 			d.velocity = new Vector2(0, Main.rand.NextFloat(2f, 11f)).RotatedByRandom(6.283);
 		}
 		GenerateSmog(12);
-		SoundEngine.PlaySound(SoundID.DD2_ExplosiveTrapExplode.WithVolume(0.5f), Projectile.Center);
 		ShakerManager.AddShaker(Projectile.Center, new Vector2(0, -1), 1, 30, 120);
 		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<VitalizedRocksProj_Explosion>(), (int)(Projectile.damage * 0.4f), Projectile.knockBack, Projectile.owner, 1f);
+		switch (Main.rand.Next(2))
+		{
+			case 0:
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.vitalizedrocks_hit_1_Mod), Projectile.Center);
+				break;
+			case 1:
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.vitalizedrocks_hit_2_Mod), Projectile.Center);
+				break;
+		}
 	}
 
 	public void GenerateSmog(int Frequency)

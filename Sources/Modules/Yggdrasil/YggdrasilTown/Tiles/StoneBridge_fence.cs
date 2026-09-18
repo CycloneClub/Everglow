@@ -4,11 +4,12 @@ using SubworldLibrary;
 namespace Everglow.Yggdrasil.YggdrasilTown.Tiles;
 
 [Pipeline(typeof(WCSPipeline))]
-public class StoneBridge_fence : BackgroundVFX
+public class StoneBridge_fence : TileVFX
 {
+	public override CodeLayer DrawLayer => CodeLayer.PostDrawBG;
 	public override void OnSpawn()
 	{
-		texture = ModAsset.StoneBridge_fence.Value;
+		Texture = ModAsset.StoneBridge_fence.Value;
 	}
 
 	public override void Update()

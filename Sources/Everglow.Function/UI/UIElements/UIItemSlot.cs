@@ -1,5 +1,6 @@
 using ReLogic.Graphics;
 using Terraria.GameContent;
+using Terraria.UI;
 
 namespace Everglow.Commons.UI.UIElements
 {
@@ -69,7 +70,13 @@ namespace Everglow.Commons.UI.UIElements
 		/// </summary>
 		public float Opacity { get; set; }
 
-		public UIItemSlot(Texture2D texture = default(Texture2D)) : base()
+		/// <summary>
+		/// 是否为商店物品槽, 只要满足条件, 允许无穷取出
+		/// </summary>
+		public bool ShopSlot { get; set; } = false;
+
+		public UIItemSlot(Texture2D texture = default(Texture2D))
+			: base()
 		{
 			Opacity = 1f;
 			ContainedItem = new Item();
@@ -77,7 +84,7 @@ namespace Everglow.Commons.UI.UIElements
 			SlotBackTexture = texture == default(Texture2D) ? TextureAssets.InventoryBack.Value : texture;
 			DrawColor = Color.White;
 			CornerSize = new Vector2(10, 10);
-			Tooltip = "";
+			Tooltip = string.Empty;
 			Info.Width.SetValue(50f, 0f);
 			Info.Height.SetValue(50f, 0f);
 		}
@@ -87,96 +94,110 @@ namespace Everglow.Commons.UI.UIElements
 			base.LoadEvents();
 			Events.OnLeftClick += element =>
 			{
-				//开启背包
-				//Main.playerInventory = true;
+				// 开启背包
+				// Main.playerInventory = true;
 
-				//当鼠标没物品，框里有物品的时候
-				if (Main.mouseItem.type == ItemID.None && ContainedItem != null && ContainedItem.type != ItemID.None)
+				// 当鼠标没物品，框里有物品的时候
+				if (Main.mouseItem.IsAir && ContainedItem != null && ContainedItem.type != ItemID.None)
 				{
-					//如果可以拿起物品
+					// 如果可以拿起物品
 					if (CanTakeOutSlot == null || CanTakeOutSlot(ContainedItem))
 					{
-						//拿出物品
+						// 拿出物品
 						Main.mouseItem = ContainedItem.Clone();
-						ContainedItem = new Item();
-						ContainedItem.SetDefaults(0, true);
+						if (!ItemID.Sets.Deprecated[ContainedItem.type])
+						{
+							Main.mouseItem.SetDefaults(ContainedItem.type);
+							Main.mouseItem.stack = ContainedItem.stack;
+						}
+						if (!ShopSlot)
+						{
+							ContainedItem = new Item();
+							ContainedItem.SetDefaults(ItemID.None, true);
+						}
 
-						//调用委托
+						// 调用委托
 						OnPickItem?.Invoke(this);
 
-						//触发放物品声音
-						//SoundEngine.PlaySound(7, -1, -1, 1, 1f, 0.0f);
+						// 触发放物品声音
+						// SoundEngine.PlaySound(7, -1, -1, 1, 1f, 0.0f);
 					}
 				}
-				//当鼠标有物品，框里没物品的时候
+
+				// 当鼠标有物品，框里没物品的时候
 				else if (Main.mouseItem.type != ItemID.None && (ContainedItem == null || ContainedItem.type == ItemID.None))
 				{
-					//如果可以放入物品
+					// 如果可以放入物品
 					if (CanPutInSlot == null || CanPutInSlot(Main.mouseItem))
 					{
-						//放入物品
+						// 放入物品
 						ContainedItem = Main.mouseItem.Clone();
 						Main.mouseItem = new Item();
-						Main.mouseItem.SetDefaults(0, true);
+						Main.mouseItem.SetDefaults(ItemID.None, true);
 
-						//调用委托
+						// 调用委托
 						OnPutItem?.Invoke(this);
 
-						//触发放物品声音
-						//SoundEngine.PlaySound(7, -1, -1, 1, 1f, 0.0f);
+						// 触发放物品声音
+						// SoundEngine.PlaySound(7, -1, -1, 1, 1f, 0.0f);
 					}
 				}
-				//当鼠标和框都有物品时
+
+				// 当鼠标和框都有物品时
 				else if (Main.mouseItem.type != ItemID.None && ContainedItem != null && ContainedItem.type != ItemID.None)
 				{
-					//如果不能放入物品
+					// 如果不能放入物品
 					if (!(CanPutInSlot == null || CanPutInSlot(Main.mouseItem)))
 					{
-						//中断函数
+						// 中断函数
 						return;
 					}
 
-					//如果框里的物品和鼠标的相同
+					// 如果框里的物品和鼠标的相同
 					if (Main.mouseItem.type == ContainedItem.type)
 					{
-						//框里的物品数量加上鼠标物品数量
+						// 框里的物品数量加上鼠标物品数量
 						ContainedItem.stack += Main.mouseItem.stack;
-						//如果框里物品数量大于数量上限
+
+						// 如果框里物品数量大于数量上限
 						if (ContainedItem.stack > ContainedItem.maxStack)
 						{
-							//计算鼠标物品数量，并将框内物品数量修改为数量上限
+							// 计算鼠标物品数量，并将框内物品数量修改为数量上限
 							var exceed = ContainedItem.stack - ContainedItem.maxStack;
 							ContainedItem.stack = ContainedItem.maxStack;
 							Main.mouseItem.stack = exceed;
 						}
-						//反之
+
+						// 反之
 						else
 						{
-							//清空鼠标物品
+							// 清空鼠标物品
 							Main.mouseItem = new Item();
 						}
 					}
-					//如果可以放入物品也能拿出物品
+
+					// 如果可以放入物品也能拿出物品
 					else if ((CanPutInSlot == null || CanPutInSlot(Main.mouseItem))
 						&& (CanTakeOutSlot == null || CanTakeOutSlot(ContainedItem)))
 					{
-						//交换框内物品和鼠标物品
+						// 交换框内物品和鼠标物品
 						var tmp = Main.mouseItem.Clone();
 						Main.mouseItem = ContainedItem;
 						ContainedItem = tmp;
 					}
 
-					//触发放物品声音
-					//SoundEngine.PlaySound(7, -1, -1, 1, 1f, 0.0f);
+					// 触发放物品声音
+					// SoundEngine.PlaySound(7, -1, -1, 1, 1f, 0.0f);
 				}
-				//反之
+
+				// 反之
 				else
 				{
-					//中断函数
+					// 中断函数
 					return;
 				}
 
-				//调用委托
+				// 调用委托
 				PostExchangeItem?.Invoke(this);
 			};
 		}
@@ -193,31 +214,27 @@ namespace Everglow.Commons.UI.UIElements
 
 			float scale = Info.Size.X / 50f;
 			DynamicSpriteFont font = FontAssets.MouseText.Value;
-			//调用原版的介绍绘制
+
+			// 调用原版的介绍绘制
 			if (ContainedItem != null && ContainsPoint(Main.MouseScreen) && ContainedItem.type != ItemID.None)
 			{
 				Main.hoverItemName = ContainedItem.Name;
 				Main.HoverItem = ContainedItem.Clone();
 			}
-			//获取当前UI部件的信息
+
+			// 获取当前UI部件的信息
 			var DrawRectangle = Info.TotalHitBox;
-			//绘制物品框
-			DrawAdvBox(sb, (int)DrawRectangle.X, (int)DrawRectangle.Y,
-				(int)DrawRectangle.Width, (int)DrawRectangle.Height,
+
+			// 绘制物品框
+			DrawAdvBox(sb, DrawRectangle.X, DrawRectangle.Y,
+				DrawRectangle.Width, DrawRectangle.Height,
 				DrawColor * Opacity, SlotBackTexture, CornerSize, 1f);
 			if (ContainedItem != null && ContainedItem.type != ItemID.None)
 			{
 				var frame = Main.itemAnimations[ContainedItem.type] != null ? Main.itemAnimations[ContainedItem.type].GetFrame(TextureAssets.Item[ContainedItem.type].Value) : Item.GetDrawHitbox(ContainedItem.type, null);
-				//绘制物品贴图
-				sb.Draw(TextureAssets.Item[ContainedItem.type].Value, new Vector2(DrawRectangle.X + DrawRectangle.Width / 2,
-					DrawRectangle.Y + DrawRectangle.Height / 2) - (new Vector2(frame.Width, frame.Height) / 2f * scale),
-					new Rectangle?(frame), Color.White * Opacity, 0f, Vector2.Zero, scale, 0, 0);
-
-				//绘制物品左下角那个代表数量的数字
-				if (ContainedItem.stack > 1)
-				{
-					sb.DrawString(font, ContainedItem.stack.ToString(), new Vector2(DrawRectangle.X + 10, DrawRectangle.Y + DrawRectangle.Height - 20), Color.White * Opacity, 0f, Vector2.Zero, scale * 0.8f, SpriteEffects.None, 0f);
-				}
+				Main.inventoryScale = 36 / 52f * Info.TotalHitBox.Width / 36f;
+				Item t_item = ContainedItem;
+				ItemSlot.Draw(sb, ref t_item, 21, new Vector2(DrawRectangle.X, DrawRectangle.Y));
 			}
 		}
 
@@ -254,13 +271,13 @@ namespace Everglow.Commons.UI.UIElements
 			}
 			sp.Draw(box, new Rectangle(x, y, width, height), new Rectangle(0, 0, width, height), c);
 			sp.Draw(box, new Rectangle(x + width, y, w - width * 2, height), new Rectangle(width, 0, box.Width - width * 2, height), c);
-			sp.Draw(box, new Rectangle((x + w) - width, y, width, height), new Rectangle(box.Width - width, 0, width, height), c);
+			sp.Draw(box, new Rectangle(x + w - width, y, width, height), new Rectangle(box.Width - width, 0, width, height), c);
 			sp.Draw(box, new Rectangle(x, y + height, width, h - height * 2), new Rectangle(0, height, width, box.Height - height * 2), c);
 			sp.Draw(box, new Rectangle(x + width, y + height, w - width * 2, h - height * 2), new Rectangle(width, height, box.Width - width * 2, box.Height - height * 2), c);
-			sp.Draw(box, new Rectangle((x + w) - width, y + height, width, h - height * 2), new Rectangle(box.Width - width, height, width, box.Height - height * 2), c);
-			sp.Draw(box, new Rectangle(x, (y + h) - height, width, height), new Rectangle(0, box.Height - height, width, height), c);
-			sp.Draw(box, new Rectangle(x + width, (y + h) - height, w - width * 2, height), new Rectangle(width, box.Height - height, box.Width - width * 2, height), c);
-			sp.Draw(box, new Rectangle((x + w) - width, (y + h) - height, width, height), new Rectangle(box.Width - width, box.Height - height, width, height), c);
+			sp.Draw(box, new Rectangle(x + w - width, y + height, width, h - height * 2), new Rectangle(box.Width - width, height, width, box.Height - height * 2), c);
+			sp.Draw(box, new Rectangle(x, y + h - height, width, height), new Rectangle(0, box.Height - height, width, height), c);
+			sp.Draw(box, new Rectangle(x + width, y + h - height, w - width * 2, height), new Rectangle(width, box.Height - height, box.Width - width * 2, height), c);
+			sp.Draw(box, new Rectangle(x + w - width, y + h - height, width, height), new Rectangle(box.Width - width, box.Height - height, width, height), c);
 		}
 	}
 }

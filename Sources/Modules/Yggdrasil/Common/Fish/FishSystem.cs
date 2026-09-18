@@ -1,10 +1,9 @@
-using Everglow.Yggdrasil.WorldGeneration;
-
 namespace Everglow.Yggdrasil.Common.Fish;
 
 public class FishSystem : ModSystem
 {
 	public static Dictionary<ModBiome, List<FishableItem>> FishMap = [];
+	public static HashSet<int> LiquidList = [];
 
 	/// <summary>
 	/// 注册一种可以被钩取的渔获，会自然生成在指定生态群系的水面上
@@ -22,6 +21,15 @@ public class FishSystem : ModSystem
 		value.Add(item);
 	}
 
+	/// <summary>
+	/// 注册一种液体，在钓鱼时将会模拟原版液体的行为
+	/// </summary>
+	/// <param name="liquid">图块的 ID</param>
+	public static void RegisterLiquid(int liquid)
+	{
+		LiquidList.Add(liquid);
+	}
+
 	public List<FishableItem> ShouldSpawnFish(Player player)
 	{
 		List<FishableItem> toSpawn = [];
@@ -32,7 +40,7 @@ public class FishSystem : ModSystem
 				foreach (var item in kvp.Value)
 				{
 					float chance = Main.rand.NextFloat(1);
-					if (chance < item.chance)
+					if (chance < item.Chance)
 					{
 						toSpawn.Add(item);
 					}

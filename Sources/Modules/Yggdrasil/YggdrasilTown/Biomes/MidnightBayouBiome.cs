@@ -1,4 +1,6 @@
 using Everglow.Yggdrasil.Common;
+using Everglow.Yggdrasil.YggdrasilTown.Background;
+using Everglow.Yggdrasil.YggdrasilTown.VFXs;
 using SubworldLibrary;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Biomes;
@@ -48,6 +50,38 @@ public class MidnightBayouBiome : ModBiome
 			Main.StopSlimeRain();
 		}
 		Main.bloodMoon = false;
+		if (Main.rand.NextBool(15))
+		{
+			Vector2 anchorPos = YggdrasilTownBackground.OriginPylonCenter;
+			Texture2D tex = ModAsset.MidnightBayouBackgroundCloud_0.Value;
+			switch (Main.rand.Next(4))
+			{
+				case 0:
+					tex = ModAsset.MidnightBayouBackgroundCloud_0.Value;
+					break;
+				case 1:
+					tex = ModAsset.MidnightBayouBackgroundCloud_1.Value;
+					break;
+				case 2:
+					tex = ModAsset.MidnightBayouBackgroundCloud_2.Value;
+					break;
+				case 3:
+					tex = ModAsset.MidnightBayouBackgroundCloud_3.Value;
+					break;
+			}
+
+			var cloud = new MidnightBayouBackgroundCloud
+			{
+				Position = anchorPos + new Vector2(Main.rand.Next(-1000, 3000), Main.rand.NextFloat(850, 960)),
+				Velocity = new Vector2(Main.windSpeedCurrent * 0.2f, 0),
+				Fade = 0,
+				AnchorPos = anchorPos,
+				Scale = Main.rand.NextFloat(0.85f, 1.15f),
+				MaxTime = Main.rand.NextFloat(300, 1500),
+				CloudTexture = tex,
+			};
+			Ins.VFXManager.Add(cloud);
+		}
 		base.OnInBiome(player);
 	}
 }

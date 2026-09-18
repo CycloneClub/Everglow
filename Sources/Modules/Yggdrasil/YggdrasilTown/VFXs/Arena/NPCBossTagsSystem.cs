@@ -5,7 +5,7 @@ using Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs;
 namespace Everglow.Yggdrasil.YggdrasilTown.VFXs.Arena;
 
 [Pipeline(typeof(WCSPipeline))]
-public class NPCBossTagsSystem : ForegroundVFX
+public class NPCBossTagsSystem : TileVFX
 {
 	public override CodeLayer DrawLayer => CodeLayer.PreDrawFilter;
 
@@ -34,13 +34,13 @@ public class NPCBossTagsSystem : ForegroundVFX
 
 	public override void OnSpawn()
 	{
-		texture = ModAsset.NPCBossTagsSystem.Value;
-		OutScreenDistanceMax = 18000;
+		Texture = ModAsset.NPCBossTagsSystem.Value;
+		MaxDiatanceOutOfScreen = 18000;
 	}
 
 	public override void Update()
 	{
-		OutScreenDistanceMax = 18000;
+		MaxDiatanceOutOfScreen = 18000;
 		AnimationCoroutine.Update();
 		if (TargetBoss == null || !TargetBoss.active)
 		{
@@ -170,7 +170,7 @@ public class NPCBossTagsSystem : ForegroundVFX
 			}
 		}
 		int rowCount = (int)MathF.Sqrt(tagCount) + 1;
-		var topLeftPos = position + new Vector2(-rowCount * 80 / 2 + 40 + 16, -rowCount * 80 - 200 + 40 + 16);
+		var topLeftPos = Position + new Vector2(-rowCount * 80 / 2 + 40 + 16, -rowCount * 80 - 200 + 40 + 16);
 
 		var tNLIY = TargetBoss.ModNPC as TownNPC_LiveInYggdrasil;
 		if (tNLIY != null)
@@ -232,7 +232,7 @@ public class NPCBossTagsSystem : ForegroundVFX
 			 new Vertex2D(backgroundPos + new Vector2(0, backgroundHeight), backGroundColor, new Vector3(0, 0, 0)),
 			 new Vertex2D(backgroundPos + new Vector2(backgroundWidth, backgroundHeight), backGroundColor, new Vector3(0, 0, 0)),
 		};
-		Ins.Batch.Draw(texture, blackBackground, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(Texture, blackBackground, PrimitiveType.TriangleStrip);
 
 		if (StartFighting)
 		{
@@ -310,13 +310,13 @@ public class NPCBossTagsSystem : ForegroundVFX
 					Color orColor = drawColor * 0.5f;
 					var orTag = new List<Vertex2D>()
 					{
-						 new Vertex2D(drawPos + new Vector2(-24, -16), orColor, new Vector3(294f / texture.Width, 0, 0)),
-						 new Vertex2D(drawPos + new Vector2(24, -16), orColor, new Vector3(358f / texture.Width, 0, 0)),
+						 new Vertex2D(drawPos + new Vector2(-24, -16), orColor, new Vector3(294f / Texture.Width, 0, 0)),
+						 new Vertex2D(drawPos + new Vector2(24, -16), orColor, new Vector3(358f / Texture.Width, 0, 0)),
 
-						 new Vertex2D(drawPos + new Vector2(-24, 16), orColor, new Vector3(294f / texture.Width, 38f / texture.Height, 0)),
-						 new Vertex2D(drawPos + new Vector2(24, 16), orColor, new Vector3(358f / texture.Width, 38f / texture.Height, 0)),
+						 new Vertex2D(drawPos + new Vector2(-24, 16), orColor, new Vector3(294f / Texture.Width, 38f / Texture.Height, 0)),
+						 new Vertex2D(drawPos + new Vector2(24, 16), orColor, new Vector3(358f / Texture.Width, 38f / Texture.Height, 0)),
 					};
-					Ins.Batch.Draw(texture, orTag, PrimitiveType.TriangleStrip);
+					Ins.Batch.Draw(Texture, orTag, PrimitiveType.TriangleStrip);
 					drawPos += new Vector2(19);
 				}
 			}
@@ -345,10 +345,10 @@ public class NPCBossTagsSystem : ForegroundVFX
 				}
 				Main.instance.MouseText(tag.DisplayContents);
 			}
-			float coordX0 = iType % 6 * 36 / (float)texture.Width;
-			float coordY0 = (iType - iType % 6) / 6f * 36 / texture.Height;
-			float coordX1 = (iType % 6 * 36 + 38) / (float)texture.Width;
-			float coordY1 = ((iType - iType % 6) / 6f * 36 + 38) / texture.Height;
+			float coordX0 = iType % 6 * 36 / (float)Texture.Width;
+			float coordY0 = (iType - iType % 6) / 6f * 36 / Texture.Height;
+			float coordX1 = (iType % 6 * 36 + 38) / (float)Texture.Width;
+			float coordY1 = ((iType - iType % 6) / 6f * 36 + 38) / Texture.Height;
 
 			var bars = new List<Vertex2D>()
 			{
@@ -358,13 +358,13 @@ public class NPCBossTagsSystem : ForegroundVFX
 				 new Vertex2D(drawPos + new Vector2(-iconWidth / 2f, iconWidth / 2f), drawColor, new Vector3(coordX0, coordY1, 0)),
 				 new Vertex2D(drawPos + new Vector2(iconWidth / 2f, iconWidth / 2f), drawColor, new Vector3(coordX1, coordY1, 0)),
 			};
-			Ins.Batch.Draw(texture, bars, PrimitiveType.TriangleStrip);
+			Ins.Batch.Draw(Texture, bars, PrimitiveType.TriangleStrip);
 			drawPosIndex++;
 		}
 
 		// Start Button
 		var startButtonColor = new Color(50, 50, 50, 0);
-		var startButtonPos = position + new Vector2(-35 + 16, -80);
+		var startButtonPos = Position + new Vector2(-35 + 16, -80);
 		if (MouseInArea(startButtonPos, new Vector2(70, 38)))
 		{
 			startButtonColor = Color.Lerp(startButtonColor, new Color(255, 220, 125, 0), 0.5f);
@@ -387,17 +387,17 @@ public class NPCBossTagsSystem : ForegroundVFX
 		}
 		var startButton = new List<Vertex2D>()
 		{
-			 new Vertex2D(startButtonPos, startButtonColor, new Vector3(222f / texture.Width, 0, 0)),
-			 new Vertex2D(startButtonPos + new Vector2(70, 0), startButtonColor, new Vector3(292f / texture.Width, 0, 0)),
+			 new Vertex2D(startButtonPos, startButtonColor, new Vector3(222f / Texture.Width, 0, 0)),
+			 new Vertex2D(startButtonPos + new Vector2(70, 0), startButtonColor, new Vector3(292f / Texture.Width, 0, 0)),
 
-			 new Vertex2D(startButtonPos + new Vector2(0, 38), startButtonColor, new Vector3(222f / texture.Width, 38f / texture.Height, 0)),
-			 new Vertex2D(startButtonPos + new Vector2(70, 38), startButtonColor, new Vector3(292f / texture.Width, 38f / texture.Height, 0)),
+			 new Vertex2D(startButtonPos + new Vector2(0, 38), startButtonColor, new Vector3(222f / Texture.Width, 38f / Texture.Height, 0)),
+			 new Vertex2D(startButtonPos + new Vector2(70, 38), startButtonColor, new Vector3(292f / Texture.Width, 38f / Texture.Height, 0)),
 		};
-		Ins.Batch.Draw(texture, startButton, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(Texture, startButton, PrimitiveType.TriangleStrip);
 
 		// All Enable Button
 		var allEnableButtonColor = new Color(50, 50, 110, 0);
-		var allEnableButtonPos = position + new Vector2(-35 + 16 - 60, -80);
+		var allEnableButtonPos = Position + new Vector2(-35 + 16 - 60, -80);
 		if (MouseInArea(allEnableButtonPos, new Vector2(70, 38)))
 		{
 			allEnableButtonColor = Color.Lerp(allEnableButtonColor, new Color(255, 220, 125, 0), 0.5f);
@@ -409,17 +409,17 @@ public class NPCBossTagsSystem : ForegroundVFX
 		}
 		var allEnableButton = new List<Vertex2D>()
 		{
-			 new Vertex2D(allEnableButtonPos, allEnableButtonColor, new Vector3(36f / texture.Width, 180f / texture.Height, 0)),
-			 new Vertex2D(allEnableButtonPos + new Vector2(38, 0), allEnableButtonColor, new Vector3(74f / texture.Width, 180f / texture.Height, 0)),
+			 new Vertex2D(allEnableButtonPos, allEnableButtonColor, new Vector3(36f / Texture.Width, 180f / Texture.Height, 0)),
+			 new Vertex2D(allEnableButtonPos + new Vector2(38, 0), allEnableButtonColor, new Vector3(74f / Texture.Width, 180f / Texture.Height, 0)),
 
-			 new Vertex2D(allEnableButtonPos + new Vector2(0, 38), allEnableButtonColor, new Vector3(36f / texture.Width, 218f / texture.Height, 0)),
-			 new Vertex2D(allEnableButtonPos + new Vector2(38, 38), allEnableButtonColor, new Vector3(74f / texture.Width, 218f / texture.Height, 0)),
+			 new Vertex2D(allEnableButtonPos + new Vector2(0, 38), allEnableButtonColor, new Vector3(36f / Texture.Width, 218f / Texture.Height, 0)),
+			 new Vertex2D(allEnableButtonPos + new Vector2(38, 38), allEnableButtonColor, new Vector3(74f / Texture.Width, 218f / Texture.Height, 0)),
 		};
-		Ins.Batch.Draw(texture, allEnableButton, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(Texture, allEnableButton, PrimitiveType.TriangleStrip);
 
 		// All Disable Button
 		var allDisableButtonColor = new Color(60, 5, 20, 0);
-		var allDisableButtonPos = position + new Vector2(-35 + 16 + 95, -80);
+		var allDisableButtonPos = Position + new Vector2(-35 + 16 + 95, -80);
 		if (MouseInArea(allDisableButtonPos, new Vector2(70, 38)))
 		{
 			allDisableButtonColor = Color.Lerp(allDisableButtonColor, new Color(255, 220, 125, 0), 0.5f);
@@ -431,17 +431,17 @@ public class NPCBossTagsSystem : ForegroundVFX
 		}
 		var allDisableButton = new List<Vertex2D>()
 		{
-			 new Vertex2D(allDisableButtonPos, allDisableButtonColor, new Vector3(36f / texture.Width, 180f / texture.Height, 0)),
-			 new Vertex2D(allDisableButtonPos + new Vector2(38, 0), allDisableButtonColor, new Vector3(74f / texture.Width, 180f / texture.Height, 0)),
+			 new Vertex2D(allDisableButtonPos, allDisableButtonColor, new Vector3(36f / Texture.Width, 180f / Texture.Height, 0)),
+			 new Vertex2D(allDisableButtonPos + new Vector2(38, 0), allDisableButtonColor, new Vector3(74f / Texture.Width, 180f / Texture.Height, 0)),
 
-			 new Vertex2D(allDisableButtonPos + new Vector2(0, 38), allDisableButtonColor, new Vector3(36f / texture.Width, 218f / texture.Height, 0)),
-			 new Vertex2D(allDisableButtonPos + new Vector2(38, 38), allDisableButtonColor, new Vector3(74f / texture.Width, 218f / texture.Height, 0)),
+			 new Vertex2D(allDisableButtonPos + new Vector2(0, 38), allDisableButtonColor, new Vector3(36f / Texture.Width, 218f / Texture.Height, 0)),
+			 new Vertex2D(allDisableButtonPos + new Vector2(38, 38), allDisableButtonColor, new Vector3(74f / Texture.Width, 218f / Texture.Height, 0)),
 		};
-		Ins.Batch.Draw(texture, allDisableButton, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(Texture, allDisableButton, PrimitiveType.TriangleStrip);
 
 		// Score Display
 		var scoreColor = new Color(150, 150, 150, 0);
-		var scorePos = position + new Vector2(0, -110);
+		var scorePos = Position + new Vector2(0, -110);
 		int offSetX = 18;
 		int vScore = (int)VisualScore;
 		DrawNumber(vScore, scorePos + new Vector2(0 + offSetX, -40), 1f, scoreColor);
@@ -456,11 +456,11 @@ public class NPCBossTagsSystem : ForegroundVFX
 			Vector2 numberTopLeft = new Vector2(2 + 52 * (number % 10), 254);
 			Vector2 drawPos = centerPos;
 			scoreDraw = new List<Vertex2D>();
-			scoreDraw.Add(drawPos - numberSize * 0.5f, color, new Vector3(numberTopLeft / texture.Size(), 0));
-			scoreDraw.Add(drawPos + new Vector2(numberSize.X, -numberSize.Y) * 0.5f, color, new Vector3((numberTopLeft + new Vector2(numberSize.X, 0)) / texture.Size(), 0));
-			scoreDraw.Add(drawPos + new Vector2(-numberSize.X, numberSize.Y) * 0.5f, color, new Vector3((numberTopLeft + new Vector2(0, numberSize.Y)) / texture.Size(), 0));
-			scoreDraw.Add(drawPos + numberSize * 0.5f, color, new Vector3((numberTopLeft + numberSize) / texture.Size(), 0));
-			Ins.Batch.Draw(texture, scoreDraw, PrimitiveType.TriangleStrip);
+			scoreDraw.Add(drawPos - numberSize * 0.5f, color, new Vector3(numberTopLeft / Texture.Size(), 0));
+			scoreDraw.Add(drawPos + new Vector2(numberSize.X, -numberSize.Y) * 0.5f, color, new Vector3((numberTopLeft + new Vector2(numberSize.X, 0)) / Texture.Size(), 0));
+			scoreDraw.Add(drawPos + new Vector2(-numberSize.X, numberSize.Y) * 0.5f, color, new Vector3((numberTopLeft + new Vector2(0, numberSize.Y)) / Texture.Size(), 0));
+			scoreDraw.Add(drawPos + numberSize * 0.5f, color, new Vector3((numberTopLeft + numberSize) / Texture.Size(), 0));
+			Ins.Batch.Draw(Texture, scoreDraw, PrimitiveType.TriangleStrip);
 		}
 		if (number.ToString().Length == 2)
 		{
@@ -469,20 +469,20 @@ public class NPCBossTagsSystem : ForegroundVFX
 			Vector2 numberTopLeft = new Vector2(2 + 52 * firstNumber, 254);
 			Vector2 drawPos = centerPos + new Vector2(27 * size, 0);
 			scoreDraw = new List<Vertex2D>();
-			scoreDraw.Add(drawPos - numberSize * 0.5f, color, new Vector3(numberTopLeft / texture.Size(), 0));
-			scoreDraw.Add(drawPos + new Vector2(numberSize.X, -numberSize.Y) * 0.5f, color, new Vector3((numberTopLeft + new Vector2(numberSize.X, 0)) / texture.Size(), 0));
-			scoreDraw.Add(drawPos + new Vector2(-numberSize.X, numberSize.Y) * 0.5f, color, new Vector3((numberTopLeft + new Vector2(0, numberSize.Y)) / texture.Size(), 0));
-			scoreDraw.Add(drawPos + numberSize * 0.5f, color, new Vector3((numberTopLeft + numberSize) / texture.Size(), 0));
-			Ins.Batch.Draw(texture, scoreDraw, PrimitiveType.TriangleStrip);
+			scoreDraw.Add(drawPos - numberSize * 0.5f, color, new Vector3(numberTopLeft / Texture.Size(), 0));
+			scoreDraw.Add(drawPos + new Vector2(numberSize.X, -numberSize.Y) * 0.5f, color, new Vector3((numberTopLeft + new Vector2(numberSize.X, 0)) / Texture.Size(), 0));
+			scoreDraw.Add(drawPos + new Vector2(-numberSize.X, numberSize.Y) * 0.5f, color, new Vector3((numberTopLeft + new Vector2(0, numberSize.Y)) / Texture.Size(), 0));
+			scoreDraw.Add(drawPos + numberSize * 0.5f, color, new Vector3((numberTopLeft + numberSize) / Texture.Size(), 0));
+			Ins.Batch.Draw(Texture, scoreDraw, PrimitiveType.TriangleStrip);
 
 			numberTopLeft = new Vector2(2 + 52 * secondNumber, 254);
 			drawPos = centerPos + new Vector2(-27 * size, 0);
 			scoreDraw = new List<Vertex2D>();
-			scoreDraw.Add(drawPos - numberSize * 0.5f, color, new Vector3(numberTopLeft / texture.Size(), 0));
-			scoreDraw.Add(drawPos + new Vector2(numberSize.X, -numberSize.Y) * 0.5f, color, new Vector3((numberTopLeft + new Vector2(numberSize.X, 0)) / texture.Size(), 0));
-			scoreDraw.Add(drawPos + new Vector2(-numberSize.X, numberSize.Y) * 0.5f, color, new Vector3((numberTopLeft + new Vector2(0, numberSize.Y)) / texture.Size(), 0));
-			scoreDraw.Add(drawPos + numberSize * 0.5f, color, new Vector3((numberTopLeft + numberSize) / texture.Size(), 0));
-			Ins.Batch.Draw(texture, scoreDraw, PrimitiveType.TriangleStrip);
+			scoreDraw.Add(drawPos - numberSize * 0.5f, color, new Vector3(numberTopLeft / Texture.Size(), 0));
+			scoreDraw.Add(drawPos + new Vector2(numberSize.X, -numberSize.Y) * 0.5f, color, new Vector3((numberTopLeft + new Vector2(numberSize.X, 0)) / Texture.Size(), 0));
+			scoreDraw.Add(drawPos + new Vector2(-numberSize.X, numberSize.Y) * 0.5f, color, new Vector3((numberTopLeft + new Vector2(0, numberSize.Y)) / Texture.Size(), 0));
+			scoreDraw.Add(drawPos + numberSize * 0.5f, color, new Vector3((numberTopLeft + numberSize) / Texture.Size(), 0));
+			Ins.Batch.Draw(Texture, scoreDraw, PrimitiveType.TriangleStrip);
 		}
 		if (number.ToString().Length == 3)
 		{
@@ -492,29 +492,29 @@ public class NPCBossTagsSystem : ForegroundVFX
 			Vector2 numberTopLeft = new Vector2(2 + 52 * firstNumber, 254);
 			Vector2 drawPos = centerPos + new Vector2(54 * size, 0);
 			scoreDraw = new List<Vertex2D>();
-			scoreDraw.Add(drawPos - numberSize * 0.5f, color, new Vector3(numberTopLeft / texture.Size(), 0));
-			scoreDraw.Add(drawPos + new Vector2(numberSize.X, -numberSize.Y) * 0.5f, color, new Vector3((numberTopLeft + new Vector2(numberSize.X, 0)) / texture.Size(), 0));
-			scoreDraw.Add(drawPos + new Vector2(-numberSize.X, numberSize.Y) * 0.5f, color, new Vector3((numberTopLeft + new Vector2(0, numberSize.Y)) / texture.Size(), 0));
-			scoreDraw.Add(drawPos + numberSize * 0.5f, color, new Vector3((numberTopLeft + numberSize) / texture.Size(), 0));
-			Ins.Batch.Draw(texture, scoreDraw, PrimitiveType.TriangleStrip);
+			scoreDraw.Add(drawPos - numberSize * 0.5f, color, new Vector3(numberTopLeft / Texture.Size(), 0));
+			scoreDraw.Add(drawPos + new Vector2(numberSize.X, -numberSize.Y) * 0.5f, color, new Vector3((numberTopLeft + new Vector2(numberSize.X, 0)) / Texture.Size(), 0));
+			scoreDraw.Add(drawPos + new Vector2(-numberSize.X, numberSize.Y) * 0.5f, color, new Vector3((numberTopLeft + new Vector2(0, numberSize.Y)) / Texture.Size(), 0));
+			scoreDraw.Add(drawPos + numberSize * 0.5f, color, new Vector3((numberTopLeft + numberSize) / Texture.Size(), 0));
+			Ins.Batch.Draw(Texture, scoreDraw, PrimitiveType.TriangleStrip);
 
 			numberTopLeft = new Vector2(2 + 52 * secondNumber, 254);
 			drawPos = centerPos + new Vector2(0, 0);
 			scoreDraw = new List<Vertex2D>();
-			scoreDraw.Add(drawPos - numberSize * 0.5f, color, new Vector3(numberTopLeft / texture.Size(), 0));
-			scoreDraw.Add(drawPos + new Vector2(numberSize.X, -numberSize.Y) * 0.5f, color, new Vector3((numberTopLeft + new Vector2(numberSize.X, 0)) / texture.Size(), 0));
-			scoreDraw.Add(drawPos + new Vector2(-numberSize.X, numberSize.Y) * 0.5f, color, new Vector3((numberTopLeft + new Vector2(0, numberSize.Y)) / texture.Size(), 0));
-			scoreDraw.Add(drawPos + numberSize * 0.5f, color, new Vector3((numberTopLeft + numberSize) / texture.Size(), 0));
-			Ins.Batch.Draw(texture, scoreDraw, PrimitiveType.TriangleStrip);
+			scoreDraw.Add(drawPos - numberSize * 0.5f, color, new Vector3(numberTopLeft / Texture.Size(), 0));
+			scoreDraw.Add(drawPos + new Vector2(numberSize.X, -numberSize.Y) * 0.5f, color, new Vector3((numberTopLeft + new Vector2(numberSize.X, 0)) / Texture.Size(), 0));
+			scoreDraw.Add(drawPos + new Vector2(-numberSize.X, numberSize.Y) * 0.5f, color, new Vector3((numberTopLeft + new Vector2(0, numberSize.Y)) / Texture.Size(), 0));
+			scoreDraw.Add(drawPos + numberSize * 0.5f, color, new Vector3((numberTopLeft + numberSize) / Texture.Size(), 0));
+			Ins.Batch.Draw(Texture, scoreDraw, PrimitiveType.TriangleStrip);
 
 			numberTopLeft = new Vector2(2 + 52 * thirdNumber, 254);
 			drawPos = centerPos + new Vector2(-54 * size, 0);
 			scoreDraw = new List<Vertex2D>();
-			scoreDraw.Add(drawPos - numberSize * 0.5f, color, new Vector3(numberTopLeft / texture.Size(), 0));
-			scoreDraw.Add(drawPos + new Vector2(numberSize.X, -numberSize.Y) * 0.5f, color, new Vector3((numberTopLeft + new Vector2(numberSize.X, 0)) / texture.Size(), 0));
-			scoreDraw.Add(drawPos + new Vector2(-numberSize.X, numberSize.Y) * 0.5f, color, new Vector3((numberTopLeft + new Vector2(0, numberSize.Y)) / texture.Size(), 0));
-			scoreDraw.Add(drawPos + numberSize * 0.5f, color, new Vector3((numberTopLeft + numberSize) / texture.Size(), 0));
-			Ins.Batch.Draw(texture, scoreDraw, PrimitiveType.TriangleStrip);
+			scoreDraw.Add(drawPos - numberSize * 0.5f, color, new Vector3(numberTopLeft / Texture.Size(), 0));
+			scoreDraw.Add(drawPos + new Vector2(numberSize.X, -numberSize.Y) * 0.5f, color, new Vector3((numberTopLeft + new Vector2(numberSize.X, 0)) / Texture.Size(), 0));
+			scoreDraw.Add(drawPos + new Vector2(-numberSize.X, numberSize.Y) * 0.5f, color, new Vector3((numberTopLeft + new Vector2(0, numberSize.Y)) / Texture.Size(), 0));
+			scoreDraw.Add(drawPos + numberSize * 0.5f, color, new Vector3((numberTopLeft + numberSize) / Texture.Size(), 0));
+			Ins.Batch.Draw(Texture, scoreDraw, PrimitiveType.TriangleStrip);
 		}
 	}
 
@@ -539,7 +539,7 @@ public class NPCBossTagsSystem : ForegroundVFX
 
 			removePlatform.Add(new Vector2(left, posY + height), drawColor, new Vector3(0, 0, 0));
 			removePlatform.Add(new Vector2(right, posY + height), drawColor, new Vector3(0, 0, 0));
-			Ins.Batch.Draw(texture, removePlatform, PrimitiveType.TriangleStrip);
+			Ins.Batch.Draw(Texture, removePlatform, PrimitiveType.TriangleStrip);
 		}
 
 		if (type == "RemoveLeftPlatform" || type == "RemoveRightPlatform")
@@ -565,7 +565,7 @@ public class NPCBossTagsSystem : ForegroundVFX
 
 			removePlatform.Add(new Vector2(left, posY + height), drawColor, new Vector3(0, 0, 0));
 			removePlatform.Add(new Vector2(right, posY + height), drawColor, new Vector3(0, 0, 0));
-			Ins.Batch.Draw(texture, removePlatform, PrimitiveType.TriangleStrip);
+			Ins.Batch.Draw(Texture, removePlatform, PrimitiveType.TriangleStrip);
 
 			posY = 185 * 16;
 			removePlatform = new List<Vertex2D>();
@@ -574,7 +574,7 @@ public class NPCBossTagsSystem : ForegroundVFX
 
 			removePlatform.Add(new Vector2(left, posY + height), drawColor, new Vector3(0, 0, 0));
 			removePlatform.Add(new Vector2(right, posY + height), drawColor, new Vector3(0, 0, 0));
-			Ins.Batch.Draw(texture, removePlatform, PrimitiveType.TriangleStrip);
+			Ins.Batch.Draw(Texture, removePlatform, PrimitiveType.TriangleStrip);
 		}
 	}
 
@@ -623,7 +623,7 @@ public class NPCBossTagsSystem : ForegroundVFX
 						 new Vertex2D(healthBarPos + new Vector2(-innerGridSize / 2f, innerGridSize / 2f) * scaleFactor, healthColorOld, new Vector3(0, 0, 0)),
 						 new Vertex2D(healthBarPos + new Vector2(innerGridSize / 2f, innerGridSize / 2f) * scaleFactor, healthColorOld, new Vector3(0, 0, 0)),
 					};
-				Ins.Batch.Draw(texture, healthBar, PrimitiveType.TriangleStrip);
+				Ins.Batch.Draw(Texture, healthBar, PrimitiveType.TriangleStrip);
 
 				scaleFactor = 1f;
 
@@ -645,7 +645,7 @@ public class NPCBossTagsSystem : ForegroundVFX
 					new Vertex2D(healthBarPos + new Vector2(-innerGridSize / 2f, innerGridSize / 2f) * scaleFactor, healthColor, new Vector3(0, 0, 0)),
 					new Vertex2D(healthBarPos + new Vector2(innerGridSize / 2f, innerGridSize / 2f) * scaleFactor, healthColor, new Vector3(0, 0, 0)),
 				};
-				Ins.Batch.Draw(texture, healthBar, PrimitiveType.TriangleStrip);
+				Ins.Batch.Draw(Texture, healthBar, PrimitiveType.TriangleStrip);
 			}
 		}
 	}

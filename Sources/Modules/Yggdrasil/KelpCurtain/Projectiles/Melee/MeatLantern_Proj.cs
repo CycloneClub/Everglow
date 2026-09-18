@@ -130,6 +130,7 @@ public class MeatLantern_Proj : MeleeProj
 
 		if (currantAttackType == 0)
 		{
+			LockPlayerDir(Player);
 			float rot = player.direction;
 			if (timer < 20)
 			{
@@ -167,6 +168,7 @@ public class MeatLantern_Proj : MeleeProj
 		}
 		if (currantAttackType == 1)
 		{
+			LockPlayerDir(Player);
 			float rot = -player.direction;
 			if (timer < 20)
 			{
@@ -204,6 +206,7 @@ public class MeatLantern_Proj : MeleeProj
 		}
 		if (currantAttackType == 2)
 		{
+			LockPlayerDir(Player);
 			if (timer < 20)
 			{
 				useSlash = false;
@@ -250,6 +253,7 @@ public class MeatLantern_Proj : MeleeProj
 		}
 		if (currantAttackType == 3)
 		{
+			LockPlayerDir(Player);
 			float rot = -player.direction;
 			if (timer < 20)
 			{

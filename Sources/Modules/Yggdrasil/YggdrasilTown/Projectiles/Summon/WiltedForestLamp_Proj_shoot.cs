@@ -47,7 +47,7 @@ public class WiltedForestLamp_Proj_shoot : TrailingProjectile
 		if (npc == null || !npc.active)
 		{
 			OldVel = Projectile.velocity;
-			Projectile.velocity = Vector2.Normalize(Projectile.velocity) * 12;
+			Projectile.velocity = Projectile.velocity.NormalizeSafe() * 12;
 			var dustVFX = new Leaf_VFX
 			{
 				velocity = new Vector2(0, 0.5f).RotatedByRandom(Math.PI * 2) + Projectile.velocity,
@@ -67,7 +67,7 @@ public class WiltedForestLamp_Proj_shoot : TrailingProjectile
 		OldVel = Projectile.velocity;
 		var toTarget = Vector2.Normalize(npc.Center - Projectile.Center - Projectile.velocity);
 		Projectile.velocity = Projectile.velocity * 0.4f + toTarget;
-		Projectile.velocity = Vector2.Normalize(Projectile.velocity) * 12;
+		Projectile.velocity = Projectile.velocity.NormalizeSafe() * 12;
 		float omegaVel = Vector3.Cross(new Vector3(OldVel / 12f, 0), new Vector3(Projectile.velocity / 12f, 0)).Z;
 		omegaVel = MathF.Asin(omegaVel);
 		float betaVel = Vector3.Cross(new Vector3(oldOldVel / 12f, 0), new Vector3(OldVel / 12f, 0)).Z;

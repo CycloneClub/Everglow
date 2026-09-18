@@ -4,6 +4,7 @@ using Terraria.GameContent.ObjectInteractions;
 using Terraria.Localization;
 using Terraria.ObjectData;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts.TwilightForest;
+using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.TwilightForest.Furnitures;
 
@@ -11,7 +12,6 @@ public class TwilightEucalyptusChest : ModTile
 {
 	public override void SetStaticDefaults()
 	{
-		// Properties
 		Main.tileSpelunker[Type] = true;
 		Main.tileContainer[Type] = true;
 		Main.tileFrameImportant[Type] = true;
@@ -24,39 +24,29 @@ public class TwilightEucalyptusChest : ModTile
 		TileID.Sets.InteractibleByNPCs[Type] = true;
 		TileID.Sets.IsAContainer[Type] = true;
 		TileID.Sets.FriendlyFairyCanLureTo[Type] = true;
-		TileID.Sets.GeneralPlacementTiles[Type] = false;
 
-		DustType = ModContent.DustType<TwilightEucalyptusWoodDust>(); // You should set a kind of dust manually.
+		DustType = ModContent.DustType<TwilightEucalyptusWoodDust>();
 		AdjTiles = new int[] { TileID.Containers };
 
-		// Other tiles with just one map entry use CreateMapEntryName() to use the default translationkey, "MapEntry"
-		// Since ExampleChest needs multiple, we register our own MapEntry keys
-		AddMapEntry(new Color(200, 200, 200), this.GetLocalization("MapEntry0"), MapChestName);
-		AddMapEntry(new Color(0, 141, 63), this.GetLocalization("MapEntry1"), MapChestName);
-
-		// Style 1 is ExampleChest when locked. We want that tile style to drop the ExampleChest item as well. Use the Chest Lock item to lock this chest.
-		// No item places ExampleChest in the locked style, so the automatically determined item drop is unknown, this is why RegisterItemDrop is necessary in this situation. 
-		RegisterItemDrop(ModContent.ItemType<Items.Placeables.Furniture.TwilightForest.TwilightEucalyptusChest>(), 1);
-		// Sometimes mods remove content, such as tile styles, or tiles accidentally get corrupted. We can, if desired, register a fallback item for any tile style that doesn't have an automatically determined item drop. This is done by omitting the tileStyles parameter.
-		RegisterItemDrop(ItemID.Chest);
-
-		// Placement
 		TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
 		TileObjectData.newTile.Origin = new Point16(0, 1);
 		TileObjectData.newTile.CoordinateHeights = new[] { 16, 18 };
 		TileObjectData.newTile.HookCheckIfCanPlace = new PlacementHook(Chest.FindEmptyChest, -1, 0, true);
 		TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(Chest.AfterPlacement_Hook, -1, 0, false);
-		TileObjectData.newTile.AnchorInvalidTiles = new int[] {
+		TileObjectData.newTile.AnchorInvalidTiles = new int[]
+		{
 			TileID.MagicalIceBlock,
 			TileID.Boulder,
 			TileID.BouncyBoulder,
 			TileID.LifeCrystalBoulder,
-			TileID.RollingCactus
+			TileID.RollingCactus,
 		};
 		TileObjectData.newTile.StyleHorizontal = true;
 		TileObjectData.newTile.LavaDeath = false;
 		TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
 		TileObjectData.addTile(Type);
+
+		AddMapEntry(new Color(85, 72, 126));
 	}
 
 	public override bool TileFrame(int i, int j, ref bool resetFrame, ref bool noBreak)

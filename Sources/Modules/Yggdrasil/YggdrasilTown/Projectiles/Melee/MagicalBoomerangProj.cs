@@ -1,5 +1,6 @@
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
 using Terraria.DataStructures;
+using Terraria.WorldBuilding;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Melee;
 
@@ -33,6 +34,22 @@ public class MagicalBoomerangProj : ModProjectile
 		}
 		Projectile.velocity *= -1;
 		Returning = true;
+		for (int i = 0; i < 24; i++)
+		{
+			var dustVFX = new MagicalBoomerangDust
+			{
+				velocity = new Vector2(0, Main.rand.NextFloat(6)).RotatedByRandom(MathHelper.TwoPi),
+				gravity = true,
+				Active = true,
+				Visible = true,
+				position = Projectile.Center,
+				maxTime = Main.rand.Next(20, 90),
+				scale = Main.rand.NextFloat(6, 12),
+				rotation = Main.rand.NextFloat(MathHelper.TwoPi),
+				ai = new float[] { 0, 0, 0 },
+			};
+			Ins.VFXManager.Add(dustVFX);
+		}
 		return false;
 	}
 
@@ -80,7 +97,7 @@ public class MagicalBoomerangProj : ModProjectile
 						Visible = true,
 						position = Projectile.Center + vel / 5f * step,
 						maxTime = Main.rand.Next(30, 46),
-						scale = Main.rand.NextFloat(3, 4),
+						scale = Main.rand.NextFloat(30, 40),
 						rotation = Main.rand.NextFloat(MathHelper.TwoPi),
 						ai = new float[] { 0, 0, 0 },
 					};
@@ -94,7 +111,7 @@ public class MagicalBoomerangProj : ModProjectile
 						Visible = true,
 						position = Projectile.Center + vel / 5f * step + vel.RotatedBy(1.2f) / 6f * distanceSide,
 						maxTime = Main.rand.Next(30, 46),
-						scale = Main.rand.NextFloat(3, 4),
+						scale = Main.rand.NextFloat(30, 40),
 						rotation = Main.rand.NextFloat(MathHelper.TwoPi),
 						ai = new float[] { 0, 0, 0 },
 					};
@@ -106,7 +123,7 @@ public class MagicalBoomerangProj : ModProjectile
 						Visible = true,
 						position = Projectile.Center + vel / 5f * step + vel.RotatedBy(-1.2f) / 6f * distanceSide,
 						maxTime = Main.rand.Next(30, 46),
-						scale = Main.rand.NextFloat(3, 4),
+						scale = Main.rand.NextFloat(30, 40),
 						rotation = Main.rand.NextFloat(MathHelper.TwoPi),
 						ai = new float[] { 0, 0, 0 },
 					};
@@ -123,6 +140,22 @@ public class MagicalBoomerangProj : ModProjectile
 		{
 			Returning = true;
 		}
+		for (int i = 0; i < 48; i++)
+		{
+			var dustVFX = new MagicalBoomerangDust
+			{
+				velocity = new Vector2(0, Main.rand.NextFloat(8)).RotatedByRandom(MathHelper.TwoPi) + Projectile.velocity * 0.5f,
+				gravity = true,
+				Active = true,
+				Visible = true,
+				position = Projectile.Center,
+				maxTime = Main.rand.Next(20, 90),
+				scale = Main.rand.NextFloat(6, 12),
+				rotation = Main.rand.NextFloat(MathHelper.TwoPi),
+				ai = new float[] { 0, 0, 0 },
+			};
+			Ins.VFXManager.Add(dustVFX);
+		}
 		base.OnHitNPC(target, hit, damageDone);
 	}
 
@@ -132,8 +165,21 @@ public class MagicalBoomerangProj : ModProjectile
 	{
 		Texture2D boomerang = ModAsset.MagicalBoomerangProj.Value;
 		Texture2D boomerangGlow = ModAsset.MagicalBoomerangProj_glow.Value;
+		Texture2D shape = ModAsset.MagicalBoomerangProj_shape.Value;
+		Texture2D bloom = ModAsset.MagicalBoomerangProj_bloom.Value;
 		Main.EntitySpriteDraw(boomerang, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, boomerang.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
 		Main.EntitySpriteDraw(boomerangGlow, Projectile.Center - Main.screenPosition, null, new Color(0.3f, 0.7f, 1f, 0), Projectile.rotation, boomerangGlow.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
+
+		float value = (30 - Timer) / 30f;
+		if (value > 0)
+		{
+			Main.EntitySpriteDraw(shape, Projectile.Center - Main.screenPosition, null, Color.Lerp(Color.White, new Color(0f, 0.2f, 0.8f, 1f), MathF.Pow(1 - value, 0.5f)) * value, Projectile.rotation, shape.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
+		}
+		value = (240 - Timer) / 240f;
+		if (value > 0)
+		{
+			Main.EntitySpriteDraw(bloom, Projectile.Center - Main.screenPosition, null, new Color(1f, 1f, 1f, 0) * value, Projectile.rotation, bloom.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
+		}
 		return false;
 	}
 }
