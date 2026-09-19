@@ -26,6 +26,7 @@ public class SpecialShopSystem : ModSystem
 			On_Main.DrawInventory += On_Main_DrawInventory;
 			IL_Main.DrawInventory += IL_Main_DrawInventory;
 			IL_ItemSlot.SellOrTrash += IL_ItemSlot_SellOrTrash;
+			IL_ItemSlot.OverrideHover_ItemArray_int_int += IL_ItemSlot_OverrideHover_ItemArray_int_int;
 		}
 	}
 
@@ -89,6 +90,30 @@ public class SpecialShopSystem : ModSystem
 		where T : SpecialShopUI
 	{
 		return (T)shops[typeof(T)];
+	}
+
+	private void IL_ItemSlot_OverrideHover_ItemArray_int_int(ILContext il)
+	{
+		ILCursor c = new(il);
+
+		// 2 loops process ctrl and shift respectively.
+		for (int index = 0; index < 2; index++)
+		{
+			if (!c.TryGotoNext(
+				MoveType.Before,
+				i => i.MatchCall(typeof(Main), "get_npcShop"),
+				i => i.MatchLdcI4(0),
+				i => i.MatchBle(out _)))
+			{
+				throw new InvalidOperationException(
+					$"Can't find shop condition #{index + 1} in ItemSlot.OverrideHover. Check tModLoader version.");
+			}
+
+			// Move behind getter before overwriting the value.
+			c.Index++;
+			c.EmitDelegate<Func<int, int>>(npcShop =>
+				CurrentShop is null ? npcShop : 0);
+		}
 	}
 
 	private void IL_ItemSlot_SellOrTrash(ILContext il)
