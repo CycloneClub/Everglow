@@ -89,7 +89,7 @@ public class CrimsonMoonAlgaeSummonStaff_minion_Explosion : ModProjectile
 		int type = ModContent.BuffType<RedAlgae_FriendlyDebuff>();
 		if (!target.HasBuff(type))
 		{
-			target.AddBuff(type, 900);
+			target.AddBuff(type, RedAlgae_FriendlyDebuff.Duration);
 		}
 	}
 

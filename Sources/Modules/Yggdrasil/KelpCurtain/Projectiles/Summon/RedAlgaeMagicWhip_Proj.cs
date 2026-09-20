@@ -130,7 +130,7 @@ public class RedAlgaeMagicWhip_Proj : WhipProjectile
 		int type = ModContent.BuffType<RedAlgae_FriendlyDebuff>();
 		if (!target.HasBuff(type))
 		{
-			target.AddBuff(type, 900);
+			target.AddBuff(type, RedAlgae_FriendlyDebuff.Duration);
 		}
 	}
 }

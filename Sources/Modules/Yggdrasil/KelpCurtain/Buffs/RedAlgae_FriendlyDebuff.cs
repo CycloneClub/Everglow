@@ -4,6 +4,8 @@ namespace Everglow.Yggdrasil.KelpCurtain.Buffs;
 
 public class RedAlgae_FriendlyDebuff : ModBuff
 {
+	public const int Duration = 900;
+
 	public override void SetStaticDefaults()
 	{
 		Main.debuff[Type] = true;

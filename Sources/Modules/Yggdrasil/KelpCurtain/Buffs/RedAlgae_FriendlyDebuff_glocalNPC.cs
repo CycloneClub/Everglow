@@ -7,26 +7,39 @@ public class RedAlgae_FriendlyDebuff_glocalNPC : GlobalNPC
 {
 	public override void OnHitByProjectile(NPC npc, Projectile projectile, NPC.HitInfo hit, int damageDone)
 	{
-		DoDamageRedAlgaeBuff(npc);
+		Player attacker = null;
+		if (projectile.owner >= 0 && projectile.owner < Main.maxPlayers)
+		{
+			attacker = Main.player[projectile.owner];
+		}
+		ApplyRedAlgaeDetonation(npc, attacker);
 		base.OnHitByProjectile(npc, projectile, hit, damageDone);
 	}
 
 	public override void OnHitByItem(NPC npc, Player player, Item item, NPC.HitInfo hit, int damageDone)
 	{
-		DoDamageRedAlgaeBuff(npc);
+		ApplyRedAlgaeDetonation(npc, player);
 		base.OnHitByItem(npc, player, item, hit, damageDone);
 	}
 
-	private void DoDamageRedAlgaeBuff(NPC npc)
+	private void ApplyRedAlgaeDetonation(NPC npc, Player attacker)
 	{
 		int buffType = ModContent.BuffType<RedAlgae_FriendlyDebuff>();
 		if (npc.HasBuff(buffType))
 		{
 			int index = npc.FindBuffIndex(buffType);
 			int buffTime = npc.buffTime[index];
-			int damage = 900 - buffTime;
+			int damage = RedAlgae_FriendlyDebuff.Duration - buffTime;
 			if (damage > 10)
 			{
+				bool setBonus = attacker != null
+					&& attacker.active
+					&& attacker.GetModPlayer<KelpCurtainPlayer>().CrimsonMoonAlgaeSetBuff;
+				if (setBonus)
+				{
+					damage = (int)(damage * 2.5f);
+				}
+
 				NPC.HitInfo hit2 = new NPC.HitInfo()
 				{
 					Damage = damage,
