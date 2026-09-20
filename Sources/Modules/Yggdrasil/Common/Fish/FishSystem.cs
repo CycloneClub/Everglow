@@ -2,6 +2,11 @@ namespace Everglow.Yggdrasil.Common.Fish;
 
 public class FishSystem : ModSystem
 {
+	/// <summary>
+	/// 生成点周围上下左右一定范围内不得有方块，包括含液体的方块。
+	/// </summary>
+	private const int SpawnTileClearance = 10;
+
 	public static Dictionary<ModBiome, List<FishableItem>> FishMap = [];
 	public static HashSet<int> LiquidList = [];
 
@@ -79,15 +84,55 @@ public class FishSystem : ModSystem
 		return toSpawn.Count == 0;
 	}
 
+	private static bool IsSpawnAreaClear(Point point)
+	{
+		int left = point.X - SpawnTileClearance;
+		int right = point.X + SpawnTileClearance;
+		int top = point.Y - SpawnTileClearance;
+		int bottom = point.Y + SpawnTileClearance;
+		if (left < 0 || top < 0 || right >= Main.maxTilesX || bottom >= Main.maxTilesY)
+		{
+			return false;
+		}
+
+		for (int x = left; x <= right; x++)
+		{
+			for (int y = top; y <= bottom; y++)
+			{
+				if (Main.tile[x, y].HasTile)
+				{
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
 	public void SpawnInRect(Rectangle rect, Player player, List<FishableItem> toSpawn)
 	{
-		int right = rect.X + rect.Width;
-		int bottom = rect.Y + rect.Height;
-		for (int x = rect.X; x <= right; x++)
+		if (toSpawn.Count == 0)
 		{
-			for (int y = rect.Y; y <= bottom; y++)
+			return;
+		}
+
+		var liquids = toSpawn.Select(item => item.Liquid).ToHashSet();
+
+		int left = Math.Max(rect.X, SpawnTileClearance);
+		int top = Math.Max(rect.Y, SpawnTileClearance);
+		int right = Math.Min(rect.X + rect.Width, Main.maxTilesX - SpawnTileClearance - 1);
+		int bottom = Math.Min(rect.Y + rect.Height, Main.maxTilesY - SpawnTileClearance - 1);
+		for (int x = left; x <= right; x++)
+		{
+			for (int y = top; y <= bottom; y++)
 			{
 				Point point = new Point(x, y);
+				Tile cTile = Main.tile[point];
+				int liquidType = cTile.LiquidType;
+				if (cTile.LiquidAmount <= 26 || !liquids.Contains(liquidType))
+				{
+					continue;
+				}
+
 				bool canSpawn = true;
 				for (int nx = -3; nx <= 3; nx++)
 				{
@@ -99,17 +144,15 @@ public class FishSystem : ModSystem
 						break;
 					}
 				}
-				if (canSpawn)
+				if (canSpawn && IsSpawnAreaClear(point))
 				{
 					if (CheckSpawn(player, point, toSpawn))
 					{
-						break;
+						return;
 					}
+
+					liquids.Remove(liquidType);
 				}
-			}
-			if (toSpawn.Count == 0)
-			{
-				break;
 			}
 		}
 	}
@@ -117,6 +160,10 @@ public class FishSystem : ModSystem
 	public void SpawnAroundPlayer(Player player)
 	{
 		var toSpawn = ShouldSpawnFish(player);
+		if (toSpawn.Count == 0)
+		{
+			return;
+		}
 
 		// 在刷怪区域的左右两侧生成，上下不生成
 		Point playerPoint = player.Center.ToTileCoordinates();
