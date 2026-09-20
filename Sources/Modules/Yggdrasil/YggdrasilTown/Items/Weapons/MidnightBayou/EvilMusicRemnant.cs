@@ -16,8 +16,8 @@ public class EvilMusicRemnant : ModItem
 
 	public override void SetStaticDefaults()
 	{
-		// 0.005% chance per tick, set this value according to vanilla npc Nymph.
-		FishSystem.RegisterFish(ModContent.GetInstance<MidnightBayouBiome>(), new(Item.type, LiquidLoader.LiquidType<DarkSludgeLiquid>(), 0.0_0005f));
+		// 0.001% chance per tick, set this value according to vanilla npc Nymph.
+		FishSystem.RegisterFish(ModContent.GetInstance<MidnightBayouBiome>(), new(Item.type, LiquidLoader.LiquidType<DarkSludgeLiquid>(), 0.0_0001f));
 	}
 
 	public override void SetDefaults()
