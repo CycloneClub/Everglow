@@ -1,4 +1,8 @@
+using Everglow.Yggdrasil.Common.Fish;
+using Everglow.Yggdrasil.YggdrasilTown.Biomes;
+using Everglow.Yggdrasil.YggdrasilTown.Liquids;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Summon;
+using ModLiquidLib.ModLoader;
 using Terraria.Audio;
 using Terraria.DataStructures;
 
@@ -9,6 +13,12 @@ public class EvilMusicRemnant : ModItem
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.SummonWeapons;
 
 	public int UseCount = 0;
+
+	public override void SetStaticDefaults()
+	{
+		// 0.005% chance per tick, set this value according to vanilla npc Nymph.
+		FishSystem.RegisterFish(ModContent.GetInstance<MidnightBayouBiome>(), new(Item.type, LiquidLoader.LiquidType<DarkSludgeLiquid>(), 0.0_0005f));
+	}
 
 	public override void SetDefaults()
 	{
