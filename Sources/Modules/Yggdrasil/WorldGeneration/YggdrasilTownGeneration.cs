@@ -800,8 +800,8 @@ public class YggdrasilTownGeneration
 			int y = YggdrasilTownTopLeft.Y + 189;
 			if (t == 120)
 			{
-				y -= 15;
-				QuickBuild(x, y, ModAsset.OriginalPylonStation231x31_Path);
+				y -= 43;
+				QuickBuild(x, y, ModAsset.OriginalPylonStation230x44_Path);
 				break;
 			}
 			var checkPos = new Point(x + 2, y + 16);
