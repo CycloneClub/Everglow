@@ -4,6 +4,8 @@ namespace Everglow.Yggdrasil.KelpCurtain.Items.Weapons;
 
 public class GreenSungloStaff : ModItem
 {
+	public override string LocalizationCategory => LocalizationUtils.Categories.MagicWeapons;
+
 	public override void SetStaticDefaults()
 	{
 		Item.staff[Type] = true;
