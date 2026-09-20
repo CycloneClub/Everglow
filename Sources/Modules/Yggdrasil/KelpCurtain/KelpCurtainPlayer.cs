@@ -1,4 +1,6 @@
 using Everglow.Yggdrasil.KelpCurtain.Items.Armors.Molluscs;
+using Everglow.Yggdrasil.KelpCurtain.Items.Weapons.UnderwaterTreasury;
+using Everglow.Yggdrasil.Netcode;
 using static Terraria.Player;
 
 namespace Everglow.Yggdrasil.KelpCurtain;
@@ -30,6 +32,10 @@ public class KelpCurtainPlayer : ModPlayer
 	public bool CrimsonMoonAlgaeGreaves { get; set; }
 
 	public bool CrimsonMoonAlgaeSetBuff { get; set; }
+
+	public int ArmOfGiantTreeCharge { get; set; }
+
+	public int ArmOfGiantTreeChargedSlot { get; set; } = -1;
 
 	public override void ResetEffects()
 	{
@@ -72,6 +78,26 @@ public class KelpCurtainPlayer : ModPlayer
 		if (CrimsonMoonAlgaeBreastPlate && info.Damage >= 10)
 		{
 			Player.Heal((int)(info.Damage * 0.15f));
+		}
+	}
+
+	public override void CopyClientState(ModPlayer targetCopy)
+	{
+		var clone = (KelpCurtainPlayer)targetCopy;
+		clone.ArmOfGiantTreeCharge = ArmOfGiantTreeCharge;
+	}
+
+	public override void SendClientChanges(ModPlayer clientPlayer)
+	{
+		var clone = (KelpCurtainPlayer)clientPlayer;
+		if (ArmOfGiantTreeCharge != clone.ArmOfGiantTreeCharge)
+		{
+			ModIns.PacketResolver.Send(
+				new ArmOfGiantTreeChargePacket()
+				{
+					Charge = ArmOfGiantTreeCharge,
+					ReleaseSmash = false,
+				}, toClient: -1, ignoreClient: Main.myPlayer);
 		}
 	}
 }
