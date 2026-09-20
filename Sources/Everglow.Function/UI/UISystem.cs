@@ -26,6 +26,10 @@ namespace Everglow.Commons.UI
 		public bool TopResizing = false;
 		public bool BottomResizing = false;
 
+		public delegate void ChestUIDraw(UISystem system, SpriteBatch spriteBatch);
+
+		public event ChestUIDraw PostDrawChestUI;
+
 		public RenderTarget2D UI_Screen = null;
 
 		public UISystem()
@@ -34,6 +38,10 @@ namespace Everglow.Commons.UI
 			instance = this;
 		}
 
+		public Chest CurrentShop = new Chest(false);
+
+		public Chest OldChest = new Chest(false);
+
 		public override void Load()
 		{
 			base.Load();
@@ -41,6 +49,7 @@ namespace Everglow.Commons.UI
 			On_Main.DrawInterface += HigherInterfaceVisualEffectSupport;
 			On_Main.DrawCursor += ModifyUIBlockResizeCursor;
 			On_Main.DrawThickCursor += ModifyUIBlockResizeThickCursor;
+			On_ChestUI.DrawSlots += On_ChestUI_DrawPanel;
 			if (Main.netMode != NetmodeID.Server)
 			{
 				system.Load();
@@ -227,5 +236,12 @@ namespace Everglow.Commons.UI
 				UI_Screen = null;
 			}
 		}
+
+		private void On_ChestUI_DrawPanel(On_ChestUI.orig_DrawSlots orig, SpriteBatch spriteBatch)
+		{
+			orig(spriteBatch);
+			PostDrawChestUI?.Invoke(this, spriteBatch);
+		}
+
 	}
 }

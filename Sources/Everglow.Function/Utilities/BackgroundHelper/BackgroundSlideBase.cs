@@ -28,6 +28,13 @@ public abstract class BackgroundSlideBase
 	/// </summary>
 	public int UseColorStyle = 0;
 
+	/// <summary>
+	/// It has higher priority in ordering the layer of backgrounds then <see cref="Distance"/>.<br/>
+	/// Larger overlap the smaller.<br/>
+	/// In most cases it should be 0.
+	/// </summary>
+	public int LayerPriority = 0;
+
 	public virtual bool AllowMultiple => false;
 
 	/// <summary>
@@ -232,6 +239,22 @@ public abstract class BackgroundSlideBase
 		if (bars.Count > 2)
 		{
 			Main.graphics.graphicsDevice.Textures[0] = bg.Texture;
+			if (primitiveType == PrimitiveType.TriangleList)
+			{
+				Main.graphics.graphicsDevice.DrawUserPrimitives(primitiveType, bars.ToArray(), 0, bars.Count / 3);
+			}
+			if (primitiveType == PrimitiveType.TriangleStrip)
+			{
+				Main.graphics.graphicsDevice.DrawUserPrimitives(primitiveType, bars.ToArray(), 0, bars.Count - 2);
+			}
+		}
+	}
+
+	public static void DrawVertexBackground(Texture2D texture, PrimitiveType primitiveType, List<Vertex2D> bars)
+	{
+		if (bars.Count > 2)
+		{
+			Main.graphics.graphicsDevice.Textures[0] = texture;
 			if (primitiveType == PrimitiveType.TriangleList)
 			{
 				Main.graphics.graphicsDevice.DrawUserPrimitives(primitiveType, bars.ToArray(), 0, bars.Count / 3);

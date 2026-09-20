@@ -75,7 +75,7 @@ public class IRProbe_Normal : ModTile, ISceneTile
 				noneRot = true;
 				break;
 		}
-		var laser = new IRProbe_Normal_Laser { position = new Vector2(i, j) * 16, Active = true, Visible = true, originTile = new Point(i, j), originType = Type };
+		var laser = new IRProbe_Normal_Laser { Position = new Vector2(i, j) * 16, Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = Type };
 		laser.Style = 0;
 		laser.NoneRotation = noneRot;
 		laser.StartRotation = rot;

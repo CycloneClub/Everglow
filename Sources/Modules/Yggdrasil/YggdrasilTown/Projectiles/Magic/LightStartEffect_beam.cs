@@ -86,7 +86,7 @@ public class LightStartEffect_beam : ModProjectile
 		}
 		for (int i = 0; i < duplicateTimes; i++)
 		{
-			Vector2 newVelocity = new Vector2(0, 1.2f).RotatedBy(-Main.time * 0.05f + Projectile.whoAmI + (float)i / duplicateTimes * MathHelper.TwoPi + Math.Sin(Main.time * 0.14f) * 0.6);
+			Vector2 newVelocity = new Vector2(0, 1.2f).RotatedBy(-Main.time * 0.02f + Projectile.whoAmI + (float)i / duplicateTimes * MathHelper.TwoPi);
 			var somg = new LightFruitParticleDust
 			{
 				velocity = newVelocity,

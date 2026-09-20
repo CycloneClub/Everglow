@@ -73,7 +73,7 @@ namespace Everglow.Commons.UI
 		/// </summary>
 		public void Load()
 		{
-			var containers = from c in GetType().Assembly.GetTypes()
+			var containers = from c in Ins.ModuleManager.Types
 							 where !c.IsAbstract && c.IsSubclassOf(typeof(UIContainerElement))
 							 select c;
 			UIContainerElement element;

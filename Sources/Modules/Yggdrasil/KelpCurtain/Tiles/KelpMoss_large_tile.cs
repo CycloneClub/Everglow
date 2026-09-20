@@ -21,14 +21,14 @@ public class KelpMoss_large_tile : ModTile, ISceneTile
 	}
 	public void AddScene(int i, int j)
 	{
-		KelpMoss_large_fore kelp = new KelpMoss_large_fore { position = new Vector2(i, j) * 16, Active = true, Visible = true, originTile = new Point(i, j), originType = ModContent.TileType<KelpMoss_large_tile>() };
+		KelpMoss_large_fore kelp = new KelpMoss_large_fore { Position = new Vector2(i, j) * 16, Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = ModContent.TileType<KelpMoss_large_tile>() };
 		kelp.startRotation = GetNeighborTileRotation(new Vector2(i * 16, j * 16));
 		for (int x = 0; x < Main.rand.Next(4, 125); x++)
 		{
 			kelp.wigglerRotations.Add(kelp.startRotation * MathF.Pow(0.7f, x));
 		}
 		kelp.scale = Main.rand.NextFloat(45f, 80f);
-		kelp.position -= new Vector2(0, 12).RotatedBy(kelp.startRotation) - new Vector2(8);
+		kelp.Position -= new Vector2(0, 12).RotatedBy(kelp.startRotation) - new Vector2(8);
 		Ins.VFXManager.Add(kelp);
 	}
 	private static float GetNeighborTileRotation(Vector2 worldCoord)

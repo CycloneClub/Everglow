@@ -1,4 +1,5 @@
 using Everglow.Yggdrasil.Common.Dusts;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.TwilightForest;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
 using Terraria.Audio;
 
@@ -16,7 +17,7 @@ public class GunOfAvariceManualReload : ModProjectile
 	{
 		Projectile.width = 62;
 		Projectile.height = 32;
-		Projectile.timeLeft = Items.Weapons.GunOfAvarice.ManualReloadDuration;
+		Projectile.timeLeft = GunOfAvarice.ManualReloadDuration;
 		Projectile.penetrate = -1;
 		Projectile.hide = true;
 		Projectile.scale = 0.75f;

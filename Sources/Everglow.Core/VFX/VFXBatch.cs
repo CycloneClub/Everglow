@@ -12,7 +12,7 @@ public class VFXBatch : IDisposable
 	private const int MAX_INDICES = MAX_VERTICES * 3;
 
 	//numbers Copy from SpriteBatch
-	private const int MAX_VERTICES = 8192;
+	private const int MAX_VERTICES = 1048576;
 
 	private List<IBuffers> buffers = new();
 

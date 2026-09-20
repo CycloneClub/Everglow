@@ -1,8 +1,6 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Commons.Graphics;
 using Everglow.Commons.Interfaces;
-using Everglow.Yggdrasil.Common.Fish;
-using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Terraria.DataStructures;
 using Terraria.Enums;
 
@@ -11,11 +9,6 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories
 	public class AnemoShell : ModItem
 	{
 		public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
-
-		public override void SetStaticDefaults()
-		{
-			FishSystem.RegisterFish(ModContent.GetInstance<YggdrasilTownBiome>(), new(Type, LiquidID.Water, 0.5f));
-		}
 
 		public override void SetDefaults()
 		{
@@ -139,7 +132,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories
 					Point bottomPos = pos.ToTileCoordinates();
 					bottomPos.X = Math.Clamp(bottomPos.X, 20, Main.maxTilesX - 20);
 					bottomPos.Y = Math.Clamp(bottomPos.Y, 20, Main.maxTilesY - 20);
-					if (TileUtils.PlatformCollision(pos) || (Player.waterWalk || Player.waterWalk2) && Main.tile[bottomPos].LiquidAmount > 0 && !Player.wet)
+					if (TileUtils.PlatformCollision(pos) || ((Player.waterWalk || Player.waterWalk2) && Main.tile[bottomPos].LiquidAmount > 0 && !Player.wet))
 					{
 						return h;
 					}
@@ -188,7 +181,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories
 			bool hasDamage = fallDistance * Player.gravDir > fallDmgThreshold;
 
 			int distance = CheckGroundDistance();
-			if (distance > 10 || !hasDamage && !InProtection)
+			if (distance > 10 || (!hasDamage && !InProtection))
 			{
 				EffectStartCounter--;
 			}
@@ -224,6 +217,20 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories
 				Player.velocity.Y = -6;
 
 				CollidePosition = Player.Center + new Vector2(0, distance * 16 * Player.gravDir + 24);
+				Rectangle hitbox = Player.Hitbox;
+				hitbox.Y += 80;
+				CombatText.NewText(hitbox, new Color(0.4f, 1f, 0.8f, 1f), "POP!", true);
+
+				// 烟雾效果
+				AnemoShell_Smog aSmog = new AnemoShell_Smog()
+				{
+					Active = true,
+					Visible = true,
+					Timer = 0,
+					TimeMax = 48,
+					Center = CollidePosition,
+				};
+				Ins.VFXManager.Add(aSmog);
 			}
 
 			// 接近地面时从底部跳出的动画
@@ -402,23 +409,6 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories
 				Main.spriteBatch.Begin(sBS);
 				Main.spriteBatch.Draw(ShellTarget, new Rectangle((int)shellPos.X, (int)shellPos.Y, 60, 60), light);
 
-				// 烟雾效果
-				Texture2D smoggy = ModAsset.AnemoShell_Smog.Value;
-				int width = 128;
-				int height = 110;
-				int frame = ProtectionCounter / 2;
-				Rectangle clip = default;
-				if (frame < 24)
-				{
-					int x = frame % 8;
-					int y = frame / 8;
-					clip.X = x * width;
-					clip.Y = y * height;
-					clip.Width = width;
-					clip.Height = height;
-					var drawRect = new Rectangle((int)center.X - width / 2, (int)center.Y - height / 2 - 30, width, height);
-					Main.spriteBatch.Draw(smoggy, drawRect, clip, light);
-				}
 			}
 			else
 			{

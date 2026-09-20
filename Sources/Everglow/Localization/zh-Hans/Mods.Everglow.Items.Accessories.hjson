@@ -1,404 +1,617 @@
 StaminaItem: {
-	DisplayName: Stamina Item
-	Tooltip: ""
+	DisplayName: 耐力测试物品
+	Tooltip: "开发者物品"
 }
 
 EnergyBand: {
-	DisplayName: Energy Band
-	Tooltip: ""
+	DisplayName: 能量绷带
+	Tooltip: "减少25%体力消耗"
 }
 
 BloodGlucoseMonitor: {
-	DisplayName: Blood Glucose Monitor
-	Tooltip: ""
+	DisplayName: 血糖仪
+	Tooltip: "显示饥饿值"
 }
 
 OsmoticPressureMonitor: {
-	DisplayName: Osmotic Pressure Monitor
-	Tooltip: ""
+	DisplayName: 渗透压测定仪
+	Tooltip: "显示渴度"
 }
 
 PlayerPenetrationTest: {
-	DisplayName: Player Penetration Test
-	Tooltip: ""
+	DisplayName: 玩家穿透测试物品
+	Tooltip: "开发者物品"
 }
 
 BurningFrozenHeart: {
-	DisplayName: Burning Frozen Heart
-	Tooltip: ""
+	DisplayName: 霜火之心
+	Tooltip: "免疫多数冷系伤害并发出霜火的光"
 }
 
 PearlOfCyan: {
-	DisplayName: Pearl Of Cyan
-	Tooltip: ""
+	DisplayName: 松景球
+	Tooltip: "暴击时附加4魔法伤害的松针协助攻击"
 }
 
 SnowPineLockBox: {
-	DisplayName: Snow Pine Lock Box
-	Tooltip: ""
+	DisplayName: 有松香的铁盒
+	Tooltip: "召唤松树之灵协助作战"
 }
 
 TuskLace: {
-	DisplayName: Tusk Lace
-	Tooltip: ""
+	DisplayName: 獠牙项链
+	Tooltip: 
+	'''
+	盔甲穿透增加5\n伤害和暴击增加5%
+	一颗獠牙被从猛兽嘴里打了下来,你又敲下了上面的一小部分
+	'''
 }
 
 FireflyBorageBadge: {
-	DisplayName: Firefly Borage Badge
-	Tooltip: ""
+	DisplayName: 流萤黑花胸章
+	Tooltip: "伤害+6%，速度+15%，腐檀巨蛾存在时有特殊效果"
 }
 
 MothEye: {
-	DisplayName: Moth Eye
-	Tooltip: ""
+	DisplayName: 蛾眼
+	Tooltip: "召唤伤害+6%，召唤栏位+1，哨兵栏位+1，对流萤系列武器有特殊效果"
 }
 
 BlueflowerBra: {
-	DisplayName: Blueflower Bra
+	DisplayName: 蓝花黑内衣
 	Tooltip: ""
 }
 
 BlueflowerCap: {
-	DisplayName: Blueflower Cap
+	DisplayName: 蓝花黑阔边帽
 	Tooltip: ""
 }
 
 BlueGel: {
-	DisplayName: Blue Gel
-	Tooltip: ""
+	DisplayName: 蓝星凝胶
+	Tooltip: "+4魔力回复和30魔法上限"
 }
 
 CorruptEye: {
-	DisplayName: Corrupt Eye
-	Tooltip: ""
+	DisplayName: 腐化之眼
+	Tooltip: "防御+5，伤害+4%，免疫咒火，受击后迸发出若干咒火球"
 }
 
 DukeTooth: {
-	DisplayName: Duke Tooth
-	Tooltip: ""
+	DisplayName: 猪龙鱼獠牙吊坠
+	Tooltip: "+12盔甲穿透"
 }
 
 GoldLiquidPupil: {
-	DisplayName: Gold Liquid Pupil
-	Tooltip: ""
+	DisplayName: 灵液瞳孔
+	Tooltip: "受击后生成灵液之环"
 }
 
 GreenGel: {
-	DisplayName: Green Gel
-	Tooltip: ""
+	DisplayName: 绿心凝胶
+	Tooltip: "+4生命回复和30生命上限"
 }
 
 JungleVitamin: {
-	DisplayName: Jungle Vitamin
-	Tooltip: ""
+	DisplayName: 丛林维生素
+	Tooltip: "+50生命上限"
 }
 
 Odd8Ring: {
-	DisplayName: Odd8 Ring
-	Tooltip: ""
+	DisplayName: 诡8指环
+	Tooltip: "单次造成的最低伤害变为8"
 }
 
 RedGel: {
-	DisplayName: Red Gel
-	Tooltip: ""
+	DisplayName: 红尖凝胶
+	Tooltip: "暴击率+6%，暴击伤害+9%"
 }
 
 SilverWing: {
-	DisplayName: Silver Wing
-	Tooltip: ""
+	DisplayName: 银翼证章
+	Tooltip: "暴击伤害+8%，3秒不使用武器后伤害+40%"
 }
 
 WalnutClip: {
-	DisplayName: Walnut Clip
-	Tooltip: ""
+	DisplayName: 胡桃夹子
+	Tooltip: "暴击伤害+16%，生命值低于一半时增加所有伤害，生命值越低幅度越大"
 }
 
 BlueTorchFlower: {
-	DisplayName: Blue Torch Flower
-	Tooltip: ""
+	DisplayName: 翠蓝冰炬
+	Tooltip: 
+	'''
+	增加20魔力上限
+	命中敌人回复2魔力,有0.2秒冷却
+	'火炬花的一个变种'
+	'''
 }
 
 CyanBranch: {
-	DisplayName: Cyan Branch
-	Tooltip: ""
+	DisplayName: 一束天青
+	Tooltip: 
+	'''
+	受击后10秒增加8闪避能力
+	'它十分坚硬，但也很脆弱'
+	'''
 }
 
 CyanPedal: {
-	DisplayName: Cyan Pedal
-	Tooltip: ""
+	DisplayName: 四瓣琉璃
+	Tooltip: 
+	'''
+	闪避能力增加4
+	'少的那一瓣化作你的勇气'
+	'''
 }
 
 DarkHat: {
-	DisplayName: Dark Hat
-	Tooltip: ""
+	DisplayName: 罂粟花坠饰
+	Tooltip: 
+	'''
+	增加20魔力上限
+	暴击率增加4%,暴击伤害增加12
+	'除用于战斗和装饰不建议使用'
+	'''
 }
 
 GoldRound: {
-	DisplayName: Gold Round
-	Tooltip: ""
+	DisplayName: 金盏轮盘
+	Tooltip: 
+	'''
+	+7防御，+7%伤害
+	'传统的泰拉人通常配戴它来保持健康'
+	'''
 }
 
 HotPinkCrown: {
-	DisplayName: Hot Pink Crown
-	Tooltip: ""
+	DisplayName: 活化郁金香
+	Tooltip: 
+	'''
+	暴击伤害增加(最大生命值*5%)%
+	'经过风之精华的催化,它将对生命力做出反应'
+	'''
 }
 
 LightPurplePen: {
-	DisplayName: Light Purple Pen
-	Tooltip: ""
+	DisplayName: 紫豪中山兔
+	Tooltip: 
+	'''
+	伤害、暴击率和近战攻速各增加7%
+	'没有任何兔子在制作过程中受到伤害'
+	'''
 }
 
 ManyWhiteFlower: {
-	DisplayName: Many White Flower
-	Tooltip: ""
+	DisplayName: 白星锦球
+	Tooltip: 
+	'''
+	近战攻速增加8%,近战伤害增加8%
+	'你不想让这些神奇又可爱的花被损坏'
+	'''
 }
 
 OrangeCrown: {
-	DisplayName: Orange Crown
-	Tooltip: ""
+	DisplayName: 坚韧郁金香
+	Tooltip: 
+	'''
+	防御力+(最大生命值*3%)%
+	'埃俄罗斯祝福过的郁金香,结构强度出奇的高'
+	'''
 }
 
 OrangeStick: {
-	DisplayName: Orange Stick
-	Tooltip: ""
+	DisplayName: 坚橙狼尾
+	Tooltip: 
+	'''
+	受击后3秒获得5防御力和击退免疫
+	'与大多数草不同,它在狂风中坚挺而不折腰'
+	'''
 }
 
 PinkFourPedal: {
-	DisplayName: Pink Four Pedal
-	Tooltip: ""
+	DisplayName: 四命轮回
+	Tooltip: 
+	'''
+	最大生命值增加40
+	'据说受伤的动物会去吃它来疗伤...事实确实如此,但好像对人效果不大'
+	'''
 }
 
 PurpleBall: {
-	DisplayName: Purple Ball
-	Tooltip: ""
+	DisplayName: 紫绣球吊坠
+	Tooltip: 
+	'''
+	命中身周的敌人会释放紫色花瓣爆炸
+	花瓣伤害随攻击的伤害增加
+	有0.5秒冷却
+	'愤怒紫绣球'
+	'''
 }
 
 PurpleReedHalo: {
-	DisplayName: Purple Reed Halo
-	Tooltip: ""
+	DisplayName: 紫苇花冠
+	Tooltip: 
+	'''
+	生命上限增加30
+	魔力上限增加40
+	'好闻又好看'
+	'''
 }
 
 RedTriangle: {
-	DisplayName: Red Triangle
-	Tooltip: ""
+	DisplayName: 三尖红狐
+	Tooltip: 
+	'''
+	暴击伤害增加18%
+	'在泰拉文化中,这是一种具有攻击性的形状'
+	'''
 }
 
 SilverCupFlower: {
-	DisplayName: Silver Cup Flower
-	Tooltip: ""
+	DisplayName: 皇家酒杯
+	Tooltip: 
+	'''
+	+8防御
+	生命上限增加20
+	'曾有一位残暴的国王真的尝试拿它当酒杯,他一滴也没喝上'
+	'''
 }
 
 ThreeColorCrown: {
-	DisplayName: Three Color Crown
-	Tooltip: ""
+	DisplayName: 三色花环
+	Tooltip: 
+	'''
+	击中敌人后随机获得以下三种效果之一,持续7秒
+	红:伤害增加22%，暴击率增加11%
+	紫:免疫绝大多数减益效果
+	魔力上限增加300
+	有30秒CD
+	'求别太幸运'
+	'''
 }
 
 WhiteCrown: {
-	DisplayName: White Crown
-	Tooltip: ""
+	DisplayName: 希望之花
+	Tooltip: 
+	'''
+	奔跑速度增加(生命上限*0.2%)
+	'一枝素白的郁金香，像在悼念...'
+	'''
 }
 
 WhitePedal: {
-	DisplayName: White Pedal
-	Tooltip: ""
+	DisplayName: 光纱之瓣
+	Tooltip: 
+	'''
+	闪避能力增加2
+	暴击率增加4%
+	'它是如此轻薄'
+	'''
 }
 
 WhiteWoodFlower: {
-	DisplayName: White Wood Flower
-	Tooltip: ""
+	DisplayName: 银耳花
+	Tooltip: 
+	'''
+	召唤栏位增加2
+	'奇妙的共生关系'
+	'''
 }
 
 YellowBellFlower: {
-	DisplayName: Yellow Bell Flower
-	Tooltip: ""
+	DisplayName: 金簇铃兰
+	Tooltip: 
+	'''
+	伤害增加(20%防御力)%
+	'稀有又好看'
+	'''
 }
 
 CrystalSkull: {
-	DisplayName: Crystal Skull
-	Tooltip: ""
+	DisplayName: 水晶颅骨
+	Tooltip: 
+	'''
+	让你完全理解魔法书中所记载的法术，它强大得令人胆寒
+	'以前的用法就像拿枪杆子当棍棒敲人'
+	'''
 }
 
 AnemoShell: {
-	DisplayName: Anemo Shell
-	Tooltip: ""
+	DisplayName: 气元素防撞壳
+	Tooltip: 
+	'''
+	遭到跌落伤害之前，将玩家稍稍弹起，抵消此次伤害
+	此效果冷却60秒
+	'''
 }
 
 BloodTearCrystalCrown: {
-	DisplayName: Blood Tear Crystal Crown
-	Tooltip: ""
+	DisplayName: 滴血泪石冠
+	Tooltip: 
+	'''
+	生命上限+60
+	生命值＞84%时额外增加1生命回复
+	'''
 }
 
 CelesteStoneWaistPendant: {
-	DisplayName: Celeste Stone Waist Pendant
-	Tooltip: ""
+	DisplayName: 天蓝晶石挂坠
+	Tooltip: 
+	'''
+	法力上限+30
+	法力值处于40%~60%时增加2魔法回复
+	'''
 }
 
 CelticSeal: {
-	DisplayName: Celtic Seal
-	Tooltip: ""
+	DisplayName: 凯尔特封印
+	Tooltip: "每受到3次超过6点的伤害获得15点治疗"
 }
 
 ConcealSpell: {
-	DisplayName: Conceal Spell
-	Tooltip: ""
+	DisplayName: 隐匿符箓
+	Tooltip: 
+	'''
+	静止时每帧充能1点，移动时0.05
+	能量达到600时获得"隐匿"，隐形且免疫下一次攻击
+	但是受击后能量清零
+	'''
 }
 
 CyanVineRing: {
-	DisplayName: Cyan Vine Ring
-	Tooltip: ""
+	DisplayName: 古青缎指环
+	Tooltip: "暴击率+4%，受到伤害后1秒内若造成伤害则再+4%，持续15秒"
 }
 
 ForsakenBoots: {
-	DisplayName: Forsaken Boots
-	Tooltip: ""
+	DisplayName: 失落之靴
+	Tooltip: 
+	'''
+	8%移速提升
+    允许玩家奔跑
+	'''
 }
 
 FragmentsOfWreckage: {
-	DisplayName: Fragments Of Wreckage
-	Tooltip: ""
+	DisplayName: 残骸碎片
+	Tooltip: 
+	'''
+    当生命值不满时，根据损失的生命值提高属性，损失400生命时达到最大效果，最大效果如下 
+    +10% 近战速度
+    +10% 伤害
+    +12 防御
+    +15% 挖矿速度
+	'''
 }
 
 FuneraryGoods: {
-	DisplayName: Funerary Goods
-	Tooltip: ""
+	DisplayName: 陪葬品
+	Tooltip: "击杀敌人时，1/8概率立刻恢复100魔力"
 }
 
 FurnaceIronGloves: {
-	DisplayName: Furnace Iron Gloves
-	Tooltip: ""
+	DisplayName: 熔炉铁手套
+	Tooltip: "法术伤害附带5%伤害的浊燃损伤"
 }
 
 IstafelsSunfireGrasp: {
-	DisplayName: Istafels Sunfire Grasp
-	Tooltip: ""
+	DisplayName: 伊斯塔裴尔的炎阳之握
+	Tooltip: 
+	'''
+    +11%魔法伤害 
+    +5%暴击率
+	法术伤害附带5%伤害的浊燃损伤
+	攻击有概率创造一个熔渣火球漂浮于玩家身边，法术攻击可为熔渣蓄能
+	达到一定储能的熔渣将自动射出火球攻击
+	当计量表蓄力完成后下一次攻击将掷出迸发的熔渣，造成多段的25无视防御与减伤的真实伤害，并造成16秒“烧焦”debuff。
+	冷却时间150s
+	*烧焦：造成18dps伤害并减少目标11%防御，不低于0
+	传说技能：按下<快捷键>吸收附近所有的浊燃损伤，立刻结算所有伤害并对被减益的目标伤害提升至150%。持续20s，
+    boss战期间只能使用一次
+	'''
 }
 
 JellyBallInhibitor: {
-	DisplayName: Jelly Ball Inhibitor
-	Tooltip: ""
+	DisplayName: 球冻抑制剂
+	Tooltip: "玩家对球冻敌人造成的伤害提高60%，受到球冻类敌人的接触伤害降低为75%"
 }
 
 LampWoodPollenBottle: {
-	DisplayName: Lamp Wood Pollen Bottle
-	Tooltip: ""
+	DisplayName: 灯木花粉瓶
+	Tooltip: "允许三段跳，同类饰品可叠加"
 }
 
 ManaThermalPipeline: {
-	DisplayName: Mana Thermal Pipeline
-	Tooltip: ""
+	DisplayName: 奥术热能管线
+	Tooltip: "+5%魔法伤害，+4魔力再生"
 }
 
 RecoveryBand: {
-	DisplayName: Recovery Band
-	Tooltip: ""
+	DisplayName: 恢复手环
+	Tooltip: "受到不低于5点的伤害时，同时恢复少量生命值和魔力值"
 }
 
 RingOfMatter: {
-	DisplayName: Ring Of Matter
-	Tooltip: ""
+	DisplayName: 物质戒指
+	Tooltip:
+	'''
+	装备时，根据玩家装备瞬间拥有的钱币数量基于效果：
+    提高伤害，提高防御力，但是生命上限减少
+	钱越多效果越强，5铂金达到上限
+	'''
 }
 
 ShacklesBall: {
-	DisplayName: Shackles Ball
-	Tooltip: ""
+	DisplayName: 带球脚镣
+	Tooltip:
+	'''
+	增加10%伤害减免，但是速度、跳跃速度减少15%，跳跃高度降低7%；
+    免疫缓慢
+	'''
 }
 
 SkullCollection: {
-	DisplayName: Skull Collection
-	Tooltip: ""
+	DisplayName: 头骨收藏
+	Tooltip: "玩家近身存在敌怪时，玩家获得魔力再生"
 }
 
-SpicyShield: {
-	DisplayName: Spicy Shield
-	Tooltip: ""
+SpikedParma: {
+	DisplayName: 尖刺盾牌
+	Tooltip: 
+	'''
+	防御+4
+	伤害+4%
+	受到伤害后获得30秒的荆棘效果
+	'''
 }
 
 TelescopicPlatformAlpha: {
-	DisplayName: Telescopic Platform Alpha
-	Tooltip: ""
+	DisplayName: 伸缩平台α
+	Tooltip: "在地面按W允许升起，升起后按S下降，不操作保持悬停。最大高度15格"
 }
 
 TelescopicPlatformBeta: {
-	DisplayName: Telescopic Platform Beta
-	Tooltip: ""
+	DisplayName: 伸缩平台β
+	Tooltip: "在地面按W允许升起，升起后按S下降，不操作保持悬停。最大高度45格"
 }
 
 HeatEmblem: {
-	DisplayName: Heat Emblem
-	Tooltip: ""
+	DisplayName: 热能勋章
+	Tooltip: 
+	'''
+	+2生命再生
+	但是受到伤害时，获得“着火了”5秒
+	'''
 }
 
 HotAirBalloon: {
-	DisplayName: Hot Air Balloon
-	Tooltip: ""
+	DisplayName: 热气球
+	Tooltip: "增加跳跃高度，火焰粒子尾迹"
 }
 
 MelterGear: {
-	DisplayName: Melter Gear
-	Tooltip: ""
+	DisplayName: 热熔齿轮
+	Tooltip: "造成伤害时，对生物造成“着火了”5秒，但在攻击带有“着火了”的生物时，有33%的概率对自己造成“燃烧”5秒，在成功触发后者后，进入冷却15秒"
 }
 
 MoltenCore: {
-	DisplayName: Molten Core
-	Tooltip: ""
+	DisplayName: 熔火核心
+	Tooltip:
+	'''
+	当玩家处于“着火了”、“燃烧”、“诅咒焰”的效果状态时
+	提高5%伤害减免、5防御、5%暴击、5%伤害、5%速度、5%跳跃速度
+	'''
 }
 
 ThermalConductor: {
-	DisplayName: Thermal Conductor
-	Tooltip: ""
+	DisplayName: 热能传导器
+	Tooltip: "每60帧会进行一次判断，若玩家的魔力不高于最大魔力的20%，有33%的概率对玩家造成“诅咒焰”3秒并恢复100魔力值"
 }
 
 AntiCorrosiveSole: {
-	DisplayName: Anti Corrosive Sole
-	Tooltip: ""
+	DisplayName: 抗腐蚀鞋底
+	Tooltip: 
+	'''
+	+5%移速
+	免疫腐蚀
+	'''
 }
 
 CorrodedPearl: {
-	DisplayName: Corroded Pearl
-	Tooltip: ""
+	DisplayName: 被腐蚀的珍珠
+	Tooltip: 
+	'''
+	延长水下呼吸时间50%
+	小幅度提升在水中的移动速度
+    +5%召唤伤害
+	'''
 }
 
 EmptyFowlbeast: {
-	DisplayName: Empty Fowlbeast
-	Tooltip: ""
+	DisplayName: 空羽兽
+	Tooltip: 
+	'''
+	+1仆从数量，仆从可额外造成等同于玩家最大魔法值7%的魔法伤害
+	玩家额外受到20%伤害
+	'''
 }
 
 ForestMino: {
-	DisplayName: Forest Mino
-	Tooltip: ""
+	DisplayName: 森之蓑衣
+	Tooltip: 
+	'''
+	4防御
+	在苍苔帘幕时移动速度+25%，且敌人更难发现你
+	'''
 }
 
 GuppyShell: {
-	DisplayName: Guppy Shell
-	Tooltip: ""
+	DisplayName: 格普螺外壳
+	Tooltip: 
+	'''
+	2防御
+	站立不动时,获得10%减伤，+5%伤害,-5%移速
+	'''
 }
 
 HardenedWitherbarkHeart: {
-	DisplayName: Hardened Witherbark Heart
-	Tooltip: ""
+	DisplayName: 硬化枯木心脏
+	Tooltip: 
+	'''
+	10防御
+	-40%冲刺速度，-10%移速
+	给予硬化皮肤增益，使得受到的第一次伤害-90%，但是在受击后，给予10秒破绽效果，额外受到50%伤害
+	破绽效果结束，重新给予硬化皮肤。
+	'''
 }
 
 LivingWoodplate: {
-	DisplayName: Living Woodplate
-	Tooltip: ""
+	DisplayName: 活木甲
+	Tooltip: 
+	'''
+	+4防御
+	接触水时获得+8生命再生，40最大生命值，持续30秒
+	'''
 }
 
 OrfeoBoots: {
-	DisplayName: Orfeo Boots
-	Tooltip: ""
+	DisplayName: 奥菲欧之靴
+	Tooltip: 
+	'''
+	可奔跑，速度提升12%
+	在战斗中跑得更快并跳得更高
+	'''
 }
 
 RadialCarapace: {
-	DisplayName: Radial Carapace
-	Tooltip: ""
+	DisplayName: 放射状甲壳
+	Tooltip: 
+	'''
+	4防御，在水下时额外提供4防御
+	降低5%移速，但是在水下的移速提升35%
+	'''
 }
 
 TheGreenSolar: {
-	DisplayName: The Green Solar
-	Tooltip: ""
+	DisplayName: 绿阳之石
+	Tooltip: 
+	'''
+	+20生命上限
+	受到致命伤害后不会死去而是进入涅槃状态。移速在3秒内衰减为0并进入无敌，每秒回复5点最大生命值
+	在涅槃期间，散发太阳光辉灼烧附近的敌人，造成“着火了”
+	冷却时间600秒
+	'''
 }
 
 ThornTurtleShell: {
-	DisplayName: Thorn Turtle Shell
-	Tooltip: ""
+	DisplayName: 荆棘龟壳
+	Tooltip: 
+	'''
+	+6防御
+	给予荆棘效果
+	-7%移速
+	-10%冲刺速度
+	+5%伤害减免
+	'''
 }

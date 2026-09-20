@@ -2,7 +2,9 @@ using Everglow.Commons.DataStructures;
 using Everglow.Commons.Graphics;
 using Everglow.Commons.Templates.Weapons;
 using Everglow.Yggdrasil.KelpCurtain.VFXs;
+using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Bosses.KingJellyBall;
 using Terraria;
+using static Terraria.ModLoader.BackupIO;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Magic;
 
@@ -31,6 +33,14 @@ public class GreenSungloSpore : TrailingProjectile
 
 	public override void OnKill(int timeLeft)
 	{
+		foreach (Projectile p in Main.projectile)
+		{
+			if (p.type == ModContent.ProjectileType<GreenSungloThorns>() && p.owner == Projectile.owner)
+			{
+				p.Kill();
+			}
+		}
+
 		int tileX = ((int)Projectile.Center.X) / 16;
 		int tileY = ((int)Projectile.Center.Y) / 16;
 		do
@@ -45,8 +55,8 @@ public class GreenSungloSpore : TrailingProjectile
 		{
 		}
 
-		Vector2 pos = new Vector2(tileX * 16, tileY * 16 + 16);
-		Projectile.NewProjectileDirect(null, pos, Vector2.Zero, ModContent.ProjectileType<GreenSungloThorns>(), 0, 0, Projectile.owner);
+		Vector2 pos = new Vector2(tileX * 16, tileY * 16);
+		Projectile.NewProjectileDirect(null, pos, Vector2.Zero, ModContent.ProjectileType<GreenSungloThorns>(), Projectile.damage, 0, Projectile.owner);
 	}
 
 	public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)

@@ -28,15 +28,19 @@ public class LampWoodCandelabra : ModTile
 		TileObjectData.newTile.CoordinateHeights = new[] { 16, 16 };
 		TileObjectData.addTile(Type);
 		if (!Main.dedServ)
+		{
 			flameTexture = ModAsset.LampWoodCandelabra_Flame;
+		}
 
 		LocalizedText name = CreateMapEntryName();
 		AddMapEntry(new Color(69, 36, 78), name);
 	}
+
 	public override void NumDust(int i, int j, bool fail, ref int num)
 	{
 		num = 0;
 	}
+
 	public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 	{
 		r = 1f;
@@ -48,12 +52,16 @@ public class LampWoodCandelabra : ModTile
 	{
 		FurnitureUtils.LightHitwire(i, j, Type, 2, 2);
 	}
+
 	public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		var zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
 
 		if (Main.drawToScreen)
+		{
 			zero = Vector2.Zero;
+		}
+
 		var color = new Color(55, 5, 255, 0);
 		int width = 20;
 		int height = 20;

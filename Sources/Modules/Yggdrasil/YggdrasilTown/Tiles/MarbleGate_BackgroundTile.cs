@@ -2,19 +2,20 @@ using Everglow.Commons.TileHelper;
 using Everglow.Commons.VFX.Scene;
 using Everglow.SubSpace;
 using Everglow.Yggdrasil.WorldGeneration;
-using Everglow.Yggdrasil.YggdrasilTown.Kitchen.Tiles;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Tiles;
 
 [Pipeline(typeof(WCSPipeline_PointWrap))]
-public class MarbleGate_BackgroundTile : BackgroundVFX
+public class MarbleGate_BackgroundTile : TileVFX
 {
+	public override CodeLayer DrawLayer => CodeLayer.PostDrawBG;
+
 	public override void Update()
 	{
 		base.Update();
-		if (Main.MouseWorld.X > position.X && Main.MouseWorld.X < position.X + 112)
+		if (Main.MouseWorld.X > Position.X && Main.MouseWorld.X < Position.X + 112)
 		{
-			if (Main.MouseWorld.Y > position.Y && Main.MouseWorld.Y < position.Y + 128)
+			if (Main.MouseWorld.Y > Position.Y && Main.MouseWorld.Y < Position.Y + 128)
 			{
 				Main.instance.MouseText("Rightclick to Enter Union.");
 				if (Main.mouseRight && Main.mouseRightRelease && !Main.mapFullscreen)
@@ -59,7 +60,7 @@ public class MarbleGate_BackgroundTile : BackgroundVFX
 			for (int y = 20; y < 23; y++)
 			{
 				Tile tile = TileUtils.SafeGetTile(x, y);
-				tile.wall = 1;
+				tile.WallType = 1;
 				ushort typeChange = (ushort)ModContent.TileType<UnionCommandBlock>();
 				if (y == 22)
 				{
@@ -78,41 +79,41 @@ public class MarbleGate_BackgroundTile : BackgroundVFX
 
 	public override void OnSpawn()
 	{
-		texture = ModAsset.MarbleGate.Value;
+		Texture = ModAsset.MarbleGate.Value;
 	}
 
 	public override void Draw()
 	{
-		Color lightColor0 = Lighting.GetColor((int)position.X / 16, (int)position.Y / 16);
-		Color lightColor1 = Lighting.GetColor((int)(position.X + texture.Width) / 16, (int)position.Y / 16);
-		Color lightColor2 = Lighting.GetColor((int)position.X / 16, (int)(position.Y + texture.Height) / 16);
-		Color lightColor3 = Lighting.GetColor((int)(position.X + texture.Width) / 16, (int)(position.Y + texture.Height) / 16);
+		Color lightColor0 = Lighting.GetColor((int)Position.X / 16, (int)Position.Y / 16);
+		Color lightColor1 = Lighting.GetColor((int)(Position.X + Texture.Width) / 16, (int)Position.Y / 16);
+		Color lightColor2 = Lighting.GetColor((int)Position.X / 16, (int)(Position.Y + Texture.Height) / 16);
+		Color lightColor3 = Lighting.GetColor((int)(Position.X + Texture.Width) / 16, (int)(Position.Y + Texture.Height) / 16);
 
-		Vector2 subBackgroundScale = texture.Size() / ModAsset.MarbleGate_Background.Value.Size();
+		Vector2 subBackgroundScale = Texture.Size() / ModAsset.MarbleGate_Background.Value.Size();
 
 		// Vector2 offsetMouse = new Vector2((Main.MouseScreen.X / 150) % 1f, (Main.MouseScreen.Y / 150) % 1f);
-		Vector2 viewOffset = (position - Main.LocalPlayer.position) * 0.0004f + new Vector2(10000) + new Vector2(0.44f);
+		Vector2 viewOffset = (Position - Main.LocalPlayer.position) * 0.0004f + new Vector2(10000) + new Vector2(0.44f);
 
 		// Main.NewText(offsetMouse);
 		viewOffset.X %= 1;
 		viewOffset.Y %= 1;
 		List<Vertex2D> bars = new List<Vertex2D>()
 		{
-			new Vertex2D(position, Color.White, new Vector3(viewOffset, 0)),
-			new Vertex2D(position + new Vector2(texture.Width, 0), Color.White, new Vector3(viewOffset + new Vector2(subBackgroundScale.X, 0), 0)),
+			new Vertex2D(Position, Color.White, new Vector3(viewOffset, 0)),
+			new Vertex2D(Position + new Vector2(Texture.Width, 0), Color.White, new Vector3(viewOffset + new Vector2(subBackgroundScale.X, 0), 0)),
 
-			new Vertex2D(position + new Vector2(0, texture.Height), Color.White, new Vector3(viewOffset + new Vector2(0, subBackgroundScale.Y), 0)),
-			new Vertex2D(position + new Vector2(texture.Width, texture.Height), Color.White, new Vector3(viewOffset + subBackgroundScale, 0)),
+			new Vertex2D(Position + new Vector2(0, Texture.Height), Color.White, new Vector3(viewOffset + new Vector2(0, subBackgroundScale.Y), 0)),
+			new Vertex2D(Position + new Vector2(Texture.Width, Texture.Height), Color.White, new Vector3(viewOffset + subBackgroundScale, 0)),
 		};
 		Ins.Batch.Draw(ModAsset.MarbleGate_Background.Value, bars, PrimitiveType.TriangleStrip);
 		bars = new List<Vertex2D>()
 		{
-			new Vertex2D(position, lightColor0, new Vector3(0, 0, 0)),
-			new Vertex2D(position + new Vector2(texture.Width, 0), lightColor1, new Vector3(1, 0, 0)),
+			new Vertex2D(Position, lightColor0, new Vector3(0, 0, 0)),
+			new Vertex2D(Position + new Vector2(Texture.Width, 0), lightColor1, new Vector3(1, 0, 0)),
 
-			new Vertex2D(position + new Vector2(0, texture.Height), lightColor2, new Vector3(0, 1, 0)),
-			new Vertex2D(position + new Vector2(texture.Width, texture.Height), lightColor3, new Vector3(1, 1, 0)),
+			new Vertex2D(Position + new Vector2(0, Texture.Height), lightColor2, new Vector3(0, 1, 0)),
+			new Vertex2D(Position + new Vector2(Texture.Width, Texture.Height), lightColor3, new Vector3(1, 1, 0)),
 		};
-		Ins.Batch.Draw(texture, bars, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(Texture, bars, PrimitiveType.TriangleStrip);
 	}
 }

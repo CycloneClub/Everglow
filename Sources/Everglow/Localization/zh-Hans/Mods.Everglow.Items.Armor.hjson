@@ -35,216 +35,222 @@ DevilHeartLeggings: {
 }
 
 FireflywoodBreastplate: {
-	DisplayName: Fireflywood Breastplate
+	DisplayName: 流萤板甲
 	Tooltip: ""
 }
 
 FireflywoodHelmet: {
-	DisplayName: Fireflywood Helmet
+	DisplayName: 流萤头盔
 	Tooltip: ""
 }
 
 FireflywoodLeggings: {
-	DisplayName: Fireflywood Leggings
+	DisplayName: 流萤护胫
 	Tooltip: ""
 }
 
 BlueflowerDress: {
-	DisplayName: Blueflower Dress
+	DisplayName: 蓝花黑裙
 	Tooltip: ""
 }
 
 ValiantBreastplate: {
-	DisplayName: Valiant Breastplate
-	Tooltip: ""
+	DisplayName: 勇者胸甲
+	Tooltip: "这套盔甲往往是来到天穹镇的人们的第一笔报酬"
 }
 
 ValiantHelmet: {
-	DisplayName: Valiant Helmet
-	Tooltip: ""
+	DisplayName: 勇者头盔
+	Tooltip: "这套盔甲往往是来到天穹镇的人们的第一笔报酬"
 }
 
 ValiantLeggings: {
-	DisplayName: Valiant Leggings
-	Tooltip: ""
+	DisplayName: 勇者护胫
+	Tooltip: "这套盔甲往往是来到天穹镇的人们的第一笔报酬"
 }
 
 TwilightWoodBreastplate: {
-	DisplayName: Twilight Wood Breastplate
+	DisplayName: 暮桉木板甲
 	Tooltip: ""
 }
 
 TwilightWoodHelmet: {
-	DisplayName: Twilight Wood Helmet
+	DisplayName: 暮桉木头盔
 	Tooltip: ""
 }
 
 TwilightWoodLeggings: {
-	DisplayName: Twilight Wood Leggings
+	DisplayName: 暮桉木护胫
 	Tooltip: ""
 }
 
 ConventionalEquipment: {
-	DisplayName: Conventional Equipment
-	Tooltip: ""
+	DisplayName: 标准护具
+	Tooltip: "具备一定保护性，只是穿着毫无舒适度可言"
 }
 
 SafetyHelmets: {
-	DisplayName: Safety Helmets
-	Tooltip: ""
+	DisplayName: 安全头盔
+	Tooltip: "批量生产的头盔，过长的仓储周期使材料老化"
 }
 
 StandardLeggings: {
-	DisplayName: Standard Leggings
-	Tooltip: ""
+	DisplayName: 制式靴子
+	Tooltip: "只有两个码数，似乎无法适配所有人"
 }
 
 RockGreaves: {
-	DisplayName: Rock Greaves
+	DisplayName: 岩甲护腿
 	Tooltip: ""
 }
 
 RockHelmet: {
-	DisplayName: Rock Helmet
+	DisplayName: 岩甲头盔
 	Tooltip: ""
 }
 
 RockPlateMail: {
-	DisplayName: Rock Plate Mail
+	DisplayName: 岩甲板甲
 	Tooltip: ""
 }
 
 ConcentratingJacket: {
-	DisplayName: Concentrating Jacket
+	DisplayName: 充能夹克
 	Tooltip: ""
 }
 
 ExplorationHelmet: {
-	DisplayName: Exploration Helmet
+	DisplayName: 探照头盔
 	Tooltip: ""
 }
 
 OvineHairpin: {
-	DisplayName: Ovine Hairpin
+	DisplayName: 灯珠头饰
 	Tooltip: ""
 }
 
 ShadowlessBoots: {
-	DisplayName: Shadowless Boots
+	DisplayName: 无影靴子
 	Tooltip: ""
 }
 
 LampWoodBreastplate: {
-	DisplayName: Lamp Wood Breastplate
+	DisplayName: 灯木胸甲
 	Tooltip: ""
 }
 
 LampWoodHelmet: {
-	DisplayName: Lamp Wood Helmet
+	DisplayName: 灯木头盔
 	Tooltip: ""
 }
 
 LampWoodLeggings: {
-	DisplayName: Lamp Wood Leggings
+	DisplayName: 灯木护腿
 	Tooltip: ""
 }
 
 JellyBallBathingCap: {
-	DisplayName: Jelly Ball Bathing Cap
+	DisplayName: 球冻帽
 	Tooltip: ""
 }
 
 CyanBreastplate: {
-	DisplayName: Cyan Breastplate
+	DisplayName: 青缎甲
 	Tooltip: ""
 }
 
 CyanHeavylet: {
-	DisplayName: Cyan Heavylet
+	DisplayName: 青缎头盔
 	Tooltip: ""
 }
 
 CyanLeggings: {
-	DisplayName: Cyan Leggings
+	DisplayName: 青缎鞋
 	Tooltip: ""
 }
 
 CyanWarhelm: {
-	DisplayName: Cyan Warhelm
+	DisplayName: 青缎战盔
 	Tooltip: ""
 }
 
 BloodDrenchedRobe: {
-	DisplayName: Blood Drenched Robe
-	Tooltip: ""
+	DisplayName: 沐血长袍
+	Tooltip: 
+	'''
+	“他们用宿主鲜活的魔脏温养织兽，再用织兽编织鲜红的锦缎”
+	'''
 }
 
 BloodStainedVeil: {
-	DisplayName: Blood Stained Veil
-	Tooltip: ""
+	DisplayName: 染血纱帽
+	Tooltip: 
+	'''
+	传说虽是如此，眼前的衣装除了比较破旧，和法师长袍并无二致
+	'''
 }
 
 AuburnBoots: {
-	DisplayName: Auburn Boots
-	Tooltip: ""
+	DisplayName: 金棕靴
+	Tooltip: "飞棍死后，唯剩一支空管，甚至找不到它的魔脏......不过这具外壳还挺好看的"
 }
 
 AuburnBreastplate: {
-	DisplayName: Auburn Breastplate
-	Tooltip: ""
+	DisplayName: 金棕战甲
+	Tooltip: "飞棍死后，唯剩一支空管，甚至找不到它的魔脏......不过这具外壳还挺好看的"
 }
 
 AuburnHoodie: {
-	DisplayName: Auburn Hoodie
-	Tooltip: ""
+	DisplayName: 金棕兜帽
+	Tooltip: "飞棍死后，唯剩一支空管，甚至找不到它的魔脏......不过这具外壳还挺好看的"
 }
 
 WitherbarkBreastPlate: {
-	DisplayName: Witherbark Breast Plate
+	DisplayName: 枯木胸甲
 	Tooltip: ""
 }
 
 WitherbarkHelmet: {
-	DisplayName: Witherbark Helmet
+	DisplayName: 枯木头盔
 	Tooltip: ""
 }
 
 WitherbarkLeggings: {
-	DisplayName: Witherbark Leggings
+	DisplayName: 枯木护腿
 	Tooltip: ""
 }
 
 RuinLeggings: {
-	DisplayName: Ruin Leggings
+	DisplayName: 归墟护胫
 	Tooltip: ""
 }
 
 RuinMagicRobe: {
-	DisplayName: Ruin Magic Robe
+	DisplayName: 归墟咒袍
 	Tooltip: ""
 }
 
 RuinMask: {
-	DisplayName: Ruin Mask
+	DisplayName: 归墟面罩
 	Tooltip: ""
 }
 
 MolluscsLeggings: {
-	DisplayName: Molluscs Leggings
+	DisplayName: 软体足部
 	Tooltip: ""
 }
 
 MossyMolluscsHelmet: {
-	DisplayName: Mossy Molluscs Helmet
+	DisplayName: 附苔软体头壳
 	Tooltip: ""
 }
 
 PearlMolluscsHelmet: {
-	DisplayName: Pearl Molluscs Helmet
+	DisplayName: 珍珠软体头壳
 	Tooltip: ""
 }
 
 ShellMolluscsBreastPlate: {
-	DisplayName: Shell Molluscs Breast Plate
+	DisplayName: 软体外壳护甲
 	Tooltip: ""
 }

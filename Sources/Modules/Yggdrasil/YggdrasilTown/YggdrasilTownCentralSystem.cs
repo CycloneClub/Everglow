@@ -1,14 +1,13 @@
 using Everglow.SubSpace;
-using Everglow.Yggdrasil.WorldGeneration;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.Kitchen.Tiles;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Miscs.PlayerArena;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles;
-using Microsoft.Xna.Framework.Graphics;
+using Everglow.Yggdrasil.YggdrasilTown.VFXs.RandomNPC;
 using SubworldLibrary;
-using Terraria;
 using Terraria.DataStructures;
+using Terraria.GameContent;
 
 namespace Everglow.Yggdrasil.YggdrasilTown;
 
@@ -39,6 +38,28 @@ public class YggdrasilTownCentralSystem : ModSystem
 	public static bool ResetedArena = true;
 
 	public static int ArenaScore;
+
+	public override void Load()
+	{
+		Ins.HookManager.AddHook(CodeLayer.PostDrawMapIcons, DrawMap_YggdrasilTown);
+		base.Load();
+	}
+
+	private void DrawMap_YggdrasilTown(Vector2 mapTopLeft, Vector2 mapX2Y2AndOff, Rectangle? mapRect, float mapScale)
+	{
+		if (!SubworldSystem.IsActive<YggdrasilWorld>())
+		{
+			return;
+		}
+		Vector2 center = TownTopLeftWorldCoord + new Vector2(268, 162) * 16;
+		Vector2 position = (center / 16f - mapTopLeft) * mapScale + mapX2Y2AndOff;
+		var destination = new Rectangle((int)position.X - 1, (int)position.Y - 1, 2, 2);
+		if (mapRect != null ? destination.Intersects(mapRect.Value) : true)
+		{
+			Texture2D tex = ModAsset.TownMap.Value;
+			Main.spriteBatch.Draw(tex, position, null, Color.White * 0.5f, 0, tex.Size() * new Vector2(0.5f, 1f), mapScale * 0.5f, SpriteEffects.None, 0);
+		}
+	}
 
 	public override void OnWorldLoad()
 	{
@@ -97,6 +118,7 @@ public class YggdrasilTownCentralSystem : ModSystem
 			RoadSignPost_ToArenaVFX.BuildArenaGen();
 			ResetedArena = true;
 		}
+		YggdrasilTownPersonManager.Update();
 		base.PostUpdateNPCs();
 	}
 
@@ -176,6 +198,15 @@ public class YggdrasilTownCentralSystem : ModSystem
 		if (SubworldSystem.Current is RoomWorld)
 		{
 			return TileUtils.SafeGetTile(20, 20).TileType == ModContent.TileType<ArenaCommandBlock>();
+		}
+		return false;
+	}
+
+	public static bool InGravelStore_YggdrasilTown()
+	{
+		if (SubworldSystem.Current is RoomWorld)
+		{
+			return TileUtils.SafeGetTile(20, 20).TileType == ModContent.TileType<GravelStoreCommandBlock>();
 		}
 		return false;
 	}

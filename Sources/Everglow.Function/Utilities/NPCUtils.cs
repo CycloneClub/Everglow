@@ -1,7 +1,5 @@
 using Everglow.Commons.Mechanics.ElementalDebuff;
 using Everglow.Commons.Netcode.Packets;
-using Mono.Cecil.Cil;
-using MonoMod.Cil;
 
 namespace Everglow.Commons.Utilities;
 
@@ -233,6 +231,14 @@ public static class NPCUtils
 	public static void SetLifeRegenExpectedLossPerSecond(this NPC npc, int value) =>
 		npc.lifeRegenExpectedLossPerSecond = Math.Max(npc.lifeRegenExpectedLossPerSecond, value);
 
+	public static void StrikeNPCWithCustomCombatText(this NPC npc, NPC.HitInfo hit, Color textColor, bool dot = false)
+	{
+		npc.HideStrikeDamage = true;
+		npc.StrikeNPC(hit);
+		npc.HideStrikeDamage = false;
+		CombatText.NewText(npc.Hitbox, textColor, hit.Damage, hit.Crit, dot);
+	}
+
 	#endregion
 
 	#region Elemental Debuff
@@ -331,5 +337,34 @@ public static class NPCUtils
 	public static ref StatModifier GetElementalResistance(this NPC npc, string type) =>
 		ref npc.GetElementalDebuff(type).ElementalResistanceModifier;
 
+	#endregion
+
+	#region AI Utils
+
+	/// <summary>
+	/// Find the nearet npc from a given position.
+	/// </summary>
+	/// <param name="position"></param>
+	/// <param name="type"></param>
+	/// <param name="maxDistance"></param>
+	/// <returns></returns>
+	public static NPC FindNearest(Vector2 position, int type, float maxDistance = 2048)
+	{
+		NPC target = null;
+		float distanceMin = maxDistance;
+		foreach (var npc in Main.npc)
+		{
+			if (npc is not null && npc.active && npc.type == type)
+			{
+				float distanceNPC = (npc.Center - position).Length();
+				if (distanceNPC < distanceMin)
+				{
+					distanceMin = distanceNPC;
+					target = npc;
+				}
+			}
+		}
+		return target;
+	}
 	#endregion
 }

@@ -18,6 +18,17 @@ public class DevilHeart_Spark_II : Visual
 
 	public GradientColor dHSparkColor = new();
 
+	public void FillGradientColor()
+	{
+		dHSparkColor.colorList.Add((new Color(191, 241, 255, 250), 0));
+		dHSparkColor.colorList.Add((new Color(221, 155, 255, 250), 0.08f));
+		dHSparkColor.colorList.Add((new Color(225, 68, 223, 250), 0.18f));
+		dHSparkColor.colorList.Add((new Color(155, 0, 130, 250), 0.24f));
+		dHSparkColor.colorList.Add((new Color(25, 0, 230, 150), 0.44f));
+		dHSparkColor.colorList.Add((new Color(5, 0, 160, 150), 0.64f));
+		dHSparkColor.colorList.Add((new Color(24, 24, 24, 50), 1));
+	}
+
 	public override void Update()
 	{
 		trails.Enqueue(position);
@@ -39,13 +50,7 @@ public class DevilHeart_Spark_II : Visual
 		}
 		if (dHSparkColor.colorList.Count <= 0)
 		{
-			dHSparkColor.colorList.Add((new Color(191, 241, 255, 250), 0));
-			dHSparkColor.colorList.Add((new Color(221, 155, 255, 250), 0.08f));
-			dHSparkColor.colorList.Add((new Color(225, 68, 223, 250), 0.18f));
-			dHSparkColor.colorList.Add((new Color(155, 0, 130, 250), 0.24f));
-			dHSparkColor.colorList.Add((new Color(25, 0, 230, 150), 0.44f));
-			dHSparkColor.colorList.Add((new Color(5, 0, 160, 150), 0.64f));
-			dHSparkColor.colorList.Add((new Color(24, 24, 24, 50), 1));
+			FillGradientColor();
 		}
 		float timeLeftValue = timer / maxTime;
 		var lightColor = new Color(221, 155, 255, 250);
@@ -60,13 +65,7 @@ public class DevilHeart_Spark_II : Visual
 	{
 		if (dHSparkColor.colorList.Count <= 0)
 		{
-			dHSparkColor.colorList.Add((new Color(191, 241, 255, 250), 0));
-			dHSparkColor.colorList.Add((new Color(221, 155, 255, 250), 0.08f));
-			dHSparkColor.colorList.Add((new Color(225, 68, 223, 250), 0.18f));
-			dHSparkColor.colorList.Add((new Color(155, 0, 130, 250), 0.24f));
-			dHSparkColor.colorList.Add((new Color(25, 0, 230, 150), 0.44f));
-			dHSparkColor.colorList.Add((new Color(5, 0, 160, 150), 0.64f));
-			dHSparkColor.colorList.Add((new Color(24, 24, 24, 50), 1));
+			FillGradientColor();
 		}
 		var toCorner = new Vector2(0, scale);
 		var bars = new List<Vertex2D>();

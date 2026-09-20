@@ -20,7 +20,7 @@ public class TwilightBlueCrystal_2 : ModTile, ISceneTile
 		{
 			16,
 			16,
-			18
+			18,
 		};
 		TileObjectData.newTile.StyleHorizontal = true;
 		TileObjectData.newTile.LavaDeath = false;
@@ -28,6 +28,7 @@ public class TwilightBlueCrystal_2 : ModTile, ISceneTile
 		AddMapEntry(new Color(40, 80, 148));
 		DustType = ModContent.DustType<TwilightCrystalDust>();
 	}
+
 	public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 	{
 		r = 0.07f;
@@ -35,20 +36,22 @@ public class TwilightBlueCrystal_2 : ModTile, ISceneTile
 		b = 0.45f;
 		base.ModifyLight(i, j, ref r, ref g, ref b);
 	}
+
 	public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 	}
+
 	public void AddScene(int i, int j)
 	{
 		Tile tile = Main.tile[i, j];
 		if (tile.TileFrameX == 0 && tile.TileFrameY == 0)
 		{
-			TwilightBlueCrystal_2_Mirror mirror = new TwilightBlueCrystal_2_Mirror { position = new Vector2(i, j) * 16 + new Vector2(4, 8), Active = true, Visible = true, originTile = new Point(i, j), originType = Type, texture = ModAsset.TwilightBlueCrystal_2_Mirror.Value };
+			TwilightBlueCrystal_2_Mirror mirror = new TwilightBlueCrystal_2_Mirror { Position = new Vector2(i, j) * 16 + new Vector2(4, 8), Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = Type, Texture = ModAsset.TwilightBlueCrystal_2_Mirror.Value };
 			Ins.VFXManager.Add(mirror);
 		}
 		if (tile.TileFrameX == 54 && tile.TileFrameY == 0)
 		{
-			TwilightBlueCrystal_2_Mirror mirror = new TwilightBlueCrystal_2_Mirror { position = new Vector2(i, j) * 16 + new Vector2(8, 8), Active = true, Visible = true, originTile = new Point(i, j), originType = Type, FlipH = true, texture = ModAsset.TwilightBlueCrystal_2_Mirror_flipH.Value };
+			TwilightBlueCrystal_2_Mirror mirror = new TwilightBlueCrystal_2_Mirror { Position = new Vector2(i, j) * 16 + new Vector2(8, 8), Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = Type, FlipH = true, Texture = ModAsset.TwilightBlueCrystal_2_Mirror_flipH.Value };
 			Ins.VFXManager.Add(mirror);
 		}
 	}

@@ -20,7 +20,7 @@ public class KissOfCthulhu : ModItem
 
 		Item.useStyle = ItemUseStyleID.Shoot;
 		Item.useTime = Item.useAnimation = 22;
-		Item.autoReuse = false;
+		Item.autoReuse = true;
 		Item.noMelee = true;
 
 		Item.rare = ItemRarityID.Green;

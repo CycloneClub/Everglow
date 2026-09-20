@@ -9,10 +9,10 @@ public abstract class Tile_MirrorFaceVFX : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawProjectiles;
 
-	public Vector2 position;
-	public Texture2D texture;
-	public Point originTile;
-	public int originType;
+	public Vector2 Position;
+	public Texture2D Texture;
+	public Point OriginTilePos;
+	public int OriginTileType;
 	public float DepthZ = -50;
 
 	public override void OnSpawn()
@@ -21,76 +21,76 @@ public abstract class Tile_MirrorFaceVFX : Visual
 
 	public override void Update()
 	{
-		if (originTile.X > 0 && originTile.X < Main.maxTilesX)
+		if (OriginTilePos.X > 0 && OriginTilePos.X < Main.maxTilesX)
 		{
-			if (originTile.Y > 0 && originTile.Y < Main.maxTilesY)
+			if (OriginTilePos.Y > 0 && OriginTilePos.Y < Main.maxTilesY)
 			{
-				Tile tile = Main.tile[originTile.X, originTile.Y];
+				Tile tile = Main.tile[OriginTilePos.X, OriginTilePos.Y];
 				if (tile != null)
 				{
 					if (TileLoader.GetTile(tile.TileType) is ISceneTile)
 					{
-						if (tile.TileType == originType)
+						if (tile.TileType == OriginTileType)
 						{
 							if (!tile.HasTile)
 							{
 								Active = false;
-								SceneVFXSystem.TilePointHasScene[(originTile.X, originTile.Y)] = false;
+								SceneVFXSystem.TilePointHasScene[(OriginTilePos.X, OriginTilePos.Y)] = false;
 							}
 						}
 						else
 						{
 							Active = false;
-							SceneVFXSystem.TilePointHasScene[(originTile.X, originTile.Y)] = false;
+							SceneVFXSystem.TilePointHasScene[(OriginTilePos.X, OriginTilePos.Y)] = false;
 						}
 					}
 					else
 					{
 						Active = false;
-						SceneVFXSystem.TilePointHasScene[(originTile.X, originTile.Y)] = false;
+						SceneVFXSystem.TilePointHasScene[(OriginTilePos.X, OriginTilePos.Y)] = false;
 					}
 				}
 				else
 				{
 					Active = false;
-					SceneVFXSystem.TilePointHasScene[(originTile.X, originTile.Y)] = false;
+					SceneVFXSystem.TilePointHasScene[(OriginTilePos.X, OriginTilePos.Y)] = false;
 				}
 			}
 			else
 			{
 				Active = false;
-				SceneVFXSystem.TilePointHasScene[(originTile.X, originTile.Y)] = false;
+				SceneVFXSystem.TilePointHasScene[(OriginTilePos.X, OriginTilePos.Y)] = false;
 			}
 		}
 		else
 		{
 			Active = false;
-			SceneVFXSystem.TilePointHasScene[(originTile.X, originTile.Y)] = false;
+			SceneVFXSystem.TilePointHasScene[(OriginTilePos.X, OriginTilePos.Y)] = false;
 		}
-		Vector2 checkPos = position + texture.Size() / 2;
-		if (VFXManager.InScreen(checkPos, Math.Max(texture.Width, texture.Height + 200)))
+		Vector2 checkPos = Position + Texture.Size() / 2;
+		if (VFXManager.InScreen(checkPos, Math.Max(Texture.Width, Texture.Height + 200)))
 		{
 			Visible = true;
 		}
 		else
 		{
 			Active = false;
-			SceneVFXSystem.TilePointHasScene[(originTile.X, originTile.Y)] = false;
+			SceneVFXSystem.TilePointHasScene[(OriginTilePos.X, OriginTilePos.Y)] = false;
 		}
 	}
 
 	public override void Draw()
 	{
 		Color color = Color.White;
-		Main.graphics.GraphicsDevice.Textures[1] = texture;
+		Main.graphics.GraphicsDevice.Textures[1] = Texture;
 		float z = DepthZ;
 		List<MirrorFaceVertex> bars = new List<MirrorFaceVertex>()
 		{
-			new MirrorFaceVertex(new Vector3(position, z), color, new Vector3(0, 0, 0)),
-			new MirrorFaceVertex(new Vector3(position + new Vector2(texture.Width, 0), z), color, new Vector3(1, 0, 0)),
+			new MirrorFaceVertex(new Vector3(Position, z), color, new Vector3(0, 0, 0)),
+			new MirrorFaceVertex(new Vector3(Position + new Vector2(Texture.Width, 0), z), color, new Vector3(1, 0, 0)),
 
-			new MirrorFaceVertex(new Vector3(position + new Vector2(0, texture.Height), z), color, new Vector3(0, 1, 0)),
-			new MirrorFaceVertex(new Vector3(position + new Vector2(texture.Width, texture.Height), z), color, new Vector3(1, 1, 0)),
+			new MirrorFaceVertex(new Vector3(Position + new Vector2(0, Texture.Height), z), color, new Vector3(0, 1, 0)),
+			new MirrorFaceVertex(new Vector3(Position + new Vector2(Texture.Width, Texture.Height), z), color, new Vector3(1, 1, 0)),
 		};
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 	}

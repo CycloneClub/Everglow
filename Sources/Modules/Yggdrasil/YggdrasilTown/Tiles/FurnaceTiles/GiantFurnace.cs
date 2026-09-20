@@ -45,14 +45,14 @@ public class GiantFurnace : ShapeDataTile, ISceneTile
 	public void AddScene(int i, int j)
 	{
 		Tile tile = Main.tile[i, j];
-		if (tile.TileFrameX == 468 && tile.TileFrameY == 702)
-		{
-			var scene = new GiantFurnace_Body { position = new Vector2(i, j) * 16 + new Vector2(-226, -640), Active = true, originTile = new Point(i, j), originType = Type };
-			Ins.VFXManager.Add(scene);
-		}
+		//if (tile.TileFrameX == 468 && tile.TileFrameY == 702)
+		//{
+		//	var scene = new GiantFurnace_Body { Position = new Vector2(i, j) * 16 + new Vector2(-226, -640), Active = true, OriginTilePos = new Point(i, j), OriginTileType = Type };
+		//	Ins.VFXManager.Add(scene);
+		//}
 		if (tile.TileFrameX == 468 && tile.TileFrameY == 306)
 		{
-			var scene = new GiantFurnace_LavaWindow { position = new Vector2(i, j) * 16 + new Vector2(-46, 12), Active = true, originTile = new Point(i, j), originType = Type };
+			var scene = new GiantFurnace_LavaWindow { Position = new Vector2(i, j) * 16 + new Vector2(-46, 14), Active = true, OriginTilePos = new Point(i, j), OriginTileType = Type };
 			Ins.VFXManager.Add(scene);
 		}
 	}

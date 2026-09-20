@@ -1,14 +1,14 @@
 TuskTreasureBag: {
-	DisplayName: Tusk Treasure Bag
+	DisplayName: 鲜血獠牙宝藏袋
 	Tooltip: ""
 }
 
 CorruptMothTreasureBag: {
-	DisplayName: Corrupt Moth Treasure Bag
+	DisplayName: 腐檀巨蛾宝藏袋
 	Tooltip: ""
 }
 
 SquamousShellTreasureBag: {
-	DisplayName: Squamous Shell Treasure Bag
+	DisplayName: 龙鳞古壳宝藏袋
 	Tooltip: ""
 }

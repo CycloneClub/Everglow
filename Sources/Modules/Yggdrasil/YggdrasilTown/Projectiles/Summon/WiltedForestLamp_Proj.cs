@@ -199,7 +199,7 @@ public class WiltedForestLamp_Proj : ModProjectile
 				{
 					if ((npc.Center - Projectile.Center).Length() < 220)
 					{
-						npc.AddElementalDebuffBuildUp(Main.player[Projectile.owner], NecrosisDebuff.ID, 50 * player.maxMinions);
+						npc.AddElementalDebuffBuildUp(Main.player[Projectile.owner], BurnDebuff.ID, 5000);
 					}
 				}
 			}

@@ -28,6 +28,11 @@ public abstract class ShapeDataTile : ModTile
 	}
 
 	public int[,] PixelHasTile;
+
+	/// <summary>
+	/// If top, bottom, left or right is not <see cref="PixelHasTile"/>, it must be solid tile for valid placement.
+	/// </summary>
+	public int[,] PixelHasAttach;
 	public int TotalWidth;
 	public int TotalHeight;
 
@@ -52,6 +57,7 @@ public abstract class ShapeDataTile : ModTile
 		imageData.ProcessPixelRows(accessor =>
 		{
 			PixelHasTile = new int[accessor.Width, accessor.Height];
+			PixelHasAttach = new int[accessor.Width, accessor.Height];
 			TotalWidth = accessor.Width;
 			TotalHeight = accessor.Height;
 			for (int y = 0; y < accessor.Height; y++)
@@ -61,6 +67,7 @@ public abstract class ShapeDataTile : ModTile
 				{
 					ref var pixel = ref pixelRow[x];
 					PixelHasTile[x, y] = pixel.R;
+					PixelHasAttach[x, y] |= pixel.G;
 				}
 			}
 		});
@@ -125,6 +132,15 @@ public abstract class ShapeDataTile : ModTile
 	/// <summary>
 	/// 从左上角安置一个造型物块
 	/// </summary>
+	/// <param name="pos"></param>
+	public virtual void PlaceOriginAtTopLeft(Point pos)
+	{
+		PlaceOriginAtTopLeft(pos.X, pos.Y);
+	}
+
+	/// <summary>
+	/// 从左上角安置一个造型物块
+	/// </summary>
 	/// <param name="x"></param>
 	/// <param name="y"></param>
 	public virtual void PlaceOriginAtTopLeft(int x, int y)
@@ -148,6 +164,15 @@ public abstract class ShapeDataTile : ModTile
 				}
 			}
 		}
+	}
+
+	/// <summary>
+	/// 从左下角安置一个造型物块
+	/// </summary>
+	/// <param name="pos"></param>
+	public virtual void PlaceOriginAtBottomLeft(Point pos)
+	{
+		PlaceOriginAtBottomLeft(pos.X, pos.Y);
 	}
 
 	/// <summary>
@@ -178,6 +203,32 @@ public abstract class ShapeDataTile : ModTile
 		}
 	}
 
+	public virtual void PlaceAtTileObjectDataOrigin(int i, int j)
+	{
+		TileObjectData tileObjectData = TileObjectData.GetTileData(Type, Main.LocalPlayer.HeldItem.placeStyle);
+		i -= tileObjectData.Origin.X;
+		j -= tileObjectData.Origin.Y;
+		if (i + TotalWidth > Main.maxTilesX || i < 0 || j + TotalHeight > Main.maxTilesY || j < 0)
+		{
+			return;
+		}
+		for (int x = 0; x < TotalWidth; x++)
+		{
+			for (int y = 0; y < TotalHeight; y++)
+			{
+				if (PixelHasTile[x, y] >= 200)
+				{
+					Tile tile = Main.tile[x + i, y + j];
+					tile.TileType = Type;
+					tile.TileFrameX = (short)(x * 18);
+					tile.TileFrameY = (short)(y * 18);
+					tile.HasTile = true;
+				}
+			}
+		}
+		NetMessage.SendTileSquare(-1, i, j, TotalWidth, TotalHeight);
+	}
+
 	/// <summary>
 	/// 判定底部平坦以及能否容纳下异形块
 	/// </summary>
@@ -200,36 +251,14 @@ public abstract class ShapeDataTile : ModTile
 					Tile tile = Main.tile[x + i, y - j];
 					if (tile.HasTile)
 					{
-						bool fragile = false;
-						if (Main.tileCut[tile.TileType])
-						{
-							fragile = true;
-						}
-						if (Main.tilePile[tile.TileType])
-						{
-							fragile = true;
-						}
-						if (!fragile)
+						if (!TileFragile(tile))
 						{
 							return false;
 						}
 					}
 					if (j == 0)
 					{
-						Tile tileBottom = Main.tile[x + i, y + 1];
-						if (!tileBottom.HasTile)
-						{
-							return false;
-						}
-						if (tileBottom.Slope != SlopeType.Solid)
-						{
-							return false;
-						}
-						if (tileBottom.IsHalfBlock)
-						{
-							return false;
-						}
-						if (!(Main.tileSolidTop[tileBottom.TileType] || Main.tileSolid[tileBottom.TileType]))
+						if (!TileSolidWithNoSlope(x + i, y + 1))
 						{
 							return false;
 						}
@@ -262,42 +291,127 @@ public abstract class ShapeDataTile : ModTile
 					Tile tile = Main.tile[x + i, y + j];
 					if (tile.HasTile)
 					{
-						bool fragile = false;
-						if (Main.tileCut[tile.TileType])
-						{
-							fragile = true;
-						}
-						if (Main.tilePile[tile.TileType])
-						{
-							fragile = true;
-						}
-						if (!fragile)
+						if (!TileFragile(tile))
 						{
 							return false;
 						}
 					}
 					if (j == 0)
 					{
-						Tile tileTop = Main.tile[x + i, y - 1];
-						if (!tileTop.HasTile)
-						{
-							return false;
-						}
-						if (tileTop.Slope != SlopeType.Solid)
-						{
-							return false;
-						}
-						if (tileTop.IsHalfBlock)
-						{
-							return false;
-						}
-						if (!(Main.tileSolidTop[tileTop.TileType] || Main.tileSolid[tileTop.TileType]))
+						if (!TileSolidWithNoSlope(x + i, y - 1))
 						{
 							return false;
 						}
 					}
 				}
 			}
+		}
+		return true;
+	}
+
+	/// <summary>
+	/// Check collision when place the tile.
+	/// </summary>
+	/// <param name="i"></param>
+	/// <param name="j"></param>
+	/// <param name="checkAttach"></param>
+	/// <returns></returns>
+	public bool NoCollideInSolidGrid(int i, int j, bool checkAttach = true)
+	{
+		if (Main.dedServ)
+		{
+			return false;
+		}
+		TileObjectData tileObjectData = TileObjectData.GetTileData(Type, Main.LocalPlayer.HeldItem.placeStyle);
+		i -= tileObjectData.Origin.X;
+		j -= tileObjectData.Origin.Y;
+		for (int x = 0; x < TotalWidth; x++)
+		{
+			for (int y = 0; y < TotalHeight; y++)
+			{
+				if (PixelHasTile[x, y] >= 200)
+				{
+					var tile = TileUtils.SafeGetTile(i + x, j + y);
+					if (tile.HasTile)
+					{
+						if (!TileFragile(tile))
+						{
+							return false;
+						}
+					}
+				}
+				if (checkAttach)
+				{
+					if (PixelHasAttach[x, y] > 200)
+					{
+						if (!ValidAttachCheck(i, j, x, y))
+						{
+							return false;
+						}
+					}
+				}
+			}
+		}
+		return true;
+	}
+
+	public bool ValidAttachCheck(int i, int j, int x, int y)
+	{
+		if (!TileSolidWithNoSlope(i + x + 1, j + y) && PixelHasTile[x + 1, y] < 200)
+		{
+			return false;
+		}
+		if (!TileSolidWithNoSlope(i + x, j + y + 1) && PixelHasTile[x, y + 1] < 200)
+		{
+			return false;
+		}
+		if (!TileSolidWithNoSlope(i + x - 1, j + y) && PixelHasTile[x - 1, y] < 200)
+		{
+			return false;
+		}
+		if (!TileSolidWithNoSlope(i + x, j + y - 1) && PixelHasTile[x, y - 1] < 200)
+		{
+			return false;
+		}
+		return true;
+	}
+
+	public bool TileFragile(Tile tile)
+	{
+		bool fragile = false;
+		if (Main.tileCut[tile.TileType])
+		{
+			fragile = true;
+		}
+		if (Main.tilePile[tile.TileType])
+		{
+			fragile = true;
+		}
+		return fragile;
+	}
+
+	public bool TileSolidWithNoSlope(int i, int j)
+	{
+		return TileSolidWithNoSlope(TileUtils.SafeGetTile(i, j));
+	}
+
+	public bool TileSolidWithNoSlope(Tile tile)
+	{
+		if (!tile.HasTile)
+		{
+			return false;
+		}
+		if (tile.Slope != SlopeType.Solid)
+		{
+			return false;
+		}
+		if (tile.IsHalfBlock)
+		{
+			return false;
+		}
+		if (!(Main.tileSolidTop[tile.TileType] || Main.tileSolid[tile.TileType]))
+		{
+			return false;
 		}
 		return true;
 	}

@@ -1,3 +1,5 @@
+using Everglow.Commons.Graphics;
+
 namespace Everglow.Yggdrasil.YggdrasilTown.VFXs;
 
 [Pipeline(typeof(WCSPipeline))]
@@ -14,6 +16,8 @@ public class MagicalBoomerangDust : Visual
 	public float maxScale;
 	public float rotation;
 	public int Frame = 0;
+
+	public bool gravity = false;
 
 	public override void Update()
 	{
@@ -36,9 +40,20 @@ public class MagicalBoomerangDust : Visual
 			return;
 		}
 		position += velocity;
-		velocity *= 0.9f;
+		if (!gravity)
+		{
+			velocity *= 0.9f;
+			scale *= 0.9f;
+		}
+		else
+		{
+			velocity *= 0.95f;
+			velocity.Y += 0.05f;
+			scale *= 0.98f;
+		}
 		Frame = (int)(timer / maxTime * 3f);
-		Lighting.AddLight(position, new Vector3(0f, 0.3f, 0.7f) * scale / 8f);
+		float value = (maxTime - timer) / maxTime;
+		Lighting.AddLight(position, Vector3.Lerp(new Vector3(1f, 1.5f, 2.2f), new Vector3(0f, 0f, 2.2f), 1 - value) * value);
 	}
 
 	public override void Draw()
@@ -46,7 +61,16 @@ public class MagicalBoomerangDust : Visual
 		float frameCount = 3;
 		float frameY = Frame;
 		Vector2 toCorner = new Vector2(0, scale).RotatedBy(rotation);
-		var drawColor = new Color(1f, 1f, 1f, 0);
+		float value = (maxTime - timer) / maxTime;
+		GradientColor gradientColor = new GradientColor();
+		if (gradientColor.colorList.Count <= 0)
+		{
+			gradientColor.colorList.Add((new Color(1f, 1f, 1f, 0), 0));
+			gradientColor.colorList.Add((new Color(0f, 0.5f, 1f, 0), 0.4f));
+			gradientColor.colorList.Add((new Color(0f, 0f, 1f, 0), 0.5f));
+			gradientColor.colorList.Add((new Color(0f, 0f, 0f, 0), 1f));
+		}
+		var drawColor = gradientColor.GetColor(1 - value);
 		var bars = new List<Vertex2D>()
 		{
 			new Vertex2D(position + toCorner, drawColor, new Vector3(0, frameY / frameCount, 0)),

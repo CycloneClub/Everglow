@@ -1,24 +1,24 @@
 StarSeed: {
-	DisplayName: Star Seed
+	DisplayName: 星种
 	Tooltip: ""
 }
 
 GoodNeighborCoin: {
-	DisplayName: Good Neighbor Coin
+	DisplayName: 好邻居币
 	Tooltip: ""
 }
 
 JellyBallFat: {
-	DisplayName: Jelly Ball Fat
+	DisplayName: 球冻脂
 	Tooltip: ""
 }
 
 StrongCorticalMembrane: {
-	DisplayName: Strong Cortical Membrane
+	DisplayName: 强韧的皮质膜
 	Tooltip: ""
 }
 
 YggdrasilPlayerRoomDoorKey: {
-	DisplayName: Yggdrasil Player Room Door Key
+	DisplayName: 天穹镇分配房之钥
 	Tooltip: ""
 }

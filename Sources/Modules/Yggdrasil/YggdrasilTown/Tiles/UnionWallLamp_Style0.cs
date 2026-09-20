@@ -16,12 +16,11 @@ public class UnionWallLamp_Style0 : ModTile
 		Main.tileWaterDeath[Type] = false;
 
 		TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3Wall);
-		TileObjectData.newTile.Origin = new(0, 0);
 		TileObjectData.newTile.Height = 7;
 		TileObjectData.newTile.Width = 5;
 		TileObjectData.newTile.AnchorTop = new AnchorData(AnchorType.None, 0, 0);
 		TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.None, 0, 0);
-		TileObjectData.newTile.CoordinateHeights = new int[12];
+		TileObjectData.newTile.CoordinateHeights = new int[7];
 		Array.Fill(TileObjectData.newTile.CoordinateHeights, 16);
 		TileObjectData.newTile.StyleHorizontal = true;
 		TileObjectData.newTile.LavaDeath = false;

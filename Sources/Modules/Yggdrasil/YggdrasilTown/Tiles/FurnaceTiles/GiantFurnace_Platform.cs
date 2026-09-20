@@ -48,7 +48,7 @@ public class GiantFurnace_Platform : ModTile, ISceneTile
 		Tile tile = Main.tile[i, j];
 		if (tile.TileFrameX == 648 && tile.TileFrameY == 144)
 		{
-			var scene = new GiantFurnace_SideLadder { position = new Vector2(i, j) * 16 + new Vector2(-16, -4), Active = true, originTile = new Point(i, j), originType = Type };
+			var scene = new GiantFurnace_SideLadder { Position = new Vector2(i, j) * 16 + new Vector2(-16, -4), Active = true, OriginTilePos = new Point(i, j), OriginTileType = Type };
 			Ins.VFXManager.Add(scene);
 		}
 	}

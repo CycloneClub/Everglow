@@ -3,10 +3,12 @@ using Everglow.Commons.VFX.Scene;
 namespace Everglow.Yggdrasil.YggdrasilTown.Tiles;
 
 [Pipeline(typeof(WCSPipeline))]
-public class BoneAndPlatform_foreground : ForegroundVFX
+public class BoneAndPlatform_foreground : TileVFX
 {
+	public override CodeLayer DrawLayer => CodeLayer.PostDrawPlayers;
+
 	public override void OnSpawn()
 	{
-		texture = ModAsset.BoneAndPlatform_foreground.Value;
+		Texture = ModAsset.BoneAndPlatform_foreground.Value;
 	}
 }

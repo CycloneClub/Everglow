@@ -52,7 +52,11 @@ public class ElectroProbe : ModItem
 		if ((Main.MouseWorld - player.Center).Length() <= 300)
 		{
 			Point point = Main.MouseWorld.ToTileCoordinates();
-			Wiring.TripWire(point.X, point.Y, 1, 1);
+			int i = point.X;
+			int j = point.Y;
+
+			Wiring.HitWireSingle(i, j);
+			Wiring.TripWire(i, j, 1, 1);
 		}
 		return base.CanUseItem(player);
 	}

@@ -31,6 +31,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Everglow.Function\Everglow.Function.csproj" />
+    <ProjectReference Include="..\Modules\Yggdrasil\Everglow.Yggdrasil.csproj" />
+    <Reference Include="..\..\Libraries\SubworldLibrary.dll" />
   </ItemGroup>
 
 </Project>

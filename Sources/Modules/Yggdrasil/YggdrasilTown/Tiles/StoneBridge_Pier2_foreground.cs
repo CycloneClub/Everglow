@@ -4,8 +4,9 @@ using SubworldLibrary;
 namespace Everglow.Yggdrasil.YggdrasilTown.Tiles;
 
 [Pipeline(typeof(WCSPipeline))]
-public class StoneBridge_Pier2_foreground : ForegroundVFX
+public class StoneBridge_Pier2_foreground : TileVFX
 {
+	public override CodeLayer DrawLayer => CodeLayer.PostDrawPlayers;
 	public override void Update()
 	{
 		if (!SubworldSystem.IsActive<YggdrasilWorld>())
@@ -17,6 +18,6 @@ public class StoneBridge_Pier2_foreground : ForegroundVFX
 
 	public override void OnSpawn()
 	{
-		texture = ModAsset.StoneBridge_Pier2.Value;
+		Texture = ModAsset.StoneBridge_Pier2.Value;
 	}
 }
