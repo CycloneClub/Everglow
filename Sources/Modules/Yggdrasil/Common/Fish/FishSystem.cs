@@ -10,6 +10,21 @@ public class FishSystem : ModSystem
 	public static Dictionary<ModBiome, List<FishableItem>> FishMap = [];
 	public static HashSet<int> LiquidList = [];
 
+	public override void Load()
+	{
+		FishMap = [];
+		LiquidList = [];
+	}
+
+	public override void Unload()
+	{
+		FishMap.Clear();
+		FishMap = null;
+
+		LiquidList.Clear();
+		LiquidList = null;
+	}
+
 	/// <summary>
 	/// 注册一种可以被钩取的渔获，会自然生成在指定生态群系的水面上
 	/// </summary>
@@ -35,7 +50,7 @@ public class FishSystem : ModSystem
 		LiquidList.Add(liquid);
 	}
 
-	public List<FishableItem> ShouldSpawnFish(Player player)
+	private List<FishableItem> ShouldSpawnFish(Player player)
 	{
 		List<FishableItem> toSpawn = [];
 		foreach (KeyValuePair<ModBiome, List<FishableItem>> kvp in FishMap)
@@ -55,7 +70,7 @@ public class FishSystem : ModSystem
 		return toSpawn;
 	}
 
-	public bool CheckSpawn(Player player, Point point, List<FishableItem> toSpawn)
+	private bool CheckSpawn(Player player, Point point, List<FishableItem> toSpawn)
 	{
 		Tile tile = TileUtils.SafeGetTile(point);
 		List<FishableItem> spawned = [];
@@ -108,7 +123,7 @@ public class FishSystem : ModSystem
 		return true;
 	}
 
-	public void SpawnInRect(Rectangle rect, Player player, List<FishableItem> toSpawn)
+	private void SpawnInRect(Rectangle rect, Player player, List<FishableItem> toSpawn)
 	{
 		if (toSpawn.Count == 0)
 		{
@@ -157,7 +172,7 @@ public class FishSystem : ModSystem
 		}
 	}
 
-	public void SpawnAroundPlayer(Player player)
+	private void SpawnAroundPlayer(Player player)
 	{
 		var toSpawn = ShouldSpawnFish(player);
 		if (toSpawn.Count == 0)
@@ -192,7 +207,5 @@ public class FishSystem : ModSystem
 				SpawnAroundPlayer(player);
 			}
 		}
-
-		base.PostUpdateTime();
 	}
 }
