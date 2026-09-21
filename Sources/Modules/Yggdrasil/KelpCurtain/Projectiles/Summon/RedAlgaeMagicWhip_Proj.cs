@@ -6,7 +6,7 @@ using Terraria.GameContent;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Summon;
 
-public class RedAlgaeMagicWhip_Proj : WhipProjectile
+public class RedAlgaeMagicWhip_Proj : WhipProjectile, IRedAlgaeToxinProjectile
 {
 	public override void SetDef()
 	{
@@ -16,6 +16,11 @@ public class RedAlgaeMagicWhip_Proj : WhipProjectile
 
 	public override void GenerateDusts()
 	{
+		if (Main.dedServ)
+		{
+			return;
+		}
+
 		Player player = Main.player[Projectile.owner];
 		float t = Projectile.ai[0] / TimeToFlyOut;
 		if (t > 0.4f && t < 0.9f)
@@ -127,10 +132,6 @@ public class RedAlgaeMagicWhip_Proj : WhipProjectile
 
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
-		int type = ModContent.BuffType<RedAlgae_FriendlyDebuff>();
-		if (!target.HasBuff(type))
-		{
-			target.AddBuff(type, RedAlgae_FriendlyDebuff.Duration);
-		}
+		RedAlgae_FriendlyDebuff_glocalNPC.HandleProjectileHit(target, Projectile);
 	}
 }

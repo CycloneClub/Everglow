@@ -1,13 +1,12 @@
-using Everglow.Yggdrasil.KelpCurtain;
+using Everglow.Yggdrasil.KelpCurtain.Projectiles.Melee;
 using Everglow.Yggdrasil.Netcode;
+using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Items.Weapons.UnderwaterTreasury;
 
 public class ArmOfGiantTree : ModItem
 {
-	public const int MaxChargeFrames = 150;
-
-	private const float ShockwaveRadius = 200f;
+	public const int MaxChargeFrames = ArmOfGiantTreeAttackState.ChargeDuration;
 
 	public override string LocalizationCategory => LocalizationUtils.Categories.MeleeWeapons;
 
@@ -18,105 +17,31 @@ public class ArmOfGiantTree : ModItem
 		Item.damage = 55;
 		Item.DamageType = DamageClass.Melee;
 		Item.knockBack = 7.25f;
-		Item.useTime = 45;
-		Item.useAnimation = 45;
-		Item.useStyle = ItemUseStyleID.Swing;
+		Item.useTime = Item.useAnimation = 2;
+		Item.useStyle = ItemUseStyleID.Shoot;
 		Item.autoReuse = true;
-		Item.reuseDelay = 30;
-		Item.UseSound = SoundID.Item1;
+		Item.channel = true;
+		Item.noMelee = true;
+		Item.noUseGraphic = true;
+		Item.shoot = ModContent.ProjectileType<ArmOfGiantTreeHeld>();
+		Item.shootSpeed = 1;
 		Item.rare = ItemRarityID.Orange;
 		Item.value = Item.buyPrice(gold: 2);
 	}
 
-	public override void HoldItem(Player player)
-	{
-		var mp = player.GetModPlayer<KelpCurtainPlayer>();
-
-		if (player.selectedItem != mp.ArmOfGiantTreeChargedSlot)
-		{
-			mp.ArmOfGiantTreeCharge = 0;
-			mp.ArmOfGiantTreeChargedSlot = player.selectedItem;
-		}
-
-		if (player.controlUseTile)
-		{
-			mp.ArmOfGiantTreeCharge = 0;
-			Item.useTime = 24;
-			Item.useAnimation = 24;
-			Item.reuseDelay = 0;
-			return;
-		}
-
-		Item.useTime = 45;
-		Item.useAnimation = 45;
-		Item.reuseDelay = 30;
-
-		if (player.controlUseItem && player.itemAnimation <= 0 && player.itemTime <= 0)
-		{
-			mp.ArmOfGiantTreeCharge = System.Math.Min(mp.ArmOfGiantTreeCharge + 1, MaxChargeFrames);
-		}
-	}
-
 	public override bool AltFunctionUse(Player player) => true;
 
-	public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+	public override bool CanUseItem(Player player) => player.GetModPlayer<KelpCurtainPlayer>().ArmOfGiantTreeRequestWait == 0
+		&& player.ownedProjectileCounts[ModContent.ProjectileType<ArmOfGiantTreeHeld>()] == 0;
+
+	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-		if (player.altFunctionUse != 2)
+		if (player.whoAmI == Main.myPlayer)
 		{
-			float charge = player.GetModPlayer<KelpCurtainPlayer>().ArmOfGiantTreeCharge / (float)MaxChargeFrames;
-			damage *= MathHelper.Lerp(0.75f, 2f, charge);
+			float angle = (Main.MouseWorld - player.MountedCenter).SafeNormalize(Vector2.UnitX * player.direction).ToRotation();
+			player.GetModPlayer<KelpCurtainPlayer>().ArmOfGiantTreeRequestWait = 60;
+			ArmOfGiantTreeChargePacket.Request(player, false, player.altFunctionUse == 2, angle);
 		}
+		return false;
 	}
-
-	public override bool? UseItem(Player player)
-	{
-		var mp = player.GetModPlayer<KelpCurtainPlayer>();
-		bool fullChargeSmash = player.altFunctionUse != 2 && mp.ArmOfGiantTreeCharge >= MaxChargeFrames;
-
-		if (Main.netMode == NetmodeID.MultiplayerClient)
-		{
-			if (fullChargeSmash)
-			{
-				ModIns.PacketResolver.Send(
-					new ArmOfGiantTreeChargePacket()
-					{
-						Charge = mp.ArmOfGiantTreeCharge,
-						ReleaseSmash = true,
-					}, toClient: -1, ignoreClient: Main.myPlayer);
-			}
-		}
-		else if (Main.netMode == NetmodeID.SinglePlayer)
-		{
-			if (fullChargeSmash)
-			{
-				ApplyShockwave(player);
-			}
-		}
-
-		mp.ArmOfGiantTreeCharge = 0;
-		return true;
-	}
-
-	public static void ApplyShockwave(Player player)
-	{
-		Item heldItem = player.HeldItem;
-		int shockDamage = System.Math.Max(1, heldItem.damage);
-		for (int i = 0; i < Main.maxNPCs; i++)
-		{
-			NPC npc = Main.npc[i];
-			if (!npc.active || npc.friendly || npc.dontTakeDamage)
-			{
-				continue;
-			}
-			if (Vector2.Distance(npc.Center, player.Center) > ShockwaveRadius + npc.width * 0.5f)
-			{
-				continue;
-			}
-			int direction = npc.Center.X >= player.Center.X ? 1 : -1;
-			npc.SimpleStrikeNPC(shockDamage, direction, false, heldItem.knockBack, DamageClass.Melee);
-			npc.netUpdate = true;
-		}
-	}
-
-	public static bool IsHeldBy(Player player) => player.HeldItem.type == ModContent.ItemType<ArmOfGiantTree>();
 }

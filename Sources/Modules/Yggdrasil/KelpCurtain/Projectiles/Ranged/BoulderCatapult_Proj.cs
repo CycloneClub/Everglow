@@ -8,8 +8,6 @@ public class BoulderCatapult_Proj : ModProjectile
 
 	public override string Texture => $"Terraria/Images/Projectile_{ProjectileID.Boulder}";
 
-	private bool AppliedDirectBonus { get; set; }
-
 	public override void SetDefaults()
 	{
 		Projectile.width = 32;
@@ -31,14 +29,9 @@ public class BoulderCatapult_Proj : ModProjectile
 		Projectile.rotation += 0.2f * Projectile.direction;
 	}
 
-	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+	public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 	{
-		if (Projectile.owner == Main.myPlayer && !AppliedDirectBonus)
-		{
-			AppliedDirectBonus = true;
-			Main.player[Projectile.owner].ApplyDamageToNPC(target, (int)(Projectile.damage * 0.5f), Projectile.knockBack, 0);
-		}
-		Projectile.Kill();
+		modifiers.SourceDamage *= 1.5f;
 	}
 
 	public override void OnKill(int timeLeft)

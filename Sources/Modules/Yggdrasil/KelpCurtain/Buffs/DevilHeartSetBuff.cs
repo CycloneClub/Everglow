@@ -9,8 +9,8 @@ public class DevilHeartSetBuff : ModBuff
 	public override void Update(Player player, ref int buffIndex)
 	{
 		player.GetDamage<MagicDamageClass>() += 0.06f; // Increases magic damage by 6%
-		player.GetCritChance<MagicDamageClass>() += 0.06f; // Increases summon damage by 6%
-		player.slotsMinions += 1; // Increases the number of minions the player can summon by 1
+		player.GetCritChance<MagicDamageClass>() += 6; // Increases magic critical chance by 6 percentage points
+		player.maxMinions += 1; // Increases the number of minions the player can summon by 1
 
 		// Bans mana regeneration
 		player.manaRegenBonus = -100;

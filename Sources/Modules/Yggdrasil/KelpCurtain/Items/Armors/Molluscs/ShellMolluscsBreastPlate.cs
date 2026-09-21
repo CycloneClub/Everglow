@@ -53,6 +53,7 @@ public class ShellMolluscsBreastPlate : ModItem
 
 	public override void UpdateArmorSet(Player player)
 	{
+		player.breathEffectiveness += 1f;
 		player.GetModPlayer<YggdrasilPlayer>().molluscsSet = true;
 	}
 }

@@ -27,12 +27,4 @@ public class TendonGreatbow_Arrow : ModProjectile
 		}
 		Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
 	}
-
-	public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
-	{
-		if (target.boss)
-		{
-			modifiers.FinalDamage *= 1.1f;
-		}
-	}
 }

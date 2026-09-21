@@ -4,7 +4,7 @@ using Terraria;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Magic;
 
-public class RedAlgaeMagicStaff_Proj : ModProjectile
+public class RedAlgaeMagicStaff_Proj : ModProjectile, IRedAlgaeToxinProjectile
 {
 	public float Timer = 0;
 
@@ -25,48 +25,51 @@ public class RedAlgaeMagicStaff_Proj : ModProjectile
 		Timer++;
 		Projectile.rotation = Projectile.velocity.ToRotation();
 		Projectile.velocity = Projectile.velocity.RotatedBy(MathF.Sin(Timer * 0.1f + Projectile.ai[0]) * 0.01f);
-		for (int k = 0; k < 2; k++)
+		if (!Main.dedServ)
 		{
-			var redAlgaeDust = new RedAlgae_Small_Dust();
-			redAlgaeDust.Position = Projectile.Center - Projectile.velocity * k * 0.5f;
-			redAlgaeDust.Rotation = Main.rand.NextFloat(MathHelper.TwoPi);
-			redAlgaeDust.Velocity = Vector2.zeroVector;
-			redAlgaeDust.ai = new float[] { 0 };
-			redAlgaeDust.MaxTime = 60;
-			redAlgaeDust.Scale = Main.rand.NextFloat(1.2f, 2.4f);
-			redAlgaeDust.Visible = true;
-			redAlgaeDust.Active = true;
-			Ins.VFXManager.Add(redAlgaeDust);
+			for (int k = 0; k < 2; k++)
+			{
+				var redAlgaeDust = new RedAlgae_Small_Dust();
+				redAlgaeDust.Position = Projectile.Center - Projectile.velocity * k * 0.5f;
+				redAlgaeDust.Rotation = Main.rand.NextFloat(MathHelper.TwoPi);
+				redAlgaeDust.Velocity = Vector2.zeroVector;
+				redAlgaeDust.ai = new float[] { 0 };
+				redAlgaeDust.MaxTime = 60;
+				redAlgaeDust.Scale = Main.rand.NextFloat(1.2f, 2.4f);
+				redAlgaeDust.Visible = true;
+				redAlgaeDust.Active = true;
+				Ins.VFXManager.Add(redAlgaeDust);
+			}
+			if (Timer % 8 == 4)
+			{
+				var redAlgaeDust = new RedAlgaeDust();
+				redAlgaeDust.Position = Projectile.Center - Projectile.velocity.NormalizeSafe().RotatedBy(MathHelper.PiOver2) * 12;
+				redAlgaeDust.Rotation = Projectile.rotation + MathHelper.PiOver4 * 3;
+				redAlgaeDust.Velocity = Vector2.zeroVector;
+				redAlgaeDust.ai = new float[] { 0, 0 };
+				redAlgaeDust.MaxScale = Main.rand.NextFloat(0.47f, 0.6f);
+				redAlgaeDust.MaxTime = 50;
+				redAlgaeDust.Frame = Main.rand.Next(4);
+				redAlgaeDust.Visible = true;
+				redAlgaeDust.Active = true;
+				Ins.VFXManager.Add(redAlgaeDust);
+			}
+			if (Timer % 8 == 0)
+			{
+				var redAlgaeDust = new RedAlgaeDust();
+				redAlgaeDust.Position = Projectile.Center + Projectile.velocity.NormalizeSafe().RotatedBy(MathHelper.PiOver2) * 12;
+				redAlgaeDust.Rotation = Projectile.rotation - MathHelper.PiOver4;
+				redAlgaeDust.Velocity = Vector2.zeroVector;
+				redAlgaeDust.ai = new float[] { 0, 0 };
+				redAlgaeDust.MaxScale = Main.rand.NextFloat(0.47f, 0.6f);
+				redAlgaeDust.MaxTime = 50;
+				redAlgaeDust.Frame = Main.rand.Next(4);
+				redAlgaeDust.Visible = true;
+				redAlgaeDust.Active = true;
+				Ins.VFXManager.Add(redAlgaeDust);
+			}
+			Lighting.AddLight(Projectile.Center, new Vector3(1f, 0.9f, 0.8f) * 0.5f);
 		}
-		if (Timer % 8 == 4)
-		{
-			var redAlgaeDust = new RedAlgaeDust();
-			redAlgaeDust.Position = Projectile.Center - Projectile.velocity.NormalizeSafe().RotatedBy(MathHelper.PiOver2) * 12;
-			redAlgaeDust.Rotation = Projectile.rotation + MathHelper.PiOver4 * 3;
-			redAlgaeDust.Velocity = Vector2.zeroVector;
-			redAlgaeDust.ai = new float[] { 0, 0 };
-			redAlgaeDust.MaxScale = Main.rand.NextFloat(0.47f, 0.6f);
-			redAlgaeDust.MaxTime = 50;
-			redAlgaeDust.Frame = Main.rand.Next(4);
-			redAlgaeDust.Visible = true;
-			redAlgaeDust.Active = true;
-			Ins.VFXManager.Add(redAlgaeDust);
-		}
-		if (Timer % 8 == 0)
-		{
-			var redAlgaeDust = new RedAlgaeDust();
-			redAlgaeDust.Position = Projectile.Center + Projectile.velocity.NormalizeSafe().RotatedBy(MathHelper.PiOver2) * 12;
-			redAlgaeDust.Rotation = Projectile.rotation - MathHelper.PiOver4;
-			redAlgaeDust.Velocity = Vector2.zeroVector;
-			redAlgaeDust.ai = new float[] { 0, 0 };
-			redAlgaeDust.MaxScale = Main.rand.NextFloat(0.47f, 0.6f);
-			redAlgaeDust.MaxTime = 50;
-			redAlgaeDust.Frame = Main.rand.Next(4);
-			redAlgaeDust.Visible = true;
-			redAlgaeDust.Active = true;
-			Ins.VFXManager.Add(redAlgaeDust);
-		}
-		Lighting.AddLight(Projectile.Center, new Vector3(1f, 0.9f, 0.8f) * 0.5f);
 
 		Vector2 closestTargetPos = new Vector2(-10000);
 		foreach (var npc in Main.npc)
@@ -96,11 +99,7 @@ public class RedAlgaeMagicStaff_Proj : ModProjectile
 
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
-		int type = ModContent.BuffType<RedAlgae_FriendlyDebuff>();
-		if (!target.HasBuff(type))
-		{
-			target.AddBuff(type, RedAlgae_FriendlyDebuff.Duration);
-		}
+		RedAlgae_FriendlyDebuff_glocalNPC.HandleProjectileHit(target, Projectile);
 	}
 
 	public override bool PreDraw(ref Color lightColor)

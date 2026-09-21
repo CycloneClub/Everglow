@@ -6,7 +6,7 @@ using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Magic;
 
-public class RedAlgaeMagicSpellBook_proj : ModProjectile
+public class RedAlgaeMagicSpellBook_proj : ModProjectile, IRedAlgaeToxinProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
 
@@ -102,6 +102,11 @@ public class RedAlgaeMagicSpellBook_proj : ModProjectile
 				}
 			}
 		}
+
+		if (Main.dedServ)
+		{
+			return;
+		}
 		if (Main.rand.NextBool(2))
 		{
 			Vector2 pos = new Vector2(0, Range * 1.05f).RotatedByRandom(MathHelper.TwoPi);
@@ -172,11 +177,7 @@ public class RedAlgaeMagicSpellBook_proj : ModProjectile
 
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
-		int type = ModContent.BuffType<RedAlgae_FriendlyDebuff>();
-		if (!target.HasBuff(type))
-		{
-			target.AddBuff(type, RedAlgae_FriendlyDebuff.Duration);
-		}
+		RedAlgae_FriendlyDebuff_glocalNPC.HandleProjectileHit(target, Projectile);
 	}
 
 	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
@@ -339,6 +340,11 @@ public class RedAlgaeMagicSpellBook_proj : ModProjectile
 
 	public override void OnKill(int timeLeft)
 	{
+		if (Main.dedServ)
+		{
+			return;
+		}
+
 		for (int k = 0; k < 20; k++)
 		{
 			var redAlgaeDust = new RedAlgae_Small_Dust();
