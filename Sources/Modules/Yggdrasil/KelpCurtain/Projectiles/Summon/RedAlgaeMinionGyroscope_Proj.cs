@@ -7,7 +7,7 @@ namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Summon;
 /// <summary>
 /// Non-air summon projectile.
 /// </summary>
-public class RedAlgaeMinionGyroscope_Proj : GyroscopeProjectile
+public class RedAlgaeMinionGyroscope_Proj : GyroscopeProjectile, IRedAlgaeToxinProjectile
 {
 	public override void SetDefaults()
 	{
@@ -21,6 +21,11 @@ public class RedAlgaeMinionGyroscope_Proj : GyroscopeProjectile
 	/// <param name="count"></param>
 	public override void BottomSpark(int count = 1)
 	{
+		if (Main.dedServ)
+		{
+			return;
+		}
+
 		for (int i = 0; i < count; ++i)
 		{
 			if (Main.rand.NextBool(2))
@@ -83,11 +88,7 @@ public class RedAlgaeMinionGyroscope_Proj : GyroscopeProjectile
 
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
-		int type = ModContent.BuffType<RedAlgae_FriendlyDebuff>();
-		if (!target.HasBuff(type))
-		{
-			target.AddBuff(type, 900);
-		}
+		RedAlgae_FriendlyDebuff_glocalNPC.HandleProjectileHit(target, Projectile);
 	}
 
 	/// <summary>
@@ -111,10 +112,31 @@ public class RedAlgaeMinionGyroscope_Proj : GyroscopeProjectile
 		}
 	}
 
-	public override void KillingSpark(int count = 20) => base.KillingSpark(count);
+	public override void KillingSpark(int count = 20)
+	{
+		if (!Main.dedServ)
+		{
+			base.KillingSpark(count);
+		}
+	}
 
 	public override void WhipSpark(int count = 20)
 	{
+		foreach (var npc in Main.npc)
+		{
+			if (npc is not null && npc.active)
+			{
+				if (!npc.friendly && !npc.dontTakeDamage && MathUtils.IntersectsCircleAABB(Projectile.Center, 180, npc.position, npc.position + npc.Size))
+				{
+					RedAlgae_FriendlyDebuff_glocalNPC.HandleProjectileHit(npc, Projectile, applyOnly: true);
+				}
+			}
+		}
+
+		if (Main.dedServ)
+		{
+			return;
+		}
 		for (int k = 0; k < 18; k++)
 		{
 			var redAlgaeDust = new RedAlgae_Spark();
@@ -162,20 +184,6 @@ public class RedAlgaeMinionGyroscope_Proj : GyroscopeProjectile
 		gasRing.Visible = true;
 		gasRing.Active = true;
 		Ins.VFXManager.Add(gasRing);
-		int type = ModContent.BuffType<RedAlgae_FriendlyDebuff>();
-		foreach (var npc in Main.npc)
-		{
-			if (npc is not null && npc.active)
-			{
-				if (!npc.friendly && !npc.dontTakeDamage && MathUtils.IntersectsCircleAABB(Projectile.Center, 180, npc.position, npc.position + npc.Size))
-				{
-					if (!npc.HasBuff(type))
-					{
-						npc.AddBuff(type, 900);
-					}
-				}
-			}
-		}
 	}
 
 	public override bool PreDraw(ref Color lightColor)

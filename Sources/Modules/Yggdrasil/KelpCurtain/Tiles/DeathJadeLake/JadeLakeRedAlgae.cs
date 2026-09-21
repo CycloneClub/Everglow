@@ -66,7 +66,10 @@ public class JadeLakeRedAlgae : ModTile, ITileFluentlyDrawn
 			{
 				if (player.Hitbox.Intersects(new Rectangle(i * 16 - 8, j * 16 - 8, 32, 32)))
 				{
-					player.velocity *= 0.9f;
+					if (!player.GetModPlayer<KelpCurtainPlayer>().CrimsonMoonAlgaeGreaves)
+					{
+						player.velocity *= 0.9f;
+					}
 					player.AddBuff(ModContent.BuffType<RedAlgaeDebuff>(), 120);
 				}
 			}
