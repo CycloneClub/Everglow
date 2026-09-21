@@ -48,19 +48,9 @@ public class OriginPylon : ModTile, ISceneTile
 
 	public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 	{
-		Tile tile = Main.tile[i, j];
-		if (tile.TileFrameX < 108)
-		{
-			r = 1f;
-			g = 1f;
-			b = 1f;
-		}
-		else
-		{
-			r = 1f;
-			g = 1f;
-			b = 1f;
-		}
+		r = 10f;
+		g = 10f;
+		b = 10f;
 		base.ModifyLight(i, j, ref r, ref g, ref b);
 	}
 

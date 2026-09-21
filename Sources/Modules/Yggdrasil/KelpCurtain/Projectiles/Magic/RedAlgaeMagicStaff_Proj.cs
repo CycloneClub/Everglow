@@ -73,7 +73,7 @@ public class RedAlgaeMagicStaff_Proj : ModProjectile
 		{
 			if (npc is not null && npc.active)
 			{
-				if (!npc.friendly && !npc.dontTakeDamage && npc.CanBeChasedBy(Projectile))
+				if (!npc.friendly && !npc.dontTakeDamage && npc.CanBeChasedBy(Projectile) && Collision.CanHit(Projectile, npc))
 				{
 					Vector2 toTargetCheck = npc.Center - Projectile.Center;
 					if (toTargetCheck.Length() < (closestTargetPos - Projectile.Center).Length())

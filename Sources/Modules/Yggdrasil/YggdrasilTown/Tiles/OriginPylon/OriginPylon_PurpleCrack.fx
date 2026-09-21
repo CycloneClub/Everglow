@@ -12,7 +12,13 @@ float4 PixelShaderFunction(PSInput input) : COLOR0
     float light = tex2D(uImage, input.Texcoord.xy).r * input.Color.r;
     light *= sin((((input.Texcoord.y - 0.5) * 5) + 0.5) * 3.14159) * 2.4;
     if (light > 0.4 && light < 0.7)
-        return float4(0.5, 0, 1, 1) * (0.7 - light) * 4;
+	{
+	    float4 c0 = float4(0.5, 0, 1, 1) * (0.7 - light) * 4;
+		c0.a = 1;
+	    return c0;
+	}
+	if (light >= 0.7)
+        return float4(0, 0, 0, 1);
     return float4(0, 0, 0, 0);
 }
 

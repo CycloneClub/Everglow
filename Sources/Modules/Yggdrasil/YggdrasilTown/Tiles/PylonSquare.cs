@@ -29,11 +29,19 @@ public class PylonSquare : BackgroundSlideBase
 	{
 		Texture2D chain = ModAsset.PylonSquare_Chain.Value;
 		Vector2 center = WorldAnchor + new Vector2(1616, 176);
+
+		int cubeLightY = 320;
+		Vector3 cubeLightColor = new Vector3(1.6f, 3f, 4f) * 0.4f;
+		Lighting.AddLight(center + new Vector2(0, cubeLightY), cubeLightColor);
+		Lighting.AddLight(center + new Vector2(360, cubeLightY), cubeLightColor);
+		Lighting.AddLight(center + new Vector2(-360, cubeLightY), cubeLightColor);
+		Lighting.AddLight(center + new Vector2(600, cubeLightY), cubeLightColor * 0.8f);
+		Lighting.AddLight(center + new Vector2(-600, cubeLightY), cubeLightColor * 0.8f);
+		Lighting.AddLight(center + new Vector2(800, cubeLightY), cubeLightColor * 0.6f);
+		Lighting.AddLight(center + new Vector2(-800, cubeLightY), cubeLightColor * 0.6f);
+
 		Vector2 drawPos0 = center + new Vector2(454, 300);
 		Vector2 drawPos1 = center + new Vector2(-454, 300);
-		//Main.spriteBatch.Draw(chain, drawPos0 - Main.screenPosition, null, Main.ColorOfTheSkies, 0, new Vector2(chain.Width * 0.5f, chain.Height), 1f, SpriteEffects.None, 0);
-		//Main.spriteBatch.Draw(chain, drawPos1 - Main.screenPosition, null, Main.ColorOfTheSkies, 0, new Vector2(chain.Width * 0.5f, chain.Height), 1f, SpriteEffects.FlipHorizontally, 0);
-
 		var bars = new List<Vertex2D>();
 		BackgroundHigherPerformanceHelper.Add_TileBgVertice(this, BgTiles, bars, 1);
 		DrawVertexBackground(this, PrimitiveType.TriangleStrip, bars);
@@ -50,6 +58,9 @@ public class PylonSquare : BackgroundSlideBase
 
 		Lighting.AddLight(drawPos1 + new Vector2(0, -150), new Vector3(3f, 2f, 6f));
 		Main.spriteBatch.Draw(torch, drawPos1 - Main.screenPosition, frame, Color.White, 0, new Vector2(100, 350), 1f, SpriteEffects.FlipHorizontally, 0);
+
+		Texture2D bloom = ModAsset.PylonSquare_bloom.Value;
+		Main.spriteBatch.Draw(bloom, center + new Vector2(0, 318) - Main.screenPosition, null, new Color(1f, 1f, 1f, 0), 0, bloom.Size() * 0.5f, 1f, SpriteEffects.None, 0);
 	}
 
 	public override bool CanActive()

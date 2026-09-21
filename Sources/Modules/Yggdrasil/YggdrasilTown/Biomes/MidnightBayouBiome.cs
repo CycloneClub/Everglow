@@ -91,7 +91,7 @@ public class MidnightBayouBiome : ModBiome
 			Ins.VFXManager.Add(cloud);
 		}
 		BackgroundSystem bgSystem = ModContent.GetInstance<BackgroundSystem>();
-		if (!bgSystem.HasBgSlide("Everglow.Yggdrasil.YggdrasilTown.Tiles.PylonSquare"))
+		if (!bgSystem.HasBgSlide("Everglow.Yggdrasil.YggdrasilTown.Background.MidnightBayou_Sky"))
 		{
 			MidnightBayou_Sky m_Sky = new MidnightBayou_Sky();
 			m_Sky.WorldAnchor = YggdrasilTownBackground.OriginPylonCenter;
@@ -114,31 +114,36 @@ public class MidnightBayouBiome : ModBiome
 			bgSystem.AddBackgroundSlide(m_Close);
 			AddBackground(bgSystem);
 		}
+
+		if (!bgSystem.HasBgSlide("Everglow.Yggdrasil.YggdrasilTown.Tiles.PylonSquare"))
+		{
+			Point center = YggdrasilTownGeneration.YggdrasilTownTopLeft + new Point(1195, 134);
+			PylonSquare pSquare = new PylonSquare();
+			pSquare.WorldAnchor = center.ToWorldCoordinates() + new Vector2(-816, 370);
+			pSquare.BgTiles = TileUtils.GetAABBAreaOfTile(center.X, center.Y, 100, 60);
+			pSquare.TileAnchor = (YggdrasilTownBiome.BiomeCenter + new Vector2(228, -464)).ToTileCoordinates() + new Point(-14, 29);
+			bgSystem.AddBackgroundSlide(pSquare);
+
+			PylonSquare_Chain pSC = new PylonSquare_Chain();
+			center = YggdrasilTownGeneration.YggdrasilTownTopLeft + new Point(1214, 68);
+			pSC.WorldAnchor = center.ToWorldCoordinates() + new Vector2(48, 370);
+			pSC.BgTiles = TileUtils.GetAABBAreaOfTile(center.X, center.Y, 5, 120);
+			pSC.TileAnchor = (YggdrasilTownBiome.BiomeCenter + new Vector2(228, -464)).ToTileCoordinates() + new Point(-14, 29);
+			bgSystem.AddBackgroundSlide(pSC);
+
+			PylonSquare_Chain pSC1 = new PylonSquare_Chain();
+			center = YggdrasilTownGeneration.YggdrasilTownTopLeft + new Point(1270, 68);
+			pSC1.WorldAnchor = center.ToWorldCoordinates() + new Vector2(48, 370);
+			pSC1.BgTiles = TileUtils.GetAABBAreaOfTile(center.X, center.Y, 5, 120);
+			pSC1.TileAnchor = (YggdrasilTownBiome.BiomeCenter + new Vector2(228, -464)).ToTileCoordinates() + new Point(-14, 29);
+			pSC1.Texture = ModAsset.PylonSquare_Chain_Flip.Value;
+			bgSystem.AddBackgroundSlide(pSC1);
+		}
 		base.OnInBiome(player);
 	}
 
 	public void AddBackground(BackgroundSystem bgSystem)
 	{
-		Point center = YggdrasilTownGeneration.YggdrasilTownTopLeft + new Point(1195, 134);
-		PylonSquare pSquare = new PylonSquare();
-		pSquare.WorldAnchor = center.ToWorldCoordinates() + new Vector2(-816, 370);
-		pSquare.BgTiles = TileUtils.GetAABBAreaOfTile(center.X, center.Y, 100, 60);
-		pSquare.TileAnchor = (YggdrasilTownBiome.BiomeCenter + new Vector2(228, -464)).ToTileCoordinates() + new Point(-14, 29);
-		bgSystem.AddBackgroundSlide(pSquare);
-
-		PylonSquare_Chain pSC = new PylonSquare_Chain();
-		center = YggdrasilTownGeneration.YggdrasilTownTopLeft + new Point(1214, 68);
-		pSC.WorldAnchor = center.ToWorldCoordinates() + new Vector2(48, 370);
-		pSC.BgTiles = TileUtils.GetAABBAreaOfTile(center.X, center.Y, 5, 120);
-		pSC.TileAnchor = (YggdrasilTownBiome.BiomeCenter + new Vector2(228, -464)).ToTileCoordinates() + new Point(-14, 29);
-		bgSystem.AddBackgroundSlide(pSC);
-
-		PylonSquare_Chain pSC1 = new PylonSquare_Chain();
-		center = YggdrasilTownGeneration.YggdrasilTownTopLeft + new Point(1270, 68);
-		pSC1.WorldAnchor = center.ToWorldCoordinates() + new Vector2(48, 370);
-		pSC1.BgTiles = TileUtils.GetAABBAreaOfTile(center.X, center.Y, 5, 120);
-		pSC1.TileAnchor = (YggdrasilTownBiome.BiomeCenter + new Vector2(228, -464)).ToTileCoordinates() + new Point(-14, 29);
-		pSC1.Texture = ModAsset.PylonSquare_Chain_Flip.Value;
-		bgSystem.AddBackgroundSlide(pSC1);
+		
 	}
 }

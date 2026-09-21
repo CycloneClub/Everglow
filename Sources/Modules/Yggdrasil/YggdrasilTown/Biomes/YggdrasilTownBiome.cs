@@ -148,7 +148,7 @@ public class YggdrasilTownBiome : ModBiome
 		Main.bloodMoon = false;
 
 		BackgroundSystem bgSystem = ModContent.GetInstance<BackgroundSystem>();
-		if (!bgSystem.HasBgSlide("Everglow.Yggdrasil.YggdrasilTown.Background.YggdrasilTown_Construct"))
+		if (!bgSystem.HasBgSlide("Everglow.Yggdrasil.YggdrasilTown.Background.Town_Close"))
 		{
 			Town_Sky town_Sky = new Town_Sky();
 			town_Sky.WorldAnchor = BiomeCenter;

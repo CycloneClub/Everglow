@@ -48,8 +48,23 @@ public class StoneBridgeTile : ModTile, ISceneTile
 		Tile tile = TileUtils.SafeGetTile(i, j);
 		if (tile.TileFrameX == 0 && tile.TileFrameY == 0)
 		{
-			StoneBridge_fence sBF = new StoneBridge_fence { Position = new Vector2(i, j - 3) * 16 - new Vector2(0, 14), Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = ModContent.TileType<StoneBridgeTile>() };
-			Ins.VFXManager.Add(sBF);
+			var rightTile = TileUtils.SafeGetTile(i + 20, j);
+			var leftTile = TileUtils.SafeGetTile(i - 1, j);
+			if (rightTile.TileType == Type && rightTile.TileFrameY == 54)
+			{
+				StoneBridge_fence_right_side sBF5 = new StoneBridge_fence_right_side { Position = new Vector2(i, j - 3) * 16 + new Vector2(0, -16), Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = ModContent.TileType<StoneBridgeTile>() };
+				Ins.VFXManager.Add(sBF5);
+			}
+			else if (leftTile.TileType == Type && leftTile.TileFrameY == 18)
+			{
+				StoneBridge_fence_left_side sBF6 = new StoneBridge_fence_left_side { Position = new Vector2(i, j - 3) * 16 + new Vector2(0, -16), Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = ModContent.TileType<StoneBridgeTile>() };
+				Ins.VFXManager.Add(sBF6);
+			}
+			else
+			{
+				StoneBridge_fence sBF = new StoneBridge_fence { Position = new Vector2(i, j - 3) * 16 - new Vector2(0, 14), Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = ModContent.TileType<StoneBridgeTile>() };
+				Ins.VFXManager.Add(sBF);
+			}
 			StoneBridge_foreground sBF2 = new StoneBridge_foreground { Position = new Vector2(i, j - 3) * 16 - new Vector2(0, 4), Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = ModContent.TileType<StoneBridgeTile>() };
 			Ins.VFXManager.Add(sBF2);
 			StoneBridge_Pier_foreground sBF3 = new StoneBridge_Pier_foreground { Position = new Vector2(i, j - 3) * 16 + new Vector2(-120, 316), Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = ModContent.TileType<StoneBridgeTile>() };
