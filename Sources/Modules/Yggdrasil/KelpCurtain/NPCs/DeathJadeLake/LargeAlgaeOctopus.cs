@@ -148,8 +148,8 @@ public class LargeAlgaeOctopus : ModNPC
 	/// <summary>Named wrapper over <c>NPC.localAI[4]</c>: the frames left before the next flee ink cloud.</summary>
 	private int FleeInkTimer
 	{
-		get => (int)NPC.localAI[4];
-		set => NPC.localAI[4] = value;
+		get; /*=> (int)NPC.localAI[4];*/
+		set; /*=> NPC.localAI[4] = value;*/
 	}
 
 	// No HJSON key is created for this class; localization stays deferred (D-20).
