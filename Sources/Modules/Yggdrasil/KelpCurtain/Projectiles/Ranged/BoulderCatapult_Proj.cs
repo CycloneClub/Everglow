@@ -6,7 +6,7 @@ public class BoulderCatapult_Proj : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
 
-	public override string Texture => Commons.ModAsset.White_Mod;
+	public override string Texture => $"Terraria/Images/Projectile_{ProjectileID.Boulder}";
 
 	private bool AppliedDirectBonus { get; set; }
 

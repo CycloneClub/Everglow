@@ -8,7 +8,7 @@ public class CrimsonMoonAlgaeBreastPlate : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	public override string Texture => Commons.ModAsset.White_Mod;
+	public override string Texture => $"Terraria/Images/Item_{ItemID.ChlorophytePlateMail}";
 
 	public override void Load()
 	{
@@ -17,7 +17,7 @@ public class CrimsonMoonAlgaeBreastPlate : ModItem
 			return;
 		}
 
-		EquipLoader.AddEquipTexture(Mod, Commons.ModAsset.White_Mod, EquipType.Body, this, nameof(CrimsonMoonAlgaeBreastPlate));
+		EquipLoader.AddEquipTexture(Mod, $"Terraria/Images/Armor/Armor_{ArmorIDs.Body.ChlorophytePlateMail}", EquipType.Body, this, nameof(CrimsonMoonAlgaeBreastPlate));
 	}
 
 	public override void SetStaticDefaults()

@@ -4,7 +4,7 @@ public class RadialCarapace : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
-	public override string Texture => Commons.ModAsset.White_Mod;
+	public override string Texture => $"Terraria/Images/Item_{ItemID.FrozenTurtleShell}";
 
 	public override void SetDefaults()
 	{

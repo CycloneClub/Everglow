@@ -6,7 +6,7 @@ public class BoulderCatapult : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedWeapons;
 
-	public override string Texture => Commons.ModAsset.White_Mod;
+	public override string Texture => $"Terraria/Images/Item_{ItemID.GrenadeLauncher}";
 
 	public override void SetDefaults()
 	{

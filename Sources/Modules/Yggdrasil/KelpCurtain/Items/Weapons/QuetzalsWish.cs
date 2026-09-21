@@ -4,7 +4,7 @@ public class QuetzalsWish : ModItem
 {
 	public override string LocalizationCategory => LocalizationUtils.Categories.MeleeWeapons;
 
-	public override string Texture => Commons.ModAsset.White_Mod;
+	public override string Texture => $"Terraria/Images/Item_{ItemID.TerraBlade}";
 
 	public override void SetDefaults()
 	{

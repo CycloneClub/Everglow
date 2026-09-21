@@ -6,7 +6,7 @@ public class BoulderCatapult_SubProj : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
 
-	public override string Texture => Commons.ModAsset.White_Mod;
+	public override string Texture => $"Terraria/Images/Projectile_{ProjectileID.MiniBoulder}";
 
 	public override void SetDefaults()
 	{

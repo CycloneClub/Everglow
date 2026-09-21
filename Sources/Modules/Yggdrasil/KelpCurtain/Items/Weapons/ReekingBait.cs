@@ -4,7 +4,7 @@ public class ReekingBait : ModItem
 {
 	public override string LocalizationCategory => LocalizationUtils.Categories.SummonItems;
 
-	public override string Texture => Commons.ModAsset.White_Mod;
+	public override string Texture => $"Terraria/Images/Item_{ItemID.WormFood}";
 
 	public override void SetDefaults()
 	{

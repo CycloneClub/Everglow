@@ -4,7 +4,7 @@ public class RestrictionDeviceRE01 : ModItem
 {
 	public override string LocalizationCategory => LocalizationUtils.Categories.SummonWeapons;
 
-	public override string Texture => Commons.ModAsset.White_Mod;
+	public override string Texture => $"Terraria/Images/Item_{ItemID.XenoStaff}";
 
 	public override void SetStaticDefaults()
 	{

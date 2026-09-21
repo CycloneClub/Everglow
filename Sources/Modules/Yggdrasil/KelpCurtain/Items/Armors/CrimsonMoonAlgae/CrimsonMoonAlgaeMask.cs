@@ -9,7 +9,7 @@ public class CrimsonMoonAlgaeMask : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	public override string Texture => Commons.ModAsset.White_Mod;
+	public override string Texture => $"Terraria/Images/Item_{ItemID.ChlorophyteMask}";
 
 	public override void Load()
 	{
@@ -18,7 +18,7 @@ public class CrimsonMoonAlgaeMask : ModItem
 			return;
 		}
 
-		EquipLoader.AddEquipTexture(Mod, Commons.ModAsset.White_Mod, EquipType.Head, this, nameof(CrimsonMoonAlgaeMask));
+		EquipLoader.AddEquipTexture(Mod, $"Terraria/Images/Armor_Head_{ArmorIDs.Head.ChlorophyteMask}", EquipType.Head, this, nameof(CrimsonMoonAlgaeMask));
 	}
 
 	public override void SetStaticDefaults()

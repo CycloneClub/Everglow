@@ -9,7 +9,7 @@ public class CrimsonMoonAlgaeHeaddress : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	public override string Texture => Commons.ModAsset.White_Mod;
+	public override string Texture => $"Terraria/Images/Item_{ItemID.ChlorophyteHeadgear}";
 
 	public override void Load()
 	{
@@ -18,7 +18,7 @@ public class CrimsonMoonAlgaeHeaddress : ModItem
 			return;
 		}
 
-		EquipLoader.AddEquipTexture(Mod, Commons.ModAsset.White_Mod, EquipType.Head, this, nameof(CrimsonMoonAlgaeHeaddress));
+		EquipLoader.AddEquipTexture(Mod, $"Terraria/Images/Armor_Head_{ArmorIDs.Head.ChlorophyteHeadgear}", EquipType.Head, this, nameof(CrimsonMoonAlgaeHeaddress));
 	}
 
 	public override void SetStaticDefaults()
