@@ -67,4 +67,17 @@ public class KissOfCthulhu : ModItem
 	public override Vector2? HoldoutOffset() => new Vector2(-26, -2);
 
 	public override Vector2? HoldoutOrigin() => new Vector2(0, 0);
+
+	public override void Update(ref float gravity, ref float maxFallSpeed)
+	{
+		var centralTile = TileUtils.SafeGetTile(Item.Center.ToTileCoordinates());
+		if (centralTile.LiquidType == LiquidLoader.LiquidType<DarkSludgeLiquid>())
+		{
+			if (Item.Center.Y % 16 > 16 - centralTile.LiquidAmount / 16f)
+			{
+				maxFallSpeed *= -0.4f;
+			}
+		}
+		base.Update(ref gravity, ref maxFallSpeed);
+	}
 }

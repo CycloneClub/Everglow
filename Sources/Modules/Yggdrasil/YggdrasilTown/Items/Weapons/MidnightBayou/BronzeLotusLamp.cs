@@ -47,4 +47,17 @@ public class BronzeLotusLamp : ModItem
 	{
 		return base.Shoot(player, source, position, velocity, type, damage, knockback);
 	}
+
+	public override void Update(ref float gravity, ref float maxFallSpeed)
+	{
+		var centralTile = TileUtils.SafeGetTile(Item.Center.ToTileCoordinates());
+		if (centralTile.LiquidType == LiquidLoader.LiquidType<DarkSludgeLiquid>())
+		{
+			if (Item.Center.Y % 16 > 16 - centralTile.LiquidAmount / 16f)
+			{
+				maxFallSpeed *= -0.4f;
+			}
+		}
+		base.Update(ref gravity, ref maxFallSpeed);
+	}
 }
