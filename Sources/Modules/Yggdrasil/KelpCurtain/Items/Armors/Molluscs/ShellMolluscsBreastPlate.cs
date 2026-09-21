@@ -8,8 +8,8 @@ public class ShellMolluscsBreastPlate : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	public const int BuffDuration = 25 * 60; // 10 seconds in frames
-	public const int CooldownDuration = 40 * 60; // 35 seconds in frames
+	public const int BuffDuration = 25 * 60;
+	public const int CooldownDuration = 40 * 60;
 
 	// The equip texture name for the alternate equip texture.
 	private const string AltTextureName = "Blue";
@@ -53,6 +53,7 @@ public class ShellMolluscsBreastPlate : ModItem
 
 	public override void UpdateArmorSet(Player player)
 	{
+		player.breathEffectiveness += 1f;
 		player.GetModPlayer<YggdrasilPlayer>().molluscsSet = true;
 	}
 }

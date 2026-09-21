@@ -4,6 +4,8 @@ namespace Everglow.Yggdrasil.KelpCurtain.Buffs;
 
 public class RedAlgae_FriendlyDebuff : ModBuff
 {
+	public const int Duration = 900;
+
 	public override void SetStaticDefaults()
 	{
 		Main.debuff[Type] = true;
@@ -11,6 +13,10 @@ public class RedAlgae_FriendlyDebuff : ModBuff
 
 	public override void Update(NPC npc, ref int buffIndex)
 	{
+		if (Main.dedServ)
+		{
+			return;
+		}
 		npc.color = Color.Lerp(npc.color, new Color(0.7f, 0.1f, 0.6f), 0.1f);
 		if (Main.rand.NextBool(12))
 		{

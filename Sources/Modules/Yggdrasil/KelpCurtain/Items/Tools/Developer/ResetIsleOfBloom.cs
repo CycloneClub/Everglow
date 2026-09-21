@@ -7,6 +7,8 @@ namespace Everglow.Yggdrasil.KelpCurtain.Items.Tools.Developer;
 
 public class ResetIsleOfBloom : ModItem
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Tools;
+
 	public override void SetDefaults()
 	{
 		Item.width = 30;

@@ -10,6 +10,25 @@ namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Magic;
 
 public class GreenSungloSpore : TrailingProjectile
 {
+	public override string LocalizationCategory => LocalizationUtils.Categories.MagicProjectiles;
+
+	public override void SetDefaults()
+	{
+		if (!Main.dedServ)
+		{
+			base.SetDefaults();
+			return;
+		}
+		Projectile.width = Projectile.height = 20;
+		Projectile.aiStyle = -1;
+		Projectile.timeLeft = 360000;
+		Projectile.tileCollide = true;
+		Projectile.ignoreWater = true;
+		Projectile.penetrate = -1;
+		Projectile.friendly = Projectile.hostile = false;
+		TrailLength = 25;
+	}
+
 	public override void SetCustomDefaults()
 	{
 		TrailColor = new Color(0.475f, 1f, 0.475f, 0f);
@@ -33,30 +52,34 @@ public class GreenSungloSpore : TrailingProjectile
 
 	public override void OnKill(int timeLeft)
 	{
-		foreach (Projectile p in Main.projectile)
+		if (Projectile.owner != Main.myPlayer)
 		{
-			if (p.type == ModContent.ProjectileType<GreenSungloThorns>() && p.owner == Projectile.owner)
-			{
-				p.Kill();
-			}
+			return;
 		}
-
-		int tileX = ((int)Projectile.Center.X) / 16;
-		int tileY = ((int)Projectile.Center.Y) / 16;
-		do
+		int tileX = Math.Clamp((int)Projectile.Center.X / 16, 1, Main.maxTilesX - 2);
+		int tileY = Math.Clamp((int)Projectile.Center.Y / 16, 3, Main.maxTilesY - 4);
+		while (tileY > 3 && (WorldGen.SolidTile2(tileX, tileY) || WorldGen.SolidTile2(tileX, tileY + 1) || WorldGen.SolidTile2(tileX, tileY + 2)))
 		{
 			tileY -= 3;
 		}
-		while (WorldGen.SolidTile2(tileX, tileY) || WorldGen.SolidTile2(tileX, tileY + 1) || WorldGen.SolidTile2(tileX, tileY + 2));
-
-		for (; tileY < Main.maxTilesY - 10
-			&& (Main.tile[tileX, tileY + 3] == null || Main.tile[tileX - 1, tileY + 3] == null || Main.tile[tileX - 1, tileY + 3] == null
-			|| !WorldGen.SolidTile2(tileX, tileY + 3) || !WorldGen.SolidTile2(tileX - 1, tileY + 3) || !WorldGen.SolidTile2(tileX - 1, tileY + 3)); tileY++)
+		while (tileY < Main.maxTilesY - 4 && (!WorldGen.SolidTile2(tileX, tileY + 3)
+			|| !WorldGen.SolidTile2(tileX - 1, tileY + 3) || !WorldGen.SolidTile2(tileX + 1, tileY + 3)))
 		{
+			tileY++;
 		}
-
-		Vector2 pos = new Vector2(tileX * 16, tileY * 16);
-		Projectile.NewProjectileDirect(null, pos, Vector2.Zero, ModContent.ProjectileType<GreenSungloThorns>(), Projectile.damage, 0, Projectile.owner);
+		if (tileY >= Main.maxTilesY - 4)
+		{
+			return;
+		}
+		foreach (Projectile existing in Main.projectile)
+		{
+			if (existing.active && existing.type == ModContent.ProjectileType<GreenSungloThorns>() && existing.owner == Projectile.owner)
+			{
+				existing.Kill();
+			}
+		}
+		Projectile.NewProjectile(Projectile.GetSource_FromThis(), new Vector2(tileX * 16, tileY * 16), Vector2.Zero,
+			ModContent.ProjectileType<GreenSungloThorns>(), Projectile.damage, 0, Projectile.owner);
 	}
 
 	public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)

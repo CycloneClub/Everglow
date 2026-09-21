@@ -4,7 +4,7 @@ using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Summon;
 
-public class CrimsonMoonAlgaeSummonStaff_minion_Explosion : ModProjectile
+public class CrimsonMoonAlgaeSummonStaff_minion_Explosion : ModProjectile, IRedAlgaeToxinProjectile
 {
 	public override void SetDefaults()
 	{
@@ -21,6 +21,11 @@ public class CrimsonMoonAlgaeSummonStaff_minion_Explosion : ModProjectile
 
 	public override void OnSpawn(IEntitySource source)
 	{
+		if (Main.dedServ)
+		{
+			return;
+		}
+
 		var gasRing = new RedAlgae_GasRing();
 		gasRing.Position = Projectile.Center;
 		gasRing.MaxTime = 60;
@@ -86,11 +91,7 @@ public class CrimsonMoonAlgaeSummonStaff_minion_Explosion : ModProjectile
 
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
-		int type = ModContent.BuffType<RedAlgae_FriendlyDebuff>();
-		if (!target.HasBuff(type))
-		{
-			target.AddBuff(type, 900);
-		}
+		RedAlgae_FriendlyDebuff_glocalNPC.HandleProjectileHit(target, Projectile);
 	}
 
 	public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
