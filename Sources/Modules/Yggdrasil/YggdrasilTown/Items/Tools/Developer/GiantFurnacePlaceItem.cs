@@ -1,4 +1,7 @@
+using Everglow.Commons.TileHelper;
+using Everglow.Yggdrasil.WorldGeneration;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles.FurnaceTiles;
+using Everglow.Yggdrasil.YggdrasilTown.Walls;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Tools.Developer;
 
@@ -25,20 +28,23 @@ public class GiantFurnacePlaceItem : ModItem
 
 	public override void HoldItem(Player player)
 	{
-		Main.placementPreview = true;
+		// Main.placementPreview = true;
 	}
 
 	public override bool CanUseItem(Player player)
 	{
-		var giantFurnace = TileLoader.GetTile(ModContent.TileType<GiantFurnace>()) as GiantFurnace;
-		if (giantFurnace != null)
-		{
-			int x = (int)(Main.MouseWorld.X / 16 - 24);
-			int y = (int)(Main.MouseWorld.Y / 16);
-			giantFurnace.PlaceOriginAtBottomLeft(x, y);
-			Item.stack--;
-			return false;
-		}
+		// var giantFurnace = TileLoader.GetTile(ModContent.TileType<GiantFurnace>()) as GiantFurnace;
+		// if (giantFurnace != null)
+		// {
+		// int x = (int)(Main.MouseWorld.X / 16 - 24);
+		// int y = (int)(Main.MouseWorld.Y / 16);
+		// giantFurnace.PlaceOriginAtBottomLeft(x, y);
+		// Item.stack--;
+		// return false;
+		// }
+		int x = Main.MouseWorld.ToTileCoordinates().X;
+		int y = Main.MouseWorld.ToTileCoordinates().Y;
+		YggdrasilWorldGeneration.QuickBuild(x, y, ModAsset.YggdrasilTown_New_706x275_Path);
 		return false;
 	}
 

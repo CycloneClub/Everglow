@@ -1,4 +1,3 @@
-using Everglow.CagedDomain.Tiles;
 using Everglow.Commons.TileHelper;
 using Everglow.Yggdrasil.Common.Tiles;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
@@ -59,11 +58,14 @@ public class YggdrasilTownGeneration
 		Main.statusText = "Carving the Heavenly Portal...";
 		BuildHeavenlyPortal();
 
-		Main.statusText = "Constructing the Yggdrasil Town Below...";
+		Main.statusText = "Constructing the Yggdrasil Town...";
 		BuildMainTown();
 
 		Main.statusText = "Mineralizing...";
 		BuildTangledSubmine();
+
+		Main.statusText = "Town Accessory Structures...";
+		BuildMainTown_AccessoryStructure();
 
 		Main.statusText = "Engraving Cage of Challengers...";
 		BuildStoneCageOfChallenges();
@@ -718,13 +720,6 @@ public class YggdrasilTownGeneration
 	}
 
 	/// <summary>
-	/// 石化古道, Expired
-	/// </summary>
-	public static void BuildFossilizedMineRoad()
-	{
-	}
-
-	/// <summary>
 	/// 下天穹镇
 	/// </summary>
 	public static void BuildMainTown()
@@ -837,6 +832,98 @@ public class YggdrasilTownGeneration
 				{
 					QuickBuild(x, y, ModAsset.MetroBridgePiece3x15_Path);
 				}
+			}
+		}
+	}
+
+	public static void BuildMainTown_AccessoryStructure()
+	{
+		QuickBuild(YggdrasilTownTopLeft.X + 21, YggdrasilTownTopLeft.Y + 153, ModAsset.ElevatorEntrance_27x10_Path);
+		int height = 0;
+		BuildTheElevatorToMineAndSurface(YggdrasilTownTopLeft + new Point(20, 162), out height);
+		var elevatorTop = new Point(YggdrasilTownTopLeft.X + 12, YggdrasilTownTopLeft.Y + 153 - height - 9);
+		BuildMapIO(elevatorTop.X, elevatorTop.Y, ModAsset.TownElevatorTop_12x11_Path, true);
+		for (int y = 2; y < 1000; y++)
+		{
+			var tile = SafeGetTile(elevatorTop + new Point(2, y));
+			if (tile.WallType == WallID.None || tile.WallType == ModContent.WallType<LampWood_Wood_Wall>())
+			{
+				tile.WallType = (ushort)ModContent.WallType<LampWood_Wood_Wall>();
+			}
+			else
+			{
+				break;
+			}
+		}
+		for (int y = 2; y < 1000; y++)
+		{
+			var tile = SafeGetTile(elevatorTop + new Point(9, y));
+			if (tile.WallType == WallID.None || tile.WallType == ModContent.WallType<LampWood_Wood_Wall>())
+			{
+				tile.WallType = (ushort)ModContent.WallType<LampWood_Wood_Wall>();
+			}
+			else
+			{
+				break;
+			}
+		}
+	}
+
+	public static void BuildTheElevatorToMineAndSurface(Point pos, out int height)
+	{
+		height = 0;
+		bool terminate = false;
+		int emptyList = 0;
+		for (int y = 0; y < 1000; y++)
+		{
+			bool emptyRow = true;
+			for (int x = 0; x < 6; x++)
+			{
+				var tile = SafeGetTile(pos - new Point(x, y));
+				if (tile.HasTile)
+				{
+					emptyRow = false;
+					if (TileLoader.GetTile(tile.TileType) is CyanVineOreLarge or CyanVineOreLargeUp or CyanVineOreMiddle or CyanVineOreSmall or CyanVineOreSmallUp)
+					{
+						bool fail = false;
+						bool effectOnly = false;
+						bool noItem = true;
+						TileLoader.GetTile(tile.TileType).KillTile(pos.X - x, pos.Y - y, ref fail, ref effectOnly, ref noItem);
+					}
+				}
+			}
+			if (emptyRow)
+			{
+				if (pos.Y - y <= 20260)
+				{
+					emptyList++;
+				}
+				if (emptyList >= 28)
+				{
+					terminate = true;
+					y -= 28;
+				}
+			}
+			else
+			{
+				emptyList = 0;
+			}
+			if (terminate)
+			{
+				PlaceRectangleAreaOfBlock(pos.X - 6, pos.Y - y, pos.X + 1, pos.Y, ModContent.TileType<StoneScaleWood>(), 0);
+				PlaceRectangleAreaOfBlock(pos.X - 5, pos.Y - y, pos.X, pos.Y, -1, 0);
+				PlaceRectangleAreaOfWall(pos.X - 6, pos.Y - y, pos.X + 1, pos.Y + 2, ModContent.WallType<StoneDragonScaleWoodWall>(), 0);
+				for (int y2 = 12; y2 < y - 12; y2 += 24)
+				{
+					var tile0 = SafeGetTile(pos.X - 3, pos.Y - y + y2);
+					var tile1 = SafeGetTile(pos.X - 3, pos.Y - y + y2 + 1);
+					if (!tile0.HasTile && !tile1.HasTile && tile0.WallType == ModContent.WallType<StoneDragonScaleWoodWall>() && tile1.WallType == ModContent.WallType<StoneDragonScaleWoodWall>())
+					{
+						PlaceFrameImportantTiles(pos.X - 3, pos.Y - y + y2, 1, 2, ModContent.TileType<YggdrasilTownElevatorTunnelLamp>());
+					}
+				}
+				height = y;
+				break;
 			}
 		}
 	}
@@ -1480,14 +1567,7 @@ public class YggdrasilTownGeneration
 				float bValue = MathF.Abs((y - Main.maxTilesY + 2100) / 100f);
 				float cValue = (x - Main.maxTilesX / 2f) / (Main.maxTilesX / 2f);
 				cValue *= cValue;
-				if (bValue > cValue)
-				{
-					bValue = -1 + (bValue - cValue) * 4;
-				}
-				else
-				{
-					bValue = -1;
-				}
+				bValue = bValue > cValue ? -1 + (bValue - cValue) * 4 : -1;
 				if (aValue + bValue < 0.8f)
 				{
 					Tile tile = SafeGetTile(x, y);
@@ -1868,6 +1948,83 @@ public class YggdrasilTownGeneration
 
 		// 房间布设
 		int directionGate = GenRand.NextBool() ? 1 : -1;
+		Queue<string> roomNames = new Queue<string>();
+		roomNames.Enqueue("Wood");
+		roomNames.Enqueue("Water");
+		roomNames.Enqueue("Shadow");
+		roomNames.Enqueue("Blood");
+		roomNames.Enqueue("Rock");
+		roomNames.Enqueue("Sand");
+
+		List<Point> roomIndex = new List<Point>();
+		Dictionary<Point, string> rooms = new Dictionary<Point, string>();
+		while (roomNames.Count > 0)
+		{
+			Point pos = new Point(GenRand.Next(2), GenRand.Next(10));
+			int count = 0;
+			while (rooms.Keys.Contains(pos))
+			{
+				pos = new Point(GenRand.Next(2), GenRand.Next(10));
+				count++;
+				if (count > 1000)
+				{
+					break;
+				}
+			}
+			rooms[pos] = roomNames.Dequeue();
+		}
+		foreach (var room in rooms)
+		{
+			int roomOriginX = centerX - 75 + room.Key.X * 100 + 25;
+			int roomOriginY = centerY - 100 + room.Key.Y * 25 + 12;
+			string roomName = ModAsset.TCRoom_Rd_00_StoneCave_40x21_Path;
+			switch (room.Value)
+			{
+				case "Wood":
+					roomName = ModAsset.TCRoom_Rd_04_Forest_40x21_Path;
+					if (room.Key.X > 0)
+					{
+						roomName = ModAsset.TCRoom_Ld_04_Forest_40x21_Path;
+					}
+					break;
+				case "Water":
+					roomName = ModAsset.TCRoom_Rd_03_WaterSluice_40x21_Path;
+					if (room.Key.X > 0)
+					{
+						roomName = ModAsset.TCRoom_Ld_03_WaterSluice_40x21_Path;
+					}
+					break;
+				case "Shadow":
+					roomName = ModAsset.TCRoom_Rd_05_DarkDragon_40x21_Path;
+					if (room.Key.X > 0)
+					{
+						roomName = ModAsset.TCRoom_Ld_05_DarkDragon_40x21_Path;
+					}
+					break;
+				case "Blood":
+					roomName = ModAsset.TCRoom_Rd_01_BloodyChurch_40x21_Path;
+					if (room.Key.X > 0)
+					{
+						roomName = ModAsset.TCRoom_Ld_01_BloodyChurch_40x21_Path;
+					}
+					break;
+				case "Rock":
+					roomName = ModAsset.TCRoom_Rd_00_StoneCave_40x21_Path;
+					if (room.Key.X > 0)
+					{
+						roomName = ModAsset.TCRoom_Ld_00_StoneCave_40x21_Path;
+					}
+					break;
+				case "Sand":
+					roomName = ModAsset.TCRoom_Rd_02_Desert_40x21_Path;
+					if (room.Key.X > 0)
+					{
+						roomName = ModAsset.TCRoom_Ld_02_Desert_40x21_Path;
+					}
+					break;
+			}
+			QuickBuild(roomOriginX - 20, roomOriginY - 10, roomName);
+		}
 		for (int x = 0; x < 3; x++)
 		{
 			if (x == 1)
@@ -1878,56 +2035,6 @@ public class YggdrasilTownGeneration
 			{
 				int roomOriginX = centerX - 75 + x * 50 + 25;
 				int roomOriginY = centerY - 100 + y * 25 + 12;
-				string[] randomRooms = new string[]
-				{
-					ModAsset.TCRoom_Rd_00_StoneCave_40x21_Path,
-					ModAsset.TCRoom_Rd_01_BloodyChurch_40x21_Path,
-					ModAsset.TCRoom_Rd_02_Desert_40x21_Path,
-					ModAsset.TCRoom_Rd_03_WaterSluice_40x21_Path,
-					ModAsset.TCRoom_Rd_04_Forest_40x21_Path,
-					ModAsset.TCRoom_Rd_05_DarkDragon_40x21_Path,
-				};
-				if (x == 2)
-				{
-					randomRooms = new string[]
-					{
-						ModAsset.TCRoom_Ld_00_StoneCave_40x21_Path,
-						ModAsset.TCRoom_Ld_01_BloodyChurch_40x21_Path,
-						ModAsset.TCRoom_Ld_02_Desert_40x21_Path,
-						ModAsset.TCRoom_Ld_03_WaterSluice_40x21_Path,
-						ModAsset.TCRoom_Ld_04_Forest_40x21_Path,
-						ModAsset.TCRoom_Ld_05_DarkDragon_40x21_Path,
-					};
-				}
-				int roomType = GenRand.Next(randomRooms.Length);
-				QuickBuild(roomOriginX - 20, roomOriginY - 10, randomRooms[roomType]);
-				int coreItemType = -1;
-				switch (roomType)
-				{
-					case 0:
-						coreItemType = ModContent.ItemType<RockQuake>();
-						break;
-					case 1:
-						coreItemType = ModContent.ItemType<BloodySwamp>();
-						break;
-					case 2:
-						coreItemType = ModContent.ItemType<SpringOfQuicksand>();
-						break;
-					case 3:
-						coreItemType = ModContent.ItemType<MechanismHalberd>();
-						break;
-					case 4:
-						coreItemType = ModContent.ItemType<WiltedForestLamp>();
-						break;
-					case 5:
-						coreItemType = ModContent.ItemType<MagicOfLightAndShadow>();
-						break;
-					default:
-						coreItemType = ItemID.DirtBlock;
-						break;
-				}
-				List<Item> contents = [new Item(setDefaultsToType: coreItemType), .. NormalChestContents()];
-				FillChestXYWH(roomOriginX - 20, roomOriginY - 10, 40, 21, contents);
 
 				// 房间通道
 				if (y == 9 && directionGate + 1 == x)
@@ -1958,8 +2065,6 @@ public class YggdrasilTownGeneration
 
 					// PlaceFrameImportantTiles(roomOriginX - 20, roomOriginY + 7, 1, 3, TileID.ClosedDoor, 0, 918);
 				}
-
-				// PlaceTwilightLegacyBiomeChest(roomOriginX, roomOriginY + 9);
 			}
 		}
 
@@ -2033,14 +2138,7 @@ public class YggdrasilTownGeneration
 				int checkX = subTowerCenterX - 25 + x * 10;
 				int checkY = subTowerCenterY - 55 + y * 10;
 				Tile tile = SafeGetTile(checkX, checkY);
-				if ((x + y) % 2 == 1)
-				{
-					tile.TileType = (ushort)ModContent.TileType<GreenRelicBrick_Trap>();
-				}
-				else
-				{
-					tile.TileType = (ushort)ModContent.TileType<GreenRelicBrick>();
-				}
+				tile.TileType = (x + y) % 2 == 1 ? (ushort)ModContent.TileType<GreenRelicBrick_Trap>() : (ushort)ModContent.TileType<GreenRelicBrick>();
 				tile.HasTile = true;
 			}
 		}
@@ -2067,14 +2165,7 @@ public class YggdrasilTownGeneration
 					tile.TileType = (ushort)ModContent.TileType<GreenRelicBrick_BonusKey>();
 				}
 				tile.HasTile = true;
-				if (tile.TileType == (ushort)ModContent.TileType<GreenRelicBrick_plating>())
-				{
-					tile.TileFrameX = (short)(18 * GenRand.Next(2));
-				}
-				else
-				{
-					tile.TileFrameX = 0;
-				}
+				tile.TileFrameX = tile.TileType == (ushort)ModContent.TileType<GreenRelicBrick_plating>() ? (short)(18 * GenRand.Next(2)) : (short)0;
 				if (x == 2 && y == 10)
 				{
 					WorldGenMisc.PlaceChest(checkX, checkY + 6, ModContent.TileType<RustBronzeTreasureChest_Lock>(), new List<Item>() { new Item(setDefaultsToType: ModContent.ItemType<CelticKeyStone>()) }, 0);
@@ -2117,6 +2208,24 @@ public class YggdrasilTownGeneration
 	public static void SmoothYggdrasilTown()
 	{
 		// SmoothTile_XXYY(0, (int)(Main.maxTilesY * 0.9), Main.maxTilesX, Main.maxTilesY);
+		for (int x = 0; x < Main.tile.Width- 20; x++)
+		{
+			for (int y = 18950; y < Main.tile.Height - 20; y++)
+			{
+				var tile = SafeGetTile(x, y);
+				if (tile.HasTile && tile.TileType == ModContent.TileType<StoneScaleWood>())
+				{
+					List<Point> points = BFSContinueTile(new Point(x, y), false, 6);
+					if (points.Count <= 5)
+					{
+						foreach (var pos in points)
+						{
+							SafeGetTile(pos).HasTile = false;
+						}
+					}
+				}
+			}
+		}
 	}
 
 	/// <summary>
@@ -2293,67 +2402,6 @@ public class YggdrasilTownGeneration
 					}
 				}
 			}
-		}
-	}
-
-	/// <summary>
-	/// 建造一个灯柱
-	/// </summary>
-	public static void PlaceChineseStyleLampPost(int x, int y, int style, int ai0 = 0, int ai1 = 0)
-	{
-		switch (style)
-		{
-			case 0:
-				PlaceFrameImportantTiles(x, y - 5, 1, 5, ModContent.TileType<DoubleArmsChineseStreetLamp>());
-				break;
-			case 1:
-				PlaceRectangleAreaOfWall(x, y - 5, x, y, WallID.BambooFence);
-				Tile tile0 = SafeGetTile(x, y - 5);
-				int tile1Dir = x + 1;
-				if (ai0 % 2 == 0)
-				{
-					tile1Dir = x - 1;
-				}
-				Tile tile1 = SafeGetTile(tile1Dir, y - 5);
-				tile0.TileType = TileID.Platforms;
-				tile0.frameY = 786;
-				tile0.HasTile = true;
-				tile1.TileType = TileID.Platforms;
-				tile1.frameY = 786;
-				tile1.HasTile = true;
-				int lanternType = 1620;
-				if (ai1 % 4 == 0)
-				{
-					lanternType = 936;
-				}
-				PlaceFrameImportantTiles(tile1Dir, y - 4, 1, 2, TileID.HangingLanterns, 0, lanternType);
-				break;
-			case 2:
-				int lampStyle = 918;
-				int lampStyleX = 0;
-				if (ai0 % 12 == 1)
-				{
-					lampStyle = 324;
-				}
-				if (ai0 % 12 == 2)
-				{
-					lampStyle = 432;
-				}
-				if (ai0 % 12 == 3)
-				{
-					lampStyle = 756;
-				}
-				if (ai0 % 12 == 4)
-				{
-					lampStyle = 0;
-				}
-				if (ai0 % 12 == 5)
-				{
-					lampStyle = 108;
-					lampStyleX = 36;
-				}
-				PlaceFrameImportantTiles(x, y - 3, 1, 3, TileID.Lamps, lampStyleX, lampStyle);
-				break;
 		}
 	}
 
