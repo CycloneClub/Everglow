@@ -15,11 +15,24 @@ public class WaterSluice_Scene : ModTile, ISceneTile
 
 	public static List<Rectangle> JungleWaterAreas = new List<Rectangle>();
 
+	private static readonly Dictionary<Point, bool> flipHCache = new Dictionary<Point, bool>();
+	private static readonly Dictionary<Point, List<Point>> liquidLightPoints = new Dictionary<Point, List<Point>>();
+	private static readonly Dictionary<Point, int> liquidLightTimers = new Dictionary<Point, int>();
+
 	public override void Load()
 	{
 		On_WaterfallManager.DrawWaterfall_int_int_int_float_Vector2_Rectangle_Color_SpriteEffects += OnHook_ModifyWaterfallStyle;
 		Ins.HookManager.AddHook(typeof(LiquidRenderer).GetMethod(nameof(LiquidRenderer.DrawNormalLiquids), BindingFlags.Public | BindingFlags.Instance), ILHook_ModifyWaterStyle);
 		base.Load();
+	}
+
+	public override void Unload()
+	{
+		JungleWaterAreas.Clear();
+		flipHCache.Clear();
+		liquidLightPoints.Clear();
+		liquidLightTimers.Clear();
+		base.Unload();
 	}
 
 	private static void OnHook_ModifyWaterfallStyle(On_WaterfallManager.orig_DrawWaterfall_int_int_int_float_Vector2_Rectangle_Color_SpriteEffects orig, WaterfallManager self, int waterfallType, int x, int y, float opacity, Vector2 Position, Rectangle sourceRect, Color color, SpriteEffects effects)
@@ -145,12 +158,14 @@ public class WaterSluice_Scene : ModTile, ISceneTile
 
 	public override void NearbyEffects(int i, int j, bool closer)
 	{
-		if (JungleWaterAreas is null)
+		Point anchor = new Point(i, j);
+		if (!flipHCache.TryGetValue(anchor, out bool flipH))
 		{
-			JungleWaterAreas = new List<Rectangle>();
+			flipH = FlipHorizontally(i, j);
+			flipHCache.Add(anchor, flipH);
 		}
 		Rectangle myArea = new Rectangle(i, j, 40, 21);
-		if (FlipHorizontally(i, j))
+		if (flipH)
 		{
 			myArea = new Rectangle(i - 39, j, 40, 21);
 		}
@@ -160,16 +175,32 @@ public class WaterSluice_Scene : ModTile, ISceneTile
 			JungleWaterAreas.Add(myArea);
 		}
 
-		for (int x = myArea.X; x < myArea.X + myArea.Width; x++)
+		// Rescan the liquid tiles at a low frequency, but re-apply the cached light points every frame to avoid visible flicker.
+		if (!liquidLightPoints.TryGetValue(anchor, out List<Point> lightPoints))
 		{
-			for (int y = myArea.Y; y < myArea.Y + myArea.Height; y++)
+			lightPoints = new List<Point>();
+			liquidLightPoints.Add(anchor, lightPoints);
+		}
+		liquidLightTimers.TryGetValue(anchor, out int timer);
+		if (timer++ % 10 == 0)
+		{
+			lightPoints.Clear();
+			for (int x = myArea.X; x < myArea.X + myArea.Width; x++)
 			{
-				var tile = TileUtils.SafeGetTile(x, y);
-				if (tile.LiquidType == LiquidID.Water && tile.LiquidAmount > 0)
+				for (int y = myArea.Y; y < myArea.Y + myArea.Height; y++)
 				{
-					Lighting.AddLight(x, y, 0.1f, 0.5f, 1f);
+					var tile = TileUtils.SafeGetTile(x, y);
+					if (tile.LiquidType == LiquidID.Water && tile.LiquidAmount > 0)
+					{
+						lightPoints.Add(new Point(x, y));
+					}
 				}
 			}
+		}
+		liquidLightTimers[anchor] = timer;
+		foreach (Point lightPoint in lightPoints)
+		{
+			Lighting.AddLight(lightPoint.X, lightPoint.Y, 0.1f, 0.5f, 1f);
 		}
 		base.NearbyEffects(i, j, closer);
 	}
