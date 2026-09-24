@@ -73,17 +73,19 @@ public class BloodChurch_Scene : ModTile, ISceneTile
 
 	public void DrawBloodyChurchOverTile(TwilightCastle_RoomScene_OverTiles otD)
 	{
-		bool flipH = otD.FlipHorizontally(otD.OriginTilePos.X, otD.OriginTilePos.Y);
 		Texture2D tex0 = ModAsset.BloodChurch_Scene_Close.Value;
 
-		List<Vertex2D> bars = new List<Vertex2D>();
-		SceneUtils.DrawMultiSceneTowardBottom(otD.OriginTilePos.X, otD.OriginTilePos.Y, tex0, bars, flipH);
-		Ins.Batch.Draw(tex0, bars, PrimitiveType.TriangleList);
+		StaticSceneMesh mesh = otD.GetOrBuildMesh(tex0, otD.OriginTilePos.X, otD.OriginTilePos.Y);
+		if (mesh.ColorRefreshTimer++ % 10 == 0)
+		{
+			mesh.RefreshColors();
+		}
+		Ins.Batch.Draw(tex0, mesh.Vertices, PrimitiveType.TriangleList);
 	}
 
 	public void DrawBloodyChurchBackground(TwilightCastle_RoomScene_Background bg)
 	{
-		bool flipH = bg.FlipHorizontally(bg.OriginTilePos.X, bg.OriginTilePos.Y);
+		bool flipH = bg.FlipH();
 		Texture2D tex0 = ModAsset.BloodChurch_Scene_Background.Value;
 
 		// Texture2D tex1 = ModAsset.BloodChurch_Scene_Far.Value;
@@ -93,13 +95,12 @@ public class BloodChurch_Scene : ModTile, ISceneTile
 		Texture2D tex3 = Commons.ModAsset.Noise_flame_2_pure.Value;
 		Texture2D tex4 = Commons.ModAsset.Noise_WaterFallWave.Value;
 
-		List<Vertex2D> bars = new List<Vertex2D>();
-		SceneUtils.DrawMultiSceneTowardBottom(bg.OriginTilePos.X, bg.OriginTilePos.Y, tex0, bars, flipH);
-		Ins.Batch.Draw(tex0, bars, PrimitiveType.TriangleList);
-
-		// bars = new List<Vertex2D>();
-		// SceneUtils.DrawMultiSceneTowardBottom(bg.OriginTilePos.X, bg.OriginTilePos.Y, tex1, bars, flipH);
-		// Ins.Batch.Draw(tex1, bars, PrimitiveType.TriangleList);
+		StaticSceneMesh meshBg = bg.GetOrBuildMesh(tex0, bg.OriginTilePos.X, bg.OriginTilePos.Y);
+		if (meshBg.ColorRefreshTimer++ % 10 == 0)
+		{
+			meshBg.RefreshColors();
+		}
+		Ins.Batch.Draw(tex0, meshBg.Vertices, PrimitiveType.TriangleList);
 
 		// Fountain waterfall background
 		int direction = 1;
@@ -110,6 +111,7 @@ public class BloodChurch_Scene : ModTile, ISceneTile
 		float coordX = 0;
 		Color oldColor = new Color(1f, 0f, 0.2f, 0);
 		float timeValue = -(float)Main.time / 240f;
+		List<Vertex2D> bars;
 		for (int i = 0; i < 11; i++)
 		{
 			float addCoordX = MathF.Acos((40f - i * 8) / 41f) / MathHelper.Pi - coordX;
@@ -188,15 +190,14 @@ public class BloodChurch_Scene : ModTile, ISceneTile
 			Ins.Batch.Draw(tex3, bars, PrimitiveType.TriangleStrip);
 		}
 
-		// Fountain
-		bars = new List<Vertex2D>();
-		SceneUtils.DrawMultiSceneTowardBottom(bg.OriginTilePos.X + 17 * direction, bg.OriginTilePos.Y + 10, tex2, bars, flipH);
-		Ins.Batch.Draw(tex2, bars, PrimitiveType.TriangleList);
+		// Fountain. The red layer shares the cached mesh of tex2 (same geometry as the legacy code); its color factor changes every frame, so refresh colors directly instead of using the timer.
+		StaticSceneMesh meshFountain = bg.GetOrBuildMesh(tex2, bg.OriginTilePos.X + 17 * direction, bg.OriginTilePos.Y + 10);
+		meshFountain.RefreshColors();
+		Ins.Batch.Draw(tex2, meshFountain.Vertices, PrimitiveType.TriangleList);
 
 		Color envLight = Lighting.GetColor(bg.OriginTilePos.X + 22, bg.OriginTilePos.Y + 14);
-		bars = new List<Vertex2D>();
-		SceneUtils.DrawMultiSceneTowardBottom(bg.OriginTilePos.X + 17 * direction, bg.OriginTilePos.Y + 10, tex2, bars, flipH, (envLight.R - Math.Max(envLight.G, envLight.B)) / 255f);
-		Ins.Batch.Draw(tex2_red, bars, PrimitiveType.TriangleList);
+		meshFountain.RefreshColors((envLight.R - Math.Max(envLight.G, envLight.B)) / 255f);
+		Ins.Batch.Draw(tex2_red, meshFountain.Vertices, PrimitiveType.TriangleList);
 
 		// Fountain waterfall front
 		coordX = 0;
