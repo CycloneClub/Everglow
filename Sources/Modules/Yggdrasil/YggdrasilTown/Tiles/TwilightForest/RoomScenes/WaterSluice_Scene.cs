@@ -128,12 +128,14 @@ public class WaterSluice_Scene : ModTile, ISceneTile
 
 	public void WaterSluiceOverTile(TwilightCastle_RoomScene_OverTiles otD)
 	{
-		bool flipH = otD.FlipHorizontally(otD.OriginTilePos.X, otD.OriginTilePos.Y);
 		Texture2D tex0 = ModAsset.WaterSluice_Scene_Close.Value;
 
-		List<Vertex2D> bars = new List<Vertex2D>();
-		SceneUtils.DrawMultiSceneTowardBottom(otD.OriginTilePos.X, otD.OriginTilePos.Y, tex0, bars, flipH);
-		Ins.Batch.Draw(tex0, bars, PrimitiveType.TriangleList);
+		StaticSceneMesh mesh = otD.GetOrBuildMesh(tex0, otD.OriginTilePos.X, otD.OriginTilePos.Y);
+		if (mesh.ColorRefreshTimer++ % 10 == 0)
+		{
+			mesh.RefreshColors();
+		}
+		Ins.Batch.Draw(tex0, mesh.Vertices, PrimitiveType.TriangleList);
 	}
 
 	public float GetOffsetHorizontal(float x, float y, float middleX)
