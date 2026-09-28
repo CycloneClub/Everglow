@@ -4,6 +4,7 @@ using Everglow.Yggdrasil.YggdrasilTown.Kitchen.Tiles;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Miscs.PlayerArena;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles;
+using Everglow.Yggdrasil.YggdrasilTown.Tiles.Union;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs.RandomNPC;
 using SubworldLibrary;
 using Terraria.DataStructures;

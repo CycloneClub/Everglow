@@ -1,4 +1,5 @@
 using Everglow.Commons.TileHelper;
+using Everglow.Food.Items.Ingredients;
 using Everglow.Yggdrasil.Common.Tiles;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Fishing.FishingRods;
@@ -240,7 +241,7 @@ public class YggdrasilTownGeneration
 					velocity.X *= -1;
 					point += velocity;
 				}
-				if (point.X < 50 || point.X > 1950)
+				if (point.X < 50 || point.X > Main.maxTilesX - 50)
 				{
 					point -= velocity;
 					velocity.X *= -1;
@@ -277,6 +278,10 @@ public class YggdrasilTownGeneration
 						{
 							Tile tile = SafeGetTile(x, y);
 							tile.TileType = (ushort)ModContent.TileType<StoneScaleWood>();
+							if (v0.Length() < 12)
+							{
+								tile.TileType = (ushort)ModContent.TileType<DarkForestSoil>();
+							}
 							if (v0.Length() < radious - aValue - 2)
 							{
 								tile.WallType = (ushort)ModContent.WallType<StoneDragonScaleWoodWall>();
@@ -912,6 +917,7 @@ public class YggdrasilTownGeneration
 			{
 				PlaceRectangleAreaOfBlock(pos.X - 6, pos.Y - y, pos.X + 1, pos.Y, ModContent.TileType<StoneScaleWood>(), 0);
 				PlaceRectangleAreaOfBlock(pos.X - 5, pos.Y - y, pos.X, pos.Y, -1, 0);
+				PlaceRectangleAreaOfBlock(pos.X + 1, pos.Y - 8, pos.X + 1, pos.Y - 1, -1, 0);
 				PlaceRectangleAreaOfWall(pos.X - 6, pos.Y - y, pos.X + 1, pos.Y + 2, ModContent.WallType<StoneDragonScaleWoodWall>(), 0);
 				for (int y2 = 12; y2 < y - 12; y2 += 24)
 				{
@@ -1740,8 +1746,7 @@ public class YggdrasilTownGeneration
 				}
 				TwilightBubbleCenters.Add(basePos);
 				count++;
-				CircleTileWithRandomNoise(basePos, range, ModContent.TileType<StoneScaleWood>(), 30);
-				CircleTileWithRandomNoise(basePos, range - 20, -1, 30, true);
+				BuildTwilightLand_Shell(basePos, range);
 
 				// 低于某个点位则填满泥土
 				int x0CoordPerlin = GenRand.Next(1024);
@@ -1759,16 +1764,19 @@ public class YggdrasilTownGeneration
 						{
 							if (!TileID.Sets.BasicChest[tile.TileType] && !TileID.Sets.BasicChest[tileUp.TileType])
 							{
-								if (y0 > radiusI * 0.5f + aValue * 5)
+								if (!tile.HasTile)
 								{
-									tile.TileType = (ushort)ModContent.TileType<TwilightGrassBlock>();
-									tile.HasTile = true;
-								}
-								if (y0 > radiusI * 0.51f + aValue * 5)
-								{
-									tile.TileType = (ushort)ModContent.TileType<DarkForestSoil>();
-									tile.HasTile = true;
-									tile.WallType = (ushort)ModContent.WallType<DarkForestSoilWall>();
+									if (y0 > radiusI * 0.5f + aValue * 5)
+									{
+										tile.TileType = (ushort)ModContent.TileType<TwilightGrassBlock>();
+										tile.HasTile = true;
+									}
+									if (y0 > radiusI * 0.51f + aValue * 5)
+									{
+										tile.TileType = (ushort)ModContent.TileType<DarkForestSoil>();
+										tile.HasTile = true;
+										tile.WallType = (ushort)ModContent.WallType<DarkForestSoilWall>();
+									}
 								}
 							}
 						}
@@ -1818,14 +1826,14 @@ public class YggdrasilTownGeneration
 				}
 
 				// 圆壳结构下面穿破
-				for (int j = 0; j < 4; j++)
-				{
-					DigTunnel(basePos.X, basePos.Y - range * 0.74f - j * 0.09f, GenRand.NextFloat(-0.2f, 0.2f), -1, GenRand.Next(127, 143), GenRand.Next(5, 8));
-				}
-				for (int j = 0; j < 6; j++)
-				{
-					DigTunnel(basePos.X, basePos.Y + range * 0.44f + j * 0.09f, GenRand.NextFloat(-0.5f, 0.5f), 1, GenRand.Next(127, 143), GenRand.Next(5, 8));
-				}
+				//for (int j = 0; j < 4; j++)
+				//{
+				//	DigTunnel(basePos.X, basePos.Y - range * 0.74f - j * 0.09f, GenRand.NextFloat(-0.2f, 0.2f), -1, GenRand.Next(127, 143), GenRand.Next(5, 8));
+				//}
+				//for (int j = 0; j < 6; j++)
+				//{
+				//	DigTunnel(basePos.X, basePos.Y + range * 0.44f + j * 0.09f, GenRand.NextFloat(-0.5f, 0.5f), 1, GenRand.Next(127, 143), GenRand.Next(5, 8));
+				//}
 
 				// 种树
 				for (int x0 = -radiusI; x0 <= radiusI; x0++)
@@ -1851,6 +1859,30 @@ public class YggdrasilTownGeneration
 		}
 	}
 
+	public static void BuildTwilightLand_Shell(Vector2 basePos, float range)
+	{
+		int x0CoordPerlin = GenRand.Next(1024);
+		int y0CoordPerlin = GenRand.Next(1024);
+		int radiusI = (int)range;
+		for (int x = -radiusI; x <= radiusI; x++)
+		{
+			for (int y = -radiusI; y <= radiusI; y++)
+			{
+				Tile tile = SafeGetTile(basePos + new Vector2(x, y));
+				float aValue = GetLargeSmokeTexturePixelR(x + x0CoordPerlin, y + y0CoordPerlin);
+				if (ChestSafe(basePos + new Vector2(x, y)))
+				{
+					if (new Vector2(x, y).Length() <= range - aValue * 30 && aValue * 10 + y > 0)
+					{
+						tile.TileType = (ushort)ModContent.TileType<StoneScaleWood>();
+						tile.HasTile = true;
+					}
+				}
+			}
+		}
+		CircleTileWithRandomNoise(basePos, range - 24, -1, 30, true);
+	}
+
 	/// <summary>
 	/// 中心暮光之地附带遗迹
 	/// </summary>
@@ -1859,31 +1891,33 @@ public class YggdrasilTownGeneration
 		int range = GenRand.Next(330, 340);
 
 		// 大轮廓
-		CircleTileWithRandomNoise(TwilightRelicCenter, range, ModContent.TileType<StoneScaleWood>(), 30);
-		CircleTileWithRandomNoise(TwilightRelicCenter, range - 40, -1, 30, true);
+		BuildTwilightLand_Shell(TwilightRelicCenter, range);
 
 		// 低于某个点位则填满泥土
 		int x0CoordPerlin = GenRand.Next(1024);
 		int y0CoordPerlin = GenRand.Next(1024);
-		int radiusI = range - 35;
+		int radiusI = range - 20;
 		for (int x0 = -radiusI; x0 <= radiusI; x0++)
 		{
 			for (int y0 = -radiusI; y0 <= radiusI; y0++)
 			{
 				Tile tile = SafeGetTile(TwilightRelicCenter + new Vector2(x0, y0));
 				float aValue = GetLargeSmokeTexturePixelR(x0 + x0CoordPerlin, y0 + y0CoordPerlin);
-				if (new Vector2(x0, y0).Length() <= radiusI - aValue * 10)
+				if (new Vector2(x0, y0).Length() <= radiusI)
 				{
-					if (y0 > radiusI * 0.5f + aValue * 5)
+					if (!tile.HasTile)
 					{
-						tile.TileType = (ushort)ModContent.TileType<TwilightGrassBlock>();
-						tile.HasTile = true;
-					}
-					if (y0 > radiusI * 0.51f + aValue * 5)
-					{
-						tile.TileType = (ushort)ModContent.TileType<DarkForestSoil>();
-						tile.HasTile = true;
-						tile.WallType = (ushort)ModContent.WallType<DarkForestSoilWall>();
+						if (y0 > radiusI * 0.5f + aValue * 5)
+						{
+							tile.TileType = (ushort)ModContent.TileType<TwilightGrassBlock>();
+							tile.HasTile = true;
+						}
+						if (y0 > radiusI * 0.51f + aValue * 5)
+						{
+							tile.TileType = (ushort)ModContent.TileType<DarkForestSoil>();
+							tile.HasTile = true;
+							tile.WallType = (ushort)ModContent.WallType<DarkForestSoilWall>();
+						}
 					}
 				}
 			}

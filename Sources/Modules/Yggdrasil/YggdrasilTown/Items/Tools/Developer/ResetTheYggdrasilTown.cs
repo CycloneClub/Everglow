@@ -17,7 +17,7 @@ public class ResetTheYggdrasilTown : ModItem
 
 	public override bool CanUseItem(Player player)
 	{
-		TileUtils.PlaceRectangleAreaOfBlock(20, Main.maxTilesY - 1500, Main.maxTilesX - 20, Main.maxTilesY, -1);
+		TileUtils.PlaceRectangleAreaOfBlock(20, Main.maxTilesY - 2100, Main.maxTilesX - 20, Main.maxTilesY, -2);
 		YggdrasilTownGeneration.BuildYggdrasilTown();
 		return false;
 	}

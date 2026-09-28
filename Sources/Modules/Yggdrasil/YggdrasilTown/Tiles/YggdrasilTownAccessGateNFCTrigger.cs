@@ -1,5 +1,7 @@
+using Everglow.Commons.CustomTiles;
+using Everglow.Yggdrasil.Common.Elevator;
+using Everglow.Yggdrasil.Common.Elevator.Tiles;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Miscs;
-using Everglow.Yggdrasil.YggdrasilTown.Tiles.FurnaceTiles;
 using Terraria.DataStructures;
 using Terraria.ObjectData;
 
@@ -143,10 +145,39 @@ public class YggdrasilTownAccessGateNFCTrigger : ModTile
 					if (tile.TileType == ModContent.TileType<YggdrasilTownAccessGate>())
 					{
 						tile.TileFrameY = 768;
+						var point = SearchWinch(i + x, j + y);
+						int targetType = TileUtils.SafeGetTile(point).TileType;
+						if (point != new Point(-1, -1) && targetType == ModContent.TileType<YggdrasilTownElevator_Winch>())
+						{
+							if (!ColliderManager.Instance.OfType<YggdrasilElevator>()
+								 .Any(r => r.WinchCoord == point))
+							{
+								var newElevator = ColliderManager.Instance.Add<YggdrasilElevator>(new Vector2(point.X, j + y - 30) * 16 - new Vector2(48, 8));
+								newElevator.WinchTileType = targetType;
+								newElevator.WinchCoord = point;
+								if (TileLoader.GetTile(targetType) is YggdrasilTownElevator_Winch yWinch)
+								{
+									yWinch.EmitAuxiliaryStructure(newElevator);
+								}
+							}
+						}
 					}
 				}
 			}
 		}
 		return base.RightClick(i, j);
+	}
+
+	public Point SearchWinch(int i, int j)
+	{
+		for (int y = 0; y < 2400; y++)
+		{
+			var tile = TileUtils.SafeGetTile(i - 6, j - y);
+			if (tile.TileType == ModContent.TileType<YggdrasilTownElevator_Winch>())
+			{
+				return new Point(i - 6, j - y);
+			}
+		}
+		return new Point(-1, -1);
 	}
 }

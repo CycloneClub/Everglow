@@ -249,7 +249,7 @@ public class BloodySwamp_area : ModProjectile, IWarpProjectile_warpStyle2
 			Vector2 dirOuter = dirMiddle.RotatedBy(0.3f);
 
 			var colorInner = new Color(-dirInner.X * 0.5f + 0.5f, -dirInner.Y * 0.5f + 0.5f, 0, 0);
-			var colorMiddle = new Color(-dirMiddle.X * 0.5f + 0.5f, -dirMiddle.Y * 0.5f + 0.5f, fade, 0);
+			var colorMiddle = new Color(-dirMiddle.X * 0.5f + 0.5f, -dirMiddle.Y * 0.5f + 0.5f, fade * 0.1f, 0);
 			var colorOuter = new Color(-dirOuter.X * 0.5f + 0.5f, -dirOuter.Y * 0.5f + 0.5f, 0, 0);
 
 			bars.Add(drawPos + radiusMiddle, colorMiddle, new Vector3(i / 50f - timeValue, timeValue, 0));

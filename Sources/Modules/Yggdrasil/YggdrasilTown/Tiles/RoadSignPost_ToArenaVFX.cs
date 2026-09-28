@@ -2,6 +2,7 @@ using Everglow.Commons.VFX.Scene;
 using Everglow.SubSpace;
 using Everglow.SubSpace.Tiles;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood.Furniture;
+using Everglow.Yggdrasil.YggdrasilTown.Tiles.Union;
 using Everglow.Yggdrasil.YggdrasilTown.Walls;
 using static Everglow.Commons.Utilities.TileUtils;
 
