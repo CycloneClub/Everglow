@@ -19,7 +19,7 @@ public class ConventionalEquipment : ModItem
 	{
 		Item.width = 28;
 		Item.height = 26;
-		Item.value = 1000;
+		Item.value = 0;
 		Item.rare = ItemRarityID.Green;
 		Item.defense = 2;
 	}

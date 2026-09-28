@@ -46,7 +46,7 @@ public class MarbleGate_BackgroundTile : TileVFX
 	{
 		var mapIO = new MapIO(30, 110);
 
-		mapIO.Read(ModIns.Mod.GetFileStream(ModAsset.HallOfUnion237x110_Path));
+		mapIO.Read(ModIns.Mod.GetFileStream(ModAsset.HallOfUnion248x119_Path));
 
 		var it = mapIO.GetEnumerator();
 		while (it.MoveNext())

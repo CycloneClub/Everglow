@@ -8,11 +8,11 @@ using Terraria.ObjectData;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.Union;
 
-public class QusetCounter : ShapeDataTile, ISceneTile
+public class QuestCounter : ShapeDataTile, ISceneTile
 {
 	public override void SetStaticDefaults()
 	{
-		CustomItemType = ModContent.ItemType<QusetCounter_Item>();
+		CustomItemType = ModContent.ItemType<QuestCounter_Item>();
 		DustType = DustID.DynastyWood;
 		TotalWidth = 22;
 		TotalHeight = 13;
@@ -131,16 +131,20 @@ public class QusetCounter : ShapeDataTile, ISceneTile
 
 	public void AddScene(int i, int j)
 	{
-		QusetCounter_Consultant qCC = new QusetCounter_Consultant()
+		var tile = Main.tile[i, j];
+		if (tile.TileFrameX == 198 && tile.TileFrameY == 162)
 		{
-			Active = true,
-			Visible = true,
-			Texture = ModAsset.QusetCounter_Consultant.Value,
-			OriginTilePos = new Point(i, j),
-			OriginTileType = Type,
-			Direction = 1,
-			Position = new Point(i, j).ToWorldCoordinates(),
-		};
-		Ins.VFXManager.Add(qCC);
+			QuestCounter_Consultant qCC = new QuestCounter_Consultant()
+			{
+				Active = true,
+				Visible = true,
+				Texture = ModAsset.QuestCounter_Consultant.Value,
+				OriginTilePos = new Point(i, j),
+				OriginTileType = Type,
+				Direction = 1,
+				Position = new Point(i, j).ToWorldCoordinates(),
+			};
+			Ins.VFXManager.Add(qCC);
+		}
 	}
 }

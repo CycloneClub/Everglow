@@ -2,7 +2,7 @@ using Everglow.Yggdrasil.YggdrasilTown.Tiles.Union;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 
-public class QusetCounter_Item : ModItem
+public class QuestCounter_Item : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Placeables;
 
@@ -11,7 +11,7 @@ public class QusetCounter_Item : ModItem
 		Item.width = 58;
 		Item.height = 34;
 		Item.maxStack = Item.CommonMaxStack;
-		Item.createTile = ModContent.TileType<QusetCounter>();
+		Item.createTile = ModContent.TileType<QuestCounter>();
 		Item.placeStyle = 0;
 		Item.useTurn = true;
 		Item.autoReuse = true;
@@ -30,7 +30,7 @@ public class QusetCounter_Item : ModItem
 
 	public override bool CanUseItem(Player player)
 	{
-		var mCounter = TileLoader.GetTile(ModContent.TileType<QusetCounter>()) as QusetCounter;
+		var mCounter = TileLoader.GetTile(ModContent.TileType<QuestCounter>()) as QuestCounter;
 		if (mCounter != null)
 		{
 			int x = (int)(Main.MouseWorld.X / 16 - 11);

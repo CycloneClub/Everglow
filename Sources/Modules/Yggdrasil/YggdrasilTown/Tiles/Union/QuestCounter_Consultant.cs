@@ -6,7 +6,7 @@ using Terraria.GameContent;
 namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.Union;
 
 [Pipeline(typeof(WCSPipeline))]
-public class QusetCounter_Consultant : TileVFX
+public class QuestCounter_Consultant : TileVFX
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawTiles;
 
@@ -42,13 +42,12 @@ public class QusetCounter_Consultant : TileVFX
 				dir = -1;
 			}
 		}
-		Texture2D tex = ModAsset.QusetCounter_Consultant.Value;
-		Ins.Batch.Draw(tex, Position, null, Lighting.GetColor(Position.ToTileCoordinates()), 0, new Vector2(19, 32), 1f, flip);
+		Ins.Batch.Draw(Texture, Position, null, Lighting.GetColor(Position.ToTileCoordinates()), 0, new Vector2(19, 32), 1f, flip);
 
 		if (MouseOverConsultant && CanInteract())
 		{
 			Texture2D chatBubble = TextureAssets.Chat.Value;
-			Main.spriteBatch.Draw(chatBubble, Position - Main.screenPosition + new Vector2(-16 + 16 * dir, -16), null, Lighting.GetColor(Position.ToTileCoordinates()), 0, new Vector2(0, chatBubble.Height), 1f, flip, 0);
+			Ins.Batch.Draw(chatBubble, Position - Main.screenPosition + new Vector2(-16 + 16 * dir, -16), null, Lighting.GetColor(Position.ToTileCoordinates()), 0, new Vector2(0, chatBubble.Height), 1f, flip);
 		}
 	}
 
