@@ -1,0 +1,54 @@
+{
+	"Anna": "Anna",
+	"Howard": "Howard",
+	"SmuggledAleQuest": {
+		"Name": "Smuggled Ale",
+		"Description": "Anna has a small request she would rather keep from her superiors.",
+		"Hint": "Unlocks upon entering Yggdrasil.",
+		"IntroObjective": "Anna seems to have a small favor to ask. Go and have a word with her.",
+		"DeliveryDescription": "Anna would like a quiet drink. Bring her some ale, and keep it out of sight of her superiors."
+	},
+	"SheWorriesAboutYouQuest": {
+		"Name": "She Worries About You",
+		"Description": "Rumors of the Blood Moon Cultist have Anna worried.",
+		"Hint": "Unlocks after completing Smuggled Ale.",
+		"Completion": "I didn't expect you to deal with that monster yourself. You've solved a problem for us. Dinner is on me tonight.",
+		"IntroObjective": "Anna has heard some troubling news and seems to have a warning for you. Go and speak to her.",
+		"DefeatDescription": "After hearing Anna's warning, kill a Blood Moon Cultist and give her one less reason to worry.",
+		"ReportDescription": "You have killed a Blood Moon Cultist. Return to Anna and put her mind at ease."
+	},
+	"SlimeDoctorQuest": {
+		"Name": "Slime Doctor",
+		"Description": "A little creature is hurt, and Anna needs help looking after it.",
+		"Hint": "Unlocks after stopping the Drunken Miners' Parade.",
+		"Objective": "Collect gel for Anna",
+		"IntroObjective": "Anna seems to be caring for an injured little creature. See if she needs any help.",
+		"DeliveryDescription": "Anna cannot leave her post to care for the injured little creature. Bring her some gel; it might help."
+	},
+	"DefendTownOneQuest": {
+		"Objective": "Defend Yggdrasil Town, Part I: Repel the Drunken Miners' Parade",
+		"InvasionDescription": "The drunken miners are disturbing the peace with their parade. Help Howard bring the trouble to an end.",
+		"ReportDescription": "The drunken miners have been dealt with for now. Report back to Howard."
+	},
+	"DefendTownTwoQuest": {
+		"Objective": "Defend Yggdrasil Town, Part II: Repel the rampant thieves",
+		"InvasionDescription": "Thieves are causing trouble in town. Stop them from running rampant.",
+		"ReportDescription": "The thieves have been dealt with. Return to Howard and ask how the town is faring."
+	},
+	"DefendTownThreeQuest": {
+		"Objective": "Defend Yggdrasil Town, Part III: Repel the Heiress and the Assassin",
+		"InvasionDescription": "Trouble involving the Heiress and the Assassin has disturbed the town again. Help Howard restore order.",
+		"ReportDescription": "The trouble with the Heiress and the Assassin has settled for now. Report back to Howard."
+	},
+	"DefendTownFourQuest": {
+		"Objective": "Defend Yggdrasil Town, Part IV: Stop the street sacrifice",
+		"InvasionDescription": "Someone is attempting a sacrifice in the streets. Put a stop to it before it is too late.",
+		"ReportDescription": "The street sacrifice has been stopped. Let Howard know the town is safe for now."
+	},
+	"DefendTownQuest": {
+		"Hint": "Unlocks after defeating the Squamous Shell.",
+		"Name": "Defend Yggdrasil Town",
+		"IntroObjective": "Howard seems troubled by the disturbances in town. Go and ask him about them.",
+		"Description": "Repeated disturbances trouble Yggdrasil Town. Howard needs help keeping the peace."
+	}
+}

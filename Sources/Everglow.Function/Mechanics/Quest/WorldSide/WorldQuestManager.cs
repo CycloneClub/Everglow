@@ -114,13 +114,16 @@ public class WorldQuestManager
 		if (NormalUpdate)
 		{
 			// Check locked
-			foreach (var m in _quests.Where(m => m.State == WorldQuestState.Locked))
+			if (NetUtils.IsSingle || NetUtils.IsMainServer)
 			{
-				if (m.CanUnlock()
-					&& m.State == WorldQuestState.Locked)
+				foreach (var m in _quests.Where(m => m.State == WorldQuestState.Locked))
 				{
-					m.Unlock();
-					OnQuestStatusUpdated(m);
+					if (m.CanUnlock()
+						&& m.State == WorldQuestState.Locked)
+					{
+						m.Unlock();
+						OnQuestStatusUpdated(m);
+					}
 				}
 			}
 

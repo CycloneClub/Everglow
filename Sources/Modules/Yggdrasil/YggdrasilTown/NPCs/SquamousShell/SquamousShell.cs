@@ -2,10 +2,13 @@ using Everglow.Commons.Coroutines;
 using Everglow.Commons.CustomTiles;
 using Everglow.Commons.DataStructures;
 using Everglow.Commons.Mechanics.Miscs;
+using Everglow.Commons.Netcode;
 using Everglow.Commons.Skeleton2D;
 using Everglow.Commons.Skeleton2D.Reader;
 using Everglow.Commons.Skeleton2D.Renderer;
 using Everglow.Commons.Skeleton2D.Renderer.DrawCommands;
+using Everglow.Commons.Utilities;
+using Everglow.Yggdrasil.Netcode;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Accessories.SquamousShell;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Rock;
@@ -1892,6 +1895,23 @@ public class SquamousShell : ModNPC
 
 	public override void OnKill()
 	{
+		if (YggdrasilWorld.InYggdrasil && !NetUtils.IsClient && !YggdrasilWorldSystem.DownedSquamousShell)
+		{
+			if (NetUtils.IsSingle)
+			{
+				YggdrasilWorldSystem.DownedSquamousShell = true;
+			}
+			else
+			{
+				ModIns.PacketResolver.Route(new YggdrasilProgressSyncPacket(true), RouteDestination.MainServer);
+			}
+		}
+		// 全局击败进度由主服同步；专用服务器不执行视觉效果。
+		if (Main.dedServ)
+		{
+			return;
+		}
+
 		for (int i = 0; i < 14; i++)
 		{
 			Vector2 v0 = new Vector2(0, Main.rand.NextFloat(0, 6f)).RotatedByRandom(MathHelper.TwoPi);
