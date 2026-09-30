@@ -49,14 +49,14 @@ UI 仅按状态推导遮罩：Player Available、World Locked 必定显示独立
 - 时间统一使用游戏帧。Quest 的 ElapsedTime 来自两侧 `Time`；`TimeLimit <= 0` 归一化为 `null`；RemainingTime 不小于 0。Objective 可通过 `WithTimeLimit` 持有独立 `QuestTimer`，只有当前激活目标推进计时，完成判定优先于同一时间片的到期判定。超时目标保持未完成并停止推进，任务重置或重试时计时归零。UI 负责换算秒或分钟。
 - QuestType 原样导出，仅作为无行为的展示和筛选标签，不推导状态、操作能力或 UI 布局。
 - Source 继续使用 `QuestSourceBase`，空值归一化为 `Default`；仅 Player 有 SubSource。来源图标与任务图标分离，UI 可按 Source/SubSource 单独创建来源图标。
-- Icons 永不为 `null`。两侧 adapter 只对 `FindCurrentObjectives()` 的目标图标生成数组快照，不混入来源图标或未来节点。UI 在详情目标面板底部左侧单独显示 Source/SubSource，与右侧动作按钮在分隔花纹和底边之间垂直居中，目标图标随当前目标变化刷新；来源显示不参与来源筛选。轮播状态属于 UI，`DrawerItem` 不进入 View。
+- Icons 永不为 `null`。两侧 adapter 使用与目标文字相同的阶段选择规则生成图标快照，不混入来源图标：Available/Locked 显示首个阶段，Active 显示当前阶段，Failed 保留失败时停留的阶段，Completed 保留最后阶段。UI 在详情目标面板底部左侧单独显示 Source/SubSource，与右侧动作按钮在分隔花纹和底边之间垂直居中，目标图标随当前目标变化刷新；来源显示不参与来源筛选。轮播状态属于 UI，`DrawerItem` 不进入 View。
 - Rewards 是 `RewardView` 快照。物品奖励保留任务创建的 `Item` 引用，由 UI 只读展示 Terraria 名称、数量和 tooltip；`Item == null` 时使用 Description 表示非物品奖励。领奖与发放仍属于领域层。
 
 ## Presentation Objective 树
 
 `QuestView.ObjectiveNodes` 按领域定义顺序保存互斥的只读节点：Leaf、Parallel、AnyOf（映射 Optional）和 Branch。Branch 包含有序 `ObjectiveBranchView`；未选择、已选择、已排除分别为 Candidate、Selected、Skipped。已完成的已选分支仍为 Selected，不另设分支完成态。
 
-`ObjectiveView` 只含实例内 ID、Description、Progress、可空 Timer 和 Pending/Active/Completed/TimedOut/Skipped 状态。状态优先级固定为：位于已排除分支、Objective 已完成、Objective 已超时、Quest 为 Active 且属于 `FindCurrentObjectives()`、其他。两侧 adapter 都将领域 `QuestTimer` 导出为独立 `TimerView` 快照。两侧 adapter 分别导出目标的 Description 和 GetObjectiveText()。详情目标区只显示当前未完成节点中的活动或超时目标，将描述与默认目标文案分行显示；已完成节点、未来目标和被排除分支不显示，完整结构仍保留。详情中的星级、任务树按钮和进度旗帜暂不显示。
+`ObjectiveView` 只含实例内 ID、Description、Progress、可空 Timer 和 Pending/Active/Completed/TimedOut/Skipped 状态。状态优先级固定为：位于已排除分支、Objective 已完成、Objective 已超时、Quest 为 Active 且属于 `FindCurrentObjectives()`、其他。两侧 adapter 都将领域 `QuestTimer` 导出为独立 `TimerView` 快照。两侧 adapter 分别导出目标的 Description 和 GetObjectiveText()。详情目标区将所选阶段的描述与默认目标文案分行显示，Pending 不再导致预览为空，完成后仍保留最后阶段。分支仅显示候选分支的首个目标或已选分支的当前/最后目标，不展示后续阶段或被排除分支。完整结构和真实状态仍由 adapter 导出，阶段选择不读取 Hint/HideMode，遮罩只由 UI 决定。详情中的星级、任务树按钮和进度旗帜暂不显示。
 
 两侧具体节点仅向同程序集 adapter 提供最小 `internal` 只读出口：Leaf 的 Objective，Parallel/Optional 的 Objective 序列，Branch 的嵌套分支序列与可空 SelectedBranchIndex。出口使用只读包装，不暴露内部 List、游标、存档键或行为，也不让领域层依赖 Presentation。
 

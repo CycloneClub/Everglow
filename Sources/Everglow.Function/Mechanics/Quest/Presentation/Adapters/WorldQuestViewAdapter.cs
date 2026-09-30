@@ -24,7 +24,7 @@ public static class WorldQuestViewAdapter
 		ObjectiveNodeView[] objectiveNodes = CreateObjectiveNodes(quest);
 		RewardView[] rewards = CreateRewards(quest);
 
-		QuestIconBase[] icons = CreateIcons(quest);
+		QuestIconBase[] icons = CreateIcons(quest, objectiveNodes);
 
 		return new QuestView
 		{
@@ -46,12 +46,12 @@ public static class WorldQuestViewAdapter
 		};
 	}
 
-	private static QuestIconBase[] CreateIcons(WorldQuestBase quest)
+	private static QuestIconBase[] CreateIcons(WorldQuestBase quest, IReadOnlyList<ObjectiveNodeView> nodes)
 	{
 		var iconGroup = new QuestIconGroup();
-		foreach (var objective in quest.Objectives.FindCurrentObjectives())
+		foreach (ObjectiveView objective in QuestObjectiveDisplay.GetObjectives(MapState(quest.State), nodes))
 		{
-			objective.GetObjectivesIcon(iconGroup);
+			quest.Objectives.AllObjectives[objective.Id].GetObjectivesIcon(iconGroup);
 		}
 		return iconGroup.Icons.ToArray();
 	}

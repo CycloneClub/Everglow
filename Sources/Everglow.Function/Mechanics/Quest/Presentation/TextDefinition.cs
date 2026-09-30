@@ -70,22 +70,14 @@ public static class TextDefinition
 		ArgumentNullException.ThrowIfNull(quest);
 
 		List<ObjectiveLineView> lines = [];
-		foreach (ObjectiveNodeView node in quest.ObjectiveNodes.SkipWhile(IsCompleted).Take(1))
+		foreach (ObjectiveView objective in QuestObjectiveDisplay.GetObjectives(quest.State, quest.ObjectiveNodes))
 		{
-			foreach (ObjectiveView objective in GetObjectives(node))
+			string text = FormatObjective(objective, objective.ObjectiveText);
+			if (!string.IsNullOrWhiteSpace(objective.Description))
 			{
-				if (objective.State is not (ObjectiveViewState.Active or ObjectiveViewState.TimedOut))
-				{
-					continue;
-				}
-
-				string text = FormatObjective(objective, objective.ObjectiveText);
-				if (!string.IsNullOrWhiteSpace(objective.Description))
-				{
-					text = objective.Description + "\n" + text;
-				}
-				lines.Add(new ObjectiveLineView(objective, text));
+				text = objective.Description + "\n" + text;
 			}
+			lines.Add(new ObjectiveLineView(objective, text));
 		}
 
 		return lines.ToArray();
@@ -165,17 +157,6 @@ public static class TextDefinition
 
 	public static string GetColoredText(string text, string color) => $"[TextDrawer,Text='{text}',Color='{color}']";
 
-	private static IEnumerable<ObjectiveView> GetObjectives(ObjectiveNodeView node) => node switch
-	{
-		LeafObjectiveNodeView leaf => [leaf.Objective],
-		ParallelObjectiveNodeView parallel => parallel.Objectives,
-		AnyOfObjectiveNodeView anyOf => anyOf.Objectives,
-		BranchObjectiveNodeView branch => branch.Branches
-			.Where(candidate => candidate.State != ObjectiveBranchState.Skipped)
-			.SelectMany(candidate => candidate.Objectives),
-		_ => [],
-	};
-
 	private static string FormatObjective(ObjectiveView objective, string text)
 	{
 		if (objective.State == ObjectiveViewState.TimedOut)
@@ -185,15 +166,4 @@ public static class TextDefinition
 
 		return text;
 	}
-
-	private static bool IsCompleted(ObjectiveNodeView node) => node switch
-	{
-		LeafObjectiveNodeView leaf => leaf.Objective.State == ObjectiveViewState.Completed,
-		ParallelObjectiveNodeView parallel => parallel.Objectives.All(objective => objective.State == ObjectiveViewState.Completed),
-		AnyOfObjectiveNodeView anyOf => anyOf.Objectives.Any(objective => objective.State == ObjectiveViewState.Completed),
-		BranchObjectiveNodeView branch => branch.Branches.Any(candidate =>
-			candidate.State == ObjectiveBranchState.Selected
-			&& candidate.Objectives.All(objective => objective.State == ObjectiveViewState.Completed)),
-		_ => false,
-	};
 }
