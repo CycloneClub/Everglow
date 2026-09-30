@@ -76,6 +76,15 @@ public abstract class PlayerObjectiveBase : ITagCompoundEntity
 		return this;
 	}
 
+	/// <summary>
+	/// Adds reward items and returns this objective for fluent configuration.
+	/// </summary>
+	public PlayerObjectiveBase WithRewards(params Item[] rewards)
+	{
+		RewardItems.AddRange(rewards);
+		return this;
+	}
+
 	public PlayerObjectiveBase WithTimeLimit(int timeLimit, bool retriable = true)
 	{
 		Timer = new QuestTimer(timeLimit);
