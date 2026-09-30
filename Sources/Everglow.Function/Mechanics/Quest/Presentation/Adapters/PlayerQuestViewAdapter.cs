@@ -46,8 +46,10 @@ public static class PlayerQuestViewAdapter
 	private static QuestIconBase[] CreateIcons(PlayerQuestBase quest)
 	{
 		var iconGroup = new QuestIconGroup();
-		iconGroup.Add(QuestSourceIcon.Create(quest.Source ?? QuestSourceBase.Default, quest.SubSource));
-		quest.Objectives.GetObjectivesIcon(iconGroup);
+		foreach (var objective in quest.Objectives.FindCurrentObjectives())
+		{
+			objective.GetObjectivesIcon(iconGroup);
+		}
 		return iconGroup.Icons.ToArray();
 	}
 

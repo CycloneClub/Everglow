@@ -258,9 +258,8 @@ public partial class PlayerQuestViewAdapterTest
 		Assert.AreEqual(45, view.ElapsedTime);
 		Assert.AreEqual(120, view.TimeLimit);
 		Assert.AreEqual(75, view.RemainingTime);
-		Assert.HasCount(2, view.Icons);
-		Assert.IsInstanceOfType<QuestSourceIcon>(view.Icons[0]);
-		Assert.AreSame(visibleIcon, view.Icons[1]);
+		Assert.HasCount(1, view.Icons);
+		Assert.AreSame(visibleIcon, view.Icons[0]);
 	}
 
 	[TestMethod]

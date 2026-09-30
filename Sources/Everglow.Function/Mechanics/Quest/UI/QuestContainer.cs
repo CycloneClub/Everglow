@@ -46,7 +46,7 @@ public class QuestContainer : UIContainerElement
 
 	private UIQuestList _questList;
 	private UIQuestFilter _questFilter;
-	private UIQuestSource _questSourceHeadshot;
+	private QuestSourceBase _sourceFilter;
 
 	private UIBlock _close;
 
@@ -163,10 +163,6 @@ public class QuestContainer : UIContainerElement
 		_questFilter = new UIQuestFilter();
 		_panel.Register(_questFilter);
 
-		// Quest source headshot
-		_questSourceHeadshot = new UIQuestSource();
-		_panel.Register(_questSourceHeadshot);
-
 		// Quest details
 		_questDetail = new UIQuestDetail();
 		_questDetail.PanelColor = Color.Transparent;
@@ -259,9 +255,6 @@ public class QuestContainer : UIContainerElement
 
 		_panelBackground.Info.Width.SetFull();
 		_panelBackground.Info.Height.SetFull();
-
-		_questSourceHeadshot.Info.Top.SetValue((210 - 40) * ResolutionFactor);
-		_questSourceHeadshot.Info.Left.SetValue((270 - 40) * ResolutionFactor);
 
 		int squzzeLeftLimit = 1500;
 		float leftPartWidth = 740;
@@ -375,7 +368,7 @@ public class QuestContainer : UIContainerElement
 			if (args[0] is QuestSourceBase source)
 			{
 				// Set NPC mode and source NPC.
-				_questSourceHeadshot.Source = source;
+				_sourceFilter = source;
 			}
 			else
 			{
@@ -385,7 +378,7 @@ public class QuestContainer : UIContainerElement
 		}
 		else // Open global quest panel
 		{
-			_questSourceHeadshot.Source = null;
+			_sourceFilter = null;
 		}
 
 		RefreshQuestContainer();
@@ -419,7 +412,7 @@ public class QuestContainer : UIContainerElement
 	public void RefreshList()
 	{
 		QuestIdentity? selectedQuest = _selectedQuest;
-		_questList.RefreshList(_questFilter.QuestStateValue, _questFilter.QuestTypeValue, _questSourceHeadshot.Source);
+		_questList.RefreshList(_questFilter.QuestStateValue, _questFilter.QuestTypeValue, _sourceFilter);
 
 		if (selectedQuest is QuestIdentity identity)
 		{

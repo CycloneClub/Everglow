@@ -17,7 +17,7 @@ public class UIQuestFilter : BaseElement
 	private Vector2? _outerMouseDownPosition;
 	private float _outerMouseClickRotation;
 	private bool _outerHeld;
-	private Vector2 _outerDispalcement;
+	private Vector2 _outerDispalcement = new(1000);
 	private Vector2 _outerClickPoint;
 	private float? _outerClickTargetRotation;
 	private float? _outerHoverTargetRotation;
@@ -28,7 +28,7 @@ public class UIQuestFilter : BaseElement
 	private Vector2? _innerMouseDownPosition;
 	private float _innerMouseClickRotation;
 	private bool _innerHeld;
-	private Vector2 _innerDispalcement;
+	private Vector2 _innerDispalcement = new(1000);
 	private Vector2 _innerClickPoint;
 	private float? _innerClickTargetRotation;
 	private float? _innerHoverTargetRotation;
@@ -352,8 +352,8 @@ public class UIQuestFilter : BaseElement
 		}
 		else
 		{
-			// TODO: _innerDispalcement will reset to Vector2.zero when resolution change. This caused the filter rotated.
-			if (_innerDispalcement.Length() < MouseHoldDisplacementLimitForAutoRotation/* && _innerDispalcement.Length() != 0*/)
+			// A small displacement after releasing the ring is a click.
+			if (_innerDispalcement.Length() < MouseHoldDisplacementLimitForAutoRotation)
 			{
 				var clickedQuestState = RotationToQuestState(MathHelper.Pi - MouseRotation + _innerRotation);
 				_innerClickTargetRotation = QuestStateToRotation(clickedQuestState);
@@ -375,8 +375,8 @@ public class UIQuestFilter : BaseElement
 		}
 		else
 		{
-			// TODO: _outerDispalcement will reset to Vector2.zero when resolution change. This caused the filter rotated.
-			if (_outerDispalcement.Length() < MouseHoldDisplacementLimitForAutoRotation/* && _outerDispalcement.Length() != 0*/)
+			// A small displacement after releasing the ring is a click.
+			if (_outerDispalcement.Length() < MouseHoldDisplacementLimitForAutoRotation)
 			{
 				var clickedQuestType = RotationToQuestType(MathHelper.Pi - MouseRotation + _outerRotation);
 				_outerClickTargetRotation = QuestTypeToRotation(clickedQuestType);
@@ -432,11 +432,11 @@ public class UIQuestFilter : BaseElement
 		var typeFilter = ModAsset.QuestSortRing_Type.Value;
 		sb.Draw(typeFilter, drawPos, null, Color.White, _outerRotation, typeFilter.Size() / 2, 1, SpriteEffects.None, 0);
 		var gems = ModAsset.QuestSortGems.Value;
-		for (int k = 0; k < 8; k++)
+		for (int k = 0; k < QuestTypeList.Count; k++)
 		{
-			Rectangle frame = new Rectangle(26 * k, 0, 26, 26);
-			float subRot = k / 8f * MathHelper.TwoPi;
-			sb.Draw(gems, drawPos + new Vector2(-149, 0).RotatedBy(subRot + _outerRotation), frame, Color.White, 0, frame.Size() / 2, 1f, SpriteEffects.None, 0);
+			Rectangle frame = ColorDefinition.GetQuestTypeGemFrame(QuestTypeList[k]);
+			float subRot = k / (float)QuestTypeList.Count * MathHelper.TwoPi;
+			sb.Draw(gems, drawPos + new Vector2(-149, 0).RotatedBy(_outerRotation - subRot), frame, Color.White, 0, frame.Size() / 2, 1f, SpriteEffects.None, 0);
 		}
 
 		var statusFilter = ModAsset.QuestSortRing_Status.Value;
@@ -445,7 +445,7 @@ public class UIQuestFilter : BaseElement
 		{
 			Rectangle frame = ColorDefinition.GetQuestStateGemFrame(QuestStateList[k]);
 			float subRot = k / (float)QuestStateList.Count * MathHelper.TwoPi;
-			sb.Draw(gems, drawPos + new Vector2(-107, 0).RotatedBy(subRot + _innerRotation), frame, Color.White, 0, frame.Size() / 2, 1f, SpriteEffects.None, 0);
+			sb.Draw(gems, drawPos + new Vector2(-107, 0).RotatedBy(_innerRotation - subRot), frame, Color.White, 0, frame.Size() / 2, 1f, SpriteEffects.None, 0);
 		}
 
 		if (_innerHoverTargetRotation != null)

@@ -49,8 +49,10 @@ public static class WorldQuestViewAdapter
 	private static QuestIconBase[] CreateIcons(WorldQuestBase quest)
 	{
 		var iconGroup = new QuestIconGroup();
-		iconGroup.Add(QuestSourceIcon.Create(quest.Source ?? QuestSourceBase.Default, null));
-		quest.Objectives.GetObjectivesIcon(iconGroup);
+		foreach (var objective in quest.Objectives.FindCurrentObjectives())
+		{
+			objective.GetObjectivesIcon(iconGroup);
+		}
 		return iconGroup.Icons.ToArray();
 	}
 
