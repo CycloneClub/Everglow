@@ -13,6 +13,8 @@ public abstract class WorldObjectiveBase : IDeltaSyncObjective
 	{
 	}
 
+	public event Action<WorldObjectiveBase> OnRewardRequested;
+
 	public bool Completed { get; private set; }
 
 	public QuestTimer Timer { get; private set; }
@@ -82,19 +84,44 @@ public abstract class WorldObjectiveBase : IDeltaSyncObjective
 	/// </summary>
 	public virtual void Complete()
 	{
-		if (!Completed)
+		if (Completed)
 		{
-			if (!RewardClaimed)
-			{
-				foreach (var item in RewardItems)
-				{
-					Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_Misc(WorldQuestBase.RewardItemsSourceContext), item, item.stack);
-				}
+			return;
+		}
 
-				RewardClaimed = true;
-			}
+		Completed = true;
+		if (RewardClaimed)
+		{
+			return;
+		}
+		if (RewardItems.Count == 0)
+		{
+			RewardClaimed = true;
+			return;
+		}
 
-			Completed = true;
+		// 客户端的进度推演不能自行发奖；只响应服务端奖励包。
+		if (Main.netMode == NetmodeID.MultiplayerClient)
+		{
+			return;
+		}
+
+		RewardClaimed = true;
+		if (Main.netMode == NetmodeID.SinglePlayer)
+		{
+			GiveRewards(Main.LocalPlayer);
+		}
+		else if (Main.netMode == NetmodeID.Server)
+		{
+			OnRewardRequested?.Invoke(this);
+		}
+	}
+
+	public void GiveRewards(Player player)
+	{
+		foreach (var item in RewardItems)
+		{
+			player.QuickSpawnItem(player.GetSource_Misc(WorldQuestBase.RewardItemsSourceContext), item, item.stack);
 		}
 	}
 
