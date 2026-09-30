@@ -1,8 +1,4 @@
-using Everglow.Commons.TileHelper;
-using Everglow.Yggdrasil.WorldGeneration;
-using Everglow.Yggdrasil.YggdrasilTown.Tiles.FurnaceTiles;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles.Union;
-using Everglow.Yggdrasil.YggdrasilTown.Walls;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Tools.Developer;
 
@@ -22,7 +18,7 @@ public class GiantFurnacePlaceItem : ModItem
 
 	public override bool CanUseItem(Player player)
 	{
-		TileUtils.PlaceFrameImportantTilesAtTileObjectDataOrigin(Main.MouseWorld.ToTileCoordinates(),ModContent.TileType<TraineeEquipmentsShelf>());
+		TileUtils.PlaceFrameImportantTilesAtTileObjectDataOrigin(Main.MouseWorld.ToTileCoordinates(), ModContent.TileType<TraineeEquipmentsShelf>());
 		return true;
 	}
 

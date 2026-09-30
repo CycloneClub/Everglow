@@ -1,4 +1,5 @@
 using Everglow.Yggdrasil.YggdrasilTown.Items.Tools;
+using Everglow.Yggdrasil.YggdrasilTown.VFXs.ProjectileEffects;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using static Everglow.Yggdrasil.YggdrasilTown.Items.Tools.MiningPowerPickaxe;
@@ -149,7 +150,28 @@ public class MiningPowerPickaxe_Proj : ModProjectile
 			{
 				// Get all linked tiles (Order by distance to player).
 				TargetTiles = GetLinkedTiles(MouseTileTargetCoord, FirstPick ? FirstTileTargetType : MouseTileTarget.type, SearchTileMax, player);
-				TargetTiles.Remove(MouseTileTargetCoord);
+				//TargetTiles.Remove(MouseTileTargetCoord);
+
+				MiningPowerPickaxe_Proj_Wave mPPPW = new MiningPowerPickaxe_Proj_Wave()
+				{
+					Value = 30,
+					Owner = player,
+					Tiles = TargetTiles,
+					Visible = true,
+					Active = true,
+				};
+				Ins.VFXManager.Add(mPPPW);
+
+				MiningPowerPickaxe_Proj_TileBound mPPPTB = new MiningPowerPickaxe_Proj_TileBound()
+				{
+					Value = 30,
+					Owner = player,
+					CurrentTiles = TargetTiles,
+					OreType = MouseTileTarget.TileType,
+					Visible = true,
+					Active = true,
+				};
+				Ins.VFXManager.Add(mPPPTB);
 
 				Projectile.netUpdate = true;
 			}
@@ -186,15 +208,15 @@ public class MiningPowerPickaxe_Proj : ModProjectile
 	public override void PostDraw(Color lightColor)
 	{
 		// Draw signal over tile to represent they're selected.
-		if (TargetTiles.Count > 0)
-		{
-			foreach (var tile in TargetTiles)
-			{
-				var drawPos = tile.ToWorldCoordinates() - Main.screenPosition;
-				var texture = Commons.ModAsset.Point.Value;
-				Main.spriteBatch.Draw(texture, drawPos, null, new Color(1f, 1f, 1f, 0f), 0f, texture.Size() * 0.5f, 0.08f, SpriteEffects.None, 0f);
-			}
-		}
+		// if (TargetTiles.Count > 0)
+		// {
+		// foreach (var tile in TargetTiles)
+		// {
+		// var drawPos = tile.ToWorldCoordinates() - Main.screenPosition;
+		// var texture = Commons.ModAsset.Point.Value;
+		// Main.spriteBatch.Draw(texture, drawPos, null, new Color(1f, 1f, 1f, 0f), 0f, texture.Size() * 0.5f, 0.08f, SpriteEffects.None, 0f);
+		// }
+		// }
 	}
 
 	public override void SendExtraAI(BinaryWriter writer)

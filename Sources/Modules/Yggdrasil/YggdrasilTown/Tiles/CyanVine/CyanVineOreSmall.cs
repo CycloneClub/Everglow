@@ -19,6 +19,7 @@ public class CyanVineOreSmall : ModTile
 		MinPick = 40;
 		TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
 		TileObjectData.addTile(Type);
+		TileID.Sets.Ore[Type] = true;
 		AddMapEntry(new Color(84, 130, 154));
 		DustType = ModContent.DustType<Dusts.CyanVine>();
 		AdjTiles = new int[] { Type };

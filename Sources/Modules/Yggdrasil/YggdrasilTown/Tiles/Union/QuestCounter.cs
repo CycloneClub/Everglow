@@ -2,13 +2,14 @@ using Everglow.Commons.Templates.Furniture;
 using Everglow.Commons.TileHelper;
 using Everglow.Commons.VFX.Scene;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
+using Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ObjectData;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.Union;
 
-public class QuestCounter : ShapeDataTile, ISceneTile
+public class QuestCounter : ShapeDataTile
 {
 	public override void SetStaticDefaults()
 	{
@@ -129,22 +130,18 @@ public class QuestCounter : ShapeDataTile, ISceneTile
 		}
 	}
 
-	public void AddScene(int i, int j)
+	public override void NearbyEffects(int i, int j, bool closer)
 	{
-		var tile = Main.tile[i, j];
-		if (tile.TileFrameX == 198 && tile.TileFrameY == 162)
+		int npcType = ModContent.NPCType<QuestCounter_Consultant>();
+		if (NPC.CountNPCS(npcType) <= 0)
 		{
-			QuestCounter_Consultant qCC = new QuestCounter_Consultant()
+			NPC npc = NPC.NewNPCDirect(WorldGen.GetNPCSource_TileBreak(i, j), new Point(i, j).ToWorldCoordinates(), npcType);
+			QuestCounter_Consultant qCC = npc.ModNPC as QuestCounter_Consultant;
+			if (qCC is not null)
 			{
-				Active = true,
-				Visible = true,
-				Texture = ModAsset.QuestCounter_Consultant.Value,
-				OriginTilePos = new Point(i, j),
-				OriginTileType = Type,
-				Direction = 1,
-				Position = new Point(i, j).ToWorldCoordinates(),
-			};
-			Ins.VFXManager.Add(qCC);
+				qCC.TilePos = new Point(i, j);
+			}
 		}
+		base.NearbyEffects(i, j, closer);
 	}
 }

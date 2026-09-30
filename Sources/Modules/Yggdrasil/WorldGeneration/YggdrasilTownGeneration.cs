@@ -1,6 +1,6 @@
 using Everglow.Commons.TileHelper;
-using Everglow.Food.Items.Ingredients;
 using Everglow.Yggdrasil.Common.Tiles;
+using Everglow.Yggdrasil.KelpCurtain.Walls;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Fishing.FishingRods;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
@@ -17,6 +17,7 @@ using Everglow.Yggdrasil.YggdrasilTown.Tiles.CyanVine;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood.Furniture;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles.TwilightForest;
+using Everglow.Yggdrasil.YggdrasilTown.Tiles.TwilightForest.RoomScenes;
 using Everglow.Yggdrasil.YggdrasilTown.Walls;
 using Everglow.Yggdrasil.YggdrasilTown.Walls.TwilightForest;
 using ModLiquidLib.ModLoader;
@@ -341,13 +342,6 @@ public class YggdrasilTownGeneration
 	}
 
 	/// <summary>
-	/// 靛琉璃海, Expired
-	/// </summary>
-	public static void BuildAzureGrotto()
-	{
-	}
-
-	/// <summary>
 	/// 千回矿道
 	/// </summary>
 	public static void BuildTangledSubmine()
@@ -370,6 +364,7 @@ public class YggdrasilTownGeneration
 	public static void Minerization(int leftX, int upY, int rightX, int downY)
 	{
 		float area = (downY - upY) * (rightX - leftX) / 180000f;
+		Rectangle townArea = new Rectangle(230, Main.maxTilesY - 600, 706, 275);
 		for (int x = 0; x < 110 * area; x++)
 		{
 			DigTunnelAvoidYggdrasilTown(GenRand.NextFloat(leftX, rightX), GenRand.NextFloat(upY, downY), GenRand.NextFloat(-1, 1), GenRand.NextFloat(0, 1), GenRand.Next(27, 72), GenRand.Next(3, 7), ModContent.TileType<StoneScaleWood>(), false, ModContent.WallType<StoneDragonScaleWoodWall>());
@@ -381,6 +376,50 @@ public class YggdrasilTownGeneration
 		for (int x = 0; x < 30 * area; x++)
 		{
 			DigTunnelAvoidYggdrasilTown(GenRand.NextFloat(leftX, rightX), GenRand.NextFloat(upY, downY), GenRand.NextFloat(-1, 1), GenRand.NextFloat(-1, 1), GenRand.Next(81, 144), GenRand.Next(8, 12), ModContent.TileType<StoneScaleWood>(), false, ModContent.WallType<StoneDragonScaleWoodWall>());
+		}
+		int constructuresCount = 0;
+		for (int k = 0; k < 1000; k++)
+		{
+			var point = new Point(GenRand.Next(leftX, rightX), GenRand.Next(upY, downY));
+			int spaceWidth = CheckSpaceLeft(point) + CheckSpaceRight(point);
+			if (spaceWidth > 10 && spaceWidth < 30 && !townArea.Contains(point))
+			{
+				PlaceRectangleAreaOfBlock(point.X - 8, point.Y - 6, point.X + 8, point.Y, ModContent.TileType<GreyTownBrick>());
+				PlaceRectangleAreaOfBlock(point.X - 7, point.Y - 5, point.X + 7, point.Y - 1, -1);
+				PlaceRectangleAreaOfBlock(point.X - 8, point.Y - 3, point.X + 8, point.Y - 1, -1);
+				PlaceFrameImportantTilesAbove(point.X - 8, point.Y, 1, 3, ModContent.TileType<LampWoodDoorClosed>());
+				PlaceFrameImportantTilesAbove(point.X + 8, point.Y, 1, 3, ModContent.TileType<LampWoodDoorClosed>());
+				PlaceRectangleAreaOfWall(point.X - 7, point.Y - 5, point.X + 7, point.Y - 1, ModContent.WallType<GreenCourtWall>());
+				WorldGen.PlaceChest(GenRand.Next(point.X - 7, point.X + 6), point.Y - 1, (ushort)ModContent.TileType<WoodenChest_ForestCastle>());
+				for (int i = point.X - 7; i <= point.X + 7; i++)
+				{
+					for (int j = point.Y - 5; j <= point.Y - 1; j++)
+					{
+						WorldGenMisc.TryFillChest(i, j, SubmineChestContents());
+					}
+					if ((i - point.X + 8) % 4 == 2)
+					{
+						for (int j = point.Y + 1; j <= point.Y + 1000; j++)
+						{
+							var tile = SafeGetTile(i, j);
+							if (tile.HasTile)
+							{
+								break;
+							}
+							else
+							{
+								tile.TileType = TileID.WoodenBeam;
+								tile.HasTile = true;
+							}
+						}
+					}
+				}
+				constructuresCount++;
+			}
+			if (constructuresCount > 15)
+			{
+				break;
+			}
 		}
 		for (int x = leftX; x < rightX; x++)
 		{
@@ -1826,14 +1865,14 @@ public class YggdrasilTownGeneration
 				}
 
 				// 圆壳结构下面穿破
-				//for (int j = 0; j < 4; j++)
-				//{
-				//	DigTunnel(basePos.X, basePos.Y - range * 0.74f - j * 0.09f, GenRand.NextFloat(-0.2f, 0.2f), -1, GenRand.Next(127, 143), GenRand.Next(5, 8));
-				//}
-				//for (int j = 0; j < 6; j++)
-				//{
-				//	DigTunnel(basePos.X, basePos.Y + range * 0.44f + j * 0.09f, GenRand.NextFloat(-0.5f, 0.5f), 1, GenRand.Next(127, 143), GenRand.Next(5, 8));
-				//}
+				// for (int j = 0; j < 4; j++)
+				// {
+				// DigTunnel(basePos.X, basePos.Y - range * 0.74f - j * 0.09f, GenRand.NextFloat(-0.2f, 0.2f), -1, GenRand.Next(127, 143), GenRand.Next(5, 8));
+				// }
+				// for (int j = 0; j < 6; j++)
+				// {
+				// DigTunnel(basePos.X, basePos.Y + range * 0.44f + j * 0.09f, GenRand.NextFloat(-0.5f, 0.5f), 1, GenRand.Next(127, 143), GenRand.Next(5, 8));
+				// }
 
 				// 种树
 				for (int x0 = -radiusI; x0 <= radiusI; x0++)
@@ -2242,7 +2281,7 @@ public class YggdrasilTownGeneration
 	public static void SmoothYggdrasilTown()
 	{
 		// SmoothTile_XXYY(0, (int)(Main.maxTilesY * 0.9), Main.maxTilesX, Main.maxTilesY);
-		for (int x = 0; x < Main.tile.Width- 20; x++)
+		for (int x = 0; x < Main.tile.Width - 20; x++)
 		{
 			for (int y = 18950; y < Main.tile.Height - 20; y++)
 			{
@@ -3129,6 +3168,38 @@ public class YggdrasilTownGeneration
 				break;
 			case 7:
 				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<TwilightRod>(), 1));
+				break;
+		}
+		chestContents.AddRange(NormalChestContents());
+		return chestContents;
+	}
+
+	/// <summary>
+	/// Generate a list of item to fill a twilight cell room chest.
+	/// </summary>
+	/// <returns></returns>
+	public static List<Item> SubmineChestContents()
+	{
+		List<Item> chestContents = new List<Item>();
+		int mainItem = WorldGen.genRand.Next(5);
+
+		// 尽可能出现不同奖励
+		switch (mainItem)
+		{
+			case 0:
+				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<OldPickaxe>(), 1));
+				break;
+			case 1:
+				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<ShacklesBall>(), 1));
+				break;
+			case 2:
+				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<SkullCollection>(), 1));
+				break;
+			case 3:
+				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<FragmentsOfWreckage>(), 1));
+				break;
+			case 4:
+				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<FuneraryGoods>(), 1));
 				break;
 		}
 		chestContents.AddRange(NormalChestContents());

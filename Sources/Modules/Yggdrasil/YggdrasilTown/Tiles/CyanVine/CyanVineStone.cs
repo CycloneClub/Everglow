@@ -9,6 +9,7 @@ public class CyanVineStone : ModTile
 		DustType = ModContent.DustType<Dusts.CyanVine>();
 		MineResist = 4f;
 		Main.tileSpelunker[Type] = true;
+		TileID.Sets.Ore[Type] = true;
 		AddMapEntry(new Color(84, 130, 154));
 	}
 
