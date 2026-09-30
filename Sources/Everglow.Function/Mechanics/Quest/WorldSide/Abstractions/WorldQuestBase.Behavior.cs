@@ -12,6 +12,7 @@ public abstract partial class WorldQuestBase
 	protected WorldQuestBase()
 	{
 		Objectives.OnNodeCompleted += Objectives_OnNodeCompleted;
+		Objectives.OnObjectiveRewardRequested += Objectives_BroadcastObjectiveRewards;
 		Objectives.OnObjectiveActivated += Objectives_OnObjectiveActivated;
 		Objectives.OnObjectiveDeactivated += Objectives_OnObjectiveDeactivated;
 		Objectives.OnObjectiveTimedOut += Objectives_OnObjectiveTimedOut;
@@ -323,6 +324,11 @@ public abstract partial class WorldQuestBase
 
 	public virtual void OnReset()
 	{
+	}
+
+	protected virtual void Objectives_BroadcastObjectiveRewards(WorldObjectiveBase objective)
+	{
+		ModIns.PacketResolver.Send(new ObjectiveGiveRewardPacket(Name, objective.ObjectiveID));
 	}
 
 	private void Objectives_OnNodeCompleted(WorldObjectiveNodeBase current)
