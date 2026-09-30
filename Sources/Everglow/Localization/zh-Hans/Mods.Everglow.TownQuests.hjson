@@ -1,0 +1,54 @@
+{
+	"Anna": "安娜",
+	"Howard": "霍华德",
+	"SmuggledAleQuest": {
+		"Name": "私酒",
+		"Description": "安娜有一桩不想让上司知道的小委托。",
+		"Hint": "进入天穹树后解锁。",
+		"IntroObjective": "安娜似乎有点小事想请你帮忙，去和她聊聊吧。",
+		"DeliveryDescription": "安娜想偷偷喝上一点麦芽酒，帮她带些来，记得避开她的上司。"
+	},
+	"SheWorriesAboutYouQuest": {
+		"Name": "她担心你",
+		"Description": "血月教徒的传闻让安娜有些担心。",
+		"Hint": "完成「私酒」后解锁。",
+		"Completion": "没想到你能直接解决那个怪物，也算是帮了我们解决了一项问题，这样吧，晚上我请你一顿。",
+		"IntroObjective": "安娜听说了一个令人不安的消息，似乎想提醒你些什么，去找她聊聊吧。",
+		"DefeatDescription": "听过安娜的提醒后，去击杀一个血月教徒，让她不再为你担心。",
+		"ReportDescription": "你击杀了血月教徒，回去告诉安娜，让她放心吧。"
+	},
+	"SlimeDoctorQuest": {
+		"Name": "史莱姆医生",
+		"Description": "一个小家伙受了伤，安娜需要帮手照料它。",
+		"Hint": "平息醉酒矿工游行后解锁。",
+		"Objective": "为安娜收集凝胶",
+		"IntroObjective": "安娜似乎正在照料一个受伤的小家伙，去看看她是否需要帮助。",
+		"DeliveryDescription": "安娜抽不开身照料受伤的小家伙，帮她带些凝胶来，也许能派上用场。"
+	},
+	"DefendTownOneQuest": {
+		"Objective": "守卫天穹镇 其一：挡住醉酒矿工游行",
+		"InvasionDescription": "醉酒矿工的游行扰乱了小镇的安宁，帮霍华德平息这场骚乱。",
+		"ReportDescription": "醉酒矿工的骚乱暂时平息了，去向霍华德报告情况。"
+	},
+	"DefendTownTwoQuest": {
+		"Objective": "守卫天穹镇 其二：挡住飞贼横行",
+		"InvasionDescription": "镇上的飞贼又惹出了麻烦，阻止他们继续作乱。",
+		"ReportDescription": "飞贼引起的骚乱已经平息，回去问问霍华德镇上的情况。"
+	},
+	"DefendTownThreeQuest": {
+		"Objective": "守卫天穹镇 其三：挡住千金与刺客",
+		"InvasionDescription": "千金与刺客的风波让小镇再起骚乱，帮助霍华德恢复秩序。",
+		"ReportDescription": "千金与刺客的风波暂告一段落，去向霍华德汇报。"
+	},
+	"DefendTownFourQuest": {
+		"Objective": "守卫天穹镇 其四：阻止当街活祭",
+		"InvasionDescription": "有人试图在街头举行活祭，尽快阻止这场暴行。",
+		"ReportDescription": "街头的活祭已经被阻止，回去告诉霍华德小镇暂时安全了。"
+	},
+	"DefendTownQuest": {
+		"Hint": "击败龙鳞古壳后解锁。",
+		"Name": "守卫天穹镇",
+		"IntroObjective": "霍华德似乎正为镇上的骚乱发愁，去问问他吧。",
+		"Description": "天穹镇接连发生骚乱，霍华德需要有人协助维持秩序。"
+	}
+}
