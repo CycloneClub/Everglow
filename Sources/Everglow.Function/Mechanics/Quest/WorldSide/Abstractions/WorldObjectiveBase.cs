@@ -44,6 +44,15 @@ public abstract class WorldObjectiveBase : IDeltaSyncObjective
 		return this;
 	}
 
+	/// <summary>
+	/// Adds reward items and returns this objective for fluent configuration.
+	/// </summary>
+	public WorldObjectiveBase WithRewards(params Item[] rewards)
+	{
+		RewardItems.AddRange(rewards);
+		return this;
+	}
+
 	public WorldObjectiveBase WithTimeLimit(int timeLimit, bool retriable = true)
 	{
 		Timer = new QuestTimer(timeLimit);
