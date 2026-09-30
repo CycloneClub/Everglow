@@ -1892,6 +1892,16 @@ public class SquamousShell : ModNPC
 
 	public override void OnKill()
 	{
+		if (YggdrasilWorld.InYggdrasil)
+		{
+			YggdrasilWorldSystem.DownedSquamousShell = true;
+		}
+		// Boss 死亡后由原版同步 WorldData；专用服务器不执行视觉效果。
+		if (Main.dedServ)
+		{
+			return;
+		}
+
 		for (int i = 0; i < 14; i++)
 		{
 			Vector2 v0 = new Vector2(0, Main.rand.NextFloat(0, 6f)).RotatedByRandom(MathHelper.TwoPi);
