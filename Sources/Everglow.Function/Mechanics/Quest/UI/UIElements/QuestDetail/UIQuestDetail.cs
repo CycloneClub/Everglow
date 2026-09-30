@@ -13,7 +13,6 @@ namespace Everglow.Commons.Mechanics.Quest.UI.UIElements.QuestDetail;
 public class UIQuestDetail : UIBlock, IDrawable_InRt2D
 {
 	private static readonly Color ComponentColor = new Color(0.2f, 0.2f, 0.2f, 0.005f);
-	private static readonly Color ChangeButtonHoverColor = Color.White;
 
 	private static UIQuestItem SelectedItem => Instance.SelectedItem;
 
@@ -34,8 +33,7 @@ public class UIQuestDetail : UIBlock, IDrawable_InRt2D
 
 	private int[] _iconObjectiveIds = [];
 
-	private UIQuestButton _objectiveChangeQuest;
-	private UITextPlus _objectiveChangeText;
+	private UIQuestActionButton _objectiveChangeQuest;
 
 	private UIRewardsStripe _rewardsPanel;
 
@@ -92,32 +90,8 @@ public class UIQuestDetail : UIBlock, IDrawable_InRt2D
 		_objectiveContainer.SetVerticalScrollbar(_objectiveTextScrollbar);
 		_objective.Register(_objectiveContainer);
 
-		// Button
-		_objectiveChangeQuest = new UIQuestButton();
-		_objectiveChangeQuest.Info.IsSensitive = true;
-		_objectiveChangeQuest.PanelColor = ChangeButtonHoverColor;
-		_objectiveChangeQuest.Events.OnLeftDown += OnClickChange;
-		_objectiveChangeQuest.Events.OnMouseHover += e =>
-		{
-			if (GetFirstAction(SelectedItem?.Entry).HasValue)
-			{
-				_objectiveChangeQuest.PanelColor = Color.White;
-				_objectiveChangeQuest.OnSelect = true;
-				UpdateChangeButton("255,245,193");
-			}
-		};
-		_objectiveChangeQuest.Events.OnMouseOut += e =>
-		{
-			_objectiveChangeQuest.PanelColor = Color.White;
-			_objectiveChangeQuest.OnSelect = false;
-			UpdateChangeButton("45,38,33");
-		};
+		_objectiveChangeQuest = new UIQuestActionButton(OnClickChange);
 		_objective.Register(_objectiveChangeQuest);
-
-		_objectiveChangeText = new UITextPlus(string.Empty);
-		_objectiveChangeText.StringDrawer.DefaultParameters.SetParameter("FontSize", FontSize);
-		_objectiveChangeText.StringDrawer.Init(_objectiveChangeText.Text);
-		_objectiveChangeQuest.Register(_objectiveChangeText);
 
 		_rewardsPanel = new UIRewardsStripe();
 		Register(_rewardsPanel);
@@ -128,7 +102,6 @@ public class UIQuestDetail : UIBlock, IDrawable_InRt2D
 		base.Calculation();
 		Info.CanBeInteract = AnimationState == 0;
 		Info.HiddenOverflow = true;
-		_objectiveChangeQuest.Info.CanBeInteract = GetFirstAction(SelectedItem?.Entry).HasValue;
 
 		float detailPanelWidth = (Info.Width.Pixel - 120) / 2f;
 		float detailPanelDistance = 40;
@@ -334,21 +307,15 @@ public class UIQuestDetail : UIBlock, IDrawable_InRt2D
 	/// <summary>
 	/// Base operations for quest
 	/// </summary>
-	/// <param name="e"></param>
-	public void OnClickChange(BaseElement e)
+	/// <param name="action"></param>
+	private void OnClickChange(QuestAction action)
 	{
 		if (!IsVisible || SelectedItem == null)
 		{
 			return;
 		}
 
-		QuestAction? action = GetFirstAction(SelectedItem.Entry);
-		if (!action.HasValue)
-		{
-			return;
-		}
-
-		if (action.Value.Type == QuestActionType.Cancel)
+		if (action.Type == QuestActionType.Cancel)
 		{
 			AnimationState = 1;
 			var tip = new UIQuestOperationTip(SelectedItem.Entry, UIQuestOperationTip.TipType.Confirmation, "是否放弃任务", DiscardQuest, "是", "否");
@@ -357,7 +324,7 @@ public class UIQuestDetail : UIBlock, IDrawable_InRt2D
 		}
 		else
 		{
-			Service.TryExecute(action.Value);
+			Service.TryExecute(action);
 		}
 	}
 
@@ -384,9 +351,6 @@ public class UIQuestDetail : UIBlock, IDrawable_InRt2D
 		}
 	}
 
-	private static QuestAction? GetFirstAction(QuestPresentationEntry entry) =>
-		entry is not null && entry.Actions.Count > 0 ? entry.Actions[0] : null;
-
 	private static QuestAction? FindAction(QuestPresentationEntry entry, QuestActionType type)
 	{
 		if (entry is null)
@@ -405,18 +369,7 @@ public class UIQuestDetail : UIBlock, IDrawable_InRt2D
 		return null;
 	}
 
-	/// <summary>
-	/// 更新按钮的文字, color示例:"45,38,33"
-	/// </summary>
-	public void UpdateChangeButton(string color)
-	{
-		_objectiveChangeText.Text = TextDefinition.GetQuestActionText(SelectedItem?.Entry, color);
-		if (SelectedItem is not null)
-		{
-			_objectiveChangeText.Calculation();
-			_objectiveChangeText.Info.SetToCenter();
-		}
-	}
+	public void RefreshActions() => _objectiveChangeQuest.SetEntry(SelectedItem?.Entry);
 
 	public override void Draw(SpriteBatch sb)
 	{

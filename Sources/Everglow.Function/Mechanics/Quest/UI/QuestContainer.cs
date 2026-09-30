@@ -453,12 +453,12 @@ public class QuestContainer : UIContainerElement
 		}
 		else if (QuestHintDisplay.IsVisible(entry.View))
 		{
-			_questHint.SetQuest(entry.View);
+			_questHint.SetEntry(entry);
 		}
 		else
 		{
 			_questDetail.RefreshObjectives(entry.View);
-			_questDetail.UpdateChangeButton("45,38,33");
+			_questDetail.RefreshActions();
 		}
 	}
 
@@ -476,9 +476,9 @@ public class QuestContainer : UIContainerElement
 		oldSelectedItem?.OnUnselected();
 		SelectedItem?.OnSelected();
 
-		_questHint.SetQuest(item?.View);
+		_questHint.SetEntry(item?.Entry);
 		_questDetail.Info.IsVisible = !_questHint.IsVisible;
-		_questDetail.UpdateChangeButton("45,38,33");
+		_questDetail.RefreshActions();
 		_questDetail.SetQuestDetail(item);
 
 		if (item is not null && item.View.State == QuestViewState.Failed)

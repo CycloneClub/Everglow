@@ -31,7 +31,7 @@ PlayerSide/WorldSide Actions <──────────── QuestPresenta
 
 DisplayName、Description、Hint、Objective 描述和非物品奖励描述均为 `string`，默认空字符串，并可继续携带现有 StringDrawer 标记。两侧 adapter 始终导出完整真实数据与 `HideMode`，不清空名称、描述、目标、奖励或计时，也不按提示文本删减 Actions。
 
-UI 仅按状态推导遮罩：Player Available、World Locked 必定显示独立 Hint 面板，其他状态显示普通详情。空字符串、纯空白或字面量 `???` 都不改变遮罩状态。`QuestHideMode` 是普通枚举，按顺序声明 `None`、`Name`、`NameAndConditions`，默认 `None`；遮罩期间的显示矩阵如下：
+UI 仅按状态推导遮罩：Player Available、World Locked 显示独立 Hint 面板，其他状态显示普通详情。HideMode.None 表示不隐藏名称和 Hint 文案，不控制面板是否显示。空字符串、纯空白或字面量 `???` 都不改变遮罩状态。`QuestHideMode` 是普通枚举，按顺序声明 `None`、`Name`、`NameAndConditions`，默认 `None`；遮罩期间的显示矩阵如下：
 
 | HideMode | 列表名称 / Hint 标题 | Hint 内容 |
 | --- | --- | --- |
@@ -39,7 +39,7 @@ UI 仅按状态推导遮罩：Player Available、World Locked 必定显示独立
 | `Name` | `???` | 真实 Hint |
 | `NameAndConditions` | `???` | `???` |
 
-统一遮罩文本使用 `QuestHintText.Masked`（`"???"`）。列表和 Hint 面板共用 UI 显示规则；接取/解锁后恢复真实名称和普通详情。普通详情根与 Hint 根互斥，切换时关闭临时详情层并清除旧交互状态。面板打开期间定期重读列表条目，使未激活任务的名称和 Hint 变化也能刷新；文本不变时不重建文本控件。
+统一遮罩文本使用 `QuestHintText.Masked`（`"???"`）。列表和 Hint 面板共用 UI 显示规则；接取/解锁后恢复真实名称和普通详情。Hint 允许为空，不回退到任务描述。Hint 与 Detail 共用任务动作按钮控件，文字和可执行操作来自当前 Entry.Actions，点击仍交由 Service 校验执行。Hint 仅在存在操作时显示按钮，玩家 Available 的 Accept 因而可以在 Hint 面板执行；世界 Locked 不添加手动接取入口，仍由领域条件自动激活。普通详情根与 Hint 根互斥，切换时关闭临时详情层并清除旧交互状态。面板打开期间定期重读列表条目，使未激活任务的名称和 Hint 变化也能刷新；文本不变时不重建文本控件。
 
 旧 Player `IsVisible`、World `Visible` 及其列表省略行为已移除，不新增持久化可见性布尔值。旧玩家存档的 `IsVisible` 键被忽略，其他身份、状态、目标进度和计时照常恢复，无需重置存档。Hint 只提供文本，不参与解锁条件求值或操作权限。
 
