@@ -2,10 +2,13 @@ using Everglow.Commons.Coroutines;
 using Everglow.Commons.CustomTiles;
 using Everglow.Commons.DataStructures;
 using Everglow.Commons.Mechanics.Miscs;
+using Everglow.Commons.Netcode;
 using Everglow.Commons.Skeleton2D;
 using Everglow.Commons.Skeleton2D.Reader;
 using Everglow.Commons.Skeleton2D.Renderer;
 using Everglow.Commons.Skeleton2D.Renderer.DrawCommands;
+using Everglow.Commons.Utilities;
+using Everglow.Yggdrasil.Netcode;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Accessories.SquamousShell;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Rock;
@@ -1892,11 +1895,18 @@ public class SquamousShell : ModNPC
 
 	public override void OnKill()
 	{
-		if (YggdrasilWorld.InYggdrasil)
+		if (YggdrasilWorld.InYggdrasil && !NetUtils.IsClient && !YggdrasilWorldSystem.DownedSquamousShell)
 		{
-			YggdrasilWorldSystem.DownedSquamousShell = true;
+			if (NetUtils.IsSingle)
+			{
+				YggdrasilWorldSystem.DownedSquamousShell = true;
+			}
+			else
+			{
+				ModIns.PacketResolver.Route(new YggdrasilProgressSyncPacket(true), RouteDestination.MainServer);
+			}
 		}
-		// Boss 死亡后由原版同步 WorldData；专用服务器不执行视觉效果。
+		// 全局击败进度由主服同步；专用服务器不执行视觉效果。
 		if (Main.dedServ)
 		{
 			return;

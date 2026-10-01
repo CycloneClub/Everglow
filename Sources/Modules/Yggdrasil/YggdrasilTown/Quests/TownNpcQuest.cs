@@ -24,8 +24,7 @@ public abstract class TownNpcQuest : WorldQuestBase
 
 	public override QuestType Type => QuestType.SideStory;
 
-	public override bool CanUnlock() =>
-		YggdrasilWorld.InYggdrasil && CanOffer(WorldQuestManager.Instance);
+	public override bool CanUnlock() => CanOffer(WorldQuestManager.Instance);
 
 	public abstract bool CanOffer(WorldQuestManager manager);
 
