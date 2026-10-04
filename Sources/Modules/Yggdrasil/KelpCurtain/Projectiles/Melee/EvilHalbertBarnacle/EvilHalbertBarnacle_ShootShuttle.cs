@@ -64,13 +64,13 @@ public class EvilHalbertBarnacle_ShootShuttle : ModProjectile
 					Vector2 vel = Projectile.velocity.RotateRandom(0.6f) * Main.rand.NextFloat(0.35f, 1.15f) * 45f;
 					var dust = new BarnacleTissueDust
 					{
-						velocity = vel,
+						Velocity = vel,
 						Active = true,
 						Visible = true,
-						position = Projectile.Center + Projectile.velocity * 5,
-						maxTime = Main.rand.Next(60, 90),
-						scale = Main.rand.NextFloat(8f, 12f),
-						rotation = Main.rand.NextFloat(6.283f),
+						Position = Projectile.Center + Projectile.velocity * 5,
+						MaxTime = Main.rand.Next(60, 90),
+						Scale = Main.rand.NextFloat(8f, 12f),
+						Rotation = Main.rand.NextFloat(6.283f),
 						ai = new float[] { Main.rand.NextFloat(6f, 8f), Main.rand.NextFloat(1f) },
 					};
 					Ins.VFXManager.Add(dust);
@@ -80,13 +80,13 @@ public class EvilHalbertBarnacle_ShootShuttle : ModProjectile
 					Vector2 vel = Projectile.velocity.RotateRandom(0.6f) * Main.rand.NextFloat(0.35f, 1.15f) * 45f;
 					var dust = new BarnacleTissueDust
 					{
-						velocity = vel,
+						Velocity = vel,
 						Active = true,
 						Visible = true,
-						position = Projectile.Center + Projectile.velocity * 5,
-						maxTime = Main.rand.Next(60, 90),
-						scale = Main.rand.NextFloat(36f, 48f),
-						rotation = Main.rand.NextFloat(6.283f),
+						Position = Projectile.Center + Projectile.velocity * 5,
+						MaxTime = Main.rand.Next(60, 90),
+						Scale = Main.rand.NextFloat(36f, 48f),
+						Rotation = Main.rand.NextFloat(6.283f),
 						ai = new float[] { Main.rand.NextFloat(6f, 8f), Main.rand.NextFloat(1f) },
 					};
 					Ins.VFXManager.Add(dust);

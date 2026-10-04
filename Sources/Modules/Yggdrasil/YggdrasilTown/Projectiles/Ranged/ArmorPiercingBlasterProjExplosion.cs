@@ -31,13 +31,13 @@ public class ArmorPiercingBlasterProjExplosion : ModProjectile, IWarpProjectile
 		{
 			var dustVFX = new ArmorPiercingSpark
 			{
-				velocity = new Vector2(0, MathF.Sqrt(Main.rand.NextFloat(1f)) * 4).RotatedByRandom(MathHelper.TwoPi) + new Vector2(0, -Main.rand.NextFloat(11)),
+				Velocity = new Vector2(0, MathF.Sqrt(Main.rand.NextFloat(1f)) * 4).RotatedByRandom(MathHelper.TwoPi) + new Vector2(0, -Main.rand.NextFloat(11)),
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(0, MathF.Sqrt(Main.rand.NextFloat(1f)) * 20).RotatedByRandom(MathHelper.TwoPi),
-				maxTime = 200,
-				scale = Main.rand.NextFloat(12, 30),
-				rotation = Main.rand.NextFloat(MathHelper.TwoPi),
+				Position = Projectile.Center + new Vector2(0, MathF.Sqrt(Main.rand.NextFloat(1f)) * 20).RotatedByRandom(MathHelper.TwoPi),
+				MaxTime = 200,
+				Scale = Main.rand.NextFloat(12, 30),
+				Rotation = Main.rand.NextFloat(MathHelper.TwoPi),
 				ai = new float[] { 0, 0, 0 },
 			};
 			Ins.VFXManager.Add(dustVFX);
@@ -46,13 +46,13 @@ public class ArmorPiercingBlasterProjExplosion : ModProjectile, IWarpProjectile
 		{
 			var dustVFX = new ArmorPiercingSpark
 			{
-				velocity = new Vector2(0, MathF.Sqrt(Main.rand.NextFloat(1f)) * 6).RotatedByRandom(MathHelper.TwoPi) + new Vector2(0, -Main.rand.NextFloat(11)),
+				Velocity = new Vector2(0, MathF.Sqrt(Main.rand.NextFloat(1f)) * 6).RotatedByRandom(MathHelper.TwoPi) + new Vector2(0, -Main.rand.NextFloat(11)),
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(0, MathF.Sqrt(Main.rand.NextFloat(1f)) * 20).RotatedByRandom(MathHelper.TwoPi),
-				maxTime = 200,
-				scale = Main.rand.NextFloat(4, 15),
-				rotation = Main.rand.NextFloat(MathHelper.TwoPi),
+				Position = Projectile.Center + new Vector2(0, MathF.Sqrt(Main.rand.NextFloat(1f)) * 20).RotatedByRandom(MathHelper.TwoPi),
+				MaxTime = 200,
+				Scale = Main.rand.NextFloat(4, 15),
+				Rotation = Main.rand.NextFloat(MathHelper.TwoPi),
 				ai = new float[] { 0, 0, 0 },
 			};
 			Ins.VFXManager.Add(dustVFX);
@@ -62,13 +62,13 @@ public class ArmorPiercingBlasterProjExplosion : ModProjectile, IWarpProjectile
 			Vector2 vel = new Vector2(0, Main.rand.NextFloat(2.6f, 8.4f)).RotatedByRandom(MathHelper.TwoPi) + new Vector2(0, -Main.rand.NextFloat(18));
 			var dust = new ArmorPiercingTrailDust
 			{
-				velocity = vel,
+				Velocity = vel,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(20, 60),
-				scale = Main.rand.NextFloat(1f, 2f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(20, 60),
+				Scale = Main.rand.NextFloat(1f, 2f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(4.0f, 10.93f) },
 			};
 			Ins.VFXManager.Add(dust);
@@ -88,13 +88,13 @@ public class ArmorPiercingBlasterProjExplosion : ModProjectile, IWarpProjectile
 			{
 				var dustVFX = new ArmorPiercingSpark
 				{
-					velocity = new Vector2(0, MathF.Sqrt(Main.rand.NextFloat(1f)) * 4).RotatedByRandom(MathHelper.TwoPi) + new Vector2(0, -Main.rand.NextFloat(2)),
+					Velocity = new Vector2(0, MathF.Sqrt(Main.rand.NextFloat(1f)) * 4).RotatedByRandom(MathHelper.TwoPi) + new Vector2(0, -Main.rand.NextFloat(2)),
 					Active = true,
 					Visible = true,
-					position = Projectile.Center + new Vector2(0, MathF.Sqrt(Main.rand.NextFloat(1f)) * 20).RotatedByRandom(MathHelper.TwoPi),
-					maxTime = 200,
-					scale = Main.rand.NextFloat(4, 30),
-					rotation = Main.rand.NextFloat(MathHelper.TwoPi),
+					Position = Projectile.Center + new Vector2(0, MathF.Sqrt(Main.rand.NextFloat(1f)) * 20).RotatedByRandom(MathHelper.TwoPi),
+					MaxTime = 200,
+					Scale = Main.rand.NextFloat(4, 30),
+					Rotation = Main.rand.NextFloat(MathHelper.TwoPi),
 					ai = new float[] { 0, 0, 0 },
 				};
 				Ins.VFXManager.Add(dustVFX);

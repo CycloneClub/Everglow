@@ -1,13 +1,4 @@
-using Everglow.Commons;
-using Everglow.Commons.DataStructures;
 using Everglow.Commons.VFX.CommonVFXDusts;
-using Everglow.Myth.LanternMoon.VFX;
-using Everglow.Myth.TheFirefly.Dusts;
-using Everglow.SpellAndSkull;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;
-using Terraria.GameContent;
-using Terraria.Map;
 
 namespace Everglow.Myth.LanternMoon.Gores;
 
@@ -16,7 +7,7 @@ public class PaperGore : BurningGore
 {
 	public override void Update()
 	{
-		float timevalue = (float)timer / (float)maxTime;
+		float timevalue = timer / (float)maxTime;
 		rotateSpeed = velocity.X / 80f;
 		velocity = velocity.RotatedBy(MathF.Sin(timevalue * MathF.PI * 0.025f * ai[0]));
 		velocity += new Vector2(MathF.Sin(timevalue * MathF.PI * 0.035f * ai[0]), Math.Abs(MathF.Cos(timevalue * MathF.PI * 0.035f * ai[0])) * 0.01f);
@@ -37,7 +28,7 @@ public class PaperGore : BurningGore
 					maxTime = Main.rand.Next(37, 45) * (1 - timevalue),
 					scale = Main.rand.NextFloat(0.1f, 12.0f) * (1 - timevalue),
 					rotation = Main.rand.NextFloat(6.283f),
-					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.01f, 0.01f) }
+					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.01f, 0.01f) },
 				};
 				Ins.VFXManager.Add(spark);
 			}
@@ -46,14 +37,14 @@ public class PaperGore : BurningGore
 				Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 1f)).RotatedByRandom(MathHelper.TwoPi);
 				var spark = new FireDust
 				{
-					velocity = newVelocity + velocity * Main.rand.NextFloat(0f, 1f),
+					Velocity = newVelocity + velocity * Main.rand.NextFloat(0f, 1f),
 					Active = true,
 					Visible = true,
-					position = position + new Vector2(Main.rand.NextFloat(-0.5f, 0.5f), 0).RotatedByRandom(6.283) * (1 - timevalue) * width,
-					maxTime = Main.rand.Next(5, 15) * (1 - timevalue),
-					scale = Main.rand.NextFloat(0.1f, 6.0f) * (1 - timevalue),
-					rotation = Main.rand.NextFloat(6.283f),
-					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.01f, 0.01f) }
+					Position = position + new Vector2(Main.rand.NextFloat(-0.5f, 0.5f), 0).RotatedByRandom(6.283) * (1 - timevalue) * width,
+					MaxTime = Main.rand.Next(5, 15) * (1 - timevalue),
+					Scale = Main.rand.NextFloat(0.1f, 6.0f) * (1 - timevalue),
+					Rotation = Main.rand.NextFloat(6.283f),
+					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.01f, 0.01f) },
 				};
 				Ins.VFXManager.Add(spark);
 			}
@@ -62,9 +53,8 @@ public class PaperGore : BurningGore
 
 	public override void DrawDissolvePart()
 	{
-		float timevalue = (float)timer / (float)maxTime;
+		float timevalue = timer / (float)maxTime;
 		float flipflag = MathF.Cos(rotation * ai[0] + ai[1]);
-
 
 		Vector2 v0 = position + new Vector2(-width * flipflag, -height).RotatedBy(rotation) * 0.5f * scale;
 		Vector2 v1 = position + new Vector2(width * flipflag, -height).RotatedBy(rotation) * 0.5f * scale;
@@ -91,6 +81,4 @@ public class PaperGore : BurningGore
 
 		Ins.Batch.Draw(Texture, bars, PrimitiveType.TriangleStrip);
 	}
-
-
 }

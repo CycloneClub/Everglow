@@ -6,18 +6,14 @@ internal abstract class ShaderDraw : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
 
-	public Vector2 position;
-	public Vector2 velocity;
+	public Vector2 Position;
+	public Vector2 Velocity;
 	public float[] ai;
 
-	public ShaderDraw()
+	public ShaderDraw(Vector2 Position, Vector2 Velocity, params float[] ai)
 	{
-	}
-
-	public ShaderDraw(Vector2 position, Vector2 velocity, params float[] ai)
-	{
-		this.position = position;
-		this.velocity = velocity;
+		this.Position = Position;
+		this.Velocity = Velocity;
 		this.ai = ai; // 可以认为params传入的都是右值，可以直接引用
 	}
 }
@@ -54,36 +50,32 @@ internal class DevilFlameDust : ShaderDraw
 {
 	private Vector2 vsadd = Vector2.Zero;
 	public List<Vector2> oldPos = new List<Vector2>();
-	public float timer;
-	public float maxTime;
+	public float Timer;
+	public float MaxTime;
 
-	public DevilFlameDust()
+	public DevilFlameDust(int MaxTime, Vector2 Position, Vector2 Velocity, params float[] ai)
+		: base(Position, Velocity, ai)
 	{
-	}
-
-	public DevilFlameDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai)
-		: base(position, velocity, ai)
-	{
-		this.maxTime = maxTime;
+		this.MaxTime = MaxTime;
 	}
 
 	public override void Update()
 	{
-		position += velocity;
-		oldPos.Add(position);
+		Position += Velocity;
+		oldPos.Add(Position);
 		if (oldPos.Count > 15)
 		{
 			oldPos.RemoveAt(0);
 		}
 
-		velocity *= 0.96f;
-		timer++;
-		if (timer > maxTime)
+		Velocity *= 0.96f;
+		Timer++;
+		if (Timer > MaxTime)
 		{
 			Active = false;
 		}
 
-		velocity = velocity.RotatedBy(ai[1]);
+		Velocity = Velocity.RotatedBy(ai[1]);
 
 		for (int f = oldPos.Count - 1; f > 0; f--)
 		{
@@ -92,14 +84,14 @@ internal class DevilFlameDust : ShaderDraw
 				oldPos[f] += vsadd;
 			}
 		}
-		float delC = ai[2] * 0.05f * (float)Math.Sin((maxTime - timer) / 40d * Math.PI);
-		Lighting.AddLight((int)(position.X / 16), (int)(position.Y / 16), 0.25f * delC, 0f, 0.95f * delC);
+		float delC = ai[2] * 0.05f * (float)Math.Sin((MaxTime - Timer) / 40d * Math.PI);
+		Lighting.AddLight((int)(Position.X / 16), (int)(Position.Y / 16), 0.25f * delC, 0f, 0.95f * delC);
 	}
 
 	public override void Draw()
 	{
 		Vector2[] pos = oldPos.Reverse<Vector2>().ToArray();
-		float fx = timer / maxTime;
+		float fx = Timer / MaxTime;
 		int len = pos.Length;
 		if (len <= 2)
 		{

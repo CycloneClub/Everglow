@@ -5,32 +5,32 @@ public class Fevens_LaserSpark : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawNPCs;
 
-	public Vector2 position;
-	public Vector2 velocity;
+	public Vector2 Position;
+	public Vector2 Velocity;
 	public float[] ai;
-	public float timer;
-	public float maxTime;
-	public float scale;
-	public float maxScale;
-	public float rotation;
+	public float Timer;
+	public float MaxTime;
+	public float Scale;
+	public float MaxScale;
+	public float Rotation;
 
 	public override void Update()
 	{
-		timer++;
-		if (timer > maxTime)
+		Timer++;
+		if (Timer > MaxTime)
 		{
 			Active = false;
 		}
-		position += velocity;
-		rotation = velocity.ToRotation();
-		velocity *= 0.96f;
+		Position += Velocity;
+		Rotation = Velocity.ToRotation();
+		Velocity *= 0.96f;
 	}
 
 	public override void Draw()
 	{
-		float pocession = 1 - timer / maxTime;
-		Vector2 width = new Vector2(0, scale * 3f).RotatedBy(rotation);
-		Vector2 height = new Vector2(scale * MathF.Max(3f, velocity.Length() * 15), 0).RotatedBy(rotation);
+		float pocession = 1 - Timer / MaxTime;
+		Vector2 width = new Vector2(0, Scale * 3f).RotatedBy(Rotation);
+		Vector2 height = new Vector2(Scale * MathF.Max(3f, Velocity.Length() * 15), 0).RotatedBy(Rotation);
 		Color drawColor = new Color(1f, 0.3f, 0.3f, 0);
 		if (pocession < 0.8f)
 		{
@@ -42,13 +42,13 @@ public class Fevens_LaserSpark : Visual
 		}
 		List<Vertex2D> bars = new List<Vertex2D>()
 		{
-			new Vertex2D(position - width - height, drawColor, new Vector3(0, 0, 0)),
-			new Vertex2D(position + width - height, drawColor, new Vector3(1, 0, 0)),
-			new Vertex2D(position - width + height, drawColor, new Vector3(0, 1, 0)),
+			new Vertex2D(Position - width - height, drawColor, new Vector3(0, 0, 0)),
+			new Vertex2D(Position + width - height, drawColor, new Vector3(1, 0, 0)),
+			new Vertex2D(Position - width + height, drawColor, new Vector3(0, 1, 0)),
 
-			new Vertex2D(position - width + height, drawColor, new Vector3(0, 1, 0)),
-			new Vertex2D(position + width - height, drawColor, new Vector3(1, 0, 0)),
-			new Vertex2D(position + width + height, drawColor, new Vector3(1, 1, 0)),
+			new Vertex2D(Position - width + height, drawColor, new Vector3(0, 1, 0)),
+			new Vertex2D(Position + width - height, drawColor, new Vector3(1, 0, 0)),
+			new Vertex2D(Position + width + height, drawColor, new Vector3(1, 1, 0)),
 		};
 		Ins.Batch.Draw(ModAsset.Fevens_ArrowTrail.Value, bars, PrimitiveType.TriangleList);
 	}

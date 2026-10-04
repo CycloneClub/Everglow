@@ -351,15 +351,17 @@ public class YggdrasilTownBackground : ModSystem
 		if (BackgroundAlphaLampWood > 0)
 		{
 			var lampClose = ModAsset.LampWoodClose.Value;
+			var lampClose_Middle = ModAsset.LampWoodClose_Middle.Value;
 			var lampMiddle = ModAsset.LampWoodMiddle.Value;
 			var lampFar = ModAsset.LampWoodFar.Value;
 			var lampSky = ModAsset.LampWoodSky.Value;
 			Vector2 correction = new Vector2(0, LampWoodCenterY - 4000);
 
 			BackgroundManager.DrawBG_RestrictY(lampSky, float.PositiveInfinity, correction, baseColor * BackgroundAlphaLampWood, (int)(Stratum1Center.Y - 20600), (int)(Stratum1Center.Y + 8000), false, true);
-			BackgroundManager.DrawBG_RestrictY(lampFar, 20f, correction, baseColor * BackgroundAlphaLampWood, (int)(Stratum1Center.Y - 20600), (int)(Stratum1Center.Y + 8000), false, true);
-			BackgroundManager.DrawBG_RestrictY(lampMiddle, 10f, correction, baseColor * BackgroundAlphaLampWood, (int)(Stratum1Center.Y - 20600), (int)(Stratum1Center.Y + 8000), false, true);
-			BackgroundManager.DrawBG_RestrictY(lampClose, 6f, correction + new Vector2(0, 6000), baseColor * BackgroundAlphaLampWood, (int)(Stratum1Center.Y - 20600), (int)(Stratum1Center.Y + 8000), false, true);
+			BackgroundManager.DrawBG_RestrictY(lampFar, 40f, correction + new Vector2(6000, -16000), baseColor * BackgroundAlphaLampWood, (int)(Stratum1Center.Y - 20600), (int)(Stratum1Center.Y + 8000), false, true);
+			BackgroundManager.DrawBG_RestrictY(lampMiddle, 18f, correction + new Vector2(0, -5000), baseColor * BackgroundAlphaLampWood, (int)(Stratum1Center.Y - 20600), (int)(Stratum1Center.Y + 8000), false, true);
+			BackgroundManager.DrawBG_RestrictY(lampClose_Middle, 6f, correction + new Vector2(4100, 4500), baseColor * BackgroundAlphaLampWood, (int)(Stratum1Center.Y - 20600), (int)(Stratum1Center.Y + 8000), false, true);
+			BackgroundManager.DrawBG_RestrictY(lampClose, 2f, correction + new Vector2(0, 5000), baseColor * BackgroundAlphaLampWood, (int)(Stratum1Center.Y - 20600), (int)(Stratum1Center.Y + 8000), false, true);
 		}
 	}
 

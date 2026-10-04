@@ -78,12 +78,12 @@ public class ArcI_Current : ModProjectile
 				{
 					var branch = new LightningDust_Trail
 					{
-						velocity = new Vector2(0, Main.rand.NextFloat(1, 10)).RotatedByRandom(Math.PI * 2),
+						Velocity = new Vector2(0, Main.rand.NextFloat(1, 10)).RotatedByRandom(Math.PI * 2),
 						Active = true,
 						Visible = true,
-						position = TargetCenter,
-						maxTime = Main.rand.Next(30, 40),
-						scale = Main.rand.Next(10, 16),
+						Position = TargetCenter,
+						MaxTime = Main.rand.Next(30, 40),
+						Scale = Main.rand.Next(10, 16),
 						ai = new float[] { Main.rand.NextFloat(1f, 8f), Projectile.timeLeft },
 					};
 					Ins.VFXManager.Add(branch);
@@ -92,12 +92,12 @@ public class ArcI_Current : ModProjectile
 				{
 					var branch = new LightningDust_Trail
 					{
-						velocity = new Vector2(0, Main.rand.NextFloat(3, 6)).RotatedByRandom(Math.PI * 2),
+						Velocity = new Vector2(0, Main.rand.NextFloat(3, 6)).RotatedByRandom(Math.PI * 2),
 						Active = true,
 						Visible = true,
-						position = TargetCenter,
-						maxTime = Main.rand.Next(18, 25),
-						scale = Main.rand.Next(4, 6),
+						Position = TargetCenter,
+						MaxTime = Main.rand.Next(18, 25),
+						Scale = Main.rand.Next(4, 6),
 						ai = new float[] { Main.rand.NextFloat(1f, 8f), Projectile.timeLeft },
 					};
 					Ins.VFXManager.Add(branch);

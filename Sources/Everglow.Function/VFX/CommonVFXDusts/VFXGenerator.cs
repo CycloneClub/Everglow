@@ -102,13 +102,13 @@ internal class VFXGenerator : ModItem
 					Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(0f, 7f)).RotatedByRandom(MathHelper.TwoPi);
 					var fire = new FireDust
 					{
-						velocity = newVelocity,
+						Velocity = newVelocity,
 						Active = true,
 						Visible = true,
-						position = player.Center + new Vector2(Main.rand.NextFloat(0, 6f), 0).RotatedByRandom(6.283) + newVelocity * 3,
-						maxTime = Main.rand.Next(16, 45),
-						scale = Main.rand.NextFloat(20f, 60f),
-						rotation = Main.rand.NextFloat(6.283f),
+						Position = player.Center + new Vector2(Main.rand.NextFloat(0, 6f), 0).RotatedByRandom(6.283) + newVelocity * 3,
+						MaxTime = Main.rand.Next(16, 45),
+						Scale = Main.rand.NextFloat(20f, 60f),
+						Rotation = Main.rand.NextFloat(6.283f),
 						ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 					};
 					Ins.VFXManager.Add(fire);

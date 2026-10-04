@@ -434,12 +434,12 @@ public class Fevens : TownNPC_LiveInYggdrasil
 				Vector2 startPos = NPC.position + new Vector2(Main.rand.NextFloat(NPC.width), Main.rand.NextFloat(NPC.height));
 				var dustVFX = new Fevens_Bat_Small
 				{
-					velocity = new Vector2(0, 3).RotatedByRandom(Math.PI * 2),
+					Velocity = new Vector2(0, 3).RotatedByRandom(Math.PI * 2),
 					Active = true,
 					Visible = true,
-					position = startPos,
-					maxTime = Main.rand.Next(70, 120),
-					scale = Main.rand.Next(20, 40),
+					Position = startPos,
+					MaxTime = Main.rand.Next(70, 120),
+					Scale = Main.rand.Next(20, 40),
 					ai = new float[] { Main.rand.NextFloat(1f, 8f), NPC.Center.X, NPC.Center.Y },
 				};
 				Ins.VFXManager.Add(dustVFX);
@@ -1107,12 +1107,12 @@ public class Fevens : TownNPC_LiveInYggdrasil
 			Vector2 startVfxPos = NPC.position + new Vector2(Main.rand.NextFloat(NPC.width), Main.rand.NextFloat(NPC.height));
 			var dustVFX = new Fevens_Bat_Small
 			{
-				velocity = new Vector2(0, 3).RotatedByRandom(Math.PI * 2),
+				Velocity = new Vector2(0, 3).RotatedByRandom(Math.PI * 2),
 				Active = true,
 				Visible = true,
-				position = startVfxPos,
-				maxTime = Main.rand.Next(70, 120),
-				scale = Main.rand.Next(20, 40),
+				Position = startVfxPos,
+				MaxTime = Main.rand.Next(70, 120),
+				Scale = Main.rand.Next(20, 40),
 				ai = new float[] { Main.rand.NextFloat(1f, 8f), NPC.Center.X, NPC.Center.Y },
 			};
 			Ins.VFXManager.Add(dustVFX);
@@ -1126,12 +1126,12 @@ public class Fevens : TownNPC_LiveInYggdrasil
 			Vector2 startVfxPos = NPC.position + new Vector2(Main.rand.NextFloat(NPC.width), Main.rand.NextFloat(NPC.height));
 			var dustVFX = new Fevens_Bat_Small
 			{
-				velocity = new Vector2(0, 2).RotatedByRandom(Math.PI * 2),
+				Velocity = new Vector2(0, 2).RotatedByRandom(Math.PI * 2),
 				Active = true,
 				Visible = true,
-				position = startVfxPos,
-				maxTime = Main.rand.Next(40, 50),
-				scale = Main.rand.Next(20, 40),
+				Position = startVfxPos,
+				MaxTime = Main.rand.Next(40, 50),
+				Scale = Main.rand.Next(20, 40),
 				ai = new float[] { Main.rand.NextFloat(1f, 8f), NPC.Center.X, NPC.Center.Y },
 			};
 			Ins.VFXManager.Add(dustVFX);

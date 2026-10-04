@@ -46,13 +46,13 @@ public class ChainGrenadeProjExplosion : ModProjectile, IWarpProjectile
 			Vector2 newVelocity = new Vector2(0, MathF.Sqrt(Main.rand.NextFloat(1f)) * 8f).RotatedByRandom(MathHelper.TwoPi);
 			var somg = new MissleFlameDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(6), 0).RotatedByRandom(6.283),
-				maxTime = Main.rand.Next(90, 120),
-				scale = Main.rand.NextFloat(24f, 36f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(6), 0).RotatedByRandom(6.283),
+				MaxTime = Main.rand.Next(90, 120),
+				Scale = Main.rand.NextFloat(24f, 36f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
 			Ins.VFXManager.Add(somg);
@@ -66,13 +66,13 @@ public class ChainGrenadeProjExplosion : ModProjectile, IWarpProjectile
 			Vector2 newVelocity = new Vector2(0, MathF.Sqrt(Main.rand.NextFloat(1f)) * 4f).RotatedByRandom(MathHelper.TwoPi);
 			var somg = new MissleFlameDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(4), 0).RotatedByRandom(6.283),
-				maxTime = Main.rand.Next(50, 70),
-				scale = Main.rand.NextFloat(12f, 20f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(4), 0).RotatedByRandom(6.283),
+				MaxTime = Main.rand.Next(50, 70),
+				Scale = Main.rand.NextFloat(12f, 20f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
 			Ins.VFXManager.Add(somg);
@@ -87,13 +87,13 @@ public class ChainGrenadeProjExplosion : ModProjectile, IWarpProjectile
 			Vector2 addPos = new Vector2(Main.rand.NextFloat(40), 0).RotatedByRandom(MathHelper.TwoPi);
 			var fire = new FireDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + addPos - newVelocity,
-				maxTime = Main.rand.Next(30, 45),
-				scale = Main.rand.NextFloat(20f, 60f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + addPos - newVelocity,
+				MaxTime = Main.rand.Next(30, 45),
+				Scale = Main.rand.NextFloat(20f, 60f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), addPos.X * 0.002f },
 			};
 			Ins.VFXManager.Add(fire);

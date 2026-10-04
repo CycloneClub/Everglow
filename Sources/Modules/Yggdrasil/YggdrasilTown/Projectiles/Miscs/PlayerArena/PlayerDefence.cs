@@ -134,13 +134,13 @@ public class PlayerDefence : ModProjectile, IWarpProjectile_warpStyle2
 				SoundEngine.PlaySound(SoundID.Shatter, Projectile.Center);
 				var dust = new PlayerDefenseShards
 				{
-					velocity = newVelocity,
+					Velocity = newVelocity,
 					Active = true,
 					Visible = true,
-					position = Projectile.Center + addPos,
-					maxTime = Main.rand.Next(6, 42),
-					scale = 0,
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = Projectile.Center + addPos,
+					MaxTime = Main.rand.Next(6, 42),
+					Scale = 0,
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { Main.rand.NextFloat(4.0f, 14.5f), Main.rand.NextFloat(-0.03f, 0.03f) },
 				};
 				Ins.VFXManager.Add(dust);

@@ -32,36 +32,36 @@ public class Georg_Hammer_JumpHit_Smog_Fire : Visual
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawNPCs;
 
 	public List<Vector2> oldPos = new List<Vector2>();
-	public Vector2 position;
-	public Vector2 velocity;
+	public Vector2 Position;
+	public Vector2 Velocity;
 	public float[] ai;
-	public float timer;
-	public float maxTime;
-	public float scale;
-	public float alpha;
+	public float Timer;
+	public float MaxTime;
+	public float Scale;
+	public float Alpha;
 
 	public override void Update()
 	{
-		oldPos.Add(position);
+		oldPos.Add(Position);
 		if (oldPos.Count > 200)
 		{
 			oldPos.RemoveAt(0);
 		}
 
-		timer++;
-		if (timer > maxTime)
+		Timer++;
+		if (Timer > MaxTime)
 		{
 			Active = false;
 		}
 
-		velocity *= 0.9f;
-		position += velocity;
+		Velocity *= 0.9f;
+		Position += Velocity;
 	}
 
 	public override void Draw()
 	{
 		Vector2[] pos = oldPos.Reverse<Vector2>().ToArray();
-		float fx = timer / maxTime;
+		float fx = Timer / MaxTime;
 		int len = pos.Length;
 		var bars = new List<Vertex2D>();
 		for (int i = 1; i < len; i++)
@@ -70,16 +70,16 @@ public class Georg_Hammer_JumpHit_Smog_Fire : Visual
 			normal = Vector2.Normalize(normal).RotatedBy(Math.PI * 0.5);
 			var lightColorWithPos = new Color(MathF.Pow(fx, 0.6f), 1f, 1f, 1f);
 			float width = (float)Math.Sin(MathF.Pow((i - 1) / (float)(len - 2), 0.2f) * Math.PI);
-			bars.Add(oldPos[i] + normal * scale, lightColorWithPos, new Vector3(0, (i + 15 - len) / 75f + timer / 15000f, fx - width * 0.4f));
-			bars.Add(oldPos[i] - normal * scale, lightColorWithPos, new Vector3(1, (i + 15 - len) / 75f + timer / 15000f, fx - width * 0.4f));
+			bars.Add(oldPos[i] + normal * Scale, lightColorWithPos, new Vector3(0, (i + 15 - len) / 75f + Timer / 15000f, fx - width * 0.4f));
+			bars.Add(oldPos[i] - normal * Scale, lightColorWithPos, new Vector3(1, (i + 15 - len) / 75f + Timer / 15000f, fx - width * 0.4f));
 		}
 		if (len <= 2)
 		{
 			for (int i = 1; i < 3; i++)
 			{
 				var lightColorWithPos = new Color(1f, 1f, 1f, 0);
-				bars.Add(position, lightColorWithPos, new Vector3(0, (i + 15 - len) / 75f + timer / 15000f, fx));
-				bars.Add(position, lightColorWithPos, new Vector3(1, (i + 15 - len) / 75f + timer / 15000f, fx));
+				bars.Add(Position, lightColorWithPos, new Vector3(0, (i + 15 - len) / 75f + Timer / 15000f, fx));
+				bars.Add(Position, lightColorWithPos, new Vector3(1, (i + 15 - len) / 75f + Timer / 15000f, fx));
 			}
 		}
 

@@ -90,12 +90,12 @@ public class Fevens_LightingBolt : ModProjectile
 						{
 							var dustVFX = new Fevens_LightingBoltDust
 							{
-								velocity = flowVelocity * 0.5f,
+								Velocity = flowVelocity * 0.5f,
 								Active = true,
 								Visible = true,
-								position = flowPos,
-								maxTime = Main.rand.Next(30, 50),
-								scale = Main.rand.Next(1, 2),
+								Position = flowPos,
+								MaxTime = Main.rand.Next(30, 50),
+								Scale = Main.rand.Next(1, 2),
 								ai = new float[] { Main.rand.NextFloat(1f, 8f), 0 },
 							};
 							Ins.VFXManager.Add(dustVFX);
@@ -228,13 +228,13 @@ public class Fevens_LightingBolt : ModProjectile
 			Vector2 vel = new Vector2(0, Main.rand.NextFloat(5.6f, 18.4f)).RotatedByRandom(MathHelper.TwoPi);
 			var dust = new Fevens_LightingBoltDust
 			{
-				velocity = vel,
+				Velocity = vel,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(60, 120),
-				scale = Main.rand.NextFloat(1f, 2f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(60, 120),
+				Scale = Main.rand.NextFloat(1f, 2f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(4.0f, 10.93f) },
 			};
 			Ins.VFXManager.Add(dust);
@@ -244,13 +244,13 @@ public class Fevens_LightingBolt : ModProjectile
 			Vector2 vel = new Vector2(0, Main.rand.NextFloat(5.6f, 13.4f)).RotatedByRandom(MathHelper.TwoPi);
 			var cube = new AvariceFailureCube
 			{
-				velocity = vel,
+				Velocity = vel,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(60, 120),
-				scale = Main.rand.NextFloat(10f, 50f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(60, 120),
+				Scale = Main.rand.NextFloat(10f, 50f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(4.0f, 10.93f), 0.06f },
 			};
 			Ins.VFXManager.Add(cube);
@@ -260,13 +260,13 @@ public class Fevens_LightingBolt : ModProjectile
 		{
 			var wave = new FevensLightingBoltWave
 			{
-				velocity = Vector2.zeroVector,
+				Velocity = Vector2.zeroVector,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(30, 40),
-				scale = 1 + i * 0.6f,
-				rotation = waveRot + i * 2f,
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(30, 40),
+				Scale = 1 + i * 0.6f,
+				Rotation = waveRot + i * 2f,
 				ai = new float[] { 0.04f * MathF.Sqrt(level) },
 			};
 			Ins.VFXManager.Add(wave);

@@ -245,14 +245,14 @@ public class Fevens_MagicLaserArray : ModProjectile
 						Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(4f, 6f)).RotatedByRandom(MathHelper.TwoPi) * value;
 						var smog = new Fevens_LaserSpark
 						{
-							velocity = newVelocity,
+							Velocity = newVelocity,
 							Active = true,
 							Visible = true,
 
-							position = checkPos + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-							maxTime = Main.rand.Next(27, 35),
-							scale = Main.rand.NextFloat(1f, 2f) * value,
-							rotation = newVelocity.ToRotation(),
+							Position = checkPos + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+							MaxTime = Main.rand.Next(27, 35),
+							Scale = Main.rand.NextFloat(1f, 2f) * value,
+							Rotation = newVelocity.ToRotation(),
 
 							ai = new float[] { Main.rand.NextFloat(0f, 1f), Main.rand.NextFloat(0f, 1f), Main.rand.NextFloat(-0.005f, 0.005f) },
 						};

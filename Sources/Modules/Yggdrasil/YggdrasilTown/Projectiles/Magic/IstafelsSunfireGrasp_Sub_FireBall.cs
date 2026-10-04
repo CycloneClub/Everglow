@@ -72,13 +72,13 @@ public class IstafelsSunfireGrasp_Sub_FireBall : TrailingProjectile
 				float mulScale = Main.rand.NextFloat(4f, 8f);
 				var drop = new IstafelsSunfireDrop
 				{
-					velocity = afterVelocity,
+					Velocity = afterVelocity,
 					Active = true,
 					Visible = true,
-					position = Projectile.Center,
-					maxTime = Main.rand.Next(122, 204),
-					scale = mulScale,
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = Projectile.Center,
+					MaxTime = Main.rand.Next(122, 204),
+					Scale = mulScale,
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 				};
 				Ins.VFXManager.Add(drop);
@@ -92,13 +92,13 @@ public class IstafelsSunfireGrasp_Sub_FireBall : TrailingProjectile
 				float mulScale = Main.rand.NextFloat(4f, 8f);
 				var drop = new IstafelsSunfireDrop
 				{
-					velocity = afterVelocity,
+					Velocity = afterVelocity,
 					Active = true,
 					Visible = true,
-					position = Projectile.Center,
-					maxTime = Main.rand.Next(62, 124),
-					scale = mulScale,
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = Projectile.Center,
+					MaxTime = Main.rand.Next(62, 124),
+					Scale = mulScale,
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 				};
 				Ins.VFXManager.Add(drop);
@@ -167,13 +167,13 @@ public class IstafelsSunfireGrasp_Sub_FireBall : TrailingProjectile
 			float mulScale = Main.rand.NextFloat(4f, 8f);
 			var drop = new IstafelsSunfireDrop
 			{
-				velocity = afterVelocity,
+				Velocity = afterVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(122, 204),
-				scale = mulScale,
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(122, 204),
+				Scale = mulScale,
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 			};
 			Ins.VFXManager.Add(drop);

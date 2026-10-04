@@ -100,13 +100,13 @@ public class RisingFirework : ModProjectile
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(0f, 1f)).RotatedByRandom(MathHelper.TwoPi);
 			var fire = new FireDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + newVelocity * 3,
-				maxTime = Main.rand.Next(9, 25),
-				scale = Main.rand.NextFloat(7f, 15f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + newVelocity * 3,
+				MaxTime = Main.rand.Next(9, 25),
+				Scale = Main.rand.NextFloat(7f, 15f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
 			Ins.VFXManager.Add(fire);

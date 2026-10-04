@@ -35,12 +35,12 @@ public class YggdrasilMoonBlade : ModProjectile, IWarpProjectile
 			float mulWidth = Main.rand.NextFloat(6.6f, 18f);
 			var darknessNight = new Smog_MoonBladeDust
 			{
-				velocity = vel,
+				Velocity = vel,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity * Main.rand.NextFloat(-3f, 2f),
-				maxTime = Main.rand.Next(27, 72),
-				scale = mulWidth,
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity * Main.rand.NextFloat(-3f, 2f),
+				MaxTime = Main.rand.Next(27, 72),
+				Scale = mulWidth,
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
 			Ins.VFXManager.Add(darknessNight);
@@ -65,13 +65,13 @@ public class YggdrasilMoonBlade : ModProjectile, IWarpProjectile
 		Vector2 newVelocity = Projectile.velocity + new Vector2(0, Main.rand.NextFloat(1.0f, 4f)).RotatedByRandom(MathHelper.TwoPi);
 		var spark = new Spark_MoonBladeDust
 		{
-			velocity = newVelocity,
+			Velocity = newVelocity,
 			Active = true,
 			Visible = true,
-			position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-			maxTime = Main.rand.Next(7, 45),
-			scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(4f, 7.0f)),
-			rotation = Main.rand.NextFloat(6.283f),
+			Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+			MaxTime = Main.rand.Next(7, 45),
+			Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(4f, 7.0f)),
+			Rotation = Main.rand.NextFloat(6.283f),
 			ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.03f, 0.03f) },
 		};
 		Ins.VFXManager.Add(spark);

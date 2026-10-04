@@ -41,13 +41,13 @@ public class MossySpell_proj : ModProjectile
 
 		var dustVFX = new MossBlossomDustFace
 		{
-			velocity = Projectile.velocity,
+			Velocity = Projectile.velocity,
 			Active = true,
 			Visible = true,
-			position = Projectile.Center + new Vector2(0, 3).RotatedByRandom(Math.PI * 2),
-			maxTime = Main.rand.Next(30, 46) * colTime / 10f,
-			scale = Main.rand.NextFloat(12, 16),
-			rotation = Main.rand.NextFloat(MathHelper.TwoPi),
+			Position = Projectile.Center + new Vector2(0, 3).RotatedByRandom(Math.PI * 2),
+			MaxTime = Main.rand.Next(30, 46) * colTime / 10f,
+			Scale = Main.rand.NextFloat(12, 16),
+			Rotation = Main.rand.NextFloat(MathHelper.TwoPi),
 			ai = new float[] { 0, 0, 0 },
 		};
 		Ins.VFXManager.Add(dustVFX);
@@ -55,13 +55,13 @@ public class MossySpell_proj : ModProjectile
 		{
 			var dustVFX2 = new MossBlossomDustSide
 			{
-				velocity = Projectile.velocity,
+				Velocity = Projectile.velocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + Projectile.velocity.NormalizeSafe().RotatedBy(MathHelper.PiOver2) * Main.rand.NextFloat(8, 12),
-				maxTime = Main.rand.Next(25, 30) * colTime / 10f,
-				scale = Main.rand.NextFloat(12, 16),
-				rotation = Projectile.velocity.ToRotationSafe() - MathHelper.PiOver4 * 3 + MathHelper.PiOver2,
+				Position = Projectile.Center + Projectile.velocity.NormalizeSafe().RotatedBy(MathHelper.PiOver2) * Main.rand.NextFloat(8, 12),
+				MaxTime = Main.rand.Next(25, 30) * colTime / 10f,
+				Scale = Main.rand.NextFloat(12, 16),
+				Rotation = Projectile.velocity.ToRotationSafe() - MathHelper.PiOver4 * 3 + MathHelper.PiOver2,
 				ai = new float[] { 0, 0, 0 },
 			};
 			Ins.VFXManager.Add(dustVFX2);
@@ -71,13 +71,13 @@ public class MossySpell_proj : ModProjectile
 		{
 			var dustVFX3 = new MossBlossomDustSide
 			{
-				velocity = Projectile.velocity,
+				Velocity = Projectile.velocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + Projectile.velocity.NormalizeSafe().RotatedBy(-MathHelper.PiOver2) * Main.rand.NextFloat(8, 12),
-				maxTime = Main.rand.Next(25, 30) * colTime / 10f,
-				scale = Main.rand.NextFloat(12, 16),
-				rotation = Projectile.velocity.ToRotationSafe() - MathHelper.PiOver4 * 3 - MathHelper.PiOver2,
+				Position = Projectile.Center + Projectile.velocity.NormalizeSafe().RotatedBy(-MathHelper.PiOver2) * Main.rand.NextFloat(8, 12),
+				MaxTime = Main.rand.Next(25, 30) * colTime / 10f,
+				Scale = Main.rand.NextFloat(12, 16),
+				Rotation = Projectile.velocity.ToRotationSafe() - MathHelper.PiOver4 * 3 - MathHelper.PiOver2,
 				ai = new float[] { 0, 0, 0 },
 			};
 			Ins.VFXManager.Add(dustVFX3);
@@ -124,13 +124,13 @@ public class MossySpell_proj : ModProjectile
 			Vector2 phi = new Vector2(0, Main.rand.Next(14, 22)).RotatedBy(t / 25f * MathHelper.TwoPi);
 			var dustVFX4 = new MossBlossomDustSide
 			{
-				velocity = phi.RotatedBy(0.7f) * 0.2f,
+				Velocity = phi.RotatedBy(0.7f) * 0.2f,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + phi * 0.4f,
-				maxTime = Main.rand.Next(15, 40),
-				scale = Main.rand.NextFloat(12, 16),
-				rotation = phi.RotatedBy(0.7f).ToRotationSafe() - MathHelper.PiOver4 * 3,
+				Position = Projectile.Center + phi * 0.4f,
+				MaxTime = Main.rand.Next(15, 40),
+				Scale = Main.rand.NextFloat(12, 16),
+				Rotation = phi.RotatedBy(0.7f).ToRotationSafe() - MathHelper.PiOver4 * 3,
 				ai = new float[] { 0, 0, 0 },
 			};
 			Ins.VFXManager.Add(dustVFX4);

@@ -76,13 +76,13 @@ public class LightStartEffect_arrow : ModProjectile
 			Vector2 newVelocity = new Vector2(0, 1.2f).RotatedBy(Main.time * rotateRatio + Projectile.whoAmI + deltaRotation);
 			var somg = new LightFruitParticleDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(37, 145) * mulMaxTime,
-				scale = Main.rand.NextFloat(12.20f, 32.35f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(37, 145) * mulMaxTime,
+				Scale = Main.rand.NextFloat(12.20f, 32.35f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(3.0f, 10f), 0 },
 			};
 			Ins.VFXManager.Add(somg);

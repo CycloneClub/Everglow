@@ -1,8 +1,9 @@
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
+using Everglow.Yggdrasil.YggdrasilTown.Tiles;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 
-public class RuinTorch : ModItem
+public class RuinTorch_Item : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Placeables;
 
@@ -18,8 +19,8 @@ public class RuinTorch : ModItem
 	public override void SetDefaults()
 	{
 		// DefaultToTorch sets various properties common to torch placing items. Hover over DefaultToTorch in Visual Studio to see the specific properties set.
-		// Of particular note to torches are Item.holdStyle, Item.flame, and Item.noWet. 
-		Item.DefaultToTorch(ModContent.TileType<Tiles.RuinTorch>(), 0, false);
+		// Of particular note to torches are Item.holdStyle, Item.flame, and Item.noWet.
+		Item.DefaultToTorch(ModContent.TileType<RuinTorch>(), 0, false);
 		Item.value = 50;
 	}
 

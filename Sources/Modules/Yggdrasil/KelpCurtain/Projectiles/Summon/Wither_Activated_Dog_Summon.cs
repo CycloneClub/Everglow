@@ -147,12 +147,12 @@ public class Wither_Activated_Dog_Summon : ModProjectile
 		{
 			var branch = new ActivatedDogStaff_green_Dust_Trail
 			{
-				velocity = new Vector2(0, Main.rand.NextFloat(7, 12)).RotatedByRandom(Math.PI * 2),
+				Velocity = new Vector2(0, Main.rand.NextFloat(7, 12)).RotatedByRandom(Math.PI * 2),
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(0, Main.rand.NextFloat(minRange, maxRange)).RotatedByRandom(MathHelper.TwoPi),
-				maxTime = Main.rand.Next(70, 120),
-				scale = Main.rand.Next(18, 30),
+				Position = Projectile.Center + new Vector2(0, Main.rand.NextFloat(minRange, maxRange)).RotatedByRandom(MathHelper.TwoPi),
+				MaxTime = Main.rand.Next(70, 120),
+				Scale = Main.rand.Next(18, 30),
 				ai = new float[] { Main.rand.NextFloat(1f, 8f), Projectile.timeLeft },
 			};
 			Ins.VFXManager.Add(branch);
@@ -161,12 +161,12 @@ public class Wither_Activated_Dog_Summon : ModProjectile
 		{
 			var branch = new ActivatedDogStaff_green_Dust_Trail
 			{
-				velocity = new Vector2(0, Main.rand.NextFloat(4, 8)).RotatedByRandom(Math.PI * 2),
+				Velocity = new Vector2(0, Main.rand.NextFloat(4, 8)).RotatedByRandom(Math.PI * 2),
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(0, Main.rand.NextFloat(minRange, maxRange)).RotatedByRandom(MathHelper.TwoPi),
-				maxTime = Main.rand.Next(35, 50),
-				scale = Main.rand.Next(6, 12),
+				Position = Projectile.Center + new Vector2(0, Main.rand.NextFloat(minRange, maxRange)).RotatedByRandom(MathHelper.TwoPi),
+				MaxTime = Main.rand.Next(35, 50),
+				Scale = Main.rand.Next(6, 12),
 				ai = new float[] { Main.rand.NextFloat(1f, 8f), Projectile.timeLeft },
 			};
 			Ins.VFXManager.Add(branch);

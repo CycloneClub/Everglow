@@ -34,13 +34,13 @@ public class EmptyWaterStaff_proj : TrailingProjectile
 			Vector2 vel = new Vector2(0, Main.rand.NextFloat(0.6f, 1.4f)).RotatedByRandom(MathHelper.TwoPi) + Projectile.velocity;
 			var dust = new EmptyWaterStaff_BubbleBreak
 			{
-				velocity = vel,
+				Velocity = vel,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(60, 90),
-				scale = Main.rand.NextFloat(3f, 5f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(60, 90),
+				Scale = Main.rand.NextFloat(3f, 5f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(4.0f, 10.93f) },
 			};
 			Ins.VFXManager.Add(dust);
@@ -78,13 +78,13 @@ public class EmptyWaterStaff_proj : TrailingProjectile
 			Vector2 vel = new Vector2(0, Main.rand.NextFloat(5.6f, 8.4f)).RotatedByRandom(MathHelper.TwoPi);
 			var dust = new EmptyWaterStaff_BubbleBreak
 			{
-				velocity = vel,
+				Velocity = vel,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(60, 120),
-				scale = Main.rand.NextFloat(3f, 5f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(60, 120),
+				Scale = Main.rand.NextFloat(3f, 5f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(4.0f, 10.93f) },
 			};
 			Ins.VFXManager.Add(dust);

@@ -78,13 +78,13 @@ public class GunOfAvariceManualReload : ModProjectile
 			pos.Y *= 0.1f;
 			var dust = new AvariceSuccessDust
 			{
-				velocity = vel,
+				Velocity = vel,
 				Active = true,
 				Visible = true,
-				position = Owner.Center + pos,
-				maxTime = Main.rand.Next(60, 120),
-				scale = Main.rand.NextFloat(1f, 2f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Owner.Center + pos,
+				MaxTime = Main.rand.Next(60, 120),
+				Scale = Main.rand.NextFloat(1f, 2f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(4.0f, 10.93f) },
 			};
 			Ins.VFXManager.Add(dust);
@@ -96,13 +96,13 @@ public class GunOfAvariceManualReload : ModProjectile
 			pos.Y *= 0.1f;
 			var cube = new AvariceSuccessCube
 			{
-				velocity = vel,
+				Velocity = vel,
 				Active = true,
 				Visible = true,
-				position = Owner.Center + pos,
-				maxTime = Main.rand.Next(60, 120),
-				scale = Main.rand.NextFloat(10f, 20f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Owner.Center + pos,
+				MaxTime = Main.rand.Next(60, 120),
+				Scale = Main.rand.NextFloat(10f, 20f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(4.0f, 20.93f), 0.06f },
 			};
 			Ins.VFXManager.Add(cube);

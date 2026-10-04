@@ -38,13 +38,13 @@ public class YggdrasilSlashBall : ModProjectile
 		Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(1.0f, 4f)).RotatedByRandom(MathHelper.TwoPi);
 		var spark = new Spark_MoonBladeDust
 		{
-			velocity = newVelocity,
+			Velocity = newVelocity,
 			Active = true,
 			Visible = true,
-			position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-			maxTime = Main.rand.Next(7, 45),
-			scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(4f, 7.0f)),
-			rotation = Main.rand.NextFloat(6.283f),
+			Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+			MaxTime = Main.rand.Next(7, 45),
+			Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(4f, 7.0f)),
+			Rotation = Main.rand.NextFloat(6.283f),
 			noGravity = true,
 			ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.03f, 0.03f) },
 		};
@@ -101,13 +101,13 @@ public class YggdrasilSlashBall : ModProjectile
 				{
 					var spark = new Spark_MoonBladeDust
 					{
-						velocity = newVelocity,
+						Velocity = newVelocity,
 						Active = true,
 						Visible = true,
-						position = Projectile.Center + v0 - newVelocity * 3,
-						maxTime = Main.rand.Next(3, 15),
-						scale = Main.rand.NextFloat(1f, Main.rand.NextFloat(2f, 17f)) * Projectile.scale,
-						rotation = Main.rand.NextFloat(6.283f),
+						Position = Projectile.Center + v0 - newVelocity * 3,
+						MaxTime = Main.rand.Next(3, 15),
+						Scale = Main.rand.NextFloat(1f, Main.rand.NextFloat(2f, 17f)) * Projectile.scale,
+						Rotation = Main.rand.NextFloat(6.283f),
 						noGravity = true,
 						ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.03f, 0.03f) },
 					};

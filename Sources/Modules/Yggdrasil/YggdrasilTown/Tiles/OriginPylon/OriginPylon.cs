@@ -109,13 +109,13 @@ public class OriginPylon : ModTile, ISceneTile
 				}
 				var dust = new WhiteTriangle
 				{
-					velocity = newVelocity + new Vector2(0, addPos.Y * 0.01f),
+					Velocity = newVelocity + new Vector2(0, addPos.Y * 0.01f),
 					Active = true,
 					Visible = true,
-					position = pos,
-					maxTime = Main.rand.Next(50, 192),
-					scale = 0,
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = pos,
+					MaxTime = Main.rand.Next(50, 192),
+					Scale = 0,
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { Main.rand.NextFloat(4.0f, 14.5f) * size, Main.rand.NextFloat(-0.03f, 0.03f) },
 				};
 				Ins.VFXManager.Add(dust);

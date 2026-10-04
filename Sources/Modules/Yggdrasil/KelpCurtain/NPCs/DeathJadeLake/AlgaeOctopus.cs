@@ -221,7 +221,7 @@ public class AlgaeOctopus : ModNPC
 	}
 
 	/// <summary>
-	/// 接近后: a faint ink smear trails the hidden creature. Client-only work, so it sits behind the
+	/// 接近后: a faint ink smear Trails the hidden creature. Client-only work, so it sits behind the
 	/// dedicated-server guard (D-35/D-55) and reuses an existing Kelp Curtain dust rather than creating
 	/// a new dust class (D-51).
 	/// </summary>

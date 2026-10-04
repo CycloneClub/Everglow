@@ -9,12 +9,12 @@ public class MyceliumTiles : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawTiles;
 
-	public Vector2 position;
+	public Vector2 Position;
 	public float[] ai;
-	public float timer;
-	public float maxTime;
-	public float scale;
-	public float rotation;
+	public float Timer;
+	public float MaxTime;
+	public float Scale;
+	public float Rotation;
 	public int MyceliumAmount = 0;
 	public bool Wither = false;
 	public Point RootPos;
@@ -33,15 +33,15 @@ public class MyceliumTiles : Visual
 
 	public override void Update()
 	{
-		timer++;
-		if (timer > maxTime)
+		Timer++;
+		if (Timer > MaxTime)
 		{
 			Active = false;
 		}
 		if (MyceliumAmount < 256)
 		{
 			MyceliumAmount += 10;
-			rotation = -YggdrasilWorldGeneration.TerrianSurfaceAngle(RootPos.X, RootPos.Y, 8) + MathHelper.PiOver2;
+			Rotation = -YggdrasilWorldGeneration.TerrianSurfaceAngle(RootPos.X, RootPos.Y, 8) + MathHelper.PiOver2;
 			if (MyceliumAmount >= 256)
 			{
 				MyceliumAmount = 256;
@@ -55,11 +55,11 @@ public class MyceliumTiles : Visual
 		}
 		if (!Wither)
 		{
-			timer = 0;
+			Timer = 0;
 			if (FungiBall.State != WoodlandWraithStaff_FungiBall.States.Mycelume || !FungiBall.Projectile.active)
 			{
 				Wither = true;
-				timer = maxTime - KillTimer;
+				Timer = MaxTime - KillTimer;
 			}
 		}
 		SporeZones = new List<Projectile>();
@@ -134,17 +134,17 @@ public class MyceliumTiles : Visual
 		color2 = Color.Lerp(color2, powerfulColor, ZoneSporeFade(pos2) * 0.3f);
 		color3 = Color.Lerp(color3, powerfulColor, ZoneSporeFade(pos3) * 0.3f);
 		float coord2Z = 0;
-		if (timer > maxTime - KillTimer)
+		if (Timer > MaxTime - KillTimer)
 		{
-			coord2Z = (timer - maxTime + KillTimer) / KillTimer;
+			coord2Z = (Timer - MaxTime + KillTimer) / KillTimer;
 		}
-		bars.Add(new Vertex2DMycelium(pos0, color0, new Vector3(GetRotVec((addPos.ToVector2() + new Vector2(0.5f, 0.5f)) * size, rotation), zValue), new Vector3(tile.TileFrameX / (float)texTile.Width, tile.TileFrameY / (float)texTile.Height, coord2Z)));
-		bars.Add(new Vertex2DMycelium(pos1, color1, new Vector3(GetRotVec((addPos.ToVector2() + new Vector2(-0.5f, 0.5f)) * size, rotation), zValue), new Vector3((tile.TileFrameX + 16) / (float)texTile.Width, tile.TileFrameY / (float)texTile.Height, coord2Z)));
-		bars.Add(new Vertex2DMycelium(pos2, color2, new Vector3(GetRotVec((addPos.ToVector2() + new Vector2(0.5f, -0.5f)) * size, rotation), zValue), new Vector3(tile.TileFrameX / (float)texTile.Width, (tile.TileFrameY + 16) / (float)texTile.Height, coord2Z)));
+		bars.Add(new Vertex2DMycelium(pos0, color0, new Vector3(GetRotVec((addPos.ToVector2() + new Vector2(0.5f, 0.5f)) * size, Rotation), zValue), new Vector3(tile.TileFrameX / (float)texTile.Width, tile.TileFrameY / (float)texTile.Height, coord2Z)));
+		bars.Add(new Vertex2DMycelium(pos1, color1, new Vector3(GetRotVec((addPos.ToVector2() + new Vector2(-0.5f, 0.5f)) * size, Rotation), zValue), new Vector3((tile.TileFrameX + 16) / (float)texTile.Width, tile.TileFrameY / (float)texTile.Height, coord2Z)));
+		bars.Add(new Vertex2DMycelium(pos2, color2, new Vector3(GetRotVec((addPos.ToVector2() + new Vector2(0.5f, -0.5f)) * size, Rotation), zValue), new Vector3(tile.TileFrameX / (float)texTile.Width, (tile.TileFrameY + 16) / (float)texTile.Height, coord2Z)));
 
-		bars.Add(new Vertex2DMycelium(pos2, color2, new Vector3(GetRotVec((addPos.ToVector2() + new Vector2(0.5f, -0.5f)) * size, rotation), zValue), new Vector3(tile.TileFrameX / (float)texTile.Width, (tile.TileFrameY + 16) / (float)texTile.Height, coord2Z)));
-		bars.Add(new Vertex2DMycelium(pos1, color1, new Vector3(GetRotVec((addPos.ToVector2() + new Vector2(-0.5f, 0.5f)) * size, rotation), zValue), new Vector3((tile.TileFrameX + 16) / (float)texTile.Width, tile.TileFrameY / (float)texTile.Height, coord2Z)));
-		bars.Add(new Vertex2DMycelium(pos3, color3, new Vector3(GetRotVec((addPos.ToVector2() + new Vector2(-0.5f, -0.5f)) * size, rotation), zValue), new Vector3((tile.TileFrameX + 16) / (float)texTile.Width, (tile.TileFrameY + 16) / (float)texTile.Height, coord2Z)));
+		bars.Add(new Vertex2DMycelium(pos2, color2, new Vector3(GetRotVec((addPos.ToVector2() + new Vector2(0.5f, -0.5f)) * size, Rotation), zValue), new Vector3(tile.TileFrameX / (float)texTile.Width, (tile.TileFrameY + 16) / (float)texTile.Height, coord2Z)));
+		bars.Add(new Vertex2DMycelium(pos1, color1, new Vector3(GetRotVec((addPos.ToVector2() + new Vector2(-0.5f, 0.5f)) * size, Rotation), zValue), new Vector3((tile.TileFrameX + 16) / (float)texTile.Width, tile.TileFrameY / (float)texTile.Height, coord2Z)));
+		bars.Add(new Vertex2DMycelium(pos3, color3, new Vector3(GetRotVec((addPos.ToVector2() + new Vector2(-0.5f, -0.5f)) * size, Rotation), zValue), new Vector3((tile.TileFrameX + 16) / (float)texTile.Width, (tile.TileFrameY + 16) / (float)texTile.Height, coord2Z)));
 
 		if (bars.Count >= 3)
 		{

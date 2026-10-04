@@ -132,13 +132,13 @@ public class JellyBallLifeAbsorb : ModProjectile
 					Vector2 velocity = flowVelocity;
 					var dustVFX = new JellyBallSparkTrail
 					{
-						velocity = velocity.RotatedBy(addRot),
+						Velocity = velocity.RotatedBy(addRot),
 						Active = true,
 						Visible = true,
-						position = flowPos,
-						maxTime = 120,
-						scale = 2,
-						rotation = Main.rand.NextFloat(6.283f),
+						Position = flowPos,
+						MaxTime = 120,
+						Scale = 2,
+						Rotation = Main.rand.NextFloat(6.283f),
 						ai = new float[] { Main.rand.NextFloat(4.0f, 10.93f), -addRot * 0.15f, 0 },
 					};
 					Ins.VFXManager.Add(dustVFX);

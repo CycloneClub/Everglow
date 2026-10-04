@@ -1,4 +1,5 @@
 using Everglow.Yggdrasil.YggdrasilTown.Items.Tools;
+using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Melee;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.VFXs.ProjectileEffects;
@@ -21,6 +22,20 @@ public class MiningPowerPickaxe_Proj_Wave : Visual
 		if (Owner is null || Owner.HeldItem is null || Owner.HeldItem.type != ModContent.ItemType<MiningPowerPickaxe>() || !Owner.controlUseItem)
 		{
 			ShouldKill = true;
+		}
+		if (Owner.ownedProjectileCounts[ModContent.ProjectileType<MiningPowerPickaxe_Proj>()] > 0)
+		{
+			foreach (var proj in Main.projectile)
+			{
+				if (proj.active && proj.owner == Owner.whoAmI && proj.type == ModContent.ProjectileType<MiningPowerPickaxe_Proj>())
+				{
+					MiningPowerPickaxe_Proj mPPP = proj.ModProjectile as MiningPowerPickaxe_Proj;
+					if (mPPP.TargetTiles.Count <= 0)
+					{
+						ShouldKill = true;
+					}
+				}
+			}
 		}
 		if (!ShouldKill)
 		{

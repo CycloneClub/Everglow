@@ -118,12 +118,12 @@ public class Georg_Hammer_JumpHit : ModProjectile
 				{
 					var somg = new Georg_Hammer_JumpHit_Smog_Fire
 					{
-						velocity = newVelocity,
+						Velocity = newVelocity,
 						Active = true,
 						Visible = true,
-						position = pos,
-						maxTime = Main.rand.Next(55, 148),
-						scale = Main.rand.NextFloat(10f, 60f),
+						Position = pos,
+						MaxTime = Main.rand.Next(55, 148),
+						Scale = Main.rand.NextFloat(10f, 60f),
 						ai = new float[] { 0, 0 },
 					};
 					Ins.VFXManager.Add(somg);
@@ -132,12 +132,12 @@ public class Georg_Hammer_JumpHit : ModProjectile
 				{
 					var somg = new Georg_Hammer_JumpHit_Smog
 					{
-						velocity = newVelocity,
+						Velocity = newVelocity,
 						Active = true,
 						Visible = true,
-						position = pos,
-						maxTime = Main.rand.Next(55, 148),
-						scale = Main.rand.NextFloat(10f, 60f),
+						Position = pos,
+						MaxTime = Main.rand.Next(55, 148),
+						Scale = Main.rand.NextFloat(10f, 60f),
 						ai = new float[] { 0, 0 },
 					};
 					Ins.VFXManager.Add(somg);

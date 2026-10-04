@@ -5,49 +5,49 @@ public class ArmorPiercingSpark : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawNPCs;
 
-	public Vector2 position;
-	public Vector2 velocity;
+	public Vector2 Position;
+	public Vector2 Velocity;
 	public float[] ai;
-	public float timer;
-	public float maxTime;
-	public float scale;
-	public float rotation;
+	public float Timer;
+	public float MaxTime;
+	public float Scale;
+	public float Rotation;
 	public int Frame = 0;
 
 	public override void Update()
 	{
-		timer++;
-		if (position.X <= 320 || position.X >= Main.maxTilesX * 16 - 320)
+		Timer++;
+		if (Position.X <= 320 || Position.X >= Main.maxTilesX * 16 - 320)
 		{
-			timer = maxTime;
+			Timer = MaxTime;
 			Active = false;
 			return;
 		}
-		if (position.Y <= 320 || position.Y >= Main.maxTilesY * 16 - 320)
+		if (Position.Y <= 320 || Position.Y >= Main.maxTilesY * 16 - 320)
 		{
-			timer = maxTime;
+			Timer = MaxTime;
 			Active = false;
 			return;
 		}
-		if (timer > maxTime)
+		if (Timer > MaxTime)
 		{
 			Active = false;
 			return;
 		}
-		position += velocity;
-		velocity *= 0.98f;
-		if (!Collision.SolidCollision(position - new Vector2(scale) * 0.5f, (int)scale, (int)scale))
+		Position += Velocity;
+		Velocity *= 0.98f;
+		if (!Collision.SolidCollision(Position - new Vector2(Scale) * 0.5f, (int)Scale, (int)Scale))
 		{
-			velocity.Y += 0.25f;
+			Velocity.Y += 0.25f;
 		}
 		else
 		{
 			ai[0] = 3;
-			velocity *= 0;
+			Velocity *= 0;
 		}
 		if (ai[0] > 2)
 		{
-			if (timer % 2 == 0)
+			if (Timer % 2 == 0)
 			{
 				Frame++;
 			}
@@ -61,24 +61,24 @@ public class ArmorPiercingSpark : Visual
 			Active = false;
 			return;
 		}
-		Lighting.AddLight(position, new Vector3(0.9f, 1f, 0.8f));
+		Lighting.AddLight(Position, new Vector3(0.9f, 1f, 0.8f));
 	}
 
 	public override void Draw()
 	{
 		float frameCount = 4;
 		float frameY = Frame;
-		Vector2 toCorner = new Vector2(0, scale).RotatedBy(rotation);
+		Vector2 toCorner = new Vector2(0, Scale).RotatedBy(Rotation);
 		var drawColor = new Color(1f, 1f, 1f, 0);
 		var bars = new List<Vertex2D>()
 		{
-			new Vertex2D(position + toCorner, drawColor, new Vector3(0, frameY / frameCount, 0)),
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 0.5), drawColor, new Vector3(1, frameY / frameCount, 0)),
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 1.5), drawColor, new Vector3(0, (frameY + 1) / frameCount, 0)),
+			new Vertex2D(Position + toCorner, drawColor, new Vector3(0, frameY / frameCount, 0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 0.5), drawColor, new Vector3(1, frameY / frameCount, 0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1.5), drawColor, new Vector3(0, (frameY + 1) / frameCount, 0)),
 
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 1.5), drawColor, new Vector3(0, (frameY + 1) / frameCount, 0)),
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 0.5), drawColor, new Vector3(1, frameY / frameCount, 0)),
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 1), drawColor, new Vector3(1, (frameY + 1) / frameCount, 0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1.5), drawColor, new Vector3(0, (frameY + 1) / frameCount, 0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 0.5), drawColor, new Vector3(1, frameY / frameCount, 0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1), drawColor, new Vector3(1, (frameY + 1) / frameCount, 0)),
 		};
 		Ins.Batch.Draw(ModAsset.ArmorPiercingSpark.Value, bars, PrimitiveType.TriangleList);
 	}

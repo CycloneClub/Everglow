@@ -38,14 +38,14 @@ public class TrueDeathSickle_MoonBlade : ModProjectile, IWarpProjectile
 				Vector2 pos = Projectile.Center + v0 - startVelocity * 40f;
 				var df = new DevilFlame3DSickle_worldCoordDust
 				{
-					velocity3D = new Vector3(startVelocity * 15, 0),
+					Velocity3D = new Vector3(startVelocity * 15, 0),
 					Active = true,
 					Visible = true,
-					position3D = new Vector3(pos, 0),
+					Position3D = new Vector3(pos, 0),
 					rotateAxis = new Vector3(0, 0, 1),
-					scale = Main.rand.NextFloat(6, 12),
-					maxTime = Main.rand.Next(16, 20),
-					ownerWhoAmI = Projectile.owner,
+					Scale = Main.rand.NextFloat(6, 12),
+					MaxTime = Main.rand.Next(16, 20),
+					OwnerWhoAmI = Projectile.owner,
 					ai = new float[] { Main.rand.NextFloat(0, 1f), Main.rand.NextFloat(-0.1f, 0.1f), 0f },
 				};
 				Ins.VFXManager.Add(df);

@@ -278,7 +278,7 @@ public class LargeAlgaeOctopus : ModNPC
 	}
 
 	/// <summary>
-	/// A faint ink smear trails the hidden creature. Client-only work, so it sits behind the
+	/// A faint ink smear Trails the hidden creature. Client-only work, so it sits behind the
 	/// dedicated-server guard (D-35/D-55) and reuses an existing Kelp Curtain dust rather than creating
 	/// a new dust class (D-51).
 	/// </summary>

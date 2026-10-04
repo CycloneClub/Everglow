@@ -94,13 +94,13 @@ public class CyanBullet : TrailingProjectile
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(2.0f, 24f)).RotatedByRandom(MathHelper.TwoPi);
 			var spark = new Spark_MoonBladeDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-				maxTime = Main.rand.Next(3, 7),
-				scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(16f, 27.0f)),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+				MaxTime = Main.rand.Next(3, 7),
+				Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(16f, 27.0f)),
+				Rotation = Main.rand.NextFloat(6.283f),
 				noGravity = true,
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.03f, 0.03f) },
 			};

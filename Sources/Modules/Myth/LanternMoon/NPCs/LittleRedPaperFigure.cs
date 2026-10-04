@@ -112,17 +112,9 @@ public class LittleRedPaperFigure : LanternMoonNPC
 			return;
 		}
 		Player player = Main.player[NPC.target];
-		if (player.Center.X > NPC.Center.X)
-		{
-			NPC.direction = 1;
-		}
-		else
-		{
-			NPC.direction = -1;
-		}
+		NPC.direction = player.Center.X > NPC.Center.X ? 1 : -1;
 		Lighting.AddLight(NPC.Center, 0.4f, 0.05f, 0.05f);
 		if (State == (int)BehaviorState.Fighter)
-
 		{
 			NPC.ai[0] = 0;
 			NPC.aiStyle = NPCAIStyleID.Fighter; // 几千行代码有点难扒下来，先用现成的AIStyle代替，但看了一下把ai[0]设好能避免大部分问题
@@ -170,7 +162,7 @@ public class LittleRedPaperFigure : LanternMoonNPC
 					maxTime = Main.rand.Next(37, 45),
 					scale = Main.rand.NextFloat(0.1f, 12.0f),
 					rotation = Main.rand.NextFloat(6.283f),
-					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.01f, 0.01f) }
+					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.01f, 0.01f) },
 				};
 				Ins.VFXManager.Add(spark);
 			}
@@ -179,14 +171,14 @@ public class LittleRedPaperFigure : LanternMoonNPC
 				Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 2f)).RotatedByRandom(MathHelper.TwoPi);
 				var spark = new FireDust
 				{
-					velocity = newVelocity,
+					Velocity = newVelocity,
 					Active = true,
 					Visible = true,
-					position = NPC.Center + new Vector2(Main.rand.NextFloat(-30f, 30f), 0).RotatedByRandom(6.283),
-					maxTime = Main.rand.Next(5, 15),
-					scale = Main.rand.NextFloat(0.1f, 6.0f),
-					rotation = Main.rand.NextFloat(6.283f),
-					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.01f, 0.01f) }
+					Position = NPC.Center + new Vector2(Main.rand.NextFloat(-30f, 30f), 0).RotatedByRandom(6.283),
+					MaxTime = Main.rand.Next(5, 15),
+					Scale = Main.rand.NextFloat(0.1f, 6.0f),
+					Rotation = Main.rand.NextFloat(6.283f),
+					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.01f, 0.01f) },
 				};
 				Ins.VFXManager.Add(spark);
 			}
@@ -204,7 +196,6 @@ public class LittleRedPaperFigure : LanternMoonNPC
 			TeleportCooling--;
 		}
 	}
-
 
 	public void Teleport(Player player)
 	{
@@ -229,8 +220,6 @@ public class LittleRedPaperFigure : LanternMoonNPC
 			}
 		}
 	}
-
-
 
 	public override void OnHitByProjectile(Projectile projectile, NPC.HitInfo hit, int damageDone)
 	{
@@ -297,7 +286,6 @@ public class LittleRedPaperFigure : LanternMoonNPC
 		return value - 8;
 	}
 
-
 	public override void OnKill()
 	{
 		for (int g = 0; g < 8; g++)
@@ -338,14 +326,13 @@ public class LittleRedPaperFigure : LanternMoonNPC
 		{
 			if (State == (int)BehaviorState.Teleporting)
 			{
-				drawColor = drawColor * ((float)Math.Abs(TeleportTimer - MaxTeleportTime / 2) / (MaxTeleportTime / 2));
+				drawColor *= ((float)Math.Abs(TeleportTimer - MaxTeleportTime / 2) / (MaxTeleportTime / 2));
 				spriteBatch.Draw(texture, NPC.Center - Main.screenPosition, NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() * 0.5f, NPC.scale, NPC.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
 			}
 			else
 			{
 				spriteBatch.Draw(texture, NPC.Center - Main.screenPosition, NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() * 0.5f, NPC.scale, NPC.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
 			}
-
 		}
 		if (State == (int)BehaviorState.Attach)
 		{
@@ -354,5 +341,4 @@ public class LittleRedPaperFigure : LanternMoonNPC
 
 		return false;
 	}
-
 }

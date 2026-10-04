@@ -112,13 +112,13 @@ public class BloodSpell : ModProjectile
 			Vector2 velocity = new Vector2(0, speed).RotatedBy(g / 550f * MathHelper.TwoPi);
 			var somg = new BloodFlame
 			{
-				velocity = velocity,
+				Velocity = velocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = 500,
-				scale = 5,
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center,
+				MaxTime = 500,
+				Scale = 5,
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(4.0f, 10.93f), g / 55f * MathHelper.TwoPi + MathHelper.PiOver2, MathF.Sin(g / 55f * MathHelper.TwoPi) * 0.13f },
 			};
 			Ins.VFXManager.Add(somg);
@@ -128,13 +128,13 @@ public class BloodSpell : ModProjectile
 			velocity = new Vector2(0, speed * Main.rand.NextFloat(0.995f, 1.003f)).RotatedBy(g / 550f * MathHelper.TwoPi);
 			var somg2 = new BloodFlame_dark
 			{
-				velocity = velocity,
+				Velocity = velocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = 500,
-				scale = 3,
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center,
+				MaxTime = 500,
+				Scale = 3,
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(4.0f, 10.93f), g / 25f * MathHelper.TwoPi + MathHelper.PiOver2, MathF.Sin(g / 25f * MathHelper.TwoPi) * 0.08f },
 			};
 			Ins.VFXManager.Add(somg2);
@@ -147,10 +147,10 @@ public class BloodSpell : ModProjectile
 		{
 			Active = true,
 			Visible = true,
-			position = Projectile.Center,
-			maxTime = Main.rand.Next(57, 66),
-			scale = 0.25f,
-			rotation = 0,
+			Position = Projectile.Center,
+			MaxTime = Main.rand.Next(57, 66),
+			Scale = 0.25f,
+			Rotation = 0,
 			ai = new float[] { 0, 0, 0 },
 		};
 		Ins.VFXManager.Add(wave);
@@ -159,10 +159,10 @@ public class BloodSpell : ModProjectile
 		{
 			Active = true,
 			Visible = true,
-			position = Projectile.Center,
-			maxTime = Main.rand.Next(57, 66),
-			scale = 0.35f,
-			rotation = MathHelper.Pi / 12f,
+			Position = Projectile.Center,
+			MaxTime = Main.rand.Next(57, 66),
+			Scale = 0.35f,
+			Rotation = MathHelper.Pi / 12f,
 			ai = new float[] { MathHelper.Pi, 0, 0 },
 		};
 		Ins.VFXManager.Add(wave2);
@@ -175,13 +175,13 @@ public class BloodSpell : ModProjectile
 
 			var somg = new BloodFlame
 			{
-				velocity = velocity,
+				Velocity = velocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = 500,
-				scale = 2,
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center,
+				MaxTime = 500,
+				Scale = 2,
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(4.0f, 10.93f), 0, 0 },
 			};
 			Ins.VFXManager.Add(somg);
@@ -199,13 +199,13 @@ public class BloodSpell : ModProjectile
 			lightingCrack += lightingCrack.RotatedBy(MathHelper.PiOver2 * MathF.Sin((float)Main.time * 0.1f + Projectile.whoAmI) * 0.3f) * 0.5f * MathF.Sin(Projectile.velocity.Length() * 3f);
 			var somg = new BloodFlame
 			{
-				velocity = lightingCrack,
+				Velocity = lightingCrack,
 				Active = true,
 				Visible = true,
-				position = pos,
-				maxTime = Main.rand.Next(117, 125),
-				scale = 1,
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = pos,
+				MaxTime = Main.rand.Next(117, 125),
+				Scale = 1,
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(4.0f, 10.93f), pos.Length() * 0.14f + Projectile.whoAmI * 0.4f, 0.1f },
 			};
 			Ins.VFXManager.Add(somg);
@@ -215,13 +215,13 @@ public class BloodSpell : ModProjectile
 			lightingCrack += lightingCrack.RotatedBy(MathHelper.PiOver2 * MathF.Sin((float)Main.time * 0.07f + Projectile.whoAmI) * 0.2f) * 0.6f * MathF.Sin(Projectile.velocity.Length() * 2f);
 			var somg2 = new BloodFlame_dark
 			{
-				velocity = lightingCrack,
+				Velocity = lightingCrack,
 				Active = true,
 				Visible = true,
-				position = pos,
-				maxTime = Main.rand.Next(117, 125),
-				scale = 1,
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = pos,
+				MaxTime = Main.rand.Next(117, 125),
+				Scale = 1,
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(4.0f, 10.93f), pos.Length() * 0.21f + Projectile.whoAmI * 0.71f, 0.07f },
 			};
 			Ins.VFXManager.Add(somg2);
@@ -275,13 +275,13 @@ public class BloodSpell : ModProjectile
 			velocity *= size;
 			var somg = new BloodFlame_dark
 			{
-				velocity = velocity,
+				Velocity = velocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = 300,
-				scale = 1,
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center,
+				MaxTime = 300,
+				Scale = 1,
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(4.0f, 10.93f), 0, 0 },
 			};
 			Ins.VFXManager.Add(somg);
@@ -298,13 +298,13 @@ public class BloodSpell : ModProjectile
 			velocity *= size;
 			var somg = new BloodFlame
 			{
-				velocity = velocity,
+				Velocity = velocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = 300,
-				scale = 1,
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center,
+				MaxTime = 300,
+				Scale = 1,
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(4.0f, 10.93f), 0, 0 },
 			};
 			Ins.VFXManager.Add(somg);
@@ -315,13 +315,13 @@ public class BloodSpell : ModProjectile
 			Vector2 velocity = new Vector2(0, Main.rand.NextFloat(4.0f, 10.93f)).RotatedBy(g / 40f * MathHelper.TwoPi);
 			var somg = new BloodFlame_trail
 			{
-				velocity = velocity,
+				Velocity = velocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.oldPosition + Projectile.Size * 0.5f - Projectile.velocity + velocity,
-				maxTime = 120,
-				scale = 2,
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.oldPosition + Projectile.Size * 0.5f - Projectile.velocity + velocity,
+				MaxTime = 120,
+				Scale = 2,
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(4.0f, 10.93f), 0, 0 },
 			};
 			Ins.VFXManager.Add(somg);

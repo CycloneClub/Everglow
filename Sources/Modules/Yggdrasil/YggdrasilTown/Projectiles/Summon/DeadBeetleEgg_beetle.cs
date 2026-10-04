@@ -108,13 +108,13 @@ public class DeadBeetleEgg_beetle : ModProjectile
 			{
 				var spark = new Spark_MoonBladeDust
 				{
-					velocity = new Vector2(0, -6).RotatedBy(i / 20f * MathHelper.TwoPi),
+					Velocity = new Vector2(0, -6).RotatedBy(i / 20f * MathHelper.TwoPi),
 					Active = true,
 					Visible = true,
-					position = Projectile.Center,
-					maxTime = Main.rand.Next(20, 36),
-					scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(5f, 10.0f)),
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = Projectile.Center,
+					MaxTime = Main.rand.Next(20, 36),
+					Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(5f, 10.0f)),
+					Rotation = Main.rand.NextFloat(6.283f),
 					noGravity = true,
 					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.03f, 0.03f) },
 				};
@@ -259,26 +259,26 @@ public class DeadBeetleEgg_beetle : ModProjectile
 				Projectile.velocity = -relativePos * 0.3f;
 				var trace = new BeetleDashTraceDust
 				{
-					velocity = Projectile.velocity * 0.1f,
+					Velocity = Projectile.velocity * 0.1f,
 					Active = true,
 					Visible = true,
-					position = Projectile.Center,
-					maxTime = 28,
-					scale = 80,
-					rotation = Projectile.velocity.ToRotation(),
-					projectileOwner = Projectile,
+					Position = Projectile.Center,
+					MaxTime = 28,
+					Scale = 80,
+					Rotation = Projectile.velocity.ToRotation(),
+					ProjectileOwner = Projectile,
 					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 1 },
 				};
 				Ins.VFXManager.Add(trace);
 				var trace2 = new BeetleDashTrace_frontDust
 				{
-					velocity = Projectile.velocity * 0.1f,
+					Velocity = Projectile.velocity * 0.1f,
 					Active = true,
 					Visible = true,
-					position = Projectile.Center,
-					maxTime = 28,
-					scale = 80,
-					rotation = Projectile.velocity.ToRotation(),
+					Position = Projectile.Center,
+					MaxTime = 28,
+					Scale = 80,
+					Rotation = Projectile.velocity.ToRotation(),
 					projectileOwner = Projectile,
 					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 1 },
 				};
@@ -342,13 +342,13 @@ public class DeadBeetleEgg_beetle : ModProjectile
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0.1f, 4f)).RotatedByRandom(MathHelper.TwoPi) + v0;
 			var spark = new Spark_MoonBladeDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-24f, 24f), 0).RotatedByRandom(6.283) - Projectile.velocity * 6,
-				maxTime = Main.rand.Next(20, 36),
-				scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(5f, 10.0f)),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-24f, 24f), 0).RotatedByRandom(6.283) - Projectile.velocity * 6,
+				MaxTime = Main.rand.Next(20, 36),
+				Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(5f, 10.0f)),
+				Rotation = Main.rand.NextFloat(6.283f),
 				noGravity = true,
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.03f, 0.03f) },
 			};

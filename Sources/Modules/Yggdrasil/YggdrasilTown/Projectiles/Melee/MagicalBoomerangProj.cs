@@ -38,14 +38,14 @@ public class MagicalBoomerangProj : ModProjectile
 		{
 			var dustVFX = new MagicalBoomerangDust
 			{
-				velocity = new Vector2(0, Main.rand.NextFloat(6)).RotatedByRandom(MathHelper.TwoPi),
-				gravity = true,
+				Velocity = new Vector2(0, Main.rand.NextFloat(6)).RotatedByRandom(MathHelper.TwoPi),
+				HasGravity = true,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(20, 90),
-				scale = Main.rand.NextFloat(6, 12),
-				rotation = Main.rand.NextFloat(MathHelper.TwoPi),
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(20, 90),
+				Scale = Main.rand.NextFloat(6, 12),
+				Rotation = Main.rand.NextFloat(MathHelper.TwoPi),
 				ai = new float[] { 0, 0, 0 },
 			};
 			Ins.VFXManager.Add(dustVFX);
@@ -92,13 +92,13 @@ public class MagicalBoomerangProj : ModProjectile
 				{
 					var dustVFX = new MagicalBoomerangDust
 					{
-						velocity = Vector2.zeroVector,
+						Velocity = Vector2.zeroVector,
 						Active = true,
 						Visible = true,
-						position = Projectile.Center + vel / 5f * step,
-						maxTime = Main.rand.Next(30, 46),
-						scale = Main.rand.NextFloat(30, 40),
-						rotation = Main.rand.NextFloat(MathHelper.TwoPi),
+						Position = Projectile.Center + vel / 5f * step,
+						MaxTime = Main.rand.Next(30, 46),
+						Scale = Main.rand.NextFloat(30, 40),
+						Rotation = Main.rand.NextFloat(MathHelper.TwoPi),
 						ai = new float[] { 0, 0, 0 },
 					};
 					Ins.VFXManager.Add(dustVFX);
@@ -106,25 +106,25 @@ public class MagicalBoomerangProj : ModProjectile
 					float distanceSide = (20 - step) / 5f;
 					var dustVFXLeft = new MagicalBoomerangDust
 					{
-						velocity = Vector2.zeroVector,
+						Velocity = Vector2.zeroVector,
 						Active = true,
 						Visible = true,
-						position = Projectile.Center + vel / 5f * step + vel.RotatedBy(1.2f) / 6f * distanceSide,
-						maxTime = Main.rand.Next(30, 46),
-						scale = Main.rand.NextFloat(30, 40),
-						rotation = Main.rand.NextFloat(MathHelper.TwoPi),
+						Position = Projectile.Center + vel / 5f * step + vel.RotatedBy(1.2f) / 6f * distanceSide,
+						MaxTime = Main.rand.Next(30, 46),
+						Scale = Main.rand.NextFloat(30, 40),
+						Rotation = Main.rand.NextFloat(MathHelper.TwoPi),
 						ai = new float[] { 0, 0, 0 },
 					};
 					Ins.VFXManager.Add(dustVFXLeft);
 					var dustVFXRight = new MagicalBoomerangDust
 					{
-						velocity = Vector2.zeroVector,
+						Velocity = Vector2.zeroVector,
 						Active = true,
 						Visible = true,
-						position = Projectile.Center + vel / 5f * step + vel.RotatedBy(-1.2f) / 6f * distanceSide,
-						maxTime = Main.rand.Next(30, 46),
-						scale = Main.rand.NextFloat(30, 40),
-						rotation = Main.rand.NextFloat(MathHelper.TwoPi),
+						Position = Projectile.Center + vel / 5f * step + vel.RotatedBy(-1.2f) / 6f * distanceSide,
+						MaxTime = Main.rand.Next(30, 46),
+						Scale = Main.rand.NextFloat(30, 40),
+						Rotation = Main.rand.NextFloat(MathHelper.TwoPi),
 						ai = new float[] { 0, 0, 0 },
 					};
 					Ins.VFXManager.Add(dustVFXRight);
@@ -144,14 +144,14 @@ public class MagicalBoomerangProj : ModProjectile
 		{
 			var dustVFX = new MagicalBoomerangDust
 			{
-				velocity = new Vector2(0, Main.rand.NextFloat(8)).RotatedByRandom(MathHelper.TwoPi) + Projectile.velocity * 0.5f,
-				gravity = true,
+				Velocity = new Vector2(0, Main.rand.NextFloat(8)).RotatedByRandom(MathHelper.TwoPi) + Projectile.velocity * 0.5f,
+				HasGravity = true,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(20, 90),
-				scale = Main.rand.NextFloat(6, 12),
-				rotation = Main.rand.NextFloat(MathHelper.TwoPi),
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(20, 90),
+				Scale = Main.rand.NextFloat(6, 12),
+				Rotation = Main.rand.NextFloat(MathHelper.TwoPi),
 				ai = new float[] { 0, 0, 0 },
 			};
 			Ins.VFXManager.Add(dustVFX);

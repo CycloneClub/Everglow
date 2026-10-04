@@ -5,6 +5,7 @@ using Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Fishing.FishingRods;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Pets;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables.Furniture.TwilightForest;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables.Ores;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Tools;
@@ -17,6 +18,7 @@ using Everglow.Yggdrasil.YggdrasilTown.Tiles.CyanVine;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood.Furniture;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles.TwilightForest;
+using Everglow.Yggdrasil.YggdrasilTown.Tiles.TwilightForest.Furnitures;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles.TwilightForest.RoomScenes;
 using Everglow.Yggdrasil.YggdrasilTown.Walls;
 using Everglow.Yggdrasil.YggdrasilTown.Walls.TwilightForest;
@@ -188,6 +190,45 @@ public class YggdrasilTownGeneration
 		PlaceFrameImportantTiles(1440, startY + 7, 12, 1, ModContent.TileType<StoneBridgeTile>(), 36, 36);
 
 		PlaceFrameImportantTiles(1470, startY + 7, 16, 1, ModContent.TileType<StoneBridgeTile>(), 0, 72);
+
+		for (int k = 0; k < 6; k++)
+		{
+			int x = GenRand.Next(leftBound + 5, rightBound - 5);
+			int y = startY + 6;
+			int count = 0;
+			while (!CanPlaceMultiAtTopTowardsUpRight(x, y, 2, 2))
+			{
+				x = GenRand.Next(leftBound + 5, rightBound - 5);
+				count++;
+				if (count >= 100)
+				{
+					break;
+				}
+			}
+			WorldGen.PlaceChest(x, y, (ushort)ModContent.TileType<StoneBridge_Chest>());
+			WorldGenMisc.TryFillChest(x, y, BridgeChestContents());
+		}
+
+		for (int k = 0; k < 54; k++)
+		{
+			int x = GenRand.Next(leftBound + 5, rightBound - 5);
+			int y = startY + 7;
+			if (GenRand.NextBool())
+			{
+				y = startY;
+			}
+			int count = 0;
+			while (!CanPlaceMultiAtTopTowardsUpRight(x, y, 1, 2))
+			{
+				x = GenRand.Next(leftBound + 5, rightBound - 5);
+				count++;
+				if (count >= 100)
+				{
+					break;
+				}
+			}
+			PlaceFrameImportantTilesAbove(x, y, 1, 2, ModContent.TileType<StoneBridge_Pot>(), GenRand.Next(5) * 18);
+		}
 	}
 
 	/// <summary>
@@ -827,7 +868,8 @@ public class YggdrasilTownGeneration
 			}
 		}
 		YggdrasilTownTopLeft = new Point(230, Main.maxTilesY - 600);
-		QuickBuild(YggdrasilTownTopLeft.X, YggdrasilTownTopLeft.Y, ModAsset.YggdrasilTown_New_706x275_Path);
+		QuickBuild(YggdrasilTownTopLeft.X, YggdrasilTownTopLeft.Y, ModAsset.YggdrasilTown_01_517x274_Path);
+		QuickBuild(YggdrasilTownTopLeft.X + 517, YggdrasilTownTopLeft.Y + 57, ModAsset.YggdrasilTown_02_189x218_Path);
 
 		// Railway
 		for (int t = 0; t <= 120; t++)
@@ -2046,58 +2088,7 @@ public class YggdrasilTownGeneration
 			}
 			rooms[pos] = roomNames.Dequeue();
 		}
-		foreach (var room in rooms)
-		{
-			int roomOriginX = centerX - 75 + room.Key.X * 100 + 25;
-			int roomOriginY = centerY - 100 + room.Key.Y * 25 + 12;
-			string roomName = ModAsset.TCRoom_Rd_00_StoneCave_40x21_Path;
-			switch (room.Value)
-			{
-				case "Wood":
-					roomName = ModAsset.TCRoom_Rd_04_Forest_40x21_Path;
-					if (room.Key.X > 0)
-					{
-						roomName = ModAsset.TCRoom_Ld_04_Forest_40x21_Path;
-					}
-					break;
-				case "Water":
-					roomName = ModAsset.TCRoom_Rd_03_WaterSluice_40x21_Path;
-					if (room.Key.X > 0)
-					{
-						roomName = ModAsset.TCRoom_Ld_03_WaterSluice_40x21_Path;
-					}
-					break;
-				case "Shadow":
-					roomName = ModAsset.TCRoom_Rd_05_DarkDragon_40x21_Path;
-					if (room.Key.X > 0)
-					{
-						roomName = ModAsset.TCRoom_Ld_05_DarkDragon_40x21_Path;
-					}
-					break;
-				case "Blood":
-					roomName = ModAsset.TCRoom_Rd_01_BloodyChurch_40x21_Path;
-					if (room.Key.X > 0)
-					{
-						roomName = ModAsset.TCRoom_Ld_01_BloodyChurch_40x21_Path;
-					}
-					break;
-				case "Rock":
-					roomName = ModAsset.TCRoom_Rd_00_StoneCave_40x21_Path;
-					if (room.Key.X > 0)
-					{
-						roomName = ModAsset.TCRoom_Ld_00_StoneCave_40x21_Path;
-					}
-					break;
-				case "Sand":
-					roomName = ModAsset.TCRoom_Rd_02_Desert_40x21_Path;
-					if (room.Key.X > 0)
-					{
-						roomName = ModAsset.TCRoom_Ld_02_Desert_40x21_Path;
-					}
-					break;
-			}
-			QuickBuild(roomOriginX - 20, roomOriginY - 10, roomName);
-		}
+
 		for (int x = 0; x < 3; x++)
 		{
 			if (x == 1)
@@ -2108,6 +2099,7 @@ public class YggdrasilTownGeneration
 			{
 				int roomOriginX = centerX - 75 + x * 50 + 25;
 				int roomOriginY = centerY - 100 + y * 25 + 12;
+				KillRectangleAreaOfTile(roomOriginX - 19, roomOriginY - 10, roomOriginX + 18, roomOriginY + 9);
 
 				// 房间通道
 				if (y == 9 && directionGate + 1 == x)
@@ -2129,15 +2121,68 @@ public class YggdrasilTownGeneration
 					KillRectangleAreaOfTile(roomOriginX + 18, roomOriginY + 2, roomOriginX + 31, roomOriginY + 9);
 					PlaceRectangleAreaOfBlock(roomOriginX + 19, roomOriginY + 2, roomOriginX + 22, roomOriginY + 6, ModContent.TileType<GreenRelicBrick>());
 
-					// PlaceFrameImportantTiles(roomOriginX + 20, roomOriginY + 7, 1, 3, TileID.ClosedDoor, 0, 918);
+					PlaceFrameImportantTiles(roomOriginX + 19, roomOriginY + 7, 1, 3, ModContent.TileType<TwilightEucalyptusDoorClosed>());
 				}
 				if (x == 2)
 				{
 					KillRectangleAreaOfTile(roomOriginX - 31, roomOriginY + 2, roomOriginX - 18, roomOriginY + 9);
 					PlaceRectangleAreaOfBlock(roomOriginX - 22, roomOriginY + 2, roomOriginX - 19, roomOriginY + 6, ModContent.TileType<GreenRelicBrick>());
 
-					// PlaceFrameImportantTiles(roomOriginX - 20, roomOriginY + 7, 1, 3, TileID.ClosedDoor, 0, 918);
+					PlaceFrameImportantTiles(roomOriginX - 20, roomOriginY + 7, 1, 3, ModContent.TileType<TwilightEucalyptusDoorClosed>());
 				}
+			}
+
+			foreach (var room in rooms)
+			{
+				int roomOriginX = centerX - 75 + room.Key.X * 100 + 25;
+				int roomOriginY = centerY - 100 + room.Key.Y * 25 + 12;
+				string roomName = ModAsset.TCRoom_Rd_00_StoneCave_40x21_Path;
+				switch (room.Value)
+				{
+					case "Wood":
+						roomName = ModAsset.TCRoom_Rd_04_Forest_40x21_Path;
+						if (room.Key.X > 0)
+						{
+							roomName = ModAsset.TCRoom_Ld_04_Forest_40x21_Path;
+						}
+						break;
+					case "Water":
+						roomName = ModAsset.TCRoom_Rd_03_WaterSluice_40x21_Path;
+						if (room.Key.X > 0)
+						{
+							roomName = ModAsset.TCRoom_Ld_03_WaterSluice_40x21_Path;
+						}
+						break;
+					case "Shadow":
+						roomName = ModAsset.TCRoom_Rd_05_DarkDragon_40x21_Path;
+						if (room.Key.X > 0)
+						{
+							roomName = ModAsset.TCRoom_Ld_05_DarkDragon_40x21_Path;
+						}
+						break;
+					case "Blood":
+						roomName = ModAsset.TCRoom_Rd_01_BloodyChurch_40x21_Path;
+						if (room.Key.X > 0)
+						{
+							roomName = ModAsset.TCRoom_Ld_01_BloodyChurch_40x21_Path;
+						}
+						break;
+					case "Rock":
+						roomName = ModAsset.TCRoom_Rd_00_StoneCave_40x21_Path;
+						if (room.Key.X > 0)
+						{
+							roomName = ModAsset.TCRoom_Ld_00_StoneCave_40x21_Path;
+						}
+						break;
+					case "Sand":
+						roomName = ModAsset.TCRoom_Rd_02_Desert_40x21_Path;
+						if (room.Key.X > 0)
+						{
+							roomName = ModAsset.TCRoom_Ld_02_Desert_40x21_Path;
+						}
+						break;
+				}
+				QuickBuild(roomOriginX - 20, roomOriginY - 10, roomName);
 			}
 		}
 
@@ -3200,6 +3245,74 @@ public class YggdrasilTownGeneration
 				break;
 			case 4:
 				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<FuneraryGoods>(), 1));
+				break;
+		}
+		chestContents.AddRange(NormalChestContents());
+		return chestContents;
+	}
+
+	/// <summary>
+	/// Generate a list of item to fill a stone bridge chest.
+	/// </summary>
+	/// <returns></returns>
+	public static List<Item> BridgeChestContents()
+	{
+		List<Item> chestContents = new List<Item>();
+		int mainItem = WorldGen.genRand.Next(7);
+		int mainItem2 = WorldGen.genRand.Next(6);
+		if (mainItem2 == mainItem)
+		{
+			mainItem2 = 6;
+		}
+
+		// 2 different main items
+		switch (mainItem)
+		{
+			case 0:
+				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<FlappedHangGlider>(), 1));
+				break;
+			case 1:
+				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<OldPortableLamp>(), 1));
+				break;
+			case 2:
+				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<RustSlingshot>(), 1));
+				break;
+			case 3:
+				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<ForsakenBoots>(), 1));
+				break;
+			case 4:
+				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<Caltrop>(), GenRand.Next(16, 32)));
+				break;
+			case 5:
+				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<StoneJavelin>(), GenRand.Next(16, 32)));
+				break;
+			case 6:
+				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<RuinTorch_Item>(), GenRand.Next(16, 32)));
+				break;
+		}
+		chestContents.AddRange(NormalChestContents());
+		switch (mainItem2)
+		{
+			case 0:
+				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<FlappedHangGlider>(), 1));
+				break;
+			case 1:
+				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<OldPortableLamp>(), 1));
+				break;
+			case 2:
+				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<RustSlingshot>(), 1));
+				break;
+			case 3:
+				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<ForsakenBoots>(), 1));
+				break;
+			case 4:
+				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<Caltrop>(), GenRand.Next(16, 32)));
+				break;
+			case 5:
+				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<StoneJavelin>(), GenRand.Next(16, 32)));
+				break;
+			case 6:
+				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<RuinTorch_Item>(), GenRand.Next(16, 32)));
 				break;
 		}
 		chestContents.AddRange(NormalChestContents());

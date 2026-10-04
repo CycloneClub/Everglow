@@ -12,7 +12,7 @@ public class SpringOfQuicksand_SandTrail : Visual
 	public float MaxTime;
 	public float Fade = 0;
 	public float Scale;
-	private Queue<Vector2> trails = new Queue<Vector2>();
+	private Queue<Vector2> Trails = new Queue<Vector2>();
 
 	public override void Update()
 	{
@@ -28,10 +28,10 @@ public class SpringOfQuicksand_SandTrail : Visual
 			Active = false;
 			return;
 		}
-		trails.Enqueue(Position);
-		if (trails.Count > 60)
+		Trails.Enqueue(Position);
+		if (Trails.Count > 60)
 		{
-			trails.Dequeue();
+			Trails.Dequeue();
 		}
 		if (Collision.IsWorldPointSolid(Position))
 		{
@@ -62,7 +62,7 @@ public class SpringOfQuicksand_SandTrail : Visual
 			timeFade *= (MaxTime - Timer) / 30f;
 		}
 		List<Vertex2D> bars = new List<Vertex2D>();
-		if (trails.Count <= 2)
+		if (Trails.Count <= 2)
 		{
 			bars.Add(Position, Color.Transparent, new Vector3(0, 0, 0));
 			bars.Add(Position, Color.Transparent, new Vector3(0, 0, 0));
@@ -73,17 +73,17 @@ public class SpringOfQuicksand_SandTrail : Visual
 			Ins.Batch.Draw(Commons.ModAsset.Trail_12.Value, bars, PrimitiveType.TriangleStrip);
 			return;
 		}
-		for (int i = 0; i < trails.Count; i++)
+		for (int i = 0; i < Trails.Count; i++)
 		{
-			Vector2 pos = trails.ToArray()[i];
+			Vector2 pos = Trails.ToArray()[i];
 			Vector2 dir = Velocity.NormalizeSafe();
 			if (i > 0)
 			{
-				dir = (trails.ToArray()[i - 1] - trails.ToArray()[i]).NormalizeSafe();
+				dir = (Trails.ToArray()[i - 1] - Trails.ToArray()[i]).NormalizeSafe();
 			}
 			dir = dir.RotatedBy(MathHelper.PiOver2) * Scale;
 			Color envLight = Lighting.GetColor(pos.ToTileCoordinates()) * (1 - Fade) * timeFade;
-			float zCoord = i / ((float)trails.Count - 1);
+			float zCoord = i / ((float)Trails.Count - 1);
 			zCoord = MathF.Sin(zCoord * MathHelper.Pi);
 			bars.Add(pos + dir, envLight, new Vector3(i / 40f - timeValue, 0, zCoord));
 			bars.Add(pos - dir, envLight, new Vector3(i / 40f - timeValue, 1, zCoord));
