@@ -1,12 +1,10 @@
 namespace Everglow.Yggdrasil.YggdrasilTown.VFXs;
 
-public class PurpleBombCaterpillarSmogPipeline : Pipeline
+public class PurpleBombCaterpillarBloodDropPipeline : Pipeline
 {
 	public override void Load()
 	{
-		effect = ModAsset.PurpleBombCaterpillarSmog_Shader;
-		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_perlin.Value);
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_PurpleBombCaterpillarSmog.Value);
+		effect = ModAsset.PurpleBombCaterpillarBloodDrop_Shader;
 	}
 
 	public override void BeginRender()
@@ -15,10 +13,12 @@ public class PurpleBombCaterpillarSmogPipeline : Pipeline
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition, 0)) * Main.GameViewMatrix.TransformationMatrix;
 		effect.Parameters["uTransform"].SetValue(model * projection);
-		Texture2D halo = Commons.ModAsset.Point.Value;
-		Ins.Batch.BindTexture<Vertex2D>(halo);
+		effect.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_PurpleBombCaterpillarBloodDrop.Value);
+		effect.Parameters["uIlluminationThreshold"].SetValue(0.99f);
+		Texture2D lightness = Commons.ModAsset.Point_lowContrast.Value;
+		Ins.Batch.BindTexture<Vertex2D>(lightness);
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointClamp;
-		Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.None, SamplerState.PointWrap, RasterizerState.CullNone);
+		Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.None, SamplerState.PointClamp, RasterizerState.CullNone);
 		effect.CurrentTechnique.Passes[0].Apply();
 	}
 

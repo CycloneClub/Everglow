@@ -41,10 +41,6 @@ public class AmberSmogDust : Visual
 	public float Scale;
 	public float Rotation;
 
-	public AmberSmogDust()
-	{
-	}
-
 	public override void Update()
 	{
 		Position += Velocity;

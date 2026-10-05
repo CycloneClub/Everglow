@@ -30,15 +30,6 @@ public class PurpleBombCaterpillarSmog : Visual
 		}
 		Velocity *= 0.9f;
 
-		if (Position.X < Main.maxTilesX * 16 - 320 && Position.X > 320)
-		{
-			if (Position.Y < Main.maxTilesY * 16 - 320 && Position.Y > 320)
-			{
-				if (Collision.SolidCollision(Position, 0, 0))
-				{
-				}
-			}
-		}
 		if (Scale < 160)
 		{
 			Scale += 2f;
