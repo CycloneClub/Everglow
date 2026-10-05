@@ -151,13 +151,13 @@ public class QuenchingBladeProj_Smash : ModProjectile, IWarpProjectile_warpStyle
 					}
 					var dustVFX = new FlameDust0
 					{
-						velocity = Vector2.zeroVector,
+						Velocity = Vector2.zeroVector,
 						Active = true,
 						Visible = true,
-						position = Vector2.Lerp(lineEnd, lineStart, MathF.Sqrt(Main.rand.NextFloat())),
-						maxTime = Main.rand.Next(6, 20),
-						scale = Main.rand.NextFloat(15, 80),
-						rotation = MathHelper.PiOver4 * 3,
+						Position = Vector2.Lerp(lineEnd, lineStart, MathF.Sqrt(Main.rand.NextFloat())),
+						MaxTime = Main.rand.Next(6, 20),
+						Scale = Main.rand.NextFloat(15, 80),
+						Rotation = MathHelper.PiOver4 * 3,
 						MyOwner = player,
 						ai = new float[] { Main.rand.Next(3), 1, 0 },
 					};
@@ -175,13 +175,13 @@ public class QuenchingBladeProj_Smash : ModProjectile, IWarpProjectile_warpStyle
 					}
 					var dustVFX = new FlameDust1
 					{
-						velocity = new Vector2(0, -4),
+						Velocity = new Vector2(0, -4),
 						Active = true,
 						Visible = true,
-						position = Vector2.Lerp(lineEnd, lineStart, MathF.Sqrt(Main.rand.NextFloat())),
-						maxTime = Main.rand.Next(6, 20),
-						scale = Main.rand.NextFloat(5, 20),
-						rotation = MathHelper.PiOver4 * 3,
+						Position = Vector2.Lerp(lineEnd, lineStart, MathF.Sqrt(Main.rand.NextFloat())),
+						MaxTime = Main.rand.Next(6, 20),
+						Scale = Main.rand.NextFloat(5, 20),
+						Rotation = MathHelper.PiOver4 * 3,
 						MyOwner = player,
 						ai = new float[] { Main.rand.Next(3), 1, 0 },
 					};
@@ -219,12 +219,12 @@ public class QuenchingBladeProj_Smash : ModProjectile, IWarpProjectile_warpStyle
 			Vector2 pos = Projectile.Center + FallingMove + new Vector2((60 + 12 * g) * FirstDirection, 3) - newVelocity * 1;
 			var somg = new QuenchingBladeSmog
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = pos,
-				maxTime = Main.rand.Next(15, 48),
-				scale = Main.rand.NextFloat(50f, 120f),
+				Position = pos,
+				MaxTime = Main.rand.Next(15, 48),
+				Scale = Main.rand.NextFloat(50f, 120f),
 				ai = new float[] { 0, 0 },
 			};
 			Ins.VFXManager.Add(somg);
@@ -234,13 +234,13 @@ public class QuenchingBladeProj_Smash : ModProjectile, IWarpProjectile_warpStyle
 			Vector2 pos = Projectile.Center + FallingMove + new Vector2((60 + 9 * k) * FirstDirection, 3);
 			var dustVFX = new FlameDust0
 			{
-				velocity = Vector2.zeroVector,
+				Velocity = Vector2.zeroVector,
 				Active = true,
 				Visible = true,
-				position = pos,
-				maxTime = Main.rand.Next(16, 34),
-				scale = Main.rand.NextFloat(15, 80),
-				rotation = MathHelper.PiOver4 * 3,
+				Position = pos,
+				MaxTime = Main.rand.Next(16, 34),
+				Scale = Main.rand.NextFloat(15, 80),
+				Rotation = MathHelper.PiOver4 * 3,
 				MyOwner = player,
 				ai = new float[] { Main.rand.Next(3), 1, 0 },
 			};
@@ -251,13 +251,13 @@ public class QuenchingBladeProj_Smash : ModProjectile, IWarpProjectile_warpStyle
 			Vector2 pos = Projectile.Center + FallingMove + new Vector2((60 + 6 * k) * FirstDirection, 3);
 			var dustVFX = new FlameDust1
 			{
-				velocity = Vector2.zeroVector,
+				Velocity = Vector2.zeroVector,
 				Active = true,
 				Visible = true,
-				position = pos,
-				maxTime = Main.rand.Next(16, 34),
-				scale = Main.rand.NextFloat(15, 80),
-				rotation = MathHelper.PiOver4 * 3,
+				Position = pos,
+				MaxTime = Main.rand.Next(16, 34),
+				Scale = Main.rand.NextFloat(15, 80),
+				Rotation = MathHelper.PiOver4 * 3,
 				MyOwner = player,
 				ai = new float[] { Main.rand.Next(3), 1, 0 },
 			};

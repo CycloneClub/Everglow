@@ -72,13 +72,13 @@ public class YggdrasilAmberLaser_proj : HandholdProjectile
 				Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 12f)).RotatedByRandom(MathHelper.TwoPi);
 				var somg = new AmberFlameDust
 				{
-					velocity = newVelocity,
+					Velocity = newVelocity,
 					Active = true,
 					Visible = true,
-					position = EndPoint,
-					maxTime = Main.rand.Next(47, 85),
-					scale = Main.rand.NextFloat(2.20f, 12.35f),
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = EndPoint,
+					MaxTime = Main.rand.Next(47, 85),
+					Scale = Main.rand.NextFloat(2.20f, 12.35f),
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 				};
 				Ins.VFXManager.Add(somg);
@@ -110,13 +110,13 @@ public class YggdrasilAmberLaser_proj : HandholdProjectile
 				Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 4f)).RotatedByRandom(MathHelper.TwoPi);
 				var somg = new AmberFlameDust
 				{
-					velocity = newVelocity,
+					Velocity = newVelocity,
 					Active = true,
 					Visible = true,
-					position = targetHitbox.Center(),
-					maxTime = Main.rand.Next(37, 145),
-					scale = Main.rand.NextFloat(1.20f, 12.35f),
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = targetHitbox.Center(),
+					MaxTime = Main.rand.Next(37, 145),
+					Scale = Main.rand.NextFloat(1.20f, 12.35f),
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 				};
 				Ins.VFXManager.Add(somg);
@@ -165,12 +165,12 @@ public class YggdrasilAmberLaser_proj : HandholdProjectile
 				Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0.20f, 2.35f)).RotatedByRandom(MathHelper.TwoPi);
 				var somg = new LightFruitParticleDust
 				{
-					velocity = newVelocity,
+					Velocity = newVelocity,
 					Active = true,
 					Visible = true,
-					position = EndPoint,
-					maxTime = Main.rand.Next(37, 145),
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = EndPoint,
+					MaxTime = Main.rand.Next(37, 145),
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { Main.rand.NextFloat(0.60f, 7.35f), 0 },
 				};
 				Ins.VFXManager.Add(somg);
@@ -239,13 +239,13 @@ public class YggdrasilAmberLaser_proj : HandholdProjectile
 				Vector2 newVelocity = mouseToPlayer.RotatedBy(Main.rand.NextFloat(-0.4f, 0.4f)) * 4f * duration;
 				var somg = new AmberFlameDust
 				{
-					velocity = newVelocity,
+					Velocity = newVelocity,
 					Active = true,
 					Visible = true,
-					position = checkPoint,
-					maxTime = Main.rand.Next(37, 55) * duration,
-					scale = Main.rand.NextFloat(1.20f, 4.35f) * duration,
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = checkPoint,
+					MaxTime = Main.rand.Next(37, 55) * duration,
+					Scale = Main.rand.NextFloat(1.20f, 4.35f) * duration,
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 				};
 				Ins.VFXManager.Add(somg);

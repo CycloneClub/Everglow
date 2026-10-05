@@ -130,13 +130,13 @@ public class QuenchingBladeProj : MeleeProj
 					{
 						var dustVFX = new FlameDust0
 						{
-							velocity = Vector2.zeroVector,
+							Velocity = Vector2.zeroVector,
 							Active = true,
 							Visible = true,
-							position = Vector2.Lerp(lineEnd, lineStart, MathF.Sqrt(Main.rand.NextFloat())),
-							maxTime = Main.rand.Next(6, 20),
-							scale = Main.rand.NextFloat(15, 60),
-							rotation = MathHelper.PiOver4 * 3,
+							Position = Vector2.Lerp(lineEnd, lineStart, MathF.Sqrt(Main.rand.NextFloat())),
+							MaxTime = Main.rand.Next(6, 20),
+							Scale = Main.rand.NextFloat(15, 60),
+							Rotation = MathHelper.PiOver4 * 3,
 							MyOwner = player,
 							ai = new float[] { Main.rand.Next(3), 0, 0 },
 						};
@@ -148,13 +148,13 @@ public class QuenchingBladeProj : MeleeProj
 						lineEnd = ProjCenter_WithoutGravDir + Vector2Elipse(250, Projectile.rotation + Main.rand.NextFloat(-0.5f, 0.5f), -1.2f, 0, 1000) * Projectile.scale * 1.2f;
 						var dustVFX = new FlameDust1
 						{
-							velocity = new Vector2(0, -4),
+							Velocity = new Vector2(0, -4),
 							Active = true,
 							Visible = true,
-							position = Vector2.Lerp(lineEnd, lineStart, MathF.Sqrt(Main.rand.NextFloat())),
-							maxTime = Main.rand.Next(6, 20),
-							scale = Main.rand.NextFloat(5, 20),
-							rotation = MathHelper.PiOver4 * 3,
+							Position = Vector2.Lerp(lineEnd, lineStart, MathF.Sqrt(Main.rand.NextFloat())),
+							MaxTime = Main.rand.Next(6, 20),
+							Scale = Main.rand.NextFloat(5, 20),
+							Rotation = MathHelper.PiOver4 * 3,
 							MyOwner = player,
 							ai = new float[] { Main.rand.Next(3), 0, 0 },
 						};
@@ -216,13 +216,13 @@ public class QuenchingBladeProj : MeleeProj
 					{
 						var dustVFX = new FlameDust0
 						{
-							velocity = Vector2.zeroVector,
+							Velocity = Vector2.zeroVector,
 							Active = true,
 							Visible = true,
-							position = Vector2.Lerp(lineEnd, lineStart, MathF.Sqrt(Main.rand.NextFloat())),
-							maxTime = Main.rand.Next(6, 20),
-							scale = Main.rand.NextFloat(15, 60),
-							rotation = MathHelper.PiOver4 * 3,
+							Position = Vector2.Lerp(lineEnd, lineStart, MathF.Sqrt(Main.rand.NextFloat())),
+							MaxTime = Main.rand.Next(6, 20),
+							Scale = Main.rand.NextFloat(15, 60),
+							Rotation = MathHelper.PiOver4 * 3,
 							MyOwner = player,
 							ai = new float[] { Main.rand.Next(3), 0, 0 },
 						};
@@ -234,13 +234,13 @@ public class QuenchingBladeProj : MeleeProj
 						lineEnd = ProjCenter_WithoutGravDir + Vector2Elipse(250, Projectile.rotation + Main.rand.NextFloat(-0.5f, 0.5f), -1.2f, 0, 1000) * Projectile.scale * 1.2f;
 						var dustVFX = new FlameDust1
 						{
-							velocity = new Vector2(0, -4),
+							Velocity = new Vector2(0, -4),
 							Active = true,
 							Visible = true,
-							position = Vector2.Lerp(lineEnd, lineStart, MathF.Sqrt(Main.rand.NextFloat())),
-							maxTime = Main.rand.Next(6, 20),
-							scale = Main.rand.NextFloat(5, 20),
-							rotation = MathHelper.PiOver4 * 3,
+							Position = Vector2.Lerp(lineEnd, lineStart, MathF.Sqrt(Main.rand.NextFloat())),
+							MaxTime = Main.rand.Next(6, 20),
+							Scale = Main.rand.NextFloat(5, 20),
+							Rotation = MathHelper.PiOver4 * 3,
 							MyOwner = player,
 							ai = new float[] { Main.rand.Next(3), 0, 0 },
 						};
@@ -304,13 +304,13 @@ public class QuenchingBladeProj : MeleeProj
 						var lineEnd = ProjCenter_WithoutGravDir + Vector2Elipse(250, Projectile.rotation + Main.rand.NextFloat(-0.5f, 0.5f), 0, 0, 1000) * Projectile.scale * 1.2f;
 						var dustVFX = new FlameDust0
 						{
-							velocity = Vector2.zeroVector,
+							Velocity = Vector2.zeroVector,
 							Active = true,
 							Visible = true,
-							position = Vector2.Lerp(lineEnd, lineStart, MathF.Sqrt(Main.rand.NextFloat())),
-							maxTime = Main.rand.Next(6, 20),
-							scale = Main.rand.NextFloat(15, 80),
-							rotation = MathHelper.PiOver4 * 3,
+							Position = Vector2.Lerp(lineEnd, lineStart, MathF.Sqrt(Main.rand.NextFloat())),
+							MaxTime = Main.rand.Next(6, 20),
+							Scale = Main.rand.NextFloat(15, 80),
+							Rotation = MathHelper.PiOver4 * 3,
 							MyOwner = player,
 							ai = new float[] { Main.rand.Next(3), 0, 0 },
 						};
@@ -322,13 +322,13 @@ public class QuenchingBladeProj : MeleeProj
 						var lineEnd = ProjCenter_WithoutGravDir + Vector2Elipse(250, Projectile.rotation + Main.rand.NextFloat(-0.5f, 0.5f), 0, 0, 1000) * Projectile.scale * 1.2f;
 						var dustVFX = new FlameDust1
 						{
-							velocity = new Vector2(0, -4),
+							Velocity = new Vector2(0, -4),
 							Active = true,
 							Visible = true,
-							position = Vector2.Lerp(lineEnd, lineStart, MathF.Sqrt(Main.rand.NextFloat())),
-							maxTime = Main.rand.Next(6, 20),
-							scale = Main.rand.NextFloat(5, 20),
-							rotation = MathHelper.PiOver4 * 3,
+							Position = Vector2.Lerp(lineEnd, lineStart, MathF.Sqrt(Main.rand.NextFloat())),
+							MaxTime = Main.rand.Next(6, 20),
+							Scale = Main.rand.NextFloat(5, 20),
+							Rotation = MathHelper.PiOver4 * 3,
 							MyOwner = player,
 							ai = new float[] { Main.rand.Next(3), 0, 0 },
 						};

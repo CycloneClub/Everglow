@@ -1,6 +1,6 @@
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
-using Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles.CyanVine;
+using Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles.TwilightForest;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Tiles;
@@ -31,35 +31,9 @@ public class StoneScaleWood : ModTile
 
 		AddMapEntry(new Color(77, 66, 63));
 	}
+
 	public override bool CanExplode(int i, int j)
 	{
 		return false;
-	}
-	public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
-	{
-	}
-	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
-	{
-		//Tile tile = Main.tile[i, j];
-		//if(!tile.HasTile)
-		//{
-		//	return false;
-		//}
-		//spriteBatch.End();
-		//spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.NonPremultiplied);
-
-		//Vector2 worldPos = new Vector2(i, j);
-		//Texture2D noiseTex = ModAsset.DragonSacleNoise.Value;
-		//Effect noise = ModAsset.DragonSacle.Value;
-		//noise.Parameters["tex0"].SetValue(noiseTex);
-		//noise.Parameters["worldPos"].SetValue(worldPos);
-		//noise.Parameters["textureWidth"].SetValue(512);
-		//noise.CurrentTechnique.Passes["newTexutre"].Apply();
-		return true;
-	}
-	public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
-	{
-		//spriteBatch.End();
-		//spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.EffectMatrix);
 	}
 }

@@ -1,5 +1,4 @@
 using Everglow.Commons.TileHelper;
-using MathNet.Numerics.LinearAlgebra.Factorization;
 using Terraria.ObjectData;
 using Terraria.Utilities;
 
@@ -313,11 +312,7 @@ public partial class TileUtils
 	{
 		Tile tile = SafeGetTile(x, y);
 		Tile tileUp = SafeGetTile(x, y - 1);
-		if (!TileID.Sets.BasicChest[tile.TileType] && !TileID.Sets.BasicChest[tileUp.TileType])
-		{
-			return true;
-		}
-		return false;
+		return !TileID.Sets.BasicChest[tile.TileType] && !TileID.Sets.BasicChest[tileUp.TileType];
 	}
 
 	/// <param name="center">Tile coordinate, no world coordinate.</param>
@@ -376,6 +371,51 @@ public partial class TileUtils
 	public static void PlaceRectangleAreaOfBlock_XYWH(int x, int y, int w, int h, int type, int force = 0)
 	{
 		PlaceRectangleAreaOfBlock(x, y, x + w - 1, y + h - 1, type, force);
+	}
+
+	/// <summary>
+	/// Fill tiles by given area:(x0:left, y0:top, x1:right, y1:bottom)
+	/// </summary>
+	/// <param name="x0">Left</param>
+	/// <param name="y0">Top</param>
+	/// <param name="x1">Right</param>
+	/// <param name="y1">Bottom</param>
+	/// <param name="type">WallID: place the tile.<br/>
+	/// -1: Kill wall.<br/>
+	/// -2: ClearEverything</param>
+	/// <param name="force"><see cref="TileChangeState"/></param>
+	public static void PlaceRectangleAreaOfWall(int x0, int y0, int x1, int y1, int type, int force = 0)
+	{
+		if (x0 > x1)
+		{
+			(x0, x1) = (x1, x0);
+		}
+		if (y0 > y1)
+		{
+			(y0, y1) = (y1, y0);
+		}
+		for (int x = x0; x <= x1; x += 1)
+		{
+			for (int y = y0; y <= y1; y += 1)
+			{
+				Tile tile = SafeGetTile(x, y);
+				ChangeWall(tile, type, force);
+			}
+		}
+	}
+
+	/// <summary>
+	/// Fill tiles by given area:(x, y, w, h) where (x, y) is the top left corner.
+	/// </summary>
+	/// <param name="x"></param>
+	/// <param name="y"></param>
+	/// <param name="w"></param>
+	/// <param name="h"></param>
+	/// <param name="type">WallID</param>
+	/// <param name="force"></param>
+	public static void PlaceRectangleAreaOfWall_XYWH(int x, int y, int w, int h, int type, int force = 0)
+	{
+		PlaceRectangleAreaOfWall(x, y, x + w - 1, y + h - 1, type, force);
 	}
 
 	/// <summary>
@@ -1068,7 +1108,7 @@ public partial class TileUtils
 
 	public static void ChangeWall(Tile tile, int type, int force)
 	{
-		if (ChestSafe(tile) && CanChangeTile(tile, force))
+		if (CanChangeTile(tile, force))
 		{
 			if (type >= 0)
 			{
@@ -1200,22 +1240,23 @@ public partial class TileUtils
 	/// <param name="checkPoint"></param>
 	/// <param name="includeWall">If true, tile with no block but only wall will also be included.</param>
 	/// <param name="maxCount"></param>
+	/// <param name="theseTypeOnly">Filter by tile type list, null = no filter</param>
 	/// <returns></returns>
-	public static List<Point> BFSContinueTile(Point checkPoint, bool includeWall = false, int maxCount = 512, List<int> theseTypeOnly = default)
+	public static List<Point> BFSContinueTile(Point checkPoint, bool includeWall = false, int maxCount = 512, List<int> theseTypeOnly = null)
 	{
 		int maxContinueCount = maxCount;
 		(int, int)[] directions =
 		{
-			(0, 1),
-			(1, 0),
-			(0, -1),
-			(-1, 0),
+		(0, 1),
+		(1, 0),
+		(0, -1),
+		(-1, 0),
 		};
 		Queue<Point> queueChecked = new Queue<Point>();
+		HashSet<Point> visitedHash = new HashSet<Point>();
 
-		// Add first point to the queue.
 		queueChecked.Enqueue(checkPoint);
-		List<Point> visited = new List<Point>();
+		visitedHash.Add(checkPoint);
 
 		while (queueChecked.Count > 0)
 		{
@@ -1226,30 +1267,44 @@ public partial class TileUtils
 				int checkX = tilePos.X + dx;
 				int checkY = tilePos.Y + dy;
 				Point point = new Point(checkX, checkY);
-				Tile tile = SafeGetTile(checkX, checkY);
 
-				// Check bound and obstruction.
-				if (checkX >= 20 && checkX < Main.maxTilesX - 20 && checkY >= 20 && checkY < Main.maxTilesY - 20 &&
-					(tile.HasTile || (includeWall && tile.WallType > WallID.None)) && !visited.Contains(point))
+				if (checkX < 20 || checkX >= Main.maxTilesX - 20 || checkY < 20 || checkY >= Main.maxTilesY - 20)
 				{
-					if (theseTypeOnly == default)
-					{
-						queueChecked.Enqueue(point);
-						visited.Add(point);
-					}
-					else if (theseTypeOnly.Contains(tile.TileType))
-					{
-						queueChecked.Enqueue(point);
-						visited.Add(point);
-					}
+					continue;
 				}
-			}
-			if (queueChecked.Count > maxContinueCount || visited.Count > maxContinueCount)
-			{
-				break;
+
+				if (visitedHash.Contains(point))
+				{
+					continue;
+				}
+
+				Tile tile = SafeGetTile(checkX, checkY);
+				bool tileValid = tile.HasTile || (includeWall && tile.WallType > WallID.None);
+				if (!tileValid)
+				{
+					continue;
+				}
+
+				bool typeOk = true;
+				if (theseTypeOnly != null)
+				{
+					typeOk = theseTypeOnly.Contains(tile.TileType);
+				}
+				if (!typeOk)
+				{
+					continue;
+				}
+
+				if (visitedHash.Count >= maxContinueCount)
+				{
+					continue;
+				}
+
+				visitedHash.Add(point);
+				queueChecked.Enqueue(point);
 			}
 		}
-		return visited;
+		return new List<Point>(visitedHash);
 	}
 
 	public static List<Point> BFSContinueWall(Point checkPoint, int maxCount = 512, List<int> theseTypeOnly = default)
@@ -2118,15 +2173,9 @@ public partial class TileUtils
 
 	public static bool IsTileSolid(Tile tile)
 	{
-		if (tile == null || !tile.HasTile || tile.IsActuated || !Main.tileSolid[tile.TileType])
-		{
-			return false;
-		}
-		if (tile.TileType > TileID.Dirt && (TileID.Sets.Platforms[tile.TileType] || tile.TileType == TileID.PlanterBox))
-		{
-			return false;
-		}
-		return true;
+		return tile == null || !tile.HasTile || tile.IsActuated || !Main.tileSolid[tile.TileType]
+			? false
+			: tile.TileType <= TileID.Dirt || (!TileID.Sets.Platforms[tile.TileType] && tile.TileType != TileID.PlanterBox);
 	}
 
 	/// <summary>
@@ -2515,15 +2564,45 @@ public partial class TileUtils
 	/// <param name="x"></param>
 	/// <param name="y"></param>
 	/// <param name="path"></param>
-	public static void BuildMapIO(int x, int y, string path)
+	public static void BuildMapIO(int x, int y, string path, bool saveOldWall = false)
 	{
 		var mapIO = new MapIO(x, y);
+		int width = 0;
+		int height = 0;
+		ushort[,] wallType = null;
+		if (saveOldWall)
+		{
+			width = mapIO.ReadWidth(ModIns.Mod.GetFileStream(path));
+			height = mapIO.ReadHeight(ModIns.Mod.GetFileStream(path));
+			wallType = new ushort[width, height];
+			for (int i = 0; i < width; i++)
+			{
+				for (int j = 0; j < height; j++)
+				{
+					wallType[i, j] = SafeGetTile(i + x, j + y).WallType;
+				}
+			}
+		}
 		mapIO.Read(ModIns.Mod.GetFileStream(path));
 		var it = mapIO.GetEnumerator();
 		while (it.MoveNext())
 		{
 			WorldGen.SquareTileFrame(it.CurrentCoord.X, it.CurrentCoord.Y);
 			WorldGen.SquareWallFrame(it.CurrentCoord.X, it.CurrentCoord.Y);
+		}
+		if (saveOldWall)
+		{
+			for (int i = 0; i < width; i++)
+			{
+				for (int j = 0; j < height; j++)
+				{
+					var tile = SafeGetTile(i + x, j + y);
+					if (tile.WallType == WallID.None)
+					{
+						tile.WallType = wallType[i, j];
+					}
+				}
+			}
 		}
 	}
 

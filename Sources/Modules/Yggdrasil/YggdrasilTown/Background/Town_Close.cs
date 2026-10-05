@@ -1,5 +1,4 @@
 using Everglow.Commons.Utilities.BackgroundHelper;
-using Everglow.Yggdrasil.KelpCurtain;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Background;
 
@@ -9,7 +8,7 @@ public class Town_Close : BackgroundSlideBase
 	{
 		base.SetDefaults();
 		Texture = ModAsset.Town_Close.Value;
-		Distance = 3f;
+		Distance = 6f;
 		UseColorStyle = 2;
 		Shader = Effects.XWrap_YClamp_Shader;
 	}

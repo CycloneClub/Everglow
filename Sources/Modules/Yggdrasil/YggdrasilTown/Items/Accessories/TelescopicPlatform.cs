@@ -198,11 +198,11 @@ public class TelescopePlatformPlayer : ModPlayer
 		Vector2 checkTilePos = position;
 		for (int i = -24; i <= 24; i += 16)
 		{
-			if (!Collision.IsWorldPointSolid(checkTilePos + new Vector2(i, 4), true))
+			if (!Collision.IsWorldPointSolid(checkTilePos + new Vector2(i, 4)))
 			{
 				return false;
 			}
-			if (Collision.IsWorldPointSolid(checkTilePos + new Vector2(i, -4)))
+			if (Collision.IsWorldPointSolid(checkTilePos + new Vector2(i, -4), true))
 			{
 				return false;
 			}

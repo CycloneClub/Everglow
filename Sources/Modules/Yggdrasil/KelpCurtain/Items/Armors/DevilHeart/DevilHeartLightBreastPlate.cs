@@ -1,4 +1,5 @@
 using Everglow.Yggdrasil.Common;
+using Everglow.Yggdrasil.KelpCurtain.Items.Materials;
 using Terraria.GameContent.Creative;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Items.Armors.DevilHeart;
@@ -43,5 +44,13 @@ public class DevilHeartLightBreastPlate : ModItem
 	public override void UpdateArmorSet(Player player)
 	{
 		player.GetModPlayer<YggdrasilPlayer>().devilHeartSet = true;
+	}
+
+	public override void AddRecipes()
+	{
+		CreateRecipe(1)
+			.AddIngredient(ModContent.ItemType<DevilHeartIronBar_Item>(), 32)
+			.AddTile(TileID.Anvils)
+			.Register();
 	}
 }

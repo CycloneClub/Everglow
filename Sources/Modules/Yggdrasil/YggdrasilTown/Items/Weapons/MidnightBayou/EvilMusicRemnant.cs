@@ -1,4 +1,8 @@
+using Everglow.Yggdrasil.Common.Fish;
+using Everglow.Yggdrasil.YggdrasilTown.Biomes;
+using Everglow.Yggdrasil.YggdrasilTown.Liquids;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Summon;
+using ModLiquidLib.ModLoader;
 using Terraria.Audio;
 using Terraria.DataStructures;
 
@@ -9,6 +13,12 @@ public class EvilMusicRemnant : ModItem
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.SummonWeapons;
 
 	public int UseCount = 0;
+
+	public override void SetStaticDefaults()
+	{
+		// 0.001% chance per tick, set this value according to vanilla npc Nymph.
+		FishSystem.RegisterFish(ModContent.GetInstance<MidnightBayouBiome>(), new(Item.type, LiquidLoader.LiquidType<DarkSludgeLiquid>(), 0.0_0001f));
+	}
 
 	public override void SetDefaults()
 	{
@@ -62,4 +72,17 @@ public class EvilMusicRemnant : ModItem
 	}
 
 	public override Vector2? HoldoutOffset() => new Vector2(6, -3);
+
+	public override void Update(ref float gravity, ref float maxFallSpeed)
+	{
+		var centralTile = TileUtils.SafeGetTile(Item.Center.ToTileCoordinates());
+		if (centralTile.LiquidType == LiquidLoader.LiquidType<DarkSludgeLiquid>())
+		{
+			if (Item.Center.Y % 16 > 16 - centralTile.LiquidAmount / 16f)
+			{
+				maxFallSpeed *= -0.4f;
+			}
+		}
+		base.Update(ref gravity, ref maxFallSpeed);
+	}
 }

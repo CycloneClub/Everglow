@@ -36,7 +36,7 @@ public class TelescopicPlatformVFX : Visual
 			Active = false;
 			return;
 		}
-		if (AddLight is not null)
+		if (AddLight is not null && TimeLeft >= 30)
 		{
 			AddLight.Invoke();
 		}

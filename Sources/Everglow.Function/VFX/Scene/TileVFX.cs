@@ -16,6 +16,11 @@ public abstract class TileVFX : Visual
 	public int Direction = 1;
 	public float MaxDiatanceOutOfScreen = 500;
 
+	/// <summary>
+	/// The world position used by the on-screen culling check. Defaults to the anchor; override to use the scene's bounding box center.
+	/// </summary>
+	public virtual Vector2 CullingCheckPos => Position;
+
 	public override void Update()
 	{
 		if (OriginTilePos.X > 0 && OriginTilePos.X < Main.maxTilesX)
@@ -70,7 +75,7 @@ public abstract class TileVFX : Visual
 			SceneVFXSystem.TilePointHasScene[(OriginTilePos.X, OriginTilePos.Y)] = false;
 			return;
 		}
-		Vector2 checkPos = Position;
+		Vector2 checkPos = CullingCheckPos;
 		if (VFXManager.InScreen(checkPos, MaxDiatanceOutOfScreen))
 		{
 			Visible = true;

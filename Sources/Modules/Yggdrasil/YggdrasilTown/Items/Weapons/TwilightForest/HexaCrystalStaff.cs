@@ -26,7 +26,7 @@ public class HexaCrystalStaff : ModItem
 		Item.UseSound = SoundID.Item20;
 		Item.useTime = Item.useAnimation = 14;
 		Item.noMelee = true;
-		Item.autoReuse = false;
+		Item.autoReuse = true;
 
 		Item.rare = ItemRarityID.Green;
 		Item.value = Item.buyPrice(gold: 1);

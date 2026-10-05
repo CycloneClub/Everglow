@@ -85,12 +85,12 @@ public class Fevens_Wing_Slash_Down : ModProjectile, IWarpProjectile
 			Vector2 pos = Projectile.Center + new Vector2(0, 100) - newVelocity * 1;
 			var somg = new Fevens_WingSmash
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = pos,
-				maxTime = Main.rand.Next(25, 68),
-				scale = Main.rand.NextFloat(10f, 50f),
+				Position = pos,
+				MaxTime = Main.rand.Next(25, 68),
+				Scale = Main.rand.NextFloat(10f, 50f),
 				ai = new float[] { 0, 0 },
 			};
 			Ins.VFXManager.Add(somg);

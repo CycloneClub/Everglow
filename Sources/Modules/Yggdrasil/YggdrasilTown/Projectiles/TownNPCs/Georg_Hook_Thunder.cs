@@ -229,13 +229,13 @@ public class Georg_Hook_Thunder : ModProjectile
 		{
 			var wave = new Georg_LightingBoltWave
 			{
-				velocity = Vector2.zeroVector,
+				Velocity = Vector2.zeroVector,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(30, 40),
-				scale = (1 + i * 0.6f) * 0.6f,
-				rotation = waveRot + i * 2f,
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(30, 40),
+				Scale = (1 + i * 0.6f) * 0.6f,
+				Rotation = waveRot + i * 2f,
 				ai = new float[] { 0.04f * MathF.Sqrt(level) },
 			};
 			Ins.VFXManager.Add(wave);

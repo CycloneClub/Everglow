@@ -13,4 +13,6 @@ public class StoneDragonScaleWoodWall : ModWall
 	{
 		return false;
 	}
+
+	public override bool Drop(int i, int j, ref int type) => false;
 }

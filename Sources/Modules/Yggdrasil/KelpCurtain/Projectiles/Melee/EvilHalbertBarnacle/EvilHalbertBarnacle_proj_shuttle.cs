@@ -185,13 +185,13 @@ public class EvilHalbertBarnacle_proj_shuttle : TrailingProjectile
 				Vector2 vel = Projectile.velocity * Main.rand.NextFloat(0.5f, 1.15f) * 0.1f;
 				var dust = new BarnacleTissueDust
 				{
-					velocity = vel,
+					Velocity = vel,
 					Active = true,
 					Visible = true,
-					position = Projectile.Center + Projectile.velocity * 5,
-					maxTime = Main.rand.Next(20, 30),
-					scale = Main.rand.NextFloat(5f, 30f),
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = Projectile.Center + Projectile.velocity * 5,
+					MaxTime = Main.rand.Next(20, 30),
+					Scale = Main.rand.NextFloat(5f, 30f),
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { Main.rand.NextFloat(6f, 8f), Main.rand.NextFloat(1f) },
 				};
 				Ins.VFXManager.Add(dust);
@@ -208,13 +208,13 @@ public class EvilHalbertBarnacle_proj_shuttle : TrailingProjectile
 			Vector2 vel = new Vector2(0, 1).RotateRandom(MathHelper.TwoPi) * Main.rand.NextFloat(0.5f, 1.15f) * 15f;
 			var dust = new BarnacleTissueDust
 			{
-				velocity = vel,
+				Velocity = vel,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + Projectile.velocity * 5,
-				maxTime = Main.rand.Next(20, 30),
-				scale = Main.rand.NextFloat(8f, 45f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + Projectile.velocity * 5,
+				MaxTime = Main.rand.Next(20, 30),
+				Scale = Main.rand.NextFloat(8f, 45f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(6f, 8f), Main.rand.NextFloat(1f) },
 			};
 			Ins.VFXManager.Add(dust);
@@ -224,13 +224,13 @@ public class EvilHalbertBarnacle_proj_shuttle : TrailingProjectile
 			Vector2 vel = new Vector2(0, 1).RotateRandom(MathHelper.TwoPi) * Main.rand.NextFloat(0.5f, 1.15f) * 35f;
 			var dust = new BarnacleTissueDust
 			{
-				velocity = vel,
+				Velocity = vel,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + Projectile.velocity * 5,
-				maxTime = Main.rand.Next(10, 26),
-				scale = Main.rand.NextFloat(60f, 150f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + Projectile.velocity * 5,
+				MaxTime = Main.rand.Next(10, 26),
+				Scale = Main.rand.NextFloat(60f, 150f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(6f, 8f), Main.rand.NextFloat(1f) },
 			};
 			Ins.VFXManager.Add(dust);

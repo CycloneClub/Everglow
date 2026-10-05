@@ -5,61 +5,61 @@ public class GeyserAirBudsDust : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
 
-	public Vector2 position;
-	public Vector2 velocity;
+	public Vector2 Position;
+	public Vector2 Velocity;
 	public float[] ai;
-	public float timer;
-	public float maxTime;
-	public float scale;
-	public float rotation;
-	public Queue<Vector2> trails = new Queue<Vector2>();
+	public float Timer;
+	public float MaxTime;
+	public float Scale;
+	public float Rotation;
+	public Queue<Vector2> Trails = new Queue<Vector2>();
 
 	public override void Update()
 	{
-		if (position.X <= 320 || position.X >= Main.maxTilesX * 16 - 320)
+		if (Position.X <= 320 || Position.X >= Main.maxTilesX * 16 - 320)
 		{
-			timer = maxTime;
+			Timer = MaxTime;
 			Active = false;
 			return;
 		}
-		if (position.Y <= 320 || position.Y >= Main.maxTilesY * 16 - 320)
+		if (Position.Y <= 320 || Position.Y >= Main.maxTilesY * 16 - 320)
 		{
-			timer = maxTime;
+			Timer = MaxTime;
 			Active = false;
 			return;
 		}
-		trails.Enqueue(position);
-		if (trails.Count > 40)
+		Trails.Enqueue(Position);
+		if (Trails.Count > 40)
 		{
-			trails.Dequeue();
+			Trails.Dequeue();
 		}
-		position += velocity;
-		velocity *= 0.95f;
-		scale = ai[0] * (1 - MathF.Sin(timer / maxTime * MathF.PI * 0.5f));
-		timer++;
-		if (timer > maxTime)
+		Position += Velocity;
+		Velocity *= 0.95f;
+		Scale = ai[0] * (1 - MathF.Sin(Timer / MaxTime * MathF.PI * 0.5f));
+		Timer++;
+		if (Timer > MaxTime)
 		{
 			Active = false;
 		}
-		Lighting.AddLight(position, scale * 0.06f, scale * 0.04f, scale * 0.18f);
+		Lighting.AddLight(Position, Scale * 0.06f, Scale * 0.04f, Scale * 0.18f);
 	}
 
 	public override void Draw()
 	{
-		var toCorner = new Vector2(0, scale);
+		var toCorner = new Vector2(0, Scale);
 		var lightColor = new Color(0f, 0.18f, 0.12f, 1f);
 		var bars = new List<Vertex2D>();
-		for (int i = 0; i < trails.Count; i++)
+		for (int i = 0; i < Trails.Count; i++)
 		{
-			Vector2 pos = trails.ToArray()[i];
-			float size = i / (float)trails.Count;
-			bars.Add(pos + toCorner.RotatedBy(Math.PI * 1 + rotation) * size, lightColor * size, new Vector3(1, 0, 0));
-			bars.Add(pos + toCorner.RotatedBy(Math.PI * 0.5 + rotation) * size, lightColor * size, new Vector3(0, 0, 0));
-			bars.Add(pos + toCorner.RotatedBy(Math.PI * 0 + rotation) * size, lightColor * size, new Vector3(0, 1, 0));
+			Vector2 pos = Trails.ToArray()[i];
+			float size = i / (float)Trails.Count;
+			bars.Add(pos + toCorner.RotatedBy(Math.PI * 1 + Rotation) * size, lightColor * size, new Vector3(1, 0, 0));
+			bars.Add(pos + toCorner.RotatedBy(Math.PI * 0.5 + Rotation) * size, lightColor * size, new Vector3(0, 0, 0));
+			bars.Add(pos + toCorner.RotatedBy(Math.PI * 0 + Rotation) * size, lightColor * size, new Vector3(0, 1, 0));
 
-			bars.Add(pos + toCorner.RotatedBy(Math.PI * -0.5 + rotation) * size, lightColor * size, new Vector3(1, 1, 0));
-			bars.Add(pos + toCorner.RotatedBy(Math.PI * 0 + rotation) * size, lightColor * size, new Vector3(0, 1, 0));
-			bars.Add(pos + toCorner.RotatedBy(Math.PI * 1 + rotation) * size, lightColor * size, new Vector3(1, 0, 0));
+			bars.Add(pos + toCorner.RotatedBy(Math.PI * -0.5 + Rotation) * size, lightColor * size, new Vector3(1, 1, 0));
+			bars.Add(pos + toCorner.RotatedBy(Math.PI * 0 + Rotation) * size, lightColor * size, new Vector3(0, 1, 0));
+			bars.Add(pos + toCorner.RotatedBy(Math.PI * 1 + Rotation) * size, lightColor * size, new Vector3(1, 0, 0));
 		}
 		Ins.Batch.Draw(ModAsset.BloodFlame_noise.Value, bars, PrimitiveType.TriangleList);
 	}

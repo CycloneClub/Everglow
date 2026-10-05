@@ -47,14 +47,14 @@ public class VitalizedRocksStone : ModProjectile
 		Projectile.rotation = Projectile.velocity.ToRotation();
 		var Portal = new RockPortal
 		{
-			velocity = Vector2.Zero,
+			Velocity = Vector2.Zero,
 			Active = true,
 			Visible = true,
-			position = Projectile.Center,
-			maxTime = Main.rand.Next(12, 30),
-			scale = Main.rand.NextFloat(30, 54),
-			maxScale = 160,
-			rotation = Projectile.rotation,
+			Position = Projectile.Center,
+			MaxTime = Main.rand.Next(12, 30),
+			Scale = Main.rand.NextFloat(30, 54),
+			MaxScale = 160,
+			Rotation = Projectile.rotation,
 			ai = new float[] { 1 },
 		};
 		Ins.VFXManager.Add(Portal);
@@ -98,13 +98,13 @@ public class VitalizedRocksStone : ModProjectile
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 12f)).RotatedByRandom(MathHelper.TwoPi);
 			var somg = new RockSmogDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-				maxTime = Main.rand.Next(37, 75),
-				scale = Main.rand.NextFloat(40f, 55f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+				MaxTime = Main.rand.Next(37, 75),
+				Scale = Main.rand.NextFloat(40f, 55f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
 			Ins.VFXManager.Add(somg);

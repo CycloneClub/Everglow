@@ -71,13 +71,13 @@ public class SquamousRollingStone : ModProjectile
 		{
 			var explosion = new RollingRockExplosion
 			{
-				velocity = Vector2.zeroVector,
+				Velocity = Vector2.zeroVector,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = 240f,
-				scale = Main.rand.NextFloat(940f, 1000f) * Projectile.scale,
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center,
+				MaxTime = 240f,
+				Scale = Main.rand.NextFloat(940f, 1000f) * Projectile.scale,
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.03f, 0.03f) },
 			};
 			Ins.VFXManager.Add(explosion);
@@ -94,13 +94,13 @@ public class SquamousRollingStone : ModProjectile
 			Vector2 newVelocity = new Vector2(0, MathF.Sqrt(Main.rand.NextFloat(0f, 1f))).RotatedByRandom(MathHelper.TwoPi);
 			var somg = new RockSmogDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Bottom + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-				maxTime = Main.rand.Next(17, 45),
-				scale = Main.rand.NextFloat(10f, 25f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Bottom + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+				MaxTime = Main.rand.Next(17, 45),
+				Scale = Main.rand.NextFloat(10f, 25f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
 			Ins.VFXManager.Add(somg);
@@ -173,13 +173,13 @@ public class SquamousRollingStone : ModProjectile
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 4f)).RotatedByRandom(MathHelper.TwoPi) * Projectile.scale;
 			var somg = new RockSmogDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-				maxTime = Main.rand.Next(37, 45),
-				scale = Main.rand.NextFloat(40f, 55f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+				MaxTime = Main.rand.Next(37, 45),
+				Scale = Main.rand.NextFloat(40f, 55f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
 			Ins.VFXManager.Add(somg);
@@ -189,13 +189,13 @@ public class SquamousRollingStone : ModProjectile
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(25f, 46f)).RotatedByRandom(MathHelper.TwoPi) * Projectile.scale;
 			var somg = new RockSmog_ConeDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-				maxTime = Main.rand.Next(20, 62),
-				scale = Main.rand.NextFloat(0.6f, 25f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+				MaxTime = Main.rand.Next(20, 62),
+				Scale = Main.rand.NextFloat(0.6f, 25f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
 			Ins.VFXManager.Add(somg);
@@ -205,13 +205,13 @@ public class SquamousRollingStone : ModProjectile
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(1.0f, 34f)).RotatedByRandom(MathHelper.TwoPi);
 			var spark = new Spark_MoonBladeDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-				maxTime = Main.rand.Next(70, 125) * (Projectile.scale + 1f) / 2f,
-				scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(9f, 47.0f)) * Projectile.scale,
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+				MaxTime = Main.rand.Next(70, 125) * (Projectile.scale + 1f) / 2f,
+				Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(9f, 47.0f)) * Projectile.scale,
+				Rotation = Main.rand.NextFloat(6.283f),
 				noGravity = true,
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.03f, 0.03f) },
 			};

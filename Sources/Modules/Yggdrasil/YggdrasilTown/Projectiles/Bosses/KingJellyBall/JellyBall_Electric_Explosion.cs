@@ -31,13 +31,13 @@ public class JellyBall_Electric_Explosion : ModProjectile
 	{
 		var wave = new JellyBallElectricExplosionWave
 		{
-			velocity = Vector2.zeroVector,
+			Velocity = Vector2.zeroVector,
 			Active = true,
 			Visible = true,
-			position = Projectile.Center,
-			maxTime = Main.rand.Next(30, 40),
-			scale = Projectile.ai[0] / 5f,
-			rotation = Main.rand.NextFloat(MathHelper.TwoPi),
+			Position = Projectile.Center,
+			MaxTime = Main.rand.Next(30, 40),
+			Scale = Projectile.ai[0] / 5f,
+			Rotation = Main.rand.NextFloat(MathHelper.TwoPi),
 			ai = new float[] { 0.04f * MathF.Sqrt(Projectile.ai[0]) },
 		};
 		Ins.VFXManager.Add(wave);
@@ -45,13 +45,13 @@ public class JellyBall_Electric_Explosion : ModProjectile
 		{
 			var wave2 = new JellyBallElectricExplosionWave
 			{
-				velocity = Vector2.zeroVector,
+				Velocity = Vector2.zeroVector,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(30, 40),
-				scale = Projectile.ai[0] / 12f,
-				rotation = Main.rand.NextFloat(MathHelper.TwoPi),
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(30, 40),
+				Scale = Projectile.ai[0] / 12f,
+				Rotation = Main.rand.NextFloat(MathHelper.TwoPi),
 				ai = new float[] { 0.04f * MathF.Sqrt(Projectile.ai[0]) },
 			};
 			Ins.VFXManager.Add(wave2);
@@ -74,12 +74,12 @@ public class JellyBall_Electric_Explosion : ModProjectile
 		{
 			var dustVFX = new JellyBallSparkElectricity
 			{
-				velocity = new Vector2(0, Main.rand.NextFloat(3, 4)).RotatedBy(Main.rand.NextFloat(MathHelper.TwoPi)) * Projectile.ai[0],
+				Velocity = new Vector2(0, Main.rand.NextFloat(3, 4)).RotatedBy(Main.rand.NextFloat(MathHelper.TwoPi)) * Projectile.ai[0],
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(40, 90),
-				scale = Main.rand.Next(1, 2) * Projectile.ai[0],
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(40, 90),
+				Scale = Main.rand.Next(1, 2) * Projectile.ai[0],
 				ai = new float[] { Main.rand.NextFloat(1f, 8f), 0 },
 			};
 			Ins.VFXManager.Add(dustVFX);

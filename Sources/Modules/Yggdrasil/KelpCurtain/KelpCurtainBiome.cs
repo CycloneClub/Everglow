@@ -47,6 +47,47 @@ public class KelpCurtainBiome : ModBiome
 		return false;
 	}
 
+	/// <summary>
+	/// The gameplay/server-safe counterpart of <see cref="IsBiomeActive"/>: it applies the same
+	/// stratum-bound test and the same vertical band bounds, but measures them from the synced player
+	/// centre instead of the client-only camera position, so it evaluates identically in single
+	/// player, on a client and on a dedicated server. Gameplay hooks (for example
+	/// <c>ModNPC.SpawnChance</c>, which runs in single player or on the server only) must use this
+	/// predicate; <see cref="IsBiomeActive"/> stays camera-driven because it also drives the
+	/// background and lighting scene transitions, which intentionally follow the camera.
+	/// </summary>
+	/// <remarks>
+	/// This is a <b>player-centred</b> band, not a copy of the camera-driven visual band, and the two
+	/// do not cover the same world rows. <see cref="IsBiomeActive"/> compares the camera top
+	/// (<see cref="Main.screenPosition"/>.Y) against <c>[0.72, 0.9] * maxTilesY * 16</c>, while this
+	/// predicate compares <see cref="Player.Center"/>.Y against the same numbers; because the camera
+	/// top sits roughly half a screen above the player, the visual band in player-centre coordinates
+	/// starts and ends about half a screen (tens of tiles) lower. That offset is deliberate and
+	/// server-safe: <see cref="Main.screenPosition"/> and <c>Main.screenHeight</c> are client-only and
+	/// are zero on a dedicated server, so a spawn predicate anchored to them would fail there or
+	/// silently use a different band than a client. The player centre is the only anchor that is
+	/// meaningful and identical on every side, so every gameplay hook uses it; the visual band stays
+	/// the camera's job. When <see cref="StratumBoundCurve"/> is empty,
+	/// <c>FindClosestStratumBoundPointX</c> returns -1, which degrades the X test to permissive (it
+	/// never blocks) on a side that has not run <c>BuildBoundOf23Stratum</c>.
+	/// </remarks>
+	/// <param name="player">The player whose synced centre is tested.</param>
+	/// <returns>True when the player centre is inside the Kelp Curtain layer of the Yggdrasil Subworld.</returns>
+	public static bool IsKelpCurtainLayer(Player player)
+	{
+		if (SubworldSystem.IsActive<YggdrasilWorld>())
+		{
+			if (player.Center.Y > Main.maxTilesY * 0.72f * 16 && player.Center.Y < Main.maxTilesY * 0.9f * 16)
+			{
+				if (player.Center.X >= FindClosestStratumBoundPointX(player.Center.Y / 16f) * 16)
+				{
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
 	public float FindClosestStratumBoundPointX(Player player)
 	{
 		if (StratumBoundCurve.Count > 0)

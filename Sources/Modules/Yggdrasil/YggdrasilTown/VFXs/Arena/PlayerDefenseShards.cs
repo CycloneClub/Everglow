@@ -5,47 +5,47 @@ public class PlayerDefenseShards : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
 
-	public Vector2 position;
-	public Vector2 velocity;
+	public Vector2 Position;
+	public Vector2 Velocity;
 	public float[] ai;
-	public float timer;
-	public float maxTime;
-	public float scale;
-	public float rotation;
+	public float Timer;
+	public float MaxTime;
+	public float Scale;
+	public float Rotation;
 
 	public override void Update()
 	{
-		position += velocity;
-		if (position.X <= 320 || position.X >= Main.maxTilesX * 16 - 320)
+		Position += Velocity;
+		if (Position.X <= 320 || Position.X >= Main.maxTilesX * 16 - 320)
 		{
-			timer = maxTime;
+			Timer = MaxTime;
 			Active = false;
 			return;
 		}
-		if (position.Y <= 320 || position.Y >= Main.maxTilesY * 16 - 320)
+		if (Position.Y <= 320 || Position.Y >= Main.maxTilesY * 16 - 320)
 		{
-			timer = maxTime;
+			Timer = MaxTime;
 			Active = false;
 			return;
 		}
-		velocity *= 0.95f;
-		scale = ai[0] * MathF.Sin(timer / maxTime * MathF.PI);
-		timer++;
-		if (timer > maxTime)
+		Velocity *= 0.95f;
+		Scale = ai[0] * MathF.Sin(Timer / MaxTime * MathF.PI);
+		Timer++;
+		if (Timer > MaxTime)
 		{
 			Active = false;
 			return;
 		}
-		rotation += ai[1];
-		Lighting.AddLight(position, scale * 0.01f, scale * 0.01f, scale * 0.01f);
+		Rotation += ai[1];
+		Lighting.AddLight(Position, Scale * 0.01f, Scale * 0.01f, Scale * 0.01f);
 	}
 
 	public override void Draw()
 	{
-		Vector2 toCorner = new Vector2(0, scale).RotatedBy(rotation);
+		Vector2 toCorner = new Vector2(0, Scale).RotatedBy(Rotation);
 		Color lightColor = Color.White;
 
-		// lightColor = Color.Lerp(color2, color1, Math.Clamp((606 * 16 - position.X) / (8f * 16),0, 1));
+		// lightColor = Color.Lerp(color2, color1, Math.Clamp((606 * 16 - Position.X) / (8f * 16),0, 1));
 		int maxLength = 15;
 		for (int y = 0; y < maxLength; y++)
 		{
@@ -57,9 +57,9 @@ public class PlayerDefenseShards : Visual
 			lightColor *= 0.8f;
 			var bars = new List<Vertex2D>()
 			{
-				new Vertex2D(position + deltaY, lightColor, new Vector3(0, 0, 0)),
-				new Vertex2D(position + deltaY + toCorner.RotatedBy(Math.PI * 0.5 + rotation), lightColor, new Vector3(0, 1, 0)),
-				new Vertex2D(position + deltaY + toCorner.RotatedBy(Math.PI * 0 + rotation), lightColor, new Vector3(1, 0, 0)),
+				new Vertex2D(Position + deltaY, lightColor, new Vector3(0, 0, 0)),
+				new Vertex2D(Position + deltaY + toCorner.RotatedBy(Math.PI * 0.5 + Rotation), lightColor, new Vector3(0, 1, 0)),
+				new Vertex2D(Position + deltaY + toCorner.RotatedBy(Math.PI * 0 + Rotation), lightColor, new Vector3(1, 0, 0)),
 			};
 			Ins.Batch.Draw(Terraria.GameContent.TextureAssets.MagicPixel.Value, bars, PrimitiveType.TriangleList);
 		}

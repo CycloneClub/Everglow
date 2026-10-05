@@ -43,12 +43,12 @@ public class LichenTentacle_proj : WhipProjectile
 					Vector2 afterVelocity = spinningpoint.RotatedBy(MathHelper.PiOver2 * player.direction * 0.4f) * 0.9f;
 					var splash = new LichenSlimeSplash
 					{
-						velocity = afterVelocity,
+						Velocity = afterVelocity,
 						Active = true,
 						Visible = true,
-						position = nextWhip15[randSegment],
-						maxTime = Main.rand.Next(12, 48),
-						scale = Main.rand.NextFloat(6f, 18f),
+						Position = nextWhip15[randSegment],
+						MaxTime = Main.rand.Next(12, 48),
+						Scale = Main.rand.NextFloat(6f, 18f),
 						ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(0.04f, 0.05f) * player.direction, Main.rand.NextFloat(20.0f, 40.0f) },
 					};
 					Ins.VFXManager.Add(splash);
@@ -62,13 +62,13 @@ public class LichenTentacle_proj : WhipProjectile
 					float mulScale = Main.rand.NextFloat(6f, 15f);
 					var blood = new LichenSlimeDrop
 					{
-						velocity = afterVelocity / mulScale,
+						Velocity = afterVelocity / mulScale,
 						Active = true,
 						Visible = true,
-						position = nextWhip15[randSegment],
-						maxTime = Main.rand.Next(82, 164),
-						scale = mulScale,
-						rotation = Main.rand.NextFloat(6.283f),
+						Position = nextWhip15[randSegment],
+						MaxTime = Main.rand.Next(82, 164),
+						Scale = mulScale,
+						Rotation = Main.rand.NextFloat(6.283f),
 						ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 					};
 					Ins.VFXManager.Add(blood);

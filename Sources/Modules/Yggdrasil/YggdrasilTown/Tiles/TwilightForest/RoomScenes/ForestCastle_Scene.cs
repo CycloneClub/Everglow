@@ -91,10 +91,12 @@ public class ForestCastle_Scene : ModTile, ISceneTile
 	{
 		Texture2D tex0 = ModAsset.ForestCastle_Scene_Close.Value;
 
-		bool flipH = otD.FlipHorizontally(otD.OriginTilePos.X, otD.OriginTilePos.Y);
-		List<Vertex2D> bars = new List<Vertex2D>();
-		SceneUtils.DrawMultiSceneTowardBottom(otD.OriginTilePos.X, otD.OriginTilePos.Y, tex0, bars, flipH);
-		Ins.Batch.Draw(tex0, bars, PrimitiveType.TriangleList);
+		StaticSceneMesh mesh = otD.GetOrBuildMesh(tex0, otD.OriginTilePos.X, otD.OriginTilePos.Y);
+		if (mesh.ColorRefreshTimer++ % 10 == 0)
+		{
+			mesh.RefreshColors();
+		}
+		Ins.Batch.Draw(tex0, mesh.Vertices, PrimitiveType.TriangleList);
 	}
 
 	public void DrawForestCastleBackground(TwilightCastle_RoomScene_Background bg)
@@ -102,14 +104,19 @@ public class ForestCastle_Scene : ModTile, ISceneTile
 		Texture2D tex0 = ModAsset.ForestCastle_Scene_Background.Value;
 		Texture2D tex1 = ModAsset.ForestCastle_Scene_Middle.Value;
 
-		bool flipH = bg.FlipHorizontally(bg.OriginTilePos.X, bg.OriginTilePos.Y);
-		List<Vertex2D> bars = new List<Vertex2D>();
-		SceneUtils.DrawMultiSceneTowardBottom(bg.OriginTilePos.X, bg.OriginTilePos.Y, tex0, bars, flipH);
-		Ins.Batch.Draw(tex0, bars, PrimitiveType.TriangleList);
+		StaticSceneMesh mesh0 = bg.GetOrBuildMesh(tex0, bg.OriginTilePos.X, bg.OriginTilePos.Y);
+		if (mesh0.ColorRefreshTimer++ % 10 == 0)
+		{
+			mesh0.RefreshColors();
+		}
+		Ins.Batch.Draw(tex0, mesh0.Vertices, PrimitiveType.TriangleList);
 
-		bars = new List<Vertex2D>();
-		SceneUtils.DrawMultiSceneTowardBottom(bg.OriginTilePos.X, bg.OriginTilePos.Y, tex1, bars, flipH);
-		Ins.Batch.Draw(tex1, bars, PrimitiveType.TriangleList);
+		StaticSceneMesh mesh1 = bg.GetOrBuildMesh(tex1, bg.OriginTilePos.X, bg.OriginTilePos.Y);
+		if (mesh1.ColorRefreshTimer++ % 10 == 0)
+		{
+			mesh1.RefreshColors();
+		}
+		Ins.Batch.Draw(tex1, mesh1.Vertices, PrimitiveType.TriangleList);
 
 		Texture2D texFern0 = Commons.ModAsset.TileBlock3x3.Value; // ;ModAsset.ForestCastle_Scene_Fern0.Value;
 		Texture2D texFern1 = ModAsset.ForestCastle_Scene_Fern1.Value;

@@ -1,4 +1,7 @@
+using Everglow.Commons.VFX.CommonVFXDusts;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Tools;
+using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Everglow.Yggdrasil.YggdrasilTown.VFXs.ProjectileEffects;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using static Everglow.Yggdrasil.YggdrasilTown.Items.Tools.MiningPowerPickaxe;
@@ -35,7 +38,7 @@ public class MiningPowerPickaxe_Proj : ModProjectile
 	/// <summary>
 	/// Tiles to be picked by chain-mining function.
 	/// </summary>
-	private List<Point16> TargetTiles { get; set; } = [];
+	public List<Point16> TargetTiles { get; set; } = [];
 
 	public override void SetDefaults()
 	{
@@ -78,16 +81,47 @@ public class MiningPowerPickaxe_Proj : ModProjectile
 			Projectile.velocity = Vector2.Zero;
 
 			// Smoke dust from pickaxe body
-			if (Main.rand.NextBool(2))
+			if (TargetTiles.Count >= 1)
 			{
-				var dustCenter = Projectile.Center + new Vector2(18, 10 * Owner.direction * Owner.gravDir).RotatedBy(Projectile.rotation);
-				Dust.NewDust(dustCenter - new Vector2(10, 10), 20, 20, DustID.IceTorch, Scale: 1.4f);
-			}
+				if (Main.rand.NextBool(2))
+				{
+					var dustCenter = Projectile.Center + new Vector2(12, 2 * Owner.direction * Owner.gravDir).RotatedBy(Projectile.rotation);
+					Vector2 vel = new Vector2(0, Main.rand.NextFloat(0f, 4f)).RotatedByRandom(MathHelper.TwoPi);
+					vel.Y = -Math.Abs(vel.Y);
+					vel.X *= 0.2f;
+					var somg = new VaporDust3
+					{
+						velocity = vel,
+						Active = true,
+						Visible = true,
+						position = dustCenter,
+						maxTime = Main.rand.Next(104, 220),
+						scale = Main.rand.NextFloat(10f, 25f),
+						rotation = Main.rand.NextFloat(6.283f),
+						ai = new float[] { Main.rand.NextFloat(-0.05f, -0.01f), 0 },
+					};
+					Ins.VFXManager.Add(somg);
+				}
 
-			// Flame dust from pickaxe drill
-			if (Main.rand.NextBool(20))
-			{
-				Dust.NewDustDirect(Projectile.Center - new Vector2(Projectile.width, Projectile.height) / 3, Projectile.width / 3, Projectile.height / 3, DustID.Smoke, 0, 0, newColor: new Color(0.4f, 0.4f, 0.4f), Scale: 1f);
+				// Flame dust from pickaxe drill
+				MiningPowerPickaxe pickaxe = Owner.HeldItem.ModItem as MiningPowerPickaxe;
+				if (pickaxe is not null && pickaxe.Charge > ChargeCost)
+				{
+					Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(1.0f, 6f)).RotatedByRandom(MathHelper.TwoPi);
+					var spark = new Spark_MoonBladeDust
+					{
+						Velocity = newVelocity,
+						Active = true,
+						Visible = true,
+						Position = Projectile.Center + new Vector2(28, 18 * Owner.direction * Owner.gravDir).RotatedBy(Projectile.rotation),
+						MaxTime = Main.rand.Next(30, 45),
+						Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(4f, 27.0f)),
+						Rotation = Main.rand.NextFloat(6.283f),
+						noGravity = true,
+						ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.03f, 0.03f) },
+					};
+					Ins.VFXManager.Add(spark);
+				}
 			}
 
 			if (Owner.itemTime == Owner.itemTimeMax - 1)
@@ -149,7 +183,28 @@ public class MiningPowerPickaxe_Proj : ModProjectile
 			{
 				// Get all linked tiles (Order by distance to player).
 				TargetTiles = GetLinkedTiles(MouseTileTargetCoord, FirstPick ? FirstTileTargetType : MouseTileTarget.type, SearchTileMax, player);
-				TargetTiles.Remove(MouseTileTargetCoord);
+
+				// TargetTiles.Remove(MouseTileTargetCoord);
+				MiningPowerPickaxe_Proj_Wave mPPPW = new MiningPowerPickaxe_Proj_Wave()
+				{
+					Value = 30,
+					Owner = player,
+					Tiles = TargetTiles,
+					Visible = true,
+					Active = true,
+				};
+				Ins.VFXManager.Add(mPPPW);
+
+				MiningPowerPickaxe_Proj_TileBound mPPPTB = new MiningPowerPickaxe_Proj_TileBound()
+				{
+					Value = 30,
+					Owner = player,
+					CurrentTiles = TargetTiles,
+					OreType = MouseTileTarget.TileType,
+					Visible = true,
+					Active = true,
+				};
+				Ins.VFXManager.Add(mPPPTB);
 
 				Projectile.netUpdate = true;
 			}
@@ -177,24 +232,26 @@ public class MiningPowerPickaxe_Proj : ModProjectile
 	public override bool PreDraw(ref Color lightColor)
 	{
 		var texture = ModContent.Request<Texture2D>(Texture).Value;
+		var textureGlow = ModAsset.MiningPowerPickaxe_glow.Value;
+		var textureDrillGlow = ModAsset.MiningPowerPickaxe_DrillGlow.Value;
 		var rotation = Projectile.rotation;
+		float starSize = 1 + MathF.Sin((float)Main.time * 0.8f) * 0.3f;
+		starSize *= 0.5f;
 		var effects = (Owner.direction == 1 && Owner.gravDir == 1) || (Owner.gravDir == -1 && Owner.direction == -1) ? SpriteEffects.None : SpriteEffects.FlipVertically;
 		Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, lightColor, rotation, texture.Size() * 0.5f, Projectile.scale, effects, 0f);
-		return false;
-	}
-
-	public override void PostDraw(Color lightColor)
-	{
-		// Draw signal over tile to represent they're selected.
-		if (TargetTiles.Count > 0)
+		MiningPowerPickaxe pickaxe = Owner.HeldItem.ModItem as MiningPowerPickaxe;
+		if (pickaxe is not null && pickaxe.Charge > ChargeCost)
 		{
-			foreach (var tile in TargetTiles)
+			Main.spriteBatch.Draw(textureGlow, Projectile.Center - Main.screenPosition, null, new Color(1f, 1f, 1f, 0.5f), rotation, texture.Size() * 0.5f, Projectile.scale, effects, 0f);
+			if (TargetTiles.Count >= 1)
 			{
-				var drawPos = tile.ToWorldCoordinates() - Main.screenPosition;
-				var texture = Commons.ModAsset.Point.Value;
-				Main.spriteBatch.Draw(texture, drawPos, null, new Color(1f, 1f, 1f, 0f), 0f, texture.Size() * 0.5f, 0.08f, SpriteEffects.None, 0f);
+				Main.spriteBatch.Draw(textureDrillGlow, Projectile.Center - Main.screenPosition, null, new Color(1f, 1f, 1f, 0f) * starSize, rotation, texture.Size() * 0.5f, Projectile.scale, effects, 0f);
+				var drawCenter = Projectile.Center + new Vector2(28, 18 * Owner.direction * Owner.gravDir).RotatedBy(Projectile.rotation);
+				var star = Commons.ModAsset.CrossStar.Value;
+				Main.spriteBatch.Draw(star, drawCenter - Main.screenPosition, null, new Color(0.1f, 0.6f, 1f, 0f), 0, star.Size() * 0.5f, Projectile.scale * 0.5f * starSize, effects, 0f);
 			}
 		}
+		return false;
 	}
 
 	public override void SendExtraAI(BinaryWriter writer)

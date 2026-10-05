@@ -38,12 +38,12 @@ public class Pycnidium_explosion : ModProjectile, IWarpProjectile
 			Vector2 velocity = new Vector2(Main.rand.NextFloat(2f, 6f), 0).RotatedByRandom(MathHelper.TwoPi);
 			var splash = new LichenSlimeSplash
 			{
-				velocity = velocity,
+				Velocity = velocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(12, 40),
-				scale = Main.rand.NextFloat(6f, 18f),
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(12, 40),
+				Scale = Main.rand.NextFloat(6f, 18f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0, Main.rand.NextFloat(20.0f, 40.0f) },
 			};
 			Ins.VFXManager.Add(splash);
@@ -54,13 +54,13 @@ public class Pycnidium_explosion : ModProjectile, IWarpProjectile
 			float mulScale = Main.rand.NextFloat(6f, 9f);
 			var blood = new LichenSlimeDrop
 			{
-				velocity = velocity,
+				Velocity = velocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(32, 64),
-				scale = mulScale,
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(32, 64),
+				Scale = mulScale,
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 			};
 			Ins.VFXManager.Add(blood);
@@ -74,13 +74,13 @@ public class Pycnidium_explosion : ModProjectile, IWarpProjectile
 			Vector2 velocity = new Vector2(Main.rand.NextFloat(3f, 6f), 0).RotatedByRandom(MathHelper.TwoPi);
 			var smog = new LichenSlimeStar
 			{
-				velocity = velocity,
+				Velocity = velocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-				maxTime = Main.rand.Next(20, 85),
-				scale = Main.rand.NextFloat(0.4f, 0.8f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+				MaxTime = Main.rand.Next(20, 85),
+				Scale = Main.rand.NextFloat(0.4f, 0.8f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(-0.005f, 0.005f) },
 			};
 			Ins.VFXManager.Add(smog);

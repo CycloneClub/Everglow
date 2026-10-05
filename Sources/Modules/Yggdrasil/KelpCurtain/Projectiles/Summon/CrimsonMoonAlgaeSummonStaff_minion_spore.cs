@@ -6,7 +6,7 @@ using Everglow.Yggdrasil.KelpCurtain.VFXs;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Summon;
 
-public class CrimsonMoonAlgaeSummonStaff_minion_spore : ModProjectile
+public class CrimsonMoonAlgaeSummonStaff_minion_spore : ModProjectile, IRedAlgaeToxinProjectile
 {
 	public float Timer = 0;
 
@@ -26,7 +26,10 @@ public class CrimsonMoonAlgaeSummonStaff_minion_spore : ModProjectile
 	{
 		Timer++;
 		Projectile.velocity = Projectile.velocity.RotatedBy(MathF.Sin(Timer * 0.1f + Projectile.ai[0]) * 0.01f);
-		Lighting.AddLight(Projectile.Center, new Vector3(1f, 0.9f, 0.8f) * 0.5f);
+		if (!Main.dedServ)
+		{
+			Lighting.AddLight(Projectile.Center, new Vector3(1f, 0.9f, 0.8f) * 0.5f);
+		}
 
 		Vector2 closestTargetPos = new Vector2(-10000);
 		foreach (var npc in Main.npc)
@@ -56,11 +59,7 @@ public class CrimsonMoonAlgaeSummonStaff_minion_spore : ModProjectile
 
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
-		int type = ModContent.BuffType<RedAlgae_FriendlyDebuff>();
-		if (!target.HasBuff(type))
-		{
-			target.AddBuff(type, 900);
-		}
+		RedAlgae_FriendlyDebuff_glocalNPC.HandleProjectileHit(target, Projectile);
 	}
 
 	public override bool PreDraw(ref Color lightColor)
@@ -72,6 +71,11 @@ public class CrimsonMoonAlgaeSummonStaff_minion_spore : ModProjectile
 
 	public override void OnKill(int timeLeft)
 	{
+		if (Main.dedServ)
+		{
+			return;
+		}
+
 		if (timeLeft != 0)
 		{
 			for (int k = 0; k < 12; k++)

@@ -73,13 +73,13 @@ public class Faelanternbranch : ModProjectile
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 5f)).RotatedByRandom(MathHelper.TwoPi);
 			var somg = new RockSmogDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + size * 0.5f + new Vector2(Projectile.width * Main.rand.NextFloat(0f, -0.2f), Projectile.height * Main.rand.NextFloat(0f, -0.2f)),
-				maxTime = Main.rand.Next(25, 32),
-				scale = Main.rand.NextFloat(50f, 100f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + size * 0.5f + new Vector2(Projectile.width * Main.rand.NextFloat(0f, -0.2f), Projectile.height * Main.rand.NextFloat(0f, -0.2f)),
+				MaxTime = Main.rand.Next(25, 32),
+				Scale = Main.rand.NextFloat(50f, 100f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = [Main.rand.NextFloat(0.0f, 0.93f), 0],
 			};
 			Ins.VFXManager.Add(somg);
@@ -89,13 +89,13 @@ public class Faelanternbranch : ModProjectile
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 10f)).RotatedBy(size.ToRotation() + MathHelper.PiOver2 + Main.rand.NextFloat(-0.25f, 0.25f));
 			var somg = new RockSmogDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + size * 0.5f - size.RotatedByRandom(0.25f) * Main.rand.NextFloat(0f, 0.75f),
-				maxTime = Main.rand.Next(25, 32),
-				scale = Main.rand.NextFloat(50f, 100f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + size * 0.5f - size.RotatedByRandom(0.25f) * Main.rand.NextFloat(0f, 0.75f),
+				MaxTime = Main.rand.Next(25, 32),
+				Scale = Main.rand.NextFloat(50f, 100f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = [Main.rand.NextFloat(0.0f, 0.93f), 0],
 			};
 			Ins.VFXManager.Add(somg);

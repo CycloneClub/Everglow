@@ -127,12 +127,12 @@ public class Fevens_TaijutsuSlash_Down : ModProjectile, IWarpProjectile_warpStyl
 			Vector2 pos = Projectile.Center + FallingMove + new Vector2((60 + 12 * g) * FirstDirection, 3) - newVelocity * 1;
 			var somg = new Fevens_TaijutsuSmash
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = pos,
-				maxTime = Main.rand.Next(25, 68),
-				scale = Main.rand.NextFloat(30f, 80f),
+				Position = pos,
+				MaxTime = Main.rand.Next(25, 68),
+				Scale = Main.rand.NextFloat(30f, 80f),
 				ai = new float[] { 0, 0 },
 			};
 			Ins.VFXManager.Add(somg);

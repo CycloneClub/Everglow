@@ -11,6 +11,8 @@ namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Magic;
 
 internal class GreenSungloThorns : ModProjectile
 {
+	public override string LocalizationCategory => LocalizationUtils.Categories.MagicProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 48;
@@ -19,7 +21,7 @@ internal class GreenSungloThorns : ModProjectile
 		Projectile.DamageType = DamageClass.Magic;
 		Projectile.aiStyle = -1;
 		Projectile.penetrate = -1;
-		Projectile.timeLeft = 10000;
+		Projectile.timeLeft = 20 * 60;
 		Projectile.hostile = false;
 		Projectile.tileCollide = false;
 		Projectile.ignoreWater = true;
@@ -63,17 +65,6 @@ internal class GreenSungloThorns : ModProjectile
 		if (t < 550)
 		{
 			t += 3.75f;
-		}
-		if (Projectile.timeLeft <= 2)
-		{
-			for (int i = 0; i < 900; i++)
-			{
-				if (TimeLeft[i] > 0)
-				{
-					Projectile.timeLeft = 2;
-					break;
-				}
-			}
 		}
 	}
 

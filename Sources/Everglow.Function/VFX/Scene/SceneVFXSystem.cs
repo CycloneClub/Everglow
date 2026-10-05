@@ -7,12 +7,13 @@ public class SceneVFXSystem : ModSystem
 	public static Dictionary<(int X, int Y), bool> TilePointHasScene => _tilePointHasScene;
 
 	private Vector2 lastCheckScreenPosition = default;
-	private float maxUpdateDistance = 500;
+	private float maxUpdateDistance = 800;
+	private float rescanTriggerDistance = 150;
 
 	public override void PreUpdateDusts()
 	{
 		Vector2 deltaScreenPos = lastCheckScreenPosition - Main.screenPosition;
-		if (deltaScreenPos.Length() > maxUpdateDistance - 150)
+		if (deltaScreenPos.Length() > rescanTriggerDistance)
 		{
 			lastCheckScreenPosition = Main.screenPosition;
 			int startX = (int)((Main.screenPosition.X - maxUpdateDistance) / 16f);

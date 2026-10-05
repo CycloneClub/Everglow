@@ -32,58 +32,54 @@ public class LichenSlimeStar : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
 
-	public Vector2 position;
-	public Vector2 velocity;
+	public Vector2 Position;
+	public Vector2 Velocity;
 	public float[] ai;
-	public float timer;
-	public float maxTime;
-	public float scale;
-	public float rotation;
-
-	public LichenSlimeStar()
-	{
-	}
+	public float Timer;
+	public float MaxTime;
+	public float Scale;
+	public float Rotation;
 
 	public override void Update()
 	{
-		position += velocity;
-		if (position.X <= 320 || position.X >= Main.maxTilesX * 16 - 320)
+		Position += Velocity;
+		if (Position.X <= 320 || Position.X >= Main.maxTilesX * 16 - 320)
 		{
-			timer = maxTime;
+			Timer = MaxTime;
 		}
-		if (position.Y <= 320 || position.Y >= Main.maxTilesY * 16 - 320)
+		if (Position.Y <= 320 || Position.Y >= Main.maxTilesY * 16 - 320)
 		{
-			timer = maxTime;
+			Timer = MaxTime;
 		}
-		velocity *= 0.98f;
-		velocity += new Vector2(Main.windSpeedCurrent * 0.1f, 0.04f * scale * 0.1f);
-		scale *= 0.98f;
-		timer++;
-		if (timer > maxTime)
+		Velocity *= 0.98f;
+		Velocity += new Vector2(Main.windSpeedCurrent * 0.1f, 0.04f * Scale * 0.1f);
+		Scale *= 0.98f;
+		Timer++;
+		if (Timer > MaxTime)
 		{
 			Active = false;
 		}
 
-		if (Collision.SolidCollision(position + new Vector2(velocity.X, 0), 0, 0))
+		if (Collision.SolidCollision(Position + new Vector2(Velocity.X, 0), 0, 0))
 		{
-			velocity.X *= -0.4f;
-			timer += 10;
+			Velocity.X *= -0.4f;
+			Timer += 10;
 		}
-		if (Collision.SolidCollision(position + new Vector2(0, velocity.Y), 0, 0))
+		if (Collision.SolidCollision(Position + new Vector2(0, Velocity.Y), 0, 0))
 		{
-			velocity.Y *= -0.4f;
-			timer += 10;
+			Velocity.Y *= -0.4f;
+			Timer += 10;
 		}
-		var tile = Main.tile[(int)(position.X / 16), (int)(position.Y / 16)];
-		if (position.Y % 1 < tile.LiquidAmount / 256f)
+		var tile = Main.tile[(int)(Position.X / 16), (int)(Position.Y / 16)];
+		if (Position.Y % 1 < tile.LiquidAmount / 256f)
 		{
-			timer += 120;
+			Timer += 120;
 		}
-		if (scale < 0.05f)
+		if (Scale < 0.05f)
 		{
-			timer += 20;
+			Timer += 20;
 		}
-		Lighting.AddLight(position, 0.35f * scale, 0.5f * scale, 0.25f * scale);
+		Lighting.AddLight(Position, 0.35f * Scale, 0.5f * Scale, 0.25f * Scale);
 	}
 
 	public override void Draw()
@@ -91,21 +87,21 @@ public class LichenSlimeStar : Visual
 		Color lightColor = new Color(0.7f, 1f, 0.4f, 0);
 		List<Vertex2D> bars = new List<Vertex2D>()
 		{
-			new Vertex2D(position + new Vector2(-25 * scale, -25) * scale, lightColor, new Vector3(0, 0, 0)),
-			new Vertex2D(position + new Vector2(-25 * scale, 25) * scale, lightColor, new Vector3(0, 1, 0)),
-			new Vertex2D(position + new Vector2(25 * scale, -25) * scale, lightColor, new Vector3(1, 0, 0)),
+			new Vertex2D(Position + new Vector2(-25 * Scale, -25) * Scale, lightColor, new Vector3(0, 0, 0)),
+			new Vertex2D(Position + new Vector2(-25 * Scale, 25) * Scale, lightColor, new Vector3(0, 1, 0)),
+			new Vertex2D(Position + new Vector2(25 * Scale, -25) * Scale, lightColor, new Vector3(1, 0, 0)),
 
-			new Vertex2D(position + new Vector2(25 * scale, -25) * scale, lightColor, new Vector3(1, 0, 0)),
-			new Vertex2D(position + new Vector2(-25 * scale, 25) * scale, lightColor, new Vector3(0, 1, 0)),
-			new Vertex2D(position + new Vector2(25 * scale, 25) * scale, lightColor, new Vector3(1, 1, 0)),
+			new Vertex2D(Position + new Vector2(25 * Scale, -25) * Scale, lightColor, new Vector3(1, 0, 0)),
+			new Vertex2D(Position + new Vector2(-25 * Scale, 25) * Scale, lightColor, new Vector3(0, 1, 0)),
+			new Vertex2D(Position + new Vector2(25 * Scale, 25) * Scale, lightColor, new Vector3(1, 1, 0)),
 
-			new Vertex2D(position + new Vector2(-25, -25 * scale) * scale, lightColor, new Vector3(0, 1, 0)),
-			new Vertex2D(position + new Vector2(-25, 25 * scale) * scale, lightColor, new Vector3(1, 1, 0)),
-			new Vertex2D(position + new Vector2(25, -25 * scale) * scale, lightColor, new Vector3(0, 0, 0)),
+			new Vertex2D(Position + new Vector2(-25, -25 * Scale) * Scale, lightColor, new Vector3(0, 1, 0)),
+			new Vertex2D(Position + new Vector2(-25, 25 * Scale) * Scale, lightColor, new Vector3(1, 1, 0)),
+			new Vertex2D(Position + new Vector2(25, -25 * Scale) * Scale, lightColor, new Vector3(0, 0, 0)),
 
-			new Vertex2D(position + new Vector2(25, -25 * scale) * scale, lightColor, new Vector3(0, 0, 0)),
-			new Vertex2D(position + new Vector2(-25, 25 * scale) * scale, lightColor, new Vector3(1, 1, 0)),
-			new Vertex2D(position + new Vector2(25, 25 * scale) * scale, lightColor, new Vector3(1, 0, 0)),
+			new Vertex2D(Position + new Vector2(25, -25 * Scale) * Scale, lightColor, new Vector3(0, 0, 0)),
+			new Vertex2D(Position + new Vector2(-25, 25 * Scale) * Scale, lightColor, new Vector3(1, 1, 0)),
+			new Vertex2D(Position + new Vector2(25, 25 * Scale) * Scale, lightColor, new Vector3(1, 0, 0)),
 		};
 
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleList);

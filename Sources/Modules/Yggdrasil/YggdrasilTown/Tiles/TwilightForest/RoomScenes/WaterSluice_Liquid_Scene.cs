@@ -9,6 +9,37 @@ public class WaterSluice_Liquid_Scene : TileVFX
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawPlayers;
 
+	/// <summary>
+	/// Cull by the center of the 640×336 room instead of the top-left anchor tile, so the piers are not killed while still visible.
+	/// </summary>
+	public override Vector2 CullingCheckPos => Position + new Vector2(FlipH() ? -320 : 320, 168);
+
+	public override void OnSpawn()
+	{
+		MaxDiatanceOutOfScreen = Main.screenWidth / 2f;
+	}
+
+	private const int ProbeInterval = 10;
+
+	private bool? cachedFlipH;
+	private int probeTimer;
+	private bool pierProbed;
+	private readonly int[] pierSegments = new int[4];
+	private readonly bool[] pierStopped = new bool[4];
+	private readonly List<Vertex2D> pierBars = new List<Vertex2D>();
+	private readonly List<Vertex2D> pierBarsSide = new List<Vertex2D>();
+	private readonly List<Vertex2D> pierBarsWave = new List<Vertex2D>();
+	private readonly List<Vertex2D> pierBarsWave2 = new List<Vertex2D>();
+
+	/// <summary>
+	/// Cached version of <see cref="FlipHorizontally(int, int)" />. The result depends only on static world geometry.
+	/// </summary>
+	private bool FlipH()
+	{
+		cachedFlipH ??= FlipHorizontally(OriginTilePos.X, OriginTilePos.Y);
+		return cachedFlipH.Value;
+	}
+
 	public bool FlipHorizontally(int i, int j)
 	{
 		int leftSolid = 0;
@@ -33,25 +64,124 @@ public class WaterSluice_Liquid_Scene : TileVFX
 		return true;
 	}
 
+	private Vector2 GetPierPosition(int pierIndex, int direction)
+	{
+		return pierIndex switch
+		{
+			0 => new Vector2(OriginTilePos.X + 18 * direction, OriginTilePos.Y + 6).ToWorldCoordinates() + new Vector2(0, 4),
+			1 => new Vector2(OriginTilePos.X + 23 * direction, OriginTilePos.Y + 7).ToWorldCoordinates() + new Vector2(0, 6),
+			2 => new Vector2(OriginTilePos.X + 33 * direction, OriginTilePos.Y + 7).ToWorldCoordinates() + new Vector2(1 * direction, 0),
+			_ => new Vector2(OriginTilePos.X + 6 * direction, OriginTilePos.Y + 9).ToWorldCoordinates() + new Vector2(-2 * direction, 0),
+		};
+	}
+
+	/// <summary>
+	/// Probe how far the pier/waterfall flows before hitting solid ground or deep liquid. Expensive; run at a low frequency and cache the result.
+	/// </summary>
+	private void ProbePier(int pierIndex, Vector2 worldPos, int direction)
+	{
+		for (int i = 0; i < 300; i++)
+		{
+			Vector2 drawPos;
+			if (pierIndex == 3)
+			{
+				drawPos = worldPos + new Vector2(14 * 4 * direction, i * 2);
+				if (direction == -1)
+				{
+					drawPos = worldPos + new Vector2(-1 * 4 * direction, i * 2);
+				}
+			}
+			else
+			{
+				drawPos = worldPos + new Vector2(0, i * 2);
+			}
+			var tile = TileUtils.SafeGetTile(drawPos.ToTileCoordinates());
+			float liquidCut = (16 - drawPos.Y % 16) * 16f;
+			if ((Collision.IsWorldPointSolid(drawPos) && !Main.tileSolidTop[tile.TileType]) || tile.LiquidAmount > liquidCut)
+			{
+				pierSegments[pierIndex] = i;
+				pierStopped[pierIndex] = true;
+				return;
+			}
+		}
+		pierSegments[pierIndex] = 300;
+		pierStopped[pierIndex] = false;
+	}
+
+	/// <summary>
+	/// Spawn pier/waterfall dust at the cached probe endpoints. Moved out of Draw: this mutates game state and must run at update frequency.
+	/// </summary>
+	private void SpawnPierDust(int direction)
+	{
+		if (pierStopped[0])
+		{
+			Vector2 start = GetPierPosition(0, direction);
+			GenerateWaterPierDust(start, start + new Vector2(0, pierSegments[0] * 2), 10, 1f, 0.5f, 0.5f, 1f, 1f);
+		}
+		if (pierStopped[1])
+		{
+			Vector2 start = GetPierPosition(1, direction);
+			GenerateWaterPierDust(start, start + new Vector2(0, pierSegments[1] * 2), 10, 1f, 0.5f, 0.5f, 1f, 1f);
+		}
+		if (pierStopped[2])
+		{
+			Vector2 start = GetPierPosition(2, direction);
+			Vector2 end = start + new Vector2(0, pierSegments[2] * 2);
+			Vector2 offsetWorld = new Vector2(-3, 0);
+			GenerateWaterPierDust(start + new Vector2(26, 0) + offsetWorld, end + new Vector2(26, 0), 3, 1f, 0.25f, 0.1f);
+			GenerateWaterPierDust(start + new Vector2(10, 0) + offsetWorld, end + new Vector2(10, 0), 3, 0.3f, 0.25f, 0.1f);
+			GenerateWaterPierDust(start + offsetWorld, end, 3, 1f, 0.25f, 0.1f);
+			GenerateWaterPierDust(start + new Vector2(-10, 0) + offsetWorld, end + new Vector2(-10, 0), 3, 0.3f, 0.25f, 0.1f);
+			GenerateWaterPierDust(start + new Vector2(-26, 0) + offsetWorld, end + new Vector2(-26, 0), 3, 1f, 0.25f, 0.1f);
+		}
+		if (pierStopped[3])
+		{
+			Vector2 start = GetPierPosition(3, direction);
+			int jStop = pierSegments[3];
+			Vector2 drawPos0 = start + new Vector2(14 * 4 * direction, jStop * 2);
+			Vector2 drawPos1 = start + new Vector2(-1 * 4 * direction, jStop * 2);
+			Vector2 offset0 = new Vector2(GetMove(14, jStop, 7) * direction, 0);
+			Vector2 offset1 = new Vector2(GetMove(0, jStop, 7) * direction, 0);
+			if (direction == -1)
+			{
+				(offset0, offset1) = (offset1, offset0);
+				(drawPos0, drawPos1) = (drawPos1, drawPos0);
+				GenerateWaterfallDust(start, drawPos0 + offset0, 4, 0.5f, 7, 0.5f, 0f, 1f, 0f);
+				GenerateWaterfallDust(start, drawPos0 + offset0, 4, 0.5f, 7, 0.5f, 0.5f, 1f, 1f);
+			}
+			else
+			{
+				GenerateWaterfallDust(start, drawPos1 + offset1 + new Vector2(2, 0), 4, 0.5f, 7, 0.5f, 0f, 1f, 0f);
+				GenerateWaterfallDust(start, drawPos1 + offset1 + new Vector2(2, 0), 4, 0.5f, 7, 0.5f, 0.5f, 1f, 1f);
+			}
+		}
+	}
+
 	public override void Update()
 	{
 		base.Update();
+		if (!Active)
+		{
+			return;
+		}
+		int direction = FlipH() ? -1 : 1;
+		if (!pierProbed || probeTimer++ % ProbeInterval == 0)
+		{
+			for (int k = 0; k < 4; k++)
+			{
+				ProbePier(k, GetPierPosition(k, direction), direction);
+			}
+			pierProbed = true;
+		}
+		SpawnPierDust(direction);
 	}
 
 	public override void Draw()
 	{
-		bool flipH = FlipHorizontally(OriginTilePos.X, OriginTilePos.Y);
-		int Direction = 1;
-		if (flipH)
-		{
-			Direction = -1;
-		}
-		Vector2 liquidSurfacePos = new Vector2(OriginTilePos.X + 18 * Direction, OriginTilePos.Y + 6).ToWorldCoordinates() + new Vector2(0, 4);
-		DrawWaterPierThick(liquidSurfacePos, 0.7f);
-		liquidSurfacePos = new Vector2(OriginTilePos.X + 23 * Direction, OriginTilePos.Y + 7).ToWorldCoordinates() + new Vector2(0, 6);
-		DrawWaterPierThick(liquidSurfacePos, 0.4f);
-		liquidSurfacePos = new Vector2(OriginTilePos.X + 33 * Direction, OriginTilePos.Y + 7).ToWorldCoordinates() + new Vector2(1 * Direction, 0);
-		DrawWaterPierThin(liquidSurfacePos, 0.1f);
+		int direction = FlipH() ? -1 : 1;
+		DrawWaterPierThick(GetPierPosition(0, direction), 0.7f, pierSegments[0]);
+		DrawWaterPierThick(GetPierPosition(1, direction), 0.4f, pierSegments[1]);
+		DrawWaterPierThin(GetPierPosition(2, direction), 0.1f, pierSegments[2]);
 
 		// liquidSurfacePos = new Vector2(OriginTilePos.X + 34 * Direction, OriginTilePos.Y + 7).ToWorldCoordinates() + new Vector2(9 * Direction, 0);
 		// DrawWaterPierThin(liquidSurfacePos, 0.8f);
@@ -62,8 +192,7 @@ public class WaterSluice_Liquid_Scene : TileVFX
 		// DrawWaterPierThinBack(liquidSurfacePos, 0.2f);
 		// liquidSurfacePos = new Vector2(OriginTilePos.X + 33 * Direction, OriginTilePos.Y + 7).ToWorldCoordinates() + new Vector2(-10 * Direction, 0);
 		// DrawWaterPierThinBack(liquidSurfacePos, 0.9f);
-		liquidSurfacePos = new Vector2(OriginTilePos.X + 6 * Direction, OriginTilePos.Y + 9).ToWorldCoordinates() + new Vector2(-2 * Direction, 0);
-		DrawWaterFallFlow(liquidSurfacePos, 0.6f);
+		DrawWaterFallFlow(GetPierPosition(3, direction), 0.6f, pierSegments[3], direction);
 	}
 
 	public void DrawWaterPierThinBack(Vector2 worldPos, float offsetY = 0)
@@ -123,28 +252,17 @@ public class WaterSluice_Liquid_Scene : TileVFX
 		Ins.Batch.Draw(liquidTex, bars, PrimitiveType.TriangleStrip);
 	}
 
-	public void DrawWaterPierThin(Vector2 worldPos, float offsetY = 0)
+	public void DrawWaterPierThin(Vector2 worldPos, float offsetY, int segments)
 	{
 		Texture2D liquidTex = ModAsset.WaterSluice_Scene_WaterPier_thin_batch.Value;
 		float timeValue = -(float)Main.time / 120f;
-		List<Vertex2D> bars = new List<Vertex2D>();
+		List<Vertex2D> bars = pierBars;
+		bars.Clear();
 		float fade = 0.3f;
-		for (int i = 0; i < 300; i++)
+		float waterWidth = 29;
+		for (int i = 0; i < segments; i++)
 		{
 			Vector2 drawPos = worldPos + new Vector2(0, i * 2);
-			var tile = TileUtils.SafeGetTile(drawPos.ToTileCoordinates());
-			float liquidCut = (16 - drawPos.Y % 16) * 16f;
-			float waterWidth = 29;
-			if ((Collision.IsWorldPointSolid(drawPos) && !Main.tileSolidTop[tile.TileType]) || tile.LiquidAmount > liquidCut)
-			{
-				Vector2 offsetWorld = new Vector2(-3, 0);
-				GenerateWaterPierDust(worldPos + new Vector2(26, 0) + offsetWorld, drawPos + new Vector2(26, 0), 3, 1f, 0.25f, 0.1f);
-				GenerateWaterPierDust(worldPos + new Vector2(10, 0) + offsetWorld, drawPos + new Vector2(10, 0), 3, 0.3f, 0.25f, 0.1f);
-				GenerateWaterPierDust(worldPos + offsetWorld, drawPos, 3, 1f, 0.25f, 0.1f);
-				GenerateWaterPierDust(worldPos + new Vector2(-10, 0) + offsetWorld, drawPos + new Vector2(-10, 0), 3, 0.3f, 0.25f, 0.1f);
-				GenerateWaterPierDust(worldPos + new Vector2(-26, 0) + offsetWorld, drawPos + new Vector2(-26, 0), 3, 1f, 0.25f, 0.1f);
-				break;
-			}
 			float coordY = timeValue + MathF.Pow(i / 4f + 6, 0.5f) * 0.14f + offsetY;
 			AddVertex(bars, drawPos + new Vector2(-waterWidth, 0), new Vector3(0, coordY, 0), fade);
 			AddVertex(bars, drawPos + new Vector2(waterWidth, 0), new Vector3(1, coordY, 0), fade);
@@ -152,27 +270,23 @@ public class WaterSluice_Liquid_Scene : TileVFX
 		Ins.Batch.Draw(liquidTex, bars, PrimitiveType.TriangleStrip);
 	}
 
-	public void DrawWaterPierThick(Vector2 worldPos, float offsetY = 0)
+	public void DrawWaterPierThick(Vector2 worldPos, float offsetY, int segments)
 	{
 		Texture2D liquidTex = ModAsset.WaterSluice_Scene_WaterPier_content.Value;
 		Texture2D liquidTex_side = ModAsset.WaterSluice_Scene_WaterPier_side.Value;
 		float timeValue = -(float)Main.time / 120f;
-		List<Vertex2D> bars = new List<Vertex2D>();
-		List<Vertex2D> bars_side = new List<Vertex2D>();
-		List<Vertex2D> bars_wave = new List<Vertex2D>();
+		List<Vertex2D> bars = pierBars;
+		List<Vertex2D> bars_side = pierBarsSide;
+		List<Vertex2D> bars_wave = pierBarsWave;
+		bars.Clear();
+		bars_side.Clear();
+		bars_wave.Clear();
 		float fade = 0.3f;
 		float fade2 = 0.06f;
 		float waterWidth = 10;
-		for (int i = 0; i < 300; i++)
+		for (int i = 0; i < segments; i++)
 		{
 			Vector2 drawPos = worldPos + new Vector2(0, i * 2);
-			var tile = TileUtils.SafeGetTile(drawPos.ToTileCoordinates());
-			float liquidCut = (16 - drawPos.Y % 16) * 16f;
-			if ((Collision.IsWorldPointSolid(drawPos) && !Main.tileSolidTop[tile.TileType]) || tile.LiquidAmount > liquidCut)
-			{
-				GenerateWaterPierDust(worldPos, drawPos, 10, 1f, 0.5f, 0.5f, 1f, 1f);
-				break;
-			}
 			float coordY = timeValue + MathF.Pow(i / 4f + 6, 0.5f) * 0.14f + offsetY;
 			AddVertex(bars, drawPos + new Vector2(-waterWidth, 0), new Vector3(0, coordY, 0), fade);
 			AddVertex(bars, drawPos + new Vector2(waterWidth, 0), new Vector3(1, coordY, 0), fade);
@@ -188,17 +302,11 @@ public class WaterSluice_Liquid_Scene : TileVFX
 		Ins.Batch.Draw(liquidTex_side, bars_side, PrimitiveType.TriangleStrip);
 	}
 
-	public void DrawWaterFallFlow(Vector2 worldPos, float offsetY = 0)
+	public void DrawWaterFallFlow(Vector2 worldPos, float offsetY, int segments, int Direction)
 	{
 		Texture2D liquidTex = ModAsset.WaterSluice_Scene_WaterPier_content.Value;
 		Texture2D liquidTex_side = ModAsset.WaterSluice_Scene_Waterfall_side.Value;
 		float timeValue = -(float)Main.time / 120f;
-		bool flipH = FlipHorizontally(OriginTilePos.X, OriginTilePos.Y);
-		int Direction = 1;
-		if (flipH)
-		{
-			Direction = -1;
-		}
 
 		// Legacy
 		// for (int i = 0; i < 14; i++)
@@ -254,14 +362,18 @@ public class WaterSluice_Liquid_Scene : TileVFX
 		// Ins.Batch.Draw(liquidTex_side, bars_side, PrimitiveType.TriangleStrip);
 		// }
 		// }
-		List<Vertex2D> bars = new List<Vertex2D>();
-		List<Vertex2D> bars_side = new List<Vertex2D>();
-		List<Vertex2D> bars_wave = new List<Vertex2D>();
-		List<Vertex2D> bars_wave2 = new List<Vertex2D>();
+		List<Vertex2D> bars = pierBars;
+		List<Vertex2D> bars_side = pierBarsSide;
+		List<Vertex2D> bars_wave = pierBarsWave;
+		List<Vertex2D> bars_wave2 = pierBarsWave2;
+		bars.Clear();
+		bars_side.Clear();
+		bars_wave.Clear();
+		bars_wave2.Clear();
 		float fade = 0.3f;
 		float fade2 = 0.06f;
 		float waterWidth = 2;
-		for (int j = 0; j < 300; j++)
+		for (int j = 0; j < segments; j++)
 		{
 			Vector2 drawPos0 = worldPos + new Vector2(14 * 4 * Direction, j * 2);
 			Vector2 drawPos1 = worldPos + new Vector2(-1 * 4 * Direction, j * 2);
@@ -271,22 +383,6 @@ public class WaterSluice_Liquid_Scene : TileVFX
 			{
 				(offset0, offset1) = (offset1, offset0);
 				(drawPos0, drawPos1) = (drawPos1, drawPos0);
-			}
-			var tile = TileUtils.SafeGetTile(drawPos0.ToTileCoordinates());
-			float liquidCut = (16 - drawPos0.Y % 16) * 16f;
-			if ((Collision.IsWorldPointSolid(drawPos0) && !Main.tileSolidTop[tile.TileType]) || tile.LiquidAmount > liquidCut)
-			{
-				if (Direction == -1)
-				{
-					GenerateWaterfallDust(worldPos + new Vector2(0, 0), drawPos0 + offset0, 4, 0.5f, 7, 0.5f, 0f, 1f, 0f);
-					GenerateWaterfallDust(worldPos + new Vector2(0, 0), drawPos0 + offset0, 4, 0.5f, 7, 0.5f, 0.5f, 1f, 1f);
-				}
-				else
-				{
-					GenerateWaterfallDust(worldPos + new Vector2(0, 0), drawPos1 + offset1 + new Vector2(2, 0), 4, 0.5f, 7, 0.5f, 0f, 1f, 0f);
-					GenerateWaterfallDust(worldPos + new Vector2(0, 0), drawPos1 + offset1 + new Vector2(2, 0), 4, 0.5f, 7, 0.5f, 0.5f, 1f, 1f);
-				}
-				break;
 			}
 			float coordY = timeValue + MathF.Pow(j / 4f + 0, 0.5f) * 0.14f + offsetY;
 
@@ -421,7 +517,7 @@ public class WaterSluice_Liquid_Scene : TileVFX
 		if (!Main.gamePaused)
 		{
 			// splash dust
-			bool flipH = FlipHorizontally(OriginTilePos.X, OriginTilePos.Y);
+			bool flipH = FlipH();
 			int Direction = 1;
 			if (flipH)
 			{

@@ -5,30 +5,30 @@ public class SporeRingDust : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawNPCs;
 
-	public Vector2 position;
-	public Vector2 velocity;
+	public Vector2 Position;
+	public Vector2 Velocity;
 	public float[] ai;
-	public float timer;
-	public float maxTime;
-	public float scale;
+	public float Timer;
+	public float MaxTime;
+	public float Scale;
 	public float maxScale;
-	public float rotation;
+	public float Rotation;
 	public int Frame = 0;
 	private int frameCounter = 0;
 
 	public override void Update()
 	{
-		timer++;
+		Timer++;
 		frameCounter++;
-		if (timer > maxTime)
+		if (Timer > MaxTime)
 		{
 			Active = false;
 		}
-		position += velocity;
-		velocity *= 0.9f;
-		if (timer > 40)
+		Position += Velocity;
+		Velocity *= 0.9f;
+		if (Timer > 40)
 		{
-			scale *= 0.9f;
+			Scale *= 0.9f;
 		}
 		if (frameCounter > 5)
 		{
@@ -41,7 +41,7 @@ public class SporeRingDust : Visual
 		}
 		if (Frame == 6 && frameCounter == 0)
 		{
-			velocity = (MathHelper.PiOver4 * 3 + rotation).ToRotationVector2() * scale * 0.2f;
+			Velocity = (MathHelper.PiOver4 * 3 + Rotation).ToRotationVector2() * Scale * 0.2f;
 		}
 	}
 
@@ -49,19 +49,19 @@ public class SporeRingDust : Visual
 	{
 		float frameCount = 8;
 		float frameY = Frame;
-		Vector2 toCorner = new Vector2(0, scale).RotatedBy(rotation);
-		Color drawColor = Lighting.GetColor(position.ToTileCoordinates());
+		Vector2 toCorner = new Vector2(0, Scale).RotatedBy(Rotation);
+		Color drawColor = Lighting.GetColor(Position.ToTileCoordinates());
 		drawColor = Color.Lerp(new Color(220, 220, 239, 0), drawColor, 0.8f);
 		drawColor.A = 0;
 		var bars = new List<Vertex2D>()
 		{
-			new Vertex2D(position + toCorner, drawColor, new Vector3(0, frameY / frameCount, 0)),
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 0.5), drawColor, new Vector3(1, frameY / frameCount, 0)),
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 1.5), drawColor, new Vector3(0, (frameY + 1) / frameCount, 0)),
+			new Vertex2D(Position + toCorner, drawColor, new Vector3(0, frameY / frameCount, 0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 0.5), drawColor, new Vector3(1, frameY / frameCount, 0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1.5), drawColor, new Vector3(0, (frameY + 1) / frameCount, 0)),
 
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 1.5), drawColor, new Vector3(0, (frameY + 1) / frameCount, 0)),
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 0.5), drawColor, new Vector3(1, frameY / frameCount, 0)),
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 1), drawColor, new Vector3(1, (frameY + 1) / frameCount, 0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1.5), drawColor, new Vector3(0, (frameY + 1) / frameCount, 0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 0.5), drawColor, new Vector3(1, frameY / frameCount, 0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1), drawColor, new Vector3(1, (frameY + 1) / frameCount, 0)),
 		};
 		Ins.Batch.Draw(ModAsset.SporeRingDust.Value, bars, PrimitiveType.TriangleList);
 	}

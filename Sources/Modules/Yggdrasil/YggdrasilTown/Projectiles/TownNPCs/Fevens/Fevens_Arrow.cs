@@ -65,14 +65,14 @@ public class Fevens_Arrow : ModProjectile
 			Vector2 newVelocity = Projectile.velocity;
 			var smog = new Fevens_ArrowTrail
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
 
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-				maxTime = Main.rand.Next(17, 25),
-				scale = Main.rand.NextFloat(1f, 2f),
-				rotation = newVelocity.ToRotation(),
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+				MaxTime = Main.rand.Next(17, 25),
+				Scale = Main.rand.NextFloat(1f, 2f),
+				Rotation = newVelocity.ToRotation(),
 
 				ai = new float[] { Main.rand.NextFloat(0f, 1f), Main.rand.NextFloat(0f, 1f), Main.rand.NextFloat(-0.005f, 0.005f) },
 			};
@@ -104,14 +104,14 @@ public class Fevens_Arrow : ModProjectile
 				Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(4f, 6f)).RotatedByRandom(MathHelper.TwoPi);
 				var smog = new Fevens_ArrowTrail
 				{
-					velocity = newVelocity,
+					Velocity = newVelocity,
 					Active = true,
 					Visible = true,
 
-					position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-					maxTime = Main.rand.Next(27, 35),
-					scale = Main.rand.NextFloat(1f, 2f),
-					rotation = newVelocity.ToRotation(),
+					Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+					MaxTime = Main.rand.Next(27, 35),
+					Scale = Main.rand.NextFloat(1f, 2f),
+					Rotation = newVelocity.ToRotation(),
 
 					ai = new float[] { Main.rand.NextFloat(0f, 1f), Main.rand.NextFloat(0f, 1f), Main.rand.NextFloat(-0.005f, 0.005f) },
 				};

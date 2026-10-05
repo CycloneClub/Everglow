@@ -143,8 +143,8 @@ public class HexaCrystalStaff_ProjExplosion : ModProjectile, IWarpProjectile_war
 		for (int i = 0; i <= 6; i++)
 		{
 			Vector2 dir = new Vector2(0.5f, 0).RotatedBy(i / 6f * MathHelper.TwoPi + Projectile.rotation);
-			var warpColor = new Color(dir.X + 0.5f, dir.Y + 0.5f, Projectile.timeLeft / 120f, 1);
-			var warpColorInner = new Color(dir.X + 0.5f, dir.Y + 0.5f, Projectile.timeLeft / 120f, 1);
+			var warpColor = new Color(dir.X + 0.5f, dir.Y + 0.5f, Projectile.timeLeft / 1200f, 1);
+			var warpColorInner = new Color(dir.X + 0.5f, dir.Y + 0.5f, Projectile.timeLeft / 1200f, 1);
 			hexagon.Add(drawPos + new Vector2(value, 0).RotatedBy(i / 6f * MathHelper.TwoPi + Projectile.rotation), warpColor, new Vector3(0.5f, 0.5f, 1));
 			hexagon.Add(drawPos + new Vector2(0, 0).RotatedBy(i / 6f * MathHelper.TwoPi + Projectile.rotation), warpColorInner, new Vector3(0.5f, 0.5f, 0));
 		}

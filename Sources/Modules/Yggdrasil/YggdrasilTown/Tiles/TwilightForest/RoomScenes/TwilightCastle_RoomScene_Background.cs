@@ -34,6 +34,39 @@ public class TwilightCastle_RoomScene_Background : TileVFX
 
 	public Point Offset = new Point(0, 0);
 
+	public bool? CachedFlipH;
+
+	public Dictionary<Texture2D, StaticSceneMesh> MeshCache;
+
+	/// <summary>
+	/// Cull by the center of the 640×336 scene image instead of the top-left anchor tile, so the scene is not killed while still partly visible.
+	/// </summary>
+	public override Vector2 CullingCheckPos => Position + new Vector2(FlipH() ? -320 : 320, 168);
+
+	/// <summary>
+	/// Cached version of <see cref="FlipHorizontally(int, int)" />. The result depends only on static world geometry.
+	/// </summary>
+	public bool FlipH()
+	{
+		CachedFlipH ??= FlipHorizontally(OriginTilePos.X, OriginTilePos.Y);
+		return CachedFlipH.Value;
+	}
+
+	/// <summary>
+	/// Get a cached static mesh for the given texture, building it once per VFX instance.
+	/// </summary>
+	public StaticSceneMesh GetOrBuildMesh(Texture2D texture, int originI, int originJ, float colorFactors = 1)
+	{
+		MeshCache ??= new Dictionary<Texture2D, StaticSceneMesh>();
+		if (!MeshCache.TryGetValue(texture, out StaticSceneMesh mesh))
+		{
+			mesh = new StaticSceneMesh();
+			mesh.Build(originI, originJ, texture, FlipH(), colorFactors);
+			MeshCache.Add(texture, mesh);
+		}
+		return mesh;
+	}
+
 	/// <summary>
 	/// Allow to make a custon draw for this vfx.
 	/// </summary>

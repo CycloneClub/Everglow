@@ -70,9 +70,8 @@ public class Desert_Scene : ModTile, ISceneTile
 	public void DrawOverTile(TwilightCastle_RoomScene_OverTiles otD)
 	{
 		Texture2D tex0 = ModAsset.Desert_Scene_Close.Value;
-		bool flipH = otD.FlipHorizontally(otD.OriginTilePos.X, otD.OriginTilePos.Y);
 		int direction = 1;
-		if (flipH)
+		if (otD.FlipH())
 		{
 			direction = -1;
 		}
@@ -83,9 +82,12 @@ public class Desert_Scene : ModTile, ISceneTile
 			tex0 = ModAsset.Desert_Scene_Close_lightUp.Value;
 		}
 
-		List<Vertex2D> bars = new List<Vertex2D>();
-		SceneUtils.DrawMultiSceneTowardBottom(otD.OriginTilePos.X, otD.OriginTilePos.Y, tex0, bars, flipH);
-		Ins.Batch.Draw(tex0, bars, PrimitiveType.TriangleList);
+		StaticSceneMesh mesh = otD.GetOrBuildMesh(tex0, otD.OriginTilePos.X, otD.OriginTilePos.Y);
+		if (mesh.ColorRefreshTimer++ % 10 == 0)
+		{
+			mesh.RefreshColors();
+		}
+		Ins.Batch.Draw(tex0, mesh.Vertices, PrimitiveType.TriangleList);
 	}
 
 	public void DrawBackground(TwilightCastle_RoomScene_Background bg)
@@ -94,23 +96,32 @@ public class Desert_Scene : ModTile, ISceneTile
 		Texture2D tex1 = ModAsset.Desert_Scene_Far.Value;
 		Texture2D tex2 = ModAsset.Desert_Scene_WallGemsReflection.Value;
 
-		bool flipH = bg.FlipHorizontally(bg.OriginTilePos.X, bg.OriginTilePos.Y);
 		int direction = 1;
-		if (flipH)
+		if (bg.FlipH())
 		{
 			direction = -1;
 		}
-		List<Vertex2D> bars = new List<Vertex2D>();
-		SceneUtils.DrawMultiSceneTowardBottom(bg.OriginTilePos.X, bg.OriginTilePos.Y, tex0, bars, flipH);
-		Ins.Batch.Draw(tex0, bars, PrimitiveType.TriangleList);
 
-		bars = new List<Vertex2D>();
-		SceneUtils.DrawMultiSceneTowardBottom(bg.OriginTilePos.X, bg.OriginTilePos.Y, tex1, bars, flipH);
-		Ins.Batch.Draw(tex1, bars, PrimitiveType.TriangleList);
+		StaticSceneMesh mesh0 = bg.GetOrBuildMesh(tex0, bg.OriginTilePos.X, bg.OriginTilePos.Y);
+		if (mesh0.ColorRefreshTimer++ % 10 == 0)
+		{
+			mesh0.RefreshColors();
+		}
+		Ins.Batch.Draw(tex0, mesh0.Vertices, PrimitiveType.TriangleList);
 
-		bars = new List<Vertex2D>();
-		SceneUtils.DrawMultiSceneTowardBottom(bg.OriginTilePos.X + 34 * direction, bg.OriginTilePos.Y + 11, tex2, bars, flipH, 2.6f);
-		Ins.Batch.Draw(tex2, bars, PrimitiveType.TriangleList);
+		StaticSceneMesh mesh1 = bg.GetOrBuildMesh(tex1, bg.OriginTilePos.X, bg.OriginTilePos.Y);
+		if (mesh1.ColorRefreshTimer++ % 10 == 0)
+		{
+			mesh1.RefreshColors();
+		}
+		Ins.Batch.Draw(tex1, mesh1.Vertices, PrimitiveType.TriangleList);
+
+		StaticSceneMesh mesh2 = bg.GetOrBuildMesh(tex2, bg.OriginTilePos.X + 34 * direction, bg.OriginTilePos.Y + 11, 2.6f);
+		if (mesh2.ColorRefreshTimer++ % 10 == 0)
+		{
+			mesh2.RefreshColors(2.6f);
+		}
+		Ins.Batch.Draw(tex2, mesh2.Vertices, PrimitiveType.TriangleList);
 	}
 
 	public override void NearbyEffects(int i, int j, bool closer)

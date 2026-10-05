@@ -347,13 +347,13 @@ public class ActivatedJellyGlandMinion : ModProjectile
 				float mulScale = Main.rand.NextFloat(6f, 12f);
 				var blood = new JellyBallGelDrop
 				{
-					velocity = afterVelocity / mulScale,
+					Velocity = afterVelocity / mulScale,
 					Active = true,
 					Visible = true,
-					position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-					maxTime = Main.rand.Next(42, 84),
-					scale = mulScale,
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+					MaxTime = Main.rand.Next(42, 84),
+					Scale = mulScale,
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 				};
 				Ins.VFXManager.Add(blood);
@@ -363,12 +363,12 @@ public class ActivatedJellyGlandMinion : ModProjectile
 				Vector2 afterVelocity = new Vector2(0, Main.rand.NextFloat(2, 4)).RotatedByRandom(MathHelper.TwoPi);
 				var blood = new JellyBallGelSplash
 				{
-					velocity = afterVelocity,
+					Velocity = afterVelocity,
 					Active = true,
 					Visible = true,
-					position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) - afterVelocity,
-					maxTime = Main.rand.Next(32, 94),
-					scale = Main.rand.NextFloat(6f, 24f),
+					Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) - afterVelocity,
+					MaxTime = Main.rand.Next(32, 94),
+					Scale = Main.rand.NextFloat(6f, 24f),
 					ai = new float[] { Main.rand.NextFloat(0.0f, 0.4f), 0 },
 				};
 				Ins.VFXManager.Add(blood);

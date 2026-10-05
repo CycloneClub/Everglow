@@ -30,13 +30,13 @@ public class AmberLiquidProj_Explosion : ModProjectile, IWarpProjectile
 		Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(1.0f, 14f)).RotatedByRandom(MathHelper.TwoPi);
 		var spark = new Spark_MoonBladeDust
 		{
-			velocity = newVelocity,
+			Velocity = newVelocity,
 			Active = true,
 			Visible = true,
-			position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-			maxTime = Main.rand.Next(70, 125),
-			scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(9f, 47.0f)),
-			rotation = Main.rand.NextFloat(6.283f),
+			Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+			MaxTime = Main.rand.Next(70, 125),
+			Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(9f, 47.0f)),
+			Rotation = Main.rand.NextFloat(6.283f),
 			noGravity = true,
 			ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.03f, 0.03f) },
 		};
@@ -48,13 +48,13 @@ public class AmberLiquidProj_Explosion : ModProjectile, IWarpProjectile
 		Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(1.0f, 14f)).RotatedByRandom(MathHelper.TwoPi);
 		var spark = new AmberSparkDust
 		{
-			velocity = newVelocity,
+			Velocity = newVelocity,
 			Active = true,
 			Visible = true,
-			position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-			maxTime = Main.rand.Next(110, 135),
-			scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(6f, 45.0f)),
-			rotation = Main.rand.NextFloat(6.283f),
+			Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+			MaxTime = Main.rand.Next(110, 135),
+			Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(6f, 45.0f)),
+			Rotation = Main.rand.NextFloat(6.283f),
 			ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f) },
 		};
 		Ins.VFXManager.Add(spark);
@@ -65,13 +65,13 @@ public class AmberLiquidProj_Explosion : ModProjectile, IWarpProjectile
 		Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(2f, 8f)).RotatedByRandom(MathHelper.TwoPi);
 		var somg = new AmberSmogDust
 		{
-			velocity = newVelocity,
+			Velocity = newVelocity,
 			Active = true,
 			Visible = true,
-			position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-			maxTime = Main.rand.Next(60, 75),
-			scale = Main.rand.NextFloat(50f, 155f),
-			rotation = Main.rand.NextFloat(6.283f),
+			Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+			MaxTime = Main.rand.Next(60, 75),
+			Scale = Main.rand.NextFloat(50f, 155f),
+			Rotation = Main.rand.NextFloat(6.283f),
 			ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 		};
 		Ins.VFXManager.Add(somg);
@@ -82,13 +82,13 @@ public class AmberLiquidProj_Explosion : ModProjectile, IWarpProjectile
 		Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(2f, 8f)).RotatedByRandom(MathHelper.TwoPi);
 		var somg = new AmberSmogDust
 		{
-			velocity = newVelocity,
+			Velocity = newVelocity,
 			Active = true,
 			Visible = true,
-			position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-			maxTime = Main.rand.Next(30, 45),
-			scale = Main.rand.NextFloat(50f, 65f),
-			rotation = Main.rand.NextFloat(6.283f),
+			Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+			MaxTime = Main.rand.Next(30, 45),
+			Scale = Main.rand.NextFloat(50f, 65f),
+			Rotation = Main.rand.NextFloat(6.283f),
 			ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 		};
 		Ins.VFXManager.Add(somg);

@@ -7,6 +7,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Tiles;
 public class StoneBridge_fence : TileVFX
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawBG;
+
 	public override void OnSpawn()
 	{
 		Texture = ModAsset.StoneBridge_fence.Value;

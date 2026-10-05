@@ -76,10 +76,10 @@ public class RockQuake_Proj : ModProjectile, IWarpProjectile_warpStyle2
 					{
 						Active = true,
 						Visible = true,
-						position = checkPos + new Vector2(Main.rand.Next(8, 30), 0).RotatedBy(rot),
-						rotation = rot,
-						maxTime = Main.rand.Next(70, 120),
-						scale = Main.rand.Next(8, 17),
+						Position = checkPos + new Vector2(Main.rand.Next(8, 30), 0).RotatedBy(rot),
+						Rotation = rot,
+						MaxTime = Main.rand.Next(70, 120),
+						Scale = Main.rand.Next(8, 17),
 						ai = new float[] { Main.rand.NextFloat(1f, 8f) },
 					};
 					Ins.VFXManager.Add(dustVFX);

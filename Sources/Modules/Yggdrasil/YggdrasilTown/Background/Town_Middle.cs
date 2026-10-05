@@ -9,7 +9,7 @@ public class Town_Middle : BackgroundSlideBase
 	{
 		base.SetDefaults();
 		Texture = ModAsset.Town_Middle.Value;
-		Distance = 6f;
+		Distance = 15f;
 		UseColorStyle = 2;
 		Shader = Effects.XWrap_YWrap_Shader;
 	}

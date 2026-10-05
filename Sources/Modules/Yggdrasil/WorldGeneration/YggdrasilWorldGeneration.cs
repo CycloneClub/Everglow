@@ -31,7 +31,7 @@ public class YggdrasilWorldGeneration : ModSystem
 			Main.statusText = Terraria.Localization.Language.GetTextValue("Mods.Everglow.Common.WorldSystem.BuildtheTreeWorld");
 			TotalInitialize();
 			Main.spawnTileX = 1475;
-			Main.spawnTileY = 20600;
+			Main.spawnTileY = 20560;
 			BuildYggdrasilTown();
 
 			BuildKelpCurtain();
@@ -1494,7 +1494,7 @@ public class YggdrasilWorldGeneration : ModSystem
 	/// <param name="Size"></param>
 	/// <param name="Wet"></param>
 	/// <returns></returns>
-	public static Vector2D DigTunnelInRequsetTiles(double x, double y, double xDir, double yDir, int steps, int size, int type, bool wet = false, int wallType = -1)
+	public static Vector2D DigTunnelInReQuestTiles(double x, double y, double xDir, double yDir, int steps, int size, int type, bool wet = false, int wallType = -1)
 	{
 		double startX = x;
 		double startY = y;

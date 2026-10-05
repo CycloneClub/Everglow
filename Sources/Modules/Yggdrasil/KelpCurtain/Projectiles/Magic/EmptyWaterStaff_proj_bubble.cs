@@ -284,12 +284,12 @@ public class EmptyWaterStaff_proj_bubble : ModProjectile, IWarpProjectile_warpSt
 			Vector2 startVel = new Vector2(0, MathF.Sqrt(Main.rand.NextFloat(1))).RotatedBy(Main.rand.NextFloat(MathHelper.TwoPi)) * BubbleScale;
 			var branch = new EmptyWaterStaff_BubbleBreak
 			{
-				velocity = startVel * 0.5f,
+				Velocity = startVel * 0.5f,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + startVel,
-				maxTime = Main.rand.Next(30, 40),
-				scale = Main.rand.Next(10, 16),
+				Position = Projectile.Center + startVel,
+				MaxTime = Main.rand.Next(30, 40),
+				Scale = Main.rand.Next(10, 16),
 				ai = new float[] { Main.rand.NextFloat(1f, 8f), Projectile.timeLeft },
 			};
 			Ins.VFXManager.Add(branch);

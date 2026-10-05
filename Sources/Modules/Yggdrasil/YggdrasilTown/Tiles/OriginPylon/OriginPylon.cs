@@ -48,19 +48,9 @@ public class OriginPylon : ModTile, ISceneTile
 
 	public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 	{
-		Tile tile = Main.tile[i, j];
-		if (tile.TileFrameX < 108)
-		{
-			r = 1f;
-			g = 1f;
-			b = 1f;
-		}
-		else
-		{
-			r = 1f;
-			g = 1f;
-			b = 1f;
-		}
+		r = 10f;
+		g = 10f;
+		b = 10f;
 		base.ModifyLight(i, j, ref r, ref g, ref b);
 	}
 
@@ -119,13 +109,13 @@ public class OriginPylon : ModTile, ISceneTile
 				}
 				var dust = new WhiteTriangle
 				{
-					velocity = newVelocity + new Vector2(0, addPos.Y * 0.01f),
+					Velocity = newVelocity + new Vector2(0, addPos.Y * 0.01f),
 					Active = true,
 					Visible = true,
-					position = pos,
-					maxTime = Main.rand.Next(50, 192),
-					scale = 0,
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = pos,
+					MaxTime = Main.rand.Next(50, 192),
+					Scale = 0,
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { Main.rand.NextFloat(4.0f, 14.5f) * size, Main.rand.NextFloat(-0.03f, 0.03f) },
 				};
 				Ins.VFXManager.Add(dust);

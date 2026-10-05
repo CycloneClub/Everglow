@@ -55,13 +55,13 @@ public class WoodlandWraithStaff_SporeZone : ModProjectile
 				}
 				var dustVFX4 = new SporeRingDust
 				{
-					velocity = vel,
+					Velocity = vel,
 					Active = true,
 					Visible = true,
-					position = posAdd + Projectile.Center,
-					maxTime = 80,
-					scale = Main.rand.NextFloat(16, 24),
-					rotation = vel.ToRotation() - MathHelper.PiOver4 * 3,
+					Position = posAdd + Projectile.Center,
+					MaxTime = 80,
+					Scale = Main.rand.NextFloat(16, 24),
+					Rotation = vel.ToRotation() - MathHelper.PiOver4 * 3,
 					ai = new float[] { 0, 0, 0 },
 				};
 				Ins.VFXManager.Add(dustVFX4);

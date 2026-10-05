@@ -23,6 +23,8 @@ public partial class TileUtils
 
 	public static Tile SafeGetTile(Point point) => SafeGetTile(point.X, point.Y);
 
+	public static Tile SafeGetTile(Point16 point) => SafeGetTile(point.X, point.Y);
+
 	/// <summary>
 	/// The vector is expected to be the tile coordinate, not world coordinate. (i.e. vector.X is expected to be i, and vector.Y is expected to be j)
 	/// </summary>

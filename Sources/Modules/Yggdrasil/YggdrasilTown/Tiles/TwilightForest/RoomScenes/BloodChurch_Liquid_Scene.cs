@@ -8,6 +8,16 @@ public class BloodChurch_Liquid_Scene : TileVFX
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawPlayers;
 
+	/// <summary>
+	/// Cull by the center of the 640×336 room instead of the top-left anchor tile, so the piers are not killed while still visible.
+	/// </summary>
+	public override Vector2 CullingCheckPos => Position + new Vector2(FlipH() ? -320 : 320, 168);
+
+	public override void OnSpawn()
+	{
+		MaxDiatanceOutOfScreen = Main.screenWidth / 2f;
+	}
+
 	public bool FlipHorizontally(int i, int j)
 	{
 		int leftSolid = 0;
@@ -34,11 +44,25 @@ public class BloodChurch_Liquid_Scene : TileVFX
 
 	public List<Rectangle> LiquidAreas = new List<Rectangle>();
 
+	private bool? cachedFlipH;
+
+	private readonly List<Vertex2D> liquidBars = new List<Vertex2D>();
+	private readonly List<Vertex2D> liquidBarsHighlight = new List<Vertex2D>();
+
+	/// <summary>
+	/// Cached version of <see cref="FlipHorizontally(int, int)" />. The result depends only on static world geometry.
+	/// </summary>
+	private bool FlipH()
+	{
+		cachedFlipH ??= FlipHorizontally(OriginTilePos.X, OriginTilePos.Y);
+		return cachedFlipH.Value;
+	}
+
 	public override void Update()
 	{
 		if (LiquidAreas.Count <= 0)
 		{
-			bool flipH = FlipHorizontally(OriginTilePos.X, OriginTilePos.Y);
+			bool flipH = FlipH();
 			int Direction = 1;
 			int offsetX = 0;
 			if (flipH)
@@ -94,7 +118,7 @@ public class BloodChurch_Liquid_Scene : TileVFX
 
 	public override void Draw()
 	{
-		bool flipH = FlipHorizontally(OriginTilePos.X, OriginTilePos.Y);
+		bool flipH = FlipH();
 		int Direction = 1;
 		if (flipH)
 		{
@@ -105,8 +129,10 @@ public class BloodChurch_Liquid_Scene : TileVFX
 		Texture2D liquidTex = ModAsset.BloodChurch_Scene_FakeLiquid_dark.Value;
 		Texture2D liquidTex_highlight = ModAsset.BloodChurch_Scene_FakeLiquid.Value;
 		float timeValue = -(float)Main.time / 240f;
-		List<Vertex2D> bars = new List<Vertex2D>();
-		List<Vertex2D> bars_highlight = new List<Vertex2D>();
+		List<Vertex2D> bars = liquidBars;
+		List<Vertex2D> bars_highlight = liquidBarsHighlight;
+		bars.Clear();
+		bars_highlight.Clear();
 		Vector2 liquidSurfacePos = new Vector2(OriginTilePos.X + 13 * Direction, OriginTilePos.Y + 18).ToWorldCoordinates();
 
 		for (int i = 0; i < 26; i++)

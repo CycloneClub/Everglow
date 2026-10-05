@@ -71,19 +71,25 @@ public class BloodChurch_Scene : ModTile, ISceneTile
 		// Ins.VFXManager.Add(scene_Fountain);
 	}
 
+	private readonly List<Vertex2D> fountainBars = new List<Vertex2D>();
+	private readonly List<Vertex2D> fountainBarsBlack = new List<Vertex2D>();
+	private readonly List<Vertex2D> fountainBarsReflect = new List<Vertex2D>();
+
 	public void DrawBloodyChurchOverTile(TwilightCastle_RoomScene_OverTiles otD)
 	{
-		bool flipH = otD.FlipHorizontally(otD.OriginTilePos.X, otD.OriginTilePos.Y);
 		Texture2D tex0 = ModAsset.BloodChurch_Scene_Close.Value;
 
-		List<Vertex2D> bars = new List<Vertex2D>();
-		SceneUtils.DrawMultiSceneTowardBottom(otD.OriginTilePos.X, otD.OriginTilePos.Y, tex0, bars, flipH);
-		Ins.Batch.Draw(tex0, bars, PrimitiveType.TriangleList);
+		StaticSceneMesh mesh = otD.GetOrBuildMesh(tex0, otD.OriginTilePos.X, otD.OriginTilePos.Y);
+		if (mesh.ColorRefreshTimer++ % 10 == 0)
+		{
+			mesh.RefreshColors();
+		}
+		Ins.Batch.Draw(tex0, mesh.Vertices, PrimitiveType.TriangleList);
 	}
 
 	public void DrawBloodyChurchBackground(TwilightCastle_RoomScene_Background bg)
 	{
-		bool flipH = bg.FlipHorizontally(bg.OriginTilePos.X, bg.OriginTilePos.Y);
+		bool flipH = bg.FlipH();
 		Texture2D tex0 = ModAsset.BloodChurch_Scene_Background.Value;
 
 		// Texture2D tex1 = ModAsset.BloodChurch_Scene_Far.Value;
@@ -93,13 +99,12 @@ public class BloodChurch_Scene : ModTile, ISceneTile
 		Texture2D tex3 = Commons.ModAsset.Noise_flame_2_pure.Value;
 		Texture2D tex4 = Commons.ModAsset.Noise_WaterFallWave.Value;
 
-		List<Vertex2D> bars = new List<Vertex2D>();
-		SceneUtils.DrawMultiSceneTowardBottom(bg.OriginTilePos.X, bg.OriginTilePos.Y, tex0, bars, flipH);
-		Ins.Batch.Draw(tex0, bars, PrimitiveType.TriangleList);
-
-		// bars = new List<Vertex2D>();
-		// SceneUtils.DrawMultiSceneTowardBottom(bg.OriginTilePos.X, bg.OriginTilePos.Y, tex1, bars, flipH);
-		// Ins.Batch.Draw(tex1, bars, PrimitiveType.TriangleList);
+		StaticSceneMesh meshBg = bg.GetOrBuildMesh(tex0, bg.OriginTilePos.X, bg.OriginTilePos.Y);
+		if (meshBg.ColorRefreshTimer++ % 10 == 0)
+		{
+			meshBg.RefreshColors();
+		}
+		Ins.Batch.Draw(tex0, meshBg.Vertices, PrimitiveType.TriangleList);
 
 		// Fountain waterfall background
 		int direction = 1;
@@ -112,188 +117,128 @@ public class BloodChurch_Scene : ModTile, ISceneTile
 		float timeValue = -(float)Main.time / 240f;
 		for (int i = 0; i < 11; i++)
 		{
-			float addCoordX = MathF.Acos((40f - i * 8) / 41f) / MathHelper.Pi - coordX;
-			Vector2 drawPos = new Vector2(bg.OriginTilePos.X + 17 * direction, bg.OriginTilePos.Y + 11).ToWorldCoordinates() + new Vector2(i * 8 * direction, 0);
-
-			bars = new List<Vertex2D>();
-			List<Vertex2D> bars_black = new List<Vertex2D>();
-			for (int j = 0; j < 10; j++)
-			{
-				float addYCoord = MathF.Pow(j, 0.5f);
-				float x0 = -4 + GetOffsetHorizontal(i, j, 6f) * direction;
-				float x1 = 4 + GetOffsetHorizontal(i + 1 * direction, j, 6f) * direction;
-
-				Vector2 drawPieceLeft = drawPos + new Vector2(x0, j * 16);
-				Vector2 drawPieceRight = drawPos + new Vector2(x1, j * 16);
-
-				Color leftColor = Lighting.GetColor(drawPieceLeft.ToTileCoordinates(), oldColor);
-				leftColor.A = 0;
-				Color rightColor = Lighting.GetColor(drawPieceRight.ToTileCoordinates(), oldColor);
-				rightColor.A = 0;
-
-				float coordX0 = coordX;
-				float coordX1 = coordX + addCoordX;
-				if (flipH)
-				{
-					(coordX0, coordX1) = (coordX1, coordX0);
-				}
-
-				bars.Add(drawPieceLeft, leftColor * 0.15f, new Vector3(coordX0, timeValue + addYCoord * 0.08f, 0));
-				bars.Add(drawPieceRight, rightColor * 0.15f, new Vector3(coordX1, timeValue + addYCoord * 0.08f, 0));
-
-				bars_black.Add(drawPieceLeft, Color.White * 0.35f, new Vector3(coordX0, timeValue + addYCoord * 0.08f, 0));
-				bars_black.Add(drawPieceRight, Color.White * 0.35f, new Vector3(coordX1, timeValue + addYCoord * 0.08f, 0));
-			}
-			coordX += addCoordX;
-			Ins.Batch.Draw(tex3_dark, bars_black, PrimitiveType.TriangleStrip);
-			Ins.Batch.Draw(tex3, bars, PrimitiveType.TriangleStrip);
+			AppendFountainStrip(bg, flipH, direction, 17, 11, new Vector2(i * 8 * direction, 0), i, 10, 16, 6f, 0.35f, false, timeValue, oldColor, ref coordX);
 		}
 		coordX = 0;
 		for (int i = 0; i < 3; i++)
 		{
-			float addCoordX = MathF.Acos((40f - i * 8) / 41f) / MathHelper.Pi - coordX;
-			Vector2 drawPos = new Vector2(bg.OriginTilePos.X + 19 * direction, bg.OriginTilePos.Y + 9).ToWorldCoordinates() + new Vector2(i * 8 * direction, 8);
-
-			bars = new List<Vertex2D>();
-			List<Vertex2D> bars_black = new List<Vertex2D>();
-			for (int j = 0; j < 3; j++)
-			{
-				float addYCoord = MathF.Pow(j, 0.5f);
-				float x0 = -4 + GetOffsetHorizontal(i, j, 1.5f) * direction;
-				float x1 = 4 + GetOffsetHorizontal(i + 1 * direction, j, 1.5f) * direction;
-
-				Vector2 drawPieceLeft = drawPos + new Vector2(x0, j * 16);
-				Vector2 drawPieceRight = drawPos + new Vector2(x1, j * 16);
-
-				Color leftColor = Lighting.GetColor(drawPieceLeft.ToTileCoordinates(), oldColor);
-				leftColor.A = 0;
-				Color rightColor = Lighting.GetColor(drawPieceRight.ToTileCoordinates(), oldColor);
-				rightColor.A = 0;
-
-				float coordX0 = coordX;
-				float coordX1 = coordX + addCoordX;
-				if (flipH)
-				{
-					(coordX0, coordX1) = (coordX1, coordX0);
-				}
-
-				bars.Add(drawPieceLeft, leftColor * 0.15f, new Vector3(coordX0, timeValue + addYCoord * 0.08f, 0));
-				bars.Add(drawPieceRight, rightColor * 0.15f, new Vector3(coordX1, timeValue + addYCoord * 0.08f, 0));
-
-				bars_black.Add(drawPieceLeft, Color.White * 0.35f, new Vector3(coordX0, timeValue + addYCoord * 0.08f, 0));
-				bars_black.Add(drawPieceRight, Color.White * 0.35f, new Vector3(coordX1, timeValue + addYCoord * 0.08f, 0));
-			}
-			coordX += addCoordX;
-			Ins.Batch.Draw(tex3_dark, bars_black, PrimitiveType.TriangleStrip);
-			Ins.Batch.Draw(tex3, bars, PrimitiveType.TriangleStrip);
+			AppendFountainStrip(bg, flipH, direction, 19, 9, new Vector2(i * 8 * direction, 8), i, 3, 16, 1.5f, 0.35f, false, timeValue, oldColor, ref coordX);
 		}
+		FlushFountainGroup(tex3_dark, tex3, null);
 
-		// Fountain
-		bars = new List<Vertex2D>();
-		SceneUtils.DrawMultiSceneTowardBottom(bg.OriginTilePos.X + 17 * direction, bg.OriginTilePos.Y + 10, tex2, bars, flipH);
-		Ins.Batch.Draw(tex2, bars, PrimitiveType.TriangleList);
+		// Fountain. The red layer shares the cached mesh of tex2 (same geometry as the legacy code); its color factor changes every frame, so refresh colors directly instead of using the timer.
+		StaticSceneMesh meshFountain = bg.GetOrBuildMesh(tex2, bg.OriginTilePos.X + 17 * direction, bg.OriginTilePos.Y + 10);
+		meshFountain.RefreshColors();
+		Ins.Batch.Draw(tex2, meshFountain.Vertices, PrimitiveType.TriangleList);
 
 		Color envLight = Lighting.GetColor(bg.OriginTilePos.X + 22, bg.OriginTilePos.Y + 14);
-		bars = new List<Vertex2D>();
-		SceneUtils.DrawMultiSceneTowardBottom(bg.OriginTilePos.X + 17 * direction, bg.OriginTilePos.Y + 10, tex2, bars, flipH, (envLight.R - Math.Max(envLight.G, envLight.B)) / 255f);
-		Ins.Batch.Draw(tex2_red, bars, PrimitiveType.TriangleList);
+		meshFountain.RefreshColors((envLight.R - Math.Max(envLight.G, envLight.B)) / 255f);
+		Ins.Batch.Draw(tex2_red, meshFountain.Vertices, PrimitiveType.TriangleList);
 
 		// Fountain waterfall front
 		coordX = 0;
 		timeValue += 0.5f;
 		for (int i = 0; i < 11; i++)
 		{
-			float addCoordX = MathF.Acos((40f - i * 8) / 41f) / MathHelper.Pi - coordX;
-			Vector2 drawPos = new Vector2(bg.OriginTilePos.X + 17 * direction, bg.OriginTilePos.Y + 11).ToWorldCoordinates() + new Vector2(i * 8 * direction, 0);
-			bars = new List<Vertex2D>();
-			List<Vertex2D> bars_black = new List<Vertex2D>();
-			List<Vertex2D> bars_reflect = new List<Vertex2D>();
-			for (int j = 0; j < 10; j++)
-			{
-				float addYCoord = MathF.Pow(j, 0.5f);
-				float x0 = -4 + GetOffsetHorizontal(i, j, 6f) * direction;
-				float x1 = 4 + GetOffsetHorizontal(i + 1 * direction, j, 6f) * direction;
-
-				Vector2 drawPieceLeft = drawPos + new Vector2(x0, j * 16);
-				Vector2 drawPieceRight = drawPos + new Vector2(x1, j * 16);
-
-				Color leftColor = Lighting.GetColor(drawPieceLeft.ToTileCoordinates(), oldColor);
-				leftColor.A = 0;
-				Color rightColor = Lighting.GetColor(drawPieceRight.ToTileCoordinates(), oldColor);
-				rightColor.A = 0;
-
-				float coordX0 = coordX;
-				float coordX1 = coordX + addCoordX;
-				if (flipH)
-				{
-					(coordX0, coordX1) = (coordX1, coordX0);
-				}
-
-				bars.Add(drawPieceLeft, leftColor * 0.15f, new Vector3(coordX0, timeValue + addYCoord * 0.08f, 0));
-				bars.Add(drawPieceRight, rightColor * 0.15f, new Vector3(coordX1, timeValue + addYCoord * 0.08f, 0));
-
-				bars_black.Add(drawPieceLeft, Color.White * 0.25f, new Vector3(coordX0, timeValue + addYCoord * 0.08f, 0));
-				bars_black.Add(drawPieceRight, Color.White * 0.25f, new Vector3(coordX1, timeValue + addYCoord * 0.08f, 0));
-
-				Color reflectLeft = Color.Lerp(leftColor, new Color(1f, 1f, 1f, 0), 0.2f);
-				Color reflectRight = Color.Lerp(rightColor, new Color(1f, 1f, 1f, 0), 0.2f);
-				addYCoord = MathF.Pow(j, 0.5f);
-				bars_reflect.Add(drawPieceLeft, reflectLeft * 0.35f, new Vector3(coordX0, timeValue + addYCoord * 0.08f, 0));
-				bars_reflect.Add(drawPieceRight, reflectRight * 0.35f, new Vector3(coordX1, timeValue + addYCoord * 0.08f, 0));
-			}
-			coordX += addCoordX;
-			Ins.Batch.Draw(tex3_dark, bars_black, PrimitiveType.TriangleStrip);
-			Ins.Batch.Draw(tex3, bars, PrimitiveType.TriangleStrip);
-			Ins.Batch.Draw(tex4, bars_reflect, PrimitiveType.TriangleStrip);
+			AppendFountainStrip(bg, flipH, direction, 17, 11, new Vector2(i * 8 * direction, 0), i, 10, 16, 6f, 0.25f, true, timeValue, oldColor, ref coordX);
 		}
 		coordX = 0;
 		for (int i = 0; i < 3; i++)
 		{
-			float addCoordX = MathF.Acos((40f - i * 8) / 41f) / MathHelper.Pi - coordX;
-			Vector2 drawPos = new Vector2(bg.OriginTilePos.X + 19 * direction, bg.OriginTilePos.Y + 9).ToWorldCoordinates() + new Vector2(i * 8 * direction, 8);
+			AppendFountainStrip(bg, flipH, direction, 19, 9, new Vector2(i * 8 * direction, 8), i, 4, 8, 1.5f, 0.35f, true, timeValue, oldColor, ref coordX);
+		}
+		FlushFountainGroup(tex3_dark, tex3, tex4);
+	}
 
-			bars = new List<Vertex2D>();
-			List<Vertex2D> bars_black = new List<Vertex2D>();
-			List<Vertex2D> bars_reflect = new List<Vertex2D>();
-			for (int j = 0; j < 4; j++)
+	/// <summary>
+	/// Append one vertical waterfall strip into the reusable fountain buffers; strips are merged per texture and submitted by <see cref="FlushFountainGroup" />.
+	/// </summary>
+	private void AppendFountainStrip(TwilightCastle_RoomScene_Background bg, bool flipH, int direction, int originTileX, int originTileY, Vector2 baseOffset, int stripIndex, int segmentCount, float yStep, float middleX, float blackAlpha, bool withReflect, float timeValue, Color oldColor, ref float coordX)
+	{
+		float addCoordX = MathF.Acos((40f - stripIndex * 8) / 41f) / MathHelper.Pi - coordX;
+		Vector2 drawPos = new Vector2(bg.OriginTilePos.X + originTileX * direction, bg.OriginTilePos.Y + originTileY).ToWorldCoordinates() + baseOffset;
+		for (int j = 0; j < segmentCount; j++)
+		{
+			float addYCoord = MathF.Pow(j, 0.5f);
+			float x0 = -4 + GetOffsetHorizontal(stripIndex, j, middleX) * direction;
+			float x1 = 4 + GetOffsetHorizontal(stripIndex + 1 * direction, j, middleX) * direction;
+
+			Vector2 drawPieceLeft = drawPos + new Vector2(x0, j * yStep);
+			Vector2 drawPieceRight = drawPos + new Vector2(x1, j * yStep);
+
+			Color leftColor = Lighting.GetColor(drawPieceLeft.ToTileCoordinates(), oldColor);
+			leftColor.A = 0;
+			Color rightColor = Lighting.GetColor(drawPieceRight.ToTileCoordinates(), oldColor);
+			rightColor.A = 0;
+
+			float coordX0 = coordX;
+			float coordX1 = coordX + addCoordX;
+			if (flipH)
 			{
-				float addYCoord = MathF.Pow(j, 0.5f);
-				float x0 = -4 + GetOffsetHorizontal(i, j, 1.5f) * direction;
-				float x1 = 4 + GetOffsetHorizontal(i + 1 * direction, j, 1.5f) * direction;
-				float offsetY = j * 8;
+				(coordX0, coordX1) = (coordX1, coordX0);
+			}
 
-				Vector2 drawPieceLeft = drawPos + new Vector2(x0, offsetY);
-				Vector2 drawPieceRight = drawPos + new Vector2(x1, offsetY);
+			Vector3 texCoordLeft = new Vector3(coordX0, timeValue + addYCoord * 0.08f, 0);
+			Vector3 texCoordRight = new Vector3(coordX1, timeValue + addYCoord * 0.08f, 0);
+			Vertex2D left = new Vertex2D(drawPieceLeft, leftColor * 0.15f, texCoordLeft);
+			Vertex2D right = new Vertex2D(drawPieceRight, rightColor * 0.15f, texCoordRight);
+			Vertex2D leftBlack = new Vertex2D(drawPieceLeft, Color.White * blackAlpha, texCoordLeft);
+			Vertex2D rightBlack = new Vertex2D(drawPieceRight, Color.White * blackAlpha, texCoordRight);
 
-				Color leftColor = Lighting.GetColor(drawPieceLeft.ToTileCoordinates(), oldColor);
-				leftColor.A = 0;
-				Color rightColor = Lighting.GetColor(drawPieceRight.ToTileCoordinates(), oldColor);
-				rightColor.A = 0;
-
-				float coordX0 = coordX;
-				float coordX1 = coordX + addCoordX;
-				if (flipH)
-				{
-					(coordX0, coordX1) = (coordX1, coordX0);
-				}
-
-				bars.Add(drawPos + new Vector2(x0, offsetY), leftColor * 0.15f, new Vector3(coordX0, timeValue + addYCoord * 0.08f, 0));
-				bars.Add(drawPos + new Vector2(x1, offsetY), rightColor * 0.15f, new Vector3(coordX1, timeValue + addYCoord * 0.08f, 0));
-
-				bars_black.Add(drawPos + new Vector2(x0, offsetY), Color.White * 0.35f, new Vector3(coordX0, timeValue + addYCoord * 0.08f, 0));
-				bars_black.Add(drawPos + new Vector2(x1, offsetY), Color.White * 0.35f, new Vector3(coordX1, timeValue + addYCoord * 0.08f, 0));
-
+			Vertex2D leftReflect = default;
+			Vertex2D rightReflect = default;
+			if (withReflect)
+			{
 				Color reflectLeft = Color.Lerp(leftColor, new Color(1f, 1f, 1f, 0), 0.2f);
 				Color reflectRight = Color.Lerp(rightColor, new Color(1f, 1f, 1f, 0), 0.2f);
-				addYCoord = MathF.Pow(j, 0.5f);
-				bars_reflect.Add(drawPos + new Vector2(x0, offsetY), reflectLeft * 0.35f, new Vector3(coordX0, timeValue + addYCoord * 0.08f, 0));
-				bars_reflect.Add(drawPos + new Vector2(x1, offsetY), reflectRight * 0.35f, new Vector3(coordX1, timeValue + addYCoord * 0.08f, 0));
+				leftReflect = new Vertex2D(drawPieceLeft, reflectLeft * 0.35f, texCoordLeft);
+				rightReflect = new Vertex2D(drawPieceRight, reflectRight * 0.35f, texCoordRight);
 			}
-			coordX += addCoordX;
-			Ins.Batch.Draw(tex3_dark, bars_black, PrimitiveType.TriangleStrip);
-			Ins.Batch.Draw(tex3, bars, PrimitiveType.TriangleStrip);
-			Ins.Batch.Draw(tex4, bars_reflect, PrimitiveType.TriangleStrip);
+
+			if (j == 0)
+			{
+				// Degenerate connector vertices keep merged strips visually separate.
+				ConnectStrip(fountainBars, left);
+				ConnectStrip(fountainBarsBlack, leftBlack);
+				if (withReflect)
+				{
+					ConnectStrip(fountainBarsReflect, leftReflect);
+				}
+			}
+
+			fountainBars.Add(left);
+			fountainBars.Add(right);
+			fountainBarsBlack.Add(leftBlack);
+			fountainBarsBlack.Add(rightBlack);
+			if (withReflect)
+			{
+				fountainBarsReflect.Add(leftReflect);
+				fountainBarsReflect.Add(rightReflect);
+			}
 		}
+		coordX += addCoordX;
+	}
+
+	private static void ConnectStrip(List<Vertex2D> bars, Vertex2D firstVertex)
+	{
+		if (bars.Count > 0)
+		{
+			bars.Add(bars[^1]);
+			bars.Add(firstVertex);
+		}
+	}
+
+	private void FlushFountainGroup(Texture2D tex3_dark, Texture2D tex3, Texture2D tex4)
+	{
+		Ins.Batch.Draw(tex3_dark, fountainBarsBlack, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(tex3, fountainBars, PrimitiveType.TriangleStrip);
+		if (tex4 != null)
+		{
+			Ins.Batch.Draw(tex4, fountainBarsReflect, PrimitiveType.TriangleStrip);
+		}
+		fountainBars.Clear();
+		fountainBarsBlack.Clear();
+		fountainBarsReflect.Clear();
 	}
 
 	public float GetOffsetHorizontal(float x, float y, float middleX)

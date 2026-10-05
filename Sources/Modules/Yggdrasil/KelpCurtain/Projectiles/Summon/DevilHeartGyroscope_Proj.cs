@@ -48,13 +48,13 @@ public class DevilHeartGyroscope_Proj : GyroscopeProjectile
 			Vector2 vel = new Vector2(0, Main.rand.NextFloat(0.6f, 1.4f)).RotatedByRandom(MathHelper.TwoPi) + Projectile.velocity - new Vector2(0, 2);
 			var dust = new DevilHeart_Spark_gyroscope
 			{
-				velocity = vel,
+				Velocity = vel,
 				Active = true,
 				Visible = true,
-				position = Projectile.Bottom,
-				maxTime = Main.rand.Next(60, 90) * mulScale,
-				scale = Main.rand.NextFloat(3f, 5f) * mulScale,
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Bottom,
+				MaxTime = Main.rand.Next(60, 90) * mulScale,
+				Scale = Main.rand.NextFloat(3f, 5f) * mulScale,
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(4.0f, 10.93f) },
 			};
 			Ins.VFXManager.Add(dust);
@@ -238,13 +238,13 @@ public class DevilHeartGyroscope_Proj : GyroscopeProjectile
 			}
 			var dust = new DevilHeart_Spark_gyroscope
 			{
-				velocity = vel,
+				Velocity = vel,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(60, 90),
-				scale = Main.rand.NextFloat(3f, 5f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(60, 90),
+				Scale = Main.rand.NextFloat(3f, 5f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(4.0f, 10.93f) },
 			};
 			Ins.VFXManager.Add(dust);
@@ -259,15 +259,15 @@ public class DevilHeartGyroscope_Proj : GyroscopeProjectile
 			Vector2 vel = new Vector2(0, Main.rand.NextFloat(-6, -4)).RotatedByRandom(0.9);
 			var dustVFX = new Heart_VFX
 			{
-				omega = rotSpeed,
+				Omega = rotSpeed,
 				beta = -rotSpeed * 0.05f,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				velocity = vel,
-				maxTime = vel.Length() * 12,
-				scale = 9f,
-				color = Color.Lerp(Color.Red, Color.White, (vel.Length() - 3) / 2f),
+				Position = Projectile.Center,
+				Velocity = vel,
+				MaxTime = vel.Length() * 12,
+				Scale = 9f,
+				DustColor = Color.Lerp(Color.Red, Color.White, (vel.Length() - 3) / 2f),
 				ai = new float[] { Main.rand.NextFloat(1f, 8f) },
 			};
 			Ins.VFXManager.Add(dustVFX);

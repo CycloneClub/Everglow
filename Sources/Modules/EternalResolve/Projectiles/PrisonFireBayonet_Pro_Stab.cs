@@ -206,13 +206,13 @@ namespace Everglow.EternalResolve.Projectiles
 					Vector2 newVelocity = Projectile.velocity * Main.rand.NextFloat(8f);
 					var fire = new FireDust
 					{
-						velocity = newVelocity,
+						Velocity = newVelocity,
 						Active = true,
 						Visible = true,
-						position = Projectile.Center + Projectile.velocity * Main.rand.NextFloat(70, 100f) * (1 - StabTimer / 140f),
-						maxTime = Main.rand.Next(6, 25) * (StabTimer / 100f),
-						scale = Main.rand.NextFloat(10f, 50f) * (StabTimer / 100f),
-						rotation = Main.rand.NextFloat(6.283f),
+						Position = Projectile.Center + Projectile.velocity * Main.rand.NextFloat(70, 100f) * (1 - StabTimer / 140f),
+						MaxTime = Main.rand.Next(6, 25) * (StabTimer / 100f),
+						Scale = Main.rand.NextFloat(10f, 50f) * (StabTimer / 100f),
+						Rotation = Main.rand.NextFloat(6.283f),
 						ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 					};
 					Ins.VFXManager.Add(fire);

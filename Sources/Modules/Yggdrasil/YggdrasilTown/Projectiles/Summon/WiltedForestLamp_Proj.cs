@@ -122,17 +122,17 @@ public class WiltedForestLamp_Proj : ModProjectile
 			Lighting.AddLight(Projectile.Center, colorLight);
 			var dustVFX = new Leaf_VFX_Spin
 			{
-				omega = 0.04f,
-				rotatedCenter = Projectile.Center,
-				radius = Main.rand.NextFloat(60, 78) * mulRadius,
-				rotPos = Main.rand.NextFloat(MathHelper.TwoPi),
+				Omega = 0.04f,
+				RotatedCenter = Projectile.Center,
+				Radius = Main.rand.NextFloat(60, 78) * mulRadius,
+				RotPos = Main.rand.NextFloat(MathHelper.TwoPi),
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(70, 120),
-				maxScale = Main.rand.Next(7, 12),
-				scale = Main.rand.Next(8, 10),
-				color = leafColor,
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(70, 120),
+				MaxScale = Main.rand.Next(7, 12),
+				Scale = Main.rand.Next(8, 10),
+				LeafColor = leafColor,
 				ai = new float[] { Main.rand.NextFloat(1f, 8f) },
 			};
 			Ins.VFXManager.Add(dustVFX);
@@ -173,15 +173,15 @@ public class WiltedForestLamp_Proj : ModProjectile
 		{
 			var dustVFX = new Leaf_VFX
 			{
-				velocity = new Vector2(0, Main.rand.NextFloat(2f, 16f)).RotatedByRandom(Math.PI * 2) + Projectile.velocity,
-				omega = Main.rand.NextFloat(-0.1f, 0.1f),
-				beta = Main.rand.NextFloat(-0.01f, 0.01f),
+				Velocity = new Vector2(0, Main.rand.NextFloat(2f, 16f)).RotatedByRandom(Math.PI * 2) + Projectile.velocity,
+				Omega = Main.rand.NextFloat(-0.1f, 0.1f),
+				Beta = Main.rand.NextFloat(-0.01f, 0.01f),
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(70, 120),
-				scale = Main.rand.Next(8, 10),
-				color = new Color(0.8f, 0.6f, 0.45f, 1),
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(70, 120),
+				Scale = Main.rand.Next(8, 10),
+				LeafColor = new Color(0.8f, 0.6f, 0.45f, 1),
 				ai = new float[] { Main.rand.NextFloat(1f, 8f) },
 			};
 			Ins.VFXManager.Add(dustVFX);

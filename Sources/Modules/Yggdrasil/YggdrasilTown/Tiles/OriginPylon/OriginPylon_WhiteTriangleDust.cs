@@ -58,9 +58,10 @@ public class OriginalPylon_VFX : TileVFX
 				crack.Add(pylonCenter - v0Left + v0Normal, Color.Transparent, new Vector3(timeValue * 0.4f + 0.2f + k / 7f, 0.4f, 0));
 				crack.Add(pylonCenter - v0Left - v0Normal, Color.Transparent, new Vector3(timeValue * 0.4f + 0.2f + k / 7f, 0.6f, 1));
 			}
+
 			Ins.Batch.End();
 			Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.Default, SamplerState.PointWrap, RasterizerState.CullNone);
-			Effect noise = ModAsset.PurpleCrack.Value;
+			Effect noise = ModAsset.OriginPylon_PurpleCrack.Value;
 			noise.CurrentTechnique.Passes["Test"].Apply();
 			Ins.Batch.Draw(Commons.ModAsset.Noise_perlin.Value, crack, PrimitiveType.TriangleStrip);
 			Ins.Batch.End();

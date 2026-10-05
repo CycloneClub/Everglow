@@ -54,13 +54,13 @@ public class TerraViewerHowitzer_shoot_explosion : ModProjectile, IWarpProjectil
 		Vector2 addPos = new Vector2(Main.rand.NextFloat(40), 0).RotatedByRandom(MathHelper.TwoPi);
 		var fire = new FireDust
 		{
-			velocity = newVelocity,
+			Velocity = newVelocity,
 			Active = true,
 			Visible = true,
-			position = Projectile.Center + addPos - newVelocity,
-			maxTime = Main.rand.Next(30, 45),
-			scale = Main.rand.NextFloat(20f, 60f),
-			rotation = Main.rand.NextFloat(6.283f),
+			Position = Projectile.Center + addPos - newVelocity,
+			MaxTime = Main.rand.Next(30, 45),
+			Scale = Main.rand.NextFloat(20f, 60f),
+			Rotation = Main.rand.NextFloat(6.283f),
 			ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), addPos.X * 0.002f },
 		};
 		Ins.VFXManager.Add(fire);
@@ -71,13 +71,13 @@ public class TerraViewerHowitzer_shoot_explosion : ModProjectile, IWarpProjectil
 		Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(2f, 50f)).RotatedByRandom(MathHelper.TwoPi);
 		var somg = new MissleFlameBlueDust
 		{
-			velocity = newVelocity,
+			Velocity = newVelocity,
 			Active = true,
 			Visible = true,
-			position = Projectile.Center + new Vector2(Main.rand.NextFloat(140), 0).RotatedByRandom(6.283),
-			maxTime = Main.rand.Next(60, 75),
-			scale = Main.rand.NextFloat(380f, 460f),
-			rotation = Main.rand.NextFloat(6.283f),
+			Position = Projectile.Center + new Vector2(Main.rand.NextFloat(140), 0).RotatedByRandom(6.283),
+			MaxTime = Main.rand.Next(60, 75),
+			Scale = Main.rand.NextFloat(380f, 460f),
+			Rotation = Main.rand.NextFloat(6.283f),
 			ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 		};
 		Ins.VFXManager.Add(somg);
@@ -88,13 +88,13 @@ public class TerraViewerHowitzer_shoot_explosion : ModProjectile, IWarpProjectil
 		Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(2f, 50f)).RotatedByRandom(MathHelper.TwoPi);
 		var somg = new MissleFlameBlueDust
 		{
-			velocity = newVelocity,
+			Velocity = newVelocity,
 			Active = true,
 			Visible = true,
-			position = Projectile.Center + new Vector2(Main.rand.NextFloat(60), 0).RotatedByRandom(6.283),
-			maxTime = Main.rand.Next(30, 85),
-			scale = Main.rand.NextFloat(50f, 90f),
-			rotation = Main.rand.NextFloat(6.283f),
+			Position = Projectile.Center + new Vector2(Main.rand.NextFloat(60), 0).RotatedByRandom(6.283),
+			MaxTime = Main.rand.Next(30, 85),
+			Scale = Main.rand.NextFloat(50f, 90f),
+			Rotation = Main.rand.NextFloat(6.283f),
 			ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 		};
 		Ins.VFXManager.Add(somg);
@@ -105,13 +105,13 @@ public class TerraViewerHowitzer_shoot_explosion : ModProjectile, IWarpProjectil
 		Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(2f, 50f)).RotatedByRandom(MathHelper.TwoPi);
 		var nano = new NanoCloudDust
 		{
-			velocity = newVelocity,
+			Velocity = newVelocity,
 			Active = true,
 			Visible = true,
-			position = Projectile.Center + new Vector2(MathF.Sqrt(Main.rand.NextFloat(1)) * 250, 0).RotatedByRandom(6.283),
-			maxTime = Main.rand.Next(30, 105),
-			scale = Main.rand.NextFloat(124f, 162f),
-			rotation = Main.rand.NextFloat(6.283f),
+			Position = Projectile.Center + new Vector2(MathF.Sqrt(Main.rand.NextFloat(1)) * 250, 0).RotatedByRandom(6.283),
+			MaxTime = Main.rand.Next(30, 105),
+			Scale = Main.rand.NextFloat(124f, 162f),
+			Rotation = Main.rand.NextFloat(6.283f),
 			ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.1f, 0.1f), 0 },
 		};
 		Ins.VFXManager.Add(nano);
@@ -122,13 +122,13 @@ public class TerraViewerHowitzer_shoot_explosion : ModProjectile, IWarpProjectil
 		Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(2f, 5f)).RotatedByRandom(MathHelper.TwoPi);
 		var nano = new NanoCloudDust
 		{
-			velocity = newVelocity,
+			Velocity = newVelocity,
 			Active = true,
 			Visible = true,
-			position = Projectile.Center + new Vector2(MathF.Sqrt(Main.rand.NextFloat(1)) * 420, 0).RotatedByRandom(6.283),
-			maxTime = Main.rand.Next(40, 80),
-			scale = 0.01f,
-			rotation = Main.rand.NextFloat(6.283f),
+			Position = Projectile.Center + new Vector2(MathF.Sqrt(Main.rand.NextFloat(1)) * 420, 0).RotatedByRandom(6.283),
+			MaxTime = Main.rand.Next(40, 80),
+			Scale = 0.01f,
+			Rotation = Main.rand.NextFloat(6.283f),
 			ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.01f, 0.01f), Main.rand.NextFloat(24f, 82f) },
 		};
 		Ins.VFXManager.Add(nano);
@@ -139,13 +139,13 @@ public class TerraViewerHowitzer_shoot_explosion : ModProjectile, IWarpProjectil
 		Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0.2f, 0.5f)).RotatedByRandom(MathHelper.TwoPi);
 		var nano = new NanoCloudDust
 		{
-			velocity = newVelocity,
+			Velocity = newVelocity,
 			Active = true,
 			Visible = true,
-			position = Projectile.Center + new Vector2(430, 0).RotatedByRandom(6.283),
-			maxTime = Main.rand.Next(40, 80),
-			scale = 0.01f,
-			rotation = Main.rand.NextFloat(6.283f),
+			Position = Projectile.Center + new Vector2(430, 0).RotatedByRandom(6.283),
+			MaxTime = Main.rand.Next(40, 80),
+			Scale = 0.01f,
+			Rotation = Main.rand.NextFloat(6.283f),
 			ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.01f, 0.01f), Main.rand.NextFloat(24f, 82f) },
 		};
 		Ins.VFXManager.Add(nano);

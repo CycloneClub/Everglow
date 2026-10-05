@@ -333,13 +333,13 @@ public class WitherbarkMinion : ModProjectile
 			Vector2 phi = new Vector2(0, Main.rand.Next(14, 22)).RotatedBy(t / 25f * MathHelper.TwoPi);
 			var dustVFX4 = new MossBlossomDustSide
 			{
-				velocity = phi.RotatedBy(0.7f) * 0.2f,
+				Velocity = phi.RotatedBy(0.7f) * 0.2f,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + phi * 0.4f,
-				maxTime = Main.rand.Next(15, 40),
-				scale = Main.rand.NextFloat(12, 16),
-				rotation = phi.RotatedBy(0.7f).ToRotationSafe() - MathHelper.PiOver4 * 3,
+				Position = Projectile.Center + phi * 0.4f,
+				MaxTime = Main.rand.Next(15, 40),
+				Scale = Main.rand.NextFloat(12, 16),
+				Rotation = phi.RotatedBy(0.7f).ToRotationSafe() - MathHelper.PiOver4 * 3,
 				ai = new float[] { 0, 0, 0 },
 			};
 			Ins.VFXManager.Add(dustVFX4);

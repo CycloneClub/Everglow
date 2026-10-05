@@ -144,12 +144,12 @@ public class JellyBallElectricKill : ModProjectile
 						{
 							var dustVFX = new JellyBallSparkElectricity
 							{
-								velocity = flowVelocity * 0.5f,
+								Velocity = flowVelocity * 0.5f,
 								Active = true,
 								Visible = true,
-								position = flowPos,
-								maxTime = Main.rand.Next(30, 50),
-								scale = Main.rand.Next(1, 2) * Projectile.ai[0],
+								Position = flowPos,
+								MaxTime = Main.rand.Next(30, 50),
+								Scale = Main.rand.Next(1, 2) * Projectile.ai[0],
 								ai = new float[] { Main.rand.NextFloat(1f, 8f), 0 },
 							};
 							Ins.VFXManager.Add(dustVFX);

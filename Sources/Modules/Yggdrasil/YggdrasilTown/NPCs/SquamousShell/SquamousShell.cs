@@ -860,13 +860,13 @@ public class SquamousShell : ModNPC
 			newVelocity.X *= 0.01f;
 			var somg = new RockSmog_Cone_FallingSandDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = NPC.Bottom + new Vector2(newVelocity.X * 600, 8),
-				maxTime = Main.rand.NextFloat(90, Math.Max(newVelocity.Y * 6, 163)),
-				scale = Main.rand.NextFloat(12f, 13f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = NPC.Bottom + new Vector2(newVelocity.X * 600, 8),
+				MaxTime = Main.rand.NextFloat(90, Math.Max(newVelocity.Y * 6, 163)),
+				Scale = Main.rand.NextFloat(12f, 13f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
 			Ins.VFXManager.Add(somg);
@@ -878,13 +878,13 @@ public class SquamousShell : ModNPC
 			newVelocity.X *= 0.01f;
 			var somg = new RockSmog_Cone_FallingSandDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = NPC.Bottom + new Vector2(newVelocity.X * 600, 8),
-				maxTime = Main.rand.NextFloat(90, Math.Max(newVelocity.Y * 6, 163)),
-				scale = Main.rand.NextFloat(6f, 7f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = NPC.Bottom + new Vector2(newVelocity.X * 600, 8),
+				MaxTime = Main.rand.NextFloat(90, Math.Max(newVelocity.Y * 6, 163)),
+				Scale = Main.rand.NextFloat(6f, 7f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
 			Ins.VFXManager.Add(somg);
@@ -1915,13 +1915,13 @@ public class SquamousShell : ModNPC
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 4f)).RotatedByRandom(MathHelper.TwoPi);
 			var somg = new RockSmogDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = NPC.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-				maxTime = Main.rand.Next(37, 45),
-				scale = Main.rand.NextFloat(40f, 55f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = NPC.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+				MaxTime = Main.rand.Next(37, 45),
+				Scale = Main.rand.NextFloat(40f, 55f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
 			Ins.VFXManager.Add(somg);
@@ -1931,13 +1931,13 @@ public class SquamousShell : ModNPC
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(1.0f, 34f)).RotatedByRandom(MathHelper.TwoPi);
 			var spark = new Spark_MoonBladeDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = NPC.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-				maxTime = Main.rand.Next(70, 125),
-				scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(9f, 47.0f)),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = NPC.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+				MaxTime = Main.rand.Next(70, 125),
+				Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(9f, 47.0f)),
+				Rotation = Main.rand.NextFloat(6.283f),
 				noGravity = true,
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.03f, 0.03f) },
 			};
@@ -1955,13 +1955,13 @@ public class SquamousShell : ModNPC
 			newVelocity.Y -= 2f;
 			var somg = new RockSmogDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = NPC.Bottom + new Vector2(Main.rand.NextFloat(-6f, 6f), -20).RotatedByRandom(6.283) + new Vector2(newVelocity.X * 10, 0),
-				maxTime = Main.rand.Next(47, 145),
-				scale = Main.rand.NextFloat(20f, 75f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = NPC.Bottom + new Vector2(Main.rand.NextFloat(-6f, 6f), -20).RotatedByRandom(6.283) + new Vector2(newVelocity.X * 10, 0),
+				MaxTime = Main.rand.Next(47, 145),
+				Scale = Main.rand.NextFloat(20f, 75f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
 			Ins.VFXManager.Add(somg);
