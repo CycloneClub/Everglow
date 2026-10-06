@@ -38,12 +38,12 @@ public class MeltingFireExplode : ModProjectile
 				float factor = i / 15f;
 				var flare = new Flare();
 				flare.color = flareColor;
-				flare.position = Projectile.Center - new Vector2(0, -25 + (float)Math.Pow(factor, 2.5f) * 80);
-				flare.scale = 0.3f + 0.3f * (1 - factor) * (1 - factor);
+				flare.Position = Projectile.Center - new Vector2(0, -25 + (float)Math.Pow(factor, 2.5f) * 80);
+				flare.Scale = 0.3f + 0.3f * (1 - factor) * (1 - factor);
 				flare.gravity = -0.05f;
-				flare.velocity = Main.rand.NextVector2Circular(1, 1);
-				flare.velocity.Y -= 1;
-				flare.velocity *= 2;
+				flare.Velocity = Main.rand.NextVector2Circular(1, 1);
+				flare.Velocity.Y -= 1;
+				flare.Velocity *= 2;
 
 				flare.maxTimeleft = 25f;
 				flare.timeleft = 25 - factor * 10;

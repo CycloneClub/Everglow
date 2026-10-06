@@ -37,13 +37,13 @@ public class CursedFlameBall : ModProjectile, IWarpProjectile
 			{
 				var spark = new CurseFlameSparkDust
 				{
-					velocity = Projectile.velocity + new Vector2(0, Main.rand.NextFloat(0.07f, 1f)).RotatedByRandom(6.283),
+					Velocity = Projectile.velocity + new Vector2(0, Main.rand.NextFloat(0.07f, 1f)).RotatedByRandom(6.283),
 					Active = true,
 					Visible = true,
-					position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) - Projectile.velocity,
-					maxTime = Main.rand.Next(7, 95),
-					scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(4f, 47.0f)),
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) - Projectile.velocity,
+					MaxTime = Main.rand.Next(7, 95),
+					Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(4f, 47.0f)),
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.01f, 0.01f) },
 				};
 				Ins.VFXManager.Add(spark);
@@ -58,12 +58,12 @@ public class CursedFlameBall : ModProjectile, IWarpProjectile
 		{
 			var cf = new CurseFlameDust
 			{
-				velocity = Projectile.velocity * Main.rand.NextFloat(0.65f, 2.5f) * mulVelocity + Projectile.velocity.SafeNormalize(new Vector2(0, -1)),
+				Velocity = Projectile.velocity * Main.rand.NextFloat(0.65f, 2.5f) * mulVelocity + Projectile.velocity.SafeNormalize(new Vector2(0, -1)),
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity * 1,
-				maxTime = Main.rand.Next(27, 32),
-				scale = 4f,
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity * 1,
+				MaxTime = Main.rand.Next(27, 32),
+				Scale = 4f,
 				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.01f, 0.01f), Main.rand.NextFloat(0.2f, 0.8f) },
 			};
 			Ins.VFXManager.Add(cf);
@@ -73,11 +73,11 @@ public class CursedFlameBall : ModProjectile, IWarpProjectile
 		{
 			var cf = new CurseFlame_HighQualityDust
 			{
-				velocity = Projectile.velocity * 2.7f,
+				Velocity = Projectile.velocity * 2.7f,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(27, 122),
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(27, 122),
 				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), 0, Main.rand.NextFloat(3.6f, 10f) },
 			};
 			Ins.VFXManager.Add(cf);
@@ -94,12 +94,12 @@ public class CursedFlameBall : ModProjectile, IWarpProjectile
 		{
 			var cf = new CurseFlameDust
 			{
-				velocity = new Vector2(0, Main.rand.NextFloat(1.65f, 2.5f)).RotatedByRandom(6.283) * mulVelocity,
+				Velocity = new Vector2(0, Main.rand.NextFloat(1.65f, 2.5f)).RotatedByRandom(6.283) * mulVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-26f, 26f), 0).RotatedByRandom(6.283),
-				maxTime = Main.rand.Next(12, 66),
-				scale = 12f * mulVelocity,
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-26f, 26f), 0).RotatedByRandom(6.283),
+				MaxTime = Main.rand.Next(12, 66),
+				Scale = 12f * mulVelocity,
 				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.18f, 0.18f), Main.rand.NextFloat(1f, 2.2f) * mulVelocity },
 			};
 			Ins.VFXManager.Add(cf);
@@ -109,12 +109,12 @@ public class CursedFlameBall : ModProjectile, IWarpProjectile
 			Vector2 vel = new Vector2(0, Main.rand.NextFloat(1.65f, 3.5f)).RotatedByRandom(6.283) * mulVelocity;
 			var cf = new CurseFlameDust
 			{
-				velocity = vel,
+				Velocity = vel,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + vel * 3,
-				maxTime = Main.rand.Next(12, 70),
-				scale = 12f * mulVelocity,
+				Position = Projectile.Center + vel * 3,
+				MaxTime = Main.rand.Next(12, 70),
+				Scale = 12f * mulVelocity,
 				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.4f, 0.4f), Main.rand.NextFloat(2f, 3.2f) * mulVelocity },
 			};
 			Ins.VFXManager.Add(cf);
@@ -124,13 +124,13 @@ public class CursedFlameBall : ModProjectile, IWarpProjectile
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(2f, 6f)).RotatedByRandom(MathHelper.TwoPi);
 			var spark = new CurseFlameSparkDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) - Projectile.velocity + newVelocity * 3,
-				maxTime = Main.rand.Next(37, 145),
-				scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(4f, 47.0f)),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) - Projectile.velocity + newVelocity * 3,
+				MaxTime = Main.rand.Next(37, 145),
+				Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(4f, 47.0f)),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.13f, 0.13f) },
 			};
 			Ins.VFXManager.Add(spark);

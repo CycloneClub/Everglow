@@ -538,12 +538,12 @@ public class CrystalClub_fly : ModProjectile, IWarpProjectile
 			Vector2 vel = new Vector2(0, -Main.rand.NextFloat(5, 12)).RotatedBy(t / 5f * MathHelper.TwoPi + Main.rand.NextFloat(-0.24f, 0.24f) + ranRot);
 			var crystal = new HolyCrystal
 			{
-				velocity = vel,
+				Velocity = vel,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center - vel * 2,
-				maxTime = Main.rand.Next(76, 84),
-				scale = Main.rand.Next(6, 10),
+				Position = Projectile.Center - vel * 2,
+				MaxTime = Main.rand.Next(76, 84),
+				Scale = Main.rand.Next(6, 10),
 				ai = new float[] { Main.rand.NextFloat(100f), Main.rand.NextFloat(1f), Projectile.damage * 0.5f },
 			};
 			Ins.VFXManager.Add(crystal);

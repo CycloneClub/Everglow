@@ -19,17 +19,17 @@ namespace Everglow.EternalResolve.Projectiles
 			StabEffectWidth = 0.4f;
 		}
 
-		public override IEnumerator<ICoroutineInstruction> Generate3DRingVFX(Vector2 velocity)
+		public override IEnumerator<ICoroutineInstruction> Generate3DRingVFX(Vector2 Velocity)
 		{
 			yield return new WaitForFrames(40);
 			StabVFX v = new SelfLightingStabVFX()
 			{
-				pos = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
-				vel = velocity,
-				color = Color.Lerp(StabColor, Color.White, 0.2f),
-				scale = 30,
-				maxtime = 10,
-				timeleft = 10,
+				Position = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
+				Velocity = Velocity,
+				StabEffectColor = Color.Lerp(StabColor, Color.White, 0.2f),
+				Scale = 30,
+				MaxTime = 10,
+				TimeLeft = 10,
 			};
 			if (StabEndPoint_WorldPos == Vector2.Zero)
 			{
@@ -38,12 +38,12 @@ namespace Everglow.EternalResolve.Projectiles
 			yield return new WaitForFrames(40);
 			v = new SelfLightingStabVFX()
 			{
-				pos = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
-				vel = velocity,
-				color = Color.Lerp(StabColor, Color.White, 0.4f),
-				scale = 15,
-				maxtime = 10,
-				timeleft = 10,
+				Position = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
+				Velocity = Velocity,
+				StabEffectColor = Color.Lerp(StabColor, Color.White, 0.4f),
+				Scale = 15,
+				MaxTime = 10,
+				TimeLeft = 10,
 			};
 			if (StabEndPoint_WorldPos == Vector2.Zero)
 			{
@@ -162,14 +162,14 @@ namespace Everglow.EternalResolve.Projectiles
 			}
 
 			Lighting.AddLight(Projectile.Center, new Vector3(1f, 0.8f, 0) * (StabTimer / 120f));
-			Vector2 pos = Projectile.position + Projectile.velocity * Main.rand.NextFloat(0.4f, 80f);
-			Vector2 vel = Projectile.velocity * Main.rand.NextFloat(0f, 4f) + new Vector2(0, Main.rand.NextFloat(5f)).RotatedByRandom(6.283);
+			Vector2 Position = Projectile.position + Projectile.velocity * Main.rand.NextFloat(0.4f, 80f);
+			Vector2 Velocity = Projectile.velocity * Main.rand.NextFloat(0f, 4f) + new Vector2(0, Main.rand.NextFloat(5f)).RotatedByRandom(6.283);
 			if (Main.rand.NextBool(4))
 			{
-				if (Collision.CanHit(Projectile.Center - Projectile.velocity, 0, 0, pos + vel, 0, 0))
+				if (Collision.CanHit(Projectile.Center - Projectile.velocity, 0, 0, Position + Velocity, 0, 0))
 				{
-					var dust = Dust.NewDustDirect(pos, Projectile.width, Projectile.height, ModContent.DustType<FlameShine>(), 0, 0, 0, default, Main.rand.NextFloat(0.35f, 2f) * (StabTimer / 200f));
-					dust.velocity = vel;
+					var dust = Dust.NewDustDirect(Position, Projectile.width, Projectile.height, ModContent.DustType<FlameShine>(), 0, 0, 0, default, Main.rand.NextFloat(0.35f, 2f) * (StabTimer / 200f));
+					dust.velocity = Velocity;
 				}
 			}
 
@@ -187,13 +187,13 @@ namespace Everglow.EternalResolve.Projectiles
 					Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 4f)).RotatedByRandom(MathHelper.TwoPi) + new Vector2(0, -4f);
 					var somg = new VaporDust
 					{
-						velocity = newVelocity,
+						Velocity = newVelocity,
 						Active = true,
 						Visible = true,
-						position = Projectile.Center,
-						maxTime = Main.rand.Next(10, 90),
-						scale = Main.rand.NextFloat(20f, 135f),
-						rotation = Main.rand.NextFloat(6.283f),
+						Position = Projectile.Center,
+						MaxTime = Main.rand.Next(10, 90),
+						Scale = Main.rand.NextFloat(20f, 135f),
+						Rotation = Main.rand.NextFloat(6.283f),
 						ai = new float[] { Main.rand.NextFloat(-0.05f, -0.01f), 0 },
 					};
 					Ins.VFXManager.Add(somg);

@@ -115,13 +115,13 @@ public class IchorClub : ClubProj
 			}
 			var blood = new IchorDrop
 			{
-				velocity = afterVelocity * mulVelocity / mulScale + startPos.RotatedBy(MathHelper.PiOver2) * Omega * 0.4f * HitLength / 32f + player.velocity,
+				Velocity = afterVelocity * mulVelocity / mulScale + startPos.RotatedBy(MathHelper.PiOver2) * Omega * 0.4f * HitLength / 32f + player.velocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + startPos,
-				maxTime = Main.rand.Next(6, 12),
-				scale = mulScale,
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + startPos,
+				MaxTime = Main.rand.Next(6, 12),
+				Scale = mulScale,
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 			};
 			Ins.VFXManager.Add(blood);
@@ -136,12 +136,12 @@ public class IchorClub : ClubProj
 			}
 			var blood = new IchorSplash
 			{
-				velocity = afterVelocity * mulVelocity + startPos.RotatedBy(MathHelper.PiOver2) * Omega * 0.4f * HitLength / 32f + player.velocity,
+				Velocity = afterVelocity * mulVelocity + startPos.RotatedBy(MathHelper.PiOver2) * Omega * 0.4f * HitLength / 32f + player.velocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + startPos,
-				maxTime = Main.rand.Next(6, 12),
-				scale = Main.rand.NextFloat(12f, 24f),
+				Position = Projectile.Center + startPos,
+				MaxTime = Main.rand.Next(6, 12),
+				Scale = Main.rand.NextFloat(12f, 24f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.4f), 0 },
 			};
 			Ins.VFXManager.Add(blood);

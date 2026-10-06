@@ -11,6 +11,7 @@ public class RayDustPipeline : Pipeline
 		effect = ModAsset.RayDust;
 		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_ray.Value);
 	}
+
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
@@ -29,62 +30,68 @@ public class RayDustPipeline : Pipeline
 		Ins.Batch.End();
 	}
 }
+
 [Pipeline(typeof(RayDustPipeline), typeof(BloomPipeline))]
 public class RayDustDust : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
-	public Vector2 position;
-	public Vector2 velocity;
+
+	public Vector2 Position;
+	public Vector2 Velocity;
 	public float[] ai;
-	public float timer;
-	public float maxTime;
-	public float scale;
-	public float rotation;
-	public RayDustDust() { }
+	public float Timer;
+	public float MaxTime;
+	public float Scale;
+	public float Rotation;
+
+	public RayDustDust()
+	{
+	}
+
 	public override void Update()
 	{
-		position += velocity;
-		if (position.X <= 320 || position.X >= Main.maxTilesX * 16 - 320)
+		Position += Velocity;
+		if (Position.X <= 320 || Position.X >= Main.maxTilesX * 16 - 320)
 		{
-			timer = maxTime;
+			Timer = MaxTime;
 		}
-		if (position.Y <= 320 || position.Y >= Main.maxTilesY * 16 - 320)
+		if (Position.Y <= 320 || Position.Y >= Main.maxTilesY * 16 - 320)
 		{
-			timer = maxTime;
+			Timer = MaxTime;
 		}
-		velocity *= 0.98f;
-		scale *= 0.96f;
-		timer++;
-		if (timer > maxTime)
+		Velocity *= 0.98f;
+		Scale *= 0.96f;
+		Timer++;
+		if (Timer > MaxTime)
 		{
 			Active = false;
 			return;
 		}
 		ai[0] *= 0.99f;
-		velocity = velocity.RotatedBy(ai[0]);
-		if (Collision.SolidCollision(position, 0, 0))
+		Velocity = Velocity.RotatedBy(ai[0]);
+		if (Collision.SolidCollision(Position, 0, 0))
 		{
-			velocity *= -0.2f;
-			timer += 10;
+			Velocity *= -0.2f;
+			Timer += 10;
 		}
-		float pocession = 1 - timer / maxTime;
-		float c = pocession * scale * 0.3f;
-		Lighting.AddLight(position, c * 0.7f, c * 0.5f, 0);
+		float pocession = 1 - Timer / MaxTime;
+		float c = pocession * Scale * 0.3f;
+		Lighting.AddLight(Position, c * 0.7f, c * 0.5f, 0);
 	}
 
 	public override void Draw()
 	{
-		float pocession = timer / maxTime;
-		Vector2 toCorner = new Vector2(0, scale).RotatedBy(rotation);
-		Color lightColor = Lighting.GetColor((int)(position.X / 16f), (int)(position.Y / 16f));
-		Vector2 normalVel = Vector2.Normalize(velocity);
+		float pocession = Timer / MaxTime;
+		Vector2 toCorner = new Vector2(0, Scale).RotatedBy(Rotation);
+		Color lightColor = Lighting.GetColor((int)(Position.X / 16f), (int)(Position.Y / 16f));
+		Vector2 normalVel = Vector2.Normalize(Velocity);
 		List<Vertex2D> bars = new List<Vertex2D>()
 		{
-			new Vertex2D(position + normalVel * 8 * scale + toCorner,new Color(0, 0f,pocession, 0.0f), lightColor.ToVector3()),
-			new Vertex2D(position + normalVel * 8 * scale + toCorner.RotatedBy(Math.PI * 0.5),new Color(0, 1f, pocession, 0.0f), lightColor.ToVector3()),
+			new Vertex2D(Position + normalVel * 8 * Scale + toCorner, new Color(0, 0f, pocession, 0.0f), lightColor.ToVector3()),
+			new Vertex2D(Position + normalVel * 8 * Scale + toCorner.RotatedBy(Math.PI * 0.5), new Color(0, 1f, pocession, 0.0f), lightColor.ToVector3()),
 
-			new Vertex2D(position - normalVel * 8 * scale + toCorner.RotatedBy(Math.PI * 1.5),new Color(1, 0f ,pocession, 0.0f), lightColor.ToVector3()),
-			new Vertex2D(position - normalVel * 8 * scale + toCorner.RotatedBy(Math.PI * 1),new Color(1, 1f, pocession, 0.0f), lightColor.ToVector3())
+			new Vertex2D(Position - normalVel * 8 * Scale + toCorner.RotatedBy(Math.PI * 1.5), new Color(1, 0f, pocession, 0.0f), lightColor.ToVector3()),
+			new Vertex2D(Position - normalVel * 8 * Scale + toCorner.RotatedBy(Math.PI * 1), new Color(1, 1f, pocession, 0.0f), lightColor.ToVector3()),
 		};
 
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);

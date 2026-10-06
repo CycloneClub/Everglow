@@ -10,6 +10,7 @@ public class SnowPiecePipeline : Pipeline
 		effect = ModAsset.SnowPiece;
 		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_ice.Value);
 	}
+
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
@@ -28,82 +29,87 @@ public class SnowPiecePipeline : Pipeline
 		Ins.Batch.End();
 	}
 }
+
 [Pipeline(typeof(SnowPiecePipeline))]
 public class SnowPieceDust : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
-	public Vector2 position;
-	public Vector2 velocity;
-	public Vector2 coord0;
-	public Vector2 coord1;
+
+	public Vector2 Position;
+	public Vector2 Velocity;
+	public Vector2 Coord0;
+	public Vector2 Coord1;
 	public float[] ai;
-	public float timer;
-	public float maxTime;
-	public float scale;
-	public float rotation;
-	public float rotation2;
-	public float omega;
-	public float phi;
-	public SnowPieceDust() { }
+	public float Timer;
+	public float MaxTime;
+	public float Scale;
+	public float Rotation;
+	public float Rotation2;
+	public float Omega;
+	public float Phi;
+
 	public override void Update()
 	{
 		ai[2] *= 0.99f;
-		position += velocity;
-		if (position.X <= 320 || position.X >= Main.maxTilesX * 16 - 320)
+		Position += Velocity;
+		if (Position.X <= 320 || Position.X >= Main.maxTilesX * 16 - 320)
 		{
-			timer = maxTime;
+			Timer = MaxTime;
 		}
-		if (position.Y <= 320 || position.Y >= Main.maxTilesY * 16 - 320)
+		if (Position.Y <= 320 || Position.Y >= Main.maxTilesY * 16 - 320)
 		{
-			timer = maxTime;
+			Timer = MaxTime;
 		}
-		velocity *= 0.98f;
-		velocity += new Vector2(Main.windSpeedCurrent * 0.1f, 0.006f * scale);
-		scale *= 0.995f;
-		timer++;
-		if (timer > maxTime)
+		Velocity *= 0.98f;
+		Velocity += new Vector2(Main.windSpeedCurrent * 0.1f, 0.006f * Scale);
+		Scale *= 0.995f;
+		Timer++;
+		if (Timer > MaxTime)
+		{
 			Active = false;
-		velocity = velocity.RotatedBy(ai[2]);
-		if (Collision.SolidCollision(position, 0, 0))
-		{
-			velocity *= -0.2f;
-			timer += 10;
 		}
-		var tile = Main.tile[(int)(position.X / 16), (int)(position.Y / 16)];
-		if (position.Y % 1 < tile.LiquidAmount / 256f)
+
+		Velocity = Velocity.RotatedBy(ai[2]);
+		if (Collision.SolidCollision(Position, 0, 0))
 		{
-			timer += 120;
+			Velocity *= -0.2f;
+			Timer += 10;
 		}
-		if (scale < 0.5f)
+		var tile = Main.tile[(int)(Position.X / 16), (int)(Position.Y / 16)];
+		if (Position.Y % 1 < tile.LiquidAmount / 256f)
 		{
-			timer += 20;
+			Timer += 120;
+		}
+		if (Scale < 0.5f)
+		{
+			Timer += 20;
 		}
 	}
 
 	public override void Draw()
 	{
-		float pocession = timer / maxTime;
-		Vector2 toCorner = new Vector2(0, scale).RotatedBy(rotation);
+		float pocession = Timer / MaxTime;
+		Vector2 toCorner = new Vector2(0, Scale).RotatedBy(Rotation);
 		Vector2[] Corner = new Vector2[6];
 		for (int x = 0; x < 6; x++)
 		{
 			Corner[x] = toCorner.RotatedBy(x / 3d * Math.PI);
-			Corner[x].Y *= MathF.Sin(phi + (float)(Main.time * 0.03 * omega));
-			Corner[x] = Corner[x].RotatedBy(rotation2);
+			Corner[x].Y *= MathF.Sin(Phi + (float)(Main.time * 0.03 * Omega));
+			Corner[x] = Corner[x].RotatedBy(Rotation2);
 		}
-		Color lightColor = Lighting.GetColor((int)(position.X / 16f), (int)(position.Y / 16f));
-		float reflectionLight = (1 - pocession) * MathF.Pow((MathF.Sin(phi + (float)(Main.time * 0.03 * omega + 1.57f)) + 1), 4) / 2f;
+		Color lightColor = Lighting.GetColor((int)(Position.X / 16f), (int)(Position.Y / 16f));
+		float reflectionLight = (1 - pocession) * MathF.Pow(MathF.Sin(Phi + (float)(Main.time * 0.03 * Omega + 1.57f)) + 1, 4) / 2f;
 		List<Vertex2D> bars = new List<Vertex2D>();
 		for (int x = 0; x < 3; x++)
 		{
-			bars.Add(new Vertex2D(position, lightColor, new Vector3(ai[0], ai[1], reflectionLight)));
-			bars.Add(new Vertex2D(position + Corner[2 * x], lightColor, new Vector3(ai[0] + coord0.X, ai[1] + coord0.Y, reflectionLight)));
+			bars.Add(new Vertex2D(Position, lightColor, new Vector3(ai[0], ai[1], reflectionLight)));
+			bars.Add(new Vertex2D(Position + Corner[2 * x], lightColor, new Vector3(ai[0] + Coord0.X, ai[1] + Coord0.Y, reflectionLight)));
 
-			bars.Add(new Vertex2D(position, lightColor, new Vector3(ai[0], ai[1], reflectionLight)));
-			bars.Add(new Vertex2D(position + Corner[2 * x + 1], lightColor, new Vector3(ai[0] + coord1.X, ai[1] + coord1.Y, reflectionLight)));
+			bars.Add(new Vertex2D(Position, lightColor, new Vector3(ai[0], ai[1], reflectionLight)));
+			bars.Add(new Vertex2D(Position + Corner[2 * x + 1], lightColor, new Vector3(ai[0] + Coord1.X, ai[1] + Coord1.Y, reflectionLight)));
 		}
-		bars.Add(new Vertex2D(position, lightColor, new Vector3(ai[0], ai[1], reflectionLight)));
-		bars.Add(new Vertex2D(position + Corner[0], lightColor, new Vector3(ai[0] + coord0.X, ai[1] + coord0.Y, reflectionLight)));
+		bars.Add(new Vertex2D(Position, lightColor, new Vector3(ai[0], ai[1], reflectionLight)));
+		bars.Add(new Vertex2D(Position + Corner[0], lightColor, new Vector3(ai[0] + Coord0.X, ai[1] + Coord0.Y, reflectionLight)));
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);
 	}
 }

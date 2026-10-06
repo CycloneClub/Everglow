@@ -32,15 +32,12 @@ public class PylonStonePostProj_corrupt_explosion : NoTextureProjectile, IWarpPr
 		// GenerateVFXExpolode(10);
 		for (int g = 0; g < 2; g++)
 		{
-			var darknessWave = new WaveOfEffectPylonHit_CorruptWave
+			var darknessWave = new WaveOfEffectPylonHit_CorruptWave(Projectile.Center, Vector2.Zero, [Main.rand.NextFloat(0.1f, 1f), 4f, 80f + g * 15])
 			{
-				velocity = Vector2.Zero,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = 60,
+				MaxTime = 60,
 				radius = 0,
-				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), 4f, 80f + g * 15 },
 			};
 			Ins.VFXManager.Add(darknessWave);
 		}
@@ -56,12 +53,12 @@ public class PylonStonePostProj_corrupt_explosion : NoTextureProjectile, IWarpPr
 		{
 			var cf = new CurseFlameDust
 			{
-				velocity = new Vector2(0, Main.rand.NextFloat(1.65f, 2.5f)).RotatedByRandom(6.283) * mulVelocity,
+				Velocity = new Vector2(0, Main.rand.NextFloat(1.65f, 2.5f)).RotatedByRandom(6.283) * mulVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-26f, 26f), 0).RotatedByRandom(6.283),
-				maxTime = Main.rand.Next(12, 66),
-				scale = 12f * mulVelocity,
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-26f, 26f), 0).RotatedByRandom(6.283),
+				MaxTime = Main.rand.Next(12, 66),
+				Scale = 12f * mulVelocity,
 				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.18f, 0.18f), Main.rand.NextFloat(1f, 2.2f) * mulVelocity },
 			};
 			Ins.VFXManager.Add(cf);
@@ -71,12 +68,12 @@ public class PylonStonePostProj_corrupt_explosion : NoTextureProjectile, IWarpPr
 			Vector2 vel = new Vector2(0, Main.rand.NextFloat(1.65f, 3.5f)).RotatedByRandom(6.283) * mulVelocity;
 			var cf = new CurseFlameDust
 			{
-				velocity = vel,
+				Velocity = vel,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + vel * 3,
-				maxTime = Main.rand.Next(12, 70),
-				scale = 12f * mulVelocity,
+				Position = Projectile.Center + vel * 3,
+				MaxTime = Main.rand.Next(12, 70),
+				Scale = 12f * mulVelocity,
 				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.4f, 0.4f), Main.rand.NextFloat(2f, 3.2f) * mulVelocity },
 			};
 			Ins.VFXManager.Add(cf);
@@ -86,13 +83,13 @@ public class PylonStonePostProj_corrupt_explosion : NoTextureProjectile, IWarpPr
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(2f, 6f)).RotatedByRandom(MathHelper.TwoPi);
 			var spark = new CurseFlameSparkDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) - Projectile.velocity + newVelocity * 3,
-				maxTime = Main.rand.Next(37, 145),
-				scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(4f, 47.0f)),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) - Projectile.velocity + newVelocity * 3,
+				MaxTime = Main.rand.Next(37, 145),
+				Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(4f, 47.0f)),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.13f, 0.13f) },
 			};
 			Ins.VFXManager.Add(spark);

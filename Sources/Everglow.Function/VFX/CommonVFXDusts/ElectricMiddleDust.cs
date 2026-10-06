@@ -19,12 +19,12 @@ public class ElectricMiddleDust : ModDust
 				Vector2 afterVelocity = new Vector2(0, size * dust.scale * 3).RotatedByRandom(MathHelper.TwoPi);
 				var electric = new ElectricCurrentDust
 				{
-					velocity = afterVelocity,
+					Velocity = afterVelocity,
 					Active = true,
 					Visible = true,
-					position = dust.position + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-					maxTime = Main.rand.NextFloat(35, 105) * dust.scale * 3,
-					scale = size,
+					Position = dust.position + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+					MaxTime = Main.rand.NextFloat(35, 105) * dust.scale * 3,
+					Scale = size,
 					ai = new float[] { Main.rand.NextFloat(0.0f, 0.6f), size, Main.rand.NextFloat(0.1f, 0.12f) },
 				};
 				Ins.VFXManager.Add(electric);

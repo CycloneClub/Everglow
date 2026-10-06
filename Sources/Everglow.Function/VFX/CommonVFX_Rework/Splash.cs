@@ -9,19 +9,17 @@ public class SplashPipeline : Pipeline
 {
 	public override void BeginRender()
 	{
-
 	}
+
 	public override void EndRender()
 	{
-
-
 	}
 
 	public override void Load()
 	{
 		effect = ModAsset.CommonDissolve;
-
 	}
+
 	public override void Render(IEnumerable<IVisual> visuals)
 	{
 		foreach (Visual v in visuals)
@@ -49,57 +47,61 @@ public class SplashPipeline : Pipeline
 			Ins.Batch.End();
 		}
 	}
-
 }
+
 [Pipeline(typeof(SplashPipeline), typeof(BloomPipeline))]
 public class Splash : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
-	public Vector2 position;
-	public Vector2 velocity;
-	public float gravity = -0.2f;
+
+	public Vector2 Position;
+	public Vector2 Velocity;
+	public float Gravity = -0.2f;
 	public float timeleft;
 	public float maxTimeleft;
-	public float scale = 1;
+	public float Scale = 1;
 	public GradientColor color;
-	float rotation;
+	public float Rotation;
 	public Entity Owner;
+	public float SpeedLimits = 1;
 
-	float maxScale;
-	public float speedLimits = 1;
-	public Splash()
-	{
-
-	}
 	public override void OnSpawn()
 	{
-		rotation = Main.rand.NextFloat(6.28f);
+		Rotation = Main.rand.NextFloat(6.28f);
 		texType = Main.rand.Next(3);
 	}
+
 	public override void Update()
 	{
-		position += velocity;
-		velocity.Y += gravity;
-		velocity *= speedLimits;
-		scale *= 0.97f;
+		Position += Velocity;
+		Velocity.Y += Gravity;
+		Velocity *= SpeedLimits;
+		Scale *= 0.97f;
 
 		timeleft--;
 		if (timeleft <= 0)
-			Active = false;
-		if (Collision.SolidCollision(position, 10, 10))
 		{
-			velocity.Y *= 0.6f;
+			Active = false;
+		}
+
+		if (Collision.SolidCollision(Position, 10, 10))
+		{
+			Velocity.Y *= 0.6f;
 		}
 	}
 
-	int texType = 0;
+	private int texType = 0;
+
 	public override void Draw()
 	{
 		Color c = color.GetColor(1 - timeleft / maxTimeleft);
 		c.A = 0;
-		Vector2 drawPos = position;
+		Vector2 drawPos = Position;
 		if (Owner != null)
+		{
 			drawPos += Owner.Center;
+		}
+
 		Texture2D tex = texType switch
 		{
 			0 => ModAsset.Splash_0.Value,
@@ -108,6 +110,6 @@ public class Splash : Visual
 			_ => ModAsset.Splash_0.Value,
 		};
 
-		Ins.Batch.Draw(tex, drawPos, null, c, rotation, tex.Size() / 2, scale, 0);
+		Ins.Batch.Draw(tex, drawPos, null, c, Rotation, tex.Size() / 2, Scale, 0);
 	}
 }

@@ -50,13 +50,13 @@ public class GoldenShowerBomb : ModProjectile, IWarpProjectile
 			float mulScale = Main.rand.NextFloat(6f, 14f);
 			var blood = new IchorDrop
 			{
-				velocity = afterVelocity * MathF.Sqrt(Projectile.ai[0]),
+				Velocity = afterVelocity * MathF.Sqrt(Projectile.ai[0]),
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(82, 164),
-				scale = mulScale,
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(82, 164),
+				Scale = mulScale,
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 			};
 			Ins.VFXManager.Add(blood);
@@ -66,12 +66,12 @@ public class GoldenShowerBomb : ModProjectile, IWarpProjectile
 			Vector2 afterVelocity = new Vector2(0, Main.rand.NextFloat(0.8f)).RotatedByRandom(MathHelper.TwoPi);
 			var blood = new IchorSplash
 			{
-				velocity = afterVelocity * MathF.Sqrt(Projectile.ai[0]),
+				Velocity = afterVelocity * MathF.Sqrt(Projectile.ai[0]),
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(42, 164),
-				scale = Main.rand.NextFloat(6f, 12f),
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(42, 164),
+				Scale = Main.rand.NextFloat(6f, 12f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.4f), 0 },
 			};
 			Ins.VFXManager.Add(blood);

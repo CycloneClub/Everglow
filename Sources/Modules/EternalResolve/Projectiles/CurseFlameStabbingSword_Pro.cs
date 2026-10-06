@@ -35,15 +35,15 @@ namespace Everglow.EternalResolve.Projectiles
 			Vector2 playerVel = Main.player[Projectile.owner].velocity;
 			Vector2 projVel = Projectile.velocity;
 			float rot = Main.rand.NextFloat(-0.4f, 0.4f);
-			Vector2 vel = playerVel + projVel.RotatedBy(Main.rand.NextFloat(-0.3f, 0.3f)) * Main.rand.NextFloat(0.75f, 3.25f);
-			Vector2 pos = Projectile.Center + projVel.RotatedBy(rot) * Main.rand.NextFloat(1f, 2.5f);
+			Vector2 Velocity = playerVel + projVel.RotatedBy(Main.rand.NextFloat(-0.3f, 0.3f)) * Main.rand.NextFloat(0.75f, 3.25f);
+			Vector2 Position = Projectile.Center + projVel.RotatedBy(rot) * Main.rand.NextFloat(1f, 2.5f);
 			var cf = new CursedFlame_flowDust
 			{
-				velocity = vel * 0.15f,
+				Velocity = Velocity * 0.15f,
 				Active = true,
 				Visible = true,
-				position = pos,
-				maxTime = Main.rand.Next(12, 22),
+				Position = Position,
+				MaxTime = Main.rand.Next(12, 22),
 				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), -rot * 0.02f, Main.rand.NextFloat(9.6f, 20f), Main.rand.NextFloat(-0.01f, 0.01f) },
 			};
 			Ins.VFXManager.Add(cf);
@@ -54,17 +54,17 @@ namespace Everglow.EternalResolve.Projectiles
 			Vector2 playerVel = Main.player[Projectile.owner].velocity;
 			Vector2 projVel = Projectile.velocity;
 			float rot = Main.rand.NextFloat(-0.3f, 0.3f);
-			Vector2 vel = playerVel + projVel.RotatedBy(Main.rand.NextFloat(-0.3f, 0.3f)) * Main.rand.NextFloat(0.75f, 2.25f);
-			Vector2 pos = Projectile.Center + projVel.RotatedBy(rot) * Main.rand.NextFloat(0.1f, 5f);
+			Vector2 Velocity = playerVel + projVel.RotatedBy(Main.rand.NextFloat(-0.3f, 0.3f)) * Main.rand.NextFloat(0.75f, 2.25f);
+			Vector2 Position = Projectile.Center + projVel.RotatedBy(rot) * Main.rand.NextFloat(0.1f, 5f);
 			var spark = new CurseFlameSparkDust
 			{
-				velocity = vel * 0.15f,
+				Velocity = Velocity * 0.15f,
 				Active = true,
 				Visible = true,
-				position = pos,
-				maxTime = Main.rand.Next(137, 245),
-				scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(4f, 17.0f)),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Position,
+				MaxTime = Main.rand.Next(137, 245),
+				Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(4f, 17.0f)),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.02f, 0.02f) },
 			};
 			Ins.VFXManager.Add(spark);

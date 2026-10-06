@@ -1,5 +1,4 @@
 using Everglow.Commons.VFX.CommonVFXDusts;
-using Everglow.Myth.Misc.Dusts;
 using Terraria.GameContent;
 using Terraria.GameContent.Drawing;
 using Terraria.Graphics.Renderers;
@@ -45,22 +44,22 @@ public class Glow : ModProjectile
 		float adjustedRotation = MathHelper.Pi * direction * percentageOfLife + velocityRotation + direction * MathHelper.Pi + player.fullRotation;
 		Projectile.rotation = adjustedRotation; // Set the rotation to our to the new rotation we calculated.
 
-		float scaleMulti = 1.2f; // Excalibur, Terra Blade, and The Horseman's Blade is 0.6f; True Excalibur is 1f; default is 0.2f 
-		float scaleAdder = 1.2f; // Excalibur, Terra Blade, and The Horseman's Blade is 1f; True Excalibur is 1.2f; default is 1f 
+		float scaleMulti = 1.2f; // Excalibur, Terra Blade, and The Horseman's Blade is 0.6f; True Excalibur is 1f; default is 0.2f
+		float scaleAdder = 1.2f; // Excalibur, Terra Blade, and The Horseman's Blade is 1f; True Excalibur is 1.2f; default is 1f
 
 		Projectile.Center = player.RotatedRelativePoint(player.MountedCenter) - Projectile.velocity;
 		Projectile.scale = scaleAdder + percentageOfLife * scaleMulti;
 		float distance = Main.rand.NextFloat(10f, 80.0f);
 		var spark = new RayDustDust
 		{
-			velocity = Vector2.Normalize(new Vector2(player.direction, 1).RotatedBy(Projectile.rotation * player.direction + MathHelper.PiOver2)) * distance / 12f * player.direction,
+			Velocity = Vector2.Normalize(new Vector2(player.direction, 1).RotatedBy(Projectile.rotation * player.direction + MathHelper.PiOver2)) * distance / 12f * player.direction,
 			Active = true,
 			Visible = true,
-			position = Projectile.Center + Vector2.Normalize(new Vector2(player.direction, 1).RotatedBy(Projectile.rotation * player.direction)) * distance,
-			maxTime = Main.rand.Next(137, 245),
-			scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(0.4f, 2.0f)) * MathF.Sqrt(distance),
-			rotation = Main.rand.NextFloat(6.283f),
-			ai = new float[] { 0, 0 }
+			Position = Projectile.Center + Vector2.Normalize(new Vector2(player.direction, 1).RotatedBy(Projectile.rotation * player.direction)) * distance,
+			MaxTime = Main.rand.Next(137, 245),
+			Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(0.4f, 2.0f)) * MathF.Sqrt(distance),
+			Rotation = Main.rand.NextFloat(6.283f),
+			ai = new float[] { 0, 0 },
 		};
 		Ins.VFXManager.Add(spark);
 
@@ -79,6 +78,7 @@ public class Glow : ModProjectile
 			Projectile.EmitEnchantmentVisualsAt(rectangle.TopLeft(), rectangle.Width, rectangle.Height);
 		}
 	}
+
 	public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 	{
 		float coneLength = 94f * Projectile.scale;
@@ -119,6 +119,7 @@ public class Glow : ModProjectile
 
 		hit.HitDirection = (Main.player[Projectile.owner].Center.X < target.Center.X) ? 1 : (-1);
 	}
+
 	public override void OnHitPlayer(Player target, Player.HurtInfo info)
 	{
 		ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.Excalibur,
@@ -127,15 +128,16 @@ public class Glow : ModProjectile
 
 		info.HitDirection = (Main.player[Projectile.owner].Center.X < target.Center.X) ? 1 : (-1);
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Player player = Main.player[Projectile.owner];
-		Vector2 position = Projectile.Center - Main.screenPosition;
+		Vector2 Position = Projectile.Center - Main.screenPosition;
 		Texture2D texture = TextureAssets.Projectile[Type].Value;
 		Rectangle sourceRectangle = texture.Frame(1, 4); // The sourceRectangle says which frame to use.
 		Vector2 origin = sourceRectangle.Size() / 2f;
 		float scale = Projectile.scale * 0.5f;
-		SpriteEffects spriteEffects = ((!(Projectile.ai[0] >= 0f)) ? SpriteEffects.FlipVertically : SpriteEffects.None); // Flip the sprite based on the direction it is facing.
+		SpriteEffects spriteEffects = (!(Projectile.ai[0] >= 0f)) ? SpriteEffects.FlipVertically : SpriteEffects.None; // Flip the sprite based on the direction it is facing.
 		float percentageOfLife = Projectile.localAI[0] / Projectile.ai[1]; // The current time over the max time.
 		float lerpTime = Utils.Remap(percentageOfLife, 0f, 0.6f, 0f, 1f) * Utils.Remap(percentageOfLife, 0.6f, 1f, 1f, 0f);
 		float lightingColor = Lighting.GetColor(Projectile.Center.ToTileCoordinates()).ToVector3().Length() / (float)Math.Sqrt(3.0);
@@ -148,48 +150,54 @@ public class Glow : ModProjectile
 		Color whiteTimesLerpTime = Color.White * lerpTime * 0.5f;
 		whiteTimesLerpTime.A = (byte)(whiteTimesLerpTime.A * (1f - lightingColor));
 		Color faintLightingColor = whiteTimesLerpTime * 0.5f;
-		faintLightingColor.G = (byte)(faintLightingColor.G);
+		faintLightingColor.G = faintLightingColor.G;
 		faintLightingColor.B = (byte)(faintLightingColor.R * (0.25f + lightingColor * 0.75f));
 
 		Texture2D sword = ModAsset.Weapons_Glow.Value;
-		Main.EntitySpriteDraw(sword, position + new Vector2(40, 0).RotatedBy(Projectile.rotation + MathHelper.PiOver4 * player.direction), null, lightColor, Projectile.rotation + MathHelper.PiOver2 * player.direction, sword.Size() * 0.5f, 1f, spriteEffects, 0f);
+		Main.EntitySpriteDraw(sword, Position + new Vector2(40, 0).RotatedBy(Projectile.rotation + MathHelper.PiOver4 * player.direction), null, lightColor, Projectile.rotation + MathHelper.PiOver2 * player.direction, sword.Size() * 0.5f, 1f, spriteEffects, 0f);
+
 		// Back part
-		Main.EntitySpriteDraw(texture, position, sourceRectangle, backDarkColor * lerpTime, Projectile.rotation + Projectile.ai[0] * MathHelper.PiOver4 * -1f * (1f - percentageOfLife), origin, scale, spriteEffects, 0f);
+		Main.EntitySpriteDraw(texture, Position, sourceRectangle, backDarkColor * lerpTime, Projectile.rotation + Projectile.ai[0] * MathHelper.PiOver4 * -1f * (1f - percentageOfLife), origin, scale, spriteEffects, 0f);
+
 		// Very faint part affected by the light color
-		Main.EntitySpriteDraw(texture, position, sourceRectangle, faintLightingColor * 0.15f, Projectile.rotation + Projectile.ai[0] * 0.01f, origin, scale, spriteEffects, 0f);
+		Main.EntitySpriteDraw(texture, Position, sourceRectangle, faintLightingColor * 0.15f, Projectile.rotation + Projectile.ai[0] * 0.01f, origin, scale, spriteEffects, 0f);
+
 		// Middle part
-		Main.EntitySpriteDraw(texture, position, sourceRectangle, middleMediumColor * lerpTime * 0.3f, Projectile.rotation, origin, scale, spriteEffects, 0f);
+		Main.EntitySpriteDraw(texture, Position, sourceRectangle, middleMediumColor * lerpTime * 0.3f, Projectile.rotation, origin, scale, spriteEffects, 0f);
+
 		// Front part
-		Main.EntitySpriteDraw(texture, position, sourceRectangle, frontLightColor * lerpTime * 0.5f, Projectile.rotation, origin, scale * 0.975f, spriteEffects, 0f);
+		Main.EntitySpriteDraw(texture, Position, sourceRectangle, frontLightColor * lerpTime * 0.5f, Projectile.rotation, origin, scale * 0.975f, spriteEffects, 0f);
+
 		// Thin top line (final frame)
-		Main.EntitySpriteDraw(texture, position, texture.Frame(1, 4, 0, 3), Color.White * 0.6f * lerpTime, Projectile.rotation + Projectile.ai[0] * 0.01f, origin, scale, spriteEffects, 0f);
+		Main.EntitySpriteDraw(texture, Position, texture.Frame(1, 4, 0, 3), Color.White * 0.6f * lerpTime, Projectile.rotation + Projectile.ai[0] * 0.01f, origin, scale, spriteEffects, 0f);
+
 		// Thin middle line (final frame)
-		Main.EntitySpriteDraw(texture, position, texture.Frame(1, 4, 0, 3), Color.White * 0.5f * lerpTime, Projectile.rotation + Projectile.ai[0] * -0.05f, origin, scale * 0.8f, spriteEffects, 0f);
+		Main.EntitySpriteDraw(texture, Position, texture.Frame(1, 4, 0, 3), Color.White * 0.5f * lerpTime, Projectile.rotation + Projectile.ai[0] * -0.05f, origin, scale * 0.8f, spriteEffects, 0f);
+
 		// Thin bottom line (final frame)
-		Main.EntitySpriteDraw(texture, position, texture.Frame(1, 4, 0, 3), Color.White * 0.4f * lerpTime, Projectile.rotation + Projectile.ai[0] * -0.1f, origin, scale * 0.6f, spriteEffects, 0f);
+		Main.EntitySpriteDraw(texture, Position, texture.Frame(1, 4, 0, 3), Color.White * 0.4f * lerpTime, Projectile.rotation + Projectile.ai[0] * -0.1f, origin, scale * 0.6f, spriteEffects, 0f);
 
 		// This draws some sparkles around the circumference of the swing.
 		for (float i = 0f; i < 8f; i += 1f)
 		{
 			float edgeRotation = Projectile.rotation + Projectile.ai[0] * i * (MathHelper.Pi * -2f) * 0.025f + Utils.Remap(percentageOfLife, 0f, 1f, 0f, MathHelper.PiOver4) * Projectile.ai[0];
-			Vector2 drawpos = position + edgeRotation.ToRotationVector2() * ((float)texture.Width * 0.5f - 6f) * scale;
+			Vector2 drawpos = Position + edgeRotation.ToRotationVector2() * (texture.Width * 0.5f - 6f) * scale;
 			DrawPrettyStarSparkle(Projectile.Opacity, SpriteEffects.None, drawpos, new Color(180, 255, 255, 0) * lerpTime * (i / 9f), middleMediumColor, percentageOfLife, 0f, 0.5f, 0.5f, 1f, edgeRotation, new Vector2(0f, Utils.Remap(percentageOfLife, 0f, 1f, 3f, 0f)) * scale, Vector2.One * scale);
 		}
 
 		// This draws a large star sparkle at the front of the projectile.
-		Vector2 drawpos2 = position + (Projectile.rotation + Utils.Remap(percentageOfLife, 0f, 1f, 0f, MathHelper.PiOver4) * Projectile.ai[0]).ToRotationVector2() * ((float)texture.Width * 0.5f - 4f) * scale;
+		Vector2 drawpos2 = Position + (Projectile.rotation + Utils.Remap(percentageOfLife, 0f, 1f, 0f, MathHelper.PiOver4) * Projectile.ai[0]).ToRotationVector2() * (texture.Width * 0.5f - 4f) * scale;
 		DrawPrettyStarSparkle(Projectile.Opacity, SpriteEffects.None, drawpos2, new Color(180, 255, 255, 0) * lerpTime * 0.5f, middleMediumColor, percentageOfLife, 0f, 0.5f, 0.5f, 1f, 0f, new Vector2(2f, Utils.Remap(percentageOfLife, 0f, 1f, 4f, 1f)) * scale, Vector2.One * scale);
 
 		// Uncomment this line for a visual representation of the projectile's size.
 		// Main.EntitySpriteDraw(TextureAssets.MagicPixel.Value, position, sourceRectangle, Color.Orange * 0.75f, 0f, origin, scale, spriteEffects);
-
 		return false;
 	}
 
 	// Copied from Main.DrawPrettyStarSparkle() which is private
 	private static void DrawPrettyStarSparkle(float opacity, SpriteEffects dir, Vector2 drawpos, Color drawColor, Color shineColor, float flareCounter, float fadeInStart, float fadeInEnd, float fadeOutStart, float fadeOutEnd, float rotation, Vector2 scale, Vector2 fatness)
 	{
-		Texture2D sparkleTexture = TextureAssets.Extra[98].Value;
+		Texture2D sparkleTexture = TextureAssets.Extra[ExtrasID.SharpTears].Value;
 		Color bigColor = shineColor * opacity * 0.5f;
 		bigColor.A = 0;
 		Vector2 origin = sparkleTexture.Size() / 2f;
@@ -199,9 +207,11 @@ public class Glow : ModProjectile
 		Vector2 scaleUpDown = new Vector2(fatness.Y * 0.5f, scale.Y) * lerpValue;
 		bigColor *= lerpValue;
 		smallColor *= lerpValue;
+
 		// Bright, large part
 		Main.EntitySpriteDraw(sparkleTexture, drawpos, null, bigColor, MathHelper.PiOver2 + rotation, origin, scaleLeftRight, dir);
 		Main.EntitySpriteDraw(sparkleTexture, drawpos, null, bigColor, 0f + rotation, origin, scaleUpDown, dir);
+
 		// Dim, small part
 		Main.EntitySpriteDraw(sparkleTexture, drawpos, null, smallColor, MathHelper.PiOver2 + rotation, origin, scaleLeftRight * 0.6f, dir);
 		Main.EntitySpriteDraw(sparkleTexture, drawpos, null, smallColor, 0f + rotation, origin, scaleUpDown * 0.6f, dir);
@@ -209,7 +219,9 @@ public class Glow : ModProjectile
 
 	// Copied from Terraria.GameContent.Drawing.ParticleOrchestra.Spawn_Excalibur which is private
 	private static PrettySparkleParticle GetNewPrettySparkleParticle() => new PrettySparkleParticle();
+
 	private static ParticlePool<PrettySparkleParticle> _poolPrettySparkle = new ParticlePool<PrettySparkleParticle>(200, GetNewPrettySparkleParticle);
+
 	/// <summary>
 	/// A custom version of Spawn_Excalibur from Terraria.GameContent.Drawing.ParticleOrchestra
 	/// </summary>
@@ -219,7 +231,10 @@ public class Glow : ModProjectile
 	internal static void Spawn_CustomColorExcalibur(ParticleOrchestraSettings settings, Color colorTint1, Color colorTint2 = default)
 	{
 		if (colorTint2 == default)
+		{
 			colorTint2 = colorTint1;
+		}
+
 		float num = 30f;
 		float num2 = 0f;
 		for (float num3 = 0f; num3 < 4f; num3 += 1f)

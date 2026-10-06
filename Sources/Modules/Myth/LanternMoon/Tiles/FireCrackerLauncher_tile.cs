@@ -20,7 +20,7 @@ public class FireCrackerLauncher_tile : ModTile
 			16,
 			16,
 			16,
-			18
+			18,
 		};
 		TileObjectData.newTile.Origin = new Point16(0, 3);
 		TileObjectData.newTile.StyleHorizontal = true;
@@ -28,6 +28,7 @@ public class FireCrackerLauncher_tile : ModTile
 
 		AddMapEntry(new Color(200, 10, 10));
 	}
+
 	public override void HitWire(int i, int j)
 	{
 		Tile tile = Main.tile[i, j];
@@ -38,6 +39,7 @@ public class FireCrackerLauncher_tile : ModTile
 			Activate(i, j);
 		}
 	}
+
 	private void Activate(int i, int j)
 	{
 		Tile tile = Main.tile[i, j];
@@ -57,6 +59,7 @@ public class FireCrackerLauncher_tile : ModTile
 			}
 		}
 	}
+
 	public void GenerateSmog(int Frequency, Vector2 pos)
 	{
 		float mulVelocity = 1f;
@@ -65,18 +68,19 @@ public class FireCrackerLauncher_tile : ModTile
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(2f, 4f)).RotatedByRandom(MathHelper.TwoPi) + new Vector2(0, Main.rand.NextFloat(-40f, -5f));
 			var somg = new FireSmogDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = pos + newVelocity * 0.3f,
-				maxTime = Main.rand.Next(37, 45),
-				scale = Main.rand.NextFloat(20f, 35f),
-				rotation = Main.rand.NextFloat(6.283f),
-				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 }
+				Position = pos + newVelocity * 0.3f,
+				MaxTime = Main.rand.Next(37, 45),
+				Scale = Main.rand.NextFloat(20f, 35f),
+				Rotation = Main.rand.NextFloat(6.283f),
+				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
 			Ins.VFXManager.Add(somg);
 		}
 	}
+
 	public void GenerateFire(int Frequency, Vector2 pos)
 	{
 		float mulVelocity = 1f;
@@ -94,11 +98,12 @@ public class FireCrackerLauncher_tile : ModTile
 				MaxTime = Main.rand.Next(9, 75),
 				Scale = Main.rand.NextFloat(7f, 15f),
 				Rotation = Main.rand.NextFloat(6.283f),
-				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 }
+				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
 			Ins.VFXManager.Add(fire);
 		}
 	}
+
 	public void GenerateSpark(int Frequency, Vector2 pos)
 	{
 		float mulVelocity = 1f;
@@ -107,23 +112,25 @@ public class FireCrackerLauncher_tile : ModTile
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(0f, 1f)).RotatedByRandom(MathHelper.TwoPi) + new Vector2(0, Main.rand.NextFloat(-60f, -5f));
 			var spark = new FireSparkDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = pos,
-				maxTime = Main.rand.Next(17, 125),
-				scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(0.1f, 17.0f)),
-				rotation = Main.rand.NextFloat(6.283f),
-				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.02f, 0.02f) }
+				Position = pos,
+				MaxTime = Main.rand.Next(17, 125),
+				Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(0.1f, 17.0f)),
+				Rotation = Main.rand.NextFloat(6.283f),
+				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.02f, 0.02f) },
 			};
 			Ins.VFXManager.Add(spark);
 		}
 	}
+
 	public override bool RightClick(int i, int j)
 	{
 		Activate(i, j);
 		return base.RightClick(i, j);
 	}
+
 	public override bool CanExplode(int i, int j)
 	{
 		return false;

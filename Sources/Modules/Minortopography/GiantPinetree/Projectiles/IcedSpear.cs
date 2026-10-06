@@ -1,6 +1,7 @@
 using Everglow.Commons.VFX.CommonVFXDusts;
 using Everglow.Minortopography.GiantPinetree.Dusts;
 using Terraria.Audio;
+
 namespace Everglow.Minortopography.GiantPinetree.Projectiles;
 
 public class IcedSpear : ModProjectile
@@ -18,6 +19,7 @@ public class IcedSpear : ModProjectile
 		Projectile.usesLocalNPCImmunity = true;
 		Projectile.localNPCHitCooldown = 15;
 	}
+
 	internal bool shot = false;
 	internal int power = 0;
 	public int stickNPC = -1;
@@ -25,12 +27,16 @@ public class IcedSpear : ModProjectile
 	public float hitTargetAngle = 0;
 	public float hitTargetScale = 1;
 	public Vector2 relativePos = Vector2.zeroVector;
+
 	public override void AI()
 	{
 		Player player = Main.player[Projectile.owner];
 		int playerDir = -1;
 		if (Main.MouseWorld.X > player.Center.X)
+		{
 			playerDir = 1;
+		}
+
 		if (shot)
 		{
 			if (Projectile.wet)
@@ -83,7 +89,9 @@ public class IcedSpear : ModProjectile
 			Projectile.Center = player.Center + Projectile.velocity.RotatedBy(Math.PI * -0.5) * 20 * playerDir - Projectile.velocity * (power / 3f - 16);
 			Projectile.rotation = (float)(Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + Math.PI * 0.25);
 			if (power < 100)
+			{
 				power++;
+			}
 
 			player.heldProj = Projectile.whoAmI;
 			player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation + (float)(Math.PI * 0.25 + Math.PI * 0.6 * playerDir - (power / 40d - 1.0) * playerDir));
@@ -102,6 +110,7 @@ public class IcedSpear : ModProjectile
 			GenerateDust();
 		}
 	}
+
 	public void GenerateDust()
 	{
 		if (Projectile.Center.X > Main.screenPosition.X - 100 && Projectile.Center.X < Main.screenPosition.X + Main.screenWidth + 100 && Projectile.Center.Y > Main.screenPosition.Y - 100 && Projectile.Center.Y < Main.screenPosition.Y + Main.screenWidth + 100)
@@ -111,14 +120,14 @@ public class IcedSpear : ModProjectile
 				Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 0.6f)).RotatedByRandom(MathHelper.TwoPi);
 				var smog = new IceSmogDust
 				{
-					velocity = newVelocity + Projectile.velocity * Main.rand.NextFloat(0f, 0.03f),
+					Velocity = newVelocity + Projectile.velocity * Main.rand.NextFloat(0f, 0.03f),
 					Active = true,
 					Visible = true,
-					position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity * Main.rand.NextFloat(-3f, 2f),
-					maxTime = Main.rand.Next(137, 245),
-					scale = Main.rand.NextFloat(30f, 75f),
-					rotation = Main.rand.NextFloat(6.283f),
-					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.005f, 0.005f) }
+					Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity * Main.rand.NextFloat(-3f, 2f),
+					MaxTime = Main.rand.Next(137, 245),
+					Scale = Main.rand.NextFloat(30f, 75f),
+					Rotation = Main.rand.NextFloat(6.283f),
+					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.005f, 0.005f) },
 				};
 				Ins.VFXManager.Add(smog);
 			}
@@ -127,14 +136,14 @@ public class IcedSpear : ModProjectile
 				Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 0.6f)).RotatedByRandom(MathHelper.TwoPi);
 				var smog = new IceSmogDust2
 				{
-					velocity = newVelocity + Projectile.velocity * Main.rand.NextFloat(0f, 0.03f),
+					Velocity = newVelocity + Projectile.velocity * Main.rand.NextFloat(0f, 0.03f),
 					Active = true,
 					Visible = true,
-					position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity * Main.rand.NextFloat(-3f, 2f),
-					maxTime = Main.rand.Next(137, 245),
-					scale = Main.rand.NextFloat(30f, 75f),
-					rotation = Main.rand.NextFloat(6.283f),
-					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.005f, 0.005f) }
+					Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity * Main.rand.NextFloat(-3f, 2f),
+					MaxTime = Main.rand.Next(137, 245),
+					Scale = Main.rand.NextFloat(30f, 75f),
+					Rotation = Main.rand.NextFloat(6.283f),
+					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.005f, 0.005f) },
 				};
 				Ins.VFXManager.Add(smog);
 			}
@@ -143,19 +152,19 @@ public class IcedSpear : ModProjectile
 				Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 0.6f)).RotatedByRandom(MathHelper.TwoPi);
 				var smog = new SnowPieceDust
 				{
-					velocity = newVelocity + Projectile.velocity * Main.rand.NextFloat(0f, 0.03f),
+					Velocity = newVelocity + Projectile.velocity * Main.rand.NextFloat(0f, 0.03f),
 					Active = true,
 					Visible = true,
-					coord0 = new Vector2(Main.rand.NextFloat(0.1f, 0.2f), 0).RotatedByRandom(6.283),
-					coord1 = new Vector2(Main.rand.NextFloat(0.1f, 0.2f), 0).RotatedByRandom(6.283),
-					position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity * Main.rand.NextFloat(-3f, 2f),
-					maxTime = Main.rand.Next(37, 125),
-					scale = Main.rand.NextFloat(3, 6f),
-					rotation = Main.rand.NextFloat(6.283f),
-					rotation2 = Main.rand.NextFloat(6.283f),
-					omega = Main.rand.NextFloat(-10f, 10f),
-					phi = Main.rand.NextFloat(6.283f),
-					ai = new float[] { Main.rand.NextFloat(0f, 1f), Main.rand.NextFloat(0f, 1f), Main.rand.NextFloat(-0.005f, 0.005f) }
+					Coord0 = new Vector2(Main.rand.NextFloat(0.1f, 0.2f), 0).RotatedByRandom(6.283),
+					Coord1 = new Vector2(Main.rand.NextFloat(0.1f, 0.2f), 0).RotatedByRandom(6.283),
+					Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity * Main.rand.NextFloat(-3f, 2f),
+					MaxTime = Main.rand.Next(37, 125),
+					Scale = Main.rand.NextFloat(3, 6f),
+					Rotation = Main.rand.NextFloat(6.283f),
+					Rotation2 = Main.rand.NextFloat(6.283f),
+					Omega = Main.rand.NextFloat(-10f, 10f),
+					Phi = Main.rand.NextFloat(6.283f),
+					ai = new float[] { Main.rand.NextFloat(0f, 1f), Main.rand.NextFloat(0f, 1f), Main.rand.NextFloat(-0.005f, 0.005f) },
 				};
 				Ins.VFXManager.Add(smog);
 			}
@@ -166,13 +175,14 @@ public class IcedSpear : ModProjectile
 			dust.noGravity = true;
 		}
 	}
+
 	public bool Collide(Vector2 positon)
 	{
 		foreach (NPC npc in Main.npc)
 		{
 			if (npc.active && !npc.dontTakeDamage && !npc.friendly && !npc.townNPC)
 			{
-				if ((new Rectangle((int)Projectile.Center.X, (int)Projectile.Center.Y, 1, 1)).Intersects(npc.Hitbox))
+				if (new Rectangle((int)Projectile.Center.X, (int)Projectile.Center.Y, 1, 1).Intersects(npc.Hitbox))
 				{
 					Projectile.velocity *= 0;
 					relativeAngle = Projectile.rotation - npc.rotation;
@@ -186,10 +196,12 @@ public class IcedSpear : ModProjectile
 		}
 		return Collision.SolidCollision(positon, 0, 0);
 	}
+
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
 		return true;
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D texStick = ModAsset.IcedSpear_stick.Value;
@@ -203,6 +215,7 @@ public class IcedSpear : ModProjectile
 		Main.spriteBatch.Draw(texIce, Projectile.Center - Main.screenPosition, null, iceColor, Projectile.rotation, texIce.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
 		return false;
 	}
+
 	public override void OnKill(int timeLeft)
 	{
 		if (timeLeft > 60)
@@ -221,4 +234,3 @@ public class IcedSpear : ModProjectile
 		gore.rotation = Projectile.rotation - MathF.PI / 4f;
 	}
 }
-

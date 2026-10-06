@@ -38,13 +38,13 @@ namespace Everglow.EternalResolve.Projectiles
 				float mulScale = Main.rand.NextFloat(6f, 14f);
 				var blood = new IchorDrop
 				{
-					velocity = afterVelocity * mulVelocity / mulScale + Projectile.velocity * Main.rand.NextFloat(0.17f),
+					Velocity = afterVelocity * mulVelocity / mulScale + Projectile.velocity * Main.rand.NextFloat(0.17f),
 					Active = true,
 					Visible = true,
-					position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity.RotatedBy(Main.rand.NextFloat(-0.4f, 0.4f)) * Main.rand.NextFloat(0, 8f),
-					maxTime = Main.rand.Next(6, 32),
-					scale = mulScale,
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity.RotatedBy(Main.rand.NextFloat(-0.4f, 0.4f)) * Main.rand.NextFloat(0, 8f),
+					MaxTime = Main.rand.Next(6, 32),
+					Scale = mulScale,
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 				};
 				Ins.VFXManager.Add(blood);
@@ -54,12 +54,12 @@ namespace Everglow.EternalResolve.Projectiles
 				Vector2 afterVelocity = new Vector2(0, Main.rand.NextFloat(3f)).RotatedByRandom(MathHelper.TwoPi);
 				var blood = new IchorSplash
 				{
-					velocity = afterVelocity * mulVelocity + Projectile.velocity * Main.rand.NextFloat(0.17f),
+					Velocity = afterVelocity * mulVelocity + Projectile.velocity * Main.rand.NextFloat(0.17f),
 					Active = true,
 					Visible = true,
-					position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity.RotatedBy(Main.rand.NextFloat(-0.4f, 0.4f)) * Main.rand.NextFloat(0, 8f),
-					maxTime = Main.rand.Next(6, 32),
-					scale = Main.rand.NextFloat(6f, 12f),
+					Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity.RotatedBy(Main.rand.NextFloat(-0.4f, 0.4f)) * Main.rand.NextFloat(0, 8f),
+					MaxTime = Main.rand.Next(6, 32),
+					Scale = Main.rand.NextFloat(6f, 12f),
 					ai = new float[] { Main.rand.NextFloat(0.0f, 0.4f), 0 },
 				};
 				Ins.VFXManager.Add(blood);

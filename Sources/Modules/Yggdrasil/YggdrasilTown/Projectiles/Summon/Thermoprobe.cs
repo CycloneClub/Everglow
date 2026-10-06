@@ -48,21 +48,21 @@ public class Thermoprobe : ModProjectile
 				SoundEngine.PlaySound(SoundID.Item14, Projectile.Center);
 				FireSmogDust smoke = new()
 				{
-					maxTime = 40,
-					position = Projectile.Center,
-					velocity = -Vector2.UnitY * Main.rand.NextFloat(2f),
+					MaxTime = 40,
+					Position = Projectile.Center,
+					Velocity = -Vector2.UnitY * Main.rand.NextFloat(2f),
 				};
-				smoke.scale = Main.rand.Next(50, 110);
+				smoke.Scale = Main.rand.Next(50, 110);
 				Ins.VFXManager.Add(smoke);
 				for (int i = 0; i < 10; i++)
 				{
 					FireSparkDust dust = new();
 					dust.ai = new float[3];
 					dust.ai[1] = Main.rand.NextFloatDirection() * 0.1f;
-					dust.maxTime = 30;
-					dust.velocity = Main.rand.NextVector2Circular(5, 5);
-					dust.position = Projectile.Center;
-					dust.scale = 15;
+					dust.MaxTime = 30;
+					dust.Velocity = Main.rand.NextVector2Circular(5, 5);
+					dust.Position = Projectile.Center;
+					dust.Scale = 15;
 					Ins.VFXManager.Add(dust);
 				}
 			}

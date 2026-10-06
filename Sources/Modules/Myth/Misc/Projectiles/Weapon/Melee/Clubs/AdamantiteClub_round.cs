@@ -234,14 +234,9 @@ public class AdamantiteClub_round : ModProjectile, IWarpProjectile
 			NormalToTiles = Vector2.Normalize(NormalToTiles);
 			float angle0 = Vector2.Dot(NormalToTiles.RotatedBy(MathHelper.PiOver2), Projectile.velocity) / Projectile.velocity.Length();
 			float angle1 = Vector2.Dot(NormalToTiles.RotatedBy(-MathHelper.PiOver2), Projectile.velocity) / Projectile.velocity.Length();
-			if (angle0 > angle1)
-			{
-				Projectile.velocity = NormalToTiles.RotatedBy(MathHelper.PiOver2) * velocityLength;
-			}
-			else
-			{
-				Projectile.velocity = NormalToTiles.RotatedBy(-MathHelper.PiOver2) * velocityLength;
-			}
+			Projectile.velocity = angle0 > angle1
+				? NormalToTiles.RotatedBy(MathHelper.PiOver2) * velocityLength
+				: NormalToTiles.RotatedBy(-MathHelper.PiOver2) * velocityLength;
 		}
 		else
 		{
@@ -291,13 +286,13 @@ public class AdamantiteClub_round : ModProjectile, IWarpProjectile
 			Vector2 newVelocity = NormalToTiles.RotatedBy(MathHelper.PiOver2 * (Main.rand.NextBool(2) ? 1 : -1)) * 2.6f * mulVelocity * Main.rand.NextFloat(0.1f, 2.0f);
 			var spark = new FireSpark_MetalStabDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center - NormalToTiles * 26f,
-				maxTime = Main.rand.Next(27, 35),
-				scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(4.1f, 27.0f)),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center - NormalToTiles * 26f,
+				MaxTime = Main.rand.Next(27, 35),
+				Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(4.1f, 27.0f)),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.01f, 0.01f) },
 			};
 			Ins.VFXManager.Add(spark);

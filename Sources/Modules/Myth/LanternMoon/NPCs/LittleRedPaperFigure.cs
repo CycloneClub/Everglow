@@ -155,13 +155,13 @@ public class LittleRedPaperFigure : LanternMoonNPC
 				Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 2f)).RotatedByRandom(MathHelper.TwoPi);
 				var spark = new FireSparkDust
 				{
-					velocity = newVelocity,
+					Velocity = newVelocity,
 					Active = true,
 					Visible = true,
-					position = NPC.Center + new Vector2(Main.rand.NextFloat(-35f, 35f), 0).RotatedByRandom(6.283),
-					maxTime = Main.rand.Next(37, 45),
-					scale = Main.rand.NextFloat(0.1f, 12.0f),
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = NPC.Center + new Vector2(Main.rand.NextFloat(-35f, 35f), 0).RotatedByRandom(6.283),
+					MaxTime = Main.rand.Next(37, 45),
+					Scale = Main.rand.NextFloat(0.1f, 12.0f),
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.01f, 0.01f) },
 				};
 				Ins.VFXManager.Add(spark);
@@ -302,13 +302,13 @@ public class LittleRedPaperFigure : LanternMoonNPC
 				var gore = new PaperGore
 				{
 					LightValue = 0.15f,
-					velocity = vel,
-					position = NPC.Center + vel,
+					Velocity = vel,
+					Position = NPC.Center + vel,
 					Texture = ModContent.Request<Texture2D>(texturePath).Value,
-					rotateSpeed = vel.X / 8f,
-					scale = Main.rand.NextFloat(1f, 1.25f),
-					maxTime = Main.rand.Next(120, 360),
-					rotation = Main.rand.NextFloat(MathHelper.TwoPi),
+					RotateSpeed = vel.X / 8f,
+					Scale = Main.rand.NextFloat(1f, 1.25f),
+					MaxTime = Main.rand.Next(120, 360),
+					Rotation = Main.rand.NextFloat(MathHelper.TwoPi),
 					ai = new float[] { Main.rand.NextFloat(-2, 2), Main.rand.NextFloat(-MathF.PI, MathF.PI) },
 				};
 				Ins.VFXManager.Add(gore);
@@ -326,7 +326,7 @@ public class LittleRedPaperFigure : LanternMoonNPC
 		{
 			if (State == (int)BehaviorState.Teleporting)
 			{
-				drawColor *= ((float)Math.Abs(TeleportTimer - MaxTeleportTime / 2) / (MaxTeleportTime / 2));
+				drawColor *= (float)Math.Abs(TeleportTimer - MaxTeleportTime / 2) / (MaxTeleportTime / 2);
 				spriteBatch.Draw(texture, NPC.Center - Main.screenPosition, NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() * 0.5f, NPC.scale, NPC.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
 			}
 			else

@@ -8,6 +8,7 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 public class MothBall : ModProjectile
 {
 	private float subscale = 0f;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 32;
@@ -32,26 +33,36 @@ public class MothBall : ModProjectile
 		Vector2 afterVelocity = new Vector2(0, Main.rand.NextFloat(9f, 30f)).RotatedByRandom(MathHelper.TwoPi);
 		var electric = new MothBallCurrent
 		{
-			velocity = afterVelocity + Projectile.velocity,
+			Velocity = afterVelocity + Projectile.velocity,
 			Active = true,
 			Visible = true,
-			position = Projectile.Center,
-			maxTime = Main.rand.Next(42, 90),
-			scale = size,
+			Position = Projectile.Center,
+			MaxTime = Main.rand.Next(42, 90),
+			Scale = size,
 			projectileOwner = Projectile.whoAmI,
-			ai = new float[] { Main.rand.NextFloat(0.0f, 0.6f), 2 }
+			ai = new float[] { Main.rand.NextFloat(0.0f, 0.6f), 2 },
 		};
 		Ins.VFXManager.Add(electric);
 	}
+
 	public override void AI()
 	{
 		Player player = Main.player[Player.FindClosest(Projectile.position, Projectile.width, Projectile.height)];
 		if (Projectile.timeLeft > 240)
+		{
 			subscale += 1f;
+		}
+
 		if (Projectile.timeLeft is <= 240 and >= 60)
+		{
 			subscale = 60 + (float)(10 * Math.Sin((Projectile.timeLeft - 60) / 60d * Math.PI));
+		}
+
 		if (Projectile.timeLeft < 60 && subscale > 0.5f)
+		{
 			subscale -= 1f;
+		}
+
 		if (Projectile.timeLeft < 50)
 		{
 			Projectile.velocity *= 0.95f;
@@ -85,6 +96,7 @@ public class MothBall : ModProjectile
 			SoundEngine.PlaySound(new SoundStyle("Everglow/Myth/Sounds/PowerAccumulate"), Projectile.Center);
 		}
 	}
+
 	public override void OnKill(int timeLeft)
 	{
 		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<MothBallExplosion>(), 50, 3, Projectile.owner, 60f);
@@ -119,7 +131,10 @@ public class MothBall : ModProjectile
 			int player = Player.FindClosest(Projectile.Center, 1000, 1000);
 			float addRot = 0;
 			if (player is >= 0 and < 255)
+			{
 				addRot = Projectile.DirectionTo(Main.player[player].Center).ToRotation();
+			}
+
 			for (int h = 0; h < 36; h++)
 			{
 				if (h % 6 < 3)
@@ -129,20 +144,24 @@ public class MothBall : ModProjectile
 				}
 			}
 		}
+
 		// base.OnKill(timeLeft);
-		//Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<Projectiles.CorruptMoth.FruitBomb>(), 0, 0f, Main.myPlayer, 1);
+		// Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<Projectiles.CorruptMoth.FruitBomb>(), 0, 0f, Main.myPlayer, 1);
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D Light = ModAsset.CorruptLight.Value;
-		int frameX = (Projectile.frame % 6);
+		int frameX = Projectile.frame % 6;
 		int frameY = (Projectile.frame - frameX) / 6;
 		int frameSideX = 270;
 		int frameSideY = 290;
 		Main.spriteBatch.Draw(ModContent.Request<Texture2D>(Texture).Value, Projectile.Center - Main.screenPosition, new Rectangle(frameX * frameSideX, frameY * frameSideY + 10, 270, 270), new Color(1f, 1f, 1f, 0), Projectile.rotation, new Vector2(135f), Projectile.scale * subscale / 60f, SpriteEffects.None, 0f);
 
 		if (Projectile.timeLeft < 60)
+		{
 			Main.spriteBatch.Draw(Light, Projectile.Center - Main.screenPosition, null, new Color(1f, 1f, 1f, 0), Projectile.rotation, Light.Size() / 2f, (60 - Projectile.timeLeft) / 30f, SpriteEffects.None, 0);
+		}
 
 		float range = 720f;
 		if (Projectile.timeLeft < 100)
@@ -156,16 +175,17 @@ public class MothBall : ModProjectile
 
 		return false;
 	}
+
 	public void DrawCurrents(float addRot, float randomSeed, float startLength = 180f)
 	{
 		List<Vector2> current = new List<Vector2>();
 		Vector2 start = new Vector2(0, startLength);
-		float maxTime = 17f;
+		float MaxTime = 17f;
 		if (Projectile.timeLeft < 100)
 		{
-			maxTime += (100 - Projectile.timeLeft) * 0.1f;
+			MaxTime += (100 - Projectile.timeLeft) * 0.1f;
 		}
-		for (int t = 1; t < maxTime; t++)
+		for (int t = 1; t < MaxTime; t++)
 		{
 			start = start * 0.82f + new Vector2(0, 20) * 0.18f;
 			Vector2 v0 = start.RotatedBy(-t * t / 60f + addRot);

@@ -23,17 +23,17 @@ namespace Everglow.EternalResolve.Projectiles
 			HitTileSparkColor = new Color(0.4f, 0.8f, 1f, 0);
 		}
 
-		public override IEnumerator<ICoroutineInstruction> Generate3DRingVFX(Vector2 velocity)
+		public override IEnumerator<ICoroutineInstruction> Generate3DRingVFX(Vector2 Velocity)
 		{
 			yield return new WaitForFrames(40);
 			StabVFX v = new SelfLightingStabVFX()
 			{
-				pos = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
-				vel = velocity,
-				color = Color.Lerp(StabColor, Color.White, 0.2f),
-				scale = 30,
-				maxtime = 10,
-				timeleft = 10,
+				Position = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
+				Velocity = Velocity,
+				StabEffectColor = Color.Lerp(StabColor, Color.White, 0.2f),
+				Scale = 30,
+				MaxTime = 10,
+				TimeLeft = 10,
 			};
 			if (StabEndPoint_WorldPos == Vector2.Zero)
 			{
@@ -42,12 +42,12 @@ namespace Everglow.EternalResolve.Projectiles
 			yield return new WaitForFrames(40);
 			v = new SelfLightingStabVFX()
 			{
-				pos = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
-				vel = velocity,
-				color = Color.Lerp(StabColor, Color.White, 0.4f),
-				scale = 15,
-				maxtime = 10,
-				timeleft = 10,
+				Position = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
+				Velocity = Velocity,
+				StabEffectColor = Color.Lerp(StabColor, Color.White, 0.4f),
+				Scale = 15,
+				MaxTime = 10,
+				TimeLeft = 10,
 			};
 			if (StabEndPoint_WorldPos == Vector2.Zero)
 			{
@@ -167,12 +167,12 @@ namespace Everglow.EternalResolve.Projectiles
 				Vector2 afterVelocity = Projectile.velocity * 10;
 				var electric = new YoenLeZedElecticFlow
 				{
-					velocity = afterVelocity * mulVelocity,
+					Velocity = afterVelocity * mulVelocity,
 					Active = true,
 					Visible = true,
-					position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity * MathF.Sqrt(Main.rand.NextFloat(1f)) * 10,
-					maxTime = size * size / 8f,
-					scale = size,
+					Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity * MathF.Sqrt(Main.rand.NextFloat(1f)) * 10,
+					MaxTime = size * size / 8f,
+					Scale = size,
 					ai = new float[] { Main.rand.NextFloat(0.0f, 0.6f), 2, Main.rand.NextFloat(0.2f, Main.rand.NextFloat(0.2f, 0.4f)) },
 				};
 				Ins.VFXManager.Add(electric);
@@ -188,12 +188,12 @@ namespace Everglow.EternalResolve.Projectiles
 				Vector2 afterVelocity = Projectile.velocity * 10;
 				var electric = new YoenLeZedElecticFlow
 				{
-					velocity = afterVelocity * mulVelocity,
+					Velocity = afterVelocity * mulVelocity,
 					Active = true,
 					Visible = true,
-					position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity * MathF.Sqrt(Main.rand.NextFloat(1f)) * 10,
-					maxTime = size * size / 24f,
-					scale = size,
+					Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity * MathF.Sqrt(Main.rand.NextFloat(1f)) * 10,
+					MaxTime = size * size / 24f,
+					Scale = size,
 					ai = new float[] { Main.rand.NextFloat(0.0f, 0.6f), 1, Main.rand.NextFloat(0.2f, Main.rand.NextFloat(0.2f, 0.4f)) },
 				};
 				Ins.VFXManager.Add(electric);
@@ -230,8 +230,8 @@ namespace Everglow.EternalResolve.Projectiles
 		public override void HitTile()
 		{
 			base.HitTile();
-			float scale = (260 - (StabEndPoint_WorldPos - StabStartPoint_WorldPos).Length()) / 9f;
-			if (scale > 4.5f)
+			float Scale = (260 - (StabEndPoint_WorldPos - StabStartPoint_WorldPos).Length()) / 9f;
+			if (Scale > 4.5f)
 			{
 				for (int g = 0; g < 10; g++)
 				{
@@ -239,18 +239,18 @@ namespace Everglow.EternalResolve.Projectiles
 					Vector2 afterVelocity = new Vector2(0, Main.rand.NextFloat(12, 15)).RotatedByRandom(6.283);
 					var electric = new YoenLeZedElecticFlow
 					{
-						velocity = afterVelocity * 0.6f,
+						Velocity = afterVelocity * 0.6f,
 						Active = true,
 						Visible = true,
-						position = StabEndPoint_WorldPos + Vector2.Normalize(StabStartPoint_WorldPos - StabEndPoint_WorldPos) * 20,
-						maxTime = size * size / 16f,
-						scale = size,
+						Position = StabEndPoint_WorldPos + Vector2.Normalize(StabStartPoint_WorldPos - StabEndPoint_WorldPos) * 20,
+						MaxTime = size * size / 16f,
+						Scale = size,
 						ai = new float[] { Main.rand.NextFloat(0.0f, 0.6f), 1, 0 },
 					};
 					Ins.VFXManager.Add(electric);
 				}
 			}
-			Projectile.NewProjectile(Projectile.GetSource_FromAI(), StabEndPoint_WorldPos, Vector2.zeroVector, ModContent.ProjectileType<YoenLeZed_Pro_Stab_HitTile>(), 1, 0, Projectile.owner, scale);
+			Projectile.NewProjectile(Projectile.GetSource_FromAI(), StabEndPoint_WorldPos, Vector2.zeroVector, ModContent.ProjectileType<YoenLeZed_Pro_Stab_HitTile>(), 1, 0, Projectile.owner, Scale);
 		}
 	}
 }

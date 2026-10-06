@@ -306,13 +306,13 @@ public class RedpaperGiant : LanternMoonNPC
 				var gore = new PaperGore
 				{
 					LightValue = 0.15f,
-					velocity = vel,
-					position = NPC.Center + vel,
+					Velocity = vel,
+					Position = NPC.Center + vel,
 					Texture = ModContent.Request<Texture2D>(texturePath).Value,
-					rotateSpeed = vel.X / 8f,
-					scale = Main.rand.NextFloat(1f, 1.25f),
-					maxTime = Main.rand.Next(120, 360),
-					rotation = Main.rand.NextFloat(MathHelper.TwoPi),
+					RotateSpeed = vel.X / 8f,
+					Scale = Main.rand.NextFloat(1f, 1.25f),
+					MaxTime = Main.rand.Next(120, 360),
+					Rotation = Main.rand.NextFloat(MathHelper.TwoPi),
 					ai = new float[] { Main.rand.NextFloat(-2, 2), Main.rand.NextFloat(0, MathF.PI) },
 				};
 				Ins.VFXManager.Add(gore);

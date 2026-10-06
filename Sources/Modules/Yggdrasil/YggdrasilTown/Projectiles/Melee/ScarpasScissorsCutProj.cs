@@ -180,7 +180,7 @@ public abstract class ScarpasScissorsCutProj : ScarpasScissorsProjBase
 	{
 		var drawColor = lightColor * Projectile.Opacity;
 		var distanceToArmCenter = DistanceToArmPosition * Projectile.scale;
-		var position = Owner.Center - Main.screenPosition + Projectile.rotation.ToRotationVector2() * distanceToArmCenter;
+		var Position = Owner.Center - Main.screenPosition + Projectile.rotation.ToRotationVector2() * distanceToArmCenter;
 
 		var texture = ModContent.Request<Texture2D>(Texture).Value;
 		var origin = TextureOrigin;
@@ -197,7 +197,7 @@ public abstract class ScarpasScissorsCutProj : ScarpasScissorsProjBase
 			? rotationOffset + Projectile.spriteDirection * AnimationRotation()
 			: rotationOffset - Projectile.spriteDirection * AnimationRotation();
 
-		Main.spriteBatch.Draw(texture, position, default, drawColor, Projectile.rotation + rotation, origin, Projectile.scale, effects, 0);
+		Main.spriteBatch.Draw(texture, Position, default, drawColor, Projectile.rotation + rotation, origin, Projectile.scale, effects, 0);
 
 		return false;
 	}
@@ -214,11 +214,11 @@ public abstract class ScarpasScissorsCutProj : ScarpasScissorsProjBase
 				{
 					Active = true,
 					Visible = true,
-					position = target.Center,
-					velocity = Main.rand.NextFloat(0, MathHelper.TwoPi).ToRotationVector2() * 2f,
-					maxTime = Main.rand.Next(82, 164),
-					scale = Main.rand.NextFloat(12f, Main.rand.NextFloat(12f, 28.0f)),
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = target.Center,
+					Velocity = Main.rand.NextFloat(0, MathHelper.TwoPi).ToRotationVector2() * 2f,
+					MaxTime = Main.rand.Next(82, 164),
+					Scale = Main.rand.NextFloat(12f, Main.rand.NextFloat(12f, 28.0f)),
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 				});
 			}

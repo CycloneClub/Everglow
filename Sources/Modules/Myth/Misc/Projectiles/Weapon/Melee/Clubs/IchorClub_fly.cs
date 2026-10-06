@@ -275,16 +275,16 @@ public class IchorClub_fly : ModProjectile, IWarpProjectile
 			{
 				startPos *= -1;
 			}
-			Vector2 velocity = startPos.RotatedBy(MathHelper.PiOver2) * Omega * Main.rand.NextFloat(0.2f, 0.9f) * 0.5f;
+			Vector2 Velocity = startPos.RotatedBy(MathHelper.PiOver2) * Omega * Main.rand.NextFloat(0.2f, 0.9f) * 0.5f;
 			var blood = new IchorDrop
 			{
-				velocity = velocity,
+				Velocity = Velocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + startPos,
-				maxTime = Main.rand.Next(6, 32),
-				scale = mulScale,
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + startPos,
+				MaxTime = Main.rand.Next(6, 32),
+				Scale = mulScale,
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 			};
 			Ins.VFXManager.Add(blood);
@@ -297,16 +297,16 @@ public class IchorClub_fly : ModProjectile, IWarpProjectile
 			{
 				startPos *= -1;
 			}
-			Vector2 velocity = startPos.RotatedBy(MathHelper.PiOver2) * Omega * Main.rand.NextFloat(0.2f, 0.9f) * 0.5f;
+			Vector2 Velocity = startPos.RotatedBy(MathHelper.PiOver2) * Omega * Main.rand.NextFloat(0.2f, 0.9f) * 0.5f;
 			var blood = new IchorDrop
 			{
-				velocity = velocity,
+				Velocity = Velocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + startPos,
-				maxTime = Main.rand.Next(6, 12),
-				scale = mulScale,
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + startPos,
+				MaxTime = Main.rand.Next(6, 12),
+				Scale = mulScale,
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 			};
 			Ins.VFXManager.Add(blood);
@@ -321,12 +321,12 @@ public class IchorClub_fly : ModProjectile, IWarpProjectile
 			}
 			var blood = new IchorSplash
 			{
-				velocity = afterVelocity * mulVelocity + startPos.RotatedBy(MathHelper.PiOver2) * Omega * 0.1f + Projectile.velocity,
+				Velocity = afterVelocity * mulVelocity + startPos.RotatedBy(MathHelper.PiOver2) * Omega * 0.1f + Projectile.velocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + startPos,
-				maxTime = Main.rand.Next(6, 32),
-				scale = Main.rand.NextFloat(6f, 12f),
+				Position = Projectile.Center + startPos,
+				MaxTime = Main.rand.Next(6, 32),
+				Scale = Main.rand.NextFloat(6f, 12f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.4f), 0 },
 			};
 			Ins.VFXManager.Add(blood);

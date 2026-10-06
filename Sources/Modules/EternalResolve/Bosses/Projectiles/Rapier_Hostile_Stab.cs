@@ -118,13 +118,13 @@ namespace Everglow.EternalResolve.Bosses.Projectiles
 			{
 				StabVFX v = new StabVFX()
 				{
-					pos = Projectile.Center + Projectile.velocity * AttackLength * 140,
-					vel = Vector2.Normalize(Projectile.velocity),
-					color = Color.Lerp(Color, Color.White, 0.2f),
-					scale = 10,
-					maxtime = 20,
-					timeleft = 20,
-					alpha = 0.8f,
+					Position = Projectile.Center + Projectile.velocity * AttackLength * 140,
+					Velocity = Vector2.Normalize(Projectile.velocity),
+					StabEffectColor = Color.Lerp(Color, Color.White, 0.2f),
+					Scale = 10,
+					MaxTime = 20,
+					TimeLeft = 20,
+					Alpha = 0.8f,
 				};
 				Ins.VFXManager.Add(v);
 			}
@@ -180,13 +180,13 @@ namespace Everglow.EternalResolve.Bosses.Projectiles
 				Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(2f, 6f)).RotatedByRandom(MathHelper.TwoPi);
 				var spark = new FireSpark_MetalStabDust
 				{
-					velocity = newVelocity,
+					Velocity = newVelocity,
 					Active = true,
 					Visible = true,
-					position = EndPos,
-					maxTime = Main.rand.Next(1, 25),
-					scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(10f, 27.0f)),
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = EndPos,
+					MaxTime = Main.rand.Next(1, 25),
+					Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(10f, 27.0f)),
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.13f, 0.13f) },
 				};
 				Ins.VFXManager.Add(spark);

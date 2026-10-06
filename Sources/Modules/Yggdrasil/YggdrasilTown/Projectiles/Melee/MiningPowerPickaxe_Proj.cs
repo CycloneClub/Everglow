@@ -91,13 +91,13 @@ public class MiningPowerPickaxe_Proj : ModProjectile
 					vel.X *= 0.2f;
 					var somg = new VaporDust3
 					{
-						velocity = vel,
+						Velocity = vel,
 						Active = true,
 						Visible = true,
-						position = dustCenter,
-						maxTime = Main.rand.Next(104, 220),
-						scale = Main.rand.NextFloat(10f, 25f),
-						rotation = Main.rand.NextFloat(6.283f),
+						Position = dustCenter,
+						MaxTime = Main.rand.Next(104, 220),
+						Scale = Main.rand.NextFloat(10f, 25f),
+						Rotation = Main.rand.NextFloat(6.283f),
 						ai = new float[] { Main.rand.NextFloat(-0.05f, -0.01f), 0 },
 					};
 					Ins.VFXManager.Add(somg);

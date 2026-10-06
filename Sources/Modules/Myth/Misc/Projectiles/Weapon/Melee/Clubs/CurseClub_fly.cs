@@ -99,24 +99,24 @@ public class CurseClub_fly : ModProjectile, IWarpProjectile
 			int time = Main.rand.Next(15, 35);
 			var fire = new Flare()
 			{
-				position = Vector2.Lerp(Projectile.Center, Projectile.Center + Projectile.rotation.ToRotationVector2() * 30, Main.rand.NextFloat(0.4f, 1.25f)),
-				velocity = Projectile.velocity * 0.5f,
+				Position = Vector2.Lerp(Projectile.Center, Projectile.Center + Projectile.rotation.ToRotationVector2() * 30, Main.rand.NextFloat(0.4f, 1.25f)),
+				Velocity = Projectile.velocity * 0.5f,
 				gravity = -0.3f,
 				color = color,
 				timeleft = time,
 				maxTimeleft = time,
-				scale = Main.rand.NextFloat(0.3f, 0.6f)
+				Scale = Main.rand.NextFloat(0.3f, 0.6f)
 			};
 			Ins.VFXManager.Add(fire);
 		}
 		/*
 		var cf = new CurseFlame_HighQualityDust
 		{
-			velocity = v1 + Projectile.velocity * 0.3f,
+			Velocity = v1 + Projectile.velocity * 0.3f,
 			Active = true,
 			Visible = true,
-			position = Projectile.Center + v0,
-			maxTime = Main.rand.Next(12, 30),
+			Position = Projectile.Center + v0,
+			MaxTime = Main.rand.Next(12, 30),
 			ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Omega * 0.75f, Main.rand.NextFloat(3.6f, 30f) * mulVelocity },
 		};
 		Ins.VFXManager.Add(cf);*/
@@ -135,13 +135,13 @@ public class CurseClub_fly : ModProjectile, IWarpProjectile
 			float v0Length = v0.Length();
 			var spark = new CurseFlameSparkDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + v0,
-				maxTime = Main.rand.Next(37, Main.rand.Next(37, 185)),
-				scale = Main.rand.NextFloat(4f, 27.0f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + v0,
+				MaxTime = Main.rand.Next(37, Main.rand.Next(37, 185)),
+				Scale = Main.rand.NextFloat(4f, 27.0f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Omega * 0.1f * v0Length / 14f, 15f },
 			};
 			Ins.VFXManager.Add(spark);

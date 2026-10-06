@@ -1,12 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Everglow.Commons;
 using Everglow.Commons.Enums;
-using Everglow.Commons.VFX;
-using Everglow.Commons.VFX.CommonVFXDusts;
 
 namespace Everglow.Commons.VFX;
 
@@ -23,7 +15,6 @@ public class NormalPipeline : Pipeline
 	public override void EndRender()
 	{
 		Ins.Batch.End();
-
 	}
 
 	public override void Load()
@@ -35,20 +26,28 @@ public class NormalPipeline : Pipeline
 [Pipeline(typeof(NormalPipeline))]
 public class MEACVFX : Visual
 {
-	//MEACmod的VFX移植，方便代码迁移
+	// MEACmod的VFX移植，方便代码迁移
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawNPCs;
+
 	public Vector2 Velocity;
 	public Vector2 Center;
-	public float rotation = 0;
+	public float Rotation = 0;
 	public string texPath = "MEAC/Images/Ball";
+
 	public Texture2D Texture => ModContent.Request<Texture2D>(texPath).Value;
-	public int timeleft, maxTimeleft = 50;
-	public float ai0, ai1, alpha = 1, scale = 1;
+
+	public int timeleft;
+	public int maxTimeleft = 50;
+	public float ai0;
+	public float ai1;
+	public float alpha = 1;
+	public float scale = 1;
 	public bool isWarp = false;
 	public Color drawColor = Color.White;
 	public bool origDraw = true;
 	public bool canBatch = true;
 	public int extraUpdates = 0;
+
 	public MEACVFX()
 	{
 	}
@@ -65,7 +64,7 @@ public class MEACVFX : Visual
 			owner = null;
 			offset = Vector2.Zero;
 		}
-	};
+	}
 
 	public OwnerInfo ownerInfo;
 
@@ -75,15 +74,14 @@ public class MEACVFX : Visual
 		timeleft = t;
 	}
 
-
-	public static T Create<T>(Vector2 pos, Vector2 velocity, float rotation = 0, float scale = 1, Entity owner = null) where T : MEACVFX, new()
+	public static T Create<T>(Vector2 pos, Vector2 velocity, float Rotation = 0, float scale = 1, Entity owner = null)
+		where T : MEACVFX, new()
 	{
-
 		MEACVFX ee = new T();
 		ee.SetDefault();
 		ee.Velocity = velocity;
 		ee.Center = pos;
-		ee.rotation = rotation;
+		ee.Rotation = Rotation;
 		ee.timeleft = ee.maxTimeleft;
 		if (scale != 1)
 		{
@@ -103,9 +101,11 @@ public class MEACVFX : Visual
 	public virtual void SetDefault()
 	{
 	}
+
 	public virtual void AI()
 	{
 	}
+
 	public virtual void AIWithOwner(Entity owner)
 	{
 		Center = owner.Center + ownerInfo.offset;
@@ -136,12 +136,10 @@ public class MEACVFX : Visual
 				}
 			}
 		}
-
-
 	}
+
 	public override void Draw()
 	{
-
-		Ins.Batch.Draw(Texture, Center - Main.screenPosition, null, drawColor * alpha, rotation, Texture.Size() / 2, scale, SpriteEffects.None);
+		Ins.Batch.Draw(Texture, Center - Main.screenPosition, null, drawColor * alpha, Rotation, Texture.Size() / 2, scale, SpriteEffects.None);
 	}
 }

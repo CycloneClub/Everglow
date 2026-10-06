@@ -1,6 +1,7 @@
 using Everglow.Commons.VFX.CommonVFXDusts;
 using Everglow.Myth.Misc.Projectiles.Accessory;
 using Terraria.Audio;
+
 namespace Everglow.Myth.Misc.Items.Accessories;
 
 public class CorruptEye : ModItem
@@ -15,6 +16,7 @@ public class CorruptEye : ModItem
 		Item.accessory = true;
 		Item.rare = ItemRarityID.Pink;
 	}
+
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
 		player.statDefense += 5;
@@ -24,13 +26,16 @@ public class CorruptEye : ModItem
 		cEE.CorruptEyeEnable = true;
 	}
 }
-class CorruptEyeEquiper : ModPlayer
+
+internal class CorruptEyeEquiper : ModPlayer
 {
 	public bool CorruptEyeEnable = false;
+
 	public override void ResetEffects()
 	{
 		CorruptEyeEnable = false;
 	}
+
 	public override void PostHurt(Player.HurtInfo info)
 	{
 		if (CorruptEyeEnable)
@@ -45,19 +50,20 @@ class CorruptEyeEquiper : ModPlayer
 			SoundEngine.PlaySound(SoundID.DD2_FlameburstTowerShot.WithPitchOffset(-0.2f), Player.Center);
 		}
 	}
+
 	private void GenerateVFX(int Frequency, float mulVelocity = 1f)
 	{
 		for (int g = 0; g < Frequency * 3; g++)
 		{
 			var cf = new CurseFlameDust
 			{
-				velocity = new Vector2(0, Main.rand.NextFloat(1.65f, 2.5f)).RotatedByRandom(6.283) * mulVelocity,
+				Velocity = new Vector2(0, Main.rand.NextFloat(1.65f, 2.5f)).RotatedByRandom(6.283) * mulVelocity,
 				Active = true,
 				Visible = true,
-				position = Player.Center + new Vector2(Main.rand.NextFloat(-26f, 26f), 0).RotatedByRandom(6.283),
-				maxTime = Main.rand.Next(12, 66),
-				scale = 12f * mulVelocity,
-				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.18f, 0.18f), Main.rand.NextFloat(1f, 2.2f) * mulVelocity }
+				Position = Player.Center + new Vector2(Main.rand.NextFloat(-26f, 26f), 0).RotatedByRandom(6.283),
+				MaxTime = Main.rand.Next(12, 66),
+				Scale = 12f * mulVelocity,
+				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.18f, 0.18f), Main.rand.NextFloat(1f, 2.2f) * mulVelocity },
 			};
 			Ins.VFXManager.Add(cf);
 		}
@@ -66,13 +72,13 @@ class CorruptEyeEquiper : ModPlayer
 			Vector2 vel = new Vector2(0, Main.rand.NextFloat(1.65f, 3.5f)).RotatedByRandom(6.283) * mulVelocity;
 			var cf = new CurseFlameDust
 			{
-				velocity = vel,
+				Velocity = vel,
 				Active = true,
 				Visible = true,
-				position = Player.Center + vel * 3,
-				maxTime = Main.rand.Next(12, 70),
-				scale = 12f * mulVelocity,
-				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.4f, 0.4f), Main.rand.NextFloat(2f, 3.2f) * mulVelocity }
+				Position = Player.Center + vel * 3,
+				MaxTime = Main.rand.Next(12, 70),
+				Scale = 12f * mulVelocity,
+				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.4f, 0.4f), Main.rand.NextFloat(2f, 3.2f) * mulVelocity },
 			};
 			Ins.VFXManager.Add(cf);
 		}
@@ -81,14 +87,14 @@ class CorruptEyeEquiper : ModPlayer
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(2f, 6f)).RotatedByRandom(MathHelper.TwoPi);
 			var spark = new CurseFlameSparkDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Player.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) - Player.velocity + newVelocity * 3,
-				maxTime = Main.rand.Next(37, 145),
-				scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(4f, 47.0f)),
-				rotation = Main.rand.NextFloat(6.283f),
-				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.13f, 0.13f) }
+				Position = Player.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) - Player.velocity + newVelocity * 3,
+				MaxTime = Main.rand.Next(37, 145),
+				Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(4f, 47.0f)),
+				Rotation = Main.rand.NextFloat(6.283f),
+				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.13f, 0.13f) },
 			};
 			Ins.VFXManager.Add(spark);
 		}

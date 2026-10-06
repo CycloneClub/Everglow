@@ -51,13 +51,13 @@ public class MothMiddleBullet : TrailingProjectile
 			Vector2 newVelocity = new Vector2(0, mulVelocity * sqrtRand * 0.6f).RotatedByRandom(MathHelper.TwoPi);
 			var fire = new MothBlueFireDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + newVelocity,
-				maxTime = Main.rand.Next(19, 35),
-				scale = Main.rand.NextFloat(0.2f, 0.5f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + newVelocity,
+				MaxTime = Main.rand.Next(19, 35),
+				Scale = Main.rand.NextFloat(0.2f, 0.5f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0, 0 },
 			};
 			Ins.VFXManager.Add(fire);
@@ -73,17 +73,17 @@ public class MothMiddleBullet : TrailingProjectile
 			Vector2 newVelocity = new Vector2(0, mulVelocity * sqrtRand * 0.9f).RotatedByRandom(MathHelper.TwoPi);
 			var smog = new MothShimmerScaleDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-				coord = new Vector2(Main.rand.NextFloat(1f), Main.rand.NextFloat(1f)),
-				maxTime = Main.rand.Next(10, 95),
-				scale = Main.rand.NextFloat(0.4f, 2.4f),
-				rotation = Main.rand.NextFloat(6.283f),
-				rotation2 = Main.rand.NextFloat(6.283f),
-				omega = Main.rand.NextFloat(-30f, 30f),
-				phi = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+				Coord = new Vector2(Main.rand.NextFloat(1f), Main.rand.NextFloat(1f)),
+				MaxTime = Main.rand.Next(10, 95),
+				Scale = Main.rand.NextFloat(0.4f, 2.4f),
+				Rotation = Main.rand.NextFloat(6.283f),
+				Rotation2 = Main.rand.NextFloat(6.283f),
+				Omega = Main.rand.NextFloat(-30f, 30f),
+				Phi = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(-0.005f, 0.005f), 0, 0 },
 			};
 			Ins.VFXManager.Add(smog);

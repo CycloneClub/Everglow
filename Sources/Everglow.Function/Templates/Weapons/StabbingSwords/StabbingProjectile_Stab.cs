@@ -108,20 +108,20 @@ public abstract class StabbingProjectile_Stab : ModProjectile, IWarpProjectile
 		StabStartPoint_WorldPos = Projectile.Center;
 	}
 
-	public virtual void StabGasDust(Vector2 velocity, Color color)
+	public virtual void StabGasDust(Vector2 Velocity, Color color)
 	{
 		for (int i = 0; i < 6; i++)
 		{
 			StabLightDust v1;
-			int maxTime = Main.rand.Next(12, 20);
+			int MaxTime = Main.rand.Next(12, 20);
 			v1 = new StabLightDust()
 			{
-				Center = Projectile.Center + velocity.NormalizeSafe().RotatedBy(MathHelper.PiOver2) * Main.rand.NextFloat(-12f, 12f) + velocity.NormalizeSafe() * (i * 10) * StabDistance,
-				Velocity = velocity * (5 + Main.rand.NextFloatDirection() * 6f),
+				Center = Projectile.Center + Velocity.NormalizeSafe().RotatedBy(MathHelper.PiOver2) * Main.rand.NextFloat(-12f, 12f) + Velocity.NormalizeSafe() * (i * 10) * StabDistance,
+				Velocity = Velocity * (5 + Main.rand.NextFloatDirection() * 6f),
 				EffectColor = color,
-				Rotation = velocity.ToRotation() + MathHelper.PiOver2,
-				Timeleft = maxTime,
-				MaxTime = maxTime,
+				Rotation = Velocity.ToRotation() + MathHelper.PiOver2,
+				Timeleft = MaxTime,
+				MaxTime = MaxTime,
 				Scale = Main.rand.NextFloat(0.24f, 0.4f),
 			};
 			Ins.VFXManager.Add(v1);
@@ -129,15 +129,15 @@ public abstract class StabbingProjectile_Stab : ModProjectile, IWarpProjectile
 		for (int i = 0; i < 10; i++)
 		{
 			StabLightDust v1;
-			int maxTime = Main.rand.Next(10, 15);
+			int MaxTime = Main.rand.Next(10, 15);
 			v1 = new StabLightDust()
 			{
-				Center = Projectile.Center + velocity.NormalizeSafe().RotatedBy(MathHelper.PiOver2) * Main.rand.NextFloat(-12f, 12f) + velocity.NormalizeSafe() * (i * 10) * StabDistance,
-				Velocity = velocity * (5 + Main.rand.NextFloatDirection() * 6f),
+				Center = Projectile.Center + Velocity.NormalizeSafe().RotatedBy(MathHelper.PiOver2) * Main.rand.NextFloat(-12f, 12f) + Velocity.NormalizeSafe() * (i * 10) * StabDistance,
+				Velocity = Velocity * (5 + Main.rand.NextFloatDirection() * 6f),
 				EffectColor = color,
-				Rotation = velocity.ToRotation() + MathHelper.PiOver2,
-				Timeleft = maxTime,
-				MaxTime = maxTime,
+				Rotation = Velocity.ToRotation() + MathHelper.PiOver2,
+				Timeleft = MaxTime,
+				MaxTime = MaxTime,
 				Scale = Main.rand.NextFloat(0.04f, 0.07f),
 			};
 			Ins.VFXManager.Add(v1);
@@ -165,17 +165,17 @@ public abstract class StabbingProjectile_Stab : ModProjectile, IWarpProjectile
 	/// Use Coroutine to handle ring VFX | 用协程管理环状特效
 	/// </summary>
 	/// <returns></returns>
-	public virtual IEnumerator<ICoroutineInstruction> Generate3DRingVFX(Vector2 velocity)
+	public virtual IEnumerator<ICoroutineInstruction> Generate3DRingVFX(Vector2 Velocity)
 	{
 		yield return new WaitForFrames(40);
 		var v = new StabVFX()
 		{
-			pos = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
-			vel = velocity,
-			color = Color.Lerp(StabColor, Color.Transparent, 0.4f),
-			scale = 26,
-			maxtime = (int)(240 / (float)(Projectile.extraUpdates + 1)),
-			timeleft = (int)(240 / (float)(Projectile.extraUpdates + 1)),
+			Position = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
+			Velocity = Velocity,
+			StabEffectColor = Color.Lerp(StabColor, Color.Transparent, 0.4f),
+			Scale = 26,
+			MaxTime = (int)(240 / (float)(Projectile.extraUpdates + 1)),
+			TimeLeft = (int)(240 / (float)(Projectile.extraUpdates + 1)),
 		};
 		if (StabEndPoint_WorldPos == Vector2.Zero)
 		{
@@ -184,12 +184,12 @@ public abstract class StabbingProjectile_Stab : ModProjectile, IWarpProjectile
 		yield return new WaitForFrames(40);
 		v = new StabVFX()
 		{
-			pos = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
-			vel = velocity,
-			color = Color.Lerp(StabColor, Color.Transparent, 0.56f),
-			scale = 15,
-			maxtime = (int)(240 / (float)(Projectile.extraUpdates + 1)),
-			timeleft = (int)(240 / (float)(Projectile.extraUpdates + 1)),
+			Position = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
+			Velocity = Velocity,
+			StabEffectColor = Color.Lerp(StabColor, Color.Transparent, 0.56f),
+			Scale = 15,
+			MaxTime = (int)(240 / (float)(Projectile.extraUpdates + 1)),
+			TimeLeft = (int)(240 / (float)(Projectile.extraUpdates + 1)),
 		};
 		if (StabEndPoint_WorldPos == Vector2.Zero)
 		{
@@ -288,13 +288,13 @@ public abstract class StabbingProjectile_Stab : ModProjectile, IWarpProjectile
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(2f, 6f)).RotatedByRandom(MathHelper.TwoPi);
 			var spark = new FireSpark_MetalStabDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = StabEndPoint_WorldPos,
-				maxTime = Main.rand.Next(1, 25),
-				scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(10f, 27.0f)),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = StabEndPoint_WorldPos,
+				MaxTime = Main.rand.Next(1, 25),
+				Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(10f, 27.0f)),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.13f, 0.13f) },
 			};
 			Ins.VFXManager.Add(spark);

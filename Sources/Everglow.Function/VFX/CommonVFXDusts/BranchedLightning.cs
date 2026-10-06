@@ -1,10 +1,7 @@
-using Everglow.Commons.DataStructures;
 using Everglow.Commons.Enums;
 using Everglow.Commons.Utilities;
 using Everglow.Commons.Vertex;
 using Everglow.Commons.VFX.Pipelines;
-using ReLogic.Utilities;
-using Terraria;
 
 namespace Everglow.Commons.VFX.CommonVFXDusts;
 
@@ -20,7 +17,7 @@ public class BranchedLightningPipeline : Pipeline
 		effect.Value.Parameters["uLineProportion"].SetValue(BranchedLightning.LINE_PROPORTION);
 
 		// 设置闪电边缘颜色
-		effect.Value.Parameters["uEdgeColor"].SetValue((new Color(0, 200, 255)).ToVector4());
+		effect.Value.Parameters["uEdgeColor"].SetValue(new Color(0, 200, 255).ToVector4());
 		effect.Value.Parameters["uBlurProportion"].SetValue(BranchedLightning.BLUR_PROPORTION);
 		effect.Value.Parameters["uTransitPeriod"].SetValue(BranchedLightning.TRANSIT_PERIOD);
 		effect.Value.Parameters["uDeformPeriod"].SetValue(BranchedLightning.DEFORM_PERIOD);
@@ -83,10 +80,10 @@ public class BranchedLightning : Visual
 
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
 
-	public Vector2 position;
-	public float rotation;
-	public float timer;
-	public float maxTime;
+	public Vector2 Position;
+	public float Rotation;
+	public float Timer;
+	public float MaxTime;
 
 	private LightningNode lightningRoot;
 
@@ -94,7 +91,7 @@ public class BranchedLightning : Visual
 	{
 		Active = true;
 		Visible = true;
-		timer = 0;
+		Timer = 0;
 		lightningRoot = new LightningNode(LINE_PROPORTION, Vector2.UnitX * segmentLength, segmentLength, renderStripWidth, wiggleAngularSpeedLimit);
 	}
 
@@ -103,25 +100,25 @@ public class BranchedLightning : Visual
 		SetUp(DEFAULT_SEGMENT_LENGTH, DEFAULT_RENDER_STRIP_WIDTH, DEFAULT_ANGULAR_SPEED_LIMIT);
 	}
 
-	public BranchedLightning(float segmentLength, float width, Vector2 position, float rotation, float maxTime, float wiggleAngularSpeedLimit = DEFAULT_ANGULAR_SPEED_LIMIT)
+	public BranchedLightning(float segmentLength, float width, Vector2 Position, float Rotation, float MaxTime, float wiggleAngularSpeedLimit = DEFAULT_ANGULAR_SPEED_LIMIT)
 	{
-		this.position = position;
-		this.rotation = rotation;
-		this.maxTime = maxTime;
+		this.Position = Position;
+		this.Rotation = Rotation;
+		this.MaxTime = MaxTime;
 		SetUp(segmentLength, width / LINE_PROPORTION, wiggleAngularSpeedLimit);
 	}
 
 	public override void Update()
 	{
-		lightningRoot.Update(position, rotation);
-		if (Collision.SolidCollision(position, 0, 0))
+		lightningRoot.Update(Position, Rotation);
+		if (Collision.SolidCollision(Position, 0, 0))
 		{
 			Active = false;
 			Visible = false;
 		}
-		timer++;
+		Timer++;
 
-		float remainingLife = maxTime - timer;
+		float remainingLife = MaxTime - Timer;
 		if (remainingLife <= 0)
 		{
 			Active = false;
@@ -362,15 +359,7 @@ public class BranchedLightning : Visual
 
 		private void CreateChildren()
 		{
-			int branchCount;
-			if (parent != null)
-			{
-				branchCount = Main.rand.Next(0, MAX_BRANCH_COUNT) + (((depth - parent.depth) <= 1) ? 1 : 0);
-			}
-			else
-			{
-				branchCount = 1;
-			}
+			int branchCount = parent != null ? Main.rand.Next(0, MAX_BRANCH_COUNT) + (((depth - parent.depth) <= 1) ? 1 : 0) : 1;
 
 			for (int i = 0; i < branchCount; i++)
 			{
@@ -435,7 +424,7 @@ public class BranchedLightning : Visual
 			{
 				/* 绘制原点（光球）
 				 * 传入shader的顶点属性为：
-				 * - position: 绘制四边形的顶点位置
+				 * - Position: 绘制四边形的顶点位置
 				 * - color: (N/A, N/A, 0（绘制光球）, 是否使用闪电边缘颜色)
 				 * - texCoord: 绘制四边形的顶点uv
 				 */
@@ -460,7 +449,7 @@ public class BranchedLightning : Visual
 			{
 				/* 绘制闪电段
 				 * 传入shader的顶点属性为：
-				 * - position: 绘制四边形的顶点位置
+				 * - Position: 绘制四边形的顶点位置
 				 * - color: (噪波纹理u （用于使闪电段两端无位移）, 噪波纹理v, 1（绘制闪电段）, 是否使用闪电边缘颜色)
 				 * - texCoord: （当前宽度，噪波uv在u方向上的随机位移，闪电段长度）
 				 */
@@ -498,15 +487,7 @@ public class BranchedLightning : Visual
 
 		private Vector2 GetNormalDir()
 		{
-			Vector2 renderNormal;
-			if (parent == null)
-			{
-				renderNormal = Vector2.Zero;
-			}
-			else
-			{
-				renderNormal = (currentEndPos - parent.currentEndPos).NormalizeSafe().RotatedBy(Math.PI / 2);
-			}
+			Vector2 renderNormal = parent == null ? Vector2.Zero : (currentEndPos - parent.currentEndPos).NormalizeSafe().RotatedBy(Math.PI / 2);
 
 			return renderNormal;
 		}

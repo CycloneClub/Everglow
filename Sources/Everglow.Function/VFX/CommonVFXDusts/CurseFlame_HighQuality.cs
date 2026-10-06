@@ -45,35 +45,35 @@ public class CurseFlame_HighQualityDust : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
 
-	public Vector2 position;
-	public Vector2 velocity;
+	public Vector2 Position;
+	public Vector2 Velocity;
 	public float[] ai;
-	public float timer;
-	public float maxTime;
-	public float scale;
+	public float Timer;
+	public float MaxTime;
+	public float Scale;
 	public List<Vector2> oldPos = new List<Vector2>();
 
 	public override void Update()
 	{
-		position += velocity;
-		oldPos.Add(position);
+		Position += Velocity;
+		oldPos.Add(Position);
 		if (oldPos.Count > 15)
 		{
 			oldPos.RemoveAt(0);
 		}
 
-		velocity *= 0.96f;
-		timer++;
-		if (timer > maxTime)
+		Velocity *= 0.96f;
+		Timer++;
+		if (Timer > MaxTime)
 		{
 			Active = false;
 		}
 
-		velocity = velocity.RotatedBy(ai[1]);
+		Velocity = Velocity.RotatedBy(ai[1]);
 
-		float delC = ai[2] * 0.05f * (float)Math.Sin((maxTime - timer) / 40d * Math.PI);
-		Lighting.AddLight((int)(position.X / 16), (int)(position.Y / 16), 0.45f * delC, 0.85f * delC, 0f);
-		if (Collision.SolidCollision(position, 0, 0))
+		float delC = ai[2] * 0.05f * (float)Math.Sin((MaxTime - Timer) / 40d * Math.PI);
+		Lighting.AddLight((int)(Position.X / 16), (int)(Position.Y / 16), 0.45f * delC, 0.85f * delC, 0f);
+		if (Collision.SolidCollision(Position, 0, 0))
 		{
 			Active = false;
 		}
@@ -81,7 +81,7 @@ public class CurseFlame_HighQualityDust : Visual
 
 	public override void Draw()
 	{
-		float pocession = 1 - timer / maxTime;
+		float pocession = 1 - Timer / MaxTime;
 		if (pocession < 0.2)
 		{
 			pocession = 0.4f;
@@ -103,8 +103,8 @@ public class CurseFlame_HighQualityDust : Visual
 				float coordValue = (i - 1) / (float)len;
 				var drawcRopeUp = new Color(0.25f + coordValue * 0.5f, 0, 0, 0);
 				var drawcRopeDown = new Color(0.25f + coordValue * 0.5f, 1, 0, 0);
-				bars.Add(new Vertex2D(position, drawcRopeUp, new Vector3(ai[0] + coordValue * 0.4f, timeValue, pocession)));
-				bars.Add(new Vertex2D(position, drawcRopeDown, new Vector3(ai[0] + coordValue * 0.4f, timeValue + 0.4f, pocession)));
+				bars.Add(new Vertex2D(Position, drawcRopeUp, new Vector3(ai[0] + coordValue * 0.4f, timeValue, pocession)));
+				bars.Add(new Vertex2D(Position, drawcRopeDown, new Vector3(ai[0] + coordValue * 0.4f, timeValue + 0.4f, pocession)));
 			}
 		}
 		else

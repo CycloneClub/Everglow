@@ -37,69 +37,65 @@ public class Spark_RockCrackDust : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
 
-	public Vector2 position;
-	public Vector2 velocity;
+	public Vector2 Position;
+	public Vector2 Velocity;
 	public float[] ai;
-	public float timer;
-	public float maxTime;
-	public float scale;
-	public float rotation;
+	public float Timer;
+	public float MaxTime;
+	public float Scale;
+	public float Rotation;
 	public bool noGravity;
-
-	public Spark_RockCrackDust()
-	{
-	}
 
 	public override void Update()
 	{
 		ai[1] *= 0.99f;
-		position += velocity;
-		if (position.X <= 320 || position.X >= Main.maxTilesX * 16 - 320)
+		Position += Velocity;
+		if (Position.X <= 320 || Position.X >= Main.maxTilesX * 16 - 320)
 		{
-			timer = maxTime;
+			Timer = MaxTime;
 		}
-		if (position.Y <= 320 || position.Y >= Main.maxTilesY * 16 - 320)
+		if (Position.Y <= 320 || Position.Y >= Main.maxTilesY * 16 - 320)
 		{
-			timer = maxTime;
+			Timer = MaxTime;
 		}
-		velocity *= 0.98f;
-		scale *= 0.96f;
-		if (maxTime - timer < 50)
+		Velocity *= 0.98f;
+		Scale *= 0.96f;
+		if (MaxTime - Timer < 50)
 		{
-			scale *= 0.9f;
+			Scale *= 0.9f;
 		}
-		timer++;
-		if (timer > maxTime)
+		Timer++;
+		if (Timer > MaxTime)
 		{
 			Active = false;
 			return;
 		}
-		velocity = velocity.RotatedBy(ai[1]);
-		if (Collision.SolidCollision(position, 0, 0))
+		Velocity = Velocity.RotatedBy(ai[1]);
+		if (Collision.SolidCollision(Position, 0, 0))
 		{
-			velocity *= -0.2f;
-			timer += 10;
+			Velocity *= -0.2f;
+			Timer += 10;
 		}
-		if (scale < 0.5f)
+		if (Scale < 0.5f)
 		{
-			timer += 20;
+			Timer += 20;
 		}
-		float pocession = 1 - timer / maxTime;
-		float c = pocession * scale * 0.1f;
-		Lighting.AddLight(position, c * 0.66f, c * 0.49f, 0.09f * c);
+		float pocession = 1 - Timer / MaxTime;
+		float c = pocession * Scale * 0.1f;
+		Lighting.AddLight(Position, c * 0.66f, c * 0.49f, 0.09f * c);
 	}
 
 	public override void Draw()
 	{
 		float pocession = ai[0] / 3f + 1 / 6f;
-		Vector2 toCorner = new Vector2(0, scale * 0.2f).RotatedBy(velocity.ToRotation() - MathHelper.PiOver2);
+		Vector2 toCorner = new Vector2(0, Scale * 0.2f).RotatedBy(Velocity.ToRotation() - MathHelper.PiOver2);
 		var bars = new List<Vertex2D>()
 		{
-			new Vertex2D(position + toCorner + velocity * 6, new Color(0, 0, pocession, 0.0f), new Vector3(0)),
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 0.5) + velocity * 6, new Color(0, 1, pocession, 0.0f), new Vector3(0)),
+			new Vertex2D(Position + toCorner + Velocity * 6, new Color(0, 0, pocession, 0.0f), new Vector3(0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 0.5) + Velocity * 6, new Color(0, 1, pocession, 0.0f), new Vector3(0)),
 
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 1.5), new Color(1, 0, pocession, 0.0f), new Vector3(0)),
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 1), new Color(1, 1, pocession, 0.0f), new Vector3(0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1.5), new Color(1, 0, pocession, 0.0f), new Vector3(0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1), new Color(1, 1, pocession, 0.0f), new Vector3(0)),
 		};
 
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);

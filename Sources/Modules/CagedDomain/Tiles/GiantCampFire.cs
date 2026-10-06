@@ -53,13 +53,13 @@ public class GiantCampFire : ModTile, ISceneTile
 			{
 				var spark = new FireSparkDust
 				{
-					velocity = new Vector2(0, -8),
+					Velocity = new Vector2(0, -8),
 					Active = true,
 					Visible = true,
-					position = new Vector2(i, j) * 16 + new Vector2(8, -8) + new Vector2(Main.rand.NextFloat(-30f, 30f), 0).RotatedByRandom(6.283),
-					maxTime = Main.rand.Next(37, 195),
-					scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(12.1f, 27.0f)),
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = new Vector2(i, j) * 16 + new Vector2(8, -8) + new Vector2(Main.rand.NextFloat(-30f, 30f), 0).RotatedByRandom(6.283),
+					MaxTime = Main.rand.Next(37, 195),
+					Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(12.1f, 27.0f)),
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.003f, 0.003f) },
 				};
 				Ins.VFXManager.Add(spark);
@@ -68,13 +68,13 @@ public class GiantCampFire : ModTile, ISceneTile
 			{
 				var somg = new VaporDust
 				{
-					velocity = new Vector2(0, -12),
+					Velocity = new Vector2(0, -12),
 					Active = true,
 					Visible = true,
-					position = new Vector2(i, j) * 16 + new Vector2(8, -8) + new Vector2(Main.rand.NextFloat(-30f, 30f), 0).RotatedByRandom(6.283),
-					maxTime = Main.rand.Next(37, 305),
-					scale = Main.rand.NextFloat(40, 100),
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = new Vector2(i, j) * 16 + new Vector2(8, -8) + new Vector2(Main.rand.NextFloat(-30f, 30f), 0).RotatedByRandom(6.283),
+					MaxTime = Main.rand.Next(37, 305),
+					Scale = Main.rand.NextFloat(40, 100),
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { Main.rand.NextFloat(-0.05f, -0.01f), 0 },
 				};
 				Ins.VFXManager.Add(somg);

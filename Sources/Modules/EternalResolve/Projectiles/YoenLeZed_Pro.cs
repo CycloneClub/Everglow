@@ -66,12 +66,12 @@ namespace Everglow.EternalResolve.Projectiles
 				Vector2 afterVelocity = Projectile.velocity.RotateRandom(0.7f);
 				var electric = new YoenLeZedElecticFlow
 				{
-					velocity = afterVelocity * mulVelocity,
+					Velocity = afterVelocity * mulVelocity,
 					Active = true,
 					Visible = true,
-					position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-					maxTime = size * size / 12f,
-					scale = size,
+					Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+					MaxTime = size * size / 12f,
+					Scale = size,
 					ai = new float[] { Main.rand.NextFloat(0.0f, 0.6f), 1, Main.rand.NextFloat(-0.2f, 0.2f) },
 				};
 				Ins.VFXManager.Add(electric);
@@ -87,12 +87,12 @@ namespace Everglow.EternalResolve.Projectiles
 				Vector2 afterVelocity = Projectile.velocity.RotateRandom(0.3f);
 				var electric = new YoenLeZedElecticFlow
 				{
-					velocity = afterVelocity * mulVelocity,
+					Velocity = afterVelocity * mulVelocity,
 					Active = true,
 					Visible = true,
-					position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity * MathF.Sqrt(Main.rand.NextFloat(1f)) * 6f - afterVelocity,
-					maxTime = size * size / 18f,
-					scale = size,
+					Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity * MathF.Sqrt(Main.rand.NextFloat(1f)) * 6f - afterVelocity,
+					MaxTime = size * size / 18f,
+					Scale = size,
 					ai = new float[] { Main.rand.NextFloat(0.0f, 0.6f), 2, Main.rand.NextFloat(-0.2f, 0.2f) },
 				};
 				Ins.VFXManager.Add(electric);

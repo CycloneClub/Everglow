@@ -49,13 +49,13 @@ public class BloodFountain : ModProjectile
 					{
 						var blood = new BloodDrop
 						{
-							velocity = (new Vector2(0, 10).RotatedByRandom(MathHelper.TwoPi) * Main.rand.NextFloat(0.6f, 1.5f) + new Vector2((player.Center.X - Projectile.Center.X) * 0.2f, 4 * power)) * decreaseZ * power,
+							Velocity = (new Vector2(0, 10).RotatedByRandom(MathHelper.TwoPi) * Main.rand.NextFloat(0.6f, 1.5f) + new Vector2((player.Center.X - Projectile.Center.X) * 0.2f, 4 * power)) * decreaseZ * power,
 							Active = true,
 							Visible = true,
-							position = player.Center + new Vector2(4, -34),
-							maxTime = Main.rand.Next(54, 360) * decreaseZ,
-							scale = Main.rand.NextFloat(6f, 15f) * decreaseZ,
-							rotation = Main.rand.NextFloat(6.283f),
+							Position = player.Center + new Vector2(4, -34),
+							MaxTime = Main.rand.Next(54, 360) * decreaseZ,
+							Scale = Main.rand.NextFloat(6f, 15f) * decreaseZ,
+							Rotation = Main.rand.NextFloat(6.283f),
 							ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 						};
 						Ins.VFXManager.Add(blood);
@@ -64,12 +64,12 @@ public class BloodFountain : ModProjectile
 					{
 						var bloodSplash = new BloodSplash
 						{
-							velocity = (new Vector2(0, 10).RotatedByRandom(MathHelper.TwoPi) * Main.rand.NextFloat(0.6f, 1.5f) + new Vector2((player.Center.X - Projectile.Center.X) * 0.2f, 4 * power)) * decreaseZ * power,
+							Velocity = (new Vector2(0, 10).RotatedByRandom(MathHelper.TwoPi) * Main.rand.NextFloat(0.6f, 1.5f) + new Vector2((player.Center.X - Projectile.Center.X) * 0.2f, 4 * power)) * decreaseZ * power,
 							Active = true,
 							Visible = true,
-							position = player.Center + new Vector2(4, -34),
-							maxTime = Main.rand.Next(54, 75) * decreaseZ,
-							scale = Main.rand.NextFloat(6f, 18f) * decreaseZ,
+							Position = player.Center + new Vector2(4, -34),
+							MaxTime = Main.rand.Next(54, 75) * decreaseZ,
+							Scale = Main.rand.NextFloat(6f, 18f) * decreaseZ,
 							ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0, Main.rand.NextFloat(20.0f, 40.0f) },
 						};
 						Ins.VFXManager.Add(bloodSplash);

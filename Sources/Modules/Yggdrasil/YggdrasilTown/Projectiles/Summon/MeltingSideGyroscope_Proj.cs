@@ -40,13 +40,13 @@ public class MeltingSideGyroscope_Proj : GyroscopeProjectile
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 2f)).RotatedByRandom(MathHelper.TwoPi) - new Vector2(Projectile.velocity.X, 0);
 			var spark = new FireSparkDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Bottom,
-				maxTime = Main.rand.Next(7, 20),
-				scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(4f, 27.0f)),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Bottom,
+				MaxTime = Main.rand.Next(7, 20),
+				Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(4f, 27.0f)),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.03f, 0.03f) },
 			};
 			Ins.VFXManager.Add(spark);
@@ -215,13 +215,13 @@ public class MeltingSideGyroscope_Proj : GyroscopeProjectile
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 14f)).RotatedByRandom(MathHelper.TwoPi);
 			var spark = new FireSparkDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(7, 45),
-				scale = Main.rand.NextFloat(2f, Main.rand.NextFloat(4f, 27.0f)),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(7, 45),
+				Scale = Main.rand.NextFloat(2f, Main.rand.NextFloat(4f, 27.0f)),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.03f, 0.03f) },
 			};
 			Ins.VFXManager.Add(spark);

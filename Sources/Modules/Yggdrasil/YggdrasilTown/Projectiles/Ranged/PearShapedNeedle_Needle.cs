@@ -53,13 +53,13 @@ public class PearShapedNeedle_Needle : ModProjectile
 					Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(2f, 6f)).RotatedByRandom(MathHelper.TwoPi);
 					var spark = new FireSpark_MetalStabDust
 					{
-						velocity = newVelocity,
+						Velocity = newVelocity,
 						Active = true,
 						Visible = true,
-						position = endPos,
-						maxTime = Main.rand.Next(1, 25),
-						scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(10f, 27.0f)),
-						rotation = Main.rand.NextFloat(6.283f),
+						Position = endPos,
+						MaxTime = Main.rand.Next(1, 25),
+						Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(10f, 27.0f)),
+						Rotation = Main.rand.NextFloat(6.283f),
 						ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.13f, 0.13f) },
 					};
 					Ins.VFXManager.Add(spark);

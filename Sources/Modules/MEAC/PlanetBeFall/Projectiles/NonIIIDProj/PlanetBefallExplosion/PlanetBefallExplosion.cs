@@ -44,12 +44,12 @@ public class PlanetBefallExplosion : ModProjectile// , IWarpProjectile
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(45f, 125f)).RotatedByRandom(MathHelper.TwoPi);
 			var somg = new RockSmogLine_front
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + newVelocity * Main.rand.NextFloat(-0.5f, 4f),
-				maxTime = Main.rand.Next(45, 68),
-				scale = Main.rand.NextFloat(60f, 220f),
+				Position = Projectile.Center + newVelocity * Main.rand.NextFloat(-0.5f, 4f),
+				MaxTime = Main.rand.Next(45, 68),
+				Scale = Main.rand.NextFloat(60f, 220f),
 				ai = new float[] { 0, 0 },
 			};
 			Ins.VFXManager.Add(somg);
@@ -59,13 +59,13 @@ public class PlanetBefallExplosion : ModProjectile// , IWarpProjectile
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(2f, 4f)).RotatedByRandom(MathHelper.TwoPi);
 			var somg = new FireSmogDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + newVelocity * 4,
-				maxTime = Main.rand.Next(60, 90),
-				scale = Main.rand.NextFloat(2f, 7f) * Projectile.ai[0],
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + newVelocity * 4,
+				MaxTime = Main.rand.Next(60, 90),
+				Scale = Main.rand.NextFloat(2f, 7f) * Projectile.ai[0],
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
 			Ins.VFXManager.Add(somg);
@@ -75,13 +75,13 @@ public class PlanetBefallExplosion : ModProjectile// , IWarpProjectile
 			Vector2 newVelocity = new Vector2(0, mulVelocity * MathF.Sqrt(Main.rand.NextFloat(0f, 1f)) * 2).RotatedByRandom(MathHelper.TwoPi);
 			var somg = new FireSmogDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(MathF.Sqrt(Main.rand.NextFloat(0f, 1f)), 0).RotatedByRandom(6.283) + newVelocity * 3,
-				maxTime = Main.rand.Next(60, 90),
-				scale = Main.rand.NextFloat(2f, 7f) * Projectile.ai[0],
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + new Vector2(MathF.Sqrt(Main.rand.NextFloat(0f, 1f)), 0).RotatedByRandom(6.283) + newVelocity * 3,
+				MaxTime = Main.rand.Next(60, 90),
+				Scale = Main.rand.NextFloat(2f, 7f) * Projectile.ai[0],
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
 			Ins.VFXManager.Add(somg);
@@ -96,13 +96,13 @@ public class PlanetBefallExplosion : ModProjectile// , IWarpProjectile
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(0f, 4f)).RotatedByRandom(MathHelper.TwoPi);
 			var fire = new VFXs.PlanetBeFallFireDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(0, 15), Main.rand.NextFloat(-15, 15)).RotatedByRandom(6.283) + newVelocity * 3,
-				maxTime = Main.rand.Next(45, 75),
-				scale = Main.rand.NextFloat(2f, 7f) * Projectile.ai[0],
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(0, 15), Main.rand.NextFloat(-15, 15)).RotatedByRandom(6.283) + newVelocity * 3,
+				MaxTime = Main.rand.Next(45, 75),
+				Scale = Main.rand.NextFloat(2f, 7f) * Projectile.ai[0],
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
 			Ins.VFXManager.Add(fire);
@@ -112,13 +112,13 @@ public class PlanetBefallExplosion : ModProjectile// , IWarpProjectile
 			Vector2 newVelocity = new Vector2(0, mulVelocity * MathF.Sqrt(Main.rand.NextFloat(0f, 1f)) * 2).RotatedByRandom(MathHelper.TwoPi);
 			var fire = new VFXs.PlanetBeFallFireDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(MathF.Sqrt(Main.rand.NextFloat(0f, 1f)), 0).RotatedByRandom(6.283) + newVelocity * 3,
-				maxTime = Main.rand.Next(45, 75),
-				scale = Main.rand.NextFloat(0.5f, 2f) * Projectile.ai[0],
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + new Vector2(MathF.Sqrt(Main.rand.NextFloat(0f, 1f)), 0).RotatedByRandom(6.283) + newVelocity * 3,
+				MaxTime = Main.rand.Next(45, 75),
+				Scale = Main.rand.NextFloat(0.5f, 2f) * Projectile.ai[0],
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
 			Ins.VFXManager.Add(fire);
@@ -128,12 +128,12 @@ public class PlanetBefallExplosion : ModProjectile// , IWarpProjectile
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(4f, 28f)).RotatedByRandom(MathHelper.TwoPi);
 			var somg = new Spark_RockCrackDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + newVelocity * 4,
-				maxTime = Main.rand.Next(160, 250),
-				scale = Main.rand.NextFloat(2f, 7f) * Projectile.ai[0],
+				Position = Projectile.Center + newVelocity * 4,
+				MaxTime = Main.rand.Next(160, 250),
+				Scale = Main.rand.NextFloat(2f, 7f) * Projectile.ai[0],
 				ai = new float[] { 0, 0 },
 			};
 			Ins.VFXManager.Add(somg);
@@ -143,12 +143,12 @@ public class PlanetBefallExplosion : ModProjectile// , IWarpProjectile
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(1f, 8f)).RotatedByRandom(MathHelper.TwoPi);
 			var somg = new Spark_RockCrackDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + newVelocity * 2,
-				maxTime = Main.rand.Next(160, 250),
-				scale = Main.rand.NextFloat(0.5f, 1f) * Projectile.ai[0],
+				Position = Projectile.Center + newVelocity * 2,
+				MaxTime = Main.rand.Next(160, 250),
+				Scale = Main.rand.NextFloat(0.5f, 1f) * Projectile.ai[0],
 				ai = new float[] { 0, 0 },
 			};
 			Ins.VFXManager.Add(somg);

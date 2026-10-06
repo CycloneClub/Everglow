@@ -45,12 +45,12 @@ public class MothBallExplosion : ModProjectile, IWarpProjectile
 			Vector2 afterVelocity = new Vector2(0, size * 1.3f).RotatedByRandom(MathHelper.TwoPi);
 			var electric = new ElectricCurrent
 			{
-				velocity = afterVelocity * mulVelocity,
+				Velocity = afterVelocity * mulVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-				maxTime = Main.rand.Next(60, 120),
-				scale = size,
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+				MaxTime = Main.rand.Next(60, 120),
+				Scale = size,
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.6f), size / 2, Main.rand.NextFloat(0.8f, 1.2f) },
 			};
 			Ins.VFXManager.Add(electric);
@@ -61,12 +61,12 @@ public class MothBallExplosion : ModProjectile, IWarpProjectile
 			Vector2 afterVelocity = new Vector2(0, Main.rand.NextFloat(20f, 30f)).RotatedByRandom(MathHelper.TwoPi);
 			var electric = new MothBallCurrent
 			{
-				velocity = afterVelocity * mulVelocity,
+				Velocity = afterVelocity * mulVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-				maxTime = Main.rand.Next(20, 50),
-				scale = Main.rand.NextFloat(18, 19),
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+				MaxTime = Main.rand.Next(20, 50),
+				Scale = Main.rand.NextFloat(18, 19),
 				ai = new float[] { 0, 0, 0 },
 			};
 			Ins.VFXManager.Add(electric);
@@ -97,13 +97,13 @@ public class MothBallExplosion : ModProjectile, IWarpProjectile
 			Vector2 newVelocity = new Vector2(0, mulVelocity * sqrtRand * 6).RotatedByRandom(MathHelper.TwoPi);
 			var somg = new FireSmogDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + newVelocity * 1,
-				maxTime = Main.rand.Next(75, 125),
-				scale = Main.rand.NextFloat(2f, 7f) * Projectile.ai[0],
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + newVelocity * 1,
+				MaxTime = Main.rand.Next(75, 125),
+				Scale = Main.rand.NextFloat(2f, 7f) * Projectile.ai[0],
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
 			Ins.VFXManager.Add(somg);
@@ -119,13 +119,13 @@ public class MothBallExplosion : ModProjectile, IWarpProjectile
 			Vector2 newVelocity = new Vector2(0, mulVelocity * sqrtRand * 6).RotatedByRandom(MathHelper.TwoPi);
 			var fire = new MothBlueFireDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + newVelocity,
-				maxTime = Main.rand.Next(49, 125),
-				scale = Main.rand.NextFloat(2f, 7f) * Projectile.ai[0],
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + newVelocity,
+				MaxTime = Main.rand.Next(49, 125),
+				Scale = Main.rand.NextFloat(2f, 7f) * Projectile.ai[0],
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
 			Ins.VFXManager.Add(fire);
@@ -141,17 +141,17 @@ public class MothBallExplosion : ModProjectile, IWarpProjectile
 			Vector2 newVelocity = new Vector2(0, mulVelocity * sqrtRand * 6).RotatedByRandom(MathHelper.TwoPi);
 			var smog = new MothShimmerScaleDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-				coord = new Vector2(Main.rand.NextFloat(1f), Main.rand.NextFloat(1f)),
-				maxTime = Main.rand.Next(120, 185),
-				scale = Main.rand.NextFloat(3.4f, 18.4f),
-				rotation = Main.rand.NextFloat(6.283f),
-				rotation2 = Main.rand.NextFloat(6.283f),
-				omega = Main.rand.NextFloat(-30f, 30f),
-				phi = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+				Coord = new Vector2(Main.rand.NextFloat(1f), Main.rand.NextFloat(1f)),
+				MaxTime = Main.rand.Next(120, 185),
+				Scale = Main.rand.NextFloat(3.4f, 18.4f),
+				Rotation = Main.rand.NextFloat(6.283f),
+				Rotation2 = Main.rand.NextFloat(6.283f),
+				Omega = Main.rand.NextFloat(-30f, 30f),
+				Phi = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(-0.005f, 0.005f) },
 			};
 			Ins.VFXManager.Add(smog);

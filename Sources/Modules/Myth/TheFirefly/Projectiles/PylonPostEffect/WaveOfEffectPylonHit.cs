@@ -1,21 +1,22 @@
 namespace Everglow.Myth.TheFirefly.Projectiles.PylonPostEffect;
 
-internal abstract class ShaderDraw : Visual
+public abstract class ShaderDraw : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
-	public Vector2 position;
-	public Vector2 velocity;
+
+	public Vector2 Position;
+	public Vector2 Velocity;
 	public float[] ai;
-	public ShaderDraw() { }
+
 	public ShaderDraw(Vector2 position, Vector2 velocity, params float[] ai)
 	{
-		this.position = position;
-		this.velocity = velocity;
-		this.ai = ai;//可以认为params传入的都是右值，可以直接引用
+		this.Position = position;
+		this.Velocity = velocity;
+		this.ai = ai; // 可以认为params传入的都是右值，可以直接引用
 	}
 }
 
-internal class WaveOfEffectPylonHit_CorruptPipeline : Pipeline
+public class WaveOfEffectPylonHit_CorruptPipeline : Pipeline
 {
 	public override void Load()
 	{
@@ -23,6 +24,7 @@ internal class WaveOfEffectPylonHit_CorruptPipeline : Pipeline
 		effect.Value.Parameters["uNoise"].SetValue(ModAsset.HiveCyberNoise.Value);
 		effect.Value.Parameters["uPowder"].SetValue(ModAsset.NoiseSand.Value);
 	}
+
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
@@ -41,42 +43,47 @@ internal class WaveOfEffectPylonHit_CorruptPipeline : Pipeline
 		Ins.Batch.End();
 	}
 }
+
 [Pipeline(typeof(WaveOfEffectPylonHit_CorruptPipeline), typeof(BloomPipeline))]
-internal class WaveOfEffectPylonHit_CorruptWave : ShaderDraw
+public class WaveOfEffectPylonHit_CorruptWave : ShaderDraw
 {
 	/// <summary>
 	/// ai[0]x相位
 	/// ai[1]波速
 	/// ai[2]宽度
 	/// </summary>
-	public float timer;
-	public float maxTime;
+	public float Timer;
+	public float MaxTime;
 	public float radius;
-	public WaveOfEffectPylonHit_CorruptWave() { }
-	public WaveOfEffectPylonHit_CorruptWave(int maxTime, Vector2 position, Vector2 velocity, params float[] ai) : base(position, velocity, ai)
+
+	public WaveOfEffectPylonHit_CorruptWave(Vector2 position, Vector2 velocity, params float[] ai)
+		: base(position, velocity, ai)
 	{
-		this.maxTime = maxTime;
 	}
 
 	public override void Update()
 	{
-		position += velocity;
-		radius += ai[1] * ((maxTime - timer) / maxTime);
-		timer++;
-		if (timer > maxTime)
+		Position += Velocity;
+		radius += ai[1] * ((MaxTime - Timer) / MaxTime);
+		Timer++;
+		if (Timer > MaxTime)
+		{
 			Active = false;
+		}
 
-
-		float delC = ai[2] * 0.05f * (float)Math.Sin((maxTime - timer) / maxTime * Math.PI);
-		Lighting.AddLight((int)(position.X / 16), (int)(position.Y / 16), 0.015f * delC, 0, 0.45f * delC);
+		float delC = ai[2] * 0.05f * (float)Math.Sin((MaxTime - Timer) / MaxTime * Math.PI);
+		Lighting.AddLight(Position, 0.015f * delC, 0, 0.45f * delC);
 	}
 
 	public override void Draw()
 	{
-		float fx = timer / maxTime;
+		float fx = Timer / MaxTime;
 		int len = (int)(radius / 3f);
 		if (len <= 2)
+		{
 			return;
+		}
+
 		var bars = new Vertex2D[len * 2 + 2];
 		for (int i = 0; i < len + 1; i++)
 		{
@@ -92,13 +99,14 @@ internal class WaveOfEffectPylonHit_CorruptWave : ShaderDraw
 				width = radiousDraw.Length();
 			}
 
-			bars[2 * i] = new Vertex2D(position + radiousDraw, drawcRope, new Vector3(ai[0] + timer / maxTime, i / (float)len * 2, 0.8f - fx));
-			bars[2 * i + 1] = new Vertex2D(position + radiousDraw - normal * width, drawcRope, new Vector3(texCoordWidth + ai[0] + timer / maxTime, i / (float)len * 2, 0.8f - fx));
+			bars[2 * i] = new Vertex2D(Position + radiousDraw, drawcRope, new Vector3(ai[0] + Timer / MaxTime, i / (float)len * 2, 0.8f - fx));
+			bars[2 * i + 1] = new Vertex2D(Position + radiousDraw - normal * width, drawcRope, new Vector3(texCoordWidth + ai[0] + Timer / MaxTime, i / (float)len * 2, 0.8f - fx));
 		}
 
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);
 	}
 }
+
 internal class WaveOfEffectPylonHit_CrimsonPipeline : Pipeline
 {
 	public override void Load()
@@ -107,6 +115,7 @@ internal class WaveOfEffectPylonHit_CrimsonPipeline : Pipeline
 		effect.Value.Parameters["uNoise"].SetValue(ModAsset.HiveCyberNoise.Value);
 		effect.Value.Parameters["uPowder"].SetValue(ModAsset.NoiseSand.Value);
 	}
+
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
@@ -125,42 +134,49 @@ internal class WaveOfEffectPylonHit_CrimsonPipeline : Pipeline
 		Ins.Batch.End();
 	}
 }
+
 [Pipeline(typeof(WaveOfEffectPylonHit_CrimsonPipeline), typeof(BloomPipeline))]
-internal class WaveOfEffectPylonHit_CrimsonWave : ShaderDraw
+public class WaveOfEffectPylonHit_CrimsonWave : ShaderDraw
 {
 	/// <summary>
 	/// ai[0]x相位
 	/// ai[1]波速
 	/// ai[2]宽度
 	/// </summary>
-	public float timer;
-	public float maxTime;
+	public float Timer;
+	public float MaxTime;
 	public float radius;
-	public WaveOfEffectPylonHit_CrimsonWave() { }
-	public WaveOfEffectPylonHit_CrimsonWave(int maxTime, Vector2 position, Vector2 velocity, params float[] ai) : base(position, velocity, ai)
+
+
+	public WaveOfEffectPylonHit_CrimsonWave(int maxTime, Vector2 position, Vector2 velocity, params float[] ai)
+		: base(position, velocity, ai)
 	{
-		this.maxTime = maxTime;
+		this.MaxTime = maxTime;
 	}
 
 	public override void Update()
 	{
-		position += velocity;
-		radius += ai[1] * ((maxTime - timer) / maxTime);
-		timer++;
-		if (timer > maxTime)
+		Position += Velocity;
+		radius += ai[1] * ((MaxTime - Timer) / MaxTime);
+		Timer++;
+		if (Timer > MaxTime)
+		{
 			Active = false;
+		}
 
-
-		float delC = ai[2] * 0.05f * (float)Math.Sin((maxTime - timer) / maxTime * Math.PI);
-		Lighting.AddLight((int)(position.X / 16), (int)(position.Y / 16), 0.015f * delC, 0, 0.45f * delC);
+		float delC = ai[2] * 0.05f * (float)Math.Sin((MaxTime - Timer) / MaxTime * Math.PI);
+		Lighting.AddLight(Position, 0.015f * delC, 0, 0.45f * delC);
 	}
 
 	public override void Draw()
 	{
-		float fx = timer / maxTime;
+		float fx = Timer / MaxTime;
 		int len = (int)(radius / 3f);
 		if (len <= 2)
+		{
 			return;
+		}
+
 		var bars = new Vertex2D[len * 2 + 2];
 		for (int i = 0; i < len + 1; i++)
 		{
@@ -176,8 +192,8 @@ internal class WaveOfEffectPylonHit_CrimsonWave : ShaderDraw
 				width = radiousDraw.Length();
 			}
 
-			bars[2 * i] = new Vertex2D(position + radiousDraw, drawcRope, new Vector3(ai[0] + timer / maxTime, i / (float)len * 2, 0.8f - fx));
-			bars[2 * i + 1] = new Vertex2D(position + radiousDraw - normal * width, drawcRope, new Vector3(texCoordWidth + ai[0] + timer / maxTime, i / (float)len * 2, 0.8f - fx));
+			bars[2 * i] = new Vertex2D(Position + radiousDraw, drawcRope, new Vector3(ai[0] + Timer / MaxTime, i / (float)len * 2, 0.8f - fx));
+			bars[2 * i + 1] = new Vertex2D(Position + radiousDraw - normal * width, drawcRope, new Vector3(texCoordWidth + ai[0] + Timer / MaxTime, i / (float)len * 2, 0.8f - fx));
 		}
 
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);

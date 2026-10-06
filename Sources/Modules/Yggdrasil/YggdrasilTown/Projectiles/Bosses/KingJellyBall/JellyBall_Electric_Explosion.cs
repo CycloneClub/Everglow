@@ -60,12 +60,12 @@ public class JellyBall_Electric_Explosion : ModProjectile
 		{
 			var dustVFX = new ElectricCurrent
 			{
-				velocity = new Vector2(0, Main.rand.NextFloat(3, 4)).RotatedBy(Main.rand.NextFloat(MathHelper.TwoPi)) * MathF.Sqrt(Projectile.ai[0]) * 2,
+				Velocity = new Vector2(0, Main.rand.NextFloat(3, 4)).RotatedBy(Main.rand.NextFloat(MathHelper.TwoPi)) * MathF.Sqrt(Projectile.ai[0]) * 2,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(20, 60),
-				scale = Main.rand.Next(1, 2) * Projectile.ai[0],
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(20, 60),
+				Scale = Main.rand.Next(1, 2) * Projectile.ai[0],
 				ai = new float[] { Main.rand.NextFloat(1f), 0, Main.rand.NextFloat(-0.01f, 0.01f) },
 			};
 			Ins.VFXManager.Add(dustVFX);

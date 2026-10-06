@@ -214,12 +214,12 @@ public class Georg_Hook_Thunder : ModProjectile
 			Vector2 afterVelocity = new Vector2(Main.rand.NextFloat(15f, 18f), 0).RotateRandom(MathHelper.TwoPi);
 			var electric = new ElectricCurrent
 			{
-				velocity = afterVelocity,
+				Velocity = afterVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = 10,
-				scale = size,
+				Position = Projectile.Center,
+				MaxTime = 10,
+				Scale = size,
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.6f), size, 0 },
 			};
 			Ins.VFXManager.Add(electric);

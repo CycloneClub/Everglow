@@ -45,13 +45,13 @@ namespace Everglow.EternalResolve.Projectiles
 				Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 4f)).RotatedByRandom(MathHelper.TwoPi) + new Vector2(0, -4f);
 				var somg = new VaporDust
 				{
-					velocity = newVelocity,
+					Velocity = newVelocity,
 					Active = true,
 					Visible = true,
-					position = Projectile.Center + new Vector2(Main.rand.NextFloat(0, 6f), 0).RotatedByRandom(6.283) + newVelocity * 3 + Projectile.velocity.RotatedBy(Main.rand.NextFloat(-0.24f, 0.24f)) * MathF.Sqrt(Main.rand.NextFloat(1f)) * 9f,
-					maxTime = Main.rand.Next(10, 90),
-					scale = Main.rand.NextFloat(20f, 135f),
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = Projectile.Center + new Vector2(Main.rand.NextFloat(0, 6f), 0).RotatedByRandom(6.283) + newVelocity * 3 + Projectile.velocity.RotatedBy(Main.rand.NextFloat(-0.24f, 0.24f)) * MathF.Sqrt(Main.rand.NextFloat(1f)) * 9f,
+					MaxTime = Main.rand.Next(10, 90),
+					Scale = Main.rand.NextFloat(20f, 135f),
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { Main.rand.NextFloat(-0.05f, -0.01f), 0 },
 				};
 				Ins.VFXManager.Add(somg);
@@ -96,13 +96,13 @@ namespace Everglow.EternalResolve.Projectiles
 					Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 2f)).RotatedByRandom(MathHelper.TwoPi) + Projectile.velocity * 0.2f + player.velocity * 0.5f;
 					var fire = new BayonetFlameDust
 					{
-						velocity = newVelocity,
+						Velocity = newVelocity,
 						Active = true,
 						Visible = true,
-						position = player.Center + new Vector2(Main.rand.NextFloat(0, 6f), 0).RotatedByRandom(6.283) + newVelocity * 3 + Projectile.velocity.RotatedBy(Main.rand.NextFloat(-0.24f, 0.24f)) * MathF.Sqrt(Main.rand.NextFloat(1f)) * 6f,
-						maxTime = Main.rand.Next(6, 25),
-						scale = Main.rand.NextFloat(10f, 50f),
-						rotation = Main.rand.NextFloat(6.283f),
+						Position = player.Center + new Vector2(Main.rand.NextFloat(0, 6f), 0).RotatedByRandom(6.283) + newVelocity * 3 + Projectile.velocity.RotatedBy(Main.rand.NextFloat(-0.24f, 0.24f)) * MathF.Sqrt(Main.rand.NextFloat(1f)) * 6f,
+						MaxTime = Main.rand.Next(6, 25),
+						Scale = Main.rand.NextFloat(10f, 50f),
+						Rotation = Main.rand.NextFloat(6.283f),
 						ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 					};
 					Ins.VFXManager.Add(fire);

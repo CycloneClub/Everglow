@@ -201,24 +201,24 @@ public class Living_Jawbone_Huge_ground : ModProjectile
 				Vector2 pos0 = new Vector2(MathF.Sqrt(Main.rand.NextFloat(1f)) * 430 * Projectile.scale, 0).RotatedBy(Projectile.rotation - Projectile.ai[0] / 20f * i);
 				var blood = new BloodDrop
 				{
-					velocity = pos0.RotatedBy(MathHelper.PiOver2) * 0.1f,
+					Velocity = pos0.RotatedBy(MathHelper.PiOver2) * 0.1f,
 					Active = true,
 					Visible = true,
-					position = pos0 + Projectile.Center,
-					maxTime = Main.rand.Next(54, 74),
-					scale = Main.rand.NextFloat(6f, 25f),
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = pos0 + Projectile.Center,
+					MaxTime = Main.rand.Next(54, 74),
+					Scale = Main.rand.NextFloat(6f, 25f),
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 				};
 				Ins.VFXManager.Add(blood);
 				var blood2 = new BloodSplash
 				{
-					velocity = pos0.RotatedBy(MathHelper.PiOver2) * 0.1f,
+					Velocity = pos0.RotatedBy(MathHelper.PiOver2) * 0.1f,
 					Active = true,
 					Visible = true,
-					position = pos0 + Projectile.Center,
-					maxTime = Main.rand.Next(54, 74),
-					scale = Main.rand.NextFloat(6f, 18f),
+					Position = pos0 + Projectile.Center,
+					MaxTime = Main.rand.Next(54, 74),
+					Scale = Main.rand.NextFloat(6f, 18f),
 					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0, Main.rand.NextFloat(20.0f, 40.0f) },
 				};
 				Ins.VFXManager.Add(blood2);
@@ -228,24 +228,24 @@ public class Living_Jawbone_Huge_ground : ModProjectile
 				Vector2 pos1 = new Vector2(MathF.Sqrt(Main.rand.NextFloat(1f)) * 430 * Projectile.scale, 0).RotatedBy(Projectile.rotation + Projectile.ai[1] / 20f * i);
 				var blood = new BloodDrop
 				{
-					velocity = pos1.RotatedBy(-MathHelper.PiOver2) * 0.1f,
+					Velocity = pos1.RotatedBy(-MathHelper.PiOver2) * 0.1f,
 					Active = true,
 					Visible = true,
-					position = pos1 + Projectile.Center,
-					maxTime = Main.rand.Next(54, 74),
-					scale = Main.rand.NextFloat(6f, 25f),
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = pos1 + Projectile.Center,
+					MaxTime = Main.rand.Next(54, 74),
+					Scale = Main.rand.NextFloat(6f, 25f),
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 				};
 				Ins.VFXManager.Add(blood);
 				var blood2 = new BloodSplash
 				{
-					velocity = pos1.RotatedBy(-MathHelper.PiOver2) * 0.1f,
+					Velocity = pos1.RotatedBy(-MathHelper.PiOver2) * 0.1f,
 					Active = true,
 					Visible = true,
-					position = pos1 + Projectile.Center,
-					maxTime = Main.rand.Next(54, 74),
-					scale = Main.rand.NextFloat(6f, 18f),
+					Position = pos1 + Projectile.Center,
+					MaxTime = Main.rand.Next(54, 74),
+					Scale = Main.rand.NextFloat(6f, 18f),
 					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0, Main.rand.NextFloat(20.0f, 40.0f) },
 				};
 				Ins.VFXManager.Add(blood2);
@@ -289,13 +289,13 @@ public class Living_Jawbone_Huge_ground : ModProjectile
 			DiveOffset = new Vector2(-depth, 0).RotatedBy(Projectile.rotation);
 			for (int i = 0; i < 6; i++)
 			{
-				Vector2 position = Projectile.Center + new Vector2(Main.rand.NextFloat(-80, 80), -30).RotatedBy(Projectile.rotation + MathHelper.PiOver2);
-				if (Collision.SolidCollision(position, 0, 0))
+				Vector2 Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-80, 80), -30).RotatedBy(Projectile.rotation + MathHelper.PiOver2);
+				if (Collision.SolidCollision(Position, 0, 0))
 				{
 					for (int j = 0; j < 20; j++)
 					{
-						position += new Vector2(4, 0).RotatedBy(Projectile.rotation);
-						if (!Collision.SolidCollision(position, 0, 0))
+						Position += new Vector2(4, 0).RotatedBy(Projectile.rotation);
+						if (!Collision.SolidCollision(Position, 0, 0))
 						{
 							break;
 						}
@@ -305,14 +305,14 @@ public class Living_Jawbone_Huge_ground : ModProjectile
 				{
 					for (int j = 0; j < 20; j++)
 					{
-						position -= new Vector2(4, 0).RotatedBy(Projectile.rotation);
-						if (Collision.SolidCollision(position, 0, 0))
+						Position -= new Vector2(4, 0).RotatedBy(Projectile.rotation);
+						if (Collision.SolidCollision(Position, 0, 0))
 						{
 							break;
 						}
 					}
 				}
-				Dust dust = Dust.NewDustDirect(position - new Vector2(4), 0, 0, DustID.Blood);
+				Dust dust = Dust.NewDustDirect(Position - new Vector2(4), 0, 0, DustID.Blood);
 				dust.scale = Main.rand.NextFloat(0.9f, 2.6f);
 				dust.noGravity = true;
 				dust.velocity *= 0;

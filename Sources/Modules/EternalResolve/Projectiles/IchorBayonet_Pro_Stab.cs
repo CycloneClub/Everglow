@@ -19,17 +19,17 @@ namespace Everglow.EternalResolve.Projectiles
 			HitTileSparkColor = new Color(0.5f, 0.4f, 0, 0);
 		}
 
-		public override IEnumerator<ICoroutineInstruction> Generate3DRingVFX(Vector2 velocity)
+		public override IEnumerator<ICoroutineInstruction> Generate3DRingVFX(Vector2 Velocity)
 		{
 			yield return new WaitForFrames(40);
 			StabVFX v = new SelfLightingStabVFX()
 			{
-				pos = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
-				vel = velocity,
-				color = Color.Lerp(StabColor, Color.White, 0.2f),
-				scale = 30,
-				maxtime = (int)(240 / (float)(Projectile.extraUpdates + 1)),
-				timeleft = (int)(240 / (float)(Projectile.extraUpdates + 1)),
+				Position = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
+				Velocity = Velocity,
+				StabEffectColor = Color.Lerp(StabColor, Color.White, 0.2f),
+				Scale = 30,
+				MaxTime = (int)(240 / (float)(Projectile.extraUpdates + 1)),
+				TimeLeft = (int)(240 / (float)(Projectile.extraUpdates + 1)),
 			};
 			if (StabEndPoint_WorldPos == Vector2.Zero)
 			{
@@ -38,12 +38,12 @@ namespace Everglow.EternalResolve.Projectiles
 			yield return new WaitForFrames(40);
 			v = new SelfLightingStabVFX()
 			{
-				pos = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
-				vel = velocity,
-				color = Color.Lerp(StabColor, Color.White, 0.4f),
-				scale = 15,
-				maxtime = (int)(240 / (float)(Projectile.extraUpdates + 1)),
-				timeleft = (int)(240 / (float)(Projectile.extraUpdates + 1)),
+				Position = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
+				Velocity = Velocity,
+				StabEffectColor = Color.Lerp(StabColor, Color.White, 0.4f),
+				Scale = 15,
+				MaxTime = (int)(240 / (float)(Projectile.extraUpdates + 1)),
+				TimeLeft = (int)(240 / (float)(Projectile.extraUpdates + 1)),
 			};
 			if (StabEndPoint_WorldPos == Vector2.Zero)
 			{
@@ -163,13 +163,13 @@ namespace Everglow.EternalResolve.Projectiles
 				float mulScale = Main.rand.NextFloat(6f, 14f);
 				var blood = new IchorDrop
 				{
-					velocity = afterVelocity * mulVelocity / mulScale + Projectile.velocity * Main.rand.NextFloat(7f),
+					Velocity = afterVelocity * mulVelocity / mulScale + Projectile.velocity * Main.rand.NextFloat(7f),
 					Active = true,
 					Visible = true,
-					position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity * Main.rand.NextFloat(70f),
-					maxTime = Main.rand.Next(32, 64) * (StabTimer / 200f),
-					scale = mulScale,
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity * Main.rand.NextFloat(70f),
+					MaxTime = Main.rand.Next(32, 64) * (StabTimer / 200f),
+					Scale = mulScale,
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 				};
 				Ins.VFXManager.Add(blood);
@@ -179,12 +179,12 @@ namespace Everglow.EternalResolve.Projectiles
 				Vector2 afterVelocity = new Vector2(0, Main.rand.NextFloat(3f)).RotatedByRandom(MathHelper.TwoPi);
 				var blood = new IchorSplash
 				{
-					velocity = afterVelocity * mulVelocity + Projectile.velocity * Main.rand.NextFloat(7f),
+					Velocity = afterVelocity * mulVelocity + Projectile.velocity * Main.rand.NextFloat(7f),
 					Active = true,
 					Visible = true,
-					position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity * Main.rand.NextFloat(70f),
-					maxTime = Main.rand.Next(32, 64) * (StabTimer / 200f),
-					scale = Main.rand.NextFloat(6f, 12f),
+					Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity * Main.rand.NextFloat(70f),
+					MaxTime = Main.rand.Next(32, 64) * (StabTimer / 200f),
+					Scale = Main.rand.NextFloat(6f, 12f),
 					ai = new float[] { Main.rand.NextFloat(0.0f, 0.4f), 0 },
 				};
 				Ins.VFXManager.Add(blood);

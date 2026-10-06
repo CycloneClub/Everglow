@@ -22,17 +22,17 @@ namespace Everglow.EternalResolve.Projectiles
 			HitTileSparkColor = new Color(0.2f, 1f, 0f, 0);
 		}
 
-		public override IEnumerator<ICoroutineInstruction> Generate3DRingVFX(Vector2 velocity)
+		public override IEnumerator<ICoroutineInstruction> Generate3DRingVFX(Vector2 Velocity)
 		{
 			yield return new WaitForFrames(40);
 			StabVFX v = new SelfLightingStabVFX()
 			{
-				pos = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
-				vel = velocity,
-				color = Color.Lerp(StabColor, Color.White, 0.2f),
-				scale = 40,
-				maxtime = (int)(220 / (float)(Projectile.extraUpdates + 1)),
-				timeleft = (int)(220 / (float)(Projectile.extraUpdates + 1)),
+				Position = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
+				Velocity = Velocity,
+				StabEffectColor = Color.Lerp(StabColor, Color.White, 0.2f),
+				Scale = 40,
+				MaxTime = (int)(220 / (float)(Projectile.extraUpdates + 1)),
+				TimeLeft = (int)(220 / (float)(Projectile.extraUpdates + 1)),
 			};
 			if (StabEndPoint_WorldPos == Vector2.Zero)
 			{
@@ -41,12 +41,12 @@ namespace Everglow.EternalResolve.Projectiles
 			yield return new WaitForFrames(40);
 			v = new SelfLightingStabVFX()
 			{
-				pos = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
-				vel = velocity,
-				color = Color.Lerp(StabColor, Color.White, 0.4f),
-				scale = 25,
-				maxtime = (int)(144 / (float)(Projectile.extraUpdates + 1)),
-				timeleft = (int)(144 / (float)(Projectile.extraUpdates + 1)),
+				Position = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
+				Velocity = Velocity,
+				StabEffectColor = Color.Lerp(StabColor, Color.White, 0.4f),
+				Scale = 25,
+				MaxTime = (int)(144 / (float)(Projectile.extraUpdates + 1)),
+				TimeLeft = (int)(144 / (float)(Projectile.extraUpdates + 1)),
 			};
 			if (StabEndPoint_WorldPos == Vector2.Zero)
 			{
@@ -165,28 +165,28 @@ namespace Everglow.EternalResolve.Projectiles
 				Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(0f, 7f)).RotatedByRandom(MathHelper.TwoPi);
 				var fire = new CurseFlameDust
 				{
-					velocity = newVelocity,
+					Velocity = newVelocity,
 					Active = true,
 					Visible = true,
-					position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity * Main.rand.NextFloat(70f),
-					maxTime = Main.rand.Next(16, 55) * (StabTimer / 200f),
-					scale = Main.rand.NextFloat(20f, 60f),
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity * Main.rand.NextFloat(70f),
+					MaxTime = Main.rand.Next(16, 55) * (StabTimer / 200f),
+					Scale = Main.rand.NextFloat(20f, 60f),
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0, 1f },
 				};
 				Ins.VFXManager.Add(fire);
 				Vector2 playerVel = Main.player[Projectile.owner].velocity;
 				Vector2 projVel = Projectile.velocity * 20;
 				float rot = Main.rand.NextFloat(-0.1f, 0.1f);
-				Vector2 vel = playerVel + projVel.RotatedBy(Main.rand.NextFloat(-0.05f, 0.05f)) * Main.rand.NextFloat(0.75f, 3.25f);
-				Vector2 pos = Projectile.Center + projVel.RotatedBy(rot) * Main.rand.NextFloat(1f, 2.5f);
+				Vector2 Velocity = playerVel + projVel.RotatedBy(Main.rand.NextFloat(-0.05f, 0.05f)) * Main.rand.NextFloat(0.75f, 3.25f);
+				Vector2 Position = Projectile.Center + projVel.RotatedBy(rot) * Main.rand.NextFloat(1f, 2.5f);
 				var cf = new CursedFlame_flowDust
 				{
-					velocity = vel * 0.15f,
+					Velocity = Velocity * 0.15f,
 					Active = true,
 					Visible = true,
-					position = pos,
-					maxTime = Main.rand.Next(12, 42),
+					Position = Position,
+					MaxTime = Main.rand.Next(12, 42),
 					ai = new float[] { Main.rand.NextFloat(0.1f, 1f), -rot * 0.02f, Main.rand.NextFloat(9.6f, 20f), Main.rand.NextFloat(-0.01f, 0.01f) },
 				};
 				Ins.VFXManager.Add(cf);
@@ -196,13 +196,13 @@ namespace Everglow.EternalResolve.Projectiles
 				Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(0f, 4f)).RotatedByRandom(MathHelper.TwoPi) + Projectile.velocity * Main.rand.NextFloat(12f);
 				var spark = new CurseFlameSparkDust
 				{
-					velocity = newVelocity,
+					Velocity = newVelocity,
 					Active = true,
 					Visible = true,
-					position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity * Main.rand.NextFloat(120f),
-					maxTime = Main.rand.Next(37, 145) * (StabTimer / 200f),
-					scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(4f, 17.0f)),
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity * Main.rand.NextFloat(120f),
+					MaxTime = Main.rand.Next(37, 145) * (StabTimer / 200f),
+					Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(4f, 17.0f)),
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.03f, 0.03f) },
 				};
 				Ins.VFXManager.Add(spark);
@@ -235,13 +235,13 @@ namespace Everglow.EternalResolve.Projectiles
 				Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(2f, 6f)).RotatedByRandom(MathHelper.TwoPi);
 				var spark = new Spark_CursedStabDust
 				{
-					velocity = newVelocity,
+					Velocity = newVelocity,
 					Active = true,
 					Visible = true,
-					position = StabEndPoint_WorldPos,
-					maxTime = Main.rand.Next(1, 25),
-					scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(0.1f, 17.0f)),
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = StabEndPoint_WorldPos,
+					MaxTime = Main.rand.Next(1, 25),
+					Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(0.1f, 17.0f)),
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.13f, 0.13f) },
 				};
 				Ins.VFXManager.Add(spark);

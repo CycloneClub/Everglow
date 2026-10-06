@@ -104,12 +104,12 @@ namespace Everglow.MEAC.PlanetBeFall.Projectiles.PlanetBefall
 				Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 3f)).RotatedByRandom(MathHelper.TwoPi);
 				var somg = new Spark_RockCrackDust
 				{
-					velocity = newVelocity + Projectile.velocity,
+					Velocity = newVelocity + Projectile.velocity,
 					Active = true,
 					Visible = true,
-					position = Projectile.Center + newVelocity * 22 + new Vector2(0, Main.rand.NextFloat(0f, 200f)).RotatedByRandom(MathHelper.TwoPi) - Projectile.velocity * 5 + new Vector2(0, -100),
-					maxTime = Main.rand.Next(160, 250),
-					scale = Main.rand.NextFloat(30f, 146f),
+					Position = Projectile.Center + newVelocity * 22 + new Vector2(0, Main.rand.NextFloat(0f, 200f)).RotatedByRandom(MathHelper.TwoPi) - Projectile.velocity * 5 + new Vector2(0, -100),
+					MaxTime = Main.rand.Next(160, 250),
+					Scale = Main.rand.NextFloat(30f, 146f),
 					ai = new float[] { 0, 0 },
 				};
 				Ins.VFXManager.Add(somg);
