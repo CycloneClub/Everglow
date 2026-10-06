@@ -57,57 +57,40 @@ public class UmbrellaTailThief : ModNPC
 			NPC.width = 100;
 			NPC.height = 60;
 			NPC.Bottom = oldBottom;
-			switch (NPC.ai[0])
+			NPC.rotation = 0f;
+			if (NPC.velocity.Y == 0f)
 			{
-				case 0:
-					NPC.rotation = 0f;
-					if (NPC.velocity.Y == 0f)
-					{
-						NPC.spriteDirection = NPC.direction;
-					}
-					else if (NPC.velocity.Y < 0f)
-					{
-						NPC.frameCounter = 0;
-					}
+				NPC.spriteDirection = NPC.direction;
+			}
+			else if (NPC.velocity.Y < 0f)
+			{
+				NPC.frameCounter = 0;
+			}
 
-					NPC.frameCounter += Math.Abs(NPC.velocity.X) * 1.1f;
-					if (NPC.frameCounter < 6)
-					{
-						NPC.frame.Y = 0;
-					}
-					else if (NPC.frameCounter < 12)
-					{
-						NPC.frame.Y = frameHeight;
-					}
-					else if (NPC.frameCounter < 18)
-					{
-						NPC.frame.Y = frameHeight * 2;
-					}
-					else if (NPC.frameCounter < 24)
-					{
-						NPC.frame.Y = frameHeight * 3;
-					}
-					else if (NPC.frameCounter < 32)
-					{
-						NPC.frame.Y = frameHeight * 4;
-					}
-					else
-					{
-						NPC.frameCounter = 0;
-					}
-					break;
-				case 1:
-					NPC.frameCounter = 0;
-					NPC.frame.Y = NPC.ai[1] < 10f ? frameHeight * 5 : NPC.ai[1] < 20f ? frameHeight * 6 : frameHeight * 7;
-					break;
-				case 5:
-					NPC.frameCounter = 0;
-					NPC.frame.Y = NPC.ai[1] < 10f ? frameHeight * 7 : NPC.ai[1] < 20 ? frameHeight * 6 : frameHeight * 5;
-					break;
-				default:
-					NPC.frameCounter = 0;
-					NPC.frame.Y = frameHeight * 7;
-					break;
+			NPC.frameCounter += Math.Abs(NPC.velocity.X) * 1.1f;
+			if (NPC.frameCounter < 6)
+			{
+				NPC.frame.Y = 0;
+			}
+			else if (NPC.frameCounter < 12)
+			{
+				NPC.frame.Y = frameHeight;
+			}
+			else if (NPC.frameCounter < 18)
+			{
+				NPC.frame.Y = frameHeight * 2;
+			}
+			else if (NPC.frameCounter < 24)
+			{
+				NPC.frame.Y = frameHeight * 3;
+			}
+			else if (NPC.frameCounter < 30)
+			{
+				NPC.frame.Y = frameHeight * 4;
+			}
+			else
+			{
+				NPC.frameCounter = 0;
 			}
 		}
 		else
@@ -263,6 +246,5 @@ public class UmbrellaTailThief : ModNPC
 
 	public override void ModifyNPCLoot(NPCLoot npcLoot)
 	{
-		// TODO 掉落物
 	}
 }
