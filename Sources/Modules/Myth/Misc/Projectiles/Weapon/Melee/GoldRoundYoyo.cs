@@ -19,7 +19,7 @@ public class GoldRoundYoyo : YoyoProjectile
 		RotationalSpeed = 0.3f;
 	}
 
-	private float Timer;
+	private float timer;
 	private float trailWidth;
 	private int hitCounter;
 	public float Power;
@@ -76,7 +76,7 @@ public class GoldRoundYoyo : YoyoProjectile
 				}
 			}
 		}
-		Timer++;
+		timer++;
 		if (Projectile.ai[0] < 0)
 		{
 			trailWidth *= 0.8f;
