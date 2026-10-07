@@ -8,6 +8,10 @@ public abstract class ShaderDraw : Visual
 	public Vector2 Velocity;
 	public float[] ai;
 
+	public ShaderDraw()
+	{
+	}
+
 	public ShaderDraw(Vector2 position, Vector2 velocity, params float[] ai)
 	{
 		this.Position = position;
@@ -55,6 +59,10 @@ public class WaveOfEffectPylonHit_CorruptWave : ShaderDraw
 	public float Timer;
 	public float MaxTime;
 	public float radius;
+
+	public WaveOfEffectPylonHit_CorruptWave()
+	{
+	}
 
 	public WaveOfEffectPylonHit_CorruptWave(Vector2 position, Vector2 velocity, params float[] ai)
 		: base(position, velocity, ai)
@@ -147,6 +155,9 @@ public class WaveOfEffectPylonHit_CrimsonWave : ShaderDraw
 	public float MaxTime;
 	public float radius;
 
+	public WaveOfEffectPylonHit_CrimsonWave()
+	{
+	}
 
 	public WaveOfEffectPylonHit_CrimsonWave(int maxTime, Vector2 position, Vector2 velocity, params float[] ai)
 		: base(position, velocity, ai)
