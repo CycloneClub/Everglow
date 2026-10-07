@@ -62,8 +62,8 @@ public class IchorRing : ModProjectile
 	{
 		for (int x = 0; x < 2; x++)
 		{
-			Vector2 Velocity = new Vector2(0, Main.rand.NextFloat(2f, 6f)).RotatedByRandom(6.283) - Projectile.velocity * 0.2f;
-			var p = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), target.Center + Velocity * -2, Velocity, ModContent.ProjectileType<IchorCurrent>(), Projectile.damage / 3, Projectile.knockBack, Projectile.owner, 3f/*If ai[0] equal to 3, another ai will be execute*/);
+			Vector2 velocity = new Vector2(0, Main.rand.NextFloat(2f, 6f)).RotatedByRandom(6.283) - Projectile.velocity * 0.2f;
+			var p = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), target.Center + velocity * -2, velocity, ModContent.ProjectileType<IchorCurrent>(), Projectile.damage / 3, Projectile.knockBack, Projectile.owner, 3f/*If ai[0] equal to 3, another ai will be execute*/);
 			p.friendly = false;
 			p.CritChance = Projectile.CritChance;
 		}

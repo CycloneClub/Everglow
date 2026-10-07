@@ -74,14 +74,14 @@ public class MEACVFX : Visual
 		timeleft = t;
 	}
 
-	public static T Create<T>(Vector2 pos, Vector2 velocity, float Rotation = 0, float scale = 1, Entity owner = null)
+	public static T Create<T>(Vector2 pos, Vector2 velocity, float rotation = 0, float scale = 1, Entity owner = null)
 		where T : MEACVFX, new()
 	{
 		MEACVFX ee = new T();
 		ee.SetDefault();
 		ee.Velocity = velocity;
 		ee.Center = pos;
-		ee.Rotation = Rotation;
+		ee.Rotation = rotation;
 		ee.timeleft = ee.maxTimeleft;
 		if (scale != 1)
 		{

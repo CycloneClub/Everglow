@@ -180,7 +180,7 @@ public abstract class ScarpasScissorsCutProj : ScarpasScissorsProjBase
 	{
 		var drawColor = lightColor * Projectile.Opacity;
 		var distanceToArmCenter = DistanceToArmPosition * Projectile.scale;
-		var Position = Owner.Center - Main.screenPosition + Projectile.rotation.ToRotationVector2() * distanceToArmCenter;
+		var position = Owner.Center - Main.screenPosition + Projectile.rotation.ToRotationVector2() * distanceToArmCenter;
 
 		var texture = ModContent.Request<Texture2D>(Texture).Value;
 		var origin = TextureOrigin;
@@ -197,7 +197,7 @@ public abstract class ScarpasScissorsCutProj : ScarpasScissorsProjBase
 			? rotationOffset + Projectile.spriteDirection * AnimationRotation()
 			: rotationOffset - Projectile.spriteDirection * AnimationRotation();
 
-		Main.spriteBatch.Draw(texture, Position, default, drawColor, Projectile.rotation + rotation, origin, Projectile.scale, effects, 0);
+		Main.spriteBatch.Draw(texture, position, default, drawColor, Projectile.rotation + rotation, origin, Projectile.scale, effects, 0);
 
 		return false;
 	}

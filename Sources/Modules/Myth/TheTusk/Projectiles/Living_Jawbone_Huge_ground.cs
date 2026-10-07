@@ -289,13 +289,13 @@ public class Living_Jawbone_Huge_ground : ModProjectile
 			DiveOffset = new Vector2(-depth, 0).RotatedBy(Projectile.rotation);
 			for (int i = 0; i < 6; i++)
 			{
-				Vector2 Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-80, 80), -30).RotatedBy(Projectile.rotation + MathHelper.PiOver2);
-				if (Collision.SolidCollision(Position, 0, 0))
+				Vector2 position = Projectile.Center + new Vector2(Main.rand.NextFloat(-80, 80), -30).RotatedBy(Projectile.rotation + MathHelper.PiOver2);
+				if (Collision.SolidCollision(position, 0, 0))
 				{
 					for (int j = 0; j < 20; j++)
 					{
-						Position += new Vector2(4, 0).RotatedBy(Projectile.rotation);
-						if (!Collision.SolidCollision(Position, 0, 0))
+						position += new Vector2(4, 0).RotatedBy(Projectile.rotation);
+						if (!Collision.SolidCollision(position, 0, 0))
 						{
 							break;
 						}
@@ -305,14 +305,14 @@ public class Living_Jawbone_Huge_ground : ModProjectile
 				{
 					for (int j = 0; j < 20; j++)
 					{
-						Position -= new Vector2(4, 0).RotatedBy(Projectile.rotation);
-						if (Collision.SolidCollision(Position, 0, 0))
+						position -= new Vector2(4, 0).RotatedBy(Projectile.rotation);
+						if (Collision.SolidCollision(position, 0, 0))
 						{
 							break;
 						}
 					}
 				}
-				Dust dust = Dust.NewDustDirect(Position - new Vector2(4), 0, 0, DustID.Blood);
+				Dust dust = Dust.NewDustDirect(position - new Vector2(4), 0, 0, DustID.Blood);
 				dust.scale = Main.rand.NextFloat(0.9f, 2.6f);
 				dust.noGravity = true;
 				dust.velocity *= 0;

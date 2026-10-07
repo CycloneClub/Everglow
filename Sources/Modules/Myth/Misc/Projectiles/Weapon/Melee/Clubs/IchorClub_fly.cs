@@ -275,10 +275,10 @@ public class IchorClub_fly : ModProjectile, IWarpProjectile
 			{
 				startPos *= -1;
 			}
-			Vector2 Velocity = startPos.RotatedBy(MathHelper.PiOver2) * Omega * Main.rand.NextFloat(0.2f, 0.9f) * 0.5f;
+			Vector2 velocity = startPos.RotatedBy(MathHelper.PiOver2) * Omega * Main.rand.NextFloat(0.2f, 0.9f) * 0.5f;
 			var blood = new IchorDrop
 			{
-				Velocity = Velocity,
+				Velocity = velocity,
 				Active = true,
 				Visible = true,
 				Position = Projectile.Center + startPos,
@@ -297,10 +297,10 @@ public class IchorClub_fly : ModProjectile, IWarpProjectile
 			{
 				startPos *= -1;
 			}
-			Vector2 Velocity = startPos.RotatedBy(MathHelper.PiOver2) * Omega * Main.rand.NextFloat(0.2f, 0.9f) * 0.5f;
+			Vector2 velocity = startPos.RotatedBy(MathHelper.PiOver2) * Omega * Main.rand.NextFloat(0.2f, 0.9f) * 0.5f;
 			var blood = new IchorDrop
 			{
-				Velocity = Velocity,
+				Velocity = velocity,
 				Active = true,
 				Visible = true,
 				Position = Projectile.Center + startPos,

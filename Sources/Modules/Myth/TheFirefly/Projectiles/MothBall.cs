@@ -180,12 +180,12 @@ public class MothBall : ModProjectile
 	{
 		List<Vector2> current = new List<Vector2>();
 		Vector2 start = new Vector2(0, startLength);
-		float MaxTime = 17f;
+		float maxTime = 17f;
 		if (Projectile.timeLeft < 100)
 		{
-			MaxTime += (100 - Projectile.timeLeft) * 0.1f;
+			maxTime += (100 - Projectile.timeLeft) * 0.1f;
 		}
-		for (int t = 1; t < MaxTime; t++)
+		for (int t = 1; t < maxTime; t++)
 		{
 			start = start * 0.82f + new Vector2(0, 20) * 0.18f;
 			Vector2 v0 = start.RotatedBy(-t * t / 60f + addRot);

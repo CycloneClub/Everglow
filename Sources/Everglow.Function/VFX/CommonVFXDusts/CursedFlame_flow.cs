@@ -16,10 +16,10 @@ public abstract class FlowDraw : Visual
 	{
 	}
 
-	public FlowDraw(Vector2 Position, Vector2 Velocity, params float[] ai)
+	public FlowDraw(Vector2 position, Vector2 velocity, params float[] ai)
 	{
-		this.Position = Position;
-		this.Velocity = Velocity;
+		this.Position = position;
+		this.Velocity = velocity;
 		this.ai = ai; // 可以认为params传入的都是右值，可以直接引用
 	}
 }
@@ -61,10 +61,10 @@ public class CursedFlame_flowDust : FlowDraw
 	{
 	}
 
-	public CursedFlame_flowDust(int MaxTime, Vector2 Position, Vector2 Velocity, params float[] ai)
-		: base(Position, Velocity, ai)
+	public CursedFlame_flowDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai)
+		: base(position, velocity, ai)
 	{
-		this.MaxTime = MaxTime;
+		this.MaxTime = maxTime;
 	}
 
 	public override void Update()

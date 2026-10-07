@@ -92,9 +92,9 @@ public class FogVFX : MEACVFX
 
 		public Vector2 texCoord;
 
-		public VFX2D(Vector2 Position, Color color, Vector2 texCoord)
+		public VFX2D(Vector2 position, Color color, Vector2 texCoord)
 		{
-			this.Position = Position;
+			this.Position = position;
 			this.color = color;
 			this.texCoord = texCoord;
 		}

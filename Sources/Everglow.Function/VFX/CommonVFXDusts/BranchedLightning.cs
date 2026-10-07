@@ -100,11 +100,11 @@ public class BranchedLightning : Visual
 		SetUp(DEFAULT_SEGMENT_LENGTH, DEFAULT_RENDER_STRIP_WIDTH, DEFAULT_ANGULAR_SPEED_LIMIT);
 	}
 
-	public BranchedLightning(float segmentLength, float width, Vector2 Position, float Rotation, float MaxTime, float wiggleAngularSpeedLimit = DEFAULT_ANGULAR_SPEED_LIMIT)
+	public BranchedLightning(float segmentLength, float width, Vector2 position, float rotation, float maxTime, float wiggleAngularSpeedLimit = DEFAULT_ANGULAR_SPEED_LIMIT)
 	{
-		this.Position = Position;
-		this.Rotation = Rotation;
-		this.MaxTime = MaxTime;
+		this.Position = position;
+		this.Rotation = rotation;
+		this.MaxTime = maxTime;
 		SetUp(segmentLength, width / LINE_PROPORTION, wiggleAngularSpeedLimit);
 	}
 

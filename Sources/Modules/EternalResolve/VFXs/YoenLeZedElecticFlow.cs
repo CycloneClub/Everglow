@@ -63,9 +63,9 @@ public class YoenLeZedElecticFlow : Visual
 
 	public override void Draw()
 	{
-		Vector2[] Position = oldPos.Reverse<Vector2>().ToArray();
+		Vector2[] positions = oldPos.Reverse<Vector2>().ToArray();
 		float pocession = Timer / MaxTime;
-		int len = Position.Length;
+		int len = positions.Length;
 
 		var bars = new List<Vertex2D>();
 		for (int i = 1; i < len; i++)

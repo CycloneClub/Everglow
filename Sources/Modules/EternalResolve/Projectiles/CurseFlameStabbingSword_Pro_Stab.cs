@@ -22,13 +22,13 @@ namespace Everglow.EternalResolve.Projectiles
 			HitTileSparkColor = new Color(0.2f, 1f, 0f, 0);
 		}
 
-		public override IEnumerator<ICoroutineInstruction> Generate3DRingVFX(Vector2 Velocity)
+		public override IEnumerator<ICoroutineInstruction> Generate3DRingVFX(Vector2 velocity)
 		{
 			yield return new WaitForFrames(40);
 			StabVFX v = new SelfLightingStabVFX()
 			{
 				Position = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
-				Velocity = Velocity,
+				Velocity = velocity,
 				StabEffectColor = Color.Lerp(StabColor, Color.White, 0.2f),
 				Scale = 40,
 				MaxTime = (int)(220 / (float)(Projectile.extraUpdates + 1)),
@@ -42,7 +42,7 @@ namespace Everglow.EternalResolve.Projectiles
 			v = new SelfLightingStabVFX()
 			{
 				Position = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
-				Velocity = Velocity,
+				Velocity = velocity,
 				StabEffectColor = Color.Lerp(StabColor, Color.White, 0.4f),
 				Scale = 25,
 				MaxTime = (int)(144 / (float)(Projectile.extraUpdates + 1)),
@@ -178,14 +178,14 @@ namespace Everglow.EternalResolve.Projectiles
 				Vector2 playerVel = Main.player[Projectile.owner].velocity;
 				Vector2 projVel = Projectile.velocity * 20;
 				float rot = Main.rand.NextFloat(-0.1f, 0.1f);
-				Vector2 Velocity = playerVel + projVel.RotatedBy(Main.rand.NextFloat(-0.05f, 0.05f)) * Main.rand.NextFloat(0.75f, 3.25f);
-				Vector2 Position = Projectile.Center + projVel.RotatedBy(rot) * Main.rand.NextFloat(1f, 2.5f);
+				Vector2 velocity = playerVel + projVel.RotatedBy(Main.rand.NextFloat(-0.05f, 0.05f)) * Main.rand.NextFloat(0.75f, 3.25f);
+				Vector2 position = Projectile.Center + projVel.RotatedBy(rot) * Main.rand.NextFloat(1f, 2.5f);
 				var cf = new CursedFlame_flowDust
 				{
-					Velocity = Velocity * 0.15f,
+					Velocity = velocity * 0.15f,
 					Active = true,
 					Visible = true,
-					Position = Position,
+					Position = position,
 					MaxTime = Main.rand.Next(12, 42),
 					ai = new float[] { Main.rand.NextFloat(0.1f, 1f), -rot * 0.02f, Main.rand.NextFloat(9.6f, 20f), Main.rand.NextFloat(-0.01f, 0.01f) },
 				};

@@ -57,9 +57,9 @@ public class FireflyInferno : ModBuff
 		base.Update(player, ref buffIndex);
 	}
 
-	public void GenerateSmog(int frequency, Vector2 Position, int Scale)
+	public void GenerateSmog(int frequency, Vector2 position, int scale)
 	{
-		float mulVelocity = Scale * 0.5f;
+		float mulVelocity = scale * 0.5f;
 		for (int g = 0; g < frequency; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(2f, 4f)).RotatedByRandom(MathHelper.TwoPi);
@@ -68,7 +68,7 @@ public class FireflyInferno : ModBuff
 				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				Position = Position + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + newVelocity * 4,
+				Position = position + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + newVelocity * 4,
 				MaxTime = Main.rand.Next(37, 85),
 				Scale = Main.rand.NextFloat(2f, 7f) * mulVelocity,
 				Rotation = Main.rand.NextFloat(6.283f),
@@ -78,9 +78,9 @@ public class FireflyInferno : ModBuff
 		}
 	}
 
-	public void GenerateFire(int frequency, Vector2 Position, int Scale)
+	public void GenerateFire(int frequency, Vector2 position, int scale)
 	{
-		float mulVelocity = Scale * 0.5f;
+		float mulVelocity = scale * 0.5f;
 		for (int g = 0; g < frequency; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(0f, 4f)).RotatedByRandom(MathHelper.TwoPi);
@@ -89,7 +89,7 @@ public class FireflyInferno : ModBuff
 				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				Position = Position + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + newVelocity * 4,
+				Position = position + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + newVelocity * 4,
 				MaxTime = Main.rand.Next(9, 55),
 				Scale = Main.rand.NextFloat(2f, 7f) * mulVelocity,
 				Rotation = Main.rand.NextFloat(6.283f),
@@ -99,17 +99,17 @@ public class FireflyInferno : ModBuff
 		}
 	}
 
-	public void GenerateSpark(int frequency, Vector2 Position, int Scale)
+	public void GenerateSpark(int frequency, Vector2 position, int scale)
 	{
 		for (int g = 0; g < frequency; g++)
 		{
-			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0.4f, 2.6f)).RotatedByRandom(MathHelper.TwoPi) * Scale;
+			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0.4f, 2.6f)).RotatedByRandom(MathHelper.TwoPi) * scale;
 			var smog = new MothShimmerScaleDust
 			{
 				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				Position = Position + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+				Position = position + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
 				Coord = new Vector2(Main.rand.NextFloat(1f), Main.rand.NextFloat(1f)),
 				MaxTime = Main.rand.Next(20, 85),
 				Scale = Main.rand.NextFloat(0.4f, 3.4f),

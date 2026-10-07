@@ -19,13 +19,13 @@ namespace Everglow.EternalResolve.Projectiles
 			HitTileSparkColor = new Color(0.5f, 0.4f, 0, 0);
 		}
 
-		public override IEnumerator<ICoroutineInstruction> Generate3DRingVFX(Vector2 Velocity)
+		public override IEnumerator<ICoroutineInstruction> Generate3DRingVFX(Vector2 velocity)
 		{
 			yield return new WaitForFrames(40);
 			StabVFX v = new SelfLightingStabVFX()
 			{
 				Position = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
-				Velocity = Velocity,
+				Velocity = velocity,
 				StabEffectColor = Color.Lerp(StabColor, Color.White, 0.2f),
 				Scale = 30,
 				MaxTime = (int)(240 / (float)(Projectile.extraUpdates + 1)),
@@ -39,7 +39,7 @@ namespace Everglow.EternalResolve.Projectiles
 			v = new SelfLightingStabVFX()
 			{
 				Position = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
-				Velocity = Velocity,
+				Velocity = velocity,
 				StabEffectColor = Color.Lerp(StabColor, Color.White, 0.4f),
 				Scale = 15,
 				MaxTime = (int)(240 / (float)(Projectile.extraUpdates + 1)),

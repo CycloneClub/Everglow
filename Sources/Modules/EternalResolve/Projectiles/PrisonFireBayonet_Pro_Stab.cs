@@ -19,13 +19,13 @@ namespace Everglow.EternalResolve.Projectiles
 			StabEffectWidth = 0.4f;
 		}
 
-		public override IEnumerator<ICoroutineInstruction> Generate3DRingVFX(Vector2 Velocity)
+		public override IEnumerator<ICoroutineInstruction> Generate3DRingVFX(Vector2 velocity)
 		{
 			yield return new WaitForFrames(40);
 			StabVFX v = new SelfLightingStabVFX()
 			{
 				Position = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
-				Velocity = Velocity,
+				Velocity = velocity,
 				StabEffectColor = Color.Lerp(StabColor, Color.White, 0.2f),
 				Scale = 30,
 				MaxTime = 10,
@@ -39,7 +39,7 @@ namespace Everglow.EternalResolve.Projectiles
 			v = new SelfLightingStabVFX()
 			{
 				Position = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
-				Velocity = Velocity,
+				Velocity = velocity,
 				StabEffectColor = Color.Lerp(StabColor, Color.White, 0.4f),
 				Scale = 15,
 				MaxTime = 10,
@@ -162,14 +162,14 @@ namespace Everglow.EternalResolve.Projectiles
 			}
 
 			Lighting.AddLight(Projectile.Center, new Vector3(1f, 0.8f, 0) * (StabTimer / 120f));
-			Vector2 Position = Projectile.position + Projectile.velocity * Main.rand.NextFloat(0.4f, 80f);
-			Vector2 Velocity = Projectile.velocity * Main.rand.NextFloat(0f, 4f) + new Vector2(0, Main.rand.NextFloat(5f)).RotatedByRandom(6.283);
+			Vector2 position = Projectile.position + Projectile.velocity * Main.rand.NextFloat(0.4f, 80f);
+			Vector2 velocity = Projectile.velocity * Main.rand.NextFloat(0f, 4f) + new Vector2(0, Main.rand.NextFloat(5f)).RotatedByRandom(6.283);
 			if (Main.rand.NextBool(4))
 			{
-				if (Collision.CanHit(Projectile.Center - Projectile.velocity, 0, 0, Position + Velocity, 0, 0))
+				if (Collision.CanHit(Projectile.Center - Projectile.velocity, 0, 0, position + velocity, 0, 0))
 				{
-					var dust = Dust.NewDustDirect(Position, Projectile.width, Projectile.height, ModContent.DustType<FlameShine>(), 0, 0, 0, default, Main.rand.NextFloat(0.35f, 2f) * (StabTimer / 200f));
-					dust.velocity = Velocity;
+					var dust = Dust.NewDustDirect(position, Projectile.width, Projectile.height, ModContent.DustType<FlameShine>(), 0, 0, 0, default, Main.rand.NextFloat(0.35f, 2f) * (StabTimer / 200f));
+					dust.velocity = velocity;
 				}
 			}
 

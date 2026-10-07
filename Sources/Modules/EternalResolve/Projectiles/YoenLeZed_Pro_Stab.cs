@@ -23,13 +23,13 @@ namespace Everglow.EternalResolve.Projectiles
 			HitTileSparkColor = new Color(0.4f, 0.8f, 1f, 0);
 		}
 
-		public override IEnumerator<ICoroutineInstruction> Generate3DRingVFX(Vector2 Velocity)
+		public override IEnumerator<ICoroutineInstruction> Generate3DRingVFX(Vector2 velocity)
 		{
 			yield return new WaitForFrames(40);
 			StabVFX v = new SelfLightingStabVFX()
 			{
 				Position = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
-				Velocity = Velocity,
+				Velocity = velocity,
 				StabEffectColor = Color.Lerp(StabColor, Color.White, 0.2f),
 				Scale = 30,
 				MaxTime = 10,
@@ -43,7 +43,7 @@ namespace Everglow.EternalResolve.Projectiles
 			v = new SelfLightingStabVFX()
 			{
 				Position = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
-				Velocity = Velocity,
+				Velocity = velocity,
 				StabEffectColor = Color.Lerp(StabColor, Color.White, 0.4f),
 				Scale = 15,
 				MaxTime = 10,
@@ -230,8 +230,8 @@ namespace Everglow.EternalResolve.Projectiles
 		public override void HitTile()
 		{
 			base.HitTile();
-			float Scale = (260 - (StabEndPoint_WorldPos - StabStartPoint_WorldPos).Length()) / 9f;
-			if (Scale > 4.5f)
+			float scale = (260 - (StabEndPoint_WorldPos - StabStartPoint_WorldPos).Length()) / 9f;
+			if (scale > 4.5f)
 			{
 				for (int g = 0; g < 10; g++)
 				{
@@ -250,7 +250,7 @@ namespace Everglow.EternalResolve.Projectiles
 					Ins.VFXManager.Add(electric);
 				}
 			}
-			Projectile.NewProjectile(Projectile.GetSource_FromAI(), StabEndPoint_WorldPos, Vector2.zeroVector, ModContent.ProjectileType<YoenLeZed_Pro_Stab_HitTile>(), 1, 0, Projectile.owner, Scale);
+			Projectile.NewProjectile(Projectile.GetSource_FromAI(), StabEndPoint_WorldPos, Vector2.zeroVector, ModContent.ProjectileType<YoenLeZed_Pro_Stab_HitTile>(), 1, 0, Projectile.owner, scale);
 		}
 	}
 }

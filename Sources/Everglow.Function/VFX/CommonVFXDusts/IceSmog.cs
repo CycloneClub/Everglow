@@ -49,13 +49,13 @@ public class IceSmogDust : Visual
 	{
 	}
 
-	public IceSmogDust(int MaxTime, Vector2 Position, Vector2 Velocity, float Scale, float Rotation, params float[] ai)
+	public IceSmogDust(int maxTime, Vector2 position, Vector2 velocity, float scale, float rotation, params float[] ai)
 	{
-		this.MaxTime = MaxTime;
-		this.Position = Position;
-		this.Velocity = Velocity;
-		this.Scale = Scale;
-		this.Rotation = Rotation;
+		this.MaxTime = maxTime;
+		this.Position = position;
+		this.Velocity = velocity;
+		this.Scale = scale;
+		this.Rotation = rotation;
 		this.ai = ai;
 	}
 
@@ -128,13 +128,13 @@ public class IceSmogDust2 : Visual
 	{
 	}
 
-	public IceSmogDust2(int MaxTime, Vector2 Position, Vector2 Velocity, float Scale, float Rotation, params float[] ai)
+	public IceSmogDust2(int maxTime, Vector2 position, Vector2 velocity, float scale, float rotation, params float[] ai)
 	{
-		this.MaxTime = MaxTime;
-		this.Position = Position;
-		this.Velocity = Velocity;
-		this.Scale = Scale;
-		this.Rotation = Rotation;
+		this.MaxTime = maxTime;
+		this.Position = position;
+		this.Velocity = velocity;
+		this.Scale = scale;
+		this.Rotation = rotation;
 		this.ai = ai;
 	}
 
@@ -211,9 +211,9 @@ public struct Vertex2DSmog : IVertexType
 	public Vector3 texCoord;
 	public Vector3 texCoord2;
 
-	public Vertex2DSmog(Vector2 Position, Color color, Vector3 texCoord, Vector3 texCoord2)
+	public Vertex2DSmog(Vector2 position, Color color, Vector3 texCoord, Vector3 texCoord2)
 	{
-		this.Position = Position;
+		this.Position = position;
 		this.color = color;
 		this.texCoord = texCoord;
 		this.texCoord2 = texCoord2;

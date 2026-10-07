@@ -24,13 +24,13 @@ namespace Everglow.EternalResolve.Projectiles
 			base.DrawEffect(lightColor);
 		}
 
-		public override IEnumerator<ICoroutineInstruction> Generate3DRingVFX(Vector2 Velocity)
+		public override IEnumerator<ICoroutineInstruction> Generate3DRingVFX(Vector2 velocity)
 		{
 			yield return new WaitForFrames(45);
 			StabVFX v = new BloodGoldStabVFX()
 			{
 				Position = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
-				Velocity = Velocity,
+				Velocity = velocity,
 				StabEffectColor = StabColor * 0.4f,
 				Scale = 25,
 				MaxTime = 10,
@@ -44,7 +44,7 @@ namespace Everglow.EternalResolve.Projectiles
 			v = new BloodGoldStabVFX()
 			{
 				Position = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
-				Velocity = Velocity,
+				Velocity = velocity,
 				StabEffectColor = StabColor * 0.4f,
 				Scale = 15,
 				MaxTime = 10,

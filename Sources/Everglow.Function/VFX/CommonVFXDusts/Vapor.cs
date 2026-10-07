@@ -48,13 +48,13 @@ public class VaporDust : Visual
 	{
 	}
 
-	public VaporDust(int MaxTime, Vector2 Position, Vector2 Velocity, float Scale, float Rotation, params float[] ai)
+	public VaporDust(int maxTime, Vector2 position, Vector2 velocity, float scale, float rotation, params float[] ai)
 	{
-		this.MaxTime = MaxTime;
-		this.Position = Position;
-		this.Velocity = Velocity;
-		this.Scale = Scale;
-		this.Rotation = Rotation;
+		this.MaxTime = maxTime;
+		this.Position = position;
+		this.Velocity = velocity;
+		this.Scale = scale;
+		this.Rotation = rotation;
 		this.ai = ai;
 	}
 

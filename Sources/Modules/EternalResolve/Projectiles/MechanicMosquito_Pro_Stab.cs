@@ -149,12 +149,12 @@ namespace Everglow.EternalResolve.Projectiles
 		{
 			if (Main.rand.NextBool(7))
 			{
-				Vector2 Position = Projectile.position + Projectile.velocity.RotatedBy(Main.rand.NextFloat(-0.4f, 0.4f)) * Main.rand.NextFloat(0.4f, 8f);
-				Vector2 Velocity = Projectile.velocity.RotatedBy(Main.rand.NextFloat(-0.4f, 0.4f)) * Main.rand.NextFloat(0.04f, 0.08f);
-				if (Collision.CanHit(Projectile.Center - Projectile.velocity, 0, 0, Position + Velocity, 0, 0))
+				Vector2 position = Projectile.position + Projectile.velocity.RotatedBy(Main.rand.NextFloat(-0.4f, 0.4f)) * Main.rand.NextFloat(0.4f, 8f);
+				Vector2 velocity = Projectile.velocity.RotatedBy(Main.rand.NextFloat(-0.4f, 0.4f)) * Main.rand.NextFloat(0.04f, 0.08f);
+				if (Collision.CanHit(Projectile.Center - Projectile.velocity, 0, 0, position + velocity, 0, 0))
 				{
-					var dust = Dust.NewDustDirect(Position, Projectile.width, Projectile.height, ModContent.DustType<MosquitoLight>(), 0, 0, 0, default, Main.rand.NextFloat(0.45f, 0.9f));
-					dust.velocity = Velocity;
+					var dust = Dust.NewDustDirect(position, Projectile.width, Projectile.height, ModContent.DustType<MosquitoLight>(), 0, 0, 0, default, Main.rand.NextFloat(0.45f, 0.9f));
+					dust.velocity = velocity;
 				}
 			}
 			if (Main.rand.NextBool(7))

@@ -259,16 +259,16 @@ public class RapierMaster_Boss : ModNPC
 				{
 					UpdateDirection();
 					NPC.ai[3] = NPC.DirectionTo(Player.Center).ToRotation();
-					Vector2 Velocity = NPC.DirectionTo(Player.Center);
-					Velocity.Y -= 0.2f;
-					Velocity.Y *= 1.2f;
+					Vector2 velocity = NPC.DirectionTo(Player.Center);
+					velocity.Y -= 0.2f;
+					velocity.Y *= 1.2f;
 					if (T == 30)
 					{
-						Dash(Velocity * 18, 20);
+						Dash(velocity * 18, 20);
 					}
 					if (T == 50)
 					{
-						Dash(Velocity * 15, 20);
+						Dash(velocity * 15, 20);
 					}
 				}
 				if (T == 80 && Main.rand.NextBool(2))
@@ -283,22 +283,22 @@ public class RapierMaster_Boss : ModNPC
 			}
 			if (NPC.ai[0] == 2)// 后撤，长冲
 			{
-				Vector2 Velocity = NPC.DirectionTo(Player.Center);
-				Velocity.Y = 0;
-				Velocity.Normalize();
-				NPC.ai[2] = Velocity.X;
+				Vector2 velocity = NPC.DirectionTo(Player.Center);
+				velocity.Y = 0;
+				velocity.Normalize();
+				NPC.ai[2] = velocity.X;
 				if (T++ == 0)
 				{
 					UpdateDirection();
 					float y = NPC.Center.Y - Player.Center.Y > 120 ? -Main.rand.Next(8, 15) : 0;
-					Dash(-Velocity * 6 + new Vector2(0, y), 20);
+					Dash(-velocity * 6 + new Vector2(0, y), 20);
 				}
 				if (T == 25)
 				{
-					Dash(Velocity * 15, 15);
+					Dash(velocity * 15, 15);
 					if (Main.netMode != NetmodeID.MultiplayerClient)
 					{
-						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Velocity, ModContent.ProjectileType<CrutchRapier_Stab_Hostile>(), NPC.damage / 6, 0f, Main.myPlayer, NPC.whoAmI);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity, ModContent.ProjectileType<CrutchRapier_Stab_Hostile>(), NPC.damage / 6, 0f, Main.myPlayer, NPC.whoAmI);
 					}
 				}
 				if (T > 25 && T < 40)
@@ -319,9 +319,9 @@ public class RapierMaster_Boss : ModNPC
 				UpdateDirection();
 				if (T++ == 0)
 				{
-					Vector2 Velocity = NPC.DirectionTo(Player.Center) * 8;
-					Velocity.Y -= 1;
-					Dash(Velocity, 40);
+					Vector2 velocity = NPC.DirectionTo(Player.Center) * 8;
+					velocity.Y -= 1;
+					Dash(velocity, 40);
 				}
 				if (T == 30)
 				{
@@ -433,22 +433,22 @@ public class RapierMaster_Boss : ModNPC
 		a.OnActive(NPC);
 	}
 
-	public void Dash(Vector2 Velocity, int MaxTime)
+	public void Dash(Vector2 velocity, int maxTime)
 	{
 		DashAI dash = new DashAI()
 		{
-			Velocity = Velocity,
-			MaxTime = MaxTime,
+			Velocity = velocity,
+			MaxTime = maxTime,
 		};
 		AddAIState(dash);
 	}
 
-	public void Jump(Vector2 Velocity, int MaxTime)
+	public void Jump(Vector2 velocity, int maxTime)
 	{
 		JumpAI ai = new JumpAI()
 		{
-			Velocity = Velocity,
-			MaxTime = MaxTime,
+			Velocity = velocity,
+			MaxTime = maxTime,
 		};
 		AddAIState(ai);
 	}
