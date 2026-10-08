@@ -20,5 +20,6 @@ public sealed class SlimeDoctorQuest : TownNpcQuest
 	public override QuestSourceBase Source => Anna;
 
 	public override bool CanOffer(WorldQuestManager manager) =>
-		manager.GetQuest<DefendTownQuest>() is DefendTownQuest { FirstStageCompleted: true };
+		manager.GetQuest<DefendTownQuest>() is DefendTownQuest quest
+		&& quest.IsFirstInvasionCompleted();
 }
