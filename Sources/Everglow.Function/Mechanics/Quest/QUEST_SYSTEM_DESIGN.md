@@ -92,3 +92,9 @@ WorldSide 领奖只保存 `RewardClaimedPlayers`，不保存全局 bool。主服
 `QuestPresentationSystem` 在 `PostSetupContent` 从 `PlayerQuestSystem` 和 `WorldQuestSystem` 取得各自成对的 Manager/Actions，并创建 `QuestPresentationService`；World entry 的 Adapter 不接收身份参数，`WorldQuestActions` 仅在投影或执行本地 Action 时读取 `Main.LocalPlayer.name`，不会在构造或专用服务器初始化阶段读取本地玩家。系统不使用 Manager 静态 locator，不注册到 `Ins`，也不解析图形或 UI 服务。`Unload` 清空 Service 引用。
 
 `WorldQuestSystem` 在 `Load` 中为自身 Manager 创建 `WorldQuestActions`，并在 `Unload` 中与 Manager 一并清空引用。
+
+事件阶段允许使用对应的专用 Objective，并可嵌套在任务文件中，使定义集中。Quest 只组织目标、前置和奖励；Objective 负责阶段启动条件、尝试启动、完成观察、进度映射及目标状态的保存和同步；Event 负责刷怪、内部进度、胜利规则、自身同步，以及所有启动入口共用的限制。Objective 不直接改写事件计数或胜利状态，Event 不查询任务。等实际出现重复后再提取共同行为。
+
+守卫任务的 `DrunkenMinerInvasionObjective` 在天穹树内且当前为夜晚时尝试启动尚未通关的入侵，不记录昼夜等待状态。`DrunkenMinerInvasion.Downed` 由事件胜利时设置，随事件保存和同步，重新启动事件不清除它；世界重置时清除。目标直接检查该记录，因此既有胜利也能满足新目标，目标重置或重试不清除事件通关记录。普通停用不设置 Downed。子服通过既有目标同步通道向主服上传当前通关状态，无需完成通知订阅或待确认通知缓存；事件状态本身仍只在当前世界同步。
+
+醉酒矿工入侵直接继承 ModEvent，刷怪配置、成员追踪及胜利规则集中在该具体入侵文件中；目前不抽取通用入侵基类。击杀统一由 EventGlobalNPC.OnKill 接入，EventSystem 在单机或服务端遍历活动事件快照，调用 ModEvent.OnNPCKilled；具体事件自行判断归属和计分，无需各自定义 GlobalNPC。
