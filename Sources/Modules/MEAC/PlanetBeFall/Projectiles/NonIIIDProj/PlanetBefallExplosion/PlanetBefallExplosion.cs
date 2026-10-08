@@ -36,13 +36,13 @@ public class PlanetBefallExplosion : ModProjectile// , IWarpProjectile
 		GenerateSmog((int)(0.3f * Projectile.ai[0]));
 	}
 
-	public void GenerateSmog(int Frequency)
+	public void GenerateSmog(int frequency)
 	{
 		float mulVelocity = Projectile.ai[0] / 5f;
-		for (int g = 0; g < Frequency * 0.6; g++)
+		for (int g = 0; g < frequency * 0.6; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(45f, 125f)).RotatedByRandom(MathHelper.TwoPi);
-			var somg = new RockSmogLine_front
+			var smog = new RockSmogLine_front
 			{
 				Velocity = newVelocity,
 				Active = true,
@@ -52,12 +52,12 @@ public class PlanetBefallExplosion : ModProjectile// , IWarpProjectile
 				Scale = Main.rand.NextFloat(60f, 220f),
 				ai = new float[] { 0, 0 },
 			};
-			Ins.VFXManager.Add(somg);
+			Ins.VFXManager.Add(smog);
 		}
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(2f, 4f)).RotatedByRandom(MathHelper.TwoPi);
-			var somg = new FireSmogDust
+			var smog = new FireSmogDust
 			{
 				Velocity = newVelocity,
 				Active = true,
@@ -68,12 +68,12 @@ public class PlanetBefallExplosion : ModProjectile// , IWarpProjectile
 				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
-			Ins.VFXManager.Add(somg);
+			Ins.VFXManager.Add(smog);
 		}
-		for (int g = 0; g < Frequency * 2; g++)
+		for (int g = 0; g < frequency * 2; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, mulVelocity * MathF.Sqrt(Main.rand.NextFloat(0f, 1f)) * 2).RotatedByRandom(MathHelper.TwoPi);
-			var somg = new FireSmogDust
+			var smog = new FireSmogDust
 			{
 				Velocity = newVelocity,
 				Active = true,
@@ -84,14 +84,14 @@ public class PlanetBefallExplosion : ModProjectile// , IWarpProjectile
 				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
-			Ins.VFXManager.Add(somg);
+			Ins.VFXManager.Add(smog);
 		}
 	}
 
-	public void GenerateFire(int Frequency)
+	public void GenerateFire(int frequency)
 	{
 		float mulVelocity = Projectile.ai[0] / 4f;
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(0f, 4f)).RotatedByRandom(MathHelper.TwoPi);
 			var fire = new VFXs.PlanetBeFallFireDust
@@ -107,7 +107,7 @@ public class PlanetBefallExplosion : ModProjectile// , IWarpProjectile
 			};
 			Ins.VFXManager.Add(fire);
 		}
-		for (int g = 0; g < Frequency * 2; g++)
+		for (int g = 0; g < frequency * 2; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, mulVelocity * MathF.Sqrt(Main.rand.NextFloat(0f, 1f)) * 2).RotatedByRandom(MathHelper.TwoPi);
 			var fire = new VFXs.PlanetBeFallFireDust
@@ -123,10 +123,10 @@ public class PlanetBefallExplosion : ModProjectile// , IWarpProjectile
 			};
 			Ins.VFXManager.Add(fire);
 		}
-		for (int g = 0; g < Frequency * 3; g++)
+		for (int g = 0; g < frequency * 3; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(4f, 28f)).RotatedByRandom(MathHelper.TwoPi);
-			var somg = new Spark_RockCrackDust
+			var smog = new Spark_RockCrackDust
 			{
 				Velocity = newVelocity,
 				Active = true,
@@ -136,12 +136,12 @@ public class PlanetBefallExplosion : ModProjectile// , IWarpProjectile
 				Scale = Main.rand.NextFloat(2f, 7f) * Projectile.ai[0],
 				ai = new float[] { 0, 0 },
 			};
-			Ins.VFXManager.Add(somg);
+			Ins.VFXManager.Add(smog);
 		}
-		for (int g = 0; g < Frequency * 2; g++)
+		for (int g = 0; g < frequency * 2; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(1f, 8f)).RotatedByRandom(MathHelper.TwoPi);
-			var somg = new Spark_RockCrackDust
+			var smog = new Spark_RockCrackDust
 			{
 				Velocity = newVelocity,
 				Active = true,
@@ -151,7 +151,7 @@ public class PlanetBefallExplosion : ModProjectile// , IWarpProjectile
 				Scale = Main.rand.NextFloat(0.5f, 1f) * Projectile.ai[0],
 				ai = new float[] { 0, 0 },
 			};
-			Ins.VFXManager.Add(somg);
+			Ins.VFXManager.Add(smog);
 		}
 	}
 

@@ -12,8 +12,8 @@ namespace Everglow.MEAC.PlanetBeFall.Projectiles.PlanetBefall
 {
 	public class PlanetBeFall_Proj : IIIDProj
 	{
-		public Vector2 target;
-		public Vector2 spawnposition;
+		public Vector2 Target;
+		public Vector2 SpawnPosition;
 		public int Array;
 
 		public override void SetDef()
@@ -81,11 +81,11 @@ namespace Everglow.MEAC.PlanetBeFall.Projectiles.PlanetBefall
 				Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, v.RotatedBy(Math.PI * i / 8).RotatedByRandom(Math.PI * i / 100), ModContent.ProjectileType<GoldenCrack>(), 10, 0);
 			}
 
-			PlanetBeFallScreenMovePlayer PlanetBeFallScreenMovePlayer = player.GetModPlayer<PlanetBeFallScreenMovePlayer>();
-			PlanetBeFallScreenMovePlayer.PlanetBeFallAnimation = true;
-			PlanetBeFallScreenMovePlayer.proj = Projectile;
+			PlanetBeFallScreenMovePlayer planetBeFallScreenMovePlayer = player.GetModPlayer<PlanetBeFallScreenMovePlayer>();
+			planetBeFallScreenMovePlayer.PlanetBeFallAnimation = true;
+			planetBeFallScreenMovePlayer.Proj = Projectile;
 
-			target = new Vector2(Projectile.ai[0], Projectile.ai[1]);
+			Target = new Vector2(Projectile.ai[0], Projectile.ai[1]);
 
 			base.OnSpawn(source);
 		}
@@ -93,16 +93,16 @@ namespace Everglow.MEAC.PlanetBeFall.Projectiles.PlanetBefall
 		public override void AI()
 		{
 			Player player = Main.player[Projectile.owner];
-			target = new Vector2(Projectile.ai[0], Projectile.ai[1]);
+			Target = new Vector2(Projectile.ai[0], Projectile.ai[1]);
 
-			if ((Projectile.Center - target).Length() < 10)
+			if ((Projectile.Center - Target).Length() < 10)
 			{
 				Projectile.Kill();
 			}
 			if (Projectile.timeLeft < 1170)
 			{
 				Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 3f)).RotatedByRandom(MathHelper.TwoPi);
-				var somg = new Spark_RockCrackDust
+				var smog = new Spark_RockCrackDust
 				{
 					Velocity = newVelocity + Projectile.velocity,
 					Active = true,
@@ -112,7 +112,7 @@ namespace Everglow.MEAC.PlanetBeFall.Projectiles.PlanetBefall
 					Scale = Main.rand.NextFloat(30f, 146f),
 					ai = new float[] { 0, 0 },
 				};
-				Ins.VFXManager.Add(somg);
+				Ins.VFXManager.Add(smog);
 				if (Projectile.velocity.Length() < 12.5f)
 				{
 					Projectile.velocity *= 1.1f;
@@ -128,15 +128,15 @@ namespace Everglow.MEAC.PlanetBeFall.Projectiles.PlanetBefall
 		public override void OnKill(int timeLeft)
 		{
 			Player player = Main.player[Projectile.owner];
-			PlanetBeFallScreenMovePlayer PlanetBeFallScreenMovePlayer = player.GetModPlayer<PlanetBeFallScreenMovePlayer>();
-			PlanetBeFallScreenMovePlayer.PlanetBeFallAnimation = false;
-			PlanetBeFallScreenMovePlayer.proj = null;
-			PlanetBeFallScreenMovePlayer.AnimationTimer = 0;
+			PlanetBeFallScreenMovePlayer planetBeFallScreenMovePlayer = player.GetModPlayer<PlanetBeFallScreenMovePlayer>();
+			planetBeFallScreenMovePlayer.PlanetBeFallAnimation = false;
+			planetBeFallScreenMovePlayer.Proj = null;
+			planetBeFallScreenMovePlayer.AnimationTimer = 0;
 
 			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center - new Vector2(0, 100), Vector2.zeroVector, ModContent.ProjectileType<PlanetBefallExplosion>(), (int)(Projectile.damage * 100 / 100f), Projectile.knockBack * 0.4f, Projectile.owner, 60);
 			SoundEngine.PlaySound(SoundID.DD2_ExplosiveTrapExplode, player.Center);
-			ScreenShaker Gsplayer = player.GetModPlayer<ScreenShaker>();
-			Gsplayer.FlyCamPosition = new Vector2(0, 150).RotatedByRandom(6.283);
+			ScreenShaker gsPlayer = player.GetModPlayer<ScreenShaker>();
+			gsPlayer.FlyCamPosition = new Vector2(0, 150).RotatedByRandom(6.283);
 			base.OnKill(timeLeft);
 		}
 
@@ -162,17 +162,17 @@ namespace Everglow.MEAC.PlanetBeFall.Projectiles.PlanetBefall
 		{
 			public int AnimationTimer = 0;
 			public bool PlanetBeFallAnimation = false;
-			public Projectile proj;
+			public Projectile Proj;
 			private const float MaxTime = 135;
 
 			public override void ModifyScreenPosition()
 			{
 				Vector2 target;
-				if (proj != null)
+				if (Proj != null)
 				{
-					if (proj.owner == Player.whoAmI)
+					if (Proj.owner == Player.whoAmI)
 					{
-						target = proj.Center - Main.ScreenSize.ToVector2() / 2;
+						target = Proj.Center - Main.ScreenSize.ToVector2() / 2;
 						if (PlanetBeFallAnimation)
 						{
 							Player.immune = true;

@@ -81,22 +81,22 @@ public class Spark_CursedStabDust : Visual
 		{
 			Timer += 20;
 		}
-		float pocession = 1 - Timer / MaxTime;
-		float c = pocession * Scale * 0.1f;
+		float progress = 1 - Timer / MaxTime;
+		float c = progress * Scale * 0.1f;
 		Lighting.AddLight(Position, c * 0.34f, c * 0.97f, 0);
 	}
 
 	public override void Draw()
 	{
-		float pocession = 0.5f;
+		float progress = 0.5f;
 		Vector2 toCorner = new Vector2(0, Scale * 0.2f).RotatedBy(Rotation);
 		List<Vertex2D> bars = new List<Vertex2D>()
 		{
-			new Vertex2D(Position + toCorner + Velocity * 3, new Color(0, 0, pocession, 0.0f), new Vector3(0)),
-			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 0.5), new Color(0, 1, pocession, 0.0f), new Vector3(0)),
+			new Vertex2D(Position + toCorner + Velocity * 3, new Color(0, 0, progress, 0.0f), new Vector3(0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 0.5), new Color(0, 1, progress, 0.0f), new Vector3(0)),
 
-			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1.5), new Color(1, 0, pocession, 0.0f), new Vector3(0)),
-			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1) - Velocity, new Color(1, 1, pocession, 0.0f), new Vector3(0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1.5), new Color(1, 0, progress, 0.0f), new Vector3(0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1) - Velocity, new Color(1, 1, progress, 0.0f), new Vector3(0)),
 		};
 
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);

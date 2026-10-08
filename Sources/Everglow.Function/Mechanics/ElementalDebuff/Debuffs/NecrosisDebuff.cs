@@ -20,7 +20,7 @@ public class NecrosisDebuff : ElementalDebuffHandler
 		for (int i = 0; i < 20; i++)
 		{
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(2f, 8f)).RotatedByRandom(MathHelper.TwoPi);
-			var somg = new NecrosisSmogDust
+			var smog = new NecrosisSmogDust
 			{
 				Velocity = newVelocity,
 				Active = true,
@@ -31,7 +31,7 @@ public class NecrosisDebuff : ElementalDebuffHandler
 				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
-			Ins.VFXManager.Add(somg);
+			Ins.VFXManager.Add(smog);
 		}
 	}
 }

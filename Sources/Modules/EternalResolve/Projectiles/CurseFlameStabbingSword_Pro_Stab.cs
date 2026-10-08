@@ -157,10 +157,10 @@ namespace Everglow.EternalResolve.Projectiles
 			}
 		}
 
-		public void GenerateVFX(int Frequency)
+		public void GenerateVFX(int frequency)
 		{
 			float mulVelocity = Main.rand.NextFloat(0.75f, 1.5f);
-			for (int g = 0; g < Frequency; g++)
+			for (int g = 0; g < frequency; g++)
 			{
 				Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(0f, 7f)).RotatedByRandom(MathHelper.TwoPi);
 				var fire = new CurseFlameDust
@@ -191,7 +191,7 @@ namespace Everglow.EternalResolve.Projectiles
 				};
 				Ins.VFXManager.Add(cf);
 			}
-			for (int g = 0; g < Frequency * 7; g++)
+			for (int g = 0; g < frequency * 7; g++)
 			{
 				Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(0f, 4f)).RotatedByRandom(MathHelper.TwoPi) + Projectile.velocity * Main.rand.NextFloat(12f);
 				var spark = new CurseFlameSparkDust

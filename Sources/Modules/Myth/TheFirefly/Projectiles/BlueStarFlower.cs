@@ -48,13 +48,13 @@ public class BlueStarFlower : ModProjectile
 		Lighting.AddLight(Projectile.Center, 0, 0.4f * Projectile.scale, 0.9f * Projectile.scale);
 	}
 
-	public void GenerateSmog(int Frequency)
+	public void GenerateSmog(int frequency)
 	{
 		float mulVelocity = 2;
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(2f, 4f)).RotatedByRandom(MathHelper.TwoPi);
-			var somg = new FireSmogDust
+			var smog = new FireSmogDust
 			{
 				Velocity = newVelocity,
 				Active = true,
@@ -65,14 +65,14 @@ public class BlueStarFlower : ModProjectile
 				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
-			Ins.VFXManager.Add(somg);
+			Ins.VFXManager.Add(smog);
 		}
 	}
 
-	public void GenerateFire(int Frequency)
+	public void GenerateFire(int frequency)
 	{
 		float mulVelocity = 2;
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(0f, 4f)).RotatedByRandom(MathHelper.TwoPi);
 			var fire = new MothBlueFireDust
@@ -90,9 +90,9 @@ public class BlueStarFlower : ModProjectile
 		}
 	}
 
-	public void GenerateSpark(int Frequency)
+	public void GenerateSpark(int frequency)
 	{
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(2f, 17.6f)).RotatedByRandom(MathHelper.TwoPi);
 			var smog = new MothShimmerScaleDust

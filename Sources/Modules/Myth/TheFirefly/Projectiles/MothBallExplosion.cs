@@ -36,10 +36,10 @@ public class MothBallExplosion : ModProjectile, IWarpProjectile
 		GenerateSpark((int)(20 * Projectile.ai[0]));
 	}
 
-	public void GenerateElectronic(int Frequency)
+	public void GenerateElectronic(int frequency)
 	{
 		float mulVelocity = 1;
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			float size = Main.rand.NextFloat(8f, Main.rand.NextFloat(20f, 40f));
 			Vector2 afterVelocity = new Vector2(0, size * 1.3f).RotatedByRandom(MathHelper.TwoPi);
@@ -56,7 +56,7 @@ public class MothBallExplosion : ModProjectile, IWarpProjectile
 			Ins.VFXManager.Add(electric);
 		}
 
-		for (int g = 0; g < Frequency * 1.5f; g++)
+		for (int g = 0; g < frequency * 1.5f; g++)
 		{
 			Vector2 afterVelocity = new Vector2(0, Main.rand.NextFloat(20f, 30f)).RotatedByRandom(MathHelper.TwoPi);
 			var electric = new MothBallCurrent
@@ -73,7 +73,7 @@ public class MothBallExplosion : ModProjectile, IWarpProjectile
 		}
 
 		// 生成分叉闪电
-		int totalLightnings = (int)(Frequency * 0.35);
+		int totalLightnings = (int)(frequency * 0.35);
 		float angleDivision = (float)(Math.PI * 2 / totalLightnings);
 		for (int g = 0; g < totalLightnings; g++)
 		{
@@ -88,14 +88,14 @@ public class MothBallExplosion : ModProjectile, IWarpProjectile
 		}
 	}
 
-	public void GenerateSmog(int Frequency)
+	public void GenerateSmog(int frequency)
 	{
 		float mulVelocity = Projectile.ai[0] / 5f;
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			float sqrtRand = MathF.Pow(Main.rand.NextFloat(1), 0.4f);
 			Vector2 newVelocity = new Vector2(0, mulVelocity * sqrtRand * 6).RotatedByRandom(MathHelper.TwoPi);
-			var somg = new FireSmogDust
+			var smog = new FireSmogDust
 			{
 				Velocity = newVelocity,
 				Active = true,
@@ -106,14 +106,14 @@ public class MothBallExplosion : ModProjectile, IWarpProjectile
 				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
-			Ins.VFXManager.Add(somg);
+			Ins.VFXManager.Add(smog);
 		}
 	}
 
-	public void GenerateFire(int Frequency)
+	public void GenerateFire(int frequency)
 	{
 		float mulVelocity = Projectile.ai[0] / 5f;
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			float sqrtRand = MathF.Pow(Main.rand.NextFloat(1), 0.4f);
 			Vector2 newVelocity = new Vector2(0, mulVelocity * sqrtRand * 6).RotatedByRandom(MathHelper.TwoPi);
@@ -132,10 +132,10 @@ public class MothBallExplosion : ModProjectile, IWarpProjectile
 		}
 	}
 
-	public void GenerateSpark(int Frequency)
+	public void GenerateSpark(int frequency)
 	{
 		float mulVelocity = Projectile.ai[0] / 5f;
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			float sqrtRand = MathF.Pow(Main.rand.NextFloat(1), 0.4f);
 			Vector2 newVelocity = new Vector2(0, mulVelocity * sqrtRand * 6).RotatedByRandom(MathHelper.TwoPi);

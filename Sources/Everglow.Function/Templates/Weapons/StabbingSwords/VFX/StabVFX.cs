@@ -22,7 +22,7 @@ public class StabVFX : Visual
 	{
 		Alpha = 0.6f;
 		TimeLeft = MaxTime = 10;
-		randomRot = Main.rand.NextFloatDirection() * 0.5f;
+		RandomRot = Main.rand.NextFloatDirection() * 0.5f;
 	}
 
 	public static Vector3 RotatedBy(Vector3 v, Vector3 u, float ang)// v以u为轴旋转
@@ -31,15 +31,15 @@ public class StabVFX : Visual
 		return v * cos + Vector3.Dot(v, u) * u * (1 - cos) + Vector3.Cross(u, v) * (float)Math.Sin(ang);
 	}
 
-	public float speed = 1f;
-	public float randomRot = 0;
+	public float Speed = 1f;
+	public float RandomRot = 0;
 
 	public override void Update()
 	{
 		if (TimeLeft < MaxTime * 2f / 3f)
 		{
 			Alpha *= 0.75f;
-			speed *= 0.9f;
+			Speed *= 0.9f;
 		}
 		Width = 5;
 		TimeLeft--;
@@ -48,7 +48,7 @@ public class StabVFX : Visual
 			Kill();
 		}
 
-		Position -= Velocity * speed * 30f / MaxTime;
+		Position -= Velocity * Speed * 30f / MaxTime;
 
 		Scale += 0.6f;
 	}

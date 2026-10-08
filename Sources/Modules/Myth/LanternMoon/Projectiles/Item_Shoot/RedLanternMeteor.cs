@@ -60,36 +60,36 @@ public class RedLanternMeteor : TrailingProjectile
 
 			unSmoothPos.Add(Projectile.oldPos[i]);
 		}
-		List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(unSmoothPos); // 平滑
-		var SmoothTrail = new List<Vector2>();
-		for (int x = 0; x < SmoothTrailX.Count - 1; x++)
+		List<Vector2> smoothTrailX = GraphicsUtils.CatmullRom(unSmoothPos); // 平滑
+		var smoothTrail = new List<Vector2>();
+		for (int x = 0; x < smoothTrailX.Count - 1; x++)
 		{
-			SmoothTrail.Add(SmoothTrailX[x]);
+			smoothTrail.Add(smoothTrailX[x]);
 		}
 		if (unSmoothPos.Count != 0)
 		{
-			SmoothTrail.Add(unSmoothPos[unSmoothPos.Count - 1]);
+			smoothTrail.Add(unSmoothPos[unSmoothPos.Count - 1]);
 		}
 
 		Vector2 halfSize = new Vector2(Projectile.width, Projectile.height) / 2f;
 		var bars = new List<Vertex2D>();
 		var bars2 = new List<Vertex2D>();
 		var bars3 = new List<Vertex2D>();
-		for (int i = 1; i < SmoothTrail.Count; ++i)
+		for (int i = 1; i < smoothTrail.Count; ++i)
 		{
 			float mulFac = Timer / (float)ProjectileID.Sets.TrailCacheLength[Projectile.type];
 			if (mulFac > 1f)
 			{
 				mulFac = 1f;
 			}
-			float factor = i / (float)SmoothTrail.Count * mulFac;
+			float factor = i / (float)smoothTrail.Count * mulFac;
 			float width = TrailWidthFunction(factor);
 			float timeValue = (float)Main.time * 0.0005f;
 			factor += timeValue;
 
-			Vector2 drawPos = SmoothTrail[i] + halfSize;
+			Vector2 drawPos = smoothTrail[i] + halfSize;
 			Color drawC = TrailColor;
-			drawC *= 1 - i / (float)SmoothTrail.Count;
+			drawC *= 1 - i / (float)smoothTrail.Count;
 			bars.Add(new Vertex2D(drawPos + new Vector2(0, 1).RotatedBy(MathHelper.TwoPi * 2f / 3f) * TrailWidth, drawC, new Vector3(factor + timeValue, 1, width)));
 			bars.Add(new Vertex2D(drawPos, drawC, new Vector3(factor + timeValue, 0.5f, width)));
 			bars2.Add(new Vertex2D(drawPos + new Vector2(0, 1).RotatedBy(MathHelper.TwoPi * 1f / 3f) * TrailWidth, drawC, new Vector3(factor + timeValue, 1, width)));

@@ -83,22 +83,22 @@ public class FireSpark_MetalStabDust : Visual
 		{
 			Timer += 20;
 		}
-		float pocession = 1 - Timer / MaxTime;
-		float c = pocession * Scale * 0.04f;
+		float progress = 1 - Timer / MaxTime;
+		float c = progress * Scale * 0.04f;
 		Lighting.AddLight(Position, c, c * 0.2f, 0);
 	}
 
 	public override void Draw()
 	{
-		float pocession = MathF.Pow(Timer / MaxTime, 10f);
+		float progress = MathF.Pow(Timer / MaxTime, 10f);
 		Vector2 toCorner = new Vector2(0, Scale * 0.2f).RotatedBy(Rotation);
 		List<Vertex2D> bars = new List<Vertex2D>()
 		{
-			new Vertex2D(Position + toCorner + Velocity * 3, new Color(0.3f, 0.3f, pocession, 0.0f), new Vector3(0)),
-			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 0.5), new Color(0, 1, pocession, 0.0f), new Vector3(0)),
+			new Vertex2D(Position + toCorner + Velocity * 3, new Color(0.3f, 0.3f, progress, 0.0f), new Vector3(0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 0.5), new Color(0, 1, progress, 0.0f), new Vector3(0)),
 
-			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1.5), new Color(1, 0, pocession, 0.0f), new Vector3(0)),
-			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1) - Velocity, new Color(1, 1, pocession, 0.0f), new Vector3(0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1.5), new Color(1, 0, progress, 0.0f), new Vector3(0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1) - Velocity, new Color(1, 1, progress, 0.0f), new Vector3(0)),
 		};
 
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);

@@ -76,12 +76,12 @@ public class IchorClub_smash : ClubProjSmash
 				var splash = new Splash
 				{
 					Position = Vector2.Lerp(pos, Projectile.Center, Main.rand.NextFloat(-0.2f, 0.5f)),
-					color = color,
+					Color = color,
 					Gravity = 0.2f,
 					Velocity = vel * 0.2f - new Vector2(0, 1f),
 					Scale = Main.rand.NextFloat(0.1f, 0.4f),
-					maxTimeleft = time,
-					timeleft = time,
+					MaxTimeLeft = time,
+					TimeLeft = time,
 				};
 				Ins.VFXManager.Add(splash);
 			}

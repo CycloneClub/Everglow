@@ -44,7 +44,7 @@ public class Spark_RockCrackDust : Visual
 	public float MaxTime;
 	public float Scale;
 	public float Rotation;
-	public bool noGravity;
+	public bool NoGravity;
 
 	public override void Update()
 	{
@@ -80,22 +80,22 @@ public class Spark_RockCrackDust : Visual
 		{
 			Timer += 20;
 		}
-		float pocession = 1 - Timer / MaxTime;
-		float c = pocession * Scale * 0.1f;
+		float progress = 1 - Timer / MaxTime;
+		float c = progress * Scale * 0.1f;
 		Lighting.AddLight(Position, c * 0.66f, c * 0.49f, 0.09f * c);
 	}
 
 	public override void Draw()
 	{
-		float pocession = ai[0] / 3f + 1 / 6f;
+		float progress = ai[0] / 3f + 1 / 6f;
 		Vector2 toCorner = new Vector2(0, Scale * 0.2f).RotatedBy(Velocity.ToRotation() - MathHelper.PiOver2);
 		var bars = new List<Vertex2D>()
 		{
-			new Vertex2D(Position + toCorner + Velocity * 6, new Color(0, 0, pocession, 0.0f), new Vector3(0)),
-			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 0.5) + Velocity * 6, new Color(0, 1, pocession, 0.0f), new Vector3(0)),
+			new Vertex2D(Position + toCorner + Velocity * 6, new Color(0, 0, progress, 0.0f), new Vector3(0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 0.5) + Velocity * 6, new Color(0, 1, progress, 0.0f), new Vector3(0)),
 
-			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1.5), new Color(1, 0, pocession, 0.0f), new Vector3(0)),
-			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1), new Color(1, 1, pocession, 0.0f), new Vector3(0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1.5), new Color(1, 0, progress, 0.0f), new Vector3(0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1), new Color(1, 1, progress, 0.0f), new Vector3(0)),
 		};
 
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);

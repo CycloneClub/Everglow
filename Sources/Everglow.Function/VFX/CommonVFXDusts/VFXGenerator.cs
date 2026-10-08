@@ -23,7 +23,7 @@ internal class VFXGenerator : ModItem
 				for (int g = 0; g < 20; g++)
 				{
 					Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(0f, 4f)).RotatedByRandom(MathHelper.TwoPi);
-					var somg = new IceSmogDust
+					var smog = new IceSmogDust
 					{
 						Velocity = newVelocity,
 						Active = true,
@@ -34,14 +34,14 @@ internal class VFXGenerator : ModItem
 						Rotation = Main.rand.NextFloat(6.283f),
 						ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 					};
-					Ins.VFXManager.Add(somg);
+					Ins.VFXManager.Add(smog);
 				}
 				break;
 			case 1:
 				for (int g = 0; g < 80; g++)
 				{
 					Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(0f, 12f)).RotatedByRandom(MathHelper.TwoPi);
-					var somg = new IceParticleDust
+					var smog = new IceParticleDust
 					{
 						Velocity = newVelocity,
 						Active = true,
@@ -52,7 +52,7 @@ internal class VFXGenerator : ModItem
 						Rotation = Main.rand.NextFloat(6.283f),
 						ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 					};
-					Ins.VFXManager.Add(somg);
+					Ins.VFXManager.Add(smog);
 				}
 				break; // 冰粒
 			case 2: // 雪花
@@ -82,7 +82,7 @@ internal class VFXGenerator : ModItem
 				for (int g = 0; g < 40; g++)
 				{
 					Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(2f, 4f)).RotatedByRandom(MathHelper.TwoPi);
-					var somg = new FireSmogDust
+					var smog = new FireSmogDust
 					{
 						Velocity = newVelocity,
 						Active = true,
@@ -93,7 +93,7 @@ internal class VFXGenerator : ModItem
 						Rotation = Main.rand.NextFloat(6.283f),
 						ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 					};
-					Ins.VFXManager.Add(somg);
+					Ins.VFXManager.Add(smog);
 				}
 				break;
 			case 4: // 火焰
@@ -172,7 +172,7 @@ internal class VFXGenerator : ModItem
 				for (int g = 0; g < 10; g++)
 				{
 					Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(0f, 4f)).RotatedByRandom(MathHelper.TwoPi);
-					var somg = new VaporDust
+					var smog = new VaporDust
 					{
 						Velocity = newVelocity,
 						Active = true,
@@ -183,7 +183,7 @@ internal class VFXGenerator : ModItem
 						Rotation = Main.rand.NextFloat(6.283f),
 						ai = new float[] { Main.rand.NextFloat(-0.05f, -0.01f), 0 },
 					};
-					Ins.VFXManager.Add(somg);
+					Ins.VFXManager.Add(smog);
 				}
 				break;
 			case 9: // 丛林孢子

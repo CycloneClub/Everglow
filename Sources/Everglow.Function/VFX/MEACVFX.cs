@@ -32,21 +32,21 @@ public class MEACVFX : Visual
 	public Vector2 Velocity;
 	public Vector2 Center;
 	public float Rotation = 0;
-	public string texPath = "MEAC/Images/Ball";
+	public string TexPath = "MEAC/Images/Ball";
 
-	public Texture2D Texture => ModContent.Request<Texture2D>(texPath).Value;
+	public Texture2D Texture => ModContent.Request<Texture2D>(TexPath).Value;
 
-	public int timeleft;
-	public int maxTimeleft = 50;
-	public float ai0;
-	public float ai1;
-	public float alpha = 1;
-	public float scale = 1;
-	public bool isWarp = false;
-	public Color drawColor = Color.White;
-	public bool origDraw = true;
-	public bool canBatch = true;
-	public int extraUpdates = 0;
+	public int TimeLeft;
+	public int MaxTimeLeft = 50;
+	public float Ai0;
+	public float Ai1;
+	public float Alpha = 1;
+	public float Scale = 1;
+	public bool IsWarp = false;
+	public Color DrawColor = Color.White;
+	public bool OrigDraw = true;
+	public bool CanBatch = true;
+	public int ExtraUpdates = 0;
 
 	public MEACVFX()
 	{
@@ -54,24 +54,24 @@ public class MEACVFX : Visual
 
 	public struct OwnerInfo
 	{
-		public bool hasOwner = false;
-		public Entity owner;
-		public Vector2 offset;
+		public bool HasOwner = false;
+		public Entity Owner;
+		public Vector2 Offset;
 
 		public OwnerInfo()
 		{
-			hasOwner = false;
-			owner = null;
-			offset = Vector2.Zero;
+			HasOwner = false;
+			Owner = null;
+			Offset = Vector2.Zero;
 		}
 	}
 
-	public OwnerInfo ownerInfo;
+	public OwnerInfo OwnerData;
 
-	public void SetTimeleft(int t)
+	public void SetTimeLeft(int t)
 	{
-		maxTimeleft = t;
-		timeleft = t;
+		MaxTimeLeft = t;
+		TimeLeft = t;
 	}
 
 	public static T Create<T>(Vector2 pos, Vector2 velocity, float rotation = 0, float scale = 1, Entity owner = null)
@@ -82,17 +82,17 @@ public class MEACVFX : Visual
 		ee.Velocity = velocity;
 		ee.Center = pos;
 		ee.Rotation = rotation;
-		ee.timeleft = ee.maxTimeleft;
+		ee.TimeLeft = ee.MaxTimeLeft;
 		if (scale != 1)
 		{
-			ee.scale = scale;
+			ee.Scale = scale;
 		}
 
 		if (owner != null)
 		{
-			ee.ownerInfo.owner = owner;
-			ee.ownerInfo.hasOwner = true;
-			ee.ownerInfo.offset = pos - owner.Center;
+			ee.OwnerData.Owner = owner;
+			ee.OwnerData.HasOwner = true;
+			ee.OwnerData.Offset = pos - owner.Center;
 		}
 		Ins.VFXManager.Add(ee);
 		return ee as T;
@@ -108,31 +108,31 @@ public class MEACVFX : Visual
 
 	public virtual void AIWithOwner(Entity owner)
 	{
-		Center = owner.Center + ownerInfo.offset;
-		ownerInfo.offset += Velocity;
+		Center = owner.Center + OwnerData.Offset;
+		OwnerData.Offset += Velocity;
 	}
 
 	public override void Update()
 	{
-		for (int i = 0; i < extraUpdates + 1; i++)
+		for (int i = 0; i < ExtraUpdates + 1; i++)
 		{
 			AI();
-			timeleft--;
-			if (timeleft <= 0)
+			TimeLeft--;
+			if (TimeLeft <= 0)
 			{
 				Kill();
 				return;
 			}
 			Center += Velocity;
-			if (ownerInfo.hasOwner)
+			if (OwnerData.HasOwner)
 			{
-				if (!ownerInfo.owner.active)
+				if (!OwnerData.Owner.active)
 				{
-					ownerInfo.hasOwner = false;
+					OwnerData.HasOwner = false;
 				}
 				else
 				{
-					AIWithOwner(ownerInfo.owner);
+					AIWithOwner(OwnerData.Owner);
 				}
 			}
 		}
@@ -140,6 +140,6 @@ public class MEACVFX : Visual
 
 	public override void Draw()
 	{
-		Ins.Batch.Draw(Texture, Center - Main.screenPosition, null, drawColor * alpha, Rotation, Texture.Size() / 2, scale, SpriteEffects.None);
+		Ins.Batch.Draw(Texture, Center - Main.screenPosition, null, DrawColor * Alpha, Rotation, Texture.Size() / 2, Scale, SpriteEffects.None);
 	}
 }

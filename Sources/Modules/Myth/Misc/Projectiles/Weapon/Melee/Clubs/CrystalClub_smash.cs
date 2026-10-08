@@ -30,9 +30,9 @@ public class CrystalClub_smash : ClubProjSmash
 		}
 		for (float d = 0.1f; d < Omega; d += 0.04f)
 		{
-			var D = Dust.NewDustDirect(target.Center - new Vector2(4)/*Dust的Size=8x8*/, 0, 0, type, 0, 0, 150, default, Main.rand.NextFloat(0.4f, 1.1f));
-			D.noGravity = true;
-			D.velocity = new Vector2(0, Main.rand.NextFloat(Omega * 25f)).RotatedByRandom(6.283);
+			var dust = Dust.NewDustDirect(target.Center - new Vector2(4)/*Dust的Size=8x8*/, 0, 0, type, 0, 0, 150, default, Main.rand.NextFloat(0.4f, 1.1f));
+			dust.noGravity = true;
+			dust.velocity = new Vector2(0, Main.rand.NextFloat(Omega * 25f)).RotatedByRandom(6.283);
 		}
 	}
 

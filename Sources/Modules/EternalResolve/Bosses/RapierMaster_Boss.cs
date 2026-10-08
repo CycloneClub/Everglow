@@ -26,11 +26,11 @@ public class RapierMaster_Boss : ModNPC
 		NPC.noTileCollide = false;
 		NPC.buffImmune[BuffID.Confused] = true;
 		NPC.damage = 50;
-		aIStates = new();
+		AIStates = new();
 		aiScore = new int[100];
 	}
 
-	public List<AIState> aIStates;
+	public List<AIState> AIStates;
 
 	public Player Player => Main.player[NPC.target];
 
@@ -212,7 +212,7 @@ public class RapierMaster_Boss : ModNPC
 			NPC.maxFallSpeed = 2333f;
 			NPC.TargetClosest();
 			UpdateAIState();
-			bool dashing = aIStates.Any(i => i is DashAI);
+			bool dashing = AIStates.Any(i => i is DashAI);
 			if (NPC.velocity.Y == 0 && !dashing)
 			{
 				NPC.velocity.X *= 0.95f;
@@ -414,22 +414,22 @@ public class RapierMaster_Boss : ModNPC
 
 	public void UpdateAIState()
 	{
-		for (int i = 0; i < aIStates.Count; i++)
+		for (int i = 0; i < AIStates.Count; i++)
 		{
-			AIState aIState = aIStates[i];
+			AIState aIState = AIStates[i];
 			aIState.Update(NPC);
-			aIState.timer++;
-			if (aIState.timer > aIState.MaxTime)
+			aIState.Timer++;
+			if (aIState.Timer > aIState.MaxTime)
 			{
 				aIState.OnRemove(NPC);
-				aIStates.Remove(aIState);
+				AIStates.Remove(aIState);
 			}
 		}
 	}
 
 	public void AddAIState(AIState a)
 	{
-		aIStates.Add(a);
+		AIStates.Add(a);
 		a.OnActive(NPC);
 	}
 
@@ -459,7 +459,7 @@ public class RapierMaster_Boss : ModNPC
 
 		public override void Update(NPC npc)
 		{
-			if (timer < MaxTime * 0.4f)
+			if (Timer < MaxTime * 0.4f)
 			{
 				for (int i = 0; i < 4; i++)
 				{
@@ -468,7 +468,7 @@ public class RapierMaster_Boss : ModNPC
 				}
 			}
 
-			if (timer < MaxTime * 0.3f)
+			if (Timer < MaxTime * 0.3f)
 			{
 				npc.noGravity = true;
 				npc.velocity = Velocity;
@@ -488,12 +488,12 @@ public class RapierMaster_Boss : ModNPC
 
 		public override void Update(NPC npc)
 		{
-			if (timer == 0)
+			if (Timer == 0)
 			{
 				npc.velocity.Y = Velocity.Y;
 			}
 
-			if (timer < MaxTime * 0.6f)
+			if (Timer < MaxTime * 0.6f)
 			{
 				npc.velocity.X = MathHelper.Lerp(npc.velocity.X, Velocity.X, 0.05f);
 			}
@@ -502,7 +502,7 @@ public class RapierMaster_Boss : ModNPC
 
 	public class AIState
 	{
-		public int timer = 0;
+		public int Timer = 0;
 		public int MaxTime = 0;
 
 		public virtual void OnActive(NPC npc)

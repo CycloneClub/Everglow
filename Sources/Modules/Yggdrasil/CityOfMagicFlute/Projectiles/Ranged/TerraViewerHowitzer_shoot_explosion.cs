@@ -69,7 +69,7 @@ public class TerraViewerHowitzer_shoot_explosion : ModProjectile, IWarpProjectil
 	public void LargeFlame()
 	{
 		Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(2f, 50f)).RotatedByRandom(MathHelper.TwoPi);
-		var somg = new MissleFlameBlueDust
+		var smog = new MissleFlameBlueDust
 		{
 			Velocity = newVelocity,
 			Active = true,
@@ -80,13 +80,13 @@ public class TerraViewerHowitzer_shoot_explosion : ModProjectile, IWarpProjectil
 			Rotation = Main.rand.NextFloat(6.283f),
 			ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 		};
-		Ins.VFXManager.Add(somg);
+		Ins.VFXManager.Add(smog);
 	}
 
 	public void SmallFlame()
 	{
 		Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(2f, 50f)).RotatedByRandom(MathHelper.TwoPi);
-		var somg = new MissleFlameBlueDust
+		var smog = new MissleFlameBlueDust
 		{
 			Velocity = newVelocity,
 			Active = true,
@@ -97,7 +97,7 @@ public class TerraViewerHowitzer_shoot_explosion : ModProjectile, IWarpProjectil
 			Rotation = Main.rand.NextFloat(6.283f),
 			ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 		};
-		Ins.VFXManager.Add(somg);
+		Ins.VFXManager.Add(smog);
 	}
 
 	public void NanoCloud()

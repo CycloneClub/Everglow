@@ -95,23 +95,23 @@ public class IchorDrop : Visual
 		{
 			Timer += 20;
 		}
-		float pocession = 1 - Timer / MaxTime;
-		float c = pocession * Scale * 0.08f;
+		float progress = 1 - Timer / MaxTime;
+		float c = progress * Scale * 0.08f;
 		Lighting.AddLight(Position, c * 0.8f, c * 0.4f, 0);
 	}
 
 	public override void Draw()
 	{
-		float pocession = Timer / MaxTime * 0.6f;
+		float progress = Timer / MaxTime * 0.6f;
 		Vector2 toCorner = new Vector2(0, Scale).RotatedBy(Rotation);
 		Color lightColor = Color.White;
 		List<Vertex2D> bars = new List<Vertex2D>()
 		{
-			new Vertex2D(Position + Velocity + toCorner, lightColor, new Vector3(0, 0, pocession)),
-			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 0.5), lightColor, new Vector3(0, 1, pocession)),
+			new Vertex2D(Position + Velocity + toCorner, lightColor, new Vector3(0, 0, progress)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 0.5), lightColor, new Vector3(0, 1, progress)),
 
-			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1.5), lightColor, new Vector3(1, 0, pocession)),
-			new Vertex2D(Position - Velocity * ai[1] + toCorner.RotatedBy(Math.PI * 1), lightColor, new Vector3(1, 1, pocession)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1.5), lightColor, new Vector3(1, 0, progress)),
+			new Vertex2D(Position - Velocity * ai[1] + toCorner.RotatedBy(Math.PI * 1), lightColor, new Vector3(1, 1, progress)),
 		};
 
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);

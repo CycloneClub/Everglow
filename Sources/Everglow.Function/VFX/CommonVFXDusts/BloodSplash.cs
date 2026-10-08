@@ -19,8 +19,8 @@ public class BloodSplashPipeline : Pipeline
 		effect.Parameters["uIlluminationThreshold"].SetValue(0.99f);
 		effect.Parameters["uIlluminationThresholdII"].SetValue(0.05f);
 		effect.Parameters["uNoise"].SetValue(ModAsset.Noise_cell.Value);
-		Texture2D FlameColor = ModAsset.HeatMap_bloodSplash.Value;
-		Ins.Batch.BindTexture<Vertex2D>(FlameColor);
+		Texture2D flameColor = ModAsset.HeatMap_bloodSplash.Value;
+		Ins.Batch.BindTexture<Vertex2D>(flameColor);
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointClamp;
 		Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.None, SamplerState.PointClamp, RasterizerState.CullNone);
 		effect.CurrentTechnique.Passes[0].Apply();
@@ -37,14 +37,14 @@ public class BloodSplash : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
 
-	public List<Vector2> oldPos = new List<Vector2>();
+	public List<Vector2> OldPositions = new List<Vector2>();
 	public Vector2 Position;
 	public Vector2 Velocity;
 	public float[] ai;
 	public float Timer;
 	public float MaxTime;
 	public float Scale;
-	public float alpha;
+	public float Alpha;
 
 	public BloodSplash()
 	{
@@ -63,10 +63,10 @@ public class BloodSplash : Visual
 			Active = false;
 			return;
 		}
-		oldPos.Add(Position);
-		if (oldPos.Count > 15)
+		OldPositions.Add(Position);
+		if (OldPositions.Count > 15)
 		{
-			oldPos.RemoveAt(0);
+			OldPositions.RemoveAt(0);
 		}
 
 		Velocity += new Vector2(Main.windSpeedCurrent * 0.1f, 0.14f * Scale * 0.1f);
@@ -88,13 +88,13 @@ public class BloodSplash : Visual
 		if (Main.tile[(int)(Position.X / 16f), (int)(Position.Y / 16f)].LiquidAmount > 0)
 		{
 			Scale += 0.02f;
-			alpha += 0.004f;
+			Alpha += 0.004f;
 			Velocity *= 0.9f;
 			if (MathF.Abs(Velocity.X) > 2)
 			{
 				Velocity.X *= 0.8f;
 			}
-			Velocity += new Vector2(Main.rand.NextFloat(0.5f), 0).RotatedByRandom(6.283) + new Vector2(0, 1.2f - Math.Abs(Velocity.X) * alpha * 2f);
+			Velocity += new Vector2(Main.rand.NextFloat(0.5f), 0).RotatedByRandom(6.283) + new Vector2(0, 1.2f - Math.Abs(Velocity.X) * Alpha * 2f);
 			Position += Velocity * 0.5f;
 			Timer -= 0.4f;
 		}
@@ -106,7 +106,7 @@ public class BloodSplash : Visual
 
 	public override void Draw()
 	{
-		Vector2[] pos = oldPos.Reverse<Vector2>().ToArray();
+		Vector2[] pos = OldPositions.Reverse<Vector2>().ToArray();
 		float fx = Timer / MaxTime;
 		int len = pos.Length;
 		if (len <= 2)
@@ -117,18 +117,18 @@ public class BloodSplash : Visual
 		var bars = new Vertex2D[len * 2 - 1];
 		for (int i = 1; i < len; i++)
 		{
-			Vector2 normal = oldPos[i] - oldPos[i - 1];
+			Vector2 normal = OldPositions[i] - OldPositions[i - 1];
 			normal = Vector2.Normalize(normal).RotatedBy(Math.PI * 0.5);
-			Color light = Lighting.GetColor((int)(oldPos[i].X / 16f), (int)(oldPos[i].Y / 16f));
-			var lightColorWithPos = new Color(fx * fx * fx, light.R / 255f * (1 - alpha), light.G / 255f * (1 - alpha), light.B / 255f * (1 - alpha));
+			Color light = Lighting.GetColor((int)(OldPositions[i].X / 16f), (int)(OldPositions[i].Y / 16f));
+			var lightColorWithPos = new Color(fx * fx * fx, light.R / 255f * (1 - Alpha), light.G / 255f * (1 - Alpha), light.B / 255f * (1 - Alpha));
 			float width = Scale * (float)Math.Sin(i / (double)len * Math.PI);
-			Vector2 pointUp = oldPos[i] + normal * width;
-			Vector2 pointDown = oldPos[i] - normal * width;
+			Vector2 pointUp = OldPositions[i] + normal * width;
+			Vector2 pointDown = OldPositions[i] - normal * width;
 			Vector2 widthUp = new Vector2(normal.X * width, 0);
 			Vector2 widthDown = -new Vector2(normal.X * width, 0);
 			if (Main.tile[(int)(pointUp.X / 16f), (int)(pointUp.Y / 16f) - 1].LiquidAmount > 0)
 			{
-				widthUp *= MathF.Sqrt(alpha) * 4f;
+				widthUp *= MathF.Sqrt(Alpha) * 4f;
 			}
 			else
 			{
@@ -136,15 +136,15 @@ public class BloodSplash : Visual
 			}
 			if (Main.tile[(int)(pointDown.X / 16f), (int)(pointDown.Y / 16f) - 1].LiquidAmount > 0)
 			{
-				widthDown *= MathF.Sqrt(alpha) * 4f;
+				widthDown *= MathF.Sqrt(Alpha) * 4f;
 			}
 			else
 			{
 				widthDown *= 0f;
 			}
 
-			bars[2 * i - 1] = new Vertex2D(oldPos[i] + normal * width + widthUp, lightColorWithPos, new Vector3(0 + ai[0], (i + 15 - len) / ai[2] + Timer / 1500f * Velocity.Length(), 0.3f + ai[0]));
-			bars[2 * i] = new Vertex2D(oldPos[i] - normal * width + widthDown, lightColorWithPos, new Vector3(0.6f + ai[0], (i + 15 - len) / ai[2] + Timer / 1500f * Velocity.Length(), 0.3f + ai[0]));
+			bars[2 * i - 1] = new Vertex2D(OldPositions[i] + normal * width + widthUp, lightColorWithPos, new Vector3(0 + ai[0], (i + 15 - len) / ai[2] + Timer / 1500f * Velocity.Length(), 0.3f + ai[0]));
+			bars[2 * i] = new Vertex2D(OldPositions[i] - normal * width + widthDown, lightColorWithPos, new Vector3(0.6f + ai[0], (i + 15 - len) / ai[2] + Timer / 1500f * Velocity.Length(), 0.3f + ai[0]));
 		}
 		bars[0] = new Vertex2D((bars[1].position + bars[2].position) * 0.5f, Color.White, new Vector3(0.5f, 0, 0));
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);

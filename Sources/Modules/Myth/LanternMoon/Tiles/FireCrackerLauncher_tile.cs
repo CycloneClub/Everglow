@@ -60,13 +60,13 @@ public class FireCrackerLauncher_tile : ModTile
 		}
 	}
 
-	public void GenerateSmog(int Frequency, Vector2 pos)
+	public void GenerateSmog(int frequency, Vector2 pos)
 	{
 		float mulVelocity = 1f;
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(2f, 4f)).RotatedByRandom(MathHelper.TwoPi) + new Vector2(0, Main.rand.NextFloat(-40f, -5f));
-			var somg = new FireSmogDust
+			var smog = new FireSmogDust
 			{
 				Velocity = newVelocity,
 				Active = true,
@@ -77,15 +77,15 @@ public class FireCrackerLauncher_tile : ModTile
 				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
-			Ins.VFXManager.Add(somg);
+			Ins.VFXManager.Add(smog);
 		}
 	}
 
-	public void GenerateFire(int Frequency, Vector2 pos)
+	public void GenerateFire(int frequency, Vector2 pos)
 	{
 		float mulVelocity = 1f;
 
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			float scale = Main.rand.NextFloat(4f, 15f);
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(0f, 1f)).RotatedByRandom(MathHelper.TwoPi) + new Vector2(0, Main.rand.NextFloat(-40f, -5f));
@@ -104,10 +104,10 @@ public class FireCrackerLauncher_tile : ModTile
 		}
 	}
 
-	public void GenerateSpark(int Frequency, Vector2 pos)
+	public void GenerateSpark(int frequency, Vector2 pos)
 	{
 		float mulVelocity = 1f;
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(0f, 1f)).RotatedByRandom(MathHelper.TwoPi) + new Vector2(0, Main.rand.NextFloat(-60f, -5f));
 			var spark = new FireSparkDust

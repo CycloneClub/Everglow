@@ -181,13 +181,13 @@ public class Glow : ModProjectile
 		for (float i = 0f; i < 8f; i += 1f)
 		{
 			float edgeRotation = Projectile.rotation + Projectile.ai[0] * i * (MathHelper.Pi * -2f) * 0.025f + Utils.Remap(percentageOfLife, 0f, 1f, 0f, MathHelper.PiOver4) * Projectile.ai[0];
-			Vector2 drawpos = position + edgeRotation.ToRotationVector2() * (texture.Width * 0.5f - 6f) * scale;
-			DrawPrettyStarSparkle(Projectile.Opacity, SpriteEffects.None, drawpos, new Color(180, 255, 255, 0) * lerpTime * (i / 9f), middleMediumColor, percentageOfLife, 0f, 0.5f, 0.5f, 1f, edgeRotation, new Vector2(0f, Utils.Remap(percentageOfLife, 0f, 1f, 3f, 0f)) * scale, Vector2.One * scale);
+			Vector2 drawPosition = position + edgeRotation.ToRotationVector2() * (texture.Width * 0.5f - 6f) * scale;
+			DrawPrettyStarSparkle(Projectile.Opacity, SpriteEffects.None, drawPosition, new Color(180, 255, 255, 0) * lerpTime * (i / 9f), middleMediumColor, percentageOfLife, 0f, 0.5f, 0.5f, 1f, edgeRotation, new Vector2(0f, Utils.Remap(percentageOfLife, 0f, 1f, 3f, 0f)) * scale, Vector2.One * scale);
 		}
 
 		// This draws a large star sparkle at the front of the projectile.
-		Vector2 drawpos2 = position + (Projectile.rotation + Utils.Remap(percentageOfLife, 0f, 1f, 0f, MathHelper.PiOver4) * Projectile.ai[0]).ToRotationVector2() * (texture.Width * 0.5f - 4f) * scale;
-		DrawPrettyStarSparkle(Projectile.Opacity, SpriteEffects.None, drawpos2, new Color(180, 255, 255, 0) * lerpTime * 0.5f, middleMediumColor, percentageOfLife, 0f, 0.5f, 0.5f, 1f, 0f, new Vector2(2f, Utils.Remap(percentageOfLife, 0f, 1f, 4f, 1f)) * scale, Vector2.One * scale);
+		Vector2 drawPosition2 = position + (Projectile.rotation + Utils.Remap(percentageOfLife, 0f, 1f, 0f, MathHelper.PiOver4) * Projectile.ai[0]).ToRotationVector2() * (texture.Width * 0.5f - 4f) * scale;
+		DrawPrettyStarSparkle(Projectile.Opacity, SpriteEffects.None, drawPosition2, new Color(180, 255, 255, 0) * lerpTime * 0.5f, middleMediumColor, percentageOfLife, 0f, 0.5f, 0.5f, 1f, 0f, new Vector2(2f, Utils.Remap(percentageOfLife, 0f, 1f, 4f, 1f)) * scale, Vector2.One * scale);
 
 		// Uncomment this line for a visual representation of the projectile's size.
 		// Main.EntitySpriteDraw(TextureAssets.MagicPixel.Value, position, sourceRectangle, Color.Orange * 0.75f, 0f, origin, scale, spriteEffects);
@@ -195,7 +195,7 @@ public class Glow : ModProjectile
 	}
 
 	// Copied from Main.DrawPrettyStarSparkle() which is private
-	private static void DrawPrettyStarSparkle(float opacity, SpriteEffects dir, Vector2 drawpos, Color drawColor, Color shineColor, float flareCounter, float fadeInStart, float fadeInEnd, float fadeOutStart, float fadeOutEnd, float rotation, Vector2 scale, Vector2 fatness)
+	private static void DrawPrettyStarSparkle(float opacity, SpriteEffects dir, Vector2 drawPosition, Color drawColor, Color shineColor, float flareCounter, float fadeInStart, float fadeInEnd, float fadeOutStart, float fadeOutEnd, float rotation, Vector2 scale, Vector2 fatness)
 	{
 		Texture2D sparkleTexture = TextureAssets.Extra[ExtrasID.SharpTears].Value;
 		Color bigColor = shineColor * opacity * 0.5f;
@@ -209,12 +209,12 @@ public class Glow : ModProjectile
 		smallColor *= lerpValue;
 
 		// Bright, large part
-		Main.EntitySpriteDraw(sparkleTexture, drawpos, null, bigColor, MathHelper.PiOver2 + rotation, origin, scaleLeftRight, dir);
-		Main.EntitySpriteDraw(sparkleTexture, drawpos, null, bigColor, 0f + rotation, origin, scaleUpDown, dir);
+		Main.EntitySpriteDraw(sparkleTexture, drawPosition, null, bigColor, MathHelper.PiOver2 + rotation, origin, scaleLeftRight, dir);
+		Main.EntitySpriteDraw(sparkleTexture, drawPosition, null, bigColor, 0f + rotation, origin, scaleUpDown, dir);
 
 		// Dim, small part
-		Main.EntitySpriteDraw(sparkleTexture, drawpos, null, smallColor, MathHelper.PiOver2 + rotation, origin, scaleLeftRight * 0.6f, dir);
-		Main.EntitySpriteDraw(sparkleTexture, drawpos, null, smallColor, 0f + rotation, origin, scaleUpDown * 0.6f, dir);
+		Main.EntitySpriteDraw(sparkleTexture, drawPosition, null, smallColor, MathHelper.PiOver2 + rotation, origin, scaleLeftRight * 0.6f, dir);
+		Main.EntitySpriteDraw(sparkleTexture, drawPosition, null, smallColor, 0f + rotation, origin, scaleUpDown * 0.6f, dir);
 	}
 
 	// Copied from Terraria.GameContent.Drawing.ParticleOrchestra.Spawn_Excalibur which is private

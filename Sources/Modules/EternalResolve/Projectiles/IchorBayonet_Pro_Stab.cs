@@ -154,10 +154,10 @@ namespace Everglow.EternalResolve.Projectiles
 			}
 		}
 
-		public void GenerateVFX(int Frequency)
+		public void GenerateVFX(int frequency)
 		{
 			float mulVelocity = Main.rand.NextFloat(0.75f, 1.5f);
-			for (int g = 0; g < Frequency * 2; g++)
+			for (int g = 0; g < frequency * 2; g++)
 			{
 				Vector2 afterVelocity = new Vector2(0, Main.rand.NextFloat(40f)).RotatedByRandom(MathHelper.TwoPi);
 				float mulScale = Main.rand.NextFloat(6f, 14f);
@@ -174,7 +174,7 @@ namespace Everglow.EternalResolve.Projectiles
 				};
 				Ins.VFXManager.Add(blood);
 			}
-			for (int g = 0; g < Frequency; g++)
+			for (int g = 0; g < frequency; g++)
 			{
 				Vector2 afterVelocity = new Vector2(0, Main.rand.NextFloat(3f)).RotatedByRandom(MathHelper.TwoPi);
 				var blood = new IchorSplash

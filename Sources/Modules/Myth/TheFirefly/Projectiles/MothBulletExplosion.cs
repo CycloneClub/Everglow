@@ -40,13 +40,13 @@ public class MothBulletExplosion : NoTextureProjectile, IWarpProjectile
 		GenerateSmog((int)(1.3 * Projectile.ai[0]));
 	}
 
-	public void GenerateSmog(int Frequency)
+	public void GenerateSmog(int frequency)
 	{
 		float mulVelocity = Projectile.ai[0] / 5f;
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(2f, 4f)).RotatedByRandom(MathHelper.TwoPi);
-			var somg = new FireSmogDust
+			var smog = new FireSmogDust
 			{
 				Velocity = newVelocity,
 				Active = true,
@@ -57,14 +57,14 @@ public class MothBulletExplosion : NoTextureProjectile, IWarpProjectile
 				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
-			Ins.VFXManager.Add(somg);
+			Ins.VFXManager.Add(smog);
 		}
 	}
 
-	public void GenerateFire(int Frequency)
+	public void GenerateFire(int frequency)
 	{
 		float mulVelocity = Projectile.ai[0] / 5f;
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(0f, 4f)).RotatedByRandom(MathHelper.TwoPi);
 			var fire = new MothBlueFireDust

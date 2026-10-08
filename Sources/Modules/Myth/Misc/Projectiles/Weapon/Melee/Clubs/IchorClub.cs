@@ -99,12 +99,12 @@ public class IchorClub : ClubProj
 		Main.spriteBatch.Begin(sBS);
 	}
 
-	public void GenerateVFX(int Frequency)
+	public void GenerateVFX(int frequency)
 	{
 		Player player = Main.player[Projectile.owner];
 		float mulVelocity = Main.rand.NextFloat(0.75f, 1.5f);
 
-		for (int g = 0; g < Frequency * 2; g++)
+		for (int g = 0; g < frequency * 2; g++)
 		{
 			Vector2 afterVelocity = new Vector2(0, Main.rand.NextFloat(10f)).RotatedByRandom(MathHelper.TwoPi);
 			float mulScale = Main.rand.NextFloat(1f, 6f);
@@ -126,7 +126,7 @@ public class IchorClub : ClubProj
 			};
 			Ins.VFXManager.Add(blood);
 		}
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			Vector2 afterVelocity = new Vector2(0, Main.rand.NextFloat(3f)).RotatedByRandom(MathHelper.TwoPi);
 			Vector2 startPos = new Vector2(MathF.Sqrt(Main.rand.NextFloat(0f, 1f)) * HitLength * 1.9f, 0).RotatedBy(Projectile.rotation + MathHelper.PiOver4 * Projectile.spriteDirection);

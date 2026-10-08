@@ -85,10 +85,10 @@ public class GoldenShowerBomb : ModProjectile, IWarpProjectile
 
 	public override void PostDraw(Color lightColor)
 	{
-		Texture2D Shadow = ModAsset.CursedHitLight.Value;
+		Texture2D shadow = ModAsset.CursedHitLight.Value;
 		float dark = Math.Max((Projectile.timeLeft - 100) / 50f, 0);
 		float dark2 = Math.Max((Projectile.timeLeft - 150) / 50f, 0);
-		Main.spriteBatch.Draw(Shadow, Projectile.Center - Main.screenPosition, null, new Color(255, 205, 0, 0) * dark2, 0, Shadow.Size() / 2f, 2.2f * Projectile.ai[0] / 15f * dark2, SpriteEffects.None, 0);
+		Main.spriteBatch.Draw(shadow, Projectile.Center - Main.screenPosition, null, new Color(255, 205, 0, 0) * dark2, 0, shadow.Size() / 2f, 2.2f * Projectile.ai[0] / 15f * dark2, SpriteEffects.None, 0);
 
 		float timeValue = (200 - Projectile.timeLeft) / 200f;
 		Color cDark = new Color(0, 0, 0, 1f - timeValue) * 0.5f;
@@ -100,9 +100,9 @@ public class GoldenShowerBomb : ModProjectile, IWarpProjectile
 
 	public override bool PreDraw(ref Color lightColor)
 	{
-		Texture2D Shadow = ModAsset.CursedHit.Value;
+		Texture2D shadow = ModAsset.CursedHit.Value;
 		float dark = Math.Max((Projectile.timeLeft - 120) / 80f, 0);
-		Main.spriteBatch.Draw(Shadow, Projectile.Center - Main.screenPosition, null, Color.White * dark, 0, Shadow.Size() / 2f, 2.2f * Projectile.ai[0] / 15f, SpriteEffects.None, 0);
+		Main.spriteBatch.Draw(shadow, Projectile.Center - Main.screenPosition, null, Color.White * dark, 0, shadow.Size() / 2f, 2.2f * Projectile.ai[0] / 15f, SpriteEffects.None, 0);
 		Texture2D light = ModAsset.LineLight_2.Value;
 		Main.spriteBatch.Draw(light, Projectile.Center - Main.screenPosition, null, new Color(255, 205, 0, 0), 1.57f, light.Size() / 2f, new Vector2(0.5f, dark) * Projectile.ai[0] * 0.2f, SpriteEffects.None, 0);
 		return false;

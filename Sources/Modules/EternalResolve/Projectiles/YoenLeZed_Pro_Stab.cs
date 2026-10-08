@@ -158,10 +158,10 @@ namespace Everglow.EternalResolve.Projectiles
 			}
 		}
 
-		public void SplitVFX_Long(int Frequency)
+		public void SplitVFX_Long(int frequency)
 		{
 			float mulVelocity = 1f;
-			for (int g = 0; g < Frequency; g++)
+			for (int g = 0; g < frequency; g++)
 			{
 				float size = Main.rand.NextFloat(8f, Main.rand.NextFloat(4f, 10f));
 				Vector2 afterVelocity = Projectile.velocity * 10;
@@ -179,10 +179,10 @@ namespace Everglow.EternalResolve.Projectiles
 			}
 		}
 
-		public void SplitVFX(int Frequency)
+		public void SplitVFX(int frequency)
 		{
 			float mulVelocity = 1f;
-			for (int g = 0; g < Frequency; g++)
+			for (int g = 0; g < frequency; g++)
 			{
 				float size = Main.rand.NextFloat(8f, Main.rand.NextFloat(4f, 10f));
 				Vector2 afterVelocity = Projectile.velocity * 10;

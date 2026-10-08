@@ -24,9 +24,9 @@ public class IchorCurrent : ModProjectile
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 15;
 	}
 
-	public void GenerateVFX(int Frequency)
+	public void GenerateVFX(int frequency)
 	{
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			var blood = new IchorDrop
 			{
@@ -43,9 +43,9 @@ public class IchorCurrent : ModProjectile
 		}
 	}
 
-	public void GenerateVFXII(int Frequency)
+	public void GenerateVFXII(int frequency)
 	{
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			var blood = new IchorSplash
 			{
@@ -89,8 +89,8 @@ public class IchorCurrent : ModProjectile
 		Lighting.AddLight((int)(Projectile.Center.X / 16), (int)(Projectile.Center.Y / 16), 0.32f * kTime, 0.23f * kTime, 0);
 		for (int x = 0; x < 8; x++)
 		{
-			Vector2 BasePos = Projectile.Center - new Vector2(4) + Projectile.velocity * Main.rand.NextFloat(1f);
-			var d0 = Dust.NewDustDirect(BasePos, 0, 0, DustID.Ichor, 0, 0, 0, default, 0.6f);
+			Vector2 basePos = Projectile.Center - new Vector2(4) + Projectile.velocity * Main.rand.NextFloat(1f);
+			var d0 = Dust.NewDustDirect(basePos, 0, 0, DustID.Ichor, 0, 0, 0, default, 0.6f);
 			d0.noGravity = true;
 			d0.velocity *= 0;
 		}
@@ -107,8 +107,8 @@ public class IchorCurrent : ModProjectile
 		SoundEngine.PlaySound(SoundID.Drip, Projectile.Center);
 		for (int x = 0; x < 15; x++)
 		{
-			Vector2 BasePos = Projectile.Center - new Vector2(4) - Projectile.velocity;
-			var d0 = Dust.NewDustDirect(BasePos, 0, 0, DustID.Ichor, 0, 0, 0, default, 0.6f);
+			Vector2 basePos = Projectile.Center - new Vector2(4) - Projectile.velocity;
+			var d0 = Dust.NewDustDirect(basePos, 0, 0, DustID.Ichor, 0, 0, 0, default, 0.6f);
 			d0.noGravity = true;
 		}
 		if (Projectile.ai[0] != 3)

@@ -55,8 +55,8 @@ public class CurseClub : ClubProj
 			v0 *= -1;
 		}
 		v0 = v0.RotatedBy(Projectile.rotation + Main.rand.NextFloat(Omega));
-		float Speed = Math.Min(Omega * 0.15f, 0.061f) * Main.rand.NextFloat(1.1f, Main.rand.NextFloat(1.1f, 7f));
-		var v1 = new Vector2(-v0.Y, v0.X) * Speed;
+		float speed = Math.Min(Omega * 0.15f, 0.061f) * Main.rand.NextFloat(1.1f, Main.rand.NextFloat(1.1f, 7f));
+		var v1 = new Vector2(-v0.Y, v0.X) * speed;
 		/*
 		var cf = new CurseFlame_HighQualityDust
 		{
@@ -78,9 +78,9 @@ public class CurseClub : ClubProj
 			{
 				Position = Vector2.Lerp(Projectile.Center, Projectile.Center + Projectile.rotation.ToRotationVector2() * 30, Main.rand.NextFloat(0.4f, 1.25f)),
 				Velocity = Projectile.velocity * 0.5f,
-				color = color,
-				timeleft = time,
-				maxTimeleft = time,
+				Color = color,
+				TimeLeft = time,
+				MaxTimeLeft = time,
 				Scale = Main.rand.NextFloat(0.3f, 0.6f),
 			};
 			Ins.VFXManager.Add(fire);
@@ -96,7 +96,7 @@ public class CurseClub : ClubProj
 			}
 
 			v0 = v0.RotatedBy(Projectile.rotation + Main.rand.NextFloat(Omega));
-			Vector2 newVelocity = new Vector2(-v0.Y, v0.X) * Speed;
+			Vector2 newVelocity = new Vector2(-v0.Y, v0.X) * speed;
 			float v0Length = v0.Length();
 			var spark = new CurseFlameSparkDust
 			{
@@ -124,10 +124,10 @@ public class CurseClub : ClubProj
 		}
 
 		v0 = v0.RotatedBy(Projectile.rotation);
-		float Speed = Math.Min(Omega * 0.5f, 0.221f);
-		var D = Dust.NewDustDirect(Projectile.Center + v0 - new Vector2(4)/*Dust的Size=8x8*/, 0, 0, DustID.CursedTorch, -v0.Y * Speed, v0.X * Speed, 150, default, Main.rand.NextFloat(0.4f, 1.1f));
-		D.noGravity = true;
-		D.velocity = new Vector2(-v0.Y * Speed, v0.X * Speed);
+		float speed = Math.Min(Omega * 0.5f, 0.221f);
+		var d = Dust.NewDustDirect(Projectile.Center + v0 - new Vector2(4)/*Dust的Size=8x8*/, 0, 0, DustID.CursedTorch, -v0.Y * speed, v0.X * speed, 150, default, Main.rand.NextFloat(0.4f, 1.1f));
+		d.noGravity = true;
+		d.velocity = new Vector2(-v0.Y * speed, v0.X * speed);
 	}
 
 	public override void PostPreDraw()

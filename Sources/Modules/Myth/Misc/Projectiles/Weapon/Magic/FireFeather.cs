@@ -21,7 +21,7 @@ public class FireFeather : ModProjectile
 		Projectile.localNPCHitCooldown = 2;
 	}
 
-	internal int timeTokill = -1;
+	public int TimeToKill = -1;
 	private ModProjectile magicArray = null;
 
 	public override void OnSpawn(IEntitySource source)
@@ -44,20 +44,20 @@ public class FireFeather : ModProjectile
 
 	public override void AI()
 	{
-		if (timeTokill >= 0 && timeTokill <= 2)
+		if (TimeToKill >= 0 && TimeToKill <= 2)
 		{
 			Projectile.Kill();
 		}
 
-		if (timeTokill <= 15 && timeTokill > 0)
+		if (TimeToKill <= 15 && TimeToKill > 0)
 		{
 			Projectile.velocity = Projectile.oldVelocity;
 		}
 
-		timeTokill--;
-		if (timeTokill >= 0)
+		TimeToKill--;
+		if (TimeToKill >= 0)
 		{
-			if (timeTokill < 10)
+			if (TimeToKill < 10)
 			{
 				Projectile.damage = 0;
 				Projectile.friendly = false;
@@ -125,7 +125,7 @@ public class FireFeather : ModProjectile
 			};
 			Ins.VFXManager.Add(spark);
 		}
-		if (Projectile.timeLeft <= 100 && timeTokill < 0)
+		if (Projectile.timeLeft <= 100 && TimeToKill < 0)
 		{
 			if (magicArray != null)
 			{
@@ -151,7 +151,7 @@ public class FireFeather : ModProjectile
 
 	public override void PostDraw(Color lightColor)
 	{
-		if (timeTokill >= 0)
+		if (TimeToKill >= 0)
 		{
 			return;
 		}
@@ -218,7 +218,7 @@ public class FireFeather : ModProjectile
 
 	public void AmmoHit()
 	{
-		timeTokill = 20;
+		TimeToKill = 20;
 		Projectile.tileCollide = false;
 		Projectile.ignoreWater = true;
 		Projectile.velocity = Projectile.oldVelocity;
@@ -237,13 +237,13 @@ public class FireFeather : ModProjectile
 		}
 	}
 
-	public void GenerateSmog(int Frequency)
+	public void GenerateSmog(int frequency)
 	{
 		float mulVelocity = 1f;
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(2f, 4f)).RotatedByRandom(MathHelper.TwoPi);
-			var somg = new FireSmogDust
+			var smog = new FireSmogDust
 			{
 				Velocity = newVelocity,
 				Active = true,
@@ -254,14 +254,14 @@ public class FireFeather : ModProjectile
 				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
-			Ins.VFXManager.Add(somg);
+			Ins.VFXManager.Add(smog);
 		}
 	}
 
-	public void GenerateFire(int Frequency)
+	public void GenerateFire(int frequency)
 	{
 		float mulVelocity = 1f;
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(0f, 4f)).RotatedByRandom(MathHelper.TwoPi);
 			var fire = new FireDust
@@ -279,10 +279,10 @@ public class FireFeather : ModProjectile
 		}
 	}
 
-	public void GenerateSpark(int Frequency)
+	public void GenerateSpark(int frequency)
 	{
 		float mulVelocity = 1f;
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(2f, 6f)).RotatedByRandom(MathHelper.TwoPi);
 			var spark = new FireSparkDust

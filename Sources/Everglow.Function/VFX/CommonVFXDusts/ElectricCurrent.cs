@@ -18,8 +18,8 @@ public class ElectricCurrentPipeline : Pipeline
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) * Main.GameViewMatrix.TransformationMatrix;
 		effect.Parameters["uTransform"].SetValue(model * projection);
 		effect.Parameters["uLight"].SetValue(0.4f);
-		Texture2D FlameColor = ModAsset.Trail.Value;
-		Ins.Batch.BindTexture<Vertex2D>(FlameColor);
+		Texture2D flameColor = ModAsset.Trail.Value;
+		Ins.Batch.BindTexture<Vertex2D>(flameColor);
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointClamp;
 		Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.None, SamplerState.PointClamp, RasterizerState.CullNone);
 		effect.CurrentTechnique.Passes[0].Apply();
@@ -36,7 +36,7 @@ public class ElectricCurrent : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
 
-	public List<Vector2> oldPos = new List<Vector2>();
+	public List<Vector2> OldPositions = new List<Vector2>();
 	public Vector2 Position;
 	public Vector2 Velocity;
 	public float[] ai;
@@ -80,11 +80,11 @@ public class ElectricCurrent : Visual
 			Active = false;
 			return;
 		}
-		oldPos.Add(Position);
+		OldPositions.Add(Position);
 
-		for (int x = 0; x < oldPos.Count; x++)
+		for (int x = 0; x < OldPositions.Count; x++)
 		{
-			oldPos[x] += new Vector2(0, Main.rand.NextFloat(2f)).RotatedByRandom(6.283);
+			OldPositions[x] += new Vector2(0, Main.rand.NextFloat(2f)).RotatedByRandom(6.283);
 		}
 
 		// if (Main.tile[(int)(Position.X / 16f), (int)(Position.Y / 16f)].LiquidAmount > 0)
@@ -114,34 +114,34 @@ public class ElectricCurrent : Visual
 		// Position += Velocity.RotatedBy(Main.rand.NextFloat(-1f, 1f) / Scale * 12f) * Main.rand.NextFloat(0.75f, 1.25f);
 		// }
 		Position += Velocity.RotatedBy(Main.rand.NextFloat(-1f, 1f) / Scale * 12f) * Main.rand.NextFloat(0.75f, 1.25f);
-		float pocession = 1 - Timer / MaxTime;
-		float c = pocession * Scale * 0.04f;
+		float progress = 1 - Timer / MaxTime;
+		float c = progress * Scale * 0.04f;
 		Lighting.AddLight(Position, c * 0.7f, c * 0.7f, c * 0.9f);
 		Velocity = Velocity.RotatedBy(Main.rand.NextFloat(-0.2f, 0.2f) / Scale * 12f + ai[2]);
 	}
 
 	public override void Draw()
 	{
-		Vector2[] pos = oldPos.Reverse<Vector2>().ToArray();
-		float pocession = Timer / MaxTime;
+		Vector2[] pos = OldPositions.Reverse<Vector2>().ToArray();
+		float progress = Timer / MaxTime;
 		int len = pos.Length;
 
 		var bars = new List<Vertex2D>();
 		for (int i = 1; i < len; i++)
 		{
-			Vector2 normal = oldPos[i] - oldPos[i - 1];
+			Vector2 normal = OldPositions[i] - OldPositions[i - 1];
 
-			Vector2 normal2 = oldPos[i] - oldPos[i - 1];
+			Vector2 normal2 = OldPositions[i] - OldPositions[i - 1];
 			if (i < len - 1)
 			{
-				normal2 = oldPos[i + 1] - oldPos[i];
+				normal2 = OldPositions[i + 1] - OldPositions[i];
 			}
 			normal += normal2;
 			normal = Vector2.Normalize(normal).RotatedBy(Math.PI * 0.5);
 
 			float k = i / (float)len;
-			bars.Add(oldPos[i] + normal * Scale, new Color(pocession + 1 - MathF.Sin(k * MathF.PI), 0, 0, 0), new Vector3(0 + ai[0], (i + 15 - len) / 10f + Timer / 1500f * Velocity.Length(), 0.3f));
-			bars.Add(oldPos[i] - normal * Scale, new Color(pocession + 1 - MathF.Sin(k * MathF.PI), 0, 0, 0), new Vector3(3.4f + ai[0], (i + 15 - len) / 10f + Timer / 1500f * Velocity.Length(), 0.7f));
+			bars.Add(OldPositions[i] + normal * Scale, new Color(progress + 1 - MathF.Sin(k * MathF.PI), 0, 0, 0), new Vector3(0 + ai[0], (i + 15 - len) / 10f + Timer / 1500f * Velocity.Length(), 0.3f));
+			bars.Add(OldPositions[i] - normal * Scale, new Color(progress + 1 - MathF.Sin(k * MathF.PI), 0, 0, 0), new Vector3(3.4f + ai[0], (i + 15 - len) / 10f + Timer / 1500f * Velocity.Length(), 0.7f));
 		}
 		if (bars.Count < 2)
 		{
@@ -160,7 +160,7 @@ public class ElectricCurrentDust : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
 
-	public List<Vector2> oldPos = new List<Vector2>();
+	public List<Vector2> OldPositions = new List<Vector2>();
 	public Vector2 Position;
 	public Vector2 Velocity;
 	public float[] ai;
@@ -188,15 +188,15 @@ public class ElectricCurrentDust : Visual
 		{
 			Timer = MaxTime;
 		}
-		oldPos.Add(Position);
-		if (oldPos.Count > 6)
+		OldPositions.Add(Position);
+		if (OldPositions.Count > 6)
 		{
-			oldPos.RemoveAt(0);
+			OldPositions.RemoveAt(0);
 		}
 
-		for (int x = 0; x < oldPos.Count; x++)
+		for (int x = 0; x < OldPositions.Count; x++)
 		{
-			oldPos[x] += new Vector2(0, Main.rand.NextFloat(2f)).RotatedByRandom(6.283);
+			OldPositions[x] += new Vector2(0, Main.rand.NextFloat(2f)).RotatedByRandom(6.283);
 		}
 		Timer++;
 		if (Timer > MaxTime)
@@ -232,16 +232,16 @@ public class ElectricCurrentDust : Visual
 			Position += Velocity.RotatedBy(Main.rand.NextFloat(-1f, 1f)) * Main.rand.NextFloat(0.75f, 1.25f);
 			Velocity.Y += 0.1f;
 		}
-		float pocession = 1 - Timer / MaxTime;
-		float c = pocession * Scale * 0.04f;
+		float progress = 1 - Timer / MaxTime;
+		float c = progress * Scale * 0.04f;
 		Lighting.AddLight(Position, c * 0.7f, c * 0.7f, c * 0.9f);
 		Velocity = Velocity.RotatedBy(Main.rand.NextFloat(-0.2f, 0.2f) / Scale * 48f * ai[2]);
 	}
 
 	public override void Draw()
 	{
-		Vector2[] pos = oldPos.Reverse<Vector2>().ToArray();
-		float pocession = Timer / MaxTime;
+		Vector2[] pos = OldPositions.Reverse<Vector2>().ToArray();
+		float progress = Timer / MaxTime;
 		int len = pos.Length;
 		if (len <= 2)
 		{
@@ -251,19 +251,19 @@ public class ElectricCurrentDust : Visual
 		var bars = new Vertex2D[len * 2 - 1];
 		for (int i = 1; i < len; i++)
 		{
-			Vector2 normal = oldPos[i] - oldPos[i - 1];
+			Vector2 normal = OldPositions[i] - OldPositions[i - 1];
 
-			Vector2 normal2 = oldPos[i] - oldPos[i - 1];
+			Vector2 normal2 = OldPositions[i] - OldPositions[i - 1];
 			if (i < len - 1)
 			{
-				normal2 = oldPos[i + 1] - oldPos[i];
+				normal2 = OldPositions[i + 1] - OldPositions[i];
 			}
 			normal += normal2;
 			normal = Vector2.Normalize(normal).RotatedBy(Math.PI * 0.5);
 
 			float k = i / (float)len;
-			bars[2 * i - 1] = new Vertex2D(oldPos[i] + normal * Scale, new Color(pocession + 1 - MathF.Sin(k * MathF.PI), 0, 0, 0), new Vector3(0 + ai[0], (i + 15 - len) / 10f + Timer / 1500f * Velocity.Length(), 0.3f));
-			bars[2 * i] = new Vertex2D(oldPos[i] - normal * Scale, new Color(pocession + 1 - MathF.Sin(k * MathF.PI), 0, 0, 0), new Vector3(3.4f + ai[0], (i + 15 - len) / 10f + Timer / 1500f * Velocity.Length(), 0.7f));
+			bars[2 * i - 1] = new Vertex2D(OldPositions[i] + normal * Scale, new Color(progress + 1 - MathF.Sin(k * MathF.PI), 0, 0, 0), new Vector3(0 + ai[0], (i + 15 - len) / 10f + Timer / 1500f * Velocity.Length(), 0.3f));
+			bars[2 * i] = new Vertex2D(OldPositions[i] - normal * Scale, new Color(progress + 1 - MathF.Sin(k * MathF.PI), 0, 0, 0), new Vector3(3.4f + ai[0], (i + 15 - len) / 10f + Timer / 1500f * Velocity.Length(), 0.7f));
 		}
 		bars[0] = new Vertex2D((bars[1].position + bars[2].position) * 0.5f, Color.White, new Vector3(0.5f, 0, 0));
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);

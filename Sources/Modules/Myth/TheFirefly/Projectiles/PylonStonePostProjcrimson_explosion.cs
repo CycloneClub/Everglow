@@ -33,7 +33,7 @@ public class PylonStonePostProj_crimson_explosion : NoTextureProjectile, IWarpPr
 			{
 				Active = true,
 				Visible = true,
-				radius = 0,
+				Radius = 0,
 				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), 4f, 80f + g * 15 },
 			};
 			Ins.VFXManager.Add(darknessWave);

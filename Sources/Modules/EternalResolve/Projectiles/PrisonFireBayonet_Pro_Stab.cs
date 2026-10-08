@@ -176,16 +176,16 @@ namespace Everglow.EternalResolve.Projectiles
 			base.AI();
 		}
 
-		public void GenerateVFX(int Frequency)
+		public void GenerateVFX(int frequency)
 		{
 			int x = (int)(Projectile.Center.X / 16f);
 			int y = (int)(Projectile.Center.Y / 16f);
 			if (Main.tile[x, y].LiquidAmount / 16f > Projectile.Center.Y % 16)
 			{
-				for (int g = 0; g < Frequency; g++)
+				for (int g = 0; g < frequency; g++)
 				{
 					Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 4f)).RotatedByRandom(MathHelper.TwoPi) + new Vector2(0, -4f);
-					var somg = new VaporDust
+					var smog = new VaporDust
 					{
 						Velocity = newVelocity,
 						Active = true,
@@ -196,12 +196,12 @@ namespace Everglow.EternalResolve.Projectiles
 						Rotation = Main.rand.NextFloat(6.283f),
 						ai = new float[] { Main.rand.NextFloat(-0.05f, -0.01f), 0 },
 					};
-					Ins.VFXManager.Add(somg);
+					Ins.VFXManager.Add(smog);
 				}
 			}
 			else
 			{
-				for (int g = 0; g < Frequency; g++)
+				for (int g = 0; g < frequency; g++)
 				{
 					Vector2 newVelocity = Projectile.velocity * Main.rand.NextFloat(8f);
 					var fire = new FireDust

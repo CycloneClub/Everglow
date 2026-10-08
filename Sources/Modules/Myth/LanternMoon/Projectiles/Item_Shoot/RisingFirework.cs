@@ -23,18 +23,18 @@ public class RisingFirework : ModProjectile
 	}
 
 	public bool MoveSight = true;
-	public int timeToKill = -1;
+	public int TimeToKill = -1;
 
 	public override void AI()
 	{
-		timeToKill--;
+		TimeToKill--;
 		Projectile.velocity *= 0.99f;
 		Projectile.velocity.Y += 0.15f;
 		if (Projectile.velocity.Y >= -3)
 		{
-			if (timeToKill < 0)
+			if (TimeToKill < 0)
 			{
-				timeToKill = 90;
+				TimeToKill = 90;
 			}
 		}
 		if (MoveSight)
@@ -46,10 +46,10 @@ public class RisingFirework : ModProjectile
 				fireworkVisitor.BestFireworkView += (Projectile.Center + new Vector2(0, 200) - player.Center - fireworkVisitor.BestFireworkView) * 0.4f;
 			}
 		}
-		if (timeToKill > 0)
+		if (TimeToKill > 0)
 		{
 			Projectile.velocity *= 0.8f;
-			if (timeToKill == 80)
+			if (TimeToKill == 80)
 			{
 				SoundEngine.PlaySound(new SoundStyle("Everglow/Myth/Sounds/FireworkExplosion"), Projectile.Center);
 				var p = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<Firework6Inches>(), 50, 0f, Projectile.owner, 0, 0);
@@ -64,20 +64,20 @@ public class RisingFirework : ModProjectile
 				GenerateFire(120);
 				GenerateSpark(120);
 			}
-			if (timeToKill == 1)
+			if (TimeToKill == 1)
 			{
 				Projectile.Kill();
 			}
 		}
 	}
 
-	public void GenerateSmog(int Frequency)
+	public void GenerateSmog(int frequency)
 	{
 		float mulVelocity = 1f;
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(2f, 4f)).RotatedByRandom(MathHelper.TwoPi);
-			var somg = new FireSmogDust
+			var smog = new FireSmogDust
 			{
 				Velocity = newVelocity,
 				Active = true,
@@ -88,14 +88,14 @@ public class RisingFirework : ModProjectile
 				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
-			Ins.VFXManager.Add(somg);
+			Ins.VFXManager.Add(smog);
 		}
 	}
 
-	public void GenerateFire(int Frequency)
+	public void GenerateFire(int frequency)
 	{
 		float mulVelocity = 1f;
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(0f, 1f)).RotatedByRandom(MathHelper.TwoPi);
 			var fire = new FireDust
@@ -113,10 +113,10 @@ public class RisingFirework : ModProjectile
 		}
 	}
 
-	public void GenerateSpark(int Frequency)
+	public void GenerateSpark(int frequency)
 	{
 		float mulVelocity = 1f;
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(0f, 2f)).RotatedByRandom(MathHelper.TwoPi);
 			var spark = new FireSparkDust
@@ -196,9 +196,9 @@ public class RisingFirework : ModProjectile
 			normalDir = Vector2.Normalize(new Vector2(-normalDir.Y, normalDir.X));
 			var factor = i / (float)length;
 			float toKillValue = 0;
-			if (timeToKill > 0)
+			if (TimeToKill > 0)
 			{
-				toKillValue = 1 - timeToKill / 90f;
+				toKillValue = 1 - TimeToKill / 90f;
 			}
 			toKillValue *= 2;
 			float x0 = factor * 1.6f + (float)(Main.timeForVisualEffects / 70d) + MathF.Sin(Projectile.whoAmI);

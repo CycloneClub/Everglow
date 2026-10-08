@@ -74,24 +74,24 @@ public class RayDustDust : Visual
 			Velocity *= -0.2f;
 			Timer += 10;
 		}
-		float pocession = 1 - Timer / MaxTime;
-		float c = pocession * Scale * 0.3f;
+		float progress = 1 - Timer / MaxTime;
+		float c = progress * Scale * 0.3f;
 		Lighting.AddLight(Position, c * 0.7f, c * 0.5f, 0);
 	}
 
 	public override void Draw()
 	{
-		float pocession = Timer / MaxTime;
+		float progress = Timer / MaxTime;
 		Vector2 toCorner = new Vector2(0, Scale).RotatedBy(Rotation);
 		Color lightColor = Lighting.GetColor((int)(Position.X / 16f), (int)(Position.Y / 16f));
 		Vector2 normalVel = Vector2.Normalize(Velocity);
 		List<Vertex2D> bars = new List<Vertex2D>()
 		{
-			new Vertex2D(Position + normalVel * 8 * Scale + toCorner, new Color(0, 0f, pocession, 0.0f), lightColor.ToVector3()),
-			new Vertex2D(Position + normalVel * 8 * Scale + toCorner.RotatedBy(Math.PI * 0.5), new Color(0, 1f, pocession, 0.0f), lightColor.ToVector3()),
+			new Vertex2D(Position + normalVel * 8 * Scale + toCorner, new Color(0, 0f, progress, 0.0f), lightColor.ToVector3()),
+			new Vertex2D(Position + normalVel * 8 * Scale + toCorner.RotatedBy(Math.PI * 0.5), new Color(0, 1f, progress, 0.0f), lightColor.ToVector3()),
 
-			new Vertex2D(Position - normalVel * 8 * Scale + toCorner.RotatedBy(Math.PI * 1.5), new Color(1, 0f, pocession, 0.0f), lightColor.ToVector3()),
-			new Vertex2D(Position - normalVel * 8 * Scale + toCorner.RotatedBy(Math.PI * 1), new Color(1, 1f, pocession, 0.0f), lightColor.ToVector3()),
+			new Vertex2D(Position - normalVel * 8 * Scale + toCorner.RotatedBy(Math.PI * 1.5), new Color(1, 0f, progress, 0.0f), lightColor.ToVector3()),
+			new Vertex2D(Position - normalVel * 8 * Scale + toCorner.RotatedBy(Math.PI * 1), new Color(1, 1f, progress, 0.0f), lightColor.ToVector3()),
 		};
 
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);

@@ -84,7 +84,7 @@ public class IceParticleDust : Visual
 		{
 			Timer += 20;
 		}
-		float pocession = 1 - Timer / MaxTime;
+		float progress = 1 - Timer / MaxTime;
 
 		// float c = pocession * Scale * 0.3f;
 		// Lighting.AddLight(Position, c * 0.1f, c * 0.1f, c * 0.15f);
@@ -92,16 +92,16 @@ public class IceParticleDust : Visual
 
 	public override void Draw()
 	{
-		float pocession = Timer / MaxTime;
+		float progress = Timer / MaxTime;
 		Vector2 toCorner = new Vector2(0, Scale).RotatedBy(Rotation);
 		Color lightColor = Lighting.GetColor((int)(Position.X / 16f), (int)(Position.Y / 16f));
 		List<Vertex2D> bars = new List<Vertex2D>()
 		{
-			new Vertex2D(Position + toCorner, new Color(0, 0f, pocession, 0.0f), lightColor.ToVector3()),
-			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 0.5), new Color(0, 1f, pocession, 0.0f), lightColor.ToVector3()),
+			new Vertex2D(Position + toCorner, new Color(0, 0f, progress, 0.0f), lightColor.ToVector3()),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 0.5), new Color(0, 1f, progress, 0.0f), lightColor.ToVector3()),
 
-			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1.5), new Color(1, 0f, pocession, 0.0f), lightColor.ToVector3()),
-			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1), new Color(1, 1f, pocession, 0.0f), lightColor.ToVector3()),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1.5), new Color(1, 0f, progress, 0.0f), lightColor.ToVector3()),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1), new Color(1, 1f, progress, 0.0f), lightColor.ToVector3()),
 		};
 
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);

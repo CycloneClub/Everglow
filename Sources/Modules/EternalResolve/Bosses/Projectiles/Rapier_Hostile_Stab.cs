@@ -14,7 +14,7 @@ namespace Everglow.EternalResolve.Bosses.Projectiles
 {
 	public abstract class Rapier_Hostile_Stab : ModProjectile, IWarpProjectile
 	{
-		public int itemType;
+		public int ItemType;
 
 		/// <summary>
 		/// 常规颜色
@@ -211,7 +211,7 @@ namespace Everglow.EternalResolve.Bosses.Projectiles
 
 		public virtual void DrawItem(Color lightColor)
 		{
-			int type = itemType;
+			int type = ItemType;
 			Texture2D itemTexture = TextureAssets.Item[type].Value;
 			Main.spriteBatch.Draw(itemTexture, Main.npc[(int)Projectile.ai[0]].Center + Projectile.velocity * 40 - Main.screenPosition, null, lightColor, Projectile.rotation + MathF.PI * 0.25f, itemTexture.Size() / 2f, 1, SpriteEffects.None, 0f);
 		}

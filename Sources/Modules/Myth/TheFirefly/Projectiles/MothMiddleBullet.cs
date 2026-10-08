@@ -42,10 +42,10 @@ public class MothMiddleBullet : TrailingProjectile
 		GenerateSpark(2);
 	}
 
-	public void GenerateFire(int Frequency)
+	public void GenerateFire(int frequency)
 	{
 		float mulVelocity = Projectile.ai[0] / 5f;
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			float sqrtRand = MathF.Pow(Main.rand.NextFloat(1), 0.4f);
 			Vector2 newVelocity = new Vector2(0, mulVelocity * sqrtRand * 0.6f).RotatedByRandom(MathHelper.TwoPi);
@@ -64,10 +64,10 @@ public class MothMiddleBullet : TrailingProjectile
 		}
 	}
 
-	public void GenerateSpark(int Frequency)
+	public void GenerateSpark(int frequency)
 	{
 		float mulVelocity = Projectile.ai[0] / 5f;
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			float sqrtRand = MathF.Pow(Main.rand.NextFloat(1), 0.4f);
 			Vector2 newVelocity = new Vector2(0, mulVelocity * sqrtRand * 0.9f).RotatedByRandom(MathHelper.TwoPi);

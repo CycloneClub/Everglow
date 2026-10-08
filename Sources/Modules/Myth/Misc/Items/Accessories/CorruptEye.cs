@@ -43,17 +43,17 @@ internal class CorruptEyeEquiper : ModPlayer
 			for (int i = 0; i < 5; i++)
 			{
 				Vector2 velocity = new Vector2(0, Main.rand.NextFloat(4.3f, 6f)).RotatedByRandom(6.283);
-				var CursedFlame = Projectile.NewProjectileDirect(Player.GetSource_FromThis(), Player.Center, velocity, ModContent.ProjectileType<CursedFlameBall>(), 60, 1.5f, Player.whoAmI);
-				CursedFlame.timeLeft = Main.rand.Next(25, 45);
+				var cursedFlame = Projectile.NewProjectileDirect(Player.GetSource_FromThis(), Player.Center, velocity, ModContent.ProjectileType<CursedFlameBall>(), 60, 1.5f, Player.whoAmI);
+				cursedFlame.timeLeft = Main.rand.Next(25, 45);
 			}
 			GenerateVFX(6, 1);
 			SoundEngine.PlaySound(SoundID.DD2_FlameburstTowerShot.WithPitchOffset(-0.2f), Player.Center);
 		}
 	}
 
-	private void GenerateVFX(int Frequency, float mulVelocity = 1f)
+	private void GenerateVFX(int frequency, float mulVelocity = 1f)
 	{
-		for (int g = 0; g < Frequency * 3; g++)
+		for (int g = 0; g < frequency * 3; g++)
 		{
 			var cf = new CurseFlameDust
 			{
@@ -67,7 +67,7 @@ internal class CorruptEyeEquiper : ModPlayer
 			};
 			Ins.VFXManager.Add(cf);
 		}
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			Vector2 vel = new Vector2(0, Main.rand.NextFloat(1.65f, 3.5f)).RotatedByRandom(6.283) * mulVelocity;
 			var cf = new CurseFlameDust
@@ -82,7 +82,7 @@ internal class CorruptEyeEquiper : ModPlayer
 			};
 			Ins.VFXManager.Add(cf);
 		}
-		for (int g = 0; g < Frequency * 3; g++)
+		for (int g = 0; g < frequency * 3; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(2f, 6f)).RotatedByRandom(MathHelper.TwoPi);
 			var spark = new CurseFlameSparkDust

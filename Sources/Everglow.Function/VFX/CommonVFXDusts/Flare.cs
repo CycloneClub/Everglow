@@ -35,15 +35,15 @@ public class Flare : Visual
 
 	public Vector2 Position;
 	public Vector2 Velocity;
-	public float gravity = -0.2f;
-	public float timeleft;
-	public float maxTimeleft;
+	public float Gravity = -0.2f;
+	public float TimeLeft;
+	public float MaxTimeLeft;
 	public float Scale;
-	public GradientColor color;
+	public GradientColor Color;
 	private float rotation;
 	public Entity Owner;
 
-	public float speedLimits = 1;
+	public float SpeedLimits = 1;
 
 
 	public override void OnSpawn()
@@ -54,12 +54,12 @@ public class Flare : Visual
 	public override void Update()
 	{
 		Position += Velocity;
-		Velocity.Y += gravity;
-		Velocity *= speedLimits;
+		Velocity.Y += Gravity;
+		Velocity *= SpeedLimits;
 
 		// Scale *= 0.99f;
-		timeleft--;
-		if (timeleft <= 0)
+		TimeLeft--;
+		if (TimeLeft <= 0)
 		{
 			Active = false;
 		}
@@ -72,8 +72,8 @@ public class Flare : Visual
 
 	public override void Draw()
 	{
-		Color c = color.GetColor(1 - timeleft / maxTimeleft);
-		c.A = (byte)((1 - timeleft / maxTimeleft) * 255);
+		Color c = Color.GetColor(1 - TimeLeft / MaxTimeLeft);
+		c.A = (byte)((1 - TimeLeft / MaxTimeLeft) * 255);
 		Vector2 drawPos = Position;
 		if (Owner != null)
 		{

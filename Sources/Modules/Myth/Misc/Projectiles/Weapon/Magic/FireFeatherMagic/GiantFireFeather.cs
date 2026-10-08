@@ -23,24 +23,24 @@ public class GiantFireFeather : ModProjectile
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 80;
 	}
 
-	internal int TimeTokill = -1;
+	public int TimeToKill = -1;
 
 	public override void AI()
 	{
-		if (TimeTokill >= 0 && TimeTokill <= 2)
+		if (TimeToKill >= 0 && TimeToKill <= 2)
 		{
 			Projectile.Kill();
 		}
 
-		if (TimeTokill <= 80 && TimeTokill > 0)
+		if (TimeToKill <= 80 && TimeToKill > 0)
 		{
 			Projectile.velocity = Projectile.oldVelocity;
 		}
 
-		TimeTokill--;
-		if (TimeTokill >= 0)
+		TimeToKill--;
+		if (TimeToKill >= 0)
 		{
-			if (TimeTokill < 10)
+			if (TimeToKill < 10)
 			{
 				Projectile.damage = 0;
 				Projectile.friendly = false;
@@ -106,11 +106,11 @@ public class GiantFireFeather : ModProjectile
 
 	public override void PostDraw(Color lightColor)
 	{
-		if (TimeTokill >= 0)
+		if (TimeToKill >= 0)
 		{
-			float timeValue = (80 - TimeTokill) / 80f;
+			float timeValue = (80 - TimeToKill) / 80f;
 			DrawTrail(Commons.ModAsset.Trail_2_black_thick.Value, Color.White, 36);
-			DrawTrail(Commons.ModAsset.Trail_6.Value, new Color(1f * (1 - timeValue), 0.6f * (1 - timeValue) * (1 - timeValue), 0f, 0f), Math.Max(TimeTokill - 44, 0));
+			DrawTrail(Commons.ModAsset.Trail_6.Value, new Color(1f * (1 - timeValue), 0.6f * (1 - timeValue) * (1 - timeValue), 0f, 0f), Math.Max(TimeToKill - 44, 0));
 			return;
 		}
 		else
@@ -166,9 +166,9 @@ public class GiantFireFeather : ModProjectile
 
 			trueL++;
 		}
-		if (TimeTokill > 0)
+		if (TimeToKill > 0)
 		{
-			trueL = Math.Max(trueL, TimeTokill);
+			trueL = Math.Max(trueL, TimeToKill);
 			if (trueL == 0)
 			{
 				return;
@@ -238,12 +238,12 @@ public class GiantFireFeather : ModProjectile
 	public void AmmoHit()
 	{
 		SoundEngine.PlaySound(SoundID.DD2_BetsyFireballImpact.WithVolumeScale(0.8f), Projectile.Center);
-		if (TimeTokill > 0)
+		if (TimeToKill > 0)
 		{
 			return;
 		}
 		Player player = Main.player[Projectile.owner];
-		TimeTokill = 80;
+		TimeToKill = 80;
 		Projectile.tileCollide = false;
 		Projectile.friendly = false;
 		Projectile.ignoreWater = true;
@@ -263,13 +263,13 @@ public class GiantFireFeather : ModProjectile
 		Projectile.position -= Projectile.velocity;
 	}
 
-	public void GenerateSmog(int Frequency)
+	public void GenerateSmog(int frequency)
 	{
 		float mulVelocity = 2f;
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(2f, 4f)).RotatedByRandom(MathHelper.TwoPi);
-			var somg = new FireSmogDust
+			var smog = new FireSmogDust
 			{
 				Velocity = newVelocity,
 				Active = true,
@@ -280,14 +280,14 @@ public class GiantFireFeather : ModProjectile
 				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
-			Ins.VFXManager.Add(somg);
+			Ins.VFXManager.Add(smog);
 		}
 	}
 
-	public void GenerateFire(int Frequency)
+	public void GenerateFire(int frequency)
 	{
 		float mulVelocity = 2f;
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(0f, 4f)).RotatedByRandom(MathHelper.TwoPi);
 			var fire = new FireDust
@@ -305,10 +305,10 @@ public class GiantFireFeather : ModProjectile
 		}
 	}
 
-	public void GenerateSpark(int Frequency)
+	public void GenerateSpark(int frequency)
 	{
 		float mulVelocity = 4f;
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(2f, 6f)).RotatedByRandom(MathHelper.TwoPi);
 			var spark = new FireSparkDust

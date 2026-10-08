@@ -84,16 +84,16 @@ public class BloodDrop : Visual
 
 	public override void Draw()
 	{
-		float pocession = Timer / MaxTime * 0.6f;
+		float progress = Timer / MaxTime * 0.6f;
 		Vector2 toCorner = new Vector2(0, Scale).RotatedBy(Rotation);
 		Color lightColor = Lighting.GetColor((int)(Position.X / 16f), (int)(Position.Y / 16f));
 		List<Vertex2D> bars = new List<Vertex2D>()
 		{
-			new Vertex2D(Position + Velocity + toCorner, lightColor, new Vector3(0, 0, pocession)),
-			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 0.5), lightColor, new Vector3(0, 1, pocession)),
+			new Vertex2D(Position + Velocity + toCorner, lightColor, new Vector3(0, 0, progress)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 0.5), lightColor, new Vector3(0, 1, progress)),
 
-			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1.5), lightColor, new Vector3(1, 0, pocession)),
-			new Vertex2D(Position - Velocity * ai[1] + toCorner.RotatedBy(Math.PI * 1), lightColor, new Vector3(1, 1, pocession)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1.5), lightColor, new Vector3(1, 0, progress)),
+			new Vertex2D(Position - Velocity * ai[1] + toCorner.RotatedBy(Math.PI * 1), lightColor, new Vector3(1, 1, progress)),
 		};
 
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);

@@ -66,7 +66,7 @@ public class GiantCampFire : ModTile, ISceneTile
 			}
 			if (Main.rand.NextBool(3))
 			{
-				var somg = new VaporDust
+				var smog = new VaporDust
 				{
 					Velocity = new Vector2(0, -12),
 					Active = true,
@@ -77,7 +77,7 @@ public class GiantCampFire : ModTile, ISceneTile
 					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { Main.rand.NextFloat(-0.05f, -0.01f), 0 },
 				};
-				Ins.VFXManager.Add(somg);
+				Ins.VFXManager.Add(smog);
 			}
 		}
 		base.NearbyEffects(i, j, closer);

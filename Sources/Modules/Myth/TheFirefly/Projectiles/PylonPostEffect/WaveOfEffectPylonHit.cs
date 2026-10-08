@@ -35,8 +35,8 @@ public class WaveOfEffectPylonHit_CorruptPipeline : Pipeline
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) * Main.GameViewMatrix.TransformationMatrix;
 		effect.Parameters["uTransform"].SetValue(model * projection);
-		Texture2D FlameColor = ModAsset.WaveOfEffectPylonHit_Corrupt_Color.Value;
-		Ins.Batch.BindTexture<Vertex2D>(FlameColor);
+		Texture2D flameColor = ModAsset.WaveOfEffectPylonHit_Corrupt_Color.Value;
+		Ins.Batch.BindTexture<Vertex2D>(flameColor);
 		Main.graphics.GraphicsDevice.SamplerStates[1] = SamplerState.PointClamp;
 		Ins.Batch.Begin(BlendState.NonPremultiplied, DepthStencilState.None, SamplerState.PointWrap, RasterizerState.CullNone);
 		effect.CurrentTechnique.Passes[0].Apply();
@@ -58,7 +58,7 @@ public class WaveOfEffectPylonHit_CorruptWave : ShaderDraw
 	/// </summary>
 	public float Timer;
 	public float MaxTime;
-	public float radius;
+	public float Radius;
 
 	public WaveOfEffectPylonHit_CorruptWave()
 	{
@@ -72,7 +72,7 @@ public class WaveOfEffectPylonHit_CorruptWave : ShaderDraw
 	public override void Update()
 	{
 		Position += Velocity;
-		radius += ai[1] * ((MaxTime - Timer) / MaxTime);
+		Radius += ai[1] * ((MaxTime - Timer) / MaxTime);
 		Timer++;
 		if (Timer > MaxTime)
 		{
@@ -86,7 +86,7 @@ public class WaveOfEffectPylonHit_CorruptWave : ShaderDraw
 	public override void Draw()
 	{
 		float fx = Timer / MaxTime;
-		int len = (int)(radius / 3f);
+		int len = (int)(Radius / 3f);
 		if (len <= 2)
 		{
 			return;
@@ -96,19 +96,19 @@ public class WaveOfEffectPylonHit_CorruptWave : ShaderDraw
 		for (int i = 0; i < len + 1; i++)
 		{
 			Vector2 normal = new Vector2(0, 1).RotatedBy(i / (double)len * Math.PI * 2);
-			Vector2 radiousDraw = normal * radius;
+			Vector2 radialOffset = normal * Radius;
 
 			var drawcRope = new Color(fx * fx * fx * 2 - 0.1f, 0.5f, 1, 150 / 255f);
 			float width = ai[2];
 			float texCoordWidth = 0.37f;
-			if (width > radiousDraw.Length())
+			if (width > radialOffset.Length())
 			{
-				texCoordWidth *= radiousDraw.Length() / width;
-				width = radiousDraw.Length();
+				texCoordWidth *= radialOffset.Length() / width;
+				width = radialOffset.Length();
 			}
 
-			bars[2 * i] = new Vertex2D(Position + radiousDraw, drawcRope, new Vector3(ai[0] + Timer / MaxTime, i / (float)len * 2, 0.8f - fx));
-			bars[2 * i + 1] = new Vertex2D(Position + radiousDraw - normal * width, drawcRope, new Vector3(texCoordWidth + ai[0] + Timer / MaxTime, i / (float)len * 2, 0.8f - fx));
+			bars[2 * i] = new Vertex2D(Position + radialOffset, drawcRope, new Vector3(ai[0] + Timer / MaxTime, i / (float)len * 2, 0.8f - fx));
+			bars[2 * i + 1] = new Vertex2D(Position + radialOffset - normal * width, drawcRope, new Vector3(texCoordWidth + ai[0] + Timer / MaxTime, i / (float)len * 2, 0.8f - fx));
 		}
 
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);
@@ -130,8 +130,8 @@ internal class WaveOfEffectPylonHit_CrimsonPipeline : Pipeline
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) * Main.GameViewMatrix.TransformationMatrix;
 		effect.Parameters["uTransform"].SetValue(model * projection);
-		Texture2D FlameColor = ModAsset.WaveOfEffectPylonHit_Crimson_Color.Value;
-		Ins.Batch.BindTexture<Vertex2D>(FlameColor);
+		Texture2D flameColor = ModAsset.WaveOfEffectPylonHit_Crimson_Color.Value;
+		Ins.Batch.BindTexture<Vertex2D>(flameColor);
 		Main.graphics.GraphicsDevice.SamplerStates[1] = SamplerState.PointClamp;
 		Ins.Batch.Begin(BlendState.NonPremultiplied, DepthStencilState.None, SamplerState.PointWrap, RasterizerState.CullNone);
 		effect.CurrentTechnique.Passes[0].Apply();
@@ -153,7 +153,7 @@ public class WaveOfEffectPylonHit_CrimsonWave : ShaderDraw
 	/// </summary>
 	public float Timer;
 	public float MaxTime;
-	public float radius;
+	public float Radius;
 
 	public WaveOfEffectPylonHit_CrimsonWave()
 	{
@@ -168,7 +168,7 @@ public class WaveOfEffectPylonHit_CrimsonWave : ShaderDraw
 	public override void Update()
 	{
 		Position += Velocity;
-		radius += ai[1] * ((MaxTime - Timer) / MaxTime);
+		Radius += ai[1] * ((MaxTime - Timer) / MaxTime);
 		Timer++;
 		if (Timer > MaxTime)
 		{
@@ -182,7 +182,7 @@ public class WaveOfEffectPylonHit_CrimsonWave : ShaderDraw
 	public override void Draw()
 	{
 		float fx = Timer / MaxTime;
-		int len = (int)(radius / 3f);
+		int len = (int)(Radius / 3f);
 		if (len <= 2)
 		{
 			return;
@@ -192,19 +192,19 @@ public class WaveOfEffectPylonHit_CrimsonWave : ShaderDraw
 		for (int i = 0; i < len + 1; i++)
 		{
 			Vector2 normal = new Vector2(0, 1).RotatedBy(i / (double)len * Math.PI * 2);
-			Vector2 radiousDraw = normal * radius;
+			Vector2 radialOffset = normal * Radius;
 
 			var drawcRope = new Color(fx * fx * fx * 2 - 0.1f, 0.5f, 1, 150 / 255f);
 			float width = ai[2];
 			float texCoordWidth = 0.37f;
-			if (width > radiousDraw.Length())
+			if (width > radialOffset.Length())
 			{
-				texCoordWidth *= radiousDraw.Length() / width;
-				width = radiousDraw.Length();
+				texCoordWidth *= radialOffset.Length() / width;
+				width = radialOffset.Length();
 			}
 
-			bars[2 * i] = new Vertex2D(Position + radiousDraw, drawcRope, new Vector3(ai[0] + Timer / MaxTime, i / (float)len * 2, 0.8f - fx));
-			bars[2 * i + 1] = new Vertex2D(Position + radiousDraw - normal * width, drawcRope, new Vector3(texCoordWidth + ai[0] + Timer / MaxTime, i / (float)len * 2, 0.8f - fx));
+			bars[2 * i] = new Vertex2D(Position + radialOffset, drawcRope, new Vector3(ai[0] + Timer / MaxTime, i / (float)len * 2, 0.8f - fx));
+			bars[2 * i + 1] = new Vertex2D(Position + radialOffset - normal * width, drawcRope, new Vector3(texCoordWidth + ai[0] + Timer / MaxTime, i / (float)len * 2, 0.8f - fx));
 		}
 
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);

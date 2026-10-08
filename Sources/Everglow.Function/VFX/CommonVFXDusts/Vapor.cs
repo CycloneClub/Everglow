@@ -90,20 +90,20 @@ public class VaporDust : Visual
 
 	public override void Draw()
 	{
-		float pocession = Timer / MaxTime;
-		pocession = MathF.Pow(pocession, 0.3f);
-		pocession = 1 - MathF.Sin(pocession * MathF.PI);
+		float progress = Timer / MaxTime;
+		progress = MathF.Pow(progress, 0.3f);
+		progress = 1 - MathF.Sin(progress * MathF.PI);
 		float timeValue = (float)(Main.time * 0.0003f);
 		Vector2 toCorner = new Vector2(0, Scale).RotatedBy(Rotation);
 		Color lightColor = Lighting.GetColor((int)(Position.X / 16f), (int)(Position.Y / 16f));
 		Vector3 drawC = lightColor.ToVector3() * 0.2f + new Vector3(lightColor.ToVector3().Length() / 3f);
 		List<Vertex2DSmog> bars = new List<Vertex2DSmog>()
 		{
-			new Vertex2DSmog(Position + toCorner, new Color(0, 0, pocession, 0), new Vector3(ai[0], timeValue, 0), drawC),
-			new Vertex2DSmog(Position + toCorner.RotatedBy(Math.PI * 0.5), new Color(1, 0, pocession, 0), new Vector3(ai[0] + 0.2f * Scale / 70f, timeValue, 0), drawC),
+			new Vertex2DSmog(Position + toCorner, new Color(0, 0, progress, 0), new Vector3(ai[0], timeValue, 0), drawC),
+			new Vertex2DSmog(Position + toCorner.RotatedBy(Math.PI * 0.5), new Color(1, 0, progress, 0), new Vector3(ai[0] + 0.2f * Scale / 70f, timeValue, 0), drawC),
 
-			new Vertex2DSmog(Position + toCorner.RotatedBy(Math.PI * 1.5), new Color(0, 1, pocession, 0), new Vector3(ai[0], timeValue + 0.2f * Scale / 70f, 0), drawC),
-			new Vertex2DSmog(Position + toCorner.RotatedBy(Math.PI * 1), new Color(1, 1, pocession, 0), new Vector3(ai[0] + 0.2f * Scale / 70f, timeValue + 0.2f * Scale / 70f, 0), drawC),
+			new Vertex2DSmog(Position + toCorner.RotatedBy(Math.PI * 1.5), new Color(0, 1, progress, 0), new Vector3(ai[0], timeValue + 0.2f * Scale / 70f, 0), drawC),
+			new Vertex2DSmog(Position + toCorner.RotatedBy(Math.PI * 1), new Color(1, 1, progress, 0), new Vector3(ai[0] + 0.2f * Scale / 70f, timeValue + 0.2f * Scale / 70f, 0), drawC),
 		};
 
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);
@@ -155,9 +155,9 @@ public class VaporDust2 : Visual
 
 	public override void Draw()
 	{
-		float pocession = Timer / MaxTime;
-		pocession = MathF.Pow(pocession, 0.3f);
-		pocession = 1 - MathF.Sin(pocession * MathF.PI);
+		float progress = Timer / MaxTime;
+		progress = MathF.Pow(progress, 0.3f);
+		progress = 1 - MathF.Sin(progress * MathF.PI);
 		float timeValue = (float)(Main.time * 0.0003f);
 		Vector2 toCorner = new Vector2(0, Scale).RotatedBy(Rotation);
 		Vector2 pos0 = Position + toCorner;
@@ -170,11 +170,11 @@ public class VaporDust2 : Visual
 		Color lightColor3 = Lighting.GetColor((int)(pos3.X / 16f), (int)(pos3.Y / 16f));
 		List<Vertex2DSmog> bars = new List<Vertex2DSmog>()
 		{
-			new Vertex2DSmog(pos0, new Color(0, 0, pocession, 0), new Vector3(ai[0], timeValue, 0), lightColor0.ToVector3() * 0.2f + new Vector3(lightColor0.ToVector3().Length() / 3f)),
-			new Vertex2DSmog(pos1, new Color(0, 1, pocession, 0), new Vector3(ai[0] + 0.4f * Scale / 70f, timeValue, 0), lightColor1.ToVector3() * 0.2f + new Vector3(lightColor1.ToVector3().Length() / 3f)),
+			new Vertex2DSmog(pos0, new Color(0, 0, progress, 0), new Vector3(ai[0], timeValue, 0), lightColor0.ToVector3() * 0.2f + new Vector3(lightColor0.ToVector3().Length() / 3f)),
+			new Vertex2DSmog(pos1, new Color(0, 1, progress, 0), new Vector3(ai[0] + 0.4f * Scale / 70f, timeValue, 0), lightColor1.ToVector3() * 0.2f + new Vector3(lightColor1.ToVector3().Length() / 3f)),
 
-			new Vertex2DSmog(pos2, new Color(1, 0, pocession, 0), new Vector3(ai[0], timeValue + 0.4f * Scale / 70f, 0), lightColor2.ToVector3() * 0.2f + new Vector3(lightColor2.ToVector3().Length() / 3f)),
-			new Vertex2DSmog(pos3, new Color(1, 1, pocession, 0), new Vector3(ai[0] + 0.4f * Scale / 70f, timeValue + 0.4f * Scale / 70f, 0), lightColor3.ToVector3() * 0.2f + new Vector3(lightColor3.ToVector3().Length() / 3f)),
+			new Vertex2DSmog(pos2, new Color(1, 0, progress, 0), new Vector3(ai[0], timeValue + 0.4f * Scale / 70f, 0), lightColor2.ToVector3() * 0.2f + new Vector3(lightColor2.ToVector3().Length() / 3f)),
+			new Vertex2DSmog(pos3, new Color(1, 1, progress, 0), new Vector3(ai[0] + 0.4f * Scale / 70f, timeValue + 0.4f * Scale / 70f, 0), lightColor3.ToVector3() * 0.2f + new Vector3(lightColor3.ToVector3().Length() / 3f)),
 		};
 
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);
@@ -226,9 +226,9 @@ public class VaporDust3 : Visual
 
 	public override void Draw()
 	{
-		float pocession = Timer / MaxTime;
-		pocession = MathF.Pow(pocession, 0.3f);
-		pocession = 1 - MathF.Sin(pocession * MathF.PI);
+		float progress = Timer / MaxTime;
+		progress = MathF.Pow(progress, 0.3f);
+		progress = 1 - MathF.Sin(progress * MathF.PI);
 		float timeValue = (float)(Main.time * 0.0003f);
 		Vector2 toCorner = new Vector2(0, Scale).RotatedBy(Rotation);
 		Vector2 pos0 = Position + toCorner;
@@ -241,11 +241,11 @@ public class VaporDust3 : Visual
 		Color lightColor3 = Lighting.GetColor((int)(pos3.X / 16f), (int)(pos3.Y / 16f));
 		List<Vertex2DSmog> bars = new List<Vertex2DSmog>()
 		{
-			new Vertex2DSmog(pos0, new Color(0, 0, pocession, 0), new Vector3(ai[0], timeValue, 0), lightColor0.ToVector3() * 0.2f + new Vector3(lightColor0.ToVector3().Length() / 3f)),
-			new Vertex2DSmog(pos1, new Color(0, 1, pocession, 0), new Vector3(ai[0] + 0.4f * Scale / 70f, timeValue, 0), lightColor1.ToVector3() * 0.2f + new Vector3(lightColor1.ToVector3().Length() / 3f)),
+			new Vertex2DSmog(pos0, new Color(0, 0, progress, 0), new Vector3(ai[0], timeValue, 0), lightColor0.ToVector3() * 0.2f + new Vector3(lightColor0.ToVector3().Length() / 3f)),
+			new Vertex2DSmog(pos1, new Color(0, 1, progress, 0), new Vector3(ai[0] + 0.4f * Scale / 70f, timeValue, 0), lightColor1.ToVector3() * 0.2f + new Vector3(lightColor1.ToVector3().Length() / 3f)),
 
-			new Vertex2DSmog(pos2, new Color(1, 0, pocession, 0), new Vector3(ai[0], timeValue + 0.4f * Scale / 70f, 0), lightColor2.ToVector3() * 0.2f + new Vector3(lightColor2.ToVector3().Length() / 3f)),
-			new Vertex2DSmog(pos3, new Color(1, 1, pocession, 0), new Vector3(ai[0] + 0.4f * Scale / 70f, timeValue + 0.4f * Scale / 70f, 0), lightColor3.ToVector3() * 0.2f + new Vector3(lightColor3.ToVector3().Length() / 3f)),
+			new Vertex2DSmog(pos2, new Color(1, 0, progress, 0), new Vector3(ai[0], timeValue + 0.4f * Scale / 70f, 0), lightColor2.ToVector3() * 0.2f + new Vector3(lightColor2.ToVector3().Length() / 3f)),
+			new Vertex2DSmog(pos3, new Color(1, 1, progress, 0), new Vector3(ai[0] + 0.4f * Scale / 70f, timeValue + 0.4f * Scale / 70f, 0), lightColor3.ToVector3() * 0.2f + new Vector3(lightColor3.ToVector3().Length() / 3f)),
 		};
 
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);

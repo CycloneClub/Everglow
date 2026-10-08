@@ -29,10 +29,10 @@ namespace Everglow.EternalResolve.Projectiles
 			}
 		}
 
-		public void GenerateVFX(int Frequency)
+		public void GenerateVFX(int frequency)
 		{
 			float mulVelocity = Main.rand.NextFloat(0.75f, 1.5f);
-			for (int g = 0; g < Frequency * 2; g++)
+			for (int g = 0; g < frequency * 2; g++)
 			{
 				Vector2 afterVelocity = new Vector2(0, Main.rand.NextFloat(40f)).RotatedByRandom(MathHelper.TwoPi);
 				float mulScale = Main.rand.NextFloat(6f, 14f);
@@ -49,7 +49,7 @@ namespace Everglow.EternalResolve.Projectiles
 				};
 				Ins.VFXManager.Add(blood);
 			}
-			for (int g = 0; g < Frequency; g++)
+			for (int g = 0; g < frequency; g++)
 			{
 				Vector2 afterVelocity = new Vector2(0, Main.rand.NextFloat(3f)).RotatedByRandom(MathHelper.TwoPi);
 				var blood = new IchorSplash
@@ -72,16 +72,16 @@ namespace Everglow.EternalResolve.Projectiles
 			Lighting.AddLight(Projectile.Center + Projectile.velocity, 0.2f * value, 0.24f * value, 0.3f * value);
 			Player player = Main.player[Projectile.owner];
 			Texture2D itemTexture = TextureAssets.Item[Main.player[Projectile.owner].HeldItem.type].Value;
-			Texture2D Shadow = Commons.ModAsset.Star2_black.Value;
+			Texture2D shadow = Commons.ModAsset.Star2_black.Value;
 			Texture2D light = Commons.ModAsset.StabbingProjectile.Value;
 			Vector2 drawOrigin = light.Size() / 2f;
-			Vector2 drawShadowOrigin = Shadow.Size() / 2f;
+			Vector2 drawShadowOrigin = shadow.Size() / 2f;
 			Main.spriteBatch.Draw(itemTexture, ItemDraw.Postion - Main.screenPosition + Projectile.velocity, null, lightColor, ItemDraw.Rotation, itemTexture.Size() / 2f, ItemDraw.Size, ItemDraw.SpriteEffect, 0f);
 			if (OldColorFactor > 0)
 			{
 				for (int f = MaxDarkAttackUnitCount - 1; f > -1; f--)
 				{
-					Main.spriteBatch.Draw(Shadow, DarkAttackEffect[f].Postion - Main.screenPosition, null, Color.White * DarkAttackEffect[f].DarkShadow, DarkAttackEffect[f].Rotation, drawShadowOrigin, DarkAttackEffect[f].Size, SpriteEffects.None, 0f);
+					Main.spriteBatch.Draw(shadow, DarkAttackEffect[f].Postion - Main.screenPosition, null, Color.White * DarkAttackEffect[f].DarkShadow, DarkAttackEffect[f].Rotation, drawShadowOrigin, DarkAttackEffect[f].Size, SpriteEffects.None, 0f);
 					Color fadeLight = AttackColor * DarkAttackEffect[f].DarkShadow;
 					fadeLight.A = 0;
 					fadeLight = fadeLight * OldLightColorValue * MathF.Pow(LightColorValueMultiplicative_Modifier, f);
@@ -99,7 +99,7 @@ namespace Everglow.EternalResolve.Projectiles
 				{
 					if (CurrentColorFactor > 0)
 					{
-						Main.spriteBatch.Draw(Shadow, LightAttackEffect.Postion - Main.screenPosition, null, Color.White * CurrentColorFactor, LightAttackEffect.Rotation, drawShadowOrigin, LightAttackEffect.Size, SpriteEffects.None, 0f);
+						Main.spriteBatch.Draw(shadow, LightAttackEffect.Postion - Main.screenPosition, null, Color.White * CurrentColorFactor, LightAttackEffect.Rotation, drawShadowOrigin, LightAttackEffect.Size, SpriteEffects.None, 0f);
 					}
 					Color glowColor = AttackColor;
 					glowColor.A = 0;

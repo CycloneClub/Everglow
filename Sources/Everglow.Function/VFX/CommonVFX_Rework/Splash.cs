@@ -37,7 +37,7 @@ public class SplashPipeline : Pipeline
 
 			if (v is Splash s)
 			{
-				effect.Parameters["uDissolve"].SetValue((float)Math.Pow(1 - s.timeleft / s.maxTimeleft, 2f));
+				effect.Parameters["uDissolve"].SetValue((float)Math.Pow(1 - s.TimeLeft / s.MaxTimeLeft, 2f));
 			}
 
 			effect.CurrentTechnique.Passes[0].Apply();
@@ -57,10 +57,10 @@ public class Splash : Visual
 	public Vector2 Position;
 	public Vector2 Velocity;
 	public float Gravity = -0.2f;
-	public float timeleft;
-	public float maxTimeleft;
+	public float TimeLeft;
+	public float MaxTimeLeft;
 	public float Scale = 1;
-	public GradientColor color;
+	public GradientColor Color;
 	public float Rotation;
 	public Entity Owner;
 	public float SpeedLimits = 1;
@@ -78,8 +78,8 @@ public class Splash : Visual
 		Velocity *= SpeedLimits;
 		Scale *= 0.97f;
 
-		timeleft--;
-		if (timeleft <= 0)
+		TimeLeft--;
+		if (TimeLeft <= 0)
 		{
 			Active = false;
 		}
@@ -94,7 +94,7 @@ public class Splash : Visual
 
 	public override void Draw()
 	{
-		Color c = color.GetColor(1 - timeleft / maxTimeleft);
+		Color c = Color.GetColor(1 - TimeLeft / MaxTimeLeft);
 		c.A = 0;
 		Vector2 drawPos = Position;
 		if (Owner != null)

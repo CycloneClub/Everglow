@@ -19,8 +19,8 @@ public class CurseFlame_HighQualityPipeline : Pipeline
 		effect.Value.Parameters["uTransform"].SetValue(model * projection);
 		effect.Value.Parameters["uNoise"].SetValue(ModAsset.Noise_melting.Value);
 		effect.Value.Parameters["uLight"].SetValue(ModAsset.Trail.Value);
-		Texture2D FlameColor = ModAsset.Cursed_Color2.Value;
-		Ins.Batch.BindTexture<Vertex2D>(FlameColor);
+		Texture2D flameColor = ModAsset.Cursed_Color2.Value;
+		Ins.Batch.BindTexture<Vertex2D>(flameColor);
 		Main.graphics.GraphicsDevice.SamplerStates[1] = SamplerState.AnisotropicClamp;
 		Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.None, SamplerState.AnisotropicWrap, RasterizerState.CullNone);
 		effect.Value.CurrentTechnique.Passes[0].Apply();
@@ -51,15 +51,15 @@ public class CurseFlame_HighQualityDust : Visual
 	public float Timer;
 	public float MaxTime;
 	public float Scale;
-	public List<Vector2> oldPos = new List<Vector2>();
+	public List<Vector2> OldPositions = new List<Vector2>();
 
 	public override void Update()
 	{
 		Position += Velocity;
-		oldPos.Add(Position);
-		if (oldPos.Count > 15)
+		OldPositions.Add(Position);
+		if (OldPositions.Count > 15)
 		{
-			oldPos.RemoveAt(0);
+			OldPositions.RemoveAt(0);
 		}
 
 		Velocity *= 0.96f;
@@ -81,44 +81,44 @@ public class CurseFlame_HighQualityDust : Visual
 
 	public override void Draw()
 	{
-		float pocession = 1 - Timer / MaxTime;
-		if (pocession < 0.2)
+		float progress = 1 - Timer / MaxTime;
+		if (progress < 0.2)
 		{
-			pocession = 0.4f;
+			progress = 0.4f;
 		}
 		if (Main.gamePaused)
 		{
-			pocession = 0.4f;
+			progress = 0.4f;
 		}
 		float timeValue = (float)(Main.time * 0.2);
-		Vector2[] pos = oldPos.Reverse<Vector2>().ToArray();
+		Vector2[] pos = OldPositions.Reverse<Vector2>().ToArray();
 		int len = pos.Length;
 
 		var bars = new List<Vertex2D>();
 		if (len <= 2)
 		{
-			pocession = 0.4f;
+			progress = 0.4f;
 			for (int i = 1; i < 3; i++)
 			{
 				float coordValue = (i - 1) / (float)len;
 				var drawcRopeUp = new Color(0.25f + coordValue * 0.5f, 0, 0, 0);
 				var drawcRopeDown = new Color(0.25f + coordValue * 0.5f, 1, 0, 0);
-				bars.Add(new Vertex2D(Position, drawcRopeUp, new Vector3(ai[0] + coordValue * 0.4f, timeValue, pocession)));
-				bars.Add(new Vertex2D(Position, drawcRopeDown, new Vector3(ai[0] + coordValue * 0.4f, timeValue + 0.4f, pocession)));
+				bars.Add(new Vertex2D(Position, drawcRopeUp, new Vector3(ai[0] + coordValue * 0.4f, timeValue, progress)));
+				bars.Add(new Vertex2D(Position, drawcRopeDown, new Vector3(ai[0] + coordValue * 0.4f, timeValue + 0.4f, progress)));
 			}
 		}
 		else
 		{
 			for (int i = 1; i < len; i++)
 			{
-				Vector2 normal = oldPos[i] - oldPos[i - 1];
+				Vector2 normal = OldPositions[i] - OldPositions[i - 1];
 				normal = Vector2.Normalize(normal).RotatedBy(Math.PI * 0.5);
 				float coordValue = (i - 1) / (float)len;
 				var drawcRopeUp = new Color(0.25f + coordValue * 0.5f, 0, 0, 0);
 				var drawcRopeDown = new Color(0.25f + coordValue * 0.5f, 1, 0, 0);
 				float width = ai[2] * (float)Math.Sin(coordValue * Math.PI);
-				bars.Add(new Vertex2D(oldPos[i] + normal * width, drawcRopeUp, new Vector3(ai[0] + coordValue * 0.4f, timeValue, pocession)));
-				bars.Add(new Vertex2D(oldPos[i] - normal * width, drawcRopeDown, new Vector3(ai[0] + coordValue * 0.4f, timeValue + 0.4f, pocession)));
+				bars.Add(new Vertex2D(OldPositions[i] + normal * width, drawcRopeUp, new Vector3(ai[0] + coordValue * 0.4f, timeValue, progress)));
+				bars.Add(new Vertex2D(OldPositions[i] - normal * width, drawcRopeDown, new Vector3(ai[0] + coordValue * 0.4f, timeValue + 0.4f, progress)));
 			}
 		}
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);

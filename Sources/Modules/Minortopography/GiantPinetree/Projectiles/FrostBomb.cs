@@ -199,7 +199,7 @@ public class FrostBomb : ModProjectile
 		for (int g = 0; g < frequency; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 17f)).RotatedByRandom(MathHelper.TwoPi);
-			var somg = new IceParticleDust
+			var smog = new IceParticleDust
 			{
 				Velocity = newVelocity,
 				Active = true,
@@ -210,7 +210,7 @@ public class FrostBomb : ModProjectile
 				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
-			Ins.VFXManager.Add(somg);
+			Ins.VFXManager.Add(smog);
 		}
 	}
 
@@ -239,13 +239,13 @@ public class FrostBomb : ModProjectile
 		}
 	}
 
-	public void GenerateSmog(int Frequency)
+	public void GenerateSmog(int frequency)
 	{
 		float mulVelocity = 1f;
-		for (int g = 0; g < Frequency / 2 + 1; g++)
+		for (int g = 0; g < frequency / 2 + 1; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(0f, 4f)).RotatedByRandom(MathHelper.TwoPi);
-			var somg = new IceSmogDust
+			var smog = new IceSmogDust
 			{
 				Velocity = newVelocity,
 				Active = true,
@@ -256,12 +256,12 @@ public class FrostBomb : ModProjectile
 				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
-			Ins.VFXManager.Add(somg);
+			Ins.VFXManager.Add(smog);
 		}
-		for (int g = 0; g < Frequency / 2 - 1; g++)
+		for (int g = 0; g < frequency / 2 - 1; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(0f, 4f)).RotatedByRandom(MathHelper.TwoPi);
-			var somg = new IceSmogDust2
+			var smog = new IceSmogDust2
 			{
 				Velocity = newVelocity,
 				Active = true,
@@ -272,9 +272,9 @@ public class FrostBomb : ModProjectile
 				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
-			Ins.VFXManager.Add(somg);
+			Ins.VFXManager.Add(smog);
 		}
-		for (int g = 0; g < Frequency * 6; g++)
+		for (int g = 0; g < frequency * 6; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(2f, 4.6f)).RotatedByRandom(MathHelper.TwoPi);
 			var smog = new SnowPieceDust

@@ -254,8 +254,8 @@ public class RedpaperGiant : LanternMoonNPC
 						teleportPos.Y += OverTileHeight(teleportPos) - 30;
 						NPC.Center = teleportPos;
 					}
-					Vector3 LightColor = new Vector3(0.4f, 0.05f, 0.05f) * ((float)Math.Abs(TeleportTimer - MaxTeleportTime / 2) / (MaxTeleportTime / 2));
-					Lighting.AddLight(NPC.Center, LightColor);
+					Vector3 lightColor = new Vector3(0.4f, 0.05f, 0.05f) * ((float)Math.Abs(TeleportTimer - MaxTeleportTime / 2) / (MaxTeleportTime / 2));
+					Lighting.AddLight(NPC.Center, lightColor);
 					break;
 				}
 		}

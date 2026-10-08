@@ -39,7 +39,7 @@ public class MothBall : ModProjectile
 			Position = Projectile.Center,
 			MaxTime = Main.rand.Next(42, 90),
 			Scale = size,
-			projectileOwner = Projectile.whoAmI,
+			ProjectileOwner = Projectile.whoAmI,
 			ai = new float[] { Main.rand.NextFloat(0.0f, 0.6f), 2 },
 		};
 		Ins.VFXManager.Add(electric);
@@ -151,7 +151,7 @@ public class MothBall : ModProjectile
 
 	public override bool PreDraw(ref Color lightColor)
 	{
-		Texture2D Light = ModAsset.CorruptLight.Value;
+		Texture2D light = ModAsset.CorruptLight.Value;
 		int frameX = Projectile.frame % 6;
 		int frameY = (Projectile.frame - frameX) / 6;
 		int frameSideX = 270;
@@ -160,7 +160,7 @@ public class MothBall : ModProjectile
 
 		if (Projectile.timeLeft < 60)
 		{
-			Main.spriteBatch.Draw(Light, Projectile.Center - Main.screenPosition, null, new Color(1f, 1f, 1f, 0), Projectile.rotation, Light.Size() / 2f, (60 - Projectile.timeLeft) / 30f, SpriteEffects.None, 0);
+			Main.spriteBatch.Draw(light, Projectile.Center - Main.screenPosition, null, new Color(1f, 1f, 1f, 0), Projectile.rotation, light.Size() / 2f, (60 - Projectile.timeLeft) / 30f, SpriteEffects.None, 0);
 		}
 
 		float range = 720f;

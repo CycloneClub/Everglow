@@ -54,10 +54,10 @@ public class CursedFlamesII : ModProjectile, IWarpProjectile
 		}
 	}
 
-	public void GenerateVFX(int Frequency)
+	public void GenerateVFX(int frequency)
 	{
 		float mulVelocity = 1f;
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			var cf = new CurseFlameDust
 			{
@@ -87,13 +87,13 @@ public class CursedFlamesII : ModProjectile, IWarpProjectile
 		}
 	}
 
-	public void GenerateVFXExpolode(int Frequency, float mulVelocity = 1f)
+	public void GenerateVFXExpolode(int frequency, float mulVelocity = 1f)
 	{
 		if (Ins.VisualQuality.Low)
 		{
-			Frequency /= 3;
+			frequency /= 3;
 		}
-		for (int g = 0; g < Frequency * 3; g++)
+		for (int g = 0; g < frequency * 3; g++)
 		{
 			var cf = new CurseFlameDust
 			{
@@ -107,7 +107,7 @@ public class CursedFlamesII : ModProjectile, IWarpProjectile
 			};
 			Ins.VFXManager.Add(cf);
 		}
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			Vector2 vel = new Vector2(0, Main.rand.NextFloat(1.65f, 3.5f)).RotatedByRandom(6.283) * mulVelocity;
 			var cf = new CurseFlameDust
@@ -122,7 +122,7 @@ public class CursedFlamesII : ModProjectile, IWarpProjectile
 			};
 			Ins.VFXManager.Add(cf);
 		}
-		for (int g = 0; g < Frequency * 3; g++)
+		for (int g = 0; g < frequency * 3; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(2f, 6f)).RotatedByRandom(MathHelper.TwoPi);
 			var spark = new CurseFlameSparkDust
@@ -142,14 +142,14 @@ public class CursedFlamesII : ModProjectile, IWarpProjectile
 
 	public override bool PreDraw(ref Color lightColor)
 	{
-		Texture2D Light = Commons.ModAsset.LightPoint.Value;
-		Texture2D Shade = ModAsset.NewWaterBoltShade.Value;
+		Texture2D light = Commons.ModAsset.LightPoint.Value;
+		Texture2D shade = ModAsset.NewWaterBoltShade.Value;
 		var c0 = new Color(0.4f, 0.3f + 0.6f, 0, 0);
 
 		var bars0 = new List<Vertex2D>();
 		float width = 24;
 
-		int TrueL = 0;
+		int trueL = 0;
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
@@ -157,7 +157,7 @@ public class CursedFlamesII : ModProjectile, IWarpProjectile
 				break;
 			}
 
-			TrueL++;
+			trueL++;
 		}
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
@@ -173,7 +173,7 @@ public class CursedFlamesII : ModProjectile, IWarpProjectile
 			}
 			var normalDir = Projectile.oldPos[i - 1] - Projectile.oldPos[i];
 			normalDir = Vector2.Normalize(new Vector2(-normalDir.Y, normalDir.X));
-			var factor = i / (float)TrueL;
+			var factor = i / (float)trueL;
 			var w = MathHelper.Lerp(1f, 0.05f, factor);
 			float x0 = (float)(factor * 0.6f + Main.time * 0.04);
 			x0 %= 1f;
@@ -187,7 +187,7 @@ public class CursedFlamesII : ModProjectile, IWarpProjectile
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars0.ToArray(), 0, bars0.Count - 2);
 		}
 
-		Main.spriteBatch.Draw(Shade, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.Transparent, Projectile.rotation, Light.Size() / 2f, (1 / 1.8f + 0.2f) / (Projectile.ai[0] + 3) * 2.5f, SpriteEffects.None, 0);
+		Main.spriteBatch.Draw(shade, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.Transparent, Projectile.rotation, light.Size() / 2f, (1 / 1.8f + 0.2f) / (Projectile.ai[0] + 3) * 2.5f, SpriteEffects.None, 0);
 
 		var bars = new List<Vertex2D>();
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
@@ -204,7 +204,7 @@ public class CursedFlamesII : ModProjectile, IWarpProjectile
 			}
 			var normalDir = Projectile.oldPos[i - 1] - Projectile.oldPos[i];
 			normalDir = Vector2.Normalize(new Vector2(-normalDir.Y, normalDir.X));
-			var factor = i / (float)TrueL;
+			var factor = i / (float)trueL;
 			var w = MathHelper.Lerp(1f, 0.05f, factor);
 			float x0 = (float)(factor * 1.6 + Main.time * 0.04);
 			x0 %= 1f;
@@ -218,27 +218,27 @@ public class CursedFlamesII : ModProjectile, IWarpProjectile
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 
-		Main.spriteBatch.Draw(Light, Projectile.Center - Main.screenPosition, null, c0, Projectile.rotation, Light.Size() / 2f, 0.6f, SpriteEffects.None, 0);
+		Main.spriteBatch.Draw(light, Projectile.Center - Main.screenPosition, null, c0, Projectile.rotation, light.Size() / 2f, 0.6f, SpriteEffects.None, 0);
 		if (bars.Count > 3)
 		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 
-		Main.spriteBatch.Draw(Light, Projectile.Center - Main.screenPosition, null, c0, Projectile.rotation, Light.Size() / 2f, 0.6f, SpriteEffects.None, 0);
+		Main.spriteBatch.Draw(light, Projectile.Center - Main.screenPosition, null, c0, Projectile.rotation, light.Size() / 2f, 0.6f, SpriteEffects.None, 0);
 		return false;
 	}
 
 	public void DrawWarp(VFXBatch spriteBatch)
 	{
 		float width = 24;
-		float MulByTimeLeft = 1f;
+		float mulByTimeLeft = 1f;
 		if (Projectile.timeLeft < 500)
 		{
-			MulByTimeLeft = Projectile.timeLeft / 500f;
+			mulByTimeLeft = Projectile.timeLeft / 500f;
 		}
 
-		width *= MulByTimeLeft;
-		int TrueL = 0;
+		width *= mulByTimeLeft;
+		int trueL = 0;
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
@@ -246,7 +246,7 @@ public class CursedFlamesII : ModProjectile, IWarpProjectile
 				break;
 			}
 
-			TrueL++;
+			trueL++;
 		}
 		var bars = new List<Vertex2D>();
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
@@ -256,12 +256,12 @@ public class CursedFlamesII : ModProjectile, IWarpProjectile
 				break;
 			}
 
-			float MulColor = 1f;
+			float mulColor = 1f;
 			var normalDir = Projectile.oldPos[i - 1] - Projectile.oldPos[i];
 			normalDir = Vector2.Normalize(new Vector2(-normalDir.Y, normalDir.X));
 			if (i <= 8)
 			{
-				MulColor = i / 9f;
+				mulColor = i / 9f;
 			}
 
 			if (i >= 2)
@@ -270,7 +270,7 @@ public class CursedFlamesII : ModProjectile, IWarpProjectile
 				normalDirII = Vector2.Normalize(new Vector2(-normalDirII.Y, normalDirII.X));
 				if (Vector2.Dot(normalDirII, normalDir) <= 0.965f)
 				{
-					MulColor = 0f;
+					mulColor = 0f;
 				}
 			}
 			if (i < Projectile.oldPos.Length - 1)
@@ -279,7 +279,7 @@ public class CursedFlamesII : ModProjectile, IWarpProjectile
 				normalDirII = Vector2.Normalize(new Vector2(-normalDirII.Y, normalDirII.X));
 				if (Vector2.Dot(normalDirII, normalDir) <= 0.965f)
 				{
-					MulColor = 0f;
+					mulColor = 0f;
 				}
 			}
 
@@ -290,21 +290,21 @@ public class CursedFlamesII : ModProjectile, IWarpProjectile
 				k0 -= 6.28f;
 			}
 
-			Color c0 = new Color(k0, 0.02f * MulColor, 0, 0) * MulByTimeLeft;
+			Color c0 = new Color(k0, 0.02f * mulColor, 0, 0) * mulByTimeLeft;
 
-			var factor = i / (float)TrueL;
+			var factor = i / (float)trueL;
 			float x0 = factor * 1.3f - (float)(Main.time / 15d) + 100000;
 			x0 %= 1f;
 			bars.Add(new Vertex2D(Projectile.oldPos[i] + normalDir * -width * (1 - factor) + new Vector2(5f) - Main.screenPosition, c0, new Vector3(x0, 1, 0)));
 			bars.Add(new Vertex2D(Projectile.oldPos[i] + normalDir * width * (1 - factor) + new Vector2(5f) - Main.screenPosition, c0, new Vector3(x0, 0, 0)));
 			var factorII = factor;
-			factor = (i + 1) / (float)TrueL;
+			factor = (i + 1) / (float)trueL;
 			var x1 = factor * 1.3f - (float)(Main.time / 15d) + 100000;
 			x1 %= 1f;
 			if (x0 > x1)
 			{
-				float DeltaValue = 1 - x0;
-				var factorIII = factorII * x0 + factor * DeltaValue;
+				float deltaValue = 1 - x0;
+				var factorIII = factorII * x0 + factor * deltaValue;
 				bars.Add(new Vertex2D(Projectile.oldPos[i] + normalDir * -width * (1 - factorIII) + new Vector2(5f) - Main.screenPosition, c0, new Vector3(1, 1, 0)));
 				bars.Add(new Vertex2D(Projectile.oldPos[i] + normalDir * width * (1 - factorIII) + new Vector2(5f) - Main.screenPosition, c0, new Vector3(1, 0, 0)));
 				bars.Add(new Vertex2D(Projectile.oldPos[i] + normalDir * -width * (1 - factorIII) + new Vector2(5f) - Main.screenPosition, c0, new Vector3(0, 1, 0)));
@@ -321,15 +321,15 @@ public class CursedFlamesII : ModProjectile, IWarpProjectile
 
 	public override void OnKill(int timeLeft)
 	{
-		ScreenShaker Gsplayer = Main.player[Projectile.owner].GetModPlayer<ScreenShaker>();
-		Gsplayer.FlyCamPosition = new Vector2(0, 33).RotatedByRandom(6.283);
+		ScreenShaker gsPlayer = Main.player[Projectile.owner].GetModPlayer<ScreenShaker>();
+		gsPlayer.FlyCamPosition = new Vector2(0, 33).RotatedByRandom(6.283);
 
 		GenerateVFXExpolode(8, 2.2f);
 
 		for (int d = 0; d < 70; d++)
 		{
-			Vector2 BasePos = Projectile.Center - new Vector2(4) - Projectile.velocity;
-			var d0 = Dust.NewDustDirect(BasePos, 0, 0, DustID.CursedTorch, 0, 0, 0, default, 0.6f);
+			Vector2 basePos = Projectile.Center - new Vector2(4) - Projectile.velocity;
+			var d0 = Dust.NewDustDirect(basePos, 0, 0, DustID.CursedTorch, 0, 0, 0, default, 0.6f);
 			d0.velocity = new Vector2(0, Main.rand.NextFloat(3.65f, 7.5f)).RotatedByRandom(6.283);
 		}
 		int hitType = ModContent.ProjectileType<CursedFlameHit>();
@@ -340,13 +340,13 @@ public class CursedFlamesII : ModProjectile, IWarpProjectile
 
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
-		ScreenShaker Gsplayer = Main.player[Projectile.owner].GetModPlayer<ScreenShaker>();
-		Gsplayer.FlyCamPosition = new Vector2(0, 11).RotatedByRandom(6.283);
+		ScreenShaker gsPlayer = Main.player[Projectile.owner].GetModPlayer<ScreenShaker>();
+		gsPlayer.FlyCamPosition = new Vector2(0, 11).RotatedByRandom(6.283);
 		GenerateVFXExpolode(5, 0.6f);
 		for (int d = 0; d < 28; d++)
 		{
-			Vector2 BasePos = Projectile.Center - new Vector2(4) - Projectile.velocity;
-			var d0 = Dust.NewDustDirect(BasePos, 0, 0, DustID.CursedTorch, 0, 0, 0, default, 0.6f);
+			Vector2 basePos = Projectile.Center - new Vector2(4) - Projectile.velocity;
+			var d0 = Dust.NewDustDirect(basePos, 0, 0, DustID.CursedTorch, 0, 0, 0, default, 0.6f);
 			d0.velocity = new Vector2(0, Main.rand.NextFloat(1.65f, 5.5f)).RotatedByRandom(6.283);
 		}
 
@@ -360,13 +360,13 @@ public class CursedFlamesII : ModProjectile, IWarpProjectile
 
 	public override void OnHitPlayer(Player target, Player.HurtInfo info)
 	{
-		ScreenShaker Gsplayer = Main.player[Projectile.owner].GetModPlayer<ScreenShaker>();
-		Gsplayer.FlyCamPosition = new Vector2(0, 11).RotatedByRandom(6.283);
+		ScreenShaker gsPlayer = Main.player[Projectile.owner].GetModPlayer<ScreenShaker>();
+		gsPlayer.FlyCamPosition = new Vector2(0, 11).RotatedByRandom(6.283);
 		GenerateVFXExpolode(5, 0.6f);
 		for (int d = 0; d < 28; d++)
 		{
-			Vector2 BasePos = Projectile.Center - new Vector2(4) - Projectile.velocity;
-			var d0 = Dust.NewDustDirect(BasePos, 0, 0, DustID.CursedTorch, 0, 0, 0, default, 0.6f);
+			Vector2 basePos = Projectile.Center - new Vector2(4) - Projectile.velocity;
+			var d0 = Dust.NewDustDirect(basePos, 0, 0, DustID.CursedTorch, 0, 0, 0, default, 0.6f);
 			d0.velocity = new Vector2(0, Main.rand.NextFloat(1.65f, 5.5f)).RotatedByRandom(6.283);
 		}
 		int hitType = ModContent.ProjectileType<CursedFlameHit>();
@@ -379,14 +379,14 @@ public class CursedFlamesII : ModProjectile, IWarpProjectile
 
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
-		ScreenShaker Gsplayer = Main.player[Projectile.owner].GetModPlayer<ScreenShaker>();
-		Gsplayer.FlyCamPosition = new Vector2(0, 11).RotatedByRandom(6.283);
+		ScreenShaker gsPlayer = Main.player[Projectile.owner].GetModPlayer<ScreenShaker>();
+		gsPlayer.FlyCamPosition = new Vector2(0, 11).RotatedByRandom(6.283);
 		SoundEngine.PlaySound(SoundID.DD2_BetsyFireballShot.WithVolumeScale(0.8f), Projectile.Center);
 		GenerateVFXExpolode(5, 0.6f);
 		for (int d = 0; d < 28; d++)
 		{
-			Vector2 BasePos = Projectile.Center - new Vector2(4) - Projectile.velocity;
-			var d0 = Dust.NewDustDirect(BasePos, 0, 0, DustID.CursedTorch, 0, 0, 0, default, 0.6f);
+			Vector2 basePos = Projectile.Center - new Vector2(4) - Projectile.velocity;
+			var d0 = Dust.NewDustDirect(basePos, 0, 0, DustID.CursedTorch, 0, 0, 0, default, 0.6f);
 			d0.velocity = new Vector2(0, Main.rand.NextFloat(1.65f, 5.5f)).RotatedByRandom(6.283);
 		}
 		int hitType = ModContent.ProjectileType<CursedFlameHit>();

@@ -213,23 +213,23 @@ public abstract class StabbingProjectile_Stab : ModProjectile, IWarpProjectile
 			{
 				Projectile.timeLeft++;
 				float value = (Projectile.timeLeft + StabTimer) / 135f;
-				float BodyRotation = MathF.Sin(value * MathF.PI) * Owner.direction * 0.2f;
-				TestPlayerDrawer Tplayer = Owner.GetModPlayer<TestPlayerDrawer>();
-				Tplayer.HeadRotation = 0;
-				Tplayer.HideLeg = true;
-				Owner.headRotation = -BodyRotation;
-				Tplayer.HeadRotation = Owner.headRotation;
-				Owner.fullRotation = BodyRotation;
+				float bodyRotation = MathF.Sin(value * MathF.PI) * Owner.direction * 0.2f;
+				TestPlayerDrawer playerDrawer = Owner.GetModPlayer<TestPlayerDrawer>();
+				playerDrawer.HeadRotation = 0;
+				playerDrawer.HideLeg = true;
+				Owner.headRotation = -bodyRotation;
+				playerDrawer.HeadRotation = Owner.headRotation;
+				Owner.fullRotation = bodyRotation;
 				Owner.fullRotationOrigin = new Vector2(Owner.Hitbox.Width / 2f, Owner.gravDir == -1 ? 0 : Owner.Hitbox.Height);
 			}
 			else
 			{
-				TestPlayerDrawer Tplayer = Owner.GetModPlayer<TestPlayerDrawer>();
+				TestPlayerDrawer playerDrawer = Owner.GetModPlayer<TestPlayerDrawer>();
 				Owner.legFrame = new Rectangle(0, 0, Owner.legFrame.Width, Owner.legFrame.Height);
 				Owner.fullRotation = 0;
 				Owner.legRotation = 0;
-				Tplayer.HeadRotation = 0;
-				Tplayer.HideLeg = false;
+				playerDrawer.HeadRotation = 0;
+				playerDrawer.HideLeg = false;
 				Owner.legPosition = Vector2.Zero;
 			}
 		}

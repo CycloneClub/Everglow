@@ -53,7 +53,7 @@ public class CursedFlame_flowPipeline : Pipeline
 [Pipeline(typeof(CursedFlame_flowPipeline), typeof(HeatMapRenderPipeline_cursedFlame), typeof(BloomPipeline))]
 public class CursedFlame_flowDust : FlowDraw
 {
-	public List<Vector2> oldPos = new List<Vector2>();
+	public List<Vector2> OldPositions = new List<Vector2>();
 	public float Timer;
 	public float MaxTime;
 
@@ -69,15 +69,15 @@ public class CursedFlame_flowDust : FlowDraw
 
 	public override void Update()
 	{
-		if (oldPos.Count == 0)
+		if (OldPositions.Count == 0)
 		{
 			for (int x = 0; x < 12; x++)
 			{
 				Position += Velocity;
-				oldPos.Add(Position);
-				if (oldPos.Count > 12)
+				OldPositions.Add(Position);
+				if (OldPositions.Count > 12)
 				{
-					oldPos.RemoveAt(0);
+					OldPositions.RemoveAt(0);
 				}
 
 				Velocity *= 0.99f;
@@ -92,10 +92,10 @@ public class CursedFlame_flowDust : FlowDraw
 		else
 		{
 			Position += Velocity;
-			oldPos.Add(Position);
-			if (oldPos.Count > 17)
+			OldPositions.Add(Position);
+			if (OldPositions.Count > 17)
 			{
-				oldPos.RemoveAt(0);
+				OldPositions.RemoveAt(0);
 			}
 
 			Velocity *= 0.99f;
@@ -123,7 +123,7 @@ public class CursedFlame_flowDust : FlowDraw
 
 	public override void Draw()
 	{
-		Vector2[] pos = oldPos.Reverse<Vector2>().ToArray();
+		Vector2[] pos = OldPositions.Reverse<Vector2>().ToArray();
 		int len = pos.Length;
 		if (len <= 2)
 		{
@@ -134,12 +134,12 @@ public class CursedFlame_flowDust : FlowDraw
 		var bars = new List<Vertex2D>();
 		for (int i = 1; i < len; i++)
 		{
-			Vector2 normal = oldPos[i] - oldPos[i - 1];
+			Vector2 normal = OldPositions[i] - OldPositions[i - 1];
 			normal = Vector2.Normalize(normal).RotatedBy(Math.PI * 0.5);
 			float width = MathF.Sin(MathHelper.Pi * (i - 0) / (len - 1));
 			var drawColor = new Color(1f, 1f, Timer / MaxTime, width / 3);
-			bars.Add(oldPos[i] + normal * ai[2], drawColor, new Vector3(0.7f, ai[0], i / 80f - timeValue));
-			bars.Add(oldPos[i] - normal * ai[2], drawColor, new Vector3(0.3f, ai[0] + 0.2f, i / 80f - timeValue));
+			bars.Add(OldPositions[i] + normal * ai[2], drawColor, new Vector3(0.7f, ai[0], i / 80f - timeValue));
+			bars.Add(OldPositions[i] - normal * ai[2], drawColor, new Vector3(0.3f, ai[0] + 0.2f, i / 80f - timeValue));
 		}
 		if (bars.Count > 2)
 		{

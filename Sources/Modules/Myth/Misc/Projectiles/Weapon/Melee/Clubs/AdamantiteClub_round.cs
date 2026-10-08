@@ -11,52 +11,52 @@ public class AdamantiteClub_round : ModProjectile, IWarpProjectile
 	/// <summary>
 	/// 角速度
 	/// </summary>
-	internal float Omega = 0;
+	public float Omega = 0;
 
 	/// <summary>
 	/// 角加速度
 	/// </summary>
-	internal float Beta = 0.005f;
+	public float Beta = 0.005f;
 
 	/// <summary>
 	/// 最大角速度(受近战攻速影响)
 	/// </summary>
-	internal float MaxOmega = 0.5f;
+	public float MaxOmega = 0.5f;
 
 	/// <summary>
 	/// 伤害半径
 	/// </summary>
-	internal float HitLength = 32f;
+	public float HitLength = 32f;
 
 	/// <summary>
 	/// 命中敌人后对于角速度的削减率(会根据敌人的击退抗性而再次降低)
 	/// </summary>
-	internal float StrikeOmegaDecrease = 0.9f;
+	public float StrikeOmegaDecrease = 0.9f;
 
 	/// <summary>
 	/// 命中敌人后最低剩余角速度(默认40%,即0.4)
 	/// </summary>
-	internal float MinStrikeOmegaDecrease = 0.4f;
+	public float MinStrikeOmegaDecrease = 0.4f;
 
 	/// <summary>
 	/// 内部参数，用来计算伤害
 	/// </summary>
-	internal int DamageStartValue = 0;
+	public int DamageStartValue = 0;
 
 	/// <summary>
 	/// 拖尾长度
 	/// </summary>
-	internal int trailLength = 10;
+	public int TrailLength = 10;
 
 	/// <summary>
 	/// 是否正在攻击
 	/// </summary>
-	internal bool isAttacking = false;
+	public bool IsAttacking = false;
 
 	/// <summary>
 	/// 拖尾
 	/// </summary>
-	internal Queue<Vector2> trailVecs;
+	public Queue<Vector2> TrailVecs;
 
 	public override void SetDefaults()
 	{
@@ -74,7 +74,7 @@ public class AdamantiteClub_round : ModProjectile, IWarpProjectile
 		Projectile.extraUpdates = 1;
 
 		Projectile.DamageType = DamageClass.Melee;
-		trailVecs = new Queue<Vector2>(trailLength + 1);
+		TrailVecs = new Queue<Vector2>(TrailLength + 1);
 		StrikeOmegaDecrease = 0.99f;
 	}
 
@@ -125,13 +125,13 @@ public class AdamantiteClub_round : ModProjectile, IWarpProjectile
 		Player player = Main.player[Projectile.owner];
 
 		Projectile.rotation += Omega;
-		float MeleeSpeed = player.GetAttackSpeed(Projectile.DamageType);
+		float meleeSpeed = player.GetAttackSpeed(Projectile.DamageType);
 		if (Projectile.timeLeft > 570)
 		{
 			Projectile.velocity *= 0.2f;
-			if (Omega < MeleeSpeed * MaxOmega)
+			if (Omega < meleeSpeed * MaxOmega)
 			{
-				Omega += Beta * MeleeSpeed * 12f;
+				Omega += Beta * meleeSpeed * 12f;
 			}
 		}
 		else
@@ -148,9 +148,9 @@ public class AdamantiteClub_round : ModProjectile, IWarpProjectile
 			}
 			else
 			{
-				if (Omega < MeleeSpeed * MaxOmega + 0.2f)
+				if (Omega < meleeSpeed * MaxOmega + 0.2f)
 				{
-					Omega += Beta * MeleeSpeed * 0.04f;
+					Omega += Beta * meleeSpeed * 0.04f;
 				}
 			}
 		}
@@ -159,11 +159,11 @@ public class AdamantiteClub_round : ModProjectile, IWarpProjectile
 			Projectile.friendly = false;
 		}
 
-		Vector2 HitRange = new Vector2(HitLength, HitLength * Projectile.spriteDirection).RotatedBy(Projectile.rotation) * Projectile.scale;
-		trailVecs.Enqueue(HitRange);
-		if (trailVecs.Count > trailLength)
+		Vector2 hitRange = new Vector2(HitLength, HitLength * Projectile.spriteDirection).RotatedBy(Projectile.rotation) * Projectile.scale;
+		TrailVecs.Enqueue(hitRange);
+		if (TrailVecs.Count > TrailLength)
 		{
-			trailVecs.Dequeue();
+			TrailVecs.Dequeue();
 		}
 
 		if (player.dead)
@@ -278,10 +278,10 @@ public class AdamantiteClub_round : ModProjectile, IWarpProjectile
 		return totalHit;
 	}
 
-	public void GenerateSpark(int Frequency)
+	public void GenerateSpark(int frequency)
 	{
 		float mulVelocity = Omega * 10;
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			Vector2 newVelocity = NormalToTiles.RotatedBy(MathHelper.PiOver2 * (Main.rand.NextBool(2) ? 1 : -1)) * 2.6f * mulVelocity * Main.rand.NextFloat(0.1f, 2.0f);
 			var spark = new FireSpark_MetalStabDust
@@ -336,24 +336,24 @@ public class AdamantiteClub_round : ModProjectile, IWarpProjectile
 
 	public void DrawTrail()
 	{
-		List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(trailVecs.ToList()); // 平滑
-		var SmoothTrail = new List<Vector2>();
-		for (int x = 0; x < SmoothTrailX.Count - 1; x++)
+		List<Vector2> smoothTrailX = GraphicsUtils.CatmullRom(TrailVecs.ToList()); // 平滑
+		var smoothTrail = new List<Vector2>();
+		for (int x = 0; x < smoothTrailX.Count - 1; x++)
 		{
-			SmoothTrail.Add(SmoothTrailX[x]);
+			smoothTrail.Add(smoothTrailX[x]);
 		}
-		if (trailVecs.Count != 0)
+		if (TrailVecs.Count != 0)
 		{
-			SmoothTrail.Add(trailVecs.ToArray()[trailVecs.Count - 1]);
+			smoothTrail.Add(TrailVecs.ToArray()[TrailVecs.Count - 1]);
 		}
 
-		int length = SmoothTrail.Count;
+		int length = smoothTrail.Count;
 		if (length <= 3)
 		{
 			return;
 		}
 
-		Vector2[] trail = SmoothTrail.ToArray();
+		Vector2[] trail = smoothTrail.ToArray();
 		var bars = new List<Vertex2D>();
 
 		for (int i = 0; i < length; i++)
@@ -382,16 +382,16 @@ public class AdamantiteClub_round : ModProjectile, IWarpProjectile
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) * Main.GameViewMatrix.TransformationMatrix;
 
-		Effect MeleeTrail = Commons.ModAsset.MetalClubTrail.Value;
-		MeleeTrail.Parameters["uTransform"].SetValue(model * projection);
+		Effect meleeTrail = Commons.ModAsset.MetalClubTrail.Value;
+		meleeTrail.Parameters["uTransform"].SetValue(model * projection);
 		Main.graphics.GraphicsDevice.Textures[0] = ModContent.Request<Texture2D>(TrailShapeTex(), ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 
-		MeleeTrail.Parameters["tex1"].SetValue((Texture2D)ModContent.Request<Texture2D>(Texture));
+		meleeTrail.Parameters["tex1"].SetValue((Texture2D)ModContent.Request<Texture2D>(Texture));
 
 		var lightColor = Lighting.GetColor((int)(Projectile.Center.X / 16), (int)(Projectile.Center.Y / 16)).ToVector4();
 		lightColor.W = 4f * Omega;
-		MeleeTrail.Parameters["Light"].SetValue(lightColor);
-		MeleeTrail.CurrentTechnique.Passes["TrailByOrigTex"].Apply();
+		meleeTrail.Parameters["Light"].SetValue(lightColor);
+		meleeTrail.CurrentTechnique.Passes["TrailByOrigTex"].Apply();
 
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		Main.spriteBatch.End();
@@ -400,25 +400,25 @@ public class AdamantiteClub_round : ModProjectile, IWarpProjectile
 
 	public void DrawWarp(VFXBatch spriteBatch)
 	{
-		List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(trailVecs.ToList()); // 平滑
-		var SmoothTrail = new List<Vector2>();
-		for (int x = 0; x < SmoothTrailX.Count - 1; x++)
+		List<Vector2> smoothTrailX = GraphicsUtils.CatmullRom(TrailVecs.ToList()); // 平滑
+		var smoothTrail = new List<Vector2>();
+		for (int x = 0; x < smoothTrailX.Count - 1; x++)
 		{
-			SmoothTrail.Add(SmoothTrailX[x]);
+			smoothTrail.Add(smoothTrailX[x]);
 		}
-		if (trailVecs.Count != 0)
+		if (TrailVecs.Count != 0)
 		{
-			SmoothTrail.Add(trailVecs.ToArray()[trailVecs.Count - 1]);
+			smoothTrail.Add(TrailVecs.ToArray()[TrailVecs.Count - 1]);
 		}
 
-		int length = SmoothTrail.Count;
+		int length = smoothTrail.Count;
 		if (length <= 3)
 		{
 			return;
 		}
 		float warpValue = Omega * 0.1f;
 
-		Vector2[] trail = SmoothTrail.ToArray();
+		Vector2[] trail = smoothTrail.ToArray();
 		var bars = new List<Vertex2D>();
 		for (int i = 0; i < length; i++)
 		{
@@ -445,21 +445,21 @@ public class AdamantiteClub_round : ModProjectile, IWarpProjectile
 			}
 			if (dir - dir1 > 0.5)
 			{
-				var MidValue = (1 - dir) / (1 - dir + dir1);
-				var MidPoint = MidValue * trail[i] + (1 - MidValue) * trail[i - 1];
+				var midValue = (1 - dir) / (1 - dir + dir1);
+				var midPoint = midValue * trail[i] + (1 - midValue) * trail[i - 1];
 				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(0, warpValue, 0, 1), new Vector3(factor, 1, 1)));
-				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition + MidPoint * Projectile.scale * 1.1f, new Color(0, warpValue, 0, 1), new Vector3(factor, 0, 1)));
+				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition + midPoint * Projectile.scale * 1.1f, new Color(0, warpValue, 0, 1), new Vector3(factor, 0, 1)));
 				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(1, warpValue, 0, 1), new Vector3(factor, 1, 1)));
-				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition + MidPoint * Projectile.scale * 1.1f, new Color(1, warpValue, 0, 1), new Vector3(factor, 0, 1)));
+				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition + midPoint * Projectile.scale * 1.1f, new Color(1, warpValue, 0, 1), new Vector3(factor, 0, 1)));
 			}
 			if (dir1 - dir > 0.5)
 			{
-				var MidValue = (1 - dir1) / (1 - dir1 + dir);
-				var MidPoint = MidValue * trail[i - 1] + (1 - MidValue) * trail[i];
+				var midValue = (1 - dir1) / (1 - dir1 + dir);
+				var midPoint = midValue * trail[i - 1] + (1 - midValue) * trail[i];
 				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(1, warpValue, 0, 1), new Vector3(factor, 1, 1)));
-				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition + MidPoint * Projectile.scale * 1.1f, new Color(1, warpValue, 0, 1), new Vector3(factor, 0, 1)));
+				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition + midPoint * Projectile.scale * 1.1f, new Color(1, warpValue, 0, 1), new Vector3(factor, 0, 1)));
 				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(0, warpValue, 0, 1), new Vector3(factor, 1, 1)));
-				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition + MidPoint * Projectile.scale * 1.1f, new Color(0, warpValue, 0, 1), new Vector3(factor, 0, 1)));
+				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition + midPoint * Projectile.scale * 1.1f, new Color(0, warpValue, 0, 1), new Vector3(factor, 0, 1)));
 			}
 
 			bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(dir, warpValue, 0, 1), new Vector3(factor, 1, 1)));
@@ -493,21 +493,21 @@ public class AdamantiteClub_round : ModProjectile, IWarpProjectile
 
 			if (dir - dir1 > 0.5)
 			{
-				var MidValue = (1 - dir) / (1 - dir + dir1);
-				var MidPoint = MidValue * trail[i] + (1 - MidValue) * trail[i - 1];
+				var midValue = (1 - dir) / (1 - dir + dir1);
+				var midPoint = midValue * trail[i] + (1 - midValue) * trail[i - 1];
 				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(0, warpValue, 0, 1), new Vector3(factor, 1, 1)));
-				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition - MidPoint * Projectile.scale * 1.1f, new Color(0, warpValue, 0, 1), new Vector3(factor, 0, 1)));
+				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition - midPoint * Projectile.scale * 1.1f, new Color(0, warpValue, 0, 1), new Vector3(factor, 0, 1)));
 				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(1, warpValue, 0, 1), new Vector3(factor, 1, 1)));
-				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition - MidPoint * Projectile.scale * 1.1f, new Color(1, warpValue, 0, 1), new Vector3(factor, 0, 1)));
+				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition - midPoint * Projectile.scale * 1.1f, new Color(1, warpValue, 0, 1), new Vector3(factor, 0, 1)));
 			}
 			if (dir1 - dir > 0.5)
 			{
-				var MidValue = (1 - dir1) / (1 - dir1 + dir);
-				var MidPoint = MidValue * trail[i - 1] + (1 - MidValue) * trail[i];
+				var midValue = (1 - dir1) / (1 - dir1 + dir);
+				var midPoint = midValue * trail[i - 1] + (1 - midValue) * trail[i];
 				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(1, warpValue, 0, 1), new Vector3(factor, 1, 1)));
-				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition - MidPoint * Projectile.scale * 1.1f, new Color(1, warpValue, 0, 1), new Vector3(factor, 0, 1)));
+				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition - midPoint * Projectile.scale * 1.1f, new Color(1, warpValue, 0, 1), new Vector3(factor, 0, 1)));
 				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(0, warpValue, 0, 1), new Vector3(factor, 1, 1)));
-				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition - MidPoint * Projectile.scale * 1.1f, new Color(0, warpValue, 0, 1), new Vector3(factor, 0, 1)));
+				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition - midPoint * Projectile.scale * 1.1f, new Color(0, warpValue, 0, 1), new Vector3(factor, 0, 1)));
 			}
 
 			bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(dir, warpValue, 0, 1), new Vector3(factor, 1, 1)));
@@ -533,9 +533,9 @@ public class AdamantiteClub_round : ModProjectile, IWarpProjectile
 	{
 		var shaderData = (WaterShaderData)Terraria.Graphics.Effects.Filters.Scene["WaterDistortion"].GetShader();
 		float waveSine = 1f * (float)Math.Sin(Main.GlobalTimeWrappedHourly * 20f);
-		Vector2 HitRange = new Vector2(HitLength, -HitLength).RotatedBy(Projectile.rotation) * Projectile.scale;
-		Vector2 ripplePos = Projectile.Center + HitRange;
-		Vector2 ripplePosII = Projectile.Center - HitRange;
+		Vector2 hitRange = new Vector2(HitLength, -HitLength).RotatedBy(Projectile.rotation) * Projectile.scale;
+		Vector2 ripplePos = Projectile.Center + hitRange;
+		Vector2 ripplePosII = Projectile.Center - hitRange;
 		Color waveData = new Color(0.5f, 0.1f * Math.Sign(waveSine) + 0.5f, 0f, 1f) * Math.Abs(waveSine);
 		shaderData.QueueRipple(ripplePos, waveData, beamDims, RippleShape.Square, Projectile.rotation + MathHelper.Pi / 2f);
 		shaderData.QueueRipple(ripplePosII, waveData, beamDims, RippleShape.Square, Projectile.rotation + MathHelper.Pi / 2f);

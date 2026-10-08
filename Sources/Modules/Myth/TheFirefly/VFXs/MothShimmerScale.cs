@@ -91,28 +91,28 @@ public class MothShimmerScaleDust : Visual
 
 	public override void Draw()
 	{
-		float pocession = Timer / MaxTime;
+		float progress = Timer / MaxTime;
 		Vector2 toCorner = new Vector2(0, Scale).RotatedBy(Rotation);
-		Vector2[] Corner = new Vector2[6];
+		Vector2[] corner = new Vector2[6];
 		for (int x = 0; x < 6; x++)
 		{
-			Corner[x] = toCorner.RotatedBy(x / 3d * Math.PI);
-			Corner[x].Y *= MathF.Sin(Phi + (float)(Main.time * 0.03 * Omega));
-			Corner[x] = Corner[x].RotatedBy(Rotation2);
+			corner[x] = toCorner.RotatedBy(x / 3d * Math.PI);
+			corner[x].Y *= MathF.Sin(Phi + (float)(Main.time * 0.03 * Omega));
+			corner[x] = corner[x].RotatedBy(Rotation2);
 		}
 		Color lightColor = new Color(15, 45, 255, 60);
-		float reflectionLight = (1 - pocession) * MathF.Pow(MathF.Sin(Phi + (float)(Main.time * 0.03 * Omega + 1.57f)) + 1, 4) * 1.6f;
+		float reflectionLight = (1 - progress) * MathF.Pow(MathF.Sin(Phi + (float)(Main.time * 0.03 * Omega + 1.57f)) + 1, 4) * 1.6f;
 		List<Vertex2D> bars = new List<Vertex2D>();
 		for (int x = 0; x < 3; x++)
 		{
 			bars.Add(new Vertex2D(Position, lightColor, new Vector3(Coord, reflectionLight)));
-			bars.Add(new Vertex2D(Position + Corner[2 * x], lightColor, new Vector3(Coord, reflectionLight)));
+			bars.Add(new Vertex2D(Position + corner[2 * x], lightColor, new Vector3(Coord, reflectionLight)));
 
 			bars.Add(new Vertex2D(Position, lightColor, new Vector3(Coord, reflectionLight)));
-			bars.Add(new Vertex2D(Position + Corner[2 * x + 1], lightColor, new Vector3(Coord, reflectionLight)));
+			bars.Add(new Vertex2D(Position + corner[2 * x + 1], lightColor, new Vector3(Coord, reflectionLight)));
 		}
 		bars.Add(new Vertex2D(Position, lightColor, new Vector3(Coord, reflectionLight)));
-		bars.Add(new Vertex2D(Position + Corner[0], lightColor, new Vector3(Coord, reflectionLight)));
+		bars.Add(new Vertex2D(Position + corner[0], lightColor, new Vector3(Coord, reflectionLight)));
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);
 	}
 }

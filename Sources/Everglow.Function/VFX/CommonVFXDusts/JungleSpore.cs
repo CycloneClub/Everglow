@@ -81,22 +81,22 @@ public class JungleSporeDust : Visual
 		{
 			Timer += 20;
 		}
-		float pocession = 1 - Timer / MaxTime;
-		float c = pocession * Scale * 0.01f;
+		float progress = 1 - Timer / MaxTime;
+		float c = progress * Scale * 0.01f;
 		Lighting.AddLight(Position, c * 0.1f, c * 0.8f, 0);
 	}
 
 	public override void Draw()
 	{
-		float pocession = 1 - Timer / MaxTime;
+		float progress = 1 - Timer / MaxTime;
 		Vector2 toCorner = new Vector2(0, Scale).RotatedBy(Rotation);
 		List<Vertex2D> bars = new List<Vertex2D>()
 		{
-			new Vertex2D(Position + toCorner, new Color(0, 0, ai[0], pocession), new Vector3(0)),
-			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 0.5), new Color(0, 1, ai[0], pocession), new Vector3(0)),
+			new Vertex2D(Position + toCorner, new Color(0, 0, ai[0], progress), new Vector3(0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 0.5), new Color(0, 1, ai[0], progress), new Vector3(0)),
 
-			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1.5), new Color(1, 0, ai[0], pocession), new Vector3(0)),
-			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1), new Color(1, 1, ai[0], pocession), new Vector3(0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1.5), new Color(1, 0, ai[0], progress), new Vector3(0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1), new Color(1, 1, ai[0], progress), new Vector3(0)),
 		};
 
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);

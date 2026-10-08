@@ -23,24 +23,24 @@ public class GiantFreezeFeather : ModProjectile
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 80;
 	}
 
-	public int TimeTokill = -1;
+	public int TimeToKill = -1;
 
 	public override void AI()
 	{
-		if (TimeTokill >= 0 && TimeTokill <= 2)
+		if (TimeToKill >= 0 && TimeToKill <= 2)
 		{
 			Projectile.Kill();
 		}
 
-		if (TimeTokill <= 80 && TimeTokill > 0)
+		if (TimeToKill <= 80 && TimeToKill > 0)
 		{
 			Projectile.velocity = Projectile.oldVelocity;
 		}
 
-		TimeTokill--;
-		if (TimeTokill >= 0)
+		TimeToKill--;
+		if (TimeToKill >= 0)
 		{
-			if (TimeTokill < 10)
+			if (TimeToKill < 10)
 			{
 				Projectile.damage = 0;
 				Projectile.friendly = false;
@@ -139,11 +139,11 @@ public class GiantFreezeFeather : ModProjectile
 
 	public override void PostDraw(Color lightColor)
 	{
-		if (TimeTokill >= 0)
+		if (TimeToKill >= 0)
 		{
-			float timeValue = (80 - TimeTokill) / 80f;
+			float timeValue = (80 - TimeToKill) / 80f;
 			DrawTrail(Commons.ModAsset.Trail_2_black_thick.Value, Color.White * 0.3f, 36);
-			DrawTrail(Commons.ModAsset.Trail_6.Value, new Color(0.55f * (1 - timeValue) * (1 - timeValue), 0.9f * (1 - timeValue), 1f, 0f), Math.Max(TimeTokill - 44, 0));
+			DrawTrail(Commons.ModAsset.Trail_6.Value, new Color(0.55f * (1 - timeValue) * (1 - timeValue), 0.9f * (1 - timeValue), 1f, 0f), Math.Max(TimeToKill - 44, 0));
 			return;
 		}
 		else
@@ -199,9 +199,9 @@ public class GiantFreezeFeather : ModProjectile
 
 			trueL++;
 		}
-		if (TimeTokill > 0)
+		if (TimeToKill > 0)
 		{
-			trueL = Math.Max(trueL, TimeTokill);
+			trueL = Math.Max(trueL, TimeToKill);
 			if (trueL == 0)
 			{
 				return;
@@ -272,12 +272,12 @@ public class GiantFreezeFeather : ModProjectile
 	public void AmmoHit()
 	{
 		SoundEngine.PlaySound(SoundID.Shatter.WithVolumeScale(0.8f), Projectile.Center);
-		if (TimeTokill > 0)
+		if (TimeToKill > 0)
 		{
 			return;
 		}
 		Player player = Main.player[Projectile.owner];
-		TimeTokill = 80;
+		TimeToKill = 80;
 		Projectile.tileCollide = false;
 		Projectile.friendly = false;
 		Projectile.ignoreWater = true;
@@ -306,13 +306,13 @@ public class GiantFreezeFeather : ModProjectile
 		Projectile.position -= Projectile.velocity;
 	}
 
-	public void GenerateSmog(int Frequency)
+	public void GenerateSmog(int frequency)
 	{
 		float mulVelocity = 3f;
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(0f, 4f)).RotatedByRandom(MathHelper.TwoPi);
-			var somg = new IceSmogDust
+			var smog = new IceSmogDust
 			{
 				Velocity = newVelocity,
 				Active = true,
@@ -323,12 +323,12 @@ public class GiantFreezeFeather : ModProjectile
 				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
-			Ins.VFXManager.Add(somg);
+			Ins.VFXManager.Add(smog);
 		}
-		for (int g = 0; g < Frequency / 2 - 1; g++)
+		for (int g = 0; g < frequency / 2 - 1; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(0f, 4f)).RotatedByRandom(MathHelper.TwoPi);
-			var somg = new IceSmogDust2
+			var smog = new IceSmogDust2
 			{
 				Velocity = newVelocity,
 				Active = true,
@@ -339,9 +339,9 @@ public class GiantFreezeFeather : ModProjectile
 				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
-			Ins.VFXManager.Add(somg);
+			Ins.VFXManager.Add(smog);
 		}
-		for (int g = 0; g < Frequency * 20; g++)
+		for (int g = 0; g < frequency * 20; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(6f, 17.6f)).RotatedByRandom(MathHelper.TwoPi);
 			var smog = new SnowPieceDust
@@ -362,10 +362,10 @@ public class GiantFreezeFeather : ModProjectile
 			};
 			Ins.VFXManager.Add(smog);
 		}
-		for (int g = 0; g < Frequency * 12; g++)
+		for (int g = 0; g < frequency * 12; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(0f, 8f)).RotatedByRandom(MathHelper.TwoPi);
-			var somg = new IceParticleDust
+			var smog = new IceParticleDust
 			{
 				Velocity = newVelocity,
 				Active = true,
@@ -376,7 +376,7 @@ public class GiantFreezeFeather : ModProjectile
 				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
-			Ins.VFXManager.Add(somg);
+			Ins.VFXManager.Add(smog);
 		}
 	}
 }

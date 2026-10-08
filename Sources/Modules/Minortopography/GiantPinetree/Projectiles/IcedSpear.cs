@@ -20,13 +20,13 @@ public class IcedSpear : ModProjectile
 		Projectile.localNPCHitCooldown = 15;
 	}
 
-	internal bool shot = false;
-	internal int power = 0;
-	public int stickNPC = -1;
-	public float relativeAngle = 0;
-	public float hitTargetAngle = 0;
-	public float hitTargetScale = 1;
-	public Vector2 relativePos = Vector2.zeroVector;
+	public bool Shot = false;
+	public int Power = 0;
+	public int StickNPC = -1;
+	public float RelativeAngle = 0;
+	public float HitTargetAngle = 0;
+	public float HitTargetScale = 1;
+	public Vector2 RelativePos = Vector2.zeroVector;
 
 	public override void AI()
 	{
@@ -37,7 +37,7 @@ public class IcedSpear : ModProjectile
 			playerDir = 1;
 		}
 
-		if (shot)
+		if (Shot)
 		{
 			if (Projectile.wet)
 			{
@@ -48,18 +48,18 @@ public class IcedSpear : ModProjectile
 				Projectile.timeLeft -= 24;
 			}
 
-			if (stickNPC != -1)
+			if (StickNPC != -1)
 			{
-				NPC stick = Main.npc[stickNPC];
+				NPC stick = Main.npc[StickNPC];
 				if (stick != null && stick.active)
 				{
-					Projectile.rotation = stick.rotation + relativeAngle;
-					Projectile.Center = stick.Center + relativePos.RotatedBy(stick.rotation + relativeAngle - hitTargetAngle) * stick.scale / hitTargetScale;
+					Projectile.rotation = stick.rotation + RelativeAngle;
+					Projectile.Center = stick.Center + RelativePos.RotatedBy(stick.rotation + RelativeAngle - HitTargetAngle) * stick.scale / HitTargetScale;
 					stick.AddBuff(BuffID.Frostburn, 5);
 				}
 				else
 				{
-					stickNPC = -1;
+					StickNPC = -1;
 				}
 			}
 			else
@@ -86,23 +86,23 @@ public class IcedSpear : ModProjectile
 		{
 			Projectile.timeLeft = 240;
 			Projectile.velocity = Utils.SafeNormalize(Main.MouseWorld - player.Center, new Vector2(0, -1 * player.gravDir));
-			Projectile.Center = player.Center + Projectile.velocity.RotatedBy(Math.PI * -0.5) * 20 * playerDir - Projectile.velocity * (power / 3f - 16);
+			Projectile.Center = player.Center + Projectile.velocity.RotatedBy(Math.PI * -0.5) * 20 * playerDir - Projectile.velocity * (Power / 3f - 16);
 			Projectile.rotation = (float)(Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + Math.PI * 0.25);
-			if (power < 100)
+			if (Power < 100)
 			{
-				power++;
+				Power++;
 			}
 
 			player.heldProj = Projectile.whoAmI;
-			player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation + (float)(Math.PI * 0.25 + Math.PI * 0.6 * playerDir - (power / 40d - 1.0) * playerDir));
+			player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation + (float)(Math.PI * 0.25 + Math.PI * 0.6 * playerDir - (Power / 40d - 1.0) * playerDir));
 			player.direction = playerDir;
 		}
 
-		if (!player.controlUseItem && !shot)
+		if (!player.controlUseItem && !Shot)
 		{
-			shot = true;
-			Projectile.velocity = Utils.SafeNormalize(Main.MouseWorld - player.Center, new Vector2(0, -1 * player.gravDir)) * (power + 100) / 8f;
-			Projectile.damage = (int)(Projectile.damage * (power + 100) / 100f);
+			Shot = true;
+			Projectile.velocity = Utils.SafeNormalize(Main.MouseWorld - player.Center, new Vector2(0, -1 * player.gravDir)) * (Power + 100) / 8f;
+			Projectile.damage = (int)(Projectile.damage * (Power + 100) / 100f);
 			SoundEngine.PlaySound(SoundID.Item1, Projectile.Center);
 		}
 		if (Projectile.velocity.Length() > 3f)
@@ -185,11 +185,11 @@ public class IcedSpear : ModProjectile
 				if (new Rectangle((int)Projectile.Center.X, (int)Projectile.Center.Y, 1, 1).Intersects(npc.Hitbox))
 				{
 					Projectile.velocity *= 0;
-					relativeAngle = Projectile.rotation - npc.rotation;
-					hitTargetAngle = Projectile.rotation;
-					relativePos = Projectile.Center - npc.Center;
-					hitTargetScale = npc.scale;
-					stickNPC = npc.whoAmI;
+					RelativeAngle = Projectile.rotation - npc.rotation;
+					HitTargetAngle = Projectile.rotation;
+					RelativePos = Projectile.Center - npc.Center;
+					HitTargetScale = npc.scale;
+					StickNPC = npc.whoAmI;
 					return true;
 				}
 			}

@@ -252,16 +252,16 @@ public class IchorRing : ModProjectile
 		{
 			Vector2 v0 = new Vector2(0, Projectile.ai[0] * Main.rand.NextFloat(0.9f, 1.2f) * energyValue).RotatedByRandom(MathHelper.TwoPi);
 
-			float Speed = 0.08f;
-			var d = Dust.NewDustDirect(Projectile.Center + v0 - new Vector2(4)/*Dust的Size=8x8*/, 0, 0, DustID.Ichor, -v0.Y * Speed, v0.X * Speed, 150, default, Main.rand.NextFloat(0.4f, 1.1f));
+			float speed = 0.08f;
+			var d = Dust.NewDustDirect(Projectile.Center + v0 - new Vector2(4)/*Dust的Size=8x8*/, 0, 0, DustID.Ichor, -v0.Y * speed, v0.X * speed, 150, default, Main.rand.NextFloat(0.4f, 1.1f));
 			d.noGravity = true;
-			d.velocity = v0.RotatedBy(-2f) * Speed;
+			d.velocity = v0.RotatedBy(-2f) * speed;
 			d.scale *= Energy / 600f;
 			if (Main.rand.NextBool(2))
 			{
 				var blood = new IchorDrop
 				{
-					Velocity = v0.RotatedBy(-2f) * Speed,
+					Velocity = v0.RotatedBy(-2f) * speed,
 					Active = true,
 					Visible = true,
 					Position = Projectile.Center + v0,

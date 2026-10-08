@@ -37,19 +37,19 @@ public class PylonStonePostProj_corrupt_explosion : NoTextureProjectile, IWarpPr
 				Active = true,
 				Visible = true,
 				MaxTime = 60,
-				radius = 0,
+				Radius = 0,
 			};
 			Ins.VFXManager.Add(darknessWave);
 		}
 	}
 
-	public void GenerateVFXExpolode(int Frequency, float mulVelocity = 1f)
+	public void GenerateVFXExpolode(int frequency, float mulVelocity = 1f)
 	{
 		if (Ins.VisualQuality.Low)
 		{
-			Frequency /= 3;
+			frequency /= 3;
 		}
-		for (int g = 0; g < Frequency * 3; g++)
+		for (int g = 0; g < frequency * 3; g++)
 		{
 			var cf = new CurseFlameDust
 			{
@@ -63,7 +63,7 @@ public class PylonStonePostProj_corrupt_explosion : NoTextureProjectile, IWarpPr
 			};
 			Ins.VFXManager.Add(cf);
 		}
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			Vector2 vel = new Vector2(0, Main.rand.NextFloat(1.65f, 3.5f)).RotatedByRandom(6.283) * mulVelocity;
 			var cf = new CurseFlameDust
@@ -78,7 +78,7 @@ public class PylonStonePostProj_corrupt_explosion : NoTextureProjectile, IWarpPr
 			};
 			Ins.VFXManager.Add(cf);
 		}
-		for (int g = 0; g < Frequency * 3; g++)
+		for (int g = 0; g < frequency * 3; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(2f, 6f)).RotatedByRandom(MathHelper.TwoPi);
 			var spark = new CurseFlameSparkDust

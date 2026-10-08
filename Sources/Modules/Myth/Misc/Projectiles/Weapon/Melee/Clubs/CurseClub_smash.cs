@@ -12,7 +12,7 @@ public class CurseClub_smash : ClubProjSmash
 		target.AddBuff(BuffID.CursedInferno, (int)(818 * Omega));
 	}
 
-	public bool smashed = false;
+	public bool Smashed = false;
 
 	public override void AI()
 	{
@@ -53,10 +53,10 @@ public class CurseClub_smash : ClubProjSmash
 				{
 					Position = Vector2.Lerp(Player.Center, pos, Main.rand.NextFloat(0.4f, 1.25f)),
 					Velocity = vel * 0.2f,
-					color = color,
-					timeleft = time,
-					maxTimeleft = time,
-					Scale = Main.rand.NextFloat(0.3f, 0.6f) * (smashed ? 1 : 0.5f),
+					Color = color,
+					TimeLeft = time,
+					MaxTimeLeft = time,
+					Scale = Main.rand.NextFloat(0.3f, 0.6f) * (Smashed ? 1 : 0.5f),
 				};
 				Ins.VFXManager.Add(fire);
 			}
@@ -96,7 +96,7 @@ public class CurseClub_smash : ClubProjSmash
 
 	public override void Smash(int level)
 	{
-		smashed = true;
+		Smashed = true;
 		for (int t = 0; t < 5; t++)
 		{
 			Vector2 vel = new Vector2(Main.rand.NextFloat(-15, 15), Main.rand.NextFloat(-10, -5)) * 1.5f * (1 + level * 0.3f);

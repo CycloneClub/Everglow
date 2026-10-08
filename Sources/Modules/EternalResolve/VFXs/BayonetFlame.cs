@@ -76,24 +76,24 @@ public class BayonetFlameDust : Visual
 		{
 			Timer++;
 		}
-		float pocession = 1 - Timer / MaxTime;
-		float c = pocession * Scale * 0.02f;
+		float progress = 1 - Timer / MaxTime;
+		float c = progress * Scale * 0.02f;
 		Lighting.AddLight(Position, c, c * 0.2f, 0);
 		Rotation = MathF.Atan2(Velocity.Y, Velocity.X);
 	}
 
 	public override void Draw()
 	{
-		float pocession = Timer / MaxTime;
+		float progress = Timer / MaxTime;
 		float timeValue = (float)(Main.time * 0.002);
 		Vector2 toCorner = new Vector2(0, Scale).RotatedBy(Rotation);
 		List<Vertex2D> bars = new List<Vertex2D>()
 		{
-			new Vertex2D(Position + toCorner, new Color(0, 0, pocession, 0f), new Vector3(ai[0], timeValue, 0)),
-			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 0.5), new Color(0, 1, pocession, 0f), new Vector3(ai[0], timeValue + 0.4f, 0)),
+			new Vertex2D(Position + toCorner, new Color(0, 0, progress, 0f), new Vector3(ai[0], timeValue, 0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 0.5), new Color(0, 1, progress, 0f), new Vector3(ai[0], timeValue + 0.4f, 0)),
 
-			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1.5), new Color(1, 0, pocession, 0f), new Vector3(ai[0] + 0.4f, timeValue, 0)),
-			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1), new Color(1, 1, pocession, 0f), new Vector3(ai[0] + 0.4f, timeValue + 0.4f, 0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1.5), new Color(1, 0, progress, 0f), new Vector3(ai[0] + 0.4f, timeValue, 0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1), new Color(1, 1, progress, 0f), new Vector3(ai[0] + 0.4f, timeValue + 0.4f, 0)),
 		};
 
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);

@@ -19,21 +19,21 @@ public class Thermoprobe : ModProjectile
 		Projectile.timeLeft = 60;
 		Projectile.tileCollide = false;
 		Projectile.aiStyle = -1;
-		oldPos = new Vector2[6];
-		oldRot = new float[6];
-		oldFrame = new int[6];
+		OldPositions = new Vector2[6];
+		OldRot = new float[6];
+		OldFrame = new int[6];
 	}
 
-	public Vector2[] oldPos;
-	public float[] oldRot;
-	public int[] oldFrame;
+	public Vector2[] OldPositions;
+	public float[] OldRot;
+	public int[] OldFrame;
 	public float DetectLightenValue;
 
 	public override void AI()
 	{
-		ProjectileUtils.TrackOldValue(oldPos, Projectile.Center);
-		ProjectileUtils.TrackOldValue(oldRot, Projectile.rotation);
-		ProjectileUtils.TrackOldValue(oldFrame, Projectile.frame);
+		ProjectileUtils.TrackOldValue(OldPositions, Projectile.Center);
+		ProjectileUtils.TrackOldValue(OldRot, Projectile.rotation);
+		ProjectileUtils.TrackOldValue(OldFrame, Projectile.frame);
 
 		if (Projectile.ai[0] > 0)
 		{
@@ -184,9 +184,9 @@ public class Thermoprobe : ModProjectile
 		}
 		Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
 		Vector2 origin = new Vector2(tex.Width, tex.Height / maxFrame) / 2;
-		for (int i = 0; i < oldPos.Length; i++)
+		for (int i = 0; i < OldPositions.Length; i++)
 		{
-			Main.EntitySpriteDraw(tex, oldPos[i] - Main.screenPosition, tex.Frame(1, maxFrame, 0, oldFrame[i]), lightColor * (float)Math.Pow(1 - (float)i / oldPos.Length, 1.5f) * 0.2f, oldRot[i] + MathHelper.PiOver2, origin, Projectile.scale, 0, 0);
+			Main.EntitySpriteDraw(tex, OldPositions[i] - Main.screenPosition, tex.Frame(1, maxFrame, 0, OldFrame[i]), lightColor * (float)Math.Pow(1 - (float)i / OldPositions.Length, 1.5f) * 0.2f, OldRot[i] + MathHelper.PiOver2, origin, Projectile.scale, 0, 0);
 		}
 		Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, tex.Frame(1, maxFrame, 0, Projectile.frame), lightColor, Projectile.rotation + MathHelper.PiOver2, origin, Projectile.scale, 0, 0);
 		if (DetectLightenValue > 0)

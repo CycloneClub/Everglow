@@ -72,7 +72,7 @@ public class TerraViewerHowitzer_grenade_fall_explosion : ModProjectile, IWarpPr
 		for (int x = 0; x < count; x++)
 		{
 			Vector2 newVelocity = new Vector2(0, MathF.Sqrt(Main.rand.NextFloat(1f)) * 12f).RotatedByRandom(MathHelper.TwoPi);
-			var somg = new MissleFlameDust
+			var smog = new MissleFlameDust
 			{
 				Velocity = newVelocity,
 				Active = true,
@@ -83,7 +83,7 @@ public class TerraViewerHowitzer_grenade_fall_explosion : ModProjectile, IWarpPr
 				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
-			Ins.VFXManager.Add(somg);
+			Ins.VFXManager.Add(smog);
 		}
 	}
 
@@ -92,7 +92,7 @@ public class TerraViewerHowitzer_grenade_fall_explosion : ModProjectile, IWarpPr
 		for (int x = 0; x < count; x++)
 		{
 			Vector2 newVelocity = new Vector2(0, MathF.Sqrt(Main.rand.NextFloat(1f)) * 8f).RotatedByRandom(MathHelper.TwoPi);
-			var somg = new MissleFlameDust
+			var smog = new MissleFlameDust
 			{
 				Velocity = newVelocity,
 				Active = true,
@@ -103,7 +103,7 @@ public class TerraViewerHowitzer_grenade_fall_explosion : ModProjectile, IWarpPr
 				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
-			Ins.VFXManager.Add(somg);
+			Ins.VFXManager.Add(smog);
 		}
 	}
 
