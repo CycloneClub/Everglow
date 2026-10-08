@@ -90,11 +90,11 @@ public class YoenLeZedElecticFlow : Visual
 		}
 		if (bars.Count < 2)
 		{
-			bars.Add(Vector2.zeroVector, Color.Transparent, Vector3.zero);
-			bars.Add(Vector2.zeroVector, Color.Transparent, Vector3.zero);
+			bars.Add(Position, Color.Transparent, Vector3.zero);
+			bars.Add(Position, Color.Transparent, Vector3.zero);
 
-			bars.Add(Vector2.zeroVector, Color.Transparent, Vector3.zero);
-			bars.Add(Vector2.zeroVector, Color.Transparent, Vector3.zero);
+			bars.Add(Position, Color.Transparent, Vector3.zero);
+			bars.Add(Position, Color.Transparent, Vector3.zero);
 		}
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);
 	}
