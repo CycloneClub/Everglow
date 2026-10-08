@@ -1,4 +1,3 @@
-using Everglow.Commons.Utilities;
 using Terraria.ModLoader.IO;
 using Terraria.UI;
 
@@ -18,21 +17,21 @@ public class EventSystem : ModSystem
 	{
 		if (!DrawInvasionProgress_Everglow())
 		{
-			DrawInvasionProgress_Vanilla();
+			Main.DrawInvasionProgress();
 		}
 		if (Main.HealthBarDrawSettings != 0)
 		{
 			Main.BigBossProgressBar.Draw(Main.spriteBatch);
 		}
 		return true;
-	});
+	}, InterfaceScaleType.UI);
 
 	private static LegacyGameInterfaceLayer layer_NoInvasion = new(LayerName, delegate
 	{
 		DrawInvasionProgress_Everglow();
 
 		return true;
-	});
+	}, InterfaceScaleType.UI);
 
 	private static bool DrawInvasionProgress_Everglow()
 	{
@@ -47,16 +46,6 @@ public class EventSystem : ModSystem
 		}
 
 		return false;
-	}
-
-	private static void DrawInvasionProgress_Vanilla()
-	{
-		var sBS = Main.spriteBatch.GetState().Value;
-		Main.spriteBatch.End();
-		Main.spriteBatch.Begin();
-		Main.DrawInvasionProgress();
-		Main.spriteBatch.End();
-		Main.spriteBatch.Begin(sBS);
 	}
 
 	private static void ReSortActives()

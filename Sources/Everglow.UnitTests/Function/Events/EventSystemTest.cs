@@ -3,6 +3,7 @@ using Everglow.Commons.Mechanics.Events;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.UI;
 
 namespace Everglow.UnitTests.Function.Events;
 
@@ -30,6 +31,45 @@ public class EventSystemTest
 		new EventSystem().Unload();
 		Main.netMode = oldMode;
 		Main.dedServ = oldDedServ;
+	}
+
+	[TestMethod]
+	[DataRow(true)]
+	[DataRow(false)]
+	public void EventLayerKeepsProgressBarsInUISpace(bool hasVanillaInvasionLayer)
+	{
+		var before = new LegacyGameInterfaceLayer("Before", () => true);
+		var minimap = new LegacyGameInterfaceLayer("Vanilla: Map / Minimap", () => true, InterfaceScaleType.UI);
+		var layers = new List<GameInterfaceLayer> { before };
+		if (hasVanillaInvasionLayer)
+		{
+			layers.Add(new LegacyGameInterfaceLayer("Vanilla: Invasion Progress Bars", () => true, InterfaceScaleType.UI));
+		}
+		layers.Add(minimap);
+
+		new EventSystem().ModifyInterfaceLayers(layers);
+
+		Assert.AreEqual(3, layers.Count);
+		Assert.AreSame(before, layers[0]);
+		Assert.AreSame(minimap, layers[2]);
+		Assert.AreEqual(InterfaceScaleType.UI, layers[1].ScaleType,
+			"Progress bars positioned at the screen edge must not use world zoom.");
+	}
+
+	[TestMethod]
+	public void HiddenReplicaEventDoesNotTouchTheSpriteBatch()
+	{
+		var e = new TestReplicaEvent();
+		bool oldPaused = Main.gamePaused;
+		try
+		{
+			Main.gamePaused = false;
+			e.Draw(null!);
+		}
+		finally
+		{
+			Main.gamePaused = oldPaused;
+		}
 	}
 
 	[TestMethod]
@@ -214,6 +254,10 @@ public class EventSystemTest
 		typeof(ModType).GetProperty(nameof(ModType.Mod))!.SetValue(e, new TestMod());
 		e.Register();
 		return e;
+	}
+
+	private sealed class TestReplicaEvent : ReplicaEvent
+	{
 	}
 
 	private sealed class TestMod : Mod
