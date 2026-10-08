@@ -3,6 +3,7 @@ using Everglow.Commons.Mechanics.Events;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.UI;
 
 namespace Everglow.UnitTests.Function.Events;
 
@@ -30,6 +31,82 @@ public class EventSystemTest
 		new EventSystem().Unload();
 		Main.netMode = oldMode;
 		Main.dedServ = oldDedServ;
+	}
+
+	[TestMethod]
+	[DataRow(true)]
+	[DataRow(false)]
+	public void EventSystemPreservesVanillaInterfaceLayers(bool hasVanillaInvasionLayer)
+	{
+		var before = new LegacyGameInterfaceLayer("Before", () => true);
+		var minimap = new LegacyGameInterfaceLayer("Vanilla: Map / Minimap", () => true, InterfaceScaleType.UI);
+		var layers = new List<GameInterfaceLayer> { before };
+		if (hasVanillaInvasionLayer)
+		{
+			layers.Add(new LegacyGameInterfaceLayer("Vanilla: Invasion Progress Bars", () => true, InterfaceScaleType.UI));
+		}
+		layers.Add(minimap);
+		var originalLayers = layers.ToArray();
+
+		new EventSystem().ModifyInterfaceLayers(layers);
+
+		CollectionAssert.AreEqual(originalLayers, layers);
+	}
+
+	[TestMethod]
+	[DataRow(false)]
+	[DataRow(true)]
+	public void InvasionDrawFallsBackWithoutForegroundEvents(bool hasBackgroundEvent)
+	{
+		var background = new TestEvent { Background = true };
+		if (hasBackgroundEvent)
+		{
+			EventSystem.Activate(background);
+		}
+		Assert.IsFalse(TryDrawEventInvasion(), "Without a foreground event the hook must fall back to vanilla.");
+		Assert.AreEqual(0, background.Draws);
+	}
+
+	[TestMethod]
+	public void InvasionDrawSelectsHighestRankedForegroundEvent()
+	{
+		var background = new TestEvent { Background = true, SortRank = 3 };
+		var foreground = new TestEvent { SortRank = 2 };
+		var lowerRank = new TestEvent { SortRank = 1 };
+		EventSystem.Activate(lowerRank);
+		EventSystem.Activate(background);
+		EventSystem.Activate(foreground);
+		Assert.IsTrue(TryDrawEventInvasion());
+		Assert.AreEqual(0, background.Draws);
+		Assert.AreEqual(1, foreground.Draws);
+		Assert.AreEqual(0, lowerRank.Draws);
+		EventSystem.Deactivate(foreground);
+		EventSystem.Deactivate(lowerRank);
+
+		Assert.IsFalse(TryDrawEventInvasion());
+	}
+
+	private static bool TryDrawEventInvasion()
+	{
+		var method = typeof(EventSystem).GetMethod("DrawInvasionProgress_Everglow", BindingFlags.Static | BindingFlags.NonPublic);
+		Assert.IsNotNull(method);
+		return method.CreateDelegate<Func<bool>>()();
+	}
+
+	[TestMethod]
+	public void HiddenReplicaEventDoesNotTouchTheSpriteBatch()
+	{
+		var e = new TestReplicaEvent();
+		bool oldPaused = Main.gamePaused;
+		try
+		{
+			Main.gamePaused = false;
+			e.Draw(null!);
+		}
+		finally
+		{
+			Main.gamePaused = oldPaused;
+		}
 	}
 
 	[TestMethod]
@@ -216,6 +293,10 @@ public class EventSystemTest
 		return e;
 	}
 
+	private sealed class TestReplicaEvent : ReplicaEvent
+	{
+	}
+
 	private sealed class TestMod : Mod
 	{
 		public override string Name => "EventTests";
@@ -223,6 +304,10 @@ public class EventSystemTest
 
 	private sealed class TestEvent : ModEvent
 	{
+		public bool Background;
+		public override bool IsBackground => Background;
+		public int Draws;
+		public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch sprite) => Draws++;
 		private readonly string name = Guid.NewGuid().ToString("N");
 		public override string Name => name;
 		public bool Synchronize;

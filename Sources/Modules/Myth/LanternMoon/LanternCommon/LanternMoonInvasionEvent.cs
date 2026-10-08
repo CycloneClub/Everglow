@@ -337,9 +337,6 @@ public class LanternMoonInvasionEvent : ReplicaEvent
 
 	public void DrawProgressBar(SpriteBatch spriteBatch)
 	{
-		SpriteBatchState sBS = spriteBatch.GetState().Value;
-		spriteBatch.End();
-		spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.EffectMatrix);
 		if (innerActive)
 		{
 			UIBarFadeTimer = 160;
@@ -355,6 +352,7 @@ public class LanternMoonInvasionEvent : ReplicaEvent
 			EventSystem.Deactivate(this);
 			return;
 		}
+		using var scope = (SpriteBatchState.Immediate with { TransformMatrix = Main.UIScaleMatrix }).BeginScope(spriteBatch);
 		float num = 0.5f + ProgressAlpha * 0.5f;
 		string text = string.Empty;
 		Color c = Color.White;
@@ -428,8 +426,5 @@ public class LanternMoonInvasionEvent : ReplicaEvent
 		Utils.DrawInvBG(spriteBatch, r3, c);
 		spriteBatch.Draw(Icon, r3.Left() + Vector2.UnitX * num * 8f, null, Color.White * ProgressAlpha, 0f, new Vector2(0f, Icon.Height / 2), texturescale, SpriteEffects.None, 0f);
 		Utils.DrawBorderString(spriteBatch, text, r3.Right() + Vector2.UnitX * num * -22f, Color.White * ProgressAlpha, num * 0.9f, 1f, 0.4f, -1);
-
-		spriteBatch.End();
-		spriteBatch.Begin(sBS);
 	}
 }
