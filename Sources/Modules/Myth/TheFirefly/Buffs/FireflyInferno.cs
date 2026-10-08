@@ -1,8 +1,6 @@
 using Everglow.Commons.VFX.CommonVFXDusts;
 using Everglow.Myth.TheFirefly.VFXs;
 using static Terraria.ModLoader.PlayerDrawLayer;
-using SteelSeries.GameSense;
-using Terraria;
 
 namespace Everglow.Myth.TheFirefly.Buffs;
 
@@ -13,6 +11,7 @@ public class FireflyInferno : ModBuff
 		Main.debuff[Type] = true;
 		Main.buffNoSave[Type] = true;
 	}
+
 	public override void Update(NPC npc, ref int buffIndex)
 	{
 		int buffDamage = (int)(5 + npc.velocity.Length() * 8);
@@ -35,6 +34,7 @@ public class FireflyInferno : ModBuff
 
 		base.Update(npc, ref buffIndex);
 	}
+
 	public override void Update(Player player, ref int buffIndex)
 	{
 		int buffDamage = (int)(5 + player.velocity.Length() * 8);
@@ -56,26 +56,28 @@ public class FireflyInferno : ModBuff
 
 		base.Update(player, ref buffIndex);
 	}
+
 	public void GenerateSmog(int frequency, Vector2 position, int scale)
 	{
 		float mulVelocity = scale * 0.5f;
 		for (int g = 0; g < frequency; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(2f, 4f)).RotatedByRandom(MathHelper.TwoPi);
-			var somg = new FireSmogDust
+			var smog = new FireSmogDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = position + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + newVelocity * 4,
-				maxTime = Main.rand.Next(37, 85),
-				scale = Main.rand.NextFloat(2f, 7f) * mulVelocity,
-				rotation = Main.rand.NextFloat(6.283f),
-				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 }
+				Position = position + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + newVelocity * 4,
+				MaxTime = Main.rand.Next(37, 85),
+				Scale = Main.rand.NextFloat(2f, 7f) * mulVelocity,
+				Rotation = Main.rand.NextFloat(6.283f),
+				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
-			Ins.VFXManager.Add(somg);
+			Ins.VFXManager.Add(smog);
 		}
 	}
+
 	public void GenerateFire(int frequency, Vector2 position, int scale)
 	{
 		float mulVelocity = scale * 0.5f;
@@ -84,18 +86,19 @@ public class FireflyInferno : ModBuff
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(0f, 4f)).RotatedByRandom(MathHelper.TwoPi);
 			var fire = new MothBlueFireDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = position + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + newVelocity * 4,
-				maxTime = Main.rand.Next(9, 55),
-				scale = Main.rand.NextFloat(2f, 7f) * mulVelocity,
-				rotation = Main.rand.NextFloat(6.283f),
-				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 }
+				Position = position + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + newVelocity * 4,
+				MaxTime = Main.rand.Next(9, 55),
+				Scale = Main.rand.NextFloat(2f, 7f) * mulVelocity,
+				Rotation = Main.rand.NextFloat(6.283f),
+				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
 			Ins.VFXManager.Add(fire);
 		}
 	}
+
 	public void GenerateSpark(int frequency, Vector2 position, int scale)
 	{
 		for (int g = 0; g < frequency; g++)
@@ -103,18 +106,18 @@ public class FireflyInferno : ModBuff
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0.4f, 2.6f)).RotatedByRandom(MathHelper.TwoPi) * scale;
 			var smog = new MothShimmerScaleDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = position + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-				coord = new Vector2(Main.rand.NextFloat(1f), Main.rand.NextFloat(1f)),
-				maxTime = Main.rand.Next(20, 85),
-				scale = Main.rand.NextFloat(0.4f, 3.4f),
-				rotation = Main.rand.NextFloat(6.283f),
-				rotation2 = Main.rand.NextFloat(6.283f),
-				omega = Main.rand.NextFloat(-30f, 30f),
-				phi = Main.rand.NextFloat(6.283f),
-				ai = new float[] { Main.rand.NextFloat(-0.005f, 0.005f) }
+				Position = position + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+				Coord = new Vector2(Main.rand.NextFloat(1f), Main.rand.NextFloat(1f)),
+				MaxTime = Main.rand.Next(20, 85),
+				Scale = Main.rand.NextFloat(0.4f, 3.4f),
+				Rotation = Main.rand.NextFloat(6.283f),
+				Rotation2 = Main.rand.NextFloat(6.283f),
+				Omega = Main.rand.NextFloat(-30f, 30f),
+				Phi = Main.rand.NextFloat(6.283f),
+				ai = new float[] { Main.rand.NextFloat(-0.005f, 0.005f) },
 			};
 			Ins.VFXManager.Add(smog);
 		}

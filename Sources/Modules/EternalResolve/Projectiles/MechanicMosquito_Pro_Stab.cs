@@ -149,12 +149,12 @@ namespace Everglow.EternalResolve.Projectiles
 		{
 			if (Main.rand.NextBool(7))
 			{
-				Vector2 pos = Projectile.position + Projectile.velocity.RotatedBy(Main.rand.NextFloat(-0.4f, 0.4f)) * Main.rand.NextFloat(0.4f, 8f);
-				Vector2 vel = Projectile.velocity.RotatedBy(Main.rand.NextFloat(-0.4f, 0.4f)) * Main.rand.NextFloat(0.04f, 0.08f);
-				if (Collision.CanHit(Projectile.Center - Projectile.velocity, 0, 0, pos + vel, 0, 0))
+				Vector2 position = Projectile.position + Projectile.velocity.RotatedBy(Main.rand.NextFloat(-0.4f, 0.4f)) * Main.rand.NextFloat(0.4f, 8f);
+				Vector2 velocity = Projectile.velocity.RotatedBy(Main.rand.NextFloat(-0.4f, 0.4f)) * Main.rand.NextFloat(0.04f, 0.08f);
+				if (Collision.CanHit(Projectile.Center - Projectile.velocity, 0, 0, position + velocity, 0, 0))
 				{
-					var dust = Dust.NewDustDirect(pos, Projectile.width, Projectile.height, ModContent.DustType<MosquitoLight>(), 0, 0, 0, default, Main.rand.NextFloat(0.45f, 0.9f));
-					dust.velocity = vel;
+					var dust = Dust.NewDustDirect(position, Projectile.width, Projectile.height, ModContent.DustType<MosquitoLight>(), 0, 0, 0, default, Main.rand.NextFloat(0.45f, 0.9f));
+					dust.velocity = velocity;
 				}
 			}
 			if (Main.rand.NextBool(7))
@@ -164,37 +164,37 @@ namespace Everglow.EternalResolve.Projectiles
 			base.AI();
 		}
 
-		public void GenerateVFX(int Frequency)
+		public void GenerateVFX(int frequency)
 		{
 			float mulVelocity = Main.rand.NextFloat(0.75f, 1.5f);
-			for (int g = 0; g < Frequency * 2; g++)
+			for (int g = 0; g < frequency * 2; g++)
 			{
 				Vector2 afterVelocity = new Vector2(0, Main.rand.NextFloat(40f)).RotatedByRandom(MathHelper.TwoPi);
 				float mulScale = Main.rand.NextFloat(6f, 14f);
 				var blood = new BloodDrop
 				{
-					velocity = afterVelocity * mulVelocity / mulScale + Projectile.velocity * Main.rand.NextFloat(7f),
+					Velocity = afterVelocity * mulVelocity / mulScale + Projectile.velocity * Main.rand.NextFloat(7f),
 					Active = true,
 					Visible = true,
-					position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity * Main.rand.NextFloat(70f),
-					maxTime = Main.rand.Next(32, 64) * (StabTimer / 200f),
-					scale = mulScale,
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity * Main.rand.NextFloat(70f),
+					MaxTime = Main.rand.Next(32, 64) * (StabTimer / 200f),
+					Scale = mulScale,
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 				};
 				Ins.VFXManager.Add(blood);
 			}
-			for (int g = 0; g < Frequency; g++)
+			for (int g = 0; g < frequency; g++)
 			{
 				Vector2 afterVelocity = new Vector2(0, Main.rand.NextFloat(3f)).RotatedByRandom(MathHelper.TwoPi);
 				var blood = new BloodSplash
 				{
-					velocity = afterVelocity * mulVelocity + Projectile.velocity * Main.rand.NextFloat(7f),
+					Velocity = afterVelocity * mulVelocity + Projectile.velocity * Main.rand.NextFloat(7f),
 					Active = true,
 					Visible = true,
-					position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity * Main.rand.NextFloat(70f),
-					maxTime = Main.rand.Next(32, 64) * Math.Max(StabTimer / 200f, 0),
-					scale = Main.rand.NextFloat(6f, 12f),
+					Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity * Main.rand.NextFloat(70f),
+					MaxTime = Main.rand.Next(32, 64) * Math.Max(StabTimer / 200f, 0),
+					Scale = Main.rand.NextFloat(6f, 12f),
 					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0, Main.rand.NextFloat(20.0f, 40.0f) },
 				};
 				Ins.VFXManager.Add(blood);

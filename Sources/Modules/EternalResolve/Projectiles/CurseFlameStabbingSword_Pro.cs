@@ -35,15 +35,15 @@ namespace Everglow.EternalResolve.Projectiles
 			Vector2 playerVel = Main.player[Projectile.owner].velocity;
 			Vector2 projVel = Projectile.velocity;
 			float rot = Main.rand.NextFloat(-0.4f, 0.4f);
-			Vector2 vel = playerVel + projVel.RotatedBy(Main.rand.NextFloat(-0.3f, 0.3f)) * Main.rand.NextFloat(0.75f, 3.25f);
-			Vector2 pos = Projectile.Center + projVel.RotatedBy(rot) * Main.rand.NextFloat(1f, 2.5f);
+			Vector2 velocity = playerVel + projVel.RotatedBy(Main.rand.NextFloat(-0.3f, 0.3f)) * Main.rand.NextFloat(0.75f, 3.25f);
+			Vector2 position = Projectile.Center + projVel.RotatedBy(rot) * Main.rand.NextFloat(1f, 2.5f);
 			var cf = new CursedFlame_flowDust
 			{
-				velocity = vel * 0.15f,
+				Velocity = velocity * 0.15f,
 				Active = true,
 				Visible = true,
-				position = pos,
-				maxTime = Main.rand.Next(12, 22),
+				Position = position,
+				MaxTime = Main.rand.Next(12, 22),
 				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), -rot * 0.02f, Main.rand.NextFloat(9.6f, 20f), Main.rand.NextFloat(-0.01f, 0.01f) },
 			};
 			Ins.VFXManager.Add(cf);
@@ -54,17 +54,17 @@ namespace Everglow.EternalResolve.Projectiles
 			Vector2 playerVel = Main.player[Projectile.owner].velocity;
 			Vector2 projVel = Projectile.velocity;
 			float rot = Main.rand.NextFloat(-0.3f, 0.3f);
-			Vector2 vel = playerVel + projVel.RotatedBy(Main.rand.NextFloat(-0.3f, 0.3f)) * Main.rand.NextFloat(0.75f, 2.25f);
-			Vector2 pos = Projectile.Center + projVel.RotatedBy(rot) * Main.rand.NextFloat(0.1f, 5f);
+			Vector2 velocity = playerVel + projVel.RotatedBy(Main.rand.NextFloat(-0.3f, 0.3f)) * Main.rand.NextFloat(0.75f, 2.25f);
+			Vector2 position = Projectile.Center + projVel.RotatedBy(rot) * Main.rand.NextFloat(0.1f, 5f);
 			var spark = new CurseFlameSparkDust
 			{
-				velocity = vel * 0.15f,
+				Velocity = velocity * 0.15f,
 				Active = true,
 				Visible = true,
-				position = pos,
-				maxTime = Main.rand.Next(137, 245),
-				scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(4f, 17.0f)),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = position,
+				MaxTime = Main.rand.Next(137, 245),
+				Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(4f, 17.0f)),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.02f, 0.02f) },
 			};
 			Ins.VFXManager.Add(spark);
@@ -76,16 +76,16 @@ namespace Everglow.EternalResolve.Projectiles
 			Lighting.AddLight(Projectile.Center + Projectile.velocity, 0.2f * value, 0.24f * value, 0.3f * value);
 			Player player = Main.player[Projectile.owner];
 			Texture2D itemTexture = TextureAssets.Item[Main.player[Projectile.owner].HeldItem.type].Value;
-			Texture2D Shadow = Commons.ModAsset.Star2_black.Value;
+			Texture2D shadow = Commons.ModAsset.Star2_black.Value;
 			Texture2D light = Commons.ModAsset.StabbingProjectile.Value;
 			Vector2 drawOrigin = light.Size() / 2f;
-			Vector2 drawShadowOrigin = Shadow.Size() / 2f;
+			Vector2 drawShadowOrigin = shadow.Size() / 2f;
 			Main.spriteBatch.Draw(itemTexture, ItemDraw.Postion - Main.screenPosition + Projectile.velocity, null, lightColor, ItemDraw.Rotation, itemTexture.Size() / 2f, ItemDraw.Size, ItemDraw.SpriteEffect, 0f);
 			if (OldColorFactor > 0)
 			{
 				for (int f = MaxDarkAttackUnitCount - 1; f > -1; f--)
 				{
-					Main.spriteBatch.Draw(Shadow, DarkAttackEffect[f].Postion - Main.screenPosition, null, Color.White * DarkAttackEffect[f].DarkShadow, DarkAttackEffect[f].Rotation, drawShadowOrigin, DarkAttackEffect[f].Size, SpriteEffects.None, 0f);
+					Main.spriteBatch.Draw(shadow, DarkAttackEffect[f].Postion - Main.screenPosition, null, Color.White * DarkAttackEffect[f].DarkShadow, DarkAttackEffect[f].Rotation, drawShadowOrigin, DarkAttackEffect[f].Size, SpriteEffects.None, 0f);
 					Color fadeLight = AttackColor * DarkAttackEffect[f].DarkShadow;
 					fadeLight.A = 0;
 					fadeLight = fadeLight * OldLightColorValue * MathF.Pow(LightColorValueMultiplicative_Modifier, f);
@@ -103,7 +103,7 @@ namespace Everglow.EternalResolve.Projectiles
 				{
 					if (CurrentColorFactor > 0)
 					{
-						Main.spriteBatch.Draw(Shadow, LightAttackEffect.Postion - Main.screenPosition, null, Color.White * CurrentColorFactor, LightAttackEffect.Rotation, drawShadowOrigin, LightAttackEffect.Size, SpriteEffects.None, 0f);
+						Main.spriteBatch.Draw(shadow, LightAttackEffect.Postion - Main.screenPosition, null, Color.White * CurrentColorFactor, LightAttackEffect.Rotation, drawShadowOrigin, LightAttackEffect.Size, SpriteEffects.None, 0f);
 					}
 					Color glowColor = AttackColor;
 					glowColor.A = 0;

@@ -9,54 +9,54 @@ public abstract class BluishGiantGentianGore : DissolveGore
 	{
 		LightValue = 0.4f;
 		base.Update();
-		if (timer < 10)
+		if (Timer < 10)
 		{
 			foreach (Projectile projectile in Main.projectile)
 			{
 				if (projectile.active)
 				{
-					if ((projectile.Center - position).Length() < 350)
+					if ((projectile.Center - Position).Length() < 350)
 					{
-						if (projectile.velocity.Length() > velocity.Length() * 0.2f)
+						if (projectile.velocity.Length() > Velocity.Length() * 0.2f)
 						{
-							velocity += projectile.velocity * 0.1f;
+							Velocity += projectile.velocity * 0.1f;
 							if (Main.rand.NextBool(6))
 							{
-								velocity += new Vector2(Main.rand.NextFloat(4f, 15f), 0).RotatedByRandom(MathHelper.TwoPi);
+								Velocity += new Vector2(Main.rand.NextFloat(4f, 15f), 0).RotatedByRandom(MathHelper.TwoPi);
 							}
 						}
 					}
 				}
 			}
 		}
-		float alpha2 = timer / (float)maxTime * 0.2f;
+		float alpha2 = Timer / (float)MaxTime * 0.2f;
 		alpha2 = Math.Clamp(alpha2, 0.0f, 1.0f);
 		alpha2 = MathF.Sin(alpha2 * MathHelper.Pi);
-		if (Main.rand.NextFloat(5, 100) < velocity.Length())
+		if (Main.rand.NextFloat(5, 100) < Velocity.Length())
 		{
-			Dust dust = Dust.NewDustDirect(position, width, height, ModContent.DustType<BluishGiantGentian_dust_wither>());
-			dust.velocity = velocity * Main.rand.NextFloat(0.2f, 0.8f);
+			Dust dust = Dust.NewDustDirect(Position, Width, Height, ModContent.DustType<BluishGiantGentian_dust_wither>());
+			dust.velocity = Velocity * Main.rand.NextFloat(0.2f, 0.8f);
 			dust.noGravity = true;
 			dust.alpha = 50;
 		}
-		Lighting.AddLight(position, new Vector3(0f, 0.5f, 1.8f) * alpha2 * width / 60f);
+		Lighting.AddLight(Position, new Vector3(0f, 0.5f, 1.8f) * alpha2 * Width / 60f);
 	}
 
 	public override void DrawDissolvePart()
 	{
-		Vector2 v0 = position + new Vector2(-width, -height).RotatedBy(rotation) * 0.5f * scale;
-		Vector2 v1 = position + new Vector2(width, -height).RotatedBy(rotation) * 0.5f * scale;
-		Vector2 v2 = position + new Vector2(-width, height).RotatedBy(rotation) * 0.5f * scale;
-		Vector2 v3 = position + new Vector2(width, height).RotatedBy(rotation) * 0.5f * scale;
+		Vector2 v0 = Position + new Vector2(-Width, -Height).RotatedBy(Rotation) * 0.5f * Scale;
+		Vector2 v1 = Position + new Vector2(Width, -Height).RotatedBy(Rotation) * 0.5f * Scale;
+		Vector2 v2 = Position + new Vector2(-Width, Height).RotatedBy(Rotation) * 0.5f * Scale;
+		Vector2 v3 = Position + new Vector2(Width, Height).RotatedBy(Rotation) * 0.5f * Scale;
 
-		alpha = 1;
+		Alpha = 1;
 
-		Color c0 = Lighting.GetColor((v0 / 16f).ToPoint()) * alpha;
-		Color c1 = Lighting.GetColor((v1 / 16f).ToPoint()) * alpha;
-		Color c2 = Lighting.GetColor((v2 / 16f).ToPoint()) * alpha;
-		Color c3 = Lighting.GetColor((v3 / 16f).ToPoint()) * alpha;
+		Color c0 = Lighting.GetColor((v0 / 16f).ToPoint()) * Alpha;
+		Color c1 = Lighting.GetColor((v1 / 16f).ToPoint()) * Alpha;
+		Color c2 = Lighting.GetColor((v2 / 16f).ToPoint()) * Alpha;
+		Color c3 = Lighting.GetColor((v3 / 16f).ToPoint()) * Alpha;
 
-		float alpha2 = timer / (float)maxTime * 0.2f;
+		float alpha2 = Timer / (float)MaxTime * 0.2f;
 		alpha2 = Math.Clamp(alpha2, -0.4f, 1.4f);
 		alpha2 = MathF.Sin(alpha2 * MathHelper.Pi);
 

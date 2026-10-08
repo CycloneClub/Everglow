@@ -1,12 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Everglow.Commons;
 using Everglow.Commons.Enums;
-using Everglow.Commons.VFX;
-using Everglow.Commons.VFX.CommonVFXDusts;
 
 namespace Everglow.Commons.VFX;
 
@@ -23,7 +15,6 @@ public class NormalPipeline : Pipeline
 	public override void EndRender()
 	{
 		Ins.Batch.End();
-
 	}
 
 	public override void Load()
@@ -35,66 +26,73 @@ public class NormalPipeline : Pipeline
 [Pipeline(typeof(NormalPipeline))]
 public class MEACVFX : Visual
 {
-	//MEACmod的VFX移植，方便代码迁移
+	// MEACmod的VFX移植，方便代码迁移
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawNPCs;
+
 	public Vector2 Velocity;
 	public Vector2 Center;
-	public float rotation = 0;
-	public string texPath = "MEAC/Images/Ball";
-	public Texture2D Texture => ModContent.Request<Texture2D>(texPath).Value;
-	public int timeleft, maxTimeleft = 50;
-	public float ai0, ai1, alpha = 1, scale = 1;
-	public bool isWarp = false;
-	public Color drawColor = Color.White;
-	public bool origDraw = true;
-	public bool canBatch = true;
-	public int extraUpdates = 0;
+	public float Rotation = 0;
+	public string TexPath = "MEAC/Images/Ball";
+
+	public Texture2D Texture => ModContent.Request<Texture2D>(TexPath).Value;
+
+	public int TimeLeft;
+	public int MaxTimeLeft = 50;
+	public float Ai0;
+	public float Ai1;
+	public float Alpha = 1;
+	public float Scale = 1;
+	public bool IsWarp = false;
+	public Color DrawColor = Color.White;
+	public bool OrigDraw = true;
+	public bool CanBatch = true;
+	public int ExtraUpdates = 0;
+
 	public MEACVFX()
 	{
 	}
 
 	public struct OwnerInfo
 	{
-		public bool hasOwner = false;
-		public Entity owner;
-		public Vector2 offset;
+		public bool HasOwner = false;
+		public Entity Owner;
+		public Vector2 Offset;
 
 		public OwnerInfo()
 		{
-			hasOwner = false;
-			owner = null;
-			offset = Vector2.Zero;
+			HasOwner = false;
+			Owner = null;
+			Offset = Vector2.Zero;
 		}
-	};
-
-	public OwnerInfo ownerInfo;
-
-	public void SetTimeleft(int t)
-	{
-		maxTimeleft = t;
-		timeleft = t;
 	}
 
+	public OwnerInfo OwnerData;
 
-	public static T Create<T>(Vector2 pos, Vector2 velocity, float rotation = 0, float scale = 1, Entity owner = null) where T : MEACVFX, new()
+	public void SetTimeLeft(int t)
 	{
+		MaxTimeLeft = t;
+		TimeLeft = t;
+	}
 
+	public static T Create<T>(Vector2 pos, Vector2 velocity, float rotation = 0, float scale = 1, Entity owner = null)
+		where T : MEACVFX, new()
+	{
 		MEACVFX ee = new T();
 		ee.SetDefault();
 		ee.Velocity = velocity;
 		ee.Center = pos;
-		ee.rotation = rotation;
-		ee.timeleft = ee.maxTimeleft;
+		ee.Rotation = rotation;
+		ee.TimeLeft = ee.MaxTimeLeft;
 		if (scale != 1)
 		{
-			ee.scale = scale;
+			ee.Scale = scale;
 		}
 
 		if (owner != null)
 		{
-			ee.ownerInfo.owner = owner;
-			ee.ownerInfo.hasOwner = true;
-			ee.ownerInfo.offset = pos - owner.Center;
+			ee.OwnerData.Owner = owner;
+			ee.OwnerData.HasOwner = true;
+			ee.OwnerData.Offset = pos - owner.Center;
 		}
 		Ins.VFXManager.Add(ee);
 		return ee as T;
@@ -103,45 +101,45 @@ public class MEACVFX : Visual
 	public virtual void SetDefault()
 	{
 	}
+
 	public virtual void AI()
 	{
 	}
+
 	public virtual void AIWithOwner(Entity owner)
 	{
-		Center = owner.Center + ownerInfo.offset;
-		ownerInfo.offset += Velocity;
+		Center = owner.Center + OwnerData.Offset;
+		OwnerData.Offset += Velocity;
 	}
 
 	public override void Update()
 	{
-		for (int i = 0; i < extraUpdates + 1; i++)
+		for (int i = 0; i < ExtraUpdates + 1; i++)
 		{
 			AI();
-			timeleft--;
-			if (timeleft <= 0)
+			TimeLeft--;
+			if (TimeLeft <= 0)
 			{
 				Kill();
 				return;
 			}
 			Center += Velocity;
-			if (ownerInfo.hasOwner)
+			if (OwnerData.HasOwner)
 			{
-				if (!ownerInfo.owner.active)
+				if (!OwnerData.Owner.active)
 				{
-					ownerInfo.hasOwner = false;
+					OwnerData.HasOwner = false;
 				}
 				else
 				{
-					AIWithOwner(ownerInfo.owner);
+					AIWithOwner(OwnerData.Owner);
 				}
 			}
 		}
-
-
 	}
+
 	public override void Draw()
 	{
-
-		Ins.Batch.Draw(Texture, Center - Main.screenPosition, null, drawColor * alpha, rotation, Texture.Size() / 2, scale, SpriteEffects.None);
+		Ins.Batch.Draw(Texture, Center - Main.screenPosition, null, DrawColor * Alpha, Rotation, Texture.Size() / 2, Scale, SpriteEffects.None);
 	}
 }

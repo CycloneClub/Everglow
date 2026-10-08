@@ -89,18 +89,18 @@ public class MiningPowerPickaxe_Proj : ModProjectile
 					Vector2 vel = new Vector2(0, Main.rand.NextFloat(0f, 4f)).RotatedByRandom(MathHelper.TwoPi);
 					vel.Y = -Math.Abs(vel.Y);
 					vel.X *= 0.2f;
-					var somg = new VaporDust3
+					var smog = new VaporDust3
 					{
-						velocity = vel,
+						Velocity = vel,
 						Active = true,
 						Visible = true,
-						position = dustCenter,
-						maxTime = Main.rand.Next(104, 220),
-						scale = Main.rand.NextFloat(10f, 25f),
-						rotation = Main.rand.NextFloat(6.283f),
+						Position = dustCenter,
+						MaxTime = Main.rand.Next(104, 220),
+						Scale = Main.rand.NextFloat(10f, 25f),
+						Rotation = Main.rand.NextFloat(6.283f),
 						ai = new float[] { Main.rand.NextFloat(-0.05f, -0.01f), 0 },
 					};
-					Ins.VFXManager.Add(somg);
+					Ins.VFXManager.Add(smog);
 				}
 
 				// Flame dust from pickaxe drill

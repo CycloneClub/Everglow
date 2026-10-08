@@ -81,13 +81,13 @@ public class FlameCylinder : TrailingProjectile
 		{
 			var spark = new RayDustDust
 			{
-				velocity = new Vector2(0, Main.rand.NextFloat(2, 6f)).RotateRandom(MathHelper.TwoPi),
+				Velocity = new Vector2(0, Main.rand.NextFloat(2, 6f)).RotateRandom(MathHelper.TwoPi),
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(57, 255),
-				scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(8f, 17.0f)),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(57, 255),
+				Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(8f, 17.0f)),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { 0 },
 			};
 			Ins.VFXManager.Add(spark);

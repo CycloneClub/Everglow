@@ -28,13 +28,13 @@ public class Living_Jawbone : ModNPC
 		{
 			var blood = new BloodDrop
 			{
-				velocity = NPC.velocity.RotatedBy(Main.rand.NextFloat(-0.1f, 0.1f)) * Main.rand.NextFloat(0.4f, 1.1f),
+				Velocity = NPC.velocity.RotatedBy(Main.rand.NextFloat(-0.1f, 0.1f)) * Main.rand.NextFloat(0.4f, 1.1f),
 				Active = true,
 				Visible = true,
-				position = NPC.Center,
-				maxTime = Main.rand.Next(54, 74),
-				scale = Main.rand.NextFloat(6f, 25f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = NPC.Center,
+				MaxTime = Main.rand.Next(54, 74),
+				Scale = Main.rand.NextFloat(6f, 25f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 			};
 			Ins.VFXManager.Add(blood);
@@ -43,12 +43,12 @@ public class Living_Jawbone : ModNPC
 		{
 			var blood = new BloodSplash
 			{
-				velocity = NPC.velocity.RotatedBy(Main.rand.NextFloat(-0.1f, 0.1f)) * Main.rand.NextFloat(0.4f, 1.1f),
+				Velocity = NPC.velocity.RotatedBy(Main.rand.NextFloat(-0.1f, 0.1f)) * Main.rand.NextFloat(0.4f, 1.1f),
 				Active = true,
 				Visible = true,
-				position = NPC.Center,
-				maxTime = Main.rand.Next(54, 74),
-				scale = Main.rand.NextFloat(6f, 18f),
+				Position = NPC.Center,
+				MaxTime = Main.rand.Next(54, 74),
+				Scale = Main.rand.NextFloat(6f, 18f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0, Main.rand.NextFloat(20.0f, 40.0f) },
 			};
 			Ins.VFXManager.Add(blood);

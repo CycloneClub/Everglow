@@ -9,52 +9,52 @@ public class CrystalClub_fly : ModProjectile, IWarpProjectile
 	/// <summary>
 	/// 角速度
 	/// </summary>
-	internal float Omega = 0;
+	public float Omega = 0;
 
 	/// <summary>
 	/// 角加速度
 	/// </summary>
-	internal float Beta = 0.005f;
+	public float Beta = 0.005f;
 
 	/// <summary>
 	/// 最大角速度(受近战攻速影响)
 	/// </summary>
-	internal float MaxOmega = 0.5f;
+	public float MaxOmega = 0.5f;
 
 	/// <summary>
 	/// 伤害半径
 	/// </summary>
-	internal float HitLength = 32f;
+	public float HitLength = 32f;
 
 	/// <summary>
 	/// 命中敌人后对于角速度的削减率(会根据敌人的击退抗性而再次降低)
 	/// </summary>
-	internal float StrikeOmegaDecrease = 0.9f;
+	public float StrikeOmegaDecrease = 0.9f;
 
 	/// <summary>
 	/// 命中敌人后最低剩余角速度(默认40%,即0.4)
 	/// </summary>
-	internal float MinStrikeOmegaDecrease = 0.4f;
+	public float MinStrikeOmegaDecrease = 0.4f;
 
 	/// <summary>
 	/// 内部参数，用来计算伤害
 	/// </summary>
-	internal int DamageStartValue = 0;
+	public int DamageStartValue = 0;
 
 	/// <summary>
 	/// 拖尾长度
 	/// </summary>
-	internal int trailLength = 10;
+	public int TrailLength = 10;
 
 	/// <summary>
 	/// 是否正在攻击
 	/// </summary>
-	internal bool isAttacking = false;
+	public bool IsAttacking = false;
 
 	/// <summary>
 	/// 拖尾
 	/// </summary>
-	internal Queue<Vector2> trailVecs;
+	public Queue<Vector2> TrailVecs;
 
 	public override void SetDefaults()
 	{
@@ -71,7 +71,7 @@ public class CrystalClub_fly : ModProjectile, IWarpProjectile
 
 		Projectile.DamageType = DamageClass.Melee;
 
-		trailVecs = new Queue<Vector2>(trailLength + 1);
+		TrailVecs = new Queue<Vector2>(TrailLength + 1);
 	}
 
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
@@ -93,11 +93,11 @@ public class CrystalClub_fly : ModProjectile, IWarpProjectile
 	{
 		float power = Math.Max(StrikeOmegaDecrease - MathF.Pow(target.knockBackResist / 4f, 3), MinStrikeOmegaDecrease);
 
-		ScreenShaker Gsplayer = Main.player[Projectile.owner].GetModPlayer<ScreenShaker>();
-		float ShakeStrength = Omega * 0.04f;
+		ScreenShaker gsPlayer = Main.player[Projectile.owner].GetModPlayer<ScreenShaker>();
+		float shakeStrength = Omega * 0.04f;
 		Omega *= power;
 		modifiers.FinalDamage /= power;
-		Gsplayer.FlyCamPosition = new Vector2(0, Math.Min(target.Hitbox.Width * target.Hitbox.Height / 12f * ShakeStrength, 100)).RotatedByRandom(6.283);
+		gsPlayer.FlyCamPosition = new Vector2(0, Math.Min(target.Hitbox.Width * target.Hitbox.Height / 12f * shakeStrength, 100)).RotatedByRandom(6.283);
 		modifiers.Knockback *= Omega * 3;
 	}
 
@@ -115,10 +115,10 @@ public class CrystalClub_fly : ModProjectile, IWarpProjectile
 		Player player = Main.player[Projectile.owner];
 		if (Projectile.timeLeft >= 550)
 		{
-			Vector2 MouseToPlayer = Main.MouseWorld - player.MountedCenter;
-			MouseToPlayer = Vector2.Normalize(MouseToPlayer) * 15f;
+			Vector2 mouseToPlayer = Main.MouseWorld - player.MountedCenter;
+			mouseToPlayer = Vector2.Normalize(mouseToPlayer) * 15f;
 			Vector2 vT0 = Main.MouseWorld - player.MountedCenter;
-			Projectile.Center = player.MountedCenter + MouseToPlayer;
+			Projectile.Center = player.MountedCenter + mouseToPlayer;
 			Projectile.spriteDirection = player.direction;
 			if (Projectile.timeLeft == 550)
 			{
@@ -146,12 +146,12 @@ public class CrystalClub_fly : ModProjectile, IWarpProjectile
 		Projectile.localNPCHitCooldown = (int)(MathF.PI / Math.Max(Omega, 0.157));
 
 		Projectile.rotation += Omega;
-		float MeleeSpeed = player.GetAttackSpeed(Projectile.DamageType);
+		float meleeSpeed = player.GetAttackSpeed(Projectile.DamageType);
 		if (Projectile.timeLeft > 550)
 		{
-			if (Omega < MeleeSpeed * MaxOmega)
+			if (Omega < meleeSpeed * MaxOmega)
 			{
-				Omega += Beta * MeleeSpeed * 4f;
+				Omega += Beta * meleeSpeed * 4f;
 			}
 		}
 		else
@@ -162,17 +162,17 @@ public class CrystalClub_fly : ModProjectile, IWarpProjectile
 			}
 			else
 			{
-				if (Omega < MeleeSpeed * MaxOmega + 0.2f)
+				if (Omega < meleeSpeed * MaxOmega + 0.2f)
 				{
-					Omega += Beta * MeleeSpeed * 0.04f;
+					Omega += Beta * meleeSpeed * 0.04f;
 				}
 			}
 		}
-		Vector2 HitRange = new Vector2(HitLength, HitLength * Projectile.spriteDirection).RotatedBy(Projectile.rotation) * Projectile.scale;
-		trailVecs.Enqueue(HitRange);
-		if (trailVecs.Count > trailLength)
+		Vector2 hitRange = new Vector2(HitLength, HitLength * Projectile.spriteDirection).RotatedBy(Projectile.rotation) * Projectile.scale;
+		TrailVecs.Enqueue(hitRange);
+		if (TrailVecs.Count > TrailLength)
 		{
-			trailVecs.Dequeue();
+			TrailVecs.Dequeue();
 		}
 
 		if (player.dead)
@@ -183,7 +183,7 @@ public class CrystalClub_fly : ModProjectile, IWarpProjectile
 		ProduceWaterRipples(new Vector2(HitLength * Projectile.scale));
 		float distance = 200f;
 
-		if (target == -1)
+		if (Target == -1)
 		{
 			foreach (var npc in Main.npc)
 			{
@@ -197,7 +197,7 @@ public class CrystalClub_fly : ModProjectile, IWarpProjectile
 							{
 								if ((npc.Center - Projectile.Center).Length() < distance)
 								{
-									target = npc.whoAmI;
+									Target = npc.whoAmI;
 									distance = (npc.Center - Projectile.Center).Length();
 								}
 							}
@@ -206,14 +206,14 @@ public class CrystalClub_fly : ModProjectile, IWarpProjectile
 				}
 			}
 		}
-		if (target >= 0)
+		if (Target >= 0)
 		{
-			if (!Main.npc[target].active)
+			if (!Main.npc[Target].active)
 			{
-				target = -1;
+				Target = -1;
 				return;
 			}
-			Vector2 addV = (Main.npc[target].Center - Projectile.Center).SafeNormalize(Vector2.Zero);
+			Vector2 addV = (Main.npc[Target].Center - Projectile.Center).SafeNormalize(Vector2.Zero);
 			Projectile.velocity = addV * Projectile.velocity.Length() * 0.15f + Projectile.velocity * 0.9f;
 
 			if (Projectile.timeLeft > 100)
@@ -226,7 +226,7 @@ public class CrystalClub_fly : ModProjectile, IWarpProjectile
 		}
 	}
 
-	internal int target = -1;
+	public int Target = -1;
 
 	public override bool PreDraw(ref Color lightColor)
 	{
@@ -253,24 +253,24 @@ public class CrystalClub_fly : ModProjectile, IWarpProjectile
 
 	public void PostPreDraw()
 	{
-		List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(trailVecs.ToList()); // 平滑
-		var SmoothTrail = new List<Vector2>();
-		for (int x = 0; x < SmoothTrailX.Count - 1; x++)
+		List<Vector2> smoothTrailX = GraphicsUtils.CatmullRom(TrailVecs.ToList()); // 平滑
+		var smoothTrail = new List<Vector2>();
+		for (int x = 0; x < smoothTrailX.Count - 1; x++)
 		{
-			SmoothTrail.Add(SmoothTrailX[x]);
+			smoothTrail.Add(smoothTrailX[x]);
 		}
-		if (trailVecs.Count != 0)
+		if (TrailVecs.Count != 0)
 		{
-			SmoothTrail.Add(trailVecs.ToArray()[trailVecs.Count - 1]);
+			smoothTrail.Add(TrailVecs.ToArray()[TrailVecs.Count - 1]);
 		}
 
-		int length = SmoothTrail.Count;
+		int length = smoothTrail.Count;
 		if (length <= 3)
 		{
 			return;
 		}
 
-		Vector2[] trail = SmoothTrail.ToArray();
+		Vector2[] trail = smoothTrail.ToArray();
 		var bars = new List<Vertex2D>();
 
 		for (int i = 0; i < length; i++)
@@ -298,15 +298,15 @@ public class CrystalClub_fly : ModProjectile, IWarpProjectile
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) * Main.GameViewMatrix.TransformationMatrix;
 
-		Effect MeleeTrail = ModAsset.CrystalClubTrail.Value;
-		MeleeTrail.Parameters["uTransform"].SetValue(model * projection);
+		Effect meleeTrail = ModAsset.CrystalClubTrail.Value;
+		meleeTrail.Parameters["uTransform"].SetValue(model * projection);
 		Main.graphics.GraphicsDevice.Textures[0] = ModContent.Request<Texture2D>(TrailShapeTex(), ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 
-		MeleeTrail.Parameters["tex1"].SetValue(ModAsset.CrystalClub_fly.Value);
+		meleeTrail.Parameters["tex1"].SetValue(ModAsset.CrystalClub_fly.Value);
 		var lightColor = Lighting.GetColor((int)(Projectile.Center.X / 16), (int)(Projectile.Center.Y / 16)).ToVector4();
 		lightColor.W = 0.7f * Omega;
-		MeleeTrail.Parameters["Light"].SetValue(lightColor);
-		MeleeTrail.CurrentTechnique.Passes["TrailByOrigTex"].Apply();
+		meleeTrail.Parameters["Light"].SetValue(lightColor);
+		meleeTrail.CurrentTechnique.Passes["TrailByOrigTex"].Apply();
 
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		Main.spriteBatch.End();
@@ -315,24 +315,24 @@ public class CrystalClub_fly : ModProjectile, IWarpProjectile
 
 	public void DrawTrail()
 	{
-		List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(trailVecs.ToList()); // 平滑
-		var SmoothTrail = new List<Vector2>();
-		for (int x = 0; x < SmoothTrailX.Count - 1; x++)
+		List<Vector2> smoothTrailX = GraphicsUtils.CatmullRom(TrailVecs.ToList()); // 平滑
+		var smoothTrail = new List<Vector2>();
+		for (int x = 0; x < smoothTrailX.Count - 1; x++)
 		{
-			SmoothTrail.Add(SmoothTrailX[x]);
+			smoothTrail.Add(smoothTrailX[x]);
 		}
-		if (trailVecs.Count != 0)
+		if (TrailVecs.Count != 0)
 		{
-			SmoothTrail.Add(trailVecs.ToArray()[trailVecs.Count - 1]);
+			smoothTrail.Add(TrailVecs.ToArray()[TrailVecs.Count - 1]);
 		}
 
-		int length = SmoothTrail.Count;
+		int length = smoothTrail.Count;
 		if (length <= 3)
 		{
 			return;
 		}
 
-		Vector2[] trail = SmoothTrail.ToArray();
+		Vector2[] trail = smoothTrail.ToArray();
 		var bars = new List<Vertex2D>();
 
 		float fade = Omega * 0.6f + 0.1f;
@@ -379,24 +379,24 @@ public class CrystalClub_fly : ModProjectile, IWarpProjectile
 	public void DrawWarp(VFXBatch spriteBatch)
 	{
 		float warpvalue = Omega * 0.03f;
-		List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(trailVecs.ToList()); // 平滑
-		var SmoothTrail = new List<Vector2>();
-		for (int x = 0; x < SmoothTrailX.Count - 1; x++)
+		List<Vector2> smoothTrailX = GraphicsUtils.CatmullRom(TrailVecs.ToList()); // 平滑
+		var smoothTrail = new List<Vector2>();
+		for (int x = 0; x < smoothTrailX.Count - 1; x++)
 		{
-			SmoothTrail.Add(SmoothTrailX[x]);
+			smoothTrail.Add(smoothTrailX[x]);
 		}
-		if (trailVecs.Count != 0)
+		if (TrailVecs.Count != 0)
 		{
-			SmoothTrail.Add(trailVecs.ToArray()[trailVecs.Count - 1]);
+			smoothTrail.Add(TrailVecs.ToArray()[TrailVecs.Count - 1]);
 		}
 
-		int length = SmoothTrail.Count;
+		int length = smoothTrail.Count;
 		if (length <= 3)
 		{
 			return;
 		}
 
-		Vector2[] trail = SmoothTrail.ToArray();
+		Vector2[] trail = smoothTrail.ToArray();
 		var bars = new List<Vertex2D>();
 		for (int i = 0; i < length; i++)
 		{
@@ -423,21 +423,21 @@ public class CrystalClub_fly : ModProjectile, IWarpProjectile
 			}
 			if (dir - dir1 > 0.5)
 			{
-				var MidValue = (1 - dir) / (1 - dir + dir1);
-				var MidPoint = MidValue * trail[i] + (1 - MidValue) * trail[i - 1];
+				var midValue = (1 - dir) / (1 - dir + dir1);
+				var midPoint = midValue * trail[i] + (1 - midValue) * trail[i - 1];
 				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(0, warpvalue, 0, 1), new Vector3(factor, 1, 1)));
-				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition + MidPoint * Projectile.scale * 1.1f, new Color(0, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
+				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition + midPoint * Projectile.scale * 1.1f, new Color(0, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
 				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(1, warpvalue, 0, 1), new Vector3(factor, 1, 1)));
-				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition + MidPoint * Projectile.scale * 1.1f, new Color(1, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
+				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition + midPoint * Projectile.scale * 1.1f, new Color(1, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
 			}
 			if (dir1 - dir > 0.5)
 			{
-				var MidValue = (1 - dir1) / (1 - dir1 + dir);
-				var MidPoint = MidValue * trail[i - 1] + (1 - MidValue) * trail[i];
+				var midValue = (1 - dir1) / (1 - dir1 + dir);
+				var midPoint = midValue * trail[i - 1] + (1 - midValue) * trail[i];
 				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(1, warpvalue, 0, 1), new Vector3(factor, 1, 1)));
-				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition + MidPoint * Projectile.scale * 1.1f, new Color(1, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
+				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition + midPoint * Projectile.scale * 1.1f, new Color(1, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
 				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(0, warpvalue, 0, 1), new Vector3(factor, 1, 1)));
-				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition + MidPoint * Projectile.scale * 1.1f, new Color(0, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
+				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition + midPoint * Projectile.scale * 1.1f, new Color(0, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
 			}
 
 			bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(dir, warpvalue, 0, 1), new Vector3(factor, 1, 1)));
@@ -471,21 +471,21 @@ public class CrystalClub_fly : ModProjectile, IWarpProjectile
 
 			if (dir - dir1 > 0.5)
 			{
-				var MidValue = (1 - dir) / (1 - dir + dir1);
-				var MidPoint = MidValue * trail[i] + (1 - MidValue) * trail[i - 1];
+				var midValue = (1 - dir) / (1 - dir + dir1);
+				var midPoint = midValue * trail[i] + (1 - midValue) * trail[i - 1];
 				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(0, warpvalue, 0, 1), new Vector3(factor, 1, 1)));
-				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition - MidPoint * Projectile.scale * 1.1f, new Color(0, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
+				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition - midPoint * Projectile.scale * 1.1f, new Color(0, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
 				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(1, warpvalue, 0, 1), new Vector3(factor, 1, 1)));
-				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition - MidPoint * Projectile.scale * 1.1f, new Color(1, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
+				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition - midPoint * Projectile.scale * 1.1f, new Color(1, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
 			}
 			if (dir1 - dir > 0.5)
 			{
-				var MidValue = (1 - dir1) / (1 - dir1 + dir);
-				var MidPoint = MidValue * trail[i - 1] + (1 - MidValue) * trail[i];
+				var midValue = (1 - dir1) / (1 - dir1 + dir);
+				var midPoint = midValue * trail[i - 1] + (1 - midValue) * trail[i];
 				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(1, warpvalue, 0, 1), new Vector3(factor, 1, 1)));
-				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition - MidPoint * Projectile.scale * 1.1f, new Color(1, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
+				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition - midPoint * Projectile.scale * 1.1f, new Color(1, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
 				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(0, warpvalue, 0, 1), new Vector3(factor, 1, 1)));
-				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition - MidPoint * Projectile.scale * 1.1f, new Color(0, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
+				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition - midPoint * Projectile.scale * 1.1f, new Color(0, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
 			}
 
 			bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(dir, warpvalue, 0, 1), new Vector3(factor, 1, 1)));
@@ -505,8 +505,8 @@ public class CrystalClub_fly : ModProjectile, IWarpProjectile
 	public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 	{
 		float point = 0;
-		Vector2 HitRange = new Vector2(HitLength, HitLength * Projectile.spriteDirection).RotatedBy(Projectile.rotation) * Projectile.scale;
-		if (Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center - HitRange, Projectile.Center + HitRange, 10 * HitLength / 32f * Omega / 0.3f, ref point) && Projectile.timeLeft < 550)
+		Vector2 hitRange = new Vector2(HitLength, HitLength * Projectile.spriteDirection).RotatedBy(Projectile.rotation) * Projectile.scale;
+		if (Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center - hitRange, Projectile.Center + hitRange, 10 * HitLength / 32f * Omega / 0.3f, ref point) && Projectile.timeLeft < 550)
 		{
 			return true;
 		}
@@ -517,9 +517,9 @@ public class CrystalClub_fly : ModProjectile, IWarpProjectile
 	{
 		var shaderData = (WaterShaderData)Terraria.Graphics.Effects.Filters.Scene["WaterDistortion"].GetShader();
 		float waveSine = 1f * (float)Math.Sin(Main.GlobalTimeWrappedHourly * 20f);
-		Vector2 HitRange = new Vector2(HitLength, -HitLength).RotatedBy(Projectile.rotation) * Projectile.scale;
-		Vector2 ripplePos = Projectile.Center + HitRange;
-		Vector2 ripplePosII = Projectile.Center - HitRange;
+		Vector2 hitRange = new Vector2(HitLength, -HitLength).RotatedBy(Projectile.rotation) * Projectile.scale;
+		Vector2 ripplePos = Projectile.Center + hitRange;
+		Vector2 ripplePosII = Projectile.Center - hitRange;
 		Color waveData = new Color(0.5f, 0.1f * Math.Sign(waveSine) + 0.5f, 0f, 1f) * Math.Abs(waveSine);
 		shaderData.QueueRipple(ripplePos, waveData, beamDims, RippleShape.Square, Projectile.rotation + MathHelper.Pi / 2f);
 		shaderData.QueueRipple(ripplePosII, waveData, beamDims, RippleShape.Square, Projectile.rotation + MathHelper.Pi / 2f);
@@ -538,26 +538,26 @@ public class CrystalClub_fly : ModProjectile, IWarpProjectile
 			Vector2 vel = new Vector2(0, -Main.rand.NextFloat(5, 12)).RotatedBy(t / 5f * MathHelper.TwoPi + Main.rand.NextFloat(-0.24f, 0.24f) + ranRot);
 			var crystal = new HolyCrystal
 			{
-				velocity = vel,
+				Velocity = vel,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center - vel * 2,
-				maxTime = Main.rand.Next(76, 84),
-				scale = Main.rand.Next(6, 10),
+				Position = Projectile.Center - vel * 2,
+				MaxTime = Main.rand.Next(76, 84),
+				Scale = Main.rand.Next(6, 10),
 				ai = new float[] { Main.rand.NextFloat(100f), Main.rand.NextFloat(1f), Projectile.damage * 0.5f },
 			};
 			Ins.VFXManager.Add(crystal);
 		}
-		float Rnd = Main.rand.NextFloat(6.283f);
+		float rnd = Main.rand.NextFloat(6.283f);
 		for (int d = 0; d < 9; d++)
 		{
-			Vector2 v0 = new Vector2(0, 0.7f).RotatedBy(d / 4.5 * Math.PI + Rnd) * 5;
+			Vector2 v0 = new Vector2(0, 0.7f).RotatedBy(d / 4.5 * Math.PI + rnd) * 5;
 			var p = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, v0, ProjectileID.CrystalShard, Projectile.damage / 2, Projectile.knockBack * 0.1f, Projectile.owner);
 			p.scale = 1.6f;
 		}
 		for (int d = 0; d < 9; d++)
 		{
-			Vector2 v0 = new Vector2(0, 1.2f).RotatedBy((d + 0.5) / 4.5 * Math.PI + Rnd) * 5;
+			Vector2 v0 = new Vector2(0, 1.2f).RotatedBy((d + 0.5) / 4.5 * Math.PI + rnd) * 5;
 			var p = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, v0, ProjectileID.CrystalShard, Projectile.damage / 2, Projectile.knockBack * 0.1f, Projectile.owner);
 			p.scale = 2.4f;
 		}
@@ -579,9 +579,9 @@ public class CrystalClub_fly : ModProjectile, IWarpProjectile
 					break;
 			}
 			float scale = Main.rand.NextFloat(0.4f, 2.1f);
-			var D = Dust.NewDustDirect(Projectile.Center - new Vector2(4)/*Dust的Size=8x8*/, 0, 0, type, 0, 0, 150, default, scale);
-			D.noGravity = true;
-			D.velocity = new Vector2(0, Main.rand.NextFloat(10f)).RotatedByRandom(6.283) * scale;
+			var dust = Dust.NewDustDirect(Projectile.Center - new Vector2(4)/*Dust的Size=8x8*/, 0, 0, type, 0, 0, 150, default, scale);
+			dust.noGravity = true;
+			dust.velocity = new Vector2(0, Main.rand.NextFloat(10f)).RotatedByRandom(6.283) * scale;
 		}
 		for (int d = 0; d < 40; d += 1)
 		{
@@ -601,9 +601,9 @@ public class CrystalClub_fly : ModProjectile, IWarpProjectile
 					break;
 			}
 			float scale = Main.rand.NextFloat(0.4f, 1.1f);
-			var D = Dust.NewDustDirect(Projectile.Center - new Vector2(4)/*Dust的Size=8x8*/, 0, 0, type, 0, 0, 150, default, scale);
-			D.noGravity = true;
-			D.velocity = new Vector2(0, Main.rand.NextFloat(20f)).RotatedByRandom(6.283) * scale;
+			var dust = Dust.NewDustDirect(Projectile.Center - new Vector2(4)/*Dust的Size=8x8*/, 0, 0, type, 0, 0, 150, default, scale);
+			dust.noGravity = true;
+			dust.velocity = new Vector2(0, Main.rand.NextFloat(20f)).RotatedByRandom(6.283) * scale;
 		}
 		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<CrystalClub_fly_Explosion>(), Projectile.damage / 2, Projectile.knockBack * 0.1f, Projectile.owner, 8);
 	}

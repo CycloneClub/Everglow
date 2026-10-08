@@ -89,13 +89,13 @@ public class GoldRoundYoyo : YoyoProjectile
 
 		var spark = new RayDustDust
 		{
-			velocity = new Vector2(0, Main.rand.NextFloat(0, 4f)).RotateRandom(MathHelper.TwoPi),
+			Velocity = new Vector2(0, Main.rand.NextFloat(0, 4f)).RotateRandom(MathHelper.TwoPi),
 			Active = true,
 			Visible = true,
-			position = Projectile.Center,
-			maxTime = Main.rand.Next(57, 155),
-			scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(1f, 7.0f)),
-			rotation = Main.rand.NextFloat(6.283f),
+			Position = Projectile.Center,
+			MaxTime = Main.rand.Next(57, 155),
+			Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(1f, 7.0f)),
+			Rotation = Main.rand.NextFloat(6.283f),
 			ai = new float[] { 0, 0 },
 		};
 		Ins.VFXManager.Add(spark);
@@ -117,13 +117,13 @@ public class GoldRoundYoyo : YoyoProjectile
 			{
 				var spark = new RayDustDust
 				{
-					velocity = new Vector2(0, Main.rand.NextFloat(0, 16f)).RotateRandom(MathHelper.TwoPi),
+					Velocity = new Vector2(0, Main.rand.NextFloat(0, 16f)).RotateRandom(MathHelper.TwoPi),
 					Active = true,
 					Visible = true,
-					position = Projectile.Center,
-					maxTime = Main.rand.Next(57, 255),
-					scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(4f, 17.0f)),
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = Projectile.Center,
+					MaxTime = Main.rand.Next(57, 255),
+					Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(4f, 17.0f)),
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { 0 },
 				};
 				Ins.VFXManager.Add(spark);

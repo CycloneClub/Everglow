@@ -10,52 +10,52 @@ public class IchorClub_fly : ModProjectile, IWarpProjectile
 	/// <summary>
 	/// 角速度
 	/// </summary>
-	internal float Omega = 0;
+	public float Omega = 0;
 
 	/// <summary>
 	/// 角加速度
 	/// </summary>
-	internal float Beta = 0.005f;
+	public float Beta = 0.005f;
 
 	/// <summary>
 	/// 最大角速度(受近战攻速影响)
 	/// </summary>
-	internal float MaxOmega = 0.5f;
+	public float MaxOmega = 0.5f;
 
 	/// <summary>
 	/// 伤害半径
 	/// </summary>
-	internal float HitLength = 32f;
+	public float HitLength = 32f;
 
 	/// <summary>
 	/// 命中敌人后对于角速度的削减率(会根据敌人的击退抗性而再次降低)
 	/// </summary>
-	internal float StrikeOmegaDecrease = 0.9f;
+	public float StrikeOmegaDecrease = 0.9f;
 
 	/// <summary>
 	/// 命中敌人后最低剩余角速度(默认40%,即0.4)
 	/// </summary>
-	internal float MinStrikeOmegaDecrease = 0.4f;
+	public float MinStrikeOmegaDecrease = 0.4f;
 
 	/// <summary>
 	/// 内部参数，用来计算伤害
 	/// </summary>
-	internal int DamageStartValue = 0;
+	public int DamageStartValue = 0;
 
 	/// <summary>
 	/// 拖尾长度
 	/// </summary>
-	internal int trailLength = 10;
+	public int TrailLength = 10;
 
 	/// <summary>
 	/// 是否正在攻击
 	/// </summary>
-	internal bool isAttacking = false;
+	public bool IsAttacking = false;
 
 	/// <summary>
 	/// 拖尾
 	/// </summary>
-	internal Queue<Vector2> trailVecs;
+	public Queue<Vector2> TrailVecs;
 	private float vfxTimer = 0;
 
 	public override void SetDefaults()
@@ -73,7 +73,7 @@ public class IchorClub_fly : ModProjectile, IWarpProjectile
 
 		Projectile.DamageType = DamageClass.Melee;
 
-		trailVecs = new Queue<Vector2>(trailLength + 1);
+		TrailVecs = new Queue<Vector2>(TrailLength + 1);
 		vfxTimer = 0;
 	}
 
@@ -88,10 +88,10 @@ public class IchorClub_fly : ModProjectile, IWarpProjectile
 		}
 
 		v0 = v0.RotatedBy(Projectile.rotation);
-		float Speed = Math.Min(Omega * 0.5f, 0.221f);
-		var D = Dust.NewDustDirect(Projectile.Center + v0 - new Vector2(4)/*Dust的Size=8x8*/, 0, 0, DustID.Ichor, -v0.Y * Speed, v0.X * Speed, 150, default, Main.rand.NextFloat(0.4f, 1.1f));
-		D.noGravity = true;
-		D.velocity = new Vector2(-v0.Y * Speed, v0.X * Speed);
+		float speed = Math.Min(Omega * 0.5f, 0.221f);
+		var d = Dust.NewDustDirect(Projectile.Center + v0 - new Vector2(4)/*Dust的Size=8x8*/, 0, 0, DustID.Ichor, -v0.Y * speed, v0.X * speed, 150, default, Main.rand.NextFloat(0.4f, 1.1f));
+		d.noGravity = true;
+		d.velocity = new Vector2(-v0.Y * speed, v0.X * speed);
 	}
 
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
@@ -113,11 +113,11 @@ public class IchorClub_fly : ModProjectile, IWarpProjectile
 	{
 		float power = Math.Max(StrikeOmegaDecrease - MathF.Pow(target.knockBackResist / 4f, 3), MinStrikeOmegaDecrease);
 
-		ScreenShaker Gsplayer = Main.player[Projectile.owner].GetModPlayer<ScreenShaker>();
-		float ShakeStrength = Omega * 0.04f;
+		ScreenShaker gsPlayer = Main.player[Projectile.owner].GetModPlayer<ScreenShaker>();
+		float shakeStrength = Omega * 0.04f;
 		Omega *= power;
 		modifiers.FinalDamage /= power;
-		Gsplayer.FlyCamPosition = new Vector2(0, Math.Min(target.Hitbox.Width * target.Hitbox.Height / 12f * ShakeStrength, 100)).RotatedByRandom(6.283);
+		gsPlayer.FlyCamPosition = new Vector2(0, Math.Min(target.Hitbox.Width * target.Hitbox.Height / 12f * shakeStrength, 100)).RotatedByRandom(6.283);
 		modifiers.HitDirectionOverride = target.Center.X > Main.player[Projectile.owner].Center.X ? 1 : -1;
 		modifiers.Knockback *= Omega * 3;
 	}
@@ -136,10 +136,10 @@ public class IchorClub_fly : ModProjectile, IWarpProjectile
 		Player player = Main.player[Projectile.owner];
 		if (Projectile.timeLeft >= 550)
 		{
-			Vector2 MouseToPlayer = Main.MouseWorld - player.MountedCenter;
-			MouseToPlayer = Vector2.Normalize(MouseToPlayer) * 15f;
+			Vector2 mouseToPlayer = Main.MouseWorld - player.MountedCenter;
+			mouseToPlayer = Vector2.Normalize(mouseToPlayer) * 15f;
 			Vector2 vT0 = Main.MouseWorld - player.MountedCenter;
-			Projectile.Center = player.MountedCenter + MouseToPlayer;
+			Projectile.Center = player.MountedCenter + mouseToPlayer;
 			Projectile.spriteDirection = player.direction;
 			if (Projectile.timeLeft == 550)
 			{
@@ -164,12 +164,12 @@ public class IchorClub_fly : ModProjectile, IWarpProjectile
 		Projectile.localNPCHitCooldown = (int)(MathF.PI / Math.Max(Omega, 0.157));
 
 		Projectile.rotation += Omega;
-		float MeleeSpeed = player.GetAttackSpeed(Projectile.DamageType);
+		float meleeSpeed = player.GetAttackSpeed(Projectile.DamageType);
 		if (Projectile.timeLeft > 550)
 		{
-			if (Omega < MeleeSpeed * MaxOmega)
+			if (Omega < meleeSpeed * MaxOmega)
 			{
-				Omega += Beta * MeleeSpeed * 4f;
+				Omega += Beta * meleeSpeed * 4f;
 			}
 		}
 		else
@@ -180,9 +180,9 @@ public class IchorClub_fly : ModProjectile, IWarpProjectile
 			}
 			else
 			{
-				if (Omega < MeleeSpeed * MaxOmega + 0.2f)
+				if (Omega < meleeSpeed * MaxOmega + 0.2f)
 				{
-					Omega += Beta * MeleeSpeed * 0.04f;
+					Omega += Beta * meleeSpeed * 0.04f;
 				}
 			}
 
@@ -204,11 +204,11 @@ public class IchorClub_fly : ModProjectile, IWarpProjectile
 				GenerateDust();
 			}
 		}
-		Vector2 HitRange = new Vector2(HitLength, HitLength * Projectile.spriteDirection).RotatedBy(Projectile.rotation) * Projectile.scale;
-		trailVecs.Enqueue(HitRange);
-		if (trailVecs.Count > trailLength)
+		Vector2 hitRange = new Vector2(HitLength, HitLength * Projectile.spriteDirection).RotatedBy(Projectile.rotation) * Projectile.scale;
+		TrailVecs.Enqueue(hitRange);
+		if (TrailVecs.Count > TrailLength)
 		{
-			trailVecs.Dequeue();
+			TrailVecs.Dequeue();
 		}
 
 		if (player.dead)
@@ -219,7 +219,7 @@ public class IchorClub_fly : ModProjectile, IWarpProjectile
 		ProduceWaterRipples(new Vector2(HitLength * Projectile.scale));
 		float distance = 200f;
 
-		if (target == -1)
+		if (Target == -1)
 		{
 			foreach (var npc in Main.npc)
 			{
@@ -233,7 +233,7 @@ public class IchorClub_fly : ModProjectile, IWarpProjectile
 							{
 								if ((npc.Center - Projectile.Center).Length() < distance)
 								{
-									target = npc.whoAmI;
+									Target = npc.whoAmI;
 									distance = (npc.Center - Projectile.Center).Length();
 								}
 							}
@@ -242,14 +242,14 @@ public class IchorClub_fly : ModProjectile, IWarpProjectile
 				}
 			}
 		}
-		if (target >= 0)
+		if (Target >= 0)
 		{
-			if (!Main.npc[target].active)
+			if (!Main.npc[Target].active)
 			{
-				target = -1;
+				Target = -1;
 				return;
 			}
-			Vector2 addV = (Main.npc[target].Center - Projectile.Center).SafeNormalize(Vector2.Zero);
+			Vector2 addV = (Main.npc[Target].Center - Projectile.Center).SafeNormalize(Vector2.Zero);
 			Projectile.velocity = addV * Projectile.velocity.Length() * 0.15f + Projectile.velocity * 0.9f;
 
 			if (Projectile.timeLeft > 100)
@@ -262,12 +262,12 @@ public class IchorClub_fly : ModProjectile, IWarpProjectile
 		}
 	}
 
-	internal int target = -1;
+	public int Target = -1;
 
-	public void GenerateVFX(int Frequency)
+	public void GenerateVFX(int frequency)
 	{
 		float mulVelocity = Main.rand.NextFloat(0.75f, 1.5f);
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			float mulScale = Main.rand.NextFloat(6f, 14f);
 			Vector2 startPos = new Vector2(MathF.Sqrt(Main.rand.NextFloat(0.99f, 1f)) * HitLength, 0).RotatedBy(Projectile.rotation + MathHelper.PiOver4 * Projectile.spriteDirection);
@@ -278,18 +278,18 @@ public class IchorClub_fly : ModProjectile, IWarpProjectile
 			Vector2 velocity = startPos.RotatedBy(MathHelper.PiOver2) * Omega * Main.rand.NextFloat(0.2f, 0.9f) * 0.5f;
 			var blood = new IchorDrop
 			{
-				velocity = velocity,
+				Velocity = velocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + startPos,
-				maxTime = Main.rand.Next(6, 32),
-				scale = mulScale,
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + startPos,
+				MaxTime = Main.rand.Next(6, 32),
+				Scale = mulScale,
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 			};
 			Ins.VFXManager.Add(blood);
 		}
-		for (int g = 0; g < Frequency * 10; g++)
+		for (int g = 0; g < frequency * 10; g++)
 		{
 			float mulScale = Main.rand.NextFloat(2f, 4f);
 			Vector2 startPos = new Vector2(MathF.Sqrt(Main.rand.NextFloat(0.99f, 1f)) * HitLength, 0).RotatedBy(Projectile.rotation + MathHelper.PiOver4 * Projectile.spriteDirection + Main.rand.NextFloat(-0.2f, 0.2f));
@@ -300,18 +300,18 @@ public class IchorClub_fly : ModProjectile, IWarpProjectile
 			Vector2 velocity = startPos.RotatedBy(MathHelper.PiOver2) * Omega * Main.rand.NextFloat(0.2f, 0.9f) * 0.5f;
 			var blood = new IchorDrop
 			{
-				velocity = velocity,
+				Velocity = velocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + startPos,
-				maxTime = Main.rand.Next(6, 12),
-				scale = mulScale,
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + startPos,
+				MaxTime = Main.rand.Next(6, 12),
+				Scale = mulScale,
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 			};
 			Ins.VFXManager.Add(blood);
 		}
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			Vector2 afterVelocity = new Vector2(0, Main.rand.NextFloat(3f)).RotatedByRandom(MathHelper.TwoPi);
 			Vector2 startPos = new Vector2(MathF.Sqrt(Main.rand.NextFloat(0f, 1f)) * 56f, 0).RotatedBy(Projectile.rotation + MathHelper.PiOver4 * Projectile.spriteDirection);
@@ -321,12 +321,12 @@ public class IchorClub_fly : ModProjectile, IWarpProjectile
 			}
 			var blood = new IchorSplash
 			{
-				velocity = afterVelocity * mulVelocity + startPos.RotatedBy(MathHelper.PiOver2) * Omega * 0.1f + Projectile.velocity,
+				Velocity = afterVelocity * mulVelocity + startPos.RotatedBy(MathHelper.PiOver2) * Omega * 0.1f + Projectile.velocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + startPos,
-				maxTime = Main.rand.Next(6, 32),
-				scale = Main.rand.NextFloat(6f, 12f),
+				Position = Projectile.Center + startPos,
+				MaxTime = Main.rand.Next(6, 32),
+				Scale = Main.rand.NextFloat(6f, 12f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.4f), 0 },
 			};
 			Ins.VFXManager.Add(blood);
@@ -357,24 +357,24 @@ public class IchorClub_fly : ModProjectile, IWarpProjectile
 
 	public void DrawTrail()
 	{
-		List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(trailVecs.ToList()); // 平滑
-		var SmoothTrail = new List<Vector2>();
-		for (int x = 0; x < SmoothTrailX.Count - 1; x++)
+		List<Vector2> smoothTrailX = GraphicsUtils.CatmullRom(TrailVecs.ToList()); // 平滑
+		var smoothTrail = new List<Vector2>();
+		for (int x = 0; x < smoothTrailX.Count - 1; x++)
 		{
-			SmoothTrail.Add(SmoothTrailX[x]);
+			smoothTrail.Add(smoothTrailX[x]);
 		}
-		if (trailVecs.Count != 0)
+		if (TrailVecs.Count != 0)
 		{
-			SmoothTrail.Add(trailVecs.ToArray()[trailVecs.Count - 1]);
+			smoothTrail.Add(TrailVecs.ToArray()[TrailVecs.Count - 1]);
 		}
 
-		int length = SmoothTrail.Count;
+		int length = smoothTrail.Count;
 		if (length <= 3)
 		{
 			return;
 		}
 
-		Vector2[] trail = SmoothTrail.ToArray();
+		Vector2[] trail = smoothTrail.ToArray();
 		var bars = new List<Vertex2D>();
 
 		float fade = Omega * 2f + 0.2f;
@@ -421,24 +421,24 @@ public class IchorClub_fly : ModProjectile, IWarpProjectile
 	public void DrawWarp(VFXBatch spriteBatch)
 	{
 		float warpvalue = Omega * 0.03f;
-		List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(trailVecs.ToList()); // 平滑
-		var SmoothTrail = new List<Vector2>();
-		for (int x = 0; x < SmoothTrailX.Count - 1; x++)
+		List<Vector2> smoothTrailX = GraphicsUtils.CatmullRom(TrailVecs.ToList()); // 平滑
+		var smoothTrail = new List<Vector2>();
+		for (int x = 0; x < smoothTrailX.Count - 1; x++)
 		{
-			SmoothTrail.Add(SmoothTrailX[x]);
+			smoothTrail.Add(smoothTrailX[x]);
 		}
-		if (trailVecs.Count != 0)
+		if (TrailVecs.Count != 0)
 		{
-			SmoothTrail.Add(trailVecs.ToArray()[trailVecs.Count - 1]);
+			smoothTrail.Add(TrailVecs.ToArray()[TrailVecs.Count - 1]);
 		}
 
-		int length = SmoothTrail.Count;
+		int length = smoothTrail.Count;
 		if (length <= 3)
 		{
 			return;
 		}
 
-		Vector2[] trail = SmoothTrail.ToArray();
+		Vector2[] trail = smoothTrail.ToArray();
 		var bars = new List<Vertex2D>();
 		for (int i = 0; i < length; i++)
 		{
@@ -465,21 +465,21 @@ public class IchorClub_fly : ModProjectile, IWarpProjectile
 			}
 			if (dir - dir1 > 0.5)
 			{
-				var MidValue = (1 - dir) / (1 - dir + dir1);
-				var MidPoint = MidValue * trail[i] + (1 - MidValue) * trail[i - 1];
+				var midValue = (1 - dir) / (1 - dir + dir1);
+				var midPoint = midValue * trail[i] + (1 - midValue) * trail[i - 1];
 				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(0, warpvalue, 0, 1), new Vector3(factor, 1, 1)));
-				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition + MidPoint * Projectile.scale * 1.1f, new Color(0, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
+				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition + midPoint * Projectile.scale * 1.1f, new Color(0, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
 				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(1, warpvalue, 0, 1), new Vector3(factor, 1, 1)));
-				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition + MidPoint * Projectile.scale * 1.1f, new Color(1, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
+				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition + midPoint * Projectile.scale * 1.1f, new Color(1, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
 			}
 			if (dir1 - dir > 0.5)
 			{
-				var MidValue = (1 - dir1) / (1 - dir1 + dir);
-				var MidPoint = MidValue * trail[i - 1] + (1 - MidValue) * trail[i];
+				var midValue = (1 - dir1) / (1 - dir1 + dir);
+				var midPoint = midValue * trail[i - 1] + (1 - midValue) * trail[i];
 				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(1, warpvalue, 0, 1), new Vector3(factor, 1, 1)));
-				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition + MidPoint * Projectile.scale * 1.1f, new Color(1, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
+				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition + midPoint * Projectile.scale * 1.1f, new Color(1, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
 				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(0, warpvalue, 0, 1), new Vector3(factor, 1, 1)));
-				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition + MidPoint * Projectile.scale * 1.1f, new Color(0, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
+				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition + midPoint * Projectile.scale * 1.1f, new Color(0, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
 			}
 
 			bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(dir, warpvalue, 0, 1), new Vector3(factor, 1, 1)));
@@ -513,21 +513,21 @@ public class IchorClub_fly : ModProjectile, IWarpProjectile
 
 			if (dir - dir1 > 0.5)
 			{
-				var MidValue = (1 - dir) / (1 - dir + dir1);
-				var MidPoint = MidValue * trail[i] + (1 - MidValue) * trail[i - 1];
+				var midValue = (1 - dir) / (1 - dir + dir1);
+				var midPoint = midValue * trail[i] + (1 - midValue) * trail[i - 1];
 				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(0, warpvalue, 0, 1), new Vector3(factor, 1, 1)));
-				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition - MidPoint * Projectile.scale * 1.1f, new Color(0, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
+				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition - midPoint * Projectile.scale * 1.1f, new Color(0, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
 				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(1, warpvalue, 0, 1), new Vector3(factor, 1, 1)));
-				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition - MidPoint * Projectile.scale * 1.1f, new Color(1, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
+				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition - midPoint * Projectile.scale * 1.1f, new Color(1, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
 			}
 			if (dir1 - dir > 0.5)
 			{
-				var MidValue = (1 - dir1) / (1 - dir1 + dir);
-				var MidPoint = MidValue * trail[i - 1] + (1 - MidValue) * trail[i];
+				var midValue = (1 - dir1) / (1 - dir1 + dir);
+				var midPoint = midValue * trail[i - 1] + (1 - midValue) * trail[i];
 				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(1, warpvalue, 0, 1), new Vector3(factor, 1, 1)));
-				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition - MidPoint * Projectile.scale * 1.1f, new Color(1, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
+				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition - midPoint * Projectile.scale * 1.1f, new Color(1, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
 				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(0, warpvalue, 0, 1), new Vector3(factor, 1, 1)));
-				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition - MidPoint * Projectile.scale * 1.1f, new Color(0, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
+				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition - midPoint * Projectile.scale * 1.1f, new Color(0, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
 			}
 
 			bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(dir, warpvalue, 0, 1), new Vector3(factor, 1, 1)));
@@ -547,8 +547,8 @@ public class IchorClub_fly : ModProjectile, IWarpProjectile
 	public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 	{
 		float point = 0;
-		Vector2 HitRange = new Vector2(HitLength, HitLength * Projectile.spriteDirection).RotatedBy(Projectile.rotation) * Projectile.scale;
-		if (Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center - HitRange, Projectile.Center + HitRange, 10 * HitLength / 32f * Omega / 0.3f, ref point) && Projectile.timeLeft < 550)
+		Vector2 hitRange = new Vector2(HitLength, HitLength * Projectile.spriteDirection).RotatedBy(Projectile.rotation) * Projectile.scale;
+		if (Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center - hitRange, Projectile.Center + hitRange, 10 * HitLength / 32f * Omega / 0.3f, ref point) && Projectile.timeLeft < 550)
 		{
 			return true;
 		}
@@ -560,9 +560,9 @@ public class IchorClub_fly : ModProjectile, IWarpProjectile
 	{
 		var shaderData = (WaterShaderData)Terraria.Graphics.Effects.Filters.Scene["WaterDistortion"].GetShader();
 		float waveSine = 1f * (float)Math.Sin(Main.GlobalTimeWrappedHourly * 20f);
-		Vector2 HitRange = new Vector2(HitLength, -HitLength).RotatedBy(Projectile.rotation) * Projectile.scale;
-		Vector2 ripplePos = Projectile.Center + HitRange;
-		Vector2 ripplePosII = Projectile.Center - HitRange;
+		Vector2 hitRange = new Vector2(HitLength, -HitLength).RotatedBy(Projectile.rotation) * Projectile.scale;
+		Vector2 ripplePos = Projectile.Center + hitRange;
+		Vector2 ripplePosII = Projectile.Center - hitRange;
 		Color waveData = new Color(0.5f, 0.1f * Math.Sign(waveSine) + 0.5f, 0f, 1f) * Math.Abs(waveSine);
 		shaderData.QueueRipple(ripplePos, waveData, beamDims, RippleShape.Square, Projectile.rotation + MathHelper.Pi / 2f);
 		shaderData.QueueRipple(ripplePosII, waveData, beamDims, RippleShape.Square, Projectile.rotation + MathHelper.Pi / 2f);

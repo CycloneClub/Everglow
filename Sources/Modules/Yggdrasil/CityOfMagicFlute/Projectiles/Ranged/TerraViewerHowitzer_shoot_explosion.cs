@@ -35,13 +35,13 @@ public class TerraViewerHowitzer_shoot_explosion : ModProjectile, IWarpProjectil
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(2f, 22f)).RotatedByRandom(MathHelper.TwoPi);
 			var spark = new FireSparkDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(20), 0).RotatedByRandom(6.283) + newVelocity * 3,
-				maxTime = Main.rand.Next(20, 40),
-				scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(1f, 25.0f)),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(20), 0).RotatedByRandom(6.283) + newVelocity * 3,
+				MaxTime = Main.rand.Next(20, 40),
+				Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(1f, 25.0f)),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.01f, 0.01f) },
 			};
 			Ins.VFXManager.Add(spark);
@@ -69,7 +69,7 @@ public class TerraViewerHowitzer_shoot_explosion : ModProjectile, IWarpProjectil
 	public void LargeFlame()
 	{
 		Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(2f, 50f)).RotatedByRandom(MathHelper.TwoPi);
-		var somg = new MissleFlameBlueDust
+		var smog = new MissleFlameBlueDust
 		{
 			Velocity = newVelocity,
 			Active = true,
@@ -80,13 +80,13 @@ public class TerraViewerHowitzer_shoot_explosion : ModProjectile, IWarpProjectil
 			Rotation = Main.rand.NextFloat(6.283f),
 			ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 		};
-		Ins.VFXManager.Add(somg);
+		Ins.VFXManager.Add(smog);
 	}
 
 	public void SmallFlame()
 	{
 		Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(2f, 50f)).RotatedByRandom(MathHelper.TwoPi);
-		var somg = new MissleFlameBlueDust
+		var smog = new MissleFlameBlueDust
 		{
 			Velocity = newVelocity,
 			Active = true,
@@ -97,7 +97,7 @@ public class TerraViewerHowitzer_shoot_explosion : ModProjectile, IWarpProjectil
 			Rotation = Main.rand.NextFloat(6.283f),
 			ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 		};
-		Ins.VFXManager.Add(somg);
+		Ins.VFXManager.Add(smog);
 	}
 
 	public void NanoCloud()

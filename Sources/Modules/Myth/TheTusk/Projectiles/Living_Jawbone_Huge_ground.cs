@@ -201,24 +201,24 @@ public class Living_Jawbone_Huge_ground : ModProjectile
 				Vector2 pos0 = new Vector2(MathF.Sqrt(Main.rand.NextFloat(1f)) * 430 * Projectile.scale, 0).RotatedBy(Projectile.rotation - Projectile.ai[0] / 20f * i);
 				var blood = new BloodDrop
 				{
-					velocity = pos0.RotatedBy(MathHelper.PiOver2) * 0.1f,
+					Velocity = pos0.RotatedBy(MathHelper.PiOver2) * 0.1f,
 					Active = true,
 					Visible = true,
-					position = pos0 + Projectile.Center,
-					maxTime = Main.rand.Next(54, 74),
-					scale = Main.rand.NextFloat(6f, 25f),
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = pos0 + Projectile.Center,
+					MaxTime = Main.rand.Next(54, 74),
+					Scale = Main.rand.NextFloat(6f, 25f),
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 				};
 				Ins.VFXManager.Add(blood);
 				var blood2 = new BloodSplash
 				{
-					velocity = pos0.RotatedBy(MathHelper.PiOver2) * 0.1f,
+					Velocity = pos0.RotatedBy(MathHelper.PiOver2) * 0.1f,
 					Active = true,
 					Visible = true,
-					position = pos0 + Projectile.Center,
-					maxTime = Main.rand.Next(54, 74),
-					scale = Main.rand.NextFloat(6f, 18f),
+					Position = pos0 + Projectile.Center,
+					MaxTime = Main.rand.Next(54, 74),
+					Scale = Main.rand.NextFloat(6f, 18f),
 					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0, Main.rand.NextFloat(20.0f, 40.0f) },
 				};
 				Ins.VFXManager.Add(blood2);
@@ -228,24 +228,24 @@ public class Living_Jawbone_Huge_ground : ModProjectile
 				Vector2 pos1 = new Vector2(MathF.Sqrt(Main.rand.NextFloat(1f)) * 430 * Projectile.scale, 0).RotatedBy(Projectile.rotation + Projectile.ai[1] / 20f * i);
 				var blood = new BloodDrop
 				{
-					velocity = pos1.RotatedBy(-MathHelper.PiOver2) * 0.1f,
+					Velocity = pos1.RotatedBy(-MathHelper.PiOver2) * 0.1f,
 					Active = true,
 					Visible = true,
-					position = pos1 + Projectile.Center,
-					maxTime = Main.rand.Next(54, 74),
-					scale = Main.rand.NextFloat(6f, 25f),
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = pos1 + Projectile.Center,
+					MaxTime = Main.rand.Next(54, 74),
+					Scale = Main.rand.NextFloat(6f, 25f),
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 				};
 				Ins.VFXManager.Add(blood);
 				var blood2 = new BloodSplash
 				{
-					velocity = pos1.RotatedBy(-MathHelper.PiOver2) * 0.1f,
+					Velocity = pos1.RotatedBy(-MathHelper.PiOver2) * 0.1f,
 					Active = true,
 					Visible = true,
-					position = pos1 + Projectile.Center,
-					maxTime = Main.rand.Next(54, 74),
-					scale = Main.rand.NextFloat(6f, 18f),
+					Position = pos1 + Projectile.Center,
+					MaxTime = Main.rand.Next(54, 74),
+					Scale = Main.rand.NextFloat(6f, 18f),
 					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0, Main.rand.NextFloat(20.0f, 40.0f) },
 				};
 				Ins.VFXManager.Add(blood2);

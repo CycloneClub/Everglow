@@ -24,12 +24,12 @@ namespace Everglow.EternalResolve.Projectiles
 			yield return new WaitForFrames(40);
 			StabVFX v = new SelfLightingStabVFX()
 			{
-				pos = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
-				vel = velocity,
-				color = Color.Lerp(StabColor, Color.White, 0.2f),
-				scale = 30,
-				maxtime = 10,
-				timeleft = 10,
+				Position = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
+				Velocity = velocity,
+				StabEffectColor = Color.Lerp(StabColor, Color.White, 0.2f),
+				Scale = 30,
+				MaxTime = 10,
+				TimeLeft = 10,
 			};
 			if (StabEndPoint_WorldPos == Vector2.Zero)
 			{
@@ -38,12 +38,12 @@ namespace Everglow.EternalResolve.Projectiles
 			yield return new WaitForFrames(40);
 			v = new SelfLightingStabVFX()
 			{
-				pos = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
-				vel = velocity,
-				color = Color.Lerp(StabColor, Color.White, 0.4f),
-				scale = 15,
-				maxtime = 10,
-				timeleft = 10,
+				Position = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
+				Velocity = velocity,
+				StabEffectColor = Color.Lerp(StabColor, Color.White, 0.4f),
+				Scale = 15,
+				MaxTime = 10,
+				TimeLeft = 10,
 			};
 			if (StabEndPoint_WorldPos == Vector2.Zero)
 			{
@@ -162,46 +162,46 @@ namespace Everglow.EternalResolve.Projectiles
 			}
 
 			Lighting.AddLight(Projectile.Center, new Vector3(1f, 0.8f, 0) * (StabTimer / 120f));
-			Vector2 pos = Projectile.position + Projectile.velocity * Main.rand.NextFloat(0.4f, 80f);
-			Vector2 vel = Projectile.velocity * Main.rand.NextFloat(0f, 4f) + new Vector2(0, Main.rand.NextFloat(5f)).RotatedByRandom(6.283);
+			Vector2 position = Projectile.position + Projectile.velocity * Main.rand.NextFloat(0.4f, 80f);
+			Vector2 velocity = Projectile.velocity * Main.rand.NextFloat(0f, 4f) + new Vector2(0, Main.rand.NextFloat(5f)).RotatedByRandom(6.283);
 			if (Main.rand.NextBool(4))
 			{
-				if (Collision.CanHit(Projectile.Center - Projectile.velocity, 0, 0, pos + vel, 0, 0))
+				if (Collision.CanHit(Projectile.Center - Projectile.velocity, 0, 0, position + velocity, 0, 0))
 				{
-					var dust = Dust.NewDustDirect(pos, Projectile.width, Projectile.height, ModContent.DustType<FlameShine>(), 0, 0, 0, default, Main.rand.NextFloat(0.35f, 2f) * (StabTimer / 200f));
-					dust.velocity = vel;
+					var dust = Dust.NewDustDirect(position, Projectile.width, Projectile.height, ModContent.DustType<FlameShine>(), 0, 0, 0, default, Main.rand.NextFloat(0.35f, 2f) * (StabTimer / 200f));
+					dust.velocity = velocity;
 				}
 			}
 
 			base.AI();
 		}
 
-		public void GenerateVFX(int Frequency)
+		public void GenerateVFX(int frequency)
 		{
 			int x = (int)(Projectile.Center.X / 16f);
 			int y = (int)(Projectile.Center.Y / 16f);
 			if (Main.tile[x, y].LiquidAmount / 16f > Projectile.Center.Y % 16)
 			{
-				for (int g = 0; g < Frequency; g++)
+				for (int g = 0; g < frequency; g++)
 				{
 					Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 4f)).RotatedByRandom(MathHelper.TwoPi) + new Vector2(0, -4f);
-					var somg = new VaporDust
+					var smog = new VaporDust
 					{
-						velocity = newVelocity,
+						Velocity = newVelocity,
 						Active = true,
 						Visible = true,
-						position = Projectile.Center,
-						maxTime = Main.rand.Next(10, 90),
-						scale = Main.rand.NextFloat(20f, 135f),
-						rotation = Main.rand.NextFloat(6.283f),
+						Position = Projectile.Center,
+						MaxTime = Main.rand.Next(10, 90),
+						Scale = Main.rand.NextFloat(20f, 135f),
+						Rotation = Main.rand.NextFloat(6.283f),
 						ai = new float[] { Main.rand.NextFloat(-0.05f, -0.01f), 0 },
 					};
-					Ins.VFXManager.Add(somg);
+					Ins.VFXManager.Add(smog);
 				}
 			}
 			else
 			{
-				for (int g = 0; g < Frequency; g++)
+				for (int g = 0; g < frequency; g++)
 				{
 					Vector2 newVelocity = Projectile.velocity * Main.rand.NextFloat(8f);
 					var fire = new FireDust

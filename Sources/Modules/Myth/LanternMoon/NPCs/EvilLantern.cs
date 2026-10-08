@@ -71,9 +71,9 @@ public class EvilLantern : LanternMoonNPC
 			{
 				Active = true,
 				Visible = true,
-				velocity = new Vector2(Main.rand.NextFloat(0, 6), 0).RotatedByRandom(6.283),
-				noGravity = false,
-				position = NPC.Center,
+				Velocity = new Vector2(Main.rand.NextFloat(0, 6), 0).RotatedByRandom(6.283),
+				NoGravity = false,
+				Position = NPC.Center,
 				Texture = ModAsset.EvilLanternGore1S.Value,
 				DissolveAnimationTexture = ModAsset.EvilLanternGore1G.Value,
 				NoDissolvePartTexture = ModAsset.EvilLanternGore1B.Value,
@@ -83,9 +83,9 @@ public class EvilLantern : LanternMoonNPC
 			{
 				Active = true,
 				Visible = true,
-				velocity = new Vector2(Main.rand.NextFloat(0, 6), 0).RotatedByRandom(6.283),
-				noGravity = false,
-				position = NPC.Center,
+				Velocity = new Vector2(Main.rand.NextFloat(0, 6), 0).RotatedByRandom(6.283),
+				NoGravity = false,
+				Position = NPC.Center,
 				Texture = ModAsset.EvilLanternGore2S.Value,
 				DissolveAnimationTexture = ModAsset.EvilLanternGore2G.Value,
 				NoDissolvePartTexture = ModAsset.EvilLanternGore2B.Value,
@@ -97,9 +97,9 @@ public class EvilLantern : LanternMoonNPC
 				{
 					Active = true,
 					Visible = true,
-					velocity = new Vector2(Main.rand.NextFloat(0, 21), 0).RotatedByRandom(6.283),
-					noGravity = false,
-					position = NPC.Center,
+					Velocity = new Vector2(Main.rand.NextFloat(0, 21), 0).RotatedByRandom(6.283),
+					NoGravity = false,
+					Position = NPC.Center,
 					Texture = ModAsset.EvilLanternGore3S.Value,
 					DissolveAnimationTexture = ModAsset.EvilLanternGore3G.Value,
 				};
@@ -108,9 +108,9 @@ public class EvilLantern : LanternMoonNPC
 				{
 					Active = true,
 					Visible = true,
-					velocity = new Vector2(Main.rand.NextFloat(0, 21), 0).RotatedByRandom(6.283),
-					noGravity = false,
-					position = NPC.Center,
+					Velocity = new Vector2(Main.rand.NextFloat(0, 21), 0).RotatedByRandom(6.283),
+					NoGravity = false,
+					Position = NPC.Center,
 					Texture = ModAsset.EvilLanternGore4S.Value,
 					DissolveAnimationTexture = ModAsset.EvilLanternGore4G.Value,
 				};
@@ -119,9 +119,9 @@ public class EvilLantern : LanternMoonNPC
 				{
 					Active = true,
 					Visible = true,
-					velocity = new Vector2(Main.rand.NextFloat(0, 21), 0).RotatedByRandom(6.283),
-					noGravity = false,
-					position = NPC.Center,
+					Velocity = new Vector2(Main.rand.NextFloat(0, 21), 0).RotatedByRandom(6.283),
+					NoGravity = false,
+					Position = NPC.Center,
 					Texture = ModAsset.EvilLanternGore5S.Value,
 					DissolveAnimationTexture = ModAsset.EvilLanternGore5G.Value,
 				};
@@ -130,9 +130,9 @@ public class EvilLantern : LanternMoonNPC
 				{
 					Active = true,
 					Visible = true,
-					velocity = new Vector2(Main.rand.NextFloat(0, 21), 0).RotatedByRandom(6.283),
-					noGravity = false,
-					position = NPC.Center,
+					Velocity = new Vector2(Main.rand.NextFloat(0, 21), 0).RotatedByRandom(6.283),
+					NoGravity = false,
+					Position = NPC.Center,
 					Texture = ModAsset.EvilLanternGore6S.Value,
 					DissolveAnimationTexture = ModAsset.EvilLanternGore6G.Value,
 				};

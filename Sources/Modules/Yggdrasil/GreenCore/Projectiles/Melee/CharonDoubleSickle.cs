@@ -66,15 +66,15 @@ public class CharonDoubleSickle : ModProjectile
 			FogVFX fog = MEACVFX.Create<FogVFX>(Projectile.Center, Main.rand.NextVector2Circular(2, 2) + Projectile.velocity * 0.1f, 0);
 
 			// fog.substract = true;
-			fog.drawColor = new Color(0.15f, 0.3f, 0.2f, 0f);
-			fog.SetTimeleft(90);
-			fog.scale = 1.5f * Projectile.scale;
+			fog.DrawColor = new Color(0.15f, 0.3f, 0.2f, 0f);
+			fog.SetTimeLeft(90);
+			fog.Scale = 1.5f * Projectile.scale;
 
 			fog = MEACVFX.Create<FogVFX>(Projectile.Center, Main.rand.NextVector2Circular(2, 2) + Projectile.velocity * 0.1f, 0);
-			fog.substract = true;
-			fog.drawColor = new Color(0.6f, 0.2f, 0.1f, 1f);
-			fog.SetTimeleft(70);
-			fog.scale = 1.2f * Projectile.scale;
+			fog.Subtract = true;
+			fog.DrawColor = new Color(0.6f, 0.2f, 0.1f, 1f);
+			fog.SetTimeLeft(70);
+			fog.Scale = 1.2f * Projectile.scale;
 			canSpawnHitEff = false;
 		}
 		SoundStyle sound = SoundID.NPCDeath44;

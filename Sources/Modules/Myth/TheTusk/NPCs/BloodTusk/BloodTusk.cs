@@ -658,25 +658,25 @@ public class BloodTusk : ModNPC
 			{
 				var blood = new BloodDrop
 				{
-					velocity = new Vector2(0, -speed * 25).RotatedBy(Main.rand.NextFloat(-0.1f, 0.1f)) * Main.rand.NextFloat(0.8f, 1.5f),
+					Velocity = new Vector2(0, -speed * 25).RotatedBy(Main.rand.NextFloat(-0.1f, 0.1f)) * Main.rand.NextFloat(0.8f, 1.5f),
 					Active = true,
 					Visible = true,
-					position = NPC.Bottom + new Vector2(4, -34),
-					maxTime = Main.rand.Next(54, 360),
-					scale = Main.rand.NextFloat(6f, 55f) * (speed + 0.01f),
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = NPC.Bottom + new Vector2(4, -34),
+					MaxTime = Main.rand.Next(54, 360),
+					Scale = Main.rand.NextFloat(6f, 55f) * (speed + 0.01f),
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 				};
 				Ins.VFXManager.Add(blood);
 			}
 			var bloodSplash = new BloodSplash
 			{
-				velocity = new Vector2(0, -speed * 9).RotatedBy(Main.rand.NextFloat(-0.1f, 0.1f)) * Main.rand.NextFloat(0.8f, 1.5f),
+				Velocity = new Vector2(0, -speed * 9).RotatedBy(Main.rand.NextFloat(-0.1f, 0.1f)) * Main.rand.NextFloat(0.8f, 1.5f),
 				Active = true,
 				Visible = true,
-				position = NPC.Bottom + new Vector2(4, -34),
-				maxTime = Main.rand.Next(54, 75),
-				scale = Main.rand.NextFloat(6f, 18f) * (speed + 0.01f),
+				Position = NPC.Bottom + new Vector2(4, -34),
+				MaxTime = Main.rand.Next(54, 75),
+				Scale = Main.rand.NextFloat(6f, 18f) * (speed + 0.01f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0, Main.rand.NextFloat(20.0f, 40.0f) },
 			};
 			Ins.VFXManager.Add(bloodSplash);
@@ -955,25 +955,25 @@ public class BloodTusk : ModNPC
 			{
 				var blood = new BloodDrop
 				{
-					velocity = new Vector2(0, -speed * 25).RotatedBy(Main.rand.NextFloat(-0.1f, 0.1f)) * Main.rand.NextFloat(0.8f, 1.5f),
+					Velocity = new Vector2(0, -speed * 25).RotatedBy(Main.rand.NextFloat(-0.1f, 0.1f)) * Main.rand.NextFloat(0.8f, 1.5f),
 					Active = true,
 					Visible = true,
-					position = NPC.Bottom + new Vector2(4, -34),
-					maxTime = Main.rand.Next(54, 360),
-					scale = Main.rand.NextFloat(6f, 55f) * (speed + 0.01f),
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = NPC.Bottom + new Vector2(4, -34),
+					MaxTime = Main.rand.Next(54, 360),
+					Scale = Main.rand.NextFloat(6f, 55f) * (speed + 0.01f),
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 				};
 				Ins.VFXManager.Add(blood);
 			}
 			var bloodSplash = new BloodSplash
 			{
-				velocity = new Vector2(0, -speed * 9).RotatedBy(Main.rand.NextFloat(-0.1f, 0.1f)) * Main.rand.NextFloat(0.8f, 1.5f),
+				Velocity = new Vector2(0, -speed * 9).RotatedBy(Main.rand.NextFloat(-0.1f, 0.1f)) * Main.rand.NextFloat(0.8f, 1.5f),
 				Active = true,
 				Visible = true,
-				position = NPC.Bottom + new Vector2(4, -34),
-				maxTime = Main.rand.Next(54, 75),
-				scale = Main.rand.NextFloat(6f, 18f) * (speed + 0.01f),
+				Position = NPC.Bottom + new Vector2(4, -34),
+				MaxTime = Main.rand.Next(54, 75),
+				Scale = Main.rand.NextFloat(6f, 18f) * (speed + 0.01f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0, Main.rand.NextFloat(20.0f, 40.0f) },
 			};
 			Ins.VFXManager.Add(bloodSplash);
@@ -1060,25 +1060,25 @@ public class BloodTusk : ModNPC
 			{
 				var blood = new BloodDrop
 				{
-					velocity = new Vector2(0, -speed * 25).RotatedBy(Main.rand.NextFloat(-0.1f, 0.1f)) * Main.rand.NextFloat(0.8f, 1.5f),
+					Velocity = new Vector2(0, -speed * 25).RotatedBy(Main.rand.NextFloat(-0.1f, 0.1f)) * Main.rand.NextFloat(0.8f, 1.5f),
 					Active = true,
 					Visible = true,
-					position = NPC.Bottom + new Vector2(4, -34),
-					maxTime = Main.rand.Next(54, 360),
-					scale = Main.rand.NextFloat(6f, 55f) * (speed + 0.01f),
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = NPC.Bottom + new Vector2(4, -34),
+					MaxTime = Main.rand.Next(54, 360),
+					Scale = Main.rand.NextFloat(6f, 55f) * (speed + 0.01f),
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 				};
 				Ins.VFXManager.Add(blood);
 			}
 			var bloodSplash = new BloodSplash
 			{
-				velocity = new Vector2(0, -speed * 9).RotatedBy(Main.rand.NextFloat(-0.1f, 0.1f)) * Main.rand.NextFloat(0.8f, 1.5f),
+				Velocity = new Vector2(0, -speed * 9).RotatedBy(Main.rand.NextFloat(-0.1f, 0.1f)) * Main.rand.NextFloat(0.8f, 1.5f),
 				Active = true,
 				Visible = true,
-				position = NPC.Bottom + new Vector2(4, -34),
-				maxTime = Main.rand.Next(54, 75),
-				scale = Main.rand.NextFloat(6f, 18f) * (speed + 0.01f),
+				Position = NPC.Bottom + new Vector2(4, -34),
+				MaxTime = Main.rand.Next(54, 75),
+				Scale = Main.rand.NextFloat(6f, 18f) * (speed + 0.01f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0, Main.rand.NextFloat(20.0f, 40.0f) },
 			};
 			Ins.VFXManager.Add(bloodSplash);
@@ -1146,25 +1146,25 @@ public class BloodTusk : ModNPC
 			{
 				var blood = new BloodDrop
 				{
-					velocity = new Vector2(0, -speed * 25).RotatedBy(Main.rand.NextFloat(-0.1f, 0.1f)) * Main.rand.NextFloat(0.8f, 1.5f),
+					Velocity = new Vector2(0, -speed * 25).RotatedBy(Main.rand.NextFloat(-0.1f, 0.1f)) * Main.rand.NextFloat(0.8f, 1.5f),
 					Active = true,
 					Visible = true,
-					position = NPC.Bottom + new Vector2(4, -34),
-					maxTime = Main.rand.Next(54, 360),
-					scale = Main.rand.NextFloat(6f, 55f) * (speed + 0.01f),
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = NPC.Bottom + new Vector2(4, -34),
+					MaxTime = Main.rand.Next(54, 360),
+					Scale = Main.rand.NextFloat(6f, 55f) * (speed + 0.01f),
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 				};
 				Ins.VFXManager.Add(blood);
 			}
 			var bloodSplash = new BloodSplash
 			{
-				velocity = new Vector2(0, -speed * 9).RotatedBy(Main.rand.NextFloat(-0.1f, 0.1f)) * Main.rand.NextFloat(0.8f, 1.5f),
+				Velocity = new Vector2(0, -speed * 9).RotatedBy(Main.rand.NextFloat(-0.1f, 0.1f)) * Main.rand.NextFloat(0.8f, 1.5f),
 				Active = true,
 				Visible = true,
-				position = NPC.Bottom + new Vector2(4, -34),
-				maxTime = Main.rand.Next(54, 75),
-				scale = Main.rand.NextFloat(6f, 18f) * (speed + 0.01f),
+				Position = NPC.Bottom + new Vector2(4, -34),
+				MaxTime = Main.rand.Next(54, 75),
+				Scale = Main.rand.NextFloat(6f, 18f) * (speed + 0.01f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0, Main.rand.NextFloat(20.0f, 40.0f) },
 			};
 			Ins.VFXManager.Add(bloodSplash);

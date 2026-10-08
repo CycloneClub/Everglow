@@ -13,16 +13,21 @@ public class IchorRing : ModProjectile
 		Projectile.tileCollide = false;
 		Projectile.ignoreWater = true;
 	}
+
 	public override void OnSpawn(IEntitySource source)
 	{
-		//Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.One, ModContent.ProjectileType<GoldenShowerBomb>(), 0, 0, Projectile.owner, 10f, Main.rand.NextFloat(6.283f));
+		// Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.One, ModContent.ProjectileType<GoldenShowerBomb>(), 0, 0, Projectile.owner, 10f, Main.rand.NextFloat(6.283f));
 	}
+
 	public override void AI()
 	{
 		Player player = Main.player[Projectile.owner];
 		Projectile.Center = player.Center;
 		if (Projectile.ai[0] <= 180)
+		{
 			Projectile.ai[0] = 180 * 0.06f + Projectile.ai[0] * 0.94f;
+		}
+
 		for (int x = 0; x < 5; x++)
 		{
 			GenerateDust();
@@ -40,13 +45,19 @@ public class IchorRing : ModProjectile
 			}
 		}
 		if (Projectile.timeLeft < 60)
+		{
 			Projectile.friendly = false;
+		}
 	}
+
 	public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 	{
 		if (Projectile.timeLeft > 690)
+		{
 			modifiers.FinalDamage *= 5;
+		}
 	}
+
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		for (int x = 0; x < 2; x++)
@@ -58,23 +69,34 @@ public class IchorRing : ModProjectile
 		}
 		target.AddBuff(BuffID.Ichor, 600);
 	}
+
 	private bool InsertWithRing(Vector2 point1, Vector2 point2, float radius, float toleranceWidth)
 	{
 		return Math.Abs((point1 - point2).Length() - radius) < toleranceWidth;
 	}
+
 	public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 	{
 		if (InsertWithRing(targetHitbox.BottomLeft(), Projectile.Center, Projectile.ai[0], 20))
+		{
 			return true;
+		}
+
 		if (InsertWithRing(targetHitbox.BottomRight(), Projectile.Center, Projectile.ai[0], 20))
+		{
 			return true;
+		}
+
 		if (InsertWithRing(targetHitbox.TopLeft(), Projectile.Center, Projectile.ai[0], 20))
+		{
 			return true;
-		if (InsertWithRing(targetHitbox.TopRight(), Projectile.Center, Projectile.ai[0], 20))
-			return true;
-		return false;
+		}
+
+		return InsertWithRing(targetHitbox.TopRight(), Projectile.Center, Projectile.ai[0], 20) ? true : false;
 	}
+
 	public float Energy = 0;
+
 	public void DrawPowerEffect()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -220,6 +242,7 @@ public class IchorRing : ModProjectile
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 	}
+
 	private void GenerateDust()
 	{
 		float value = Main.rand.NextFloat(Energy) / 200f;
@@ -229,28 +252,29 @@ public class IchorRing : ModProjectile
 		{
 			Vector2 v0 = new Vector2(0, Projectile.ai[0] * Main.rand.NextFloat(0.9f, 1.2f) * energyValue).RotatedByRandom(MathHelper.TwoPi);
 
-			float Speed = 0.08f;
-			var d = Dust.NewDustDirect(Projectile.Center + v0 - new Vector2(4)/*Dust的Size=8x8*/, 0, 0, DustID.Ichor, -v0.Y * Speed, v0.X * Speed, 150, default, Main.rand.NextFloat(0.4f, 1.1f));
+			float speed = 0.08f;
+			var d = Dust.NewDustDirect(Projectile.Center + v0 - new Vector2(4)/*Dust的Size=8x8*/, 0, 0, DustID.Ichor, -v0.Y * speed, v0.X * speed, 150, default, Main.rand.NextFloat(0.4f, 1.1f));
 			d.noGravity = true;
-			d.velocity = v0.RotatedBy(-2f) * Speed;
+			d.velocity = v0.RotatedBy(-2f) * speed;
 			d.scale *= Energy / 600f;
 			if (Main.rand.NextBool(2))
 			{
 				var blood = new IchorDrop
 				{
-					velocity = v0.RotatedBy(-2f) * Speed,
+					Velocity = v0.RotatedBy(-2f) * speed,
 					Active = true,
 					Visible = true,
-					position = Projectile.Center + v0,
-					maxTime = Main.rand.Next(12, 24),
-					scale = Main.rand.NextFloat(6f, 14f),
-					rotation = Main.rand.NextFloat(6.283f),
-					ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) }
+					Position = Projectile.Center + v0,
+					MaxTime = Main.rand.Next(12, 24),
+					Scale = Main.rand.NextFloat(6f, 14f),
+					Rotation = Main.rand.NextFloat(6.283f),
+					ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 				};
 				Ins.VFXManager.Add(blood);
 			}
 		}
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		DrawPowerEffect();

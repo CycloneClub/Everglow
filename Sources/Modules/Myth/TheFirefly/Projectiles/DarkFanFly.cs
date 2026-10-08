@@ -1,9 +1,6 @@
-using Everglow.Myth.Common;
 using Everglow.Myth.TheFirefly.Buffs;
 using Everglow.Myth.TheFirefly.VFXs;
-using Terraria;
 using Terraria.DataStructures;
-using static Terraria.ModLoader.PlayerDrawLayer;
 
 namespace Everglow.Myth.TheFirefly.Projectiles;
 
@@ -24,25 +21,31 @@ internal class DarkFanFly : ModProjectile
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30;
 	}
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		Projectile.rotation = MathF.Atan2(Projectile.velocity.Y, Projectile.velocity.X);
 	}
+
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		Player player = Main.player[Projectile.owner];
 		Projectile.NewProjectile(Projectile.GetSource_FromAI(), target.Center, Vector2.Zero, ModContent.ProjectileType<FanHit>(), 0, 0, player.whoAmI, 15, Main.rand.NextFloat(6.283f));
 		int[] array = Projectile.localNPCImmunity;
-		bool flag = !Projectile.usesLocalNPCImmunity && !Projectile.usesIDStaticNPCImmunity || Projectile.usesLocalNPCImmunity && array[target.whoAmI] == 0 || Projectile.usesIDStaticNPCImmunity && Projectile.IsNPCIndexImmuneToProjectileType(Projectile.type, target.whoAmI);
-		if (target.active && !target.dontTakeDamage && flag && (target.aiStyle != 112 || target.ai[2] <= 1f))
+		bool flag = (!Projectile.usesLocalNPCImmunity && !Projectile.usesIDStaticNPCImmunity) || (Projectile.usesLocalNPCImmunity && array[target.whoAmI] == 0) || (Projectile.usesIDStaticNPCImmunity && Projectile.IsNPCIndexImmuneToProjectileType(Projectile.type, target.whoAmI));
+		if (target.active && !target.dontTakeDamage && flag && (target.aiStyle != NPCAIStyleID.Fairy || target.ai[2] <= 1f))
 		{
 			if (target.active)
+			{
 				Main.player[Projectile.owner].MinionAttackTargetNPC = target.whoAmI;
+			}
 		}
 		target.AddBuff(ModContent.BuffType<OnMoth>(), 300);
 
 		if (MothBuffTarget.mothStack[target.whoAmI] < 5)
+		{
 			MothBuffTarget.mothStack[target.whoAmI] += 1;
+		}
 		else
 		{
 			MothBuffTarget.mothStack[target.whoAmI] = 5;
@@ -61,27 +64,38 @@ internal class DarkFanFly : ModProjectile
 		if (Projectile.timeLeft is < 380 and > 60)
 		{
 			if (v0.Length() < 48)
+			{
 				Projectile.timeLeft = 20;
+			}
 		}
 		Projectile.velocity *= 0.99f;
 		for (int x = 58; x >= 0; x--)
 		{
-			OldVelocity[x + 1] = OldVelocity[x];
+			oldVelocity[x + 1] = oldVelocity[x];
 		}
-		OldVelocity[0] = Projectile.velocity;
+		oldVelocity[0] = Projectile.velocity;
 
 		for (int x = 58; x >= 0; x--)
 		{
-			OldScale[x + 1] = OldScale[x];
+			oldScale[x + 1] = oldScale[x];
 		}
-		OldScale[0] = Projectile.scale;
+		oldScale[0] = Projectile.scale;
 		if (Projectile.timeLeft < 300)
+		{
 			Projectile.tileCollide = false;
+		}
+
 		if (Projectile.timeLeft < 60)
+		{
 			Projectile.timeLeft -= 4;
+		}
+
 		int frequency = 70 / (2 + player.maxMinions);
 		if (Projectile.timeLeft % frequency == 0)
+		{
 			Projectile.NewProjectile(Terraria.Entity.InheritSource(Projectile), Projectile.Center, Projectile.velocity * 0.3f, ModContent.ProjectileType<GlowingButterfly>(), Projectile.damage / 3, Projectile.knockBack, player.whoAmI, Main.rand.Next(2), 0f);
+		}
+
 		for (int g = 0; g < 1; g++)
 		{
 			float velRot = Projectile.rotation;
@@ -92,18 +106,18 @@ internal class DarkFanFly : ModProjectile
 			Vector2 newVelocity = Projectile.velocity * 0.3f + v6 / 15f;
 			var smog = new MothShimmerScaleDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + v5,
-				coord = new Vector2(Main.rand.NextFloat(1f), Main.rand.NextFloat(1f)),
-				maxTime = Main.rand.Next(20, 85),
-				scale = Main.rand.NextFloat(0.4f, 3.4f),
-				rotation = Main.rand.NextFloat(6.283f),
-				rotation2 = Main.rand.NextFloat(6.283f),
-				omega = Main.rand.NextFloat(-30f, 30f),
-				phi = Main.rand.NextFloat(6.283f),
-				ai = new float[] { Main.rand.NextFloat(-0.005f, 0.005f) }
+				Position = Projectile.Center + v5,
+				Coord = new Vector2(Main.rand.NextFloat(1f), Main.rand.NextFloat(1f)),
+				MaxTime = Main.rand.Next(20, 85),
+				Scale = Main.rand.NextFloat(0.4f, 3.4f),
+				Rotation = Main.rand.NextFloat(6.283f),
+				Rotation2 = Main.rand.NextFloat(6.283f),
+				Omega = Main.rand.NextFloat(-30f, 30f),
+				Phi = Main.rand.NextFloat(6.283f),
+				ai = new float[] { Main.rand.NextFloat(-0.005f, 0.005f) },
 			};
 			Ins.VFXManager.Add(smog);
 		}
@@ -122,8 +136,8 @@ internal class DarkFanFly : ModProjectile
 		return false;
 	}
 
-	private Vector2[] OldVelocity = new Vector2[60];
-	private float[] OldScale = new float[60];
+	private Vector2[] oldVelocity = new Vector2[60];
+	private float[] oldScale = new float[60];
 
 	public override void PostDraw(Color lightColor)
 	{
@@ -190,17 +204,20 @@ internal class DarkFanFly : ModProjectile
 		vertex.Add(new Vertex2D(Projectile.Center + v2 * Projectile.scale - Main.screenPosition, new Color(0, 100, 255, 0), new Vector3(0f / 200f, 200f / 200f, 0)));
 		Main.graphics.GraphicsDevice.Textures[0] = texG;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, vertex.ToArray(), 0, vertex.Count / 3);
-
-
-
 	}
 
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
 		if (Projectile.velocity.X != oldVelocity.X)
+		{
 			Projectile.velocity.X = -oldVelocity.X;
+		}
+
 		if (Projectile.velocity.Y != oldVelocity.Y)
+		{
 			Projectile.velocity.Y = -oldVelocity.Y;
+		}
+
 		Projectile.velocity *= 0.98f;
 		Projectile.rotation = MathF.Atan2(Projectile.velocity.Y, Projectile.velocity.X);
 		return false;

@@ -108,13 +108,13 @@ public class HandheldCircularSaw_proj : ModProjectile
 			Vector2 newVelocity = projToPlayer.RotatedBy(addAngle) * -1f * FlameValue;
 			var spark = new FireSparkDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + projToPlayer * 3 + projToPlayerDown.RotatedBy(addAngle) * 15 * player.direction,
-				maxTime = Main.rand.Next(7, 45),
-				scale = Main.rand.NextFloat(1f, Main.rand.NextFloat(4f, 7.0f)),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + projToPlayer * 3 + projToPlayerDown.RotatedBy(addAngle) * 15 * player.direction,
+				MaxTime = Main.rand.Next(7, 45),
+				Scale = Main.rand.NextFloat(1f, Main.rand.NextFloat(4f, 7.0f)),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.03f, 0.08f) * player.direction },
 			};
 			Ins.VFXManager.Add(spark);

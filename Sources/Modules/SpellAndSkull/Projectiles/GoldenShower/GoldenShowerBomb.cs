@@ -50,13 +50,13 @@ public class GoldenShowerBomb : ModProjectile, IWarpProjectile
 			float mulScale = Main.rand.NextFloat(6f, 14f);
 			var blood = new IchorDrop
 			{
-				velocity = afterVelocity * MathF.Sqrt(Projectile.ai[0]),
+				Velocity = afterVelocity * MathF.Sqrt(Projectile.ai[0]),
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(82, 164),
-				scale = mulScale,
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(82, 164),
+				Scale = mulScale,
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 			};
 			Ins.VFXManager.Add(blood);
@@ -66,12 +66,12 @@ public class GoldenShowerBomb : ModProjectile, IWarpProjectile
 			Vector2 afterVelocity = new Vector2(0, Main.rand.NextFloat(0.8f)).RotatedByRandom(MathHelper.TwoPi);
 			var blood = new IchorSplash
 			{
-				velocity = afterVelocity * MathF.Sqrt(Projectile.ai[0]),
+				Velocity = afterVelocity * MathF.Sqrt(Projectile.ai[0]),
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(42, 164),
-				scale = Main.rand.NextFloat(6f, 12f),
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(42, 164),
+				Scale = Main.rand.NextFloat(6f, 12f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.4f), 0 },
 			};
 			Ins.VFXManager.Add(blood);
@@ -85,10 +85,10 @@ public class GoldenShowerBomb : ModProjectile, IWarpProjectile
 
 	public override void PostDraw(Color lightColor)
 	{
-		Texture2D Shadow = ModAsset.CursedHitLight.Value;
+		Texture2D shadow = ModAsset.CursedHitLight.Value;
 		float dark = Math.Max((Projectile.timeLeft - 100) / 50f, 0);
 		float dark2 = Math.Max((Projectile.timeLeft - 150) / 50f, 0);
-		Main.spriteBatch.Draw(Shadow, Projectile.Center - Main.screenPosition, null, new Color(255, 205, 0, 0) * dark2, 0, Shadow.Size() / 2f, 2.2f * Projectile.ai[0] / 15f * dark2, SpriteEffects.None, 0);
+		Main.spriteBatch.Draw(shadow, Projectile.Center - Main.screenPosition, null, new Color(255, 205, 0, 0) * dark2, 0, shadow.Size() / 2f, 2.2f * Projectile.ai[0] / 15f * dark2, SpriteEffects.None, 0);
 
 		float timeValue = (200 - Projectile.timeLeft) / 200f;
 		Color cDark = new Color(0, 0, 0, 1f - timeValue) * 0.5f;
@@ -100,9 +100,9 @@ public class GoldenShowerBomb : ModProjectile, IWarpProjectile
 
 	public override bool PreDraw(ref Color lightColor)
 	{
-		Texture2D Shadow = ModAsset.CursedHit.Value;
+		Texture2D shadow = ModAsset.CursedHit.Value;
 		float dark = Math.Max((Projectile.timeLeft - 120) / 80f, 0);
-		Main.spriteBatch.Draw(Shadow, Projectile.Center - Main.screenPosition, null, Color.White * dark, 0, Shadow.Size() / 2f, 2.2f * Projectile.ai[0] / 15f, SpriteEffects.None, 0);
+		Main.spriteBatch.Draw(shadow, Projectile.Center - Main.screenPosition, null, Color.White * dark, 0, shadow.Size() / 2f, 2.2f * Projectile.ai[0] / 15f, SpriteEffects.None, 0);
 		Texture2D light = ModAsset.LineLight_2.Value;
 		Main.spriteBatch.Draw(light, Projectile.Center - Main.screenPosition, null, new Color(255, 205, 0, 0), 1.57f, light.Size() / 2f, new Vector2(0.5f, dark) * Projectile.ai[0] * 0.2f, SpriteEffects.None, 0);
 		return false;

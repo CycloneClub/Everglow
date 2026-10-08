@@ -37,12 +37,12 @@ public class OnElectric : ModBuff
 		Vector2 afterVelocity = new Vector2(0, size * 1.3f).RotatedByRandom(MathHelper.TwoPi);
 		var electric = new YoenLeZedElecticFlow
 		{
-			velocity = afterVelocity * mulVelocity,
+			Velocity = afterVelocity * mulVelocity,
 			Active = true,
 			Visible = true,
-			position = npc.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) - afterVelocity * mulVelocity * 6,
-			maxTime = size * size / 34f,
-			scale = size * MathF.Sqrt(currentElectrityTimeFactor),
+			Position = npc.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) - afterVelocity * mulVelocity * 6,
+			MaxTime = size * size / 34f,
+			Scale = size * MathF.Sqrt(currentElectrityTimeFactor),
 			ai = new float[] { Main.rand.NextFloat(0.0f, 0.6f), 1f, Main.rand.NextFloat(0.2f, Main.rand.NextFloat(0.2f, 0.4f)) },
 		};
 		Ins.VFXManager.Add(electric);

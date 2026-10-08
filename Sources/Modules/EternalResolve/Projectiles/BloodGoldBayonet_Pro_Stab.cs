@@ -29,12 +29,12 @@ namespace Everglow.EternalResolve.Projectiles
 			yield return new WaitForFrames(45);
 			StabVFX v = new BloodGoldStabVFX()
 			{
-				pos = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
-				vel = velocity,
-				color = StabColor * 0.4f,
-				scale = 25,
-				maxtime = 10,
-				timeleft = 10,
+				Position = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
+				Velocity = velocity,
+				StabEffectColor = StabColor * 0.4f,
+				Scale = 25,
+				MaxTime = 10,
+				TimeLeft = 10,
 			};
 			if (StabEndPoint_WorldPos == Vector2.Zero)
 			{
@@ -43,12 +43,12 @@ namespace Everglow.EternalResolve.Projectiles
 			yield return new WaitForFrames(40);
 			v = new BloodGoldStabVFX()
 			{
-				pos = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
-				vel = velocity,
-				color = StabColor * 0.4f,
-				scale = 15,
-				maxtime = 10,
-				timeleft = 10,
+				Position = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
+				Velocity = velocity,
+				StabEffectColor = StabColor * 0.4f,
+				Scale = 15,
+				MaxTime = 10,
+				TimeLeft = 10,
 			};
 			if (StabEndPoint_WorldPos == Vector2.Zero)
 			{

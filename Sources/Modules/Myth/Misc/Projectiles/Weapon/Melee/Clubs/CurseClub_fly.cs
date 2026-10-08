@@ -10,52 +10,52 @@ public class CurseClub_fly : ModProjectile, IWarpProjectile
 	/// <summary>
 	/// 角速度
 	/// </summary>
-	internal float Omega = 0;
+	public float Omega = 0;
 
 	/// <summary>
 	/// 角加速度
 	/// </summary>
-	internal float Beta = 0.005f;
+	public float Beta = 0.005f;
 
 	/// <summary>
 	/// 最大角速度(受近战攻速影响)
 	/// </summary>
-	internal float MaxOmega = 0.5f;
+	public float MaxOmega = 0.5f;
 
 	/// <summary>
 	/// 伤害半径
 	/// </summary>
-	internal float HitLength = 32f;
+	public float HitLength = 32f;
 
 	/// <summary>
 	/// 命中敌人后对于角速度的削减率(会根据敌人的击退抗性而再次降低)
 	/// </summary>
-	internal float StrikeOmegaDecrease = 0.9f;
+	public float StrikeOmegaDecrease = 0.9f;
 
 	/// <summary>
 	/// 命中敌人后最低剩余角速度(默认40%,即0.4)
 	/// </summary>
-	internal float MinStrikeOmegaDecrease = 0.4f;
+	public float MinStrikeOmegaDecrease = 0.4f;
 
 	/// <summary>
 	/// 内部参数，用来计算伤害
 	/// </summary>
-	internal int DamageStartValue = 0;
+	public int DamageStartValue = 0;
 
 	/// <summary>
 	/// 拖尾长度
 	/// </summary>
-	internal int trailLength = 10;
+	public int TrailLength = 10;
 
 	/// <summary>
 	/// 是否正在攻击
 	/// </summary>
-	internal bool isAttacking = false;
+	public bool IsAttacking = false;
 
 	/// <summary>
 	/// 拖尾
 	/// </summary>
-	internal Queue<Vector2> trailVecs;
+	public Queue<Vector2> TrailVecs;
 
 	public override void SetDefaults()
 	{
@@ -72,7 +72,7 @@ public class CurseClub_fly : ModProjectile, IWarpProjectile
 
 		Projectile.DamageType = DamageClass.Melee;
 
-		trailVecs = new Queue<Vector2>(trailLength + 1);
+		TrailVecs = new Queue<Vector2>(TrailLength + 1);
 	}
 
 	private void GenerateVFX()
@@ -87,8 +87,8 @@ public class CurseClub_fly : ModProjectile, IWarpProjectile
 		}
 
 		v0 = v0.RotatedBy(Projectile.rotation + Main.rand.NextFloat(Omega));
-		float Speed = Math.Min(Omega * 0.15f, 0.061f) * 7.2f;
-		var v1 = new Vector2(-v0.Y, v0.X) * Speed;
+		float speed = Math.Min(Omega * 0.15f, 0.061f) * 7.2f;
+		var v1 = new Vector2(-v0.Y, v0.X) * speed;
 
 		if (Main.rand.NextBool(2))
 		{
@@ -99,24 +99,24 @@ public class CurseClub_fly : ModProjectile, IWarpProjectile
 			int time = Main.rand.Next(15, 35);
 			var fire = new Flare()
 			{
-				position = Vector2.Lerp(Projectile.Center, Projectile.Center + Projectile.rotation.ToRotationVector2() * 30, Main.rand.NextFloat(0.4f, 1.25f)),
-				velocity = Projectile.velocity * 0.5f,
-				gravity = -0.3f,
-				color = color,
-				timeleft = time,
-				maxTimeleft = time,
-				scale = Main.rand.NextFloat(0.3f, 0.6f)
+				Position = Vector2.Lerp(Projectile.Center, Projectile.Center + Projectile.rotation.ToRotationVector2() * 30, Main.rand.NextFloat(0.4f, 1.25f)),
+				Velocity = Projectile.velocity * 0.5f,
+				Gravity = -0.3f,
+				Color = color,
+				TimeLeft = time,
+				MaxTimeLeft = time,
+				Scale = Main.rand.NextFloat(0.3f, 0.6f)
 			};
 			Ins.VFXManager.Add(fire);
 		}
 		/*
 		var cf = new CurseFlame_HighQualityDust
 		{
-			velocity = v1 + Projectile.velocity * 0.3f,
+			Velocity = v1 + Projectile.velocity * 0.3f,
 			Active = true,
 			Visible = true,
-			position = Projectile.Center + v0,
-			maxTime = Main.rand.Next(12, 30),
+			Position = Projectile.Center + v0,
+			MaxTime = Main.rand.Next(12, 30),
 			ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Omega * 0.75f, Main.rand.NextFloat(3.6f, 30f) * mulVelocity },
 		};
 		Ins.VFXManager.Add(cf);*/
@@ -131,17 +131,17 @@ public class CurseClub_fly : ModProjectile, IWarpProjectile
 			}
 
 			v0 = v0.RotatedBy(Projectile.rotation + Main.rand.NextFloat(Omega));
-			Vector2 newVelocity = new Vector2(-v0.Y, v0.X) * Speed * 0.2f;
+			Vector2 newVelocity = new Vector2(-v0.Y, v0.X) * speed * 0.2f;
 			float v0Length = v0.Length();
 			var spark = new CurseFlameSparkDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + v0,
-				maxTime = Main.rand.Next(37, Main.rand.Next(37, 185)),
-				scale = Main.rand.NextFloat(4f, 27.0f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + v0,
+				MaxTime = Main.rand.Next(37, Main.rand.Next(37, 185)),
+				Scale = Main.rand.NextFloat(4f, 27.0f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Omega * 0.1f * v0Length / 14f, 15f },
 			};
 			Ins.VFXManager.Add(spark);
@@ -159,10 +159,10 @@ public class CurseClub_fly : ModProjectile, IWarpProjectile
 		}
 
 		v0 = v0.RotatedBy(Projectile.rotation);
-		float Speed = Math.Min(Omega * 0.5f, 0.221f);
-		var D = Dust.NewDustDirect(Projectile.Center + v0 - new Vector2(4)/*Dust的Size=8x8*/, 0, 0, DustID.CursedTorch, -v0.Y * Speed, v0.X * Speed, 150, default, Main.rand.NextFloat(0.4f, 1.1f));
-		D.noGravity = true;
-		D.velocity = new Vector2(-v0.Y * Speed, v0.X * Speed);
+		float speed = Math.Min(Omega * 0.5f, 0.221f);
+		var d = Dust.NewDustDirect(Projectile.Center + v0 - new Vector2(4)/*Dust的Size=8x8*/, 0, 0, DustID.CursedTorch, -v0.Y * speed, v0.X * speed, 150, default, Main.rand.NextFloat(0.4f, 1.1f));
+		d.noGravity = true;
+		d.velocity = new Vector2(-v0.Y * speed, v0.X * speed);
 	}
 
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
@@ -185,11 +185,11 @@ public class CurseClub_fly : ModProjectile, IWarpProjectile
 	{
 		float power = Math.Max(StrikeOmegaDecrease - MathF.Pow(target.knockBackResist / 4f, 3), MinStrikeOmegaDecrease);
 
-		ScreenShaker Gsplayer = Main.player[Projectile.owner].GetModPlayer<ScreenShaker>();
-		float ShakeStrength = Omega * 0.04f;
+		ScreenShaker gsPlayer = Main.player[Projectile.owner].GetModPlayer<ScreenShaker>();
+		float shakeStrength = Omega * 0.04f;
 		Omega *= power;
 		modifiers.FinalDamage /= power;
-		Gsplayer.FlyCamPosition = new Vector2(0, Math.Min(target.Hitbox.Width * target.Hitbox.Height / 12f * ShakeStrength, 100)).RotatedByRandom(6.283);
+		gsPlayer.FlyCamPosition = new Vector2(0, Math.Min(target.Hitbox.Width * target.Hitbox.Height / 12f * shakeStrength, 100)).RotatedByRandom(6.283);
 		modifiers.Knockback *= Omega * 3;
 	}
 
@@ -226,10 +226,10 @@ public class CurseClub_fly : ModProjectile, IWarpProjectile
 		Player player = Main.player[Projectile.owner];
 		if (Projectile.timeLeft >= 550)
 		{
-			Vector2 MouseToPlayer = Main.MouseWorld - player.MountedCenter;
-			MouseToPlayer = Vector2.Normalize(MouseToPlayer) * 15f;
+			Vector2 mouseToPlayer = Main.MouseWorld - player.MountedCenter;
+			mouseToPlayer = Vector2.Normalize(mouseToPlayer) * 15f;
 			Vector2 vT0 = Main.MouseWorld - player.MountedCenter;
-			Projectile.Center = player.MountedCenter + MouseToPlayer;
+			Projectile.Center = player.MountedCenter + mouseToPlayer;
 			Projectile.spriteDirection = player.direction;
 			if (Projectile.timeLeft == 550)
 			{
@@ -254,12 +254,12 @@ public class CurseClub_fly : ModProjectile, IWarpProjectile
 		Projectile.localNPCHitCooldown = (int)(MathF.PI / Math.Max(Omega, 0.157));
 
 		Projectile.rotation += Omega;
-		float MeleeSpeed = player.GetAttackSpeed(Projectile.DamageType);
+		float meleeSpeed = player.GetAttackSpeed(Projectile.DamageType);
 		if (Projectile.timeLeft > 550)
 		{
-			if (Omega < MeleeSpeed * MaxOmega)
+			if (Omega < meleeSpeed * MaxOmega)
 			{
-				Omega += Beta * MeleeSpeed * 4f;
+				Omega += Beta * meleeSpeed * 4f;
 			}
 		}
 		else
@@ -270,17 +270,17 @@ public class CurseClub_fly : ModProjectile, IWarpProjectile
 			}
 			else
 			{
-				if (Omega < MeleeSpeed * MaxOmega + 0.2f)
+				if (Omega < meleeSpeed * MaxOmega + 0.2f)
 				{
-					Omega += Beta * MeleeSpeed * 0.04f;
+					Omega += Beta * meleeSpeed * 0.04f;
 				}
 			}
 		}
-		Vector2 HitRange = new Vector2(HitLength, HitLength * Projectile.spriteDirection).RotatedBy(Projectile.rotation) * Projectile.scale;
-		trailVecs.Enqueue(HitRange);
-		if (trailVecs.Count > trailLength)
+		Vector2 hitRange = new Vector2(HitLength, HitLength * Projectile.spriteDirection).RotatedBy(Projectile.rotation) * Projectile.scale;
+		TrailVecs.Enqueue(hitRange);
+		if (TrailVecs.Count > TrailLength)
 		{
-			trailVecs.Dequeue();
+			TrailVecs.Dequeue();
 		}
 
 		if (player.dead)
@@ -291,7 +291,7 @@ public class CurseClub_fly : ModProjectile, IWarpProjectile
 		ProduceWaterRipples(new Vector2(HitLength * Projectile.scale));
 		float distance = 200f;
 
-		if (target == -1)
+		if (Target == -1)
 		{
 			foreach (var npc in Main.npc)
 			{
@@ -305,7 +305,7 @@ public class CurseClub_fly : ModProjectile, IWarpProjectile
 							{
 								if ((npc.Center - Projectile.Center).Length() < distance)
 								{
-									target = npc.whoAmI;
+									Target = npc.whoAmI;
 									distance = (npc.Center - Projectile.Center).Length();
 								}
 							}
@@ -314,14 +314,14 @@ public class CurseClub_fly : ModProjectile, IWarpProjectile
 				}
 			}
 		}
-		if (target >= 0)
+		if (Target >= 0)
 		{
-			if (!Main.npc[target].active)
+			if (!Main.npc[Target].active)
 			{
-				target = -1;
+				Target = -1;
 				return;
 			}
-			Vector2 addV = (Main.npc[target].Center - Projectile.Center).SafeNormalize(Vector2.Zero);
+			Vector2 addV = (Main.npc[Target].Center - Projectile.Center).SafeNormalize(Vector2.Zero);
 			Projectile.velocity = addV * Projectile.velocity.Length() * 0.15f + Projectile.velocity * 0.9f;
 
 			if (Projectile.timeLeft > 100)
@@ -334,7 +334,7 @@ public class CurseClub_fly : ModProjectile, IWarpProjectile
 		}
 	}
 
-	internal int target = -1;
+	public int Target = -1;
 
 	public override bool PreDraw(ref Color lightColor)
 	{
@@ -365,24 +365,24 @@ public class CurseClub_fly : ModProjectile, IWarpProjectile
 
 	public void DrawTrail()
 	{
-		List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(trailVecs.ToList()); // 平滑
-		var SmoothTrail = new List<Vector2>();
-		for (int x = 0; x < SmoothTrailX.Count - 1; x++)
+		List<Vector2> smoothTrailX = GraphicsUtils.CatmullRom(TrailVecs.ToList()); // 平滑
+		var smoothTrail = new List<Vector2>();
+		for (int x = 0; x < smoothTrailX.Count - 1; x++)
 		{
-			SmoothTrail.Add(SmoothTrailX[x]);
+			smoothTrail.Add(smoothTrailX[x]);
 		}
-		if (trailVecs.Count != 0)
+		if (TrailVecs.Count != 0)
 		{
-			SmoothTrail.Add(trailVecs.ToArray()[trailVecs.Count - 1]);
+			smoothTrail.Add(TrailVecs.ToArray()[TrailVecs.Count - 1]);
 		}
 
-		int length = SmoothTrail.Count;
+		int length = smoothTrail.Count;
 		if (length <= 3)
 		{
 			return;
 		}
 
-		Vector2[] trail = SmoothTrail.ToArray();
+		Vector2[] trail = smoothTrail.ToArray();
 		var bars = new List<Vertex2D>();
 
 		float fade = Omega * 2f + 0.2f;
@@ -428,24 +428,24 @@ public class CurseClub_fly : ModProjectile, IWarpProjectile
 	public void DrawWarp(VFXBatch spriteBatch)
 	{
 		float warpvalue = Omega * 0.1f;
-		List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(trailVecs.ToList()); // 平滑
-		var SmoothTrail = new List<Vector2>();
-		for (int x = 0; x < SmoothTrailX.Count - 1; x++)
+		List<Vector2> smoothTrailX = GraphicsUtils.CatmullRom(TrailVecs.ToList()); // 平滑
+		var smoothTrail = new List<Vector2>();
+		for (int x = 0; x < smoothTrailX.Count - 1; x++)
 		{
-			SmoothTrail.Add(SmoothTrailX[x]);
+			smoothTrail.Add(smoothTrailX[x]);
 		}
-		if (trailVecs.Count != 0)
+		if (TrailVecs.Count != 0)
 		{
-			SmoothTrail.Add(trailVecs.ToArray()[trailVecs.Count - 1]);
+			smoothTrail.Add(TrailVecs.ToArray()[TrailVecs.Count - 1]);
 		}
 
-		int length = SmoothTrail.Count;
+		int length = smoothTrail.Count;
 		if (length <= 3)
 		{
 			return;
 		}
 
-		Vector2[] trail = SmoothTrail.ToArray();
+		Vector2[] trail = smoothTrail.ToArray();
 		var bars = new List<Vertex2D>();
 		for (int i = 0; i < length; i++)
 		{
@@ -472,21 +472,21 @@ public class CurseClub_fly : ModProjectile, IWarpProjectile
 			}
 			if (dir - dir1 > 0.5)
 			{
-				var MidValue = (1 - dir) / (1 - dir + dir1);
-				var MidPoint = MidValue * trail[i] + (1 - MidValue) * trail[i - 1];
+				var midValue = (1 - dir) / (1 - dir + dir1);
+				var midPoint = midValue * trail[i] + (1 - midValue) * trail[i - 1];
 				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(0, warpvalue, 0, 1), new Vector3(factor, 1, 1)));
-				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition + MidPoint * Projectile.scale * 1.1f, new Color(0, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
+				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition + midPoint * Projectile.scale * 1.1f, new Color(0, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
 				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(1, warpvalue, 0, 1), new Vector3(factor, 1, 1)));
-				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition + MidPoint * Projectile.scale * 1.1f, new Color(1, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
+				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition + midPoint * Projectile.scale * 1.1f, new Color(1, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
 			}
 			if (dir1 - dir > 0.5)
 			{
-				var MidValue = (1 - dir1) / (1 - dir1 + dir);
-				var MidPoint = MidValue * trail[i - 1] + (1 - MidValue) * trail[i];
+				var midValue = (1 - dir1) / (1 - dir1 + dir);
+				var midPoint = midValue * trail[i - 1] + (1 - midValue) * trail[i];
 				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(1, warpvalue, 0, 1), new Vector3(factor, 1, 1)));
-				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition + MidPoint * Projectile.scale * 1.1f, new Color(1, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
+				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition + midPoint * Projectile.scale * 1.1f, new Color(1, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
 				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(0, warpvalue, 0, 1), new Vector3(factor, 1, 1)));
-				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition + MidPoint * Projectile.scale * 1.1f, new Color(0, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
+				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition + midPoint * Projectile.scale * 1.1f, new Color(0, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
 			}
 
 			bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(dir, warpvalue, 0, 1), new Vector3(factor, 1, 1)));
@@ -520,21 +520,21 @@ public class CurseClub_fly : ModProjectile, IWarpProjectile
 
 			if (dir - dir1 > 0.5)
 			{
-				var MidValue = (1 - dir) / (1 - dir + dir1);
-				var MidPoint = MidValue * trail[i] + (1 - MidValue) * trail[i - 1];
+				var midValue = (1 - dir) / (1 - dir + dir1);
+				var midPoint = midValue * trail[i] + (1 - midValue) * trail[i - 1];
 				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(0, warpvalue, 0, 1), new Vector3(factor, 1, 1)));
-				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition - MidPoint * Projectile.scale * 1.1f, new Color(0, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
+				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition - midPoint * Projectile.scale * 1.1f, new Color(0, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
 				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(1, warpvalue, 0, 1), new Vector3(factor, 1, 1)));
-				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition - MidPoint * Projectile.scale * 1.1f, new Color(1, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
+				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition - midPoint * Projectile.scale * 1.1f, new Color(1, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
 			}
 			if (dir1 - dir > 0.5)
 			{
-				var MidValue = (1 - dir1) / (1 - dir1 + dir);
-				var MidPoint = MidValue * trail[i - 1] + (1 - MidValue) * trail[i];
+				var midValue = (1 - dir1) / (1 - dir1 + dir);
+				var midPoint = midValue * trail[i - 1] + (1 - midValue) * trail[i];
 				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(1, warpvalue, 0, 1), new Vector3(factor, 1, 1)));
-				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition - MidPoint * Projectile.scale * 1.1f, new Color(1, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
+				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition - midPoint * Projectile.scale * 1.1f, new Color(1, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
 				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(0, warpvalue, 0, 1), new Vector3(factor, 1, 1)));
-				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition - MidPoint * Projectile.scale * 1.1f, new Color(0, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
+				bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition - midPoint * Projectile.scale * 1.1f, new Color(0, warpvalue, 0, 1), new Vector3(factor, 0, 1)));
 			}
 
 			bars.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(dir, warpvalue, 0, 1), new Vector3(factor, 1, 1)));
@@ -554,8 +554,8 @@ public class CurseClub_fly : ModProjectile, IWarpProjectile
 	public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 	{
 		float point = 0;
-		Vector2 HitRange = new Vector2(HitLength, HitLength * Projectile.spriteDirection).RotatedBy(Projectile.rotation) * Projectile.scale;
-		if (Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center - HitRange, Projectile.Center + HitRange, 10 * HitLength / 32f * Omega / 0.3f, ref point) && Projectile.timeLeft < 550)
+		Vector2 hitRange = new Vector2(HitLength, HitLength * Projectile.spriteDirection).RotatedBy(Projectile.rotation) * Projectile.scale;
+		if (Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center - hitRange, Projectile.Center + hitRange, 10 * HitLength / 32f * Omega / 0.3f, ref point) && Projectile.timeLeft < 550)
 		{
 			return true;
 		}
@@ -567,9 +567,9 @@ public class CurseClub_fly : ModProjectile, IWarpProjectile
 	{
 		var shaderData = (WaterShaderData)Terraria.Graphics.Effects.Filters.Scene["WaterDistortion"].GetShader();
 		float waveSine = 1f * (float)Math.Sin(Main.GlobalTimeWrappedHourly * 20f);
-		Vector2 HitRange = new Vector2(HitLength, -HitLength).RotatedBy(Projectile.rotation) * Projectile.scale;
-		Vector2 ripplePos = Projectile.Center + HitRange;
-		Vector2 ripplePosII = Projectile.Center - HitRange;
+		Vector2 hitRange = new Vector2(HitLength, -HitLength).RotatedBy(Projectile.rotation) * Projectile.scale;
+		Vector2 ripplePos = Projectile.Center + hitRange;
+		Vector2 ripplePosII = Projectile.Center - hitRange;
 		Color waveData = new Color(0.5f, 0.1f * Math.Sign(waveSine) + 0.5f, 0f, 1f) * Math.Abs(waveSine);
 		shaderData.QueueRipple(ripplePos, waveData, beamDims, RippleShape.Square, Projectile.rotation + MathHelper.Pi / 2f);
 		shaderData.QueueRipple(ripplePosII, waveData, beamDims, RippleShape.Square, Projectile.rotation + MathHelper.Pi / 2f);

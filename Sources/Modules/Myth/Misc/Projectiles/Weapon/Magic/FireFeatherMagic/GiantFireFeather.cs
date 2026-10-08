@@ -1,6 +1,5 @@
 using Everglow.Commons.VFX.CommonVFXDusts;
 using Terraria.Audio;
-using Terraria.DataStructures;
 
 namespace Everglow.Myth.Misc.Projectiles.Weapon.Magic.FireFeatherMagic;
 
@@ -23,17 +22,25 @@ public class GiantFireFeather : ModProjectile
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 80;
 	}
-	internal int TimeTokill = -1;
+
+	public int TimeToKill = -1;
+
 	public override void AI()
 	{
-		if (TimeTokill >= 0 && TimeTokill <= 2)
-			Projectile.Kill();
-		if (TimeTokill <= 80 && TimeTokill > 0)
-			Projectile.velocity = Projectile.oldVelocity;
-		TimeTokill--;
-		if (TimeTokill >= 0)
+		if (TimeToKill >= 0 && TimeToKill <= 2)
 		{
-			if (TimeTokill < 10)
+			Projectile.Kill();
+		}
+
+		if (TimeToKill <= 80 && TimeToKill > 0)
+		{
+			Projectile.velocity = Projectile.oldVelocity;
+		}
+
+		TimeToKill--;
+		if (TimeToKill >= 0)
+		{
+			if (TimeToKill < 10)
 			{
 				Projectile.damage = 0;
 				Projectile.friendly = false;
@@ -43,14 +50,7 @@ public class GiantFireFeather : ModProjectile
 		else
 		{
 			Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X);
-			if (Projectile.position.Y < Main.MouseWorld.Y)
-			{
-				Projectile.tileCollide = false;
-			}
-			else
-			{
-				Projectile.tileCollide = true;
-			}
+			Projectile.tileCollide = Projectile.position.Y >= Main.MouseWorld.Y;
 			if (Projectile.Center.X > Main.screenPosition.X - 100 && Projectile.Center.X < Main.screenPosition.X + Main.screenWidth + 100 && Projectile.Center.Y > Main.screenPosition.Y - 100 && Projectile.Center.Y < Main.screenPosition.Y + Main.screenWidth + 100)
 			{
 				if (Main.rand.NextBool(6))
@@ -61,28 +61,28 @@ public class GiantFireFeather : ModProjectile
 				Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 0.6f)).RotatedByRandom(MathHelper.TwoPi);
 				var spark = new FireSparkDust
 				{
-					velocity = newVelocity + Projectile.velocity * Main.rand.NextFloat(0.7f, 2.9f),
+					Velocity = newVelocity + Projectile.velocity * Main.rand.NextFloat(0.7f, 2.9f),
 					Active = true,
 					Visible = true,
-					position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity * Main.rand.NextFloat(-3f, 2f),
-					maxTime = Main.rand.Next(37, 45),
-					scale = Main.rand.NextFloat(0.1f, 12.0f),
-					rotation = Main.rand.NextFloat(6.283f),
-					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.01f, 0.01f) }
+					Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity * Main.rand.NextFloat(-3f, 2f),
+					MaxTime = Main.rand.Next(37, 45),
+					Scale = Main.rand.NextFloat(0.1f, 12.0f),
+					Rotation = Main.rand.NextFloat(6.283f),
+					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.01f, 0.01f) },
 				};
 				Ins.VFXManager.Add(spark);
 				for (int x = 0; x < 6; x++)
 				{
 					var spark2 = new FireSparkDust
 					{
-						velocity = newVelocity + Projectile.velocity * Main.rand.NextFloat(0.0f, 0.2f),
+						Velocity = newVelocity + Projectile.velocity * Main.rand.NextFloat(0.0f, 0.2f),
 						Active = true,
 						Visible = true,
-						position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity * Main.rand.NextFloat(-3f, 2f),
-						maxTime = Main.rand.Next(27, 35),
-						scale = Main.rand.NextFloat(0.1f, 12.0f),
-						rotation = Main.rand.NextFloat(6.283f),
-						ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.01f, 0.01f) }
+						Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + Projectile.velocity * Main.rand.NextFloat(-3f, 2f),
+						MaxTime = Main.rand.Next(27, 35),
+						Scale = Main.rand.NextFloat(0.1f, 12.0f),
+						Rotation = Main.rand.NextFloat(6.283f),
+						ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.01f, 0.01f) },
 					};
 					Ins.VFXManager.Add(spark2);
 				}
@@ -98,17 +98,19 @@ public class GiantFireFeather : ModProjectile
 			Projectile.Kill();
 		}
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
-		if (TimeTokill >= 0)
+		if (TimeToKill >= 0)
 		{
-			float timeValue = (80 - TimeTokill) / 80f;
+			float timeValue = (80 - TimeToKill) / 80f;
 			DrawTrail(Commons.ModAsset.Trail_2_black_thick.Value, Color.White, 36);
-			DrawTrail(Commons.ModAsset.Trail_6.Value, new Color(1f * (1 - timeValue), 0.6f * (1 - timeValue) * (1 - timeValue), 0f, 0f), Math.Max(TimeTokill - 44, 0));
+			DrawTrail(Commons.ModAsset.Trail_6.Value, new Color(1f * (1 - timeValue), 0.6f * (1 - timeValue) * (1 - timeValue), 0f, 0f), Math.Max(TimeToKill - 44, 0));
 			return;
 		}
 		else
@@ -118,7 +120,10 @@ public class GiantFireFeather : ModProjectile
 		}
 		SpriteEffects spriteEffects = SpriteEffects.None;
 		if (Projectile.spriteDirection == -1)
+		{
 			spriteEffects = SpriteEffects.FlipHorizontally;
+		}
+
 		var texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
 		int frameHeight = texture.Height / Main.projFrames[Projectile.type];
 		int startY = frameHeight * Projectile.frame;
@@ -145,23 +150,25 @@ public class GiantFireFeather : ModProjectile
 		}
 		Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), sourceRectangle, drawColor, Projectile.rotation, origin, Projectile.scale, spriteEffects, 0);
 	}
+
 	public void DrawTrail(Texture2D tex, Color color, float width = 36)
 	{
 		var c0 = color;
 		var bars = new List<Vertex2D>();
 
-
 		int trueL = 0;
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
 
 			trueL++;
 		}
-		if (TimeTokill > 0)
+		if (TimeToKill > 0)
 		{
-			trueL = Math.Max(trueL, TimeTokill);
+			trueL = Math.Max(trueL, TimeToKill);
 			if (trueL == 0)
 			{
 				return;
@@ -171,11 +178,19 @@ public class GiantFireFeather : ModProjectile
 		{
 			float width2 = width;
 			if (Projectile.timeLeft <= 40)
+			{
 				width2 = Projectile.timeLeft * 0.9f;
+			}
+
 			if (i < 10)
+			{
 				width2 *= i / 10f;
+			}
+
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
 
 			var normalDir = Projectile.oldPos[i - 1] - Projectile.oldPos[i];
 			if (normalDir == Vector2.zeroVector)
@@ -202,29 +217,33 @@ public class GiantFireFeather : ModProjectile
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		Main.graphics.GraphicsDevice.Textures[0] = t;
 		if (bars.Count > 3)
+		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
-
+		}
 	}
+
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
 		AmmoHit();
 		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<GiantFireFeatherExplosion>(), Projectile.damage, 10, Projectile.owner);
 		return false;
 	}
+
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		target.AddBuff(BuffID.OnFire3, 600);
 		AmmoHit();
 	}
+
 	public void AmmoHit()
 	{
 		SoundEngine.PlaySound(SoundID.DD2_BetsyFireballImpact.WithVolumeScale(0.8f), Projectile.Center);
-		if (TimeTokill > 0)
+		if (TimeToKill > 0)
 		{
 			return;
 		}
 		Player player = Main.player[Projectile.owner];
-		TimeTokill = 80;
+		TimeToKill = 80;
 		Projectile.tileCollide = false;
 		Projectile.friendly = false;
 		Projectile.ignoreWater = true;
@@ -243,30 +262,32 @@ public class GiantFireFeather : ModProjectile
 		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<GiantFireFeatherExplosion>(), Projectile.damage, Projectile.knockBack, player.whoAmI, 8);
 		Projectile.position -= Projectile.velocity;
 	}
-	public void GenerateSmog(int Frequency)
+
+	public void GenerateSmog(int frequency)
 	{
 		float mulVelocity = 2f;
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(2f, 4f)).RotatedByRandom(MathHelper.TwoPi);
-			var somg = new FireSmogDust
+			var smog = new FireSmogDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + newVelocity * 3,
-				maxTime = Main.rand.Next(37, 85),
-				scale = Main.rand.NextFloat(20f, 35f),
-				rotation = Main.rand.NextFloat(6.283f),
-				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 }
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + newVelocity * 3,
+				MaxTime = Main.rand.Next(37, 85),
+				Scale = Main.rand.NextFloat(20f, 35f),
+				Rotation = Main.rand.NextFloat(6.283f),
+				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
-			Ins.VFXManager.Add(somg);
+			Ins.VFXManager.Add(smog);
 		}
 	}
-	public void GenerateFire(int Frequency)
+
+	public void GenerateFire(int frequency)
 	{
 		float mulVelocity = 2f;
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(0f, 4f)).RotatedByRandom(MathHelper.TwoPi);
 			var fire = new FireDust
@@ -278,27 +299,28 @@ public class GiantFireFeather : ModProjectile
 				MaxTime = Main.rand.Next(9, 55),
 				Scale = Main.rand.NextFloat(20f, 130f),
 				Rotation = Main.rand.NextFloat(6.283f),
-				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 }
+				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
 			Ins.VFXManager.Add(fire);
 		}
 	}
-	public void GenerateSpark(int Frequency)
+
+	public void GenerateSpark(int frequency)
 	{
 		float mulVelocity = 4f;
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, mulVelocity * Main.rand.NextFloat(2f, 6f)).RotatedByRandom(MathHelper.TwoPi);
 			var spark = new FireSparkDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + newVelocity * 3,
-				maxTime = Main.rand.Next(37, 45),
-				scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(0.1f, 17.0f)),
-				rotation = Main.rand.NextFloat(6.283f),
-				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.01f, 0.01f) }
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + newVelocity * 3,
+				MaxTime = Main.rand.Next(37, 45),
+				Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(0.1f, 17.0f)),
+				Rotation = Main.rand.NextFloat(6.283f),
+				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.01f, 0.01f) },
 			};
 			Ins.VFXManager.Add(spark);
 		}

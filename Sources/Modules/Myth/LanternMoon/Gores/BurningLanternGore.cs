@@ -5,7 +5,7 @@ public class BurningLanternGore : DissolveGore
 {
 	public override void OnSpawn()
 	{
-		maxTime = 200;
+		MaxTime = 200;
 		base.OnSpawn();
 	}
 
@@ -13,9 +13,9 @@ public class BurningLanternGore : DissolveGore
 	{
 		base.Update();
 
-		float alpha2 = (timer - 100) / (maxTime - 100f);
+		float alpha2 = (Timer - 100) / (MaxTime - 100f);
 		alpha2 = Math.Clamp(alpha2, 0.0f, 1.0f);
 		alpha2 = MathF.Sin(alpha2 * MathHelper.Pi);
-		Lighting.AddLight(position, new Vector3(1f, 0.5f, 0) * alpha2 * width / 60f);
+		Lighting.AddLight(Position, new Vector3(1f, 0.5f, 0) * alpha2 * Width / 60f);
 	}
 }

@@ -44,7 +44,7 @@ public class ChainGrenadeProjExplosion : ModProjectile, IWarpProjectile
 		for (int x = 0; x < count; x++)
 		{
 			Vector2 newVelocity = new Vector2(0, MathF.Sqrt(Main.rand.NextFloat(1f)) * 8f).RotatedByRandom(MathHelper.TwoPi);
-			var somg = new MissleFlameDust
+			var smog = new MissleFlameDust
 			{
 				Velocity = newVelocity,
 				Active = true,
@@ -55,7 +55,7 @@ public class ChainGrenadeProjExplosion : ModProjectile, IWarpProjectile
 				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
-			Ins.VFXManager.Add(somg);
+			Ins.VFXManager.Add(smog);
 		}
 	}
 
@@ -64,7 +64,7 @@ public class ChainGrenadeProjExplosion : ModProjectile, IWarpProjectile
 		for (int x = 0; x < count; x++)
 		{
 			Vector2 newVelocity = new Vector2(0, MathF.Sqrt(Main.rand.NextFloat(1f)) * 4f).RotatedByRandom(MathHelper.TwoPi);
-			var somg = new MissleFlameDust
+			var smog = new MissleFlameDust
 			{
 				Velocity = newVelocity,
 				Active = true,
@@ -75,7 +75,7 @@ public class ChainGrenadeProjExplosion : ModProjectile, IWarpProjectile
 				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
-			Ins.VFXManager.Add(somg);
+			Ins.VFXManager.Add(smog);
 		}
 	}
 
@@ -107,13 +107,13 @@ public class ChainGrenadeProjExplosion : ModProjectile, IWarpProjectile
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(2f, 22f)).RotatedByRandom(MathHelper.TwoPi);
 			var spark = new FireSparkDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(20), 0).RotatedByRandom(6.283) + newVelocity * 3,
-				maxTime = Main.rand.Next(10, 20),
-				scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(1f, 25.0f)),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(20), 0).RotatedByRandom(6.283) + newVelocity * 3,
+				MaxTime = Main.rand.Next(10, 20),
+				Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(1f, 25.0f)),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.01f, 0.01f) },
 			};
 			Ins.VFXManager.Add(spark);
