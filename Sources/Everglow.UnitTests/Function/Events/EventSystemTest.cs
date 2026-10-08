@@ -36,7 +36,7 @@ public class EventSystemTest
 	[TestMethod]
 	[DataRow(true)]
 	[DataRow(false)]
-	public void EventLayerKeepsProgressBarsInUISpace(bool hasVanillaInvasionLayer)
+	public void EventSystemPreservesVanillaInterfaceLayers(bool hasVanillaInvasionLayer)
 	{
 		var before = new LegacyGameInterfaceLayer("Before", () => true);
 		var minimap = new LegacyGameInterfaceLayer("Vanilla: Map / Minimap", () => true, InterfaceScaleType.UI);
@@ -46,14 +46,51 @@ public class EventSystemTest
 			layers.Add(new LegacyGameInterfaceLayer("Vanilla: Invasion Progress Bars", () => true, InterfaceScaleType.UI));
 		}
 		layers.Add(minimap);
+		var originalLayers = layers.ToArray();
 
 		new EventSystem().ModifyInterfaceLayers(layers);
 
-		Assert.AreEqual(3, layers.Count);
-		Assert.AreSame(before, layers[0]);
-		Assert.AreSame(minimap, layers[2]);
-		Assert.AreEqual(InterfaceScaleType.UI, layers[1].ScaleType,
-			"Progress bars positioned at the screen edge must not use world zoom.");
+		CollectionAssert.AreEqual(originalLayers, layers);
+	}
+
+	[TestMethod]
+	[DataRow(false)]
+	[DataRow(true)]
+	public void InvasionDrawFallsBackWithoutForegroundEvents(bool hasBackgroundEvent)
+	{
+		var background = new TestEvent { Background = true };
+		if (hasBackgroundEvent)
+		{
+			EventSystem.Activate(background);
+		}
+		Assert.IsFalse(TryDrawEventInvasion(), "Without a foreground event the hook must fall back to vanilla.");
+		Assert.AreEqual(0, background.Draws);
+	}
+
+	[TestMethod]
+	public void InvasionDrawSelectsHighestRankedForegroundEvent()
+	{
+		var background = new TestEvent { Background = true, SortRank = 3 };
+		var foreground = new TestEvent { SortRank = 2 };
+		var lowerRank = new TestEvent { SortRank = 1 };
+		EventSystem.Activate(lowerRank);
+		EventSystem.Activate(background);
+		EventSystem.Activate(foreground);
+		Assert.IsTrue(TryDrawEventInvasion());
+		Assert.AreEqual(0, background.Draws);
+		Assert.AreEqual(1, foreground.Draws);
+		Assert.AreEqual(0, lowerRank.Draws);
+		EventSystem.Deactivate(foreground);
+		EventSystem.Deactivate(lowerRank);
+
+		Assert.IsFalse(TryDrawEventInvasion());
+	}
+
+	private static bool TryDrawEventInvasion()
+	{
+		var method = typeof(EventSystem).GetMethod("DrawInvasionProgress_Everglow", BindingFlags.Static | BindingFlags.NonPublic);
+		Assert.IsNotNull(method);
+		return method.CreateDelegate<Func<bool>>()();
 	}
 
 	[TestMethod]
@@ -267,6 +304,10 @@ public class EventSystemTest
 
 	private sealed class TestEvent : ModEvent
 	{
+		public bool Background;
+		public override bool IsBackground => Background;
+		public int Draws;
+		public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch sprite) => Draws++;
 		private readonly string name = Guid.NewGuid().ToString("N");
 		public override string Name => name;
 		public bool Synchronize;

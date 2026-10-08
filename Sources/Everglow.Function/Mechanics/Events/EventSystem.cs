@@ -1,37 +1,28 @@
 using Terraria.ModLoader.IO;
-using Terraria.UI;
 
 namespace Everglow.Commons.Mechanics.Events;
 
 public class EventSystem : ModSystem
 {
-	private const string LayerName = "Everglow/ModEvent";
-	private const string VanillaInvasionLayerName = "Vanilla: Invasion Progress Bars";
-	private const string VanillaMinimapLayerName = "Vanilla: Map / Minimap";
-
 	private static readonly List<ModEvent> actives = [];
 
 	private static readonly Dictionary<string, ModEvent> registry = new(StringComparer.Ordinal);
 
-	private static LegacyGameInterfaceLayer layer_HasInvasion = new(LayerName, delegate
+	public override void Load()
+	{
+		if (!Main.dedServ)
+		{
+			On_Main.DrawInvasionProgress += DrawInvasionProgress;
+		}
+	}
+
+	private static void DrawInvasionProgress(On_Main.orig_DrawInvasionProgress orig)
 	{
 		if (!DrawInvasionProgress_Everglow())
 		{
-			Main.DrawInvasionProgress();
+			orig();
 		}
-		if (Main.HealthBarDrawSettings != 0)
-		{
-			Main.BigBossProgressBar.Draw(Main.spriteBatch);
-		}
-		return true;
-	}, InterfaceScaleType.UI);
-
-	private static LegacyGameInterfaceLayer layer_NoInvasion = new(LayerName, delegate
-	{
-		DrawInvasionProgress_Everglow();
-
-		return true;
-	}, InterfaceScaleType.UI);
+	}
 
 	private static bool DrawInvasionProgress_Everglow()
 	{
@@ -162,22 +153,6 @@ public class EventSystem : ModSystem
 	{
 		ClearWorld();
 		registry.Clear();
-	}
-
-	public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
-	{
-		int index = layers.FindIndex(layer => layer.Name == VanillaInvasionLayerName);
-		if (index != -1)
-		{
-			layers.RemoveAt(index);
-			layers.Insert(index, layer_HasInvasion);
-			return;
-		}
-		index = layers.FindIndex(layer => layer.Name == VanillaMinimapLayerName);
-		if (index != -1)
-		{
-			layers.Insert(index, layer_NoInvasion);
-		}
 	}
 
 	public override void SaveWorldData(TagCompound tag)
