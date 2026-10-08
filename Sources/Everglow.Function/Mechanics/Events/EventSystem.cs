@@ -113,7 +113,7 @@ public class EventSystem : ModSystem
 	{
 		foreach (ModEvent e in actives)
 		{
-			e.Update();
+			e.PostUpdateEverything();
 		}
 	}
 
@@ -138,7 +138,7 @@ public class EventSystem : ModSystem
 		foreach (ModEvent e in ModContent.GetContent<ModEvent>())
 		{
 			TagCompound subtag = new();
-			e.SaveData(subtag);
+			e.SaveWorldData(subtag);
 			tag[e.FullName] = subtag;
 		}
 		int Count = actives.Count;
@@ -151,7 +151,7 @@ public class EventSystem : ModSystem
 			TagCompound subtag = new();
 			if (ModContent.TryFind(e.FullName, out ModEvent oe) && oe != e)
 			{
-				e.SaveData(subtag);
+				e.SaveWorldData(subtag);
 			}
 			tag[$"{nameof(actives)}_{i}.Tag"] = subtag;
 		}
@@ -163,7 +163,7 @@ public class EventSystem : ModSystem
 		{
 			if (tag.TryGet(e.FullName, out TagCompound subtag))
 			{
-				e.LoadData(e.FullName, subtag);
+				e.LoadWorldData(e.FullName, subtag);
 			}
 		}
 		int Count;
@@ -180,7 +180,7 @@ public class EventSystem : ModSystem
 							e = e.Clone();
 							tag.TryGet($"{nameof(actives)}_{i}.Tag", out TagCompound subtag);
 							subtag ??= new();
-							e.LoadData(defName, subtag);
+							e.LoadWorldData(defName, subtag);
 						}
 						e.Active = true;
 						actives.Add(e);

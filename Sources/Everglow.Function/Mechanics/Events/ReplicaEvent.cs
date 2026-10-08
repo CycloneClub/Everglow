@@ -151,7 +151,7 @@ public abstract class ReplicaEvent : ModEvent
 		sprite.Begin(sBS);
 	}
 
-	public override void SaveData(TagCompound tag)
+	public override void SaveWorldData(TagCompound tag)
 	{
 		tag[nameof(Progress)] = Progress;
 		tag[nameof(ProgressMax)] = ProgressMax;
@@ -159,7 +159,7 @@ public abstract class ReplicaEvent : ModEvent
 		tag[nameof(innerActive)] = innerActive;
 	}
 
-	public override void LoadData(string defName, TagCompound tag)
+	public override void LoadWorldData(string defName, TagCompound tag)
 	{
 		tag.TryGet(nameof(Progress), out Progress);
 		tag.TryGet(nameof(ProgressMax), out ProgressMax);

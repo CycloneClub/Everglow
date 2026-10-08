@@ -17,7 +17,7 @@ public abstract class ModEvent : ModType
 
 	public virtual bool IsBackground => false;
 
-	public virtual void Update()
+	public virtual void PostUpdateEverything()
 	{
 	}
 
@@ -43,11 +43,11 @@ public abstract class ModEvent : ModType
 	{
 	}
 
-	public virtual void SaveData(TagCompound tag)
+	public virtual void SaveWorldData(TagCompound tag)
 	{
 	}
 
-	public virtual void LoadData(string defName, TagCompound tag)
+	public virtual void LoadWorldData(string defName, TagCompound tag)
 	{
 	}
 
