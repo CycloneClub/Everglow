@@ -35,13 +35,13 @@ internal class PluralEvent : ModEvent
 		return false;
 	}
 
-	public override void LoadData(string defName, TagCompound tag)
+	public override void LoadWorldData(string defName, TagCompound tag)
 	{
 		this.defName = defName;
 	}
 
 	/// <summary>
-	/// 重新加载时交付一个空defName的实例便于<see cref="LoadData(string, TagCompound)"/>读取
+	/// 重新加载时交付一个空defName的实例便于<see cref="LoadWorldData(string, TagCompound)"/>读取
 	/// </summary>
 	/// <returns></returns>
 	public override ModEvent Clone()

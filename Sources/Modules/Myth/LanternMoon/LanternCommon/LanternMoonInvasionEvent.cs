@@ -208,7 +208,7 @@ public class LanternMoonInvasionEvent : ReplicaEvent
 		return flag0 && flag1;
 	}
 
-	public override void Update()
+	public override void PostUpdateEverything()
 	{
 		LanternMoonMusicManager musicSystem = ModContent.GetInstance<LanternMoonMusicManager>();
 		if (musicSystem is not null && musicSystem.CustomMusicCues.Count <= 0 && innerActive)
