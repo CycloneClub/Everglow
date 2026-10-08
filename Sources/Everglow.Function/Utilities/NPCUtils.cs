@@ -51,7 +51,7 @@ public static class NPCUtils
 		int touchDoorX = (int)((npc.position.X + npc.width / 2 + 15 * npc.direction) / 16f);
 		int touchDoorY = (int)((npc.position.Y + npc.height - 16f) / 16f);
 		Tile tileSafely5 = Framing.GetTileSafely(touchDoorX, touchDoorY - 2);
-		if ((npc.townNPC || NPCID.Sets.AllowDoorInteraction[npc.type]) && tileSafely5.nactive() && (TileLoader.IsClosedDoor(tileSafely5) || tileSafely5.type == 388))
+		if ((npc.townNPC || NPCID.Sets.AllowDoorInteraction[npc.type]) && tileSafely5.HasUnactuatedTile && (TileLoader.IsClosedDoor(tileSafely5) || tileSafely5.type == 388))
 		{
 			if (Main.netMode != NetmodeID.MultiplayerClient)
 			{
@@ -93,15 +93,9 @@ public static class NPCUtils
 
 	public static int ChooseDirection(NPC npc)
 	{
-		if (Collision.SolidCollision(npc.Right + new Vector2(8, 0), 2, 2))
-		{
-			return -1;
-		}
-		if (Collision.SolidCollision(npc.Left + new Vector2(-10, 0), 2, 2))
-		{
-			return 1;
-		}
-		return Main.rand.NextBool() ? -1 : 1;
+		return Collision.SolidCollision(npc.Right + new Vector2(8, 0), 2, 2)
+			? -1
+			: Collision.SolidCollision(npc.Left + new Vector2(-10, 0), 2, 2) ? 1 : Main.rand.NextBool() ? -1 : 1;
 	}
 
 	public static bool CheckSit(NPC npc)
@@ -204,11 +198,7 @@ public static class NPCUtils
 		{
 			npc.velocity.Y = -0.5f;
 		}
-		if (obstructionHeight >= 5)
-		{
-			return false;
-		}
-		return true;
+		return obstructionHeight < 5;
 	}
 
 	#endregion
@@ -365,6 +355,386 @@ public static class NPCUtils
 			}
 		}
 		return target;
+	}
+
+	/// <summary>
+	/// The vanilla fighter AI.<br/>
+	/// npc.ai[2] is the duration of opening a door, >=60 the door will open.<br/>
+	/// npc.ai[3] is a value of aggro.<br/>
+	/// canOpenTheDoor only valid no tile over the top.<br/>
+	/// </summary>
+	/// <param name="npc"></param>
+	public static void Vanilla_NPC_AI_003_Fighters(NPC npc)
+	{
+		float maxSpeedX = 3f;
+		bool canOpenTheDoor = true;
+		bool tendToDespawn = false;
+
+		if (npc.target < 0)
+		{
+			npc.velocity.X *= 0;
+			return;
+		}
+
+		Player player = Main.player[npc.target];
+		if (player.position.Y + player.height == npc.position.Y + npc.height)
+		{
+			npc.directionY = -1;
+		}
+		bool stepSolidAndNoBlockOverTop = false;
+		bool canJump = false;
+		if (npc.velocity.X == 0f)
+		{
+			canJump = true;
+		}
+		if (npc.justHit)
+		{
+			canJump = false;
+		}
+		int aggroThrethod = 60;
+		bool ceasedOrMovingInWrongDirection = false;
+		bool hittingDoor = false;
+		if (npc.ai[2] > 0f)
+		{
+			hittingDoor = true;
+		}
+		if (!hittingDoor)
+		{
+			if (npc.velocity.Y == 0f && ((npc.velocity.X > 0f && npc.direction < 0) || (npc.velocity.X < 0f && npc.direction > 0)))
+			{
+				ceasedOrMovingInWrongDirection = true;
+			}
+			if (npc.position.X == npc.oldPosition.X || npc.ai[3] >= aggroThrethod || ceasedOrMovingInWrongDirection)
+			{
+				npc.ai[3] += 1f;
+			}
+			else if (Math.Abs(npc.velocity.X) > 0.9 && npc.ai[3] > 0f)
+			{
+				npc.ai[3] -= 1f;
+			}
+			if (npc.ai[3] > aggroThrethod * 10)
+			{
+				npc.ai[3] = 0f;
+			}
+			if (npc.justHit)
+			{
+				npc.ai[3] = 0f;
+			}
+			if (npc.ai[3] == aggroThrethod)
+			{
+				npc.netUpdate = true;
+			}
+			if (player.Hitbox.Intersects(npc.Hitbox))
+			{
+				npc.ai[3] = 0f;
+			}
+		}
+		if (npc.ai[3] < aggroThrethod)
+		{
+			npc.TargetClosest(true);
+			if (npc.target < 0)
+			{
+				npc.velocity.X *= 0;
+				return;
+			}
+			if (npc.directionY > 0 && player.Center.Y <= npc.Bottom.Y)
+			{
+				npc.directionY = -1;
+			}
+		}
+		else if (npc.ai[2] <= 0f)
+		{
+			if (tendToDespawn)
+			{
+				npc.EncourageDespawn(10);
+			}
+			if (npc.velocity.X == 0f)
+			{
+				if (npc.velocity.Y == 0f)
+				{
+					npc.ai[0] += 1f;
+					if (npc.ai[0] >= 2f)
+					{
+						npc.direction *= -1;
+						npc.spriteDirection = npc.direction;
+						npc.ai[0] = 0f;
+					}
+				}
+			}
+			else
+			{
+				npc.ai[0] = 0f;
+			}
+			if (npc.direction == 0)
+			{
+				npc.direction = 1;
+			}
+		}
+		if (npc.velocity.X < 0f - maxSpeedX || npc.velocity.X > maxSpeedX)
+		{
+			if (npc.velocity.Y == 0f)
+			{
+				npc.velocity *= 0.8f;
+			}
+		}
+		else if (npc.velocity.X < maxSpeedX && npc.direction == 1)
+		{
+			npc.velocity.X += 0.07f;
+			if (npc.velocity.X > maxSpeedX)
+			{
+				npc.velocity.X = maxSpeedX;
+			}
+		}
+		else if (npc.velocity.X > 0f - maxSpeedX && npc.direction == -1)
+		{
+			npc.velocity.X -= 0.07f;
+			if (npc.velocity.X < 0f - maxSpeedX)
+			{
+				npc.velocity.X = 0f - maxSpeedX;
+			}
+		}
+
+		// Check collide(Y);
+		if (npc.velocity.Y == 0f)
+		{
+			int bottomTileY = (int)(npc.position.Y + npc.height + 7f) / 16;
+			int topTileY = (int)(npc.position.Y - 9f) / 16;
+			int leftTileX = (int)npc.position.X / 16;
+			int rightTileX = (int)(npc.position.X + npc.width) / 16;
+			int left_inside_TileX = (int)(npc.position.X + 8f) / 16;
+			int right_inside_TileX = (int)(npc.position.X + npc.width - 8f) / 16;
+			bool inAir = false;
+			for (int tile_x = left_inside_TileX; tile_x <= right_inside_TileX; tile_x++)
+			{
+				if (tile_x >= leftTileX && tile_x <= rightTileX && Main.tile[tile_x, bottomTileY] == null)
+				{
+					inAir = true;
+				}
+				else
+				{
+					if (Main.tile[tile_x, topTileY] != null && Main.tile[tile_x, topTileY].HasUnactuatedTile && Main.tileSolid[Main.tile[tile_x, topTileY].TileType])
+					{
+						stepSolidAndNoBlockOverTop = false;
+						break;
+					}
+					if (!inAir && tile_x >= leftTileX && tile_x <= rightTileX && Main.tile[tile_x, bottomTileY].HasUnactuatedTile && Main.tileSolid[Main.tile[tile_x, bottomTileY].TileType])
+					{
+						stepSolidAndNoBlockOverTop = true;
+					}
+				}
+			}
+			if (!stepSolidAndNoBlockOverTop && npc.velocity.Y < 0f)
+			{
+				npc.velocity.Y = 0f;
+			}
+			if (inAir)
+			{
+				return;
+			}
+		}
+
+		// Step
+		if (npc.velocity.Y >= 0f && npc.directionY != 1)
+		{
+			int velocityDirection = Math.Sign(npc.velocity.X);
+			Vector2 nextPos = npc.position;
+			nextPos.X += npc.velocity.X;
+			int collisionBoundX = (int)((nextPos.X + npc.width / 2 + (npc.width / 2 + 1) * velocityDirection) / 16f);
+			int collisionBottomY = (int)((nextPos.Y + npc.height - 1f) / 16f);
+			if (WorldGen.InWorld(collisionBoundX, collisionBottomY, 4))
+			{
+				if (Main.tile[collisionBoundX, collisionBottomY] == null)
+				{
+					Main.tile[collisionBoundX, collisionBottomY] = default;
+				}
+				if (Main.tile[collisionBoundX, collisionBottomY - 1] == null)
+				{
+					Main.tile[collisionBoundX, collisionBottomY - 1] = default;
+				}
+				if (Main.tile[collisionBoundX, collisionBottomY - 2] == null)
+				{
+					Main.tile[collisionBoundX, collisionBottomY - 2] = default;
+				}
+				if (Main.tile[collisionBoundX, collisionBottomY - 3] == null)
+				{
+					Main.tile[collisionBoundX, collisionBottomY - 3] = default;
+				}
+				if (Main.tile[collisionBoundX, collisionBottomY + 1] == null)
+				{
+					Main.tile[collisionBoundX, collisionBottomY + 1] = default;
+				}
+				if (Main.tile[collisionBoundX - velocityDirection, collisionBottomY - 3] == null)
+				{
+					Main.tile[collisionBoundX - velocityDirection, collisionBottomY - 3] = default;
+				}
+				if (collisionBoundX * 16 < nextPos.X + npc.width && collisionBoundX * 16 + 16 > nextPos.X && ((Main.tile[collisionBoundX, collisionBottomY].HasUnactuatedTile && !Main.tile[collisionBoundX, collisionBottomY].topSlope() && !Main.tile[collisionBoundX, collisionBottomY - 1].topSlope() && Main.tileSolid[Main.tile[collisionBoundX, collisionBottomY].TileType] && !Main.tileSolidTop[Main.tile[collisionBoundX, collisionBottomY].TileType]) || (Main.tile[collisionBoundX, collisionBottomY - 1].halfBrick() && Main.tile[collisionBoundX, collisionBottomY - 1].HasUnactuatedTile)) && (!Main.tile[collisionBoundX, collisionBottomY - 1].HasUnactuatedTile || !Main.tileSolid[Main.tile[collisionBoundX, collisionBottomY - 1].TileType] || Main.tileSolidTop[Main.tile[collisionBoundX, collisionBottomY - 1].TileType] || (Main.tile[collisionBoundX, collisionBottomY - 1].halfBrick() && (!Main.tile[collisionBoundX, collisionBottomY - 4].HasUnactuatedTile || !Main.tileSolid[Main.tile[collisionBoundX, collisionBottomY - 4].TileType] || Main.tileSolidTop[Main.tile[collisionBoundX, collisionBottomY - 4].TileType]))) && (!Main.tile[collisionBoundX, collisionBottomY - 2].HasUnactuatedTile || !Main.tileSolid[Main.tile[collisionBoundX, collisionBottomY - 2].TileType] || Main.tileSolidTop[Main.tile[collisionBoundX, collisionBottomY - 2].TileType]) && (!Main.tile[collisionBoundX, collisionBottomY - 3].HasUnactuatedTile || !Main.tileSolid[Main.tile[collisionBoundX, collisionBottomY - 3].TileType] || Main.tileSolidTop[Main.tile[collisionBoundX, collisionBottomY - 3].TileType]) && (!Main.tile[collisionBoundX - velocityDirection, collisionBottomY - 3].HasUnactuatedTile || !Main.tileSolid[Main.tile[collisionBoundX - velocityDirection, collisionBottomY - 3].TileType]))
+				{
+					float bottomWorldY = collisionBottomY * 16;
+					if (Main.tile[collisionBoundX, collisionBottomY].halfBrick())
+					{
+						bottomWorldY += 8f;
+					}
+					if (Main.tile[collisionBoundX, collisionBottomY - 1].halfBrick())
+					{
+						bottomWorldY -= 8f;
+					}
+					if (bottomWorldY < nextPos.Y + npc.height)
+					{
+						float num188 = nextPos.Y + npc.height - bottomWorldY;
+						float num189 = 16.1f;
+						if (num188 <= num189)
+						{
+							npc.gfxOffY += npc.position.Y + npc.height - bottomWorldY;
+							npc.position.Y = bottomWorldY - npc.height;
+							npc.stepSpeed = num188 < 9f ? 1f : 2f;
+						}
+					}
+				}
+			}
+		}
+
+		// Try to open the door or jump
+		if (stepSolidAndNoBlockOverTop)
+		{
+			int npcPushTileX = (int)((npc.position.X + npc.width / 2 + (npc.width / 2f + 4) * npc.direction) / 16f);
+			int npcPushTileY = (int)((npc.position.Y + npc.height - 15f) / 16f);
+			if (Main.tile[npcPushTileX, npcPushTileY] == null)
+			{
+				Main.tile[npcPushTileX, npcPushTileY] = default;
+			}
+			if (Main.tile[npcPushTileX, npcPushTileY - 1] == null)
+			{
+				Main.tile[npcPushTileX, npcPushTileY - 1] = default;
+			}
+			if (Main.tile[npcPushTileX, npcPushTileY - 2] == null)
+			{
+				Main.tile[npcPushTileX, npcPushTileY - 2] = default;
+			}
+			if (Main.tile[npcPushTileX, npcPushTileY - 3] == null)
+			{
+				Main.tile[npcPushTileX, npcPushTileY - 3] = default;
+			}
+			if (Main.tile[npcPushTileX, npcPushTileY + 1] == null)
+			{
+				Main.tile[npcPushTileX, npcPushTileY + 1] = default;
+			}
+			if (Main.tile[npcPushTileX + npc.direction, npcPushTileY - 1] == null)
+			{
+				Main.tile[npcPushTileX + npc.direction, npcPushTileY - 1] = default;
+			}
+			if (Main.tile[npcPushTileX + npc.direction, npcPushTileY + 1] == null)
+			{
+				Main.tile[npcPushTileX + npc.direction, npcPushTileY + 1] = default;
+			}
+			if (Main.tile[npcPushTileX - npc.direction, npcPushTileY + 1] == null)
+			{
+				Main.tile[npcPushTileX - npc.direction, npcPushTileY + 1] = default;
+			}
+			Main.tile[npcPushTileX, npcPushTileY + 1].halfBrick();
+			if (Main.tile[npcPushTileX, npcPushTileY - 1].HasUnactuatedTile && (TileLoader.IsClosedDoor(Main.tile[npcPushTileX, npcPushTileY - 1]) || Main.tile[npcPushTileX, npcPushTileY - 1].TileType == TileID.TallGateClosed))
+			{
+				npc.ai[2] += 1f;
+				npc.ai[3] = 0f;
+				if (npc.ai[2] >= 60f)
+				{
+					npc.velocity.X = 0.5f * (float)(-(float)npc.direction);
+					WorldGen.KillTile(npcPushTileX, npcPushTileY - 1, true, false, false);
+					if ((Main.netMode != NetmodeID.MultiplayerClient || !canOpenTheDoor) && canOpenTheDoor && Main.netMode != NetmodeID.MultiplayerClient)
+					{
+						npc.ai[2] = 0;
+						if (TileLoader.IsClosedDoor(Main.tile[npcPushTileX, npcPushTileY - 1]))
+						{
+							bool openSuccess = WorldGen.OpenDoor(npcPushTileX, npcPushTileY - 1, npc.direction);
+							if (!openSuccess)
+							{
+								npc.ai[3] = aggroThrethod;
+								npc.netUpdate = true;
+							}
+							if (Main.netMode == NetmodeID.Server && openSuccess)
+							{
+								NetMessage.SendData(MessageID.ToggleDoorState, -1, -1, null, 0, npcPushTileX, npcPushTileY - 1, npc.direction, 0, 0, 0);
+							}
+						}
+						if (Main.tile[npcPushTileX, npcPushTileY - 1].TileType == TileID.TallGateClosed)
+						{
+							bool openSuccess = WorldGen.ShiftTallGate(npcPushTileX, npcPushTileY - 1, false, false);
+							if (!openSuccess)
+							{
+								npc.ai[3] = aggroThrethod;
+								npc.netUpdate = true;
+							}
+							if (Main.netMode == NetmodeID.Server && openSuccess)
+							{
+								NetMessage.SendData(MessageID.ToggleDoorState, -1, -1, null, 4, npcPushTileX, npcPushTileY - 1, 0f, 0, 0, 0);
+							}
+						}
+					}
+				}
+			}
+			else
+			{
+				if ((npc.velocity.X < 0f && npc.spriteDirection == -1) || (npc.velocity.X > 0f && npc.spriteDirection == 1))
+				{
+					// Jump over obstacles.
+					if (npc.height >= 32 && Main.tile[npcPushTileX, npcPushTileY - 2].HasUnactuatedTile && Main.tileSolid[Main.tile[npcPushTileX, npcPushTileY - 2].TileType])
+					{
+						if (Main.tile[npcPushTileX, npcPushTileY - 3].HasUnactuatedTile && Main.tileSolid[Main.tile[npcPushTileX, npcPushTileY - 3].TileType])
+						{
+							npc.velocity.Y = -8f;
+							npc.netUpdate = true;
+						}
+						else
+						{
+							npc.velocity.Y = -7f;
+							npc.netUpdate = true;
+						}
+					}
+					else if (Main.tile[npcPushTileX, npcPushTileY - 1].HasUnactuatedTile && Main.tileSolid[Main.tile[npcPushTileX, npcPushTileY - 1].TileType])
+					{
+						npc.velocity.Y = -6f;
+						npc.netUpdate = true;
+					}
+					else if (npc.position.Y + npc.height - npcPushTileY * 16 > 20f && Main.tile[npcPushTileX, npcPushTileY].HasUnactuatedTile && !Main.tile[npcPushTileX, npcPushTileY].TopSlope && Main.tileSolid[Main.tile[npcPushTileX, npcPushTileY].TileType])
+					{
+						npc.velocity.Y = -5f;
+						npc.netUpdate = true;
+					}
+					else if (npc.directionY < 0 && (!Main.tile[npcPushTileX, npcPushTileY + 1].HasUnactuatedTile || !Main.tileSolid[Main.tile[npcPushTileX, npcPushTileY + 1].TileType]) && (!Main.tile[npcPushTileX + npc.direction, npcPushTileY + 1].HasUnactuatedTile || !Main.tileSolid[Main.tile[npcPushTileX + npc.direction, npcPushTileY + 1].TileType]))
+					{
+						npc.velocity.Y = -8f;
+						npc.velocity.X *= 1.5f;
+						npc.netUpdate = true;
+					}
+
+					// Jump when starting to accumulate aggro.
+					if (npc.velocity.Y == 0f && canJump && npc.ai[3] == 1f)
+					{
+						npc.velocity.Y = -5f;
+					}
+					if (npc.velocity.Y == 0f && Main.expertMode && player.Bottom.Y < npc.Top.Y && Math.Abs(npc.Center.X - player.Center.X) < player.width * 3 && Collision.CanHit(npc, player))
+					{
+						int maxTileOverHead = 6;
+						if (player.Bottom.Y > npc.Top.Y - maxTileOverHead * 16)
+						{
+							npc.velocity.Y = -7.9f;
+						}
+						else
+						{
+							int centerTileX = (int)(npc.Center.X / 16f);
+							int bottomTileY = (int)(npc.Bottom.Y / 16f) - 1;
+							for (int y = bottomTileY; y > bottomTileY - maxTileOverHead; y--)
+							{
+								if (Main.tile[centerTileX, y].HasUnactuatedTile && TileID.Sets.Platforms[Main.tile[centerTileX, y].TileType])
+								{
+									npc.velocity.Y = -7.9f;
+									break;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 	#endregion
 }

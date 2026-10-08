@@ -232,14 +232,15 @@ public class UmbrellaTailThief : ModNPC
 
 	public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
+		Vector2 drawPos = NPC.Center + new Vector2(0, NPC.gfxOffY) - screenPos;
 		if (FlyTimer <= 0)
 		{
-			spriteBatch.Draw(ModAsset.UmbrellaTailThief.Value, NPC.Center - screenPos, NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() * 0.5f, NPC.scale, NPC.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
+			spriteBatch.Draw(ModAsset.UmbrellaTailThief.Value, drawPos, NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() * 0.5f, NPC.scale, NPC.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
 		}
 		else
 		{
-			spriteBatch.Draw(ModAsset.UmbrellaTailThief_Fly.Value, NPC.Center - screenPos, NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() * 0.5f, NPC.scale, NPC.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
-			spriteBatch.Draw(ModAsset.UmbrellaTailThief_Fly_glow.Value, NPC.Center - screenPos, NPC.frame, new Color(1f, 1f, 1f, 0), NPC.rotation, NPC.frame.Size() * 0.5f, NPC.scale, NPC.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
+			spriteBatch.Draw(ModAsset.UmbrellaTailThief_Fly.Value, drawPos, NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() * 0.5f, NPC.scale, NPC.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
+			spriteBatch.Draw(ModAsset.UmbrellaTailThief_Fly_glow.Value, drawPos, NPC.frame, new Color(1f, 1f, 1f, 0), NPC.rotation, NPC.frame.Size() * 0.5f, NPC.scale, NPC.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
 		}
 		return false;
 	}

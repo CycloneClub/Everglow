@@ -6,11 +6,9 @@ using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.NPCs;
 
-public class AncientPhantom_Sheild : ModNPC
+public class AncientPhantom_Spear : ModNPC
 {
 	public float HurtValue = 0f;
-
-	public float ShieldValue = 0f;
 
 	public override void SetStaticDefaults()
 	{
@@ -21,18 +19,17 @@ public class AncientPhantom_Sheild : ModNPC
 	public override void SetDefaults()
 	{
 		NPC.width = 30;
-		NPC.height = 56;
+		NPC.height = 40;
 		NPC.lifeMax = 110;
-		NPC.damage = 25;
-		NPC.defense = 20;
+		NPC.damage = 55;
+		NPC.defense = 10;
 		NPC.friendly = false;
-		NPC.aiStyle = NPCAIStyleID.Fighter;
 		NPC.knockBackResist = 0.5f;
 		NPC.value = 100;
 		NPC.HitSound = SoundID.Item53;
 		NPC.DeathSound = SoundID.Shatter;
 		NPC.alpha = 100;
-		AIType = NPCID.None;
+		NPC.aiStyle = -1;
 	}
 
 	public override void OnSpawn(IEntitySource source)
@@ -70,51 +67,28 @@ public class AncientPhantom_Sheild : ModNPC
 		{
 			HurtValue = 0f;
 		}
-
-		if (ShieldValue > 0)
-		{
-			ShieldValue -= 2f;
-		}
-		else
-		{
-			ShieldValue = 0f;
-		}
 	}
 
 	public override void AI()
 	{
-		base.AI();
-		Lighting.AddLight(NPC.Bottom, new Vector3(0, 0.24f, 0.48f));
+		//NPC.AI_003_Fighters();
+		NPCUtils.Vanilla_NPC_AI_003_Fighters(NPC);
+		Main.NewText(NPC.despawnEncouraged);
 	}
 
 	public override void ModifyHitByItem(Player player, Item item, ref NPC.HitModifiers modifiers)
 	{
-		if (Math.Sign(player.Center.X - NPC.Center.X) == NPC.spriteDirection)
-		{
-			modifiers.Defense += 40;
-			modifiers.Knockback *= 0.1f;
-			ShieldValue = 60f;
-		}
 		base.ModifyHitByItem(player, item, ref modifiers);
 	}
 
 	public override void ModifyHitByProjectile(Projectile projectile, ref NPC.HitModifiers modifiers)
 	{
-		if (Math.Sign(projectile.Center.X - NPC.Center.X) == NPC.spriteDirection)
-		{
-			modifiers.Defense += 40;
-			modifiers.Knockback *= 0.1f;
-			ShieldValue = 60f;
-		}
 		base.ModifyHitByProjectile(projectile, ref modifiers);
 	}
 
 	public override void HitEffect(NPC.HitInfo hit)
 	{
-		if (ShieldValue == 0)
-		{
-			HurtValue = 60f;
-		}
+		HurtValue = 60f;
 		base.HitEffect(hit);
 	}
 
@@ -131,7 +105,7 @@ public class AncientPhantom_Sheild : ModNPC
 
 	public override void OnKill()
 	{
-		for (int h = 0;h < 40;h++)
+		for (int h = 0; h < 40; h++)
 		{
 			Dust dust = Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, ModContent.DustType<TwilightCrystalDust>());
 			dust.velocity = new Vector2(0, MathF.Sqrt(Main.rand.NextFloat()) * 6).RotatedByRandom(MathHelper.TwoPi);
@@ -163,21 +137,14 @@ public class AncientPhantom_Sheild : ModNPC
 	{
 		SpriteEffects flip = NPC.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 		float fade = (255 - NPC.alpha) / 255f;
-		Texture2D body_glow = ModAsset.AncientPhantom_Sheild_glow.Value;
+		Texture2D body_glow = ModAsset.AncientPhantom_Spear_glow.Value;
 		spriteBatch.Draw(body_glow, NPC.Center + new Vector2(0, NPC.gfxOffY) - screenPos, NPC.frame, Color.White, 0, NPC.frame.Size() * 0.5f, NPC.scale, flip, 0);
 
-		Texture2D sheild = ModAsset.AncientPhantom_Sheild_Shield.Value;
-		spriteBatch.Draw(sheild, NPC.Center + new Vector2(12 * NPC.spriteDirection, NPC.gfxOffY) - screenPos, null, drawColor * fade, 0, sheild.Size() * 0.5f, NPC.scale, flip, 0);
-
-		Texture2D body_Shape = ModAsset.AncientPhantom_Sheild_Shape.Value;
-		Texture2D sheild_Shape = ModAsset.AncientPhantom_Sheild_Shield_Shape.Value;
+		Texture2D body_Shape = ModAsset.AncientPhantom_Spear_Shape.Value;
 		Color hurtColor = Color.Lerp(Color.Blue, Color.White, HurtValue / 60f);
 		hurtColor *= HurtValue / 60f;
 
-		Color shieldColor = Color.Lerp(Color.Blue, Color.White, ShieldValue / 60f);
-		shieldColor *= ShieldValue / 60f;
 		spriteBatch.Draw(body_Shape, NPC.Center + new Vector2(0, NPC.gfxOffY) - screenPos, NPC.frame, hurtColor, 0, NPC.frame.Size() * 0.5f, NPC.scale, flip, 0);
-		spriteBatch.Draw(sheild_Shape, NPC.Center + new Vector2(12 * NPC.spriteDirection, NPC.gfxOffY) - screenPos, null, shieldColor, 0, sheild.Size() * 0.5f, NPC.scale, flip, 0);
 	}
 
 	public override void ModifyNPCLoot(NPCLoot npcLoot)
