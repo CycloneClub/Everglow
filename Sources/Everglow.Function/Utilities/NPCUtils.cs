@@ -359,29 +359,31 @@ public static class NPCUtils
 
 	/// <summary>
 	/// The vanilla fighter AI.<br/>
+	/// npc.ai[0] is a timer for change direction.<br/>
 	/// npc.ai[2] is the duration of opening a door, >=60 the door will open.<br/>
 	/// npc.ai[3] is a value of aggro.<br/>
 	/// canOpenTheDoor only valid no tile over the top.<br/>
 	/// </summary>
 	/// <param name="npc"></param>
-	public static void Vanilla_NPC_AI_003_Fighters(NPC npc)
+	public static void Vanilla_NPC_AI_003_Fighters(NPC npc, float maxSpeedX, bool canOpenTheDoor = true, int aggroThreshold = 60, bool tendToDespawn = false)
 	{
-		float maxSpeedX = 3f;
-		bool canOpenTheDoor = true;
-		bool tendToDespawn = false;
-
 		if (npc.target < 0)
 		{
 			npc.velocity.X *= 0;
 			return;
 		}
-
 		Player player = Main.player[npc.target];
 		if (player.position.Y + player.height == npc.position.Y + npc.height)
 		{
 			npc.directionY = -1;
 		}
-		bool stepSolidAndNoBlockOverTop = false;
+
+		// Accumulate aggro.
+		Fighters_AccumulateAggro(npc, aggroThreshold);
+
+		// Find target and change direction, check despawn.
+		Fighters_FindTarget(npc, aggroThreshold, tendToDespawn);
+
 		bool canJump = false;
 		if (npc.velocity.X == 0f)
 		{
@@ -391,7 +393,12 @@ public static class NPCUtils
 		{
 			canJump = false;
 		}
-		int aggroThrethod = 60;
+		Fighters_Move(npc, maxSpeedX, canOpenTheDoor, canJump);
+	}
+
+	public static void Fighters_AccumulateAggro(NPC npc, int aggroThreshold)
+	{
+		Player player = Main.player[npc.target];
 		bool ceasedOrMovingInWrongDirection = false;
 		bool hittingDoor = false;
 		if (npc.ai[2] > 0f)
@@ -404,15 +411,15 @@ public static class NPCUtils
 			{
 				ceasedOrMovingInWrongDirection = true;
 			}
-			if (npc.position.X == npc.oldPosition.X || npc.ai[3] >= aggroThrethod || ceasedOrMovingInWrongDirection)
+			if (npc.position.X == npc.oldPosition.X || npc.ai[3] >= aggroThreshold || ceasedOrMovingInWrongDirection)
 			{
 				npc.ai[3] += 1f;
 			}
-			else if (Math.Abs(npc.velocity.X) > 0.9 && npc.ai[3] > 0f)
+			else if (Math.Abs(npc.velocity.X) > 0.9f && npc.ai[3] > 0f)
 			{
 				npc.ai[3] -= 1f;
 			}
-			if (npc.ai[3] > aggroThrethod * 10)
+			if (npc.ai[3] > aggroThreshold * 10)
 			{
 				npc.ai[3] = 0f;
 			}
@@ -420,7 +427,7 @@ public static class NPCUtils
 			{
 				npc.ai[3] = 0f;
 			}
-			if (npc.ai[3] == aggroThrethod)
+			if (npc.ai[3] == aggroThreshold)
 			{
 				npc.netUpdate = true;
 			}
@@ -429,7 +436,12 @@ public static class NPCUtils
 				npc.ai[3] = 0f;
 			}
 		}
-		if (npc.ai[3] < aggroThrethod)
+	}
+
+	public static void Fighters_FindTarget(NPC npc, int aggroThreshold, bool tendToDespawn)
+	{
+		Player player = Main.player[npc.target];
+		if (npc.ai[3] < aggroThreshold)
 		{
 			npc.TargetClosest(true);
 			if (npc.target < 0)
@@ -470,7 +482,12 @@ public static class NPCUtils
 				npc.direction = 1;
 			}
 		}
-		if (npc.velocity.X < 0f - maxSpeedX || npc.velocity.X > maxSpeedX)
+	}
+
+	public static void Fighters_Move(NPC npc, float maxSpeedX, bool canOpenTheDoor, bool canJump)
+	{
+		// Calculate velocity (Accelerate).
+		if (npc.velocity.X < -maxSpeedX || npc.velocity.X > maxSpeedX)
 		{
 			if (npc.velocity.Y == 0f)
 			{
@@ -485,16 +502,17 @@ public static class NPCUtils
 				npc.velocity.X = maxSpeedX;
 			}
 		}
-		else if (npc.velocity.X > 0f - maxSpeedX && npc.direction == -1)
+		else if (npc.velocity.X > -maxSpeedX && npc.direction == -1)
 		{
 			npc.velocity.X -= 0.07f;
-			if (npc.velocity.X < 0f - maxSpeedX)
+			if (npc.velocity.X < -maxSpeedX)
 			{
-				npc.velocity.X = 0f - maxSpeedX;
+				npc.velocity.X = -maxSpeedX;
 			}
 		}
 
-		// Check collide(Y);
+		// Check if hit the ceiling;
+		bool noBlockOverTop = false;
 		if (npc.velocity.Y == 0f)
 		{
 			int bottomTileY = (int)(npc.position.Y + npc.height + 7f) / 16;
@@ -503,37 +521,25 @@ public static class NPCUtils
 			int rightTileX = (int)(npc.position.X + npc.width) / 16;
 			int left_inside_TileX = (int)(npc.position.X + 8f) / 16;
 			int right_inside_TileX = (int)(npc.position.X + npc.width - 8f) / 16;
-			bool inAir = false;
 			for (int tile_x = left_inside_TileX; tile_x <= right_inside_TileX; tile_x++)
 			{
-				if (tile_x >= leftTileX && tile_x <= rightTileX && Main.tile[tile_x, bottomTileY] == null)
+				if (Main.tile[tile_x, topTileY] != null && Main.tile[tile_x, topTileY].HasUnactuatedTile && Main.tileSolid[Main.tile[tile_x, topTileY].TileType])
 				{
-					inAir = true;
+					noBlockOverTop = false;
+					break;
 				}
-				else
+				if (tile_x >= leftTileX && tile_x <= rightTileX && Main.tile[tile_x, bottomTileY].HasUnactuatedTile && Main.tileSolid[Main.tile[tile_x, bottomTileY].TileType])
 				{
-					if (Main.tile[tile_x, topTileY] != null && Main.tile[tile_x, topTileY].HasUnactuatedTile && Main.tileSolid[Main.tile[tile_x, topTileY].TileType])
-					{
-						stepSolidAndNoBlockOverTop = false;
-						break;
-					}
-					if (!inAir && tile_x >= leftTileX && tile_x <= rightTileX && Main.tile[tile_x, bottomTileY].HasUnactuatedTile && Main.tileSolid[Main.tile[tile_x, bottomTileY].TileType])
-					{
-						stepSolidAndNoBlockOverTop = true;
-					}
+					noBlockOverTop = true;
 				}
 			}
-			if (!stepSolidAndNoBlockOverTop && npc.velocity.Y < 0f)
+			if (!noBlockOverTop && npc.velocity.Y < 0f)
 			{
 				npc.velocity.Y = 0f;
 			}
-			if (inAir)
-			{
-				return;
-			}
 		}
 
-		// Step
+		// Step tile
 		if (npc.velocity.Y >= 0f && npc.directionY != 1)
 		{
 			int velocityDirection = Math.Sign(npc.velocity.X);
@@ -543,30 +549,6 @@ public static class NPCUtils
 			int collisionBottomY = (int)((nextPos.Y + npc.height - 1f) / 16f);
 			if (WorldGen.InWorld(collisionBoundX, collisionBottomY, 4))
 			{
-				if (Main.tile[collisionBoundX, collisionBottomY] == null)
-				{
-					Main.tile[collisionBoundX, collisionBottomY] = default;
-				}
-				if (Main.tile[collisionBoundX, collisionBottomY - 1] == null)
-				{
-					Main.tile[collisionBoundX, collisionBottomY - 1] = default;
-				}
-				if (Main.tile[collisionBoundX, collisionBottomY - 2] == null)
-				{
-					Main.tile[collisionBoundX, collisionBottomY - 2] = default;
-				}
-				if (Main.tile[collisionBoundX, collisionBottomY - 3] == null)
-				{
-					Main.tile[collisionBoundX, collisionBottomY - 3] = default;
-				}
-				if (Main.tile[collisionBoundX, collisionBottomY + 1] == null)
-				{
-					Main.tile[collisionBoundX, collisionBottomY + 1] = default;
-				}
-				if (Main.tile[collisionBoundX - velocityDirection, collisionBottomY - 3] == null)
-				{
-					Main.tile[collisionBoundX - velocityDirection, collisionBottomY - 3] = default;
-				}
 				if (collisionBoundX * 16 < nextPos.X + npc.width && collisionBoundX * 16 + 16 > nextPos.X && ((Main.tile[collisionBoundX, collisionBottomY].HasUnactuatedTile && !Main.tile[collisionBoundX, collisionBottomY].topSlope() && !Main.tile[collisionBoundX, collisionBottomY - 1].topSlope() && Main.tileSolid[Main.tile[collisionBoundX, collisionBottomY].TileType] && !Main.tileSolidTop[Main.tile[collisionBoundX, collisionBottomY].TileType]) || (Main.tile[collisionBoundX, collisionBottomY - 1].halfBrick() && Main.tile[collisionBoundX, collisionBottomY - 1].HasUnactuatedTile)) && (!Main.tile[collisionBoundX, collisionBottomY - 1].HasUnactuatedTile || !Main.tileSolid[Main.tile[collisionBoundX, collisionBottomY - 1].TileType] || Main.tileSolidTop[Main.tile[collisionBoundX, collisionBottomY - 1].TileType] || (Main.tile[collisionBoundX, collisionBottomY - 1].halfBrick() && (!Main.tile[collisionBoundX, collisionBottomY - 4].HasUnactuatedTile || !Main.tileSolid[Main.tile[collisionBoundX, collisionBottomY - 4].TileType] || Main.tileSolidTop[Main.tile[collisionBoundX, collisionBottomY - 4].TileType]))) && (!Main.tile[collisionBoundX, collisionBottomY - 2].HasUnactuatedTile || !Main.tileSolid[Main.tile[collisionBoundX, collisionBottomY - 2].TileType] || Main.tileSolidTop[Main.tile[collisionBoundX, collisionBottomY - 2].TileType]) && (!Main.tile[collisionBoundX, collisionBottomY - 3].HasUnactuatedTile || !Main.tileSolid[Main.tile[collisionBoundX, collisionBottomY - 3].TileType] || Main.tileSolidTop[Main.tile[collisionBoundX, collisionBottomY - 3].TileType]) && (!Main.tile[collisionBoundX - velocityDirection, collisionBottomY - 3].HasUnactuatedTile || !Main.tileSolid[Main.tile[collisionBoundX - velocityDirection, collisionBottomY - 3].TileType]))
 				{
 					float bottomWorldY = collisionBottomY * 16;
@@ -593,143 +575,123 @@ public static class NPCUtils
 			}
 		}
 
-		// Try to open the door or jump
-		if (stepSolidAndNoBlockOverTop)
+		// Obstruction
+		if (noBlockOverTop)
 		{
-			int npcPushTileX = (int)((npc.position.X + npc.width / 2 + (npc.width / 2f + 4) * npc.direction) / 16f);
-			int npcPushTileY = (int)((npc.position.Y + npc.height - 15f) / 16f);
-			if (Main.tile[npcPushTileX, npcPushTileY] == null)
+			int pushTileX = (int)((npc.position.X + npc.width / 2 + (npc.width / 2f + 4) * npc.direction) / 16f);
+			int pushTileY = (int)((npc.position.Y + npc.height - 15f) / 16f);
+			var pushTile = TileUtils.SafeGetTile(pushTileX, pushTileY - 1);
+			if (pushTile.HasUnactuatedTile && (TileLoader.IsClosedDoor(pushTile) || pushTile.TileType == TileID.TallGateClosed))
 			{
-				Main.tile[npcPushTileX, npcPushTileY] = default;
-			}
-			if (Main.tile[npcPushTileX, npcPushTileY - 1] == null)
-			{
-				Main.tile[npcPushTileX, npcPushTileY - 1] = default;
-			}
-			if (Main.tile[npcPushTileX, npcPushTileY - 2] == null)
-			{
-				Main.tile[npcPushTileX, npcPushTileY - 2] = default;
-			}
-			if (Main.tile[npcPushTileX, npcPushTileY - 3] == null)
-			{
-				Main.tile[npcPushTileX, npcPushTileY - 3] = default;
-			}
-			if (Main.tile[npcPushTileX, npcPushTileY + 1] == null)
-			{
-				Main.tile[npcPushTileX, npcPushTileY + 1] = default;
-			}
-			if (Main.tile[npcPushTileX + npc.direction, npcPushTileY - 1] == null)
-			{
-				Main.tile[npcPushTileX + npc.direction, npcPushTileY - 1] = default;
-			}
-			if (Main.tile[npcPushTileX + npc.direction, npcPushTileY + 1] == null)
-			{
-				Main.tile[npcPushTileX + npc.direction, npcPushTileY + 1] = default;
-			}
-			if (Main.tile[npcPushTileX - npc.direction, npcPushTileY + 1] == null)
-			{
-				Main.tile[npcPushTileX - npc.direction, npcPushTileY + 1] = default;
-			}
-			Main.tile[npcPushTileX, npcPushTileY + 1].halfBrick();
-			if (Main.tile[npcPushTileX, npcPushTileY - 1].HasUnactuatedTile && (TileLoader.IsClosedDoor(Main.tile[npcPushTileX, npcPushTileY - 1]) || Main.tile[npcPushTileX, npcPushTileY - 1].TileType == TileID.TallGateClosed))
-			{
-				npc.ai[2] += 1f;
-				npc.ai[3] = 0f;
-				if (npc.ai[2] >= 60f)
-				{
-					npc.velocity.X = 0.5f * (float)(-(float)npc.direction);
-					WorldGen.KillTile(npcPushTileX, npcPushTileY - 1, true, false, false);
-					if ((Main.netMode != NetmodeID.MultiplayerClient || !canOpenTheDoor) && canOpenTheDoor && Main.netMode != NetmodeID.MultiplayerClient)
-					{
-						npc.ai[2] = 0;
-						if (TileLoader.IsClosedDoor(Main.tile[npcPushTileX, npcPushTileY - 1]))
-						{
-							bool openSuccess = WorldGen.OpenDoor(npcPushTileX, npcPushTileY - 1, npc.direction);
-							if (!openSuccess)
-							{
-								npc.ai[3] = aggroThrethod;
-								npc.netUpdate = true;
-							}
-							if (Main.netMode == NetmodeID.Server && openSuccess)
-							{
-								NetMessage.SendData(MessageID.ToggleDoorState, -1, -1, null, 0, npcPushTileX, npcPushTileY - 1, npc.direction, 0, 0, 0);
-							}
-						}
-						if (Main.tile[npcPushTileX, npcPushTileY - 1].TileType == TileID.TallGateClosed)
-						{
-							bool openSuccess = WorldGen.ShiftTallGate(npcPushTileX, npcPushTileY - 1, false, false);
-							if (!openSuccess)
-							{
-								npc.ai[3] = aggroThrethod;
-								npc.netUpdate = true;
-							}
-							if (Main.netMode == NetmodeID.Server && openSuccess)
-							{
-								NetMessage.SendData(MessageID.ToggleDoorState, -1, -1, null, 4, npcPushTileX, npcPushTileY - 1, 0f, 0, 0, 0);
-							}
-						}
-					}
-				}
+				Fighters_BreakDoor(npc, pushTileX, pushTileY, canOpenTheDoor);
 			}
 			else
 			{
-				if ((npc.velocity.X < 0f && npc.spriteDirection == -1) || (npc.velocity.X > 0f && npc.spriteDirection == 1))
-				{
-					// Jump over obstacles.
-					if (npc.height >= 32 && Main.tile[npcPushTileX, npcPushTileY - 2].HasUnactuatedTile && Main.tileSolid[Main.tile[npcPushTileX, npcPushTileY - 2].TileType])
-					{
-						if (Main.tile[npcPushTileX, npcPushTileY - 3].HasUnactuatedTile && Main.tileSolid[Main.tile[npcPushTileX, npcPushTileY - 3].TileType])
-						{
-							npc.velocity.Y = -8f;
-							npc.netUpdate = true;
-						}
-						else
-						{
-							npc.velocity.Y = -7f;
-							npc.netUpdate = true;
-						}
-					}
-					else if (Main.tile[npcPushTileX, npcPushTileY - 1].HasUnactuatedTile && Main.tileSolid[Main.tile[npcPushTileX, npcPushTileY - 1].TileType])
-					{
-						npc.velocity.Y = -6f;
-						npc.netUpdate = true;
-					}
-					else if (npc.position.Y + npc.height - npcPushTileY * 16 > 20f && Main.tile[npcPushTileX, npcPushTileY].HasUnactuatedTile && !Main.tile[npcPushTileX, npcPushTileY].TopSlope && Main.tileSolid[Main.tile[npcPushTileX, npcPushTileY].TileType])
-					{
-						npc.velocity.Y = -5f;
-						npc.netUpdate = true;
-					}
-					else if (npc.directionY < 0 && (!Main.tile[npcPushTileX, npcPushTileY + 1].HasUnactuatedTile || !Main.tileSolid[Main.tile[npcPushTileX, npcPushTileY + 1].TileType]) && (!Main.tile[npcPushTileX + npc.direction, npcPushTileY + 1].HasUnactuatedTile || !Main.tileSolid[Main.tile[npcPushTileX + npc.direction, npcPushTileY + 1].TileType]))
-					{
-						npc.velocity.Y = -8f;
-						npc.velocity.X *= 1.5f;
-						npc.netUpdate = true;
-					}
+				Fighters_Jump(npc, pushTileX, pushTileY, canJump);
+			}
+		}
+	}
 
-					// Jump when starting to accumulate aggro.
-					if (npc.velocity.Y == 0f && canJump && npc.ai[3] == 1f)
+	public static void Fighters_BreakDoor(NPC npc, int pushTileX, int pushTileY, bool canOpenTheDoor)
+	{
+		int aggroThreshold = 60;
+		npc.ai[2] += 1f;
+		npc.ai[3] = 0f;
+		if (npc.ai[2] >= 60f)
+		{
+			npc.velocity.X = 0.5f * (float)(-(float)npc.direction);
+			WorldGen.KillTile(pushTileX, pushTileY - 1, true, false, false);
+			if ((Main.netMode != NetmodeID.MultiplayerClient || !canOpenTheDoor) && canOpenTheDoor && Main.netMode != NetmodeID.MultiplayerClient)
+			{
+				npc.ai[2] = 0;
+				if (TileLoader.IsClosedDoor(Main.tile[pushTileX, pushTileY - 1]))
+				{
+					bool openSuccess = WorldGen.OpenDoor(pushTileX, pushTileY - 1, npc.direction);
+					if (!openSuccess)
 					{
-						npc.velocity.Y = -5f;
+						npc.ai[3] = aggroThreshold;
+						npc.netUpdate = true;
 					}
-					if (npc.velocity.Y == 0f && Main.expertMode && player.Bottom.Y < npc.Top.Y && Math.Abs(npc.Center.X - player.Center.X) < player.width * 3 && Collision.CanHit(npc, player))
+					if (Main.netMode == NetmodeID.Server && openSuccess)
 					{
-						int maxTileOverHead = 6;
-						if (player.Bottom.Y > npc.Top.Y - maxTileOverHead * 16)
+						NetMessage.SendData(MessageID.ToggleDoorState, -1, -1, null, 0, pushTileX, pushTileY - 1, npc.direction, 0, 0, 0);
+					}
+				}
+				if (Main.tile[pushTileX, pushTileY - 1].TileType == TileID.TallGateClosed)
+				{
+					bool openSuccess = WorldGen.ShiftTallGate(pushTileX, pushTileY - 1, false, false);
+					if (!openSuccess)
+					{
+						npc.ai[3] = aggroThreshold;
+						npc.netUpdate = true;
+					}
+					if (Main.netMode == NetmodeID.Server && openSuccess)
+					{
+						NetMessage.SendData(MessageID.ToggleDoorState, -1, -1, null, 4, pushTileX, pushTileY - 1, 0f, 0, 0, 0);
+					}
+				}
+			}
+		}
+	}
+
+	public static void Fighters_Jump(NPC npc, int pushTileX, int pushTileY, bool canJump)
+	{
+		Player player = Main.player[npc.target];
+		if ((npc.velocity.X < 0f && npc.spriteDirection == -1) || (npc.velocity.X > 0f && npc.spriteDirection == 1))
+		{
+			// Jump over obstacles.
+			if (npc.height >= 32 && Main.tile[pushTileX, pushTileY - 2].HasUnactuatedTile && Main.tileSolid[Main.tile[pushTileX, pushTileY - 2].TileType])
+			{
+				if (Main.tile[pushTileX, pushTileY - 3].HasUnactuatedTile && Main.tileSolid[Main.tile[pushTileX, pushTileY - 3].TileType])
+				{
+					npc.velocity.Y = -8f;
+					npc.netUpdate = true;
+				}
+				else
+				{
+					npc.velocity.Y = -7f;
+					npc.netUpdate = true;
+				}
+			}
+			else if (Main.tile[pushTileX, pushTileY - 1].HasUnactuatedTile && Main.tileSolid[Main.tile[pushTileX, pushTileY - 1].TileType])
+			{
+				npc.velocity.Y = -6f;
+				npc.netUpdate = true;
+			}
+			else if (npc.position.Y + npc.height - pushTileY * 16 > 20f && Main.tile[pushTileX, pushTileY].HasUnactuatedTile && !Main.tile[pushTileX, pushTileY].TopSlope && Main.tileSolid[Main.tile[pushTileX, pushTileY].TileType])
+			{
+				npc.velocity.Y = -5f;
+				npc.netUpdate = true;
+			}
+			else if (npc.directionY < 0 && (!Main.tile[pushTileX, pushTileY + 1].HasUnactuatedTile || !Main.tileSolid[Main.tile[pushTileX, pushTileY + 1].TileType]) && (!Main.tile[pushTileX + npc.direction, pushTileY + 1].HasUnactuatedTile || !Main.tileSolid[Main.tile[pushTileX + npc.direction, pushTileY + 1].TileType]))
+			{
+				npc.velocity.Y = -8f;
+				npc.velocity.X *= 1.5f;
+				npc.netUpdate = true;
+			}
+
+			// Jump when starting to accumulate aggro.
+			if (npc.velocity.Y == 0f && canJump && npc.ai[3] == 1f)
+			{
+				npc.velocity.Y = -5f;
+			}
+			if (npc.velocity.Y == 0f && Main.expertMode && player.Bottom.Y < npc.Top.Y && Math.Abs(npc.Center.X - player.Center.X) < player.width * 3 && Collision.CanHit(npc, player))
+			{
+				int maxTileOverHead = 6;
+				if (player.Bottom.Y > npc.Top.Y - maxTileOverHead * 16)
+				{
+					npc.velocity.Y = -7.9f;
+				}
+				else
+				{
+					int centerTileX = (int)(npc.Center.X / 16f);
+					int bottomTileY = (int)(npc.Bottom.Y / 16f) - 1;
+					for (int y = bottomTileY; y > bottomTileY - maxTileOverHead; y--)
+					{
+						if (Main.tile[centerTileX, y].HasUnactuatedTile && TileID.Sets.Platforms[Main.tile[centerTileX, y].TileType])
 						{
 							npc.velocity.Y = -7.9f;
-						}
-						else
-						{
-							int centerTileX = (int)(npc.Center.X / 16f);
-							int bottomTileY = (int)(npc.Bottom.Y / 16f) - 1;
-							for (int y = bottomTileY; y > bottomTileY - maxTileOverHead; y--)
-							{
-								if (Main.tile[centerTileX, y].HasUnactuatedTile && TileID.Sets.Platforms[Main.tile[centerTileX, y].TileType])
-								{
-									npc.velocity.Y = -7.9f;
-									break;
-								}
-							}
+							break;
 						}
 					}
 				}

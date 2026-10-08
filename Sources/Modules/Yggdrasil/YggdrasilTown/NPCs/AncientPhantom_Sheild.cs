@@ -21,7 +21,7 @@ public class AncientPhantom_Sheild : ModNPC
 	public override void SetDefaults()
 	{
 		NPC.width = 30;
-		NPC.height = 56;
+		NPC.height = 40;
 		NPC.lifeMax = 110;
 		NPC.damage = 25;
 		NPC.defense = 20;
