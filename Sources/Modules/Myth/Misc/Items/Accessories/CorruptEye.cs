@@ -27,7 +27,7 @@ public class CorruptEye : ModItem
 	}
 }
 
-internal class CorruptEyeEquiper : ModPlayer
+public class CorruptEyeEquiper : ModPlayer
 {
 	public bool CorruptEyeEnable = false;
 
