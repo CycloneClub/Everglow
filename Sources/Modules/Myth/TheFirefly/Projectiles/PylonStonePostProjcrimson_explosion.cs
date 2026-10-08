@@ -29,7 +29,7 @@ public class PylonStonePostProj_crimson_explosion : NoTextureProjectile, IWarpPr
 		SoundEngine.PlaySound(new SoundStyle("Everglow/Myth/Sounds/Crystal_Burst_Normal").WithVolumeScale(Projectile.ai[0] / 20f + 0.2f), Projectile.Center);
 		for (int g = 0; g < 2; g++)
 		{
-			var darknessWave = new WaveOfEffectPylonHit_CrimsonWave(60, Projectile.Center, Vector2.zeroVector)
+			var darknessWave = new WaveOfEffectPylonHit_CrimsonWave(60, Projectile.Center, Vector2.Zero)
 			{
 				Active = true,
 				Visible = true,
