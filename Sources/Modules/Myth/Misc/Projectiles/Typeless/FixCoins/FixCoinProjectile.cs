@@ -10,7 +10,7 @@ public abstract class FixCoinProjectile : ModProjectile
 {
 	public virtual string HeatMapTexture()
 	{
-		return "";
+		return string.Empty;
 	}
 
 	public virtual int PrefixID()

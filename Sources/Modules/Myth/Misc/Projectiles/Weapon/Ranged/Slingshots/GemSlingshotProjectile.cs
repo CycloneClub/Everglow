@@ -8,7 +8,7 @@ public abstract class GemSlingshotProjectile : SlingshotProjectile
 	/// <summary>
 	/// 弦上的宝石贴图,从MythModule(不含)开始的路径
 	/// </summary>
-	internal string TexPath = "";
+	internal string TexPath = string.Empty;
 
 	public override void SetDef()
 	{

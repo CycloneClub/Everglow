@@ -15,7 +15,7 @@ public abstract class GemAmmo : SlingshotAmmo
 	/// <summary>
 	/// 拖尾的路径
 	/// </summary>
-	internal string TrailTexPath = "";
+	internal string TrailTexPath = string.Empty;
 	/// <summary>
 	/// Dust(粒子)种类,默认钻石粉尘
 	/// </summary>

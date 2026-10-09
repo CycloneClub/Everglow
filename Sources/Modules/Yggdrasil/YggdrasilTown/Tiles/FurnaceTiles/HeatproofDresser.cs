@@ -92,7 +92,7 @@ public class HeatproofDresser : ModTile
 		{
 			string defaultName = TileLoader.DefaultContainerName(tile.TileType, tile.TileFrameX, tile.TileFrameY); // This gets the ContainerName text for the currently selected language
 
-			if (Main.chest[chestIndex].name != "")
+			if (Main.chest[chestIndex].name != string.Empty)
 			{
 				player.cursorItemIconText = Main.chest[chestIndex].name;
 			}
@@ -103,7 +103,7 @@ public class HeatproofDresser : ModTile
 			if (player.cursorItemIconText == defaultName)
 			{
 				player.cursorItemIconID = ModContent.ItemType<HeatproofDresser_item>();
-				player.cursorItemIconText = "";
+				player.cursorItemIconText = string.Empty;
 			}
 		}
 		player.noThrow = 2;
@@ -114,7 +114,7 @@ public class HeatproofDresser : ModTile
 	{
 		Player player = Main.LocalPlayer;
 		MouseOverNearAndFarSharedLogic(player, i, j);
-		if (player.cursorItemIconText == "")
+		if (player.cursorItemIconText == string.Empty)
 		{
 			player.cursorItemIconEnabled = false;
 			player.cursorItemIconID = 0;
@@ -128,7 +128,7 @@ public class HeatproofDresser : ModTile
 		if (Main.tile[i, j].TileFrameY > 0)
 		{
 			player.cursorItemIconID = ItemID.FamiliarShirt;
-			player.cursorItemIconText = "";
+			player.cursorItemIconText = string.Empty;
 		}
 	}
 
@@ -163,7 +163,7 @@ public class HeatproofDresser : ModTile
 			return Language.GetTextValue("LegacyDresserType.0");
 		}
 
-		if (Main.chest[chest].name == "")
+		if (Main.chest[chest].name == string.Empty)
 		{
 			return name;
 		}
