@@ -16,4 +16,3 @@ public class CookedMarshmallowBuff : ModBuff
 		player.noFallDmg = true;
 	}
 }
-

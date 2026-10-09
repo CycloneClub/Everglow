@@ -12,4 +12,3 @@ public class FixCoinMelee3 : FixCoinItem
 		Item.shoot = ModContent.ProjectileType<Projectiles.Typeless.FixCoins.FixCoinMelee3>();
 	}
 }
-

@@ -16,4 +16,3 @@ public class BlackCurrantBuff : ModBuff
 		player.dangerSense = true; // 获得危险感知
 	}
 }
-

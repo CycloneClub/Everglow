@@ -16,4 +16,3 @@ public class CoconutBuff : ModBuff
 		player.endurance += 0.03f; // 加3%减伤
 	}
 }
-

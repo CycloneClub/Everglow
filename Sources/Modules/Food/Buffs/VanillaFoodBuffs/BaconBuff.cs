@@ -16,4 +16,3 @@ public class BaconBuff : ModBuff
 		player.lifeRegen += 2; // 加2生命回复
 	}
 }
-

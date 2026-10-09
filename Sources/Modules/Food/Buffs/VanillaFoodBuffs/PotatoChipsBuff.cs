@@ -16,4 +16,3 @@ public class PotatoChipsBuff : ModBuff
 		player.GetDamage(DamageClass.Melee) *= 1.04f; // 加4%伤害
 	}
 }
-

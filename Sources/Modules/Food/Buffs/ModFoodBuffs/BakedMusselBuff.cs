@@ -16,4 +16,3 @@ public class BakedMusselBuff : ModBuff
 		player.statDefense += 4;
 	}
 }
-

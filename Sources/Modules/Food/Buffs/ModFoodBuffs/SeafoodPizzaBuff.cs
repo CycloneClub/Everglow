@@ -21,4 +21,3 @@ public class SeafoodPizzaBuff : ModBuff
 		player.manaRegen += 1; // 魔力再生加1
 	}
 }
-

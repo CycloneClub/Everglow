@@ -26,4 +26,3 @@ public class RambutanBuff : ModBuff
 		player.buffImmune[22] = true; // 十字章一样的免疫
 	}
 }
-

@@ -15,4 +15,3 @@ public class SalmonWarshipBuff : ModBuff
 		player.maxRunSpeed *= 1.1f;
 	}
 }
-

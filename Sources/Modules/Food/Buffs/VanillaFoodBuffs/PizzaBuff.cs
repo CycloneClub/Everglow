@@ -15,4 +15,3 @@ public class PizzaBuff : ModBuff
 		player.GetArmorPenetration(DamageClass.Generic) += 10; // 加10穿甲
 	}
 }
-

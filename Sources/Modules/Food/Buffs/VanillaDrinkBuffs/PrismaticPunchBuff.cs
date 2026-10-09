@@ -18,4 +18,3 @@ public class PrismaticPunchBuff : ModBuff
 		player.GetDamage(DamageClass.Summon) *= 1.5f; // 加50%伤害
 	}
 }
-

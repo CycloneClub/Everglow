@@ -186,4 +186,3 @@ internal class FireFeatherOwner : ModPlayer
 		}
 	}
 }
-

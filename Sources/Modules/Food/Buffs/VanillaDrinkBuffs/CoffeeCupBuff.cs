@@ -22,4 +22,3 @@ public class CoffeeCupBuff : ModBuff
 		Lighting.AddLight(player.Center, 0.8f, 0.8f, 0);
 	}
 }
-

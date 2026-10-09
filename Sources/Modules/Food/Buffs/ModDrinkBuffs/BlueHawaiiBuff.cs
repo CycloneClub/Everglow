@@ -16,4 +16,3 @@ public class BlueHawaiiBuff : ModBuff
 		FoodBuffModPlayer.BlueHawaiiBuff = true;
 	}
 }
-

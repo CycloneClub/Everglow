@@ -18,4 +18,3 @@ public class SeafoodDinnerBuff : ModBuff
 		FoodBuffModPlayer.AddCritDamage += 0.06f;
 	}
 }
-

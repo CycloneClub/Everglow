@@ -18,4 +18,3 @@ public class SauteedFrogLegsBuff : ModBuff
 		player.jumpBoost = true;
 	}
 }
-

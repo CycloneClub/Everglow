@@ -25,4 +25,3 @@ public class GoldenDelightBuff : ModBuff
 		player.jumpSpeedBoost += 2;
 	}
 }
-

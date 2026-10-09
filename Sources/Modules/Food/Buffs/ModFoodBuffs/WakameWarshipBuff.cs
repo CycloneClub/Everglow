@@ -15,4 +15,3 @@ public class WakameWarshipBuff : ModBuff
 		player.manaRegen += 2;
 	}
 }
-

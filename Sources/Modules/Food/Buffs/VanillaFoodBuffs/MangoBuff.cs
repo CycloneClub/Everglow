@@ -16,4 +16,3 @@ public class MangoBuff : ModBuff
 		FoodBuffModPlayer.MangoBuff = true;
 	}
 }
-

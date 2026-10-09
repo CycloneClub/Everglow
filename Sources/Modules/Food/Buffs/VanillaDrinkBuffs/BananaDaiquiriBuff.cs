@@ -18,4 +18,3 @@ public class BananaDaiquiriBuff : ModBuff
 		player.GetCritChance(DamageClass.Ranged) += 50; // 加50%暴击
 	}
 }
-

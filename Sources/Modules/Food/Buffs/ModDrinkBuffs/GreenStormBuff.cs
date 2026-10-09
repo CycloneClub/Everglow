@@ -16,4 +16,3 @@ public class GreenStormBuff : ModBuff
 		FoodBuffModPlayer.GreenStormBuff = true;
 	}
 }
-

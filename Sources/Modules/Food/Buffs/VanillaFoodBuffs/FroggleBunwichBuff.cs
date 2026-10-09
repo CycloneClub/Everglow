@@ -18,4 +18,3 @@ public class FroggleBunwichBuff : ModBuff
 		player.jumpBoost = true;
 	}
 }
-

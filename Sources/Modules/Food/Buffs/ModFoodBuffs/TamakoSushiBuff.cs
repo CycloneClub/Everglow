@@ -15,4 +15,3 @@ public class TamakoSushiBuff : ModBuff
 		player.lifeRegen += 2;
 	}
 }
-

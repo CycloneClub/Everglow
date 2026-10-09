@@ -16,4 +16,3 @@ public class ChocolateChipCookieBuff : ModBuff
 		player.manaRegen += 2; // 加2魔力恢复
 	}
 }
-

@@ -23,5 +23,3 @@ public class HarvestingClaw : FruitPickerTool
 		Item.axe = 1;
 	}
 }
-
-

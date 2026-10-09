@@ -17,4 +17,3 @@ public class TeacupBuff : ModBuff
 		player.manaRegen += 100; // 加100魔力回复
 	}
 }
-

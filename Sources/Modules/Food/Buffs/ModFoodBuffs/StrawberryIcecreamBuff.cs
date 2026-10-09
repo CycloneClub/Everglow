@@ -16,4 +16,3 @@ public class StrawberryIcecreamBuff : ModBuff
 		FoodBuffModPlayer.StrawberryIcecreamBuff = true;
 	}
 }
-

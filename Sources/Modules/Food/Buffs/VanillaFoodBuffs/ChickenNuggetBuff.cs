@@ -16,4 +16,3 @@ public class ChickenNuggetBuff : ModBuff
 		player.GetAttackSpeed(DamageClass.Generic) += 0.04f; // 加4%攻速
 	}
 }
-

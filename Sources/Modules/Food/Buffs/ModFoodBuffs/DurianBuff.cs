@@ -16,4 +16,3 @@ public class DurianBuff : ModBuff
 		FoodBuffModPlayer.DurianBuff = true;
 	}
 }
-

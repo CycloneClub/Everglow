@@ -21,4 +21,3 @@ public class SashimiBuff : ModBuff
 		player.GetDamage(DamageClass.Generic) *= 1.15f;
 	}
 }
-

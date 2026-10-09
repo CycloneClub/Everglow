@@ -20,4 +20,3 @@ public class RoastedDuckBuff : ModBuff
 		player.waterWalk = true;
 	}
 }
-

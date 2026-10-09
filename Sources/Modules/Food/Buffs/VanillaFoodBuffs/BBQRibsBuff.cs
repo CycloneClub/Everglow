@@ -15,4 +15,3 @@ public class BBQRibsBuff : ModBuff
 		player.statLifeMax2 += 50; // 加50血量上限
 	}
 }
-

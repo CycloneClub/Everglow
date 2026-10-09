@@ -12,4 +12,3 @@ public class FixCoinSpeed2 : FixCoinItem
 		Item.shoot = ModContent.ProjectileType<Projectiles.Typeless.FixCoins.FixCoinSpeed2>();
 	}
 }
-

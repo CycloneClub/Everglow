@@ -16,4 +16,3 @@ public class LobsterTailBuff : ModBuff
 		player.pickSpeed -= 0.33f; // 加25%挖矿速度
 	}
 }
-

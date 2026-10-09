@@ -15,4 +15,3 @@ public class GrapeJuiceBuff : ModBuff
 		player.luck += 10000;
 	}
 }
-

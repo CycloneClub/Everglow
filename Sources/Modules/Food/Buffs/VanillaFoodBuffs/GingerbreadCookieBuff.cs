@@ -16,4 +16,3 @@ public class GingerbreadCookieBuff : ModBuff
 		player.lifeRegen += 2; // 加2生命回复
 	}
 }
-

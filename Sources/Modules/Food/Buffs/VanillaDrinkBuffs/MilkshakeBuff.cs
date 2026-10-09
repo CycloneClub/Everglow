@@ -16,4 +16,3 @@ public class MilkshakeBuff : ModBuff
 		player.runAcceleration *= 5f;
 	}
 }
-

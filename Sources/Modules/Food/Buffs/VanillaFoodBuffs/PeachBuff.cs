@@ -16,4 +16,3 @@ public class PeachBuff : ModBuff
 		player.lifeMagnet = true; // 增加心的拾取范围
 	}
 }
-

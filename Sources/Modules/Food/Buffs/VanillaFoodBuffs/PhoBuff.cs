@@ -15,4 +15,3 @@ public class PhoBuff : ModBuff
 		player.GetDamage(DamageClass.Summon) *= 1.08f;
 	}
 }
-

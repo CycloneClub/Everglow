@@ -15,4 +15,3 @@ public class PumpkinPieBuff : ModBuff
 		player.statLifeMax2 += 50;
 	}
 }
-

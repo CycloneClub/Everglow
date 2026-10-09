@@ -18,4 +18,3 @@ public class ShuckedOysterBuff : ModBuff
 		player.statDefense -= 5;
 	}
 }
-

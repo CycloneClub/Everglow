@@ -17,4 +17,3 @@ public class BunnyStewBuff : ModBuff
 		player.jumpBoost = true;
 	}
 }
-

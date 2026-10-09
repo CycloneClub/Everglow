@@ -16,4 +16,3 @@ public class PurpleHooterBuff : ModBuff
 		FoodBuffModPlayer.PurpleHooterBuff = true;
 	}
 }
-

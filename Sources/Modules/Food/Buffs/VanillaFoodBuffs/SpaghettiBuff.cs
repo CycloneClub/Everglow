@@ -15,4 +15,3 @@ public class SpaghettiBuff : ModBuff
 		player.maxTurrets += 1; // 增加1哨兵栏
 	}
 }
-

@@ -16,4 +16,3 @@ public class QuinceMarryBuff : ModBuff
 		FoodBuffModPlayer.QuinceMarryBuff = true;
 	}
 }
-

@@ -16,4 +16,3 @@ public class CantaloupeJellyBuff : ModBuff
 		FoodBuffModPlayer.CantaloupeJellyBuff = true;
 	}
 }
-

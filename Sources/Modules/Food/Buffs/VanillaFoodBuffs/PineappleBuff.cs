@@ -16,4 +16,3 @@ public class PineappleBuff : ModBuff
 		player.thorns += 0.5f; // 50%反伤
 	}
 }
-
