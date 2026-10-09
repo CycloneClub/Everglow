@@ -95,7 +95,7 @@ public class DarkGlimmeringRods : ModNPC
 		spriteBatch.End();
 		spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 		Texture2D mainTex = (Texture2D)ModContent.Request<Texture2D>(Texture);
-		float timeValue = (float)(NPC.frameCounter);
+		float timeValue = (float)NPC.frameCounter;
 		List<Vertex2D> bars = new List<Vertex2D>();
 		Vector2 drawCenter = NPC.Center - Main.screenPosition + new Vector2(BodyLength * 5f * 0.75f, 0).RotatedBy(NPC.rotation) * NPC.scale;
 		for (int i = 0; i < BodyLength; i++)

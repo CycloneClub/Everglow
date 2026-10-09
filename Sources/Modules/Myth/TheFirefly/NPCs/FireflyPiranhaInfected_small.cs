@@ -163,7 +163,7 @@ public class FireflyPiranhaInfected_small : ModNPC
 				NPC.velocity.X *= -1;
 			}
 		}
-		SoundEngine.PlaySound((SoundID.SplashWeak.WithPitchOffset(Main.rand.NextFloat(-1f, -0.2f))).WithVolume(0.5f));
+		SoundEngine.PlaySound(SoundID.SplashWeak.WithPitchOffset(Main.rand.NextFloat(-1f, -0.2f)).WithVolume(0.5f));
 	}
 
 	private void WanderingWithoutTarget()

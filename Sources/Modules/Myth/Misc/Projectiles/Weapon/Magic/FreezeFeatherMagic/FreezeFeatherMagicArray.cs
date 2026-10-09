@@ -160,7 +160,7 @@ internal class FreezeFeatherMagicArray : VisualProjectile
 		List<Vertex2D> bars = new List<Vertex2D>();
 		for (int x = 0; x < 40; x++)
 		{
-			float pocession = (1 - timer / 30f);
+			float pocession = 1 - timer / 30f;
 			Vector2 radius = toBottom.RotatedBy(x / 20d * Math.PI);
 			float width = 75f;
 			if (x / 40f > WingPower / 210f)

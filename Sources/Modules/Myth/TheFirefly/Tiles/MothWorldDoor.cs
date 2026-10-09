@@ -202,7 +202,7 @@ public class DrawMagicArraySystem : ModSystem
 
 		if (value1 < value0)
 		{
-			float valueMiddle = (1 - value0) / (0.4f);
+			float valueMiddle = (1 - value0) / 0.4f;
 			Vector2 Delta = EndPos - StartPos;
 			vertex2Ds.Add(new Vertex2D(StartPos + Width, color1, new Vector3(value0, 0, 0)));
 			vertex2Ds.Add(new Vertex2D(StartPos + Delta * valueMiddle + Width, color2, new Vector3(1, 0, 0)));

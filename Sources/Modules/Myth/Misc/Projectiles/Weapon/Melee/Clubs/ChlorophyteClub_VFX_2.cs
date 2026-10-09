@@ -168,7 +168,7 @@ public class ChlorophyteClub_VFX_2 : ModProjectile
 			float value = (60 - Projectile.timeLeft) / 30f;
 			if (value < 1)
 			{
-				DrawCircleDark(MathF.Pow(value, 0.3f) * 140 * Projectile.ai[0] * 2.2f, 85 * (1 - value) + 62 * Projectile.ai[0] * 2.2f, (1 - value), Projectile.Center - Main.screenPosition, Main.time / 16f);
+				DrawCircleDark(MathF.Pow(value, 0.3f) * 140 * Projectile.ai[0] * 2.2f, 85 * (1 - value) + 62 * Projectile.ai[0] * 2.2f, 1 - value, Projectile.Center - Main.screenPosition, Main.time / 16f);
 				float x = (value - 0.5f) * 2f;
 				float mulColor = MathF.Pow(Math.Min(MathF.Cos(MathHelper.PiOver2 * x), 1 - Math.Abs(x)), 2) * 2;
 				Color c0 = new Color(0.2f * (1 - value), 1.5f * (1 - value), 0.8f * (1 - value), 0) * mulColor;
@@ -180,7 +180,7 @@ public class ChlorophyteClub_VFX_2 : ModProjectile
 				float x = (value - 0.5f) * 2f;
 				float mulColor = MathF.Pow(Math.Min(MathF.Cos(MathHelper.PiOver2 * x), 1 - Math.Abs(x)), 2) * 5;
 				Color c0 = new Color(0.2f * (1 - value), 1f * (1 - value), 0.8f * (1 - value), 0) * mulColor;
-				DrawCircleDark(MathF.Pow(value, 0.3f) * 104 * Projectile.ai[0] * 2.2f, 47 * (1 - value) + 32 * Projectile.ai[0] * 2.2f, (1 - value), Projectile.Center - Main.screenPosition, -Main.time / 32f);
+				DrawCircleDark(MathF.Pow(value, 0.3f) * 104 * Projectile.ai[0] * 2.2f, 47 * (1 - value) + 32 * Projectile.ai[0] * 2.2f, 1 - value, Projectile.Center - Main.screenPosition, -Main.time / 32f);
 				DrawCircle(MathF.Pow(value, 0.3f) * 104 * Projectile.ai[0] * 2.2f, 47 * (1 - value) + 32 * Projectile.ai[0] * 2.2f, c0, Projectile.Center - Main.screenPosition, -Main.time / 32f);
 			}
 		}

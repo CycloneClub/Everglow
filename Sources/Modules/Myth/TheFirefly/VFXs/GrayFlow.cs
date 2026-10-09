@@ -71,7 +71,7 @@ internal class GrayFlowLine : ShaderDraw
 	{
 		position += velocity;
 		oldPos.Add(position);
-		float removePosition = (maxTime - timer);
+		float removePosition = maxTime - timer;
 		if (removePosition > 15)
 		{
 			removePosition = 15;
@@ -95,7 +95,7 @@ internal class GrayFlowLine : ShaderDraw
 		}
 		else
 		{
-			ai[1] += MathF.Sin((float)(Main.time) * 0.1f + ai[0] * 100) * 0.01f * ai[0];
+			ai[1] += MathF.Sin((float)Main.time * 0.1f + ai[0] * 100) * 0.01f * ai[0];
 		}
 		timer++;
 		if (timer > maxTime)
