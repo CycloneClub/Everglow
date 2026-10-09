@@ -39,6 +39,7 @@ namespace Everglow.Commons.UI.UIElements
 				var texts = Text.Split('\n');
 				_cursorPosition.Y = 0;
 				if (l > 0)
+				{
 					foreach (var t in texts)
 					{
 						if (l > t.Length + 1)
@@ -51,6 +52,8 @@ namespace Everglow.Commons.UI.UIElements
 							break;
 						}
 					}
+				}
+
 				_cursorPosition.X = l;
 			}
 		}
