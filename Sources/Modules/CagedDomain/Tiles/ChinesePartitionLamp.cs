@@ -97,7 +97,7 @@ public class ChinesePartitionLamp : ModTile, ITileFluentlyDrawn
 	/// <param name="spriteBatch"></param>
 	/// <param name="tileDrawing"></param>
 	/// <param name="color"></param>
-	private void DrawLanternPiece(Rectangle frame, float swayCoefficient, int offsetX, int offsetY, Point tilePos, Point paintPos, Vector2 drawCenterPos, SpriteBatch spriteBatch, TileDrawing tileDrawing, Color color = new Color())
+	private void DrawLanternPiece(Rectangle frame, float swayCoefficient, int offsetX, int offsetY, Point tilePos, Point paintPos, Vector2 drawCenterPos, SpriteBatch spriteBatch, TileDrawing tileDrawing, Color color = default(Color))
 	{
 		// 回声涂料
 		if (!TileDrawing.IsVisible(Main.tile[paintPos]))
@@ -127,7 +127,7 @@ public class ChinesePartitionLamp : ModTile, ITileFluentlyDrawn
 
 		// 支持发光涂料
 		Color tileLight;
-		if (color != new Color())
+		if (color != default(Color))
 		{
 			tileLight = color;
 		}

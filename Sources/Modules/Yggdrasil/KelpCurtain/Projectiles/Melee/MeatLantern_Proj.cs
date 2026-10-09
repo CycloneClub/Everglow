@@ -31,13 +31,13 @@ public class MeatLantern_Proj : MeleeProj
 		return BlendState.Additive;
 	}
 
-	public override void DrawSelf(SpriteBatch spriteBatch, Color lightColor, Vector4 diagonal = new Vector4(), Vector2 drawScale = new Vector2(), Texture2D glowTexture = null)
+	public override void DrawSelf(SpriteBatch spriteBatch, Color lightColor, Vector4 diagonal = default(Vector4), Vector2 drawScale = default(Vector2), Texture2D glowTexture = null)
 	{
-		if (diagonal == new Vector4())
+		if (diagonal == default(Vector4))
 		{
 			diagonal = new Vector4(0, 1, 1, 0);
 		}
-		if (drawScale == new Vector2())
+		if (drawScale == default(Vector2))
 		{
 			drawScale = new Vector2(0, 1);
 			if (longHandle)
