@@ -5,22 +5,22 @@ namespace Everglow.Commons.Coroutines;
 /// </summary>
 public class WaitForFrames : ICoroutineInstruction
 {
-	private uint m_counter;
-	private readonly uint m_totalFrames;
+	private uint counter;
+	private readonly uint totalFrames;
 
 	public WaitForFrames(uint frames)
 	{
-		m_totalFrames = frames;
-		m_counter = 0;
+		totalFrames = frames;
+		counter = 0;
 	}
 
 	public bool ShouldWait()
 	{
-		return m_counter <= m_totalFrames;
+		return counter <= totalFrames;
 	}
 
 	public void Update()
 	{
-		++m_counter;
+		++counter;
 	}
 }

@@ -13,9 +13,9 @@ public class ResourceLocker<T>
 	{
 		get
 		{
-			if (!m_released)
+			if (!released)
 			{
-				return m_resource;
+				return resource;
 			}
 			else
 			{
@@ -28,13 +28,13 @@ public class ResourceLocker<T>
 	{
 		get
 		{
-			return m_released;
+			return released;
 		}
 	}
 
-	private T m_resource;
-	private bool m_released;
-	private Action m_releaseAction;
+	private T resource;
+	private bool released;
+	private Action releaseAction;
 
 	/// <summary>
 	/// 构造函数可以传入一个Action表示这个对象的释放流程
@@ -43,17 +43,17 @@ public class ResourceLocker<T>
 	/// <param name="releaseAction"></param>
 	public ResourceLocker(T resource, Action releaseAction)
 	{
-		m_resource = resource;
-		m_releaseAction = releaseAction;
-		m_released = false;
+		this.resource = resource;
+		this.releaseAction = releaseAction;
+		released = false;
 	}
 
 	public void Release()
 	{
-		if (!m_released)
+		if (!released)
 		{
-			m_released = true;
-			m_releaseAction();
+			released = true;
+			releaseAction();
 		}
 		else
 		{
