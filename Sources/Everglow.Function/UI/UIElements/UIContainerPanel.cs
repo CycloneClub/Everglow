@@ -38,7 +38,9 @@ namespace Everglow.Commons.UI.UIElements
 		private float horizontalWhellValue;
 		private Vector2 innerPanelMinLocation;
 		private Vector2 innerPanelMaxLocation;
-		public bool CanMove = false, CanMoveVerticalScrollbar = false, CanMoveHorizontalScrollbar = false;
+		public bool CanMove = false;
+		public bool CanMoveVerticalScrollbar = false;
+		public bool CanMoveHorizontalScrollbar = false;
 
 		public IScrollbar UIVerticalScrollbar => _verticalScrollbar;
 
