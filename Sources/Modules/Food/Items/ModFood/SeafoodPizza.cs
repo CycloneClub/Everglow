@@ -16,7 +16,7 @@ public class SeafoodPizza : FoodBase
 				Satiety = 40,
 				BuffType = ModContent.BuffType<SeafoodPizzaBuff>(),
 				BuffTime = new FoodDuration(12, 0, 0),
-				Name = "SeafoodPizzaBuff"
+				Name = "SeafoodPizzaBuff",
 			};
 		}
 	}
@@ -29,7 +29,7 @@ public class SeafoodPizza : FoodBase
 		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
 			new Color(255, 129, 66),
 			new Color(130, 198, 41),
-			new Color(255, 231, 81)
+			new Color(255, 231, 81),
 		};
 
 		ItemID.Sets.IsFood[Type] = true;

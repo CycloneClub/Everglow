@@ -41,7 +41,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood.Furniture
 				TileID.Boulder,
 				TileID.BouncyBoulder,
 				TileID.LifeCrystalBoulder,
-				TileID.RollingCactus
+				TileID.RollingCactus,
 			};
 			TileObjectData.newTile.LavaDeath = false;
 			TileObjectData.addTile(Type);

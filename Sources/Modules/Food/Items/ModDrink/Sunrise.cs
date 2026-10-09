@@ -15,7 +15,7 @@ public class Sunrise : DrinkBase
 				Thirsty = false,
 				BuffType = ModContent.BuffType<SunriseBuff>(),
 				BuffTime = new FoodDuration(0, 10, 0),
-				Name = "SunriseBuff"
+				Name = "SunriseBuff",
 			};
 		}
 	}
@@ -27,7 +27,7 @@ public class Sunrise : DrinkBase
 		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
 			new Color(255, 180, 7),
 			new Color(255, 131, 48),
-			new Color(255, 38, 30)
+			new Color(255, 38, 30),
 		};
 
 		ItemID.Sets.IsFood[Type] = true;

@@ -21,7 +21,7 @@ public class Twilight_Stone_3x6 : ModTile
 			16,
 			16,
 			16,
-			18
+			18,
 		};
 		TileObjectData.newTile.StyleHorizontal = true;
 		TileObjectData.newTile.LavaDeath = false;

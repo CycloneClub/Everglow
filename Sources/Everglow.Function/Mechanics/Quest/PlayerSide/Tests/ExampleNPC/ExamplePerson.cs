@@ -99,7 +99,7 @@ public class ExamplePerson : ModNPC
 
 			// You can add multiple elements if you really wanted to
 			// You can also use localization keys (see Localization/en-US.lang)
-			new FlavorTextBestiaryInfoElement("Mods.ExampleMod.Bestiary.ExamplePerson")
+			new FlavorTextBestiaryInfoElement("Mods.ExampleMod.Bestiary.ExamplePerson"),
 		});
 	}
 
@@ -198,7 +198,7 @@ public class ExamplePerson : ModNPC
 			"Someone",
 			"Somebody",
 			"Blocky",
-			"Colorless"
+			"Colorless",
 		};
 	}
 

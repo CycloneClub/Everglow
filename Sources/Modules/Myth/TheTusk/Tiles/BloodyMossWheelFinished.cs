@@ -17,7 +17,7 @@ public class BloodyMossWheelFinished : ModTile
 		TileObjectData.newTile.Width = 1;
 		TileObjectData.newTile.CoordinateHeights = new int[]
 		{
-			16
+			16,
 		};
 		TileObjectData.newTile.CoordinateWidth = 16;
 		TileObjectData.addTile(Type);

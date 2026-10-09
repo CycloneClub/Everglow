@@ -16,7 +16,7 @@ public class WakameWarship : FoodBase
 				Satiety = 10,
 				BuffType = ModContent.BuffType<WakameWarshipBuff>(),
 				BuffTime = new FoodDuration(4, 0, 0),
-				Name = "WakameWarshipBuff"
+				Name = "WakameWarshipBuff",
 			};
 		}
 	}
@@ -29,7 +29,7 @@ public class WakameWarship : FoodBase
 		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
 			new Color(30, 142, 12),
 			new Color(30, 112, 56),
-			new Color(69, 84, 73)
+			new Color(69, 84, 73),
 		};
 
 		ItemID.Sets.IsFood[Type] = true;

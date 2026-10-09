@@ -30,7 +30,7 @@ public class PaintedTextureSystem : ModSystem
 		{
 			value = new PaintedTextureHolder
 			{
-				Key = tileVariationkey
+				Key = tileVariationkey,
 			};
 			paintSystem._tilesRenders.Add(tileVariationkey, value);
 		}

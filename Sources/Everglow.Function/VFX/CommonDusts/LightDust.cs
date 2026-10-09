@@ -24,7 +24,7 @@ public class LightDust : Visual
 	{
 		Normal,
 		Rotation,
-		Rotation2
+		Rotation2,
 	}
 
 	public override void OnSpawn()

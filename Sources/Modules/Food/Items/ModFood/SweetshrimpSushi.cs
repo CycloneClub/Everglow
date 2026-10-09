@@ -16,7 +16,7 @@ public class SweetshrimpSushi : FoodBase
 				Satiety = 10,
 				BuffType = ModContent.BuffType<SweetshrimpSushiBuff>(),
 				BuffTime = new FoodDuration(4, 0, 0),
-				Name = "SweetshrimpSushiBuff"
+				Name = "SweetshrimpSushiBuff",
 			};
 		}
 	}
@@ -29,7 +29,7 @@ public class SweetshrimpSushi : FoodBase
 		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
 			new Color(173, 27, 52),
 			new Color(249, 218, 154),
-			new Color(211, 202, 175)
+			new Color(211, 202, 175),
 		};
 
 		ItemID.Sets.IsFood[Type] = true;

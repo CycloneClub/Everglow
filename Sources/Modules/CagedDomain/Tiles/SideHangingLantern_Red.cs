@@ -23,7 +23,7 @@ public class SideHangingLantern_Red : ModTile, ITileFluentlyDrawn
 		{
 			16,
 			16,
-			16
+			16,
 		};
 
 		TileObjectData.newAlternate.Alternates = new List<TileObjectData>();

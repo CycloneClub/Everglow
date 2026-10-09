@@ -15,7 +15,7 @@ public class DryMartini : DrinkBase
 				Thirsty = false,
 				BuffType = ModContent.BuffType<DryMartiniBuff>(),
 				BuffTime = new FoodDuration(0, 10, 0),
-				Name = "DryMartiniBuff"
+				Name = "DryMartiniBuff",
 			};
 		}
 	}
@@ -28,7 +28,7 @@ public class DryMartini : DrinkBase
 		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
 			new Color(192, 182, 72),
 			new Color(137, 124, 140),
-			new Color(194, 229, 96)
+			new Color(194, 229, 96),
 		};
 
 		ItemID.Sets.IsFood[Type] = true;

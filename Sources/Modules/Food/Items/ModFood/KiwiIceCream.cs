@@ -16,7 +16,7 @@ public class KiwiIceCream : FoodBase
 				Satiety = 10,
 				BuffType = ModContent.BuffType<KiwiIceCreamBuff>(),
 				BuffTime = new FoodDuration(4, 0, 0),
-				Name = "KiwiIceCreamBuff"
+				Name = "KiwiIceCreamBuff",
 			};
 		}
 	}
@@ -29,7 +29,7 @@ public class KiwiIceCream : FoodBase
 		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
 			new Color(86, 120, 19),
 			new Color(206, 139, 162),
-			new Color(165, 158, 152)
+			new Color(165, 158, 152),
 		};
 
 		ItemID.Sets.IsFood[Type] = true;

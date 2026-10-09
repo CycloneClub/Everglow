@@ -16,7 +16,7 @@ public class EggTart : FoodBase
 				Satiety = 10,
 				BuffType = ModContent.BuffType<EggTartBuff>(),
 				BuffTime = new FoodDuration(4, 0, 0),
-				Name = "EggTartBuff"
+				Name = "EggTartBuff",
 			};
 		}
 	}
@@ -29,7 +29,7 @@ public class EggTart : FoodBase
 		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
 			new Color(255, 231, 53),
 			new Color(255, 194, 63),
-			new Color(153, 67, 75)
+			new Color(153, 67, 75),
 		};
 
 		ItemID.Sets.IsFood[Type] = true;

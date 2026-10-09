@@ -17,7 +17,7 @@ public class LampWood_Stump_3x2 : ModTile
 		TileObjectData.newTile.CoordinateHeights = new int[]
 		{
 			16,
-			18
+			18,
 		};
 		TileObjectData.newTile.StyleHorizontal = true;
 		TileObjectData.newTile.LavaDeath = false;

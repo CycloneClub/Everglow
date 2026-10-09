@@ -88,7 +88,7 @@ public class LightBulb : ModNPC
 		Sleep,
 		charge,
 		Attack,
-		Cooldown
+		Cooldown,
 	}
 
 	public override void AI()

@@ -130,7 +130,7 @@ public class AcytaeaLaserSword : ModProjectile
 				Visible = true,
 				position = positionVFX,
 				maxTime = Main.rand.Next(14, 16),
-				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.04f, 0.04f), Main.rand.NextFloat(18f, 30f) }
+				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.04f, 0.04f), Main.rand.NextFloat(18f, 30f) },
 			};
 			Ins.VFXManager.Add(acytaeaFlame);
 		}

@@ -43,7 +43,7 @@ public class FogPass
 		LuminanceThreashold = 0.2f,
 		OffscreenTileCount = 8,
 		BloomIntensity = 0.5f,
-		BloomRadius = 2
+		BloomRadius = 2,
 	};
 
 	public static FogState Default = new FogState
@@ -54,7 +54,7 @@ public class FogPass
 		LuminanceThreashold = 0f,
 		OffscreenTileCount = 0,
 		BloomIntensity = 0f,
-		BloomRadius = 0
+		BloomRadius = 0,
 	};
 
 	private Asset<Effect> m_boxKernelEffect;

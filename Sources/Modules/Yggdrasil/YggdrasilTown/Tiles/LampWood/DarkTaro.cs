@@ -18,7 +18,7 @@ public class DarkTaro : ModTile, ITileFluentlyDrawn
 		{
 			16,
 			16,
-			20
+			20,
 		};
 		TileObjectData.newTile.CoordinateWidth = 96;
 		TileObjectData.addTile(Type);
@@ -56,7 +56,7 @@ public class DarkTaro : ModTile, ITileFluentlyDrawn
 		{
 			DrawCenterPos = drawCenterPos,
 			SpriteBatch = spriteBatch,
-			TileDrawing = tileDrawing
+			TileDrawing = tileDrawing,
 		};
 
 		DrawShrubPiece(Frame(0), 0.1f, SwayHitboxPos(0), PaintPos(1), drawInfo);

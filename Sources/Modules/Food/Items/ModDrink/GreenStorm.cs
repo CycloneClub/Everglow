@@ -15,7 +15,7 @@ public class GreenStorm : DrinkBase
 				Thirsty = false,
 				BuffType = ModContent.BuffType<GreenStormBuff>(),
 				BuffTime = new FoodDuration(0, 10, 0),
-				Name = "GreenStormBuff"
+				Name = "GreenStormBuff",
 			};
 		}
 	}
@@ -28,7 +28,7 @@ public class GreenStorm : DrinkBase
 		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
 			new Color(255, 89, 111),
 			new Color(169, 216, 147),
-			new Color(174, 192, 192)
+			new Color(174, 192, 192),
 		};
 
 		ItemID.Sets.IsFood[Type] = true;

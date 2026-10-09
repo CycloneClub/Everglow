@@ -18,7 +18,7 @@ public class StarterInventoryMyth : ModPlayer
 		{
 			return new[]
 			{
-			new Item(ModContent.ItemType<LilyHarp>())
+			new Item(ModContent.ItemType<LilyHarp>()),
 			};
 		}
 		return new[]

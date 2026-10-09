@@ -25,7 +25,7 @@ public class FireflyPiranhaBanner : ModTile, ITileFluentlyDrawn
 		TileObjectData.newTile.CoordinateHeights = new int[3] {
 			16,
 			16,
-			16
+			16,
 		};
 
 		TileObjectData.newTile.StyleHorizontal = true;

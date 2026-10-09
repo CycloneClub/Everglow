@@ -16,7 +16,7 @@ public class CantaloupeJelly : FoodBase
 				Satiety = 10,
 				BuffType = ModContent.BuffType<CantaloupeJellyBuff>(),
 				BuffTime = new FoodDuration(4, 0, 0),
-				Name = "CantaloupeJellyBuff"
+				Name = "CantaloupeJellyBuff",
 			};
 		}
 	}
@@ -30,7 +30,7 @@ public class CantaloupeJelly : FoodBase
 		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
 			new Color(145, 49, 78),
 			new Color(255, 188, 66),
-			new Color(244, 139, 58)
+			new Color(244, 139, 58),
 		};
 
 		ItemID.Sets.IsFood[Type] = true;

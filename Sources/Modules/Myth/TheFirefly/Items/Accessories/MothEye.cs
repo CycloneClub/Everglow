@@ -106,7 +106,7 @@ class MothEyePlayer : ModPlayer
 						ModContent.ItemType<NavyThunder>(), // no MothEye effect
                             ModContent.ItemType<PhosphorescenceGun>(),
 						ModContent.ItemType<ScaleWingBlade>(),
-						ModContent.ItemType<ShadowWingBow>()
+						ModContent.ItemType<ShadowWingBow>(),
 					 };
 				if (Array.IndexOf(FireflyWeapon, item.type) != -1)
 					damage *= 1.05f;

@@ -24,7 +24,7 @@ internal class CentipedeHead : FireWormHead
 			CustomTexturePath = "Everglow/Myth/TheFirefly/NPCs/FireflyCentipede_Bestiary",
 			Position = new Vector2(40f, 24f),
 			PortraitPositionXOverride = 0f,
-			PortraitPositionYOverride = 12f
+			PortraitPositionYOverride = 12f,
 		};
 		NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifier);
 	}
@@ -56,7 +56,7 @@ internal class CentipedeHead : FireWormHead
 			BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Underground,
 			BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Caverns,
 
-			new FlavorTextBestiaryInfoElement(Language.GetTextValue("Mods.Everglow.Bestiary.Centipede.Flavor"))
+			new FlavorTextBestiaryInfoElement(Language.GetTextValue("Mods.Everglow.Bestiary.Centipede.Flavor")),
 		});
 	}
 	public override float SpawnChance(NPCSpawnInfo spawnInfo)
@@ -462,7 +462,7 @@ internal class CentipedeBody : FireWormBody
 		var value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 		{
 			// 将此NPC从Bestiary中隐藏起来，对于你只想要一个条目的多部分NPC很有用。
-			Hide = true
+			Hide = true,
 		};
 		NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, value);
 	}
@@ -588,7 +588,7 @@ internal class CentipedeTail : FireWormTail
 	{
 		var value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 		{
-			Hide = true
+			Hide = true,
 		};
 		NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, value);
 	}

@@ -18,7 +18,7 @@ public class StarterInventoryMEAC : ModPlayer
 		{
 			return new[]
 			{
-			new Item(ModContent.ItemType<VortexVanquisherItem>())
+			new Item(ModContent.ItemType<VortexVanquisherItem>()),
 			};
 		}
 		return new[]

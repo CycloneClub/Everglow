@@ -16,7 +16,7 @@ public class Durian : FoodBase
 				Satiety = 20,
 				BuffType = ModContent.BuffType<DurianBuff>(),
 				BuffTime = new FoodDuration(6, 0, 0),
-				Name = "DurianBuff"
+				Name = "DurianBuff",
 			};
 		}
 	}
@@ -29,7 +29,7 @@ public class Durian : FoodBase
 		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
 			new Color(175, 90, 0),
 			new Color(234, 195, 89),
-			new Color(99, 82, 0)
+			new Color(99, 82, 0),
 		};
 
 		ItemID.Sets.IsFood[Type] = true;

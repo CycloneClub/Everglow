@@ -16,7 +16,7 @@ public class StinkyTofu : FoodBase
 				Satiety = 15,
 				BuffType = ModContent.BuffType<StinkyTofuBuff>(),
 				BuffTime = new FoodDuration(5, 0, 0),
-				Name = "StinkyTofuBuff"
+				Name = "StinkyTofuBuff",
 			};
 		}
 	}
@@ -29,7 +29,7 @@ public class StinkyTofu : FoodBase
 		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
 			new Color(51, 38, 61),
 			new Color(130, 24, 29),
-			new Color(8, 6, 10)
+			new Color(8, 6, 10),
 		};
 
 		ItemID.Sets.IsFood[Type] = true;

@@ -198,7 +198,7 @@ public class TsunamiShark_missile : ModProjectile
 				Visible = true,
 				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
 				maxTime = Main.rand.Next(10, 22),
-				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0, Main.rand.NextFloat(6f, 12f) }
+				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0, Main.rand.NextFloat(6f, 12f) },
 			};
 			Ins.VFXManager.Add(wave);
 		}
@@ -213,7 +213,7 @@ public class TsunamiShark_missile : ModProjectile
 				Visible = true,
 				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
 				maxTime = Main.rand.Next(21, 32),
-				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0, Main.rand.NextFloat(6f, 12f) }
+				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0, Main.rand.NextFloat(6f, 12f) },
 			};
 			Ins.VFXManager.Add(wave);
 		}

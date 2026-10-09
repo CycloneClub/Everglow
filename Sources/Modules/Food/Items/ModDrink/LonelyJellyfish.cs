@@ -15,7 +15,7 @@ public class LonelyJellyfish : DrinkBase
 				Thirsty = false,
 				BuffType = ModContent.BuffType<LonelyJellyfishBuff>(),
 				BuffTime = new FoodDuration(0, 10, 0),
-				Name = "LonelyJellyfishBuff"
+				Name = "LonelyJellyfishBuff",
 			};
 		}
 	}
@@ -28,7 +28,7 @@ public class LonelyJellyfish : DrinkBase
 		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
 			new Color(193, 245, 255),
 			new Color(0, 96, 193),
-			new Color(112, 126, 216)
+			new Color(112, 126, 216),
 		};
 
 		ItemID.Sets.IsFood[Type] = true;

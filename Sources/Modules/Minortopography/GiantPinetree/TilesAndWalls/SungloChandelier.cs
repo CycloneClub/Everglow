@@ -80,6 +80,6 @@ public class SungloChandelier : ModTile, ITileFluentlyDrawn, ITileFlameData
 			flameRangeYMin = -1,
 			flameRangeYMax = 1,
 			flameRangeMultY = 0.35f,
-			flameColor = new Color(130, 130, 130, 0)
+			flameColor = new Color(130, 130, 130, 0),
 		};
 }

@@ -23,7 +23,7 @@ public class StrangeTuskStone1 : ModTile
 			16,
 			16,
 			16,
-			20
+			20,
 		};
 		TileObjectData.newTile.CoordinateWidth = 64;
 		TileObjectData.addTile(Type);

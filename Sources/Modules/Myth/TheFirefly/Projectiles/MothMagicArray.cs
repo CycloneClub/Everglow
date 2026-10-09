@@ -77,7 +77,7 @@ public class MothMagicArray : ModProjectile
 			R = (byte)(orig.R * (255 - Projectile.alpha) / 255f),
 			G = (byte)(orig.G * (255 - Projectile.alpha) / 255f),
 			B = (byte)(orig.B * (255 - Projectile.alpha) / 255f),
-			A = (byte)(orig.A * (255 - Projectile.alpha) / 255f)
+			A = (byte)(orig.A * (255 - Projectile.alpha) / 255f),
 		};
 		return color;
 	}

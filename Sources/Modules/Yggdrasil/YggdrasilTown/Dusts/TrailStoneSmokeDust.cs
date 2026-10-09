@@ -18,7 +18,7 @@ public class TrailStoneSmokeDust : ModDust
 				MaxTime = Main.rand.Next(37, 145) * dust.scale,
 				Scale = Main.rand.NextFloat(7f, 15f) * dust.scale,
 				Rotation = Main.rand.NextFloat(6.283f),
-				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 }
+				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
 			Ins.VFXManager.Add(somg);
 		}

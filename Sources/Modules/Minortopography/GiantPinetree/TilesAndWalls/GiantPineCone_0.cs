@@ -20,7 +20,7 @@ public class GiantPineCone_0 : ModTile
 			16,
 			16,
 			16,
-			16
+			16,
 		};
 		TileObjectData.newTile.CoordinateWidth = 16;
 		TileObjectData.newTile.StyleHorizontal = true;

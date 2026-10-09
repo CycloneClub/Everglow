@@ -16,7 +16,7 @@ public class Mangosteen : FoodBase
 				Satiety = 10,
 				BuffType = ModContent.BuffType<MangosteenBuff>(),
 				BuffTime = new FoodDuration(4, 0, 0),
-				Name = "MangosteenBuff"
+				Name = "MangosteenBuff",
 			};
 		}
 	}
@@ -29,7 +29,7 @@ public class Mangosteen : FoodBase
 		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
 			new Color(229, 181, 199),
 			new Color(255, 255, 255),
-			new Color(17, 0, 12)
+			new Color(17, 0, 12),
 		};
 
 		ItemID.Sets.IsFood[Type] = true;

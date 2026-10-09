@@ -16,7 +16,7 @@ public class WaterMelonJuice : DrinkBase
 				Thirsty = false,
 				BuffType = ModContent.BuffType<WaterMelonJuiceBuff>(),
 				BuffTime = new FoodDuration(0, 10, 0),
-				Name = "WaterMelonJuiceBuff"
+				Name = "WaterMelonJuiceBuff",
 			};
 		}
 	}
@@ -27,7 +27,7 @@ public class WaterMelonJuice : DrinkBase
 		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
 			new Color(183, 0, 9),
 			new Color(255, 175, 79),
-			new Color(255, 0, 12)
+			new Color(255, 0, 12),
 		};
 		ItemID.Sets.IsFood[Type] = true;
 	}

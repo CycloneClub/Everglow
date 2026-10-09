@@ -76,7 +76,7 @@ public struct Rotation
 	public readonly float XFilpAngle => _radian switch
 	{
 		< 0 => -MathHelper.Pi - _radian,
-		_ => MathHelper.Pi - _radian
+		_ => MathHelper.Pi - _radian,
 	};
 
 	/// <summary>

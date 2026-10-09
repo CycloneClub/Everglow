@@ -109,7 +109,7 @@ public class BloodLightCrystal : ModTile
 			Velocity = new Vector2(Main.rand.NextFloat(2.5f, 7.5f), 0).RotatedByRandom(6.283),
 			Active = true,
 			Visible = true,
-			Position = new Vector2(i * 16 + 8, j * 16 + 8)
+			Position = new Vector2(i * 16 + 8, j * 16 + 8),
 		};
 		Ins.VFXManager.Add(bc);
 	}

@@ -12,7 +12,7 @@ internal class TuskWorld : Subworld
 	public override bool ShouldSave => false;
 	public override List<GenPass> Tasks => new List<GenPass>()
 	{
-		new TuskGen.SubWorldTuskLandGenPass()
+		new TuskGen.SubWorldTuskLandGenPass(),
 	};
 	public override void DrawMenu(GameTime gameTime)
 	{

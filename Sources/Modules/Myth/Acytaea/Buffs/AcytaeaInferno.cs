@@ -43,7 +43,7 @@ public class AcytaeaInferno : ModBuff
 				Visible = true,
 				position = positionVFX - newVec * 4,
 				maxTime = Main.rand.Next(14, 26),
-				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.10f, 0.10f), Main.rand.NextFloat(8f, 11f) }
+				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.10f, 0.10f), Main.rand.NextFloat(8f, 11f) },
 			};
 			Ins.VFXManager.Add(acytaeaFlame);
 		}

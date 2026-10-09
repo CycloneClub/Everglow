@@ -15,7 +15,7 @@ public class PurpleHooter : DrinkBase
 				Thirsty = false,
 				BuffType = ModContent.BuffType<PurpleHooterBuff>(),
 				BuffTime = new FoodDuration(0, 10, 0),
-				Name = "PurpleHooterBuff"
+				Name = "PurpleHooterBuff",
 			};
 		}
 	}
@@ -26,7 +26,7 @@ public class PurpleHooter : DrinkBase
 		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
 			new Color(121, 26, 153),
 			new Color(35, 173, 188),
-			new Color(53, 22, 153)
+			new Color(53, 22, 153),
 		};
 
 		ItemID.Sets.IsFood[Type] = true;

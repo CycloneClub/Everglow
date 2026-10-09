@@ -16,7 +16,7 @@ public class Twilight_Stone_4x1 : ModTile
 		TileObjectData.newTile.Width = 4;
 		TileObjectData.newTile.CoordinateHeights = new int[]
 		{
-			18
+			18,
 		};
 		TileObjectData.newTile.StyleHorizontal = true;
 		TileObjectData.newTile.LavaDeath = false;

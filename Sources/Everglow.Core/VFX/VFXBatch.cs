@@ -56,7 +56,7 @@ public class VFXBatch : IDisposable
 			new VFX2D(position, color, new Vector2(0, 0)),
 			new VFX2D(position + new Vector2(tex.Width, 0), color, new Vector2(1, 0)),
 			new VFX2D(position + new Vector2(0, tex.Height), color, new Vector2(0, 1)),
-			new VFX2D(position + new Vector2(tex.Width, tex.Height), color, new Vector2(1, 1))
+			new VFX2D(position + new Vector2(tex.Width, tex.Height), color, new Vector2(1, 1)),
 		}, PrimitiveType.TriangleStrip);
 	}
 
@@ -81,7 +81,7 @@ public class VFXBatch : IDisposable
 			new VFX2D(position, color, new Vector2(x, y)),
 			new VFX2D(position + new Vector2(sourceRect.Width, 0), color, new Vector2(x + width, y)),
 			new VFX2D(position + new Vector2(0, sourceRect.Height), color, new Vector2(x, y + height)),
-			new VFX2D(position + new Vector2(sourceRect.Width, sourceRect.Height), color, new Vector2(x + width, y + height))
+			new VFX2D(position + new Vector2(sourceRect.Width, sourceRect.Height), color, new Vector2(x + width, y + height)),
 		}, PrimitiveType.TriangleStrip);
 	}
 
@@ -130,7 +130,7 @@ public class VFXBatch : IDisposable
 			new VFX2D(Vector2.Transform(topLeftPosition, matrix), color, topLeft),
 			new VFX2D(Vector2.Transform(topLeftPosition + new Vector2(sourceRect.Width, 0), matrix), color, topRight),
 			new VFX2D(Vector2.Transform(topLeftPosition + new Vector2(0, sourceRect.Height), matrix), color, bottomLeft),
-			new VFX2D(Vector2.Transform(topLeftPosition + new Vector2(sourceRect.Width, sourceRect.Height), matrix), color, bottomRight)
+			new VFX2D(Vector2.Transform(topLeftPosition + new Vector2(sourceRect.Width, sourceRect.Height), matrix), color, bottomRight),
 		}, PrimitiveType.TriangleStrip);
 	}
 
@@ -155,7 +155,7 @@ public class VFXBatch : IDisposable
 			new VFX2D(Vector2.Transform(position, matrix), color, new Vector2(x, y)),
 			new VFX2D(Vector2.Transform(position + new Vector2(sourceRect.Width, 0), matrix), color, new Vector2(x + width, y)),
 			new VFX2D(Vector2.Transform(position + new Vector2(0, sourceRect.Height), matrix), color, new Vector2(x, y + height)),
-			new VFX2D(Vector2.Transform(position + new Vector2(sourceRect.Width, sourceRect.Height), matrix), color, new Vector2(x + width, y + height))
+			new VFX2D(Vector2.Transform(position + new Vector2(sourceRect.Width, sourceRect.Height), matrix), color, new Vector2(x + width, y + height)),
 		}, PrimitiveType.TriangleStrip);
 	}
 
@@ -174,7 +174,7 @@ public class VFXBatch : IDisposable
 			new VFX2D(new Vector2(destinationRectangle.X, destinationRectangle.Y), color, Vector2.Zero),
 			new VFX2D(new Vector2(destinationRectangle.X + destinationRectangle.Width, destinationRectangle.Y), color, Vector2.UnitX),
 			new VFX2D(new Vector2(destinationRectangle.X, destinationRectangle.Y + destinationRectangle.Height), color, Vector2.UnitY),
-			new VFX2D(new Vector2(destinationRectangle.X + destinationRectangle.Width, destinationRectangle.Y + destinationRectangle.Height), color, Vector2.One)
+			new VFX2D(new Vector2(destinationRectangle.X + destinationRectangle.Width, destinationRectangle.Y + destinationRectangle.Height), color, Vector2.One),
 		}, PrimitiveType.TriangleStrip);
 	}
 
@@ -198,7 +198,7 @@ public class VFXBatch : IDisposable
 			new VFX2D(new Vector2(destinationRectangle.X, destinationRectangle.Y), color, new Vector2(x, y)),
 			new VFX2D(new Vector2(destinationRectangle.X + destinationRectangle.Width, destinationRectangle.Y), color, new Vector2(x + width, y)),
 			new VFX2D(new Vector2(destinationRectangle.X, destinationRectangle.Y + destinationRectangle.Height), color, new Vector2(x, y + height)),
-			new VFX2D(new Vector2(destinationRectangle.X + destinationRectangle.Width, destinationRectangle.Y + destinationRectangle.Height), color, new Vector2(x + width, y + height))
+			new VFX2D(new Vector2(destinationRectangle.X + destinationRectangle.Width, destinationRectangle.Y + destinationRectangle.Height), color, new Vector2(x + width, y + height)),
 		}, PrimitiveType.TriangleStrip);
 	}
 
@@ -243,7 +243,7 @@ public class VFXBatch : IDisposable
 			new VFX2D(Vector2.Transform(topLeftPosition, matrix), color, topLeft),
 			new VFX2D(Vector2.Transform(topLeftPosition + new Vector2(sourceRect.Width, 0), matrix), color, topRight),
 			new VFX2D(Vector2.Transform(topLeftPosition + new Vector2(0, sourceRect.Height), matrix), color, bottomLeft),
-			new VFX2D(Vector2.Transform(topLeftPosition + new Vector2(sourceRect.Width, sourceRect.Height), matrix), color, bottomRight)
+			new VFX2D(Vector2.Transform(topLeftPosition + new Vector2(sourceRect.Width, sourceRect.Height), matrix), color, bottomRight),
 		}, PrimitiveType.TriangleStrip);
 	}
 
@@ -390,7 +390,7 @@ public class VFXBatch : IDisposable
 	 {
 		new VertexElement(0, VertexElementFormat.Vector2, VertexElementUsage.Position, 0),
 		new VertexElement(8, VertexElementFormat.Color, VertexElementUsage.Color, 0),
-		new VertexElement(12, VertexElementFormat.Vector3, VertexElementUsage.TextureCoordinate, 0)
+		new VertexElement(12, VertexElementFormat.Vector3, VertexElementUsage.TextureCoordinate, 0),
 	 });
 		public Vector2 position;
 		public Color color;
@@ -508,7 +508,7 @@ public class VFXBatch : IDisposable
 				indexBuffer = new DynamicIndexBuffer(graphicsDevice, IndexElementSize.ThirtyTwoBits, maxIndices, BufferUsage.WriteOnly),
 				textures = new List<Texture2D>(),
 				sameTexture = new Queue<(int index, int vertex)>(),
-				graphicsDevice = graphicsDevice
+				graphicsDevice = graphicsDevice,
 			};
 			return instance;
 		}

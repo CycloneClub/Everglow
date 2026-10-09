@@ -16,7 +16,7 @@ public class WatermelonPlate : FoodBase
 				Satiety = 15,
 				BuffType = ModContent.BuffType<WatermelonPlateBuff>(),
 				BuffTime = new FoodDuration(6, 0, 0),
-				Name = "WatermelonPlateBuff"
+				Name = "WatermelonPlateBuff",
 			};
 		}
 	}
@@ -29,7 +29,7 @@ public class WatermelonPlate : FoodBase
 		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
 			new Color(108, 150, 12),
 			new Color(242, 18, 0),
-			new Color(255, 94, 81)
+			new Color(255, 94, 81),
 		};
 
 		ItemID.Sets.IsFood[Type] = true;

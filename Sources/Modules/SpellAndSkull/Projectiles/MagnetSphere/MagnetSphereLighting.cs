@@ -38,7 +38,7 @@ public class MagnetSphereLighting : ModProjectile, IWarpProjectile
 				Visible = true,
 				maxTime = Main.rand.Next(24, 72),
 				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.01f, 0.01f), Main.rand.NextFloat(1.6f, 2f) * mulVelocity },
-				position = Projectile.Center - vel * 3
+				position = Projectile.Center - vel * 3,
 			};
 			Ins.VFXManager.Add(me);
 		}
@@ -52,7 +52,7 @@ public class MagnetSphereLighting : ModProjectile, IWarpProjectile
 				Visible = true,
 				maxTime = Main.rand.Next(24, 72),
 				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.01f, 0.01f), Main.rand.NextFloat(1.6f, 2f) * mulVelocity },
-				position = Projectile.Center - vel * 3
+				position = Projectile.Center - vel * 3,
 			};
 			Ins.VFXManager.Add(me);
 		}

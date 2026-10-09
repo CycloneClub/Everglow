@@ -668,7 +668,7 @@ public class GoldShieldUIDrawer : ModSystem
 						source = value,
 						color = new Color(num5, num5, num5, a),
 						origin = heartTexture.Size() / 2f,
-						scale = new Vector2(num6)
+						scale = new Vector2(num6),
 					};
 					ResourceOverlayLoader.DrawResource(drawContext);
 				}

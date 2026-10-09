@@ -15,7 +15,7 @@ public class OrangeJuice : DrinkBase
 				Thirsty = false,
 				BuffType = ModContent.BuffType<OrangeJuiceBuff>(),
 				BuffTime = new FoodDuration(0, 10, 0),
-				Name = "OrangeJuiceBuff"
+				Name = "OrangeJuiceBuff",
 			};
 		}
 	}
@@ -28,7 +28,7 @@ public class OrangeJuice : DrinkBase
 		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
 			new Color(255, 140, 17),
 			new Color(255, 141, 66),
-			new Color(239, 119, 0)
+			new Color(239, 119, 0),
 		};
 
 		ItemID.Sets.IsFood[Type] = true;

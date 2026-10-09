@@ -13,7 +13,7 @@ public class PriorityQueue<T> where T : IComparable<T>, new()
 		m_top = 0;
 		m_heap = new List<T>
 		{
-			new T()
+			new T(),
 		};
 	}
 

@@ -16,7 +16,7 @@ public class CaramelPudding : FoodBase
 				Satiety = 10,
 				BuffType = ModContent.BuffType<CaramelPuddingBuff>(),
 				BuffTime = new FoodDuration(4, 0, 0),
-				Name = "CaramelPuddingBuff"
+				Name = "CaramelPuddingBuff",
 			};
 		}
 	}
@@ -29,7 +29,7 @@ public class CaramelPudding : FoodBase
 		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
 			new Color(188, 60, 71),
 			new Color(229, 159, 68),
-			new Color(244, 227, 193)
+			new Color(244, 227, 193),
 		};
 
 		ItemID.Sets.IsFood[Type] = true;

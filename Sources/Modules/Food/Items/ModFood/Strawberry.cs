@@ -16,7 +16,7 @@ public class Strawberry : FoodBase
 				Satiety = 7,
 				BuffType = ModContent.BuffType<StrawberryBuff>(),
 				BuffTime = new FoodDuration(4, 0, 0),
-				Name = "StrawberryBuff"
+				Name = "StrawberryBuff",
 			};
 		}
 	}
@@ -29,7 +29,7 @@ public class Strawberry : FoodBase
 		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
 			new Color(91, 13, 26),
 			new Color(255, 103, 61),
-			new Color(95, 188, 28)
+			new Color(95, 188, 28),
 		};
 
 		ItemID.Sets.IsFood[Type] = true;

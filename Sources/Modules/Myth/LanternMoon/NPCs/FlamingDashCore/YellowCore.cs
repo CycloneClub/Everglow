@@ -128,7 +128,7 @@ public class YellowCore : ModNPC
 		{
 			new VertexElement(0, VertexElementFormat.Vector2, VertexElementUsage.Position, 0),
 			new VertexElement(8, VertexElementFormat.Color, VertexElementUsage.Color, 0),
-			new VertexElement(12, VertexElementFormat.Vector3, VertexElementUsage.TextureCoordinate, 0)
+			new VertexElement(12, VertexElementFormat.Vector3, VertexElementUsage.TextureCoordinate, 0),
 		});
 		public Vector2 Position;
 		public Color Color;

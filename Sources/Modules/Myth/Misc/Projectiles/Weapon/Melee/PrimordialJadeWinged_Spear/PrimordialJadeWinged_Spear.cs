@@ -296,7 +296,7 @@ public class PrimordialJadeWinged_Spear : MeleeProj
 				Visible = true,
 				position = positionVFX,
 				maxTime = Main.rand.Next(17, 56),
-				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.03f, 0.03f), Main.rand.NextFloat(18f, 30f) }
+				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.03f, 0.03f), Main.rand.NextFloat(18f, 30f) },
 			};
 			Ins.VFXManager.Add(filthy);
 			var filthy2 = new FilthyLucreFlameDust
@@ -306,7 +306,7 @@ public class PrimordialJadeWinged_Spear : MeleeProj
 				Visible = true,
 				position = positionVFX,
 				maxTime = Main.rand.Next(17, 56),
-				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.1f, 0.1f), Main.rand.NextFloat(18f, 30f) }
+				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.1f, 0.1f), Main.rand.NextFloat(18f, 30f) },
 			};
 			Ins.VFXManager.Add(filthy2);
 		}
@@ -338,7 +338,7 @@ public class PrimordialJadeWinged_Spear : MeleeProj
 				rotation2 = Main.rand.NextFloat(6.283f),
 				omega = Main.rand.NextFloat(-30f, 30f),
 				phi = Main.rand.NextFloat(6.283f),
-				ai = new float[] { Main.rand.NextFloat(0f, 0.2f), Main.rand.NextFloat(0.2f, 0.5f) }
+				ai = new float[] { Main.rand.NextFloat(0f, 0.2f), Main.rand.NextFloat(0.2f, 0.5f) },
 			};
 			Ins.VFXManager.Add(smog);
 		}

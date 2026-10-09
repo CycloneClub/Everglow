@@ -42,7 +42,7 @@ public class HeatproofDresser : ModTile
 			TileID.Boulder,
 			TileID.BouncyBoulder,
 			TileID.LifeCrystalBoulder,
-			TileID.RollingCactus
+			TileID.RollingCactus,
 		};
 		TileObjectData.newTile.LavaDeath = false;
 		TileObjectData.addTile(Type);

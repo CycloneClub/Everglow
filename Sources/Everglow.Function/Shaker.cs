@@ -59,7 +59,7 @@ public class ShakerInfo
 			tickTimer = reader.ReadInt32(),
 			maxTick = reader.ReadInt32(),
 			propagationDelayTimer = reader.ReadInt32(),
-			maxPropagationTime = reader.ReadInt32()
+			maxPropagationTime = reader.ReadInt32(),
 		};
 	}
 	//调用此方法前写入标识头，便于根据标识头(FullName)调用解析
@@ -142,7 +142,7 @@ public class UndirectedShakerInfo : ShakerInfo
 			tickTimer = reader.ReadInt32(),
 			maxTick = reader.ReadInt32(),
 			propagationDelayTimer = reader.ReadInt32(),
-			maxPropagationTime = reader.ReadInt32()
+			maxPropagationTime = reader.ReadInt32(),
 		};
 	}
 }

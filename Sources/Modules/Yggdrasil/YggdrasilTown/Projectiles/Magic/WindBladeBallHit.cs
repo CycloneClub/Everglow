@@ -39,7 +39,7 @@ public class WindBladeBallHit : ModProjectile
 				MaxTime = Main.rand.Next(37, 145) * Projectile.ai[0] / 10f,
 				Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(4f, 17.0f)) * Projectile.ai[0] / 10f,
 				Rotation = Main.rand.NextFloat(6.283f),
-				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.03f, 0.03f) }
+				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.03f, 0.03f) },
 			};
 			Ins.VFXManager.Add(spark);
 		}

@@ -37,7 +37,7 @@ public class BalloonPickSoundModify : SoundModifyGlobal
 	{
 		Volume = 1f,
 		PitchRange = (-0.1f, 0.1f),
-		MaxInstances = 0
+		MaxInstances = 0,
 	};
 
 	public override string TxtFileName() => "BalloonSoundID";
@@ -49,7 +49,7 @@ public class BonePickSoundModify : SoundModifyGlobal
 	{
 		Volume = 1f,
 		PitchRange = (-0.1f, 0.1f),
-		MaxInstances = 0
+		MaxInstances = 0,
 	};
 
 	public override string TxtFileName() => "BoneSoundID";
@@ -61,7 +61,7 @@ public class DustPickSoundModify : SoundModifyGlobal
 	{
 		Volume = 1f,
 		PitchRange = (-0.1f, 0.1f),
-		MaxInstances = 0
+		MaxInstances = 0,
 	};
 
 	public override string TxtFileName() => "DustSoundID";
@@ -73,7 +73,7 @@ public class FurPickSoundModify : SoundModifyGlobal
 	{
 		Volume = 1f,
 		PitchRange = (-0.1f, 0.1f),
-		MaxInstances = 0
+		MaxInstances = 0,
 	};
 
 	public override string TxtFileName() => "FurSoundID";
@@ -85,7 +85,7 @@ public class GlassPickSoundModify : SoundModifyGlobal
 	{
 		Volume = 1f,
 		PitchRange = (-0.1f, 0.3f),
-		MaxInstances = 0
+		MaxInstances = 0,
 	};
 
 	public override string TxtFileName() => "GlassSoundID";
@@ -97,7 +97,7 @@ public class MagicPickSoundModify : SoundModifyGlobal
 	{
 		Volume = 1f,
 		PitchRange = (-0.1f, 0.1f),
-		MaxInstances = 0
+		MaxInstances = 0,
 	};
 
 	public override string TxtFileName() => "MagicSoundID";
@@ -109,7 +109,7 @@ public class MeatPickSoundModify : SoundModifyGlobal
 	{
 		Volume = 1f,
 		PitchRange = (-0.1f, 0.1f),
-		MaxInstances = 0
+		MaxInstances = 0,
 	};
 
 	public override string TxtFileName() => "MeatSoundID";
@@ -121,7 +121,7 @@ public class MetalPickSoundModify : SoundModifyGlobal
 	{
 		Volume = 1f,
 		PitchRange = (-0.3f, 0.5f),
-		MaxInstances = 0
+		MaxInstances = 0,
 	};
 
 	public override string TxtFileName() => "MetalSoundID";
@@ -133,7 +133,7 @@ public class PaperPickSoundModify : SoundModifyGlobal
 	{
 		Volume = 1f,
 		PitchRange = (-0.1f, 0.1f),
-		MaxInstances = 0
+		MaxInstances = 0,
 	};
 
 	public override string TxtFileName() => "PaperSoundID";
@@ -145,7 +145,7 @@ public class PotionPickSoundModify : SoundModifyGlobal
 	{
 		Volume = 0.8f,
 		PitchRange = (-0.3f, 0.3f),
-		MaxInstances = 0
+		MaxInstances = 0,
 	};
 
 	public override string TxtFileName() => "PotionSoundID";
@@ -157,7 +157,7 @@ public class SilkPickSoundModify : SoundModifyGlobal
 	{
 		Volume = 1f,
 		PitchRange = (-0.1f, 0.1f),
-		MaxInstances = 0
+		MaxInstances = 0,
 	};
 
 	public override string TxtFileName() => "SilkSoundID";
@@ -169,7 +169,7 @@ public class SlimePickSoundModify : SoundModifyGlobal
 	{
 		Volume = 1f,
 		PitchRange = (-0.1f, 0.1f),
-		MaxInstances = 0
+		MaxInstances = 0,
 	};
 
 	public override string TxtFileName() => "SlimeSoundID";
@@ -181,7 +181,7 @@ public class StonePickSoundModify : SoundModifyGlobal
 	{
 		Volume = 1f,
 		PitchRange = (-0.1f, 0.1f),
-		MaxInstances = 0
+		MaxInstances = 0,
 	};
 
 	public override string TxtFileName() => "StoneSoundID";
@@ -193,7 +193,7 @@ public class WaterBucketPickSoundModify : SoundModifyGlobal
 	{
 		Volume = 0.8f,
 		PitchRange = (-0.2f, 0.1f),
-		MaxInstances = 2
+		MaxInstances = 2,
 	};
 
 	public override string TxtFileName() => "WaterBucketSoundID";
@@ -204,7 +204,7 @@ public class LavaBucketPickSoundModify : SoundModifyGlobal
 	{
 		Volume = 0.8f,
 		PitchRange = (-0.2f, 0.1f),
-		MaxInstances = 2
+		MaxInstances = 2,
 	};
 
 	public override string TxtFileName() => "LavaBucketSoundID";
@@ -216,7 +216,7 @@ public class WoodPickSoundModify : SoundModifyGlobal
 	{
 		Volume = 0.8f,
 		PitchVariance = 0.4f,
-		MaxInstances = 0
+		MaxInstances = 0,
 	};
 
 	public override string TxtFileName() => "WoodSoundID";

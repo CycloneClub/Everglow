@@ -16,7 +16,7 @@ public class BlackFrenLarge : ModTile, ITileFluentlyDrawn
 		TileObjectData.newTile.CoordinateHeights = new int[]
 		{
 			16,
-			18
+			18,
 		};
 		TileObjectData.newTile.CoordinateWidth = 16;
 		TileObjectData.newTile.StyleHorizontal = true;

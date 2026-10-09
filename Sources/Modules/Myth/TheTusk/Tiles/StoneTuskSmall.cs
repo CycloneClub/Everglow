@@ -15,7 +15,7 @@ public class StoneTuskSmall : ModTile
 		TileObjectData.newTile.CoordinateHeights = new int[]
 		{
 			16,
-			18
+			18,
 		};
 		TileObjectData.newTile.CoordinateWidth = 24;
 		TileObjectData.addTile(Type);
