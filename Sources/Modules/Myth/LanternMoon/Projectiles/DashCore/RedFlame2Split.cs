@@ -44,7 +44,6 @@ internal class RedFlame2Split : ModProjectile
 			Projectile.velocity *= 0.995f;
 		}
 
-		;
 		if (Projectile.timeLeft < 60f)
 		{
 			ka *= 0.97f;

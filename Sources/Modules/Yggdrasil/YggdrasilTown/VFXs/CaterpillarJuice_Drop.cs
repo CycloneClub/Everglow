@@ -67,7 +67,6 @@ public class CaterpillarJuice_Drop : Visual
 		float pocession = Timer / MaxTime * 0.6f;
 		Vector2 toCorner = new Vector2(0, Scale).RotatedBy(Rotation);
 		Color lightColor = Lighting.GetColor(Position.ToTileCoordinates());
-		;
 		List<Vertex2D> bars = new List<Vertex2D>()
 		{
 			new Vertex2D(Position + Velocity + toCorner, lightColor, new Vector3(0, 0, pocession)),

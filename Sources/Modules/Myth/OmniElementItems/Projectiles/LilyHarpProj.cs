@@ -311,7 +311,6 @@ internal class LilyHarpProj : ModProjectile// , IWarpProjectile
 			se = SpriteEffects.None;
 		}
 		Main.spriteBatch.Draw(tx, Projectile.Center - Main.screenPosition, null, Lighting.GetColor((int)Projectile.Center.X / 16, (int)Projectile.Center.Y / 16), AddRot, tx.Size() / 2f, 1, se, 0);
-		;
 		return false;
 	}
 

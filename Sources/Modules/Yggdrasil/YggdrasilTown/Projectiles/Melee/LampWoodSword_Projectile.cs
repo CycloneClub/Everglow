@@ -29,7 +29,6 @@ public class LampWoodSword_Projectile : MeleeProj
 		maxAttackType = 0;
 		maxSlashTrailLength = 20;
 		shaderType = Commons.MEAC.Enums.MeleeTrailShaderType.ArcBladeTransparentedByZ;
-		;
 		autoEnd = false;
 	}
 

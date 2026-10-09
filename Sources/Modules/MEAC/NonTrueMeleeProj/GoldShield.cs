@@ -725,7 +725,6 @@ public class GoldShieldUIDrawer : ModSystem
 			ResourceDrawSettings defaultResourceDrawSettings = default;
 			defaultResourceDrawSettings.StatsSnapshot = preparedSnapshot;
 			defaultResourceDrawSettings.DisplaySet = Displayset;
-			;
 
 			Color color = new Color(Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor);
 

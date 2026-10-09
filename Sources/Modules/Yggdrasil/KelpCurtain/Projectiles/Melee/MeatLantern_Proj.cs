@@ -12,7 +12,6 @@ public class MeatLantern_Proj : MeleeProj
 		maxSlashTrailLength = 20;
 		longHandle = true;
 		shaderType = Commons.MEAC.Enums.MeleeTrailShaderType.ArcBladeTransparentedByZ;
-		;
 		autoEnd = false;
 		canLongLeftClick = true;
 	}
