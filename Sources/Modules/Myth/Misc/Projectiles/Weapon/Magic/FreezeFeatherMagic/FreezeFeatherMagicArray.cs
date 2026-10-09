@@ -166,7 +166,7 @@ internal class FreezeFeatherMagicArray : VisualProjectile
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);
 	}
 }
-class IceFeatherOwner : ModPlayer
+internal class IceFeatherOwner : ModPlayer
 {
 	public bool HasFreezeWing = false;
 	public override void PostUpdateMiscEffects()

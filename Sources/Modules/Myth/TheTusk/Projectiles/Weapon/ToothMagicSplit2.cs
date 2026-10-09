@@ -27,8 +27,8 @@ public class ToothMagicSplit2 : ModProjectile
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 45;
 	}
-	int addi = 0;
-	int MaxAdd = -1;
+	private int addi = 0;
+	private int MaxAdd = -1;
 	public override void AI()
 	{
 		Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X);
@@ -126,8 +126,8 @@ public class ToothMagicSplit2 : ModProjectile
 			Projectile.velocity = Projectile.velocity.RotatedBy(Projectile.velocity.Length() / 100f * (Projectile.whoAmI % 2 - 0.5f));
 		}
 	}
-	int Tokill = -1;
-	float wid = -1;
+	private int Tokill = -1;
+	private float wid = -1;
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
 		Projectile.velocity = Projectile.oldVelocity;
@@ -149,11 +149,11 @@ public class ToothMagicSplit2 : ModProjectile
 		Projectile.ignoreWater = true;
 		Projectile.aiStyle = -1;
 	}
-	Vector2 FirstVel = Vector2.Zero;
-	int TrueL = 1;
-	Vector2 ovel = Vector2.One;
-	float DelX = -1;
-	bool[] HasBeenHit = new bool[200];
+	private Vector2 FirstVel = Vector2.Zero;
+	private int TrueL = 1;
+	private Vector2 ovel = Vector2.One;
+	private float DelX = -1;
+	private bool[] HasBeenHit = new bool[200];
 	public override void PostDraw(Color lightColor)
 	{
 

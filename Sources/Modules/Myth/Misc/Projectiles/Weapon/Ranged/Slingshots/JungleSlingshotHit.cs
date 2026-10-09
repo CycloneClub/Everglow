@@ -1,6 +1,6 @@
 namespace Everglow.Myth.Misc.Projectiles.Weapon.Ranged.Slingshots;
 
-class JungleSlingshotHit : ModProjectile
+internal class JungleSlingshotHit : ModProjectile
 {
 	public override void SetDefaults()
 	{

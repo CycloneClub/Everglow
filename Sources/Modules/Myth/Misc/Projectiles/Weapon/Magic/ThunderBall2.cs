@@ -22,7 +22,7 @@ public class ThunderBall2 : ModProjectile
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 60;
 	}
-	int Tokill = -1;
+	private int Tokill = -1;
 	public override void AI()
 	{
 		Projectile.velocity = Projectile.velocity.RotatedBy(Main.rand.NextFloat(Main.rand.NextFloat(-10f / Projectile.timeLeft, 0f), Main.rand.NextFloat(0f, 10f / Projectile.timeLeft)));

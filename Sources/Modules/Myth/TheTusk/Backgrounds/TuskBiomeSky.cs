@@ -90,7 +90,7 @@ public class TuskBiomeSky : CustomSky
 			}
 		}
 	}
-	List<Rock> rocks = new List<Rock>();
+	private List<Rock> rocks = new List<Rock>();
 	private static List<RedLightning> lightnings = new();
 
 	private void CreateAndDrawLightning(Vector3 cloudCenter)

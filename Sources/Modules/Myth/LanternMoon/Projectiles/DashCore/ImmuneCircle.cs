@@ -3,7 +3,7 @@ using Terraria;
 
 namespace Everglow.Myth.LanternMoon.Projectiles.DashCore;
 
-class ImmuneCircle : ModProjectile
+internal class ImmuneCircle : ModProjectile
 {
 	public override void SetDefaults()
 	{
@@ -23,7 +23,7 @@ class ImmuneCircle : ModProjectile
 	{
 		return new Color(0, 0, 0, 0);
 	}
-	float ka = 1;
+	private float ka = 1;
 	public override void AI()
 	{
 		if (Projectile.timeLeft < 60f)
@@ -95,15 +95,15 @@ class ImmuneCircle : ModProjectile
 		color0.A = (byte)(color0.A * 0.94f + Aimcolor.A * 0.06f);
 		kb *= 0.97f;
 	}
-	Color color0 = new Color(0, 0, 0);
-	Color Aimcolor = new Color(0, 0, 0);
-	float kb = 1;
+	private Color color0 = new Color(0, 0, 0);
+	private Color Aimcolor = new Color(0, 0, 0);
+	private float kb = 1;
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;
 	}
-	float CirR0 = 0;
-	float CirPro0 = 0;
+	private float CirR0 = 0;
+	private float CirPro0 = 0;
 	public override void PostDraw(Color lightColor)
 	{
 		CirR0 += 0.007f;

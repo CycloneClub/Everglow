@@ -64,8 +64,8 @@ public class FaelanternProj : ModProjectile
 		}
 	}
 
-	int timer = 0;
-	Projectile Fae;
+	private int timer = 0;
+	private Projectile Fae;
 	public override void AI()
 	{
 

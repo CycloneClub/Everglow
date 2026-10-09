@@ -21,7 +21,7 @@ public class VortexVanquisher2 : ModProjectile
 		Projectile.timeLeft = 15;
 		Projectile.tileCollide = false;
 	}
-	Vector2 mainVec = Vector2.One;
+	private Vector2 mainVec = Vector2.One;
 	public override void AI()
 	{
 		Lighting.AddLight(Projectile.Center, 0.9f, 0.6f, 0f);

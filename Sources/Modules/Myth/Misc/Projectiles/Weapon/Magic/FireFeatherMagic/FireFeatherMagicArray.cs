@@ -166,7 +166,7 @@ internal class FireFeatherMagicArray : VisualProjectile
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);
 	}
 }
-class FireFeatherOwner : ModPlayer
+internal class FireFeatherOwner : ModPlayer
 {
 	public bool HasFlameWing = false;
 	public override void PostUpdateMiscEffects()

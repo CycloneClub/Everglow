@@ -21,7 +21,7 @@ public class BoneFeather : StickNPCProjectile
 		Projectile.localNPCHitCooldown = 2;
 	}
 	internal int timeTokill = -1;
-	ModProjectile MagicArray = null;
+	private ModProjectile MagicArray = null;
 	public override void OnSpawn(IEntitySource source)
 	{
 		foreach (Projectile projectile in Main.projectile)

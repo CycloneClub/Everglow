@@ -3,7 +3,7 @@ using Terraria;
 
 namespace Everglow.Myth.LanternMoon.Projectiles.DashCore;
 
-class BlueFlame0LittleSoon : ModProjectile
+internal class BlueFlame0LittleSoon : ModProjectile
 {
 	public override void SetDefaults()
 	{
@@ -26,7 +26,7 @@ class BlueFlame0LittleSoon : ModProjectile
 	{
 		return new Color(0, 0, 0, 0);
 	}
-	float ka = 0.5f;
+	private float ka = 0.5f;
 	public override void AI()
 	{
 		Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X);
@@ -57,15 +57,15 @@ class BlueFlame0LittleSoon : ModProjectile
 		}
 		kb *= 0.97f;
 	}
-	Color color0 = new Color(0, 131, 255);
-	Color Aimcolor = new Color(0, 131, 255);
-	Color[] ProjOldColor = new Color[70];
-	float kb = 1;
+	private Color color0 = new Color(0, 131, 255);
+	private Color Aimcolor = new Color(0, 131, 255);
+	private Color[] ProjOldColor = new Color[70];
+	private float kb = 1;
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;
 	}
-	int TrueL = 1;
+	private int TrueL = 1;
 	public override void PostDraw(Color lightColor)
 	{
 

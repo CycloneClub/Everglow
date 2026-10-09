@@ -57,9 +57,9 @@ public class GreenCore : ModNPC
 		NPC.color.B = (byte)(NPC.color.B * 0.94f + Aimcolor.B * 0.06f);
 		NPC.color.A = (byte)(NPC.color.A * 0.94f + Aimcolor.A * 0.06f);
 	}
-	float x = 0;
-	float Sca = 0;
-	Color Aimcolor = new Color(0, 255, 17);
+	private float x = 0;
+	private float Sca = 0;
+	private Color Aimcolor = new Color(0, 255, 17);
 	public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
 		x += 0.01f;

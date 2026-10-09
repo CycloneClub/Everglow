@@ -5,7 +5,7 @@ using Terraria.Audio;
 
 namespace Everglow.Myth.LanternMoon.Projectiles.DashCore;
 
-class GreenFlame0Split : ModProjectile
+internal class GreenFlame0Split : ModProjectile
 {
 	public override void SetDefaults()
 	{
@@ -27,7 +27,7 @@ class GreenFlame0Split : ModProjectile
 	{
 		return new Color(0, 0, 0, 0);
 	}
-	float ka = 1;
+	private float ka = 1;
 	public override void AI()
 	{
 		Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X);
@@ -68,15 +68,15 @@ class GreenFlame0Split : ModProjectile
 		}
 		kb *= 0.97f;
 	}
-	Color color0 = new Color(0, 255, 17);
-	Color Aimcolor = new Color(0, 255, 17);
-	Color[] ProjOldColor = new Color[70];
-	float kb = 1;
+	private Color color0 = new Color(0, 255, 17);
+	private Color Aimcolor = new Color(0, 255, 17);
+	private Color[] ProjOldColor = new Color[70];
+	private float kb = 1;
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;
 	}
-	int TrueL = 1;
+	private int TrueL = 1;
 	public override void PostDraw(Color lightColor)
 	{
 		var texture = (Texture2D)ModContent.Request<Texture2D>(Texture);

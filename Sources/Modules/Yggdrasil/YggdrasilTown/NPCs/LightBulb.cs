@@ -82,7 +82,7 @@ public class LightBulb : ModNPC
 	{
 		State = (int)NPCState.Sleep;
 	}
-	int State;
+	private int State;
 
 	private enum NPCState
 	{

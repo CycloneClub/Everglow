@@ -1,6 +1,6 @@
 namespace Everglow.Myth.Misc.Projectiles.Weapon.Ranged.Slingshots;
 
-class KSSlingshotHitPink : ModProjectile
+internal class KSSlingshotHitPink : ModProjectile
 {
 	public override void SetDefaults()
 	{
@@ -24,7 +24,7 @@ class KSSlingshotHitPink : ModProjectile
 		return false;
 	}
 	private Effect ef;
-	float radius = 0;
+	private float radius = 0;
 	public override void PostDraw(Color lightColor)
 	{
 		Main.spriteBatch.End();

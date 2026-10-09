@@ -164,7 +164,7 @@ internal class BoneFeatherMagicArray : VisualProjectile
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);
 	}
 }
-class BoneFeatherOwner : ModPlayer
+internal class BoneFeatherOwner : ModPlayer
 {
 	public bool HasBoneWing = false;
 	public override void PostUpdateMiscEffects()

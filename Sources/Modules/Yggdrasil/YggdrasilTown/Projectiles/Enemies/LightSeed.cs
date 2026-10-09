@@ -17,9 +17,9 @@ public class LightSeed : ModProjectile
 		Projectile.tileCollide = true;
 		Projectile.timeLeft = 150;
 	}
-	Vector2 Point = Vector2.Zero;
-	float x;
-	float k;
+	private Vector2 Point = Vector2.Zero;
+	private float x;
+	private float k;
 	public override void AI()
 	{
 		if (Projectile.timeLeft >= 140)

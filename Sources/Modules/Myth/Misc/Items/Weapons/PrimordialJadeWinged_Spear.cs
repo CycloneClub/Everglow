@@ -40,7 +40,7 @@ public class PrimordialJadeWinged_Spear : ModItem
 		Item.useAnimation = (int)(18f / player.meleeSpeed);
 		return player.ownedProjectileCounts[Item.shoot] < 1;
 	}
-	bool CanDown;
+	private bool CanDown;
 	public override void UpdateInventory(Player player)
 	{
 		if (player.mount.Active)

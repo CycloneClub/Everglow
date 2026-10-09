@@ -6,7 +6,7 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 
 public class GlowingButterfly : ModProjectile
 {
-	FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
+	private FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
 	public override void SetStaticDefaults()
 	{
 		Main.projFrames[Projectile.type] = 6;

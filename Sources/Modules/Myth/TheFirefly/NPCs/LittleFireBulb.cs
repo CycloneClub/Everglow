@@ -109,7 +109,7 @@ public class LittleFireBulb : ModNPC
 	//    }
 	//    return 2f;
 	// }
-	int HitCount = 0;
+	private int HitCount = 0;
 	public override void HitEffect(NPC.HitInfo hit)
 	{
 		if (NPC.life <= 0)

@@ -6,7 +6,7 @@ namespace Everglow.Myth.TheFirefly.Buffs;
 public class ShadowPotionBuff : ModBuff
 {
 	internal int LightTime = 0;
-	Player player = Main.LocalPlayer;
+	private Player player = Main.LocalPlayer;
 	public override void SetStaticDefaults()
 	{
 		Main.buffNoSave[Type] = true;
