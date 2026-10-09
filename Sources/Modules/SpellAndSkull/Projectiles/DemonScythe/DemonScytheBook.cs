@@ -3,7 +3,7 @@ using Terraria.Audio;
 
 namespace Everglow.SpellAndSkull.Projectiles.DemonScythe;
 
-internal class DemonScytheBook : MagicBookProjectile//
+internal class DemonScytheBook : MagicBookProjectile
 {
 	public override void SetDef()
 	{
