@@ -1,4 +1,5 @@
 using System.Reflection;
+using System.Xml.Linq;
 using Microsoft.Xna.Framework;
 using Everglow.Commons.Mechanics.Events;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Abstractions;
@@ -10,6 +11,7 @@ using Everglow.Yggdrasil.YggdrasilTown.Events;
 using SubworldLibrary;
 using Terraria;
 using Terraria.ID;
+using Terraria.GameContent.UI.Chat;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
@@ -23,11 +25,37 @@ public class DrunkenMinerInvasionTest
 	private Subworld? oldWorld;
 	private int oldMode;
 	private bool oldDay;
+	private IChatMonitor oldChatMonitor = null!;
+	private readonly RecordingChatMonitor chatMonitor = new();
 	private readonly EventSystem system = new();
 	private readonly EventGlobalNPC hook = new();
 	private readonly List<WorldObjectiveBase> objectives = [];
 	private DrunkenMinerInvasion oldInvasion = null!;
 	private IReadOnlyList<DrunkenMinerInvasion> oldInvasions = null!;
+
+	[ClassInitialize]
+	public static void InitializeChatDependencies(TestContext context)
+	{
+		// Main.NewText also calls SoundEngine, whose legacy entry point references tML's log4net.
+		// Resolve the existing installation just as the repository build does; do not initialize audio.
+		var directory = new DirectoryInfo(Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", "..")));
+		for (int depth = 0; directory is not null && depth <= 5; depth++, directory = directory.Parent)
+		{
+			string targets = Path.Combine(directory.FullName, "tModLoader.targets");
+			if (!File.Exists(targets))
+			{
+				continue;
+			}
+			string import = XDocument.Load(targets).Descendants()
+				.Single(element => element.Name.LocalName == "Import").Attribute("Project")!.Value;
+			import = import.Replace("$(MSBuildThisFileDirectory)", directory.FullName + Path.DirectorySeparatorChar);
+			string installation = Path.GetDirectoryName(Path.GetFullPath(import, directory.FullName))!;
+			string loggingAssembly = Directory.GetFiles(Path.Combine(installation, "Libraries", "log4net"), "log4net.dll", SearchOption.AllDirectories).Single();
+			Assembly.LoadFrom(loggingAssembly);
+			return;
+		}
+		Assert.Fail("Cannot locate the tModLoader.targets required by the repository build.");
+	}
 
 	[TestInitialize]
 	public void Initialize()
@@ -35,6 +63,9 @@ public class DrunkenMinerInvasionTest
 		Program.SavePath = string.Empty;
 		oldMode = Main.netMode;
 		oldDay = Main.dayTime;
+		oldChatMonitor = Main.chatMonitor;
+		Main.chatMonitor = chatMonitor;
+		chatMonitor.Clear();
 		oldInvasion = ContentInstance<DrunkenMinerInvasion>.Instance;
 		oldInvasions = ContentInstance<DrunkenMinerInvasion>.Instances;
 		Main.dayTime = true;
@@ -55,8 +86,74 @@ public class DrunkenMinerInvasionTest
 		system.Unload();
 		Main.netMode = oldMode;
 		Main.dayTime = oldDay;
+		Main.chatMonitor = oldChatMonitor;
 		SetInvasion(oldInvasion, oldInvasions);
 		CurrentWorld.SetValue(null, oldWorld);
+	}
+
+	[TestMethod]
+	public void ActivationAnnouncesOnceAndRestoringStateDoesNotAnnounce()
+	{
+		var invasion = CreateInvasion();
+		Assert.IsTrue(EventSystem.Activate(invasion));
+		Assert.HasCount(1, chatMonitor.Messages);
+		Assert.AreEqual(new Color(175, 75, 255), chatMonitor.Messages[0].Color);
+		Assert.IsFalse(invasion.IsBackground);
+
+		Assert.IsFalse(EventSystem.Activate(invasion));
+		Assert.HasCount(1, chatMonitor.Messages);
+
+		var tag = new TagCompound();
+		system.SaveWorldData(tag);
+		system.LoadWorldData(tag);
+		Assert.HasCount(1, chatMonitor.Messages);
+
+		using var stream = new MemoryStream();
+		using var writer = new BinaryWriter(stream);
+		system.NetSend(writer);
+		Main.netMode = NetmodeID.MultiplayerClient;
+		stream.Position = 0;
+		system.NetReceive(new BinaryReader(stream));
+		Assert.IsTrue(invasion.Active);
+		Assert.HasCount(1, chatMonitor.Messages);
+	}
+
+	[TestMethod]
+	public void VictoryAnnouncesOnceButStoppingAndRestoringDoNot()
+	{
+		var invasion = CreateActiveInvasion();
+		chatMonitor.Clear();
+		for (int i = 0; i < invasion.TargetCount; i++)
+		{
+			var enemy = CreateEnemy();
+			TrackEnemy(invasion, enemy);
+			hook.OnKill(enemy);
+			hook.OnKill(enemy);
+			Assert.HasCount(i == invasion.TargetCount - 1 ? 1 : 0, chatMonitor.Messages);
+		}
+		Assert.IsTrue(invasion.Downed);
+		Assert.IsFalse(invasion.Active);
+		Assert.AreEqual("Mods.Everglow.Events.DrunkenMinerInvasion.EndMessage", chatMonitor.Messages[0].Text);
+		Assert.AreEqual(new Color(175, 75, 255), chatMonitor.Messages[0].Color);
+		chatMonitor.Clear();
+
+		var tag = new TagCompound();
+		system.SaveWorldData(tag);
+		system.LoadWorldData(tag);
+		using var stream = new MemoryStream();
+		using var writer = new BinaryWriter(stream);
+		system.NetSend(writer);
+		Main.netMode = NetmodeID.MultiplayerClient;
+		stream.Position = 0;
+		system.NetReceive(new BinaryReader(stream));
+		Assert.HasCount(0, chatMonitor.Messages);
+
+		Main.netMode = NetmodeID.SinglePlayer;
+		Assert.IsTrue(EventSystem.Activate(invasion));
+		chatMonitor.Clear();
+		EventSystem.Deactivate(invasion);
+		system.ClearWorld();
+		Assert.HasCount(0, chatMonitor.Messages);
 	}
 
 	[TestMethod]
@@ -561,6 +658,37 @@ public class DrunkenMinerInvasionTest
 		send(writer);
 		stream.Position = 0;
 		receive(new BinaryReader(stream));
+	}
+
+	private sealed class RecordingChatMonitor : IChatMonitor
+	{
+		public readonly List<(string Text, Color Color)> Messages = [];
+
+		public void NewText(string newText, byte R = 255, byte G = 255, byte B = 255) => Messages.Add((newText, new Color(R, G, B)));
+
+		public void NewTextMultiline(string text, bool force = false, Color c = default, int WidthLimit = -1) => Messages.Add((text, c));
+
+		public void Clear() => Messages.Clear();
+
+		public void DrawChat(bool drawingPlayerChat)
+		{
+		}
+
+		public void Update()
+		{
+		}
+
+		public void Offset(int linesOffset)
+		{
+		}
+
+		public void ResetOffset()
+		{
+		}
+
+		public void OnResolutionChange()
+		{
+		}
 	}
 
 	private sealed class TestMod : Mod
