@@ -233,7 +233,7 @@ public class FoodModPlayer : ModPlayer
 			CurrentSatiety = 0;
 			StarvationCounter++;
 
-			#region Set satiety level
+			// Set satiety level
 			if (StarvationCounter > FoodUtils.GetFrames(0, 15, 0, 0)) // starving
 			{
 				SatietyLevel = -3;
@@ -250,13 +250,12 @@ public class FoodModPlayer : ModPlayer
 			{
 				SatietyLevel = 0;
 			}
-			#endregion
 		}
 		else
 		{
 			StarvationCounter = 0;
 
-			#region Set satiety level
+			// Set satiety level
 			if (CurrentSatiety <= MaximumSatiety * 0.5f) // well fed
 			{
 				SatietyLevel = 1;
@@ -269,7 +268,6 @@ public class FoodModPlayer : ModPlayer
 			{
 				SatietyLevel = 3;
 			}
-			#endregion
 		}
 		// 每五分钟从口渴变得不口渴
 		if (ThirstyChangeTimer >= FoodUtils.GetFrames(0, 5, 0, 0))
@@ -281,14 +279,13 @@ public class FoodModPlayer : ModPlayer
 
 	public override void PostUpdateBuffs()
 	{
-		#region Well fed life regen effect
+		// Well fed life regen effect
 		if (SatietyLevel > 0 || !Thirstystate)
 		{
 			Player.wellFed = true;
 		}
-		#endregion
 
-		#region Give effects based on satiety level
+		// Give effects based on satiety level
 		if (SatietyLevel == 1) // well fed
 		{
 			Player.statDefense += 1;
@@ -373,7 +370,6 @@ public class FoodModPlayer : ModPlayer
 				Player.starving = true;
 			}
 		}
-		#endregion
 		base.PostUpdateBuffs();
 	}
 
