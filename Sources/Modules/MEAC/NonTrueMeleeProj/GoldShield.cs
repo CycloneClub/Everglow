@@ -413,12 +413,12 @@ public class GoldShieldUIDrawer : ModSystem
 		int ShieldBarIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Resource Bars"));
 		if (ShieldBarIndex != -1)
 		{
-			
+
 			layers.Insert(ShieldBarIndex, new LegacyGameInterfaceLayer(
 				"EverglowMod: Shield Bar",
 				delegate
 				{
-					
+
 					ShieldBarDraw(Main.spriteBatch);
 					return true;
 				},

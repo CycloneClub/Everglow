@@ -99,7 +99,7 @@ public class GlowingDrop : ModTile, ITileFluentlyDrawn
 	/// </summary>
 	private void DrawLanternPiece(int frameX, int frameHeight, int frameY, int offsetX, Point tilePos, Point paintPos, Vector2 drawCenterPos, SpriteBatch spriteBatch, TileDrawing tileDrawing)
 	{
-		// 回声涂料	
+		// 回声涂料
 		if (!TileDrawing.IsVisible(Main.tile[paintPos]))
 		{
 			return;

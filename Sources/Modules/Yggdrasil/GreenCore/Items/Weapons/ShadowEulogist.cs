@@ -32,7 +32,7 @@ namespace Everglow.Yggdrasil.GreenCore.Items.Weapons
 			/*
             Main.spriteBatch.End();
             Main.spriteBatch.Begin(SpriteSortMode.Immediate,CustomBlendStates.Reverse, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-            
+
 
             Main.spriteBatch.Draw(Commons.ModAsset.Trail.Value, new Vector2(500, 500), null, Color.White, 0, Vector2.Zero, 1, 0, 0);
 
