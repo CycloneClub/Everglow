@@ -64,7 +64,7 @@ public class FaelanternProj : ModProjectile
 	}
 
 	private int timer = 0;
-	private Projectile Fae;
+	private Projectile fae;
 
 	public override void AI()
 	{
@@ -74,9 +74,9 @@ public class FaelanternProj : ModProjectile
 		{
 			FaelanternSkeleton.Skeleton.UpdateWorldTransform();
 			var pos = new Vector2(FaelanternSkeleton.Skeleton.FindBone("bone6").WorldX, FaelanternSkeleton.Skeleton.FindBone("bone6").WorldY);
-			Fae = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), pos, Vector2.Zero, ModContent.ProjectileType<Fae>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
-			Fae.ai[0] = Projectile.whoAmI;
-			Fae.ai[1] = -1;
+			fae = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), pos, Vector2.Zero, ModContent.ProjectileType<Fae>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+			fae.ai[0] = Projectile.whoAmI;
+			fae.ai[1] = -1;
 		}
 		_coroutineManager.Update();
 		FaelanternSkeleton.Position = Projectile.Bottom;
@@ -171,7 +171,7 @@ public class FaelanternProj : ModProjectile
 			FaelanternSkeleton.AnimationState.Update(1 / 60f);
 			if (i == 30)
 			{
-				Fae.ai[1] = target;
+				fae.ai[1] = target;
 			}
 			yield return new SkipThisFrame();
 		}
@@ -234,7 +234,7 @@ public class FaelanternProj : ModProjectile
 			}
 		}
 
-		if (charm && Fae.ai[1] == -1)
+		if (charm && fae.ai[1] == -1)
 		{
 			_coroutineManager.StartCoroutine(new Coroutine(Charm(charmtarget)));
 		}

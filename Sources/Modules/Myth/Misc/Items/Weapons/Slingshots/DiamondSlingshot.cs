@@ -6,7 +6,7 @@ public class DiamondSlingshot : SlingshotItem
 {
 	public override void SetDef()
 	{
-		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Ranged.Slingshots.DiamondSlingshot>();
+		projType = ModContent.ProjectileType<Projectiles.Weapon.Ranged.Slingshots.DiamondSlingshot>();
 		Item.damage = 25;
 		Item.width = 38;
 		Item.height = 36;

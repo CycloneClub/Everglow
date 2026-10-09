@@ -6,7 +6,7 @@ public class RichMahoganySlingshot : SlingshotItem
 {
 	public override void SetDef()
 	{
-		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Ranged.Slingshots.RichMahoganySlingshot>();
+		projType = ModContent.ProjectileType<Projectiles.Weapon.Ranged.Slingshots.RichMahoganySlingshot>();
 		Item.damage = 7;
 		Item.useTime = 24;
 		Item.useAnimation = 24;

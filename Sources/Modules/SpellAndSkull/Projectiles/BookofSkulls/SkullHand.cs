@@ -20,10 +20,10 @@ internal class SkullHand : ModProjectile
 		Projectile.extraUpdates = 4;
 	}
 
-	private Vector2 Direction = new Vector2(0, -1);
-	private Vector2 ArmPos;
-	private Vector2[,] FingerPos = new Vector2[4, 4];
-	private Vector2[] ThumbPos = new Vector2[3];
+	private Vector2 direction = new Vector2(0, -1);
+	private Vector2 armPos;
+	private Vector2[,] fingerPos = new Vector2[4, 4];
+	private Vector2[] thumbPos = new Vector2[3];
 	private float[] finRot1 = new float[5];
 	private float[] finRot2 = new float[5];
 	private float[] finRot3 = new float[4];
@@ -65,8 +65,8 @@ internal class SkullHand : ModProjectile
 					TotalVector += v0 * 0.5f;
 				}
 			}
-			Direction = TotalVector.SafeNormalize(new Vector2(0, -1));
-			Projectile.velocity = Direction * 0.15f;
+			direction = TotalVector.SafeNormalize(new Vector2(0, -1));
+			Projectile.velocity = direction * 0.15f;
 			Projectile.Center -= Projectile.velocity * 600;
 			finLength1[0] = 66;
 			finLength1[1] = 66;
@@ -146,21 +146,21 @@ internal class SkullHand : ModProjectile
 			finRot3[2] = UpdateSelf(finRot3[2], 4f, 0.9f);
 			finRot3[3] = UpdateSelf(finRot3[3], 3f, 0.9f);
 		}
-		float Ang = (float)(Math.Atan2(Direction.Y, Direction.X) - Math.PI * 1.5);
+		float Ang = (float)(Math.Atan2(direction.Y, direction.X) - Math.PI * 1.5);
 
-		ArmPos = Projectile.Center;
-		ThumbPos[0] = ArmPos;
+		armPos = Projectile.Center;
+		thumbPos[0] = armPos;
 
 		for (int x = 0; x < 4; x++)
 		{
-			FingerPos[x, 0] = ArmPos;
-			FingerPos[x, 1] = FingerPos[x, 0] + new Vector2(0, -finLength1[x]).RotatedBy(finRot1[x] * dir + Ang);
-			FingerPos[x, 2] = FingerPos[x, 1] + new Vector2(0, -finLength2[x]).RotatedBy(finRot2[x] * dir + Ang);
-			FingerPos[x, 3] = FingerPos[x, 2] + new Vector2(0, -finLength3[x]).RotatedBy(finRot3[x] * dir + Ang);
+			fingerPos[x, 0] = armPos;
+			fingerPos[x, 1] = fingerPos[x, 0] + new Vector2(0, -finLength1[x]).RotatedBy(finRot1[x] * dir + Ang);
+			fingerPos[x, 2] = fingerPos[x, 1] + new Vector2(0, -finLength2[x]).RotatedBy(finRot2[x] * dir + Ang);
+			fingerPos[x, 3] = fingerPos[x, 2] + new Vector2(0, -finLength3[x]).RotatedBy(finRot3[x] * dir + Ang);
 		}
-		ThumbPos[0] = ArmPos;
-		ThumbPos[1] = ThumbPos[0] + new Vector2(0, -finLength1[4]).RotatedBy(finRot1[4] * dir + Ang);
-		ThumbPos[2] = ThumbPos[1] + new Vector2(0, -finLength2[4]).RotatedBy(finRot2[4] * dir + Ang);
+		thumbPos[0] = armPos;
+		thumbPos[1] = thumbPos[0] + new Vector2(0, -finLength1[4]).RotatedBy(finRot1[4] * dir + Ang);
+		thumbPos[2] = thumbPos[1] + new Vector2(0, -finLength2[4]).RotatedBy(finRot2[4] * dir + Ang);
 
 		if (Projectile.timeLeft > 535)
 		{
@@ -230,7 +230,7 @@ internal class SkullHand : ModProjectile
 		Projectile.hide = true;
 		Texture2D bone = ModAsset.SkullHand.Value;
 		Texture2D Power = Commons.ModAsset.Trail_5.Value;
-		Vector2 v0 = Projectile.Center + Direction * 60;
+		Vector2 v0 = Projectile.Center + direction * 60;
 		Color c0 = Lighting.GetColor((int)(v0.X / 16f), (int)(v0.Y / 16f));
 
 		float Pwidth = 0f;
@@ -246,30 +246,30 @@ internal class SkullHand : ModProjectile
 			Pdark = (Projectile.timeLeft - 20) / 260f;
 		}
 		var c1 = new Color(1f * Pdark, 0.45f * Pdark * Pdark, 0f, 0f);
-		DrawPowerLine(ArmPos - Direction * 80f, ArmPos, c1, 32f * Pwidth, Power);
+		DrawPowerLine(armPos - direction * 80f, armPos, c1, 32f * Pwidth, Power);
 		for (int x = 3; x >= 0; x--)
 		{
 			for (int y = 0; y < 3; y++)
 			{
-				DrawPowerLine(FingerPos[x, y], FingerPos[x, y + 1], c1, 18f * Pwidth, Power);
+				DrawPowerLine(fingerPos[x, y], fingerPos[x, y + 1], c1, 18f * Pwidth, Power);
 			}
 		}
 		for (int y = 0; y < 2; y++)
 		{
-			DrawPowerLine(ThumbPos[y], ThumbPos[y + 1], c1, 20f * Pwidth, Power);
+			DrawPowerLine(thumbPos[y], thumbPos[y + 1], c1, 20f * Pwidth, Power);
 		}
 
-		DrawTexLine(ArmPos - Direction * 80f, ArmPos, c0, 12f, bone);
+		DrawTexLine(armPos - direction * 80f, armPos, c0, 12f, bone);
 		for (int x = 3; x >= 0; x--)
 		{
 			for (int y = 0; y < 3; y++)
 			{
-				DrawTexLine(FingerPos[x, y], FingerPos[x, y + 1], c0, 6f, bone);
+				DrawTexLine(fingerPos[x, y], fingerPos[x, y + 1], c0, 6f, bone);
 			}
 		}
 		for (int y = 0; y < 2; y++)
 		{
-			DrawTexLine(ThumbPos[y], ThumbPos[y + 1], c0, 8f, bone);
+			DrawTexLine(thumbPos[y], thumbPos[y + 1], c0, 8f, bone);
 		}
 		return false;
 	}

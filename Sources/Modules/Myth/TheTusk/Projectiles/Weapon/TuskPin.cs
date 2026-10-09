@@ -28,11 +28,11 @@ public class TuskPin : ModProjectile
 		Projectile.tileCollide = true;
 	}
 
-	private bool HasHitTile = false;
+	private bool hasHitTile = false;
 
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
-		HasHitTile = true;
+		hasHitTile = true;
 		Projectile.tileCollide = false;
 		Projectile.position += Projectile.velocity * 2;
 		Projectile.velocity *= 0;
@@ -51,7 +51,7 @@ public class TuskPin : ModProjectile
 	public override void AI()
 	{
 		Projectile.hide = true;
-		if (!HasHitTile)
+		if (!hasHitTile)
 		{
 			if (Projectile.timeLeft < 60)
 			{

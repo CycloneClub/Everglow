@@ -108,7 +108,7 @@ internal class ShadowWingBow : ModProjectile
 				arrowVelPhi[s] = Main.rand.NextFloat(0, 6.283f);
 			}
 		}
-		if (Energy is > 60 and < 120)
+		if (energy is > 60 and < 120)
 		{
 			for (int s = 0; s < 5; s++)
 			{
@@ -121,7 +121,7 @@ internal class ShadowWingBow : ModProjectile
 		}
 		for (int s = 0; s < 5; s++)
 		{
-			arrowcol[s] = Math.Clamp((float)(Math.Abs(s - 2.5) * 100 + (Energy - 90) * 7) / 255f, 0, 1f) * 0.6f;
+			arrowcol[s] = Math.Clamp((float)(Math.Abs(s - 2.5) * 100 + (energy - 90) * 7) / 255f, 0, 1f) * 0.6f;
 		}
 		Vector2 v0 = Main.MouseWorld - Main.player[Projectile.owner].Center;
 
@@ -131,8 +131,8 @@ internal class ShadowWingBow : ModProjectile
 
 		if (player.controlUseItem && released)
 		{
-			Projectile.timeLeft = 5 + Energy;
-			if (Energy <= 120)
+			Projectile.timeLeft = 5 + energy;
+			if (energy <= 120)
 			{
 				if (addi % 2 == 1)
 				{
@@ -140,34 +140,34 @@ internal class ShadowWingBow : ModProjectile
 					{
 						if (mothEyePlayer.MothEyeEquipped && fireflyBiome.IsBiomeActive(Main.LocalPlayer) && Main.hardMode)
 						{
-							Energy++;
-							Energy++;
+							energy++;
+							energy++;
 						}
 						else
 						{
-							Energy++;
+							energy++;
 						}
 					}
 				}
-				Energy++;
+				energy++;
 			}
 			else
 			{
-				Energy = 120;
+				energy = 120;
 			}
 		}
 		if (!Main.mouseLeft && released)// 发射
 		{
 			SoundEngine.PlaySound(SoundID.Item5, Projectile.Center);
-			Projectile.NewProjectileDirect(Terraria.Entity.InheritSource(Projectile), Projectile.Center, Vector2.Normalize(v0) * (Energy + 6) / 9f, (int)Projectile.ai[0], Projectile.damage + Energy / 5, Projectile.knockBack, player.whoAmI).extraUpdates++;
+			Projectile.NewProjectileDirect(Terraria.Entity.InheritSource(Projectile), Projectile.Center, Vector2.Normalize(v0) * (energy + 6) / 9f, (int)Projectile.ai[0], Projectile.damage + energy / 5, Projectile.knockBack, player.whoAmI).extraUpdates++;
 			for (int s = 0; s < 5; s++)
 			{
 				if (arrowcol[s] > 0)
 				{
-					Projectile.NewProjectile(Terraria.Entity.InheritSource(Projectile), Projectile.Center, Vector2.Normalize(v0).RotatedBy(arrowRot[s]) * arrowVel[s] * 1f, ModContent.ProjectileType<MothArrow>(), (int)((Projectile.damage + Energy / 5) * 0.47), Projectile.knockBack, player.whoAmI, 0, player.HeldItem.crit + player.GetCritChance(DamageClass.Ranged) + player.GetCritChance(DamageClass.Generic));
+					Projectile.NewProjectile(Terraria.Entity.InheritSource(Projectile), Projectile.Center, Vector2.Normalize(v0).RotatedBy(arrowRot[s]) * arrowVel[s] * 1f, ModContent.ProjectileType<MothArrow>(), (int)((Projectile.damage + energy / 5) * 0.47), Projectile.knockBack, player.whoAmI, 0, player.HeldItem.crit + player.GetCritChance(DamageClass.Ranged) + player.GetCritChance(DamageClass.Generic));
 				}
 			}
-			Energy = 0;
+			energy = 0;
 			released = false;
 		}
 		if (Projectile.ai[1] > 0)
@@ -198,7 +198,7 @@ internal class ShadowWingBow : ModProjectile
 		return false;
 	}
 
-	private int Energy = 0;
+	private int energy = 0;
 
 	private void DrawString()
 	{
@@ -207,7 +207,7 @@ internal class ShadowWingBow : ModProjectile
 		Vector2 v = vec.RotatedBy(1.57f);
 
 		Vector2 basePos = player.MountedCenter + vec * 7 + new Vector2(0, 2);
-		float b0 = Math.Clamp(Energy / 2f, 0, 60);
+		float b0 = Math.Clamp(energy / 2f, 0, 60);
 		float b3 = b0 / 60f * (b0 / 60f);
 
 		Vector2 arrowPosition = basePos + vec * (-12f * b3);
@@ -253,7 +253,7 @@ internal class ShadowWingBow : ModProjectile
 		Texture2D TexMainG = ModAsset.ShadowWingBowMainGlow.Value;
 		Texture2D TexArrow = TextureAssets.Projectile[(int)Projectile.ai[0]].Value;
 		Texture2D TexMothArrow = ModAsset.MothArrow.Value;
-		float b0 = Math.Clamp(Energy / 2f, 0, 60);
+		float b0 = Math.Clamp(energy / 2f, 0, 60);
 		float b1 = b0 / 60f;
 		float b2 = b1;
 		float b3 = b2 * b2;
@@ -286,17 +286,17 @@ internal class ShadowWingBow : ModProjectile
 		if (player.controlUseItem)
 		{
 			Player.CompositeArmStretchAmount PCAS = Player.CompositeArmStretchAmount.Full;
-			if (Energy > 30)
+			if (energy > 30)
 			{
 				PCAS = Player.CompositeArmStretchAmount.ThreeQuarters;
 			}
 
-			if (Energy > 60)
+			if (energy > 60)
 			{
 				PCAS = Player.CompositeArmStretchAmount.Quarter;
 			}
 
-			if (Energy > 90)
+			if (energy > 90)
 			{
 				PCAS = Player.CompositeArmStretchAmount.None;
 			}
@@ -314,12 +314,12 @@ internal class ShadowWingBow : ModProjectile
 			Main.spriteBatch.Draw(TexArrow, vProA - Main.screenPosition, new Rectangle(0, 0, TexArrow.Width, TexArrow.Height), drawColor, Projectile.rotation + (float)(Math.PI * 0.25), new Vector2(TexArrow.Width / 2f, TexArrow.Height / 2f), 1f, SpriteEffects.None, 0);
 		}
 
-		float rotu0 = Energy / 1200f;
-		float rotu1 = Energy / 750f;
-		float rotu2 = Energy / 600f;
-		float rotd0 = Energy / 1050f;
-		float rotd1 = Energy / 720f;
-		int ColS = (int)(Energy * 3 / 2f + 50f);
+		float rotu0 = energy / 1200f;
+		float rotu1 = energy / 750f;
+		float rotu2 = energy / 600f;
+		float rotd0 = energy / 1050f;
+		float rotd1 = energy / 720f;
+		int ColS = (int)(energy * 3 / 2f + 50f);
 		DrawString();
 		Main.spriteBatch.Draw(TexMainU0, Projectile.Center - Main.screenPosition, null, drawColor, Projectile.rotation - (float)(Math.PI * 0.25) - rotu0 * player.direction, new Vector2(TexMain.Width / 2f, TexMain.Height / 2f), 1f, se, 0);
 		Main.spriteBatch.Draw(TexMainU0G, Projectile.Center - Main.screenPosition, null, new Color(ColS, ColS, ColS, 0), Projectile.rotation - (float)(Math.PI * 0.25) - rotu0 * player.direction, new Vector2(TexMain.Width / 2f, TexMain.Height / 2f), 1f, se, 0);

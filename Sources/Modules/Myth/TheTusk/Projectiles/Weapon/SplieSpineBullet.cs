@@ -25,11 +25,11 @@ public class SplieSpineBullet : ModProjectile
 		Projectile.aiStyle = -1;
 	}
 
-	private int Tokill = -1;
+	private int tokill = -1;
 
 	public override void AI()
 	{
-		if (Tokill < 0)
+		if (tokill < 0)
 		{
 			for (int j = 0; j < 200; j++)
 			{
@@ -46,17 +46,17 @@ public class SplieSpineBullet : ModProjectile
 				}
 			}
 		}
-		if (Tokill is >= 0 and <= 2)
+		if (tokill is >= 0 and <= 2)
 		{
 			Projectile.Kill();
 		}
 
-		if (Tokill > 0)
+		if (tokill > 0)
 		{
-			Tokill--;
+			tokill--;
 		}
 
-		if (Tokill is <= 44 and > 0)
+		if (tokill is <= 44 and > 0)
 		{
 			Projectile.position = Projectile.oldPosition;
 			Projectile.velocity = Projectile.oldVelocity;
@@ -85,7 +85,7 @@ public class SplieSpineBullet : ModProjectile
 			Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Torch, v.X, v.Y, 0, default, Main.rand.NextFloat(0.8f, 1.3f));
 		}
 		Projectile.velocity = Projectile.oldVelocity;
-		Tokill = 45; // 0.75s后消掉
+		tokill = 45; // 0.75s后消掉
 		Projectile.friendly = false;
 		Projectile.damage = 0;
 		Projectile.tileCollide = false;
@@ -114,7 +114,7 @@ public class SplieSpineBullet : ModProjectile
 
 	public override bool PreDraw(ref Color lightColor)
 	{
-		if (Tokill > 0)
+		if (tokill > 0)
 		{
 			return false;
 		}

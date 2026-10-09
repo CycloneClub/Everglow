@@ -6,7 +6,7 @@ public class ShadewoodSlingShot : SlingshotItem
 {
 	public override void SetDef()
 	{
-		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Ranged.Slingshots.ShadewoodSlingShot>();
+		projType = ModContent.ProjectileType<Projectiles.Weapon.Ranged.Slingshots.ShadewoodSlingShot>();
 		Item.damage = 9;
 		Item.useTime = 22;
 		Item.useAnimation = 22;

@@ -39,30 +39,30 @@ public class BlackCorruptRain : ModProjectile
 	}
 
 	private bool initialization = true;
-	private double X;
-	private float Y;
+	private double x;
+	private float y;
 	private float b;
-	private float Stre2 = 1;
+	private float stre2 = 1;
 
 	public override void AI()
 	{
 		if (initialization)
 		{
-			X = Projectile.velocity.Length();
+			x = Projectile.velocity.Length();
 			b = Main.rand.Next(-50, 50);
 			initialization = false;
 			if (Main.rand.Next(0, 2) == 1)
 			{
-				Y = (float)Math.Sin(X / 5 * Math.PI) / 1000f + 1;
+				y = (float)Math.Sin(x / 5 * Math.PI) / 1000f + 1;
 			}
 			else
 			{
-				Y = (float)Math.Sin(-X / 5 * Math.PI) / 1000f + 1;
+				y = (float)Math.Sin(-x / 5 * Math.PI) / 1000f + 1;
 			}
 		}
-		if (Stre2 > 0.2)
+		if (stre2 > 0.2)
 		{
-			Stre2 -= 0.005f;
+			stre2 -= 0.005f;
 		}
 
 		Projectile.velocity *= 0.995f;
@@ -77,18 +77,18 @@ public class BlackCorruptRain : ModProjectile
 		}
 		if (Projectile.timeLeft is < 600 and >= 585)
 		{
-			if (Y < 1)
+			if (y < 1)
 			{
-				Projectile.scale *= Y / (Projectile.timeLeft / 585f);
+				Projectile.scale *= y / (Projectile.timeLeft / 585f);
 			}
 			else
 			{
-				Projectile.scale *= Y * Projectile.timeLeft / 585f;
+				Projectile.scale *= y * Projectile.timeLeft / 585f;
 			}
 		}
 		if (Projectile.timeLeft < 580 && Projectile.timeLeft >= 100 + b)
 		{
-			Projectile.scale *= Y;
+			Projectile.scale *= y;
 		}
 
 		if (Projectile.timeLeft < 100 + b)
@@ -103,7 +103,7 @@ public class BlackCorruptRain : ModProjectile
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D Light = ModAsset.FixCoinLight3.Value;
-		Main.spriteBatch.Draw(Light, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, new Color((int)(255 * Stre2), (int)(255 * Stre2), (int)(255 * Stre2), 0), Projectile.rotation, new Vector2(56f, 56f), Projectile.scale, SpriteEffects.None, 0);
+		Main.spriteBatch.Draw(Light, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, new Color((int)(255 * stre2), (int)(255 * stre2), (int)(255 * stre2), 0), Projectile.rotation, new Vector2(56f, 56f), Projectile.scale, SpriteEffects.None, 0);
 		return true;
 	}
 }

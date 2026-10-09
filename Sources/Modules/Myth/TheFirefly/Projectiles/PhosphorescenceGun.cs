@@ -17,7 +17,7 @@ internal class PhosphorescenceGun : ModProjectile
 		Projectile.DamageType = DamageClass.Ranged;
 	}
 
-	private bool Release = true;
+	private bool release = true;
 	private Vector2 oldPo = Vector2.Zero;
 	private int addi = 0;
 
@@ -25,7 +25,7 @@ internal class PhosphorescenceGun : ModProjectile
 	{
 		addi++;
 		Vector2 v0 = Main.MouseWorld - Main.player[Projectile.owner].MountedCenter;
-		if (Main.mouseLeft && Release)
+		if (Main.mouseLeft && release)
 		{
 			Projectile.ai[0] *= 0.9f;
 			Projectile.ai[1] -= 1f;
@@ -35,7 +35,7 @@ internal class PhosphorescenceGun : ModProjectile
 			Projectile.Center = oldPo;
 			Projectile.velocity *= 0;
 		}
-		if (!Main.mouseLeft && Release)
+		if (!Main.mouseLeft && release)
 		{
 			if (Projectile.ai[1] > 0)
 			{
@@ -57,7 +57,7 @@ internal class PhosphorescenceGun : ModProjectile
 
 	public override void PostDraw(Color lightColor)
 	{
-		if (!Release)
+		if (!release)
 		{
 			return;
 		}

@@ -78,7 +78,7 @@ public class FogPass
 	private int m_tileWidth, m_tileHeight;
 	private bool m_shouldResetRenderTargets;
 
-	private readonly int MAX_BLUR_LEVELS = 10;
+	private readonly int maxBlurLevels = 10;
 
 	private int m_maxBlurLevel;
 
@@ -121,7 +121,7 @@ public class FogPass
 		m_fogScreenEffect = ModContent.Request<Effect>("Everglow/Myth/Effects/Fog"); // Same as above
 		m_temporalInterpEffect = ModContent.Request<Effect>("Everglow/Myth/Effects/Temporal"); // Same as above
 
-		m_blurRenderTargets = new RenderTarget2D[MAX_BLUR_LEVELS];
+		m_blurRenderTargets = new RenderTarget2D[maxBlurLevels];
 		m_shouldResetRenderTargets = true;
 		m_enableTemporalFilter = false;
 		m_enableLightUpload = true;
@@ -247,7 +247,7 @@ public class FogPass
 		m_frameHeight = m_tileHeight * 16;
 
 		int l = 0;
-		for (; l < MAX_BLUR_LEVELS; l++)
+		for (; l < maxBlurLevels; l++)
 		{
 			if (m_frameWidth >> l == 0 || m_frameHeight >> l == 0)
 			{

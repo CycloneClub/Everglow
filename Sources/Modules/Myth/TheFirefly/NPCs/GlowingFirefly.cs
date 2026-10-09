@@ -78,7 +78,7 @@ public class GlowingFirefly : ModNPC
 						{
 							NPC.ai[1] = 1;
 							NPC.ai[2] = Main.rand.Next(100);
-							AimPos = new Vector2(0, Main.rand.NextFloat(12f, 220f)).RotatedByRandom(6.283) + NPC.Center;
+							aimPos = new Vector2(0, Main.rand.NextFloat(12f, 220f)).RotatedByRandom(6.283) + NPC.Center;
 							break;
 						}
 					}
@@ -87,7 +87,7 @@ public class GlowingFirefly : ModNPC
 		}
 	}
 
-	private Vector2 AimPos = Vector2.Zero;
+	private Vector2 aimPos = Vector2.Zero;
 
 	private void UpdateMove()
 	{
@@ -99,11 +99,11 @@ public class GlowingFirefly : ModNPC
 			{
 				vNext = new Vector2(0, Main.rand.NextFloat(12f, 220f)).RotatedByRandom(6.283) + NPC.Center + Vector2.Normalize(NPC.Center - Main.player[Player.FindClosest(NPC.Center, 0, 0)].Center) * 6 + new Vector2(0, -6);
 			}
-			AimPos = vNext;
+			aimPos = vNext;
 		}
-		if ((NPC.Center - AimPos).Length() >= 20)
+		if ((NPC.Center - aimPos).Length() >= 20)
 		{
-			NPC.velocity = Vector2.Normalize(AimPos - NPC.Center) * 1f;
+			NPC.velocity = Vector2.Normalize(aimPos - NPC.Center) * 1f;
 		}
 		else
 		{

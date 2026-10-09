@@ -23,7 +23,7 @@ public class GoldRound : ModProjectile
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 	}
 
-	private float Omega = 0.4f;
+	private float omega = 0.4f;
 
 	public override void OnSpawn(IEntitySource source)
 	{
@@ -32,7 +32,7 @@ public class GoldRound : ModProjectile
 
 	public override void AI()
 	{
-		Projectile.rotation += Omega;
+		Projectile.rotation += omega;
 		Projectile.velocity *= 0.98f;
 		Player player = Main.player[Projectile.owner];
 		if (Projectile.timeLeft < 1470)

@@ -14,18 +14,18 @@ public class GlowSporeBead : SlingshotAmmo
 
 	public override void AI()
 	{
-		if (TimeTokill >= 0 && TimeTokill <= 2)
+		if (timeTokill >= 0 && timeTokill <= 2)
 		{
 			Projectile.Kill();
 		}
 
-		if (TimeTokill <= 15 && TimeTokill > 0)
+		if (timeTokill <= 15 && timeTokill > 0)
 		{
 			Projectile.velocity = Projectile.oldVelocity;
 		}
 
-		TimeTokill--;
-		if (TimeTokill < 0)
+		timeTokill--;
+		if (timeTokill < 0)
 		{
 			Projectile.velocity.Y += 0.17f;
 			int index = Dust.NewDust(Projectile.position - new Vector2(4), Projectile.width, Projectile.height, ModContent.DustType<JungleSpore>(), 0f, 0f, 100, default, Main.rand.NextFloat(0.6f, 1.1f));
@@ -50,7 +50,7 @@ public class GlowSporeBead : SlingshotAmmo
 		}
 		else
 		{
-			if (TimeTokill < 10)
+			if (timeTokill < 10)
 			{
 				Projectile.damage = 0;
 				Projectile.friendly = false;

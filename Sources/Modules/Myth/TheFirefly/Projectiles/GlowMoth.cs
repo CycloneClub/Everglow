@@ -43,16 +43,16 @@ public class GlowMoth : ModProjectile
 
 		CheckRecoverMagic();
 
-		Projectile.damage = (int)(Projectile.damage * Power);
+		Projectile.damage = (int)(Projectile.damage * power);
 	}
 
-	private int SpecialTimeAfterSpawn = 60;
-	private Vector2 TargetPos = Vector2.Zero;
-	private int AutoAddingTimer = 0;
-	private float[] OldRotation = new float[12];
-	private int[] OldFrame = new int[12];
-	private bool SleepOutside = false;
-	private float Power = 0.25f;
+	private int specialTimeAfterSpawn = 60;
+	private Vector2 targetPos = Vector2.Zero;
+	private int autoAddingTimer = 0;
+	private float[] oldRotation = new float[12];
+	private int[] oldFrame = new int[12];
+	private bool sleepOutside = false;
+	private float power = 0.25f;
 
 	private void UpdateDrawParameter()
 	{
@@ -66,7 +66,7 @@ public class GlowMoth : ModProjectile
 			Projectile.frame = 1;
 			return;
 		}
-		if (SleepOutside)
+		if (sleepOutside)
 		{
 			Projectile.spriteDirection = -player.direction;
 			Projectile.rotation = -1.0f * player.direction + player.fullRotation;
@@ -74,8 +74,8 @@ public class GlowMoth : ModProjectile
 			return;
 		}
 		Projectile.rotation *= 0.9f;
-		AutoAddingTimer++;
-		if ((AutoAddingTimer + (int)Projectile.ai[1]) % 4 == 0)
+		autoAddingTimer++;
+		if ((autoAddingTimer + (int)Projectile.ai[1]) % 4 == 0)
 		{
 			if (Projectile.frame < 3)
 			{
@@ -86,12 +86,12 @@ public class GlowMoth : ModProjectile
 				Projectile.frame = 0;
 			}
 		}
-		OldRotation[0] = Projectile.rotation;
+		oldRotation[0] = Projectile.rotation;
 		for (int i = 11; i > 0; i--)
 		{
-			OldRotation[i] = OldRotation[i - 1];
+			oldRotation[i] = oldRotation[i - 1];
 		}
-		OldFrame[0] = Projectile.frame;
+		oldFrame[0] = Projectile.frame;
 		if (Math.Abs(Projectile.velocity.X) > 0.3f)
 		{
 			Projectile.spriteDirection = Projectile.velocity.X > 0 ? -1 : 1;
@@ -99,9 +99,9 @@ public class GlowMoth : ModProjectile
 
 		for (int i = 11; i > 0; i--)
 		{
-			OldFrame[i] = OldFrame[i - 1];
+			oldFrame[i] = oldFrame[i - 1];
 		}
-		if (SpecialTimeAfterSpawn == 60)
+		if (specialTimeAfterSpawn == 60)
 		{
 			if (Main.rand.NextFloat(0, 10f) > 5)
 			{
@@ -112,10 +112,10 @@ public class GlowMoth : ModProjectile
 				Projectile.spriteDirection = 1;
 			}
 		}
-		if (SpecialTimeAfterSpawn > 0)
+		if (specialTimeAfterSpawn > 0)
 		{
 			Projectile.velocity *= 0.92f;
-			SpecialTimeAfterSpawn--;
+			specialTimeAfterSpawn--;
 		}
 	}
 
@@ -171,7 +171,7 @@ public class GlowMoth : ModProjectile
 				if ((v0 - v1).Length() < 600)
 				{
 					flag = true;
-					TargetPos = v0;
+					targetPos = v0;
 					break;
 				}
 			}
@@ -182,18 +182,18 @@ public class GlowMoth : ModProjectile
 			{
 				Vector2 v0 = Main.npc[j].Center;
 				flag = true;
-				TargetPos = v0;
+				targetPos = v0;
 				break;
 			}
 		}
 		if (flag/* && (AutoAddingTimer + (int)Projectile.ai[1]) % 20 >= 10*/)
 		{
-			Vector2 v0 = TargetPos - Projectile.Center;
+			Vector2 v0 = targetPos - Projectile.Center;
 			Vector2 v1 = new Vector2(0, Projectile.ai[0] / 2f + 120f).RotatedBy(Projectile.ai[1] + Main.time * (0.03 + Projectile.ai[0] / 12000d));
 			Vector2 v2 = v0 + v1;
-			if ((AutoAddingTimer + (int)Projectile.ai[0]) % 72 == 0)
+			if ((autoAddingTimer + (int)Projectile.ai[0]) % 72 == 0)
 			{
-				var p = Projectile.NewProjectileDirect(Terraria.Entity.InheritSource(Projectile), Projectile.Center, v0.SafeNormalize(Vector2.Zero) * 3, ModContent.ProjectileType<BlackCorruptRainFriendly>(), (int)(Projectile.damage * Power * 4), Projectile.knockBack, Projectile.owner);
+				var p = Projectile.NewProjectileDirect(Terraria.Entity.InheritSource(Projectile), Projectile.Center, v0.SafeNormalize(Vector2.Zero) * 3, ModContent.ProjectileType<BlackCorruptRainFriendly>(), (int)(Projectile.damage * power * 4), Projectile.knockBack, Projectile.owner);
 				p.CritChance = Projectile.CritChance;
 				p.friendly = true;
 				if (MothEye.LocalOwner != null && MothEye.LocalOwner.TryGetModPlayer(out MothEyePlayer mothEyePlayer))
@@ -203,7 +203,7 @@ public class GlowMoth : ModProjectile
 						p.tileCollide = false;
 						if (Main.rand.NextBool(10))
 						{
-							var p3 = Projectile.NewProjectileDirect(Terraria.Entity.InheritSource(Projectile), Projectile.Center, v0.SafeNormalize(Vector2.Zero) * 3, ModContent.ProjectileType<BlackCorruptRain3Friendly>(), (int)(Projectile.damage * Power * 5), Projectile.knockBack, Projectile.owner);
+							var p3 = Projectile.NewProjectileDirect(Terraria.Entity.InheritSource(Projectile), Projectile.Center, v0.SafeNormalize(Vector2.Zero) * 3, ModContent.ProjectileType<BlackCorruptRain3Friendly>(), (int)(Projectile.damage * power * 5), Projectile.knockBack, Projectile.owner);
 							p3.CritChance = Projectile.CritChance;
 							p3.friendly = true;
 						}
@@ -216,17 +216,17 @@ public class GlowMoth : ModProjectile
 			}
 			Projectile.velocity = (Projectile.velocity * 10f + v2 / v2.Length() * 9f) / 11f;
 			mothOwner.WhoSleepInPlayer[player.whoAmI] = -1;
-			if (Power >= 0.0125f)
+			if (power >= 0.0125f)
 			{
-				Power -= 0.0003f;
+				power -= 0.0003f;
 			}
 		}
 		if (!flag)
 		{
 			NoFindAnyEmeny();
-			if (Power <= 0.25f)
+			if (power <= 0.25f)
 			{
-				Power += 0.002f;
+				power += 0.002f;
 			}
 		}
 	}
@@ -241,9 +241,9 @@ public class GlowMoth : ModProjectile
 				{
 					if ((p.Center - Projectile.Center).Length() < 300)
 					{
-						if (Power <= 0.25f)
+						if (power <= 0.25f)
 						{
-							Power += 0.001f;
+							power += 0.001f;
 						}
 					}
 				}
@@ -319,14 +319,14 @@ public class GlowMoth : ModProjectile
 
 	private void ProduceDust()
 	{
-		if (AutoAddingTimer % 144 == 0)
+		if (autoAddingTimer % 144 == 0)
 		{
 			Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<MothBlue>(), Projectile.velocity.X, Projectile.velocity.Y, 0, default, Main.rand.NextFloat(0.6f, 0.8f));
 			Vector2 v = new Vector2(0, Main.rand.NextFloat(0.3f, 1.4f)).RotatedByRandom(Math.PI);
 
 			Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.SpookyWood, v.X + Projectile.velocity.X, v.Y + Projectile.velocity.Y, 0, default, Main.rand.NextFloat(0.3f, 0.7f));
 		}
-		if (AutoAddingTimer % 144 == 72)
+		if (autoAddingTimer % 144 == 72)
 		{
 			Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<MothBlue2>(), Projectile.velocity.X, Projectile.velocity.Y, 0, default, Main.rand.NextFloat(0.6f, 0.8f));
 			Vector2 v = new Vector2(0, Main.rand.NextFloat(0.3f, 1.4f)).RotatedByRandom(Math.PI);
@@ -397,14 +397,14 @@ public class GlowMoth : ModProjectile
 				AddRotation = (float)Math.PI;
 			}
 
-			var DrawRect = new Rectangle(0, OldFrame[i] * Projectile.height, Projectile.width, Projectile.height);
-			float kColor = (Length - i + 1) / 2.5f * Power;
+			var DrawRect = new Rectangle(0, oldFrame[i] * Projectile.height, Projectile.width, Projectile.height);
+			float kColor = (Length - i + 1) / 2.5f * power;
 			var Draworigin = new Vector2(texture.Width / 2f, texture.Height / 8f);
 
 			// Main.spriteBatch.Draw(texture, DrawPos, DrawRect, new Color(c0.R * kColor / 255f, c0.G * kColor / 255f, c0.B * kColor / 255f, kColor), OldRotation[i], Draworigin, Projectile.scale, sf, 0);
 			if (mothOwner.WhoSleepInPlayer[player.whoAmI] != Projectile.whoAmI)
 			{
-				Main.spriteBatch.Draw(Gtexture, DrawPos, DrawRect, new Color(kColor, kColor, kColor, 0), OldRotation[i] + AddRotation, Draworigin, Projectile.scale, sf, 0);
+				Main.spriteBatch.Draw(Gtexture, DrawPos, DrawRect, new Color(kColor, kColor, kColor, 0), oldRotation[i] + AddRotation, Draworigin, Projectile.scale, sf, 0);
 			}
 
 			if (i == 0)

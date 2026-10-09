@@ -31,11 +31,11 @@ public class LilyHarp : ModItem
 		Item.shootSpeed = 0.1f;
 	}
 
-	private int SoundStyle = 0;
+	private int soundStyle = 0;
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-		switch (SoundStyle)
+		switch (soundStyle)
 		{
 			case 0:
 				SoundEngine.PlaySound(new SoundStyle("Everglow/Myth/Sounds/LilyHarpCmaj7"), player.Center);
@@ -54,10 +54,10 @@ public class LilyHarp : ModItem
 				break;
 		}
 
-		SoundStyle++;
-		if (SoundStyle >= 4)
+		soundStyle++;
+		if (soundStyle >= 4)
 		{
-			SoundStyle = 0;
+			soundStyle = 0;
 		}
 
 		if (player.ownedProjectileCounts[Item.shoot] > 0)

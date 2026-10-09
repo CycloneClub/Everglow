@@ -6,7 +6,7 @@ public class TopazSlingshot : SlingshotItem
 {
 	public override void SetDef()
 	{
-		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Ranged.Slingshots.TopazSlingshot>();
+		projType = ModContent.ProjectileType<Projectiles.Weapon.Ranged.Slingshots.TopazSlingshot>();
 		Item.damage = 17;
 		Item.width = 38;
 		Item.height = 36;

@@ -42,13 +42,13 @@ public class PrimordialJadeWinged_Spear : ModItem
 		return player.ownedProjectileCounts[Item.shoot] < 1;
 	}
 
-	private bool CanDown;
+	private bool canDown;
 
 	public override void UpdateInventory(Player player)
 	{
 		if (player.mount.Active)
 		{
-			CanDown = false;
+			canDown = false;
 			return;
 		}
 		for (int h = 0; h < 14; h++)
@@ -56,7 +56,7 @@ public class PrimordialJadeWinged_Spear : ModItem
 			Vector2 pos = player.Center + new Vector2(0, h * 16 * player.gravDir);
 			if (TileUtils.PlatformCollision(pos))
 			{
-				CanDown = false;
+				canDown = false;
 				return;
 			}
 		}
@@ -65,11 +65,11 @@ public class PrimordialJadeWinged_Spear : ModItem
 			Vector2 pos = player.Center + new Vector2(0, h * 16 * player.gravDir);
 			if (TileUtils.PlatformCollision(pos))
 			{
-				CanDown = true;
+				canDown = true;
 				return;
 			}
 		}
-		CanDown = false;
+		canDown = false;
 	}
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -162,7 +162,7 @@ public class PrimordialJadeWinged_Spear : ModItem
 			PrimordialJadeWinged_SpearOwner.MouseCooling = 30;
 			return false;
 		}
-		if (CanDown && player.ownedProjectileCounts[ModContent.ProjectileType<PrimordialJadeWinged_SpearDown>()] < 1)
+		if (canDown && player.ownedProjectileCounts[ModContent.ProjectileType<PrimordialJadeWinged_SpearDown>()] < 1)
 		{
 			Projectile.NewProjectile(source, position, new Vector2(0, player.gravDir), ModContent.ProjectileType<PrimordialJadeWinged_SpearDown>(), damage * 5, knockback, player.whoAmI, 0f, 0f);
 			return false;
@@ -182,7 +182,7 @@ public class PrimordialJadeWinged_Spear : ModItem
 		Texture2D RArr = ModAsset.RightGreenSpice.Value;
 		if (!Main.gamePaused)
 		{
-			if (!CanDown)
+			if (!canDown)
 			{
 				spriteBatch.Draw(RArr, drawPos + new Vector2(6) * scale, null, new Color(0, 0, 0, 255), 0f, new Vector2(8), scale * 3, SpriteEffects.None, 0f);
 			}

@@ -38,7 +38,7 @@ public class BloodyMossWheelFinished : ModTile
 
 	public int TpTime = 0;
 	public static int[] PlayerTpTime = new int[255];
-	private int Col = 0;
+	private int col = 0;
 
 	public override void PostDraw(int i, int j, SpriteBatch sb)
 	{
@@ -57,17 +57,17 @@ public class BloodyMossWheelFinished : ModTile
 				TpTime += 3;
 			}
 
-			Col = 100;
+			col = 100;
 		}
 		else
 		{
-			if (Col > 0)
+			if (col > 0)
 			{
-				Col -= 5;
+				col -= 5;
 			}
 			else
 			{
-				Col = 0;
+				col = 0;
 				TpTime = 0;
 			}
 		}

@@ -23,25 +23,25 @@ public abstract class GemAmmo : SlingshotAmmo
 
 	public override void AI()
 	{
-		if (TimeTokill >= 0 && TimeTokill <= 2)
+		if (timeTokill >= 0 && timeTokill <= 2)
 		{
 			Projectile.Kill();
 		}
 
-		if (TimeTokill <= 15 && TimeTokill > 0)
+		if (timeTokill <= 15 && timeTokill > 0)
 		{
 			Projectile.velocity = Projectile.oldVelocity;
 		}
 
-		TimeTokill--;
-		if (TimeTokill < 0)
+		timeTokill--;
+		if (timeTokill < 0)
 		{
 			Projectile.velocity.Y += 0.17f;
 			Dust.NewDustDirect(Projectile.Center - new Vector2(4, 3)/*Half Dust Size*/, 0, 0, dustType, 0, 0, 0, default, Main.rand.NextFloat(0.85f, 1.15f));
 		}
 		else
 		{
-			if (TimeTokill < 30)
+			if (timeTokill < 30)
 			{
 				Projectile.damage = 0;
 				Projectile.friendly = false;
@@ -203,7 +203,7 @@ public abstract class GemAmmo : SlingshotAmmo
 	{
 		SoundEngine.PlaySound(SoundID.Item27, Projectile.Center);
 		Projectile.NewProjectile(Terraria.Entity.InheritSource(Projectile), Projectile.Center + Projectile.velocity, Vector2.Zero, ModContent.ProjectileType<NormalHit>(), Projectile.damage, Projectile.knockBack, Projectile.owner, Projectile.velocity.Length(), Main.rand.NextFloat(6.283f));
-		TimeTokill = 30;
+		timeTokill = 30;
 		float Power = Projectile.ai[0] + 0.5f;
 		Projectile.velocity = Projectile.oldVelocity;
 		Player player = Main.player[Projectile.owner];

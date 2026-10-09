@@ -18,7 +18,7 @@ public class TsunamiShark : ModProjectile
 		Projectile.DamageType = DamageClass.Ranged;
 	}
 
-	private int UseCount = 0;
+	private int useCount = 0;
 	private int overridedamage;
 	internal IEntitySource shootSource = null;
 
@@ -78,14 +78,14 @@ public class TsunamiShark : ModProjectile
 				0.36f,
 				rot);
 		}
-		UseCount++;
-		if (UseCount == 12)
+		useCount++;
+		if (useCount == 12)
 		{
 			if (player.ownedProjectileCounts[ModContent.ProjectileType<TsunamiShark_missile>()] < 20)
 			{
 				Projectile.NewProjectileDirect(shootSource, Projectile.Center + toMuzzle, velocity.RotatedBy(-Main.rand.NextFloat(-0.2f, 0.4f) * player.direction) * 2.4f, ModContent.ProjectileType<TsunamiShark_missile>(), (int)((overridedamage == -1 ? item.damage : overridedamage) * 3.64f), item.knockBack, player.whoAmI, Main.rand.NextFloat(0.6f, 1.4f));
 			}
-			UseCount = 0;
+			useCount = 0;
 		}
 	}
 

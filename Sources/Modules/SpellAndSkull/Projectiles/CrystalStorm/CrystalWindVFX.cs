@@ -59,8 +59,8 @@ internal class CrystalWindVFX : ShaderDraw
 	public float timer;
 	public float maxTime;
 	public float rotation;
-	private Vector2 AimCenter = Vector2.Zero;
-	private Vector2 OldAimCenter = Vector2.Zero;
+	private Vector2 aimCenter = Vector2.Zero;
+	private Vector2 oldAimCenter = Vector2.Zero;
 
 	/// <summary>
 	/// ai[0]纹理相位,ai[1]上升力系数,ai[2]归属于哪个弹幕,ai[3]x轴迁移系数
@@ -100,7 +100,7 @@ internal class CrystalWindVFX : ShaderDraw
 				Active = false;
 			}
 
-			if ((OldAimCenter - Main.projectile[(int)ai[2]].Center).Length() > 200 && OldAimCenter != Vector2.Zero)
+			if ((oldAimCenter - Main.projectile[(int)ai[2]].Center).Length() > 200 && oldAimCenter != Vector2.Zero)
 			{
 				if (timer < maxTime - 20)
 				{
@@ -109,13 +109,13 @@ internal class CrystalWindVFX : ShaderDraw
 			}
 			if (Main.projectile[(int)ai[2]].active && Main.projectile[(int)ai[2]].timeLeft > 200 && Main.projectile[(int)ai[2]].type == ModContent.ProjectileType<Storm>())
 			{
-				AimCenter = Main.projectile[(int)ai[2]].Center;
-				OldAimCenter = Main.projectile[(int)ai[2]].Center;
+				aimCenter = Main.projectile[(int)ai[2]].Center;
+				oldAimCenter = Main.projectile[(int)ai[2]].Center;
 			}
 
-			float Dy = AimCenter.Y - position.Y;
+			float Dy = aimCenter.Y - position.Y;
 			float xCoefficient = Dy * Dy / 600f - 0.4f * Dy + 50;
-			Vector2 TrueAim = AimCenter + new Vector2(xCoefficient * (float)Math.Sin(Main.timeForVisualEffects * 0.3f + rotation), 0) - position;
+			Vector2 TrueAim = aimCenter + new Vector2(xCoefficient * (float)Math.Sin(Main.timeForVisualEffects * 0.3f + rotation), 0) - position;
 
 			ai[3] = (byte)(ai[3] * 0.95 + xCoefficient * 0.05);
 

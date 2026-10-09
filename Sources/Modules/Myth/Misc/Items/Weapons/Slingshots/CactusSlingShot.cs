@@ -6,7 +6,7 @@ public class CactusSlingShot : SlingshotItem
 {
 	public override void SetDef()
 	{
-		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Ranged.Slingshots.CactusSlingShot>();
+		projType = ModContent.ProjectileType<Projectiles.Weapon.Ranged.Slingshots.CactusSlingShot>();
 		Item.damage = 9;
 		Item.useTime = 23;
 		Item.useAnimation = 23;

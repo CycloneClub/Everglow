@@ -7,7 +7,7 @@ public class ThreeColorCrown : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
-	private int Timer;
+	private int timer;
 
 	public override void SetStaticDefaults()
 	{
@@ -28,22 +28,22 @@ public class ThreeColorCrown : ModItem
 
 	public void Trigger()
 	{
-		if (Timer == 0)
+		if (timer == 0)
 		{
-			Timer = Main.rand.Next(1, 4) * 1000 + 421;
+			timer = Main.rand.Next(1, 4) * 1000 + 421;
 		}
 	}
 
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
 		player.GetModPlayer<PAFPlayer>().ThreeColorCrown = this;
-		if (Timer < 0)
+		if (timer < 0)
 		{
-			Timer++;
+			timer++;
 		}
 		else
 		{
-			switch (Timer / 1000)
+			switch (timer / 1000)
 			{
 				case 1:
 					{
@@ -69,9 +69,9 @@ public class ThreeColorCrown : ModItem
 						break;
 					}
 			}
-			if (Timer % 1000 == 1)
+			if (timer % 1000 == 1)
 			{
-				Timer = -1380;
+				timer = -1380;
 			}
 		}
 		// MythPlayer.ThreeColorCrown = 2;

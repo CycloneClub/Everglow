@@ -16,11 +16,11 @@ internal class CrystalParticle : Visual
 	public float omega;
 	public float rotation;
 
-	private float Theta;
+	private float theta;
 
-	private Vector2 VS1;
-	private Vector2 VS2;
-	private Vector2 VS3;
+	private Vector2 vS1;
+	private Vector2 vS2;
+	private Vector2 vS3;
 
 	private Vector2 p1;
 	private Vector2 p2;
@@ -29,16 +29,16 @@ internal class CrystalParticle : Visual
 	private Vector2 po1;
 	private Vector2 po2;
 	private Vector2 po3;
-	private float RamdomC;
+	private float ramdomC;
 
-	private float Ros;
+	private float ros;
 
 	public override void OnSpawn()
 	{
 		timeLeft = Main.rand.Next(387, 399);
-		RamdomC = Main.rand.NextFloat(0f, 1500f);
-		Theta += Main.rand.NextFloat(-3.14f, 3.14f);
-		Ros = Main.rand.NextFloat(-0.15f, 0.15f);
+		ramdomC = Main.rand.NextFloat(0f, 1500f);
+		theta += Main.rand.NextFloat(-3.14f, 3.14f);
+		ros = Main.rand.NextFloat(-0.15f, 0.15f);
 		p1 = new Vector2(Main.rand.NextFloat(-0.5f, 0.5f), Main.rand.NextFloat(-0.5f, 0.5f));
 		p2 = new Vector2(Main.rand.NextFloat(-0.5f, 0.5f), Main.rand.NextFloat(-0.5f, 0.5f));
 		p3 = new Vector2(Main.rand.NextFloat(-0.5f, 0.5f), Main.rand.NextFloat(-0.5f, 0.5f));
@@ -66,10 +66,10 @@ internal class CrystalParticle : Visual
 			omega *= 0.98f;
 		}
 
-		Theta += Ros;
-		po1 = new Vector2(p1.X, p1.Y * (float)Math.Sin(Theta)).RotatedBy(rotation) * 90 * size;
-		po2 = new Vector2(p2.X, p2.Y * (float)Math.Sin(Theta)).RotatedBy(rotation) * 90 * size;
-		po3 = new Vector2(p3.X, p3.Y * (float)Math.Sin(Theta)).RotatedBy(rotation) * 90 * size;
+		theta += ros;
+		po1 = new Vector2(p1.X, p1.Y * (float)Math.Sin(theta)).RotatedBy(rotation) * 90 * size;
+		po2 = new Vector2(p2.X, p2.Y * (float)Math.Sin(theta)).RotatedBy(rotation) * 90 * size;
+		po3 = new Vector2(p3.X, p3.Y * (float)Math.Sin(theta)).RotatedBy(rotation) * 90 * size;
 		rotation -= omega * 0.66f;
 		velocity *= 0.99f;
 		size *= 0.95f;
@@ -86,24 +86,24 @@ internal class CrystalParticle : Visual
 		Vector2 v1 = po1 + position;
 		Vector2 v2 = po2 + position;
 		Vector2 v3 = po3 + position;
-		if (VS1 == Vector2.Zero)
+		if (vS1 == Vector2.Zero)
 		{
-			VS1 = v1 - Main.screenPosition;
+			vS1 = v1 - Main.screenPosition;
 		}
 
-		if (VS2 == Vector2.Zero)
+		if (vS2 == Vector2.Zero)
 		{
-			VS2 = v2 - Main.screenPosition;
+			vS2 = v2 - Main.screenPosition;
 		}
 
-		if (VS3 == Vector2.Zero)
+		if (vS3 == Vector2.Zero)
 		{
-			VS3 = v3 - Main.screenPosition;
+			vS3 = v3 - Main.screenPosition;
 		}
 
-		Vy.Add(new Vertex2D(v1, colorD, new Vector3(VS1.X / Main.screenTarget.Width, VS1.Y / Main.screenTarget.Height, 0)));
-		Vy.Add(new Vertex2D(v2, colorD, new Vector3(VS2.X / Main.screenTarget.Width, VS2.Y / Main.screenTarget.Height, 0)));
-		Vy.Add(new Vertex2D(v3, colorD, new Vector3(VS3.X / Main.screenTarget.Width, VS3.Y / Main.screenTarget.Height, 0)));
+		Vy.Add(new Vertex2D(v1, colorD, new Vector3(vS1.X / Main.screenTarget.Width, vS1.Y / Main.screenTarget.Height, 0)));
+		Vy.Add(new Vertex2D(v2, colorD, new Vector3(vS2.X / Main.screenTarget.Width, vS2.Y / Main.screenTarget.Height, 0)));
+		Vy.Add(new Vertex2D(v3, colorD, new Vector3(vS3.X / Main.screenTarget.Width, vS3.Y / Main.screenTarget.Height, 0)));
 
 		GraphicsDevice gd = Main.graphics.GraphicsDevice;
 		SpriteBatch sb = Main.spriteBatch;
@@ -123,7 +123,7 @@ internal class CrystalParticle : Visual
 		// sb.End();
 
 		var Co0 = new Color(135, 0, 255);
-		int DrawBase = (int)(122.5 + Math.Sin(RamdomC) * 122.5);
+		int DrawBase = (int)(122.5 + Math.Sin(ramdomC) * 122.5);
 		var Vx = new List<Vertex2D>();
 		colorD = new Color((DrawBase + Co0.R) / 8, (DrawBase + Co0.G) / 8, (DrawBase + Co0.B) / 8, 0);
 		Vx.Add(new Vertex2D(po1 + position, colorD, new Vector3(0, 0, 0)));

@@ -57,7 +57,7 @@ public class TuskTreasureBag : ModItem
 		base.RightClick(player);
 	}
 
-	private int MyLightTimer = 0;
+	private int myLightTimer = 0;
 
 	public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
 	{
@@ -68,9 +68,9 @@ public class TuskTreasureBag : ModItem
 			// spriteBatch.Draw(t, Item.Center, new Rectangle(0,0,32,32), new Color(100, 100, 100, 0), 0, new Vector2(16, 16), 3f, SpriteEffects.None, 1);
 			Main.EntitySpriteDraw(t, Item.Center - Main.screenPosition + v, null, new Color(100, 100, 100, 0), 0, new Vector2(16, 16), 1f, SpriteEffects.None, 0);
 		}
-		if (!Main.gamePaused && MyLightTimer % 20 == 19)
+		if (!Main.gamePaused && myLightTimer % 20 == 19)
 		{
-			MyLightTimer = 0;
+			myLightTimer = 0;
 			int num37 = Dust.NewDust(Item.Center + new Vector2(Main.rand.Next(-16, 6), 0), 0, 0, DustID.SilverCoin, 0f, 0f, 254, Color.White, 1f);
 			Main.dust[num37].velocity = new Vector2(0, -Main.rand.NextFloat(0.3f, 0.9f));
 			Main.dust[num37].rotation = 0;
@@ -79,7 +79,7 @@ public class TuskTreasureBag : ModItem
 		}
 		if (!Main.gamePaused)
 		{
-			MyLightTimer++;
+			myLightTimer++;
 			Lighting.AddLight((int)(Item.Center.X / 16f), (int)(Item.Center.Y / 16f), 0.5f, 0.15f, 0.0f);
 		}
 

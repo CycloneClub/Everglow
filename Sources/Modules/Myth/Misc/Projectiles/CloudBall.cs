@@ -38,7 +38,7 @@ public class CloudBall : ModProjectile
 	/// <summary>
 	/// 粒子释放间距，也就是说不管速度多快，都是每隔8帧释放一次粒子
 	/// </summary>
-	private static int DustSpacing = 8;
+	private static int dustSpacing = 8;
 
 	public override void AI()
 	{
@@ -56,10 +56,10 @@ public class CloudBall : ModProjectile
 		}
 		else
 		{
-			for (float i = DistanceCompletion; i < speed; i += DustSpacing)
+			for (float i = DistanceCompletion; i < speed; i += dustSpacing)
 			{
 				// Main.NewText($"time:{Main.time} speed:{speed} i:{i}");
-				DistanceCompletion = DustSpacing - speed + i;
+				DistanceCompletion = dustSpacing - speed + i;
 				Vector2 pos = Projectile.Center + new Vector2(-4, -4);
 				pos += normalize * i;
 

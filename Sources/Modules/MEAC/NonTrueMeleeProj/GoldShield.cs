@@ -30,8 +30,8 @@ public class GoldShield : ModProjectile, IWarpProjectile
 	}
 
 	public static Texture2D ShieldTexture;
-	private RenderTarget2D BlackAreaSwap;
-	private RenderTarget2D BlackAreaOrig;
+	private RenderTarget2D blackAreaSwap;
+	private RenderTarget2D blackAreaOrig;
 
 	public Vector2 DrawSize => new Vector2(240, 200);
 
@@ -46,8 +46,8 @@ public class GoldShield : ModProjectile, IWarpProjectile
 			});
 			Ins.HookManager.AddHook(CodeLayer.ResolutionChanged, (Vector2 size) =>
 			{
-				BlackAreaSwap?.Dispose();
-				BlackAreaOrig?.Dispose();
+				blackAreaSwap?.Dispose();
+				blackAreaOrig?.Dispose();
 				AllocateRenderTarget(size);
 			}, "Realloc RenderTarget");
 		}
@@ -58,8 +58,8 @@ public class GoldShield : ModProjectile, IWarpProjectile
 		if (Ins.VisualQuality.High)
 		{
 			var gd = Main.instance.GraphicsDevice;
-			BlackAreaSwap = new RenderTarget2D(gd, (int)size.X, (int)size.Y);
-			BlackAreaOrig = new RenderTarget2D(gd, Main.screenWidth, Main.screenHeight);
+			blackAreaSwap = new RenderTarget2D(gd, (int)size.X, (int)size.Y);
+			blackAreaOrig = new RenderTarget2D(gd, Main.screenWidth, Main.screenHeight);
 		}
 	}
 
@@ -75,7 +75,7 @@ public class GoldShield : ModProjectile, IWarpProjectile
 
 		sb.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 
-		gd.SetRenderTarget(BlackAreaSwap);
+		gd.SetRenderTarget(blackAreaSwap);
 		gd.Clear(Color.Transparent);
 
 		var projection = Matrix.CreateOrthographicOffCenter(0, DrawSize.X, DrawSize.Y, 0, 0, 1);
@@ -99,10 +99,10 @@ public class GoldShield : ModProjectile, IWarpProjectile
 			sb.Draw(texPiece, drawPos + new Vector2((i + 0.5f) * 120 / count, MathF.Sin((i / count - 0.25f) * MathF.PI) * 80), null, Color.White, 0, texPiece.Size() / 2f, new Vector2(phi2, phi2 * 3f), SpriteEffects.None, 0);
 			sb.Draw(texPiece, drawPos + new Vector2((i + 0.5f) * 120 / count, MathF.Sin((i / count + 0.75f) * MathF.PI) * 80), null, Color.White, 0, texPiece.Size() / 2f, new Vector2(phi, phi * 3f), SpriteEffects.None, 0);
 		}
-		ShieldTexture = BlackAreaSwap;
+		ShieldTexture = blackAreaSwap;
 		sb.End();
 
-		gd.SetRenderTarget(BlackAreaOrig);
+		gd.SetRenderTarget(blackAreaOrig);
 		gd.Clear(Color.Transparent);
 		sb.Begin(SpriteSortMode.Immediate, BlendState.Opaque, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Matrix.Invert(Main.GameViewMatrix.TransformationMatrix)/*我不知道为什么,乘一个矩阵的逆就好了*/);
 
@@ -113,7 +113,7 @@ public class GoldShield : ModProjectile, IWarpProjectile
 		gd.Clear(Color.Transparent);
 		sb.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 
-		sb.Draw(BlackAreaOrig, Vector2.Zero, Color.White);
+		sb.Draw(blackAreaOrig, Vector2.Zero, Color.White);
 		sb.End();
 	}
 

@@ -30,7 +30,7 @@ public class FireflyPiranha : ModNPC
 		NPC.scale = Main.rand.NextFloat(0.85f, 1.15f);
 	}
 
-	private int PhysicalStrength = 1200;
+	private int physicalStrength = 1200;
 
 	public override void AI()
 	{
@@ -44,14 +44,14 @@ public class FireflyPiranha : ModNPC
 			NPC.knockBackResist = 0.4f;
 			NPC.noGravity = true;
 
-			if (NPC.HasPlayerTarget && PhysicalStrength > 0)
+			if (NPC.HasPlayerTarget && physicalStrength > 0)
 			{
 				Player player = Main.player[NPC.target];
 				NormalAttack(player);
-				PhysicalStrength -= 1;
-				if (PhysicalStrength <= 2)
+				physicalStrength -= 1;
+				if (physicalStrength <= 2)
 				{
-					PhysicalStrength = -600;
+					physicalStrength = -600;
 					if (NPC.Center.X > player.Center.X)
 					{
 						NPC.velocity.X = -5;
@@ -62,14 +62,14 @@ public class FireflyPiranha : ModNPC
 					}
 				}
 			}
-			if (NPC.HasPlayerTarget && PhysicalStrength <= 0)
+			if (NPC.HasPlayerTarget && physicalStrength <= 0)
 			{
 				Player player = Main.player[NPC.target];
 				Wander(player);
-				PhysicalStrength++;
-				if (PhysicalStrength >= 0)
+				physicalStrength++;
+				if (physicalStrength >= 0)
 				{
-					PhysicalStrength = 600;
+					physicalStrength = 600;
 				}
 			}
 			NPC.rotation = NPC.velocity.ToRotation() + (1 - NPC.spriteDirection) * MathF.PI / 2f;
@@ -77,27 +77,27 @@ public class FireflyPiranha : ModNPC
 		else
 		{
 			NPC.knockBackResist = 0;
-			if (PhysicalStrength > 0)
+			if (physicalStrength > 0)
 			{
-				PhysicalStrength -= 1;
+				physicalStrength -= 1;
 			}
 			NPC.localAI[0] += 1;
 			NPC.noGravity = false;
 			NPC.velocity.Y += 0.15f;
 			if (NPC.localAI[0] % 4 == 0 && NPC.collideY)
 			{
-				PhysicalStrength -= 100;
+				physicalStrength -= 100;
 				NPC.velocity += new Vector2(Main.rand.NextFloat(-2f, 2f), Main.rand.NextFloat(-12f, -6f));
 				NPC.rotation = Main.rand.NextFloat(-0.2f, 0.2f);
 			}
 			if (NPC.collideX)
 			{
-				PhysicalStrength -= 100;
+				physicalStrength -= 100;
 				NPC.velocity += new Vector2(Main.rand.NextFloat(-6f, 6f), Main.rand.NextFloat(-4f, -2f));
 				NPC.rotation = Main.rand.NextFloat(-0.2f, 0.2f);
 			}
 			NPC.velocity *= MathF.Pow(0.996f, NPC.velocity.Length());
-			if (PhysicalStrength > 0)
+			if (physicalStrength > 0)
 			{
 				NPC.rotation = NPC.velocity.ToRotation() + (1 - NPC.spriteDirection) * MathF.PI / 2f;
 			}

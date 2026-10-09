@@ -30,36 +30,36 @@ public class GlowingHeal : ModNPC
 		NPCID.Sets.TrailCacheLength[NPC.type] = 40;
 	}
 
-	private bool Start = false;
-	private Vector2 Cent;
-	private Vector2 Acc;
-	private float Ome = 0;
+	private bool start = false;
+	private Vector2 cent;
+	private Vector2 acc;
+	private float ome = 0;
 	private float kx = 1;
-	private bool Healed = false;
+	private bool healed = false;
 
 	public override void AI()
 	{
 		Player player = Main.player[NPC.target];
 		NPC.TargetClosest(false);
-		if (!Start)
+		if (!start)
 		{
 			NPC.velocity = new Vector2(Main.rand.NextFloat(0, 10f), 0).RotatedByRandom(6.28);
-			Acc = new Vector2(Main.rand.NextFloat(0, 0.35f), 0).RotatedByRandom(6.28);
+			acc = new Vector2(Main.rand.NextFloat(0, 0.35f), 0).RotatedByRandom(6.28);
 
-			Ome = Main.rand.NextFloat(-0.16f, 0.16f);
-			Start = true;
+			ome = Main.rand.NextFloat(-0.16f, 0.16f);
+			start = true;
 		}
-		Cent = player.Center;
-		Vector2 v0 = Cent - NPC.Center;
+		cent = player.Center;
+		Vector2 v0 = cent - NPC.Center;
 		if (v0.Length() >= 32)
 		{
-			Vector2 v = Cent - (NPC.Center + NPC.velocity * 30);
+			Vector2 v = cent - (NPC.Center + NPC.velocity * 30);
 			Vector2 v2 = v / v.Length() * 0.05f * (float)(1 + Math.Log(v.Length() + 1));
 
-			Acc *= 0.95f;
-			NPC.velocity += Acc + v2;
-			NPC.velocity = NPC.velocity.RotatedBy(Ome);
-			Ome *= 0.96f;
+			acc *= 0.95f;
+			NPC.velocity += acc + v2;
+			NPC.velocity = NPC.velocity.RotatedBy(ome);
+			ome *= 0.96f;
 			kx = 20 - v0.Length() / 12f;
 			if (kx < 1)
 			{
@@ -68,7 +68,7 @@ public class GlowingHeal : ModNPC
 		}
 		else
 		{
-			if (!Healed)
+			if (!healed)
 			{
 				if (player.statLife < player.statLifeMax)
 				{
@@ -79,7 +79,7 @@ public class GlowingHeal : ModNPC
 				{
 					// player.statLife = player.statLifeMax;
 				}
-				Healed = true;
+				healed = true;
 			}
 			NPC.velocity *= 0.8f;
 			kx--;
@@ -103,7 +103,7 @@ public class GlowingHeal : ModNPC
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.ZoomMatrix);
 		var bars = new List<Vertex2D>();
 		ef = MythContent.QuickEffect("Effects/Trail");
-		Vector2 v = Cent - NPC.Center;
+		Vector2 v = cent - NPC.Center;
 		int width = (int)(kx / 2);
 		for (int i = 1; i < NPC.oldPos.Length - 1; ++i)
 		{

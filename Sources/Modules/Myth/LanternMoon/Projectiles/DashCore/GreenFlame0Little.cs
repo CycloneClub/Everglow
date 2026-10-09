@@ -48,21 +48,21 @@ internal class GreenFlame0Little : ModProjectile
 			Projectile.scale *= 0.97f;
 		}
 
-		color0.R = (byte)(color0.R * 0.94f + Aimcolor.R * 0.06f);
-		color0.G = (byte)(color0.G * 0.94f + Aimcolor.G * 0.06f);
-		color0.B = (byte)(color0.B * 0.94f + Aimcolor.B * 0.06f);
-		color0.A = (byte)(color0.A * 0.94f + Aimcolor.A * 0.06f);
-		ProjOldColor[0] = color0;
-		for (int f = ProjOldColor.Length - 1; f > 0; f--)
+		color0.R = (byte)(color0.R * 0.94f + aimcolor.R * 0.06f);
+		color0.G = (byte)(color0.G * 0.94f + aimcolor.G * 0.06f);
+		color0.B = (byte)(color0.B * 0.94f + aimcolor.B * 0.06f);
+		color0.A = (byte)(color0.A * 0.94f + aimcolor.A * 0.06f);
+		projOldColor[0] = color0;
+		for (int f = projOldColor.Length - 1; f > 0; f--)
 		{
-			ProjOldColor[f] = ProjOldColor[f - 1];
+			projOldColor[f] = projOldColor[f - 1];
 		}
 		kb *= 0.97f;
 	}
 
 	private Color color0 = new Color(0, 255, 17);
-	private Color Aimcolor = new Color(0, 255, 17);
-	private Color[] ProjOldColor = new Color[70];
+	private Color aimcolor = new Color(0, 255, 17);
+	private Color[] projOldColor = new Color[70];
 	private float kb = 1;
 
 	public override bool PreDraw(ref Color lightColor)
@@ -70,7 +70,7 @@ internal class GreenFlame0Little : ModProjectile
 		return false;
 	}
 
-	private int TrueL = 1;
+	private int trueL = 1;
 
 	public override void PostDraw(Color lightColor)
 	{
@@ -86,7 +86,7 @@ internal class GreenFlame0Little : ModProjectile
 			width = Projectile.timeLeft / 3f;
 		}
 
-		TrueL = 0;
+		trueL = 0;
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
@@ -94,7 +94,7 @@ internal class GreenFlame0Little : ModProjectile
 				break;
 			}
 
-			TrueL++;
+			trueL++;
 		}
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
@@ -106,7 +106,7 @@ internal class GreenFlame0Little : ModProjectile
 			var normalDir = Projectile.oldPos[i - 1] - Projectile.oldPos[i];
 			normalDir = Vector2.Normalize(new Vector2(-normalDir.Y, normalDir.X));
 
-			var factor = i / (float)TrueL;
+			var factor = i / (float)trueL;
 			var w = MathHelper.Lerp(1f, 0.05f, factor);
 
 			bars.Add(new Vertex2D(Projectile.oldPos[i] + normalDir * width + new Vector2(17, 17) - Main.screenPosition, new Color(84, 53, 46, 0), new Vector3(factor, 1, w)));

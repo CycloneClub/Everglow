@@ -23,7 +23,7 @@ public class ThunderBall2 : ModProjectile
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 60;
 	}
 
-	private int Tokill = -1;
+	private int tokill = -1;
 
 	public override void AI()
 	{
@@ -53,23 +53,23 @@ public class ThunderBall2 : ModProjectile
 		}
 	}
 
-	private bool Nul = false;
+	private bool nul = false;
 
 	public override Color? GetAlpha(Color lightColor)
 	{
-		if (!Nul)
+		if (!nul)
 		{
 			return new Color?(new Color(255, 255, 255, 0));
 		}
 		else
 		{
-			return new Color?(new Color(Tokill / 45f, Tokill / 45f, Tokill / 45f, 0));
+			return new Color?(new Color(tokill / 45f, tokill / 45f, tokill / 45f, 0));
 		}
 	}
 
 	public override void PostDraw(Color lightColor)
 	{
-		Projectile.ai[0] = Tokill;
+		Projectile.ai[0] = tokill;
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 		var bars = new List<Vertex2D>();
@@ -116,7 +116,7 @@ public class ThunderBall2 : ModProjectile
 		{
 			triangleList.Add(bars[0]);
 			Vector2 va = Projectile.velocity * 1.5f;
-			if (Tokill <= 44 && Tokill > 0)
+			if (tokill <= 44 && tokill > 0)
 			{
 				va = Projectile.velocity * 0.05f;
 			}

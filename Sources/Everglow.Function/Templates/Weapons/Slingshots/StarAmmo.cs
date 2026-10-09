@@ -22,24 +22,24 @@ public class StarAmmo : SlingshotAmmo
 
 	public override void AI()
 	{
-		if (TimeTokill is >= 0 and <= 2)
+		if (timeTokill is >= 0 and <= 2)
 		{
 			Projectile.Kill();
 		}
 
-		if (TimeTokill is <= 15 and > 0)
+		if (timeTokill is <= 15 and > 0)
 		{
 			Projectile.velocity = Projectile.oldVelocity;
 		}
 
-		TimeTokill--;
-		if (TimeTokill < 0)
+		timeTokill--;
+		if (timeTokill < 0)
 		{
 			Projectile.velocity.Y += 0.17f;
 		}
 		else
 		{
-			if (TimeTokill < 10)
+			if (timeTokill < 10)
 			{
 				Projectile.damage = 0;
 				Projectile.friendly = false;
@@ -105,9 +105,9 @@ public class StarAmmo : SlingshotAmmo
 		var Light = new Color(Power, Power / 2.1f, 0, 0);
 		Texture2D star = ModAsset.SlingshotHitStar.Value;
 		float kSize = 1f;
-		if (TimeTokill > 0)
+		if (timeTokill > 0)
 		{
-			kSize = TimeTokill / 30f;
+			kSize = timeTokill / 30f;
 		}
 
 		Main.spriteBatch.Draw(star, Projectile.Center - Main.screenPosition - Projectile.velocity, null, Light, 0, star.Size() / 2f, new Vector2(0.06f, 0.23f + MathF.Sin((float)(Main.timeForVisualEffects * 0.1)) * 0.2f) * Power * 2f * kSize, SpriteEffects.None, 0);
@@ -125,7 +125,7 @@ public class StarAmmo : SlingshotAmmo
 	public override void AmmoHit()
 	{
 		SoundEngine.PlaySound(SoundID.Item27, Projectile.Center);
-		TimeTokill = 30;
+		timeTokill = 30;
 		float DrawC = Projectile.ai[0] + 0.5f;
 		Projectile.velocity = Projectile.oldVelocity;
 		int StepLength;

@@ -105,7 +105,7 @@ public class TsunamiShark_missile : ModProjectile
 	}
 
 	private float maxVel = 0f;
-	private NPC OldTarget = null;
+	private NPC oldTarget = null;
 
 	private IEnumerator<ICoroutineInstruction> Chase()
 	{
@@ -123,9 +123,9 @@ public class TsunamiShark_missile : ModProjectile
 				NPC target = tsunamiS.MarkedTarget;
 				if (target != null)
 				{
-					if (OldTarget == null)
+					if (oldTarget == null)
 					{
-						OldTarget = target;
+						oldTarget = target;
 						uint length = (uint)Main.rand.Next(120);
 						for (int a = 0; a < length; a++)
 						{
@@ -150,7 +150,7 @@ public class TsunamiShark_missile : ModProjectile
 				}
 				else
 				{
-					OldTarget = null;
+					oldTarget = null;
 					Projectile.friendly = false;
 					Vector2 swing = new Vector2(MathF.Sin((float)Main.time * 0.3f + Projectile.whoAmI) * 72 * Projectile.ai[0] * Projectile.ai[0], MathF.Sin((float)Main.time * 0.1f + Projectile.whoAmI * 0.1f) * 10 - Projectile.ai[0] * 200 + 200);
 					Vector2 aimVel = player.Center + new Vector2(-player.direction * 36, -player.gravDir * 30) + swing - Projectile.Center;
@@ -163,7 +163,7 @@ public class TsunamiShark_missile : ModProjectile
 			}
 			else
 			{
-				OldTarget = null;
+				oldTarget = null;
 				Projectile.friendly = false;
 				Vector2 swing = new Vector2(MathF.Sin((float)Main.time * 0.3f + Projectile.whoAmI) * 72 * Projectile.ai[0] * Projectile.ai[0], MathF.Sin((float)Main.time * 0.1f + Projectile.whoAmI * 0.1f) * 10 - Projectile.ai[0] * 200 + 200);
 				Vector2 aimVel = player.Center + new Vector2(-player.direction * 36, -player.gravDir * 30) + swing - Projectile.Center;

@@ -17,20 +17,20 @@ internal class SpineGun : ModProjectile
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 40;
 	}
 
-	private int Ran = -1;
+	private int ran = -1;
 
 	public override Color? GetAlpha(Color lightColor)
 	{
 		return new Color(255 - Projectile.alpha, 255 - Projectile.alpha, 255 - Projectile.alpha, 0);
 	}
 
-	private bool Release = true;
+	private bool release = true;
 	private Vector2 oldPo = Vector2.Zero;
 
 	public override void AI()
 	{
 		Vector2 v0 = Main.MouseWorld - Main.player[Projectile.owner].MountedCenter;
-		if (Main.mouseLeft && Release)
+		if (Main.mouseLeft && release)
 		{
 			Projectile.ai[0] *= 0.9f;
 			Projectile.ai[1] -= 1f;
@@ -40,7 +40,7 @@ internal class SpineGun : ModProjectile
 			Projectile.Center = oldPo;
 			Projectile.velocity *= 0;
 		}
-		if (!Main.mouseLeft && Release)
+		if (!Main.mouseLeft && release)
 		{
 			if (Projectile.ai[1] > 0)
 			{
@@ -53,9 +53,9 @@ internal class SpineGun : ModProjectile
 				Projectile.Kill();
 			}
 		}
-		if (Ran == -1)
+		if (ran == -1)
 		{
-			Ran = Main.rand.Next(9);
+			ran = Main.rand.Next(9);
 		}
 	}
 
@@ -66,7 +66,7 @@ internal class SpineGun : ModProjectile
 
 	public override void PostDraw(Color lightColor)
 	{
-		if (!Release)
+		if (!release)
 		{
 			return;
 		}
@@ -94,7 +94,7 @@ internal class SpineGun : ModProjectile
 		Main.spriteBatch.Draw(TexMain, Projectile.Center - Main.screenPosition - new Vector2(0, 6), null, drawColor, Projectile.rotation - (float)(Math.PI * 0.25), new Vector2(TexMain.Width / 2f, TexMain.Height / 2f), 1f, se, 0);
 	}
 
-	private bool[] HasHit = new bool[200];
+	private bool[] hasHit = new bool[200];
 
 	private struct CustomVertexInfo : IVertexType
 	{
