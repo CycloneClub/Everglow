@@ -102,10 +102,6 @@ public class FoodModPlayer : ModPlayer
 		return false;
 	}
 
-	/*
-
-
-         */
 	/// <summary>
 	/// 以下为计时器
 	/// </summary>
