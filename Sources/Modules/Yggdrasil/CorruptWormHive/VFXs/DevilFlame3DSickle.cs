@@ -14,7 +14,6 @@ internal class DevilFlame3DSickleDust : Visual
 	public float Timer;
 	public float MaxTime;
 	public float Scale;
-	public float Rotation;
 	public Queue<Vector3> Trails = new Queue<Vector3>();
 	public int OwnerWhoAmI = -1;
 
