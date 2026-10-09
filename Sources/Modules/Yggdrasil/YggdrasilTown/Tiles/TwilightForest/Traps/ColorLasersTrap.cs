@@ -1,5 +1,6 @@
 using Everglow.Commons.VFX.Scene;
 using Terraria.DataStructures;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.TwilightForest.Traps;
 
@@ -67,7 +68,7 @@ public class ColorLasersTrap : TileVFX
 			{
 				if (Collision.CheckAABBvLineCollision(player.Hitbox.TopLeft(), player.Hitbox.Size(), Position, Position + collisionUnit * length))
 				{
-					player.Hurt(PlayerDeathReason.ByCustomReason("Try to across in a laser net"), 999, player.velocity.X > 0 ? 1 : -1, false, false, -1, false, 999, 0, 0);
+					player.Hurt(PlayerDeathReason.ByCustomReason(NetworkText.FromLiteral("Try to across in a laser net")), 999, player.velocity.X > 0 ? 1 : -1, false, false, -1, false, 999, 0, 0);
 				}
 			}
 		}
