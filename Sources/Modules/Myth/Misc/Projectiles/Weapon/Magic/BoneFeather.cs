@@ -149,7 +149,7 @@ public class BoneFeather : StickNPCProjectile
 
 	public void AmmoHit()
 	{
-		SoundEngine.PlaySound((SoundID.DD2_BetsyFlameBreath.WithVolume(0.3f)).WithPitchOffset(0.8f), Projectile.Center);
+		SoundEngine.PlaySound(SoundID.DD2_BetsyFlameBreath.WithVolume(0.3f).WithPitchOffset(0.8f), Projectile.Center);
 		for (int j = 0; j < 4; j++)
 		{
 			Vector2 v = new Vector2(0, Main.rand.NextFloat(7, 20)).RotatedByRandom(MathHelper.TwoPi);

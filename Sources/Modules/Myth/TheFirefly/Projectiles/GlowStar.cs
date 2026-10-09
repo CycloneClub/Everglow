@@ -54,7 +54,7 @@ public class GlowStar : ModProjectile
 				return;
 			}
 			Vector2 toTarget = Main.npc[targetWhoAmI].Center - Projectile.Center - Projectile.velocity;
-			Projectile.velocity = Projectile.velocity * 0.96f + Vector2.Normalize(toTarget) * (3f) * 0.04f;
+			Projectile.velocity = Projectile.velocity * 0.96f + Vector2.Normalize(toTarget) * 3f * 0.04f;
 			if (Projectile.velocity.Length() > 15f)
 			{
 				Projectile.velocity = Vector2.Normalize(Projectile.velocity) * 15f;

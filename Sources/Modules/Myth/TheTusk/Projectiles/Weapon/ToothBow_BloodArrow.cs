@@ -86,7 +86,7 @@ public class ToothBow_BloodArrow : ModProjectile
 		{
 			if (npc.active && !npc.dontTakeDamage)
 			{
-				if ((new Rectangle((int)Projectile.Center.X, (int)Projectile.Center.Y, 1, 1)).Intersects(npc.Hitbox))
+				if (new Rectangle((int)Projectile.Center.X, (int)Projectile.Center.Y, 1, 1).Intersects(npc.Hitbox))
 				{
 					relativeAngle = Projectile.rotation - npc.rotation;
 					hitTargetAngle = Projectile.rotation;

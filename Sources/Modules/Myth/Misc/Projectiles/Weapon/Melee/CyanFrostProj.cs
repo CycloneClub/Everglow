@@ -219,7 +219,7 @@ public class CyanFrostProj : ModProjectile
 		Rectangle sourceRectangle = texture.Frame(1, 4); // The sourceRectangle says which frame to use.
 		Vector2 origin = sourceRectangle.Size() / 2f;
 		float scale = Projectile.scale * 1.1f;
-		SpriteEffects spriteEffects = ((!(Projectile.ai[0] >= 0f)) ? SpriteEffects.FlipVertically : SpriteEffects.None); // Flip the sprite based on the direction it is facing.
+		SpriteEffects spriteEffects = (!(Projectile.ai[0] >= 0f)) ? SpriteEffects.FlipVertically : SpriteEffects.None; // Flip the sprite based on the direction it is facing.
 		float percentageOfLife = Projectile.localAI[0] / Projectile.ai[1]; // The current time over the max time.
 		float lerpTime = Utils.Remap(percentageOfLife, 0f, 0.6f, 0f, 1f) * Utils.Remap(percentageOfLife, 0.6f, 1f, 1f, 0f);
 		float lightingColor = Lighting.GetColor(Projectile.Center.ToTileCoordinates()).ToVector3().Length() / (float)Math.Sqrt(3.0);

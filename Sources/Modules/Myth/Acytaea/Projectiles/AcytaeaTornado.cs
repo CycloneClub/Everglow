@@ -216,7 +216,7 @@ public class AcytaeaTornado : ModProjectile
 		{
 			value2 = Timer / 24f;
 		}
-		value2 *= (1 + dissolveRange);
+		value2 *= 1 + dissolveRange;
 		value2 -= dissolveRange;
 		tornado.Parameters["duration"].SetValue(value2 * 0.8f);
 		tornado.Parameters["dissolveRange"].SetValue(dissolveRange);

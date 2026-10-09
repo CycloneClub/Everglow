@@ -102,7 +102,7 @@ public class TuskPin : ModProjectile
 		{
 			if (Projectile.timeLeft < 85)
 			{
-				Main.EntitySpriteDraw(textureBlack, Projectile.Center - Main.screenPosition, null, Color.White * (Math.Min(1, (85 - Projectile.timeLeft) / 5f)), Projectile.rotation, texture.Size() / 2f, Projectile.scale, SpriteEffects.None);
+				Main.EntitySpriteDraw(textureBlack, Projectile.Center - Main.screenPosition, null, Color.White * Math.Min(1, (85 - Projectile.timeLeft) / 5f), Projectile.rotation, texture.Size() / 2f, Projectile.scale, SpriteEffects.None);
 			}
 			if (Projectile.timeLeft < 80 && Projectile.timeLeft > 75)
 			{

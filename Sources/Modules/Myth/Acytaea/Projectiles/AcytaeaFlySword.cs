@@ -99,7 +99,7 @@ public class AcytaeaFlySword : ModProjectile
 		Projectile.friendly = false;
 		Projectile.ignoreWater = true;
 		Projectile.velocity = Projectile.oldVelocity;
-		SoundEngine.PlaySound((SoundID.DD2_WitherBeastCrystalImpact.WithVolume(0.3f)).WithPitchOffset(Main.rand.NextFloat(-0.4f, 0.4f)), Projectile.Center);
+		SoundEngine.PlaySound(SoundID.DD2_WitherBeastCrystalImpact.WithVolume(0.3f).WithPitchOffset(Main.rand.NextFloat(-0.4f, 0.4f)), Projectile.Center);
 		for (int x = 0; x < 25; x++)
 		{
 			Vector2 newVec = new Vector2(0, Main.rand.NextFloat(4f, 12f)).RotatedByRandom(6.238f);
