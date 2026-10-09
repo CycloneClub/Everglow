@@ -1,0 +1,7 @@
+{
+	DrunkenMinerInvasion: {
+		Name: 醉酒矿工游行
+		StartMessage: 醉酒矿工正在天穹镇闹事！
+		EndMessage: 醉酒矿工的骚乱已被平息！
+	}
+}

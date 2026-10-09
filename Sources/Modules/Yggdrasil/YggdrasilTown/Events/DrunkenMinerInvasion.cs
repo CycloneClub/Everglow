@@ -1,6 +1,11 @@
+using Everglow.Commons.DataStructures;
+using Everglow.Commons.Utilities;
 using Everglow.Commons.Mechanics.Events;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
+using Terraria.Chat;
 using Terraria.DataStructures;
+using Terraria.GameContent;
+using Terraria.Localization;
 using Terraria.ModLoader.IO;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Events;
@@ -16,13 +21,12 @@ public sealed class DrunkenMinerInvasion : ModEvent
 
 	public override bool Networked => true;
 
-	public override bool IsBackground => true;
-
 	// 暂用原版僵尸验证流程；刷怪配置由该入侵自身维护。
 	public const int EnemyType = NPCID.Zombie;
 	private const int EnemyCount = 12;
 	private const int MaxActiveEnemies = 4;
 	private const int SpawnInterval = 60;
+	private const string LocalizationKey = "Mods.Everglow.Events.DrunkenMinerInvasion.";
 
 	private static Rectangle SpawnArea
 	{
@@ -53,6 +57,52 @@ public sealed class DrunkenMinerInvasion : ModEvent
 		DefeatedEnemies = 0;
 		TargetCount = EnemyCount;
 		spawnTimer = 0;
+		Announce("StartMessage");
+	}
+
+	private static void Announce(string message)
+	{
+		if (Main.netMode == NetmodeID.SinglePlayer)
+		{
+			Main.NewText(Language.GetTextValue(LocalizationKey + message), 175, 75, 255);
+		}
+		else if (Main.netMode == NetmodeID.Server)
+		{
+			ChatHelper.BroadcastChatMessage(NetworkText.FromKey(LocalizationKey + message), new Color(175, 75, 255));
+		}
+	}
+
+	public override void Draw(SpriteBatch sprite)
+	{
+		if (Main.dedServ || !Active || TargetCount <= 0)
+		{
+			return;
+		}
+
+		// Use the vanilla invasion layout without changing event state during drawing.
+		using var scope = (SpriteBatchState.Immediate with { TransformMatrix = Main.UIScaleMatrix }).BeginScope(sprite);
+		Vector2 center = new(Main.screenWidth - 120f, Main.screenHeight - 40f);
+		Utils.DrawInvBG(sprite, Utils.CenteredRectangle(center, new Vector2(200f, 45f)), new Color(63, 65, 151) * 0.785f);
+
+		Texture2D colorBar = TextureAssets.ColorBar.Value;
+		sprite.Draw(colorBar, center, null, Color.White, 0f, new Vector2(colorBar.Width / 2f, 0f), 1f, SpriteEffects.None, 0f);
+		float progress = MathHelper.Clamp((float)DefeatedEnemies / TargetCount, 0f, 1f);
+		const float barWidth = 169f;
+		const float barHeight = 8f;
+		Vector2 edge = center + new Vector2(1f + (progress - 0.5f) * barWidth, barHeight);
+		Texture2D pixel = TextureAssets.MagicPixel.Value;
+		Rectangle pixelSource = new(0, 0, 1, 1);
+		sprite.Draw(pixel, edge, pixelSource, new Color(255, 241, 51), 0f, new Vector2(1f, 0.5f), new Vector2(barWidth * progress, barHeight), SpriteEffects.None, 0f);
+		sprite.Draw(pixel, edge, pixelSource, Color.Black, 0f, new Vector2(0f, 0.5f), new Vector2(barWidth * (1f - progress), barHeight), SpriteEffects.None, 0f);
+		sprite.Draw(pixel, edge, pixelSource, new Color(255, 165, 0, 127), 0f, new Vector2(1f, 0.5f), new Vector2(2f, barHeight), SpriteEffects.None, 0f);
+		Utils.DrawBorderString(sprite, $"{DefeatedEnemies} / {TargetCount}", center + new Vector2(0f, 4f), Color.White, 1f, 0.5f, 1f);
+
+		string name = Language.GetTextValue(LocalizationKey + "Name");
+		Vector2 nameSize = FontAssets.MouseText.Value.MeasureString(name);
+		float nameScale = Math.Min(0.9f, 180f / Math.Max(1f, nameSize.X));
+		Vector2 nameCenter = center - new Vector2(0f, 40f);
+		Utils.DrawInvBG(sprite, Utils.CenteredRectangle(nameCenter, new Vector2(200f, 30f)), new Color(148, 122, 72) * 0.5f);
+		Utils.DrawBorderString(sprite, name, nameCenter, Color.White, nameScale, 0.5f, 0.5f);
 	}
 
 	public override void PostUpdateEverything()
@@ -138,6 +188,7 @@ public sealed class DrunkenMinerInvasion : ModEvent
 		{
 			Downed = true;
 			EventSystem.Deactivate(this);
+			Announce("EndMessage");
 		}
 		else if (Main.netMode == NetmodeID.Server)
 		{
