@@ -66,7 +66,7 @@ public class VortexVanquisherThump : ModProjectile
 				CheckPoint = Projectile.Center + new Vector2(0, -100);
 		}
 
-		Vector2 TotalVector = Vector2.Zero;//合向量
+		Vector2 TotalVector = Vector2.Zero; //合向量
 		if ((Projectile.Center + new Vector2(0, -100)).Y < CheckPoint.Y)
 		{
 			int TCount = 0;

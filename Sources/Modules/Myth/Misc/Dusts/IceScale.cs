@@ -7,7 +7,7 @@ public class IceScale : ModDust
 		dust.noGravity = true;
 		dust.frame = new Rectangle(0, 0, 15, 15);
 		dust.alpha = 0;
-		dust.dustIndex = (int)(dust.scale * 300);//用旋转角度存尺寸极值
+		dust.dustIndex = (int)(dust.scale * 300); //用旋转角度存尺寸极值
 	}
 
 	public override bool Update(Dust dust)
@@ -46,7 +46,7 @@ public class IceScale2 : ModDust
 		dust.noGravity = true;
 		dust.frame = new Rectangle(0, 0, 15, 15);
 		dust.alpha = 0;
-		dust.dustIndex = (int)(dust.scale * 300);//用旋转角度存尺寸极值
+		dust.dustIndex = (int)(dust.scale * 300); //用旋转角度存尺寸极值
 	}
 
 	public override bool Update(Dust dust)
@@ -85,7 +85,7 @@ public class IceScale3 : ModDust
 		dust.noGravity = true;
 		dust.frame = new Rectangle(0, 0, 15, 15);
 		dust.alpha = 0;
-		dust.dustIndex = (int)(dust.scale * 300);//用旋转角度存尺寸极值
+		dust.dustIndex = (int)(dust.scale * 300); //用旋转角度存尺寸极值
 	}
 
 	public override bool Update(Dust dust)

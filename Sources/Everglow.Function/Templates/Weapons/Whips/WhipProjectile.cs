@@ -46,7 +46,7 @@ public abstract class WhipProjectile : ModProjectile
 	{
 		Projectile.width = 18;
 		Projectile.height = 18;
-		Projectile.aiStyle = -1;//165
+		Projectile.aiStyle = -1; //165
 		Projectile.friendly = true;
 		Projectile.penetrate = -1;
 		Projectile.tileCollide = false;

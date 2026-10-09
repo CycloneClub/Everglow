@@ -158,7 +158,7 @@ public class StonePost : ModProjectile, IWarpProjectile
 
 		float WaveRange = 1.7f;
 
-		float k0 = MathF.Sqrt(1 - Projectile.timeLeft * 0.004f % 1) * 2;//画方波
+		float k0 = MathF.Sqrt(1 - Projectile.timeLeft * 0.004f % 1) * 2; //画方波
 		float k1 = 1 - k0;
 		float k2 = k1 * k1;
 		float k3 = MathF.Sqrt(k1);
@@ -319,7 +319,7 @@ public class StonePost : ModProjectile, IWarpProjectile
 		float WaveRange = 1.7f;
 		Texture2D BackG = ModAsset.Black.Value;
 
-		float k0 = (float)Math.Sqrt(1 - Projectile.timeLeft * 0.004 % 1) * 2;//画方波
+		float k0 = (float)Math.Sqrt(1 - Projectile.timeLeft * 0.004 % 1) * 2; //画方波
 		k0 = Math.Max(k0 - 0.025f, 0);
 		float k1 = 1 - k0;
 		float k2 = k1 * k1;

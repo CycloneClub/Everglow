@@ -101,7 +101,7 @@ public abstract class MagicBookProjectile : ModProjectile
 	public override void AI()
 	{
 		Player player = Main.player[Projectile.owner];
-		Projectile.Center = Projectile.Center * 0.7f + (player.Center + new Vector2(player.direction * 22, 12 * player.gravDir * (float)(0.2 + Math.Sin(Main.timeForVisualEffects / 18d) / 2d))) * 0.3f;//书跟着玩家飞
+		Projectile.Center = Projectile.Center * 0.7f + (player.Center + new Vector2(player.direction * 22, 12 * player.gravDir * (float)(0.2 + Math.Sin(Main.timeForVisualEffects / 18d) / 2d))) * 0.3f; //书跟着玩家飞
 		Projectile.spriteDirection = player.direction;
 		Projectile.velocity *= 0;
 		if (player.itemTime > 0 && player.HeldItem.type == ItemType && player.active && !player.dead)//检测手持物品
@@ -116,7 +116,7 @@ public abstract class MagicBookProjectile : ModProjectile
 			if (timer < 0)
 				Projectile.Kill();
 		}
-		Player.CompositeArmStretchAmount PCAS = Player.CompositeArmStretchAmount.Full;//玩家动作
+		Player.CompositeArmStretchAmount PCAS = Player.CompositeArmStretchAmount.Full; //玩家动作
 
 		player.SetCompositeArmFront(true, PCAS, (float)(-Math.Sin(Main.timeForVisualEffects / 18d) * 0.6 + 1.2) * -player.direction);
 		Vector2 vTOMouse = Main.MouseWorld - player.Center;
@@ -216,8 +216,8 @@ public abstract class MagicBookProjectile : ModProjectile
 	public virtual void DrawPaper(Texture2D tex, int GlowType = 0, float MulSize = 1f)
 	{
 		Player player = Main.player[Projectile.owner];
-		Vector2 x0 = new Vector2(BookScale * player.direction, BookScale * player.gravDir) * 0.45f * MulSize;//把书本贴图（有内容部分）算作一个矩形，这里表示这个矩形的半宽。玩家朝右，重力方向朝下时指向右下
-		Vector2 y0 = new Vector2(BookScale * player.direction, -BookScale * player.gravDir) * 0.64f * MulSize;//把书本贴图（有内容部分）算作一个矩形，这里表示这个矩形的半长，方向与x0垂直，玩家朝右，重力方向朝下时指向右上
+		Vector2 x0 = new Vector2(BookScale * player.direction, BookScale * player.gravDir) * 0.45f * MulSize; //把书本贴图（有内容部分）算作一个矩形，这里表示这个矩形的半宽。玩家朝右，重力方向朝下时指向右下
+		Vector2 y0 = new Vector2(BookScale * player.direction, -BookScale * player.gravDir) * 0.64f * MulSize; //把书本贴图（有内容部分）算作一个矩形，这里表示这个矩形的半长，方向与x0垂直，玩家朝右，重力方向朝下时指向右上
 		Color c0 = GlowColor;
 		if (GlowType == 0)//如果GlowType = 0不开荧光，取光照色
 			c0 = Lighting.GetColor((int)(Projectile.Center.X / 16f), (int)(Projectile.Center.Y / 16f));
@@ -230,13 +230,13 @@ public abstract class MagicBookProjectile : ModProjectile
 			for (int i = 0; i < 10/*一页相当于10个【矩形长条】组成的曲面*/; ++i)
 			{
 				double rot = timer / 270d + i * timer / 400d * (1 + Math.Sin(Main.timeForVisualEffects / 7d) * 0.4)/*一个和时间，i都有关的函数，制造了页的曲面效果，timer到30就停了，Main.timeForVisualEffects一直变化*/;
-				rot -= x / 540d * timer;//每一页之间的角度差
-				rot += Projectile.rotation;//当然也收到弹幕本身的旋转角度影响
-				Vector2 basePos = Projectile.Center + x0 - x0.RotatedBy(rot) * i / 4.5f;//【矩形长条】长轴的中点，借x0遍历经过弯曲的宽轴【-x0,x0】，如果你意识到了x0是半宽轴，这里就不会有什么疑问
+				rot -= x / 540d * timer; //每一页之间的角度差
+				rot += Projectile.rotation; //当然也收到弹幕本身的旋转角度影响
+				Vector2 basePos = Projectile.Center + x0 - x0.RotatedBy(rot) * i / 4.5f; //【矩形长条】长轴的中点，借x0遍历经过弯曲的宽轴【-x0,x0】，如果你意识到了x0是半宽轴，这里就不会有什么疑问
 
-				float upX = MathHelper.Lerp(TexCoordTop.X / tex.Width, TexCoordRight.X / tex.Width, i / 9f);//纹理坐标的横向插值
-				float upY = MathHelper.Lerp(TexCoordTop.Y / tex.Height, TexCoordRight.Y / tex.Height, i / 9f);//纹理坐标的纵向插值
-				var upPos = new Vector2(upX, upY);//合并
+				float upX = MathHelper.Lerp(TexCoordTop.X / tex.Width, TexCoordRight.X / tex.Width, i / 9f); //纹理坐标的横向插值
+				float upY = MathHelper.Lerp(TexCoordTop.Y / tex.Height, TexCoordRight.Y / tex.Height, i / 9f); //纹理坐标的纵向插值
+				var upPos = new Vector2(upX, upY); //合并
 				Vector2 downLeft = upPos + new Vector2((TexCoordLeft.X - TexCoordTop.X) / tex.Width, (TexCoordLeft.Y - TexCoordTop.Y) / tex.Height);
 				Vector2 downRight = upPos + new Vector2((TexCoordDown.X - TexCoordRight.X) / tex.Width, (TexCoordDown.Y - TexCoordRight.Y) / tex.Height);
 				var downPos = Vector2.Lerp(downLeft, downRight, i / 9f);
@@ -280,15 +280,15 @@ public abstract class MagicBookProjectile : ModProjectile
 		var barsII = new List<Vertex2D>();
 		for (int i = 0; i < 10; ++i)
 		{
-			double rotII = -timer / 270d - i * timer / 400d * (1 + Math.Sin(Main.timeForVisualEffects / 7d + 1) * 0.4);//翻页起点角度
+			double rotII = -timer / 270d - i * timer / 400d * (1 + Math.Sin(Main.timeForVisualEffects / 7d + 1) * 0.4); //翻页起点角度
 			rotII += 8 / 18d / 30d * timer;
 
-			double rotIII = timer / 270d + i * timer / 400d * (1 + Math.Sin(Main.timeForVisualEffects / 7d) * 0.4);//翻页终点角度
+			double rotIII = timer / 270d + i * timer / 400d * (1 + Math.Sin(Main.timeForVisualEffects / 7d) * 0.4); //翻页终点角度
 			rotIII -= 8 / 18d / 30d * timer;
 
-			double rotIV = MathHelper.Lerp((float)rotII, (float)rotIII, (float)(Main.timeForVisualEffects / 15d + Math.Sin(Main.timeForVisualEffects / 62d) * 9) % 1f);//翻页过程角度插值
+			double rotIV = MathHelper.Lerp((float)rotII, (float)rotIII, (float)(Main.timeForVisualEffects / 15d + Math.Sin(Main.timeForVisualEffects / 62d) * 9) % 1f); //翻页过程角度插值
 			rotIV += Projectile.rotation;
-			Vector2 basePos = Projectile.Center + x0 - x0.RotatedBy(rotIV) * i / 4.5f - y0 * 0.05f - x0 * 0.02f;//前半部分已经讲过了，至于为什么多出来【- y0 * 0.05f - x0 * 0.02f】，是因为要凸显出正在被翻起的那一页
+			Vector2 basePos = Projectile.Center + x0 - x0.RotatedBy(rotIV) * i / 4.5f - y0 * 0.05f - x0 * 0.02f; //前半部分已经讲过了，至于为什么多出来【- y0 * 0.05f - x0 * 0.02f】，是因为要凸显出正在被翻起的那一页
 
 			float upX = MathHelper.Lerp(TexCoordTop.X / tex.Width, TexCoordRight.X / tex.Width, i / 9f);
 			float upY = MathHelper.Lerp(TexCoordTop.Y / tex.Height, TexCoordRight.Y / tex.Height, i / 9f);
@@ -337,7 +337,7 @@ public abstract class MagicBookProjectile : ModProjectile
 				double rot = -timer / 270d - i * timer / 400d * (1 + Math.Sin(Main.timeForVisualEffects / 7d + 1) * 0.4);
 				rot += x / 18d / 30d * timer;
 				rot += Projectile.rotation;
-				Vector2 basePos = Projectile.Center + x0 - x0.RotatedBy(rot) * i / 4.5f - y0 * 0.05f - x0 * 0.02f;//【- y0 * 0.05f - x0 * 0.02f】再现，为了不让翻起的那一页到前面时凸出来
+				Vector2 basePos = Projectile.Center + x0 - x0.RotatedBy(rot) * i / 4.5f - y0 * 0.05f - x0 * 0.02f; //【- y0 * 0.05f - x0 * 0.02f】再现，为了不让翻起的那一页到前面时凸出来
 
 				float upX = MathHelper.Lerp(TexCoordTop.X / tex.Width, TexCoordRight.X / tex.Width, i / 9f);
 				float upY = MathHelper.Lerp(TexCoordTop.Y / tex.Height, TexCoordRight.Y / tex.Height, i / 9f);

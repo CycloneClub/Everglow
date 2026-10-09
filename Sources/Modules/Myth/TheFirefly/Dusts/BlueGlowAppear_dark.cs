@@ -7,7 +7,7 @@ public class BlueGlowAppear_dark : ModDust
 		dust.noGravity = true;
 		dust.frame = new Rectangle(0, 0, 8, 8);
 		dust.alpha = 0;
-		dust.rotation = dust.scale * 0.4f;//用旋转角度存尺寸极值
+		dust.rotation = dust.scale * 0.4f; //用旋转角度存尺寸极值
 	}
 
 	public override bool Update(Dust dust)

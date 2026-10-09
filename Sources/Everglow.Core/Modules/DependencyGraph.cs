@@ -105,7 +105,7 @@ public class DependencyGraph
 		if (!m_typeToIdMapping.ContainsKey(t))
 		{
 			int id = m_types.Count;
-			m_typeToIdMapping.Add(t, id);//是漏了吗？
+			m_typeToIdMapping.Add(t, id); //是漏了吗？
 			m_types.Add(t);
 			return id;
 		}

@@ -25,7 +25,7 @@ internal class FreezeFeatherMagicBook : MagicBookProjectile
 	public override void AI()
 	{
 		Player player = Main.player[Projectile.owner];
-		Projectile.Center = Projectile.Center * 0.7f + (player.Center + new Vector2(player.direction * 22, 12 * player.gravDir * (float)(0.2 + Math.Sin(Main.timeForVisualEffects / 18d) / 2d))) * 0.3f;//书跟着玩家飞
+		Projectile.Center = Projectile.Center * 0.7f + (player.Center + new Vector2(player.direction * 22, 12 * player.gravDir * (float)(0.2 + Math.Sin(Main.timeForVisualEffects / 18d) / 2d))) * 0.3f; //书跟着玩家飞
 		Projectile.spriteDirection = player.direction;
 		Projectile.velocity *= 0;
 		if (player.itemTime > 0 && player.HeldItem.type == ItemType && player.active && !player.dead)//检测手持物品
@@ -40,7 +40,7 @@ internal class FreezeFeatherMagicBook : MagicBookProjectile
 			if (timer < 0)
 				Projectile.Kill();
 		}
-		Player.CompositeArmStretchAmount PCAS = Player.CompositeArmStretchAmount.Full;//玩家动作
+		Player.CompositeArmStretchAmount PCAS = Player.CompositeArmStretchAmount.Full; //玩家动作
 
 		player.SetCompositeArmFront(true, PCAS, (float)(-Math.Sin(Main.timeForVisualEffects / 18d) * 0.6 + 1.2) * -player.direction);
 		Vector2 vTOMouse = Main.MouseWorld - player.Center;

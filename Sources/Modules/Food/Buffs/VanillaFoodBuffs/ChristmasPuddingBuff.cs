@@ -12,7 +12,7 @@ public class ChristmasPuddingBuff : ModBuff
 
 	public override void Update(Player player, ref int buffIndex)
 	{
-		player.aggro -= 800;//仇恨值减800
+		player.aggro -= 800; //仇恨值减800
 
 	}
 }

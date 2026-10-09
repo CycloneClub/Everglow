@@ -15,12 +15,12 @@ public class FruitJuiceBuff : ModBuff
 	{
 		player.statDefense += 20; // 加20防御
 		player.GetCritChance(DamageClass.Generic) += 20; // 加20%暴击
-		player.endurance += 0.25f;// 加25%减伤
+		player.endurance += 0.25f; // 加25%减伤
 		player.GetDamage(DamageClass.Generic) *= 1.2f; // 加20%伤害
 		player.GetAttackSpeed(DamageClass.Generic) += 0.2f; // 加20%攻速
 		player.lifeRegen += 10; // 加1生命回复
 		player.manaRegen += 20; // 魔力再生加2
-		player.maxRunSpeed *= 2f;//加速
+		player.maxRunSpeed *= 2f; //加速
 		player.runAcceleration *= 2f;
 		player.jumpSpeedBoost += 2;
 

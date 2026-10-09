@@ -346,7 +346,7 @@ public class GoldShield : ModProjectile, IWarpProjectile
 
 		float WaveRange = 0.7f;
 
-		float k0 = (float)Math.Sqrt(1200 - Projectile.timeLeft) / 6f;//画方波
+		float k0 = (float)Math.Sqrt(1200 - Projectile.timeLeft) / 6f; //画方波
 		if (k0 is < 1 and > 0)
 		{
 			k0 = Math.Max(k0 - 0.025f, 0);

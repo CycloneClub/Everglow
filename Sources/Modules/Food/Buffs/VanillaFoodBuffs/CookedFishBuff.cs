@@ -12,8 +12,8 @@ public class CookedFishBuff : ModBuff
 
 	public override void Update(Player player, ref int buffIndex)
 	{
-		player.GetCritChance(DamageClass.Magic) += 0.04f;//加8%魔法暴击率
-		player.statManaMax2 += 40;//加40魔力上限
+		player.GetCritChance(DamageClass.Magic) += 0.04f; //加8%魔法暴击率
+		player.statManaMax2 += 40; //加40魔力上限
 
 	}
 }

@@ -33,7 +33,7 @@ public class KelpMoss_large_tile : ModTile, ISceneTile
 	}
 	private static float GetNeighborTileRotation(Vector2 worldCoord)
 	{
-		Vector2 totalVector = Vector2.Zero;//合向量
+		Vector2 totalVector = Vector2.Zero; //合向量
 		int tileCount = 0;
 		for (int a = 0; a < 12; a++)
 		{

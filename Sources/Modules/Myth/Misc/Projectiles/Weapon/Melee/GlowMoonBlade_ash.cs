@@ -13,8 +13,8 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee
 			Projectile.usesLocalNPCImmunity = true;
 			Projectile.localNPCHitCooldown = 255;
 			Projectile.penetrate = -1;
-			Projectile.tileCollide = false;//能穿墙，反义为false
-			Projectile.timeLeft = 255;//存在时间，60是1秒
+			Projectile.tileCollide = false; //能穿墙，反义为false
+			Projectile.timeLeft = 255; //存在时间，60是1秒
 			Projectile.extraUpdates = 12;
 		}
 		public override void AI()

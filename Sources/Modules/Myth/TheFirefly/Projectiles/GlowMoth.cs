@@ -25,7 +25,7 @@ public class GlowMoth : ModProjectile
 		Projectile.penetrate = -1;
 		Projectile.aiStyle = -1;
 		Projectile.DamageType = DamageClass.Summon;
-		Projectile.minion = true;//这玩意会捆绑武器Item的伤害
+		Projectile.minion = true; //这玩意会捆绑武器Item的伤害
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
 	}

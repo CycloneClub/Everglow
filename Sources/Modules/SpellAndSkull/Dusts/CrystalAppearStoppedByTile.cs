@@ -7,9 +7,9 @@ public class CrystalAppearStoppedByTile : ModDust
 		dust.noGravity = true;
 		dust.frame = new Rectangle(0, 0, 16, 16);
 		dust.alpha = 0;
-		dust.color.R = (byte)(dust.scale * 100f);//用红度存尺寸极值
-		dust.color.G = (byte)Main.rand.NextFloat(0f, 255f);//用绿度存相位
-		dust.alpha = (byte)Main.rand.NextFloat(0f, 55f);//用透明度存timeleft
+		dust.color.R = (byte)(dust.scale * 100f); //用红度存尺寸极值
+		dust.color.G = (byte)Main.rand.NextFloat(0f, 255f); //用绿度存相位
+		dust.alpha = (byte)Main.rand.NextFloat(0f, 55f); //用透明度存timeleft
 	}
 
 	public override bool Update(Dust dust)
