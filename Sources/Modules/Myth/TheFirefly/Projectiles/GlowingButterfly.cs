@@ -23,7 +23,9 @@ public class GlowingButterfly : ModProjectile
 		if (MothEye.LocalOwner != null && MothEye.LocalOwner.TryGetModPlayer(out MothEyePlayer mothEyePlayer))
 		{
 			if (mothEyePlayer.MothEyeEquipped && fireflyBiome.IsBiomeActive(Main.LocalPlayer) && Main.hardMode)
+			{
 				Projectile.timeLeft = 400;
+			}
 			else
 			{
 				Projectile.timeLeft = 100;
@@ -64,7 +66,9 @@ public class GlowingButterfly : ModProjectile
 				}
 
 				if (Projectile.alpha < 100)
+				{
 					Projectile.friendly = true;
+				}
 				else
 				{
 					Projectile.friendly = false;
@@ -91,7 +95,9 @@ public class GlowingButterfly : ModProjectile
 				}
 
 				if (Projectile.alpha < 50)
+				{
 					Projectile.friendly = true;
+				}
 				else
 				{
 					Projectile.friendly = false;
@@ -104,7 +110,9 @@ public class GlowingButterfly : ModProjectile
 		Projectile.velocity = Projectile.velocity.RotatedBy(omega);
 		omega += Math.Sign(omega) * 0.001f;
 		if (Projectile.frame != 5)
+		{
 			Projectile.velocity *= 1.04f;
+		}
 		else
 		{
 			Projectile.velocity *= 0.98f;
@@ -117,7 +125,9 @@ public class GlowingButterfly : ModProjectile
 		if (Projectile.timeLeft % 5 == 0)
 		{
 			if (Projectile.frame != 5)
+			{
 				Projectile.frame++;
+			}
 			else
 			{
 				if (Main.rand.NextFloat(0, 7) >= Projectile.velocity.Length())
@@ -184,14 +194,18 @@ public class GlowingButterfly : ModProjectile
 			if (i != Projectile.whoAmI && other.active && other.owner == Projectile.owner && Math.Abs(Projectile.position.X - other.position.X) + Math.Abs(Projectile.position.Y - other.position.Y) < Projectile.width)
 			{
 				if (Projectile.position.X < other.position.X)
+				{
 					Projectile.velocity.X -= overlapVelocity;
+				}
 				else
 				{
 					Projectile.velocity.X += overlapVelocity;
 				}
 
 				if (Projectile.position.Y < other.position.Y)
+				{
 					Projectile.velocity.Y -= overlapVelocity;
+				}
 				else
 				{
 					Projectile.velocity.Y += overlapVelocity;

@@ -45,7 +45,9 @@ public class GlowingFirefly : ModNPC
 		if (NPC.ai[1] > 0)
 		{
 			if (NPC.ai[0] < 4)
+			{
 				NPC.ai[0] += 0.18f;
+			}
 			else
 			{
 				NPC.ai[0] += 0.5f;
@@ -100,7 +102,9 @@ public class GlowingFirefly : ModNPC
 			AimPos = vNext;
 		}
 		if ((NPC.Center - AimPos).Length() >= 20)
+		{
 			NPC.velocity = Vector2.Normalize(AimPos - NPC.Center) * 1f;
+		}
 		else
 		{
 			NPC.velocity *= 0;

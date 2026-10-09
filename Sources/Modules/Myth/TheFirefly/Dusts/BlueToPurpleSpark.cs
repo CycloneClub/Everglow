@@ -29,7 +29,9 @@ public class BlueToPurpleSpark : ModDust
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		if (dust.scale > 1f)
+		{
 			return new Color(0f, 0.3f, 0.9f, 0.3f);
+		}
 		else
 		{
 			return new Color(1 - dust.scale, dust.scale * 2 - 1.7f, dust.scale * 0.9f, (1.5f - dust.scale) * 0.6f);

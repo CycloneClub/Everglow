@@ -262,7 +262,9 @@ public class StonePost : ModProjectile, IWarpProjectile
 		int LeftTime = 1800 - Projectile.timeLeft;
 		float glowStrength = 0;
 		if (LeftTime < 10)
+		{
 			glowStrength = (float)(-Math.Cos(LeftTime / 10d * Math.PI) + 1) / 2f;
+		}
 		else if (LeftTime < 40)
 		{
 			glowStrength = (float)(-Math.Cos((LeftTime + 20) / 30d * Math.PI) + 1) / 2f;
@@ -288,7 +290,9 @@ public class StonePost : ModProjectile, IWarpProjectile
 		}
 
 		if (Projectile.timeLeft < 10)
+		{
 			glowStrength = (float)(-Math.Cos(Projectile.timeLeft / 10d * Math.PI) + 1) / 2f;
+		}
 		else if (Projectile.timeLeft < 40)
 		{
 			glowStrength = (float)(-Math.Cos((Projectile.timeLeft + 20) / 30d * Math.PI) + 1) / 2f;

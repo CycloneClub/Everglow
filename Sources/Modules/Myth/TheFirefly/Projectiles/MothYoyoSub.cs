@@ -66,7 +66,9 @@ public class MothYoyoSub : ModProjectile
 			}
 		}
 		if (t < 20)// 开始
+		{
 			v3Position = Vector3.Lerp(v3Position, targetPos, 0.1f);
+		}
 		else if (owner.ai[0] == -1)// 收回
 		{
 			v3Position = Vector3.Lerp(v3Position, Vector3.Zero, 0.1f);

@@ -25,13 +25,17 @@ public class PurpleBallEffect : ModProjectile
 		Projectile.velocity *= 0;
 		v0 = Projectile.Center;
 		if (Projectile.timeLeft >= 180)
+		{
 			Pro = (240 - Projectile.timeLeft) * (240 - Projectile.timeLeft) / 12;
+		}
 		else
 		{
 			Pro = 300;
 		}
 		if (Projectile.timeLeft >= 150)
+		{
 			Scale = 1;
+		}
 		else
 		{
 			float k0 = Projectile.timeLeft / 150f;

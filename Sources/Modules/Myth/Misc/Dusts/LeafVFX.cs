@@ -17,7 +17,9 @@ public class LeafVFX : ModDust
 		if (TimeLeft % 6 == 0)
 		{
 			if (dust.frame.Y < 98)
+			{
 				dust.frame.Y += 14;
+			}
 			else
 			{
 				dust.frame.Y = 0;

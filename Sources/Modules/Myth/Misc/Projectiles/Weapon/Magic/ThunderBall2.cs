@@ -54,7 +54,9 @@ public class ThunderBall2 : ModProjectile
 	public override Color? GetAlpha(Color lightColor)
 	{
 		if (!Nul)
+		{
 			return new Color?(new Color(255, 255, 255, 0));
+		}
 		else
 		{
 			return new Color?(new Color(Tokill / 45f, Tokill / 45f, Tokill / 45f, 0));
@@ -82,7 +84,9 @@ public class ThunderBall2 : ModProjectile
 
 			float width = 18;
 			if (Projectile.timeLeft > 30)
+			{
 				width = 18;
+			}
 			else
 			{
 				width = Projectile.timeLeft / 5f * 3;

@@ -14,7 +14,9 @@ public class ResourceLocker<T>
 		get
 		{
 			if (!m_released)
+			{
 				return m_resource;
+			}
 			else
 			{
 				throw new InvalidOperationException("Cannot access a released resource");

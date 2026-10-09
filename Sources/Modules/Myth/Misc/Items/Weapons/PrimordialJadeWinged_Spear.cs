@@ -178,7 +178,9 @@ public class PrimordialJadeWinged_Spear : ModItem
 		if (!Main.gamePaused)
 		{
 			if (!CanDown)
+			{
 				spriteBatch.Draw(RArr, drawPos + new Vector2(6) * scale, null, new Color(0, 0, 0, 255), 0f, new Vector2(8), scale * 3, SpriteEffects.None, 0f);
+			}
 			else
 			{
 				spriteBatch.Draw(RArr, drawPos + new Vector2(6) * scale, null, new Color(255, 255, 255, 0), 0f, new Vector2(8), scale * 3, SpriteEffects.None, 0f);
@@ -215,7 +217,9 @@ public class PrimordialJadeWinged_SpearOwner : ModPlayer
 	public override void PostUpdate()
 	{
 		if (MouseCooling > 0)
+		{
 			MouseCooling--;
+		}
 		else
 		{
 			MouseCooling = 0;

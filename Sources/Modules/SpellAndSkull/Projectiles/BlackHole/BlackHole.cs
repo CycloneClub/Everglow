@@ -28,7 +28,9 @@ internal class BlackHole : ModProjectile
 	public static bool ProjActive()
 	{
 		if (proj != null)
+		{
 			return proj.active && Main.projectile[proj.whoAmI].active && Main.projectile[proj.whoAmI].type == ModContent.ProjectileType<BlackHole>();
+		}
 		else
 		{
 			return false;
@@ -37,7 +39,9 @@ internal class BlackHole : ModProjectile
 	public override void OnSpawn(IEntitySource source)
 	{
 		if (ProjActive() && proj != Projectile)
+		{
 			Projectile.Kill();
+		}
 		else
 		{
 			proj = Projectile;
@@ -46,7 +50,9 @@ internal class BlackHole : ModProjectile
 	public override void AI()
 	{
 		if (Projectile.timeLeft > 20)
+		{
 			proj.scale = MathHelper.Lerp(proj.scale, 280 * Projectile.ai[0], 0.1f);
+		}
 		else
 		{
 			proj.scale = MathHelper.Lerp(proj.scale, 0, 0.25f);
@@ -295,7 +301,9 @@ internal class BlackHole : ModProjectile
 		Texture2D tex = TextureAssets.MagicPixel.Value;
 		Main.spriteBatch.Draw(tex, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), new Color(0, 0, 0, (float)(100f / ((Main.LocalPlayer.Center - Projectile.Center).Length() + 100f)) * Projectile.scale / 60f));
 		if (!Main.drawToScreen)
+		{
 			DrawRing(Projectile);
+		}
 		else// 低特效
 		{
 			DrawRing(Projectile);

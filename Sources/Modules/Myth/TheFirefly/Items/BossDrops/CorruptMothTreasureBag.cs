@@ -112,8 +112,10 @@ public class CorruptMothTreasureBag : ModItem
 		Rectangle frame;
 
 		if (Main.itemAnimations[Item.type] != null)
+		{
 			// In case this item is animated, this picks the correct frame
 			frame = Main.itemAnimations[Item.type].GetFrame(texture, Main.itemFrameCounter[whoAmI]);
+		}
 		else
 		{
 			frame = texture.Frame();

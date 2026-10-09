@@ -23,7 +23,9 @@ public class FlowerPetalPurple : ModProjectile
 	public override Color? GetAlpha(Color lightColor)
 	{
 		if (Projectile.timeLeft < 60)
+		{
 			return new Color?(new Color(0.5f * Projectile.timeLeft / 60f, 0.5f * Projectile.timeLeft / 60f, 0.5f * Projectile.timeLeft / 60f, 0));
+		}
 		else
 		{
 			return new Color?(new Color(0.5f, 0.5f, 0.5f, 0));

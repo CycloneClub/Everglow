@@ -94,7 +94,9 @@ public class MothMagicArray : ModProjectile
 		CirR0 += 0.007f;
 		float Rad;
 		if (Projectile.timeLeft >= 20)
+		{
 			Rad = Math.Min(Projectile.localAI[0] * 3, 90);
+		}
 		else
 		{
 			Rad = Math.Min(Projectile.localAI[0] * 3, 90) * Projectile.timeLeft / 20f;

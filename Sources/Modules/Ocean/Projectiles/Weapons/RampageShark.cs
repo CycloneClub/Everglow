@@ -47,7 +47,9 @@ public class RampageShark : ModProjectile
 				ScreenShaker Gsplayer = player.GetModPlayer<ScreenShaker>();
 				Gsplayer.FlyCamPosition = new Vector2(0, 2).RotatedByRandom(6.283);
 				if (Power == 16)
+				{
 					SoundEngine.PlaySound(new SoundStyle("Everglow/Ocean/Sounds/SharkGun0").WithVolumeScale(0.6f).WithPitchOffset(0.2f), Projectile.Center);
+				}
 				else
 				{
 					SoundEngine.PlaySound(new SoundStyle("Everglow/Ocean/Sounds/SharkGun0").WithVolumeScale(0.4f), Projectile.Center);
@@ -98,7 +100,9 @@ public class RampageShark : ModProjectile
 		Player player = Main.player[Projectile.owner];
 		var rampage = player.HeldItem.ModItem as Items.Weapons.RampageShark;
 		if (rampage != null)
+		{
 			Power = rampage.CrazyValue;
+		}
 		else
 		{
 			Projectile.Kill();

@@ -57,7 +57,9 @@ public class BloodyMossWheelFinished : ModTile
 		else
 		{
 			if (Col > 0)
+			{
 				Col -= 5;
+			}
 			else
 			{
 				Col = 0;
@@ -67,7 +69,9 @@ public class BloodyMossWheelFinished : ModTile
 		if (TpTime >= 120)
 		{
 			if (SubworldSystem.IsActive<TuskWorld>())
+			{
 				SubworldSystem.Exit();
+			}
 			else
 			{
 				if (!SubworldSystem.Enter<TuskWorld>())

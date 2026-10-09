@@ -142,7 +142,9 @@ internal class ShadowWingBow : ModProjectile
 							Energy++;
 						}
 						else
+						{
 							Energy++;
+						}
 					}
 				}
 				Energy++;
@@ -255,7 +257,9 @@ internal class ShadowWingBow : ModProjectile
 		Color drawColor = lightColor;
 		SpriteEffects se = SpriteEffects.None;
 		if (Projectile.Center.X < player.MountedCenter.X)
+		{
 			player.direction = -1;
+		}
 		else
 		{
 			player.direction = 1;

@@ -38,7 +38,9 @@ public abstract class GemDust : ModDust
 		dust.scale *= 0.96f;
 		dust.velocity *= 0.95f;
 		if (dust.alpha == 0)
+		{
 			Lighting.AddLight(dust.position, dust.scale / 0.7f * dustColor.R / 255f, dust.scale / 0.7f * dustColor.G / 255f, dust.scale / 0.7f * dustColor.B / 255f);
+		}
 		else
 		{
 			Lighting.AddLight(dust.position, dust.scale * 0.5f, dust.scale * 0.5f, dust.scale * 0.5f);

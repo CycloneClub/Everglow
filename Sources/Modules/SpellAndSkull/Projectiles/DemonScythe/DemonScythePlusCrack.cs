@@ -44,7 +44,9 @@ internal class DemonScythePlusCrack : ModProjectile
 
 		Lighting.AddLight((int)(Projectile.Center.X / 16), (int)(Projectile.Center.Y / 16), 0.11f * kTime, 0f, 0.45f * kTime);
 		if (Collision.SolidCollision(Projectile.Center, 0, 0))
+		{
 			Projectile.velocity *= 0.6f;
+		}
 		else
 		{
 			Projectile.rotation += 0.3f;

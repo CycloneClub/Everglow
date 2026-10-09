@@ -23,7 +23,9 @@ public class CyatheaLeaf_small : ModGore
 		if (gore.frameCounter > 4)
 		{
 			if (gore.frame < gore.numFrames - 1)
+			{
 				gore.frame++;
+			}
 			else
 			{
 				gore.frame = 0;

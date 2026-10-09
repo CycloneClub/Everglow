@@ -28,7 +28,9 @@ public class Crow : ModDust
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		if (dust.scale > 1.5f)
+		{
 			return new Color?(new Color(255, 255, 255, 255));
+		}
 		else
 		{
 			return new Color?(new Color((dust.scale - 0.25f) / 1.25f, (dust.scale - 0.25f) / 1.25f, (dust.scale - 0.25f) / 1.25f, (dust.scale - 0.25f) / 1.25f));

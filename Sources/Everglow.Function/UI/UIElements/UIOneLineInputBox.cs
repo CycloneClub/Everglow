@@ -120,9 +120,14 @@ namespace Everglow.Commons.UI.UIElements
 					return;
 				}
 				else if (touchLength > nowTextLength)
+				{
 					startIndex = middle + 1;
+				}
 				else
+				{
 					endIndex = middle - 1;
+				}
+
 				if (startIndex > endIndex)
 				{
 					Cursor = startIndex;
@@ -216,7 +221,9 @@ namespace Everglow.Commons.UI.UIElements
 
 				float variation = offset.X - _textDrawOffset.X;
 				if (!Info.HiddenOverflow)
+				{
 					_textDrawOffset = Vector2.Zero;
+				}
 				else if (offset.X + SymSize.X + OffsetThreshold.X > Info.Size.X)
 				{
 					_textDrawOffset.X -= offset.X + SymSize.X + OffsetThreshold.X - Info.Size.X;

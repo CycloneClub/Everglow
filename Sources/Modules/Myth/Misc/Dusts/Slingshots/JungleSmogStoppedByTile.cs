@@ -63,7 +63,9 @@ public class JungleSmogStoppedByTile : ModDust
 	{
 		float k = (255 - dust.alpha) / 255f;
 		if (dust.scale > 0.6f)
+		{
 			return new Color?(new Color(0.3f * k * k, 0.9f * k, 0, 0f));
+		}
 		else
 		{
 			return new Color?(new Color(0.3f * k * k, 0.9f * k, 0, 0));

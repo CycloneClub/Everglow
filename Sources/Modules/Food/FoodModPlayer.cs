@@ -38,7 +38,9 @@ public class FoodModPlayer : ModPlayer
 		private set
 		{
 			if (value < 0)
+			{
 				starvationCounter = 0;
+			}
 			else
 			{
 				starvationCounter = value;
@@ -223,7 +225,9 @@ public class FoodModPlayer : ModPlayer
 
 			#region Set satiety level
 			if (StarvationCounter > FoodUtils.GetFrames(0, 15, 0, 0)) // starving
+			{
 				SatietyLevel = -3;
+			}
 			else if (StarvationCounter > FoodUtils.GetFrames(0, 10, 0, 0)) // hungry
 			{
 				SatietyLevel = -2;
@@ -244,7 +248,9 @@ public class FoodModPlayer : ModPlayer
 
 			#region Set satiety level
 			if (CurrentSatiety <= MaximumSatiety * 0.5f) // well fed
+			{
 				SatietyLevel = 1;
+			}
 			else if (CurrentSatiety > MaximumSatiety * 0.5f && CurrentSatiety <= MaximumSatiety * 0.75f) // plently satisfied
 			{
 				SatietyLevel = 2;
@@ -364,7 +370,9 @@ public class FoodModPlayer : ModPlayer
 		if (Main.dontStarveWorld)
 		{
 			if (StarvationCounter == FoodUtils.GetFrames(0, 15, 0, 0)) // starving
+			{
 				EmoteBubble.MakeLocalPlayerEmote(148);
+			}
 			else if (StarvationCounter == FoodUtils.GetFrames(0, 10, 0, 0)) // hungry
 			{
 				EmoteBubble.MakeLocalPlayerEmote(147);

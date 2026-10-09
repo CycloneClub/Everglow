@@ -22,7 +22,9 @@ public class FireflyImpression : ModItem
 		if (player.itemAnimation == player.itemAnimationMax)
 		{
 			if (SubworldSystem.IsActive<MothWorld>())
+			{
 				SubworldSystem.Exit();
+			}
 			else
 			{
 				if (!SubworldSystem.Enter<MothWorld>())

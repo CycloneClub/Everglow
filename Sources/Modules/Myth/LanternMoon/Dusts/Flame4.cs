@@ -27,7 +27,9 @@ public class Flame4 : ModDust
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		if (dust.scale > 0.8f)
+		{
 			return new Color?(new Color(1, 0.5f, 0f, 0.1f));
+		}
 		else
 		{
 			return new Color?(new Color(dust.scale / 0.8f, dust.scale * dust.scale / 1.28f, 0, (0.8f - dust.scale) / 0.8f * 0.9f + 0.1f));

@@ -19,7 +19,9 @@ public class ThunderBallToNPC : ModProjectile
 	public override void AI()
 	{
 		if (Main.npc[(int)Projectile.ai[1]].active)
+		{
 			Projectile.Center = Main.npc[(int)Projectile.ai[1]].Center;
+		}
 		else
 		{
 			Projectile.extraUpdates = 20;
@@ -56,7 +58,9 @@ public class ThunderBallToNPC : ModProjectile
 			for (int i = 0; i < 600; ++i)
 			{
 				if (vP[a, i].Length() < 3f)
+				{
 					vP[a, i] += vvP[a, i];
+				}
 				else
 				{
 					vvP[a, i] = new Vector2(0, Main.rand.NextFloat(0.03f, 0.4f)).RotatedByRandom(6.283);

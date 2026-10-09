@@ -81,7 +81,9 @@ public abstract class HandholdProjectile : ModProjectile
 			Projectile.Kill();
 		}
 		if (Projectile.Center.X < ArmRootPos.X)
+		{
 			player.direction = -1;
+		}
 		else
 		{
 			player.direction = 1;

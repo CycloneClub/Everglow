@@ -22,7 +22,9 @@ public class TuskMirror : ModItem
 		if (player.itemAnimation == player.itemAnimationMax)
 		{
 			if (SubworldSystem.IsActive<TuskWorld>())
+			{
 				SubworldSystem.Exit();
+			}
 			else
 			{
 				if (!SubworldSystem.Enter<TuskWorld>())

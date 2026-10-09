@@ -31,7 +31,9 @@ public class OceanContent
 	{
 		Mod everglow = ModLoader.GetMod("Everglow");
 		if (everglow != null)
+		{
 			return MusicLoader.GetMusicSlot(everglow, "Ocean/Musics/" + path);
+		}
 		else
 		{
 			return 0;

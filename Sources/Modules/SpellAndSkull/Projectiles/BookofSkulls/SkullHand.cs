@@ -164,7 +164,9 @@ internal class SkullHand : ModProjectile
 		ThumbPos[2] = ThumbPos[1] + new Vector2(0, -finLength2[4]).RotatedBy(finRot2[4] * dir + Ang);
 
 		if (Projectile.timeLeft > 535)
+		{
 			Projectile.velocity *= 1.04f;
+		}
 		else if (Projectile.timeLeft > 300)
 		{
 			Projectile.velocity *= 0.97f;

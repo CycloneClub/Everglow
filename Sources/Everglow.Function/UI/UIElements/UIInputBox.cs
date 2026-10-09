@@ -45,7 +45,9 @@ namespace Everglow.Commons.UI.UIElements
 							_cursorPosition.Y++;
 						}
 						else
+						{
 							break;
+						}
 					}
 				_cursorPosition.X = l;
 			}
@@ -340,7 +342,9 @@ namespace Everglow.Commons.UI.UIElements
 								p.X = texts[p.Y].Length;
 							}
 							else
+							{
 								p.X--;
+							}
 						}
 						left.ResetCoolDown();
 					}
@@ -352,7 +356,10 @@ namespace Everglow.Commons.UI.UIElements
 							p.Y++;
 						}
 						else
+						{
 							p.X++;
+						}
+
 						right.ResetCoolDown();
 					}
 					if (enter.IsKeyDown())

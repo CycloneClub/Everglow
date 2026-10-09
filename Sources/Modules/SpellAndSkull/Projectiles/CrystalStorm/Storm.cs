@@ -39,7 +39,9 @@ internal class Storm : ModProjectile
 		Player player = Main.player[Projectile.owner];
 		Projectile.velocity *= 0;
 		if (Projectile.timeLeft > 550)
+		{
 			Intensity += 9;
+		}
 		else
 		{
 			Intensity -= 5;

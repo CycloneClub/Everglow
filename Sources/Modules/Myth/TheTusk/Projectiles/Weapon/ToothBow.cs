@@ -111,7 +111,9 @@ public class ToothBow : HandholdProjectile
 		Main.spriteBatch.Draw(texArrow, drawCenter + new Vector2(5 - backValue, 0).RotatedBy(rot), null, lightColor, rot, texArrow.Size() / 2f, 0.75f, se, 0);
 		Main.spriteBatch.Draw(texMain, drawCenter, null, lightColor, rot, texMain.Size() / 2f, 1f, se, 0);
 		if (Main.MouseWorld.X < player.MountedCenter.X)
+		{
 			player.direction = -1;
+		}
 		else
 		{
 			player.direction = 1;

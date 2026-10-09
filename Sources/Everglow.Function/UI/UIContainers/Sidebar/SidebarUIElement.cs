@@ -120,7 +120,9 @@ namespace Everglow.Commons.UI.UIContainers.Sidebar
 				MoveTo(c);
 			}
 			else
+			{
 				MoveTo(Center);
+			}
 		}
 
 		public bool MoveTo(Vector2 center)
@@ -134,7 +136,9 @@ namespace Everglow.Commons.UI.UIContainers.Sidebar
 				return false;
 			}
 			else
+			{
 				return true;
+			}
 		}
 
 		public void SetInfo(ISidebarElement sidebarElement)

@@ -44,7 +44,9 @@ public class ButterflyDreamFriendly : ModProjectile
 			Projectile.friendly = true;
 			NPC target = Main.npc[(int)Projectile.ai[0]];
 			if (!target.active && Projectile.timeLeft > 10)
+			{
 				Projectile.timeLeft = 10;
+			}
 			else// 追踪目标
 			{
 				if (MothEye.LocalOwner != null && MothEye.LocalOwner.TryGetModPlayer(out MothEyePlayer mothEyePlayer))

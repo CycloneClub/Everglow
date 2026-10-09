@@ -19,7 +19,9 @@ public class BlackCorruptRain : ModProjectile
 		Projectile.hostile = true;
 		Projectile.ignoreWater = true;
 		if (Main.masterMode || Main.getGoodWorld)
+		{
 			Projectile.tileCollide = false;
+		}
 		else
 		{
 			Projectile.tileCollide = true;
@@ -50,7 +52,9 @@ public class BlackCorruptRain : ModProjectile
 			b = Main.rand.Next(-50, 50);
 			initialization = false;
 			if (Main.rand.Next(0, 2) == 1)
+			{
 				Y = (float)Math.Sin(X / 5 * Math.PI) / 1000f + 1;
+			}
 			else
 			{
 				Y = (float)Math.Sin(-X / 5 * Math.PI) / 1000f + 1;
@@ -74,7 +78,9 @@ public class BlackCorruptRain : ModProjectile
 		if (Projectile.timeLeft is < 600 and >= 585)
 		{
 			if (Y < 1)
+			{
 				Projectile.scale *= Y / (Projectile.timeLeft / 585f);
+			}
 			else
 			{
 				Projectile.scale *= Y * Projectile.timeLeft / 585f;

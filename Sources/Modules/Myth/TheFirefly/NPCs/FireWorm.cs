@@ -190,8 +190,10 @@ public abstract class FireWormHead : FireWorm
 				IEntitySource source = NPC.GetSource_FromAI();
 
 				if (HasCustomBodySegments)
+				{
 					// 调用处理催生体段的方法
 					latestNPC = SpawnBodySegments(distance);
+				}
 				else
 				{
 					// 像往常一样产生体节

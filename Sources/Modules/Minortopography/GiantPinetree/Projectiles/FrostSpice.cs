@@ -40,7 +40,9 @@ public class FrostSpice : ModProjectile
 
 		TimeTokill--;
 		if (TimeTokill < 0)
+		{
 			Projectile.velocity.Y += 0.17f;
+		}
 		else
 		{
 			if (TimeTokill < 10)
@@ -77,7 +79,9 @@ public class FrostSpice : ModProjectile
 	public override bool PreDraw(ref Color lightColor)
 	{
 		if (TimeTokill > 0)
+		{
 			return false;
+		}
 		else
 		{
 			var TexMain = (Texture2D)ModContent.Request<Texture2D>(Texture);

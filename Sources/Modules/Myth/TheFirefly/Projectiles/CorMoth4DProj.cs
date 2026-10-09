@@ -63,7 +63,9 @@ public class CorMoth4DProj : ModProjectile
 		}
 		// 逐维度展开
 		if (t < 50)
+		{
 			v4Position.Y = MathHelper.Lerp(v4Position.Y, targetPos.Y, 0.05f);
+		}
 		else if (t < 100)
 		{
 			v4Position.X = MathHelper.Lerp(v4Position.X, targetPos.X, 0.05f);

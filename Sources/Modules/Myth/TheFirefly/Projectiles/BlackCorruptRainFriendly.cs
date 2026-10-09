@@ -46,7 +46,9 @@ public class BlackCorruptRainFriendly : ModProjectile
 			b = Main.rand.Next(-50, 50);
 			initialization = false;
 			if (Main.rand.Next(0, 2) == 1)
+			{
 				Y = (float)Math.Sin(X / 5d * Math.PI) / 1000f + 1;
+			}
 			else
 			{
 				Y = (float)Math.Sin(-X / 5d * Math.PI) / 1000f + 1;
@@ -70,7 +72,9 @@ public class BlackCorruptRainFriendly : ModProjectile
 		if (Projectile.timeLeft is < 600 and >= 585)
 		{
 			if (Y < 1)
+			{
 				Projectile.scale *= Y / (Projectile.timeLeft / 585f);
+			}
 			else
 			{
 				Projectile.scale *= Y * Projectile.timeLeft / 585f;

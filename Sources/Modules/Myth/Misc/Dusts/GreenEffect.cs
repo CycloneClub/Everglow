@@ -12,7 +12,9 @@ public class GreenEffect : ModDust
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		if (Main.rand.Next(100) > 2)
+		{
 			return new Color?(new Color(dust.scale / 4.2f, dust.scale / 1.2f, dust.scale / 2.8f, 1 - dust.scale));
+		}
 		else
 		{
 			return new Color?(new Color(1f, 1f, 1f, 0));

@@ -56,7 +56,9 @@ public class CreamChocolateCupStaff_proj : ModProjectile
 			Projectile.Kill();
 		}
 		if (Projectile.Center.X < player.MountedCenter.X)
+		{
 			player.direction = -1;
+		}
 		else
 		{
 			player.direction = 1;
@@ -142,7 +144,9 @@ public class CreamChocolateCupStaff_proj_rightClick : ModProjectile
 			Projectile.Kill();
 		}
 		if (Projectile.Center.X < player.MountedCenter.X)
+		{
 			player.direction = -1;
+		}
 		else
 		{
 			player.direction = 1;

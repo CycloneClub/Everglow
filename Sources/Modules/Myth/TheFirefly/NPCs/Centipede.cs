@@ -68,7 +68,9 @@ internal class CentipedeHead : FireWormHead
 		}
 
 		if (NPC.CountNPCS(ModContent.NPCType<Bosses.CorruptMoth>()) > 0)
+		{
 			return 0;
+		}
 		else if (NPC.CountNPCS(ModContent.NPCType<CentipedeHead>()) > 1)
 		{
 			return 0f;
@@ -187,7 +189,9 @@ internal class CentipedeHead : FireWormHead
 				Player player = Main.player[i];
 
 				if (ForcedTargetPosition is Vector2 target)
+				{
 					areaCheck = new Rectangle((int)target.X - maxDistance, (int)target.Y - maxDistance, maxDistance * 2, maxDistance * 2);
+				}
 				else if (player.active && !player.dead && !player.ghost)
 				{
 					areaCheck = new Rectangle((int)player.position.X - maxDistance, (int)player.position.Y - maxDistance, maxDistance * 2, maxDistance * 2);
@@ -241,7 +245,9 @@ internal class CentipedeHead : FireWormHead
 
 		// 如果我们没有任何类型的碰撞，我们希望NPC向下并沿X轴减速。
 		if (!collision && !CanFly)
+		{
 			HeadAI_Movement_HandleFallingFromNoCollision(dirX, speed * NPC.localAI[0], acceleration);
+		}
 		else
 		{
 			// 否则，我们要播放一些音频（soundDelay）并向我们的目标移动。
@@ -270,7 +276,9 @@ internal class CentipedeHead : FireWormHead
 		{
 			// 速度足够快，但不能太快
 			if (NPC.velocity.X < 0.0f)
+			{
 				NPC.velocity.X -= acceleration * 1.1f;
+			}
 			else
 			{
 				NPC.velocity.X += acceleration * 1.1f;
@@ -280,7 +288,9 @@ internal class CentipedeHead : FireWormHead
 		{
 			// NPC has reached terminal velocity
 			if (NPC.velocity.X < dirX)
+			{
 				NPC.velocity.X += acceleration;
+			}
 			else if (NPC.velocity.X > dirX)
 			{
 				NPC.velocity.X -= acceleration;
@@ -289,7 +299,9 @@ internal class CentipedeHead : FireWormHead
 		else if (NPC.velocity.Y > 4)
 		{
 			if (NPC.velocity.X < 0)
+			{
 				NPC.velocity.X += acceleration * 0.9f;
+			}
 			else
 			{
 				NPC.velocity.X -= acceleration * 0.9f;
@@ -338,14 +350,18 @@ internal class CentipedeHead : FireWormHead
 		{
 			// 该NPC正在向目标地点移动
 			if (NPC.velocity.X < dirX)
+			{
 				NPC.velocity.X += acceleration;
+			}
 			else if (NPC.velocity.X > dirX)
 			{
 				NPC.velocity.X -= acceleration;
 			}
 
 			if (NPC.velocity.Y < dirY)
+			{
 				NPC.velocity.Y += acceleration;
+			}
 			else if (NPC.velocity.Y > dirY)
 			{
 				NPC.velocity.Y -= acceleration;
@@ -355,7 +371,9 @@ internal class CentipedeHead : FireWormHead
 			if (Math.Abs(dirY) < speed * 0.2 && (NPC.velocity.X > 0 && dirX < 0 || NPC.velocity.X < 0 && dirX > 0))
 			{
 				if (NPC.velocity.Y > 0)
+				{
 					NPC.velocity.Y += acceleration * 2f;
+				}
 				else
 				{
 					NPC.velocity.Y -= acceleration * 2f;
@@ -365,7 +383,9 @@ internal class CentipedeHead : FireWormHead
 			if (Math.Abs(dirX) < speed * 0.2 && (NPC.velocity.Y > 0 && dirY < 0 || NPC.velocity.Y < 0 && dirY > 0))
 			{
 				if (NPC.velocity.X > 0)
+				{
 					NPC.velocity.X = NPC.velocity.X + acceleration * 2f;
+				}
 				else
 				{
 					NPC.velocity.X = NPC.velocity.X - acceleration * 2f;
@@ -376,7 +396,9 @@ internal class CentipedeHead : FireWormHead
 		{
 			// X距离比Y距离大。 迫使沿X轴的运动更强烈
 			if (NPC.velocity.X < dirX)
+			{
 				NPC.velocity.X += acceleration * 1.1f;
+			}
 			else if (NPC.velocity.X > dirX)
 			{
 				NPC.velocity.X -= acceleration * 1.1f;
@@ -385,7 +407,9 @@ internal class CentipedeHead : FireWormHead
 			if (Math.Abs(NPC.velocity.X) + Math.Abs(NPC.velocity.Y) < speed * 0.5)
 			{
 				if (NPC.velocity.Y > 0)
+				{
 					NPC.velocity.Y += acceleration;
+				}
 				else
 				{
 					NPC.velocity.Y -= acceleration;
@@ -395,7 +419,9 @@ internal class CentipedeHead : FireWormHead
 		else
 		{
 			if (NPC.velocity.Y < dirY)
+			{
 				NPC.velocity.Y += acceleration * 1.1f;
+			}
 			else if (NPC.velocity.Y > dirY)
 			{
 				NPC.velocity.Y -= acceleration * 1.1f;
@@ -404,7 +430,9 @@ internal class CentipedeHead : FireWormHead
 			if (Math.Abs(NPC.velocity.X) + Math.Abs(NPC.velocity.Y) < speed * 0.5)
 			{
 				if (NPC.velocity.X > 0)
+				{
 					NPC.velocity.X += acceleration;
+				}
 				else
 				{
 					NPC.velocity.X -= acceleration;
