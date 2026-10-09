@@ -241,9 +241,11 @@ namespace Everglow.Commons.UI.UIElements
 						sb.DrawString(Font, SYM, Info.TotalLocation + offset, TextColor);
 					}
 					else
+					{
 						sb.Draw(TextureAssets.MagicPixel.Value, new Rectangle(
 							(int)(Info.TotalLocation.X + offset.X),
 							(int)(Info.TotalLocation.Y + offset.Y), (int)SymSize.X, (int)SymSize.Y), TextColor);
+					}
 				}
 				offset.X += SymSize.X;
 			}
