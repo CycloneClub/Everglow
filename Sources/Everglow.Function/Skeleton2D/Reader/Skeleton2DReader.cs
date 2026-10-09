@@ -445,7 +445,7 @@ public class Skeleton2DReader
 	// return timelines;
 	// }
 
-	private static int charToHex(char c)
+	private static int CharToHex(char c)
 	{
 		if (char.IsNumber(c))
 		{
@@ -464,10 +464,10 @@ public class Skeleton2DReader
 
 	private static Color HexToColor(string hex)
 	{
-		int r = charToHex(hex[0]) * 16 + charToHex(hex[1]);
-		int g = charToHex(hex[2]) * 16 + charToHex(hex[3]);
-		int b = charToHex(hex[4]) * 16 + charToHex(hex[5]);
-		int a = charToHex(hex[6]) * 16 + charToHex(hex[7]);
+		int r = CharToHex(hex[0]) * 16 + CharToHex(hex[1]);
+		int g = CharToHex(hex[2]) * 16 + CharToHex(hex[3]);
+		int b = CharToHex(hex[4]) * 16 + CharToHex(hex[5]);
+		int a = CharToHex(hex[6]) * 16 + CharToHex(hex[7]);
 		return new Color(r, g, b, a);
 	}
 }

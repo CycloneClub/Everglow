@@ -46,7 +46,7 @@ public class BloodLightCrystal : ModTile
 			if (TileEntity.ByPosition.TryGetValue(new Point16(i, j), out TileEntity existing)
 				&& existing is BloodLightCrystalEntity existingAsT)
 			{
-				existingAsT.startDissolve();
+				existingAsT.StartDissolve();
 				if (Main.rand.NextBool(10))
 				{
 					SummonCrystal(i, j);
@@ -62,7 +62,7 @@ public class BloodLightCrystal : ModTile
 		if (TileEntity.ByPosition.TryGetValue(new Point16(i, j), out TileEntity existing)
 			   && existing is BloodLightCrystalEntity existingAsT)
 		{
-			float dissolveProgress = existingAsT.getDissolveProgress();
+			float dissolveProgress = existingAsT.GetDissolveProgress();
 
 			if (dissolveProgress > 0)
 			{
