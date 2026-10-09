@@ -10,7 +10,7 @@ namespace Everglow.Commons.UI.UIElements
 
 	public class UIInputBox : UIPanel
 	{
-		private const string cursorSym = "|";
+		private const string CursorSym = "|";
 
 		public string Text { get => _text; set => _text = value; }
 
@@ -145,7 +145,7 @@ namespace Everglow.Commons.UI.UIElements
 			_cursorPosition = Point.Zero;
 			symHitBox = Rectangle.Empty;
 			_font = font;
-			var c = _font.MeasureString(cursorSym) + symSizeOffice;
+			var c = _font.MeasureString(CursorSym) + symSizeOffice;
 			symHitBox.Width = (int)c.X;
 			symHitBox.Height = (int)c.Y;
 			symOffsetX = c.X / 2f;
@@ -303,7 +303,7 @@ namespace Everglow.Commons.UI.UIElements
 							offset.Y += Info.HitBox.Y - symHitBox.Y;
 						}
 					}
-					sb.DrawString(_font, cursorSym, Info.Location + new Vector2(x - symOffsetX, offsetY) + offset, _color);
+					sb.DrawString(_font, CursorSym, Info.Location + new Vector2(x - symOffsetX, offsetY) + offset, _color);
 				}
 				sb.DrawString(_font, text, Info.Location + new Vector2(0f, offsetY) + offset, _color);
 				offsetY += lineYHight;
