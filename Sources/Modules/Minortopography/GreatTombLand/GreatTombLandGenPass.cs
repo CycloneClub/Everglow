@@ -6,15 +6,15 @@ using Terraria.WorldBuilding;
 namespace Everglow.Minortopography.GreatTombLand;
 
 /* Fork：Minortopography/GenPass
-     * 
+     *
      * Everglow Dev Team
-     * 
+     *
      * 后续需要解决的问题：
      * 1、箱子的东西随机化生成,应该和MapIO的WriteChest有关系，看看能不能@Override
      * 2、地形的集群序列化生成
      * 3、地块边缘的额外算法
      * 4、通过随机数，其他三个墓穴的构建完成
-     *  
+     *
      * Ling Write 2023-03-06 16:40
      */
 public class GreatTombLand : ModSystem

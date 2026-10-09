@@ -59,7 +59,7 @@ public class ClimbingPickaxeProjectile : ModProjectile
 	}
 
 	/// <summary>
-	/// How fast the grapple returns to you after meeting its max shoot distance. 
+	/// How fast the grapple returns to you after meeting its max shoot distance.
 	/// Default is 11, Lunar is 24
 	/// </summary>
 	/// <param name="player"></param>

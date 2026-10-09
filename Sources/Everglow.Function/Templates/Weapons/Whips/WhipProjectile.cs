@@ -120,8 +120,8 @@ public abstract class WhipProjectile : ModProjectile
 
 	/// <summary>
 	/// Whip AI after adjusted.
-	/// Projectile.ai[0] work as a timer, you should not change it. 
-	/// 
+	/// Projectile.ai[0] work as a timer, you should not change it.
+	///
 	/// </summary>
 	public virtual void AI_165_Whip()
 	{

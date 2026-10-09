@@ -79,7 +79,7 @@ internal class DrawIIID : ModSystem
 		}
 		if (flag)
 		{
-			#region drawcrack 
+			#region drawcrack
 			bloom = ModAsset.Bloom.Value;
 			gd.SetRenderTarget(Main.screenTargetSwap);
 			gd.Clear(Color.Black);

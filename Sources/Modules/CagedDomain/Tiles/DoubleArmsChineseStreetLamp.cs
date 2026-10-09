@@ -148,7 +148,7 @@ public class DoubleArmsChineseStreetLamp : ModTile, ITileFluentlyDrawn
 	/// <param name="color"></param>
 	private void DrawLanternPiece(Rectangle frame, float swayCoefficient, Vector2 offset, Point tilePos, Point paintPos, Vector2 drawCenterPos, Vector2 origin, SpriteBatch spriteBatch, TileDrawing tileDrawing, Color color = new Color())
 	{
-		// 回声涂料	
+		// 回声涂料
 		if (!TileDrawing.IsVisible(Main.tile[paintPos]))
 		{
 			return;
