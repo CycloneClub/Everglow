@@ -229,12 +229,11 @@ public class TuskBiomeSky : CustomSky
 		Vector2 TuskBiomeCenterToScreenPosition = Main.screenPosition - TuskBiomeCenter;
 		Color DrawC = Main.ColorOfTheSkies * opacity;
 
-		#region #1：背景光
+		// #1：背景光
 		int yoffset = (int)Main.screenPosition.Y / 50;
 		Texture2D tex = ModAsset.TuskBiomeSky.Value;
 		spriteBatch.Draw(tex, new Rectangle(-1300, -yoffset - 600, Main.screenWidth + 2600, Main.screenHeight + yoffset * 2 + 1200), DrawC * Math.Min(1f, (Main.screenPosition.Y - 800f) / 1000f));
-		#endregion
-		#region #2：风暴
+		// #2：风暴
 
 		spriteBatch.End();
 		spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.NonPremultiplied, SamplerState.PointWrap, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
@@ -283,7 +282,7 @@ public class TuskBiomeSky : CustomSky
 
 		for (int i = 3; i < 10; i++)
 		{
-			#region decide values
+			// decide values
 			if (i == 1)
 			{
 				Blength = 1640;
@@ -329,7 +328,6 @@ public class TuskBiomeSky : CustomSky
 				Blength = 135;
 				OneDevideRotaSpeed = 220d;
 			}
-			#endregion
 			var Vx = new List<Vertex3D_2>();
 			float counts = 30;
 
@@ -384,8 +382,7 @@ public class TuskBiomeSky : CustomSky
 			Main.graphics.GraphicsDevice.Textures[0] = CloudLine[i]; // GlodenBloodScaleMirror
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, Vx.ToArray(), 0, Vx.Count - 2);
 		}
-		#endregion
-		#region #3：前景
+		// #3：前景
 		spriteBatch.End();
 		spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 		var texCloseII = ModAsset.TuskMiddle.Value;
@@ -413,7 +410,6 @@ public class TuskBiomeSky : CustomSky
 
 		spriteBatch.End();
 		spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-		#endregion
 	}
 
 	public override void Update(GameTime gameTime)
