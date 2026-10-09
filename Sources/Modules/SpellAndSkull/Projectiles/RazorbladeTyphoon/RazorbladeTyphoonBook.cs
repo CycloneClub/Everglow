@@ -31,7 +31,10 @@ internal class RazorbladeTyphoonBook : MagicBookProjectile
 		int HitType = ModContent.ProjectileType<HurricaneMask>();
 		float WindHole = Math.Min(ConstantUsingTime / 720f - 0.2f, 1f);
 		if (WindHole > 0 && WindHole < 0.3f)
+		{
 			WindHole = 0.3f;
+		}
+
 		if (WindHole > 0)
 		{
 

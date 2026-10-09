@@ -52,11 +52,17 @@ public class StrangeTuskStone4 : ModTile
 		Tile tile = Main.tile[i, j];
 		var zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
 		if (Main.drawToScreen)
+		{
 			zero = Vector2.Zero;
+		}
+
 		Player player = Main.player[Player.FindClosest(new Vector2(i * 16, j * 16), 0, 0)];
 		int C = 255 - (int)(player.Center - new Vector2(i * 16, j * 16)).Length();
 		if (C < 0)
+		{
 			C = 0;
+		}
+
 		spriteBatch.Draw(ModContent.Request<Texture2D>("Everglow/Myth/TheTusk/Tiles/StrangeTuskStoneGlow").Value, new Vector2(i * 16 - 24 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y) + zero, new Rectangle(192, tile.TileFrameY, 64, 18), new Color(C, C, C, 0), 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
 	}
 }

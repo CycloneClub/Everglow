@@ -45,7 +45,9 @@ public class EvilPack : ModNPC
 		NPC.frame = new Rectangle(186 * valueTime, 0, 186, 278);
 		float ValueLight = MathUtils.Sin((float)(Main.timeForVisualEffects * 0.26 * Math.PI / 7d + 0.5)) * 0.2f + 0.2f;
 		if (ValueLight > 1)
+		{
 			ValueLight *= ValueLight;
+		}
 		// Lighting.AddLight((int)(NPC.Center.X / 16f), (int)(NPC.Center.Y / 16f),0.2f * ValueLight, 0.2f * ValueLight, 0.4f * ValueLight);
 		if (NPC.ai[0] < 10)
 		{
@@ -161,7 +163,9 @@ public class EvilPack : ModNPC
 		}
 		NPC.life = NPC.lifeMax;
 		if (Math.Abs(omega) < 0.2f)
+		{
 			omega -= Math.Min(hit.HitDirection * (float)hit.Damage / 10000f, 0.05f);
+		}
 	}
 
 	public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
@@ -204,7 +208,10 @@ public class EvilPack : ModNPC
 		{
 			SpriteEffects effects = SpriteEffects.None;
 			if (NPC.spriteDirection == 1)
+			{
 				effects = SpriteEffects.FlipHorizontally;
+			}
+
 			Texture2D glowTex = ModAsset.EvilHiveGlow.Value;
 			float C = (float)Math.Sqrt(Math.Max((90 - NPC.ai[1]) / 90f, 0)) * 0.6f + Math.Abs(omega * 15);
 			C = 0.8f + C * 0.2f;

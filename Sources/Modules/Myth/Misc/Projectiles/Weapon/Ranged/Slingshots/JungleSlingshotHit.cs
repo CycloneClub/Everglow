@@ -26,7 +26,10 @@ class JungleSlingshotHit : ModProjectile
 				{
 					int type = Main.dust[i].type;
 					if (Main.rand.Next(100) > 50)
+					{
 						type = ModContent.DustType<Misc.Dusts.GlowSporeFlip>();
+					}
+
 					int r1 = Dust.NewDust(Main.dust[i].position, 0, 0, type, 0, 0, 200, default, Main.dust[i].scale * 0.75f);
 					Main.dust[r1].velocity = Main.dust[i].velocity.RotatedBy(Main.rand.NextFloat(0.2f, 1.3f));
 					Main.dust[r1].noGravity = true;

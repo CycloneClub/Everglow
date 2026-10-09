@@ -13,7 +13,9 @@ public class BloodLightCrystalEntity : ModTileEntity
 			dissolveProgress += DISSOLVE_STEP;
 
 			if (Main.rand.NextBool(50))
+			{
 				BloodLightCrystal.SummonDust(Position.X, Position.Y);
+			}
 
 			// Main.NewText("Updated: [" + Position.X + "," + Position.Y + "]");
 
@@ -47,8 +49,10 @@ public class BloodLightCrystalEntity : ModTileEntity
 	public void startDissolve()
 	{
 		if (dissolveProgress == 0)
+		{
 			// Main.NewText("6:[" + Position + "] start kill");
 			dissolveProgress += DISSOLVE_STEP;
+		}
 	}
 
 	public float getDissolveProgress()

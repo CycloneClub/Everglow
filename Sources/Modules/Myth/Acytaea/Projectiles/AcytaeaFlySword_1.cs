@@ -30,9 +30,15 @@ public class AcytaeaFlySword_1 : ModProjectile
 	public override void AI()
 	{
 		if (TimeTokill >= 0 && TimeTokill <= 2)
+		{
 			Projectile.Kill();
+		}
+
 		if (TimeTokill <= 80 && TimeTokill > 0)
+		{
 			Projectile.velocity = Projectile.oldVelocity;
+		}
+
 		TimeTokill--;
 		if (TimeTokill >= 0)
 		{
@@ -154,7 +160,9 @@ public class AcytaeaFlySword_1 : ModProjectile
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
 
 			trueL++;
 		}
@@ -170,9 +178,14 @@ public class AcytaeaFlySword_1 : ModProjectile
 		{
 			float width2 = width;
 			if (i < 10)
+			{
 				width2 *= i / 10f;
+			}
+
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
 
 			var normalDir = Projectile.oldPos[i - 1] - Projectile.oldPos[i];
 			if (normalDir == Vector2.zeroVector)
@@ -198,7 +211,9 @@ public class AcytaeaFlySword_1 : ModProjectile
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		Main.graphics.GraphicsDevice.Textures[0] = t;
 		if (bars.Count > 3)
+		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
+		}
 	}
 	private void CheckFrame()
 	{

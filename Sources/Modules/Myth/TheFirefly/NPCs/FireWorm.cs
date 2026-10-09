@@ -215,7 +215,9 @@ public abstract class FireWormHead : FireWorm
 					NPC n = Main.npc[i];
 
 					if (n.active && (n.type == Type || n.type == BodyType || n.type == TailType) && n.realLife == NPC.whoAmI)
+					{
 						count++;
+					}
 				}
 
 				if (count != randomWormLength)
@@ -495,10 +497,14 @@ public abstract class FireWormBody : FireWorm
 	internal static void CommonAI_BodyTail(FireWorm worm)
 	{
 		if (!worm.NPC.HasValidTarget)
+		{
 			worm.NPC.TargetClosest(true);
+		}
 
 		if (Main.player[worm.NPC.target].dead && worm.NPC.timeLeft > 30000)
+		{
 			worm.NPC.timeLeft = 10;
+		}
 
 		NPC following = worm.NPC.ai[1] >= Main.maxNPCs ? null : worm.FollowingNPC;
 		if (Main.netMode != NetmodeID.MultiplayerClient)

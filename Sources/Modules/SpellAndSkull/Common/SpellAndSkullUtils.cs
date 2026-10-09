@@ -127,6 +127,8 @@ public class SpellAndSkullUtils
 		circle.Add(new Vertex2D(center + new Vector2(0, Math.Max(radius - width, 0)).RotatedBy(addRot), c0, new Vector3(0, 1, 0)));
 		circle.Add(new Vertex2D(center + new Vector2(0, radius).RotatedBy(addRot), c0, new Vector3(0, 0, 0)));
 		if (circle.Count > 2 && radius > 1)
+		{
 			spriteBatch.Draw(tex, circle, PrimitiveType.TriangleStrip);
+		}
 	}
 }

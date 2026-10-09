@@ -38,7 +38,10 @@ public class RampageShark : ModProjectile
 		{
 			Vector2 random = new Vector2(0, Main.rand.NextFloat(Power * 0.2f)).RotatedByRandom(6.283);
 			if (Power >= 16)
+			{
 				new Vector2(0, Main.rand.NextFloat(Power)).RotatedByRandom(6.283);
+			}
+
 			if (Main.rand.NextFloat(1f) > chance)
 			{
 				ScreenShaker Gsplayer = player.GetModPlayer<ScreenShaker>();
@@ -114,9 +117,14 @@ public class RampageShark : ModProjectile
 			;
 			Projectile.velocity *= 0;
 			if (Projectile.timeLeft % player.HeldItem.useTime == 0)
+			{
 				Shoot();
+			}
+
 			if (Projectile.timeLeft % player.HeldItem.useTime == player.HeldItem.useTime / 2 && Power == 16)
+			{
 				Shoot();
+			}
 		}
 		else
 		{
@@ -133,7 +141,9 @@ public class RampageShark : ModProjectile
 		player.heldProj = Projectile.whoAmI;
 		Vector2 toMouse = Projectile.Center - player.MountedCenter;
 		if (player.controlUseItem)
+		{
 			player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (float)(Math.Atan2(toMouse.Y, toMouse.X) - Math.PI / 2d));
+		}
 
 		Texture2D texMain = OceanContent.QuickTexture("Projectiles/Weapons/RampageShark/RampageShark_gun");
 		Texture2D texMainG = OceanContent.QuickTexture("Projectiles/Weapons/RampageShark/RampageShark_glow");
@@ -141,7 +151,10 @@ public class RampageShark : ModProjectile
 		Texture2D TexStar = OceanContent.QuickTexture("Projectiles/Weapons/RampageShark/HitStar");
 		var gunTexRectangle = new Rectangle(0, 0, 72, 34);
 		if (Main.timeForVisualEffects % 6 >= 3)
+		{
 			gunTexRectangle.Y = (int)(Main.timeForVisualEffects / 6f) % 4 * 34;
+		}
+
 		SpriteEffects se = SpriteEffects.None;
 		if (Projectile.Center.X < player.Center.X)
 		{
@@ -154,7 +167,10 @@ public class RampageShark : ModProjectile
 		}
 		Vector2 random = new Vector2(0, Main.rand.NextFloat(Power * 0.2f)).RotatedByRandom(6.283);
 		if (Power >= 16)
+		{
 			new Vector2(0, Main.rand.NextFloat(Power)).RotatedByRandom(6.283);
+		}
+
 		var offset = new Vector2(0, -5);
 		Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition + offset - random, gunTexRectangle, lightColor, Projectile.rotation - (float)(Math.PI * 0.25), new Vector2(texMain.Size().X / 2f, texMain.Size().Y / 8f), 1f, se, 0);
 		float glow = Power / 16f;
@@ -162,14 +178,19 @@ public class RampageShark : ModProjectile
 		if (Power >= 15 && Power < 16)
 		{
 			if (Power < 15 + 1 / 30f)
+			{
 				SoundEngine.PlaySound(SoundID.Shatter);
+			}
+
 			float progress = Power - 15f;
 			float powerII = MathF.Sin(progress * MathF.PI);
 			Main.spriteBatch.Draw(TexEye, Projectile.Center - Main.screenPosition + offset - random, null, new Color(progress, progress, progress, progress), Projectile.rotation - (float)(Math.PI * 0.25), TexEye.Size() / 2f, 1f, se, 0);
 
 			Vector2 StarCenter = Projectile.Center - Main.screenPosition + offset + new Vector2(-2, -10).RotatedBy(Projectile.rotation) - random * 2;
 			if (player.direction == -1)
+			{
 				StarCenter = Projectile.Center - Main.screenPosition + offset + new Vector2(10, -2).RotatedBy(Projectile.rotation);
+			}
 
 			Main.spriteBatch.Draw(TexStar, StarCenter, null, new Color(1f, 0, 0, 0), Projectile.rotation + progress * 1f, TexStar.Size() / 2f, new Vector2(progress * 2, powerII * powerII) * 0.36f, se, 0);
 			Main.spriteBatch.Draw(TexStar, StarCenter, null, new Color(1f, 0, 0, 0), Projectile.rotation + progress * 1f - MathF.PI * 0.5f, TexStar.Size() / 2f, new Vector2(progress * 2, powerII * powerII) * 0.36f, se, 0);
@@ -195,6 +216,8 @@ public class RampageShark : ModProjectile
 		circle.Add(new Vertex2D(center + new Vector2(0, Math.Max(radious - width, 0)).RotatedBy(addRot), color, new Vector3(0, 0.8f, 0)));
 		circle.Add(new Vertex2D(center + new Vector2(0, radious).RotatedBy(addRot), color, new Vector3(0, 0.2f, 0)));
 		if (circle.Count > 2)
+		{
 			spriteBatch.Draw(tex, circle, PrimitiveType.TriangleStrip);
+		}
 	}
 }

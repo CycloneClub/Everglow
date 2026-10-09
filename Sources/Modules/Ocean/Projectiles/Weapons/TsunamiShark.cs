@@ -112,7 +112,9 @@ public class TsunamiShark : ModProjectile
 			}
 			Projectile.velocity *= 0;
 			if (Projectile.timeLeft % player.HeldItem.useTime == 0)
+			{
 				Shoot();
+			}
 		}
 		else
 		{
@@ -162,7 +164,9 @@ public class TsunamiShark : ModProjectile
 		player.heldProj = Projectile.whoAmI;
 		Vector2 toMouse = Projectile.Center - player.MountedCenter;
 		if (player.controlUseItem)
+		{
 			player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (float)(Math.Atan2(toMouse.Y, toMouse.X) - Math.PI / 2d));
+		}
 
 		Texture2D texMain = ModAsset.TsunamiShark_proj.Value;
 		Texture2D texMainGlow = ModAsset.TsunamiShark_proj_glow.Value;

@@ -27,7 +27,10 @@ public class XmasWhip : ModItem
 		Player player = Main.LocalPlayer;
 		Item.autoReuse = false;
 		if (player.autoReuseGlove)
+		{
 			Item.autoReuse = true;
+		}
+
 		Item.useStyle = 1;
 		Item.useAnimation = animationTotalTime;
 		Item.useTime = animationTotalTime;

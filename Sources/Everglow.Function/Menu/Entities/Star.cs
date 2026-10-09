@@ -14,7 +14,10 @@ internal class Star
 	{
 
 		if (timeLeft == maxTime)
+		{
 			baseScale = scale;
+		}
+
 		Vector2 rotCenter = new Vector2(960, 820) * new Vector2(Main.UIScale * Main.screenWidth / 1920f, Main.UIScale * Main.screenHeight / 1080f);
 		;
 		Vector2 rotVec = position - rotCenter;

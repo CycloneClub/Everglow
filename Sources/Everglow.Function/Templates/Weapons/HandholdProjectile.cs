@@ -124,7 +124,10 @@ public abstract class HandholdProjectile : ModProjectile
 		var texMain = (Texture2D)ModContent.Request<Texture2D>(Texture);
 		SpriteEffects se = SpriteEffects.None;
 		if (player.direction == -1)
+		{
 			se = SpriteEffects.FlipVertically;
+		}
+
 		float rot = Projectile.rotation - (float)(Math.PI * 0.25) + TextureRotation * player.direction;
 		Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition + DrawOffset, null, lightColor, rot, texMain.Size() / 2f, 1f, se, 0);
 	}

@@ -27,7 +27,10 @@ class ImmuneCircle : ModProjectile
 	public override void AI()
 	{
 		if (Projectile.timeLeft < 60f)
+		{
 			ka *= 0.97f;
+		}
+
 		Lighting.AddLight(Projectile.Center, (byte)(color0.R * ka) / 300f, (byte)(color0.G * ka) / 300f, (byte)(color0.B * ka) / 300f);
 		int AimPlayer = Projectile.owner;
 		if (Main.player[AimPlayer].active)
@@ -35,29 +38,57 @@ class ImmuneCircle : ModProjectile
 			Projectile.Center = Main.player[AimPlayer].Center + new Vector2(0, -24);
 			Aimcolor = new Color(0, 0, 0);
 			if (Main.player[AimPlayer].HasBuff(ModContent.BuffType<WhiteImmune>()))
+			{
 				Aimcolor = new Color(255, 255, 255);
+			}
+
 			if (Main.player[AimPlayer].HasBuff(ModContent.BuffType<RedImmune>()))
+			{
 				Aimcolor = new Color(255, 0, 0);
+			}
+
 			if (Main.player[AimPlayer].HasBuff(ModContent.BuffType<GreenImmune>()))
+			{
 				Aimcolor = new Color(0, 255, 17);
+			}
+
 			if (Main.player[AimPlayer].HasBuff(ModContent.BuffType<BlueImmune>()))
+			{
 				Aimcolor = new Color(0, 131, 255);
+			}
+
 			if (Main.player[AimPlayer].HasBuff(ModContent.BuffType<BrownImmune>()))
+			{
 				Aimcolor = new Color(107, 53, 0);
+			}
+
 			if (Main.player[AimPlayer].HasBuff(ModContent.BuffType<PurpleImmune>()))
+			{
 				Aimcolor = new Color(129, 4, 224);
+			}
+
 			if (Main.player[AimPlayer].HasBuff(ModContent.BuffType<PinkImmune>()))
+			{
 				Aimcolor = new Color(255, 0, 191);
+			}
+
 			if (Main.player[AimPlayer].HasBuff(ModContent.BuffType<YellowImmune>()))
+			{
 				Aimcolor = new Color(255, 204, 0);
+			}
 		}
 		else
 		{
 			if (Projectile.timeLeft > 65)
+			{
 				Projectile.timeLeft = 60;
+			}
 		}
 		if (Aimcolor == new Color(0, 0, 0) && Projectile.timeLeft > 65)
+		{
 			Projectile.timeLeft = 60;
+		}
+
 		color0.R = (byte)(color0.R * 0.94f + Aimcolor.R * 0.06f);
 		color0.G = (byte)(color0.G * 0.94f + Aimcolor.G * 0.06f);
 		color0.B = (byte)(color0.B * 0.94f + Aimcolor.B * 0.06f);

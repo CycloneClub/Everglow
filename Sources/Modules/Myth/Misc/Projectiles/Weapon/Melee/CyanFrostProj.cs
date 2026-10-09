@@ -195,7 +195,9 @@ public class CyanFrostProj : ModProjectile
 
 		target.AddBuff(BuffID.Chilled, 100);
 		if (Main.rand.NextBool(10))
+		{
 			target.AddBuff(BuffID.Frostburn, 100);
+		}
 	}
 
 	public override void OnHitPlayer(Player target, Player.HurtInfo info)
@@ -301,7 +303,10 @@ public class CyanFrostProj : ModProjectile
 	internal static void Spawn_CustomColorExcalibur(ParticleOrchestraSettings settings, Color colorTint1, Color colorTint2 = default)
 	{
 		if (colorTint2 == default)
+		{
 			colorTint2 = colorTint1;
+		}
+
 		float num = 30f;
 		float num2 = 0f;
 		for (float num3 = 0f; num3 < 4f; num3 += 1f)

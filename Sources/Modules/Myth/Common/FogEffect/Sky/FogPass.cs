@@ -244,7 +244,10 @@ public class FogPass
 		for (; l < MAX_BLUR_LEVELS; l++)
 		{
 			if (m_frameWidth >> l == 0 || m_frameHeight >> l == 0)
+			{
 				break;
+			}
+
 			m_blurRenderTargets[l] = new RenderTarget2D(Main.graphics.GraphicsDevice,
 					m_frameWidth >> l, m_frameWidth >> l, false,
 					m_surfaceFormat, DepthFormat.None);
@@ -300,12 +303,16 @@ public class FogPass
 			if (i % 2 == 0)
 			{
 				if (m_startTileX > 0)
+				{
 					m_startTileX--;
+				}
 			}
 			else
 			{
 				if (endTileX < Main.maxTilesX - 1)
+				{
 					endTileX++;
+				}
 			}
 			i++;
 		}
@@ -319,12 +326,16 @@ public class FogPass
 			if (i % 2 == 0)
 			{
 				if (m_startTileY > 0)
+				{
 					m_startTileY--;
+				}
 			}
 			else
 			{
 				if (endTileY < Main.maxTilesY - 1)
+				{
 					endTileY++;
+				}
 			}
 			i++;
 		}
@@ -339,7 +350,9 @@ public class FogPass
 
 				var s = color.ToVector3();
 				if ((s.X + s.Y + s.Z) * 0.333f > m_currentState.LuminanceThreashold)
+				{
 					m_lightMap[y * cols + x] = color;
+				}
 			}
 		});
 
@@ -393,11 +406,15 @@ public class FogPass
 	{
 		UpdateParameters();
 		if (!m_currentState.Enabled)
+		{
 			return;
+		}
 
 		// 因为涉及光照数据获取，这里暂时不支持截屏，原版会在截屏结束后把光照信息抹除
 		if (screenTarget1 != Main.screenTarget)
+		{
 			return;
+		}
 
 		if (m_screenWidth != Main.screenWidth || m_screenHeight != Main.screenHeight
 			|| m_shouldResetRenderTargets)
@@ -531,7 +548,10 @@ public class FogPass
 	private void ApplyGaussian(int level)
 	{
 		if (!m_useGaussian)
+		{
 			return;
+		}
+
 		var gaussianFilter = m_gaussianKernelEffect.Value;
 		var spriteBatch = Main.spriteBatch;
 		var graphicsDevice = Main.graphics.GraphicsDevice;

@@ -46,7 +46,9 @@ public class LampWoodSword : ModItem
 	public override bool? UseItem(Player player)
 	{
 		if (!Main.dedServ)
+		{
 			SoundEngine.PlaySound(Item.UseSound, player.Center);
+		}
 
 		return null;
 	}

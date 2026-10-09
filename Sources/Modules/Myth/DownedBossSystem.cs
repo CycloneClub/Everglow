@@ -57,11 +57,19 @@ public class DownedBossSystem : ModSystem
 	public override void SaveWorldData(TagCompound tag)
 	{
 		if (downedTusk)
+		{
 			tag["downedTusk"] = true;
+		}
+
 		if (downedMoth)
+		{
 			tag["downedMoth"] = true;
+		}
+
 		if (downedAcytaea)
+		{
 			tag["downedAcytaea"] = true;
+		}
 
 		// if (downedOtherBoss) {
 		// tag["downedOtherBoss"] = true;

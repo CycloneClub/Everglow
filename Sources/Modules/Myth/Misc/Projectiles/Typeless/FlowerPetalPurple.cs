@@ -40,9 +40,15 @@ public class FlowerPetalPurple : ModProjectile
 			Projectile.timeLeft = TLF;
 		}
 		if (num2 == 0)
+		{
 			num2 = Main.rand.Next(-100, 100) / 1000f;
+		}
+
 		if (Projectile.timeLeft < TLF - 20)
+		{
 			Projectile.friendly = true;
+		}
+
 		if (Projectile.velocity.Length() > 0.1f)
 		{
 			Projectile.frameCounter++;
@@ -52,17 +58,28 @@ public class FlowerPetalPurple : ModProjectile
 				Projectile.frameCounter = 0;
 			}
 			if (Projectile.frame > 7)
+			{
 				Projectile.frame = 0;
+			}
 		}
 		if (!Hittil)
 		{
 			Projectile.rotation += num2;
 			if (Projectile.velocity.Length() < 3.6f && Projectile.timeLeft > 60)
+			{
 				Projectile.velocity.Y += 0.025f;
+			}
+
 			if (Projectile.timeLeft > 60)
+			{
 				Projectile.velocity.X += (float)Math.Sin(Projectile.timeLeft / 30f) * 0.035f;
+			}
+
 			if (Projectile.velocity.Length() > 3.6f)
+			{
 				Projectile.velocity *= 0.96f;
+			}
+
 			Projectile.velocity += new Vector2(Main.windSpeedCurrent * 0.05f, 0);
 		}
 		if (Projectile.timeLeft >= 60)

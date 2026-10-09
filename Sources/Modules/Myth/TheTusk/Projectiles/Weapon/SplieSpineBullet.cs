@@ -46,9 +46,15 @@ public class SplieSpineBullet : ModProjectile
 
 		}
 		if (Tokill is >= 0 and <= 2)
+		{
 			Projectile.Kill();
+		}
+
 		if (Tokill > 0)
+		{
 			Tokill--;
+		}
+
 		if (Tokill is <= 44 and > 0)
 		{
 			Projectile.position = Projectile.oldPosition;
@@ -124,7 +130,10 @@ public class SplieSpineBullet : ModProjectile
 		float Tb = c0.B / 300f;
 		float mulLight = 0.2f;
 		if (Projectile.timeLeft < 60f)
+		{
 			mulLight = Projectile.timeLeft / 300f;
+		}
+
 		float lightValue = (255 - Projectile.alpha) / 50f * mulLight;
 		Lighting.AddLight(Projectile.Center, Tr * lightValue, Tg * lightValue, Tb * lightValue);
 		Vector2 drawCenter = Projectile.Center - Main.screenPosition;

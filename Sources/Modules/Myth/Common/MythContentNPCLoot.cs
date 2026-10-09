@@ -300,7 +300,10 @@ class CrimsonExpertHardmode : IItemDropRuleCondition
 	{
 		string desc = "Only hardmode and in the Crimson";
 		if (Language.ActiveCulture.Name == "zh-Hans")
+		{
 			desc = "½öÔÚÀ§ÄÑÄ£Ê½µÄÐÉºìÖ®µØ";
+		}
+
 		return desc;
 	}
 }
@@ -319,7 +322,10 @@ class CrimsonMasterHardmode : IItemDropRuleCondition
 	{
 		string desc = "Only hardmode and in the  Crimson";
 		if (Language.ActiveCulture.Name == "zh-Hans")
+		{
 			desc = "½öÔÚÀ§ÄÑÄ£Ê½µÄÐÉºìÖ®µØ";
+		}
+
 		return desc;
 	}
 }
@@ -338,7 +344,10 @@ class CrimsonNormalHardmode : IItemDropRuleCondition
 	{
 		string desc = "Only hardmode and in the  Crimson";
 		if (Language.ActiveCulture.Name == "zh-Hans")
+		{
 			desc = "½öÔÚÀ§ÄÑÄ£Ê½µÄÐÉºìÖ®µØ";
+		}
+
 		return desc;
 	}
 }
@@ -357,7 +366,10 @@ class CorruptionExpertHardmode : IItemDropRuleCondition
 	{
 		string desc = "Only hardmode and in the Corrupt";
 		if (Language.ActiveCulture.Name == "zh-Hans")
+		{
 			desc = "½öÔÚÀ§ÄÑÄ£Ê½µÄ¸¯»¯Ö®µØ";
+		}
+
 		return desc;
 	}
 }
@@ -376,7 +388,10 @@ class CorruptionMasterHardmode : IItemDropRuleCondition
 	{
 		string desc = "Only hardmode and in the Corrupt";
 		if (Language.ActiveCulture.Name == "zh-Hans")
+		{
 			desc = "½öÔÚÀ§ÄÑÄ£Ê½µÄ¸¯»¯Ö®µØ";
+		}
+
 		return desc;
 	}
 }
@@ -395,7 +410,10 @@ class CorruptionNormalHardmode : IItemDropRuleCondition
 	{
 		string desc = "Only hardmode and in the Corrupt";
 		if (Language.ActiveCulture.Name == "zh-Hans")
+		{
 			desc = "½öÔÚÀ§ÄÑÄ£Ê½µÄ¸¯»¯Ö®µØ";
+		}
+
 		return desc;
 	}
 }
@@ -414,7 +432,10 @@ class HallowExpertHardmode : IItemDropRuleCondition
 	{
 		string desc = "Only hardmode and in the Hallow";
 		if (Language.ActiveCulture.Name == "zh-Hans")
+		{
 			desc = "½öÔÚÀ§ÄÑÄ£Ê½µÄÉñÊ¥Ö®µØ";
+		}
+
 		return desc;
 	}
 }
@@ -433,7 +454,10 @@ class HallowMasterHardmode : IItemDropRuleCondition
 	{
 		string desc = "Only hardmode and in the Hallow";
 		if (Language.ActiveCulture.Name == "zh-Hans")
+		{
 			desc = "½öÔÚÀ§ÄÑÄ£Ê½µÄÉñÊ¥Ö®µØ";
+		}
+
 		return desc;
 	}
 }
@@ -452,7 +476,10 @@ class HallowNormalHardmode : IItemDropRuleCondition
 	{
 		string desc = "Only hardmode and in the Hallow";
 		if (Language.ActiveCulture.Name == "zh-Hans")
+		{
 			desc = "½öÔÚÀ§ÄÑÄ£Ê½µÄÉñÊ¥Ö®µØ";
+		}
+
 		return desc;
 	}
 }
@@ -471,7 +498,10 @@ class EclipseExpertPostPlant : IItemDropRuleCondition
 	{
 		string desc = "Only defeated Plantera and in the Eclipse";
 		if (Language.ActiveCulture.Name == "zh-Hans")
+		{
 			desc = "½öÔÚÊÀ¼ÍÖ®»¨ºóÈÕÊ³";
+		}
+
 		return desc;
 	}
 }
@@ -490,7 +520,10 @@ class EclipseMasterPostPlant : IItemDropRuleCondition
 	{
 		string desc = "Only defeated Plantera and in the Eclipse";
 		if (Language.ActiveCulture.Name == "zh-Hans")
+		{
 			desc = "½öÔÚÊÀ¼ÍÖ®»¨ºóÈÕÊ³";
+		}
+
 		return desc;
 	}
 }
@@ -509,7 +542,10 @@ class EclipseNormalPostPlant : IItemDropRuleCondition
 	{
 		string desc = "Only defeated Plantera and in the Eclipse";
 		if (Language.ActiveCulture.Name == "zh-Hans")
+		{
 			desc = "½öÔÚÊÀ¼ÍÖ®»¨ºóÈÕÊ³";
+		}
+
 		return desc;
 	}
 }
@@ -528,7 +564,10 @@ class InFrostMoonFinal : IItemDropRuleCondition
 	{
 		string desc = "Only Frost Moon during Chrismas";
 		if (Language.ActiveCulture.Name == "zh-Hans")
+		{
 			desc = "½öÔÚÊ¥µ®½ÚÆÚ¼äËªÔÂ";
+		}
+
 		return desc;
 	}
 }
@@ -547,7 +586,10 @@ class InPumpkMoonFinal : IItemDropRuleCondition
 	{
 		string desc = "Only Pumpkin Moon during Chrismas";
 		if (Language.ActiveCulture.Name == "zh-Hans")
+		{
 			desc = "½öÔÚÊ¥µ®½ÚÆÚ¼äËªÔÂ";
+		}
+
 		return desc;
 	}
 }

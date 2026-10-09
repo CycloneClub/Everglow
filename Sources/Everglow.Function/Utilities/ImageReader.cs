@@ -14,7 +14,10 @@ public static class ImageReader
 	private static string ConvertImagePath(string path)
 	{
 		if (Path.GetExtension(path) == string.Empty)
+		{
 			path = Path.ChangeExtension(path, ".bmp");
+		}
+
 		return path;
 	}
 
@@ -37,7 +40,9 @@ public static class ImageReader
 					{
 						ref var pixel = ref pixelRow[x];
 						if (pixel.R == targetColor.R && pixel.G == targetColor.G && pixel.B == targetColor.B)
+						{
 							keyPoints.Add(new ImageKeyPoint() { Row = y, Column = x });
+						}
 					}
 				}
 			});

@@ -58,7 +58,10 @@ public class WaterBoltDrop : Visual
 		velocity += new Vector2(Main.windSpeedCurrent * 0.1f, 0.21f * scale * 0.1f);
 		timer++;
 		if (timer > maxTime)
+		{
 			Active = false;
+		}
+
 		if (Collision.SolidCollision(position, 0, 0))
 		{
 			velocity *= -0.02f;

@@ -80,35 +80,55 @@ public class PrimordialJadeWinged_Spear : ModItem
 				if (Main.npc[d].active && !Main.npc[d].friendly && !Main.npc[d].dontTakeDamage && Collision.CanHit(player, Main.npc[d]))// 活着,敌对,能被打
 				{
 					if ((Main.npc[d].Center - player.Center).Length() > 1500)// 距离
+					{
 						continue;
+					}
+
 					Threaten[d] += 1;
 					if ((Main.npc[d].Center - player.Center).Length() < 500)// 距离
+					{
 						Threaten[d] += (500 - (Main.npc[d].Center - player.Center).Length()) * 12;
+					}
+
 					if ((Main.npc[d].Center - player.Center).Length() < 800)// 距离
 					{
 						Threaten[d] += Main.npc[d].life + Main.npc[d].lifeMax * 0.2f; // 血量和血量上限
 						Threaten[d] += Main.npc[d].damage * 12f; // 伤害
 						if (Main.npc[d].boss)
+						{
 							Threaten[d] += 1000; // Boss需要额外增加威胁度
+						}
+
 						if (Main.npc[d].CanBeChasedBy(null, false))
+						{
 							Threaten[d] += 10; // 能被追踪
+						}
+
 						if (Main.npc[d].velocity.Length() > 3)// 速度
 						{
 							Threaten[d] += Main.npc[d].velocity.Length() * 110; // 速度威胁
 							Vector2 VplayerToNPC = Vector2.Normalize(Main.npc[d].Center - player.Center) * 40;
 							float EscapeT = Vector2.Dot(VplayerToNPC, Main.npc[d].velocity) / Main.npc[d].life * 300; // 逃跑系数
 							if (EscapeT > 0)
+							{
 								Threaten[d] += EscapeT;
+							}
+
 							float CrashT = Vector2.Dot(VplayerToNPC, -Main.npc[d].velocity) * Main.npc[d].damage / 100f; // 撞击系数
 							if (CrashT > 0)
+							{
 								Threaten[d] += CrashT;
+							}
 						}
 					}
 					var playerToNPC = Vector2.Normalize(Main.npc[d].Center - player.Center);
 					var playerToMouseWorld = Vector2.Normalize(Main.MouseWorld - player.Center);
 					float CosineTheta = Math.Clamp(Vector2.Dot(playerToNPC, playerToMouseWorld), 0, 1); // 用于计算鼠标方向权重
 					if (Main.npc[d].type == NPCID.TargetDummy)
+					{
 						Threaten[d] = 1;
+					}
+
 					float k0 = PrimordialJadeWinged_SpearOwner.MouseCooling / 20f;
 					Threaten[d] = Threaten[d] * CosineTheta * (1 - k0) + Threaten[d] * k0;
 				}
@@ -128,8 +148,10 @@ public class PrimordialJadeWinged_Spear : ModItem
 
 			Vector2 NewVelocity = velocity;
 			if (MaxT > 0 && PrimordialJadeWinged_SpearOwner.MouseCooling > 3)
-
+			{
 				NewVelocity = Vector2.Normalize(Main.npc[MaxD].Center + Main.npc[MaxD].velocity * 2 - player.Center) * velocity.Length();
+			}
+
 			Projectile.NewProjectile(source, position, NewVelocity, ModContent.ProjectileType<Projectiles.Weapon.Melee.PrimordialJadeWinged_Spear.PrimordialJadeWinged_Spear_thrust>(), damage * 2, knockback, player.whoAmI, 0f, 0f);
 
 			player.velocity += NewVelocity * 4;
@@ -169,7 +191,9 @@ public class PrimordialJadeWinged_Spear : ModItem
 	public override bool? UseItem(Player player)
 	{
 		if (!Main.dedServ)
+		{
 			SoundEngine.PlaySound(Item.UseSound, player.Center);
+		}
 
 		return null;
 	}

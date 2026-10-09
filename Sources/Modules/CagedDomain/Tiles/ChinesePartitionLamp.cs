@@ -97,7 +97,9 @@ public class ChinesePartitionLamp : ModTile, ITileFluentlyDrawn
 	{
 		// 回声涂料	
 		if (!TileDrawing.IsVisible(Main.tile[paintPos]))
+		{
 			return;
+		}
 
 		var tile = Main.tile[tilePos];
 		ushort type = tile.TileType;
@@ -110,7 +112,9 @@ public class ChinesePartitionLamp : ModTile, ITileFluentlyDrawn
 
 		float windCycle = 0;
 		if (tileDrawing.InAPlaceWithWind(tilePos.X, tilePos.Y, sizeX, sizeY))
+		{
 			windCycle = tileDrawing.GetWindCycle(tilePos.X, tilePos.Y, tileDrawing._sunflowerWindCounter);
+		}
 
 		int totalPushTime = 80;
 		float pushForcePerFrame = 1.26f;

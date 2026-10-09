@@ -20,9 +20,15 @@ public class StarAmmo : SlingshotAmmo
 	public override void AI()
 	{
 		if (TimeTokill is >= 0 and <= 2)
+		{
 			Projectile.Kill();
+		}
+
 		if (TimeTokill is <= 15 and > 0)
+		{
 			Projectile.velocity = Projectile.oldVelocity;
+		}
+
 		TimeTokill--;
 		if (TimeTokill < 0)
 			Projectile.velocity.Y += 0.17f;
@@ -47,7 +53,10 @@ public class StarAmmo : SlingshotAmmo
 			if (Projectile.oldPos[i] == Vector2.Zero)
 			{
 				if (i == 1)
+				{
 					return;
+				}
+
 				break;
 			}
 
@@ -56,11 +65,16 @@ public class StarAmmo : SlingshotAmmo
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
 
 			float width = 6;
 			if (Projectile.timeLeft <= 30)
+			{
 				width *= Projectile.timeLeft / 30f;
+			}
+
 			var normalDir = Projectile.oldPos[i - 1] - Projectile.oldPos[i];
 			normalDir = new Vector2(-normalDir.Y, normalDir.X).SafeNormalize(Vector2.Zero);
 
@@ -86,7 +100,10 @@ public class StarAmmo : SlingshotAmmo
 		Texture2D star = ModAsset.SlingshotHitStar.Value;
 		float kSize = 1f;
 		if (TimeTokill > 0)
+		{
 			kSize = TimeTokill / 30f;
+		}
+
 		Main.spriteBatch.Draw(star, Projectile.Center - Main.screenPosition - Projectile.velocity, null, Light, 0, star.Size() / 2f, new Vector2(0.06f, 0.23f + MathF.Sin((float)(Main.timeForVisualEffects * 0.1)) * 0.2f) * Power * 2f * kSize, SpriteEffects.None, 0);
 		Main.spriteBatch.Draw(star, Projectile.Center - Main.screenPosition - Projectile.velocity, null, Light, MathF.PI / 2, star.Size() / 2f, new Vector2(0.06f, 0.23f + MathF.Sin((float)(Main.timeForVisualEffects * 0.1)) * 0.2f) * Power * 2f * kSize, SpriteEffects.None, 0);
 

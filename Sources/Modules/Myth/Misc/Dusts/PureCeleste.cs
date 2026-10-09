@@ -19,7 +19,10 @@ public class PureCeleste : ModDust
 
 		Lighting.AddLight(dust.position, dust.scale * 0f, dust.scale * 0f, dust.scale * 0.6f);
 		if (dust.scale < 0.25f)
+		{
 			dust.active = false;
+		}
+
 		return false;
 	}
 	public override Color? GetAlpha(Dust dust, Color lightColor)

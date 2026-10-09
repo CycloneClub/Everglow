@@ -63,7 +63,10 @@ internal class CentipedeHead : FireWormHead
 	{
 		FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
 		if (!fireflyBiome.IsBiomeActive(Main.LocalPlayer))
+		{
 			return 0f;
+		}
+
 		if (NPC.CountNPCS(ModContent.NPCType<Bosses.CorruptMoth>()) > 0)
 			return 0;
 		else if (NPC.CountNPCS(ModContent.NPCType<CentipedeHead>()) > 1)
@@ -155,7 +158,9 @@ internal class CentipedeHead : FireWormHead
 						collision = true;
 
 						if (Main.rand.NextBool(100))
+						{
 							WorldGen.KillTile(i, j, fail: true, effectOnly: true, noItem: false);
+						}
 					}
 				}
 			}
@@ -200,7 +205,9 @@ internal class CentipedeHead : FireWormHead
 			}
 
 			if (tooFar)
+			{
 				collision = true;
+			}
 		}
 	}
 
@@ -254,7 +261,9 @@ internal class CentipedeHead : FireWormHead
 
 		// Ensure that the NPC does not fall too quickly
 		if (NPC.velocity.Y > speed + 12.5)
+		{
 			NPC.velocity.Y = speed + 12.5f;
+		}
 
 		// 以下行为模仿了香草虫的运动
 		if (Math.Abs(NPC.velocity.X) + Math.Abs(NPC.velocity.Y) < speed * 0.4f)
@@ -296,10 +305,14 @@ internal class CentipedeHead : FireWormHead
 			float num1 = length / 40f;
 
 			if (num1 < 10)
+			{
 				num1 = 10f;
+			}
 
 			if (num1 > 20)
+			{
 				num1 = 20f;
+			}
 
 			NPC.soundDelay = (int)num1;
 			Tile tile = Main.tile[(int)(NPC.Center.X / 16f), (int)(NPC.Center.Y / 16f)];
@@ -410,21 +423,27 @@ internal class CentipedeHead : FireWormHead
 		if (collision)
 		{
 			if (NPC.localAI[0] != 1)  // 碰撞检测同步
+			{
 				NPC.netUpdate = true;
+			}
 
 			NPC.localAI[0] = 1f;
 		}
 		else
 		{
 			if (NPC.localAI[0] != 0)
+			{
 				NPC.netUpdate = true;
+			}
 
 			NPC.localAI[0] = 0f;
 		}
 
 		// 如果NPC的速度发生变化，并且没有被玩家 "击中"，则强制进行网络更新。
 		if ((NPC.velocity.X > 0 && NPC.oldVelocity.X < 0 || NPC.velocity.X < 0 && NPC.oldVelocity.X > 0 || NPC.velocity.Y > 0 && NPC.oldVelocity.Y < 0 || NPC.velocity.Y < 0 && NPC.oldVelocity.Y > 0) && !NPC.justHit)
+		{
 			NPC.netUpdate = true;
+		}
 	}
 	public override void OnKill()
 	{
@@ -496,11 +515,20 @@ internal class CentipedeBody : FireWormBody
 		Texture2D tex = ModAsset.CentipedeBody.Value;
 		int FrameType = (int)NPC.ai[2] % 2;
 		if (FrameType == 1 && (int)NPC.ai[2] % 4 == 1)
+		{
 			FrameType = 2;
+		}
+
 		if (FrameType == 1)
+		{
 			tex = ModAsset.CentipedeBody1.Value;
+		}
+
 		if (FrameType == 2)
+		{
 			tex = ModAsset.CentipedeBody2.Value;
+		}
+
 		spriteBatch.Draw(tex, NPC.Center - Main.screenPosition + new Vector2(0, -28), null, Lighting.GetColor((int)(NPC.Center.X / 16), (int)(NPC.Center.Y / 16)), NPC.rotation + AddRot, tex.Size() / 2f, NPC.scale, SpriteEffects.None, 0);
 		return false;
 	}
@@ -510,7 +538,10 @@ internal class CentipedeBody : FireWormBody
 		float AddRot = (float)(Math.Sin(Main.timeForVisualEffects * 0.2 + NPC.ai[2] * 0.7) * 0.3f);
 		int FrameType = (int)NPC.ai[2] % 2;
 		if (FrameType == 1 && (int)NPC.ai[2] % 4 == 1)
+		{
 			FrameType = 2;
+		}
+
 		if (FrameType == 1)
 		{
 			Texture2D tex = ModAsset.CentipedeBody1_Glow.Value;
@@ -528,7 +559,10 @@ internal class CentipedeBody : FireWormBody
 		{
 			int FrameType = (int)NPC.ai[2] % 2;
 			if (FrameType == 1 && (int)NPC.ai[2] % 4 == 1)
+			{
 				FrameType = 2;
+			}
+
 			if (FrameType == 0)
 			{
 				if (Main.rand.NextBool(2))

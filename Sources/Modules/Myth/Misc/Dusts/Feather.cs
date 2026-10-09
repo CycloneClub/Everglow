@@ -49,7 +49,10 @@ public class Feather : ModDust
 			dust.velocity += new Vector2(Main.windSpeedCurrent * 0.25f, 0.02f * dust.scale * dust.scale);
 		}
 		if (dust.scale < 0.35f)
+		{
 			dust.active = false;
+		}
+
 		return false;
 	}
 	public override Color? GetAlpha(Dust dust, Color lightColor)

@@ -106,12 +106,16 @@ public class MeatLantern_Proj : MeleeProj
 			if (player.direction == -1)
 			{
 				if (AddHeadRotation >= 0.57f && AddHeadRotation < 2)
+				{
 					AddHeadRotation = 0.57f;
+				}
 			}
 			else
 			{
 				if (AddHeadRotation <= -0.57f)
+				{
 					AddHeadRotation = -0.57f;
+				}
 			}
 		}
 		else
@@ -119,12 +123,16 @@ public class MeatLantern_Proj : MeleeProj
 			if (player.direction == -1)
 			{
 				if (AddHeadRotation >= 2 && AddHeadRotation < 5.71f)
+				{
 					AddHeadRotation = 5.71f;
+				}
 			}
 			else
 			{
 				if (AddHeadRotation >= 0.57f)
+				{
 					AddHeadRotation = 0.57f;
+				}
 			}
 		}
 
@@ -222,7 +230,10 @@ public class MeatLantern_Proj : MeleeProj
 			Commons.ModAsset.TrueMeleeSwing_Mod));
 			}
 			if (timer % 10 == 8 && timer > 30)
+			{
 				SoundEngine.PlaySound(SoundID.Item1, Projectile.Center);
+			}
+
 			if (timer > 20 && timer < 75)
 			{
 				Lighting.AddLight(Projectile.Center + mainAxisDirection, 0.36f, 0.36f, 0.24f);
@@ -316,11 +327,16 @@ public class MeatLantern_Proj : MeleeProj
 			SmoothTrail.Add(smoothTrail_current[x]);
 		}
 		if (slashTrail.Count != 0)
+		{
 			SmoothTrail.Add(slashTrail.ToArray()[slashTrail.Count - 1]);
+		}
 
 		int length = SmoothTrail.Count;
 		if (length <= 3)
+		{
 			return;
+		}
+
 		Vector2[] trail = SmoothTrail.ToArray();
 		var bars = new List<Vertex2D>();
 

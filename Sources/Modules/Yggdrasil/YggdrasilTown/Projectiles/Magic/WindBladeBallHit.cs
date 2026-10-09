@@ -48,7 +48,9 @@ public class WindBladeBallHit : ModProjectile
 	{
 		Projectile.velocity *= 0;
 		if (Projectile.timeLeft <= 199)
+		{
 			Projectile.friendly = false;
+		}
 	}
 	public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 	{
@@ -138,14 +140,19 @@ public class WindBladeBallHit : ModProjectile
 		circle.Add(new Vertex2D(center + new Vector2(0, Math.Max(radious - width, 0)).RotatedBy(addRot), c0, new Vector3(0, 1, 0)));
 		circle.Add(new Vertex2D(center + new Vector2(0, radious).RotatedBy(addRot), c0, new Vector3(0, 0, 0)));
 		if (circle.Count > 2)
+		{
 			spriteBatch.Draw(tex, circle, PrimitiveType.TriangleStrip);
+		}
 	}
 	public void DrawWarp(VFXBatch spriteBatch)
 	{
 		float value = (200 - Projectile.timeLeft) / 200f;
 		float colorV = 0.9f * (1 - value);
 		if (Projectile.ai[0] >= 10)
+		{
 			colorV *= Projectile.ai[0] / 10f;
+		}
+
 		Texture2D t = Commons.ModAsset.Trail_6.Value;
 
 

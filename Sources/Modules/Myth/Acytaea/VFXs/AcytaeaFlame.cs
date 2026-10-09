@@ -64,10 +64,16 @@ internal class AcytaeaFlameDust : ShaderDraw
 				position += velocity;
 				oldPos.Add(position);
 				if (oldPos.Count > 15)
+				{
 					oldPos.RemoveAt(0);
+				}
+
 				velocity *= 0.99f;
 				if (timer > maxTime)
+				{
 					Active = false;
+				}
+
 				velocity = velocity.RotatedBy(ai[1]);
 			}
 		}
@@ -76,11 +82,17 @@ internal class AcytaeaFlameDust : ShaderDraw
 			position += velocity;
 			oldPos.Add(position);
 			if (oldPos.Count > 15)
+			{
 				oldPos.RemoveAt(0);
+			}
+
 			velocity *= 0.99f;
 			timer++;
 			if (timer > maxTime)
+			{
 				Active = false;
+			}
+
 			velocity = velocity.RotatedBy(ai[1]);
 		}
 		float delC = ai[2] * 0.05f * (float)Math.Sin((maxTime - timer) / 40d * Math.PI);
@@ -93,7 +105,10 @@ internal class AcytaeaFlameDust : ShaderDraw
 		Vector2[] pos = oldPos.Reverse<Vector2>().ToArray();
 		int len = pos.Length;
 		if (len <= 2)
+		{
 			return;
+		}
+
 		var bars = new Vertex2D[len * 2 - 1];
 		for (int i = 1; i < len; i++)
 		{

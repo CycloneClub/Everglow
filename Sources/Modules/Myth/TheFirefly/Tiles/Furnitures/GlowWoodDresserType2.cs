@@ -71,7 +71,10 @@ public class GlowWoodDresserType2 : ModTile
 		var tile = Main.tile[i, j];
 		var zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
 		if (Main.drawToScreen)
+		{
 			zero = Vector2.Zero;
+		}
+
 		Texture2D tex = ModAsset.GlowWoodDresserType2Glow.Value;
 		spriteBatch.Draw(tex, new Vector2(i * 16, j * 16) - Main.screenPosition + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16), new Color(0.8f, 0.8f, 0.8f, 0), 0, new Vector2(0), 1, SpriteEffects.None, 0);
 

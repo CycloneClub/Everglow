@@ -117,12 +117,18 @@ public class PalladiumClub_small : ModProjectile, IWarpProjectile
 			}
 		}
 		if (Projectile.timeLeft < 550 && Projectile.timeLeft > 500)
+		{
 			Projectile.velocity *= 0.93f;
+		}
+
 		if (Projectile.timeLeft < 500)
 		{
 			Vector2 ProjToPlayer = player.MountedCenter - Projectile.Center;
 			if (ProjToPlayer.Length() < 100 && Projectile.timeLeft > 20)
+			{
 				Projectile.timeLeft = 20;
+			}
+
 			ProjToPlayer = ProjToPlayer.SafeNormalize(Vector2.Zero) * 55;
 			var value = Math.Max((Projectile.timeLeft - 400) / 100f, 0);
 			Projectile.velocity = ProjToPlayer * (1 - value) + Projectile.velocity * value;
@@ -148,7 +154,9 @@ public class PalladiumClub_small : ModProjectile, IWarpProjectile
 		{
 			float MeleeSpeed = player.GetAttackSpeed(Projectile.DamageType);
 			if (Omega < MeleeSpeed * MaxOmega)
+			{
 				Omega += Beta * MeleeSpeed * 4f;
+			}
 		}
 		else
 		{
@@ -157,10 +165,14 @@ public class PalladiumClub_small : ModProjectile, IWarpProjectile
 		Vector2 HitRange = new Vector2(HitLength, HitLength * Projectile.spriteDirection).RotatedBy(Projectile.rotation) * Projectile.scale;
 		trailVecs.Enqueue(HitRange);
 		if (trailVecs.Count > trailLength)
+		{
 			trailVecs.Dequeue();
+		}
 
 		if (player.dead)
+		{
 			Projectile.Kill();
+		}
 
 		ProduceWaterRipples(new Vector2(HitLength * Projectile.scale));
 	}
@@ -168,7 +180,10 @@ public class PalladiumClub_small : ModProjectile, IWarpProjectile
 	{
 		SpriteEffects effects = SpriteEffects.None;
 		if (Projectile.spriteDirection == 1)
+		{
 			effects = SpriteEffects.FlipHorizontally;
+		}
+
 		var texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
 		lightColor.A = 150;
 		Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, lightColor * Omega * 2, Projectile.rotation, texture.Size() / 2f, Projectile.scale, effects, 0f);
@@ -195,11 +210,16 @@ public class PalladiumClub_small : ModProjectile, IWarpProjectile
 			SmoothTrail.Add(SmoothTrailX[x]);
 		}
 		if (trailVecs.Count != 0)
+		{
 			SmoothTrail.Add(trailVecs.ToArray()[trailVecs.Count - 1]);
+		}
 
 		int length = SmoothTrail.Count;
 		if (length <= 3)
+		{
 			return;
+		}
+
 		Vector2[] trail = SmoothTrail.ToArray();
 		var bars = new List<Vertex2D>();
 
@@ -253,10 +273,16 @@ public class PalladiumClub_small : ModProjectile, IWarpProjectile
 			SmoothTrail.Add(SmoothTrailX[x]);
 		}
 		if (trailVecs.Count != 0)
+		{
 			SmoothTrail.Add(trailVecs.ToArray()[trailVecs.Count - 1]);
+		}
+
 		int length = SmoothTrail.Count;
 		if (length <= 3)
+		{
 			return;
+		}
+
 		float warpValue = Omega * 0.1f;
 		Vector2[] trail = SmoothTrail.ToArray();
 		var bars = new List<Vertex2D>();
@@ -266,7 +292,10 @@ public class PalladiumClub_small : ModProjectile, IWarpProjectile
 
 			float d = trail[i].ToRotation() + 3.14f + 1.57f;
 			if (d > 6.28f)
+			{
 				d -= 6.28f;
+			}
+
 			float dir = d / MathHelper.TwoPi;
 
 
@@ -275,7 +304,10 @@ public class PalladiumClub_small : ModProjectile, IWarpProjectile
 			{
 				float d1 = trail[i - 1].ToRotation() + 3.14f + 1.57f;
 				if (d1 > 6.28f)
+				{
 					d1 -= 6.28f;
+				}
+
 				dir1 = d1 / MathHelper.TwoPi;
 			}
 			if (dir - dir1 > 0.5)
@@ -308,7 +340,10 @@ public class PalladiumClub_small : ModProjectile, IWarpProjectile
 
 			float d = trail[i].ToRotation() + 3.14f + 1.57f;
 			if (d > 6.28f)
+			{
 				d -= 6.28f;
+			}
+
 			float dir = d / MathHelper.TwoPi;
 
 			float dir1 = dir;
@@ -316,7 +351,10 @@ public class PalladiumClub_small : ModProjectile, IWarpProjectile
 			{
 				float d1 = trail[i - 1].ToRotation() + 3.14f + 1.57f;
 				if (d1 > 6.28f)
+				{
 					d1 -= 6.28f;
+				}
+
 				dir1 = d1 / MathHelper.TwoPi;
 			}
 
@@ -356,7 +394,10 @@ public class PalladiumClub_small : ModProjectile, IWarpProjectile
 		float point = 0;
 		Vector2 HitRange = new Vector2(HitLength, HitLength * Projectile.spriteDirection).RotatedBy(Projectile.rotation) * Projectile.scale;
 		if (Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center - HitRange, Projectile.Center + HitRange, 10 * HitLength / 32f * Omega / 0.3f, ref point) && Projectile.timeLeft < 550)
+		{
 			return true;
+		}
+
 		return false;
 	}
 	private void ProduceWaterRipples(Vector2 beamDims)

@@ -21,19 +21,21 @@ public class PineDust : ModDust
 		dust.alpha += 15;
 
 		if (dust.alpha > 245)
+		{
 			dust.active = false;
+		}
 		/*if(Main.tile[(int)((dust.position.X + dust.velocity.X * 6) / 16f), (int)((dust.position.Y + dust.velocity.Y * 6) / 16f)].CollisionType == 0)
-            {
-                dust.velocity *= -1;
-            }
-            if (Main.tile[(int)((dust.position.X + dust.velocity.X * 6) / 16f), (int)((dust.position.Y + dust.velocity.Y * 6) / 16f)].CollisionType == 1)
-            {
-                dust.velocity.X *= -1;
-            }
-            if (Main.tile[(int)((dust.position.X + dust.velocity.X * 6) / 16f), (int)((dust.position.Y + dust.velocity.Y * 6) / 16f)].CollisionType == 2)
-            {
-                dust.velocity.Y *= -1;
-            }*/
+	{
+		dust.velocity *= -1;
+	}
+	if (Main.tile[(int)((dust.position.X + dust.velocity.X * 6) / 16f), (int)((dust.position.Y + dust.velocity.Y * 6) / 16f)].CollisionType == 1)
+	{
+		dust.velocity.X *= -1;
+	}
+	if (Main.tile[(int)((dust.position.X + dust.velocity.X * 6) / 16f), (int)((dust.position.Y + dust.velocity.Y * 6) / 16f)].CollisionType == 2)
+	{
+		dust.velocity.Y *= -1;
+	}*/
 		return false;
 	}
 }

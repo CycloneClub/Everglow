@@ -34,7 +34,9 @@ public class BlueGlowAppearOnlyInWater : ModDust
 		dust.scale = (float)Math.Sin(dust.alpha / 255d * Math.PI) * dust.rotation;
 		Lighting.AddLight(dust.position, 0.0096f * dust.scale / 1.8f, 0.0955f * dust.scale / 1.8f, 0.4758f * dust.scale / 1.8f);
 		if (dust.alpha > 254)
+		{
 			dust.active = false;
+		}
 
 		return false;
 	}

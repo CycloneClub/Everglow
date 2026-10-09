@@ -24,7 +24,10 @@ internal class StarSlingshot : SlingshotProjectile
 		}
 		Vector2 HeadCenter = new Vector2(SlingshotLength, -SlingshotLength).RotatedBy(DrawRot);
 		if (player.direction == -1)
+		{
 			HeadCenter = new Vector2(SlingshotLength, -SlingshotLength).RotatedBy(DrawRot + Math.PI / 2d);
+		}
+
 		HeadCenter += Projectile.Center - Main.screenPosition;
 		Vector2 SlingshotStringHead = new Vector2(SlingshotLength, -SlingshotLength).RotatedBy(DrawRot) + Projectile.Center - Main.MouseWorld;
 		Vector2 SlingshotStringTail = new Vector2(SlingshotLength, -SlingshotLength).RotatedBy(DrawRot) + Vector2.Normalize(SlingshotStringHead) * Power * 0.2625f;
@@ -80,7 +83,10 @@ internal class StarSlingshot : SlingshotProjectile
 		SpriteEffects spriteEffect = SpriteEffects.None;
 		float DrawRot = Projectile.rotation - MathF.PI / 4f;
 		if (Projectile.Center.X < player.MountedCenter.X)
+		{
 			spriteEffect = SpriteEffects.FlipVertically;
+		}
+
 		Main.spriteBatch.Draw(TexMain, Projectile.Center - Main.screenPosition, null, drawColor, DrawRot, TexMain.Size() / 2f, 1f, spriteEffect, 0);
 		base.PostDraw(lightColor);
 	}

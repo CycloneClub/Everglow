@@ -33,7 +33,9 @@ internal class CrystalStormBook : MagicBookProjectile
 			}
 			times++;
 			if (times > 33)
+			{
 				times = 0;
+			}
 		}
 
 		// string pathBase = "SpellAndSkull/Textures/";

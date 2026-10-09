@@ -80,7 +80,10 @@ public class ChlorophyteClub_VFX_2 : ModProjectile
 		for (int i = 0; i < 900; i++)
 		{
 			if (!Active[i])
+			{
 				continue;
+			}
+
 			TimeLeft[i] -= 1;
 
 			OldPosition[i, 0] = Position[i];
@@ -116,15 +119,22 @@ public class ChlorophyteClub_VFX_2 : ModProjectile
 			else
 			{
 				if ((Position[i] - StartPosition[i]).Length() >= 60)
+				{
 					TimeLeft[i] -= 5;
+				}
+
 				AI1[i] += 1 / 30f; // 0.0~2.0
 				Velocity[i] = Velocity[i].RotatedBy(Math.PI / 60d * (float)Math.Sin(AI1[i] * Math.PI));
 				Lighting.AddLight(Position[i], 0, colorLight * 0.3f, 0);
 				if (Main.rand.NextBool(40) && !Smaller[i])
+				{
 					ActivateVine(i, Position[i] + Projectile.Center - StartPosition[i], Velocity[i], Main.rand.Next(70, 140), Main.rand.Next(100), Main.rand.NextFloat(0, 2f), true);
+				}
 			}
 			if (TimeLeft[i] <= 0)
+			{
 				KillVine(i);
+			}
 		}
 	}
 	internal void KillVine(int i)
@@ -170,25 +180,34 @@ public class ChlorophyteClub_VFX_2 : ModProjectile
 		for (int i = 0; i < 900; i++)
 		{
 			if (Position[i] == Vector2.Zero || !Active[i])
+			{
 				continue;
+			}
 
 			var bars = new List<Vertex2D>();
 			float colorLight = Math.Min(TimeLeft[i] / 100f, 1f);
 			float width = 6;
 			if (TimeLeft[i] < 60)
+			{
 				width = TimeLeft[i] / 10f;
+			}
+
 			if (Smaller[i])
 			{
 				width = 5;
 				if (TimeLeft[i] < 60)
+				{
 					width = TimeLeft[i] / 12f;
+				}
 			}
 
 			int TrueL = 0;
 			for (int j = 1; j < 60; ++j)
 			{
 				if (OldPosition[i, j] == Vector2.Zero)
+				{
 					break;
+				}
 
 				TrueL++;
 			}
@@ -196,7 +215,9 @@ public class ChlorophyteClub_VFX_2 : ModProjectile
 			for (int j = 2; j < 60; ++j)
 			{
 				if (OldPosition[i, j] == Vector2.Zero)
+				{
 					break;
+				}
 
 				var normalDir = OldPosition[i, j - 1] - OldPosition[i, j];
 				normalDir = Vector2.Normalize(new Vector2(-normalDir.Y, normalDir.X));
@@ -206,7 +227,10 @@ public class ChlorophyteClub_VFX_2 : ModProjectile
 				Vector2 DrawPos = Projectile.Center + OldPosition[i, j] - StartPosition[i] + new Vector2(4) - Main.screenPosition;
 				var color = new Color(0.2f, 1f, 0.7f, 0f);
 				if (Smaller[i])
+				{
 					color = new Color(0.0f, 0.4f, 0.3f, 0);
+				}
+
 				bars.Add(new Vertex2D(DrawPos + normalDir * width, color, new Vector3(factor + 0.008f, 1, w)));
 				bars.Add(new Vertex2D(DrawPos - normalDir * width, color, new Vector3(factor + 0.008f, 0, w)));
 			}

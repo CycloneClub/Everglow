@@ -43,7 +43,10 @@ public class CactusJuice : ModDust
 			}
 		}
 		if (dust.scale < 0.05f)
+		{
 			dust.active = false;
+		}
+
 		dust.scale *= 0.995f;
 		return false;
 	}

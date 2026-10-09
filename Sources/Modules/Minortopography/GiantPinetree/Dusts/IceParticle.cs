@@ -13,11 +13,16 @@ public class IceParticle : ModDust
 		dust.velocity.X += Main.rand.NextFloat(-0.07f, 0.07f) + Main.windSpeedCurrent / 30f;
 		dust.velocity.Y += 0.14f;
 		if (Math.Abs(dust.velocity.X) > 1.7f)
+		{
 			dust.velocity.X *= 0.98f;
+		}
+
 		dust.position += dust.velocity;
 
 		if (dust.alpha > 245)
+		{
 			dust.active = false;
+		}
 
 		if (Collision.SolidCollision(dust.position - Vector2.One * 5f + new Vector2(dust.velocity.X, 0), 10, 10))
 		{

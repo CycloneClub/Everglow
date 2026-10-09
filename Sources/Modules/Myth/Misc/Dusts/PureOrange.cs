@@ -19,7 +19,10 @@ public class PureOrange : ModDust
 
 		Lighting.AddLight(dust.position, dust.scale * 0.32f, dust.scale * 0.2f, dust.scale * 0f);
 		if (dust.scale < 0.25f)
+		{
 			dust.active = false;
+		}
+
 		return false;
 	}
 	public override Color? GetAlpha(Dust dust, Color lightColor)

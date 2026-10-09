@@ -24,7 +24,9 @@ namespace Everglow.Commons.UI.UIElements
 				ChildrenElements.ForEach(element =>
 				{
 					if (element.IsVisible && !element.Info.IsHidden && element.Info.TotalHitBox.Intersects(ParentElement.Info.TotalHitBox))
+					{
 						element.Draw(sb);
+					}
 				});
 			}
 		}
@@ -63,13 +65,17 @@ namespace Everglow.Commons.UI.UIElements
 		public void SetVerticalWhell(float whell)
 		{
 			if (_verticalScrollbar != null)
+			{
 				_verticalScrollbar.WheelValue = whell;
+			}
 		}
 
 		public void SetHorizontalWhell(float whell)
 		{
 			if (_horizontalScrollbar != null)
+			{
 				_horizontalScrollbar.WheelValue = whell;
+			}
 		}
 
 		public override void OnInitialization()
@@ -101,7 +107,10 @@ namespace Everglow.Commons.UI.UIElements
 		{
 			bool flag = _innerPanel.Register(element);
 			if (flag)
+			{
 				Calculation();
+			}
+
 			return flag;
 		}
 
@@ -110,10 +119,16 @@ namespace Everglow.Commons.UI.UIElements
 			foreach (var element in elements)
 			{
 				if (element == null || _innerPanel.ChildrenElements.Contains(element) || element.ParentElement != null)
+				{
 					continue;
+				}
+
 				element.SetParentElement(_innerPanel);
 				if (!element.Info.InitDone)
+				{
 					element.OnInitialization();
+				}
+
 				_innerPanel.ChildrenElements.Add(element);
 			}
 			Calculation();
@@ -123,7 +138,10 @@ namespace Everglow.Commons.UI.UIElements
 		{
 			bool flag = _innerPanel.Remove(element);
 			if (flag)
+			{
 				Calculation();
+			}
+
 			return flag;
 		}
 
@@ -131,7 +149,10 @@ namespace Everglow.Commons.UI.UIElements
 		{
 			var list = new List<BaseElement>(_innerPanel.ChildrenElements);
 			foreach (var child in list)
+			{
 				_innerPanel.Remove(child);
+			}
+
 			Calculation();
 		}
 
@@ -145,17 +166,27 @@ namespace Everglow.Commons.UI.UIElements
 				v.X = element.Info.TotalLocation.X - _innerPanel.Info.Location.X;
 				v.Y = element.Info.TotalLocation.Y - _innerPanel.Info.Location.Y;
 				if (innerPanelMinLocation.X > v.X)
+				{
 					innerPanelMinLocation.X = v.X;
+				}
+
 				if (innerPanelMinLocation.Y > v.Y)
+				{
 					innerPanelMinLocation.Y = v.Y;
+				}
 
 				v.X = element.Info.TotalLocation.X + element.Info.TotalSize.X - _innerPanel.Info.Location.X;
 				v.Y = element.Info.TotalLocation.Y + element.Info.TotalSize.Y - _innerPanel.Info.Location.Y;
 
 				if (innerPanelMaxLocation.X < v.X)
+				{
 					innerPanelMaxLocation.X = v.X;
+				}
+
 				if (innerPanelMaxLocation.Y < v.Y)
+				{
 					innerPanelMaxLocation.Y = v.Y;
+				}
 			}
 		}
 
@@ -166,12 +197,18 @@ namespace Everglow.Commons.UI.UIElements
 
 			float maxY = innerPanelMaxLocation.Y - _innerPanel.Info.TotalSize.Y;
 			if (maxY < innerPanelMinLocation.Y)
+			{
 				maxY = innerPanelMinLocation.Y;
+			}
+
 			_innerPanel.Info.Top.Pixel = -MathHelper.Lerp(innerPanelMinLocation.Y, maxY, verticalWhellValue);
 
 			float maxX = innerPanelMaxLocation.X - _innerPanel.Info.TotalSize.X;
 			if (maxX < innerPanelMinLocation.X)
+			{
 				maxX = innerPanelMinLocation.X;
+			}
+
 			_innerPanel.Info.Left.Pixel = -MathHelper.Lerp(innerPanelMinLocation.X, maxX, horizontalWhellValue);
 
 			_innerPanel.Calculation();

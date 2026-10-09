@@ -33,13 +33,17 @@ internal class FireFeatherMagicBook : MagicBookProjectile
 		{
 			Projectile.timeLeft = player.itemTime + 60;
 			if (timer < 30)
+			{
 				timer++;
+			}
 		}
 		else
 		{
 			timer--;
 			if (timer < 0)
+			{
 				Projectile.Kill();
+			}
 		}
 		Player.CompositeArmStretchAmount playerCASA = Player.CompositeArmStretchAmount.Full; // 玩家动作
 
@@ -49,7 +53,10 @@ internal class FireFeatherMagicBook : MagicBookProjectile
 		Projectile.rotation = player.fullRotation;
 		SpecialAI();
 		if (ProjType == -1)
+		{
 			return;
+		}
+
 		if (player.itemTime == player.itemTimeMax - 2 && player.HeldItem.type == ItemType)
 		{
 			for (int x = 0; x < 4; x++)
@@ -71,9 +78,15 @@ internal class FireFeatherMagicBook : MagicBookProjectile
 		Vector2 y0 = new Vector2(BookScale * player.direction, -BookScale * player.gravDir) * 0.707f * MulSize;
 		Color c0 = GlowColor;
 		if (GlowType == 0)
+		{
 			c0 = Lighting.GetColor((int)(Projectile.Center.X / 16f), (int)(Projectile.Center.Y / 16f));
+		}
+
 		if (GlowType == 2)
+		{
 			c0 = effectColor;
+		}
+
 		var bars = new List<Vertex2D>();
 		for (int i = 0; i < 10; ++i)
 		{

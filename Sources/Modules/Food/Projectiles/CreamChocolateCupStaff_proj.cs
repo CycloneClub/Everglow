@@ -78,7 +78,10 @@ public class CreamChocolateCupStaff_proj : ModProjectile
 		Color drawColor = Lighting.GetColor((int)Projectile.Center.X / 16, (int)(Projectile.Center.Y / 16.0));
 		SpriteEffects se = SpriteEffects.None;
 		if (player.direction == -1)
+		{
 			se = SpriteEffects.FlipVertically;
+		}
+
 		float rot0 = Projectile.rotation - (float)(Math.PI * 0.25) + MathF.PI * 0.25f * player.direction;
 
 		Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition, null, drawColor, rot0, texMain.Size() / 2f, 1f, se, 0);
@@ -161,7 +164,10 @@ public class CreamChocolateCupStaff_proj_rightClick : ModProjectile
 		Color drawColor = Lighting.GetColor((int)Projectile.Center.X / 16, (int)(Projectile.Center.Y / 16.0));
 		SpriteEffects se = SpriteEffects.None;
 		if (player.direction == -1)
+		{
 			se = SpriteEffects.FlipVertically;
+		}
+
 		float rot0 = Projectile.rotation - (float)(Math.PI * 0.25) + MathF.PI * 0.25f * player.direction;
 
 		Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition, null, drawColor, rot0, texMain.Size() / 2f, 1f, se, 0);
@@ -223,14 +229,19 @@ public class CreamChocolateCupStaff_proj_held : ModProjectile
 
 
 		if (player.controlUseTile)
+		{
 			player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (float)(Math.Atan2(v0.Y, v0.X) - Math.PI / 2d));
+		}
 
 		var texMain = ModAsset.CreamChocolateCupStaff_cupFront.Value;
 
 		Color drawColor = Lighting.GetColor((int)Projectile.Center.X / 16, (int)(Projectile.Center.Y / 16.0));
 		SpriteEffects se = SpriteEffects.None;
 		if (player.direction == -1)
+		{
 			se = SpriteEffects.FlipVertically;
+		}
+
 		float rot0 = Projectile.rotation - (float)(Math.PI * 0.25) + MathF.PI * 0.25f * player.direction;
 
 		Texture2D cream = ModAsset.CreamChocolateCupStaff_cream.Value;

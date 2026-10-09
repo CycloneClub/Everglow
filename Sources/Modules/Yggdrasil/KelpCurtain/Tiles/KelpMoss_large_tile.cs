@@ -62,7 +62,9 @@ public class KelpMoss_large_tile : ModTile, ISceneTile
 			}
 		}
 		if (totalVector == Vector2.Zero || tileCount > 30)
+		{
 			return 0;
+		}
 
 		return MathF.Asin(Vector3.Cross(new Vector3(0, 1, 0), new Vector3(Vector2.Normalize(totalVector), 0)).Z);
 	}

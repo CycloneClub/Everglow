@@ -43,7 +43,9 @@ public class BloodLightCrystal : ModTile
 			{
 				existingAsT.startDissolve();
 				if (Main.rand.NextBool(10))
+				{
 					SummonCrystal(i, j);
+				}
 			}
 
 			// WorldGen.KillTile(i, j,false,false,true);

@@ -35,7 +35,10 @@ public class CrystalAppearStoppedByTileInAStorm : ModDust
 
 		dust.scale = (float)(Math.Sin(dust.alpha / 25d * Math.PI + dust.color.G) + 1.5f) * dust.color.R * 0.003f;
 		if (dust.alpha > 200)
+		{
 			dust.scale *= (255 - dust.alpha) / 55f;
+		}
+
 		Lighting.AddLight(dust.position, 0.0096f * dust.scale / 1.8f, 0.0955f * dust.scale / 1.8f, 0.4758f * dust.scale / 1.8f);
 		if (Collision.SolidCollision(dust.position, 8, 8))
 		{
@@ -54,7 +57,9 @@ public class CrystalAppearStoppedByTileInAStorm : ModDust
 			dust.velocity = v0;
 		}
 		if (dust.alpha > 254)
+		{
 			dust.active = false;
+		}
 
 		return false;
 	}

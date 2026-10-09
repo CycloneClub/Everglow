@@ -61,7 +61,10 @@ public class SpineGun : ModItem
 		newVelocity *= 1f - Main.rand.NextFloat(0.1f);
 		float Beilv = 1f;
 		if (type == 242)
+		{
 			Beilv = 2.4f;
+		}
+
 		Projectile.NewProjectileDirect(source, position + newVelocity * 0.9f + new Vector2(0, -6), newVelocity * 2 * Beilv, ModContent.ProjectileType<Projectiles.Weapon.SplieSpineBullet>(), damage, knockback, player.whoAmI, player.GetCritChance(DamageClass.Ranged) + player.GetCritChance(DamageClass.Generic), type);
 		return false;
 	}

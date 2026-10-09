@@ -65,7 +65,10 @@ public class FoodModPlayer : ModPlayer
 	public bool CanEat(FoodInfo foodInfo)
 	{
 		if (CurrentSatiety + foodInfo.Satiety <= MaximumSatiety)
+		{
 			return true;
+		}
+
 		return false;
 	}
 
@@ -75,14 +78,20 @@ public class FoodModPlayer : ModPlayer
 	public bool CanDrink(DrinkInfo drinkInfo)
 	{
 		if (Thirstystate)
+		{
 			return true;
+		}
+
 		return false;
 	}
 
 	public bool CanText()
 	{
 		if (TextTimer <= 0)
+		{
 			return true;
+		}
+
 		return false;
 	}
 	/*
@@ -154,12 +163,20 @@ public class FoodModPlayer : ModPlayer
 	public override void LoadData(TagCompound tag)
 	{
 		if (tag.ContainsKey("CurrentSatiety"))
+		{
 			CurrentSatiety = tag.GetInt("CurrentSatiety");
+		}
 
 		if (tag.ContainsKey("Thirstystate"))
+		{
 			Thirstystate = tag.GetBool("Thirstystate");
+		}
+
 		if (tag.ContainsKey("StarvationCounter"))
+		{
 			StarvationCounter = tag.GetInt("StarvationCounter");
+		}
+
 		base.LoadData(tag);
 	}
 
@@ -173,10 +190,14 @@ public class FoodModPlayer : ModPlayer
 		}
 		// 从喝饮料后开始计时
 		if (!Thirstystate)
+		{
 			ThirstyChangeTimer++;
+		}
 
 		if (!CanText())
+		{
 			TextTimer--;
+		}
 
 		// 每三十秒减少一饱食度
 		if (Player.GetModPlayer<FoodBuffModPlayer>().DurianBuff)
@@ -246,7 +267,9 @@ public class FoodModPlayer : ModPlayer
 	{
 		#region Well fed life regen effect
 		if (SatietyLevel > 0 || !Thirstystate)
+		{
 			Player.wellFed = true;
+		}
 		#endregion
 
 		#region Give effects based on satiety level
@@ -290,7 +313,9 @@ public class FoodModPlayer : ModPlayer
 				Player.moveSpeed -= 0.02f;
 				Player.pickSpeed += 0.05f;
 				if (Player.lifeRegen > 0)
+				{
 					Player.lifeRegen = 0;
+				}
 			}
 		}
 		else if (SatietyLevel == -2) // hungry
@@ -305,7 +330,10 @@ public class FoodModPlayer : ModPlayer
 				Player.moveSpeed -= 0.04f;
 				Player.pickSpeed += 0.1f;
 				if (Player.lifeRegen > 0)
+				{
 					Player.lifeRegen = 0;
+				}
+
 				Player.lifeRegen -= (int)(Player.statLifeMax2 * 0.01f);
 			}
 		}
@@ -321,7 +349,10 @@ public class FoodModPlayer : ModPlayer
 				Player.moveSpeed -= 0.08f;
 				Player.pickSpeed += 0.2f;
 				if (Player.lifeRegen > 0)
+				{
 					Player.lifeRegen = 0;
+				}
+
 				Player.lifeRegen -= (int)(Player.statLifeMax2 * 0.02f);
 				Player.starving = true;
 			}

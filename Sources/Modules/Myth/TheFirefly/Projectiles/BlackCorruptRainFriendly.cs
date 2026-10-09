@@ -53,7 +53,10 @@ public class BlackCorruptRainFriendly : ModProjectile
 			}
 		}
 		if (Stre2 > 0.2)
+		{
 			Stre2 -= 0.005f;
+		}
+
 		Projectile.velocity *= 0.995f;
 		if (Projectile.timeLeft < 995)
 		{
@@ -74,9 +77,15 @@ public class BlackCorruptRainFriendly : ModProjectile
 			}
 		}
 		if (Projectile.timeLeft < 580 && Projectile.timeLeft >= 100 + b)
+		{
 			Projectile.scale *= Y;
+		}
+
 		if (Projectile.timeLeft < 100 + b)
+		{
 			Projectile.scale *= 0.95f;
+		}
+
 		Projectile.velocity.Y += 0.001f;
 		float kColor = (255 - Projectile.alpha) / 255f;
 		Lighting.AddLight(Projectile.Center, 0, kColor * 0.01f, kColor * 0.6f * Projectile.scale);

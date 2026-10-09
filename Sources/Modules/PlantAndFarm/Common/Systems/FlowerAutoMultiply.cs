@@ -50,11 +50,20 @@ public class FlowerAutoMultiply : GlobalTile
 							{
 								int TYPE = 0;
 								if (u >= 3)
+								{
 									TYPE = u * 3 + Main.rand.Next(3) + 12;
+								}
+
 								if (u == 2)
+								{
 									TYPE = Main.rand.NextBool() ? 13 : 18;
+								}
+
 								if (u == 1)
+								{
 									TYPE = Main.rand.NextBool() ? 10 : 11;
+								}
+
 								Main.tile[i + x, j + y].TileType = 3;
 								Main.tile[i + x, j + y].TileFrameX = (short)(TYPE * 18);
 								((Tile)Main.tile[i + x, j + y]).HasTile = true;

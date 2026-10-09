@@ -26,7 +26,9 @@ public abstract class VisualProjectile : ModProjectile, IVisual
 	public override void SetDefaults()
 	{
 		if (!Main.gameMenu)
+		{
 			Ins.VFXManager.Add(this);
+		}
 	}
 
 	public void Kill()

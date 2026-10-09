@@ -44,7 +44,10 @@ public abstract class GemDust : ModDust
 			Lighting.AddLight(dust.position, dust.scale * 0.5f, dust.scale * 0.5f, dust.scale * 0.5f);
 		}
 		if (dust.scale < 0.15f)
+		{
 			dust.active = false;
+		}
+
 		return false;
 	}
 }

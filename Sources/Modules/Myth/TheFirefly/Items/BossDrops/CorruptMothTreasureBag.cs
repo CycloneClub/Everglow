@@ -131,7 +131,9 @@ public class CorruptMothTreasureBag : ModItem
 		time /= 2f;
 
 		if (time >= 1f)
+		{
 			time = 2f - time;
+		}
 
 		time = time * 0.5f + 0.5f;
 

@@ -658,7 +658,9 @@ public class FoodGlobalItem : GlobalItem
 
 			int buffTimeIndex = tooltips.FindIndex((tp) => tp.Name.Contains("BuffTime"));
 			if (buffTimeIndex != -1)
+			{
 				tooltips[buffTimeIndex].Text = FoodInfo.BuffTime.ToBuffTimeString();
+			}
 		}
 		if (item.ModItem is FoodBase)
 		{
@@ -685,7 +687,9 @@ public class FoodGlobalItem : GlobalItem
 
 			int buffTimeIndex = tooltips.FindIndex((tp) => tp.Name.Contains("BuffTime"));
 			if (buffTimeIndex != -1)
+			{
 				tooltips[buffTimeIndex].Text = FoodInfo.BuffTime.ToBuffTimeString();
+			}
 		}
 	}
 	public override void SetStaticDefaults()
@@ -775,16 +779,20 @@ public class FoodGlobalItem : GlobalItem
 		{
 			var foodInfo = m_vanillaFoodInfos[item.type];
 			if (!foodPlayer.CanEat(foodInfo))
+			{
 				// Main.NewText($"Cannot eat this!");
 				return false;
+			}
 		}
 		else if (item.ModItem is FoodBase)
 		{
 			var foodItem = item.ModItem as FoodBase;
 			var foodInfo = foodItem.FoodInfo;
 			if (!foodPlayer.CanEat(foodInfo))
+			{
 				// Main.NewText($"Cannot eat this!");
 				return false;
+			}
 		}
 		return true;
 	}

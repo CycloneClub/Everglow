@@ -18,7 +18,10 @@ public class BlueParticle : ModDust
 		dust.velocity *= 0.95f;
 		Lighting.AddLight(dust.position, 0, 0, dust.scale * 0.75f);
 		if (dust.scale < 0.15f)
+		{
 			dust.active = false;
+		}
+
 		return false;
 	}
 

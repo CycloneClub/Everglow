@@ -44,9 +44,15 @@ public class BloodifyPlatform : ModTile
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		if (Main.rand.NextBool(30))
+		{
 			Dust.NewDust(new Vector2(i, j) * 16f, 16, 16, DustID.Blood, 0f, 0f, 1, Color.White, 1f);
+		}
+
 		if (Main.rand.NextBool(300))
+		{
 			WorldGen.KillTile(i, j);
+		}
+
 		return base.PreDraw(i, j, spriteBatch);
 	}
 	public override void NumDust(int i, int j, bool fail, ref int num)

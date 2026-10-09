@@ -77,7 +77,10 @@ public class TsunamiShark : ModItem
 	{
 		ShootType = type;
 		if (player.ownedProjectileCounts[ModContent.ProjectileType<Projectiles.Weapons.TsunamiShark>()] <= 0)
+		{
 			Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<Projectiles.Weapons.TsunamiShark>(), damage, knockback, player.whoAmI);
+		}
+
 		return false;
 	}
 	public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)

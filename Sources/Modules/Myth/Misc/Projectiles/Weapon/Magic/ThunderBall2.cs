@@ -70,12 +70,17 @@ public class ThunderBall2 : ModProjectile
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
 		}
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
+
 			float width = 18;
 			if (Projectile.timeLeft > 30)
 				width = 18;
@@ -85,7 +90,10 @@ public class ThunderBall2 : ModProjectile
 			}
 			var normalDir = Projectile.oldPos[i - 1] - Projectile.oldPos[i];
 			if (normalDir.Length() < 0.2f)
+			{
 				normalDir = Projectile.velocity / Projectile.velocity.Length();
+			}
+
 			normalDir = Vector2.Normalize(new Vector2(-normalDir.Y, normalDir.X));
 
 			var factor = i / (float)Projectile.oldPos.Length;
@@ -101,7 +109,10 @@ public class ThunderBall2 : ModProjectile
 			triangleList.Add(bars[0]);
 			Vector2 va = Projectile.velocity * 1.5f;
 			if (Tokill <= 44 && Tokill > 0)
+			{
 				va = Projectile.velocity * 0.05f;
+			}
+
 			var vertex = new Vertex2D((bars[0].position + bars[1].position) * 0.5f + va, new Color(0, 0.9f, 1f, 0), new Vector3(0, 0.5f, 1));
 			triangleList.Add(bars[1]);
 			triangleList.Add(vertex);

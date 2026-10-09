@@ -31,9 +31,15 @@ public class ThunderBall : ModProjectile
 	{
 		Projectile.penetrate--;
 		if (Projectile.velocity.X != oldVelocity.X)
+		{
 			Projectile.velocity.X = -oldVelocity.X;
+		}
+
 		if (Projectile.velocity.Y != oldVelocity.Y)
+		{
 			Projectile.velocity.Y = -oldVelocity.Y;
+		}
+
 		float a = Main.rand.NextFloat(0, 500.5f);
 		Player player = Main.player[Projectile.owner];
 		for (int y = 0; y < 3; y++)
@@ -71,7 +77,10 @@ public class ThunderBall : ModProjectile
 	{
 		addi += 1;
 		if (addi % 60 == 1)
+		{
 			SoundEngine.PlaySound(new SoundStyle("Everglow/Myth/Sounds/ElectricCurrency"), Projectile.Center);
+		}
+
 		Projectile.velocity.Y += 0.15f;
 		if (Projectile.timeLeft >= 1079)
 		{
@@ -102,7 +111,10 @@ public class ThunderBall : ModProjectile
 					HasCool[j] = 15;
 				}
 				if (HasCool[j] > 0)
+				{
 					HasCool[j]--;
+				}
+
 				if (HasBeenHit[j])
 				{
 					if (coolingHit[j] > 0)
@@ -133,10 +145,15 @@ public class ThunderBall : ModProjectile
 		{
 			vdp[i] += new Vector2(0, Main.rand.NextFloat(0, 0.5f)).RotatedByRandom(Math.PI * 2d);
 			if (vdp[i].Length() > 12)
+			{
 				vdp[i] = new Vector2(0, Main.rand.NextFloat(0, 5f)).RotatedByRandom(Math.PI * 2d);
+			}
 		}
 		if (Tokill >= 0 && Tokill <= 2)
+		{
 			Projectile.Kill();
+		}
+
 		if (Tokill <= 44 && Tokill > 0)
 		{
 			Projectile.position = Projectile.oldPosition;
@@ -192,7 +209,10 @@ public class ThunderBall : ModProjectile
 		{
 			int g = (i + 1080 - Projectile.timeLeft) % 60;
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
+
 			float width = 5;
 			if (Projectile.timeLeft > 30)
 				width = 5;
@@ -209,7 +229,9 @@ public class ThunderBall : ModProjectile
 					i++;
 					var normalDir2 = Projectile.oldPos[i - 1] - Projectile.oldPos[i];
 					if (normalDir2.Length() >= 0.2f)
+					{
 						break;
+					}
 				}
 			}
 			normalDir = Vector2.Normalize(new Vector2(-normalDir.Y, normalDir.X));

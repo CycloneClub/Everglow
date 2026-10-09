@@ -90,9 +90,13 @@ namespace Everglow.Commons.UI.UIContainers.Sidebar
 			base.Update(gt);
 
 			if (_mouseDown)
+			{
 				_waitTime++;
+			}
 			else
+			{
 				_waitTime = 0;
+			}
 
 			if (IsMoveing)
 			{

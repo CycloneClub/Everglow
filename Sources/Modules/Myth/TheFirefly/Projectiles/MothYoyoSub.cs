@@ -52,14 +52,18 @@ public class MothYoyoSub : ModProjectile
 		Lighting.AddLight(Projectile.Center, new Vector3(0, 0.3f, 0.75f));
 		Projectile owner = Main.projectile[(int)Projectile.ai[0]];
 		if (!owner.active || owner.type != ModContent.ProjectileType<MothYoyoProjectile>())
+		{
 			Projectile.Kill();
+		}
 
 		int t = 114514 - Projectile.timeLeft;
 		if (Projectile.timeLeft % 5 == 0 && !Main.rand.NextBool(5))
 		{
 			Projectile.frame++;
 			if (Main.rand.NextBool(5))
+			{
 				Projectile.spriteDirection *= -1;
+			}
 		}
 		if (t < 20)// 开始
 			v3Position = Vector3.Lerp(v3Position, targetPos, 0.1f);
@@ -67,7 +71,9 @@ public class MothYoyoSub : ModProjectile
 		{
 			v3Position = Vector3.Lerp(v3Position, Vector3.Zero, 0.1f);
 			if (Projectile.scale > 0)
+			{
 				Projectile.scale -= 0.05f;
+			}
 		}
 		else// 旋转
 		{

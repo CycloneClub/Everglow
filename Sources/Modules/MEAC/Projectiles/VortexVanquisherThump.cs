@@ -33,7 +33,10 @@ public class VortexVanquisherThump : ModProjectile
 		Player player = Main.player[Projectile.owner];
 		Projectile.extraUpdates = (int)(10 * player.meleeSpeed);
 		if (Projectile.timeLeft % 40 == 0)
+		{
 			StrikeDown();
+		}
+
 		player.immune = true;
 		player.immuneTime = 8;
 		Projectile.velocity = StartVelocity;
@@ -63,7 +66,9 @@ public class VortexVanquisherThump : ModProjectile
 				CheckPoint += new Vector2(0, 5) * player.gravDir;
 			}
 			if (y == 59)
+			{
 				CheckPoint = Projectile.Center + new Vector2(0, -100);
+			}
 		}
 
 		Vector2 TotalVector = Vector2.Zero; // 合向量

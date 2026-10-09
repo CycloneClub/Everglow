@@ -102,7 +102,9 @@ internal class SkullHand : ModProjectile
 			finRot3[2] = 0.08f;
 			finRot3[3] = 0.16f;
 			if (Main.rand.NextBool(2))
+			{
 				dir = -1;
+			}
 
 			SoundEngine.PlaySound(new SoundStyle("Everglow/SpellAndSkull/Sounds/MothHitCocoon"), Projectile.Center);
 		}

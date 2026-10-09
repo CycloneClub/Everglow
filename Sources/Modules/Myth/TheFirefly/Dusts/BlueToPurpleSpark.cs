@@ -19,7 +19,10 @@ public class BlueToPurpleSpark : ModDust
 		dust.velocity.Y -= 0.03f;
 		Lighting.AddLight(dust.position, 0, 0, dust.scale * 0.75f);
 		if (dust.scale < 0.15f)
+		{
 			dust.active = false;
+		}
+
 		return false;
 	}
 

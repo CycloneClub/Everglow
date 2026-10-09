@@ -31,7 +31,9 @@ public class LampWoodCandle : ModTile
 		if (!Main.dedServ)
 		{
 			if (!Main.dedServ)
+			{
 				flameTexture = ModAsset.LampWoodCandle_Flame;
+			}
 		}
 
 		LocalizedText name = CreateMapEntryName();
@@ -61,7 +63,9 @@ public class LampWoodCandle : ModTile
 		var zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
 
 		if (Main.drawToScreen)
+		{
 			zero = Vector2.Zero;
+		}
 
 		ulong randSeed = Main.TileFrameSeed ^ (ulong)((long)j << 32 | (uint)i); // Don't remove any casts.
 		var color = new Color(55, 5, 255, 0);

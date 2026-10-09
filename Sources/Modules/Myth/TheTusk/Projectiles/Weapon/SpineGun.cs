@@ -52,7 +52,9 @@ internal class SpineGun : ModProjectile
 			}
 		}
 		if (Ran == -1)
+		{
 			Ran = Main.rand.Next(9);
+		}
 	}
 	public override bool PreDraw(ref Color lightColor)
 	{
@@ -61,12 +63,17 @@ internal class SpineGun : ModProjectile
 	public override void PostDraw(Color lightColor)
 	{
 		if (!Release)
+		{
 			return;
+		}
+
 		Player player = Main.player[Projectile.owner];
 		player.heldProj = Projectile.whoAmI;
 		Vector2 v0 = Projectile.Center - player.MountedCenter;
 		if (Main.mouseLeft)
+		{
 			player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (float)(Math.Atan2(v0.Y, v0.X) - Math.PI / 2d));
+		}
 
 		Texture2D TexMain = ModContent.Request<Texture2D>("Everglow/Myth/TheTusk/Items/Weapons/SpineGun").Value;
 		Color drawColor = Lighting.GetColor((int)Projectile.Center.X / 16, (int)(Projectile.Center.Y / 16.0));

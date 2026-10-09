@@ -79,7 +79,10 @@ public class PrimordialJadeWinged_Spear : MeleeProj
 				Projectile.rotation = mainAxisDirection.ToRotation();
 			}
 			if (timer == (int)(20 * timeMul))
+			{
 				AttSound(SoundID.Item1);
+			}
+
 			if (timer == (int)(30 * timeMul))
 			{
 				Vector2 v0 = new Vector2(Projectile.spriteDirection * 6, -0.5f);
@@ -113,7 +116,10 @@ public class PrimordialJadeWinged_Spear : MeleeProj
 				Projectile.rotation = mainAxisDirection.ToRotation();
 			}
 			if (timer == (int)(20 * timeMul))
+			{
 				AttSound(SoundID.Item1);
+			}
+
 			if (timer > 16 * timeMul && timer < 50 * timeMul)
 			{
 				canHit = true;
@@ -123,8 +129,9 @@ public class PrimordialJadeWinged_Spear : MeleeProj
 				GenerateSpark();
 			}
 			if (timer > 50 * timeMul)
+			{
 				NextAttackType();
-
+			}
 		}
 		if (currantAttackType == 2)
 		{
@@ -138,7 +145,10 @@ public class PrimordialJadeWinged_Spear : MeleeProj
 				Projectile.rotation = mainAxisDirection.ToRotation();
 			}
 			if (timer == (int)(20 * timeMul))
+			{
 				AttSound(SoundID.Item1);
+			}
+
 			if (timer > 16 * timeMul && timer < 30 * timeMul)
 			{
 				canHit = true;
@@ -156,7 +166,9 @@ public class PrimordialJadeWinged_Spear : MeleeProj
 				GenerateSpark();
 			}
 			if (timer > 55 * timeMul)
+			{
 				NextAttackType();
+			}
 		}
 		if (currantAttackType == 3)
 		{
@@ -170,11 +182,20 @@ public class PrimordialJadeWinged_Spear : MeleeProj
 				Projectile.rotation = mainAxisDirection.ToRotation();
 			}
 			if (timer == (int)(20 * timeMul))
+			{
 				AttSound(SoundID.Item1);
+			}
+
 			if (timer == (int)(37 * timeMul))
+			{
 				AttSound(SoundID.Item1);
+			}
+
 			if (timer == (int)(54 * timeMul))
+			{
 				AttSound(SoundID.Item1);
+			}
+
 			if (timer > 16 * timeMul && timer < 57 * timeMul)
 			{
 				canHit = true;
@@ -189,7 +210,9 @@ public class PrimordialJadeWinged_Spear : MeleeProj
 				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), player.Center - v0 * 30, v0, ModContent.ProjectileType<PrimordialJadeWinged_Spear_thrust2>(), Projectile.damage, 0, Projectile.owner);
 			}
 			if (timer > 83 * timeMul)
+			{
 				NextAttackType();
+			}
 		}
 		if (currantAttackType == 4)
 		{
@@ -203,7 +226,10 @@ public class PrimordialJadeWinged_Spear : MeleeProj
 				Projectile.rotation = mainAxisDirection.ToRotation();
 			}
 			if (timer == (int)(20 * timeMul))
+			{
 				AttSound(SoundID.Item1);
+			}
+
 			if (timer > 16 * timeMul && timer < 50 * timeMul)
 			{
 				canHit = true;
@@ -213,7 +239,9 @@ public class PrimordialJadeWinged_Spear : MeleeProj
 				GenerateSpark();
 			}
 			if (timer > 76 * timeMul)
+			{
 				NextAttackType();
+			}
 		}
 	}
 	public override void OnKill(int timeLeft)
@@ -235,11 +263,16 @@ public class PrimordialJadeWinged_Spear : MeleeProj
 			SmoothTrail.Add(SmoothTrailX[x]);
 		}
 		if (slashTrail.Count != 0)
+		{
 			SmoothTrail.Add(slashTrail.ToArray()[slashTrail.Count - 1]);
+		}
 
 		int length = SmoothTrail.Count;
 		if (length <= 3)
+		{
 			return;
+		}
+
 		Vector2[] trail = SmoothTrail.ToArray();
 		var bars = new List<Vertex2D>();
 

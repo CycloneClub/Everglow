@@ -63,11 +63,19 @@ public class FoodBuffGlobalItem : GlobalItem
 		if (!item.IsAir && item.damage > 0 && !item.noMelee && item.pick == 0 && item.axe == 0 && item.hammer == 0)
 		{
 			if (player.GetModPlayer<FoodBuffModPlayer>().KiwiJuiceBuff)
+			{
 				scale *= 2.5f;
+			}
+
 			if (player.GetModPlayer<FoodBuffModPlayer>().KiwiFruitBuff)
+			{
 				scale *= 1.2f;
+			}
+
 			if (player.GetModPlayer<FoodBuffModPlayer>().KiwiIceCreamBuff)
+			{
 				scale *= 1.1f;
+			}
 		}
 	}
 }

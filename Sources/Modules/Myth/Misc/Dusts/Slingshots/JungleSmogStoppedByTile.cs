@@ -34,7 +34,9 @@ public class JungleSmogStoppedByTile : ModDust
 			dust.velocity = v0;
 		}
 		if (dust.alpha > 254)
+		{
 			dust.active = false;
+		}
 		// 低损耗挂毒
 		int LuckTarget = Main.rand.Next(200);
 		NPC target = Main.npc[LuckTarget];
@@ -47,7 +49,9 @@ public class JungleSmogStoppedByTile : ModDust
 					if (!target.buffImmune[BuffID.Poisoned])
 					{
 						if ((target.Center - dust.position).Length() < 60)
+						{
 							target.AddBuff(BuffID.Poisoned, 180);
+						}
 					}
 				}
 			}

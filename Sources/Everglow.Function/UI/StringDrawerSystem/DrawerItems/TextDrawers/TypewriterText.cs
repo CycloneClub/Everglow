@@ -17,7 +17,10 @@ namespace Everglow.Commons.UI.StringDrawerSystem.DrawerItems.TextDrawers
 		{
 			base.Init(stringDrawer, originalText, name, stringParameters);
 			if (stringParameters == null)
+			{
 				return;
+			}
+
 			AnimationTime = stringParameters.GetFloat("AnimationTime",
 				stringDrawer.DefaultParameters.GetFloat("AnimationTime", 0.2f)) * 60f;
 			CursorBlinkingTime = stringParameters.GetFloat("CursorBlinkingTime",
@@ -102,7 +105,10 @@ namespace Everglow.Commons.UI.StringDrawerSystem.DrawerItems.TextDrawers
 				FontSystemEffect, EffectAmount);
 			pos.X += GetTextSize(text).X;
 			if (!EnableAnimation || textIndex >= Text.Length)
+			{
 				return;
+			}
+
 			if (time1 >= CursorBlinkingInterval)
 			{
 				time1 = 0f;
@@ -129,7 +135,9 @@ namespace Everglow.Commons.UI.StringDrawerSystem.DrawerItems.TextDrawers
 			}
 			time += 1f;
 			if (time2 <= 0f)
+			{
 				time1 += 1f;
+			}
 		}
 	}
 }

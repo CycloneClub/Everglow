@@ -18,7 +18,9 @@ public class BlackScaleAppear : ModDust
 		dust.velocity *= 0.95f;
 		dust.scale = (float)Math.Sin(dust.alpha / 255d * Math.PI) * dust.rotation;
 		if (dust.alpha > 254)
+		{
 			dust.active = false;
+		}
 
 		return false;
 	}

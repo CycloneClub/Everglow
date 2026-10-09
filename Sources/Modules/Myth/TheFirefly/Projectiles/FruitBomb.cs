@@ -119,14 +119,19 @@ public class FruitBomb : ModProjectile
 		circle.Add(new Vertex2D(center + new Vector2(0, Math.Max(radius - width, 0)).RotatedBy(addRot), c0, new Vector3(0, 1, 0)));
 		circle.Add(new Vertex2D(center + new Vector2(0, radius).RotatedBy(addRot), c0, new Vector3(0, 0.5f, 0)));
 		if (circle.Count > 2)
+		{
 			spriteBatch.Draw(tex, circle, PrimitiveType.TriangleStrip);
+		}
 	}
 	public void DrawWarp(VFXBatch spriteBatch)
 	{
 		float value = (200 - Projectile.timeLeft) / 200f;
 		float colorV = 0.9f * (1 - value);
 		if (Projectile.ai[0] >= 10)
+		{
 			colorV *= Projectile.ai[0] / 10f;
+		}
+
 		Texture2D t = Commons.ModAsset.Trail.Value;
 
 

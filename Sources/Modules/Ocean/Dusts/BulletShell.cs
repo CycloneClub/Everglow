@@ -17,7 +17,10 @@ public class BulletShell : ModDust
 		if (Collision.SolidCollision(dust.position, 8, 8))
 		{
 			if (dust.alpha == 0)
+			{
 				SoundEngine.PlaySound(SoundID.NPCHit4.WithPitchOffset(0.2f).WithVolumeScale(0.4f), dust.position);
+			}
+
 			dust.alpha += 5;
 			dust.velocity *= 0;
 		}
@@ -28,7 +31,10 @@ public class BulletShell : ModDust
 		dust.position += dust.velocity;
 		dust.rotation += dust.velocity.X;
 		if (dust.alpha >= 250)
+		{
 			dust.active = false;
+		}
+
 		return false;
 	}
 }

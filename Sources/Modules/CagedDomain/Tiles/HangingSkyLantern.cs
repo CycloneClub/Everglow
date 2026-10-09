@@ -72,7 +72,10 @@ public class HangingSkyLantern : ModTile, ITileFluentlyDrawn
 		var drawCenterPos = pos.ToWorldCoordinates(autoAddY: 0) - screenPosition;
 		int Adx = 0;
 		if (tile.TileFrameX > 54)
+		{
 			Adx = 70; // 改了下贴图，所以是70
+		}
+
 		DrawLanternPiece(42 + Adx, 58, 0.15f, -2, pos, pos, drawCenterPos, spriteBatch, tileDrawing);
 		DrawLanternPiece(56 + Adx, 44, 0.11f, -4, pos, pos + new Point(-1, 0), drawCenterPos, spriteBatch, tileDrawing);
 		DrawLanternPiece(28 + Adx, 40, 0.13f, 2, pos, pos + new Point(1, 0), drawCenterPos, spriteBatch, tileDrawing);
@@ -96,10 +99,14 @@ public class HangingSkyLantern : ModTile, ITileFluentlyDrawn
 	{
 		// 回声涂料	
 		if (!TileDrawing.IsVisible(Main.tile[paintPos]))
+		{
 			return;
+		}
 
 		if (!TileDrawing.IsVisible(Main.tile[paintPos]))
+		{
 			return;
+		}
 
 		var tile = Main.tile[tilePos];
 		ushort type = tile.TileType;
@@ -113,7 +120,9 @@ public class HangingSkyLantern : ModTile, ITileFluentlyDrawn
 
 		float windCycle = 0;
 		if (tileDrawing.InAPlaceWithWind(tilePos.X, tilePos.Y, sizeX, sizeY))
+		{
 			windCycle = tileDrawing.GetWindCycle(tilePos.X, tilePos.Y, tileDrawing._sunflowerWindCounter);
+		}
 
 		int totalPushTime = 80;
 		float pushForcePerFrame = 1.26f;

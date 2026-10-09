@@ -75,7 +75,10 @@ public class DoubleArmsChineseStreetLamp : ModTile, ITileFluentlyDrawn
 		float thirdSway = 0.48f;
 		int addRecX = 0;
 		if (tile.TileFrameX >= 54)
+		{
 			addRecX = 18;
+		}
+
 		DrawLanternPiece(new Rectangle(2 + addRecX, 80, 14, 10), firstSway, new Vector2(0, 18), pos + new Point(0, 1), pos + new Point(0, 1), drawCenterPos, new Vector2(7, 0), spriteBatch, tileDrawing);
 		Vector2 firstOffsetLeft = new Vector2(0, 10).RotatedBy(GetWindRot(pos + new Point(0, 1), 1, 1, firstSway, tileDrawing));
 		DrawLanternPiece(new Rectangle(4 + addRecX, 90, 10, 10), secondSway, new Vector2(0, 18) + firstOffsetLeft, pos + new Point(0, 2), pos + new Point(0, 2), drawCenterPos, new Vector2(5, 0), spriteBatch, tileDrawing);
@@ -100,7 +103,9 @@ public class DoubleArmsChineseStreetLamp : ModTile, ITileFluentlyDrawn
 	{
 		float windCycle = 0;
 		if (tileDrawing.InAPlaceWithWind(x, y, width, height))
+		{
 			windCycle = tileDrawing.GetWindCycle(x, y, tileDrawing._sunflowerWindCounter);
+		}
 
 		int totalPushTime = 80;
 		float pushForcePerFrame = 1.26f;
@@ -112,7 +117,9 @@ public class DoubleArmsChineseStreetLamp : ModTile, ITileFluentlyDrawn
 	{
 		float windCycle = 0;
 		if (tileDrawing.InAPlaceWithWind(pos.X, pos.Y, width, height))
+		{
 			windCycle = tileDrawing.GetWindCycle(pos.X, pos.Y, tileDrawing._sunflowerWindCounter);
+		}
 
 		int totalPushTime = 80;
 		float pushForcePerFrame = 1.26f;
@@ -137,7 +144,9 @@ public class DoubleArmsChineseStreetLamp : ModTile, ITileFluentlyDrawn
 	{
 		// 回声涂料	
 		if (!TileDrawing.IsVisible(Main.tile[paintPos]))
+		{
 			return;
+		}
 
 		var tile = Main.tile[tilePos];
 		ushort type = tile.TileType;
@@ -150,7 +159,9 @@ public class DoubleArmsChineseStreetLamp : ModTile, ITileFluentlyDrawn
 
 		float windCycle = 0;
 		if (tileDrawing.InAPlaceWithWind(tilePos.X, tilePos.Y, sizeX, sizeY))
+		{
 			windCycle = tileDrawing.GetWindCycle(tilePos.X, tilePos.Y, tileDrawing._sunflowerWindCounter);
+		}
 
 		int totalPushTime = 80;
 		float pushForcePerFrame = 1.26f;

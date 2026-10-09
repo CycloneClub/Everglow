@@ -45,13 +45,22 @@ public class DemoSpark : ModProjectile
 				SparkOldPos[x, y] = SparkOldPos[x, y - 1];
 			}
 			if (Collision.SolidCollision(SparkOldPos[x, 0] + new Vector2(SparkVelocity[x].X, 0), 0, 0))
+			{
 				SparkVelocity[x].X *= -0.95f;
+			}
+
 			if (Collision.SolidCollision(SparkOldPos[x, 0] + new Vector2(0, SparkVelocity[x].Y), 0, 0))
+			{
 				SparkVelocity[x].Y *= -0.95f;
+			}
+
 			SparkOldPos[x, 0] += SparkVelocity[x];
 
 			if (SparkVelocity[x].Length() > 0.3f)
+			{
 				SparkVelocity[x] *= 0.95f;
+			}
+
 			SparkVelocity[x].Y += 0.001f;
 		}
 	}
@@ -75,14 +84,18 @@ public class DemoSpark : ModProjectile
 			for (int i = 1; i < 40; ++i)
 			{
 				if (SparkOldPos[x, i] == Vector2.Zero)
+				{
 					break;
+				}
 
 				TrueL++;
 			}
 			for (int i = 1; i < 40; ++i)
 			{
 				if (SparkOldPos[x, i] == Vector2.Zero)
+				{
 					break;
+				}
 
 				var normalDir = SparkOldPos[x, i - 1] - SparkOldPos[x, i];
 				normalDir = Vector2.Normalize(new Vector2(-normalDir.Y, normalDir.X));
@@ -106,7 +119,9 @@ public class DemoSpark : ModProjectile
 			Main.graphics.GraphicsDevice.Textures[0] = t;
 		}
 		if (bars.Count > 3)
+		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
+		}
 	}
 
 	public override void OnKill(int timeLeft)
@@ -116,9 +131,15 @@ public class DemoSpark : ModProjectile
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
 		if (Projectile.velocity.X != oldVelocity.X)
+		{
 			Projectile.velocity.X = -oldVelocity.X;
+		}
+
 		if (Projectile.velocity.Y != oldVelocity.Y)
+		{
 			Projectile.velocity.Y = -oldVelocity.Y;
+		}
+
 		Projectile.velocity *= 0.98f;
 
 		return false;

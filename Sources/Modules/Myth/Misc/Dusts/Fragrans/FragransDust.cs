@@ -17,13 +17,16 @@ public class FragransDust : ModDust
 		dust.scale *= 0.95f;
 		dust.velocity *= 0.9995f;
 		if (!dust.noGravity)
+		{
 			dust.velocity.Y += 0.14f;
-
+		}
 
 		float scale = dust.scale;
 		Lighting.AddLight(dust.position, dust.color.R * 0.00098f, dust.color.G * 0.00092f, dust.color.B * 0.0005f);
 		if (dust.scale < 0.25f)
+		{
 			dust.active = false;
+		}
 		// for(int i = 0; i < 200;i++)
 		// {
 		//    if((Main.npc[i].Center - dust.position).Length() < 10 && !Main.npc[i].dontTakeDamage && !Main.npc[i].friendly)

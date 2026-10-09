@@ -49,7 +49,10 @@ public class ShadowWingBow : ModItem
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		if (player.ownedProjectileCounts[ModContent.ProjectileType<Projectiles.ShadowWingBow>()] <= 0)
+		{
 			Projectile.NewProjectile(source, position, Vector2.Zero, ModContent.ProjectileType<Projectiles.ShadowWingBow>(), (int)(damage * 0.65f), knockback, player.whoAmI, type, Item.useAnimation);
+		}
+
 		return false;
 	}
 	public override void ModifyTooltips(List<TooltipLine> tooltips)

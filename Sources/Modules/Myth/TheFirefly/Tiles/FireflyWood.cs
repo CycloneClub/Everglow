@@ -24,7 +24,10 @@ public class FireflyWood : ModTile
 		var zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
 
 		if (Main.drawToScreen)
+		{
 			zero = Vector2.Zero;
+		}
+
 		Texture2D tex = ModAsset.FireflyWoodGlow.Value;
 		Player player = Main.player[Player.FindClosest(new Vector2(i * 16, j * 16), 16, 16)];
 		float dis = Math.Clamp((player.Center - new Vector2(i * 16, j * 16)).Length() / 480f, 0f, 10f);

@@ -276,7 +276,9 @@ public class BladeOfGreenMoss_Proj : MeleeProj
 			SmoothTrail.Add(smoothTrail_current[x]);
 		}
 		if (slashTrail.Count != 0)
+		{
 			SmoothTrail.Add(slashTrail.ToArray()[slashTrail.Count - 1]);
+		}
 
 		int length = SmoothTrail.Count;
 		if (length <= 3)

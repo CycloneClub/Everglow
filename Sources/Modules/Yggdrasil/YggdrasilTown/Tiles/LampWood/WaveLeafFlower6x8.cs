@@ -82,7 +82,10 @@ public class WaveLeafFlower6x8 : ModTile, ITileFluentlyDrawn
 
 		// 回声涂料
 		if (!TileDrawing.IsVisible(tile))
+		{
 			return;
+		}
+
 		int paint = Main.tile[paintPos].TileColor;
 		int textureStyle = 1;
 		Texture2D tex = PaintedTextureSystem.TryGetPaintedTexture(ModAsset.WaveLeafFlower6x8_preview_Path, type, textureStyle, paint, tileDrawing);
@@ -90,7 +93,9 @@ public class WaveLeafFlower6x8 : ModTile, ITileFluentlyDrawn
 
 		float windCycle = 0;
 		if (tileDrawing.InAPlaceWithWind(tilePos.X, tilePos.Y, pushWidth, pushHeight))
+		{
 			windCycle = tileDrawing.GetWindCycle(tilePos.X, tilePos.Y, tileDrawing._sunflowerWindCounter);
+		}
 
 		int totalPushTime = 80;
 		float pushForcePerFrame = 1.26f;
@@ -139,7 +144,9 @@ public class WaveLeafFlower6x8 : ModTile, ITileFluentlyDrawn
 
 		float windCycle = 0;
 		if (tileDrawing.InAPlaceWithWind(tilePos.X, tilePos.Y, pushWidth, pushHeight))
+		{
 			windCycle = tileDrawing.GetWindCycle(tilePos.X, tilePos.Y, tileDrawing._sunflowerWindCounter);
+		}
 
 		int totalPushTime = 80;
 		float pushForcePerFrame = 1.26f;

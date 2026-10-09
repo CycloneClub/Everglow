@@ -41,7 +41,9 @@ public abstract class FixCoinItem : ModItem
 		foreach (Item item in player.inventory)
 		{
 			if (item.accessory)
+			{
 				return true;
+			}
 		}
 		// TODO:你的背包里没有饰品
 		// string tex3 = "There's no accessory in your inventory";

@@ -12,7 +12,10 @@ public static class PlantUtils
 	{
 		des = source.DirectionTo(des);
 		if (des.HasNaNs())
+		{
 			des = Vector2.Zero;
+		}
+
 		return des;
 	}
 	public static Vector2 DirectionFromSafe(this Vector2 source, Vector2 des) => -source.DirectionToSafe(des);
@@ -22,7 +25,10 @@ public static class PlantUtils
 	{
 		des = source.Center.DirectionTo(des);
 		if (des.HasNaNs())
+		{
 			des = Vector2.Zero;
+		}
+
 		return des;
 	}
 	public static Vector2 DirectionFromSafe(this Entity source, Vector2 des) => -source.DirectionToSafe(des);
@@ -32,7 +38,10 @@ public static class PlantUtils
 	{
 		vec.Normalize();
 		if (Utils.HasNaNs(vec))
+		{
 			vec = defVec ?? Vector2.Zero;
+		}
+
 		return vec;
 	}
 }

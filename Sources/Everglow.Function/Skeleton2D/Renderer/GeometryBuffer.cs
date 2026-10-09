@@ -93,7 +93,9 @@ public class GeometryBuffer
 	public void Polygon(float[] polygonVertices, int offset, int count, float z = 0f)
 	{
 		if (count < 3)
+		{
 			throw new ArgumentException("Polygon must contain at least 3 vertices");
+		}
 
 		offset <<= 1;
 

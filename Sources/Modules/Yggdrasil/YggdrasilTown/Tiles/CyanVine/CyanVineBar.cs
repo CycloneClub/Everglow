@@ -26,6 +26,8 @@ public class CyanVineBar : ModTile
 	public override void NearbyEffects(int i, int j, bool closer)
 	{
 		if (Main.tile[i, j + 1].Slope != SlopeType.Solid || !Main.tile[i, j + 1].HasTile || Main.tile[i, j + 1].IsHalfBlock)
+		{
 			WorldGen.KillTile(i, j);
+		}
 	}
 }

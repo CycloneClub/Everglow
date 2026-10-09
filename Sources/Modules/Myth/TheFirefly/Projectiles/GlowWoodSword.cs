@@ -64,14 +64,18 @@ public class GlowWoodSword : ModProjectile
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
 
 			TrueL++;
 		}
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
 
 			var normalDir = Projectile.oldPos[i - 1] - Projectile.oldPos[i];
 			normalDir = Vector2.Normalize(new Vector2(-normalDir.Y, normalDir.X));
@@ -83,7 +87,9 @@ public class GlowWoodSword : ModProjectile
 		Texture2D t = ModAsset.MothGreyLine.Value;
 		Main.graphics.GraphicsDevice.Textures[0] = t;
 		if (bars.Count > 3)
+		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
+		}
 
 		return true;
 	}

@@ -56,9 +56,15 @@ public class LilyHarp : ModItem
 
 		SoundStyle++;
 		if (SoundStyle >= 4)
+		{
 			SoundStyle = 0;
+		}
+
 		if (player.ownedProjectileCounts[Item.shoot] > 0)
+		{
 			return false;
+		}
+
 		return true;
 	}
 
@@ -69,7 +75,9 @@ public class LilyHarp : ModItem
 			if (Main.myPlayer == player.whoAmI)
 			{
 				if (player.altFunctionUse == 2)
+				{
 					return false;
+				}
 			}
 		}
 		return base.CanUseItem(player);

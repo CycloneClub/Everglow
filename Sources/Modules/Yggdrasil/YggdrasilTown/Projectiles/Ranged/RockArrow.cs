@@ -38,9 +38,15 @@ public class RockArrow : ModProjectile
 		}
 		Player player = Main.player[Target];
 		if (TimeTokill >= 0 && TimeTokill <= 2)
+		{
 			Projectile.Kill();
+		}
+
 		if (TimeTokill <= 15 && TimeTokill > 0)
+		{
 			Projectile.velocity = Projectile.oldVelocity;
+		}
+
 		TimeTokill--;
 		if (TimeTokill < 0)
 		{
@@ -104,7 +110,10 @@ public class RockArrow : ModProjectile
 	public override bool PreDraw(ref Color lightColor)
 	{
 		if (TimeTokill > 0)
+		{
 			return false;
+		}
+
 		var TexMain = (Texture2D)ModContent.Request<Texture2D>(Texture);
 		Main.spriteBatch.Draw(TexMain, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, TexMain.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
 		return false;
@@ -128,7 +137,10 @@ public class RockArrow : ModProjectile
 			if (Projectile.oldPos[i] == Vector2.Zero)
 			{
 				if (i == 1)
+				{
 					return;
+				}
+
 				break;
 			}
 
@@ -137,11 +149,16 @@ public class RockArrow : ModProjectile
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
 
 			float width = 12;
 			if (Projectile.timeLeft <= 30)
+			{
 				width *= Projectile.timeLeft / 30f;
+			}
+
 			var normalDir = Projectile.oldPos[i - 1] - Projectile.oldPos[i];
 			normalDir = new Vector2(-normalDir.Y, normalDir.X).SafeNormalize(Vector2.Zero);
 
@@ -170,7 +187,10 @@ public class RockArrow : ModProjectile
 			if (Projectile.oldPos[i] == Vector2.Zero)
 			{
 				if (i == 1)
+				{
 					return;
+				}
+
 				break;
 			}
 			trueL = i;
@@ -178,11 +198,16 @@ public class RockArrow : ModProjectile
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
 
 			float width = 12;
 			if (Projectile.timeLeft <= 30)
+			{
 				width *= Projectile.timeLeft / 30f;
+			}
+
 			var normalDir = Projectile.oldPos[i - 1] - Projectile.oldPos[i];
 			normalDir = new Vector2(-normalDir.Y, normalDir.X).SafeNormalize(Vector2.Zero);
 

@@ -47,10 +47,16 @@ public class VortexVanquisherGlowingSmogLine_front : Visual
 	{
 		oldPos.Add(position);
 		if (oldPos.Count > 200)
+		{
 			oldPos.RemoveAt(0);
+		}
+
 		timer++;
 		if (timer > maxTime)
+		{
 			Active = false;
+		}
+
 		velocity *= 0.9f;
 		position += velocity;
 	}
@@ -61,7 +67,10 @@ public class VortexVanquisherGlowingSmogLine_front : Visual
 		float fx = timer / maxTime;
 		int len = pos.Length;
 		if (len <= 2)
+		{
 			return;
+		}
+
 		var bars = new List<Vertex2D>();
 		for (int i = 1; i < len; i++)
 		{

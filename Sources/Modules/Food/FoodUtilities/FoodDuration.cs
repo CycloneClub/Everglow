@@ -99,9 +99,15 @@ public class FoodDuration
 	{
 		var sb = new StringBuilder();
 		if (m_hours != 0)
+		{
 			sb.Append($"{m_hours} " + Language.GetTextValue("Mods.Everglow.Common.Hour"));
+		}
+
 		if (m_minutes != 0)
+		{
 			sb.Append($"{m_minutes} " + Language.GetTextValue("Mods.Everglow.Common.Minute"));
+		}
+
 		if (m_seconds != 0 && m_frames == 0)
 			sb.Append($"{m_seconds} " + Language.GetTextValue("Mods.Everglow.Common.Second"));
 		else if (m_seconds != 0 && m_frames != 0)

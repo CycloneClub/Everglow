@@ -43,7 +43,9 @@ public class GlowWoodChandelier : ModTile, ITileFluentlyDrawn, ITileFlameData
 		TileObjectData.addTile(Type);
 
 		if (!Main.dedServ)
+		{
 			flameTexture = ModContent.Request<Texture2D>("Everglow/Myth/TheFirefly/Tiles/Furnitures/GlowWoodChandelier_Flame");
+		}
 
 		LocalizedText name = CreateMapEntryName();
 		AddMapEntry(new Color(69, 36, 78), name);

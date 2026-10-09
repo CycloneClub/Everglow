@@ -136,9 +136,14 @@ public class ExamplePerson : ModNPC
 			// Retrieve the gore types. This NPC has shimmer and party variants for head, arm, and leg gore. (12 total gores)
 			string variant = "";
 			if (NPC.IsShimmerVariant)
+			{
 				variant += "_Shimmer";
+			}
+
 			if (NPC.altTexture == 1)
+			{
 				variant += "_Party";
+			}
 			// int hatGore = NPC.GetPartyHatGore();
 			// int headGore = Mod.Find<ModGore>($"{Name}_Gore{variant}_Head").Type;
 			// int armGore = Mod.Find<ModGore>($"{Name}_Gore{variant}_Arm").Type;

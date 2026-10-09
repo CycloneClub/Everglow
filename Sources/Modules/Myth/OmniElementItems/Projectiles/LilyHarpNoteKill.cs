@@ -32,10 +32,16 @@ public class LilyHarpNoteKill : ModProjectile// , IWarpProjectile
 		float value = (200 - Projectile.timeLeft) / (float)Projectile.timeLeft * 1.4f;
 
 		if (value < 1)
+		{
 			DrawCircle(value * 110, 15 * (1 - value) + 3, new Color(0, 0.15f * (1 - value), 0.03f * (1 - value), 0f), Projectile.Center - Main.screenPosition);
+		}
+
 		value -= 0.2f;
 		if (value is < 1 and > 0)
+		{
 			DrawCircle(value * 90, 8 * (1 - value) + 3, new Color(0, 0.10f * (1 - value), 0.06f * (1 - value), 0f), Projectile.Center - Main.screenPosition);
+		}
+
 		return false;
 	}
 
@@ -83,9 +89,14 @@ public class LilyHarpNoteKill : ModProjectile// , IWarpProjectile
 		float value = (200 - Projectile.timeLeft) / (float)Projectile.timeLeft * 1.4f;
 
 		if (value < 1)
+		{
 			DrawCircle(spriteBatch, value * 110, 15 * (1 - value) + 3, new Color(0, 0.15f * (1 - value), 0.03f * (1 - value), 0f), Projectile.Center - Main.screenPosition);
+		}
+
 		value -= 0.2f;
 		if (value is < 1 and > 0)
+		{
 			DrawCircle(spriteBatch, value * 90, 8 * (1 - value) + 3, new Color(0, 0.10f * (1 - value), 0.06f * (1 - value), 0f), Projectile.Center - Main.screenPosition);
+		}
 	}
 }

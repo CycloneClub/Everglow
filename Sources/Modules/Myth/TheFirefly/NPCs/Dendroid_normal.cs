@@ -29,7 +29,10 @@ public class Dendroid_normal : ModNPC
 	{
 		FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
 		if (!fireflyBiome.IsBiomeActive(Main.LocalPlayer))
+		{
 			return 0f;
+		}
+
 		return 0.24f;
 	}
 
@@ -66,7 +69,10 @@ public class Dendroid_normal : ModNPC
 		if (NPC.collideY || NPC.collideX)
 		{
 			if (NPC.frame.Y < 6 * frameHeight)
+			{
 				NPC.frame.Y = 6 * frameHeight;
+			}
+
 			if (NPC.frameCounter > frameChangeFrequency)
 			{
 				NPC.frameCounter = 0;

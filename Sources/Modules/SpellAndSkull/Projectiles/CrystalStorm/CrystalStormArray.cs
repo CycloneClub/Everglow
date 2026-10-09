@@ -30,13 +30,17 @@ internal class CrystalStormArray : ModProjectile
 		{
 			Projectile.timeLeft = player.itemTime + 60;
 			if (timer < 30)
+			{
 				timer++;
+			}
 		}
 		else
 		{
 			timer--;
 			if (timer < 0)
+			{
 				Projectile.Kill();
+			}
 		}
 		Player.CompositeArmStretchAmount PCAS = Player.CompositeArmStretchAmount.Full;
 

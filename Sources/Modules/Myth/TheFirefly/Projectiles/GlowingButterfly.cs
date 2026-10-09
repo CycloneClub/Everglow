@@ -55,9 +55,15 @@ public class GlowingButterfly : ModProjectile
 					useStyle = ItemUseStyleID.Swing;
 				}
 				if (Projectile.timeLeft > 100 && Projectile.alpha >= 8)
+				{
 					Projectile.alpha -= 4;
+				}
+
 				if (Projectile.timeLeft <= 66)
+				{
 					Projectile.alpha += 4;
+				}
+
 				if (Projectile.alpha < 100)
 					Projectile.friendly = true;
 				else
@@ -76,9 +82,15 @@ public class GlowingButterfly : ModProjectile
 					useStyle = ItemUseStyleID.Swing;
 				}
 				if (Projectile.timeLeft > 50 && Projectile.alpha >= 8)
+				{
 					Projectile.alpha -= 8;
+				}
+
 				if (Projectile.timeLeft <= 33)
+				{
 					Projectile.alpha += 8;
+				}
+
 				if (Projectile.alpha < 50)
 					Projectile.friendly = true;
 				else
@@ -99,7 +111,10 @@ public class GlowingButterfly : ModProjectile
 			Projectile.velocity *= 0.98f;
 		}
 		if (Collision.SolidCollision(Projectile.Center - Projectile.velocity, 1, 1))
+		{
 			Projectile.tileCollide = true;
+		}
+
 		if (Projectile.timeLeft % 5 == 0)
 		{
 			if (Projectile.frame != 5)
@@ -107,11 +122,16 @@ public class GlowingButterfly : ModProjectile
 			else
 			{
 				if (Main.rand.NextFloat(0, 7) >= Projectile.velocity.Length())
+				{
 					Projectile.frame = 0;
+				}
 			}
 		}
 		if (Projectile.frame > 5)
+		{
 			Projectile.frame = 0;
+		}
+
 		Projectile.velocity.Y *= 0.96f;
 		if (Projectile.timeLeft % 12 == 0)
 		{
@@ -302,7 +322,9 @@ public class GlowingButterfly : ModProjectile
 	public override void OnKill(int timeLeft)
 	{
 		if (Projectile.alpha > 180)
+		{
 			return;
+		}
 	}
 	public override bool PreDraw(ref Color lightColor)
 	{

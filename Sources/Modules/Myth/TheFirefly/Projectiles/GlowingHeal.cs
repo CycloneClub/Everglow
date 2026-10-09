@@ -60,7 +60,9 @@ public class GlowingHeal : ModNPC
 			Ome *= 0.96f;
 			kx = 20 - v0.Length() / 12f;
 			if (kx < 1)
+			{
 				kx = 1;
+			}
 		}
 		else
 		{
@@ -80,7 +82,9 @@ public class GlowingHeal : ModNPC
 			NPC.velocity *= 0.8f;
 			kx--;
 			if (kx <= 1)
+			{
 				NPC.active = false;
+			}
 		}
 	}
 	public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
@@ -99,7 +103,10 @@ public class GlowingHeal : ModNPC
 		for (int i = 1; i < NPC.oldPos.Length - 1; ++i)
 		{
 			if (NPC.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
+
 			var normalDir = NPC.oldPos[i - 1] - NPC.oldPos[i];
 			normalDir = Vector2.Normalize(new Vector2(-normalDir.Y, normalDir.X));
 

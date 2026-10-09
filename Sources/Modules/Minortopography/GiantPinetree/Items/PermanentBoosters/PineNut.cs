@@ -85,7 +85,9 @@ public class PineNutPlayer : ModPlayer
 		var clone = (PineNutPlayer)clientPlayer;
 
 		if (PineNutCount != clone.PineNutCount)
+		{
 			SyncPlayer(toWho: -1, fromWho: Main.myPlayer, newPlayer: false);
+		}
 	}
 	public override void SaveData(TagCompound tag)
 	{

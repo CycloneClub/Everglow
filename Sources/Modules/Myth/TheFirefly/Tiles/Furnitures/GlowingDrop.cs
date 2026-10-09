@@ -82,7 +82,10 @@ public class GlowingDrop : ModTile, ITileFluentlyDrawn
 		var drawCenterPos = pos.ToWorldCoordinates(autoAddY: 0) - screenPosition;
 		int Adx = 0;
 		if (tile.TileFrameX > 54)
+		{
 			Adx = 46; // 改了下贴图，所以是46
+		}
+
 		DrawLanternPiece(0 + Adx, 40, (int)((Math.Sin(pos.X + pos.Y) * 100 + 100) % 26), -10, pos + new Point(-1, 0), pos, drawCenterPos, spriteBatch, tileDrawing);
 		DrawLanternPiece(12 + Adx, 32, (int)((Math.Sin(pos.X + pos.Y) * 100 + 100) % 14), -4, pos + new Point(0, 1), pos + new Point(-1, 0), drawCenterPos, spriteBatch, tileDrawing);
 		DrawLanternPiece(24 + Adx, 46, (int)((Math.Sin(pos.X + pos.Y) * 100 + 100) % 22), 14, pos, pos + new Point(-1, 0), drawCenterPos, spriteBatch, tileDrawing);
@@ -96,7 +99,9 @@ public class GlowingDrop : ModTile, ITileFluentlyDrawn
 	{
 		// 回声涂料	
 		if (!TileDrawing.IsVisible(Main.tile[paintPos]))
+		{
 			return;
+		}
 
 		var tile = Main.tile[tilePos];
 		ushort type = tile.TileType;
@@ -110,7 +115,9 @@ public class GlowingDrop : ModTile, ITileFluentlyDrawn
 
 		float windCycle = 0;
 		if (tileDrawing.InAPlaceWithWind(tilePos.X, tilePos.Y, sizeX, sizeY))
+		{
 			windCycle = tileDrawing.GetWindCycle(tilePos.X, tilePos.Y, tileDrawing._sunflowerWindCounter);
+		}
 
 		int totalPushTime = 80;
 		float pushForcePerFrame = 1.26f;

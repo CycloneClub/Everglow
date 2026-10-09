@@ -56,7 +56,9 @@ public class BlackVine : ModTile
 				// frame调整与联机同步
 				WorldGen.SquareTileFrame(i, j + 1);
 				if (Main.netMode is NetmodeID.Server)
+				{
 					NetMessage.SendTileSquare(-1, i, j + 1);
+				}
 			}
 		}
 		base.RandomUpdate(i, j);
@@ -80,6 +82,8 @@ public class BlackVine : ModTile
 	public override void SetSpriteEffects(int i, int j, ref SpriteEffects spriteEffects)
 	{
 		if (i % 2 == 0)
+		{
 			spriteEffects = SpriteEffects.FlipHorizontally;
+		}
 	}
 }
