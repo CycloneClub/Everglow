@@ -58,7 +58,7 @@ public class VFXManager : IVFXManager
 	/// </summary>
 	private ResourceLocker<RenderTarget2D> tempRenderTarget;
 
-	/// <summary> 用绘制层 + 第一个调用的绘制层作为Key来储存List<IVisual> </summary>
+	/// <summary> 用绘制层 + 第一个调用的绘制层作为Key来储存List&lt;IVisual&gt; </summary>
 	private Dictionary<CodeLayer, List<IVisualCollection>> visuals =
 		new();
 

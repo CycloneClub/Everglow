@@ -202,7 +202,7 @@ public class TileDataReaderSystem : Visual
 	}
 
 	/// <summary>
-	/// When there is an isolated tile area(<=MaxContinueCount tiles), you can check the number of continue tiles.
+	/// When there is an isolated tile area(&lt;=MaxContinueCount tiles), you can check the number of continue tiles.
 	/// </summary>
 	/// <returns></returns>
 	public void UpdateContinueTiles(int i, int j)
