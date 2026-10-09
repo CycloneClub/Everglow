@@ -27,7 +27,7 @@ public class ThunderBall : ModProjectile
 	internal int[] coolingHit = new int[200];
 	internal int TotalPower = 10;
 	internal int addi = 0;
-	private bool Nul = false;
+	private bool nul = false;
 	private Vector2[] vdp = new Vector2[65];
 
 	public override bool OnTileCollide(Vector2 oldVelocity)
@@ -146,7 +146,7 @@ public class ThunderBall : ModProjectile
 			Projectile.aiStyle = -1;
 			Projectile.penetrate = -1;
 			Projectile.timeLeft = 200;
-			Nul = true;
+			nul = true;
 		}
 		for (int i = 0; i < 61; i++)
 		{
@@ -193,7 +193,7 @@ public class ThunderBall : ModProjectile
 
 	public override Color? GetAlpha(Color lightColor)
 	{
-		if (!Nul)
+		if (!nul)
 		{
 			if (Projectile.timeLeft > 60f)
 			{

@@ -19,13 +19,13 @@ public class ExamplePerson : ModNPC
 	public const string ShopName = "Shop";
 	public int NumberOfTimesTalkedTo = 0;
 
-	private static int ShimmerHeadIndex;
-	private static Profiles.StackedNPCProfile NPCProfile;
+	private static int shimmerHeadIndex;
+	private static Profiles.StackedNPCProfile nPCProfile;
 
 	public override void Load()
 	{
 		// Adds our Shimmer Head to the NPCHeadLoader.
-		ShimmerHeadIndex = Mod.AddNPCHeadTexture(Type, Texture + "_Shimmer_Head");
+		shimmerHeadIndex = Mod.AddNPCHeadTexture(Type, Texture + "_Shimmer_Head");
 	}
 
 	public override void SetStaticDefaults()
@@ -63,9 +63,9 @@ public class ExamplePerson : ModNPC
 		; // < Mind the semicolon!
 
 		// This creates a "profile" for ExamplePerson, which allows for different textures during a party and/or while the NPC is shimmered.
-		NPCProfile = new Profiles.StackedNPCProfile(
+		nPCProfile = new Profiles.StackedNPCProfile(
 			new Profiles.DefaultNPCProfile(Texture, NPCHeadLoader.GetHeadSlot(HeadTexture), Texture + "_Party"),
-			new Profiles.DefaultNPCProfile(Texture + "_Shimmer", ShimmerHeadIndex, Texture + "_Shimmer_Party")
+			new Profiles.DefaultNPCProfile(Texture + "_Shimmer", shimmerHeadIndex, Texture + "_Shimmer_Party")
 		);
 	}
 
@@ -195,7 +195,7 @@ public class ExamplePerson : ModNPC
 
 	public override ITownNPCProfile TownNPCProfile()
 	{
-		return NPCProfile;
+		return nPCProfile;
 	}
 
 	public override List<string> SetNPCNameList()

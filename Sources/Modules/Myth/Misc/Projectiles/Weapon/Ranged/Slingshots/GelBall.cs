@@ -238,7 +238,7 @@ public class GelBall : SlingshotAmmo
 		}
 		if (Projectile.penetrate < 2)
 		{
-			TimeTokill = 30;
+			timeTokill = 30;
 			Projectile.velocity *= 0;
 			Projectile.tileCollide = false;
 		}

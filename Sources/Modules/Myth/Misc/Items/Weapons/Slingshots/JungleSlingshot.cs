@@ -11,7 +11,7 @@ public class JungleSlingshot : SlingshotItem
 		Item.crit = 4;
 		Item.width = 34;
 		Item.height = 34;
-		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Ranged.Slingshots.JungleSlingshot>();
+		projType = ModContent.ProjectileType<Projectiles.Weapon.Ranged.Slingshots.JungleSlingshot>();
 
 		Item.rare = ItemRarityID.Green;
 		Item.value = Item.sellPrice(0, 0, 80, 0);

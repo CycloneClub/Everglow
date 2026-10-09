@@ -18,7 +18,7 @@ public class LightSeed : ModProjectile
 		Projectile.timeLeft = 150;
 	}
 
-	private Vector2 Point = Vector2.Zero;
+	private Vector2 point = Vector2.Zero;
 	private float x;
 	private float k;
 
@@ -43,7 +43,7 @@ public class LightSeed : ModProjectile
 			Projectile.scale *= 0.85f;
 		}
 		x += Projectile.ai[0];
-		Projectile.Center = Point + new Vector2(x, MathF.Sin(MathF.Abs(x) / 30) * 1800 / (MathF.Abs(x) + 12) + k * x);
+		Projectile.Center = point + new Vector2(x, MathF.Sin(MathF.Abs(x) / 30) * 1800 / (MathF.Abs(x) + 12) + k * x);
 		Lighting.AddLight(Projectile.Center, 1.6f * Projectile.scale, 1.6f * Projectile.scale, 0);
 	}
 
@@ -51,7 +51,7 @@ public class LightSeed : ModProjectile
 	{
 		Projectile.ai[0] = Projectile.velocity.X;
 		k = Projectile.velocity.Y / Projectile.velocity.X;
-		Point = Projectile.Center;
+		point = Projectile.Center;
 		x = 0;
 		Projectile.velocity = Vector2.Zero;
 		Projectile.scale = 0;

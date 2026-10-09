@@ -30,7 +30,7 @@ public class ToothMagicSplit : ModProjectile
 	}
 
 	private int addi = 0;
-	private int MaxAdd = -1;
+	private int maxAdd = -1;
 
 	public override void AI()
 	{
@@ -42,7 +42,7 @@ public class ToothMagicSplit : ModProjectile
             Main.dust[num90].noGravity = true;
             Main.dust[num90].velocity *= 0.5f;*/
 		addi++;
-		if (Tokill < 0)
+		if (tokill < 0)
 		{
 			float num2 = Projectile.Center.X;
 			float num3 = Projectile.Center.Y;
@@ -78,18 +78,18 @@ public class ToothMagicSplit : ModProjectile
 				Projectile.velocity.Y = (Projectile.velocity.Y * 20f + num10) / 21f;
 			}
 		}
-		if (Tokill >= 0 && Tokill <= 2)
+		if (tokill >= 0 && tokill <= 2)
 		{
 			Projectile.Kill();
 		}
 
-		if (Tokill > 0)
+		if (tokill > 0)
 		{
-			Tokill--;
+			tokill--;
 		}
 
 		Player player = Main.player[Projectile.owner];
-		if (Tokill <= 44 && Tokill > 0)
+		if (tokill <= 44 && tokill > 0)
 		{
 			Projectile.position = Projectile.oldPosition;
 			Projectile.velocity = Projectile.oldVelocity;
@@ -98,39 +98,39 @@ public class ToothMagicSplit : ModProjectile
             Main.dust[r2].noGravity = true;
             int r = Dust.NewDust(new Vector2(Projectile.Center.X, Projectile.Center.Y) - new Vector2(4, 4) + Projectile.velocity / Projectile.velocity.Length() * 12f, 0, 0, 183, 0, 0, 0, default, 4f);
             Main.dust[r].noGravity = true;*/
-		if (MaxAdd == -1)
+		if (maxAdd == -1)
 		{
-			MaxAdd = Main.rand.Next(12, 27);
+			maxAdd = Main.rand.Next(12, 27);
 		}
 
-		if (FirstVel == Vector2.Zero)
+		if (firstVel == Vector2.Zero)
 		{
-			FirstVel = Vector2.Normalize(Projectile.velocity).RotatedBy(Main.rand.NextFloat(-1.5f, 1.5f)) * 0.9f;
+			firstVel = Vector2.Normalize(Projectile.velocity).RotatedBy(Main.rand.NextFloat(-1.5f, 1.5f)) * 0.9f;
 		}
 
-		if (addi < MaxAdd)
+		if (addi < maxAdd)
 		{
-			Projectile.velocity += (float)(1 - Math.Cos(addi / 7.5d * Math.PI)) * FirstVel;
+			Projectile.velocity += (float)(1 - Math.Cos(addi / 7.5d * Math.PI)) * firstVel;
 		}
 		else
 		{
-			if (Tokill < 0)
+			if (tokill < 0)
 			{
 				Projectile.tileCollide = true;
 				Projectile.friendly = true;
 			}
 		}
-		if (Projectile.damage <= 0 && Tokill <= 0)
+		if (Projectile.damage <= 0 && tokill <= 0)
 		{
 			Projectile.Kill();
 		}
 
-		if (MaxP < 2)
+		if (maxP < 2)
 		{
 			if (Main.rand.NextBool(13))
 			{
 				Projectile.NewProjectile(Terraria.Entity.InheritSource(Projectile), Projectile.Center, Projectile.velocity, ModContent.ProjectileType<ToothMagicSplit2>(), (int)(Projectile.damage * 0.75f), Projectile.knockBack, player.whoAmI);
-				MaxP++;
+				maxP++;
 			}
 		}
 		if (Projectile.velocity.Length() > 7)
@@ -143,14 +143,14 @@ public class ToothMagicSplit : ModProjectile
 		}
 	}
 
-	private int MaxP = 0;
-	private int Tokill = -1;
+	private int maxP = 0;
+	private int tokill = -1;
 	private float wid = -1;
 
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
 		Projectile.velocity = Projectile.oldVelocity;
-		Tokill = 45; // 0.75s后消掉
+		tokill = 45; // 0.75s后消掉
 		Projectile.friendly = false;
 		Projectile.damage = 0;
 		Projectile.tileCollide = false;
@@ -162,7 +162,7 @@ public class ToothMagicSplit : ModProjectile
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		Projectile.velocity = Projectile.oldVelocity;
-		Tokill = 45; // 0.75s后消掉
+		tokill = 45; // 0.75s后消掉
 		Projectile.friendly = false;
 		Projectile.damage = 0;
 		Projectile.tileCollide = false;
@@ -170,29 +170,29 @@ public class ToothMagicSplit : ModProjectile
 		Projectile.aiStyle = -1;
 	}
 
-	private Vector2 FirstVel = Vector2.Zero;
-	private int TrueL = 1;
+	private Vector2 firstVel = Vector2.Zero;
+	private int trueL = 1;
 	private Vector2 ovel = Vector2.One;
-	private float DelX = -1;
-	private bool[] HasBeenHit = new bool[200];
+	private float delX = -1;
+	private bool[] hasBeenHit = new bool[200];
 
 	public override void PostDraw(Color lightColor)
 	{
-		if (DelX == -1)
+		if (delX == -1)
 		{
-			DelX = Main.rand.NextFloat(1f, 40f);
+			delX = Main.rand.NextFloat(1f, 40f);
 		}
 
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 		var bars = new List<Vertex2D>();
 		float width = 2;
-		if (Projectile.timeLeft < 45 && Tokill > 0)
+		if (Projectile.timeLeft < 45 && tokill > 0)
 		{
 			width = Projectile.timeLeft / 22.5f;
 		}
 
-		TrueL = 0;
+		trueL = 0;
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
@@ -215,7 +215,7 @@ public class ToothMagicSplit : ModProjectile
 					}
 				}
 			}
-			TrueL++;
+			trueL++;
 		}
 
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
@@ -227,13 +227,13 @@ public class ToothMagicSplit : ModProjectile
 
 			if (!Main.gamePaused)
 			{
-				if (addi == MaxAdd - 1)
+				if (addi == maxAdd - 1)
 				{
 					for (int j = 0; j < 200; j++)
 					{
-						if (!HasBeenHit[j] && (Main.npc[j].Center - (Projectile.oldPos[i] + new Vector2(Projectile.width / 2f, Projectile.height / 2f))).Length() < 40 && !Main.npc[j].dontTakeDamage && !Main.npc[j].friendly)
+						if (!hasBeenHit[j] && (Main.npc[j].Center - (Projectile.oldPos[i] + new Vector2(Projectile.width / 2f, Projectile.height / 2f))).Length() < 40 && !Main.npc[j].dontTakeDamage && !Main.npc[j].friendly)
 						{
-							HasBeenHit[j] = true;
+							hasBeenHit[j] = true;
 							Player player = Main.player[Projectile.owner];
 							NPC.HitModifiers npcHitM = new NPC.HitModifiers();
 							NPC.HitInfo hit = npcHitM.ToHitInfo(Projectile.damage * Main.rand.NextFloat(0.85f, 1.15f), Main.rand.NextFloat(100f) < player.GetTotalCritChance(Projectile.DamageType), 2);
@@ -261,13 +261,13 @@ public class ToothMagicSplit : ModProjectile
 			var normalDir = Projectile.oldPos[i - 1] - Projectile.oldPos[i];
 			normalDir = Vector2.Normalize(new Vector2(-normalDir.Y, normalDir.X));
 
-			var factor = i / (float)TrueL;
+			var factor = i / (float)trueL;
 			var w = MathHelper.Lerp(1f, 0.05f, factor);
 
 			float CosWid = 1.5f; // 粗细
-			if (TrueL - i < 25)
+			if (trueL - i < 25)
 			{
-				CosWid *= (float)(Math.Cos((25 - Math.Clamp(TrueL - i, 0, 25)) / 25d * Math.PI) + 1) / 2f;
+				CosWid *= (float)(Math.Cos((25 - Math.Clamp(trueL - i, 0, 25)) / 25d * Math.PI) + 1) / 2f;
 			}
 
 			if (wid == -1)

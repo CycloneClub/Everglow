@@ -22,7 +22,7 @@ public class BoneFeather : StickNPCProjectile
 	}
 
 	internal int timeTokill = -1;
-	private ModProjectile MagicArray = null;
+	private ModProjectile magicArray = null;
 
 	public override void OnSpawn(IEntitySource source)
 	{
@@ -34,7 +34,7 @@ public class BoneFeather : StickNPCProjectile
 				{
 					if (projectile.owner == Projectile.owner)
 					{
-						MagicArray = projectile.ModProjectile;
+						magicArray = projectile.ModProjectile;
 						break;
 					}
 				}
@@ -128,9 +128,9 @@ public class BoneFeather : StickNPCProjectile
 
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
-		if (MagicArray != null)
+		if (magicArray != null)
 		{
-			var arrayProj = MagicArray as BoneFeatherMagicArray;
+			var arrayProj = magicArray as BoneFeatherMagicArray;
 			arrayProj.WingPower += 0.1f;
 		}
 		AmmoHit();
@@ -139,9 +139,9 @@ public class BoneFeather : StickNPCProjectile
 
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
-		if (MagicArray != null)
+		if (magicArray != null)
 		{
-			var arrayProj = MagicArray as BoneFeatherMagicArray;
+			var arrayProj = magicArray as BoneFeatherMagicArray;
 			arrayProj.WingPower += 2.6f;
 		}
 		timeTokill = 600 * (1 + Projectile.extraUpdates);

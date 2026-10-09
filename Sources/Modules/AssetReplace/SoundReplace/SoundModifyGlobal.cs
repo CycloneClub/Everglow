@@ -9,15 +9,15 @@ public abstract class SoundModifyGlobal : GlobalItem, IModifyItemPickSound
 
 	public abstract string TxtFileName();
 
-	private int[] ItemIDs = Array.Empty<int>();
+	private int[] itemIDs = Array.Empty<int>();
 
 	public override void Load()
 	{
-		this.ReadFromTxtFile(TxtFileName(), out ItemIDs);
+		this.ReadFromTxtFile(TxtFileName(), out itemIDs);
 	}
 
 	public override bool AppliesToEntity(Item entity, bool lateInstantiation) =>
-		lateInstantiation && ItemIDs.Contains(entity.type);
+		lateInstantiation && itemIDs.Contains(entity.type);
 
 	public void ModifyItemPickSound(Item item, int context, bool putIn, ref SoundStyle? customSound, ref bool playOriginalSound)
 	{

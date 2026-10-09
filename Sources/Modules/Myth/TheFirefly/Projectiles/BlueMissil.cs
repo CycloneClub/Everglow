@@ -25,13 +25,13 @@ public class BlueMissil : ModProjectile
 	}
 
 	private Vector2 va;
-	private float Stre2 = 1;
+	private float stre2 = 1;
 
 	public override void AI()
 	{
-		if (Stre2 > 0)
+		if (stre2 > 0)
 		{
-			Stre2 -= 0.01f;
+			stre2 -= 0.01f;
 		}
 
 		if (Projectile.ai[0] != 2)
@@ -80,7 +80,7 @@ public class BlueMissil : ModProjectile
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D Light = ModAsset.FixCoinLight3.Value;
-		Main.spriteBatch.Draw(Light, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, new Color((int)(255 * Stre2), (int)(255 * Stre2), (int)(255 * Stre2), 0), Projectile.rotation, new Vector2(56f, 56f), Projectile.scale * 2, SpriteEffects.None, 0);
+		Main.spriteBatch.Draw(Light, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, new Color((int)(255 * stre2), (int)(255 * stre2), (int)(255 * stre2), 0), Projectile.rotation, new Vector2(56f, 56f), Projectile.scale * 2, SpriteEffects.None, 0);
 		Texture2D Star = ModAsset.BlueMissil.Value;
 		Main.spriteBatch.Draw(Star, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, new Color(255, 255, 255, 0), 0, new Vector2(17f, 17f), Projectile.scale * 2, SpriteEffects.None, 0);
 		return true;

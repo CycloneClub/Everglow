@@ -33,7 +33,7 @@ public class AcytaeaLaserSwordHDRPipeline2 : PostPipeline
 {
 	private RenderTarget2D acytaeaLaserSwordHDRScreen;
 	private RenderTarget2D acytaeaLaserSwordHDRScreenSwap;
-	private float UnstableValue = 0.125f;
+	private float unstableValue = 0.125f;
 
 	private static int ScreenWidth => Main.screenWidth;
 
@@ -82,8 +82,8 @@ public class AcytaeaLaserSwordHDRPipeline2 : PostPipeline
 		sb.Begin(SpriteSortMode.Immediate, BlendState.Opaque, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullNone);
 		effect.Parameters["uShade"].SetValue(rt2D);
 		effect.CurrentTechnique.Passes["Vivid"].Apply();
-		UnstableValue = (float)Utils.Lerp(UnstableValue, Main.rand.NextFloat(0.125f, 0.25f), 0.05f);
-		sb.Draw(cur, Vector2.Zero, new Color(UnstableValue, 1, 1, 1));
+		unstableValue = (float)Utils.Lerp(unstableValue, Main.rand.NextFloat(0.125f, 0.25f), 0.05f);
+		sb.Draw(cur, Vector2.Zero, new Color(unstableValue, 1, 1, 1));
 		gd.BlendState = BlendState.AlphaBlend;
 		sb.Draw(acytaeaLaserSwordHDRScreen, Vector2.Zero, new Color(255, 255, 255, 255));
 		sb.End();

@@ -43,7 +43,7 @@ public class LightBulb : ModNPC
 
 	public override void FindFrame(int frameHeight)
 	{
-		switch (State)
+		switch (state)
 		{
 			case (int)NPCState.Sleep:
 				{
@@ -81,10 +81,10 @@ public class LightBulb : ModNPC
 
 	public override void OnSpawn(IEntitySource source)
 	{
-		State = (int)NPCState.Sleep;
+		state = (int)NPCState.Sleep;
 	}
 
-	private int State;
+	private int state;
 
 	private enum NPCState
 	{
@@ -101,7 +101,7 @@ public class LightBulb : ModNPC
 		{
 			Lighting.AddLight(NPC.Center, 2.6f, 2.6f, 0.6f);
 		}
-		switch (State)
+		switch (state)
 		{
 			case (int)NPCState.Sleep:
 				{
@@ -110,7 +110,7 @@ public class LightBulb : ModNPC
 					NPC.ai[0] = 0;
 					if (NPC.HasValidTarget && Main.player[NPC.target].Distance(NPC.Center) <= 750)
 					{
-						State = (int)NPCState.charge;
+						state = (int)NPCState.charge;
 						NPC.ai[0] = 0;
 						NPC.frameCounter = 0;
 					}
@@ -122,7 +122,7 @@ public class LightBulb : ModNPC
 					NPC.ai[0]++;
 					if ((NPC.ai[0] % 18) == 0)
 					{
-						State = (int)NPCState.Attack;
+						state = (int)NPCState.Attack;
 						NPC.ai[0] = 0;
 					}
 					break;
@@ -157,7 +157,7 @@ public class LightBulb : ModNPC
 
 					if ((NPC.ai[0] % 30) == 0)
 					{
-						State = (int)NPCState.Cooldown;
+						state = (int)NPCState.Cooldown;
 					}
 					break;
 				}
@@ -169,7 +169,7 @@ public class LightBulb : ModNPC
 					NPC.TargetClosest();
 					if (NPC.HasValidTarget && Main.player[NPC.target].Distance(NPC.Center) > 750 || (NPC.ai[0] % 160) == 0)
 					{
-						State = (int)NPCState.Sleep;
+						state = (int)NPCState.Sleep;
 						NPC.ai[0] = 0;
 					}
 					break;

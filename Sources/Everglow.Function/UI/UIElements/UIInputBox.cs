@@ -132,7 +132,7 @@ namespace Everglow.Commons.UI.UIElements
 		private KeyCooldown right;
 		private KeyCooldown enter;
 		private DynamicSpriteFont _font;
-		private float LineYHight = 0f;
+		private float lineYHight = 0f;
 
 		public UIInputBox(DynamicSpriteFont font, string text = "", Point cursorPosition = default(Point), Color color = default(Color), Vector2 symSizeOffice = default)
 		{
@@ -148,7 +148,7 @@ namespace Everglow.Commons.UI.UIElements
 			symOffsetX = c.X / 2f;
 			Info.Height.SetValue(30f, 0f);
 			Info.HiddenOverflow = true;
-			LineYHight = _font.MeasureString("啊").Y;
+			lineYHight = _font.MeasureString("啊").Y;
 			offset = new Vector2(symOffsetX, 0f);
 			CanDrag = false;
 		}
@@ -191,9 +191,9 @@ namespace Everglow.Commons.UI.UIElements
 				var texts = Text.Split('\n');
 				for (int i = 0; i < texts.Length; i++)
 				{
-					if (mousePos.Y > LineYHight)
+					if (mousePos.Y > lineYHight)
 					{
-						mousePos.Y -= LineYHight;
+						mousePos.Y -= lineYHight;
 					}
 					else
 					{
@@ -303,7 +303,7 @@ namespace Everglow.Commons.UI.UIElements
 					sb.DrawString(_font, cursorSym, Info.Location + new Vector2(x - symOffsetX, offsetY) + offset, _color);
 				}
 				sb.DrawString(_font, text, Info.Location + new Vector2(0f, offsetY) + offset, _color);
-				offsetY += LineYHight;
+				offsetY += lineYHight;
 			}
 			base.DrawChildren(sb);
 

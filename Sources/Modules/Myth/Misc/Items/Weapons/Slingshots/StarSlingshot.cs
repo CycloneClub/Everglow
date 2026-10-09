@@ -10,7 +10,7 @@ public class StarSlingshot : SlingshotItem
 		Item.crit = 12;
 		Item.width = 32;
 		Item.height = 30;
-		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Ranged.Slingshots.StarSlingshot>();
+		projType = ModContent.ProjectileType<Projectiles.Weapon.Ranged.Slingshots.StarSlingshot>();
 		Item.useTime = 24;
 		Item.useAnimation = 24;
 		Item.rare = ItemRarityID.Blue;

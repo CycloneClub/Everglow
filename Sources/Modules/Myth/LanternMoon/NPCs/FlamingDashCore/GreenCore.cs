@@ -53,33 +53,33 @@ public class GreenCore : ModNPC
 		NPC.localAI[0] += 1;
 		if (NPC.localAI[0] <= 15)
 		{
-			Sca = NPC.localAI[0] / 15f;
+			sca = NPC.localAI[0] / 15f;
 		}
 		else
 		{
-			Sca = 1;
+			sca = 1;
 		}
-		NPC.color.R = (byte)(NPC.color.R * 0.94f + Aimcolor.R * 0.06f);
-		NPC.color.G = (byte)(NPC.color.G * 0.94f + Aimcolor.G * 0.06f);
-		NPC.color.B = (byte)(NPC.color.B * 0.94f + Aimcolor.B * 0.06f);
-		NPC.color.A = (byte)(NPC.color.A * 0.94f + Aimcolor.A * 0.06f);
+		NPC.color.R = (byte)(NPC.color.R * 0.94f + aimcolor.R * 0.06f);
+		NPC.color.G = (byte)(NPC.color.G * 0.94f + aimcolor.G * 0.06f);
+		NPC.color.B = (byte)(NPC.color.B * 0.94f + aimcolor.B * 0.06f);
+		NPC.color.A = (byte)(NPC.color.A * 0.94f + aimcolor.A * 0.06f);
 	}
 
 	private float x = 0;
-	private float Sca = 0;
-	private Color Aimcolor = new Color(0, 255, 17);
+	private float sca = 0;
+	private Color aimcolor = new Color(0, 255, 17);
 
 	public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
 		x += 0.01f;
 		float K = (float)(Math.Sin(x + Math.Sin(x) * 6) * (0.95 + Math.Sin(x + 0.24 + Math.Sin(x))) + 3) / 30f;
 		float M = (float)(Math.Sin(x + Math.Tan(x) * 6) * (0.95 + Math.Cos(x + 0.24 + Math.Sin(x))) + 3) / 30f;
-		spriteBatch.Draw(ModAsset.LightEffect.Value, NPC.Center - Main.screenPosition, null, new Color(NPC.color.R, NPC.color.G, NPC.color.B, 0) * 0.4f, 0, new Vector2(128f, 128f), K * 2.4f * Sca, SpriteEffects.None, 0f);
-		spriteBatch.Draw(ModAsset.LightEffect.Value, NPC.Center - Main.screenPosition, null, new Color(NPC.color.R, NPC.color.G, NPC.color.B, 0) * 0.4f, (float)(Math.PI * 0.5), new Vector2(128f, 128f), K * 2.4f * Sca, SpriteEffects.None, 0f);
-		spriteBatch.Draw(ModAsset.LightEffect.Value, NPC.Center - Main.screenPosition, null, new Color(NPC.color.R, NPC.color.G, NPC.color.B, 0) * 0.4f, (float)(Math.PI * 0.75), new Vector2(128f, 128f), M * 2.4f * Sca, SpriteEffects.None, 0f);
-		spriteBatch.Draw(ModAsset.LightEffect.Value, NPC.Center - Main.screenPosition, null, new Color(NPC.color.R, NPC.color.G, NPC.color.B, 0) * 0.4f, (float)(Math.PI * 0.25), new Vector2(128f, 128f), M * 2.4f * Sca, SpriteEffects.None, 0f);
-		spriteBatch.Draw(ModAsset.LightEffect.Value, NPC.Center - Main.screenPosition, null, new Color(NPC.color.R, NPC.color.G, NPC.color.B, 0) * 0.4f, x * 6f, new Vector2(128f, 128f), (M + K) * 2.4f * Sca, SpriteEffects.None, 0f);
-		spriteBatch.Draw(ModAsset.LightEffect.Value, NPC.Center - Main.screenPosition, null, new Color(NPC.color.R, NPC.color.G, NPC.color.B, 0) * 0.4f, -x * 6f, new Vector2(128f, 128f), (float)Math.Sqrt(M * M + K * K) * 2.4f * Sca, SpriteEffects.None, 0f);
+		spriteBatch.Draw(ModAsset.LightEffect.Value, NPC.Center - Main.screenPosition, null, new Color(NPC.color.R, NPC.color.G, NPC.color.B, 0) * 0.4f, 0, new Vector2(128f, 128f), K * 2.4f * sca, SpriteEffects.None, 0f);
+		spriteBatch.Draw(ModAsset.LightEffect.Value, NPC.Center - Main.screenPosition, null, new Color(NPC.color.R, NPC.color.G, NPC.color.B, 0) * 0.4f, (float)(Math.PI * 0.5), new Vector2(128f, 128f), K * 2.4f * sca, SpriteEffects.None, 0f);
+		spriteBatch.Draw(ModAsset.LightEffect.Value, NPC.Center - Main.screenPosition, null, new Color(NPC.color.R, NPC.color.G, NPC.color.B, 0) * 0.4f, (float)(Math.PI * 0.75), new Vector2(128f, 128f), M * 2.4f * sca, SpriteEffects.None, 0f);
+		spriteBatch.Draw(ModAsset.LightEffect.Value, NPC.Center - Main.screenPosition, null, new Color(NPC.color.R, NPC.color.G, NPC.color.B, 0) * 0.4f, (float)(Math.PI * 0.25), new Vector2(128f, 128f), M * 2.4f * sca, SpriteEffects.None, 0f);
+		spriteBatch.Draw(ModAsset.LightEffect.Value, NPC.Center - Main.screenPosition, null, new Color(NPC.color.R, NPC.color.G, NPC.color.B, 0) * 0.4f, x * 6f, new Vector2(128f, 128f), (M + K) * 2.4f * sca, SpriteEffects.None, 0f);
+		spriteBatch.Draw(ModAsset.LightEffect.Value, NPC.Center - Main.screenPosition, null, new Color(NPC.color.R, NPC.color.G, NPC.color.B, 0) * 0.4f, -x * 6f, new Vector2(128f, 128f), (float)Math.Sqrt(M * M + K * K) * 2.4f * sca, SpriteEffects.None, 0f);
 		return true;
 	}
 

@@ -36,21 +36,21 @@ public class FlowerPetalPurple : ModProjectile
 
 	public float num2 = 0;
 	public bool Hittil = false;
-	private int TLF = 400;
+	private int tLF = 400;
 
 	public override void AI()
 	{
 		if (Projectile.timeLeft >= 8999)
 		{
-			TLF = Main.rand.Next(600, 1000);
-			Projectile.timeLeft = TLF;
+			tLF = Main.rand.Next(600, 1000);
+			Projectile.timeLeft = tLF;
 		}
 		if (num2 == 0)
 		{
 			num2 = Main.rand.Next(-100, 100) / 1000f;
 		}
 
-		if (Projectile.timeLeft < TLF - 20)
+		if (Projectile.timeLeft < tLF - 20)
 		{
 			Projectile.friendly = true;
 		}

@@ -6,7 +6,7 @@ public class AmethystSlingshot : SlingshotItem
 {
 	public override void SetDef()
 	{
-		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Ranged.Slingshots.AmethystSlingshot>();
+		projType = ModContent.ProjectileType<Projectiles.Weapon.Ranged.Slingshots.AmethystSlingshot>();
 		Item.damage = 15;
 		Item.width = 38;
 		Item.height = 36;

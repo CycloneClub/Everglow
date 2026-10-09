@@ -265,7 +265,7 @@ public class AmbiguousNightAmmo : SlingshotAmmo
 			Main.dust[index].velocity = new Vector2(0, Main.rand.NextFloat(3.5f, 4f)).RotatedByRandom(6.283) * Power;
 		}
 		Projectile.friendly = false;
-		TimeTokill = 30;
+		timeTokill = 30;
 	}
 
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

@@ -43,20 +43,20 @@ public abstract class SlingshotItem : ModItem
 		Item.shootSpeed = 1f;
 
 		SetDef();
-		Item.shoot = ProjType;
+		Item.shoot = projType;
 	}
 
 	public virtual void SetDef()
 	{
 	}
 
-	protected int ProjType;
+	protected int projType;
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-		if (player.ownedProjectileCounts[ProjType] < 1)
+		if (player.ownedProjectileCounts[projType] < 1)
 		{
-			Projectile.NewProjectile(source, position, Vector2.Zero, ProjType, damage, knockback, player.whoAmI, Item.shootSpeed, Item.useAnimation);
+			Projectile.NewProjectile(source, position, Vector2.Zero, projType, damage, knockback, player.whoAmI, Item.shootSpeed, Item.useAnimation);
 		}
 
 		return false;
