@@ -57,7 +57,6 @@ public class PaperObstructedDrawLayer : PlayerDrawLayer
 		drawInfo.DrawDataCache.Add(new DrawData(
 	Texture,
 	position,
-	new Rectangle(112, 112, 32, 32), Lighting.GetColor((int)position.X / 16, (int)position.Y / 16), 0f, new Vector2(16, 16), 1f, drawInfo.drawPlayer.direction == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0
-));
+	new Rectangle(112, 112, 32, 32), Lighting.GetColor((int)position.X / 16, (int)position.Y / 16), 0f, new Vector2(16, 16), 1f, drawInfo.drawPlayer.direction == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0));
 	}
 }

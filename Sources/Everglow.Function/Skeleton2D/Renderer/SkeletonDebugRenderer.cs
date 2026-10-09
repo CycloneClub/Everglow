@@ -159,8 +159,7 @@ public class SkeletonDebugRenderer
 						int v1 = triangles[ii] * 2, v2 = triangles[ii + 1] * 2, v3 = triangles[ii + 2] * 2;
 						renderer.Triangle(world[v1], world[v1 + 1], //
 							world[v2], world[v2 + 1], //
-							world[v3], world[v3 + 1] //
-						);
+							world[v3], world[v3 + 1]); //
 					}
 				}
 				if (DrawMeshHull && hullLength > 0)

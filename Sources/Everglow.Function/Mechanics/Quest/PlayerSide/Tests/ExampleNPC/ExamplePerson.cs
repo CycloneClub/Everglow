@@ -65,8 +65,7 @@ public class ExamplePerson : ModNPC
 		// This creates a "profile" for ExamplePerson, which allows for different textures during a party and/or while the NPC is shimmered.
 		nPCProfile = new Profiles.StackedNPCProfile(
 			new Profiles.DefaultNPCProfile(Texture, NPCHeadLoader.GetHeadSlot(HeadTexture), Texture + "_Party"),
-			new Profiles.DefaultNPCProfile(Texture + "_Shimmer", shimmerHeadIndex, Texture + "_Shimmer_Party")
-		);
+			new Profiles.DefaultNPCProfile(Texture + "_Shimmer", shimmerHeadIndex, Texture + "_Shimmer_Party"));
 	}
 
 	public override void SetDefaults()
