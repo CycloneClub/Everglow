@@ -25,7 +25,7 @@ public partial class EverglowPlayer : ModPlayer
 	/// <summary>
 	/// The <see cref="CooldownInstance"/>s of all <see cref="CooldownBase"/>s this player has active.
 	/// <br/> Only the cooldowns that are currently active will be stored here.
-	/// <br/> <see cref="PlayerUtils.AddCooldown"/>, <see cref="PlayerUtils.HasCooldown"/>, and <see cref="PlayerUtils.ClearCooldown"/> should be used to manipulate player buffs.
+	/// <br/> <see cref="PlayerUtils.AddCooldown"/>, <see cref="PlayerUtils.HasCooldown(Player, string)"/>, and <see cref="PlayerUtils.ClearCooldown"/> should be used to manipulate player buffs.
 	/// </summary>
 	public Dictionary<string, CooldownInstance> cooldowns = [];
 
