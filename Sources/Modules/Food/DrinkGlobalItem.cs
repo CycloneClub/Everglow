@@ -18,8 +18,8 @@ public class DrinkGlobalItem : GlobalItem
 	{
 		m_vanillaDrinkInfos = new Dictionary<int, DrinkInfo>
 		{
-                // 麦芽酒
-                {
+			// 麦芽酒
+			{
 				ItemID.Ale,
 				new DrinkInfo()
 				{
@@ -29,19 +29,19 @@ public class DrinkGlobalItem : GlobalItem
 					Name =  "SakeBuff",
 				}
 			},
-                // 苹果汁
-                {
+			// 苹果汁
+			{
 				ItemID.AppleJuice,
 				new DrinkInfo()
 				{
-				   Thirsty = false,
-				   BuffType = ModContent.BuffType<AppleJuiceBuff>(),
-				   BuffTime = new FoodDuration(0, 10, 0),
-				   Name =  "AppleJuiceBuff",
+					Thirsty = false,
+					BuffType = ModContent.BuffType<AppleJuiceBuff>(),
+					BuffTime = new FoodDuration(0, 10, 0),
+					Name =  "AppleJuiceBuff",
 				}
 			},
-                 // 冰冻香蕉代基里
-                {
+			// 冰冻香蕉代基里
+			{
 				ItemID.BananaDaiquiri,
 				new DrinkInfo()
 				{
@@ -51,8 +51,8 @@ public class DrinkGlobalItem : GlobalItem
 					Name = "BananaDaiquiriBuff",
 				}
 			},
-                 // 血腥麝香葡萄
-                {
+			// 血腥麝香葡萄
+			{
 				ItemID.BloodyMoscato,
 				new DrinkInfo()
 				{
@@ -62,8 +62,8 @@ public class DrinkGlobalItem : GlobalItem
 					Name = "BloodyMoscatoBuff",
 				}
 			},
-                // 奶油苏打水
-                {
+			// 奶油苏打水
+			{
 				ItemID.CreamSoda,
 				new DrinkInfo()
 				{
@@ -73,8 +73,8 @@ public class DrinkGlobalItem : GlobalItem
 					Name = "CreamSodaBuff",
 				}
 			},
-                // 咖啡
-                {
+			// 咖啡
+			{
 				ItemID.CoffeeCup,
 				new DrinkInfo()
 				{
@@ -84,19 +84,19 @@ public class DrinkGlobalItem : GlobalItem
 					Name = "CoffeeCupBuff",
 				}
 			},
-                // 果汁
-                {
+			// 果汁
+			{
 				ItemID.FruitJuice,
 				new DrinkInfo()
 				{
-				   Thirsty = false,
-				   BuffType = ModContent.BuffType<FruitJuiceBuff>(),
-				   BuffTime = new FoodDuration(0, 10, 0),
+					Thirsty = false,
+					BuffType = ModContent.BuffType<FruitJuiceBuff>(),
+					BuffTime = new FoodDuration(0, 10, 0),
 					Name = "FruitJuiceBuff",
 				}
 			},
-                // 葡萄汁
-                {
+			// 葡萄汁
+			{
 				ItemID.GrapeJuice,
 				new DrinkInfo()
 				{
@@ -105,9 +105,9 @@ public class DrinkGlobalItem : GlobalItem
 					BuffTime = new FoodDuration(0, 10, 0),
 					Name = "GrapeJuiceBuff",
 				}
-			},                
-                // 柠檬水
-                {
+			},
+			// 柠檬水
+			{
 				ItemID.Lemonade,
 				new DrinkInfo()
 				{
@@ -116,9 +116,9 @@ public class DrinkGlobalItem : GlobalItem
 					BuffTime = new FoodDuration(0, 10, 0),
 					Name = "LemonadeBuff",
 				}
-			},     
-                // 盒装牛奶
-                {
+			},
+			// 盒装牛奶
+			{
 				ItemID.MilkCarton,
 				new DrinkInfo()
 				{
@@ -128,8 +128,8 @@ public class DrinkGlobalItem : GlobalItem
 					Name = "MilkCartonBuff",
 				}
 			},
-                // 奶昔
-                {
+			// 奶昔
+			{
 				ItemID.Milkshake,
 				new DrinkInfo()
 				{
@@ -139,8 +139,8 @@ public class DrinkGlobalItem : GlobalItem
 					Name = "MilkshakeBuff",
 				}
 			},
-                // 桃子果酒
-                {
+			// 桃子果酒
+			{
 				ItemID.PeachSangria,
 				new DrinkInfo()
 				{
@@ -150,8 +150,8 @@ public class DrinkGlobalItem : GlobalItem
 					Name = "PeachSangriaBuff",
 				}
 			},
-                // 椰林飘香
-                {
+			// 椰林飘香
+			{
 				ItemID.PinaColada,
 				new DrinkInfo()
 				{
@@ -161,8 +161,8 @@ public class DrinkGlobalItem : GlobalItem
 					Name = "PinaColadaBuff",
 				}
 			},
-                // 七彩潘趣酒
-                {
+			// 七彩潘趣酒
+			{
 				ItemID.PrismaticPunch,
 				new DrinkInfo()
 				{
@@ -171,9 +171,9 @@ public class DrinkGlobalItem : GlobalItem
 					BuffTime = new FoodDuration(0, 10, 0),
 					Name = "PrismaticPunchBuff",
 				}
-			},                
-                // 清酒
-                {
+			},
+			// 清酒
+			{
 				ItemID.Sake,
 				new DrinkInfo()
 				{
@@ -183,8 +183,8 @@ public class DrinkGlobalItem : GlobalItem
 					Name = "SakeBuff",
 				}
 			},
-                // 暗黑奶昔
-                {
+			// 暗黑奶昔
+			{
 				ItemID.SmoothieofDarkness,
 				new DrinkInfo()
 				{
@@ -194,9 +194,9 @@ public class DrinkGlobalItem : GlobalItem
 					BuffTime = new FoodDuration(0, 10, 0),
 					Name = "SmoothieofDarknessBuff",
 				}
-			}, 
-                // 一杯茶
-                {
+			},
+			// 一杯茶
+			{
 				ItemID.Teacup,
 				new DrinkInfo()
 				{
@@ -206,8 +206,8 @@ public class DrinkGlobalItem : GlobalItem
 					Name = "TeacupBuff",
 				}
 			},
-                // 热带奶昔
-                {
+			// 热带奶昔
+			{
 				ItemID.TropicalSmoothie,
 				new DrinkInfo()
 				{

@@ -30,12 +30,12 @@ public class DessertBag_Snow : ModItem
 	{
 		IItemDropRule[] oreBars = new IItemDropRule[]
 		{
-				ItemDropRule.Common(ItemID.Eggnog, 1, 2, 4),
-				ItemDropRule.Common(ItemID.SugarCookie, 1, 2, 4),
-				ItemDropRule.Common(ItemID.GingerbreadCookie, 1, 2, 4),
-				ItemDropRule.Common(ItemID.ChristmasPudding, 1, 2, 4),
-				ItemDropRule.Common(ItemID.SliceOfCake, 1, 2, 4),
-			};
+			ItemDropRule.Common(ItemID.Eggnog, 1, 2, 4),
+			ItemDropRule.Common(ItemID.SugarCookie, 1, 2, 4),
+			ItemDropRule.Common(ItemID.GingerbreadCookie, 1, 2, 4),
+			ItemDropRule.Common(ItemID.ChristmasPudding, 1, 2, 4),
+			ItemDropRule.Common(ItemID.SliceOfCake, 1, 2, 4),
+		};
 		itemLoot.Add(new OneFromRulesRule(1, oreBars));
 	}
 }
