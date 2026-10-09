@@ -9,16 +9,16 @@ namespace Everglow.Food;
 public class FoodGlobalItem : GlobalItem
 {
 	// 对于原版的食物进行类型Id到 FoodInfo 的映射，直接获取FoodInfo实例
-	public static Dictionary<int, FoodInfo> m_vanillaFoodInfos;
+	public static Dictionary<int, FoodInfo> VanillaFoodInfos;
 
 	public override void Unload()
 	{
-		m_vanillaFoodInfos = null;
+		VanillaFoodInfos = null;
 	}
 
 	public FoodGlobalItem()
 	{
-		m_vanillaFoodInfos = new Dictionary<int, FoodInfo>
+		VanillaFoodInfos = new Dictionary<int, FoodInfo>
 		{
 			// 苹果
 			{
@@ -696,7 +696,7 @@ public class FoodGlobalItem : GlobalItem
 
 	public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
 	{
-		if (m_vanillaFoodInfos.ContainsKey(item.type) /*|| (item.ModItem is FoodBase)*/)
+		if (VanillaFoodInfos.ContainsKey(item.type) /*|| (item.ModItem is FoodBase)*/)
 		{
 			int firstIndex = -1;
 			firstIndex = tooltips.FindIndex((tpline) =>
@@ -704,7 +704,7 @@ public class FoodGlobalItem : GlobalItem
 				return tpline.Name.Contains("Tooltip");
 			});
 			// 如果有tooltip，就删掉所有Tooltip的line然后插入到第一个所在位置
-			var FoodInfo = m_vanillaFoodInfos[item.type];
+			var FoodInfo = VanillaFoodInfos[item.type];
 			if (firstIndex >= 0)
 			{
 				tooltips.RemoveAll((tp) => tp.Name.Contains("Tooltip"));
@@ -762,9 +762,9 @@ public class FoodGlobalItem : GlobalItem
 	public override void SetDefaults(Item item)
 	{
 		// 如果是原版的食物，那么就手动处理
-		if (m_vanillaFoodInfos.ContainsKey(item.type))
+		if (VanillaFoodInfos.ContainsKey(item.type))
 		{
-			var FoodInfo = m_vanillaFoodInfos[item.type];
+			var FoodInfo = VanillaFoodInfos[item.type];
 		}
 		base.SetDefaults(item);
 	}
@@ -772,9 +772,9 @@ public class FoodGlobalItem : GlobalItem
 	public override void OnConsumeItem(Item item, Player player)
 	{
 		// 如果是原版的食物，那么就手动处理，因为已经使用了物品，说明玩家满足饱食度要求
-		if (m_vanillaFoodInfos.ContainsKey(item.type))
+		if (VanillaFoodInfos.ContainsKey(item.type))
 		{
-			var FoodInfo = m_vanillaFoodInfos[item.type];
+			var FoodInfo = VanillaFoodInfos[item.type];
 			var FoodPlayer = player.GetModPlayer<FoodModPlayer>();
 
 			// 增加饱食度
@@ -798,9 +798,9 @@ public class FoodGlobalItem : GlobalItem
 	{
 		var foodPlayer = player.GetModPlayer<FoodModPlayer>();
 		// 判断能否吃下物品
-		if (m_vanillaFoodInfos.ContainsKey(item.type))
+		if (VanillaFoodInfos.ContainsKey(item.type))
 		{
-			var FoodInfo = m_vanillaFoodInfos[item.type];
+			var FoodInfo = VanillaFoodInfos[item.type];
 			if (!foodPlayer.CanEat(FoodInfo) && foodPlayer.CanText())
 			{
 				CombatText.NewText(
@@ -836,9 +836,9 @@ public class FoodGlobalItem : GlobalItem
 	{
 		var foodPlayer = player.GetModPlayer<FoodModPlayer>();
 		// 判断能否吃下物品
-		if (m_vanillaFoodInfos.ContainsKey(item.type))
+		if (VanillaFoodInfos.ContainsKey(item.type))
 		{
-			var foodInfo = m_vanillaFoodInfos[item.type];
+			var foodInfo = VanillaFoodInfos[item.type];
 			if (!foodPlayer.CanEat(foodInfo))
 			{
 				// Main.NewText($"Cannot eat this!");

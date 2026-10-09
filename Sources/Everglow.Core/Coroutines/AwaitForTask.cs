@@ -9,15 +9,15 @@ public class AwaitForTask : ICoroutineInstruction
 	{
 		get
 		{
-			return m_task;
+			return task;
 		}
 	}
 
-	private IEnumerator<ICoroutineInstruction> m_task;
+	private IEnumerator<ICoroutineInstruction> task;
 
 	public AwaitForTask(IEnumerator<ICoroutineInstruction> task)
 	{
-		m_task = task;
+		this.task = task;
 	}
 
 	public bool ShouldWait()

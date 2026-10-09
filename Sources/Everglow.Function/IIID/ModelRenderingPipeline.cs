@@ -49,12 +49,12 @@ namespace Everglow.Commons.IIID
 		private BloomParams bloomParams;
 		private Matrix viewProjectionMatrix;
 		private Vector4 zbufferParams;
-		private Asset<Effect> m_gbufferPassEffect;
-		private Asset<Effect> m_filtersEffect;
-		private Asset<Effect> m_toneMapping;
-		private Asset<Effect> m_concaveEdge;
-		private Asset<Effect> m_pixelArt;
-		private Asset<Effect> m_edge;
+		private Asset<Effect> gbufferPassEffect;
+		private Asset<Effect> filtersEffect;
+		private Asset<Effect> toneMapping;
+		private Asset<Effect> concaveEdge;
+		private Asset<Effect> pixelArt;
+		private Asset<Effect> edge;
 
 		public RenderTarget2D ModelTarget
 		{
@@ -66,12 +66,12 @@ namespace Everglow.Commons.IIID
 
 		public override void OnModLoad()
 		{
-			m_gbufferPassEffect = ModAsset.GBufferPass;
-			m_filtersEffect = ModAsset.Filters;
-			m_toneMapping = ModAsset.ToneMapping;
-			m_concaveEdge = ModAsset.ConcaveEdge;
-			m_pixelArt = ModAsset.PixelArt;
-			m_edge = ModAsset.Edge;
+			gbufferPassEffect = ModAsset.GBufferPass;
+			filtersEffect = ModAsset.Filters;
+			toneMapping = ModAsset.ToneMapping;
+			concaveEdge = ModAsset.ConcaveEdge;
+			pixelArt = ModAsset.PixelArt;
+			edge = ModAsset.Edge;
 
 			if (!Main.dedServ)
 			{
@@ -147,25 +147,25 @@ namespace Everglow.Commons.IIID
 			var spriteBatch = Main.spriteBatch;
 			spriteBatch.End();
 
-			if (!m_gbufferPassEffect.IsLoaded)
+			if (!gbufferPassEffect.IsLoaded)
 			{
-				m_gbufferPassEffect.Wait();
+				gbufferPassEffect.Wait();
 			}
-			if (!m_filtersEffect.IsLoaded)
+			if (!filtersEffect.IsLoaded)
 			{
-				m_filtersEffect.Wait();
+				filtersEffect.Wait();
 			}
-			if (!m_concaveEdge.IsLoaded)
+			if (!concaveEdge.IsLoaded)
 			{
-				m_concaveEdge.Wait();
+				concaveEdge.Wait();
 			}
-			if (!m_pixelArt.IsLoaded)
+			if (!pixelArt.IsLoaded)
 			{
-				m_pixelArt.Wait();
+				pixelArt.Wait();
 			}
-			if (!m_edge.IsLoaded)
+			if (!edge.IsLoaded)
 			{
-				m_edge.Wait();
+				edge.Wait();
 			}
 
 			Blit(Main.screenTarget, Main.screenTargetSwap, null, string.Empty);
@@ -228,7 +228,7 @@ namespace Everglow.Commons.IIID
 
 			var model = models[index];
 			var vertices = model.Vertices;
-			var gBufferShader = m_gbufferPassEffect.Value;
+			var gBufferShader = gbufferPassEffect.Value;
 
 			gBufferShader.Parameters["uModel"].SetValue(model.ModelTransform);
 			gBufferShader.Parameters["uViewProjection"].SetValue(viewProjectionMatrix);
@@ -263,7 +263,7 @@ namespace Everglow.Commons.IIID
 			spriteBatch.Draw(emissionTarget, emissionTarget.Bounds, Color.White);
 			spriteBatch.End();
 
-			var filterEffect = m_filtersEffect.Value;
+			var filterEffect = filtersEffect.Value;
 			for (int i = 0; i < MAX_BLUR_LEVELS - 1; i++)
 			{
 				filterEffect.Parameters["uInvImageSize"].SetValue(new Vector2(
@@ -306,7 +306,7 @@ namespace Everglow.Commons.IIID
 			var spriteBatch = Main.spriteBatch;
 
 			// Save content of m_fakeScreenTarget
-			var toneMappingShader = m_toneMapping.Value;
+			var toneMappingShader = toneMapping.Value;
 			graphicsDevice.SetRenderTarget(fakeScreenTargetSwap);
 			graphicsDevice.Clear(Color.Transparent);
 			spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, SamplerState.PointClamp,
@@ -335,7 +335,7 @@ namespace Everglow.Commons.IIID
 			// spriteBatch.Draw(m_fakeScreenTargetSwap, m_blurRenderTargets[1].Bounds, Color.White);
 			//// spriteBatch.Draw(m_emissionTarget, m_emissionTarget.Bounds, Color.White);
 			// spriteBatch.End();
-			var ConcaveEdgeEffect = m_concaveEdge.Value;
+			var ConcaveEdgeEffect = concaveEdge.Value;
 			graphicsDevice.Textures[1] = depthTarget;
 			graphicsDevice.SamplerStates[1] = SamplerState.PointClamp;
 			ConcaveEdgeEffect.Parameters["uBias"].SetValue(0.01f);
@@ -357,7 +357,7 @@ namespace Everglow.Commons.IIID
 			var graphicsDevice = Main.graphics.GraphicsDevice;
 			var spriteBatch = Main.spriteBatch;
 
-			var filterEffect = m_filtersEffect.Value;
+			var filterEffect = filtersEffect.Value;
 
 			// Draw to m_fakeScreenTarget
 			graphicsDevice.SetRenderTarget(fakeScreenTarget);
@@ -379,7 +379,7 @@ namespace Everglow.Commons.IIID
 			var graphicsDevice = Main.graphics.GraphicsDevice;
 			var spriteBatch = Main.spriteBatch;
 
-			var PixelEffect = m_pixelArt.Value;
+			var PixelEffect = pixelArt.Value;
 
 			// Draw to m_fakeScreenTarget
 			graphicsDevice.SetRenderTarget(fakeScreenTarget);
@@ -402,7 +402,7 @@ namespace Everglow.Commons.IIID
 			var graphicsDevice = Main.graphics.GraphicsDevice;
 			var spriteBatch = Main.spriteBatch;
 
-			var EdgeEffect = m_edge.Value;
+			var EdgeEffect = edge.Value;
 
 			// Draw to m_fakeScreenTarget
 			graphicsDevice.SetRenderTarget(fakeScreenTarget);

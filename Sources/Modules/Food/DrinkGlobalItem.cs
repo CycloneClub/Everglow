@@ -9,16 +9,16 @@ namespace Everglow.Food;
 public class DrinkGlobalItem : GlobalItem
 {
 	// 对于原版的饮料进行类型Id到 DrinkInfo 的映射，直接获取DrinkInfo实例
-	public static Dictionary<int, DrinkInfo> m_vanillaDrinkInfos;
+	public static Dictionary<int, DrinkInfo> VanillaDrinkInfos;
 
 	public override void Unload()
 	{
-		m_vanillaDrinkInfos = null;
+		VanillaDrinkInfos = null;
 	}
 
 	public DrinkGlobalItem()
 	{
-		m_vanillaDrinkInfos = new Dictionary<int, DrinkInfo>
+		VanillaDrinkInfos = new Dictionary<int, DrinkInfo>
 		{
 			// 麦芽酒
 			{
@@ -224,7 +224,7 @@ public class DrinkGlobalItem : GlobalItem
 
 	public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
 	{
-		if (m_vanillaDrinkInfos.ContainsKey(item.type) /*|| (item.ModItem is DrinkBase)*/)
+		if (VanillaDrinkInfos.ContainsKey(item.type) /*|| (item.ModItem is DrinkBase)*/)
 		{
 			int firstIndex = -1;
 			firstIndex = tooltips.FindIndex((tpline) =>
@@ -232,7 +232,7 @@ public class DrinkGlobalItem : GlobalItem
 				return tpline.Name.Contains("Tooltip");
 			});
 			// 如果有tooltip，就删掉所有Tooltip的line然后插入到第一个所在位置
-			var DrinkInfo = m_vanillaDrinkInfos[item.type];
+			var DrinkInfo = VanillaDrinkInfos[item.type];
 			if (firstIndex >= 0)
 			{
 				tooltips.RemoveAll((tp) => tp.Name.Contains("Tooltip"));
@@ -286,9 +286,9 @@ public class DrinkGlobalItem : GlobalItem
 	public override void SetDefaults(Item item)
 	{
 		// 如果是原版的饮料，那么就手动处理
-		if (m_vanillaDrinkInfos.ContainsKey(item.type))
+		if (VanillaDrinkInfos.ContainsKey(item.type))
 		{
-			var drinkInfo = m_vanillaDrinkInfos[item.type];
+			var drinkInfo = VanillaDrinkInfos[item.type];
 		}
 		base.SetDefaults(item);
 	}
@@ -296,9 +296,9 @@ public class DrinkGlobalItem : GlobalItem
 	public override void OnConsumeItem(Item item, Player player)
 	{
 		// 如果是原版的饮料，那么就手动处理，因为已经使用了物品，说明玩家满足饱食度要求
-		if (m_vanillaDrinkInfos.ContainsKey(item.type))
+		if (VanillaDrinkInfos.ContainsKey(item.type))
 		{
-			var drinkInfo = m_vanillaDrinkInfos[item.type];
+			var drinkInfo = VanillaDrinkInfos[item.type];
 			var FoodPlayer = player.GetModPlayer<FoodModPlayer>();
 
 			// 变得不渴
@@ -323,9 +323,9 @@ public class DrinkGlobalItem : GlobalItem
 		bool CanText = true;
 		var foodPlayer = player.GetModPlayer<FoodModPlayer>();
 		// 判断能否喝下物品
-		if (m_vanillaDrinkInfos.ContainsKey(item.type) && CanText == true)
+		if (VanillaDrinkInfos.ContainsKey(item.type) && CanText == true)
 		{
-			var drinkInfo = m_vanillaDrinkInfos[item.type];
+			var drinkInfo = VanillaDrinkInfos[item.type];
 			if (!foodPlayer.CanDrink(drinkInfo) && foodPlayer.CanText())
 			{
 				CombatText.NewText(
@@ -362,9 +362,9 @@ public class DrinkGlobalItem : GlobalItem
 	{
 		var foodPlayer = player.GetModPlayer<FoodModPlayer>();
 		// 判断能否喝下物品
-		if (m_vanillaDrinkInfos.ContainsKey(item.type))
+		if (VanillaDrinkInfos.ContainsKey(item.type))
 		{
-			var drinkInfo = m_vanillaDrinkInfos[item.type];
+			var drinkInfo = VanillaDrinkInfos[item.type];
 			if (!foodPlayer.CanDrink(drinkInfo))
 			{
 				// Main.NewText(Language.GetTextValue("Mods.Everglow.Common.FoodSystem.CannotDrink"));

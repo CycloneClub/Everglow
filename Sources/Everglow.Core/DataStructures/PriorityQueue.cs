@@ -7,13 +7,13 @@ namespace Everglow.Commons.DataStructures;
 public class PriorityQueue<T>
 	where T : IComparable<T>, new()
 {
-	private readonly List<T> m_heap;
-	private int m_top;
+	private readonly List<T> heap;
+	private int top;
 
 	public PriorityQueue()
 	{
-		m_top = 0;
-		m_heap = new List<T>
+		top = 0;
+		heap = new List<T>
 		{
 			new T(),
 		};
@@ -22,7 +22,7 @@ public class PriorityQueue<T>
 	/// <summary>
 	/// 判断堆内是否有元素
 	/// </summary>
-	public bool Empty => m_top == 0;
+	public bool Empty => top == 0;
 
 	/// <summary>
 	/// 获取堆顶值
@@ -31,12 +31,12 @@ public class PriorityQueue<T>
 	{
 		get
 		{
-			if (m_top < 1)
+			if (top < 1)
 			{
 				throw new IndexOutOfRangeException();
 			}
 
-			return m_heap[1];
+			return heap[1];
 		}
 	}
 
@@ -46,8 +46,8 @@ public class PriorityQueue<T>
 	/// <param name="val"></param>
 	public void Push(T val)
 	{
-		m_heap.Add(val);
-		++m_top;
+		heap.Add(val);
+		++top;
 		Swim();
 	}
 
@@ -58,20 +58,20 @@ public class PriorityQueue<T>
 	public T Pop()
 	{
 		T ret = Top;
-		Swap(1, m_top--);
+		Swap(1, top--);
 		Sink();
 		return ret;
 	}
 
 	private void Swap(int i, int j)
 	{
-		(m_heap[j], m_heap[i]) = (m_heap[i], m_heap[j]);
+		(heap[j], heap[i]) = (heap[i], heap[j]);
 	}
 
 	private void Swim()
 	{
-		int k = m_top;
-		while (k > 1 && m_heap[k >> 1].CompareTo(m_heap[k]) > 0)
+		int k = top;
+		while (k > 1 && heap[k >> 1].CompareTo(heap[k]) > 0)
 		{
 			Swap(k >> 1, k);
 			k >>= 1;
@@ -81,15 +81,15 @@ public class PriorityQueue<T>
 	private void Sink()
 	{
 		int k = 1;
-		while (k << 1 <= m_top)
+		while (k << 1 <= top)
 		{
 			int j = k << 1;
-			if (j + 1 <= m_top && m_heap[j].CompareTo(m_heap[j + 1]) > 0)
+			if (j + 1 <= top && heap[j].CompareTo(heap[j + 1]) > 0)
 			{
 				j++;
 			}
 
-			if (m_heap[k].CompareTo(m_heap[j]) <= 0)
+			if (heap[k].CompareTo(heap[j]) <= 0)
 			{
 				break;
 			}

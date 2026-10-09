@@ -3,20 +3,20 @@ namespace Everglow.Commons.Modules;
 public class DependencyGraph
 {
 	// 类型到Id的映射
-	private Dictionary<Type, int> m_typeToIdMapping;
+	private Dictionary<Type, int> typeToIdMapping;
 	// 类型列表，用于确定Id
-	private List<Type> m_types;
+	private List<Type> types;
 	// 依赖图的邻接表
-	private Dictionary<int, List<int>> m_dependencyGraph;
+	private Dictionary<int, List<int>> dependencyGraph;
 	// 依赖图中节点的入度表
-	private Dictionary<int, int> m_dependencyFanin;
+	private Dictionary<int, int> dependencyFanin;
 
 	public DependencyGraph()
 	{
-		m_typeToIdMapping = new Dictionary<Type, int>();
-		m_types = new List<Type>();
-		m_dependencyGraph = new Dictionary<int, List<int>>();
-		m_dependencyFanin = new Dictionary<int, int>();
+		typeToIdMapping = new Dictionary<Type, int>();
+		types = new List<Type>();
+		dependencyGraph = new Dictionary<int, List<int>>();
+		dependencyFanin = new Dictionary<int, int>();
 	}
 
 	/// <summary>
@@ -38,13 +38,13 @@ public class DependencyGraph
 		int u = GetInternalID(depend);
 		int v = GetInternalID(type);
 
-		if (m_dependencyGraph.ContainsKey(u))
+		if (dependencyGraph.ContainsKey(u))
 		{
-			m_dependencyGraph[u].Add(v);
+			dependencyGraph[u].Add(v);
 		}
 		else
 		{
-			m_dependencyGraph[u] = new List<int> { v };
+			dependencyGraph[u] = new List<int> { v };
 		}
 
 		AddFanin(v);
@@ -52,13 +52,13 @@ public class DependencyGraph
 
 	private void AddFanin(int v)
 	{
-		if (m_dependencyFanin.ContainsKey(v))
+		if (dependencyFanin.ContainsKey(v))
 		{
-			m_dependencyFanin[v]++;
+			dependencyFanin[v]++;
 		}
 		else
 		{
-			m_dependencyFanin[v] = 1;
+			dependencyFanin[v] = 1;
 		}
 	}
 
@@ -72,7 +72,7 @@ public class DependencyGraph
 		List<Type> result = new();
 		Queue<int> queue = new();
 
-		for (int i = 0; i < m_types.Count; i++)
+		for (int i = 0; i < types.Count; i++)
 		{
 			if (GetFanin(i) == 0)
 			{
@@ -84,16 +84,16 @@ public class DependencyGraph
 		{
 			int u = queue.Dequeue();
 
-			if (!m_dependencyGraph.ContainsKey(u))
+			if (!dependencyGraph.ContainsKey(u))
 			{
-				result.Add(m_types[u]);
+				result.Add(types[u]);
 				continue;
 			}
-			result.Add(m_types[u]);
-			foreach (var v in m_dependencyGraph[u])
+			result.Add(types[u]);
+			foreach (var v in dependencyGraph[u])
 			{
-				m_dependencyFanin[v]--;
-				if (m_dependencyFanin[v] == 0)
+				dependencyFanin[v]--;
+				if (dependencyFanin[v] == 0)
 				{
 					queue.Enqueue(v);
 				}
@@ -101,7 +101,7 @@ public class DependencyGraph
 		}
 
 		// 如果依赖图出现环就直接报错加载失败
-		if (result.Count < m_types.Count)
+		if (result.Count < types.Count)
 		{
 			throw new ArgumentException("Circular dependency detected, please remove the circle");
 		}
@@ -116,25 +116,25 @@ public class DependencyGraph
 	/// <returns></returns>
 	private int GetInternalID(Type t)
 	{
-		if (!m_typeToIdMapping.ContainsKey(t))
+		if (!typeToIdMapping.ContainsKey(t))
 		{
-			int id = m_types.Count;
-			m_typeToIdMapping.Add(t, id); // 是漏了吗？
-			m_types.Add(t);
+			int id = types.Count;
+			typeToIdMapping.Add(t, id); // 是漏了吗？
+			types.Add(t);
 			return id;
 		}
-		return m_typeToIdMapping[t];
+		return typeToIdMapping[t];
 	}
 
 	private int GetFanin(int v)
 	{
-		if (!m_dependencyFanin.ContainsKey(v))
+		if (!dependencyFanin.ContainsKey(v))
 		{
 			return 0;
 		}
 		else
 		{
-			return m_dependencyFanin[v];
+			return dependencyFanin[v];
 		}
 	}
 }
