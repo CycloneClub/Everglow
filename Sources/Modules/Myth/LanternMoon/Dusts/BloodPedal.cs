@@ -35,7 +35,9 @@ public class BloodPedal : ModDust
 		if ((int)(Main.time / 5d) % 5 == (int)dust.position.X % 5 && !(Collision.SolidCollision(dust.position - Vector2.One * 5f, 10, 10) && dust.fadeIn == 0f))
 		{
 			if (dust.frame.Y < 98)
+			{
 				dust.frame.Y += 14;
+			}
 			else
 			{
 				dust.frame.Y = 0;

@@ -150,11 +150,15 @@ public class EvilPack : ModNPC
 	public override void HitEffect(NPC.HitInfo hit)
 	{
 		if (NPC.ai[0] < 10)
+		{
 			NPC.ai[0] += 1;
+		}
 		else
 		{
 			if (NPC.ai[1] < 90f)
+			{
 				NPC.ai[1] += 0.01f;
+			}
 			else
 			{
 				NPC.ai[1] = 91f;

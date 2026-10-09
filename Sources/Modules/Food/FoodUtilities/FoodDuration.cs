@@ -106,7 +106,9 @@ public class FoodDuration
 		}
 
 		if (m_seconds != 0 && m_frames == 0)
+		{
 			sb.Append($"{m_seconds} " + Language.GetTextValue("Mods.Everglow.Common.Second"));
+		}
 		else if (m_seconds != 0 && m_frames != 0)
 		{
 			sb.Append($"{(m_seconds + m_frames / 60.0).ToString("0.##")} " + Language.GetTextValue("Mods.Everglow.Common.Second"));

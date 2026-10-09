@@ -42,7 +42,9 @@ public class BlueMissil : ModProjectile
 			}
 
 			if (Projectile.timeLeft < 90)
+			{
 				Projectile.velocity = va;
+			}
 			else
 			{
 				Projectile.velocity *= 0.94f;

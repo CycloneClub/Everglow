@@ -34,7 +34,9 @@ public class PinkFog : ModDust
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		if (dust.scale > 4f)
+		{
 			return new Color?(new Color(0.4f, 0.3f, 0.38f, 0f));
+		}
 		else
 		{
 			return new Color?(new Color(0.4f, 0.3f, 0.38f, (4f - dust.scale) / 4f));

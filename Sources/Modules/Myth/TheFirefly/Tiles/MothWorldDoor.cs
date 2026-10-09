@@ -105,7 +105,9 @@ public class MothWorldDoor : ModTile
 	public override bool RightClick(int i, int j)
 	{
 		if (SubworldSystem.IsActive<MothWorld>())
+		{
 			SubworldSystem.Exit();
+		}
 		else
 		{
 			if (!SubworldSystem.Enter<MothWorld>())

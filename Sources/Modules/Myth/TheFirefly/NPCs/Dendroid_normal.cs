@@ -39,7 +39,9 @@ public class Dendroid_normal : ModNPC
 	{
 		Player player = Main.player[NPC.FindClosestPlayer()];
 		if (NPC.velocity.X > 0)
+		{
 			NPC.spriteDirection = 1;
+		}
 		else
 		{
 			NPC.spriteDirection = -1;
@@ -75,7 +77,9 @@ public class Dendroid_normal : ModNPC
 			{
 				NPC.frameCounter = 0;
 				if (NPC.frame.Y < 19 * frameHeight)
+				{
 					NPC.frame.Y += frameHeight;
+				}
 				else
 				{
 					NPC.frame.Y = 6 * frameHeight;

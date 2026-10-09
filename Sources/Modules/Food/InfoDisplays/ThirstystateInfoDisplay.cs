@@ -12,7 +12,9 @@ internal class ThirstystateInfoDisplay : InfoDisplay
 	{
 		bool Thirstystate = Main.LocalPlayer.GetModPlayer<FoodModPlayer>().Thirstystate;
 		if (Thirstystate)
+		{
 			return Terraria.Localization.Language.GetTextValue("Mods.Everglow.InfoDisplay.Thirsty");
+		}
 		else
 		{
 			return Terraria.Localization.Language.GetTextValue("Mods.Everglow.InfoDisplay.NotThirsty");

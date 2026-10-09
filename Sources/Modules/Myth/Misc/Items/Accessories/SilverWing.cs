@@ -34,7 +34,9 @@ public class SilverWing : ModItem
 		MythContentPlayer mplayer = player.GetModPlayer<MythContentPlayer>();
 		mplayer.CriticalDamage += 0.08f;
 		if (player.controlUseItem)
+		{
 			noContinueUsingWeaponTime = 0;
+		}
 		else
 		{
 			noContinueUsingWeaponTime++;

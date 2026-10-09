@@ -29,7 +29,9 @@ public class MothBlue : ModDust
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		if (dust.scale > 0.6f)
+		{
 			return new Color?(new Color(0f, 0.6f, 0.9f, 0f));
+		}
 		else
 		{
 			return new Color?(new Color(0, 0.6f, 0.9f, (0.6f - dust.scale) / 0.6f));

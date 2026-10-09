@@ -57,7 +57,9 @@ public class PhantomMoth : ModProjectile
 				}
 			}
 			if (TargetPos != Vector2.Zero)
+			{
 				Projectile.velocity = Vector2.Lerp(Projectile.velocity, Projectile.DirectionTo(TargetPos) * 15, 0.05f);
+			}
 			else if (Projectile.timeLeft > 240)
 			{
 				var AimPos = new Vector2(Projectile.ai[0], Projectile.ai[1]);

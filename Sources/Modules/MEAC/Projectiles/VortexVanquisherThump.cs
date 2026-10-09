@@ -42,7 +42,9 @@ public class VortexVanquisherThump : ModProjectile
 		Projectile.velocity = StartVelocity;
 		Projectile.position += new Vector2(18f / Projectile.extraUpdates * Math.Sign(StartVelocity.X), 0);
 		if (Projectile.timeLeft > 20)
+		{
 			player.velocity = StartVelocity * 24f;
+		}
 		else
 		{
 			player.velocity *= 0.6f;
@@ -60,7 +62,9 @@ public class VortexVanquisherThump : ModProjectile
 		for (int y = 0; y < 60; y++)
 		{
 			if (Collision.SolidCollision(CheckPoint, 1, 1))
+			{
 				break;
+			}
 			else
 			{
 				CheckPoint += new Vector2(0, 5) * player.gravDir;
@@ -104,21 +108,27 @@ public class VortexVanquisherThump : ModProjectile
 		}
 
 		if (TotalVector == Vector2.Zero)
+		{
 			TotalVector = new Vector2(0, -player.gravDir);
+		}
 		else
 		{
 			TotalVector = Utils.SafeNormalize(TotalVector, new Vector2(0, -player.gravDir));
 		}
 		float FallVelocity = 0;
 		if ((Projectile.Center + new Vector2(0, -100)).Y < CheckPoint.Y)
+		{
 			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), CheckPoint + TotalVector * 480, -TotalVector * 15, ModContent.ProjectileType<DashingLightEff>(), 0, 0, Projectile.owner, 1).CritChance = Projectile.CritChance;
+		}
 		else
 		{
 			Vector2 CheckPointII = Projectile.Center + new Vector2(0, 200) * player.gravDir;
 			for (int y = 0; y < 600; y++)
 			{
 				if (Collision.SolidCollision(CheckPointII, 1, 1))
+				{
 					break;
+				}
 				else
 				{
 					CheckPointII += new Vector2(0, 5) * player.gravDir;

@@ -34,7 +34,9 @@ public class Freeze : ModDust
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		if (dust.scale > 3f)
+		{
 			return new Color?(new Color(0.6f, 0.9f, 1f, 0.1f));
+		}
 		else
 		{
 			return new Color?(new Color(dust.scale * dust.scale / 9f * 0.6f, dust.scale / 3f * 0.9f, dust.scale / 3f, 0.1f));

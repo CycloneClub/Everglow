@@ -34,7 +34,9 @@ public class Poison : ModDust
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		if (dust.scale > 4f)
+		{
 			return new Color?(new Color(0.6f, 0.8f, 0.1f, 0f));
+		}
 		else
 		{
 			return new Color?(new Color(0.6f, 0.8f, 0.1f, (4f - dust.scale) / 4f));

@@ -76,7 +76,9 @@ public class LilyHarpNote : ModProjectile
 				Vector2 v2 = Main.MouseWorld;
 
 				if (AimWhoAmI == -1)
+				{
 					AimWhoAmI = j;
+				}
 				else if ((v1 - v2).Length() < (Main.npc[j].Center - v2).Length())
 				{
 					AimWhoAmI = j;

@@ -118,7 +118,9 @@ public class ThunderBall : ModProjectile
 				if (HasBeenHit[j])
 				{
 					if (coolingHit[j] > 0)
+					{
 						coolingHit[j]--;
+					}
 					else
 					{
 						coolingHit[j] = 0;
@@ -189,7 +191,9 @@ public class ThunderBall : ModProjectile
 		if (!Nul)
 		{
 			if (Projectile.timeLeft > 60f)
+			{
 				return new Color?(new Color(255, 255, 255, 0));
+			}
 			else
 			{
 				return new Color?(new Color(Projectile.timeLeft / 60f, Projectile.timeLeft / 60f, Projectile.timeLeft / 60f, 0));
@@ -214,7 +218,9 @@ public class ThunderBall : ModProjectile
 
 			float width = 5;
 			if (Projectile.timeLeft > 30)
+			{
 				width = 5;
+			}
 			else
 			{
 				width = Projectile.timeLeft / 6f;

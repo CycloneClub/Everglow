@@ -15,7 +15,9 @@ public class GunSpark : ModDust
 		dust.position += dust.velocity;
 		dust.rotation = dust.velocity.ToRotation();
 		if (dust.velocity.Length() > 8)
+		{
 			dust.frame.X = 18;
+		}
 		else if (dust.velocity.Length() > 4)
 		{
 			dust.scale *= 0.94f;

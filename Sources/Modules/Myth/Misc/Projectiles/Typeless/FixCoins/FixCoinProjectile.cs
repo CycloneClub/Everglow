@@ -52,7 +52,9 @@ public abstract class FixCoinProjectile : ModProjectile
 		}
 
 		if (Projectile.timeLeft > 50 && Projectile.timeLeft < 120)
+		{
 			LightColorII += 1 / 70f;
+		}
 		else
 		{
 			LightColorII *= 0.95f;
@@ -236,7 +238,9 @@ public abstract class FixCoinProjectile : ModProjectile
 		color = Projectile.GetAlpha(color) * ((255 - Projectile.alpha) / 255f);
 		Main.spriteBatch.Draw(Light, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, new Color((int)(255 * LightColorII * ColorVec.X), (int)(255 * LightColorII * ColorVec.Y), (int)(255 * LightColorII * ColorVec.Z), 0), Projectile.rotation, new Vector2(56f, 56f), Projectile.scale, SpriteEffects.None, 0);
 		if (Projectile.timeLeft > 50)
+		{
 			Main.spriteBatch.Draw(Ball, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, new Color(255 + color.R, 255 + color.G, 255 + color.B, color.A), Projectile.rotation, new Vector2(14f, 14f), Projectile.scale, SpriteEffects.None, 0);
+		}
 		else
 		{
 			Main.spriteBatch.Draw(Ball, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, new Color((int)(255 * LightColorII) + color.R, (int)(255 * LightColorII) + color.G, (int)(255 * LightColorII) + color.B, color.A), Projectile.rotation, new Vector2(14f, 14f), Projectile.scale, SpriteEffects.None, 0);

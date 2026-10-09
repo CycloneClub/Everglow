@@ -29,7 +29,9 @@ public class CactusSmog : ModDust
 		float k = (255 - dust.alpha) / 255f;
 		float k2 = (float)Math.Sqrt(k);
 		if (dust.scale > 0.6f)
+		{
 			return new Color?(new Color(0f, 0f, 0f, k));
+		}
 		else
 		{
 			return new Color?(new Color(0f, 0f, 0f, k));

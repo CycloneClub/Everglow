@@ -47,7 +47,9 @@ public class YellowCore : ModNPC
 	{
 		NPC.localAI[0] += 1;
 		if (NPC.localAI[0] <= 15)
+		{
 			Sca = NPC.localAI[0] / 15f;
+		}
 		else
 		{
 			Sca = 1;

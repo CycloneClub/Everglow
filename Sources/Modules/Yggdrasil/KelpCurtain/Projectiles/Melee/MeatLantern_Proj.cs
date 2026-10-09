@@ -162,7 +162,9 @@ public class MeatLantern_Proj : MeleeProj
 				mainAxisDirection = Vector2Elipse(75, Projectile.rotation, -0.75f, rot);
 			}
 			if (timer > 40)
+			{
 				NextAttackType();
+			}
 			else if (timer > 1)
 			{
 				float BodyRotation = (float)Math.Sin((timer - 10) / 30d * Math.PI) * 0.2f * player.direction * player.gravDir;
@@ -200,7 +202,9 @@ public class MeatLantern_Proj : MeleeProj
 				mainAxisDirection = Vector2Elipse(75, Projectile.rotation, -0.75f, rot);
 			}
 			if (timer > 40)
+			{
 				NextAttackType();
+			}
 			else if (timer > 1)
 			{
 				float BodyRotation = (float)Math.Sin((timer - 10) / 30d * Math.PI) * 0.2f * player.direction * player.gravDir;

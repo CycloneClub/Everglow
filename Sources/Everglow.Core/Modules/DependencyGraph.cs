@@ -37,7 +37,9 @@ public class DependencyGraph
 		int v = GetInternalID(type);
 
 		if (m_dependencyGraph.ContainsKey(u))
+		{
 			m_dependencyGraph[u].Add(v);
+		}
 		else
 		{
 			m_dependencyGraph[u] = new List<int> { v };
@@ -48,7 +50,9 @@ public class DependencyGraph
 	private void AddFanin(int v)
 	{
 		if (m_dependencyFanin.ContainsKey(v))
+		{
 			m_dependencyFanin[v]++;
+		}
 		else
 		{
 			m_dependencyFanin[v] = 1;
@@ -122,7 +126,9 @@ public class DependencyGraph
 	private int GetFanin(int v)
 	{
 		if (!m_dependencyFanin.ContainsKey(v))
+		{
 			return 0;
+		}
 		else
 		{
 			return m_dependencyFanin[v];

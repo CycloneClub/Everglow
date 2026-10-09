@@ -11,7 +11,9 @@ public class StarAmmo : SlingshotAmmo
 	{
 		Player player = Main.player[Projectile.owner];
 		if (player.position.Y > Main.UnderworldLayer * 16f)
+		{
 			Projectile.CritChance -= 15;
+		}
 		else
 		{
 			Projectile.CritChance += 15;
@@ -31,7 +33,9 @@ public class StarAmmo : SlingshotAmmo
 
 		TimeTokill--;
 		if (TimeTokill < 0)
+		{
 			Projectile.velocity.Y += 0.17f;
+		}
 		else
 		{
 			if (TimeTokill < 10)
@@ -170,7 +174,9 @@ public class StarAmmo : SlingshotAmmo
 	public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 	{
 		if (!Main.dayTime)
+		{
 			modifiers.FinalDamage *= 1.25f;
+		}
 		else
 		{
 			modifiers.FinalDamage *= 0.75f;

@@ -51,7 +51,9 @@ public class RampageShark : ModItem
 		if (player.ownedProjectileCounts[ModContent.ProjectileType<Projectiles.Weapons.RampageShark>()] <= 0 || player.HeldItem != Item)
 		{
 			if (CrazyValue > 0)
+			{
 				CrazyValue -= 1 / 20f;
+			}
 			else
 			{
 				CrazyValue = 0;
@@ -63,7 +65,9 @@ public class RampageShark : ModItem
 		if (player.controlUseItem && player.ownedProjectileCounts[ModContent.ProjectileType<Projectiles.Weapons.RampageShark>()] > 0)
 		{
 			if (CrazyValue < 16)
+			{
 				CrazyValue += 1 / 30f;
+			}
 			else
 			{
 				CrazyValue = 16;
@@ -73,7 +77,9 @@ public class RampageShark : ModItem
 	public override bool CanUseItem(Player player)
 	{
 		if (player.controlUseItem)
+		{
 			return true;
+		}
 		else
 		{
 			return CrazyValue == 0;
@@ -129,7 +135,9 @@ public class RampageShark : ModItem
 		if (!Main.gamePaused)
 		{
 			if (CrazyValue > 0)
+			{
 				CrazyValue -= 1 / 20f;
+			}
 			else
 			{
 				CrazyValue = 0;

@@ -108,7 +108,9 @@ public class SummonedButterfly : ModNPC
 			NPC.TargetClosest(false);
 			Player player = Main.player[NPC.target];
 			if (timer < 30)
+			{
 				NPC.dontTakeDamage = true;
+			}
 			else
 			{
 				NPC.dontTakeDamage = false;

@@ -77,7 +77,9 @@ public class GlowMoth : ModProjectile
 		if ((AutoAddingTimer + (int)Projectile.ai[1]) % 4 == 0)
 		{
 			if (Projectile.frame < 3)
+			{
 				Projectile.frame++;
+			}
 			else
 			{
 				Projectile.frame = 0;
@@ -101,7 +103,9 @@ public class GlowMoth : ModProjectile
 		if (SpecialTimeAfterSpawn == 60)
 		{
 			if (Main.rand.NextFloat(0, 10f) > 5)
+			{
 				Projectile.spriteDirection = -1;
+			}
 			else
 			{
 				Projectile.spriteDirection = 1;
@@ -123,7 +127,9 @@ public class GlowMoth : ModProjectile
 			Projectile.Kill();
 		}
 		if (player.HasBuff(ModContent.BuffType<GlowMothBuff>()))
+		{
 			Projectile.timeLeft = 2;
+		}
 		else
 		{
 			Projectile.Kill();
@@ -269,7 +275,9 @@ public class GlowMoth : ModProjectile
 		else if (mothOwner.WhoSleepInPlayer[player.whoAmI] == Projectile.whoAmI/*停留在玩家身上的正是本蛾*/)
 		{
 			if (player.velocity.Length() < 6f && Math.Abs(player.fullRotation) < 0.3)
+			{
 				Projectile.Center = PlayerBody;
+			}
 			else
 			{
 				mothOwner.WhoSleepInPlayer[player.whoAmI] = -1;

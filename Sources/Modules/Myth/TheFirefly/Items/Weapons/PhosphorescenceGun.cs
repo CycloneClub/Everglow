@@ -45,7 +45,9 @@ public class PhosphorescenceGun : ModItem
 		Gsplayer.FlyCamPosition = new Vector2(0, 100).RotatedByRandom(6.283);
 		const int NumProjectiles = 4;
 		if (player.ownedProjectileCounts[ModContent.ProjectileType<Projectiles.PhosphorescenceGun>()] < 1)
+		{
 			Projectile.NewProjectileDirect(source, position + velocity * 2.0f - new Vector2(0, 4), Vector2.Zero, ModContent.ProjectileType<Projectiles.PhosphorescenceGun>(), damage, knockback, player.whoAmI, 1f, Item.useAnimation);
+		}
 		else
 		{
 			for (int x = 0; x < Main.projectile.Length; x++)
@@ -83,7 +85,9 @@ public class PhosphorescenceGun : ModItem
 			if (MothEye.LocalOwner != null && MothEye.LocalOwner.TryGetModPlayer(out MothEyePlayer mothEyePlayer))
 			{
 				if (mothEyePlayer.MothEyeEquipped && fireflyBiome.IsBiomeActive(Main.LocalPlayer) && Main.hardMode)
+				{
 					Projectile.NewProjectileDirect(source, position + velocity * 2.0f - new Vector2(0, 4), newVelocity, ModContent.ProjectileType<PhosphorescenceBullet>(), (int)(damage * 0.39f), knockback, player.whoAmI);
+				}
 				else
 				{
 					Projectile.NewProjectileDirect(source, position + velocity * 2.0f - new Vector2(0, 4), newVelocity, ModContent.ProjectileType<PhosphorescenceBullet>(), (int)(damage * 0.26f), knockback, player.whoAmI);

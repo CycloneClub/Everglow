@@ -160,7 +160,9 @@ public abstract class MagicBookProjectile : ModProjectile
 		else
 		{
 			if (BackTexture == null)
+			{
 				Book = FrontTexture;
+			}
 			else
 			{
 				Book = BackTexture;
@@ -168,11 +170,15 @@ public abstract class MagicBookProjectile : ModProjectile
 		}
 		Texture2D BookGlow;
 		if (BackGlowTexture == null && GlowTexture == null)
+		{
 			BookGlow = ModContent.Request<Texture2D>("Everglow/SpellAndSkull/Projectiles/Item_" + ItemType + "_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+		}
 		else
 		{
 			if (BackGlowTexture == null)
+			{
 				BookGlow = GlowTexture;
+			}
 			else
 			{
 				BookGlow = BackGlowTexture;
@@ -200,7 +206,9 @@ public abstract class MagicBookProjectile : ModProjectile
 		else
 		{
 			if (FrontTexture == null)
+			{
 				Book = BackTexture;
+			}
 			else
 			{
 				Book = FrontTexture;
@@ -208,7 +216,9 @@ public abstract class MagicBookProjectile : ModProjectile
 		}
 		DrawFront(Book);
 		if (GlowTexture == null)
+		{
 			BookGlow = ModContent.Request<Texture2D>("Everglow/SpellAndSkull/Projectiles/Item_" + ItemType + "_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+		}
 		else
 		{
 			BookGlow = GlowTexture;

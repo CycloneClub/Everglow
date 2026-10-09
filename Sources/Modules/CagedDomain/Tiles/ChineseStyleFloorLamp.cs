@@ -47,7 +47,9 @@ public class ChineseStyleFloorLamp : ModTile
 			if (Main.tile[k, l].HasTile && Main.tile[k, l].TileType == Type)
 			{
 				if (Main.tile[k, l].TileFrameX < 40)
+				{
 					Main.tile[k, l].TileFrameX += 48;
+				}
 				else
 				{
 					Main.tile[k, l].TileFrameX -= 48;
@@ -67,7 +69,9 @@ public class ChineseStyleFloorLamp : ModTile
 			if (Main.tile[k, l].HasTile && Main.tile[k, l].TileType == Type)
 			{
 				if (Main.tile[k, l].TileFrameX < 40)
+				{
 					Main.tile[k, l].TileFrameX += 48;
+				}
 				else
 				{
 					Main.tile[k, l].TileFrameX -= 48;

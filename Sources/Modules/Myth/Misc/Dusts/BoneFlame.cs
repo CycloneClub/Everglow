@@ -33,7 +33,9 @@ public class BoneFlame : ModDust
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		if (dust.scale > 1.5f)
+		{
 			return new Color?(new Color(1f, 0.5f, 0.85f, 0.05f));
+		}
 		else
 		{
 			return new Color?(new Color(dust.scale / 1.5f * dust.scale / 1.5f, dust.scale / 3f * dust.scale / 1.5f, dust.scale / 1.275f * dust.scale / 1.5f, dust.scale / 1.5f));

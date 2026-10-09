@@ -46,7 +46,9 @@ internal class DarkFan : ModProjectile
 		target.AddBuff(ModContent.BuffType<FireflyInferno>(), 120);
 
 		if (MothBuffTarget.mothStack[target.whoAmI] < 5)
+		{
 			MothBuffTarget.mothStack[target.whoAmI] += 1;
+		}
 		else
 		{
 			MothBuffTarget.mothStack[target.whoAmI] = 5;

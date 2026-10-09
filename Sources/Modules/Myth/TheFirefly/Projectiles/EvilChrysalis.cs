@@ -80,7 +80,9 @@ internal class EvilChrysalis : ModProjectile
 		}
 
 		if (Projectile.timeLeft >= 75)
+		{
 			Dy += 0.5f;
+		}
 		else
 		{
 			Dy = 0;

@@ -51,7 +51,9 @@ public class CloudBall : ModProjectile
 		Vector2 normalize = Projectile.velocity.SafeNormalize(Vector2.Zero);
 		float speed = MathF.Round(Projectile.velocity.Length(), 0);
 		if (DistanceCompletion >= speed)
+		{
 			DistanceCompletion -= speed;
+		}
 		else
 		{
 			for (float i = DistanceCompletion; i < speed; i += DustSpacing)

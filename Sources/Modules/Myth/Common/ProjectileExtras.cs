@@ -208,7 +208,9 @@ public static class ProjectileExtras
 			Vector2 vector6 = player.position - projectile.Center;
 			float num6 = vector6.Length();
 			if (num6 < num3 + 10f || num6 == 0f)
+			{
 				projectile.Kill();
+			}
 			else
 			{
 				vector6.Normalize();
@@ -247,7 +249,9 @@ public static class ProjectileExtras
 		}
 		bool checkSelf = true;
 		if (num == 0f && num2 == 0f)
+		{
 			checkSelf = false;
+		}
 		else
 		{
 			float num4 = (float)Math.Sqrt((double)(num * num + num2 * num2));
@@ -265,7 +269,9 @@ public static class ProjectileExtras
 			float num6 = (float)Math.Sqrt((double)(num * num + num2 * num2));
 			float num7 = num6;
 			if (float.IsNaN(num6) || float.IsNaN(num7))
+			{
 				checkSelf = false;
+			}
 			else
 			{
 				if (num6 < 20f)
@@ -348,7 +354,9 @@ public static class ProjectileExtras
 				}
 
 				if (stringColor == 13)
+				{
 					color = new Color(20, 20, 20);
+				}
 				else if (stringColor == 14 || stringColor == 0)
 				{
 					color = new Color(200, 200, 200);

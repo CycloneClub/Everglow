@@ -106,7 +106,9 @@ public class ToothMagicSplit : ModProjectile
 		}
 
 		if (addi < MaxAdd)
+		{
 			Projectile.velocity += (float)(1 - Math.Cos(addi / 7.5d * Math.PI)) * FirstVel;
+		}
 		else
 		{
 			if (Tokill < 0)
@@ -129,7 +131,9 @@ public class ToothMagicSplit : ModProjectile
 			}
 		}
 		if (Projectile.velocity.Length() > 7)
+		{
 			Projectile.velocity = Projectile.velocity.RotatedBy(Projectile.velocity.Length() / 30f * (Projectile.whoAmI % 2 - 0.5f)) * 0.96f;
+		}
 		else
 		{
 			Projectile.velocity = Projectile.velocity.RotatedBy(Projectile.velocity.Length() / 100f * (Projectile.whoAmI % 2 - 0.5f));
@@ -193,7 +197,9 @@ public class ToothMagicSplit : ModProjectile
 				for (int j = 0; j < Projectile.oldPos.Length - 2; ++j)
 				{
 					if (Projectile.oldPos[i] == Projectile.oldPos[i - 1])
+					{
 						i++;
+					}
 					else
 					{
 						// i+=2;
@@ -234,7 +240,9 @@ public class ToothMagicSplit : ModProjectile
 				for (int j = 0; j < Projectile.oldPos.Length - 2; ++j)
 				{
 					if (Projectile.oldPos[i] == Projectile.oldPos[i - 1])
+					{
 						i++;
+					}
 					else
 					{
 						// i+=2;

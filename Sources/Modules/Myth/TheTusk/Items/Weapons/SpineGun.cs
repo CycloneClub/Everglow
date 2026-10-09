@@ -39,7 +39,9 @@ public class SpineGun : ModItem
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		if (player.ownedProjectileCounts[ModContent.ProjectileType<Projectiles.Weapon.SpineGun>()] < 1)
+		{
 			Projectile.NewProjectileDirect(source, position + velocity * 2.0f - new Vector2(0, 4), Vector2.Zero, ModContent.ProjectileType<Projectiles.Weapon.SpineGun>(), damage, knockback, player.whoAmI, 1f, Item.useAnimation);
+		}
 		else
 		{
 			for (int x = 0; x < Main.projectile.Length; x++)

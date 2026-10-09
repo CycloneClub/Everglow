@@ -16,7 +16,9 @@ internal class GelSlingshot : SlingshotProjectile
 		Color drawColor = Lighting.GetColor((int)(Projectile.Center.X / 16.0), (int)(Projectile.Center.Y / 16.0));
 		float DrawRot;
 		if (Projectile.Center.X < player.MountedCenter.X)
+		{
 			DrawRot = Projectile.rotation - MathF.PI / 4f;
+		}
 		else
 		{
 			DrawRot = Projectile.rotation - MathF.PI * 0.25f;

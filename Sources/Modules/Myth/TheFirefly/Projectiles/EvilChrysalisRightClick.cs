@@ -44,7 +44,9 @@ internal class EvilChrysalisRightClick : ModProjectile
 		Color color = Lighting.GetColor((int)Projectile.Center.X / 16, (int)(Projectile.Center.Y / 16.0));
 		SpriteEffects S = SpriteEffects.None;
 		if (Math.Sign(Vdr.X) == -1)
+		{
 			player.direction = -1;
+		}
 		else
 		{
 			player.direction = 1;

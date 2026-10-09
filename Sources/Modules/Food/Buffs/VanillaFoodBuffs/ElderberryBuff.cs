@@ -41,7 +41,9 @@ public class ElderberryBuffDash : ModPlayer
 		ElderberryBuff = false;
 
 		if (Player.controlDown && Player.releaseDown && Player.doubleTapCardinalTimer[DashDown] < 15)
+		{
 			DashDir = DashDown;
+		}
 		else if (Player.controlUp && Player.releaseUp && Player.doubleTapCardinalTimer[DashUp] < 15)
 		{
 			DashDir = DashUp;

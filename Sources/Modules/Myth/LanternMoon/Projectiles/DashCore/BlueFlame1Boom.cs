@@ -35,7 +35,9 @@ internal class BlueFlame1Boom : ModProjectile
 		}
 
 		if (Projectile.timeLeft < 60f)
+		{
 			ka *= 0.97f;
+		}
 		else
 		{
 			if (Projectile.scale < 1)
