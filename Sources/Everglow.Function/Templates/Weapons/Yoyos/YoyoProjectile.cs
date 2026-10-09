@@ -549,7 +549,7 @@ public abstract class YoyoProjectile : ModProjectile
 	}
 
 	/// <summary>
-	/// Generate a yoyo-string that consist of a List<Vector2>().
+	/// Generate a yoyo-string that consist of a <see cref="List{Vector2}"/>.
 	/// </summary>
 	/// <param name="stringUnitPos"></param>
 	/// <param name="yoyo_string_pos"></param>

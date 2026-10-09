@@ -74,7 +74,6 @@ public abstract class HangingTile : ModTile, ITileFluentlyDrawn
 	public string BulbTexturePath;
 
 	/// <summary>
-	/// <summary>
 	/// Winch position and rope.<br></br>
 	/// 1 point contains 1 rope at most.
 	/// </summary>

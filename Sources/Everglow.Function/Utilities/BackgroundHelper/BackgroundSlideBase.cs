@@ -161,7 +161,7 @@ public abstract class BackgroundSlideBase
 	}
 
 	/// <summary>
-	/// Legacy code, use <see cref="BackgroundHigherPerformanceHelper.Add_TileBgVertice"> Instead.
+	/// Legacy code, use <see cref="BackgroundHigherPerformanceHelper.Add_TileBgVertice"/> Instead.
 	/// </summary>
 	/// <param name="bg"></param>
 	/// <param name="tiles"></param>
@@ -191,7 +191,7 @@ public abstract class BackgroundSlideBase
 	};
 
 	/// <summary>
-	/// Legacy code, use <see cref="BackgroundHigherPerformanceHelper.Add_TileBgVertice"> Instead.
+	/// Legacy code, use <see cref="BackgroundHigherPerformanceHelper.Add_TileBgVertice"/> Instead.
 	/// </summary>
 	/// <param name="bg"></param>
 	/// <param name="tiles"></param>
