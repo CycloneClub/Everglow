@@ -30,7 +30,6 @@ public class TwilightTree_Leaf : ModGore
 			}
 			gore.frameCounter = 0;
 		}
-
 	}
 	private void UpdateMove(Gore gore)
 	{

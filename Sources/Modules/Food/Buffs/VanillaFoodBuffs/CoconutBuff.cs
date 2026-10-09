@@ -14,7 +14,6 @@ public class CoconutBuff : ModBuff
 	{
 		player.statDefense += 4; // 加4防御
 		player.endurance += 0.03f; // 加3%减伤
-
 	}
 }
 

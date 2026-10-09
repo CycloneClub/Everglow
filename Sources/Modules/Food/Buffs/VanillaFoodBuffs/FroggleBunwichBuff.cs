@@ -16,7 +16,6 @@ public class FroggleBunwichBuff : ModBuff
 		player.autoJump = true;
 		player.jumpSpeedBoost += 1.5f;
 		player.jumpBoost = true;
-
 	}
 }
 

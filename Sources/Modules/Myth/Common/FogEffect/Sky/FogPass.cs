@@ -181,7 +181,6 @@ public class FogPass
 		m_targetState = state;
 		m_totalSwitchCounter = interpTime;
 		m_switchCounter = interpTime;
-
 	}
 
 	public void Update()
@@ -588,8 +587,5 @@ public class FogPass
 		spriteBatch.Draw(m_renderTargetSwap, Vector2.Zero,
 			Color.White);
 		spriteBatch.End();
-
 	}
-
-
 }

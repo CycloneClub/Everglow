@@ -6,7 +6,6 @@ public class GlowingFirefly : ModItem
 
 	public override void SetStaticDefaults()
 	{
-
 	}
 
 	public override void SetDefaults()

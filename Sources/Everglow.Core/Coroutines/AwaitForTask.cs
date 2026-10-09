@@ -25,6 +25,5 @@ public class AwaitForTask : ICoroutineInstruction
 
 	public void Update()
 	{
-
 	}
 }

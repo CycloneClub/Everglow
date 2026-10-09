@@ -14,7 +14,6 @@ public class PotatoChipsBuff : ModBuff
 	{
 		player.statDefense += 4; // 加4防御
 		player.GetDamage(DamageClass.Melee) *= 1.04f; // 加4%伤害
-
 	}
 }
 

@@ -218,7 +218,6 @@ public class BladeOfGreenMoss_Proj : MeleeProj
 				mainAxisDirection = Vector2.Lerp(mainAxisDirection, Vector2Elipse(120, targetRot, -1.2f), 0.1f);
 				mainAxisDirection += Projectile.DirectionFrom(player.Center) * 3;
 				Projectile.rotation = mainAxisDirection.ToRotation();
-
 			}
 
 			if (timer == 65)

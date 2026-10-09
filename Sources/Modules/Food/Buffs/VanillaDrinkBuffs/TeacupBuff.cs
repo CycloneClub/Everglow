@@ -15,7 +15,6 @@ public class TeacupBuff : ModBuff
 		player.GetDamage(DamageClass.Magic) *= 1.6f; // 加60%攻击
 		player.GetCritChance(DamageClass.Magic) += 60; // 加60%暴击
 		player.manaRegen += 100; // 加100魔力回复
-
 	}
 }
 

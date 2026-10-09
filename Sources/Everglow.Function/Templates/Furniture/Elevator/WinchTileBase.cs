@@ -97,6 +97,5 @@ public abstract class WinchTileBase<TElevator> : ModTile
 
 	public override void PostDrawPlacementPreview(int i, int j, SpriteBatch spriteBatch, Rectangle frame, Vector2 position, Color color, bool validPlacement, SpriteEffects spriteEffects)
 	{
-
 	}
 }

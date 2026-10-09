@@ -14,7 +14,6 @@ public class CookedFishBuff : ModBuff
 	{
 		player.GetCritChance(DamageClass.Magic) += 0.04f; // 加8%魔法暴击率
 		player.statManaMax2 += 40; // 加40魔力上限
-
 	}
 }
 

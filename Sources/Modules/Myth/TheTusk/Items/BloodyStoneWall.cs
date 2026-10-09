@@ -23,6 +23,5 @@ public class BloodyStoneWall : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.consumable = true;
 		Item.createWall = ModContent.WallType<Walls.BloodyStoneWall>();
-
 	}
 }

@@ -13,7 +13,6 @@ public class DryMartiniBuff : ModBuff
 	public override void Update(Player player, ref int buffIndex)
 	{
 		player.GetDamage(DamageClass.Generic) *= 2;
-
 	}
 }
 

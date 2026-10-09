@@ -41,7 +41,6 @@ public class AcytaeaSwordRain : ModProjectile
 	}
 	public void AmmoHit()
 	{
-
 	}
 	public override bool PreDraw(ref Color lightColor)
 	{

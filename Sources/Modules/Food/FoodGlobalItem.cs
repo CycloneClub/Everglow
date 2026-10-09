@@ -629,7 +629,6 @@ public class FoodGlobalItem : GlobalItem
 				}
 			},
 		};
-
 	}
 	public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
 	{
@@ -694,8 +693,6 @@ public class FoodGlobalItem : GlobalItem
 	}
 	public override void SetStaticDefaults()
 	{
-
-
 	}
 
 	public override void SetDefaults(Item item)

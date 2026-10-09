@@ -16,6 +16,5 @@ public class YellowDynastyShingles : ModTile
 
 		Main.tileSpelunker[Type] = true;
 		AddMapEntry(new Color(229, 128, 4));
-
 	}
 }

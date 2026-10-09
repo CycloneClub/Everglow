@@ -35,7 +35,6 @@ internal class TimerStringDrawer : TextDrawer
 			stringDrawer.DefaultParameters.GetString("MSTQuestName", string.Empty));
 		TimerStyle = stringParameters.GetInt("TimerStyle",
 			stringDrawer.DefaultParameters.GetInt("MSTTimerStyle", 0));
-
 	}
 
 	public override void Draw(SpriteBatch sb)

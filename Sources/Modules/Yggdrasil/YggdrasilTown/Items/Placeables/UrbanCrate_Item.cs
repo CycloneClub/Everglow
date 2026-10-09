@@ -46,7 +46,6 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Placeables
 				ItemDropRule.Common(ItemID.TungstenOre, 1, 30, 50),
 				ItemDropRule.Common(ItemID.GoldOre, 1, 30, 50),
 				ItemDropRule.Common(ItemID.PlatinumOre, 1, 30, 50),
-
 			};
 			itemLoot.Add(new OneFromRulesRule(7, oreTypes));
 
@@ -58,7 +57,6 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Placeables
 				ItemDropRule.Common(ItemID.TungstenBar, 1, 10, 21),
 				ItemDropRule.Common(ItemID.GoldBar, 1, 10, 21),
 				ItemDropRule.Common(ItemID.PlatinumBar, 1, 10, 21),
-
 			};
 			itemLoot.Add(new OneFromRulesRule(4, oreBars));
 
@@ -70,7 +68,6 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Placeables
 				ItemDropRule.Common(ItemID.GravitationPotion, 1, 2, 5),
 				ItemDropRule.Common(ItemID.MiningPotion, 1, 2, 5),
 				ItemDropRule.Common(ItemID.HeartreachPotion, 1, 2, 5),
-
 			};
 			itemLoot.Add(new OneFromRulesRule(4, explorationPotions));
 

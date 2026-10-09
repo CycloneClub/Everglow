@@ -63,5 +63,4 @@ public abstract partial class PlayerQuestBase : ITagCompoundEntity
 	/// 是否可放弃任务
 	/// </summary>
 	public virtual bool Cancellable => false;
-
 }

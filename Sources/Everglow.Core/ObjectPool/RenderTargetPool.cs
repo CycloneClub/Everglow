@@ -77,7 +77,6 @@ public class RenderTargetPool
 				ReleaseResourceAt(i);
 			}
 		});
-
 	}
 
 	/// <summary>

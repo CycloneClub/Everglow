@@ -32,7 +32,6 @@ internal class Star
 			alpha = MathHelper.Lerp(alpha, 0f, 0.1f);
 		}
 		scale += (float)Math.Sin(timeLeft * 0.06f) * 0.06f;
-
 	}
 	public virtual void Draw()
 	{

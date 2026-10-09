@@ -34,7 +34,6 @@ public class LightBulb : ModNPC
 		NPC.value = 100;
 		NPC.HitSound = SoundID.NPCHit1;
 		NPC.DeathSound = SoundID.NPCDeath1;
-
 	}
 	public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 	{
@@ -65,7 +64,6 @@ public class LightBulb : ModNPC
 					NPC.frame.Y = (int)(NPC.frameCounter / 8 % 4 + 8) * frameHeight;
 					break;
 				}
-
 		}
 	}
 
@@ -113,7 +111,6 @@ public class LightBulb : ModNPC
 						State = (int)NPCState.charge;
 						NPC.ai[0] = 0;
 						NPC.frameCounter = 0;
-
 					}
 					break;
 				}
@@ -175,7 +172,6 @@ public class LightBulb : ModNPC
 					}
 					break;
 				}
-
 		}
 	}
 	public override void OnKill()
@@ -192,7 +188,6 @@ public class LightBulb : ModNPC
 			int type = ModContent.Find<ModGore>("Everglow/GlowingBlossom_gore" + Main.rand.Next(4, 7)).Type;
 			Gore.NewGore(NPC.GetSource_Death(), NPC.Center, v0, type, NPC.scale);
 		}
-
 	}
 	public override void ModifyNPCLoot(NPCLoot npcLoot)
 	{

@@ -10,7 +10,6 @@ public class GlowWoodSword : ModItem
 	FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
 	public override void SetStaticDefaults()
 	{
-
 	}
 	public override void SetDefaults()
 	{

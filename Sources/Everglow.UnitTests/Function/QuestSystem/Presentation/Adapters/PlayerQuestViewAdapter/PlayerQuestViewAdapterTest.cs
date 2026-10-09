@@ -269,5 +269,4 @@ public partial class PlayerQuestViewAdapterTest
 		Assert.AreEqual("visible description", view.Description);
 		Assert.AreEqual(0.75f, view.Progress);
 	}
-
 }

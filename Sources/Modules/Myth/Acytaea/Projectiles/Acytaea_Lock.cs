@@ -18,7 +18,6 @@ public class Acytaea_Lock : ModProjectile
 		Projectile.DamageType = DamageClass.Melee;
 		Projectile.width = 40;
 		Projectile.height = 40;
-
 	}
 	public override void AI()
 	{

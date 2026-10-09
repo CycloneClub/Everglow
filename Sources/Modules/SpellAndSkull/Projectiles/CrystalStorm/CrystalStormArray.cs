@@ -130,7 +130,6 @@ internal class CrystalStormArray : ModProjectile
 
 		DrawTexLine(Point2_, Point7, c0, c0, CrystalLight, 0.5f);
 		DrawTexLine(Point3_, Point6, c0, c0, CrystalLight, 0.7f);
-
 	}
 	private static void DrawTexCircle(float radius, float width, Color color, Vector2 center, Texture2D tex, double addRot = 0)
 	{
@@ -175,7 +174,6 @@ internal class CrystalStormArray : ModProjectile
 					circle.Add(new Vertex2D(center + new Vector2(0, Math.Max(radius - width, 0)).RotatedBy(Math.PI / 2 * h + addRot) + Delta * D0, color, new Vector3(0, 1, 0)));
 					circle.Add(new Vertex2D(center + new Vector2(0, radius).RotatedBy(Math.PI / 2 * h + addRot) + DeltaWidth * D0, color, new Vector3(0, 0, 0)));
 				}
-
 			}
 		}
 		if (circle.Count > 0)
@@ -183,7 +181,6 @@ internal class CrystalStormArray : ModProjectile
 			Main.graphics.GraphicsDevice.Textures[0] = tex;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, circle.ToArray(), 0, circle.Count - 2);
 		}
-
 	}
 	public void DrawTexLine(Vector2 StartPos, Vector2 EndPos, Color color1, Color color2, Texture2D tex, float AddValue = 0)
 	{

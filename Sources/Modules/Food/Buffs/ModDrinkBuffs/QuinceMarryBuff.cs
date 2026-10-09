@@ -14,7 +14,6 @@ public class QuinceMarryBuff : ModBuff
 	{
 		FoodBuffModPlayer FoodBuffModPlayer = player.GetModPlayer<FoodBuffModPlayer>();
 		FoodBuffModPlayer.QuinceMarryBuff = true;
-
 	}
 }
 

@@ -14,7 +14,6 @@ public class DreamYearningBuff : ModBuff
 	{
 		FoodBuffModPlayer FoodBuffModPlayer = player.GetModPlayer<FoodBuffModPlayer>();
 		FoodBuffModPlayer.DreamYearningBuff = true;
-
 	}
 }
 

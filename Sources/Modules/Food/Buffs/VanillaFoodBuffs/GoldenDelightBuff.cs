@@ -24,7 +24,6 @@ public class GoldenDelightBuff : ModBuff
 		player.maxRunSpeed *= 1.2f; // 加速
 		player.runAcceleration *= 1.2f;
 		player.jumpSpeedBoost += 2;
-
 	}
 }
 

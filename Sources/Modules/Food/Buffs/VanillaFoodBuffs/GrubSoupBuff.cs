@@ -15,7 +15,6 @@ public class GrubSoupBuff : ModBuff
 		player.fishingSkill += 30;
 		FoodBuffModPlayer FoodBuffModPlayer = player.GetModPlayer<FoodBuffModPlayer>();
 		FoodBuffModPlayer.GrubSoupBuff = true;
-
 	}
 }
 

@@ -14,7 +14,6 @@ public class CantaloupeJellyBuff : ModBuff
 	{
 		FoodBuffModPlayer FoodBuffModPlayer = player.GetModPlayer<FoodBuffModPlayer>();
 		FoodBuffModPlayer.CantaloupeJellyBuff = true;
-
 	}
 }
 

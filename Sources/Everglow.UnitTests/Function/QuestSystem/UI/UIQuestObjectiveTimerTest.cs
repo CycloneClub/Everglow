@@ -21,5 +21,4 @@ public class UIQuestObjectiveTimerTest
 		hourglass.MaxTime = 0;
 		Assert.AreEqual(0f, hourglass.RemainingRatio);
 	}
-
 }

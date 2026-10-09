@@ -148,7 +148,6 @@ public class TsunamiShark_missile : ModProjectile
 						aimVel = Vector2.Normalize(aimVel) * maxVel * Projectile.ai[0] * Projectile.ai[0];
 					}
 					Projectile.velocity = Projectile.velocity * 0.95f + aimVel * 0.05f;
-
 				}
 			}
 			else
@@ -326,7 +325,6 @@ public class TsunamiShark_missile : ModProjectile
 
 			bars.Add(new Vertex2D(Projectile.oldPos[i] + normalDir * -width + new Vector2(5) - Main.screenPosition, color, new Vector3(factor, 0, 0)));
 			bars.Add(new Vertex2D(Projectile.oldPos[i] + normalDir * width + new Vector2(5) - Main.screenPosition, color, new Vector3(factor, 1, 0)));
-
 		}
 
 		if (bars.Count > 2)

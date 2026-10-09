@@ -104,7 +104,6 @@ public class WhisperingGhost : ModNPC
 			dust.rotation = Main.rand.NextFloat(0.4f, 0.8f);
 			dust.alpha = Main.rand.Next(0, 55);
 		}
-
 	}
 	private static Terraria.WorldBuilding.Conditions.NotNull _cachedConditions_notNull = new Terraria.WorldBuilding.Conditions.NotNull();
 	private static Terraria.WorldBuilding.Conditions.IsSolid _cachedConditions_solid = new Terraria.WorldBuilding.Conditions.IsSolid();

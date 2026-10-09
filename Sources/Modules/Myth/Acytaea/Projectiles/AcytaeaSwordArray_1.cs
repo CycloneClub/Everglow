@@ -186,7 +186,6 @@ public class AcytaeaSwordArray_1 : ModProjectile
 	}
 	public override void OnKill(int timeLeft)
 	{
-
 	}
 	public void AmmoHit(int whoAmI)
 	{

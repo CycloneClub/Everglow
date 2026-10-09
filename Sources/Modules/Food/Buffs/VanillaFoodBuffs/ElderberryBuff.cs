@@ -14,7 +14,6 @@ public class ElderberryBuff : ModBuff
 	{
 		ElderberryBuffDash ElderberryBuffDash = player.GetModPlayer<ElderberryBuffDash>();
 		ElderberryBuffDash.ElderberryBuff = true;
-
 	}
 }
 public class ElderberryBuffDash : ModPlayer
@@ -90,7 +89,6 @@ public class ElderberryBuffDash : ModPlayer
 			DashDelay = DashCooldown;
 			DashTimer = DashDuration;
 			Player.velocity = newVelocity;
-
 		}
 
 		if (DashDelay > 0)

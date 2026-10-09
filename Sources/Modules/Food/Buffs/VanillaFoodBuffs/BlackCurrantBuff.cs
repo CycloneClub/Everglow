@@ -14,7 +14,6 @@ public class BlackCurrantBuff : ModBuff
 	{
 		player.nightVision = true; // 获得夜视能力
 		player.dangerSense = true; // 获得危险感知
-
 	}
 }
 

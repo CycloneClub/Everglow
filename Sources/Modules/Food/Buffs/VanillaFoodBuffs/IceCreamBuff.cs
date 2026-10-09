@@ -14,7 +14,6 @@ public class IceCreamBuff : ModBuff
 	{
 		player.buffImmune[BuffID.OnFire] = true; // 免疫着火
 		player.fireWalk = true; // 免疫火块
-
 	}
 }
 

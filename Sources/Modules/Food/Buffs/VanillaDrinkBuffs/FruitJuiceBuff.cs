@@ -8,7 +8,6 @@ public class FruitJuiceBuff : ModBuff
 		// Description.SetDefault("短时间内幅大大提升大部分属性\n“维生素！”");
 		Main.buffNoTimeDisplay[Type] = false;
 		Main.debuff[Type] = false; // 添加这个，这样护士在治疗时就不会去除buff
-
 	}
 
 	public override void Update(Player player, ref int buffIndex)
@@ -23,7 +22,6 @@ public class FruitJuiceBuff : ModBuff
 		player.maxRunSpeed *= 2f; // 加速
 		player.runAcceleration *= 2f;
 		player.jumpSpeedBoost += 2;
-
 	}
 }
 

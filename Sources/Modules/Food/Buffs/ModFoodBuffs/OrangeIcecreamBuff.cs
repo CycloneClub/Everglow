@@ -13,7 +13,6 @@ public class OrangeIcecreamBuff : ModBuff
 	public override void Update(Player player, ref int buffIndex)
 	{
 		player.immuneTime += 30;
-
 	}
 }
 

@@ -14,7 +14,6 @@ public class PurpleHooterBuff : ModBuff
 	{
 		FoodBuffModPlayer FoodBuffModPlayer = player.GetModPlayer<FoodBuffModPlayer>();
 		FoodBuffModPlayer.PurpleHooterBuff = true;
-
 	}
 }
 

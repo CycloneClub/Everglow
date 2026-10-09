@@ -66,7 +66,6 @@ public class DarkGlimmeringRods : ModNPC
 		{
 			NPC.velocity += Vector2.Normalize(toAim) * 0.15f * NPC.scale;
 		}
-
 	}
 	public override void OnKill()
 	{

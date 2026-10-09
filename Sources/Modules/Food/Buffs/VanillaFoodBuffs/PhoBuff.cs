@@ -13,7 +13,6 @@ public class PhoBuff : ModBuff
 	public override void Update(Player player, ref int buffIndex)
 	{
 		player.GetDamage(DamageClass.Summon) *= 1.08f;
-
 	}
 }
 

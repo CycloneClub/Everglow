@@ -67,6 +67,5 @@ public class ItemTooltipDrawModule : IModule
 
 	public void Unload()
 	{
-
 	}
 }

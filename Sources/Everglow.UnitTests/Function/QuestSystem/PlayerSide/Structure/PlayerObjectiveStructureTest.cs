@@ -56,7 +56,6 @@ public class PlayerObjectiveStructureTest
 		{
 			Ready = tag.TryGet<int>(nameof(Ready), out var ready) && ready != 0;
 		}
-
 	}
 
 	[TestMethod]

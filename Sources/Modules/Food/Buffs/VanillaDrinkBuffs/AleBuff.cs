@@ -14,7 +14,6 @@ public class AleBuff : ModBuff
 	{
 		player.whipRangeMultiplier *= 1.5f; //
 		player.GetAttackSpeed(DamageClass.Summon) *= 1.5f;
-
 	}
 }
 

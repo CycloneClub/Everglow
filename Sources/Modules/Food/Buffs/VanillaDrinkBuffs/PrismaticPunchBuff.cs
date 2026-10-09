@@ -16,7 +16,6 @@ public class PrismaticPunchBuff : ModBuff
 		player.maxTurrets += 5; // 加5哨兵栏
 		player.GetKnockback(DamageClass.Summon) *= 1.5f; // 击退加倍
 		player.GetDamage(DamageClass.Summon) *= 1.5f; // 加50%伤害
-
 	}
 }
 

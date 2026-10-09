@@ -53,7 +53,6 @@ public class BloodyMossWheelFinished : ModTile
 			}
 
 			Col = 100;
-
 		}
 		else
 		{
@@ -64,7 +63,6 @@ public class BloodyMossWheelFinished : ModTile
 				Col = 0;
 				TpTime = 0;
 			}
-
 		}
 		if (TpTime >= 120)
 		{

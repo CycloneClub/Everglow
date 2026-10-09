@@ -15,7 +15,6 @@ public class GrapesBuff : ModBuff
 		player.maxMinions += 1; // 加1召唤栏
 		player.luck *= 1.1f;
 		player.statDefense -= 12; // 减12防御
-
 	}
 }
 

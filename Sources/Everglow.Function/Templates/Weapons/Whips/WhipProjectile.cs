@@ -20,7 +20,6 @@ public abstract class WhipProjectile : ModProjectile
 	}
 	public virtual void SetDef()
 	{
-
 	}
 	/// <summary>
 	/// The dust that will generate by whip.

@@ -20,7 +20,6 @@ public class BlackVine : ModTile
 		var modTranslation = CreateMapEntryName();
 		AddMapEntry(new Color(11, 11, 11), modTranslation);
 		HitSound = SoundID.Grass;
-
 	}
 	public override void PlaceInWorld(int i, int j, Item item)
 	{

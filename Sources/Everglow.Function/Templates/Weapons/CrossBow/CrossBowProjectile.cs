@@ -25,7 +25,6 @@ namespace Everglow.Commons.Templates.Weapons.CrossBow
 		}
 		public virtual void SetDef()
 		{
-
 		}
 		public override void OnSpawn(IEntitySource source)
 		{
@@ -131,7 +130,6 @@ namespace Everglow.Commons.Templates.Weapons.CrossBow
 		}
 		public virtual void DrawChord(SpriteBatch spriteBatch, Color lightColor)
 		{
-
 		}
 	}
 }

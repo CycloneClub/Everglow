@@ -111,7 +111,6 @@ public class FireflyPiranha : ModNPC
 		{
 			NPC.spriteDirection = -1;
 		}
-
 	}
 	private void NormalAttack(Player target)
 	{

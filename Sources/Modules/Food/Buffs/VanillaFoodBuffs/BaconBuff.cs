@@ -14,7 +14,6 @@ public class BaconBuff : ModBuff
 	{
 		player.resistCold = true; // 保暖
 		player.lifeRegen += 2; // 加2生命回复
-
 	}
 }
 

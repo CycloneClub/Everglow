@@ -31,7 +31,6 @@ public class MothBuffTarget : GlobalNPC
 				float velocityValue = MathF.Log(npc.velocity.Length() + 1) / 10f;
 				if (!npc.collideX && !npc.collideY)
 				{
-
 				}
 				modifiers.FinalDamage = modifiers.FinalDamage * (1 + mothStack[npc.whoAmI] * 0.1f + velocityValue);
 			}

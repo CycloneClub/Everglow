@@ -156,7 +156,6 @@ public abstract class MagicBookProjectile : ModProjectile
 		Texture2D Book = TextureAssets.Item[ItemType].Value;
 		if (BackTexture == null && FrontTexture == null)
 		{
-
 		}
 		else
 		{
@@ -197,7 +196,6 @@ public abstract class MagicBookProjectile : ModProjectile
 		}
 		if (BackTexture == null && FrontTexture == null)
 		{
-
 		}
 		else
 		{

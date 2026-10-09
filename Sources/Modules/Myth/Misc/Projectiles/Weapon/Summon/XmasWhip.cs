@@ -134,6 +134,5 @@ public class XmasWhip : WhipProjectile
 				Dust.NewDustDirect(WhipPointsForCollision[WhipPointsForCollision.Count - 1], 0, 0, DustID.GoldCoin);
 			}
 		}
-
 	}
 }

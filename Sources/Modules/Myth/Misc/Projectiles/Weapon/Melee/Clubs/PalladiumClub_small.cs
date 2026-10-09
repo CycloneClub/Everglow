@@ -199,7 +199,6 @@ public class PalladiumClub_small : ModProjectile, IWarpProjectile
 	}
 	public void PostPreDraw()
 	{
-
 	}
 	public void DrawTrail()
 	{

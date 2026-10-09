@@ -21,7 +21,6 @@ public class EscargotBuff : ModBuff
 		player.runAcceleration *= 0.25f;
 		player.jumpSpeedBoost *= 0.25f;
 		player.endurance += 0.25f; // 加25%减伤
-
 	}
 }
 

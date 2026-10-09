@@ -43,7 +43,6 @@ public class SplieSpineBullet : ModProjectile
 					}
 				}
 			}
-
 		}
 		if (Tokill is >= 0 and <= 2)
 		{

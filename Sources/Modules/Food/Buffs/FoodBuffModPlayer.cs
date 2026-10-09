@@ -142,7 +142,6 @@ public class FoodBuffModPlayer : ModPlayer
 
 		CriticalDamage = 1f;
 		AddCritDamage = 0;
-
 	}
 	public override void PostUpdateBuffs()
 	{

@@ -34,14 +34,4 @@ public class SteamBox2Recipe : FoodRecipes
 		{
 		};
 	}
-
-
-
-
-
-
-
-
-
-
 }

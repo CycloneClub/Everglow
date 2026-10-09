@@ -16,7 +16,6 @@ public class SauteedFrogLegsBuff : ModBuff
 		player.jumpSpeedBoost += 1f;
 		player.maxFallSpeed += 5f;
 		player.jumpBoost = true;
-
 	}
 }
 

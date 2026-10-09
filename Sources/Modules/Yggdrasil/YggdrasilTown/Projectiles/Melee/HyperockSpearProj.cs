@@ -301,7 +301,6 @@ public class HyperockSpearProj : ModProjectile
 			Gore.NewGore(null, Projectile.Center + vF, vF, ModContent.Find<ModGore>("Everglow/HyperockSpearProj_gore3").Type, 1f);
 		}
 		SoundEngine.PlaySound(SoundID.DD2_ExplosiveTrapExplode.WithVolume(0.5f), Projectile.Center);
-
 	}
 
 	public void GenerateSmog(int Frequency)

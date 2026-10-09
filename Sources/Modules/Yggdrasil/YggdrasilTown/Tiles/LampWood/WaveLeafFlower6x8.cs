@@ -64,7 +64,6 @@ public class WaveLeafFlower6x8 : ModTile, ITileFluentlyDrawn
 		DrawLeaf(new Rectangle(0, 382, 96, 62), 0.048f, SwayHitboxPos(2, -4), PaintPos(3, -4), new Vector2(48, 62), new Vector2(40, -26) + move0 + move1, 2, 2, drawInfo);
 		DrawLeaf(new Rectangle(0, 266, 96, 40), 0.028f, SwayHitboxPos(2, -3), PaintPos(3, -3), new Vector2(48, 40), new Vector2(40, -12) + move0, 2, 2, drawInfo);
 		DrawLeaf(new Rectangle(0, 178, 96, 16), 0.018f, SwayHitboxPos(2, -1), PaintPos(3, -1), new Vector2(48, 16), new Vector2(40, 0), 2, 2, drawInfo);
-
 	}
 	/// <summary>
 	/// 绘制一个树枝和叶子

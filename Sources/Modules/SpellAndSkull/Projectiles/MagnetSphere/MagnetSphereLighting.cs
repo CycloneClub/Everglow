@@ -77,7 +77,6 @@ public class MagnetSphereLighting : ModProjectile, IWarpProjectile
 		}
 
 		Projectile.velocity *= 0;
-
 	}
 
 	public override void PostDraw(Color lightColor)
@@ -215,7 +214,6 @@ public class MagnetSphereLighting : ModProjectile, IWarpProjectile
 
 				lighting.Add(new Vertex2D(BasePos[a] - NormalizedToTarget - Main.screenPosition, c0, new Vector3(0, 0, 0)));
 				lighting.Add(new Vertex2D(BasePos[a] + NormalizedToTarget - Main.screenPosition, c0, new Vector3(0, 1, 0)));
-
 			}
 		}
 		if (lighting.Count > 0)

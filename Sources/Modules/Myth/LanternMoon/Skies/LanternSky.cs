@@ -111,7 +111,6 @@ public class LanternSky : CustomSky
 				Vx.Add(bars[i + 2]);
 				Vx.Add(bars[i + 3]);
 			}
-
 		}
 		if (Vx.Count > 2)
 		{
@@ -119,7 +118,6 @@ public class LanternSky : CustomSky
 			Main.graphics.GraphicsDevice.Textures[0] = t;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, Vx.ToArray(), 0, Vx.Count / 3);
 		}
-
 	}
 
 	public override void Update(GameTime gameTime)
