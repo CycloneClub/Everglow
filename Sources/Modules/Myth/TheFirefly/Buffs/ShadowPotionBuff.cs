@@ -49,6 +49,8 @@ public class ShadowPotionBuff : ModBuff
 			player.nightVision = true;
 		}
 		if (LightTime > 20)
-		{ LightTime = 20; }
+		{
+			LightTime = 20;
+		}
 	}
 }

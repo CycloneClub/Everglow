@@ -16,12 +16,16 @@ public class EternalResolveFishingPlayer : ModPlayer
 			fishAttempt.rolledItemDrop = ModContent.ItemType<SwordfishBeak>();
 
 			if (EverglowConfig.DebugMode)
-			{ Main.NewText("CatchFish rolledItemDrop: " + fishAttempt.rolledItemDrop); }
+			{
+				Main.NewText("CatchFish rolledItemDrop: " + fishAttempt.rolledItemDrop);
+			}
 
 			itemDrop = ModContent.ItemType<SwordfishBeak>();
 
 			if (EverglowConfig.DebugMode)
-			{ Main.NewText("CatchFish itemDrop: " + fishAttempt.rolledItemDrop); }
+			{
+				Main.NewText("CatchFish itemDrop: " + fishAttempt.rolledItemDrop);
+			}
 
 			// sonar.Text = "Swordfish Beak";
 			// sonar.Color = Color.AliceBlue;
@@ -35,7 +39,9 @@ public class EternalResolveFishingPlayer : ModPlayer
 		PlayerFishingConditions conditions = Player.GetFishingConditions();
 
 		if (EverglowConfig.DebugMode)
-		{ Main.NewText("CanConsumeBait: " + fishAttempt.rolledItemDrop); }
+		{
+			Main.NewText("CanConsumeBait: " + fishAttempt.rolledItemDrop);
+		}
 
 		// The golden fishing rod will never consume bait
 		if (fishAttempt.rolledItemDrop == ModContent.ItemType<SwordfishBeak>() && conditions.Pole.type == ItemID.GoldenFishingRod)
