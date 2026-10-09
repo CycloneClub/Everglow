@@ -314,6 +314,9 @@ dotnet_diagnostic.SA1027.severity = none
 # SA1101: Prefix local calls with this
 dotnet_diagnostic.SA1101.severity = none
 
+# SA1108: Allow comments alongside statement headers.
+dotnet_diagnostic.SA1108.severity = none
+
 # SA1623: Property summary documentation should match accessors
 dotnet_diagnostic.SA1623.severity = none
 
@@ -356,8 +359,14 @@ dotnet_diagnostic.SA0001.severity = none
 # SA1009: Closing parenthesis should be spaced correctly
 dotnet_diagnostic.SA1009.severity = none
 
+# SA1512: Let authors group comments with surrounding code.
+dotnet_diagnostic.SA1512.severity = none
+
 # SA1513: Closing brace should be followed by blank line
 dotnet_diagnostic.SA1513.severity = none
+
+# SA1515: Let authors group comments with surrounding code.
+dotnet_diagnostic.SA1515.severity = none
 
 # SA1000: Keywords should be spaced correctly
 dotnet_diagnostic.SA1000.severity = none
@@ -377,8 +386,62 @@ dotnet_diagnostic.SA1405.severity = none
 # SA1117: Parameters should be on same line or separate lines
 dotnet_diagnostic.SA1117.severity = none
 
+# SA1402: Allow multiple types in the same file.
+dotnet_diagnostic.SA1402.severity = none
+
 # SA1407: Arithmetic expressions should declare precedence
 dotnet_diagnostic.SA1407.severity = none
 csharp_style_prefer_primary_constructors = true:suggestion
 csharp_prefer_system_threading_lock = true:suggestion
 dotnet_diagnostic.SA1124.severity = none
+
+# Preserve the vendored Spine runtime; these formatting rules gate Everglow code only.
+[Sources/Everglow.Function/Skeleton2D/Spine/**.cs]
+generated_code = true
+dotnet_analyzer_diagnostic.severity = none
+
+dotnet_diagnostic.SA1001.severity = none
+dotnet_diagnostic.SA1002.severity = none
+dotnet_diagnostic.SA1003.severity = none
+dotnet_diagnostic.SA1005.severity = none
+dotnet_diagnostic.SA1028.severity = none
+dotnet_diagnostic.SA1106.severity = none
+dotnet_diagnostic.SA1116.severity = none
+dotnet_diagnostic.SA1119.severity = none
+dotnet_diagnostic.SA1122.severity = none
+dotnet_diagnostic.SA1127.severity = none
+dotnet_diagnostic.SA1128.severity = none
+dotnet_diagnostic.SA1137.severity = none
+dotnet_diagnostic.SA1306.severity = none
+dotnet_diagnostic.SA1308.severity = none
+dotnet_diagnostic.SA1400.severity = none
+dotnet_diagnostic.SA1413.severity = none
+dotnet_diagnostic.SA1500.severity = none
+dotnet_diagnostic.SA1502.severity = none
+dotnet_diagnostic.SA1503.severity = none
+dotnet_diagnostic.SA1505.severity = none
+dotnet_diagnostic.SA1507.severity = none
+dotnet_diagnostic.SA1508.severity = none
+dotnet_diagnostic.SA1516.severity = none
+dotnet_diagnostic.SA1518.severity = none
+dotnet_diagnostic.SA1520.severity = none
+dotnet_diagnostic.SA1008.severity = none
+dotnet_diagnostic.SA1015.severity = none
+dotnet_diagnostic.SA1111.severity = none
+dotnet_diagnostic.SA1121.severity = none
+dotnet_diagnostic.SA1132.severity = none
+dotnet_diagnostic.SA1408.severity = none
+dotnet_diagnostic.SA1501.severity = none
+dotnet_diagnostic.SA1504.severity = none
+dotnet_diagnostic.SA1509.severity = none
+dotnet_diagnostic.SA1510.severity = none
+dotnet_diagnostic.SA1517.severity = none
+dotnet_diagnostic.SA1519.severity = none
+dotnet_diagnostic.SA1025.severity = none
+dotnet_diagnostic.SA1120.severity = none
+dotnet_diagnostic.SA1100.severity = none
+dotnet_diagnostic.SA1303.severity = none
+dotnet_diagnostic.SA1414.severity = none
+dotnet_diagnostic.SA1316.severity = none
+dotnet_diagnostic.SA1300.severity = none
+dotnet_diagnostic.SA1123.severity = none

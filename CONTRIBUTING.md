@@ -23,17 +23,11 @@ Run commands from the repository root:
 
 ```powershell
 dotnet restore
-dotnet build
+dotnet build /p:WarningLevel=0
 dotnet test --verbosity normal /p:WarningLevel=0
 ```
 
-The CI-equivalent build is:
-
-```powershell
-dotnet build /p:Configuration=Release /p:WarningLevel=0
-```
-
-Do not use tModLoader's in-game **Build Mod** action for this repository. The MSBuild pipeline compiles the module assemblies, processes resources and Effects, and writes the combined `Everglow.tmod` to the local tModLoader Mods directory.
+Do not use tModLoader's in-game **Build Mod** action for this repository. The MSBuild pipeline compiles the module assemblies, processes resources and Effects, and writes `Everglow.tmod` to the local tModLoader Mods directory.
 
 ## Making Changes
 

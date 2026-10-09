@@ -46,52 +46,14 @@ jobs:
 
     - name: Restore dependencies
       run: |
-          touch .\Sources\Directory.Build.props
-          echo '<Project>
-                  <PropertyGroup>
-                    <TargetFramework>net8.0</TargetFramework>
-                    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-                    <ImplicitUsings>enable</ImplicitUsings>
-                    <PlatformTarget>AnyCPU</PlatformTarget>
-                    <LangVersion>preview</LangVersion>
-                    <NoWarn>$(NoWarn);CS0436</NoWarn>
-                    <Modules>AssetReplace;CagedDomain;EternalResolve;Example;Food;MEAC;Minortopography;Myth;Ocean;Plant;PlantAndFarm;SpellAndSkull;SubSpace;Yggdrasil</Modules>
-                    <DefineConstants>$(DefineConstants);$(Modules)</DefineConstants>
-                    <EnableModBuilder>false</EnableModBuilder>
-                    <EnablePathGenerator>true</EnablePathGenerator>
-                    <CompileEffect>true</CompileEffect>
-                    <NotCopyLocal>true</NotCopyLocal>
-                  </PropertyGroup>
-                  <ItemGroup>
-                    <AdditionalFiles Include="**\*.json" Pack="true" ModPath="%(Identity)" />
-                  </ItemGroup>
-                  <ItemGroup>
-                    <AdditionalFiles Include="**\*.atlas" Pack="true" ModPath="%(Identity)" />
-                  </ItemGroup>
-                  <ItemGroup>
-                    <PackageReference Include="Solaestas.tModLoader.ModBuilder" Version="1.5.11" />
-                    <PackageReference Include="StyleCop.Analyzers.Unstable" Version="1.2.0.556">
-                      <PrivateAssets>all</PrivateAssets>
-                      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-                    </PackageReference>
-                    <Publicize Include="ReLogic" />
-                    <Publicize Include="MonoMod.RuntimeDetour" />
-                    <Publicize Include="MonoMod.Utils" />
-                    <AdditionalFiles Include="**\*.obj;**\*.bmp;**\*.mapio;**\*.ttf" Pack="true" ModPath="%(Identity)" Exclude="bin\**\*;obj\**\*" />
-                    <AdditionalFiles Include="$(MSBuildThisFileFullPath)" Pack="false" Visible="false" />
-                  </ItemGroup>
-                </Project>' > .\Sources\Directory.Build.props
+          Copy-Item -LiteralPath .\.github\workflows\Directory.Build.props -Destination .\Sources\Directory.Build.props -Force
           dotnet restore
 
     - name: Pull TML
       run: |
+          Copy-Item -LiteralPath .\.github\workflows\tModLoader.targets -Destination ..\tModLoader.targets -Force
           cd ..
           mkdir ./tmod
-          touch tModLoader.targets
-
-          echo '<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-              <Import Project=".\tmod\tMLMod.targets" />
-          </Project>' > tModLoader.targets
 
           cd ./tmod
           curl -L -o tModLoader.zip https://github.com/tModLoader/tModLoader/releases/latest/download/tModLoader.zip
@@ -113,7 +75,7 @@ jobs:
         Start-Process msiexec.exe -ArgumentList "/i xnafx40_redist.msi /quiet /norestart" -Wait
 
     - name: Build
-      run: dotnet build /p:Configuration=Release /p:WarningLevel=0
+      run: dotnet build /p:Configuration=Release
       
     - name: Test
-      run: dotnet test --verbosity normal /p:WarningLevel=0
+      run: dotnet test --configuration Release --no-build --no-restore --verbosity normal
