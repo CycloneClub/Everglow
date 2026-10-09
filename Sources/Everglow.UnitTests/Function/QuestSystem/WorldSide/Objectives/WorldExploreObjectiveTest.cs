@@ -14,7 +14,7 @@ public class WorldExploreObjectiveTest
 	private bool _originalDedServ;
 	private int _originalNetMode;
 	private int _originalMyPlayer;
-	private Player _originalLocalPlayer;
+	private Player? _originalLocalPlayer;
 
 	[TestInitialize]
 	public void Initialize()

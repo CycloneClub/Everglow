@@ -14,8 +14,8 @@ public class QuestPresentationSystemTest
 		const BindingFlags NonPublicNested = BindingFlags.NonPublic;
 		var system = new QuestPresentationSystem();
 		var identity = new QuestIdentity(QuestSide.Player, "TestQuest", "instance");
-		Type eventType = typeof(QuestPresentationSystem).GetNestedType("QuestEventType", NonPublicNested);
-		MethodInfo queueEvent = typeof(QuestPresentationSystem).GetMethod("QueueEvent", NonPublicInstance);
+		Type? eventType = typeof(QuestPresentationSystem).GetNestedType("QuestEventType", NonPublicNested);
+		MethodInfo? queueEvent = typeof(QuestPresentationSystem).GetMethod("QueueEvent", NonPublicInstance);
 		Assert.IsNotNull(eventType);
 		Assert.IsNotNull(queueEvent);
 		object statusUpdated = Enum.Parse(eventType, "StatusUpdated");

@@ -12,7 +12,7 @@ public class ExploreObjectiveTest
 {
 	private bool _originalDedServ;
 	private int _originalMyPlayer;
-	private Player _originalLocalPlayer;
+	private Player? _originalLocalPlayer;
 
 	private sealed class StubBiome : IShoppingBiome
 	{

@@ -15,9 +15,9 @@ public class UIQuestObjectiveRetryTest
 	private static readonly FieldInfo UISystemInstanceField = typeof(UISystem).GetField("instance", BindingFlags.Static | BindingFlags.NonPublic)!;
 
 	private bool _originalDedServ;
-	private UISystem _originalUISystem;
-	private QuestContainer _questContainer;
-	private FontManager _fontManager;
+	private UISystem? _originalUISystem;
+	private QuestContainer _questContainer = null!;
+	private FontManager _fontManager = null!;
 
 	[TestInitialize]
 	public void Initialize()

@@ -39,7 +39,7 @@ public class WorldQuestManagerTest
 
 	private sealed class CheckingQuest : WorldQuestBase
 	{
-		public string NameValue { get; init; }
+		public required string NameValue { get; init; }
 
 		public override string Name => NameValue;
 

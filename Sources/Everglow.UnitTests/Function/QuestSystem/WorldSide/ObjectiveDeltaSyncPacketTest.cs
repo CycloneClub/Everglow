@@ -14,9 +14,9 @@ namespace Everglow.UnitTests.Function.QuestSystem;
 public class ObjectiveDeltaSyncPacketTest
 {
 	private int _originalNetMode;
-	private WorldQuestSystem _originalSystem;
-	private IReadOnlyList<WorldQuestSystem> _originalSystems;
-	private WorldQuestManager _manager;
+	private WorldQuestSystem? _originalSystem;
+	private IReadOnlyList<WorldQuestSystem>? _originalSystems;
+	private WorldQuestManager _manager = null!;
 
 	private sealed class TestQuest : WorldQuestBase
 	{
@@ -114,7 +114,7 @@ public class ObjectiveDeltaSyncPacketTest
 		managerProperty.SetValue(system, manager);
 	}
 
-	private static void SetContentInstances(WorldQuestSystem instance, IReadOnlyList<WorldQuestSystem> instances)
+	private static void SetContentInstances(WorldQuestSystem? instance, IReadOnlyList<WorldQuestSystem>? instances)
 	{
 		Type contentInstanceType = typeof(ContentInstance<WorldQuestSystem>);
 		contentInstanceType.GetProperty(nameof(ContentInstance<WorldQuestSystem>.Instance))!

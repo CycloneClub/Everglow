@@ -79,7 +79,7 @@ public partial class WorldQuestViewAdapterTest
 
 		public float ProgressValue { get; set; }
 
-		public QuestIconBase Icon { get; set; }
+		public QuestIconBase? Icon { get; set; }
 
 		public int CheckCompletionCalls { get; private set; }
 
@@ -157,7 +157,8 @@ public partial class WorldQuestViewAdapterTest
 			Name = name;
 		}
 
-		public override Texture2D Texture => null;
+		// Adapter tests never draw this source, so no graphics texture is needed.
+		public override Texture2D Texture => null!;
 
 		public override string Name { get; }
 	}
