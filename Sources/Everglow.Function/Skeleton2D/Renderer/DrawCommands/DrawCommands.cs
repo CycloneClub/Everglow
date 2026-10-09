@@ -11,7 +11,8 @@ public abstract class DrawCommand
 	public abstract void Accept(IDrawCommandVisitor visitor);
 }
 
-public class DrawMesh<T> : DrawCommand where T : struct, IVertexType
+public class DrawMesh<T> : DrawCommand
+	where T : struct, IVertexType
 {
 	public PrimitiveType PrimitiveType { get; }
 
@@ -38,7 +39,8 @@ public class DrawMesh<T> : DrawCommand where T : struct, IVertexType
 	}
 }
 
-public class DrawIndexedMesh<T> : DrawCommand where T : struct, IVertexType
+public class DrawIndexedMesh<T> : DrawCommand
+	where T : struct, IVertexType
 {
 	public PrimitiveType PrimitiveType { get; }
 

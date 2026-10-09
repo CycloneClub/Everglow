@@ -4,7 +4,8 @@ namespace Everglow.Commons.DataStructures;
 /// 优先队列数据结构，使用小根堆实现。Pop，Push复杂度保证O(log n)
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public class PriorityQueue<T> where T : IComparable<T>, new()
+public class PriorityQueue<T>
+	where T : IComparable<T>, new()
 {
 	private readonly List<T> m_heap;
 	private int m_top;

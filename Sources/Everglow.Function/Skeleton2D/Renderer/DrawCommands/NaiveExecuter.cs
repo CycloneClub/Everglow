@@ -15,14 +15,16 @@ public class NaiveExecuter : IDrawCommandExecuter, IDrawCommandVisitor
 	private GraphicsDevice graphicsDevice;
 	private PipelineStateObject pipelineState;
 
-	public void Visit<T>(DrawMesh<T> command) where T : struct, IVertexType
+	public void Visit<T>(DrawMesh<T> command)
+		where T : struct, IVertexType
 	{
 		Main.graphics.graphicsDevice.RasterizerState = command.PipelineStateObject.RasterizerState;
 		graphicsDevice.Textures[0] = command.PipelineStateObject.Texture;
 		this.graphicsDevice.DrawUserPrimitives<T>(command.PrimitiveType, command.Vertices.ToArray(), command.Offset, command.GeometryCount);
 	}
 
-	public void Visit<T>(DrawIndexedMesh<T> command) where T : struct, IVertexType
+	public void Visit<T>(DrawIndexedMesh<T> command)
+		where T : struct, IVertexType
 	{
 		Main.graphics.graphicsDevice.RasterizerState = command.PipelineStateObject.RasterizerState;
 		graphicsDevice.Textures[0] = command.PipelineStateObject.Texture;
