@@ -28,7 +28,7 @@ public class DrinkGlobalItem : GlobalItem
 					Thirsty = false,
 					BuffType = ModContent.BuffType<AleBuff>(),
 					BuffTime = new FoodDuration(0, 10, 0),
-					Name =  "SakeBuff",
+					Name = "SakeBuff",
 				}
 			},
 			// 苹果汁
@@ -39,7 +39,7 @@ public class DrinkGlobalItem : GlobalItem
 					Thirsty = false,
 					BuffType = ModContent.BuffType<AppleJuiceBuff>(),
 					BuffTime = new FoodDuration(0, 10, 0),
-					Name =  "AppleJuiceBuff",
+					Name = "AppleJuiceBuff",
 				}
 			},
 			// 冰冻香蕉代基里
