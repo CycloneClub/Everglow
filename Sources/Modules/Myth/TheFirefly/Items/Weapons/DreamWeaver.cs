@@ -8,7 +8,6 @@ public class DreamWeaver : SpellTomeItem// TODO:织梦丝雨
 {
 	public override void SetDefaults()
 	{
-
 		Item.damage = 13;
 		Item.DamageType = DamageClass.Magic;
 		Item.mana = 4;

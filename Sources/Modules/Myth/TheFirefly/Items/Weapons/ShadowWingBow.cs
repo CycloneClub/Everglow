@@ -16,7 +16,6 @@ public class ShadowWingBow : ModItem
 
 	public override void SetDefaults()
 	{
-
 		Item.width = 46;
 		Item.height = 82;
 		Item.rare = ItemRarityID.Green;

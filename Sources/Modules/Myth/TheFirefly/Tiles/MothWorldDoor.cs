@@ -128,7 +128,6 @@ public class DrawMagicArraySystem : ModSystem
 	public static Vector2 ArrayPosition = Vector2.zeroVector;
 	public static void DrawMagicArray()
 	{
-
 		if (ArrayPosition == Vector2.zeroVector)
 		{
 			return;

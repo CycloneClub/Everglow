@@ -85,7 +85,6 @@ public class LilyHarpNoteKill : ModProjectile// , IWarpProjectile
 	}
 	public void DrawWarp(VFXBatch spriteBatch)
 	{
-
 		float value = (200 - Projectile.timeLeft) / (float)Projectile.timeLeft * 1.4f;
 
 		if (value < 1)

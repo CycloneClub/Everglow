@@ -35,7 +35,6 @@ public class DustOfCorrupt : ModItem
 	private Projectile staff = null;
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-
 		if (player.ownedProjectileCounts[ModContent.ProjectileType<Projectiles.StaffOfCorruptDust>()] < 1)
 		{
 			staff = Projectile.NewProjectileDirect(source, position + Vector2.Normalize(velocity) * 48, velocity, ModContent.ProjectileType<Projectiles.StaffOfCorruptDust>(), 0, knockback, player.whoAmI);

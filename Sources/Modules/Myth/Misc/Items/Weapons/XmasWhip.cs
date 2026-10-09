@@ -6,7 +6,6 @@ public class XmasWhip : ModItem
 
 	public override void SetDefaults()
 	{
-
 		DefaultToWhip(ModContent.ProjectileType<Projectiles.Weapon.Summon.XmasWhip>(), 348, 2f, 5.4f, 30);
 		Item.rare = ItemRarityID.Purple;
 		Item.damage = 308;

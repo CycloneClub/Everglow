@@ -188,7 +188,6 @@ public class ThunderBall : ModProjectile
 	{
 		if (!Nul)
 		{
-
 			if (Projectile.timeLeft > 60f)
 				return new Color?(new Color(255, 255, 255, 0));
 			else

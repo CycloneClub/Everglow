@@ -17,7 +17,6 @@ public class DarknessFan : ModItem
 	private FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
 	public override void SetDefaults()
 	{
-
 		Item.damage = 9;
 		Item.DamageType = DamageClass.Summon;
 		Item.mana = 12;

@@ -6,7 +6,6 @@ public class MeteorClub_Item : ClubItem
 {
 	public override void SetCustomDefaults()
 	{
-
 		Item.damage = 16;
 		Item.value = 576;
 		Item.rare = ItemRarityID.Blue;

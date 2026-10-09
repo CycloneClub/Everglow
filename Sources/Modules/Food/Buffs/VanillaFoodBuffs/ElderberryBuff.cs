@@ -98,7 +98,6 @@ public class ElderberryBuffDash : ModPlayer
 
 		if (DashTimer > 0)
 		{
-
 			Player.eocDash = DashTimer;
 			Player.armorEffectDrawShadowEOCShield = true;
 

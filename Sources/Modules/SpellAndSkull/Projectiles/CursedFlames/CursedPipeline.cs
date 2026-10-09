@@ -4,7 +4,6 @@ namespace Everglow.SpellAndSkull.Projectiles.CursedFlames;
 
 internal class CursedPipeline : PostPipeline
 {
-
 	public override void Render(RenderTarget2D rt2D)
 	{
 		var sb = Main.spriteBatch;

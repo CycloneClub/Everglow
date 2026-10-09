@@ -12,7 +12,6 @@ public class GoldenDelightBuff : ModBuff
 
 	public override void Update(Player player, ref int buffIndex)
 	{
-
 		FoodBuffModPlayer FoodBuffModPlayer = player.GetModPlayer<FoodBuffModPlayer>();
 		FoodBuffModPlayer.GoldenDelightBuff = true;
 		player.statDefense += 4; // 加3防御

@@ -43,7 +43,6 @@ public class GlowingButterfly : ModProjectile
 		Player owner = Main.player[Projectile.owner];
 		if (MothEye.LocalOwner != null && MothEye.LocalOwner.TryGetModPlayer(out MothEyePlayer mothEyePlayer))
 		{
-
 			if (mothEyePlayer.MothEyeEquipped && fireflyBiome.IsBiomeActive(Main.LocalPlayer) && Main.hardMode)
 			{
 				if (useStyle == 0)

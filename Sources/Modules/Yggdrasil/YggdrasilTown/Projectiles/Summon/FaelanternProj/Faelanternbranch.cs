@@ -65,7 +65,6 @@ public class Faelanternbranch : ModProjectile
 
 	public override void AI()
 	{
-
 		Projectile.velocity = Vector2.zeroVector;
 		var size = new Vector2(Projectile.width * direction, Projectile.height);
 		if (Projectile.timeLeft < 40 && Projectile.timeLeft > 35)
@@ -113,7 +112,6 @@ public class Faelanternbranch : ModProjectile
 		Main.spriteBatch.Draw(ModAsset.Faelanternbranchpit.Value, pos + (direction == 1 ? size : new Vector2(size.X, size.Y)), new Rectangle(0, 0, Projectile.width, Projectile.height), lightColor * factor, 0f, size, 1f, direction == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
 		if (Projectile.timeLeft < 35f)
 		{
-
 			float scale = MathHelper.Clamp((35 - Projectile.timeLeft) / 5f, 0, 1);
 
 			Main.spriteBatch.Draw(ModAsset.Faelanternbranch.Value, pos + (direction == 1 ? size : new Vector2(size.X * scale, size.Y)), new Rectangle(0, 0, Projectile.width, Projectile.height), lightColor, 0f, size, scale, direction == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
@@ -124,7 +122,6 @@ public class Faelanternbranch : ModProjectile
 
 	public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 	{
-
 		var size = new Vector2(Projectile.width, Projectile.height);
 		float point = 0;
 		Vector2 p1 = direction == 1 ? Projectile.position + size : Projectile.position + new Vector2(0, size.Y);

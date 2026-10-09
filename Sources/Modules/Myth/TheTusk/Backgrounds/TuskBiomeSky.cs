@@ -137,7 +137,6 @@ public class TuskBiomeSky : CustomSky
 
 	private void CreateAndDrawRocks(Vector3 cloudCenter)
 	{
-
 		if (Main.rand.NextBool(45) && !Main.gamePaused)
 		{
 			Vector3 pos = cloudCenter + new Vector3(Main.rand.Next(-500, 500), +3000, Main.rand.Next(-500, 500));
@@ -279,7 +278,6 @@ public class TuskBiomeSky : CustomSky
 
 		for (int i = 3; i < 10; i++)
 		{
-
 			#region decide values
 			if (i == 1)
 			{

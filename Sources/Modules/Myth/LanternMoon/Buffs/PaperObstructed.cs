@@ -50,7 +50,6 @@ public class PaperObstructedDrawLayer : PlayerDrawLayer
 	}
 	public override void Draw(ref PlayerDrawSet drawInfo)
 	{
-
 		Texture2D Texture = ModAsset.LittleRedPaperFigure.Value;
 		Vector2 position = drawInfo.Center + new Vector2(0f, -10f) - Main.screenPosition;
 		position = new Vector2((int)position.X, (int)position.Y);

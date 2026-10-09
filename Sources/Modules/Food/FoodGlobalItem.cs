@@ -634,7 +634,6 @@ public class FoodGlobalItem : GlobalItem
 	{
 		if (m_vanillaFoodInfos.ContainsKey(item.type) /*|| (item.ModItem is FoodBase)*/)
 		{
-
 			int firstIndex = -1;
 			firstIndex = tooltips.FindIndex((tpline) =>
 			{

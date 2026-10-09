@@ -350,7 +350,6 @@ internal class LilyHarpProj : ModProjectile// , IWarpProjectile
 	}
 	public void DrawWarp(VFXBatch spriteBatch)
 	{
-
 		Player player = Main.player[Projectile.owner];
 		float value = (player.itemTimeMax - player.itemTime) / (float)player.itemTimeMax * 1.4f;
 		value -= 0.02f;

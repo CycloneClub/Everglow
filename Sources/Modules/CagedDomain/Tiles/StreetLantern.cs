@@ -97,7 +97,6 @@ public class StreetLantern : ModTile, ITileFluentlyDrawn
 		}
 		else
 		{
-
 			DrawLanternPiece(new Rectangle(108, 2 + frameYAdd, 32, 28), 0.06f, offX + offXofLantern, 8, pos + new Point(0, 1), pos + new Point(0, 1), drawCenterPos, spriteBatch, tileDrawing);
 			DrawLanternPiece(new Rectangle(108, 122 + frameYAdd, 32, 28), 0.06f, offX + offXofLantern, 8, pos + new Point(0, 1), pos + new Point(0, 1), drawCenterPos, spriteBatch, tileDrawing);
 			DrawLanternPiece(new Rectangle(108, 176 + frameYAdd, 32, 28), 0.06f, offX + offXofLantern, 10, pos + new Point(0, 1), pos + new Point(0, 1), drawCenterPos, spriteBatch, tileDrawing, new Color(1f, 1f, 1f, 0));

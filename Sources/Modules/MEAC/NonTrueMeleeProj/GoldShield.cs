@@ -424,13 +424,10 @@ public class GoldShieldUIDrawer : ModSystem
 	}
 	public void ShieldBarDraw(SpriteBatch spriteBatch)
 	{
-
 		Player p = Main.LocalPlayer;
 
 		if (p.GetModPlayer<GoldShieldPlayer>().HasShield)
 		{
-
-
 			if (Main.ResourceSetsManager.ActiveSet.DisplayedName == Language.GetTextValue("UI.HealthManaStyle_Default"))
 			{
 				p.GetModPlayer<GoldShieldPlayer>().ClassicDraw();
@@ -460,7 +457,6 @@ public class GoldShieldUIDrawer : ModSystem
 
 	public class GoldShieldPlayer : ModPlayer
 	{
-
 		public float GoldShieldDurability;
 		public bool Dodge;
 		public bool HasShield;
@@ -513,7 +509,6 @@ public class GoldShieldUIDrawer : ModSystem
 			{
 				if (HasShield)
 				{
-
 					GoldShieldDurability = (int)proj.ai[1];
 					if (GoldShieldDurability >= info.Damage)
 					{
@@ -570,8 +565,6 @@ public class GoldShieldUIDrawer : ModSystem
 
 		public void ClassicDraw()
 		{
-
-
 			SpriteBatch spriteBatch = Main.spriteBatch;
 			Color color = new Color(Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor);
 			PlayerStatsSnapshot snapshot = new PlayerStatsSnapshot(Player);
@@ -699,7 +692,6 @@ public class GoldShieldUIDrawer : ModSystem
 
 		public void FancyDraw(FancyClassicPlayerResourcesDisplaySet Displayset)
 		{
-
 			SpriteBatch spriteBatch = Main.spriteBatch;
 			PlayerStatsSnapshot playerStatsSnapshot = new PlayerStatsSnapshot(Player);
 			int MaxGoldShieldDurability;
@@ -776,8 +768,6 @@ public class GoldShieldUIDrawer : ModSystem
 
 		private void HeartFillingDrawer(int elementIndex, int firstElementIndex, int lastElementIndex, out Asset<Texture2D> sprite, out Vector2 offset, out float drawScale, out Rectangle? sourceRect)
 		{
-
-
 			sourceRect = null;
 			offset = Vector2.Zero;
 			sprite = ModAsset.ShieldHeart;
@@ -815,8 +805,6 @@ public class GoldShieldUIDrawer : ModSystem
 		#region HorizontalDraw
 		public void HorizontalDraw(HorizontalBarsPlayerResourcesDisplaySet Displayset)
 		{
-
-
 			Asset<Texture2D> _panelMiddleHP = Main.Assets.Request<Texture2D>("Images\\UI\\PlayerResourceSets\\HorizontalBars\\HP_Panel_Middle", AssetRequestMode.ImmediateLoad);
 
 

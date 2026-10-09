@@ -863,7 +863,6 @@ public class Acytaea_yggdrasil : ModNPC
 		}
 		if (Phase == 2)
 		{
-
 			switch (Main.rand.Next(6))
 			{
 				case 0:

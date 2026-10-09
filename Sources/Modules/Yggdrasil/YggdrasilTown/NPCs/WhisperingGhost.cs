@@ -16,7 +16,6 @@ public class WhisperingGhost : ModNPC
 	}
 	public override void SetDefaults()
 	{
-
 		NPC.width = 40;
 		NPC.height = 40;
 		NPC.lifeMax = 40;

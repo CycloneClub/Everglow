@@ -65,7 +65,6 @@ internal class YellowFlame0Little : ModProjectile
 	private int TrueL = 1;
 	public override void PostDraw(Color lightColor)
 	{
-
 		var texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
 		Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, new Color(color0.R, color0.G, color0.B, 0), Projectile.rotation, new Vector2(17, 17), Projectile.scale * 1.2f, SpriteEffects.None, 0);
 		Main.spriteBatch.Draw(ModContent.Request<Texture2D>("Everglow/Myth/LanternMoon/Projectiles/DashCore/DashCoreLight").Value, Projectile.Center - Main.screenPosition, null, new Color(color0.R / 155f * kb, color0.G / 155f * kb, color0.B / 155f * kb, 0), Projectile.rotation, new Vector2(56, 56), Projectile.scale * 1f, SpriteEffects.None, 0);

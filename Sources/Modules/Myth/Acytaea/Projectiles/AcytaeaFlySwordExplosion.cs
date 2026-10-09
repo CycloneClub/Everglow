@@ -84,7 +84,6 @@ public class AcytaeaFlySwordExplosion : ModProjectile, IWarpProjectile
 		c0.R = 0;
 		for (int h = 0; h < radius / 2; h += 1)
 		{
-
 			c0.R = (byte)(h / radius * 2 * 255);
 			circle.Add(new Vertex2D(center + new Vector2(0, Math.Max(radius - width, 0)).RotatedBy(h / radius * Math.PI * 4 + addRot), c0, new Vector3(h * 2 / radius, 1, 0)));
 			circle.Add(new Vertex2D(center + new Vector2(0, radius).RotatedBy(h / radius * Math.PI * 4 + addRot), c0, new Vector3(h * 2 / radius, 0, 0)));

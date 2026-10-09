@@ -103,7 +103,6 @@ internal class BlackHole : ModProjectile
 					float dis = ToTarget.Length();
 					if (dis < MinDis && ToTarget != Vector2.Zero)
 					{
-
 						float mess = target.width * target.height;
 						mess = (float)Math.Sqrt(mess);
 						Vector2 Addvel = Vector2.Normalize(ToTarget) / mess / (dis + 10) * 40000f * (target.knockBackResist + 0.3f) * Projectile.ai[0];
@@ -225,7 +224,6 @@ internal class BlackHole : ModProjectile
 	}
 	public static void DrawRing(Projectile Projectile, bool front = false)// 分前后两段(由front参数决定)绘制环
 	{
-
 		var c = new Color(0.2f, 0.7f, 1f); // 环的颜色
 
 		float time = (float)Main.timeForVisualEffects * 0.02f;
