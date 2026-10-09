@@ -12,6 +12,7 @@ public class PineWood : ModTile
 		HitSound = SoundID.Dig;
 		AddMapEntry(new Color(60, 45, 39));
 	}
+
 	public override IEnumerable<Item> GetItemDrops(int i, int j)
 	{
 		yield break;

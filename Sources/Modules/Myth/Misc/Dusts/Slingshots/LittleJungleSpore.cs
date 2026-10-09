@@ -9,6 +9,7 @@ public class LittleJungleSpore : ModDust
 		dust.rotation = 0;
 		dust.color.R = (byte)Main.rand.Next(2);
 	}
+
 	public override bool Update(Dust dust)
 	{
 		dust.position += dust.velocity;
@@ -49,6 +50,7 @@ public class LittleJungleSpore : ModDust
 
 		return false;
 	}
+
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		return new Color?(new Color(255, 255, 255, 0f));

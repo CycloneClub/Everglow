@@ -9,6 +9,7 @@ public class AcytaeaLaserSwordHDRPipeline : Pipeline
 	{
 		effect = ModAsset.Acytaea_None;
 	}
+
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
@@ -27,11 +28,13 @@ public class AcytaeaLaserSwordHDRPipeline : Pipeline
 		Ins.Batch.End();
 	}
 }
+
 public class AcytaeaLaserSwordHDRPipeline2 : PostPipeline
 {
 	private RenderTarget2D acytaeaLaserSwordHDRScreen;
 	private RenderTarget2D acytaeaLaserSwordHDRScreenSwap;
 	private float UnstableValue = 0.125f;
+
 	private static int ScreenWidth => Main.screenWidth;
 
 	private static int ScreenHeight => Main.screenHeight;
@@ -86,19 +89,24 @@ public class AcytaeaLaserSwordHDRPipeline2 : PostPipeline
 		sb.End();
 	}
 }
+
 [Pipeline(typeof(AcytaeaLaserSwordHDRPipeline), typeof(AcytaeaLaserSwordHDRPipeline2))]
 public class AcytaeaLaserSwordHDREffect : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PreDrawFilter;
+
 	public float timer;
 	public float maxTime;
 	public NPC owner;
+
 	public AcytaeaLaserSwordHDREffect() { }
+
 	public AcytaeaLaserSwordHDREffect(int maxTime, NPC owner)
 	{
 		this.maxTime = maxTime;
 		this.owner = owner;
 	}
+
 	public override void Update()
 	{
 		timer++;

@@ -15,8 +15,11 @@ namespace Everglow.SpellAndSkull.GlobalItems;
 public class MagicBooksReplace : GlobalItem
 {
 	private static string SpellbookExtra = "Mods.Everglow.ExtraTooltip.Spellbook.";
+
 	private static string SpellbookGTV(string key) => Language.GetTextValue(SpellbookExtra + key);
+
 	public static List<int> MagicBookType = new List<int>();
+
 	public override void SetDefaults(Item entity)
 	{
 		AddContentsToMagicBookList(ItemID.WaterBolt);
@@ -30,6 +33,7 @@ public class MagicBooksReplace : GlobalItem
 		AddContentsToMagicBookList(ItemID.LunarFlareBook);
 		base.SetDefaults(entity);
 	}
+
 	public void AddContentsToMagicBookList(int type)
 	{
 		if (!MagicBookType.Contains(type))
@@ -37,6 +41,7 @@ public class MagicBooksReplace : GlobalItem
 			MagicBookType.Add(type);
 		}
 	}
+
 	public override bool PreDrawTooltipLine(Item item, DrawableTooltipLine line, ref int yOffset)
 	{
 		if (Main.LocalPlayer.TryGetModPlayer(out MagicBookPlayer modplayer))
@@ -101,6 +106,7 @@ public class MagicBooksReplace : GlobalItem
 			}
 		}
 	}
+
 	internal void CheckItemIsSpellOrNot(Item item, Player player)
 	{
 		if (player.GetModPlayer<MagicBookPlayer>().MagicBookLevel == 0)
@@ -134,6 +140,7 @@ public class MagicBooksReplace : GlobalItem
 			}
 		}
 	}
+
 	internal void CheckItemIsModSpell(Item item, Player player)
 	{
 		if (item.ModItem is SpellTomeItem)
@@ -152,6 +159,7 @@ public class MagicBooksReplace : GlobalItem
 			}
 		}
 	}
+
 	public override bool? UseItem(Item item, Player player)
 	{
 		CheckItemIsSpellOrNot(item, player);

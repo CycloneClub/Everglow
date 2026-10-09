@@ -1,6 +1,7 @@
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.Utilities;
+
 namespace Everglow.Commons.TileHelper;
 
 public class ShakeTreeTweak
@@ -17,6 +18,7 @@ public class ShakeTreeTweak
 			}
 			return base.CanUseItem(player);
 		}
+
 		public override bool? UseItem(Player player)
 		{
 			return base.UseItem(player);
@@ -97,6 +99,7 @@ public class ShakeTreeTweak
 			}
 		};
 	}
+
 	public static int GetShakeTreeFruit(TreeTypes treeType)
 	{
 		switch (treeType)

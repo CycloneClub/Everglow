@@ -1,6 +1,7 @@
 using Everglow.Commons.MEAC;
 using Everglow.Commons.VFX;
 using static Everglow.SpellAndSkull.Common.SpellAndSkullUtils;
+
 namespace Everglow.SpellAndSkull.Projectiles.WaterBolt;
 
 public class WaterBoltArray : ModProjectile, IWarpProjectile
@@ -16,10 +17,12 @@ public class WaterBoltArray : ModProjectile, IWarpProjectile
 		Projectile.DamageType = DamageClass.Summon;
 		Projectile.tileCollide = false;
 	}
+
 	public override bool? CanCutTiles()
 	{
 		return false;
 	}
+
 	public override void AI()
 	{
 		Player player = Main.player[Projectile.owner];

@@ -15,16 +15,20 @@ internal class KSSlingshotHitPink : ModProjectile
 		Projectile.tileCollide = false;
 		Projectile.extraUpdates = 8;
 	}
+
 	public override void AI()
 	{
 		Projectile.velocity *= 0;
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;
 	}
+
 	private Effect ef;
 	private float radius = 0;
+
 	public override void PostDraw(Color lightColor)
 	{
 		Main.spriteBatch.End();

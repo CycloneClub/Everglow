@@ -8,10 +8,13 @@ namespace Everglow.SpellAndSkull.Projectiles.MagnetSphere;
 internal abstract class ShaderDraw : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
+
 	public Vector2 position;
 	public Vector2 velocity;
 	public float[] ai;
+
 	public ShaderDraw() { }
+
 	public ShaderDraw(Vector2 position, Vector2 velocity, params float[] ai)
 	{
 		this.position = position;
@@ -27,6 +30,7 @@ internal class MagneticElectricityPipeline : Pipeline
 		effect = ModAsset.CursedFlame;
 		effect.Value.Parameters["uNoise"].SetValue(ModAsset.Perlin.Value);
 	}
+
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
@@ -45,13 +49,16 @@ internal class MagneticElectricityPipeline : Pipeline
 		Ins.Batch.End();
 	}
 }
+
 [Pipeline(typeof(MagneticElectricityPipeline), typeof(BloomPipeline))]
 internal class MagneticElectricity : ShaderDraw
 {
 	public List<Vector2> oldPos = new List<Vector2>();
 	public float timer;
 	public float maxTime;
+
 	public MagneticElectricity() { }
+
 	public MagneticElectricity(int maxTime, Vector2 position, Vector2 velocity, params float[] ai) : base(position, velocity, ai)
 	{
 		this.maxTime = maxTime;
@@ -131,5 +138,6 @@ internal class MagneticElectricity : ShaderDraw
 		bars[0] = new Vertex2D((bars[1].position + bars[2].position) * 0.5f, Color.White, new Vector3(0.5f, 0, 0));
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);
 	}
+
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
 }

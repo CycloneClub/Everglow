@@ -21,13 +21,16 @@ public class BlackVine : ModTile
 		AddMapEntry(new Color(11, 11, 11), modTranslation);
 		HitSound = SoundID.Grass;
 	}
+
 	public override void PlaceInWorld(int i, int j, Item item)
 	{
 	}
+
 	public override IEnumerable<Item> GetItemDrops(int i, int j)
 	{
 		yield break;
 	}
+
 	public override void RandomUpdate(int i, int j)
 	{
 		int deltaY = 0;
@@ -62,6 +65,7 @@ public class BlackVine : ModTile
 		}
 		base.RandomUpdate(i, j);
 	}
+
 	public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
 	{
 		base.KillTile(i, j, ref fail, ref effectOnly, ref noItem);

@@ -12,10 +12,12 @@ public class XmasWhip : WhipProjectile
 		WhipLength = 420;
 		DustType = ModContent.DustType<PinePin>();
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return base.PreDraw(ref lightColor);
 	}
+
 	public override void DrawWhip(float foreStep = 0)
 	{
 		var list = new List<Vector2>();
@@ -81,6 +83,7 @@ public class XmasWhip : WhipProjectile
 			}
 		}
 	}
+
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		if (Projectile.ai[1] == 0)
@@ -104,6 +107,7 @@ public class XmasWhip : WhipProjectile
 			}
 		}
 	}
+
 	public override void GenerateDusts()
 	{
 		if (WhipPointsForCollision.Count > 10)

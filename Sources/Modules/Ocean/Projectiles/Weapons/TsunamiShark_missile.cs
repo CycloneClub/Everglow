@@ -10,7 +10,9 @@ namespace Everglow.Ocean.Projectiles.Weapons;
 public class TsunamiShark_missile : ModProjectile
 {
 	private CoroutineManager _coroutineManager = new CoroutineManager();
+
 	public override string Texture => "Everglow/Ocean/Projectiles/Weapons/TsunamiShark/TsunamiShark_missile";
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 10;
@@ -28,11 +30,14 @@ public class TsunamiShark_missile : ModProjectile
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30;
 	}
+
 	internal int TimeTokill = -1;
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		_coroutineManager.StartCoroutine(new Coroutine(Task()));
 	}
+
 	public override void AI()
 	{
 		_coroutineManager.Update();
@@ -57,6 +62,7 @@ public class TsunamiShark_missile : ModProjectile
 			Projectile.velocity *= 0f;
 		}
 	}
+
 	private IEnumerator<ICoroutineInstruction> Task()
 	{
 		_coroutineManager.StartCoroutine(new Coroutine(Chase()));
@@ -65,6 +71,7 @@ public class TsunamiShark_missile : ModProjectile
 		_coroutineManager.StartCoroutine(new Coroutine(GenerateDust()));
 		yield return new WaitForFrames(5);
 	}
+
 	private IEnumerator<ICoroutineInstruction> DecreasingSpeed()
 	{
 		for (int x = 0; x < 60; x++)
@@ -73,6 +80,7 @@ public class TsunamiShark_missile : ModProjectile
 			yield return new SkipThisFrame();
 		}
 	}
+
 	private IEnumerator<ICoroutineInstruction> Rotation()
 	{
 		while (true)
@@ -81,6 +89,7 @@ public class TsunamiShark_missile : ModProjectile
 			yield return new SkipThisFrame();
 		}
 	}
+
 	private IEnumerator<ICoroutineInstruction> GenerateDust()
 	{
 		while (true)
@@ -94,8 +103,10 @@ public class TsunamiShark_missile : ModProjectile
 			yield return new SkipThisFrame();
 		}
 	}
+
 	private float maxVel = 0f;
 	private NPC OldTarget = null;
+
 	private IEnumerator<ICoroutineInstruction> Chase()
 	{
 		while (true)
@@ -175,10 +186,12 @@ public class TsunamiShark_missile : ModProjectile
 		AmmoHit();
 		return false;
 	}
+
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		AmmoHit();
 	}
+
 	public virtual void AmmoHit()
 	{
 		TimeTokill = 30;
@@ -190,6 +203,7 @@ public class TsunamiShark_missile : ModProjectile
 		Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<TsunamiShark_missile_hit>(), Projectile.damage / 7, Projectile.knockBack);
 		SoundEngine.PlaySound(new SoundStyle("Everglow/Ocean/Sounds/WaterMissile" + Main.rand.Next(2)).WithVolumeScale(0.8f), Projectile.Center);
 	}
+
 	public void GenerateVFXKill(int Frequency)
 	{
 		float mulVelocity = 4.5f;
@@ -223,10 +237,12 @@ public class TsunamiShark_missile : ModProjectile
 			Ins.VFXManager.Add(wave);
 		}
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
 		DrawWaterDarkTrail();
@@ -238,6 +254,7 @@ public class TsunamiShark_missile : ModProjectile
 			Main.spriteBatch.Draw(shark, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, shark.Size() / 2f, 1f, SpriteEffects.None, 0);
 		}
 	}
+
 	public void DrawWaterDarkTrail()
 	{
 		var bars = new List<Vertex2D>();
@@ -286,6 +303,7 @@ public class TsunamiShark_missile : ModProjectile
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 	}
+
 	public void DrawWaterTrail()
 	{
 		var bars = new List<Vertex2D>();
@@ -334,6 +352,7 @@ public class TsunamiShark_missile : ModProjectile
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 	}
+
 	public void DrawSprayTrail()
 	{
 		var color = new Color(255, 255, 255, 0);

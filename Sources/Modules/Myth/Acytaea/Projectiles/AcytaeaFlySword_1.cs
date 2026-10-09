@@ -7,6 +7,7 @@ namespace Everglow.Myth.Acytaea.Projectiles;
 public class AcytaeaFlySword_1 : ModProjectile
 {
 	public override string Texture => "Everglow/Myth/Acytaea/Projectiles/AcytaeaSword_projectile";
+
 	public override void SetDefaults()
 	{
 		Projectile.aiStyle = -1;
@@ -25,8 +26,10 @@ public class AcytaeaFlySword_1 : ModProjectile
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30;
 	}
+
 	public int TimeTokill = -1;
 	public Vector2 Aim = Vector2.Zero;
+
 	public override void AI()
 	{
 		if (TimeTokill >= 0 && TimeTokill <= 2)
@@ -87,12 +90,14 @@ public class AcytaeaFlySword_1 : ModProjectile
 			}
 		}
 	}
+
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
 		AmmoHit();
 		Projectile.tileCollide = false;
 		return false;
 	}
+
 	public void AmmoHit()
 	{
 		SoundEngine.PlaySound(SoundID.DD2_GoblinBomb.WithPitchOffset(-1), Projectile.Center);
@@ -142,16 +147,19 @@ public class AcytaeaFlySword_1 : ModProjectile
 		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<AcytaeaFlySwordExplosion>(), Projectile.damage, Projectile.knockBack, player.whoAmI, 14);
 		Projectile.position -= Projectile.velocity;
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;
 	}
+
 	public override void OnHitPlayer(Player target, Player.HurtInfo info)
 	{
 		AmmoHit();
 		target.AddBuff(ModContent.BuffType<AcytaeaInferno>(), 450);
 		base.OnHitPlayer(target, info);
 	}
+
 	public void DrawTrail(Texture2D tex, Color color, float width = 36)
 	{
 		var c0 = color;
@@ -215,9 +223,11 @@ public class AcytaeaFlySword_1 : ModProjectile
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 	}
+
 	private void CheckFrame()
 	{
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
 		Main.spriteBatch.End();

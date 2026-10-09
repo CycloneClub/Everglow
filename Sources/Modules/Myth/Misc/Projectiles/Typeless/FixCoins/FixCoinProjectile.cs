@@ -12,17 +12,21 @@ public abstract class FixCoinProjectile : ModProjectile
 	{
 		return "";
 	}
+
 	public virtual int PrefixID()
 	{
 		return 0;
 	}
+
 	public virtual int Level()
 	{
 		return 1;
 	}
+
 	internal float LightColorI = 0;
 	internal float LightColorII = 0;
 	internal Vector2[] IniV = new Vector2[5];
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 28;
@@ -32,6 +36,7 @@ public abstract class FixCoinProjectile : ModProjectile
 		Projectile.tileCollide = false;
 		Projectile.timeLeft = 150;
 	}
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		for (int i = 0; i < 5; i++)
@@ -42,6 +47,7 @@ public abstract class FixCoinProjectile : ModProjectile
 			}
 		}
 	}
+
 	public override void AI()
 	{
 		Projectile.rotation = 0;
@@ -61,6 +67,7 @@ public abstract class FixCoinProjectile : ModProjectile
 		}
 		LightColorI += 1 / 150f;
 	}
+
 	public override void OnKill(int timeLeft)
 	{
 		SoundEngine.PlaySound(SoundID.DD2_WitherBeastCrystalImpact, Projectile.Center);
@@ -165,6 +172,7 @@ public abstract class FixCoinProjectile : ModProjectile
 		Item.NewItem(null, Projectile.Center, ModContent.ItemType<Misc.FixCoins.FixCoinCrit1>());
 		CombatText.NewText(new Rectangle((int)player.Center.X - 10, (int)player.Center.Y - 10, 20, 20), Color.LightGray, tex3);
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
 		var ColorVec = new Vector4(0.03f, 0.03f, 0.03f, 1);

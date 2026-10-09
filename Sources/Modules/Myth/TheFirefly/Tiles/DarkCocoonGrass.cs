@@ -24,6 +24,7 @@ public class DarkCocoonGrass : ModTile
 		AddMapEntry(new Color(11, 11, 160), modTranslation);
 		HitSound = SoundID.Grass;
 	}
+
 	public override void RandomUpdate(int i, int j)
 	{
 		Tile tile = Main.tile[i, j];
@@ -33,6 +34,7 @@ public class DarkCocoonGrass : ModTile
 		}
 		base.RandomUpdate(i, j);
 	}
+
 	public override void PlaceInWorld(int i, int j, Item item)
 	{
 		Tile tile = Main.tile[i, j];
@@ -40,10 +42,12 @@ public class DarkCocoonGrass : ModTile
 		tile.TileFrameX = frameXStyle;
 		base.PlaceInWorld(i, j, item);
 	}
+
 	public override IEnumerable<Item> GetItemDrops(int i, int j)
 	{
 		yield break;
 	}
+
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		return true;

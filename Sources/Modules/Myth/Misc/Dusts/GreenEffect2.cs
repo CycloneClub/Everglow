@@ -9,6 +9,7 @@ public class GreenEffect2 : ModDust
 		dust.noLight = true;
 		dust.alpha = 0;
 	}
+
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		if (Main.rand.Next(100) > 2)
@@ -20,6 +21,7 @@ public class GreenEffect2 : ModDust
 			return new Color?(new Color(1f, 1f, 1f, 0));
 		}
 	}
+
 	public override bool Update(Dust dust)
 	{
 		dust.position += dust.velocity;

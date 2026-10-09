@@ -24,6 +24,7 @@ public class OsmoticPressureMonitor : ModItem
 		ThirstystateInfoDisplayplayer ThirstystateInfo = player.GetModPlayer<ThirstystateInfoDisplayplayer>();
 		ThirstystateInfo.AccOsmoticPressureMonitor = true;
 	}
+
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
 		ThirstystateInfoDisplayplayer ThirstystateInfo = player.GetModPlayer<ThirstystateInfoDisplayplayer>();

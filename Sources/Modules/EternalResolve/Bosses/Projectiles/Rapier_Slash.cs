@@ -10,11 +10,14 @@ namespace Everglow.EternalResolve.Bosses.Projectiles
 			Projectile.scale = 2;
 			alpha = 0;
 		}
+
 		private float alpha = 0;
+
 		public override bool? CanDamage()
 		{
 			return false;
 		}
+
 		public override void AI()
 		{
 			if (Projectile.timeLeft > 60)
@@ -37,6 +40,7 @@ namespace Everglow.EternalResolve.Bosses.Projectiles
 				}
 			}
 		}
+
 		public override bool PreDraw(ref Color lightColor)
 		{
 			Texture2D tex = Terraria.GameContent.TextureAssets.Projectile[Type].Value;

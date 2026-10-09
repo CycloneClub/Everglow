@@ -3,10 +3,13 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee.PrimordialJadeWinged_Spear
 internal abstract class ShaderDraw : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
+
 	public Vector2 position;
 	public Vector2 velocity;
 	public float[] ai;
+
 	public ShaderDraw() { }
+
 	public ShaderDraw(Vector2 position, Vector2 velocity, params float[] ai)
 	{
 		this.position = position;
@@ -21,6 +24,7 @@ internal class FilthyLucreFlamePipeline : Pipeline
 	{
 		effect = ModAsset.FilthyLucreFlame;
 	}
+
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
@@ -41,12 +45,14 @@ internal class FilthyLucreFlamePipeline : Pipeline
 		Ins.Batch.End();
 	}
 }
+
 internal class FilthyLucreFlame_darkPipeline : Pipeline
 {
 	public override void Load()
 	{
 		effect = ModAsset.FilthyLucreFlame_dark;
 	}
+
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
@@ -67,6 +73,7 @@ internal class FilthyLucreFlame_darkPipeline : Pipeline
 		Ins.Batch.End();
 	}
 }
+
 [Pipeline(typeof(FilthyLucreFlamePipeline), typeof(BloomPipeline))]
 internal class FilthyLucreFlameDust : ShaderDraw
 {
@@ -74,7 +81,9 @@ internal class FilthyLucreFlameDust : ShaderDraw
 	public List<Vector2> oldPos = new List<Vector2>();
 	public float timer;
 	public float maxTime;
+
 	public FilthyLucreFlameDust() { }
+
 	public FilthyLucreFlameDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai) : base(position, velocity, ai)
 	{
 		this.maxTime = maxTime;
@@ -108,6 +117,7 @@ internal class FilthyLucreFlameDust : ShaderDraw
 		float delC = ai[2] * 0.05f * (float)Math.Sin((maxTime - timer) / 40d * Math.PI);
 		Lighting.AddLight((int)(position.X / 16), (int)(position.Y / 16), 0, 0.65f * delC, 0.85f * delC);
 	}
+
 	public override void Draw()
 	{
 		float pocession = timer / maxTime;
@@ -136,6 +146,7 @@ internal class FilthyLucreFlameDust : ShaderDraw
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);
 	}
 }
+
 [Pipeline(typeof(FilthyLucreFlame_darkPipeline))]
 internal class FilthyLucreFlame_darkDust : ShaderDraw
 {
@@ -143,7 +154,9 @@ internal class FilthyLucreFlame_darkDust : ShaderDraw
 	public List<Vector2> oldPos = new List<Vector2>();
 	public float timer;
 	public float maxTime;
+
 	public FilthyLucreFlame_darkDust() { }
+
 	public FilthyLucreFlame_darkDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai) : base(position, velocity, ai)
 	{
 		this.maxTime = maxTime;
@@ -175,6 +188,7 @@ internal class FilthyLucreFlame_darkDust : ShaderDraw
 			}
 		}
 	}
+
 	public override void Draw()
 	{
 		float pocession = timer / maxTime;

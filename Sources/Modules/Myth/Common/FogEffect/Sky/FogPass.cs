@@ -1,5 +1,6 @@
 using Everglow.Myth.Common.FogEffect.Configs;
 using ReLogic.Content;
+
 namespace Everglow.Myth.Common.FogEffect.Sky;
 
 public struct FogState
@@ -33,6 +34,7 @@ public struct FogState
 	/// </summary>
 	public int BloomRadius;
 };
+
 public class FogPass
 {
 	public static FogState DayThickFog = new FogState
@@ -102,6 +104,7 @@ public class FogPass
 		{
 			return m_currentState.BloomRadius;
 		}
+
 		set
 		{
 			m_currentState.BloomRadius = value;

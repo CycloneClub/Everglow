@@ -6,6 +6,7 @@ public class FixCoinCrit1 : FixCoinItem
 	{
 		return 1;
 	}
+
 	public override void SSD()
 	{
 		Item.shoot = ModContent.ProjectileType<Projectiles.Typeless.FixCoins.FixCoinCrit1>();

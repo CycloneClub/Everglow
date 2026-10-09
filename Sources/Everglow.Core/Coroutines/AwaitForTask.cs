@@ -12,7 +12,9 @@ public class AwaitForTask : ICoroutineInstruction
 			return m_task;
 		}
 	}
+
 	private IEnumerator<ICoroutineInstruction> m_task;
+
 	public AwaitForTask(IEnumerator<ICoroutineInstruction> task)
 	{
 		m_task = task;

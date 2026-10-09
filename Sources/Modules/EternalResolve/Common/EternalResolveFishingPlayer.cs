@@ -7,6 +7,7 @@ namespace Everglow.EternalResolve.Common;
 public class EternalResolveFishingPlayer : ModPlayer
 {
 	internal FishingAttempt fishAttempt;
+
 	public override void CatchFish(FishingAttempt attempt, ref int itemDrop, ref int npcSpawn, ref AdvancedPopupRequest sonar, ref Vector2 sonarPosition)
 	{
 		bool inWater = !fishAttempt.inLava && !fishAttempt.inHoney;

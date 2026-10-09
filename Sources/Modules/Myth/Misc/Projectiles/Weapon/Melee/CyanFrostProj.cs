@@ -4,6 +4,7 @@ using Terraria.GameContent.Drawing;
 using Terraria.Graphics.Renderers;
 
 namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee;
+
 // This is a copy of the Excalibur's projectile
 public class CyanFrostProj : ModProjectile
 {
@@ -292,7 +293,9 @@ public class CyanFrostProj : ModProjectile
 
 	// Copied from Terraria.GameContent.Drawing.ParticleOrchestra.Spawn_Excalibur which is private
 	private static PrettySparkleParticle GetNewPrettySparkleParticle() => new PrettySparkleParticle();
+
 	private static ParticlePool<PrettySparkleParticle> _poolPrettySparkle = new ParticlePool<PrettySparkleParticle>(200, GetNewPrettySparkleParticle);
+
 	/// <summary>
 	/// A custom version of Spawn_Excalibur from Terraria.GameContent.Drawing.ParticleOrchestra
 	/// </summary>

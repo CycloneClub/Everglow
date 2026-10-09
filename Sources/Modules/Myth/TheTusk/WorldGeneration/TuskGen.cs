@@ -14,6 +14,7 @@ public class TuskGen : ModSystem
 	public override void PostUpdateEverything()
 	{
 	}
+
 	public static void QuickBuild(int x, int y, string Path)
 	{
 		var mapIO = new Commons.TileHelper.MapIO(x, y);
@@ -27,6 +28,7 @@ public class TuskGen : ModSystem
 			WorldGen.SquareWallFrame(it.CurrentCoord.X, it.CurrentCoord.Y);
 		}
 	}
+
 	/// <summary>
 	/// 判定是否开启地形
 	/// </summary>
@@ -42,7 +44,9 @@ public class TuskGen : ModSystem
 			return true;
 		}
 	}
+
 	internal float TuskS = 0;
+
 	public override void ModifySunLightColor(ref Color tileColor, ref Color backgroundColor)
 	{
 		if (TuskLandActive())
@@ -82,6 +86,7 @@ public class TuskGen : ModSystem
 		backgroundColor *= 1 - TuskS * 0.4f;
 		backgroundColor.A = 255;
 	}
+
 	internal class WorldTuskLandGenPass : GenPass
 	{
 		public WorldTuskLandGenPass() : base("TuskLand", 500)// TODO:给大地安装血肉之颌
@@ -95,6 +100,7 @@ public class TuskGen : ModSystem
 			BuildTuskArray(point.X, point.Y);
 		}
 	}
+
 	internal class SubWorldTuskLandGenPass : GenPass
 	{
 		public SubWorldTuskLandGenPass() : base("TuskLand", 500)// TODO:给大地安装血肉之颌
@@ -109,6 +115,7 @@ public class TuskGen : ModSystem
 			Main.spawnTileY = 220;
 		}
 	}
+
 	public override void ModifyWorldGenTasks(List<GenPass> tasks, ref double totalWeight)
 	{
 		tasks.Add(new WorldTuskLandGenPass());
@@ -130,11 +137,13 @@ public class TuskGen : ModSystem
 		tag["TUSKcenterX"] = tuskCenterX;
 		tag["TUSKcenterY"] = tuskCenterY;
 	}
+
 	public override void LoadWorldData(TagCompound tag)
 	{
 		tuskCenterX = tag.GetAsInt("TUSKcenterX");
 		tuskCenterY = tag.GetAsInt("TUSKcenterY");
 	}
+
 	/// <summary>
 	/// 原版方法,让物块边缘自然
 	/// </summary>
@@ -229,6 +238,7 @@ public class TuskGen : ModSystem
 			}
 		});
 	}
+
 	/// <summary>
 	/// 主要程序
 	/// </summary>
@@ -246,6 +256,7 @@ public class TuskGen : ModSystem
 		tuskGen.tuskCenterY = b + 10;
 		// BuildTuskArray(a, b);
 	}
+
 	public static Point GetFlattenPoint()
 	{
 		for (int times = 0; times < 200; times++)
@@ -300,6 +311,7 @@ public class TuskGen : ModSystem
 		}
 		return new Point(Main.maxTilesX / 3, 600);
 	}
+
 	/// <summary>
 	/// 制造獠牙地形下半部分的一个盘状物
 	/// </summary>
@@ -366,6 +378,7 @@ public class TuskGen : ModSystem
 		tileWheel.TileType = (ushort)ModContent.TileType<BloodyMossWheel>();
 		tileWheel.HasTile = true;
 	}
+
 	/// <summary>
 	/// 放置石碑
 	/// </summary>
@@ -406,6 +419,7 @@ public class TuskGen : ModSystem
 			}
 		}
 	}
+
 	/// <summary>
 	/// 判定被抽出来的点是否具备建造獠牙地形的条件
 	/// </summary>
@@ -435,6 +449,7 @@ public class TuskGen : ModSystem
 		}
 		return true;
 	}
+
 	/// <summary>
 	/// 让獠牙地里面的物块执行ShapeTile
 	/// </summary>

@@ -7,6 +7,7 @@ namespace Everglow.Ocean.Projectiles.Weapons;
 public class TsunamiShark : ModProjectile
 {
 	public override string Texture => "Everglow/Ocean/Projectiles/Weapons/TsunamiShark/TsunamiShark_proj";
+
 	public override void SetDefaults()
 	{
 		Projectile.aiStyle = -1;
@@ -16,9 +17,11 @@ public class TsunamiShark : ModProjectile
 		Projectile.tileCollide = false;
 		Projectile.DamageType = DamageClass.Ranged;
 	}
+
 	private int UseCount = 0;
 	private int overridedamage;
 	internal IEntitySource shootSource = null;
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		shootSource = source;
@@ -35,6 +38,7 @@ public class TsunamiShark : ModProjectile
 			overridedamage = -1;
 		}
 	}
+
 	private void Shoot()
 	{
 		Vector2 toMuzzle = new Vector2(15, -15);
@@ -81,6 +85,7 @@ public class TsunamiShark : ModProjectile
 			UseCount = 0;
 		}
 	}
+
 	public override void AI()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -120,6 +125,7 @@ public class TsunamiShark : ModProjectile
 			Projectile.Kill();
 		}
 	}
+
 	public void GenerateVFXKill(int Frequency)
 	{
 		float mulVelocity = 0.6f;
@@ -153,10 +159,12 @@ public class TsunamiShark : ModProjectile
 			Ins.VFXManager.Add(wave);
 		}
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
 		Player player = Main.player[Projectile.owner];

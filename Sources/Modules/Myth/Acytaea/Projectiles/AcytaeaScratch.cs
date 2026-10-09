@@ -8,6 +8,7 @@ namespace Everglow.Myth.Acytaea.Projectiles;
 public class AcytaeaScratch : ModProjectile
 {
 	public override string Texture => "Everglow/Myth/Acytaea/Projectiles/AcytaeaSword_projectile";
+
 	public override void SetDefaults()
 	{
 		Projectile.aiStyle = -1;
@@ -26,7 +27,9 @@ public class AcytaeaScratch : ModProjectile
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 20;
 	}
+
 	public int OwnerNPC = -1;
+
 	public override void AI()
 	{
 		if (OwnerNPC == -1)
@@ -66,6 +69,7 @@ public class AcytaeaScratch : ModProjectile
 			}
 		}
 	}
+
 	public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 	{
 		for (int k = 0; k < Projectile.oldPos.Length; k++)
@@ -81,10 +85,12 @@ public class AcytaeaScratch : ModProjectile
 		}
 		return false;
 	}
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		OwnerNPC = (int)Projectile.ai[0];
 	}
+
 	public override void OnHitPlayer(Player target, Player.HurtInfo info)
 	{
 		for (int x = 0; x < 25; x++)
@@ -122,14 +128,17 @@ public class AcytaeaScratch : ModProjectile
 		target.AddBuff(ModContent.BuffType<AcytaeaInferno>(), 450);
 		base.OnHitPlayer(target, info);
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
 		DrawTrail();
 	}
+
 	public virtual void DrawTrail()
 	{
 		SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;
@@ -142,6 +151,7 @@ public class AcytaeaScratch : ModProjectile
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(sBS);
 	}
+
 	private void DrawLight()
 	{
 		for (int z = 0; z < 3; z++)
@@ -224,6 +234,7 @@ public class AcytaeaScratch : ModProjectile
 			}
 		}
 	}
+
 	private void DrawDark()
 	{
 		for (int z = 0; z < 3; z++)

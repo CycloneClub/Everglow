@@ -5,6 +5,7 @@ namespace Everglow.Myth.Acytaea.Projectiles;
 public class Acytaea_Lock : ModProjectile
 {
 	public override string Texture => "Everglow/Myth/Acytaea/Projectiles/AcytaeaSword_projectile";
+
 	public override void SetDefaults()
 	{
 		Projectile.aiStyle = -1;
@@ -19,6 +20,7 @@ public class Acytaea_Lock : ModProjectile
 		Projectile.width = 40;
 		Projectile.height = 40;
 	}
+
 	public override void AI()
 	{
 		Projectile.velocity *= 0;
@@ -28,6 +30,7 @@ public class Acytaea_Lock : ModProjectile
 	{
 		return false;
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
 		SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;

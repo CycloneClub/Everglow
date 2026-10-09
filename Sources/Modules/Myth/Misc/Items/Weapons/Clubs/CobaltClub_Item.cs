@@ -12,6 +12,7 @@ public class CobaltClub_Item : ClubItem
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.CobaltClub>();
 		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.CobaltClub_smash>();
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

@@ -19,10 +19,12 @@ public class DarkCocoonSpecial : ModTile// 用来生成魔茧
 	{
 		return false;
 	}
+
 	public override bool CanKillTile(int i, int j, ref bool blockDamaged)
 	{
 		return false;
 	}
+
 	public override void NearbyEffects(int i, int j, bool closer)
 	{
 		if (NPC.CountNPCS(ModContent.NPCType<EvilPack>()) < 1)

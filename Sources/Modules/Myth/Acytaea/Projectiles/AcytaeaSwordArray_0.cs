@@ -5,6 +5,7 @@ namespace Everglow.Myth.Acytaea.Projectiles;
 public class AcytaeaSwordArray_0 : ModProjectile
 {
 	public override string Texture => "Everglow/Myth/Acytaea/Projectiles/AcytaeaSword_projectile";
+
 	public override void SetDefaults()
 	{
 		Projectile.aiStyle = -1;
@@ -21,8 +22,10 @@ public class AcytaeaSwordArray_0 : ModProjectile
 		Projectile.width = 80;
 		Projectile.height = 80;
 	}
+
 	public int Timer = 0;
 	public NPC Owner = new NPC();
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		int index = (int)Projectile.ai[0];
@@ -36,6 +39,7 @@ public class AcytaeaSwordArray_0 : ModProjectile
 		}
 		base.OnSpawn(source);
 	}
+
 	public override void AI()
 	{
 		Timer++;
@@ -61,6 +65,7 @@ public class AcytaeaSwordArray_0 : ModProjectile
 			}
 		}
 	}
+
 	public override void OnKill(int timeLeft)
 	{
 		Vector2 toNPC = Owner.Center - Projectile.Center;
@@ -68,10 +73,12 @@ public class AcytaeaSwordArray_0 : ModProjectile
 		p.frame = Main.rand.Next(4);
 		p.frameCounter = Main.rand.Next(6);
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
 		Texture2D tex = ModAsset.AcytaeaFlySword_red.Value;

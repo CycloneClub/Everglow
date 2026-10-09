@@ -23,7 +23,9 @@ public class GlowStar : ModProjectile
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 60;
 	}
+
 	public int targetWhoAmI = -1;
+
 	public override void AI()
 	{
 		Projectile.velocity *= 0.9993f;
@@ -144,10 +146,12 @@ public class GlowStar : ModProjectile
 		// Main.spriteBatch.Draw(Light, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, c2 * (1.1f - k0), Projectile.rotation, Light.Size() / 2f, new Vector2(scale * 1.5f, 4f), SpriteEffects.None, 0);
 		return false;
 	}
+
 	public override bool PreKill(int timeLeft)
 	{
 		return timeLeft < 995;
 	}
+
 	public override void OnKill(int timeLeft)
 	{
 		float value = Math.Min(Projectile.damage / 30f, 1f);

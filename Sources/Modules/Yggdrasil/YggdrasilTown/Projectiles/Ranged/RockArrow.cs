@@ -22,13 +22,16 @@ public class RockArrow : ModProjectile
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
 	}
+
 	internal int Target = -1;
 	internal int TimeTokill = -1;
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		Projectile.knockBack *= 3;
 		Target = (int)Projectile.ai[0];
 	}
+
 	public override void AI()
 	{
 		if (Target == -1)
@@ -63,6 +66,7 @@ public class RockArrow : ModProjectile
 			Projectile.velocity *= 0f;
 		}
 	}
+
 	public void GenerateSmog(int Frequency)
 	{
 		for (int g = 0; g < Frequency / 2 + 1; g++)
@@ -82,6 +86,7 @@ public class RockArrow : ModProjectile
 			Ins.VFXManager.Add(somg);
 		}
 	}
+
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
 		Projectile.tileCollide = false;
@@ -89,6 +94,7 @@ public class RockArrow : ModProjectile
 		AmmoHit();
 		return false;
 	}
+
 	public void AmmoHit()
 	{
 		TimeTokill = 240;
@@ -107,6 +113,7 @@ public class RockArrow : ModProjectile
 		SoundEngine.PlaySound(SoundID.DD2_ExplosiveTrapExplode, Projectile.Center);
 		Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<RockExplosion_friendly>(), Projectile.damage, 0, Projectile.owner, 6);
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		if (TimeTokill > 0)
@@ -118,6 +125,7 @@ public class RockArrow : ModProjectile
 		Main.spriteBatch.Draw(TexMain, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, TexMain.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
 		return false;
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
 		Main.spriteBatch.End();
@@ -125,6 +133,7 @@ public class RockArrow : ModProjectile
 		DrawTrail_dark(lightColor);
 		DrawTrail(lightColor);
 	}
+
 	public void DrawTrail(Color light)
 	{
 		float drawC = 0.2f;
@@ -174,6 +183,7 @@ public class RockArrow : ModProjectile
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 	}
+
 	public void DrawTrail_dark(Color light)
 	{
 		float drawC = 0.2f;

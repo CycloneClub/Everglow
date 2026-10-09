@@ -8,9 +8,11 @@ public class PlantModSystem : ModSystem
 	{
 		tag.Add("RollingCactusHitCount", RollingCactusHitCount);
 	}
+
 	public override void LoadWorldData(TagCompound tag)
 	{
 		RollingCactusHitCount = tag.GetByte("RollingCactusHitCount");
 	}
+
 	public static byte RollingCactusHitCount;
 }

@@ -7,6 +7,7 @@ public class Coroutine : ICoroutine
 {
 	private List<IEnumerator<ICoroutineInstruction>> m_enumerator;
 	private ICoroutineInstruction m_lastInstruction;
+
 	public Coroutine(IEnumerator<ICoroutineInstruction> enumerator)
 	{
 		m_enumerator = new List<IEnumerator<ICoroutineInstruction>> { enumerator };

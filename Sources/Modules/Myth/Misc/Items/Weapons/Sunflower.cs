@@ -24,11 +24,13 @@ public class Sunflower : ModItem
 		Item.autoReuse = false;
 		Item.knockBack = 2;
 	}
+
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		Projectile.NewProjectile(source, position + velocity * 3f, velocity, type, damage, knockback, player.whoAmI, 0);
 		return false;
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

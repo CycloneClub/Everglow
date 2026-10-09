@@ -1,5 +1,6 @@
 using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
+
 namespace Everglow.Myth.TheTusk.Items.Weapons;
 
 public class ToothStaff : ModItem
@@ -40,6 +41,7 @@ public class ToothStaff : ModItem
 
 		Item.shoot = ModContent.ProjectileType<Projectiles.Weapon.TuskSummon>();
 	}
+
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		if (player.numMinions >= player.maxMinions)

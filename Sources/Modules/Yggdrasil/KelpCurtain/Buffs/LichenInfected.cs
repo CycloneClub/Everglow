@@ -9,6 +9,7 @@ public class LichenInfected : ModBuff
 		Main.debuff[Type] = true;
 		Main.buffNoSave[Type] = true;
 	}
+
 	public override void Update(NPC npc, ref int buffIndex)
 	{
 		int buffDamage = (int)(5 + npc.velocity.Length() * 8);
@@ -19,6 +20,7 @@ public class LichenInfected : ModBuff
 		base.Update(npc, ref buffIndex);
 	}
 }
+
 public class LichenInfectedNPC : GlobalNPC
 {
 	public override void OnHitPlayer(NPC npc, Player target, Player.HurtInfo hurtInfo)
@@ -28,6 +30,7 @@ public class LichenInfectedNPC : GlobalNPC
 		}
 		base.OnHitPlayer(npc, target, hurtInfo);
 	}
+
 	public override void OnHitByItem(NPC npc, Player player, Item item, NPC.HitInfo hit, int damageDone)
 	{
 		if (npc.HasBuff(ModContent.BuffType<LichenInfected>()))
@@ -36,6 +39,7 @@ public class LichenInfectedNPC : GlobalNPC
 		}
 		base.OnHitByItem(npc, player, item, hit, damageDone);
 	}
+
 	public override void OnHitByProjectile(NPC npc, Projectile projectile, NPC.HitInfo hit, int damageDone)
 	{
 		if (npc.HasBuff(ModContent.BuffType<LichenInfected>()))
@@ -44,6 +48,7 @@ public class LichenInfectedNPC : GlobalNPC
 		}
 		base.OnHitByProjectile(npc, projectile, hit, damageDone);
 	}
+
 	public void AddProjectile(NPC npc, Player player)
 	{
 		bool hasProj = false;

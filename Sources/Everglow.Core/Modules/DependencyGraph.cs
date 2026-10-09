@@ -10,6 +10,7 @@ public class DependencyGraph
 	private Dictionary<int, List<int>> m_dependencyGraph;
 	// 依赖图中节点的入度表
 	private Dictionary<int, int> m_dependencyFanin;
+
 	public DependencyGraph()
 	{
 		m_typeToIdMapping = new Dictionary<Type, int>();
@@ -17,6 +18,7 @@ public class DependencyGraph
 		m_dependencyGraph = new Dictionary<int, List<int>>();
 		m_dependencyFanin = new Dictionary<int, int>();
 	}
+
 	/// <summary>
 	/// 添加一个没有依赖的<paramref name="type"/>
 	/// </summary>
@@ -47,6 +49,7 @@ public class DependencyGraph
 
 		AddFanin(v);
 	}
+
 	private void AddFanin(int v)
 	{
 		if (m_dependencyFanin.ContainsKey(v))

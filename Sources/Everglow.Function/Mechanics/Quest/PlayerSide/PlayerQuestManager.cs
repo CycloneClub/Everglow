@@ -10,11 +10,15 @@ namespace Everglow.Commons.Mechanics.Quest.PlayerSide;
 public class PlayerQuestManager
 {
 	public const int UpdateInterval = 20;
+
 	public static PlayerQuestManager Instance => ModContent.GetInstance<PlayerQuestSystem>().Manager;
 
 	public event Action<QuestIdentity> QuestAdded;
+
 	public event Action<QuestIdentity> QuestRemoved;
+
 	public event Action<QuestIdentity> QuestStatusUpdated;
+
 	public event Action<QuestIdentity> QuestObjectiveUpdated;
 
 	private List<PlayerQuestBase> _quests = [];

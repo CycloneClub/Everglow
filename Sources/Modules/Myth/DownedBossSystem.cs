@@ -16,6 +16,7 @@ public class DownedBossSystem : ModSystem
 	public static string TuskName;
 	public static string MothName;
 	public static string AcyName;
+
 	// public static bool downedOtherBoss = false;
 	public override void OnWorldLoad()
 	{
@@ -54,6 +55,7 @@ public class DownedBossSystem : ModSystem
 		downedAcytaea = tag.ContainsKey("downedAcytaea");
 		// downedOtherBoss = tag.ContainsKey("downedOtherBoss");
 	}
+
 	public override void SaveWorldData(TagCompound tag)
 	{
 		if (downedTusk)

@@ -60,6 +60,7 @@ public class HeatMapRenderPipeline_cursedFlame : PostPipeline
 		sb.Draw(heatMapScreen, Vector2.Zero, new Color(255, 255, 255, 0) * 0.4f);
 		sb.End();
 	}
+
 	public static Vector2 GetSunPos()
 	{
 		float HalfMaxTime = Main.dayTime ? 27000 : 16200;

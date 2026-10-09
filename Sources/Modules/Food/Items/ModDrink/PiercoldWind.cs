@@ -20,6 +20,7 @@ public class PiercoldWind : DrinkBase
 			};
 		}
 	}
+
 	public override void SetStaticDefaults()
 	{
 		CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 5;
@@ -35,6 +36,7 @@ public class PiercoldWind : DrinkBase
 
 		ItemID.Sets.IsFood[Type] = true;
 	}
+
 	public override void SetDefaults()
 	{
 		Item.DefaultToFood(22, 22, BuffID.WellFed3, 57600);

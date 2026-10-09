@@ -11,6 +11,7 @@ public class PaintedTextureSystem : ModSystem
 	/// 通过TileVariationkey获取贴图路径，懒得写自己的Key就借用原版的了
 	/// </summary>
 	internal static Dictionary<TilePaintSystemV2.TileVariationkey, string> TexturePathLookup { get; private set; }
+
 	public TilePaintSystemV2.TileVariationkey Key;
 
 	public static Texture2D TryGetPaintedTexture(string path, int tileType, int tileStyle, int paintColor, TileDrawing tileDrawing)

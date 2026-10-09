@@ -11,6 +11,7 @@ namespace Everglow.Commons.UI.UIElements
 	public class UIInputBox : UIPanel
 	{
 		private const string cursorSym = "|";
+
 		public string Text { get => _text; set => _text = value; }
 
 		public int Cursor
@@ -26,6 +27,7 @@ namespace Everglow.Commons.UI.UIElements
 
 				return r + _cursorPosition.X;
 			}
+
 			set
 			{
 				int l = value;
@@ -67,6 +69,7 @@ namespace Everglow.Commons.UI.UIElements
 			{
 				return _cursorPosition;
 			}
+
 			set
 			{
 				var v = value;

@@ -98,6 +98,7 @@ public class WornForestChest : ModTile
 	{
 		num = 1;
 	}
+
 	public override void MouseOver(int i, int j)
 	{
 		Player player = Main.LocalPlayer;

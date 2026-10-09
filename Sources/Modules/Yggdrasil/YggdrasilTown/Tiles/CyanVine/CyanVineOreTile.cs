@@ -19,6 +19,7 @@ public class CyanVineOreTile : ModTile
 		var modTranslation = CreateMapEntryName();
 		AddMapEntry(new Color(80, 130, 154), modTranslation);
 	}
+
 	public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
 	{
 		if (fail)
@@ -86,6 +87,7 @@ public class CyanVineOreTile : ModTile
 			}
 		}
 	}
+
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		return false;

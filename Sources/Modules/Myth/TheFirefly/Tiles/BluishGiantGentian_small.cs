@@ -61,6 +61,7 @@ public class BluishGiantGentian_small : ModTile, ITileFluentlyDrawn
 		}
 		SoundEngine.PlaySound(HitSound, new Vector2(i * 16, j * 16));
 	}
+
 	public override void PlaceInWorld(int i, int j, Item item)
 	{
 		short num = (short)Main.rand.Next(0, 6);

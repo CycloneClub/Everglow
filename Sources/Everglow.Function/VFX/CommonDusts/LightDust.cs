@@ -10,6 +10,7 @@ namespace Everglow.Commons.VFX.CommonDusts;
 public class LightDust : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
+
 	public Vector2 position;
 	public Vector2 velocity;
 	public float timeleft;
@@ -19,6 +20,7 @@ public class LightDust : Visual
 	public Entity Owner;
 	public AIStyle aiStyle = AIStyle.Normal;
 	public float alpha;
+
 	public enum AIStyle
 	{
 		Normal,
@@ -29,6 +31,7 @@ public class LightDust : Visual
 	public override void OnSpawn()
 	{
 	}
+
 	public override void Update()
 	{
 		position += velocity;

@@ -7,6 +7,7 @@ public class IceParticle : ModDust
 		dust.frame = new Rectangle(0, Main.rand.Next(3) * 10, 10, 9);
 		dust.rotation = Main.rand.NextFloat(MathHelper.TwoPi);
 	}
+
 	public override bool Update(Dust dust)
 	{
 		dust.rotation += dust.velocity.X * 0.3f;
@@ -43,6 +44,7 @@ public class IceParticle : ModDust
 		}
 		return false;
 	}
+
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		return lightColor * ((255 - dust.alpha) / 255f);

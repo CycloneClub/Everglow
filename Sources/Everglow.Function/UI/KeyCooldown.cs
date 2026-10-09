@@ -12,6 +12,7 @@ namespace Everglow.Commons.UI
 		public int CoolDownTime
 		{
 			get { return _coolDownTicks; }
+
 			set
 			{
 				if (value >= 0)

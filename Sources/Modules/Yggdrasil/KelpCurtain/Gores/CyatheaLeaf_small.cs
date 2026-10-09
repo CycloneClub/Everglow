@@ -12,6 +12,7 @@ public class CyatheaLeaf_small : ModGore
 		UpdateMove(gore);
 		return true;
 	}
+
 	private void UpdateFrame(Gore gore)
 	{
 		if (Math.Abs(gore.velocity.Y) < 0.1f)
@@ -33,6 +34,7 @@ public class CyatheaLeaf_small : ModGore
 			gore.frameCounter = 0;
 		}
 	}
+
 	private void UpdateMove(Gore gore)
 	{
 		gore.velocity.Y -= 0.21f;
@@ -40,6 +42,7 @@ public class CyatheaLeaf_small : ModGore
 		gore.velocity.X += Main.windSpeedCurrent * 0.2f * Main.rand.NextFloat(0.85f, 1.15f) / gore.scale + MathF.Sin(gore.timeLeft * 0.02f * gore.scale) * 0.1f * gore.scale;
 		gore.velocity *= 0.97f;
 	}
+
 	public override void OnSpawn(Gore gore, IEntitySource source)
 	{
 		gore.timeLeft = Main.rand.Next(350, 450);

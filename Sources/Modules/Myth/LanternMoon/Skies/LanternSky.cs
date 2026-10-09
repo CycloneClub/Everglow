@@ -6,6 +6,7 @@ namespace Everglow.Myth.LanternMoon.Skies;
 public class LanternSky : CustomSky
 {
 	public static bool Open = false;
+
 	public override void Deactivate(params object[] args)
 	{
 		skyActive = false;
@@ -20,6 +21,7 @@ public class LanternSky : CustomSky
 	{
 		return skyActive || opacity > 0f;
 	}
+
 	public override void Activate(Vector2 position, params object[] args)
 	{
 		TimeLeft = 600;
@@ -29,6 +31,7 @@ public class LanternSky : CustomSky
 		MoonLight = 0;
 		skyActive = true;
 	}
+
 	public override void Draw(SpriteBatch spriteBatch, float minDepth, float maxDepth)
 	{
 		if (maxDepth >= 3E+38f && minDepth < 3E+38f)
@@ -138,10 +141,12 @@ public class LanternSky : CustomSky
 			Deactivate();
 		}
 	}
+
 	public override float GetCloudAlpha()
 	{
 		return (1f - opacity) * 0.97f + 0.03f;
 	}
+
 	private Vector2 StarPos = Vector2.Zero;
 
 	private Vector2 StarVel;

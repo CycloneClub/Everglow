@@ -19,14 +19,18 @@ internal class YellowFlame0LittleShine : ModProjectile
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 40;
 	}
+
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 	}
+
 	public override Color? GetAlpha(Color lightColor)
 	{
 		return new Color(0, 0, 0, 0);
 	}
+
 	private float ka = 1;
+
 	public override void AI()
 	{
 		Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X);
@@ -63,15 +67,19 @@ internal class YellowFlame0LittleShine : ModProjectile
 		}
 		kb *= 0.97f;
 	}
+
 	private Color color0 = new Color(255, 204, 0);
 	private Color Aimcolor = new Color(255, 204, 0);
 	private Color[] ProjOldColor = new Color[70];
 	private float kb = 1;
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;
 	}
+
 	private int TrueL = 1;
+
 	public override void PostDraw(Color lightColor)
 	{
 		float dx = 120 - Projectile.timeLeft;

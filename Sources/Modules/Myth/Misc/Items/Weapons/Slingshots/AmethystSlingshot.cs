@@ -15,6 +15,7 @@ public class AmethystSlingshot : SlingshotItem
 		Item.rare = ItemRarityID.Orange;
 		Item.value = Item.sellPrice(0, 0, 8, 0);
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

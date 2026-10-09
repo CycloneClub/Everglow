@@ -11,6 +11,7 @@ public class EbonwoodSlingshot : SlingshotItem
 		Item.useTime = 22;
 		Item.useAnimation = 22;
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

@@ -6,6 +6,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.FurnaceTiles;
 public class GiantFurnace_MiddleFence : TileVFX
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawPlayers;
+
 	public override void Update()
 	{
 		base.Update();

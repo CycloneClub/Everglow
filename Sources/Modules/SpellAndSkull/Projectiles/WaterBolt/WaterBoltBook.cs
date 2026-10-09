@@ -17,6 +17,7 @@ internal class WaterBoltBook : MagicBookProjectile
 		TexCoordDown = new Vector2(22, 24);
 		TexCoordRight = new Vector2(28, 0);
 	}
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		FrontTexture = ModAsset.WaterBolt_A.Value;
@@ -25,6 +26,7 @@ internal class WaterBoltBook : MagicBookProjectile
 		GlowTexture = ModAsset.WaterBolt_E.Value;
 		base.OnSpawn(source);
 	}
+
 	public override void SpecialAI()
 	{
 		Player player = Main.player[Projectile.owner];

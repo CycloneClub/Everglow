@@ -11,6 +11,7 @@ public class FireflyPiranha_small : ModNPC
 	{
 		Main.npcFrameCount[NPC.type] = 5;
 	}
+
 	public override void SetDefaults()
 	{
 		NPC.damage = 18;
@@ -24,12 +25,15 @@ public class FireflyPiranha_small : ModNPC
 		NPC.HitSound = SoundID.NPCHit1;
 		NPC.DeathSound = SoundID.NPCDeath1;
 	}
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		NPC.localAI[0] = 0;
 		NPC.scale = Main.rand.NextFloat(0.85f, 1.15f);
 	}
+
 	private int PhysicalStrength = 700;
+
 	public override void AI()
 	{
 		if (NPC.wet)
@@ -112,6 +116,7 @@ public class FireflyPiranha_small : ModNPC
 			NPC.spriteDirection = -1;
 		}
 	}
+
 	private void NormalAttack(Player target)
 	{
 		Vector2 toPlayer = target.Center - NPC.Center;
@@ -157,6 +162,7 @@ public class FireflyPiranha_small : ModNPC
 		}
 		SoundEngine.PlaySound((SoundID.SplashWeak.WithPitchOffset(Main.rand.NextFloat(-1f, -0.2f))).WithVolume(0.5f));
 	}
+
 	private void WanderingWithoutTarget()
 	{
 		int waterDepth = 0;
@@ -215,6 +221,7 @@ public class FireflyPiranha_small : ModNPC
 			NPC.velocity.X *= -1f;
 		}
 	}
+
 	private void Wander(Player target)
 	{
 		int waterDepth = 0;
@@ -268,6 +275,7 @@ public class FireflyPiranha_small : ModNPC
 			NPC.velocity.Y *= 0.94f;
 		}
 	}
+
 	public override void FindFrame(int frameHeight)
 	{
 		frameHeight = 38;
@@ -286,10 +294,12 @@ public class FireflyPiranha_small : ModNPC
 			NPC.frameCounter = 0;
 		}
 	}
+
 	public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
 		return false;
 	}
+
 	public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
 		Texture2D tex = ModAsset.FireflyPiranha_small.Value;
@@ -298,6 +308,7 @@ public class FireflyPiranha_small : ModNPC
 		float colorValue = 0.6f;
 		spriteBatch.Draw(tex, NPC.Center - screenPos, NPC.frame, new Color(colorValue, colorValue, colorValue, 0), NPC.rotation, new Vector2(NPC.frame.Width, NPC.frame.Height) * 0.5f, NPC.scale, NPC.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
 	}
+
 	public override void OnKill()
 	{
 		Gore.NewGore(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, Main.rand.Next(40)).RotatedByRandom(6.283),
@@ -317,6 +328,7 @@ public class FireflyPiranha_small : ModNPC
 			Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, ModContent.DustType<Dusts.BlueGlowAppearOnlyInWater>(), v0.X, v0.Y, 0, default, Main.rand.NextFloat(0.85f, 1.75f));
 		}
 	}
+
 	public override void OnHitByProjectile(Projectile projectile, NPC.HitInfo hit, int damageDone)
 	{
 		NPC.target = projectile.owner;
@@ -331,6 +343,7 @@ public class FireflyPiranha_small : ModNPC
 			Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, ModContent.DustType<Dusts.BlueGlowAppearOnlyInWater>(), v0.X, v0.Y, 0, default, Main.rand.NextFloat(0.85f, 1.75f));
 		}
 	}
+
 	public override void OnHitByItem(Player player, Item item, NPC.HitInfo hit, int damageDone)
 	{
 		NPC.target = player.whoAmI;

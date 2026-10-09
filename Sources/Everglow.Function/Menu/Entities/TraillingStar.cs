@@ -6,11 +6,13 @@ internal class TraillingStar : Star
 {
 	public Vector2[] oldPos = new Vector2[15];
 	public Vector2 velocity;
+
 	public override void Update()
 	{
 		position += velocity;
 		base.Update();
 	}
+
 	public override void Draw()
 	{
 		base.Draw();

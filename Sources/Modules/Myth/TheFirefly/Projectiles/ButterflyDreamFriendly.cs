@@ -5,13 +5,16 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 public class ButterflyDreamFriendly : ModProjectile
 {
 	public Player owner;
+
 	public override string Texture => "Everglow/Myth/TheFirefly/Projectiles/ButterflyDream";
+
 	public override void SetStaticDefaults()
 	{
 		Main.projFrames[Projectile.type] = 4;
 		// ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
 		// ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 	}
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 36;
@@ -24,14 +27,17 @@ public class ButterflyDreamFriendly : ModProjectile
 		Projectile.tileCollide = false;
 		Projectile.usesLocalNPCImmunity = false;
 	}
+
 	public override void SendExtraAI(BinaryWriter writer)
 	{
 		writer.Write(Projectile.timeLeft);
 	}
+
 	public override void ReceiveExtraAI(BinaryReader reader)
 	{
 		Projectile.timeLeft = reader.ReadInt32();
 	}
+
 	public override void AI()
 	{
 		// TODO None
@@ -110,6 +116,7 @@ public class ButterflyDreamFriendly : ModProjectile
 			}
 		}
 	}
+
 	public override Color? GetAlpha(Color lightColor)
 	{
 		return new Color(0.9f, 0.9f, 1f, 0) * (1 - Projectile.alpha / 255f);

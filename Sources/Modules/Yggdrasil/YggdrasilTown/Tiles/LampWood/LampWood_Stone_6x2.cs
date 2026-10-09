@@ -30,10 +30,12 @@ public class LampWood_Stone_6x2 : ModTile
 		DustType = ModContent.DustType<TwilightStone_Dust>();
 		AddMapEntry(new Color(39, 50, 52));
 	}
+
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		return base.PreDraw(i, j, spriteBatch);
 	}
+
 	public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		Tile tile = Main.tile[i, j];

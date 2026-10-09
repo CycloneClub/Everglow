@@ -10,6 +10,7 @@ namespace Everglow.Ocean.Projectiles.Weapons;
 public class RampageShark : ModProjectile
 {
 	public override string Texture => "Everglow/Ocean/Projectiles/Weapons/RampageShark/RampageShark_gun";
+
 	public override void SetDefaults()
 	{
 		Projectile.aiStyle = -1;
@@ -19,12 +20,15 @@ public class RampageShark : ModProjectile
 		Projectile.tileCollide = false;
 		Projectile.DamageType = DamageClass.Ranged;
 	}
+
 	internal float Power = 0;
 	internal IEntitySource shootSource = null;
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		shootSource = source;
 	}
+
 	private void Shoot()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -95,6 +99,7 @@ public class RampageShark : ModProjectile
 			}
 		}
 	}
+
 	public override void AI()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -133,10 +138,12 @@ public class RampageShark : ModProjectile
 			Projectile.Kill();
 		}
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
 		Player player = Main.player[Projectile.owner];
@@ -206,6 +213,7 @@ public class RampageShark : ModProjectile
 			Main.spriteBatch.Draw(TexEye, Projectile.Center - Main.screenPosition + offset - random, null, new Color(1f, 1f, 1f, 1f), Projectile.rotation - (float)(Math.PI * 0.25), TexEye.Size() / 2f, 1f, se, 0);
 		}
 	}
+
 	private static void DrawTexCircle_VFXBatch(VFXBatch spriteBatch, float radious, float width, Color color, Vector2 center, Texture2D tex, double addRot = 0)
 	{
 		var circle = new List<Vertex2D>();

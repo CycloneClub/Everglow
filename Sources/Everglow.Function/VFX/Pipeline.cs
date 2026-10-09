@@ -20,6 +20,7 @@ public abstract class Pipeline : IPipeline
 	public virtual void Load()
 	{
 	}
+
 	/// <summary>
 	/// 渲染和绘制,经过调整后可以重写
 	/// </summary>

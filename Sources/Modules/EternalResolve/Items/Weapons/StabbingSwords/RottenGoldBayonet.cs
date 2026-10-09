@@ -11,6 +11,7 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords
 	public class RottenGoldBayonet : StabbingSwordItem
 	{
 		internal int specialDelay = 0;
+
 		public override void SetDefaults()
 		{
 			Item.damage = 10;
@@ -22,6 +23,7 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords
 			PowerfulStabProj = ModContent.ProjectileType<RottenGoldBayonet_Pro_Stab>();
 			base.SetDefaults();
 		}
+
 		public override void AddRecipes()
 		{
 			CreateRecipe().
@@ -31,10 +33,12 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords
 				Register();
 			base.AddRecipes();
 		}
+
 		public override bool AltFunctionUse(Player player)
 		{
 			return NPC.downedBoss1 && base.AltFunctionUse(player);
 		}
+
 		public override void UpdateInventory(Player player)
 		{
 			if (specialDelay > 0)

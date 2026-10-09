@@ -24,7 +24,9 @@ namespace Everglow.Yggdrasil.GreenCore.Items.Weapons
 
 			Item.value = Item.sellPrice(gold: 1);
 		}
+
 		public static BlendState bs;
+
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 		{
 			/*
@@ -38,6 +40,7 @@ namespace Everglow.Yggdrasil.GreenCore.Items.Weapons
             Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
             */
 		}
+
 		public override bool CanUseItem(Player player)
 		{
 			if (Main.myPlayer == player.whoAmI)
@@ -46,6 +49,7 @@ namespace Everglow.Yggdrasil.GreenCore.Items.Weapons
 			}
 			return base.CanUseItem(player);
 		}
+
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
 			for (int i = 0; i < tooltips.Count; i++)

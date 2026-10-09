@@ -1,4 +1,5 @@
 using Terraria.Audio;
+
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Melee;
 
 public class DragonScaleHammerProj : MeleeProj
@@ -69,17 +70,20 @@ public class DragonScaleHammerProj : MeleeProj
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 	}
+
 	public override void DrawSelf(SpriteBatch spriteBatch, Color lightColor, Vector4 diagonal = default, Vector2 drawScale = default, Texture2D glowTexture = null)
 	{
 		drawScale = new Vector2(-0.1f, 1.4f);
 		base.DrawSelf(spriteBatch, lightColor, diagonal, drawScale, glowTexture);
 	}
+
 	public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 	{
 		ScreenShaker Gsplayer = Main.player[Projectile.owner].GetModPlayer<ScreenShaker>();
 		Gsplayer.FlyCamPosition = new Vector2(0, Math.Min(target.Hitbox.Width * target.Hitbox.Height / 50, 50)).RotatedByRandom(6.283);
 		base.ModifyHitNPC(target, ref modifiers);
 	}
+
 	public override void End()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -93,6 +97,7 @@ public class DragonScaleHammerProj : MeleeProj
 		Projectile.Kill();
 		player.GetModPlayer<MEACPlayer>().isUsingMeleeProj = false;
 	}
+
 	public override void Attack()
 	{
 		Player player = Main.player[Projectile.owner];

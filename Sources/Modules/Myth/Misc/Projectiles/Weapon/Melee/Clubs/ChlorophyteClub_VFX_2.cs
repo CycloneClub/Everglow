@@ -8,6 +8,7 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee.Clubs;
 public class ChlorophyteClub_VFX_2 : ModProjectile
 {
 	public override string Texture => "Everglow/" + ModAsset.IchorClub_Path;
+
 	internal Vector2[] Position = new Vector2[900];
 	internal Vector2[] StartPosition = new Vector2[900];
 	internal Vector2[,] OldPosition = new Vector2[900/*编号*/, 60/*位置*/];
@@ -17,6 +18,7 @@ public class ChlorophyteClub_VFX_2 : ModProjectile
 	internal int[] TimeLeft = new int[900];
 	internal bool[] Active = new bool[900];
 	internal bool[] Smaller = new bool[900];
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		Projectile.tileCollide = false;
@@ -34,6 +36,7 @@ public class ChlorophyteClub_VFX_2 : ModProjectile
 		}
 		SoundEngine.PlaySound(SoundID.DD2_BetsyFlameBreath.WithPitchOffset(0.3f), Projectile.Center);
 	}
+
 	public override void AI()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -54,6 +57,7 @@ public class ChlorophyteClub_VFX_2 : ModProjectile
 			}
 		}
 	}
+
 	internal void ActivateVine(int i, Vector2 position, Vector2 velocity, int timeleft = 300, float ai0 = 0, float ai1 = 0, bool smaller = false)
 	{
 		Player player = Main.player[Projectile.owner];
@@ -74,6 +78,7 @@ public class ChlorophyteClub_VFX_2 : ModProjectile
 		Smaller[i] = smaller;
 		Active[i] = true;
 	}
+
 	internal void UpdateMoving()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -137,6 +142,7 @@ public class ChlorophyteClub_VFX_2 : ModProjectile
 			}
 		}
 	}
+
 	internal void KillVine(int i)
 	{
 		StartPosition[i] = Vector2.Zero;
@@ -150,6 +156,7 @@ public class ChlorophyteClub_VFX_2 : ModProjectile
 		AI0[i] = 0;
 		AI1[i] = 0;
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;
@@ -281,6 +288,7 @@ public class ChlorophyteClub_VFX_2 : ModProjectile
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, circle.ToArray(), 0, circle.Count - 2);
 		}
 	}
+
 	private static void DrawCircleDark(float radius, float width, float alpha, Vector2 center, double addRot = 0)
 	{
 		Color color = new Color(1f, 1f, 1f, alpha * 1.6f);

@@ -60,6 +60,7 @@ public class HaloPipeline : PostPipeline
 		sb.Draw(haloScreen, Vector2.Zero, new Color(255, 255, 255, 0));
 		sb.End();
 	}
+
 	public static Vector2 GetSunPos()
 	{
 		float HalfMaxTime = Main.dayTime ? 27000 : 16200;

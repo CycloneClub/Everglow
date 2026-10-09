@@ -12,6 +12,7 @@ public class CorruptClub_Item : ClubItem
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.CorruptClub>();
 		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.CorruptClub_smash>();
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

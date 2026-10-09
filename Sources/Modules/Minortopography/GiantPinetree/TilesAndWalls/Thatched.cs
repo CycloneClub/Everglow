@@ -12,6 +12,7 @@ public class Thatched : ModTile
 		HitSound = SoundID.Grass;
 		AddMapEntry(new Color(88, 70, 64));
 	}
+
 	public override IEnumerable<Item> GetItemDrops(int i, int j)
 	{
 		yield break;

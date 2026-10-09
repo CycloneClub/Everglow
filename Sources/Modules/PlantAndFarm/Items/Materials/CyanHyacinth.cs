@@ -9,6 +9,7 @@ public class CyanHyacinth : ModItem
 		// DisplayName.SetDefault("Cyan Hyacinth");
 		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "天青盏");
 	}
+
 	public override void SetDefaults()
 	{
 		Item.width = 22;

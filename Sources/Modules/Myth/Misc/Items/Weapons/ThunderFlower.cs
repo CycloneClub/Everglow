@@ -27,6 +27,7 @@ public class ThunderFlower : ModItem
 		Item.shoot = ModContent.ProjectileType<ThunderBall>();
 		Item.shootSpeed = 12f;
 	}
+
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, player.GetCritChance(DamageClass.Magic) + player.GetCritChance(DamageClass.Generic));

@@ -35,6 +35,7 @@ public class Buff : ModDust
 	}*/
 		return false;
 	}
+
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		double Deep = Math.Sqrt((255 - dust.alpha) / 255d) * 2;

@@ -5,10 +5,13 @@ namespace Everglow.Myth.TheFirefly.VFXs;
 internal abstract class ShaderDraw : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
+
 	public Vector2 position;
 	public Vector2 velocity;
 	public float[] ai;
+
 	public ShaderDraw() { }
+
 	public ShaderDraw(Vector2 position, Vector2 velocity, params float[] ai)
 	{
 		this.position = position;
@@ -24,6 +27,7 @@ internal class GrayFlowPipeline : Pipeline
 		effect = ModContent.Request<Effect>("Everglow/Myth/TheFirefly/VFXs/GrayFlow", AssetRequestMode.ImmediateLoad);
 		effect.Value.Parameters["uNoise"].SetValue(ModContent.Request<Texture2D>("Everglow/Example/VFX/Perlin", AssetRequestMode.ImmediateLoad).Value);
 	}
+
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
@@ -42,6 +46,7 @@ internal class GrayFlowPipeline : Pipeline
 		Ins.Batch.End();
 	}
 }
+
 [Pipeline(typeof(GrayFlowPipeline), typeof(BloomPipeline))]
 internal class GrayFlowLine : ShaderDraw
 {
@@ -49,7 +54,9 @@ internal class GrayFlowLine : ShaderDraw
 	public List<Vector2> oldPos = new List<Vector2>();
 	public float timer;
 	public float maxTime;
+
 	public GrayFlowLine() { }
+
 	public GrayFlowLine(int maxTime, Vector2 position, Vector2 velocity, params float[] ai) : base(position, velocity, ai)
 	{
 		this.maxTime = maxTime;

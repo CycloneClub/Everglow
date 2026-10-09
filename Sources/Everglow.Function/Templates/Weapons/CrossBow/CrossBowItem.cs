@@ -7,6 +7,7 @@ public abstract class CrossBowItem : ModItem
 	public override string LocalizationCategory => Utilities.LocalizationUtils.Categories.RangedWeapons;
 
 	public int CrossBowProjType = -1;
+
 	public override void SetDefaults()
 	{
 		Item.useStyle = ItemUseStyleID.Shoot;
@@ -25,6 +26,7 @@ public abstract class CrossBowItem : ModItem
 	public virtual void SetDef()
 	{
 	}
+
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		if (CrossBowProjType == -1)

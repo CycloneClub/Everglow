@@ -6,6 +6,7 @@ public class BlackPanDust2 : ModDust
 	{
 		return true;
 	}
+
 	public override bool Update(Dust dust)
 	{
 		dust.scale *= 0.99f;
@@ -30,10 +31,12 @@ public class BlackPanDust2 : ModDust
 
 		return false;
 	}
+
 	public override void OnSpawn(Dust dust)
 	{
 		base.OnSpawn(dust);
 	}
+
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		return new Color(255, 255, 255, 255);

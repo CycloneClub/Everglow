@@ -10,6 +10,7 @@ public class FragransDust : ModDust
 		dust.scale *= 1f;
 		dust.alpha = 0;
 	}
+
 	public override bool Update(Dust dust)
 	{
 		dust.position += dust.velocity;
@@ -36,6 +37,7 @@ public class FragransDust : ModDust
 		// }
 		return false;
 	}
+
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		return new Color?(new Color(247, 237, 125, 125));

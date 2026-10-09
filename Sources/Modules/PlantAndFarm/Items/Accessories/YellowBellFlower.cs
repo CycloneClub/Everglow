@@ -13,6 +13,7 @@ public class YellowBellFlower : ModItem
 		// Tooltip.SetDefault("Increases damage by (defense * 20%)%\n'Rare and beautiful'");
 		// Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "伤害增加(20%防御力)%\n'稀有又好看'");
 	}
+
 	public override void SetDefaults()
 	{
 		Item.width = 26;
@@ -21,10 +22,12 @@ public class YellowBellFlower : ModItem
 		Item.accessory = true;
 		Item.rare = 3;
 	}
+
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
 		player.GetDamage(DamageClass.Generic) *= player.statDefense * 0.2f / 100f + 1;
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

@@ -1,4 +1,5 @@
 using Terraria;
+
 namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee;
 
 public class Sunflower : ModProjectile
@@ -13,6 +14,7 @@ public class Sunflower : ModProjectile
 		Projectile.timeLeft = 3000;
 		Main.projFrames[Projectile.type] = 5;
 	}
+
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
 		if (Projectile.timeLeft > 2950)
@@ -30,6 +32,7 @@ public class Sunflower : ModProjectile
 		}
 		return false;
 	}
+
 	/*public override void PostDraw(Color lightColor)
         {
             Texture2D texture = ModContent.Request<Texture2D>("Everglow/Myth/Misc/Projectiles/Weapon/Melee/Sunflower_Glow").Value;
@@ -41,6 +44,7 @@ public class Sunflower : ModProjectile
 		Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, new Rectangle(0, 46 * Projectile.frame, 46, 46), lightColor, Projectile.rotation, new Vector2(23), 1f, SpriteEffects.None, 0f);
 		return false;
 	}
+
 	public override void AI()
 	{
 		float num7 = (float)Math.Sqrt(Projectile.velocity.X * Projectile.velocity.X + Projectile.velocity.Y * Projectile.velocity.Y);
@@ -82,6 +86,7 @@ public class Sunflower : ModProjectile
 			Projectile.timeLeft = 0;
 		}
 	}
+
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		Vector2 v1 = target.Center;

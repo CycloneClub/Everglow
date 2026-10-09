@@ -23,8 +23,10 @@ public class FrostSpice : ModProjectile
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 120;
 	}
+
 	internal int TimeTokill = -1;
 	internal int HitBoxSize = 10;
+
 	public override void AI()
 	{
 		Projectile.rotation = MathF.Atan2(Projectile.velocity.Y, Projectile.velocity.X);
@@ -53,6 +55,7 @@ public class FrostSpice : ModProjectile
 			Projectile.velocity *= 0f;
 		}
 	}
+
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
 		Projectile.tileCollide = false;
@@ -60,6 +63,7 @@ public class FrostSpice : ModProjectile
 		AmmoHit();
 		return false;
 	}
+
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		Projectile.ai[0] *= 0.4f;
@@ -67,6 +71,7 @@ public class FrostSpice : ModProjectile
 		Projectile.velocity *= 0.7f;
 		AmmoHit();
 	}
+
 	public virtual void AmmoHit()
 	{
 		TimeTokill = 120;
@@ -76,6 +81,7 @@ public class FrostSpice : ModProjectile
 			Dust.NewDust(Projectile.Center + Projectile.velocity - new Vector2(4), Projectile.width, Projectile.height, DustID.Ice, 0f, 0f, 0, default, 0.7f);
 		}
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		if (TimeTokill > 0)
@@ -89,10 +95,12 @@ public class FrostSpice : ModProjectile
 			return false;
 		}
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
 		DrawTrail(lightColor);
 	}
+
 	public void DrawTrail(Color light)
 	{
 		float drawC = 0.4f;

@@ -6,6 +6,7 @@ public class BloodLightCrystalEntity : ModTileEntity
 	public const float DISSOLVE_STEP = 1f / (DISSOLVE_TIME * 60); // 溶解速率（%/帧）
 
 	private float dissolveProgress = 0; // 溶解进度; 0为未开始，1为完成
+
 	public override void Update()
 	{
 		if (dissolveProgress > 0 && dissolveProgress <= 1)
@@ -26,6 +27,7 @@ public class BloodLightCrystalEntity : ModTileEntity
 			}
 		}
 	}
+
 	public override bool IsTileValidForEntity(int x, int y)
 	{
 		// Main.NewText("Validate: [" + x + "," + y+ "]");

@@ -7,6 +7,7 @@ public class FilthyFragilePipeline : Pipeline
 		effect = ModAsset.FilthyFragile;
 		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.FilthyFragile_Color.Value);
 	}
+
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
@@ -25,10 +26,12 @@ public class FilthyFragilePipeline : Pipeline
 		Ins.Batch.End();
 	}
 }
+
 [Pipeline(typeof(FilthyFragilePipeline))]
 public class FilthyFragileDust : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
+
 	public Vector2 position;
 	public Vector2 velocity;
 	public Vector2 coord;
@@ -40,7 +43,9 @@ public class FilthyFragileDust : Visual
 	public float rotation2;
 	public float omega;
 	public float phi;
+
 	public FilthyFragileDust() { }
+
 	public override void Update()
 	{
 		position += velocity;

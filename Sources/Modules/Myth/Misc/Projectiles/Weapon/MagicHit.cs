@@ -8,6 +8,7 @@ public class MagicHit : ModProjectile
 	{
 		// DisplayName.SetDefault("");
 	}
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 50;
@@ -23,6 +24,7 @@ public class MagicHit : ModProjectile
 		Projectile.penetrate = -1;
 		Projectile.scale = 1;
 	}
+
 	public override void AI()
 	{
 	}

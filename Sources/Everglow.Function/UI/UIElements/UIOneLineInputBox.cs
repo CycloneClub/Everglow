@@ -34,6 +34,7 @@ namespace Everglow.Commons.UI.UIElements
 		}
 
 		public bool IsIMEEnable => _imeEnable;
+
 		private bool _imeEnable = false;
 		public Vector2 ElementSize;
 		private float _timer = 0f;

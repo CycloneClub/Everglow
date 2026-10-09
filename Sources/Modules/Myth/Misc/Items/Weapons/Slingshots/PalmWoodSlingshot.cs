@@ -11,6 +11,7 @@ public class PalmWoodSlingshot : SlingshotItem
 		Item.useTime = 24;
 		Item.useAnimation = 24;
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

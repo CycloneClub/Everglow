@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+
 namespace Everglow.Food.InfoDisplays;
 
 internal class ThirstystateInfoDisplay : InfoDisplay
@@ -26,6 +27,7 @@ public class ThirstystateInfoDisplayplayer : ModPlayer
 {
 	public bool AccOsmoticPressureMonitor;
 	public bool ShowThirstystate;
+
 	public override void ResetEffects()
 	{
 		AccOsmoticPressureMonitor = false;

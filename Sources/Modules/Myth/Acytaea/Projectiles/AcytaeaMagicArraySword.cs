@@ -9,6 +9,7 @@ namespace Everglow.Myth.Acytaea.Projectiles;
 public class AcytaeaMagicArraySword : ModProjectile
 {
 	public override string Texture => "Everglow/Myth/Acytaea/Projectiles/AcytaeaSword_projectile";
+
 	public override void SetDefaults()
 	{
 		Projectile.aiStyle = -1;
@@ -25,8 +26,10 @@ public class AcytaeaMagicArraySword : ModProjectile
 		Projectile.width = 80;
 		Projectile.height = 80;
 	}
+
 	public Vector2 EndPos = Vector2.Zero;
 	public NPC Owner = new NPC();
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		int index = (int)Projectile.ai[0];
@@ -39,6 +42,7 @@ public class AcytaeaMagicArraySword : ModProjectile
 			Projectile.Kill();
 		}
 	}
+
 	public override void AI()
 	{
 		if (Owner == null || !Owner.active)
@@ -57,6 +61,7 @@ public class AcytaeaMagicArraySword : ModProjectile
 		CheckFrame();
 		GenerateVFX();
 	}
+
 	public override void OnKill(int timeLeft)
 	{
 		foreach (var proj in Main.projectile)
@@ -78,14 +83,17 @@ public class AcytaeaMagicArraySword : ModProjectile
 			}
 		}
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;
 	}
+
 	public override bool ShouldUpdatePosition()
 	{
 		return false;
 	}
+
 	public void DrawLaser(Texture2D tex, Color color, float width = 36)
 	{
 		var c0 = color;
@@ -114,6 +122,7 @@ public class AcytaeaMagicArraySword : ModProjectile
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 	}
+
 	public void GenerateVFX()
 	{
 		for (int x = 0; x < 4; x++)
@@ -133,6 +142,7 @@ public class AcytaeaMagicArraySword : ModProjectile
 			Ins.VFXManager.Add(acytaeaFlame);
 		}
 	}
+
 	private void CheckFrame()
 	{
 		Projectile.frameCounter++;
@@ -149,6 +159,7 @@ public class AcytaeaMagicArraySword : ModProjectile
 			Projectile.frameCounter = 0;
 		}
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
 		SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;

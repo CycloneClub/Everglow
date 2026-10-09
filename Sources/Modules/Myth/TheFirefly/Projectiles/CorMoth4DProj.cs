@@ -28,6 +28,7 @@ public class CorMoth4DProj : ModProjectile
 	}
 
 	private NPC Owner => Main.npc[(int)Projectile.ai[0]];
+
 	public Vector4 targetPos;
 	private Vector4 v4Position;
 	private int maxTimeleft;
@@ -137,6 +138,7 @@ public class CorMoth4DProj : ModProjectile
 		}
 		return false;
 	}
+
 	public void DrawTexLine(Vector2 StartPos, Vector2 EndPos, Color color1, Color color2, Texture2D tex, float AddValue = 0)
 	{
 		float Wid = 24f;
@@ -174,6 +176,7 @@ public class CorMoth4DProj : ModProjectile
 		Main.graphics.GraphicsDevice.Textures[0] = tex;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, vertex2Ds.ToArray(), 0, vertex2Ds.Count - 2);
 	}
+
 	private Vector3 Projection(Vector4 vec, float viewZ)
 	{
 		float k1 = -viewZ / (vec.W - viewZ);

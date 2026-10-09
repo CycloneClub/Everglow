@@ -33,10 +33,12 @@ public class WaveLeafFlower4x6 : ModTile, ITileFluentlyDrawn
 		DustType = ModContent.DustType<LampGrassDust>();
 		AddMapEntry(new Color(30, 39, 77));
 	}
+
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		return false;
 	}
+
 	public void FluentDraw(Vector2 screenPosition, Point pos, SpriteBatch spriteBatch, TileDrawing tileDrawing)
 	{
 		var drawCenterPos = pos.ToWorldCoordinates(autoAddY: 16) - screenPosition;
@@ -72,6 +74,7 @@ public class WaveLeafFlower4x6 : ModTile, ITileFluentlyDrawn
 		// front
 		DrawLeaf(new Rectangle(frameX, 118, 64, 28), 0.018f, SwayHitboxPos(1, -1), PaintPos(1, -1), new Vector2(32, 28), new Vector2(24, 16), 1, 2, drawInfo);
 	}
+
 	/// <summary>
 	/// 绘制一个树枝和叶子
 	/// </summary>
@@ -138,6 +141,7 @@ public class WaveLeafFlower4x6 : ModTile, ITileFluentlyDrawn
 			spriteBatch.Draw(tex, drawCenterPos + offset, frame, new Color(1f, 1f, 1f, 0) * adjustingColor, rotation, drawOrigin + new Vector2(30), 1f, tileSpriteEffect, 0f);
 		}
 	}
+
 	/// <summary>
 	/// 绘制一个树枝和叶子
 	/// </summary>
@@ -165,6 +169,7 @@ public class WaveLeafFlower4x6 : ModTile, ITileFluentlyDrawn
 		}
 		return bone.RotatedBy(rotation) - bone;
 	}
+
 	public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		Tile tile = Main.tile[i, j];

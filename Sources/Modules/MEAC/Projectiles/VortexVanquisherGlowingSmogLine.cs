@@ -12,6 +12,7 @@ public class VortexVanquisherGlowingSmogLinePipeline : Pipeline// 这个绘制�
 		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_flame_0.Value);
 		effect.Value.Parameters["uLine"].SetValue(Commons.ModAsset.TrailV.Value);
 	}
+
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
@@ -29,10 +30,12 @@ public class VortexVanquisherGlowingSmogLinePipeline : Pipeline// 这个绘制�
 		Ins.Batch.End();
 	}
 }
+
 [Pipeline(typeof(VortexVanquisherGlowingSmogLinePipeline))]
 public class VortexVanquisherGlowingSmogLine_front : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
+
 	public List<Vector2> oldPos = new List<Vector2>();
 	public Vector2 position;
 	public Vector2 velocity;
@@ -41,6 +44,7 @@ public class VortexVanquisherGlowingSmogLine_front : Visual
 	public float maxTime;
 	public float scale;
 	public float alpha;
+
 	public VortexVanquisherGlowingSmogLine_front() { }
 
 	public override void Update()

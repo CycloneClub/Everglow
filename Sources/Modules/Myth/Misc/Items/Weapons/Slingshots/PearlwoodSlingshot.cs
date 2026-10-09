@@ -11,6 +11,7 @@ public class PearlwoodSlingshot : SlingshotItem
 		Item.useTime = 21;
 		Item.useAnimation = 21;
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

@@ -2,6 +2,7 @@ using Everglow.Food.Buffs.ModDrinkBuffs;
 using Everglow.Food.FoodUtilities;
 using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
+
 namespace Everglow.Food.Items.ModDrink;
 
 public class RedWine : DrinkBase
@@ -19,6 +20,7 @@ public class RedWine : DrinkBase
 			};
 		}
 	}
+
 	public override void SetStaticDefaults()
 	{
 		CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 5;
@@ -32,6 +34,7 @@ public class RedWine : DrinkBase
 
 		ItemID.Sets.IsFood[Type] = true;
 	}
+
 	public override void SetDefaults()
 	{
 		Item.DefaultToFood(22, 22, BuffID.WellFed3, 57600);

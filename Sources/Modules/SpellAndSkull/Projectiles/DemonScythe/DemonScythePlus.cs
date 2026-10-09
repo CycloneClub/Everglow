@@ -144,6 +144,7 @@ public class DemonScythePlus : ModProjectile
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, circle.ToArray(), 0, circle.Count - 2);
 		}
 	}
+
 	private void DrawTexMoon(VFXBatch spriteBatch, float radius, float width, Color color, Vector2 center, Texture2D tex, double addRot = 0)
 	{
 		var circle = new List<Vertex2D>();
@@ -163,6 +164,7 @@ public class DemonScythePlus : ModProjectile
 			spriteBatch.Draw(tex, circle, PrimitiveType.TriangleStrip);
 		}
 	}
+
 	private Vector2 RotAndEclipse(Vector2 orig)
 	{
 		return new Vector2(orig.X, orig.Y * 0.6f).RotatedBy(Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X));

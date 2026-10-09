@@ -6,6 +6,7 @@ internal class BoneRingPipeline : Pipeline
 	{
 		effect = ModAsset.BoneRing;
 	}
+
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
@@ -27,6 +28,7 @@ internal class BoneRingPipeline : Pipeline
 		Ins.Batch.End();
 	}
 }
+
 [Pipeline(typeof(BoneRingPipeline))]
 internal class BoneFeatherMagicArray : VisualProjectile
 {
@@ -36,6 +38,7 @@ internal class BoneFeatherMagicArray : VisualProjectile
 	public Vector2 ringPos = Vector2.Zero;
 
 	public override string Texture => "Everglow/" + ModAsset.BoneFeatherMagic_Path;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 28;
@@ -47,10 +50,12 @@ internal class BoneFeatherMagicArray : VisualProjectile
 		Projectile.tileCollide = false;
 		base.SetDefaults();
 	}
+
 	public override bool? CanCutTiles()
 	{
 		return false;
 	}
+
 	public override void AI()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -138,12 +143,15 @@ internal class BoneFeatherMagicArray : VisualProjectile
 			timer = 30;
 		}
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Projectile.hide = false;
 		return false;
 	}
+
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawTiles;
+
 	public override void Draw()
 	{
 		Vector2 toBottom = new Vector2(0, 40);
@@ -164,9 +172,11 @@ internal class BoneFeatherMagicArray : VisualProjectile
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);
 	}
 }
+
 internal class BoneFeatherOwner : ModPlayer
 {
 	public bool HasBoneWing = false;
+
 	public override void PostUpdateMiscEffects()
 	{
 		if (HasBoneWing)

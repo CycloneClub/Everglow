@@ -66,6 +66,7 @@ public class DarkTaro : ModTile, ITileFluentlyDrawn
 		DrawShrubPiece(Frame(384), 0.053f, SwayHitboxPos(1), PaintPos(3), drawInfo);
 		DrawShrubPiece(Frame(480), 0, SwayHitboxPos(-1), PaintPos(2), drawInfo);
 	}
+
 	/// <summary>
 	/// 绘制灌木的一个小Piece
 	/// </summary>

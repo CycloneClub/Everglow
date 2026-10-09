@@ -25,6 +25,7 @@ public class RampageShark : ModItem
 	// C满值是攻速为200%
 	public float CrazyValue = 0; // C
 	public int ShootType = 0;
+
 	public override void SetDefaults()
 	{
 		Item.damage = 88;
@@ -60,6 +61,7 @@ public class RampageShark : ModItem
 			}
 		}
 	}
+
 	public override void HoldItem(Player player)
 	{
 		if (player.controlUseItem && player.ownedProjectileCounts[ModContent.ProjectileType<Projectiles.Weapons.RampageShark>()] > 0)
@@ -74,6 +76,7 @@ public class RampageShark : ModItem
 			}
 		}
 	}
+
 	public override bool CanUseItem(Player player)
 	{
 		if (player.controlUseItem)
@@ -85,6 +88,7 @@ public class RampageShark : ModItem
 			return CrazyValue == 0;
 		}
 	}
+
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		ShootType = type;
@@ -101,6 +105,7 @@ public class RampageShark : ModItem
 
 		return false;
 	}
+
 	public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
 	{
 		Texture2D texMainG = OceanContent.QuickTexture("Projectiles/Weapons/RampageShark/RampageShark_glow");
@@ -117,6 +122,7 @@ public class RampageShark : ModItem
 			Main.spriteBatch.Draw(TexEye, position, frame, new Color(1f, 1f, 1f, 1f), 0, origin, scale, SpriteEffects.None, 0);
 		}
 	}
+
 	public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 	{
 		Texture2D texMainG = OceanContent.QuickTexture("Projectiles/Weapons/RampageShark/RampageShark_glow");
@@ -149,6 +155,7 @@ public class RampageShark : ModItem
 	{
 		return Main.rand.NextBool(4);
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

@@ -9,6 +9,7 @@ public class DarkPoppy : ModItem
 		// DisplayName.SetDefault("Poppy");
 		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "暗红帽");
 	}
+
 	public override void SetDefaults()
 	{
 		Item.width = 24;

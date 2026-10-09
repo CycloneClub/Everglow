@@ -37,6 +37,7 @@ namespace Everglow.Myth.TheFirefly.Items.Potions
 		{
 			// TODO: Use actual tooltips
 		}
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();

@@ -6,6 +6,7 @@ namespace Everglow.AssetReplace.SoundReplace;
 public abstract class SoundModifyGlobal : GlobalItem, IModifyItemPickSound
 {
 	public abstract SoundStyle PickSound();
+
 	public abstract string TxtFileName();
 
 	private int[] ItemIDs = Array.Empty<int>();
@@ -26,6 +27,7 @@ public abstract class SoundModifyGlobal : GlobalItem, IModifyItemPickSound
 			SoundEngine.PlaySound(PickSound());
 		}
 	}
+
 	public void Dispose()
 	{
 	}
@@ -198,6 +200,7 @@ public class WaterBucketPickSoundModify : SoundModifyGlobal
 
 	public override string TxtFileName() => "WaterBucketSoundID";
 }
+
 public class LavaBucketPickSoundModify : SoundModifyGlobal
 {
 	public override SoundStyle PickSound() => new($"Everglow/AssetReplace/Resources/Sounds/PickSound/LavaBucket", SoundType.Sound)

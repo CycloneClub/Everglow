@@ -46,6 +46,7 @@ public class PalladiumClub_small : ModProjectile, IWarpProjectile
 	/// 拖尾
 	/// </summary>
 	internal Queue<Vector2> trailVecs;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 80;
@@ -63,19 +64,24 @@ public class PalladiumClub_small : ModProjectile, IWarpProjectile
 
 		trailVecs = new Queue<Vector2>(trailLength + 1);
 	}
+
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		hit.HitDirection = target.Center.X > Main.player[Projectile.owner].Center.X ? 1 : -1;
 	}
+
 	public BlendState TrailBlendState()
 	{
 		return BlendState.AlphaBlend;
 	}
+
 	public string TrailShapeTex()
 	{
 		return Commons.ModAsset.Melee_Mod;
 	}
+
 	public float HealValue = 0;
+
 	public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 	{
 		float power = Math.Max(StrikeOmegaDecrease - MathF.Pow(target.knockBackResist / 4f, 3), MinStrikeOmegaDecrease);
@@ -88,10 +94,12 @@ public class PalladiumClub_small : ModProjectile, IWarpProjectile
 		modifiers.FinalDamage /= power;
 		modifiers.Knockback *= Omega * 3;
 	}
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		MaxOmega = Projectile.ai[0];
 	}
+
 	public override void AI()
 	{
 		if (DamageStartValue == 0)
@@ -176,6 +184,7 @@ public class PalladiumClub_small : ModProjectile, IWarpProjectile
 
 		ProduceWaterRipples(new Vector2(HitLength * Projectile.scale));
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		SpriteEffects effects = SpriteEffects.None;
@@ -197,9 +206,11 @@ public class PalladiumClub_small : ModProjectile, IWarpProjectile
 		PostPreDraw();
 		return false;
 	}
+
 	public void PostPreDraw()
 	{
 	}
+
 	public void DrawTrail()
 	{
 		List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(trailVecs.ToList()); // 平滑
@@ -263,6 +274,7 @@ public class PalladiumClub_small : ModProjectile, IWarpProjectile
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(sBS);
 	}
+
 	public void DrawWarp(VFXBatch spriteBatch)
 	{
 		List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(trailVecs.ToList()); // 平滑
@@ -381,12 +393,14 @@ public class PalladiumClub_small : ModProjectile, IWarpProjectile
 
 		spriteBatch.Draw(ModContent.Request<Texture2D>(Commons.ModAsset.Melee_Warp_Mod).Value, bars, PrimitiveType.TriangleStrip);
 	}
+
 	public float TrailAlpha(float factor)
 	{
 		float w;
 		w = MathHelper.Lerp(0f, 1, factor);
 		return w;
 	}
+
 	public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 	{
 		float point = 0;
@@ -398,6 +412,7 @@ public class PalladiumClub_small : ModProjectile, IWarpProjectile
 
 		return false;
 	}
+
 	private void ProduceWaterRipples(Vector2 beamDims)
 	{
 		var shaderData = (WaterShaderData)Terraria.Graphics.Effects.Filters.Scene["WaterDistortion"].GetShader();
@@ -409,6 +424,7 @@ public class PalladiumClub_small : ModProjectile, IWarpProjectile
 		shaderData.QueueRipple(ripplePos, waveData, beamDims, RippleShape.Square, Projectile.rotation + MathHelper.Pi / 2f);
 		shaderData.QueueRipple(ripplePosII, waveData, beamDims, RippleShape.Square, Projectile.rotation + MathHelper.Pi / 2f);
 	}
+
 	public override void OnKill(int timeLeft)
 	{
 		Player player = Main.player[Projectile.owner];

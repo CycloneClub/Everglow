@@ -38,10 +38,12 @@ public class LampWoodCandle : ModTile
 		LocalizedText name = CreateMapEntryName();
 		AddMapEntry(new Color(69, 36, 78), name);
 	}
+
 	public override void NumDust(int i, int j, bool fail, ref int num)
 	{
 		num = 0;
 	}
+
 	public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 	{
 		r = 1f;
@@ -53,10 +55,12 @@ public class LampWoodCandle : ModTile
 	{
 		FurnitureUtils.LightHitwire(i, j, Type, 1, 1);
 	}
+
 	public override void NearbyEffects(int i, int j, bool closer)
 	{
 		Tile tile = Main.tile[i, j];
 	}
+
 	public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		var zero = new Vector2(Main.offScreenRange, Main.offScreenRange);

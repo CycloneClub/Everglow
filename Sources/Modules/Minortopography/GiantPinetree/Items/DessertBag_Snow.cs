@@ -26,6 +26,7 @@ public class DessertBag_Snow : ModItem
 	{
 		return true;
 	}
+
 	public override void ModifyItemLoot(ItemLoot itemLoot)
 	{
 		IItemDropRule[] oreBars = new IItemDropRule[]

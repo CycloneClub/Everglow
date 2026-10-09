@@ -17,6 +17,7 @@ public class ToothMagicBall : ModProjectile
 		Projectile.penetrate = -1;
 		Projectile.scale = 1;
 	}
+
 	public override void AI()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -50,6 +51,7 @@ public class ToothMagicBall : ModProjectile
 			Energy *= 0.7f;
 		}
 	}
+
 	private Vector2[] VB = new Vector2[4];
 	private Vector2[] VT = new Vector2[10];
 	private Vector2[] VTMax = new Vector2[10];
@@ -113,7 +115,9 @@ public class ToothMagicBall : ModProjectile
 		Main.spriteBatch.Draw(TT8, player.Center + VT[8] + new Vector2(28 * player.direction, -5) - Main.screenPosition, null, c0, 0, drawOrigin, 1, sp, 0);
 		Main.spriteBatch.Draw(TT9, player.Center + VT[9] + new Vector2(28 * player.direction, -5) - Main.screenPosition, null, c0, 0, drawOrigin, 1, sp, 0);
 	}
+
 	public float Energy = 0;
+
 	public void DrawPowerEffect()
 	{
 		Player player = Main.player[Projectile.owner];

@@ -11,6 +11,7 @@ public class FlowerBrochure : ModItem
 		// Tooltip.SetDefault("Allows you to collect wild flowers while in inventory");
 		// Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "携带后可以收集野花");
 	}
+
 	public override void SetDefaults()
 	{
 		Item.width = 24;
@@ -20,6 +21,7 @@ public class FlowerBrochure : ModItem
 		Item.rare = ItemRarityID.Blue;
 		Item.material = true;
 	}
+
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
 		player.GetModPlayer<PAFPlayer>().FlowerBrochure = !hideVisual;

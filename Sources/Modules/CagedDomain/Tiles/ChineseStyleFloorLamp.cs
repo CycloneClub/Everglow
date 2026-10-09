@@ -28,6 +28,7 @@ public class ChineseStyleFloorLamp : ModTile
 		DustType = DustID.DynastyWood;
 		AddMapEntry(new Color(135, 103, 90));
 	}
+
 	public override void NearbyEffects(int i, int j, bool closer)
 	{
 		if (Main.tile[i, j].TileFrameX < 40 && Main.tile[i, j].TileFrameY < 40)
@@ -35,10 +36,12 @@ public class ChineseStyleFloorLamp : ModTile
 			Lighting.AddLight(new Vector2(i * 16, j * 16), new Vector3(1f, 0.8f, 0.5f));
 		}
 	}
+
 	public override void NumDust(int i, int j, bool fail, ref int num)
 	{
 		num = 0;
 	}
+
 	public override void HitWire(int i, int j)
 	{
 		int k = i;

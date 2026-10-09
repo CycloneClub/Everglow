@@ -32,21 +32,26 @@ public class StrangeTuskStone3 : ModTile
 		AddMapEntry(new Color(100, 90, 90), modTranslation);
 		HitSound = SoundID.DD2_SkeletonHurt;
 	}
+
 	public override void NumDust(int i, int j, bool fail, ref int num)
 	{
 		num = fail ? 1 : 3;
 	}
+
 	public override void NearbyEffects(int i, int j, bool closer)
 	{
 	}
+
 	public override bool CanExplode(int i, int j)
 	{
 		return false;
 	}
+
 	public override bool CanKillTile(int i, int j, ref bool blockDamaged)
 	{
 		return false;
 	}
+
 	public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		Tile tile = Main.tile[i, j];

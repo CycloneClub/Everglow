@@ -9,6 +9,7 @@ namespace Everglow.SpellAndSkull.Projectiles.MagnetSphere;
 public class MagnetSphereLighting : ModProjectile, IWarpProjectile
 {
 	public override bool CloneNewInstances => false;
+
 	public override bool IsCloneable => false;
 
 	public override void SetDefaults()
@@ -26,6 +27,7 @@ public class MagnetSphereLighting : ModProjectile, IWarpProjectile
 		Projectile.localNPCHitCooldown = 6;
 		Projectile.DamageType = DamageClass.Magic;
 	}
+
 	public void GenerateVFXExpolode(int Frequency, float mulVelocity = 1f)
 	{
 		for (int g = 0; g < Frequency * 3; g++)
@@ -57,10 +59,12 @@ public class MagnetSphereLighting : ModProjectile, IWarpProjectile
 			Ins.VFXManager.Add(me);
 		}
 	}
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		GenerateVFXExpolode(2, 0.6f);
 	}
+
 	public override void AI()
 	{
 		Projectile.velocity *= 0.95f;
@@ -85,6 +89,7 @@ public class MagnetSphereLighting : ModProjectile, IWarpProjectile
 		float dark = Math.Max((Projectile.timeLeft - 150) / 50f, 0);
 		Main.spriteBatch.Draw(Shadow, Projectile.Center - Main.screenPosition, null, new Color(0, 199, 129, 0) * dark, 0, Shadow.Size() / 2f, 22 / 15f * dark, SpriteEffects.None, 0);
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Main.spriteBatch.End();
@@ -114,7 +119,9 @@ public class MagnetSphereLighting : ModProjectile, IWarpProjectile
 		Main.spriteBatch.Draw(light, Projectile.Center - Main.screenPosition, null, new Color(0, 199, 129, 0), (float)(Math.PI / 4d * 3) + Projectile.ai[1], light.Size() / 2f, new Vector2(0.6f, dark / 0f), SpriteEffects.None, 0);
 		return false;
 	}
+
 	internal Vector2[] LightPos = new Vector2[30];
+
 	private void DrawLightingBolt(Color c0)
 	{
 		var BasePos = new Vector2[30];
@@ -227,6 +234,7 @@ public class MagnetSphereLighting : ModProjectile, IWarpProjectile
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, lighting.ToArray(), 0, lighting.Count - 2);
 		}
 	}
+
 	public void DrawWarp(VFXBatch spriteBatch)
 	{
 		float value = (200 - Projectile.timeLeft) / (float)Projectile.timeLeft * 1.4f;

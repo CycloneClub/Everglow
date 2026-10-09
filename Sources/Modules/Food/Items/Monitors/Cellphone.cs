@@ -16,6 +16,7 @@ public class Cellphone : GlobalItem
 		}
 	}
 }
+
 public class CellphoneRecipe : ModSystem
 {
 	public override void PostAddRecipes()

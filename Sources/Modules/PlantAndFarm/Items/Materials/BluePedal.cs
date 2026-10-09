@@ -9,6 +9,7 @@ public class BluePedal : ModItem
 		// DisplayName.SetDefault("Blue Borage");
 		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "琉天苣");
 	}
+
 	public override void SetDefaults()
 	{
 		Item.width = 26;

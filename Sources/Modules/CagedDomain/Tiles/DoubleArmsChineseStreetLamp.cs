@@ -33,10 +33,12 @@ public class DoubleArmsChineseStreetLamp : ModTile, ITileFluentlyDrawn
 		DustType = DustID.DynastyWood;
 		AddMapEntry(new Color(135, 103, 90));
 	}
+
 	public override void HitWire(int i, int j)
 	{
 		FurnitureUtils.LightHitwire(i, j, Type, 3, 5);
 	}
+
 	public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 	{
 		var tile = Main.tile[i, j];
@@ -53,6 +55,7 @@ public class DoubleArmsChineseStreetLamp : ModTile, ITileFluentlyDrawn
 			b = 0f;
 		}
 	}
+
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		var tile = Main.tile[i, j];
@@ -99,6 +102,7 @@ public class DoubleArmsChineseStreetLamp : ModTile, ITileFluentlyDrawn
 			DrawLanternPiece(new Rectangle(4 + addRecX, 90, 10, 10), secondSway, new Vector2(32, 18) + firstOffsetRight, pos + new Point(2, 2), pos + new Point(0, 1), drawCenterPos, new Vector2(5, 0), spriteBatch, tileDrawing, new Color(1f, 0.5f, 0f, 0));
 		}
 	}
+
 	public float GetWindRot(int x, int y, int width, int height, float swayCoefficient, TileDrawing tileDrawing)
 	{
 		float windCycle = 0;
@@ -113,6 +117,7 @@ public class DoubleArmsChineseStreetLamp : ModTile, ITileFluentlyDrawn
 		windCycle += highestWindGridPushComplex;
 		return -windCycle * swayCoefficient;
 	}
+
 	public float GetWindRot(Point pos, int width, int height, float swayCoefficient, TileDrawing tileDrawing)
 	{
 		float windCycle = 0;
@@ -127,6 +132,7 @@ public class DoubleArmsChineseStreetLamp : ModTile, ITileFluentlyDrawn
 		windCycle += highestWindGridPushComplex;
 		return -windCycle * swayCoefficient;
 	}
+
 	/// <summary>
 	/// 画侧挂灯
 	/// </summary>

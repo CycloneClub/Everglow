@@ -10,10 +10,12 @@ public class BurningFrozenHeart : ModItem
 	public static readonly int ResourceBoost = 100;
 
 	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(ResourceBoost);
+
 	public override void SetStaticDefaults()
 	{
 		Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 7));
 	}
+
 	public override void SetDefaults()
 	{
 		Item.width = 26;
@@ -31,6 +33,7 @@ public class BurningFrozenHeart : ModItem
 		player.buffImmune[BuffID.Frozen] = true;
 		player.buffImmune[BuffID.Chilled] = true;
 	}
+
 	public override void Update(ref float gravity, ref float maxFallSpeed)
 	{
 		Lighting.AddLight(Item.Center, 0, 0.6f, 1.2f);

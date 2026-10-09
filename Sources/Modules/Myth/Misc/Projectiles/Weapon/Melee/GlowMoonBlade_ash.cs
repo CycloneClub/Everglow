@@ -3,6 +3,7 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee
 	public class GlowMoonBlade_ash : ModProjectile
 	{
 		public override string Texture => Commons.ModAsset.StabbingProjectile_Mod;
+
 		public override void SetDefaults()
 		{
 			Projectile.width = 40;
@@ -17,10 +18,12 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee
 			Projectile.timeLeft = 255; // 存在时间，60是1秒
 			Projectile.extraUpdates = 12;
 		}
+
 		public override void AI()
 		{
 			Projectile.velocity *= 0;
 		}
+
 		public override bool PreDraw(ref Color lightColor)
 		{
 			float energyValue = Projectile.timeLeft / 300f;
@@ -37,6 +40,7 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee
 			Main.spriteBatch.Draw(light, Projectile.Center - Main.screenPosition, null, c0, Projectile.rotation, light.Size() / 2f, size, SpriteEffects.None, 0);
 			return false;
 		}
+
 		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 		{
 			bool b0 = Collision.CheckAABBvLineCollision2(targetHitbox.TopLeft(), new Vector2(targetHitbox.Width, targetHitbox.Height), Projectile.Center + new Vector2(0, -100).RotatedBy(Projectile.rotation) * Projectile.scale, Projectile.Center + new Vector2(0, 100).RotatedBy(Projectile.rotation) * Projectile.scale);

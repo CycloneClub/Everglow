@@ -8,6 +8,7 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 internal class ShadowWingBow : ModProjectile
 {
 	private FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
+
 	public override string Texture => "Everglow/Myth/TheFirefly/Projectiles/ShadowWingBowTex/ShadowWingBowMain";
 
 	public override void SetDefaults()
@@ -24,6 +25,7 @@ internal class ShadowWingBow : ModProjectile
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 40;
 	}
+
 	public override Color? GetAlpha(Color lightColor)
 	{
 		return new Color(255 - Projectile.alpha, 255 - Projectile.alpha, 255 - Projectile.alpha, 0);

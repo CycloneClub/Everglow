@@ -9,10 +9,13 @@ namespace Everglow.SpellAndSkull.Projectiles.CursedFlames;
 internal abstract class ShaderDraw : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
+
 	public Vector2 position;
 	public Vector2 velocity;
 	public float[] ai;
+
 	public ShaderDraw() { }
+
 	public ShaderDraw(Vector2 position, Vector2 velocity, params float[] ai)
 	{
 		this.position = position;
@@ -27,6 +30,7 @@ internal class CursedFlamePipeline : Pipeline
 	{
 		effect = ModAsset.CursedFlame;
 	}
+
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
@@ -45,6 +49,7 @@ internal class CursedFlamePipeline : Pipeline
 		Ins.Batch.End();
 	}
 }
+
 [Pipeline(typeof(Commons.VFX.CommonVFXDusts.CurseFlamePipeline), typeof(BloomPipeline))]
 internal class CursedFlameDust : ShaderDraw
 {
@@ -52,7 +57,9 @@ internal class CursedFlameDust : ShaderDraw
 	public List<Vector2> oldPos = new List<Vector2>();
 	public float timer;
 	public float maxTime;
+
 	public CursedFlameDust() { }
+
 	public CursedFlameDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai) : base(position, velocity, ai)
 	{
 		this.maxTime = maxTime;

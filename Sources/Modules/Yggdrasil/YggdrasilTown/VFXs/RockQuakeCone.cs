@@ -24,6 +24,7 @@ public class RockQuakeConePipeline : Pipeline
 		Ins.Batch.End();
 	}
 }
+
 [Pipeline(typeof(RockQuakeConePipeline))]
 public class RockQuakeCone : Visual
 {

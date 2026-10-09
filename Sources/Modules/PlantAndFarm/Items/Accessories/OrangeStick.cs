@@ -13,6 +13,7 @@ public class OrangeStick : ModItem
 		// Tooltip.SetDefault("After struck, grants 5 defence and immunity to knockback for 3s\n'Different from most grasses, it stands fast when wind blows fiercely'");
 		// Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "受击后3秒获得5防御力和击退免疫\n'与大多数草不同,它在狂风中坚挺而不折腰'");
 	}
+
 	public override void SetDefaults()
 	{
 		Item.width = 10;
@@ -21,6 +22,7 @@ public class OrangeStick : ModItem
 		Item.accessory = true;
 		Item.rare = 3;
 	}
+
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
 		// MythPlayer.OrangeStick = 2;
@@ -30,6 +32,7 @@ public class OrangeStick : ModItem
 		player.noKnockback = true;
 		// }
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

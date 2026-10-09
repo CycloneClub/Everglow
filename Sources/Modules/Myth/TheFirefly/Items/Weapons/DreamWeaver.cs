@@ -27,6 +27,7 @@ public class DreamWeaver : SpellTomeItem// TODO:织梦丝雨
 		DecorativeProjectileTypes.Add(ModContent.ProjectileType<TheFirefly.Projectiles.DreamWeaver.DreamWeaverBook>());
 		DecorativeProjectileTypes.Add(ModContent.ProjectileType<TheFirefly.Projectiles.DreamWeaver.DreamWeaverArray>());
 	}
+
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		if (player.GetModPlayer<SpellAndSkull.GlobalItems.MagicBookPlayer>().MagicBookLevel > 0)
@@ -35,6 +36,7 @@ public class DreamWeaver : SpellTomeItem// TODO:织梦丝雨
 		}
 		return base.Shoot(player, source, position, velocity, type, damage, knockback);
 	}
+
 	public override void HoldItem(Player player)
 	{
 		if (player.ownedProjectileCounts[ModContent.ProjectileType<DreamWeaverBall>()] < 1 && player.GetModPlayer<SpellAndSkull.GlobalItems.MagicBookPlayer>().MagicBookLevel > 0)

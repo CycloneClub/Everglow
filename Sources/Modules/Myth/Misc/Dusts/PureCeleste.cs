@@ -9,6 +9,7 @@ public class PureCeleste : ModDust
 		dust.scale *= 1f;
 		dust.alpha = 0;
 	}
+
 	public override bool Update(Dust dust)
 	{
 		dust.position += dust.velocity;
@@ -25,6 +26,7 @@ public class PureCeleste : ModDust
 
 		return false;
 	}
+
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		return new Color?(new Color(0f, 0f, 0.9f, 0f));

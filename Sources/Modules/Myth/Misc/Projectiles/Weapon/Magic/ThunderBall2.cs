@@ -22,7 +22,9 @@ public class ThunderBall2 : ModProjectile
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 60;
 	}
+
 	private int Tokill = -1;
+
 	public override void AI()
 	{
 		Projectile.velocity = Projectile.velocity.RotatedBy(Main.rand.NextFloat(Main.rand.NextFloat(-10f / Projectile.timeLeft, 0f), Main.rand.NextFloat(0f, 10f / Projectile.timeLeft)));
@@ -50,7 +52,9 @@ public class ThunderBall2 : ModProjectile
 			}
 		}
 	}
+
 	private bool Nul = false;
+
 	public override Color? GetAlpha(Color lightColor)
 	{
 		if (!Nul)
@@ -62,6 +66,7 @@ public class ThunderBall2 : ModProjectile
 			return new Color?(new Color(Tokill / 45f, Tokill / 45f, Tokill / 45f, 0));
 		}
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
 		Projectile.ai[0] = Tokill;

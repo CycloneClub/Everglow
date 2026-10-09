@@ -305,37 +305,55 @@ public class EventSystemTest
 	private sealed class TestEvent : ModEvent
 	{
 		public bool Background;
+
 		public override bool IsBackground => Background;
+
 		public int Draws;
+
 		public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch sprite) => Draws++;
+
 		private readonly string name = Guid.NewGuid().ToString("N");
+
 		public override string Name => name;
+
 		public bool Synchronize;
+
 		public override bool Networked => Synchronize;
+
 		public int Value;
 		public int ClientUpdates;
+
 		public override void PostUpdateEverythingClient() => ClientUpdates++;
+
 		public override void NetSend(BinaryWriter writer) => writer.Write(Value);
+
 		public override void NetReceive(BinaryReader reader) => Value = reader.ReadInt32();
+
 		public override void ClearWorld()
 		{
 			base.ClearWorld();
 			Value = 0;
 		}
+
 		public int Kills;
 		public NPC? LastKilled;
 		public Action? OnKilled;
+
 		public override void OnNPCKilled(NPC npc)
 		{
 			Kills++;
 			LastKilled = npc;
 			OnKilled?.Invoke();
 		}
+
 		public int Activations;
 		public int Updates;
 		public bool StopOnUpdate;
+
 		public override bool CanActivate(params object[] args) => true;
+
 		public override void OnActivate(params object[] args) => Activations++;
+
 		public override void PostUpdateEverything()
 		{
 			Updates++;

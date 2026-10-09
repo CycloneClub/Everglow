@@ -10,6 +10,7 @@ public class VertexBase
 			new VertexElement(8, VertexElementFormat.Color, VertexElementUsage.Color, 0),
 			new VertexElement(12, VertexElementFormat.Vector3, VertexElementUsage.TextureCoordinate, 0),
 		});
+
 		public Vector2 Position;
 		public Color Color;
 		public Vector3 TexCoord;
@@ -29,6 +30,7 @@ public class VertexBase
 			}
 		}
 	}
+
 	public struct CustomVertexInfoFor3D : IVertexType
 	{
 		private static VertexDeclaration _vertexDeclaration = new VertexDeclaration(new VertexElement[3]
@@ -37,6 +39,7 @@ public class VertexBase
 			new VertexElement(12, VertexElementFormat.Vector3, VertexElementUsage.TextureCoordinate, 0),
 			new VertexElement(24, VertexElementFormat.Vector3, VertexElementUsage.Normal, 0),
 		});
+
 		public Vector3 Position;
 		public Vector3 Texcoord;
 		public Vector3 Normal;

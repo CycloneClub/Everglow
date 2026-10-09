@@ -16,14 +16,18 @@ internal class ImmuneCircle : ModProjectile
 		Projectile.tileCollide = false;
 		Projectile.DamageType = DamageClass.Magic;
 	}
+
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 	}
+
 	public override Color? GetAlpha(Color lightColor)
 	{
 		return new Color(0, 0, 0, 0);
 	}
+
 	private float ka = 1;
+
 	public override void AI()
 	{
 		if (Projectile.timeLeft < 60f)
@@ -95,15 +99,19 @@ internal class ImmuneCircle : ModProjectile
 		color0.A = (byte)(color0.A * 0.94f + Aimcolor.A * 0.06f);
 		kb *= 0.97f;
 	}
+
 	private Color color0 = new Color(0, 0, 0);
 	private Color Aimcolor = new Color(0, 0, 0);
 	private float kb = 1;
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;
 	}
+
 	private float CirR0 = 0;
 	private float CirPro0 = 0;
+
 	public override void PostDraw(Color lightColor)
 	{
 		CirR0 += 0.007f;

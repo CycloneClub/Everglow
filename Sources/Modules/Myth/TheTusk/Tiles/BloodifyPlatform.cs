@@ -32,15 +32,18 @@ public class BloodifyPlatform : ModTile
 		AddMapEntry(new Color(168, 11, 0), modTranslation);
 		HitSound = SoundID.Grass;
 	}
+
 	public override bool CreateDust(int i, int j, ref int type)
 	{
 		Dust.NewDust(new Vector2(i, j) * 16f, 16, 16, DustID.Blood, 0f, 0f, 1, Color.White, 1f);
 		return false;
 	}
+
 	public override void PostSetDefaults()
 	{
 		Main.tileNoSunLight[Type] = false;
 	}
+
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		if (Main.rand.NextBool(30))
@@ -55,6 +58,7 @@ public class BloodifyPlatform : ModTile
 
 		return base.PreDraw(i, j, spriteBatch);
 	}
+
 	public override void NumDust(int i, int j, bool fail, ref int num)
 	{
 		num = fail ? 1 : 3;

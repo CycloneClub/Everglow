@@ -14,6 +14,7 @@ public class FireFeather : ModDust
 		dust.color.A = (byte)Main.rand.Next(130, 205);
 		dust.rotation = Main.rand.NextFloat(6.283f);
 	}
+
 	public override bool Update(Dust dust)
 	{
 		var tile = Main.tile[(int)(dust.position.X / 16), (int)(dust.position.Y / 16)];
@@ -70,6 +71,7 @@ public class FireFeather : ModDust
 
 		return false;
 	}
+
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		var tile = Main.tile[(int)(dust.position.X / 16), (int)(dust.position.Y / 16)];

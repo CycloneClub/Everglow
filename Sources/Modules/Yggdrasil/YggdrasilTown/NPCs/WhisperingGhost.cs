@@ -14,6 +14,7 @@ public class WhisperingGhost : ModNPC
 		Main.npcFrameCount[NPC.type] = 9;
 		NPCSpawnManager.RegisterNPC(Type);
 	}
+
 	public override void SetDefaults()
 	{
 		NPC.width = 40;
@@ -30,6 +31,7 @@ public class WhisperingGhost : ModNPC
 		NPC.noGravity = true;
 		NPC.noTileCollide = false;
 	}
+
 	public override float SpawnChance(NPCSpawnInfo spawnInfo)
 	{
 		YggdrasilTownBiome YggdrasilTownBiome = ModContent.GetInstance<YggdrasilTownBiome>();
@@ -40,6 +42,7 @@ public class WhisperingGhost : ModNPC
 
 		return 3f;
 	}
+
 	public override void AI()
 	{
 		NPC.velocity = new Vector2(0, -1);
@@ -104,8 +107,10 @@ public class WhisperingGhost : ModNPC
 			dust.alpha = Main.rand.Next(0, 55);
 		}
 	}
+
 	private static Terraria.WorldBuilding.Conditions.NotNull _cachedConditions_notNull = new Terraria.WorldBuilding.Conditions.NotNull();
 	private static Terraria.WorldBuilding.Conditions.IsSolid _cachedConditions_solid = new Terraria.WorldBuilding.Conditions.IsSolid();
+
 	public override void FindFrame(int frameHeight)
 	{
 		frameHeight = 120;
@@ -120,6 +125,7 @@ public class WhisperingGhost : ModNPC
 			NPC.frame.Y = 0;
 		}
 	}
+
 	public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
 		Texture2D texture = ModAsset.WhisperingGhost.Value;
@@ -133,13 +139,16 @@ public class WhisperingGhost : ModNPC
 		spriteBatch.Draw(glow, NPC.Center - Main.screenPosition + new Vector2(0, 30), NPC.frame, new Color(1f, 1f, 1f, 0) * 0.6f, 0, NPC.frame.Size() * 0.5f, NPC.scale, spriteEffect, 0);
 		return false;
 	}
+
 	public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 	{
 		target.AddBuff(BuffID.Silenced, 180);
 	}
+
 	public override void OnSpawn(IEntitySource source)
 	{
 	}
+
 	public override void HitEffect(NPC.HitInfo hit)
 	{
 		for (int x = 0; x < 3; x++)
@@ -163,6 +172,7 @@ public class WhisperingGhost : ModNPC
 			dust.alpha = Main.rand.Next(0, 55);
 		}
 	}
+
 	public override void OnKill()
 	{
 		for (int x = 0; x < 40; x++)
@@ -186,6 +196,7 @@ public class WhisperingGhost : ModNPC
 			dust.alpha = Main.rand.Next(0, 55);
 		}
 	}
+
 	public override void ModifyNPCLoot(NPCLoot npcLoot)
 	{
 		npcLoot.Add(ItemDropRule.Common(ItemID.Megaphone, 50));

@@ -6,6 +6,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood;
 public class DarkForestGrass_grass_fore : TileVFX
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawPlayers;
+
 	public override void OnSpawn()
 	{
 		Texture = ModAsset.DarkForestGrass_grass.Value;

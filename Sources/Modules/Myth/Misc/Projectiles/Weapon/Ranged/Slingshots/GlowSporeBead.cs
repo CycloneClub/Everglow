@@ -11,6 +11,7 @@ public class GlowSporeBead : SlingshotAmmo
 	public override void SetDef()
 	{
 	}
+
 	public override void AI()
 	{
 		if (TimeTokill >= 0 && TimeTokill <= 2)
@@ -57,6 +58,7 @@ public class GlowSporeBead : SlingshotAmmo
 			Projectile.velocity *= 0f;
 		}
 	}
+
 	public override void DrawTrail()
 	{
 		DrawShade();
@@ -133,6 +135,7 @@ public class GlowSporeBead : SlingshotAmmo
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 	}
+
 	private void DrawShade()
 	{
 		var bars = new List<Vertex2D>();
@@ -205,6 +208,7 @@ public class GlowSporeBead : SlingshotAmmo
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 	}
+
 	public override void AmmoHit()
 	{
 		SoundEngine.PlaySound(SoundID.Drip, Projectile.Center);
@@ -224,10 +228,12 @@ public class GlowSporeBead : SlingshotAmmo
 			Main.dust[r2].noGravity = true;
 		}
 	}
+
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		target.AddBuff(BuffID.Poisoned, 540);
 	}
+
 	public override void OnHitPlayer(Player target, Player.HurtInfo info)
 	{
 		target.AddBuff(BuffID.Poisoned, 540);

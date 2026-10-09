@@ -7,6 +7,7 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 public class GlowWoodSword : ModProjectile
 {
 	private FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 16;
@@ -45,14 +46,17 @@ public class GlowWoodSword : ModProjectile
 
 		Projectile.rotation = (float)(Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + Math.PI * 0.25);
 	}
+
 	public override bool? CanDamage()
 	{
 		return true;
 	}
+
 	public override bool? CanHitNPC(NPC target)
 	{
 		return true;
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		float k0 = Projectile.timeLeft / 60f;
@@ -93,6 +97,7 @@ public class GlowWoodSword : ModProjectile
 
 		return true;
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
 		Texture2D Light = ModAsset.Projectiles_GlowWoodSword.Value;
@@ -106,6 +111,7 @@ public class GlowWoodSword : ModProjectile
 		// Main.spriteBatch.Draw(TextureAssets.MagicPixel.Value,rt,new Color(55,0,0,0));
 		base.PostDraw(lightColor);
 	}
+
 	public override void OnKill(int timeLeft)
 	{
 	}

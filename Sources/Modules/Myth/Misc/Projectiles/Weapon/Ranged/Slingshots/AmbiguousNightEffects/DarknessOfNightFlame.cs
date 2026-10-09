@@ -5,10 +5,13 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Ranged.Slingshots.AmbiguousNight
 internal abstract class ShaderDraw : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
+
 	public Vector2 position;
 	public Vector2 velocity;
 	public float[] ai;
+
 	public ShaderDraw() { }
+
 	public ShaderDraw(Vector2 position, Vector2 velocity, params float[] ai)
 	{
 		this.position = position;
@@ -23,6 +26,7 @@ internal class DarknessOfNightPipeline : Pipeline
 	{
 		effect = ModContent.Request<Effect>("Everglow/Myth/Misc/Projectiles/Weapon/Ranged/Slingshots/AmbiguousNightEffects/DarknessOfNightFlame", AssetRequestMode.ImmediateLoad);
 	}
+
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
@@ -43,6 +47,7 @@ internal class DarknessOfNightPipeline : Pipeline
 		Ins.Batch.End();
 	}
 }
+
 [Pipeline(typeof(DarknessOfNightPipeline), typeof(BloomPipeline))]
 internal class DarknessOfNightDust : ShaderDraw
 {
@@ -55,7 +60,9 @@ internal class DarknessOfNightDust : ShaderDraw
 	public List<Vector2> oldPos = new List<Vector2>();
 	public float timer;
 	public float maxTime;
+
 	public DarknessOfNightDust() { }
+
 	public DarknessOfNightDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai) : base(position, velocity, ai)
 	{
 		this.maxTime = maxTime;
@@ -122,6 +129,7 @@ internal class DarknessOfNightDust : ShaderDraw
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);
 	}
 }
+
 [Pipeline(typeof(DarknessOfNightPipeline), typeof(BloomPipeline))]
 internal class DarknessOfNightWave : ShaderDraw
 {
@@ -133,7 +141,9 @@ internal class DarknessOfNightWave : ShaderDraw
 	public float timer;
 	public float maxTime;
 	public float radius;
+
 	public DarknessOfNightWave() { }
+
 	public DarknessOfNightWave(int maxTime, Vector2 position, Vector2 velocity, params float[] ai) : base(position, velocity, ai)
 	{
 		this.maxTime = maxTime;

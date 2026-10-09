@@ -10,6 +10,7 @@ public class FlowerPetalPurple : ModProjectile
 		// DisplayName.SetDefault("Flower Petal Purple");
 		Main.projFrames[Projectile.type] = 8;
 	}
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 12;
@@ -20,6 +21,7 @@ public class FlowerPetalPurple : ModProjectile
 		Projectile.tileCollide = true;
 		Projectile.timeLeft = 9000;
 	}
+
 	public override Color? GetAlpha(Color lightColor)
 	{
 		if (Projectile.timeLeft < 60)
@@ -31,9 +33,11 @@ public class FlowerPetalPurple : ModProjectile
 			return new Color?(new Color(0.5f, 0.5f, 0.5f, 0));
 		}
 	}
+
 	public float num2 = 0;
 	public bool Hittil = false;
 	private int TLF = 400;
+
 	public override void AI()
 	{
 		if (Projectile.timeLeft >= 8999)
@@ -95,6 +99,7 @@ public class FlowerPetalPurple : ModProjectile
 			Projectile.alpha = (int)((60 - Projectile.timeLeft) / 60f * 255f);
 		}
 	}
+
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
 		Projectile.timeLeft = 60;
@@ -111,6 +116,7 @@ public class FlowerPetalPurple : ModProjectile
 		}
 		return false;
 	}
+
 	/*public override Color? GetAlpha(Color lightColor)
         {
             if (Projectile.timeLeft > 60)
@@ -129,6 +135,7 @@ public class FlowerPetalPurple : ModProjectile
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		var texture2D = (Texture2D)ModContent.Request<Texture2D>(Texture);

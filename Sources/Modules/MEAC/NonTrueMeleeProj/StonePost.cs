@@ -4,6 +4,7 @@ using Everglow.Commons.VFX;
 using Microsoft.Xna.Framework.Graphics;
 using SteelSeries.GameSense;
 using Terraria.GameContent;
+
 namespace Everglow.MEAC.NonTrueMeleeProj;
 
 public class StonePost : ModProjectile, IWarpProjectile
@@ -21,6 +22,7 @@ public class StonePost : ModProjectile, IWarpProjectile
 		Projectile.timeLeft = 1800;
 		Projectile.penetrate = -1;
 	}
+
 	public override void AI()
 	{
 		Projectile.hide = true;
@@ -36,10 +38,12 @@ public class StonePost : ModProjectile, IWarpProjectile
 			}
 		}
 	}
+
 	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
 	{
 		behindNPCsAndTiles.Add(index);
 	}
+
 	public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 	{
 		float k0 = MathF.Sqrt(1 - Projectile.timeLeft * 0.004f % 1) * 2;
@@ -139,10 +143,12 @@ public class StonePost : ModProjectile, IWarpProjectile
 			spriteBatch.Draw(TextureAssets.MagicPixel.Value, v2ds, PrimitiveType.TriangleList);
 		}
 	}
+
 	public Vector2 RotByPro(Vector2 orig)
 	{
 		return orig.RotatedBy(Projectile.rotation);
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D BackG = ModAsset.StonePostBackGround.Value;
@@ -312,6 +318,7 @@ public class StonePost : ModProjectile, IWarpProjectile
 
 		return false;
 	}
+
 	public void DrawWarp(VFXBatch spriteBatch)
 	{
 		float WaveRange = 1.7f;

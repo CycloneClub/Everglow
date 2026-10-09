@@ -3,10 +3,13 @@ namespace Everglow.Myth.Misc.Dusts.Slingshots;
 public abstract class GemDust : ModDust
 {
 	internal Color dustColor = Color.White;
+
 	public override void SetStaticDefaults()
 	{
 	}
+
 	public override string Texture => "Everglow/Myth/Misc/Dusts/Slingshots/GemDust";
+
 	public override void OnSpawn(Dust dust)
 	{
 		dust.noGravity = true;
@@ -15,9 +18,11 @@ public abstract class GemDust : ModDust
 		dust.color.R = (byte)Main.rand.Next(120, 255); // 红度存黑化率
 		SetDef();
 	}
+
 	public virtual void SetDef()
 	{
 	}
+
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		if (Main.rand.NextBool(50))
@@ -31,6 +36,7 @@ public abstract class GemDust : ModDust
 			return new Color?(new Color(dust.scale / 0.7f * dustColor.R / 255f, dust.scale / 0.7f * dustColor.G / 255f, dust.scale / 0.7f * dustColor.B / 255f, 1 * dust.color.R / 155f - dust.scale));
 		}
 	}
+
 	public override bool Update(Dust dust)
 	{
 		dust.position += dust.velocity;

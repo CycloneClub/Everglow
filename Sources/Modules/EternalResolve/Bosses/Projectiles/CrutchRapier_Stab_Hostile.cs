@@ -18,10 +18,12 @@ namespace Everglow.EternalResolve.Bosses.Projectiles
 			AttackEffectWidth = 0.4f;
 			ItemType = ModContent.ItemType<CrutchBayonet>();
 		}
+
 		public override void DrawEffect(Color lightColor)
 		{
 			base.DrawEffect(lightColor);
 		}
+
 		public override void AI()
 		{
 			base.AI();

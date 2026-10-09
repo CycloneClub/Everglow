@@ -10,12 +10,14 @@ public abstract class FixCoinItem : ModItem
 	{
 		return 1;
 	}
+
 	/// <summary>
 	/// 额外属性设置
 	/// </summary>
 	public virtual void SSD()
 	{
 	}
+
 	public override void SetDefaults()
 	{
 		Item.width = 28;
@@ -36,6 +38,7 @@ public abstract class FixCoinItem : ModItem
 
 		SSD();
 	}
+
 	public override bool CanUseItem(Player player)
 	{
 		foreach (Item item in player.inventory)

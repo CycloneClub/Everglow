@@ -46,6 +46,7 @@ public class LeafVFX : ModDust
 		dust.rotation += (dust.color.G - 50f) / 500f;
 		return false;
 	}
+
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		return new Color(255, 255, 255, 0);

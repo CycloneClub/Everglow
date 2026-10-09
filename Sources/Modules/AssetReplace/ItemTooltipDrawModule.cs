@@ -12,6 +12,7 @@ public class ItemTooltipDrawModule : IModule
 	{
 		Code = GetType().Assembly;
 	}
+
 	public string Name => "Tooltip Drawing Modify";
 
 	public Assembly Code { get; }

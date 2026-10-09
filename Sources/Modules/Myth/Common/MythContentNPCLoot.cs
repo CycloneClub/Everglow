@@ -283,18 +283,22 @@ public class MythContentNPCLoot : GlobalNPC
 	//    }
 	// }
 }
+
 internal class CrimsonExpertHardmode : IItemDropRuleCondition
 {
 	// TODO:ÏÂÁÐµôÂäÌõ¼þÐèÒª·­Òë
 	private bool CanD => Main.expertMode && !Main.masterMode && Main.hardMode && Main.LocalPlayer.ZoneCrimson;
+
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
 	}
+
 	public bool CanShowItemDropInUI()
 	{
 		return CanD;
 	}
+
 	public string GetConditionDescription()
 	{
 		string desc = "Only hardmode and in the Crimson";
@@ -306,17 +310,21 @@ internal class CrimsonExpertHardmode : IItemDropRuleCondition
 		return desc;
 	}
 }
+
 internal class CrimsonMasterHardmode : IItemDropRuleCondition
 {
 	private bool CanD => Main.masterMode && Main.hardMode && Main.LocalPlayer.ZoneCrimson;
+
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
 	}
+
 	public bool CanShowItemDropInUI()
 	{
 		return CanD;
 	}
+
 	public string GetConditionDescription()
 	{
 		string desc = "Only hardmode and in the  Crimson";
@@ -328,17 +336,21 @@ internal class CrimsonMasterHardmode : IItemDropRuleCondition
 		return desc;
 	}
 }
+
 internal class CrimsonNormalHardmode : IItemDropRuleCondition
 {
 	private bool CanD => !Main.expertMode && Main.hardMode && Main.LocalPlayer.ZoneCrimson;
+
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
 	}
+
 	public bool CanShowItemDropInUI()
 	{
 		return CanD;
 	}
+
 	public string GetConditionDescription()
 	{
 		string desc = "Only hardmode and in the  Crimson";
@@ -350,17 +362,21 @@ internal class CrimsonNormalHardmode : IItemDropRuleCondition
 		return desc;
 	}
 }
+
 internal class CorruptionExpertHardmode : IItemDropRuleCondition
 {
 	private bool CanD => Main.expertMode && !Main.masterMode && Main.hardMode && Main.LocalPlayer.ZoneCorrupt;
+
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
 	}
+
 	public bool CanShowItemDropInUI()
 	{
 		return CanD;
 	}
+
 	public string GetConditionDescription()
 	{
 		string desc = "Only hardmode and in the Corrupt";
@@ -372,17 +388,21 @@ internal class CorruptionExpertHardmode : IItemDropRuleCondition
 		return desc;
 	}
 }
+
 internal class CorruptionMasterHardmode : IItemDropRuleCondition
 {
 	private bool CanD => Main.masterMode && Main.hardMode && Main.LocalPlayer.ZoneCorrupt;
+
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
 	}
+
 	public bool CanShowItemDropInUI()
 	{
 		return CanD;
 	}
+
 	public string GetConditionDescription()
 	{
 		string desc = "Only hardmode and in the Corrupt";
@@ -394,17 +414,21 @@ internal class CorruptionMasterHardmode : IItemDropRuleCondition
 		return desc;
 	}
 }
+
 internal class CorruptionNormalHardmode : IItemDropRuleCondition
 {
 	private bool CanD => !Main.expertMode && Main.hardMode && Main.LocalPlayer.ZoneCorrupt;
+
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
 	}
+
 	public bool CanShowItemDropInUI()
 	{
 		return CanD;
 	}
+
 	public string GetConditionDescription()
 	{
 		string desc = "Only hardmode and in the Corrupt";
@@ -416,17 +440,21 @@ internal class CorruptionNormalHardmode : IItemDropRuleCondition
 		return desc;
 	}
 }
+
 internal class HallowExpertHardmode : IItemDropRuleCondition
 {
 	private bool CanD => Main.expertMode && !Main.masterMode && Main.hardMode && Main.LocalPlayer.ZoneHallow;
+
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
 	}
+
 	public bool CanShowItemDropInUI()
 	{
 		return CanD;
 	}
+
 	public string GetConditionDescription()
 	{
 		string desc = "Only hardmode and in the Hallow";
@@ -438,17 +466,21 @@ internal class HallowExpertHardmode : IItemDropRuleCondition
 		return desc;
 	}
 }
+
 internal class HallowMasterHardmode : IItemDropRuleCondition
 {
 	private bool CanD => Main.masterMode && Main.hardMode && Main.LocalPlayer.ZoneHallow;
+
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
 	}
+
 	public bool CanShowItemDropInUI()
 	{
 		return CanD;
 	}
+
 	public string GetConditionDescription()
 	{
 		string desc = "Only hardmode and in the Hallow";
@@ -460,17 +492,21 @@ internal class HallowMasterHardmode : IItemDropRuleCondition
 		return desc;
 	}
 }
+
 internal class HallowNormalHardmode : IItemDropRuleCondition
 {
 	private bool CanD => !Main.expertMode && Main.hardMode && Main.LocalPlayer.ZoneHallow;
+
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
 	}
+
 	public bool CanShowItemDropInUI()
 	{
 		return CanD;
 	}
+
 	public string GetConditionDescription()
 	{
 		string desc = "Only hardmode and in the Hallow";
@@ -482,17 +518,21 @@ internal class HallowNormalHardmode : IItemDropRuleCondition
 		return desc;
 	}
 }
+
 internal class EclipseExpertPostPlant : IItemDropRuleCondition
 {
 	private bool CanD => Main.expertMode && !Main.masterMode && Main.eclipse && NPC.downedPlantBoss;
+
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
 	}
+
 	public bool CanShowItemDropInUI()
 	{
 		return CanD;
 	}
+
 	public string GetConditionDescription()
 	{
 		string desc = "Only defeated Plantera and in the Eclipse";
@@ -504,17 +544,21 @@ internal class EclipseExpertPostPlant : IItemDropRuleCondition
 		return desc;
 	}
 }
+
 internal class EclipseMasterPostPlant : IItemDropRuleCondition
 {
 	private bool CanD => Main.masterMode && Main.eclipse && NPC.downedPlantBoss;
+
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
 	}
+
 	public bool CanShowItemDropInUI()
 	{
 		return CanD;
 	}
+
 	public string GetConditionDescription()
 	{
 		string desc = "Only defeated Plantera and in the Eclipse";
@@ -526,17 +570,21 @@ internal class EclipseMasterPostPlant : IItemDropRuleCondition
 		return desc;
 	}
 }
+
 internal class EclipseNormalPostPlant : IItemDropRuleCondition
 {
 	private bool CanD => !Main.expertMode && Main.eclipse && NPC.downedPlantBoss;
+
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
 	}
+
 	public bool CanShowItemDropInUI()
 	{
 		return CanD;
 	}
+
 	public string GetConditionDescription()
 	{
 		string desc = "Only defeated Plantera and in the Eclipse";
@@ -548,17 +596,21 @@ internal class EclipseNormalPostPlant : IItemDropRuleCondition
 		return desc;
 	}
 }
+
 internal class InFrostMoonFinal : IItemDropRuleCondition
 {
 	private bool CanD => Main.snowMoon && Main.invasionProgressWave >= 20;
+
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
 	}
+
 	public bool CanShowItemDropInUI()
 	{
 		return CanD;
 	}
+
 	public string GetConditionDescription()
 	{
 		string desc = "Only Frost Moon during Chrismas";
@@ -570,17 +622,21 @@ internal class InFrostMoonFinal : IItemDropRuleCondition
 		return desc;
 	}
 }
+
 internal class InPumpkMoonFinal : IItemDropRuleCondition
 {
 	private bool CanD => Main.pumpkinMoon && Main.invasionProgressWave >= 20;
+
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
 	}
+
 	public bool CanShowItemDropInUI()
 	{
 		return CanD;
 	}
+
 	public string GetConditionDescription()
 	{
 		string desc = "Only Pumpkin Moon during Chrismas";

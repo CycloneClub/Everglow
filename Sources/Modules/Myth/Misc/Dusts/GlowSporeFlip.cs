@@ -8,6 +8,7 @@ public class GlowSporeFlip : ModDust
 		dust.alpha = 0;
 		dust.rotation = 0;
 	}
+
 	public override bool Update(Dust dust)
 	{
 		// Move the dust based on its velocity and reduce its size to then remove it, as the 'return false;' at the end will prevent vanilla logic.
@@ -50,6 +51,7 @@ public class GlowSporeFlip : ModDust
 	}*/
 		return false;
 	}
+
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		return new Color?(new Color(255, 255, 255, 0f));

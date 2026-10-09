@@ -9,6 +9,7 @@ public class PurpleTail : ModItem
 		// DisplayName.SetDefault("Purple Reed");
 		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "紫风草");
 	}
+
 	public override void SetDefaults()
 	{
 		Item.width = 28;

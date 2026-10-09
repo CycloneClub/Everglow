@@ -25,23 +25,28 @@ public class BloodyMossWheelFinished : ModTile
 		var modTranslation = CreateMapEntryName();
 		AddMapEntry(new Color(0, 0, 0, 0), modTranslation);
 	}
+
 	public override bool CanExplode(int i, int j)
 	{
 		return false;
 	}
+
 	public override bool CanKillTile(int i, int j, ref bool blockDamaged)
 	{
 		return false;
 	}
+
 	public int TpTime = 0;
 	public static int[] PlayerTpTime = new int[255];
 	private int Col = 0;
+
 	public override void PostDraw(int i, int j, SpriteBatch sb)
 	{
 		TileI = i;
 		TileJ = j;
 		DrawAll(sb);
 	}
+
 	public override void NearbyEffects(int i, int j, bool closer)
 	{
 		Player player = Main.LocalPlayer;
@@ -84,10 +89,12 @@ public class BloodyMossWheelFinished : ModTile
 		PlayerTpTime[player.whoAmI] = TpTime;
 		base.NearbyEffects(i, j, closer);
 	}
+
 	public override bool RightClick(int i, int j)
 	{
 		return base.RightClick(i, j);
 	}
+
 	public void DrawAll(SpriteBatch sb)
 	{
 		var zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
@@ -130,6 +137,7 @@ public class BloodyMossWheelFinished : ModTile
 		sb.End();
 		sb.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, matrix);
 	}
+
 	public static float TileI = 0;
 	public static float TileJ = 0;
 }

@@ -35,6 +35,7 @@ public class PFMBuff : ModDust // PFM = Plant-Farm Module
 	}*/
 		return false;
 	}
+
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		double Deep = Math.Sqrt((255 - dust.alpha) / 255d) * 2;

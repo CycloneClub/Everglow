@@ -11,6 +11,7 @@ public class SilverClub_Item : ClubItem
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.SilverClub>();
 		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.SilverClub_smash>();
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

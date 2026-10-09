@@ -10,6 +10,7 @@ namespace Everglow.SpellAndSkull.Projectiles.BlackHole;
 internal class BlackHole : ModProjectile
 {
 	public static Projectile proj; // 只能存在一个
+
 	public override void SetDefaults()
 	{
 		Projectile.width = Projectile.height = 200;
@@ -25,6 +26,7 @@ internal class BlackHole : ModProjectile
 		Projectile.DamageType = DamageClass.Magic;
 		ProjectileID.Sets.DrawScreenCheckFluff[Projectile.type] = 5000;
 	}
+
 	public static bool ProjActive()
 	{
 		if (proj != null)
@@ -36,6 +38,7 @@ internal class BlackHole : ModProjectile
 			return false;
 		}
 	}
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		if (ProjActive() && proj != Projectile)
@@ -47,6 +50,7 @@ internal class BlackHole : ModProjectile
 			proj = Projectile;
 		}
 	}
+
 	public override void AI()
 	{
 		if (Projectile.timeLeft > 20)
@@ -72,6 +76,7 @@ internal class BlackHole : ModProjectile
 		AbsorbMonster();
 		ScreenShake();
 	}
+
 	private void ScreenShake()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -80,6 +85,7 @@ internal class BlackHole : ModProjectile
 		ScreenShaker Gsplayer = Main.player[Projectile.owner].GetModPlayer<ScreenShaker>();
 		Gsplayer.FlyCamPosition = new Vector2(0, Projectile.ai[0] * Projectile.scale * kPlayerCenter).RotatedByRandom(6.283);
 	}
+
 	private void AbsorbMonster()
 	{
 		float MinDis = 2550 * Projectile.ai[0];
@@ -222,12 +228,14 @@ internal class BlackHole : ModProjectile
 			}
 		}
 	}
+
 	public static Vector2 Projection(Vector3 vec, Vector2 center)
 	{
 		float k1 = -1200 / (vec.Z - 1200);
 		var v = new Vector2(vec.X, vec.Y);
 		return v + (k1 - 1) * (v - center);
 	}
+
 	public static void DrawRing(Projectile Projectile, bool front = false)// 分前后两段(由front参数决定)绘制环
 	{
 		var c = new Color(0.2f, 0.7f, 1f); // 环的颜色
@@ -295,6 +303,7 @@ internal class BlackHole : ModProjectile
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.Default, RasterizerState.CullNone, null, Main.Transform);
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D tex = TextureAssets.MagicPixel.Value;
@@ -313,6 +322,7 @@ internal class BlackHole : ModProjectile
 		return false;
 	}
 }
+
 public class TemporarySys : ModSystem// 暂时用一个ModSystem上滤镜
 {
 	public override void Load()

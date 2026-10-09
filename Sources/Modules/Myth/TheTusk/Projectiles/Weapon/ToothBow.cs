@@ -13,10 +13,12 @@ public class ToothBow : HandholdProjectile
 		TextureRotation = 0;
 		DepartLength = 20;
 	}
+
 	public override void AI()
 	{
 		base.AI();
 	}
+
 	public override void HeldProjectileAI()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -87,12 +89,14 @@ public class ToothBow : HandholdProjectile
 		}
 		player.direction = dir;
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		DrawBaseTexture(lightColor);
 
 		return false;
 	}
+
 	public override void DrawBaseTexture(Color lightColor)
 	{
 		Player player = Main.player[Projectile.owner];

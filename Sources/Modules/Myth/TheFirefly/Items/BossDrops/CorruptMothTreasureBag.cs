@@ -37,6 +37,7 @@ public class CorruptMothTreasureBag : ModItem
 	{
 		return true;
 	}
+
 	public override void RightClick(Player player)
 	{
 		switch (Main.rand.Next(9))

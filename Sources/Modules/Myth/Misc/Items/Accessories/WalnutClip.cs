@@ -15,6 +15,7 @@ public class WalnutClip : ModItem
 		Item.accessory = true;
 		Item.rare = ItemRarityID.Yellow;
 	}
+
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
 		MythContentPlayer mplayer = player.GetModPlayer<MythContentPlayer>();

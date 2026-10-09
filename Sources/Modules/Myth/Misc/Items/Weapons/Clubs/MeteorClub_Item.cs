@@ -12,6 +12,7 @@ public class MeteorClub_Item : ClubItem
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.MeteorClub>();
 		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.MeteorClub_smash>();
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

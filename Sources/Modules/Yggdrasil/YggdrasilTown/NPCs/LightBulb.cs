@@ -35,10 +35,12 @@ public class LightBulb : ModNPC
 		NPC.HitSound = SoundID.NPCHit1;
 		NPC.DeathSound = SoundID.NPCDeath1;
 	}
+
 	public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 	{
 		target.AddBuff(BuffID.Poisoned, 600);
 	}
+
 	public override void FindFrame(int frameHeight)
 	{
 		switch (State)
@@ -81,6 +83,7 @@ public class LightBulb : ModNPC
 	{
 		State = (int)NPCState.Sleep;
 	}
+
 	private int State;
 
 	private enum NPCState
@@ -173,6 +176,7 @@ public class LightBulb : ModNPC
 				}
 		}
 	}
+
 	public override void OnKill()
 	{
 		for (int i = 0; i < 5; i++)
@@ -188,11 +192,13 @@ public class LightBulb : ModNPC
 			Gore.NewGore(NPC.GetSource_Death(), NPC.Center, v0, type, NPC.scale);
 		}
 	}
+
 	public override void ModifyNPCLoot(NPCLoot npcLoot)
 	{
 		npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<UnstablePollen>(), 1, 1, 2));
 		npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<LightBulbOvule>(), 24, 1));
 	}
+
 	public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
 		Texture2D glow = ModAsset.LightBulb_glow.Value;

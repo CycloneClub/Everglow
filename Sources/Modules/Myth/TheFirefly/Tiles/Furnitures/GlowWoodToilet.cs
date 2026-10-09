@@ -45,6 +45,7 @@ namespace Everglow.Myth.TheFirefly.Tiles.Furnitures
 			TileObjectData.addAlternate(1); // Facing right will use the second texture style
 			TileObjectData.addTile(Type);
 		}
+
 		public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings)
 		{
 			return settings.player.IsWithinSnappngRangeToTile(i, j, PlayerSittingHelper.ChairSittingMaxDistance); // Avoid being able to trigger it from long range

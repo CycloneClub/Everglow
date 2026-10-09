@@ -1,5 +1,6 @@
 using Everglow.Myth.TheFirefly.Items.Materials;
 using Terraria.GameContent.Creative;
+
 namespace Everglow.Myth.TheFirefly.Items.Armors
 {
 	[AutoloadEquip(EquipType.Head)]
@@ -27,19 +28,23 @@ namespace Everglow.Myth.TheFirefly.Items.Armors
 			Item.rare = ItemRarityID.White;
 			Item.defense = 5;
 		}
+
 		public override bool IsArmorSet(Item head, Item body, Item legs)
 		{
 			return body.type == ModContent.ItemType<FireflywoodBreastplate>() && legs.type == ModContent.ItemType<FireflywoodLeggings>();
 		}
+
 		public override void UpdateArmorSet(Player player)
 		{
 			player.setBonus = "Increases dealt damage by 20%"; // TODO: Use Localization Keys Instead
 			player.GetDamage(DamageClass.Generic) += 0.2f;
 		}
+
 		public override void UpdateEquip(Player player)
 		{
 			player.magicCrit += 2;
 		}
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();

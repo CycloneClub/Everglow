@@ -22,10 +22,12 @@ public class YggdrasilCyathea : ModTile
 		DustType = ModContent.DustType<YggdrasilCyatheaTrunkDust>();
 		AdjTiles = new int[] { Type };
 	}
+
 	public override IEnumerable<Item> GetItemDrops(int i, int j)
 	{
 		yield return new Item(ModContent.ItemType<YggdrasilCyatheaWood>());
 	}
+
 	public override bool CanDrop(int i, int j)
 	{
 		var tile = Main.tile[i, j];

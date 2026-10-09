@@ -13,14 +13,17 @@ public class PrimordialJadeWinged_SpearShake : ModProjectile
 		Projectile.penetrate = -1;
 		Projectile.extraUpdates = 1;
 	}
+
 	public override void AI()
 	{
 		Projectile.hide = true;
 	}
+
 	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
 	{
 		behindNPCsAndTiles.Add(index);
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Main.spriteBatch.End();

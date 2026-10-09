@@ -5,6 +5,7 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Magic.BoneFeatherMagic;
 internal class BoneFeatherMagicBook : MagicBookProjectile
 {
 	public override string Texture => "Everglow/" + ModAsset.BoneFeatherMagic_Path;
+
 	public override void SetDef()
 	{
 		ProjType = ModContent.ProjectileType<BoneFeather>();
@@ -23,6 +24,7 @@ internal class BoneFeatherMagicBook : MagicBookProjectile
 		TexCoordDown = new Vector2(28, 39);
 		TexCoordRight = new Vector2(43, 9);
 	}
+
 	public override void AI()
 	{
 		Player player = Main.player[Projectile.owner];

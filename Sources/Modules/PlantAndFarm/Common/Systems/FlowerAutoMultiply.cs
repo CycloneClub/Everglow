@@ -76,6 +76,7 @@ public class FlowerAutoMultiply : GlobalTile
 			}
 		}
 	}
+
 	public override void KillTile(int i, int j, int type, ref bool fail, ref bool effectOnly, ref bool noItem)
 	{
 		/*bool Lootf = false;

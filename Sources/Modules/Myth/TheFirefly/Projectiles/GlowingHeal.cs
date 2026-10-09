@@ -9,6 +9,7 @@ public class GlowingHeal : ModNPC
 	{
 		// DisplayName.SetDefault("");
 	}
+
 	public override void SetDefaults()
 	{
 		NPC.width = 10;
@@ -28,12 +29,14 @@ public class GlowingHeal : ModNPC
 		NPCID.Sets.TrailingMode[NPC.type] = 0;
 		NPCID.Sets.TrailCacheLength[NPC.type] = 40;
 	}
+
 	private bool Start = false;
 	private Vector2 Cent;
 	private Vector2 Acc;
 	private float Ome = 0;
 	private float kx = 1;
 	private bool Healed = false;
+
 	public override void AI()
 	{
 		Player player = Main.player[NPC.target];
@@ -86,11 +89,14 @@ public class GlowingHeal : ModNPC
 			}
 		}
 	}
+
 	public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
 		return false;
 	}
+
 	private Effect ef;
+
 	public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
 		Main.spriteBatch.End();

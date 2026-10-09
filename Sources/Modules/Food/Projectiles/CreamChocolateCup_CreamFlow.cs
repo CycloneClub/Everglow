@@ -20,14 +20,17 @@ internal class CreamChocolateCup_CreamFlow : ModProjectile
 		Projectile.DamageType = DamageClass.Magic;
 		base.SetDefaults();
 	}
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		Joints = new List<Vector2>();
 		JointVelocity = new List<Vector2>();
 	}
+
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 	}
+
 	public override void AI()
 	{
 		Player player = Main.player[Player.FindClosest(Projectile.position, Projectile.width, Projectile.height)];
@@ -118,6 +121,7 @@ internal class CreamChocolateCup_CreamFlow : ModProjectile
 			}
 		}
 	}
+
 	public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 	{
 		if (Projectile.timeLeft < 120)
@@ -146,8 +150,10 @@ internal class CreamChocolateCup_CreamFlow : ModProjectile
 		}
 		return false;
 	}
+
 	public List<Vector2> Joints = new List<Vector2>();
 	public List<Vector2> JointVelocity = new List<Vector2>();
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		if (Joints.Count > 1)

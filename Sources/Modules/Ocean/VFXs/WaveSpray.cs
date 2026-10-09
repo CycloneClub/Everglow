@@ -12,6 +12,7 @@ internal class WaveSprayPipeline : Pipeline
 		effect = ModContent.Request<Effect>("Everglow/Ocean/VFXs/WaveSpray", AssetRequestMode.ImmediateLoad);
 		effect.Value.Parameters["uNoise"].SetValue(ModAsset.HiveCyberNoise.Value);
 	}
+
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
@@ -30,6 +31,7 @@ internal class WaveSprayPipeline : Pipeline
 		Ins.Batch.End();
 	}
 }
+
 [Pipeline(typeof(WaveSprayPipeline))]
 internal class WaveSprayDust : ShaderDraw
 {
@@ -37,7 +39,9 @@ internal class WaveSprayDust : ShaderDraw
 	public List<Vector2> oldPos = new List<Vector2>();
 	public float timer;
 	public float maxTime;
+
 	public WaveSprayDust() { }
+
 	public WaveSprayDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai) : base(position, velocity, ai)
 	{
 		this.maxTime = maxTime;

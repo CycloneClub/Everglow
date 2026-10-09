@@ -11,6 +11,7 @@ public class CopperClub_Item : ClubItem
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.CopperClub>();
 		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.CopperClub_smash>();
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

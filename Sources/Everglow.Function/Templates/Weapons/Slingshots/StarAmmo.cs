@@ -19,6 +19,7 @@ public class StarAmmo : SlingshotAmmo
 			Projectile.CritChance += 15;
 		}
 	}
+
 	public override void AI()
 	{
 		if (TimeTokill is >= 0 and <= 2)
@@ -46,6 +47,7 @@ public class StarAmmo : SlingshotAmmo
 			Projectile.velocity *= 0f;
 		}
 	}
+
 	public override void DrawTrail()
 	{
 		float DrawC = Projectile.ai[0] * Projectile.ai[0];
@@ -96,6 +98,7 @@ public class StarAmmo : SlingshotAmmo
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		float Power = Projectile.ai[0] * 0.5f + 0.5f;
@@ -113,10 +116,12 @@ public class StarAmmo : SlingshotAmmo
 		Lighting.AddLight(Projectile.Center, Light.R / 555f, Light.G / 555f, Light.B / 555f);
 		return base.PreDraw(ref lightColor);
 	}
+
 	public override Color? GetAlpha(Color lightColor)
 	{
 		return new Color(255, 255, 255, 0);
 	}
+
 	public override void AmmoHit()
 	{
 		SoundEngine.PlaySound(SoundID.Item27, Projectile.Center);
@@ -171,6 +176,7 @@ public class StarAmmo : SlingshotAmmo
 		Projectile.friendly = false;
 		Projectile.velocity *= 0f;
 	}
+
 	public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 	{
 		if (!Main.dayTime)

@@ -39,6 +39,7 @@ public class SideHangingLantern_White : ModTile, ITileFluentlyDrawn
 
 		AddMapEntry(new Color(135, 103, 90));
 	}
+
 	public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 	{
 		var tile = Main.tile[i, j];
@@ -55,10 +56,12 @@ public class SideHangingLantern_White : ModTile, ITileFluentlyDrawn
 			b = 0f;
 		}
 	}
+
 	public override void HitWire(int i, int j)
 	{
 		FurnitureUtils.LightHitwireStyleVertical(i, j, Type, 2, 3);
 	}
+
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		var tile = Main.tile[i, j];
@@ -94,6 +97,7 @@ public class SideHangingLantern_White : ModTile, ITileFluentlyDrawn
 		}
 		// 这种白色的灯纸比较浑浊,免去glow
 	}
+
 	/// <summary>
 	/// 画侧挂灯
 	/// </summary>

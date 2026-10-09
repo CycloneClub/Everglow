@@ -9,6 +9,7 @@ public class WhiteTulip : ModItem
 		// DisplayName.SetDefault("White Tulip");
 		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "白酒杯花");
 	}
+
 	public override void SetDefaults()
 	{
 		Item.width = 18;

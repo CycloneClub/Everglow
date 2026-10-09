@@ -11,6 +11,7 @@ internal class JungleSlingshot : SlingshotProjectile
 		SlingshotLength = 8;
 		SplitBranchDis = 6;
 	}
+
 	public override void DrawString()
 	{
 		base.DrawString();

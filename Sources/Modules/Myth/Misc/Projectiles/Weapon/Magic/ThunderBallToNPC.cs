@@ -16,6 +16,7 @@ public class ThunderBallToNPC : ModProjectile
 		Projectile.extraUpdates = 10;
 		Projectile.timeLeft = 300;
 	}
+
 	public override void AI()
 	{
 		if (Main.npc[(int)Projectile.ai[1]].active)
@@ -28,9 +29,11 @@ public class ThunderBallToNPC : ModProjectile
 		}
 		streng = (int)(Projectile.timeLeft / 30f);
 	}
+
 	internal Vector2[,] vP = new Vector2[8, 600];
 	internal Vector2[,] vvP = new Vector2[8, 600];
 	internal int streng = 9;
+
 	public override void PostDraw(Color lightColor)
 	{
 		if (vP[0, 0] == Vector2.Zero)
@@ -128,6 +131,7 @@ public class ThunderBallToNPC : ModProjectile
 			}
 		}
 	}
+
 	public override Color? GetAlpha(Color lightColor)
 	{
 		return new Color?(new Color(0, 0, 0, 0));

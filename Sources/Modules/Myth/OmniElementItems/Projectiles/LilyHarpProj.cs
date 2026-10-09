@@ -332,6 +332,7 @@ internal class LilyHarpProj : ModProjectile// , IWarpProjectile
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, circle.ToArray(), 0, circle.Count - 2);
 		}
 	}
+
 	private static void DrawCircle(VFXBatch spriteBatch, float radius, float width, Color color, Vector2 center)
 	{
 		var circle = new List<Vertex2D>();
@@ -348,6 +349,7 @@ internal class LilyHarpProj : ModProjectile// , IWarpProjectile
 			spriteBatch.Draw(t, circle, PrimitiveType.TriangleStrip);
 		}
 	}
+
 	public void DrawWarp(VFXBatch spriteBatch)
 	{
 		Player player = Main.player[Projectile.owner];
