@@ -93,7 +93,7 @@ public class FogPass
 	private bool enableLightUpload;
 	private bool enableTemporalFilter;
 	private Vector2 screenPosition;
-	private const SurfaceFormat surfaceFormat = SurfaceFormat.Rgba1010102;
+	private const SurfaceFormat RenderTargetFormat = SurfaceFormat.Rgba1010102;
 
 	private int switchCounter = 0;
 	private int totalSwitchCounter = 0;
@@ -264,7 +264,7 @@ public class FogPass
 			blurRenderTargets[l] = new RenderTarget2D(
 				Main.graphics.GraphicsDevice,
 				frameWidth >> l, frameWidth >> l, false,
-				surfaceFormat, DepthFormat.None);
+				RenderTargetFormat, DepthFormat.None);
 		}
 		maxBlurLevel = Math.Min(l, 8);
 
@@ -273,17 +273,17 @@ public class FogPass
 			blurRenderTargets[i] = new RenderTarget2D(
 				Main.graphics.GraphicsDevice,
 				frameWidth >> i, frameHeight >> i, false,
-				surfaceFormat, DepthFormat.None);
+				RenderTargetFormat, DepthFormat.None);
 		}
 
 		renderTargetSwap = new RenderTarget2D(
 			Main.graphics.GraphicsDevice,
 			frameWidth >> Math.Min(maxBlurLevel - 1, 4 + BloomRadius), frameHeight >> Math.Min(maxBlurLevel - 1, 4 + BloomRadius),
-			false, surfaceFormat, DepthFormat.None);
+			false, RenderTargetFormat, DepthFormat.None);
 		filteredScreenTarget = new RenderTarget2D(
 			Main.graphics.GraphicsDevice,
 			screenWidth, screenHeight,
-			false, surfaceFormat, DepthFormat.None);
+			false, RenderTargetFormat, DepthFormat.None);
 
 		prevLightTexture = new RenderTarget2D(
 			Main.graphics.GraphicsDevice,
