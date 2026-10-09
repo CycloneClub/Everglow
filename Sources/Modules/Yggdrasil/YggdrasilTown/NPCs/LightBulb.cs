@@ -167,7 +167,7 @@ public class LightBulb : ModNPC
 					NPC.ai[0]++;
 
 					NPC.TargetClosest();
-					if (NPC.HasValidTarget && Main.player[NPC.target].Distance(NPC.Center) > 750 || (NPC.ai[0] % 160) == 0)
+					if ((NPC.HasValidTarget && Main.player[NPC.target].Distance(NPC.Center) > 750) || (NPC.ai[0] % 160) == 0)
 					{
 						state = (int)NPCState.Sleep;
 						NPC.ai[0] = 0;
