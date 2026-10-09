@@ -17,9 +17,9 @@ public class UIQuestOperationTipTest
 	private static readonly FieldInfo UISystemInstanceField = typeof(UISystem).GetField("instance", BindingFlags.Static | BindingFlags.NonPublic)!;
 
 	private bool _originalDedServ;
-	private UISystem _originalUISystem;
-	private QuestContainer _questContainer;
-	private FontManager _fontManager;
+	private UISystem? _originalUISystem;
+	private QuestContainer _questContainer = null!;
+	private FontManager _fontManager = null!;
 
 	[TestInitialize]
 	public void Initialize()
@@ -64,7 +64,7 @@ public class UIQuestOperationTipTest
 		var entry = new QuestPresentationEntry(
 			new QuestView { Identity = identity },
 			[new QuestAction(identity, QuestActionType.Cancel)]);
-		QuestPresentationEntry receivedEntry = null;
+		QuestPresentationEntry? receivedEntry = null;
 		var tip = new UIQuestOperationTip(
 			entry,
 			UIQuestOperationTip.TipType.Confirmation,

@@ -9,8 +9,8 @@ namespace Everglow.UnitTests.Function.QuestSystem;
 [DoNotParallelize]
 public class PlayerQuestActionTest
 {
-	private PlayerQuestManager _manager;
-	private PlayerQuestActions _actions;
+	private PlayerQuestManager _manager = null!;
+	private PlayerQuestActions _actions = null!;
 
 	private sealed class StubQuest : PlayerQuestBase
 	{
