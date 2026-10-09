@@ -23,7 +23,7 @@ public class DrinkGlobalItem : GlobalItem
                 {
 				ItemID.Ale,
 				new DrinkInfo() {
-					Thirsty = false ,
+					Thirsty = false,
 					BuffType = ModContent.BuffType<AleBuff> (),
 					BuffTime = new FoodDuration(0, 10, 0),
 					Name =  "SakeBuff"
@@ -33,7 +33,7 @@ public class DrinkGlobalItem : GlobalItem
                 {
 				ItemID.AppleJuice,
 				new DrinkInfo() {
-				   Thirsty = false ,
+				   Thirsty = false,
 				   BuffType = ModContent.BuffType<AppleJuiceBuff>(),
 				   BuffTime = new FoodDuration(0, 10, 0),
 				   Name =  "AppleJuiceBuff"
@@ -43,7 +43,7 @@ public class DrinkGlobalItem : GlobalItem
                 {
 				ItemID.BananaDaiquiri,
 				new DrinkInfo() {
-					Thirsty = false ,
+					Thirsty = false,
 					BuffType = ModContent.BuffType<BananaDaiquiriBuff>(),
 					BuffTime = new FoodDuration(0, 10, 0),
 					Name = "BananaDaiquiriBuff"
@@ -53,7 +53,7 @@ public class DrinkGlobalItem : GlobalItem
                 {
 				ItemID.BloodyMoscato,
 				new DrinkInfo() {
-					Thirsty = false ,
+					Thirsty = false,
 					BuffType = ModContent.BuffType<BloodyMoscatoBuff>(),
 					BuffTime = new FoodDuration(0, 10, 0),
 					Name = "BloodyMoscatoBuff"
@@ -63,7 +63,7 @@ public class DrinkGlobalItem : GlobalItem
                 {
 				ItemID.CreamSoda,
 				new DrinkInfo() {
-					Thirsty = false ,
+					Thirsty = false,
 					BuffType = ModContent.BuffType<CreamSodaBuff>(),
 					BuffTime = new FoodDuration(0, 10, 0),
 					Name = "CreamSodaBuff"
@@ -73,7 +73,7 @@ public class DrinkGlobalItem : GlobalItem
                 {
 				ItemID.CoffeeCup,
 				new DrinkInfo() {
-					Thirsty = false ,
+					Thirsty = false,
 					BuffType = ModContent.BuffType<CoffeeCupBuff>(),
 					BuffTime = new FoodDuration(0, 30, 0),
 					Name = "CoffeeCupBuff"
@@ -83,7 +83,7 @@ public class DrinkGlobalItem : GlobalItem
                 {
 				ItemID.FruitJuice,
 				new DrinkInfo() {
-				   Thirsty = false ,
+				   Thirsty = false,
 				   BuffType = ModContent.BuffType<FruitJuiceBuff>(),
 				   BuffTime = new FoodDuration(0, 10, 0),
 					Name = "FruitJuiceBuff"
@@ -93,7 +93,7 @@ public class DrinkGlobalItem : GlobalItem
                 {
 				ItemID.GrapeJuice,
 				new DrinkInfo() {
-					Thirsty = false ,
+					Thirsty = false,
 					BuffType = ModContent.BuffType<GrapeJuiceBuff>(),
 					BuffTime = new FoodDuration(0, 10, 0),
 					Name = "GrapeJuiceBuff"
@@ -103,7 +103,7 @@ public class DrinkGlobalItem : GlobalItem
                 {
 				ItemID.Lemonade,
 				new DrinkInfo() {
-					Thirsty = false ,
+					Thirsty = false,
 					BuffType = ModContent.BuffType<LemonadeBuff>(),
 					BuffTime = new FoodDuration(0, 10, 0),
 					Name = "LemonadeBuff"
@@ -113,7 +113,7 @@ public class DrinkGlobalItem : GlobalItem
                 {
 				ItemID.MilkCarton,
 				new DrinkInfo() {
-					Thirsty = false ,
+					Thirsty = false,
 					BuffType = ModContent.BuffType<MilkCartonBuff>(),
 					BuffTime = new FoodDuration(0, 10, 0),
 					Name = "MilkCartonBuff"
@@ -123,7 +123,7 @@ public class DrinkGlobalItem : GlobalItem
                 {
 				ItemID.Milkshake,
 				new DrinkInfo() {
-					Thirsty = false ,
+					Thirsty = false,
 					BuffType = ModContent.BuffType<MilkshakeBuff>(),
 					BuffTime = new FoodDuration(0, 10, 0),
 					Name = "MilkshakeBuff"

@@ -110,10 +110,10 @@ public class GreatTombLand : ModSystem
 		int CrashCount = 0;
 		ushort[] MustHaveTileType = new ushort[]
 		{
-			TileID.JungleGrass,//丛林草方块
-                TileID.JunglePlants,//丛林草
-                TileID.JungleVines,//丛林藤
-                TileID.JunglePlants2,//高大丛林草
+			TileID.JungleGrass, //丛林草方块
+                TileID.JunglePlants, //丛林草
+                TileID.JungleVines, //丛林藤
+                TileID.JunglePlants2, //高大丛林草
                 TileID.PlantDetritus//丛林花
             };
 		for (int x = -256; x < 257; x += 8)

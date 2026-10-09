@@ -87,7 +87,7 @@ public class DarkSludgeLiquid : ModLiquid
 			zero = Vector2.zeroVector;
 		}
 		var destRect = new Rectangle((int)(i * 16 - Main.screenPosition.X + zero.X), (int)(j * 16 - Main.screenPosition.Y + zero.Y), 16, 16);
-		Main.spriteBatch.Draw(ModContent.Request<Texture2D>(Texture).Value, destRect,liquidDrawCache.SourceRectangle, Color.Black);
+		Main.spriteBatch.Draw(ModContent.Request<Texture2D>(Texture).Value, destRect, liquidDrawCache.SourceRectangle, Color.Black);
 		base.PostDraw(i, j, liquidDrawCache, drawOffset, isBackgroundDraw);
 	}
 }

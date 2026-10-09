@@ -100,11 +100,11 @@ public class Spark_EnchantedStabDust : Visual
 		Vector2 toCorner = new Vector2(0, scale * 0.2f).RotatedBy(rotation);
 		List<Vertex2D> bars = new List<Vertex2D>()
 		{
-			new Vertex2D(position + toCorner + velocity * 3,new Color(0, 0,pocession, 0.0f), new Vector3(0)),
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 0.5),new Color(0, 1, pocession, 0.0f), new Vector3(0)),
+			new Vertex2D(position + toCorner + velocity * 3, new Color(0, 0, pocession, 0.0f), new Vector3(0)),
+			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 0.5), new Color(0, 1, pocession, 0.0f), new Vector3(0)),
 
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 1.5),new Color(1, 0 ,pocession, 0.0f), new Vector3(0)),
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 1) - velocity,new Color(1, 1, pocession, 0.0f), new Vector3(0))
+			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 1.5), new Color(1, 0, pocession, 0.0f), new Vector3(0)),
+			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 1) - velocity, new Color(1, 1, pocession, 0.0f), new Vector3(0))
 		};
 
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);
