@@ -303,7 +303,6 @@ public class MeatLantern_Proj : MeleeProj
 			{
 				NextAttackType();
 			}
-
 			else if (timer > 1)
 			{
 				float BodyRotation = (float)Math.Sin((timer - 10) / 30d * Math.PI) * 0.2f * player.direction * player.gravDir;
