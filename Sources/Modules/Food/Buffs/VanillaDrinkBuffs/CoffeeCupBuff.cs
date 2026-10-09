@@ -20,7 +20,6 @@ public class CoffeeCupBuff : ModBuff
 		player.detectCreature = true;
 		player.dangerSense = true;
 		Lighting.AddLight(player.Center, 0.8f, 0.8f, 0);
-
 	}
 }
 

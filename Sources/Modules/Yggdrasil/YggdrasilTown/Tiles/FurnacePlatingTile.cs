@@ -71,5 +71,4 @@ public class FurnacePlatingTile : ModTile
 
 		return false;
 	}
-
 }

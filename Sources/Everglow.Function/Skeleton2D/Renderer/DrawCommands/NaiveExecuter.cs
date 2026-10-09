@@ -32,17 +32,14 @@ public class NaiveExecuter : IDrawCommandExecuter, IDrawCommandVisitor
 
 	private void SaveCurrentPipelineState()
 	{
-
 	}
 
 	private void PushPipelineState()
 	{
-
 	}
 
 	private void PopPipelineState()
 	{
-
 	}
 
 	public void Execute(DrawCommandList commandList, GraphicsDevice graphicsDevice)

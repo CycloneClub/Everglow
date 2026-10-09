@@ -127,7 +127,6 @@ public abstract class FixCoinProjectile : ModProjectile
 				CombatText.NewText(new Rectangle((int)player.Center.X - 10, (int)player.Center.Y - 10, 20, 20), ColorVec, tex1 + player.inventory[x].Name + tex2);
 				return;
 			}
-
 		}
 		for (int x = X0; x >= 0; x--)
 		{

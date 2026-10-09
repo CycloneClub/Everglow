@@ -16,7 +16,6 @@ public class GrilledSquirrelBuff : ModBuff
 		player.jumpBoost = true;
 		player.maxFallSpeed *= 0.75f;
 		player.extraFall += 30;
-
 	}
 }
 

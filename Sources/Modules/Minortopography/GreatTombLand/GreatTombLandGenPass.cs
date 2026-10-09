@@ -100,7 +100,6 @@ public class GreatTombLand : ModSystem
 						QuickBuild(X0, Y0, "GreatTombLandDemo-1.mapio");
 						break;
 				}
-
 			}
 		}
 	}

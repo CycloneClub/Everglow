@@ -105,7 +105,6 @@ public class CorruptOrbStonePost : ModTile
 			}
 			Main.spriteBatch.End();
 			Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.EffectMatrix);
-
 		}
 		base.PostDraw(i, j, spriteBatch);
 	}

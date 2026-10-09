@@ -47,6 +47,5 @@ internal class AcytaeaPipeline : PostPipeline
 	{
 		texture = ModAsset.Cosmic;
 		effect = ModAsset.BigTentacle;
-
 	}
 }

@@ -48,6 +48,5 @@ public class ShadowPotionBuff : ModBuff
 		}
 		if (LightTime > 20)
 		{ LightTime = 20; }
-
 	}
 }

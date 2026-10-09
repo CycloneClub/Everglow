@@ -18,7 +18,6 @@ public class BloodGlucoseMonitor : ModItem
 		Item.value = Item.buyPrice(50000);
 		Item.rare = ItemRarityID.Green;
 		Item.accessory = true;
-
 	}
 
 	public override void UpdateInventory(Player player)

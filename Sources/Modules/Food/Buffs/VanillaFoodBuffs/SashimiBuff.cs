@@ -19,7 +19,6 @@ public class SashimiBuff : ModBuff
 		player.accFlipper = true;
 		player.maxRunSpeed *= 1.2f;
 		player.GetDamage(DamageClass.Generic) *= 1.15f;
-
 	}
 }
 

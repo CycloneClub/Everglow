@@ -49,7 +49,6 @@ public class ThunderBall2 : ModProjectile
 				}
 			}
 		}
-
 	}
 	private bool Nul = false;
 	public override Color? GetAlpha(Color lightColor)

@@ -58,7 +58,6 @@ internal class StarSlingshot : SlingshotProjectile
 		Main.spriteBatch.Draw(star, SlingshotStringTail, null, Light, MathF.PI / 2, star.Size() / 2f, new Vector2(0.06f, 0.23f + MathF.Sin((float)(Main.timeForVisualEffects * 0.1)) * 0.2f) * Power / 120f, SpriteEffects.None, 0);
 
 		Lighting.AddLight(SlingshotStringTail + Main.screenPosition, Light.R / 555f, Light.G / 555f, Light.B / 555f);
-
 	}
 	public void DrawTexLine(Vector2 StartPos, Vector2 EndPos, float width, Color color1, Color color2, Texture2D tex)
 	{

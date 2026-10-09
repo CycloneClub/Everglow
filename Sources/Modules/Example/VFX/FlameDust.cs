@@ -87,7 +87,6 @@ internal class CurseFlameDust : ShaderDraw
 		}
 		float delC = ai[2] * 0.05f * (float)Math.Sin((maxTime - timer) / 40d * Math.PI);
 		Lighting.AddLight((int)(position.X / 16), (int)(position.Y / 16), 0.75f * delC, 1.83f * delC, 0f);
-
 	}
 
 	public override void Draw()

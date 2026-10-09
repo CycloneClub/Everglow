@@ -14,7 +14,6 @@ public class FriesBuff : ModBuff
 	{
 		player.statDefense += 4; // 加4防御
 		player.GetCritChance(DamageClass.Generic) += 6; // 加6%暴击
-
 	}
 }
 

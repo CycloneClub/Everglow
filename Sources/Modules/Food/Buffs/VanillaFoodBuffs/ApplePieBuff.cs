@@ -14,7 +14,6 @@ public class ApplePieBuff : ModBuff
 	{
 		player.endurance += 0.05f; // 加8%减伤
 		player.lifeRegen += 1;
-
 	}
 }
 

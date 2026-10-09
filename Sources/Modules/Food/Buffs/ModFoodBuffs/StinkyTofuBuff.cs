@@ -14,7 +14,6 @@ public class StinkyTofuBuff : ModBuff
 	{
 		FoodBuffModPlayer FoodBuffModPlayer = player.GetModPlayer<FoodBuffModPlayer>();
 		FoodBuffModPlayer.StinkyTofuBuff = true;
-
 	}
 }
 

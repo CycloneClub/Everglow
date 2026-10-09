@@ -38,5 +38,4 @@ public class QuinceMarry : DrinkBase
 		Item.value = Item.buyPrice(0, 3);
 		Item.rare = ItemRarityID.Blue;
 	}
-
 }

@@ -27,7 +27,6 @@ public class FoodBuffGlobalItem : GlobalItem
 					int num = Projectile.NewProjectile(source, position, newVelocity / 4, ProjectileID.Xenopopper, damage, knockback, player.whoAmI);
 					Main.projectile[num].localAI[0] = type;
 					Main.projectile[num].localAI[1] = velocity.Length();
-
 				}
 				else
 				{

@@ -14,7 +14,6 @@ public class TricolourBuff : ModBuff
 	{
 		FoodBuffModPlayer FoodBuffModPlayer = player.GetModPlayer<FoodBuffModPlayer>();
 		FoodBuffModPlayer.TricolourBuff = true;
-
 	}
 }
 

@@ -10,7 +10,6 @@ public class TuskBiomeSky : CustomSky
 	public static bool Open = false;
 	public override void OnLoad()
 	{
-
 	}
 
 	public override void Deactivate(params object[] args)
@@ -103,7 +102,6 @@ public class TuskBiomeSky : CustomSky
 			var l = new RedLightning() { pos = pos, rotation = 1.57f, maxTimeleft = 40 };
 			l.Create();
 			lightnings.Add(l);
-
 		}
 		if (!Main.gamePaused)
 		{
@@ -134,7 +132,6 @@ public class TuskBiomeSky : CustomSky
 			Vertex3D_2[] vertices = lightning.GetVertices(30, new Color(1, 1f - alpha, 1f - alpha, 0f));
 			Main.graphics.GraphicsDevice.Textures[0] = ModAsset.RedPoint.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, vertices, 0, vertices.Length - 2);
-
 		}
 	}
 

@@ -120,7 +120,6 @@ public class Faelanternbranch : ModProjectile
 			Main.spriteBatch.Draw(ModAsset.Faelanternbranchglow.Value, pos + (direction == 1 ? size : new Vector2(size.X * scale, size.Y)), new Rectangle(0, 0, Projectile.width, Projectile.height), Color.White, 0f, size, scale, direction == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
 		}
 		return false;
-
 	}
 
 	public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
@@ -137,5 +136,4 @@ public class Faelanternbranch : ModProjectile
 
 		return false;
 	}
-
 }

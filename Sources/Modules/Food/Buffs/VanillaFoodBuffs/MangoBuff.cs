@@ -14,7 +14,6 @@ public class MangoBuff : ModBuff
 	{
 		FoodBuffModPlayer FoodBuffModPlayer = player.GetModPlayer<FoodBuffModPlayer>();
 		FoodBuffModPlayer.MangoBuff = true;
-
 	}
 }
 

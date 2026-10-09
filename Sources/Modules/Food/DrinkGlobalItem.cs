@@ -262,7 +262,6 @@ public class DrinkGlobalItem : GlobalItem
 
 	public override void SetStaticDefaults()
 	{
-
 	}
 
 	public override void SetDefaults(Item item)

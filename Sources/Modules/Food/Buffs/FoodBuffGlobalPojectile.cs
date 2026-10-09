@@ -27,7 +27,6 @@ public class FoodBuffGlobalPojectile : GlobalProjectile
 					projectile.penetrate++;
 				}
 			}
-
 		}
 	}
 	public override bool OnTileCollide(Projectile projectile, Vector2 oldVelocity)

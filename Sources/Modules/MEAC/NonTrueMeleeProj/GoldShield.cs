@@ -240,7 +240,6 @@ public class GoldShield : ModProjectile, IWarpProjectile
 	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
 	{
 		overPlayers.Add(index);
-
 	}
 	public override bool PreDraw(ref Color lightColor)
 	{
@@ -687,7 +686,6 @@ public class GoldShieldUIDrawer : ModSystem
 					ResourceOverlayLoader.DrawResource(drawContext);
 				}
 			}
-
 		}
 
 
@@ -860,7 +858,6 @@ public class GoldShieldUIDrawer : ModSystem
 			if (_drawTextStyle == 2)
 			{
 				num2 += 2;
-
 			}
 			else if (_drawTextStyle == 1)
 			{
@@ -889,8 +886,6 @@ public class GoldShieldUIDrawer : ModSystem
 			resourceDrawSettings.StatsSnapshot = preparedSnapshot;
 			resourceDrawSettings.DisplaySet = Displayset;
 			resourceDrawSettings.Draw(spriteBatch, ref isHovered);
-
-
 		}
 
 
@@ -940,7 +935,6 @@ public class GoldShieldUIDrawer : ModSystem
 		}
 
 		#endregion HorizontalDraw
-
 
 	}
 }

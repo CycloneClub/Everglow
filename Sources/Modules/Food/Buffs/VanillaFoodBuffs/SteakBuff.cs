@@ -13,7 +13,6 @@ public class SteakBuff : ModBuff
 	public override void Update(Player player, ref int buffIndex)
 	{
 		player.manaCost *= 0.80f; // 减少20%魔力消耗
-
 	}
 }
 

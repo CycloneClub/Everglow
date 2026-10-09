@@ -108,6 +108,5 @@ public class GlowWoodSword : ModProjectile
 	}
 	public override void OnKill(int timeLeft)
 	{
-
 	}
 }

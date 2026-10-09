@@ -14,7 +14,6 @@ public class BloodyMoscatoBuff : ModBuff
 	{
 		FoodBuffModPlayer FoodBuffModPlayer = player.GetModPlayer<FoodBuffModPlayer>();
 		FoodBuffModPlayer.BloodyMoscatoBuff = true;
-
 	}
 }
 

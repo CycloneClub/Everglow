@@ -117,7 +117,6 @@ public class Fevens_Arrow : ModProjectile
 				};
 				Ins.VFXManager.Add(smog);
 			}
-
 		}
 		TimeToKill = 90;
 	}

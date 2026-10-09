@@ -42,7 +42,6 @@ internal class BlackHole : ModProjectile
 		{
 			proj = Projectile;
 		}
-
 	}
 	public override void AI()
 	{
@@ -292,7 +291,6 @@ internal class BlackHole : ModProjectile
 
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.Default, RasterizerState.CullNone, null, Main.Transform);
-
 	}
 	public override bool PreDraw(ref Color lightColor)
 	{
@@ -306,7 +304,6 @@ internal class BlackHole : ModProjectile
 			tex = ModContent.Request<Texture2D>(Texture).Value;
 			Main.spriteBatch.Draw(tex, proj.Center - Main.screenPosition, null, Color.White, 0, tex.Size() / 2, proj.scale / 255f, 0, 0);
 			DrawRing(proj, true);
-
 		}
 		return false;
 	}

@@ -94,7 +94,6 @@ public class MeatLantern_Proj : MeleeProj
 		Tplayer.HideLeg = true;
 		if (Main.myPlayer == Projectile.owner && Main.mouseRight && Main.mouseRightRelease)
 		{
-
 		}
 
 		useSlash = true;
@@ -372,7 +371,6 @@ public class MeatLantern_Proj : MeleeProj
 
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-
 	}
 	public override void End()
 	{
@@ -406,7 +404,6 @@ public class MeatLantern_Proj : MeleeProj
 			d.velocity = target.velocity * 0.3f + v;
 			d.noGravity = true;
 		}
-
 	}
 }
 

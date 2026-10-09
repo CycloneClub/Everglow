@@ -14,7 +14,6 @@ public class MilkshakeBuff : ModBuff
 	{
 		player.maxRunSpeed *= 5f;
 		player.runAcceleration *= 5f;
-
 	}
 }
 

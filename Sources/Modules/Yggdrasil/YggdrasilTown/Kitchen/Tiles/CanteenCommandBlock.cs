@@ -39,5 +39,4 @@ public class CanteenCommandBlock : ModTile
 	{
 		YggdrasilTownCentralSystem.CheckNPC(ModContent.NPCType<CanteenMaid>());
 	}
-
 }

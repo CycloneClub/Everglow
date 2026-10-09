@@ -83,6 +83,4 @@ public class TwilightEucalyptusChandelier : ModTile, ITileFluentlyDrawn
 	{
 		FurnitureUtils.Chandelier3x3FluentDraw(screenPosition, pos, spriteBatch, tileDrawing);
 	}
-
-
 }

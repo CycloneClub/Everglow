@@ -37,11 +37,9 @@ public class ShadowEulogistProj : MeleeProj
 	}
 	public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 	{
-
 	}
 	public new void DrawBloom()
 	{
-
 	}
 	public override void Attack()
 	{

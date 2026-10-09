@@ -64,5 +64,4 @@ public class WorldQuestRewardPacketTest
 		Assert.AreEqual("Alice", received.ExpectedPlayerName);
 		Assert.AreEqual(stream.Length, stream.Position);
 	}
-
 }

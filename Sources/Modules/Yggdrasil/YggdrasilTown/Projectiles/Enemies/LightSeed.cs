@@ -30,7 +30,6 @@ public class LightSeed : ModProjectile
 		if (Projectile.scale > 0.7f)
 		{
 			Projectile.ai[0] *= 0.985f;
-
 		}
 		else
 		{
@@ -60,7 +59,6 @@ public class LightSeed : ModProjectile
 	}
 	public override void OnKill(int timeLeft)
 	{
-
 	}
 	public override bool PreDraw(ref Color lightColor)
 	{

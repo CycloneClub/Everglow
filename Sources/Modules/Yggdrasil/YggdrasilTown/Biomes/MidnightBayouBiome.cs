@@ -144,6 +144,5 @@ public class MidnightBayouBiome : ModBiome
 
 	public void AddBackground(BackgroundSystem bgSystem)
 	{
-		
 	}
 }

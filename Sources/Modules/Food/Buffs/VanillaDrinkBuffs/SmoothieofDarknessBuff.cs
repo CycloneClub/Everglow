@@ -14,7 +14,6 @@ public class SmoothieofDarknessBuff : ModBuff
 	{
 		FoodBuffModPlayer FoodBuffModPlayer = player.GetModPlayer<FoodBuffModPlayer>();
 		FoodBuffModPlayer.SmoothieofDarknessBuff = true;
-
 	}
 }
 

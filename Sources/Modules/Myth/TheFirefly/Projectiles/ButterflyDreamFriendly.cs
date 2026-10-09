@@ -57,7 +57,6 @@ public class ButterflyDreamFriendly : ModProjectile
 					Projectile.velocity = Vector2.Lerp(Projectile.velocity, Projectile.DirectionTo(target.Center) * 15, 0.05f);
 				}
 				// else
-
 			}
 		}
 		else
@@ -114,5 +113,4 @@ public class ButterflyDreamFriendly : ModProjectile
 	{
 		return new Color(0.9f, 0.9f, 1f, 0) * (1 - Projectile.alpha / 255f);
 	}
-
 }

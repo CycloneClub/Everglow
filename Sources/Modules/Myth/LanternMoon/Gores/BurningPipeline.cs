@@ -22,7 +22,6 @@ public class BurningPipeline : Pipeline
 		effect.Value.Parameters["rand3"].SetValue(1200);
 		// effect.Value.Parameters["NoiseTexture"].SetValue(Commons.ModAsset.Noise_burn.Value); // 噪声纹理
 		effect.Value.CurrentTechnique.Passes[0].Apply();
-
 	}
 
 	public override void EndRender()

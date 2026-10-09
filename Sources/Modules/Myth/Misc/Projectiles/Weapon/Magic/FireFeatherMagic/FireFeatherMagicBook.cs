@@ -21,7 +21,6 @@ internal class FireFeatherMagicBook : MagicBookProjectile
 		TexCoordLeft = new Vector2(-1, 29);
 		TexCoordDown = new Vector2(28, 37);
 		TexCoordRight = new Vector2(41, 10);
-
 	}
 	public override void AI()
 	{

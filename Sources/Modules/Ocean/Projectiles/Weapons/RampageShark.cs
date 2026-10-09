@@ -83,7 +83,6 @@ public class RampageShark : ModProjectile
 					float rot = newvelocity.ToRotation();
 					Projectile.NewProjectile(shootSource, Projectile.Center + offset * 1.5f + velocity * 1.3f + random, Vector2.Zero, ModContent.ProjectileType<RampageSharkHit>(), item.damage, item.knockBack, player.whoAmI, 0.12f, rot);
 				}
-
 			}
 			for (int x = 0; x < (Power + 16) / 2; x++)
 			{
@@ -112,7 +111,6 @@ public class RampageShark : ModProjectile
 			Projectile.rotation = (float)(Math.Atan2(toMouse.Y, toMouse.X) + Math.PI * 0.25);
 			Projectile.Center = player.MountedCenter + Vector2.Normalize(toMouse) * 6;
 			{
-
 			}
 			;
 			Projectile.velocity *= 0;

@@ -9,7 +9,6 @@ public class WaterBoltDropPipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.WaterBoltDrop;
-
 	}
 	public override void BeginRender()
 	{

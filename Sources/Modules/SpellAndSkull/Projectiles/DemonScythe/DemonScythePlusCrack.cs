@@ -56,7 +56,6 @@ internal class DemonScythePlusCrack : ModProjectile
 
 	public override void OnKill(int timeLeft)
 	{
-
 	}
 
 	public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)

@@ -17,7 +17,6 @@ public class StarDancer_starProj2 : ModProjectile
 	}
 	public override void OnSpawn(IEntitySource source)
 	{
-
 	}
 	public override void AI()
 	{

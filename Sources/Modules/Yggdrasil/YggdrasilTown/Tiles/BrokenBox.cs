@@ -36,11 +36,9 @@ public class BrokenBox : ModTile
 		{
 			if (tile.TileFrameX == 36)
 			{
-
 			}
 			if (tile.TileFrameX == 54)
 			{
-
 			}
 		}
 		return base.PreDraw(i, j, spriteBatch);

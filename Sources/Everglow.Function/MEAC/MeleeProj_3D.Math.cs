@@ -43,8 +43,6 @@ public abstract partial class MeleeProj_3D : ModProjectile, IWarpProjectile_warp
 			return ProjectBindWithScreen(point, ProjectionMatrix) * 0.75f;
 		}
 		return ProjectBindWithProj(point, ProjectionMatrix);
-
-
 	}
 
 	public Vector2 ProjectBindWithProj(Vector3 point, Matrix ProjectionMatrix)
@@ -89,8 +87,6 @@ public abstract partial class MeleeProj_3D : ModProjectile, IWarpProjectile_warp
 			float yScreen = yNDC * Main.screenHeight / 2f;
 
 			return new Vector2(xScreen, yScreen) * SizeCorrectionFlag + (lookat - Projectile.Center);
-
-
 		}
 		throw new InvalidOperationException("W component of the projected point is zero.");
 	}

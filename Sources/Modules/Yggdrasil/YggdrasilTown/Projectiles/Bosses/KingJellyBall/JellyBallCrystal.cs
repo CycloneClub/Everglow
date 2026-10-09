@@ -22,7 +22,6 @@ public class JellyBallCrystal : ModProjectile
 
 	public void GenerateParticles(int duplicateTimes = 1)
 	{
-
 	}
 
 	public override void AI()

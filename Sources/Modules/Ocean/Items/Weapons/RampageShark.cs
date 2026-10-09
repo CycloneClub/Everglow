@@ -121,7 +121,6 @@ public class RampageShark : ModItem
 		{
 			float progress = CrazyValue - 15f;
 			Main.spriteBatch.Draw(TexEye, Item.Center - Main.screenPosition, null, new Color(progress, progress, progress, progress), rotation, texMainG.Size() / 2f, scale, SpriteEffects.None, 0);
-
 		}
 		else if (CrazyValue >= 16)
 		{

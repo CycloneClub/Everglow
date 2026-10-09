@@ -104,11 +104,9 @@ public class RedpaperGiant : LanternMoonNPC
 		}
 		if (State == (int)BehaviorState.Teleporting)
 		{
-
 		}
 		else
 		{
-
 		}
 
 		Player player = Main.player[NPC.target];

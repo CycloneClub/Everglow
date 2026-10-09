@@ -14,7 +14,6 @@ public class PiercoldWindBuff : ModBuff
 	{
 		FoodBuffModPlayer FoodBuffModPlayer = player.GetModPlayer<FoodBuffModPlayer>();
 		FoodBuffModPlayer.PiercoldWindBuff = true;
-
 	}
 }
 

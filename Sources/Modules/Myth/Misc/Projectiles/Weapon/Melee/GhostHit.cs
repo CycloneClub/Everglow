@@ -251,7 +251,6 @@ public class GhostHit : ModProjectile
 				}
 				bars.Add(new Vertex2D(trail[i] - normalDir * width + offset + new Vector2(Projectile.width / 2f), color, new Vector3(factor, 0.5f - Projectile.spriteDirection * 0.5f, factor)));
 				bars.Add(new Vertex2D(trail[i] + normalDir * width + offset + new Vector2(Projectile.width / 2f), color, new Vector3(factor, 0.5f + Projectile.spriteDirection * 0.5f, factor)));
-
 			}
 
 			if (bars.Count > 2)

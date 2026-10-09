@@ -9,6 +9,5 @@ public class Potato : FoodIngredientItem
 		DefaultAsIngredient(100);
 		SlicedItemType = ModContent.ItemType<GroundPotato>();
 		SliceDustType = ModContent.DustType<PotatoDust>();
-
 	}
 }

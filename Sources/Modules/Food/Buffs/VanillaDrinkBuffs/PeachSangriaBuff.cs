@@ -14,7 +14,6 @@ public class PeachSangriaBuff : ModBuff
 	{
 		player.lifeRegen += 50; // 加50生命恢复 
 		player.lifeMagnet = true; // 增加心的拾取范围
-
 	}
 }
 

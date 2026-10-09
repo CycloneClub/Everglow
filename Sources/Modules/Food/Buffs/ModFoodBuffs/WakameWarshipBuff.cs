@@ -13,7 +13,6 @@ public class WakameWarshipBuff : ModBuff
 	public override void Update(Player player, ref int buffIndex)
 	{
 		player.manaRegen += 2;
-
 	}
 }
 

@@ -149,5 +149,4 @@ public class WorldQuestManagerTest
 		CollectionAssert.AreEqual(expectedIdentities, objectiveUpdates);
 		Assert.AreEqual(WorldQuestState.Locked, missing.State);
 	}
-
 }

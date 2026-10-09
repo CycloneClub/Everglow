@@ -40,5 +40,4 @@ public class QuestPresentationSystemTest
 
 		Assert.AreEqual(2, publishCount);
 	}
-
 }

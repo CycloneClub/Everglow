@@ -13,7 +13,6 @@ public class ApricotBuff : ModBuff
 	public override void Update(Player player, ref int buffIndex)
 	{
 		player.manaRegen += 4; // 魔力再生加4
-
 	}
 }
 

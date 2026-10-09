@@ -132,7 +132,6 @@ public class CorMoth4DProj : ModProjectile
 		}
 		else
 		{
-
 		}
 		return false;
 	}

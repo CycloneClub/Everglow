@@ -14,7 +14,6 @@ public class KiwiJuiceBuff : ModBuff
 	{
 		FoodBuffModPlayer FoodBuffModPlayer = player.GetModPlayer<FoodBuffModPlayer>();
 		FoodBuffModPlayer.KiwiJuiceBuff = true;
-
 	}
 }
 

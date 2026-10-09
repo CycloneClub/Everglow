@@ -201,7 +201,6 @@ public class DragonScaleHammerProj : MeleeProj
 				mainAxisDirection = Projectile.rotation.ToRotationVector2() * 130;
 
 				BodyRotation = (float)timeValue * 0.024f * player.direction * player.gravDir;
-
 			}
 			if (timer < 50)
 			{
@@ -242,7 +241,6 @@ public class DragonScaleHammerProj : MeleeProj
 				mainAxisDirection = Projectile.rotation.ToRotationVector2() * 130;
 
 				BodyRotation = -(float)timeValue * 0.024f * player.direction * player.gravDir;
-
 			}
 			if (timer < 70)
 			{
@@ -280,7 +278,6 @@ public class DragonScaleHammerProj : MeleeProj
 				canHit = true;
 				Projectile.rotation += Projectile.spriteDirection * 0.17f * timeValue * timeValue * timeValue;
 				mainAxisDirection = Vector2.Lerp(mainAxisDirection, Vector2Elipse(130, Projectile.rotation, 0f), 0.4f);
-
 			}
 			if (timer < 80)
 			{

@@ -164,7 +164,6 @@ public class TsunamiShark_bullet : ModProjectile
 
 			bars.Add(new Vertex2D(Projectile.oldPos[i] + normalDir * -width + new Vector2(5) - Main.screenPosition, color, new Vector3(factor, 0, 0)));
 			bars.Add(new Vertex2D(Projectile.oldPos[i] + normalDir * width + new Vector2(5) - Main.screenPosition, color, new Vector3(factor, 1, 0)));
-
 		}
 
 		if (bars.Count > 2)
@@ -213,7 +212,6 @@ public class TsunamiShark_bullet : ModProjectile
 
 			bars.Add(new Vertex2D(Projectile.oldPos[i] + normalDir * -width + new Vector2(5) - Main.screenPosition, color, new Vector3(factor, 0, 0)));
 			bars.Add(new Vertex2D(Projectile.oldPos[i] + normalDir * width + new Vector2(5) - Main.screenPosition, color, new Vector3(factor, 1, 0)));
-
 		}
 
 		if (bars.Count > 2)

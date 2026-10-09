@@ -17,7 +17,6 @@ public class RoastedBirdBuff : ModBuff
 		FoodBuffModPlayer.WingTimeModifier += 0.25f;
 		player.extraFall += 30;
 		player.wingAccRunSpeed *= 1.15f;
-
 	}
 }
 

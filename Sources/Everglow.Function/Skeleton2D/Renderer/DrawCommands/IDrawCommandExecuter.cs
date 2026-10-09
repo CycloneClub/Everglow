@@ -11,7 +11,6 @@ public interface IDrawCommandVisitor
 	void Visit<T>(DrawMesh<T> command) where T : struct, IVertexType;
 
 	void Visit<T>(DrawIndexedMesh<T> command) where T : struct, IVertexType;
-
 }
 
 internal interface IDrawCommandExecuter

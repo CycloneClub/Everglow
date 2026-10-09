@@ -14,7 +14,6 @@ public class ChocolateChipCookieBuff : ModBuff
 	{
 		player.lifeRegen += 2; // 加2生命恢复
 		player.manaRegen += 2; // 加2魔力恢复
-
 	}
 }
 

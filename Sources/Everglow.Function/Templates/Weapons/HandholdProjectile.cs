@@ -48,7 +48,6 @@ public abstract class HandholdProjectile : ModProjectile
 	}
 	public virtual void SetDef()
 	{
-
 	}
 	public override void AI()
 	{

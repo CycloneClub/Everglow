@@ -14,7 +14,6 @@ public class BakedOysterBuff : ModBuff
 	{
 		player.GetArmorPenetration(DamageClass.Generic) += 4;
 		player.statDefense += 4;
-
 	}
 }
 

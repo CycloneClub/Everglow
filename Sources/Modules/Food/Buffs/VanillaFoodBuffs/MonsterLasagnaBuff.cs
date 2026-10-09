@@ -15,7 +15,6 @@ public class MonsterLasagnaBuff : ModBuff
 		FoodBuffModPlayer FoodBuffModPlayer = player.GetModPlayer<FoodBuffModPlayer>();
 		FoodBuffModPlayer.MonsterLasagnaBuff = true;
 		player.GetCritChance(DamageClass.Generic) += 25;
-
 	}
 }
 

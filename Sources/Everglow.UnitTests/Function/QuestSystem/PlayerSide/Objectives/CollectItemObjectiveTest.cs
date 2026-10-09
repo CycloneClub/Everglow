@@ -154,5 +154,4 @@ public class CollectItemObjectiveTest
 
 		Assert.AreEqual(7, objective.CollectedCount);
 	}
-
 }

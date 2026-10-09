@@ -79,5 +79,4 @@ public class FireflyBorageBadge : ModItem
 			.AddTile(TileID.LivingLoom)
 			.Register();
 	}
-
 }

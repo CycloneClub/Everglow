@@ -30,7 +30,6 @@ public class CyatheaLeaf_small : ModGore
 			}
 			gore.frameCounter = 0;
 		}
-
 	}
 	private void UpdateMove(Gore gore)
 	{

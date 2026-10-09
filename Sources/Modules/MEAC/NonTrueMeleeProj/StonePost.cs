@@ -258,7 +258,6 @@ public class StonePost : ModProjectile, IWarpProjectile
 					new Color(1f * k2, 0.7f * k2, 0f, 0f),
 					new Color(1f * k3, 0.6f * k3, 0f, 0f));
 			}
-
 		}
 		int LeftTime = 1800 - Projectile.timeLeft;
 		float glowStrength = 0;

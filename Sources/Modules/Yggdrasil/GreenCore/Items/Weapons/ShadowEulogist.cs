@@ -43,7 +43,6 @@ namespace Everglow.Yggdrasil.GreenCore.Items.Weapons
 			if (Main.myPlayer == player.whoAmI)
 			{
 				Projectile.NewProjectile(player.GetSource_ItemUse(Item), player.Center, Vector2.Zero, ModContent.ProjectileType<ShadowEulogistProj>(), player.GetWeaponDamage(Item), Item.knockBack, player.whoAmI);
-
 			}
 			return base.CanUseItem(player);
 		}
@@ -55,7 +54,6 @@ namespace Everglow.Yggdrasil.GreenCore.Items.Weapons
 				float a = 0.5f + (float)Math.Sin(Main.timeForVisualEffects / 50f + i * 4f / tooltips.Count) + 0.5f;
 				Color c = new Color(a, a, a, 1);
 				tooltips[i].OverrideColor = c;
-
 			}
 		}
 	}

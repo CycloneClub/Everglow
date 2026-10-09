@@ -30,7 +30,6 @@ public class FireFeather : ModDust
 		{
 			dust.rotation *= 0.96f;
 			dust.velocity.Y -= 0.03f;
-
 		}
 		if (dust.position.X <= 320 || dust.position.X >= Main.maxTilesX * 16 - 320)
 		{

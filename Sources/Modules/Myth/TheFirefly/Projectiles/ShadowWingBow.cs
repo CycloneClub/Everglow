@@ -144,7 +144,6 @@ internal class ShadowWingBow : ModProjectile
 						else
 							Energy++;
 					}
-
 				}
 				Energy++;
 			}

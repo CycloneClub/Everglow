@@ -92,7 +92,6 @@ public class MothWorldDoor : ModTile
 		Player player = Main.LocalPlayer;
 		if ((player.Center - new Vector2(i * 16, j * 16)).Length() < 12)
 		{
-
 		}
 		base.NearbyEffects(i, j, closer);
 	}
@@ -178,8 +177,6 @@ public class DrawMagicArraySystem : ModSystem
 		DrawTexLine(Point4, Point5, c1, c1, magicSeal);
 		DrawTexLine(Point5, Point6, c1, c1, magicSeal);
 		DrawTexLine(Point6, Point4, c1, c1, magicSeal);
-
-
 	}
 	public static void DrawTexLine(Vector2 StartPos, Vector2 EndPos, Color color1, Color color2, Texture2D tex)
 	{

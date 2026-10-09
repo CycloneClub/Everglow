@@ -14,7 +14,6 @@ public class BowlofSoupBuff : ModBuff
 	{
 		player.GetDamage(DamageClass.Magic) *= 1.05f; // 加5%魔法伤害
 		player.statManaMax2 += 20; // 加20魔力上限
-
 	}
 }
 

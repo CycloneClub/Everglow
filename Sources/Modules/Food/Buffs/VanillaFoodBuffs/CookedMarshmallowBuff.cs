@@ -14,7 +14,6 @@ public class CookedMarshmallowBuff : ModBuff
 	{
 		player.maxFallSpeed *= 0.25f;
 		player.noFallDmg = true;
-
 	}
 }
 

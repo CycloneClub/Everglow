@@ -29,7 +29,6 @@ public class LightDust : Visual
 
 	public override void OnSpawn()
 	{
-
 	}
 	public override void Update()
 	{
@@ -46,7 +45,6 @@ public class LightDust : Visual
 		}
 		if (aiStyle == AIStyle.Normal)
 		{
-
 		}
 		else if (aiStyle == AIStyle.Rotation)
 		{

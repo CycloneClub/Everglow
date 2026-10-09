@@ -22,9 +22,6 @@ public class CreateRoom : ModItem
 	{
 		if (player.itemAnimation == player.itemAnimationMax)
 		{
-
-
-
 		}
 		return base.UseItem(player);
 	}

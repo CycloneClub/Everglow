@@ -64,19 +64,16 @@ public class FoodDuration
 	public FoodDuration(int minutes, int seconds, int frames)
 		: this(0, minutes, seconds, frames)
 	{
-
 	}
 
 	public FoodDuration(int seconds, int frames)
 		: this(0, 0, seconds, frames)
 	{
-
 	}
 
 	public FoodDuration(int frames)
 		: this(0, 0, 0, frames)
 	{
-
 	}
 
 	private void Normalize()

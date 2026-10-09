@@ -110,7 +110,6 @@ internal class CrystalWindVFX : ShaderDraw
 			velocity = velocity * 0.75f + new Vector2(TrueAim.SafeNormalize(new Vector2(0, 0.05f)).X, -ai[1] * 0.3f) * 0.25f / ai[3] * 500f;
 			velocity *= Main.rand.NextFloat(0.85f, 1.15f);
 		}
-
 	}
 
 	public override void Draw()

@@ -247,8 +247,5 @@ namespace Everglow.MEAC.PlanetBeFall.Projectiles.NonIIIDProj.GoldenCrack
 			Main.spriteBatch.Begin(0, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 			return false;
 		}
-
 	}
-
-
 }

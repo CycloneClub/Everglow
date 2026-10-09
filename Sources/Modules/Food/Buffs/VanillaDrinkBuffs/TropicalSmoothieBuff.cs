@@ -15,6 +15,5 @@ public class TropicalSmoothieBuff : ModBuff
 		player.manaCost = 0.1f; // 仅消耗一点魔力
 		player.GetDamage(DamageClass.Magic) *= 1.5f; // 加50%攻击
 		player.GetCritChance(DamageClass.Magic) += 50; // 加50%暴击
-
 	}
 }

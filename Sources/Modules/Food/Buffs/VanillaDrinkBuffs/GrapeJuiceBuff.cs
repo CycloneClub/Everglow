@@ -13,7 +13,6 @@ public class GrapeJuiceBuff : ModBuff
 	public override void Update(Player player, ref int buffIndex)
 	{
 		player.luck += 10000;
-
 	}
 }
 

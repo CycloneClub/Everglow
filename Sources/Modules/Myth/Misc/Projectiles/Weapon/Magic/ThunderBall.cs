@@ -273,7 +273,6 @@ public class ThunderBall : ModProjectile
 			Main.graphics.GraphicsDevice.Textures[0] = ModContent.Request<Texture2D>("Everglow/Myth/UIImages/VisualTextures/ElecLine").Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, triangleList.ToArray(), 0, triangleList.Count / 3);
 			Main.graphics.GraphicsDevice.RasterizerState = originalState;
-
 		}
 	}
 }

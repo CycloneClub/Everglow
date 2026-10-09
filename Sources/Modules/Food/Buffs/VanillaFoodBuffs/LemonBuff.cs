@@ -14,7 +14,6 @@ public class LemonBuff : ModBuff
 	{
 		player.GetCritChance(DamageClass.Ranged) += 4; // 加4%暴击
 		player.aggro -= 300; // 仇恨值减300
-
 	}
 }
 

@@ -19,7 +19,6 @@ public class SeafoodPizzaBuff : ModBuff
 		player.statDefense += 2; // 加2防御
 		player.lifeRegen += 1; // 加1生命回复
 		player.manaRegen += 1; // 魔力再生加1
-
 	}
 }
 

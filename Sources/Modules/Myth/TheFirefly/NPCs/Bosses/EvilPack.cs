@@ -51,7 +51,6 @@ public class EvilPack : ModNPC
 		// Lighting.AddLight((int)(NPC.Center.X / 16f), (int)(NPC.Center.Y / 16f),0.2f * ValueLight, 0.2f * ValueLight, 0.4f * ValueLight);
 		if (NPC.ai[0] < 10)
 		{
-
 		}
 		else
 		{

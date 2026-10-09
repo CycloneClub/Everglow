@@ -22,7 +22,6 @@ public class Dendroid_normal : ModNPC
 		NPC.knockBackResist = 0.4f;
 		NPC.value = Item.buyPrice(0, 0, 12, 0);
 		NPC.aiStyle = NPCAIStyleID.Fighter;
-
 	}
 
 	public override float SpawnChance(NPCSpawnInfo spawnInfo)
@@ -59,7 +58,6 @@ public class Dendroid_normal : ModNPC
 				}
 			}
 		}
-
 	}
 	public override void FindFrame(int frameHeight)
 	{

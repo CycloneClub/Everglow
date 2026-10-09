@@ -39,5 +39,4 @@ public class TuskModPlayer : ModPlayer
 			screenShake = 0;
 		}
 	}
-
 }
