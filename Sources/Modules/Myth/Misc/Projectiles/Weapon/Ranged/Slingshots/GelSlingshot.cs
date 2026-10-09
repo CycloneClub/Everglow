@@ -54,20 +54,4 @@ internal class GelSlingshot : SlingshotProjectile
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 	}
-
-	public void DrawTexLine(Vector2 StartPos, Vector2 EndPos, float width, Color color, Texture2D tex)
-	{
-		Vector2 Width = Vector2.Normalize(StartPos - EndPos).RotatedBy(Math.PI / 2d) * width;
-
-		var vertex2Ds = new List<Vertex2D>();
-
-		vertex2Ds.Add(new Vertex2D(StartPos + Width, color, new Vector3(0, 0, 0)));
-		vertex2Ds.Add(new Vertex2D(StartPos - Width, color, new Vector3(0, 1, 0)));
-
-		vertex2Ds.Add(new Vertex2D(EndPos + Width, color, new Vector3(1, 0, 0)));
-		vertex2Ds.Add(new Vertex2D(EndPos - Width, color, new Vector3(1, 1, 0)));
-
-		Main.graphics.GraphicsDevice.Textures[0] = tex;
-		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, vertex2Ds.ToArray(), 0, vertex2Ds.Count - 2);
-	}
 }
