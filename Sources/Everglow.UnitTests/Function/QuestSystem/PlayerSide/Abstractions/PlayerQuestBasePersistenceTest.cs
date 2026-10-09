@@ -1,6 +1,5 @@
 using Everglow.Commons.Mechanics.Quest.PlayerSide;
 using Everglow.Commons.Mechanics.Quest.PlayerSide.Abstractions;
-using Everglow.Commons.Mechanics.Quest.PlayerSide;
 using Terraria.ModLoader.IO;
 
 namespace Everglow.UnitTests.Function.QuestSystem;
