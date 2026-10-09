@@ -1,4 +1,3 @@
-
 namespace Everglow.Commons.TileHelper;
 
 public class AirWall : ModWall
