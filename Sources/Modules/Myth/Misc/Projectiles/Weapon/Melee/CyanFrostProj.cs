@@ -273,7 +273,7 @@ public class CyanFrostProj : ModProjectile
 	// Copied from Main.DrawPrettyStarSparkle() which is private
 	private static void DrawPrettyStarSparkle(float opacity, SpriteEffects dir, Vector2 drawpos, Color drawColor, Color shineColor, float flareCounter, float fadeInStart, float fadeInEnd, float fadeOutStart, float fadeOutEnd, float rotation, Vector2 scale, Vector2 fatness)
 	{
-		Texture2D sparkleTexture = TextureAssets.Extra[98].Value;
+		Texture2D sparkleTexture = TextureAssets.Extra[ExtrasID.SharpTears].Value;
 		Color bigColor = shineColor * opacity * 0.5f;
 		bigColor.A = 0;
 		Vector2 origin = sparkleTexture.Size() / 2f;
@@ -362,10 +362,10 @@ public class CyanFrostProj : ModProjectile
 			Main.ParticleSystem_World_OverPlayers.Add(prettySparkleParticle2);
 			for (int i = 0; i < 1; i++)
 			{
-				Dust dust = Dust.NewDustPerfect(settings.PositionInWorld, 92, vector2.RotatedBy(Main.rand.NextFloatDirection() * ((float)Math.PI * 2f) * 0.025f) * Main.rand.NextFloat());
+				Dust dust = Dust.NewDustPerfect(settings.PositionInWorld, DustID.Frost, vector2.RotatedBy(Main.rand.NextFloatDirection() * ((float)Math.PI * 2f) * 0.025f) * Main.rand.NextFloat());
 				dust.noGravity = true;
 				dust.scale = 0.8f;
-				Dust dust2 = Dust.NewDustPerfect(settings.PositionInWorld, 92, -vector2.RotatedBy(Main.rand.NextFloatDirection() * ((float)Math.PI * 2f) * 0.025f) * Main.rand.NextFloat());
+				Dust dust2 = Dust.NewDustPerfect(settings.PositionInWorld, DustID.Frost, -vector2.RotatedBy(Main.rand.NextFloatDirection() * ((float)Math.PI * 2f) * 0.025f) * Main.rand.NextFloat());
 				dust2.noGravity = true;
 				dust2.scale = 0.8f;
 			}

@@ -9,7 +9,7 @@ public class FireflyWood : ModTile
 		Main.tileSolid[Type] = true;
 		Main.tileMergeDirt[Type] = true;
 		Main.tileBlockLight[Type] = true;
-		DustType = 191;
+		DustType = DustID.SpookyWood;
 		AddMapEntry(new Color(37, 46, 47));
 	}
 

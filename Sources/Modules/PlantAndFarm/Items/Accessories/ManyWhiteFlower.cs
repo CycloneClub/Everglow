@@ -20,7 +20,7 @@ public class ManyWhiteFlower : ModItem
 		Item.height = 42;
 		Item.value = 3024;
 		Item.accessory = true;
-		Item.rare = 3;
+		Item.rare = ItemRarityID.Orange;
 	}
 
 	public override void UpdateAccessory(Player player, bool hideVisual)
@@ -38,7 +38,7 @@ public class ManyWhiteFlower : ModItem
 		CreateRecipe()
 			.AddIngredient(ModContent.ItemType<WindMoveSeed>(), 15)
 			.AddIngredient(ModContent.ItemType<WhiteStar>(), 24)
-			.AddTile(304)
+			.AddTile(TileID.LivingLoom)
 			.Register();
 	}
 }

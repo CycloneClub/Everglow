@@ -31,7 +31,7 @@ public class BlackStarShrub : ModTile, ITileFluentlyDrawn
 		};
 		TileObjectData.newTile.CoordinateWidth = 72;
 		TileObjectData.addTile(Type);
-		DustType = 191;
+		DustType = DustID.SpookyWood;
 		var modTranslation = CreateMapEntryName();
 		AddMapEntry(new Color(84, 172, 255), modTranslation);
 		HitSound = SoundID.Grass;

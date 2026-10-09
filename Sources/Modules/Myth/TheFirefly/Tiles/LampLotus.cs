@@ -17,7 +17,7 @@ public class LampLotus : ModTile, ITileFluentlyDrawn
 		TileObjectData.newTile.Width = 1;
 		TileObjectData.newTile.CoordinateWidth = 28;
 		TileObjectData.addTile(Type);
-		DustType = 191;
+		DustType = DustID.SpookyWood;
 
 		AddMapEntry(new Color(81, 110, 255));
 		HitSound = SoundID.Grass;

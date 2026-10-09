@@ -8,7 +8,7 @@ public class Sunflower : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.useStyle = 1;
+		Item.useStyle = ItemUseStyleID.Swing;
 		Item.shootSpeed = 9f;
 		Item.shoot = ModContent.ProjectileType<Projectiles.Weapon.Melee.Sunflower>();
 		Item.DamageType = DamageClass.Melee;
@@ -19,7 +19,7 @@ public class Sunflower : ModItem
 		Item.useTime = 24;
 		Item.noUseGraphic = true;
 		Item.noMelee = true;
-		Item.rare = 1;
+		Item.rare = ItemRarityID.Blue;
 		Item.damage = 8;
 		Item.autoReuse = false;
 		Item.knockBack = 2;

@@ -128,7 +128,7 @@ public class TileToolBoxInterface : Visual
 		{
 			if (State == 0)
 			{
-				if (Owner.HeldItem.createTile != PlayerHeldItemTile && Owner.HeldItem.createTile >= 0)
+				if (Owner.HeldItem.createTile != PlayerHeldItemTile && Owner.HeldItem.createTile >= TileID.Dirt)
 				{
 					CurrentTileType = Owner.HeldItem.createTile;
 				}

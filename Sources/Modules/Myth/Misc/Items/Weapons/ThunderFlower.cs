@@ -16,7 +16,7 @@ public class ThunderFlower : ModItem
 		Item.height = 28;
 		Item.useTime = 30;
 		Item.useAnimation = 30;
-		Item.useStyle = 5;
+		Item.useStyle = ItemUseStyleID.Shoot;
 		Item.staff[Item.type] = true;
 		Item.noMelee = true;
 		Item.knockBack = 5f;

@@ -11,7 +11,7 @@ public class DarkCocoonSpecial : ModTile// 用来生成魔茧
 		Main.tileBlockLight[Type] = true;
 		Main.tileMerge[Type][ModContent.TileType<DarkCocoon>()] = true;
 		MinPick = 17500;
-		DustType = 191;
+		DustType = DustID.SpookyWood;
 		AddMapEntry(new Color(17, 16, 17));
 	}
 

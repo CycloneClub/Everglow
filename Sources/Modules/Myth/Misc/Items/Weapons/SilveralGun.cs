@@ -18,7 +18,7 @@ public class SilveralGun : ModItem
 		Item.noMelee = true;
 		Item.knockBack = 0;
 		Item.value = 500;
-		Item.rare = 1;
+		Item.rare = ItemRarityID.Blue;
 		Item.UseSound = SoundID.Item11;
 		Item.autoReuse = true;
 		Item.shoot = ProjectileID.PurificationPowder;

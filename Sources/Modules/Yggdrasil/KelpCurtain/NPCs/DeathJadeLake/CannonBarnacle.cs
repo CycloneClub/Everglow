@@ -44,7 +44,7 @@ public class CannonBarnacle : ModNPC
 		//
 		// The engine's own aiStyle 0 is the vanilla "No AI" style: the creature does not move and only
 		// faces the player, which is exactly what a sessile barnacle needs without any custom code.
-		NPC.aiStyle = 0;
+		NPC.aiStyle = NPCAIStyleID.FaceClosestPlayer;
 
 		// No sprite exists to measure, so a conservative small sessile box is used.
 		NPC.width = 28;

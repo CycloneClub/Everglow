@@ -8,7 +8,7 @@ public class PurpleThorns : ModTile
 		Main.tileCut[Type] = true;
 		TileID.Sets.TouchDamageDestroyTile[Type] = true;
 		TileID.Sets.TouchDamageImmediate[Type] = 12;
-		DustType = 191;
+		DustType = DustID.SpookyWood;
 		HitSound = SoundID.Grass;
 		AddMapEntry(new Color(35, 9, 35));
 	}

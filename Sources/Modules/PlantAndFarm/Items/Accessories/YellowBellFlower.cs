@@ -20,7 +20,7 @@ public class YellowBellFlower : ModItem
 		Item.height = 34;
 		Item.value = 3229;
 		Item.accessory = true;
-		Item.rare = 3;
+		Item.rare = ItemRarityID.Orange;
 	}
 
 	public override void UpdateAccessory(Player player, bool hideVisual)
@@ -33,7 +33,7 @@ public class YellowBellFlower : ModItem
 		CreateRecipe()
 			.AddIngredient(ModContent.ItemType<WindMoveSeed>(), 15)
 			.AddIngredient(ModContent.ItemType<GoldWhip>(), 24)
-			.AddTile(304)
+			.AddTile(TileID.LivingLoom)
 			.Register();
 	}
 }

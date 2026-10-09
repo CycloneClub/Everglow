@@ -7,6 +7,7 @@ using Everglow.Commons.Mechanics.Quest.WorldSide.Abstractions;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader.IO;
 
 namespace Everglow.UnitTests.Function.QuestSystem;
@@ -283,7 +284,7 @@ public partial class WorldQuestViewAdapterTest
 	[DataRow(QuestHintText.Masked)]
 	public void Create_NonWhitespaceHintPreservesCompleteView(string hint)
 	{
-		var reward = new Item { type = 1, stack = 2 };
+		var reward = new Item { type = ItemID.IronPickaxe, stack = 2 };
 		var objective = new StubObjective
 		{
 			ProgressValue = 0.8f,
@@ -323,7 +324,7 @@ public partial class WorldQuestViewAdapterTest
 	[DataRow("\t")]
 	public void Create_BlankHintExportsDetailsAndLeavesWorldObjectiveDescriptionsEmpty(string hint)
 	{
-		var reward = new Item { type = 2, stack = 3 };
+		var reward = new Item { type = ItemID.DirtBlock, stack = 3 };
 		var objective = new StubObjective { ProgressValue = 0.35f };
 		var quest = new StubQuest
 		{

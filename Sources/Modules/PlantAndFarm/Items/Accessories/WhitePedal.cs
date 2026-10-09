@@ -18,7 +18,7 @@ public class WhitePedal : ModItem
 		Item.height = 12;
 		Item.value = 3020;
 		Item.accessory = true;
-		Item.rare = 3;
+		Item.rare = ItemRarityID.Orange;
 	}
 
 	public override void UpdateAccessory(Player player, bool hideVisual)
@@ -32,7 +32,7 @@ public class WhitePedal : ModItem
 		CreateRecipe()
 			.AddIngredient(ModContent.ItemType<Materials.WindMoveSeed>(), 15)
 			.AddIngredient(ModContent.ItemType<Materials.ShallowNight>(), 24)
-			.AddTile(304)
+			.AddTile(TileID.LivingLoom)
 			.Register();
 	}
 }

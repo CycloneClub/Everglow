@@ -77,7 +77,7 @@ public class GoldRound : ModProjectile
 		for (int i = 0; i < 6; i++)
 		{
 			Vector2 v = new Vector2(0, Main.rand.NextFloat(1.5f, 4f)).RotatedByRandom(MathHelper.TwoPi);
-			int num = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, 87, 0f, 0f, 100, default, 1.2f);
+			int num = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.GemTopaz, 0f, 0f, 100, default, 1.2f);
 			Main.dust[num].velocity *= v;
 			Main.dust[num].noGravity = true;
 		}

@@ -107,7 +107,7 @@ public class RuinMask : ModItem
 			player.sitting.GetSittingOffsetInfo(player, out var posOffset, out var seatAdjustment);
 			vector2 += posOffset + new Vector2(0f, seatAdjustment);
 
-			if (player.mount.Active && player.mount.Type == 52)
+			if (player.mount.Active && player.mount.Type == MountID.Wolf)
 			{
 				vector2.X += 14f * (float)player.direction;
 				vector2.Y -= 2f * player.gravDir;

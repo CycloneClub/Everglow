@@ -54,7 +54,7 @@ public class ThunderBall : ModProjectile
 		for (int θ = 0; θ < 40; θ++)
 		{
 			Vector2 v = new Vector2(0, Main.rand.Next(25, 75) / 50f).RotatedByRandom(Math.PI * 2);
-			int num25 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 88, v.X, v.Y, 150, default, 0.6f);
+			int num25 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GemSapphire, v.X, v.Y, 150, default, 0.6f);
 			Main.dust[num25].noGravity = false;
 		}
 		return false;
@@ -73,7 +73,7 @@ public class ThunderBall : ModProjectile
 		for (int θ = 0; θ < 40; θ++)
 		{
 			Vector2 v = new Vector2(0, Main.rand.Next(25, 75) / 50f).RotatedByRandom(Math.PI * 2);
-			int num25 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 88, v.X, v.Y, 150, default, 0.6f);
+			int num25 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GemSapphire, v.X, v.Y, 150, default, 0.6f);
 			Main.dust[num25].noGravity = false;
 		}
 	}
@@ -173,7 +173,7 @@ public class ThunderBall : ModProjectile
 				for (int i = 0; i < 4; i++)
 				{
 					Vector2 v = new Vector2(0, Main.rand.Next(25, 75) / 50f).RotatedByRandom(Math.PI * 2);
-					int num25 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 88, v.X, v.Y, 150, default, 0.6f);
+					int num25 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GemSapphire, v.X, v.Y, 150, default, 0.6f);
 					Main.dust[num25].noGravity = false;
 				}
 			}
@@ -183,7 +183,7 @@ public class ThunderBall : ModProjectile
 			for (int i = 0; i < 4; i++)
 			{
 				Vector2 v = new Vector2(0, Main.rand.Next(25, 75) / 50f).RotatedByRandom(Math.PI * 2);
-				int num25 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 88, v.X * Projectile.timeLeft / 60f, v.Y * Projectile.timeLeft / 60f, 150, default, 0.6f * Projectile.timeLeft / 60f);
+				int num25 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GemSapphire, v.X * Projectile.timeLeft / 60f, v.Y * Projectile.timeLeft / 60f, 150, default, 0.6f * Projectile.timeLeft / 60f);
 				Main.dust[num25].noGravity = false;
 			}
 		}

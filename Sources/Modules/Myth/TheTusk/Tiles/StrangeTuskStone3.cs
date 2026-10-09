@@ -27,7 +27,7 @@ public class StrangeTuskStone3 : ModTile
 		};
 		TileObjectData.newTile.CoordinateWidth = 64;
 		TileObjectData.addTile(Type);
-		DustType = 1;
+		DustType = DustID.Stone;
 		var modTranslation = CreateMapEntryName();
 		AddMapEntry(new Color(100, 90, 90), modTranslation);
 		HitSound = SoundID.DD2_SkeletonHurt;

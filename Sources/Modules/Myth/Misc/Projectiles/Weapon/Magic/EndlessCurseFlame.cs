@@ -22,7 +22,7 @@ public class EndlessCurseFlame : ModProjectile
 
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
-		target.AddBuff(39, 60, false);
+		target.AddBuff(BuffID.CursedInferno, 60, false);
 	}
 
 	public override void AI()

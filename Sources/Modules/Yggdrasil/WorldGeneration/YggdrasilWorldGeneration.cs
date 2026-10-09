@@ -475,7 +475,7 @@ public class YggdrasilWorldGeneration : ModSystem
 			for (int y = y0; y <= y1; y += 1)
 			{
 				Tile tile = SafeGetTile(x, y);
-				tile.WallType = 0;
+				tile.WallType = WallID.None;
 			}
 		}
 		SmoothTile_XXYY(x0, y0, x1, y1);
@@ -1065,7 +1065,7 @@ public class YggdrasilWorldGeneration : ModSystem
 						}
 						else
 						{
-							if (tile.WallType <= 0)
+							if (tile.WallType <= WallID.None)
 							{
 								tile.WallType = (ushort)type;
 							}

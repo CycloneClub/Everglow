@@ -348,7 +348,7 @@ internal class SightOfTileProj : ModProjectile
 		Tile tile = Main.tile[i, j];
 		if (tile.HasTile && !emptyPart)
 		{
-			if (tile.WallType > 0)
+			if (tile.WallType > WallID.None)
 			{
 				return new Color(255, 120, 0, 200);
 			}
@@ -358,7 +358,7 @@ internal class SightOfTileProj : ModProjectile
 			}
 			return new Color(200, 200, 0, 10);
 		}
-		if (tile.WallType > 0)
+		if (tile.WallType > WallID.None)
 		{
 			return new Color(95, 0, 0, 200);
 		}
@@ -371,7 +371,7 @@ internal class SightOfTileProj : ModProjectile
 		Tile tile = Main.tile[i, j];
 		if (tile.HasTile)
 		{
-			if (tile.WallType > 0)
+			if (tile.WallType > WallID.None)
 			{
 				return new Color(255, 120, 0, 200);
 			}
@@ -381,7 +381,7 @@ internal class SightOfTileProj : ModProjectile
 			}
 			return new Color(200, 200, 0, 10);
 		}
-		if (tile.WallType > 0)
+		if (tile.WallType > WallID.None)
 		{
 			return new Color(95, 0, 0, 200);
 		}

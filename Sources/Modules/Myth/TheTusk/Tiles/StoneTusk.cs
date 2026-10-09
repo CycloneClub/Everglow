@@ -20,7 +20,7 @@ public class StoneTusk : ModTile
 		};
 		TileObjectData.newTile.CoordinateWidth = 36;
 		TileObjectData.addTile(Type);
-		DustType = 191;
+		DustType = DustID.SpookyWood;
 		var modTranslation = CreateMapEntryName();
 		AddMapEntry(new Color(112, 83, 67), modTranslation);
 		HitSound = SoundID.DD2_SkeletonHurt;

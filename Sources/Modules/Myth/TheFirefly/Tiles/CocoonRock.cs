@@ -20,7 +20,7 @@ public class CocoonRock : ModTile
 		TileObjectData.newTile.CoordinateWidth = 16;
 		TileObjectData.newTile.StyleHorizontal = true;
 		TileObjectData.addTile(Type);
-		DustType = 191;
+		DustType = DustID.SpookyWood;
 		AddMapEntry(new Color(25, 24, 25));
 		HitSound = SoundID.Dig;
 	}
