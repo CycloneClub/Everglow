@@ -26,7 +26,7 @@ public class DrinkGlobalItem : GlobalItem
 				new DrinkInfo()
 				{
 					Thirsty = false,
-					BuffType = ModContent.BuffType<AleBuff> (),
+					BuffType = ModContent.BuffType<AleBuff>(),
 					BuffTime = new FoodDuration(0, 10, 0),
 					Name =  "SakeBuff",
 				}
