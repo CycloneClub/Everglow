@@ -55,7 +55,7 @@ public class XnaTextureLoader : TextureLoader
 		}
 	}
 
-	public void Unload(Object texture)
+	public void Unload(object texture)
 	{
 		((Texture2D)texture).Dispose();
 	}
