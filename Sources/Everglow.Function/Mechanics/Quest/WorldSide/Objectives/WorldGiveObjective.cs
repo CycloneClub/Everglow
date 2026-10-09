@@ -20,6 +20,13 @@ public class WorldGiveObjective : WorldObjectiveBase
 		ItemCount = itemCount;
 	}
 
+	public WorldGiveObjective(int npcType, int itemType, int itemCount, string startText, string endText)
+		: this(npcType, itemType, itemCount)
+	{
+		StartText = startText;
+		EndText = endText;
+	}
+
 	private bool localSubmitted;
 
 	public int NPCType { get; private set; }
@@ -29,6 +36,10 @@ public class WorldGiveObjective : WorldObjectiveBase
 	public int ItemCount { get; private set; }
 
 	public bool Given { get; private set; }
+
+	public string StartText { get; set; } = string.Empty;
+
+	public string EndText { get; set; } = string.Empty;
 
 	public override float Progress => Given ? 1f : 0f;
 
@@ -53,50 +64,49 @@ public class WorldGiveObjective : WorldObjectiveBase
 
 	public override void Update()
 	{
-		if (NetUtils.IsSingle)
+		if (!CanProgress || Given || NetUtils.IsServer)
 		{
-			var player = Main.LocalPlayer;
-			if (player.TalkNPC?.netID == NPCType)
+			return;
+		}
+		if (localSubmitted)
+		{
+			if (WorldQuestManager.NetUpdate)
 			{
-				if (player.CountItem(ItemType, ItemCount) >= ItemCount)
-				{
-					for (int i = 0; i < ItemCount; i++)
-					{
-						player.ConsumeItem(ItemType);
-					}
-
-					Given = true;
-				}
+				NeedDeltaSync = true;
 			}
 			return;
 		}
-		else if (NetUtils.IsClient)
+
+		var player = Main.LocalPlayer;
+		if (player.TalkNPC?.netID != NPCType)
 		{
-			if (localSubmitted)
-			{
-				if (WorldQuestManager.NetUpdate)
-				{
-					NeedDeltaSync = true;
-				}
-				return;
-			}
+			return;
+		}
+		if (!string.IsNullOrEmpty(StartText))
+		{
+			Main.npcChatText = StartText;
+		}
+		if (player.CountItem(ItemType, ItemCount) < ItemCount)
+		{
+			return;
+		}
+		for (int i = 0; i < ItemCount; i++)
+		{
+			player.ConsumeItem(ItemType);
+		}
 
-			var player = Main.LocalPlayer;
-			if (player.TalkNPC?.netID == NPCType)
-			{
-				if (player.CountItem(ItemType, ItemCount) >= ItemCount)
-				{
-					for (int i = 0; i < ItemCount; i++)
-					{
-						player.ConsumeItem(ItemType);
-					}
-
-					localSubmitted = true;
-					NeedDeltaSync = true;
-
-					return;
-				}
-			}
+		if (NetUtils.IsSingle)
+		{
+			Given = true;
+		}
+		else
+		{
+			localSubmitted = true;
+			NeedDeltaSync = true;
+		}
+		if (!string.IsNullOrEmpty(EndText))
+		{
+			Main.npcChatText = EndText;
 		}
 	}
 

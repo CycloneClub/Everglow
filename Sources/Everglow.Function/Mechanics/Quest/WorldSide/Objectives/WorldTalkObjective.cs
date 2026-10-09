@@ -16,6 +16,12 @@ public class WorldTalkObjective : WorldObjectiveBase
 		NPCType = npcType;
 	}
 
+	public WorldTalkObjective(int npcType, string text)
+		: this(npcType)
+	{
+		NPCText = text;
+	}
+
 	private bool talking;
 
 	private bool oldTalking;
@@ -23,6 +29,8 @@ public class WorldTalkObjective : WorldObjectiveBase
 	public bool Talked { get; private set; }
 
 	public int NPCType { get; private set; }
+
+	public string NPCText { get; set; } = string.Empty;
 
 	public override float Progress => Talked ? 1f : 0f;
 
@@ -46,6 +54,15 @@ public class WorldTalkObjective : WorldObjectiveBase
 
 	public override void Update()
 	{
+		if (!CanProgress || Talked)
+		{
+			return;
+		}
+		// Dialogue is local presentation; world completion remains server-authoritative.
+		if (NetUtils.NotServer && Main.LocalPlayer.TalkNPC?.netID == NPCType && !string.IsNullOrEmpty(NPCText))
+		{
+			Main.npcChatText = NPCText;
+		}
 		if (NetUtils.IsSingle || NetUtils.IsMainServer)
 		{
 			foreach (var player in Main.ActivePlayers)
