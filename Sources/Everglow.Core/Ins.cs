@@ -34,16 +34,25 @@ public static class Ins
 
 	public static IVisualQualityController VisualQuality => Get<IVisualQualityController>();
 
-	public static void Add<T>() where T : class => services.AddSingleton<T>();
+	public static void Add<T>()
+		where T : class
+		=> services.AddSingleton<T>();
 
-	public static void Add<TService, TImplementation>() where TService : class where TImplementation : class, TService
+	public static void Add<TService, TImplementation>()
+		where TService : class
+		where TImplementation : class, TService
 		=> services.AddSingleton<TService, TImplementation>();
 
-	public static void Add<T>(Func<IServiceProvider, T> factory) where T : class => services.AddSingleton(factory);
+	public static void Add<T>(Func<IServiceProvider, T> factory)
+		where T : class
+		=> services.AddSingleton(factory);
 
-	public static void Add<T>(T instance) where T : class => services.AddSingleton(instance);
+	public static void Add<T>(T instance)
+		where T : class
+		=> services.AddSingleton(instance);
 
-	public static T Get<T>() where T : class
+	public static T Get<T>()
+		where T : class
 	{
 		var service = provider?.GetService<T>();
 		Debug.Assert(service != null);

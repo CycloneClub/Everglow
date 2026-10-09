@@ -254,7 +254,8 @@ public class VFXBatch : IDisposable
 		}, PrimitiveType.TriangleStrip);
 	}
 
-	public void Draw<T>(IEnumerable<T> vertices, PrimitiveType type) where T : struct, IVertexType
+	public void Draw<T>(IEnumerable<T> vertices, PrimitiveType type)
+		where T : struct, IVertexType
 	{
 		if (!vertices.Any())
 		{
@@ -319,7 +320,8 @@ public class VFXBatch : IDisposable
 	/// <typeparam name="T"></typeparam>
 	/// <param name="texture"></param>
 	/// <returns>this</returns>
-	public VFXBatch BindTexture<T>(Texture2D texture) where T : struct, IVertexType
+	public VFXBatch BindTexture<T>(Texture2D texture)
+		where T : struct, IVertexType
 	{
 		if (Buffer<T>.Textures.Count == 0)
 		{
@@ -368,7 +370,8 @@ public class VFXBatch : IDisposable
 		}
 	}
 
-	public void Flush<T>() where T : struct, IVertexType
+	public void Flush<T>()
+		where T : struct, IVertexType
 	{
 		Buffer<T>.Instance.DrawPrimitive();
 		Buffer<T>.Instance.Clear();
@@ -378,13 +381,15 @@ public class VFXBatch : IDisposable
 
 	#region Vertex
 
-	public void RegisterVertex<T>(int maxVertices = MAX_VERTICES, int maxIndices = MAX_INDICES) where T : struct, IVertexType
+	public void RegisterVertex<T>(int maxVertices = MAX_VERTICES, int maxIndices = MAX_INDICES)
+		where T : struct, IVertexType
 	{
 		buffers.Add(Buffer<T>.Create(GraphicsDevice, maxVertices, maxIndices));
 		needFlush.Add(false);
 	}
 
-	private int GetBufferIndex<T>() where T : struct, IVertexType
+	private int GetBufferIndex<T>()
+		where T : struct, IVertexType
 	{
 		return buffers.IndexOf(Buffer<T>.Instance);
 	}
@@ -433,7 +438,8 @@ public class VFXBatch : IDisposable
 		void DrawPrimitive();
 	}
 
-	private static class Buffer<T> where T : struct, IVertexType
+	private static class Buffer<T>
+		where T : struct, IVertexType
 	{
 		private static Buffers instance;
 
