@@ -27,7 +27,6 @@ public class PrimordialJadeWinged_Spear : MeleeProj
 		maxAttackType = 4;
 		maxSlashTrailLength = 20;
 		shaderType = Commons.MEAC.Enums.MeleeTrailShaderType.ArcBladeTransparentedByZ;
-		;
 		autoEnd = false;
 	}
 

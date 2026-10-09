@@ -79,7 +79,6 @@ public class ButterflyDream : ModProjectile
 			// Projectile.Center -= Projectile.velocity;
 			float sin = (float)Math.Sin(Projectile.timeLeft * 0.06f);
 			Projectile.velocity = Projectile.velocity.RotatedBy(-0.01f);
-			;
 			Projectile.velocity = Vector2.Normalize(Projectile.velocity) * (Projectile.velocity.Length() + sin * 6 - 0.7f);
 
 			Projectile.Center = npc.Center + Projectile.velocity;

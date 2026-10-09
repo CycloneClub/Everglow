@@ -119,7 +119,6 @@ internal class SkullHand : ModProjectile
 			finRot2[0] = UpdateSelf(finRot2[0], 0.26f);
 			finRot2[1] = UpdateSelf(finRot2[1], -0.18f);
 			finRot2[2] = UpdateSelf(finRot2[2], -0.8f);
-			;
 			finRot2[3] = UpdateSelf(finRot2[3], -1.38f);
 			finRot2[4] = UpdateSelf(finRot2[4], 1.26f);
 

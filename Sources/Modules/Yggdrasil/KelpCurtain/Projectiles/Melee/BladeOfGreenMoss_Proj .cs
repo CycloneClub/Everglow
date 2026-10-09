@@ -11,7 +11,6 @@ public class BladeOfGreenMoss_Proj : MeleeProj
 		maxAttackType = 4;
 		maxSlashTrailLength = 20;
 		shaderType = Commons.MEAC.Enums.MeleeTrailShaderType.ArcBladeTransparentedByZ;
-		;
 		autoEnd = false;
 		canLongLeftClick = true;
 		maxClickTimer = 240;

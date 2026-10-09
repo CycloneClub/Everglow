@@ -33,7 +33,7 @@ public struct FogState
 	/// 散射效果的模糊半径
 	/// </summary>
 	public int BloomRadius;
-};
+}
 
 public class FogPass
 {

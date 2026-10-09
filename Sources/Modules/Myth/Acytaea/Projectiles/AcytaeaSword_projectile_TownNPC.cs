@@ -30,7 +30,6 @@ public class AcytaeaSword_projectile_TownNPC : MeleeProj
 		maxAttackType = 0;
 		maxSlashTrailLength = 20;
 		shaderType = Commons.MEAC.Enums.MeleeTrailShaderType.ArcBladeTransparentedByZ;
-		;
 		ignoreTile = true;
 		autoEnd = false;
 	}

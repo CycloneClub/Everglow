@@ -96,14 +96,12 @@ public class MothYoyoSub : ModProjectile
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D Light = ModAsset.FixCoinLight3.Value;
-		;
 		Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
 		var origin = new Vector2(tex.Width / 2, tex.Height / 6);
 		Rectangle sourceRec = tex.Frame(1, 4, 0, Projectile.frame % 4);
 
 		Projectile owner = Main.projectile[(int)Projectile.ai[0]];
 		Vector2 pos = Projection(v3Position + new Vector3(owner.Center.X, owner.Center.Y, 0), Main.screenPosition + new Vector2(Main.screenWidth, Main.screenHeight) / 2, out float scale, 1000);
-		;
 		var c = new Color(185, 185, 255, 0);
 		Main.spriteBatch.Draw(Light, pos - Main.screenPosition, null, c * 0.2f, Projectile.rotation, Light.Size() / 2, Projectile.scale * scale, SpriteEffects.None, 0);
 		Main.spriteBatch.Draw(tex, pos - Main.screenPosition, sourceRec, c, Projectile.rotation, origin, Projectile.scale * scale, Projectile.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);

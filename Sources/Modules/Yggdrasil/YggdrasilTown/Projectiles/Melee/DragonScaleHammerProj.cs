@@ -11,7 +11,6 @@ public class DragonScaleHammerProj : MeleeProj
 		maxAttackType = 4;
 		maxSlashTrailLength = 20;
 		shaderType = Commons.MEAC.Enums.MeleeTrailShaderType.ArcBladeTransparentedByZ;
-		;
 		longHandle = true;
 		Projectile.scale *= 1.1f;
 	}
