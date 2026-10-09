@@ -460,7 +460,7 @@ public class VFXBatch : IDisposable
 
 		public static IBuffers Instance => instance;
 
-		public static Queue<(int index, int vertex)> SameTexture => instance.sameTexture;
+		public static Queue<(int Index, int Vertex)> SameTexture => instance.sameTexture;
 
 		public static List<Texture2D> Textures => instance.textures;
 
@@ -519,7 +519,7 @@ public class VFXBatch : IDisposable
 				vertexBuffer = new DynamicVertexBuffer(graphicsDevice, typeof(T), maxVertices, BufferUsage.WriteOnly),
 				indexBuffer = new DynamicIndexBuffer(graphicsDevice, IndexElementSize.ThirtyTwoBits, maxIndices, BufferUsage.WriteOnly),
 				textures = new List<Texture2D>(),
-				sameTexture = new Queue<(int index, int vertex)>(),
+				sameTexture = new Queue<(int Index, int Vertex)>(),
 				graphicsDevice = graphicsDevice,
 			};
 			return instance;
@@ -531,7 +531,7 @@ public class VFXBatch : IDisposable
 			public DynamicIndexBuffer indexBuffer;
 			public int indexPosition;
 			public int[] indices;
-			public Queue<(int index, int vertex)> sameTexture;
+			public Queue<(int Index, int Vertex)> sameTexture;
 			public List<Texture2D> textures;
 			public DynamicVertexBuffer vertexBuffer;
 			public int vertexPosition;

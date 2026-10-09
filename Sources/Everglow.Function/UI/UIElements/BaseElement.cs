@@ -123,9 +123,9 @@ public class BaseElement : IDrawable
 			return output;
 		}
 
-		public static implicit operator PositionStyle((float pixel, float percent) value)
+		public static implicit operator PositionStyle((float Pixel, float Percent) value)
 		{
-			return new PositionStyle(value.pixel, value.percent);
+			return new PositionStyle(value.Pixel, value.Percent);
 		}
 
 		public override string ToString()
