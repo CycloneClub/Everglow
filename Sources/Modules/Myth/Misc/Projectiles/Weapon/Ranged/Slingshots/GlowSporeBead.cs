@@ -31,8 +31,6 @@ public class GlowSporeBead : SlingshotAmmo
 			Main.dust[index].velocity = Projectile.velocity * 0.5f;
 			for (float v = 0; v < Projectile.velocity.Length(); v += 1f)
 			{
-
-
 				if (v % 8 == 0)
 				{
 					int index2 = Dust.NewDust(Projectile.position - Projectile.velocity.SafeNormalize(Vector2.Zero) * v - new Vector2(4), Projectile.width, Projectile.height, ModContent.DustType<JungleSmogStoppedByTile>(), 0f, 0f, 0, default, Main.rand.NextFloat(3.7f, 5.1f));

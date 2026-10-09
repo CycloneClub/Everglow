@@ -9,7 +9,6 @@ namespace Everglow.Myth.TheFirefly.Tiles.Furnitures;
 
 public class GlowWoodCampfire : ModTile
 {
-
 	public override void SetStaticDefaults()
 	{
 		// Properties

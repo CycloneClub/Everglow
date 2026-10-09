@@ -127,7 +127,6 @@ public class RockArrow : ModProjectile
 	}
 	public void DrawTrail(Color light)
 	{
-
 		float drawC = 0.2f;
 		float timer = (float)Main.timeForVisualEffects * 0.02f + Projectile.whoAmI / 17f;
 		var bars = new List<Vertex2D>();

@@ -95,7 +95,6 @@ public class GhostHit : ModProjectile
 	}
 	public virtual void DrawTrail()
 	{
-
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 		DrawDark();

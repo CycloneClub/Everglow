@@ -12,7 +12,6 @@ internal class Star
 	private float baseScale = 1;
 	public virtual void Update()
 	{
-
 		if (timeLeft == maxTime)
 		{
 			baseScale = scale;

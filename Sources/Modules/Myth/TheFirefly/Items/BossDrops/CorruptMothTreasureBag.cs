@@ -11,7 +11,6 @@ namespace Everglow.Myth.TheFirefly.Items.BossDrops;
 // Basic code for a boss treasure bag
 public class CorruptMothTreasureBag : ModItem
 {
-
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.TreasureBags;
 
 	public override void SetStaticDefaults()

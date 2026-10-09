@@ -106,7 +106,6 @@ public class FogPass
 		}
 		set
 		{
-
 			m_currentState.BloomRadius = value;
 		}
 	}
@@ -484,7 +483,6 @@ public class FogPass
 
 	private void Generate(int down, int up)
 	{
-
 		var spriteBatch = Main.spriteBatch;
 		var graphicsDevice = Main.graphics.GraphicsDevice;
 

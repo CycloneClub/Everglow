@@ -16,7 +16,6 @@ public class EvilChrysalis : ModItem
 
 	public override void SetDefaults()
 	{
-
 		Item.damage = 24;
 		Item.mana = 6;
 		Item.width = 50;

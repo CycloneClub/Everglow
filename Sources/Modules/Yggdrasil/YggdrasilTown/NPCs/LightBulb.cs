@@ -45,7 +45,6 @@ public class LightBulb : ModNPC
 		{
 			case (int)NPCState.Sleep:
 				{
-
 					NPC.frame.Y = (int)(NPC.frameCounter / 8 % 4 + 8) * frameHeight;
 					break;
 				}

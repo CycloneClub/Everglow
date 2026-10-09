@@ -14,7 +14,6 @@ public class BloodGlucoseMonitor : ModItem
 
 	public override void SetDefaults()
 	{
-
 		Item.value = Item.buyPrice(50000);
 		Item.rare = ItemRarityID.Green;
 		Item.accessory = true;

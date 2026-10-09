@@ -8,7 +8,6 @@ namespace Everglow.Food;
 
 public class DrinkGlobalItem : GlobalItem
 {
-
 	// 对于原版的饮料进行类型Id到 DrinkInfo 的映射，直接获取DrinkInfo实例
 	public static Dictionary<int, DrinkInfo> m_vanillaDrinkInfos;
 	public override void Unload()
@@ -266,7 +265,6 @@ public class DrinkGlobalItem : GlobalItem
 
 	public override void SetDefaults(Item item)
 	{
-
 		// 如果是原版的饮料，那么就手动处理
 		if (m_vanillaDrinkInfos.ContainsKey(item.type))
 		{
@@ -340,7 +338,6 @@ public class DrinkGlobalItem : GlobalItem
 
 	public override bool ConsumeItem(Item item, Player player)
 	{
-
 		var foodPlayer = player.GetModPlayer<FoodModPlayer>();
 		// 判断能否喝下物品
 		if (m_vanillaDrinkInfos.ContainsKey(item.type))

@@ -21,7 +21,6 @@ public class CreatPineTree : ModItem
 	}
 	public override bool? UseItem(Player player)
 	{
-
 		return true;
 	}
 	public override void HoldItem(Player player)

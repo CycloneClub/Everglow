@@ -33,7 +33,6 @@ public abstract partial class MeleeProj_3D : ModProjectile, IWarpProjectile_warp
 
 	public Vector2 Project(Vector3 point, Matrix ProjectionMatrix, [System.Runtime.CompilerServices.CallerFilePath] string callerFilePath = "")
 	{
-
 		if ((callerFilePath.Contains("MeleeProj_3D.Draw.cs") || callerFilePath.Contains("MeleeProj_3D.Posture.cs")) && MeleeProj_3D_Configs.IsMeleeWeaponProjectBindWithScreen_Draw)
 		{
 			return ProjectBindWithScreen(point, ProjectionMatrix) * 0.75f;

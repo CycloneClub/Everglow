@@ -156,7 +156,6 @@ public class ToothMagicSplit2 : ModProjectile
 	private bool[] HasBeenHit = new bool[200];
 	public override void PostDraw(Color lightColor)
 	{
-
 		if (DelX == -1)
 		{
 			DelX = Main.rand.NextFloat(1f, 40f);

@@ -35,7 +35,6 @@ public abstract class FoodRecipes : ModSystem
 
 		public CookingUnit(int type, int num, params int[][] itemgroup)
 		{
-
 			Ingredients = itemgroup.ToList();
 
 			Type = type;

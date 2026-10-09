@@ -37,7 +37,6 @@ public class KiwiIceCream : FoodBase
 
 	public override void SetDefaults()
 	{
-
 		Item.DefaultToFood(22, 22, BuffID.WellFed3, 57600);
 		Item.value = Item.buyPrice(0, 3);
 		Item.rare = ItemRarityID.Blue;
@@ -46,7 +45,6 @@ public class KiwiIceCream : FoodBase
 
 	public override bool ConsumeItem(Player player)
 	{
-
 		return true;
 	}
 }

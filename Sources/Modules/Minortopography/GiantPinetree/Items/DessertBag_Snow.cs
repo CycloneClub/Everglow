@@ -7,7 +7,6 @@ namespace Everglow.Minortopography.GiantPinetree.Items;
 // Basic code for a boss treasure bag
 public class DessertBag_Snow : ModItem
 {
-
 	public override void SetStaticDefaults()
 	{
 		ItemID.Sets.OpenableBag[Type] = true; // ..But this set ensures that dev armor will only be dropped on special world seeds, since that's the behavior of pre-hardmode boss bags.

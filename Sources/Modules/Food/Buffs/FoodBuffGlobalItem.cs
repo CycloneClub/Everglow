@@ -10,7 +10,6 @@ public class FoodBuffGlobalItem : GlobalItem
 
 	public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-
 		if (player.GetModPlayer<FoodBuffModPlayer>().GreenStormBuff)
 		{
 			Projectile.NewProjectile(source, position + new Vector2(0, -24), l % 2 == 0 ? velocity : velocity / 10, l % 2 == 0 ? ProjectileID.CrystalLeafShot : ProjectileID.SporeCloud, damage, knockback, Main.LocalPlayer.whoAmI, 0f, 0f);
@@ -58,7 +57,6 @@ public class FoodBuffGlobalItem : GlobalItem
 
 	public override void ModifyItemScale(Item item, Player player, ref float scale)
 	{
-
 		if (!item.IsAir && item.damage > 0 && !item.noMelee && item.pick == 0 && item.axe == 0 && item.hammer == 0)
 		{
 			if (player.GetModPlayer<FoodBuffModPlayer>().KiwiJuiceBuff)

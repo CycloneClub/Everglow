@@ -350,7 +350,6 @@ public class BladeOfGreenMoss_Proj : MeleeProj
 
 	public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 	{
-
 		if (currantAttackType == 4)
 		{
 			modifiers.FinalDamage *= 2f;

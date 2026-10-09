@@ -10,8 +10,6 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.TwilightForest.Furnitures;
 
 public class TwilightEucalyptusChandelier : ModTile, ITileFluentlyDrawn
 {
-
-
 	public override void SetStaticDefaults()
 	{
 		Main.tileFlame[Type] = true;

@@ -7,7 +7,6 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee;
 // This is a copy of the Excalibur's projectile
 public class CyanFrostProj : ModProjectile
 {
-
 	// We could use a vanilla texture if we want instead of supplying our own.
 	// public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.Excalibur;
 

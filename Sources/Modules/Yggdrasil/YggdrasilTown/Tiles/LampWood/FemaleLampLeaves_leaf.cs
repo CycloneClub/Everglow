@@ -75,7 +75,6 @@ public class FemaleLampLeaves_leaf : TileVFX
 
 public class FemaleLampLeaves_leaf_fore : TileVFX
 {
-
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawPlayers;
 	public override void OnSpawn()
 	{

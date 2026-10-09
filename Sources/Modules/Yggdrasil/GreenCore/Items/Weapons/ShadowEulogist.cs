@@ -50,7 +50,6 @@ namespace Everglow.Yggdrasil.GreenCore.Items.Weapons
 		{
 			for (int i = 0; i < tooltips.Count; i++)
 			{
-
 				float a = 0.5f + (float)Math.Sin(Main.timeForVisualEffects / 50f + i * 4f / tooltips.Count) + 0.5f;
 				Color c = new Color(a, a, a, 1);
 				tooltips[i].OverrideColor = c;

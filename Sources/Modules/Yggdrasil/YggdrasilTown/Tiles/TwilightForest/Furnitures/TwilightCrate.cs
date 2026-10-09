@@ -8,7 +8,6 @@ public class TwilightCrate : ModTile
 {
 	public override void SetStaticDefaults()
 	{
-
 		DustType = ModContent.DustType<TwilightEucalyptusWoodDust>(); // You should set a kind of dust manually.
 
 		// Properties

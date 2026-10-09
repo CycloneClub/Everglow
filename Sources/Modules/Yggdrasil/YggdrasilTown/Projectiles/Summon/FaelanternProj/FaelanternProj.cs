@@ -68,7 +68,6 @@ public class FaelanternProj : ModProjectile
 	private Projectile Fae;
 	public override void AI()
 	{
-
 		FaelanternSkeleton.AnimationState.Apply(FaelanternSkeleton.Skeleton);
 		timer++;
 		if (timer == 10)
@@ -94,7 +93,6 @@ public class FaelanternProj : ModProjectile
 		FaelanternSkeleton.AnimationState.SetAnimation(0, "growth", true);
 		for (int i = 0; i < 120; i++)
 		{
-
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 2f)).RotatedByRandom(MathHelper.TwoPi);
 			if (i % 2 == 0)
 			{

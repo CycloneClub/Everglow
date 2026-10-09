@@ -534,7 +534,6 @@ internal class CentipedeBody : FireWormBody
 	}
 	public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
-
 		float AddRot = (float)(Math.Sin(Main.timeForVisualEffects * 0.2 + NPC.ai[2] * 0.7) * 0.3f);
 		int FrameType = (int)NPC.ai[2] % 2;
 		if (FrameType == 1 && (int)NPC.ai[2] % 4 == 1)

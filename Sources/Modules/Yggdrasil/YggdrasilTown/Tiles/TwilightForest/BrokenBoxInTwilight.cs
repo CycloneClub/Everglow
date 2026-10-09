@@ -21,7 +21,6 @@ public class BrokenBoxInTwilight : ModTile
 	}
 	public override void KillMultiTile(int i, int j, int frameX, int frameY)
 	{
-
 		base.KillMultiTile(i, j, frameX, frameY);
 	}
 	public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)

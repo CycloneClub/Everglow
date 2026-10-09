@@ -384,8 +384,6 @@ public class VFXBatch : IDisposable
 
 	private struct VFX2D : IVertexType
 	{
-
-
 		private static VertexDeclaration _vertexDeclaration = new(new VertexElement[3]
 	 {
 		new VertexElement(0, VertexElementFormat.Vector2, VertexElementUsage.Position, 0),

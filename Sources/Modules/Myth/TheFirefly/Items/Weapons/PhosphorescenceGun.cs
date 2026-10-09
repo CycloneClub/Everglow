@@ -17,8 +17,6 @@ public class PhosphorescenceGun : ModItem
 
 	public override void SetDefaults()
 	{
-
-
 		Item.width = 70;
 		Item.height = 40;
 		Item.rare = ItemRarityID.Green;

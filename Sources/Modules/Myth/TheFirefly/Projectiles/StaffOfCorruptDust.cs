@@ -23,7 +23,6 @@ internal class StaffOfCorruptDust : ModProjectile
 	}
 	public override void AI()
 	{
-
 		Player player = Main.player[Projectile.owner];
 		float ProjectileToPlayerDistance = 48f;
 		Projectile.velocity *= 0;

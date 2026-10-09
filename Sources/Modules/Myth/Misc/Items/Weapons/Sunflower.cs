@@ -8,7 +8,6 @@ public class Sunflower : ModItem
 
 	public override void SetDefaults()
 	{
-
 		Item.useStyle = 1;
 		Item.shootSpeed = 9f;
 		Item.shoot = ModContent.ProjectileType<Projectiles.Weapon.Melee.Sunflower>();

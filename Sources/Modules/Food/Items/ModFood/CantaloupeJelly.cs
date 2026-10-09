@@ -22,7 +22,6 @@ public class CantaloupeJelly : FoodBase
 	}
 	public override void SetStaticDefaults()
 	{
-
 		CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 5;
 
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(int.MaxValue, 3));
@@ -38,7 +37,6 @@ public class CantaloupeJelly : FoodBase
 
 	public override void SetDefaults()
 	{
-
 		Item.DefaultToFood(22, 22, BuffID.WellFed3, 57600);
 		Item.value = Item.buyPrice(0, 3);
 		Item.rare = ItemRarityID.Blue;

@@ -92,7 +92,6 @@ public class CurseClub_fly : ModProjectile, IWarpProjectile
 
 		if (Main.rand.NextBool(2))
 		{
-
 			GradientColor color = new GradientColor();
 			color.colorList.Add((new Color(1f, 1f, 0.1f), 0f));
 			color.colorList.Add((new Color(0.1f, 0.6f, 0.1f), 0.3f));

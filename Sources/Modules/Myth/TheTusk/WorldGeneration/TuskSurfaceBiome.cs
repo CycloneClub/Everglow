@@ -32,7 +32,6 @@ public class TuskSurfaceBiome : ModBiome
 	// Calculate when the biome is active.
 	public override bool IsBiomeActive(Player player)
 	{
-
 		bool b1 = TuskBiomeSky.Open;
 		/*if(b1)
             {

@@ -22,7 +22,6 @@ public class GreatTombLand : ModSystem
 {
 	private class GreatTombLandGenPass : GenPass
 	{
-
 		public GreatTombLandGenPass() : base("GreatTombLand", 500)
 		{
 		}
@@ -70,7 +69,6 @@ public class GreatTombLand : ModSystem
 
 		for (int i = (int)-Width; i <= (int)Width; i++)
 		{
-
 			if (i <= -Width + 7 || i >= Width - 7)
 			{
 				while (GetMergeToJungle(X0, Y0) <= 10)

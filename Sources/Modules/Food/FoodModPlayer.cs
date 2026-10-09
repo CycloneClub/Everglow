@@ -9,7 +9,6 @@ namespace Everglow.Food;
 
 public class FoodModPlayer : ModPlayer
 {
-
 	/// <summary>
 	/// 玩家当前饱食度
 	/// </summary>
