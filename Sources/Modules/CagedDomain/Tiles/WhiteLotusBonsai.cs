@@ -26,7 +26,7 @@ public class WhiteLotusBonsai : ModTile
 			16,
 			16,
 			16,
-			16
+			16,
 		};
 		TileObjectData.newTile.CoordinateWidth = 16;
 		TileObjectData.newTile.Origin = new Point16(3, 10);

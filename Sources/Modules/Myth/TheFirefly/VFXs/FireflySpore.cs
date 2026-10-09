@@ -84,7 +84,7 @@ public class FireflySporeDust : Visual
 			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 0.5), new Color(0, 1, ai[0], pocession), new Vector3(0)),
 
 			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 1.5), new Color(1, 0, ai[0], pocession), new Vector3(0)),
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 1), new Color(1, 1, ai[0], pocession), new Vector3(0))
+			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 1), new Color(1, 1, ai[0], pocession), new Vector3(0)),
 		};
 
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);

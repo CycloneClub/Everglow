@@ -16,7 +16,7 @@ public class LampWood_Stone_6x1 : ModTile
 		TileObjectData.newTile.Width = 6;
 		TileObjectData.newTile.CoordinateHeights = new int[]
 		{
-			18
+			18,
 		};
 		TileObjectData.newTile.StyleHorizontal = true;
 		TileObjectData.newTile.LavaDeath = false;

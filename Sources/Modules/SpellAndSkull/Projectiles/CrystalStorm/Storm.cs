@@ -29,7 +29,7 @@ internal class Storm : ModProjectile
 				position = Projectile.Center + v2,
 				maxTime = Math.Min(120, Intensity / 2),
 				rotation = Main.rand.NextFloat(6.283f),
-				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Intensity / 1400f * Main.rand.NextFloat(0.85f, 1.15f), Projectile.whoAmI, 0 }
+				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Intensity / 1400f * Main.rand.NextFloat(0.85f, 1.15f), Projectile.whoAmI, 0 },
 			};
 			Ins.VFXManager.Add(cw);
 		}

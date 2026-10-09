@@ -85,7 +85,7 @@ public class SDFUtils
 				return new AABBCollider2D()
 				{
 					Center = new Vector2(i * 16 + 8, j * 16 + 8),
-					Size = new Vector2(8, 8)
+					Size = new Vector2(8, 8),
 				};
 			}
 			return null;
@@ -98,12 +98,12 @@ public class SDFUtils
 				return inverse ? new AABBCollider2D()
 				{
 					Center = new Vector2(i * 16 + 8, j * 16 + 4),
-					Size = new Vector2(8, 4)
+					Size = new Vector2(8, 4),
 				}
 				: new AABBCollider2D()
 				{
 					Center = new Vector2(i * 16 + 8, j * 16 + 12),
-					Size = new Vector2(8, 4)
+					Size = new Vector2(8, 4),
 				};
 			}
 			else
@@ -111,7 +111,7 @@ public class SDFUtils
 				return inverse ? null : new AABBCollider2D()
 				{
 					Center = new Vector2(i * 16 + 8, j * 16 + 8),
-					Size = new Vector2(8, 8)
+					Size = new Vector2(8, 8),
 				};
 			}
 		}
@@ -136,7 +136,7 @@ public class SDFUtils
 			{
 				Center = new Vector2(i * 16 + 8, j * 16 + 8),
 				Size = new Vector2(8, 8),
-				LineDir = inverse ? -dirLine : dirLine
+				LineDir = inverse ? -dirLine : dirLine,
 			};
 		}
 	}

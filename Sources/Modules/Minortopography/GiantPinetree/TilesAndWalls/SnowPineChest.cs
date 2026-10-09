@@ -37,7 +37,7 @@ public class SnowPineChest : ModTile
 				TileID.Boulder,
 				TileID.BouncyBoulder,
 				TileID.LifeCrystalBoulder,
-				TileID.RollingCactus
+				TileID.RollingCactus,
 			};
 		TileObjectData.newTile.StyleHorizontal = true;
 		TileObjectData.newTile.LavaDeath = false;

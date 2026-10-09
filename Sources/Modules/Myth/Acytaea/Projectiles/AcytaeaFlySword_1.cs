@@ -63,7 +63,7 @@ public class AcytaeaFlySword_1 : ModProjectile
 							Visible = true,
 							position = positionVFX,
 							maxTime = Main.rand.Next(14, 16),
-							ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.04f, 0.04f), Main.rand.NextFloat(9f, 18f) }
+							ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.04f, 0.04f), Main.rand.NextFloat(9f, 18f) },
 						};
 						Ins.VFXManager.Add(acytaeaFlame);
 					}
@@ -113,7 +113,7 @@ public class AcytaeaFlySword_1 : ModProjectile
 				Visible = true,
 				position = positionVFX,
 				maxTime = Main.rand.Next(14, 16),
-				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.04f, 0.04f), Main.rand.NextFloat(18f, 30f) }
+				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.04f, 0.04f), Main.rand.NextFloat(18f, 30f) },
 			};
 			Ins.VFXManager.Add(acytaeaFlame);
 		}
@@ -129,7 +129,7 @@ public class AcytaeaFlySword_1 : ModProjectile
 				Visible = true,
 				position = positionVFX,
 				maxTime = Main.rand.Next(37, 152),
-				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.04f, 0.04f), Main.rand.NextFloat(4f, 8f) }
+				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.04f, 0.04f), Main.rand.NextFloat(4f, 8f) },
 			};
 			Ins.VFXManager.Add(acytaeaFlame);
 		}

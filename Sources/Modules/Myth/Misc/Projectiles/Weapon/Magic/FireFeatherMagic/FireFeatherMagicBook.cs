@@ -122,7 +122,7 @@ internal class FireFeatherMagicBook : MagicBookProjectile
 		Vector2 basePos2 = Projectile.Center - y0 * 0.05f - x0 * 0.02f;
 		bars = new List<Vertex2D>
 		{
-			new Vertex2D(basePos2 + new Vector2(17 * player.direction, -11) - Main.screenPosition, c0, new Vector3(0, 0, 0))
+			new Vertex2D(basePos2 + new Vector2(17 * player.direction, -11) - Main.screenPosition, c0, new Vector3(0, 0, 0)),
 		};
 		if (player.direction * player.gravDir == 1)
 		{
@@ -154,7 +154,7 @@ internal class FireFeatherMagicBook : MagicBookProjectile
 			new Vertex2D(ropeLeft + normalized - Main.screenPosition, c0, new Vector3(0, 0, 0)),
 			new Vertex2D(basePos2 + normalized - Main.screenPosition, c0, new Vector3(1, 0, 0)),
 			new Vertex2D(ropeLeft - normalized - Main.screenPosition, c0, new Vector3(0, 1, 0)),
-			new Vertex2D(basePos2 - normalized - Main.screenPosition, c0, new Vector3(1, 1, 0))
+			new Vertex2D(basePos2 - normalized - Main.screenPosition, c0, new Vector3(1, 1, 0)),
 		};
 		if (bars.Count > 0)
 		{

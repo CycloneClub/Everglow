@@ -15,7 +15,7 @@ public class CocoonRock : ModTile
 		TileObjectData.newTile.Width = 2;
 		TileObjectData.newTile.CoordinateHeights = new int[]
 		{
-			18
+			18,
 		};
 		TileObjectData.newTile.CoordinateWidth = 16;
 		TileObjectData.newTile.StyleHorizontal = true;

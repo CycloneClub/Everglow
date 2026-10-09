@@ -71,7 +71,7 @@ public class RockArrow : ModProjectile
 				MaxTime = Main.rand.Next(17, 25),
 				Scale = Main.rand.NextFloat(40f, 55f),
 				Rotation = Main.rand.NextFloat(6.283f),
-				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 }
+				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
 			Ins.VFXManager.Add(somg);
 		}

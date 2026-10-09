@@ -148,7 +148,7 @@ public class AcytaeaLaserSwordHDREffect : Visual
 
 			new Vertex2D(new Vector2(width, 0), background, coord),
 			new Vertex2D(new Vector2(0, height), background, coord),
-			new Vertex2D(new Vector2(width, height), background, coord)
+			new Vertex2D(new Vector2(width, height), background, coord),
 		};
 		Color lightDot = new Color(255, 255, 255, 0);
 		foreach (Projectile p in Main.projectile)

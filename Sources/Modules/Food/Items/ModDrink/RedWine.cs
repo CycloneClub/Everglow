@@ -15,7 +15,7 @@ public class RedWine : DrinkBase
 				Thirsty = false,
 				BuffType = ModContent.BuffType<RedWineBuff>(),
 				BuffTime = new FoodDuration(0, 10, 0),
-				Name = "RedWineBuff"
+				Name = "RedWineBuff",
 			};
 		}
 	}
@@ -26,7 +26,7 @@ public class RedWine : DrinkBase
 		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
 			new Color(107, 23, 46),
 			new Color(224, 31, 57),
-			new Color(140, 19, 35)
+			new Color(140, 19, 35),
 		};
 
 		ItemID.Sets.IsFood[Type] = true;

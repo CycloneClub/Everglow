@@ -15,7 +15,7 @@ public class Tricolour : DrinkBase
 				Thirsty = false,
 				BuffType = ModContent.BuffType<TricolourBuff>(),
 				BuffTime = new FoodDuration(0, 10, 0),
-				Name = "TricolourBuff"
+				Name = "TricolourBuff",
 			};
 		}
 	}
@@ -26,7 +26,7 @@ public class Tricolour : DrinkBase
 		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
 			new Color(82, 255, 25),
 			new Color(255, 182, 0),
-			new Color(255, 103, 33)
+			new Color(255, 103, 33),
 		};
 
 		ItemID.Sets.IsFood[Type] = true;

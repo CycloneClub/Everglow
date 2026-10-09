@@ -16,7 +16,7 @@ public class CrabseedWarship : FoodBase
 				Satiety = 10,
 				BuffType = ModContent.BuffType<CrabseedWarshipBuff>(),
 				BuffTime = new FoodDuration(4, 0, 0),
-				Name = "CrabseedWarshipBuff"
+				Name = "CrabseedWarshipBuff",
 			};
 		}
 	}
@@ -29,7 +29,7 @@ public class CrabseedWarship : FoodBase
 		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
 			new Color(175, 0, 0),
 			new Color(251, 205, 60),
-			new Color(69, 84, 73)
+			new Color(69, 84, 73),
 		};
 
 		ItemID.Sets.IsFood[Type] = true;

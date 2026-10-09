@@ -16,7 +16,7 @@ public class OrangeIcecream : FoodBase
 				Satiety = 10,
 				BuffType = ModContent.BuffType<OrangeIcecreamBuff>(),
 				BuffTime = new FoodDuration(4, 0, 0),
-				Name = "OrangeIcecreamBuff"
+				Name = "OrangeIcecreamBuff",
 			};
 		}
 	}
@@ -29,7 +29,7 @@ public class OrangeIcecream : FoodBase
 		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
 			new Color(255, 108, 50),
 			new Color(255, 188, 66),
-			new Color(100, 219, 171)
+			new Color(100, 219, 171),
 		};
 
 		ItemID.Sets.IsFood[Type] = true;

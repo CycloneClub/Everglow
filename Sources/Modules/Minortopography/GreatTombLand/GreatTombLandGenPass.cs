@@ -114,7 +114,7 @@ public class GreatTombLand : ModSystem
                 TileID.JunglePlants, //丛林草
                 TileID.JungleVines, //丛林藤
                 TileID.JunglePlants2, //高大丛林草
-                TileID.PlantDetritus//丛林花
+                TileID.PlantDetritus, //丛林花
             };
 		for (int x = -256; x < 257; x += 8)
 		{

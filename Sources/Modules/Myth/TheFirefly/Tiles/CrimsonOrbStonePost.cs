@@ -24,7 +24,7 @@ public class CrimsonOrbStonePost : ModTile
 			16,
 			16,
 			16,
-			18
+			18,
 		};
 		TileObjectData.newTile.Origin = new Point16(0, 8);
 		TileObjectData.newTile.StyleHorizontal = true;

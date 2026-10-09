@@ -22,7 +22,7 @@ public class MothWorldDoor : ModTile
 			16,
 			16,
 			16,
-			16
+			16,
 		};
 		TileObjectData.newTile.StyleHorizontal = true;
 		TileObjectData.addTile(Type);

@@ -24,7 +24,7 @@ public class WaveLeafFlower4x7 : ModTile, ITileFluentlyDrawn
 			16,
 			16,
 			16,
-			18
+			18,
 		};
 		TileObjectData.newTile.StyleHorizontal = true;
 		TileObjectData.newTile.LavaDeath = false;
@@ -46,7 +46,7 @@ public class WaveLeafFlower4x7 : ModTile, ITileFluentlyDrawn
 		{
 			DrawCenterPos = drawCenterPos,
 			SpriteBatch = spriteBatch,
-			TileDrawing = tileDrawing
+			TileDrawing = tileDrawing,
 		};
 		Tile tile = Main.tile[pos];
 

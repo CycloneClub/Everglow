@@ -374,7 +374,7 @@ public class TuskBiomeSky : CustomSky
 
 			new Vertex2D(new Vector2(0, Main.screenHeight * 2), DrawC, new Vector3(rvcII.X / (float)texCloseII.Width, DownY, 0)),
 			new Vertex2D(new Vector2(Main.screenWidth * 2, 0), DrawC, new Vector3((rvcII.X + rvcII.Width) / (float)texCloseII.Width, UpY, 0)),
-			new Vertex2D(new Vector2(Main.screenWidth * 2, Main.screenHeight * 2), DrawC, new Vector3((rvcII.X + rvcII.Width) / (float)texCloseII.Width, DownY, 0))
+			new Vertex2D(new Vector2(Main.screenWidth * 2, Main.screenHeight * 2), DrawC, new Vector3((rvcII.X + rvcII.Width) / (float)texCloseII.Width, DownY, 0)),
 		};
 		if (CloseII.Count > 2)
 		{

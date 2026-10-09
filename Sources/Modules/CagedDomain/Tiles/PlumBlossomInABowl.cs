@@ -24,7 +24,7 @@ public class PlumBlossomInABowl : ModTile
 			16,
 			16,
 			16,
-			16
+			16,
 		};
 		TileObjectData.newTile.CoordinateWidth = 144;
 		TileObjectData.newTile.Origin = new Point16(0, 8);

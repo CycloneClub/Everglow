@@ -25,7 +25,7 @@ public class StreetLantern : ModTile, ITileFluentlyDrawn
 			16,
 			16,
 			16,
-			18
+			18,
 		};
 		TileObjectData.newTile.CoordinateWidth = 48;
 		TileObjectData.newTile.Direction = TileObjectDirection.PlaceLeft;

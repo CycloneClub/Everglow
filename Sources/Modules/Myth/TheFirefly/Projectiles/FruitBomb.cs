@@ -41,7 +41,7 @@ public class FruitBomb : ModProjectile
 				maxTime = Main.rand.Next(137, 245),
 				scale = Main.rand.NextFloat(12f, Main.rand.NextFloat(12f, 37.0f)),
 				rotation = Main.rand.NextFloat(6.283f),
-				ai = new float[] { Main.rand.NextFloat(0.0f, Main.rand.NextFloat(0.5f, 1.0f)), Main.rand.NextFloat(-0.03f, 0.03f) }
+				ai = new float[] { Main.rand.NextFloat(0.0f, Main.rand.NextFloat(0.5f, 1.0f)), Main.rand.NextFloat(-0.03f, 0.03f) },
 			};
 			Ins.VFXManager.Add(spark);
 		}

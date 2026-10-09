@@ -15,7 +15,7 @@ public class KiwiJuice : DrinkBase
 				Thirsty = false,
 				BuffType = ModContent.BuffType<KiwiJuiceBuff>(),
 				BuffTime = new FoodDuration(0, 10, 0),
-				Name = "KiwiJuiceBuff"
+				Name = "KiwiJuiceBuff",
 			};
 		}
 	}
@@ -28,7 +28,7 @@ public class KiwiJuice : DrinkBase
 		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
 			new Color(255, 248, 153),
 			new Color(80, 221, 37),
-			new Color(65, 130, 22)
+			new Color(65, 130, 22),
 		};
 
 		ItemID.Sets.IsFood[Type] = true;

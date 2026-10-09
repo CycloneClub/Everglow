@@ -16,7 +16,7 @@ public class B_52 : DrinkBase
 				Thirsty = false,
 				BuffType = ModContent.BuffType<B_52Buff>(),
 				BuffTime = new FoodDuration(0, 10, 0),
-				Name = "B_52Buff"
+				Name = "B_52Buff",
 			};
 		}
 	}
@@ -29,7 +29,7 @@ public class B_52 : DrinkBase
 		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
 			new Color(94, 75, 170),
 			new Color(255, 229, 0),
-			new Color(160, 85, 87)
+			new Color(160, 85, 87),
 		};
 
 		ItemID.Sets.IsFood[Type] = true;

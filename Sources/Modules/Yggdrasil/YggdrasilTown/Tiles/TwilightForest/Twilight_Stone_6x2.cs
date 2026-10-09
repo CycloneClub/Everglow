@@ -22,7 +22,7 @@ public class Twilight_Stone_6x2 : ModTile
 			16,
 			16,
 			16,
-			18
+			18,
 		};
 		TileObjectData.newTile.StyleHorizontal = true;
 		TileObjectData.newTile.LavaDeath = false;

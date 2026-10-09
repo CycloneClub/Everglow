@@ -105,7 +105,7 @@ public class CurseClub_fly : ModProjectile, IWarpProjectile
 				Color = color,
 				TimeLeft = time,
 				MaxTimeLeft = time,
-				Scale = Main.rand.NextFloat(0.3f, 0.6f)
+				Scale = Main.rand.NextFloat(0.3f, 0.6f),
 			};
 			Ins.VFXManager.Add(fire);
 		}

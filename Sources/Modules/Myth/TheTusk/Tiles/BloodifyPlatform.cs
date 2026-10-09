@@ -17,7 +17,7 @@ public class BloodifyPlatform : ModTile
 		TileID.Sets.Platforms[Type] = true;
 		TileObjectData.newTile.CoordinateHeights = new int[]
 		{
-			16
+			16,
 		};
 		TileObjectData.newTile.CoordinateWidth = 16;
 		TileObjectData.newTile.CoordinatePadding = 2;

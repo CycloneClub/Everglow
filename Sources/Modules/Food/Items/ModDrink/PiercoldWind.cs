@@ -16,7 +16,7 @@ public class PiercoldWind : DrinkBase
 				Thirsty = false,
 				BuffType = ModContent.BuffType<PiercoldWindBuff>(),
 				BuffTime = new FoodDuration(0, 10, 0),
-				Name = "PiercoldWindBuff"
+				Name = "PiercoldWindBuff",
 			};
 		}
 	}
@@ -29,7 +29,7 @@ public class PiercoldWind : DrinkBase
 		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
 			new Color(70, 45, 181),
 			new Color(74, 173, 226),
-			new Color(53, 86, 161)
+			new Color(53, 86, 161),
 		};
 
 		ItemID.Sets.IsFood[Type] = true;

@@ -16,7 +16,7 @@ public class ArcticshellfishWarship : FoodBase
 				Satiety = 10,
 				BuffType = ModContent.BuffType<ArcticshellfishWarshipBuff>(),
 				BuffTime = new FoodDuration(4, 0, 0),
-				Name = "ArcticshellfishWarshipBuff"
+				Name = "ArcticshellfishWarshipBuff",
 			};
 		}
 	}
@@ -29,7 +29,7 @@ public class ArcticshellfishWarship : FoodBase
 		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
 			new Color(181, 10, 16),
 			new Color(196, 98, 53),
-			new Color(69, 84, 73)
+			new Color(69, 84, 73),
 		};
 
 		ItemID.Sets.IsFood[Type] = true;

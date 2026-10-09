@@ -16,7 +16,7 @@ public class SalmonWarship : FoodBase
 				Satiety = 10,
 				BuffType = ModContent.BuffType<SalmonWarshipBuff>(),
 				BuffTime = new FoodDuration(4, 0, 0),
-				Name = "SalmonWarshipBuff"
+				Name = "SalmonWarshipBuff",
 			};
 		}
 	}
@@ -29,7 +29,7 @@ public class SalmonWarship : FoodBase
 		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
 			new Color(253, 123, 47),
 			new Color(255, 184, 168),
-			new Color(69, 84, 17392)
+			new Color(69, 84, 17392),
 		};
 
 		ItemID.Sets.IsFood[Type] = true;

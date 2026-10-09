@@ -133,7 +133,7 @@ public class StarAmmo : SlingshotAmmo
 								17,
 								17,
 								17,
-								17
+								17,
 				}), 1f);
 				StepLength = x;
 			}

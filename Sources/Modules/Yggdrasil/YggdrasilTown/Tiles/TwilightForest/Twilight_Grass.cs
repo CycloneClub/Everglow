@@ -14,7 +14,7 @@ public class Twilight_Grass : ModTile
 		TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
 		TileObjectData.newTile.CoordinateHeights = new int[]
 		{
-		   34
+		   34,
 		};
 		TileObjectData.newTile.CoordinateWidth = 16;
 		TileObjectData.newTile.DrawYOffset = -16;

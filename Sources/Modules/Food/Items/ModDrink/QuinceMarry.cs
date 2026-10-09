@@ -16,7 +16,7 @@ public class QuinceMarry : DrinkBase
 				Thirsty = false,
 				BuffType = ModContent.BuffType<QuinceMarryBuff>(),
 				BuffTime = new FoodDuration(0, 10, 0),
-				Name = "QuinceMarryBuff"
+				Name = "QuinceMarryBuff",
 			};
 		}
 	}
@@ -27,7 +27,7 @@ public class QuinceMarry : DrinkBase
 		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
 			new Color(44, 130, 41),
 			new Color(216, 25, 0),
-			new Color(102, 0, 18)
+			new Color(102, 0, 18),
 		};
 
 		ItemID.Sets.IsFood[Type] = true;

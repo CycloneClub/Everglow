@@ -16,7 +16,7 @@ public class BakedOyster : FoodBase
 				Satiety = 20,
 				BuffType = ModContent.BuffType<BakedOysterBuff>(),
 				BuffTime = new FoodDuration(6, 0, 0),
-				Name = "BakedOysterBuff"
+				Name = "BakedOysterBuff",
 			};
 		}
 	}
@@ -29,7 +29,7 @@ public class BakedOyster : FoodBase
 		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
 			new Color(255, 171, 45),
 			new Color(15, 6, 0),
-			new Color(137, 75, 34)
+			new Color(137, 75, 34),
 		};
 
 		ItemID.Sets.IsFood[Type] = true;

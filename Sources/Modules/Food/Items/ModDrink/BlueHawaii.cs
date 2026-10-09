@@ -16,7 +16,7 @@ public class BlueHawaii : DrinkBase
 				Thirsty = false,
 				BuffType = ModContent.BuffType<BlueHawaiiBuff>(),
 				BuffTime = new FoodDuration(0, 10, 0),
-				Name = "BlueHawaiiBuff"
+				Name = "BlueHawaiiBuff",
 			};
 		}
 	}
@@ -29,7 +29,7 @@ public class BlueHawaii : DrinkBase
 		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
 			new Color(255, 246, 0),
 			new Color(255, 183, 76),
-			new Color(45, 162, 239)
+			new Color(45, 162, 239),
 		};
 
 		ItemID.Sets.IsFood[Type] = true;

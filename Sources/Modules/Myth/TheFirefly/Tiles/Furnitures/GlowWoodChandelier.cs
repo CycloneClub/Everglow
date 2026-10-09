@@ -93,6 +93,6 @@ public class GlowWoodChandelier : ModTile, ITileFluentlyDrawn, ITileFlameData
 			flameRangeYMin = -10,
 			flameRangeYMax = 1,
 			flameRangeMultY = 0.35f,
-			flameColor = new Color(30, 30, 30, 0)
+			flameColor = new Color(30, 30, 30, 0),
 		};
 }

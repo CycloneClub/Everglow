@@ -17,7 +17,7 @@ public class TwilightBlueCrystal_3 : ModTile
 		TileObjectData.newTile.Width = 3;
 		TileObjectData.newTile.CoordinateHeights = new int[]
 		{
-			18
+			18,
 		};
 		TileObjectData.newTile.StyleHorizontal = true;
 		TileObjectData.newTile.LavaDeath = false;

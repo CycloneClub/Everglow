@@ -43,7 +43,7 @@ class XiaoHit : ModProjectile
 			Visible = true,
 			position = positionVFX,
 			maxTime = Main.rand.Next(17, 56),
-			ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.03f, 0.03f), Main.rand.NextFloat(18f, 30f) * Projectile.ai[0] }
+			ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.03f, 0.03f), Main.rand.NextFloat(18f, 30f) * Projectile.ai[0] },
 		};
 		Ins.VFXManager.Add(filthy);
 		var filthy2 = new FilthyLucreFlameDust
@@ -53,7 +53,7 @@ class XiaoHit : ModProjectile
 			Visible = true,
 			position = positionVFX,
 			maxTime = Main.rand.Next(17, 56),
-			ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.1f, 0.1f), Main.rand.NextFloat(18f, 30f) * Projectile.ai[0] }
+			ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.1f, 0.1f), Main.rand.NextFloat(18f, 30f) * Projectile.ai[0] },
 		};
 		Ins.VFXManager.Add(filthy2);
 	}

@@ -21,7 +21,7 @@ public class BottleOfNutShellFlowers : ModTile
 			16,
 			16,
 			16,
-			16
+			16,
 		};
 		TileObjectData.newTile.CoordinateWidth = 72;
 		TileObjectData.newTile.Origin = new Point16(0, 5);

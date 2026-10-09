@@ -6,7 +6,7 @@ public enum WormSegmentType
 {
 	Head,
 	Body,
-	Tail
+	Tail,
 }
 
 /// <summary>

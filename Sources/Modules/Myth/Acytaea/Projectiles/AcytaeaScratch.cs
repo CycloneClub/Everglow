@@ -60,7 +60,7 @@ public class AcytaeaScratch : ModProjectile
 					Visible = true,
 					position = positionVFX,
 					maxTime = Main.rand.Next(24, 56),
-					ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.01f, 0.01f), Main.rand.NextFloat(0.8f, 1.2f) * newVec.Length() }
+					ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.01f, 0.01f), Main.rand.NextFloat(0.8f, 1.2f) * newVec.Length() },
 				};
 				Ins.VFXManager.Add(acytaeaFlame);
 			}
@@ -99,7 +99,7 @@ public class AcytaeaScratch : ModProjectile
 				Visible = true,
 				position = positionVFX,
 				maxTime = Main.rand.Next(14, 16),
-				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.04f, 0.04f), Main.rand.NextFloat(18f, 30f) }
+				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.04f, 0.04f), Main.rand.NextFloat(18f, 30f) },
 			};
 			Ins.VFXManager.Add(acytaeaFlame);
 		}
@@ -115,7 +115,7 @@ public class AcytaeaScratch : ModProjectile
 				Visible = true,
 				position = positionVFX,
 				maxTime = Main.rand.Next(14, 30),
-				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.01f, 0.01f), Main.rand.NextFloat(8f, 10f) }
+				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.01f, 0.01f), Main.rand.NextFloat(8f, 10f) },
 			};
 			Ins.VFXManager.Add(acytaeaSpark);
 		}

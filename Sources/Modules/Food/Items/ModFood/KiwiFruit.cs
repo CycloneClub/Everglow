@@ -16,7 +16,7 @@ public class KiwiFruit : FoodBase
 				Satiety = 10,
 				BuffType = ModContent.BuffType<KiwiFruitBuff>(),
 				BuffTime = new FoodDuration(4, 0, 0),
-				Name = "KiwiFruitBuff"
+				Name = "KiwiFruitBuff",
 			};
 		}
 	}
@@ -29,7 +29,7 @@ public class KiwiFruit : FoodBase
 		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
 			new Color(86, 178, 19),
 			new Color(86, 120, 19),
-			new Color(61, 47, 18)
+			new Color(61, 47, 18),
 		};
 
 		ItemID.Sets.IsFood[Type] = true;

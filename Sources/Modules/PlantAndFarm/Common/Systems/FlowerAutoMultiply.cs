@@ -32,7 +32,7 @@ public class FlowerAutoMultiply : GlobalTile
 		 new Vector2(9, 39),
 		 new Vector2(10, 43),
 		 new Vector2(10, 44),
-		 new Vector2(10, 42)};
+		 new Vector2(10, 42), };
 		Tile tile = Main.tile[i, j];
 		if (tile.TileType == 3)
 		{

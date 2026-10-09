@@ -25,7 +25,7 @@ public class DoubleArmsChineseStreetLamp : ModTile, ITileFluentlyDrawn
 			16,
 			16,
 			16,
-			18
+			18,
 		};
 		TileObjectData.newTile.CoordinateWidth = 18;
 		TileObjectData.newTile.Origin = new Point16(0, 4);
