@@ -255,7 +255,7 @@ public class NPCBossTagsSystem : TileVFX
 		int drawPosIndex = 0;
 
 		// drawAndRankIndex: X refer drawIndex; Y refer the rank of icons occupied same drawIndex.
-		List<(TownNPC_LiveInYggdrasil.BossTag conflictTag, Point drawAndRankIndex)> conflictTags = new List<(TownNPC_LiveInYggdrasil.BossTag, Point)>();
+		List<(TownNPC_LiveInYggdrasil.BossTag ConflictTag, Point DrawAndRankIndex)> conflictTags = new List<(TownNPC_LiveInYggdrasil.BossTag, Point)>();
 		for (int i = 0; i < Tags.Count; i++)
 		{
 			int iconWidth = 38;
@@ -267,30 +267,30 @@ public class NPCBossTagsSystem : TileVFX
 			bool isConflictTag = false;
 			foreach (var item in conflictTags)
 			{
-				if (item.conflictTag.ConflictTags is not null && item.conflictTag.ConflictTags.Contains(tag.Name))
+				if (item.ConflictTag.ConflictTags is not null && item.ConflictTag.ConflictTags.Contains(tag.Name))
 				{
 					drawPosIndex--;
-					drawPos = topLeftPos + new Vector2(item.drawAndRankIndex.X % rowCount * 80, (item.drawAndRankIndex.X - item.drawAndRankIndex.X % rowCount) / rowCount * 80);
+					drawPos = topLeftPos + new Vector2(item.DrawAndRankIndex.X % rowCount * 80, (item.DrawAndRankIndex.X - item.DrawAndRankIndex.X % rowCount) / rowCount * 80);
 					isConflictTag = true;
 					int conflictCount = 1;
 					if (tag.ConflictTags is not null && tag.ConflictTags.Count > 0)
 					{
 						conflictCount = tag.ConflictTags.Count + 1;
 					}
-					drawPos += new Vector2(19).RotatedBy(MathHelper.TwoPi / conflictCount * (item.drawAndRankIndex.Y + 1));
+					drawPos += new Vector2(19).RotatedBy(MathHelper.TwoPi / conflictCount * (item.DrawAndRankIndex.Y + 1));
 					break;
 				}
 			}
 			if (isConflictTag)
 			{
-				(TownNPC_LiveInYggdrasil.BossTag conflictTag, Point drawAndRankIndex)[] oldConflictTags = conflictTags.ToArray();
+				(TownNPC_LiveInYggdrasil.BossTag ConflictTag, Point DrawAndRankIndex)[] oldConflictTags = conflictTags.ToArray();
 				conflictTags.Clear();
 				for (int j = 0; j < oldConflictTags.Length; j++)
 				{
 					var item = oldConflictTags[j];
-					if (item.conflictTag.ConflictTags is not null && item.conflictTag.ConflictTags.Contains(tag.Name))
+					if (item.ConflictTag.ConflictTags is not null && item.ConflictTag.ConflictTags.Contains(tag.Name))
 					{
-						item.drawAndRankIndex.Y += 1;
+						item.DrawAndRankIndex.Y += 1;
 						conflictTags.Add(item);
 					}
 					else
