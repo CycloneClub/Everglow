@@ -1,4 +1,3 @@
-
 using Everglow.Yggdrasil.KelpCurtain.Tiles.IsleOfBloom;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Items.Placeables;
