@@ -16,4 +16,3 @@ public class DreamYearningBuff : ModBuff
 		FoodBuffModPlayer.DreamYearningBuff = true;
 	}
 }
-

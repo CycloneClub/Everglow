@@ -16,4 +16,3 @@ public class WatermelonPlateBuff : ModBuff
 		FoodBuffModPlayer.AddCritDamage += 1.06f;
 	}
 }
-

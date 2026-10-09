@@ -22,4 +22,3 @@ public class SalmonInPepperBuff : ModBuff
 		player.accFlipper = true;
 	}
 }
-

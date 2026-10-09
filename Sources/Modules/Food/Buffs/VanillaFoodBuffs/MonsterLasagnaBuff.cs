@@ -17,4 +17,3 @@ public class MonsterLasagnaBuff : ModBuff
 		player.GetCritChance(DamageClass.Generic) += 25;
 	}
 }
-

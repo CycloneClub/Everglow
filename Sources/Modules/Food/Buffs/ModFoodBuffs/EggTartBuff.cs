@@ -15,4 +15,3 @@ public class EggTartBuff : ModBuff
 		FoodBuffModPlayer.AddCritDamage += 1.05f;
 	}
 }
-

@@ -16,4 +16,3 @@ public class ShrimpPoBoyBuff : ModBuff
 		player.pickSpeed -= 0.25f; // 加25%挖矿速度
 	}
 }
-

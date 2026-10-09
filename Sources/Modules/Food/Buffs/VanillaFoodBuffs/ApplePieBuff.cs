@@ -16,4 +16,3 @@ public class ApplePieBuff : ModBuff
 		player.lifeRegen += 1;
 	}
 }
-

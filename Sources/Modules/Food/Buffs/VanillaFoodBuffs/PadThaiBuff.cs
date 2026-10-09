@@ -15,4 +15,3 @@ public class PadThaiBuff : ModBuff
 		player.GetKnockback(DamageClass.Generic) += 0.50f; // 加50%击退
 	}
 }
-

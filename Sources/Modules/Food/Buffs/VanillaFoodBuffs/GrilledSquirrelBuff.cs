@@ -18,4 +18,3 @@ public class GrilledSquirrelBuff : ModBuff
 		player.extraFall += 30;
 	}
 }
-

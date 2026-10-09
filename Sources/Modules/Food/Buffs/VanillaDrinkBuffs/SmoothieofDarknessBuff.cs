@@ -16,4 +16,3 @@ public class SmoothieofDarknessBuff : ModBuff
 		FoodBuffModPlayer.SmoothieofDarknessBuff = true;
 	}
 }
-

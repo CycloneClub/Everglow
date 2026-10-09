@@ -16,4 +16,3 @@ public class FriedEggBuff : ModBuff
 		FoodBuffModPlayer.FriedEggBuff = true;
 	}
 }
-

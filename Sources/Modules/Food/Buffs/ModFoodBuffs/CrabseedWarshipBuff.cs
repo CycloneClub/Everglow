@@ -15,4 +15,3 @@ public class CrabseedWarshipBuff : ModBuff
 		player.GetCritChance(DamageClass.Generic) += 4; // 加4暴击
 	}
 }
-

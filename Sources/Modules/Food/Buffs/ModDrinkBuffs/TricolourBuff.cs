@@ -16,4 +16,3 @@ public class TricolourBuff : ModBuff
 		FoodBuffModPlayer.TricolourBuff = true;
 	}
 }
-

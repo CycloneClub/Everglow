@@ -16,4 +16,3 @@ public class StinkyTofuBuff : ModBuff
 		FoodBuffModPlayer.StinkyTofuBuff = true;
 	}
 }
-

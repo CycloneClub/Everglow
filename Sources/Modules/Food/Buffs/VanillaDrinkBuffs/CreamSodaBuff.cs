@@ -18,4 +18,3 @@ public class CreamSodaBuff : ModBuff
 		player.GetAttackSpeed(DamageClass.Generic) += 0.4f; // 加40%攻速
 	}
 }
-

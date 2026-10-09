@@ -16,4 +16,3 @@ public class PiercoldWindBuff : ModBuff
 		FoodBuffModPlayer.PiercoldWindBuff = true;
 	}
 }
-

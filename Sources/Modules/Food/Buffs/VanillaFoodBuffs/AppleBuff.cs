@@ -15,4 +15,3 @@ public class AppleBuff : ModBuff
 		player.endurance += 0.05f; // 加8%减伤
 	}
 }
-

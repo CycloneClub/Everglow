@@ -23,4 +23,3 @@ public class EscargotBuff : ModBuff
 		player.endurance += 0.25f; // 加25%减伤
 	}
 }
-

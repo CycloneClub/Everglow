@@ -16,4 +16,3 @@ public class RedWineBuff : ModBuff
 		FoodBuffModPlayer.RedWineBuff = true;
 	}
 }
-

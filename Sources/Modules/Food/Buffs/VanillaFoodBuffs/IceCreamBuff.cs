@@ -16,4 +16,3 @@ public class IceCreamBuff : ModBuff
 		player.fireWalk = true; // 免疫火块
 	}
 }
-

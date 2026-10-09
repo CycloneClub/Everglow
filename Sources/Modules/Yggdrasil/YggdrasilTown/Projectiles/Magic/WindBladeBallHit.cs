@@ -162,4 +162,3 @@ public class WindBladeBallHit : ModProjectile
 		target.AddBuff(BuffID.BrokenArmor, 360);
 	}
 }
-

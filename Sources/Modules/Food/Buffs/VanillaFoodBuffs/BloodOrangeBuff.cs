@@ -15,4 +15,3 @@ public class BloodOrangeBuff : ModBuff
 		player.statLifeMax2 += 25; // 加25血量上限
 	}
 }
-

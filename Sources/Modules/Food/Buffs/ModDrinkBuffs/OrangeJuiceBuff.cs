@@ -15,4 +15,3 @@ public class OrangeJuiceBuff : ModBuff
 		player.immuneTime *= 2;
 	}
 }
-

@@ -24,4 +24,3 @@ public class FruitJuiceBuff : ModBuff
 		player.jumpSpeedBoost += 2;
 	}
 }
-

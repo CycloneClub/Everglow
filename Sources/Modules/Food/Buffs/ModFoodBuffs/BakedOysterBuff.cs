@@ -16,4 +16,3 @@ public class BakedOysterBuff : ModBuff
 		player.statDefense += 4;
 	}
 }
-

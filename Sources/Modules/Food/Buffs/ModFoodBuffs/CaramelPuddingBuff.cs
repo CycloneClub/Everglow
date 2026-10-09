@@ -16,4 +16,3 @@ public class CaramelPuddingBuff : ModBuff
 		FoodBuffModPlayer.CaramelPuddingBuff = true;
 	}
 }
-

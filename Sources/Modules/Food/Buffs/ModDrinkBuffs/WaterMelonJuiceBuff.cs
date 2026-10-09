@@ -16,4 +16,3 @@ public class WaterMelonJuiceBuff : ModBuff
 		player.GetKnockback(DamageClass.Generic) *= 2f;
 	}
 }
-

@@ -9,4 +9,3 @@ internal class SapphireSlingshot : GemSlingshotProjectile
 		base.SetDef();
 	}
 }
-

@@ -16,4 +16,3 @@ public class BowlofSoupBuff : ModBuff
 		player.statManaMax2 += 20; // 加20魔力上限
 	}
 }
-

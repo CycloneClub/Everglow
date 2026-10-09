@@ -17,4 +17,3 @@ public class KiwiIceCreamBuff : ModBuff
 		player.GetAttackSpeed(DamageClass.Summon) *= 1.05f;
 	}
 }
-

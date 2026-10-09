@@ -16,4 +16,3 @@ public class CherryBuff : ModBuff
 		FoodBuffModPlayer.CherryBuff = true;
 	}
 }
-

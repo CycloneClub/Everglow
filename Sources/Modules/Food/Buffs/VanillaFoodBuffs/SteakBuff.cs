@@ -15,4 +15,3 @@ public class SteakBuff : ModBuff
 		player.manaCost *= 0.80f; // 减少20%魔力消耗
 	}
 }
-

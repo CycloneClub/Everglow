@@ -18,4 +18,3 @@ public class HotdogBuff : ModBuff
 		player.GetDamage(DamageClass.Melee) *= 1.08f; // 加8%伤害
 	}
 }
-

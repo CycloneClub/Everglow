@@ -15,4 +15,3 @@ public class SugarCookieBuff : ModBuff
 		player.GetDamage(DamageClass.Ranged) *= 1.05f; // 加5%伤害
 	}
 }
-

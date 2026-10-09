@@ -16,4 +16,3 @@ public class CookedFishBuff : ModBuff
 		player.statManaMax2 += 40; // 加40魔力上限
 	}
 }
-

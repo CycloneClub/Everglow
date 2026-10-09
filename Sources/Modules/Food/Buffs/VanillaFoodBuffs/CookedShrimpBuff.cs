@@ -16,4 +16,3 @@ public class CookedShrimpBuff : ModBuff
 		player.GetArmorPenetration(DamageClass.Generic) += 4; // 加4穿甲
 	}
 }
-

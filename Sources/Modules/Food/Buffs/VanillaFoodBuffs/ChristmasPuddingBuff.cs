@@ -15,4 +15,3 @@ public class ChristmasPuddingBuff : ModBuff
 		player.aggro -= 800; // 仇恨值减800
 	}
 }
-

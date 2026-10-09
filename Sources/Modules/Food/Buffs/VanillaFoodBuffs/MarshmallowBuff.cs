@@ -15,4 +15,3 @@ public class MarshmallowBuff : ModBuff
 		player.hasJumpOption_Cloud = true;
 	}
 }
-

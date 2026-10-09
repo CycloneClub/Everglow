@@ -16,4 +16,3 @@ public class SunriseBuff : ModBuff
 		FoodBuffModPlayer.SunriseBuff = true;
 	}
 }
-

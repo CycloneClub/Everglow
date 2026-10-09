@@ -15,4 +15,3 @@ public class DryMartiniBuff : ModBuff
 		player.GetDamage(DamageClass.Generic) *= 2;
 	}
 }
-

@@ -15,4 +15,3 @@ public class ApricotBuff : ModBuff
 		player.manaRegen += 4; // 魔力再生加4
 	}
 }
-

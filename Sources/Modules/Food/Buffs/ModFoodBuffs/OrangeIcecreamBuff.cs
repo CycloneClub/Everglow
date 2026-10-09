@@ -15,4 +15,3 @@ public class OrangeIcecreamBuff : ModBuff
 		player.immuneTime += 30;
 	}
 }
-

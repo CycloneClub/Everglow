@@ -16,4 +16,3 @@ public class DragonfruitBuff : ModBuff
 		FoodBuffModPlayer.DragonfruitBuff = true;
 	}
 }
-

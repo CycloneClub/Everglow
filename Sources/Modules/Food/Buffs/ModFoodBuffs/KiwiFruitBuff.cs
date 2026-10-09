@@ -16,4 +16,3 @@ public class KiwiFruitBuff : ModBuff
 		FoodBuffModPlayer.KiwiFruitBuff = true;
 	}
 }
-

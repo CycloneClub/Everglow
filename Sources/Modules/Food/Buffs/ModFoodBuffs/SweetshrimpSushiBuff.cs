@@ -15,4 +15,3 @@ public class SweetshrimpSushiBuff : ModBuff
 		player.GetDamage(DamageClass.Generic) *= 1.04f;
 	}
 }
-

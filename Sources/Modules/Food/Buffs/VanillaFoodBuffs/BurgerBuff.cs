@@ -17,4 +17,3 @@ public class BurgerBuff : ModBuff
 		player.statDefense += 10;
 	}
 }
-

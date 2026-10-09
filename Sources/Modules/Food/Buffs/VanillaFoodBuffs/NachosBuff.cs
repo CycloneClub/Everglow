@@ -16,4 +16,3 @@ public class NachosBuff : ModBuff
 		FoodBuffModPlayer.NachosBuff = true;
 	}
 }
-

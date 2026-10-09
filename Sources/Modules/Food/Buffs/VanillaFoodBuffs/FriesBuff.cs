@@ -16,4 +16,3 @@ public class FriesBuff : ModBuff
 		player.GetCritChance(DamageClass.Generic) += 6; // 加6%暴击
 	}
 }
-

@@ -113,4 +113,3 @@ public class ElderberryBuffDash : ModPlayer
 			&& !Player.mount.Active;
 	}
 }
-

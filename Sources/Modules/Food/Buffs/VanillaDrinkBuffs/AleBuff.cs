@@ -16,4 +16,3 @@ public class AleBuff : ModBuff
 		player.GetAttackSpeed(DamageClass.Summon) *= 1.5f;
 	}
 }
-

@@ -16,4 +16,3 @@ public class LemonBuff : ModBuff
 		player.aggro -= 300; // 仇恨值减300
 	}
 }
-

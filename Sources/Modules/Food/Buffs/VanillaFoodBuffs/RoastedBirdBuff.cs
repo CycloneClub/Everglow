@@ -19,4 +19,3 @@ public class RoastedBirdBuff : ModBuff
 		player.wingAccRunSpeed *= 1.15f;
 	}
 }
-
