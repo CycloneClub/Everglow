@@ -54,7 +54,7 @@ public class WaveLeafFlower4x7 : ModTile, ITileFluentlyDrawn
 		Vector2 move0 = GetInfoRotatedMoved(0.018f, SwayHitboxPos(1, -1), 1, 2, new Vector2(0, -16), drawInfo);
 		Vector2 move1 = GetInfoRotatedMoved(0.048f, SwayHitboxPos(1, -2), 1, 2, new Vector2(0, -62), drawInfo);
 		Vector2 move2 = GetInfoRotatedMoved(0.068f, SwayHitboxPos(1, -3), 1, 2, new Vector2(0, -52), drawInfo);
-		//back
+		// back
 		DrawLeaf(new Rectangle(0, 444, 64, 30), 0.198f, SwayHitboxPos(1, -6), PaintPos(1, -6), new Vector2(32, 30), new Vector2(24, -56) + move0 + move1 + move2, 1, 2, drawInfo);
 		DrawLeaf(new Rectangle(0, 400, 64, 16), 0.068f, SwayHitboxPos(1, -3), PaintPos(1, -3), new Vector2(32, 16), new Vector2(24, -52) + move0 + move1, 1, 2, drawInfo);
 		DrawLeaf(new Rectangle(0, 334, 64, 62), 0.048f, SwayHitboxPos(1, -2), PaintPos(1, -2), new Vector2(32, 62), new Vector2(24, 2) + move0, 1, 2, drawInfo);
@@ -65,7 +65,7 @@ public class WaveLeafFlower4x7 : ModTile, ITileFluentlyDrawn
 	/// </summary>
 	private void DrawLeaf(Rectangle frame, float swayStrength, Point tilePos, Point paintPos, Vector2 drawOrigin, Vector2 offset, int pushWidth, int pushHeight, BasicDrawInfo drawInfo, bool withGlow = false)
 	{
-		//是否在调试
+		// 是否在调试
 		bool adjusting = false;
 		var drawCenterPos = drawInfo.DrawCenterPos;
 		var spriteBatch = drawInfo.SpriteBatch;
@@ -126,7 +126,7 @@ public class WaveLeafFlower4x7 : ModTile, ITileFluentlyDrawn
 	/// </summary>
 	private Vector2 GetInfoRotatedMoved(float swayStrength, Point tilePos, int pushWidth, int pushHeight, Vector2 bone, BasicDrawInfo drawInfo)
 	{
-		//是否在调试
+		// 是否在调试
 		bool adjusting = false;
 
 		var tileDrawing = drawInfo.TileDrawing;

@@ -47,20 +47,20 @@ public class SDFUtils
 						targetSDF = sdf;
 					}
 					//// Is solid block
-					//if (tile.HasTile && Main.tileSolid[tile.TileType])
-					//{
+					// if (tile.HasTile && Main.tileSolid[tile.TileType])
+					// {
 					//    if (sdf.X < solidSDF.X)
 					//    {
 					//        solidSDF = sdf;
 					//    }
-					//}
-					//else
-					//{
+					// }
+					// else
+					// {
 					//    if (sdf.X < airSDF.X)
 					//    {
 					//        airSDF = sdf;
 					//    }
-					//}
+					// }
 				}
 			}
 		}
@@ -179,12 +179,12 @@ public class SDFUtils
 		return new Vector3(x, N.X, N.Y);
 	}
 
-	//private Vector3 sdgSegment(in Vector2 p, in Vector2 a, in Vector2 b)
-	//{
+	// private Vector3 sdgSegment(in Vector2 p, in Vector2 a, in Vector2 b)
+	// {
 	//    // 直线的SDF
 	//    Vector2 proj = Vector2.Dot(d, p) / d.Length() * d;
 	//    Vector2 N = p - proj;
 	//    float x = Math.Sign(cross(d, p)) * N.Length();
 	//    return new Vector3(x, N.X, N.Y);
-	//}
+	// }
 }

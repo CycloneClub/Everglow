@@ -12,9 +12,9 @@ public class ClimbingPickaxe : ModItem
 		Item.shootSpeed = 18f;
 		Item.shoot = ModContent.ProjectileType<ClimbingPickaxeProjectile>();
 
-		//Item.useStyle = ItemUseStyleID.None;
-		//Item.useTime = Item.useAnimation = 0;
-		//Item.noUseGraphic = true;
+		// Item.useStyle = ItemUseStyleID.None;
+		// Item.useTime = Item.useAnimation = 0;
+		// Item.noUseGraphic = true;
 	}
 }
 

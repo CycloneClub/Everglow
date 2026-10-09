@@ -39,7 +39,7 @@ public class AcytaeaSwordArray_0 : ModProjectile
 	public override void AI()
 	{
 		Timer++;
-		//CheckFrame();
+		// CheckFrame();
 		if (Owner == null || !Owner.active)
 		{
 			Projectile.Kill();

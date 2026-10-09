@@ -128,8 +128,8 @@ public class DemonScythePlus : ModProjectile
 			circle.Add(new Vertex2D(center + up, color, new Vector3(h * 0.2f / radius, 1, 0)));
 			circle.Add(new Vertex2D(center + down, color, new Vector3(h * 0.2f / radius, 0, 0)));
 		}
-		//circle.Add(new Vertex2D(center + new Vector2(0, radius).RotatedBy(addRot), color, new Vector3(0.5f, 1, 0)));
-		//circle.Add(new Vertex2D(center + new Vector2(0, radius + width).RotatedBy(addRot), color, new Vector3(0.5f, 0, 0)));
+		// circle.Add(new Vertex2D(center + new Vector2(0, radius).RotatedBy(addRot), color, new Vector3(0.5f, 1, 0)));
+		// circle.Add(new Vertex2D(center + new Vector2(0, radius + width).RotatedBy(addRot), color, new Vector3(0.5f, 0, 0)));
 		if (circle.Count > 0)
 		{
 			Main.graphics.GraphicsDevice.Textures[0] = tex;
@@ -148,8 +148,8 @@ public class DemonScythePlus : ModProjectile
 			circle.Add(new Vertex2D(center + up, color, new Vector3(h * 0.2f / radius, 1, 0)));
 			circle.Add(new Vertex2D(center + down, color, new Vector3(h * 0.2f / radius, 0, 0)));
 		}
-		//circle.Add(new Vertex2D(center + new Vector2(0, radius).RotatedBy(addRot), color, new Vector3(0.5f, 1, 0)));
-		//circle.Add(new Vertex2D(center + new Vector2(0, radius + width).RotatedBy(addRot), color, new Vector3(0.5f, 0, 0)));
+		// circle.Add(new Vertex2D(center + new Vector2(0, radius).RotatedBy(addRot), color, new Vector3(0.5f, 1, 0)));
+		// circle.Add(new Vertex2D(center + new Vector2(0, radius + width).RotatedBy(addRot), color, new Vector3(0.5f, 0, 0)));
 		if (circle.Count > 0)
 			spriteBatch.Draw(tex, circle, PrimitiveType.TriangleStrip);
 	}

@@ -27,8 +27,8 @@ public class GeometryBuffer
 	public void Begin()
 	{
 		vertices.Clear();
-		//device.RasterizerState = new RasterizerState();
-		//device.BlendState = BlendState.AlphaBlend;
+		// device.RasterizerState = new RasterizerState();
+		// device.BlendState = BlendState.AlphaBlend;
 	}
 
 	public void Line(float x1, float y1, float x2, float y2, float z = 0f)

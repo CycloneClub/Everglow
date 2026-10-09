@@ -112,7 +112,7 @@ public abstract class FixCoinProjectile : ModProjectile
 					Main.dust[r].noGravity = true;
 					Main.dust[r].velocity = v3;
 				}
-				//TODO:你的饰品得到了附魔
+				// TODO:你的饰品得到了附魔
 				string tex1 = "Your ";
 				string tex2 = " get prefix";
 				if (Language.ActiveCulture.Name == "zh-Hans")
@@ -138,7 +138,7 @@ public abstract class FixCoinProjectile : ModProjectile
 					Main.dust[r].noGravity = true;
 					Main.dust[r].velocity = v3;
 				}
-				//TODO:你的饰品得到了附魔
+				// TODO:你的饰品得到了附魔
 				string tex1 = "Your ";
 				string tex2 = " get prefix";
 				if (Language.ActiveCulture.Name == "zh-Hans")
@@ -150,7 +150,7 @@ public abstract class FixCoinProjectile : ModProjectile
 				return;
 			}
 		}
-		//TODO:你的背包中没有饰品
+		// TODO:你的背包中没有饰品
 		string tex3 = "Please put at lease 1 accessory item in your inventory";
 		if (Language.ActiveCulture.Name == "zh-Hans")
 			tex3 = "你的背包中没有饰品";

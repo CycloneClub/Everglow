@@ -126,7 +126,7 @@ internal class FireFeatherMagicArray : VisualProjectile
 		OldControlUp = player.controlUp && player.velocity.Y != 0;
 		if (Main.mouseRight && Main.mouseRightRelease)
 		{
-			//_coroutineManager.StartCoroutine(new Coroutine(RightClick((int)(WingPower / 21))));
+			// _coroutineManager.StartCoroutine(new Coroutine(RightClick((int)(WingPower / 21))));
 			if (WingPower < 21)
 			{
 				return;

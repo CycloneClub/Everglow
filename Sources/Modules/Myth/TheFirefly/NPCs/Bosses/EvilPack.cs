@@ -28,7 +28,7 @@ public class EvilPack : ModNPC
 		NPC.noGravity = true;
 		NPC.noTileCollide = true;
 		NPC.behindTiles = true;
-		NPC.HitSound = SoundID.NPCHit18; //Or use NPCHit11. Whichever one sounds more realistic to the cocoon. ~Setnour6
+		NPC.HitSound = SoundID.NPCHit18; // Or use NPCHit11. Whichever one sounds more realistic to the cocoon. ~Setnour6
 		NPC.DeathSound = SoundID.NPCDeath11;
 		NPC.aiStyle = -1;
 		NPC.boss = false;
@@ -46,7 +46,7 @@ public class EvilPack : ModNPC
 		float ValueLight = MathUtils.Sin((float)(Main.timeForVisualEffects * 0.26 * Math.PI / 7d + 0.5)) * 0.2f + 0.2f;
 		if (ValueLight > 1)
 			ValueLight *= ValueLight;
-		//Lighting.AddLight((int)(NPC.Center.X / 16f), (int)(NPC.Center.Y / 16f),0.2f * ValueLight, 0.2f * ValueLight, 0.4f * ValueLight);
+		// Lighting.AddLight((int)(NPC.Center.X / 16f), (int)(NPC.Center.Y / 16f),0.2f * ValueLight, 0.2f * ValueLight, 0.4f * ValueLight);
 		if (NPC.ai[0] < 10)
 		{
 

@@ -139,21 +139,21 @@ public class ExamplePerson : ModNPC
 				variant += "_Shimmer";
 			if (NPC.altTexture == 1)
 				variant += "_Party";
-			//int hatGore = NPC.GetPartyHatGore();
-			//int headGore = Mod.Find<ModGore>($"{Name}_Gore{variant}_Head").Type;
-			//int armGore = Mod.Find<ModGore>($"{Name}_Gore{variant}_Arm").Type;
-			//int legGore = Mod.Find<ModGore>($"{Name}_Gore{variant}_Leg").Type;
+			// int hatGore = NPC.GetPartyHatGore();
+			// int headGore = Mod.Find<ModGore>($"{Name}_Gore{variant}_Head").Type;
+			// int armGore = Mod.Find<ModGore>($"{Name}_Gore{variant}_Arm").Type;
+			// int legGore = Mod.Find<ModGore>($"{Name}_Gore{variant}_Leg").Type;
 
 			// Spawn the gores. The positions of the arms and legs are lowered for a more natural look.
-			//if (hatGore > 0)
-			//{
-			//	Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, hatGore);
-			//}
-			//Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, headGore, 1f);
-			//Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(0, 20), NPC.velocity, armGore);
-			//Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(0, 20), NPC.velocity, armGore);
-			//Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(0, 34), NPC.velocity, legGore);
-			//Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(0, 34), NPC.velocity, legGore);
+			// if (hatGore > 0)
+			// {
+			// Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, hatGore);
+			// }
+			// Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, headGore, 1f);
+			// Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(0, 20), NPC.velocity, armGore);
+			// Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(0, 20), NPC.velocity, armGore);
+			// Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(0, 34), NPC.velocity, legGore);
+			// Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(0, 34), NPC.velocity, legGore);
 		}
 	}
 
@@ -235,7 +235,7 @@ public class ExamplePerson : ModNPC
 		NumberOfTimesTalkedTo++;
 		if (NumberOfTimesTalkedTo >= 10)
 		{
-			//This counter is linked to a single instance of the NPC, so if ExamplePerson is killed, the counter will reset.
+			// This counter is linked to a single instance of the NPC, so if ExamplePerson is killed, the counter will reset.
 			chat.Add(Language.GetTextValue("Mods.ExampleMod.Dialogue.ExamplePerson.TalkALot"));
 		}
 

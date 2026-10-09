@@ -6,10 +6,10 @@ public class LightPurplePen : ModItem
 
 	public override void SetStaticDefaults()
 	{
-		//DisplayName.SetDefault("Rabit Hair Calligraphy Brush");
-		//DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "紫豪中山兔");
-		//Tooltip.SetDefault("Increases damege, crit chance and melee speed by 7%\n'No rabit was hurt during the production process'");
-		//Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "伤害、暴击率和近战攻速各增加7%\n'没有任何兔子在制作过程中受到伤害'");
+		// DisplayName.SetDefault("Rabit Hair Calligraphy Brush");
+		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "紫豪中山兔");
+		// Tooltip.SetDefault("Increases damege, crit chance and melee speed by 7%\n'No rabit was hurt during the production process'");
+		// Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "伤害、暴击率和近战攻速各增加7%\n'没有任何兔子在制作过程中受到伤害'");
 	}
 	public override void SetDefaults()
 	{

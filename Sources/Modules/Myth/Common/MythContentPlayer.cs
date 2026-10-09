@@ -131,7 +131,7 @@ public class MythContentPlayer : ModPlayer
 		UpdateDecrease(ref InvincibleFrameTime);
 	}
 
-	public override void ResetEffects()//这个是更新帧刷的函数,在UpdateAccessory之前
+	public override void ResetEffects()// 这个是更新帧刷的函数,在UpdateAccessory之前
 	{
 		CriticalDamage = 0f;
 	}

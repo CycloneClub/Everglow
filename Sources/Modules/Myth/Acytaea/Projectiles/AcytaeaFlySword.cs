@@ -105,7 +105,7 @@ public class AcytaeaFlySword : ModProjectile
 			};
 			Ins.VFXManager.Add(acytaeaFlame);
 		}
-		//Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<AcytaeaFlySwordExplosion>(), Projectile.damage, Projectile.knockBack, player.whoAmI, 14);
+		// Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<AcytaeaFlySwordExplosion>(), Projectile.damage, Projectile.knockBack, player.whoAmI, 14);
 		Projectile.position -= Projectile.velocity;
 	}
 	public override bool PreDraw(ref Color lightColor)

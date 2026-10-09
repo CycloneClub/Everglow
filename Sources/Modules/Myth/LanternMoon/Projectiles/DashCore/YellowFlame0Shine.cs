@@ -125,7 +125,7 @@ class YellowFlame0Shine : ModProjectile
 			}
 		}
 		Texture2D t = Commons.ModAsset.Metero.Value;
-		Main.graphics.GraphicsDevice.Textures[0] = t; //GlodenBloodScaleMirror
+		Main.graphics.GraphicsDevice.Textures[0] = t; // GlodenBloodScaleMirror
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, Vx.ToArray(), 0, Vx.Count / 3);
 
 		/*List<Vertex2D> bars2 = new List<Vertex2D>();

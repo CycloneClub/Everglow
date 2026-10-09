@@ -6,8 +6,8 @@ public class PurplePhantom : ModItem
 
 	public override void SetStaticDefaults()
 	{
-		//DisplayName.SetDefault("Phantom Orchid");
-		//DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "幻蝶兰");
+		// DisplayName.SetDefault("Phantom Orchid");
+		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "幻蝶兰");
 	}
 	public override void SetDefaults()
 	{

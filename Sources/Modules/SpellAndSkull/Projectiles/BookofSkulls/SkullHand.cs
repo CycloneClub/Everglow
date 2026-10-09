@@ -37,7 +37,7 @@ internal class SkullHand : ModProjectile
 		Player player = Main.player[Projectile.owner];
 		if (Projectile.timeLeft == 600)
 		{
-			Vector2 TotalVector = Vector2.Zero; //合向量
+			Vector2 TotalVector = Vector2.Zero; // 合向量
 			int TCount = 0;
 			for (int a = 0; a < 12; a++)
 			{

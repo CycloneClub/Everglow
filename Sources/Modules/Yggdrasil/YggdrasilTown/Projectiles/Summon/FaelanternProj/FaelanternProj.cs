@@ -26,7 +26,7 @@ public class FaelanternProj : ModProjectile
 		Projectile.penetrate = -1;
 		Projectile.sentry = true;
 		Projectile.DamageType = DamageClass.Summon;
-		//Projectile.hide = true;
+		// Projectile.hide = true;
 	}
 
 	public void Suicide()

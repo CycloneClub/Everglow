@@ -125,12 +125,12 @@ public class MothMagicArray : ModProjectile
 		Main.graphics.GraphicsDevice.Textures[0] = t;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, Vx.ToArray(), 0, Vx.Count / 3);
 
-		//鼠标圈
+		// 鼠标圈
 
 		t = ModAsset.BlueFlyD.Value;
 		Main.spriteBatch.Draw(t, Main.MouseScreen, null, new Color(0.5f, 0.5f, 0.5f, 0), 0, t.Size() / 2f, 0.75f, SpriteEffects.None, 0);
 
-		//攻击位置,此处顺带标记距离小于120的
+		// 攻击位置,此处顺带标记距离小于120的
 		if (Projectile.localAI[0] % AttackTime == 0)
 		{
 			OldAimPos = Main.MouseWorld;
@@ -169,7 +169,7 @@ public class MothMagicArray : ModProjectile
 			Main.spriteBatch.Draw(t, v2, null, new Color(0.5f * k, 0.5f * k, 0.5f * k, 0f * k), 0, t.Size() / 2f, 0.75f, SpriteEffects.None, 0);
 		}
 
-		//花边圈
+		// 花边圈
 		for (int h = 0; h < 90; h++)
 		{
 			Vector2 v0 = new Vector2(0, Rad).RotatedBy(h / 45d * Math.PI - CirR0 * 0.3f);
@@ -182,7 +182,7 @@ public class MothMagicArray : ModProjectile
 		Main.graphics.GraphicsDevice.Textures[0] = t;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, Vx.ToArray(), 0, Vx.Count / 3);
 
-		//噪声圈
+		// 噪声圈
 		var Vx2 = new List<Vertex2D>();
 		for (int h = 0; h < 90; h++)
 		{
@@ -196,7 +196,7 @@ public class MothMagicArray : ModProjectile
 		Main.graphics.GraphicsDevice.Textures[0] = t;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, Vx2.ToArray(), 0, Vx2.Count / 3);
 
-		//内部圈
+		// 内部圈
 		var Vx3 = new List<Vertex2D>();
 		for (int h = 0; h < 90; h++)
 		{
@@ -219,7 +219,7 @@ public class MothMagicArray : ModProjectile
 		Main.graphics.GraphicsDevice.Textures[0] = t;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, Vx3.ToArray(), 0, Vx3.Count / 3);
 
-		//旋转线
+		// 旋转线
 		var color5 = new Color(84, 0, 255, 0);
 		for (int h = 0; h < 7; h++)
 		{
@@ -235,7 +235,7 @@ public class MothMagicArray : ModProjectile
 
 		color5 = GetProjectileAlpha(color5);
 
-		//固定线
+		// 固定线
 		for (int h = 0; h < 7; h++)
 		{
 			Vector2 v0 = new Vector2(0, Rad * 0.78f).RotatedBy(h / 3.5 * Math.PI - CirR0 * 0.3);
@@ -243,7 +243,7 @@ public class MothMagicArray : ModProjectile
 			DrawDoubleLine(vf + v0, vf + (v1 + v0) * 0.5f, new Color(0, 0, 0, 0), color5);
 			DrawDoubleLine(vf + (v1 + v0) * 0.5f, vf + v1, color5, new Color(0, 0, 0, 0));
 		}
-		//对召唤物的连线
+		// 对召唤物的连线
 		foreach (Projectile p in Main.projectile)
 		{
 			if (p.active)

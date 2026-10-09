@@ -13,6 +13,6 @@ public abstract class ShaderDraw : Visual
 	{
 		this.position = position;
 		this.velocity = velocity;
-		this.ai = ai; //可以认为params传入的都是右值，可以直接引用
+		this.ai = ai; // 可以认为params传入的都是右值，可以直接引用
 	}
 }

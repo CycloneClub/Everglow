@@ -30,7 +30,7 @@ public class VineProj2 : ModProjectile
 		float colorLight = Math.Min(Projectile.timeLeft / 100f, 1f);
 		if (Projectile.timeLeft < 75)
 		{
-			if (Projectile.ai[0] > 50)//0~100
+			if (Projectile.ai[0] > 50)// 0~100
 			{
 				Projectile.velocity = Projectile.velocity.RotatedBy(Math.PI / -20f);
 				Projectile.velocity *= 0.975f;
@@ -47,7 +47,7 @@ public class VineProj2 : ModProjectile
 		{
 			if ((Projectile.Center - StartPos).Length() >= 60)
 				Projectile.timeLeft -= 5;
-			Projectile.ai[1] += 1 / 30f; //0.0~2.0
+			Projectile.ai[1] += 1 / 30f; // 0.0~2.0
 			Projectile.velocity = Projectile.velocity.RotatedBy(Math.PI / 60f * (float)Math.Sin(Projectile.ai[1] * Math.PI));
 			Lighting.AddLight(Projectile.Center, 0, colorLight * 0.9f, 0);
 		}
@@ -112,10 +112,10 @@ public class VineProj2 : ModProjectile
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, Vx.ToArray(), 0, Vx.Count / 3);
 		}
 
-		//Rectangle DestR = Projectile.Hitbox;
-		//DestR.X -= (int)Main.screenPosition.X;
-		//DestR.Y -= (int)Main.screenPosition.Y;
-		//Main.spriteBatch.Draw(TextureAssets.MagicPixel.Value, DestR, new Color(200, 50, 0, 0));
+		// Rectangle DestR = Projectile.Hitbox;
+		// DestR.X -= (int)Main.screenPosition.X;
+		// DestR.Y -= (int)Main.screenPosition.Y;
+		// Main.spriteBatch.Draw(TextureAssets.MagicPixel.Value, DestR, new Color(200, 50, 0, 0));
 	}
 
 	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
@@ -128,9 +128,9 @@ internal class ProjectileHitBoxTexter : GlobalProjectile
 {
 	public override void PostDraw(Projectile projectile, Color lightColor)
 	{
-		//Rectangle DestR = projectile.Hitbox;
-		//DestR.X -= (int)Main.screenPosition.X;
-		//DestR.Y -= (int)Main.screenPosition.Y;
-		//Main.spriteBatch.Draw(TextureAssets.MagicPixel.Value, DestR, new Color(200, 50, 0, 0));
+		// Rectangle DestR = projectile.Hitbox;
+		// DestR.X -= (int)Main.screenPosition.X;
+		// DestR.Y -= (int)Main.screenPosition.Y;
+		// Main.spriteBatch.Draw(TextureAssets.MagicPixel.Value, DestR, new Color(200, 50, 0, 0));
 	}
 }

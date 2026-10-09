@@ -74,48 +74,48 @@ public class PrimordialJadeWinged_Spear : ModItem
 		{
 			MythContentPlayer myplayer = player.GetModPlayer<MythContentPlayer>();
 			myplayer.Dashcool = 480;
-			float[] Threaten = new float[200]; //威胁优先级判定
+			float[] Threaten = new float[200]; // 威胁优先级判定
 			for (int d = 0; d < 200; d++)
 			{
-				if (Main.npc[d].active && !Main.npc[d].friendly && !Main.npc[d].dontTakeDamage && Collision.CanHit(player, Main.npc[d]))//活着,敌对,能被打
+				if (Main.npc[d].active && !Main.npc[d].friendly && !Main.npc[d].dontTakeDamage && Collision.CanHit(player, Main.npc[d]))// 活着,敌对,能被打
 				{
-					if ((Main.npc[d].Center - player.Center).Length() > 1500)//距离
+					if ((Main.npc[d].Center - player.Center).Length() > 1500)// 距离
 						continue;
 					Threaten[d] += 1;
-					if ((Main.npc[d].Center - player.Center).Length() < 500)//距离
+					if ((Main.npc[d].Center - player.Center).Length() < 500)// 距离
 						Threaten[d] += (500 - (Main.npc[d].Center - player.Center).Length()) * 12;
-					if ((Main.npc[d].Center - player.Center).Length() < 800)//距离
+					if ((Main.npc[d].Center - player.Center).Length() < 800)// 距离
 					{
-						Threaten[d] += Main.npc[d].life + Main.npc[d].lifeMax * 0.2f; //血量和血量上限
-						Threaten[d] += Main.npc[d].damage * 12f; //伤害
+						Threaten[d] += Main.npc[d].life + Main.npc[d].lifeMax * 0.2f; // 血量和血量上限
+						Threaten[d] += Main.npc[d].damage * 12f; // 伤害
 						if (Main.npc[d].boss)
-							Threaten[d] += 1000; //Boss需要额外增加威胁度
+							Threaten[d] += 1000; // Boss需要额外增加威胁度
 						if (Main.npc[d].CanBeChasedBy(null, false))
-							Threaten[d] += 10; //能被追踪
-						if (Main.npc[d].velocity.Length() > 3)//速度
+							Threaten[d] += 10; // 能被追踪
+						if (Main.npc[d].velocity.Length() > 3)// 速度
 						{
-							Threaten[d] += Main.npc[d].velocity.Length() * 110; //速度威胁
+							Threaten[d] += Main.npc[d].velocity.Length() * 110; // 速度威胁
 							Vector2 VplayerToNPC = Vector2.Normalize(Main.npc[d].Center - player.Center) * 40;
-							float EscapeT = Vector2.Dot(VplayerToNPC, Main.npc[d].velocity) / Main.npc[d].life * 300; //逃跑系数
+							float EscapeT = Vector2.Dot(VplayerToNPC, Main.npc[d].velocity) / Main.npc[d].life * 300; // 逃跑系数
 							if (EscapeT > 0)
 								Threaten[d] += EscapeT;
-							float CrashT = Vector2.Dot(VplayerToNPC, -Main.npc[d].velocity) * Main.npc[d].damage / 100f; //撞击系数
+							float CrashT = Vector2.Dot(VplayerToNPC, -Main.npc[d].velocity) * Main.npc[d].damage / 100f; // 撞击系数
 							if (CrashT > 0)
 								Threaten[d] += CrashT;
 						}
 					}
 					var playerToNPC = Vector2.Normalize(Main.npc[d].Center - player.Center);
 					var playerToMouseWorld = Vector2.Normalize(Main.MouseWorld - player.Center);
-					float CosineTheta = Math.Clamp(Vector2.Dot(playerToNPC, playerToMouseWorld), 0, 1); //用于计算鼠标方向权重
+					float CosineTheta = Math.Clamp(Vector2.Dot(playerToNPC, playerToMouseWorld), 0, 1); // 用于计算鼠标方向权重
 					if (Main.npc[d].type == NPCID.TargetDummy)
 						Threaten[d] = 1;
 					float k0 = PrimordialJadeWinged_SpearOwner.MouseCooling / 20f;
 					Threaten[d] = Threaten[d] * CosineTheta * (1 - k0) + Threaten[d] * k0;
 				}
 			}
-			float MaxT = 0; //最高威胁值
-			float TotalT = 0; //总威胁值
-			int MaxD = -1; //产生最高威胁值的怪
+			float MaxT = 0; // 最高威胁值
+			float TotalT = 0; // 总威胁值
+			int MaxD = -1; // 产生最高威胁值的怪
 			for (int d = 0; d < 200; d++)
 			{
 				if (Threaten[d] > MaxT)

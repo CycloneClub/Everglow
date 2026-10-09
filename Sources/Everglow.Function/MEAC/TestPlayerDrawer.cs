@@ -16,7 +16,7 @@ public class TestPlayerDrawer : ModPlayer
 		if (HideLeg)
 		{
 			if (Player.gravDir == 1)
-				Player.bodyPosition = new Vector2(0, 2); //偷偷调个参,防止腿太短的玩家裂开
+				Player.bodyPosition = new Vector2(0, 2); // 偷偷调个参,防止腿太短的玩家裂开
 			drawInfo.hidesBottomSkin = true;
 		}
 		base.ModifyDrawInfo(ref drawInfo);

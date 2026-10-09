@@ -6,7 +6,7 @@ using Terraria.Localization;
 
 namespace Everglow.Myth.LanternMoon.NPCs.FlamingDashCore;
 
-//[AutoloadBossHead]
+// [AutoloadBossHead]
 public class RedCore : ModNPC
 {
 	public override void SetStaticDefaults()
@@ -23,7 +23,7 @@ public class RedCore : ModNPC
 		NPC.defense = 0;
 		NPC.value = 0;
 		NPC.aiStyle = -1;
-		//NPC.boss = true;
+		// NPC.boss = true;
 		NPC.knockBackResist = 0f;
 		NPC.dontTakeDamage = false;
 		NPC.noGravity = true;

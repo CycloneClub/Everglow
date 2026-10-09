@@ -9,7 +9,7 @@ public class ShakeTreeTweak
 	{
 		public override bool CanUseItem(Player player)
 		{
-			//标记命中树的坐标,掉落物产生后瞬间清除
+			// 标记命中树的坐标,掉落物产生后瞬间清除
 			_shakeTreeCoord = new Point((int)(Main.MouseWorld.X / 16f), (int)(Main.MouseWorld.Y / 16f));
 			if (Main.SmartCursorIsUsed)
 			{

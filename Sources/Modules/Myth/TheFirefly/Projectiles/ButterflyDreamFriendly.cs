@@ -10,8 +10,8 @@ public class ButterflyDreamFriendly : ModProjectile
 	public override void SetStaticDefaults()
 	{
 		Main.projFrames[Projectile.type] = 4;
-		//ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
-		//ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
+		// ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
+		// ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 	}
 	public override void SetDefaults()
 	{
@@ -45,7 +45,7 @@ public class ButterflyDreamFriendly : ModProjectile
 			NPC target = Main.npc[(int)Projectile.ai[0]];
 			if (!target.active && Projectile.timeLeft > 10)
 				Projectile.timeLeft = 10;
-			else//追踪目标
+			else// 追踪目标
 			{
 				if (MothEye.LocalOwner != null && MothEye.LocalOwner.TryGetModPlayer(out MothEyePlayer mothEyePlayer))
 				{
@@ -53,7 +53,7 @@ public class ButterflyDreamFriendly : ModProjectile
 						Projectile.velocity = Vector2.Lerp(Projectile.velocity * 1.06f, Projectile.DirectionTo(target.Center) * 15, 0.05f);
 					Projectile.velocity = Vector2.Lerp(Projectile.velocity, Projectile.DirectionTo(target.Center) * 15, 0.05f);
 				}
-				//else
+				// else
 
 			}
 		}
@@ -74,9 +74,9 @@ public class ButterflyDreamFriendly : ModProjectile
 			int index = Dust.NewDust(Projectile.position - new Vector2(8), Projectile.width, Projectile.height, ModContent.DustType<Dusts.BlueGlowAppear>(), 0f, 0f, 100, default, Main.rand.NextFloat(0.7f, 1.9f));
 			Main.dust[index].velocity = Projectile.velocity * 0.5f;
 		}
-		//int index2 = Dust.NewDust(Projectile.position - new Vector2(8), Projectile.width, Projectile.height, ModContent.DustType<Dusts.BlueParticleDark2>(), 0f, 0f, 0, default, Main.rand.NextFloat(3.7f, 5.1f));
-		//Main.dust[index2].velocity = Projectile.velocity * 0.5f;
-		//Main.dust[index2].alpha = (int)(Main.dust[index2].scale * 50);
+		// int index2 = Dust.NewDust(Projectile.position - new Vector2(8), Projectile.width, Projectile.height, ModContent.DustType<Dusts.BlueParticleDark2>(), 0f, 0f, 0, default, Main.rand.NextFloat(3.7f, 5.1f));
+		// Main.dust[index2].velocity = Projectile.velocity * 0.5f;
+		// Main.dust[index2].alpha = (int)(Main.dust[index2].scale * 50);
 	}
 
 	public override void OnKill(int timeLeft)

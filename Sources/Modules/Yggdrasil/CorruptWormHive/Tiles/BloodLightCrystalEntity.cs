@@ -2,10 +2,10 @@ namespace Everglow.Yggdrasil.CorruptWormHive.Tiles;
 
 public class BloodLightCrystalEntity : ModTileEntity
 {
-	public const float DISSOLVE_TIME = 1.5f; //溶解时长（秒）
-	public const float DISSOLVE_STEP = 1f / (DISSOLVE_TIME * 60); //溶解速率（%/帧）
+	public const float DISSOLVE_TIME = 1.5f; // 溶解时长（秒）
+	public const float DISSOLVE_STEP = 1f / (DISSOLVE_TIME * 60); // 溶解速率（%/帧）
 
-	private float dissolveProgress = 0; //溶解进度; 0为未开始，1为完成
+	private float dissolveProgress = 0; // 溶解进度; 0为未开始，1为完成
 	public override void Update()
 	{
 		if (dissolveProgress > 0 && dissolveProgress <= 1)
@@ -15,7 +15,7 @@ public class BloodLightCrystalEntity : ModTileEntity
 			if (Main.rand.NextBool(50))
 				BloodLightCrystal.SummonDust(Position.X, Position.Y);
 
-			//Main.NewText("Updated: [" + Position.X + "," + Position.Y + "]");
+			// Main.NewText("Updated: [" + Position.X + "," + Position.Y + "]");
 
 			if (dissolveProgress >= 1)
 			{
@@ -26,7 +26,7 @@ public class BloodLightCrystalEntity : ModTileEntity
 	}
 	public override bool IsTileValidForEntity(int x, int y)
 	{
-		//Main.NewText("Validate: [" + x + "," + y+ "]");
+		// Main.NewText("Validate: [" + x + "," + y+ "]");
 		Tile tile = Main.tile[x, y];
 		return tile.HasTile && tile.TileType == ModContent.TileType<BloodLightCrystal>();
 	}
@@ -39,15 +39,15 @@ public class BloodLightCrystalEntity : ModTileEntity
 			NetMessage.SendData(MessageID.TileEntityPlacement, -1, -1, null, i, j, Type, 0f, 0, 0, 0);
 			return -1;
 		}
-		//dissolveProgress = 0f;
-		//Main.NewText("Placed");
+		// dissolveProgress = 0f;
+		// Main.NewText("Placed");
 		return Place(i, j);
 	}
 
 	public void startDissolve()
 	{
 		if (dissolveProgress == 0)
-			//Main.NewText("6:[" + Position + "] start kill");
+			// Main.NewText("6:[" + Position + "] start kill");
 			dissolveProgress += DISSOLVE_STEP;
 	}
 

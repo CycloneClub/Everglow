@@ -26,13 +26,13 @@ public class DarkTaro : ModTile, ITileFluentlyDrawn
 		AddMapEntry(new Color(51, 41, 96));
 		HitSound = SoundID.Grass;
 	}
-	//public override void PlaceInWorld(int i, int j, Item item)
-	//{
-	//	short num = (short)Main.rand.Next(0, 3);
-	//	Main.tile[i, j].TileFrameX = (short)(num * 72);
-	//	Main.tile[i, j + 1].TileFrameX = (short)(num * 72);
-	//	Main.tile[i, j + 2].TileFrameX = (short)(num * 72);
-	//}
+	// public override void PlaceInWorld(int i, int j, Item item)
+	// {
+	// short num = (short)Main.rand.Next(0, 3);
+	// Main.tile[i, j].TileFrameX = (short)(num * 72);
+	// Main.tile[i, j + 1].TileFrameX = (short)(num * 72);
+	// Main.tile[i, j + 2].TileFrameX = (short)(num * 72);
+	// }
 
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{

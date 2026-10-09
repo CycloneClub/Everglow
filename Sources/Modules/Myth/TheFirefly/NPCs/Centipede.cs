@@ -643,9 +643,9 @@ internal class CentipedeTail : FireWormTail
 				Vector2 v0 = new Vector2(0, Main.rand.NextFloat(9f)).RotatedByRandom(6.283);
 				var d = Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, ModContent.DustType<Dusts.NavyBlood>(), v0.X, v0.Y, 0, default, Main.rand.NextFloat(0.85f, 2.75f));
 
-				//Dust d2 = Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, ModContent.DustType<Dusts.BlueParticleDark2StoppedByTile>(), v0.X, v0.Y, 0, default, Main.rand.NextFloat(1.65f, 3.75f));
-				//d2.alpha = (int)(d2.scale * 50);
-				//d2.rotation = Main.rand.NextFloat(0, 6.283f);
+				// Dust d2 = Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, ModContent.DustType<Dusts.BlueParticleDark2StoppedByTile>(), v0.X, v0.Y, 0, default, Main.rand.NextFloat(1.65f, 3.75f));
+				// d2.alpha = (int)(d2.scale * 50);
+				// d2.rotation = Main.rand.NextFloat(0, 6.283f);
 			}
 		}
 	}

@@ -3,7 +3,7 @@ using Everglow.EternalResolve.Projectiles;
 
 namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords
 {
-	//TODO:翻译：椎刺骨\n在与目标相对速度较大的情况下提升伤害，最多不超过500%\n粗糙的接触面造成的毁坏随速度的增加急剧提高
+	// TODO:翻译：椎刺骨\n在与目标相对速度较大的情况下提升伤害，最多不超过500%\n粗糙的接触面造成的毁坏随速度的增加急剧提高
 	public class VertebralSpur : StabbingSwordItem
 	{
 		public override void SetDefaults()

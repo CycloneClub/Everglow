@@ -108,7 +108,7 @@ public class TuskBiomeSky : CustomSky
 				if (!lightning.sub && lightning.pos.Z < 8000)
 				{
 					float a = MathHelper.Clamp(1 - lightning.pos.Z / 8000f, 0f, 1f);
-					Main.ColorOfTheSkies = Color.Lerp(Main.ColorOfTheSkies, new Color(0.8f, 0.6f, 0.6f), 0.3f * a * lightning.timeleft / 60f); //闪电背景颜色
+					Main.ColorOfTheSkies = Color.Lerp(Main.ColorOfTheSkies, new Color(0.8f, 0.6f, 0.6f), 0.3f * a * lightning.timeleft / 60f); // 闪电背景颜色
 				}
 				if (lightning.timeleft <= 0)
 					lightnings.Remove(lightning);
@@ -137,14 +137,14 @@ public class TuskBiomeSky : CustomSky
 		}
 		if (!Main.gamePaused)
 		{
-			for (int i = 0; i < rocks.Count; i++)//Update 更新 以及石块的ai
+			for (int i = 0; i < rocks.Count; i++)// Update 更新 以及石块的ai
 			{
 				Rock rock = rocks[i];
 
 				rock.pos += rock.velocity;
 
 				var vecToCenter = new Vector2(cloudCenter.X - rock.pos.X, cloudCenter.Z - rock.pos.Z);
-				if (vecToCenter.Length() > 320)//向心的加速
+				if (vecToCenter.Length() > 320)// 向心的加速
 				{
 					var velxz = new Vector2(rock.velocity.X, rock.velocity.Z);
 					Vector2 acc = 2.8f * Vector2.Normalize(vecToCenter) * velxz.LengthSquared() / vecToCenter.Length();
@@ -156,7 +156,7 @@ public class TuskBiomeSky : CustomSky
 
 			}
 		}
-		for (int i = 0; i < rocks.Count; i++)//Draw
+		for (int i = 0; i < rocks.Count; i++)// Draw
 		{
 			Color color = Main.ColorOfTheSkies * opacity;
 
@@ -169,7 +169,7 @@ public class TuskBiomeSky : CustomSky
 					color *= 1 - alpha;
 			}
 
-			Texture2D tex = MythContent.QuickTexture("TheTusk/Backgrounds/Stone" + rock.style); //贴图
+			Texture2D tex = MythContent.QuickTexture("TheTusk/Backgrounds/Stone" + rock.style); // 贴图
 			List<Vertex3D_2> vertices = new();
 			vertices.Add(new(rock.pos, new Vector3(0, 0, 0), color));
 			vertices.Add(new(rock.pos + new Vector3(tex.Width, 0, 0) * scale, new Vector3(1, 0, 0), color));
@@ -239,9 +239,9 @@ public class TuskBiomeSky : CustomSky
 		spriteBatch.End();
 		spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 
-		//计算矩阵
+		// 计算矩阵
 		var camPos = new Vector3(Main.screenWidth / 2 + Main.screenPosition.X, Main.screenHeight / 2 + Main.screenPosition.Y, -300);
-		int lookup = 50; //往上看
+		int lookup = 50; // 往上看
 		var matrix = Matrix.CreateLookAt(camPos, new Vector3(camPos.X, camPos.Y - lookup, 1), Vector3.Down * Main.LocalPlayer.gravDir);
 		matrix *= Matrix.CreatePerspectiveFieldOfView(MathHelper.Pi / 5, Main.graphics.GraphicsDevice.Viewport.AspectRatio, 1, 12500);
 
@@ -319,7 +319,7 @@ public class TuskBiomeSky : CustomSky
 			var Vx = new List<Vertex3D_2>();
 			float counts = 30;
 
-			var center = new Vector3(SkyVortex.X + 1000, SkyVortex.Y - 3250 + (float)Math.Pow(i, 1f) * 130, 6000); //云的中心位置
+			var center = new Vector3(SkyVortex.X + 1000, SkyVortex.Y - 3250 + (float)Math.Pow(i, 1f) * 130, 6000); // 云的中心位置
 
 			if (i == 7)
 				CreateAndDrawLightning(center);
@@ -353,7 +353,7 @@ public class TuskBiomeSky : CustomSky
 				Vx.Add(new Vertex3D_2(center + offset * 1, new Vector3(u / counts, 0, 0), c));
 				Vx.Add(new Vertex3D_2(center + offset * n, new Vector3(u / counts, 1f, 0), c));
 			}
-			Main.graphics.GraphicsDevice.Textures[0] = CloudLine[i]; //GlodenBloodScaleMirror
+			Main.graphics.GraphicsDevice.Textures[0] = CloudLine[i]; // GlodenBloodScaleMirror
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, Vx.ToArray(), 0, Vx.Count - 2);
 		}
 		#endregion

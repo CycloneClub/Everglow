@@ -46,7 +46,7 @@ public class BloodLightCrystal : ModTile
 					SummonCrystal(i, j);
 			}
 
-			//WorldGen.KillTile(i, j,false,false,true);
+			// WorldGen.KillTile(i, j,false,false,true);
 		}
 	}
 

@@ -24,11 +24,11 @@ public class TuskBiome : ModBiome
 	public override Color? BackgroundColor => base.BackgroundColor;
 	public override CaptureBiome.TileColorStyle TileColorStyle => CaptureBiome.TileColorStyle.Crimson;
 	public override ModSurfaceBackgroundStyle SurfaceBackgroundStyle => ModContent.GetInstance<TuskSurfaceBackgroundStyle>();
-	//public override ModUndergroundBackgroundStyle UndergroundBackgroundStyle => ModContent.Find<ModUndergroundBackgroundStyle>("Everglow/MothUndergroundBackground");
+	// public override ModUndergroundBackgroundStyle UndergroundBackgroundStyle => ModContent.Find<ModUndergroundBackgroundStyle>("Everglow/MothUndergroundBackground");
 
 	public override void SetStaticDefaults()
 	{
-		//TODO:×çÖäÖ®ò¢
+		// TODO:×çÖäÖ®ò¢
 	}
 
 	public override bool IsBiomeActive(Player player)

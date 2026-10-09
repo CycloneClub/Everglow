@@ -185,9 +185,9 @@ public class CyanFrostProj : ModProjectile
 
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
-		//	ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.Excalibur,
-		//			new ParticleOrchestraSettings { PositionInWorld = Main.rand.NextVector2FromRectangle(target.Hitbox) },
-		//			Projectile.owner);
+		// ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.Excalibur,
+		// new ParticleOrchestraSettings { PositionInWorld = Main.rand.NextVector2FromRectangle(target.Hitbox) },
+		// Projectile.owner);
 		Spawn_CustomColorExcalibur(new ParticleOrchestraSettings { PositionInWorld = Main.rand.NextVector2FromRectangle(target.Hitbox) }, new Color(0f, 0.5f, 0.6f, 0.5f), new Color(0f, 0.82f, 0.82f, 1f));
 
 		// Set the target's hit direction to away from the player so the knockback is in the correct direction.
@@ -365,12 +365,12 @@ public class CyanFrostProj : ModProjectile
 		}
 	}
 	// Do we need this:
-	//internal static void Spawn_CustomColorExcaliburWithRequests(bool clientOnly, ParticleOrchestraType type, ParticleOrchestraSettings settings, int? overrideInvokingPlayerIndex = null)
-	//{
-	//	if (clientOnly)
-	//		ParticleOrchestrator.SpawnParticlesDirect(type, settings);
-	//	else
-	//		NetManager.Instance.SendToServerAndSelf(NetParticlesModule.Serialize(type, settings));
-	//	Spawn_CustomColorExcalibur(settings, new Color(0f, 0.56f, 0.6f, 0.5f));
-	//}
+	// internal static void Spawn_CustomColorExcaliburWithRequests(bool clientOnly, ParticleOrchestraType type, ParticleOrchestraSettings settings, int? overrideInvokingPlayerIndex = null)
+	// {
+	// if (clientOnly)
+	// ParticleOrchestrator.SpawnParticlesDirect(type, settings);
+	// else
+	// NetManager.Instance.SendToServerAndSelf(NetParticlesModule.Serialize(type, settings));
+	// Spawn_CustomColorExcalibur(settings, new Color(0f, 0.56f, 0.6f, 0.5f));
+	// }
 }

@@ -22,15 +22,15 @@ public class GreenRelicBrick_Item : ModItem
 		Item.DefaultToPlaceableTile(ModContent.TileType<Bakery_Scene>());
 		if (Main.mouseRight && Main.mouseRightRelease)
 		{
-			//Point point = Main.MouseWorld.ToTileCoordinates();
-			//var checkTiles = TileUtils.BFSContinueTile(point, true, 1024);
-			//foreach (var tile in checkTiles)
-			//{
-			//	if (tile.TileType == TileID.GreenDungeonBrick)
-			//	{
-			//		tile.TileType = (ushort)ModContent.TileType<GreenRelicBrick>();
-			//	}
-			//}
+			// Point point = Main.MouseWorld.ToTileCoordinates();
+			// var checkTiles = TileUtils.BFSContinueTile(point, true, 1024);
+			// foreach (var tile in checkTiles)
+			// {
+			// if (tile.TileType == TileID.GreenDungeonBrick)
+			// {
+			// tile.TileType = (ushort)ModContent.TileType<GreenRelicBrick>();
+			// }
+			// }
 		}
 	}
 }

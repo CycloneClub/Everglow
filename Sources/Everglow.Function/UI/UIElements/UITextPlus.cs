@@ -81,13 +81,13 @@ public class UITextPlus : BaseElement, IUIText
 	{
 		base.DrawSelf(sb);
 		StringDrawer.Draw(sb);
-		//SpriteBatchState sBS = GraphicsUtils.GetState(sb).Value;
-		//sb.End();
-		//sb.Begin(SpriteSortMode.Immediate, sBS.BlendState, sBS.SamplerState, sBS.DepthStencilState, sBS.RasterizerState, null, sBS.TransformMatrix);
-		//Effect effect = ModAsset.FontPerfectPixel.Value;
-		//effect.CurrentTechnique.Passes[0].Apply();
-		//StringDrawer.Draw(sb);
-		//sb.End();
-		//sb.Begin(sBS);
+		// SpriteBatchState sBS = GraphicsUtils.GetState(sb).Value;
+		// sb.End();
+		// sb.Begin(SpriteSortMode.Immediate, sBS.BlendState, sBS.SamplerState, sBS.DepthStencilState, sBS.RasterizerState, null, sBS.TransformMatrix);
+		// Effect effect = ModAsset.FontPerfectPixel.Value;
+		// effect.CurrentTechnique.Passes[0].Apply();
+		// StringDrawer.Draw(sb);
+		// sb.End();
+		// sb.Begin(sBS);
 	}
 }

@@ -4,8 +4,8 @@ public class SeafoodPizzaBuff : ModBuff
 {
 	public override void SetStaticDefaults()
 	{
-		//DisplayName.SetDefault("SeafoodPizzaBuff");
-		//Description.SetDefault("提升大部分属性\n“一个人吃完这个可不容易”");
+		// DisplayName.SetDefault("SeafoodPizzaBuff");
+		// Description.SetDefault("提升大部分属性\n“一个人吃完这个可不容易”");
 		Main.buffNoTimeDisplay[Type] = false;
 		Main.debuff[Type] = false; // 添加这个，这样护士在治疗时就不会去除buff
 	}

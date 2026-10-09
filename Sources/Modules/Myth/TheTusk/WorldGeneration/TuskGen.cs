@@ -85,7 +85,7 @@ public class TuskGen : ModSystem
 	}
 	internal class WorldTuskLandGenPass : GenPass
 	{
-		public WorldTuskLandGenPass() : base("TuskLand", 500)//TODO:给大地安装血肉之颌
+		public WorldTuskLandGenPass() : base("TuskLand", 500)// TODO:给大地安装血肉之颌
 		{
 		}
 
@@ -98,7 +98,7 @@ public class TuskGen : ModSystem
 	}
 	internal class SubWorldTuskLandGenPass : GenPass
 	{
-		public SubWorldTuskLandGenPass() : base("TuskLand", 500)//TODO:给大地安装血肉之颌
+		public SubWorldTuskLandGenPass() : base("TuskLand", 500)// TODO:给大地安装血肉之颌
 		{
 		}
 
@@ -175,7 +175,7 @@ public class TuskGen : ModSystem
 
 					ref var pixel = ref pixelRow[x];
 					Tile tile = Main.tile[x + a, y + b];
-					switch (type)//21是箱子
+					switch (type)// 21是箱子
 					{
 						case 0:
 							if (pixel.R == 255 && pixel.G == 0 && pixel.B == 0)
@@ -245,7 +245,7 @@ public class TuskGen : ModSystem
 		TuskGen tuskGen = ModContent.GetInstance<TuskGen>();
 		tuskGen.tuskCenterX = a + 80;
 		tuskGen.tuskCenterY = b + 10;
-		//BuildTuskArray(a, b);
+		// BuildTuskArray(a, b);
 	}
 	public static Point GetFlattenPoint()
 	{
@@ -283,19 +283,19 @@ public class TuskGen : ModSystem
 
 			if (score > 6000)
 			{
-				//Debug Code.
-				//for (int j = 0; j < score / 1000; j++)
-				//{
-				//	Tile tile = Main.tile[x, y - j - 20];
-				//	tile.TileType = TileID.Stone;
-				//	tile.HasTile = true;
-				//}
-				//for (int j = 0; j < times; j++)
-				//{
-				//	Tile tile = Main.tile[x + 1, y - j - 20];
-				//	tile.TileType = TileID.Copper;
-				//	tile.HasTile = true;
-				//}
+				// Debug Code.
+				// for (int j = 0; j < score / 1000; j++)
+				// {
+				// Tile tile = Main.tile[x, y - j - 20];
+				// tile.TileType = TileID.Stone;
+				// tile.HasTile = true;
+				// }
+				// for (int j = 0; j < times; j++)
+				// {
+				// Tile tile = Main.tile[x + 1, y - j - 20];
+				// tile.TileType = TileID.Copper;
+				// tile.HasTile = true;
+				// }
 				return new Point(x, y);
 			}
 		}

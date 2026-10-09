@@ -2,10 +2,10 @@ using Everglow.Minortopography.GiantPinetree.Projectiles;
 using Terraria.DataStructures;
 
 namespace Everglow.Minortopography.GiantPinetree.Items;
-//TODO:翻译
-//释放缓慢飞行的冰球
-//右键丢下霜雷
-//使用左键会引爆鼠标附近的霜雷
+// TODO:翻译
+// 释放缓慢飞行的冰球
+// 右键丢下霜雷
+// 使用左键会引爆鼠标附近的霜雷
 public class FrostBomb : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicWeapons;

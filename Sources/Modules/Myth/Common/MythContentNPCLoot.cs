@@ -6,12 +6,12 @@ namespace Everglow.Myth.Common;
 
 public class MythContentNPCLoot : GlobalNPC
 {
-	//ModifyNPCLoot uses a unique system called the ItemDropDatabase, which has many different rules for many different drop use cases.
-	//Here we go through all of them, and how they can be used.
-	//There are tons of other examples in vanilla! In a decompiled vanilla build, GameContent/ItemDropRules/ItemDropDatabase adds item drops to every single vanilla NPC, which can be a good resource.
+	// ModifyNPCLoot uses a unique system called the ItemDropDatabase, which has many different rules for many different drop use cases.
+	// Here we go through all of them, and how they can be used.
+	// There are tons of other examples in vanilla! In a decompiled vanilla build, GameContent/ItemDropRules/ItemDropDatabase adds item drops to every single vanilla NPC, which can be a good resource.
 	// TODO: Finish Weapon Ports first
-	//public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
-	//{
+	// public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
+	// {
 	//    Player player = Main.LocalPlayer;
 	//    if (npc.type == NPCID.Nutcracker || npc.type == 349)
 	//    {
@@ -94,7 +94,7 @@ public class MythContentNPCLoot : GlobalNPC
 	//        /*ÆÕÍ¨*/
 	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<BloodGoldBlade>(), 500/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
 
-	//    }
+	// }
 	//    if (npc.type == 134)
 	//    {
 	//        /*´óÊ¦*/
@@ -282,11 +282,11 @@ public class MythContentNPCLoot : GlobalNPC
 	//        npcLoot.Add(ItemDropRule.ByCondition(new InFrostMoonFinal(), ModContent.ItemType<FrozenStormPine>(), 50/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
 	//        npcLoot.Add(ItemDropRule.ByCondition(new InFrostMoonFinal(), ModContent.ItemType<XmasWhip>(), 50/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
 	//    }
-	//}
+	// }
 }
 class CrimsonExpertHardmode : IItemDropRuleCondition
 {
-	//TODO:ÏÂÁÐµôÂäÌõ¼þÐèÒª·­Òë
+	// TODO:ÏÂÁÐµôÂäÌõ¼þÐèÒª·­Òë
 	bool CanD => Main.expertMode && !Main.masterMode && Main.hardMode && Main.LocalPlayer.ZoneCrimson;
 	public bool CanDrop(DropAttemptInfo info)
 	{

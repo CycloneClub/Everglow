@@ -40,18 +40,18 @@ class XiaoBlackWave : ModProjectile
 			Projectile.velocity *= 0;
 		}
 
-		Rad = Energy * 0.75f; //半径
+		Rad = Energy * 0.75f; // 半径
 		cirpro += 0.5f;
 		for (int d = 0; d < 120; d++)
 		{
-			Circle2D[d] = new Vector2(30, 0).RotatedBy(d * Math.PI / 60d); //2D平面圆
-			CirclePoint[d] = new Vector3(Circle2D[d].X, -15, 50 + Circle2D[d].Y); //向3维投影
+			Circle2D[d] = new Vector2(30, 0).RotatedBy(d * Math.PI / 60d); // 2D平面圆
+			CirclePoint[d] = new Vector3(Circle2D[d].X, -15, 50 + Circle2D[d].Y); // 向3维投影
 		}
 		for (int d = 0; d < 120; d++)
 		{
-			Circle2D[d] = new Vector2(CirclePoint[d].X / CirclePoint[d].Z, CirclePoint[d].Y / CirclePoint[d].Z + 0.3f/*二维Y向校正量*/) * Rad * (float)(1 + Math.Sin(addi / 31d + 5) / 7d); //落回2D
+			Circle2D[d] = new Vector2(CirclePoint[d].X / CirclePoint[d].Z, CirclePoint[d].Y / CirclePoint[d].Z + 0.3f/*二维Y向校正量*/) * Rad * (float)(1 + Math.Sin(addi / 31d + 5) / 7d); // 落回2D
 		}
-		//背景层
+		// 背景层
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 		Vector2 Vbase = Projectile.Center - Main.screenPosition;

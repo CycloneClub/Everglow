@@ -199,8 +199,8 @@ public class EmptyWaterStaff_proj_bubble : ModProjectile, IWarpProjectile_warpSt
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(sBS);
 
-		//Vector2 sunDir = GetSunPos() - new Vector2(Main.screenWidth, Main.screenHeight) * 0.5f;
-		//sunDir = sunDir.NormalizeSafe();
+		// Vector2 sunDir = GetSunPos() - new Vector2(Main.screenWidth, Main.screenHeight) * 0.5f;
+		// sunDir = sunDir.NormalizeSafe();
 		Vector2 spotPos = Projectile.Center + new Vector2(-1, -1) * BubbleScale * 0.5f;
 		Texture2D highlightSpot = Commons.ModAsset.LightPoint2.Value;
 		Color highlightColor2 = Lighting.GetColor(spotPos.ToTileCoordinates(), new Color(1f, 1f, 1f, 0)) * 2;

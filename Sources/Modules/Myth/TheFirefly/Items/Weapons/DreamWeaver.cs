@@ -4,7 +4,7 @@ using Terraria.DataStructures;
 
 namespace Everglow.Myth.TheFirefly.Items.Weapons;
 
-public class DreamWeaver : SpellTomeItem//TODO:织梦丝雨
+public class DreamWeaver : SpellTomeItem// TODO:织梦丝雨
 {
 	public override void SetDefaults()
 	{

@@ -16,15 +16,15 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords
 			PowerfulStabProj = ModContent.ProjectileType<EternalNight_Pro_Stab>();
 			base.SetDefaults();
 		}
-		//TODO: bayonet counterpart of murasama should be added to use in this recipe
-		//public override void AddRecipes()
-		//{
-		//	CreateRecipe()
-		//		.AddIngredient(ModContent.ItemType<VegetationBayonet>()) // or Blossom Thorn
-		//		.AddIngredient(ModContent.ItemType<RottenGoldBayonet>())
-		//		.AddIngredient(ModContent.ItemType<PrisonFireBayonet>())
-		//		.AddTile(TileID.SkyMill)
-		//		.Register();
-		//}
+		// TODO: bayonet counterpart of murasama should be added to use in this recipe
+		// public override void AddRecipes()
+		// {
+		// CreateRecipe()
+		// .AddIngredient(ModContent.ItemType<VegetationBayonet>()) // or Blossom Thorn
+		// .AddIngredient(ModContent.ItemType<RottenGoldBayonet>())
+		// .AddIngredient(ModContent.ItemType<PrisonFireBayonet>())
+		// .AddTile(TileID.SkyMill)
+		// .Register();
+		// }
 	}
 }

@@ -45,7 +45,7 @@ public class ShakerInfo
 		float attenuatedStrength = vStrength * attenuation;
 		effect += attenuatedStrength * vdir;
 	}
-	//根据标识头(FullName)调用解析
+	// 根据标识头(FullName)调用解析
 	public virtual ShakerInfo NetRecive(BinaryReader reader)
 	{
 		return new()
@@ -62,7 +62,7 @@ public class ShakerInfo
 			maxPropagationTime = reader.ReadInt32(),
 		};
 	}
-	//调用此方法前写入标识头，便于根据标识头(FullName)调用解析
+	// 调用此方法前写入标识头，便于根据标识头(FullName)调用解析
 	public virtual void NetSend(BinaryWriter writer)
 	{
 		writer.Write(center.X);

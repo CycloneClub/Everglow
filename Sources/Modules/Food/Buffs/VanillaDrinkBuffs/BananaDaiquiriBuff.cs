@@ -4,8 +4,8 @@ public class BananaDaiquiriBuff : ModBuff
 {
 	public override void SetStaticDefaults()
 	{
-		//DisplayName.SetDefault("BananaDaiquiriBuff");
-		//Description.SetDefault("短时间内不消耗子弹，大幅增加远程伤害与暴击\n“低体温血压”");
+		// DisplayName.SetDefault("BananaDaiquiriBuff");
+		// Description.SetDefault("短时间内不消耗子弹，大幅增加远程伤害与暴击\n“低体温血压”");
 		Main.buffNoTimeDisplay[Type] = false;
 		Main.debuff[Type] = false; // 添加这个，这样护士在治疗时就不会去除buff
 	}

@@ -24,17 +24,17 @@ public class OldMoss : ModTile
 
 	public override void RandomUpdate(int i, int j)
 	{
-		//if (Main.tile[i, j].Slope == SlopeType.Solid && Main.tile[i + 1, j].TileType == Type && Main.tile[i + 1, j].Slope == SlopeType.Solid && Main.tile[i - 1, j].Slope == SlopeType.Solid && Main.tile[i - 1, j].TileType == Type &&
-		//!Main.tile[i, j + 1].HasTile && !Main.tile[i + 1, j + 1].HasTile && !Main.tile[i - 1, j + 1].HasTile)// 巨大帘幕苔
-		//{
-		//	WorldGen.PlaceTile(i, j + 1, ModContent.TileType<KelpMoss_large_tile>());
-		//}
-		//if (Main.tile[i, j].Slope == SlopeType.Solid && !Main.tile[i, j + 1].HasTile)// 雨帘苔
-		//{
-		//	Tile tile = Main.tile[i, j + 1];
-		//	tile.TileType = (ushort)ModContent.TileType<KelpMoss>();
-		//	tile.HasTile = true;
-		//}
+		// if (Main.tile[i, j].Slope == SlopeType.Solid && Main.tile[i + 1, j].TileType == Type && Main.tile[i + 1, j].Slope == SlopeType.Solid && Main.tile[i - 1, j].Slope == SlopeType.Solid && Main.tile[i - 1, j].TileType == Type &&
+		// !Main.tile[i, j + 1].HasTile && !Main.tile[i + 1, j + 1].HasTile && !Main.tile[i - 1, j + 1].HasTile)// 巨大帘幕苔
+		// {
+		// WorldGen.PlaceTile(i, j + 1, ModContent.TileType<KelpMoss_large_tile>());
+		// }
+		// if (Main.tile[i, j].Slope == SlopeType.Solid && !Main.tile[i, j + 1].HasTile)// 雨帘苔
+		// {
+		// Tile tile = Main.tile[i, j + 1];
+		// tile.TileType = (ushort)ModContent.TileType<KelpMoss>();
+		// tile.HasTile = true;
+		// }
 		if (TileUtils.CanPlaceMultiAtTopTowardsUpRight(i, j, 4, 2) && Main.rand.NextBool(4))
 		{
 			TileUtils.PlaceFrameImportantTilesAbove(i, j, 4, 2, ModContent.TileType<RottenStump_4x2>(), Main.rand.Next(2) * 72);

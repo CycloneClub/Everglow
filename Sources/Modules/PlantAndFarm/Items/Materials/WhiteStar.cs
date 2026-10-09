@@ -6,8 +6,8 @@ public class WhiteStar : ModItem
 
 	public override void SetStaticDefaults()
 	{
-		//DisplayName.SetDefault("Silk Star");
-		//DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "白锦星");
+		// DisplayName.SetDefault("Silk Star");
+		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "白锦星");
 	}
 	public override void SetDefaults()
 	{

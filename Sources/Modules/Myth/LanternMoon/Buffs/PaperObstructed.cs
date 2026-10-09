@@ -14,7 +14,7 @@ public class PaperObstructed : ModBuff
 {
 	public override void SetStaticDefaults()
 	{
-		//DisplayName.SetDefault("Paper Obstructed");
+		// DisplayName.SetDefault("Paper Obstructed");
 		Main.buffNoSave[Type] = true;
 		Main.buffNoTimeDisplay[Type] = true;
 	}

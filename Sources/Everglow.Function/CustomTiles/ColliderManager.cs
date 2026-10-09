@@ -207,20 +207,20 @@ public class ColliderManager : ILoadable
 	// TODO: StepHook, when player try to move on the CustomTile, it should be stepped to the top.
 	private void Collision_StepUp(On_Collision.orig_StepUp orig, ref Vector2 position, ref Vector2 velocity, int width, int height, ref float stepSpeed, ref float gfxOffY, int gravDir = 1, bool holdsMatching = false, int specialChecksMode = 0)
 	{
-		//if (!Enable || !EnableHook)
-		//{
-		//	if (gravDir == 1 && gfxOffY != 0)
-		//	{
-		//		foreach (var customTile in rigidbodies.OfType<BoxEntity>())
-		//		{
-		//			if(Math.Abs(customTile.Box.Top - (position.Y - gfxOffY + height)) <= 1)
-		//			{
-		//				gfxOffY = 0;
-		//				break;
-		//			}
-		//		}
-		//	}
-		//}
+		// if (!Enable || !EnableHook)
+		// {
+		// if (gravDir == 1 && gfxOffY != 0)
+		// {
+		// foreach (var customTile in rigidbodies.OfType<BoxEntity>())
+		// {
+		// if(Math.Abs(customTile.Box.Top - (position.Y - gfxOffY + height)) <= 1)
+		// {
+		// gfxOffY = 0;
+		// break;
+		// }
+		// }
+		// }
+		// }
 		orig(ref position, ref velocity, width, height, ref stepSpeed, ref gfxOffY, gravDir, holdsMatching, specialChecksMode);
 		if (!Enable || !EnableHook)
 		{

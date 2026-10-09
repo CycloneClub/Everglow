@@ -26,12 +26,12 @@ public class PylonSquare_Chain : BackgroundSlideBase
 	public override void Update()
 	{
 		base.Update();
-		//if (Texture == ModAsset.PylonSquare_Chain_Flip.Value)
-		//{
-		//	Point center = YggdrasilTownGeneration.YggdrasilTownTopLeft + new Point(1270, 68);
-		//	WorldAnchor = center.ToWorldCoordinates() + new Vector2(48, 370);
-		//	BgTiles = TileUtils.GetAABBAreaOfTile(center.X, center.Y, 5, 120);
-		//}
+		// if (Texture == ModAsset.PylonSquare_Chain_Flip.Value)
+		// {
+		// Point center = YggdrasilTownGeneration.YggdrasilTownTopLeft + new Point(1270, 68);
+		// WorldAnchor = center.ToWorldCoordinates() + new Vector2(48, 370);
+		// BgTiles = TileUtils.GetAABBAreaOfTile(center.X, center.Y, 5, 120);
+		// }
 	}
 
 	public override void Draw()

@@ -4,7 +4,7 @@ using Everglow.Commons.VFX;
 
 namespace Everglow.MEAC.Projectiles;
 
-public class VortexVanquisherGlowingSmogLinePipeline : Pipeline//这个绘制层在火焰之之后，被火焰覆盖
+public class VortexVanquisherGlowingSmogLinePipeline : Pipeline// 这个绘制层在火焰之之后，被火焰覆盖
 {
 	public override void Load()
 	{

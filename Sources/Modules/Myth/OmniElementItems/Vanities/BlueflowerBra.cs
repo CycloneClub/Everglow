@@ -1,6 +1,6 @@
 namespace Everglow.Myth.OmniElementItems.Vanities;
 
-//TODO Need Rewrite
+// TODO Need Rewrite
 [AutoloadEquip(EquipType.Body)]
 public class BlueflowerBra : ModItem
 {

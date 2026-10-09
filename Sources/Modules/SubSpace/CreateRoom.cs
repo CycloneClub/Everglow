@@ -35,11 +35,11 @@ public class CreateRoom : ModItem
 		MousePoint = new Point((int)(Main.MouseWorld.X / 16f), (int)(Main.MouseWorld.Y / 16f));
 		if (RoomWorld.OriginalWorld != null)
 		{
-			//Main.NewText(Main.worldName);
+			// Main.NewText(Main.worldName);
 		}
 		if (!SubworldSystem.IsActive<RoomWorld>())
 		{
-			//RoomWorld.LayerDepth = 0;
+			// RoomWorld.LayerDepth = 0;
 		}
 		if (Main.mouseLeft && Main.mouseLeftRelease)
 		{

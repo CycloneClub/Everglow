@@ -4,8 +4,8 @@ public class BaconBuff : ModBuff
 {
 	public override void SetStaticDefaults()
 	{
-		//DisplayName.SetDefault("BaconBuff");
-		//Description.SetDefault("加2生命回复，所受冷系伤害降低\n“开胃祛寒”");
+		// DisplayName.SetDefault("BaconBuff");
+		// Description.SetDefault("加2生命回复，所受冷系伤害降低\n“开胃祛寒”");
 		Main.buffNoTimeDisplay[Type] = false;
 		Main.debuff[Type] = false; // 添加这个，这样护士在治疗时就不会去除buff
 	}

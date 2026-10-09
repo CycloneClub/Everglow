@@ -78,7 +78,7 @@ public class GoldShield : ModProjectile, IWarpProjectile
 		Effect effect = ModAsset.Null.Value;
 		effect.Parameters["uTransform"].SetValue(model * projection);
 		effect.CurrentTechnique.Passes[0].Apply();
-		//花纹
+		// 花纹
 		float timeValue = (float)Main.time * 0.006f;
 		Texture2D texPiece = ModAsset.GoldShieldScale_dark.Value;
 		Vector2 drawPos = DrawSize / 2f;
@@ -113,28 +113,28 @@ public class GoldShield : ModProjectile, IWarpProjectile
 	}
 	public void DrawWarp(VFXBatch spriteBatch)
 	{
-		//float WaveRange = 0.7f;
+		// float WaveRange = 0.7f;
 		////Texture2D BackG = ModContent.Request<Texture2D>("Everglow/MEAC/NonTrueMeleeProj/Black").Value;
 
-		//float k0 = (float)Math.Sqrt(1200 - Projectile.timeLeft) / 6f;//画方波
-		//if (k0 is < 1 and > 0)
-		//{
-		//	k0 = Math.Max(k0 - 0.025f, 0);
-		//	float k1 = 1 - k0;
-		//	float k2 = k1 * k1;
-		//	float k3 = (float)Math.Sqrt(k1);
-		//	Vector2 DrawCen = Projectile.Center - Main.screenPosition;
+		// float k0 = (float)Math.Sqrt(1200 - Projectile.timeLeft) / 6f;//画方波
+		// if (k0 is < 1 and > 0)
+		// {
+		// k0 = Math.Max(k0 - 0.025f, 0);
+		// float k1 = 1 - k0;
+		// float k2 = k1 * k1;
+		// float k3 = (float)Math.Sqrt(k1);
+		// Vector2 DrawCen = Projectile.Center - Main.screenPosition;
 
-		//	DrawDoubleLine(spriteBatch, DrawCen + new Vector2(0, -k0 * 150) * WaveRange, DrawCen + new Vector2(k0 * 75, -k0 * 75) * WaveRange, new Color(1f * k3, 0.6f * k3, 0f, 0f), new Color(1f * k2, 0.7f * k2, 0f, 0f));
-		//	DrawDoubleLine(spriteBatch, DrawCen + new Vector2(k0 * 75, -k0 * 75) * WaveRange, DrawCen + new Vector2(k0 * 150, 0) * WaveRange, new Color(1f * k2, 0.7f * k2, 0f, 0f), new Color(1f * k3, 0.6f * k3, 0f, 0f));
-		//	DrawDoubleLine(spriteBatch, DrawCen + new Vector2(0, -k0 * 150) * WaveRange, DrawCen + new Vector2(-k0 * 75, -k0 * 75) * WaveRange, new Color(1f * k3, 0.6f * k3, 0f, 0f), new Color(1f * k2, 0.7f * k2, 0f, 0f));
-		//	DrawDoubleLine(spriteBatch, DrawCen + new Vector2(-k0 * 75, -k0 * 75) * WaveRange, DrawCen + new Vector2(-k0 * 150, 0) * WaveRange, new Color(1f * k2, 0.7f * k2, 0f, 0f), new Color(1f * k3, 0.6f * k3, 0f, 0f));
+		// DrawDoubleLine(spriteBatch, DrawCen + new Vector2(0, -k0 * 150) * WaveRange, DrawCen + new Vector2(k0 * 75, -k0 * 75) * WaveRange, new Color(1f * k3, 0.6f * k3, 0f, 0f), new Color(1f * k2, 0.7f * k2, 0f, 0f));
+		// DrawDoubleLine(spriteBatch, DrawCen + new Vector2(k0 * 75, -k0 * 75) * WaveRange, DrawCen + new Vector2(k0 * 150, 0) * WaveRange, new Color(1f * k2, 0.7f * k2, 0f, 0f), new Color(1f * k3, 0.6f * k3, 0f, 0f));
+		// DrawDoubleLine(spriteBatch, DrawCen + new Vector2(0, -k0 * 150) * WaveRange, DrawCen + new Vector2(-k0 * 75, -k0 * 75) * WaveRange, new Color(1f * k3, 0.6f * k3, 0f, 0f), new Color(1f * k2, 0.7f * k2, 0f, 0f));
+		// DrawDoubleLine(spriteBatch, DrawCen + new Vector2(-k0 * 75, -k0 * 75) * WaveRange, DrawCen + new Vector2(-k0 * 150, 0) * WaveRange, new Color(1f * k2, 0.7f * k2, 0f, 0f), new Color(1f * k3, 0.6f * k3, 0f, 0f));
 
-		//	DrawDoubleLine(spriteBatch, DrawCen + new Vector2(0, k0 * 150) * WaveRange, DrawCen + new Vector2(k0 * 75, k0 * 75) * WaveRange, new Color(1f * k3, 0.6f * k3, 0f, 0f), new Color(1f * k2, 0.7f * k2, 0f, 0f));
-		//	DrawDoubleLine(spriteBatch, DrawCen + new Vector2(k0 * 75, k0 * 75) * WaveRange, DrawCen + new Vector2(k0 * 150, 0) * WaveRange, new Color(1f * k2, 0.7f * k2, 0f, 0f), new Color(1f * k3, 0.6f * k3, 0f, 0f));
-		//	DrawDoubleLine(spriteBatch, DrawCen + new Vector2(0, k0 * 150) * WaveRange, DrawCen + new Vector2(-k0 * 75, k0 * 75) * WaveRange, new Color(1f * k3, 0.6f * k3, 0f, 0f), new Color(1f * k2, 0.7f * k2, 0f, 0f));
-		//	DrawDoubleLine(spriteBatch, DrawCen + new Vector2(-k0 * 75, k0 * 75) * WaveRange, DrawCen + new Vector2(-k0 * 150, 0) * WaveRange, new Color(1f * k2, 0.7f * k2, 0f, 0f), new Color(1f * k3, 0.6f * k3, 0f, 0f));
-		//}
+		// DrawDoubleLine(spriteBatch, DrawCen + new Vector2(0, k0 * 150) * WaveRange, DrawCen + new Vector2(k0 * 75, k0 * 75) * WaveRange, new Color(1f * k3, 0.6f * k3, 0f, 0f), new Color(1f * k2, 0.7f * k2, 0f, 0f));
+		// DrawDoubleLine(spriteBatch, DrawCen + new Vector2(k0 * 75, k0 * 75) * WaveRange, DrawCen + new Vector2(k0 * 150, 0) * WaveRange, new Color(1f * k2, 0.7f * k2, 0f, 0f), new Color(1f * k3, 0.6f * k3, 0f, 0f));
+		// DrawDoubleLine(spriteBatch, DrawCen + new Vector2(0, k0 * 150) * WaveRange, DrawCen + new Vector2(-k0 * 75, k0 * 75) * WaveRange, new Color(1f * k3, 0.6f * k3, 0f, 0f), new Color(1f * k2, 0.7f * k2, 0f, 0f));
+		// DrawDoubleLine(spriteBatch, DrawCen + new Vector2(-k0 * 75, k0 * 75) * WaveRange, DrawCen + new Vector2(-k0 * 150, 0) * WaveRange, new Color(1f * k2, 0.7f * k2, 0f, 0f), new Color(1f * k3, 0.6f * k3, 0f, 0f));
+		// }
 	}
 	public void DrawDoubleLine(VFXBatch spriteBatch, Vector2 StartPos, Vector2 EndPos, Color color1, Color color2)
 	{
@@ -273,7 +273,7 @@ public class GoldShield : ModProjectile, IWarpProjectile
 		{
 			glowStrength = (float)(-Math.Cos((Projectile.timeLeft + 75) / 30d * Math.PI) + 1) * 120f;
 		}
-		if (glowStrength + glowStrength2 > 0)//光效
+		if (glowStrength + glowStrength2 > 0)// 光效
 		{
 			for (int x = 0; x < glowStrength + glowStrength2; x++)
 			{
@@ -346,7 +346,7 @@ public class GoldShield : ModProjectile, IWarpProjectile
 
 		float WaveRange = 0.7f;
 
-		float k0 = (float)Math.Sqrt(1200 - Projectile.timeLeft) / 6f; //画方波
+		float k0 = (float)Math.Sqrt(1200 - Projectile.timeLeft) / 6f; // 画方波
 		if (k0 is < 1 and > 0)
 		{
 			k0 = Math.Max(k0 - 0.025f, 0);
@@ -482,7 +482,7 @@ public class GoldShieldUIDrawer : ModSystem
 				{
 					HasShield = true;
 					GoldShieldDurability = proj.ai[1];
-					//		GoldShieldDurability -= 0.1f;
+					// GoldShieldDurability -= 0.1f;
 					if (GoldShieldDurability <= 0)
 					{
 						GoldShieldDurability = 0;

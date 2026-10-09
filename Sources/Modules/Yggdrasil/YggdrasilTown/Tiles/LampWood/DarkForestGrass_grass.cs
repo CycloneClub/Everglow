@@ -65,17 +65,17 @@ public class DarkForestGrass_grass_fore : TileVFX
 			return;
 		}
 
-		//if (!Grass_FurPipeline.ShouldUpdateRenderTarget)
-		//{
-		//	Vector2 deltaPos = Grass_FurPipeline.TotalMovedPosition;
-		//	int rectangleX = (int)(Main.screenPosition - deltaPos).X;
-		//	int rectangleY = (int)(Main.screenPosition - deltaPos).Y;
-		//	Rectangle checkRectangle = new Rectangle(rectangleX, rectangleY, Main.screenWidth - 8, Main.screenHeight - 8);
-		//	if (checkRectangle.Contains((int)Position.X, (int)Position.Y))
-		//	{
-		//		return;
-		//	}
-		//}
+		// if (!Grass_FurPipeline.ShouldUpdateRenderTarget)
+		// {
+		// Vector2 deltaPos = Grass_FurPipeline.TotalMovedPosition;
+		// int rectangleX = (int)(Main.screenPosition - deltaPos).X;
+		// int rectangleY = (int)(Main.screenPosition - deltaPos).Y;
+		// Rectangle checkRectangle = new Rectangle(rectangleX, rectangleY, Main.screenWidth - 8, Main.screenHeight - 8);
+		// if (checkRectangle.Contains((int)Position.X, (int)Position.Y))
+		// {
+		// return;
+		// }
+		// }
 		List<Vertex2D> bars = new List<Vertex2D>();
 		if (tile.Slope == SlopeType.Solid && !tile.halfBrick())
 		{

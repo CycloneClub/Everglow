@@ -126,14 +126,14 @@ public static class FurnitureUtils
 			return;
 		}
 
-		//TileDrawing.TileFlameData tileFlameData = tileFlame.GetTileFlameData(pos.X, pos.Y, tile.type, tileFrameY);
-		//ulong seed = tileFlameData.flameSeed is 0 ? Main.TileFrameSeed ^ (ulong)(((long)pos.X << 32) | (uint)pos.Y) : tileFlameData.flameSeed;
-		//for (int k = 0; k < tileFlameData.flameCount; k++)
-		//{
-		//	float x = Utils.RandomInt(ref seed, tileFlameData.flameRangeXMin, tileFlameData.flameRangeXMax) * tileFlameData.flameRangeMultX;
-		//	float y = Utils.RandomInt(ref seed, tileFlameData.flameRangeYMin, tileFlameData.flameRangeYMax) * tileFlameData.flameRangeMultY;
-		//	Main.spriteBatch.Draw(tileFlameData.flameTexture, finalDrawPos + new Vector2(x, y), rectangle, tileFlameData.flameColor, rotation, finalOrigin, 1f, SpriteEffects.None, 0f);
-		//}
+		// TileDrawing.TileFlameData tileFlameData = tileFlame.GetTileFlameData(pos.X, pos.Y, tile.type, tileFrameY);
+		// ulong seed = tileFlameData.flameSeed is 0 ? Main.TileFrameSeed ^ (ulong)(((long)pos.X << 32) | (uint)pos.Y) : tileFlameData.flameSeed;
+		// for (int k = 0; k < tileFlameData.flameCount; k++)
+		// {
+		// float x = Utils.RandomInt(ref seed, tileFlameData.flameRangeXMin, tileFlameData.flameRangeXMax) * tileFlameData.flameRangeMultX;
+		// float y = Utils.RandomInt(ref seed, tileFlameData.flameRangeYMin, tileFlameData.flameRangeYMax) * tileFlameData.flameRangeMultY;
+		// Main.spriteBatch.Draw(tileFlameData.flameTexture, finalDrawPos + new Vector2(x, y), rectangle, tileFlameData.flameColor, rotation, finalOrigin, 1f, SpriteEffects.None, 0f);
+		// }
 	}
 
 	public static void MultiTileGrassFluentDraw(Vector2 screenPosition, TileDrawing tileDrawing, SpriteBatch spriteBatch, Point topLeft, Texture2D glowmask = null)

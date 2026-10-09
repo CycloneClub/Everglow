@@ -125,7 +125,7 @@ public class KingJellyBall_Heal : Visual
 		if (jellyBallBodyInner.Count >= 2)
 		{
 			Ins.Batch.Draw(jellyBallBodyInner, PrimitiveType.TriangleStrip);
-			//Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, jellyBallBodyInner.ToArray(), 0, jellyBallBodyInner.Count - 2);
+			// Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, jellyBallBodyInner.ToArray(), 0, jellyBallBodyInner.Count - 2);
 		}
 	}
 }

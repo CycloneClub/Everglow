@@ -44,7 +44,7 @@ public class DarknessFan : ModItem
 			Projectile.NewProjectile(source, position + new Vector2(0, -24), velocity * 3.4f, ModContent.ProjectileType<DarkFanFly>(), (int)(damage * 1.4), knockback, player.whoAmI, 6 + player.maxMinions * 1.5f, 0f);
 			Item.useTime = 6;
 			Item.useAnimation = 6;
-			//Item.UseSound = SoundID.DD2_JavelinThrowersAttack;
+			// Item.UseSound = SoundID.DD2_JavelinThrowersAttack;
 			return false;
 		}
 		type = ModContent.ProjectileType<DarkFan>();

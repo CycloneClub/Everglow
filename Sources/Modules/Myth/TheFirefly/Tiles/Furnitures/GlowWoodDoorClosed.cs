@@ -9,7 +9,7 @@ using Terraria.ObjectData;
 
 namespace Everglow.Myth.TheFirefly.Tiles.Furnitures;
 
-//TODO: Smart Cursor Outlines and tModLoader support
+// TODO: Smart Cursor Outlines and tModLoader support
 public class GlowWoodDoorClosed : ModTile
 {
 	public override void SetStaticDefaults()

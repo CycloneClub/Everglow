@@ -35,8 +35,8 @@ public class AmbiguousNightHit : ModProjectile
 					Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<AmbiguousLine>(), 40, 0, Projectile.owner, x, 0);
 					Projectile.NewProjectile(Terraria.Entity.InheritSource(Projectile), target.Center, Vector2.Zero, ModContent.ProjectileType<NormalHit>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 6f, Main.rand.NextFloat(6.283f));
 					Projectile.NewProjectile(Projectile.GetSource_FromAI(), target.Center, Vector2.Zero, ModContent.ProjectileType<AmbiguousLine>(), 40, 0, Projectile.owner, x, 1/*ai1 = 1才绘制*/);
-					//ScreenShaker Gsplayer = Main.player[Main.myPlayer].GetModPlayer<ScreenShaker>();
-					//Gsplayer.FlyCamPosition = new Vector2(0, 2).RotatedByRandom(6.283);
+					// ScreenShaker Gsplayer = Main.player[Main.myPlayer].GetModPlayer<ScreenShaker>();
+					// Gsplayer.FlyCamPosition = new Vector2(0, 2).RotatedByRandom(6.283);
 				}
 			}
 		}
@@ -49,8 +49,8 @@ public class AmbiguousNightHit : ModProjectile
 				int x = (int)Main.timeForVisualEffects;
 				Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<AmbiguousLine>(), 40, 0, Projectile.owner, x, 0);
 				Projectile.NewProjectile(Projectile.GetSource_FromAI(), targetCenter, Vector2.Zero, ModContent.ProjectileType<AmbiguousLine>(), 40, 0, Projectile.owner, x, 1/*ai1 = 1才绘制*/);
-				//ScreenShaker Gsplayer = Main.player[Main.myPlayer].GetModPlayer<ScreenShaker>();
-				//Gsplayer.FlyCamPosition = new Vector2(0, 2).RotatedByRandom(6.283);
+				// ScreenShaker Gsplayer = Main.player[Main.myPlayer].GetModPlayer<ScreenShaker>();
+				// Gsplayer.FlyCamPosition = new Vector2(0, 2).RotatedByRandom(6.283);
 			}
 		}
 	}

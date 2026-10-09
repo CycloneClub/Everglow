@@ -86,7 +86,7 @@ public class GlowSporeBead : SlingshotAmmo
 
 			float fac1 = factor * 3 + (float)(-Main.timeForVisualEffects * 0.09) + 100000;
 			float fac2 = (i + 1) / (float)TrueL * 3 + (float)(-Main.timeForVisualEffects * 0.09) + 100000;
-			//TODO:925分钟之后会炸
+			// TODO:925分钟之后会炸
 
 			fac1 %= 1f;
 			fac2 %= 1f;

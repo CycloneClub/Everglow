@@ -2,7 +2,7 @@ using Everglow.Myth.TheFirefly.NPCs.Bosses;
 
 namespace Everglow.Myth.TheFirefly.Tiles;
 
-public class DarkCocoonSpecial : ModTile//用来生成魔茧
+public class DarkCocoonSpecial : ModTile// 用来生成魔茧
 {
 	public override void SetStaticDefaults()
 	{

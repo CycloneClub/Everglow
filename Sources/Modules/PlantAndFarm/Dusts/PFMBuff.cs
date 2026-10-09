@@ -1,6 +1,6 @@
 namespace Everglow.PlantAndFarm.Dusts;
 
-public class PFMBuff : ModDust //PFM = Plant-Farm Module
+public class PFMBuff : ModDust // PFM = Plant-Farm Module
 {
 	public override void OnSpawn(Dust dust)
 	{

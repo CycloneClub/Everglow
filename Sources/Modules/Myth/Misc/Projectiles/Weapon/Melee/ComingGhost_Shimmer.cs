@@ -9,7 +9,7 @@ public class ComingGhost_Shimmer : ModProjectile
 	public override string Texture => Commons.ModAsset.StabbingProjectile_Mod;
 	public override void OnSpawn(IEntitySource source)
 	{
-		//Projectile.ai[1] = Main.player[Projectile.owner].direction;
+		// Projectile.ai[1] = Main.player[Projectile.owner].direction;
 	}
 	public override void SetDefaults()
 	{

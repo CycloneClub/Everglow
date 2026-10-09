@@ -73,7 +73,7 @@ public class GlowingHeal : ModNPC
 				}
 				else
 				{
-					//player.statLife = player.statLifeMax; 
+					// player.statLife = player.statLifeMax;
 				}
 				Healed = true;
 			}

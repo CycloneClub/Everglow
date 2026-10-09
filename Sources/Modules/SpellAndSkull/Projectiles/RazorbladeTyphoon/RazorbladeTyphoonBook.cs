@@ -10,16 +10,16 @@ internal class RazorbladeTyphoonBook : MagicBookProjectile
 		ProjType = ModContent.ProjectileType<TyphoonII>();
 		effectColor = new Color(0, 125, 225, 20);
 
-		//TODO：等到凝胶的贴图优化完再改
-		//string pathBase = "SpellAndSkull/Textures/";
-		//FrontTexPath = pathBase + "RazorbladeTyphoon_A";
-		//PaperTexPath = pathBase + "RazorbladeTyphoon_C";
-		//BackTexPath = pathBase + "RazorbladeTyphoon_B";
+		// TODO：等到凝胶的贴图优化完再改
+		// string pathBase = "SpellAndSkull/Textures/";
+		// FrontTexPath = pathBase + "RazorbladeTyphoon_A";
+		// PaperTexPath = pathBase + "RazorbladeTyphoon_C";
+		// BackTexPath = pathBase + "RazorbladeTyphoon_B";
 
-		//TexCoordTop = new Vector2(0, 6);
-		//TexCoordLeft =  new Vector2(10, 30);
-		//TexCoordDown = new Vector2(32, 22);
-		//TexCoordRight =  new Vector2(21, 0);
+		// TexCoordTop = new Vector2(0, 6);
+		// TexCoordLeft =  new Vector2(10, 30);
+		// TexCoordDown = new Vector2(32, 22);
+		// TexCoordRight =  new Vector2(21, 0);
 	}
 	internal float ConstantUsingTime = 0;
 	public override void SpecialAI()

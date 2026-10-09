@@ -5,10 +5,10 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords
 {
 	public class VegetationBayonet : StabbingSwordItem
 	{
-		//TODO:翻译
-		//会造成中毒
-		//使用6秒之后自己也会变得狂野
-		//看到那只蝙蝠了吗，它的蛋白质含量时牛肉的六倍
+		// TODO:翻译
+		// 会造成中毒
+		// 使用6秒之后自己也会变得狂野
+		// 看到那只蝙蝠了吗，它的蛋白质含量时牛肉的六倍
 		internal int specialDelay = 0;
 		public override void SetDefaults()
 		{

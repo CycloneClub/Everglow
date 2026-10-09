@@ -6,7 +6,7 @@ namespace Everglow.Myth.TheTusk.Projectiles.Weapon;
 
 public class SplieSpineBullet : ModProjectile
 {
-	//TODO:Splie应为Split翻译
+	// TODO:Splie应为Split翻译
 	public override void SetStaticDefaults()
 	{
 		// DisplayName.SetDefault("SplieSpineBullet");
@@ -35,8 +35,8 @@ public class SplieSpineBullet : ModProjectile
 				{
 					var v0 = Vector2.Normalize(Projectile.velocity);
 					var v1 = Vector2.Normalize(Main.npc[j].Center - Projectile.Center);
-					float CosAng = Vector2.Dot(v0, v1); //夹角余弦值大于0.707,即为45°
-					if (CosAng > 0.707)//爆
+					float CosAng = Vector2.Dot(v0, v1); // 夹角余弦值大于0.707,即为45°
+					if (CosAng > 0.707)// 爆
 					{
 						Explosion();
 						break;
@@ -77,7 +77,7 @@ public class SplieSpineBullet : ModProjectile
 			Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Torch, v.X, v.Y, 0, default, Main.rand.NextFloat(0.8f, 1.3f));
 		}
 		Projectile.velocity = Projectile.oldVelocity;
-		Tokill = 45; //0.75s后消掉
+		Tokill = 45; // 0.75s后消掉
 		Projectile.friendly = false;
 		Projectile.damage = 0;
 		Projectile.tileCollide = false;
@@ -106,7 +106,7 @@ public class SplieSpineBullet : ModProjectile
 			return false;
 		}
 		Texture2D t = TextureAssets.Projectile[Math.Clamp((int)Projectile.ai[1], 0, TextureAssets.Projectile.Length)].Value;
-		//获取贴图中央颜色像素块,后面用于光照
+		// 获取贴图中央颜色像素块,后面用于光照
 		var Lig = new Color[t.Width * t.Height];
 		t.GetData(Lig);
 		Color c0 = Lig[(int)(t.Width * t.Height / 2f - 1)];
