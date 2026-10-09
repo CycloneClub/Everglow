@@ -4,6 +4,7 @@
 name: .NET Build and Test
 
 on:
+  workflow_dispatch:
   push:
     branches: [ "1.4.4", "Yggdrasil/newContent0"]
   pull_request:
@@ -79,3 +80,55 @@ jobs:
       
     - name: Test
       run: dotnet test --configuration Release --no-build --no-restore --verbosity normal
+
+    - name: Test load result checks
+      shell: pwsh
+      run: ./.github/workflows/scripts/Test-ModLoadResult.Tests.ps1
+
+    - name: Download runtime mod dependencies
+      shell: pwsh
+      timeout-minutes: 10
+      run: |
+        $ErrorActionPreference = 'Stop'
+        $steamcmd = Join-Path $env:RUNNER_TEMP 'steamcmd'
+        New-Item -ItemType Directory -Path $steamcmd -Force | Out-Null
+        Invoke-WebRequest 'https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip' -OutFile "$steamcmd/steamcmd.zip"
+        Expand-Archive -LiteralPath "$steamcmd/steamcmd.zip" -DestinationPath $steamcmd
+        # The bootstrapper exits 7 after updating and spawning its replacement.
+        # -Wait waits for the process tree, including that replacement.
+        $bootstrap = Start-Process "$steamcmd/steamcmd.exe" -ArgumentList '+quit' -WorkingDirectory $steamcmd -WindowStyle Hidden -Wait -PassThru -RedirectStandardOutput "$steamcmd/bootstrap.log" -RedirectStandardError "$steamcmd/bootstrap-error.log"
+        if ($bootstrap.ExitCode -notin @(0, 7)) { throw "SteamCMD bootstrap exited with code $($bootstrap.ExitCode)" }
+        $download = Start-Process "$steamcmd/steamcmd.exe" `
+          -ArgumentList '+login anonymous +workshop_download_item 1281930 2785100219 +workshop_download_item 1281930 3539368598 +quit' `
+          -WorkingDirectory $steamcmd -WindowStyle Hidden -Wait -PassThru `
+          -RedirectStandardOutput "$steamcmd/download.log" -RedirectStandardError "$steamcmd/download-error.log"
+        Get-Content "$steamcmd/download.log"
+        if ($download.ExitCode -ne 0) { throw "SteamCMD download exited with code $($download.ExitCode)" }
+
+    - name: Load Everglow in tModLoader
+      shell: pwsh
+      timeout-minutes: 10
+      run: |
+        $buildConfig = Get-Content './Sources/Everglow/obj/BuildConfig.json' -Raw | ConvertFrom-Json
+        ./.github/workflows/scripts/Test-TModLoaderLoad.ps1 `
+          -TmlDirectory '../tmod' `
+          -ModFile (Join-Path $buildConfig.ModDirectory 'Everglow.tmod') `
+          -WorkshopDirectory "$env:RUNNER_TEMP/steamcmd/steamapps/workshop" `
+          -RunDirectory "$env:RUNNER_TEMP/tml-load-test" `
+          -TimeoutSeconds 300
+
+    - name: Upload tModLoader load logs
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: tmodloader-load-logs
+        if-no-files-found: warn
+        path: |
+          ${{ runner.temp }}/tml-load-test/server.log
+          ${{ runner.temp }}/tml-load-test/runtime/tModLoader-Logs/server*.log
+          ${{ runner.temp }}/tml-load-test/stdout.log
+          ${{ runner.temp }}/tml-load-test/stderr.log
+          ${{ runner.temp }}/tml-load-test/mod-sha256.txt
+          ${{ runner.temp }}/steamcmd/logs/workshop_log.txt
+          ${{ runner.temp }}/steamcmd/download*.log
+          ${{ runner.temp }}/steamcmd/bootstrap*.log
