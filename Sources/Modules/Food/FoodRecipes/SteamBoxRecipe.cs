@@ -9,8 +9,8 @@ public class SteamBoxRecipe : FoodRecipes
 	{
 		CookingUnitWithOrderMenu = new List<CookingUnitWithOrder>
 		{
-                // 小笼包
-            {
+			// 小笼包
+			{
 				new CookingUnitWithOrder(
 					ModContent.ItemType<XiaoLongBao>(),
 					1,

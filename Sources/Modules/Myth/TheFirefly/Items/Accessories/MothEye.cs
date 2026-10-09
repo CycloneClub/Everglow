@@ -98,19 +98,19 @@ internal class MothEyePlayer : ModPlayer
 
 				int[] FireflyWeapon =
 				{
-						ModContent.ItemType<DarknessFan>(),
-						ModContent.ItemType<DreamWeaver>(), // no MothEye effect
-                            ModContent.ItemType<DustOfCorrupt>(), // no MothEye effect
-                            ModContent.ItemType<EvilChrysalis>(),
-						ModContent.ItemType<FlowLightMissile>(), // no MothEye effect
-                            ModContent.ItemType<GlowBeadGun>(), // no MothEye effect
-                            ModContent.ItemType<GlowWoodSword>(),
-						ModContent.ItemType<MothYoyo>(),
-						ModContent.ItemType<NavyThunder>(), // no MothEye effect
-                            ModContent.ItemType<PhosphorescenceGun>(),
-						ModContent.ItemType<ScaleWingBlade>(),
-						ModContent.ItemType<ShadowWingBow>(),
-					 };
+					ModContent.ItemType<DarknessFan>(),
+					ModContent.ItemType<DreamWeaver>(), // no MothEye effect
+					ModContent.ItemType<DustOfCorrupt>(), // no MothEye effect
+					ModContent.ItemType<EvilChrysalis>(),
+					ModContent.ItemType<FlowLightMissile>(), // no MothEye effect
+					ModContent.ItemType<GlowBeadGun>(), // no MothEye effect
+					ModContent.ItemType<GlowWoodSword>(),
+					ModContent.ItemType<MothYoyo>(),
+					ModContent.ItemType<NavyThunder>(), // no MothEye effect
+					ModContent.ItemType<PhosphorescenceGun>(),
+					ModContent.ItemType<ScaleWingBlade>(),
+					ModContent.ItemType<ShadowWingBow>(),
+				};
 				if (Array.IndexOf(FireflyWeapon, item.type) != -1)
 				{
 					damage *= 1.05f;

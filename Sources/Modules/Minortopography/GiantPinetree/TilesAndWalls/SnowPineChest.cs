@@ -33,12 +33,12 @@ public class SnowPineChest : ModTile
 		TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(Chest.AfterPlacement_Hook, -1, 0, false);
 		TileObjectData.newTile.AnchorInvalidTiles = new int[]
 		{
-				TileID.MagicalIceBlock,
-				TileID.Boulder,
-				TileID.BouncyBoulder,
-				TileID.LifeCrystalBoulder,
-				TileID.RollingCactus,
-			};
+			TileID.MagicalIceBlock,
+			TileID.Boulder,
+			TileID.BouncyBoulder,
+			TileID.LifeCrystalBoulder,
+			TileID.RollingCactus,
+		};
 		TileObjectData.newTile.StyleHorizontal = true;
 		TileObjectData.newTile.LavaDeath = false;
 		TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);

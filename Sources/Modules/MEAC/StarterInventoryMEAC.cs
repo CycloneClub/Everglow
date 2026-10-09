@@ -18,12 +18,12 @@ public class StarterInventoryMEAC : ModPlayer
 		{
 			return new[]
 			{
-			new Item(ModContent.ItemType<VortexVanquisherItem>()),
+				new Item(ModContent.ItemType<VortexVanquisherItem>()),
 			};
 		}
 		return new[]
 		{
-		new Item(ItemID.CopperCoin, 0), // stack of 0 means you don't start with it. This code is needed.
-        };
+			new Item(ItemID.CopperCoin, 0), // stack of 0 means you don't start with it. This code is needed.
+		};
 	}
 }

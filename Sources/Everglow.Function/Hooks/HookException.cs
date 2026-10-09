@@ -11,7 +11,7 @@ public class HookException : Exception
 	}
 
 	private static readonly string[] safeMods = new string[]
-					{
+	{
 		"ModLoader",
 		"Hero",
 		"CheatSheet",
