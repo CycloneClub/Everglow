@@ -26,7 +26,8 @@ public class CaramelPudding : FoodBase
 
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(int.MaxValue, 3));
 
-		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
+		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3]
+		{
 			new Color(188, 60, 71),
 			new Color(229, 159, 68),
 			new Color(244, 227, 193),

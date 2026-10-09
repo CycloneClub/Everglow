@@ -25,7 +25,8 @@ public class GreenStorm : DrinkBase
 
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(int.MaxValue, 3));
 
-		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
+		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3]
+		{
 			new Color(255, 89, 111),
 			new Color(169, 216, 147),
 			new Color(174, 192, 192),

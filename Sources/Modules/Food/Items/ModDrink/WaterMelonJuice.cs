@@ -24,7 +24,8 @@ public class WaterMelonJuice : DrinkBase
 	{
 		CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 5;
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(int.MaxValue, 3));
-		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
+		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3]
+		{
 			new Color(183, 0, 9),
 			new Color(255, 175, 79),
 			new Color(255, 0, 12),

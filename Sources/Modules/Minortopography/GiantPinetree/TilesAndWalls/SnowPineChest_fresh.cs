@@ -32,7 +32,8 @@ public class SnowPineChest_fresh : ModTile
 		TileObjectData.newTile.CoordinateHeights = new[] { 16, 18 };
 		TileObjectData.newTile.HookCheckIfCanPlace = new PlacementHook(Chest.FindEmptyChest, -1, 0, true);
 		TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(Chest.AfterPlacement_Hook, -1, 0, false);
-		TileObjectData.newTile.AnchorInvalidTiles = new int[] {
+		TileObjectData.newTile.AnchorInvalidTiles = new int[]
+		{
 				TileID.MagicalIceBlock,
 				TileID.Boulder,
 				TileID.BouncyBoulder,

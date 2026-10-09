@@ -26,7 +26,8 @@ public class PiercoldWind : DrinkBase
 
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(int.MaxValue, 3));
 
-		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
+		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3]
+		{
 			new Color(70, 45, 181),
 			new Color(74, 173, 226),
 			new Color(53, 86, 161),

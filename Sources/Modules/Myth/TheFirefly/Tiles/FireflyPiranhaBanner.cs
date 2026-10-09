@@ -22,7 +22,8 @@ public class FireflyPiranhaBanner : ModTile, ITileFluentlyDrawn
 		// Placement
 		TileObjectData.newTile.CopyFrom(TileObjectData.Style1x2Top);
 		TileObjectData.newTile.Height = 3;
-		TileObjectData.newTile.CoordinateHeights = new int[3] {
+		TileObjectData.newTile.CoordinateHeights = new int[3]
+		{
 			16,
 			16,
 			16,

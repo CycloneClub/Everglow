@@ -28,7 +28,8 @@ public class DessertBag_Snow : ModItem
 	}
 	public override void ModifyItemLoot(ItemLoot itemLoot)
 	{
-		IItemDropRule[] oreBars = new IItemDropRule[] {
+		IItemDropRule[] oreBars = new IItemDropRule[]
+		{
 				ItemDropRule.Common(ItemID.Eggnog, 1, 2, 4),
 				ItemDropRule.Common(ItemID.SugarCookie, 1, 2, 4),
 				ItemDropRule.Common(ItemID.GingerbreadCookie, 1, 2, 4),

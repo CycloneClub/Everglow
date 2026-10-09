@@ -25,7 +25,8 @@ public class LonelyJellyfish : DrinkBase
 
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(int.MaxValue, 3));
 
-		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
+		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3]
+		{
 			new Color(193, 245, 255),
 			new Color(0, 96, 193),
 			new Color(112, 126, 216),

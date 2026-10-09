@@ -26,7 +26,8 @@ public class Mangosteen : FoodBase
 
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(int.MaxValue, 3));
 
-		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
+		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3]
+		{
 			new Color(229, 181, 199),
 			new Color(255, 255, 255),
 			new Color(17, 0, 12),

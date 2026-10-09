@@ -23,7 +23,8 @@ public class PurpleHooter : DrinkBase
 	{
 		CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 5;
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(int.MaxValue, 3));
-		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
+		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3]
+		{
 			new Color(121, 26, 153),
 			new Color(35, 173, 188),
 			new Color(53, 22, 153),

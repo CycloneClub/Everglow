@@ -26,7 +26,8 @@ public class XiaoLongBao : FoodBase
 
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(int.MaxValue, 3));
 
-		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
+		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3]
+		{
 			new Color(108, 150, 12),
 			new Color(242, 18, 0),
 			new Color(255, 94, 81),

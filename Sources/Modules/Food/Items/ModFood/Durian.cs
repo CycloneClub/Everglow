@@ -26,7 +26,8 @@ public class Durian : FoodBase
 
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(int.MaxValue, 3));
 
-		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
+		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3]
+		{
 			new Color(175, 90, 0),
 			new Color(234, 195, 89),
 			new Color(99, 82, 0),

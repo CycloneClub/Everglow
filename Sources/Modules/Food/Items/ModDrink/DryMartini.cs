@@ -25,7 +25,8 @@ public class DryMartini : DrinkBase
 
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(int.MaxValue, 3));
 
-		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
+		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3]
+		{
 			new Color(192, 182, 72),
 			new Color(137, 124, 140),
 			new Color(194, 229, 96),

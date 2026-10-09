@@ -26,7 +26,8 @@ public class StrawberryIcecream : FoodBase
 
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(int.MaxValue, 3));
 
-		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
+		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3]
+		{
 			new Color(255, 0, 0),
 			new Color(173, 0, 0),
 			new Color(255, 142, 142),

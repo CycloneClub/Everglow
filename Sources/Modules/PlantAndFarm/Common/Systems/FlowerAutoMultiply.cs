@@ -5,7 +5,8 @@ public class FlowerAutoMultiply : GlobalTile
 	public override void RandomUpdate(int i, int j, int type)
 	{
 		Vector2[] Types =
-		 { new Vector2(1, 10),
+		 {
+			new Vector2(1, 10),
 		 new Vector2(1, 11),
 		 new Vector2(2, 13),
 		 new Vector2(2, 18),
@@ -32,7 +33,8 @@ public class FlowerAutoMultiply : GlobalTile
 		 new Vector2(9, 39),
 		 new Vector2(10, 43),
 		 new Vector2(10, 44),
-		 new Vector2(10, 42), };
+		 new Vector2(10, 42),
+		};
 		Tile tile = Main.tile[i, j];
 		if (tile.TileType == 3)
 		{

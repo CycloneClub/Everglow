@@ -33,11 +33,13 @@ public class LampWoodCrate_Item : ModItem
 
 	public override void ModifyItemLoot(ItemLoot itemLoot)
 	{
-		int[] themedDrops = new int[] {
+		int[] themedDrops = new int[]
+		{
 		};
 		itemLoot.Add(ItemDropRule.OneFromOptionsNotScalingWithLuck(1, themedDrops));
 		itemLoot.Add(ItemDropRule.Common(ItemID.GoldCoin, 4, 5, 13));
-		IItemDropRule[] oreTypes = new IItemDropRule[] {
+		IItemDropRule[] oreTypes = new IItemDropRule[]
+		{
 			ItemDropRule.Common(ItemID.CopperOre, 1, 30, 50),
 			ItemDropRule.Common(ItemID.TinOre, 1, 30, 50),
 			ItemDropRule.Common(ItemID.IronOre, 1, 30, 50),
@@ -50,7 +52,8 @@ public class LampWoodCrate_Item : ModItem
 		itemLoot.Add(new OneFromRulesRule(7, oreTypes));
 
 		// Drop pre-hm bars (except copper/tin), with the addition of one from ExampleMod
-		IItemDropRule[] oreBars = new IItemDropRule[] {
+		IItemDropRule[] oreBars = new IItemDropRule[]
+		{
 			ItemDropRule.Common(ItemID.IronBar, 1, 10, 21),
 			ItemDropRule.Common(ItemID.LeadBar, 1, 10, 21),
 			ItemDropRule.Common(ItemID.SilverBar, 1, 10, 21),
@@ -61,7 +64,8 @@ public class LampWoodCrate_Item : ModItem
 		itemLoot.Add(new OneFromRulesRule(4, oreBars));
 
 		// Drop an "exploration utility" potion, with the addition of one from ExampleMod
-		IItemDropRule[] explorationPotions = new IItemDropRule[] {
+		IItemDropRule[] explorationPotions = new IItemDropRule[]
+		{
 			ItemDropRule.Common(ItemID.ObsidianSkinPotion, 1, 2, 5),
 			ItemDropRule.Common(ItemID.SpelunkerPotion, 1, 2, 5),
 			ItemDropRule.Common(ItemID.HunterPotion, 1, 2, 5),
@@ -72,14 +76,16 @@ public class LampWoodCrate_Item : ModItem
 		itemLoot.Add(new OneFromRulesRule(4, explorationPotions));
 
 		// Drop (pre-hm) resource potion
-		IItemDropRule[] resourcePotions = new IItemDropRule[] {
+		IItemDropRule[] resourcePotions = new IItemDropRule[]
+		{
 			ItemDropRule.Common(ItemID.HealingPotion, 1, 5, 18),
 			ItemDropRule.Common(ItemID.ManaPotion, 1, 5, 18),
 		};
 		itemLoot.Add(new OneFromRulesRule(2, resourcePotions));
 
 		// Drop (high-end) bait
-		IItemDropRule[] highendBait = new IItemDropRule[] {
+		IItemDropRule[] highendBait = new IItemDropRule[]
+		{
 			ItemDropRule.Common(ItemID.JourneymanBait, 1, 2, 7),
 			ItemDropRule.Common(ItemID.MasterBait, 1, 2, 7),
 		};

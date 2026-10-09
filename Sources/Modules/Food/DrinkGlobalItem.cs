@@ -21,7 +21,8 @@ public class DrinkGlobalItem : GlobalItem
                 // 麦芽酒
                 {
 				ItemID.Ale,
-				new DrinkInfo() {
+				new DrinkInfo()
+				{
 					Thirsty = false,
 					BuffType = ModContent.BuffType<AleBuff> (),
 					BuffTime = new FoodDuration(0, 10, 0),
@@ -31,7 +32,8 @@ public class DrinkGlobalItem : GlobalItem
                 // 苹果汁
                 {
 				ItemID.AppleJuice,
-				new DrinkInfo() {
+				new DrinkInfo()
+				{
 				   Thirsty = false,
 				   BuffType = ModContent.BuffType<AppleJuiceBuff>(),
 				   BuffTime = new FoodDuration(0, 10, 0),
@@ -41,7 +43,8 @@ public class DrinkGlobalItem : GlobalItem
                  // 冰冻香蕉代基里
                 {
 				ItemID.BananaDaiquiri,
-				new DrinkInfo() {
+				new DrinkInfo()
+				{
 					Thirsty = false,
 					BuffType = ModContent.BuffType<BananaDaiquiriBuff>(),
 					BuffTime = new FoodDuration(0, 10, 0),
@@ -51,7 +54,8 @@ public class DrinkGlobalItem : GlobalItem
                  // 血腥麝香葡萄
                 {
 				ItemID.BloodyMoscato,
-				new DrinkInfo() {
+				new DrinkInfo()
+				{
 					Thirsty = false,
 					BuffType = ModContent.BuffType<BloodyMoscatoBuff>(),
 					BuffTime = new FoodDuration(0, 10, 0),
@@ -61,7 +65,8 @@ public class DrinkGlobalItem : GlobalItem
                 // 奶油苏打水
                 {
 				ItemID.CreamSoda,
-				new DrinkInfo() {
+				new DrinkInfo()
+				{
 					Thirsty = false,
 					BuffType = ModContent.BuffType<CreamSodaBuff>(),
 					BuffTime = new FoodDuration(0, 10, 0),
@@ -71,7 +76,8 @@ public class DrinkGlobalItem : GlobalItem
                 // 咖啡
                 {
 				ItemID.CoffeeCup,
-				new DrinkInfo() {
+				new DrinkInfo()
+				{
 					Thirsty = false,
 					BuffType = ModContent.BuffType<CoffeeCupBuff>(),
 					BuffTime = new FoodDuration(0, 30, 0),
@@ -81,7 +87,8 @@ public class DrinkGlobalItem : GlobalItem
                 // 果汁
                 {
 				ItemID.FruitJuice,
-				new DrinkInfo() {
+				new DrinkInfo()
+				{
 				   Thirsty = false,
 				   BuffType = ModContent.BuffType<FruitJuiceBuff>(),
 				   BuffTime = new FoodDuration(0, 10, 0),
@@ -91,7 +98,8 @@ public class DrinkGlobalItem : GlobalItem
                 // 葡萄汁
                 {
 				ItemID.GrapeJuice,
-				new DrinkInfo() {
+				new DrinkInfo()
+				{
 					Thirsty = false,
 					BuffType = ModContent.BuffType<GrapeJuiceBuff>(),
 					BuffTime = new FoodDuration(0, 10, 0),
@@ -101,7 +109,8 @@ public class DrinkGlobalItem : GlobalItem
                 // 柠檬水
                 {
 				ItemID.Lemonade,
-				new DrinkInfo() {
+				new DrinkInfo()
+				{
 					Thirsty = false,
 					BuffType = ModContent.BuffType<LemonadeBuff>(),
 					BuffTime = new FoodDuration(0, 10, 0),
@@ -111,7 +120,8 @@ public class DrinkGlobalItem : GlobalItem
                 // 盒装牛奶
                 {
 				ItemID.MilkCarton,
-				new DrinkInfo() {
+				new DrinkInfo()
+				{
 					Thirsty = false,
 					BuffType = ModContent.BuffType<MilkCartonBuff>(),
 					BuffTime = new FoodDuration(0, 10, 0),
@@ -121,7 +131,8 @@ public class DrinkGlobalItem : GlobalItem
                 // 奶昔
                 {
 				ItemID.Milkshake,
-				new DrinkInfo() {
+				new DrinkInfo()
+				{
 					Thirsty = false,
 					BuffType = ModContent.BuffType<MilkshakeBuff>(),
 					BuffTime = new FoodDuration(0, 10, 0),
@@ -131,7 +142,8 @@ public class DrinkGlobalItem : GlobalItem
                 // 桃子果酒
                 {
 				ItemID.PeachSangria,
-				new DrinkInfo() {
+				new DrinkInfo()
+				{
 					Thirsty = false,
 					BuffType = ModContent.BuffType<PeachSangriaBuff>(),
 					BuffTime = new FoodDuration(0, 10, 0),
@@ -141,7 +153,8 @@ public class DrinkGlobalItem : GlobalItem
                 // 椰林飘香
                 {
 				ItemID.PinaColada,
-				new DrinkInfo() {
+				new DrinkInfo()
+				{
 					Thirsty = false,
 					BuffType = ModContent.BuffType<PinaColadaBuff>(),
 					BuffTime = new FoodDuration(0, 10, 0),
@@ -151,7 +164,8 @@ public class DrinkGlobalItem : GlobalItem
                 // 七彩潘趣酒
                 {
 				ItemID.PrismaticPunch,
-				new DrinkInfo() {
+				new DrinkInfo()
+				{
 					Thirsty = false,
 					BuffType = ModContent.BuffType<PrismaticPunchBuff>(),
 					BuffTime = new FoodDuration(0, 10, 0),
@@ -161,7 +175,8 @@ public class DrinkGlobalItem : GlobalItem
                 // 清酒
                 {
 				ItemID.Sake,
-				new DrinkInfo() {
+				new DrinkInfo()
+				{
 					Thirsty = false,
 					BuffType = ModContent.BuffType<SakeBuff>(),
 					BuffTime = new FoodDuration(0, 10, 0),
@@ -171,7 +186,8 @@ public class DrinkGlobalItem : GlobalItem
                 // 暗黑奶昔
                 {
 				ItemID.SmoothieofDarkness,
-				new DrinkInfo() {
+				new DrinkInfo()
+				{
 					Thirsty = false,
 					BuffType = ModContent.
 					BuffType<SmoothieofDarknessBuff>(),
@@ -182,7 +198,8 @@ public class DrinkGlobalItem : GlobalItem
                 // 一杯茶
                 {
 				ItemID.Teacup,
-				new DrinkInfo() {
+				new DrinkInfo()
+				{
 					Thirsty = false,
 					BuffType = ModContent.BuffType<TeacupBuff>(),
 					BuffTime = new FoodDuration(0, 10, 0),
@@ -192,7 +209,8 @@ public class DrinkGlobalItem : GlobalItem
                 // 热带奶昔
                 {
 				ItemID.TropicalSmoothie,
-				new DrinkInfo() {
+				new DrinkInfo()
+				{
 					Thirsty = false,
 					BuffType = ModContent.BuffType<TropicalSmoothieBuff>(),
 					BuffTime = new FoodDuration(0, 10, 0),
