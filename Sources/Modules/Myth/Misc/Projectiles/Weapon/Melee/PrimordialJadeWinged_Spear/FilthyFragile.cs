@@ -44,7 +44,9 @@ public class FilthyFragileDust : Visual
 	public float omega;
 	public float phi;
 
-	public FilthyFragileDust() { }
+	public FilthyFragileDust()
+	{
+	}
 
 	public override void Update()
 	{

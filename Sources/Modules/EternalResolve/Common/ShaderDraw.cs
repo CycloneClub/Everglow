@@ -11,7 +11,9 @@ public abstract class ShaderDraw : Visual
 	public Vector2 velocity;
 	public float[] ai;
 
-	public ShaderDraw() { }
+	public ShaderDraw()
+	{
+	}
 
 	public ShaderDraw(Vector2 position, Vector2 velocity, params float[] ai)
 	{

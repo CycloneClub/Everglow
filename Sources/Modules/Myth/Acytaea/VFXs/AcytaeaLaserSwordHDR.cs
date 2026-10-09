@@ -99,7 +99,9 @@ public class AcytaeaLaserSwordHDREffect : Visual
 	public float maxTime;
 	public NPC owner;
 
-	public AcytaeaLaserSwordHDREffect() { }
+	public AcytaeaLaserSwordHDREffect()
+	{
+	}
 
 	public AcytaeaLaserSwordHDREffect(int maxTime, NPC owner)
 	{

@@ -40,7 +40,9 @@ internal class WaveSprayDust : ShaderDraw
 	public float timer;
 	public float maxTime;
 
-	public WaveSprayDust() { }
+	public WaveSprayDust()
+	{
+	}
 
 	public WaveSprayDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai)
 		: base(position, velocity, ai)
