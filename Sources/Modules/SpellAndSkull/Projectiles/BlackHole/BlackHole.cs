@@ -9,7 +9,7 @@ namespace Everglow.SpellAndSkull.Projectiles.BlackHole;
 //[Pipeline(typeof(BlackHolePipeline))]
 internal class BlackHole : ModProjectile
 {
-	public static Projectile proj;//只能存在一个
+	public static Projectile proj; //只能存在一个
 	public override void SetDefaults()
 	{
 		Projectile.width = Projectile.height = 200;
@@ -60,7 +60,7 @@ internal class BlackHole : ModProjectile
 		}
 		if (Main.rand.NextBool(4))//光亮粒子
 		{
-			var c = new Color(0.2f, 0.7f, 1f);//颜色
+			var c = new Color(0.2f, 0.7f, 1f); //颜色
 			var d = new LightDust() { drawColor = c, position = Projectile.Center + Main.rand.NextVector2Unit() * 30, velocity = Main.rand.NextVector2Unit() * 6, scale = 0.2f, time_max = 30 };
 			Ins.VFXManager.Add(d);
 		}
@@ -189,7 +189,7 @@ internal class BlackHole : ModProjectile
 	public static void DrawRing(Projectile Projectile, bool front = false)//分前后两段(由front参数决定)绘制环
 	{
 
-		var c = new Color(0.2f, 0.7f, 1f);//环的颜色
+		var c = new Color(0.2f, 0.7f, 1f); //环的颜色
 
 		float time = (float)Main.timeForVisualEffects * 0.02f;
 		Main.spriteBatch.End();
@@ -215,7 +215,7 @@ internal class BlackHole : ModProjectile
 
 		if (Main.gfxQuality == 1)
 		{
-			c = new Color(0.2f, 0.7f, 1f);//环的颜色
+			c = new Color(0.2f, 0.7f, 1f); //环的颜色
 			time = (float)Main.timeForVisualEffects * 0.03f;
 			vertices = new();
 			r = front ? (50, 100) : (0, 50);
@@ -302,8 +302,8 @@ public class TemporarySys : ModSystem//暂时用一个ModSystem上滤镜
 			var pos = Vector2.Transform(proj.Center - Main.screenPosition, Main.Transform);
 			eff.Parameters["uPosition"].SetValue(pos / scRes);
 			eff.Parameters["uRatio"].SetValue(scRes.X / scRes.Y);
-			eff.Parameters["uRadius"].SetValue(0.001f * proj.scale * Main.Transform.M11 / (Main.screenWidth / 1920f));//乘了一个总缩放系数
-			eff.Parameters["uIntensity"].SetValue(3f);//扭曲程度，可以调节这个值来实现不同效果
+			eff.Parameters["uRadius"].SetValue(0.001f * proj.scale * Main.Transform.M11 / (Main.screenWidth / 1920f)); //乘了一个总缩放系数
+			eff.Parameters["uIntensity"].SetValue(3f); //扭曲程度，可以调节这个值来实现不同效果
 			eff.CurrentTechnique.Passes[0].Apply();
 			sb.Draw(Main.screenTargetSwap, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.White);
 

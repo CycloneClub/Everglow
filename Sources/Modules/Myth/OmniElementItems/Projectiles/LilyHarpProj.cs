@@ -142,7 +142,7 @@ internal class LilyHarpProj : ModProjectile//, IWarpProjectile
 			{
 				if ((Position[i] - StartPosition[i]).Length() >= 60)
 					TimeLeft[i] -= 5;
-				AI1[i] += 1 / 30f;//0.0~2.0
+				AI1[i] += 1 / 30f; //0.0~2.0
 				Velocity[i] = Velocity[i].RotatedBy(Math.PI / 60d * (float)Math.Sin(AI1[i] * Math.PI));
 				Lighting.AddLight(Position[i], 0, colorLight * 0.3f, 0);
 				if (Main.rand.NextBool(40) && !Smaller[i])

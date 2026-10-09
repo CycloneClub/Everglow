@@ -23,7 +23,7 @@ public class RampageShark : ModItem
 	//停止使用时，狂热度未清零前会以每秒3点下降，此期间无法使用
 	//击退力加算40%C;
 	//C满值是攻速为200%
-	public float CrazyValue = 0;//C
+	public float CrazyValue = 0; //C
 	public int ShootType = 0;
 	public override void SetDefaults()
 	{

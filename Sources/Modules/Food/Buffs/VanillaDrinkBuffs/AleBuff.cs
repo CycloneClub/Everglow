@@ -12,7 +12,7 @@ public class AleBuff : ModBuff
 
 	public override void Update(Player player, ref int buffIndex)
 	{
-		player.whipRangeMultiplier *= 1.5f;//
+		player.whipRangeMultiplier *= 1.5f; //
 		player.GetAttackSpeed(DamageClass.Summon) *= 1.5f;
 
 	}

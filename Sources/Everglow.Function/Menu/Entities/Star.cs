@@ -18,7 +18,7 @@ internal class Star
 		Vector2 rotCenter = new Vector2(960, 820) * new Vector2(Main.UIScale * Main.screenWidth / 1920f, Main.UIScale * Main.screenHeight / 1080f);
 		;
 		Vector2 rotVec = position - rotCenter;
-		rotVec = rotVec.RotatedBy(0.0003f + 0.0004 * baseScale / 2);//星星转速与大小相关，增强空间感
+		rotVec = rotVec.RotatedBy(0.0003f + 0.0004 * baseScale / 2); //星星转速与大小相关，增强空间感
 		position = rotCenter + rotVec;
 		if (timeLeft > maxTime - 20)
 		{

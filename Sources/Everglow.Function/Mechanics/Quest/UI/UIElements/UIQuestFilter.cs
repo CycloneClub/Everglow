@@ -406,7 +406,7 @@ public class UIQuestFilter : BaseElement
 		sb.Begin(SpriteSortMode.Immediate, sBS.BlendState, SamplerState.PointWrap, sBS.DepthStencilState, sBS.RasterizerState, sBS.Effect, sBS.TransformMatrix);
 		List<Vertex2D> bars = [];
 		Main.graphics.graphicsDevice.Textures[0] = background;
-		for (int i = 0; i <= 100;i++)
+		for (int i = 0; i <= 100; i++)
 		{
 			float rot = i / 100f * MathHelper.TwoPi;
 			Vector2 addPos0 = new Vector2(-171, 0).RotatedBy(rot);

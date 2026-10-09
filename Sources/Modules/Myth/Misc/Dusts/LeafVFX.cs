@@ -25,7 +25,7 @@ public class LeafVFX : ModDust
 		}
 		if (dust.scale < 0.01f)
 			dust.active = false;
-		dust.color.R += 5;//0.0~2.0
+		dust.color.R += 5; //0.0~2.0
 		if (dust.color.R > 255)
 			dust.color.R = 0;
 		if (dust.scale < 0.8f)

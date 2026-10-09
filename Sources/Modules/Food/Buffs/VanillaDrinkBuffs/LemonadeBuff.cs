@@ -13,7 +13,7 @@ public class LemonadeBuff : ModBuff
 	public override void Update(Player player, ref int buffIndex)
 	{
 		player.GetKnockback(DamageClass.Ranged) *= 2f; // 击退加倍
-		player.aggro -= 2400;//仇恨值减2400
+		player.aggro -= 2400; //仇恨值减2400
 
 	}
 }

@@ -166,7 +166,7 @@ public class AcytaeaScratch : ModProjectile
 			{
 				return;
 			}
-			List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(oldPosNoneZero.ToArray());//平滑
+			List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(oldPosNoneZero.ToArray()); //平滑
 			var SmoothTrail = new List<Vector2>();
 			for (int x = 0; x <= SmoothTrailX.Count - 1; x++)
 			{
@@ -245,7 +245,7 @@ public class AcytaeaScratch : ModProjectile
 			{
 				return;
 			}
-			List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(oldPosNoneZero.ToArray());//平滑
+			List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(oldPosNoneZero.ToArray()); //平滑
 			var SmoothTrail = new List<Vector2>();
 			for (int x = 0; x <= SmoothTrailX.Count - 1; x++)
 			{

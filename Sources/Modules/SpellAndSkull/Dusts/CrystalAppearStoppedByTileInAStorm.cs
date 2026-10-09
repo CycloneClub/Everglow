@@ -8,9 +8,9 @@ public class CrystalAppearStoppedByTileInAStorm : ModDust
 	{
 		dust.noGravity = true;
 		dust.frame = new Rectangle(0, 0, 16, 16);
-		dust.color.R = (byte)(dust.scale * 100f);//用红度存尺寸极值
-		dust.color.G = (byte)Main.rand.NextFloat(0f, 255f);//用绿度存相位
-		dust.alpha = (byte)Main.rand.NextFloat(0f, 55f);//用透明度存timeleft
+		dust.color.R = (byte)(dust.scale * 100f); //用红度存尺寸极值
+		dust.color.G = (byte)Main.rand.NextFloat(0f, 255f); //用绿度存相位
+		dust.alpha = (byte)Main.rand.NextFloat(0f, 55f); //用透明度存timeleft
 	}
 
 	public override bool Update(Dust dust)
@@ -21,7 +21,7 @@ public class CrystalAppearStoppedByTileInAStorm : ModDust
 
 		dust.alpha += 3;
 		dust.position += dust.velocity;
-		dust.color.B = (byte)(dust.color.B * 0.95 + xCoefficient * 0.05);//蓝度用来存加速度
+		dust.color.B = (byte)(dust.color.B * 0.95 + xCoefficient * 0.05); //蓝度用来存加速度
 
 		if (!Main.projectile[dust.dustIndex].active || Main.projectile[dust.dustIndex].type != ModContent.ProjectileType<Storm>())
 		{

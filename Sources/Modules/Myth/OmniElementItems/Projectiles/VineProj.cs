@@ -51,7 +51,7 @@ public class VineProj : ModProjectile
 		{
 			if ((Projectile.Center - StartPos).Length() >= 100)
 				Projectile.timeLeft -= 5;
-			Projectile.ai[1] += 1 / 30f;//0.0~2.0
+			Projectile.ai[1] += 1 / 30f; //0.0~2.0
 			Projectile.velocity = Projectile.velocity.RotatedBy(Math.PI / 60f * (float)Math.Sin(Projectile.ai[1] * Math.PI));
 			Lighting.AddLight(Projectile.Center, 0, colorLight * 0.9f, 0);
 			if (Main.rand.NextBool(40))

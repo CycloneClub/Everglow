@@ -11,8 +11,8 @@ public abstract class GemDust : ModDust
 	{
 		dust.noGravity = true;
 		dust.velocity *= 0;
-		dust.color.A = (byte)Main.rand.Next(255);//透明度存角速度
-		dust.color.R = (byte)Main.rand.Next(120, 255);//红度存黑化率
+		dust.color.A = (byte)Main.rand.Next(255); //透明度存角速度
+		dust.color.R = (byte)Main.rand.Next(120, 255); //红度存黑化率
 		SetDef();
 	}
 	public virtual void SetDef()

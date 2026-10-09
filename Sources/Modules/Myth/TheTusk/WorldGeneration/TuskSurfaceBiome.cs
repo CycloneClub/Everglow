@@ -11,8 +11,8 @@ public class TuskSurfaceBiome : ModBiome
 	//public override bool IsPrimaryBiome => true; // Allows this biome to impact NPC prices
 
 	// Select all the scenery
-	public override ModWaterStyle WaterStyle => ModContent.GetInstance<TuskWaterStyle>();//ModContent.Find<ModWaterStyle>("Everglow/Myth/TheTusk/WorldGeneration/TuskWaterStyle"); // Sets a water style for when inside this biome
-	public override ModSurfaceBackgroundStyle SurfaceBackgroundStyle => ModContent.GetInstance<TuskSurfaceBackgroundStyle>();//ModContent.Find<ModSurfaceBackgroundStyle>("Everglow/Myth/TheTusk/Background/TuskSurfaceBackgroundStyle");
+	public override ModWaterStyle WaterStyle => ModContent.GetInstance<TuskWaterStyle>(); //ModContent.Find<ModWaterStyle>("Everglow/Myth/TheTusk/WorldGeneration/TuskWaterStyle"); // Sets a water style for when inside this biome
+	public override ModSurfaceBackgroundStyle SurfaceBackgroundStyle => ModContent.GetInstance<TuskSurfaceBackgroundStyle>(); //ModContent.Find<ModSurfaceBackgroundStyle>("Everglow/Myth/TheTusk/Background/TuskSurfaceBackgroundStyle");
 	public override CaptureBiome.TileColorStyle TileColorStyle => CaptureBiome.TileColorStyle.Crimson;
 
 	public override string BestiaryIcon => base.BestiaryIcon;

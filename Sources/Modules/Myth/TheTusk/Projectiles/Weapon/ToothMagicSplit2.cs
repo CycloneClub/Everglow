@@ -116,7 +116,7 @@ public class ToothMagicSplit2 : ModProjectile
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
 		Projectile.velocity = Projectile.oldVelocity;
-		Tokill = 45;//0.75s后消掉
+		Tokill = 45; //0.75s后消掉
 		Projectile.friendly = false;
 		Projectile.damage = 0;
 		Projectile.tileCollide = false;
@@ -127,7 +127,7 @@ public class ToothMagicSplit2 : ModProjectile
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		Projectile.velocity = Projectile.oldVelocity;
-		Tokill = 45;//0.75s后消掉
+		Tokill = 45; //0.75s后消掉
 		Projectile.friendly = false;
 		Projectile.damage = 0;
 		Projectile.tileCollide = false;
@@ -212,13 +212,13 @@ public class ToothMagicSplit2 : ModProjectile
 			var factor = i / (float)TrueL;
 			var w = MathHelper.Lerp(1f, 0.05f, factor);
 
-			float CosWid = 1f;//粗细
+			float CosWid = 1f; //粗细
 			if (TrueL - i < 25)
 				CosWid *= (float)(Math.Cos((25 - Math.Clamp(TrueL - i, 0, 25)) / 25d * Math.PI) + 1) / 2f;
 			if (wid == -1)
 				wid = Main.rand.NextFloat(1.0f, 2f);
-			float SinFx0 = 0;//摆动函数
-			float CosFx0 = 1 * CosWid * wid;//求导简便计算透视投影
+			float SinFx0 = 0; //摆动函数
+			float CosFx0 = 1 * CosWid * wid; //求导简便计算透视投影
 			if (Projectile.timeLeft < 30)
 				CosFx0 *= Projectile.timeLeft / 30f;
 			Vector2 P0 = Projectile.oldPos[i] + normalDir * SinFx0 + normalDir * width * CosFx0 + new Vector2(9, 9);
@@ -251,7 +251,7 @@ public class ToothMagicSplit2 : ModProjectile
 			}
 		}
 		Texture2D t = ModContent.Request<Texture2D>("Everglow/Myth/UIImages/Tusk/DarkBloodRope").Value;
-		Main.graphics.GraphicsDevice.Textures[0] = t;//GlodenBloodScaleMirror
+		Main.graphics.GraphicsDevice.Textures[0] = t; //GlodenBloodScaleMirror
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, Vx.ToArray(), 0, Vx.Count / 3);
 	}
 }
