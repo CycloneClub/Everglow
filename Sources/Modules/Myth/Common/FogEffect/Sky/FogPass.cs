@@ -73,17 +73,22 @@ public class FogPass
 	private RenderTarget2D prevLightTexture;
 	private RenderTarget2D lightSwapTarget;
 
-	private int frameWidth, frameHeight;
-	private int screenWidth, screenHeight;
-	private int tileWidth, tileHeight;
+	private int frameWidth;
+	private int frameHeight;
+	private int screenWidth;
+	private int screenHeight;
+	private int tileWidth;
+	private int tileHeight;
 	private bool shouldResetRenderTargets;
 
 	private readonly int maxBlurLevels = 10;
 
 	private int maxBlurLevel;
 
-	private int startTileX, startTileY;
-	private int oldStartTileX, oldStartTileY;
+	private int startTileX;
+	private int startTileY;
+	private int oldStartTileX;
+	private int oldStartTileY;
 
 	private bool enableLightUpload;
 	private bool enableTemporalFilter;
@@ -93,7 +98,9 @@ public class FogPass
 	private int switchCounter = 0;
 	private int totalSwitchCounter = 0;
 	private bool useGaussian = true;
-	private FogState beginState, currentState, targetState;
+	private FogState beginState;
+	private FogState currentState;
+	private FogState targetState;
 
 	/// <summary>
 	/// 光晕效果的模糊卷积核半径，该值为2^k

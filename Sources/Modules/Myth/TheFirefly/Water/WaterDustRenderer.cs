@@ -32,7 +32,8 @@ internal class WaterDustRenderer
 	private Asset<Effect> dustDrawEffect;
 	private Asset<Effect> dustSpawnEffect;
 
-	private int oldScreenWidth, oldScreenHeight;
+	private int oldScreenWidth;
+	private int oldScreenHeight;
 
 	private RenderTarget2D CurrentDustTarget
 	{
