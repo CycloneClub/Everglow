@@ -102,7 +102,7 @@ public class XmasWhip : WhipProjectile
 				if (Main.rand.NextBool(2))
 				{
 					Vector2 v = new Vector2(0, Main.rand.NextFloat(6f, 8f)).RotatedBy(Math.PI * z / 15 + rot);
-					Projectile.NewProjectile(Terraria.Entity.InheritSource(Projectile), target.Center + v * 7, v, 336, Projectile.damage, 0.2f, player.whoAmI, player.GetCritChance(DamageClass.Summon), (int)(Projectile.damage * 0.3));
+					Projectile.NewProjectile(Terraria.Entity.InheritSource(Projectile), target.Center + v * 7, v, ProjectileID.PineNeedleFriendly, Projectile.damage, 0.2f, player.whoAmI, player.GetCritChance(DamageClass.Summon), (int)(Projectile.damage * 0.3));
 				}
 			}
 		}

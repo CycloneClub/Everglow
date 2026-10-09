@@ -18,7 +18,7 @@ public class PurpleBall : ModItem
 		Item.height = 24;
 		Item.value = 3226;
 		Item.accessory = true;
-		Item.rare = 3;
+		Item.rare = ItemRarityID.Orange;
 	}
 
 	public override void UpdateAccessory(Player player, bool hideVisual)
@@ -31,7 +31,7 @@ public class PurpleBall : ModItem
 		CreateRecipe()
 			.AddIngredient(ModContent.ItemType<Materials.WindMoveSeed>(), 15)
 			.AddIngredient(ModContent.ItemType<Materials.LightPurpleBalls>(), 24)
-			.AddTile(304)
+			.AddTile(TileID.LivingLoom)
 			.Register();
 	}
 }

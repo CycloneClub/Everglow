@@ -23,7 +23,7 @@ public class ThreeColorCrown : ModItem
 		Item.height = 26;
 		Item.value = 3724;
 		Item.accessory = true;
-		Item.rare = 3;
+		Item.rare = ItemRarityID.Orange;
 	}
 
 	public void Trigger()

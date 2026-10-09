@@ -25,7 +25,7 @@ public class Acytaea_yggdrasil : ModNPC
 	{
 		NPC.width = 26;
 		NPC.height = 36;
-		NPC.aiStyle = 7;
+		NPC.aiStyle = NPCAIStyleID.Passive;
 		NPC.damage = 80;
 		NPC.defense = 100;
 		NPC.lifeMax = 250000;

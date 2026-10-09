@@ -259,14 +259,14 @@ internal class SightOfTileProjRead : ModProjectile
 	{
 		if (Main.tile[i, j].HasTile)
 		{
-			if (Main.tile[i, j].WallType > 0)
+			if (Main.tile[i, j].WallType > WallID.None)
 			{
 				return new Color(255, 255, 0, 200);
 			}
 
 			return new Color(100, 100, 0, 10);
 		}
-		if (Main.tile[i, j].WallType > 0)
+		if (Main.tile[i, j].WallType > WallID.None)
 		{
 			return new Color(255, 55, 0, 10);
 		}

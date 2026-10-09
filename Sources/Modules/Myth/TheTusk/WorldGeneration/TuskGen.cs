@@ -190,7 +190,7 @@ public class TuskGen : ModSystem
 						case 0:
 							if (pixel.R == 255 && pixel.G == 0 && pixel.B == 0)
 							{
-								if (tile.TileType != 21 && Main.tile[x + a, y + b - 1].TileType != 21)
+								if (tile.TileType != TileID.Containers && Main.tile[x + a, y + b - 1].TileType != TileID.Containers)
 								{
 									tile.ClearEverything();
 								}
@@ -202,7 +202,7 @@ public class TuskGen : ModSystem
 							var Plc2 = new Vector2[60];
 							if (pixel.R == 158 && pixel.G == 26 && pixel.B == 37)
 							{
-								if (tile.TileType != 21 && Main.tile[x + a, y + b - 1].TileType != 21)
+								if (tile.TileType != TileID.Containers && Main.tile[x + a, y + b - 1].TileType != TileID.Containers)
 								{
 									tile.TileType = (ushort)ModContent.TileType<TuskFlesh>();
 									tile.HasTile = true;
@@ -210,7 +210,7 @@ public class TuskGen : ModSystem
 							}
 							if (pixel.R == 91 && pixel.G == 27 && pixel.B == 52)
 							{
-								if (tile.TileType != 21 && Main.tile[x + a, y + b - 1].TileType != 21)
+								if (tile.TileType != TileID.Containers && Main.tile[x + a, y + b - 1].TileType != TileID.Containers)
 								{
 									tile.TileType = TileID.BoneBlock;
 									tile.HasTile = true;
@@ -218,7 +218,7 @@ public class TuskGen : ModSystem
 							}
 							if (pixel.R == 255 && pixel.G == 0 && pixel.B == 0)
 							{
-								if (tile.TileType != 21 && Main.tile[x + a, y + b - 1].TileType != 21)
+								if (tile.TileType != TileID.Containers && Main.tile[x + a, y + b - 1].TileType != TileID.Containers)
 								{
 									tile.TileType = (ushort)ModContent.TileType<AbTuskFlesh>();
 									tile.HasTile = true;
@@ -229,7 +229,7 @@ public class TuskGen : ModSystem
 						case 2:
 							if (pixel.R == 96 && pixel.G == 8 && pixel.B == 14)
 							{
-								if (tile.TileType != 21 && Main.tile[x + a, y + b - 1].TileType != 21)
+								if (tile.TileType != TileID.Containers && Main.tile[x + a, y + b - 1].TileType != TileID.Containers)
 								{
 									tile.WallType = (ushort)ModContent.WallType<Walls.BloodyStoneWall>();
 								}
@@ -363,7 +363,7 @@ public class TuskGen : ModSystem
 				}
 				if (Length < 28f)
 				{
-					if (tile.WallType != 0 || (Length < 22f && j > -5))
+					if (tile.WallType != WallID.None || (Length < 22f && j > -5))
 					{
 						tile.WallType = (ushort)ModContent.WallType<Walls.TuskFleshWall>();
 					}

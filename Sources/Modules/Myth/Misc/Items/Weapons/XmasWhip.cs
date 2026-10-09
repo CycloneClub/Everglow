@@ -32,7 +32,7 @@ public class XmasWhip : ModItem
 			Item.autoReuse = true;
 		}
 
-		Item.useStyle = 1;
+		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useAnimation = animationTotalTime;
 		Item.useTime = animationTotalTime;
 		Item.width = 18;

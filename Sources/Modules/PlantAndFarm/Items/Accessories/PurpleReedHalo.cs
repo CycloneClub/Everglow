@@ -20,7 +20,7 @@ public class PurpleReedHalo : ModItem
 		Item.height = 36;
 		Item.value = 2877;
 		Item.accessory = true;
-		Item.rare = 3;
+		Item.rare = ItemRarityID.Orange;
 	}
 
 	public override void UpdateAccessory(Player player, bool hideVisual)
@@ -34,7 +34,7 @@ public class PurpleReedHalo : ModItem
 		CreateRecipe()
 			.AddIngredient(ModContent.ItemType<WindMoveSeed>(), 15)
 			.AddIngredient(ModContent.ItemType<PurpleTail>(), 24)
-			.AddTile(304)
+			.AddTile(TileID.LivingLoom)
 			.Register();
 	}
 }

@@ -19,7 +19,7 @@ public class Acytaea_Boss : ModNPC
 	{
 		NPC.width = 34;
 		NPC.height = 48;
-		NPC.aiStyle = 7;
+		NPC.aiStyle = NPCAIStyleID.Passive;
 		NPC.damage = 0;
 		NPC.defense = 100;
 		NPC.lifeMax = 250000;

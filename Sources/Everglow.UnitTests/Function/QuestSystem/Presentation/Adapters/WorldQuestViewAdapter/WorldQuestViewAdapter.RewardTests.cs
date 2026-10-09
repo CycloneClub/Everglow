@@ -2,6 +2,7 @@ using Everglow.Commons.Mechanics.Quest.Presentation.Adapters;
 using Everglow.Commons.Mechanics.Quest.Presentation.Views;
 using Everglow.Commons.Mechanics.Quest.WorldSide;
 using Terraria;
+using Terraria.ID;
 
 namespace Everglow.UnitTests.Function.QuestSystem;
 
@@ -10,8 +11,8 @@ public partial class WorldQuestViewAdapterTest
 	[TestMethod]
 	public void Create_MapsRewardItemsByReferenceAndSnapshotsWithoutClaimingThem()
 	{
-		var firstReward = new Item { type = 1, stack = 3 };
-		var secondReward = new Item { type = 2, stack = 5 };
+		var firstReward = new Item { type = ItemID.IronPickaxe, stack = 3 };
+		var secondReward = new Item { type = ItemID.DirtBlock, stack = 5 };
 		var quest = new StubQuest();
 		quest.SetState(WorldQuestState.Completed);
 		quest.AddReward(firstReward);

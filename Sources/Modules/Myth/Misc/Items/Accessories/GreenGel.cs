@@ -10,7 +10,7 @@ public class GreenGel : ModItem
 		Item.height = 26;
 		Item.value = 1563;
 		Item.accessory = true;
-		Item.rare = 3;
+		Item.rare = ItemRarityID.Orange;
 	}
 
 	public override void UpdateAccessory(Player player, bool hideVisual)

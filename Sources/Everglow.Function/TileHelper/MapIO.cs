@@ -350,7 +350,7 @@ public class MapIO
 				}
 			}
 
-			if (tile.WallType == 0)
+			if (tile.WallType == WallID.None)
 			{
 				// 无墙壁
 				heads[1][3] = false;
@@ -411,12 +411,12 @@ public class MapIO
 			heads[2][3] = tile.YellowWire;
 			heads[2][4] = tile.HasActuator;
 			heads[2][5] = tile.IsActuated;
-			if (tile.TileColor != 0)
+			if (tile.TileColor != PaintID.None)
 			{
 				heads[2][6] = true;
 				writer_local.Write(tile.TileColor);
 			}
-			if (tile.WallColor != 0)
+			if (tile.WallColor != PaintID.None)
 			{
 				heads[2][7] = true;
 				writer_local.Write(tile.WallColor);
@@ -514,7 +514,7 @@ public class MapIO
 			{
 				if (!heads[1][4])
 				{
-					tile.WallType = 0;
+					tile.WallType = WallID.None;
 				}
 			}
 			else
@@ -564,7 +564,7 @@ public class MapIO
 			}
 			else
 			{
-				tile.TileColor = 0;
+				tile.TileColor = PaintID.None;
 			}
 
 			if (heads[2][7])
@@ -573,7 +573,7 @@ public class MapIO
 			}
 			else
 			{
-				tile.WallColor = 0;
+				tile.WallColor = PaintID.None;
 			}
 
 			if (heads[0][6])

@@ -20,7 +20,7 @@ public class CyanPedal : ModItem
 		Item.height = 22;
 		Item.value = 3068;
 		Item.accessory = true;
-		Item.rare = 3;
+		Item.rare = ItemRarityID.Orange;
 	}
 
 	public override void UpdateAccessory(Player player, bool hideVisual)
@@ -33,7 +33,7 @@ public class CyanPedal : ModItem
 		CreateRecipe()
 			.AddIngredient(ModContent.ItemType<WindMoveSeed>(), 15)
 			.AddIngredient(ModContent.ItemType<BluePedal>(), 24)
-			.AddTile(304)
+			.AddTile(TileID.LivingLoom)
 			.Register();
 	}
 }

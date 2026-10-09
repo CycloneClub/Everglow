@@ -21,7 +21,7 @@ public class BlackFrenLarge : ModTile, ITileFluentlyDrawn
 		TileObjectData.newTile.CoordinateWidth = 16;
 		TileObjectData.newTile.StyleHorizontal = true;
 		TileObjectData.addTile(Type);
-		DustType = 191;
+		DustType = DustID.SpookyWood;
 		AddMapEntry(new Color(11, 11, 11));
 		HitSound = SoundID.Grass;
 	}

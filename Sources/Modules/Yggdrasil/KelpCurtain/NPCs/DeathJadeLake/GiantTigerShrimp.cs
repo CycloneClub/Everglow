@@ -43,7 +43,7 @@ public class GiantTigerShrimp : ModNPC
 		//
 		// The engine's own aiStyle 0 is the vanilla "No AI" style: the creature does not move and only
 		// faces the player, so this shell needs no AI() body of its own.
-		NPC.aiStyle = 0;
+		NPC.aiStyle = NPCAIStyleID.FaceClosestPlayer;
 
 		// No sprite exists to measure, so a conservative wide, low box sized for a large shrimp-like
 		// aquatic creature is used.

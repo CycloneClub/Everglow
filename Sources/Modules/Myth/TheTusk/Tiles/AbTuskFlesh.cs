@@ -11,7 +11,7 @@ public class AbTuskFlesh : ModTile
 		Main.tileMerge[Type][ModContent.TileType<TuskFlesh>()] = true;
 		Main.tileMerge[ModContent.TileType<TuskFlesh>()][Type] = true;
 		Main.tileBlockLight[Type] = true;
-		DustType = 5;
+		DustType = DustID.Blood;
 		AddMapEntry(new Color(219, 41, 47));
 		HitSound = SoundID.Grass;
 	}

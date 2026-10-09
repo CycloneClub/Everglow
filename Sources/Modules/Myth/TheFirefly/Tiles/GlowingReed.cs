@@ -19,7 +19,7 @@ public class GlowingReed : ModTile
 		TileObjectData.newTile.DrawYOffset = -16;
 		TileObjectData.addTile(Type);
 		TileID.Sets.SwaysInWindBasic[Type] = true;
-		DustType = 191;
+		DustType = DustID.SpookyWood;
 		var modTranslation = CreateMapEntryName();
 		AddMapEntry(new Color(11, 11, 160), modTranslation);
 		HitSound = SoundID.Grass;

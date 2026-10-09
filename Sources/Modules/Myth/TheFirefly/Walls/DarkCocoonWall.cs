@@ -5,7 +5,7 @@ public class DarkCocoonWall : ModWall
 	public override void SetStaticDefaults()
 	{
 		Main.wallHouse[Type] = true;
-		DustType = 191;
+		DustType = DustID.SpookyWood;
 		AddMapEntry(new Color(10, 10, 10));
 	}
 }

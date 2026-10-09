@@ -5,7 +5,7 @@ public class BasaltWall : ModWall
 	public override void SetStaticDefaults()
 	{
 		Main.wallHouse[Type] = true;
-		DustType = 240;
+		DustType = DustID.Granite;
 		AddMapEntry(new Color(1, 1, 1));
 	}
 

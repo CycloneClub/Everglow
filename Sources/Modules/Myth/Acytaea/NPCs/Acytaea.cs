@@ -189,7 +189,7 @@ public class Acytaea : VisualNPC
 		// so we should prevent other npc from sitting the same chair.
 		if (Sit)
 		{
-			NPC.aiStyle = 7;
+			NPC.aiStyle = NPCAIStyleID.Passive;
 			NPC.ai[0] = 5;
 		}
 		else
