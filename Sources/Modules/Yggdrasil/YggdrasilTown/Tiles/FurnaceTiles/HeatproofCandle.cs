@@ -8,8 +8,6 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.FurnaceTiles;
 
 public class HeatproofCandle : ModTile
 {
-	private Asset<Texture2D> flameTexture;
-
 	public override void SetStaticDefaults()
 	{
 		Main.tileTable[Type] = true;
