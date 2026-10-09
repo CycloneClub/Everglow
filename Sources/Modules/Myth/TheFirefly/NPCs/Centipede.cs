@@ -457,7 +457,7 @@ internal class CentipedeHead : FireWormHead
 		// 一些netupdate的东西（多人游戏兼容性）。
 		if (collision)
 		{
-			if (NPC.localAI[0] != 1)  // 碰撞检测同步
+			if (NPC.localAI[0] != 1) // 碰撞检测同步
 			{
 				NPC.netUpdate = true;
 			}
