@@ -30,7 +30,10 @@ public class VineProj : ModProjectile
 		Projectile.hide = true;
 		Player player = Main.player[Projectile.owner];
 		if (StartPos == Vector2.Zero)
+		{
 			StartPos = player.Center;
+		}
+
 		float colorLight = Math.Min(Projectile.timeLeft / 100f, 1f);
 		if (Projectile.timeLeft < 75)
 		{
@@ -50,7 +53,10 @@ public class VineProj : ModProjectile
 		else
 		{
 			if ((Projectile.Center - StartPos).Length() >= 100)
+			{
 				Projectile.timeLeft -= 5;
+			}
+
 			Projectile.ai[1] += 1 / 30f; // 0.0~2.0
 			Projectile.velocity = Projectile.velocity.RotatedBy(Math.PI / 60f * (float)Math.Sin(Projectile.ai[1] * Math.PI));
 			Lighting.AddLight(Projectile.Center, 0, colorLight * 0.9f, 0);
@@ -71,25 +77,35 @@ public class VineProj : ModProjectile
 		var bars = new List<Vertex2D>();
 		float width = 6;
 		if (Projectile.timeLeft < 60)
+		{
 			width = Projectile.timeLeft / 10f;
+		}
+
 		int TrueL = 0;
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
 
 			TrueL++;
 		}
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
 
 			var normalDir = Projectile.oldPos[i - 1] - Projectile.oldPos[i];
 			normalDir = Vector2.Normalize(new Vector2(-normalDir.Y, normalDir.X));
 			var factor = 1f;
 			if (Projectile.oldPos.Length > 0)
+			{
 				factor = i / (float)Projectile.oldPos.Length;
+			}
+
 			var w = MathHelper.Lerp(1f, 0.05f, factor);
 			Lighting.AddLight(Projectile.oldPos[i], colorLight * 1.2f * (1 - factor), colorLight * 0.7f * (1 - factor), 0);
 			Vector2 DrawPos = player.Center + Projectile.oldPos[i] - StartPos + new Vector2(4) - Main.screenPosition;

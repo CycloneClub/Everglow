@@ -18,7 +18,10 @@ public class MothBlue2 : ModDust
 		dust.velocity *= 0.95f;
 		Lighting.AddLight(dust.position, 0, 0, dust.color.B * 0.0015f);
 		if (dust.scale < 0.15f)
+		{
 			dust.active = false;
+		}
+
 		return false;
 	}
 

@@ -18,7 +18,10 @@ public class CactusSmog : ModDust
 		dust.alpha++;
 		Lighting.AddLight(dust.position, 0, 0, (float)((255 - dust.alpha) * 0.0015f));
 		if (dust.alpha > 254)
+		{
 			dust.active = false;
+		}
+
 		return false;
 	}
 	public override Color? GetAlpha(Dust dust, Color lightColor)

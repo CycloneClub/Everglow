@@ -32,11 +32,16 @@ public class DragonScaleHammerProj : MeleeProj
 			SmoothTrail.Add(smoothTrail_current[x]);
 		}
 		if (slashTrail.Count != 0)
+		{
 			SmoothTrail.Add(slashTrail.ToArray()[slashTrail.Count - 1]);
+		}
 
 		int length = SmoothTrail.Count;
 		if (length <= 3)
+		{
 			return;
+		}
+
 		Vector2[] trail = SmoothTrail.ToArray();
 		var bars = new List<Vertex2D>();
 
@@ -110,7 +115,10 @@ public class DragonScaleHammerProj : MeleeProj
 				Projectile.rotation = mainAxisDirection.ToRotation();
 			}
 			if (timer == 24)
+			{
 				AttSound(new SoundStyle(Commons.ModAsset.TrueMeleeSwing_Mod));
+			}
+
 			if (timer > 30 && timer < 70)
 			{
 				canHit = true;
@@ -148,7 +156,10 @@ public class DragonScaleHammerProj : MeleeProj
 				Projectile.rotation = mainAxisDirection.ToRotation();
 			}
 			if (timer == 20)
+			{
 				AttSound(new SoundStyle(Commons.ModAsset.TrueMeleeSwing_Mod).WithPitchOffset(-0.5f));
+			}
+
 			if (timer > 30 && timer < 80)
 			{
 				canHit = true;
@@ -158,7 +169,10 @@ public class DragonScaleHammerProj : MeleeProj
 				mainAxisDirection = Vector2Elipse(140 + timeValue * 0.7f, Projectile.rotation, 1.3f, -0.4f * player.direction);
 			}
 			if (timer > 80 + 20 * timeMul)
+			{
 				NextAttackType();
+			}
+
 			float BodyRotation = (float)Math.Sin((timer - 30) / 40d * Math.PI) * 0.2f * player.direction * player.gravDir;
 			player.fullRotation = BodyRotation;
 			player.fullRotationOrigin = new Vector2(player.Hitbox.Width / 2f, player.gravDir == -1 ? 0 : player.Hitbox.Height);
@@ -198,9 +212,14 @@ public class DragonScaleHammerProj : MeleeProj
 				Tplayer.HeadRotation = -BodyRotation;
 			}
 			if (timer == 20)
+			{
 				AttSound(new SoundStyle(Commons.ModAsset.TrueMeleeSwing_Mod).WithPitchOffset(-0.2f));
+			}
+
 			if (timer > 50 + 25 * timeMul)
+			{
 				NextAttackType();
+			}
 		}
 		if (currantAttackType == 3)
 		{
@@ -234,9 +253,14 @@ public class DragonScaleHammerProj : MeleeProj
 				Tplayer.HeadRotation = -BodyRotation;
 			}
 			if (timer == 20)
+			{
 				AttSound(new SoundStyle(Commons.ModAsset.TrueMeleeSwing_Mod).WithPitchOffset(-0.2f));
+			}
+
 			if (timer > 70 + 25 * timeMul)
+			{
 				NextAttackType();
+			}
 		}
 		if (currantAttackType == 4)
 		{
@@ -268,9 +292,14 @@ public class DragonScaleHammerProj : MeleeProj
 				Tplayer.HeadRotation = -BodyRotation;
 			}
 			if (timer == 32)
+			{
 				AttSound(new SoundStyle(Commons.ModAsset.TrueMeleeSwing_Mod).WithPitchOffset(-0.6f));
+			}
+
 			if (timer > 80 + 25 * timeMul)
+			{
 				NextAttackType();
+			}
 		}
 	}
 }

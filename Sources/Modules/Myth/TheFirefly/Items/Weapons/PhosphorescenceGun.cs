@@ -64,7 +64,9 @@ public class PhosphorescenceGun : ModItem
 							if (MothEye.LocalOwner != null && MothEye.LocalOwner.TryGetModPlayer(out MothEyePlayer mothEyePlayer))
 							{
 								if (!mothEyePlayer.MothEyeEquipped && !fireflyBiome.IsBiomeActive(Main.LocalPlayer) && !Main.hardMode)
+								{
 									player.velocity -= velocity * 0.2f;
+								}
 							}
 						}
 					}

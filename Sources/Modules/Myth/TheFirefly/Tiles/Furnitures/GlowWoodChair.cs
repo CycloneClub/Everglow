@@ -66,7 +66,9 @@ public class GlowWoodChair : ModTile
 
 		info.TargetDirection = -1;
 		if (tile.TileFrameX != 0)
+		{
 			info.TargetDirection = 1; // Facing right if sat down on the right alternate (added through addAlternate in SetStaticDefaults earlier)
+		}
 
 		// The anchor represents the bottom-most tile of the chair. This is used to align the entity hitbox
 		// Since i and j may be from any coordinate of the chair, we need to adjust the anchor based on that
@@ -74,7 +76,9 @@ public class GlowWoodChair : ModTile
 		info.AnchorTilePosition.Y = j;
 
 		if (tile.TileFrameY % NextStyleHeight == 0)
+		{
 			info.AnchorTilePosition.Y++; // Here, since our chair is only 2 tiles high, we can just check if the tile is the top-most one, then move it 1 down
+		}
 	}
 
 	public override bool RightClick(int i, int j)
@@ -92,7 +96,10 @@ public class GlowWoodChair : ModTile
 		var tile = Main.tile[i, j];
 		var zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
 		if (Main.drawToScreen)
+		{
 			zero = Vector2.Zero;
+		}
+
 		Texture2D tex = ModAsset.GlowWoodChairGlow.Value;
 		spriteBatch.Draw(tex, new Vector2(i * 16, j * 16) - Main.screenPosition + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16), new Color(0.8f, 0.8f, 0.8f, 0), 0, new Vector2(0), 1, SpriteEffects.None, 0);
 

@@ -26,7 +26,9 @@ public class FireflyImpression : ModItem
 			else
 			{
 				if (!SubworldSystem.Enter<MothWorld>())
+				{
 					Main.NewText("Fail!");
+				}
 			}
 		}
 		return base.UseItem(player);

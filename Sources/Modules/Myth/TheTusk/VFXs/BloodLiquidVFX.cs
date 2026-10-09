@@ -73,17 +73,25 @@ internal class BloodLiquidDust : ShaderDraw
 		position += velocity * 0.001f;
 		oldPos.Add(position);
 		if (oldPos.Count > 15)
+		{
 			oldPos.RemoveAt(0);
+		}
+
 		velocity.Y += 0.21f;
 		timer++;
 		if (timer > maxTime)
+		{
 			Active = false;
+		}
+
 		velocity = velocity.RotatedBy(ai[1]);
 
 		for (int f = oldPos.Count - 1; f > 0; f--)
 		{
 			if (oldPos[f] != Vector2.Zero)
+			{
 				oldPos[f] += vsadd;
+			}
 		}
 		ai[2] += 0.4f;
 		if (Collision.SolidCollision(position, 0, 0))
@@ -119,7 +127,10 @@ internal class BloodLiquidDust : ShaderDraw
 		float fx = timer / maxTime;
 		int len = pos.Length;
 		if (len <= 2)
+		{
 			return;
+		}
+
 		var bars = new Vertex2D[len * 2 - 1];
 		for (int i = 1; i < len; i++)
 		{
@@ -177,17 +188,25 @@ internal class ThickBloodLiquidDust : ShaderDraw
 		position += velocity * 0.001f;
 		oldPos.Add(position);
 		if (oldPos.Count > 15)
+		{
 			oldPos.RemoveAt(0);
+		}
+
 		velocity.Y += 0.21f;
 		timer++;
 		if (timer > maxTime)
+		{
 			Active = false;
+		}
+
 		velocity = velocity.RotatedBy(ai[1]);
 
 		for (int f = oldPos.Count - 1; f > 0; f--)
 		{
 			if (oldPos[f] != Vector2.Zero)
+			{
 				oldPos[f] += vsadd;
+			}
 		}
 		ai[2] += 0.4f;
 		if (Collision.SolidCollision(position, 0, 0))
@@ -223,7 +242,10 @@ internal class ThickBloodLiquidDust : ShaderDraw
 		float fx = timer / maxTime;
 		int len = pos.Length;
 		if (len <= 2)
+		{
 			return;
+		}
+
 		var bars = new Vertex2D[len * 2 - 1];
 		for (int i = 1; i < len; i++)
 		{

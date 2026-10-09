@@ -49,7 +49,10 @@ public class IceCrystal : ModDust
 			dust.velocity += new Vector2(Main.windSpeedCurrent * 0.05f, 0.005f * dust.scale * dust.scale);
 		}
 		if (dust.scale < 0.15f)
+		{
 			dust.active = false;
+		}
+
 		return false;
 	}
 	public override Color? GetAlpha(Dust dust, Color lightColor)
@@ -120,7 +123,10 @@ public class IceCrystal2 : ModDust
 			dust.velocity += new Vector2(Main.windSpeedCurrent * 0.02f, 0.25f * dust.scale * dust.scale);
 		}
 		if (dust.scale < 0.15f)
+		{
 			dust.active = false;
+		}
+
 		return false;
 	}
 	public override Color? GetAlpha(Dust dust, Color lightColor)

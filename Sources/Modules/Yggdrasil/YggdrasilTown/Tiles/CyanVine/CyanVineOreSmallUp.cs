@@ -27,7 +27,10 @@ public class CyanVineOreSmallUp : ModTile
 	public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
 	{
 		if (fail)
+		{
 			return;
+		}
+
 		var ThisTile = Main.tile[i, j];
 		int X0 = i - ThisTile.TileFrameX / 18;
 		int Y0 = j - ThisTile.TileFrameY / 18;
@@ -39,7 +42,9 @@ public class CyanVineOreSmallUp : ModTile
 				if (tile.TileFrameX == x * 18 && tile.TileFrameY == y * 18)
 				{
 					if (tile.TileType == ModContent.TileType<CyanVineOreTile>() && tile.HasTile)
+					{
 						tile.HasTile = false;
+					}
 				}
 			}
 		}
@@ -62,7 +67,10 @@ public class CyanVineOreSmallUp : ModTile
 		var tile = Main.tile[i, j];
 		var zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
 		if (Main.drawToScreen)
+		{
 			zero = Vector2.Zero;
+		}
+
 		if (tile.TileFrameX % 54 == 18 && tile.TileFrameY == 0)
 		{
 			for (int x = -1; x < 2; x++)

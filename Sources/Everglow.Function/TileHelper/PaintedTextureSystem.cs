@@ -22,7 +22,9 @@ public class PaintedTextureSystem : ModSystem
 		tileVariationkey.TileStyle = tileStyle;
 		tileVariationkey.PaintColor = paintColor;
 		if (paintSystem._tilesRenders.TryGetValue(tileVariationkey, out var value) && value.IsReady)
+		{
 			return value.Target;
+		}
 
 		TexturePathLookup[tileVariationkey] = path;
 

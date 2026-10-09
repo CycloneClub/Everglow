@@ -86,7 +86,9 @@ public class LittleFireBulb : ModNPC
 			NPC.velocity += new Vector2(0, 0.35f);
 			NPC.velocity += TOCen / TOCen.Length() * (TOCen.Length() - MaxL) * 0.01f;
 			if (NPC.velocity.Length() > 1f)
+			{
 				NPC.velocity -= NPC.velocity * 0.01f;
+			}
 		}
 		NPC.rotation = (float)(Math.Atan2(TOCen.Y, TOCen.X) + Math.PI / 2d);
 		Lighting.AddLight((int)(NPC.Center.X / 16), (int)(NPC.Center.Y / 16 - 1), 0, 0.1f, 0.8f);
@@ -135,7 +137,10 @@ public class LittleFireBulb : ModNPC
 	{
 		SpriteEffects effects = SpriteEffects.None;
 		if (NPC.spriteDirection == 1)
+		{
 			effects = SpriteEffects.FlipHorizontally;
+		}
+
 		Texture2D tx = ModAsset.LittleFireBulb.Value;
 		Texture2D tg = ModAsset.LittleFireBulb_Glow.Value;
 		var vector = new Vector2(tx.Width / 2f, tx.Height / (float)Main.npcFrameCount[NPC.type] / 2f);
@@ -149,7 +154,10 @@ public class LittleFireBulb : ModNPC
 		for (int f = 1; f < 200; f++)
 		{
 			if ((StaCen - vPos[f - 1]).Length() < 24)
+			{
 				break;
+			}
+
 			vPos[f] = vPos[f - 1] + (StaCen - vPos[f - 1]) / (StaCen - vPos[f - 1]).Length() * 6;
 			Color color2 = Lighting.GetColor((int)(vPos[f].X / 16d), (int)(vPos[f].Y / 16d));
 			Main.spriteBatch.Draw(tx, vPos[f] - Main.screenPosition, new Rectangle(0, 10, 32, 6), color2, NPC.rotation, vector, 1f, effects, 0f);

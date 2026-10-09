@@ -63,22 +63,32 @@ internal class CursedFlameDust : ShaderDraw
 		position += velocity;
 		oldPos.Add(position);
 		if (oldPos.Count > 15)
+		{
 			oldPos.RemoveAt(0);
+		}
+
 		velocity *= 0.96f;
 		timer++;
 		if (timer > maxTime)
+		{
 			Active = false;
+		}
+
 		velocity = velocity.RotatedBy(ai[1]);
 
 		for (int f = oldPos.Count - 1; f > 0; f--)
 		{
 			if (oldPos[f] != Vector2.Zero)
+			{
 				oldPos[f] += vsadd;
+			}
 		}
 		float delC = ai[2] * 0.05f * (float)Math.Sin((maxTime - timer) / 40d * Math.PI);
 		Lighting.AddLight((int)(position.X / 16), (int)(position.Y / 16), 0.45f * delC, 0.85f * delC, 0f);
 		if (Collision.SolidCollision(position, 0, 0))
+		{
 			Active = false;
+		}
 	}
 
 	public override void Draw()
@@ -88,7 +98,10 @@ internal class CursedFlameDust : ShaderDraw
 		Vector2[] pos = oldPos.Reverse<Vector2>().ToArray();
 		int len = pos.Length;
 		if (len <= 2)
+		{
 			return;
+		}
+
 		var bars = new Vertex2D[len * 2 - 1];
 		for (int i = 1; i < len; i++)
 		{

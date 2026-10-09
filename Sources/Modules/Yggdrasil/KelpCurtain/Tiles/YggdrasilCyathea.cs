@@ -106,7 +106,10 @@ public class YggdrasilCyathea : ModTile
 		Texture2D treeTexture = ModAsset.YggdrasilCyathea.Value;
 		var zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
 		if (Main.drawToScreen)
+		{
 			zero = Vector2.Zero;
+		}
+
 		Tile tile = Main.tile[i, j];
 		int Width;
 		int Height = 16;

@@ -18,7 +18,9 @@ public class PipelineIndex : IEquatable<PipelineIndex>
 		var current = this;
 		using var it = indices.GetEnumerator();
 		if (!it.MoveNext())
+		{
 			throw new ArgumentException("Indices count should > 0");
+		}
 
 		current.index = it.Current;
 		while (it.MoveNext())

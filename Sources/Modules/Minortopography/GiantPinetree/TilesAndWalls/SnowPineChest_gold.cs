@@ -69,17 +69,25 @@ public class SnowPineChest_gold : ModTile
 		int top = j;
 		Tile tile = Main.tile[i, j];
 		if (tile.TileFrameX % 36 != 0)
+		{
 			left--;
+		}
 
 		if (tile.TileFrameY != 0)
+		{
 			top--;
+		}
 
 		int chest = Chest.FindChest(left, top);
 		if (chest < 0)
+		{
 			return Language.GetTextValue("LegacyChestType.0");
+		}
 
 		if (Main.chest[chest].name == "")
+		{
 			return name;
+		}
 
 		return name + ": " + Main.chest[chest].name;
 	}

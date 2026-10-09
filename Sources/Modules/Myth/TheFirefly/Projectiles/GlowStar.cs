@@ -68,22 +68,33 @@ public class GlowStar : ModProjectile
 		float k2 = 1f;
 		float mulFactor = 1f;
 		if (Projectile.timeLeft <= 1000 - k1)
+		{
 			k0 = 1;
+		}
+
 		if (Projectile.timeLeft < 200)
+		{
 			k2 = Projectile.timeLeft / 200f;
+		}
+
 		var c0 = new Color((1f - k0) * 0.6f, 1.5f - k0, 2f - k0, 0);
 
 		var bars = new List<Vertex2D>();
 		float width = 24;
 		float k3 = Projectile.ai[1] / 60f;
 		if (Projectile.ai[1] > 0)
+		{
 			width *= k3;
+		}
+
 		width *= (k0 / 1.8f + 0.2f) / (Projectile.ai[0] + 3) * 3.5f * k2;
 		int TrueL = 0;
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
 
 			TrueL++;
 		}
@@ -91,7 +102,9 @@ public class GlowStar : ModProjectile
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
 
 			var normalDir = Projectile.oldPos[i - 1] - Projectile.oldPos[i];
 			normalDir = Vector2.Normalize(new Vector2(-normalDir.Y, normalDir.X));
@@ -118,7 +131,10 @@ public class GlowStar : ModProjectile
 		Texture2D t = Commons.ModAsset.Trail_2.Value;
 		Main.graphics.GraphicsDevice.Textures[0] = t;
 		if (bars.Count > 3)
+		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
+		}
+
 		Texture2D dark = ModAsset.BlueFlameDark.Value;
 		Texture2D Light = ModAsset.GlowStar.Value;
 		float scale = (k0 / 1.8f + 0.2f) / (Projectile.ai[0] + 3) * k2;

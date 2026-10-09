@@ -37,7 +37,9 @@ internal class DarkFan : ModProjectile
 		if (target.active && !target.dontTakeDamage && flag && (target.aiStyle != 112 || target.ai[2] <= 1f))
 		{
 			if (target.active)
+			{
 				Main.player[Projectile.owner].MinionAttackTargetNPC = target.whoAmI;
+			}
 		}
 		target.AddBuff(ModContent.BuffType<OnMoth>(), 300);
 
@@ -60,7 +62,10 @@ internal class DarkFan : ModProjectile
 			Vector2 vc = -(new Vector2(Main.mouseX, Main.mouseY) - player.Center + Main.screenPosition);
 			Prot = (float)Math.Atan2(vc.Y, vc.X);
 			if (Pdir == 1)
+			{
 				Prot += (float)Math.PI;
+			}
+
 			Dir = true;
 		}
 		Vector2 v0 = v_1.RotatedBy(1.6 / 170d * Math.PI * (200 - Projectile.timeLeft));
@@ -84,7 +89,9 @@ internal class DarkFan : ModProjectile
 			if (Projectile.timeLeft % 2 == 0)
 			{
 				if (Projectile.extraUpdates > 1)
+				{
 					Projectile.extraUpdates--;
+				}
 			}
 		}
 		else
@@ -92,7 +99,9 @@ internal class DarkFan : ModProjectile
 			if (Projectile.timeLeft % 4 == 0)
 			{
 				if (Projectile.extraUpdates < 9)
+				{
 					Projectile.extraUpdates++;
+				}
 			}
 		}
 		if (Projectile.timeLeft == 32 && !ExtraKnife)
@@ -102,7 +111,9 @@ internal class DarkFan : ModProjectile
 		}
 		int frequency = 270 / (2 + player.maxMinions);
 		if (Projectile.timeLeft % frequency == 0)
+		{
 			Projectile.NewProjectile(Terraria.Entity.InheritSource(Projectile), player.Center, (v1 + new Vector2(29, 29)) / 8f, ModContent.ProjectileType<GlowingButterfly>(), Projectile.damage / 3 * 2, Projectile.knockBack, player.whoAmI, Main.rand.Next(2), 0f);
+		}
 	}
 
 	public override bool PreDraw(ref Color lightColor)
@@ -128,7 +139,10 @@ internal class DarkFan : ModProjectile
 					float Rot = (float)(Math.Atan2(v5.Y, v5.X) + Math.PI / 4d * Pdir + Math.PI * (1 - Pdir) / 2d);
 					SpriteEffects S = SpriteEffects.None;
 					if (Pdir == -1)
+					{
 						S = SpriteEffects.FlipHorizontally;
+					}
+
 					Main.spriteBatch.Draw(t, drawPos, null, color2, Rot, drawOrigin, Projectile.scale * 1.5f, S, 0f);
 					if (g000 < 4)
 					{
@@ -165,7 +179,9 @@ internal class DarkFan : ModProjectile
 					}
 					g000 += 1;
 					if (g000 >= 5)
+					{
 						break;
+					}
 				}
 			}
 		}
@@ -175,7 +191,9 @@ internal class DarkFan : ModProjectile
 			for (int k = 0; k < Projectile.oldPos.Length; k++)
 			{
 				if (Projectile.oldPos[k] == Vector2.Zero)
+				{
 					break;
+				}
 
 				if (k % 10 == 0)
 				{
@@ -190,7 +208,10 @@ internal class DarkFan : ModProjectile
 					float Rot = (float)(Math.Atan2(v5.Y, v5.X) + Math.PI / 4d * Pdir + Math.PI * (1 - Pdir) / 2d);
 					SpriteEffects S = SpriteEffects.None;
 					if (Pdir == -1)
+					{
 						S = SpriteEffects.FlipHorizontally;
+					}
+
 					Main.spriteBatch.Draw(t, drawPos, null, color2, Rot, drawOrigin, Projectile.scale * 1.5f, S, 0f);
 					if (g000 < 4)
 					{
@@ -227,7 +248,9 @@ internal class DarkFan : ModProjectile
 					}
 					g000 += 1;
 					if (g000 >= 5)
+					{
 						break;
+					}
 				}
 			}
 		}
@@ -249,7 +272,10 @@ internal class DarkFan : ModProjectile
 		for (int ad = 0; ad < 5; ad++)
 		{
 			if (vFanP[ad * 3] == Vector2.Zero)
+			{
 				break;
+			}
+
 			if (ad == 0)
 			{
 				Vx.Add(new Vertex2D(vFanP[ad * 3 + 0], ADc[ad * 3 + 0], new Vector3(30f / 88f, 51f / 88f, 0)));
@@ -287,7 +313,10 @@ internal class DarkFan : ModProjectile
 		for (int ad = 0; ad < 5; ad++)
 		{
 			if (vFanP[ad * 3] == Vector2.Zero)
+			{
 				break;
+			}
+
 			if (ad == 0)
 			{
 				Vx.Add(new Vertex2D(vFanP[ad * 3 + 0], new Color(255, 255, 255, 0), new Vector3(30f / 88f, 51f / 88f, 0)));

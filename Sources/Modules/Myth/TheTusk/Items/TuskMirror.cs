@@ -26,7 +26,9 @@ public class TuskMirror : ModItem
 			else
 			{
 				if (!SubworldSystem.Enter<TuskWorld>())
+				{
 					Main.NewText("Fail!");
+				}
 			}
 		}
 		return base.UseItem(player);

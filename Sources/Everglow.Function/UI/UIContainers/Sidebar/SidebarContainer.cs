@@ -52,9 +52,14 @@ namespace Everglow.Commons.UI.UIContainers.Sidebar
 			image.Events.OnUpdate += (element, gt) =>
 			{
 				if (mainPanel.Info.TotalLocation.X - mainPanel.Info.TotalSize.X < 4f)
+				{
 					((UIImage)element).SpriteEffects = SpriteEffects.None;
+				}
+
 				if (mainPanel.Info.TotalLocation.X < 2f && mainPanel.Info.TotalLocation.X > -2f)
+				{
 					((UIImage)element).SpriteEffects = SpriteEffects.FlipHorizontally;
+				}
 			};
 			image.Events.OnLeftClick += element =>
 			{

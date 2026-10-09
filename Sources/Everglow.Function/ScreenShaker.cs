@@ -17,7 +17,9 @@ public class ScreenShaker : ModPlayer
 			DirFlyCamPos -= 1;
 			FlyCamPosition2 = new Vector2(Main.rand.NextFloat(-16 * DirFlyCamPosStrength, 16 * DirFlyCamPosStrength), Main.rand.Next(-16, 16));
 			if (DirFlyCamPos == 1)
+			{
 				FlyCamPosition2 = Vector2.Zero;
+			}
 		}
 		else
 		{
@@ -29,7 +31,9 @@ public class ScreenShaker : ModPlayer
 			MinaFlyCamPos -= 1;
 			FlyCamPosition2 = new Vector2(Main.rand.NextFloat(-4 * DirFlyCamPosStrength, 4 * DirFlyCamPosStrength), Main.rand.NextFloat(-4 * DirFlyCamPosStrength, 4 * DirFlyCamPosStrength));
 			if (MinaFlyCamPos == 1)
+			{
 				FlyCamPosition2 = Vector2.Zero;
+			}
 		}
 		else
 		{

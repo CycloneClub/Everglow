@@ -195,7 +195,9 @@ public class VFXManager : IVFXManager
 			var pipelineIndex = innerVisuals.Index;
 			var visibles = innerVisuals.Where(v => v.Visible && v.Active);
 			if (!visibles.Any())
+			{
 				continue;
+			}
 
 			if (Ins.VisualQuality.High)
 			{
@@ -272,7 +274,10 @@ public class VFXManager : IVFXManager
 	public int GetOrCreatePipeline(Type pipelineType)
 	{
 		if (pipelineTypes.Contains(pipelineType))
+		{
 			return pipelineTypes.IndexOf(pipelineType);
+		}
+
 		pipelineTypes.Add(pipelineType);
 		var pipeline = (IPipeline)Activator.CreateInstance(pipelineType);
 		pipeline.Load();
@@ -356,7 +361,9 @@ public class VFXManager : IVFXManager
 				foreach (var visual in list)
 				{
 					if (visual.Active)
+					{
 						visual.Update();
+					}
 				}
 			}
 		}
@@ -370,7 +377,10 @@ public class VFXManager : IVFXManager
 	private IVisualCollection GetOrAddCollection(CodeLayer layer, PipelineIndex index, bool first = true)
 	{
 		if (lookup.TryGetValue((layer, index), out var collection))
+		{
 			return collection;
+		}
+
 		collection = first ? new VisualCollection(index) : new SingleVisual(index);
 		if (index.next == null)
 		{
@@ -429,13 +439,17 @@ public class VFXManager : IVFXManager
 		public void Collect()
 		{
 			if (!visual.Active)
+			{
 				visual = null;
+			}
 		}
 
 		public IEnumerator<IVisual> GetEnumerator()
 		{
 			if (visual != null)
+			{
 				yield return visual;
+			}
 
 			yield break;
 		}
@@ -472,7 +486,10 @@ public class VFXManager : IVFXManager
 		public void Add(IVisual visual)
 		{
 			if (visuals.Count % FLUSH_COUNT == 0)
+			{
 				Collect();
+			}
+
 			_ = visuals.Add(visual);
 		}
 
@@ -502,7 +519,10 @@ public class VFXManager : IVFXManager
 			public override int Compare(IVisual x, IVisual y)
 			{
 				if (x == y)
+				{
 					return 0;
+				}
+
 				var diff = x.VisualType - y.VisualType;
 				return diff == 0 ? x.GetHashCode() - y.GetHashCode() : diff;
 			}

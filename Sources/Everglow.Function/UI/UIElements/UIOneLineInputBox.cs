@@ -27,7 +27,9 @@ namespace Everglow.Commons.UI.UIElements
 			set
 			{
 				if (_imeEnable)
+				{
 					_cursor = value;
+				}
 			}
 		}
 
@@ -89,7 +91,10 @@ namespace Everglow.Commons.UI.UIElements
 		{
 			EnableIME();
 			if (Text.Length == 0)
+			{
 				return;
+			}
+
 			float touchLength = Main.mouseX - Info.TotalLocation.X;
 			if (touchLength < Font.MeasureString(Text[0].ToString()).X / 2f)
 			{
@@ -129,7 +134,10 @@ namespace Everglow.Commons.UI.UIElements
 		public void EnableIME()
 		{
 			if (_imeEnable)
+			{
 				return;
+			}
+
 			_imeEnable = true;
 			_hideCursor = false;
 			_timer = 0f;
@@ -139,7 +147,10 @@ namespace Everglow.Commons.UI.UIElements
 		public void DisableIME()
 		{
 			if (!_imeEnable)
+			{
 				return;
+			}
+
 			_imeEnable = false;
 			_hideCursor = true;
 			_timer = 0f;
@@ -218,7 +229,9 @@ namespace Everglow.Commons.UI.UIElements
 				if (!_hideCursor)
 				{
 					if (PersetSym)
+					{
 						sb.DrawString(Font, SYM, Info.TotalLocation + offset, TextColor);
+					}
 					else
 						sb.Draw(TextureAssets.MagicPixel.Value, new Rectangle((int)(Info.TotalLocation.X + offset.X),
 							(int)(Info.TotalLocation.Y + offset.Y), (int)SymSize.X, (int)SymSize.Y), TextColor);
@@ -244,20 +257,28 @@ namespace Everglow.Commons.UI.UIElements
 				Text = input + nextHalf;
 				Cursor += input.Length - lastHalf.Length;
 				if (input != lastHalf)
+				{
 					OnTextChange?.Invoke(this, Text);
+				}
 
 				if (Platform.Get<IImeService>().CandidateCount == 0)
 				{
 					if (left.IsKeyDown())
 					{
 						if (Cursor > 0)
+						{
 							Cursor--;
+						}
+
 						left.ResetCoolDown();
 					}
 					if (right.IsKeyDown())
 					{
 						if (Cursor < Text.Length)
+						{
 							Cursor++;
+						}
+
 						right.ResetCoolDown();
 					}
 					if (enter.IsKeyDown())

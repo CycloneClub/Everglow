@@ -74,7 +74,10 @@ public class ThunderBallToNPC : ModProjectile
 			{
 				Vector2 WholeLeng = Main.projectile[(int)Projectile.ai[0]].Center - VStart;
 				if (WholeLeng.Length() < 4)
+				{
 					break;
+				}
+
 				var NDpos = Vector2.Normalize(Main.projectile[(int)Projectile.ai[0]].Center - VStart);
 				Vector2 vDp = NDpos.RotatedBy(Math.PI / 2d);
 				var normalDir = Vector2.Normalize(vDp);
@@ -85,7 +88,10 @@ public class ThunderBallToNPC : ModProjectile
 				var w = MathHelper.Lerp(1f, 0.05f, 0.5f);
 				Vector2 va = Vector2.Zero;
 				if (a > 1)
+				{
 					va = new Vector2(0, 1).RotatedBy(a / 4d * Math.PI);
+				}
+
 				bars.Add(new Vertex2D(VStart + normalDir * width + va, color, new Vector3(factor, 1, w)));
 				bars.Add(new Vertex2D(VStart + normalDir * -width + va, color, new Vector3(factor, 0, w)));
 			}

@@ -32,7 +32,10 @@ public class DarkGlimmeringRods : ModNPC
 	{
 		YggdrasilTownBiome YggdrasilTownBiome = ModContent.GetInstance<YggdrasilTownBiome>();
 		if (!YggdrasilTownBiome.IsBiomeActive(Main.LocalPlayer))
+		{
 			return 0f;
+		}
+
 		return 3f;
 	}
 	public int BodyLength = 20;
@@ -108,7 +111,10 @@ public class DarkGlimmeringRods : ModNPC
 		Main.graphics.GraphicsDevice.Textures[0] = mainTex;
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		if (bars.Count > 3)
+		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, bars.ToArray(), 0, bars.Count / 3);
+		}
+
 		spriteBatch.End();
 		spriteBatch.Begin(sBS);
 		return false;

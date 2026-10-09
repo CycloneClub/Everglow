@@ -31,7 +31,9 @@ public class ChineseStyleFloorLamp : ModTile
 	public override void NearbyEffects(int i, int j, bool closer)
 	{
 		if (Main.tile[i, j].TileFrameX < 40 && Main.tile[i, j].TileFrameY < 40)
+		{
 			Lighting.AddLight(new Vector2(i * 16, j * 16), new Vector3(1f, 0.8f, 0.5f));
+		}
 	}
 	public override void NumDust(int i, int j, bool fail, ref int num)
 	{
@@ -51,7 +53,9 @@ public class ChineseStyleFloorLamp : ModTile
 					Main.tile[k, l].TileFrameX -= 48;
 				}
 				if (Wiring.running)
+				{
 					Wiring.SkipWire(k, l);
+				}
 			}
 			else
 			{
@@ -69,7 +73,9 @@ public class ChineseStyleFloorLamp : ModTile
 					Main.tile[k, l].TileFrameX -= 48;
 				}
 				if (Wiring.running)
+				{
 					Wiring.SkipWire(k, l);
+				}
 			}
 			else
 			{

@@ -13,21 +13,34 @@ public class GlowBluePedal : ModDust
 	public override bool Update(Dust dust)
 	{
 		if (dust.velocity.Y > -0.12f)
+		{
 			dust.velocity.Y += 0.01f;
+		}
+
 		if (dust.velocity.Y < -0.3f)
+		{
 			dust.velocity.Y *= 0.98f;
+		}
+
 		dust.rotation += Main.rand.NextFloat(-0.17f, 0.17f);
 		dust.velocity.X += Main.rand.NextFloat(-0.07f, 0.07f) + Main.windSpeedCurrent / 30f;
 		dust.velocity.Y += Main.rand.NextFloat(-0.01f, 0.03f);
 		if (Math.Abs(dust.velocity.X) > 1.7f)
+		{
 			dust.velocity.X *= 0.98f;
+		}
+
 		dust.position += dust.velocity;
 
 		if (dust.alpha > 245)
+		{
 			dust.active = false;
+		}
 
 		if (dust.scale < 0.1f)
+		{
 			dust.active = false;
+		}
 
 		if (Collision.SolidCollision(dust.position - Vector2.One * 5f, 10, 10) && dust.fadeIn == 0f)
 		{

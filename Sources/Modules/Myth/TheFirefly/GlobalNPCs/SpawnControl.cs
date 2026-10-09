@@ -11,7 +11,9 @@ public class SpawnControl : GlobalNPC
 		{
 			// 生成位置在流萤地形内的原版 NPC 禁止生成。
 			if (!CanSpawnToFirefly(kv.Key, spawnInfo))
+			{
 				pool.Remove(kv.Key);
+			}
 		}
 	}
 

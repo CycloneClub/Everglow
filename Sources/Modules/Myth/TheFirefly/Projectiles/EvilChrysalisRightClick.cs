@@ -26,7 +26,9 @@ internal class EvilChrysalisRightClick : ModProjectile
 		Projectile.position = player.MountedCenter - new Vector2(25, 25);
 		player.heldProj = Projectile.whoAmI;
 		if (Main.mouseRight && player.statMana >= player.ownedProjectileCounts[ModContent.ProjectileType<GlowMoth>()])
+		{
 			Projectile.timeLeft = 5;
+		}
 	}
 
 	public override bool PreDraw(ref Color lightColor)

@@ -90,7 +90,10 @@ public class GlowMoth : ModProjectile
 		}
 		OldFrame[0] = Projectile.frame;
 		if (Math.Abs(Projectile.velocity.X) > 0.3f)
+		{
 			Projectile.spriteDirection = Projectile.velocity.X > 0 ? -1 : 1;
+		}
+
 		for (int i = 11; i > 0; i--)
 		{
 			OldFrame[i] = OldFrame[i - 1];
@@ -207,13 +210,17 @@ public class GlowMoth : ModProjectile
 			Projectile.velocity = (Projectile.velocity * 10f + v2 / v2.Length() * 9f) / 11f;
 			mothOwner.WhoSleepInPlayer[player.whoAmI] = -1;
 			if (Power >= 0.0125f)
+			{
 				Power -= 0.0003f;
+			}
 		}
 		if (!flag)
 		{
 			NoFindAnyEmeny();
 			if (Power <= 0.25f)
+			{
 				Power += 0.002f;
+			}
 		}
 	}
 
@@ -228,7 +235,9 @@ public class GlowMoth : ModProjectile
 					if ((p.Center - Projectile.Center).Length() < 300)
 					{
 						if (Power <= 0.25f)
+						{
 							Power += 0.001f;
+						}
 					}
 				}
 			}
@@ -242,13 +251,19 @@ public class GlowMoth : ModProjectile
 		// SleepInPlayer
 		Vector2 PlayerBody = player.TopLeft + player.fullRotationOrigin + new Vector2(-20 * player.direction, -32).RotatedBy(player.fullRotation);
 		if (player.mount._type == -1)
+		{
 			PlayerBody = player.Hitbox.Center() + new Vector2(-16 * player.direction, -0);
+		}
+
 		if (mothOwner.WhoSleepInPlayer[player.whoAmI] < 0/*此时没有飞停留在玩家身上*/)
 		{
 			Vector2 v = player.MountedCenter + ProduceFlyTrace(Projectile.ai[0]) - Projectile.Center;
 			Vector2 v1 = PlayerBody - Projectile.Center;
 			if (v1.Length() < 10)
+			{
 				mothOwner.WhoSleepInPlayer[player.whoAmI] = Projectile.whoAmI;
+			}
+
 			Projectile.velocity = (Projectile.velocity * 10f + v / v.Length() * 5f) / 11f;
 		}
 		else if (mothOwner.WhoSleepInPlayer[player.whoAmI] == Projectile.whoAmI/*停留在玩家身上的正是本蛾*/)
@@ -266,7 +281,9 @@ public class GlowMoth : ModProjectile
 
 			Projectile.velocity = (Projectile.velocity * 10f + v / v.Length() * 5f) / 11f;
 			if (!Main.projectile[mothOwner.WhoSleepInPlayer[player.whoAmI]].active || Main.projectile[mothOwner.WhoSleepInPlayer[player.whoAmI]].type != Projectile.type)
+			{
 				mothOwner.WhoSleepInPlayer[player.whoAmI] = -1;
+			}
 		}
 
 		// CheckSleepInPlayer
@@ -314,9 +331,14 @@ public class GlowMoth : ModProjectile
 		Player player = Main.player[Projectile.owner];
 		MothOwner mothOwner = player.GetModPlayer<MothOwner>();
 		if (player.ownedProjectileCounts[ModContent.ProjectileType<GlowMoth>()] == 1)
+		{
 			mothOwner.WhoSleepInPlayer[player.whoAmI] = -1;
+		}
+
 		if (mothOwner.WhoSleepInPlayer[player.whoAmI] == Projectile.whoAmI)
+		{
 			mothOwner.WhoSleepInPlayer[player.whoAmI] = -1;
+		}
 
 		if (timeLeft != 0)
 		{
@@ -341,7 +363,9 @@ public class GlowMoth : ModProjectile
 		for (int i = iStart; i < Length; i++)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
 
 			var texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
 			Texture2D Gtexture = ModAsset.GlowMothGlow.Value;
@@ -349,9 +373,15 @@ public class GlowMoth : ModProjectile
 			SpriteEffects sf = SpriteEffects.None;
 			float AddRotation = 0;
 			if (Projectile.spriteDirection == -1)
+			{
 				sf = SpriteEffects.FlipHorizontally;
+			}
+
 			if (player.gravDir == -1)
+			{
 				sf = SpriteEffects.FlipVertically;
+			}
+
 			if (Projectile.spriteDirection == -1 && player.gravDir == -1)
 			{
 				sf = SpriteEffects.None;
@@ -364,7 +394,10 @@ public class GlowMoth : ModProjectile
 
 			// Main.spriteBatch.Draw(texture, DrawPos, DrawRect, new Color(c0.R * kColor / 255f, c0.G * kColor / 255f, c0.B * kColor / 255f, kColor), OldRotation[i], Draworigin, Projectile.scale, sf, 0);
 			if (mothOwner.WhoSleepInPlayer[player.whoAmI] != Projectile.whoAmI)
+			{
 				Main.spriteBatch.Draw(Gtexture, DrawPos, DrawRect, new Color(kColor, kColor, kColor, 0), OldRotation[i] + AddRotation, Draworigin, Projectile.scale, sf, 0);
+			}
+
 			if (i == 0)
 			{
 				DrawRect = new Rectangle(0, Projectile.frame * Projectile.height, Projectile.width, Projectile.height);
@@ -391,7 +424,9 @@ internal class MothOwner : ModPlayer
 	public override void PostUpdate()
 	{
 		if (Player.ownedProjectileCounts[ModContent.ProjectileType<GlowMoth>()] == 0)
+		{
 			WhoSleepInPlayer[Player.whoAmI] = -1;
+		}
 		// Player.fullRotation = (float)(Main.time / 100d);
 	}
 }

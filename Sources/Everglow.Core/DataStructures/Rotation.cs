@@ -120,7 +120,10 @@ public struct Rotation
 		float dis = Math.Abs(start._radian - target._radian);
 		bool clockwise = dis < MathHelper.Pi;
 		if ((clockwise ? dis : MathHelper.TwoPi - dis) <= value)
+		{
 			return target;
+		}
+
 		return new Rotation(start._radian + value * (clockwise ^ start._radian > target._radian ? 1 : -1));
 	}
 
@@ -146,7 +149,10 @@ public struct Rotation
 	public static Rotation Lerp(Rotation from, Rotation to, float value)
 	{
 		if (Math.Abs(from._radian - to._radian) > MathHelper.Pi)
+		{
 			to._radian -= Math.Sign(to._radian) * MathHelper.TwoPi;
+		}
+
 		return from * (1 - value) + to * value;
 	}
 

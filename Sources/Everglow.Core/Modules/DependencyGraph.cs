@@ -68,7 +68,9 @@ public class DependencyGraph
 		for (int i = 0; i < m_types.Count; i++)
 		{
 			if (GetFanin(i) == 0)
+			{
 				queue.Enqueue(i);
+			}
 		}
 
 		while (queue.Count > 0)
@@ -85,13 +87,18 @@ public class DependencyGraph
 			{
 				m_dependencyFanin[v]--;
 				if (m_dependencyFanin[v] == 0)
+				{
 					queue.Enqueue(v);
+				}
 			}
 		}
 
 		// 如果依赖图出现环就直接报错加载失败
 		if (result.Count < m_types.Count)
+		{
 			throw new ArgumentException("Circular dependency detected, please remove the circle");
+		}
+
 		return result;
 	}
 

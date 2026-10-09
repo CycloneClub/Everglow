@@ -19,7 +19,9 @@ public class BlackSmog : ModDust
 		dust.velocity *= 0.95f;
 		float scale = dust.scale;
 		if (dust.scale < 0.25f)
+		{
 			dust.active = false;
+		}
 		// for(int i = 0; i < 200;i++)
 		// {
 		//    if((Main.npc[i].Center - dust.position).Length() < 10 && !Main.npc[i].dontTakeDamage && !Main.npc[i].friendly)

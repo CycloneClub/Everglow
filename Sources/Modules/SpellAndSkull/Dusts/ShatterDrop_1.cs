@@ -35,7 +35,9 @@ public class ShatterDrop_1 : ModDust
 			dust.velocity = v0;
 		}
 		if (dust.alpha > 254)
+		{
 			dust.active = false;
+		}
 
 		return false;
 	}

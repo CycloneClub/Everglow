@@ -22,7 +22,10 @@ internal class TimerIconDrawer : DrawerItem
 	public override void Draw(SpriteBatch sb)
 	{
 		if (!TryGetQuest(out QuestView quest) || quest.TimeLimit is not int timeLimit)
+		{
 			return;
+		}
+
 		var scissorRectangle = sb.GraphicsDevice.ScissorRectangle;
 		var overflowHiddenRasterizerState = new RasterizerState
 		{

@@ -38,7 +38,10 @@ public class MythrilFlare : ModDust
 			dust.velocity += new Vector2(0, 0.005f * dust.scale * dust.scale);
 		}
 		if (dust.scale < 0.15f)
+		{
 			dust.active = false;
+		}
+
 		return false;
 	}
 	public override Color? GetAlpha(Dust dust, Color lightColor)

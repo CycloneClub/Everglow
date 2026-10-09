@@ -28,10 +28,14 @@ public class CoroutineManager
 			var current = node.Value;
 			bool finished = false;
 			if (current != null)
+			{
 				finished = !current.MoveNext();
+			}
 
 			if (finished)
+			{
 				m_coroutines.Remove(node);
+			}
 
 			node = nextNode;
 		}

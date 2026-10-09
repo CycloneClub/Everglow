@@ -57,7 +57,10 @@ public class TuskBiomeSky : CustomSky
 				float width = MathHelper.Lerp(maxWidth, 0, factor);
 				width *= (float)timeleft / maxTimeleft;
 				if (sub)
+				{
 					width *= 0.5f;
+				}
+
 				Vector2 posV2 = nodes[i] + normalDir * width;
 				vertices.Add(new Vertex3D_2(new Vector3(posV2, pos.Z), new Vector3(factor, 1, w), c));
 				posV2 = nodes[i] - normalDir * width;
@@ -70,7 +73,10 @@ public class TuskBiomeSky : CustomSky
 			timeleft = maxTimeleft;
 			int counts = Main.rand.Next(15, 80);
 			if (sub)
+			{
 				counts = Main.rand.Next(5, 12);
+			}
+
 			var vec = new Vector2(pos.X, pos.Y);
 			for (int i = 0; i < counts; i++)
 			{
@@ -111,7 +117,9 @@ public class TuskBiomeSky : CustomSky
 					Main.ColorOfTheSkies = Color.Lerp(Main.ColorOfTheSkies, new Color(0.8f, 0.6f, 0.6f), 0.3f * a * lightning.timeleft / 60f); // 闪电背景颜色
 				}
 				if (lightning.timeleft <= 0)
+				{
 					lightnings.Remove(lightning);
+				}
 			}
 		}
 		for (int i = 0; i < lightnings.Count; i++)
@@ -119,7 +127,10 @@ public class TuskBiomeSky : CustomSky
 			RedLightning lightning = lightnings[i];
 			float alpha = 0;
 			if (lightning.pos.Z > 7000)
+			{
 				alpha = (lightning.pos.Z - 7000) / 10000f;
+			}
+
 			Vertex3D_2[] vertices = lightning.GetVertices(30, new Color(1, 1f - alpha, 1f - alpha, 0f));
 			Main.graphics.GraphicsDevice.Textures[0] = ModAsset.RedPoint.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, vertices, 0, vertices.Length - 2);
@@ -152,8 +163,9 @@ public class TuskBiomeSky : CustomSky
 					rock.velocity.Z += acc.Y;
 				}
 				if (rock.pos.Y < cloudCenter.Y - 100)
+				{
 					rocks.Remove(rock);
-
+				}
 			}
 		}
 		for (int i = 0; i < rocks.Count; i++)// Draw
@@ -166,7 +178,9 @@ public class TuskBiomeSky : CustomSky
 			{
 				float alpha = (cloudCenter.Y + 300 - rock.pos.Y) / 400f;
 				if (alpha > 0)
+				{
 					color *= 1 - alpha;
+				}
 			}
 
 			Texture2D tex = MythContent.QuickTexture("TheTusk/Backgrounds/Stone" + rock.style); // 贴图
@@ -322,9 +336,15 @@ public class TuskBiomeSky : CustomSky
 			var center = new Vector3(SkyVortex.X + 1000, SkyVortex.Y - 3250 + (float)Math.Pow(i, 1f) * 130, 6000); // 云的中心位置
 
 			if (i == 7)
+			{
 				CreateAndDrawLightning(center);
+			}
+
 			if (i == 9)
+			{
 				CreateAndDrawRocks(center + new Vector3(0, -400, 0));
+			}
+
 			for (int u = 0; u <= counts; u++)
 			{
 				var rot = Matrix.CreateRotationY((float)(1f / OneDevideRotaSpeed * Main.timeForVisualEffects + u * MathHelper.TwoPi / counts));
@@ -332,16 +352,24 @@ public class TuskBiomeSky : CustomSky
 
 				Color c = DrawC;
 				if (i == 9)
+				{
 					c *= 0.9f;
+				}
 
 				if (i == 8)
+				{
 					c *= 0.68f;
+				}
 
 				if (i == 7)
+				{
 					c *= 0.7f;
+				}
 
 				if (i == 6)
+				{
 					c *= 0.6f;
+				}
 
 				float n = 0.5f;
 				int storey = 9 - i;
@@ -396,7 +424,9 @@ public class TuskBiomeSky : CustomSky
 			return;
 		}
 		if (!skyActive && opacity > 0f)
+		{
 			opacity -= 0.02f;
+		}
 	}
 	public override float GetCloudAlpha()
 	{

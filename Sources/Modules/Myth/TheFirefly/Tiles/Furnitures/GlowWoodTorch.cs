@@ -45,7 +45,9 @@ public class GlowWoodTorch : ModTile
 		TileObjectData.addTile(Type);
 
 		if (!Main.dedServ)
+		{
 			flameTexture = ModContent.Request<Texture2D>("Everglow/Myth/TheFirefly/Tiles/Furnitures/GlowWoodTorch_Flame");
+		}
 
 		LocalizedText name = CreateMapEntryName();
 		AddMapEntry(new Color(69, 36, 78), name);
@@ -98,7 +100,9 @@ public class GlowWoodTorch : ModTile
 			offsetY = 2;
 
 			if (WorldGen.SolidTile(i - 1, j + 1) || WorldGen.SolidTile(i + 1, j + 1))
+			{
 				offsetY = 4;
+			}
 		}
 	}
 
@@ -113,13 +117,17 @@ public class GlowWoodTorch : ModTile
 			offsetY = 2;
 
 			if (WorldGen.SolidTile(i - 1, j + 1) || WorldGen.SolidTile(i + 1, j + 1))
+			{
 				offsetY = 4;
+			}
 		}
 
 		var zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
 
 		if (Main.drawToScreen)
+		{
 			zero = Vector2.Zero;
+		}
 
 		ulong randSeed = Main.TileFrameSeed ^ (ulong)((long)j << 32 | (uint)i); // Don't remove any casts.
 		var color = new Color(55, 5, 255, 0);

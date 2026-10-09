@@ -35,10 +35,16 @@ class PinkFlame0Little : ModProjectile
 			Projectile.velocity *= 0.99f;
 		}
 		if (Projectile.timeLeft < 60f)
+		{
 			ka *= 0.97f;
+		}
+
 		Lighting.AddLight(Projectile.Center, (byte)(color0.R * ka) / 300f, (byte)(color0.G * ka) / 300f, (byte)(color0.B * ka) / 300f);
 		if (Projectile.timeLeft < 60)
+		{
 			Projectile.scale *= 0.97f;
+		}
+
 		color0.R = (byte)(color0.R * 0.94f + Aimcolor.R * 0.06f);
 		color0.G = (byte)(color0.G * 0.94f + Aimcolor.G * 0.06f);
 		color0.B = (byte)(color0.B * 0.94f + Aimcolor.B * 0.06f);
@@ -70,18 +76,27 @@ class PinkFlame0Little : ModProjectile
 		var bars = new List<Vertex2D>();
 		float width = 20;
 		if (Projectile.timeLeft < 60)
+		{
 			width = Projectile.timeLeft / 3f;
+		}
+
 		TrueL = 0;
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
+
 			TrueL++;
 		}
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
+
 			var normalDir = Projectile.oldPos[i - 1] - Projectile.oldPos[i];
 			normalDir = Vector2.Normalize(new Vector2(-normalDir.Y, normalDir.X));
 

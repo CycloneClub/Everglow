@@ -83,7 +83,9 @@ internal class BoneFeatherMagicArray : VisualProjectile
 		{
 			timer--;
 			if (timer < 0)
+			{
 				Projectile.Kill();
+			}
 		}
 
 		Projectile.rotation = player.fullRotation;

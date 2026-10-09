@@ -35,7 +35,10 @@ internal class TraillingStar : Star
 
 			float a = 0.7f;
 			if (f > 0.5f)
+			{
 				a *= 1 - f;
+			}
+
 			vertices.Add(new(oldPos[i] + w * v, c * a, new Vector3(f, 0, 0)));
 			vertices.Add(new(oldPos[i] - w * v, c * a, new Vector3(f, 1, 0)));
 		}

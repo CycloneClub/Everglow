@@ -20,6 +20,8 @@ public class WalnutClip : ModItem
 		MythContentPlayer mplayer = player.GetModPlayer<MythContentPlayer>();
 		mplayer.CriticalDamage += 0.16f;
 		if (player.statLifeMax2 / 2f > player.statLife)
+		{
 			player.GetDamage(DamageClass.Generic) *= (player.statLifeMax2 / 2f - player.statLife) / 400f + 1;
+		}
 	}
 }

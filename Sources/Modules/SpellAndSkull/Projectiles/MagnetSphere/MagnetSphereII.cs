@@ -56,7 +56,9 @@ public class MagnetSphereII : ModProjectile
 								SoundEngine.PlaySound(SoundID.DD2_LightningBugZap, target.Center);
 								Projectile.penetrate--;
 								if (Projectile.penetrate < 0)
+								{
 									Projectile.Kill();
+								}
 							}
 						}
 					}
@@ -156,7 +158,10 @@ public class MagnetSphereII : ModProjectile
 		}
 		Projectile.penetrate -= 5;
 		if (Projectile.penetrate < 0)
+		{
 			Projectile.Kill();
+		}
+
 		int HitType = ModContent.ProjectileType<MagnetSphereHit>();
 		var p = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.One, HitType, (int)(Projectile.damage * 2f), Projectile.knockBack, Projectile.owner, 18, Projectile.rotation + Main.rand.NextFloat(6.283f));
 		p.CritChance = Projectile.CritChance;
@@ -166,13 +171,22 @@ public class MagnetSphereII : ModProjectile
 	{
 		Spark();
 		if (Projectile.velocity.X != oldVelocity.X)
+		{
 			Projectile.velocity.X = -oldVelocity.X;
+		}
+
 		if (Projectile.velocity.Y != oldVelocity.Y)
+		{
 			Projectile.velocity.Y = -oldVelocity.Y;
+		}
+
 		Projectile.velocity *= 0.98f;
 		Projectile.penetrate -= 5;
 		if (Projectile.penetrate < 0)
+		{
 			Projectile.Kill();
+		}
+
 		return false;
 	}
 }

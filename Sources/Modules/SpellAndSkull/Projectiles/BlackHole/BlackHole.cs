@@ -80,7 +80,10 @@ internal class BlackHole : ModProjectile
 		float MinDis = 2550 * Projectile.ai[0];
 		float MaxSpeed = 100f * Projectile.ai[0];
 		if (Projectile.timeLeft < 20f)
+		{
 			MaxSpeed = Projectile.timeLeft * 5f;
+		}
+
 		foreach (var target in Main.npc)
 		{
 			if (target.active)
@@ -88,9 +91,15 @@ internal class BlackHole : ModProjectile
 				if (!target.dontTakeDamage && !target.friendly)
 				{
 					if (target.type == NPCID.TargetDummy)
+					{
 						continue;
+					}
+
 					if (target.velocity.Length() <= 0.001f)
+					{
 						continue;
+					}
+
 					Vector2 ToTarget = target.Center - Projectile.Center;
 					float dis = ToTarget.Length();
 					if (dis < MinDis && ToTarget != Vector2.Zero)
@@ -100,13 +109,21 @@ internal class BlackHole : ModProjectile
 						mess = (float)Math.Sqrt(mess);
 						Vector2 Addvel = Vector2.Normalize(ToTarget) / mess / (dis + 10) * 40000f * (target.knockBackResist + 0.3f) * Projectile.ai[0];
 						if (!target.noGravity)
+						{
 							Addvel.Y *= 30f;
+						}
+
 						target.velocity -= Addvel;
 						float kSpeed = 1f;
 						if (dis < 100)
+						{
 							kSpeed = (dis + 100) / 200f;
+						}
+
 						if (target.velocity.Length() > MaxSpeed * kSpeed)
+						{
 							target.velocity *= MaxSpeed * kSpeed / target.velocity.Length();
+						}
 					}
 				}
 			}
@@ -122,19 +139,29 @@ internal class BlackHole : ModProjectile
 					if (dis < 45)
 					{
 						if (target.type is >= ItemID.CopperCoin and <= ItemID.PlatinumCoin or ItemID.Star or ItemID.Heart)
+						{
 							target.position = Main.player[Projectile.owner].Center;
+						}
 					}
 					if ((target.position - Main.player[Projectile.owner].Center).Length() < 75)
+					{
 						continue;
+					}
+
 					float mess = target.width * target.height;
 					mess = (float)Math.Sqrt(mess);
 					Vector2 Addvel = Vector2.Normalize(ToTarget) / mess / (dis + 10) * 20000f * Projectile.ai[0];
 					target.velocity -= Addvel;
 					float kSpeed = 1f;
 					if (dis < 100)
+					{
 						kSpeed = (dis + 100) / 200f;
+					}
+
 					if (target.velocity.Length() > MaxSpeed * kSpeed)
+					{
 						target.velocity *= MaxSpeed * kSpeed / target.velocity.Length();
+					}
 				}
 			}
 		}
@@ -152,9 +179,15 @@ internal class BlackHole : ModProjectile
 					target.velocity -= Addvel;
 					float kSpeed = 1f;
 					if (dis < 100)
+					{
 						kSpeed = (dis + 100) / 200f;
+					}
+
 					if (target.velocity.Length() > MaxSpeed * kSpeed)
+					{
 						target.velocity *= MaxSpeed * kSpeed / target.velocity.Length();
+					}
+
 					target.timeLeft -= 24;
 				}
 			}
@@ -173,9 +206,14 @@ internal class BlackHole : ModProjectile
 					target.velocity -= Addvel;
 					float kSpeed = 1f;
 					if (dis < 10)
+					{
 						kSpeed = (dis + 10) / 20f;
+					}
+
 					if (target.velocity.Length() > MaxSpeed * kSpeed)
+					{
 						target.velocity *= MaxSpeed * kSpeed / target.velocity.Length();
+					}
 				}
 			}
 		}

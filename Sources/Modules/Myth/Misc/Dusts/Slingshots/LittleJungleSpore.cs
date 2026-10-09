@@ -43,7 +43,10 @@ public class LittleJungleSpore : ModDust
 			dust.velocity = v0;
 		}
 		if (dust.scale < 0.01f)
+		{
 			dust.active = false;
+		}
+
 		return false;
 	}
 	public override Color? GetAlpha(Dust dust, Color lightColor)

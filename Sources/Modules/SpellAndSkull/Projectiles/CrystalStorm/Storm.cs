@@ -44,7 +44,9 @@ internal class Storm : ModProjectile
 		{
 			Intensity -= 5;
 			if (Intensity <= 0)
+			{
 				Projectile.Kill();
+			}
 		}
 		for (int j = 0; j < 4; j++)
 		{
@@ -53,7 +55,10 @@ internal class Storm : ModProjectile
 			float k1 = k0 * k0 * k0 * k0;
 			var v1 = new Vector2(Main.rand.NextFloat(-150f, 150f) / (k1 * 10f + 1f), -k1 * 200 + 10);
 			if (Collision.SolidCollision(Projectile.Center + v1, 1, 1))
+			{
 				continue;
+			}
+
 			var dust0 = Dust.NewDustDirect(Projectile.Center + v1, 0, 0, ModContent.DustType<Dusts.CrystalAppearStoppedByTileInAStorm>(), v0.X, v0.Y, 100, default, Main.rand.NextFloat(0.3f, 1.6f) * Math.Min(Intensity, 300) / 450f);
 			dust0.noGravity = true;
 			dust0.color.B = (byte)(v1.Length() / 2f);
@@ -81,7 +86,10 @@ internal class Storm : ModProjectile
 					if (!target.dontTakeDamage && !target.friendly && target.CanBeChasedBy() && target.knockBackResist > 0)
 					{
 						if (target.velocity.Length() <= 0.001f)
+						{
 							continue;
+						}
+
 						Vector2 ToTarget = target.Center - (Projectile.Center - new Vector2(0, 150));
 						float dis = ToTarget.Length();
 						if (dis < 800 && ToTarget != Vector2.Zero)
@@ -90,10 +98,15 @@ internal class Storm : ModProjectile
 							mess = (float)Math.Sqrt(mess);
 							Vector2 Addvel = Vector2.Normalize(ToTarget) / mess / (dis + 10) * 100f * target.knockBackResist * Intensity;
 							if (!target.noGravity)
+							{
 								Addvel.Y *= 3f;
+							}
+
 							target.velocity -= Addvel;
 							if (target.velocity.Length() > 10)
+							{
 								target.velocity *= 10 / target.velocity.Length();
+							}
 						}
 					}
 				}
@@ -109,14 +122,18 @@ internal class Storm : ModProjectile
 						if (dis < 45)
 						{
 							if (target.type is >= ItemID.CopperCoin and <= ItemID.PlatinumCoin or ItemID.Star or ItemID.Heart)
+							{
 								target.position = player.Center;
+							}
 						}
 						float mess = target.width * target.height;
 						mess = (float)Math.Sqrt(mess);
 						Vector2 Addvel = Vector2.Normalize(ToTarget) / mess / (dis + 10) * 50f * Intensity;
 						target.velocity -= Addvel;
 						if (target.velocity.Length() > 10)
+						{
 							target.velocity *= 10 / target.velocity.Length();
+						}
 					}
 				}
 			}
@@ -133,7 +150,10 @@ internal class Storm : ModProjectile
 						Vector2 Addvel = Vector2.Normalize(ToTarget) / mess / (dis + 10) * 100f * Intensity;
 						target.velocity -= Addvel;
 						if (target.velocity.Length() > 10)
+						{
 							target.velocity *= 10 / target.velocity.Length();
+						}
+
 						target.timeLeft -= 24;
 					}
 				}

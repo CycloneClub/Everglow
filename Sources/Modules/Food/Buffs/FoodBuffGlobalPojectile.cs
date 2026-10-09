@@ -16,12 +16,16 @@ public class FoodBuffGlobalPojectile : GlobalProjectile
 			if (player.GetModPlayer<FoodBuffModPlayer>().BlueHawaiiBuff)
 			{
 				if (projectile.owner == player.whoAmI)
+				{
 					projectile.velocity *= 1.67f;
+				}
 			}
 			if (player.GetModPlayer<FoodBuffModPlayer>().CantaloupeJellyBuff)
 			{
 				if (projectile.owner == player.whoAmI && projectile.penetrate >= 0)
+				{
 					projectile.penetrate++;
+				}
 			}
 
 		}
@@ -34,9 +38,15 @@ public class FoodBuffGlobalPojectile : GlobalProjectile
 			if (player.GetModPlayer<FoodBuffModPlayer>().CaramelPuddingBuff && CaramelPuddingBounce < 1 && projectile.tileCollide)
 			{
 				if (projectile.velocity.X != oldVelocity.X && Math.Abs(oldVelocity.X) > 1f)
+				{
 					projectile.velocity.X = oldVelocity.X * -0.9f;
+				}
+
 				if (projectile.velocity.Y != oldVelocity.Y && Math.Abs(oldVelocity.Y) > 1f)
+				{
 					projectile.velocity.Y = oldVelocity.Y * -0.9f;
+				}
+
 				CaramelPuddingBounce++;
 				return false;
 			}

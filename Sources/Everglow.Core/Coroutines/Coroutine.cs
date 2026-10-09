@@ -16,7 +16,9 @@ public class Coroutine : ICoroutine
 	public bool MoveNext()
 	{
 		if (m_enumerator.Count == 0)
+		{
 			return false;
+		}
 
 		bool canRunNext = m_lastInstruction == null || !m_lastInstruction.ShouldWait();
 
@@ -33,7 +35,9 @@ public class Coroutine : ICoroutine
 			{
 				m_enumerator.RemoveAt(m_enumerator.Count - 1);
 				if (m_enumerator.Count == 0)
+				{
 					return false;
+				}
 			}
 
 			var instruction = currentIE.Current;

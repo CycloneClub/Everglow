@@ -70,11 +70,15 @@ public class SummonedButterfly : ModNPC
 			NPC.dontTakeDamage = false;
 			timer++;
 			if (NPC.alpha > 0)
+			{
 				NPC.alpha -= 2;
+			}
 
 			NPC.ai[2] += 0.1f;
 			if (Vector2.Distance(NPC.Center, Owner.Center) > 80)
+			{
 				MoveTo(Owner.Center + NPC.ai[2].ToRotationVector2() * 200, 20, 20);
+			}
 
 			NPC.friendly = false;
 			CheckOwnerActive();
@@ -85,7 +89,9 @@ public class SummonedButterfly : ModNPC
 			NPC.dontTakeDamage = true;
 			timer++;
 			if (NPC.alpha < 120)
+			{
 				NPC.alpha += 2;
+			}
 
 			if (Vector2.Distance(NPC.Center, Owner.Center) > 300)
 			{
@@ -196,7 +202,10 @@ public class SummonedButterfly : ModNPC
 				NPC.localAI[0] = MathHelper.Lerp(NPC.localAI[0], -60, 0.05f);
 			}
 			if (timer == 160)
+			{
 				NPC.velocity = NPC.ai[2].ToRotationVector2() * 30;
+			}
+
 			if (timer == 220)
 			{
 				NPC.velocity *= 0.5f;
@@ -205,7 +214,9 @@ public class SummonedButterfly : ModNPC
 				NPC.netUpdate2 = true;
 			}
 			if (timer > 240)
+			{
 				timer = 0;
+			}
 		}
 		if (NPC.ai[0] == 3)// 剑
 		{
@@ -289,7 +300,10 @@ public class SummonedButterfly : ModNPC
 				NPC.localAI[0] = MathHelper.Lerp(NPC.localAI[0], -70, 0.05f);
 			}
 			if (timer == 160)
+			{
 				NPC.velocity = NPC.ai[2].ToRotationVector2() * 40;
+			}
+
 			if (timer == 200)
 			{
 				NPC.velocity = Main.rand.NextVector2Unit() * Main.rand.Next(2, 10);
@@ -310,10 +324,14 @@ public class SummonedButterfly : ModNPC
 	public override void FindFrame(int frameHeight)
 	{
 		if (NPC.frame.Y > 102)
+		{
 			NPC.frame.Y = 0;
+		}
 
 		if (timer % 10 == 0)
+		{
 			NPC.frame.Y += 34;
+		}
 
 		if (timer % 16 == 0 && NPC.alpha < 20)
 		{

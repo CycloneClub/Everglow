@@ -34,7 +34,10 @@ public class BlackCorruptRain3Friendly : ModProjectile
 	public override void AI()
 	{
 		if (Projectile.velocity.Length() < 5f)
+		{
 			Projectile.velocity *= 1.018f;
+		}
+
 		Lighting.AddLight(Projectile.Center, 0, 0.4f, 0.9f);
 	}
 
@@ -43,7 +46,10 @@ public class BlackCorruptRain3Friendly : ModProjectile
 		Texture2D t = Commons.ModAsset.Trail_2.Value;
 		float width = 20;
 		if (Projectile.timeLeft < 120)
+		{
 			width = Projectile.timeLeft / 6f;
+		}
+
 		Ins.Batch.Begin();
 		DrawTexCircle_VFXBatch(Ins.Batch, 30 + 7 * MathF.Sin((float)(Main.timeForVisualEffects / 3f + Projectile.ai[0])), width, new Color(0, 150, 255, 0) * 0.4f, Projectile.Center - Main.screenPosition, t, (float)(Main.timeForVisualEffects / 3.8f + Projectile.ai[0]));
 		Ins.Batch.End();
@@ -69,6 +75,8 @@ public class BlackCorruptRain3Friendly : ModProjectile
 		circle.Add(new Vertex2D(center + new Vector2(0, Math.Max(radius - width, 0)).RotatedBy(addRot), color, new Vector3(0, 0.2f, 0)));
 		circle.Add(new Vertex2D(center + new Vector2(0, radius).RotatedBy(addRot), color, new Vector3(0, 0.8f, 0)));
 		if (circle.Count > 2)
+		{
 			spriteBatch.Draw(tex, circle, PrimitiveType.TriangleStrip);
+		}
 	}
 }

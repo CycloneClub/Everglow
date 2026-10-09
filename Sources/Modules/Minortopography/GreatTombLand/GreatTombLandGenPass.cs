@@ -121,7 +121,9 @@ public class GreatTombLand : ModSystem
 			for (int y = -128; y < 129; y += 8)
 			{
 				if (Array.Exists(MustHaveTileType, Ttype => Ttype == Main.tile[x + PoX, y + PoY].TileType))
+				{
 					CrashCount++;
+				}
 			}
 		}
 		return CrashCount;
@@ -145,7 +147,10 @@ public class GreatTombLand : ModSystem
 				{
 					AimPoint.Add(new Point16(i, j));
 					if (j < Jmin)
+					{
 						Jmin = Main.maxTilesY - 300;
+					}
+
 					break;
 				}
 			}
@@ -154,7 +159,9 @@ public class GreatTombLand : ModSystem
 		foreach (Point16 point in AimPoint)
 		{
 			if (point.Y <= Jmin + 30)
+			{
 				newAimPoint.Add(point);
+			}
 		}
 		return newAimPoint[Main.rand.Next(newAimPoint.Count)];
 	}

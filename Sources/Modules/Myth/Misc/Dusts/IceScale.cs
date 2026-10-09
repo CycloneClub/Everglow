@@ -19,7 +19,9 @@ public class IceScale : ModDust
 		dust.scale = (float)Math.Sin(dust.alpha / 255d * Math.PI) * dust.dustIndex / 300f;
 		Lighting.AddLight(dust.position, 0.0096f * dust.scale / 1.8f, 0.0955f * dust.scale / 1.8f, 0.4758f * dust.scale / 1.8f);
 		if (dust.alpha > 254)
+		{
 			dust.active = false;
+		}
 
 		return false;
 	}
@@ -58,7 +60,9 @@ public class IceScale2 : ModDust
 		dust.scale = (float)Math.Sin(dust.alpha / 255d * Math.PI) * dust.dustIndex / 300f;
 		Lighting.AddLight(dust.position, 0.0096f * dust.scale / 1.8f, 0.0955f * dust.scale / 1.8f, 0.4758f * dust.scale / 1.8f);
 		if (dust.alpha > 254)
+		{
 			dust.active = false;
+		}
 
 		return false;
 	}
@@ -97,7 +101,9 @@ public class IceScale3 : ModDust
 		dust.scale = (float)Math.Sin(dust.alpha / 255d * Math.PI) * dust.dustIndex / 300f;
 		Lighting.AddLight(dust.position, 0.0096f * dust.scale / 1.8f, 0.0955f * dust.scale / 1.8f, 0.4758f * dust.scale / 1.8f);
 		if (dust.alpha > 254)
+		{
 			dust.active = false;
+		}
 
 		return false;
 	}

@@ -71,23 +71,29 @@ internal class CrystalWindVFX : ShaderDraw
 			position += velocity;
 			oldPos.Add(position);
 			if (oldPos.Count > 30)
+			{
 				oldPos.RemoveAt(0);
+			}
+
 			timer++;
 			if (timer > maxTime)
+			{
 				Active = false;
+			}
 
 			float delC = 0.05f * (float)Math.Sin((maxTime - timer) / 40d * Math.PI);
 			Lighting.AddLight((int)(position.X / 16), (int)(position.Y / 16), 0.15f * delC, 0, 0.85f * delC);
 			if (Collision.SolidCollision(position, 0, 0))
+			{
 				Active = false;
-
-
-
+			}
 
 			if ((OldAimCenter - Main.projectile[(int)ai[2]].Center).Length() > 200 && OldAimCenter != Vector2.Zero)
 			{
 				if (timer < maxTime - 20)
+				{
 					timer += 5;
+				}
 			}
 			if (Main.projectile[(int)ai[2]].active && Main.projectile[(int)ai[2]].timeLeft > 200 && Main.projectile[(int)ai[2]].type == ModContent.ProjectileType<Storm>())
 			{
@@ -113,7 +119,10 @@ internal class CrystalWindVFX : ShaderDraw
 		float fx = timer / maxTime;
 		int len = pos.Length;
 		if (len <= 2)
+		{
 			return;
+		}
+
 		var bars = new Vertex2D[len * 2 - 1];
 		for (int i = 1; i < len; i++)
 		{

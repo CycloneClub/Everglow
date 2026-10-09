@@ -65,7 +65,10 @@ internal class GrayFlowLine : ShaderDraw
 			removePosition = 15;
 		}
 		if (oldPos.Count > removePosition)
+		{
 			oldPos.RemoveAt(0);
+		}
+
 		if (velocity.Length() > 4f)
 		{
 			velocity *= 0.93f;
@@ -84,18 +87,25 @@ internal class GrayFlowLine : ShaderDraw
 		}
 		timer++;
 		if (timer > maxTime)
+		{
 			ai[2] *= 0.95f;
+		}
+
 		velocity = velocity.RotatedBy(ai[1]);
 
 		for (int f = oldPos.Count - 1; f > 0; f--)
 		{
 			if (oldPos[f] != Vector2.Zero)
+			{
 				oldPos[f] += vsadd;
+			}
 		}
 		float delC = ai[2] * 0.05f * (float)Math.Sin((maxTime - timer) / 40d * Math.PI);
 		Lighting.AddLight((int)(position.X / 16), (int)(position.Y / 16), 0.45f * delC, 0.85f * delC, 0f);
 		if (ai[2] < 0.01)
+		{
 			Active = false;
+		}
 	}
 
 	public override void Draw()
@@ -104,7 +114,10 @@ internal class GrayFlowLine : ShaderDraw
 		float fx = timer / maxTime;
 		int len = pos.Length;
 		if (len <= 2)
+		{
 			return;
+		}
+
 		var bars = new Vertex2D[len * 2 - 1];
 		for (int i = 1; i < len; i++)
 		{

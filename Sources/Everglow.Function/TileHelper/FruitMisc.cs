@@ -28,7 +28,9 @@ public class ShakeTreeTweak
 		public override void OnSpawn(Item item, IEntitySource source)
 		{
 			if (_isShakingTree && source is EntitySource_ShakeTree)
+			{
 				_hasItemDropped = true;
+			}
 		}
 	}
 
@@ -66,11 +68,15 @@ public class ShakeTreeTweak
 			_isShakingTree = false;
 
 			if (WorldGen.numTreeShakes == WorldGen.maxTreeShakes || _hasItemDropped || treeShaken)
+			{
 				return;
+			}
 
 			TreeTypes treeType = WorldGen.GetTreeType(Main.tile[x, y].type);
 			if (treeType == TreeTypes.None)
+			{
 				return;
+			}
 
 			y--;
 			while (y > 10 && Main.tile[x, y].active() && TileID.Sets.IsShakeable[Main.tile[x, y].type])
@@ -80,11 +86,15 @@ public class ShakeTreeTweak
 
 			y++;
 			if (!WorldGen.IsTileALeafyTreeTop(x, y) || Collision.SolidTiles(x - 2, x + 2, y - 2, y + 2))
+			{
 				return;
+			}
 
 			int fruit = GetShakeTreeFruit(treeType);
 			if (fruit > -1)
+			{
 				Item.NewItem(WorldGen.GetItemSource_FromTreeShake(x, y), x * 16, y * 16, 16, 16, fruit);
+			}
 		};
 	}
 	public static int GetShakeTreeFruit(TreeTypes treeType)

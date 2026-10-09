@@ -31,6 +31,8 @@ public class FoodSatietyInfoDisplayplayer : ModPlayer
 	public override void UpdateEquips()
 	{
 		if (AccBloodGlucoseMonitor)
+		{
 			ShowCurrentSatiety = true;
+		}
 	}
 }

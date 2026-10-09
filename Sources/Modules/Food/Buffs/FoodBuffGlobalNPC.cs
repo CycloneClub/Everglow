@@ -46,7 +46,9 @@ public class FoodBuffGlobalNPC : GlobalNPC
 		{
 			var parentSource = source as EntitySource_Parent;
 			if (parentSource.Entity is NPC && (parentSource.Entity as NPC).boss && !npc.boss)
+			{
 				isservant = true;
+			}
 		}
 	}
 	public override void OnKill(NPC npc)

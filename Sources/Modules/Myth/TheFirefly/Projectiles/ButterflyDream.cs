@@ -43,7 +43,9 @@ public class ButterflyDream : ModProjectile
 			Projectile.spriteDirection = Projectile.velocity.X > 0 ? -1 : 1;
 			Projectile.velocity += new Vector2(0, 0.2f * Projectile.ai[0]);
 			if (Projectile.timeLeft == 600)
+			{
 				Projectile.frame = Main.rand.Next(4);
+			}
 
 			Projectile.velocity.Y *= 0.98f;
 			if (Projectile.timeLeft % 3 == 0)
@@ -56,7 +58,9 @@ public class ButterflyDream : ModProjectile
 		if (Projectile.ai[1] == 1)// 限制圈，ai0：npc
 		{
 			if (Projectile.timeLeft == 800)
+			{
 				Projectile.alpha = 200;
+			}
 
 			if (Projectile.timeLeft > 740)
 			{
@@ -87,16 +91,22 @@ public class ButterflyDream : ModProjectile
 		}
 
 		if (Projectile.frame > 3)
+		{
 			Projectile.frame = 0;
+		}
 
 		if (Projectile.timeLeft % 10 == 0)
+		{
 			Projectile.frame++;
+		}
 	}
 
 	public override bool ShouldUpdatePosition()
 	{
 		if (Projectile.ai[1] == 1)
+		{
 			return false;
+		}
 
 		return true;
 	}

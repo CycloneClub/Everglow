@@ -24,7 +24,9 @@ namespace Everglow.Commons.UI.UIElements
 			Events.OnLeftClick += element =>
 			{
 				if (CanDrag)
+				{
 					dragging = false;
+				}
 			};
 		}
 

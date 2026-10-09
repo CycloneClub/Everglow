@@ -20,7 +20,10 @@ namespace Everglow.Commons.UI.UIElements
 				var texts = Text.Split('\n');
 				int r = 0;
 				for (int i = 0; i < _cursorPosition.Y; i++)
+				{
 					r += texts[i].Length + 1;
+				}
+
 				return r + _cursorPosition.X;
 			}
 			set
@@ -78,20 +81,34 @@ namespace Everglow.Commons.UI.UIElements
 					v.Y--;
 				}
 				if (v.Y < 0)
+				{
 					v.Y = 0;
+				}
 				// while (v.Y < texts.Length && v.X > texts[v.Y].Length)
 				// {
 				//    v.X -= texts[v.Y].Length;
 				//    v.Y++;
 				// }
 				if (v.Y >= texts.Length)
+				{
 					v.Y = texts.Length - 1;
+				}
+
 				if (v.Y < 0)
+				{
 					v.Y = 0;
+				}
+
 				if (v.X > texts[v.Y].Length)
+				{
 					v.X = texts[v.Y].Length;
+				}
+
 				if (v.X < 0)
+				{
 					v.X = 0;
+				}
+
 				_cursorPosition = v;
 			}
 		}
@@ -151,7 +168,9 @@ namespace Everglow.Commons.UI.UIElements
 			Events.OnMouseHover += element =>
 			{
 				if (!Main.mouseLeft)
+				{
 					return;
+				}
 
 				isEnableIME = true;
 
@@ -168,11 +187,18 @@ namespace Everglow.Commons.UI.UIElements
 				for (int i = 0; i < texts.Length; i++)
 				{
 					if (mousePos.Y > LineYHight)
+					{
 						mousePos.Y -= LineYHight;
+					}
 					else
+					{
 						break;
+					}
+
 					if (cp.Y < texts.Length - 1)
+					{
 						cp.Y++;
+					}
 				}
 				var text = texts[cp.Y];
 				if (mousePos.X >= _font.MeasureString(text).X)
@@ -197,7 +223,9 @@ namespace Everglow.Commons.UI.UIElements
 		public override void Update(GameTime gt)
 		{
 			if (Main.mouseLeft && !ContainsPoint(Main.MouseScreen) && isEnableIME)
+			{
 				isEnableIME = false;
+			}
 
 			up.Update();
 			down.Update();
@@ -206,9 +234,13 @@ namespace Everglow.Commons.UI.UIElements
 			enter.Update();
 			base.Update(gt);
 			if (isEnableIME)
+			{
 				timer++;
+			}
 			else
+			{
 				timer = 14;
+			}
 		}
 
 		protected override void DrawChildren(SpriteBatch sb)
@@ -244,13 +276,24 @@ namespace Everglow.Commons.UI.UIElements
 							symHitboxMaxY = symHitBox.Y + symHitBox.Height;
 						}
 						if (hitboxMaxX < symHitboxMaxX)
+						{
 							offset.X -= symHitboxMaxX - hitboxMaxX;
+						}
+
 						if (hitboxMaxY < symHitboxMaxY)
+						{
 							offset.Y -= symHitboxMaxY - hitboxMaxY;
+						}
+
 						if (symHitBox.X < Info.HitBox.X)
+						{
 							offset.X += Info.HitBox.X - symHitBox.X;
+						}
+
 						if (symHitBox.Y < Info.HitBox.Y)
+						{
 							offset.Y += Info.HitBox.Y - symHitBox.Y;
+						}
 					}
 					sb.DrawString(_font, cursorSym, Info.Location + new Vector2(x - symOffsetX, offsetY) + offset, _color);
 				}
@@ -271,7 +314,10 @@ namespace Everglow.Commons.UI.UIElements
 				_text = input + remaining;
 				p.X += input.Length - crop.Length;
 				if (input != crop)
+				{
 					OnTextChange?.Invoke(this, _text);
+				}
+
 				if (Platform.Get<IImeService>().CandidateCount == 0)
 				{
 					if (up.IsKeyDown())

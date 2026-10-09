@@ -16,7 +16,10 @@ public class BlackFog : ModDust
 		dust.scale *= 0.995f;
 		dust.velocity.X = (float)(Math.Sin(Main.time / 30d + dust.frame.Y) * 0.3f * dust.scale);
 		if (dust.scale < 0.05f)
+		{
 			dust.active = false;
+		}
+
 		return false;
 	}
 	public override Color? GetAlpha(Dust dust, Color lightColor)

@@ -35,7 +35,9 @@ public class JungleSpore : ModDust
 			dust.velocity = v0;
 		}
 		if (dust.alpha > 254)
+		{
 			dust.active = false;
+		}
 
 		return false;
 	}

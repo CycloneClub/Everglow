@@ -67,21 +67,31 @@ internal class DarknessOfNightDust : ShaderDraw
 		velocity.Y += 0.045f;
 		oldPos.Add(position);
 		if (oldPos.Count > 15)
+		{
 			oldPos.RemoveAt(0);
+		}
+
 		timer++;
 		if (timer > maxTime)
+		{
 			Active = false;
+		}
+
 		velocity = velocity.RotatedBy(ai[1]);
 
 		for (int f = oldPos.Count - 1; f > 0; f--)
 		{
 			if (oldPos[f] != Vector2.Zero)
+			{
 				oldPos[f] += vsadd;
+			}
 		}
 		float delC = ai[2] * 0.05f * (float)Math.Sin((maxTime - timer) / maxTime * Math.PI);
 		Lighting.AddLight((int)(position.X / 16), (int)(position.Y / 16), 0.015f * delC, 0, 0.45f * delC);
 		if (Collision.SolidCollision(position, 0, 0))
+		{
 			Active = false;
+		}
 	}
 
 	public override void Draw()
@@ -90,7 +100,10 @@ internal class DarknessOfNightDust : ShaderDraw
 		float fx = timer / maxTime;
 		int len = pos.Length;
 		if (len <= 2)
+		{
 			return;
+		}
+
 		var bars = new Vertex2D[len * 2 - 1];
 		for (int i = 1; i < len; i++)
 		{
@@ -132,8 +145,9 @@ internal class DarknessOfNightWave : ShaderDraw
 		radius += ai[1] * ((maxTime - timer) / maxTime);
 		timer++;
 		if (timer > maxTime)
+		{
 			Active = false;
-
+		}
 
 		float delC = ai[2] * 0.05f * (float)Math.Sin((maxTime - timer) / maxTime * Math.PI);
 		Lighting.AddLight((int)(position.X / 16), (int)(position.Y / 16), 0.015f * delC, 0, 0.45f * delC);
@@ -144,7 +158,10 @@ internal class DarknessOfNightWave : ShaderDraw
 		float fx = timer / maxTime;
 		int len = (int)(radius / 3f);
 		if (len <= 2)
+		{
 			return;
+		}
+
 		var bars = new Vertex2D[len * 2 + 2];
 		for (int i = 0; i < len + 1; i++)
 		{

@@ -20,7 +20,10 @@ public class GlowSpore : ModDust
 		{
 			int type = dust.type;
 			if (Main.rand.Next(100) > 50)
+			{
 				type = ModContent.DustType<GlowSporeFlip>();
+			}
+
 			int r1 = Dust.NewDust(dust.position, 0, 0, type, 0, 0, 200, default, dust.scale * 0.75f);
 			Main.dust[r1].velocity = dust.velocity.RotatedBy(Main.rand.NextFloat(0.2f, 1.3f));
 			Main.dust[r1].noGravity = true;
@@ -30,19 +33,21 @@ public class GlowSpore : ModDust
 			// dust.active = false;
 		}
 		if (dust.scale < 0.01f)
+		{
 			dust.active = false;
+		}
 		/*if(Main.tile[(int)((dust.position.X + dust.velocity.X * 6) / 16f), (int)((dust.position.Y + dust.velocity.Y * 6) / 16f)].CollisionType == 0)
-            {
-                dust.velocity *= -1;
-            }
-            if (Main.tile[(int)((dust.position.X + dust.velocity.X * 6) / 16f), (int)((dust.position.Y + dust.velocity.Y * 6) / 16f)].CollisionType == 1)
-            {
-                dust.velocity.X *= -1;
-            }
-            if (Main.tile[(int)((dust.position.X + dust.velocity.X * 6) / 16f), (int)((dust.position.Y + dust.velocity.Y * 6) / 16f)].CollisionType == 2)
-            {
-                dust.velocity.Y *= -1;
-            }*/
+	{
+		dust.velocity *= -1;
+	}
+	if (Main.tile[(int)((dust.position.X + dust.velocity.X * 6) / 16f), (int)((dust.position.Y + dust.velocity.Y * 6) / 16f)].CollisionType == 1)
+	{
+		dust.velocity.X *= -1;
+	}
+	if (Main.tile[(int)((dust.position.X + dust.velocity.X * 6) / 16f), (int)((dust.position.Y + dust.velocity.Y * 6) / 16f)].CollisionType == 2)
+	{
+		dust.velocity.Y *= -1;
+	}*/
 		return false;
 	}
 	public override Color? GetAlpha(Dust dust, Color lightColor)

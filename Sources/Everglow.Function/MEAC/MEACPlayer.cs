@@ -6,6 +6,8 @@ public class MEACPlayer : ModPlayer
 	public override void PreUpdate()
 	{
 		if (isUsingMeleeProj)
+		{
 			Player.itemAnimation = 2;
+		}
 	}
 }

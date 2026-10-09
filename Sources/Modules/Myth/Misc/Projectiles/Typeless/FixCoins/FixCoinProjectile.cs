@@ -37,7 +37,9 @@ public abstract class FixCoinProjectile : ModProjectile
 		for (int i = 0; i < 5; i++)
 		{
 			if (IniV[i] == Vector2.Zero)
+			{
 				IniV[i] = new Vector2(0, Main.rand.NextFloat(2f, 4f)).RotatedByRandom(6.283);
+			}
 		}
 	}
 	public override void AI()
@@ -45,7 +47,9 @@ public abstract class FixCoinProjectile : ModProjectile
 		Projectile.rotation = 0;
 		Projectile.velocity *= 0.98f * Projectile.timeLeft / 150f;
 		if (Projectile.velocity.Length() > 0.3f)
+		{
 			Projectile.velocity.Y -= 0.75f * Projectile.timeLeft / 150f;
+		}
 
 		if (Projectile.timeLeft > 50 && Projectile.timeLeft < 120)
 			LightColorII += 1 / 70f;
@@ -153,7 +157,10 @@ public abstract class FixCoinProjectile : ModProjectile
 		// TODO:你的背包中没有饰品
 		string tex3 = "Please put at lease 1 accessory item in your inventory";
 		if (Language.ActiveCulture.Name == "zh-Hans")
+		{
 			tex3 = "你的背包中没有饰品";
+		}
+
 		Item.NewItem(null, Projectile.Center, ModContent.ItemType<Misc.FixCoins.FixCoinCrit1>());
 		CombatText.NewText(new Rectangle((int)player.Center.X - 10, (int)player.Center.Y - 10, 20, 20), Color.LightGray, tex3);
 	}
@@ -188,7 +195,10 @@ public abstract class FixCoinProjectile : ModProjectile
 			{
 				Vector2 v1 = player.Center - v0;
 				if (v1.Length() < 5)
+				{
 					break;
+				}
+
 				v1 /= v1.Length();
 				Vector2 v2 = v0;
 				v0 += Vi + v1 * 5;

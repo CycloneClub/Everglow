@@ -52,21 +52,44 @@ public class CyanVinePickaxe : ModItem
 		if (Main.LocalPlayer.HeldItem.type == ModContent.ItemType<CyanVinePickaxe>())
 		{
 			if (tileTarget.TileType == ModContent.TileType<StoneScaleWood>())
+			{
 				return 10;
+			}
+
 			if (tileTarget.TileType == ModContent.TileType<CyanVineOreLarge>())
+			{
 				return 30;
+			}
+
 			if (tileTarget.TileType == ModContent.TileType<CyanVineOreLargeUp>())
+			{
 				return 30;
+			}
+
 			if (tileTarget.TileType == ModContent.TileType<CyanVineOreMiddle>())
+			{
 				return 30;
+			}
+
 			if (tileTarget.TileType == ModContent.TileType<CyanVineOreSmall>())
+			{
 				return 30;
+			}
+
 			if (tileTarget.TileType == ModContent.TileType<CyanVineOreSmallUp>())
+			{
 				return 30;
+			}
+
 			if (tileTarget.TileType == ModContent.TileType<CyanVineOreTile>())
+			{
 				return 30;
+			}
+
 			if (tileTarget.TileType == ModContent.TileType<CyanVineStone>())
+			{
 				return 60;
+			}
 		}
 		return orig(self, x, y, pickPower, hitBufferIndex, tileTarget);
 	}

@@ -59,7 +59,10 @@ public class FilthyFragileDust : Visual
 		}
 		timer++;
 		if (timer > maxTime)
+		{
 			Active = false;
+		}
+
 		if (Collision.SolidCollision(position, 0, 0))
 		{
 			velocity *= -0.2f;

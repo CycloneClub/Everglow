@@ -46,7 +46,10 @@ public class CreamChocolateCupStaff : ModItem
 			return false;
 		}
 		if (player.ownedProjectileCounts[Item.shoot] < 1)
+		{
 			Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 0, 0);
+		}
+
 		return false;
 	}
 	public override bool CanUseItem(Player player)

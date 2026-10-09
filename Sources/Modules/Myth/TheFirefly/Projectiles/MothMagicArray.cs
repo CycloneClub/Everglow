@@ -38,7 +38,10 @@ public class MothMagicArray : ModProjectile
 				}
 			}
 			if (Projectile.localAI[0] % (AttackTime / 5) == 0)
+			{
 				player.statMana -= player.ownedProjectileCounts[ModContent.ProjectileType<GlowMoth>()];
+			}
+
 			Projectile.timeLeft = 20;
 		}
 		else
@@ -296,7 +299,10 @@ public class MothMagicArray : ModProjectile
 		{
 			Texture2D t = ModAsset.Wave.Value;
 			if (Black)
+			{
 				t = ModAsset.WaveBlack.Value;
+			}
+
 			Main.graphics.GraphicsDevice.Textures[0] = t;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, circle.ToArray(), 0, circle.Count - 2);
 		}

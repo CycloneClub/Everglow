@@ -252,7 +252,9 @@ public class GoldShield : ModProjectile, IWarpProjectile
 		if (Projectile.ai[0] > 0)
 		{
 			if (Projectile.ai[0] < 10)
+			{
 				glowStrength2 = (float)(-Math.Cos(Projectile.ai[0] / 5d * Math.PI) + 1) * 120f;
+			}
 		}
 
 
@@ -578,7 +580,9 @@ public class GoldShieldUIDrawer : ModSystem
 
 			ing.UI_ScreenAnchorX = Main.screenWidth - 800;
 			if (Player.ghost || Player.statLifeMax2 <= 0 || snapshot.AmountOfLifeHearts <= 0)
+			{
 				return;
+			}
 
 			int MaxGoldShieldDurability;
 			MaxGoldShieldDurability = (int)(Player.statLifeMax * 0.6f);
@@ -610,25 +614,35 @@ public class GoldShieldUIDrawer : ModSystem
 				{
 					num5 = 255;
 					if ((float)GoldShieldDurability == (float)i * UIDisplay_ShieldOnHeart)
+					{
 						flag = true;
+					}
 				}
 				else
 				{
 					float num7 = ((float)GoldShieldDurability - (float)(i - 1) * UIDisplay_ShieldOnHeart) / UIDisplay_ShieldOnHeart;
 					num5 = (int)(30f + 225f * num7);
 					if (num5 < 30)
+					{
 						num5 = 30;
+					}
 
 					num6 = num7 / 4f + 0.75f;
 					if ((double)num6 < 0.75)
+					{
 						num6 = 0.75f;
+					}
 
 					if (num7 > 0f)
+					{
 						flag = true;
+					}
 				}
 
 				if (flag)
+				{
 					num6 += Main.cursorScale - 1f;
+				}
 
 				int num8 = 0;
 				int num9 = 0;
@@ -724,9 +738,13 @@ public class GoldShieldUIDrawer : ModSystem
 			Color color = new Color(Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor);
 
 			if (Displayset.ConfigKey == "NewWithText")
+			{
 				_drawText = true;
+			}
 			else
+			{
 				_drawText = false;
+			}
 
 			Vector2 vector = new Vector2(Main.screenWidth - 300 + 4, 15f);
 			if (_drawText)
@@ -816,11 +834,17 @@ public class GoldShieldUIDrawer : ModSystem
 			MaxGoldShieldDurability = (int)(Player.statLifeMax * 0.6f);
 
 			if (Displayset.ConfigKey == "HorizontalBarsWithFullText")
+			{
 				_drawTextStyle = 2;
+			}
 			else if (Displayset.ConfigKey == "HorizontalBarsWithText")
+			{
 				_drawTextStyle = 1;
+			}
 			else
+			{
 				_drawTextStyle = 0;
+			}
 
 			int HeartsNum = playerStatsSnapshot.AmountOfLifeHearts;
 

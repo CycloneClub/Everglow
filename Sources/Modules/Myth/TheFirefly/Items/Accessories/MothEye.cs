@@ -92,7 +92,10 @@ class MothEyePlayer : ModPlayer
 			for (int f = 0; f < Player.armor.Length; f++)
 			{
 				if (Player.armor[f].type != ModContent.ItemType<MothEye>())
+				{
 					continue;
+				}
+
 				int[] FireflyWeapon =
 				{
 						ModContent.ItemType<DarknessFan>(),
@@ -109,7 +112,10 @@ class MothEyePlayer : ModPlayer
 						ModContent.ItemType<ShadowWingBow>(),
 					 };
 				if (Array.IndexOf(FireflyWeapon, item.type) != -1)
+				{
 					damage *= 1.05f;
+				}
+
 				break;
 			}
 		}

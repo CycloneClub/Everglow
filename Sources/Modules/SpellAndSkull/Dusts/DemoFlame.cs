@@ -21,9 +21,14 @@ public class DemoFlame : ModDust
 
 		// Lighting.AddLight(dust.position, 1f * dust.scale, 0.28f * dust.scale, 0.68f);
 		if (dust.scale < 0.15f)
+		{
 			dust.active = false;
+		}
+
 		if (dust.fadeIn < 0)
+		{
 			dust.active = false;
+		}
 
 		if (Collision.SolidCollision(dust.position, 8, 8))
 		{
@@ -44,7 +49,10 @@ public class DemoFlame : ModDust
 			dust.velocity = v0;
 		}
 		if (dust.alpha == 120)
+		{
 			dust.velocity *= 0.9f;
+		}
+
 		return false;
 	}
 

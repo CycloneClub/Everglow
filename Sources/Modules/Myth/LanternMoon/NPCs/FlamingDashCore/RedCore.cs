@@ -112,7 +112,9 @@ public class RedCore : ModNPC
 					for (int q = 0; q < Main.projectile.Length; q++)
 					{
 						if (Main.projectile[q].type == ModContent.ProjectileType<ImmuneCircle>())
+						{
 							Main.projectile[q].Kill();
+						}
 					}
 					Projectile.NewProjectile(NPC.GetSource_FromAI(), Main.player[d].Center, Vector2.Zero, ModContent.ProjectileType<ImmuneCircle>(), 0, 0, d, d);
 				}

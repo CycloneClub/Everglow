@@ -30,11 +30,17 @@ public class BlueMissil : ModProjectile
 	public override void AI()
 	{
 		if (Stre2 > 0)
+		{
 			Stre2 -= 0.01f;
+		}
+
 		if (Projectile.ai[0] != 2)
 		{
 			if (va == Vector2.Zero)
+			{
 				va = Projectile.velocity;
+			}
+
 			if (Projectile.timeLeft < 90)
 				Projectile.velocity = va;
 			else

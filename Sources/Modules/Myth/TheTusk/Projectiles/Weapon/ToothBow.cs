@@ -23,7 +23,10 @@ public class ToothBow : HandholdProjectile
 		player.heldProj = Projectile.whoAmI;
 		int dir = 1;
 		if (Main.MouseWorld.X < player.MountedCenter.X)
+		{
 			dir = -1;
+		}
+
 		ArmRootPos = player.MountedCenter + new Vector2(-4 * dir, -2);
 		float backValue = (player.itemTimeMax - player.itemTime) / (float)player.itemTimeMax;
 		Player.CompositeArmStretchAmount compositeArmStretchAmount = Player.CompositeArmStretchAmount.Full;
@@ -97,7 +100,10 @@ public class ToothBow : HandholdProjectile
 		var texArrow = ModAsset.ToothBow_BloodArrow.Value;
 		SpriteEffects se = SpriteEffects.None;
 		if (player.direction == -1)
+		{
 			se = SpriteEffects.FlipVertically;
+		}
+
 		float rot = Projectile.rotation - (float)(Math.PI * 0.25) + TextureRotation * player.direction;
 		float backValue = (player.itemTimeMax - player.itemTime) / (float)player.itemTimeMax * 20;
 

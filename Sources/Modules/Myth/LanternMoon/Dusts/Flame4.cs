@@ -18,7 +18,10 @@ public class Flame4 : ModDust
 		dust.velocity += new Vector2(Main.windSpeedCurrent / 14f * (float)Main.rand.NextFloat(0.85f, 1.15f), -0.1f);
 		Lighting.AddLight(dust.position, dust.color.R * 0.0005f, dust.color.G * 0.0005f, dust.color.B * 0.0005f);
 		if (dust.scale < 0.05f)
+		{
 			dust.active = false;
+		}
+
 		return false;
 	}
 	public override Color? GetAlpha(Dust dust, Color lightColor)

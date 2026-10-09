@@ -75,7 +75,9 @@ internal class EvilChrysalis : ModProjectile
 		Color c0 = Lighting.GetColor((int)(player.Center.X / 16f), (int)(player.Center.Y / 16f));
 		SpriteEffects sp = SpriteEffects.None;
 		if (player.direction == -1)
+		{
 			sp = SpriteEffects.FlipHorizontally;
+		}
 
 		if (Projectile.timeLeft >= 75)
 			Dy += 0.5f;

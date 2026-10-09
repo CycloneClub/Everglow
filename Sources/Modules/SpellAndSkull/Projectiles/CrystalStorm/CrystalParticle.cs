@@ -50,13 +50,21 @@ internal class CrystalParticle : Visual
 		position += velocity;
 		timeLeft -= 1;
 		if (timeLeft <= 0)
+		{
 			Kill();
+		}
+
 		if (timeLeft <= 30)
+		{
 			velocity *= 0.98f;
+		}
+
 		velocity = velocity.RotatedBy(omega);
 		omega += Main.rand.NextFloat(-0.05f, 0.05f);
 		if (Math.Abs(omega) > 0.15)
+		{
 			omega *= 0.98f;
+		}
 
 		Theta += Ros;
 		po1 = new Vector2(p1.X, p1.Y * (float)Math.Sin(Theta)).RotatedBy(rotation) * 90 * size;
@@ -66,7 +74,9 @@ internal class CrystalParticle : Visual
 		velocity *= 0.99f;
 		size *= 0.95f;
 		if (size < 0.05f)
+		{
 			base.Update();
+		}
 	}
 
 	public override void Draw()
@@ -77,11 +87,20 @@ internal class CrystalParticle : Visual
 		Vector2 v2 = po2 + position;
 		Vector2 v3 = po3 + position;
 		if (VS1 == Vector2.Zero)
+		{
 			VS1 = v1 - Main.screenPosition;
+		}
+
 		if (VS2 == Vector2.Zero)
+		{
 			VS2 = v2 - Main.screenPosition;
+		}
+
 		if (VS3 == Vector2.Zero)
+		{
 			VS3 = v3 - Main.screenPosition;
+		}
+
 		Vy.Add(new Vertex2D(v1, colorD, new Vector3(VS1.X / Main.screenTarget.Width, VS1.Y / Main.screenTarget.Height, 0)));
 		Vy.Add(new Vertex2D(v2, colorD, new Vector3(VS2.X / Main.screenTarget.Width, VS2.Y / Main.screenTarget.Height, 0)));
 		Vy.Add(new Vertex2D(v3, colorD, new Vector3(VS3.X / Main.screenTarget.Width, VS3.Y / Main.screenTarget.Height, 0)));

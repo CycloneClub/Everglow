@@ -17,7 +17,10 @@ public class ShadowSupervisor : ModBuff
 		index.noGravity = true;
 		int LuckyTarget = Main.rand.Next(200);
 		if (LuckyTarget == npc.whoAmI)
+		{
 			return;
+		}
+
 		NPC target = Main.npc[LuckyTarget];
 		if (target.active)
 		{

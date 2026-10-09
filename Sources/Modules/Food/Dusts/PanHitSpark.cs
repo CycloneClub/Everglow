@@ -32,7 +32,10 @@ public class PanHitSpark : ModDust
 			dust.velocity *= 0;
 		}
 		if (dust.scale < 0.05f)
+		{
 			dust.active = false;
+		}
+
 		return false;
 	}
 	public override void OnSpawn(Dust dust)

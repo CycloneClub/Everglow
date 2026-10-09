@@ -60,7 +60,10 @@ public class LanternSky : CustomSky
 		var bars = new List<Vertex2D>();
 		float width = 6;
 		if (TimeLeft < 60)
+		{
 			width = TimeLeft / 10f;
+		}
+
 		OldStar[0] = StarPos;
 		for (int x = OldStar.Length - 1; x > 0; x--)
 		{
@@ -71,12 +74,17 @@ public class LanternSky : CustomSky
 		{
 			TrueL++;
 			if (OldStar[i] == Vector2.Zero)
+			{
 				break;
+			}
 		}
 		for (int i = 1; i < OldStar.Length; ++i)
 		{
 			if (OldStar[i] == Vector2.Zero)
+			{
 				break;
+			}
+
 			var normalDir = OldStar[i - 1] - OldStar[i];
 			normalDir = Vector2.Normalize(new Vector2(-normalDir.Y, normalDir.X));
 
@@ -122,10 +130,15 @@ public class LanternSky : CustomSky
 			return;
 		}
 		if (!skyActive && opacity > 0f)
+		{
 			opacity -= 0.02f;
+		}
+
 		TimeLeft--;
 		if (TimeLeft <= 0)
+		{
 			Deactivate();
+		}
 	}
 	public override float GetCloudAlpha()
 	{

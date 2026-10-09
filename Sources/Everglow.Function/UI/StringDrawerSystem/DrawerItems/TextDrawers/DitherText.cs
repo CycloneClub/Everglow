@@ -19,7 +19,10 @@ namespace Everglow.Commons.UI.StringDrawerSystem.DrawerItems.TextDrawers
 		{
 			base.Init(stringDrawer, originalText, name, stringParameters);
 			if (stringParameters == null)
+			{
 				return;
+			}
+
 			Amplitude = stringParameters.GetVector2("Amplitude",
 				stringDrawer.DefaultParameters.GetVector2("Amplitude"));
 			SymExtraSize = stringParameters.GetVector2("SymExtraSize",

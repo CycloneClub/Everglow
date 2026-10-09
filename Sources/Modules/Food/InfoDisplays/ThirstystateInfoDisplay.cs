@@ -33,6 +33,8 @@ public class ThirstystateInfoDisplayplayer : ModPlayer
 	public override void UpdateEquips()
 	{
 		if (AccOsmoticPressureMonitor)
+		{
 			ShowThirstystate = true;
+		}
 	}
 }

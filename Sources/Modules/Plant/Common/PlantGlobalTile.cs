@@ -12,7 +12,9 @@ public class PlantGlobalTile : GlobalTile
 			{
 				PlantModSystem.RollingCactusHitCount++;
 				if (PlantModSystem.RollingCactusHitCount == 100)
+				{
 					Item.NewItem(Entity.GetSource_None(), new Vector2(i, j) * 16f, ModContent.ItemType<CactusBall>());
+				}
 			}
 		}
 	}

@@ -36,7 +36,10 @@ public class LightDust : Visual
 		position += velocity;
 		timeleft--;
 		if (timeleft < 0)
+		{
 			Kill();
+		}
+
 		if (alpha < 1)
 		{
 			alpha += 0.1f;
@@ -68,7 +71,10 @@ public class LightDust : Visual
 			// c.A = (byte)((1 - timeleft / maxTimeleft) * 255);
 			Vector2 drawPos = position;
 			if (Owner != null)
+			{
 				drawPos += Owner.Center;
+			}
+
 			Texture2D tex = ModAsset.LightPoint2.Value;
 			Ins.Batch.Draw(tex, drawPos, null, c, 0, tex.Size() / 2, scale, 0);
 			Ins.Batch.Draw(tex, drawPos, null, c, 0, tex.Size() / 2, scale, 0);

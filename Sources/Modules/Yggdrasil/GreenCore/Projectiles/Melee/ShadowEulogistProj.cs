@@ -63,7 +63,10 @@ public class ShadowEulogistProj : MeleeProj
 				Projectile.rotation = mainAxisDirection.ToRotation();
 			}
 			if (timer == 20)
+			{
 				AttSound(SoundID.Item1);
+			}
+
 			if (timer > 20 && timer < 40)
 			{
 				canHit = true;
@@ -102,7 +105,10 @@ public class ShadowEulogistProj : MeleeProj
 				Projectile.rotation = mainAxisDirection.ToRotation();
 			}
 			if (timer == 20)
+			{
 				AttSound(SoundID.Item1);
+			}
+
 			if (timer > 30 && timer < 45)
 			{
 				canHit = true;

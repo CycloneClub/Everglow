@@ -29,7 +29,10 @@ public class BlackCorruptRain3 : ModProjectile
 			Projectile.scale += 0.02f;
 		}
 		if (Projectile.velocity.Length() < 5f)
+		{
 			Projectile.velocity *= 1.018f;
+		}
+
 		Lighting.AddLight(Projectile.Center, 0, 0.4f, 0.9f);
 	}
 
@@ -37,7 +40,10 @@ public class BlackCorruptRain3 : ModProjectile
 	{
 		float width = 20;
 		if (Projectile.timeLeft < 120)
+		{
 			width = Projectile.timeLeft / 6f;
+		}
+
 		Ins.Batch.Begin();
 		DrawTexCircle_VFXBatch(Ins.Batch, (30 + 7 * MathF.Sin((float)(Main.time / 3f + Projectile.ai[0]))) * Projectile.scale, width * Projectile.scale, Color.White * 0.1f, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_2_black_thick.Value, (float)(Main.time / 3.8 + Projectile.ai[0]));
 		DrawTexCircle_VFXBatch(Ins.Batch, (30 + 7 * MathF.Sin((float)(Main.time / 3f + Projectile.ai[0]))) * Projectile.scale, width * Projectile.scale, new Color(0, 150, 255, 0) * 0.4f, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_2.Value, (float)(Main.time / 3.8 + Projectile.ai[0]));
@@ -66,6 +72,8 @@ public class BlackCorruptRain3 : ModProjectile
 		circle.Add(new Vertex2D(center + new Vector2(0, Math.Max(radius - width, 0)).RotatedBy(addRot), color, new Vector3(0, 0.2f, 0)));
 		circle.Add(new Vertex2D(center + new Vector2(0, radius).RotatedBy(addRot), color, new Vector3(0, 0.8f, 0)));
 		if (circle.Count > 2)
+		{
 			spriteBatch.Draw(tex, circle, PrimitiveType.TriangleStrip);
+		}
 	}
 }

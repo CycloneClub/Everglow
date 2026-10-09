@@ -22,9 +22,15 @@ public class ToothMagicBall : ModProjectile
 		Player player = Main.player[Projectile.owner];
 		player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (float)(Math.PI / 2d) * -player.direction);
 		if (Projectile.timeLeft >= 1000)
+		{
 			Projectile.timeLeft = 10;
+		}
+
 		if (player.controlUseItem && player.statMana > player.HeldItem.mana)
+		{
 			Projectile.timeLeft = 10;
+		}
+
 		if (player.itemTime == player.itemTimeMax)
 		{
 			Vector2 velocity = Vector2.Normalize(Main.MouseWorld - player.Center) * player.HeldItem.shootSpeed;
@@ -76,7 +82,10 @@ public class ToothMagicBall : ModProjectile
 		SpriteEffects sp = SpriteEffects.None;
 
 		if (player.direction == -1)
+		{
 			sp = SpriteEffects.FlipHorizontally;
+		}
+
 		if (VTMax[0] == Vector2.Zero)
 		{
 			for (int s = 0; s < 10; s++)

@@ -26,9 +26,15 @@ public class DemonScythePlus : ModProjectile
 	{
 		Lighting.AddLight((int)(Projectile.Center.X / 16), (int)(Projectile.Center.Y / 16), 0.22f, 0f, 0.9f);
 		if (timer < 30)
+		{
 			timer += 2;
+		}
+
 		if (Projectile.velocity.Length() < 48f)
+		{
 			Projectile.velocity *= 1.05f;
+		}
+
 		float vL = Projectile.velocity.Length() * 0.1f;
 		vL = Math.Min(vL, 4f);
 		float kSize = Math.Min(vL, 1f);
@@ -45,7 +51,9 @@ public class DemonScythePlus : ModProjectile
 			d0.velocity = Projectile.velocity + lineVel2 * 0.1f + Main.rand.NextVector2Unit() * 0.3f;
 		}
 		if (Collision.SolidCollision(Projectile.Center, 0, 0))
+		{
 			Projectile.Kill();
+		}
 	}
 
 	public override void OnKill(int timeLeft)
@@ -151,7 +159,9 @@ public class DemonScythePlus : ModProjectile
 		// circle.Add(new Vertex2D(center + new Vector2(0, radius).RotatedBy(addRot), color, new Vector3(0.5f, 1, 0)));
 		// circle.Add(new Vertex2D(center + new Vector2(0, radius + width).RotatedBy(addRot), color, new Vector3(0.5f, 0, 0)));
 		if (circle.Count > 0)
+		{
 			spriteBatch.Draw(tex, circle, PrimitiveType.TriangleStrip);
+		}
 	}
 	private Vector2 RotAndEclipse(Vector2 orig)
 	{

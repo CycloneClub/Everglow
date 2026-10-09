@@ -32,13 +32,17 @@ internal class FreezeFeatherMagicBook : MagicBookProjectile
 		{
 			Projectile.timeLeft = player.itemTime + 60;
 			if (timer < 30)
+			{
 				timer++;
+			}
 		}
 		else
 		{
 			timer--;
 			if (timer < 0)
+			{
 				Projectile.Kill();
+			}
 		}
 		Player.CompositeArmStretchAmount PCAS = Player.CompositeArmStretchAmount.Full; // 玩家动作
 
@@ -48,7 +52,10 @@ internal class FreezeFeatherMagicBook : MagicBookProjectile
 		Projectile.rotation = player.fullRotation;
 		SpecialAI();
 		if (ProjType == -1)
+		{
 			return;
+		}
+
 		if (player.itemTime == player.itemTimeMax - 2 && player.HeldItem.type == ItemType)
 		{
 			for (int x = 0; x < 4; x++)

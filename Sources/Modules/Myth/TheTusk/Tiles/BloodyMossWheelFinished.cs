@@ -48,7 +48,10 @@ public class BloodyMossWheelFinished : ModTile
 		if ((player.Center - new Vector2(i * 16, j * 16 - 72)).Length() < 80)
 		{
 			if (!Main.gamePaused)
+			{
 				TpTime += 3;
+			}
+
 			Col = 100;
 
 		}
@@ -70,7 +73,9 @@ public class BloodyMossWheelFinished : ModTile
 			else
 			{
 				if (!SubworldSystem.Enter<TuskWorld>())
+				{
 					Main.NewText("Fail!");
+				}
 			}
 			TpTime = 0;
 		}
@@ -85,7 +90,9 @@ public class BloodyMossWheelFinished : ModTile
 	{
 		var zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
 		if (Main.drawToScreen)
+		{
 			zero = Vector2.Zero;
+		}
 
 		Texture2D Tdoor = Commons.ModAsset.Noise_flame_2.Value;
 		Texture2D Tdoor2 = ModAsset.CosmicVort.Value;

@@ -27,7 +27,10 @@ public class GreenEffect : ModDust
 		float scale = dust.scale;
 		Lighting.AddLight(dust.position, dust.color.R * 0, 1, 0);
 		if (dust.scale < 0.15f)
+		{
 			dust.active = false;
+		}
+
 		return false;
 	}
 }

@@ -33,7 +33,9 @@ public class GlowWoodCandelabra : ModTile
 		TileObjectData.newTile.CoordinateHeights = new[] { 16, 16 };
 		TileObjectData.addTile(Type);
 		if (!Main.dedServ)
+		{
 			flameTexture = ModContent.Request<Texture2D>("Everglow/Myth/TheFirefly/Tiles/Furnitures/GlowWoodCandelabra_Flame");
+		}
 
 		LocalizedText name = CreateMapEntryName();
 		AddMapEntry(new Color(69, 36, 78), name);
@@ -74,7 +76,9 @@ public class GlowWoodCandelabra : ModTile
 		var zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
 
 		if (Main.drawToScreen)
+		{
 			zero = Vector2.Zero;
+		}
 
 		ulong randSeed = Main.TileFrameSeed ^ (ulong)((long)j << 32 | (uint)i); // Don't remove any casts.
 		var color = new Color(55, 5, 255, 0);

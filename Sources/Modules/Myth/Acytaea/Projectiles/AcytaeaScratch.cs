@@ -176,7 +176,10 @@ public class AcytaeaScratch : ModProjectile
 
 			int length = SmoothTrail.Count;
 			if (length <= 3)
+			{
 				return;
+			}
+
 			Vector2[] trail = SmoothTrail.ToArray();
 
 			List<Vertex2D> bars = new List<Vertex2D>();
@@ -255,7 +258,10 @@ public class AcytaeaScratch : ModProjectile
 
 			int length = SmoothTrail.Count;
 			if (length <= 3)
+			{
 				return;
+			}
+
 			Vector2[] trail = SmoothTrail.ToArray();
 
 			List<Vertex2D> bars = new List<Vertex2D>();

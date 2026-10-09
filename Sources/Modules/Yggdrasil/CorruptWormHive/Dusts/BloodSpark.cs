@@ -17,7 +17,10 @@ public class BloodSpark : ModDust
 		dust.velocity *= 0.95f;
 		dust.alpha += 6;
 		if (dust.alpha > 254)
+		{
 			dust.active = false;
+		}
+
 		dust.scale = (float)(-Math.Cos(dust.alpha / 127.5 * Math.PI) + 1) * dust.color.R / 200f;
 		Lighting.AddLight(dust.position, dust.scale / dust.color.R * 100f, 0, 0);
 		return false;

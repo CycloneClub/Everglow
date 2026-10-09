@@ -19,9 +19,14 @@ public class Sunflower : ModProjectile
 		{
 			Projectile.soundDelay = 10;
 			if (Projectile.velocity.X != oldVelocity.X && Math.Abs(oldVelocity.X) > 1f)
+			{
 				Projectile.velocity.X = oldVelocity.X * -0.9f;
+			}
+
 			if (Projectile.velocity.Y != oldVelocity.Y && Math.Abs(oldVelocity.Y) > 1f)
+			{
 				Projectile.velocity.Y = oldVelocity.Y * -0.9f;
+			}
 		}
 		return false;
 	}
@@ -45,9 +50,15 @@ public class Sunflower : ModProjectile
 		if (Projectile.timeLeft <= 2950)
 		{
 			if (num7 < 9f)
+			{
 				Projectile.velocity *= 1.2f;
+			}
+
 			if (num7 > 10f)
+			{
 				Projectile.velocity *= 0.86f;
+			}
+
 			int num3 = Player.FindClosest(Projectile.Center, 1, 1);
 			Projectile.velocity = Projectile.velocity * 0.98f + (p.Center - Projectile.Center) / num6 * 3.5f;
 			Projectile.tileCollide = false;
@@ -55,13 +66,21 @@ public class Sunflower : ModProjectile
 		else
 		{
 			if (num7 < 9f)
+			{
 				Projectile.velocity *= 1.2f;
+			}
+
 			if (num7 > 10f)
+			{
 				Projectile.velocity *= 0.96f;
+			}
+
 			Projectile.velocity = Projectile.velocity * 0.995f + (p.Center - Projectile.Center) / num6 * 0.15f;
 		}
 		if (num6 < 60 && Projectile.timeLeft < 2950)
+		{
 			Projectile.timeLeft = 0;
+		}
 	}
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{

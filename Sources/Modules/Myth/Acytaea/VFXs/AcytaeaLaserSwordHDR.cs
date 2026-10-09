@@ -108,7 +108,9 @@ public class AcytaeaLaserSwordHDREffect : Visual
 			Active = false;
 		}
 		if (timer >= maxTime)
+		{
 			Active = false;
+		}
 	}
 
 	public override void Draw()

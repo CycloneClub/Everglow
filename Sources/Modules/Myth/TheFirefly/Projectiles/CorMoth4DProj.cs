@@ -51,7 +51,9 @@ public class CorMoth4DProj : ModProjectile
 	public override void AI()
 	{
 		if (Projectile.timeLeft % 3 == 0 && Main.rand.NextBool())
+		{
 			Projectile.frame++;
+		}
 
 		int t = maxTimeleft - Projectile.timeLeft;
 		if (t == 0)

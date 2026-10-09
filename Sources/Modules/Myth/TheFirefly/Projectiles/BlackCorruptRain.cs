@@ -57,7 +57,10 @@ public class BlackCorruptRain : ModProjectile
 			}
 		}
 		if (Stre2 > 0.2)
+		{
 			Stre2 -= 0.005f;
+		}
+
 		Projectile.velocity *= 0.995f;
 		if (Projectile.timeLeft < 995)
 		{
@@ -78,9 +81,15 @@ public class BlackCorruptRain : ModProjectile
 			}
 		}
 		if (Projectile.timeLeft < 580 && Projectile.timeLeft >= 100 + b)
+		{
 			Projectile.scale *= Y;
+		}
+
 		if (Projectile.timeLeft < 100 + b)
+		{
 			Projectile.scale *= 0.95f;
+		}
+
 		Projectile.velocity.Y += 0.01f;
 		Lighting.AddLight(Projectile.Center, (255 - Projectile.alpha) * 0f / 255f * Projectile.scale, (255 - Projectile.alpha) * 0.01f / 255f, (255 - Projectile.alpha) * 0.6f / 255f * Projectile.scale);
 	}

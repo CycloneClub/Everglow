@@ -53,12 +53,16 @@ internal class ShadowWingBow : ModProjectile
 			if (player.direction == -1)
 			{
 				if (AddHeadRotation is >= 0.57f and < 2)
+				{
 					AddHeadRotation = 0.57f;
+				}
 			}
 			else
 			{
 				if (AddHeadRotation <= -0.57f)
+				{
 					AddHeadRotation = -0.57f;
+				}
 			}
 		}
 		else
@@ -66,12 +70,16 @@ internal class ShadowWingBow : ModProjectile
 			if (player.direction == -1)
 			{
 				if (AddHeadRotation is >= 2 and < 5.71f)
+				{
 					AddHeadRotation = 5.71f;
+				}
 			}
 			else
 			{
 				if (AddHeadRotation >= 0.57f)
+				{
 					AddHeadRotation = 0.57f;
+				}
 			}
 		}
 		Tplayer.HeadRotation = AddHeadRotation;
@@ -152,13 +160,18 @@ internal class ShadowWingBow : ModProjectile
 			for (int s = 0; s < 5; s++)
 			{
 				if (arrowcol[s] > 0)
+				{
 					Projectile.NewProjectile(Terraria.Entity.InheritSource(Projectile), Projectile.Center, Vector2.Normalize(v0).RotatedBy(arrowRot[s]) * arrowVel[s] * 1f, ModContent.ProjectileType<MothArrow>(), (int)((Projectile.damage + Energy / 5) * 0.47), Projectile.knockBack, player.whoAmI, 0, player.HeldItem.crit + player.GetCritChance(DamageClass.Ranged) + player.GetCritChance(DamageClass.Generic));
+				}
 			}
 			Energy = 0;
 			released = false;
 		}
 		if (Projectile.ai[1] > 0)
+		{
 			Projectile.ai[1] -= 1f;
+		}
+
 		if (!Main.mouseLeft && !released)
 		{
 			if (Projectile.ai[1] > 0)
@@ -170,7 +183,9 @@ internal class ShadowWingBow : ModProjectile
 			{
 				Tplayer.HeadRotation = 0;
 				if (Projectile.timeLeft > 10)
+				{
 					Projectile.timeLeft = 10;
+				}
 			}
 		}
 	}
@@ -247,21 +262,39 @@ internal class ShadowWingBow : ModProjectile
 			player.direction = 1;
 		}
 		if (player.direction == -1)
+		{
 			se = SpriteEffects.FlipVertically;
+		}
+
 		if (player.gravDir == -1)
+		{
 			se = SpriteEffects.FlipVertically;
+		}
+
 		if (player.gravDir == -1 && player.direction == -1)
+		{
 			se = SpriteEffects.None;
+		}
+
 		Vector2 v0 = Main.MouseWorld - player.MountedCenter;
 		if (player.controlUseItem)
 		{
 			Player.CompositeArmStretchAmount PCAS = Player.CompositeArmStretchAmount.Full;
 			if (Energy > 30)
+			{
 				PCAS = Player.CompositeArmStretchAmount.ThreeQuarters;
+			}
+
 			if (Energy > 60)
+			{
 				PCAS = Player.CompositeArmStretchAmount.Quarter;
+			}
+
 			if (Energy > 90)
+			{
 				PCAS = Player.CompositeArmStretchAmount.None;
+			}
+
 			player.SetCompositeArmFront(true, PCAS, (float)(Math.Atan2(v0.Y, v0.X) * player.gravDir - Math.PI / 2d));
 		}
 		Vector2 vProA = Main.player[Projectile.owner].Center + Vector2.Normalize(v0) * (28f - 12f * b3);
@@ -271,7 +304,9 @@ internal class ShadowWingBow : ModProjectile
 			Main.spriteBatch.Draw(TexMothArrow, vProB - Main.screenPosition, null, new Color(arrowcol[s], arrowcol[s], arrowcol[s], 0), Projectile.rotation + arrowRot[s], new Vector2(TexMothArrow.Width / 2f, TexMothArrow.Height / 2f), 1f, SpriteEffects.None, 0);
 		}
 		if (released)
+		{
 			Main.spriteBatch.Draw(TexArrow, vProA - Main.screenPosition, new Rectangle(0, 0, TexArrow.Width, TexArrow.Height), drawColor, Projectile.rotation + (float)(Math.PI * 0.25), new Vector2(TexArrow.Width / 2f, TexArrow.Height / 2f), 1f, SpriteEffects.None, 0);
+		}
 
 		float rotu0 = Energy / 1200f;
 		float rotu1 = Energy / 750f;

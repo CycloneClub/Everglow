@@ -99,7 +99,10 @@ public class SkeletonDebugRenderer
 			{
 				var bone = bones.Items[i];
 				if (bone.Parent == null)
+				{
 					continue;
+				}
+
 				var x = bone.Data.Length * bone.A + bone.WorldX;
 				var y = bone.Data.Length * bone.C + bone.WorldY;
 				renderer.Line(bone.WorldX, bone.WorldY, x, y);
@@ -139,7 +142,10 @@ public class SkeletonDebugRenderer
 				var slot = slots.Items[i];
 				var attachment = slot.Attachment;
 				if (!(attachment is MeshAttachment))
+				{
 					continue;
+				}
+
 				var mesh = (MeshAttachment)attachment;
 				var world = vertices = vertices.Length < mesh.WorldVerticesLength ? new float[mesh.WorldVerticesLength] : vertices;
 				mesh.ComputeWorldVertices(slot, 0, mesh.WorldVerticesLength, world, 0, 2);
@@ -207,7 +213,10 @@ public class SkeletonDebugRenderer
 				var slot = slots.Items[i];
 				var attachment = slot.Attachment;
 				if (!(attachment is ClippingAttachment))
+				{
 					continue;
+				}
+
 				var clip = (ClippingAttachment)attachment;
 				var nn = clip.WorldVerticesLength;
 				var world = vertices = vertices.Length < nn ? new float[nn] : vertices;

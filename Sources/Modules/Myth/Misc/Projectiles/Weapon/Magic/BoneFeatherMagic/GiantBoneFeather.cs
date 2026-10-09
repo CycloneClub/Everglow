@@ -25,9 +25,15 @@ public class GiantBoneFeather : ModProjectile
 	public override void AI()
 	{
 		if (timeTokill >= 0 && timeTokill <= 2)
+		{
 			Projectile.Kill();
+		}
+
 		if (timeTokill <= 80 && timeTokill > 0)
+		{
 			Projectile.velocity = Projectile.oldVelocity;
+		}
+
 		timeTokill--;
 		if (timeTokill >= 0)
 		{
@@ -86,7 +92,10 @@ public class GiantBoneFeather : ModProjectile
 		}
 		SpriteEffects spriteEffects = SpriteEffects.None;
 		if (Projectile.spriteDirection == -1)
+		{
 			spriteEffects = SpriteEffects.FlipHorizontally;
+		}
+
 		var texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
 		int frameHeight = texture.Height / Main.projFrames[Projectile.type];
 		int startY = frameHeight * Projectile.frame;
@@ -123,7 +132,9 @@ public class GiantBoneFeather : ModProjectile
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
 
 			trueL++;
 		}
@@ -139,11 +150,19 @@ public class GiantBoneFeather : ModProjectile
 		{
 			float width2 = width;
 			if (Projectile.timeLeft <= 40)
+			{
 				width2 = Projectile.timeLeft * 0.9f;
+			}
+
 			if (i < 10)
+			{
 				width2 *= i / 10f;
+			}
+
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
 
 			var normalDir = Projectile.oldPos[i - 1] - Projectile.oldPos[i];
 			if (normalDir == Vector2.zeroVector)
@@ -170,8 +189,9 @@ public class GiantBoneFeather : ModProjectile
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		Main.graphics.GraphicsDevice.Textures[0] = t;
 		if (bars.Count > 3)
+		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
-
+		}
 	}
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{

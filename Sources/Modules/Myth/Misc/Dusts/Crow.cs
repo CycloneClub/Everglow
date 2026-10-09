@@ -19,7 +19,10 @@ public class Crow : ModDust
 		float scale = dust.scale;
 		// Lighting.AddLight(dust.position, 1f * dust.scale, 0.28f * dust.scale, 0.68f);
 		if (dust.scale < 0.15f)
+		{
 			dust.active = false;
+		}
+
 		return false;
 	}
 	public override Color? GetAlpha(Dust dust, Color lightColor)

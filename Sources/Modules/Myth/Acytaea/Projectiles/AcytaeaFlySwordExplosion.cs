@@ -24,7 +24,9 @@ public class AcytaeaFlySwordExplosion : ModProjectile, IWarpProjectile
 	{
 		Projectile.velocity *= 0;
 		if (Projectile.timeLeft <= 198)
+		{
 			Projectile.friendly = false;
+		}
 	}
 	public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 	{
@@ -92,18 +94,25 @@ public class AcytaeaFlySwordExplosion : ModProjectile, IWarpProjectile
 		circle.Add(new Vertex2D(center + new Vector2(0, Math.Max(radius - width, 0)).RotatedBy(addRot), c0, new Vector3(0, 1, 0)));
 		circle.Add(new Vertex2D(center + new Vector2(0, radius).RotatedBy(addRot), c0, new Vector3(0, 0, 0)));
 		if (circle.Count > 2)
+		{
 			spriteBatch.Draw(tex, circle, PrimitiveType.TriangleStrip);
+		}
 	}
 	public void DrawWarp(VFXBatch spriteBatch)
 	{
 		float value = (200 - Projectile.timeLeft) / 200f;
 		float colorV = 0.9f * (1 - value);
 		if (Projectile.ai[0] >= 10)
+		{
 			colorV *= Projectile.ai[0] / 10f;
+		}
+
 		Texture2D t = Commons.ModAsset.Trail.Value;
 		float width = 60;
 		if (Projectile.timeLeft < 60)
+		{
 			width = Projectile.timeLeft;
+		}
 
 		DrawTexCircle_VFXBatch(spriteBatch, MathF.Sqrt(value) * 34 * Projectile.ai[0], width * 2, new Color(colorV, colorV * 0.06f, colorV, 0f), Projectile.Center - Main.screenPosition, t, Math.PI * 0.5);
 	}

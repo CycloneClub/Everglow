@@ -108,13 +108,17 @@ public abstract class MagicBookProjectile : ModProjectile
 		{
 			Projectile.timeLeft = player.itemTime + 60;
 			if (timer < 30)
+			{
 				timer++;
+			}
 		}
 		else
 		{
 			timer--;
 			if (timer < 0)
+			{
 				Projectile.Kill();
+			}
 		}
 		Player.CompositeArmStretchAmount PCAS = Player.CompositeArmStretchAmount.Full; // 玩家动作
 
@@ -124,7 +128,10 @@ public abstract class MagicBookProjectile : ModProjectile
 		Projectile.rotation = player.fullRotation;
 		SpecialAI();
 		if (ProjType == -1)
+		{
 			return;
+		}
+
 		if (player.itemTime == player.itemTimeMax - 2 && player.HeldItem.type == ItemType)
 		{
 			Vector2 velocity = vTOMouse.SafeNormalize(Vector2.Zero) * player.HeldItem.shootSpeed;
@@ -142,7 +149,10 @@ public abstract class MagicBookProjectile : ModProjectile
 	public override void PostDraw(Color lightColor)
 	{
 		if (ItemType == -1)
+		{
 			return;
+		}
+
 		Texture2D Book = TextureAssets.Item[ItemType].Value;
 		if (BackTexture == null && FrontTexture == null)
 		{
@@ -177,7 +187,10 @@ public abstract class MagicBookProjectile : ModProjectile
 
 		DrawBack(Book);
 		if (UseGlow)
+		{
 			DrawBack(BookGlow, 1);
+		}
+
 		if (PaperTexture != null)
 		{
 			DrawPaper(PaperTexture);
@@ -203,7 +216,10 @@ public abstract class MagicBookProjectile : ModProjectile
 			BookGlow = GlowTexture;
 		}
 		if (UseGlow)
+		{
 			DrawFront(BookGlow, 1);
+		}
+
 		SpecialDraw();
 	}
 	public virtual void SpecialDraw()
@@ -220,9 +236,14 @@ public abstract class MagicBookProjectile : ModProjectile
 		Vector2 y0 = new Vector2(BookScale * player.direction, -BookScale * player.gravDir) * 0.64f * MulSize; // 把书本贴图（有内容部分）算作一个矩形，这里表示这个矩形的半长，方向与x0垂直，玩家朝右，重力方向朝下时指向右上
 		Color c0 = GlowColor;
 		if (GlowType == 0)// 如果GlowType = 0不开荧光，取光照色
+		{
 			c0 = Lighting.GetColor((int)(Projectile.Center.X / 16f), (int)(Projectile.Center.Y / 16f));
+		}
+
 		if (GlowType == 2)// 如果GlowType = 2，取光效色
+		{
 			c0 = effectColor;
+		}
 		// 后部书页
 		for (int x = 0; x < 8/*一共8页*/; x++)
 		{
@@ -393,9 +414,15 @@ public abstract class MagicBookProjectile : ModProjectile
 		Vector2 y0 = new Vector2(BookScale * player.direction, -BookScale * player.gravDir) * 0.707f * MulSize;
 		Color c0 = GlowColor;
 		if (GlowType == 0)
+		{
 			c0 = Lighting.GetColor((int)(Projectile.Center.X / 16f), (int)(Projectile.Center.Y / 16f));
+		}
+
 		if (GlowType == 2)
+		{
 			c0 = effectColor;
+		}
+
 		var bars = new List<Vertex2D>();
 		for (int i = 0; i < 10; ++i)
 		{
@@ -454,9 +481,15 @@ public abstract class MagicBookProjectile : ModProjectile
 		Vector2 y0 = new Vector2(BookScale * player.direction, -BookScale * player.gravDir) * 0.707f * MulSize;
 		Color c0 = GlowColor;
 		if (GlowType == 0)
+		{
 			c0 = Lighting.GetColor((int)(Projectile.Center.X / 16f), (int)(Projectile.Center.Y / 16f));
+		}
+
 		if (GlowType == 2)
+		{
 			c0 = effectColor;
+		}
+
 		var bars = new List<Vertex2D>();
 		for (int i = 0; i < 10; ++i)
 		{
@@ -507,7 +540,10 @@ public abstract class MagicBookProjectile : ModProjectile
 	public override void OnKill(int timeLeft)
 	{
 		if (DustType == -1)
+		{
 			return;
+		}
+
 		Player player = Main.player[Projectile.owner];
 		Vector2 x0 = new Vector2(BookScale * player.direction, BookScale * player.gravDir) * 0.5f;
 		Vector2 y0 = new Vector2(BookScale * player.direction, -BookScale * player.gravDir) * 0.707f;
@@ -522,7 +558,10 @@ public abstract class MagicBookProjectile : ModProjectile
 			d1.noGravity = true;
 		}
 		if (DustTypeII != -1)
+		{
 			DustType = DustTypeII;
+		}
+
 		for (int i = 0; i < 14; ++i)
 		{
 			double rot = 0;

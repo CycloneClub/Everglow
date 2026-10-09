@@ -139,7 +139,10 @@ public class GhostHit : ModProjectile
 
 			int length = SmoothTrail.Count;
 			if (length <= 3)
+			{
 				return;
+			}
+
 			Vector2[] trail = SmoothTrail.ToArray();
 
 			List<Vertex2D> bars = new List<Vertex2D>();
@@ -218,7 +221,10 @@ public class GhostHit : ModProjectile
 
 			int length = SmoothTrail.Count;
 			if (length <= 3)
+			{
 				return;
+			}
+
 			Vector2[] trail = SmoothTrail.ToArray();
 
 			List<Vertex2D> bars = new List<Vertex2D>();

@@ -58,14 +58,26 @@ public class MythContentPlayer : ModPlayer
 	public override void ModifyHurt(ref Player.HurtModifiers modifiers)
 	{
 		if (OrangeStick > 0)
+		{
 			OrangeStickCool = 300;
+		}
+
 		if (CyanBranch > 0)
+		{
 			CyanBranchCool = 600;
+		}
+
 		float vl = Player.velocity.Length();
 		if (vl > 30)
+		{
 			vl = 30;
+		}
+
 		if (vl < 5)
+		{
 			vl = 3 * vl - 10;
+		}
+
 		float Misp = (Miss + vl * Miss * 0.1f) / 100f;
 		Misp = (float)(-1.1 / (Misp + 1) + 1.1);
 		if (Main.rand.NextFloat(0, 1f) <= Misp && InvincibleFrameTime == 0)
@@ -90,11 +102,19 @@ public class MythContentPlayer : ModPlayer
 	public override void PostUpdateMiscEffects()
 	{
 		if (CyanPedal > 0)
+		{
 			Miss += 4;
+		}
+
 		if (WhitePedal > 0)
+		{
 			Miss += 2;
+		}
+
 		if (CyanBranchCool > 0)
+		{
 			Miss += 8;
+		}
 
 		if (SilverBuff > 0)
 		{
@@ -104,7 +124,9 @@ public class MythContentPlayer : ModPlayer
 			Player.GetDamage(DamageClass.Generic) *= 1.05f;
 		}
 		if (Player.ownedProjectileCounts[ModContent.ProjectileType<PrimordialJadeWinged_Spear>()] + Player.ownedProjectileCounts[ModContent.ProjectileType<PrimordialJadeWinged_SpearDown>()] > 0)
+		{
 			Player.maxFallSpeed += 10000f;
+		}
 	}
 
 	public override void PreUpdate()

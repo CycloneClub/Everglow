@@ -25,9 +25,15 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords
 		public override bool AltFunctionUse(Player player)
 		{
 			if (CurrentPowerfulStabCD > 0)
+			{
 				return false;
+			}
+
 			if (!player.GetModPlayer<StabbingSwordStaminaPlayer>().CheckStamina(StaminaCost * 45))
+			{
 				return false;
+			}
+
 			foreach (Projectile proj in Main.projectile)
 			{
 				if (proj.owner == player.whoAmI && proj.timeLeft > 1 && proj.type == PowerfulStabProj)

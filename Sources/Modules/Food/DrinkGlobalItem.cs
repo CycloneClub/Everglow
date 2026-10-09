@@ -227,7 +227,9 @@ public class DrinkGlobalItem : GlobalItem
 
 			int buffTimeIndex = tooltips.FindIndex((tp) => tp.Name.Contains("BuffTime"));
 			if (buffTimeIndex != -1)
+			{
 				tooltips[buffTimeIndex].Text = DrinkInfo.BuffTime.ToBuffTimeString();
+			}
 		}
 		if (item.ModItem is DrinkBase)
 		{
@@ -252,7 +254,9 @@ public class DrinkGlobalItem : GlobalItem
 
 			int buffTimeIndex = tooltips.FindIndex((tp) => tp.Name.Contains("BuffTime"));
 			if (buffTimeIndex != -1)
+			{
 				tooltips[buffTimeIndex].Text = drinkInfo.BuffTime.ToBuffTimeString();
+			}
 		}
 	}
 
@@ -344,17 +348,21 @@ public class DrinkGlobalItem : GlobalItem
 		{
 			var drinkInfo = m_vanillaDrinkInfos[item.type];
 			if (!foodPlayer.CanDrink(drinkInfo))
+			{
 				// Main.NewText(Language.GetTextValue("Mods.Everglow.Common.FoodSystem.CannotDrink"));
 
 				return false;
+			}
 		}
 		else if (item.ModItem is DrinkBase)
 		{
 			var foodItem = item.ModItem as DrinkBase;
 			var drinkInfo = foodItem.DrinkInfo;
 			if (!foodPlayer.CanDrink(drinkInfo))
+			{
 				// Main.NewText(Language.GetTextValue("Mods.Everglow.Common.FoodSystem.CannotDrink"));
 				return false;
+			}
 		}
 		return base.ConsumeItem(item, player);
 	}

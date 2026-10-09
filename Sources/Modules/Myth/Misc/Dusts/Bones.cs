@@ -18,7 +18,10 @@ public class Bones : ModDust
 		dust.scale *= 0.9f;
 
 		if (dust.scale < 0.3f)
+		{
 			dust.active = false;
+		}
+
 		return false;
 	}
 }

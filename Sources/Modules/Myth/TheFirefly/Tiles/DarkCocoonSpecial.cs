@@ -26,6 +26,8 @@ public class DarkCocoonSpecial : ModTile// 用来生成魔茧
 	public override void NearbyEffects(int i, int j, bool closer)
 	{
 		if (NPC.CountNPCS(ModContent.NPCType<EvilPack>()) < 1)
+		{
 			NPC.NewNPC(null, i * 16, j * 16 + 244, ModContent.NPCType<EvilPack>());
+		}
 	}
 }

@@ -58,12 +58,17 @@ internal class PhosphorescenceGun : ModProjectile
 	public override void PostDraw(Color lightColor)
 	{
 		if (!Release)
+		{
 			return;
+		}
+
 		Player player = Main.player[Projectile.owner];
 		player.heldProj = Projectile.whoAmI;
 		Vector2 v0 = Projectile.Center - player.MountedCenter;
 		if (Main.mouseLeft)
+		{
 			player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (float)(Math.Atan2(v0.Y, v0.X) - Math.PI / 2d));
+		}
 
 		Texture2D TexMain = ModAsset.PhosphorescenceGunTex_PhosphorescenceGun.Value;
 		Texture2D TexMainG = ModAsset.PhosphorescenceGunGlow.Value;

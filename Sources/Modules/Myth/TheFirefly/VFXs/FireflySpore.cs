@@ -53,7 +53,10 @@ public class FireflySporeDust : Visual
 		scale *= 0.995f;
 		timer++;
 		if (timer > maxTime)
+		{
 			Active = false;
+		}
+
 		velocity = velocity.RotatedBy(ai[1]);
 		if (Collision.SolidCollision(position, 0, 0))
 		{
