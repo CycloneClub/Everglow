@@ -10,11 +10,6 @@ public class DarkFlower_Proj : ModProjectile
 {
 	public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.Fireball;
 
-	private Projectile Projectile
-	{
-		get => base.Projectile;
-	}
-
 	public override void SetStaticDefaults()
 	{
 		ProjectileID.Sets.DrawScreenCheckFluff[Projectile.type] += 500;
