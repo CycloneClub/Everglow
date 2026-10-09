@@ -53,10 +53,10 @@ public class VFXBatch : IDisposable
 		needFlush[0] = true;
 		Buffer<VFX2D>.AddVertex(new VFX2D[]
 		{
-			new VFX2D(position, color, new Vector2(0,0)),
-			new VFX2D(position + new Vector2(tex.Width, 0), color, new Vector2(1,0)),
-			new VFX2D(position + new Vector2(0, tex.Height), color, new Vector2(0,1)),
-			new VFX2D(position + new Vector2(tex.Width, tex.Height), color, new Vector2(1,1))
+			new VFX2D(position, color, new Vector2(0, 0)),
+			new VFX2D(position + new Vector2(tex.Width, 0), color, new Vector2(1, 0)),
+			new VFX2D(position + new Vector2(0, tex.Height), color, new Vector2(0, 1)),
+			new VFX2D(position + new Vector2(tex.Width, tex.Height), color, new Vector2(1, 1))
 		}, PrimitiveType.TriangleStrip);
 	}
 

@@ -195,7 +195,7 @@ internal class ShadowWingBow : ModProjectile
 		Vector2 arrowPosition = basePos + vec * (-12f * b3);
 
 		var pos = new Vector2[] { //通过这三点连成弦
-                basePos + v * 20 ,
+                basePos + v * 20,
 			arrowPosition,
 			basePos - v * 20
 		};

@@ -164,7 +164,7 @@ public class FoodGlobalItem : GlobalItem
 				new FoodInfo() {
 					Satiety = 10,
 					BuffType = ModContent.BuffType<ChocolateChipCookieBuff>(),
-					BuffTime = new FoodDuration(4,0,0 ),
+					BuffTime = new FoodDuration(4, 0, 0 ),
 					Name = "ChocolateChipCookieBuff"
 				}
 			},
