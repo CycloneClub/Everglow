@@ -2,6 +2,8 @@
 	"Anna": "Anna",
 	"Howard": "Howard",
 	"SmuggledAleQuest": {
+		"IntroDialogue": "Hey, you. Since you're asking, have you got any ale? Bring me a little, just a little. Make sure the higher-ups don't see.",
+		"DeliveryEndDialogue": "Shh, keep it down. Don't let the higher-ups see. Thanks! Take these coins and gel for your trouble.",
 		"Name": "Smuggled Ale",
 		"Description": "Anna has a small request she would rather keep from her superiors.",
 		"Hint": "Unlocks upon entering Yggdrasil.",
@@ -9,6 +11,7 @@
 		"DeliveryDescription": "Anna would like a quiet drink. Bring her some ale, and keep it out of sight of her superiors."
 	},
 	"SheWorriesAboutYouQuest": {
+		"IntroDialogue": "Have you heard of the monster they call the Blood Moon Cultist? He's real trouble. If you run into him, be careful.",
 		"Name": "She Worries About You",
 		"Description": "Rumors of the Blood Moon Cultist have Anna worried.",
 		"Hint": "Unlocks after completing Smuggled Ale.",
@@ -18,6 +21,7 @@
 		"ReportDescription": "You have killed a Blood Moon Cultist. Return to Anna and put her mind at ease."
 	},
 	"SlimeDoctorQuest": {
+		"IntroDialogue": "This little one got hurt, but I can't leave my post. Could you get me some gel? It might help.",
 		"Name": "Slime Doctor",
 		"Description": "A little creature is hurt, and Anna needs help looking after it.",
 		"Hint": "Unlocks after stopping the Drunken Miners' Parade.",
@@ -26,26 +30,31 @@
 		"DeliveryDescription": "Anna cannot leave her post to care for the injured little creature. Bring her some gel; it might help."
 	},
 	"DefendTownOneQuest": {
+		"ReportDialogue": "Good work. Those drunken miners have finally settled down. But a gang of thieves is still causing trouble in town. I'm afraid we'll need your help again.",
 		"Objective": "Defend Yggdrasil Town, Part I: Repel the Drunken Miners' Parade",
 		"InvasionDescription": "The drunken miners are disturbing the peace with their parade. Help Howard bring the trouble to an end.",
 		"ReportDescription": "The drunken miners have been dealt with for now. Report back to Howard."
 	},
 	"DefendTownTwoQuest": {
+		"ReportDialogue": "I heard you dealt with the thieves. Well done. But the peace didn't last: that heiress and the assassin have stirred up more trouble. Go see what you can do.",
 		"Objective": "Defend Yggdrasil Town, Part II: Repel the rampant thieves",
 		"InvasionDescription": "Thieves are causing trouble in town. Stop them from running rampant.",
 		"ReportDescription": "The thieves have been dealt with. Return to Howard and ask how the town is faring."
 	},
 	"DefendTownThreeQuest": {
+		"ReportDialogue": "That trouble has finally settled down. But now someone wants to perform a sacrifice right in the streets. We can't let that happen. Stop them!",
 		"Objective": "Defend Yggdrasil Town, Part III: Repel the Heiress and the Assassin",
 		"InvasionDescription": "Trouble involving the Heiress and the Assassin has disturbed the town again. Help Howard restore order.",
 		"ReportDescription": "The trouble with the Heiress and the Assassin has settled for now. Report back to Howard."
 	},
 	"DefendTownFourQuest": {
+		"ReportDialogue": "You stopped that sacrifice just in time and kept the townsfolk safe. On behalf of everyone in Yggdrasil Town, thank you.",
 		"Objective": "Defend Yggdrasil Town, Part IV: Stop the street sacrifice",
 		"InvasionDescription": "Someone is attempting a sacrifice in the streets. Put a stop to it before it is too late.",
 		"ReportDescription": "The street sacrifice has been stopped. Let Howard know the town is safe for now."
 	},
 	"DefendTownQuest": {
+		"IntroDialogue": "What's troubling me? I heard you recently defeated the Squamous Shell. Good. That proves you can handle yourself. Some troublemakers have been stirring things up in town, and the residents are complaining. Go teach them a lesson.",
 		"Hint": "Unlocks after defeating the Squamous Shell.",
 		"Name": "Defend Yggdrasil Town",
 		"IntroObjective": "Howard seems troubled by the disturbances in town. Go and ask him about them.",

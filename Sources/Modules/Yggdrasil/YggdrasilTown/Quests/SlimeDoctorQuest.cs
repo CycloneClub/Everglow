@@ -10,7 +10,7 @@ public sealed class SlimeDoctorQuest : TownNpcQuest
 	public override void Initialize()
 	{
 		Objectives
-			.Add(new WorldTalkObjective(GiverNpcType).WithDescription(Text(Name + ".IntroObjective")))
+			.Add(new WorldTalkObjective(GiverNpcType, Text(Name + ".IntroDialogue")).WithDescription(Text(Name + ".IntroObjective")))
 			.Add(new WorldReachObjective(_ => false, Text(Name + ".Objective"))
 				.WithDescription(Text(Name + ".DeliveryDescription")));
 	}

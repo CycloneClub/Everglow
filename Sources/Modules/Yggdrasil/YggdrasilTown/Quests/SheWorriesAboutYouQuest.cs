@@ -11,10 +11,10 @@ public sealed class SheWorriesAboutYouQuest : TownNpcQuest
 	public override void Initialize()
 	{
 		Objectives
-			.Add(new WorldTalkObjective(GiverNpcType).WithDescription(Text(Name + ".IntroObjective")))
+			.Add(new WorldTalkObjective(GiverNpcType, Text(Name + ".IntroDialogue")).WithDescription(Text(Name + ".IntroObjective")))
 			.Add(new WorldKillNPCObjective(ModContent.NPCType<CrimsonSpell>(), 1)
 				.WithDescription(Text(Name + ".DefeatDescription")))
-			.Add(new WorldTalkObjective(GiverNpcType).WithDescription(Text(Name + ".ReportDescription")));
+			.Add(new WorldTalkObjective(GiverNpcType, Text(Name + ".Completion")).WithDescription(Text(Name + ".ReportDescription")));
 	}
 
 	public override int GiverNpcType => ModContent.NPCType<Guard_of_YggdrasilTown>();

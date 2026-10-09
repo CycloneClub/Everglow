@@ -17,18 +17,18 @@ public sealed class DefendTownQuest : TownNpcQuest
 	public override void Initialize()
 	{
 		Objectives
-			.Add(new WorldTalkObjective(GiverNpcType).WithDescription(Text(Name + ".IntroObjective")))
+			.Add(new WorldTalkObjective(GiverNpcType, Text(Name + ".IntroDialogue")).WithDescription(Text(Name + ".IntroObjective")))
 			.Add(new DrunkenMinerInvasionObjective().WithDescription(Text("DefendTownOneQuest.InvasionDescription")))
-			.Add(new WorldTalkObjective(GiverNpcType).WithDescription(Text("DefendTownOneQuest.ReportDescription")))
+			.Add(new WorldTalkObjective(GiverNpcType, Text("DefendTownOneQuest.ReportDialogue")).WithDescription(Text("DefendTownOneQuest.ReportDescription")))
 			.Add(new WorldReachObjective(_ => false, Text("DefendTownTwoQuest.Objective"))
 				.WithDescription(Text("DefendTownTwoQuest.InvasionDescription")))
-			.Add(new WorldTalkObjective(GiverNpcType).WithDescription(Text("DefendTownTwoQuest.ReportDescription")))
+			.Add(new WorldTalkObjective(GiverNpcType, Text("DefendTownTwoQuest.ReportDialogue")).WithDescription(Text("DefendTownTwoQuest.ReportDescription")))
 			.Add(new WorldReachObjective(_ => false, Text("DefendTownThreeQuest.Objective"))
 				.WithDescription(Text("DefendTownThreeQuest.InvasionDescription")))
-			.Add(new WorldTalkObjective(GiverNpcType).WithDescription(Text("DefendTownThreeQuest.ReportDescription")))
+			.Add(new WorldTalkObjective(GiverNpcType, Text("DefendTownThreeQuest.ReportDialogue")).WithDescription(Text("DefendTownThreeQuest.ReportDescription")))
 			.Add(new WorldReachObjective(_ => false, Text("DefendTownFourQuest.Objective"))
 				.WithDescription(Text("DefendTownFourQuest.InvasionDescription")))
-			.Add(new WorldTalkObjective(GiverNpcType).WithDescription(Text("DefendTownFourQuest.ReportDescription")));
+			.Add(new WorldTalkObjective(GiverNpcType, Text("DefendTownFourQuest.ReportDialogue")).WithDescription(Text("DefendTownFourQuest.ReportDescription")));
 	}
 
 	public override int GiverNpcType => ModContent.NPCType<Howard_Warden>();

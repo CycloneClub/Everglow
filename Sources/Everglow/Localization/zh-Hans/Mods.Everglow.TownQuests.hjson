@@ -2,6 +2,8 @@
 	"Anna": "安娜",
 	"Howard": "霍华德",
 	"SmuggledAleQuest": {
+		"IntroDialogue": "喂，那边的，既然你都问了，你身上有麦芽酒吗？帮我搞一点来，一点就好，小心别被上头看见。",
+		"DeliveryEndDialogue": "嘘，小声点，别让上头看见。谢啦，这些钱和凝胶你拿着，就当是跑腿的谢礼。",
 		"Name": "私酒",
 		"Description": "安娜有一桩不想让上司知道的小委托。",
 		"Hint": "进入天穹树后解锁。",
@@ -9,6 +11,7 @@
 		"DeliveryDescription": "安娜想偷偷喝上一点麦芽酒，帮她带些来，记得避开她的上司。"
 	},
 	"SheWorriesAboutYouQuest": {
+		"IntroDialogue": "你最近听说过被称为血月教徒的怪物吗？他可真是个麻烦，如果遇到了，要小心。",
 		"Name": "她担心你",
 		"Description": "血月教徒的传闻让安娜有些担心。",
 		"Hint": "完成「私酒」后解锁。",
@@ -18,6 +21,7 @@
 		"ReportDescription": "你击杀了血月教徒，回去告诉安娜，让她放心吧。"
 	},
 	"SlimeDoctorQuest": {
+		"IntroDialogue": "这孩子之前受伤了，但是我抽不开身，能麻烦你帮我搞些凝胶来吗？凝胶应该会有帮助。",
 		"Name": "史莱姆医生",
 		"Description": "一个小家伙受了伤，安娜需要帮手照料它。",
 		"Hint": "平息醉酒矿工游行后解锁。",
@@ -26,26 +30,31 @@
 		"DeliveryDescription": "安娜抽不开身照料受伤的小家伙，帮她带些凝胶来，也许能派上用场。"
 	},
 	"DefendTownOneQuest": {
+		"ReportDialogue": "干得不错，这帮醉酒的矿工总算消停了。不过镇上还有一群飞贼在闹事，恐怕还得请你搭把手。",
 		"Objective": "守卫天穹镇 其一：挡住醉酒矿工游行",
 		"InvasionDescription": "醉酒矿工的游行扰乱了小镇的安宁，帮霍华德平息这场骚乱。",
 		"ReportDescription": "醉酒矿工的骚乱暂时平息了，去向霍华德报告情况。"
 	},
 	"DefendTownTwoQuest": {
+		"ReportDialogue": "飞贼的事我听说了，办得漂亮。可镇上还没太平多久，那位千金和刺客又闹出了风波，还得劳烦你去看看。",
 		"Objective": "守卫天穹镇 其二：挡住飞贼横行",
 		"InvasionDescription": "镇上的飞贼又惹出了麻烦，阻止他们继续作乱。",
 		"ReportDescription": "飞贼引起的骚乱已经平息，回去问问霍华德镇上的情况。"
 	},
 	"DefendTownThreeQuest": {
+		"ReportDialogue": "这场风波总算平息了。不过有人竟然想在街头举行活祭，这可不能放任不管。快去阻止他们！",
 		"Objective": "守卫天穹镇 其三：挡住千金与刺客",
 		"InvasionDescription": "千金与刺客的风波让小镇再起骚乱，帮助霍华德恢复秩序。",
 		"ReportDescription": "千金与刺客的风波暂告一段落，去向霍华德汇报。"
 	},
 	"DefendTownFourQuest": {
+		"ReportDialogue": "幸亏你及时阻止了那场活祭，镇民们才没有遭殃。辛苦了，我替天穹镇的大家谢谢你。",
 		"Objective": "守卫天穹镇 其四：阻止当街活祭",
 		"InvasionDescription": "有人试图在街头举行活祭，尽快阻止这场暴行。",
 		"ReportDescription": "街头的活祭已经被阻止，回去告诉霍华德小镇暂时安全了。"
 	},
 	"DefendTownQuest": {
+		"IntroDialogue": "我有什么麻烦？听说你最近击败了龙鳞古壳，非常好，这证明你确实有实力。正好最近小镇上有一些闹事的混混，镇民都在抱怨，你去教育教育他们。",
 		"Hint": "击败龙鳞古壳后解锁。",
 		"Name": "守卫天穹镇",
 		"IntroObjective": "霍华德似乎正为镇上的骚乱发愁，去问问他吧。",
