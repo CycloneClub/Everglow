@@ -55,6 +55,8 @@ public class StoveUIManager : GameInterfaceLayer
 	/// <param name="width"></param>
 	/// <param name="height"></param>
 	/// <param name="color"></param>
+	/// <param name="alpha">Fade amount subtracted from one to scale the panel color; one makes the panel transparent.</param>
+	/// <param name="texture">Nine-piece panel texture; null uses the default stove UI panel texture.</param>
 	public static void Draw9Pieces(Vector2 anchorCenter, float width, float height, Color color, float alpha, Texture2D texture = default)
 	{
 		color *= 1 - alpha;

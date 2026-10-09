@@ -112,6 +112,7 @@ public struct Rotation
 	/// <summary>
 	/// 选择就近的旋转方向进行逼近
 	/// </summary>
+	/// <param name="start">开始逼近时的旋转角度。</param>
 	/// <param name="target"> </param>
 	/// <param name="value"> </param>
 	/// <returns> </returns>

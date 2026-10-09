@@ -408,8 +408,7 @@ public class GiantPinetree : ModSystem
 	/// </summary>
 	/// <param name="startPoint"></param>
 	/// <param name="startRotation"></param>
-	/// <param name="trendRotation"></param>
-	/// <param name="naturalCurve"></param>
+	/// <param name="expectLength">枝干开始收束变细前的生长迭代数阈值。</param>
 	public static void GenerateBranch(Point16 startPoint, float startRotation = 0, float expectLength = 40)
 	{
 		int positonX = startPoint.X;
@@ -906,9 +905,9 @@ public class GiantPinetree : ModSystem
 	/// <summary>
 	/// 随机生成小松塔
 	/// </summary>
-	/// <param name="length"></param>
 	/// <param name="position"></param>
-	/// <param name="range"></param>
+	/// <param name="leftWidth">从 position 向左扫描的格数，包含左端列。</param>
+	/// <param name="rightWidth">从 position 向右扫描的格数，不包含右端列。</param>
 	public static void DistributePineCone(Point16 position, int leftWidth, int rightWidth)
 	{
 		for (int time = -leftWidth; time < rightWidth; time++)
@@ -950,9 +949,9 @@ public class GiantPinetree : ModSystem
 	/// <summary>
 	/// 随机生成松叶堆
 	/// </summary>
-	/// <param name="length"></param>
 	/// <param name="position"></param>
-	/// <param name="range"></param>
+	/// <param name="leftWidth">从 position 向左扫描的格数，包含左端列。</param>
+	/// <param name="rightWidth">从 position 向右扫描的格数，不包含右端列。</param>
 	public static void DistributePineNeedle(Point16 position, int leftWidth, int rightWidth)
 	{
 		for (int time = -leftWidth; time < rightWidth; time++)

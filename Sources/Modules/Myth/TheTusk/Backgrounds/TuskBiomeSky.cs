@@ -204,6 +204,7 @@ public class TuskBiomeSky : CustomSky
 	/// </summary>
 	/// <param name="texSize"></param>
 	/// <param name="MoveStep"></param>
+	/// <param name="MulSize">背景绘制倍率，用于将屏幕尺寸换算为采样矩形的尺寸。</param>
 	/// <returns></returns>
 	public Rectangle GetDrawRect(Vector2 texSize, float MoveStep, float MulSize = 1)
 	{

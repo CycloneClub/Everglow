@@ -153,6 +153,7 @@ public static class PlayerUtils
 	/// </summary>
 	/// <param name="player"></param>
 	/// <param name="life"></param>
+	/// <param name="showActualHeal">Whether combat text shows the amount actually restored instead of the requested life amount.</param>
 	public static void HealLife(this Player player, int life, bool showActualHeal = false)
 	{
 		int lifeCanHeal = player.statLifeMax2 - player.statLife;
@@ -179,6 +180,7 @@ public static class PlayerUtils
 	/// </summary>
 	/// <param name="player"></param>
 	/// <param name="mana"></param>
+	/// <param name="showActualHeal">Whether combat text shows the amount actually restored instead of the requested mana amount.</param>
 	public static void HealMana(this Player player, int mana, bool showActualHeal = false)
 	{
 		int manaCanHeal = player.statManaMax2 - player.statMana;

@@ -448,7 +448,6 @@ public abstract class HangingTile : ModTile, ITileFluentlyDrawn
 	/// </summary>
 	/// <param name="i"></param>
 	/// <param name="j"></param>
-	/// <param name="rope"></param>
 	public virtual void AddRope(int i, int j)
 	{
 		Point pos = new Point(i, j);
@@ -1015,9 +1014,11 @@ public abstract class HangingTile : ModTile, ITileFluentlyDrawn
 	/// <param name="spriteBatch"></param>
 	/// <param name="texture"></param>
 	/// <param name="drawPos">Screen Position</param>
+	/// <param name="tilePos">Tile coordinates of the winch anchoring this rope, available to custom drawing overrides.</param>
 	/// <param name="rope"></param>
 	/// <param name="index"></param>
 	/// <param name="rotation"></param>
+	/// <param name="tileLight">Lighting or paint-adjusted color used to draw this rope segment or its hanging item.</param>
 	public virtual void DrawRopeUnit(SpriteBatch spriteBatch, Texture2D texture, Vector2 drawPos, Point tilePos, Rope rope, int index, float rotation, Color tileLight)
 	{
 		var masses = rope.Masses;

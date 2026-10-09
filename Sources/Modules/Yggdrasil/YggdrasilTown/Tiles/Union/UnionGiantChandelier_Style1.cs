@@ -127,11 +127,11 @@ public class UnionGiantChandelier_Style1 : ShapeDataTile, ITileFluentlyDrawn
 	/// <summary>
 	/// 绘制巨形吊灯
 	/// </summary>
-	/// <param name="swayCoefficient">撞钟的摇摆系数</param>
-	/// <param name="offsetX">绘制偏移</param>
-	/// <param name="tilePos">用于进行摇晃和风速判定的物块的坐标</param>
-	/// <param name="paintPos">用于应用漆的物块的坐标</param>
-	/// <param name="drawCenterPos">绘制中心的坐标</param>
+	/// <param name="screenPosition">屏幕左上角的世界坐标，用于将物块位置转换为绘制坐标。</param>
+	/// <param name="pos">当前绘制格的物块坐标，用于获取贴图帧、油漆和光照。</param>
+	/// <param name="topLeft">吊灯整体左上角的物块坐标，用于确定摇摆中心和风力、推力判定位置。</param>
+	/// <param name="swayOffset">随风力和推力变化的竖直绘制偏移系数；为0时使用统一旋转幅度。</param>
+	/// <param name="swayStrength">风力和推力引起的旋转幅度系数。</param>
 	/// <param name="spriteBatch">合批绘制</param>
 	/// <param name="tileDrawing">原版TileDrawing类的实例，有很多好用的方法</param>
 	public void HangingObjectFluentDraw(Vector2 screenPosition, Point pos, SpriteBatch spriteBatch, TileDrawing tileDrawing, Point topLeft, float swayOffset = -4f, float swayStrength = 0.15f)

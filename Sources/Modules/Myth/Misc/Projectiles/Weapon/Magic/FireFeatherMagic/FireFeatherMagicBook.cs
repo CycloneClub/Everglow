@@ -72,7 +72,8 @@ internal class FireFeatherMagicBook : MagicBookProjectile
 	/// 对于书本前部的绘制
 	/// </summary>
 	/// <param name="tex"></param>
-	/// <param name="Glowing"></param>
+	/// <param name="GlowType">颜色模式：0 使用环境光照，2 使用 effectColor，其他值使用 GlowColor。</param>
+	/// <param name="MulSize">相对于 BookScale 的额外绘制尺寸倍率。</param>
 	public override void DrawFront(Texture2D tex, int GlowType = 0, float MulSize = 1f)
 	{
 		Player player = Main.player[Projectile.owner];

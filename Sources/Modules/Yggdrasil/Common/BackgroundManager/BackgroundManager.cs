@@ -217,8 +217,9 @@ public class BackgroundManager
 	/// <summary>
 	/// Get the draw frame of texture by screenPos, depth(1 , ∞) and anchor world pos.
 	/// </summary>
-	/// <param name="texSize"></param>
-	/// <param name="MoveStep"></param>
+	/// <param name="texture">The background texture whose dimensions define the sampling center.</param>
+	/// <param name="depth">The parallax depth; screen movement is divided by this value.</param>
+	/// <param name="anchorWorldPos">The world-space position aligned with the center of the texture.</param>
 	/// <returns></returns>
 	public static Rectangle GetDrawFrame(Texture2D texture, float depth, Vector2 anchorWorldPos)
 	{

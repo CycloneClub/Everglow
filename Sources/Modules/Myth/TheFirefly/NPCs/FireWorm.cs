@@ -142,6 +142,7 @@ public abstract class FireWormHead : FireWorm
 	/// <param name="source">蠕虫来源</param>
 	/// <param name="type">蠕虫NPC的段的ID。T</param>
 	/// <param name="latestNPC">The whoAmI of the most-recently spawned segment NPC in the worm, including the head</param>
+	/// <param name="ai2">写入 latestNPC 所指向的上一节 NPC 的 ai[2] 的值。</param>
 	/// <returns></returns>
 	public int SpawnSegment(IEntitySource source, int type, int latestNPC, int ai2 = 0)
 	{

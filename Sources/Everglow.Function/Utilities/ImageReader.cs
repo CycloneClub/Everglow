@@ -119,10 +119,7 @@ public static class ImageReader
 	/// 根据传入矩形剪裁图片的一部分
 	/// </summary>
 	/// <param name="input"></param>
-	/// <param name="width"></param>
-	/// <param name="height"></param>
-	/// <param name="x"></param>
-	/// <param name="y"></param>
+	/// <param name="rect">要保留的裁剪区域，位置和尺寸均以源图像像素为单位。</param>
 	private static void CorpImage(Image input, Rectangle rect)
 	{
 		input.Mutate(img => img.Crop(SixLabors.ImageSharp.Rectangle.FromLTRB(rect.X, rect.Y, rect.Width + rect.X, rect.Height + rect.Y)));

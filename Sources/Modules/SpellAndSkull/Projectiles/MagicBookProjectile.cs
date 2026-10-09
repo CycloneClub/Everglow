@@ -261,6 +261,8 @@ public abstract class MagicBookProjectile : ModProjectile
 	/// 对于书页的绘制，包括正在被翻起的以及堆叠在前后两侧的。关于纸张的绘制，因为较小，都没有经过严格的投影，随手捏了一个近似函数，只保证视觉效果上大致正确
 	/// </summary>
 	/// <param name="tex"></param>
+	/// <param name="GlowType">颜色模式：0 使用环境光照，2 使用 effectColor，其他值使用 GlowColor。</param>
+	/// <param name="MulSize">相对于 BookScale 的额外绘制尺寸倍率。</param>
 	public virtual void DrawPaper(Texture2D tex, int GlowType = 0, float MulSize = 1f)
 	{
 		Player player = Main.player[Projectile.owner];
@@ -437,7 +439,8 @@ public abstract class MagicBookProjectile : ModProjectile
 	/// 对于书本后部的绘制，只有一页,This function is drawing the back side of book, no "drawback".
 	/// </summary>
 	/// <param name="tex"></param>
-	/// <param name="Glowing"></param>
+	/// <param name="GlowType">颜色模式：0 使用环境光照，2 使用 effectColor，其他值使用 GlowColor。</param>
+	/// <param name="MulSize">相对于 BookScale 的额外绘制尺寸倍率。</param>
 	public virtual void DrawBack(Texture2D tex, int GlowType = 0, float MulSize = 1f)
 	{
 		// 这里应该不用注解了（
@@ -506,7 +509,8 @@ public abstract class MagicBookProjectile : ModProjectile
 	/// 对于书本前部的绘制
 	/// </summary>
 	/// <param name="tex"></param>
-	/// <param name="Glowing"></param>
+	/// <param name="GlowType">颜色模式：0 使用环境光照，2 使用 effectColor，其他值使用 GlowColor。</param>
+	/// <param name="MulSize">相对于 BookScale 的额外绘制尺寸倍率。</param>
 	public virtual void DrawFront(Texture2D tex, int GlowType = 0, float MulSize = 1f)
 	{
 		Player player = Main.player[Projectile.owner];

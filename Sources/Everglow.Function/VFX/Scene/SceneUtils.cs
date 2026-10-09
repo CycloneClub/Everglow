@@ -13,6 +13,8 @@ public class SceneUtils
 	/// <param name="startCoordX"></param>
 	/// <param name="startCoordY"></param>
 	/// <param name="bars"></param>
+	/// <param name="flipH">Whether to reverse the horizontal texture coordinates of this tile.</param>
+	/// <param name="colorFactors">Multiplier applied to the lighting color at each vertex.</param>
 	public static void DrawTileCover(int i, int j, Texture2D texture, float startCoordX, float startCoordY, List<Vertex2D> bars, bool flipH, float colorFactors)
 	{
 		Vector2 drawPos0 = new Point(i, j).ToWorldCoordinates() - new Vector2(8);
@@ -50,6 +52,8 @@ public class SceneUtils
 	/// <param name="j"></param>
 	/// <param name="texture"></param>
 	/// <param name="bars"></param>
+	/// <param name="flipH">Whether to extend the scene leftward from the anchor tile and mirror each tile's texture horizontally.</param>
+	/// <param name="colorFactors">Multiplier passed to each tile's vertex lighting colors.</param>
 	public static void DrawMultiSceneTowardBottom(int i, int j, Texture2D texture, List<Vertex2D> bars, bool flipH, float colorFactors = 1)
 	{
 		for (int x = 0; x < texture.Width; x += 16)

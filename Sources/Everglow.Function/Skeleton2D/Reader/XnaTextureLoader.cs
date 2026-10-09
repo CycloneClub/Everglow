@@ -16,7 +16,7 @@ public class XnaTextureLoader : TextureLoader
 	/// <summary>
 	/// Constructor.
 	/// </summary>
-	/// <param name="device">The graphics device to be used.</param>
+	/// <param name="targetAtlas">Texture assigned to atlas pages when loading a single texture layer.</param>
 	/// <param name="loadMultipleTextureLayers">If <c>true</c> multiple textures layers
 	/// (e.g. a diffuse/albedo texture and a normal map) are loaded instead of a single texture.
 	/// Names are constructed based on suffixes added according to the <c>textureSuffixes</c> parameter.</param>

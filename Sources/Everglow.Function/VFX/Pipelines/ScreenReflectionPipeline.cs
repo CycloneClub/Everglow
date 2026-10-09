@@ -112,6 +112,7 @@ public class ScreenReflectionPipeline : Pipeline
 	/// <param name="A"></param>
 	/// <param name="B"></param>
 	/// <param name="C"></param>
+	/// <param name="N">输出写入三个顶点的单位法线，方向与 (B - A) 和 (C - A) 的叉积相反。</param>
 	/// <returns></returns>
 	public static List<CrystalVertex> CreateFace(Vector3 A, Vector3 B, Vector3 C, out Vector3 N)
 	{

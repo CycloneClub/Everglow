@@ -138,14 +138,14 @@ public class DoubleArmsChineseStreetLamp : ModTile, ITileFluentlyDrawn
 	/// </summary>
 	/// <param name="frame"></param>
 	/// <param name="swayCoefficient"></param>
-	/// <param name="offsetX"></param>
-	/// <param name="offsetY"></param>
 	/// <param name="tilePos"></param>
 	/// <param name="paintPos"></param>
 	/// <param name="drawCenterPos"></param>
 	/// <param name="spriteBatch"></param>
 	/// <param name="tileDrawing"></param>
 	/// <param name="color"></param>
+	/// <param name="offset">相对于 drawCenterPos 的绘制偏移，单位为像素。</param>
+	/// <param name="origin">相对于源矩形左上角的旋转原点，单位为像素。</param>
 	private void DrawLanternPiece(Rectangle frame, float swayCoefficient, Vector2 offset, Point tilePos, Point paintPos, Vector2 drawCenterPos, Vector2 origin, SpriteBatch spriteBatch, TileDrawing tileDrawing, Color color = default(Color))
 	{
 		// 回声涂料

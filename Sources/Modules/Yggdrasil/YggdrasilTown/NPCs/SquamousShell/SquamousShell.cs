@@ -1348,7 +1348,6 @@ public class SquamousShell : ModNPC
 	/// <summary>
 	/// 飞天风球
 	/// </summary>
-	/// <param name="direction"></param>
 	/// <returns></returns>
 	public IEnumerator<ICoroutineInstruction> FlyingAirProjectiles()
 	{
@@ -1478,7 +1477,6 @@ public class SquamousShell : ModNPC
 	/// <summary>
 	/// 飞天岩牙
 	/// </summary>
-	/// <param name="direction"></param>
 	/// <returns></returns>
 	public IEnumerator<ICoroutineInstruction> FlyingRockTusk()
 	{
@@ -1584,7 +1582,6 @@ public class SquamousShell : ModNPC
 	/// <summary>
 	/// 下一个技能
 	/// </summary>
-	/// <param name="direction"></param>
 	/// <returns></returns>
 	public IEnumerator<ICoroutineInstruction> NextAttack()
 	{

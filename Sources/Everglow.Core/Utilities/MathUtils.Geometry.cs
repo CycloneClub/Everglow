@@ -58,8 +58,7 @@ public static partial class MathUtils
 	/// </summary>
 	/// <param name="circleCenter"></param>
 	/// <param name="radius"></param>
-	/// <param name="aabbMin"></param>
-	/// <param name="aabbMax"></param>
+	/// <param name="hitBox">与圆形进行相交检测的轴对齐矩形。</param>
 	/// <returns></returns>
 	public static bool IntersectsCircleAABB(Vector2 circleCenter, float radius, Rectangle hitBox)
 	{

@@ -35,6 +35,7 @@ public static partial class CollisionUtils
 	/// </summary>
 	/// <param name="a"></param>
 	/// <param name="b"></param>
+	/// <param name="allowEdge">为 true 时允许边缘接触而不判为相交；为 false 时仅边缘接触也判为相交。</param>
 	/// <returns></returns>
 	public static bool Intersect(this AABB a, AABB b, bool allowEdge = false)
 	{

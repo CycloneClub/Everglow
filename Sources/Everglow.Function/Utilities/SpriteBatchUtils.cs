@@ -190,11 +190,13 @@ public static class SpriteBatchUtils
 	/// <summary>
 	/// Add vertices just like what Main.spriteBatch.Draw does. But sampling environment light at each vertex.
 	/// </summary>
+	/// <param name="bars">Vertex list to which the generated lit grid is appended.</param>
 	/// <param name="position"></param>
 	/// <param name="frame"></param>
 	/// <param name="origin"></param>
 	/// <param name="tex"></param>
 	/// <param name="screenPos"></param>
+	/// <param name="gridSize">Pixel size used to determine the number of grid divisions along each dimension of the texture frame.</param>
 	/// <param name="rotation"></param>
 	/// <param name="alpha"></param>
 	public static void AddVertex_Grid(List<Vertex2D> bars, Vector2 position, Rectangle? frame, Vector2 origin, Texture2D tex, bool screenPos = false, int gridSize = 16, float rotation = 0, float alpha = 1f)
