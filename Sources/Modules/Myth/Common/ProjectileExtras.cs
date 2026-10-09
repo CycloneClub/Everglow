@@ -1,4 +1,5 @@
 using Terraria.GameContent;
+
 namespace Everglow.Myth.Common;
 
 public static class ProjectileExtras
@@ -220,6 +221,7 @@ public static class ProjectileExtras
 		}
 		projectile.rotation += rotationSpeed;
 	}
+
 	public static void DrawString(int index, Vector2 to = default)
 	{
 		Projectile projectile = Main.projectile[index];

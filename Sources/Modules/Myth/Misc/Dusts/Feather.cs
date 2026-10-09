@@ -12,6 +12,7 @@ public class Feather : ModDust
 		dust.color.A = (byte)Main.rand.Next(130, 205);
 		dust.rotation = Main.rand.NextFloat(6.283f);
 	}
+
 	public override bool Update(Dust dust)
 	{
 		dust.position += dust.velocity;
@@ -55,6 +56,7 @@ public class Feather : ModDust
 
 		return false;
 	}
+
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		return lightColor;

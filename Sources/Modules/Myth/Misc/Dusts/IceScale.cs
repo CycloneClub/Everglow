@@ -40,9 +40,11 @@ public class IceScale : ModDust
 		return new Color?(new Color(r, g, b, 0f));
 	}
 }
+
 public class IceScale2 : ModDust
 {
 	public override string Texture => "Everglow/Myth/Misc/Dusts/IceScale";
+
 	public override void OnSpawn(Dust dust)
 	{
 		dust.noGravity = true;
@@ -81,9 +83,11 @@ public class IceScale2 : ModDust
 		return new Color?(new Color(r, g, b, 0f));
 	}
 }
+
 public class IceScale3 : ModDust
 {
 	public override string Texture => "Everglow/Myth/Misc/Dusts/IceScale";
+
 	public override void OnSpawn(Dust dust)
 	{
 		dust.noGravity = true;

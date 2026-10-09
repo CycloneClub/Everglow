@@ -9,6 +9,7 @@ public class BlackFog : ModDust
 		dust.scale *= 1f;
 		dust.rotation = Main.rand.NextFloat((float)Math.PI);
 	}
+
 	public override bool Update(Dust dust)
 	{
 		dust.position += dust.velocity;
@@ -22,6 +23,7 @@ public class BlackFog : ModDust
 
 		return false;
 	}
+
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		return new Color?(new Color(0f, 0f, 0f, 0.5f));

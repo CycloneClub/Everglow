@@ -22,6 +22,7 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords
 			PowerfulStabProj = ModContent.ProjectileType<BloodGoldBayonet_Pro_Stab>();
 			base.SetDefaults();
 		}
+
 		public override bool AltFunctionUse(Player player)
 		{
 			if (CurrentPowerfulStabCD > 0)
@@ -48,6 +49,7 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords
 			player.Hurt(PlayerDeathReason.ByPlayerItem(0, Item), 15, 0, false, true, false, 0);
 			return true;
 		}
+
 		public override void AddRecipes()
 		{
 			CreateRecipe().

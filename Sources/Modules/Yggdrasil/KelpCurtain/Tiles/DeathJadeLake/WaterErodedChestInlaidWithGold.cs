@@ -105,6 +105,7 @@ public class WaterErodedChestInlaidWithGold : ModTile
 	{
 		return FurnitureUtils.ChestRightClick(i, j);
 	}
+
 	public override void MouseOver(int i, int j)
 	{
 		Player player = Main.LocalPlayer;
@@ -157,6 +158,7 @@ public class WaterErodedChestInlaidWithGold : ModTile
 			player.cursorItemIconID = 0;
 		}
 	}
+
 	public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		base.PostDraw(i, j, spriteBatch);

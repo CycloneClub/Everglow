@@ -19,8 +19,11 @@ public sealed class QuestPresentationSystem : ModSystem
 	private readonly List<QuestNotification> _pendingNotifications = [];
 
 	public event Action<QuestIdentity> QuestAdded;
+
 	public event Action<QuestIdentity> QuestRemoved;
+
 	public event Action<QuestIdentity> QuestStatusUpdated;
+
 	public event Action<QuestIdentity> QuestObjectiveUpdated;
 
 	public QuestPresentationService Service { get; private set; }

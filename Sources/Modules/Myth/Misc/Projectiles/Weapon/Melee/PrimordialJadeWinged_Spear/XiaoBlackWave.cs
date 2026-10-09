@@ -15,16 +15,19 @@ internal class XiaoBlackWave : ModProjectile
 		Projectile.tileCollide = false;
 		Projectile.extraUpdates = 6;
 	}
+
 	public override void AI()
 	{
 		Projectile.velocity *= 0;
 		Energy += Projectile.ai[0];
 		addi++;
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;
 	}
+
 	internal Vector3[] CirclePoint = new Vector3[120];
 	internal float Rad = 0;
 	internal Vector2[] Circle2D = new Vector2[120];
@@ -32,6 +35,7 @@ internal class XiaoBlackWave : ModProjectile
 	internal float Energy = 0;
 	internal int addi = 0;
 	internal Vector2 v0 = Vector2.Zero;
+
 	public override void PostDraw(Color lightColor)
 	{
 		if (v0 == Vector2.Zero)

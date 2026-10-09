@@ -7,10 +7,12 @@ public class ShadowPotionBuff : ModBuff
 {
 	internal int LightTime = 0;
 	private Player player = Main.LocalPlayer;
+
 	public override void SetStaticDefaults()
 	{
 		Main.buffNoSave[Type] = true;
 	}
+
 	public override void Update(Player player, ref int buffIndex)
 	{
 		Color playerLight = Lighting.GetColor((int)(player.Center.X / 16), (int)(player.Center.Y / 16));

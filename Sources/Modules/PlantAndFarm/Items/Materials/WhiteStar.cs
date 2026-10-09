@@ -9,6 +9,7 @@ public class WhiteStar : ModItem
 		// DisplayName.SetDefault("Silk Star");
 		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "白锦星");
 	}
+
 	public override void SetDefaults()
 	{
 		Item.width = 24;

@@ -8,6 +8,7 @@ public class PurpleBallEffect : ModProjectile
 	{
 		// DisplayName.SetDefault("PurpleBallEffect");
 	}
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 20;
@@ -20,6 +21,7 @@ public class PurpleBallEffect : ModProjectile
 		Projectile.tileCollide = false;
 		Projectile.scale = 5;
 	}
+
 	public override void AI()
 	{
 		Projectile.velocity *= 0;
@@ -43,6 +45,7 @@ public class PurpleBallEffect : ModProjectile
 		}
 		AI0 = Projectile.ai[0];
 	}
+
 	private Vector2 v0;
 	private float Scale = 1;
 	private int Pro = 0;

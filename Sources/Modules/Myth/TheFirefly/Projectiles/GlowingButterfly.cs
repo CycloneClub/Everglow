@@ -7,6 +7,7 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 public class GlowingButterfly : ModProjectile
 {
 	private FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
+
 	public override void SetStaticDefaults()
 	{
 		Main.projFrames[Projectile.type] = 6;
@@ -40,6 +41,7 @@ public class GlowingButterfly : ModProjectile
 	private float omega = 0;
 
 	private int useStyle = 0;
+
 	public override void AI()
 	{
 		Player owner = Main.player[Projectile.owner];
@@ -339,6 +341,7 @@ public class GlowingButterfly : ModProjectile
 			return;
 		}
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D tex = ModAsset.GlowingButterfly.Value;

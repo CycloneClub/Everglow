@@ -13,6 +13,7 @@ public class PurpleReedHalo : ModItem
 		// Tooltip.SetDefault("Increases max Hp by 30\nIncreases max mana by 40\n'smells good and looks good'");
 		// Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "生命上限增加30\n魔力上限增加40\n'好闻又好看'");
 	}
+
 	public override void SetDefaults()
 	{
 		Item.width = 46;
@@ -21,11 +22,13 @@ public class PurpleReedHalo : ModItem
 		Item.accessory = true;
 		Item.rare = 3;
 	}
+
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
 		player.statLifeMax2 += 30;
 		player.statManaMax2 += 40;
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

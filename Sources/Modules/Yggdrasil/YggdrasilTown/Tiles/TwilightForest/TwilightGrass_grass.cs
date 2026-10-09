@@ -6,6 +6,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.TwilightForest;
 public class TwilightGrass_grass_fore : TileVFX
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawPlayers;
+
 	public override void OnSpawn()
 	{
 		Texture = ModAsset.TwilightGrass_grass.Value;

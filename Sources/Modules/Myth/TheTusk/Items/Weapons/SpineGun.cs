@@ -70,6 +70,7 @@ public class SpineGun : ModItem
 		Projectile.NewProjectileDirect(source, position + newVelocity * 0.9f + new Vector2(0, -6), newVelocity * 2 * Beilv, ModContent.ProjectileType<Projectiles.Weapon.SplieSpineBullet>(), damage, knockback, player.whoAmI, player.GetCritChance(DamageClass.Ranged) + player.GetCritChance(DamageClass.Generic), type);
 		return false;
 	}
+
 	public override Vector2? HoldoutOffset()
 	{
 		return new Vector2(-20f, -2f);

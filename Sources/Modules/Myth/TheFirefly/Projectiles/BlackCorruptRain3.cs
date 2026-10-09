@@ -58,6 +58,7 @@ public class BlackCorruptRain3 : ModProjectile
 		Main.spriteBatch.Draw(light, Projectile.Center - Main.screenPosition, null, new Color(1f, 1f, 1f, 0), Projectile.rotation, light.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
 		return false;
 	}
+
 	private static void DrawTexCircle_VFXBatch(VFXBatch spriteBatch, float radius, float width, Color color, Vector2 center, Texture2D tex, double addRot = 0)
 	{
 		var circle = new List<Vertex2D>();

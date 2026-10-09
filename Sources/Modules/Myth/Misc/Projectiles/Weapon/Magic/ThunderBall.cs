@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.Audio;
+
 namespace Everglow.Myth.Misc.Projectiles.Weapon.Magic;
 
 public class ThunderBall : ModProjectile
@@ -19,6 +20,7 @@ public class ThunderBall : ModProjectile
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 60;
 	}
+
 	internal int Tokill = -1;
 	internal bool[] HasBeenHit = new bool[200];
 	internal int[] HasCool = new int[200];
@@ -27,6 +29,7 @@ public class ThunderBall : ModProjectile
 	internal int addi = 0;
 	private bool Nul = false;
 	private Vector2[] vdp = new Vector2[65];
+
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
 		Projectile.penetrate--;
@@ -56,6 +59,7 @@ public class ThunderBall : ModProjectile
 		}
 		return false;
 	}
+
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		float a = Main.rand.NextFloat(0, 500.5f);
@@ -73,6 +77,7 @@ public class ThunderBall : ModProjectile
 			Main.dust[num25].noGravity = false;
 		}
 	}
+
 	public override void AI()
 	{
 		addi += 1;

@@ -36,6 +36,7 @@ public class FireFeatherMagic : SpellTomeItem
 		DecorativeProjectileTypes.Add(ModContent.ProjectileType<FireFeatherMagicBook>());
 		DecorativeProjectileTypes.Add(ModContent.ProjectileType<FireFeatherMagicArray>());
 	}
+
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		if (player.GetModPlayer<MagicBookPlayer>().MagicBookLevel == 1)
@@ -53,6 +54,7 @@ public class FireFeatherMagic : SpellTomeItem
 		}
 		return false;
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

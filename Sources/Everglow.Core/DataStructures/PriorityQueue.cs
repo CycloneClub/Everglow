@@ -8,6 +8,7 @@ public class PriorityQueue<T> where T : IComparable<T>, new()
 {
 	private readonly List<T> m_heap;
 	private int m_top;
+
 	public PriorityQueue()
 	{
 		m_top = 0;
@@ -60,10 +61,12 @@ public class PriorityQueue<T> where T : IComparable<T>, new()
 		Sink();
 		return ret;
 	}
+
 	private void Swap(int i, int j)
 	{
 		(m_heap[j], m_heap[i]) = (m_heap[i], m_heap[j]);
 	}
+
 	private void Swim()
 	{
 		int k = m_top;
@@ -73,6 +76,7 @@ public class PriorityQueue<T> where T : IComparable<T>, new()
 			k >>= 1;
 		}
 	}
+
 	private void Sink()
 	{
 		int k = 1;

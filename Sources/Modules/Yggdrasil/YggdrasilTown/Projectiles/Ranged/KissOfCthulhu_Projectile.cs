@@ -14,6 +14,7 @@ public class KissOfCthulhu_Projectile : ModProjectile
 	public const float ExpandTime = 30;
 
 	public int DustCount = 0;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 16;

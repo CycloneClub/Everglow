@@ -19,6 +19,7 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords
 			PowerfulStabProj = ModContent.ProjectileType<CurseFlameStabbingSword_Pro_Stab>();
 			base.SetDefaults();
 		}
+
 		public override void AddRecipes()
 		{
 			CreateRecipe().

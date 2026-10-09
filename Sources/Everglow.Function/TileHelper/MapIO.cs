@@ -75,6 +75,7 @@ public class ModEntry
 		}
 	}
 }
+
 public class MapIO
 {
 	public static int AirTileType => ModContent.TileType<AirTile>();

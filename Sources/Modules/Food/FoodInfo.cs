@@ -21,6 +21,7 @@ public class FoodInfo
 		get;
 		set;
 	}
+
 	public string Name
 	{
 		get;
@@ -47,6 +48,7 @@ public class DrinkInfo
 		get;
 		set;
 	}
+
 	public string Name
 	{
 		get;

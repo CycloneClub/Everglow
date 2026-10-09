@@ -29,10 +29,12 @@ public class GlowWoodBookcase : ModTile
 
 		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
 	}
+
 	public override void NumDust(int i, int j, bool fail, ref int num)
 	{
 		num = 0;
 	}
+
 	public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		var tile = Main.tile[i, j];

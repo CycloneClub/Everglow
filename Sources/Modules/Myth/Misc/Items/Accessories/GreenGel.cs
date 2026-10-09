@@ -12,6 +12,7 @@ public class GreenGel : ModItem
 		Item.accessory = true;
 		Item.rare = 3;
 	}
+
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
 		player.statLifeMax2 += 30;

@@ -16,6 +16,7 @@ public class StarSlingshot : SlingshotItem
 		Item.rare = ItemRarityID.Blue;
 		Item.value = Item.sellPrice(0, 1, 50, 0);
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

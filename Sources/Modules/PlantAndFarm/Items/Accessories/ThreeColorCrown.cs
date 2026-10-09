@@ -8,6 +8,7 @@ public class ThreeColorCrown : ModItem
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
 	private int Timer;
+
 	public override void SetStaticDefaults()
 	{
 		// DisplayName.SetDefault("Three-colored Wreath");
@@ -15,6 +16,7 @@ public class ThreeColorCrown : ModItem
 		// Tooltip.SetDefault("Hitting enemies randomly grants you one of the three effects below for 7s\nRed:Inceasing damage by 22%, increasing crit chance by 11%\nViolet:Immunity to most debuffs\nBlue:Increasing max mana by 300\nIt has a 30s CD\n'Pray for not being so lucky'");
 		// Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "击中敌人后随机获得以下三种效果之一,持续7秒\n红:伤害增加22%，暴击率增加11%\n紫:免疫绝大多数减益效果\n蓝:魔力上限增加300\n有30秒CD\n'求别太幸运'");
 	}
+
 	public override void SetDefaults()
 	{
 		Item.width = 30;
@@ -23,6 +25,7 @@ public class ThreeColorCrown : ModItem
 		Item.accessory = true;
 		Item.rare = 3;
 	}
+
 	public void Trigger()
 	{
 		if (Timer == 0)
@@ -30,6 +33,7 @@ public class ThreeColorCrown : ModItem
 			Timer = Main.rand.Next(1, 4) * 1000 + 421;
 		}
 	}
+
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
 		player.GetModPlayer<PAFPlayer>().ThreeColorCrown = this;
@@ -125,6 +129,7 @@ public class ThreeColorCrown : ModItem
 		// }
 		// }
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

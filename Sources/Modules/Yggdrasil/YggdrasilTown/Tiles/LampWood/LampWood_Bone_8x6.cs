@@ -28,10 +28,12 @@ public class LampWood_Bone_8x6 : ModTile
 		TileObjectData.addTile(Type);
 		AddMapEntry(new Color(228, 226, 222));
 	}
+
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		return base.PreDraw(i, j, spriteBatch);
 	}
+
 	public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		Tile tile = Main.tile[i, j];

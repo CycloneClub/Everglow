@@ -10,6 +10,7 @@ public class GoldShieldScale_dust : ModDust
 		dust.frame = new Rectangle(0, 0, 14, 15);
 		base.OnSpawn(dust);
 	}
+
 	public override bool Update(Dust dust)
 	{
 		dust.scale *= 0.92f;

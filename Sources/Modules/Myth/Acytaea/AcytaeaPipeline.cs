@@ -29,6 +29,7 @@ internal class NPPipeline : Pipeline
 internal class AcytaeaPipeline : PostPipeline
 {
 	private Asset<Texture2D> texture;
+
 	public override void Render(RenderTarget2D rt2D)
 	{
 		Ins.Batch.Begin();

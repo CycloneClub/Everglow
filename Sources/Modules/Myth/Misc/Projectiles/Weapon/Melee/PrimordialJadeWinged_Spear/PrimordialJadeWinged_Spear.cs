@@ -30,22 +30,27 @@ public class PrimordialJadeWinged_Spear : MeleeProj
 		;
 		autoEnd = false;
 	}
+
 	public override string TrailShapeTex()
 	{
 		return Commons.ModAsset.Melee_Mod;
 	}
+
 	public override string TrailColorTex()
 	{
 		return "Everglow/Myth/Misc/Projectiles/Weapon/Melee/PrimordialJadeWinged_Spear/PrimordialJadeWinged_Spear_meleeColor";
 	}
+
 	public override float TrailAlpha(float factor)
 	{
 		return base.TrailAlpha(factor) * 1.15f;
 	}
+
 	public override BlendState TrailBlendState()
 	{
 		return BlendState.NonPremultiplied;
 	}
+
 	public override void End()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -56,9 +61,11 @@ public class PrimordialJadeWinged_Spear : MeleeProj
 		Projectile.Kill();
 		player.GetModPlayer<MEACPlayer>().isUsingMeleeProj = false;
 	}
+
 	public override void OnSpawn(IEntitySource source)
 	{
 	}
+
 	public override void AI()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -244,16 +251,19 @@ public class PrimordialJadeWinged_Spear : MeleeProj
 			}
 		}
 	}
+
 	public override void OnKill(int timeLeft)
 	{
 		Player player = Main.player[Projectile.owner];
 		player.fullRotation = 0;
 	}
+
 	public override void DrawSelf(SpriteBatch spriteBatch, Color lightColor, Vector4 diagonal = default, Vector2 drawScale = default, Texture2D glowTexture = null)
 	{
 		drawScale = new Vector2(-0.6f, 1.14f);
 		base.DrawSelf(spriteBatch, lightColor, diagonal, drawScale, glowTexture);
 	}
+
 	public override void DrawTrail(Color color)
 	{
 		List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(slashTrail.ToList()); // 平滑
@@ -307,6 +317,7 @@ public class PrimordialJadeWinged_Spear : MeleeProj
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 	}
+
 	private void GenerateVFX()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -344,6 +355,7 @@ public class PrimordialJadeWinged_Spear : MeleeProj
 			Ins.VFXManager.Add(filthy2);
 		}
 	}
+
 	public void GenerateSpark()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -378,15 +390,18 @@ public class PrimordialJadeWinged_Spear : MeleeProj
 	}
 
 	public static int CyanStrike = 0;
+
 	public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 	{
 		CyanStrike = 1;
 		Projectile.NewProjectile(Terraria.Entity.InheritSource(Projectile), target.Center, Vector2.Zero, ModContent.ProjectileType<XiaoHit>(), 0, 0, Projectile.owner, 0.45f);
 	}
+
 	public override void Load()
 	{
 		On_CombatText.NewText_Rectangle_Color_string_bool_bool += CombatText_NewText_Rectangle_Color_string_bool_bool;
 	}
+
 	private int CombatText_NewText_Rectangle_Color_string_bool_bool(On_CombatText.orig_NewText_Rectangle_Color_string_bool_bool orig, Rectangle location, Color color, string text, bool dramatic, bool dot)
 	{
 		if (CyanStrike > 0)

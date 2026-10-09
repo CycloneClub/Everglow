@@ -12,7 +12,9 @@ namespace Everglow.Myth.TheFirefly.NPCs;
 internal class CentipedeHead : FireWormHead
 {
 	public override int BodyType => ModContent.NPCType<CentipedeBody>();
+
 	public override int TailType => ModContent.NPCType<CentipedeTail>();
+
 	public float wormSpeed = 1.0f;
 	public int checkHitWidth = 24;
 	public Vector2 OldSpeedDirection = new Vector2(1.0f, 0.0f);
@@ -60,6 +62,7 @@ internal class CentipedeHead : FireWormHead
 			new FlavorTextBestiaryInfoElement(Language.GetTextValue("Mods.Everglow.Bestiary.Centipede.Flavor")),
 		});
 	}
+
 	public override float SpawnChance(NPCSpawnInfo spawnInfo)
 	{
 		FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
@@ -82,6 +85,7 @@ internal class CentipedeHead : FireWormHead
 		}
 		return 0.08f;
 	}
+
 	public override void Init()
 	{
 		MinSegmentLength = 24;
@@ -124,11 +128,13 @@ internal class CentipedeHead : FireWormHead
 			NPC.netUpdate = true;
 		}
 	}
+
 	public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
 		Texture2D tex = ModAsset.CentipedeHead_Glow.Value;
 		spriteBatch.Draw(tex, NPC.Center - Main.screenPosition + new Vector2(0, -28), null, new Color(255, 255, 255, 0), NPC.rotation, tex.Size() / 2f, NPC.scale, SpriteEffects.None, 0);
 	}
+
 	private bool HeadAI_CheckCollisionForDustSpawns()
 	{
 		int minTilePosX = (int)(NPC.Left.X / 16) - 1;
@@ -474,6 +480,7 @@ internal class CentipedeHead : FireWormHead
 			NPC.netUpdate = true;
 		}
 	}
+
 	public override void OnKill()
 	{
 		Gore.NewGore(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, Main.rand.Next(40)).RotatedByRandom(6.283),
@@ -488,6 +495,7 @@ internal class CentipedeHead : FireWormHead
 			Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, ModContent.DustType<Dusts.NavyBlood>(), v0.X, v0.Y, 0, default, Main.rand.NextFloat(0.85f, 2.75f));
 		}
 	}
+
 	public override void HitEffect(NPC.HitInfo hit)
 	{
 		for (int f = 0; f < 8; f++)
@@ -496,6 +504,7 @@ internal class CentipedeHead : FireWormHead
 			Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, ModContent.DustType<Dusts.NavyBlood>(), v0.X, v0.Y, 0, default, Main.rand.NextFloat(0.85f, 1.75f));
 		}
 	}
+
 	public override bool CheckActive()
 	{
 		Player player = Main.player[NPC.target];
@@ -538,6 +547,7 @@ internal class CentipedeBody : FireWormBody
 	{
 		CentipedeHead.CommonWormInit(this);
 	}
+
 	public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
 		float AddRot = (float)(Math.Sin(Main.timeForVisualEffects * 0.2 + NPC.ai[2] * 0.7) * 0.3f);
@@ -561,6 +571,7 @@ internal class CentipedeBody : FireWormBody
 		spriteBatch.Draw(tex, NPC.Center - Main.screenPosition + new Vector2(0, -28), null, Lighting.GetColor((int)(NPC.Center.X / 16), (int)(NPC.Center.Y / 16)), NPC.rotation + AddRot, tex.Size() / 2f, NPC.scale, SpriteEffects.None, 0);
 		return false;
 	}
+
 	public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
 		float AddRot = (float)(Math.Sin(Main.timeForVisualEffects * 0.2 + NPC.ai[2] * 0.7) * 0.3f);
@@ -581,6 +592,7 @@ internal class CentipedeBody : FireWormBody
 			spriteBatch.Draw(tex, NPC.Center - Main.screenPosition + new Vector2(0, -28), null, new Color(255, 255, 255, 0), NPC.rotation + AddRot, tex.Size() / 2f, NPC.scale, SpriteEffects.None, 0);
 		}
 	}
+
 	public override void AI()
 	{
 		if (NPC.life <= 0)
@@ -628,6 +640,7 @@ internal class CentipedeBody : FireWormBody
 			}
 		}
 	}
+
 	public override void HitEffect(NPC.HitInfo hit)
 	{
 		for (int f = 0; f < 8; f++)
@@ -636,6 +649,7 @@ internal class CentipedeBody : FireWormBody
 			Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, ModContent.DustType<Dusts.NavyBlood>(), v0.X, v0.Y, 0, default, Main.rand.NextFloat(0.85f, 1.75f));
 		}
 	}
+
 	public override bool CheckActive()
 	{
 		Player player = Main.player[NPC.target];
@@ -678,6 +692,7 @@ internal class CentipedeTail : FireWormTail
 	{
 		CentipedeHead.CommonWormInit(this);
 	}
+
 	public override void HitEffect(NPC.HitInfo hit)
 	{
 		for (int f = 0; f < 8; f++)
@@ -686,6 +701,7 @@ internal class CentipedeTail : FireWormTail
 			Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, ModContent.DustType<Dusts.NavyBlood>(), v0.X, v0.Y, 0, default, Main.rand.NextFloat(0.85f, 1.75f));
 		}
 	}
+
 	public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
 		Texture2D tex = ModAsset.CentipedeTail_Glow.Value;
@@ -711,6 +727,7 @@ internal class CentipedeTail : FireWormTail
 			}
 		}
 	}
+
 	public override bool CheckActive()
 	{
 		Player player = Main.player[NPC.target];

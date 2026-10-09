@@ -3,12 +3,14 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords.Dusts
 	public class StarShine_yellow_withoutPlayer : ModDust
 	{
 		public override string Texture => "Everglow/EternalResolve/Items/Weapons/StabbingSwords/Dusts/StarShine_yellow";
+
 		public override void OnSpawn(Dust dust)
 		{
 			dust.frame = new Rectangle(0, Main.rand.Next(3) * 10, 10, 10);
 			dust.color.A = (byte)Main.rand.Next(0, 140);
 			dust.rotation = Main.rand.NextFromList(6.283f);
 		}
+
 		public override bool Update(Dust dust)
 		{
 			dust.position += dust.velocity;
@@ -31,6 +33,7 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords.Dusts
 			Lighting.AddLight(dust.position, dust.scale * 0.1f, dust.scale * 0.08f, 0);
 			return false;
 		}
+
 		public override Color? GetAlpha(Dust dust, Color lightColor)
 		{
 			Color c0 = new Color(1f, 0.98f, dust.scale * 1f, 0.7f);

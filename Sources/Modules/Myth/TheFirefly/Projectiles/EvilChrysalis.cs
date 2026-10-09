@@ -6,6 +6,7 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 internal class EvilChrysalis : ModProjectile
 {
 	public override string Texture => "Everglow/Myth/TheFirefly/Projectiles/EvilChrysalisTex/EvilChrysalis0";
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 50;

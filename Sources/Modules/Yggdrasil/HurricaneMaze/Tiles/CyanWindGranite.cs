@@ -8,10 +8,12 @@ public class CyanWindGranite : ModTile
 		DustType = DustID.Silver;
 		AddMapEntry(new Color(65, 84, 63));
 	}
+
 	public override bool CanExplode(int i, int j)
 	{
 		return false;
 	}
+
 	public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
 	{
 	}

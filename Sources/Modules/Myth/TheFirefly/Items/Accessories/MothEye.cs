@@ -10,7 +10,9 @@ public class MothEye : ModItem
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
 	private FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
+
 	public static Player LocalOwner => Main.LocalPlayer;
+
 	public override void SetDefaults()
 	{
 		Item.width = 44;
@@ -33,6 +35,7 @@ public class MothEye : ModItem
 			player.manaCost -= 0.05f;
 		}
 	}
+
 	public override void ModifyTooltips(List<TooltipLine> tooltips)
 	{
 		if (fireflyBiome.IsBiomeActive(Main.LocalPlayer) && Main.hardMode)
@@ -51,6 +54,7 @@ public class MothEye : ModItem
 			tooltips.Add(new TooltipLine(ModIns.Mod, "MothEyeCriteriaText", Language.GetTextValue("Mods.Everglow.ExtraTooltip.FireflyItems.MothEyeCriteriaText")));
 		}
 	}
+
 	public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
 	{
 		if (fireflyBiome.IsBiomeActive(Main.LocalPlayer) && Main.hardMode)
@@ -76,6 +80,7 @@ public class MothEye : ModItem
 	}
 	// TODO:DIDNOT FINISH Equipped Effect:Change texture in Firefly biome, fail.
 }
+
 internal class MothEyePlayer : ModPlayer
 {
 	private FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
@@ -85,6 +90,7 @@ internal class MothEyePlayer : ModPlayer
 	{
 		MothEyeEquipped = false;
 	}
+
 	public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
 	{
 		if (fireflyBiome.IsBiomeActive(Main.LocalPlayer) && Main.hardMode)

@@ -108,6 +108,7 @@ public class CorruptOrbStonePost : ModTile
 		}
 		base.PostDraw(i, j, spriteBatch);
 	}
+
 	public override void NearbyEffects(int i, int j, bool closer)
 	{
 		if (closer && !NPC.downedBoss2)
@@ -142,10 +143,12 @@ public class CorruptOrbStonePost : ModTile
 		}
 		base.NearbyEffects(i, j, closer);
 	}
+
 	public override bool CanExplode(int i, int j)
 	{
 		return false;
 	}
+
 	public override bool CanKillTile(int i, int j, ref bool blockDamaged)
 	{
 		return false;

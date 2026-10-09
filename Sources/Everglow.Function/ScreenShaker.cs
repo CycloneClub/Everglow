@@ -7,6 +7,7 @@ public class ScreenShaker : ModPlayer
 	public float DirFlyCamPosStrength = 1f; // ShakeStrength
 	public int DirFlyCamPos = 0; // Shake
 	public int MinaFlyCamPos = 0; // MinaShake
+
 	public override void ModifyScreenPosition()
 	{
 		FlyCamPosition *= 0.25f;

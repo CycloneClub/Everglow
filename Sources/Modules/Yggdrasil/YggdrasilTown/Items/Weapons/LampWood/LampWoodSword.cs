@@ -2,6 +2,7 @@ using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Melee;
 using Terraria.Audio;
 using Terraria.DataStructures;
+
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.LampWood;
 
 public class LampWoodSword : ModItem
@@ -28,12 +29,14 @@ public class LampWoodSword : ModItem
 
 		Item.value = 410;
 	}
+
 	public override bool CanUseItem(Player player)
 	{
 		Item.useTime = (int)(18f / player.meleeSpeed);
 		Item.useAnimation = (int)(18f / player.meleeSpeed);
 		return player.ownedProjectileCounts[Item.shoot] < 1;
 	}
+
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		if (player.ownedProjectileCounts[Item.shoot] < 1)
@@ -42,6 +45,7 @@ public class LampWoodSword : ModItem
 		}
 		return false;
 	}
+
 	public override bool? UseItem(Player player)
 	{
 		if (!Main.dedServ)
@@ -51,6 +55,7 @@ public class LampWoodSword : ModItem
 
 		return null;
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

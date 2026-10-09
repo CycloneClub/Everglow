@@ -9,6 +9,7 @@ public class OrangeSausage : ModItem
 		// DisplayName.SetDefault("Orange Pennisetum");
 		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "狐绒草");
 	}
+
 	public override void SetDefaults()
 	{
 		Item.width = 18;

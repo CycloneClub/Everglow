@@ -7,15 +7,18 @@ public class WaitForFrames : ICoroutineInstruction
 {
 	private uint m_counter;
 	private readonly uint m_totalFrames;
+
 	public WaitForFrames(uint frames)
 	{
 		m_totalFrames = frames;
 		m_counter = 0;
 	}
+
 	public bool ShouldWait()
 	{
 		return m_counter <= m_totalFrames;
 	}
+
 	public void Update()
 	{
 		++m_counter;

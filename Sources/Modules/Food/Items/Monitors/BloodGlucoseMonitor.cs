@@ -24,6 +24,7 @@ public class BloodGlucoseMonitor : ModItem
 		FoodSatietyInfoDisplayplayer SatietyInfo = player.GetModPlayer<FoodSatietyInfoDisplayplayer>();
 		SatietyInfo.AccBloodGlucoseMonitor = true;
 	}
+
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
 		FoodSatietyInfoDisplayplayer SatietyInfo = player.GetModPlayer<FoodSatietyInfoDisplayplayer>();

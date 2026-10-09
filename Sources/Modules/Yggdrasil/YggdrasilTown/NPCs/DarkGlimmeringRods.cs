@@ -14,6 +14,7 @@ public class DarkGlimmeringRods : ModNPC
 		Main.npcFrameCount[NPC.type] = 8;
 		NPCSpawnManager.RegisterNPC(Type);
 	}
+
 	public override void SetDefaults()
 	{
 		NPC.width = 40;
@@ -28,6 +29,7 @@ public class DarkGlimmeringRods : ModNPC
 		NPC.DeathSound = SoundID.NPCDeath1;
 		NPC.noGravity = true;
 	}
+
 	public override float SpawnChance(NPCSpawnInfo spawnInfo)
 	{
 		YggdrasilTownBiome YggdrasilTownBiome = ModContent.GetInstance<YggdrasilTownBiome>();
@@ -38,8 +40,10 @@ public class DarkGlimmeringRods : ModNPC
 
 		return 3f;
 	}
+
 	public int BodyLength = 20;
 	public Vector2 TargetPos = Vector2.zeroVector;
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		NPC.scale = Main.rand.NextFloat(0.85f, 1.15f);
@@ -48,6 +52,7 @@ public class DarkGlimmeringRods : ModNPC
 		BodyLength = Main.rand.Next(14, 26);
 		TargetPos = NPC.Center + new Vector2(Main.rand.Next(-210, 210), Main.rand.Next(-210, -50));
 	}
+
 	public override void AI()
 	{
 		NPC.frameCounter++;
@@ -67,6 +72,7 @@ public class DarkGlimmeringRods : ModNPC
 			NPC.velocity += Vector2.Normalize(toAim) * 0.15f * NPC.scale;
 		}
 	}
+
 	public override void OnKill()
 	{
 		for (int f = 0; f < 2; f++)
@@ -76,11 +82,13 @@ public class DarkGlimmeringRods : ModNPC
 			Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(Main.rand.Next(NPC.width), Main.rand.Next(NPC.height)), NPC.velocity + new Vector2(0, Main.rand.NextFloat(0f, 3f)).RotatedByRandom(MathHelper.TwoPi), ModContent.Find<ModGore>("Everglow/DarkGlimmeringRods_gore2").Type, NPC.scale);
 		}
 	}
+
 	public override void ModifyNPCLoot(NPCLoot npcLoot)
 	{
 		npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<AuburnRodSkeleton>(), 24, 1));
 		npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<RodWing>(), 1, 3, 6));
 	}
+
 	public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
 		SpriteBatchState sBS = GraphicsUtils.GetState(spriteBatch).Value;

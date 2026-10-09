@@ -9,6 +9,7 @@ public class IceCrystal : ModDust
 		dust.scale *= 1f;
 		dust.alpha = 0;
 	}
+
 	public override bool Update(Dust dust)
 	{
 		dust.position += dust.velocity;
@@ -55,6 +56,7 @@ public class IceCrystal : ModDust
 
 		return false;
 	}
+
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		float light = (lightColor.R + lightColor.G + lightColor.B) / 765f;
@@ -77,6 +79,7 @@ public class IceCrystal : ModDust
 public class IceCrystal2 : ModDust
 {
 	public override string Texture => "Everglow/" + ModAsset.IceCrystal_Path;
+
 	public override void OnSpawn(Dust dust)
 	{
 		dust.noGravity = true;
@@ -84,6 +87,7 @@ public class IceCrystal2 : ModDust
 		dust.scale *= 1f;
 		dust.alpha = 0;
 	}
+
 	public override bool Update(Dust dust)
 	{
 		dust.position += dust.velocity;
@@ -129,6 +133,7 @@ public class IceCrystal2 : ModDust
 
 		return false;
 	}
+
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		float light = (lightColor.R + lightColor.G + lightColor.B) / 765f;

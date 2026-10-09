@@ -34,6 +34,7 @@ public class PaperObstructed : ModBuff
 public class PaperObstructedDrawLayer : PlayerDrawLayer
 {
 	public override bool IsHeadLayer => true;
+
 	public override Position GetDefaultPosition()
 	{
 		return new AfterParent(PlayerDrawLayers.Head);
@@ -47,6 +48,7 @@ public class PaperObstructedDrawLayer : PlayerDrawLayer
 		}
 		return false;
 	}
+
 	public override void Draw(ref PlayerDrawSet drawInfo)
 	{
 		Texture2D Texture = ModAsset.LittleRedPaperFigure.Value;

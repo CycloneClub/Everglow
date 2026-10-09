@@ -25,6 +25,7 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords
 			StaminaCost -= 0.1f;
 			base.SetDefaults();
 		}
+
 		public override void AddRecipes()
 		{
 			CreateRecipe()

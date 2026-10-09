@@ -9,6 +9,7 @@ public class PurplePhantom : ModItem
 		// DisplayName.SetDefault("Phantom Orchid");
 		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "幻蝶兰");
 	}
+
 	public override void SetDefaults()
 	{
 		Item.width = 34;

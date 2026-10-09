@@ -15,6 +15,7 @@ public class RubySlingshot : SlingshotItem
 		Item.rare = ItemRarityID.Orange;
 		Item.value = Item.sellPrice(0, 0, 17, 0);
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

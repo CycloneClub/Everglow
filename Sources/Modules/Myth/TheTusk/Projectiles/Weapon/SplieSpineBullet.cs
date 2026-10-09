@@ -11,6 +11,7 @@ public class SplieSpineBullet : ModProjectile
 	{
 		// DisplayName.SetDefault("SplieSpineBullet");
 	}
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 8;
@@ -25,6 +26,7 @@ public class SplieSpineBullet : ModProjectile
 	}
 
 	private int Tokill = -1;
+
 	public override void AI()
 	{
 		if (Tokill < 0)
@@ -60,6 +62,7 @@ public class SplieSpineBullet : ModProjectile
 			Projectile.velocity = Projectile.oldVelocity;
 		}
 	}
+
 	private void Explosion()
 	{
 		TuskModPlayer mplayer = Main.player[Projectile.owner].GetModPlayer<TuskModPlayer>();
@@ -89,21 +92,26 @@ public class SplieSpineBullet : ModProjectile
 		Projectile.ignoreWater = true;
 		Projectile.aiStyle = -1;
 	}
+
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		Explosion();
 	}
+
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
 		Explosion();
 		return false;
 	}
+
 	public override void OnKill(int timeLeft)
 	{
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		if (Tokill > 0)

@@ -110,6 +110,7 @@ public class CrimsonOrbStonePost : ModTile
 		}
 		base.PostDraw(i, j, spriteBatch);
 	}
+
 	public override void NearbyEffects(int i, int j, bool closer)
 	{
 		if (closer && !NPC.downedBoss2)
@@ -144,6 +145,7 @@ public class CrimsonOrbStonePost : ModTile
 		}
 		base.NearbyEffects(i, j, closer);
 	}
+
 	public override bool CanExplode(int i, int j)
 	{
 		return false;

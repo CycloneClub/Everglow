@@ -17,17 +17,20 @@ internal class CreamChocolateCup_ChocolateBars : ModProjectile
 		Projectile.DamageType = DamageClass.Magic;
 		base.SetDefaults();
 	}
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		Projectile.frame = Main.rand.Next(10);
 		base.OnSpawn(source);
 	}
+
 	public override void AI()
 	{
 		Projectile.velocity.Y += 0.15f;
 		Projectile.rotation = MathF.Atan2(Projectile.velocity.X, Projectile.velocity.Y) + MathHelper.PiOver4;
 		base.AI();
 	}
+
 	public override void OnKill(int timeLeft)
 	{
 		for (int x = 0; x < 15; x++)
@@ -39,6 +42,7 @@ internal class CreamChocolateCup_ChocolateBars : ModProjectile
 		}
 		base.OnKill(timeLeft);
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D mainTex = ModAsset.CreamChocolateCup_ChocolateBars.Value;

@@ -45,6 +45,7 @@ public class StreetLantern : ModTile, ITileFluentlyDrawn
 		DustType = DustID.DynastyWood;
 		AddMapEntry(new Color(151, 31, 32));
 	}
+
 	public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 	{
 		var tile = Main.tile[i, j];
@@ -61,10 +62,12 @@ public class StreetLantern : ModTile, ITileFluentlyDrawn
 			b = 0f;
 		}
 	}
+
 	public override void HitWire(int i, int j)
 	{
 		FurnitureUtils.LightHitwire(i, j, Type, 1, 6, 48);
 	}
+
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		var tile = Main.tile[i, j];
@@ -104,6 +107,7 @@ public class StreetLantern : ModTile, ITileFluentlyDrawn
 
 		DrawLanternPiece(new Rectangle(recX, recY, 48, 108), 0, offX - 4, -10, pos + new Point(0, 0), pos + new Point(0, 0), drawCenterPos, spriteBatch, tileDrawing);
 	}
+
 	/// <summary>
 	/// 画灯笼柱
 	/// </summary>

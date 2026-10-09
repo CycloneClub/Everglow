@@ -19,10 +19,12 @@ public class BrokenBoxInTwilight : ModTile
 		DustType = ModContent.DustType<BoxWoodDust_Twilight>();
 		AddMapEntry(new Color(102, 70, 51));
 	}
+
 	public override void KillMultiTile(int i, int j, int frameX, int frameY)
 	{
 		base.KillMultiTile(i, j, frameX, frameY);
 	}
+
 	public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
 	{
 		noItem = true;

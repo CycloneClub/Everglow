@@ -5,6 +5,7 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 public class BlackCorruptRain3Friendly : ModProjectile
 {
 	public override string Texture => "Everglow/Myth/TheFirefly/Projectiles/BlackCorruptRain3";
+
 	public override void SetStaticDefaults()
 	{
 		// DisplayName.SetDefault("Black Corrupt Ball");
@@ -61,6 +62,7 @@ public class BlackCorruptRain3Friendly : ModProjectile
 		Main.spriteBatch.Draw(Light, Projectile.Center - Main.screenPosition, null, new Color(1f, 1f, 1f, 0), Projectile.rotation, Light.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
 		return true;
 	}
+
 	private static void DrawTexCircle_VFXBatch(VFXBatch spriteBatch, float radius, float width, Color color, Vector2 center, Texture2D tex, double addRot = 0)
 	{
 		var circle = new List<Vertex2D>();

@@ -9,10 +9,13 @@ namespace Everglow.Example.VFX;
 internal abstract class ShaderDraw : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
+
 	public Vector2 position;
 	public Vector2 velocity;
 	public float[] ai;
+
 	public ShaderDraw() { }
+
 	public ShaderDraw(Vector2 position, Vector2 velocity, params float[] ai)
 	{
 		this.position = position;
@@ -28,6 +31,7 @@ internal class CurseFlamePipeline : Pipeline
 		effect = ModContent.Request<Effect>("Everglow/Example/VFX/FlameDust", AssetRequestMode.ImmediateLoad);
 		effect.Value.Parameters["uNoise"].SetValue(ModContent.Request<Texture2D>("Everglow/Example/VFX/Perlin", AssetRequestMode.ImmediateLoad).Value);
 	}
+
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
@@ -46,6 +50,7 @@ internal class CurseFlamePipeline : Pipeline
 		Ins.Batch.End();
 	}
 }
+
 [Pipeline(typeof(CurseFlamePipeline), typeof(RedPipeline), typeof(BloomPipeline))]
 internal class CurseFlameDust : ShaderDraw
 {
@@ -53,7 +58,9 @@ internal class CurseFlameDust : ShaderDraw
 	public List<Vector2> oldPos = new List<Vector2>();
 	public float timer;
 	public float maxTime;
+
 	public CurseFlameDust() { }
+
 	public CurseFlameDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai) : base(position, velocity, ai)
 	{
 		this.maxTime = maxTime;

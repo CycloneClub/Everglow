@@ -67,6 +67,7 @@ public class LilyHarpNoteKill : ModProjectile// , IWarpProjectile
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, circle.ToArray(), 0, circle.Count - 2);
 		}
 	}
+
 	private static void DrawCircle(VFXBatch spriteBatch, float radius, float width, Color color, Vector2 center)
 	{
 		var circle = new List<Vertex2D>();
@@ -83,6 +84,7 @@ public class LilyHarpNoteKill : ModProjectile// , IWarpProjectile
 			spriteBatch.Draw(t, circle, PrimitiveType.TriangleStrip);
 		}
 	}
+
 	public void DrawWarp(VFXBatch spriteBatch)
 	{
 		float value = (200 - Projectile.timeLeft) / (float)Projectile.timeLeft * 1.4f;

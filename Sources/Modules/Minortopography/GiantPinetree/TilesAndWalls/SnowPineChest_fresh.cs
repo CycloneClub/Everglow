@@ -4,6 +4,7 @@ using Terraria.GameContent.ObjectInteractions;
 using Terraria.Localization;
 using Terraria.ObjectData;
 using Everglow.Commons.Utilities;
+
 namespace Everglow.Minortopography.GiantPinetree.TilesAndWalls;
 
 public class SnowPineChest_fresh : ModTile
@@ -45,19 +46,23 @@ public class SnowPineChest_fresh : ModTile
 		TileObjectData.addTile(Type);
 		AddMapEntry(new Color(198, 147, 51));
 	}
+
 	public override IEnumerable<Item> GetItemDrops(int i, int j)
 	{
 		yield return new Item(ModContent.ItemType<Items.SnowPineChest_fresh>());
 	}
+
 	public override ushort GetMapOption(int i, int j)
 	{
 		return (ushort)(Main.tile[i, j].TileFrameX / 36);
 	}
+
 	public override LocalizedText DefaultContainerName(int frameX, int frameY)
 	{
 		int option = frameX / 36;
 		return this.GetLocalization("MapEntry" + option);
 	}
+
 	public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings)
 	{
 		return true;
@@ -96,6 +101,7 @@ public class SnowPineChest_fresh : ModTile
 	{
 		num = 1;
 	}
+
 	public override bool RightClick(int i, int j)
 	{
 		return FurnitureUtils.ChestRightClick(i, j);

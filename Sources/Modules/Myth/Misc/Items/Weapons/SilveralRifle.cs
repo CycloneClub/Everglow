@@ -26,15 +26,18 @@ public class SilveralRifle : ModItem
 		Item.useAmmo = AmmoID.Bullet;
 		Item.crit = 16;
 	}
+
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		Projectile.NewProjectile(source, position + velocity * 2 + new Vector2(0, -2), velocity, type, damage, knockback, player.whoAmI, 0);
 		return false;
 	}
+
 	public override Vector2? HoldoutOffset()
 	{
 		return new Vector2(-6f, 0);
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

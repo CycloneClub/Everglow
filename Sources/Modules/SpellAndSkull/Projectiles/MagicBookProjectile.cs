@@ -23,9 +23,11 @@ public abstract class MagicBookProjectile : ModProjectile
 		Projectile.alpha = 255;
 		SetDef();
 	}
+
 	public virtual void SetDef()
 	{
 	}
+
 	/// <summary>
 	/// 最好不要动计时器，计算书本的翻开程度，甚至决定了书本是否kill
 	/// </summary>
@@ -98,6 +100,7 @@ public abstract class MagicBookProjectile : ModProjectile
 	/// 封底图路径,从SpellAndSkullModule后(不含)开始算起
 	/// </summary>
 	public Texture2D BackTexture = null;
+
 	public override void AI()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -139,13 +142,16 @@ public abstract class MagicBookProjectile : ModProjectile
 			p.CritChance = player.GetWeaponCrit(player.HeldItem);
 		}
 	}
+
 	public virtual void SpecialAI()
 	{
 	}
+
 	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
 	{
 		overPlayers.Add(index);
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
 		if (ItemType == -1)
@@ -230,9 +236,11 @@ public abstract class MagicBookProjectile : ModProjectile
 
 		SpecialDraw();
 	}
+
 	public virtual void SpecialDraw()
 	{
 	}
+
 	/// <summary>
 	/// 对于书页的绘制，包括正在被翻起的以及堆叠在前后两侧的。关于纸张的绘制，因为较小，都没有经过严格的投影，随手捏了一个近似函数，只保证视觉效果上大致正确
 	/// </summary>
@@ -477,6 +485,7 @@ public abstract class MagicBookProjectile : ModProjectile
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 	}
+
 	/// <summary>
 	/// 对于书本前部的绘制
 	/// </summary>

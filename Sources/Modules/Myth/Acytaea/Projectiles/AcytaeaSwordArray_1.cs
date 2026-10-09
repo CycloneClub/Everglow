@@ -7,6 +7,7 @@ namespace Everglow.Myth.Acytaea.Projectiles;
 public class AcytaeaSwordArray_1 : ModProjectile
 {
 	public override string Texture => "Everglow/Myth/Acytaea/Projectiles/AcytaeaSword_projectile";
+
 	public override void SetDefaults()
 	{
 		Projectile.aiStyle = -1;
@@ -23,12 +24,14 @@ public class AcytaeaSwordArray_1 : ModProjectile
 		Projectile.width = 80;
 		Projectile.height = 80;
 	}
+
 	public int Timer = 0;
 	public float AddRot = 0;
 	public float Omega = 0;
 	public float Range = 0;
 	public NPC Owner = new NPC();
 	public List<bool> subProjActive;
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		int index = (int)Projectile.ai[0];
@@ -48,6 +51,7 @@ public class AcytaeaSwordArray_1 : ModProjectile
 		Projectile.frame = 0;
 		base.OnSpawn(source);
 	}
+
 	public override void AI()
 	{
 		if (Owner == null || !Owner.active)
@@ -116,6 +120,7 @@ public class AcytaeaSwordArray_1 : ModProjectile
 		}
 		Projectile.Kill();
 	}
+
 	private void GenerateVFX()
 	{
 		for (int k = 0; k < subProjActive.Count; k++)
@@ -164,6 +169,7 @@ public class AcytaeaSwordArray_1 : ModProjectile
 			}
 		}
 	}
+
 	public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 	{
 		for (int k = 0; k < subProjActive.Count; k++)
@@ -184,9 +190,11 @@ public class AcytaeaSwordArray_1 : ModProjectile
 		}
 		return false;
 	}
+
 	public override void OnKill(int timeLeft)
 	{
 	}
+
 	public void AmmoHit(int whoAmI)
 	{
 		Vector2 deltaVector = new Vector2(0, Range).RotatedBy(whoAmI / (float)subProjActive.Count * MathHelper.TwoPi + AddRot);
@@ -215,10 +223,12 @@ public class AcytaeaSwordArray_1 : ModProjectile
 			Ins.VFXManager.Add(acytaeaFlame);
 		}
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
 		Texture2D tex = ModAsset.AcytaeaFlySword_red.Value;

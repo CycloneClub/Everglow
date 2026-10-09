@@ -6,7 +6,9 @@ public class DashCoreEffect : ModSystem
 	{
 		base.OnWorldLoad();
 	}
+
 	private float RDas = 0;
+
 	public override void ModifySunLightColor(ref Color tileColor, ref Color backgroundColor)
 	{
 		Color colorShine = FlamingDashCore.ColorShine;

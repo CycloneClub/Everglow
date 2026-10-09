@@ -2,6 +2,7 @@ using Terraria.Audio;
 using Terraria.DataStructures;
 
 namespace Everglow.Example.Test;
+
 /// <summary>
 /// Devs only.
 /// </summary>
@@ -12,7 +13,9 @@ public class SoundIDPlayItem : ModItem
 		Item.useTime = 21;
 		Item.useAnimation = 21;
 	}
+
 	public int soundID = 0;
+
 	public override void HoldItem(Player player)
 	{
 		if (Main.mouseLeft && Main.mouseLeftRelease)

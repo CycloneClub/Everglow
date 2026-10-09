@@ -28,6 +28,7 @@ public class HeatproofBookcase : ModTile
 
 		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
 	}
+
 	public override void NumDust(int i, int j, bool fail, ref int num)
 	{
 		num = 0;

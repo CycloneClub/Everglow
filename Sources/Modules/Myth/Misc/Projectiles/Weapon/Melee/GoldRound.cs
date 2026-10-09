@@ -7,6 +7,7 @@ public class GoldRound : ModProjectile
 	public override void SetStaticDefaults()
 	{
 	}
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 16;
@@ -21,11 +22,14 @@ public class GoldRound : ModProjectile
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 	}
+
 	private float Omega = 0.4f;
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		base.OnSpawn(source);
 	}
+
 	public override void AI()
 	{
 		Projectile.rotation += Omega;
@@ -67,6 +71,7 @@ public class GoldRound : ModProjectile
 			Projectile.velocity += Vector2.Normalize(aimTarget - Projectile.Center - Projectile.velocity) * 5f;
 		}
 	}
+
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		for (int i = 0; i < 6; i++)
@@ -77,9 +82,11 @@ public class GoldRound : ModProjectile
 			Main.dust[num].noGravity = true;
 		}
 	}
+
 	public override void OnKill(int timeLeft)
 	{
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D t = ModAsset.GoldRound.Value;

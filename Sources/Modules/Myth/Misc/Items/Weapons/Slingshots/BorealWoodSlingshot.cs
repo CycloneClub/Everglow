@@ -11,6 +11,7 @@ public class BorealWoodSlingshot : SlingshotItem
 		Item.useTime = 23;
 		Item.useAnimation = 23;
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

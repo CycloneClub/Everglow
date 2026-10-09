@@ -1,5 +1,6 @@
 using Terraria.DataStructures;
 using Terraria.ObjectData;
+
 namespace Everglow.CagedDomain.Tiles;
 
 public class PlumBlossomInABowl : ModTile
@@ -34,6 +35,7 @@ public class PlumBlossomInABowl : ModTile
 		AddMapEntry(new Color(90, 90, 90), modTranslation);
 		HitSound = SoundID.DD2_SkeletonHurt;
 	}
+
 	public override void PlaceInWorld(int i, int j, Item item)
 	{
 		Main.tile[i, j].TileFrameX = (short)(item.placeStyle * 144);

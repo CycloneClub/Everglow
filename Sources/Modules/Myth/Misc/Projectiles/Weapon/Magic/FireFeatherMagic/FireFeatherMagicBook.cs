@@ -5,6 +5,7 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Magic.FireFeatherMagic;
 internal class FireFeatherMagicBook : MagicBookProjectile
 {
 	public override string Texture => "Everglow/" + ModAsset.FireFeatherMagic_Path;
+
 	public override void SetDef()
 	{
 		ProjType = ModContent.ProjectileType<FireFeather>();
@@ -22,6 +23,7 @@ internal class FireFeatherMagicBook : MagicBookProjectile
 		TexCoordDown = new Vector2(28, 37);
 		TexCoordRight = new Vector2(41, 10);
 	}
+
 	public override void AI()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -65,6 +67,7 @@ internal class FireFeatherMagicBook : MagicBookProjectile
 			}
 		}
 	}
+
 	/// <summary>
 	/// 对于书本前部的绘制
 	/// </summary>

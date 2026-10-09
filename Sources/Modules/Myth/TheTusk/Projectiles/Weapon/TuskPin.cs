@@ -11,6 +11,7 @@ public class TuskPin : ModProjectile
 	{
 		Projectile.rotation = MathF.Atan2(Projectile.velocity.Y, Projectile.velocity.X) - MathHelper.PiOver2;
 	}
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 30;
@@ -26,7 +27,9 @@ public class TuskPin : ModProjectile
 		Projectile.extraUpdates = 1;
 		Projectile.tileCollide = true;
 	}
+
 	private bool HasHitTile = false;
+
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
 		HasHitTile = true;
@@ -36,12 +39,15 @@ public class TuskPin : ModProjectile
 		Projectile.timeLeft = 30;
 		return false;
 	}
+
 	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
 	{
 		behindNPCsAndTiles.Add(index);
 		base.DrawBehind(index, behindNPCsAndTiles, behindNPCs, behindProjectiles, overPlayers, overWiresUI);
 	}
+
 	private int timeCounter = 0;
+
 	public override void AI()
 	{
 		Projectile.hide = true;
@@ -59,6 +65,7 @@ public class TuskPin : ModProjectile
 		}
 		base.AI();
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D texture = ModAsset.TuskPin.Value;

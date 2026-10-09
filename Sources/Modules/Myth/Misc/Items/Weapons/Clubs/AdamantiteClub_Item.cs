@@ -12,6 +12,7 @@ public class AdamantiteClub_Item : ClubItem
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.AdamantiteClub>();
 		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.AdamantiteClub_smash>();
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

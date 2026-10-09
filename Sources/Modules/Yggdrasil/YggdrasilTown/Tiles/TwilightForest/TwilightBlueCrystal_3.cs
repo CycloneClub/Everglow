@@ -25,6 +25,7 @@ public class TwilightBlueCrystal_3 : ModTile
 		AddMapEntry(new Color(40, 80, 148));
 		DustType = ModContent.DustType<TwilightCrystalDust>();
 	}
+
 	public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 	{
 		r = 0.05f;
@@ -32,6 +33,7 @@ public class TwilightBlueCrystal_3 : ModTile
 		b = 0.45f;
 		base.ModifyLight(i, j, ref r, ref g, ref b);
 	}
+
 	public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		Color lightColor = Lighting.GetColor(i, j);

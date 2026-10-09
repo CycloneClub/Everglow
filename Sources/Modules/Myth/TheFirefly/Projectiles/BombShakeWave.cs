@@ -32,6 +32,7 @@ public class BombShakeWave : ModProjectile, IWarpProjectile
 	{
 		behindProjectiles.Add(index);
 	}
+
 	private void DrawWarpTexCircle_VFXBatch(VFXBatch spriteBatch, float radius, float width, Vector2 center, Texture2D tex, float warpStrength, double addRot = 0)
 	{
 		var circle = new List<Vertex2D>();
@@ -61,6 +62,7 @@ public class BombShakeWave : ModProjectile, IWarpProjectile
 			spriteBatch.Draw(tex, circle, PrimitiveType.TriangleStrip);
 		}
 	}
+
 	public void DrawWarp(VFXBatch sb)
 	{
 		float value = (200 - Projectile.timeLeft) / 100f;

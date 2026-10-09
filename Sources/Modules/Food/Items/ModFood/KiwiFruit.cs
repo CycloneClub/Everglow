@@ -20,6 +20,7 @@ public class KiwiFruit : FoodBase
 			};
 		}
 	}
+
 	public override void SetStaticDefaults()
 	{
 		CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 5;

@@ -6,6 +6,7 @@ namespace Everglow.Food.Buffs;
 public class FoodBuffGlobalItem : GlobalItem
 {
 	public override bool InstancePerEntity => true;
+
 	private int l = 0;
 
 	public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

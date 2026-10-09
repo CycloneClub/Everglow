@@ -9,6 +9,7 @@ public class TuskBreak : ModDust
 		dust.alpha = 0;
 		dust.rotation = Main.rand.NextFloat(MathHelper.TwoPi);
 	}
+
 	public override bool Update(Dust dust)
 	{
 		if (dust.fadeIn == 0)

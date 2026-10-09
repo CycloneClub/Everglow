@@ -10,10 +10,12 @@ public class DrinkGlobalItem : GlobalItem
 {
 	// 对于原版的饮料进行类型Id到 DrinkInfo 的映射，直接获取DrinkInfo实例
 	public static Dictionary<int, DrinkInfo> m_vanillaDrinkInfos;
+
 	public override void Unload()
 	{
 		m_vanillaDrinkInfos = null;
 	}
+
 	public DrinkGlobalItem()
 	{
 		m_vanillaDrinkInfos = new Dictionary<int, DrinkInfo>

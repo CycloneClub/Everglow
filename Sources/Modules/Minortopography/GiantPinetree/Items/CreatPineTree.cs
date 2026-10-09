@@ -19,10 +19,12 @@ public class CreatPineTree : ModItem
 		Item.noUseGraphic = true;
 		Item.createTile = ModContent.TileType<GiantPineCone_1>();
 	}
+
 	public override bool? UseItem(Player player)
 	{
 		return true;
 	}
+
 	public override void HoldItem(Player player)
 	{
 		if (Main.mouseRight && Main.mouseRightRelease)

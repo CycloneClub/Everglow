@@ -18,6 +18,7 @@ internal class SpineGun : ModProjectile
 	}
 
 	private int Ran = -1;
+
 	public override Color? GetAlpha(Color lightColor)
 	{
 		return new Color(255 - Projectile.alpha, 255 - Projectile.alpha, 255 - Projectile.alpha, 0);
@@ -25,6 +26,7 @@ internal class SpineGun : ModProjectile
 
 	private bool Release = true;
 	private Vector2 oldPo = Vector2.Zero;
+
 	public override void AI()
 	{
 		Vector2 v0 = Main.MouseWorld - Main.player[Projectile.owner].MountedCenter;
@@ -56,10 +58,12 @@ internal class SpineGun : ModProjectile
 			Ran = Main.rand.Next(9);
 		}
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
 		if (!Release)
@@ -91,6 +95,7 @@ internal class SpineGun : ModProjectile
 	}
 
 	private bool[] HasHit = new bool[200];
+
 	private struct CustomVertexInfo : IVertexType
 	{
 		private static VertexDeclaration _vertexDeclaration = new VertexDeclaration(new VertexElement[3]
@@ -99,6 +104,7 @@ internal class SpineGun : ModProjectile
 			new VertexElement(8, VertexElementFormat.Color, VertexElementUsage.Color, 0),
 			new VertexElement(12, VertexElementFormat.Vector3, VertexElementUsage.TextureCoordinate, 0),
 		});
+
 		public Vector2 Position;
 		public Color Color;
 		public Vector3 TexCoord;

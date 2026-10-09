@@ -13,6 +13,7 @@ public class CyanPedal : ModItem
 		// Tooltip.SetDefault("Increases evade by 4\n'The missing petal was converted to your braveness'");
 		// Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "闪避能力增加4\n'少的那一瓣化作你的勇气'");
 	}
+
 	public override void SetDefaults()
 	{
 		Item.width = 22;
@@ -21,10 +22,12 @@ public class CyanPedal : ModItem
 		Item.accessory = true;
 		Item.rare = 3;
 	}
+
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
 		// MythPlayer.CyanPedal = 2;
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

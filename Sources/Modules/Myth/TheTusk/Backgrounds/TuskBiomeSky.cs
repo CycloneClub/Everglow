@@ -2,11 +2,13 @@ using Everglow.Commons.Physics;
 using Everglow.Myth.Common;
 using Everglow.Myth.TheTusk.WorldGeneration;
 using Terraria.Graphics.Effects;
+
 namespace Everglow.Myth.TheTusk.Backgrounds;
 
 public class TuskBiomeSky : CustomSky
 {
 	public static bool Open = false;
+
 	public override void OnLoad()
 	{
 	}
@@ -28,12 +30,14 @@ public class TuskBiomeSky : CustomSky
 	public override void Activate(Vector2 position, params object[] args)
 	{
 	}
+
 	private class Rock
 	{
 		public Vector3 pos;
 		public Vector3 velocity;
 		public int style;
 	}
+
 	public class RedLightning
 	{
 		public Vector3 pos;
@@ -42,6 +46,7 @@ public class TuskBiomeSky : CustomSky
 		public List<Vector2> nodes = new();
 		public int timeleft;
 		public int maxTimeleft;
+
 		public Vertex3D_2[] GetVertices(float maxWidth, Color c)
 		{
 			List<Vertex3D_2> vertices = new();
@@ -66,6 +71,7 @@ public class TuskBiomeSky : CustomSky
 			}
 			return vertices.ToArray();
 		}
+
 		public void Create()
 		{
 			timeleft = maxTimeleft;
@@ -89,6 +95,7 @@ public class TuskBiomeSky : CustomSky
 			}
 		}
 	}
+
 	private List<Rock> rocks = new List<Rock>();
 	private static List<RedLightning> lightnings = new();
 
@@ -191,6 +198,7 @@ public class TuskBiomeSky : CustomSky
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, vertices.ToArray(), 0, vertices.Count / 3);
 		}
 	}
+
 	/// <summary>
 	/// 获取绘制矩形
 	/// </summary>
@@ -407,6 +415,7 @@ public class TuskBiomeSky : CustomSky
 		spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 		#endregion
 	}
+
 	public override void Update(GameTime gameTime)
 	{
 		bool skyActive = TuskGen.TuskLandActive();
@@ -420,6 +429,7 @@ public class TuskBiomeSky : CustomSky
 			opacity -= 0.02f;
 		}
 	}
+
 	public override float GetCloudAlpha()
 	{
 		return (1f - opacity) * 0.97f + 0.03f;

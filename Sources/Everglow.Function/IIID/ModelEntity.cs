@@ -16,6 +16,7 @@ namespace Everglow.Commons.IIID
 			new VertexElement(24, VertexElementFormat.Vector3, VertexElementUsage.Normal, 0),
 			new VertexElement(36, VertexElementFormat.Vector3, VertexElementUsage.Normal, 1),
 		});
+
 		public Vector3 position;
 		public Vector3 texcoord;
 		public Vector3 normal;
@@ -37,6 +38,7 @@ namespace Everglow.Commons.IIID
 			}
 		}
 	}
+
 	public class ModelEntity
 	{
 		/// <summary>

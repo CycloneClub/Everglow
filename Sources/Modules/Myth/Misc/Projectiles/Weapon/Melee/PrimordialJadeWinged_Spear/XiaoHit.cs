@@ -19,10 +19,12 @@ internal class XiaoHit : ModProjectile
 		Projectile.tileCollide = false;
 		Projectile.extraUpdates = 3;
 	}
+
 	public override void AI()
 	{
 		Projectile.velocity *= 0;
 	}
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		for (int x = 0; x < 5; x++)
@@ -30,6 +32,7 @@ internal class XiaoHit : ModProjectile
 			GenerateVFX();
 		}
 	}
+
 	private void GenerateVFX()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -57,6 +60,7 @@ internal class XiaoHit : ModProjectile
 		};
 		Ins.VFXManager.Add(filthy2);
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;

@@ -6,6 +6,7 @@ public class GunSpark : ModDust
 	{
 		return true;
 	}
+
 	public override bool Update(Dust dust)
 	{
 		dust.scale *= 0.96f;
@@ -40,11 +41,13 @@ public class GunSpark : ModDust
 
 		return false;
 	}
+
 	public override void OnSpawn(Dust dust)
 	{
 		dust.color.R = (byte)Main.rand.Next(90, 111);
 		base.OnSpawn(dust);
 	}
+
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		return new Color(dust.scale, dust.scale * dust.scale * 0.5f, dust.scale - 2f, 0);

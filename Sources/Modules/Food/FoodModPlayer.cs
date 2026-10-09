@@ -24,17 +24,21 @@ public class FoodModPlayer : ModPlayer
 	{
 		get; set;
 	}
+
 	/// <summary>
 	/// 玩家的饱食等级
 	/// </summary>
 	public int SatietyLevel { get; private set; }
+
 	private int starvationCounter = 0;
+
 	public int StarvationCounter
 	{
 		get
 		{
 			return starvationCounter;
 		}
+
 		private set
 		{
 			if (value < 0)
@@ -47,6 +51,7 @@ public class FoodModPlayer : ModPlayer
 			}
 		}
 	}
+
 	/// <summary>
 	/// 玩家当前渴觉状态
 	/// </summary>
@@ -54,6 +59,7 @@ public class FoodModPlayer : ModPlayer
 	{
 		get; set;
 	}
+
 	public FoodModPlayer()
 	{
 	}
@@ -95,6 +101,7 @@ public class FoodModPlayer : ModPlayer
 
 		return false;
 	}
+
 	/*
          
          
@@ -106,14 +113,17 @@ public class FoodModPlayer : ModPlayer
 	{
 		get; private set;
 	}// 饱食损失计时器
+
 	public int ThirstyChangeTimer
 	{
 		get; private set;
 	}// 口渴变化计时器
+
 	public int TextTimer
 	{
 		get; set;
 	}
+
 	public override void PostUpdateMiscEffects()
 	{
 		Player.buffImmune[BuffID.WellFed] = true;
@@ -125,12 +135,14 @@ public class FoodModPlayer : ModPlayer
 		Player.buffImmune[BuffID.Starving] = true;
 		base.PostUpdateMiscEffects();
 	}
+
 	public override void PostUpdate()
 	{
 		FoodState();
 		UpdateHungerEmote();
 		base.PostUpdate();
 	}
+
 	public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource)
 	{
 		CurrentSatiety = 0;
@@ -139,6 +151,7 @@ public class FoodModPlayer : ModPlayer
 		starvationCounter = 0;
 		base.Kill(damage, hitDirection, pvp, damageSource);
 	}
+
 	public override void Initialize()
 	{
 		CurrentSatiety = 0;
@@ -153,6 +166,7 @@ public class FoodModPlayer : ModPlayer
 
 		base.Initialize();
 	}
+
 	public override void SaveData(TagCompound tag)
 	{
 		tag.Add("CurrentSatiety", CurrentSatiety);
@@ -268,6 +282,7 @@ public class FoodModPlayer : ModPlayer
 			ThirstyChangeTimer = 0;
 		}
 	}
+
 	public override void PostUpdateBuffs()
 	{
 		#region Well fed life regen effect
@@ -365,6 +380,7 @@ public class FoodModPlayer : ModPlayer
 		#endregion
 		base.PostUpdateBuffs();
 	}
+
 	public void UpdateHungerEmote()
 	{
 		if (Main.dontStarveWorld)

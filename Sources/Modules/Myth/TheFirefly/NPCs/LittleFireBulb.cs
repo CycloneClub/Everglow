@@ -26,6 +26,7 @@ public class LittleFireBulb : ModNPC
 		NPC.dontTakeDamage = true;
 		NPC.aiStyle = -1;
 	}
+
 	private bool HitT = false;
 	private bool Ini = false;
 	private float MaxL = 0;
@@ -93,6 +94,7 @@ public class LittleFireBulb : ModNPC
 		NPC.rotation = (float)(Math.Atan2(TOCen.Y, TOCen.X) + Math.PI / 2d);
 		Lighting.AddLight((int)(NPC.Center.X / 16), (int)(NPC.Center.Y / 16 - 1), 0, 0.1f, 0.8f);
 	}
+
 	// Failed attempt to try to spawn Little Fire Bulbs on the biome roof only ~Setnour6
 	// public override int SpawnNPC(int tileX, int tileY)
 	// {
@@ -110,6 +112,7 @@ public class LittleFireBulb : ModNPC
 	//    return 2f;
 	// }
 	private int HitCount = 0;
+
 	public override void HitEffect(NPC.HitInfo hit)
 	{
 		if (NPC.life <= 0)

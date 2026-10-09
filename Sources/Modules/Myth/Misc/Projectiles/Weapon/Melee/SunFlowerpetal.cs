@@ -1,4 +1,5 @@
 using Terraria;
+
 namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee;
 
 public class SunFlowerpetal : ModProjectile
@@ -8,6 +9,7 @@ public class SunFlowerpetal : ModProjectile
 		// base.DisplayName.SetDefault("落花");
 		Main.projFrames[Projectile.type] = 8;
 	}
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 24;
@@ -18,8 +20,10 @@ public class SunFlowerpetal : ModProjectile
 		Projectile.tileCollide = true;
 		Projectile.timeLeft = 9000;
 	}
+
 	public float num2 = 0;
 	public bool Hittil = false;
+
 	public override void AI()
 	{
 		if (Projectile.timeLeft == 8999)
@@ -76,6 +80,7 @@ public class SunFlowerpetal : ModProjectile
 			Projectile.alpha = (int)((60 - Projectile.timeLeft) / 60f * 255f);
 		}
 	}
+
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
 		Projectile.timeLeft = 60;
@@ -92,6 +97,7 @@ public class SunFlowerpetal : ModProjectile
 		}
 		return false;
 	}
+
 	/*public override Color? GetAlpha(Color lightColor)
         {
             if (Projectile.timeLeft > 60)
@@ -110,6 +116,7 @@ public class SunFlowerpetal : ModProjectile
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		var texture2D = (Texture2D)ModContent.Request<Texture2D>(Texture);

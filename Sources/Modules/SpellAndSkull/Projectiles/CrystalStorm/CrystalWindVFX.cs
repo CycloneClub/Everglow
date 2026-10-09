@@ -8,10 +8,13 @@ namespace Everglow.SpellAndSkull.Projectiles.CrystalStorm;
 internal abstract class ShaderDraw : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
+
 	public Vector2 position;
 	public Vector2 velocity;
 	public float[] ai;
+
 	public ShaderDraw() { }
+
 	public ShaderDraw(Vector2 position, Vector2 velocity, params float[] ai)
 	{
 		this.position = position;
@@ -26,6 +29,7 @@ internal class CrystalWindPipeline : Pipeline
 	{
 		effect = ModAsset.CursedFlame;
 	}
+
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
@@ -45,6 +49,7 @@ internal class CrystalWindPipeline : Pipeline
 		Ins.Batch.End();
 	}
 }
+
 [Pipeline(typeof(CrystalWindPipeline), typeof(BloomPipeline))]
 internal class CrystalWindVFX : ShaderDraw
 {
@@ -54,10 +59,12 @@ internal class CrystalWindVFX : ShaderDraw
 	public float rotation;
 	private Vector2 AimCenter = Vector2.Zero;
 	private Vector2 OldAimCenter = Vector2.Zero;
+
 	/// <summary>
 	/// ai[0]纹理相位,ai[1]上升力系数,ai[2]归属于哪个弹幕,ai[3]x轴迁移系数
 	/// </summary>
 	public CrystalWindVFX() { }
+
 	public CrystalWindVFX(int maxTime, Vector2 position, Vector2 velocity, params float[] ai) : base(position, velocity, ai)
 	{
 		this.maxTime = maxTime;

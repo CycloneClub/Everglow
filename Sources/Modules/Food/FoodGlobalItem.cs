@@ -10,10 +10,12 @@ public class FoodGlobalItem : GlobalItem
 {
 	// 对于原版的食物进行类型Id到 FoodInfo 的映射，直接获取FoodInfo实例
 	public static Dictionary<int, FoodInfo> m_vanillaFoodInfos;
+
 	public override void Unload()
 	{
 		m_vanillaFoodInfos = null;
 	}
+
 	public FoodGlobalItem()
 	{
 		m_vanillaFoodInfos = new Dictionary<int, FoodInfo>
@@ -691,6 +693,7 @@ public class FoodGlobalItem : GlobalItem
 			},
 		};
 	}
+
 	public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
 	{
 		if (m_vanillaFoodInfos.ContainsKey(item.type) /*|| (item.ModItem is FoodBase)*/)
@@ -751,6 +754,7 @@ public class FoodGlobalItem : GlobalItem
 			}
 		}
 	}
+
 	public override void SetStaticDefaults()
 	{
 	}

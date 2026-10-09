@@ -17,6 +17,7 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords
 			PowerfulStabProj = ModContent.ProjectileType<BlossomThorn_Pro_Stab>();
 			base.SetDefaults();
 		}
+
 		public override void AddRecipes()
 		{
 			CreateRecipe().

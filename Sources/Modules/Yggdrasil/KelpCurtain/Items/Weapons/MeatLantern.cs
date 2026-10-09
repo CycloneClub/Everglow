@@ -25,6 +25,7 @@ public class MeatLantern : ModItem
 
 		Item.value = Item.sellPrice(gold: 1);
 	}
+
 	public override bool CanUseItem(Player player)
 	{
 		if (base.CanUseItem(player))

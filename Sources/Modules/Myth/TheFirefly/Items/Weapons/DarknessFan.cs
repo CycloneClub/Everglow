@@ -15,6 +15,7 @@ public class DarknessFan : ModItem
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.SummonWeapons;
 
 	private FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
+
 	public override void SetDefaults()
 	{
 		Item.damage = 9;
@@ -35,6 +36,7 @@ public class DarknessFan : ModItem
 		Item.shoot = ModContent.ProjectileType<GlowingButterfly>();
 		Item.shootSpeed = 8;
 	}
+
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		if (player.altFunctionUse == 2 && colling == 0)
@@ -76,6 +78,7 @@ public class DarknessFan : ModItem
 		}
 		return true;
 	}
+
 	public override void ModifyTooltips(List<TooltipLine> tooltips)
 	{
 		if (MothEye.LocalOwner != null && MothEye.LocalOwner.TryGetModPlayer(out MothEyePlayer mothEyePlayer))
@@ -90,6 +93,7 @@ public class DarknessFan : ModItem
 			}
 		}
 	}
+
 	public override void UpdateInventory(Player player)
 	{
 		if (colling > 0)

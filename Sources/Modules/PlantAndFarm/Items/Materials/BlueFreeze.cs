@@ -9,6 +9,7 @@ public class BlueFreeze : ModItem
 		// DisplayName.SetDefault("Icy Poker");
 		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "翠蓝朵");
 	}
+
 	public override void SetDefaults()
 	{
 		Item.width = 22;

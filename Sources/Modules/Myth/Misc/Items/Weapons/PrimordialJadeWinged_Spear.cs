@@ -29,6 +29,7 @@ public class PrimordialJadeWinged_Spear : ModItem
 		Item.shootSpeed = 5f;
 		Item.shoot = ModContent.ProjectileType<Projectiles.Weapon.Melee.PrimordialJadeWinged_Spear.PrimordialJadeWinged_Spear>();
 	}
+
 	public override bool AltFunctionUse(Player player)
 	{
 		return player.ownedProjectileCounts[Item.shoot] < 1;
@@ -40,7 +41,9 @@ public class PrimordialJadeWinged_Spear : ModItem
 		Item.useAnimation = (int)(18f / player.meleeSpeed);
 		return player.ownedProjectileCounts[Item.shoot] < 1;
 	}
+
 	private bool CanDown;
+
 	public override void UpdateInventory(Player player)
 	{
 		if (player.mount.Active)
@@ -68,6 +71,7 @@ public class PrimordialJadeWinged_Spear : ModItem
 		}
 		CanDown = false;
 	}
+
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		if (player.altFunctionUse == 2)
@@ -169,6 +173,7 @@ public class PrimordialJadeWinged_Spear : ModItem
 		}
 		return false;
 	}
+
 	public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
 	{
 		var slotSize = new Vector2(42f, 42f);
@@ -187,9 +192,11 @@ public class PrimordialJadeWinged_Spear : ModItem
 			}
 		}
 	}
+
 	public override void HoldItem(Player player)
 	{
 	}
+
 	public override bool? UseItem(Player player)
 	{
 		if (!Main.dedServ)
@@ -199,6 +206,7 @@ public class PrimordialJadeWinged_Spear : ModItem
 
 		return null;
 	}
+
 	public override void AddRecipes()
 	{
 		Recipe recipe = CreateRecipe();
@@ -211,9 +219,11 @@ public class PrimordialJadeWinged_Spear : ModItem
 		recipe.Register();
 	}
 }
+
 public class PrimordialJadeWinged_SpearOwner : ModPlayer
 {
 	public static int MouseCooling = 0;
+
 	public override void PostUpdate()
 	{
 		if (MouseCooling > 0)
@@ -226,6 +236,7 @@ public class PrimordialJadeWinged_SpearOwner : ModPlayer
 		}
 		base.PostUpdate();
 	}
+
 	public override void UpdateEquips()
 	{
 	}

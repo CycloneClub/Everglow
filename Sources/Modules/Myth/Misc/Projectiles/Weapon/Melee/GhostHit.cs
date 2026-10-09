@@ -6,6 +6,7 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee;
 public class GhostHit : ModProjectile
 {
 	public override string Texture => "Everglow/Myth/Acytaea/Projectiles/AcytaeaSword_projectile";
+
 	public override void SetDefaults()
 	{
 		Projectile.aiStyle = -1;
@@ -24,6 +25,7 @@ public class GhostHit : ModProjectile
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30;
 	}
+
 	public override void AI()
 	{
 		if (Projectile.timeLeft > 15)
@@ -32,6 +34,7 @@ public class GhostHit : ModProjectile
 			Projectile.velocity = Projectile.velocity.RotatedBy(Projectile.ai[0]);
 		}
 	}
+
 	public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 	{
 		for (int k = 0; k < Projectile.oldPos.Length; k++)
@@ -47,9 +50,11 @@ public class GhostHit : ModProjectile
 		}
 		return false;
 	}
+
 	public override void OnSpawn(IEntitySource source)
 	{
 	}
+
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		// for (int x = 0; x < 5; x++)
@@ -85,14 +90,17 @@ public class GhostHit : ModProjectile
 		// Ins.VFXManager.Add(acytaeaSpark);
 		// }
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
 		DrawTrail();
 	}
+
 	public virtual void DrawTrail()
 	{
 		Main.spriteBatch.End();
@@ -104,6 +112,7 @@ public class GhostHit : ModProjectile
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 	}
+
 	private void DrawLight()
 	{
 		for (int z = 0; z < 3; z++)
@@ -186,6 +195,7 @@ public class GhostHit : ModProjectile
 			}
 		}
 	}
+
 	private void DrawDark()
 	{
 		for (int z = 0; z < 3; z++)

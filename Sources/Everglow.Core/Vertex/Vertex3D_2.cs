@@ -27,5 +27,6 @@ public struct Vertex3D_2 : IVertexType
 	{
 		return $"[{Position}, {Color}, {TexCoord}]";
 	}
+
 	public VertexDeclaration VertexDeclaration => _vertexDeclaration;
 }

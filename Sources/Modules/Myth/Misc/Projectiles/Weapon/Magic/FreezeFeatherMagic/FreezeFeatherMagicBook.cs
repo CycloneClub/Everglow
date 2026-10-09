@@ -5,6 +5,7 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Magic.FreezeFeatherMagic;
 internal class FreezeFeatherMagicBook : MagicBookProjectile
 {
 	public override string Texture => "Everglow/" + ModAsset.FreezeFeatherMagic_Path;
+
 	public override void SetDef()
 	{
 		ProjType = ModContent.ProjectileType<FreezeFeather>();
@@ -22,6 +23,7 @@ internal class FreezeFeatherMagicBook : MagicBookProjectile
 		TexCoordDown = new Vector2(32, 32);
 		TexCoordRight = new Vector2(57, 10);
 	}
+
 	public override void AI()
 	{
 		Player player = Main.player[Projectile.owner];

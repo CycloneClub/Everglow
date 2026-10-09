@@ -10,6 +10,7 @@ public class WoodSlingshot : SlingshotItem
 		Item.useTime = 26;
 		Item.useAnimation = 26;
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

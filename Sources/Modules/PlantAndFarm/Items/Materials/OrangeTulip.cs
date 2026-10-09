@@ -9,6 +9,7 @@ public class OrangeTulip : ModItem
 		// DisplayName.SetDefault("Orange Tulip");
 		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "橙酒杯花");
 	}
+
 	public override void SetDefaults()
 	{
 		Item.width = 18;

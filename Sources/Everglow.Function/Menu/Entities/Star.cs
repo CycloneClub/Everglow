@@ -10,6 +10,7 @@ internal class Star
 	public float scale = 1;
 
 	private float baseScale = 1;
+
 	public virtual void Update()
 	{
 		if (timeLeft == maxTime)
@@ -32,6 +33,7 @@ internal class Star
 		}
 		scale += (float)Math.Sin(timeLeft * 0.06f) * 0.06f;
 	}
+
 	public virtual void Draw()
 	{
 		Texture2D tex = ModAsset.Entities_Star.Value;

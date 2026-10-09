@@ -9,6 +9,7 @@ namespace Everglow.Myth.Acytaea.Projectiles;
 public class AcytaeaLaserSword : ModProjectile
 {
 	public override string Texture => "Everglow/Myth/Acytaea/Projectiles/AcytaeaSword_projectile";
+
 	public override void SetDefaults()
 	{
 		Projectile.aiStyle = -1;
@@ -25,8 +26,10 @@ public class AcytaeaLaserSword : ModProjectile
 		Projectile.width = 80;
 		Projectile.height = 80;
 	}
+
 	public Vector2 EndPos = Vector2.Zero;
 	public NPC Owner = new NPC();
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		int index = (int)Projectile.ai[0];
@@ -39,6 +42,7 @@ public class AcytaeaLaserSword : ModProjectile
 			Projectile.Kill();
 		}
 	}
+
 	public override void AI()
 	{
 		if (Owner == null || !Owner.active)
@@ -58,19 +62,23 @@ public class AcytaeaLaserSword : ModProjectile
 		GenerateVFX();
 		Projectile.hide = true;
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;
 	}
+
 	public override bool ShouldUpdatePosition()
 	{
 		return false;
 	}
+
 	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
 	{
 		overPlayers.Add(index);
 		base.DrawBehind(index, behindNPCsAndTiles, behindNPCs, behindProjectiles, overPlayers, overWiresUI);
 	}
+
 	public void DrawLaser(Texture2D tex, Color color, float width = 36)
 	{
 		var c0 = color;
@@ -116,6 +124,7 @@ public class AcytaeaLaserSword : ModProjectile
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 	}
+
 	public void GenerateVFX()
 	{
 		for (int x = 0; x < 4; x++)
@@ -135,6 +144,7 @@ public class AcytaeaLaserSword : ModProjectile
 			Ins.VFXManager.Add(acytaeaFlame);
 		}
 	}
+
 	private void CheckFrame()
 	{
 		Projectile.frameCounter++;
@@ -151,6 +161,7 @@ public class AcytaeaLaserSword : ModProjectile
 			Projectile.frameCounter = 0;
 		}
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
 		SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;
@@ -224,6 +235,7 @@ public class AcytaeaLaserSword : ModProjectile
 		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_thick.Value;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, rings.ToArray(), 0, rings.Count - 2);
 	}
+
 	public override void OnKill(int timeLeft)
 	{
 		foreach (var proj in Main.projectile)

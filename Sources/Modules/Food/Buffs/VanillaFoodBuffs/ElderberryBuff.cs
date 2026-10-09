@@ -16,6 +16,7 @@ public class ElderberryBuff : ModBuff
 		ElderberryBuffDash.ElderberryBuff = true;
 	}
 }
+
 public class ElderberryBuffDash : ModPlayer
 {
 	public const int DashDown = 0;

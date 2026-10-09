@@ -10,6 +10,7 @@ public class Flame3 : ModDust
 		dust.scale *= 1f;
 		dust.alpha = 0;
 	}
+
 	public override bool Update(Dust dust)
 	{
 		dust.position += dust.velocity;
@@ -31,6 +32,7 @@ public class Flame3 : ModDust
 		// }
 		return false;
 	}
+
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		if (dust.scale > 0.8f)

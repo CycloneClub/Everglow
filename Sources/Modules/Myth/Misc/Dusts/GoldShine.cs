@@ -38,6 +38,7 @@ public class GoldShine : ModDust
 	}*/
 		return false;
 	}
+
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		return new Color?(new Color(1, 0.75f, 0f, 0f));

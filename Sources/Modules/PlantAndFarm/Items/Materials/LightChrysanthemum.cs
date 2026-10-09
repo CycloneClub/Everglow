@@ -9,6 +9,7 @@ public class LightChrysanthemum : ModItem
 		// DisplayName.SetDefault("Rounded Golden Chrysanthemum");
 		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "金轮菊");
 	}
+
 	public override void SetDefaults()
 	{
 		Item.width = 26;

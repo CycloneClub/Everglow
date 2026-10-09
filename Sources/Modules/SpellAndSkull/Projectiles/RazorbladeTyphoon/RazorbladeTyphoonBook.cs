@@ -21,11 +21,14 @@ internal class RazorbladeTyphoonBook : MagicBookProjectile
 		// TexCoordDown = new Vector2(32, 22);
 		// TexCoordRight =  new Vector2(21, 0);
 	}
+
 	internal float ConstantUsingTime = 0;
+
 	public override void SpecialAI()
 	{
 		ConstantUsingTime += 1;
 	}
+
 	public override void OnKill(int timeLeft)
 	{
 		int HitType = ModContent.ProjectileType<HurricaneMask>();

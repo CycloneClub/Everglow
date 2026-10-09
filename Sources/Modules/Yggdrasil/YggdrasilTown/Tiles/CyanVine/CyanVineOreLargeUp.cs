@@ -23,6 +23,7 @@ public class CyanVineOreLargeUp : ModTile
 		DustType = ModContent.DustType<Dusts.CyanVine>();
 		AdjTiles = new int[] { Type };
 	}
+
 	public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
 	{
 		if (fail)
@@ -61,6 +62,7 @@ public class CyanVineOreLargeUp : ModTile
 			Dust.NewDust(new Vector2(i * 16 + Main.rand.Next(90) - 16, j * 16 + Main.rand.Next(64)) + vF, 0, 0, ModContent.DustType<Dusts.CyanVine>(), vF.X, vF.Y);
 		}
 	}
+
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		var tile = Main.tile[i, j];

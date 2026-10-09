@@ -9,6 +9,7 @@ public class ShallowNight : ModItem
 		// DisplayName.SetDefault("Heavenly Bloom");
 		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "琼霄花");
 	}
+
 	public override void SetDefaults()
 	{
 		Item.width = 28;

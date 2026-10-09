@@ -21,7 +21,9 @@ public class GiantBoneFeather : ModProjectile
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 80;
 	}
+
 	internal int timeTokill = -1;
+
 	public override void AI()
 	{
 		if (timeTokill >= 0 && timeTokill <= 2)
@@ -70,10 +72,12 @@ public class GiantBoneFeather : ModProjectile
 			Projectile.Kill();
 		}
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
 		Main.spriteBatch.End();
@@ -122,6 +126,7 @@ public class GiantBoneFeather : ModProjectile
 		}
 		Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), sourceRectangle, drawColor, Projectile.rotation, origin, Projectile.scale, spriteEffects, 0);
 	}
+
 	public void DrawTrail(Texture2D tex, Color color, float width = 36)
 	{
 		var c0 = color;
@@ -192,12 +197,14 @@ public class GiantBoneFeather : ModProjectile
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 	}
+
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
 		AmmoHit();
 		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<GiantBoneFeatherExplosion>(), Projectile.damage, 10, Projectile.owner);
 		return false;
 	}
+
 	public void AmmoHit()
 	{
 		SoundEngine.PlaySound(SoundID.Shatter.WithVolumeScale(0.8f), Projectile.Center);
@@ -231,6 +238,7 @@ public class GiantBoneFeather : ModProjectile
 		}
 		Projectile.position -= Projectile.velocity;
 	}
+
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		AmmoHit();

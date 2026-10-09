@@ -15,6 +15,7 @@ public class SaffronMilkCap : ModTile
 		TileObjectData.addTile(Type);
 		AddMapEntry(new Color(119, 77, 63));
 	}
+
 	public override bool TileFrame(int i, int j, ref bool resetFrame, ref bool noBreak)
 	{
 		return false;

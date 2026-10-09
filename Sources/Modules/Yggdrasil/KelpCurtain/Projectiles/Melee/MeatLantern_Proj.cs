@@ -26,10 +26,12 @@ public class MeatLantern_Proj : MeleeProj
 	{
 		return base.TrailAlpha(factor) * 2f;
 	}
+
 	public override BlendState TrailBlendState()
 	{
 		return BlendState.Additive;
 	}
+
 	public override void DrawSelf(SpriteBatch spriteBatch, Color lightColor, Vector4 diagonal = new Vector4(), Vector2 drawScale = new Vector2(), Texture2D glowTexture = null)
 	{
 		if (diagonal == new Vector4())
@@ -57,6 +59,7 @@ public class MeatLantern_Proj : MeleeProj
 		spriteBatch.End();
 		spriteBatch.Begin(sBS);
 	}
+
 	public void DrawVertexByTwoLine(Texture2D texture, Color drawColor, Vector2 textureCoordStart, Vector2 textureCoordEnd, Vector2 positionStart, Vector2 positionEnd)
 	{
 		Vector2 coordVector = textureCoordEnd - textureCoordStart;
@@ -319,6 +322,7 @@ public class MeatLantern_Proj : MeleeProj
 			d.noGravity = true;
 		}
 	}
+
 	public override void DrawTrail(Color color)
 	{
 		base.DrawTrail(color);
@@ -375,6 +379,7 @@ public class MeatLantern_Proj : MeleeProj
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 	}
+
 	public override void End()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -388,6 +393,7 @@ public class MeatLantern_Proj : MeleeProj
 		Projectile.Kill();
 		player.GetModPlayer<MEACPlayer>().isUsingMeleeProj = false;
 	}
+
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		Player player = Main.player[Projectile.owner];

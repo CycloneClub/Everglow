@@ -23,6 +23,7 @@ public class TuskTreasureBag : ModItem
 	{
 		return true;
 	}
+
 	public override void RightClick(Player player)
 	{
 		switch (Main.rand.Next(8))
@@ -55,7 +56,9 @@ public class TuskTreasureBag : ModItem
 		player.QuickSpawnItem(null, ItemID.GoldCoin, 15);
 		base.RightClick(player);
 	}
+
 	private int MyLightTimer = 0;
+
 	public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
 	{
 		Texture2D t = ModAsset.TuskTreasureBag.Value;

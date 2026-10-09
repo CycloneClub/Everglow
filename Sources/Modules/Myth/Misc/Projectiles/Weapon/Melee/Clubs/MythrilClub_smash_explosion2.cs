@@ -5,6 +5,7 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Magic.FireFeatherMagic;
 public class MythrilClub_smash_explosion2 : ModProjectile
 {
 	public override string Texture => "Everglow/" + ModAsset.CobaltClub_Path;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 20;
@@ -17,10 +18,12 @@ public class MythrilClub_smash_explosion2 : ModProjectile
 		Projectile.tileCollide = false;
 		Projectile.extraUpdates = 0;
 	}
+
 	public override bool ShouldUpdatePosition()
 	{
 		return false;
 	}
+
 	public override bool PreAI()
 	{
 		if (Projectile.timeLeft > 60)
@@ -29,18 +32,22 @@ public class MythrilClub_smash_explosion2 : ModProjectile
 		}
 		return base.PreAI();
 	}
+
 	public override void AI()
 	{
 		Projectile.hide = true;
 	}
+
 	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
 	{
 		behindNPCsAndTiles.Add(index);
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
 		if (Projectile.timeLeft > 60)

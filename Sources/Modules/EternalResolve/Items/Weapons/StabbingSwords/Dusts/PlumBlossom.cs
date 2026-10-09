@@ -15,10 +15,12 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords.Dusts
 			dust.rotation += 0.1f;
 			return false;
 		}
+
 		public override Color? GetAlpha(Dust dust, Color lightColor)
 		{
 			return lightColor;
 		}
+
 		public override void OnSpawn(Dust dust)
 		{
 			dust.rotation = Main.rand.NextFloat(6.283f);

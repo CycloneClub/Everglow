@@ -39,6 +39,7 @@ public class SideHangingLantern_Red : ModTile, ITileFluentlyDrawn
 
 		AddMapEntry(new Color(151, 31, 32));
 	}
+
 	public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 	{
 		var tile = Main.tile[i, j];
@@ -55,11 +56,13 @@ public class SideHangingLantern_Red : ModTile, ITileFluentlyDrawn
 			b = 0f;
 		}
 	}
+
 	public override void HitWire(int i, int j)
 	{
 		FurnitureUtils.LightHitwireStyleVertical(i, j, Type, 2, 3);
 		var tile = Main.tile[i, j];
 	}
+
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		var tile = Main.tile[i, j];
@@ -95,6 +98,7 @@ public class SideHangingLantern_Red : ModTile, ITileFluentlyDrawn
 			DrawLanternPiece(new Rectangle(6, 148, 22, 32), 0.16f, 12 + offXByDir, 8, pos + new Point(0, 1), pos + new Point(0, 1), drawCenterPos, spriteBatch, tileDrawing, new Color(1f, 1f, 1f, 0));
 		}
 	}
+
 	/// <summary>
 	/// 画侧挂灯
 	/// </summary>

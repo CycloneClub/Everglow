@@ -12,6 +12,7 @@ public class FreezeFeather : ModDust
 		dust.scale *= 1f;
 		dust.rotation = Main.rand.NextFloat(6.283f);
 	}
+
 	public override bool Update(Dust dust)
 	{
 		dust.position += dust.velocity;
@@ -54,6 +55,7 @@ public class FreezeFeather : ModDust
 
 		return false;
 	}
+
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		float light = (lightColor.R + lightColor.G + lightColor.B) / 765f;

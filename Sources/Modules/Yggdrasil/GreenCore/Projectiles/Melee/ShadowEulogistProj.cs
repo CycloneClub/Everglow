@@ -6,6 +6,7 @@ namespace Everglow.Yggdrasil.GreenCore.Projectiles.Melee;
 public class ShadowEulogistProj : MeleeProj
 {
 	public override string Texture => ModAsset.ShadowEulogist_Mod;
+
 	public override void SetDef()
 	{
 		maxAttackType = 1;
@@ -15,32 +16,40 @@ public class ShadowEulogistProj : MeleeProj
 		Projectile.scale *= 1.0f;
 		longHandle = true;
 	}
+
 	public override string TrailShapeTex()
 	{
 		return Commons.ModAsset.Melee_Mod;
 	}
+
 	public override string TrailColorTex()
 	{
 		return Texture + "_Color";
 	}
+
 	public override float TrailAlpha(float factor)
 	{
 		return base.TrailAlpha(factor);
 	}
+
 	public override BlendState TrailBlendState()
 	{
 		return CustomBlendStates.Reverse;
 	}
+
 	public override void DrawSelf(SpriteBatch spriteBatch, Color lightColor, Vector4 diagonal = default, Vector2 drawScale = default, Texture2D glowTexture = null)
 	{
 		base.DrawSelf(spriteBatch, lightColor, diagonal, drawScale, glowTexture);
 	}
+
 	public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 	{
 	}
+
 	public new void DrawBloom()
 	{
 	}
+
 	public override void Attack()
 	{
 		useBloom = false;

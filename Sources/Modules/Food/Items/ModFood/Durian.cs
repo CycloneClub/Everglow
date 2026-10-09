@@ -20,6 +20,7 @@ public class Durian : FoodBase
 			};
 		}
 	}
+
 	public override void SetStaticDefaults()
 	{
 		CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 5;

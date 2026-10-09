@@ -14,6 +14,7 @@ public class CreamChocolateCupStaff_proj : ModProjectile
 		Projectile.tileCollide = false;
 		Projectile.DamageType = DamageClass.Magic;
 	}
+
 	public float WeaponShake = 0;
 
 	public override void OnSpawn(IEntitySource source)
@@ -23,6 +24,7 @@ public class CreamChocolateCupStaff_proj : ModProjectile
 		mouseToPlayer = Vector2.Normalize(mouseToPlayer);
 		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, mouseToPlayer * 16f, ModContent.ProjectileType<CreamChocolateCup_ChocolateBars>(), Projectile.damage * 2, 0.4f, player.whoAmI);
 	}
+
 	public override void AI()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -88,9 +90,11 @@ public class CreamChocolateCupStaff_proj : ModProjectile
 		Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition, null, drawColor, rot0, texMain.Size() / 2f, 1f, se, 0);
 	}
 }
+
 public class CreamChocolateCupStaff_proj_rightClick : ModProjectile
 {
 	public override string Texture => "Everglow/Food/Projectiles/CreamChocolateCupStaff_proj";
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 36;
@@ -100,13 +104,16 @@ public class CreamChocolateCupStaff_proj_rightClick : ModProjectile
 		Projectile.tileCollide = false;
 		Projectile.DamageType = DamageClass.Magic;
 	}
+
 	public float WeaponShake = 0;
 	public Projectile CreamFlow;
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		Player player = Main.player[Projectile.owner];
 		CreamFlow = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), player.Center, Vector2.zeroVector, ModContent.ProjectileType<CreamChocolateCup_CreamFlow>(), Projectile.damage, 0.4f, player.whoAmI);
 	}
+
 	public override void AI()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -176,9 +183,11 @@ public class CreamChocolateCupStaff_proj_rightClick : ModProjectile
 		Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition, null, drawColor, rot0, texMain.Size() / 2f, 1f, se, 0);
 	}
 }
+
 public class CreamChocolateCupStaff_proj_held : ModProjectile
 {
 	public override string Texture => "Everglow/Food/Projectiles/CreamChocolateCupStaff_proj";
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 36;
@@ -188,11 +197,14 @@ public class CreamChocolateCupStaff_proj_held : ModProjectile
 		Projectile.tileCollide = false;
 		Projectile.DamageType = DamageClass.Magic;
 	}
+
 	public float Cooling = 0;
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		Cooling = 60;
 	}
+
 	public override void AI()
 	{
 		if (Cooling > 0)

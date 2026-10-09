@@ -13,6 +13,7 @@ public class LifeFluorescentTreeWood : ModTile
 		DustType = ModContent.DustType<Dusts.FluorescentLeafDust>();
 		AddMapEntry(new Color(55, 24, 63));
 	}
+
 	public override IEnumerable<Item> GetItemDrops(int i, int j)
 	{
 		yield return new Item(ModContent.ItemType<GlowWood>());

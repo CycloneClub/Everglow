@@ -5,6 +5,7 @@ public class BloodBall : ModDust
 	public override void OnSpawn(Dust dust)
 	{
 	}
+
 	public override bool Update(Dust dust)
 	{
 		if (dust.scale < 0.05f)

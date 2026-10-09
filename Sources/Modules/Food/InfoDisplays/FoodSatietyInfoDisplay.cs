@@ -22,6 +22,7 @@ public class FoodSatietyInfoDisplayplayer : ModPlayer
 {
 	public bool AccBloodGlucoseMonitor;
 	public bool ShowCurrentSatiety;
+
 	public override void ResetEffects()
 	{
 		AccBloodGlucoseMonitor = false;

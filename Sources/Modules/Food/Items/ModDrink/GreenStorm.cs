@@ -2,6 +2,7 @@ using Everglow.Food.Buffs.ModDrinkBuffs;
 using Everglow.Food.FoodUtilities;
 using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
+
 namespace Everglow.Food.Items.ModDrink;
 
 public class GreenStorm : DrinkBase
@@ -19,6 +20,7 @@ public class GreenStorm : DrinkBase
 			};
 		}
 	}
+
 	public override void SetStaticDefaults()
 	{
 		CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 5;

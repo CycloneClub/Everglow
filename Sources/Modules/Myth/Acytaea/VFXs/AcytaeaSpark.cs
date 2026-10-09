@@ -6,6 +6,7 @@ internal class AcytaeaSparkPipeline : Pipeline
 	{
 		effect = ModAsset.AcytaeaSpark;
 	}
+
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
@@ -26,13 +27,16 @@ internal class AcytaeaSparkPipeline : Pipeline
 		Ins.Batch.End();
 	}
 }
+
 [Pipeline(typeof(AcytaeaSparkPipeline), typeof(BloomPipeline))]
 internal class AcytaeaSparkDust : ShaderDraw
 {
 	public List<Vector2> oldPos = new List<Vector2>();
 	public float timer;
 	public float maxTime;
+
 	public AcytaeaSparkDust() { }
+
 	public AcytaeaSparkDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai) : base(position, velocity, ai)
 	{
 		this.maxTime = maxTime;
@@ -81,6 +85,7 @@ internal class AcytaeaSparkDust : ShaderDraw
 		float delC = ai[2] * 0.05f * (float)Math.Sin((maxTime - timer) / 40d * Math.PI);
 		Lighting.AddLight((int)(position.X / 16), (int)(position.Y / 16), 0.85f * delC, 0, 0);
 	}
+
 	public override void Draw()
 	{
 		float pocession = timer / maxTime;

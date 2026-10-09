@@ -1,5 +1,6 @@
 using Terraria.Audio;
 using Terraria.DataStructures;
+
 namespace Everglow.Myth.TheTusk.Items.Weapons;
 
 public class ToothSpear : ModItem
@@ -32,6 +33,7 @@ public class ToothSpear : ModItem
 	{
 		return base.Shoot(player, source, position, velocity, type, damage, knockback);
 	}
+
 	public override bool? UseItem(Player player)
 	{
 		if (!Main.dedServ)

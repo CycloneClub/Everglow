@@ -8,6 +8,7 @@ public class BlueflowerCap : ModItem
 	public override void SetStaticDefaults()
 	{
 	}
+
 	public override void SetDefaults()
 	{
 		Item.width = 18;

@@ -29,12 +29,14 @@ public class MothWorldDoor : ModTile
 		var modTranslation = CreateMapEntryName();
 		AddMapEntry(new Color(148, 0, 255), modTranslation);
 	}
+
 	public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 	{
 		r = 0f;
 		g = 0f;
 		b = 0f;
 	}
+
 	public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		var tile = Main.tile[i, j];
@@ -64,6 +66,7 @@ public class MothWorldDoor : ModTile
 	{
 		return false;
 	}
+
 	public override void RandomUpdate(int i, int j)
 	{
 		if (DrawMagicArraySystem.ArrayPosition != Vector2.zeroVector)
@@ -87,6 +90,7 @@ public class MothWorldDoor : ModTile
 		}
 		base.RandomUpdate(i, j);
 	}
+
 	public override void NearbyEffects(int i, int j, bool closer)
 	{
 		Player player = Main.LocalPlayer;
@@ -95,6 +99,7 @@ public class MothWorldDoor : ModTile
 		}
 		base.NearbyEffects(i, j, closer);
 	}
+
 	public override void MouseOver(int i, int j)
 	{
 		Player player = Main.LocalPlayer;
@@ -102,6 +107,7 @@ public class MothWorldDoor : ModTile
 		player.cursorItemIconEnabled = true;
 		player.cursorItemIconID = ModContent.ItemType<Items.FireflyImpression>();
 	}
+
 	public override bool RightClick(int i, int j)
 	{
 		if (SubworldSystem.IsActive<MothWorld>())
@@ -118,6 +124,7 @@ public class MothWorldDoor : ModTile
 		return base.RightClick(i, j);
 	}
 }
+
 public class DrawMagicArraySystem : ModSystem
 {
 	public override void OnModLoad()
@@ -127,7 +134,9 @@ public class DrawMagicArraySystem : ModSystem
 			Ins.HookManager.AddHook(CodeLayer.PostDrawTiles, DrawMagicArray);
 		}
 	}
+
 	public static Vector2 ArrayPosition = Vector2.zeroVector;
+
 	public static void DrawMagicArray()
 	{
 		if (ArrayPosition == Vector2.zeroVector)
@@ -179,6 +188,7 @@ public class DrawMagicArraySystem : ModSystem
 		DrawTexLine(Point5, Point6, c1, c1, magicSeal);
 		DrawTexLine(Point6, Point4, c1, c1, magicSeal);
 	}
+
 	public static void DrawTexLine(Vector2 StartPos, Vector2 EndPos, Color color1, Color color2, Texture2D tex)
 	{
 		float Wid = 4f;
@@ -223,6 +233,7 @@ public class DrawMagicArraySystem : ModSystem
 		Main.graphics.GraphicsDevice.Textures[0] = tex;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, vertex2Ds.ToArray(), 0, vertex2Ds.Count / 3);
 	}
+
 	public static void DrawTexCircle(float radius, float width, Color color, Vector2 center, Texture2D tex, double addRot = 0)
 	{
 		float timer = (float)(Main.time * 0.003f);

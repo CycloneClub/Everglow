@@ -20,6 +20,7 @@ public class OnMoth : ModBuff
 public class MothBuffTarget : GlobalNPC
 {
 	public static int[] mothStack = new int[256]; // TODO: Have this increase. Currently stays at 0
+
 	public override bool InstancePerEntity => true;
 
 	public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref NPC.HitModifiers modifiers)

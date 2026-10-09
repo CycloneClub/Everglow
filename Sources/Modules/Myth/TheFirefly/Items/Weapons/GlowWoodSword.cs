@@ -8,9 +8,11 @@ public class GlowWoodSword : ModItem
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeWeapons;
 
 	private FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
+
 	public override void SetStaticDefaults()
 	{
 	}
+
 	public override void SetDefaults()
 	{
 		Item.damage = 13;
@@ -26,6 +28,7 @@ public class GlowWoodSword : ModItem
 		Item.UseSound = SoundID.Item1;
 		Item.autoReuse = false;
 	}
+
 	public override void MeleeEffects(Player player, Rectangle hitbox)
 	{
 		if (player.itemAnimation % 4 == 2)
@@ -35,6 +38,7 @@ public class GlowWoodSword : ModItem
 		}
 		base.MeleeEffects(player, hitbox);
 	}
+
 	public override void ModifyTooltips(List<TooltipLine> tooltips)
 	{
 		if (MothEye.LocalOwner != null && MothEye.LocalOwner.TryGetModPlayer(out MothEyePlayer mothEyePlayer))
@@ -50,6 +54,7 @@ public class GlowWoodSword : ModItem
 			}
 		}
 	}
+
 	public override void AddRecipes()
 	{
 		Recipe recipe = CreateRecipe();

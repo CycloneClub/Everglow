@@ -14,6 +14,7 @@ public class GelBall : SlingshotAmmo
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30;
 	}
+
 	public override void DrawTrail()
 	{
 		DrawShade();
@@ -111,6 +112,7 @@ public class GelBall : SlingshotAmmo
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 	}
+
 	private void DrawShade()
 	{
 		var bars = new List<Vertex2D>();
@@ -203,6 +205,7 @@ public class GelBall : SlingshotAmmo
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 	}
+
 	public override void AmmoHit()
 	{
 		SoundEngine.PlaySound(SoundID.Drip, Projectile.Center);
@@ -214,6 +217,7 @@ public class GelBall : SlingshotAmmo
 			d.velocity = new Vector2(0, Main.rand.NextFloat(Main.rand.NextFloat(1f, 2f), 4f)).RotatedByRandom(6.283) * Power;
 		}
 	}
+
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
 		Projectile.penetrate--;

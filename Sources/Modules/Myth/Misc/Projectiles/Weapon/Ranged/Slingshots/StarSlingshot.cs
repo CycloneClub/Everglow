@@ -11,6 +11,7 @@ internal class StarSlingshot : SlingshotProjectile
 		SlingshotLength = 10;
 		SplitBranchDis = 6;
 	}
+
 	public override void DrawString()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -61,6 +62,7 @@ internal class StarSlingshot : SlingshotProjectile
 
 		Lighting.AddLight(SlingshotStringTail + Main.screenPosition, Light.R / 555f, Light.G / 555f, Light.B / 555f);
 	}
+
 	public void DrawTexLine(Vector2 StartPos, Vector2 EndPos, float width, Color color1, Color color2, Texture2D tex)
 	{
 		Vector2 Width = Vector2.Normalize(StartPos - EndPos).RotatedBy(Math.PI / 2d) * width;
@@ -76,6 +78,7 @@ internal class StarSlingshot : SlingshotProjectile
 		Main.graphics.GraphicsDevice.Textures[0] = tex;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, vertex2Ds.ToArray(), 0, vertex2Ds.Count - 2);
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
 		Player player = Main.player[Projectile.owner];

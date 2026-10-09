@@ -7,6 +7,7 @@ public class TuskModPlayer : ModPlayer
 	public float ShakeStrength;
 
 	public float screenShake;
+
 	public static void ScreenShake(float i, Vector2 center, int dis = 2000)
 	{
 		if (Main.netMode == NetmodeID.Server)
@@ -27,6 +28,7 @@ public class TuskModPlayer : ModPlayer
 	{
 		p.GetModPlayer<TuskModPlayer>().screenShake = i;
 	}
+
 	public override void ModifyScreenPosition()
 	{
 		if (screenShake > 0)

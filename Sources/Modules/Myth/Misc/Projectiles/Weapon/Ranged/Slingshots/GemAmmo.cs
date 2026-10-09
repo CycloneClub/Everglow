@@ -20,6 +20,7 @@ public abstract class GemAmmo : SlingshotAmmo
 	/// Dust(粒子)种类,默认钻石粉尘
 	/// </summary>
 	internal int dustType = ModContent.DustType<DiamondDust>();
+
 	public override void AI()
 	{
 		if (TimeTokill >= 0 && TimeTokill <= 2)
@@ -48,6 +49,7 @@ public abstract class GemAmmo : SlingshotAmmo
 			Projectile.velocity *= 0f;
 		}
 	}
+
 	public override void DrawTrail()
 	{
 		DrawShade();
@@ -123,6 +125,7 @@ public abstract class GemAmmo : SlingshotAmmo
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 	}
+
 	private void DrawShade()
 	{
 		var bars = new List<Vertex2D>();
@@ -195,6 +198,7 @@ public abstract class GemAmmo : SlingshotAmmo
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 	}
+
 	public override void AmmoHit()
 	{
 		SoundEngine.PlaySound(SoundID.Item27, Projectile.Center);

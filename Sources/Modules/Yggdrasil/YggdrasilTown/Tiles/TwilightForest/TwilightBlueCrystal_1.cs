@@ -13,6 +13,7 @@ public class TwilightBlueCrystal_1 : ShapeDataTile, ISceneTile
 		AddMapEntry(new Color(40, 80, 148));
 		DustType = ModContent.DustType<TwilightCrystalDust>();
 	}
+
 	public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 	{
 		r = 0.1f;
@@ -20,9 +21,11 @@ public class TwilightBlueCrystal_1 : ShapeDataTile, ISceneTile
 		b = 0.42f;
 		base.ModifyLight(i, j, ref r, ref g, ref b);
 	}
+
 	public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 	}
+
 	public void AddScene(int i, int j)
 	{
 		Tile tile = Main.tile[i, j];

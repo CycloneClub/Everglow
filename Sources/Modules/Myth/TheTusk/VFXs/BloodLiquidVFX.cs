@@ -10,6 +10,7 @@ internal class BloodLiquidPipeline : Pipeline
 	{
 		effect = ModContent.Request<Effect>("Everglow/Myth/TheTusk/VFXs/BloodLiquidVFX", AssetRequestMode.ImmediateLoad);
 	}
+
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
@@ -29,12 +30,14 @@ internal class BloodLiquidPipeline : Pipeline
 		Ins.Batch.End();
 	}
 }
+
 internal class ThickBloodLiquidPipeline : Pipeline
 {
 	public override void Load()
 	{
 		effect = ModContent.Request<Effect>("Everglow/Myth/TheTusk/VFXs/BloodLiquidVFX", AssetRequestMode.ImmediateLoad);
 	}
+
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
@@ -54,6 +57,7 @@ internal class ThickBloodLiquidPipeline : Pipeline
 		Ins.Batch.End();
 	}
 }
+
 [Pipeline(typeof(BloodLiquidPipeline))]
 internal class BloodLiquidDust : ShaderDraw
 {
@@ -62,7 +66,9 @@ internal class BloodLiquidDust : ShaderDraw
 	public float timer;
 	public float maxTime;
 	public float alpha;
+
 	public BloodLiquidDust() { }
+
 	public BloodLiquidDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai) : base(position, velocity, ai)
 	{
 		this.maxTime = maxTime;
@@ -169,6 +175,7 @@ internal class BloodLiquidDust : ShaderDraw
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);
 	}
 }
+
 [Pipeline(typeof(ThickBloodLiquidPipeline))]
 internal class ThickBloodLiquidDust : ShaderDraw
 {
@@ -177,7 +184,9 @@ internal class ThickBloodLiquidDust : ShaderDraw
 	public float timer;
 	public float maxTime;
 	public float alpha;
+
 	public ThickBloodLiquidDust() { }
+
 	public ThickBloodLiquidDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai) : base(position, velocity, ai)
 	{
 		this.maxTime = maxTime;

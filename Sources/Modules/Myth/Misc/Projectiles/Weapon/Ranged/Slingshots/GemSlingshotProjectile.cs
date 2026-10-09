@@ -9,11 +9,13 @@ public abstract class GemSlingshotProjectile : SlingshotProjectile
 	/// 弦上的宝石贴图,从MythModule(不含)开始的路径
 	/// </summary>
 	internal string TexPath = "";
+
 	public override void SetDef()
 	{
 		SlingshotLength = 8;
 		SplitBranchDis = 10;
 	}
+
 	public override void DrawString()
 	{
 		base.DrawString();

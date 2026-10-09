@@ -66,10 +66,12 @@ public class MagnetSphereII : ModProjectile
 			}
 		}
 	}
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		Projectile.ai[0] = 0;
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		float timeValue = (float)(Main.timeForVisualEffects * 0.008f);
@@ -139,10 +141,12 @@ public class MagnetSphereII : ModProjectile
 	{
 		Spark();
 	}
+
 	public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 	{
 		Spark();
 	}
+
 	private void Spark()
 	{
 		ScreenShaker Gsplayer = Main.player[Projectile.owner].GetModPlayer<ScreenShaker>();
@@ -165,6 +169,7 @@ public class MagnetSphereII : ModProjectile
 		p.CritChance = Projectile.CritChance;
 		Projectile.damage = (int)(Projectile.damage * 1.2);
 	}
+
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
 		Spark();

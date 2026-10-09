@@ -365,6 +365,7 @@ internal class SightOfTileProj : ModProjectile
 
 		return baseColor;
 	}
+
 	private Color GetTileColor(int i, int j, Color baseColor)
 	{
 		Tile tile = Main.tile[i, j];

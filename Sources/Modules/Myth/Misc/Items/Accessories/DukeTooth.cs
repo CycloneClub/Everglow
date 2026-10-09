@@ -13,6 +13,7 @@ public class DukeTooth : ModItem
 		Item.accessory = true;
 		Item.rare = ItemRarityID.Lime;
 	}
+
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
 		player.GetArmorPenetration(DamageClass.Generic) += 12;

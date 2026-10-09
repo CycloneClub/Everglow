@@ -10,6 +10,7 @@ internal class GelSlingshot : SlingshotProjectile
 		ShootProjType = ModContent.ProjectileType<GelBall>();
 		SlingshotLength = 12;
 	}
+
 	public override void DrawString()
 	{
 		Player player = Main.player[Projectile.owner];

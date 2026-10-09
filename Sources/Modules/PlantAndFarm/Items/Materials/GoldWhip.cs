@@ -9,6 +9,7 @@ public class GoldWhip : ModItem
 		// DisplayName.SetDefault("Banana of the Valley");
 		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "金鞭兰");
 	}
+
 	public override void SetDefaults()
 	{
 		Item.width = 36;

@@ -10,6 +10,7 @@ public class WaterBoltDropPipeline : Pipeline
 	{
 		effect = ModAsset.WaterBoltDrop;
 	}
+
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
@@ -30,10 +31,12 @@ public class WaterBoltDropPipeline : Pipeline
 		Ins.Batch.End();
 	}
 }
+
 [Pipeline(typeof(WaterBoltDropPipeline))]
 public class WaterBoltDrop : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
+
 	public Vector2 position;
 	public Vector2 velocity;
 	public float[] ai;
@@ -41,7 +44,9 @@ public class WaterBoltDrop : Visual
 	public float maxTime;
 	public float scale;
 	public float rotation;
+
 	public WaterBoltDrop() { }
+
 	public override void Update()
 	{
 		position += velocity;

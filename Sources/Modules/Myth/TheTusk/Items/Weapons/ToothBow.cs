@@ -28,6 +28,7 @@ public class ToothBow : ModItem
 		Item.shootSpeed = 12f;
 		Item.useAmmo = AmmoID.Arrow;
 	}
+
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		if (player.ownedProjectileCounts[ModContent.ProjectileType<Projectiles.Weapon.ToothBow>()] <= 0)

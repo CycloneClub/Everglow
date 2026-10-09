@@ -8,6 +8,7 @@ public class BasaltWall : ModWall
 		DustType = 240;
 		AddMapEntry(new Color(1, 1, 1));
 	}
+
 	public override bool CanExplode(int i, int j)
 	{
 		return false;

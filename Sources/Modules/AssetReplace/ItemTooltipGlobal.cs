@@ -8,6 +8,7 @@ public class ItemTooltipGlobal : GlobalItem
 {
 	private static int currentYOffset;
 	private static int globalYOffset;
+
 	public override bool PreDrawTooltip(Item item, ReadOnlyCollection<TooltipLine> lines, ref int x, ref int y)
 	{
 		currentYOffset = 0;

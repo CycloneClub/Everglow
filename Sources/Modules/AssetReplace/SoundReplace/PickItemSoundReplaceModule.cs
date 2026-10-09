@@ -12,6 +12,7 @@ internal class PickItemSoundReplaceModule : IModule
 	{
 		Code = GetType().Assembly;
 	}
+
 	public string Name => "Pick Item Sound Modify";
 
 	public Assembly Code { get; }

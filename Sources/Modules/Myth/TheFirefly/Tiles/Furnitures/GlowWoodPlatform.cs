@@ -40,6 +40,7 @@ public class GlowWoodPlatform : ModTile
 		LocalizedText name = CreateMapEntryName();
 		AddMapEntry(new Color(69, 36, 78), name);
 	}
+
 	public override void PostSetDefaults() => Main.tileNoSunLight[Type] = false;
 
 	public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;

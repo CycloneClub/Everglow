@@ -1,6 +1,7 @@
 using Terraria.DataStructures;
 
 namespace Everglow.Commons.Templates.Weapons;
+
 /// <summary>
 /// Handhold projectile.
 /// </summary>
@@ -29,10 +30,12 @@ public abstract class HandholdProjectile : ModProjectile
 	/// </summary>
 	public float DepartLength = 50;
 	public Vector2 ArmRootPos = Vector2.zeroVector;
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		base.OnSpawn(source);
 	}
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 32;
@@ -46,15 +49,18 @@ public abstract class HandholdProjectile : ModProjectile
 		TextureRotation = MathHelper.PiOver4;
 		SetDef();
 	}
+
 	public virtual void SetDef()
 	{
 	}
+
 	public override void AI()
 	{
 		HeldProjectileAI();
 		Player player = Main.player[Projectile.owner];
 		RemoveExtraSameProjectiles(player);
 	}
+
 	public virtual void HeldProjectileAI()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -89,6 +95,7 @@ public abstract class HandholdProjectile : ModProjectile
 			player.direction = 1;
 		}
 	}
+
 	public virtual void RemoveExtraSameProjectiles(Player owner)
 	{
 		if (owner.ownedProjectileCounts[Projectile.type] > 1)
@@ -114,11 +121,13 @@ public abstract class HandholdProjectile : ModProjectile
 			}
 		}
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		DrawBaseTexture(lightColor);
 		return false;
 	}
+
 	public virtual void DrawBaseTexture(Color lightColor)
 	{
 		Player player = Main.player[Projectile.owner];

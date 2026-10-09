@@ -1,9 +1,11 @@
 using Terraria;
+
 namespace Everglow.Myth.TheFirefly.Projectiles;
 
 public class BlueMissilFriendly : ModProjectile
 {
 	public override string Texture => "Everglow/Myth/TheFirefly/Projectiles/BlueMissil";
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 34;
@@ -15,6 +17,7 @@ public class BlueMissilFriendly : ModProjectile
 		Projectile.tileCollide = true;
 		Projectile.usesLocalNPCImmunity = false;
 	}
+
 	public override void AI()
 	{
 		Projectile.velocity *= 0.98f;
@@ -23,6 +26,7 @@ public class BlueMissilFriendly : ModProjectile
 		dust.velocity = Projectile.velocity * 0.8f;
 		Projectile.scale *= 0.98f;
 	}
+
 	public override void OnKill(int timeLeft)
 	{
 		for (int i = 0; i < 18; i++)
@@ -36,6 +40,7 @@ public class BlueMissilFriendly : ModProjectile
 			dust.noGravity = true;
 		}
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		float lightValue = Projectile.timeLeft / 120f;

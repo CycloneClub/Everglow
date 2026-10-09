@@ -18,9 +18,11 @@ public abstract class WhipProjectile : ModProjectile
 		DefaultToWhip();
 		SetDef();
 	}
+
 	public virtual void SetDef()
 	{
 	}
+
 	/// <summary>
 	/// The dust that will generate by whip.
 	/// </summary>
@@ -41,6 +43,7 @@ public abstract class WhipProjectile : ModProjectile
 	/// The vertical frames of whip texture.
 	/// </summary>
 	public int VerticalFrameCount;
+
 	public void DefaultToWhip()
 	{
 		Projectile.width = 18;
@@ -56,6 +59,7 @@ public abstract class WhipProjectile : ModProjectile
 		Projectile.localNPCHitCooldown = -1;
 		Projectile.DamageType = DamageClass.Summon;
 	}
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		Player player = Main.player[Projectile.owner];
@@ -65,6 +69,7 @@ public abstract class WhipProjectile : ModProjectile
 		player.itemTime = player.itemAnimationMax;
 		TimeToFlyOut = player.itemAnimationMax * Projectile.MaxUpdates;
 	}
+
 	public override void CutTiles()
 	{
 		var value = new Vector2(Projectile.width * Projectile.scale / 2f, 0f);
@@ -75,10 +80,12 @@ public abstract class WhipProjectile : ModProjectile
 		}
 		base.CutTiles();
 	}
+
 	public override bool? CanCutTiles()
 	{
 		return true;
 	}
+
 	public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 	{
 		float lineSpeedMax = WhipLength / TimeToFlyOut / 3f;
@@ -102,6 +109,7 @@ public abstract class WhipProjectile : ModProjectile
 		}
 		return false;
 	}
+
 	public override void AI()
 	{
 		AI_165_Whip();
@@ -109,6 +117,7 @@ public abstract class WhipProjectile : ModProjectile
 		FillWhipControlPoints(WhipPointsForCollision);
 		return;
 	}
+
 	/// <summary>
 	/// Whip AI after adjusted.
 	/// Projectile.ai[0] work as a timer, you should not change it. 
@@ -136,6 +145,7 @@ public abstract class WhipProjectile : ModProjectile
 		}
 		GenerateDusts();
 	}
+
 	public virtual void GenerateDusts()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -165,6 +175,7 @@ public abstract class WhipProjectile : ModProjectile
 			}
 		}
 	}
+
 	public virtual void FillWhipControlPoints(List<Vector2> controlPoints, float deltaStep = 0)
 	{
 		float rangeMultiplier = WhipLength / 300f;
@@ -216,6 +227,7 @@ public abstract class WhipProjectile : ModProjectile
 			value2 = vector2;
 		}
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		float lineSpeedMax = WhipLength / TimeToFlyOut / 3f;
@@ -231,6 +243,7 @@ public abstract class WhipProjectile : ModProjectile
 		DrawWhip();
 		return false;
 	}
+
 	public virtual void DrawWhip(float foreStep = 0)
 	{
 		Texture2D mainTexture = TextureAssets.Projectile[Projectile.type].Value;

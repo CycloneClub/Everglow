@@ -18,6 +18,7 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords
 			PowerfulStabProj = ModContent.ProjectileType<SwordfishBeak_Pro_Stab>();
 			base.SetDefaults();
 		}
+
 		public override void UpdateVanitySet(Player player)
 		{
 			if (player.wet)
@@ -29,6 +30,7 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords
 				StaminaCost = 0.75f;
 			}
 		}
+
 		public override void AddRecipes()
 		{
 			CreateRecipe()

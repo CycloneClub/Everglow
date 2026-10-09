@@ -15,6 +15,7 @@ internal class JungleSlingshotHit : ModProjectile
 		Projectile.tileCollide = false;
 		Projectile.extraUpdates = 3;
 	}
+
 	public override void AI()
 	{
 		Projectile.velocity *= 0;
@@ -41,6 +42,7 @@ internal class JungleSlingshotHit : ModProjectile
 			}
 		}
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;

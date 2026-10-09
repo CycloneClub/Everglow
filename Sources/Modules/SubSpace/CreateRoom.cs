@@ -18,6 +18,7 @@ public class CreateRoom : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.consumable = false;
 	}
+
 	public override bool? UseItem(Player player)
 	{
 		if (player.itemAnimation == player.itemAnimationMax)
@@ -25,8 +26,10 @@ public class CreateRoom : ModItem
 		}
 		return base.UseItem(player);
 	}
+
 	public bool Holding = false;
 	public Point MousePoint = new Point(0, 0);
+
 	public override void HoldItem(Player player)
 	{
 		MousePoint = new Point((int)(Main.MouseWorld.X / 16f), (int)(Main.MouseWorld.Y / 16f));
@@ -53,6 +56,7 @@ public class CreateRoom : ModItem
 		Holding = true;
 		base.HoldItem(player);
 	}
+
 	public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
 	{
 		if (Holding)

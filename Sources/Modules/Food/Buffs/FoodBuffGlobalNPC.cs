@@ -8,6 +8,7 @@ namespace Everglow.Food.Buffs;
 public class FoodBuffGlobalNPC : GlobalNPC
 {
 	public bool isservant = false;
+
 	public override bool InstancePerEntity => true;
 
 	// TODO 144
@@ -51,6 +52,7 @@ public class FoodBuffGlobalNPC : GlobalNPC
 			}
 		}
 	}
+
 	public override void OnKill(NPC npc)
 	{
 		if (npc.HasBuff(ModContent.BuffType<CherryBuff>()))

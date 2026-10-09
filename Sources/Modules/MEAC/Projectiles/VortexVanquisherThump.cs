@@ -5,10 +5,12 @@ namespace Everglow.MEAC.Projectiles;
 public class VortexVanquisherThump : ModProjectile
 {
 	public override string Texture => "Everglow/MEAC/Projectiles/VortexVanquisher";
+
 	public override void SetStaticDefaults()
 	{
 		Main.projFrames[Projectile.type] = 3;
 	}
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 24;
@@ -22,12 +24,15 @@ public class VortexVanquisherThump : ModProjectile
 		Projectile.ignoreWater = true;
 		Projectile.extraUpdates = 10;
 	}
+
 	public Vector2 StartVelocity;
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		Projectile.velocity = Vector2.Normalize(Projectile.velocity);
 		StartVelocity = Projectile.velocity;
 	}
+
 	public override void AI()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -54,6 +59,7 @@ public class VortexVanquisherThump : ModProjectile
 			}
 		}
 	}
+
 	public void StrikeDown()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -139,6 +145,7 @@ public class VortexVanquisherThump : ModProjectile
 		}
 		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), CheckPoint + TotalVector * 180, -TotalVector * (0.9f + FallVelocity * 0.06f), ModContent.ProjectileType<VortexVanquisher3>(), (int)(Projectile.damage * (1 + FallVelocity * 0.02f)), 0, player.whoAmI, 1).CritChance = Projectile.CritChance;
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;

@@ -11,6 +11,7 @@ public class XmasWhip : ModItem
 		Item.damage = 308;
 		Item.value = Item.sellPrice(0, 10, 0, 0);
 	}
+
 	public override bool? UseItem(Player player)
 	{
 		if (player.autoReuseGlove)
@@ -21,6 +22,7 @@ public class XmasWhip : ModItem
 		Item.autoReuse = false;
 		return true;
 	}
+
 	private void DefaultToWhip(int projectileId, int dmg, float kb, float shootspeed, int animationTotalTime = 30)
 	{
 		Player player = Main.LocalPlayer;

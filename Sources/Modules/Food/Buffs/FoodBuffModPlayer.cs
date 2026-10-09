@@ -97,6 +97,7 @@ public class FoodBuffModPlayer : ModPlayer
 		CriticalDamage = 1f;
 		AddCritDamage = 0;
 	}
+
 	public override void ResetEffects()
 	{
 		WingTimeModifier = 1f;
@@ -143,6 +144,7 @@ public class FoodBuffModPlayer : ModPlayer
 		CriticalDamage = 1f;
 		AddCritDamage = 0;
 	}
+
 	public override void PostUpdateBuffs()
 	{
 		if (StinkyTofuBuff)
@@ -208,6 +210,7 @@ public class FoodBuffModPlayer : ModPlayer
 			BloodyMoscatoHealCount += 2;
 		}
 	}
+
 	public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource)
 	{
 		if (CherryBuff)

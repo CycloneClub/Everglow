@@ -8,6 +8,7 @@ public class XiaoDustCyan : ModDust
 		dust.alpha = 0;
 		dust.rotation = 0;
 	}
+
 	public override bool Update(Dust dust)
 	{
 		dust.position += dust.velocity;
@@ -21,6 +22,7 @@ public class XiaoDustCyan : ModDust
 
 		return false;
 	}
+
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		return new Color(255, 255, 255, 150);

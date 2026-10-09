@@ -17,6 +17,7 @@ public class ChlorophyteClub_VFX : ModProjectile
 	internal int[] TimeLeft = new int[900];
 	internal bool[] Active = new bool[900];
 	internal bool[] Smaller = new bool[900];
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		Projectile.tileCollide = false;
@@ -35,6 +36,7 @@ public class ChlorophyteClub_VFX : ModProjectile
 		}
 		SoundEngine.PlaySound(SoundID.DD2_BetsyFlameBreath.WithPitchOffset(0.3f), Projectile.Center);
 	}
+
 	public override void AI()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -55,6 +57,7 @@ public class ChlorophyteClub_VFX : ModProjectile
 			}
 		}
 	}
+
 	internal void ActivateVine(int i, Vector2 position, Vector2 velocity, int timeleft = 300, float ai0 = 0, float ai1 = 0, bool smaller = false)
 	{
 		Player player = Main.player[Projectile.owner];
@@ -153,6 +156,7 @@ public class ChlorophyteClub_VFX : ModProjectile
 		AI0[i] = 0;
 		AI1[i] = 0;
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;
@@ -267,6 +271,7 @@ public class ChlorophyteClub_VFX : ModProjectile
 
 		return false;
 	}
+
 	private static void DrawCircle(float radius, float width, Color color, Vector2 center, double addRot = 0)
 	{
 		var circle = new List<Vertex2D>();
@@ -283,6 +288,7 @@ public class ChlorophyteClub_VFX : ModProjectile
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, circle.ToArray(), 0, circle.Count - 2);
 		}
 	}
+
 	private void DrawCircleDark(float radius, float width, float alpha, Vector2 center, double addRot = 0)
 	{
 		Color color = new Color(1f, 1f, 1f, alpha * 1.6f);

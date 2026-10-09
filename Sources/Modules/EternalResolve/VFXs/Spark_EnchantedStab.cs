@@ -12,6 +12,7 @@ public class Spark_EnchantedStabPipeline : Pipeline
 		effect = ModAsset.Spark_EnchantedStab;
 		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Enchanted.Value);
 	}
+
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
@@ -24,15 +25,18 @@ public class Spark_EnchantedStabPipeline : Pipeline
 		Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.None, SamplerState.PointWrap, RasterizerState.CullNone);
 		effect.CurrentTechnique.Passes[0].Apply();
 	}
+
 	public override void EndRender()
 	{
 		Ins.Batch.End();
 	}
 }
+
 [Pipeline(typeof(Spark_EnchantedStabPipeline), typeof(BloomPipeline))]
 public class Spark_EnchantedStabDust : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
+
 	public Vector2 position;
 	public Vector2 velocity;
 	public float[] ai;
@@ -41,7 +45,9 @@ public class Spark_EnchantedStabDust : Visual
 	public float scale;
 	public float rotation;
 	public bool noGravity;
+
 	public Spark_EnchantedStabDust() { }
+
 	public override void Update()
 	{
 		ai[1] *= 0.99f;

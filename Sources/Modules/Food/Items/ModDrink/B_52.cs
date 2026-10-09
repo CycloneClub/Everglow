@@ -20,6 +20,7 @@ public class B_52 : DrinkBase
 			};
 		}
 	}
+
 	public override void SetStaticDefaults()
 	{
 		CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 5;

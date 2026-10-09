@@ -309,6 +309,7 @@ public class MothMagicArray : ModProjectile
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, circle.ToArray(), 0, circle.Count - 2);
 		}
 	}
+
 	private static void DrawCircle(float radius, float width, Color color, Vector2 center, float value0 = 0, float valu1 = 0)
 	{
 		var circle = new List<Vertex2D>();

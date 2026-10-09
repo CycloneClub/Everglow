@@ -22,10 +22,12 @@ public class LampWood_Tree : ModTile
 		DustType = ModContent.DustType<LampWood_Dust>();
 		AdjTiles = new int[] { Type };
 	}
+
 	public override IEnumerable<Item> GetItemDrops(int i, int j)
 	{
 		yield return new Item(ModContent.ItemType<LampWood_Wood>());
 	}
+
 	public override bool CanDrop(int i, int j)
 	{
 		var tile = Main.tile[i, j];
@@ -68,6 +70,7 @@ public class LampWood_Tree : ModTile
 			}
 		}
 	}
+
 	public override void NearbyEffects(int i, int j, bool closer)
 	{
 		Tile tile = Main.tile[i, j];
@@ -86,6 +89,7 @@ public class LampWood_Tree : ModTile
 		}
 		base.NearbyEffects(i, j, closer);
 	}
+
 	public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
 	{
 		int deltaY = -1; // 向上破坏的自变化Y坐标

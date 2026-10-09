@@ -43,10 +43,12 @@ public class GlowWoodChandelierType2 : ModTile, ITileFluentlyDrawn
 		LocalizedText name = CreateMapEntryName();
 		AddMapEntry(new Color(69, 36, 78), name);
 	}
+
 	public override void NumDust(int i, int j, bool fail, ref int num)
 	{
 		num = 0;
 	}
+
 	public override void HitWire(int i, int j)
 	{
 		FurnitureUtils.LightHitwire(i, j, Type, 3, 3);
@@ -68,11 +70,13 @@ public class GlowWoodChandelierType2 : ModTile, ITileFluentlyDrawn
 			b = 0f;
 		}
 	}
+
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		TileFluentDrawManager.AddFluentPoint(this, i, j);
 		return false;
 	}
+
 	public void FluentDraw(Vector2 screenPosition, Point pos, SpriteBatch spriteBatch, TileDrawing tileDrawing)
 	{
 		FurnitureUtils.Chandelier3x3FluentDraw(screenPosition, pos, spriteBatch, tileDrawing);

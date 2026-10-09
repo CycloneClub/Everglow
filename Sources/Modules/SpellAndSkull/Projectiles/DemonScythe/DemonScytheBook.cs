@@ -22,6 +22,7 @@ internal class DemonScytheBook : MagicBookProjectile//
 		// TexCoordDown = new Vector2(20, 30);
 		// TexCoordRight = new Vector2(28, 4);
 	}
+
 	public override void SpecialAI()
 	{
 		Player player = Main.player[Projectile.owner];

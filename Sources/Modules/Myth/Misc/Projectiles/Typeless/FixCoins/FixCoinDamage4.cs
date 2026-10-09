@@ -6,10 +6,12 @@ public class FixCoinDamage4 : FixCoinProjectile
 	{
 		return "heatmapPurple";
 	}
+
 	public override int PrefixID()
 	{
 		return 0;
 	}
+
 	public override int Level()
 	{
 		return 4;

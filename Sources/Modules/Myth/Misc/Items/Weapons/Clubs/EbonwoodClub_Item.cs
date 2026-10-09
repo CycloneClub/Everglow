@@ -11,6 +11,7 @@ public class EbonwoodClub_Item : ClubItem
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.EbonwoodClub>();
 		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.EbonwoodClub_smash>();
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

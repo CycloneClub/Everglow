@@ -11,6 +11,7 @@ public class RichMahoganyClub_Item : ClubItem
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.RichMahoganyClub>();
 		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.RichMahoganyClub_smash>();
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

@@ -13,6 +13,7 @@ internal class Storm : ModProjectile
 		Projectile.DamageType = DamageClass.Magic;
 		Projectile.tileCollide = false;
 	}
+
 	public void GenerateVFX(int Frequency)
 	{
 		float mulVelocity = 1f;
@@ -34,6 +35,7 @@ internal class Storm : ModProjectile
 			Ins.VFXManager.Add(cw);
 		}
 	}
+
 	public override void AI()
 	{
 		Player player = Main.player[Projectile.owner];

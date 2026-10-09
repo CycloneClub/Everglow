@@ -18,6 +18,7 @@ public class BoneFeatherMagic : SpellTomeItem
 	{
 		CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 	}
+
 	public override void SetDefaults()
 	{
 		Item.damage = 40;
@@ -40,6 +41,7 @@ public class BoneFeatherMagic : SpellTomeItem
 		DecorativeProjectileTypes.Add(ModContent.ProjectileType<BoneFeatherMagicBook>());
 		DecorativeProjectileTypes.Add(ModContent.ProjectileType<BoneFeatherMagicArray>());
 	}
+
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		if (player.GetModPlayer<MagicBookPlayer>().MagicBookLevel == 1)

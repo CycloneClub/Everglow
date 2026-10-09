@@ -14,6 +14,7 @@ public class RedCore : ModNPC
 		// DisplayName.SetDefault("Red Core");
 		Main.npcFrameCount[NPC.type] = 4;
 	}
+
 	public override void SetDefaults()
 	{
 		NPC.damage = 180;
@@ -31,11 +32,14 @@ public class RedCore : ModNPC
 		NPC.HitSound = SoundID.NPCHit3;
 		NPC.scale = 2f;
 	}
+
 	public static int PauseCool = 120;
+
 	public override Color? GetAlpha(Color drawColor)
 	{
 		return new Color(NPC.color.R, NPC.color.G, NPC.color.B, 150);
 	}
+
 	public override void FindFrame(int frameHeight)
 	{
 		NPC.frameCounter += 0.2f;
@@ -43,6 +47,7 @@ public class RedCore : ModNPC
 		int num = (int)NPC.frameCounter;
 		NPC.frame.Y = num * frameHeight;
 	}
+
 	public override void AI()
 	{
 		NPC.localAI[0] += 1;
@@ -59,9 +64,11 @@ public class RedCore : ModNPC
 		NPC.color.B = (byte)(NPC.color.B * 0.94f + Aimcolor.B * 0.06f);
 		NPC.color.A = (byte)(NPC.color.A * 0.94f + Aimcolor.A * 0.06f);
 	}
+
 	private float x = 0;
 	private float Sca = 0;
 	private Color Aimcolor = new Color(255, 0, 0, 0);
+
 	public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
 		x += 0.01f;
@@ -75,6 +82,7 @@ public class RedCore : ModNPC
 		spriteBatch.Draw(ModAsset.LightEffect.Value, NPC.Center - Main.screenPosition, null, new Color(NPC.color.R, NPC.color.G, NPC.color.B, 0) * 0.4f, -x * 6f, new Vector2(128f, 128f), (float)Math.Sqrt(M * M + K * K) * 2.4f * Sca, SpriteEffects.None, 0f);
 		return true;
 	}
+
 	public override void HitEffect(NPC.HitInfo hit)
 	{
 		SoundEngine.PlaySound(SoundID.DD2_WitherBeastCrystalImpact, NPC.Center);
@@ -123,9 +131,11 @@ public class RedCore : ModNPC
 			}
 		}
 	}
+
 	public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
 	}
+
 	private struct CustomVertexInfo : IVertexType
 	{
 		private static VertexDeclaration _vertexDeclaration = new VertexDeclaration(new VertexElement[3]
@@ -134,6 +144,7 @@ public class RedCore : ModNPC
 			new VertexElement(8, VertexElementFormat.Color, VertexElementUsage.Color, 0),
 			new VertexElement(12, VertexElementFormat.Vector3, VertexElementUsage.TextureCoordinate, 0),
 		});
+
 		public Vector2 Position;
 		public Color Color;
 		public Vector3 TexCoord;

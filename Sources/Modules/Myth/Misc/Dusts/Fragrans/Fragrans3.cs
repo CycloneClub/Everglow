@@ -38,6 +38,7 @@ public class Fragrans3 : ModDust
 	}*/
 		return false;
 	}
+
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		return new Color?(new Color(255, 255, 255, 0f));

@@ -23,14 +23,18 @@ public class GoldShield : ModProjectile, IWarpProjectile
 		Projectile.timeLeft = 1200;
 		Projectile.penetrate = -1;
 	}
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		base.OnSpawn(source);
 	}
+
 	public static Texture2D ShieldTexture;
 	private RenderTarget2D BlackAreaSwap;
 	private RenderTarget2D BlackAreaOrig;
+
 	public Vector2 DrawSize => new Vector2(240, 200);
+
 	public override void Load()
 	{
 		if (Main.netMode != NetmodeID.Server)
@@ -48,6 +52,7 @@ public class GoldShield : ModProjectile, IWarpProjectile
 			}, "Realloc RenderTarget");
 		}
 	}
+
 	private void AllocateRenderTarget(Vector2 size)
 	{
 		if (Ins.VisualQuality.High)
@@ -111,6 +116,7 @@ public class GoldShield : ModProjectile, IWarpProjectile
 		sb.Draw(BlackAreaOrig, Vector2.Zero, Color.White);
 		sb.End();
 	}
+
 	public void DrawWarp(VFXBatch spriteBatch)
 	{
 		// float WaveRange = 0.7f;
@@ -136,6 +142,7 @@ public class GoldShield : ModProjectile, IWarpProjectile
 		// DrawDoubleLine(spriteBatch, DrawCen + new Vector2(-k0 * 75, k0 * 75) * WaveRange, DrawCen + new Vector2(-k0 * 150, 0) * WaveRange, new Color(1f * k2, 0.7f * k2, 0f, 0f), new Color(1f * k3, 0.6f * k3, 0f, 0f));
 		// }
 	}
+
 	public void DrawDoubleLine(VFXBatch spriteBatch, Vector2 StartPos, Vector2 EndPos, Color color1, Color color2)
 	{
 		Vector2 DrawCen = Projectile.Center - Main.screenPosition;
@@ -157,6 +164,7 @@ public class GoldShield : ModProjectile, IWarpProjectile
 
 		spriteBatch.Draw(TextureAssets.MagicPixel.Value, vertex2Ds, PrimitiveType.TriangleList);
 	}
+
 	public void DrawDoubleLine(Vector2 StartPos, Vector2 EndPos, Color color1, Color color2)
 	{
 		float timeValue = (Projectile.timeLeft - 1170) / 2f;
@@ -172,6 +180,7 @@ public class GoldShield : ModProjectile, IWarpProjectile
 		Main.graphics.GraphicsDevice.Textures[0] = TextureAssets.MagicPixel.Value;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, vertex2Ds.ToArray(), 0, vertex2Ds.Count - 2);
 	}
+
 	public void DrawPost(Color color, int widthCount, float halfHeight, float initialPhase, Texture2D texture, Texture2D texture1 = null)
 	{
 		var vertex2Ds = new List<Vertex2D>();
@@ -209,12 +218,15 @@ public class GoldShield : ModProjectile, IWarpProjectile
 		}
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, vertex2Ds.ToArray(), 0, vertex2Ds.Count / 3);
 	}
+
 	public static int ProjectileCount = 0;
+
 	public override bool PreAI()
 	{
 		ProjectileCount = 0;
 		return base.PreAI();
 	}
+
 	public override void AI()
 	{
 		ProjectileCount++;
@@ -230,15 +242,18 @@ public class GoldShield : ModProjectile, IWarpProjectile
 		Projectile.hide = true;
 		Lighting.AddLight((int)(Projectile.Center.X / 16), (int)(Projectile.Center.Y / 16), 0.8f, 0.6f, 0);
 	}
+
 	public override void OnKill(int timeLeft)
 	{
 		ProjectileCount--;
 		base.OnKill(timeLeft);
 	}
+
 	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
 	{
 		overPlayers.Add(index);
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D tex = TextureAssets.Projectile[Projectile.type].Value;
@@ -417,6 +432,7 @@ public class GoldShieldUIDrawer : ModSystem
 	{
 		ShieldBarDraw(Main.spriteBatch);
 	}
+
 	public void ShieldBarDraw(SpriteBatch spriteBatch)
 	{
 		Player p = Main.LocalPlayer;
@@ -489,14 +505,17 @@ public class GoldShieldUIDrawer : ModSystem
 				}
 			}
 		}
+
 		public override void PreUpdate()
 		{
 			ShieldDuration();
 		}
+
 		public override void PostUpdate()
 		{
 			ShieldDuration();
 		}
+
 		public void PreHurt(ref Player.HurtInfo info)
 		{
 			bool shieldsTookHit = false;
@@ -536,6 +555,7 @@ public class GoldShieldUIDrawer : ModSystem
 				}
 			}
 		}
+
 		public override void ModifyHurt(ref Player.HurtModifiers modifiers)
 		{
 			modifiers.ModifyHurtInfo += new Player.HurtModifiers.HurtInfoModifier(this.PreHurt);

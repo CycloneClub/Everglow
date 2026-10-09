@@ -164,6 +164,7 @@ public class BoneSpike : ModProjectile, IWarpProjectile
 		Main.graphics.GraphicsDevice.Textures[0] = tex;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, vertex2Ds.ToArray(), 0, vertex2Ds.Count / 3);
 	}
+
 	public void DrawTexLineColor(VFXBatch spriteBatch, Vector2 StartPos, Vector2 EndPos, Color color1, Color color2, float Wid, Texture2D tex)
 	{
 		Vector2 Width = Vector2.Normalize(StartPos - EndPos).RotatedBy(Math.PI / 2d) * Wid;

@@ -28,6 +28,7 @@ public class GiantPineCone_0 : ModTile
 		HitSound = new SoundStyle("Everglow/Minortopography/GiantPinetree/Sounds/PineconeCollapse");
 		AddMapEntry(new Color(119, 77, 63));
 	}
+
 	public override IEnumerable<Item> GetItemDrops(int i, int j)
 	{
 		yield return new Item(ModContent.ItemType<PineNut>(), Main.rand.Next(27, 54));

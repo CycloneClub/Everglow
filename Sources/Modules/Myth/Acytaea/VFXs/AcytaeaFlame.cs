@@ -5,10 +5,13 @@ namespace Everglow.Myth.Acytaea.VFXs;
 internal abstract class ShaderDraw : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
+
 	public Vector2 position;
 	public Vector2 velocity;
 	public float[] ai;
+
 	public ShaderDraw() { }
+
 	public ShaderDraw(Vector2 position, Vector2 velocity, params float[] ai)
 	{
 		this.position = position;
@@ -23,6 +26,7 @@ internal class AcytaeaFlamePipeline : Pipeline
 	{
 		effect = ModAsset.AcytaeaFlame;
 	}
+
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
@@ -43,13 +47,16 @@ internal class AcytaeaFlamePipeline : Pipeline
 		Ins.Batch.End();
 	}
 }
+
 [Pipeline(typeof(AcytaeaFlamePipeline), typeof(BloomPipeline))]
 internal class AcytaeaFlameDust : ShaderDraw
 {
 	public List<Vector2> oldPos = new List<Vector2>();
 	public float timer;
 	public float maxTime;
+
 	public AcytaeaFlameDust() { }
+
 	public AcytaeaFlameDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai) : base(position, velocity, ai)
 	{
 		this.maxTime = maxTime;
@@ -98,6 +105,7 @@ internal class AcytaeaFlameDust : ShaderDraw
 		float delC = ai[2] * 0.05f * (float)Math.Sin((maxTime - timer) / 40d * Math.PI);
 		Lighting.AddLight((int)(position.X / 16), (int)(position.Y / 16), 0.85f * delC, 0, 0);
 	}
+
 	public override void Draw()
 	{
 		float pocession = timer / maxTime;

@@ -110,6 +110,7 @@ internal class DemonScythePlusCrack : ModProjectile
 		}
 		return false;
 	}
+
 	private void DrawFlameTrail(int TrueL, float width, bool Shade = false, Color c0 = new Color(), float Mulfactor = 1.6f)
 	{
 		var bars = new List<Vertex2D>();

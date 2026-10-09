@@ -8,6 +8,7 @@ public class XiaoDust : ModDust
 		dust.alpha = 0;
 		dust.rotation = 0;
 	}
+
 	public override bool Update(Dust dust)
 	{
 		dust.position += dust.velocity;

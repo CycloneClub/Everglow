@@ -25,6 +25,7 @@ public class LampWoodWorkBench : ModTile
 		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
 		AddMapEntry(new Color(84, 84, 84));
 	}
+
 	public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		var tile = Main.tile[i, j];

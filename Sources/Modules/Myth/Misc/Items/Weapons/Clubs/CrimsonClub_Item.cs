@@ -12,6 +12,7 @@ public class CrimsonClub_Item : ClubItem
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.CrimsonClub>();
 		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.CrimsonClub_smash>();
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

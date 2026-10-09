@@ -24,6 +24,7 @@ public class HandheldCircularSaw : ModItem
 
 		Item.value = Item.sellPrice(gold: 1);
 	}
+
 	public override bool CanUseItem(Player player)
 	{
 		if (player.ownedProjectileCounts[ModContent.ProjectileType<HandheldCircularSaw_proj>()] == 0)

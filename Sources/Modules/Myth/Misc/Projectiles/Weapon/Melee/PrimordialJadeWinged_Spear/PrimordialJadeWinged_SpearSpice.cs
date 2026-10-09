@@ -89,6 +89,7 @@ public class PrimordialJadeWinged_SpearSpice : ModProjectile
 		Main.spriteBatch.Begin(sBS);
 		return false;
 	}
+
 	public override void AI()
 	{
 		if (Projectile.timeLeft <= 118)
@@ -97,16 +98,20 @@ public class PrimordialJadeWinged_SpearSpice : ModProjectile
 		}
 		Projectile.hide = true;
 	}
+
 	public static int CyanStrike = 0;
+
 	public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 	{
 		CyanStrike = 1;
 		Projectile.NewProjectile(Terraria.Entity.InheritSource(Projectile), target.Center, Vector2.Zero, ModContent.ProjectileType<XiaoHit>(), 0, 0, Projectile.owner, 0.45f);
 	}
+
 	public override void Load()
 	{
 		On_CombatText.NewText_Rectangle_Color_string_bool_bool += CombatText_NewText_Rectangle_Color_string_bool_bool;
 	}
+
 	private int CombatText_NewText_Rectangle_Color_string_bool_bool(On_CombatText.orig_NewText_Rectangle_Color_string_bool_bool orig, Rectangle location, Color color, string text, bool dramatic, bool dot)
 	{
 		if (CyanStrike > 0)

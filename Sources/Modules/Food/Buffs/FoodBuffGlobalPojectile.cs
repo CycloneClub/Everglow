@@ -29,6 +29,7 @@ public class FoodBuffGlobalPojectile : GlobalProjectile
 			}
 		}
 	}
+
 	public override bool OnTileCollide(Projectile projectile, Vector2 oldVelocity)
 	{
 		Player player = Main.player[projectile.owner];
@@ -52,6 +53,7 @@ public class FoodBuffGlobalPojectile : GlobalProjectile
 		}
 		return base.OnTileCollide(projectile, oldVelocity);
 	}
+
 	public override void AI(Projectile projectile)
 	{
 		Player player = Main.player[projectile.owner];

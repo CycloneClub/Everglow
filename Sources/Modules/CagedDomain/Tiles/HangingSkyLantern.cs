@@ -34,6 +34,7 @@ public class HangingSkyLantern : ModTile, ITileFluentlyDrawn
 
 		AddMapEntry(new Color(135, 103, 90));
 	}
+
 	public override void HitWire(int i, int j)
 	{
 		FurnitureUtils.LightHitwire(i, j, Type, 3, 3);

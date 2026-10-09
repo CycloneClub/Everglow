@@ -13,6 +13,7 @@ public class BlueGel : ModItem
 		Item.accessory = true;
 		Item.rare = ItemRarityID.Orange;
 	}
+
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
 		player.statManaMax2 += 30;

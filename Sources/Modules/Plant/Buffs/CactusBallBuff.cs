@@ -8,6 +8,7 @@ public class CactusBallBuff : ModBuff
 	{
 		Main.debuff[Type] = true;
 	}
+
 	public override void Update(NPC npc, ref int buffIndex)
 	{
 		npc.defense = npc.defDefense - 12;
@@ -18,6 +19,7 @@ public class CactusBallBuff : ModBuff
 
 		npc.lifeRegen -= 5;
 	}
+
 	public override void Update(Player player, ref int buffIndex)
 	{
 		player.statDefense -= 12;

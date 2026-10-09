@@ -13,6 +13,7 @@ public class VampireMatCave_BoardSign_Item : ModItem
 		Item.height = 34;
 		Item.value = 10;
 	}
+
 	public override void HoldItem(Player player)
 	{
 		Main.placementPreview = true;

@@ -5,6 +5,7 @@ namespace Everglow.Myth.Acytaea.Projectiles;
 public class AcytaeaSwordRain : ModProjectile
 {
 	public override string Texture => "Everglow/Myth/Acytaea/Projectiles/AcytaeaSword_projectile";
+
 	public override void SetDefaults()
 	{
 		Projectile.aiStyle = -1;
@@ -21,6 +22,7 @@ public class AcytaeaSwordRain : ModProjectile
 		Projectile.width = 80;
 		Projectile.height = 80;
 	}
+
 	public override void AI()
 	{
 		if (Projectile.timeLeft % 4 == 1 && Projectile.timeLeft > 120)
@@ -33,15 +35,18 @@ public class AcytaeaSwordRain : ModProjectile
 			Projectile.scale *= 0.7f;
 		}
 	}
+
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
 		AmmoHit();
 		Projectile.tileCollide = false;
 		return false;
 	}
+
 	public void AmmoHit()
 	{
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		float timeValue = (float)Main.time * 0.2f;
