@@ -136,18 +136,18 @@ public class LampWood_Tree : ModTile
 			default:
 				return false;
 
-			case 0:  // 树桩
+			case 0: // 树桩
 				Width = 38;
 				Height = 22;
 				TexCoordY = 304;
 				break;
 
-			case 1:  // 树干
+			case 1: // 树干
 				Width = 24;
 				TexCoordY = 236;
 				break;
 
-			case 2:  // 树冠
+			case 2: // 树冠
 				Width = 200;
 				Height = 234;
 				TexCoordY = 0;
@@ -155,7 +155,7 @@ public class LampWood_Tree : ModTile
 				Rot = Wind + (float)Math.Sin(j + Main.timeForVisualEffects / 30f) * Wind * 0.3f;
 				OffsetY = 22;
 				break;
-			case 3:  // 树干长串
+			case 3: // 树干长串
 				Width = 38;
 				Height = 48;
 				TexCoordY = 254;

@@ -36,7 +36,7 @@ public abstract class FireWorm : ModNPC
 	public override sealed bool PreAI()
 	{
 		if (NPC.localAI[1] == 0)
-		{  // 判断是否初始化了，如果没有则初始化
+		{ // 判断是否初始化了，如果没有则初始化
 			NPC.localAI[1] = 1f;
 			Init();
 		}

@@ -125,18 +125,18 @@ public class YggdrasilCyathea : ModTile
 			default:
 				return false;
 
-			case 0:  // 树桩
+			case 0: // 树桩
 				Width = 48;
 				Height = 22;
 				TexCoordY = 108;
 				break;
 
-			case 1:  // 树干
+			case 1: // 树干
 				Width = 16;
 				TexCoordY = 90;
 				break;
 
-			case 2:  // 树冠
+			case 2: // 树冠
 				Width = 90;
 				Height = 90;
 				TexCoordY = 0;
