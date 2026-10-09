@@ -12,19 +12,23 @@ public abstract class HandholdProjectile : ModProjectile
 	/// default to pi / 4, almost terraria painter like this angle.
 	/// </summary>
 	public float TextureRotation = 0;
+
 	/// <summary>
 	/// Max rotation speed of this projectile.
 	/// default to 6.284, projectile will reach the rotation of playerCenter to mouseWorld in a sudden.
 	/// </summary>
 	public float MaxRotationSpeed = 6.284f;
+
 	/// <summary>
 	/// default to 1, projectile will reach the rotation of playerCenter to mouseWorld in a sudden.
 	/// </summary>
 	public float LerpFactorOfRotation = 1;
+
 	/// <summary>
 	/// default to (0, 0).
 	/// </summary>
 	public Vector2 DrawOffset = Vector2.zeroVector;
+
 	/// <summary>
 	/// Length to player arm.default to 50.
 	/// </summary>

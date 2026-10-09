@@ -32,46 +32,57 @@ public abstract class MagicBookProjectile : ModProjectile
 	/// 最好不要动计时器，计算书本的翻开程度，甚至决定了书本是否kill
 	/// </summary>
 	public int timer = 0;
+
 	/// <summary>
 	/// 产生粒子的类型（主要应用于Kill的时候）
 	/// </summary>
 	public int DustType = -1;
+
 	/// <summary>
 	/// 如果有混合粒子效果，产生粒子的第二种类型
 	/// </summary>
 	public int DustTypeII = -1;
+
 	/// <summary>
 	/// 发射的弹幕
 	/// </summary>
 	public int ProjType = -1;
+
 	/// <summary>
 	/// 物品种类
 	/// </summary>
 	public int ItemType = -1;
+
 	/// <summary>
 	/// 绘制出来的特效书尺寸,和物品贴图大小无关,默认12
 	/// </summary>
 	public float BookScale = 12f;
+
 	/// <summary>
 	/// 伤害倍率
 	/// </summary>
 	public float MulDamage = 1f;
+
 	/// <summary>
 	/// 射速倍率
 	/// </summary>
 	public float MulVelocity = 1f;
+
 	/// <summary>
 	/// 弹幕初始生成位置随速度偏移倍率
 	/// </summary>
 	public float MulStartPosByVelocity = 1f;
+
 	/// <summary>
 	/// 是否使用荧光效果,默认为是
 	/// </summary>
 	public bool UseGlow = true;
+
 	/// <summary>
 	/// 封面荧光的颜色
 	/// </summary>
 	public Color GlowColor = new Color(255, 255, 255, 0);
+
 	/// <summary>
 	/// 环绕魔法光效的颜色
 	/// </summary>
@@ -80,22 +91,27 @@ public abstract class MagicBookProjectile : ModProjectile
 	public Vector2 TexCoordLeft = new Vector2(1, 15);
 	public Vector2 TexCoordDown = new Vector2(12, 28);
 	public Vector2 TexCoordRight = new Vector2(27, 11);
+
 	/// <summary>
 	/// 荧光效果路径,从SpellAndSkullModule后(不含)开始算起
 	/// </summary>
 	public Texture2D GlowTexture = null;
+
 	/// <summary>
 	/// 后部荧光效果路径,从SpellAndSkullModule后(不含)开始算起
 	/// </summary>
 	public Texture2D BackGlowTexture = null;
+
 	/// <summary>
 	/// 封面图路径,从SpellAndSkullModule后(不含)开始算起
 	/// </summary>
 	public Texture2D FrontTexture = null;
+
 	/// <summary>
 	/// 书页图路径,从SpellAndSkullModule后(不含)开始算起
 	/// </summary>
 	public Texture2D PaperTexture = null;
+
 	/// <summary>
 	/// 封底图路径,从SpellAndSkullModule后(不含)开始算起
 	/// </summary>

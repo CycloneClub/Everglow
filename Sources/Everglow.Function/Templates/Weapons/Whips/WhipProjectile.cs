@@ -27,18 +27,22 @@ public abstract class WhipProjectile : ModProjectile
 	/// The dust that will generate by whip.
 	/// </summary>
 	public int DustType;
+
 	/// <summary>
 	/// How many SegmentCount of this whip, default to 20.
 	/// </summary>
 	public int SegmentCount;
+
 	/// <summary>
 	/// The max range this whip can reach, default to 300.
 	/// </summary>
 	public float WhipLength;
+
 	/// <summary>
 	/// The animation(max) time of this whip.
 	/// </summary>
 	public float TimeToFlyOut;
+
 	/// <summary>
 	/// The vertical frames of whip texture.
 	/// </summary>

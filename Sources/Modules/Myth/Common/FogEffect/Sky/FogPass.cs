@@ -9,26 +9,32 @@ public struct FogState
 	/// 是否开启大雾效果
 	/// </summary>
 	public bool Enabled;
+
 	/// <summary>
 	/// 雾散射随着距离增大而增加的速率
 	/// </summary>
 	public float BloomScatteringRatio;
+
 	/// <summary>
 	/// 单位距离的雾会吸收多少亮度，该值越大则雾浓度越高，可见性越差
 	/// </summary>
 	public Vector3 ViewAbsorptionRatio;
+
 	/// <summary>
 	/// 原版光照物块光强的阈值，阈值越大那么亮度比较暗的光照环境不会加入光晕计算
 	/// </summary>
 	public float LuminanceThreashold;
+
 	/// <summary>
 	/// 超出屏幕计算光照的物块格子数
 	/// </summary>
 	public int OffscreenTileCount;
+
 	/// <summary>
 	/// 光晕效果的强度，越强光晕越亮
 	/// </summary>
 	public float BloomIntensity;
+
 	/// <summary>
 	/// 散射效果的模糊半径
 	/// </summary>
