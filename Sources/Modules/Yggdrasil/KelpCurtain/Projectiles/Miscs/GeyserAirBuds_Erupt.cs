@@ -76,28 +76,28 @@ public class GeyserAirBuds_Erupt : ModProjectile
 
 	public override bool PreDraw(ref Color lightColor)
 	{
-		//float timeValue = Projectile.timeLeft / 60f;
-		//var drawColor = new Color(220, 20, 239, 0);
-		//float range = (1 - timeValue) * 150;
-		//var drawPos = Projectile.Center - Main.screenPosition;
-		//List<Vertex2D> bars = new List<Vertex2D>();
-		//for (int i = 0; i <= 100; i++)
-		//{
-		//	var ringColor = drawColor;
-		//	bars.Add(drawPos + new Vector2(range + timeValue * 20f, 0).RotatedBy(i / 100f * MathHelper.TwoPi), ringColor * 0, new Vector3(i / 100f * 4f, timeValue, 0));
-		//	bars.Add(drawPos + new Vector2(range, 0).RotatedBy(i / 100f * MathHelper.TwoPi), ringColor, new Vector3(i / 100f * 4f, 0.05f + timeValue, 0));
-		//}
-		//if (bars.Count > 0)
-		//{
-		//	SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;
-		//	Main.spriteBatch.End();
-		//	Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-		//	Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_16.Value;
-		//	Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
+		// float timeValue = Projectile.timeLeft / 60f;
+		// var drawColor = new Color(220, 20, 239, 0);
+		// float range = (1 - timeValue) * 150;
+		// var drawPos = Projectile.Center - Main.screenPosition;
+		// List<Vertex2D> bars = new List<Vertex2D>();
+		// for (int i = 0; i <= 100; i++)
+		// {
+		// var ringColor = drawColor;
+		// bars.Add(drawPos + new Vector2(range + timeValue * 20f, 0).RotatedBy(i / 100f * MathHelper.TwoPi), ringColor * 0, new Vector3(i / 100f * 4f, timeValue, 0));
+		// bars.Add(drawPos + new Vector2(range, 0).RotatedBy(i / 100f * MathHelper.TwoPi), ringColor, new Vector3(i / 100f * 4f, 0.05f + timeValue, 0));
+		// }
+		// if (bars.Count > 0)
+		// {
+		// SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;
+		// Main.spriteBatch.End();
+		// Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
+		// Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_16.Value;
+		// Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 
-		//	Main.spriteBatch.End();
-		//	Main.spriteBatch.Begin(sBS);
-		//}
+		// Main.spriteBatch.End();
+		// Main.spriteBatch.Begin(sBS);
+		// }
 		return false;
 	}
 }

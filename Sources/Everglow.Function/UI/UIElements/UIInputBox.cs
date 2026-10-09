@@ -79,11 +79,11 @@ namespace Everglow.Commons.UI.UIElements
 				}
 				if (v.Y < 0)
 					v.Y = 0;
-				//while (v.Y < texts.Length && v.X > texts[v.Y].Length)
-				//{
+				// while (v.Y < texts.Length && v.X > texts[v.Y].Length)
+				// {
 				//    v.X -= texts[v.Y].Length;
 				//    v.Y++;
-				//}
+				// }
 				if (v.Y >= texts.Length)
 					v.Y = texts.Length - 1;
 				if (v.Y < 0)

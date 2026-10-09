@@ -92,7 +92,7 @@ public class SideHangingLantern_White : ModTile, ITileFluentlyDrawn
 		{
 			DrawLanternPiece(new Rectangle(6, 110, 22, 32), 0.16f, 12 + offXByDir, 8, pos + new Point(0, 1), pos + new Point(0, 1), drawCenterPos, spriteBatch, tileDrawing);
 		}
-		//这种白色的灯纸比较浑浊,免去glow
+		// 这种白色的灯纸比较浑浊,免去glow
 	}
 	/// <summary>
 	/// 画侧挂灯

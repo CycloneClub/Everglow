@@ -35,7 +35,7 @@ public class JungleSmogStoppedByTile : ModDust
 		}
 		if (dust.alpha > 254)
 			dust.active = false;
-		//低损耗挂毒
+		// 低损耗挂毒
 		int LuckTarget = Main.rand.Next(200);
 		NPC target = Main.npc[LuckTarget];
 		if (target.active)

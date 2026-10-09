@@ -116,10 +116,10 @@ public class FogPass
 		m_screenWidth = 0;
 		m_screenHeight = 0;
 
-		m_boxKernelEffect = ModContent.Request<Effect>("Everglow/Myth/Effects/BoxFilter"); //QuickEffect does not work, conversion failed.
-		m_gaussianKernelEffect = ModContent.Request<Effect>("Everglow/Myth/Effects/GBlur"); //Same as above
-		m_fogScreenEffect = ModContent.Request<Effect>("Everglow/Myth/Effects/Fog"); //Same as above
-		m_temporalInterpEffect = ModContent.Request<Effect>("Everglow/Myth/Effects/Temporal"); //Same as above
+		m_boxKernelEffect = ModContent.Request<Effect>("Everglow/Myth/Effects/BoxFilter"); // QuickEffect does not work, conversion failed.
+		m_gaussianKernelEffect = ModContent.Request<Effect>("Everglow/Myth/Effects/GBlur"); // Same as above
+		m_fogScreenEffect = ModContent.Request<Effect>("Everglow/Myth/Effects/Fog"); // Same as above
+		m_temporalInterpEffect = ModContent.Request<Effect>("Everglow/Myth/Effects/Temporal"); // Same as above
 
 		m_blurRenderTargets = new RenderTarget2D[MAX_BLUR_LEVELS];
 		m_shouldResetRenderTargets = true;
@@ -145,7 +145,7 @@ public class FogPass
 			fogConfig.FogAbsorptionG,
 			fogConfig.FogAbsorptionB);
 		m_currentState.BloomScatteringRatio = fogConfig.FogBloomRate;
-		//m_currentState.FogScatterWithDistance = fogConfig.FogScatterWithDistance;
+		// m_currentState.FogScatterWithDistance = fogConfig.FogScatterWithDistance;
 
 		m_shouldResetRenderTargets |= m_currentState.OffscreenTileCount != fogConfig.OffscreenTiles;
 		m_currentState.OffscreenTileCount = fogConfig.OffscreenTiles;
@@ -443,7 +443,7 @@ public class FogPass
 		graphicsDevice.Clear(Color.Transparent);
 		fogEffect.Parameters["uImageSize0"].SetValue(new Vector2(m_screenWidth, m_screenHeight));
 
-		//fogEffect.Parameters["uAbsorption"].SetValue(absorption);
+		// fogEffect.Parameters["uAbsorption"].SetValue(absorption);
 		fogEffect.Parameters["uViewAbsorptionRatio"].SetValue(m_currentState.ViewAbsorptionRatio * m_currentState.ViewAbsorptionRatio);
 		fogEffect.Parameters["uBloomIntensity"].SetValue(m_currentState.BloomIntensity);
 		fogEffect.Parameters["uBloomScatteringRatio"].SetValue(m_currentState.BloomScatteringRatio);

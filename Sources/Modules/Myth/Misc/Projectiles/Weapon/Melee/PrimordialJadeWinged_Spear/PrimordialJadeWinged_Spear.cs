@@ -69,7 +69,7 @@ public class PrimordialJadeWinged_Spear : MeleeProj
 		float timeMul = 1 / player.meleeSpeed;
 		if (currantAttackType == 0)
 		{
-			if (timer < 3 * timeMul)//前摇
+			if (timer < 3 * timeMul)// 前摇
 			{
 				useSlash = false;
 				LockPlayerDir(player);
@@ -103,7 +103,7 @@ public class PrimordialJadeWinged_Spear : MeleeProj
 		}
 		if (currantAttackType == 1)
 		{
-			if (timer < 24 * timeMul)//前摇
+			if (timer < 24 * timeMul)// 前摇
 			{
 				useSlash = false;
 				LockPlayerDir(player);
@@ -128,7 +128,7 @@ public class PrimordialJadeWinged_Spear : MeleeProj
 		}
 		if (currantAttackType == 2)
 		{
-			if (timer < 24 * timeMul)//前摇
+			if (timer < 24 * timeMul)// 前摇
 			{
 				useSlash = false;
 				LockPlayerDir(player);
@@ -160,7 +160,7 @@ public class PrimordialJadeWinged_Spear : MeleeProj
 		}
 		if (currantAttackType == 3)
 		{
-			if (timer < 24 * timeMul)//前摇
+			if (timer < 24 * timeMul)// 前摇
 			{
 				useSlash = false;
 				LockPlayerDir(player);
@@ -193,10 +193,10 @@ public class PrimordialJadeWinged_Spear : MeleeProj
 		}
 		if (currantAttackType == 4)
 		{
-			if (timer < 24 * timeMul)//前摇
+			if (timer < 24 * timeMul)// 前摇
 			{
 				useSlash = false;
-				//LockPlayerDir(player);
+				// LockPlayerDir(player);
 				float targetRot = -MathHelper.PiOver2 - player.direction * 2.5f;
 				mainAxisDirection = Vector2.Lerp(mainAxisDirection, Vector2Elipse(190, targetRot, 0, -0.3f * Projectile.spriteDirection), 0.4f / timeMul);
 				mainAxisDirection += Projectile.DirectionFrom(player.Center) * 3;
@@ -228,7 +228,7 @@ public class PrimordialJadeWinged_Spear : MeleeProj
 	}
 	public override void DrawTrail(Color color)
 	{
-		List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(slashTrail.ToList()); //平滑
+		List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(slashTrail.ToList()); // 平滑
 		var SmoothTrail = new List<Vector2>();
 		for (int x = 0; x <= SmoothTrailX.Count - 1; x++)
 		{
@@ -265,7 +265,7 @@ public class PrimordialJadeWinged_Spear : MeleeProj
 		Effect MeleeTrail = Commons.ModAsset.MeleeTrail.Value;
 		MeleeTrail.Parameters["uTransform"].SetValue(model * projection);
 		Main.graphics.GraphicsDevice.Textures[0] = ModContent.Request<Texture2D>(TrailShapeTex(), ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
-		//Main.graphics.GraphicsDevice.Textures[1] = ModContent.Request<Texture2D>(TrailColorTex(), ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+		// Main.graphics.GraphicsDevice.Textures[1] = ModContent.Request<Texture2D>(TrailColorTex(), ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 
 		MeleeTrail.Parameters["tex1"].SetValue(ModContent.Request<Texture2D>(TrailColorTex(), ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
 		MeleeTrail.CurrentTechnique.Passes[ShaderTypeName].Apply();

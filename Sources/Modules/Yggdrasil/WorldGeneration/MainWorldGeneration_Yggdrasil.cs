@@ -25,21 +25,21 @@ public class MainWorldGeneration_Yggdrasil
 			QuickBuild(yggdrasilPylonPoint.X, yggdrasilPylonPoint.Y - mapIOHeight / 2 - 5, mapIOPath);
 		}
 
-		//var pylonBottom = new Point(yggdrasilPylonPoint.X + WorldGen.genRand.Next(8, 16), yggdrasilPylonPoint.Y - mapIOHeight / 2 + 3);
-		//ushort PylonType = (ushort)ModContent.TileType<YggdrasilWorldPylon>();
-		//for (int a = 0; a < 12; a++)
-		//{
-		//	pylonBottom.Y++;
-		//	if (TileUtils.SafeGetTile(pylonBottom.X, pylonBottom.Y).HasTile)
-		//	{
-		//		pylonBottom.Y -= 1;
-		//		break;
-		//	}
-		//}
+		// var pylonBottom = new Point(yggdrasilPylonPoint.X + WorldGen.genRand.Next(8, 16), yggdrasilPylonPoint.Y - mapIOHeight / 2 + 3);
+		// ushort PylonType = (ushort)ModContent.TileType<YggdrasilWorldPylon>();
+		// for (int a = 0; a < 12; a++)
+		// {
+		// pylonBottom.Y++;
+		// if (TileUtils.SafeGetTile(pylonBottom.X, pylonBottom.Y).HasTile)
+		// {
+		// pylonBottom.Y -= 1;
+		// break;
+		// }
+		// }
 
-		//TileObject.CanPlace(pylonBottom.X, pylonBottom.Y, PylonType, 0, 0, out var tileObject);
-		//TileObject.Place(tileObject);
-		//TileObjectData.CallPostPlacementPlayerHook(pylonBottom.X, pylonBottom.Y, PylonType, 0, 0, 0, tileObject);
+		// TileObject.CanPlace(pylonBottom.X, pylonBottom.Y, PylonType, 0, 0, out var tileObject);
+		// TileObject.Place(tileObject);
+		// TileObjectData.CallPostPlacementPlayerHook(pylonBottom.X, pylonBottom.Y, PylonType, 0, 0, 0, tileObject);
 	}
 
 	/// <summary>

@@ -65,7 +65,7 @@ public class LightDust : Visual
 		if (timeleft > 0)
 		{
 			Color c = color.GetColor(1 - timeleft / maxTimeleft) * alpha;
-			//c.A = (byte)((1 - timeleft / maxTimeleft) * 255);
+			// c.A = (byte)((1 - timeleft / maxTimeleft) * 255);
 			Vector2 drawPos = position;
 			if (Owner != null)
 				drawPos += Owner.Center;

@@ -6,8 +6,8 @@ public class OrangeTulip : ModItem
 
 	public override void SetStaticDefaults()
 	{
-		//DisplayName.SetDefault("Orange Tulip");
-		//DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "橙酒杯花");
+		// DisplayName.SetDefault("Orange Tulip");
+		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "橙酒杯花");
 	}
 	public override void SetDefaults()
 	{

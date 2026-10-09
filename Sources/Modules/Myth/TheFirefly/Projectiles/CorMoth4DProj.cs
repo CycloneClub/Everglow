@@ -59,7 +59,7 @@ public class CorMoth4DProj : ModProjectile
 			Projectile.spriteDirection = Main.rand.NextBool() ? 1 : -1;
 			Projectile.ai[1] = 1;
 		}
-		//逐维度展开
+		// 逐维度展开
 		if (t < 50)
 			v4Position.Y = MathHelper.Lerp(v4Position.Y, targetPos.Y, 0.05f);
 		else if (t < 100)
@@ -78,7 +78,7 @@ public class CorMoth4DProj : ModProjectile
 		{
 			v4Position = VecRotByYoZ(v4Position, 0.01f);
 			Projectile.ai[1] += 0.001f;
-			//Position = Vector4.Normalize(Position) * (Position.Length() + 1f);
+			// Position = Vector4.Normalize(Position) * (Position.Length() + 1f);
 		}
 
 		if (!Owner.active)
@@ -91,7 +91,7 @@ public class CorMoth4DProj : ModProjectile
 		if (v3.Z < 800)
 		{
 			Projectile.hostile = true;
-			//Vector2 pos = Projection2(v3, Main.screenPosition + new Vector2(Main.screenWidth, Main.screenHeight) / 2, out float scale, 1000);
+			// Vector2 pos = Projection2(v3, Main.screenPosition + new Vector2(Main.screenWidth, Main.screenHeight) / 2, out float scale, 1000);
 			Projectile.Center = new(v3.X, v3.Y);
 		}
 		else

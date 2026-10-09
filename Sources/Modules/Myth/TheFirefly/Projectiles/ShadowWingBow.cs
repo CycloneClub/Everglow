@@ -43,9 +43,9 @@ internal class ShadowWingBow : ModProjectile
 		addi++;
 		Player player = Main.player[Projectile.owner];
 		player.itemAnimation = 1;
-		//player.heldProj = Projectile.whoAmI;
+		// player.heldProj = Projectile.whoAmI;
 		TestPlayerDrawer Tplayer = player.GetModPlayer<TestPlayerDrawer>();
-		//玩家动作
+		// 玩家动作
 		Vector2 vToMouse = Main.MouseWorld - player.Top;
 		float AddHeadRotation = (float)Math.Atan2(vToMouse.Y, vToMouse.X) + (1 - player.direction) * 1.57f;
 		if (player.gravDir == -1)
@@ -145,7 +145,7 @@ internal class ShadowWingBow : ModProjectile
 				Energy = 120;
 			}
 		}
-		if (!Main.mouseLeft && released)//发射
+		if (!Main.mouseLeft && released)// 发射
 		{
 			SoundEngine.PlaySound(SoundID.Item5, Projectile.Center);
 			Projectile.NewProjectileDirect(Terraria.Entity.InheritSource(Projectile), Projectile.Center, Vector2.Normalize(v0) * (Energy + 6) / 9f, (int)Projectile.ai[0], Projectile.damage + Energy / 5, Projectile.knockBack, player.whoAmI).extraUpdates++;
@@ -194,7 +194,7 @@ internal class ShadowWingBow : ModProjectile
 
 		Vector2 arrowPosition = basePos + vec * (-12f * b3);
 
-		var pos = new Vector2[] { //通过这三点连成弦
+		var pos = new Vector2[] { // 通过这三点连成弦
                 basePos + v * 20,
 			arrowPosition,
 			basePos - v * 20,

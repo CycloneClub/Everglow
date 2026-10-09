@@ -64,7 +64,7 @@ public class DownedBossSystem : ModSystem
 			tag["downedAcytaea"] = true;
 
 		// if (downedOtherBoss) {
-		//	tag["downedOtherBoss"] = true;
+		// tag["downedOtherBoss"] = true;
 		// }
 	}
 }

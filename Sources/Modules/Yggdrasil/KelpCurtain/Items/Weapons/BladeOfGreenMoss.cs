@@ -33,7 +33,7 @@ public class BladeOfGreenMoss : ModItem
 			{
 				if (player.altFunctionUse != 2)
 					Projectile.NewProjectile(player.GetSource_ItemUse(Item), player.Center, Vector2.Zero, ModContent.ProjectileType<BladeOfGreenMoss_Proj>(), player.GetWeaponDamage(Item), Item.knockBack, player.whoAmI);
-				else//右键
+				else// 右键
 				{
 				}
 			}

@@ -79,10 +79,10 @@ public class YggdrasilCyathea : ModTile
 
 	public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
 	{
-		int deltaY = -1; //向上破坏的自变化Y坐标
+		int deltaY = -1; // 向上破坏的自变化Y坐标
 		if (!fail)
 		{
-			deltaY = -1; //向上破坏的自变化Y坐标
+			deltaY = -1; // 向上破坏的自变化Y坐标
 			while (Main.tile[i, j + deltaY].TileType == Type && deltaY > -100)
 			{
 				Tile baseTile = Main.tile[i, j + deltaY];
@@ -120,18 +120,18 @@ public class YggdrasilCyathea : ModTile
 			default:
 				return false;
 
-			case 0:  //树桩
+			case 0:  // 树桩
 				Width = 48;
 				Height = 22;
 				TexCoordY = 108;
 				break;
 
-			case 1:  //树干
+			case 1:  // 树干
 				Width = 16;
 				TexCoordY = 90;
 				break;
 
-			case 2:  //树冠
+			case 2:  // 树冠
 				Width = 90;
 				Height = 90;
 				TexCoordY = 0;

@@ -8,10 +8,10 @@ public class PurpleReedHalo : ModItem
 
 	public override void SetStaticDefaults()
 	{
-		//DisplayName.SetDefault("Purple Reed Headband");
-		//DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "紫苇花冠");
-		//Tooltip.SetDefault("Increases max Hp by 30\nIncreases max mana by 40\n'smells good and looks good'");
-		//Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "生命上限增加30\n魔力上限增加40\n'好闻又好看'");
+		// DisplayName.SetDefault("Purple Reed Headband");
+		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "紫苇花冠");
+		// Tooltip.SetDefault("Increases max Hp by 30\nIncreases max mana by 40\n'smells good and looks good'");
+		// Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "生命上限增加30\n魔力上限增加40\n'好闻又好看'");
 	}
 	public override void SetDefaults()
 	{

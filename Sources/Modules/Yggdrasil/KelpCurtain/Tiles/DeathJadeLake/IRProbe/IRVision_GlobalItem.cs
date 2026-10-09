@@ -8,10 +8,10 @@ public class IRVision_GlobalItem : GlobalItem
 
 	public override void Update(Item item, ref float gravity, ref float maxFallSpeed)
 	{
-		//if(IR_Visualize_Item == new List<int>())
-		//{
-		//	IR_Visualize_Item.AddRange(new List<int>() { ItemID.Sunglasses, ItemID.AviatorSunglasses });
-		//}
+		// if(IR_Visualize_Item == new List<int>())
+		// {
+		// IR_Visualize_Item.AddRange(new List<int>() { ItemID.Sunglasses, ItemID.AviatorSunglasses });
+		// }
 		base.Update(item, ref gravity, ref maxFallSpeed);
 	}
 

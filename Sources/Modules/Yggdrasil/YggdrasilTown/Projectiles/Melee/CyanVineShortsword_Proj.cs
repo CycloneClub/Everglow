@@ -90,16 +90,16 @@ public class CyanVineShortsword_Proj : ModProjectile
 		DrawOriginOffsetY = -(HalfSpriteHeight - HalfProjHeight);
 
 		// Vanilla configuration for "hitbox towards the end"
-		//if (Projectile.spriteDirection == 1) {
-		//	DrawOriginOffsetX = -(HalfProjWidth - HalfSpriteWidth);
-		//	DrawOffsetX = (int)-DrawOriginOffsetX * 2;
-		//	DrawOriginOffsetY = 0;
-		//}
-		//else {
-		//	DrawOriginOffsetX = (HalfProjWidth - HalfSpriteWidth);
-		//	DrawOffsetX = 0;
-		//	DrawOriginOffsetY = 0;
-		//}
+		// if (Projectile.spriteDirection == 1) {
+		// DrawOriginOffsetX = -(HalfProjWidth - HalfSpriteWidth);
+		// DrawOffsetX = (int)-DrawOriginOffsetX * 2;
+		// DrawOriginOffsetY = 0;
+		// }
+		// else {
+		// DrawOriginOffsetX = (HalfProjWidth - HalfSpriteWidth);
+		// DrawOffsetX = 0;
+		// DrawOriginOffsetY = 0;
+		// }
 	}
 
 	public override bool ShouldUpdatePosition()

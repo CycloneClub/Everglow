@@ -18,10 +18,10 @@ public class OriginalPylon_VFX : TileVFX
 
 	public override void Update()
 	{
-		//if (!SubworldSystem.IsActive<YggdrasilWorld>())
-		//{
-		//	Active = false;
-		//}
+		// if (!SubworldSystem.IsActive<YggdrasilWorld>())
+		// {
+		// Active = false;
+		// }
 		base.Update();
 	}
 

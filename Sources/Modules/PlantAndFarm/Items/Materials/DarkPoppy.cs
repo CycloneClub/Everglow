@@ -6,8 +6,8 @@ public class DarkPoppy : ModItem
 
 	public override void SetStaticDefaults()
 	{
-		//DisplayName.SetDefault("Poppy");
-		//DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "暗红帽");
+		// DisplayName.SetDefault("Poppy");
+		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "暗红帽");
 	}
 	public override void SetDefaults()
 	{

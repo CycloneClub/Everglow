@@ -14,15 +14,15 @@ public class SharpBarnacleWall : ModWall
 
 	public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 	{
-		//Tile tile = Main.tile[i, j];
-		//if (j % 2 == 0 && tile.WallFrameY < 180)
-		//{
-		//	tile.WallFrameY += 180;
-		//}
-		//if (j % 2 == 1 && tile.WallFrameY >= 180)
-		//{
-		//	tile.WallFrameY -= 180;
-		//}
+		// Tile tile = Main.tile[i, j];
+		// if (j % 2 == 0 && tile.WallFrameY < 180)
+		// {
+		// tile.WallFrameY += 180;
+		// }
+		// if (j % 2 == 1 && tile.WallFrameY >= 180)
+		// {
+		// tile.WallFrameY -= 180;
+		// }
 		base.PostDraw(i, j, spriteBatch);
 	}
 

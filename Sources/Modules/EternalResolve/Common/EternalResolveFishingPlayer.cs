@@ -22,10 +22,10 @@ public class EternalResolveFishingPlayer : ModPlayer
 			if (EverglowConfig.DebugMode)
 			{ Main.NewText("CatchFish itemDrop: " + fishAttempt.rolledItemDrop); }
 
-			//sonar.Text = "Swordfish Beak";
-			//sonar.Color = Color.AliceBlue;
-			//sonar.Velocity = Vector2.Zero;
-			//sonar.DurationInFrames = 300; 
+			// sonar.Text = "Swordfish Beak";
+			// sonar.Color = Color.AliceBlue;
+			// sonar.Velocity = Vector2.Zero;
+			// sonar.DurationInFrames = 300;
 		}
 	}
 

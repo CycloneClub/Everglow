@@ -95,11 +95,11 @@ public class FoodModPlayer : ModPlayer
 	public int SatietyLossTimer
 	{
 		get; private set;
-	}//饱食损失计时器
+	}// 饱食损失计时器
 	public int ThirstyChangeTimer
 	{
 		get; private set;
-	}//口渴变化计时器
+	}// 口渴变化计时器
 	public int TextTimer
 	{
 		get; set;
@@ -165,20 +165,20 @@ public class FoodModPlayer : ModPlayer
 
 	public void FoodState()
 	{
-		//从吃食物后开始计时
+		// 从吃食物后开始计时
 		if (CurrentSatiety > 0)
 		{
 			SatietyLossTimer++;
 			StarvationCounter = 0;
 		}
-		//从喝饮料后开始计时
+		// 从喝饮料后开始计时
 		if (!Thirstystate)
 			ThirstyChangeTimer++;
 
 		if (!CanText())
 			TextTimer--;
 
-		//每三十秒减少一饱食度
+		// 每三十秒减少一饱食度
 		if (Player.GetModPlayer<FoodBuffModPlayer>().DurianBuff)
 		{
 			if (SatietyLossTimer >= FoodUtils.GetFrames(0, 0, 15, 0))
@@ -235,7 +235,7 @@ public class FoodModPlayer : ModPlayer
 			}
 			#endregion
 		}
-		//每五分钟从口渴变得不口渴
+		// 每五分钟从口渴变得不口渴
 		if (ThirstyChangeTimer >= FoodUtils.GetFrames(0, 5, 0, 0))
 		{
 			Thirstystate = true;

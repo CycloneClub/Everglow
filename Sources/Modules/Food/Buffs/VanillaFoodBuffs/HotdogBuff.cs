@@ -4,8 +4,8 @@ public class HotdogBuff : ModBuff
 {
 	public override void SetStaticDefaults()
 	{
-		//DisplayName.SetDefault("GrubSoupBuff");
-		//Description.SetDefault("减少移速，增加近战伤害\n“吔~~”");
+		// DisplayName.SetDefault("GrubSoupBuff");
+		// Description.SetDefault("减少移速，增加近战伤害\n“吔~~”");
 		Main.buffNoTimeDisplay[Type] = false;
 		Main.debuff[Type] = false; // 添加这个，这样护士在治疗时就不会去除buff
 	}

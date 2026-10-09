@@ -8,8 +8,8 @@ public class OsmoticPressureMonitor : ModItem
 
 	public override void SetStaticDefaults()
 	{
-		//DisplayName.SetDefault("渗透压检测仪");
-		//Tooltip.SetDefault("显示渴觉状态");
+		// DisplayName.SetDefault("渗透压检测仪");
+		// Tooltip.SetDefault("显示渴觉状态");
 	}
 
 	public override void SetDefaults()

@@ -25,16 +25,16 @@ public class YggdrasilTownFurnaceGlobalItem : GlobalItem
 
 	public override bool PreDrawTooltip(Item item, ReadOnlyCollection<TooltipLine> lines, ref int x, ref int y)
 	{
-		//if (!FurnaceScoreShopUI.Instance.IsVisible || item.type == ItemID.None)
-		//{
-		//	return base.PreDrawTooltip(item, lines, ref x, ref y);
-		//}
-		//if (FurnaceScoreShop.SellPricesInFurnaceScore.ContainsKey(item.type) && item.tooltipContext == 36)
-		//{
-		//	Vector2 size = ChatManager.GetStringSize(FontAssets.MouseText.Value, lines[^1].Text, Vector2.One);
-		//	Texture2D tex = ModAsset.FurnaceScoreIcon.Value;
-		//	Main.spriteBatch.Draw(tex, new Vector2(x + size.X, y), null, Color.White, 0, tex.Size() * 0.5f, 1f, SpriteEffects.None, 0);
-		//}
+		// if (!FurnaceScoreShopUI.Instance.IsVisible || item.type == ItemID.None)
+		// {
+		// return base.PreDrawTooltip(item, lines, ref x, ref y);
+		// }
+		// if (FurnaceScoreShop.SellPricesInFurnaceScore.ContainsKey(item.type) && item.tooltipContext == 36)
+		// {
+		// Vector2 size = ChatManager.GetStringSize(FontAssets.MouseText.Value, lines[^1].Text, Vector2.One);
+		// Texture2D tex = ModAsset.FurnaceScoreIcon.Value;
+		// Main.spriteBatch.Draw(tex, new Vector2(x + size.X, y), null, Color.White, 0, tex.Size() * 0.5f, 1f, SpriteEffects.None, 0);
+		// }
 		return base.PreDrawTooltip(item, lines, ref x, ref y);
 	}
 

@@ -7,7 +7,7 @@ public class Fragrans3 : ModDust
 		dust.noGravity = true;
 		dust.frame = new Rectangle(0, 0, 16, 16);
 		// If our texture had 3 different dust on top of each other (a 30x90 pixel image), we might do this:
-		//dust.frame = new Rectangle(0, Main.rand.Next(3) * 15, 15, 15);
+		// dust.frame = new Rectangle(0, Main.rand.Next(3) * 15, 15, 15);
 		dust.alpha = 0;
 		dust.rotation = 0;
 	}

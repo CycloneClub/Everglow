@@ -8,10 +8,10 @@ public class ManyWhiteFlower : ModItem
 
 	public override void SetStaticDefaults()
 	{
-		//DisplayName.SetDefault("Bouquet of Silk Star");
-		//DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "白星锦球");
-		//Tooltip.SetDefault("Increases melee damege and speed by 8%\n'You don't want these lovely magical flowers to be dameged'");
-		//Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "近战攻速增加8%,近战伤害增加8%\n'你不想让这些神奇又可爱的花被损坏'");
+		// DisplayName.SetDefault("Bouquet of Silk Star");
+		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "白星锦球");
+		// Tooltip.SetDefault("Increases melee damege and speed by 8%\n'You don't want these lovely magical flowers to be dameged'");
+		// Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "近战攻速增加8%,近战伤害增加8%\n'你不想让这些神奇又可爱的花被损坏'");
 	}
 	public override void SetDefaults()
 	{
@@ -24,7 +24,7 @@ public class ManyWhiteFlower : ModItem
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
 		player.GetAttackSpeed(DamageClass.Generic) += 0.18f;
-		//player.GetDamage(DamageClass.Melee).Additive += 0.08f;
+		// player.GetDamage(DamageClass.Melee).Additive += 0.08f;
 	}
 	/*public static void BoSilkStarSpeed(Projectile projectile)
         {

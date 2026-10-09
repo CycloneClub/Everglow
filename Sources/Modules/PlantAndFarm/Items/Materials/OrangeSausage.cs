@@ -6,8 +6,8 @@ public class OrangeSausage : ModItem
 
 	public override void SetStaticDefaults()
 	{
-		//DisplayName.SetDefault("Orange Pennisetum");
-		//DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "狐绒草");
+		// DisplayName.SetDefault("Orange Pennisetum");
+		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "狐绒草");
 	}
 	public override void SetDefaults()
 	{

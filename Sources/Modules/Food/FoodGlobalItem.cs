@@ -18,7 +18,7 @@ public class FoodGlobalItem : GlobalItem
 	{
 		m_vanillaFoodInfos = new Dictionary<int, FoodInfo>
 		{
-                //苹果 
+                // 苹果
                 {
 				ItemID.Apple,
 				new FoodInfo() {
@@ -28,7 +28,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "AppleBuff",
 				}
 			},
-                //苹果派 
+                // 苹果派
                 {
 				ItemID.ApplePie,
 				new FoodInfo() {
@@ -38,7 +38,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "ApplePieBuff",
 				}
 			},
-                //杏 
+                // 杏
                 {
 				ItemID.Apricot,
 				new FoodInfo() {
@@ -48,7 +48,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "ApricotBuff",
 				}
 			},
-                //培根
+                // 培根
                 {
 				ItemID.Bacon,
 				new FoodInfo() {
@@ -58,7 +58,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "BaconBuff",
 				}
 			},
-                //香蕉
+                // 香蕉
                 {
 				ItemID.Banana,
 				new FoodInfo() {
@@ -68,7 +68,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "BaconBuff",
 				}
 			},
-                //香蕉船
+                // 香蕉船
                 {
 				ItemID.BananaSplit,
 				new FoodInfo() {
@@ -78,7 +78,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "BananaSplitBuff",
 				}
 			},
-                //烧烤肋排
+                // 烧烤肋排
                 {
 				ItemID.BBQRibs,
 				new FoodInfo() {
@@ -88,7 +88,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "BBQRibsBuff",
 				}
 			},
-                //黑醋栗
+                // 黑醋栗
                 {
 				ItemID.BlackCurrant,
 				new FoodInfo() {
@@ -98,7 +98,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "BlackCurrantBuff",
 				}
 			},
-                //血橙
+                // 血橙
                 {
 				ItemID.BloodOrange,
 				new FoodInfo() {
@@ -108,7 +108,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "BloodOrangeBuff",
 				}
 			},
-                //鱼菇汤
+                // 鱼菇汤
                 {
 				ItemID.BowlofSoup,
 				new FoodInfo() {
@@ -118,7 +118,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "BowlofSoupBuff",
 				}
 			},
-                //炖兔兔
+                // 炖兔兔
                 {
 				ItemID.BunnyStew,
 				new FoodInfo() {
@@ -128,7 +128,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "BunnyStewBuff",
 				}
 			},
-                //汉堡
+                // 汉堡
                 {
 				ItemID.Burger,
 				new FoodInfo() {
@@ -138,7 +138,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "BurgerBuff",
 				}
 			},
-                //樱桃
+                // 樱桃
                 {
 				ItemID.Cherry,
 				new FoodInfo() {
@@ -148,7 +148,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "CherryBuff",
 				}
 			},
-                //鸡块
+                // 鸡块
                 {
 				ItemID.ChickenNugget,
 				new FoodInfo() {
@@ -158,7 +158,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "ChickenNuggetBuff",
 				}
 			},
-                //巧克力曲奇饼干
+                // 巧克力曲奇饼干
                 {
 				ItemID.ChocolateChipCookie,
 				new FoodInfo() {
@@ -168,7 +168,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "ChocolateChipCookieBuff",
 				}
 			},
-                //圣诞布丁
+                // 圣诞布丁
                 {
 				ItemID.ChristmasPudding,
 				new FoodInfo() {
@@ -178,7 +178,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "ChristmasPuddingBuff",
 				}
 			},
-                //椰子
+                // 椰子
                 {
 				ItemID.Coconut,
 				new FoodInfo() {
@@ -188,7 +188,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "CoconutBuff",
 				}
 			},
-                //熟鱼
+                // 熟鱼
                 {
 				ItemID.CookedFish,
 				new FoodInfo() {
@@ -198,7 +198,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "CookedFishBuff",
 				}
 			},
-                //熟棉花糖
+                // 熟棉花糖
                 {
 				ItemID.CookedMarshmallow,
 				new FoodInfo() {
@@ -208,7 +208,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "CookedMarshmallowBuff",
 				}
 			},
-                //熟虾
+                // 熟虾
                 {
 				ItemID.CookedShrimp,
 				new FoodInfo() {
@@ -218,7 +218,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "CookedShrimpBuff",
 				}
 			},
-                //火龙果
+                // 火龙果
                 {
 				ItemID.Dragonfruit,
 				new FoodInfo() {
@@ -228,7 +228,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "DragonfruitBuff",
 				}
 			},
-                //接骨木果
+                // 接骨木果
                 {
 				ItemID.Elderberry,
 				new FoodInfo() {
@@ -238,7 +238,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "ElderberryBuff",
 				}
 			},
-                //食用蜗牛
+                // 食用蜗牛
                 {
 				ItemID.Escargot,
 				new FoodInfo() {
@@ -248,7 +248,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "EscargotBuff",
 				}
 			},
-                //煎蛋
+                // 煎蛋
                 {
 				ItemID.FriedEgg,
 				new FoodInfo() {
@@ -258,7 +258,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "FriedEggBuff",
 				}
 			},
-                //薯条
+                // 薯条
                 {
 				ItemID.Fries,
 				new FoodInfo() {
@@ -268,7 +268,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "FriesBuff",
 				}
 			},
-                //蛙腿三明治
+                // 蛙腿三明治
                 {
 				ItemID.FroggleBunwich,
 				new FoodInfo() {
@@ -278,7 +278,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "FroggleBunwichBuff",
 				}
 			},
-                //水果色拉
+                // 水果色拉
                 {
 				ItemID.FruitSalad,
 				new FoodInfo() {
@@ -288,7 +288,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "FruitSaladBuff",
 				}
 			},
-                //姜饼
+                // 姜饼
                 {
 				ItemID.GingerbreadCookie,
 				new FoodInfo() {
@@ -298,7 +298,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "GingerbreadCookieBuff",
 				}
 			},
-                //金美味
+                // 金美味
                 {
 				ItemID.GoldenDelight,
 				new FoodInfo() {
@@ -308,7 +308,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "GoldenDelightBuff",
 				}
 			},
-                //葡萄柚
+                // 葡萄柚
                 {
 				ItemID.Grapefruit,
 				new FoodInfo() {
@@ -318,7 +318,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "GrapefruitBuff",
 				}
 			},
-                //葡萄
+                // 葡萄
                 {
 				ItemID.Grapes,
 				new FoodInfo() {
@@ -328,7 +328,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "GrapesBuff",
 				}
 			},
-                //烤松鼠
+                // 烤松鼠
                 {
 				ItemID.GrilledSquirrel,
 				new FoodInfo() {
@@ -338,7 +338,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "GrilledSquirrelBuff",
 				}
 			},
-                //蛆虫汤
+                // 蛆虫汤
                 {
 				ItemID.GrubSoup,
 				new FoodInfo() {
@@ -348,7 +348,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "GrubSoupBuff",
 				}
 			},
-                //热狗
+                // 热狗
                 {
 				ItemID.Hotdog,
 				new FoodInfo() {
@@ -358,7 +358,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "HotdogBuff",
 				}
 			},
-                //冰淇淋
+                // 冰淇淋
                 {
 				ItemID.IceCream,
 				new FoodInfo() {
@@ -368,7 +368,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "IceCreamBuff",
 				}
 			},
-                //柠檬
+                // 柠檬
                 {
 				ItemID.Lemon,
 				new FoodInfo() {
@@ -378,7 +378,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "LemonBuff",
 				}
 			},
-                //龙虾尾
+                // 龙虾尾
                 {
 				ItemID.LobsterTail,
 				new FoodInfo() {
@@ -388,7 +388,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "LobsterTailBuff",
 				}
 			},
-                //芒果
+                // 芒果
                 {
 				ItemID.Mango,
 				new FoodInfo() {
@@ -398,7 +398,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "MangoBuff",
 				}
 			},
-                //棉花糖
+                // 棉花糖
                 {
 				ItemID.Marshmallow,
 				new FoodInfo() {
@@ -408,7 +408,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "MarshmallowBuff",
 				}
 			},
-                //怪物三明治
+                // 怪物三明治
                 {
 				ItemID.MonsterLasagna,
 				new FoodInfo() {
@@ -418,7 +418,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "MonsterLasagnaBuff",
 				}
 			},
-                //玉米片
+                // 玉米片
                 {
 				ItemID.Nachos,
 				new FoodInfo() {
@@ -428,7 +428,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "NachosBuff",
 				}
 			},
-                //泰式炒面
+                // 泰式炒面
                 {
 				ItemID.PadThai,
 				new FoodInfo() {
@@ -438,7 +438,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "PadThaiBuff",
 				}
 			},
-                //桃子
+                // 桃子
                 {
 				ItemID.Peach,
 				new FoodInfo() {
@@ -448,7 +448,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "PeachBuff",
 				}
 			},
-                //越南河粉
+                // 越南河粉
                 {
 				ItemID.Pho,
 				new FoodInfo() {
@@ -458,7 +458,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "PhoBuff",
 				}
 			},
-                //菠萝
+                // 菠萝
                 {
 				ItemID.Pineapple,
 				new FoodInfo() {
@@ -468,7 +468,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "PineappleBuff",
 				}
 			},
-                //披萨
+                // 披萨
                 {
 				ItemID.Pizza,
 				new FoodInfo() {
@@ -478,7 +478,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "PizzaBuff",
 				}
 			},
-                //李子
+                // 李子
                 {
 				ItemID.Plum,
 				new FoodInfo() {
@@ -488,7 +488,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "PlumBuff",
 				}
 			},
-                //薯片
+                // 薯片
                 {
 				ItemID.PotatoChips,
 				new FoodInfo() {
@@ -498,7 +498,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "PotatoChipsBuff",
 				}
 			},
-                //南瓜派
+                // 南瓜派
                 {
 				ItemID.PumpkinPie,
 				new FoodInfo() {
@@ -508,7 +508,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "PumpkinPieBuff",
 				}
 			},
-                //红毛丹
+                // 红毛丹
                 {
 				ItemID.Rambutan,
 				new FoodInfo() {
@@ -518,7 +518,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "RambutanBuff",
 				}
 			},
-                //烤鸟
+                // 烤鸟
                 {
 				ItemID.RoastedBird,
 				new FoodInfo() {
@@ -528,7 +528,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "RoastedBirdBuff",
 				}
 			},
-                //烤鸭
+                // 烤鸭
                 {
 				ItemID.RoastedDuck,
 				new FoodInfo() {
@@ -538,7 +538,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "RoastedDuckBuff",
 				}
 			},
-                //生鱼片
+                // 生鱼片
                 {
 				ItemID.Sashimi,
 				new FoodInfo() {
@@ -548,7 +548,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "SashimiBuff",
 				}
 			},
-                //炒蛙腿
+                // 炒蛙腿
                 {
 				ItemID.SauteedFrogLegs,
 				new FoodInfo() {
@@ -558,7 +558,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "SauteedFrogLegsBuff",
 				}
 			},
-                //海鲜大餐
+                // 海鲜大餐
                 {
 				ItemID.SeafoodDinner,
 				new FoodInfo() {
@@ -568,7 +568,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "SeafoodDinnerBuff",
 				}
 			},
-                //鲜虾三明治
+                // 鲜虾三明治
                 {
 				ItemID.ShrimpPoBoy,
 				new FoodInfo() {
@@ -578,7 +578,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "ShrimpPoBoyBuff",
 				}
 			},
-                //去壳牡蛎
+                // 去壳牡蛎
                 {
 				ItemID.ShuckedOyster,
 				new FoodInfo() {
@@ -588,7 +588,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "ShuckedOysterBuff",
 				}
 			},
-                //意大利面
+                // 意大利面
                 {
 				ItemID.Spaghetti,
 				new FoodInfo() {
@@ -598,7 +598,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "SpaghettiBuff",
 				}
 			},
-                //杨桃
+                // 杨桃
                 {
 				ItemID.Starfruit,
 				new FoodInfo() {
@@ -608,7 +608,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "StarfruitBuff",
 				}
 			},
-                //牛排
+                // 牛排
                 {
 				ItemID.Steak,
 				new FoodInfo() {
@@ -618,7 +618,7 @@ public class FoodGlobalItem : GlobalItem
 					Name = "SteakBuff",
 				}
 			},
-                //蜜糖饼干
+                // 蜜糖饼干
                 {
 				ItemID.SugarCookie,
 				new FoodInfo() {
@@ -714,7 +714,7 @@ public class FoodGlobalItem : GlobalItem
 
 			// 增加饱食度
 			FoodPlayer.CurrentSatiety += FoodInfo.Satiety;
-			//加上Buff
+			// 加上Buff
 			player.AddBuff(FoodInfo.BuffType, FoodInfo.BuffTime.TotalFrames);
 		}
 		else if (item.ModItem is FoodBase)
@@ -724,7 +724,7 @@ public class FoodGlobalItem : GlobalItem
 			var FoodPlayer = player.GetModPlayer<FoodModPlayer>();
 			// 增加饱食度
 			FoodPlayer.CurrentSatiety += FoodInfo.Satiety;
-			//加上Buff
+			// 加上Buff
 			player.AddBuff(FoodInfo.BuffType, FoodInfo.BuffTime.TotalFrames);
 		}
 	}
@@ -775,7 +775,7 @@ public class FoodGlobalItem : GlobalItem
 		{
 			var foodInfo = m_vanillaFoodInfos[item.type];
 			if (!foodPlayer.CanEat(foodInfo))
-				//  Main.NewText($"Cannot eat this!");
+				// Main.NewText($"Cannot eat this!");
 				return false;
 		}
 		else if (item.ModItem is FoodBase)
@@ -783,7 +783,7 @@ public class FoodGlobalItem : GlobalItem
 			var foodItem = item.ModItem as FoodBase;
 			var foodInfo = foodItem.FoodInfo;
 			if (!foodPlayer.CanEat(foodInfo))
-				//    Main.NewText($"Cannot eat this!");
+				// Main.NewText($"Cannot eat this!");
 				return false;
 		}
 		return true;

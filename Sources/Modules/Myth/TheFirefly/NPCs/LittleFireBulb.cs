@@ -92,21 +92,21 @@ public class LittleFireBulb : ModNPC
 		Lighting.AddLight((int)(NPC.Center.X / 16), (int)(NPC.Center.Y / 16 - 1), 0, 0.1f, 0.8f);
 	}
 	// Failed attempt to try to spawn Little Fire Bulbs on the biome roof only ~Setnour6
-	//public override int SpawnNPC(int tileX, int tileY)
-	//{
+	// public override int SpawnNPC(int tileX, int tileY)
+	// {
 	//    MothLand mothLand = ModContent.GetInstance<MothLand>(); // 联机应该没问题。
 	//    SpawnNPC(mothLand.fireflyCenterX, mothLand.fireflyCenterY * 100);
 	//    return base.SpawnNPC(mothLand.fireflyCenterX, tileY);
-	//}
-	//public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	//{
+	// }
+	// public override float SpawnChance(NPCSpawnInfo spawnInfo)
+	// {
 	//    FireflyBiome FireflyBiome = ModContent.GetInstance<FireflyBiome>();
 	//    if (!FireflyBiome.IsBiomeActive(Main.LocalPlayer))
 	//    {
 	//        return 0f;
 	//    }
 	//    return 2f;
-	//}
+	// }
 	int HitCount = 0;
 	public override void HitEffect(NPC.HitInfo hit)
 	{
@@ -115,7 +115,7 @@ public class LittleFireBulb : ModNPC
 			NPC.life = 1;
 			NPC.active = true;
 			HitCount++;
-			if (HitCount >= 2 + Main.rand.Next(2, 5)) //Attempted random hit count criteria. ~Setnour6
+			if (HitCount >= 2 + Main.rand.Next(2, 5)) // Attempted random hit count criteria. ~Setnour6
 			{
 				for (int y = 0; y < 30; y += 3)
 				{

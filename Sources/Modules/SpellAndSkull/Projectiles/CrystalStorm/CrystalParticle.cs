@@ -89,19 +89,19 @@ internal class CrystalParticle : Visual
 		GraphicsDevice gd = Main.graphics.GraphicsDevice;
 		SpriteBatch sb = Main.spriteBatch;
 
-		//var cur = VFXManager.Instance.CurrentRenderTarget;
+		// var cur = VFXManager.Instance.CurrentRenderTarget;
 
-		//gd.SetRenderTarget(Main.screenTargetSwap);
-		//sb.Begin(SpriteSortMode.Immediate, BlendState.Opaque, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullNone);
-		//sb.Draw(Main.screenTarget, Vector2.Zero, Color.White);
+		// gd.SetRenderTarget(Main.screenTargetSwap);
+		// sb.Begin(SpriteSortMode.Immediate, BlendState.Opaque, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullNone);
+		// sb.Draw(Main.screenTarget, Vector2.Zero, Color.White);
 
-		//gd.BlendState = BlendState.AlphaBlend;
-		//gd.DrawUserPrimitives(PrimitiveType.TriangleList, Vy.ToArray(), 0, Vy.Count - 2);
-		//gd.SetRenderTarget(Main.screenTarget);
+		// gd.BlendState = BlendState.AlphaBlend;
+		// gd.DrawUserPrimitives(PrimitiveType.TriangleList, Vy.ToArray(), 0, Vy.Count - 2);
+		// gd.SetRenderTarget(Main.screenTarget);
 
-		//gd.BlendState = BlendState.Additive;
-		//sb.Draw(Main.screenTargetSwap, Main.screenTargetSwap.Bounds, Color.White);
-		//sb.End();
+		// gd.BlendState = BlendState.Additive;
+		// sb.Draw(Main.screenTargetSwap, Main.screenTargetSwap.Bounds, Color.White);
+		// sb.End();
 
 		var Co0 = new Color(135, 0, 255);
 		int DrawBase = (int)(122.5 + Math.Sin(RamdomC) * 122.5);
@@ -110,8 +110,8 @@ internal class CrystalParticle : Visual
 		Vx.Add(new Vertex2D(po1 + position, colorD, new Vector3(0, 0, 0)));
 		Vx.Add(new Vertex2D(po2 + position, colorD, new Vector3(0, 0, 0)));
 		Vx.Add(new Vertex2D(po3 + position, colorD, new Vector3(0, 0, 0)));
-		//gd.Textures[0] = TextureAssets.MagicPixel.Value;
-		//gd.DrawUserPrimitives(PrimitiveType.TriangleList, Vx.ToArray(), 0, Vx.Count - 2);
+		// gd.Textures[0] = TextureAssets.MagicPixel.Value;
+		// gd.DrawUserPrimitives(PrimitiveType.TriangleList, Vx.ToArray(), 0, Vx.Count - 2);
 		Ins.Batch.Draw(TextureAssets.MagicPixel.Value, Vx, PrimitiveType.TriangleList);
 	}
 

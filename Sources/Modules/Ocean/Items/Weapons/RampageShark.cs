@@ -5,25 +5,25 @@ namespace Everglow.Ocean.Items.Weapons;
 
 public class RampageShark : ModItem
 {
-	//暴走鲨
-	//狂热度C：每秒获得2点，最高不超过16，有以下效果
-	//武器精准度随着C升高而下降
-	//有一定概率以散弹的形式同时打出很多子弹，概率为(C% + 33%暴击率)，其中暴击率部份只计算100%以内的部分
-	//75%的概率不消耗弹药
-	//停止使用时，狂热度未清零前会以每秒3点下降，此期间无法使用
-	//击退力加算40%C;
-	//C满值是攻速为200%
+	// 暴走鲨
+	// 狂热度C：每秒获得2点，最高不超过16，有以下效果
+	// 武器精准度随着C升高而下降
+	// 有一定概率以散弹的形式同时打出很多子弹，概率为(C% + 33%暴击率)，其中暴击率部份只计算100%以内的部分
+	// 75%的概率不消耗弹药
+	// 停止使用时，狂热度未清零前会以每秒3点下降，此期间无法使用
+	// 击退力加算40%C;
+	// C满值是攻速为200%
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedWeapons;
 
-	//暴走鲨
-	//狂热度C：每秒获得2点，最高不超过16，有以下效果
-	//武器精准度随着C升高而下降
-	//有一定概率以散弹的形式同时打出很多子弹，概率为(C% + 33%暴击率)，其中暴击率部份只计算100%以内的部分
-	//75%的概率不消耗弹药
-	//停止使用时，狂热度未清零前会以每秒3点下降，此期间无法使用
-	//击退力加算40%C;
-	//C满值是攻速为200%
-	public float CrazyValue = 0; //C
+	// 暴走鲨
+	// 狂热度C：每秒获得2点，最高不超过16，有以下效果
+	// 武器精准度随着C升高而下降
+	// 有一定概率以散弹的形式同时打出很多子弹，概率为(C% + 33%暴击率)，其中暴击率部份只计算100%以内的部分
+	// 75%的概率不消耗弹药
+	// 停止使用时，狂热度未清零前会以每秒3点下降，此期间无法使用
+	// 击退力加算40%C;
+	// C满值是攻速为200%
+	public float CrazyValue = 0; // C
 	public int ShootType = 0;
 	public override void SetDefaults()
 	{
@@ -85,7 +85,7 @@ public class RampageShark : ModItem
 		if (player.ownedProjectileCounts[ModContent.ProjectileType<Projectiles.Weapons.RampageShark>()] <= 0 && CrazyValue == 0)
 			Projectile.NewProjectile(Item.GetSource_FromAI(), position, velocity, ModContent.ProjectileType<Projectiles.Weapons.RampageShark>(), damage, knockback, player.whoAmI);
 		if (player.ownedProjectileCounts[ModContent.ProjectileType<Projectiles.Weapons.RampageShark>()] <= 0 && CrazyValue > 0)
-			//TODO:翻译
+			// TODO:翻译
 			CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y - 40, player.width, player.height), Color.Orange, "Overheating, please wait for" + (CrazyValue / 3f).ToString() + "s");
 		return false;
 	}

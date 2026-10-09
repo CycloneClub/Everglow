@@ -27,19 +27,19 @@ public class SummonedButterfly : ModNPC
 		NPC.lifeMax = 1;
 		NPC.aiStyle = -1;
 		NPC.damage = 20;
-		//if (Main.expertMode)
-		//{
+		// if (Main.expertMode)
+		// {
 		//    NPC.damage = 40;
-		//}
-		//if (Main.masterMode)
-		//{
+		// }
+		// if (Main.masterMode)
+		// {
 		//    NPC.damage = 60;
-		//}
+		// }
 		if (Main.getGoodWorld)
 		{
 			NPC.lifeMax = 3;
 			NPC.defense = 9999;
-			//NPC.damage = 80;
+			// NPC.damage = 80;
 		}
 
 		NPC.dontTakeDamageFromHostiles = true;
@@ -95,7 +95,7 @@ public class SummonedButterfly : ModNPC
 
 			NPC.friendly = true;
 			CheckOwnerActive();
-		}//在boss附近游荡
+		}// 在boss附近游荡
 		if (NPC.ai[0] == 0)
 		{
 			NPC.spriteDirection = Math.Sign(NPC.velocity.X);
@@ -114,7 +114,7 @@ public class SummonedButterfly : ModNPC
 				NPC.frame.Y = Main.rand.Next(3) * 34;
 				NPC.netUpdate2 = true;
 			}
-			if (++timer > NPC.ai[2] && timer < NPC.ai[2] + 350)//追踪玩家
+			if (++timer > NPC.ai[2] && timer < NPC.ai[2] + 350)// 追踪玩家
 			{
 				NPC.TargetClosest(false);
 				MoveTo(player.Center, 8, 80);
@@ -128,8 +128,8 @@ public class SummonedButterfly : ModNPC
 					NPC.active = false;
 				}
 			}
-		}//延迟后朝玩家运动
-		if (NPC.ai[0] == 1)//弓,rot:ai2
+		}// 延迟后朝玩家运动
+		if (NPC.ai[0] == 1)// 弓,rot:ai2
 		{
 			NPC.spriteDirection = Math.Sign(NPC.velocity.X);
 			Vector2 trueTargetPos = Owner.Center + targetPos.RotatedBy(NPC.ai[2]);
@@ -161,7 +161,7 @@ public class SummonedButterfly : ModNPC
 				NPC.Center = Vector2.Lerp(NPC.Center, trueTargetPos, 0.4f);
 			}
 		}
-		if (NPC.ai[0] == 2)//箭,rot:ai2，distance:localAI0
+		if (NPC.ai[0] == 2)// 箭,rot:ai2，distance:localAI0
 		{
 			CheckOwnerActive();
 
@@ -207,7 +207,7 @@ public class SummonedButterfly : ModNPC
 			if (timer > 240)
 				timer = 0;
 		}
-		if (NPC.ai[0] == 3)//剑
+		if (NPC.ai[0] == 3)// 剑
 		{
 			CheckOwnerActive();
 
@@ -254,7 +254,7 @@ public class SummonedButterfly : ModNPC
 				timer = 0;
 			}
 		}
-		if (NPC.ai[0] == 4)//拳
+		if (NPC.ai[0] == 4)// 拳
 		{
 			CheckOwnerActive();
 

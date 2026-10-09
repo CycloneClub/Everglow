@@ -124,9 +124,9 @@ public class GlowStar : ModProjectile
 		float scale = (k0 / 1.8f + 0.2f) / (Projectile.ai[0] + 3) * k2;
 		Main.spriteBatch.Draw(dark, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, Color.White, Projectile.rotation, dark.Size() / 2f, scale * 1.8f, SpriteEffects.None, 0);
 		Main.spriteBatch.Draw(Light, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, c0, Projectile.rotation, Light.Size() / 2f, scale * 3.5f, SpriteEffects.None, 0);
-		//Color c2 = new Color(0, 1.5f - k0, 2f - k0, 0);
-		//Main.spriteBatch.Draw(Light, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, c2 * (1.1f - k0), Projectile.rotation, Light.Size() / 2f, new Vector2(16f, scale * 1.5f), SpriteEffects.None, 0);
-		//Main.spriteBatch.Draw(Light, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, c2 * (1.1f - k0), Projectile.rotation, Light.Size() / 2f, new Vector2(scale * 1.5f, 4f), SpriteEffects.None, 0);
+		// Color c2 = new Color(0, 1.5f - k0, 2f - k0, 0);
+		// Main.spriteBatch.Draw(Light, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, c2 * (1.1f - k0), Projectile.rotation, Light.Size() / 2f, new Vector2(16f, scale * 1.5f), SpriteEffects.None, 0);
+		// Main.spriteBatch.Draw(Light, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, c2 * (1.1f - k0), Projectile.rotation, Light.Size() / 2f, new Vector2(scale * 1.5f, 4f), SpriteEffects.None, 0);
 		return false;
 	}
 	public override bool PreKill(int timeLeft)

@@ -93,11 +93,11 @@ public class GlowWoodSword : ModProjectile
 		float k0 = Projectile.timeLeft / 60f;
 		var c0 = new Color(k0 * k0 * 0.3f, k0 * k0 * 0.8f, k0 * 0.8f + 0.2f, 1 - k0);
 		Main.spriteBatch.Draw(Light, Projectile.Center - Main.screenPosition, null, c0, Projectile.rotation, Light.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
-		//绘制弹幕碰撞箱
-		//Rectangle rt = Projectile.Hitbox;
-		//rt.X -= (int)Main.screenPosition.X;
-		//rt.Y -= (int)Main.screenPosition.Y;
-		//Main.spriteBatch.Draw(TextureAssets.MagicPixel.Value,rt,new Color(55,0,0,0));
+		// 绘制弹幕碰撞箱
+		// Rectangle rt = Projectile.Hitbox;
+		// rt.X -= (int)Main.screenPosition.X;
+		// rt.Y -= (int)Main.screenPosition.Y;
+		// Main.spriteBatch.Draw(TextureAssets.MagicPixel.Value,rt,new Color(55,0,0,0));
 		base.PostDraw(lightColor);
 	}
 	public override void OnKill(int timeLeft)

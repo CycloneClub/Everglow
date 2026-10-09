@@ -86,7 +86,7 @@ internal class CreamChocolateCup_CreamFlow : ModProjectile
 			JointVelocity.RemoveAt(0);
 		}
 
-		List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(Joints.ToList()); //平滑
+		List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(Joints.ToList()); // 平滑
 		var SmoothTrail = new List<Vector2>();
 		for (int x = 0; x < SmoothTrailX.Count - 1; x++)
 		{
@@ -121,7 +121,7 @@ internal class CreamChocolateCup_CreamFlow : ModProjectile
 		{
 			return false;
 		}
-		List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(Joints.ToList()); //平滑
+		List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(Joints.ToList()); // 平滑
 		var SmoothTrail = new List<Vector2>();
 		for (int x = 0; x < SmoothTrailX.Count - 1; x++)
 		{
@@ -146,7 +146,7 @@ internal class CreamChocolateCup_CreamFlow : ModProjectile
 	{
 		if (Joints.Count > 1)
 		{
-			List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(Joints.ToList()); //平滑
+			List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(Joints.ToList()); // 平滑
 			var SmoothTrail = new List<Vector2>();
 			for (int x = 0; x < SmoothTrailX.Count - 1; x++)
 			{

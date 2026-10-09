@@ -11,7 +11,7 @@ public class ShadowEulogistProj : MeleeProj
 		maxAttackType = 1;
 		maxSlashTrailLength = 7;
 		Projectile.hide = true;
-		//shadertype = Commons.MEAC.Enums.MeleeTrailShaderType.ArcBladeTransparentedByZ;;
+		// shadertype = Commons.MEAC.Enums.MeleeTrailShaderType.ArcBladeTransparentedByZ;;
 		Projectile.scale *= 1.0f;
 		longHandle = true;
 	}
@@ -47,13 +47,13 @@ public class ShadowEulogistProj : MeleeProj
 	{
 		useBloom = false;
 		disFromPlayer = 20;
-		//drawScaleFactor = 10.1f;
+		// drawScaleFactor = 10.1f;
 		Player player = Main.player[Projectile.owner];
 		useSlash = true;
 
 		if (currantAttackType == 0)
 		{
-			if (timer < 20)//前摇
+			if (timer < 20)// 前摇
 			{
 				useSlash = false;
 				LockPlayerDir(player);
@@ -92,7 +92,7 @@ public class ShadowEulogistProj : MeleeProj
 
 		if (currantAttackType == 1)
 		{
-			if (timer < 30)//前摇
+			if (timer < 30)// 前摇
 			{
 				useSlash = false;
 				LockPlayerDir(player);

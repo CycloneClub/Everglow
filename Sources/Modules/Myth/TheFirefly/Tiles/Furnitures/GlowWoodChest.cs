@@ -77,18 +77,18 @@ public class GlowWoodChest : ModTile
 		return FurnitureUtils.ChestRightClick(i, j);
 	}
 
-	//不确定hjson能否解决，先禁掉了
-	//public override void MouseOver(int i, int j)
-	//{
-	//	string chestName = LocalizedText;
-	//	FurnitureUtils.ChestMouseOver<Items.Furnitures.GlowWoodChest>(chestName, i, j);
-	//}
+	// 不确定hjson能否解决，先禁掉了
+	// public override void MouseOver(int i, int j)
+	// {
+	// string chestName = LocalizedText;
+	// FurnitureUtils.ChestMouseOver<Items.Furnitures.GlowWoodChest>(chestName, i, j);
+	// }
 
-	//public override void MouseOverFar(int i, int j)
-	//{
-	//	string chestName = ContainerName.GetDefault();
-	//	FurnitureUtils.ChestMouseFar<Items.Furnitures.GlowWoodChest>(chestName, i, j);
-	//}
+	// public override void MouseOverFar(int i, int j)
+	// {
+	// string chestName = ContainerName.GetDefault();
+	// FurnitureUtils.ChestMouseFar<Items.Furnitures.GlowWoodChest>(chestName, i, j);
+	// }
 
 	public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 	{

@@ -18,7 +18,7 @@ public class MothEye : ModItem
 		Item.value = 2000;
 		Item.accessory = true;
 		Item.rare = ItemRarityID.Green;
-		//Item.vanity = true;
+		// Item.vanity = true;
 	}
 
 	public override void UpdateAccessory(Player player, bool hideVisual)
@@ -74,7 +74,7 @@ public class MothEye : ModItem
 			spriteBatch.Draw(mEyeTex, position, null, drawColor, 0f, origin, scale, 0, 0f);
 		}
 	}
-	//TODO:DIDNOT FINISH Equipped Effect:Change texture in Firefly biome, fail.
+	// TODO:DIDNOT FINISH Equipped Effect:Change texture in Firefly biome, fail.
 }
 class MothEyePlayer : ModPlayer
 {
@@ -115,4 +115,4 @@ class MothEyePlayer : ModPlayer
 		}
 	}
 }
-//   TODO: Finish Item Equip Effects (Displays a different equip texture when in the Firefly Biome, See MothEye_Neck.png and MothEye_NeckOff.png
+// TODO: Finish Item Equip Effects (Displays a different equip texture when in the Firefly Biome, See MothEye_Neck.png and MothEye_NeckOff.png

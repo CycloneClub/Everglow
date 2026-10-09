@@ -27,7 +27,7 @@ public class GlowSporeFlip : ModDust
 			int r2 = Dust.NewDust(dust.position, 0, 0, type, 0, 0, 200, default, dust.scale * 0.75f);
 			Main.dust[r2].velocity = dust.velocity.RotatedBy(Main.rand.NextFloat(-1.3f, -0.2f));
 			Main.dust[r2].noGravity = true;
-			//dust.active = false;
+			// dust.active = false;
 		}
 		if (dust.scale < 0.01f)
 			dust.active = false;

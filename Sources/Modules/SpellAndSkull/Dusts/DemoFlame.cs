@@ -19,7 +19,7 @@ public class DemoFlame : ModDust
 		dust.velocity *= 0.99f;
 		dust.scale *= 0.995f;
 
-		//Lighting.AddLight(dust.position, 1f * dust.scale, 0.28f * dust.scale, 0.68f);
+		// Lighting.AddLight(dust.position, 1f * dust.scale, 0.28f * dust.scale, 0.68f);
 		if (dust.scale < 0.15f)
 			dust.active = false;
 		if (dust.fadeIn < 0)

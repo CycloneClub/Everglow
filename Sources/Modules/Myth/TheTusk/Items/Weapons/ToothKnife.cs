@@ -6,10 +6,10 @@ namespace Everglow.Myth.TheTusk.Items.Weapons;
 
 public class ToothKnife : ModItem
 {
-	//TODO:暴击后在地上召唤獠牙刺
+	// TODO:暴击后在地上召唤獠牙刺
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeWeapons;
 
-	//TODO:暴击后在地上召唤獠牙刺
+	// TODO:暴击后在地上召唤獠牙刺
 	public override void SetDefaults()
 	{
 		Item.width = 40;

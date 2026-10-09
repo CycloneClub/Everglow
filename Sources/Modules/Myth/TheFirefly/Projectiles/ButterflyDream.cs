@@ -9,8 +9,8 @@ public class ButterflyDream : ModProjectile
 	{
 		// base.DisplayName.SetDefault("蓝蝶幻梦");
 		Main.projFrames[Projectile.type] = 4;
-		//ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
-		//ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
+		// ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
+		// ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 	}
 
 	public override void SetDefaults()
@@ -53,7 +53,7 @@ public class ButterflyDream : ModProjectile
 			}
 		}
 
-		if (Projectile.ai[1] == 1)//限制圈，ai0：npc
+		if (Projectile.ai[1] == 1)// 限制圈，ai0：npc
 		{
 			if (Projectile.timeLeft == 800)
 				Projectile.alpha = 200;
@@ -72,7 +72,7 @@ public class ButterflyDream : ModProjectile
 			}
 
 			NPC npc = Main.npc[(int)Projectile.ai[0]];
-			//Projectile.Center -= Projectile.velocity;
+			// Projectile.Center -= Projectile.velocity;
 			float sin = (float)Math.Sin(Projectile.timeLeft * 0.06f);
 			Projectile.velocity = Projectile.velocity.RotatedBy(-0.01f);
 			;

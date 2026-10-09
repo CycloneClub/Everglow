@@ -99,7 +99,7 @@ public class PalladiumClub_small : ModProjectile, IWarpProjectile
 			DamageStartValue = Projectile.damage;
 			Projectile.damage = 0;
 		}
-		//造成伤害等于原伤害*转速*3.334
+		// 造成伤害等于原伤害*转速*3.334
 		Projectile.damage = Math.Max((int)(DamageStartValue * Omega * 3.334), 1);
 
 		Player player = Main.player[Projectile.owner];
@@ -135,13 +135,13 @@ public class PalladiumClub_small : ModProjectile, IWarpProjectile
 			Projectile.velocity *= 0;
 		}
 		Projectile.localNPCHitCooldown = (int)(MathF.PI / Math.Max(Omega, 0.157));
-		//这个受击冷却是个麻烦的问题                                                                          
-		//旋转一周打两次，理论结果是Pi/Omega
-		//存在角加速过程
-		//localNPCHitCooldown一旦命中就会开始计时，以当时的localNPCHitCooldown值倒计时。
-		//这个计时器还没归零，下一击已然命中。则这一击失效。
-		//如果设计极短，又会重复判断
-		//而且还考虑到怪物会动
+		// 这个受击冷却是个麻烦的问题
+		// 旋转一周打两次，理论结果是Pi/Omega
+		// 存在角加速过程
+		// localNPCHitCooldown一旦命中就会开始计时，以当时的localNPCHitCooldown值倒计时。
+		// 这个计时器还没归零，下一击已然命中。则这一击失效。
+		// 如果设计极短，又会重复判断
+		// 而且还考虑到怪物会动
 
 		Projectile.rotation += Omega;
 		if (Projectile.timeLeft > 120)
@@ -188,7 +188,7 @@ public class PalladiumClub_small : ModProjectile, IWarpProjectile
 	}
 	public void DrawTrail()
 	{
-		List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(trailVecs.ToList()); //平滑
+		List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(trailVecs.ToList()); // 平滑
 		var SmoothTrail = new List<Vector2>();
 		for (int x = 0; x < SmoothTrailX.Count - 1; x++)
 		{
@@ -246,7 +246,7 @@ public class PalladiumClub_small : ModProjectile, IWarpProjectile
 	}
 	public void DrawWarp(VFXBatch spriteBatch)
 	{
-		List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(trailVecs.ToList()); //平滑
+		List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(trailVecs.ToList()); // 平滑
 		var SmoothTrail = new List<Vector2>();
 		for (int x = 0; x < SmoothTrailX.Count - 1; x++)
 		{

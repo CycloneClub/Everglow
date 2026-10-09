@@ -302,6 +302,6 @@ public class UIQuestItem : UIBlock, IDrawable_InRt2D
 
 	public void Draw_InRt2D(SpriteBatch sb)
 	{
-		//this.Draw(sb);
+		// this.Draw(sb);
 	}
 }

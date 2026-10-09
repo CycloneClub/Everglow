@@ -18,7 +18,7 @@ public class ExampleRopeItem : ModItem
 			AddRope();
 		}
 		ItemRope.Masses[0].Position = Main.MouseWorld;
-		//ItemRope.ApplyForce_Gravity();
+		// ItemRope.ApplyForce_Gravity();
 		ItemRope.ApplyForce_VelocityDecay(0.2f);
 
 		// Experimental codes.

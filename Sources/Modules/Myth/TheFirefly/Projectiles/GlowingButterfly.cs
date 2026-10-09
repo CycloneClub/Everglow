@@ -88,7 +88,7 @@ public class GlowingButterfly : ModProjectile
 			}
 		}
 
-		//Projectile.spriteDirection = Projectile.velocity.X > 0 ? -1 : 1;
+		// Projectile.spriteDirection = Projectile.velocity.X > 0 ? -1 : 1;
 		Projectile.rotation = (float)(Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + Math.PI * 0.75);
 		Projectile.velocity = Projectile.velocity.RotatedBy(omega);
 		omega += Math.Sign(omega) * 0.001f;
@@ -116,10 +116,10 @@ public class GlowingButterfly : ModProjectile
 		if (Projectile.timeLeft % 12 == 0)
 		{
 			int type = ModContent.DustType<BlueGlowAppear>();
-			//if (Projectile.ai[0] == 0)
-			//{
-			//	type = ModContent.DustType<BlueGlowAppear_dark>();
-			//}
+			// if (Projectile.ai[0] == 0)
+			// {
+			// type = ModContent.DustType<BlueGlowAppear_dark>();
+			// }
 			Dust dust = Dust.NewDustDirect(Projectile.position - new Vector2(8), Projectile.width, Projectile.height, type, 0f, 0f, 100, default, Main.rand.NextFloat(0.9f, 2.2f));
 			dust.velocity = Projectile.velocity * 0.5f;
 		}
@@ -234,7 +234,7 @@ public class GlowingButterfly : ModProjectile
 		// friendly needs to be set to false so it doesn't damage things like target dummies while idling
 		// Both things depend on if it has a target or not, so it's just one assignment here
 		// You don't need this assignment if your minion is shooting things instead of dealing contact damage
-		//Projectile.friendly = foundTarget;
+		// Projectile.friendly = foundTarget;
 	}
 
 	private void Movement(bool foundTarget, float distanceFromTarget, Vector2 targetCenter, float distanceToIdlePosition, Vector2 vectorToIdlePosition)
@@ -307,22 +307,22 @@ public class GlowingButterfly : ModProjectile
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D tex = ModAsset.GlowingButterfly.Value;
-		//Texture2D texDark = ModAsset.GlowingButterfly_dark.Value;
-		//Texture2D texBound = ModAsset.GlowingButterfly_bound.Value;
+		// Texture2D texDark = ModAsset.GlowingButterfly_dark.Value;
+		// Texture2D texBound = ModAsset.GlowingButterfly_bound.Value;
 		Color lightC = new Color(55 - Projectile.alpha, 255 - Projectile.alpha, 255 - Projectile.alpha, (255 - Projectile.alpha) / 2);
-		//if(Projectile.ai[0] == 1)
-		//{
-		//	lightC = Color.Transparent;
-		//}
-		//if (Projectile.ai[0] == 2)
-		//{
-		//	lightC = new Color(55 - Projectile.alpha, 255 - Projectile.alpha, 255 - Projectile.alpha, (255 - Projectile.alpha) / 2);
-		//}
-		//float colorValue = (255 - Projectile.alpha) / 255f;
+		// if(Projectile.ai[0] == 1)
+		// {
+		// lightC = Color.Transparent;
+		// }
+		// if (Projectile.ai[0] == 2)
+		// {
+		// lightC = new Color(55 - Projectile.alpha, 255 - Projectile.alpha, 255 - Projectile.alpha, (255 - Projectile.alpha) / 2);
+		// }
+		// float colorValue = (255 - Projectile.alpha) / 255f;
 		Rectangle frame = new Rectangle(0, Projectile.frame * 46, 46, 46);
-		//Main.spriteBatch.Draw(texDark, Projectile.Center - Main.screenPosition, frame, Color.White * colorValue, Projectile.rotation, frame.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
-		//Main.spriteBatch.Draw(tex, Projectile.Center - Main.screenPosition, frame, lightC, Projectile.rotation, frame.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
-		//Main.spriteBatch.Draw(texBound, Projectile.Center - Main.screenPosition, frame, Color.White * ((255 - Projectile.alpha) / 400f), Projectile.rotation, frame.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
+		// Main.spriteBatch.Draw(texDark, Projectile.Center - Main.screenPosition, frame, Color.White * colorValue, Projectile.rotation, frame.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
+		// Main.spriteBatch.Draw(tex, Projectile.Center - Main.screenPosition, frame, lightC, Projectile.rotation, frame.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
+		// Main.spriteBatch.Draw(texBound, Projectile.Center - Main.screenPosition, frame, Color.White * ((255 - Projectile.alpha) / 400f), Projectile.rotation, frame.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
 		Main.spriteBatch.Draw(tex, Projectile.Center - Main.screenPosition, frame, lightC, Projectile.rotation, frame.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
 		return false;
 	}

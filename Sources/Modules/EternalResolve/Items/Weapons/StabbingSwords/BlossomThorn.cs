@@ -3,7 +3,7 @@ using Everglow.EternalResolve.Projectiles;
 
 namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords
 {
-	//TODO:翻译：红梅落\n产生方向随机的二级刺锋\n兼具美观与锋芒
+	// TODO:翻译：红梅落\n产生方向随机的二级刺锋\n兼具美观与锋芒
 	public class BlossomThorn : StabbingSwordItem
 	{
 		public override void SetDefaults()

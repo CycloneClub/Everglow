@@ -61,7 +61,7 @@ public class TsunamiShark : ModProjectile
 			p.CritChance = (int)(item.crit + player.GetCritChance(DamageClass.Generic));
 
 			float rot = velocity.ToRotation();
-			//TODO:子弹伤害校正，要求和被消耗的弹药种类挂钩
+			// TODO:子弹伤害校正，要求和被消耗的弹药种类挂钩
 			Projectile.NewProjectile(shootSource,
 				Projectile.Center + toMuzzle * 1.5f + velocity * 2.2f + random,
 				Vector2.Zero,

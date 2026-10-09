@@ -6,8 +6,8 @@ public class BluePedal : ModItem
 
 	public override void SetStaticDefaults()
 	{
-		//DisplayName.SetDefault("Blue Borage");
-		//DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "琉天苣");
+		// DisplayName.SetDefault("Blue Borage");
+		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "琉天苣");
 	}
 	public override void SetDefaults()
 	{

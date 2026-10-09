@@ -8,8 +8,8 @@ public class BloodGlucoseMonitor : ModItem
 
 	public override void SetStaticDefaults()
 	{
-		//DisplayName.SetDefault("血糖检测仪");
-		//Tooltip.SetDefault("显示当前饱食度");
+		// DisplayName.SetDefault("血糖检测仪");
+		// Tooltip.SetDefault("显示当前饱食度");
 	}
 
 	public override void SetDefaults()

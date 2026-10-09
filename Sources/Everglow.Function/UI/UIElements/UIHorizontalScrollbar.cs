@@ -119,22 +119,22 @@ namespace Everglow.Commons.UI.UIElements
 
 		protected override void DrawSelf(SpriteBatch sb)
 		{
-			//float scale = Info.HitBox.Height / (float)UIScrollbarInnerTexture.Height;
-			//int ct = (int)(12 * scale);
-			//sb.Draw(UIScrollbarInnerTexture, new Rectangle(
-			//	Info.HitBox.X,
-			//	Info.HitBox.Y, ct, Info.HitBox.Height),
-			//	new Rectangle(0, 0, 12, UIScrollbarInnerTexture.Height), Color.White * alpha);
+			// float scale = Info.HitBox.Height / (float)UIScrollbarInnerTexture.Height;
+			// int ct = (int)(12 * scale);
+			// sb.Draw(UIScrollbarInnerTexture, new Rectangle(
+			// Info.HitBox.X,
+			// Info.HitBox.Y, ct, Info.HitBox.Height),
+			// new Rectangle(0, 0, 12, UIScrollbarInnerTexture.Height), Color.White * alpha);
 
-			//sb.Draw(UIScrollbarInnerTexture, new Rectangle(
-			//	Info.HitBox.X + ct,
-			//	Info.HitBox.Y, Info.HitBox.Width - ct * 2, Info.HitBox.Height),
-			//	new Rectangle(12, 0, UIScrollbarInnerTexture.Width - 24, UIScrollbarInnerTexture.Height), Color.White * alpha);
+			// sb.Draw(UIScrollbarInnerTexture, new Rectangle(
+			// Info.HitBox.X + ct,
+			// Info.HitBox.Y, Info.HitBox.Width - ct * 2, Info.HitBox.Height),
+			// new Rectangle(12, 0, UIScrollbarInnerTexture.Width - 24, UIScrollbarInnerTexture.Height), Color.White * alpha);
 
-			//sb.Draw(UIScrollbarInnerTexture, new Rectangle(
-			//	Info.HitBox.X - ct + Info.HitBox.Width,
-			//	Info.HitBox.Y, ct, Info.HitBox.Height),
-			//	new Rectangle(UIScrollbarInnerTexture.Width - 12, 0, 12, UIScrollbarInnerTexture.Height), Color.White * alpha);
+			// sb.Draw(UIScrollbarInnerTexture, new Rectangle(
+			// Info.HitBox.X - ct + Info.HitBox.Width,
+			// Info.HitBox.Y, ct, Info.HitBox.Height),
+			// new Rectangle(UIScrollbarInnerTexture.Width - 12, 0, 12, UIScrollbarInnerTexture.Height), Color.White * alpha);
 		}
 	}
 }

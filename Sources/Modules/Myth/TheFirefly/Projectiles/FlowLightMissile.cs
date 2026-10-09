@@ -69,9 +69,9 @@ internal class FlowLightMissile : ModProjectile
 
 		if (energy >= 180)
 		{
-			//player.velocity += MouseToPlayer;
-			//if (player.velocity.Length() > 20f)
-			//	player.velocity *= 20f / player.velocity.Length();
+			// player.velocity += MouseToPlayer;
+			// if (player.velocity.Length() > 20f)
+			// player.velocity *= 20f / player.velocity.Length();
 			Vector2 HitPoint = player.Center + MouseToPlayer * 105;
 			if (Collision.SolidCollision(HitPoint, 0, 0))
 			{

@@ -8,10 +8,10 @@ public class VFXBatch : IDisposable
 {
 	#region Private Field
 
-	//如果所有网格都是Strip形式
+	// 如果所有网格都是Strip形式
 	private const int MAX_INDICES = MAX_VERTICES * 3;
 
-	//numbers Copy from SpriteBatch
+	// numbers Copy from SpriteBatch
 	private const int MAX_VERTICES = 1048576;
 
 	private List<IBuffers> buffers = new();
@@ -32,7 +32,7 @@ public class VFXBatch : IDisposable
 		_mainThread = mainThread;
 		mainThread.AddTask(() =>
 		{
-			RegisterVertex<VFX2D>(MAX_VERTICES, MAX_VERTICES * 6 / 4); //四个顶点两个三角形六个下标
+			RegisterVertex<VFX2D>(MAX_VERTICES, MAX_VERTICES * 6 / 4); // 四个顶点两个三角形六个下标
 			RegisterVertex<Vertex2D>();
 		});
 	}

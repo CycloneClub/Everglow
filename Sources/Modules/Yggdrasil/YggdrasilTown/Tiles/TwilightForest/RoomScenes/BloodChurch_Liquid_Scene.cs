@@ -178,17 +178,17 @@ public class BloodChurch_Liquid_Scene : TileVFX
 		Ins.Batch.Draw(liquidTex, bars, PrimitiveType.TriangleList);
 		Ins.Batch.Draw(liquidTex_highlight, bars_highlight, PrimitiveType.TriangleList);
 
-		//if(LiquidAreas.Count > 0)
-		//{
-		//	var rec = LiquidAreas[0];
-		//	bars = new List<Vertex2D>();
-		//	bars.Add(rec.TopLeft(), Color.White, new Vector3(0, 0, 0));
-		//	bars.Add(rec.TopRight(), Color.White, new Vector3(1, 0, 0));
+		// if(LiquidAreas.Count > 0)
+		// {
+		// var rec = LiquidAreas[0];
+		// bars = new List<Vertex2D>();
+		// bars.Add(rec.TopLeft(), Color.White, new Vector3(0, 0, 0));
+		// bars.Add(rec.TopRight(), Color.White, new Vector3(1, 0, 0));
 
-		//	bars.Add(rec.BottomLeft(), Color.White, new Vector3(0, 1, 0));
-		//	bars.Add(rec.BottomRight(), Color.White, new Vector3(1, 1, 0));
-		//	Ins.Batch.Draw(Commons.ModAsset.TileBlock.Value, bars, PrimitiveType.TriangleStrip);
-		//}
+		// bars.Add(rec.BottomLeft(), Color.White, new Vector3(0, 1, 0));
+		// bars.Add(rec.BottomRight(), Color.White, new Vector3(1, 1, 0));
+		// Ins.Batch.Draw(Commons.ModAsset.TileBlock.Value, bars, PrimitiveType.TriangleStrip);
+		// }
 	}
 
 	public float GetRandomWave(float x)

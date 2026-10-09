@@ -211,7 +211,7 @@ public class NormalCableCar : BoxEntity
 		Main.graphics.graphicsDevice.Textures[0] = cableCar;
 		Main.graphics.graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, bars.ToArray(), 0, bars.Count / 3);
 
-		//glow
+		// glow
 		Texture2D cableCarGlow = ModAsset.NormalCableCar_glow.Value;
 		Color glowColor = new Color(1f, 1f, 1f, 0) * 0.6f;
 		bars = new List<Vertex2D>();

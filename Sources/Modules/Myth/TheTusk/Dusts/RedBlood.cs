@@ -2,7 +2,7 @@ namespace Everglow.Myth.TheTusk.Dusts;
 
 public class RedBlood : ModDust
 {
-	//private float Ome = 0;
+	// private float Ome = 0;
 	public override void OnSpawn(Dust dust)
 	{
 	}

@@ -28,18 +28,18 @@ public class GreatTombLand : ModSystem
 		}
 
 
-		//将东西写入WordGen里面并生效
+		// 将东西写入WordGen里面并生效
 		public override void ApplyPass(GenerationProgress progress, GameConfiguration configuration)
 		{
-			//Todo:翻译：生成森林的大墓地 HJSON
-			//Main.statusText = Terraria.Localization.Language.GetTextValue("Mods.Everlow.Common.WorldSystem.BuildGreatTombLand");
+			// Todo:翻译：生成森林的大墓地 HJSON
+			// Main.statusText = Terraria.Localization.Language.GetTextValue("Mods.Everlow.Common.WorldSystem.BuildGreatTombLand");
 			progress.Message = "正在生成丛林的阴森墓穴集群……";
-			//构建墓地的主要方法
+			// 构建墓地的主要方法
 			BuildGreatTombLand();
 		}
 	}
 
-	//MapIO
+	// MapIO
 	public static void QuickBuild(int x, int y, string Path)
 	{
 		var mapIO = new MapIO(x, y);
@@ -61,8 +61,8 @@ public class GreatTombLand : ModSystem
 	/// </summary>
 	public static void BuildGreatTombLand()
 	{
-		return; //TODO:保障Master安全,先封起来
-			   //TODO 自适应尚未完成
+		return; // TODO:保障Master安全,先封起来
+			   // TODO 自适应尚未完成
 		Point16 CenterPoint = RandomGreatTombLandGenPass();
 		int X0 = CenterPoint.X;
 		int Y0 = CenterPoint.Y - 90;
@@ -80,13 +80,13 @@ public class GreatTombLand : ModSystem
 				}
 				switch (Main.rand.Next(6))
 				{
-					//默认区域
+					// 默认区域
 					case 0:
 					default:
 						QuickBuild(X0, Y0, "GreatTombLandDemo-1.mapio");
 						break;
-					//其他Roll
-					//TODO 尚未完成
+					// 其他Roll
+					// TODO 尚未完成
 					case 1:
 					case 2:
 						QuickBuild(X0, Y0, "GreatTombLandDemo-1.mapio");
@@ -110,11 +110,11 @@ public class GreatTombLand : ModSystem
 		int CrashCount = 0;
 		ushort[] MustHaveTileType = new ushort[]
 		{
-			TileID.JungleGrass, //丛林草方块
-                TileID.JunglePlants, //丛林草
-                TileID.JungleVines, //丛林藤
-                TileID.JunglePlants2, //高大丛林草
-                TileID.PlantDetritus, //丛林花
+			TileID.JungleGrass, // 丛林草方块
+                TileID.JunglePlants, // 丛林草
+                TileID.JungleVines, // 丛林藤
+                TileID.JunglePlants2, // 高大丛林草
+                TileID.PlantDetritus, // 丛林花
             };
 		for (int x = -256; x < 257; x += 8)
 		{
@@ -129,7 +129,7 @@ public class GreatTombLand : ModSystem
 
 	public static Point16 RandomGreatTombLandGenPass()
 	{
-		//目标取点
+		// 目标取点
 		var AimPoint = new List<Point16>();
 
 
@@ -139,8 +139,8 @@ public class GreatTombLand : ModSystem
 			for (int j = 12; j < Main.maxTilesY - 300; j += 6)
 			{
 				Tile tile = Main.tile[i, j];
-				//获取的物块是丛林神庙墙 然后区域在正上方90地块。
-				//TODO 可能含有其他地形冲突，需要后续解决
+				// 获取的物块是丛林神庙墙 然后区域在正上方90地块。
+				// TODO 可能含有其他地形冲突，需要后续解决
 				if (tile.TileType == TileID.LihzahrdBrick)
 				{
 					AimPoint.Add(new Point16(i, j));

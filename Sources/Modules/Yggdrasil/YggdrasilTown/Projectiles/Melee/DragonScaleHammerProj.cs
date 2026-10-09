@@ -55,7 +55,7 @@ public class DragonScaleHammerProj : MeleeProj
 		Effect MeleeTrail = Commons.ModAsset.MeleeTrail.Value;
 		MeleeTrail.Parameters["uTransform"].SetValue(model * projection);
 		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Melee.Value;
-		//Main.graphics.GraphicsDevice.Textures[1] = ModContent.Request<Texture2D>(TrailColorTex(), ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+		// Main.graphics.GraphicsDevice.Textures[1] = ModContent.Request<Texture2D>(TrailColorTex(), ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
 
 		MeleeTrail.Parameters["tex1"].SetValue(ModContent.Request<Texture2D>(TrailColorTex(), ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
 		MeleeTrail.CurrentTechnique.Passes[ShaderTypeName].Apply();
@@ -99,7 +99,7 @@ public class DragonScaleHammerProj : MeleeProj
 		if (currantAttackType == 0)
 		{
 			float timeValue = timer - 30;
-			if (timer < 30)//前摇
+			if (timer < 30)// 前摇
 			{
 				useSlash = false;
 				LockPlayerDir(player);
@@ -138,7 +138,7 @@ public class DragonScaleHammerProj : MeleeProj
 		}
 		if (currantAttackType == 1)
 		{
-			if (timer < 30)//前摇
+			if (timer < 30)// 前摇
 			{
 				useSlash = false;
 				LockPlayerDir(player);
@@ -170,7 +170,7 @@ public class DragonScaleHammerProj : MeleeProj
 		{
 			float timeValue = timer - 30;
 			float BodyRotation = 0;
-			if (timer < 30)//前摇
+			if (timer < 30)// 前摇
 			{
 				useSlash = false;
 				LockPlayerDir(player);
@@ -206,7 +206,7 @@ public class DragonScaleHammerProj : MeleeProj
 		{
 			float timeValue = timer - 70;
 			float BodyRotation = 0;
-			if (timer < 30)//前摇
+			if (timer < 30)// 前摇
 			{
 				useSlash = false;
 				LockPlayerDir(player);
@@ -242,7 +242,7 @@ public class DragonScaleHammerProj : MeleeProj
 		{
 			float timeValue = (timer - 30) / 40f;
 			float BodyRotation = 0;
-			if (timer < 30)//前摇
+			if (timer < 30)// 前摇
 			{
 				useSlash = false;
 				LockPlayerDir(player);

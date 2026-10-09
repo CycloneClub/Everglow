@@ -35,7 +35,7 @@ internal class AcytaeaPipeline : PostPipeline
 		Ins.Batch.Begin();
 		var effect = this.effect.Value;
 		Main.instance.GraphicsDevice.Textures[1] = texture.Value;
-		//TODO 常量待优化，目前测试用
+		// TODO 常量待优化，目前测试用
 		effect.Parameters["m"].SetValue(0.62f);
 		effect.Parameters["n"].SetValue(0.01f);
 		effect.CurrentTechnique.Passes[0].Apply();

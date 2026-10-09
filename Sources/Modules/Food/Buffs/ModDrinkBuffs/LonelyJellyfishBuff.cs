@@ -4,8 +4,8 @@ public class LonelyJellyfishBuff : ModBuff
 {
 	public override void SetStaticDefaults()
 	{
-		//DisplayName.SetDefault("LonelyJellyfishBuff");
-		//Description.SetDefault("短时间内不断于鼠标处生成水母电圈，并且获得隐身能力\n“观赏完就一饮而尽吧”");
+		// DisplayName.SetDefault("LonelyJellyfishBuff");
+		// Description.SetDefault("短时间内不断于鼠标处生成水母电圈，并且获得隐身能力\n“观赏完就一饮而尽吧”");
 		Main.buffNoTimeDisplay[Type] = false;
 		Main.debuff[Type] = false; // 添加这个，这样护士在治疗时就不会去除buff
 	}

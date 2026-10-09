@@ -7,7 +7,7 @@ public class CactusJuice : ModDust
 		dust.noGravity = true;
 		dust.frame = new Rectangle(0, 16 * Main.rand.Next(8), 16, 16);
 		dust.alpha = 0;
-		dust.rotation = dust.scale * 0.3f; //用旋转角度存尺寸极值
+		dust.rotation = dust.scale * 0.3f; // 用旋转角度存尺寸极值
 	}
 
 	public override bool Update(Dust dust)
@@ -47,8 +47,8 @@ public class CactusJuice : ModDust
 		dust.scale *= 0.995f;
 		return false;
 	}
-	//public override Color? GetAlpha(Dust dust, Color lightColor)
-	//{
+	// public override Color? GetAlpha(Dust dust, Color lightColor)
+	// {
 	//    return new Color?(new Color(255, 255, 255, 0f));
-	//}
+	// }
 }

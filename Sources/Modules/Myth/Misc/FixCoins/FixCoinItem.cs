@@ -43,13 +43,13 @@ public abstract class FixCoinItem : ModItem
 			if (item.accessory)
 				return true;
 		}
-		//TODO:你的背包里没有饰品
-		//string tex3 = "There's no accessory in your inventory";
-		//if (Language.ActiveCulture.Name == "zh-Hans")
-		//{
+		// TODO:你的背包里没有饰品
+		// string tex3 = "There's no accessory in your inventory";
+		// if (Language.ActiveCulture.Name == "zh-Hans")
+		// {
 		//    tex3 = "你的背包中没有饰品";
-		//}
-		//CombatText.NewText(new Rectangle((int)player.Center.X - 10, (int)player.Center.Y - 10, 20, 20), Color.White, tex3);
+		// }
+		// CombatText.NewText(new Rectangle((int)player.Center.X - 10, (int)player.Center.Y - 10, 20, 20), Color.White, tex3);
 		return false;
 	}
 }

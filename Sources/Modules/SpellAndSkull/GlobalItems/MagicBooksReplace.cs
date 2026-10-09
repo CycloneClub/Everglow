@@ -284,7 +284,7 @@ public class MagicBookPlayer : ModPlayer
 
 	public override bool PreItemCheck()
 	{
-		//MagicBookLevel = 0;
+		// MagicBookLevel = 0;
 		if (WaterBoltHasHit > 0)
 		{
 			if (Player.HeldItem.type != ItemID.WaterBolt || MagicBookLevel == 0)

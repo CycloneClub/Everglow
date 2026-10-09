@@ -93,7 +93,7 @@ public class ChlorophyteClub_VFX_2 : ModProjectile
 			float colorLight = Math.Min(TimeLeft[i] / 100f, 1f);
 			if (TimeLeft[i] < 75)
 			{
-				if (AI0[i] > 60 && AI0[i] <= 85)//0~100
+				if (AI0[i] > 60 && AI0[i] <= 85)// 0~100
 				{
 					Velocity[i] = Velocity[i].RotatedBy(Math.PI / -20f);
 					Velocity[i] *= 0.975f;
@@ -107,7 +107,7 @@ public class ChlorophyteClub_VFX_2 : ModProjectile
 				}
 				else
 				{
-					AI1[i] += 1 / 30f; //0.0~2.0
+					AI1[i] += 1 / 30f; // 0.0~2.0
 					Velocity[i] = Velocity[i].RotatedBy(Math.PI / 60d * (float)Math.Sin(AI1[i] * Math.PI));
 					Velocity[i] *= 0.975f;
 					Lighting.AddLight(Position[i], colorLight * 0.0f, colorLight * 0.3f, colorLight * 0.0f);
@@ -117,7 +117,7 @@ public class ChlorophyteClub_VFX_2 : ModProjectile
 			{
 				if ((Position[i] - StartPosition[i]).Length() >= 60)
 					TimeLeft[i] -= 5;
-				AI1[i] += 1 / 30f; //0.0~2.0
+				AI1[i] += 1 / 30f; // 0.0~2.0
 				Velocity[i] = Velocity[i].RotatedBy(Math.PI / 60d * (float)Math.Sin(AI1[i] * Math.PI));
 				Lighting.AddLight(Position[i], 0, colorLight * 0.3f, 0);
 				if (Main.rand.NextBool(40) && !Smaller[i])

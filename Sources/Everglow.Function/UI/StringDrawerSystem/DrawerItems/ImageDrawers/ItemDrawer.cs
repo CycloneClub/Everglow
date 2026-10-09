@@ -21,10 +21,10 @@ public class ItemDrawer : DrawerItem
 
 	public override void Draw(SpriteBatch sb)
 	{
-		//sb.Draw(
-		//	TextureAssets.MagicPixel.Value,
-		//	new Rectangle((int)Position.X, (int)Position.Y,
-		//	(int)ItemBlockSize.X, (int)ItemBlockSize.Y), Color.White);
+		// sb.Draw(
+		// TextureAssets.MagicPixel.Value,
+		// new Rectangle((int)Position.X, (int)Position.Y,
+		// (int)ItemBlockSize.X, (int)ItemBlockSize.Y), Color.White);
 
 		var tex = TextureAssets.Item[ItemType].Value;
 		float scale = Math.Min(ItemBlockSize.X / tex.Width, ItemBlockSize.Y / tex.Height);

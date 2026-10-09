@@ -61,15 +61,15 @@ public class MothYoyoSub : ModProjectile
 			if (Main.rand.NextBool(5))
 				Projectile.spriteDirection *= -1;
 		}
-		if (t < 20)//开始
+		if (t < 20)// 开始
 			v3Position = Vector3.Lerp(v3Position, targetPos, 0.1f);
-		else if (owner.ai[0] == -1)//收回
+		else if (owner.ai[0] == -1)// 收回
 		{
 			v3Position = Vector3.Lerp(v3Position, Vector3.Zero, 0.1f);
 			if (Projectile.scale > 0)
 				Projectile.scale -= 0.05f;
 		}
-		else//旋转
+		else// 旋转
 		{
 			v3Position = Vector3.Transform(v3Position, Matrix.CreateRotationY(owner.velocity.X * 0.01f + 0.02f));
 			v3Position = Vector3.Transform(v3Position, Matrix.CreateRotationX(owner.velocity.Y * 0.01f));

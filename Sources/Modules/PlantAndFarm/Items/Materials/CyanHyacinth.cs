@@ -6,8 +6,8 @@ public class CyanHyacinth : ModItem
 
 	public override void SetStaticDefaults()
 	{
-		//DisplayName.SetDefault("Cyan Hyacinth");
-		//DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "天青盏");
+		// DisplayName.SetDefault("Cyan Hyacinth");
+		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "天青盏");
 	}
 	public override void SetDefaults()
 	{

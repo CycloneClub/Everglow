@@ -71,7 +71,7 @@ internal class Storm : ModProjectile
 			p0.rotation = Main.rand.NextFloat(6.283f);
 		}
 
-		//GenerateVFX(4);
+		// GenerateVFX(4);
 		if (Main.rand.NextBool(10))
 		{
 			foreach (var target in Main.npc)

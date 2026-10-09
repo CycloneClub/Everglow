@@ -12,15 +12,15 @@ internal class DemonScytheBook : MagicBookProjectile//
 		UseGlow = false;
 		effectColor = new Color(75, 0, 225, 175);
 
-		//string pathBase = "SpellAndSkull/Textures/";
-		//FrontTexPath = pathBase + "DemonScythe_A";
-		//PaperTexPath = pathBase + "DemonScythe_C";
-		//BackTexPath = pathBase + "DemonScythe_B";
+		// string pathBase = "SpellAndSkull/Textures/";
+		// FrontTexPath = pathBase + "DemonScythe_A";
+		// PaperTexPath = pathBase + "DemonScythe_C";
+		// BackTexPath = pathBase + "DemonScythe_B";
 
-		//TexCoordTop = new Vector2(8, 0);
-		//TexCoordLeft = new Vector2(0, 24);
-		//TexCoordDown = new Vector2(20, 30);
-		//TexCoordRight = new Vector2(28, 4);
+		// TexCoordTop = new Vector2(8, 0);
+		// TexCoordLeft = new Vector2(0, 24);
+		// TexCoordDown = new Vector2(20, 30);
+		// TexCoordRight = new Vector2(28, 4);
 	}
 	public override void SpecialAI()
 	{

@@ -19,7 +19,7 @@ public class DrinkGlobalItem : GlobalItem
 	{
 		m_vanillaDrinkInfos = new Dictionary<int, DrinkInfo>
 		{
-                //麦芽酒
+                // 麦芽酒
                 {
 				ItemID.Ale,
 				new DrinkInfo() {
@@ -29,7 +29,7 @@ public class DrinkGlobalItem : GlobalItem
 					Name =  "SakeBuff",
 				}
 			},
-                //苹果汁
+                // 苹果汁
                 {
 				ItemID.AppleJuice,
 				new DrinkInfo() {
@@ -39,7 +39,7 @@ public class DrinkGlobalItem : GlobalItem
 				   Name =  "AppleJuiceBuff",
 				}
 			},
-                 //冰冻香蕉代基里
+                 // 冰冻香蕉代基里
                 {
 				ItemID.BananaDaiquiri,
 				new DrinkInfo() {
@@ -49,7 +49,7 @@ public class DrinkGlobalItem : GlobalItem
 					Name = "BananaDaiquiriBuff",
 				}
 			},
-                 //血腥麝香葡萄
+                 // 血腥麝香葡萄
                 {
 				ItemID.BloodyMoscato,
 				new DrinkInfo() {
@@ -59,7 +59,7 @@ public class DrinkGlobalItem : GlobalItem
 					Name = "BloodyMoscatoBuff",
 				}
 			},
-                //奶油苏打水
+                // 奶油苏打水
                 {
 				ItemID.CreamSoda,
 				new DrinkInfo() {
@@ -69,7 +69,7 @@ public class DrinkGlobalItem : GlobalItem
 					Name = "CreamSodaBuff",
 				}
 			},
-                //咖啡
+                // 咖啡
                 {
 				ItemID.CoffeeCup,
 				new DrinkInfo() {
@@ -79,7 +79,7 @@ public class DrinkGlobalItem : GlobalItem
 					Name = "CoffeeCupBuff",
 				}
 			},
-                //果汁
+                // 果汁
                 {
 				ItemID.FruitJuice,
 				new DrinkInfo() {
@@ -89,7 +89,7 @@ public class DrinkGlobalItem : GlobalItem
 					Name = "FruitJuiceBuff",
 				}
 			},
-                //葡萄汁
+                // 葡萄汁
                 {
 				ItemID.GrapeJuice,
 				new DrinkInfo() {
@@ -99,7 +99,7 @@ public class DrinkGlobalItem : GlobalItem
 					Name = "GrapeJuiceBuff",
 				}
 			},                
-                //柠檬水
+                // 柠檬水
                 {
 				ItemID.Lemonade,
 				new DrinkInfo() {
@@ -109,7 +109,7 @@ public class DrinkGlobalItem : GlobalItem
 					Name = "LemonadeBuff",
 				}
 			},     
-                //盒装牛奶
+                // 盒装牛奶
                 {
 				ItemID.MilkCarton,
 				new DrinkInfo() {
@@ -119,7 +119,7 @@ public class DrinkGlobalItem : GlobalItem
 					Name = "MilkCartonBuff",
 				}
 			},
-                //奶昔
+                // 奶昔
                 {
 				ItemID.Milkshake,
 				new DrinkInfo() {
@@ -129,7 +129,7 @@ public class DrinkGlobalItem : GlobalItem
 					Name = "MilkshakeBuff",
 				}
 			},
-                //桃子果酒
+                // 桃子果酒
                 {
 				ItemID.PeachSangria,
 				new DrinkInfo() {
@@ -139,7 +139,7 @@ public class DrinkGlobalItem : GlobalItem
 					Name = "PeachSangriaBuff",
 				}
 			},
-                //椰林飘香
+                // 椰林飘香
                 {
 				ItemID.PinaColada,
 				new DrinkInfo() {
@@ -149,7 +149,7 @@ public class DrinkGlobalItem : GlobalItem
 					Name = "PinaColadaBuff",
 				}
 			},
-                //七彩潘趣酒
+                // 七彩潘趣酒
                 {
 				ItemID.PrismaticPunch,
 				new DrinkInfo() {
@@ -159,7 +159,7 @@ public class DrinkGlobalItem : GlobalItem
 					Name = "PrismaticPunchBuff",
 				}
 			},                
-                //清酒
+                // 清酒
                 {
 				ItemID.Sake,
 				new DrinkInfo() {
@@ -169,7 +169,7 @@ public class DrinkGlobalItem : GlobalItem
 					Name = "SakeBuff",
 				}
 			},
-                //暗黑奶昔
+                // 暗黑奶昔
                 {
 				ItemID.SmoothieofDarkness,
 				new DrinkInfo() {
@@ -180,7 +180,7 @@ public class DrinkGlobalItem : GlobalItem
 					Name = "SmoothieofDarknessBuff",
 				}
 			}, 
-                //一杯茶
+                // 一杯茶
                 {
 				ItemID.Teacup,
 				new DrinkInfo() {
@@ -190,7 +190,7 @@ public class DrinkGlobalItem : GlobalItem
 					Name = "TeacupBuff",
 				}
 			},
-                //热带奶昔
+                // 热带奶昔
                 {
 				ItemID.TropicalSmoothie,
 				new DrinkInfo() {
@@ -282,7 +282,7 @@ public class DrinkGlobalItem : GlobalItem
 
 			// 变得不渴
 			FoodPlayer.Thirstystate = drinkInfo.Thirsty;
-			//加上Buff
+			// 加上Buff
 			player.AddBuff(drinkInfo.BuffType, drinkInfo.BuffTime.TotalFrames);
 		}
 		else if (item.ModItem is DrinkBase)
@@ -292,7 +292,7 @@ public class DrinkGlobalItem : GlobalItem
 			var FoodPlayer = player.GetModPlayer<FoodModPlayer>();
 			// 变得不渴
 			FoodPlayer.Thirstystate = drinkInfo.Thirsty;
-			//加上Buff
+			// 加上Buff
 			player.AddBuff(drinkInfo.BuffType, drinkInfo.BuffTime.TotalFrames);
 		}
 	}
@@ -344,7 +344,7 @@ public class DrinkGlobalItem : GlobalItem
 		{
 			var drinkInfo = m_vanillaDrinkInfos[item.type];
 			if (!foodPlayer.CanDrink(drinkInfo))
-				//Main.NewText(Language.GetTextValue("Mods.Everglow.Common.FoodSystem.CannotDrink"));
+				// Main.NewText(Language.GetTextValue("Mods.Everglow.Common.FoodSystem.CannotDrink"));
 
 				return false;
 		}
@@ -353,7 +353,7 @@ public class DrinkGlobalItem : GlobalItem
 			var foodItem = item.ModItem as DrinkBase;
 			var drinkInfo = foodItem.DrinkInfo;
 			if (!foodPlayer.CanDrink(drinkInfo))
-				//Main.NewText(Language.GetTextValue("Mods.Everglow.Common.FoodSystem.CannotDrink"));
+				// Main.NewText(Language.GetTextValue("Mods.Everglow.Common.FoodSystem.CannotDrink"));
 				return false;
 		}
 		return base.ConsumeItem(item, player);

@@ -46,7 +46,7 @@ public abstract class WhipProjectile : ModProjectile
 	{
 		Projectile.width = 18;
 		Projectile.height = 18;
-		Projectile.aiStyle = -1; //165
+		Projectile.aiStyle = -1; // 165
 		Projectile.friendly = true;
 		Projectile.penetrate = -1;
 		Projectile.tileCollide = false;
@@ -220,7 +220,7 @@ public abstract class WhipProjectile : ModProjectile
 	public override bool PreDraw(ref Color lightColor)
 	{
 		float lineSpeedMax = WhipLength / TimeToFlyOut / 3f;
-		//draw ghost image when line speed very fast.
+		// draw ghost image when line speed very fast.
 		if (lineSpeedMax >= 1)
 		{
 			for (int t = 1; t < lineSpeedMax; t++)

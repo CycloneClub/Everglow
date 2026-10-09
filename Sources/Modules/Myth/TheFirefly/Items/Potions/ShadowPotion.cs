@@ -4,7 +4,7 @@ using Terraria.Localization;
 
 namespace Everglow.Myth.TheFirefly.Items.Potions
 {
-	//TODO:翻译 幽夜药剂 NightElixir
+	// TODO:翻译 幽夜药剂 NightElixir
 	public class ShadowPotion : ModItem
 	{
 		public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Potions;
@@ -35,7 +35,7 @@ namespace Everglow.Myth.TheFirefly.Items.Potions
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
-			//TODO: Use actual tooltips
+			// TODO: Use actual tooltips
 		}
 		public override void AddRecipes()
 		{

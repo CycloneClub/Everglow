@@ -6,8 +6,8 @@ public class PurpleTail : ModItem
 
 	public override void SetStaticDefaults()
 	{
-		//DisplayName.SetDefault("Purple Reed");
-		//DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "紫风草");
+		// DisplayName.SetDefault("Purple Reed");
+		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "紫风草");
 	}
 	public override void SetDefaults()
 	{

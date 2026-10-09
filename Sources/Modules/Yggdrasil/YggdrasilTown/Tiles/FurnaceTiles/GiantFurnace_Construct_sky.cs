@@ -21,12 +21,12 @@ public class GiantFurnace_Construct_sky : BackgroundSlideBase
 	public override void Update()
 	{
 		base.Update();
-		//if(Main.mouseLeft && Main.mouseLeftRelease)
-		//{
-		//	Distance = 3;
-		//	WorldAnchor.Y = 320000;
-		//	Main.NewText(WorldAnchor.Y);
-		//}
+		// if(Main.mouseLeft && Main.mouseLeftRelease)
+		// {
+		// Distance = 3;
+		// WorldAnchor.Y = 320000;
+		// Main.NewText(WorldAnchor.Y);
+		// }
 	}
 
 	public override void Draw()

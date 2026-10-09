@@ -135,44 +135,44 @@ public class YggdrasilTownBackground : ModSystem
 
 	public void DrawMidnightBayou(Color baseColor)
 	{
-		//if (ModContent.GetInstance<MidnightBayouBiome>().IsBiomeActive(Main.LocalPlayer))
-		//{
-		//	if (BackgroundAlphaMidnightBayou < 1f)
-		//	{
-		//		BackgroundAlphaMidnightBayou += 0.02f;
-		//	}
-		//	else
-		//	{
-		//		BackgroundAlphaMidnightBayou = 1f;
-		//	}
-		//}
-		//else
-		//{
-		//	if (BackgroundAlphaMidnightBayou > 0f)
-		//	{
-		//		BackgroundAlphaMidnightBayou -= 0.02f;
-		//	}
-		//	else
-		//	{
-		//		BackgroundAlphaMidnightBayou = 0;
-		//	}
-		//}
+		// if (ModContent.GetInstance<MidnightBayouBiome>().IsBiomeActive(Main.LocalPlayer))
+		// {
+		// if (BackgroundAlphaMidnightBayou < 1f)
+		// {
+		// BackgroundAlphaMidnightBayou += 0.02f;
+		// }
+		// else
+		// {
+		// BackgroundAlphaMidnightBayou = 1f;
+		// }
+		// }
+		// else
+		// {
+		// if (BackgroundAlphaMidnightBayou > 0f)
+		// {
+		// BackgroundAlphaMidnightBayou -= 0.02f;
+		// }
+		// else
+		// {
+		// BackgroundAlphaMidnightBayou = 0;
+		// }
+		// }
 
-		//if (BackgroundAlphaMidnightBayou > 0)
-		//{
-		//	var bayouClose = ModAsset.MidnightBayou_Close.Value;
-		//	var bayouMiddle0 = ModAsset.MidnightBayou_Middle_0.Value;
-		//	var bayouMiddle1 = ModAsset.MidnightBayou_Middle_1.Value;
-		//	var bayouMiddle2 = ModAsset.MidnightBayou_Middle_2.Value;
-		//	var bayouSky = ModAsset.MidnightBayou_Sky.Value;
-		//	Vector2 correction = OriginPylonCenter;
+		// if (BackgroundAlphaMidnightBayou > 0)
+		// {
+		// var bayouClose = ModAsset.MidnightBayou_Close.Value;
+		// var bayouMiddle0 = ModAsset.MidnightBayou_Middle_0.Value;
+		// var bayouMiddle1 = ModAsset.MidnightBayou_Middle_1.Value;
+		// var bayouMiddle2 = ModAsset.MidnightBayou_Middle_2.Value;
+		// var bayouSky = ModAsset.MidnightBayou_Sky.Value;
+		// Vector2 correction = OriginPylonCenter;
 
-		//	BackgroundManager.DrawBG_RestrictY(bayouSky, float.PositiveInfinity, correction, baseColor * BackgroundAlphaMidnightBayou, (int)(Stratum1Center.Y - 20600), (int)(Stratum1Center.Y + 18000), false, true);
-		//	BackgroundManager.DrawBG_RestrictY(bayouMiddle2, 80f, correction, baseColor * BackgroundAlphaMidnightBayou, (int)(Stratum1Center.Y - 20600), (int)(Stratum1Center.Y + 18000), false, true);
-		//	BackgroundManager.DrawBG_RestrictY(bayouMiddle1, 20f, correction, baseColor * BackgroundAlphaMidnightBayou, (int)(Stratum1Center.Y - 20600), (int)(Stratum1Center.Y + 18000), false, true);
-		//	BackgroundManager.DrawBG_RestrictY(bayouMiddle0, 10f, correction, baseColor * BackgroundAlphaMidnightBayou, (int)(Stratum1Center.Y - 20600), (int)(Stratum1Center.Y + 18000), false, true);
-		//	BackgroundManager.DrawBG_RestrictY(bayouClose, 6f, correction + new Vector2(0, 2950), baseColor * BackgroundAlphaMidnightBayou, (int)(Stratum1Center.Y - 20600), (int)(Stratum1Center.Y + 18000), false, true);
-		//}
+		// BackgroundManager.DrawBG_RestrictY(bayouSky, float.PositiveInfinity, correction, baseColor * BackgroundAlphaMidnightBayou, (int)(Stratum1Center.Y - 20600), (int)(Stratum1Center.Y + 18000), false, true);
+		// BackgroundManager.DrawBG_RestrictY(bayouMiddle2, 80f, correction, baseColor * BackgroundAlphaMidnightBayou, (int)(Stratum1Center.Y - 20600), (int)(Stratum1Center.Y + 18000), false, true);
+		// BackgroundManager.DrawBG_RestrictY(bayouMiddle1, 20f, correction, baseColor * BackgroundAlphaMidnightBayou, (int)(Stratum1Center.Y - 20600), (int)(Stratum1Center.Y + 18000), false, true);
+		// BackgroundManager.DrawBG_RestrictY(bayouMiddle0, 10f, correction, baseColor * BackgroundAlphaMidnightBayou, (int)(Stratum1Center.Y - 20600), (int)(Stratum1Center.Y + 18000), false, true);
+		// BackgroundManager.DrawBG_RestrictY(bayouClose, 6f, correction + new Vector2(0, 2950), baseColor * BackgroundAlphaMidnightBayou, (int)(Stratum1Center.Y - 20600), (int)(Stratum1Center.Y + 18000), false, true);
+		// }
 	}
 
 	public void DrawJellyBallHotbed(Color baseColor)

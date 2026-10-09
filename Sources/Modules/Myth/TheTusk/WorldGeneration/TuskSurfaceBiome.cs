@@ -8,11 +8,11 @@ namespace Everglow.Myth.TheTusk.WorldGeneration;
 // Shows setting up two basic biomes. For a more complicated example, please request.
 public class TuskSurfaceBiome : ModBiome
 {
-	//public override bool IsPrimaryBiome => true; // Allows this biome to impact NPC prices
+	// public override bool IsPrimaryBiome => true; // Allows this biome to impact NPC prices
 
 	// Select all the scenery
-	public override ModWaterStyle WaterStyle => ModContent.GetInstance<TuskWaterStyle>(); //ModContent.Find<ModWaterStyle>("Everglow/Myth/TheTusk/WorldGeneration/TuskWaterStyle"); // Sets a water style for when inside this biome
-	public override ModSurfaceBackgroundStyle SurfaceBackgroundStyle => ModContent.GetInstance<TuskSurfaceBackgroundStyle>(); //ModContent.Find<ModSurfaceBackgroundStyle>("Everglow/Myth/TheTusk/Background/TuskSurfaceBackgroundStyle");
+	public override ModWaterStyle WaterStyle => ModContent.GetInstance<TuskWaterStyle>(); // ModContent.Find<ModWaterStyle>("Everglow/Myth/TheTusk/WorldGeneration/TuskWaterStyle"); // Sets a water style for when inside this biome
+	public override ModSurfaceBackgroundStyle SurfaceBackgroundStyle => ModContent.GetInstance<TuskSurfaceBackgroundStyle>(); // ModContent.Find<ModSurfaceBackgroundStyle>("Everglow/Myth/TheTusk/Background/TuskSurfaceBackgroundStyle");
 	public override CaptureBiome.TileColorStyle TileColorStyle => CaptureBiome.TileColorStyle.Crimson;
 
 	public override string BestiaryIcon => base.BestiaryIcon;
@@ -26,7 +26,7 @@ public class TuskSurfaceBiome : ModBiome
 	}
 	public override void Load()
 	{
-		//On.Terraria.Main.DrawWaters += Main_DrawWaters;
+		// On.Terraria.Main.DrawWaters += Main_DrawWaters;
 		base.Load();
 	}
 	// Calculate when the biome is active.

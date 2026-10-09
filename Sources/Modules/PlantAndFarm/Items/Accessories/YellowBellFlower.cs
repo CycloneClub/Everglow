@@ -8,10 +8,10 @@ public class YellowBellFlower : ModItem
 
 	public override void SetStaticDefaults()
 	{
-		//DisplayName.SetDefault("Bananea of the Valley");
-		//DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "金簇铃兰");
-		//Tooltip.SetDefault("Increases damage by (defense * 20%)%\n'Rare and beautiful'");
-		//Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "伤害增加(20%防御力)%\n'稀有又好看'");
+		// DisplayName.SetDefault("Bananea of the Valley");
+		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "金簇铃兰");
+		// Tooltip.SetDefault("Increases damage by (defense * 20%)%\n'Rare and beautiful'");
+		// Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "伤害增加(20%防御力)%\n'稀有又好看'");
 	}
 	public override void SetDefaults()
 	{
