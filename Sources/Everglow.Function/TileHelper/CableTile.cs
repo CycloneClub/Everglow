@@ -289,7 +289,8 @@ public abstract class CableTile : ModTile, ITileFluentlyDrawn
 	/// </summary>
 	/// <param name="i"></param>
 	/// <param name="j"></param>
-	/// <param name="rope"></param>
+	/// <param name="i2">绳子另一端所在物块的横坐标。</param>
+	/// <param name="j2">绳子另一端所在物块的纵坐标。</param>
 	public virtual void AddRope(int i, int j, int i2, int j2)
 	{
 		Rope rope = ConnectRope(i, j, i2, j2);

@@ -7,6 +7,7 @@ public static class BiomeUtils
 	/// <para/>
 	/// </summary>
 	/// <param name="player"></param>
+	/// <param name="baseBiomeCheck">Additional biome condition that must be true for the depth check to succeed.</param>
 	/// <returns></returns>
 	public static bool InCavernBiome(this Player player, bool baseBiomeCheck = true) =>
 		player.Center.ToTileCoordinates().Y > Main.rockLayer && baseBiomeCheck;
@@ -15,6 +16,7 @@ public static class BiomeUtils
 	/// Checks if the player's position is above <see cref="Main.worldSurface"/>.
 	/// </summary>
 	/// <param name="player"></param>
+	/// <param name="baseBiomeCheck">Additional biome condition that must be true for the depth check to succeed.</param>
 	/// <returns></returns>
 	public static bool InSurfaceAndUndergroundBiome(this Player player, bool baseBiomeCheck = true) =>
 		!player.InCavernBiome() && baseBiomeCheck;

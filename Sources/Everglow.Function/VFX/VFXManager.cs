@@ -147,9 +147,9 @@ public class VFXManager : IVFXManager
 	}
 
 	/// <summary>
+	/// 将视觉效果实例加入其绘制层和首个管线对应的集合。
 	/// </summary>
-	/// <param name="visual"> </param>
-	/// <param name="flag"> 为了避免重复的占位符 </param>
+	/// <param name="visual">要加入绘制集合的视觉效果实例。</param>
 	public void Add(IVisual visual)
 	{
 		// 将Visual实例加到对应绘制层与第一个Pipeline的位置

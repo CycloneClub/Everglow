@@ -135,7 +135,8 @@ public static class GraphicsUtils
 	/// Use <see cref="CatmullRom(IEnumerable{Vector2}, int?)"/> to smooth a list of <see cref="Vector2"/>.
 	/// </summary>
 	/// <param name="vectors"></param>
-	/// <returns><c>null</c> if the result is too short to draw.</returns>
+	/// <param name="result">The smoothed path, or <c>null</c> if it is too short to draw.</param>
+	/// <returns>Whether the smoothed path is long enough to draw.</returns>
 	public static bool Smooth(this IEnumerable<Vector2> vectors, out List<Vector2> result)
 	{
 		result = Smooth(vectors);
@@ -242,7 +243,8 @@ public static class GraphicsUtils
 	/// Use <see cref="CatmullRom(IEnumerable{Vector3}, int?)"/> to smooth a list of <see cref="Vector3"/>.
 	/// </summary>
 	/// <param name="vectors"></param>
-	/// <returns><c>null</c> if the result is too short to draw.</returns>
+	/// <param name="result">The smoothed path, or <c>null</c> if it is too short to draw.</param>
+	/// <returns>Whether the smoothed path is long enough to draw.</returns>
 	public static bool Smooth(this IEnumerable<Vector3> vectors, out List<Vector3> result)
 	{
 		result = Smooth(vectors);

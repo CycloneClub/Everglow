@@ -80,6 +80,7 @@ public sealed class ElementalDebuffInstance
 	/// Add element debuff build-up, calculate resistance and penetration.
 	/// </summary>
 	/// <param name="buildUp">Build-up value</param>
+	/// <param name="sourcePlayer">Player index recorded as the last interaction when positive build-up is added.</param>
 	/// <param name="elementPenetration">Element penetration. If penetration is less than 0, it will be count as 0.</param>
 	/// <returns></returns>
 	public bool AddBuildUp(int buildUp, int sourcePlayer, float elementPenetration = 0)

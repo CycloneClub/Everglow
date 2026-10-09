@@ -68,7 +68,7 @@ public class MeleeProj_3D_Dust : Visual
 	/// <summary>
 	/// Allow you register a custom logic.
 	/// </summary>
-	/// <param name="customLogic"></param>
+	/// <param name="behavoir">Callback to invoke when this dust updates.</param>
 	public void RegisterBehavior(CustomBehavior behavoir)
 	{
 		DustBehavior += behavoir;
@@ -82,7 +82,7 @@ public class MeleeProj_3D_Dust : Visual
 	/// <summary>
 	/// Unregister a custom logic.
 	/// </summary>
-	/// <param name="customLogic"></param>
+	/// <param name="behavoir">Previously registered update callback to remove.</param>
 	public void UnregisterBehavior(CustomBehavior behavoir)
 	{
 		DustBehavior -= behavoir;

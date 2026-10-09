@@ -133,8 +133,6 @@ public class WoodenBoxRoomGenPass : GenPass
 	/// <summary>
 	/// 建造内部已有的
 	/// </summary>
-	/// <param name="x"></param>
-	/// <param name="y"></param>
 	public static void QuickBuildInside()
 	{
 		int x = 5;

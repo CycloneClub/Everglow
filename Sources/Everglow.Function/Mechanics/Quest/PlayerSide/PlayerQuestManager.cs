@@ -217,6 +217,7 @@ public class PlayerQuestManager
 	/// </summary>
 	/// <param name="quest">任务</param>
 	/// <param name="state">任务状态</param>
+	/// <param name="showText">是否在成功添加新任务时显示提示文本。</param>
 	public void AddQuest(PlayerQuestBase quest, PlayerQuestState state, bool showText = true)
 	{
 		if (!_quests.Any(m => m.Name == quest.Name))

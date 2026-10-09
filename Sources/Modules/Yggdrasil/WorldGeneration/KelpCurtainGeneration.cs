@@ -3457,6 +3457,7 @@ public class KelpCurtainGeneration
 	/// <param name="x1"></param>
 	/// <param name="y1"></param>
 	/// <param name="width"></param>
+	/// <param name="sideThick">The brick border thickness in tiles, subtracted from width to obtain the inner half-width.</param>
 	public static void UnderwaterTreasury_ConnectWaterErodedBrickTunnel_Serrated(int x0, int y0, int x1, int y1, float width, float sideThick)
 	{
 		UnderwaterTreasury_ConnectWaterErodedBrickTunnel_Serrated(new Point(x0, y0), new Point(x1, y1), width, sideThick);
@@ -3465,11 +3466,10 @@ public class KelpCurtainGeneration
 	/// <summary>
 	/// Create a tunnel with water-erodeed brick side between 2 points.Traversing altitute by creating a zigzag path.
 	/// </summary>
-	/// <param name="x0"></param>
-	/// <param name="y0"></param>
-	/// <param name="x1"></param>
-	/// <param name="y1"></param>
+	/// <param name="point0">The starting point of the tunnel in tile coordinates.</param>
+	/// <param name="point1">The ending point of the tunnel in tile coordinates.</param>
 	/// <param name="width"></param>
+	/// <param name="sideThick">The brick border thickness in tiles, subtracted from width to obtain the inner half-width.</param>
 	public static void UnderwaterTreasury_ConnectWaterErodedBrickTunnel_Serrated(Point point0, Point point1, float width, float sideThick)
 	{
 		// Calculate the shape

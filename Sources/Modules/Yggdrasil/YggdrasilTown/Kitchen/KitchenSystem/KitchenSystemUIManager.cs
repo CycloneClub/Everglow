@@ -829,6 +829,8 @@ public class KitchenSystemUI : GameInterfaceLayer
 	/// <param name="width"></param>
 	/// <param name="height"></param>
 	/// <param name="color"></param>
+	/// <param name="alpha">The fade-out amount; the drawing color is multiplied by one minus this value.</param>
+	/// <param name="texture">The nine-piece panel texture, or null to use FoodRequestUIPanel.</param>
 	public static void Draw9Pieces(Vector2 anchorCenter, float width, float height, Color color, float alpha, Texture2D texture = default)
 	{
 		color *= 1 - alpha;

@@ -40,6 +40,7 @@ public static class FurnitureUtils
 	/// <param name="tileDrawing">TileDrawing工具类实例</param>
 	/// <param name="topLeft">物块整体左上角的坐标</param>
 	/// <param name="swayOffset">用于旗帜类物块，摇曳时底部物块会有类似“卷起来”的效果，对于吊灯应直接设置为0</param>
+	/// <param name="swayStrength">风力和推动效果转换为摇摆角度时使用的强度系数。</param>
 	public static void HangingObjectFluentDraw(Vector2 screenPosition, Point pos, SpriteBatch spriteBatch, TileDrawing tileDrawing, Point topLeft, float swayOffset = -4f, float swayStrength = 0.15f)
 	{
 		var tile = Main.tile[pos];

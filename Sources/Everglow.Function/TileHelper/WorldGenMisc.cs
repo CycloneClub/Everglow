@@ -109,10 +109,10 @@ public class WorldGenMisc
 	/// <summary>
 	/// 以x, y, width, height的格式确定区域平滑物块
 	/// </summary>
-	/// <param name="x0"></param>
-	/// <param name="y0"></param>
-	/// <param name="x1"></param>
-	/// <param name="y1"></param>
+	/// <param name="x">待平滑区域左上角的物块横坐标，会根据世界边界调整。</param>
+	/// <param name="y">待平滑区域左上角的物块纵坐标，会根据世界边界调整。</param>
+	/// <param name="width">待平滑区域的宽度，以物块为单位。</param>
+	/// <param name="height">待平滑区域的高度，以物块为单位。</param>
 	public static void SmoothTileOfAreaXYWH(int x, int y, int width, int height)
 	{
 		x = Math.Clamp(x, 20, Main.maxTilesX - 20);
@@ -198,8 +198,7 @@ public class WorldGenMisc
 	/// <summary>
 	/// Do damage to a certain tile.
 	/// </summary>
-	/// <param name="x"></param>
-	/// <param name="y"></param>
+	/// <param name="point">Tile coordinates of the tile receiving damage.</param>
 	/// <param name="damage"></param>
 	/// <param name="player"></param>
 	public static void DamageTile(Point point, int damage, Player player = null)

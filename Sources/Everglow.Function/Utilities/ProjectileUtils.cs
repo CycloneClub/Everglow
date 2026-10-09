@@ -20,6 +20,7 @@ public static class ProjectileUtils
 	/// Find closest target by given position.
 	/// </summary>
 	/// <param name="fromWhere"></param>
+	/// <param name="searchDistance">Exclusive maximum search distance in world pixels, measured to an NPC's center minus half its hitbox diagonal.</param>
 	/// <returns></returns>
 	public static int FindTarget(Vector2 fromWhere, float searchDistance)
 	{

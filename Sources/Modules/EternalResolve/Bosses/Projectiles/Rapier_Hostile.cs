@@ -294,10 +294,11 @@ namespace Everglow.EternalResolve.Bosses.Projectiles
 		/// mulVelocity 决定了旗帜下方两个角收到弹幕速度的影响大小
 		/// </summary>
 		/// <param name="lightColor"></param>
-		/// <param name="offset"></param>
 		/// <param name="flagTexture"></param>
 		/// <param name="mulVelocityLeft"></param>
 		/// <param name="mulVelocityRight"></param>
+		/// <param name="flagLeftX">旗帜左边缘相对于武器绘制位置的横向像素偏移，在旋转和翻转前使用。</param>
+		/// <param name="flagTopY">旗帜上边缘相对于武器绘制位置的纵向像素偏移，在旋转前使用。</param>
 		public void DrawFlags(Color lightColor, float flagLeftX, float flagTopY, Texture2D flagTexture, float mulVelocityLeft = 1f, float mulVelocityRight = 1f)
 		{
 			Player player = Main.player[Projectile.owner];

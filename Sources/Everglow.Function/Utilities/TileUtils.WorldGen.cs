@@ -232,7 +232,13 @@ public partial class TileUtils
 	/// <summary>
 	/// Use (x, y) as the top left corner to place a frame important tile area with given width and height, and set the frameX and frameY of each tile in this area according to their position in this area.
 	/// </summary>
-	/// <param name="path"></param>
+	/// <param name="x">Tile X coordinate of the left edge.</param>
+	/// <param name="y">Tile Y coordinate of the top edge.</param>
+	/// <param name="width">Number of tile columns to place.</param>
+	/// <param name="height">Number of tile rows to place.</param>
+	/// <param name="type">Tile type to assign to the area.</param>
+	/// <param name="startX">TileFrameX at the left edge, increasing by 18 pixels per column.</param>
+	/// <param name="startY">TileFrameY at the top edge, increasing by 18 pixels per row.</param>
 	public static void PlaceFrameImportantTiles(int x, int y, int width, int height, int type, int startX = 0, int startY = 0)
 	{
 		if (x > Main.maxTilesX - width || x < 0 || y > Main.maxTilesY - height || y < 0)
@@ -258,6 +264,11 @@ public partial class TileUtils
 	/// </summary>
 	/// <param name="startX">TileFrameX at left side, +18 each tile towards right.</param>
 	/// <param name="startY">TileFrameX at top side, +18 each tile towards down.</param>
+	/// <param name="x">Tile X coordinate of the left edge.</param>
+	/// <param name="y">Tile Y coordinate immediately below the bottom row.</param>
+	/// <param name="width">Number of tile columns to place.</param>
+	/// <param name="height">Number of tile rows to place above y.</param>
+	/// <param name="type">Tile type to assign to the area.</param>
 	public static void PlaceFrameImportantTilesAbove(int x, int y, int width, int height, int type, int startX = 0, int startY = 0)
 	{
 		if (x > Main.maxTilesX - width || x < 0 || y > Main.maxTilesY - height || y < 0)
@@ -440,6 +451,7 @@ public partial class TileUtils
 	/// -1: Kill tile.<br/>
 	/// -2: ClearEverything</param>
 	/// <param name="force"><see cref="TileChangeState"/></param>
+	/// <param name="radius">Radius of the circle in tiles.</param>
 	public static void PlaceCircleAreaOfBlock(Vector2 center, float radius, int type, int force = 0)
 	{
 		int radiusI = (int)radius;
@@ -464,6 +476,7 @@ public partial class TileUtils
 	/// -1: Kill tile.<br/>
 	/// -2: ClearEverything</param>
 	/// <param name="force"><see cref="TileChangeState"/></param>
+	/// <param name="radius">Radius of the circle in tiles.</param>
 	public static void PlaceCircleAreaOfWall(Vector2 center, float radius, int type, int force = 0)
 	{
 		int radiusI = (int)radius;
@@ -488,6 +501,7 @@ public partial class TileUtils
 	/// -1: Kill tile.<br/>
 	/// -2: ClearEverything</param>
 	/// <param name="force"><see cref="TileChangeState"/></param>
+	/// <param name="radius">Radius of the circle in tiles.</param>
 	public static void PlaceCircleAreaOfLiquid(Vector2 center, float radius, int type, int force = 0)
 	{
 		int radiusI = (int)radius;
@@ -511,6 +525,8 @@ public partial class TileUtils
 	/// -1: Kill tile.<br/>
 	/// -2: ClearEverything</param>
 	/// <param name="force"><see cref="TileChangeState"/></param>
+	/// <param name="center">Center of the circle in tile coordinates.</param>
+	/// <param name="radius">Radius of the circle in tiles.</param>
 	public static void PlaceCircleAreaOfBlock(Point center, float radius, int type, int force = 0)
 	{
 		PlaceCircleAreaOfBlock(center.ToVector2(), radius, type, force);
@@ -523,6 +539,8 @@ public partial class TileUtils
 	/// -1: Kill tile.<br/>
 	/// -2: ClearEverything</param>
 	/// <param name="force"><see cref="TileChangeState"/></param>
+	/// <param name="center">Center of the circle in tile coordinates.</param>
+	/// <param name="radius">Radius of the circle in tiles.</param>
 	public static void PlaceCircleAreaOfWall(Point center, float radius, int type, int force = 0)
 	{
 		PlaceCircleAreaOfWall(center.ToVector2(), radius, type, force);
@@ -535,6 +553,8 @@ public partial class TileUtils
 	/// -1: Kill tile.<br/>
 	/// -2: ClearEverything</param>
 	/// <param name="force"><see cref="TileChangeState"/></param>
+	/// <param name="center">Center of the circle in tile coordinates.</param>
+	/// <param name="radius">Radius of the circle in tiles.</param>
 	public static void PlaceCircleAreaOfLiquid(Point center, float radius, int type, int force = 0)
 	{
 		PlaceCircleAreaOfLiquid(center.ToVector2(), radius, type, force);
@@ -572,7 +592,6 @@ public partial class TileUtils
 	/// </summary>
 	/// <param name="pos">the center of the circle</param>
 	/// <param name="radius">the radius of the circle</param>
-	/// <param name="noiseSize">the max random noise that can be added to the radius</param>
 	/// <returns></returns>
 	public static List<Point> GetCircleAreaOfTilePos(Point pos, float radius)
 	{
@@ -599,6 +618,8 @@ public partial class TileUtils
 	/// -1: Kill tile.<br/>
 	/// -2: ClearEverything</param>
 	/// <param name="force"><see cref="TileChangeState"/></param>
+	/// <param name="radius">Radius of the circle in tiles before noise is applied.</param>
+	/// <param name="noiseSize">Maximum inward radius adjustment in tiles, scaled by the sampled Perlin noise.</param>
 	public static void PlaceCircleAreaOfBlockWithRandomNoise(Vector2 center, float radius, int type, float noiseSize = 3f, int force = 0)
 	{
 		int x0CoordPerlin = GenRand.Next(512);
@@ -625,6 +646,9 @@ public partial class TileUtils
 	/// -1: Kill tile.<br/>
 	/// -2: ClearEverything</param>
 	/// <param name="force"><see cref="TileChangeState"/></param>
+	/// <param name="center">Center of the circle in tile coordinates.</param>
+	/// <param name="radius">Radius of the circle in tiles before noise is applied.</param>
+	/// <param name="noiseSize">Maximum inward radius adjustment in tiles, scaled by the sampled Perlin noise.</param>
 	public static void PlaceCircleAreaOfBlockWithRandomNoise(Point center, float radius, int type, float noiseSize = 10f, int force = 0)
 	{
 		PlaceCircleAreaOfBlockWithRandomNoise(center.ToVector2(), radius, type, noiseSize, force);
@@ -979,6 +1003,7 @@ public partial class TileUtils
 	/// <param name="pos1">WORLD coord</param>
 	/// <param name="thick">WORLD coord</param>
 	/// <param name="force"><see cref="TileChangeState"/></param>
+	/// <param name="type">Tile type to place; -1 removes tiles and -2 clears all tile data.</param>
 	public static void PlaceLineBlock(Vector2 pos0, Vector2 pos1, float thick, int type, int force = 0)
 	{
 		Vector2 dir = pos0 - pos1;
@@ -1063,6 +1088,7 @@ public partial class TileUtils
 	/// <param name="pos1">TILE coord</param>
 	/// <param name="thick">WORLD coord</param>
 	/// <param name="force"><see cref="TileChangeState"/></param>
+	/// <param name="type">Wall type to place; -1 removes walls and -2 clears all tile data.</param>
 	public static void PlaceLineWall(Point pos0, Point pos1, float thick, int type, int force = 0)
 	{
 		PlaceLineWall(pos0.ToWorldCoordinates(), pos1.ToWorldCoordinates(), thick, type, force);
@@ -1075,6 +1101,7 @@ public partial class TileUtils
 	/// <param name="pos1">TILE coord</param>
 	/// <param name="thick">WORLD coord</param>
 	/// <param name="force"><see cref="TileChangeState"/></param>
+	/// <param name="type">Liquid type passed to ChangeLiquid; -1 removes tiles and -2 clears all tile data.</param>
 	public static void PlaceLineLiquid(Point pos0, Point pos1, float thick, int type, int force = 0)
 	{
 		PlaceLineLiquid(pos0.ToWorldCoordinates(), pos1.ToWorldCoordinates(), thick, type, force);
@@ -1364,6 +1391,7 @@ public partial class TileUtils
 	/// <param name="checkPoint"></param>
 	/// <param name="includeWall">If true, tile is empty but has wall will NOT count as empty.</param>
 	/// <param name="maxCount"></param>
+	/// <param name="ignoreTheseType">Optional tile types treated as traversable even when a tile or wall is present.</param>
 	/// <returns></returns>
 	public static List<Point> BFSContinueEmpty(Point checkPoint, bool includeWall = false, int maxCount = 512, List<int> ignoreTheseType = default)
 	{
@@ -1724,6 +1752,7 @@ public partial class TileUtils
 	/// </summary>
 	/// <param name="center">World coord</param>
 	/// <param name="type"></param>
+	/// <param name="maxCount">Search threshold for queued or visited tiles; liquid is placed only when fewer than this many tiles are found.</param>
 	public static void FillLiquid(Vector2 center, int type = 0, int maxCount = 900)
 	{
 		FillLiquid(center.ToTileCoordinates(), type, maxCount);
@@ -1745,6 +1774,7 @@ public partial class TileUtils
 	/// Fill water or other liquid below center.center : in tile coord.
 	/// </summary>
 	/// <param name="center">Tile coord</param>
+	/// <param name="maxCount">Search threshold; traversal stops after the queued or visited tile count exceeds this value.</param>
 	public static List<Point> BFSGetCanFillLiquidTiles(Vector2 center, int maxCount = 900)
 	{
 		return BFSGetCanFillLiquidTiles(center.ToTileCoordinates(), maxCount);
@@ -1754,6 +1784,7 @@ public partial class TileUtils
 	/// Fill water or other liquid below pos. pos : in tile coord.
 	/// </summary>
 	/// <param name="pos">Tile coord</param>
+	/// <param name="maxCount">Search threshold; traversal stops after the queued or visited tile count exceeds this value.</param>
 	public static List<Point> BFSGetCanFillLiquidTiles(Point pos, int maxCount = 900)
 	{
 		Queue<Point> queueChecked = new Queue<Point>();
@@ -1923,6 +1954,7 @@ public partial class TileUtils
 	/// </summary>
 	/// <param name="x"></param>
 	/// <param name="y"></param>
+	/// <param name="ignore_none_solid">Whether non-solid tiles are treated as empty space during the search.</param>
 	/// <returns></returns>
 	public static int CheckSpaceLeft(int x, int y, bool ignore_none_solid = false)
 	{
@@ -1950,6 +1982,7 @@ public partial class TileUtils
 	/// </summary>
 	/// <param name="x"></param>
 	/// <param name="y"></param>
+	/// <param name="ignore_none_solid">Whether non-solid tiles are treated as empty space during the search.</param>
 	/// <returns></returns>
 	public static int CheckSpaceRight(int x, int y, bool ignore_none_solid = false)
 	{
@@ -1977,6 +2010,7 @@ public partial class TileUtils
 	/// </summary>
 	/// <param name="x"></param>
 	/// <param name="y"></param>
+	/// <param name="ignore_none_solid">Whether non-solid tiles are treated as empty space during the search.</param>
 	/// <returns></returns>
 	public static int CheckSpaceUp(int x, int y, bool ignore_none_solid = false)
 	{
@@ -2004,6 +2038,7 @@ public partial class TileUtils
 	/// </summary>
 	/// <param name="x"></param>
 	/// <param name="y"></param>
+	/// <param name="ignore_none_solid">Whether non-solid tiles are treated as empty space during the search.</param>
 	/// <returns></returns>
 	public static int CheckSpaceDown(int x, int y, bool ignore_none_solid = false)
 	{
@@ -2183,8 +2218,6 @@ public partial class TileUtils
 	/// Get the tile positions in the given polygon area. World coord.
 	/// </summary>
 	/// <param name="polygon"></param>
-	/// <param name="type"></param>
-	/// <param name="force"></param>
 	/// <returns></returns>
 	public static List<Point> GetPolygonAreaOfTilePos(List<Vector2> polygon)
 	{
@@ -2215,8 +2248,6 @@ public partial class TileUtils
 	/// Get the tile positions in the given polygon area. Tile coord.
 	/// </summary>
 	/// <param name="polygon"></param>
-	/// <param name="type"></param>
-	/// <param name="force"></param>
 	/// <returns></returns>
 	public static List<Point> GetPolygonAreaOfTilePos(List<Point> polygon)
 	{
@@ -2231,7 +2262,8 @@ public partial class TileUtils
 	/// <summary>
 	/// Get the tile positions in the given rectangle area. World coord.
 	/// </summary>
-	/// <param name="polygon"></param>
+	/// <param name="worldPos">Top-left corner of the rectangle in world coordinates.</param>
+	/// <param name="size">Rectangle width and height in world units; the ending tile coordinates are included.</param>
 	/// <returns></returns>
 	public static List<Point> GetAABBAreaOfTile(Vector2 worldPos, Vector2 size)
 	{
@@ -2249,7 +2281,10 @@ public partial class TileUtils
 	/// <summary>
 	/// Get the tile positions in the given rectangle area. Tile coord.
 	/// </summary>
-	/// <param name="polygon"></param>
+	/// <param name="x">Tile X coordinate of one rectangle corner.</param>
+	/// <param name="y">Tile Y coordinate of one rectangle corner.</param>
+	/// <param name="w">Signed horizontal offset in tiles to the opposite corner; both endpoints are included.</param>
+	/// <param name="h">Signed vertical offset in tiles to the opposite corner; both endpoints are included.</param>
 	/// <returns></returns>
 	public static List<Point> GetAABBAreaOfTile(int x, int y, int w, int h)
 	{
@@ -2271,7 +2306,8 @@ public partial class TileUtils
 	/// <summary>
 	/// Get the tile positions in the given rectangle area. Tile coord.
 	/// </summary>
-	/// <param name="polygon"></param>
+	/// <param name="start">One rectangle corner in tile coordinates, included in the result.</param>
+	/// <param name="end">Opposite rectangle corner in tile coordinates, included in the result.</param>
 	/// <returns></returns>
 	public static List<Point> GetAABBAreaOfTile(Point start, Point end)
 	{
@@ -2565,6 +2601,7 @@ public partial class TileUtils
 	/// <param name="x"></param>
 	/// <param name="y"></param>
 	/// <param name="path"></param>
+	/// <param name="saveOldWall">Whether to restore previous walls where the placed prefab leaves no wall.</param>
 	public static void BuildMapIO(int x, int y, string path, bool saveOldWall = false)
 	{
 		var mapIO = new MapIO(x, y);

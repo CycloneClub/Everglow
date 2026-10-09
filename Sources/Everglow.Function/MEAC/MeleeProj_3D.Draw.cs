@@ -365,6 +365,8 @@ public abstract partial class MeleeProj_3D : ModProjectile, IWarpProjectile_warp
 	/// <param name="worldPos"></param>
 	/// <param name="index"></param>
 	/// <param name="factor"></param>
+	/// <param name="extraValue0">Fade multiplier for the background, normal, edge, and reflection colors; also controls reflection intensity.</param>
+	/// <param name="extraValue1">Additional value for custom color overrides; unused by the base implementation.</param>
 	/// <returns></returns>
 	public virtual Color GetTrailColor(int style, Vector2 worldPos, int index, ref float factor, float extraValue0 = 0, float extraValue1 = 0)
 	{

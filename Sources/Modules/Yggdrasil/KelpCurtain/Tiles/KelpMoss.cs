@@ -86,11 +86,10 @@ public class KelpMoss : ModTile, ITileFluentlyDrawn
 	/// <summary>
 	/// Vanilla function.
 	/// </summary>
-	/// <param name="tileDrawing"></param>
-	/// <param name="screenPosition"></param>
-	/// <param name="offSet"></param>
-	/// <param name="x"></param>
-	/// <param name="startY"></param>
+	/// <param name="tilePos">The top tile of the algae strand, used to scan segments and sample wind, paint, and lighting.</param>
+	/// <param name="drawCenterPos">The screen-space center of the top tile, used to anchor the strand.</param>
+	/// <param name="spriteBatch">The sprite batch used to draw each algae segment.</param>
+	/// <param name="tileDrawing">The tile renderer supplying painted textures, wind motion, and lighting adjustments.</param>
 	private void DrawAlgae(Point tilePos, Vector2 drawCenterPos, SpriteBatch spriteBatch, TileDrawing tileDrawing)
 	{
 		int maxCount = 40;

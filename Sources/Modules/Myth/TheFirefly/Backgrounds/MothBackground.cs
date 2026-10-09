@@ -266,6 +266,7 @@ public class MothBackground : ModSystem
 	/// </summary>
 	/// <param name="texSize"> </param>
 	/// <param name="MoveStep"> </param>
+	/// <param name="Correction">是否执行坐标校正分支；当前分支重复相同的计算，不改变返回矩形。</param>
 	/// <returns> </returns>
 	public Rectangle GetDrawRect(Vector2 texSize, float MoveStep, bool Correction)
 	{

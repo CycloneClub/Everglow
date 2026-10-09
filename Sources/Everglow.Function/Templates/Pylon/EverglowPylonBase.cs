@@ -98,7 +98,6 @@ public abstract class EverglowPylonBase<T> : ModPylon
 	/// <param name="crystalOffset"></param>
 	/// <param name="pylonShadowColor"></param>
 	/// <param name="dustColor"></param>
-	/// <param name="dustChanceDenominator"></param>
 	/// <param name="crystalVerticalFrameCount"></param>
 	/// <param name="animation"></param>
 	/// <param name="dustType"></param>

@@ -114,8 +114,8 @@ public class StringDrawer : IDrawable
 	/// <summary>
 	/// Set word wrap
 	/// </summary>
-	/// <param name="maxLineWidth"></param>
-	/// <param name="maxLineWidth"></param>
+	/// <param name="maxLineWidth">Maximum rendered width of each line before text wraps.</param>
+	/// <param name="maxLineCount">Optional line limit passed to item wrapping; null leaves the line count unrestricted.</param>
 	public void SetWordWrap(float maxLineWidth, int? maxLineCount = null)
 	{
 		if (drawerItems.Count == 0)
