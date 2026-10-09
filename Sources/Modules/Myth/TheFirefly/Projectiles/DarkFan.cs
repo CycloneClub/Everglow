@@ -33,7 +33,7 @@ internal class DarkFan : ModProjectile
 		Player player = Main.player[Projectile.owner];
 		Projectile.NewProjectile(Projectile.GetSource_FromAI(), target.Center, Vector2.Zero, ModContent.ProjectileType<FanHit>(), 0, 0, player.whoAmI, 10, Main.rand.NextFloat(6.283f));
 		int[] array = Projectile.localNPCImmunity;
-		bool flag = !Projectile.usesLocalNPCImmunity && !Projectile.usesIDStaticNPCImmunity || Projectile.usesLocalNPCImmunity && array[target.whoAmI] == 0 || Projectile.usesIDStaticNPCImmunity && Projectile.IsNPCIndexImmuneToProjectileType(Projectile.type, target.whoAmI);
+		bool flag = (!Projectile.usesLocalNPCImmunity && !Projectile.usesIDStaticNPCImmunity) || (Projectile.usesLocalNPCImmunity && array[target.whoAmI] == 0) || (Projectile.usesIDStaticNPCImmunity && Projectile.IsNPCIndexImmuneToProjectileType(Projectile.type, target.whoAmI));
 		if (target.active && !target.dontTakeDamage && flag && (target.aiStyle != 112 || target.ai[2] <= 1f))
 		{
 			if (target.active)

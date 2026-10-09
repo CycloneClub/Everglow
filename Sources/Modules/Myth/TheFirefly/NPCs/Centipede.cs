@@ -157,7 +157,7 @@ internal class CentipedeHead : FireWormHead
 				Tile tile = Main.tile[i, j];
 
 				// 如果物体是实心的或被认为是一个平台，那么就有有效的碰撞。
-				if (tile.HasUnactuatedTile && (Main.tileSolid[tile.TileType] || Main.tileSolidTop[tile.TileType] && tile.TileFrameY == 0))
+				if (tile.HasUnactuatedTile && (Main.tileSolid[tile.TileType] || (Main.tileSolidTop[tile.TileType] && tile.TileFrameY == 0)))
 				{
 					Vector2 tileWorld = new Point16(i, j).ToWorldCoordinates(0, 0);
 
@@ -353,7 +353,7 @@ internal class CentipedeHead : FireWormHead
 		dirX *= newSpeed;
 		dirY *= newSpeed;
 		// 蠕虫速度方向和目标方向有相同方向的
-		if (NPC.velocity.X > 0 && dirX > 0 || NPC.velocity.X < 0 && dirX < 0 || NPC.velocity.Y > 0 && dirY > 0 || NPC.velocity.Y < 0 && dirY < 0)
+		if ((NPC.velocity.X > 0 && dirX > 0) || (NPC.velocity.X < 0 && dirX < 0) || (NPC.velocity.Y > 0 && dirY > 0) || (NPC.velocity.Y < 0 && dirY < 0))
 		{
 			// 该NPC正在向目标地点移动
 			if (NPC.velocity.X < dirX)
@@ -375,7 +375,7 @@ internal class CentipedeHead : FireWormHead
 			}
 
 			// 预定的Y-速度很小，而且NPC正在向左移动，目标在NPC的右边，反之亦然。
-			if (Math.Abs(dirY) < speed * 0.2 && (NPC.velocity.X > 0 && dirX < 0 || NPC.velocity.X < 0 && dirX > 0))
+			if (Math.Abs(dirY) < speed * 0.2 && ((NPC.velocity.X > 0 && dirX < 0) || (NPC.velocity.X < 0 && dirX > 0)))
 			{
 				if (NPC.velocity.Y > 0)
 				{
@@ -387,7 +387,7 @@ internal class CentipedeHead : FireWormHead
 				}
 			}
 			// 预定的X-速度很小，而且NPC正在向上/向下移动，目标在NPC的下方/上方。
-			if (Math.Abs(dirX) < speed * 0.2 && (NPC.velocity.Y > 0 && dirY < 0 || NPC.velocity.Y < 0 && dirY > 0))
+			if (Math.Abs(dirX) < speed * 0.2 && ((NPC.velocity.Y > 0 && dirY < 0) || (NPC.velocity.Y < 0 && dirY > 0)))
 			{
 				if (NPC.velocity.X > 0)
 				{
@@ -475,7 +475,7 @@ internal class CentipedeHead : FireWormHead
 		}
 
 		// 如果NPC的速度发生变化，并且没有被玩家 "击中"，则强制进行网络更新。
-		if ((NPC.velocity.X > 0 && NPC.oldVelocity.X < 0 || NPC.velocity.X < 0 && NPC.oldVelocity.X > 0 || NPC.velocity.Y > 0 && NPC.oldVelocity.Y < 0 || NPC.velocity.Y < 0 && NPC.oldVelocity.Y > 0) && !NPC.justHit)
+		if (((NPC.velocity.X > 0 && NPC.oldVelocity.X < 0) || (NPC.velocity.X < 0 && NPC.oldVelocity.X > 0) || (NPC.velocity.Y > 0 && NPC.oldVelocity.Y < 0) || (NPC.velocity.Y < 0 && NPC.oldVelocity.Y > 0)) && !NPC.justHit)
 		{
 			NPC.netUpdate = true;
 		}

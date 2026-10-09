@@ -255,7 +255,7 @@ public class GlowingButterfly : ModProjectile
 					// The number depends on various parameters seen in the movement code below. Test different ones out until it works alright
 					bool closeThroughWall = between < 100f;
 
-					if ((closest && inRange || !foundTarget) && (lineOfSight || closeThroughWall))
+					if (((closest && inRange) || !foundTarget) && (lineOfSight || closeThroughWall))
 					{
 						distanceFromTarget = between;
 						targetCenter = npc.Center;

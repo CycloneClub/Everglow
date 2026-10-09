@@ -221,7 +221,7 @@ public class TwilightTree : ModTile, ITileFluentlyDrawn
 			Tile tile = Main.tile[i, breakingY];
 			Tile tileRight = Main.tile[i + 1, breakingY];
 			breakingY--;
-			if (tile.HasTile && tile.TileType == Type || breakingY == j)
+			if ((tile.HasTile && tile.TileType == Type) || breakingY == j)
 			{
 				WorldGen.KillTile(i, breakingY, false, true, false);
 				WorldGen.KillTile(i + 1, breakingY, false, true, false);
