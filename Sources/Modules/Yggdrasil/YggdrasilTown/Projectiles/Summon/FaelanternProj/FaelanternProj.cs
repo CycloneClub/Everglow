@@ -148,7 +148,8 @@ public class FaelanternProj : ModProjectile
 				int tileY = (int)Target.Center.Y / 16 - 3;
 
 				for (; tileY < Main.maxTilesY - 10 && (Findtile(tileX + 3 * direction, tileY + 4) || Findtile(tileX + 4 * direction, tileY + 4) || Findtile(tileX + 5 * direction, tileY + 4) || Findtile(tileX + 6 * direction, tileY + 4)); tileY++)
-				{ }
+				{
+				}
 
 				var pos = new Vector2(tileX * 16, tileY * 16 + 8);
 				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), pos, Vector2.Zero, ModContent.ProjectileType<Faelanternbranch>(), Projectile.damage, Projectile.knockBack, Projectile.owner, direction);

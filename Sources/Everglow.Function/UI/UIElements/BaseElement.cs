@@ -521,7 +521,13 @@ public class BaseElement : IDrawable
 	/// <param name="gt"></param>
 	public virtual void Update(GameTime gt)
 	{
-		ChildrenElements.ForEach(child => { if (child != null && child.IsVisible) { child.Update(gt); } });
+		ChildrenElements.ForEach(child =>
+		{
+			if (child != null && child.IsVisible)
+			{
+				child.Update(gt);
+			}
+		});
 
 		if (IsVisible)
 		{
@@ -615,7 +621,13 @@ public class BaseElement : IDrawable
 	/// <param name="sb">画笔</param>
 	protected virtual void DrawChildren(SpriteBatch sb)
 	{
-		ChildrenElements.ForEach(child => { if (child != null && child.IsVisible) { child.Draw(sb); } });
+		ChildrenElements.ForEach(child =>
+		{
+			if (child != null && child.IsVisible)
+			{
+				child.Draw(sb);
+			}
+		});
 	}
 
 	/// <summary>
