@@ -93,9 +93,6 @@ public class WaterBoltArray : ModProjectile, IWarpProjectile
 		DrawTexLine(Point6, Point4, c1, c1, Water);
 	}
 
-
-
-
 	public void DrawWarp(VFXBatch spriteBatch)
 	{
 		Player player = Main.player[Projectile.owner];

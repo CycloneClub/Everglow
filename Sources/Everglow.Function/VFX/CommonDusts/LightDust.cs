@@ -6,7 +6,6 @@ using SteelSeries.GameSense;
 
 namespace Everglow.Commons.VFX.CommonDusts;
 
-
 [Pipeline(typeof(WCSPipeline))]
 public class LightDust : Visual
 {

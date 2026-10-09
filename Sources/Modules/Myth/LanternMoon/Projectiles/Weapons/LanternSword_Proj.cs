@@ -275,7 +275,6 @@ public class LanternSword_Proj : MeleeProj_3D
 				effect0.Parameters["size1"].SetValue(Vector2.One);
 				effect0.CurrentTechnique.Passes[0].Apply();
 
-
 				if (bars_b.Count > 0)
 				{
 					Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_perlin.Value;

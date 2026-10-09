@@ -9,7 +9,6 @@ using Everglow.MEAC.PlanetBeFall.Projectiles.NonIIIDProj.PlanetBefallArray;
 using Everglow.MEAC.PlanetBeFall.Projectiles.NonIIIDProj.PlanetBefallExplosion;
 using Terraria.Graphics.Effects;
 
-
 namespace Everglow.MEAC.PlanetBeFall;
 
 internal class DrawIIID : ModSystem

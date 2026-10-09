@@ -133,7 +133,6 @@ public class FruitBomb : ModProjectile
 
 		Texture2D t = Commons.ModAsset.Trail.Value;
 
-
 		DrawTexCircle_VFXBatch(spriteBatch, MathF.Sqrt(value) * 11f * Projectile.ai[0], 12 * (1 - value) * Projectile.ai[0], new Color(colorV, colorV * 0.6f, colorV, 0f), Projectile.Center - Main.screenPosition, t, Math.PI * 0.5);
 	}
 }

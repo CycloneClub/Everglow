@@ -50,7 +50,6 @@ public class WaveLeafFlower4x7 : ModTile, ITileFluentlyDrawn
 		};
 		Tile tile = Main.tile[pos];
 
-
 		Vector2 move0 = GetInfoRotatedMoved(0.018f, SwayHitboxPos(1, -1), 1, 2, new Vector2(0, -16), drawInfo);
 		Vector2 move1 = GetInfoRotatedMoved(0.048f, SwayHitboxPos(1, -2), 1, 2, new Vector2(0, -62), drawInfo);
 		Vector2 move2 = GetInfoRotatedMoved(0.068f, SwayHitboxPos(1, -3), 1, 2, new Vector2(0, -52), drawInfo);

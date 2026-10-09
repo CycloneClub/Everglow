@@ -48,7 +48,6 @@ public class SquamousMoonBladePredict : ModProjectile
 		var toTarget = new Vector2(1, 0).RotatedBy(Projectile.rotation);
 		var timeValue = (float)Main.time * 0.04f;
 
-
 		Texture2D slashHit = Commons.ModAsset.StarSlashGray.Value;
 		Vector2 drawPos = EndPosition - Main.screenPosition;
 		var targetColor = new Color(0.0f, 0.65f, 0.4f, 0);

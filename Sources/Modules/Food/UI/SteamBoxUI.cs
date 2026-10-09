@@ -179,7 +179,6 @@ public class SteamBoxUI : PotUI
 		return new Tuple<int, int>(-1, -1);
 	}
 
-
 	public override void Remove()
 	{
 		ChineseCookingRangeEntity ChineseCookingRangeEntity;

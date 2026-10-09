@@ -28,7 +28,6 @@ public class GlowWoodCandle : ModTile
 		TileObjectData.newTile.CopyFrom(TileObjectData.StyleOnTable1x1);
 		TileObjectData.addTile(Type);
 
-
 		if (!Main.dedServ)
 		{
 			if (!Main.dedServ)

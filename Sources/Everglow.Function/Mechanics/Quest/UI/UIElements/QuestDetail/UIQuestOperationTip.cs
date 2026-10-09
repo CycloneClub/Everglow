@@ -1,7 +1,6 @@
 using Everglow.Commons.Mechanics.Quest.Presentation;
 using Everglow.Commons.UI.UIElements;
 
-
 namespace Everglow.Commons.Mechanics.Quest.UI.UIElements.QuestDetail;
 
 public class UIQuestOperationTip : UIQuestDetailMaskContentBase<UIQuestDetailTipContent>

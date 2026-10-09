@@ -41,7 +41,6 @@ public class HeatMapRenderPipeline_cursedFlame : PostPipeline
 
 		sb.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullNone);
 
-
 		gd.SetRenderTarget(heatMapScreen);
 		effect.Parameters["uTransform"].SetValue(Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1));
 		effect.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_curseFlame.Value);

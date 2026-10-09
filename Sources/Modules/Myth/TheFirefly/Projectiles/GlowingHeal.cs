@@ -1,7 +1,6 @@
 using Everglow.Myth.Common;
 using Terraria.Localization;
 
-
 namespace Everglow.Myth.TheFirefly.Projectiles;
 
 public class GlowingHeal : ModNPC
@@ -120,8 +119,6 @@ public class GlowingHeal : ModNPC
 		}
 
 		var triangleList = new List<Vertex2D>();
-
-
 
 		if (bars.Count > 2)
 		{

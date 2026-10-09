@@ -26,7 +26,6 @@ namespace Everglow.Commons.Skeleton2D.Reader;
 // public JAttachments Attachments;
 // }
 
-
 ///// <summary>
 ///// Json: Slots数据块描述的是渲染顺序以及2D图片的挂件挂载到哪些插孔清单
 ///// </summary>
@@ -225,7 +224,6 @@ namespace Everglow.Commons.Skeleton2D.Reader;
 // {
 // }
 
-
 // }
 public class Skeleton2DReader
 {
@@ -250,7 +248,6 @@ public class Skeleton2DReader
 
 		return ConvertTopublicSkeleton(skeleton, atlas);
 	}
-
 
 	private static Skeleton2D ConvertTopublicSkeleton(Skeleton skeleton, Atlas atlas)
 	{
@@ -284,7 +281,6 @@ public class Skeleton2DReader
 	// skeleton.Animations.Add(animation.Name, animation);
 	// }
 	// }
-
 
 	// private static List<Timeline> ParseBoneTimelines(Dictionary<string, JObject> bones,
 	// Dictionary<string, Bone2D> bonesDict)
@@ -376,7 +372,6 @@ public class Skeleton2DReader
 	// }
 	// return timelines;
 	// }
-
 
 	// private static List<Timeline> ParseSlotTimelines(Dictionary<string, JObject> slots,
 	// Dictionary<string, Slot> slotsDict,

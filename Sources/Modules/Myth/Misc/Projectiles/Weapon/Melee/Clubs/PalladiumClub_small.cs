@@ -297,7 +297,6 @@ public class PalladiumClub_small : ModProjectile, IWarpProjectile
 
 			float dir = d / MathHelper.TwoPi;
 
-
 			float dir1 = dir;
 			if (i > 0)
 			{

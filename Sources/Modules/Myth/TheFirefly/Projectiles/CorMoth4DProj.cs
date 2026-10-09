@@ -156,8 +156,6 @@ public class CorMoth4DProj : ModProjectile
 			vertex2Ds.Add(new Vertex2D(StartPos + Width, color1, new Vector3(Value0, 0, 0)));
 			vertex2Ds.Add(new Vertex2D(StartPos - Width, color1, new Vector3(Value0, 1, 0)));
 
-
-
 			vertex2Ds.Add(new Vertex2D(StartPos + Delta * D0 + Width, color1, new Vector3(0, 0, 0)));
 			vertex2Ds.Add(new Vertex2D(StartPos + Delta * D0 - Width, color1, new Vector3(0, 1, 0)));
 

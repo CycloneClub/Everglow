@@ -88,7 +88,6 @@ internal class DemonScythePlusCrack : ModProjectile
 			TrueL++;
 		}
 
-
 		DrawFlameTrail(TrueL, width, true, Color.White);
 
 		DrawFlameTrail(TrueL, width, false, c0);

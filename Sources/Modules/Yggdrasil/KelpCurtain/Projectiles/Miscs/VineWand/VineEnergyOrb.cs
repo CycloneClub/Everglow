@@ -158,7 +158,6 @@ public class VineEnergyOrb : ModProjectile
 		// 绘制能量球头部
 		DrawHead();
 
-
 		return false;
 	}
 

@@ -116,7 +116,6 @@ public class SplieSpineBullet : ModProjectile
 		t.GetData(Lig);
 		Color c0 = Lig[(int)(t.Width * t.Height / 2f - 1)];
 
-
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 		var bars = new List<Vertex2D>();

@@ -2,7 +2,6 @@ using ReLogic.Content;
 
 namespace Everglow.Myth.Acytaea;
 
-
 internal class NPPipeline : Pipeline
 {
 	public override void BeginRender()

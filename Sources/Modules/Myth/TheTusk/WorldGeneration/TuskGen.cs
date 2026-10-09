@@ -56,7 +56,6 @@ public class TuskGen : ModSystem
 				TuskS = 1f;
 			}
 
-
 			if (!SkyManager.Instance["TuskSky"].IsActive())
 			{
 				SkyManager.Instance.Activate("TuskSky");

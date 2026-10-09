@@ -62,7 +62,6 @@ internal class CrystalStormArray : ModProjectile
 
 		DrawMagicArray(Commons.ModAsset.Trail_5.Value, new Color(0, 120, 225, 0));
 
-
 		return false;
 	}
 	internal int timer = 0;
@@ -82,7 +81,6 @@ internal class CrystalStormArray : ModProjectile
 		var c2 = new Color(0, 0, 255, 0);
 		DrawTexSquire(timer * 2.88f, 11, c0, player.Center + ringPos - Main.screenPosition, Water, -Main.timeForVisualEffects / 300);
 		DrawTexSquire(timer * 3.1f, 24, c2, player.Center + ringPos - Main.screenPosition, Crystalline, -Main.timeForVisualEffects / 300);
-
 
 		DrawTexSquire(timer * 3.18f, 11, c0, player.Center + ringPos - Main.screenPosition, Water, -Main.timeForVisualEffects / 300 + MathHelper.PiOver4);
 		DrawTexSquire(timer * 3.3f, 24, c0, player.Center + ringPos - Main.screenPosition, Crystalline, -Main.timeForVisualEffects / 300 + MathHelper.PiOver4);
@@ -108,7 +106,6 @@ internal class CrystalStormArray : ModProjectile
 		Vector2 Point6_ = player.Center + ringPos - Main.screenPosition + new Vector2(0, timer * 1.4f).RotatedBy(Math.PI * 5 / 4d + timeRot + 0.2);
 		Vector2 Point7_ = player.Center + ringPos - Main.screenPosition + new Vector2(0, timer * 1.4f).RotatedBy(Math.PI * 6 / 4d + timeRot + 0.2);
 		Vector2 Point8_ = player.Center + ringPos - Main.screenPosition + new Vector2(0, timer * 1.4f).RotatedBy(Math.PI * 7 / 4d + timeRot + 0.2);
-
 
 		DrawTexLine(Point1_, Point3, c0, c0, CrystalLight, 0.1f);
 		DrawTexLine(Point2_, Point4, c0, c0, CrystalLight, 0.4f);
@@ -200,8 +197,6 @@ internal class CrystalStormArray : ModProjectile
 
 			vertex2Ds.Add(new Vertex2D(StartPos + Width, color1, new Vector3(Value0, 0, 0)));
 			vertex2Ds.Add(new Vertex2D(StartPos - Width, color1, new Vector3(Value0, 1, 0)));
-
-
 
 			vertex2Ds.Add(new Vertex2D(StartPos + Delta * D0 + Width, color1, new Vector3(0, 0, 0)));
 			vertex2Ds.Add(new Vertex2D(StartPos + Delta * D0 - Width, color1, new Vector3(0, 1, 0)));

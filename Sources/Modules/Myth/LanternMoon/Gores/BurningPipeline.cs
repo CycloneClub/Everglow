@@ -11,7 +11,6 @@ public class BurningPipeline : Pipeline
 	{
 		Ins.Batch.Begin();
 
-
 		// 设置参数
 		effect.Value.Parameters["uTransform"].SetValue(
 			Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) *

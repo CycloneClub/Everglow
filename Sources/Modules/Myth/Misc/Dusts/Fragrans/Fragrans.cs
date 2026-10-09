@@ -47,7 +47,6 @@ public class Fragrans : ModDust
 			}
 		}
 
-
 		if (dust.alpha > 245)
 		{
 			dust.active = false;

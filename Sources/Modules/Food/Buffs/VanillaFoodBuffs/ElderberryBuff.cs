@@ -26,9 +26,7 @@ public class ElderberryBuffDash : ModPlayer
 	public const int DashCooldown = 50;
 	public const int DashDuration = 35;
 
-
 	public const float DashVelocity = 8f;
-
 
 	public int DashDir = -1;
 

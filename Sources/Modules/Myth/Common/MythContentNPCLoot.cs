@@ -3,7 +3,6 @@ using Terraria.Localization;
 
 namespace Everglow.Myth.Common;
 
-
 public class MythContentNPCLoot : GlobalNPC
 {
 	// ModifyNPCLoot uses a unique system called the ItemDropDatabase, which has many different rules for many different drop use cases.

@@ -37,7 +37,6 @@ public class HaloPipeline : PostPipeline
 
 		sb.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullNone);
 
-
 		gd.SetRenderTarget(haloScreen);
 		effect.Parameters["uTransform"].SetValue(Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1));
 		effect.Parameters["uHaloSize"].SetValue(6);

@@ -177,7 +177,6 @@ public class ToothMagicBall : ModProjectile
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 
-
 		if (!player.controlUseItem)
 		{
 			if (energyValue < 0.3f)
