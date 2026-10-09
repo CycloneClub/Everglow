@@ -30,7 +30,8 @@ public class TsunamiShark : ModProjectile
 			var modifer = owner.GetTotalDamage(withammo.Item.DamageType);
 			modifer.CombineWith(owner.bulletDamage);
 			CombinedHooks.ModifyWeaponDamage(owner, withammo.Item, ref modifer);
-			overridedamage = Math.Max(1,
+			overridedamage = Math.Max(
+				1,
 				(int)modifer.ApplyTo(withammo.Item.damage + ContentSamples.ItemsByType[withammo.AmmoItemIdUsed].damage));
 		}
 		else
@@ -54,7 +55,8 @@ public class TsunamiShark : ModProjectile
 			Gsplayer.FlyCamPosition = new Vector2(0, 2).RotatedByRandom(6.283);
 			SoundEngine.PlaySound(new SoundStyle("Everglow/Ocean/Sounds/WaterGun").WithVolumeScale(0.8f), Projectile.Center);
 
-			Projectile p = Projectile.NewProjectileDirect(shootSource,
+			Projectile p = Projectile.NewProjectileDirect(
+				shootSource,
 				Projectile.Center + toMuzzle + random,
 				velocity,
 				ModContent.ProjectileType<TsunamiShark_bullet>(),
@@ -65,7 +67,8 @@ public class TsunamiShark : ModProjectile
 
 			float rot = velocity.ToRotation();
 			// TODO:子弹伤害校正，要求和被消耗的弹药种类挂钩
-			Projectile.NewProjectile(shootSource,
+			Projectile.NewProjectile(
+				shootSource,
 				Projectile.Center + toMuzzle * 1.5f + velocity * 2.2f + random,
 				Vector2.Zero,
 				ModContent.ProjectileType<TsunamiShark_flame>(),

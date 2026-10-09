@@ -214,7 +214,8 @@ namespace Everglow.Commons.UI.UIElements
 			_innerPanel.Calculation();
 
 			if (_verticalScrollbar != null)
-				_verticalScrollbar.WheelValueMult = MathHelper.Max(0f,
+				_verticalScrollbar.WheelValueMult = MathHelper.Max(
+					0f,
 					_innerPanel.Info.TotalSize.Y / (innerPanelMaxLocation.Y - innerPanelMinLocation.Y) * 5f);
 		}
 	}

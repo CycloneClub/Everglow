@@ -31,9 +31,11 @@ internal class TimerStringDrawer : TextDrawer
 			return;
 		}
 
-		QuestName = stringParameters.GetString("QuestName",
+		QuestName = stringParameters.GetString(
+			"QuestName",
 			stringDrawer.DefaultParameters.GetString("MSTQuestName", string.Empty));
-		TimerStyle = stringParameters.GetInt("TimerStyle",
+		TimerStyle = stringParameters.GetInt(
+			"TimerStyle",
 			stringDrawer.DefaultParameters.GetInt("MSTTimerStyle", 0));
 	}
 

@@ -55,15 +55,20 @@ public class ItemDrawer : DrawerItem
 	public override void Init(StringDrawer stringDrawer, string originalText, string name, StringParameters stringParameters)
 	{
 		base.Init(stringDrawer, originalText, name, stringParameters);
-		ItemType = stringParameters.GetInt("Type",
+		ItemType = stringParameters.GetInt(
+			"Type",
 			stringDrawer.DefaultParameters.GetInt("ItemType", 0));
-		ItemBlockSize = stringParameters.GetVector2("BlockSize",
+		ItemBlockSize = stringParameters.GetVector2(
+			"BlockSize",
 			stringDrawer.DefaultParameters.GetVector2("ItemBlockSize", new Vector2(26f)));
-		ItemStack = stringParameters.GetString("Stack",
+		ItemStack = stringParameters.GetString(
+			"Stack",
 			stringDrawer.DefaultParameters.GetString("ItemStack", string.Empty));
-		ItemStackColor = stringParameters.GetColor("StackColor",
+		ItemStackColor = stringParameters.GetColor(
+			"StackColor",
 			stringDrawer.DefaultParameters.GetColor("ItemStackColor", Color.White));
-		ItemStackFontSize = stringParameters.GetInt("StackFontSize",
+		ItemStackFontSize = stringParameters.GetInt(
+			"StackFontSize",
 			stringDrawer.DefaultParameters.GetInt("ItemStackFontSize", 16));
 	}
 

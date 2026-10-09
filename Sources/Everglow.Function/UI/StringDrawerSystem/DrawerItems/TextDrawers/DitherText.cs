@@ -23,9 +23,11 @@ namespace Everglow.Commons.UI.StringDrawerSystem.DrawerItems.TextDrawers
 				return;
 			}
 
-			Amplitude = stringParameters.GetVector2("Amplitude",
+			Amplitude = stringParameters.GetVector2(
+				"Amplitude",
 				stringDrawer.DefaultParameters.GetVector2("Amplitude"));
-			SymExtraSize = stringParameters.GetVector2("SymExtraSize",
+			SymExtraSize = stringParameters.GetVector2(
+				"SymExtraSize",
 				stringDrawer.DefaultParameters.GetVector2("SymExtraSize"));
 		}
 

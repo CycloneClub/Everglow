@@ -51,7 +51,8 @@ public class VFXBatch : IDisposable
 			Buffer<VFX2D>.Textures.Add(tex);
 		}
 		needFlush[0] = true;
-		Buffer<VFX2D>.AddVertex(new VFX2D[]
+		Buffer<VFX2D>.AddVertex(
+			new VFX2D[]
 		{
 			new VFX2D(position, color, new Vector2(0, 0)),
 			new VFX2D(position + new Vector2(tex.Width, 0), color, new Vector2(1, 0)),
@@ -76,7 +77,8 @@ public class VFXBatch : IDisposable
 		float y = sourceRect.Y / (float)tex.Height;
 		float width = sourceRect.Width / (float)tex.Width;
 		float height = sourceRect.Height / (float)tex.Height;
-		Buffer<VFX2D>.AddVertex(new VFX2D[]
+		Buffer<VFX2D>.AddVertex(
+			new VFX2D[]
 		{
 			new VFX2D(position, color, new Vector2(x, y)),
 			new VFX2D(position + new Vector2(sourceRect.Width, 0), color, new Vector2(x + width, y)),
@@ -125,7 +127,8 @@ public class VFXBatch : IDisposable
 			(topLeft, bottomLeft) = (bottomLeft, topLeft);
 			(topRight, bottomRight) = (bottomRight, topRight);
 		}
-		Buffer<VFX2D>.AddVertex(new VFX2D[]
+		Buffer<VFX2D>.AddVertex(
+			new VFX2D[]
 		{
 			new VFX2D(Vector2.Transform(topLeftPosition, matrix), color, topLeft),
 			new VFX2D(Vector2.Transform(topLeftPosition + new Vector2(sourceRect.Width, 0), matrix), color, topRight),
@@ -150,7 +153,8 @@ public class VFXBatch : IDisposable
 		float width = sourceRect.Width / (float)tex.Width;
 		float height = sourceRect.Height / (float)tex.Height;
 
-		Buffer<VFX2D>.AddVertex(new VFX2D[]
+		Buffer<VFX2D>.AddVertex(
+			new VFX2D[]
 		{
 			new VFX2D(Vector2.Transform(position, matrix), color, new Vector2(x, y)),
 			new VFX2D(Vector2.Transform(position + new Vector2(sourceRect.Width, 0), matrix), color, new Vector2(x + width, y)),
@@ -169,7 +173,8 @@ public class VFXBatch : IDisposable
 			Buffer<VFX2D>.Textures.Add(tex);
 		}
 		needFlush[0] = true;
-		Buffer<VFX2D>.AddVertex(new VFX2D[]
+		Buffer<VFX2D>.AddVertex(
+			new VFX2D[]
 		{
 			new VFX2D(new Vector2(destinationRectangle.X, destinationRectangle.Y), color, Vector2.Zero),
 			new VFX2D(new Vector2(destinationRectangle.X + destinationRectangle.Width, destinationRectangle.Y), color, Vector2.UnitX),
@@ -193,7 +198,8 @@ public class VFXBatch : IDisposable
 		float y = sourceRect.Y / (float)tex.Height;
 		float width = sourceRect.Width / (float)tex.Width;
 		float height = sourceRect.Height / (float)tex.Height;
-		Buffer<VFX2D>.AddVertex(new VFX2D[]
+		Buffer<VFX2D>.AddVertex(
+			new VFX2D[]
 		{
 			new VFX2D(new Vector2(destinationRectangle.X, destinationRectangle.Y), color, new Vector2(x, y)),
 			new VFX2D(new Vector2(destinationRectangle.X + destinationRectangle.Width, destinationRectangle.Y), color, new Vector2(x + width, y)),
@@ -238,7 +244,8 @@ public class VFXBatch : IDisposable
 			(topLeft, bottomLeft) = (bottomLeft, topLeft);
 			(topRight, bottomRight) = (bottomRight, topRight);
 		}
-		Buffer<VFX2D>.AddVertex(new VFX2D[]
+		Buffer<VFX2D>.AddVertex(
+			new VFX2D[]
 		{
 			new VFX2D(Vector2.Transform(topLeftPosition, matrix), color, topLeft),
 			new VFX2D(Vector2.Transform(topLeftPosition + new Vector2(sourceRect.Width, 0), matrix), color, topRight),

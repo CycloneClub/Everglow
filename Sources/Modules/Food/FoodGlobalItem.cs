@@ -803,10 +803,11 @@ public class FoodGlobalItem : GlobalItem
 			var FoodInfo = m_vanillaFoodInfos[item.type];
 			if (!foodPlayer.CanEat(FoodInfo) && foodPlayer.CanText())
 			{
-				CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height),
-				new Color(255, 0, 0),
-				Language.GetTextValue("Mods.Everglow.Common.FoodSystem.CannotEat"),
-				true, false);
+				CombatText.NewText(
+					new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height),
+					new Color(255, 0, 0),
+					Language.GetTextValue("Mods.Everglow.Common.FoodSystem.CannotEat"),
+					true, false);
 
 				foodPlayer.TextTimer = FoodUtils.GetFrames(0, 0, 2, 30);
 				return false;
@@ -818,10 +819,11 @@ public class FoodGlobalItem : GlobalItem
 			var FoodInfo = foodItem.FoodInfo;
 			if (!foodPlayer.CanEat(FoodInfo) && foodPlayer.CanText())
 			{
-				CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height),
-				new Color(255, 0, 0),
-				Language.GetTextValue("Mods.Everglow.Common.FoodSystem.CannotEat"),
-				true, false);
+				CombatText.NewText(
+					new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height),
+					new Color(255, 0, 0),
+					Language.GetTextValue("Mods.Everglow.Common.FoodSystem.CannotEat"),
+					true, false);
 
 				foodPlayer.TextTimer = FoodUtils.GetFrames(0, 0, 2, 30);
 				return false;

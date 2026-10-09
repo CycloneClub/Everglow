@@ -58,12 +58,14 @@ internal class WaterDustRenderer
 		m_dustTargetSwap = new RenderTarget2D[2];
 		Ins.MainThread.AddTask(() =>
 		{
-			m_dustTargetSwap[0] = new RenderTarget2D(Main.graphics.GraphicsDevice,
+			m_dustTargetSwap[0] = new RenderTarget2D(
+				Main.graphics.GraphicsDevice,
 				Main.screenWidth,
 				Main.screenHeight,
 				false, SurfaceFormat.Color,
 				DepthFormat.None);
-			m_dustTargetSwap[1] = new RenderTarget2D(Main.graphics.GraphicsDevice,
+			m_dustTargetSwap[1] = new RenderTarget2D(
+				Main.graphics.GraphicsDevice,
 				Main.screenWidth,
 				Main.screenHeight,
 				false, SurfaceFormat.Color,
@@ -191,7 +193,8 @@ internal class WaterDustRenderer
 		m_dustDrawEffect.Value.Parameters["uResolution"].SetValue(new Vector2(Main.screenWidth, Main.screenHeight));
 		m_dustDrawEffect.Value.Parameters["uResolutionInv"].SetValue(new Vector2(1f / Main.screenWidth, 1f / Main.screenHeight));
 		dustDraw.Apply();
-		spriteBatch.Draw(CurrentDustTarget,
+		spriteBatch.Draw(
+			CurrentDustTarget,
 			new Rectangle(0, 0, CurrentDustTarget.Width, CurrentDustTarget.Height), Color.White);
 		spriteBatch.End();
 	}
@@ -208,7 +211,8 @@ internal class WaterDustRenderer
 	{
 		m_dustTargetSwap[0] = new RenderTarget2D(Main.graphics.GraphicsDevice, Main.screenWidth,
 			Main.screenHeight, false, SurfaceFormat.Color, DepthFormat.None);
-		m_dustTargetSwap[1] = new RenderTarget2D(Main.graphics.GraphicsDevice,
+		m_dustTargetSwap[1] = new RenderTarget2D(
+			Main.graphics.GraphicsDevice,
 			Main.screenWidth, Main.screenHeight, false, SurfaceFormat.Color, DepthFormat.None);
 	}
 

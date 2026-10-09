@@ -174,7 +174,8 @@ public class StonePost : ModProjectile, IWarpProjectile
 			// DrawDoubleLine(DrawCen + RotByPro(new Vector2(k0 * 75, -k0 * 20)) * WaveRange, DrawCen + RotByPro(new Vector2(k0 * 150, 0)) * WaveRange, new Color(1f * k2, 0.7f * k2, 0f, 0f), new Color(1f * k3, 0.6f * k3, 0f, 0f));
 			// DrawDoubleLine(DrawCen + RotByPro(new Vector2(0, -k0 * 40)) * WaveRange, DrawCen + RotByPro(new Vector2(-k0 * 75, -k0 * 20)) * WaveRange, new Color(1f * k3, 0.6f * k3, 0f, 0f), new Color(1f * k2, 0.7f * k2, 0f, 0f));
 			// DrawDoubleLine(DrawCen + RotByPro(new Vector2(-k0 * 75, -k0 * 20)) * WaveRange, DrawCen + RotByPro(new Vector2(-k0 * 150, 0)) * WaveRange, new Color(1f * k2, 0.7f * k2, 0f, 0f), new Color(1f * k3, 0.6f * k3, 0f, 0f));
-			DrawFoldLine(null,
+			DrawFoldLine(
+				null,
 				DrawCen,
 				DrawCen + RotByPro(new Vector2(k0 * 150, 0)) * WaveRange,
 				DrawCen + RotByPro(new Vector2(0, -k0 * 40)) * WaveRange,
@@ -250,7 +251,8 @@ public class StonePost : ModProjectile, IWarpProjectile
 				// DrawDoubleLine(DrawCen + RotByPro(new Vector2(k0 * 75, k0 * 25)) * WaveRange, DrawCen + RotByPro(new Vector2(k0 * 150, 0)) * WaveRange, new Color(1f * k2, 0.7f * k2, 0f, 0f), new Color(1f * k3, 0.6f * k3, 0f, 0f));
 				// DrawDoubleLine(DrawCen + RotByPro(new Vector2(0, k0 * 50)) * WaveRange, DrawCen + RotByPro(new Vector2(-k0 * 75, k0 * 25)) * WaveRange, new Color(1f * k3, 0.6f * k3, 0f, 0f), new Color(1f * k2, 0.7f * k2, 0f, 0f));
 				// DrawDoubleLine(DrawCen + RotByPro(new Vector2(-k0 * 75, k0 * 25)) * WaveRange, DrawCen + RotByPro(new Vector2(-k0 * 150, 0)) * WaveRange, new Color(1f * k2, 0.7f * k2, 0f, 0f), new Color(1f * k3, 0.6f * k3, 0f, 0f));
-				DrawFoldLine(null,
+				DrawFoldLine(
+					null,
 					DrawCen,
 					DrawCen + RotByPro(new Vector2(k0 * 150, 0)) * WaveRange,
 					DrawCen + RotByPro(new Vector2(0, k0 * 50)) * WaveRange,
@@ -339,7 +341,8 @@ public class StonePost : ModProjectile, IWarpProjectile
 			// DrawDoubleLine(spriteBatch, DrawCen + RotByPro(new Vector2(k0 * 75, -k0 * 20)) * WaveRange, DrawCen + RotByPro(new Vector2(k0 * 150, 0)) * WaveRange, new Color(1f * k2, 0.7f * k2, 0f, 0f), new Color(1f * k3, 0.6f * k3, 0f, 0f));
 			// DrawDoubleLine(spriteBatch, DrawCen + RotByPro(new Vector2(0, -k0 * 40)) * WaveRange, DrawCen + RotByPro(new Vector2(-k0 * 75, -k0 * 20)) * WaveRange, new Color(1f * k3, 0.6f * k3, 0f, 0f), new Color(1f * k2, 0.7f * k2, 0f, 0f));
 			// DrawDoubleLine(spriteBatch, DrawCen + RotByPro(new Vector2(-k0 * 75, -k0 * 20)) * WaveRange, DrawCen + RotByPro(new Vector2(-k0 * 150, 0)) * WaveRange, new Color(1f * k2, 0.7f * k2, 0f, 0f), new Color(1f * k3, 0.6f * k3, 0f, 0f));
-			DrawFoldLine(spriteBatch,
+			DrawFoldLine(
+				spriteBatch,
 				DrawCen,
 				DrawCen + RotByPro(new Vector2(k0 * 150, 0)) * WaveRange,
 				DrawCen + RotByPro(new Vector2(0, -k0 * 40)) * WaveRange,
@@ -356,7 +359,8 @@ public class StonePost : ModProjectile, IWarpProjectile
 			// DrawDoubleLine(spriteBatch, DrawCen + RotByPro(new Vector2(k0 * 75, k0 * 25)) * WaveRange, DrawCen + RotByPro(new Vector2(k0 * 150, 0)) * WaveRange, new Color(1f * k2, 0.7f * k2, 0f, 0f), new Color(1f * k3, 0.6f * k3, 0f, 0f));
 			// DrawDoubleLine(spriteBatch, DrawCen + RotByPro(new Vector2(0, k0 * 50)) * WaveRange, DrawCen + RotByPro(new Vector2(-k0 * 75, k0 * 25)) * WaveRange, new Color(1f * k3, 0.6f * k3, 0f, 0f), new Color(1f * k2, 0.7f * k2, 0f, 0f));
 			// DrawDoubleLine(spriteBatch, DrawCen + RotByPro(new Vector2(-k0 * 75, k0 * 25)) * WaveRange, DrawCen + RotByPro(new Vector2(-k0 * 150, 0)) * WaveRange, new Color(1f * k2, 0.7f * k2, 0f, 0f), new Color(1f * k3, 0.6f * k3, 0f, 0f));
-			DrawFoldLine(spriteBatch,
+			DrawFoldLine(
+				spriteBatch,
 				DrawCen,
 				DrawCen + RotByPro(new Vector2(k0 * 150, 0)) * WaveRange,
 				DrawCen + RotByPro(new Vector2(0, k0 * 50)) * WaveRange,
