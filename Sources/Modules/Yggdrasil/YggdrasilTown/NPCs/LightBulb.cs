@@ -50,7 +50,7 @@ public class LightBulb : ModNPC
 					NPC.frame.Y = (int)(NPC.frameCounter / 8 % 4 + 8) * frameHeight;
 					break;
 				}
-			case (int)NPCState.charge:
+			case (int)NPCState.Charge:
 				{
 					NPC.frame.Y = (int)(NPC.frameCounter / 6 % 12) * frameHeight;
 					break;
@@ -89,7 +89,7 @@ public class LightBulb : ModNPC
 	private enum NPCState
 	{
 		Sleep,
-		charge,
+		Charge,
 		Attack,
 		Cooldown,
 	}
@@ -110,13 +110,13 @@ public class LightBulb : ModNPC
 					NPC.ai[0] = 0;
 					if (NPC.HasValidTarget && Main.player[NPC.target].Distance(NPC.Center) <= 750)
 					{
-						state = (int)NPCState.charge;
+						state = (int)NPCState.Charge;
 						NPC.ai[0] = 0;
 						NPC.frameCounter = 0;
 					}
 					break;
 				}
-			case (int)NPCState.charge:
+			case (int)NPCState.Charge:
 				{
 					NPC.frameCounter++;
 					NPC.ai[0]++;

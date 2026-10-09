@@ -48,7 +48,7 @@ public class BloodLightCrystalEntity : ModTileEntity
 		return Place(i, j);
 	}
 
-	public void startDissolve()
+	public void StartDissolve()
 	{
 		if (dissolveProgress == 0)
 		{
@@ -57,7 +57,7 @@ public class BloodLightCrystalEntity : ModTileEntity
 		}
 	}
 
-	public float getDissolveProgress()
+	public float GetDissolveProgress()
 	{
 		return dissolveProgress;
 	}
