@@ -2,7 +2,6 @@ using Terraria.GameContent.Shaders;
 
 namespace Everglow.MEAC.Projectiles;
 
-
 public class VortexVanquisher2 : ModProjectile
 {
 	public override string Texture => "Everglow/MEAC/Projectiles/VortexVanquisher";

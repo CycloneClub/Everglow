@@ -127,7 +127,6 @@ public class GiantBoneFeather : ModProjectile
 		var c0 = color;
 		var bars = new List<Vertex2D>();
 
-
 		int trueL = 0;
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{

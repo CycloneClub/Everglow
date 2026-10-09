@@ -66,7 +66,6 @@ public class FogPass
 	private RenderTarget2D m_renderTargetSwap;
 	private RenderTarget2D m_filteredScreenTarget;
 
-
 	private Color[] m_lightMap;
 	private RenderTarget2D m_lightTexture;
 	private RenderTarget2D m_prevLightTexture;
@@ -93,7 +92,6 @@ public class FogPass
 	private int m_totalSwitchCounter = 0;
 	private bool m_useGaussian = true;
 	private FogState m_beginState, m_currentState, m_targetState;
-
 
 	/// <summary>
 	/// 光晕效果的模糊卷积核半径，该值为2^k
@@ -573,7 +571,6 @@ public class FogPass
 		spriteBatch.Draw(target, Vector2.Zero,
 			Color.White);
 		spriteBatch.End();
-
 
 		graphicsDevice.SetRenderTarget(target);
 		graphicsDevice.Clear(Color.Transparent);

@@ -28,7 +28,6 @@ public class CreamChocolateCupStaff_proj : ModProjectile
 		Player player = Main.player[Projectile.owner];
 		player.heldProj = Projectile.whoAmI;
 
-
 		Vector2 mouseToPlayer = Main.MouseWorld - player.MountedCenter;
 		mouseToPlayer = Vector2.Normalize(mouseToPlayer);
 		if (player.controlUseItem)
@@ -229,8 +228,6 @@ public class CreamChocolateCupStaff_proj_held : ModProjectile
 		Player player = Main.player[Projectile.owner];
 		player.heldProj = Projectile.whoAmI;
 		Vector2 v0 = Projectile.Center - player.MountedCenter;
-
-
 
 		if (player.controlUseTile)
 		{

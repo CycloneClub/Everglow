@@ -86,7 +86,6 @@ public class MeatLantern_Proj : MeleeProj
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, vertex2Ds.ToArray(), 0, vertex2Ds.Count - 2);
 	}
 
-
 	public override void Attack()
 	{
 		Player player = Main.player[Projectile.owner];

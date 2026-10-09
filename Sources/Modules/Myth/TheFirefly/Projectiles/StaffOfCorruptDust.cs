@@ -63,7 +63,6 @@ internal class StaffOfCorruptDust : ModProjectile
 	{
 		Player player = Main.player[Projectile.owner];
 
-
 		player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (float)(Projectile.rotation - Math.PI / 2d));
 		Texture2D t = ModAsset.StaffOfCorruptDust.Value;
 		Color color = Lighting.GetColor((int)Projectile.Center.X / 16, (int)(Projectile.Center.Y / 16.0));

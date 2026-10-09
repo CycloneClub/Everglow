@@ -50,7 +50,6 @@ public class TsunamiShark : ModProjectile
 			Gsplayer.FlyCamPosition = new Vector2(0, 2).RotatedByRandom(6.283);
 			SoundEngine.PlaySound(new SoundStyle("Everglow/Ocean/Sounds/WaterGun").WithVolumeScale(0.8f), Projectile.Center);
 
-
 			Projectile p = Projectile.NewProjectileDirect(shootSource,
 				Projectile.Center + toMuzzle + random,
 				velocity,
@@ -186,7 +185,6 @@ public class TsunamiShark : ModProjectile
 		var offset = new Vector2(0, -5);
 		Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition + offset - random, null, lightColor, Projectile.rotation - (float)(Math.PI * 0.25), origin, 1f, se, 0);
 		Main.spriteBatch.Draw(texMainGlow, Projectile.Center - Main.screenPosition + offset - random, null, new Color(1f, 1f, 1f, 0), Projectile.rotation - (float)(Math.PI * 0.25), origin, 1f, se, 0);
-
 
 		Texture2D texMark = ModAsset.TsunamiShark_mark.Value;
 		var tsunamiS = player.HeldItem.ModItem as Items.Weapons.TsunamiShark;

@@ -790,8 +790,6 @@ public class FoodGlobalItem : GlobalItem
 		}
 	}
 
-
-
 	public override bool CanUseItem(Item item, Player player)
 	{
 		var foodPlayer = player.GetModPlayer<FoodModPlayer>();

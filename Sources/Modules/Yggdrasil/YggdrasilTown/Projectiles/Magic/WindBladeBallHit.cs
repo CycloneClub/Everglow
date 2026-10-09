@@ -154,7 +154,6 @@ public class WindBladeBallHit : ModProjectile
 
 		Texture2D t = Commons.ModAsset.Trail_6.Value;
 
-
 		DrawTexCircle_VFXBatch(spriteBatch, MathF.Sqrt(value) * 12f * Projectile.ai[0], 12 * (1 - value) * Projectile.ai[0], new Color(colorV, colorV * 0.1f, colorV, 0f), Projectile.Center - Main.screenPosition, t, Math.PI * 0.5);
 	}
 	public override void OnHitPlayer(Player target, Player.HurtInfo info)

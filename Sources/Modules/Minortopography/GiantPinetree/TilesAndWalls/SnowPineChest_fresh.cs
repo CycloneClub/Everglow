@@ -6,7 +6,6 @@ using Terraria.ObjectData;
 using Everglow.Commons.Utilities;
 namespace Everglow.Minortopography.GiantPinetree.TilesAndWalls;
 
-
 public class SnowPineChest_fresh : ModTile
 {
 	public override void SetStaticDefaults()

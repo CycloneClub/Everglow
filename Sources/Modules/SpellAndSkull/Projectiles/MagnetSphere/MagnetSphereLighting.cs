@@ -186,7 +186,6 @@ public class MagnetSphereLighting : ModProjectile, IWarpProjectile
 			BasePos[a] = a / (float)LengthII * Projectile.Center + (LengthII - a) / (float)LengthII * AimC + LightPos[a];
 		}
 
-
 		for (int a = 0; a < LengthII; a++)
 		{
 			if (BasePos[a] != Vector2.Zero)

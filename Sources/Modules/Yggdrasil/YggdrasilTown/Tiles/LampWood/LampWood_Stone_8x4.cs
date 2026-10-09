@@ -13,7 +13,6 @@ public class LampWood_Stone_8x4 : ShapeDataTile
 		Main.tileLavaDeath[Type] = false;
 		Main.tileWaterDeath[Type] = false;
 
-
 		DustType = ModContent.DustType<TwilightStone_Dust>();
 		AddMapEntry(new Color(39, 50, 52));
 	}

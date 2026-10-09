@@ -2,7 +2,6 @@ using Everglow.Myth.TheFirefly.Items.Accessories;
 
 namespace Everglow.Myth.TheFirefly.Projectiles;
 
-
 public class ButterflyDreamFriendly : ModProjectile
 {
 	public Player owner;

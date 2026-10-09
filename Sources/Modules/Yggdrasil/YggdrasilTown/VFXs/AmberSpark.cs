@@ -40,7 +40,6 @@ public class AmberSparkDust : Visual
 	public float Scale;
 	public float Rotation;
 
-
 	public override void Update()
 	{
 		Position += Velocity;

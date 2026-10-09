@@ -39,7 +39,6 @@ public abstract class FoodIngredientItem : ModItem
 		}
 	}
 
-
 	public static bool IsIngredient(int itemType)
 	{
 		if (FoodUtils.VanillaFood.Contains(itemType))

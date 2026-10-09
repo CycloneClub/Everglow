@@ -77,7 +77,6 @@ public class StonePost : ModProjectile, IWarpProjectile
 	// vertex2Ds.Add(new Vertex2D(StartPos - Width + new Vector2(x / 3f).RotatedBy(x), color1, new Vector3(0, 0, 0)));
 	// }
 
-
 	// Main.graphics.GraphicsDevice.Textures[0] = TextureAssets.MagicPixel.Value;
 	// Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, vertex2Ds.ToArray(), 0, vertex2Ds.Count / 3);
 	// }
@@ -179,12 +178,9 @@ public class StonePost : ModProjectile, IWarpProjectile
 				new Color(1f * k3, 0.6f * k3, 0f, 0f));
 		}
 
-
-
 		if (Projectile.timeLeft >= 10)
 		{
 			Main.spriteBatch.Draw(BackG, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, new Vector2(BackG.Width / 2f, BackG.Height), 1, SpriteEffects.None, 0);
-
 
 			{
 				Main.spriteBatch.End();
@@ -238,7 +234,6 @@ public class StonePost : ModProjectile, IWarpProjectile
 			Main.spriteBatch.Draw(Front, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, new Vector2(BackG.Width / 2f, BackG.Height), 1, SpriteEffects.None, 0);
 
 			Main.spriteBatch.Draw(Root, Projectile.Center - Main.screenPosition + RotByPro(new Vector2(0, 0)), null, lightColor, Projectile.rotation, Root.Size() / 2f, 1, SpriteEffects.None, 0);
-
 
 			Main.spriteBatch.End();
 			Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
@@ -330,7 +325,6 @@ public class StonePost : ModProjectile, IWarpProjectile
 		float Gdir = Main.player[Projectile.owner].gravDir;
 
 		Vector2 DrawCen = Projectile.Center - Main.screenPosition;
-
 
 		if (k0 < 1)
 		{

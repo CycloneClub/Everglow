@@ -45,7 +45,6 @@ public class FaelanternProj : ModProjectile
 		return false;
 	}
 
-
 	public CoroutineManager _coroutineManager = new CoroutineManager();
 	public Skeleton2D FaelanternSkeleton;
 	public SkeletonRenderer skeletonRenderer = new SkeletonRenderer();
@@ -109,7 +108,6 @@ public class FaelanternProj : ModProjectile
 				};
 				Ins.VFXManager.Add(somg);
 			}
-
 
 			FaelanternSkeleton.AnimationState.Update(1 / 60f);
 			yield return new SkipThisFrame();
@@ -176,7 +174,6 @@ public class FaelanternProj : ModProjectile
 			}
 			yield return new SkipThisFrame();
 		}
-
 
 		_coroutineManager.StartCoroutine(new Coroutine(NextAttack()));
 	}

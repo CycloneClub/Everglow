@@ -3,7 +3,6 @@ using Terraria.UI;
 
 namespace Everglow.Food.Tiles;
 
-
 public class StoveSystem : ModSystem
 {
 	public StoveUIManager StoveSystemUI;

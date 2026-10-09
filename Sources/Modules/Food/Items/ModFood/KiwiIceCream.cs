@@ -43,7 +43,6 @@ public class KiwiIceCream : FoodBase
 		Item.rare = ItemRarityID.Blue;
 	}
 
-
 	public override bool ConsumeItem(Player player)
 	{
 		return true;

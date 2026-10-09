@@ -10,7 +10,6 @@ public class BlackPanDust3 : ModDust
 	{
 		dust.scale *= 0.99f;
 
-
 		float mulVelocity = 1500f;
 		Vector2 nextVelocity = Main.player[dust.color.G].Center - dust.position;
 		if (nextVelocity.Length() >= Math.Sqrt(mulVelocity))

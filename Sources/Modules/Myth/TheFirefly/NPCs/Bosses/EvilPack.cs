@@ -99,7 +99,6 @@ public class EvilPack : ModNPC
 						}
 					}
 
-
 					NPC.ai[2] += 1;
 				}
 			}
@@ -220,7 +219,6 @@ public class EvilPack : ModNPC
 			C = 0.8f + C * 0.2f;
 			var color = new Color(C, C, C, 0);
 			var drawOrigin = new Vector2(glowTex.Width / 2f / Main.npcFrameCount[NPC.type], 0);
-
 
 			Main.spriteBatch.Draw(glowTex, NPC.position + drawOffset - Main.screenPosition, new Rectangle?(NPC.frame), color, NPC.rotation, drawOrigin, 1f, effects, 0f);
 		}

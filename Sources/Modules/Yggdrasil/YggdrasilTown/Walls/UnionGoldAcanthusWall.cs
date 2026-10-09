@@ -52,8 +52,6 @@ public class UnionGoldAcanthusWall : ModWall
 
 					Color drawColorShine = new Color(color4.X, color4.Y, color4.Z, color4.W);
 
-
-
 					frame = new Rectangle(264 + (i % 16) * 16 + x * 8 - 2, 178 + (j % 16) * 16 + y * 8 - 2, 8, 8);
 
 					spriteBatch.Draw(texture, drawPos + offset - new Vector2(8), frame, drawColorShine, 0, Vector2.zeroVector, 1, SpriteEffects.None, 0);

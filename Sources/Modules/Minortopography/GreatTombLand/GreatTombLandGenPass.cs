@@ -5,7 +5,6 @@ using Terraria.WorldBuilding;
 
 namespace Everglow.Minortopography.GreatTombLand;
 
-
 /* Fork：Minortopography/GenPass
      * 
      * Everglow Dev Team
@@ -25,7 +24,6 @@ public class GreatTombLand : ModSystem
 		public GreatTombLandGenPass() : base("GreatTombLand", 500)
 		{
 		}
-
 
 		// 将东西写入WordGen里面并生效
 		public override void ApplyPass(GenerationProgress progress, GameConfiguration configuration)
@@ -130,7 +128,6 @@ public class GreatTombLand : ModSystem
 	{
 		// 目标取点
 		var AimPoint = new List<Point16>();
-
 
 		int Jmin = Main.maxTilesY - 300;
 		for (int i = 33; i < Main.maxTilesX - 34; i += 33)

@@ -124,7 +124,6 @@ public class LampLotus : ModTile, ITileFluentlyDrawn
 			tileDrawing.DrawAnimatedTile_AdjustForVisionChangers(tilePos.X, tilePos.Y - j, tile, type, 0, 0, ref tileLight, tileDrawing._rand.NextBool(4));
 			tileLight = tileDrawing.DrawTiles_GetLightOverride(tilePos.X, tilePos.Y - j, tile, type, 0, 0, tileLight);
 
-
 			var origin = new Vector2(9, 18);
 			if (lastTile)
 			{

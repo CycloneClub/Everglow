@@ -38,8 +38,6 @@ public class TwilightEucalyptusChandelier : ModTile, ITileFluentlyDrawn
 		TileObjectData.newTile.DrawYOffset = -2;
 		TileObjectData.addTile(Type);
 
-
-
 		LocalizedText name = CreateMapEntryName();
 		AddMapEntry(new Color(69, 36, 78), name);
 	}

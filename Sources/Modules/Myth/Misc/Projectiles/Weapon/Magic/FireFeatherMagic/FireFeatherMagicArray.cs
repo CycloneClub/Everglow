@@ -91,7 +91,6 @@ internal class FireFeatherMagicArray : VisualProjectile
 		Projectile.rotation = player.fullRotation;
 		ringPos = ringPos * 0.9f + new Vector2(-12 * player.direction, -24 * player.gravDir) * 0.1f;
 
-
 		FireFeatherOwner mplayer = player.GetModPlayer<FireFeatherOwner>();
 		mplayer.HasFlameWing = false;
 		if ((player.wingTime <= 0 || player.wings == 0) && !player.mount._active)

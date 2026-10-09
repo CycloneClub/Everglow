@@ -31,7 +31,6 @@ public class PaperObstructed : ModBuff
 	}
 }
 
-
 public class PaperObstructedDrawLayer : PlayerDrawLayer
 {
 	public override bool IsHeadLayer => true;

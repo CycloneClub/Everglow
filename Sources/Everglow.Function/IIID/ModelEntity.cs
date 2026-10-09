@@ -71,7 +71,6 @@ namespace Everglow.Commons.IIID
 			get; set;
 		}
 
-
 		/// <summary>
 		/// 模型的发光贴图参数（HDR，或者用 （r，g，b）* a * 256的方式
 		/// </summary>

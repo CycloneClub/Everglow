@@ -38,7 +38,6 @@ public class GlowSporeBead : SlingshotAmmo
 					Main.dust[index2].alpha = (int)(Main.dust[index2].scale * 50);
 				}
 
-
 				int type = ModContent.DustType<LittleJungleSpore>();
 				if (Main.rand.NextBool(8))
 				{

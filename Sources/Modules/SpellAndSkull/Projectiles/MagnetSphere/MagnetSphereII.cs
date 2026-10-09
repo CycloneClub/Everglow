@@ -119,8 +119,6 @@ public class MagnetSphereII : ModProjectile
 		return false;
 	}
 
-
-
 	public override void OnKill(int timeLeft)
 	{
 		ScreenShaker Gsplayer = Main.player[Projectile.owner].GetModPlayer<ScreenShaker>();

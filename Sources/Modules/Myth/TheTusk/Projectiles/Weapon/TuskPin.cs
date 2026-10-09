@@ -65,7 +65,6 @@ public class TuskPin : ModProjectile
 		Texture2D textureWhite = ModAsset.TuskPinWhite.Value;
 		Texture2D textureBlack = ModAsset.TuskPinDark.Value;
 
-
 		if (Projectile.timeLeft < 65)
 		{
 			SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;

@@ -4,7 +4,6 @@ using Everglow.Myth.TheTusk.WorldGeneration;
 using Terraria.Graphics.Effects;
 namespace Everglow.Myth.TheTusk.Backgrounds;
 
-
 public class TuskBiomeSky : CustomSky
 {
 	public static bool Open = false;
@@ -232,7 +231,6 @@ public class TuskBiomeSky : CustomSky
 		spriteBatch.End();
 		spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.NonPremultiplied, SamplerState.PointWrap, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 
-
 		Vector2 FarS = new Vector2(Main.screenWidth / 2f, Main.screenHeight + 80) - TuskBiomeCenterToScreenPosition * 0.04f;
 		var VskyF = new List<Vertex2D>();
 		VskyF.Add(new Vertex2D(FarS + new Vector2(Main.screenWidth / 2f, -600) * 2, DrawC, new Vector3(1, 0, 0)));
@@ -244,7 +242,6 @@ public class TuskBiomeSky : CustomSky
 		VskyF.Add(new Vertex2D(FarS + new Vector2(-Main.screenWidth / 2f, -600 + Main.screenHeight) * 2, DrawC, new Vector3(0, 1, 0)));
 		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.TuskFar.Value;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, VskyF.ToArray(), 0, VskyF.Count / 3);
-
 
 		spriteBatch.End();
 		spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);

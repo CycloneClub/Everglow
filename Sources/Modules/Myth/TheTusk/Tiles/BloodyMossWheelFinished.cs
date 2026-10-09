@@ -100,7 +100,6 @@ public class BloodyMossWheelFinished : ModTile
 		Texture2D Tdoor2 = ModAsset.CosmicVort.Value;
 		Texture2D Tdoor3 = ModAsset.CosmicPerlin.Value;
 
-
 		sb.Draw(Tdoor, new Vector2(TileI * 16 + 8, TileJ * 16 - 68) - Main.screenPosition + zero, null, new Color(255, 255, 255, 0), (float)Main.time / 300f, new Vector2(56), 65f / 45f, SpriteEffects.None, 0f);
 		sb.Draw(Tdoor, new Vector2(TileI * 16 + 8, TileJ * 16 - 68) - Main.screenPosition + zero, null, new Color(100, 100, 100, 0), -(float)Main.time / 200f, new Vector2(56), 65f / 45f, SpriteEffects.None, 0f);
 		sb.Draw(Tdoor, new Vector2(TileI * 16 + 8, TileJ * 16 - 68) - Main.screenPosition + zero, null, new Color(255, 255, 255, 0), (float)Main.time / 150f, new Vector2(56), 65f / 50f, SpriteEffects.None, 0f);
@@ -127,7 +126,6 @@ public class BloodyMossWheelFinished : ModTile
 		dissolve.CurrentTechnique.Passes[0].Apply();
 
 		sb.Draw(scene, new Vector2(TileI * 16 + 8, TileJ * 16 - 68) - Main.screenPosition, null, Color.White * 0.8f, 0, scene.Size() * 0.5f, 0.25f, SpriteEffects.None, 0f);
-
 
 		sb.End();
 		sb.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, matrix);

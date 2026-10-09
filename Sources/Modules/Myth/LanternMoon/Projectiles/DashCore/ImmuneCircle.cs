@@ -130,7 +130,6 @@ internal class ImmuneCircle : ModProjectile
 		Main.graphics.GraphicsDevice.Textures[0] = t;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, Vx.ToArray(), 0, Vx.Count / 3);
 
-
 		var Vx2 = new List<Vertex2D>();
 		for (int h = 0; h < 90; h++)
 		{

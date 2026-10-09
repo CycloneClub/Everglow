@@ -68,7 +68,6 @@ internal class XiaoBlackWave : ModProjectile
 			Vx4.Add(new Vertex2D(Vbase + new Vector2(0, -0.3f * Rad * (float)(1 + Math.Sin(addi / 31d + 5) / 7d)).RotatedBy(Projectile.rotation), cr, new Vector3((0.5f + h + cirpro) / 30f % 1f, 1, 0)));
 		}
 
-
 		Texture2D t = ModContent.Request<Texture2D>("Everglow/Myth/UIImages/VisualTextures/ShadeRing").Value;
 		Main.graphics.GraphicsDevice.Textures[0] = t;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, Vx4.ToArray(), 0, Vx4.Count / 3);
