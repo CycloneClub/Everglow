@@ -27,7 +27,7 @@ public class Array2<T>
 		}
 	}
 
-	public (T, T) Tuple => (valueA, valueB);
+	public (T ValueA, T ValueB) Tuple => (valueA, valueB);
 
 	public Array2()
 	{
