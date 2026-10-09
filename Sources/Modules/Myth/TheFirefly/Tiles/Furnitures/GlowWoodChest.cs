@@ -75,7 +75,7 @@ public class GlowWoodChest : ModTile
 			return Language.GetTextValue("LegacyChestType.0");
 		}
 
-		if (Main.chest[chest].name == "")
+		if (Main.chest[chest].name == string.Empty)
 		{
 			return name;
 		}

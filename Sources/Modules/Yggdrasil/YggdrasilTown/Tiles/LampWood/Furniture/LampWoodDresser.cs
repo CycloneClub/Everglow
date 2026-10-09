@@ -79,7 +79,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood.Furniture
 				player.CloseSign();
 				player.SetTalkNPC(-1);
 				Main.npcChatCornerItem = 0;
-				Main.npcChatText = "";
+				Main.npcChatText = string.Empty;
 				if (Main.editChest)
 				{
 					SoundEngine.PlaySound(SoundID.MenuTick);
@@ -140,7 +140,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood.Furniture
 				Recipe.FindRecipes();
 				player.SetTalkNPC(-1);
 				Main.npcChatCornerItem = 0;
-				Main.npcChatText = "";
+				Main.npcChatText = string.Empty;
 				Main.interactedDresserTopLeftX = left;
 				Main.interactedDresserTopLeftY = top;
 				Main.OpenClothesWindow();
@@ -169,7 +169,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood.Furniture
 			{
 				string defaultName = TileLoader.DefaultContainerName(tile.TileType, tile.TileFrameX, tile.TileFrameY); // This gets the ContainerName text for the currently selected language
 
-				if (Main.chest[chestIndex].name != "")
+				if (Main.chest[chestIndex].name != string.Empty)
 				{
 					player.cursorItemIconText = Main.chest[chestIndex].name;
 				}
@@ -180,7 +180,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood.Furniture
 				if (player.cursorItemIconText == defaultName)
 				{
 					player.cursorItemIconID = ModContent.ItemType<Items.Placeables.Furniture.LampWood.LampWoodDresser>();
-					player.cursorItemIconText = "";
+					player.cursorItemIconText = string.Empty;
 				}
 			}
 			player.noThrow = 2;
@@ -191,7 +191,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood.Furniture
 		{
 			Player player = Main.LocalPlayer;
 			MouseOverNearAndFarSharedLogic(player, i, j);
-			if (player.cursorItemIconText == "")
+			if (player.cursorItemIconText == string.Empty)
 			{
 				player.cursorItemIconEnabled = false;
 				player.cursorItemIconID = 0;
@@ -205,7 +205,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood.Furniture
 			if (Main.tile[i, j].TileFrameY > 0)
 			{
 				player.cursorItemIconID = ItemID.FamiliarShirt;
-				player.cursorItemIconText = "";
+				player.cursorItemIconText = string.Empty;
 			}
 		}
 
@@ -240,7 +240,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood.Furniture
 				return Language.GetTextValue("LegacyDresserType.0");
 			}
 
-			if (Main.chest[chest].name == "")
+			if (Main.chest[chest].name == string.Empty)
 			{
 				return name;
 			}

@@ -135,7 +135,7 @@ public class ExamplePerson : ModNPC
 		if (Main.netMode != NetmodeID.Server && NPC.life <= 0)
 		{
 			// Retrieve the gore types. This NPC has shimmer and party variants for head, arm, and leg gore. (12 total gores)
-			string variant = "";
+			string variant = string.Empty;
 			if (NPC.IsShimmerVariant)
 			{
 				variant += "_Shimmer";
