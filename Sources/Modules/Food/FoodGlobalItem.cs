@@ -475,7 +475,7 @@ public class FoodGlobalItem : GlobalItem
 					Satiety = 15,
 					BuffType = ModContent.BuffType<PizzaBuff>(),
 					BuffTime = new FoodDuration(6, 0, 0),
-					Name ="PizzaBuff"
+					Name = "PizzaBuff"
 				}
 			},
                 //李子
