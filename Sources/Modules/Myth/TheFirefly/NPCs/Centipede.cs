@@ -21,7 +21,7 @@ internal class CentipedeHead : FireWormHead
 
 	public override void SetStaticDefaults()
 	{
-		var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+		var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers()
 		{
 			CustomTexturePath = "Everglow/Myth/TheFirefly/NPCs/FireflyCentipede_Bestiary",
 			Position = new Vector2(40f, 24f),
@@ -516,7 +516,7 @@ internal class CentipedeBody : FireWormBody
 {
 	public override void SetStaticDefaults()
 	{
-		var value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+		var value = new NPCID.Sets.NPCBestiaryDrawModifiers()
 		{
 			// 将此NPC从Bestiary中隐藏起来，对于你只想要一个条目的多部分NPC很有用。
 			Hide = true,
@@ -659,10 +659,9 @@ internal class CentipedeBody : FireWormBody
 
 internal class CentipedeTail : FireWormTail
 {
-	[Obsolete]
 	public override void SetStaticDefaults()
 	{
-		var value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+		var value = new NPCID.Sets.NPCBestiaryDrawModifiers()
 		{
 			Hide = true,
 		};
