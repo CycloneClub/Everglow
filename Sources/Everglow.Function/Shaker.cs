@@ -238,7 +238,7 @@ public class ShakerManager : ModSystem
 
 	/// <summary>
 	/// 加入一个自定义震动源
-	/// <br>由联机同步得到的震动源务必关闭<see cref="ShakerInfo.NeedNetSync"/>以避免无限同步</br>
+	/// <br>本方法仅将震动源加入本地列表；处理联机收到的震动源时，应避免再次发送该震动源而形成同步循环。</br>
 	/// </summary>
 	/// <param name="info"></param>
 	public static void AddShaker(ShakerInfo info)
