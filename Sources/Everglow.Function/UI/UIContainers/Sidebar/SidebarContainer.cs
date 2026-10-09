@@ -37,7 +37,8 @@ namespace Everglow.Commons.UI.UIContainers.Sidebar
 			quickBar.Info.Left.SetValue(0f, 0.15f);
 			quickBar.Events.OnCalculation += element =>
 			{
-				mainPanel.Info.Height.SetValue(element.Info.Size.Y + mainPanel.Info.TopMargin.Pixel + mainPanel.Info.BottomMargin.Pixel,
+				mainPanel.Info.Height.SetValue(
+					element.Info.Size.Y + mainPanel.Info.TopMargin.Pixel + mainPanel.Info.BottomMargin.Pixel,
 					0f + mainPanel.Info.TopMargin.Percent + mainPanel.Info.BottomMargin.Percent);
 				return false;
 			};

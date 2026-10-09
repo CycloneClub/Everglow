@@ -35,7 +35,8 @@ public class RenderTargetPool
 				m_renderTargetsPool[i].Dispose();
 				m_renderTargetsPool[i] = null;
 			}
-			m_renderTargetsPool[i] = new RenderTarget2D(m_graphicsDevice,
+			m_renderTargetsPool[i] = new RenderTarget2D(
+				m_graphicsDevice,
 				(int)size.X,
 				(int)size.Y);
 		}
@@ -91,7 +92,8 @@ public class RenderTargetPool
 			if (m_renderTargetsFreeList.Count == 0)
 			{
 				int index = m_renderTargetsPool.Count;
-				m_renderTargetsPool.Add(new RenderTarget2D(m_graphicsDevice,
+				m_renderTargetsPool.Add(new RenderTarget2D(
+					m_graphicsDevice,
 					m_graphicsDevice.Viewport.Width,
 					m_graphicsDevice.Viewport.Height));
 				return index;

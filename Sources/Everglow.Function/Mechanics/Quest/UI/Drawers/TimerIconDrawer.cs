@@ -74,15 +74,19 @@ internal class TimerIconDrawer : DrawerItem
 	public override void Init(StringDrawer stringDrawer, string originalText, string name, StringParameters stringParameters)
 	{
 		base.Init(stringDrawer, originalText, name, stringParameters);
-		Color = stringParameters.GetColor("Color",
+		Color = stringParameters.GetColor(
+			"Color",
 			stringDrawer.DefaultParameters.GetColor(
 				"MITColor",
 				Color.White));
-		Size = stringParameters.GetInt("Size",
+		Size = stringParameters.GetInt(
+			"Size",
 			stringDrawer.DefaultParameters.GetInt("MITSize", 18));
-		Thickness = stringParameters.GetInt("Thickness",
+		Thickness = stringParameters.GetInt(
+			"Thickness",
 			stringDrawer.DefaultParameters.GetInt("MITThickness", 1));
-		QuestName = stringParameters.GetString("QuestName",
+		QuestName = stringParameters.GetString(
+			"QuestName",
 			stringDrawer.DefaultParameters.GetString("MITQuestName", string.Empty));
 
 		Size += Size % 2;

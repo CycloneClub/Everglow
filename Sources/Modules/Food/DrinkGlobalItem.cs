@@ -328,10 +328,11 @@ public class DrinkGlobalItem : GlobalItem
 			var drinkInfo = m_vanillaDrinkInfos[item.type];
 			if (!foodPlayer.CanDrink(drinkInfo) && foodPlayer.CanText())
 			{
-				CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height),
-				new Color(255, 0, 0),
-				Language.GetTextValue("Mods.Everglow.Common.FoodSystem.CannotDrink"),
-				true, false);
+				CombatText.NewText(
+					new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height),
+					new Color(255, 0, 0),
+					Language.GetTextValue("Mods.Everglow.Common.FoodSystem.CannotDrink"),
+					true, false);
 
 				foodPlayer.TextTimer = FoodUtils.GetFrames(0, 0, 2, 30);
 				return false;
@@ -343,10 +344,11 @@ public class DrinkGlobalItem : GlobalItem
 			var drinkInfo = foodItem.DrinkInfo;
 			if (!foodPlayer.CanDrink(drinkInfo) && foodPlayer.CanText())
 			{
-				CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height),
-				new Color(255, 0, 0),
-				Language.GetTextValue("Mods.Everglow.Common.FoodSystem.CannotDrink"),
-				true, false);
+				CombatText.NewText(
+					new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height),
+					new Color(255, 0, 0),
+					Language.GetTextValue("Mods.Everglow.Common.FoodSystem.CannotDrink"),
+					true, false);
 
 				foodPlayer.TextTimer = FoodUtils.GetFrames(0, 0, 2, 30);
 				return false;

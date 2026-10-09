@@ -21,19 +21,26 @@ namespace Everglow.Commons.UI.StringDrawerSystem.DrawerItems.TextDrawers
 				return;
 			}
 
-			AnimationTime = stringParameters.GetFloat("AnimationTime",
+			AnimationTime = stringParameters.GetFloat(
+				"AnimationTime",
 				stringDrawer.DefaultParameters.GetFloat("AnimationTime", 0.2f)) * 60f;
-			CursorBlinkingTime = stringParameters.GetFloat("CursorBlinkingTime",
+			CursorBlinkingTime = stringParameters.GetFloat(
+				"CursorBlinkingTime",
 				stringDrawer.DefaultParameters.GetFloat("CursorBlinkingTime", 0.2f)) * 60f;
-			CursorBlinkingInterval = stringParameters.GetFloat("CursorBlinkingInterval",
+			CursorBlinkingInterval = stringParameters.GetFloat(
+				"CursorBlinkingInterval",
 				stringDrawer.DefaultParameters.GetFloat("CursorBlinkingInterval"));
-			CursorColor = stringParameters.GetColor("CursorColor",
+			CursorColor = stringParameters.GetColor(
+				"CursorColor",
 				stringDrawer.DefaultParameters.GetColor("CursorColor", Color.White));
-			CursorScale = stringParameters.GetVector2("CursorScale",
+			CursorScale = stringParameters.GetVector2(
+				"CursorScale",
 				stringDrawer.DefaultParameters.GetVector2("CursorScale", Vector2.One));
-			RepeatAnimationTime = stringParameters.GetFloat("RepeatAnimationTime",
+			RepeatAnimationTime = stringParameters.GetFloat(
+				"RepeatAnimationTime",
 				stringDrawer.DefaultParameters.GetFloat("RepeatAnimationTime", -1)) * 60f;
-			RepeatLinkAnimationTime = stringParameters.GetFloat("RepeatLinkAnimationTime",
+			RepeatLinkAnimationTime = stringParameters.GetFloat(
+				"RepeatLinkAnimationTime",
 				stringDrawer.DefaultParameters.GetFloat("RepeatLinkAnimationTime", -1)) * 60f;
 		}
 

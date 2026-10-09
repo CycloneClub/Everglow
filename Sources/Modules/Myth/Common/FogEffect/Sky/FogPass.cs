@@ -141,7 +141,8 @@ public class FogPass
 		BloomRadius = fogConfig.MaxBloomRadius;
 		m_currentState.BloomIntensity = fogConfig.BloomIntensity;
 		m_currentState.LuminanceThreashold = fogConfig.LightLuminanceThreashold;
-		m_currentState.ViewAbsorptionRatio = new Vector3(fogConfig.FogAbsorptionR,
+		m_currentState.ViewAbsorptionRatio = new Vector3(
+			fogConfig.FogAbsorptionR,
 			fogConfig.FogAbsorptionG,
 			fogConfig.FogAbsorptionB);
 		m_currentState.BloomScatteringRatio = fogConfig.FogBloomRate;
@@ -211,13 +212,17 @@ public class FogPass
 
 			float progress = 1f - m_switchCounter / (float)m_totalSwitchCounter;
 
-			m_currentState.BloomIntensity = MathHelper.Lerp(m_beginState.BloomIntensity,
+			m_currentState.BloomIntensity = MathHelper.Lerp(
+				m_beginState.BloomIntensity,
 				m_targetState.BloomIntensity, progress);
-			m_currentState.BloomScatteringRatio = MathHelper.Lerp(m_beginState.BloomScatteringRatio,
+			m_currentState.BloomScatteringRatio = MathHelper.Lerp(
+				m_beginState.BloomScatteringRatio,
 				m_targetState.BloomScatteringRatio, progress);
-			m_currentState.LuminanceThreashold = MathHelper.Lerp(m_beginState.LuminanceThreashold,
+			m_currentState.LuminanceThreashold = MathHelper.Lerp(
+				m_beginState.LuminanceThreashold,
 				m_targetState.LuminanceThreashold, progress);
-			m_currentState.ViewAbsorptionRatio = Vector3.Lerp(m_beginState.ViewAbsorptionRatio,
+			m_currentState.ViewAbsorptionRatio = Vector3.Lerp(
+				m_beginState.ViewAbsorptionRatio,
 				m_targetState.ViewAbsorptionRatio, progress * progress);
 		}
 
@@ -249,30 +254,36 @@ public class FogPass
 				break;
 			}
 
-			m_blurRenderTargets[l] = new RenderTarget2D(Main.graphics.GraphicsDevice,
-					m_frameWidth >> l, m_frameWidth >> l, false,
-					m_surfaceFormat, DepthFormat.None);
+			m_blurRenderTargets[l] = new RenderTarget2D(
+				Main.graphics.GraphicsDevice,
+				m_frameWidth >> l, m_frameWidth >> l, false,
+				m_surfaceFormat, DepthFormat.None);
 		}
 		m_maxBlurLevel = Math.Min(l, 8);
 
 		for (int i = 0; i < m_maxBlurLevel; i++)
 		{
-			m_blurRenderTargets[i] = new RenderTarget2D(Main.graphics.GraphicsDevice,
-					m_frameWidth >> i, m_frameHeight >> i, false,
-					m_surfaceFormat, DepthFormat.None);
+			m_blurRenderTargets[i] = new RenderTarget2D(
+				Main.graphics.GraphicsDevice,
+				m_frameWidth >> i, m_frameHeight >> i, false,
+				m_surfaceFormat, DepthFormat.None);
 		}
 
-		m_renderTargetSwap = new RenderTarget2D(Main.graphics.GraphicsDevice,
-				m_frameWidth >> Math.Min(m_maxBlurLevel - 1, 4 + BloomRadius), m_frameHeight >> Math.Min(m_maxBlurLevel - 1, 4 + BloomRadius),
-				false, m_surfaceFormat, DepthFormat.None);
-		m_filteredScreenTarget = new RenderTarget2D(Main.graphics.GraphicsDevice,
-				m_screenWidth, m_screenHeight,
-				false, m_surfaceFormat, DepthFormat.None);
+		m_renderTargetSwap = new RenderTarget2D(
+			Main.graphics.GraphicsDevice,
+			m_frameWidth >> Math.Min(m_maxBlurLevel - 1, 4 + BloomRadius), m_frameHeight >> Math.Min(m_maxBlurLevel - 1, 4 + BloomRadius),
+			false, m_surfaceFormat, DepthFormat.None);
+		m_filteredScreenTarget = new RenderTarget2D(
+			Main.graphics.GraphicsDevice,
+			m_screenWidth, m_screenHeight,
+			false, m_surfaceFormat, DepthFormat.None);
 
-		m_prevLightTexture = new RenderTarget2D(Main.graphics.GraphicsDevice,
+		m_prevLightTexture = new RenderTarget2D(
+			Main.graphics.GraphicsDevice,
 			m_tileWidth, m_tileHeight,
 			false, SurfaceFormat.Color, DepthFormat.None);
-		m_lightSwapTarget = new RenderTarget2D(Main.graphics.GraphicsDevice,
+		m_lightSwapTarget = new RenderTarget2D(
+			Main.graphics.GraphicsDevice,
 			m_tileWidth, m_tileHeight,
 			false, SurfaceFormat.Color, DepthFormat.None);
 
@@ -295,7 +306,8 @@ public class FogPass
 		});
 
 		m_startTileX = Math.Max(0, (int)(m_screenPosition.X / 16) - m_currentState.OffscreenTileCount);
-		int endTileX = Math.Min(Main.maxTilesX - 1,
+		int endTileX = Math.Min(
+			Main.maxTilesX - 1,
 			(int)((m_screenPosition.X + m_screenWidth) / 16) + m_currentState.OffscreenTileCount);
 
 		int i = 0;
@@ -319,7 +331,8 @@ public class FogPass
 		}
 
 		m_startTileY = Math.Max(0, (int)(m_screenPosition.Y / 16) - m_currentState.OffscreenTileCount);
-		int endTileY = Math.Min(Main.maxTilesY - 1,
+		int endTileY = Math.Min(
+			Main.maxTilesY - 1,
 			(int)((m_screenPosition.Y + m_screenHeight) / 16) + m_currentState.OffscreenTileCount);
 
 		while (endTileY - m_startTileY < rows)
@@ -367,17 +380,19 @@ public class FogPass
 				var graphicsDevice = Main.graphics.GraphicsDevice;
 				var temporalEffect = m_temporalInterpEffect.Value;
 				graphicsDevice.SetRenderTarget(m_lightTexture);
-				spriteBatch.Begin(SpriteSortMode.Immediate,
-									BlendState.Opaque,
-									SamplerState.PointClamp,
-									DepthStencilState.None,
-									RasterizerState.CullNone);
+				spriteBatch.Begin(
+					SpriteSortMode.Immediate,
+					BlendState.Opaque,
+					SamplerState.PointClamp,
+					DepthStencilState.None,
+					RasterizerState.CullNone);
 				graphicsDevice.Textures[1] = m_prevLightTexture;
 				graphicsDevice.SamplerStates[1] = SamplerState.PointClamp;
 				temporalEffect.Parameters["uImageSize0"].SetValue(m_lightSwapTarget.Size());
 				temporalEffect.Parameters["uImageSize1"].SetValue(m_prevLightTexture.Size());
 				temporalEffect.Parameters["uAlpha"].SetValue(0.2f);
-				temporalEffect.Parameters["uOffset"].SetValue(new Vector2(m_startTileX - m_oldStartTileX,
+				temporalEffect.Parameters["uOffset"].SetValue(new Vector2(
+					m_startTileX - m_oldStartTileX,
 					m_startTileY - m_oldStartTileY));
 
 				temporalEffect.CurrentTechnique.Passes[0].Apply();
@@ -385,11 +400,12 @@ public class FogPass
 				spriteBatch.End();
 
 				graphicsDevice.SetRenderTarget(m_prevLightTexture);
-				spriteBatch.Begin(SpriteSortMode.Immediate,
-									BlendState.Opaque,
-									SamplerState.PointClamp,
-									DepthStencilState.None,
-									RasterizerState.CullNone);
+				spriteBatch.Begin(
+					SpriteSortMode.Immediate,
+					BlendState.Opaque,
+					SamplerState.PointClamp,
+					DepthStencilState.None,
+					RasterizerState.CullNone);
 				spriteBatch.Draw(m_lightTexture, Vector2.Zero, Color.White);
 				spriteBatch.End();
 			}
@@ -435,23 +451,26 @@ public class FogPass
 		int y = m_startTileY * 16;
 		graphicsDevice.SetRenderTarget(m_filteredScreenTarget);
 		graphicsDevice.Clear(Color.Transparent);
-		spriteBatch.Begin(SpriteSortMode.Immediate,
-				BlendState.Opaque,
-				SamplerState.PointClamp,
-				DepthStencilState.Default,
-				RasterizerState.CullNone, null, Main.Transform);
-		spriteBatch.Draw(m_blurRenderTargets[0], new Rectangle((int)(x - m_screenPosition.X),
+		spriteBatch.Begin(
+			SpriteSortMode.Immediate,
+			BlendState.Opaque,
+			SamplerState.PointClamp,
+			DepthStencilState.Default,
+			RasterizerState.CullNone, null, Main.Transform);
+		spriteBatch.Draw(m_blurRenderTargets[0], new Rectangle(
+			(int)(x - m_screenPosition.X),
 			(int)(y - m_screenPosition.Y), m_blurRenderTargets[0].Width, m_blurRenderTargets[0].Height),
 			Color.White);
 		spriteBatch.End();
 
 		graphicsDevice.SetRenderTarget(screenTarget2);
 		graphicsDevice.Clear(Color.Transparent);
-		spriteBatch.Begin(SpriteSortMode.Immediate,
-				BlendState.Opaque,
-				SamplerState.PointClamp,
-				DepthStencilState.Default,
-				RasterizerState.CullNone, null);
+		spriteBatch.Begin(
+			SpriteSortMode.Immediate,
+			BlendState.Opaque,
+			SamplerState.PointClamp,
+			DepthStencilState.Default,
+			RasterizerState.CullNone, null);
 		spriteBatch.Draw(screenTarget1, Vector2.Zero,
 			Color.White);
 		spriteBatch.End();
@@ -468,7 +487,8 @@ public class FogPass
 		fogEffect.Parameters["uBloomAbsorptionRate"].SetValue(0f);
 		fogEffect.Parameters["uFogScatterWithDistance"].SetValue(false);
 
-		spriteBatch.Begin(SpriteSortMode.Immediate,
+		spriteBatch.Begin(
+			SpriteSortMode.Immediate,
 			BlendState.Opaque,
 			SamplerState.PointClamp,
 			DepthStencilState.Default,
@@ -509,7 +529,8 @@ public class FogPass
 			int curHeight = m_frameHeight >> i + 1;
 			Main.graphics.GraphicsDevice.SetRenderTarget(m_blurRenderTargets[i + 1]);
 			Main.graphics.GraphicsDevice.Clear(Color.Transparent);
-			spriteBatch.Begin(SpriteSortMode.Immediate,
+			spriteBatch.Begin(
+				SpriteSortMode.Immediate,
 				BlendState.Opaque,
 				SamplerState.PointClamp,
 				DepthStencilState.None,
@@ -531,7 +552,8 @@ public class FogPass
 			int curHeight = m_frameHeight >> i;
 			graphicsDevice.SetRenderTarget(m_blurRenderTargets[i]);
 			graphicsDevice.Clear(Color.Transparent);
-			spriteBatch.Begin(SpriteSortMode.Immediate,
+			spriteBatch.Begin(
+				SpriteSortMode.Immediate,
 				BlendState.Opaque,
 				SamplerState.PointClamp,
 				DepthStencilState.Default,
@@ -564,7 +586,8 @@ public class FogPass
 		// Blur
 		graphicsDevice.SetRenderTarget(m_renderTargetSwap);
 		graphicsDevice.Clear(Color.Transparent);
-		spriteBatch.Begin(SpriteSortMode.Immediate,
+		spriteBatch.Begin(
+			SpriteSortMode.Immediate,
 			BlendState.Opaque,
 			SamplerState.PointClamp,
 			DepthStencilState.Default,
@@ -577,7 +600,8 @@ public class FogPass
 
 		graphicsDevice.SetRenderTarget(target);
 		graphicsDevice.Clear(Color.Transparent);
-		spriteBatch.Begin(SpriteSortMode.Immediate,
+		spriteBatch.Begin(
+			SpriteSortMode.Immediate,
 			BlendState.Opaque,
 			SamplerState.PointClamp,
 			DepthStencilState.Default,
