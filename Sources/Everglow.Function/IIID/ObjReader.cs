@@ -36,7 +36,6 @@ namespace Everglow.Commons.IIID
 				int s = 0;
 				int Texturetype = 0;
 				bool newModel = false;
-				bool hasPos = false;
 				while (objReader.Peek() != -1)
 				{
 					s++;
@@ -55,7 +54,6 @@ namespace Everglow.Commons.IIID
 					{
 						if (!newModel)
 						{
-							hasPos = false;
 							newModel = true;
 						}
 						if (text.IndexOf("t") == 1)// vt 0.581151 0.979929 纹理
@@ -78,7 +76,6 @@ namespace Everglow.Commons.IIID
 						}
 						else
 						{// v -53.0413 158.84 -135.806 点
-							hasPos = true;
 							tempArray = text.Split(' ');
 							mesh.positions.Add(new Vector3(float.Parse(tempArray[1]), float.Parse(tempArray[2]), float.Parse(tempArray[3])));
 						}
