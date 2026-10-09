@@ -5,9 +5,6 @@ public class TrueDeathSickleHit : ModProjectile, IWarpProjectile
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
 
 	private float r = 20;
-	private int fra = 0;
-	private int fraX = 0;
-	private int fraY = 0;
 	private float stre2 = 1;
 
 	public override string Texture => "Everglow/Myth/TheFirefly/Projectiles/MothBall";

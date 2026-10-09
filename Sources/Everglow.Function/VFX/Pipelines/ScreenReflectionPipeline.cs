@@ -10,7 +10,6 @@ namespace Everglow.Commons.VFX.Pipelines;
 public class ScreenReflectionPipeline : Pipeline
 {
 	private RenderTarget2D screenReflectionScreen; // 反射区域
-	private SpriteBatchState saveSpriteBatchState = default(SpriteBatchState);
 
 	public override void Load()
 	{
