@@ -5,9 +5,9 @@ name: .NET Build and Test
 
 on:
   push:
-    branches: [ "master", "Yggdrasil/newContent0"]
+    branches: [ "1.4.4", "Yggdrasil/newContent0"]
   pull_request:
-    branches: [ "master", "Yggdrasil/newContent0"]
+    branches: [ "1.4.4", "Yggdrasil/newContent0"]
 
 jobs:
   build-and-test:
@@ -22,20 +22,20 @@ jobs:
       run: |
         # Unshallow current branch to get full commit history
         git fetch --unshallow || true
-        # Fetch latest master for comparison
-        git fetch origin master
+        # Fetch latest 1.4.4 for comparison
+        git fetch origin 1.4.4
 
-    - name: Compare with master
+    - name: Compare with 1.4.4
       run: |
-        $count = git rev-list --count HEAD..origin/master
-        Write-Host "Commits behind master: $count"
+        $count = git rev-list --count HEAD..origin/1.4.4
+        Write-Host "Commits behind 1.4.4: $count"
 
         if ($count -ne 0) {
-          Write-Error "❌ This branch is behind origin/master"
+          Write-Error "❌ This branch is behind origin/1.4.4"
           exit 1
         }
 
-        Write-Host "✅ Branch is up to date with origin/master"
+        Write-Host "✅ Branch is up to date with origin/1.4.4"
   
     - name: Setup .NET 8.0
       uses: actions/setup-dotnet@v4

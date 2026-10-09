@@ -53,7 +53,7 @@ Before submitting text-file changes, ensure they contain no UTF-8 BOM. `AGENTS.m
 
 ## Pull Requests
 
-- Branch from an up-to-date `master`; CI rejects branches that are behind `origin/master`.
+- Branch from an up-to-date `1.4.4`; CI rejects branches that are behind `origin/1.4.4`.
 - Use a concise English imperative commit message. Conventional Commit prefixes are welcome, for example `fix(Myth): correct projectile sync`.
 - In the pull request, explain the problem, the chosen solution, and the verification you ran. Call out any client-only, server-only, multiplayer, or tML runtime behavior that you could not test locally.
 - Do not commit generated `bin/`, `obj/`, `TestResults/`, unrelated binary files, credentials, or secrets.
