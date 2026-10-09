@@ -12,10 +12,12 @@ public abstract class GemAmmo : SlingshotAmmo
 	/// 拖尾的颜色
 	/// </summary>
 	internal Color TrailColor = new Color(255, 255, 255, 0);
+
 	/// <summary>
 	/// 拖尾的路径
 	/// </summary>
 	internal string TrailTexPath = string.Empty;
+
 	/// <summary>
 	/// Dust(粒子)种类,默认钻石粉尘
 	/// </summary>

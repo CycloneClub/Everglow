@@ -10,38 +10,47 @@ public class PalladiumClub_small : ModProjectile, IWarpProjectile
 	/// 角速度
 	/// </summary>
 	internal float Omega = 0;
+
 	/// <summary>
 	/// 角加速度
 	/// </summary>
 	internal float Beta = 0.005f;
+
 	/// <summary>
 	/// 最大角速度(受近战攻速影响)
 	/// </summary>
 	internal float MaxOmega = 0.3f;
+
 	/// <summary>
 	/// 伤害半径
 	/// </summary>
 	internal float HitLength = 32f;
+
 	/// <summary>
 	/// 命中敌人后对于角速度的削减率(会根据敌人的击退抗性而再次降低)
 	/// </summary>
 	internal float StrikeOmegaDecrease = 0.9f;
+
 	/// <summary>
 	/// 命中敌人后最低剩余角速度(默认40%,即0.4)
 	/// </summary>
 	internal float MinStrikeOmegaDecrease = 0.4f;
+
 	/// <summary>
 	/// 内部参数，用来计算伤害
 	/// </summary>
 	internal int DamageStartValue = 0;
+
 	/// <summary>
 	/// 拖尾长度
 	/// </summary>
 	internal int trailLength = 10;
+
 	/// <summary>
 	/// 是否正在攻击
 	/// </summary>
 	internal bool isAttacking = false;
+
 	/// <summary>
 	/// 拖尾
 	/// </summary>
