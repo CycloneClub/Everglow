@@ -13,7 +13,6 @@ namespace Everglow.Commons.Skeleton2D.Renderer.DrawCommands;
 public class NaiveExecuter : IDrawCommandExecuter, IDrawCommandVisitor
 {
 	private GraphicsDevice graphicsDevice;
-	private PipelineStateObject pipelineState;
 
 	public void Visit<T>(DrawMesh<T> command)
 		where T : struct, IVertexType
