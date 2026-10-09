@@ -78,10 +78,12 @@ public abstract class FireWorm : ModNPC
 	// Not visible to public API, but is used to indicate what AI to run
 	// 对公共API不可见，但用于指示运行什么AI
 	internal virtual void HeadAI()
-	{ }
+	{
+	}
 
 	internal virtual void BodyTailAI()
-	{ }
+	{
+	}
 
 	public abstract void Init();
 }

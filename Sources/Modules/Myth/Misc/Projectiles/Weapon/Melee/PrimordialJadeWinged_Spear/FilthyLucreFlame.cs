@@ -8,7 +8,9 @@ internal abstract class ShaderDraw : Visual
 	public Vector2 velocity;
 	public float[] ai;
 
-	public ShaderDraw() { }
+	public ShaderDraw()
+	{
+	}
 
 	public ShaderDraw(Vector2 position, Vector2 velocity, params float[] ai)
 	{
@@ -82,7 +84,9 @@ internal class FilthyLucreFlameDust : ShaderDraw
 	public float timer;
 	public float maxTime;
 
-	public FilthyLucreFlameDust() { }
+	public FilthyLucreFlameDust()
+	{
+	}
 
 	public FilthyLucreFlameDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai)
 		: base(position, velocity, ai)
@@ -156,7 +160,9 @@ internal class FilthyLucreFlame_darkDust : ShaderDraw
 	public float timer;
 	public float maxTime;
 
-	public FilthyLucreFlame_darkDust() { }
+	public FilthyLucreFlame_darkDust()
+	{
+	}
 
 	public FilthyLucreFlame_darkDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai)
 		: base(position, velocity, ai)

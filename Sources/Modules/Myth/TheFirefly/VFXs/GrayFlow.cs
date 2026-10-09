@@ -10,7 +10,9 @@ internal abstract class ShaderDraw : Visual
 	public Vector2 velocity;
 	public float[] ai;
 
-	public ShaderDraw() { }
+	public ShaderDraw()
+	{
+	}
 
 	public ShaderDraw(Vector2 position, Vector2 velocity, params float[] ai)
 	{
@@ -55,7 +57,9 @@ internal class GrayFlowLine : ShaderDraw
 	public float timer;
 	public float maxTime;
 
-	public GrayFlowLine() { }
+	public GrayFlowLine()
+	{
+	}
 
 	public GrayFlowLine(int maxTime, Vector2 position, Vector2 velocity, params float[] ai)
 		: base(position, velocity, ai)

@@ -45,7 +45,9 @@ public class WaterBoltDrop : Visual
 	public float scale;
 	public float rotation;
 
-	public WaterBoltDrop() { }
+	public WaterBoltDrop()
+	{
+	}
 
 	public override void Update()
 	{

@@ -13,7 +13,9 @@ internal abstract class ShaderDraw : Visual
 	public Vector2 velocity;
 	public float[] ai;
 
-	public ShaderDraw() { }
+	public ShaderDraw()
+	{
+	}
 
 	public ShaderDraw(Vector2 position, Vector2 velocity, params float[] ai)
 	{
@@ -57,7 +59,9 @@ internal class MagneticElectricity : ShaderDraw
 	public float timer;
 	public float maxTime;
 
-	public MagneticElectricity() { }
+	public MagneticElectricity()
+	{
+	}
 
 	public MagneticElectricity(int maxTime, Vector2 position, Vector2 velocity, params float[] ai)
 		: base(position, velocity, ai)

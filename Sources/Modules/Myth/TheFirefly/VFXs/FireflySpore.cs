@@ -40,7 +40,9 @@ public class FireflySporeDust : Visual
 	public float scale;
 	public float rotation;
 
-	public FireflySporeDust() { }
+	public FireflySporeDust()
+	{
+	}
 
 	public override void Update()
 	{

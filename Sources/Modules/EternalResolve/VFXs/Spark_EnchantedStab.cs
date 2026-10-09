@@ -46,7 +46,9 @@ public class Spark_EnchantedStabDust : Visual
 	public float rotation;
 	public bool noGravity;
 
-	public Spark_EnchantedStabDust() { }
+	public Spark_EnchantedStabDust()
+	{
+	}
 
 	public override void Update()
 	{

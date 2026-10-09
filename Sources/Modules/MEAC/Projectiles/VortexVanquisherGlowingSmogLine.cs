@@ -45,7 +45,9 @@ public class VortexVanquisherGlowingSmogLine_front : Visual
 	public float scale;
 	public float alpha;
 
-	public VortexVanquisherGlowingSmogLine_front() { }
+	public VortexVanquisherGlowingSmogLine_front()
+	{
+	}
 
 	public override void Update()
 	{

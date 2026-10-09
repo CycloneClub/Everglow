@@ -13,7 +13,9 @@ internal abstract class ShaderDraw : Visual
 	public Vector2 velocity;
 	public float[] ai;
 
-	public ShaderDraw() { }
+	public ShaderDraw()
+	{
+	}
 
 	public ShaderDraw(Vector2 position, Vector2 velocity, params float[] ai)
 	{
@@ -63,7 +65,9 @@ internal class CrystalWindVFX : ShaderDraw
 	/// <summary>
 	/// ai[0]纹理相位,ai[1]上升力系数,ai[2]归属于哪个弹幕,ai[3]x轴迁移系数
 	/// </summary>
-	public CrystalWindVFX() { }
+	public CrystalWindVFX()
+	{
+	}
 
 	public CrystalWindVFX(int maxTime, Vector2 position, Vector2 velocity, params float[] ai)
 		: base(position, velocity, ai)
