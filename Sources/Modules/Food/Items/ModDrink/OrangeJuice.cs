@@ -25,7 +25,8 @@ public class OrangeJuice : DrinkBase
 
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(int.MaxValue, 3));
 
-		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
+		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3]
+		{
 			new Color(255, 140, 17),
 			new Color(255, 141, 66),
 			new Color(239, 119, 0),

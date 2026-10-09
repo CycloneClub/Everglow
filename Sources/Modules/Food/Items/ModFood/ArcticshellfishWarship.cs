@@ -26,7 +26,8 @@ public class ArcticshellfishWarship : FoodBase
 
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(int.MaxValue, 3));
 
-		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
+		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3]
+		{
 			new Color(181, 10, 16),
 			new Color(196, 98, 53),
 			new Color(69, 84, 73),

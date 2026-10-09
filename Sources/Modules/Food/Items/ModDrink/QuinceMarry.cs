@@ -24,7 +24,8 @@ public class QuinceMarry : DrinkBase
 	{
 		CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 5;
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(int.MaxValue, 3));
-		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
+		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3]
+		{
 			new Color(44, 130, 41),
 			new Color(216, 25, 0),
 			new Color(102, 0, 18),

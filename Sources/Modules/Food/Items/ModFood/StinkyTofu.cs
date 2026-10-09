@@ -26,7 +26,8 @@ public class StinkyTofu : FoodBase
 
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(int.MaxValue, 3));
 
-		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
+		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3]
+		{
 			new Color(51, 38, 61),
 			new Color(130, 24, 29),
 			new Color(8, 6, 10),

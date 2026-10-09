@@ -26,7 +26,8 @@ public class CantaloupeJelly : FoodBase
 
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(int.MaxValue, 3));
 
-		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
+		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3]
+		{
 			new Color(145, 49, 78),
 			new Color(255, 188, 66),
 			new Color(244, 139, 58),

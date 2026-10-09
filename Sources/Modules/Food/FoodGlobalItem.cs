@@ -21,7 +21,8 @@ public class FoodGlobalItem : GlobalItem
                 // 苹果
                 {
 				ItemID.Apple,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<AppleBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
@@ -31,7 +32,8 @@ public class FoodGlobalItem : GlobalItem
                 // 苹果派
                 {
 				ItemID.ApplePie,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 15,
 					BuffType = ModContent.BuffType<ApplePieBuff>(),
 					BuffTime = new FoodDuration(6, 0, 0),
@@ -41,7 +43,8 @@ public class FoodGlobalItem : GlobalItem
                 // 杏
                 {
 				ItemID.Apricot,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<ApricotBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
@@ -51,7 +54,8 @@ public class FoodGlobalItem : GlobalItem
                 // 培根
                 {
 				ItemID.Bacon,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<BaconBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
@@ -61,7 +65,8 @@ public class FoodGlobalItem : GlobalItem
                 // 香蕉
                 {
 				ItemID.Banana,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<BananaBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
@@ -71,7 +76,8 @@ public class FoodGlobalItem : GlobalItem
                 // 香蕉船
                 {
 				ItemID.BananaSplit,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 15,
 					BuffType = ModContent.BuffType<BananaSplitBuff>(),
 					BuffTime = new FoodDuration(6, 0, 0),
@@ -81,7 +87,8 @@ public class FoodGlobalItem : GlobalItem
                 // 烧烤肋排
                 {
 				ItemID.BBQRibs,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<BBQRibsBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
@@ -91,7 +98,8 @@ public class FoodGlobalItem : GlobalItem
                 // 黑醋栗
                 {
 				ItemID.BlackCurrant,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<BlackCurrantBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
@@ -101,7 +109,8 @@ public class FoodGlobalItem : GlobalItem
                 // 血橙
                 {
 				ItemID.BloodOrange,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<BloodOrangeBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
@@ -111,7 +120,8 @@ public class FoodGlobalItem : GlobalItem
                 // 鱼菇汤
                 {
 				ItemID.BowlofSoup,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 15,
 					BuffType = ModContent.BuffType<BowlofSoupBuff>(),
 					BuffTime = new FoodDuration(6, 0, 0),
@@ -121,7 +131,8 @@ public class FoodGlobalItem : GlobalItem
                 // 炖兔兔
                 {
 				ItemID.BunnyStew,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<BunnyStewBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
@@ -131,7 +142,8 @@ public class FoodGlobalItem : GlobalItem
                 // 汉堡
                 {
 				ItemID.Burger,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 15,
 					BuffType = ModContent.BuffType<BurgerBuff>(),
 					BuffTime = new FoodDuration(6, 0, 0),
@@ -141,7 +153,8 @@ public class FoodGlobalItem : GlobalItem
                 // 樱桃
                 {
 				ItemID.Cherry,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<CherryBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
@@ -151,7 +164,8 @@ public class FoodGlobalItem : GlobalItem
                 // 鸡块
                 {
 				ItemID.ChickenNugget,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<ChickenNuggetBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
@@ -161,7 +175,8 @@ public class FoodGlobalItem : GlobalItem
                 // 巧克力曲奇饼干
                 {
 				ItemID.ChocolateChipCookie,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<ChocolateChipCookieBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0 ),
@@ -171,7 +186,8 @@ public class FoodGlobalItem : GlobalItem
                 // 圣诞布丁
                 {
 				ItemID.ChristmasPudding,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<ChristmasPuddingBuff>(),
 					BuffTime = new FoodDuration(6, 0, 0),
@@ -181,7 +197,8 @@ public class FoodGlobalItem : GlobalItem
                 // 椰子
                 {
 				ItemID.Coconut,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<CoconutBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
@@ -191,7 +208,8 @@ public class FoodGlobalItem : GlobalItem
                 // 熟鱼
                 {
 				ItemID.CookedFish,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<CookedFishBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
@@ -201,7 +219,8 @@ public class FoodGlobalItem : GlobalItem
                 // 熟棉花糖
                 {
 				ItemID.CookedMarshmallow,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 5,
 					BuffType = ModContent.BuffType<CookedMarshmallowBuff>(),
 					BuffTime = new FoodDuration(5, 0, 0),
@@ -211,7 +230,8 @@ public class FoodGlobalItem : GlobalItem
                 // 熟虾
                 {
 				ItemID.CookedShrimp,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<CookedShrimpBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
@@ -221,7 +241,8 @@ public class FoodGlobalItem : GlobalItem
                 // 火龙果
                 {
 				ItemID.Dragonfruit,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<DragonfruitBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
@@ -231,7 +252,8 @@ public class FoodGlobalItem : GlobalItem
                 // 接骨木果
                 {
 				ItemID.Elderberry,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<ElderberryBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
@@ -241,7 +263,8 @@ public class FoodGlobalItem : GlobalItem
                 // 食用蜗牛
                 {
 				ItemID.Escargot,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<EscargotBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
@@ -251,7 +274,8 @@ public class FoodGlobalItem : GlobalItem
                 // 煎蛋
                 {
 				ItemID.FriedEgg,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<FriedEggBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
@@ -261,7 +285,8 @@ public class FoodGlobalItem : GlobalItem
                 // 薯条
                 {
 				ItemID.Fries,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<FriesBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
@@ -271,7 +296,8 @@ public class FoodGlobalItem : GlobalItem
                 // 蛙腿三明治
                 {
 				ItemID.FroggleBunwich,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<FroggleBunwichBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
@@ -281,7 +307,8 @@ public class FoodGlobalItem : GlobalItem
                 // 水果色拉
                 {
 				ItemID.FruitSalad,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<FruitSaladBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
@@ -291,7 +318,8 @@ public class FoodGlobalItem : GlobalItem
                 // 姜饼
                 {
 				ItemID.GingerbreadCookie,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<GingerbreadCookieBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
@@ -301,7 +329,8 @@ public class FoodGlobalItem : GlobalItem
                 // 金美味
                 {
 				ItemID.GoldenDelight,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 30,
 					BuffType = ModContent.BuffType<GoldenDelightBuff>(),
 					BuffTime = new FoodDuration(10, 0, 0),
@@ -311,7 +340,8 @@ public class FoodGlobalItem : GlobalItem
                 // 葡萄柚
                 {
 				ItemID.Grapefruit,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<GrapefruitBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
@@ -321,7 +351,8 @@ public class FoodGlobalItem : GlobalItem
                 // 葡萄
                 {
 				ItemID.Grapes,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<GrapesBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
@@ -331,7 +362,8 @@ public class FoodGlobalItem : GlobalItem
                 // 烤松鼠
                 {
 				ItemID.GrilledSquirrel,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<GrilledSquirrelBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
@@ -341,7 +373,8 @@ public class FoodGlobalItem : GlobalItem
                 // 蛆虫汤
                 {
 				ItemID.GrubSoup,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 15,
 					BuffType = ModContent.BuffType<GrubSoupBuff>(),
 					BuffTime = new FoodDuration(6, 0, 0),
@@ -351,7 +384,8 @@ public class FoodGlobalItem : GlobalItem
                 // 热狗
                 {
 				ItemID.Hotdog,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 15,
 					BuffType = ModContent.BuffType<HotdogBuff>(),
 					BuffTime = new FoodDuration(6, 0, 0),
@@ -361,7 +395,8 @@ public class FoodGlobalItem : GlobalItem
                 // 冰淇淋
                 {
 				ItemID.IceCream,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<IceCreamBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
@@ -371,7 +406,8 @@ public class FoodGlobalItem : GlobalItem
                 // 柠檬
                 {
 				ItemID.Lemon,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<LemonBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
@@ -381,7 +417,8 @@ public class FoodGlobalItem : GlobalItem
                 // 龙虾尾
                 {
 				ItemID.LobsterTail,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<LobsterTailBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
@@ -391,7 +428,8 @@ public class FoodGlobalItem : GlobalItem
                 // 芒果
                 {
 				ItemID.Mango,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<MangoBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
@@ -401,7 +439,8 @@ public class FoodGlobalItem : GlobalItem
                 // 棉花糖
                 {
 				ItemID.Marshmallow,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 5,
 					BuffType = ModContent.BuffType<MarshmallowBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
@@ -411,7 +450,8 @@ public class FoodGlobalItem : GlobalItem
                 // 怪物三明治
                 {
 				ItemID.MonsterLasagna,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<MonsterLasagnaBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
@@ -421,7 +461,8 @@ public class FoodGlobalItem : GlobalItem
                 // 玉米片
                 {
 				ItemID.Nachos,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<NachosBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
@@ -431,7 +472,8 @@ public class FoodGlobalItem : GlobalItem
                 // 泰式炒面
                 {
 				ItemID.PadThai,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<PadThaiBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
@@ -441,7 +483,8 @@ public class FoodGlobalItem : GlobalItem
                 // 桃子
                 {
 				ItemID.Peach,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<PeachBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
@@ -451,7 +494,8 @@ public class FoodGlobalItem : GlobalItem
                 // 越南河粉
                 {
 				ItemID.Pho,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<PhoBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
@@ -461,7 +505,8 @@ public class FoodGlobalItem : GlobalItem
                 // 菠萝
                 {
 				ItemID.Pineapple,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<PineappleBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
@@ -471,7 +516,8 @@ public class FoodGlobalItem : GlobalItem
                 // 披萨
                 {
 				ItemID.Pizza,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 15,
 					BuffType = ModContent.BuffType<PizzaBuff>(),
 					BuffTime = new FoodDuration(6, 0, 0),
@@ -481,7 +527,8 @@ public class FoodGlobalItem : GlobalItem
                 // 李子
                 {
 				ItemID.Plum,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<PlumBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
@@ -491,7 +538,8 @@ public class FoodGlobalItem : GlobalItem
                 // 薯片
                 {
 				ItemID.PotatoChips,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 15,
 					BuffType = ModContent.BuffType<PotatoChipsBuff>(),
 					BuffTime = new FoodDuration(6, 0, 0),
@@ -501,7 +549,8 @@ public class FoodGlobalItem : GlobalItem
                 // 南瓜派
                 {
 				ItemID.PumpkinPie,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<PumpkinPieBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
@@ -511,7 +560,8 @@ public class FoodGlobalItem : GlobalItem
                 // 红毛丹
                 {
 				ItemID.Rambutan,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<RambutanBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
@@ -521,7 +571,8 @@ public class FoodGlobalItem : GlobalItem
                 // 烤鸟
                 {
 				ItemID.RoastedBird,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<RoastedBirdBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
@@ -531,7 +582,8 @@ public class FoodGlobalItem : GlobalItem
                 // 烤鸭
                 {
 				ItemID.RoastedDuck,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<RoastedDuckBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
@@ -541,7 +593,8 @@ public class FoodGlobalItem : GlobalItem
                 // 生鱼片
                 {
 				ItemID.Sashimi,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<SashimiBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
@@ -551,7 +604,8 @@ public class FoodGlobalItem : GlobalItem
                 // 炒蛙腿
                 {
 				ItemID.SauteedFrogLegs,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<SauteedFrogLegsBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
@@ -561,7 +615,8 @@ public class FoodGlobalItem : GlobalItem
                 // 海鲜大餐
                 {
 				ItemID.SeafoodDinner,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 30,
 					BuffType = ModContent.BuffType<SeafoodDinnerBuff>(),
 					BuffTime = new FoodDuration(10, 0, 0),
@@ -571,7 +626,8 @@ public class FoodGlobalItem : GlobalItem
                 // 鲜虾三明治
                 {
 				ItemID.ShrimpPoBoy,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 15,
 					BuffType = ModContent.BuffType<ShrimpPoBoyBuff>(),
 					BuffTime = new FoodDuration(6, 0, 0),
@@ -581,7 +637,8 @@ public class FoodGlobalItem : GlobalItem
                 // 去壳牡蛎
                 {
 				ItemID.ShuckedOyster,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<ShuckedOysterBuff>(),
 					BuffTime = new FoodDuration(6, 0, 0),
@@ -591,7 +648,8 @@ public class FoodGlobalItem : GlobalItem
                 // 意大利面
                 {
 				ItemID.Spaghetti,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<SpaghettiBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
@@ -601,7 +659,8 @@ public class FoodGlobalItem : GlobalItem
                 // 杨桃
                 {
 				ItemID.Starfruit,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<StarfruitBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
@@ -611,7 +670,8 @@ public class FoodGlobalItem : GlobalItem
                 // 牛排
                 {
 				ItemID.Steak,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<SteakBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
@@ -621,7 +681,8 @@ public class FoodGlobalItem : GlobalItem
                 // 蜜糖饼干
                 {
 				ItemID.SugarCookie,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<SugarCookieBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),

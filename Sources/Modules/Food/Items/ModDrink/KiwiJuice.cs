@@ -25,7 +25,8 @@ public class KiwiJuice : DrinkBase
 
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(int.MaxValue, 3));
 
-		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
+		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3]
+		{
 			new Color(255, 248, 153),
 			new Color(80, 221, 37),
 			new Color(65, 130, 22),

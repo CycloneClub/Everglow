@@ -36,7 +36,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood.Furniture
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
 			TileObjectData.newTile.HookCheckIfCanPlace = new PlacementHook(Chest.FindEmptyChest, -1, 0, true);
 			TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(Chest.AfterPlacement_Hook, -1, 0, false);
-			TileObjectData.newTile.AnchorInvalidTiles = new int[] {
+			TileObjectData.newTile.AnchorInvalidTiles = new int[]
+			{
 				TileID.MagicalIceBlock,
 				TileID.Boulder,
 				TileID.BouncyBoulder,

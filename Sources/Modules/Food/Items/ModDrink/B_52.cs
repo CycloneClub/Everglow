@@ -26,7 +26,8 @@ public class B_52 : DrinkBase
 
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(int.MaxValue, 3));
 
-		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
+		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3]
+		{
 			new Color(94, 75, 170),
 			new Color(255, 229, 0),
 			new Color(160, 85, 87),

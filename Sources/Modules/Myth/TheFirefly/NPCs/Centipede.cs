@@ -52,7 +52,8 @@ internal class CentipedeHead : FireWormHead
 	public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 	{
 		// 我们可以使用AddRange，而不是多次调用Add，以便一次添加多个项目
-		bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+		bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+		{
 			BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Underground,
 			BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Caverns,
 

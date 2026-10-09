@@ -26,7 +26,8 @@ public class SweetshrimpSushi : FoodBase
 
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(int.MaxValue, 3));
 
-		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
+		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3]
+		{
 			new Color(173, 27, 52),
 			new Color(249, 218, 154),
 			new Color(211, 202, 175),

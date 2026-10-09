@@ -26,7 +26,8 @@ public class SalmonWarship : FoodBase
 
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(int.MaxValue, 3));
 
-		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
+		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3]
+		{
 			new Color(253, 123, 47),
 			new Color(255, 184, 168),
 			new Color(69, 84, 17392),

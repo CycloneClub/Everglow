@@ -26,7 +26,8 @@ public class KiwiFruit : FoodBase
 
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(int.MaxValue, 3));
 
-		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
+		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3]
+		{
 			new Color(86, 178, 19),
 			new Color(86, 120, 19),
 			new Color(61, 47, 18),

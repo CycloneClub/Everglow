@@ -26,7 +26,8 @@ public class CrabseedWarship : FoodBase
 
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(int.MaxValue, 3));
 
-		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
+		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3]
+		{
 			new Color(175, 0, 0),
 			new Color(251, 205, 60),
 			new Color(69, 84, 73),

@@ -25,7 +25,8 @@ public class DreamYearning : DrinkBase
 
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(int.MaxValue, 3));
 
-		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
+		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3]
+		{
 			new Color(255, 63, 149),
 			new Color(52, 211, 239),
 			new Color(45, 74, 158),

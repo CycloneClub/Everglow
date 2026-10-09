@@ -26,7 +26,8 @@ public class TamakoSushi : FoodBase
 
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(int.MaxValue, 3));
 
-		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
+		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3]
+		{
 			new Color(219, 184, 70),
 			new Color(104, 127, 86),
 			new Color(211, 202, 175),

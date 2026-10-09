@@ -26,7 +26,8 @@ public class EggTart : FoodBase
 
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(int.MaxValue, 3));
 
-		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
+		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3]
+		{
 			new Color(255, 231, 53),
 			new Color(255, 194, 63),
 			new Color(153, 67, 75),

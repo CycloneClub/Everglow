@@ -89,7 +89,8 @@ public class ExamplePerson : ModNPC
 	public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 	{
 		// We can use AddRange instead of calling Add multiple times in order to add multiple items at once
-		bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+		bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+		{
 			// Sets the preferred biomes of this town NPC listed in the bestiary.
 			// With Town NPCs, you usually set this to what biome it likes the most in regards to NPC happiness.
 			BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
@@ -199,7 +200,8 @@ public class ExamplePerson : ModNPC
 
 	public override List<string> SetNPCNameList()
 	{
-		return new List<string>() {
+		return new List<string>()
+		{
 			"Someone",
 			"Somebody",
 			"Blocky",

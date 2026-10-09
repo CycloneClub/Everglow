@@ -62,7 +62,8 @@ public class TextDefinitionTest
 						{
 							Description = "must not render",
 							ObjectiveText = "Second",
-						}]),
+						}
+						]),
 				]),
 			],
 		};

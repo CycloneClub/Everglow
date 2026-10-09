@@ -26,7 +26,8 @@ public class BakedMussel : FoodBase
 
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(int.MaxValue, 3));
 
-		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
+		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3]
+		{
 			new Color(255, 171, 45),
 			new Color(15, 6, 0),
 			new Color(137, 75, 34),

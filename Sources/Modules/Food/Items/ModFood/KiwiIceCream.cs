@@ -26,7 +26,8 @@ public class KiwiIceCream : FoodBase
 
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(int.MaxValue, 3));
 
-		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
+		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3]
+		{
 			new Color(86, 120, 19),
 			new Color(206, 139, 162),
 			new Color(165, 158, 152),
