@@ -32,12 +32,12 @@ public class ExampleStabbingSword_Config : ModPlayer
 	public Color AttackColor = Color.White;
 
 	/// <summary>
-	/// Shadow intensity of first attack unit(<see cref="LightAttackEffect"/>) | 首个攻击单元阴影强度
+	/// Shadow intensity of first attack unit(<see cref="StabbingProjectile.LightAttackEffect"/>) | 首个攻击单元阴影强度
 	/// </summary>
 	public float CurrentColorFactor = 0.2f;
 
 	/// <summary>
-	/// Shadow intensity of old attack units(<see cref="DarkAttackEffect"/>) | 旧攻击单元阴影强度
+	/// Shadow intensity of old attack units(<see cref="StabbingProjectile.DarkAttackEffect"/>) | 旧攻击单元阴影强度
 	/// </summary>
 	public float OldColorFactor = 0.7f;
 
@@ -47,7 +47,7 @@ public class ExampleStabbingSword_Config : ModPlayer
 	public float OldLightColorValue = 1f;
 
 	/// <summary>
-	/// Amount of old attack units (Length of<see cref="DarkAttackEffect"/>), default to 4; Warning : The projectile will keep active until old attack units run out | 最大旧攻击单元数，默认4; 警告：射弹会一直存在直到旧攻击单元耗尽
+	/// Amount of old attack units (Length of<see cref="StabbingProjectile.DarkAttackEffect"/>), default to 4; Warning : The projectile will keep active until old attack units run out | 最大旧攻击单元数，默认4; 警告：射弹会一直存在直到旧攻击单元耗尽
 	/// </summary>
 	public int MaxDarkAttackUnitCount = 4;
 
