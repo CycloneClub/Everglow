@@ -188,7 +188,6 @@ public class StonePost : ModProjectile, IWarpProjectile
 		if (Projectile.timeLeft >= 10)
 		{
 			Main.spriteBatch.Draw(BackG, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, new Vector2(BackG.Width / 2f, BackG.Height), 1, SpriteEffects.None, 0);
-
 			{
 				Main.spriteBatch.End();
 				Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
