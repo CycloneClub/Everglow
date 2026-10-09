@@ -57,7 +57,8 @@ internal class AcytaeaFlameDust : ShaderDraw
 
 	public AcytaeaFlameDust() { }
 
-	public AcytaeaFlameDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai) : base(position, velocity, ai)
+	public AcytaeaFlameDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai)
+		: base(position, velocity, ai)
 	{
 		this.maxTime = maxTime;
 	}

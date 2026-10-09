@@ -59,7 +59,8 @@ internal class MagneticElectricity : ShaderDraw
 
 	public MagneticElectricity() { }
 
-	public MagneticElectricity(int maxTime, Vector2 position, Vector2 velocity, params float[] ai) : base(position, velocity, ai)
+	public MagneticElectricity(int maxTime, Vector2 position, Vector2 velocity, params float[] ai)
+		: base(position, velocity, ai)
 	{
 		this.maxTime = maxTime;
 	}

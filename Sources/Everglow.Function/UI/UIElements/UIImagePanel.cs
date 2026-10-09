@@ -6,7 +6,8 @@ namespace Everglow.Commons.UI.UIElements
 		private bool dragging = false;
 		private Vector2 startPoint = Vector2.Zero;
 
-		public UIImagePanel(Texture2D texture, Color color) : base(texture, color)
+		public UIImagePanel(Texture2D texture, Color color)
+			: base(texture, color)
 		{
 		}
 

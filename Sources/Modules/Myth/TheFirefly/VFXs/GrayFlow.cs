@@ -57,7 +57,8 @@ internal class GrayFlowLine : ShaderDraw
 
 	public GrayFlowLine() { }
 
-	public GrayFlowLine(int maxTime, Vector2 position, Vector2 velocity, params float[] ai) : base(position, velocity, ai)
+	public GrayFlowLine(int maxTime, Vector2 position, Vector2 velocity, params float[] ai)
+		: base(position, velocity, ai)
 	{
 		this.maxTime = maxTime;
 	}

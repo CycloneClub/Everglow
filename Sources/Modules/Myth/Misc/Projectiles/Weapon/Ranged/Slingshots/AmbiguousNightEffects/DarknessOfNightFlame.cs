@@ -63,7 +63,8 @@ internal class DarknessOfNightDust : ShaderDraw
 
 	public DarknessOfNightDust() { }
 
-	public DarknessOfNightDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai) : base(position, velocity, ai)
+	public DarknessOfNightDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai)
+		: base(position, velocity, ai)
 	{
 		this.maxTime = maxTime;
 	}
@@ -144,7 +145,8 @@ internal class DarknessOfNightWave : ShaderDraw
 
 	public DarknessOfNightWave() { }
 
-	public DarknessOfNightWave(int maxTime, Vector2 position, Vector2 velocity, params float[] ai) : base(position, velocity, ai)
+	public DarknessOfNightWave(int maxTime, Vector2 position, Vector2 velocity, params float[] ai)
+		: base(position, velocity, ai)
 	{
 		this.maxTime = maxTime;
 	}

@@ -69,7 +69,8 @@ internal class BloodLiquidDust : ShaderDraw
 
 	public BloodLiquidDust() { }
 
-	public BloodLiquidDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai) : base(position, velocity, ai)
+	public BloodLiquidDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai)
+		: base(position, velocity, ai)
 	{
 		this.maxTime = maxTime;
 	}
@@ -187,7 +188,8 @@ internal class ThickBloodLiquidDust : ShaderDraw
 
 	public ThickBloodLiquidDust() { }
 
-	public ThickBloodLiquidDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai) : base(position, velocity, ai)
+	public ThickBloodLiquidDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai)
+		: base(position, velocity, ai)
 	{
 		this.maxTime = maxTime;
 	}
