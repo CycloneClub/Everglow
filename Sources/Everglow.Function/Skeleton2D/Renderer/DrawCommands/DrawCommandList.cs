@@ -9,9 +9,11 @@ namespace Everglow.Commons.Skeleton2D.Renderer.DrawCommands;
 
 public class DrawCommandList : List<DrawCommand>
 {
-	public DrawCommandList() : base() { }
+	public DrawCommandList()
+		: base() { }
 
-	public DrawCommandList(IEnumerable<DrawCommand> commands) : base(commands) { }
+	public DrawCommandList(IEnumerable<DrawCommand> commands)
+		: base(commands) { }
 
 	public void EmitDrawTriangleMesh<T>(PipelineStateObject pipelineState, List<T> vertices)
 		where T : struct, IVertexType

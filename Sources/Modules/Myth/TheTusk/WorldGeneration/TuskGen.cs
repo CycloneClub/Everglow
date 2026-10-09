@@ -89,7 +89,8 @@ public class TuskGen : ModSystem
 
 	internal class WorldTuskLandGenPass : GenPass
 	{
-		public WorldTuskLandGenPass() : base("TuskLand", 500)// TODO:给大地安装血肉之颌
+		public WorldTuskLandGenPass()
+			: base("TuskLand", 500)// TODO:给大地安装血肉之颌
 		{
 		}
 
@@ -103,7 +104,8 @@ public class TuskGen : ModSystem
 
 	internal class SubWorldTuskLandGenPass : GenPass
 	{
-		public SubWorldTuskLandGenPass() : base("TuskLand", 500)// TODO:给大地安装血肉之颌
+		public SubWorldTuskLandGenPass()
+			: base("TuskLand", 500)// TODO:给大地安装血肉之颌
 		{
 		}
 

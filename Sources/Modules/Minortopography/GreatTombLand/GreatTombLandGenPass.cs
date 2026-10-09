@@ -21,7 +21,8 @@ public class GreatTombLand : ModSystem
 {
 	private class GreatTombLandGenPass : GenPass
 	{
-		public GreatTombLandGenPass() : base("GreatTombLand", 500)
+		public GreatTombLandGenPass()
+			: base("GreatTombLand", 500)
 		{
 		}
 

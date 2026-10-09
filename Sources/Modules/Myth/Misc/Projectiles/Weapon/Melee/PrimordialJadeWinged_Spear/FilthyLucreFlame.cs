@@ -84,7 +84,8 @@ internal class FilthyLucreFlameDust : ShaderDraw
 
 	public FilthyLucreFlameDust() { }
 
-	public FilthyLucreFlameDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai) : base(position, velocity, ai)
+	public FilthyLucreFlameDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai)
+		: base(position, velocity, ai)
 	{
 		this.maxTime = maxTime;
 	}
@@ -157,7 +158,8 @@ internal class FilthyLucreFlame_darkDust : ShaderDraw
 
 	public FilthyLucreFlame_darkDust() { }
 
-	public FilthyLucreFlame_darkDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai) : base(position, velocity, ai)
+	public FilthyLucreFlame_darkDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai)
+		: base(position, velocity, ai)
 	{
 		this.maxTime = maxTime;
 	}

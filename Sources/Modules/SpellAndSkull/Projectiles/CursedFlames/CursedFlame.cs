@@ -60,7 +60,8 @@ internal class CursedFlameDust : ShaderDraw
 
 	public CursedFlameDust() { }
 
-	public CursedFlameDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai) : base(position, velocity, ai)
+	public CursedFlameDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai)
+		: base(position, velocity, ai)
 	{
 		this.maxTime = maxTime;
 	}

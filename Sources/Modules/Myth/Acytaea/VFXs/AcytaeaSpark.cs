@@ -37,7 +37,8 @@ internal class AcytaeaSparkDust : ShaderDraw
 
 	public AcytaeaSparkDust() { }
 
-	public AcytaeaSparkDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai) : base(position, velocity, ai)
+	public AcytaeaSparkDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai)
+		: base(position, velocity, ai)
 	{
 		this.maxTime = maxTime;
 	}
