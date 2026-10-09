@@ -11,7 +11,10 @@ namespace Everglow.Commons.UI
 		/// </summary>
 		public int CoolDownTime
 		{
-			get { return _coolDownTicks; }
+			get
+			{
+				return _coolDownTicks;
+			}
 
 			set
 			{
