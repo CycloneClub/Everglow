@@ -50,9 +50,9 @@ public class ToothMagicBall : ModProjectile
 			Energy *= 0.7f;
 		}
 	}
-	Vector2[] VB = new Vector2[4];
-	Vector2[] VT = new Vector2[10];
-	Vector2[] VTMax = new Vector2[10];
+	private Vector2[] VB = new Vector2[4];
+	private Vector2[] VT = new Vector2[10];
+	private Vector2[] VTMax = new Vector2[10];
 
 	public override void PostDraw(Color lightColor)
 	{

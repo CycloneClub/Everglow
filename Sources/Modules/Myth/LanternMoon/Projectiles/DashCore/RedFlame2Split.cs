@@ -1,7 +1,7 @@
 using Terraria;
 namespace Everglow.Myth.LanternMoon.Projectiles.DashCore;
 
-class RedFlame2Split : ModProjectile
+internal class RedFlame2Split : ModProjectile
 {
 	public override void SetDefaults()
 	{
@@ -23,7 +23,7 @@ class RedFlame2Split : ModProjectile
 	{
 		return new Color(0, 0, 0, 0);
 	}
-	float ka = 1;
+	private float ka = 1;
 	public override void AI()
 	{
 		Player player = Main.player[Player.FindClosest(Projectile.position, Projectile.width, Projectile.height)];
@@ -72,15 +72,15 @@ class RedFlame2Split : ModProjectile
 		}
 		kb *= 0.97f;
 	}
-	Color color0 = new Color(255, 0, 0);
-	Color Aimcolor = new Color(255, 0, 0);
-	Color[] ProjOldColor = new Color[70];
-	float kb = 1;
+	private Color color0 = new Color(255, 0, 0);
+	private Color Aimcolor = new Color(255, 0, 0);
+	private Color[] ProjOldColor = new Color[70];
+	private float kb = 1;
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;
 	}
-	int TrueL = 1;
+	private int TrueL = 1;
 	public override void PostDraw(Color lightColor)
 	{
 

@@ -557,14 +557,14 @@ public class GoldShieldUIDrawer : ModSystem
 		}
 
 
-		int _lastHeartPanelIndex;
-		float _currentPlayerLife;
-		float _lifePerHeart;
-		int _playerLifeFruitCount;
-		int _lastHeartFillingIndex;
-		int _heartCountRow1;
-		int _heartCountRow2;
-		bool _drawText;
+		private int _lastHeartPanelIndex;
+		private float _currentPlayerLife;
+		private float _lifePerHeart;
+		private int _playerLifeFruitCount;
+		private int _lastHeartFillingIndex;
+		private int _heartCountRow1;
+		private int _heartCountRow2;
+		private bool _drawText;
 
 		#region ClassicDraw
 

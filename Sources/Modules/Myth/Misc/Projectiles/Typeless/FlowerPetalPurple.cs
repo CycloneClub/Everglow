@@ -31,7 +31,7 @@ public class FlowerPetalPurple : ModProjectile
 	}
 	public float num2 = 0;
 	public bool Hittil = false;
-	int TLF = 400;
+	private int TLF = 400;
 	public override void AI()
 	{
 		if (Projectile.timeLeft >= 8999)

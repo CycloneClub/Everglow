@@ -9,7 +9,7 @@ public class MothEye : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
-	FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
+	private FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
 	public static Player LocalOwner => Main.LocalPlayer;
 	public override void SetDefaults()
 	{
@@ -76,9 +76,9 @@ public class MothEye : ModItem
 	}
 	// TODO:DIDNOT FINISH Equipped Effect:Change texture in Firefly biome, fail.
 }
-class MothEyePlayer : ModPlayer
+internal class MothEyePlayer : ModPlayer
 {
-	FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
+	private FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
 	public bool MothEyeEquipped;
 
 	public override void ResetEffects()

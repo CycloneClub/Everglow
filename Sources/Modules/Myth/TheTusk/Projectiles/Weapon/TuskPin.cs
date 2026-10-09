@@ -26,7 +26,7 @@ public class TuskPin : ModProjectile
 		Projectile.extraUpdates = 1;
 		Projectile.tileCollide = true;
 	}
-	bool HasHitTile = false;
+	private bool HasHitTile = false;
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
 		HasHitTile = true;
@@ -41,7 +41,7 @@ public class TuskPin : ModProjectile
 		behindNPCsAndTiles.Add(index);
 		base.DrawBehind(index, behindNPCsAndTiles, behindNPCs, behindProjectiles, overPlayers, overWiresUI);
 	}
-	int timeCounter = 0;
+	private int timeCounter = 0;
 	public override void AI()
 	{
 		Projectile.hide = true;

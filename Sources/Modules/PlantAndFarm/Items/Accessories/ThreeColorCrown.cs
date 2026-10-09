@@ -7,7 +7,7 @@ public class ThreeColorCrown : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
-	int Timer;
+	private int Timer;
 	public override void SetStaticDefaults()
 	{
 		// DisplayName.SetDefault("Three-colored Wreath");

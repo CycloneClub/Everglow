@@ -7,7 +7,7 @@ public class GlowWoodSword : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeWeapons;
 
-	FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
+	private FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
 	public override void SetStaticDefaults()
 	{
 	}

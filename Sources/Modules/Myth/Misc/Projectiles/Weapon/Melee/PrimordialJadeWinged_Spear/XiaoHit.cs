@@ -4,7 +4,7 @@ using Terraria.DataStructures;
 
 namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee.PrimordialJadeWinged_Spear;
 
-class XiaoHit : ModProjectile
+internal class XiaoHit : ModProjectile
 {
 	public override void SetDefaults()
 	{

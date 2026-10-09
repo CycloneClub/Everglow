@@ -23,7 +23,7 @@ public class GoldLiquidPupil : ModItem
 		gLPE.GoldLiquidPupilEnable = true;
 	}
 }
-class GoldLiquidPupilEquiper : ModPlayer
+internal class GoldLiquidPupilEquiper : ModPlayer
 {
 	public bool GoldLiquidPupilEnable = false;
 	public override void ResetEffects()

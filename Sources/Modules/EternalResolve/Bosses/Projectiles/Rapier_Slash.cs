@@ -10,7 +10,7 @@ namespace Everglow.EternalResolve.Bosses.Projectiles
 			Projectile.scale = 2;
 			alpha = 0;
 		}
-		float alpha = 0;
+		private float alpha = 0;
 		public override bool? CanDamage()
 		{
 			return false;

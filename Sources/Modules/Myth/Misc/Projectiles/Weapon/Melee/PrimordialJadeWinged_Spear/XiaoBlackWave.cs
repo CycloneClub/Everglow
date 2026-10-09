@@ -1,6 +1,6 @@
 namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee.PrimordialJadeWinged_Spear;
 
-class XiaoBlackWave : ModProjectile
+internal class XiaoBlackWave : ModProjectile
 {
 	public override void SetDefaults()
 	{

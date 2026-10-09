@@ -9,7 +9,7 @@ public class EvilChrysalis : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.SummonWeapons;
 
-	FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
+	private FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
 	public override void SetStaticDefaults()
 	{
 	}

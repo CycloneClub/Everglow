@@ -39,10 +39,10 @@ public class PurpleBallEffect : ModProjectile
 		}
 		AI0 = Projectile.ai[0];
 	}
-	Vector2 v0;
-	float Scale = 1;
-	int Pro = 0;
-	float AI0 = 0;
+	private Vector2 v0;
+	private float Scale = 1;
+	private int Pro = 0;
+	private float AI0 = 0;
 
 	public override bool PreDraw(ref Color lightColor)
 	{

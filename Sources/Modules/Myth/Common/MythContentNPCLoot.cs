@@ -284,10 +284,10 @@ public class MythContentNPCLoot : GlobalNPC
 	//    }
 	// }
 }
-class CrimsonExpertHardmode : IItemDropRuleCondition
+internal class CrimsonExpertHardmode : IItemDropRuleCondition
 {
 	// TODO:ÏÂÁÐµôÂäÌõ¼þÐèÒª·­Òë
-	bool CanD => Main.expertMode && !Main.masterMode && Main.hardMode && Main.LocalPlayer.ZoneCrimson;
+	private bool CanD => Main.expertMode && !Main.masterMode && Main.hardMode && Main.LocalPlayer.ZoneCrimson;
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
@@ -307,9 +307,9 @@ class CrimsonExpertHardmode : IItemDropRuleCondition
 		return desc;
 	}
 }
-class CrimsonMasterHardmode : IItemDropRuleCondition
+internal class CrimsonMasterHardmode : IItemDropRuleCondition
 {
-	bool CanD => Main.masterMode && Main.hardMode && Main.LocalPlayer.ZoneCrimson;
+	private bool CanD => Main.masterMode && Main.hardMode && Main.LocalPlayer.ZoneCrimson;
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
@@ -329,9 +329,9 @@ class CrimsonMasterHardmode : IItemDropRuleCondition
 		return desc;
 	}
 }
-class CrimsonNormalHardmode : IItemDropRuleCondition
+internal class CrimsonNormalHardmode : IItemDropRuleCondition
 {
-	bool CanD => !Main.expertMode && Main.hardMode && Main.LocalPlayer.ZoneCrimson;
+	private bool CanD => !Main.expertMode && Main.hardMode && Main.LocalPlayer.ZoneCrimson;
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
@@ -351,9 +351,9 @@ class CrimsonNormalHardmode : IItemDropRuleCondition
 		return desc;
 	}
 }
-class CorruptionExpertHardmode : IItemDropRuleCondition
+internal class CorruptionExpertHardmode : IItemDropRuleCondition
 {
-	bool CanD => Main.expertMode && !Main.masterMode && Main.hardMode && Main.LocalPlayer.ZoneCorrupt;
+	private bool CanD => Main.expertMode && !Main.masterMode && Main.hardMode && Main.LocalPlayer.ZoneCorrupt;
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
@@ -373,9 +373,9 @@ class CorruptionExpertHardmode : IItemDropRuleCondition
 		return desc;
 	}
 }
-class CorruptionMasterHardmode : IItemDropRuleCondition
+internal class CorruptionMasterHardmode : IItemDropRuleCondition
 {
-	bool CanD => Main.masterMode && Main.hardMode && Main.LocalPlayer.ZoneCorrupt;
+	private bool CanD => Main.masterMode && Main.hardMode && Main.LocalPlayer.ZoneCorrupt;
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
@@ -395,9 +395,9 @@ class CorruptionMasterHardmode : IItemDropRuleCondition
 		return desc;
 	}
 }
-class CorruptionNormalHardmode : IItemDropRuleCondition
+internal class CorruptionNormalHardmode : IItemDropRuleCondition
 {
-	bool CanD => !Main.expertMode && Main.hardMode && Main.LocalPlayer.ZoneCorrupt;
+	private bool CanD => !Main.expertMode && Main.hardMode && Main.LocalPlayer.ZoneCorrupt;
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
@@ -417,9 +417,9 @@ class CorruptionNormalHardmode : IItemDropRuleCondition
 		return desc;
 	}
 }
-class HallowExpertHardmode : IItemDropRuleCondition
+internal class HallowExpertHardmode : IItemDropRuleCondition
 {
-	bool CanD => Main.expertMode && !Main.masterMode && Main.hardMode && Main.LocalPlayer.ZoneHallow;
+	private bool CanD => Main.expertMode && !Main.masterMode && Main.hardMode && Main.LocalPlayer.ZoneHallow;
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
@@ -439,9 +439,9 @@ class HallowExpertHardmode : IItemDropRuleCondition
 		return desc;
 	}
 }
-class HallowMasterHardmode : IItemDropRuleCondition
+internal class HallowMasterHardmode : IItemDropRuleCondition
 {
-	bool CanD => Main.masterMode && Main.hardMode && Main.LocalPlayer.ZoneHallow;
+	private bool CanD => Main.masterMode && Main.hardMode && Main.LocalPlayer.ZoneHallow;
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
@@ -461,9 +461,9 @@ class HallowMasterHardmode : IItemDropRuleCondition
 		return desc;
 	}
 }
-class HallowNormalHardmode : IItemDropRuleCondition
+internal class HallowNormalHardmode : IItemDropRuleCondition
 {
-	bool CanD => !Main.expertMode && Main.hardMode && Main.LocalPlayer.ZoneHallow;
+	private bool CanD => !Main.expertMode && Main.hardMode && Main.LocalPlayer.ZoneHallow;
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
@@ -483,9 +483,9 @@ class HallowNormalHardmode : IItemDropRuleCondition
 		return desc;
 	}
 }
-class EclipseExpertPostPlant : IItemDropRuleCondition
+internal class EclipseExpertPostPlant : IItemDropRuleCondition
 {
-	bool CanD => Main.expertMode && !Main.masterMode && Main.eclipse && NPC.downedPlantBoss;
+	private bool CanD => Main.expertMode && !Main.masterMode && Main.eclipse && NPC.downedPlantBoss;
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
@@ -505,9 +505,9 @@ class EclipseExpertPostPlant : IItemDropRuleCondition
 		return desc;
 	}
 }
-class EclipseMasterPostPlant : IItemDropRuleCondition
+internal class EclipseMasterPostPlant : IItemDropRuleCondition
 {
-	bool CanD => Main.masterMode && Main.eclipse && NPC.downedPlantBoss;
+	private bool CanD => Main.masterMode && Main.eclipse && NPC.downedPlantBoss;
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
@@ -527,9 +527,9 @@ class EclipseMasterPostPlant : IItemDropRuleCondition
 		return desc;
 	}
 }
-class EclipseNormalPostPlant : IItemDropRuleCondition
+internal class EclipseNormalPostPlant : IItemDropRuleCondition
 {
-	bool CanD => !Main.expertMode && Main.eclipse && NPC.downedPlantBoss;
+	private bool CanD => !Main.expertMode && Main.eclipse && NPC.downedPlantBoss;
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
@@ -549,9 +549,9 @@ class EclipseNormalPostPlant : IItemDropRuleCondition
 		return desc;
 	}
 }
-class InFrostMoonFinal : IItemDropRuleCondition
+internal class InFrostMoonFinal : IItemDropRuleCondition
 {
-	bool CanD => Main.snowMoon && Main.invasionProgressWave >= 20;
+	private bool CanD => Main.snowMoon && Main.invasionProgressWave >= 20;
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
@@ -571,9 +571,9 @@ class InFrostMoonFinal : IItemDropRuleCondition
 		return desc;
 	}
 }
-class InPumpkMoonFinal : IItemDropRuleCondition
+internal class InPumpkMoonFinal : IItemDropRuleCondition
 {
-	bool CanD => Main.pumpkinMoon && Main.invasionProgressWave >= 20;
+	private bool CanD => Main.pumpkinMoon && Main.invasionProgressWave >= 20;
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;

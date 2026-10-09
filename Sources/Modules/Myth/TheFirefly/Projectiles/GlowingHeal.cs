@@ -29,12 +29,12 @@ public class GlowingHeal : ModNPC
 		NPCID.Sets.TrailingMode[NPC.type] = 0;
 		NPCID.Sets.TrailCacheLength[NPC.type] = 40;
 	}
-	bool Start = false;
-	Vector2 Cent;
-	Vector2 Acc;
-	float Ome = 0;
-	float kx = 1;
-	bool Healed = false;
+	private bool Start = false;
+	private Vector2 Cent;
+	private Vector2 Acc;
+	private float Ome = 0;
+	private float kx = 1;
+	private bool Healed = false;
 	public override void AI()
 	{
 		Player player = Main.player[NPC.target];

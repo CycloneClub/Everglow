@@ -148,8 +148,8 @@ public class UndirectedShakerInfo : ShakerInfo
 }
 public class ShakerManager : ModSystem
 {
-	static List<ShakerInfo> shakers;
-	static List<ShakerInfo> waitremove;
+	private static List<ShakerInfo> shakers;
+	private static List<ShakerInfo> waitremove;
 	/// <summary>
 	/// 关闭此震动系统的屏幕移动效果,每帧重置
 	/// </summary>
@@ -234,7 +234,7 @@ public class ShakerManager : ModSystem
 	/// 清空所有震动源
 	/// </summary>
 	public static void Clear() => shakers.Clear();
-	static void Update()
+	private static void Update()
 	{
 		waitremove.Clear();
 		foreach (ShakerInfo info in shakers)

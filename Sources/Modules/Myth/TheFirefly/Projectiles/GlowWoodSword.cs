@@ -6,7 +6,7 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 
 public class GlowWoodSword : ModProjectile
 {
-	FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
+	private FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
 	public override void SetDefaults()
 	{
 		Projectile.width = 16;
