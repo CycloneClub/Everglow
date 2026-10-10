@@ -51,17 +51,14 @@ jobs:
           dotnet restore
 
     - name: Pull TML
+      shell: pwsh
       run: |
-          Copy-Item -LiteralPath .\.github\workflows\tModLoader.targets -Destination ..\tModLoader.targets -Force
-          cd ..
-          mkdir ./tmod
-
-          cd ./tmod
-          curl -L -o tModLoader.zip https://github.com/tModLoader/tModLoader/releases/latest/download/tModLoader.zip
-          # wget https://github.com/tModLoader/tModLoader/releases/latest/download/tModLoader.zip
-          unzip tModLoader.zip
-          cd ..
-          cd ./Everglow
+        $ErrorActionPreference = 'Stop'
+        Copy-Item -LiteralPath ./.github/workflows/tModLoader.targets -Destination ../tModLoader.targets -Force
+        New-Item -ItemType Directory -Path ../tmod | Out-Null
+        # Keep the original archive so every platform tests the exact build-time tML release.
+        Invoke-WebRequest 'https://github.com/tModLoader/tModLoader/releases/latest/download/tModLoader.zip' -OutFile ../tmod/tModLoader.zip
+        Expand-Archive -LiteralPath ../tmod/tModLoader.zip -DestinationPath ../tmod
 
     - name: Download XNA Framework Redistributable
       shell: pwsh
@@ -105,15 +102,105 @@ jobs:
         Get-Content "$steamcmd/download.log"
         if ($download.ExitCode -ne 0) { throw "SteamCMD download exited with code $($download.ExitCode)" }
 
-    - name: Load Everglow in tModLoader
+    - name: Prepare shared load test inputs
       shell: pwsh
+      run: |
+        $ErrorActionPreference = 'Stop'
+        $inputs = New-Item -ItemType Directory -Path "$env:RUNNER_TEMP/tml-load-inputs"
+        $buildConfig = Get-Content './Sources/Everglow/obj/BuildConfig.json' -Raw | ConvertFrom-Json
+        Copy-Item -LiteralPath (Join-Path $buildConfig.ModDirectory 'Everglow.tmod') -Destination $inputs.FullName
+        Copy-Item -LiteralPath ../tmod/tModLoader.zip -Destination $inputs.FullName
+        # Preserve Workshop metadata and all version folders for tML's dependency selection.
+        Copy-Item -LiteralPath "$env:RUNNER_TEMP/steamcmd/steamapps/workshop" -Destination "$($inputs.FullName)/workshop" -Recurse
+
+    - name: Upload shared load test inputs
+      uses: actions/upload-artifact@v4
+      with:
+        name: tmodloader-load-inputs
+        path: ${{ runner.temp }}/tml-load-inputs/
+        if-no-files-found: error
+        compression-level: 0
+        retention-days: 7
+
+    - name: Upload SteamCMD logs
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: tmodloader-steamcmd-logs
+        if-no-files-found: warn
+        path: |
+          ${{ runner.temp }}/steamcmd/logs/workshop_log.txt
+          ${{ runner.temp }}/steamcmd/download*.log
+          ${{ runner.temp }}/steamcmd/bootstrap*.log
+
+  load-test:
+    name: Server load (${{ matrix.platform }})
+    needs: build-and-test
+    runs-on: ${{ matrix.runner }}
+    container: ${{ matrix.container || '' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # Hosted Windows images are Windows Server, not Windows 10/11 x64.
+          - platform: windows-server-2022
+            runner: windows-2022
+          - platform: windows-latest
+            runner: windows-latest
+          - platform: ubuntu-22.04
+            runner: ubuntu-22.04
+          - platform: ubuntu-24.04
+            runner: ubuntu-24.04
+          - platform: ubuntu-26.04
+            runner: ubuntu-26.04
+          # Containers cover distro userspace; they share the Ubuntu host kernel.
+          - platform: debian-12
+            runner: ubuntu-24.04
+            container: mcr.microsoft.com/dotnet/sdk:8.0-bookworm-slim
+          - platform: azure-linux-3.0
+            runner: ubuntu-24.04
+            container: mcr.microsoft.com/dotnet/sdk:8.0-azurelinux3.0
+    defaults:
+      run:
+        shell: pwsh
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v6
+
+    - name: Setup .NET 8.0
+      if: ${{ !matrix.container }}
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Record load test environment
+      run: |
+        [Runtime.InteropServices.RuntimeInformation]::OSDescription
+        [Runtime.InteropServices.RuntimeInformation]::ProcessArchitecture
+        if ($IsLinux) { Get-Content /etc/os-release }
+        dotnet --info
+
+    - name: Download shared load test inputs
+      uses: actions/download-artifact@v4
+      with:
+        name: tmodloader-load-inputs
+        path: ${{ runner.temp }}/tml-load-inputs
+
+    - name: Extract tModLoader
+      run: |
+        Expand-Archive -LiteralPath "$env:RUNNER_TEMP/tml-load-inputs/tModLoader.zip" -DestinationPath "$env:RUNNER_TEMP/tmod"
+
+    - name: Test load result checks
+      run: ./.github/workflows/scripts/Test-ModLoadResult.Tests.ps1
+
+    - name: Load Everglow in tModLoader
       timeout-minutes: 10
       run: |
-        $buildConfig = Get-Content './Sources/Everglow/obj/BuildConfig.json' -Raw | ConvertFrom-Json
         ./.github/workflows/scripts/Test-TModLoaderLoad.ps1 `
-          -TmlDirectory '../tmod' `
-          -ModFile (Join-Path $buildConfig.ModDirectory 'Everglow.tmod') `
-          -WorkshopDirectory "$env:RUNNER_TEMP/steamcmd/steamapps/workshop" `
+          -TmlDirectory "$env:RUNNER_TEMP/tmod" `
+          -ModFile "$env:RUNNER_TEMP/tml-load-inputs/Everglow.tmod" `
+          -WorkshopDirectory "$env:RUNNER_TEMP/tml-load-inputs/workshop" `
           -RunDirectory "$env:RUNNER_TEMP/tml-load-test" `
           -TimeoutSeconds 300
 
@@ -121,7 +208,7 @@ jobs:
       if: always()
       uses: actions/upload-artifact@v4
       with:
-        name: tmodloader-load-logs
+        name: tmodloader-load-logs-${{ matrix.platform }}
         if-no-files-found: warn
         path: |
           ${{ runner.temp }}/tml-load-test/server.log
@@ -129,6 +216,3 @@ jobs:
           ${{ runner.temp }}/tml-load-test/stdout.log
           ${{ runner.temp }}/tml-load-test/stderr.log
           ${{ runner.temp }}/tml-load-test/mod-sha256.txt
-          ${{ runner.temp }}/steamcmd/logs/workshop_log.txt
-          ${{ runner.temp }}/steamcmd/download*.log
-          ${{ runner.temp }}/steamcmd/bootstrap*.log
