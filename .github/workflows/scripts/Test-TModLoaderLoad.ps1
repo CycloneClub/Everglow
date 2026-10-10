@@ -50,7 +50,8 @@ Get-FileHash -LiteralPath "$($mods.FullName)/Everglow.tmod" |
 	Format-List | Out-String | Set-Content "$RunDirectory/mod-sha256.txt"
 
 $start = [Diagnostics.ProcessStartInfo]::new()
-$start.FileName = (Get-Command dotnet -CommandType Application).Source
+# Linux may expose dotnet through both /usr/bin and /bin; use one executable.
+$start.FileName = (Get-Command dotnet -CommandType Application | Select-Object -First 1).Source
 $start.WorkingDirectory = $runtime.FullName
 $start.UseShellExecute = $false
 $start.CreateNoWindow = $true
