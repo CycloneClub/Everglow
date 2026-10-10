@@ -13,13 +13,11 @@ public sealed class ProstheticMaintenanceQuest : TownNpcQuest
 	public override void Initialize()
 	{
 		Objectives
-			.Add(new WorldReachObjective(
-				player => player.TalkNPC?.netID == GiverNpcType && HasCyanVineMaterialOrArmor(player),
-				Text(Name + ".EncounterObjective")))
-			.Add(new WorldTalkObjective(GiverNpcType, Text(Name + ".IntroDialogue")).WithDescription(Text(Name + ".IntroObjective")))
+			.Add(new WorldReachObjective(player => player.TalkNPC?.netID == GiverNpcType && HasCyanVineMaterialOrArmor(player)))
+			.Add(new WorldTalkObjective(GiverNpcType))
 			// TODO: 矿石交付数量、报酬未确定。数量明确后改为 WorldGiveObjective。
-			.Add(new WorldReachObjective(_ => false, Text(Name + ".Objective")).WithDescription(Text(Name + ".DeliveryDescription")))
-			.Add(new WorldTalkObjective(GiverNpcType, Text(Name + ".Completion")).WithDescription(Text(Name + ".ReportDescription")));
+			.Add(new WorldReachObjective(_ => false))
+			.Add(new WorldTalkObjective(GiverNpcType));
 	}
 
 	public override int GiverNpcType => ModContent.NPCType<InnKeeper>();

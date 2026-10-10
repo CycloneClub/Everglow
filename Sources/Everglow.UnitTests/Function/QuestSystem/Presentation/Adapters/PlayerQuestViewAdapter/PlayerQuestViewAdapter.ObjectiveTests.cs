@@ -65,22 +65,20 @@ public partial class PlayerQuestViewAdapterTest
 	}
 
 	[TestMethod]
-	public void Create_MapsAuthoredObjectiveStringsWithoutModification()
+	public void Create_PreservesAuthoredObjectiveTextWithoutDescription()
 	{
-		const string description = "[TextDrawer,Text='supplement',Color='1,2,3,255']";
 		const string objectiveText = "[ItemDrawer,ItemType='1'] collect\nwithout splitting the objective";
 		var objective = new StubObjective
 		{
 			ObjectiveTextValue = objectiveText,
 		};
-		objective.WithDescription(description);
 		var quest = new StubQuest();
 		quest.Objectives.Add(objective);
 
 		QuestView view = PlayerQuestViewAdapter.Create(quest);
 		var objectiveView = ((LeafObjectiveNodeView)view.ObjectiveNodes.Single()).Objective;
 
-		Assert.AreEqual(description, objectiveView.Description);
+		Assert.AreEqual(string.Empty, objectiveView.Description);
 		Assert.AreEqual(objectiveText, objectiveView.ObjectiveText);
 	}
 

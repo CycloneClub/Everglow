@@ -55,13 +55,11 @@ public partial class WorldQuestViewAdapterTest
 	}
 
 	[TestMethod]
-	public void Create_MapsAuthoredObjectiveStringsWithoutModification()
+	public void Create_PreservesAuthoredObjectiveTextWithoutDescription()
 	{
-		const string description = "[TextDrawer,Text='supplement',Color='1,2,3,255']";
 		const string objectiveText = "[ItemDrawer,ItemType='1'] collect\nwithout splitting the objective";
 		var objective = new StubObjective
 		{
-			DescriptionValue = description,
 			ObjectiveTextValue = objectiveText,
 		};
 		var quest = new StubQuest();
@@ -70,7 +68,7 @@ public partial class WorldQuestViewAdapterTest
 		QuestView view = WorldQuestViewAdapter.Create(quest);
 		var objectiveView = ((LeafObjectiveNodeView)view.ObjectiveNodes.Single()).Objective;
 
-		Assert.AreEqual(description, objectiveView.Description);
+		Assert.AreEqual(string.Empty, objectiveView.Description);
 		Assert.AreEqual(objectiveText, objectiveView.ObjectiveText);
 	}
 

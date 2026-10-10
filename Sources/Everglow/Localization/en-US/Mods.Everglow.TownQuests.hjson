@@ -2,63 +2,96 @@
 	"Anna": "Anna",
 	"Howard": "Howard",
 	"SmuggledAleQuest": {
-		"IntroDialogue": "Hey, you. Since you're asking, have you got any ale? Bring me a little, just a little. Make sure the higher-ups don't see.",
-		"DeliveryEndDialogue": "Shh, keep it down. Don't let the higher-ups see. Thanks! Take these coins and gel for your trouble.",
 		"Name": "Smuggled Ale",
 		"Description": "Anna has a small request she would rather keep from her superiors.",
 		"Hint": "Unlocks upon entering Yggdrasil.",
-		"IntroObjective": "Anna seems to have a small favor to ask. Go and have a word with her.",
-		"DeliveryDescription": "Anna would like a quiet drink. Bring her some ale, and keep it out of sight of her superiors."
+		"Objectives": [
+			{
+				"Description": "Anna seems to have a small favor to ask. Go and have a word with her.",
+				"NPCText": "Hey, you. Since you're asking, have you got any ale? Bring me a little, just a little. Make sure the higher-ups don't see."
+			},
+			{
+				"Description": "Anna would like a quiet drink. Bring her some ale, and keep it out of sight of her superiors.",
+				"StartText": "Hey, you. Since you're asking, have you got any ale? Bring me a little, just a little. Make sure the higher-ups don't see.",
+				"EndText": "Shh, keep it down. Don't let the higher-ups see. Thanks! Take these coins and gel for your trouble."
+			}
+		]
 	},
 	"SheWorriesAboutYouQuest": {
-		"IntroDialogue": "Have you heard of the monster they call the Blood Moon Cultist? He's real trouble. If you run into him, be careful.",
 		"Name": "She Worries About You",
 		"Description": "Rumors of the Blood Moon Cultist have Anna worried.",
 		"Hint": "Unlocks after completing Smuggled Ale.",
-		"Completion": "I didn't expect you to deal with that monster yourself. You've solved a problem for us. Dinner is on me tonight.",
-		"IntroObjective": "Anna has heard some troubling news and seems to have a warning for you. Go and speak to her.",
-		"DefeatDescription": "After hearing Anna's warning, kill a Blood Moon Cultist and give her one less reason to worry.",
-		"ReportDescription": "You have killed a Blood Moon Cultist. Return to Anna and put her mind at ease."
+		"Objectives": [
+			{
+				"Description": "Anna has heard some troubling news and seems to have a warning for you. Go and speak to her.",
+				"NPCText": "Have you heard of the monster they call the Blood Moon Cultist? He's real trouble. If you run into him, be careful."
+			},
+			{
+				"Description": "After hearing Anna's warning, kill a Blood Moon Cultist and give her one less reason to worry."
+			},
+			{
+				"Description": "You have killed a Blood Moon Cultist. Return to Anna and put her mind at ease.",
+				"NPCText": "I didn't expect you to deal with that monster yourself. You've solved a problem for us. Dinner is on me tonight."
+			}
+		]
 	},
 	"SlimeDoctorQuest": {
-		"IntroDialogue": "This little one got hurt, but I can't leave my post. Could you get me some gel? It might help.",
 		"Name": "Slime Doctor",
 		"Description": "A little creature is hurt, and Anna needs help looking after it.",
 		"Hint": "Unlocks after stopping the Drunken Miners' Parade.",
-		"Objective": "Collect gel for Anna",
-		"IntroObjective": "Anna seems to be caring for an injured little creature. See if she needs any help.",
-		"DeliveryDescription": "Anna cannot leave her post to care for the injured little creature. Bring her some gel; it might help."
-	},
-	"DefendTownOneQuest": {
-		"ReportDialogue": "Good work. Those drunken miners have finally settled down. But a gang of thieves is still causing trouble in town. I'm afraid we'll need your help again.",
-		"Objective": "Defend Yggdrasil Town, Part I: Repel the Drunken Miners' Parade",
-		"InvasionDescription": "The drunken miners are disturbing the peace with their parade. Help Howard bring the trouble to an end.",
-		"ReportDescription": "The drunken miners have been dealt with for now. Report back to Howard."
-	},
-	"DefendTownTwoQuest": {
-		"ReportDialogue": "I heard you dealt with the thieves. Well done. But the peace didn't last: that heiress and the assassin have stirred up more trouble. Go see what you can do.",
-		"Objective": "Defend Yggdrasil Town, Part II: Repel the rampant thieves",
-		"InvasionDescription": "Thieves are causing trouble in town. Stop them from running rampant.",
-		"ReportDescription": "The thieves have been dealt with. Return to Howard and ask how the town is faring."
-	},
-	"DefendTownThreeQuest": {
-		"ReportDialogue": "That trouble has finally settled down. But now someone wants to perform a sacrifice right in the streets. We can't let that happen. Stop them!",
-		"Objective": "Defend Yggdrasil Town, Part III: Repel the Heiress and the Assassin",
-		"InvasionDescription": "Trouble involving the Heiress and the Assassin has disturbed the town again. Help Howard restore order.",
-		"ReportDescription": "The trouble with the Heiress and the Assassin has settled for now. Report back to Howard."
-	},
-	"DefendTownFourQuest": {
-		"ReportDialogue": "You stopped that sacrifice just in time and kept the townsfolk safe. On behalf of everyone in Yggdrasil Town, thank you.",
-		"Objective": "Defend Yggdrasil Town, Part IV: Stop the street sacrifice",
-		"InvasionDescription": "Someone is attempting a sacrifice in the streets. Put a stop to it before it is too late.",
-		"ReportDescription": "The street sacrifice has been stopped. Let Howard know the town is safe for now."
+		"Objectives": [
+			{
+				"Description": "Anna seems to be caring for an injured little creature. See if she needs any help.",
+				"NPCText": "This little one got hurt, but I can't leave my post. Could you get me some gel? It might help."
+			},
+			{
+				"Description": "Anna cannot leave her post to care for the injured little creature. Bring her some gel; it might help.",
+				"ObjectiveText": "Collect gel for Anna"
+			}
+		]
 	},
 	"DefendTownQuest": {
-		"IntroDialogue": "What's troubling me? I heard you recently defeated the Squamous Shell. Good. That proves you can handle yourself. Some troublemakers have been stirring things up in town, and the residents are complaining. Go teach them a lesson.",
 		"Hint": "Unlocks after defeating the Squamous Shell.",
 		"Name": "Defend Yggdrasil Town",
-		"IntroObjective": "Howard seems troubled by the disturbances in town. Go and ask him about them.",
-		"Description": "Repeated disturbances trouble Yggdrasil Town. Howard needs help keeping the peace."
+		"Description": "Repeated disturbances trouble Yggdrasil Town. Howard needs help keeping the peace.",
+		"Objectives": [
+			{
+				"Description": "Howard seems troubled by the disturbances in town. Go and ask him about them.",
+				"NPCText": "What's troubling me? I heard you recently defeated the Squamous Shell. Good. That proves you can handle yourself. Some troublemakers have been stirring things up in town, and the residents are complaining. Go teach them a lesson."
+			},
+			{
+				"Description": "The drunken miners are disturbing the peace with their parade. Help Howard bring the trouble to an end.",
+				"ObjectiveText": "Head to Yggdrasil Town, wait for nightfall, and repel the Drunken Miners' Parade."
+			},
+			{
+				"Description": "The drunken miners have been dealt with for now. Report back to Howard.",
+				"NPCText": "Good work. Those drunken miners have finally settled down. But a gang of thieves is still causing trouble in town. I'm afraid we'll need your help again."
+			},
+			{
+				"Description": "Thieves are causing trouble in town. Stop them from running rampant.",
+				"ObjectiveText": "Repel the rampant thieves"
+			},
+			{
+				"Description": "The thieves have been dealt with. Return to Howard and ask how the town is faring.",
+				"NPCText": "I heard you dealt with the thieves. Well done. But the peace didn't last: that heiress and the assassin have stirred up more trouble. Go see what you can do."
+			},
+			{
+				"Description": "Trouble involving the Heiress and the Assassin has disturbed the town again. Help Howard restore order.",
+				"ObjectiveText": "Repel the Heiress and the Assassin"
+			},
+			{
+				"Description": "The trouble with the Heiress and the Assassin has settled for now. Report back to Howard.",
+				"NPCText": "That trouble has finally settled down. But now someone wants to perform a sacrifice right in the streets. We can't let that happen. Stop them!"
+			},
+			{
+				"Description": "Someone is attempting a sacrifice in the streets. Put a stop to it before it is too late.",
+				"ObjectiveText": "Stop the street sacrifice"
+			},
+			{
+				"Description": "The street sacrifice has been stopped. Let Howard know the town is safe for now.",
+				"NPCText": "You stopped that sacrifice just in time and kept the townsfolk safe. On behalf of everyone in Yggdrasil Town, thank you."
+			}
+		]
 	},
 	"Rolle": "Rolle",
 	"Betty": "Betty",
@@ -68,122 +101,214 @@
 		"Name": "Restocking Ingredients I",
 		"Description": "Business has been so good that Rolle has run short of fish.",
 		"Hint": "Available upon entering Yggdrasil.",
-		"IntroObjective": "Ask Rolle at the restaurant whether he needs any help.",
-		"IntroDialogue": "Ah, you're new here. Since you asked, business has been so good these past few days that we haven't had time to restock. Bring me some grass carp and dinner is on me.",
-		"DeliveryDescription": "Bring Rolle five grass carp to restock the restaurant.",
-		"Completion": "These fish are nice and plump. As promised, dinner is on me."
+		"Objectives": [
+			{
+				"Description": "Ask Rolle at the restaurant whether he needs any help.",
+				"NPCText": "Ah, you're new here. Since you asked, business has been so good these past few days that we haven't had time to restock. Bring me some grass carp and dinner is on me."
+			},
+			{
+				"Description": "Bring Rolle five grass carp to restock the restaurant.",
+				"StartText": "Ah, you're new here. Since you asked, business has been so good these past few days that we haven't had time to restock. Bring me some grass carp and dinner is on me.",
+				"EndText": "These fish are nice and plump. As promised, dinner is on me."
+			}
+		]
 	},
 	"SelfRelianceQuest": {
 		"Name": "Self-Reliance",
 		"Description": "Rolle wants to teach you how to prepare a filling meal.",
 		"Hint": "Defeat King Jelly Ball or Squamous Shell.",
-		"IntroObjective": "Rolle has some cooking advice to share.",
-		"IntroDialogue": "Still looking for work at this hour? I don't want to see you too hungry to lift your sword. You seem willing to learn, so I'll teach you to make grass carp marinated in lampfruit juice. Then you can feed yourself.",
-		"CollectDescription": "Gather twelve lampfruits in your inventory. They will not be consumed.",
-		"ReportDescription": "You have enough lampfruits. Return to Rolle.",
-		"Completion": "Got the lampfruits? Preparing your own ingredients is the first step. They'll come in handy for marinated grass carp."
+		"Objectives": [
+			{
+				"Description": "Rolle has some cooking advice to share.",
+				"NPCText": "Still looking for work at this hour? I don't want to see you too hungry to lift your sword. You seem willing to learn, so I'll teach you to make grass carp marinated in lampfruit juice. Then you can feed yourself."
+			},
+			{
+				"Description": "Gather twelve lampfruits in your inventory. They will not be consumed."
+			},
+			{
+				"Description": "You have enough lampfruits. Return to Rolle.",
+				"NPCText": "Got the lampfruits? Preparing your own ingredients is the first step. They'll come in handy for marinated grass carp."
+			}
+		]
 	},
 	"IngredientSupplyTwoQuest": {
 		"Name": "Restocking Ingredients II",
 		"Description": "Rolle hopes the Mossy Thorn Turtle will inspire a new dish.",
 		"Hint": "Someone must enter Kelp Curtain.",
-		"IntroObjective": "Ask Rolle about his idea for a new ingredient.",
-		"IntroDialogue": "I heard you've encountered Mossy Thorn Turtles. Get me one. Perhaps we can come up with a new dish.",
-		"DefeatDescription": "Defeat one Mossy Thorn Turtle in Kelp Curtain.",
-		"ReportDescription": "You defeated the turtle. Report back to Rolle.",
-		"Completion": "Very fresh! You have a good eye. That wasn't so hard, was it? I have to go. The ideas are pouring in!"
+		"Objectives": [
+			{
+				"Description": "Ask Rolle about his idea for a new ingredient.",
+				"NPCText": "I heard you've encountered Mossy Thorn Turtles. Get me one. Perhaps we can come up with a new dish."
+			},
+			{
+				"Description": "Defeat one Mossy Thorn Turtle in Kelp Curtain."
+			},
+			{
+				"Description": "You defeated the turtle. Report back to Rolle.",
+				"NPCText": "Very fresh! You have a good eye. That wasn't so hard, was it? I have to go. The ideas are pouring in!"
+			}
+		]
 	},
 	"SprainedBackQuest": {
 		"Name": "An Aching Back",
 		"Description": "Rolle hurt his back while experimenting with a new dish. Betty needs ingredients for his medicine.",
 		"Hint": "Complete Self-Reliance.",
-		"IntroObjective": "Ask Betty what is troubling her.",
-		"IntroDialogue": "The boss hurt his back while trying out a new dish. You two seem to be old friends now. Could you bring me the ingredients for his medicinal oil so he can recover sooner?",
-		"DeliveryDescription": "Bring Betty one Unstable Pollen and two Caterpillar Juices. The materials can be delivered separately.",
-		"Completion": "That's everything. Thank you! I hope he recovers soon. We'll have to make sure he rests.",
-		"PollenDeliveryDescription": "Give Betty the Unstable Pollen for the medicinal oil.",
-		"JuiceDeliveryDescription": "Give Betty the Caterpillar Juice for the medicinal oil.",
-		"ReportDescription": "Both ingredients have been delivered. Check back with Betty."
+		"Objectives": [
+			{
+				"Description": "Ask Betty what is troubling her.",
+				"NPCText": "The boss hurt his back while trying out a new dish. You two seem to be old friends now. Could you bring me the ingredients for his medicinal oil so he can recover sooner?"
+			},
+			{
+				"Description": "Give Betty the Unstable Pollen for the medicinal oil."
+			},
+			{
+				"Description": "Give Betty the Caterpillar Juice for the medicinal oil."
+			},
+			{
+				"Description": "Both ingredients have been delivered. Check back with Betty.",
+				"NPCText": "That's everything. Thank you! I hope he recovers soon. We'll have to make sure he rests."
+			}
+		]
 	},
 	"TroublesomeGuestsQuest": {
 		"Name": "Troublesome Guests",
 		"Description": "Some pirates have left their restaurant bills unpaid. Betty wants someone to deal with them.",
 		"Hint": "Wait for Betty's request concerning the pirates' debts.",
-		"IntroObjective": "Find out what is troubling Betty.",
-		"IntroDialogue": "You know those pirates? They haven't paid their bills for three months. Collect the debt for me and you'll get a share.",
-		"Objective": "Deal with the pirates who owe the restaurant money",
-		"DefeatDescription": "Find the pirates and make them settle their bills.",
-		"ReportDescription": "Tell Betty the unpaid bills have been dealt with.",
-		"Completion": "Thank you. I hope that works. The fewer troublesome customers, the better."
+		"Objectives": [
+			{
+				"Description": "Find out what is troubling Betty.",
+				"NPCText": "You know those pirates? They haven't paid their bills for three months. Collect the debt for me and you'll get a share."
+			},
+			{
+				"Description": "Find the pirates and make them settle their bills.",
+				"ObjectiveText": "Deal with the pirates who owe the restaurant money"
+			},
+			{
+				"Description": "Tell Betty the unpaid bills have been dealt with.",
+				"NPCText": "Thank you. I hope that works. The fewer troublesome customers, the better."
+			}
+		]
 	},
 	"TeahouseTalesOneQuest": {
 		"Name": "Teahouse Tales I",
 		"Description": "Schorl is curious about rumors of an ownerless flesh puppet.",
 		"Hint": "Available upon entering Yggdrasil.",
-		"IntroObjective": "Schorl has heard a strange rumor.",
-		"IntroDialogue": "You're an adventurer, aren't you? I've heard of a monster that looks almost human. Would you investigate this ownerless flesh puppet for me, then take care of it?",
-		"Objective": "Find and defeat the ownerless flesh puppet",
-		"DefeatDescription": "Investigate the humanlike monster and deal with it.",
-		"ReportDescription": "Bring the story back to Schorl at the teahouse.",
-		"Completion": "What an interesting story! Well done. How about a little pat of my tail as your reward?"
+		"Objectives": [
+			{
+				"Description": "Schorl has heard a strange rumor.",
+				"NPCText": "You're an adventurer, aren't you? I've heard of a monster that looks almost human. Would you investigate this ownerless flesh puppet for me, then take care of it?"
+			},
+			{
+				"Description": "Investigate the humanlike monster and deal with it.",
+				"ObjectiveText": "Find and defeat the ownerless flesh puppet"
+			},
+			{
+				"Description": "Bring the story back to Schorl at the teahouse.",
+				"NPCText": "What an interesting story! Well done. How about a little pat of my tail as your reward?"
+			}
+		]
 	},
 	"TeahouseTalesTwoQuest": {
 		"Name": "Teahouse Tales II",
 		"Description": "The marks on the monster seem connected to a cult in Kelp Curtain.",
 		"Hint": "Someone must enter Kelp Curtain.",
-		"IntroObjective": "Visit Schorl to hear her latest lead.",
-		"IntroDialogue": "Do you remember that monster? I'm sure you noticed the marks on its body. Investigate the second layer. A cult's creation is hidden there, and it may hold the answers you seek.",
-		"Objective": "Investigate the cult's creation in Kelp Curtain",
-		"InvestigateDescription": "Follow the marks on the monster to find traces of the cult.",
-		"ReportDescription": "Return to the teahouse with your findings.",
-		"Completion": "It's been a long time since I've heard such good news. Shall we celebrate tonight?"
+		"Objectives": [
+			{
+				"Description": "Visit Schorl to hear her latest lead.",
+				"NPCText": "Do you remember that monster? I'm sure you noticed the marks on its body. Investigate the second layer. A cult's creation is hidden there, and it may hold the answers you seek."
+			},
+			{
+				"Description": "Follow the marks on the monster to find traces of the cult.",
+				"ObjectiveText": "Investigate the cult's creation in Kelp Curtain"
+			},
+			{
+				"Description": "Return to the teahouse with your findings.",
+				"NPCText": "It's been a long time since I've heard such good news. Shall we celebrate tonight?"
+			}
+		]
 	},
 	"ProstheticMaintenanceQuest": {
 		"Name": "Prosthetic Maintenance",
 		"Description": "Georg needs materials to maintain his prosthetic limb.",
 		"Hint": "Talk to Georg while carrying Cyan Vine Ore or Bars, or wearing Cyan Vine armor.",
-		"EncounterObjective": "Talk to Georg with Cyan Vine Ore, Bars, or equipped armor",
-		"IntroObjective": "Georg noticed your Cyan Vine materials. Ask what he needs.",
-		"IntroDialogue": "You seem to have something I need. My prosthetic limb needs maintenance, but I'm short of Cyan Vine Ore. Could you bring me some? There will be a reward.",
-		"Objective": "Prepare Cyan Vine Ore for Georg",
-		"DeliveryDescription": "Find Cyan Vine Ore to help Georg maintain his prosthetic limb.",
-		"ReportDescription": "Check on Georg's prosthetic maintenance.",
-		"Completion": "Well done! I knew you could help me."
+		"Objectives": [
+			{
+				"ObjectiveText": "Talk to Georg with Cyan Vine Ore, Bars, or equipped armor"
+			},
+			{
+				"Description": "Georg noticed your Cyan Vine materials. Ask what he needs.",
+				"NPCText": "You seem to have something I need. My prosthetic limb needs maintenance, but I'm short of Cyan Vine Ore. Could you bring me some? There will be a reward."
+			},
+			{
+				"Description": "Find Cyan Vine Ore to help Georg maintain his prosthetic limb.",
+				"ObjectiveText": "Prepare Cyan Vine Ore for Georg"
+			},
+			{
+				"Description": "Check on Georg's prosthetic maintenance.",
+				"NPCText": "Well done! I knew you could help me."
+			}
+		]
 	},
 	"ChangingTheInnQuest": {
 		"Name": "Changing the Inn I",
 		"Description": "Georg wants plants from Kelp Curtain to make his inn more welcoming.",
 		"Hint": "Someone must enter Kelp Curtain.",
-		"IntroObjective": "Ask Georg about his plans for the inn.",
-		"IntroDialogue": "To be honest, many guests say the inn feels too stern. I'd like to brighten it up with some plants, but they only grow in Kelp Curtain. You're always helpful. Could you bring me some?",
-		"Objective": "Find Kelp Curtain plants for the inn",
-		"DeliveryDescription": "Bring Georg plants to decorate his inn.",
-		"ReportDescription": "Return to Georg to discuss his decorating plans.",
-		"Completion": "Thank you so much. I'll put these plants to good use."
+		"Objectives": [
+			{
+				"Description": "Ask Georg about his plans for the inn.",
+				"NPCText": "To be honest, many guests say the inn feels too stern. I'd like to brighten it up with some plants, but they only grow in Kelp Curtain. You're always helpful. Could you bring me some?"
+			},
+			{
+				"Description": "Bring Georg plants to decorate his inn.",
+				"ObjectiveText": "Find Kelp Curtain plants for the inn"
+			},
+			{
+				"Description": "Return to Georg to discuss his decorating plans.",
+				"NPCText": "Thank you so much. I'll put these plants to good use."
+			}
+		]
 	},
 	"LostMinerQuest": {
 		"Name": "The Lost Miner",
 		"Description": "Herm is stranded far from his fellow miners and needs you to take word back to the guild.",
 		"Hint": "Meet the miner Herm.",
-		"Objective": "Find the lost miner Herm",
-		"LightObjective": "Balder's Light: help the guild find Herm"
+		"Objectives": [
+			{
+				"ObjectiveText": "Find the lost miner Herm"
+			},
+			{
+				"ObjectiveText": "Balder's Light: help the guild find Herm"
+			}
+		]
 	},
 	"JellyDressQuest": {
 		"Name": "A Novel Cut: Jelly Ripple Dress",
 		"Description": "Scarpa wants unusual materials to create a new outfit.",
 		"Hint": "Visit the tailor Scarpa.",
-		"Objective": "Ask Scarpa about making clothes"
+		"Objectives": [
+			{
+				"ObjectiveText": "Ask Scarpa about making clothes"
+			}
+		]
 	},
 	"SageAlbionQuest": {
 		"Name": "Sage Albion",
 		"Description": "Guild master Albion has a trial for a newcomer.",
 		"Hint": "Get an introduction from the guild receptionist.",
-		"Objective": "Ask the guild receptionist to introduce you to Albion"
+		"Objectives": [
+			{
+				"ObjectiveText": "Ask the guild receptionist to introduce you to Albion"
+			}
+		]
 	},
 	"NamelessPersonQuest": {
 		"Name": "The Nameless One",
 		"Description": "A mysterious figure vanished before your eyes.",
 		"Hint": "Encounter the realm walker for the first time.",
-		"Objective": "Look for traces of the mysterious merchant"
+		"Objectives": [
+			{
+				"ObjectiveText": "Look for traces of the mysterious merchant"
+			}
+		]
 	}
 }

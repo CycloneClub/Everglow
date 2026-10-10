@@ -10,10 +10,10 @@ public sealed class ChangingTheInnQuest : TownNpcQuest
 	public override void Initialize()
 	{
 		Objectives
-			.Add(new WorldTalkObjective(GiverNpcType, Text(Name + ".IntroDialogue")).WithDescription(Text(Name + ".IntroObjective")))
+			.Add(new WorldTalkObjective(GiverNpcType))
 			// TODO: 策划尚未指定要交付的植物及数量。
-			.Add(new WorldReachObjective(_ => false, Text(Name + ".Objective")).WithDescription(Text(Name + ".DeliveryDescription")))
-			.Add(new WorldTalkObjective(GiverNpcType, Text(Name + ".Completion")).WithDescription(Text(Name + ".ReportDescription")));
+			.Add(new WorldReachObjective(_ => false))
+			.Add(new WorldTalkObjective(GiverNpcType));
 	}
 
 	public override int GiverNpcType => ModContent.NPCType<InnKeeper>();

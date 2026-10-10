@@ -21,13 +21,6 @@ public class WorldGiveObjective : WorldObjectiveBase
 		ItemCount = itemCount;
 	}
 
-	public WorldGiveObjective(int npcType, int itemType, int itemCount, string startText, string endText)
-		: this(npcType, itemType, itemCount)
-	{
-		StartText = startText;
-		EndText = endText;
-	}
-
 	private bool localSubmitted;
 
 	public int NPCType { get; private set; }
@@ -38,9 +31,9 @@ public class WorldGiveObjective : WorldObjectiveBase
 
 	public bool Given { get; private set; }
 
-	public string StartText { get; set; } = string.Empty;
+	public string StartText => GetText("StartText");
 
-	public string EndText { get; set; } = string.Empty;
+	public string EndText => GetText("EndText");
 
 	public override float Progress => Given ? 1f : 0f;
 

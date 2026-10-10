@@ -22,7 +22,7 @@ public abstract partial class PlayerQuestBase : ITagCompoundEntity
 
 	protected PlayerQuestBase()
 	{
-		Objectives = new PlayerObjectiveContainer();
+		Objectives = new PlayerObjectiveContainer(this);
 		RewardItems = [];
 		Time = 0;
 	}

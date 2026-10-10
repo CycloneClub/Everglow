@@ -1,0 +1,52 @@
+{
+	"TestExplore": {
+		"Objectives": [
+			{
+				"ObjectiveText": "Explore the Jungle"
+			}
+		]
+	},
+	"TestReach": {
+		"Objectives": [
+			{
+				"ObjectiveText": "Reach the Desert"
+			}
+		]
+	},
+	"TestNewObj": {
+		"Objectives": [
+			{},
+			{},
+			{
+				"ObjectiveText": "Reach the Desert"
+			},
+			{}
+		]
+	},
+	"TestStructure": {
+		"Objectives": [
+			{
+				"ObjectiveText": "Reach the Dungeon"
+			},
+			{},
+			{},
+			{},
+			{},
+			{},
+			{
+				"ObjectiveText": "Reach the Jungle"
+			},
+			{
+				"ObjectiveText": "Reach the Cavern layer"
+			}
+		]
+	},
+	"GiveItemQuestTest": {
+		"Objectives": [
+			{
+				"StartText": "Please bring me ten Dirt Blocks.",
+				"EndText": "Thank you."
+			}
+		]
+	}
+}

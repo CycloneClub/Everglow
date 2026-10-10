@@ -80,9 +80,5 @@
 		"GiveAny": "Give {0} a total of {2} from: {1} {3}",
 		"Explore": "Explore {0}",
 		"ExploreDistance": "Explore {0} ({2}/{1})"
-	},
-	"Dialogue": {
-		"GiveRequest": "Please bring me some items.",
-		"GiveThanks": "Thank you!"
 	}
 }

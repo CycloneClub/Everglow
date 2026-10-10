@@ -10,20 +10,16 @@ public class TalkNPCObjective : PlayerObjectiveBase
 	{
 	}
 
-	public TalkNPCObjective(int type, string text)
+	public TalkNPCObjective(int type)
 	{
 		NPCType = type > NPCID.None
 			? type
 			: throw new InvalidDataException($"NPC type should more than 1.");
-
-		NPCText = !string.IsNullOrEmpty(text)
-			? text
-			: throw new ArgumentNullException("Argument 'text' should not be empty!");
 	}
 
 	public int NPCType { get; set; }
 
-	public string NPCText { get; set; }
+	public string NPCText => GetText("NPCText");
 
 	public override float Progress => Main.LocalPlayer.talkNPC >= NPCID.None && Main.npc[Main.LocalPlayer.talkNPC].type == NPCType ? 1f : 0f;
 
@@ -33,7 +29,10 @@ public class TalkNPCObjective : PlayerObjectiveBase
 	{
 		base.Complete();
 
-		Main.npcChatText = NPCText;
+		if (!string.IsNullOrEmpty(NPCText))
+		{
+			Main.npcChatText = NPCText;
+		}
 	}
 
 	public override void GetObjectivesIcon(QuestIconGroup iconGroup)

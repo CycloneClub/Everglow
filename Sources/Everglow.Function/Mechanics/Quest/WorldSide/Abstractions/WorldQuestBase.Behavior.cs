@@ -11,6 +11,7 @@ public abstract partial class WorldQuestBase
 {
 	protected WorldQuestBase()
 	{
+		Objectives = new WorldObjectiveContainer(this);
 		Objectives.OnNodeCompleted += Objectives_OnNodeCompleted;
 		Objectives.OnObjectiveRewardRequested += Objectives_BroadcastObjectiveRewards;
 		Objectives.OnObjectiveActivated += Objectives_OnObjectiveActivated;
@@ -30,7 +31,7 @@ public abstract partial class WorldQuestBase
 
 	public virtual float Progress => Objectives.Progress;
 
-	public WorldObjectiveContainer Objectives { get; } = new();
+	public WorldObjectiveContainer Objectives { get; }
 
 	public IReadOnlyList<WorldObjectiveBase> ActiveObjectives => _activatedObjectives;
 

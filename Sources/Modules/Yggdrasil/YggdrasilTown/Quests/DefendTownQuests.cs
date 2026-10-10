@@ -17,18 +17,15 @@ public sealed class DefendTownQuest : TownNpcQuest
 	public override void Initialize()
 	{
 		Objectives
-			.Add(new WorldTalkObjective(GiverNpcType, Text(Name + ".IntroDialogue")).WithDescription(Text(Name + ".IntroObjective")))
-			.Add(new DrunkenMinerInvasionObjective().WithDescription(Text("DefendTownOneQuest.InvasionDescription")))
-			.Add(new WorldTalkObjective(GiverNpcType, Text("DefendTownOneQuest.ReportDialogue")).WithDescription(Text("DefendTownOneQuest.ReportDescription")))
-			.Add(new WorldReachObjective(_ => false, Text("DefendTownTwoQuest.Objective"))
-				.WithDescription(Text("DefendTownTwoQuest.InvasionDescription")))
-			.Add(new WorldTalkObjective(GiverNpcType, Text("DefendTownTwoQuest.ReportDialogue")).WithDescription(Text("DefendTownTwoQuest.ReportDescription")))
-			.Add(new WorldReachObjective(_ => false, Text("DefendTownThreeQuest.Objective"))
-				.WithDescription(Text("DefendTownThreeQuest.InvasionDescription")))
-			.Add(new WorldTalkObjective(GiverNpcType, Text("DefendTownThreeQuest.ReportDialogue")).WithDescription(Text("DefendTownThreeQuest.ReportDescription")))
-			.Add(new WorldReachObjective(_ => false, Text("DefendTownFourQuest.Objective"))
-				.WithDescription(Text("DefendTownFourQuest.InvasionDescription")))
-			.Add(new WorldTalkObjective(GiverNpcType, Text("DefendTownFourQuest.ReportDialogue")).WithDescription(Text("DefendTownFourQuest.ReportDescription")));
+			.Add(new WorldTalkObjective(GiverNpcType))
+			.Add(new DrunkenMinerInvasionObjective())
+			.Add(new WorldTalkObjective(GiverNpcType))
+			.Add(new WorldReachObjective(_ => false))
+			.Add(new WorldTalkObjective(GiverNpcType))
+			.Add(new WorldReachObjective(_ => false))
+			.Add(new WorldTalkObjective(GiverNpcType))
+			.Add(new WorldReachObjective(_ => false))
+			.Add(new WorldTalkObjective(GiverNpcType));
 	}
 
 	public override int GiverNpcType => ModContent.NPCType<Howard_Warden>();
@@ -45,8 +42,6 @@ public sealed class DefendTownQuest : TownNpcQuest
 		private static DrunkenMinerInvasion Invasion => ModContent.GetInstance<DrunkenMinerInvasion>();
 
 		private static bool Downed => YggdrasilWorld.InYggdrasil && Invasion.Downed;
-
-		private readonly string objectiveText = Text("DefendTownOneQuest.Objective");
 
 		public bool Reached { get; private set; }
 
@@ -90,7 +85,7 @@ public sealed class DefendTownQuest : TownNpcQuest
 			iconGroup.Add(NPCQuestIcon.Create(DrunkenMinerInvasion.EnemyType));
 
 		public override string GetObjectiveText() => YggdrasilWorld.InYggdrasil && Invasion is { Active: true } invasion
-			? $"{objectiveText} ({invasion.DefeatedEnemies}/{invasion.TargetCount})" : objectiveText;
+			? $"{base.GetObjectiveText()} ({invasion.DefeatedEnemies}/{invasion.TargetCount})" : base.GetObjectiveText();
 
 		public override void SaveData(TagCompound tag)
 		{

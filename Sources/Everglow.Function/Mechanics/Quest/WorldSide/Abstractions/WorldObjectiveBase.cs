@@ -2,6 +2,7 @@ using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Structure;
 using Everglow.Commons.Mechanics.Quest.Presentation.Icons;
 using Terraria.ModLoader.IO;
+using Terraria.Localization;
 
 namespace Everglow.Commons.Mechanics.Quest.WorldSide.Abstractions;
 
@@ -27,7 +28,9 @@ public abstract class WorldObjectiveBase : IDeltaSyncObjective
 
 	public int ObjectiveID { get; set; }
 
-	public string Description { get; private set; } = string.Empty;
+	public string LocalizationKey { get; set; } = string.Empty;
+
+	public string Description => GetText("Description");
 
 	public virtual float Progress { get; } = 1f;
 
@@ -39,12 +42,6 @@ public abstract class WorldObjectiveBase : IDeltaSyncObjective
 	public bool RewardClaimed { get; private set; } = false;
 
 	public virtual bool NeedDeltaSync { get; protected set; } = false;
-
-	public WorldObjectiveBase WithDescription(string description)
-	{
-		Description = description;
-		return this;
-	}
 
 	/// <summary>
 	/// Adds reward items and returns this objective for fluent configuration.
@@ -142,7 +139,13 @@ public abstract class WorldObjectiveBase : IDeltaSyncObjective
 
 	public abstract void GetObjectivesIcon(QuestIconGroup iconGroup);
 
-	public abstract string GetObjectiveText();
+	public string GetText(string field)
+	{
+		string key = LocalizationKey + "." + field;
+		return Language.Exists(key) ? Language.GetTextValue(key) : string.Empty;
+	}
+
+	public virtual string GetObjectiveText() => GetText("ObjectiveText");
 
 	public virtual void LoadData(TagCompound tag)
 	{

@@ -3,6 +3,8 @@ using System.Text.Json;
 using Terraria.Localization;
 using Terraria.ID;
 using Everglow.Commons.Mechanics.Quest.PlayerSide.Objectives;
+using Everglow.Commons.Mechanics.Quest.PlayerSide.Abstractions;
+using Everglow.Commons.Mechanics.Quest.WorldSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Objectives;
 using Everglow.Commons.UI.StringDrawerSystem.DrawerItems.ImageDrawers;
 using Everglow.Commons.Mechanics.Quest.Core;
@@ -39,9 +41,12 @@ public class TextDefinitionTest
 			root = root.Parent;
 		}
 		Assert.IsNotNull(root);
-		using var document = JsonDocument.Parse(File.ReadAllText(Path.Combine(
-			root.FullName, "Sources", "Everglow", "Localization", culture, "Mods.Everglow.QuestSystem.hjson")));
-		AddTexts(document.RootElement, "Mods.Everglow.QuestSystem", texts);
+		foreach (string section in new[] { "QuestSystem", "TownQuests", "Quests" })
+		{
+			using var document = JsonDocument.Parse(File.ReadAllText(Path.Combine(
+				root.FullName, "Sources", "Everglow", "Localization", culture, $"Mods.Everglow.{section}.hjson")));
+			AddTexts(document.RootElement, "Mods.Everglow." + section, texts);
+		}
 	}
 
 	private static void AddTexts(JsonElement element, string prefix, Dictionary<string, LocalizedText> texts)
@@ -52,6 +57,14 @@ public class TextDefinitionTest
 			if (property.Value.ValueKind == JsonValueKind.Object)
 			{
 				AddTexts(property.Value, key, texts);
+			}
+			else if (property.Value.ValueKind == JsonValueKind.Array)
+			{
+				int index = 0;
+				foreach (var entry in property.Value.EnumerateArray())
+				{
+					AddTexts(entry, $"{key}.{index++}", texts);
+				}
 			}
 			else
 			{
@@ -540,15 +553,143 @@ public class TextDefinitionTest
 	}
 
 	[TestMethod]
-	public void DefaultDialogueFollowsLanguageButAuthoredDialogueIsPreserved()
+	[DataRow(false)]
+	[DataRow(true)]
+	public void ObjectiveDescriptionAndDefaultTextFollowLanguageTogether(bool worldSide)
+	{
+		LoadQuestLanguage("en-US");
+		var world = new WorldConsumeItemObjective(ItemID.WoodenArrow, 2);
+		var player = new ConsumeItemObjective([ItemID.WoodenArrow], 2);
+		new LocalizedWorldQuest().Objectives.Add(world);
+		new LocalizedPlayerQuest().Objectives.Add(player);
+		string Render() => TextDefinition.GetQuestObjectivesText(new QuestView
+		{
+			State = QuestViewState.Active,
+			ObjectiveNodes =
+			[
+				new LeafObjectiveNodeView(new ObjectiveView
+				{
+					State = ObjectiveViewState.Active,
+					Description = worldSide ? world.Description : player.Description,
+					ObjectiveText = worldSide ? world.GetObjectiveText() : player.GetObjectiveText(),
+				}),
+			],
+		});
+		StringAssert.Contains(Render(), "Anna seems to have a small favor to ask.");
+		StringAssert.Contains(Render(), "Consume ");
+		LoadQuestLanguage("zh-Hans");
+		StringAssert.Contains(Render(), "安娜似乎有点小事想请你帮忙，去和她聊聊吧。");
+		StringAssert.Contains(Render(), "消耗");
+		Assert.IsFalse(world.Completed);
+		Assert.IsFalse(player.Completed);
+		LoadQuestLanguage("en-US");
+		StringAssert.Contains(Render(), "Anna seems to have a small favor to ask.");
+	}
+
+	private sealed class LocalizedWorldQuest : WorldQuestBase
+	{
+		public string Key { get; init; } = "Mods.Everglow.TownQuests.SmuggledAleQuest";
+
+		public override string LocalizationKey => Key;
+	}
+
+	private sealed class LocalizedPlayerQuest : PlayerQuestBase
+	{
+		public string Key { get; init; } = "Mods.Everglow.TownQuests.SmuggledAleQuest";
+
+		public override string LocalizationKey => Key;
+
+		public override string DisplayName => "Localization test";
+	}
+
+	[TestMethod]
+	public void ObjectiveArrayDescriptionsFollowFlattenedParallelAndBranchOrder()
+	{
+		const string key = "Mods.Everglow.TownQuests.SprainedBackQuest";
+		var world = new LocalizedWorldQuest { Key = key };
+		var player = new LocalizedPlayerQuest { Key = key };
+		var worldObjectives = Enumerable.Range(0, 4).Select(_ => new WorldConsumeItemObjective(ItemID.WoodenArrow, 2)).ToArray();
+		var playerObjectives = Enumerable.Range(0, 4).Select(_ => new ConsumeItemObjective([ItemID.WoodenArrow], 2)).ToArray();
+		world.Objectives.AddParallel(worldObjectives[0], worldObjectives[1]).AddBranch([worldObjectives[2]], [worldObjectives[3]]);
+		player.Objectives.AddParallel(playerObjectives[0], playerObjectives[1]).AddBranch([playerObjectives[2]], [playerObjectives[3]]);
+		string[] expected =
+		[
+			"贝蒂似乎正在为老板的伤势发愁，去问问她。",
+			"把脱稳花粉交给贝蒂，帮助她准备万花油。",
+			"把虫汁交给贝蒂，帮助她准备万花油。",
+			"两种原料都已交齐，和贝蒂确认一下。",
+		];
+		CollectionAssert.AreEqual(expected, worldObjectives.Select(objective => objective.Description).ToArray());
+		CollectionAssert.AreEqual(expected, playerObjectives.Select(objective => objective.Description).ToArray());
+	}
+
+	[TestMethod]
+	public void MissingObjectiveDescriptionsStayEmptyWithoutShiftingLaterEntries()
+	{
+		const string key = "Mods.Everglow.TownQuests.ProstheticMaintenanceQuest";
+		var world = new LocalizedWorldQuest { Key = key };
+		var player = new LocalizedPlayerQuest { Key = key };
+		for (int i = 0; i < 5; i++)
+		{
+			world.Objectives.Add(new WorldConsumeItemObjective(ItemID.WoodenArrow, 2));
+			player.Objectives.Add(new ConsumeItemObjective([ItemID.WoodenArrow], 2));
+		}
+		Assert.AreEqual(string.Empty, world.Objectives.AllObjectives[0].Description);
+		Assert.AreEqual(string.Empty, player.Objectives.AllObjectives[0].Description);
+		Assert.AreEqual("格尔格注意到了你的青缎材料，问问他需要什么。", world.Objectives.AllObjectives[1].Description);
+		Assert.AreEqual("格尔格注意到了你的青缎材料，问问他需要什么。", player.Objectives.AllObjectives[1].Description);
+		Assert.AreEqual(string.Empty, world.Objectives.AllObjectives[4].Description);
+		Assert.AreEqual(string.Empty, player.Objectives.AllObjectives[4].Description);
+		Assert.AreEqual(string.Empty, new WorldConsumeItemObjective(ItemID.WoodenArrow, 2).Description);
+		Assert.AreEqual(string.Empty, new ConsumeItemObjective([ItemID.WoodenArrow], 2).Description);
+	}
+
+	[TestMethod]
+	public void ObjectiveDialogueAndCustomTextFollowCurrentLanguage()
+	{
+		const string prefix = "Mods.Everglow.TownQuests.SmuggledAleQuest.Objectives.";
+		var worldTalk = new WorldTalkObjective(NPCID.Guide) { LocalizationKey = prefix + "0" };
+		var playerTalk = new TalkNPCObjective(NPCID.Guide) { LocalizationKey = prefix + "0" };
+		var worldGive = new WorldGiveObjective(NPCID.Guide, ItemID.Ale, 5) { LocalizationKey = prefix + "1" };
+		var playerGive = new GiveItemObjective([ItemID.Ale], 5, NPCID.Guide) { LocalizationKey = prefix + "1" };
+		var reach = new WorldReachObjective(_ => false) { LocalizationKey = "Mods.Everglow.Quests.TestReach.Objectives.0" };
+		var explore = new WorldExploreObjective(500, _ => false) { LocalizationKey = "Mods.Everglow.Quests.TestExplore.Objectives.0" };
+		StringAssert.Contains(worldTalk.NPCText, "麦芽酒");
+		Assert.AreEqual(worldTalk.NPCText, playerTalk.NPCText);
+		StringAssert.Contains(worldGive.StartText, "麦芽酒");
+		StringAssert.Contains(worldGive.EndText, "谢啦");
+		Assert.AreEqual(worldGive.StartText, playerGive.StartText);
+		Assert.AreEqual(worldGive.EndText, playerGive.EndText);
+		Assert.AreEqual("到达沙漠", reach.GetObjectiveText());
+		Assert.AreEqual("在丛林中探索 (0/500)", explore.GetObjectiveText());
+
+		LoadQuestLanguage("en-US");
+		StringAssert.Contains(worldTalk.NPCText, "have you got any ale?");
+		Assert.AreEqual(worldTalk.NPCText, playerTalk.NPCText);
+		StringAssert.Contains(worldGive.StartText, "have you got any ale?");
+		StringAssert.Contains(worldGive.EndText, "Thanks!");
+		Assert.AreEqual(worldGive.StartText, playerGive.StartText);
+		Assert.AreEqual(worldGive.EndText, playerGive.EndText);
+		Assert.AreEqual("Reach the Desert", reach.GetObjectiveText());
+		Assert.AreEqual("Explore the Jungle (0/500)", explore.GetObjectiveText());
+	}
+
+	[TestMethod]
+	public void MissingAndExplicitEmptyDialogueStayEmptyAcrossLanguages()
 	{
 		var defaults = new GiveItemObjective([ItemID.WoodenArrow], 2, NPCID.Guide);
-		var authored = new GiveItemObjective([ItemID.WoodenArrow], 2, NPCID.Guide, "Custom request", "Custom thanks");
-		Assert.AreEqual("谢谢你！", defaults.EndText);
+		Assert.AreEqual(string.Empty, defaults.StartText);
+		Assert.AreEqual(string.Empty, defaults.EndText);
 		LoadQuestLanguage("en-US");
-		Assert.AreEqual("Please bring me some items.", defaults.StartText);
-		Assert.AreEqual("Thank you!", defaults.EndText);
-		Assert.AreEqual("Custom request", authored.StartText);
-		Assert.AreEqual("Custom thanks", authored.EndText);
+		Assert.AreEqual(string.Empty, defaults.StartText);
+		Assert.AreEqual(string.Empty, defaults.EndText);
+		Assert.AreEqual(string.Empty, new WorldGiveObjective(NPCID.Guide, ItemID.Ale, 5).StartText);
+		Assert.AreEqual(string.Empty, new WorldTalkObjective(NPCID.Guide).NPCText);
+		Assert.AreEqual(string.Empty, new TalkNPCObjective(NPCID.Guide).NPCText);
+		Language.GetOrRegister("Tests.Empty.StartText", () => string.Empty);
+		Language.GetOrRegister("Tests.Empty.EndText", () => string.Empty);
+		defaults.LocalizationKey = "Tests.Empty";
+		Assert.AreEqual(string.Empty, defaults.StartText);
+		Assert.AreEqual(string.Empty, defaults.EndText);
 	}
 }

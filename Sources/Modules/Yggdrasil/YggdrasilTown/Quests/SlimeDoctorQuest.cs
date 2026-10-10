@@ -10,10 +10,9 @@ public sealed class SlimeDoctorQuest : TownNpcQuest
 	public override void Initialize()
 	{
 		Objectives
-			.Add(new WorldTalkObjective(GiverNpcType, Text(Name + ".IntroDialogue")).WithDescription(Text(Name + ".IntroObjective")))
+			.Add(new WorldTalkObjective(GiverNpcType))
 			// TODO: 策划尚未明确凝胶数量，确认后替换为 WorldGiveObjective。
-			.Add(new WorldReachObjective(_ => false, Text(Name + ".Objective"))
-				.WithDescription(Text(Name + ".DeliveryDescription")));
+			.Add(new WorldReachObjective(_ => false));
 	}
 
 	public override int GiverNpcType => ModContent.NPCType<Guard_of_YggdrasilTown>();

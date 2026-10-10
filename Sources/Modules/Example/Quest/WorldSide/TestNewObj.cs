@@ -12,7 +12,7 @@ public class TestNewObj : WorldQuestBase
 		Objectives
 			.Add(new WorldCollectItemObjective(ItemID.Ichor, 10))
 			.Add(new WorldGiveObjective(NPCID.Guide, ItemID.Ichor, 10))
-			.Add(new WorldReachObjective((p) => p.InVanillaBiome(VanillaBiomes.Desert), "到达沙漠"))
+			.Add(new WorldReachObjective((p) => p.InVanillaBiome(VanillaBiomes.Desert)))
 			.Add(new WorldTalkObjective(NPCID.Nurse));
 	}
 }

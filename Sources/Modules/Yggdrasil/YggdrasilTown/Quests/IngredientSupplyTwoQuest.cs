@@ -11,9 +11,9 @@ public sealed class IngredientSupplyTwoQuest : TownNpcQuest
 	public override void Initialize()
 	{
 		Objectives
-			.Add(new WorldTalkObjective(GiverNpcType, Text(Name + ".IntroDialogue")).WithDescription(Text(Name + ".IntroObjective")))
-			.Add(new WorldKillNPCObjective(ModContent.NPCType<MossyThornTurtle>(), 1).WithDescription(Text(Name + ".DefeatDescription")))
-			.Add(new WorldTalkObjective(GiverNpcType, Text(Name + ".Completion")).WithDescription(Text(Name + ".ReportDescription")));
+			.Add(new WorldTalkObjective(GiverNpcType))
+			.Add(new WorldKillNPCObjective(ModContent.NPCType<MossyThornTurtle>(), 1))
+			.Add(new WorldTalkObjective(GiverNpcType));
 	}
 
 	public override int GiverNpcType => ModContent.NPCType<Restauranteur>();

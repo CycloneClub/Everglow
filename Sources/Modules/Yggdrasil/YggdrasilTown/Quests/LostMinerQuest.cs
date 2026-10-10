@@ -11,8 +11,8 @@ public sealed class LostMinerQuest : TownNpcQuest
 {
 	public override void Initialize() =>
 		Objectives
-			.Add(new WorldReachObjective(_ => false, Text(Name + ".Objective")))
-			.Add(new WorldReachObjective(_ => false, Text(Name + ".LightObjective")));
+			.Add(new WorldReachObjective(_ => false))
+			.Add(new WorldReachObjective(_ => false));
 
 	public override int GiverNpcType => NPCID.None;
 

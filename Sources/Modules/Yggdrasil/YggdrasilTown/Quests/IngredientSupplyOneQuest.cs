@@ -11,10 +11,9 @@ public sealed class IngredientSupplyOneQuest : TownNpcQuest
 	public override void Initialize()
 	{
 		Objectives
-			.Add(new WorldTalkObjective(GiverNpcType, Text(Name + ".IntroDialogue")).WithDescription(Text(Name + ".IntroObjective")))
+			.Add(new WorldTalkObjective(GiverNpcType))
 			// TODO: 策划中的晚饭尚未指定物品；交付流程先独立完成。
-			.Add(new WorldGiveObjective(GiverNpcType, ModContent.ItemType<GrassCarp>(), 5, Text(Name + ".IntroDialogue"), Text(Name + ".Completion"))
-				.WithDescription(Text(Name + ".DeliveryDescription")));
+			.Add(new WorldGiveObjective(GiverNpcType, ModContent.ItemType<GrassCarp>(), 5));
 	}
 
 	public override int GiverNpcType => ModContent.NPCType<Restauranteur>();

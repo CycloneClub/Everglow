@@ -9,7 +9,7 @@ public class TestDeltaSyncObjectiveTest
 	[TestMethod]
 	public void ReceiveDelta_MergesContributionsWithoutReversingCompletion()
 	{
-		WorldObjectiveBase objective = new WorldReachObjective(_ => false, "Reach the destination");
+		WorldObjectiveBase objective = new WorldReachObjective(_ => false);
 		IDeltaSyncObjective sync = objective;
 		using var stream = new MemoryStream();
 		using var writer = new BinaryWriter(stream);
@@ -29,7 +29,7 @@ public class TestDeltaSyncObjectiveTest
 	[DataRow(true)]
 	public void MainSnapshot_RoundTripsAuthoritativeCompletion(bool reached)
 	{
-		WorldObjectiveBase authority = new WorldReachObjective(_ => false, "Reach the destination");
+		WorldObjectiveBase authority = new WorldReachObjective(_ => false);
 		using var contribution = new MemoryStream();
 		new BinaryWriter(contribution).Write(reached);
 		contribution.Position = 0;
@@ -39,7 +39,7 @@ public class TestDeltaSyncObjectiveTest
 		authority.SendMain(new BinaryWriter(stream));
 		Assert.AreEqual(1L, stream.Length);
 		stream.Position = 0;
-		WorldObjectiveBase receiver = new WorldReachObjective(_ => false, "Reach the destination");
+		WorldObjectiveBase receiver = new WorldReachObjective(_ => false);
 		receiver.ReceiveMain(new BinaryReader(stream));
 		Assert.AreEqual(reached, receiver.CheckCompletion());
 	}
@@ -47,7 +47,7 @@ public class TestDeltaSyncObjectiveTest
 	[TestMethod]
 	public void ReceiveMain_ReplacesStaleLocalCompletion()
 	{
-		WorldObjectiveBase objective = new WorldReachObjective(_ => false, "Reach the destination");
+		WorldObjectiveBase objective = new WorldReachObjective(_ => false);
 		using var stream = new MemoryStream();
 		using var writer = new BinaryWriter(stream);
 		writer.Write(true);
@@ -64,7 +64,7 @@ public class TestDeltaSyncObjectiveTest
 	[TestMethod]
 	public void ReceiveDelta_ConsumesOnlyItsOwnPayload()
 	{
-		WorldObjectiveBase objective = new WorldReachObjective(_ => false, "Reach the destination");
+		WorldObjectiveBase objective = new WorldReachObjective(_ => false);
 		using var stream = new MemoryStream();
 		using var writer = new BinaryWriter(stream);
 		writer.Write(true);

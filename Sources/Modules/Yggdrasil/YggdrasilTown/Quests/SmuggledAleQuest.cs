@@ -10,9 +10,8 @@ public sealed class SmuggledAleQuest : TownNpcQuest
 	public override void Initialize()
 	{
 		Objectives
-			.Add(new WorldTalkObjective(GiverNpcType, Text(Name + ".IntroDialogue")).WithDescription(Text(Name + ".IntroObjective")))
-			.Add(new WorldGiveObjective(GiverNpcType, ItemID.Ale, 5, Text(Name + ".IntroDialogue"), Text(Name + ".DeliveryEndDialogue"))
-				.WithDescription(Text(Name + ".DeliveryDescription"))
+			.Add(new WorldTalkObjective(GiverNpcType))
+			.Add(new WorldGiveObjective(GiverNpcType, ItemID.Ale, 5)
 				.WithRewards(new Item(ItemID.GoldCoin, 3), new Item(ItemID.Gel, 25)));
 	}
 

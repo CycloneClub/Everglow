@@ -68,11 +68,6 @@ public partial class WorldQuestViewAdapterTest
 
 	private sealed class StubObjective : WorldObjectiveBase
 	{
-		public string DescriptionValue
-		{
-			set => WithDescription(value);
-		}
-
 		public string ObjectiveTextValue { get; set; } = string.Empty;
 
 		public bool Ready { get; set; }

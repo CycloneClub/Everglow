@@ -1,3 +1,4 @@
+using Terraria.Localization;
 using System.Reflection;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Objectives;
 using Terraria;
@@ -11,6 +12,8 @@ namespace Everglow.UnitTests.Function.QuestSystem;
 [DoNotParallelize]
 public class WorldGiveObjectiveTest
 {
+	private LanguageManager oldLanguage = null!;
+
 	private Player[] oldPlayers = null!;
 	private NPC[] oldNpcs = null!;
 	private int oldPlayerIndex;
@@ -22,6 +25,10 @@ public class WorldGiveObjectiveTest
 	public void Initialize()
 	{
 		Program.SavePath = string.Empty;
+		oldLanguage = LanguageManager.Instance;
+		LanguageManager.Instance = (LanguageManager)Activator.CreateInstance(typeof(LanguageManager), true)!;
+		Language.GetOrRegister("Tests.WorldGive.StartText", () => "Bring five ales.");
+		Language.GetOrRegister("Tests.WorldGive.EndText", () => "Thank you.");
 		oldPlayers = Main.player;
 		oldNpcs = Main.npc;
 		oldPlayerIndex = Main.myPlayer;
@@ -45,6 +52,7 @@ public class WorldGiveObjectiveTest
 	[TestCleanup]
 	public void Cleanup()
 	{
+		LanguageManager.Instance = oldLanguage;
 		Main.player = oldPlayers;
 		Main.npc = oldNpcs;
 		Main.myPlayer = oldPlayerIndex;
@@ -61,7 +69,7 @@ public class WorldGiveObjectiveTest
 	public void DeliveryShowsRequestThenThanksAndConsumesOnlyOnce(int mode)
 	{
 		Main.netMode = mode;
-		var objective = new WorldGiveObjective(NPCID.Guide, ItemID.Ale, 5, "Bring five ales.", "Thank you.");
+		var objective = new WorldGiveObjective(NPCID.Guide, ItemID.Ale, 5) { LocalizationKey = "Tests.WorldGive" };
 		TalkTo(0);
 		Main.LocalPlayer.inventory[0] = new Item { type = ItemID.Ale, stack = 4 };
 		objective.Update();
@@ -85,7 +93,7 @@ public class WorldGiveObjectiveTest
 	{
 		TalkTo(npcIndex);
 		Main.LocalPlayer.inventory[0] = new Item { type = ItemID.Ale, stack = 5 };
-		new WorldGiveObjective(NPCID.Guide, ItemID.Ale, 5, "Bring five ales.", "Thank you.").Update();
+		new WorldGiveObjective(NPCID.Guide, ItemID.Ale, 5) { LocalizationKey = "Tests.WorldGive" }.Update();
 		Assert.AreEqual("Original dialogue", Main.npcChatText);
 		Assert.AreEqual(5, Main.LocalPlayer.inventory[0].stack);
 	}
@@ -98,7 +106,7 @@ public class WorldGiveObjectiveTest
 		Assert.AreEqual("Original dialogue", Main.npcChatText);
 		Main.netMode = NetmodeID.Server;
 		Main.LocalPlayer.inventory[0] = new Item { type = ItemID.Ale, stack = 5 };
-		new WorldGiveObjective(NPCID.Guide, ItemID.Ale, 5, "Bring five ales.", "Thank you.").Update();
+		new WorldGiveObjective(NPCID.Guide, ItemID.Ale, 5) { LocalizationKey = "Tests.WorldGive" }.Update();
 		Assert.AreEqual("Original dialogue", Main.npcChatText);
 		Assert.AreEqual(5, Main.LocalPlayer.inventory[0].stack);
 	}
@@ -109,7 +117,7 @@ public class WorldGiveObjectiveTest
 		Main.netMode = NetmodeID.MultiplayerClient;
 		TalkTo(0);
 		Main.LocalPlayer.inventory[0] = new Item { type = ItemID.Ale, stack = 5 };
-		var objective = new WorldGiveObjective(NPCID.Guide, ItemID.Ale, 5, "Bring five ales.", "Thank you.");
+		var objective = new WorldGiveObjective(NPCID.Guide, ItemID.Ale, 5) { LocalizationKey = "Tests.WorldGive" };
 		using var stream = new MemoryStream();
 		new BinaryWriter(stream).Write(true);
 		stream.Position = 0;

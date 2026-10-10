@@ -10,10 +10,10 @@ public sealed class TeahouseTalesTwoQuest : TownNpcQuest
 	public override void Initialize()
 	{
 		Objectives
-			.Add(new WorldTalkObjective(GiverNpcType, Text(Name + ".IntroDialogue")).WithDescription(Text(Name + ".IntroObjective")))
+			.Add(new WorldTalkObjective(GiverNpcType))
 			// TODO: 二层的调查地点、教团造物及完成规则尚未确定。
-			.Add(new WorldReachObjective(_ => false, Text(Name + ".Objective")).WithDescription(Text(Name + ".InvestigateDescription")))
-			.Add(new WorldTalkObjective(GiverNpcType, Text(Name + ".Completion")).WithDescription(Text(Name + ".ReportDescription")));
+			.Add(new WorldReachObjective(_ => false))
+			.Add(new WorldTalkObjective(GiverNpcType));
 	}
 
 	public override int GiverNpcType => ModContent.NPCType<TeahouseLady>();

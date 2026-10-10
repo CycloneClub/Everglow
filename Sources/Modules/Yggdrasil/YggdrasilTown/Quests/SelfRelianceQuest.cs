@@ -11,10 +11,10 @@ public sealed class SelfRelianceQuest : TownNpcQuest
 	public override void Initialize()
 	{
 		Objectives
-			.Add(new WorldTalkObjective(GiverNpcType, Text(Name + ".IntroDialogue")).WithDescription(Text(Name + ".IntroObjective")))
-			.Add(new WorldCollectItemObjective(ModContent.ItemType<LampFruit>(), 12).WithDescription(Text(Name + ".CollectDescription")))
+			.Add(new WorldTalkObjective(GiverNpcType))
+			.Add(new WorldCollectItemObjective(ModContent.ItemType<LampFruit>(), 12))
 			// TODO: 灯果汁腌草鱼及配方尚未实现；灯果只检查持有，不消耗。
-			.Add(new WorldTalkObjective(GiverNpcType, Text(Name + ".Completion")).WithDescription(Text(Name + ".ReportDescription")));
+			.Add(new WorldTalkObjective(GiverNpcType));
 	}
 
 	public override int GiverNpcType => ModContent.NPCType<Restauranteur>();

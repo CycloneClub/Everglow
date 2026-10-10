@@ -10,6 +10,13 @@ namespace Everglow.Commons.Mechanics.Quest.PlayerSide.Structure;
 /// </summary>
 public class PlayerObjectiveContainer
 {
+	private readonly PlayerQuestBase quest;
+
+	public PlayerObjectiveContainer(PlayerQuestBase quest = null)
+	{
+		this.quest = quest;
+	}
+
 	private const string StructuralObjectivesSaveKey = "StructuralObjectives";
 
 	private readonly List<PlayerObjectiveNodeBase> _nodes = [];
@@ -287,6 +294,7 @@ public class PlayerObjectiveContainer
 		}
 
 		objective.ObjectiveID = _objectives.Count;
+		objective.LocalizationKey = quest is null ? string.Empty : $"{quest.LocalizationKey}.Objectives.{objective.ObjectiveID}";
 		objective.OnInitialize();
 		_objectives.Add(objective);
 	}

@@ -2,6 +2,7 @@ using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.PlayerSide.Structure;
 using Everglow.Commons.Mechanics.Quest.Presentation.Icons;
 using Terraria.ModLoader.IO;
+using Terraria.Localization;
 
 namespace Everglow.Commons.Mechanics.Quest.PlayerSide.Abstractions;
 
@@ -21,7 +22,9 @@ public abstract class PlayerObjectiveBase : ITagCompoundEntity
 
 	public int ObjectiveID { get; set; }
 
-	public string Description { get; private set; } = string.Empty;
+	public string LocalizationKey { get; set; } = string.Empty;
+
+	public string Description => GetText("Description");
 
 	public virtual float Progress { get; } = 1f;
 
@@ -70,12 +73,6 @@ public abstract class PlayerObjectiveBase : ITagCompoundEntity
 		}
 	}
 
-	public PlayerObjectiveBase WithDescription(string description)
-	{
-		Description = description;
-		return this;
-	}
-
 	/// <summary>
 	/// Adds reward items and returns this objective for fluent configuration.
 	/// </summary>
@@ -114,7 +111,13 @@ public abstract class PlayerObjectiveBase : ITagCompoundEntity
 
 	public abstract void GetObjectivesIcon(QuestIconGroup iconGroup);
 
-	public abstract string GetObjectiveText();
+	public string GetText(string field)
+	{
+		string key = LocalizationKey + "." + field;
+		return Language.Exists(key) ? Language.GetTextValue(key) : string.Empty;
+	}
+
+	public virtual string GetObjectiveText() => GetText("ObjectiveText");
 
 	public virtual void LoadData(TagCompound tag)
 	{

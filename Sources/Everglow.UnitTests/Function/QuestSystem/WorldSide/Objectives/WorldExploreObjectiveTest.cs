@@ -47,7 +47,7 @@ public class WorldExploreObjectiveTest
 		// without treating teleports as walking.
 		const float speed = 5f;
 		int requirement = (int)(speed * WorldQuestManager.UpdateInterval);
-		var objective = new WorldExploreObjective(requirement, _ => true, "explore");
+		var objective = new WorldExploreObjective(requirement, _ => true);
 		Main.LocalPlayer.velocity = new Vector2(speed, 0f);
 
 		objective.Update();
@@ -61,7 +61,7 @@ public class WorldExploreObjectiveTest
 	{
 		const float speed = 5f;
 		int requirement = (int)(speed * WorldQuestManager.UpdateInterval);
-		var objective = new WorldExploreObjective(requirement, _ => false, "explore");
+		var objective = new WorldExploreObjective(requirement, _ => false);
 		Main.LocalPlayer.velocity = new Vector2(speed, 0f);
 
 		objective.Update();
@@ -73,7 +73,7 @@ public class WorldExploreObjectiveTest
 	[TestMethod]
 	public void Update_DoesNotCountTeleportDisplacement()
 	{
-		var objective = new WorldExploreObjective(100, _ => true, "explore");
+		var objective = new WorldExploreObjective(100, _ => true);
 		Main.LocalPlayer.velocity = Vector2.Zero;
 		Main.LocalPlayer.position = Vector2.Zero;
 		objective.Update();
@@ -90,7 +90,7 @@ public class WorldExploreObjectiveTest
 	{
 		Main.netMode = NetmodeID.MultiplayerClient;
 		const float speed = 5f;
-		var objective = new WorldExploreObjective(int.MaxValue, _ => true, "explore");
+		var objective = new WorldExploreObjective(int.MaxValue, _ => true);
 		Main.LocalPlayer.velocity = new Vector2(speed, 0f);
 
 		objective.Update();
