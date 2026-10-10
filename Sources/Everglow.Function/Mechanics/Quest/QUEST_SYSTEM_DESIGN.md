@@ -77,7 +77,7 @@ Player `InstanceId` 随任务写入玩家存档；加载时只有合法 N 格式
 - `TryExecute` 根据 `QuestSide` 调用与对应 Manager 成对的既有 Actions；Actions 重新校验完整 Identity 和当前可用操作，并以 `bool` 表示执行结果。Hint 与 HideMode 不参与接取、提交、重试或领奖授权。
 - 未知 Side、任务缺失或 Player 实例过期时返回 `false`。adapter 的投影异常直接向调用方暴露。
 
-Player 的 `Accept` 由 NPC、物品等外部交互调用 `PlayerQuestSystem.Actions.TryExecute(new QuestAction(identity, QuestActionType.Accept))`。入口从当前 Manager 取得任务身份；批量入口先按自身 Source/SubSource 与 Available 状态快照候选身份，再逐项执行。Actions 重新校验实例与状态，重复交互或过期快照不会重复激活；入口不直接写 State，也不重新创建同名任务覆盖已有 Available 实例。Hint 面板不提供接取按钮。DEBUG 示例由 `QuestPlayer` 集中注册为 Available，Source A NPC 与 Default 来源物品分别接取各自集合，具体代码见 [README.md](README.md#hint-遮罩与外部接取)。
+Player 的 `Accept` 由 NPC、物品等外部交互调用 `PlayerQuestSystem.Actions.TryExecute(new QuestAction(identity, QuestActionType.Accept))`。入口从当前 Manager 取得任务身份；批量入口先按自身 Source/SubSource 与 Available 状态快照候选身份，再逐项执行。Actions 重新校验实例与状态，重复交互或过期快照不会重复激活；入口不直接写 State，也不重新创建同名任务覆盖已有 Available 实例。Hint 面板不提供接取按钮。DEBUG 示例由 Example 模块的 `ExampleQuestPlayer` 在进入世界后的首次玩家更新中注册为 Available（此时任务存档已经恢复），Source A NPC 与 Default 来源物品分别接取各自集合，具体代码见 [README.md](README.md#hint-遮罩与外部接取)。
 
 Player 的 `Submit` 只在 Accepted 且目标已完成时提供；执行时调用任务既有完成入口，并以是否进入 Completed 作为结果。自动完成与手动提交继续遵守既有配置。World 不提供 Submit；Failed 状态下的 `Retry` 仍只在单机导出。Completed 状态下，当前玩家名不在 Ordinal 领取名单时导出 `ClaimReward`。单机执行后直接记录并发奖；多人执行只发送任务名并等待主服快照，玩家身份不进入 `QuestAction`。
 
@@ -98,3 +98,5 @@ WorldSide 领奖只保存 `RewardClaimedPlayers`，不保存全局 bool。主服
 守卫任务的 `DrunkenMinerInvasionObjective` 在天穹树内且当前为夜晚时尝试启动尚未通关的入侵，不记录昼夜等待状态。`DrunkenMinerInvasion.Downed` 由事件胜利时设置，随事件保存和同步，重新启动事件不清除它；世界重置时清除。目标直接检查该记录，因此既有胜利也能满足新目标，目标重置或重试不清除事件通关记录。普通停用不设置 Downed。子服通过既有目标同步通道向主服上传当前通关状态，无需完成通知订阅或待确认通知缓存；事件状态本身仍只在当前世界同步。
 
 醉酒矿工入侵直接继承 ModEvent，刷怪配置、成员追踪及胜利规则集中在该具体入侵文件中；目前不抽取通用入侵基类。击杀统一由 EventGlobalNPC.OnKill 接入，EventSystem 在单机或服务端遍历活动事件快照，调用 ModEvent.OnNPCKilled；具体事件自行判断归属和计分，无需各自定义 GlobalNPC。
+
+游戏内示例任务及配套 NPC、物品和贴图位于 `Sources/Modules/Example/Quest/`。已有示例保留原完整类型名，因为玩家任务存档按 `Type.FullName` 恢复；程序集迁移不改变其存档身份。Function 不再承担示例注册或依赖示例内容。

@@ -318,7 +318,7 @@ R03 尚未游戏复现；R04 的定向场景见 A05。R08 不扩大为全部调�
 | 未完成的使用物品目标 | [UseItemObjective.cs](PlayerSide/Objectives/UseItemObjective.cs) |
 | 占位界面 | [任务树](UI/UIElements/QuestDetail/UIQuestTree.cs)、[星级](UI/UIElements/QuestDetail/UIQuestStarLevel.cs) |
 | 基础文本与筛选 | [TextDefinition.cs](Presentation/TextDefinition.cs)、[UIQuestFilter.cs](UI/UIElements/UIQuestFilter.cs) |
-| 游戏内样例 | [玩家侧样例](PlayerSide/Tests/)、[世界侧样例](WorldSide/Tests/) |
+| 游戏内样例 | [玩家侧样例](../../../Modules/Example/Quest/PlayerSide/)、[世界侧样例](../../../Modules/Example/Quest/WorldSide/) |
 | 设计与历史记录 | [当前设计](QUEST_SYSTEM_DESIGN.md)、[TODO.md](TODO.md) |
 
-`PlayerSide/Tests/`、`WorldSide/Tests/` 是模组内样例；自动化测试位于 `Sources/Everglow.UnitTests/Function/QuestSystem/`。
+`Sources/Modules/Example/Quest/PlayerSide/`、`Sources/Modules/Example/Quest/WorldSide/` 是模组内样例；自动化测试位于 `Sources/Everglow.UnitTests/Function/QuestSystem/`。

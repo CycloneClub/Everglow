@@ -19,10 +19,13 @@ namespace Everglow.Commons.Mechanics.Quest.PlayerSide.Tests.ExampleNPC;
 public class ExamplePerson : ModNPC
 {
 	public const string ShopName = "Shop";
+
 	public int NumberOfTimesTalkedTo = 0;
 
 	private static int shimmerHeadIndex;
 	private static Profiles.StackedNPCProfile nPCProfile;
+
+	public override string Texture => global::Everglow.Example.ModAsset.ExamplePerson_Mod;
 
 	public override void Load()
 	{

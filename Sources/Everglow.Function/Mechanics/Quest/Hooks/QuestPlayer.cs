@@ -1,6 +1,5 @@
 using Everglow.Commons.Mechanics.Quest.PlayerSide;
 using Everglow.Commons.Mechanics.Quest.PlayerSide.Abstractions;
-using Everglow.Commons.Mechanics.Quest.PlayerSide.Tests;
 using Everglow.Commons.Utilities;
 using Terraria.ModLoader.IO;
 
@@ -38,30 +37,6 @@ public class QuestPlayer : ModPlayer
 			PlayerQuestManager.Instance.ApplyData(questManagerData);
 			questManagerDataInitialized = true;
 		}
-
-#if DEBUG
-		// Register DEBUG samples only for the local player when its quest list is empty.
-		if (!Main.dedServ && Player.whoAmI == Main.myPlayer && PlayerQuestManager.Instance.Quests.Count == 0)
-		{
-			PlayerQuestManager.Instance.AddQuest(new KillNPCQuestTest(), PlayerQuestState.Available);
-			PlayerQuestManager.Instance.AddQuest(new ParallelQuestTest(), PlayerQuestState.Available);
-			PlayerQuestManager.Instance.AddQuest(new QuestObjectivesTest(), PlayerQuestState.Available);
-			PlayerQuestManager.Instance.AddQuest(new CancellableKillNPCQuestTest(), PlayerQuestState.Available);
-			PlayerQuestManager.Instance.AddQuest(new OpenPanelQuestTest(), PlayerQuestState.Available);
-			PlayerQuestManager.Instance.AddQuest(new BranchingQuestTest(), PlayerQuestState.Available);
-			PlayerQuestManager.Instance.AddQuest(new NoneQuest1(), PlayerQuestState.Available);
-			PlayerQuestManager.Instance.AddQuest(new NoneQuest2(), PlayerQuestState.Available);
-			PlayerQuestManager.Instance.AddQuest(new NoneQuest3(), PlayerQuestState.Available);
-			PlayerQuestManager.Instance.AddQuest(new NoneQuest4(), PlayerQuestState.Available);
-			PlayerQuestManager.Instance.AddQuest(new NoneQuest5(), PlayerQuestState.Available);
-			PlayerQuestManager.Instance.AddQuest(new NoneQuest6(), PlayerQuestState.Available);
-			PlayerQuestManager.Instance.AddQuest(new QuestTimerTest(), PlayerQuestState.Available);
-			PlayerQuestManager.Instance.AddQuest(new QuestIconTest(), PlayerQuestState.Available);
-			PlayerQuestManager.Instance.AddQuest(new GiveItemQuestTest(), PlayerQuestState.Available);
-			PlayerQuestManager.Instance.AddQuest(new ExploreQuestTest(), PlayerQuestState.Available);
-			PlayerQuestManager.Instance.AddQuest(new CancellableKillNPCQuestTest(), PlayerQuestState.Available);
-		}
-#endif
 	}
 
 	public override void SaveData(TagCompound tag)
