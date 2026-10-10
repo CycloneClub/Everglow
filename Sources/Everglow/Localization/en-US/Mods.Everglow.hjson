@@ -7,6 +7,16 @@ Bestiary: {
 
 Common.Message.HasAwoken: has awoken!
 
+Common.MirrorDemo.Panel: {
+	Title: Mirror tuning — drag to move
+	OffsetX: X offset
+	OffsetY: Y offset
+	Scale: Scale
+	Flip: Flip horizontally
+	On: On
+	Off: Off
+}
+
 Configs: {
 	EverglowClientConfig: {
 		DisplayName: Everglow Client Config
