@@ -6,6 +6,8 @@ public abstract partial class WorldQuestBase
 {
 	public virtual string Name => GetType().Name;
 
+	public virtual string LocalizationKey => $"Mods.Everglow.Quests.{Name}";
+
 	public virtual string DisplayName => Name;
 
 	public virtual string Description => string.Empty;

@@ -10,6 +10,6 @@ public class GiveItemQuestTest : PlayerQuestBase
 
 	public GiveItemQuestTest()
 	{
-		Objectives.Add(new GiveItemObjective([ItemID.DirtBlock], 10, ModContent.NPCType<ExamplePerson>(), "Give me xxxxx.", "Thank you"));
+		Objectives.Add(new GiveItemObjective([ItemID.DirtBlock], 10, ModContent.NPCType<ExamplePerson>()));
 	}
 }

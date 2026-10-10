@@ -29,7 +29,7 @@ PlayerSide/WorldSide Actions <──────────── QuestPresenta
 
 ## 文本、Hint 与 UI 遮罩
 
-DisplayName、Description、Hint、Objective 描述和非物品奖励描述均为 `string`，默认空字符串，并可继续携带现有 StringDrawer 标记。两侧 adapter 始终导出完整真实数据与 `HideMode`，不清空名称、描述、目标、奖励或计时，也不按提示文本删减 Actions。
+DisplayName、Description、Hint、Objective 描述和非物品奖励描述均为 `string`，默认空字符串，并可继续携带现有 StringDrawer 标记。Objective 描述由任务本地化前缀下的 Objectives 数组定义，按现有扁平 ObjectiveID 读取对应元素的 Description，缺少字段时为空。读取时解析当前语言，不缓存译文。数组顺序须与代码注册顺序一致，并行与分支内的叶目标也依次占用一个元素；没有描述的目标使用空对象占位。数组元素同时可按目标类型定义 NPCText、StartText、EndText、ObjectiveText；构造函数只接收玩法参数。自定义台词与目标文案均在使用时读取当前语言，进度仍由代码追加。两侧目标的台词字段缺失或为空时均不覆盖原 NPC 对话，不提供默认台词。任务默认前缀为 `Mods.Everglow.Quests.{Name}`，可覆盖 LocalizationKey；城镇任务使用 TownQuests 前缀。两侧 adapter 始终导出完整真实数据与 `HideMode`，不清空名称、描述、目标、奖励或计时，也不按提示文本删减 Actions。
 
 UI 仅按状态推导遮罩：Player Available、World Locked 显示独立 Hint 面板，其他状态显示普通详情。HideMode.None 表示不隐藏名称和 Hint 文案，不控制面板是否显示。空字符串、纯空白或字面量 `???` 都不改变遮罩状态。`QuestHideMode` 是普通枚举，按顺序声明 `None`、`Name`、`NameAndConditions`，默认 `None`；遮罩期间的显示矩阵如下：
 

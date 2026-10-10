@@ -80,9 +80,5 @@
 		"GiveAny": "向{0}提交{1}合计{2}个 {3}",
 		"Explore": "探索{0}",
 		"ExploreDistance": "在{0}中探索 ({2}/{1})"
-	},
-	"Dialogue": {
-		"GiveRequest": "请给我一些东西。",
-		"GiveThanks": "谢谢你！"
 	}
 }

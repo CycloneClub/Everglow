@@ -1,3 +1,4 @@
+using Terraria.Localization;
 using System.Reflection;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Objectives;
 using Terraria;
@@ -9,6 +10,8 @@ namespace Everglow.UnitTests.Function.QuestSystem;
 [DoNotParallelize]
 public class WorldTalkObjectiveTest
 {
+	private LanguageManager oldLanguage = null!;
+
 	private Player[] oldPlayers = null!;
 	private NPC[] oldNpcs = null!;
 	private int oldPlayerIndex;
@@ -19,6 +22,9 @@ public class WorldTalkObjectiveTest
 	public void Initialize()
 	{
 		Program.SavePath = string.Empty;
+		oldLanguage = LanguageManager.Instance;
+		LanguageManager.Instance = (LanguageManager)Activator.CreateInstance(typeof(LanguageManager), true)!;
+		Language.GetOrRegister("Tests.WorldTalk.NPCText", () => "A quest for you.");
 		oldPlayers = Main.player;
 		oldNpcs = Main.npc;
 		oldPlayerIndex = Main.myPlayer;
@@ -38,6 +44,7 @@ public class WorldTalkObjectiveTest
 	[TestCleanup]
 	public void Cleanup()
 	{
+		LanguageManager.Instance = oldLanguage;
 		Main.player = oldPlayers;
 		Main.npc = oldNpcs;
 		Main.myPlayer = oldPlayerIndex;
@@ -53,7 +60,7 @@ public class WorldTalkObjectiveTest
 	public void MatchingLocalConversationShowsTextWithoutClientCompletingWorld(int mode)
 	{
 		Main.netMode = mode;
-		var objective = new WorldTalkObjective(NPCID.Guide, "A quest for you.");
+		var objective = new WorldTalkObjective(NPCID.Guide) { LocalizationKey = "Tests.WorldTalk" };
 		TalkTo(0);
 		objective.Update();
 		Assert.AreEqual("A quest for you.", Main.npcChatText);
@@ -68,7 +75,7 @@ public class WorldTalkObjectiveTest
 		TalkTo(localNpc);
 		Main.player[1].active = true;
 		typeof(Player).GetProperty(nameof(Player.talkNPC))!.SetValue(Main.player[1], 0);
-		var objective = new WorldTalkObjective(NPCID.Guide, "A quest for you.");
+		var objective = new WorldTalkObjective(NPCID.Guide) { LocalizationKey = "Tests.WorldTalk" };
 		objective.Update();
 		Assert.IsTrue(objective.Talked);
 		Assert.AreEqual("Original dialogue", Main.npcChatText);
@@ -81,18 +88,18 @@ public class WorldTalkObjectiveTest
 		new WorldTalkObjective(NPCID.Guide).Update();
 		Assert.AreEqual("Original dialogue", Main.npcChatText);
 		Main.netMode = NetmodeID.Server;
-		new WorldTalkObjective(NPCID.Guide, "A quest for you.").Update();
+		new WorldTalkObjective(NPCID.Guide) { LocalizationKey = "Tests.WorldTalk" }.Update();
 		Assert.AreEqual("Original dialogue", Main.npcChatText);
 	}
 
 	[TestMethod]
 	public void CompletionSnapshotDoesNotReplaceDialogue()
 	{
-		var sender = new WorldTalkObjective(NPCID.Guide, "A quest for you.");
+		var sender = new WorldTalkObjective(NPCID.Guide) { LocalizationKey = "Tests.WorldTalk" };
 		TalkTo(0);
 		sender.Update();
 		sender.Complete();
-		var receiver = new WorldTalkObjective(NPCID.Guide, "A quest for you.");
+		var receiver = new WorldTalkObjective(NPCID.Guide) { LocalizationKey = "Tests.WorldTalk" };
 		Main.netMode = NetmodeID.MultiplayerClient;
 		Main.npcChatText = "Original dialogue";
 		using var stream = new MemoryStream();

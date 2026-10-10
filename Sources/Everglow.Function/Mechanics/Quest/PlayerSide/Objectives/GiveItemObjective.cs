@@ -19,38 +19,11 @@ public class GiveItemObjective : PlayerObjectiveBase
 			: throw new InvalidDataException($"NPC type should more than 0.");
 	}
 
-	public GiveItemObjective(List<int> itemTypes, int itemCount, int npcType, string startText, string endText)
-	{
-		InitializeItems(itemTypes, itemCount);
-		NPCType = npcType >= NPCID.None
-			? npcType
-			: throw new InvalidDataException($"NPC type should more than 0.");
-
-		StartText = !string.IsNullOrEmpty(startText)
-			? startText
-			: throw new ArgumentNullException("Argument 'text' should not be empty!");
-
-		EndText = !string.IsNullOrEmpty(endText)
-			? endText
-			: throw new ArgumentNullException("Argument 'text' should not be empty!");
-	}
-
 	public int NPCType { get; set; }
 
-	private string startText;
-	private string endText;
+	public string StartText => GetText("StartText");
 
-	public string StartText
-	{
-		get => startText ?? QuestText.Get("Dialogue.GiveRequest");
-		set => startText = value;
-	}
-
-	public string EndText
-	{
-		get => endText ?? QuestText.Get("Dialogue.GiveThanks");
-		set => endText = value;
-	}
+	public string EndText => GetText("EndText");
 
 	public List<int> ItemTypes { get; private set; } = [];
 
@@ -66,7 +39,7 @@ public class GiveItemObjective : PlayerObjectiveBase
 	{
 		base.Update();
 
-		if (IsTalkingToNPC)
+		if (IsTalkingToNPC && !string.IsNullOrEmpty(StartText))
 		{
 			Main.npcChatText = StartText;
 		}
@@ -106,7 +79,7 @@ public class GiveItemObjective : PlayerObjectiveBase
 			RemoveItem(Main.LocalPlayer.inventory);
 		}
 
-		if (IsTalkingToNPC)
+		if (IsTalkingToNPC && !string.IsNullOrEmpty(EndText))
 		{
 			Main.npcChatText = EndText;
 		}

@@ -9,6 +9,8 @@ public abstract partial class PlayerQuestBase : ITagCompoundEntity
 	/// </summary>
 	public virtual string Name => GetType().Name;
 
+	public virtual string LocalizationKey => $"Mods.Everglow.Quests.{Name}";
+
 	/// <summary>
 	/// 标识当前任务实例的持久化 ID
 	/// </summary>

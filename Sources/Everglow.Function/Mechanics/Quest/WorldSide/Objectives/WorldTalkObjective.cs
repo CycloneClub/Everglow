@@ -17,12 +17,6 @@ public class WorldTalkObjective : WorldObjectiveBase
 		NPCType = npcType;
 	}
 
-	public WorldTalkObjective(int npcType, string text)
-		: this(npcType)
-	{
-		NPCText = text;
-	}
-
 	private bool talking;
 
 	private bool oldTalking;
@@ -31,7 +25,7 @@ public class WorldTalkObjective : WorldObjectiveBase
 
 	public int NPCType { get; private set; }
 
-	public string NPCText { get; set; } = string.Empty;
+	public string NPCText => GetText("NPCText");
 
 	public override float Progress => Talked ? 1f : 0f;
 

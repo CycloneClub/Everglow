@@ -9,7 +9,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Quests;
 public sealed class NamelessPersonQuest : TownNpcQuest
 {
 	public override void Initialize() =>
-		Objectives.Add(new WorldReachObjective(_ => false, Text(Name + ".Objective")));
+		Objectives.Add(new WorldReachObjective(_ => false));
 
 	public override int GiverNpcType => NPCID.None;
 

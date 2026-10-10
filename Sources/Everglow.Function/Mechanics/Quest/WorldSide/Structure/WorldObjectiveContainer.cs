@@ -12,6 +12,13 @@ namespace Everglow.Commons.Mechanics.Quest.WorldSide.Structure;
 /// </summary>
 public class WorldObjectiveContainer
 {
+	private readonly WorldQuestBase quest;
+
+	public WorldObjectiveContainer(WorldQuestBase quest = null)
+	{
+		this.quest = quest;
+	}
+
 	/// <summary>
 	/// Fired when the current structural node requires completion.
 	/// </summary>
@@ -74,6 +81,7 @@ public class WorldObjectiveContainer
 	private void RegisterObjective(WorldObjectiveBase objective)
 	{
 		objective.ObjectiveID = _objectives.Count;
+		objective.LocalizationKey = quest is null ? string.Empty : $"{quest.LocalizationKey}.Objectives.{objective.ObjectiveID}";
 		_objectives.Add(objective);
 		objective.OnRewardRequested += rewardObjective => OnObjectiveRewardRequested?.Invoke(rewardObjective);
 	}
