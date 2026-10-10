@@ -1,8 +1,3 @@
-GlowingFirefly: {
-	DisplayName: Glowing Firefly
-	Tooltip: ""
-}
-
 DimmyFish: {
 	DisplayName: Dimmy Fish
 	Tooltip: ""
@@ -10,6 +5,11 @@ DimmyFish: {
 
 Filefish: {
 	DisplayName: Filefish
+	Tooltip: ""
+}
+
+GlowingFirefly: {
+	DisplayName: Glowing Firefly
 	Tooltip: ""
 }
 
@@ -25,7 +25,11 @@ GuidyFish: {
 
 ThermostatRod: {
 	DisplayName: Thermostat Rod
-	Tooltip: ""
+	Tooltip:
+		'''
+		Allows fishing in lava
+		Fishing line will not break while held
+		'''
 }
 
 TwilightRod: {

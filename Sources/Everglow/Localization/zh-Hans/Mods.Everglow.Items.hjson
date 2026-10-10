@@ -1,0 +1,720 @@
+// Compatibility keys; translations are maintained in the specific category files.
+ArcticshellfishWarship: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.ArcticshellfishWarship.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.ArcticshellfishWarship.Tooltip}"
+}
+
+B_52: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.B_52.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.B_52.Tooltip}"
+}
+
+BakedMussel: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.BakedMussel.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.BakedMussel.Tooltip}"
+}
+
+BakedOyster: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.BakedOyster.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.BakedOyster.Tooltip}"
+}
+
+BellPepper_green: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.BellPepper_green.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.BellPepper_green.Tooltip}"
+}
+
+BellPepper_red: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.BellPepper_red.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.BellPepper_red.Tooltip}"
+}
+
+BellPepper_yellow: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.BellPepper_yellow.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.BellPepper_yellow.Tooltip}"
+}
+
+BloodLamp: {
+	DisplayName: "{$Mods.Everglow.Items.SummonItems.BloodLamp.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.SummonItems.BloodLamp.Tooltip}"
+}
+
+BlueHawaii: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.BlueHawaii.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.BlueHawaii.Tooltip}"
+}
+
+BoiledBullfrog: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.BoiledBullfrog.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.BoiledBullfrog.Tooltip}"
+}
+
+BoneAndPlatformCreate: {
+	DisplayName: "{$Mods.Everglow.Items.Tools.BoneAndPlatformCreate.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Tools.BoneAndPlatformCreate.Tooltip}"
+}
+
+Broccoli: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.Broccoli.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.Broccoli.Tooltip}"
+}
+
+CantaloupeJelly: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.CantaloupeJelly.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.CantaloupeJelly.Tooltip}"
+}
+
+CaramelPudding: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.CaramelPudding.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.CaramelPudding.Tooltip}"
+}
+
+Carrot: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.Carrot.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.Carrot.Tooltip}"
+}
+
+Casserole_Item: {
+	DisplayName: "{$Mods.Everglow.Items.Placeables.Casserole_Item.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Placeables.Casserole_Item.Tooltip}"
+}
+
+CheckPylonPoint: {
+	DisplayName: "{$Mods.Everglow.Items.Tools.CheckPylonPoint.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Tools.CheckPylonPoint.Tooltip}"
+}
+
+ChoppedPoultry: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.ChoppedPoultry.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.ChoppedPoultry.Tooltip}"
+}
+
+ChoppedScallion: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.ChoppedScallion.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.ChoppedScallion.Tooltip}"
+}
+
+CrabseedWarship: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.CrabseedWarship.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.CrabseedWarship.Tooltip}"
+}
+
+CreateRoom: {
+	DisplayName: "{$Mods.Everglow.Items.Tools.CreateRoom.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Tools.CreateRoom.Tooltip}"
+}
+
+Cucumber: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.Cucumber.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.Cucumber.Tooltip}"
+}
+
+CucumberPieces: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.CucumberPieces.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.CucumberPieces.Tooltip}"
+}
+
+CustomMusicTrackItem: {
+	DisplayName: "{$Mods.Everglow.Items.Tools.CustomMusicTrackItem.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Tools.CustomMusicTrackItem.Tooltip}"
+}
+
+DarkSludgeBlock_Item: {
+	DisplayName: "{$Mods.Everglow.Items.Placeables.DarkSludgeBlock_Item.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Placeables.DarkSludgeBlock_Item.Tooltip}"
+}
+
+DarkSludgeBucket: {
+	DisplayName: "{$Mods.Everglow.Items.Tools.DarkSludgeBucket.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Tools.DarkSludgeBucket.Tooltip}"
+}
+
+DessertBag_Snow: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.DessertBag_Snow.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.DessertBag_Snow.Tooltip}"
+}
+
+Doubanjiang: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.Doubanjiang.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.Doubanjiang.Tooltip}"
+}
+
+DragonScaleWoodWall: {
+	DisplayName: Dragon Scale Wood Wall
+	Tooltip: ""
+}
+
+DreamYearning: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.DreamYearning.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.DreamYearning.Tooltip}"
+}
+
+DryMartini: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.DryMartini.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.DryMartini.Tooltip}"
+}
+
+Durian: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.Durian.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.Durian.Tooltip}"
+}
+
+Eggplant: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.Eggplant.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.Eggplant.Tooltip}"
+}
+
+EggplantCubes: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.EggplantCubes.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.EggplantCubes.Tooltip}"
+}
+
+EggTart: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.EggTart.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.EggTart.Tooltip}"
+}
+
+ExampleBackgroundTool: {
+	DisplayName: "{$Mods.Everglow.Items.Tools.ExampleBackgroundTool.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Tools.ExampleBackgroundTool.Tooltip}"
+}
+
+ExampleRopeItem: {
+	DisplayName: "{$Mods.Everglow.Items.Tools.ExampleRopeItem.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Tools.ExampleRopeItem.Tooltip}"
+}
+
+ExampleTrailingProjectile_Emit: {
+	DisplayName: "{$Mods.Everglow.Items.Tools.ExampleTrailingProjectile_Emit.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Tools.ExampleTrailingProjectile_Emit.Tooltip}"
+}
+
+ExampleUndergroundBackgroundTool: {
+	DisplayName: "{$Mods.Everglow.Items.Tools.ExampleUndergroundBackgroundTool.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Tools.ExampleUndergroundBackgroundTool.Tooltip}"
+}
+
+ExampleVirtualWallLightBlocker: {
+	DisplayName: "{$Mods.Everglow.Items.Tools.ExampleVirtualWallLightBlocker.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Tools.ExampleVirtualWallLightBlocker.Tooltip}"
+}
+
+FireCracker: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.FireCracker.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.FireCracker.Tooltip}"
+}
+
+FireflyImpression: {
+	DisplayName: "{$Mods.Everglow.Items.Tools.FireflyImpression.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Tools.FireflyImpression.Tooltip}"
+}
+
+FireflyMoss_Item: {
+	DisplayName: "{$Mods.Everglow.Items.Placeables.FireflyMoss_Item.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Placeables.FireflyMoss_Item.Tooltip}"
+}
+
+FixCoinCrit1: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.FixCoinCrit1.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.FixCoinCrit1.Tooltip}"
+}
+
+FixCoinCrit2: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.FixCoinCrit2.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.FixCoinCrit2.Tooltip}"
+}
+
+FixCoinCrit3: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.FixCoinCrit3.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.FixCoinCrit3.Tooltip}"
+}
+
+FixCoinCrit4: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.FixCoinCrit4.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.FixCoinCrit4.Tooltip}"
+}
+
+FixCoinCrit5: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.FixCoinCrit5.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.FixCoinCrit5.Tooltip}"
+}
+
+FixCoinDamage1: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.FixCoinDamage1.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.FixCoinDamage1.Tooltip}"
+}
+
+FixCoinDamage2: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.FixCoinDamage2.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.FixCoinDamage2.Tooltip}"
+}
+
+FixCoinDamage3: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.FixCoinDamage3.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.FixCoinDamage3.Tooltip}"
+}
+
+FixCoinDamage4: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.FixCoinDamage4.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.FixCoinDamage4.Tooltip}"
+}
+
+FixCoinDamage5: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.FixCoinDamage5.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.FixCoinDamage5.Tooltip}"
+}
+
+FixCoinDefense1: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.FixCoinDefense1.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.FixCoinDefense1.Tooltip}"
+}
+
+FixCoinDefense2: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.FixCoinDefense2.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.FixCoinDefense2.Tooltip}"
+}
+
+FixCoinDefense3: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.FixCoinDefense3.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.FixCoinDefense3.Tooltip}"
+}
+
+FixCoinDefense4: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.FixCoinDefense4.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.FixCoinDefense4.Tooltip}"
+}
+
+FixCoinDefense5: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.FixCoinDefense5.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.FixCoinDefense5.Tooltip}"
+}
+
+FixCoinMelee1: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.FixCoinMelee1.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.FixCoinMelee1.Tooltip}"
+}
+
+FixCoinMelee2: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.FixCoinMelee2.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.FixCoinMelee2.Tooltip}"
+}
+
+FixCoinMelee3: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.FixCoinMelee3.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.FixCoinMelee3.Tooltip}"
+}
+
+FixCoinSpeed1: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.FixCoinSpeed1.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.FixCoinSpeed1.Tooltip}"
+}
+
+FixCoinSpeed2: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.FixCoinSpeed2.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.FixCoinSpeed2.Tooltip}"
+}
+
+FixCoinSpeed3: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.FixCoinSpeed3.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.FixCoinSpeed3.Tooltip}"
+}
+
+Flour: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.Flour.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.Flour.Tooltip}"
+}
+
+FrogMeat: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.FrogMeat.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.FrogMeat.Tooltip}"
+}
+
+Garlic: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.Garlic.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.Garlic.Tooltip}"
+}
+
+Gelatin_Sheet: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.Gelatin_Sheet.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.Gelatin_Sheet.Tooltip}"
+}
+
+GreenCrab: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.GreenCrab.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.GreenCrab.Tooltip}"
+}
+
+GreenStorm: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.GreenStorm.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.GreenStorm.Tooltip}"
+}
+
+GroundMeat: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.GroundMeat.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.GroundMeat.Tooltip}"
+}
+
+GroundPotato: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.GroundPotato.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.GroundPotato.Tooltip}"
+}
+
+HardmodeItem: {
+	DisplayName: "{$Mods.Everglow.Items.Tools.HardmodeItem.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Tools.HardmodeItem.Tooltip}"
+}
+
+HarvestingClaw: {
+	DisplayName: "{$Mods.Everglow.Items.Tools.HarvestingClaw.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Tools.HarvestingClaw.Tooltip}"
+}
+
+KiwiFruit: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.KiwiFruit.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.KiwiFruit.Tooltip}"
+}
+
+KiwiIceCream: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.KiwiIceCream.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.KiwiIceCream.Tooltip}"
+}
+
+KiwiJuice: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.KiwiJuice.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.KiwiJuice.Tooltip}"
+}
+
+LargeFireBulbTestItem: {
+	DisplayName: "{$Mods.Everglow.Items.Placeables.LargeFireBulbTestItem.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Placeables.LargeFireBulbTestItem.Tooltip}"
+}
+
+LonelyJellyfish: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.LonelyJellyfish.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.LonelyJellyfish.Tooltip}"
+}
+
+Mangosteen: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.Mangosteen.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.Mangosteen.Tooltip}"
+}
+
+MapoTofu: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.MapoTofu.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.MapoTofu.Tooltip}"
+}
+
+MechanismHalberd: {
+	DisplayName: "{$Mods.Everglow.Items.Weapons.Melee.MechanismHalberd.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Weapons.Melee.MechanismHalberd.Tooltip}"
+}
+
+MincedGarlic: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.MincedGarlic.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.MincedGarlic.Tooltip}"
+}
+
+MysteriousTablet: {
+	DisplayName: "{$Mods.Everglow.Items.Weapons.Typeless.MysteriousTablet.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Weapons.Typeless.MysteriousTablet.Tooltip}"
+}
+
+NormalCableCar_item: {
+	DisplayName: "{$Mods.Everglow.Items.Tools.NormalCableCar_item.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Tools.NormalCableCar_item.Tooltip}"
+}
+
+OrangeIcecream: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.OrangeIcecream.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.OrangeIcecream.Tooltip}"
+}
+
+OrangeJuice: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.OrangeJuice.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.OrangeJuice.Tooltip}"
+}
+
+OutputLocalizationHjsonItem: {
+	DisplayName: "{$Mods.Everglow.Items.Tools.OutputLocalizationHjsonItem.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Tools.OutputLocalizationHjsonItem.Tooltip}"
+}
+
+PiercoldWind: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.PiercoldWind.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.PiercoldWind.Tooltip}"
+}
+
+PolygonDrawerItem: {
+	DisplayName: "{$Mods.Everglow.Items.Tools.PolygonDrawerItem.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Tools.PolygonDrawerItem.Tooltip}"
+}
+
+Potato: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.Potato.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.Potato.Tooltip}"
+}
+
+Poultry: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.Poultry.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.Poultry.Tooltip}"
+}
+
+PurpleHooter: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.PurpleHooter.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.PurpleHooter.Tooltip}"
+}
+
+QuinceMarry: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.QuinceMarry.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.QuinceMarry.Tooltip}"
+}
+
+Radish: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.Radish.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.Radish.Tooltip}"
+}
+
+RawEgg: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.RawEgg.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.RawEgg.Tooltip}"
+}
+
+RawSteak: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.RawSteak.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.RawSteak.Tooltip}"
+}
+
+RawXiaoLongBao: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.RawXiaoLongBao.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.RawXiaoLongBao.Tooltip}"
+}
+
+RedWine: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.RedWine.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.RedWine.Tooltip}"
+}
+
+Relic_SquamousShell: {
+	DisplayName: Relic_ Squamous Shell
+	Tooltip: ""
+}
+
+ResetTheYggdrasilTown: {
+	DisplayName: "{$Mods.Everglow.Items.Tools.ResetTheYggdrasilTown.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Tools.ResetTheYggdrasilTown.Tooltip}"
+}
+
+Rice: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.Rice.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.Rice.Tooltip}"
+}
+
+SalmonInPepper: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.SalmonInPepper.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.SalmonInPepper.Tooltip}"
+}
+
+SalmonWarship: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.SalmonWarship.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.SalmonWarship.Tooltip}"
+}
+
+Scallion: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.Scallion.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.Scallion.Tooltip}"
+}
+
+ScreenPositionPrintItem: {
+	DisplayName: "{$Mods.Everglow.Items.Tools.ScreenPositionPrintItem.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Tools.ScreenPositionPrintItem.Tooltip}"
+}
+
+SeafoodPizza: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.SeafoodPizza.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.SeafoodPizza.Tooltip}"
+}
+
+SichuanPepper: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.SichuanPepper.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.SichuanPepper.Tooltip}"
+}
+
+SkeletonSight: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.SkeletonSight.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.SkeletonSight.Tooltip}"
+}
+
+SoundIDPlayItem: {
+	DisplayName: "{$Mods.Everglow.Items.Tools.SoundIDPlayItem.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Tools.SoundIDPlayItem.Tooltip}"
+}
+
+SpicyPepperRing: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.SpicyPepperRing.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.SpicyPepperRing.Tooltip}"
+}
+
+SpicyShield: {
+	DisplayName: Spicy Shield
+	Tooltip: ""
+}
+
+Spinach: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.Spinach.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.Spinach.Tooltip}"
+}
+
+SteamBox_Item: {
+	DisplayName: "{$Mods.Everglow.Items.Placeables.SteamBox_Item.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Placeables.SteamBox_Item.Tooltip}"
+}
+
+StinkyTofu: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.StinkyTofu.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.StinkyTofu.Tooltip}"
+}
+
+Strawberry: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.Strawberry.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.Strawberry.Tooltip}"
+}
+
+StrawberryIcecream: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.StrawberryIcecream.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.StrawberryIcecream.Tooltip}"
+}
+
+Sunrise: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.Sunrise.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.Sunrise.Tooltip}"
+}
+
+SweetshrimpSushi: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.SweetshrimpSushi.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.SweetshrimpSushi.Tooltip}"
+}
+
+TamakoSushi: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.TamakoSushi.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.TamakoSushi.Tooltip}"
+}
+
+TestItem: {
+	DisplayName: Test Item
+	Tooltip: ""
+}
+
+TestOpenQuestPanelWithSelectQuestItem: {
+	DisplayName: "{$Mods.Everglow.Items.Tools.TestOpenQuestPanelWithSelectQuestItem.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Tools.TestOpenQuestPanelWithSelectQuestItem.Tooltip}"
+}
+
+TestSkeletonOwl: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.TestSkeletonOwl.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.TestSkeletonOwl.Tooltip}"
+}
+
+TileDataReader: {
+	DisplayName: "{$Mods.Everglow.Items.Tools.TileDataReader.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Tools.TileDataReader.Tooltip}"
+}
+
+TileToolBox: {
+	DisplayName: "{$Mods.Everglow.Items.Tools.TileToolBox.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Tools.TileToolBox.Tooltip}"
+}
+
+Tofu: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.Tofu.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.Tofu.Tooltip}"
+}
+
+TofuCubes: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.TofuCubes.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.TofuCubes.Tooltip}"
+}
+
+Tomato: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.Tomato.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.Tomato.Tooltip}"
+}
+
+TomatoPieces: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.TomatoPieces.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.TomatoPieces.Tooltip}"
+}
+
+TreasureBag_SquamousShell: {
+	DisplayName: Treasure Bag_ Squamous Shell
+	Tooltip: ""
+}
+
+TreePlacer: {
+	DisplayName: "{$Mods.Everglow.Items.Tools.TreePlacer.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Tools.TreePlacer.Tooltip}"
+}
+
+Tricolour: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.Tricolour.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.Tricolour.Tooltip}"
+}
+
+Trophy_SquamousShell: {
+	DisplayName: Trophy_ Squamous Shell
+	Tooltip: ""
+}
+
+TuskMirror: {
+	DisplayName: "{$Mods.Everglow.Items.Tools.TuskMirror.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Tools.TuskMirror.Tooltip}"
+}
+
+VFXGenerator: {
+	DisplayName: "{$Mods.Everglow.Items.Tools.VFXGenerator.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Tools.VFXGenerator.Tooltip}"
+}
+
+WakameWarship: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.WakameWarship.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.WakameWarship.Tooltip}"
+}
+
+Watermelon: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.Watermelon.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.Watermelon.Tooltip}"
+}
+
+WaterMelonJuice: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.WaterMelonJuice.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.WaterMelonJuice.Tooltip}"
+}
+
+WatermelonPlate: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.WatermelonPlate.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.WatermelonPlate.Tooltip}"
+}
+
+WorldAnchor: {
+	DisplayName: "{$Mods.Everglow.Items.Tools.WorldAnchor.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Tools.WorldAnchor.Tooltip}"
+}
+
+XiaoLongBao: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.XiaoLongBao.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.XiaoLongBao.Tooltip}"
+}
+
+YggdrasilImpression: {
+	DisplayName: "{$Mods.Everglow.Items.Tools.YggdrasilImpression.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Tools.YggdrasilImpression.Tooltip}"
+}
+
+YggdrasilTown_TradeUnionGate: {
+	DisplayName: "{$Mods.Everglow.Items.Tools.YggdrasilTown_TradeUnionGate.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Tools.YggdrasilTown_TradeUnionGate.Tooltip}"
+}
+
+YuxiangEggplant: {
+	DisplayName: "{$Mods.Everglow.Items.Miscs.YuxiangEggplant.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Miscs.YuxiangEggplant.Tooltip}"
+}

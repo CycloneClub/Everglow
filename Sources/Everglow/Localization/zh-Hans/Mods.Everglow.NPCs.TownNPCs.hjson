@@ -3,44 +3,44 @@ CanteenMaid: {
 
 	TownNPCMood: {
 		Content: I feel pretty fine right now.
-		NoHome: I would very much like a house, all the colorful monsters scare me.
-		FarFromHome: Could you please get me back to my house?
-		LoveSpace: I love how there is so much space here to code tModLoader mods!
-		DislikeCrowded: There are too many people around, it makes it hard for me to focus on mod making.
-		HateCrowded: I can't test my mod with so many people around!
-		LoveBiome: I love {BiomeName}.
-		LikeBiome: "{BiomeName} is a very nice place to test mods in."
 		DislikeBiome: It's way too cold in {BiomeName}, I'm freezing!
+		DislikeCrowded: There are too many people around, it makes it hard for me to focus on mod making.
+		DislikeNPC: "\"{NPCName} keeps rambling on about \"paid mods\"... Wish I could convince him how terrible of an idea that is.\""
+		FarFromHome: Could you please get me back to my house?
 		HateBiome: It's kind of hard to mod while being attacked by monsters in {BiomeName}.
-		LoveNPC: Do you think {NPCName} notices me?
-		LikeNPC: I can respect {NPCName} as a fellow guide and educator!
-		DislikeNPC: '''"{NPCName} keeps rambling on about "paid mods"... Wish I could convince him how terrible of an idea that is."'''
+		HateCrowded: I can't test my mod with so many people around!
 		HateNPC: I hate all the loud noises caused by {NPCName} and his explosives! I just want peace and quiet.
+		LikeBiome: "{BiomeName} is a very nice place to test mods in."
+		LikeNPC: I can respect {NPCName} as a fellow guide and educator!
 		LikeNPC_Princess: "{NPCName} is a princess? That is so cool!"
+		LoveBiome: I love {BiomeName}.
+		LoveNPC: Do you think {NPCName} notices me?
+		LoveSpace: I love how there is so much space here to code tModLoader mods!
+		NoHome: I would very much like a house, all the colorful monsters scare me.
 		Princess_LovesNPC: "{NPCName} is so square. I love that about them!"
 	}
 }
 
-Fevens: {
-	DisplayName: 霏文士
-}
+Fevens.DisplayName: 霏文士
 
 Guard_of_YggdrasilTown: {
 	DisplayName: 天穹引路人
+
+	TownNPCMood: {
+		Content: I am content.
+		DislikeBiome: I dislike {BiomeName}.
+		DislikeCrowded: I dislike how crowded I am.
+		FarFromHome: I am too far from home.
+		HateCrowded: I hate how crowded I am.
+		LikeBiome: I like {BiomeName}.
+		LikeNPC_Princess: I like {NPCName}.
+		LoveSpace: I love having so much space.
+		NoHome: I hate not having a home.
+		Princess_LovesNPC: I like {NPCName}.
+	}
 }
 
-Howard_Warden: {
-	DisplayName: 警长霍华德
-}
-
-InnKeeper: {
-	DisplayName: 酒馆老板格尔格
-}
-
-Restauranteur: {
-	DisplayName: 餐厅老板罗尔
-}
-
-TeahouseLady: {
-	DisplayName: 茶馆老板娘夜璃
-}
+Howard_Warden.DisplayName: 警长霍华德
+InnKeeper.DisplayName: 酒馆老板格尔格
+Restauranteur.DisplayName: 餐厅老板罗尔
+TeahouseLady.DisplayName: 茶馆老板娘夜璃

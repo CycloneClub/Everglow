@@ -1,11 +1,185 @@
-RazorbeakBow: {
-	DisplayName: 尖喙弓
-	Tooltip: 单次射出3支箭, 单次射出的箭全部击中敌人时，提升攻击速度
+AmbiguousNight: {
+	DisplayName: 幻夜弹弓
+	Tooltip: 不消耗弹药，蓄力提升威力
+}
+
+AmethystSlingshot: {
+	DisplayName: 紫晶弹弓
+	Tooltip: 不消耗弹药，蓄力提升威力
+}
+
+ArcI: {
+	DisplayName: 电弧一号
+	Tooltip:
+		'''
+		每射击5次储存1次电弧，最多储存3次
+		射击时若附近有敌人，消耗1次储存电弧，释放造成120点伤害的电弧
+		'''
+}
+
+ArmorPiercingBlaster: {
+	DisplayName: 穿甲爆破子
+	Tooltip: 丢出去后在敌人靠近时才爆炸，削减其防御力10秒
+}
+
+BorealWoodSlingshot: {
+	DisplayName: 针叶木弹弓
+	Tooltip: 不消耗弹药，蓄力提升威力
+}
+
+BoulderCatapult: {
+	DisplayName: 巨石弹射装置
+	Tooltip:
+		'''
+		无需弹药
+		巨石直击造成150%武器伤害，破碎后散出3–6块碎石，每块造成15%武器伤害
+		'''
+}
+
+BowOfEnlightment: {
+	DisplayName: 启明之弓
+	Tooltip:
+		'''
+		将木箭转化为附带光解效果的灯油箭
+		“天穹镇的正午，也不如外界清晨明朗。总需要一点光”
+		'''
+}
+
+BrittleRockSlingshot: {
+	DisplayName: 碎石弹弓
+	Tooltip: ""
+}
+
+CactusSlingShot: {
+	DisplayName: 仙人掌弹弓
+	Tooltip: 不消耗弹药，蓄力提升威力
+}
+
+Caltrop: {
+	DisplayName: 铁蒺藜
+	Tooltip: “哦，那一定很疼！”
+}
+
+CaterpillarJuiceArrow: {
+	DisplayName: 虫汁箭
+	Tooltip: ""
+}
+
+CeremonialRifle: {
+	DisplayName: 仪式用枪
+	Tooltip: ""
+}
+
+ChainGrenade: {
+	DisplayName: Chain Grenade
+	Tooltip: ""
+}
+
+CloudBall: {
+	DisplayName: 云团
+	Tooltip: ""
+}
+
+CloudGun: {
+	DisplayName: 云导炮
+	Tooltip: 发射云团
 }
 
 CyanVineBow: {
 	DisplayName: 青缎弓
+	Tooltip: “展现出深沉的青色光泽，散发着浓重的矿石气息”
+}
+
+CyanVineCrossBow: {
+	DisplayName: 青缎连弩
+	Tooltip: “展现出深沉的青色光泽，散发着浓重的矿石气息”
+}
+
+CyanVineFlintlock: {
+	DisplayName: 青灯索命铳
+	Tooltip:
+		'''
+		使用灯果作为弹药
+		33%概率不消耗弹药
+		“展现出深沉的青色光泽，散发着浓重的矿石气息”
+		'''
+}
+
+CyanVineThrowingSpear: {
+	DisplayName: 青缎投矛
+	Tooltip: 按住蓄力以增强投掷威力
+}
+
+CyatheaArrow: {
+	DisplayName: 桫椤箭
+	Tooltip:
+		'''
+		命中有25%概率造成3秒中毒
+		命中敌人后向两侧45度方向释放两枚尖刺，各造成一半伤害
+		'''
+}
+
+DevilHeartBow: {
+	DisplayName: 魔心弓
+	Tooltip: 手持且未开火时缓慢恢复生命
+}
+
+DevilHeartGun: {
+	DisplayName: 魔心手枪
+	Tooltip: 手持且未开火时缓慢恢复生命
+}
+
+DiamondSlingshot: {
+	DisplayName: 钻石弹弓
+	Tooltip: 不消耗弹药，蓄力提升威力
+}
+
+EbonwoodSlingshot: {
+	DisplayName: 乌木弹弓
+	Tooltip: 不消耗弹药，蓄力提升威力
+}
+
+EmeraldSlingshot: {
+	DisplayName: 祖母绿弹弓
+	Tooltip: 不消耗弹药，蓄力提升威力
+}
+
+GelSlingshot: {
+	DisplayName: 凝胶弹弓
+	Tooltip: 不消耗弹药，蓄力提升威力
+}
+
+GildingRevolver: {
+	DisplayName: Gilding Revolver
 	Tooltip: ""
+}
+
+GreenThornBallLauncher: {
+	DisplayName: 青刺球发射器
+	Tooltip: 将子弹转化为青刺球，破裂后散出2–4枚尖刺，每枚造成40%武器伤害
+}
+
+GunOfAvarice: {
+	DisplayName: 贪婪之铳
+	Tooltip:
+		'''
+		每打完14发子弹进行一次弹匣更换(45帧)，期间无法攻击
+		   弹匣更换成功率为80%
+		成功：弹匣更换后等级+1伤害较之前提升25%
+		   失败：爆炸并受到面板伤害的2.8倍伤害
+		   成功效果最多达到10级。
+		   右键手动更换弹匣并使弹匣等级清零
+		   每次命中让敌人价值+75铜
+		'''
+}
+
+HandgunOfEnlightment: {
+	DisplayName: 分光手枪
+	Tooltip:
+		'''
+		将火枪子弹转化为附带光解效果的灯火弹
+		“子弹追不上光，却可以和光一起划破长夜”
+		'''
 }
 
 IcedSpear: {
@@ -13,14 +187,67 @@ IcedSpear: {
 	Tooltip: ""
 }
 
-SpineGun: {
-	DisplayName: 脊骨手枪
+JungleSlingshot: {
+	DisplayName: 丛林弹弓
+	Tooltip: 不消耗弹药，蓄力提升威力
+}
+
+KeroseneLanternFlameThrower: {
+	DisplayName: Kerosene Lantern Flame Thrower
 	Tooltip: ""
 }
 
-ToothBow: {
-	DisplayName: 獠牙巨弓
-	Tooltip: "发射巨形獠牙箭"
+KissOfCthulhu: {
+	DisplayName: 克苏鲁之吻
+	Tooltip:
+		'''
+		一次发射多发散射子弹
+		“古老的火铳，被不明力量影响，附着了若干蠕动的黑色触手”
+		'''
+}
+
+LampWoodBow: {
+	DisplayName: 灯木弓
+	Tooltip: “在这里，照亮你前路的第一道光”
+}
+
+LightArrow: {
+	DisplayName: 灯油箭
+	Tooltip: 造成3秒光解效果
+}
+
+LightBullet: {
+	DisplayName: 灯火弹
+	Tooltip: 造成3秒光解效果
+}
+
+MossyCyatheaBow: {
+	DisplayName: 青苔桫椤弓
+	Tooltip:
+		'''
+		从高处向光标降下箭矢，有1/3概率同时射出三支箭
+		将木箭转化为桫椤箭
+		'''
+}
+
+Nehemoth: {
+	DisplayName: 低语者
+	Tooltip:
+		'''
+		.
+			将火枪子弹变成高速特殊弹幕，无限穿透，命中的生物有66%的概率获得瘟疫Debuff4秒
+		瘟疫能在敌人之间散步，造成群体血量流失
+		'''
+}
+
+PalmWoodSlingshot: {
+	DisplayName: 棕榈木弹弓
+	Tooltip: 不消耗弹药，蓄力提升威力
+}
+
+PearlwoodSlingshot: {
+	DisplayName: 珍珠木弹弓
+	Tooltip: 不消耗弹药，蓄力提升威力
 }
 
 PhosphorescenceGun: {
@@ -28,14 +255,64 @@ PhosphorescenceGun: {
 	Tooltip: ""
 }
 
-ShadowWingBow: {
-	DisplayName: 影翼巨弓
-	Tooltip: "蓄力发射更多幻箭"
+RampageShark: {
+	DisplayName: 复仇鲨
+	Tooltip: 使用一定时间后过热，射速提升但是准度下降
 }
 
-CloudGun: {
-	DisplayName: 云导炮
-	Tooltip: "发射云团"
+RazorbeakBow: {
+	DisplayName: 尖喙弓
+	Tooltip:
+		'''
+		每轮连射3箭，仅消耗1支箭
+		同一轮的3支箭全部命中时，此弓攻击速度提高25%，最多叠加8层
+		连续3秒没有箭矢命中后失去加成
+		'''
+}
+
+RichMahoganySlingshot: {
+	DisplayName: 红木弹弓
+	Tooltip: 不消耗弹药，蓄力提升威力
+}
+
+RockArrow: {
+	DisplayName: 岩甲箭
+	Tooltip: ""
+}
+
+RockSpikeBallista: {
+	DisplayName: 破岩弩炮
+	Tooltip: 发射箭矢
+}
+
+RubySlingshot: {
+	DisplayName: 红宝石弹弓
+	Tooltip: 不消耗弹药，蓄力提升威力
+}
+
+RustSlingshot: {
+	DisplayName: 锈弹弓
+	Tooltip: “童年被岁月锈蚀”
+}
+
+SapphireSlingshot: {
+	DisplayName: 蓝宝石弹弓
+	Tooltip: 不消耗弹药，蓄力提升威力
+}
+
+SevenShotGun: {
+	DisplayName: 七发猎枪
+	Tooltip: ""
+}
+
+ShadewoodSlingShot: {
+	DisplayName: 暗影木弹弓
+	Tooltip: 不消耗弹药，蓄力提升威力
+}
+
+ShadowWingBow: {
+	DisplayName: 影翼巨弓
+	Tooltip: 蓄力发射更多幻箭
 }
 
 SilveralGun: {
@@ -48,260 +325,52 @@ SilveralRifle: {
 	Tooltip: ""
 }
 
-AmbiguousNight: {
-	DisplayName: 幻夜弹弓
-	Tooltip: "不消耗弹药，蓄力提升威力"
-}
-
-AmethystSlingshot: {
-	DisplayName: 紫晶弹弓
-	Tooltip: "不消耗弹药，蓄力提升威力"
-}
-
-BorealWoodSlingshot: {
-	DisplayName: 针叶木弹弓
-	Tooltip: "不消耗弹药，蓄力提升威力"
-}
-
-CactusSlingShot: {
-	DisplayName: 仙人掌弹弓
-	Tooltip: "不消耗弹药，蓄力提升威力"
-}
-
-DiamondSlingshot: {
-	DisplayName: 钻石弹弓
-	Tooltip: "不消耗弹药，蓄力提升威力"
-}
-
-EbonwoodSlingshot: {
-	DisplayName: 乌木弹弓
-	Tooltip: "不消耗弹药，蓄力提升威力"
-}
-
-EmeraldSlingshot: {
-	DisplayName: 祖母绿弹弓
-	Tooltip: "不消耗弹药，蓄力提升威力"
-}
-
-GelSlingshot: {
-	DisplayName: 凝胶弹弓
-	Tooltip: "不消耗弹药，蓄力提升威力"
-}
-
-JungleSlingshot: {
-	DisplayName: 丛林弹弓
-	Tooltip: "不消耗弹药，蓄力提升威力"
-}
-
-PalmWoodSlingshot: {
-	DisplayName: 棕榈木弹弓
-	Tooltip: "不消耗弹药，蓄力提升威力"
-}
-
-PearlwoodSlingshot: {
-	DisplayName: 珍珠木弹弓
-	Tooltip: "不消耗弹药，蓄力提升威力"
-}
-
-RichMahoganySlingshot: {
-	DisplayName: 红木弹弓
-	Tooltip: "不消耗弹药，蓄力提升威力"
-}
-
-RubySlingshot: {
-	DisplayName: 红宝石弹弓
-	Tooltip: "不消耗弹药，蓄力提升威力"
-}
-
-SapphireSlingshot: {
-	DisplayName: 蓝宝石弹弓
-	Tooltip: "不消耗弹药，蓄力提升威力"
-}
-
-ShadewoodSlingShot: {
-	DisplayName: 暗影木弹弓
-	Tooltip: "不消耗弹药，蓄力提升威力"
+SpineGun: {
+	DisplayName: 脊骨手枪
+	Tooltip: ""
 }
 
 StarSlingshot: {
 	DisplayName: 星星弹弓
-	Tooltip: "不消耗弹药，蓄力提升威力"
-}
-
-TopazSlingshot: {
-	DisplayName: 黄玉弹弓
-	Tooltip: "不消耗弹药，蓄力提升威力"
-}
-
-WoodSlingshot: {
-	DisplayName: 木弹弓
-	Tooltip: "不消耗弹药，蓄力提升威力"
-}
-
-CloudBall: {
-	DisplayName: 云团
-	Tooltip: ""
-}
-
-RampageShark: {
-	DisplayName: 复仇鲨
-	Tooltip: "使用一定时间后过热，射速提升但是准度下降"
-}
-
-TsunamiShark: {
-	DisplayName: 海啸鲨
-	Tooltip: 
-	'''
-	右键可以标记敌人
-	击中敌人后生成鲨鱼导弹
-	导弹会辅助攻击被标记敌人
-	'''
-}
-
-ArmorPiercingBlaster: {
-	DisplayName: 穿甲爆破子
-	Tooltip: "丢出去后在敌人靠近时才爆炸，削减其防御力10秒"
-}
-
-Caltrop: {
-	DisplayName: 铁蒺藜
-	Tooltip: ""
-}
-
-CeremonialRifle: {
-	DisplayName: 仪式用枪
-	Tooltip: ""
-}
-
-GunOfAvarice: {
-	DisplayName: 贪婪之铳
-	Tooltip: 
-	'''
-	每打完14发子弹进行一次弹匣更换(45帧)，期间无法攻击
-    弹匣更换成功率为80%
-	成功：弹匣更换后等级+1伤害较之前提升25%
-    失败：爆炸并受到面板伤害的2.8倍伤害
-    成功效果最多达到10级。
-    右键手动更换弹匣并使弹匣等级清零
-    每次命中让敌人价值+75铜
-	'''
-}
-
-Nehemoth: {
-	DisplayName: 低语者
-	Tooltip: 
-	'''.
-		将火枪子弹变成高速特殊弹幕，无限穿透，命中的生物有66%的概率获得瘟疫Debuff4秒
-	瘟疫能在敌人之间散步，造成群体血量流失
-	'''
-}
-
-RustSlingshot: {
-	DisplayName: 生锈弹弓
-	Tooltip: ""
-}
-
-SevenShotGun: {
-	DisplayName: 七发猎枪
-	Tooltip: ""
+	Tooltip: 不消耗弹药，蓄力提升威力
 }
 
 StoneJavelin: {
-	DisplayName: 岩石投矛
+	DisplayName: 石矛
 	Tooltip: ""
 }
 
-RockSpikeBallista: {
-	DisplayName: 碎裂投石
-	Tooltip: ""
-}
-
-BrittleRockSlingshot: {
-	DisplayName: 碎石弹弓
-	Tooltip: ""
-}
-
-KissOfCthulhu: {
-	DisplayName: 克苏鲁之吻
-	Tooltip: ""
-}
-
-BowOfEnlightment: {
-	DisplayName: 启明之弓
-	Tooltip: ""
-}
-
-HandgunOfEnlightment: {
-	DisplayName: 启明手枪
-	Tooltip: ""
-}
-
-LampWoodBow: {
-	DisplayName: 灯木弓
-	Tooltip: ""
-}
-
-CyanVineCrossBow: {
-	DisplayName: 青缎弩
-	Tooltip: ""
-}
-
-CyanVineFlintlock: {
-	DisplayName: 青缎燧发枪
-	Tooltip: ""
-}
-
-CyanVineThrowingSpear: {
-	DisplayName: 青缎投矛
-	Tooltip: ""
-}
-
-CaterpillarJuiceArrow: {
-	DisplayName: 虫汁箭
-	Tooltip: ""
-}
-
-LightArrow: {
-	DisplayName: 灯油箭
-	Tooltip: ""
-}
-
-LightBullet: {
-	DisplayName: 灯油弹
-	Tooltip: ""
-}
-
-RockArrow: {
-	DisplayName: 岩甲重箭
-	Tooltip: ""
-}
-
-GreenThornBallLauncher: {
-	DisplayName: 青刺球发射器
-	Tooltip: ""
-}
-
-MossyCyatheaBow: {
-	DisplayName: 青苔桫椤弓
-	Tooltip: ""
-}
-
-DevilHeartBow: {
-	DisplayName: 魔心铁弓
-	Tooltip: ""
-}
-
-DevilHeartGun: {
-	DisplayName: 魔心手枪
-	Tooltip: ""
-}
-
-CyatheaArrow: {
-	DisplayName: 桫椤箭
+TendonGreatbow: {
+	DisplayName: Tendon Greatbow
 	Tooltip: ""
 }
 
 TerraViewerHowitzer: {
-	DisplayName:泰拉观察者
+	DisplayName: 泰拉观察者
 	Tooltip: ""
+}
+
+ToothBow: {
+	DisplayName: 獠牙巨弓
+	Tooltip: 发射巨形獠牙箭
+}
+
+TopazSlingshot: {
+	DisplayName: 黄玉弹弓
+	Tooltip: 不消耗弹药，蓄力提升威力
+}
+
+TsunamiShark: {
+	DisplayName: 海啸鲨
+	Tooltip:
+		'''
+		右键可以标记敌人
+		击中敌人后生成鲨鱼导弹
+		导弹会辅助攻击被标记敌人
+		'''
+}
+
+WoodSlingshot: {
+	DisplayName: 木弹弓
+	Tooltip: 不消耗弹药，蓄力提升威力
 }

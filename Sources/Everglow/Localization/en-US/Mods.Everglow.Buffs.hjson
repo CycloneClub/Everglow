@@ -1,44 +1,25 @@
-DevilHeartSetBuff: {
-	DisplayName: Devil Heart Overcharge
-	Description:
-		'''
-		Stop regenerate mana and reduce defense
-		But gain magic damage and critical strike chance bonus, also minion slot
-		'''
-}
-
-BloodSwordStrikeBuff: {
-	DisplayName: Blood Sword Strike Buff
+AcytaeaInferno: {
+	DisplayName: Acytaea Inferno
 	Description: ""
 }
 
-LifeRotten: {
-	DisplayName: Life Rotten
+AleBuff: {
+	DisplayName: Ale Buff
 	Description: ""
 }
 
-BloodDrinking: {
-	DisplayName: Blood Drinking
-	Description: ""
-}
-
-OnElectric: {
-	DisplayName: On Electric
-	Description: ""
-}
-
-StaminaEnergyBuff: {
-	DisplayName: Stamina Energy Buff
-	Description: ""
-}
-
-StarCrack: {
-	DisplayName: Star Crack
+AmberStick: {
+	DisplayName: Amber Stick
 	Description: ""
 }
 
 AppleBuff: {
 	DisplayName: Apple Buff
+	Description: ""
+}
+
+AppleJuiceBuff: {
+	DisplayName: Apple Juice Buff
 	Description: ""
 }
 
@@ -52,13 +33,58 @@ ApricotBuff: {
 	Description: ""
 }
 
+ArcticshellfishWarshipBuff: {
+	DisplayName: Arcticshellfish Warship Buff
+	Description: ""
+}
+
+Armor15Cracked: {
+	DisplayName: Armor15 Cracked
+	Description: ""
+}
+
+AuburnBell: {
+	DisplayName: Auburn Bell
+	Description: ""
+}
+
+AuburnSelfReinforcing: {
+	DisplayName: Auburn Self Reinforcing
+	Description: ""
+}
+
+B_52Buff: {
+	DisplayName: B_52 Buff
+	Description: ""
+}
+
 BaconBuff: {
 	DisplayName: Bacon Buff
 	Description: ""
 }
 
+BadrBuff: {
+	DisplayName: Badr Buff
+	Description: ""
+}
+
+BakedMusselBuff: {
+	DisplayName: Baked Mussel Buff
+	Description: ""
+}
+
+BakedOysterBuff: {
+	DisplayName: Baked Oyster Buff
+	Description: ""
+}
+
 BananaBuff: {
 	DisplayName: Banana Buff
+	Description: ""
+}
+
+BananaDaiquiriBuff: {
+	DisplayName: Banana Daiquiri Buff
 	Description: ""
 }
 
@@ -77,13 +103,48 @@ BlackCurrantBuff: {
 	Description: ""
 }
 
+BloodCultistBuff: {
+	DisplayName: Blood Cultist Buff
+	Description: ""
+}
+
+BloodDrinking: {
+	DisplayName: Blood Drinking
+	Description: ""
+}
+
 BloodOrangeBuff: {
 	DisplayName: Blood Orange Buff
 	Description: ""
 }
 
+BloodSwordStrikeBuff: {
+	DisplayName: Blood Sword Strike Buff
+	Description: ""
+}
+
+BloodyMoscatoBuff: {
+	DisplayName: Bloody Moscato Buff
+	Description: ""
+}
+
+BlueHawaiiBuff: {
+	DisplayName: Blue Hawaii Buff
+	Description: ""
+}
+
+BlueImmune: {
+	DisplayName: Blue Immune
+	Description: ""
+}
+
 BowlofSoupBuff: {
 	DisplayName: Bowlof Soup Buff
+	Description: ""
+}
+
+BrownImmune: {
+	DisplayName: Brown Immune
 	Description: ""
 }
 
@@ -94,6 +155,26 @@ BunnyStewBuff: {
 
 BurgerBuff: {
 	DisplayName: Burger Buff
+	Description: ""
+}
+
+CactusBallBuff: {
+	DisplayName: Cactus Ball Buff
+	Description: ""
+}
+
+CantaloupeJellyBuff: {
+	DisplayName: Cantaloupe Jelly Buff
+	Description: ""
+}
+
+CaramelPuddingBuff: {
+	DisplayName: Caramel Pudding Buff
+	Description: ""
+}
+
+Charred: {
+	DisplayName: Charred
 	Description: ""
 }
 
@@ -122,6 +203,11 @@ CoconutBuff: {
 	Description: ""
 }
 
+CoffeeCupBuff: {
+	DisplayName: Coffee Cup Buff
+	Description: ""
+}
+
 CookedFishBuff: {
 	DisplayName: Cooked Fish Buff
 	Description: ""
@@ -137,8 +223,88 @@ CookedShrimpBuff: {
 	Description: ""
 }
 
+CorrosiveDebuff: {
+	DisplayName: Corrosion
+	Description: 15% reduced movement speed and 10 reduced defense
+}
+
+CrabseedWarshipBuff: {
+	DisplayName: Crabseed Warship Buff
+	Description: ""
+}
+
+CreamSodaBuff: {
+	DisplayName: Cream Soda Buff
+	Description: ""
+}
+
+CrimsonMoonAlgaeSummonStaff_Buff: {
+	DisplayName: Crimson Moon Algae Spirit
+	Description: An algae spirit fights for you
+}
+
+CrossHair: {
+	DisplayName: Cross Hair
+	Description: ""
+}
+
+CyanVineRingCrit: {
+	DisplayName: Cyan Vine Ring Crit
+	Description: ""
+}
+
+DeadBeetleEggBuff: {
+	DisplayName: Dead Beetle Egg Buff
+	Description: ""
+}
+
+DeathFlame: {
+	DisplayName: Death Flame
+	Description: ""
+}
+
+DevilHeartGyroscopeBuff: {
+	DisplayName: Devil Heart Gyroscope
+	Description: Whip the gyroscope to power it up; a fully charged gyroscope releases a healing heart
+}
+
+DevilHeartSetBuff: {
+	DisplayName: Devil Heart Overload
+	Description:
+		'''
+		Natural mana regeneration is disabled and defense is reduced by 15%
+		6% increased magic damage and critical strike chance
+		Increases your max number of minions by 1
+		'''
+}
+
+DevilHeartWeaponBuff: {
+	DisplayName: Devil Heart's Blessing
+	Description: Increased life regeneration while holding a Devil Heart ranged weapon without firing
+}
+
 DragonfruitBuff: {
 	DisplayName: Dragonfruit Buff
+	Description: ""
+}
+
+DreamYearningBuff: {
+	DisplayName: Dream Yearning Buff
+	Description: ""
+}
+
+DryMartiniBuff: {
+	DisplayName: Dry Martini Buff
+	Description: ""
+}
+
+DurianBuff: {
+	DisplayName: Durian Buff
+	Description: ""
+}
+
+EggTartBuff: {
+	DisplayName: Egg Tart Buff
 	Description: ""
 }
 
@@ -147,8 +313,33 @@ ElderberryBuff: {
 	Description: ""
 }
 
+ElementalResistanceReductionDebuffTest: {
+	DisplayName: Elemental Resistance Reduction Debuff Test
+	Description: ""
+}
+
 EscargotBuff: {
 	DisplayName: Escargot Buff
+	Description: ""
+}
+
+EvilMusicRemnant: {
+	DisplayName: Evil Music Remnant
+	Description: ""
+}
+
+FireflyInferno: {
+	DisplayName: Firefly Inferno
+	Description: ""
+}
+
+FractureDebuff: {
+	DisplayName: Exposed
+	Description: While wearing the Hardened Witherbark Heart, enemy contact hits deal 50% more damage
+}
+
+Freeze: {
+	DisplayName: Freeze
 	Description: ""
 }
 
@@ -167,6 +358,11 @@ FroggleBunwichBuff: {
 	Description: ""
 }
 
+FruitJuiceBuff: {
+	DisplayName: Fruit Juice Buff
+	Description: ""
+}
+
 FruitSaladBuff: {
 	DisplayName: Fruit Salad Buff
 	Description: ""
@@ -177,8 +373,18 @@ GingerbreadCookieBuff: {
 	Description: ""
 }
 
+GlowMothBuff: {
+	DisplayName: Glow Moth Buff
+	Description: ""
+}
+
 GoldenDelightBuff: {
 	DisplayName: Golden Delight Buff
+	Description: ""
+}
+
+GoldenLotusStaff_Buff: {
+	DisplayName: Golden Lotus Staff_ Buff
 	Description: ""
 }
 
@@ -187,8 +393,23 @@ GrapefruitBuff: {
 	Description: ""
 }
 
+GrapeJuiceBuff: {
+	DisplayName: Grape Juice Buff
+	Description: ""
+}
+
 GrapesBuff: {
 	DisplayName: Grapes Buff
+	Description: ""
+}
+
+GreenImmune: {
+	DisplayName: Green Immune
+	Description: ""
+}
+
+GreenStormBuff: {
+	DisplayName: Green Storm Buff
 	Description: ""
 }
 
@@ -202,619 +423,14 @@ GrubSoupBuff: {
 	Description: ""
 }
 
-HotdogBuff: {
-	DisplayName: Hotdog Buff
-	Description: ""
-}
-
-IceCreamBuff: {
-	DisplayName: Ice Cream Buff
-	Description: ""
-}
-
-LemonBuff: {
-	DisplayName: Lemon Buff
-	Description: ""
-}
-
-LobsterTailBuff: {
-	DisplayName: Lobster Tail Buff
-	Description: ""
-}
-
-MangoBuff: {
-	DisplayName: Mango Buff
-	Description: ""
-}
-
-MarshmallowBuff: {
-	DisplayName: Marshmallow Buff
-	Description: ""
-}
-
-MonsterLasagnaBuff: {
-	DisplayName: Monster Lasagna Buff
-	Description: ""
-}
-
-NachosBuff: {
-	DisplayName: Nachos Buff
-	Description: ""
-}
-
-PadThaiBuff: {
-	DisplayName: Pad Thai Buff
-	Description: ""
-}
-
-PeachBuff: {
-	DisplayName: Peach Buff
-	Description: ""
-}
-
-PhoBuff: {
-	DisplayName: Pho Buff
-	Description: ""
-}
-
-PineappleBuff: {
-	DisplayName: Pineapple Buff
-	Description: ""
-}
-
-PizzaBuff: {
-	DisplayName: Pizza Buff
-	Description: ""
-}
-
-PlumBuff: {
-	DisplayName: Plum Buff
-	Description: ""
-}
-
-PotatoChipsBuff: {
-	DisplayName: Potato Chips Buff
-	Description: ""
-}
-
-PumpkinPieBuff: {
-	DisplayName: Pumpkin Pie Buff
-	Description: ""
-}
-
-RambutanBuff: {
-	DisplayName: Rambutan Buff
-	Description: ""
-}
-
-RoastedBirdBuff: {
-	DisplayName: Roasted Bird Buff
-	Description: ""
-}
-
-RoastedDuckBuff: {
-	DisplayName: Roasted Duck Buff
-	Description: ""
-}
-
-SashimiBuff: {
-	DisplayName: Sashimi Buff
-	Description: ""
-}
-
-SauteedFrogLegsBuff: {
-	DisplayName: Sauteed Frog Legs Buff
-	Description: ""
-}
-
-SeafoodDinnerBuff: {
-	DisplayName: Seafood Dinner Buff
-	Description: ""
-}
-
-ShrimpPoBoyBuff: {
-	DisplayName: Shrimp Po Boy Buff
-	Description: ""
-}
-
-ShuckedOysterBuff: {
-	DisplayName: Shucked Oyster Buff
-	Description: ""
-}
-
-SpaghettiBuff: {
-	DisplayName: Spaghetti Buff
-	Description: ""
-}
-
-StarfruitBuff: {
-	DisplayName: Starfruit Buff
-	Description: ""
-}
-
-SteakBuff: {
-	DisplayName: Steak Buff
-	Description: ""
-}
-
-SugarCookieBuff: {
-	DisplayName: Sugar Cookie Buff
-	Description: ""
-}
-
-AleBuff: {
-	DisplayName: Ale Buff
-	Description: ""
-}
-
-AppleJuiceBuff: {
-	DisplayName: Apple Juice Buff
-	Description: ""
-}
-
-BananaDaiquiriBuff: {
-	DisplayName: Banana Daiquiri Buff
-	Description: ""
-}
-
-BloodyMoscatoBuff: {
-	DisplayName: Bloody Moscato Buff
-	Description: ""
-}
-
-CoffeeCupBuff: {
-	DisplayName: Coffee Cup Buff
-	Description: ""
-}
-
-CreamSodaBuff: {
-	DisplayName: Cream Soda Buff
-	Description: ""
-}
-
-FruitJuiceBuff: {
-	DisplayName: Fruit Juice Buff
-	Description: ""
-}
-
-GrapeJuiceBuff: {
-	DisplayName: Grape Juice Buff
-	Description: ""
-}
-
-LemonadeBuff: {
-	DisplayName: Lemonade Buff
-	Description: ""
-}
-
-MilkCartonBuff: {
-	DisplayName: Milk Carton Buff
-	Description: ""
-}
-
-MilkshakeBuff: {
-	DisplayName: Milkshake Buff
-	Description: ""
-}
-
-PeachSangriaBuff: {
-	DisplayName: Peach Sangria Buff
-	Description: ""
-}
-
-PinaColadaBuff: {
-	DisplayName: Pina Colada Buff
-	Description: ""
-}
-
-PrismaticPunchBuff: {
-	DisplayName: Prismatic Punch Buff
-	Description: ""
-}
-
-SakeBuff: {
-	DisplayName: Sake Buff
-	Description: ""
-}
-
-SmoothieofDarknessBuff: {
-	DisplayName: Smoothieof Darkness Buff
-	Description: ""
-}
-
-TeacupBuff: {
-	DisplayName: Teacup Buff
-	Description: ""
-}
-
-TropicalSmoothieBuff: {
-	DisplayName: Tropical Smoothie Buff
-	Description: ""
-}
-
-ArcticshellfishWarshipBuff: {
-	DisplayName: Arcticshellfish Warship Buff
-	Description: ""
-}
-
-BakedMusselBuff: {
-	DisplayName: Baked Mussel Buff
-	Description: ""
-}
-
-BakedOysterBuff: {
-	DisplayName: Baked Oyster Buff
-	Description: ""
-}
-
-CantaloupeJellyBuff: {
-	DisplayName: Cantaloupe Jelly Buff
-	Description: ""
-}
-
-CaramelPuddingBuff: {
-	DisplayName: Caramel Pudding Buff
-	Description: ""
-}
-
-CrabseedWarshipBuff: {
-	DisplayName: Crabseed Warship Buff
-	Description: ""
-}
-
-DurianBuff: {
-	DisplayName: Durian Buff
-	Description: ""
-}
-
-EggTartBuff: {
-	DisplayName: Egg Tart Buff
-	Description: ""
-}
-
-KiwiFruitBuff: {
-	DisplayName: Kiwi Fruit Buff
-	Description: ""
-}
-
-KiwiIceCreamBuff: {
-	DisplayName: Kiwi Ice Cream Buff
-	Description: ""
-}
-
-MangosteenBuff: {
-	DisplayName: Mangosteen Buff
-	Description: ""
-}
-
-MapoTofuBuff: {
-	DisplayName: Mapo Tofu Buff
-	Description: ""
-}
-
-OrangeIcecreamBuff: {
-	DisplayName: Orange Icecream Buff
-	Description: ""
-}
-
-SalmonInPepperBuff: {
-	DisplayName: Salmon In Pepper Buff
-	Description: ""
-}
-
-SalmonWarshipBuff: {
-	DisplayName: Salmon Warship Buff
-	Description: ""
-}
-
-SeafoodPizzaBuff: {
-	DisplayName: Seafood Pizza Buff
-	Description: ""
-}
-
-StinkyTofuBuff: {
-	DisplayName: Stinky Tofu Buff
-	Description: ""
-}
-
-StrawberryBuff: {
-	DisplayName: Strawberry Buff
-	Description: ""
-}
-
-StrawberryIcecreamBuff: {
-	DisplayName: Strawberry Icecream Buff
-	Description: ""
-}
-
-SweetshrimpSushiBuff: {
-	DisplayName: Sweetshrimp Sushi Buff
-	Description: ""
-}
-
-TamakoSushiBuff: {
-	DisplayName: Tamako Sushi Buff
-	Description: ""
-}
-
-WakameWarshipBuff: {
-	DisplayName: Wakame Warship Buff
-	Description: ""
-}
-
-WatermelonBuff: {
-	DisplayName: Watermelon Buff
-	Description: ""
-}
-
-WatermelonPlateBuff: {
-	DisplayName: Watermelon Plate Buff
-	Description: ""
-}
-
-BlueHawaiiBuff: {
-	DisplayName: Blue Hawaii Buff
-	Description: ""
-}
-
-B_52Buff: {
-	DisplayName: B_52 Buff
-	Description: ""
-}
-
-DreamYearningBuff: {
-	DisplayName: Dream Yearning Buff
-	Description: ""
-}
-
-DryMartiniBuff: {
-	DisplayName: Dry Martini Buff
-	Description: ""
-}
-
-GreenStormBuff: {
-	DisplayName: Green Storm Buff
-	Description: ""
-}
-
-KiwiJuiceBuff: {
-	DisplayName: Kiwi Juice Buff
-	Description: ""
-}
-
-LonelyJellyfishBuff: {
-	DisplayName: Lonely Jellyfish Buff
-	Description: ""
-}
-
-OrangeJuiceBuff: {
-	DisplayName: Orange Juice Buff
-	Description: ""
-}
-
-PiercoldWindBuff: {
-	DisplayName: Piercold Wind Buff
-	Description: ""
-}
-
-PurpleHooterBuff: {
-	DisplayName: Purple Hooter Buff
-	Description: ""
-}
-
-QuinceMarryBuff: {
-	DisplayName: Quince Marry Buff
-	Description: ""
-}
-
-RedWineBuff: {
-	DisplayName: Red Wine Buff
-	Description: ""
-}
-
-SunriseBuff: {
-	DisplayName: Sunrise Buff
-	Description: ""
-}
-
-TricolourBuff: {
-	DisplayName: Tricolour Buff
-	Description: ""
-}
-
-WaterMelonJuiceBuff: {
-	DisplayName: Water Melon Juice Buff
-	Description: ""
-}
-
-ShortImmune12: {
-	DisplayName: Short Immune12
-	Description: ""
-}
-
-ShortImmune3: {
-	DisplayName: Short Immune3
-	Description: ""
-}
-
-ElementalResistanceReductionDebuffTest: {
-	DisplayName: Elemental Resistance Reduction Debuff Test
-	Description: ""
-}
-
-Petrification: {
-	DisplayName: Petrification
-	Description: ""
-}
-
-TuskCursed: {
-	DisplayName: Tusk Cursed
-	Description: ""
-}
-
-TuskStaff: {
-	DisplayName: Tusk Staff
-	Description: ""
-}
-
-FireflyInferno: {
-	DisplayName: Firefly Inferno
-	Description: ""
-}
-
-GlowMothBuff: {
-	DisplayName: Glow Moth Buff
-	Description: ""
-}
-
-OnMoth: {
-	DisplayName: On Moth
-	Description: ""
-}
-
-ShadowPotionBuff: {
-	DisplayName: Shadow Potion Buff
-	Description: ""
-}
-
-Freeze: {
-	DisplayName: Freeze
-	Description: ""
-}
-
-LaserWormBuff: {
-	DisplayName: Laser Worm Buff
-	Description: ""
-}
-
-ShadowSupervisor: {
-	DisplayName: Shadow Supervisor
-	Description: ""
-}
-
-MoonAndFragrans: {
-	DisplayName: Moon And Fragrans
-	Description: ""
-}
-
-MoonAndFragransII: {
-	DisplayName: Moon And FragransII
-	Description: ""
-}
-
-MoonAndFragransIII: {
-	DisplayName: Moon And FragransIII
-	Description: ""
-}
-
-BlueImmune: {
-	DisplayName: Blue Immune
-	Description: ""
-}
-
-BrownImmune: {
-	DisplayName: Brown Immune
-	Description: ""
-}
-
-GreenImmune: {
-	DisplayName: Green Immune
-	Description: ""
-}
-
-PinkImmune: {
-	DisplayName: Pink Immune
-	Description: ""
-}
-
-PurpleImmune: {
-	DisplayName: Purple Immune
-	Description: ""
-}
-
-RedImmune: {
-	DisplayName: Red Immune
-	Description: ""
-}
-
-WhiteImmune: {
-	DisplayName: White Immune
-	Description: ""
-}
-
-YellowImmune: {
-	DisplayName: Yellow Immune
-	Description: ""
-}
-
-AcytaeaInferno: {
-	DisplayName: Acytaea Inferno
-	Description: ""
-}
-
-CactusBallBuff: {
-	DisplayName: Cactus Ball Buff
-	Description: ""
-}
-
-WaterBoltII: {
-	DisplayName: Water BoltII
-	Description: ""
-}
-
-AmberStick: {
-	DisplayName: Amber Stick
-	Description: ""
-}
-
-Armor15Cracked: {
-	DisplayName: Armor15 Cracked
-	Description: ""
-}
-
-AuburnBell: {
-	DisplayName: Auburn Bell
-	Description: ""
-}
-
-AuburnSelfReinforcing: {
-	DisplayName: Auburn Self Reinforcing
-	Description: ""
-}
-
-BloodCultistBuff: {
-	DisplayName: Blood Cultist Buff
-	Description: ""
-}
-
-Charred: {
-	DisplayName: Charred
-	Description: ""
-}
-
-CrossHair: {
-	DisplayName: Cross Hair
-	Description: ""
-}
-
-CyanVineRingCrit: {
-	DisplayName: Cyan Vine Ring Crit
-	Description: ""
-}
-
-DeadBeetleEggBuff: {
-	DisplayName: Dead Beetle Egg Buff
-	Description: ""
-}
-
-EvilMusicRemnant: {
-	DisplayName: Evil Music Remnant
-	Description: ""
-}
-
 GuideBuff: {
 	DisplayName: Guide Buff
 	Description: ""
+}
+
+HardenedSkinBuff: {
+	DisplayName: Hardened Skin
+	Description: The next enemy contact hit is reduced by 90%
 }
 
 HasHitByResistenceWireBayonet: {
@@ -824,6 +440,16 @@ HasHitByResistenceWireBayonet: {
 
 HexaCrystalWeak: {
 	DisplayName: Hexa Crystal Weak
+	Description: ""
+}
+
+HotdogBuff: {
+	DisplayName: Hotdog Buff
+	Description: ""
+}
+
+IceCreamBuff: {
+	DisplayName: Ice Cream Buff
 	Description: ""
 }
 
@@ -842,53 +468,23 @@ JellyBallStick: {
 	Description: ""
 }
 
-MeltingSideGyroscopeBuff: {
-	DisplayName: Melting Side Gyroscope Buff
+JellyBubbleMount: {
+	DisplayName: Jelly Bubble Mount
 	Description: ""
 }
 
-Photolysis: {
-	DisplayName: Photolysis
+KiwiFruitBuff: {
+	DisplayName: Kiwi Fruit Buff
 	Description: ""
 }
 
-Plague: {
-	DisplayName: Plague
+KiwiIceCreamBuff: {
+	DisplayName: Kiwi Ice Cream Buff
 	Description: ""
 }
 
-RayBuff: {
-	DisplayName: Ray Buff
-	Description: ""
-}
-
-RustSlingshotBuffOne: {
-	DisplayName: Rust Slingshot Buff One
-	Description: ""
-}
-
-RustSlingshotBuffTwo: {
-	DisplayName: Rust Slingshot Buff Two
-	Description: ""
-}
-
-RustSlingshotBuffThree: {
-	DisplayName: Rust Slingshot Buff Three
-	Description: ""
-}
-
-SpritialDamage: {
-	DisplayName: Spritial Damage
-	Description: ""
-}
-
-YggdrasilStoneGyroscopeBuff: {
-	DisplayName: Yggdrasil Stone Gyroscope Buff
-	Description: ""
-}
-
-BadrBuff: {
-	DisplayName: Badr Buff
+KiwiJuiceBuff: {
+	DisplayName: Kiwi Juice Buff
 	Description: ""
 }
 
@@ -897,38 +493,23 @@ LampWoodSeedBuff: {
 	Description: ""
 }
 
-JellyBubbleMount: {
-	DisplayName: Jelly Bubble Mount
-	Description: ""
-}
-
-CorrosiveDebuff: {
-	DisplayName: Corrosive Debuff
-	Description: ""
-}
-
-DevilHeartGyroscopeBuff: {
-	DisplayName: Devil Heart Gyroscope Buff
-	Description: ""
-}
-
-DevilHeartWeaponBuff: {
-	DisplayName: Devil Heart Weapon Buff
-	Description: ""
-}
-
-FractureDebuff: {
-	DisplayName: Fracture Debuff
-	Description: ""
-}
-
-HardenedSkinBuff: {
-	DisplayName: Hardened Skin Buff
+LaserWormBuff: {
+	DisplayName: Laser Worm Buff
 	Description: ""
 }
 
 LegumeGyroscopeBuff: {
-	DisplayName: Legume Gyroscope Buff
+	DisplayName: Legume Gyroscope
+	Description: Whip the gyroscope to power it up and release seeds
+}
+
+LemonadeBuff: {
+	DisplayName: Lemonade Buff
+	Description: ""
+}
+
+LemonBuff: {
+	DisplayName: Lemon Buff
 	Description: ""
 }
 
@@ -937,47 +518,530 @@ LichenInfected: {
 	Description: ""
 }
 
+LifeRotten: {
+	DisplayName: Life Rotten
+	Description: ""
+}
+
 LivingWoodplateBuff: {
-	DisplayName: Living Woodplate Buff
+	DisplayName: Living Wood's Blessing
+	Description: Maximum life increased by 40; regenerating 4 extra life per second
+}
+
+LobsterTailBuff: {
+	DisplayName: Lobster Tail Buff
+	Description: ""
+}
+
+LonelyJellyfishBuff: {
+	DisplayName: Lonely Jellyfish Buff
+	Description: ""
+}
+
+MangoBuff: {
+	DisplayName: Mango Buff
+	Description: ""
+}
+
+MangosteenBuff: {
+	DisplayName: Mangosteen Buff
+	Description: ""
+}
+
+MapoTofuBuff: {
+	DisplayName: Mapo Tofu Buff
+	Description: ""
+}
+
+MarshmallowBuff: {
+	DisplayName: Marshmallow Buff
+	Description: ""
+}
+
+MeltingSideGyroscopeBuff: {
+	DisplayName: Melting Side Gyroscope Buff
+	Description: ""
+}
+
+MilkCartonBuff: {
+	DisplayName: Milk Carton Buff
+	Description: ""
+}
+
+MilkshakeBuff: {
+	DisplayName: Milkshake Buff
 	Description: ""
 }
 
 MolluscsSetBuff: {
-	DisplayName: Molluscs Set Buff
+	DisplayName: Aquatic Possession
+	Description:
+		'''
+		Further extends underwater breathing time
+		30% increased underwater speed and acceleration
+		'''
+}
+
+MonsterLasagnaBuff: {
+	DisplayName: Monster Lasagna Buff
+	Description: ""
+}
+
+MoonAndFragrans: {
+	DisplayName: Moon And Fragrans
+	Description: ""
+}
+
+MoonAndFragransII: {
+	DisplayName: Moon And FragransII
+	Description: ""
+}
+
+MoonAndFragransIII: {
+	DisplayName: Moon And FragransIII
 	Description: ""
 }
 
 MossCover: {
 	DisplayName: Moss Cover
+	Description: 5 increased defense and immunity to Corrosion
+}
+
+NachosBuff: {
+	DisplayName: Nachos Buff
+	Description: ""
+}
+
+OnElectric: {
+	DisplayName: On Electric
+	Description: ""
+}
+
+OnMoth: {
+	DisplayName: On Moth
+	Description: ""
+}
+
+OrangeIcecreamBuff: {
+	DisplayName: Orange Icecream Buff
+	Description: ""
+}
+
+OrangeJuiceBuff: {
+	DisplayName: Orange Juice Buff
+	Description: ""
+}
+
+PadThaiBuff: {
+	DisplayName: Pad Thai Buff
+	Description: ""
+}
+
+PaperObstructed: {
+	DisplayName: Paper Obstructed
+	Description: ""
+}
+
+PeachBuff: {
+	DisplayName: Peach Buff
+	Description: ""
+}
+
+PeachSangriaBuff: {
+	DisplayName: Peach Sangria Buff
+	Description: ""
+}
+
+Petrification: {
+	DisplayName: Petrification
+	Description: ""
+}
+
+PhoBuff: {
+	DisplayName: Pho Buff
+	Description: ""
+}
+
+Photolysis: {
+	DisplayName: Photolysis
+	Description: ""
+}
+
+Photophore_lightPetBuff: {
+	DisplayName: Photophore
+	Description: A photophore lights the way
+}
+
+PiercoldWindBuff: {
+	DisplayName: Piercold Wind Buff
+	Description: ""
+}
+
+PinaColadaBuff: {
+	DisplayName: Pina Colada Buff
+	Description: ""
+}
+
+PineappleBuff: {
+	DisplayName: Pineapple Buff
+	Description: ""
+}
+
+PinkImmune: {
+	DisplayName: Pink Immune
+	Description: ""
+}
+
+PizzaBuff: {
+	DisplayName: Pizza Buff
+	Description: ""
+}
+
+Plague: {
+	DisplayName: Plague
+	Description: ""
+}
+
+PlumBuff: {
+	DisplayName: Plum Buff
+	Description: ""
+}
+
+PotatoChipsBuff: {
+	DisplayName: Potato Chips Buff
+	Description: ""
+}
+
+PrismaticPunchBuff: {
+	DisplayName: Prismatic Punch Buff
+	Description: ""
+}
+
+PumpkinPieBuff: {
+	DisplayName: Pumpkin Pie Buff
+	Description: ""
+}
+
+PurpleHooterBuff: {
+	DisplayName: Purple Hooter Buff
+	Description: ""
+}
+
+PurpleImmune: {
+	DisplayName: Purple Immune
+	Description: ""
+}
+
+QuetzalsWishWound: {
+	DisplayName: Wound
+	Description: Losing 12 life per second while moving
+}
+
+QuinceMarryBuff: {
+	DisplayName: Quince Marry Buff
+	Description: ""
+}
+
+RambutanBuff: {
+	DisplayName: Rambutan Buff
+	Description: ""
+}
+
+RayBuff: {
+	DisplayName: Ray Buff
+	Description: ""
+}
+
+RedAlgae_FriendlyDebuff: {
+	DisplayName: Red Algae Toxin
+	Description: Toxin builds up over time and detonates on the next hit; it deals no damage if it expires
+}
+
+RedAlgaeDebuff: {
+	DisplayName: Red Algae Erosion
+	Description: Red algae drains your life
+}
+
+RedAlgaeMinionGyroscopeBuff: {
+	DisplayName: Crimson Moon Algae Gyroscope
+	Description: A crimson moon algae gyroscope fights for you
+}
+
+RedImmune: {
+	DisplayName: Red Immune
+	Description: ""
+}
+
+RedWineBuff: {
+	DisplayName: Red Wine Buff
+	Description: ""
+}
+
+RestrictionDroneRE01Buff: {
+	DisplayName: Restriction DroneRE01 Buff
+	Description: ""
+}
+
+RoastedBirdBuff: {
+	DisplayName: Roasted Bird Buff
+	Description: ""
+}
+
+RoastedDuckBuff: {
+	DisplayName: Roasted Duck Buff
 	Description: ""
 }
 
 RuinSetBuff: {
-	DisplayName: Ruin Set Buff
+	DisplayName: Power of the Ruins
+	Description: 10% increased summon damage and 25% increased movement speed
+}
+
+RustSlingshotBuffOne: {
+	DisplayName: Rust Slingshot Buff One
+	Description: ""
+}
+
+RustSlingshotBuffThree: {
+	DisplayName: Rust Slingshot Buff Three
+	Description: ""
+}
+
+RustSlingshotBuffTwo: {
+	DisplayName: Rust Slingshot Buff Two
+	Description: ""
+}
+
+SakeBuff: {
+	DisplayName: Sake Buff
+	Description: ""
+}
+
+SalmonInPepperBuff: {
+	DisplayName: Salmon In Pepper Buff
+	Description: ""
+}
+
+SalmonWarshipBuff: {
+	DisplayName: Salmon Warship Buff
+	Description: ""
+}
+
+SashimiBuff: {
+	DisplayName: Sashimi Buff
+	Description: ""
+}
+
+SauteedFrogLegsBuff: {
+	DisplayName: Sauteed Frog Legs Buff
+	Description: ""
+}
+
+SeafoodDinnerBuff: {
+	DisplayName: Seafood Dinner Buff
+	Description: ""
+}
+
+SeafoodPizzaBuff: {
+	DisplayName: Seafood Pizza Buff
+	Description: ""
+}
+
+ShadowPotionBuff: {
+	DisplayName: Shadow Potion Buff
+	Description: ""
+}
+
+ShadowSupervisor: {
+	DisplayName: Shadow Supervisor
+	Description: ""
+}
+
+ShortImmune12: {
+	DisplayName: Short Immune12
+	Description: ""
+}
+
+ShortImmune3: {
+	DisplayName: Short Immune3
+	Description: ""
+}
+
+ShrimpPoBoyBuff: {
+	DisplayName: Shrimp Po Boy Buff
+	Description: ""
+}
+
+ShuckedOysterBuff: {
+	DisplayName: Shucked Oyster Buff
+	Description: ""
+}
+
+SmoothieofDarknessBuff: {
+	DisplayName: Smoothieof Darkness Buff
+	Description: ""
+}
+
+SpaghettiBuff: {
+	DisplayName: Spaghetti Buff
+	Description: ""
+}
+
+SpritialDamage: {
+	DisplayName: Spritial Damage
+	Description: ""
+}
+
+StaminaEnergyBuff: {
+	DisplayName: Stamina Energy Buff
+	Description: ""
+}
+
+StarCrack: {
+	DisplayName: Star Crack
+	Description: ""
+}
+
+StarfruitBuff: {
+	DisplayName: Starfruit Buff
+	Description: ""
+}
+
+SteakBuff: {
+	DisplayName: Steak Buff
+	Description: ""
+}
+
+StinkyTofuBuff: {
+	DisplayName: Stinky Tofu Buff
+	Description: ""
+}
+
+StrawberryBuff: {
+	DisplayName: Strawberry Buff
+	Description: ""
+}
+
+StrawberryIcecreamBuff: {
+	DisplayName: Strawberry Icecream Buff
+	Description: ""
+}
+
+SugarCookieBuff: {
+	DisplayName: Sugar Cookie Buff
+	Description: ""
+}
+
+SunriseBuff: {
+	DisplayName: Sunrise Buff
+	Description: ""
+}
+
+SweetshrimpSushiBuff: {
+	DisplayName: Sweetshrimp Sushi Buff
+	Description: ""
+}
+
+TamakoSushiBuff: {
+	DisplayName: Tamako Sushi Buff
+	Description: ""
+}
+
+TeacupBuff: {
+	DisplayName: Teacup Buff
 	Description: ""
 }
 
 TheGreenSolarBuff: {
-	DisplayName: The Green Solar Buff
+	DisplayName: Green Solar Rebirth
+	Description: Unable to move; immune to enemy contact and projectiles; recovering 5 life per second
+}
+
+TricolourBuff: {
+	DisplayName: Tricolour Buff
 	Description: ""
+}
+
+TropicalSmoothieBuff: {
+	DisplayName: Tropical Smoothie Buff
+	Description: ""
+}
+
+TuskCursed: {
+	DisplayName: Tusk Cursed
+	Description: ""
+}
+
+TuskStaff: {
+	DisplayName: Tusk Staff
+	Description: ""
+}
+
+UnfortuneCurse: {
+	DisplayName: Unfortune Curse
+	Description: ""
+}
+
+WakameWarshipBuff: {
+	DisplayName: Wakame Warship Buff
+	Description: ""
+}
+
+WaterBoltII: {
+	DisplayName: Water BoltII
+	Description: ""
+}
+
+WatermelonBuff: {
+	DisplayName: Watermelon Buff
+	Description: ""
+}
+
+WaterMelonJuiceBuff: {
+	DisplayName: Water Melon Juice Buff
+	Description: ""
+}
+
+WatermelonPlateBuff: {
+	DisplayName: Watermelon Plate Buff
+	Description: ""
+}
+
+WhiteImmune: {
+	DisplayName: White Immune
+	Description: ""
+}
+
+Wither_Activated_Dog_Buff: {
+	DisplayName: Activated Dog
+	Description: An activated dog fights for you
 }
 
 WitherbarkSetBuff: {
-	DisplayName: Witherbark Set Buff
-	Description: ""
+	DisplayName: Witherbark's Blessing
+	Description:
+		'''
+		3 additional minion slots and 30% reduced summon damage
+		A Witherbark guardian fights for you
+		'''
 }
 
 WoodlandWraithStaffBuff: {
-	DisplayName: Woodland Wraith Staff Buff
-	Description: ""
+	DisplayName: Woodland Wraith
+	Description: A woodland wraith fights for you
 }
 
 WoodlandWraithStaffMyceliumBuff: {
-	DisplayName: Woodland Wraith Staff Mycelium Buff
+	DisplayName: Healing Mycelium
+	Description: Regenerating 5 extra life per second, doubled inside your spore zone
+}
+
+YellowImmune: {
+	DisplayName: Yellow Immune
 	Description: ""
 }
 
-DeathFlame: {
-	DisplayName: Death Flame
+YggdrasilStoneGyroscopeBuff: {
+	DisplayName: Yggdrasil Stone Gyroscope Buff
 	Description: ""
 }

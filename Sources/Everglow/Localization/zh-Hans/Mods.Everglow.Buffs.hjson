@@ -1,20 +1,171 @@
-DevilHeartSetBuff: {
-	DisplayName: 魔心过载
+AcytaeaInferno: {
+	DisplayName: 雅斯塔亚的烈火
+	Description: ""
+}
+
+AleBuff: {
+	DisplayName: 麦芽酒
 	Description:
-	'''
-	停止自然魔力再生并降低防御
-	但获得魔法伤害与暴击加成，同时增加召唤栏
-	'''
+		'''
+		短时间内鞭子的范围和速度提升至1.5倍!!!
+		耍酒疯
+		'''
 }
 
-BloodSwordStrikeBuff: {
-	DisplayName: 汲血剑
+AmberStick: {
+	DisplayName: 黏性琥珀
 	Description: ""
 }
 
-LifeRotten: {
-	DisplayName: 生命腐化
-	Description: ""
+AppleBuff: {
+	DisplayName: 苹果
+	Description:
+		'''
+		增加5%减伤!!!
+		一天一苹果，医生远离我
+		'''
+}
+
+AppleJuiceBuff: {
+	DisplayName: 苹果汁
+	Description:
+		'''
+		短时间内增加60%减伤!!!
+		一天一苹果，医生远离我
+		'''
+}
+
+ApplePieBuff: {
+	DisplayName: 苹果派
+	Description:
+		'''
+		加5%减伤,1生命回复!!!
+		一天一苹果，医生远离我，苹果派也行
+		'''
+}
+
+ApricotBuff: {
+	DisplayName: 杏
+	Description:
+		'''
+		增加4魔力再生!!!
+		止渴润肺
+		'''
+}
+
+ArcticshellfishWarshipBuff: {
+	DisplayName: 北极贝军舰
+	Description:
+		'''
+		提升4防御
+		美味的北极贝军舰
+		'''
+}
+
+Armor15Cracked: {
+	DisplayName: 盔甲碎裂
+	Description: 防御力降低15
+}
+
+AuburnBell: {
+	DisplayName: 金棕铃铛
+	Description: 金棕飞棍为你而战
+}
+
+AuburnSelfReinforcing: {
+	DisplayName: 金棕之力
+	Description: 生命缓慢枯萎以换取+1召唤栏位
+}
+
+B_52Buff: {
+	DisplayName: B_52
+	Description:
+		'''
+		短时间内大幅提升发射器速度、暴击、伤害
+		轰炸机
+		'''
+}
+
+BaconBuff: {
+	DisplayName: 培根
+	Description:
+		'''
+		加2生命回复，所受冷系伤害降低
+		——法国人都是培根
+		'''
+}
+
+BadrBuff: {
+	DisplayName: 巴德尔
+	Description: 点亮前行的路
+}
+
+BakedMusselBuff: {
+	DisplayName: 炭烧青口贝
+	Description:
+		'''
+		增加6%爆伤、4防御
+		似乎没那么生猛了
+		'''
+}
+
+BakedOysterBuff: {
+	DisplayName: 炭烧生蚝
+	Description:
+		'''
+		增加4点盔甲穿透、4防御
+		耍酒疯
+		'''
+}
+
+BananaBuff: {
+	DisplayName: 香蕉
+	Description:
+		'''
+		5%不消耗弹药，增加5%机枪类武器远程射速!!!
+		低血压
+		'''
+}
+
+BananaDaiquiriBuff: {
+	DisplayName: 冰冻香蕉代基里
+	Description:
+		'''
+		短时间内不消耗子弹，大幅增加远程伤害与暴击
+		低体温血压
+		'''
+}
+
+BananaSplitBuff: {
+	DisplayName: 香蕉船
+	Description:
+		'''
+		10%不消耗弹药，增加6%远程暴击!!!
+		低血压
+		'''
+}
+
+BBQRibsBuff: {
+	DisplayName: 烧烤排骨
+	Description:
+		'''
+		增加50最大生命值!!!
+		滋阴补血
+		'''
+}
+
+BlackCurrantBuff: {
+	DisplayName: 黑加仑
+	Description:
+		'''
+		获得夜视、危险感知能力
+		改善视力
+		'''
+}
+
+BloodCultistBuff: {
+	DisplayName: 血月教徒的祝福
+	Description: 生命缓慢回复
 }
 
 BloodDrinking: {
@@ -22,1090 +173,304 @@ BloodDrinking: {
 	Description: ""
 }
 
-OnElectric: {
-	DisplayName: 触电
-	Description: ""
-}
-
-StaminaEnergyBuff: {
-	DisplayName: 能量饮料
-	Description: "使用刺剑时体力更多"
-}
-
-StarCrack: {
-	DisplayName: 裂星
-	Description: ""
-}
-
-AppleBuff: {
-	DisplayName: 苹果
-	Description:
-	'''
-	增加5%减伤!!!
-	一天一苹果，医生远离我
-	'''
-}
-
-ApplePieBuff: {
-	DisplayName: 苹果派
-	Description:
-	'''
-	加5%减伤,1生命回复!!!
-	一天一苹果，医生远离我，苹果派也行
-	'''
-}
-
-ApricotBuff: {
-	DisplayName: 杏
-	Description:
-	'''
-	增加4魔力再生!!!
-	止渴润肺
-	'''
-}
-
-BaconBuff: {
-	DisplayName: 培根
-	Description:
-	'''
-	加2生命回复，所受冷系伤害降低
-	——法国人都是培根
-	'''
-}
-
-BananaBuff: {
-	DisplayName: 香蕉
-	Description:
-	'''
-	5%不消耗弹药，增加5%机枪类武器远程射速!!!
-	低血压
-	'''
-}
-
-BananaSplitBuff: {
-	DisplayName: 香蕉船
-	Description:
-	'''
-	10%不消耗弹药，增加6%远程暴击!!!
-	低血压
-	'''
-}
-
-BBQRibsBuff: {
-	DisplayName: 烧烤排骨
-	Description:
-	'''
-	增加50最大生命值!!!
-	滋阴补血
-	'''
-}
-
-BlackCurrantBuff: {
-	DisplayName: 黑加仑
-	Description:
-	'''
-	获得夜视、危险感知能力
-	改善视力
-	'''
-}
-
 BloodOrangeBuff: {
 	DisplayName: 血橙
 	Description:
-	'''
-	增加25最大生命值!!!
-	这里不是崽饿
-	'''
+		'''
+		增加25最大生命值!!!
+		这里不是崽饿
+		'''
 }
 
-BowlofSoupBuff: {
-	DisplayName: 鱼菇汤
-	Description:
-	'''
-	增加40最大魔力值,5%魔法伤害
-	补脑
-	'''
-}
-
-BunnyStewBuff: {
-	DisplayName: 炖兔兔
-	Description:
-	'''
-	自动跳跃，提升跳跃能力!!!！
-	没有任何兔子在制作过程中受到伤害
-	'''
-}
-
-BurgerBuff: {
-	DisplayName: 汉堡
-	Description:
-	'''
-	减少移速，增加防御
-	热量炸弹
-	'''
-}
-
-CherryBuff: {
-	DisplayName: 樱桃
-	Description:
-	'''
-	死亡后产生爆炸!!!
-	你所热爱的，就是你的生活
-	'''
-}
-
-ChickenNuggetBuff: {
-	DisplayName: 鸡块
-	Description:
-	'''
-	增加1生命回复、4%攻速!!!
-	数一数二的鸡块！
-	'''
-}
-
-ChocolateChipCookieBuff: {
-	DisplayName: 巧克力曲奇饼干
-	Description:
-	'''
-	增加2点生命回复和魔力回复
-	补充能量
-	'''
-}
-
-ChristmasPuddingBuff: {
-	DisplayName: 圣诞布丁
-	Description:
-	'''
-	所有可反弹射弹多反弹一次！
-	Duang~Duang~Duang~
-	'''
-}
-
-CoconutBuff: {
-	DisplayName: 椰子
-	Description:
-	'''
-	增加4防御，3%减伤!!!
-	我从小啃到大
-	'''
-}
-
-CookedFishBuff: {
-	DisplayName: 熟鱼
-	Description:
-	'''
-	增加40魔力上限,4%魔法暴击率!!!
-	益气健脾
-	'''
-}
-
-CookedMarshmallowBuff: {
-	DisplayName: 熟棉花糖
-	Description:
-	'''
-	减少75%最大掉落速度,但无法操控下落速度!!!
-	轻飘飘的
-	'''
-}
-
-CookedShrimpBuff: {
-	DisplayName: 熟虾
-	Description:
-	'''
-	增加10防御,4点盔甲穿透!!!
-	补钙
-	'''
-}
-
-DragonfruitBuff: {
-	DisplayName: 火龙果
-	Description:
-	'''
-	攻击造成着火以及涂油
-	红红火火恍恍惚惚
-	'''
-}
-
-ElderberryBuff: {
-	DisplayName: 接骨木果
-	Description:
-	'''
-	你可以短距离冲刺
-	抗氧化
-	'''
-}
-
-EscargotBuff: {
-	DisplayName: 食用蜗牛
-	Description:
-	'''
-	大大削弱移动力，增加50%减伤!!!
-	神龟药水?
-	'''
-}
-
-FriedEggBuff: {
-	DisplayName: 煎蛋
-	Description:
-	'''
-	增加6%伤害!!!
-	蛋白质
-	'''
-}
-
-FriesBuff: {
-	DisplayName: 炸薯条
-	Description:
-	'''
-	加4防御，6%暴击!!!
-	高油高盐
-	'''
-}
-
-FroggleBunwichBuff: {
-	DisplayName: 蛙腿三明治
-	Description:
-	'''
-	自动跳跃，增加伤害，提升跳跃能力!!!
-	你能真正尝到沼泽的味道
-	'''
-}
-
-FruitSaladBuff: {
-	DisplayName: 水果沙拉
-	Description:
-	'''
-	提升大部分属性
-	长久的维生素！
-	'''
-}
-
-GingerbreadCookieBuff: {
-	DisplayName: 姜饼
-	Description:
-	'''
-	增加2生命回复,保暖!!!
-	驱寒排毒
-	'''
-}
-
-GoldenDelightBuff: {
-	DisplayName:  金美味
-	Description:
-	'''
-	攻击造迈达斯，提升大部分属性!!!
-	金灿灿!
-	'''
-}
-
-GrapefruitBuff: {
-	DisplayName: 葡萄柚
-	Description:
-	'''
-	加25%召唤物击退!!!
-	拒绝肾透支
-	'''
-}
-
-GrapesBuff: {
-	DisplayName: 葡萄
-	Description:
-	'''
-	增加1召唤栏，幸运值加10%，减12防御!!!
-	多子多福
-	'''
-}
-
-GrilledSquirrelBuff: {
-	DisplayName: 烤松鼠
-	Description:
-	'''
-	提升跳跃能力
-	欢跃
-	'''
-}
-
-GrubSoupBuff: {
-	DisplayName: 蛆虫汤
-	Description:
-	'''
-	增加30渔力，每秒减2点生命!!!
-	吃啥补啥，就是有点恶心
-	'''
-}
-
-HotdogBuff: {
-	DisplayName: 热狗
-	Description:
-	'''
-	增强短剑与长矛类武器!!!
-	吔~~
-	'''
-}
-
-IceCreamBuff: {
-	DisplayName: 冰淇淋
-	Description:
-	'''
-	免疫着火和火块!!!
-	吃雪（bushi
-	'''
-}
-
-LemonBuff: {
-	DisplayName: 柠檬
-	Description:
-	'''
-	增加4%远程暴击,仇恨值减300
-	消炎美容
-	'''
-}
-
-LobsterTailBuff: {
-	DisplayName: 龙虾尾
-	Description:
-	'''
-	增加6防御,33%挖矿速度
-	壮阳
-	'''
-}
-
-MangoBuff: {
-	DisplayName: 芒果
-	Description:
-	'''
-	减缓因食物中毒而产生的持续减血效果
-	清胃解毒
-	'''
-}
-
-MarshmallowBuff: {
-	DisplayName: 棉花糖
-	Description:
-	'''
-	可以二段跳
-	像云一样
-	'''
-}
-
-MonsterLasagnaBuff: {
-	DisplayName: 怪物千层面
-	Description:
-	'''
-	增加25%暴击率，但每秒减3生命!!!
-	弄熟的恶魔还是恶魔，在千层饼中也不会改变
-	'''
-}
-
-NachosBuff: {
-	DisplayName: 玉米片
-	Description:
-	'''
-	爆炸类射弹爆炸范围增加！！
-	爆米花
-	'''
-}
-
-PadThaiBuff: {
-	DisplayName: 泰式炒面
-	Description:
-	'''
-	增加50%召唤物击退
-	异域风情
-	'''
-}
-
-PeachBuff: {
-	DisplayName: 桃子
-	Description:
-	'''
-	增加心的拾取范围，1生命回复
-	在想peach
-	'''
-}
-
-PhoBuff: {
-	DisplayName: 越南河粉
-	Description:
-	'''
-	增加8%召唤物伤害!!!
-	异域风情
-	'''
-}
-
-PineappleBuff: {
-	DisplayName: 菠萝
-	Description:
-	'''
-	近战攻击者伤害玩家时会承受一半伤害!!!
-	菠萝碱
-	'''
-}
-
-PizzaBuff: {
-	DisplayName: 披萨
-	Description:
-	'''
-	增加10点盔甲穿透!!!
-	会让意大利人破防的菠萝披萨
-	'''
-}
-
-PlumBuff: {
-	DisplayName: 李子
-	Description:
-	'''
-	增加600仇恨值，8%攻速!!!
-	至于我的建议，还是再等等吧!
-	'''
-}
-
-PotatoChipsBuff: {
-	DisplayName: 薯片
-	Description:
-	'''
-	增加4防御，8%伤害!!!
-	高油高盐
-	'''
-}
-
-PumpkinPieBuff: {
-	DisplayName: 南瓜派
-	Description:
-	'''
-	增加50最大生命值!!!
-	丰收的喜悦
-	'''
-}
-
-RambutanBuff: {
-	DisplayName: 红毛丹
-	Description:
-	'''
-	免疫许多减益!!!
-	提高免疫
-	'''
-}
-
-RoastedBirdBuff: {
-	DisplayName: 烤鸟
-	Description:
-	'''
-	提升飞行能力!!!
-	我是一只小小小鸟
-	'''
-}
-
-RoastedDuckBuff: {
-	DisplayName: 烤鸭
-	Description:
-	'''
-	可以在水上行走，提升飞行能力!!!
-	这是烤鸭
-	'''
-}
-
-SashimiBuff: {
-	DisplayName: 生鱼片
-	Description:
-	'''
-	可以游泳，水下呼吸，增加15%伤害，但每秒减少2点生命!!!
-	寄生虫！
-	'''
-}
-
-SauteedFrogLegsBuff: {
-	DisplayName: 炒蛙腿
-	Description:
-	'''
-	自动跳跃，提升跳跃能力!!!
-	钓不到蛙腿？那就吃吧。
-	'''
-}
-
-SeafoodDinnerBuff: {
-	DisplayName: 海鲜大餐
-	Description:
-	'''
-	增加8%暴击，伤害，攻速，爆伤!!!
-	够生猛！
-	'''
-}
-
-ShrimpPoBoyBuff: {
-	DisplayName: 鲜虾三明治
-	Description:
-	'''
-	增加6防御,25%挖矿速度
-	壮阳
-	'''
-}
-
-ShuckedOysterBuff: {
-	DisplayName: 去壳牡蛎
-	Description:
-	'''
-	减少5防御，加10点盔甲穿透，每秒减少3点生命!!!
-	寄生虫！
-	'''
-}
-
-SpaghettiBuff: {
-	DisplayName: 意大利面
-	Description:
-	'''
-	增加1哨兵栏!!!
-	异域风情
-	'''
-}
-
-StarfruitBuff: {
-	DisplayName: 杨桃
-	Description:
-	'''
-	使用霰弹枪类武器时会多射出一发子弹
-	1437大帝的淫威
-	'''
-}
-
-SteakBuff: {
-	DisplayName: 牛排
-	Description:
-	'''
-	减少20%魔力消耗!!!
-	上流
-	'''
-}
-
-SugarCookieBuff: {
-	DisplayName: 蜜糖饼干
-	Description:
-	'''
-	增加5%远程伤害!!!
-	养胃滋润
-	'''
-}
-
-AleBuff: {
-	DisplayName: 麦芽酒
-	Description:
-	'''
-	短时间内鞭子的范围和速度提升至1.5倍!!!
-	耍酒疯
-	'''
-}
-
-AppleJuiceBuff: {
-	DisplayName: 苹果汁
-	Description:
-	'''
-	短时间内增加60%减伤!!!
-	一天一苹果，医生远离我
-	'''
-}
-
-BananaDaiquiriBuff: {
-	DisplayName: 冰冻香蕉代基里
-	Description:
-	'''
-	短时间内不消耗子弹，大幅增加远程伤害与暴击
-	低体温血压
-	'''
+BloodSwordStrikeBuff: {
+	DisplayName: 汲血剑
+	Description: ""
 }
 
 BloodyMoscatoBuff: {
 	DisplayName: 血腥麝香葡萄
 	Description:
-	'''
-	短时间内每次攻击回1点生命!!!
-	血色
-	'''
-}
-
-CoffeeCupBuff: {
-	DisplayName: 咖啡
-	Description:
-	'''
-	短时间内大幅增加铺墙铺砖速度，高亮标记敌人、陷阱和宝藏，并散发光芒!!!
-	社畜的宝物
-	'''
-}
-
-CreamSodaBuff: {
-	DisplayName: 奶油苏打水
-	Description:
-	'''
-	短时间内大幅增加近战能力，但极其吸引仇恨
-	喷射！
-	'''
-}
-
-FruitJuiceBuff: {
-	DisplayName: 果汁
-	Description:
-	'''
-	短时间内幅大大提升大部分属性
-	维生素！
-	'''
-}
-
-GrapeJuiceBuff: {
-	DisplayName: 葡萄汁
-	Description:
-	'''
-	短时间你变得极其幸运
-	浓缩的幸福
-	'''
-}
-
-LemonadeBuff: {
-	DisplayName: 柠檬水
-	Description:
-	'''
-	短时间内远程击退加倍,仇恨值减2400
-	消炎美容
-	'''
-}
-
-MilkCartonBuff: {
-	DisplayName: 盒装牛奶
-	Description:
-	'''
-	短时间内免疫几乎所有debuff
-	一奶解百毒
-	'''
-}
-
-MilkshakeBuff: {
-	DisplayName: 奶昔
-	Description:
-	'''
-	短时间内大幅加移速
-	节食减肥
-	'''
-}
-
-PeachSangriaBuff: {
-	DisplayName: 桃子果酒
-	Description:
-	'''
-	短时间内大幅回复生命，增加心的拾取范围
-	我也是桃饱用户
-	'''
-}
-
-PinaColadaBuff: {
-	DisplayName: 椰林飘香
-	Description:
-	'''
-	短时间内近战攻击者伤害玩家时会承受10倍（上限1000）伤害!!!
-	从不添加香精当生榨
-	'''
-}
-
-PrismaticPunchBuff: {
-	DisplayName: 七彩潘趣酒
-	Description:
-	'''
-	短时间内增加5召唤栏，5哨兵栏，增加50%召唤伤害，击退!!!
-	高雅兴致
-	'''
-}
-
-SakeBuff: {
-	DisplayName: 清酒
-	Description:
-	'''
-	短时间内减少18防御，大幅增加近战能力!!!
-	纯度，太高了
-	'''
-}
-
-SmoothieofDarknessBuff: {
-	DisplayName: 暗黑奶昔
-	Description:
-	'''
-	短时间内有60%的概率闪避攻击!!!
-	腹黑（字面意义上）
-	'''
-}
-
-TeacupBuff: {
-	DisplayName: 一杯茶
-	Description:
-	'''
-	短时间内大幅增加魔力回复，魔法伤害，暴击!!!
-	醇香四溢
-	'''
-}
-
-TropicalSmoothieBuff: {
-	DisplayName: 热带奶昔
-	Description:
-	'''
-	短时间内魔法攻击仅消耗一点魔力，大幅增加魔法伤害，暴击!!!
-	热带风暴
-	'''
-}
-
-ArcticshellfishWarshipBuff: {
-	DisplayName: 北极贝军舰
-	Description:
-	'''
-	提升4防御
-	美味的北极贝军舰
-	'''
-}
-
-BakedMusselBuff: {
-	DisplayName: 炭烧青口贝
-	Description:
-	'''
-	增加6%爆伤、4防御
-	似乎没那么生猛了
-	'''
-}
-
-BakedOysterBuff: {
-	DisplayName: 炭烧生蚝
-	Description:
-	'''
-	增加4点盔甲穿透、4防御
-	耍酒疯
-	'''
-}
-
-CantaloupeJellyBuff: {
-	DisplayName: 哈密瓜果冻
-	Description:
-	'''
-	射弹可以多穿透一次
-	duang~duang~duang~
-	'''
-}
-
-CaramelPuddingBuff: {
-	DisplayName: 焦糖布丁
-	Description:
-	'''
-	射弹可以多反弹一次
-	duang~duang~duang~
-	'''
-}
-
-CrabseedWarshipBuff: {
-	DisplayName: 蟹籽军舰
-	Description:
-	'''
-	提升暴击率
-	美味的蟹籽军舰
-	'''
-}
-
-DurianBuff: {
-	DisplayName: 榴莲
-	Description:
-	'''
-	加快消化食物的速度
-	促进消化
-	'''
-}
-
-EggTartBuff: {
-	DisplayName: 蛋挞
-	Description:
-	'''
-	增加5%暴击伤害
-	这酥皮不错
-	'''
-}
-
-KiwiFruitBuff: {
-	DisplayName: 猕猴桃
-	Description:
-	'''
-	增大20%武器大小
-	又称奇异果
-	'''
-}
-
-KiwiIceCreamBuff: {
-	DisplayName: 猕猴桃冰激凌
-	Description:
-	'''
-	增大10%武器大小，加快武器攻速
-	奇异的力量
-	'''
-}
-
-MangosteenBuff: {
-	DisplayName: 山竹
-	Description:
-	'''
-	提升回旋镖，悠悠球、链枷类武器距离
-	补养之效
-	'''
-}
-
-MapoTofuBuff: {
-	DisplayName: 麻婆豆腐
-	Description:
-	'''
-	TODO
-	'''
-}
-
-OrangeIcecreamBuff: {
-	DisplayName: 香橙冰激凌
-	Description:
-	'''
-	延长无敌帧时间
-	真实存于心中
-	'''
-}
-
-SalmonInPepperBuff: {
-	DisplayName: 椒盐三文鱼
-	Description:
-	'''
-	提升速度,尤其是在水中
-	冰海之皇
-	'''
-}
-
-SalmonWarshipBuff: {
-	DisplayName: 三文鱼军舰
-	Description:
-	'''
-	提升速度
-	美味的三文鱼军舰
-	'''
-}
-
-SeafoodPizzaBuff: {
-	DisplayName: 海鲜披萨
-	Description:
-	'''
-	提升大部分属性
-	一个人吃完这个可不容易
-	'''
-}
-
-StinkyTofuBuff: {
-	DisplayName: 臭豆腐
-	Description:
-	'''
-	使靠近的敌怪混乱
-	又香又臭
-	'''
-}
-
-StrawberryBuff: {
-	DisplayName: Strawberry Buff
-	Description:
-	'''
-	敌怪越近，造成的伤害越高
-	受人欢迎的水果
-	'''
-}
-
-StrawberryIcecreamBuff: {
-	DisplayName: 草莓冰激凌
-	Description:
-	'''
-	敌怪越近，造成的伤害越高
-	冰冷如你，依旧令人爱不忍释
-	'''
-}
-
-SweetshrimpSushiBuff: {
-	DisplayName: 甜虾寿司
-	Description:
-	'''
-	提升攻击
-	美味的甜虾寿司
-	'''
-}
-
-TamakoSushiBuff: {
-	DisplayName: 玉子寿司
-	Description:
-	'''
-	提升生命回复
-	美味的玉子寿司
-	'''
-}
-
-WakameWarshipBuff: {
-	DisplayName: 裙带菜寿司
-	Description:
-	'''
-	提升魔力回复
-	美味的裙带菜寿司
-	'''
-}
-
-WatermelonBuff: {
-	DisplayName: 西瓜
-	Description:
-	'''
-	增强8%击退能力
-	最大的打击力度
-	'''
-}
-
-WatermelonPlateBuff: {
-	DisplayName: 西瓜拼盘
-	Description:
-	'''
-	提升6%暴击率和暴击伤害
-	朴实无华的摆盘
-	'''
+		'''
+		短时间内每次攻击回1点生命!!!
+		血色
+		'''
 }
 
 BlueHawaiiBuff: {
 	DisplayName: 蓝色夏威夷
 	Description:
-	'''
-	短时间内射弹速度获得提升
-	海风吹拂
-	'''
+		'''
+		短时间内射弹速度获得提升
+		海风吹拂
+		'''
 }
 
-B_52Buff: {
-	DisplayName: B_52
+BlueImmune: {
+	DisplayName: 免疫蓝火
+	Description: ""
+}
+
+BowlofSoupBuff: {
+	DisplayName: 鱼菇汤
 	Description:
-	'''
-	短时间内大幅提升发射器速度、暴击、伤害
-	轰炸机
-	'''
+		'''
+		增加40最大魔力值,5%魔法伤害
+		补脑
+		'''
+}
+
+BrownImmune: {
+	DisplayName: 免疫棕火
+	Description: ""
+}
+
+BunnyStewBuff: {
+	DisplayName: 炖兔兔
+	Description:
+		'''
+		自动跳跃，提升跳跃能力!!!！
+		没有任何兔子在制作过程中受到伤害
+		'''
+}
+
+BurgerBuff: {
+	DisplayName: 汉堡
+	Description:
+		'''
+		减少移速，增加防御
+		热量炸弹
+		'''
+}
+
+CactusBallBuff: {
+	DisplayName: 仙人掌球
+	Description: ""
+}
+
+CantaloupeJellyBuff: {
+	DisplayName: 哈密瓜果冻
+	Description:
+		'''
+		射弹可以多穿透一次
+		duang~duang~duang~
+		'''
+}
+
+CaramelPuddingBuff: {
+	DisplayName: 焦糖布丁
+	Description:
+		'''
+		射弹可以多反弹一次
+		duang~duang~duang~
+		'''
+}
+
+Charred: {
+	DisplayName: 焚烧
+	Description: 大幅降低防御并且生命高速流失
+}
+
+CherryBuff: {
+	DisplayName: 樱桃
+	Description:
+		'''
+		死亡后产生爆炸!!!
+		你所热爱的，就是你的生活
+		'''
+}
+
+ChickenNuggetBuff: {
+	DisplayName: 鸡块
+	Description:
+		'''
+		增加1生命回复、4%攻速!!!
+		数一数二的鸡块！
+		'''
+}
+
+ChocolateChipCookieBuff: {
+	DisplayName: 巧克力曲奇饼干
+	Description:
+		'''
+		增加2点生命回复和魔力回复
+		补充能量
+		'''
+}
+
+ChristmasPuddingBuff: {
+	DisplayName: 圣诞布丁
+	Description:
+		'''
+		所有可反弹射弹多反弹一次！
+		Duang~Duang~Duang~
+		'''
+}
+
+CoconutBuff: {
+	DisplayName: 椰子
+	Description:
+		'''
+		增加4防御，3%减伤!!!
+		我从小啃到大
+		'''
+}
+
+CoffeeCupBuff: {
+	DisplayName: 咖啡
+	Description:
+		'''
+		短时间内大幅增加铺墙铺砖速度，高亮标记敌人、陷阱和宝藏，并散发光芒!!!
+		社畜的宝物
+		'''
+}
+
+CookedFishBuff: {
+	DisplayName: 熟鱼
+	Description:
+		'''
+		增加40魔力上限,4%魔法暴击率!!!
+		益气健脾
+		'''
+}
+
+CookedMarshmallowBuff: {
+	DisplayName: 熟棉花糖
+	Description:
+		'''
+		减少75%最大掉落速度,但无法操控下落速度!!!
+		轻飘飘的
+		'''
+}
+
+CookedShrimpBuff: {
+	DisplayName: 熟虾
+	Description:
+		'''
+		增加10防御,4点盔甲穿透!!!
+		补钙
+		'''
+}
+
+CorrosiveDebuff: {
+	DisplayName: 腐蚀
+	Description: 降低15%移动速度和10点防御
+}
+
+CrabseedWarshipBuff: {
+	DisplayName: 蟹籽军舰
+	Description:
+		'''
+		提升暴击率
+		美味的蟹籽军舰
+		'''
+}
+
+CreamSodaBuff: {
+	DisplayName: 奶油苏打水
+	Description:
+		'''
+		短时间内大幅增加近战能力，但极其吸引仇恨
+		喷射！
+		'''
+}
+
+CrimsonMoonAlgaeSummonStaff_Buff: {
+	DisplayName: 红月水藻精灵
+	Description: 水藻精灵为你而战
+}
+
+CrossHair: {
+	DisplayName: 头发交叉
+	Description: ""
+}
+
+CyanVineRingCrit: {
+	DisplayName: 青缎指环的祝福
+	Description: 暴击+4%
+}
+
+DeadBeetleEggBuff: {
+	DisplayName: 死甲虫卵
+	Description: 复生的甲虫骨骼为你而战
+}
+
+DeathFlame: {
+	DisplayName: 死神烈火
+	Description: 越接近死亡越恐惧死亡
+}
+
+DevilHeartGyroscopeBuff: {
+	DisplayName: 魔心陀螺
+	Description: 用鞭子抽打陀螺可充能；伤害储存充满后鞭打可释放生命心
+}
+
+DevilHeartSetBuff: {
+	DisplayName: 魔心过载
+	Description:
+		'''
+		停止自然魔力再生并降低15%防御
+		增加6%魔法伤害和魔法暴击率
+		增加1个仆从上限
+		'''
+}
+
+DevilHeartWeaponBuff: {
+	DisplayName: 魔心武器祝福
+	Description: 手持魔心远程武器且未开火时加快生命再生
+}
+
+DragonfruitBuff: {
+	DisplayName: 火龙果
+	Description:
+		'''
+		攻击造成着火以及涂油
+		红红火火恍恍惚惚
+		'''
 }
 
 DreamYearningBuff: {
 	DisplayName: 梦里人
 	Description:
-	'''
-	短时间内射弹速度获得提升
-	思君忆君，魂牵梦萦，翠销香暖云屏，更哪堪酒醒
-	'''
+		'''
+		短时间内射弹速度获得提升
+		思君忆君，魂牵梦萦，翠销香暖云屏，更哪堪酒醒
+		'''
 }
 
 DryMartiniBuff: {
 	DisplayName: 干马天尼
 	Description:
-	'''
-	短时间大幅提升攻击
-	经典之作
-	'''
+		'''
+		短时间大幅提升攻击
+		经典之作
+		'''
 }
 
-GreenStormBuff: {
-	DisplayName: 绿叶风暴
+DurianBuff: {
+	DisplayName: 榴莲
 	Description:
-	'''
-	短时间交替射出叶绿水晶和孢子云
-	别以为草便宜,没上规模前,它比苹果核桃什么的都贵
-	'''
+		'''
+		加快消化食物的速度
+		促进消化
+		'''
 }
 
-KiwiJuiceBuff: {
-	DisplayName: 猕猴桃汁
+EggTartBuff: {
+	DisplayName: 蛋挞
 	Description:
-	'''
-	短时间内大幅增大武器大小
-	浓缩的奇异之力
-	'''
+		'''
+		增加5%暴击伤害
+		这酥皮不错
+		'''
 }
 
-LonelyJellyfishBuff: {
-	DisplayName: 孤独的水母
+ElderberryBuff: {
+	DisplayName: 接骨木果
 	Description:
-	'''
-	短时间内不断于鼠标处生成水母电圈，并且获得隐身能力
-	观赏完就一饮而尽吧
-	'''
-}
-
-OrangeJuiceBuff: {
-	DisplayName: 橙汁
-	Description:
-	'''
-	短时间内获得超长无敌帧
-	嗯，有点像LCL
-	'''
-}
-
-PiercoldWindBuff: {
-	DisplayName: 精灵菲仕
-	Description:
-	'''
-	对灯笼月敌怪特攻
-	长啸出原野，凛然寒风生
-	'''
-}
-
-PurpleHooterBuff: {
-	DisplayName: 梦幻莫吉托
-	Description:
-	'''
-	对血月敌怪特攻
-	高贵与深沉
-	'''
-}
-
-QuinceMarryBuff: {
-	DisplayName: 血腥玛丽
-	Description:
-	'''
-	对南瓜月敌怪特攻
-	炙热与温柔
-	'''
-}
-
-RedWineBuff: {
-	DisplayName: 红酒
-	Description:
-	'''
-	对霜月敌怪特攻
-	上流与优雅
-	'''
-}
-
-SunriseBuff: {
-	DisplayName: 龙舌兰日出
-	Description:
-	'''
-	对日食敌怪特攻
-	阳光与明媚
-	'''
-}
-
-TricolourBuff: {
-	DisplayName: 环游世界
-	Description:
-	'''
-	对老怪仆从特攻
-	复杂与专一
-	'''
-}
-
-WaterMelonJuiceBuff: {
-	DisplayName: 西瓜汁
-	Description:
-	'''
-	短时间大幅增加击退与暴击
-	浓缩的打击力度
-	'''
-}
-
-ShortImmune12: {
-	DisplayName: 更短的无敌帧
-	Description: ""
-}
-
-ShortImmune3: {
-	DisplayName: 更短的无敌帧
-	Description: ""
+		'''
+		你可以短距离冲刺
+		抗氧化
+		'''
 }
 
 ElementalResistanceReductionDebuffTest: {
@@ -1113,19 +478,18 @@ ElementalResistanceReductionDebuffTest: {
 	Description: ""
 }
 
-Petrification: {
-	DisplayName: 石化
-	Description: ""
+EscargotBuff: {
+	DisplayName: 食用蜗牛
+	Description:
+		'''
+		大大削弱移动力，增加50%减伤!!!
+		神龟药水?
+		'''
 }
 
-TuskCursed: {
-	DisplayName: 獠牙的诅咒
-	Description: ""
-}
-
-TuskStaff: {
-	DisplayName: 獠牙法杖
-	Description: "飞獠牙为你而战"
+EvilMusicRemnant: {
+	DisplayName: 魔律残章
+	Description: 你奏响了远古遗落的乐谱
 }
 
 FireflyInferno: {
@@ -1133,19 +497,9 @@ FireflyInferno: {
 	Description: ""
 }
 
-GlowMothBuff: {
-	DisplayName: 夜光飞蛾
-	Description: ""
-}
-
-OnMoth: {
-	DisplayName: 被幻蝶萤火扇标记
-	Description: ""
-}
-
-ShadowPotionBuff: {
-	DisplayName: 暗影药水
-	Description: "在暗处提升基础属性"
+FractureDebuff: {
+	DisplayName: 破绽
+	Description: 佩戴硬化枯木心脏时，受到的敌人接触伤害增加50%
 }
 
 Freeze: {
@@ -1153,14 +507,360 @@ Freeze: {
 	Description: ""
 }
 
+FriedEggBuff: {
+	DisplayName: 煎蛋
+	Description:
+		'''
+		增加6%伤害!!!
+		蛋白质
+		'''
+}
+
+FriesBuff: {
+	DisplayName: 炸薯条
+	Description:
+		'''
+		加4防御，6%暴击!!!
+		高油高盐
+		'''
+}
+
+FroggleBunwichBuff: {
+	DisplayName: 蛙腿三明治
+	Description:
+		'''
+		自动跳跃，增加伤害，提升跳跃能力!!!
+		你能真正尝到沼泽的味道
+		'''
+}
+
+FruitJuiceBuff: {
+	DisplayName: 果汁
+	Description:
+		'''
+		短时间内幅大大提升大部分属性
+		维生素！
+		'''
+}
+
+FruitSaladBuff: {
+	DisplayName: 水果沙拉
+	Description:
+		'''
+		提升大部分属性
+		长久的维生素！
+		'''
+}
+
+GingerbreadCookieBuff: {
+	DisplayName: 姜饼
+	Description:
+		'''
+		增加2生命回复,保暖!!!
+		驱寒排毒
+		'''
+}
+
+GlowMothBuff: {
+	DisplayName: 夜光飞蛾
+	Description: ""
+}
+
+GoldenDelightBuff: {
+	DisplayName: 金美味
+	Description:
+		'''
+		攻击造迈达斯，提升大部分属性!!!
+		金灿灿!
+		'''
+}
+
+GoldenLotusStaff_Buff: {
+	DisplayName: Golden Lotus Staff_ Buff
+	Description: ""
+}
+
+GrapefruitBuff: {
+	DisplayName: 葡萄柚
+	Description:
+		'''
+		加25%召唤物击退!!!
+		拒绝肾透支
+		'''
+}
+
+GrapeJuiceBuff: {
+	DisplayName: 葡萄汁
+	Description:
+		'''
+		短时间你变得极其幸运
+		浓缩的幸福
+		'''
+}
+
+GrapesBuff: {
+	DisplayName: 葡萄
+	Description:
+		'''
+		增加1召唤栏，幸运值加10%，减12防御!!!
+		多子多福
+		'''
+}
+
+GreenImmune: {
+	DisplayName: 免疫绿火
+	Description: ""
+}
+
+GreenStormBuff: {
+	DisplayName: 绿叶风暴
+	Description:
+		'''
+		短时间交替射出叶绿水晶和孢子云
+		别以为草便宜,没上规模前,它比苹果核桃什么的都贵
+		'''
+}
+
+GrilledSquirrelBuff: {
+	DisplayName: 烤松鼠
+	Description:
+		'''
+		提升跳跃能力
+		欢跃
+		'''
+}
+
+GrubSoupBuff: {
+	DisplayName: 蛆虫汤
+	Description:
+		'''
+		增加30渔力，每秒减2点生命!!!
+		吃啥补啥，就是有点恶心
+		'''
+}
+
+GuideBuff: {
+	DisplayName: 引领
+	Description: 发出光芒
+}
+
+HardenedSkinBuff: {
+	DisplayName: 硬化皮肤
+	Description: 下次受到的敌人接触伤害减少90%
+}
+
+HasHitByResistenceWireBayonet: {
+	DisplayName: 被电阻刺剑命中
+	Description: ""
+}
+
+HexaCrystalWeak: {
+	DisplayName: 暮晶脆弱
+	Description: 遭受所有附带暮光晶体的攻击时受到更多伤害
+}
+
+HotdogBuff: {
+	DisplayName: 热狗
+	Description:
+		'''
+		增强短剑与长矛类武器!!!
+		吔~~
+		'''
+}
+
+IceCreamBuff: {
+	DisplayName: 冰淇淋
+	Description:
+		'''
+		免疫着火和火块!!!
+		吃雪（bushi
+		'''
+}
+
+IstafelsSunfireGraspFireBallBuff: {
+	DisplayName: 伊斯塔裴尔的阳炎火球
+	Description: 造成法术伤害可以给它充能
+}
+
+IstafelsSunfireGraspSkillBuff: {
+	DisplayName: 伊斯塔裴尔的阳炎战技
+	Description: ""
+}
+
+JellyBallStick: {
+	DisplayName: 陷入球冻
+	Description: 速度大幅下降
+}
+
+JellyBubbleMount: {
+	DisplayName: 球冻泡泡坐骑
+	Description: 不稳定浮空
+}
+
+KiwiFruitBuff: {
+	DisplayName: 猕猴桃
+	Description:
+		'''
+		增大20%武器大小
+		又称奇异果
+		'''
+}
+
+KiwiIceCreamBuff: {
+	DisplayName: 猕猴桃冰激凌
+	Description:
+		'''
+		增大10%武器大小，加快武器攻速
+		奇异的力量
+		'''
+}
+
+KiwiJuiceBuff: {
+	DisplayName: 猕猴桃汁
+	Description:
+		'''
+		短时间内大幅增大武器大小
+		浓缩的奇异之力
+		'''
+}
+
+LampWoodSeedBuff: {
+	DisplayName: 灯木种子
+	Description: 未发芽的光
+}
+
 LaserWormBuff: {
 	DisplayName: 激光虫
 	Description: ""
 }
 
-ShadowSupervisor: {
-	DisplayName: 暗夜观察者
+LegumeGyroscopeBuff: {
+	DisplayName: 裂荚陀螺
+	Description: 用鞭子抽打陀螺可充能并弹出种子
+}
+
+LemonadeBuff: {
+	DisplayName: 柠檬水
+	Description:
+		'''
+		短时间内远程击退加倍,仇恨值减2400
+		消炎美容
+		'''
+}
+
+LemonBuff: {
+	DisplayName: 柠檬
+	Description:
+		'''
+		增加4%远程暴击,仇恨值减300
+		消炎美容
+		'''
+}
+
+LichenInfected: {
+	DisplayName: 真菌感染
+	Description: 这些东西会通过活物繁殖
+}
+
+LifeRotten: {
+	DisplayName: 生命腐化
 	Description: ""
+}
+
+LivingWoodplateBuff: {
+	DisplayName: 活木滋养
+	Description: 生命上限增加40点，每秒额外恢复4点生命
+}
+
+LobsterTailBuff: {
+	DisplayName: 龙虾尾
+	Description:
+		'''
+		增加6防御,33%挖矿速度
+		壮阳
+		'''
+}
+
+LonelyJellyfishBuff: {
+	DisplayName: 孤独的水母
+	Description:
+		'''
+		短时间内不断于鼠标处生成水母电圈，并且获得隐身能力
+		观赏完就一饮而尽吧
+		'''
+}
+
+MangoBuff: {
+	DisplayName: 芒果
+	Description:
+		'''
+		减缓因食物中毒而产生的持续减血效果
+		清胃解毒
+		'''
+}
+
+MangosteenBuff: {
+	DisplayName: 山竹
+	Description:
+		'''
+		提升回旋镖，悠悠球、链枷类武器距离
+		补养之效
+		'''
+}
+
+MapoTofuBuff: {
+	DisplayName: 麻婆豆腐
+	Description: TODO
+}
+
+MarshmallowBuff: {
+	DisplayName: 棉花糖
+	Description:
+		'''
+		可以二段跳
+		像云一样
+		'''
+}
+
+MeltingSideGyroscopeBuff: {
+	DisplayName: 熔边陀螺
+	Description: 用鞭子抽打陀螺可以充能
+}
+
+MilkCartonBuff: {
+	DisplayName: 盒装牛奶
+	Description:
+		'''
+		短时间内免疫几乎所有debuff
+		一奶解百毒
+		'''
+}
+
+MilkshakeBuff: {
+	DisplayName: 奶昔
+	Description:
+		'''
+		短时间内大幅加移速
+		节食减肥
+		'''
+}
+
+MolluscsSetBuff: {
+	DisplayName: 水生附体
+	Description:
+		'''
+		进一步延长水下呼吸时间
+		增加30%水下速度和加速度
+		'''
+}
+
+MonsterLasagnaBuff: {
+	DisplayName: 怪物千层面
+	Description:
+		'''
+		增加25%暴击率，但每秒减3生命!!!
+		弄熟的恶魔还是恶魔，在千层饼中也不会改变
+		'''
 }
 
 MoonAndFragrans: {
@@ -1178,19 +878,129 @@ MoonAndFragransIII: {
 	Description: ""
 }
 
-BlueImmune: {
-	DisplayName: 免疫蓝火
+MossCover: {
+	DisplayName: 苔藓附层
+	Description: 增加5点防御并免疫腐蚀
+}
+
+NachosBuff: {
+	DisplayName: 玉米片
+	Description:
+		'''
+		爆炸类射弹爆炸范围增加！！
+		爆米花
+		'''
+}
+
+OnElectric: {
+	DisplayName: 触电
 	Description: ""
 }
 
-BrownImmune: {
-	DisplayName: 免疫棕火
+OnMoth: {
+	DisplayName: 被幻蝶萤火扇标记
 	Description: ""
 }
 
-GreenImmune: {
-	DisplayName: 免疫绿火
+OrangeIcecreamBuff: {
+	DisplayName: 香橙冰激凌
+	Description:
+		'''
+		延长无敌帧时间
+		真实存于心中
+		'''
+}
+
+OrangeJuiceBuff: {
+	DisplayName: 橙汁
+	Description:
+		'''
+		短时间内获得超长无敌帧
+		嗯，有点像LCL
+		'''
+}
+
+PadThaiBuff: {
+	DisplayName: 泰式炒面
+	Description:
+		'''
+		增加50%召唤物击退
+		异域风情
+		'''
+}
+
+PaperObstructed: {
+	DisplayName: Paper Obstructed
 	Description: ""
+}
+
+PeachBuff: {
+	DisplayName: 桃子
+	Description:
+		'''
+		增加心的拾取范围，1生命回复
+		在想peach
+		'''
+}
+
+PeachSangriaBuff: {
+	DisplayName: 桃子果酒
+	Description:
+		'''
+		短时间内大幅回复生命，增加心的拾取范围
+		我也是桃饱用户
+		'''
+}
+
+Petrification: {
+	DisplayName: 石化
+	Description: ""
+}
+
+PhoBuff: {
+	DisplayName: 越南河粉
+	Description:
+		'''
+		增加8%召唤物伤害!!!
+		异域风情
+		'''
+}
+
+Photolysis: {
+	DisplayName: 光解
+	Description: 暴露在光线下会燃烧血液
+}
+
+Photophore_lightPetBuff: {
+	DisplayName: 灵灯
+	Description: 灵灯为你照明
+}
+
+PiercoldWindBuff: {
+	DisplayName: 精灵菲仕
+	Description:
+		'''
+		对灯笼月敌怪特攻
+		长啸出原野，凛然寒风生
+		'''
+}
+
+PinaColadaBuff: {
+	DisplayName: 椰林飘香
+	Description:
+		'''
+		短时间内近战攻击者伤害玩家时会承受10倍（上限1000）伤害!!!
+		从不添加香精当生榨
+		'''
+}
+
+PineappleBuff: {
+	DisplayName: 菠萝
+	Description:
+		'''
+		近战攻击者伤害玩家时会承受一半伤害!!!
+		菠萝碱
+		'''
 }
 
 PinkImmune: {
@@ -1198,129 +1008,13 @@ PinkImmune: {
 	Description: ""
 }
 
-PurpleImmune: {
-	DisplayName: 免疫紫火
-	Description: ""
-}
-
-RedImmune: {
-	DisplayName: 免疫红火
-	Description: ""
-}
-
-WhiteImmune: {
-	DisplayName: 免疫白火
-	Description: ""
-}
-
-YellowImmune: {
-	DisplayName: 免疫黄火
-	Description: ""
-}
-
-AcytaeaInferno: {
-	DisplayName: 雅斯塔亚的烈火
-	Description: ""
-}
-
-CactusBallBuff: {
-	DisplayName: 仙人掌球
-	Description: ""
-}
-
-WaterBoltII: {
-	DisplayName: 水箭II
-	Description: ""
-}
-
-AmberStick: {
-	DisplayName: 黏性琥珀
-	Description: ""
-}
-
-Armor15Cracked: {
-	DisplayName: 盔甲碎裂
-	Description: "防御力降低15"
-}
-
-AuburnBell: {
-	DisplayName: 金棕铃铛
-	Description: "金棕飞棍为你而战"
-}
-
-AuburnSelfReinforcing: {
-	DisplayName: 金棕之力
-	Description: "生命缓慢枯萎以换取+1召唤栏位"
-}
-
-BloodCultistBuff: {
-	DisplayName: 血月教徒的祝福
-	Description: "生命缓慢回复"
-}
-
-Charred: {
-	DisplayName: 焚烧
-	Description: "大幅降低防御并且生命高速流失"
-}
-
-CrossHair: {
-	DisplayName: 头发交叉
-	Description: ""
-}
-
-CyanVineRingCrit: {
-	DisplayName: 青缎指环的祝福
-	Description: "暴击+4%"
-}
-
-DeadBeetleEggBuff: {
-	DisplayName: 死甲虫卵
-	Description: "复生的甲虫骨骼为你而战"
-}
-
-EvilMusicRemnant: {
-	DisplayName: 魔律残章
-	Description: "你奏响了远古遗落的乐谱"
-}
-
-GuideBuff: {
-	DisplayName: 引领
-	Description: "发出光芒"
-}
-
-HasHitByResistenceWireBayonet: {
-	DisplayName: 被电阻刺剑命中
-	Description: ""
-}
-
-HexaCrystalWeak: {
-	DisplayName: 暮晶脆弱
-	Description: "遭受所有附带暮光晶体的攻击时受到更多伤害"
-}
-
-IstafelsSunfireGraspFireBallBuff: {
-	DisplayName: 伊斯塔裴尔的阳炎火球
-	Description: "造成法术伤害可以给它充能"
-}
-
-IstafelsSunfireGraspSkillBuff: {
-	DisplayName: 伊斯塔裴尔的阳炎战技
-	Description: ""
-}
-
-JellyBallStick: {
-	DisplayName: 陷入球冻
-	Description: "速度大幅下降"
-}
-
-MeltingSideGyroscopeBuff: {
-	DisplayName: 熔边陀螺
-	Description: "用鞭子抽打陀螺可以充能"
-}
-
-Photolysis: {
-	DisplayName: 光解
-	Description: "暴露在光线下会燃烧血液"
+PizzaBuff: {
+	DisplayName: 披萨
+	Description:
+		'''
+		增加10点盔甲穿透!!!
+		会让意大利人破防的菠萝披萨
+		'''
 }
 
 Plague: {
@@ -1328,18 +1022,143 @@ Plague: {
 	Description: ""
 }
 
+PlumBuff: {
+	DisplayName: 李子
+	Description:
+		'''
+		增加600仇恨值，8%攻速!!!
+		至于我的建议，还是再等等吧!
+		'''
+}
+
+PotatoChipsBuff: {
+	DisplayName: 薯片
+	Description:
+		'''
+		增加4防御，8%伤害!!!
+		高油高盐
+		'''
+}
+
+PrismaticPunchBuff: {
+	DisplayName: 七彩潘趣酒
+	Description:
+		'''
+		短时间内增加5召唤栏，5哨兵栏，增加50%召唤伤害，击退!!!
+		高雅兴致
+		'''
+}
+
+PumpkinPieBuff: {
+	DisplayName: 南瓜派
+	Description:
+		'''
+		增加50最大生命值!!!
+		丰收的喜悦
+		'''
+}
+
+PurpleHooterBuff: {
+	DisplayName: 梦幻莫吉托
+	Description:
+		'''
+		对血月敌怪特攻
+		高贵与深沉
+		'''
+}
+
+PurpleImmune: {
+	DisplayName: 免疫紫火
+	Description: ""
+}
+
+QuetzalsWishWound: {
+	DisplayName: 创伤
+	Description: 移动时每秒损失12点生命
+}
+
+QuinceMarryBuff: {
+	DisplayName: 血腥玛丽
+	Description:
+		'''
+		对南瓜月敌怪特攻
+		炙热与温柔
+		'''
+}
+
+RambutanBuff: {
+	DisplayName: 红毛丹
+	Description:
+		'''
+		免疫许多减益!!!
+		提高免疫
+		'''
+}
+
 RayBuff: {
 	DisplayName: 射线
 	Description: ""
 }
 
-RustSlingshotBuffOne: {
-	DisplayName: 锈弹弓
+RedAlgae_FriendlyDebuff: {
+	DisplayName: 红藻毒素
+	Description: 毒素随时间累积，下次命中时引爆；自然消退不造成伤害
+}
+
+RedAlgaeDebuff: {
+	DisplayName: 红藻侵蚀
+	Description: 红藻正在侵蚀你的生命
+}
+
+RedAlgaeMinionGyroscopeBuff: {
+	DisplayName: 红月水藻陀螺
+	Description: 红月水藻陀螺为你而战
+}
+
+RedImmune: {
+	DisplayName: 免疫红火
 	Description: ""
 }
 
-RustSlingshotBuffTwo: {
-	DisplayName: 锈弹弓2
+RedWineBuff: {
+	DisplayName: 红酒
+	Description:
+		'''
+		对霜月敌怪特攻
+		上流与优雅
+		'''
+}
+
+RestrictionDroneRE01Buff: {
+	DisplayName: Restriction DroneRE01 Buff
+	Description: ""
+}
+
+RoastedBirdBuff: {
+	DisplayName: 烤鸟
+	Description:
+		'''
+		提升飞行能力!!!
+		我是一只小小小鸟
+		'''
+}
+
+RoastedDuckBuff: {
+	DisplayName: 烤鸭
+	Description:
+		'''
+		可以在水上行走，提升飞行能力!!!
+		这是烤鸭
+		'''
+}
+
+RuinSetBuff: {
+	DisplayName: 归墟之力
+	Description: 召唤伤害提高10%，移动速度提高25%
+}
+
+RustSlingshotBuffOne: {
+	DisplayName: 锈弹弓
 	Description: ""
 }
 
@@ -1348,113 +1167,349 @@ RustSlingshotBuffThree: {
 	Description: ""
 }
 
+RustSlingshotBuffTwo: {
+	DisplayName: 锈弹弓2
+	Description: ""
+}
+
+SakeBuff: {
+	DisplayName: 清酒
+	Description:
+		'''
+		短时间内减少18防御，大幅增加近战能力!!!
+		纯度，太高了
+		'''
+}
+
+SalmonInPepperBuff: {
+	DisplayName: 椒盐三文鱼
+	Description:
+		'''
+		提升速度,尤其是在水中
+		冰海之皇
+		'''
+}
+
+SalmonWarshipBuff: {
+	DisplayName: 三文鱼军舰
+	Description:
+		'''
+		提升速度
+		美味的三文鱼军舰
+		'''
+}
+
+SashimiBuff: {
+	DisplayName: 生鱼片
+	Description:
+		'''
+		可以游泳，水下呼吸，增加15%伤害，但每秒减少2点生命!!!
+		寄生虫！
+		'''
+}
+
+SauteedFrogLegsBuff: {
+	DisplayName: 炒蛙腿
+	Description:
+		'''
+		自动跳跃，提升跳跃能力!!!
+		钓不到蛙腿？那就吃吧。
+		'''
+}
+
+SeafoodDinnerBuff: {
+	DisplayName: 海鲜大餐
+	Description:
+		'''
+		增加8%暴击，伤害，攻速，爆伤!!!
+		够生猛！
+		'''
+}
+
+SeafoodPizzaBuff: {
+	DisplayName: 海鲜披萨
+	Description:
+		'''
+		提升大部分属性
+		一个人吃完这个可不容易
+		'''
+}
+
+ShadowPotionBuff: {
+	DisplayName: 暗影药水
+	Description: 在暗处提升基础属性
+}
+
+ShadowSupervisor: {
+	DisplayName: 暗夜观察者
+	Description: ""
+}
+
+ShortImmune12: {
+	DisplayName: 更短的无敌帧
+	Description: ""
+}
+
+ShortImmune3: {
+	DisplayName: 更短的无敌帧
+	Description: ""
+}
+
+ShrimpPoBoyBuff: {
+	DisplayName: 鲜虾三明治
+	Description:
+		'''
+		增加6防御,25%挖矿速度
+		壮阳
+		'''
+}
+
+ShuckedOysterBuff: {
+	DisplayName: 去壳牡蛎
+	Description:
+		'''
+		减少5防御，加10点盔甲穿透，每秒减少3点生命!!!
+		寄生虫！
+		'''
+}
+
+SmoothieofDarknessBuff: {
+	DisplayName: 暗黑奶昔
+	Description:
+		'''
+		短时间内有60%的概率闪避攻击!!!
+		腹黑（字面意义上）
+		'''
+}
+
+SpaghettiBuff: {
+	DisplayName: 意大利面
+	Description:
+		'''
+		增加1哨兵栏!!!
+		异域风情
+		'''
+}
+
 SpritialDamage: {
 	DisplayName: 精神损伤
 	Description: ""
 }
 
-YggdrasilStoneGyroscopeBuff: {
-	DisplayName: 天穹岩陀螺
-	Description: "用鞭子抽打陀螺可以充能"
+StaminaEnergyBuff: {
+	DisplayName: 能量饮料
+	Description: 使用刺剑时体力更多
 }
 
-BadrBuff: {
-	DisplayName: 巴德尔
-	Description: "点亮前行的路"
-}
-
-LampWoodSeedBuff: {
-	DisplayName: 灯木种子
-	Description: "未发芽的光"
-}
-
-JellyBubbleMount: {
-	DisplayName: 球冻泡泡坐骑
-	Description: "不稳定浮空"
-}
-
-CorrosiveDebuff: {
-	DisplayName: 侵蚀
-	Description: "移速和防御下降"
-}
-
-DevilHeartGyroscopeBuff: {
-	DisplayName: 魔心陀螺
-	Description: "用鞭子抽打陀螺可以充能"
-}
-
-DevilHeartWeaponBuff: {
-	DisplayName: 魔心武器祝福
+StarCrack: {
+	DisplayName: 裂星
 	Description: ""
 }
 
-FractureDebuff: {
-	DisplayName: 破绽
-	Description: "受伤时额外受到50%的伤害"
-}
-
-HardenedSkinBuff: {
-	DisplayName: 硬化皮肤
-	Description: "受到伤害下降90%"
-}
-
-LegumeGyroscopeBuff: {
-	DisplayName: 裂荚陀螺
-	Description: "用鞭子抽打陀螺可以充能"
-}
-
-LichenInfected: {
-	DisplayName: 真菌感染
-	Description: "这些东西会通过活物繁殖"
-}
-
-LivingWoodplateBuff: {
-	DisplayName: 活木甲
-	Description: "增加防御，弄湿后进一步强化效果且恢复生命"
-}
-
-MolluscsSetBuff: {
-	DisplayName: 软体的特性
+StarfruitBuff: {
+	DisplayName: 杨桃
 	Description:
-	'''
-	获得水下呼吸，水下加速效果
-	根据头盔不同，获得以下效果
-	珍珠软体: +2生命再生，+10%近战攻速
-	附苔软体: +15%概率不消耗弹药，+3盔甲穿透
-	'''
+		'''
+		使用霰弹枪类武器时会多射出一发子弹
+		1437大帝的淫威
+		'''
 }
 
-MossCover: {
-	DisplayName: 苔藓皮层
-	Description: "防御+5并免疫侵蚀"
+SteakBuff: {
+	DisplayName: 牛排
+	Description:
+		'''
+		减少20%魔力消耗!!!
+		上流
+		'''
 }
 
-RuinSetBuff: {
-	DisplayName: 遗迹祝福
-	Description: "+25%移速和10%召唤伤害"
+StinkyTofuBuff: {
+	DisplayName: 臭豆腐
+	Description:
+		'''
+		使靠近的敌怪混乱
+		又香又臭
+		'''
+}
+
+StrawberryBuff: {
+	DisplayName: Strawberry Buff
+	Description:
+		'''
+		敌怪越近，造成的伤害越高
+		受人欢迎的水果
+		'''
+}
+
+StrawberryIcecreamBuff: {
+	DisplayName: 草莓冰激凌
+	Description:
+		'''
+		敌怪越近，造成的伤害越高
+		冰冷如你，依旧令人爱不忍释
+		'''
+}
+
+SugarCookieBuff: {
+	DisplayName: 蜜糖饼干
+	Description:
+		'''
+		增加5%远程伤害!!!
+		养胃滋润
+		'''
+}
+
+SunriseBuff: {
+	DisplayName: 龙舌兰日出
+	Description:
+		'''
+		对日食敌怪特攻
+		阳光与明媚
+		'''
+}
+
+SweetshrimpSushiBuff: {
+	DisplayName: 甜虾寿司
+	Description:
+		'''
+		提升攻击
+		美味的甜虾寿司
+		'''
+}
+
+TamakoSushiBuff: {
+	DisplayName: 玉子寿司
+	Description:
+		'''
+		提升生命回复
+		美味的玉子寿司
+		'''
+}
+
+TeacupBuff: {
+	DisplayName: 一杯茶
+	Description:
+		'''
+		短时间内大幅增加魔力回复，魔法伤害，暴击!!!
+		醇香四溢
+		'''
 }
 
 TheGreenSolarBuff: {
-	DisplayName: 绿阳之石
-	Description: "你处于涅槃状态，不会死亡且灼伤附近敌人"
+	DisplayName: 绿阳涅槃
+	Description: 无法移动，免疫敌人接触与弹幕伤害，每秒恢复5点生命
+}
+
+TricolourBuff: {
+	DisplayName: 环游世界
+	Description:
+		'''
+		对老怪仆从特攻
+		复杂与专一
+		'''
+}
+
+TropicalSmoothieBuff: {
+	DisplayName: 热带奶昔
+	Description:
+		'''
+		短时间内魔法攻击仅消耗一点魔力，大幅增加魔法伤害，暴击!!!
+		热带风暴
+		'''
+}
+
+TuskCursed: {
+	DisplayName: 獠牙的诅咒
+	Description: ""
+}
+
+TuskStaff: {
+	DisplayName: 獠牙法杖
+	Description: 飞獠牙为你而战
+}
+
+UnfortuneCurse: {
+	DisplayName: Unfortune Curse
+	Description: ""
+}
+
+WakameWarshipBuff: {
+	DisplayName: 裙带菜寿司
+	Description:
+		'''
+		提升魔力回复
+		美味的裙带菜寿司
+		'''
+}
+
+WaterBoltII: {
+	DisplayName: 水箭II
+	Description: ""
+}
+
+WatermelonBuff: {
+	DisplayName: 西瓜
+	Description:
+		'''
+		增强8%击退能力
+		最大的打击力度
+		'''
+}
+
+WaterMelonJuiceBuff: {
+	DisplayName: 西瓜汁
+	Description:
+		'''
+		短时间大幅增加击退与暴击
+		浓缩的打击力度
+		'''
+}
+
+WatermelonPlateBuff: {
+	DisplayName: 西瓜拼盘
+	Description:
+		'''
+		提升6%暴击率和暴击伤害
+		朴实无华的摆盘
+		'''
+}
+
+WhiteImmune: {
+	DisplayName: 免疫白火
+	Description: ""
+}
+
+Wither_Activated_Dog_Buff: {
+	DisplayName: 活化之犬
+	Description: 活化之犬为你而战
 }
 
 WitherbarkSetBuff: {
 	DisplayName: 枯木的祝福
-	Description: "+3召唤栏但是召唤伤害-30%，枯木护卫为你而战"
+	Description:
+		'''
+		增加3个仆从上限，降低30%召唤伤害
+		枯木护卫为你而战
+		'''
 }
 
 WoodlandWraithStaffBuff: {
-	DisplayName: 森宇幽魂的齿菌
-	Description: "飞行的血齿菌为你而战"
+	DisplayName: 森宇幽魂
+	Description: 森宇幽魂为你而战
 }
 
 WoodlandWraithStaffMyceliumBuff: {
-	DisplayName: 森宇幽魂的菌丝
-	Description: "缓慢回复生命，在孢子云区域中效果增强"
+	DisplayName: 治疗菌丝
+	Description: 每秒额外恢复5点生命，在自己的孢子领域内效果翻倍
 }
 
-DeathFlame: {
-	DisplayName: 死神烈火
-	Description: "越接近死亡越恐惧死亡"
+YellowImmune: {
+	DisplayName: 免疫黄火
+	Description: ""
+}
+
+YggdrasilStoneGyroscopeBuff: {
+	DisplayName: 天穹岩陀螺
+	Description: 用鞭子抽打陀螺可以充能
 }

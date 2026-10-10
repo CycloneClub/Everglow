@@ -1,6 +1,46 @@
+ActivatedDogStaff: {
+	DisplayName: Activated Dog Staff
+	Tooltip: Summons an activated dog that charges at enemies
+}
+
+ActivatedJellyGland: {
+	DisplayName: Activated Jelly Gland
+	Tooltip: ""
+}
+
 AuburnBell: {
 	DisplayName: Auburn Bell
-	Tooltip: Summon little Auburn Rods to fight with you.
+	Tooltip: Summons a small auburn rod to fight for you
+}
+
+DarknessFan: {
+	DisplayName: Darkness Fan
+	Tooltip: ""
+}
+
+DeadBeetleEgg: {
+	DisplayName: Dead Beetle Egg
+	Tooltip: Summons a small beetle to fight for you
+}
+
+DevilHeartGyroscope: {
+	DisplayName: Devil Heart Gyroscope
+	Tooltip:
+		'''
+		Summons a gyroscope that stores the damage it deals
+		After it stores 120 damage, whip it to release a healing heart and reset the charge
+		Right-click to toggle the gyroscope power display
+		'''
+}
+
+EvilChrysalis: {
+	DisplayName: Evil Chrysalis
+	Tooltip: ""
+}
+
+EvilMusicRemnant: {
+	DisplayName: Evil Score Remains
+	Tooltip: "'A score left behind by ancient European mages; channel mana into it, and it resounds without an instrument'"
 }
 
 GreenVineWhip: {
@@ -8,7 +48,7 @@ GreenVineWhip: {
 	Tooltip:
 		'''
 		25% chance to inflict Poisoned for 5 seconds
-		Adds a "Moss Cover" buff to the player for 5 seconds when hitting enemies
+		Hitting an enemy grants Moss Cover for 5 seconds, increasing defense by 5 and granting immunity to Corrosion
 		'''
 }
 
@@ -17,34 +57,24 @@ GrilledSquidTentacle: {
 	Tooltip: ""
 }
 
-ToothStaff: {
-	DisplayName: Tooth Staff
-	Tooltip: ""
+LegumeGyroscope: {
+	DisplayName: Legume Gyroscope
+	Tooltip:
+		'''
+		Summons a gyroscope that can be powered with whips
+		Whipping it releases 1–3 seeds, each dealing half damage
+		Right-click to toggle the gyroscope power display
+		'''
 }
 
-DarknessFan: {
-	DisplayName: Darkness Fan
-	Tooltip: ""
-}
-
-EvilChrysalis: {
-	DisplayName: Evil Chrysalis
-	Tooltip: ""
-}
-
-XmasWhip: {
-	DisplayName: Xmas Whip
-	Tooltip: ""
-}
-
-ActivatedJellyGland: {
-	DisplayName: Activated Jelly Gland
+LichenTentacle: {
+	DisplayName: Lichen Tentacle
 	Tooltip: ""
 }
 
 MeltingSideGyroscope: {
-	DisplayName: Melting Side Gyroscope
-	Tooltip: ""
+	DisplayName: Melting-Edge Gyroscope
+	Tooltip: Summons a fiery gyroscope to fight for you
 }
 
 MidwinterNightmare: {
@@ -52,8 +82,52 @@ MidwinterNightmare: {
 	Tooltip: ""
 }
 
+RedAlgaeMagicWhip: {
+	DisplayName: Crimson Moon Algae Whip
+	Tooltip:
+		'''
+		Inflicts Red Algae Toxin for 15 seconds
+		Toxin builds up over time and detonates on the next hit; it deals no damage if it expires
+		'''
+}
+
+RedAlgaeMinionGyroscope: {
+	DisplayName: Crimson Moon Algae Gyroscope
+	Tooltip:
+		'''
+		Summons a gyroscope that releases a toxin ring when struck by a whip
+		Inflicts Red Algae Toxin for 15 seconds
+		Toxin builds up over time and detonates on the next hit; it deals no damage if it expires
+		'''
+}
+
+RedAlgaeMinionStaff: {
+	DisplayName: Crimson Moon Algae Summon Staff
+	Tooltip:
+		'''
+		Summons an algae spirit that fires 6 spores, then rushes toward an enemy and explodes
+		Inflicts Red Algae Toxin for 15 seconds
+		Toxin builds up over time and detonates on the next hit; it deals no damage if it expires
+		'''
+}
+
+RestrictionDeviceRE01: {
+	DisplayName: Restriction DeviceRE01
+	Tooltip: ""
+}
+
 ThermoprobeStaff: {
 	DisplayName: Thermoprobe Staff
+	Tooltip:
+		'''
+		Summons a floating unit that fires at enemies
+		Each unit carries three shots and disappears when empty
+		You can have up to twice your maximum number of minions in units
+		'''
+}
+
+ToothStaff: {
+	DisplayName: Tooth Staff
 	Tooltip: ""
 }
 
@@ -62,37 +136,24 @@ WiltedForestLamp: {
 	Tooltip: ""
 }
 
-YggdrasilStoneGyroscope: {
-	DisplayName: Yggdrasil Stone Gyroscope
-	Tooltip: ""
-}
-
-DeadBeetleEgg: {
-	DisplayName: Dead Beetle Egg
-	Tooltip: ""
-}
-
-EvilMusicRemnant: {
-	DisplayName: Evil Music Remnant
-	Tooltip: ""
-}
-
-LegumeGyroscope: {
-	DisplayName: Legume Gyroscope
-	Tooltip: ""
-}
-
 WoodlandWraithStaff: {
 	DisplayName: Woodland Wraith Staff
+	Tooltip:
+		'''
+		Summons a woodland wraith that charges for 240% damage or fires bloodstreams for 100% damage
+		Right-click to spend 20 mana and create a spore zone lasting 15 seconds
+		Enemies inside take 70% more damage from the wraith's bloodstreams
+		Stand still out of combat for 2 seconds to let the wraith grow healing mycelium
+		Standing on its mycelium grants 5 life regeneration per second, doubled inside your spore zone
+		'''
+}
+
+XmasWhip: {
+	DisplayName: Xmas Whip
 	Tooltip: ""
 }
 
-LichenTentacle: {
-	DisplayName: Lichen Tentacle
-	Tooltip: ""
-}
-
-DevilHeartGyroscope: {
-	DisplayName: Devil Heart Gyroscope
+YggdrasilStoneGyroscope: {
+	DisplayName: Yggdrasil Stone Gyroscope
 	Tooltip: ""
 }
