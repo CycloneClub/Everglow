@@ -651,14 +651,14 @@ public class GiantDandelion : ModNPC
 	/// design calls it 稀有 and supplies no weight, so a deliberately low 0.25f (band 0.1f-0.5f,
 	/// lower than every other tranche creature) is used (D-34).
 	/// </summary>
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawnInfo)
 	{
 		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
 		{
 			return 0f;
 		}
 
-		if (spawnInfo.Water)
+		if (spawnInfo.waterTile)
 		{
 			return 0f;
 		}

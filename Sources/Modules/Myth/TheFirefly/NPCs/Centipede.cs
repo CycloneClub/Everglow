@@ -63,7 +63,7 @@ internal class CentipedeHead : FireWormHead
 		});
 	}
 
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawnInfo)
 	{
 		FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
 		if (!fireflyBiome.IsBiomeActive(Main.LocalPlayer))

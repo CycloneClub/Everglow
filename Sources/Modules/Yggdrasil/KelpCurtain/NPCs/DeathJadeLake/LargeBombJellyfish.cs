@@ -304,14 +304,14 @@ public class LargeBombJellyfish : ModNPC
 	/// </summary>
 	/// <param name="spawnInfo">The engine's spawn context.</param>
 	/// <returns>The conservative deep-water weight, or <c>0f</c> outside the design's context.</returns>
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawnInfo)
 	{
 		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
 		{
 			return 0f;
 		}
 
-		if (!spawnInfo.Water)
+		if (!spawnInfo.waterTile)
 		{
 			return 0f;
 		}
@@ -333,9 +333,9 @@ public class LargeBombJellyfish : ModNPC
 	/// </summary>
 	/// <param name="spawnInfo">The engine's spawn context.</param>
 	/// <returns>The number of consecutive liquid tiles below the spawn tile.</returns>
-	private static int MeasureLiquidColumn(NPCSpawnInfo spawnInfo)
+	private static int MeasureLiquidColumn(NPC.Spawner spawnInfo)
 	{
-		if (!spawnInfo.Water)
+		if (!spawnInfo.waterTile)
 		{
 			return 0;
 		}

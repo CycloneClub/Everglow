@@ -223,7 +223,7 @@ public class UmbrellaTailThief : ModNPC
 		target.AddBuff(BuffID.Poisoned, 600);
 	}
 
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawnInfo)
 	{
 		LampWoodForest lampBiome = ModContent.GetInstance<LampWoodForest>();
 		return !lampBiome.IsBiomeActive(Main.LocalPlayer) ? 0f : 3f;

@@ -382,7 +382,7 @@ public class RiverSlug : ModNPC
 		}
 	}
 
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawnInfo)
 	{
 		if (spawnInfo.Player.AnyEvent())
 		{

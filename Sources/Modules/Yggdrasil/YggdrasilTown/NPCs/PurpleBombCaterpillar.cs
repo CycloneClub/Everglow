@@ -25,7 +25,7 @@ public class PurpleBombCaterpillar : ModNPC
 		NPCSpawnManager.RegisterNPC(Type);
 	}
 
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawnInfo)
 	{
 		LampWoodForest lampBiome = ModContent.GetInstance<LampWoodForest>();
 		return !lampBiome.IsBiomeActive(Main.LocalPlayer) ? 0f : 3f;

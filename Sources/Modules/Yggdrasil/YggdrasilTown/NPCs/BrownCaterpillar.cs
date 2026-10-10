@@ -21,7 +21,7 @@ public class BrownCaterpillar : Caterpillar
 		DustType = ModContent.DustType<VerdantBlood>();
 	}
 
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawnInfo)
 	{
 		return 0f;
 	}

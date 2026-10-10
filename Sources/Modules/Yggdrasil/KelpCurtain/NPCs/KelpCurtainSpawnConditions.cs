@@ -4,7 +4,7 @@ namespace Everglow.Yggdrasil.KelpCurtain.NPCs;
 /// The Kelp Curtain's shared, server-safe spawn predicates together with the conservative spawn-weight
 /// bands every Phase 4 creature reuses.
 /// <para>
-/// Every method here is a pure function of <see cref="NPCSpawnInfo"/> and world tile state: none of
+/// Every method here is a pure function of <see cref="NPC.Spawner"/> and world tile state: none of
 /// them reads the local player, the screen position or any other client-only value, because
 /// <c>ModNPC.SpawnChance</c> runs in single player or on the server only, where the client camera is
 /// zero (D-52/D-55, QUAL-03).
@@ -12,7 +12,7 @@ namespace Everglow.Yggdrasil.KelpCurtain.NPCs;
 /// <para>
 /// The design keeps three distinct water conditions apart - 水面上 (the surface), 水底 (the bottom) and
 /// land - so they are three distinct predicates here instead of one "in water" flag (Pitfall 6). All
-/// three are deliberately derived from <see cref="NPCSpawnInfo"/> and the spawn tile's own liquid
+/// three are deliberately derived from <see cref="NPC.Spawner"/> and the spawn tile's own liquid
 /// state, so no predicate depends on terrain that Phases 5-6 have not built yet (D-53).
 /// </para>
 /// </summary>
@@ -54,13 +54,13 @@ public static class KelpCurtainSpawnConditions
 	/// The land condition (D-53): true when the spawn is not a water spawn and the spawn tile itself
 	/// holds no liquid. This is the 格普螺 (<c>GuppyConch</c>) land rejection generalised, so a land
 	/// creature cannot appear in a submerged tile even when the engine reports
-	/// <see cref="NPCSpawnInfo.Water"/> as false.
+	/// <see cref="NPC.Spawner.waterTile"/> as false.
 	/// </summary>
 	/// <param name="spawnInfo">The engine's spawn context; only its player-independent fields are read.</param>
 	/// <returns>True when the tile is dry land.</returns>
-	public static bool IsDryLand(NPCSpawnInfo spawnInfo)
+	public static bool IsDryLand(NPC.Spawner spawnInfo)
 	{
-		if (spawnInfo.Water)
+		if (spawnInfo.waterTile)
 		{
 			return false;
 		}
@@ -77,16 +77,16 @@ public static class KelpCurtainSpawnConditions
 	}
 
 	/// <summary>
-	/// The 水面上 condition (Pitfall 6): <see cref="NPCSpawnInfo"/> exposes no surface flag, so the
+	/// The 水面上 condition (Pitfall 6): <see cref="NPC.Spawner"/> exposes no surface flag, so the
 	/// surface is derived - the spawn must be a water spawn and the tile directly above it must be dry.
 	/// A secondary cross-check against <c>DeathJadeLakeBiome.LiquidSurfaceY</c> is kept as a tuning note
 	/// in 04-DEVIATIONS.md section 5 in case the dry-tile-above test proves too strict in the client run.
 	/// </summary>
 	/// <param name="spawnInfo">The engine's spawn context.</param>
 	/// <returns>True when the spawn is in the water's top tile.</returns>
-	public static bool IsWaterSurface(NPCSpawnInfo spawnInfo)
+	public static bool IsWaterSurface(NPC.Spawner spawnInfo)
 	{
-		if (!spawnInfo.Water)
+		if (!spawnInfo.waterTile)
 		{
 			return false;
 		}
@@ -108,9 +108,9 @@ public static class KelpCurtainSpawnConditions
 	/// </summary>
 	/// <param name="spawnInfo">The engine's spawn context.</param>
 	/// <returns>True when the spawn tile is a liquid tile whose column meets a solid floor below.</returns>
-	public static bool IsWaterBottom(NPCSpawnInfo spawnInfo)
+	public static bool IsWaterBottom(NPC.Spawner spawnInfo)
 	{
-		if (!spawnInfo.Water)
+		if (!spawnInfo.waterTile)
 		{
 			return false;
 		}

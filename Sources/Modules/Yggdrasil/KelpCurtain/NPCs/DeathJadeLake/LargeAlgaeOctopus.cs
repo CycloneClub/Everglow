@@ -343,14 +343,14 @@ public class LargeAlgaeOctopus : ModNPC
 	/// </summary>
 	/// <param name="spawnInfo">The engine's spawn context.</param>
 	/// <returns>The lowest aquatic weight of the phase, or <c>0f</c> outside the design's context.</returns>
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawnInfo)
 	{
 		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
 		{
 			return 0f;
 		}
 
-		if (!spawnInfo.Water || !KelpCurtainSpawnConditions.IsWaterBottom(spawnInfo))
+		if (!spawnInfo.waterTile || !KelpCurtainSpawnConditions.IsWaterBottom(spawnInfo))
 		{
 			return 0f;
 		}

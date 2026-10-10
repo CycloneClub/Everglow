@@ -515,7 +515,7 @@ public class AnimatedWitherbarkSoldierRanged : ModNPC
 	/// </summary>
 	/// <param name="spawnInfo">The engine's spawn context.</param>
 	/// <returns>The land weight, or <c>0f</c> outside the design's context.</returns>
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawnInfo)
 	{
 		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
 		{

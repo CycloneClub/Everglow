@@ -246,14 +246,14 @@ public class GuppyConch : ModNPC
 	/// creature is a land crawler, so submerged spawn tiles and water spawns are rejected. The
 	/// design supplies no weight, so a conservative 0.75f is used (band 0.5f-2f, D-34).
 	/// </summary>
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawnInfo)
 	{
 		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
 		{
 			return 0f;
 		}
 
-		if (spawnInfo.Water)
+		if (spawnInfo.waterTile)
 		{
 			return 0f;
 		}

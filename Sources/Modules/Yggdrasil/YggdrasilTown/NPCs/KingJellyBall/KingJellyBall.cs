@@ -102,7 +102,7 @@ public class KingJellyBall : ModNPC
 	{
 	}
 
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawnInfo)
 	{
 		return 0f;
 	}

@@ -476,12 +476,12 @@ public class Radiolarian : ModNPC
 
 	/// <summary>
 	/// 在浅水区生成: the shallow test derives the surface the way <c>KelpCurtainSpawnConditions</c> does
-	/// (a dry tile inside a bounded upward probe), because <see cref="NPCSpawnInfo"/> exposes no depth
+	/// (a dry tile inside a bounded upward probe), because <see cref="NPC.Spawner"/> exposes no depth
 	/// flag. The probe is bounded, so the world surface above an ocean is never mistaken for a lake bed.
 	/// </summary>
 	/// <param name="spawnInfo">The engine's spawn context; only its player-independent fields are read.</param>
 	/// <returns>True when the liquid column above the spawn tile ends inside the probe window.</returns>
-	private static bool IsShallowWater(NPCSpawnInfo spawnInfo)
+	private static bool IsShallowWater(NPC.Spawner spawnInfo)
 	{
 		int tileX = spawnInfo.SpawnTileX;
 		for (int offset = 1; offset <= MaxShallowScanTiles; offset++)
@@ -516,14 +516,14 @@ public class Radiolarian : ModNPC
 	/// </summary>
 	/// <param name="spawnInfo">The engine's spawn context.</param>
 	/// <returns>The lowest aquatic weight of the phase, or <c>0f</c> outside the design's context.</returns>
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawnInfo)
 	{
 		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
 		{
 			return 0f;
 		}
 
-		if (!spawnInfo.Water || !IsShallowWater(spawnInfo))
+		if (!spawnInfo.waterTile || !IsShallowWater(spawnInfo))
 		{
 			return 0f;
 		}

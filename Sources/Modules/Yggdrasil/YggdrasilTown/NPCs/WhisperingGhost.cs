@@ -32,7 +32,7 @@ public class WhisperingGhost : ModNPC
 		NPC.noTileCollide = false;
 	}
 
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawnInfo)
 	{
 		YggdrasilTownBiome YggdrasilTownBiome = ModContent.GetInstance<YggdrasilTownBiome>();
 		if (!YggdrasilTownBiome.IsBiomeActive(Main.LocalPlayer))

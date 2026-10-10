@@ -269,14 +269,14 @@ public class VerdantRods : ModNPC
 	/// spawn tile is rejected: this is an open-air flying creature. The per-region refinement
 	/// (亡碧湖 vs 森雨幽谷) is a recorded blocker because no regional biome predicate exists yet.
 	/// </summary>
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawnInfo)
 	{
 		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
 		{
 			return 0f;
 		}
 
-		if (spawnInfo.Water)
+		if (spawnInfo.waterTile)
 		{
 			return 0f;
 		}

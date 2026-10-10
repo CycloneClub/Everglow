@@ -86,7 +86,7 @@ public class SquamousShell : ModNPC
 		Main.npcFrameCount[NPC.type] = 1;
 	}
 
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawnInfo)
 	{
 		return 0f;
 	}
