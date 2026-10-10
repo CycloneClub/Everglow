@@ -372,9 +372,9 @@ public class ColliderManager : ILoadable
 		return orig(Position, Width, Height, acceptTopSurfaces) || Intersect(new AABB(Position.X, Position.Y, Width, Height));
 	}
 
-	private Vector2 Collision_TileCollision(On_Collision.orig_TileCollision orig, Vector2 Position, Vector2 Velocity, int Width, int Height, bool fallThrough, bool fall2, int gravDir)
+	private Vector2 Collision_TileCollision(On_Collision.orig_TileCollision orig, Vector2 Position, Vector2 Velocity, int Width, int Height, bool fallThrough, bool fall2, int gravDir, bool ignoreDoors, bool ignoreAetheriumPlatforms, bool hoik)
 	{
-		Vector2 stride = orig(Position, Velocity, Width, Height, fallThrough, fall2, gravDir);
+		Vector2 stride = orig(Position, Velocity, Width, Height, fallThrough, fall2, gravDir, ignoreDoors, ignoreAetheriumPlatforms, hoik);
 		if (EnableHook && Enable)
 		{
 			var box = new BoxImpl()

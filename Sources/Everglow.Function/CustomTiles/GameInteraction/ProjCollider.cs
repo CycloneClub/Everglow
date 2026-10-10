@@ -75,11 +75,11 @@ public class ProjCollider : GlobalProjectile, IEntityCollider<Projectile>
 		canHook.Remove(self);
 	}
 
-	private static void On_Projectile_HandleMovement(On_Projectile.orig_HandleMovement orig, Projectile self, Vector2 wetVelocity, out int overrideWidth, out int overrideHeight)
+	private static void On_Projectile_HandleMovement(On_Projectile.orig_HandleMovement orig, Projectile self, Vector2 wetVelocity)
 	{
 		if (!ColliderManager.Enable || !self.tileCollide || self.aiStyle == HookAIStyle)
 		{
-			orig(self, wetVelocity, out overrideWidth, out overrideHeight);
+			orig(self, wetVelocity);
 			return;
 		}
 
@@ -88,7 +88,7 @@ public class ProjCollider : GlobalProjectile, IEntityCollider<Projectile>
 
 		// 记录位置，否则会把传送当成位移
 		proj.Prepare();
-		orig(self, wetVelocity, out overrideWidth, out overrideHeight);
+		orig(self, wetVelocity);
 		proj.Update();
 		ColliderManager.EnableHook = true;
 	}
