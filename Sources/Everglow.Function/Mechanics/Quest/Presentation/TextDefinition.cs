@@ -8,7 +8,8 @@ public static class TextDefinition
 {
 	private const string TimedOutObjectiveColor = "210,90,70,255";
 
-	public static string GetQuestTypeText(QuestType? type) => type?.ToString() ?? "All";
+	public static string GetQuestTypeText(QuestType? type) =>
+		QuestText.Get(type is null ? "Common.All" : Enum.IsDefined(type.Value) ? $"Types.{type}" : "Common.Unknown");
 
 	public static string GetQuestNotificationText(QuestView quest, QuestNotification notification)
 	{
@@ -16,22 +17,18 @@ public static class TextDefinition
 
 		return notification.Type switch
 		{
-			QuestNotificationType.Unlocked => $"[{quest.DisplayName}]任务已解锁",
-			QuestNotificationType.Restored => $"[{quest.DisplayName}]任务已恢复",
-			QuestNotificationType.Failed => $"[{quest.DisplayName}]任务已失败",
-			QuestNotificationType.Completed => $"[{quest.DisplayName}]任务已完成",
-			QuestNotificationType.Restarted => $"[{quest.DisplayName}]任务已重启",
-			QuestNotificationType.ObjectiveCompleted => $"[{quest.DisplayName}]任务当前节点[{notification.Detail}]中目标已完成",
+			QuestNotificationType.Unlocked => QuestText.Get("Notifications.Unlocked", quest.DisplayName),
+			QuestNotificationType.Restored => QuestText.Get("Notifications.Restored", quest.DisplayName),
+			QuestNotificationType.Failed => QuestText.Get("Notifications.Failed", quest.DisplayName),
+			QuestNotificationType.Completed => QuestText.Get("Notifications.Completed", quest.DisplayName),
+			QuestNotificationType.Restarted => QuestText.Get("Notifications.Restarted", quest.DisplayName),
+			QuestNotificationType.ObjectiveCompleted => QuestText.Get("Notifications.ObjectiveCompleted", quest.DisplayName, notification.Detail),
 			_ => throw new ArgumentOutOfRangeException(nameof(notification)),
 		};
 	}
 
-	public static string GetQuestStateText(QuestViewState? state) => state switch
-	{
-		QuestViewState.Active => "Accepted",
-		null => "All",
-		_ => state.ToString(),
-	};
+	public static string GetQuestStateText(QuestViewState? state) =>
+		QuestText.Get(state is null ? "Common.All" : Enum.IsDefined(state.Value) ? $"States.{state}" : "Common.Unknown");
 
 	public static string GetQuestDetailText(QuestView quest)
 	{
@@ -40,11 +37,12 @@ public static class TextDefinition
 		var text = new StringBuilder();
 		if (quest.TimeLimit.HasValue)
 		{
-			text.Append($"[TimerIconDrawer,QuestName='{quest.Identity.DefinitionId}'] 剩余时间:[TimerStringDrawer,QuestName='{quest.Identity.DefinitionId}']\n\n");
+			string timer = $"[TimerStringDrawer,QuestName='{quest.Identity.DefinitionId}']";
+			text.Append($"[TimerIconDrawer,QuestName='{quest.Identity.DefinitionId}'] {QuestText.Get("UI.RemainingTime", timer)}\n\n");
 		}
 
-		text.Append("描述：\n");
-		text.Append(string.IsNullOrWhiteSpace(quest.Description) ? "无\n" : quest.Description + "\n");
+		text.Append(QuestText.Get("UI.Description")).Append('\n');
+		text.Append((string.IsNullOrWhiteSpace(quest.Description) ? QuestText.Get("Common.None") : quest.Description) + "\n");
 		return text.ToString();
 	}
 
@@ -52,7 +50,7 @@ public static class TextDefinition
 	{
 		ArgumentNullException.ThrowIfNull(quest);
 
-		var text = new StringBuilder("目标：\n");
+		var text = new StringBuilder(QuestText.Get("UI.Objectives") + "\n");
 		foreach (ObjectiveLineView line in GetQuestObjectiveLines(quest))
 		{
 			text.Append(line.Text);
@@ -93,21 +91,21 @@ public static class TextDefinition
 		string text = entry.Actions.Count > 0
 			? entry.Actions[0].Type switch
 			{
-				QuestActionType.Accept => "接取",
-				QuestActionType.Cancel => "放弃",
-				QuestActionType.Retry => "重试",
-				QuestActionType.ClaimReward => "领取奖励",
-				QuestActionType.Submit => "提交",
-				_ => "未知",
+				QuestActionType.Accept => QuestText.Get("Actions.Accept"),
+				QuestActionType.Cancel => QuestText.Get("Actions.Cancel"),
+				QuestActionType.Retry => QuestText.Get("Actions.Retry"),
+				QuestActionType.ClaimReward => QuestText.Get("Actions.ClaimReward"),
+				QuestActionType.Submit => QuestText.Get("Actions.Submit"),
+				_ => QuestText.Get("Common.Unknown"),
 			}
 			: entry.View.State switch
 			{
-				QuestViewState.Available => "接取",
-				QuestViewState.Active => "进行中",
-				QuestViewState.Completed => "完成",
-				QuestViewState.Failed => "失败",
-				QuestViewState.Locked => "锁定",
-				_ => "未知",
+				QuestViewState.Available => QuestText.Get("Actions.Accept"),
+				QuestViewState.Active => QuestText.Get("States.Active"),
+				QuestViewState.Completed => QuestText.Get("States.Completed"),
+				QuestViewState.Failed => QuestText.Get("States.Failed"),
+				QuestViewState.Locked => QuestText.Get("States.Locked"),
+				_ => QuestText.Get("Common.Unknown"),
 			};
 		return GetColoredText(text, color);
 	}
@@ -116,11 +114,11 @@ public static class TextDefinition
 	{
 		if (!remainingTime.HasValue)
 		{
-			return "Indefinitely";
+			return QuestText.Get("Time.Unlimited");
 		}
 
 		var time = new TimeSpan(0, 0, remainingTime.Value / 60);
-		return $"{(int)time.TotalMinutes}Min {time.Seconds}s";
+		return QuestText.Get("Time.Remaining", (int)time.TotalMinutes, time.Seconds);
 	}
 
 	public static string GetObjectiveTimerText(int remainingTime)
@@ -133,27 +131,27 @@ public static class TextDefinition
 		var text = new StringBuilder();
 		if (hours > 0)
 		{
-			text.Append(hours).Append('h');
+			text.Append(QuestText.Get("Time.Hours", hours));
 		}
 
 		if (hours > 0 || minutes > 0)
 		{
-			text.Append(minutes).Append('m');
+			text.Append(QuestText.Get("Time.Minutes", minutes));
 		}
 
 		if (seconds > 0 || text.Length == 0)
 		{
-			text.Append(seconds).Append('s');
+			text.Append(QuestText.Get("Time.Seconds", seconds));
 		}
 
 		return text.ToString();
 	}
 
-	public static string GetObjectiveTimerTooltip() => "重试";
+	public static string GetObjectiveTimerTooltip() => QuestText.Get("Actions.Retry");
 
-	public static string GetObjectiveDurationTooltip(float currentDuration, float maxDuration) => $"Duration: {(int)currentDuration}/{(int)maxDuration}";
+	public static string GetObjectiveDurationTooltip(float currentDuration, float maxDuration) => QuestText.Get("UI.Duration", (int)currentDuration, (int)maxDuration);
 
-	public static string GetQuestLevelTooltip(int stars) => $"Quest Level: {stars}";
+	public static string GetQuestLevelTooltip(int stars) => QuestText.Get("UI.Level", stars);
 
 	public static string GetColoredText(string text, string color) => $"[TextDrawer,Text='{text}',Color='{color}']";
 
@@ -161,7 +159,7 @@ public static class TextDefinition
 	{
 		if (objective.State == ObjectiveViewState.TimedOut)
 		{
-			return $"[TextDrawer,Text='(已超时)',Color='{TimedOutObjectiveColor}'] {text}";
+			return $"{GetColoredText(QuestText.Get("Time.TimedOut"), TimedOutObjectiveColor)} {text}";
 		}
 
 		return text;

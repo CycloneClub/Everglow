@@ -252,7 +252,7 @@ public class UIQuestDetail : UIBlock, IDrawable_InRt2D
 		_objectiveItems.Clear();
 
 		float contentWidth = Math.Max(1f, _objectiveContainer.HitBox.Width - _objectiveTextScrollbar.InnerScale.X);
-		_objectiveHeader = new UITextPlus("目标：");
+		_objectiveHeader = new UITextPlus(QuestText.Get("UI.Objectives"));
 		_objectiveHeader.StringDrawer.DefaultParameters.SetParameter("FontSize", FontSize);
 		_objectiveHeader.StringDrawer.Init(_objectiveHeader.Text);
 		_objectiveHeader.StringDrawer.SetWordWrap(contentWidth);
@@ -318,7 +318,9 @@ public class UIQuestDetail : UIBlock, IDrawable_InRt2D
 		if (action.Type == QuestActionType.Cancel)
 		{
 			AnimationState = 1;
-			var tip = new UIQuestOperationTip(SelectedItem.Entry, UIQuestOperationTip.TipType.Confirmation, "是否放弃任务", DiscardQuest, "是", "否");
+			var tip = new UIQuestOperationTip(
+				SelectedItem.Entry, UIQuestOperationTip.TipType.Confirmation,
+				QuestText.Get("UI.ConfirmCancel"), DiscardQuest, QuestText.Get("UI.Yes"), QuestText.Get("UI.No"));
 			tip.HideMask += ClearAnimation;
 			DetailTip.Show(tip);
 		}

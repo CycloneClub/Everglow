@@ -1,3 +1,4 @@
+using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.Hooks;
 using Everglow.Commons.Mechanics.Quest.Presentation.Icons;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Abstractions;
@@ -58,18 +59,18 @@ public class WorldKillNPCObjective : WorldObjectiveBase
 
 		if (NPCTypes.Count > 1)
 		{
-			var npcString = string.Join(',', NPCTypes.ConvertAll(npcType =>
+			var npcString = string.Join(QuestText.Get("Common.ListSeparator"), NPCTypes.ConvertAll(npcType =>
 			{
 				var npc = new NPC();
 				npc.SetDefaults(npcType);
 				return npc.TypeName;
 			}));
-			return $"击杀 {npcString} 合计{NPCCount}个 {progress}";
+			return QuestText.Get("Objectives.KillAny", npcString, NPCCount, progress);
 		}
 
 		var single = new NPC();
 		single.SetDefaults(NPCTypes.First());
-		return $"击杀 {single.TypeName} {NPCCount}个 {progress}";
+		return QuestText.Get("Objectives.Kill", single.TypeName, NPCCount, progress);
 	}
 
 	public override void Activate(WorldQuestBase sourceQuest)

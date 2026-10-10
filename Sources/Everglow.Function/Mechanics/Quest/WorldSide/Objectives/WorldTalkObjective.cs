@@ -1,3 +1,4 @@
+using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.Presentation.Icons;
 using Everglow.Commons.Utilities;
@@ -49,7 +50,7 @@ public class WorldTalkObjective : WorldObjectiveBase
 	{
 		var npc = new NPC();
 		npc.SetDefaults(NPCType);
-		return $"和{npc.TypeName}对话";
+		return QuestText.Get("Objectives.Talk", npc.TypeName);
 	}
 
 	public override void Update()

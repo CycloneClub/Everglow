@@ -1,3 +1,4 @@
+using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.PlayerSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.Presentation.Icons;
 using Everglow.Commons.UI.StringDrawerSystem.DrawerItems.ImageDrawers;
@@ -16,10 +17,6 @@ public class GiveItemObjective : PlayerObjectiveBase
 		NPCType = npcType >= NPCID.None
 			? npcType
 			: throw new InvalidDataException($"NPC type should more than 0.");
-
-		StartText = "请给我一些东西。";
-
-		EndText = "谢谢你！";
 	}
 
 	public GiveItemObjective(List<int> itemTypes, int itemCount, int npcType, string startText, string endText)
@@ -40,9 +37,20 @@ public class GiveItemObjective : PlayerObjectiveBase
 
 	public int NPCType { get; set; }
 
-	public string StartText { get; set; }
+	private string startText;
+	private string endText;
 
-	public string EndText { get; set; }
+	public string StartText
+	{
+		get => startText ?? QuestText.Get("Dialogue.GiveRequest");
+		set => startText = value;
+	}
+
+	public string EndText
+	{
+		get => endText ?? QuestText.Get("Dialogue.GiveThanks");
+		set => endText = value;
+	}
 
 	public List<int> ItemTypes { get; private set; } = [];
 
@@ -127,10 +135,10 @@ public class GiveItemObjective : PlayerObjectiveBase
 		if (ItemTypes.Count > 1)
 		{
 			var itemString = string.Join(' ', ItemTypes.ConvertAll(i => ItemDrawer.Create(i)));
-			return $"向{npc.TypeName}提交{itemString}合计{ItemCount}个 {progress}";
+			return QuestText.Get("Objectives.GiveAny", npc.TypeName, itemString, ItemCount, progress);
 		}
 
-		return $"向{npc.TypeName}提交{ItemDrawer.Create(ItemTypes.First())}{ItemCount}个 {progress}";
+		return QuestText.Get("Objectives.Give", npc.TypeName, ItemDrawer.Create(ItemTypes.First()), ItemCount, progress);
 	}
 
 	private float GetInventoryProgress(IEnumerable<Item> inventory) => Math.Clamp(inventory.Where(x => ItemTypes.Contains(x.type)).Sum(x => x.stack) / (float)ItemCount, 0f, 1f);

@@ -174,7 +174,7 @@ public class PlayerQuestManager
 				// 由不可提交改变到可提交状态的任务, 发送消息提示
 				if (m.CheckComplete())
 				{
-					Main.NewText($"[{m.Name}]任务可以提交了", 250, 250, 150);
+					Main.NewText(QuestText.Get("Notifications.ReadyToSubmit", m.DisplayName), 250, 250, 150);
 				}
 			}
 		}
@@ -239,7 +239,7 @@ public class PlayerQuestManager
 
 			if (showText)
 			{
-				Main.NewText($"新的任务任务已添加[{quest.DisplayName}]", 250, 250, 150);
+				Main.NewText(QuestText.Get("Notifications.Added", quest.DisplayName), 250, 250, 150);
 			}
 
 			if (state == PlayerQuestState.Accepted)

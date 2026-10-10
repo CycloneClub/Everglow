@@ -1,3 +1,4 @@
+using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.PlayerSide;
 using Everglow.Commons.Mechanics.Quest.PlayerSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.Presentation.Icons;
@@ -52,14 +53,14 @@ public class ExploreObjective : PlayerObjectiveBase
 	{
 		var biomeName = Biome is ModBiome modBiome
 			? modBiome.DisplayName.ToString()
-			: Biome.NameKey;
+			: Terraria.GameContent.ShopHelper.BiomeNameByKey(Biome.NameKey);
 
 		if (MoveRequirement > 0)
 		{
-			return $"在{biomeName}中走过{MoveRequirement}米. ({Math.Round(distanceMoved)}/{MoveRequirement})";
+			return QuestText.Get("Objectives.ExploreDistance", biomeName, MoveRequirement, Math.Round(distanceMoved));
 		}
 
-		return "探索" + biomeName;
+		return QuestText.Get("Objectives.Explore", biomeName);
 	}
 
 	public override void ResetProgress()

@@ -1,3 +1,4 @@
+using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.Presentation;
 using Everglow.Commons.UI.UIElements;
 
@@ -56,7 +57,7 @@ public class UIQuestOperationFail : UIQuestDetailMaskContentBase<UIQuestDetailTi
 		_tip.Info.HiddenOverflow = true;
 		_main.Register(_tip);
 
-		_tipText = new UITextPlus(_tipTextStr ?? "你好！");
+		_tipText = new UITextPlus(_tipTextStr ?? QuestText.Get("UI.Information"));
 		_tipText.StringDrawer.DefaultParameters.SetParameter("FontSize", 36f * scale);
 		_tipText.StringDrawer.Init(_tipText.Text);
 		_tipText.StringDrawer.SetWordWrap(_tip.Info.Width.Pixel);
@@ -81,7 +82,7 @@ public class UIQuestOperationFail : UIQuestDetailMaskContentBase<UIQuestDetailTi
 		};
 		_main.Register(_yes);
 
-		_yesText = new UITextPlus(_yesTextStr ?? "OK");
+		_yesText = new UITextPlus(_yesTextStr ?? QuestText.Get("UI.OK"));
 		_yesText.StringDrawer.DefaultParameters.SetParameter("FontSize", 36f * scale);
 		_yesText.StringDrawer.Init(_yesText.Text);
 		_yes.Register(_yesText);
@@ -124,11 +125,11 @@ public class UIQuestOperationFail : UIQuestDetailMaskContentBase<UIQuestDetailTi
 
 		if (_yes.OnSelect)
 		{
-			_yesText.Text = TextDefinition.GetColoredText(_yesTextStr, "255,245,193");
+			_yesText.Text = TextDefinition.GetColoredText(_yesTextStr ?? QuestText.Get("UI.OK"), "255,245,193");
 		}
 		if (!_yes.OnSelect)
 		{
-			_yesText.Text = TextDefinition.GetColoredText(_yesTextStr, "45,38,33");
+			_yesText.Text = TextDefinition.GetColoredText(_yesTextStr ?? QuestText.Get("UI.OK"), "45,38,33");
 		}
 		base.Calculation();
 	}

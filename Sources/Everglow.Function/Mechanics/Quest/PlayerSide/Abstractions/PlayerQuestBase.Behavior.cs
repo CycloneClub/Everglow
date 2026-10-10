@@ -1,3 +1,4 @@
+using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.PlayerSide.Structure;
 
 namespace Everglow.Commons.Mechanics.Quest.PlayerSide.Abstractions;
@@ -84,7 +85,7 @@ public abstract partial class PlayerQuestBase : ITagCompoundEntity
 
 		if (Objectives.Update(this))
 		{
-			Main.NewText($"[{Name}]任务当前目标已完成", 250, 250, 150);
+			Main.NewText(QuestText.Get("Notifications.PlayerObjectiveCompleted", DisplayName), 250, 250, 150);
 		}
 	}
 
@@ -113,7 +114,7 @@ public abstract partial class PlayerQuestBase : ITagCompoundEntity
 
 		PlayerQuestManager.Instance.ChangeQuestState(this, PlayerQuestState.Accepted, PlayerQuestState.Completed);
 
-		Main.NewText($"[{Name}]任务已完成", 150, 250, 150);
+		Main.NewText(QuestText.Get("Notifications.Completed", DisplayName), 150, 250, 150);
 
 		PostComplete();
 	}

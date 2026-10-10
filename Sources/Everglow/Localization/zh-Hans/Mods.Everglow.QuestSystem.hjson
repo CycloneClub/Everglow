@@ -1,0 +1,88 @@
+{
+	"Common": {
+		"All": "全部",
+		"Unknown": "未知",
+		"None": "无",
+		"SystemSource": "Everglow 系统",
+		"ListSeparator": "、"
+	},
+	"Types": {
+		"None": "未分类",
+		"MainStory": "主线任务",
+		"SideStory": "支线任务",
+		"Legend": "传说任务",
+		"Achievement": "成就任务",
+		"Daily": "日常任务",
+		"Challenge": "挑战任务"
+	},
+	"States": {
+		"Locked": "锁定",
+		"Available": "可接取",
+		"Active": "进行中",
+		"Completed": "完成",
+		"Failed": "失败"
+	},
+	"Actions": {
+		"Accept": "接取",
+		"Cancel": "放弃",
+		"Retry": "重试",
+		"ClaimReward": "领取奖励",
+		"Submit": "提交"
+	},
+	"UI": {
+		"OpenPanel": "打开任务面板",
+		"Close": "关闭",
+		"QuestDetail": "任务详情",
+		"Description": "描述：",
+		"Objectives": "目标：",
+		"RemainingTime": "剩余时间：{0}",
+		"ConfirmCancel": "是否放弃任务？",
+		"Yes": "是",
+		"No": "否",
+		"OK": "确认",
+		"Information": "提示",
+		"OperationFailed": "任务失败",
+		"Duration": "时长：{0}/{1}",
+		"Level": "任务星级：{0}"
+	},
+	"Time": {
+		"Unlimited": "不限时",
+		"Remaining": "{0}分{1}秒",
+		"Hours": "{0}时",
+		"Minutes": "{0}分",
+		"Seconds": "{0}秒",
+		"TimedOut": "(已超时)"
+	},
+	"Notifications": {
+		"Unlocked": "[{0}]任务已解锁",
+		"Restored": "[{0}]任务已恢复",
+		"Failed": "[{0}]任务已失败",
+		"Completed": "[{0}]任务已完成",
+		"Restarted": "[{0}]任务已重启",
+		"ObjectiveCompleted": "[{0}]任务当前目标已完成",
+		"PlayerObjectiveCompleted": "[{0}]任务当前目标已完成",
+		"ReadyToSubmit": "[{0}]任务可以提交了",
+		"Added": "新的任务已添加[{0}]"
+	},
+	"Objectives": {
+		"Talk": "和{0}对话",
+		"Kill": "击杀 {0} {1}个 {2}",
+		"KillAny": "击杀 {0} 合计{1}个 {2}",
+		"Collect": "获取{0}{1}个 {2}",
+		"CollectAny": "获取{0}合计{1}个 {2}",
+		"Have": "拥有{0}{1}个 {2}",
+		"HaveAny": "拥有{0}合计{1}个 {2}",
+		"Consume": "消耗{0}{1}个 {2}",
+		"ConsumeAny": "消耗{0}合计{1}个 {2}",
+		"Use": "使用{0}{1}次 {2}",
+		"UseAny": "使用{0}合计{1}次 {2}",
+		"Give": "向{0}提交{1}{2}个 {3}",
+		"GiveAny": "向{0}提交{1}合计{2}个 {3}",
+		"Explore": "探索{0}",
+		"ExploreDistance": "在{0}中探索 ({2}/{1})"
+	},
+	"Dialogue": {
+		"GiveRequest": "请给我一些东西。",
+		"GiveThanks": "谢谢你！"
+	}
+}

@@ -1,3 +1,4 @@
+using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.PlayerSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.Presentation.Icons;
 
@@ -47,6 +48,6 @@ public class TalkNPCObjective : PlayerObjectiveBase
 		var npc = new NPC();
 		npc.SetDefaults(NPCType);
 
-		return $"和{npc.TypeName}对话";
+		return QuestText.Get("Objectives.Talk", npc.TypeName);
 	}
 }
