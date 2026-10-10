@@ -2,3 +2,8 @@ Acytaea_horn: {
 	DisplayName: Acytaea_horn
 	Tooltip: ""
 }
+
+WitheredMask: {
+	DisplayName: Withered Mask
+	Tooltip: ""
+}

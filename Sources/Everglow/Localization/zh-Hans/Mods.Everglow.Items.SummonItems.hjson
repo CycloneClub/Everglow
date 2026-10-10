@@ -1,9 +1,29 @@
+BloodLamp: {
+	DisplayName: Blood Lamp
+	Tooltip: ""
+}
+
 EvilCocoon: {
 	DisplayName: 邪茧
 	Tooltip: ""
 }
 
+JadeSnakeEgg: {
+	DisplayName: 灵蛇玉卵
+	Tooltip: ""
+}
+
 JellyBallDaifuku: {
 	DisplayName: 球冻大福
+	Tooltip: 召唤球冻王
+}
+
+MossyRuby: {
+	DisplayName: Mossy Ruby
+	Tooltip: ""
+}
+
+ReekingBait: {
+	DisplayName: Reeking Bait
 	Tooltip: ""
 }

@@ -4,6 +4,8 @@ namespace Everglow.EternalResolve.Projectiles
 {
 	public class MechanicMosquito_Mosquito : ModProjectile
 	{
+		public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 		public NPC Target;
 		public Projectile Owner;
 		public int HoverTimer = 0;

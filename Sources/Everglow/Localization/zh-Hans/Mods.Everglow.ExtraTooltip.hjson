@@ -1,0 +1,26 @@
+FireflyItems: {
+	FFBBadge0: 腐檀巨蛾存在时：
+	FFBBadge1: 防御降低 25%，最多降低 12 点
+	FFBBadge2: 伤害提高 18%
+	FFBBadge3: 近战与鞭子攻击速度提高 10%
+	FFBBadge4: 近战与鞭子的正基础暴击率归零
+	MEyeBonusTextGlowSword0: 增大发光弹幕的尺寸
+	MEyeBonusTextGlowSword1: 武器伤害提高 5%
+	MEyeBonusTextMothBlade: 蝴蝶弹幕加速追踪目标
+	MEyeBonusTextMothBow: 加快蓄力速度
+	MEyeBonusTextMothChry0: 飞蛾的攻击可以穿过物块
+	MEyeBonusTextMothChry1: 飞蛾攻击时有概率额外释放腐蚀雨
+	MEyeBonusTextMothFan: 强化召唤出的发光蝴蝶
+	MEyeBonusTextMothGun0: 提高磷光弹的伤害
+	MEyeBonusTextMothGun1: 射击不会将玩家向后推
+	MEyeBonusTextMothYoyo: 额外生成八枚范围更大的环绕弹幕
+	MothEyeBonusText: 蛾眼加成：
+	MothEyeCriteriaText: 进入困难模式后，在此处激活额外效果
+	MothEyeText0: 困难模式下，在流萤群系中激活额外效果
+	MothEyeText1: 流萤系列武器伤害提高 5%
+	MothEyeText2: 魔力消耗降低 5%
+	MothEyeText3: 减轻魔力病的影响
+	MothEyeText4: 使部分流萤系列武器获得额外效果
+}
+
+Misc.UnfinishedItem: 此物品仍在开发中

@@ -6,6 +6,8 @@ namespace Everglow.Myth.TheTusk.Projectiles;
 
 public class BloodTusk_Tentacle : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
+
 	public List<Vector2> TentaclePoints = new List<Vector2>();
 	public NPC BloodTuskOwner;
 	public Vector2 LinePostions = Vector2.zeroVector;

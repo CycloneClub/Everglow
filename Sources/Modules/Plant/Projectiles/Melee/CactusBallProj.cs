@@ -11,6 +11,8 @@ namespace Everglow.Plant.Projectiles.Melee;
 
 public class CactusBallProj : ModProjectile, IWarpProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	public override string Texture => "Terraria/Images/Projectile_727";
 
 	public override void SetStaticDefaults()

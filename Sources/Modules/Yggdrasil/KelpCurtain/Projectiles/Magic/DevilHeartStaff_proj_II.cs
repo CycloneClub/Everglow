@@ -7,6 +7,8 @@ namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Magic;
 
 public class DevilHeartStaff_proj_II : TrailingProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override void SetCustomDefaults()
 	{
 		TrailColor = new Color(0.85f, 0.75f, 0.65f, 0f);

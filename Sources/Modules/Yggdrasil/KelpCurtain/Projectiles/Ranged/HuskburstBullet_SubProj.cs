@@ -5,6 +5,8 @@ namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Ranged;
 
 public class HuskburstBullet_SubProj : TrailingProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
+
 	public override void SetCustomDefaults()
 	{
 		Projectile.width = 20;

@@ -6,6 +6,8 @@ namespace Everglow.Myth.TheTusk.Projectiles;
 
 public class TuskCurse : TrailingProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
+
 	public override void SetCustomDefaults()
 	{
 		TrailColor = new Color(1, 0, 0, 0f);

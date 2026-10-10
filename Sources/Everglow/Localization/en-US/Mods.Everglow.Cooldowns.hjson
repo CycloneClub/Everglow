@@ -1,11 +1,42 @@
-TestCooldown: {
-	DisplayName: Test Cooldown
-	Tooltip: This is a test cooldown for demonstration purposes.
+AuburnSelfReinforcingCooldown: {
+	DisplayName: Auburn Self Reinforcing Cooldown
+	Description: ""
 }
 
 DevilHeartSetCooldown: {
-	DisplayName: Devil Heart Overcharge Cooldown
-	Description: Cooldown in progress...
+	DisplayName: Devil Heart Overload Cooldown
+	Description: Devil Heart Overload is recharging
+}
+
+IstafelsSunfireGraspFireBallCooldown: {
+	DisplayName: Istafels Sunfire Grasp Fire Ball Cooldown
+	Description: ""
+}
+
+IstafelsSunfireGraspSkillCooldown: {
+	DisplayName: Istafels Sunfire Grasp Skill Cooldown
+	Description: ""
+}
+
+MelterGearCooldown: {
+	DisplayName: Melter Gear Cooldown
+	Description: ""
+}
+
+MolluscsSetCooldown: {
+	DisplayName: Aquatic Possession Cooldown
+	Description: Aquatic Possession is recharging
+}
+
+RuinSetCooldown: {
+	DisplayName: Power of the Ruins Cooldown
+	Description: The Ruin armor set skill is recharging
+}
+
+TestCooldown: {
+	DisplayName: Test Cooldown
+	Description: ""
+	Tooltip: This is a test cooldown for demonstration purposes.
 }
 
 TestCooldown2: {
@@ -23,37 +54,7 @@ TestCooldown4: {
 	Description: ""
 }
 
-AuburnSelfReinforcingCooldown: {
-	DisplayName: Auburn Self Reinforcing Cooldown
-	Description: ""
-}
-
-MelterGearCooldown: {
-	DisplayName: Melter Gear Cooldown
-	Description: ""
-}
-
-IstafelsSunfireGraspFireBallCooldown: {
-	DisplayName: Istafels Sunfire Grasp Fire Ball Cooldown
-	Description: ""
-}
-
-IstafelsSunfireGraspSkillCooldown: {
-	DisplayName: Istafels Sunfire Grasp Skill Cooldown
-	Description: ""
-}
-
-MolluscsSetCooldown: {
-	DisplayName: Molluscs Set Cooldown
-	Description: ""
-}
-
-RuinSetCooldown: {
-	DisplayName: Ruin Set Cooldown
-	Description: ""
-}
-
 TheGreenSolarCooldown: {
-	DisplayName: The Green Solar Cooldown
-	Description: ""
+	DisplayName: Green Solar Rebirth Cooldown
+	Description: The Green Solar cannot prevent death yet
 }

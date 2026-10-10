@@ -9,6 +9,8 @@ namespace Everglow.Myth.Acytaea.Projectiles;
 
 public class AcytaeaSword_projectile_Boss : ModProjectile, IWarpProjectile, IBloomProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
+
 	public override string Texture => "Everglow/Myth/Acytaea/Projectiles/AcytaeaSword_projectile";
 
 	public override void SetDefaults()

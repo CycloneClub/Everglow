@@ -6,6 +6,8 @@ namespace Everglow.Myth.TheTusk.Projectiles;
 
 public class BloodTuskLongSpice : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
+
 	public override string Texture => ModAsset.Empty_Mod;
 
 	public NPC Tusk;

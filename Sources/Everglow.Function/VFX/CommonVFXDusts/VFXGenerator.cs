@@ -2,6 +2,8 @@ namespace Everglow.Commons.VFX.CommonVFXDusts;
 
 internal class VFXGenerator : ModItem
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Tools;
+
 	public override void SetDefaults()
 	{
 		Item.width = 30;

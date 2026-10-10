@@ -4,6 +4,8 @@ namespace Everglow.SpellAndSkull.Projectiles.DemonScythe;
 
 public class DemoSpark : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MiscsProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 10;

@@ -7,6 +7,8 @@ namespace Everglow.SpellAndSkull.Projectiles.MagnetSphere;
 
 public class MagnetSphereII : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 10;

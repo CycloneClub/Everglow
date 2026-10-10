@@ -33,6 +33,8 @@ internal class FlameRingPipeline : Pipeline
 [Pipeline(typeof(FlameRingPipeline), typeof(BloomPipeline))]
 internal class FireFeatherMagicArray : VisualProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public float WingPower = 0;
 	public bool OldControlUp = false;
 	public int timer = 0;

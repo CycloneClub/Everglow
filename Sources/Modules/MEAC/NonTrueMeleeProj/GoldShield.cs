@@ -12,6 +12,8 @@ namespace Everglow.MEAC.NonTrueMeleeProj;
 
 public class GoldShield : ModProjectile, IWarpProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 10;

@@ -8,6 +8,8 @@ namespace Everglow.Example.Projectiles;
 
 public class ExampleMeleeProjectile : MeleeProj_3D
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		EnableSphereCoordDraw = false;

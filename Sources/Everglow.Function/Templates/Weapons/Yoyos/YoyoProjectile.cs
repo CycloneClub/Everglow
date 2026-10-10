@@ -10,6 +10,8 @@ namespace Everglow.Commons.Templates.Weapons.Yoyos;
 
 public abstract class YoyoProjectile : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	/// <summary>
 	/// Maximum seconds the yoyo will remain deployed before returning.
 	/// Set less than 0 for infinite lifetime.

@@ -9,6 +9,8 @@ namespace Everglow.Food.Projectiles;
 
 public class FryingPan : MeleeProj
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	public override void SetDef()
 	{
 		Projectile.width = 60;

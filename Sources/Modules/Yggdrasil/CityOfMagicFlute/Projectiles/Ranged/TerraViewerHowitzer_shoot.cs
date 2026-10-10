@@ -7,6 +7,8 @@ namespace Everglow.Yggdrasil.CityOfMagicFlute.Projectiles.Ranged;
 
 public class TerraViewerHowitzer_shoot : TrailingProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
+
 	public override void SetCustomDefaults()
 	{
 		Projectile.width = 30;

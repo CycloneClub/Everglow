@@ -6,6 +6,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
 
 public class BronzeLotusLamp_Blossom : TrailingProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	private const int SearchDistance = 600;
 
 	private int targetWhoAmI = -1;

@@ -1,0 +1,144 @@
+// Shared localization entries; content keys live in their category files.
+Bestiary: {
+	Acytaea: ""
+	Centipede.Flavor: ""
+	CorruptMoth.Flavor: ""
+}
+
+Common.Message.HasAwoken: has awoken!
+
+Configs: {
+	EverglowClientConfig: {
+		DisplayName: Everglow Client Config
+
+		Headers: {
+			AudioReplace: Audio Replace Header
+			TextureReplace: Texture Replace Header
+		}
+
+		ItemPickSoundReplace: {
+			Label: Item Pick Sound Replace
+			Tooltip: ""
+		}
+
+		TextureReplace: {
+			Label: Texture Replace
+			Tooltip: ""
+		}
+
+		TuskAudioReplace: {
+			Label: Tusk Audio Replace
+			Tooltip: ""
+		}
+	}
+
+	EverglowConfig: {
+		DisplayName: Everglow Config
+
+		debugMode: {
+			Label: debug Mode
+			Tooltip: ""
+		}
+	}
+
+	FogConfigs: {
+		DisplayName: Fog Configs
+
+		BloomIntensity: {
+			Label: Bloom Intensity
+			Tooltip: ""
+		}
+
+		EnableLightUpload: {
+			Label: Enable Light Upload
+			Tooltip: ""
+		}
+
+		EnableScattering: {
+			Label: Enable Scattering
+			Tooltip: ""
+		}
+
+		EnableTemporalInterp: {
+			Label: Enable Temporal Interp
+			Tooltip: ""
+		}
+
+		FogAbsorptionB: {
+			Label: Fog Absorption B
+			Tooltip: ""
+		}
+
+		FogAbsorptionG: {
+			Label: Fog Absorption G
+			Tooltip: ""
+		}
+
+		FogAbsorptionR: {
+			Label: Fog Absorption R
+			Tooltip: ""
+		}
+
+		FogBloomAbsorptionFactor: {
+			Label: Fog Bloom Absorption Factor
+			Tooltip: ""
+		}
+
+		FogBloomRate: {
+			Label: Fog Bloom Rate
+			Tooltip: ""
+		}
+
+		FogScatterWithDistance: {
+			Label: Fog Scatter With Distance
+			Tooltip: ""
+		}
+
+		GaussianKernel: {
+			Label: Gaussian Kernel
+			Tooltip: ""
+		}
+
+		LightLuminanceThreashold: {
+			Label: Light Luminance Threashold
+			Tooltip: ""
+		}
+
+		MaxBloomRadius: {
+			Label: Max Bloom Radius
+			Tooltip: ""
+		}
+
+		OffscreenTiles: {
+			Label: Offscreen Tiles
+			Tooltip: ""
+		}
+	}
+
+	TextureReplaceMode: {
+		Tooltip: ""
+		Default.Label: Default
+		EternalResolve.Label: Eternal Resolve
+		Everglow.Label: Everglow
+		Myth.Label: Myth
+		Terraria.Label: Terraria
+	}
+
+	TuskAudioReplaceMode: {
+		Tooltip: ""
+		OldTuskFighting.Label: Old Tusk Fighting
+		TuskFighting.Label: Tusk Fighting
+	}
+}
+
+InfoDisplays: {
+	FoodSatietyInfoDisplay.DisplayName: Food Satiety Info Display
+	ThirstystateInfoDisplay.DisplayName: Thirstystate Info Display
+}
+
+NPCName.CorruptMoth: "{$Mods.Everglow.NPCs.CorruptMoth.DisplayName}"
+
+Prefixes: {
+	Accurate.DisplayName: Accurate
+	Aimed.DisplayName: Aimed
+}

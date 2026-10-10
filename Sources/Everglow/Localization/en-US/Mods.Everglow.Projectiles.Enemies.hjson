@@ -1,15 +1,33 @@
-BloodSpell: {
-	DisplayName: Blood Spell
-}
-
-LightSeed: {
-	DisplayName: Light Seed
-}
-
-RockElemental_Stonefragment: {
-	DisplayName: Rock Elemental_ Stonefragment
-}
-
-RockElemental_ThrowingStone: {
-	DisplayName: Rock Elemental_ Throwing Stone
-}
+AlgaeOctopus_InkCloud.DisplayName: Algae Octopus_ Ink Cloud
+AnimatedWitherbarkSoldier_Boulder.DisplayName: Animated Witherbark Soldier_ Boulder
+AnimatedWitherbarkSoldier_SpellBeam.DisplayName: Animated Witherbark Soldier_ Spell Beam
+AssassinRaspberry_Spike.DisplayName: Assassin Raspberry_ Spike
+BloodLanternGhost_PowerBall_Explosion.DisplayName: Blood Lantern Ghost_ Power Ball_ Explosion
+BloodLanternGhost_PowerBall.DisplayName: Blood Lantern Ghost_ Power Ball
+BloodSpell.DisplayName: Blood Spell
+BombJellyfish_Explosion.DisplayName: Bomb Jellyfish_ Explosion
+CurseSpell.DisplayName: Curse Spell
+CylindricalLantern_explosion.DisplayName: Cylindrical Lantern_explosion
+CylindricalLantern_flame.DisplayName: Cylindrical Lantern_flame
+DarkLanternBombExplosion.DisplayName: Dark Lantern Bomb Explosion
+GreenFlameProj.DisplayName: Green Flame Proj
+GreenFlameSharpCrystal.DisplayName: Green Flame Sharp Crystal
+LargeBloodLanternGhost_Matrix_Summon.DisplayName: Large Blood Lantern Ghost_ Matrix_ Summon
+LargeBloodLanternGhost_Minion.DisplayName: Large Blood Lantern Ghost_ Minion
+LargeBloodLanternGhost_Tentacles.DisplayName: Large Blood Lantern Ghost_ Tentacles
+LightSeed.DisplayName: Light Seed
+PurpleBombCaterpillarDeath.DisplayName: Purple Bomb Caterpillar Death
+Radiolarian_WaterBolt.DisplayName: Radiolarian_ Water Bolt
+RedNeedleCaterpillar_Spike.DisplayName: Red Needle Caterpillar_ Spike
+RedpaperGiantAttackProj.DisplayName: Redpaper Giant Attack Proj
+RockElemental_Stonefragment.DisplayName: Rock Elemental_ Stonefragment
+RockElemental_ThrowingStone.DisplayName: Rock Elemental_ Throwing Stone
+ThunderSpell_AttachPlayer.DisplayName: Thunder Spell_ Attach Player
+ThunderSpell_Thunder.DisplayName: Thunder Spell_ Thunder
+ThunderSpell.DisplayName: Thunder Spell
+ToxicToad_PoisonBubble.DisplayName: Toxic Toad_ Poison Bubble
+ToxicToad_PoisonCloud.DisplayName: Toxic Toad_ Poison Cloud
+WitchingSpell.DisplayName: Witching Spell
+WizardLantern_Matrix_Curse.DisplayName: Wizard Lantern_ Matrix_ Curse
+WizardLantern_Matrix_Thunder.DisplayName: Wizard Lantern_ Matrix_ Thunder
+WizardLantern_Matrix_Witching.DisplayName: Wizard Lantern_ Matrix_ Witching

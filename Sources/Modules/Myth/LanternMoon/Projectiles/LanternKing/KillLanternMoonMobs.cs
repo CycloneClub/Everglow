@@ -8,6 +8,8 @@ namespace Everglow.Myth.LanternMoon.Projectiles.LanternKing;
 
 public class KillLanternMoonMobs : ModProjectile, IWarpProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MiscsProjectiles;
+
 	public int Timer = 0;
 
 	public float Range = 0;

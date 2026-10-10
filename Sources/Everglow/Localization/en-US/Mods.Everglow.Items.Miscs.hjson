@@ -1,5 +1,190 @@
-StarSeed: {
-	DisplayName: Star Seed
+ArcticshellfishWarship: {
+	DisplayName: Arcticshellfish Warship
+	Tooltip: ""
+}
+
+B_52: {
+	DisplayName: B_52
+	Tooltip: ""
+}
+
+BakedMussel: {
+	DisplayName: Baked Mussel
+	Tooltip: ""
+}
+
+BakedOyster: {
+	DisplayName: Baked Oyster
+	Tooltip: ""
+}
+
+BlueHawaii: {
+	DisplayName: Blue Hawaii
+	Tooltip: ""
+}
+
+BoiledBullfrog: {
+	DisplayName: Boiled Bullfrog
+	Tooltip: ""
+}
+
+CantaloupeJelly: {
+	DisplayName: Cantaloupe Jelly
+	Tooltip: ""
+}
+
+CaramelPudding: {
+	DisplayName: Caramel Pudding
+	Tooltip: ""
+}
+
+CrabseedWarship: {
+	DisplayName: Crabseed Warship
+	Tooltip: ""
+}
+
+DessertBag_Snow: {
+	DisplayName: Dessert Bag_ Snow
+	Tooltip: ""
+}
+
+DreamYearning: {
+	DisplayName: Dream Yearning
+	Tooltip: ""
+}
+
+DryMartini: {
+	DisplayName: Dry Martini
+	Tooltip: ""
+}
+
+Durian: {
+	DisplayName: Durian
+	Tooltip: ""
+}
+
+EggTart: {
+	DisplayName: Egg Tart
+	Tooltip: ""
+}
+
+ElectroProbe: {
+	DisplayName: Electro Probe
+	Tooltip: ""
+}
+
+FireCracker: {
+	DisplayName: Fire Cracker
+	Tooltip: ""
+}
+
+FixCoinCrit1: {
+	DisplayName: Fix Coin Crit1
+	Tooltip: ""
+}
+
+FixCoinCrit2: {
+	DisplayName: Fix Coin Crit2
+	Tooltip: ""
+}
+
+FixCoinCrit3: {
+	DisplayName: Fix Coin Crit3
+	Tooltip: ""
+}
+
+FixCoinCrit4: {
+	DisplayName: Fix Coin Crit4
+	Tooltip: ""
+}
+
+FixCoinCrit5: {
+	DisplayName: Fix Coin Crit5
+	Tooltip: ""
+}
+
+FixCoinDamage1: {
+	DisplayName: Fix Coin Damage1
+	Tooltip: ""
+}
+
+FixCoinDamage2: {
+	DisplayName: Fix Coin Damage2
+	Tooltip: ""
+}
+
+FixCoinDamage3: {
+	DisplayName: Fix Coin Damage3
+	Tooltip: ""
+}
+
+FixCoinDamage4: {
+	DisplayName: Fix Coin Damage4
+	Tooltip: ""
+}
+
+FixCoinDamage5: {
+	DisplayName: Fix Coin Damage5
+	Tooltip: ""
+}
+
+FixCoinDefense1: {
+	DisplayName: Fix Coin Defense1
+	Tooltip: ""
+}
+
+FixCoinDefense2: {
+	DisplayName: Fix Coin Defense2
+	Tooltip: ""
+}
+
+FixCoinDefense3: {
+	DisplayName: Fix Coin Defense3
+	Tooltip: ""
+}
+
+FixCoinDefense4: {
+	DisplayName: Fix Coin Defense4
+	Tooltip: ""
+}
+
+FixCoinDefense5: {
+	DisplayName: Fix Coin Defense5
+	Tooltip: ""
+}
+
+FixCoinMelee1: {
+	DisplayName: Fix Coin Melee1
+	Tooltip: ""
+}
+
+FixCoinMelee2: {
+	DisplayName: Fix Coin Melee2
+	Tooltip: ""
+}
+
+FixCoinMelee3: {
+	DisplayName: Fix Coin Melee3
+	Tooltip: ""
+}
+
+FixCoinSpeed1: {
+	DisplayName: Fix Coin Speed1
+	Tooltip: ""
+}
+
+FixCoinSpeed2: {
+	DisplayName: Fix Coin Speed2
+	Tooltip: ""
+}
+
+FixCoinSpeed3: {
+	DisplayName: Fix Coin Speed3
+	Tooltip: ""
+}
+
+ForestBreath: {
+	DisplayName: Forest Breath
 	Tooltip: ""
 }
 
@@ -8,8 +193,113 @@ GoodNeighborCoin: {
 	Tooltip: ""
 }
 
+GreenStorm: {
+	DisplayName: Green Storm
+	Tooltip: ""
+}
+
 JellyBallFat: {
 	DisplayName: Jelly Ball Fat
+	Tooltip: ""
+}
+
+KiwiFruit: {
+	DisplayName: Kiwi Fruit
+	Tooltip: ""
+}
+
+KiwiIceCream: {
+	DisplayName: Kiwi Ice Cream
+	Tooltip: ""
+}
+
+KiwiJuice: {
+	DisplayName: Kiwi Juice
+	Tooltip: ""
+}
+
+LonelyJellyfish: {
+	DisplayName: Lonely Jellyfish
+	Tooltip: ""
+}
+
+Mangosteen: {
+	DisplayName: Mangosteen
+	Tooltip: ""
+}
+
+MapoTofu: {
+	DisplayName: Mapo Tofu
+	Tooltip: ""
+}
+
+OrangeIcecream: {
+	DisplayName: Orange Icecream
+	Tooltip: ""
+}
+
+OrangeJuice: {
+	DisplayName: Orange Juice
+	Tooltip: ""
+}
+
+PiercoldWind: {
+	DisplayName: Piercold Wind
+	Tooltip: ""
+}
+
+PurpleHooter: {
+	DisplayName: Purple Hooter
+	Tooltip: ""
+}
+
+QuinceMarry: {
+	DisplayName: Quince Marry
+	Tooltip: ""
+}
+
+RedWine: {
+	DisplayName: Red Wine
+	Tooltip: ""
+}
+
+SalmonInPepper: {
+	DisplayName: Salmon In Pepper
+	Tooltip: ""
+}
+
+SalmonWarship: {
+	DisplayName: Salmon Warship
+	Tooltip: ""
+}
+
+SeafoodPizza: {
+	DisplayName: Seafood Pizza
+	Tooltip: ""
+}
+
+SkeletonSight: {
+	DisplayName: Skeleton Sight
+	Tooltip: ""
+}
+
+StarSeed: {
+	DisplayName: Star Seed
+	Tooltip: ""
+}
+
+StinkyTofu: {
+	DisplayName: Stinky Tofu
+	Tooltip: ""
+}
+
+Strawberry: {
+	DisplayName: Strawberry
+	Tooltip: ""
+}
+
+StrawberryIcecream: {
+	DisplayName: Strawberry Icecream
 	Tooltip: ""
 }
 
@@ -18,7 +308,67 @@ StrongCorticalMembrane: {
 	Tooltip: ""
 }
 
+Sunrise: {
+	DisplayName: Sunrise
+	Tooltip: ""
+}
+
+SweetshrimpSushi: {
+	DisplayName: Sweetshrimp Sushi
+	Tooltip: ""
+}
+
+TamakoSushi: {
+	DisplayName: Tamako Sushi
+	Tooltip: ""
+}
+
+TestSkeletonOwl: {
+	DisplayName: Test Skeleton Owl
+	Tooltip: ""
+}
+
+Tricolour: {
+	DisplayName: Tricolour
+	Tooltip: ""
+}
+
+WakameWarship: {
+	DisplayName: Wakame Warship
+	Tooltip: ""
+}
+
+Watermelon: {
+	DisplayName: Watermelon
+	Tooltip: ""
+}
+
+WaterMelonJuice: {
+	DisplayName: Water Melon Juice
+	Tooltip: ""
+}
+
+WatermelonPlate: {
+	DisplayName: Watermelon Plate
+	Tooltip: ""
+}
+
+XiaoLongBao: {
+	DisplayName: Xiao Long Bao
+	Tooltip: ""
+}
+
 YggdrasilPlayerRoomDoorKey: {
 	DisplayName: Yggdrasil Player Room Door Key
+	Tooltip: ""
+}
+
+YggdrasilTownAccessCard: {
+	DisplayName: Yggdrasil Town Access Card
+	Tooltip: ""
+}
+
+YuxiangEggplant: {
+	DisplayName: Yuxiang Eggplant
 	Tooltip: ""
 }

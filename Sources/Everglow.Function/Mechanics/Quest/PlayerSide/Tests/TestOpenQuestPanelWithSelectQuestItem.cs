@@ -6,6 +6,8 @@ namespace Everglow.Commons.Mechanics.Quest.PlayerSide.Tests;
 
 public class TestOpenQuestPanelWithSelectQuestItem : ModItem
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Tools;
+
 	public override string Texture => ModAsset.Point_Mod;
 
 	public override bool IsLoadingEnabled(Mod mod)

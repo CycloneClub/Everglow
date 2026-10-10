@@ -4,6 +4,8 @@ namespace Everglow.Commons.DeveloperContent.Items;
 
 internal class HardmodeItem : ModItem
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Tools;
+
 	// public override bool CloneNewInstances => true;
 	public override string Texture => ModAsset.Wires_0_Mod;
 

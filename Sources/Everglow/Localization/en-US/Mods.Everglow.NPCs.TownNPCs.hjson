@@ -1,27 +1,40 @@
 CanteenMaid: {
 	DisplayName: Canteen Maid
+
+	TownNPCMood: {
+		Content: I am content.
+		DislikeBiome: I dislike {BiomeName}.
+		DislikeCrowded: I dislike how crowded I am.
+		FarFromHome: I am too far from home.
+		HateCrowded: I hate how crowded I am.
+		LikeBiome: I like {BiomeName}.
+		LikeNPC_Princess: I like {NPCName}.
+		LoveSpace: I love having so much space.
+		NoHome: I hate not having a home.
+		Princess_LovesNPC: I like {NPCName}.
+	}
 }
 
-Fevens: {
-	DisplayName: Fevens
-}
+Fevens.DisplayName: Fevens
 
 Guard_of_YggdrasilTown: {
 	DisplayName: Guard_of_ Yggdrasil Town
+
+	TownNPCMood: {
+		Content: I am content.
+		DislikeBiome: I dislike {BiomeName}.
+		DislikeCrowded: I dislike how crowded I am.
+		FarFromHome: I am too far from home.
+		HateCrowded: I hate how crowded I am.
+		LikeBiome: I like {BiomeName}.
+		LikeNPC_Princess: I like {NPCName}.
+		LoveSpace: I love having so much space.
+		NoHome: I hate not having a home.
+		Princess_LovesNPC: I like {NPCName}.
+	}
 }
 
-Howard_Warden: {
-	DisplayName: Howard_ Warden
-}
-
-InnKeeper: {
-	DisplayName: Inn Keeper
-}
-
-Restauranteur: {
-	DisplayName: Restauranteur
-}
-
-TeahouseLady: {
-	DisplayName: Teahouse Lady
-}
+Howard_Warden.DisplayName: Howard_ Warden
+InnKeeper.DisplayName: Inn Keeper
+Restauranteur.DisplayName: Restauranteur
+TeahouseLady.DisplayName: Teahouse Lady

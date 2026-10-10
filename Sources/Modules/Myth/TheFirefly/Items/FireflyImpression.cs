@@ -5,6 +5,8 @@ namespace Everglow.Myth.TheFirefly.Items;
 
 public class FireflyImpression : ModItem
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Tools;
+
 	public override void SetDefaults()
 	{
 		Item.width = 20;

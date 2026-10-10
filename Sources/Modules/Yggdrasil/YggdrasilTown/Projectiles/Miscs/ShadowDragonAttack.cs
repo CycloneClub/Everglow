@@ -6,6 +6,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Miscs;
 
 public class ShadowDragonAttack : TrailingProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MiscsProjectiles;
+
 	public override void SetCustomDefaults()
 	{
 		TrailTexture = Commons.ModAsset.Empty.Value;

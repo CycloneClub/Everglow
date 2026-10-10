@@ -5,6 +5,8 @@ namespace Everglow.Myth.LanternMoon.Projectiles.PerWave15;
 
 public class CylindricalLantern_explosion : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.EnemyProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 80;

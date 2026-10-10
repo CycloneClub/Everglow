@@ -7,6 +7,8 @@ namespace Everglow.Myth.TheTusk.Projectiles.Weapon;
 
 public class TuskPin : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		Projectile.rotation = MathF.Atan2(Projectile.velocity.Y, Projectile.velocity.X) - MathHelper.PiOver2;

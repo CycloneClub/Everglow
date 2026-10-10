@@ -8,6 +8,8 @@ namespace Everglow.Minortopography.GiantPinetree.Projectiles;
 
 public class FrostSpice : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 20;

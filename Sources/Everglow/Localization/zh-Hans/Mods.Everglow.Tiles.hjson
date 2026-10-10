@@ -1,0 +1,132 @@
+AlgaeCoveredChest.MapEntry0: "{$Mods.Everglow.Items.Placeables.AlgaeCoveredChest_Item.DisplayName}"
+BlackStarShrub.MapEntry: 黑星灌丛
+BlackStarShrubSmall.MapEntry: Black Star Shrub Small
+BlackVine.MapEntry: "{$Mods.Everglow.Items.Placeables.BlackVine.DisplayName}"
+BloodifyPlatform.MapEntry: Bloodify Platform
+BloodyMossWheel.MapEntry: Bloody Moss Wheel
+BloodyMossWheelFinished.MapEntry: Bloody Moss Wheel Finished
+BoneAndPlatform_tile.MapEntry: Bone And Platform_tile
+BottleOfNutShellFlowers.MapEntry: "{$Mods.Everglow.Items.Placeables.BottleOfNutShellFlowers.DisplayName}"
+CyanVineBar.MapEntry: "{$Mods.Everglow.Items.Materials.CyanVineBar.DisplayName}"
+CyanVineOreTile.MapEntry: Cyan Vine Ore Tile
+CyanVineStone.MapEntry: Cyan Vine Stone
+DarkCocoonGrass.MapEntry: Dark Cocoon Grass
+Desert_NavyAnkhBanner.MapEntry: "{$Mods.Everglow.Items.Placeables.Desert_NavyAnkhBanner_Item.DisplayName}"
+Desert_NavyBanner.MapEntry: "{$Mods.Everglow.Items.Placeables.Desert_NavyBanner_Item.DisplayName}"
+Desert_NavyOmegaBanner.MapEntry: "{$Mods.Everglow.Items.Placeables.Desert_NavyOmegaBanner_Item.DisplayName}"
+Desert_NavySnakeBanner.MapEntry: "{$Mods.Everglow.Items.Placeables.Desert_NavySnakeBanner_Item.DisplayName}"
+DevilHeartIronBar.MapEntry: "{$Mods.Everglow.Items.Materials.DevilHeartIronBar_Item.DisplayName}"
+DragonChest_DarkDragonRoom.MapEntry0: "{$Mods.Everglow.Items.Placeables.DragonChest_DarkDragonRoom_Item.DisplayName}"
+FireflyPiranhaBanner.MapEntry: "{$Mods.Everglow.Items.Placeables.FireflyPiranhaBanner.DisplayName}"
+
+FurnaceMeltingChest: {
+	MapEntry0: "{$Mods.Everglow.Items.Placeables.FurnaceMeltingChest_Item.DisplayName}"
+	MapEntry1: "{$Mods.Everglow.Items.Placeables.FurnaceMeltingChest_Item.DisplayName}"
+}
+
+GlowingDrop.MapEntry: "{$Mods.Everglow.Items.Placeables.GlowingDrop.DisplayName}"
+GlowingReed.MapEntry: 夜光芦苇
+GlowWoodBathtub.MapEntry: "{$Mods.Everglow.Items.Placeables.GlowWoodBathtub.DisplayName}"
+GlowWoodBed.MapEntry: "{$Mods.Everglow.Items.Placeables.GlowWoodBed.DisplayName}"
+GlowWoodCampfire.MapEntry: "{$Mods.Everglow.Items.Placeables.GlowWoodCampfire.DisplayName}"
+GlowWoodCandelabra.MapEntry: "{$Mods.Everglow.Items.Placeables.GlowWoodCandelabra.DisplayName}"
+GlowWoodCandle.MapEntry: "{$Mods.Everglow.Items.Placeables.GlowWoodCandle.DisplayName}"
+GlowWoodChair.MapEntry: "{$Mods.Everglow.Items.Placeables.GlowWoodChair.DisplayName}"
+GlowWoodChandelier.MapEntry: "{$Mods.Everglow.Items.Placeables.GlowWoodChandelier.DisplayName}"
+GlowWoodChandelierType2.MapEntry: "{$Mods.Everglow.Items.Placeables.GlowWoodChandelierType2.DisplayName}"
+GlowWoodChandelierType3.MapEntry: "{$Mods.Everglow.Items.Placeables.GlowWoodChandelierType3.DisplayName}"
+GlowWoodChandelierType4.MapEntry: "{$Mods.Everglow.Items.Placeables.GlowWoodChandelierType4.DisplayName}"
+GlowWoodChest.MapEntry: "{$Mods.Everglow.Items.Placeables.GlowWoodChest.DisplayName}"
+GlowWoodDoorClosed.MapEntry: "{$Mods.Everglow.Items.Placeables.GlowWoodDoor.DisplayName}"
+GlowWoodDoorClosedType2.MapEntry: "{$Mods.Everglow.Items.Placeables.GlowWoodDoorType2.DisplayName}"
+GlowWoodDoorOpened.MapEntry: Glow Wood Door Opened
+GlowWoodDoorOpenedType2.MapEntry: Glow Wood Door Opened Type2
+GlowWoodDresser.MapEntry: "{$Mods.Everglow.Items.Placeables.GlowWoodDresser.DisplayName}"
+GlowWoodDresserType2.MapEntry: "{$Mods.Everglow.Items.Placeables.GlowWoodDresserType2.DisplayName}"
+GlowWoodLantern.MapEntry: "{$Mods.Everglow.Items.Placeables.GlowWoodLantern.DisplayName}"
+GlowWoodLanternType2.MapEntry: "{$Mods.Everglow.Items.Placeables.GlowWoodLanternType2.DisplayName}"
+GlowWoodMusicBox.MapEntry: "{$Mods.Everglow.Items.Placeables.GlowWoodMusicBox.DisplayName}"
+GlowWoodPiano.MapEntry: "{$Mods.Everglow.Items.Placeables.GlowWoodPiano.DisplayName}"
+GlowWoodPlatform.MapEntry: "{$Mods.Everglow.Items.Placeables.GlowWoodPlatform.DisplayName}"
+GlowWoodSink.MapEntry: "{$Mods.Everglow.Items.Placeables.GlowWoodSink.DisplayName}"
+GlowWoodSinkType2.MapEntry: "{$Mods.Everglow.Items.Placeables.GlowWoodSinkType2.DisplayName}"
+GlowWoodSofa.MapEntry: "{$Mods.Everglow.Items.Placeables.GlowWoodSofa.DisplayName}"
+GlowWoodTable.MapEntry: "{$Mods.Everglow.Items.Placeables.GlowWoodTable.DisplayName}"
+GlowWoodTorch.MapEntry: "{$Mods.Everglow.Items.Placeables.GlowWoodTorch.DisplayName}"
+GlowWoodWorkBench.MapEntry: "{$Mods.Everglow.Items.Placeables.GlowWoodWorkBench.DisplayName}"
+HeatproofBathtub.MapEntry: "{$Mods.Everglow.Items.Placeables.HeatproofBathtub_item.DisplayName}"
+HeatproofCandelabra.MapEntry: "{$Mods.Everglow.Items.Placeables.HeatproofCandelabra_item.DisplayName}"
+HeatproofCandle.MapEntry: "{$Mods.Everglow.Items.Placeables.HeatproofCandle_item.DisplayName}"
+HeatproofChandelier.MapEntry: "{$Mods.Everglow.Items.Placeables.HeatproofChandelier_item.DisplayName}"
+
+HeatproofChest: {
+	MapEntry0: "{$Mods.Everglow.Items.Placeables.HeatproofChest_item.DisplayName}"
+	MapEntry1: "{$Mods.Everglow.Items.Placeables.HeatproofChest_item.DisplayName}"
+}
+
+HeatproofDresser.MapEntry: "{$Mods.Everglow.Items.Placeables.HeatproofDresser_item.DisplayName}"
+HeatproofLantern.MapEntry: "{$Mods.Everglow.Items.Placeables.HeatproofLantern_item.DisplayName}"
+HeatproofPiano.MapEntry: "{$Mods.Everglow.Items.Placeables.HeatproofPiano_item.DisplayName}"
+HeatproofSink.MapEntry: "{$Mods.Everglow.Items.Placeables.HeatproofSink_item.DisplayName}"
+HeatproofSofa.MapEntry: "{$Mods.Everglow.Items.Placeables.HeatproofSofa_item.DisplayName}"
+LampWoodBathtub.MapEntry: "{$Mods.Everglow.Items.Placeables.LampWoodBathtub.DisplayName}"
+LampWoodCandelabra.MapEntry: "{$Mods.Everglow.Items.Placeables.LampWoodCandelabra_Item.DisplayName}"
+LampWoodCandle.MapEntry: "{$Mods.Everglow.Items.Placeables.LampWoodCandle_Item.DisplayName}"
+LampWoodChandelier.MapEntry: "{$Mods.Everglow.Items.Placeables.LampWoodChandelier_Item.DisplayName}"
+LampWoodCrate.MapEntry: "{$Mods.Everglow.Items.Placeables.LampWoodCrate_Item.DisplayName}"
+LampWoodDresser.MapEntry: "{$Mods.Everglow.Items.Placeables.LampWoodDresser.DisplayName}"
+LampWoodLantern.MapEntry: "{$Mods.Everglow.Items.Placeables.LampWoodLantern.DisplayName}"
+LampWoodPiano.MapEntry: "{$Mods.Everglow.Items.Placeables.LampWoodPiano.DisplayName}"
+LampWoodSink.MapEntry: "{$Mods.Everglow.Items.Placeables.LampWoodSink.DisplayName}"
+LampWoodSofa.MapEntry: "{$Mods.Everglow.Items.Placeables.LampWoodSofa.DisplayName}"
+LampWoodTable.MapEntry: "{$Mods.Everglow.Items.Placeables.LampWoodTable.DisplayName}"
+LiftLamp.MapEntry: Lift Lamp
+MailBox.MapEntry0: "{$Mods.Everglow.Items.Placeables.MailBox_Item.DisplayName}"
+MossyChest.MapEntry0: 苔藓宝箱
+MothWorldDoor.MapEntry: Moth World Door
+PlumBlossomInABowl.MapEntry: "{$Mods.Everglow.Items.Placeables.PlumBlossomInABowl.DisplayName}"
+RubyDarkGoldChest_BloodyChurch.MapEntry0: "{$Mods.Everglow.Items.Placeables.RubyDarkGoldChest_BloodyChurch_Item.DisplayName}"
+RustBronzeTreasureChest_Lock.MapEntry0: Rust Bronze Treasure Chest Lock
+RustBronzeTreasureChest.MapEntry0: "{$Mods.Everglow.Items.Placeables.RustBronzeTreasureChest_Item.DisplayName}"
+SandgoldLantern.MapEntry: "{$Mods.Everglow.Items.Placeables.SandgoldLantern_Item.DisplayName}"
+SnowPineChest_fresh.MapEntry0: "{$Mods.Everglow.Items.Placeables.SnowPineChest_fresh.DisplayName}"
+SnowPineChest_gold.MapEntry0: "{$Mods.Everglow.Items.Placeables.SnowPineChest_gold.DisplayName}"
+SnowPineChest.MapEntry0: "{$Mods.Everglow.Items.Placeables.SnowPineChest.DisplayName}"
+
+StoneBridge_Chest: {
+	MapEntry0: "{$Mods.Everglow.Items.Placeables.StoneBridge_Chest_item.DisplayName}"
+	MapEntry1: "{$Mods.Everglow.Items.Placeables.StoneBridge_Chest_item.DisplayName}"
+}
+
+StoneTusk.MapEntry: 石化獠牙
+StoneTuskSmall.MapEntry: Stone Tusk Small
+StrangeTuskStone1.MapEntry: "{$Mods.Everglow.Items.Placeables.TuskStatusI.DisplayName}"
+StrangeTuskStone2.MapEntry: "{$Mods.Everglow.Items.Placeables.TuskStatusII.DisplayName}"
+StrangeTuskStone3.MapEntry: "{$Mods.Everglow.Items.Placeables.TuskStatusIII.DisplayName}"
+StrangeTuskStone4.MapEntry: "{$Mods.Everglow.Items.Placeables.TuskStatusIV.DisplayName}"
+TuskRelic.MapEntry: "{$Mods.Everglow.Items.Placeables.TuskRelic.DisplayName}"
+TwilightCrate.MapEntry: "{$Mods.Everglow.Items.Placeables.TwilightCrate_Item.DisplayName}"
+TwilightEucalyptusBathtub.MapEntry: "{$Mods.Everglow.Items.Placeables.TwilightEucalyptusBathtub.DisplayName}"
+TwilightEucalyptusCandelabra.MapEntry: "{$Mods.Everglow.Items.Placeables.TwilightEucalyptusCandelabra.DisplayName}"
+TwilightEucalyptusCandle.MapEntry: "{$Mods.Everglow.Items.Placeables.TwilightEucalyptusCandle.DisplayName}"
+TwilightEucalyptusChandelier.MapEntry: "{$Mods.Everglow.Items.Placeables.TwilightEucalyptusChandelier.DisplayName}"
+
+TwilightEucalyptusChest: {
+	MapEntry0: "{$Mods.Everglow.Items.Placeables.TwilightEucalyptusChest.DisplayName}"
+	MapEntry1: "{$Mods.Everglow.Items.Placeables.TwilightEucalyptusChest.DisplayName}"
+}
+
+TwilightEucalyptusDresser.MapEntry: "{$Mods.Everglow.Items.Placeables.TwilightEucalyptusDresser.DisplayName}"
+TwilightEucalyptusLantern.MapEntry: "{$Mods.Everglow.Items.Placeables.TwilightEucalyptusLantern.DisplayName}"
+TwilightEucalyptusPiano.MapEntry: "{$Mods.Everglow.Items.Placeables.TwilightEucalyptusPiano.DisplayName}"
+TwilightEucalyptusSink.MapEntry: "{$Mods.Everglow.Items.Placeables.TwilightEucalyptusSink.DisplayName}"
+TwilightEucalyptusSofa_Type2.MapEntry: "{$Mods.Everglow.Items.Placeables.TwilightEucalyptusSofa_Type2.DisplayName}"
+TwilightEucalyptusSofa.MapEntry: "{$Mods.Everglow.Items.Placeables.TwilightEucalyptusSofa.DisplayName}"
+UrbanCrate.MapEntry: "{$Mods.Everglow.Items.Placeables.UrbanCrate_Item.DisplayName}"
+WaterErodedChestInlaidWithGold.MapEntry0: "{$Mods.Everglow.Items.Placeables.WaterErodedChestInlaidWithGold_Item.DisplayName}"
+WaterErodedRustyCopperChest.MapEntry0: "{$Mods.Everglow.Items.Placeables.WaterErodedRustyCopperChest_Item.DisplayName}"
+WhiteLotusBonsai.MapEntry: "{$Mods.Everglow.Items.Placeables.WhiteLotusBonsai.DisplayName}"
+WitherWoodBrazier.MapEntry: "{$Mods.Everglow.Items.Placeables.WitherWoodBrazier_Item.DisplayName}"
+WitherWoodChandelier.MapEntry: "{$Mods.Everglow.Items.Placeables.WitherWoodChandelier.DisplayName}"
+WoodenChest_ForestCastle.MapEntry0: "{$Mods.Everglow.Items.Placeables.WoodenChest_ForestCastle_Item.DisplayName}"
+WornForestChest.MapEntry0: "{$Mods.Everglow.Items.Placeables.WornForestChest_Item.DisplayName}"

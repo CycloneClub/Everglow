@@ -4,6 +4,8 @@ namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Pets
 {
 	public class Photophore_lightPetProj : ModProjectile
 	{
+		public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.PetProjectiles;
+
 		public override void SetStaticDefaults()
 		{
 			Main.projPet[Projectile.type] = true;

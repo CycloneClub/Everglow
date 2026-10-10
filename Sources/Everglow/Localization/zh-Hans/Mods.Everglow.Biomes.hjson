@@ -1,16 +1,11 @@
-YggdrasilTownBiome: {
-	DisplayName: 天穹镇
-	TownNPCDialogueName: 天穹镇
+DeathJadeLakeBiome: {
+	DisplayName: 亡碧湖
+	TownNPCDialogueName: 亡碧湖
 }
 
-TuskBiome: {
-	DisplayName: 颌骨台地
-	TownNPCDialogueName: 颌骨台地
-}
-
-TuskSurfaceBiome: {
-	DisplayName: 颌骨台地地面
-	TownNPCDialogueName: 颌骨台地地面
+DecayingWoodCourtStrongholdBiome: {
+	DisplayName: 朽木王庭
+	TownNPCDialogueName: 朽木王庭
 }
 
 FireflyBiome: {
@@ -23,9 +18,24 @@ FurnaceAreaBiome: {
 	TownNPCDialogueName: 天穹镇炉心区
 }
 
+HurricaneMazeBiome: {
+	DisplayName: 飓风迷宫
+	TownNPCDialogueName: 飓风迷宫
+}
+
+IsleOfBloomBiome: {
+	DisplayName: 夭华洲
+	TownNPCDialogueName: 夭华洲
+}
+
 JellyBallHotbedBiome: {
 	DisplayName: 球冻温床
 	TownNPCDialogueName: 球冻温床
+}
+
+KelpCurtainBiome: {
+	DisplayName: 苍苔帘幕
+	TownNPCDialogueName: 苍苔帘幕
 }
 
 LampWoodForest: {
@@ -38,17 +48,22 @@ MidnightBayouBiome: {
 	TownNPCDialogueName: 午夜沼泽
 }
 
+TuskBiome: {
+	DisplayName: 颌骨台地
+	TownNPCDialogueName: 颌骨台地
+}
+
+TuskSurfaceBiome: {
+	DisplayName: 颌骨台地地面
+	TownNPCDialogueName: 颌骨台地地面
+}
+
 TwilightForsetAndRelic: {
 	DisplayName: 暮光森林
 	TownNPCDialogueName: 暮光森林
 }
 
-KelpCurtainBiome: {
-	DisplayName: 苍苔帘幕
-	TownNPCDialogueName: 苍苔帘幕
-}
-
-HurricaneMazeBiome: {
-	DisplayName: 飓风迷宫
-	TownNPCDialogueName: 飓风迷宫
+YggdrasilTownBiome: {
+	DisplayName: 天穹镇
+	TownNPCDialogueName: 天穹镇
 }

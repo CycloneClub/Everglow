@@ -8,6 +8,8 @@ namespace Everglow.Myth.Misc.Projectiles.Typeless.FixCoins;
 
 public abstract class FixCoinProjectile : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MiscsProjectiles;
+
 	public virtual string HeatMapTexture()
 	{
 		return string.Empty;

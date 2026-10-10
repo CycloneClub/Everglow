@@ -6,6 +6,8 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 
 public class NavyThunderBomb : ModProjectile, IWarpProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	private float sparkleStrength = 20;
 
 	public override string Texture => "Everglow/Myth/TheFirefly/Projectiles/MothBall";
