@@ -10,7 +10,7 @@ internal class QuestSourceTest1 : QuestSourceBase
 	{
 	}
 
-	public override Texture2D Texture => ModAsset.AnnaTheGuard.Value;
+	public override Texture2D Texture => global::Everglow.Example.ModAsset.AnnaTheGuard.Value;
 
 	public override string Name => "测试A";
 }
