@@ -4,6 +4,8 @@ namespace Everglow.Food.Items.Cookers;
 
 public class SteamBox_Item : ModItem
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Placeables;
+
 	public override void SetDefaults()
 	{
 		Item.maxStack = Item.CommonMaxStack;

@@ -2,6 +2,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Weapons;
 
 public class MysteriousTablet : ModItem
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.TypelessWeapons;
+
 	public override void SetDefaults()
 	{
 		Item.width = 32;

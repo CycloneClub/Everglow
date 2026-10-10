@@ -7,6 +7,8 @@ namespace Everglow.Commons.TileHelper;
 /// </summary>
 public class NormalCableCar_item : ModItem
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Tools;
+
 	public override void SetDefaults()
 	{
 		Item.width = 24;
