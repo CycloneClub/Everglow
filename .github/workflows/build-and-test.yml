@@ -10,6 +10,9 @@ on:
   pull_request:
     branches: [ "1.4.4", "Yggdrasil/newContent0"]
 
+permissions:
+  contents: read
+
 jobs:
   build-and-test:
 
