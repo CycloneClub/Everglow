@@ -4,6 +4,8 @@ namespace Everglow.Myth.TheTusk.Projectiles;
 
 public class TuskSpice_WithGravity : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
+
 	public Vector2 StartPos = default;
 
 	public override void SetDefaults()

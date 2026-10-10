@@ -2,6 +2,8 @@ namespace Everglow.Myth.TheFirefly.Items;
 
 public class FireflyMoss_Item : ModItem
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Placeables;
+
 	public override void SetDefaults()
 	{
 		Item.width = 20;

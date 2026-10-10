@@ -8,6 +8,8 @@ namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Magic;
 
 public class MossySpellArray : NoTextureProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 28;

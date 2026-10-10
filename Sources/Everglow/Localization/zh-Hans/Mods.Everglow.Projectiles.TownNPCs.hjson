@@ -1,183 +1,53 @@
-Betty_Fork: {
-	DisplayName: Betty_ Fork
-}
-
-Betty_Plate: {
-	DisplayName: Betty_ Plate
-}
-
-Georg_Fly_Hammer: {
-	DisplayName: Georg_ Fly_ Hammer
-}
-
-Georg_Hammer: {
-	DisplayName: Georg_ Hammer
-}
-
-Georg_Hammer_Flame: {
-	DisplayName: Georg_ Hammer_ Flame
-}
-
-Georg_Hammer_JumpHit: {
-	DisplayName: Georg_ Hammer_ Jump Hit
-}
-
-Georg_Hammer_JumpHitExplosion: {
-	DisplayName: Georg_ Hammer_ Jump Hit Explosion
-}
-
-Georg_Hammer_JumpHitExplosion_Fire: {
-	DisplayName: Georg_ Hammer_ Jump Hit Explosion_ Fire
-}
-
-Georg_Hammer_Target: {
-	DisplayName: Georg_ Hammer_ Target
-}
-
-Georg_Hook: {
-	DisplayName: Georg_ Hook
-}
-
-Georg_Hook_Thunder: {
-	DisplayName: Georg_ Hook_ Thunder
-}
-
-Georg_Hook_Thunder_Mark: {
-	DisplayName: Georg_ Hook_ Thunder_ Mark
-}
-
-Georg_Hook_Thunder_Release: {
-	DisplayName: Georg_ Hook_ Thunder_ Release
-}
-
-Guard_Attack_Fist: {
-	DisplayName: Guard_ Attack_ Fist
-}
-
-Guard_Attack_Spear: {
-	DisplayName: Guard_ Attack_ Spear
-}
-
-Howard_Shoot: {
-	DisplayName: Howard_ Shoot
-}
-
-Rolle_Swing: {
-	DisplayName: Rolle_ Swing
-}
-
-Rolle_Thrust: {
-	DisplayName: Rolle_ Thrust
-}
-
-Schorl_Explosion: {
-	DisplayName: Schorl_ Explosion
-}
-
-Schorl_Laser: {
-	DisplayName: Schorl_ Laser
-}
-
-Schorl_Mark: {
-	DisplayName: Schorl_ Mark
-}
-
-FevensChasingProj: {
-	DisplayName: Fevens Chasing Proj
-}
-
-FevensChasingProj1: {
-	DisplayName: Fevens Chasing Proj1
-}
-
-Fevens_Arrow: {
-	DisplayName: Fevens_ Arrow
-}
-
-Fevens_AttackProj0: {
-	DisplayName: Fevens_ Attack Proj0
-}
-
-Fevens_AttackProj1: {
-	DisplayName: Fevens_ Attack Proj1
-}
-
-Fevens_AttackTarget: {
-	DisplayName: Fevens_ Attack Target
-}
-
-Fevens_MagicArray: {
-	DisplayName: Fevens_ Magic Array
-}
-
-Fevens_DefenseEffect: {
-	DisplayName: Fevens_ Defense Effect
-}
-
-Fevens_EnchantingSmash: {
-	DisplayName: Fevens_ Enchanting Smash
-}
-
-Fevens_EnchantingSmash_Explosion: {
-	DisplayName: Fevens_ Enchanting Smash_ Explosion
-}
-
-Fevens_LightingBolt: {
-	DisplayName: Fevens_ Lighting Bolt
-}
-
-Fevens_MagicLaserArray: {
-	DisplayName: Fevens_ Magic Laser Array
-}
-
-Fevens_Slash: {
-	DisplayName: Fevens_ Slash
-}
-
-Fevens_Slash_Shine: {
-	DisplayName: Fevens_ Slash_ Shine
-}
-
-Fevens_Slash_Target: {
-	DisplayName: Fevens_ Slash_ Target
-}
-
-Fevens_TaijutsuSlash: {
-	DisplayName: Fevens_ Taijutsu Slash
-}
-
-Fevens_TaijutsuSlash_Down: {
-	DisplayName: Fevens_ Taijutsu Slash_ Down
-}
-
-Fevens_TaijutsuSlash_Round: {
-	DisplayName: Fevens_ Taijutsu Slash_ Round
-}
-
-Fevens_TaijutsuSlash_Target: {
-	DisplayName: Fevens_ Taijutsu Slash_ Target
-}
-
-Fevens_ThunderMark: {
-	DisplayName: Fevens_ Thunder Mark
-}
-
-Fevens_ThunderMarkShortTiming: {
-	DisplayName: Fevens_ Thunder Mark Short Timing
-}
-
-Fevens_WingTarget: {
-	DisplayName: Fevens_ Wing Target
-}
-
-Fevens_Wing_Fly: {
-	DisplayName: Fevens_ Wing_ Fly
-}
-
-Fevens_Wing_Slash: {
-	DisplayName: Fevens_ Wing_ Slash
-}
-
-Fevens_Wing_Slash_Down: {
-	DisplayName: Fevens_ Wing_ Slash_ Down
-}
+Acytaea_FlamePost.DisplayName: Acytaea_ Flame Post
+Acytaea_ShineStar_Town.DisplayName: Acytaea_ Shine Star_ Town
+Acytaea_SmashGround.DisplayName: Acytaea_ Smash Ground
+AcytaeaScratch_TownNPC.DisplayName: Acytaea Scratch_ Town N P C
+AcytaeaSword_projectile_TownNPC.DisplayName: Acytaea Sword_projectile_ Town N P C
+Betty_Apple.DisplayName: Betty_ Apple
+Betty_Fork.DisplayName: Betty_ Fork
+Betty_Plate.DisplayName: Betty_ Plate
+Betty_Watermelon.DisplayName: Betty_ Watermelon
+Fevens_Arrow.DisplayName: Fevens_ Arrow
+Fevens_AttackProj0.DisplayName: Fevens_ Attack Proj0
+Fevens_AttackProj1.DisplayName: Fevens_ Attack Proj1
+Fevens_AttackTarget.DisplayName: Fevens_ Attack Target
+Fevens_DefenseEffect.DisplayName: Fevens_ Defense Effect
+Fevens_EnchantingSmash_Explosion.DisplayName: Fevens_ Enchanting Smash_ Explosion
+Fevens_EnchantingSmash.DisplayName: Fevens_ Enchanting Smash
+Fevens_LightingBolt.DisplayName: Fevens_ Lighting Bolt
+Fevens_MagicArray.DisplayName: Fevens_ Magic Array
+Fevens_MagicLaserArray.DisplayName: Fevens_ Magic Laser Array
+Fevens_Slash_Shine.DisplayName: Fevens_ Slash_ Shine
+Fevens_Slash_Target.DisplayName: Fevens_ Slash_ Target
+Fevens_Slash.DisplayName: Fevens_ Slash
+Fevens_TaijutsuSlash_Down.DisplayName: Fevens_ Taijutsu Slash_ Down
+Fevens_TaijutsuSlash_Round.DisplayName: Fevens_ Taijutsu Slash_ Round
+Fevens_TaijutsuSlash_Target.DisplayName: Fevens_ Taijutsu Slash_ Target
+Fevens_TaijutsuSlash.DisplayName: Fevens_ Taijutsu Slash
+Fevens_ThunderMark.DisplayName: Fevens_ Thunder Mark
+Fevens_ThunderMarkShortTiming.DisplayName: Fevens_ Thunder Mark Short Timing
+Fevens_Wing_Fly.DisplayName: Fevens_ Wing_ Fly
+Fevens_Wing_Slash_Down.DisplayName: Fevens_ Wing_ Slash_ Down
+Fevens_Wing_Slash.DisplayName: Fevens_ Wing_ Slash
+Fevens_WingTarget.DisplayName: Fevens_ Wing Target
+FevensChasingProj.DisplayName: Fevens Chasing Proj
+FevensChasingProj1.DisplayName: Fevens Chasing Proj1
+Georg_Fly_Hammer.DisplayName: Georg_ Fly_ Hammer
+Georg_Hammer_Flame.DisplayName: Georg_ Hammer_ Flame
+Georg_Hammer_JumpHit.DisplayName: Georg_ Hammer_ Jump Hit
+Georg_Hammer_JumpHitExplosion_Fire.DisplayName: Georg_ Hammer_ Jump Hit Explosion_ Fire
+Georg_Hammer_JumpHitExplosion.DisplayName: Georg_ Hammer_ Jump Hit Explosion
+Georg_Hammer_Target.DisplayName: Georg_ Hammer_ Target
+Georg_Hammer.DisplayName: Georg_ Hammer
+Georg_Hook_Thunder_Mark.DisplayName: Georg_ Hook_ Thunder_ Mark
+Georg_Hook_Thunder_Release.DisplayName: Georg_ Hook_ Thunder_ Release
+Georg_Hook_Thunder.DisplayName: Georg_ Hook_ Thunder
+Georg_Hook.DisplayName: Georg_ Hook
+Guard_Attack_Fist.DisplayName: Guard_ Attack_ Fist
+Guard_Attack_Spear.DisplayName: Guard_ Attack_ Spear
+Howard_Shoot.DisplayName: Howard_ Shoot
+Rolle_Swing.DisplayName: Rolle_ Swing
+Rolle_Thrust.DisplayName: Rolle_ Thrust
+Schorl_Explosion.DisplayName: Schorl_ Explosion
+Schorl_Laser.DisplayName: Schorl_ Laser
+Schorl_Mark.DisplayName: Schorl_ Mark

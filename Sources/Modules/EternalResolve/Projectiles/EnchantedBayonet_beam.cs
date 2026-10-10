@@ -8,6 +8,8 @@ namespace Everglow.EternalResolve.Projectiles
 {
 	public class EnchantedBayonet_beam : ModProjectile
 	{
+		public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 		public override string Texture => Commons.ModAsset.StabbingProjectile_Mod;
 
 		public override void SetDefaults()

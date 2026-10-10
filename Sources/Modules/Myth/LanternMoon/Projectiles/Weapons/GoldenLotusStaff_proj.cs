@@ -6,6 +6,8 @@ namespace Everglow.Myth.LanternMoon.Projectiles.Weapons;
 
 public class GoldenLotusStaff_proj : TrailingProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.SummonProjectiles;
+
 	public Player Owner;
 
 	public int SplitCooling = 0;

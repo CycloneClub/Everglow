@@ -10,6 +10,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Bosses.KingJellyBall;
 
 public class JellyBallGelStream : TrailingProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
+
 	public override void SetCustomDefaults()
 	{
 		Projectile.width = 16;

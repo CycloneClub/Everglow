@@ -4,6 +4,8 @@ namespace Everglow.Myth.Acytaea.Projectiles;
 
 public class Acytaea_Lock : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
+
 	public override string Texture => "Everglow/Myth/Acytaea/Projectiles/AcytaeaSword_projectile";
 
 	public override void SetDefaults()

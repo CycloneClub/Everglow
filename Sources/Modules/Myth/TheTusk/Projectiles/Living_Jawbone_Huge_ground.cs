@@ -8,6 +8,8 @@ namespace Everglow.Myth.TheTusk.Projectiles;
 // ai0和ai1用来存左,右两侧颌骨的张开度
 public class Living_Jawbone_Huge_ground : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
+
 	public List<Vector2> RotationBaseUp = new List<Vector2>();
 	public List<Vector2> RotationBaseDown = new List<Vector2>();
 	public Vector2 DiveOffset = default;

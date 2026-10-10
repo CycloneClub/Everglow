@@ -9,6 +9,8 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 
 public class MothBulletExplosion : NoTextureProjectile, IWarpProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 120;

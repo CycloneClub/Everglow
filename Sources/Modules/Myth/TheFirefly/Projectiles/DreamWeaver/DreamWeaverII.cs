@@ -7,6 +7,8 @@ namespace Everglow.Myth.TheFirefly.Projectiles.DreamWeaver;
 
 public class DreamWeaverII : TrailingProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override void SetCustomDefaults()
 	{
 		TrailColor = new Color(0, 0.2f, 0.6f, 0f);

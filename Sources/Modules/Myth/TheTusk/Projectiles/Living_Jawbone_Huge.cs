@@ -6,6 +6,8 @@ namespace Everglow.Myth.TheTusk.Projectiles;
 
 public class Living_Jawbone_Huge : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
+
 	public bool OpenMouth = false;
 
 	public override void SetDefaults()

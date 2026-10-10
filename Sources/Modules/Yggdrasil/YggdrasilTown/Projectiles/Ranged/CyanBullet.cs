@@ -7,6 +7,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Ranged;
 
 public class CyanBullet : TrailingProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
+
 	public override void SetCustomDefaults()
 	{
 		Projectile.DamageType = DamageClass.Ranged;

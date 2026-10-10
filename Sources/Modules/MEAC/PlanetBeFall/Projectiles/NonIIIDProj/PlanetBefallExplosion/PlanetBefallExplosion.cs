@@ -10,6 +10,8 @@ namespace Everglow.MEAC.PlanetBeFall.Projectiles.NonIIIDProj.PlanetBefallExplosi
 
 public class PlanetBefallExplosion : ModProjectile// , IWarpProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	public float BlurOffset = 0;
 
 	public override void SetDefaults()

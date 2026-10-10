@@ -5,6 +5,8 @@ namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Ranged;
 
 public class ArcI_proj : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
+
 	public Player Owner;
 
 	public int useCount = 0;

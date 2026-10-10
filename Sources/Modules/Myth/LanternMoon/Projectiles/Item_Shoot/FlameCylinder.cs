@@ -5,6 +5,8 @@ namespace Everglow.Myth.LanternMoon.Projectiles.Item_Shoot;
 
 public class FlameCylinder : TrailingProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MiscsProjectiles;
+
 	public override void SetCustomDefaults()
 	{
 		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Projectile.type] = true;

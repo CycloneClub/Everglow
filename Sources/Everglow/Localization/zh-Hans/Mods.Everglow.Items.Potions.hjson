@@ -3,11 +3,6 @@ EnergyDrink: {
 	Tooltip: ""
 }
 
-ShadowPotion: {
-	DisplayName: 暗影药剂
-	Tooltip: ""
-}
-
 GuidePotion: {
 	DisplayName: 引路药水
 	Tooltip: ""
@@ -15,5 +10,10 @@ GuidePotion: {
 
 RayPotion: {
 	DisplayName: 霞光药水
+	Tooltip: ""
+}
+
+ShadowPotion: {
+	DisplayName: 暗影药剂
 	Tooltip: ""
 }

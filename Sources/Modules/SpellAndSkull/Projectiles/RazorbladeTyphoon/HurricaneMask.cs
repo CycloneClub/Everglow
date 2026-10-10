@@ -7,6 +7,8 @@ namespace Everglow.SpellAndSkull.Projectiles.RazorbladeTyphoon;
 
 public class HurricaneMask : ModProjectile, IWarpProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override bool CloneNewInstances => false;
 
 	public override bool IsCloneable => false;

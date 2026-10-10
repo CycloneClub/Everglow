@@ -4,6 +4,8 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee.Clubs;
 
 public class MythrilClub_Shoot : ModProjectile, IWarpProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MiscsProjectiles;
+
 	public override string Texture => "Everglow/" + ModAsset.CobaltClub_Path;
 
 	public override void SetDefaults()

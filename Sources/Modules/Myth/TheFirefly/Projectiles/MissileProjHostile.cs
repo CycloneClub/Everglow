@@ -5,6 +5,8 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 
 public class MissileProjHostile : ModProjectile, IWarpProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 10;

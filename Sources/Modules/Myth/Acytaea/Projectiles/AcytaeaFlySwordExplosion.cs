@@ -5,6 +5,8 @@ namespace Everglow.Myth.Acytaea.Projectiles;
 
 public class AcytaeaFlySwordExplosion : ModProjectile, IWarpProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 120;

@@ -1,16 +1,11 @@
-YggdrasilTownBiome: {
-	DisplayName: Yggdrasil Town
-	TownNPCDialogueName: Yggdrasil Town
+DeathJadeLakeBiome: {
+	DisplayName: Death Jade Lake
+	TownNPCDialogueName: Death Jade Lake
 }
 
-TuskBiome: {
-	DisplayName: Tusk Tableland
-	TownNPCDialogueName: the Tusk Tableland biome
-}
-
-TuskSurfaceBiome: {
-	DisplayName: Surface Tusk Tuya
-	TownNPCDialogueName: the Surface Tusk Tableland biome
+DecayingWoodCourtStrongholdBiome: {
+	DisplayName: Town of Decaying Wood
+	TownNPCDialogueName: Town of Decaying Wood
 }
 
 FireflyBiome: {
@@ -23,9 +18,24 @@ FurnaceAreaBiome: {
 	TownNPCDialogueName: the Yggdrasil Forge
 }
 
+HurricaneMazeBiome: {
+	DisplayName: Tempest Labyrinth
+	TownNPCDialogueName: the Tempest Labyrinth biome
+}
+
+IsleOfBloomBiome: {
+	DisplayName: Isle of Bloom
+	TownNPCDialogueName: Isle of Bloom
+}
+
 JellyBallHotbedBiome: {
 	DisplayName: Jellyball Hotbed
 	TownNPCDialogueName: the Jellyball Hotbed
+}
+
+KelpCurtainBiome: {
+	DisplayName: Kelp Curtain
+	TownNPCDialogueName: Kelp Curtain
 }
 
 LampWoodForest: {
@@ -38,17 +48,22 @@ MidnightBayouBiome: {
 	TownNPCDialogueName: the Midnight Marsh biome
 }
 
+TuskBiome: {
+	DisplayName: Tusk Tableland
+	TownNPCDialogueName: the Tusk Tableland biome
+}
+
+TuskSurfaceBiome: {
+	DisplayName: Surface Tusk Tuya
+	TownNPCDialogueName: the Surface Tusk Tableland biome
+}
+
 TwilightForsetAndRelic: {
 	DisplayName: Twilight Forest
 	TownNPCDialogueName: the Twilight Forest biome
 }
 
-KelpCurtainBiome: {
-	DisplayName: Moss Mantle 
-	TownNPCDialogueName: the Moss Mantle biome
-}
-
-HurricaneMazeBiome: {
-	DisplayName: Tempest Labyrinth
-	TownNPCDialogueName: the Tempest Labyrinth biome
+YggdrasilTownBiome: {
+	DisplayName: Yggdrasil Town
+	TownNPCDialogueName: Yggdrasil Town
 }

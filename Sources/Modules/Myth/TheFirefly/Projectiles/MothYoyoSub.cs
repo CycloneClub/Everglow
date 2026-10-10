@@ -5,6 +5,8 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 
 public class MothYoyoSub : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	public override string Texture => "Everglow/Myth/TheFirefly/Projectiles/ButterflyDream";
 
 	public override void SetStaticDefaults()

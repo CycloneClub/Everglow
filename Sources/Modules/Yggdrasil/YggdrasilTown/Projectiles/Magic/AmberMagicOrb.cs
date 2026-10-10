@@ -5,6 +5,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
 
 public class AmberMagicOrb : HandholdProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override void SetDef()
 	{
 		DepartLength = 60;

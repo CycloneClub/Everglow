@@ -5,6 +5,8 @@ namespace Everglow.Myth.Misc.Projectiles.Typeless;
 
 public class FlowerPetalPurple : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.TypelessProjectiles;
+
 	public override void SetStaticDefaults()
 	{
 		// DisplayName.SetDefault("Flower Petal Purple");

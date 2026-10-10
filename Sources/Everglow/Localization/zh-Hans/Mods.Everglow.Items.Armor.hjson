@@ -1,37 +1,190 @@
+AuburnBoots: {
+	DisplayName: 金棕靴
+	Tooltip:
+		'''
+		移动速度提高8%
+		“飞棍死后，唯剩一支空管，甚至找不到它的魔脏……不过这具外壳还挺好看的”
+		'''
+}
+
+AuburnBreastplate: {
+	DisplayName: 金棕战甲
+	Tooltip:
+		'''
+		鞭子范围提高10%，鞭子攻击速度提高5%
+		“飞棍死后，唯剩一支空管，甚至找不到它的魔脏……不过这具外壳还挺好看的”
+		'''
+}
+
+AuburnHoodie: {
+	DisplayName: 金棕兜帽
+	Tooltip:
+		'''
+		召唤伤害提高8%
+		整套装备使召唤物上限增加1个
+		穿戴整套装备时，按下套装效果快捷键，以降低生命再生为代价额外增加1个召唤栏，持续45秒
+		该能力有60秒冷却时间
+		“飞棍死后，唯剩一支空管，甚至找不到它的魔脏……不过这具外壳还挺好看的”
+		'''
+}
+
+BloodDrenchedRobe: {
+	DisplayName: 沐血长袍
+	Tooltip:
+		'''
+		魔法暴击率提高6%
+		“他们用宿主鲜活的魔脏温养织兽，再用织兽编织鲜红的锦缎”
+		'''
+}
+
+BloodStainedVeil: {
+	DisplayName: 染血纱帽
+	Tooltip:
+		'''
+		魔法伤害提高6%
+		同时穿戴长袍时，魔法弹幕命中可短暂提高生命再生，并有5%概率恢复10点魔力
+		“传说虽是如此，眼前的衣装除了比较破旧，和法师长袍并无二致”
+		'''
+}
+
+BlueflowerDress: {
+	DisplayName: 蓝花黑裙
+	Tooltip: ""
+}
+
+ConcentratingJacket: {
+	DisplayName: 充能夹克
+	Tooltip: 暴击率提高5%
+}
+
+ConventionalEquipment: {
+	DisplayName: 标准护具
+	Tooltip:
+		'''
+		暴击率提高2%
+		“具备一定保护性，只是穿着毫无舒适度可言”
+		'''
+}
+
+CrimsonMoonAlgaeBreastPlate: {
+	DisplayName: 红月水藻板甲
+	Tooltip: 单次受到至少10点伤害时，恢复相当于该次伤害15%的生命
+}
+
+CrimsonMoonAlgaeGreaves: {
+	DisplayName: 红月水藻护胫
+	Tooltip:
+		'''
+		移动速度提高12%
+		水下移动速度额外提高24%
+		免疫碧湖红藻的减速效果
+		'''
+}
+
+CrimsonMoonAlgaeHeaddress: {
+	DisplayName: 红月水藻头饰
+	Tooltip:
+		'''
+		魔法伤害提高18%
+		魔力消耗降低12%
+		套装效果：增加50点魔力上限，红藻毒素持续时间翻倍，引爆伤害提高150%
+		免疫红藻侵蚀与血藤藻的接触伤害
+		'''
+}
+
+CrimsonMoonAlgaeMask: {
+	DisplayName: 红月水藻面具
+	Tooltip:
+		'''
+		召唤伤害提高18%
+		召唤物数量上限增加3个
+		套装效果：增加50点魔力上限，红藻毒素持续时间翻倍，引爆伤害提高150%
+		免疫红藻侵蚀与血藤藻的接触伤害
+		'''
+}
+
+CyanBreastplate: {
+	DisplayName: 青缎甲
+	Tooltip: 移动速度提高5%，略微提高跳跃速度
+}
+
+CyanHeavylet: {
+	DisplayName: 青缎头盔
+	Tooltip:
+		'''
+		受到的伤害降低4%
+		整套装备提供3点防御，并提高生命再生和加速度
+		'''
+}
+
+CyanLeggings: {
+	DisplayName: 青缎鞋
+	Tooltip: 近战攻击速度提高5%
+}
+
+CyanWarhelm: {
+	DisplayName: 青缎战盔
+	Tooltip:
+		'''
+		近战伤害和近战暴击率提高4%
+		整套装备额外提供1%近战伤害和5点近战护甲穿透
+		'''
+}
+
 DevilHeartHairpin: {
 	DisplayName: 魔心发簪
-	Tooltip: +5%魔法伤害，+5%魔法暴击
+	Tooltip: 增加5%魔法伤害和魔法暴击率
 	SetBonus:
 		'''
-		-10%魔力消耗，+8%魔法伤害
-		按下套装效果快捷键获得魔心过载效果，持续10秒
-		持续时间内无法自然再生魔力且-15%防御
-		但+6%魔力伤害与暴击、+1召唤栏
-		冷却35秒
+		降低10%魔力消耗
+		增加8%魔法伤害
+		按下套装效果快捷键获得魔心过载，持续10秒
+		期间停止自然魔力再生、降低15%防御，增加6%魔法伤害和魔法暴击率，并增加1个仆从上限
+		冷却时间35秒
 		'''
 }
 
 DevilHeartHelmet: {
 	DisplayName: 魔心笼盔
-	Tooltip: +4%召唤伤害，+1召唤栏
+	Tooltip:
+		'''
+		增加4%召唤伤害
+		增加1个仆从上限
+		'''
 	SetBonus:
 		'''
-		+8%召唤伤害，+15%鞭子攻速，+1召唤栏
-		按下套装效果快捷键获得魔心过载效果，持续10秒
-		持续时间内无法自然再生魔力且-15%防御
-		但+6%魔力伤害与暴击、+1召唤栏
-		冷却35秒
+		增加8%召唤伤害
+		增加15%鞭子攻击速度
+		增加1个仆从上限
+		按下套装效果快捷键获得魔心过载，持续10秒
+		期间停止自然魔力再生、降低15%防御，增加6%魔法伤害和魔法暴击率，并增加1个仆从上限
+		冷却时间35秒
 		'''
-}
-
-DevilHeartLightBreastPlate: {
-	DisplayName: 魔心轻甲
-	Tooltip: +60魔力，+6%魔法与召唤伤害
 }
 
 DevilHeartLeggings: {
 	DisplayName: 魔心靴
-	Tooltip: +10%移动速度
+	Tooltip: 增加10%移动速度
+}
+
+DevilHeartLightBreastPlate: {
+	DisplayName: 魔心轻甲
+	Tooltip:
+		'''
+		增加60点魔力上限
+		增加6%魔法和召唤伤害
+		'''
+}
+
+ExplorationHelmet: {
+	DisplayName: 探照头盔
+	Tooltip:
+		'''
+		远程暴击率提高4%
+		发出光亮
+		整套装备提供10%概率不消耗弹药，并使远程伤害提高5%
+		穿戴整套装备时，高亮显示鼠标方向上未被遮挡的敌人
+		'''
 }
 
 FireflywoodBreastplate: {
@@ -49,208 +202,223 @@ FireflywoodLeggings: {
 	Tooltip: ""
 }
 
-BlueflowerDress: {
-	DisplayName: 蓝花黑裙
-	Tooltip: ""
-}
-
-ValiantBreastplate: {
-	DisplayName: 勇者胸甲
-	Tooltip: "这套盔甲往往是来到天穹镇的人们的第一笔报酬"
-}
-
-ValiantHelmet: {
-	DisplayName: 勇者头盔
-	Tooltip: "这套盔甲往往是来到天穹镇的人们的第一笔报酬"
-}
-
-ValiantLeggings: {
-	DisplayName: 勇者护胫
-	Tooltip: "这套盔甲往往是来到天穹镇的人们的第一笔报酬"
-}
-
-TwilightWoodBreastplate: {
-	DisplayName: 暮桉木板甲
-	Tooltip: ""
-}
-
-TwilightWoodHelmet: {
-	DisplayName: 暮桉木头盔
-	Tooltip: ""
-}
-
-TwilightWoodLeggings: {
-	DisplayName: 暮桉木护胫
-	Tooltip: ""
-}
-
-ConventionalEquipment: {
-	DisplayName: 标准护具
-	Tooltip: "具备一定保护性，只是穿着毫无舒适度可言"
-}
-
-SafetyHelmets: {
-	DisplayName: 安全头盔
-	Tooltip: "批量生产的头盔，过长的仓储周期使材料老化"
-}
-
-StandardLeggings: {
-	DisplayName: 制式靴子
-	Tooltip: "只有两个码数，似乎无法适配所有人"
-}
-
-RockGreaves: {
-	DisplayName: 岩甲护腿
-	Tooltip: ""
-}
-
-RockHelmet: {
-	DisplayName: 岩甲头盔
-	Tooltip: ""
-}
-
-RockPlateMail: {
-	DisplayName: 岩甲板甲
-	Tooltip: ""
-}
-
-ConcentratingJacket: {
-	DisplayName: 充能夹克
-	Tooltip: ""
-}
-
-ExplorationHelmet: {
-	DisplayName: 探照头盔
-	Tooltip: ""
-}
-
-OvineHairpin: {
-	DisplayName: 灯珠头饰
-	Tooltip: ""
-}
-
-ShadowlessBoots: {
-	DisplayName: 无影靴子
-	Tooltip: ""
+JellyBallBathingCap: {
+	DisplayName: 球冻帽
+	Tooltip:
+		'''
+		提供2点防御，召唤物上限增加1个
+		受到弹幕攻击时，有5%概率使本次伤害减半并反弹弹幕
+		“黏糊糊，且富有弹性的浴帽”
+		'''
 }
 
 LampWoodBreastplate: {
 	DisplayName: 灯木胸甲
-	Tooltip: ""
+	Tooltip: 略微提高生命再生
 }
 
 LampWoodHelmet: {
 	DisplayName: 灯木头盔
-	Tooltip: ""
+	Tooltip:
+		'''
+		挖掘速度提高10%
+		整套装备提供2点防御、略微提高生命再生，并额外提高10%挖掘速度
+		穿戴整套装备时发光
+		'''
 }
 
 LampWoodLeggings: {
 	DisplayName: 灯木护腿
-	Tooltip: ""
-}
-
-JellyBallBathingCap: {
-	DisplayName: 球冻帽
-	Tooltip: ""
-}
-
-CyanBreastplate: {
-	DisplayName: 青缎甲
-	Tooltip: ""
-}
-
-CyanHeavylet: {
-	DisplayName: 青缎头盔
-	Tooltip: ""
-}
-
-CyanLeggings: {
-	DisplayName: 青缎鞋
-	Tooltip: ""
-}
-
-CyanWarhelm: {
-	DisplayName: 青缎战盔
-	Tooltip: ""
-}
-
-BloodDrenchedRobe: {
-	DisplayName: 沐血长袍
-	Tooltip: 
-	'''
-	“他们用宿主鲜活的魔脏温养织兽，再用织兽编织鲜红的锦缎”
-	'''
-}
-
-BloodStainedVeil: {
-	DisplayName: 染血纱帽
-	Tooltip: 
-	'''
-	传说虽是如此，眼前的衣装除了比较破旧，和法师长袍并无二致
-	'''
-}
-
-AuburnBoots: {
-	DisplayName: 金棕靴
-	Tooltip: "飞棍死后，唯剩一支空管，甚至找不到它的魔脏......不过这具外壳还挺好看的"
-}
-
-AuburnBreastplate: {
-	DisplayName: 金棕战甲
-	Tooltip: "飞棍死后，唯剩一支空管，甚至找不到它的魔脏......不过这具外壳还挺好看的"
-}
-
-AuburnHoodie: {
-	DisplayName: 金棕兜帽
-	Tooltip: "飞棍死后，唯剩一支空管，甚至找不到它的魔脏......不过这具外壳还挺好看的"
-}
-
-WitherbarkBreastPlate: {
-	DisplayName: 枯木胸甲
-	Tooltip: ""
-}
-
-WitherbarkHelmet: {
-	DisplayName: 枯木头盔
-	Tooltip: ""
-}
-
-WitherbarkLeggings: {
-	DisplayName: 枯木护腿
-	Tooltip: ""
-}
-
-RuinLeggings: {
-	DisplayName: 归墟护胫
-	Tooltip: ""
-}
-
-RuinMagicRobe: {
-	DisplayName: 归墟咒袍
-	Tooltip: ""
-}
-
-RuinMask: {
-	DisplayName: 归墟面罩
-	Tooltip: ""
+	Tooltip: 移动速度提高5%
 }
 
 MolluscsLeggings: {
 	DisplayName: 软体足部
-	Tooltip: ""
+	Tooltip:
+		'''
+		增加8%移动速度
+		增加35%水下速度和加速度
+		'''
 }
 
 MossyMolluscsHelmet: {
 	DisplayName: 附苔软体头壳
-	Tooltip: ""
+	Tooltip:
+		'''
+		增加4%远程伤害和6%远程暴击率
+		整套装备：15%概率不消耗弹药，增加3点盔甲穿透
+		'''
+}
+
+OvineHairpin: {
+	DisplayName: 灯珠头饰
+	Tooltip:
+		'''
+		魔法暴击率提高4%
+		发出光亮
+		整套装备使魔力消耗降低10%、魔法伤害提高5%
+		穿戴整套装备且自身处于明亮区域时，魔法伤害额外提高10%
+		'''
 }
 
 PearlMolluscsHelmet: {
 	DisplayName: 珍珠软体头壳
-	Tooltip: ""
+	Tooltip:
+		'''
+		增加4%近战伤害和近战暴击率
+		整套装备：提高生命再生，增加10%近战攻击速度
+		'''
+}
+
+RockGreaves: {
+	DisplayName: 岩甲护腿
+	Tooltip: 移动速度提高5%
+}
+
+RockHelmet: {
+	DisplayName: 岩甲头盔
+	Tooltip:
+		'''
+		近战暴击率提高5%
+		穿戴整套装备时，移动可逐渐增加防御，最多增加12点；受伤后加成清零
+		'''
+}
+
+RockPlateMail: {
+	DisplayName: 岩甲板甲
+	Tooltip: 近战伤害提高5%
+}
+
+RuinLeggings: {
+	DisplayName: 归墟护胫
+	Tooltip:
+		'''
+		召唤伤害提高4%
+		受到的伤害降低2%
+		'''
+}
+
+RuinMagicRobe: {
+	DisplayName: 归墟咒袍
+	Tooltip:
+		'''
+		召唤伤害提高6%
+		魔力消耗降低10%
+		'''
+}
+
+RuinMask: {
+	DisplayName: 归墟面罩
+	Tooltip:
+		'''
+		召唤物数量上限增加1个
+		魔力上限增加40点
+		套装效果：召唤物数量上限额外增加1个
+		手持森宇幽魂法杖时，按套装技能键获得30秒增益：召唤伤害提高10%，移动速度提高25%
+		冷却时间2分钟
+		'''
+}
+
+SafetyHelmets: {
+	DisplayName: 安全头盔
+	Tooltip:
+		'''
+		伤害提高2%
+		整套装备提供2点防御并略微提高生命再生
+		“批量生产的头盔，过长的仓储周期使材料老化”
+		'''
+}
+
+ShadowlessBoots: {
+	DisplayName: 无影靴子
+	Tooltip: 移动速度提高10%
 }
 
 ShellMolluscsBreastPlate: {
 	DisplayName: 软体外壳护甲
-	Tooltip: ""
+	Tooltip:
+		'''
+		增加6%暴击率
+		整套装备：延长水下呼吸时间
+		按下套装效果快捷键获得水生附体，持续25秒，进一步延长水下呼吸时间并增加30%水下速度和加速度
+		冷却时间40秒
+		'''
+}
+
+StandardLeggings: {
+	DisplayName: 制式靴子
+	Tooltip:
+		'''
+		移动速度提高5%，略微提高跳跃速度
+		“只有两个码数，似乎无法适配所有人”
+		'''
+}
+
+TwilightWoodBreastplate: {
+	DisplayName: 暮桉木甲
+	Tooltip: 最大生命值增加15点
+}
+
+TwilightWoodHelmet: {
+	DisplayName: 暮桉木头盔
+	Tooltip:
+		'''
+		远程伤害提高7%，远程暴击率提高4%
+		整套装备额外提供3%远程伤害和远程暴击率，以及15%概率不消耗弹药
+		'''
+}
+
+TwilightWoodLeggings: {
+	DisplayName: 暮桉木鞋
+	Tooltip:
+		'''
+		移动速度提高5%，略微提高跳跃速度
+		行走时留下青蓝色光迹
+		'''
+}
+
+ValiantBreastplate: {
+	DisplayName: 勇者战甲
+	Tooltip:
+		'''
+		近战暴击率提高4%
+		“这套盔甲往往是来到天穹镇的人们的第一笔报酬”
+		'''
+}
+
+ValiantHelmet: {
+	DisplayName: 勇者盔
+	Tooltip:
+		'''
+		真近战伤害提高5%
+		“这套盔甲往往是来到天穹镇的人们的第一笔报酬”
+		'''
+}
+
+ValiantLeggings: {
+	DisplayName: 勇者护胫
+	Tooltip:
+		'''
+		近战攻击速度提高5%
+		“这套盔甲往往是来到天穹镇的人们的第一笔报酬”
+		'''
+}
+
+WitherbarkBreastPlate: {
+	DisplayName: 枯木胸甲
+	Tooltip: 增加20%鞭子攻击范围
+}
+
+WitherbarkHelmet: {
+	DisplayName: 枯木头盔
+	Tooltip:
+		'''
+		增加1个仆从上限
+		整套装备：额外增加3个仆从上限，降低30%召唤伤害，并召唤枯木护卫为你而战
+		'''
+}
+
+WitherbarkLeggings: {
+	DisplayName: 枯木护腿
+	Tooltip: 增加6%移动速度
 }

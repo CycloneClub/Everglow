@@ -11,6 +11,8 @@ namespace Everglow.Commons.Templates.Weapons.Clubs;
 
 public abstract class ClubProj : ModProjectile, IWarpProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 80;

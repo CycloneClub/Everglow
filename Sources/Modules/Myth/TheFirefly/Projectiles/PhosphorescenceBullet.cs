@@ -5,6 +5,8 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 
 public class PhosphorescenceBullet : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 15;

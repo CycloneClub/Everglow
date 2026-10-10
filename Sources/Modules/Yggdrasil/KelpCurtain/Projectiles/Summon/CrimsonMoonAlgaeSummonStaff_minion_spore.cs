@@ -8,6 +8,8 @@ namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Summon;
 
 public class CrimsonMoonAlgaeSummonStaff_minion_spore : ModProjectile, IRedAlgaeToxinProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.SummonProjectiles;
+
 	public float Timer = 0;
 
 	public override void SetDefaults()

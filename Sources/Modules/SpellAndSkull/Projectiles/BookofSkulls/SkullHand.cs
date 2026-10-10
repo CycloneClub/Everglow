@@ -7,6 +7,8 @@ namespace Everglow.SpellAndSkull.Projectiles.BookofSkulls;
 
 internal class SkullHand : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 100;

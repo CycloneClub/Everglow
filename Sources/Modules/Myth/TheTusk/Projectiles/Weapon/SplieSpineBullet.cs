@@ -6,6 +6,8 @@ namespace Everglow.Myth.TheTusk.Projectiles.Weapon;
 
 public class SplieSpineBullet : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
+
 	// TODO:Splie应为Split翻译
 	public override void SetStaticDefaults()
 	{

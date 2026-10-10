@@ -7,6 +7,8 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee.Clubs;
 
 public class ChlorophyteClub_VFX_2 : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MiscsProjectiles;
+
 	public override string Texture => "Everglow/" + ModAsset.IchorClub_Path;
 
 	internal Vector2[] Position = new Vector2[900];

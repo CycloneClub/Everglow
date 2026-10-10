@@ -1,227 +1,130 @@
-GiantJellyBall: {
-	DisplayName: 巨型球冻
-}
-
-BarkSpicyCaterpillar.DisplayName: Arboreal Caterpillar
-BrownCaterpillar.DisplayName: Brown Caterpillar[debug only]
-CarapaceCaterpillar.DisplayName: Shelled Catepillar
-CrimsonSpell.DisplayName: Blood Moon Cultist
-CyanOreBeetle.DisplayName: Cyan Beetle
-DarkGlimmeringRods.DisplayName: Auburn Rod
-GiantJellyBall.DisplayName: Giant Jelly Ball
-Guard_Slimy.DisplayName: Slimy
-JellyBall.DisplayName: Jelly Ball
-LampFruitBorer.DisplayName: Lampfruit Borer
-LeafcutterAnt.DisplayName: Leafcutter Ant
-LightBulb.DisplayName: Light Bulb
-RockElemental.DisplayName: Rock Elemental
-ShadowstrikeCaterpillart.DisplayName: Arboreal Caterpillar
-WhisperingGhost.DisplayName: Whispering Ghost
-
-RapierMaster_Boss: {
-	DisplayName: 刺剑大师
-}
-
-InfoRegisteryTestNPC: {
-	DisplayName: 测试NPC非模组内容
-}
-
-BloodTusk: {
-	DisplayName: 鲜血獠牙
-}
-
-Living_Jawbone: {
-	DisplayName: 活颌骨
-}
-
-GlowingHeal: {
-	DisplayName: 治愈性流光
-}
-
-BlackStarFruit: {
-	DisplayName: 萤灯果
-}
-
-CentipedeHead: {
-	DisplayName: 流萤蜈蚣
-}
-
-CentipedeBody: {
-	DisplayName: 流萤蜈蚣
-}
-
-CentipedeTail: {
-	DisplayName: 流萤蜈蚣
-}
-
-Dendroid_normal: {
-	DisplayName: 流萤枯木人
-}
-
-FireflyPiranha: {
-	DisplayName: 流萤虎鱼
-}
-
-FireflyPiranhaInfected: {
-	DisplayName: 感染流萤虎鱼
-}
-
-FireflyPiranhaInfected_small: {
-	DisplayName: 感染流萤虎鱼
-}
-
-FireflyPiranha_small: {
-	DisplayName: 流萤虎鱼
-}
-
-GlowingFirefly: {
-	DisplayName: 流萤萤火虫
-}
-
-LittleFireBulb: {
-	DisplayName: 小火滴
-}
-
-CorruptMoth: {
-	DisplayName: 腐檀巨蛾
-}
-
-EvilPack: {
-	DisplayName: 巨大夜光茧
-}
-
-SummonedButterfly: {
-	DisplayName: 幻影蛾
-}
-
-ExplosiveLantern_growing: {
-	DisplayName: 爆破灯笼
-}
-
-BloodLanternGhost: {
-	DisplayName: 血色灯笼
-}
-
-BombLantern: {
-	DisplayName: 炸弹灯笼
-}
-
-CylindricalLantern: {
-	DisplayName: 火柱灯笼
-}
-
-FloatLantern: {
-	DisplayName: 鬼灯笼
-}
-
-RedPackBomber: {
-	DisplayName: 红包轰炸机
-}
-
-LanternGhostKing: {
-	DisplayName: 灯笼鬼王
-}
-
-BlueCore: {
-	DisplayName: 蓝核心
-}
-
-FlamingDashCore: {
-	DisplayName: 不灭的花火幻魂心
-}
-
-GreenCore: {
-	DisplayName: 绿核心
-}
-
-RedCore: {
-	DisplayName: 红核心
-}
-
-YellowCore: {
-	DisplayName: 黄核心
-}
-
 Acytaea: {
 	DisplayName: 雅斯塔亚
+
+	TownNPCMood: {
+		Content: I am content.
+		DislikeBiome: I dislike {BiomeName}.
+		DislikeCrowded: I dislike how crowded I am.
+		FarFromHome: I am too far from home.
+		HateCrowded: I hate how crowded I am.
+		LikeBiome: I like {BiomeName}.
+		LikeNPC_Princess: I like {NPCName}.
+		LoveSpace: I love having so much space.
+		NoHome: I hate not having a home.
+		Princess_LovesNPC: I like {NPCName}.
+	}
 }
 
-Acytaea_Boss: {
-	DisplayName: 雅斯塔亚
+Acytaea_Boss.DisplayName: 雅斯塔亚
+Acytaea_yggdrasil.DisplayName: 雅斯塔亚
+AlgaeOctopus.DisplayName: 覆藻章鱼
+AnimatedWitherbarkHound.DisplayName: Animated Witherbark Hound
+AnimatedWitherbarkSoldier.DisplayName: 枯木活化士兵
+AnimatedWitherbarkSoldierRanged.DisplayName: 枯木活化士兵（射手）
+AnimatedWitherbarkSoldierSpell.DisplayName: 枯木活化士兵（法师）
+ArmoredShrimp.DisplayName: 装甲虾
+AssassinRaspberry.DisplayName: 阿萨辛覆盆子
+BarkSpicyCaterpillar.DisplayName: 树皮刺毛虫
+BlackStarFruit.DisplayName: 萤灯果
+BloodLanternGhost.DisplayName: 血色灯笼
+BloodTusk.DisplayName: 鲜血獠牙
+BlueCore.DisplayName: 蓝核心
+BombJellyfish.DisplayName: 爆弹水母
+BombLantern.DisplayName: 炸弹灯笼
+BrodieFlydragon.DisplayName: 布罗迪蝇蜓
+BrownCaterpillar.DisplayName: 棕色毛虫
+CannonBarnacle.DisplayName: 炮弹藤壶
+CarapaceCaterpillar.DisplayName: 石甲壳毛虫
+CentipedeBody.DisplayName: 流萤蜈蚣
+CentipedeHead.DisplayName: 流萤蜈蚣
+CentipedeTail.DisplayName: 流萤蜈蚣
+CorruptMoth.DisplayName: 腐檀巨蛾
+CourtCommander.DisplayName: 王庭号令者
+CrimsonSpell.DisplayName: 血月教徒
+CyanOreBeetle.DisplayName: 青缎甲虫
+CylindricalLantern.DisplayName: 火柱灯笼
+DarkGlimmeringRods.DisplayName: 金棕飞棍
+Dendroid_normal.DisplayName: 流萤枯木人
+EvilLantern.DisplayName: Evil Lantern
+EvilPack.DisplayName: 巨大夜光茧
+ExamplePerson.DisplayName: Example Person
+ExplosiveLantern_growing.DisplayName: 爆破灯笼
+FireflyPiranha_small.DisplayName: 流萤虎鱼
+FireflyPiranha.DisplayName: 流萤虎鱼
+FireflyPiranhaInfected_small.DisplayName: 感染流萤虎鱼
+FireflyPiranhaInfected.DisplayName: 感染流萤虎鱼
+FlamingDashCore.DisplayName: 不灭的花火幻魂心
+FloatLantern.DisplayName: 鬼灯笼
+FluorescentHydra.DisplayName: 荧光水螅
+GiantDandelion.DisplayName: 巨树人
+GiantJellyBall.DisplayName: 巨型球冻
+GiantTigerShrimp.DisplayName: 巨型虎虾
+GlowingFirefly.DisplayName: 流萤萤火虫
+GlowingHeal.DisplayName: 治愈性流光
+GlowSalamander.DisplayName: 幽光蝾螈
+GreenCore.DisplayName: 绿核心
+GreenFlameLantern.DisplayName: Green Flame Lantern
+Guard_Slimy.DisplayName: 小史
+GuppyConch.DisplayName: 格普螺
+InfoRegisteryTestNPC.DisplayName: 测试NPC非模组内容
+JadeSpiritAnglerfish.DisplayName: 碧灵鮟鱇
+JellyBall.DisplayName: 球冻
+KingJellyBall.DisplayName: 球冻王
+LampFruitBorer.DisplayName: 灯果螟
+LanternGhostKing.DisplayName: 灯笼鬼王
+LargeAlgaeOctopus.DisplayName: 大型覆藻章鱼
+LargeBloodLanternGhost.DisplayName: Large Blood Lantern Ghost
+LargeBombJellyfish.DisplayName: 大型爆弹水母
+LargeMossyThornTurtle.DisplayName: 大型荆棘苔龟
+LeafcutterAnt.DisplayName: 切叶蚁
+LightBulb.DisplayName: 灯泡花苞
+LittleFireBulb.DisplayName: 小火滴
+LittleRedPaperFigure.DisplayName: Little Red Paper Figure
+Living_Jawbone.DisplayName: 活颌骨
+MossyThornTurtle.DisplayName: 荆棘苔龟
+OverrideRegistryTestNPC.DisplayName: Override Registry TestNPC
+PurpleBombCaterpillar.DisplayName: Purple Bomb Caterpillar
+QuestCounter_Consultant.DisplayName: Quest Counter_ Consultant
+Radiolarian.DisplayName: 放射虫
+RapierMaster_Boss.DisplayName: 刺剑大师
+RedCore.DisplayName: 红核心
+RedNeedleCaterpillar.DisplayName: 红针洋辣子
+RedPackBomber.DisplayName: 红包轰炸机
+RedpaperGiant.DisplayName: Redpaper Giant
+
+Resturateur: {
+	DisplayName: Resturateur
+
+	TownNPCMood: {
+		Content: I am content.
+		DislikeBiome: I dislike {BiomeName}.
+		DislikeCrowded: I dislike how crowded I am.
+		FarFromHome: I am too far from home.
+		HateCrowded: I hate how crowded I am.
+		LikeBiome: I like {BiomeName}.
+		LikeNPC_Princess: I like {NPCName}.
+		LoveSpace: I love having so much space.
+		NoHome: I hate not having a home.
+		Princess_LovesNPC: I like {NPCName}.
+	}
 }
 
-BarkSpicyCaterpillar: {
-	DisplayName: 树皮刺毛虫
-}
-
-BrownCaterpillar: {
-	DisplayName: 棕色毛虫
-}
-
-CarapaceCaterpillar: {
-	DisplayName: 石甲壳毛虫
-}
-
-CrimsonSpell: {
-	DisplayName: 血月教徒
-}
-
-CyanOreBeetle: {
-	DisplayName: 青缎甲虫
-}
-
-DarkGlimmeringRods: {
-	DisplayName: 金棕飞棍
-}
-
-Guard_Slimy: {
-	DisplayName: 小史
-}
-
-JellyBall: {
-	DisplayName: 球冻
-}
-
-LampFruitBorer: {
-	DisplayName: 灯果螟
-}
-
-LeafcutterAnt: {
-	DisplayName: 切叶蚁
-}
-
-LightBulb: {
-	DisplayName: 灯泡花苞
-}
-
-RockElemental: {
-	DisplayName: 磐石元素
-}
-
-ShadowstrikeCaterpillar: {
-	DisplayName: 夜行毛虫
-}
-
-WhisperingGhost: {
-	DisplayName: 低语幽灵
-}
-
-Acytaea_yggdrasil: {
-	DisplayName: 雅斯塔亚
-}
-
-SquamousShell: {
-	DisplayName: 龙鳞古壳
-}
-
-KingJellyBall: {
-	DisplayName: 球冻王
-}
-
-RiverSlug: {
-	DisplayName: 水蛞蝓
-}
-
-TestNPC: {
-	DisplayName: 测试NPC
-}
+RiverSlug.DisplayName: 水蛞蝓
+RockElemental.DisplayName: 磐石元素
+SailfinSnakehead.DisplayName: 帆鳍鳢
+SerpentMoss.DisplayName: 蛇行苔
+ShadowstrikeCaterpillar.DisplayName: 夜行毛虫
+ShadowstrikeCaterpillart.DisplayName: Arboreal Caterpillar
+SmallBrodieFlydragon.DisplayName: 小布罗迪蝇蜓
+SmallGuppyConch.DisplayName: 小格普螺
+SquamousShell.DisplayName: 龙鳞古壳
+SummonedButterfly.DisplayName: 幻影蛾
+TestNPC.DisplayName: 测试NPC
+ToxicToad.DisplayName: 剧毒蟾蜍
+UmbrellaTailThief.DisplayName: Umbrella Tail Thief
+VampireMat.DisplayName: 吸血魔毯
+VerdantRods.DisplayName: 叶飞棍
+WaterStrider.DisplayName: 水黾
+WhisperingGhost.DisplayName: 低语幽灵
+WizardLantern.DisplayName: Wizard Lantern
+YellowCore.DisplayName: 黄核心

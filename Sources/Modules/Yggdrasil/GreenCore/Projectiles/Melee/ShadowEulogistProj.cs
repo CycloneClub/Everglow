@@ -5,6 +5,8 @@ namespace Everglow.Yggdrasil.GreenCore.Projectiles.Melee;
 
 public class ShadowEulogistProj : MeleeProj
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	public override string Texture => ModAsset.ShadowEulogist_Mod;
 
 	public override void SetDef()

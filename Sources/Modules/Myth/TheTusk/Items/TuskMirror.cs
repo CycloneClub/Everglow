@@ -5,6 +5,8 @@ namespace Everglow.Myth.TheTusk.Items;
 
 public class TuskMirror : ModItem
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Tools;
+
 	public override void SetDefaults()
 	{
 		Item.width = 30;

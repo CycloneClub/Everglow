@@ -7,6 +7,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Liquids;
 
 public class DarkSludgeBucket : ModItem
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Tools;
+
 	// This is an example of a modded bucket
 	// Here we do some extra logic to make our bucket dispense liquid
 	// While also using a new ID Set added by ModLiquid Library to allow buckets to create this item

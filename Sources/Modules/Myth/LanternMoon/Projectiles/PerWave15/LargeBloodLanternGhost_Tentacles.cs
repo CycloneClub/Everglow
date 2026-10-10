@@ -7,6 +7,8 @@ namespace Everglow.Myth.LanternMoon.Projectiles.PerWave15;
 
 public class LargeBloodLanternGhost_Tentacles : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.EnemyProjectiles;
+
 	public struct Tentacle()
 	{
 		public Vector2 Position;

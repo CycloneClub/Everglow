@@ -1,20 +1,30 @@
-DragonScaleHammer: {
-	DisplayName: 龙鳞木锤
-	Tooltip: ""
-}
-
-LampWoodHammer: {
-	DisplayName: 灯木锤
-	Tooltip: ""
-}
-
 AmberFlowerHook: {
 	DisplayName: 琥珀花钩
 	Tooltip: ""
 }
 
+BoneAndPlatformCreate: {
+	DisplayName: Bone And Platform Create
+	Tooltip: ""
+}
+
+CheckPylonPoint: {
+	DisplayName: Check Pylon Point
+	Tooltip: ""
+}
+
 ClimbingPickaxe: {
 	DisplayName: 攀爬镐
+	Tooltip: ""
+}
+
+CreateRoom: {
+	DisplayName: Create Room
+	Tooltip: ""
+}
+
+CustomMusicTrackItem: {
+	DisplayName: Custom Music Track Item
 	Tooltip: ""
 }
 
@@ -33,8 +43,58 @@ CyanVinePickaxe: {
 	Tooltip: ""
 }
 
+DarkSludgeBucket: {
+	DisplayName: Dark Sludge Bucket
+	Tooltip: ""
+}
+
+DragonScaleHammer: {
+	DisplayName: 龙鳞木锤
+	Tooltip: ""
+}
+
+ExampleBackgroundTool: {
+	DisplayName: Example Background Tool
+	Tooltip: ""
+}
+
+ExampleRopeItem: {
+	DisplayName: Example Rope Item
+	Tooltip: ""
+}
+
+ExampleTrailingProjectile_Emit: {
+	DisplayName: Example Trailing Projectile_ Emit
+	Tooltip: ""
+}
+
+ExampleUndergroundBackgroundTool: {
+	DisplayName: Example Underground Background Tool
+	Tooltip: ""
+}
+
+ExampleVirtualWallLightBlocker: {
+	DisplayName: Example Virtual Wall Light Blocker
+	Tooltip: ""
+}
+
+FireflyImpression: {
+	DisplayName: Firefly Impression
+	Tooltip: ""
+}
+
 FlappedHangGlider: {
-	DisplayName: 折损滑翔翼
+	DisplayName: 折损的滑翔翼
+	Tooltip:
+		'''
+		在空中手持时可短暂滑翔，按下键下降
+		落地后恢复
+		“每一个伟大的飞行员都曾在暴风雨中挣扎”
+		'''
+}
+
+GenerateMazeRoom: {
+	DisplayName: Generate Maze Room
 	Tooltip: ""
 }
 
@@ -48,8 +108,28 @@ HangGlider: {
 	Tooltip: ""
 }
 
+HardmodeItem: {
+	DisplayName: Hardmode Item
+	Tooltip: ""
+}
+
+HarvestingClaw: {
+	DisplayName: Harvesting Claw
+	Tooltip: ""
+}
+
+LampWoodHammer: {
+	DisplayName: 灯木槌
+	Tooltip: “在这里，照亮你前路的第一道光”
+}
+
 MiningPowerPickaxe: {
 	DisplayName: 矿用动力镐
+	Tooltip: ""
+}
+
+NormalCableCar_item: {
+	DisplayName: Normal Cable Car_item
 	Tooltip: ""
 }
 
@@ -60,5 +140,99 @@ OldPickaxe: {
 
 OldPortableLamp: {
 	DisplayName: 旧提灯
+	Tooltip:
+		'''
+		手持时提供光照
+		“不要因为黑暗而悲伤，拿起一盏灯来！”
+		'''
+}
+
+OutputLocalizationHjsonItem: {
+	DisplayName: Output Localization Hjson Item
+	Tooltip: ""
+}
+
+PolygonDrawerItem: {
+	DisplayName: Polygon Drawer Item
+	Tooltip: ""
+}
+
+ResetIsleOfBloom: {
+	DisplayName: Reset Isle Of Bloom
+	Tooltip: ""
+}
+
+ResetKelpCurtain: {
+	DisplayName: Reset Kelp Curtain
+	Tooltip: ""
+}
+
+ResetTheYggdrasilTown: {
+	DisplayName: Reset The Yggdrasil Town
+	Tooltip: ""
+}
+
+ScreenPositionPrintItem: {
+	DisplayName: Screen Position Print Item
+	Tooltip: ""
+}
+
+SoundIDPlayItem: {
+	DisplayName: Sound I D Play Item
+	Tooltip: ""
+}
+
+TestOpenQuestPanelWithSelectQuestItem: {
+	DisplayName: Test Open Quest Panel With Select Quest Item
+	Tooltip: ""
+}
+
+TileDataReader: {
+	DisplayName: Tile Data Reader
+	Tooltip: ""
+}
+
+TileFliper: {
+	DisplayName: Tile Fliper
+	Tooltip: ""
+}
+
+TileToolBox: {
+	DisplayName: Tile Tool Box
+	Tooltip: ""
+}
+
+TreePlacer: {
+	DisplayName: Tree Placer
+	Tooltip: ""
+}
+
+TuskMirror: {
+	DisplayName: Tusk Mirror
+	Tooltip: ""
+}
+
+UnderWaterDungeon: {
+	DisplayName: Under Water Dungeon
+	Tooltip: ""
+}
+
+VFXGenerator: {
+	DisplayName: V F X Generator
+	Tooltip: ""
+}
+
+WorldAnchor: {
+	DisplayName: World Anchor
+	Tooltip: ""
+}
+
+YggdrasilImpression: {
+	DisplayName: Yggdrasil Impression
+	Tooltip: ""
+}
+
+YggdrasilTown_TradeUnionGate: {
+	DisplayName: Yggdrasil Town_ Trade Union Gate
 	Tooltip: ""
 }

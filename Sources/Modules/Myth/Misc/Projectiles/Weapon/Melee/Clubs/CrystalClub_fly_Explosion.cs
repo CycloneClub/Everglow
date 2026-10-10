@@ -4,6 +4,8 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee.Clubs;
 
 public class CrystalClub_fly_Explosion : ModProjectile, IWarpProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MiscsProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 90;

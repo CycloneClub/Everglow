@@ -1,40 +1,190 @@
+AuburnBoots: {
+	DisplayName: Auburn Boots
+	Tooltip:
+		'''
+		8% increased movement speed
+		'A dead rod leaves only a hollow tube; even its arcane organs are gone... Still, the shell is rather pretty'
+		'''
+}
+
+AuburnBreastplate: {
+	DisplayName: Auburn Breastplate
+	Tooltip:
+		'''
+		10% increased whip range and 5% increased whip attack speed
+		'A dead rod leaves only a hollow tube; even its arcane organs are gone... Still, the shell is rather pretty'
+		'''
+}
+
+AuburnHoodie: {
+	DisplayName: Auburn Hood
+	Tooltip:
+		'''
+		8% increased summon damage
+		Full set increases your max number of minions by 1
+		With the full set, press the armor ability hotkey to gain another minion slot at the cost of life regeneration for 45 seconds
+		This ability has a 60-second cooldown
+		'A dead rod leaves only a hollow tube; even its arcane organs are gone... Still, the shell is rather pretty'
+		'''
+}
+
+BloodDrenchedRobe: {
+	DisplayName: Blood-Drenched Robe
+	Tooltip:
+		'''
+		6% increased magic critical strike chance
+		'They nurture weaving beasts with the living arcane organs of their hosts, then use the beasts to weave scarlet brocade'
+		'''
+}
+
+BloodStainedVeil: {
+	DisplayName: Bloodstained Veil
+	Tooltip:
+		'''
+		6% increased magic damage
+		With the robe equipped, magic projectile hits briefly increase life regeneration and have a 5% chance to restore 10 mana
+		'Despite the stories, it looks like an ordinary mage robe, only more threadbare'
+		'''
+}
+
+BlueflowerDress: {
+	DisplayName: Blueflower Dress
+	Tooltip: ""
+}
+
+ConcentratingJacket: {
+	DisplayName: Concentrating Jacket
+	Tooltip: 5% increased critical strike chance
+}
+
+ConventionalEquipment: {
+	DisplayName: Standard Armor
+	Tooltip:
+		'''
+		2% increased critical strike chance
+		'Offers some protection, but no comfort whatsoever'
+		'''
+}
+
+CrimsonMoonAlgaeBreastPlate: {
+	DisplayName: Crimson Moon Algae Breastplate
+	Tooltip: Taking at least 10 damage in one hit restores life equal to 15% of that damage
+}
+
+CrimsonMoonAlgaeGreaves: {
+	DisplayName: Crimson Moon Algae Greaves
+	Tooltip:
+		'''
+		12% increased movement speed
+		Increases underwater movement speed by a further 24%
+		Prevents slowing from Jade Lake Red Algae
+		'''
+}
+
+CrimsonMoonAlgaeHeaddress: {
+	DisplayName: Crimson Moon Algae Headdress
+	Tooltip:
+		'''
+		18% increased magic damage
+		12% reduced mana usage
+		Full set: +50 maximum mana, doubles Red Algae Toxin duration and increases its detonation damage by 150%
+		Grants immunity to Red Algae Erosion and contact damage from blood vine algae
+		'''
+}
+
+CrimsonMoonAlgaeMask: {
+	DisplayName: Crimson Moon Algae Mask
+	Tooltip:
+		'''
+		18% increased summon damage
+		Increases your maximum number of minions by 3
+		Full set: +50 maximum mana, doubles Red Algae Toxin duration and increases its detonation damage by 150%
+		Grants immunity to Red Algae Erosion and contact damage from blood vine algae
+		'''
+}
+
+CyanBreastplate: {
+	DisplayName: Cyan Breastplate
+	Tooltip: 5% increased movement speed and slightly increased jump speed
+}
+
+CyanHeavylet: {
+	DisplayName: Cyan Helmet
+	Tooltip:
+		'''
+		4% reduced damage taken
+		Full set grants 3 defense, increased life regeneration, and increased acceleration
+		'''
+}
+
+CyanLeggings: {
+	DisplayName: Cyan Boots
+	Tooltip: 5% increased melee attack speed
+}
+
+CyanWarhelm: {
+	DisplayName: Cyan Warhelm
+	Tooltip:
+		'''
+		4% increased melee damage and critical strike chance
+		Full set grants an additional 1% melee damage and 5 melee armor penetration
+		'''
+}
+
 DevilHeartHairpin: {
 	DisplayName: Devil Heart Hairpin
-	Tooltip: 5% increased magic damage and 5% increased magic critical strike chance
+	Tooltip: 5% increased magic damage and critical strike chance
 	SetBonus:
 		'''
-		10% decreased mana cost
+		10% reduced mana cost
 		8% increased magic damage
-		Press the set bonus hotkey to gain [Devil Heart Overload] buff for 10 seconds
-		During this time, you cannot naturally regenerate mana and your defense is reduced by 15%
-		But you gain +6% magic damage and critical strike chance, +1 max minions.
-		Has a 35 second cooldown.
+		Press the armor set bonus hotkey to activate Devil Heart Overload for 10 seconds
+		While active: no natural mana regeneration, 15% reduced defense, 6% increased magic damage and critical strike chance, and 1 additional minion slot
+		35-second cooldown
 		'''
 }
 
 DevilHeartHelmet: {
-	DisplayName: Devil Heart Helmet
-	Tooltip: 4% increased summon damage and +1 max minions
+	DisplayName: Devil Heart Cage Helm
+	Tooltip:
+		'''
+		4% increased summon damage
+		Increases your max number of minions by 1
+		'''
 	SetBonus:
 		'''
 		8% increased summon damage
 		15% increased whip attack speed
-		+1 max minions
-		Press the set bonus hotkey to gain [Devil Heart Overload] buff for 10 seconds
-		During this time, you cannot naturally regenerate mana and your defense is reduced by 15%
-		But you gain +6% magic damage and critical strike chance, +1 max minions
-		Has a 35 second cooldown
+		Increases your max number of minions by 1
+		Press the armor set bonus hotkey to activate Devil Heart Overload for 10 seconds
+		While active: no natural mana regeneration, 15% reduced defense, 6% increased magic damage and critical strike chance, and 1 additional minion slot
+		35-second cooldown
 		'''
 }
 
-DevilHeartLightBreastPlate: {
-	DisplayName: Devil Heart Light Breast Plate
-	Tooltip: 6% increased magic and summon damage, +60 max mana
+DevilHeartLeggings: {
+	DisplayName: Devil Heart Boots
+	Tooltip: 10% increased movement speed
 }
 
-DevilHeartLeggings: {
-	DisplayName: Devil Heart Leggings
-	Tooltip: 10% increased movement speed
+DevilHeartLightBreastPlate: {
+	DisplayName: Devil Heart Light Armor
+	Tooltip:
+		'''
+		Increases maximum mana by 60
+		6% increased magic and summon damage
+		'''
+}
+
+ExplorationHelmet: {
+	DisplayName: Exploration Helmet
+	Tooltip:
+		'''
+		4% increased ranged critical strike chance
+		Emits light
+		Full set grants a 10% chance not to consume ammo and 5% increased ranged damage
+		Full set highlights visible enemies in the direction of the cursor
+		'''
 }
 
 FireflywoodBreastplate: {
@@ -52,202 +202,223 @@ FireflywoodLeggings: {
 	Tooltip: ""
 }
 
-BlueflowerDress: {
-	DisplayName: Blueflower Dress
-	Tooltip: ""
+JellyBallBathingCap: {
+	DisplayName: Jelly Ball Bathing Cap
+	Tooltip:
+		'''
+		Grants 2 defense and increases your max number of minions by 1
+		5% chance to halve incoming projectile damage and reflect the projectile
+		'A sticky, springy bathing cap'
+		'''
 }
 
-ValiantBreastplate: {
-	DisplayName: Valiant Breastplate
-	Tooltip: ""
+LampWoodBreastplate: {
+	DisplayName: Lampwood Breastplate
+	Tooltip: Slightly increases life regeneration
 }
 
-ValiantHelmet: {
-	DisplayName: Valiant Helmet
-	Tooltip: ""
+LampWoodHelmet: {
+	DisplayName: Lampwood Helmet
+	Tooltip:
+		'''
+		10% increased mining speed
+		Full set grants 2 defense, slightly increased life regeneration, and an additional 10% mining speed
+		Full set emits light
+		'''
 }
 
-ValiantLeggings: {
-	DisplayName: Valiant Leggings
-	Tooltip: ""
+LampWoodLeggings: {
+	DisplayName: Lampwood Greaves
+	Tooltip: 5% increased movement speed
 }
 
-TwilightWoodBreastplate: {
-	DisplayName: Twilight Wood Breastplate
-	Tooltip: ""
+MolluscsLeggings: {
+	DisplayName: Mollusk Feet
+	Tooltip:
+		'''
+		8% increased movement speed
+		35% increased underwater speed and acceleration
+		'''
 }
 
-TwilightWoodHelmet: {
-	DisplayName: Twilight Wood Helmet
-	Tooltip: ""
-}
-
-TwilightWoodLeggings: {
-	DisplayName: Twilight Wood Leggings
-	Tooltip: ""
-}
-
-ConventionalEquipment: {
-	DisplayName: Conventional Equipment
-	Tooltip: ""
-}
-
-SafetyHelmets: {
-	DisplayName: Safety Helmets
-	Tooltip: ""
-}
-
-StandardLeggings: {
-	DisplayName: Standard Leggings
-	Tooltip: ""
-}
-
-RockGreaves: {
-	DisplayName: Rock Greaves
-	Tooltip: ""
-}
-
-RockHelmet: {
-	DisplayName: Rock Helmet
-	Tooltip: ""
-}
-
-RockPlateMail: {
-	DisplayName: Rock Plate Mail
-	Tooltip: ""
-}
-
-ConcentratingJacket: {
-	DisplayName: Concentrating Jacket
-	Tooltip: ""
-}
-
-ExplorationHelmet: {
-	DisplayName: Exploration Helmet
-	Tooltip: ""
+MossyMolluscsHelmet: {
+	DisplayName: Mossy Mollusk Head Shell
+	Tooltip:
+		'''
+		4% increased ranged damage and 6% increased ranged critical strike chance
+		Full set: 15% chance not to consume ammo and 3 increased armor penetration
+		'''
 }
 
 OvineHairpin: {
 	DisplayName: Ovine Hairpin
-	Tooltip: ""
+	Tooltip:
+		'''
+		4% increased magic critical strike chance
+		Emits light
+		Full set reduces mana cost by 10% and increases magic damage by 5%
+		Full set grants an additional 10% magic damage while you stand in bright light
+		'''
 }
 
-ShadowlessBoots: {
-	DisplayName: Shadowless Boots
-	Tooltip: ""
+PearlMolluscsHelmet: {
+	DisplayName: Pearl Mollusk Head Shell
+	Tooltip:
+		'''
+		4% increased melee damage and critical strike chance
+		Full set: increased life regeneration and 10% increased melee attack speed
+		'''
 }
 
-LampWoodBreastplate: {
-	DisplayName: Lamp Wood Breastplate
-	Tooltip: ""
+RockGreaves: {
+	DisplayName: Rock Greaves
+	Tooltip: 5% increased movement speed
 }
 
-LampWoodHelmet: {
-	DisplayName: Lamp Wood Helmet
-	Tooltip: ""
+RockHelmet: {
+	DisplayName: Rock Helmet
+	Tooltip:
+		'''
+		5% increased melee critical strike chance
+		Full set builds up to 12 bonus defense as you move; taking damage resets the bonus
+		'''
 }
 
-LampWoodLeggings: {
-	DisplayName: Lamp Wood Leggings
-	Tooltip: ""
-}
-
-JellyBallBathingCap: {
-	DisplayName: Jelly Ball Bathing Cap
-	Tooltip: ""
-}
-
-CyanBreastplate: {
-	DisplayName: Cyan Breastplate
-	Tooltip: ""
-}
-
-CyanHeavylet: {
-	DisplayName: Cyan Heavylet
-	Tooltip: ""
-}
-
-CyanLeggings: {
-	DisplayName: Cyan Leggings
-	Tooltip: ""
-}
-
-CyanWarhelm: {
-	DisplayName: Cyan Warhelm
-	Tooltip: ""
-}
-
-BloodDrenchedRobe: {
-	DisplayName: Blood Drenched Robe
-	Tooltip: ""
-}
-
-BloodStainedVeil: {
-	DisplayName: Blood Stained Veil
-	Tooltip: ""
-}
-
-AuburnBoots: {
-	DisplayName: Auburn Boots
-	Tooltip: ""
-}
-
-AuburnBreastplate: {
-	DisplayName: Auburn Breastplate
-	Tooltip: ""
-}
-
-AuburnHoodie: {
-	DisplayName: Auburn Hoodie
-	Tooltip: ""
-}
-
-WitherbarkBreastPlate: {
-	DisplayName: Witherbark Breast Plate
-	Tooltip: ""
-}
-
-WitherbarkHelmet: {
-	DisplayName: Witherbark Helmet
-	Tooltip: ""
-}
-
-WitherbarkLeggings: {
-	DisplayName: Witherbark Leggings
-	Tooltip: ""
+RockPlateMail: {
+	DisplayName: Rock Plate Mail
+	Tooltip: 5% increased melee damage
 }
 
 RuinLeggings: {
 	DisplayName: Ruin Leggings
-	Tooltip: ""
+	Tooltip:
+		'''
+		4% increased summon damage
+		2% reduced damage taken
+		'''
 }
 
 RuinMagicRobe: {
 	DisplayName: Ruin Magic Robe
-	Tooltip: ""
+	Tooltip:
+		'''
+		6% increased summon damage
+		10% reduced mana usage
+		'''
 }
 
 RuinMask: {
 	DisplayName: Ruin Mask
-	Tooltip: ""
+	Tooltip:
+		'''
+		Increases your maximum number of minions by 1
+		Increases maximum mana by 40
+		Full set: Increases your maximum number of minions by 1 more
+		While holding the Woodland Wraith Staff, press the armor set skill key to gain 10% summon damage and 25% movement speed for 30 seconds
+		2 minute cooldown
+		'''
 }
 
-MolluscsLeggings: {
-	DisplayName: Molluscs Leggings
-	Tooltip: ""
+SafetyHelmets: {
+	DisplayName: Safety Helmet
+	Tooltip:
+		'''
+		2% increased damage
+		Full set grants 2 defense and slightly increased life regeneration
+		'A mass-produced helmet, its materials aged by years in storage'
+		'''
 }
 
-MossyMolluscsHelmet: {
-	DisplayName: Mossy Molluscs Helmet
-	Tooltip: ""
-}
-
-PearlMolluscsHelmet: {
-	DisplayName: Pearl Molluscs Helmet
-	Tooltip: ""
+ShadowlessBoots: {
+	DisplayName: Shadowless Boots
+	Tooltip: 10% increased movement speed
 }
 
 ShellMolluscsBreastPlate: {
-	DisplayName: Shell Molluscs Breast Plate
-	Tooltip: ""
+	DisplayName: Mollusk Shell Armor
+	Tooltip:
+		'''
+		6% increased critical strike chance
+		Full set: extends underwater breathing time
+		Press the armor set bonus hotkey to gain Aquatic Possession for 25 seconds, further extending underwater breathing time and increasing underwater speed and acceleration by 30%
+		40-second cooldown
+		'''
+}
+
+StandardLeggings: {
+	DisplayName: Standard-Issue Boots
+	Tooltip:
+		'''
+		5% increased movement speed and slightly increased jump speed
+		'Only two sizes available; neither seems to fit everyone'
+		'''
+}
+
+TwilightWoodBreastplate: {
+	DisplayName: Twilight Eucalyptus Breastplate
+	Tooltip: Increases maximum life by 15
+}
+
+TwilightWoodHelmet: {
+	DisplayName: Twilight Eucalyptus Helmet
+	Tooltip:
+		'''
+		7% increased ranged damage and 4% increased ranged critical strike chance
+		Full set grants an additional 3% ranged damage and critical strike chance, and a 15% chance not to consume ammo
+		'''
+}
+
+TwilightWoodLeggings: {
+	DisplayName: Twilight Eucalyptus Boots
+	Tooltip:
+		'''
+		5% increased movement speed and slightly increased jump speed
+		Leaves a trail of cyan light as you walk
+		'''
+}
+
+ValiantBreastplate: {
+	DisplayName: Braver's Breastplate
+	Tooltip:
+		'''
+		4% increased melee critical strike chance
+		'Often the first reward earned by newcomers to Yggdrasil Town'
+		'''
+}
+
+ValiantHelmet: {
+	DisplayName: Braver's Helmet
+	Tooltip:
+		'''
+		5% increased true melee damage
+		'Often the first reward earned by newcomers to Yggdrasil Town'
+		'''
+}
+
+ValiantLeggings: {
+	DisplayName: Braver's Greaves
+	Tooltip:
+		'''
+		5% increased melee attack speed
+		'Often the first reward earned by newcomers to Yggdrasil Town'
+		'''
+}
+
+WitherbarkBreastPlate: {
+	DisplayName: Witherbark Breastplate
+	Tooltip: 20% increased whip range
+}
+
+WitherbarkHelmet: {
+	DisplayName: Witherbark Helmet
+	Tooltip:
+		'''
+		Increases your max number of minions by 1
+		Full set: 3 additional minion slots, 30% reduced summon damage, and a Witherbark guardian that fights for you
+		'''
+}
+
+WitherbarkLeggings: {
+	DisplayName: Witherbark Leggings
+	Tooltip: 6% increased movement speed
 }

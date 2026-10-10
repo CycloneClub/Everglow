@@ -6,6 +6,8 @@ namespace Everglow.Yggdrasil.Common.Tiles;
 
 public class CheckPylonPoint : ModItem
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Tools;
+
 	public Point CheckPos = new Point(0, 0);
 
 	public override void SetDefaults()

@@ -4,6 +4,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Tools.Developer;
 
 public class ResetTheYggdrasilTown : ModItem
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Tools;
+
 	public override void SetDefaults()
 	{
 		Item.width = 30;

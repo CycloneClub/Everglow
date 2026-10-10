@@ -4,6 +4,8 @@ namespace Everglow.Myth.LanternMoon.Projectiles.LanternKing;
 
 public class LanternFlowLine : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 120;

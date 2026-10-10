@@ -6,6 +6,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Tools.Developer;
 
 internal class TreePlacer : ModItem
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Tools;
+
 	// TODO:这是一个代码测试物品，使用后可能会引起程序崩坏
 	public override void SetDefaults()
 	{
