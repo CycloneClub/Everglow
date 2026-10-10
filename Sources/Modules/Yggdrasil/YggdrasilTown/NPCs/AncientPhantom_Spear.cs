@@ -1,12 +1,12 @@
+using Everglow.Commons.Templates.Enemies;
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts.TwilightForest;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
-using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.NPCs;
 
-public class AncientPhantom_Spear : ModNPC
+public class AncientPhantom_Spear : Fighter
 {
 	public float HurtValue = 0f;
 
@@ -29,36 +29,13 @@ public class AncientPhantom_Spear : ModNPC
 		NPC.HitSound = SoundID.Item53;
 		NPC.DeathSound = SoundID.Shatter;
 		NPC.alpha = 100;
-		NPC.aiStyle = -1;
-	}
 
-	public override void OnSpawn(IEntitySource source)
-	{
+		MaxSpeedX = 3f;
 	}
 
 	public override void FindFrame(int frameHeight)
 	{
-		if (NPC.velocity.Y == 0f)
-		{
-			NPC.spriteDirection = NPC.direction;
-		}
-		else if (NPC.velocity.Y < 0f)
-		{
-			NPC.frameCounter = 0;
-		}
-
-		NPC.frameCounter += 1;
-		int frameNumber = (int)(NPC.frameCounter / 3);
-		if (frameNumber >= 9)
-		{
-			NPC.frameCounter = 0;
-			frameNumber = 0;
-		}
-		if (!NPC.collideY)
-		{
-			frameNumber = 10;
-		}
-		NPC.frame.Y = frameNumber * frameHeight;
+		base.FindFrame(frameHeight);
 		if (HurtValue > 0)
 		{
 			HurtValue -= 2f;
@@ -69,11 +46,7 @@ public class AncientPhantom_Spear : ModNPC
 		}
 	}
 
-	public override void AI()
-	{
-		//NPC.AI_003_Fighters();
-		NPCUtils.Vanilla_NPC_AI_003_Fighters(NPC, 3f, true);
-	}
+	public override void AI() => base.AI();
 
 	public override void ModifyHitByItem(Player player, Item item, ref NPC.HitModifiers modifiers)
 	{
