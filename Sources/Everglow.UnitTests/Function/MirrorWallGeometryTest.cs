@@ -7,6 +7,29 @@ namespace Everglow.UnitTests.Function;
 public class MirrorWallGeometryTest
 {
 	[TestMethod]
+	public void PlayerReflection_ScalesAroundFeetAndAppliesOffsetAfterScaling()
+	{
+		Matrix reflection = MirrorWallGeometry.CreatePlayerReflectionTransform(new(50, 144), new(12, -10), 1.5f, true, Matrix.Identity);
+		Assert.AreEqual(new Vector2(62, 134), Vector2.Transform(new Vector2(50, 144), reflection));
+		Assert.AreEqual(new Vector2(77, 104), Vector2.Transform(new Vector2(40, 124), reflection));
+	}
+
+	[TestMethod]
+	public void PlayerReflection_FlipOffKeepsOrientationAndSupportsNegativeOffset()
+	{
+		Matrix reflection = MirrorWallGeometry.CreatePlayerReflectionTransform(new(50, 144), new(-100, 30), 0.5f, false, Matrix.Identity);
+		Assert.AreEqual(new Vector2(-55, 164), Vector2.Transform(new Vector2(40, 124), reflection));
+	}
+
+	[TestMethod]
+	public void PlayerReflection_AppliesTuningBeforeCameraZoom()
+	{
+		Matrix view = Matrix.CreateScale(2, 2, 1) * Matrix.CreateTranslation(10, 20, 0);
+		Matrix reflection = MirrorWallGeometry.CreatePlayerReflectionTransform(new(50, 144), new(12, -10), 1.5f, true, view);
+		Assert.AreEqual(new Vector2(164, 228), Vector2.Transform(new Vector2(40, 124), reflection));
+	}
+
+	[TestMethod]
 	public void PlayerReflection_FlipsAboutPlayerCenterWithoutMovingFeet()
 	{
 		Matrix reflection = MirrorWallGeometry.CreatePlayerReflectionTransform(50, Matrix.Identity);

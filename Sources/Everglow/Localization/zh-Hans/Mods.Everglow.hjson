@@ -7,6 +7,16 @@ Bestiary: {
 
 Common.Message.HasAwoken: 已苏醒！
 
+Common.MirrorDemo.Panel: {
+	Title: 镜墙调参 · 拖动标题移动
+	OffsetX: X 偏移
+	OffsetY: Y 偏移
+	Scale: 缩放
+	Flip: 左右翻转
+	On: 开启
+	Off: 关闭
+}
+
 Configs: {
 	EverglowClientConfig: {
 		DisplayName: Everglow 客户端设置

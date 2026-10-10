@@ -1,5 +1,6 @@
 using Everglow.Commons.TileHelper;
 using Everglow.Commons.Utilities;
+using Everglow.Example.Items;
 using Terraria.Graphics.Renderers;
 
 namespace Everglow.Example.Tiles;
@@ -9,9 +10,6 @@ namespace Everglow.Example.Tiles;
 /// </summary>
 public class ExampleMirrorSystem : ModSystem
 {
-	// 世界像素偏移：与人物稍微错开，保持脚部高度；随游戏缩放一起缩放。
-	private static readonly Vector2 ReflectionOffset = new(12, 0);
-
 	private readonly List<Point> visibleWalls = new();
 
 	public override void Load()
@@ -152,6 +150,7 @@ public class ExampleMirrorSystem : ModSystem
 
 	private static void CapturePlayers()
 	{
+		ExampleMirrorConfigUI settings = ModContent.GetInstance<ExampleMirrorConfigUI>();
 		foreach (Player player in Main.player)
 		{
 			if (!player.active || player.dead || player.ghost || player.invis)
@@ -162,10 +161,10 @@ public class ExampleMirrorSystem : ModSystem
 			SamplerState sampler = player.mount.Active && player.fullRotation != 0
 				? LegacyPlayerRenderer.MountedSamplerState : camera.Sampler;
 			// DrawPlayer 是底层入口，不会 Begin；必须匹配 DrawPlayerFull 的立即绘制状态。
-			Matrix offsetView = Matrix.CreateTranslation(ReflectionOffset.X, ReflectionOffset.Y, 0)
-				* camera.GameViewMatrix.TransformationMatrix;
+			Vector2 feet = player.Bottom + new Vector2(0, player.gfxOffY) - Main.screenPosition;
 			Matrix reflection = MirrorWallGeometry.CreatePlayerReflectionTransform(
-				player.Center.X - Main.screenPosition.X, offsetView);
+				feet, new Vector2(settings.OffsetX, settings.OffsetY), settings.ReflectionScale,
+				settings.FlipHorizontally, camera.GameViewMatrix.TransformationMatrix);
 			camera.SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, sampler,
 				DepthStencilState.None, RasterizerState.CullNone, null, reflection);
 			try

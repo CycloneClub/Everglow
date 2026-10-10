@@ -31,4 +31,7 @@ public class ExampleMirrorItem : ModItem
 			.AddTile(TileID.WorkBenches)
 			.Register();
 	}
+
+	public override bool CanUseItem(Player player) => Main.dedServ || player.whoAmI != Main.myPlayer
+		|| !ModContent.GetInstance<ExampleMirrorConfigUI>().CapturesMouse;
 }
