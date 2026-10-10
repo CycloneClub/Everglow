@@ -1,3 +1,4 @@
+using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.Presentation.Icons;
 using Everglow.Commons.UI.StringDrawerSystem.DrawerItems.ImageDrawers;
@@ -39,7 +40,7 @@ public class WorldCollectItemObjective : WorldObjectiveBase
 	public override void GetObjectivesIcon(QuestIconGroup iconGroup) =>
 		iconGroup.Add(ItemQuestIcon.Create(ItemType, new Item(ItemType).Name));
 
-	public override string GetObjectiveText() => $"拥有{ItemDrawer.Create(ItemType)}{ItemCount}个 ({globalMax}/{ItemCount})";
+	public override string GetObjectiveText() => QuestText.Get("Objectives.Have", ItemDrawer.Create(ItemType), ItemCount, $"({globalMax}/{ItemCount})");
 
 	public override void Update()
 	{

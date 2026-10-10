@@ -1,3 +1,4 @@
+using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.UI;
 using Everglow.Commons.UI.UIElements;
 
@@ -26,7 +27,7 @@ public class UIQuestTree : UIQuestDetailMaskContentBase<UIQuestDetailSubContent>
 		_back.PanelColor = Color.Transparent;
 		_back.BorderWidth = 0;
 		_back.Info.IsSensitive = true;
-		_back.Events.OnMouseHover += e => QuestContainer.Instance.MouseText = "Quest Detail";
+		_back.Events.OnMouseHover += e => QuestContainer.Instance.MouseText = QuestText.Get("UI.QuestDetail");
 		_back.Events.OnLeftClick += Hide;
 		Register(_back);
 

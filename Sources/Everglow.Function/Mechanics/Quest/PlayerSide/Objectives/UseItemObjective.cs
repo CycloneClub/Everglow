@@ -1,3 +1,4 @@
+using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.Hooks;
 using Everglow.Commons.Mechanics.Quest.PlayerSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.Presentation.Icons;
@@ -48,10 +49,10 @@ public class UseItemObjective : PlayerObjectiveBase
 		if (ItemTypes.Count > 1)
 		{
 			var itemString = string.Join(' ', ItemTypes.ConvertAll(i => ItemDrawer.Create(i)));
-			return $"使用{itemString}合计{ItemCount}次 {progress}";
+			return QuestText.Get("Objectives.UseAny", itemString, ItemCount, progress);
 		}
 
-		return $"使用{ItemDrawer.Create(ItemTypes.First())}{ItemCount}次 {progress}";
+		return QuestText.Get("Objectives.Use", ItemDrawer.Create(ItemTypes.First()), ItemCount, progress);
 	}
 
 	public override void Activate(PlayerQuestBase sourceQuest)

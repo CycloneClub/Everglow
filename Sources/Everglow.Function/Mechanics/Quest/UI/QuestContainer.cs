@@ -202,7 +202,7 @@ public class QuestContainer : UIContainerElement
 		_close.Events.OnLeftDown += e => Close();
 		_close.Events.OnMouseHover += e =>
 		{
-			MouseText = "Close";
+			MouseText = QuestText.Get("UI.Close");
 			_close.PanelColor = Color.Gray;
 		};
 		_close.Events.OnMouseOver += e => _close.PanelColor = Color.Gray;
@@ -484,7 +484,7 @@ public class QuestContainer : UIContainerElement
 		if (item is not null && item.View.State == QuestViewState.Failed)
 		{
 			_questDetail.AnimationState = 3;
-			var fail = new UIQuestOperationFail("任务失败", yesText: "确认");
+			var fail = new UIQuestOperationFail(QuestText.Get("UI.OperationFailed"), yesText: QuestText.Get("UI.OK"));
 			DetailTip.Show(fail);
 		}
 		else

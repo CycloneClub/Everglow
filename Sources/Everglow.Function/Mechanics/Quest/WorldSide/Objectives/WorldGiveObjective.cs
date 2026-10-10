@@ -1,3 +1,4 @@
+using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.WorldSide;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.Presentation.Icons;
@@ -59,7 +60,7 @@ public class WorldGiveObjective : WorldObjectiveBase
 	{
 		var npc = new NPC();
 		npc.SetDefaults(NPCType);
-		return $"向{npc.TypeName}提交{ItemDrawer.Create(ItemType)}{ItemCount}个";
+		return QuestText.Get("Objectives.Give", npc.TypeName, ItemDrawer.Create(ItemType), ItemCount, string.Empty).TrimEnd();
 	}
 
 	public override void Update()
