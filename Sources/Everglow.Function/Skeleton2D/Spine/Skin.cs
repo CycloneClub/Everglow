@@ -41,12 +41,12 @@ namespace Spine
 	public class Skin
 	{
 		internal string name;
-		private OrderedDictionary<SkinEntry, Attachment> attachments = new OrderedDictionary<SkinEntry, Attachment>(SkinEntryComparer.Instance);
+		private Spine.Collections.OrderedDictionary<SkinEntry, Attachment> attachments = new Spine.Collections.OrderedDictionary<SkinEntry, Attachment>(SkinEntryComparer.Instance);
 		internal readonly ExposedList<BoneData> bones = new ExposedList<BoneData>();
 		internal readonly ExposedList<ConstraintData> constraints = new ExposedList<ConstraintData>();
 
 		public string Name { get { return name; } }
-		public OrderedDictionary<SkinEntry, Attachment> Attachments { get { return attachments; } }
+		public Spine.Collections.OrderedDictionary<SkinEntry, Attachment> Attachments { get { return attachments; } }
 		public ExposedList<BoneData> Bones { get { return bones; } }
 		public ExposedList<ConstraintData> Constraints { get { return constraints; } }
 
