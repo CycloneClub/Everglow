@@ -59,5 +59,131 @@
 		"Name": "守卫天穹镇",
 		"IntroObjective": "霍华德似乎正为镇上的骚乱发愁，去问问他吧。",
 		"Description": "天穹镇接连发生骚乱，霍华德需要有人协助维持秩序。"
+	},
+	"Rolle": "罗尔",
+	"Betty": "贝蒂",
+	"Schorl": "夜璃",
+	"Georg": "格尔格",
+	"IngredientSupplyOneQuest": {
+		"Name": "食材补充 其一",
+		"Description": "餐厅的生意太好，罗尔来不及补充鱼货。",
+		"Hint": "进入天穹树后解锁。",
+		"IntroObjective": "去餐厅问问罗尔有没有需要帮忙的事。",
+		"IntroDialogue": "啊，原来你是新来的啊。既然你都问了，那正好这两天的生意太好了，餐厅甚至来不及进货。你帮我弄些草鱼来，你的晚饭我就包了。",
+		"DeliveryDescription": "给罗尔送去五条草鱼，帮餐厅补充食材。",
+		"Completion": "这些鱼还真是肥美。就像我之前说的，你的晚饭我包了。"
+	},
+	"SelfRelianceQuest": {
+		"Name": "自力更生",
+		"Description": "罗尔想教你准备一道能填饱肚子的菜。",
+		"Hint": "击败球冻王或龙鳞古壳后解锁。",
+		"IntroObjective": "罗尔似乎有些做菜的心得想告诉你。",
+		"IntroDialogue": "都啥时候了还来找事做呢？这样，我也不想看见你饿得挥不动剑。我看你也挺有诚意的，我来教你做一份灯果汁腌草鱼，后面你也能自己喂饱自己。",
+		"CollectDescription": "准备十二个灯果。这一步只检查背包中的数量，不会消耗灯果。",
+		"ReportDescription": "灯果已经备齐，回去找罗尔。",
+		"Completion": "灯果准备好了？做菜首先要学会自己备料，灯果汁腌草鱼会用得上这些。"
+	},
+	"IngredientSupplyTwoQuest": {
+		"Name": "食材补充 其二",
+		"Description": "罗尔听说了苍苔帘幕中的荆棘苔龟，想从它身上寻找新菜的灵感。",
+		"Hint": "有人进入苍苔帘幕后解锁。",
+		"IntroObjective": "回餐厅听听罗尔对新食材的想法。",
+		"IntroDialogue": "我听说你遇到了荆棘苔龟，帮我弄一只来，说不定可以研究出新菜。",
+		"DefeatDescription": "去苍苔帘幕击败一只荆棘苔龟。",
+		"ReportDescription": "已经击败荆棘苔龟，回去向罗尔报告。",
+		"Completion": "很新鲜嘛，你眼光不错。怎么样，不是很难吧？不和你说了，新菜的灵感涌出来了。"
+	},
+	"SprainedBackQuest": {
+		"Name": "伤筋动骨",
+		"Description": "罗尔研究新菜时摔伤了腰，贝蒂想为他准备药。",
+		"Hint": "完成「自力更生」后解锁。",
+		"IntroObjective": "贝蒂似乎正在为老板的伤势发愁，去问问她。",
+		"IntroDialogue": "你别说，老板前两天捣鼓新菜的时候摔到腰了。看样子你已经和老板是老交情了，你帮我搞来万花油的原料，让我们老板好得快一点吧。",
+		"DeliveryDescription": "为贝蒂准备一份脱稳花粉和两份虫汁，两种材料可以分别交付。",
+		"Completion": "原料都齐了，谢谢你！希望老板能早点好起来，这几天可得让他好好歇歇。",
+		"PollenDeliveryDescription": "把脱稳花粉交给贝蒂，帮助她准备万花油。",
+		"JuiceDeliveryDescription": "把虫汁交给贝蒂，帮助她准备万花油。",
+		"ReportDescription": "两种原料都已交齐，和贝蒂确认一下。"
+	},
+	"TroublesomeGuestsQuest": {
+		"Name": "头疼的客人",
+		"Description": "一群海盗拖欠了餐厅的账款，贝蒂希望有人出面处理。",
+		"Hint": "等待贝蒂委托你处理海盗的欠账。",
+		"IntroObjective": "听听贝蒂遇到了什么麻烦。",
+		"IntroDialogue": "那群海盗你知道吧？已经欠了三个月的账了，帮我收回来，有你一份。",
+		"Objective": "处理拖欠餐费的海盗",
+		"DefeatDescription": "找到欠账的海盗，让他们结清餐费。",
+		"ReportDescription": "回去告诉贝蒂欠账的事已经处理好了。",
+		"Completion": "谢谢，希望能管用。这种麻烦的客人还是少一点比较好。"
+	},
+	"TeahouseTalesOneQuest": {
+		"Name": "茶馆轶事 其一",
+		"Description": "夜璃对无主肉傀的传闻很感兴趣。",
+		"Hint": "进入天穹树后解锁。",
+		"IntroObjective": "茶馆的夜璃似乎听说了一个奇怪的传闻。",
+		"IntroDialogue": "小家伙，你是冒险者吧？我听说有一种怪物和人类极其相像，能帮姐姐打探打探无主肉傀，然后处理掉这个家伙怎么样？",
+		"Objective": "寻找并处理无主肉傀",
+		"DefeatDescription": "调查那个与人类极其相像的怪物，处理掉无主肉傀。",
+		"ReportDescription": "把无主肉傀的故事带回茶馆，讲给夜璃听。",
+		"Completion": "真是听到了不错的故事呢，小家伙真棒，奖励你摸一下姐姐的尾巴怎么样？"
+	},
+	"TeahouseTalesTwoQuest": {
+		"Name": "茶馆轶事 其二",
+		"Description": "怪物身上的痕迹似乎与苍苔帘幕中的某个教团有关。",
+		"Hint": "有人进入苍苔帘幕后解锁。",
+		"IntroObjective": "夜璃有了新的线索，去茶馆听听她的发现。",
+		"IntroDialogue": "之前的那个怪物你还有印象吧？它身上的那些痕迹想来你也注意到了。去二层打探一下，那里藏着某个教团的造物，应该会有你想要的答案。",
+		"Objective": "调查苍苔帘幕中的教团造物",
+		"InvestigateDescription": "顺着怪物身上的痕迹，寻找教团留下的线索。",
+		"ReportDescription": "带着调查结果返回茶馆。",
+		"Completion": "很久没有这样的好消息了。怎么样，今晚姐姐给你庆祝庆祝？"
+	},
+	"ProstheticMaintenanceQuest": {
+		"Name": "义肢保养",
+		"Description": "格尔格的义肢需要保养，他正在寻找合适的材料。",
+		"Hint": "携带青缎矿或青缎锭，或穿戴青缎装备，与格尔格交谈。",
+		"EncounterObjective": "携带青缎矿或青缎锭，或穿戴青缎装备，与格尔格交谈",
+		"IntroObjective": "格尔格注意到了你的青缎材料，问问他需要什么。",
+		"IntroDialogue": "小伙子，我看你好像身上有我需要的东西。你看我这义肢需要保养了，但是缺少了青缎矿。你能帮我整点过来吗？自然是有报酬的。",
+		"Objective": "为格尔格准备青缎矿",
+		"DeliveryDescription": "寻找青缎矿，帮助格尔格保养义肢。",
+		"ReportDescription": "回去看看格尔格的义肢保养得怎么样。",
+		"Completion": "小伙子好样的，我就知道你能帮我这个忙。"
+	},
+	"ChangingTheInnQuest": {
+		"Name": "改变旅馆 其一",
+		"Description": "格尔格想用苍苔帘幕中的植物改变旅馆严肃的气氛。",
+		"Hint": "有人进入苍苔帘幕后解锁。",
+		"IntroObjective": "格尔格似乎有了改造旅馆的打算。",
+		"IntroDialogue": "实不相瞒，很多客人私下都说旅馆太严肃了，不好。我想改变一下气氛，需要一些植物，但是这些植物据说只有在苍苔帘幕存在。你也是热心肠，帮我弄来一些应该不出问题吧？",
+		"Objective": "为旅馆寻找苍苔帘幕的植物",
+		"DeliveryDescription": "为格尔格带回能装点旅馆的植物。",
+		"ReportDescription": "植物准备好了，回去看看格尔格的布置计划。",
+		"Completion": "太谢谢你了，我会好好利用这些植物来改变这里的。"
+	},
+	"LostMinerQuest": {
+		"Name": "迷失的矿工",
+		"Description": "矿工赫姆被困在远离同伴的地方，他希望你把消息带回公会。",
+		"Hint": "遇见矿工赫姆后解锁。",
+		"Objective": "找到迷路的矿工赫姆",
+		"LightObjective": "巴德尔之光：帮助公会寻找赫姆"
+	},
+	"JellyDressQuest": {
+		"Name": "别出心裁-球冻水波裙",
+		"Description": "裁衣匠斯卡帕想用特别的材料制作一件新衣。",
+		"Hint": "拜访裁衣匠斯卡帕后解锁。",
+		"Objective": "向斯卡帕打听服饰制作"
+	},
+	"SageAlbionQuest": {
+		"Name": "贤者阿尔比恩",
+		"Description": "公会会长阿尔比恩准备给新来的攀登者一份考验。",
+		"Hint": "经公会接待员引荐后解锁。",
+		"Objective": "请公会接待员引荐阿尔比恩"
+	},
+	"NamelessPersonQuest": {
+		"Name": "无名之人",
+		"Description": "一个神秘的身影在你面前消失了。",
+		"Hint": "第一次遇见界域行者后解锁。",
+		"Objective": "寻找神秘商人留下的线索"
 	}
 }
