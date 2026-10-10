@@ -46,6 +46,20 @@ public class TextDrawerTest
 		Assert.AreEqual(expected, string.Join("|", Wrap(text, width)));
 	}
 
+	[TestMethod]
+	[DataRow("我我我我嚄噢哦，我哦我，问我哦")]
+	[DataRow("我我我我嚄噢哦,我哦我,问我哦")]
+	public void WordWrap_FillsChineseLinesInsteadOfRetreatingToComma(string text)
+	{
+		CollectionAssert.AreEqual(new[] { text[..9], text[9..] }, Wrap(text, 9f));
+	}
+
+	[TestMethod]
+	public void WordWrap_KeepsEnglishWordsTogetherInsideChineseText()
+	{
+		CollectionAssert.AreEqual(new[] { "你好", "hello世", "界" }, Wrap("你好hello世界", 6f));
+	}
+
 	private static string[] Wrap(string text, float width)
 	{
 		var drawer = new FixedWidthTextDrawer { Text = text };
