@@ -449,7 +449,7 @@ public abstract class PotUI
 							Ingredients[i] = player.HeldItem.type;
 						}
 						else if (Main.mouseLeft && Main.mouseLeftRelease
-							&& Main.mouseItem != null && Main.mouseItem.netID != 0)
+							&& Main.mouseItem != null && Main.mouseItem.type != 0)
 						{
 							Main.mouseItem.stack--;
 							Ingredients[i] = Main.mouseItem.type;

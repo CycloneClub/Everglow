@@ -38,9 +38,9 @@ namespace Everglow.Commons.UI
 			instance = this;
 		}
 
-		public Chest CurrentShop = new Chest(false);
+		public Chest CurrentShop = Chest.CreateShop();
 
-		public Chest OldChest = new Chest(false);
+		public Chest OldChest = Chest.CreateShop();
 
 		public override void Load()
 		{

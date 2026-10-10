@@ -85,7 +85,7 @@ public class FishSystem : ModSystem
 			var itemGen = Main.item[itemIndex];
 			if (itemGen != null)
 			{
-				if (itemGen.TryGetGlobalItem(out FishGlobalItem globalItem))
+				if (itemGen.inner.TryGetGlobalItem(out FishGlobalItem globalItem))
 				{
 					globalItem.Fishable = true;
 					globalItem.FloatSpeed = Main.rand.NextFloat(.5f);

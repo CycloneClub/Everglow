@@ -378,7 +378,7 @@ namespace Everglow.Commons.UI.UIElements
 					}
 				}
 				CursorPosition = p;
-				Main.instance.DrawWindowsIMEPanel(Info.TotalLocation + Info.TotalSize, 0.5f);
+				Main.instance.SetIMEPanelAnchor(Info.TotalLocation + Info.TotalSize, 0.5f);
 			}
 		}
 	}

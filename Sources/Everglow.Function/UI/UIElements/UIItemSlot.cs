@@ -113,7 +113,7 @@ namespace Everglow.Commons.UI.UIElements
 						if (!ShopSlot)
 						{
 							ContainedItem = new Item();
-							ContainedItem.SetDefaults(ItemID.None, true);
+							ContainedItem.SetDefaults(ItemID.None);
 						}
 
 						// 调用委托
@@ -133,7 +133,7 @@ namespace Everglow.Commons.UI.UIElements
 						// 放入物品
 						ContainedItem = Main.mouseItem.Clone();
 						Main.mouseItem = new Item();
-						Main.mouseItem.SetDefaults(ItemID.None, true);
+						Main.mouseItem.SetDefaults(ItemID.None);
 
 						// 调用委托
 						OnPutItem?.Invoke(this);

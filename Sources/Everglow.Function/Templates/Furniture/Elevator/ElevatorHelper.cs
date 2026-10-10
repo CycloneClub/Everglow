@@ -107,7 +107,7 @@ public class ElevatorHelper : Visual
 				{
 					if (item is not null && item.active)
 					{
-						if (item.createTile == WinchTileType)
+						if (item.inner.createTile == WinchTileType)
 						{
 							Vector2 toKillPos = WinchCoord.ToWorldCoordinates() - item.Center;
 							if (toKillPos.Length() < 200)
