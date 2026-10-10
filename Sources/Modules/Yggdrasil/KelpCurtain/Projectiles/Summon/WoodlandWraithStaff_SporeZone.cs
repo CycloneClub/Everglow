@@ -1,6 +1,8 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
 using Everglow.Yggdrasil.KelpCurtain.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Summon;
 
@@ -78,7 +80,7 @@ public class WoodlandWraithStaff_SporeZone : ModProjectile
 		Lighting.AddLight(Projectile.Center, new Vector3(220, 220, 239) / 300f);
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		float timeValue = (float)(Main.time * 0.0002f);
 		Vector2 drawPos = Projectile.Center - Main.screenPosition;

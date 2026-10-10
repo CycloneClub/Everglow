@@ -1,6 +1,7 @@
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables.Ores;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent.ItemDropRules;
 
@@ -30,7 +31,7 @@ public class CyanOreBeetle : ModNPC
 		NPC.DeathSound = SoundID.NPCDeath4;
 	}
 
-	public override float SpawnChance(NPC.Spawner spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawner)
 	{
 		YggdrasilTownBiome YggdrasilTownBiome = ModContent.GetInstance<YggdrasilTownBiome>();
 		if (!YggdrasilTownBiome.IsBiomeActive(Main.LocalPlayer))

@@ -1,5 +1,7 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.TownNPCs.Fevens;
@@ -19,7 +21,7 @@ public class Fevens_MagicLaserArray : ModProjectile
 		Projectile.timeLeft = 1200;
 		Projectile.tileCollide = false;
 		ProjectileID.Sets.DrawScreenCheckFluff[Type] = 180000;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Projectile.type] = true;
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 	}
 
 	public int MaxTime = 300;
@@ -62,7 +64,7 @@ public class Fevens_MagicLaserArray : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		SpriteBatchState sBS = Main.spriteBatch.GetState().Value;
 		Main.spriteBatch.End();
@@ -99,8 +101,8 @@ public class Fevens_MagicLaserArray : ModProjectile
 		{
 			drawSize = MathF.Pow(value, 0.4f);
 		}
-		Player player = Main.player[Player.FindClosest(Projectile.Center, 0, 0)];
-		var toTarget = Vector2.Normalize(player.Center - Projectile.Center);
+		Player targetPlayer = Main.player[Player.FindClosest(Projectile.Center, 0, 0)];
+		var toTarget = Vector2.Normalize(targetPlayer.Center - Projectile.Center);
 		Texture2D magicArray = ModAsset.MagicArrayEye.Value;
 		Main.spriteBatch.Draw(magicArray, Projectile.Center, null, new Color(0.4f, 0f, 0.7f, 1f) * value, toTarget.ToRotation() - MathHelper.PiOver2, magicArray.Size() * 0.5f, drawSize, SpriteEffects.None, 0);
 

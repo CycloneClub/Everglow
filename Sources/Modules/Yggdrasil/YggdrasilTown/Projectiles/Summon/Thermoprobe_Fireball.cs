@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using Terraria;
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Summon;
 
 public class Thermoprobe_Fireball : ModProjectile
@@ -23,7 +25,7 @@ public class Thermoprobe_Fireball : ModProjectile
 		var d = Dust.NewDustPerfect(Projectile.Center, DustID.Torch);
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		lightColor = Color.White;
 		Texture2D tex = ModContent.Request<Texture2D>("Terraria/Images/Projectile_666").Value;

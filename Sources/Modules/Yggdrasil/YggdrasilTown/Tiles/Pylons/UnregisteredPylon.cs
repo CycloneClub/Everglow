@@ -21,8 +21,6 @@ public class UnregisteredPylon : EverglowPylonBase<UnregisteredPylonTileEntity>
 
 	public override bool ValidTeleportCheck_NPCCount(TeleportPylonInfo pylonInfo, int defaultNecessaryNPCCount) => true;
 
-	public override bool ValidTeleportCheck_AnyDanger(TeleportPylonInfo pylonInfo) => true;
-
 	public override bool ValidTeleportCheck_BiomeRequirements(TeleportPylonInfo pylonInfo, SceneMetrics sceneData) => true;
 
 	public override void ValidTeleportCheck_DestinationPostCheck(TeleportPylonInfo destinationPylonInfo, ref bool destinationPylonValid, ref string errorKey) => base.ValidTeleportCheck_DestinationPostCheck(destinationPylonInfo, ref destinationPylonValid, ref errorKey);

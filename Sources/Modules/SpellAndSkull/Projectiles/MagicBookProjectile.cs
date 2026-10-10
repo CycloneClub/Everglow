@@ -10,8 +10,12 @@ namespace Everglow.SpellAndSkull.Projectiles;
 /// </summary>
 public abstract class MagicBookProjectile : ModProjectile
 {
+	// Keep virtual drawing on the player supplied by tML.
+	protected Player DrawPlayer { get; set; }
+
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.OverPlayers;
 		Projectile.width = 28;
 		Projectile.height = 28;
 		Projectile.friendly = false;
@@ -163,94 +167,98 @@ public abstract class MagicBookProjectile : ModProjectile
 	{
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		overPlayers.Add(index);
-	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
-		if (ItemType == -1)
+		Player previousDrawPlayer = DrawPlayer;
+		DrawPlayer = player;
+		try
 		{
-			return;
-		}
-
-		Texture2D Book = TextureAssets.Item[ItemType].Value;
-		if (BackTexture == null && FrontTexture == null)
-		{
-		}
-		else
-		{
-			if (BackTexture == null)
+			if (ItemType == -1)
 			{
-				Book = FrontTexture;
+				return;
+			}
+
+			Texture2D Book = TextureAssets.Item[ItemType].Value;
+			if (BackTexture == null && FrontTexture == null)
+			{
 			}
 			else
 			{
-				Book = BackTexture;
+				if (BackTexture == null)
+				{
+					Book = FrontTexture;
+				}
+				else
+				{
+					Book = BackTexture;
+				}
 			}
-		}
-		Texture2D BookGlow;
-		if (BackGlowTexture == null && GlowTexture == null)
-		{
-			BookGlow = ModContent.Request<Texture2D>("Everglow/SpellAndSkull/Projectiles/Item_" + ItemType + "_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
-		}
-		else
-		{
-			if (BackGlowTexture == null)
+			Texture2D BookGlow;
+			if (BackGlowTexture == null && GlowTexture == null)
+			{
+				BookGlow = ModContent.Request<Texture2D>("Everglow/SpellAndSkull/Projectiles/Item_" + ItemType + "_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+			}
+			else
+			{
+				if (BackGlowTexture == null)
+				{
+					BookGlow = GlowTexture;
+				}
+				else
+				{
+					BookGlow = BackGlowTexture;
+				}
+			}
+
+			DrawBack(TextureAssets.MagicPixel.Value, 2, 1.2f);
+			DrawPaper(TextureAssets.MagicPixel.Value, 2, 1.2f);
+			DrawFront(TextureAssets.MagicPixel.Value, 2, 1.2f);
+
+			DrawBack(Book);
+			if (UseGlow)
+			{
+				DrawBack(BookGlow, 1);
+			}
+
+			if (PaperTexture != null)
+			{
+				DrawPaper(PaperTexture);
+			}
+			if (BackTexture == null && FrontTexture == null)
+			{
+			}
+			else
+			{
+				if (FrontTexture == null)
+				{
+					Book = BackTexture;
+				}
+				else
+				{
+					Book = FrontTexture;
+				}
+			}
+			DrawFront(Book);
+			if (GlowTexture == null)
+			{
+				BookGlow = ModContent.Request<Texture2D>("Everglow/SpellAndSkull/Projectiles/Item_" + ItemType + "_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+			}
+			else
 			{
 				BookGlow = GlowTexture;
 			}
-			else
+			if (UseGlow)
 			{
-				BookGlow = BackGlowTexture;
+				DrawFront(BookGlow, 1);
 			}
-		}
-		Projectile.hide = true;
 
-		DrawBack(TextureAssets.MagicPixel.Value, 2, 1.2f);
-		DrawPaper(TextureAssets.MagicPixel.Value, 2, 1.2f);
-		DrawFront(TextureAssets.MagicPixel.Value, 2, 1.2f);
-
-		DrawBack(Book);
-		if (UseGlow)
-		{
-			DrawBack(BookGlow, 1);
+			SpecialDraw();
 		}
-
-		if (PaperTexture != null)
+		finally
 		{
-			DrawPaper(PaperTexture);
+			DrawPlayer = previousDrawPlayer;
 		}
-		if (BackTexture == null && FrontTexture == null)
-		{
-		}
-		else
-		{
-			if (FrontTexture == null)
-			{
-				Book = BackTexture;
-			}
-			else
-			{
-				Book = FrontTexture;
-			}
-		}
-		DrawFront(Book);
-		if (GlowTexture == null)
-		{
-			BookGlow = ModContent.Request<Texture2D>("Everglow/SpellAndSkull/Projectiles/Item_" + ItemType + "_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
-		}
-		else
-		{
-			BookGlow = GlowTexture;
-		}
-		if (UseGlow)
-		{
-			DrawFront(BookGlow, 1);
-		}
-
-		SpecialDraw();
 	}
 
 	public virtual void SpecialDraw()
@@ -265,7 +273,7 @@ public abstract class MagicBookProjectile : ModProjectile
 	/// <param name="MulSize">相对于 BookScale 的额外绘制尺寸倍率。</param>
 	public virtual void DrawPaper(Texture2D tex, int GlowType = 0, float MulSize = 1f)
 	{
-		Player player = Main.player[Projectile.owner];
+		Player player = (DrawPlayer ?? Main.player[Projectile.owner]);
 		Vector2 x0 = new Vector2(BookScale * player.direction, BookScale * player.gravDir) * 0.45f * MulSize; // 把书本贴图（有内容部分）算作一个矩形，这里表示这个矩形的半宽。玩家朝右，重力方向朝下时指向右下
 		Vector2 y0 = new Vector2(BookScale * player.direction, -BookScale * player.gravDir) * 0.64f * MulSize; // 把书本贴图（有内容部分）算作一个矩形，这里表示这个矩形的半长，方向与x0垂直，玩家朝右，重力方向朝下时指向右上
 		Color c0 = GlowColor;
@@ -444,7 +452,7 @@ public abstract class MagicBookProjectile : ModProjectile
 	public virtual void DrawBack(Texture2D tex, int GlowType = 0, float MulSize = 1f)
 	{
 		// 这里应该不用注解了（
-		Player player = Main.player[Projectile.owner];
+		Player player = (DrawPlayer ?? Main.player[Projectile.owner]);
 		Vector2 x0 = new Vector2(BookScale * player.direction, BookScale * player.gravDir) * 0.5f * MulSize;
 		Vector2 y0 = new Vector2(BookScale * player.direction, -BookScale * player.gravDir) * 0.707f * MulSize;
 		Color c0 = GlowColor;
@@ -513,7 +521,7 @@ public abstract class MagicBookProjectile : ModProjectile
 	/// <param name="MulSize">相对于 BookScale 的额外绘制尺寸倍率。</param>
 	public virtual void DrawFront(Texture2D tex, int GlowType = 0, float MulSize = 1f)
 	{
-		Player player = Main.player[Projectile.owner];
+		Player player = (DrawPlayer ?? Main.player[Projectile.owner]);
 		Vector2 x0 = new Vector2(BookScale * player.direction, BookScale * player.gravDir) * 0.5f * MulSize;
 		Vector2 y0 = new Vector2(BookScale * player.direction, -BookScale * player.gravDir) * 0.707f * MulSize;
 		Color c0 = GlowColor;

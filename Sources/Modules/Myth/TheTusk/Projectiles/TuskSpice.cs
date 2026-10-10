@@ -6,6 +6,7 @@ public class TuskSpice : ModProjectile
 {
 	public override void SetDefaults()
 	{
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 		Projectile.width = 10;
 		Projectile.height = 10;
 		Projectile.aiStyle = -1;
@@ -17,7 +18,6 @@ public class TuskSpice : ModProjectile
 		Projectile.penetrate = -1;
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 3;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Type] = true;
 	}
 
 	public override void OnSpawn(IEntitySource source)
@@ -37,7 +37,7 @@ public class TuskSpice : ModProjectile
 		Projectile.ai[2] = (float)Utils.Lerp(Projectile.ai[2], Projectile.ai[1], 0.5f);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D texture = ModAsset.TuskSpice.Value;
 		for (int i = 0; i < Projectile.oldPos.Length; i++)

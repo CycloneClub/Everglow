@@ -36,7 +36,6 @@ public class GildingRevolver_Hold : HandholdProjectile
 		MaxRotationSpeed = 0.05f;
 		DepartLength = 20;
 		DrawOffset = new Vector2(0, -4);
-		ProjectileID.Sets.HeldProjDoesNotUsePlayerGfxOffY[Type] = true;
 	}
 
 	public override void OnSpawn(IEntitySource source)
@@ -105,11 +104,11 @@ public class GildingRevolver_Hold : HandholdProjectile
 			dir = -1;
 		}
 
-		ArmRootPos = player.MountedCenter + new Vector2(-4 * player.direction, -2);
+		ArmRootPos = player.RotatedRelativePoint(player.MountedCenter + new Vector2(-4 * player.direction, -2));
 		Vector2 mouseToPlayer = Main.MouseWorld - ArmRootPos;
 		mouseToPlayer = Vector2.Normalize(mouseToPlayer);
 		Projectile.rotation = mouseToPlayer.ToRotation() + MathHelper.PiOver4;
-		Projectile.Center = player.MountedCenter + mouseToPlayer * 12;
+		Projectile.Center = player.RotatedRelativePoint(player.MountedCenter + mouseToPlayer * 12);
 		Item item = player.HeldItem;
 		if (item is not null)
 		{
@@ -200,15 +199,24 @@ public class GildingRevolver_Hold : HandholdProjectile
 		UsedBulletsCount++;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
-		DrawBaseTexture(lightColor);
-		return false;
+		Player previousDrawPlayer = DrawPlayer;
+		DrawPlayer = player;
+		try
+		{
+			DrawBaseTexture(lightColor);
+			return false;
+		}
+		finally
+		{
+			DrawPlayer = previousDrawPlayer;
+		}
 	}
 
 	public override void DrawBaseTexture(Color lightColor)
 	{
-		Player player = Main.player[Projectile.owner];
+		Player player = (DrawPlayer ?? Main.player[Projectile.owner]);
 		SpriteEffects sprite = SpriteEffects.None;
 		if (player.gravDir == -1)
 		{

@@ -1,3 +1,4 @@
+using Terraria;
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Miscs;
 
 public class GoodNeighborCoin : ModItem
@@ -13,5 +14,5 @@ public class GoodNeighborCoin : ModItem
 		Item.value = 0;
 	}
 
-	public override bool CanStackInWorld(Item source) => true;
+	public override bool CanStackInWorld(WorldItem destination, WorldItem source) => true;
 }

@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using Terraria;
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Miscs;
 
 public class TwilightRodBobber : ModProjectile
@@ -24,5 +26,5 @@ public class TwilightRodBobber : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor) => base.PreDraw(player, ref lightColor);
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */ => base.PreDraw(player, ref lightColor);
 }

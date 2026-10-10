@@ -1,6 +1,5 @@
 using Everglow.Commons.Vertex;
 using Everglow.SpellAndSkull.Common;
-using Terraria;
 
 namespace Everglow.SpellAndSkull.Projectiles.DemonScythe;
 

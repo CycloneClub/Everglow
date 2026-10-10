@@ -1,6 +1,5 @@
 using Everglow.Myth.Acytaea.Projectiles;
 using Everglow.Myth.LanternMoon.Buffs;
-using Terraria;
 using Terraria.Audio;
 
 namespace Everglow.Myth.LanternMoon.Projectiles.DashCore;

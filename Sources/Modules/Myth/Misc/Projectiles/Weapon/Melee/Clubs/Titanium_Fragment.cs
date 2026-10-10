@@ -9,6 +9,7 @@ public class Titanium_Fragment : ModProjectile
 {
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.OverPlayers;
 		Projectile.width = 20;
 		Projectile.height = 20;
 		Projectile.hostile = false;
@@ -113,11 +114,11 @@ public class Titanium_Fragment : ModProjectile
 		OribTrack.Y *= 0.2f;
 		if (timeValue2 > MathHelper.Pi)
 		{
-			Projectile.hide = true;
+			Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCs;
 		}
 		else
 		{
-			Projectile.hide = false;
+			Projectile.drawLayer = ProjectileDrawLayerID.OverPlayers;
 		}
 		if (AITimer < 60)
 		{
@@ -157,19 +158,8 @@ public class Titanium_Fragment : ModProjectile
 		}
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		if (Projectile.hide)
-		{
-			behindNPCs.Add(index);
-		}
-		else
-		{
-			overPlayers.Add(index);
-		}
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		float mulColor = (255 - Projectile.alpha) / 255f;
 		float timeValue2 = (TimeValue + Projectile.rotation) % MathHelper.TwoPi;

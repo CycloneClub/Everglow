@@ -19,7 +19,7 @@ public class YggdrasilTownFurnaceGlobalItem : GlobalItem
 		// TODO: Need a modded itemTooltip allocating feature. Now use 36 for Furnace Score Shop Itemslot.
 		if (FurnaceScoreShop.SellPricesInFurnaceScore.ContainsKey(item.type) && item.tooltipContext == 36)
 		{
-			tooltips.Add(new TooltipLine(Mod, "FurnaceScoreShopItem", $"Sell Price:   {FurnaceScoreShop.SellPricesInFurnaceScore[item.type]}") { OverrideColor = new Color(1f, 0.4f, 0.05f, 1f) });
+			tooltips.Add(new TooltipLine(Mod, "FurnaceScoreShopItem", $"Sell Price:   {FurnaceScoreShop.SellPricesInFurnaceScore[item.type]}") { Color = new Color(1f, 0.4f, 0.05f, 1f) });
 		}
 	}
 

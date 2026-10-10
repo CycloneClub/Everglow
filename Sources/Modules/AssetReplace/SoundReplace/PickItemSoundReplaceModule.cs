@@ -22,12 +22,12 @@ internal class PickItemSoundReplaceModule : IModule
 	public void Load()
 	{
 		_playOriginalSound = true;
-		Terraria.UI.On_ItemSlot.LeftClick_ItemArray_int_int += PatchLeftClick;
-		Terraria.UI.On_ItemSlot.RightClick_ItemArray_int_int += PatchRightClick;
+		Terraria.UI.On_ItemSlot.LeftClick += PatchLeftClick;
+		Terraria.UI.On_ItemSlot.RightClick += PatchRightClick;
 		On_SoundEngine.PlaySound_int_int_int_int_float_float += PatchLegacyIDPlaySound;
 	}
 
-	private void PatchRightClick(Terraria.UI.On_ItemSlot.orig_RightClick_ItemArray_int_int orig, Item[] inv, int context, int slot)
+	private void PatchRightClick(Terraria.UI.On_ItemSlot.orig_RightClick orig, Item[] inv, int context, int slot)
 	{
 		_playOriginalSound = true;
 		if (ModContent.GetInstance<AssetReplaceConfig>().ItemPickSoundReplace && Main.mouseRight && Main.stackSplit <= 1)
@@ -47,7 +47,7 @@ internal class PickItemSoundReplaceModule : IModule
 		orig.Invoke(inv, context, slot);
 	}
 
-	private void PatchLeftClick(Terraria.UI.On_ItemSlot.orig_LeftClick_ItemArray_int_int orig, Item[] inv, int context, int slot)
+	private void PatchLeftClick(Terraria.UI.On_ItemSlot.orig_LeftClick orig, Item[] inv, int context, int slot)
 	{
 		_playOriginalSound = true;
 		if (ModContent.GetInstance<AssetReplaceConfig>().ItemPickSoundReplace && Main.mouseLeft && Main.mouseLeftRelease)

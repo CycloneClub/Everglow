@@ -12,6 +12,7 @@ public class Living_Jawbone_Huge_ground_Wave : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 		Projectile.width = 100;
 		Projectile.height = 100;
 		Projectile.friendly = false;
@@ -20,7 +21,6 @@ public class Living_Jawbone_Huge_ground_Wave : ModProjectile
 		Projectile.timeLeft = 180;
 		Projectile.alpha = 255;
 		Projectile.penetrate = -1;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Type] = true;
 	}
 
 	public override void OnSpawn(IEntitySource source)
@@ -101,7 +101,7 @@ public class Living_Jawbone_Huge_ground_Wave : ModProjectile
 		return false;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;
 		Main.spriteBatch.End();

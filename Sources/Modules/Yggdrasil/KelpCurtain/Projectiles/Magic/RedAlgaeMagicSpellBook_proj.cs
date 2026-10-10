@@ -2,6 +2,8 @@ using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.KelpCurtain.Buffs;
 using Everglow.Yggdrasil.KelpCurtain.Items.Weapons;
 using Everglow.Yggdrasil.KelpCurtain.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Magic;
@@ -28,9 +30,10 @@ public class RedAlgaeMagicSpellBook_proj : ModProjectile, IRedAlgaeToxinProjecti
 		Projectile.penetrate = -1;
 		Projectile.timeLeft = 36000;
 		Projectile.DamageType = DamageClass.Magic;
-		Projectile.hide = true;
 		Projectile.usesLocalNPCImmunity = true;
 		Projectile.localNPCHitCooldown = 120;
+		Projectile.drawLayer = ProjectileDrawLayerID.OverPlayers;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public override void OnSpawn(IEntitySource source) => base.OnSpawn(source);
@@ -180,13 +183,9 @@ public class RedAlgaeMagicSpellBook_proj : ModProjectile, IRedAlgaeToxinProjecti
 		RedAlgae_FriendlyDebuff_glocalNPC.HandleProjectileHit(target, Projectile);
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		overPlayers.Add(index);
-		base.DrawBehind(index, behindNPCsAndTiles, behindNPCs, behindProjectiles, overPlayers, overWiresUI);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		float fade = 1f;
 		if (Released)

@@ -11,6 +11,7 @@ public class LanternGhostKingExplosion : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 		Projectile.width = 400;
 		Projectile.height = 400;
 		Projectile.aiStyle = -1;
@@ -21,7 +22,6 @@ public class LanternGhostKingExplosion : ModProjectile
 		Projectile.timeLeft = 240;
 		Projectile.penetrate = -1;
 		Timer = 0;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Projectile.type] = true;
 	}
 
 	public override void OnSpawn(IEntitySource source)
@@ -257,7 +257,7 @@ public class LanternGhostKingExplosion : ModProjectile
 		Ins.VFXManager.Add(somg);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		float timeDecay = Projectile.timeLeft / 240f;
 		Texture2D spot = Commons.ModAsset.Point.Value;

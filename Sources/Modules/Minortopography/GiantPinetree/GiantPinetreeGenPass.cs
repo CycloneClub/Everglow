@@ -3,6 +3,7 @@ using Everglow.Commons.Utilities;
 using Everglow.Minortopography.GiantPinetree.Items;
 using Everglow.Minortopography.GiantPinetree.TilesAndWalls;
 using Everglow.Minortopography.GiantPinetree.TilesAndWalls.Elevator;
+using System.Collections.Generic;
 using Terraria.DataStructures;
 using Terraria.IO;
 using Terraria.WorldBuilding;
@@ -28,7 +29,7 @@ public class GiantPinetree : ModSystem
 
 	public static List<int> HasBeenLootChest = new List<int>();
 
-	public override void ModifyWorldGenTasks(List<GenPass> tasks, ref double totalWeight) => tasks.Add(new GiantPinetreeGenPass());
+	public override void ModifyWorldGenTasks(List<GenPass> tasks) => tasks.Add(new GiantPinetreeGenPass());
 
 	/// <summary>
 	/// 在雪地表面随机获取一点

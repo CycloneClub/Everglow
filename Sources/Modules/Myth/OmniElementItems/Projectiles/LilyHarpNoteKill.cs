@@ -10,6 +10,7 @@ public class LilyHarpNoteKill : ModProjectile// , IWarpProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindProjectiles;
 		Projectile.extraUpdates = 1;
 		Projectile.width = 24;
 		Projectile.height = 24;
@@ -24,10 +25,9 @@ public class LilyHarpNoteKill : ModProjectile// , IWarpProjectile
 
 	public override void AI()
 	{
-		Projectile.hide = true;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		float value = (200 - Projectile.timeLeft) / (float)Projectile.timeLeft * 1.4f;
 
@@ -45,10 +45,6 @@ public class LilyHarpNoteKill : ModProjectile// , IWarpProjectile
 		return false;
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindProjectiles.Add(index);
-	}
 
 	private static void DrawCircle(float radius, float width, Color color, Vector2 center)
 	{

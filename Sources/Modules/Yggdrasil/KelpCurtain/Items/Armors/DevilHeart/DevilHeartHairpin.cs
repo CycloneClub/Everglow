@@ -40,7 +40,6 @@ public class DevilHeartHairpin : ModItem
 	{
 		player.manaCost -= 0.1f; // Reduces mana cost by 10%
 		player.GetDamage<MagicDamageClass>() += 0.08f; // Increases magic damage by 8%
-		player.setBonus = this.GetLocalizedValue(LocalizationUtils.LocalizationKeys.SetBonus);
 	}
 
 	public override void AddRecipes()

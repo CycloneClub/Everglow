@@ -1,4 +1,3 @@
-using Terraria;
 using Terraria.DataStructures;
 using static Terraria.NPC.NPCNameFakeLanguageCategoryPassthrough;
 
@@ -8,6 +7,7 @@ public class ToothBow_BloodArrow : ModProjectile
 {
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCsAndTiles;
 		Projectile.width = 20;
 		Projectile.height = 20;
 		Projectile.netImportant = true;
@@ -17,7 +17,6 @@ public class ToothBow_BloodArrow : ModProjectile
 		Projectile.ignoreWater = true;
 		Projectile.tileCollide = true;
 		Projectile.alpha = 255;
-		Projectile.hide = true;
 		Projectile.penetrate = -1;
 		Projectile.usesLocalNPCImmunity = true;
 		Projectile.localNPCHitCooldown = 4;
@@ -99,7 +98,7 @@ public class ToothBow_BloodArrow : ModProjectile
 		return Collision.SolidCollision(positon, 0, 0);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		if (Power > 1f)
 		{
@@ -160,10 +159,6 @@ public class ToothBow_BloodArrow : ModProjectile
 		base.OnHitNPC(target, hit, damageDone);
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindNPCsAndTiles.Add(index);
-	}
 
 	public override void OnKill(int timeLeft)
 	{

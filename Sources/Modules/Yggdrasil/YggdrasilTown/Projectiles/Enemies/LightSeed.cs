@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Enemies;
@@ -66,7 +68,7 @@ public class LightSeed : ModProjectile
 	{
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		Texture2D texture = ModAsset.LightSeed.Value;
 		Texture2D textureD = ModAsset.LightSeed_dark.Value;

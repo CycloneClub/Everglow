@@ -1,5 +1,7 @@
 using Everglow.Yggdrasil.KelpCurtain.Items.Weapons.UnderwaterTreasury;
 using Everglow.Yggdrasil.Netcode;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent;
@@ -32,6 +34,14 @@ public class ArmOfGiantTreeHeld : ModProjectile
 
 	public override string Texture => ModContent.GetInstance<ArmOfGiantTree>().Texture;
 
+	public override void PostAI()
+	{
+		bool heldByOwner = Projectile.owner >= 0 && Projectile.owner < Main.maxPlayers
+			&& Main.player[Projectile.owner].heldProj == Projectile.whoAmI;
+		Projectile.drawLayer = heldByOwner ? ProjectileDrawLayerID.HeldProj : ProjectileDrawLayerID.Default;
+		Projectile.usesOwnerLight = heldByOwner;
+	}
+
 	public override void SetDefaults()
 	{
 		Projectile.width = Projectile.height = 24;
@@ -44,6 +54,8 @@ public class ArmOfGiantTreeHeld : ModProjectile
 		Projectile.usesLocalNPCImmunity = true;
 		Projectile.localNPCHitCooldown = -1;
 		Projectile.netImportant = true;
+		Projectile.drawLayer = ProjectileDrawLayerID.HeldProj;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public override void OnSpawn(IEntitySource source)
@@ -117,7 +129,7 @@ public class ArmOfGiantTreeHeld : ModProjectile
 				if (!player.controlUseItem && !releaseSent)
 				{
 					releaseSent = true;
-					ArmOfGiantTreeChargePacket.Request(player, true, false, aimAngle, Projectile.identity);
+					ArmOfGiantTreeChargePacket.Request(player, true, false, aimAngle, Projectile.key);
 				}
 			}
 		}
@@ -193,10 +205,10 @@ public class ArmOfGiantTreeHeld : ModProjectile
 
 	public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers) => modifiers.SourceDamage *= attack.DamageMultiplier;
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D texture = TextureAssets.Projectile[Type].Value;
-		Vector2 anchor = Main.player[Projectile.owner].MountedCenter;
+		Vector2 anchor = player.MountedCenter;
 		Main.EntitySpriteDraw(texture, anchor - Main.screenPosition, null, lightColor, Projectile.rotation + MathHelper.PiOver4,
 			new Vector2(0, texture.Height), Projectile.scale, SpriteEffects.None);
 		return false;

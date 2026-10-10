@@ -1,4 +1,6 @@
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 
@@ -21,11 +23,12 @@ public class UnderwaterGuillotine_Projectile : ModProjectile
 		Projectile.friendly = true;
 		Projectile.hostile = true;
 		base.SetDefaults();
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCsAndTiles;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public override void OnSpawn(IEntitySource source)
 	{
-		Projectile.hide = true;
 	}
 
 	public override void AI()
@@ -121,13 +124,9 @@ public class UnderwaterGuillotine_Projectile : ModProjectile
 		}
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindNPCsAndTiles.Add(index);
-		base.DrawBehind(index, behindNPCsAndTiles, behindNPCs, behindProjectiles, overPlayers, overWiresUI);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		Texture2D texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
 		Rectangle frameMain = new Rectangle(0, 30, 128, 92);

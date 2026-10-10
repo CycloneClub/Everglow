@@ -12,6 +12,7 @@ public class AcytaeaLaserSword2 : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.OverPlayers;
 		Projectile.aiStyle = -1;
 		Projectile.timeLeft = 120;
 		Projectile.extraUpdates = 0;
@@ -60,10 +61,9 @@ public class AcytaeaLaserSword2 : ModProjectile
 		}
 		CheckFrame();
 		GenerateVFX();
-		Projectile.hide = true;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		return false;
 	}
@@ -73,11 +73,6 @@ public class AcytaeaLaserSword2 : ModProjectile
 		return false;
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		overPlayers.Add(index);
-		base.DrawBehind(index, behindNPCsAndTiles, behindNPCs, behindProjectiles, overPlayers, overWiresUI);
-	}
 
 	public void GenerateVFX()
 	{
@@ -116,7 +111,7 @@ public class AcytaeaLaserSword2 : ModProjectile
 		}
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;
 		Main.spriteBatch.End();

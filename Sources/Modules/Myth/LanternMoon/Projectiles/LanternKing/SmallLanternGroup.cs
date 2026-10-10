@@ -17,6 +17,7 @@ public class SmallLanternGroup : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 		Projectile.width = 20;
 		Projectile.height = 20;
 		Projectile.aiStyle = -1;
@@ -28,7 +29,6 @@ public class SmallLanternGroup : ModProjectile
 		Projectile.alpha = 0;
 		Projectile.penetrate = -1;
 		Projectile.scale = 1f;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Projectile.type] = true;
 		ProjectileID.Sets.DrawScreenCheckFluff[Type] = 10240;
 		ProjEntities = new List<MovingEntity>();
 	}
@@ -213,7 +213,7 @@ public class SmallLanternGroup : ModProjectile
 		return false;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
 		if (ProjEntities.Count > 0)

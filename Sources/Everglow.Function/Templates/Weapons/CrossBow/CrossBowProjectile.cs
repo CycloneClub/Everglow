@@ -6,6 +6,9 @@ namespace Everglow.Commons.Templates.Weapons.CrossBow
 {
 	public abstract class CrossBowProjectile : ModProjectile
 	{
+		// Keep virtual draw helpers on the player supplied by tML, including mannequins.
+		protected Player DrawPlayer { get; set; }
+
 		public Texture2D CrossBowTexture;
 		public Texture2D ChordTexture;
 		public Vector2 HeldPoint;
@@ -15,6 +18,8 @@ namespace Everglow.Commons.Templates.Weapons.CrossBow
 
 		public override void SetDefaults()
 		{
+			Projectile.drawLayer = ProjectileDrawLayerID.HeldProj;
+			Projectile.usesOwnerLight = true;
 			Projectile.width = 30;
 			Projectile.height = 30;
 			Projectile.aiStyle = -1;
@@ -106,17 +111,26 @@ namespace Everglow.Commons.Templates.Weapons.CrossBow
 			Projectile.Kill();
 		}
 
-		public override bool PreDraw(ref Color lightColor)
+		public override bool PreDraw(Player player, ref Color lightColor)
 		{
-			DrawArrow(Main.spriteBatch, lightColor);
-			DrawCrossBow(Main.spriteBatch, lightColor);
-			DrawChord(Main.spriteBatch, lightColor);
-			return false;
+			Player previousDrawPlayer = DrawPlayer;
+			DrawPlayer = player;
+			try
+			{
+				DrawArrow(Main.spriteBatch, lightColor);
+				DrawCrossBow(Main.spriteBatch, lightColor);
+				DrawChord(Main.spriteBatch, lightColor);
+				return false;
+			}
+			finally
+			{
+				DrawPlayer = previousDrawPlayer;
+			}
 		}
 
 		public virtual void DrawArrow(SpriteBatch spriteBatch, Color lightColor)
 		{
-			Player player = Main.player[Projectile.owner];
+			Player player = DrawPlayer ?? Main.player[Projectile.owner];
 			ModItem crossBow = player.HeldItem.ModItem;
 			if (ShootProjType > 0)
 			{
@@ -126,7 +140,7 @@ namespace Everglow.Commons.Templates.Weapons.CrossBow
 
 		public virtual void DrawCrossBow(SpriteBatch spriteBatch, Color lightColor)
 		{
-			Player player = Main.player[Projectile.owner];
+			Player player = DrawPlayer ?? Main.player[Projectile.owner];
 			if (player == null)
 			{
 				return;

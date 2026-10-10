@@ -1,5 +1,8 @@
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
 using Everglow.Yggdrasil.KelpCurtain.Tiles.DecayingWoodCourt;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Items.Placeables.DecayingWoodCourt;
@@ -17,9 +20,9 @@ public class WitherWoodColdFlameTorch_Item : ModItem
 		Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 8));
 	}
 
-	public override void Update(ref float gravity, ref float maxFallSpeed)
+	public override void Update(WorldItem worldItem, ref float gravity, ref float maxFallSpeed)
 	{
-		base.Update(ref gravity, ref maxFallSpeed);
+		base.Update(worldItem, ref gravity, ref maxFallSpeed);
 	}
 
 	public override void SetDefaults()
@@ -72,15 +75,15 @@ public class WitherWoodColdFlameTorch_Item : ModItem
 		Lighting.AddLight(position, 0.668f, 0.088f, 1f);
 	}
 
-	public override void PostUpdate()
+	public override void PostUpdate(WorldItem worldItem)
 	{
-		// Create a white (1.0, 1.0, 1.0) light when the item is in world, and isn't underwater.
-		Lighting.AddLight(Item.Center, 0.7f, 0.6f, 0.1f);
+		// Create a white (1.0, 1.0, 1.0) light when the worldItem is in world, and isn't underwater.
+		Lighting.AddLight(worldItem.Center, 0.7f, 0.6f, 0.1f);
 	}
 
-	public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
+	public override bool PreDrawInWorld(WorldItem worldItem, SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
 	{
-		return base.PreDrawInWorld(spriteBatch, lightColor, alphaColor, ref rotation, ref scale, whoAmI);
+		return base.PreDrawInWorld(worldItem, spriteBatch, lightColor, alphaColor, ref rotation, ref scale, whoAmI);
 	}
 
 	public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale) => base.PreDrawInInventory(spriteBatch, position, frame, drawColor, itemColor, origin, scale);

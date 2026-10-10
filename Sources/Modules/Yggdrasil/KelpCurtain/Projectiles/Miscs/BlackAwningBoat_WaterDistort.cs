@@ -1,4 +1,6 @@
 using Everglow.Yggdrasil.KelpCurtain.CustomTiles;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Miscs;
 
@@ -38,7 +40,7 @@ public class BlackAwningBoat_WaterDistort : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		return false;
 	}

@@ -1,4 +1,6 @@
 using Everglow.Commons.VFX.CommonVFXDusts;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Summon;
@@ -150,7 +152,7 @@ public class Thermoprobe : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		int maxFrame = 6;
 		if (!Main.gamePaused)

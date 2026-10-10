@@ -1,4 +1,5 @@
 using ReLogic.Content;
+using Terraria;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Tools
 {
@@ -142,7 +143,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Tools
 		}
 
 		// Draws the grappling hook's chain.
-		public override bool PreDrawExtras(Player player)
+		public override bool PreDrawExtras(Player player)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 		{
 			Vector2 playerCenter = Main.player[Projectile.owner].MountedCenter;
 			Vector2 center = Projectile.Center;

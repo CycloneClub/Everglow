@@ -141,10 +141,6 @@ namespace Everglow.MEAC.PlanetBeFall.Projectiles.PlanetBefall
 		}
 
 		// public ObjReader.Model model = ObjReader.LoadFile("Everglow/IIID/Projectiles/PlanetBefall/PlanetBefall.obj");
-		public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-		{
-			// overPlayers.Add(index);
-		}
 
 		private float s = 0;
 

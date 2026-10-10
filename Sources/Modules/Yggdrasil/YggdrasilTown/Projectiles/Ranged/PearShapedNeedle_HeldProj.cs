@@ -1,4 +1,6 @@
 using Everglow.Commons.Templates.Weapons;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Ranged;
@@ -61,7 +63,7 @@ public class PearShapedNeedle_HeldProj : HandholdProjectile
 		}
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		DrawNeedles();
 		return base.PreDraw(player, ref lightColor);

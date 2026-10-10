@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using Terraria;
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Ranged;
 
 public class Caltrop : ModProjectile
@@ -72,7 +74,7 @@ public class Caltrop : ModProjectile
 		Dust.NewDust(Projectile.Center, 1, 1, DustID.Iron);
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		var texture = ModContent.Request<Texture2D>(Texture).Value;
 		var origin = texture.Size() * 0.5f;

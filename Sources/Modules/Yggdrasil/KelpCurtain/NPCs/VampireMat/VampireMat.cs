@@ -997,7 +997,7 @@ public class VampireMat : ModNPC
 		base.ModifyNPCLoot(npcLoot);
 	}
 
-	public override float SpawnChance(NPC.Spawner spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawner)
 	{
 		return 0;
 	}

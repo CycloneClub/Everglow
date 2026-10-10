@@ -2,6 +2,8 @@ using Everglow.Commons.Utilities;
 using Everglow.Commons.Vertex;
 using Everglow.Food.Dusts;
 using Humanizer.Bytes;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Food.Projectiles;
@@ -154,7 +156,7 @@ internal class CreamChocolateCup_CreamFlow : ModProjectile
 	public List<Vector2> Joints = new List<Vector2>();
 	public List<Vector2> JointVelocity = new List<Vector2>();
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		if (Joints.Count > 1)
 		{

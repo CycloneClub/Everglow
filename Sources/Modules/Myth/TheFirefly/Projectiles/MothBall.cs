@@ -118,13 +118,13 @@ public class MothBall : ModProjectile
 				{
 					var npc = NPC.NewNPCDirect(Projectile.GetSource_FromAI(), Projectile.Center, ModContent.NPCType<SummonedButterfly>());
 					npc.velocity = Main.rand.NextVector2Unit() * Main.rand.Next(4, 12);
-					npc.netUpdate2 = true;
+					npc.netUpdate = true;
 				}
 				for (int i = 0; i < 4; i++)
 				{
 					var npc = NPC.NewNPCDirect(Projectile.GetSource_FromAI(), Projectile.Center, ModContent.NPCType<SummonedButterfly>());
 					npc.velocity = Main.rand.NextVector2Unit() * Main.rand.Next(2, 5);
-					npc.netUpdate2 = true;
+					npc.netUpdate = true;
 				}
 			}
 
@@ -149,7 +149,7 @@ public class MothBall : ModProjectile
 		// Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<Projectiles.CorruptMoth.FruitBomb>(), 0, 0f, Main.myPlayer, 1);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D light = ModAsset.CorruptLight.Value;
 		int frameX = Projectile.frame % 6;

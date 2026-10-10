@@ -133,7 +133,7 @@ public abstract partial class PlayerQuestBase : ITagCompoundEntity
 	{
 		foreach (var item in RewardItems)
 		{
-			Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_Misc(RewardItemsSourceContext), item, item.stack);
+			Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_Misc(RewardItemsSourceContext), item.Clone());
 		}
 	}
 

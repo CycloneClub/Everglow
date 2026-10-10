@@ -1,4 +1,6 @@
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 
@@ -34,7 +36,8 @@ public class EyeOfAnabiosis_Projectile : ModProjectile
 		Projectile.DamageType = DamageClass.Magic;
 		Projectile.penetrate = 1;
 		Projectile.friendly = true;
-		Projectile.hide = true;
+		Projectile.drawLayer = ProjectileDrawLayerID.OverPlayers;
+		Projectile.usesOwnerLight = true;
 	}
 
 	private bool HasTarget => TargetWhoAmI >= 0;
@@ -122,7 +125,7 @@ public class EyeOfAnabiosis_Projectile : ModProjectile
 		SoundEngine.PlaySound(SoundID.DD2_BetsysWrathImpact);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		var texture = ModContent.Request<Texture2D>(Texture).Value;
 		var frame = texture.Frame(horizontalFrames: Main.projFrames[Type], frameX: Projectile.frame);
@@ -135,9 +138,5 @@ public class EyeOfAnabiosis_Projectile : ModProjectile
 		return false;
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		overPlayers.Add(index);
-		base.DrawBehind(index, behindNPCsAndTiles, behindNPCs, behindProjectiles, overPlayers, overWiresUI);
-	}
+
 }

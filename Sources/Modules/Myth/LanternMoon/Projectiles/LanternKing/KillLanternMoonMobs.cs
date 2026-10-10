@@ -16,6 +16,7 @@ public class KillLanternMoonMobs : ModProjectile, IWarpProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 		Projectile.width = 100;
 		Projectile.height = 100;
 		Projectile.aiStyle = -1;
@@ -25,7 +26,6 @@ public class KillLanternMoonMobs : ModProjectile, IWarpProjectile
 		Projectile.tileCollide = false;
 		Projectile.timeLeft = 120;
 		Projectile.penetrate = -1;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Projectile.type] = true;
 	}
 
 	public override void AI()
@@ -83,7 +83,7 @@ public class KillLanternMoonMobs : ModProjectile, IWarpProjectile
 		Ins.VFXManager.Add(redWave);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		return false;
 	}

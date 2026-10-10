@@ -8,6 +8,8 @@ internal class SightOfTileProjRead : ModProjectile
 {
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.HeldProj;
+		Projectile.usesOwnerLight = true;
 		Projectile.width = 50;
 		Projectile.height = 50;
 		Projectile.friendly = false;
@@ -94,9 +96,8 @@ internal class SightOfTileProjRead : ModProjectile
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, vertex2Ds.ToArray(), 0, vertex2Ds.Count / 3);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
-		Player player = Main.player[Projectile.owner];
 
 		Vector2 Vdr = Main.MouseWorld - Projectile.Center;
 

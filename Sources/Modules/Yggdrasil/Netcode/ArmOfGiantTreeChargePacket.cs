@@ -60,7 +60,7 @@ public class ArmOfGiantTreeChargePacket : IPacket
 		{
 			if (projectile.active && projectile.owner == whoAmI && projectile.type == type)
 			{
-				if (packet.release && projectile.identity == packet.identity)
+				if (packet.release && projectile.key == packet.identity)
 				{
 					((ArmOfGiantTreeHeld)projectile.ModProjectile).Release(packet.aimAngle);
 				}

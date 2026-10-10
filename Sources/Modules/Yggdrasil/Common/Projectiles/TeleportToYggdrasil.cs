@@ -1,5 +1,7 @@
 using Everglow.Commons.DataStructures;
+using Microsoft.Xna.Framework;
 using SubworldLibrary;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.Common.Projectiles;
@@ -18,12 +20,13 @@ public class TeleportToYggdrasil : ModProjectile, IWarpProjectile
 	{
 		Projectile.timeLeft = 210;
 		Projectile.tileCollide = false;
-		Projectile.hide = true;
 		Projectile.penetrate = -1;
 		Projectile.width = 10;
 		Projectile.height = 10;
 		Projectile.aiStyle = -1;
 		Projectile.scale = 1;
+		Projectile.drawLayer = ProjectileDrawLayerID.OverPlayers;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public override void OnSpawn(IEntitySource source)
@@ -68,12 +71,9 @@ public class TeleportToYggdrasil : ModProjectile, IWarpProjectile
 		}
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		overPlayers.Add(index);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;
 		Main.spriteBatch.End();

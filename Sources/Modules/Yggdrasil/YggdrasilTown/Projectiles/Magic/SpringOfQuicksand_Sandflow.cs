@@ -1,5 +1,7 @@
 using Everglow.Commons.Templates.Weapons;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
@@ -82,7 +84,7 @@ public class SpringOfQuicksand_Sandflow : TrailingProjectile
 		return base.Colliding(projHitbox, targetHitbox);
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor) => base.PreDraw(player, ref lightColor);
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */ => base.PreDraw(player, ref lightColor);
 
 	public override float TrailWidthFunction(float factor) => base.TrailWidthFunction(factor);
 

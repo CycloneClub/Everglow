@@ -1,5 +1,7 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.YggdrasilTown.Buffs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
@@ -88,7 +90,8 @@ public class IstafelsSunfireGrasp_Scoria : ModProjectile
 		Projectile.penetrate = -1;
 		Projectile.localNPCHitCooldown = 20;
 
-		Projectile.hide = true;
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCsAndTiles;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public override void OnSpawn(IEntitySource source)
@@ -300,12 +303,9 @@ public class IstafelsSunfireGrasp_Scoria : ModProjectile
 		return false;
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindNPCsAndTiles.Add(index);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		SpriteBatchState sBS = Main.spriteBatch.GetState().Value;
 		Main.spriteBatch.End();

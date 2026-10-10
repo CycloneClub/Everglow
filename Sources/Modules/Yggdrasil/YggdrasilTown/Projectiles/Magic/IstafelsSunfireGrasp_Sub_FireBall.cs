@@ -24,6 +24,8 @@ public class IstafelsSunfireGrasp_Sub_FireBall : TrailingProjectile
 		WarpStrength = 0.3f;
 		SelfLuminous = false;
 		Projectile.magic = true;
+		Projectile.drawLayer = ProjectileDrawLayerID.OverPlayers;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public override void OnSpawn(IEntitySource source)
@@ -47,7 +49,6 @@ public class IstafelsSunfireGrasp_Sub_FireBall : TrailingProjectile
 			Projectile.active = false;
 			return;
 		}
-		Projectile.hide = true;
 		Timer = 0;
 	}
 
@@ -112,11 +113,7 @@ public class IstafelsSunfireGrasp_Sub_FireBall : TrailingProjectile
 		}
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		overPlayers.Add(index);
-		base.DrawBehind(index, behindNPCsAndTiles, behindNPCs, behindProjectiles, overPlayers, overWiresUI);
-	}
+
 
 	public override void DrawSelf()
 	{

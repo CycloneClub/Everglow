@@ -304,7 +304,7 @@ internal class BlackHole : ModProjectile
 		Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.Default, RasterizerState.CullNone, null, Main.Transform);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D tex = TextureAssets.MagicPixel.Value;
 		Main.spriteBatch.Draw(tex, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), new Color(0, 0, 0, (float)(100f / ((Main.LocalPlayer.Center - Projectile.Center).Length() + 100f)) * Projectile.scale / 60f));
@@ -327,10 +327,10 @@ public class TemporarySys : ModSystem// 暂时用一个ModSystem上滤镜
 {
 	public override void Load()
 	{
-		Terraria.Graphics.Effects.On_FilterManager.EndCapture += FilterManager_EndCapture;
+		Terraria.Graphics.Effects.On_FilterManager.EndCapture_RenderTarget2D_RenderTarget2D_RenderTarget2D_Vector2_Vector2_Vector2 += FilterManager_EndCapture;
 	}
 
-	private void FilterManager_EndCapture(Terraria.Graphics.Effects.On_FilterManager.orig_EndCapture orig, Terraria.Graphics.Effects.FilterManager self, RenderTarget2D finalTexture, RenderTarget2D screenTarget1, RenderTarget2D screenTarget2, Color clearColor)
+	private void FilterManager_EndCapture(Terraria.Graphics.Effects.On_FilterManager.orig_EndCapture_RenderTarget2D_RenderTarget2D_RenderTarget2D_Vector2_Vector2_Vector2 orig, Terraria.Graphics.Effects.FilterManager self, RenderTarget2D finalTexture, RenderTarget2D screenTarget1, RenderTarget2D screenTarget2, Vector2 screenSize, Vector2 sceneSize, Vector2 sceneOffset)
 	{
 		if (BlackHole.ProjActive())
 		{
@@ -365,6 +365,6 @@ public class TemporarySys : ModSystem// 暂时用一个ModSystem上滤镜
 			BlackHole.DrawRing(proj, true);
 			sb.End();
 		}
-		orig(self, finalTexture, screenTarget1, screenTarget2, clearColor);
+		orig(self, finalTexture, screenTarget1, screenTarget2, screenSize, sceneSize, sceneOffset);
 	}
 }

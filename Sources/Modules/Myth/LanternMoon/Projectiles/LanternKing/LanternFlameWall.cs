@@ -34,11 +34,11 @@ public class LanternFlameWall : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 		Projectile.aiStyle = -1;
 		Projectile.ignoreWater = true;
 		Projectile.tileCollide = false;
 		ProjectileID.Sets.DrawScreenCheckFluff[Type] = 10240;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Projectile.type] = true;
 		Projectile.timeLeft = 1500;
 		Projectile.hostile = true;
 		Projectile.friendly = false;
@@ -114,7 +114,7 @@ public class LanternFlameWall : ModProjectile
 		return CollisionUtils.Intersect(targetHitbox.Left(), targetHitbox.Right(), targetHitbox.Height, StartPos, GapEnd, 30) || CollisionUtils.Intersect(targetHitbox.Left(), targetHitbox.Right(), targetHitbox.Height, EndPos, GapStart, 30);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		float distance = (StartPos - EndPos).Length() / 16f;
 		distance = (int)distance;

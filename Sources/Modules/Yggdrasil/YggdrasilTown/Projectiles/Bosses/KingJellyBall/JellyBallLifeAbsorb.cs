@@ -2,6 +2,8 @@ using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs.KingJellyBall;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Bosses.KingJellyBall;
@@ -30,7 +32,7 @@ public class JellyBallLifeAbsorb : ModProjectile
 		Projectile.penetrate = -1;
 		Projectile.ignoreWater = true;
 		Projectile.tileCollide = false;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Projectile.type] = true;
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 	}
 
 	public override void AI()
@@ -107,7 +109,7 @@ public class JellyBallLifeAbsorb : ModProjectile
 	{
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		float timeValue = (float)Main.time * 0.03f;
 		float mulColor = 1f;

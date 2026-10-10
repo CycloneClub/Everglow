@@ -2,6 +2,7 @@ using Everglow.Commons.TileHelper;
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
 using Everglow.Yggdrasil.KelpCurtain.Items.Placeables;
 using Everglow.Yggdrasil.KelpCurtain.Projectiles.Miscs;
+using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 using Terraria.GameContent.Drawing;
 using Terraria.ObjectData;
@@ -276,6 +277,6 @@ public class GeyserAirBudsPlatform : ModTile, ITileFluentlyDrawn
 
 	public override void KillMultiTile(int i, int j, int frameX, int frameY)
 	{
-		Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 32, ModContent.ItemType<GeyserAirBudsItem>());
+		Item.NewItem(new EntitySource_TileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 16), ModContent.ItemType<GeyserAirBudsItem>());
 	}
 }

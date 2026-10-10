@@ -1,4 +1,6 @@
 using Everglow.Commons.DataStructures;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Summon;
 
@@ -25,7 +27,7 @@ public class DevilHeartGyroscope_Proj_Hit : ModProjectile
 
 	public override void AI() => base.AI();
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		float timeValue = Projectile.timeLeft / 60f;
 		var drawColor = new Color(220, 20, 239, 0);

@@ -9,6 +9,7 @@ public class BurningLanternWreck : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 		Projectile.width = 20;
 		Projectile.height = 20;
 		Projectile.aiStyle = -1;
@@ -18,7 +19,6 @@ public class BurningLanternWreck : ModProjectile
 		Projectile.tileCollide = true;
 		Projectile.timeLeft = 360;
 		Projectile.penetrate = -1;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Projectile.type] = true;
 	}
 
 	public override void OnSpawn(IEntitySource source)
@@ -75,7 +75,7 @@ public class BurningLanternWreck : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		float timeDecay = 1f;
 		if (Projectile.timeLeft < 120)

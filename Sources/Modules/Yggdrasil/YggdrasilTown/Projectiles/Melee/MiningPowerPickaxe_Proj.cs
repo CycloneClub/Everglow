@@ -2,6 +2,8 @@ using Everglow.Commons.VFX.CommonVFXDusts;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Tools;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs.ProjectileEffects;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using static Everglow.Yggdrasil.YggdrasilTown.Items.Tools.MiningPowerPickaxe;
@@ -40,6 +42,14 @@ public class MiningPowerPickaxe_Proj : ModProjectile
 	/// </summary>
 	public List<Point16> TargetTiles { get; set; } = [];
 
+	public override void PostAI()
+	{
+		bool heldByOwner = Projectile.owner >= 0 && Projectile.owner < Main.maxPlayers
+			&& Main.player[Projectile.owner].heldProj == Projectile.whoAmI;
+		Projectile.drawLayer = heldByOwner ? ProjectileDrawLayerID.HeldProj : ProjectileDrawLayerID.Default;
+		Projectile.usesOwnerLight = heldByOwner;
+	}
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 56;
@@ -56,6 +66,8 @@ public class MiningPowerPickaxe_Proj : ModProjectile
 		Projectile.ownerHitCheck = true;
 		Projectile.usesLocalNPCImmunity = true;
 		Projectile.localNPCHitCooldown = -1;
+		Projectile.drawLayer = ProjectileDrawLayerID.HeldProj;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public override void AI()
@@ -229,7 +241,7 @@ public class MiningPowerPickaxe_Proj : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		var texture = ModContent.Request<Texture2D>(Texture).Value;
 		var textureGlow = ModAsset.MiningPowerPickaxe_glow.Value;
@@ -237,16 +249,16 @@ public class MiningPowerPickaxe_Proj : ModProjectile
 		var rotation = Projectile.rotation;
 		float starSize = 1 + MathF.Sin((float)Main.time * 0.8f) * 0.3f;
 		starSize *= 0.5f;
-		var effects = (Owner.direction == 1 && Owner.gravDir == 1) || (Owner.gravDir == -1 && Owner.direction == -1) ? SpriteEffects.None : SpriteEffects.FlipVertically;
+		var effects = (player.direction == 1 && player.gravDir == 1) || (player.gravDir == -1 && player.direction == -1) ? SpriteEffects.None : SpriteEffects.FlipVertically;
 		Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, lightColor, rotation, texture.Size() * 0.5f, Projectile.scale, effects, 0f);
-		MiningPowerPickaxe pickaxe = Owner.HeldItem.ModItem as MiningPowerPickaxe;
+		MiningPowerPickaxe pickaxe = player.HeldItem.ModItem as MiningPowerPickaxe;
 		if (pickaxe is not null && pickaxe.Charge > ChargeCost)
 		{
 			Main.spriteBatch.Draw(textureGlow, Projectile.Center - Main.screenPosition, null, new Color(1f, 1f, 1f, 0.5f), rotation, texture.Size() * 0.5f, Projectile.scale, effects, 0f);
 			if (TargetTiles.Count >= 1)
 			{
 				Main.spriteBatch.Draw(textureDrillGlow, Projectile.Center - Main.screenPosition, null, new Color(1f, 1f, 1f, 0f) * starSize, rotation, texture.Size() * 0.5f, Projectile.scale, effects, 0f);
-				var drawCenter = Projectile.Center + new Vector2(28, 18 * Owner.direction * Owner.gravDir).RotatedBy(Projectile.rotation);
+				var drawCenter = Projectile.Center + new Vector2(28, 18 * player.direction * player.gravDir).RotatedBy(Projectile.rotation);
 				var star = Commons.ModAsset.CrossStar.Value;
 				Main.spriteBatch.Draw(star, drawCenter - Main.screenPosition, null, new Color(0.1f, 0.6f, 1f, 0f), 0, star.Size() * 0.5f, Projectile.scale * 0.5f * starSize, effects, 0f);
 			}

@@ -1,6 +1,8 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.KelpCurtain.NPCs.VampireMat;
 using Microsoft.CodeAnalysis;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Enemies;
@@ -39,8 +41,9 @@ public class VampireMat_Tentacle : ModProjectile
 		Projectile.ignoreWater = true;
 		Projectile.penetrate = -1;
 		Projectile.aiStyle = -1;
-		Projectile.hide = true;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Type] = true;
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCs;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public override void OnSpawn(IEntitySource source)
@@ -72,13 +75,9 @@ public class VampireMat_Tentacle : ModProjectile
 		base.OnHitPlayer(target, info);
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindNPCs.Add(index);
-		base.DrawBehind(index, behindNPCsAndTiles, behindNPCs, behindProjectiles, overPlayers, overWiresUI);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		if (ParentVampireMat is null || !ParentVampireMat.active || ParentVampireMat.type != ModContent.NPCType<VampireMat>())
 		{

@@ -1,6 +1,8 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Commons.Graphics;
 using Everglow.Yggdrasil.KelpCurtain.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.Utilities;
 
@@ -30,15 +32,13 @@ public class ArcI_Current : ModProjectile
 		Projectile.width = 30;
 		Projectile.height = 30;
 		Projectile.tileCollide = false;
-		Projectile.hide = true;
+		Projectile.drawLayer = ProjectileDrawLayerID.OverPlayers;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public override string Texture => Commons.ModAsset.Trail_10_black_Mod;
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		overPlayers.Add(index);
-	}
+
 
 	public override void OnSpawn(IEntitySource source)
 	{
@@ -196,7 +196,7 @@ public class ArcI_Current : ModProjectile
 		return value;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		if (LightningWay.Count <= 2)
 		{

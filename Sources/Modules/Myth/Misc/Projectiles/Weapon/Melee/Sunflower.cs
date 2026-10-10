@@ -1,4 +1,3 @@
-using Terraria;
 
 namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee;
 
@@ -38,7 +37,7 @@ public class Sunflower : ModProjectile
             Texture2D texture = ModContent.Request<Texture2D>("Everglow/Myth/Misc/Projectiles/Weapon/Melee/Sunflower_Glow").Value;
             Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, new Rectangle(0, 46 * Projectile.frame,46,46), new Color(0.7f,0.7f,0.7f, 0), Projectile.rotation, new Vector2(23f, 23f), 1f, SpriteEffects.None, 0f);
         }*/
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D texture = ModContent.Request<Texture2D>("Everglow/Myth/Misc/Projectiles/Weapon/Melee/Sunflower").Value;
 		Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, new Rectangle(0, 46 * Projectile.frame, 46, 46), lightColor, Projectile.rotation, new Vector2(23), 1f, SpriteEffects.None, 0f);

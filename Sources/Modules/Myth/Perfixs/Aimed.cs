@@ -14,7 +14,17 @@ public class Aimed : ModPrefix
 
 	public override void Apply(Item item)
 	{
-		item.FindOwner(item.whoAmI);
+		if (Main.netMode != NetmodeID.SinglePlayer)
+		{
+			foreach (WorldItem worldItem in Main.item)
+			{
+				if (worldItem.active && ReferenceEquals(worldItem.inner, item))
+				{
+					worldItem.FindOwner();
+					break;
+				}
+			}
+		}
 		base.Apply(item);
 	}
 

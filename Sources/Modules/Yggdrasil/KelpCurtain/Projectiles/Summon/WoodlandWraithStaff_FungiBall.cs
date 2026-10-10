@@ -4,6 +4,8 @@ using Everglow.Yggdrasil.KelpCurtain.Dusts;
 using Everglow.Yggdrasil.KelpCurtain.Items.Armors.Ruin;
 using Everglow.Yggdrasil.KelpCurtain.VFXs;
 using Everglow.Yggdrasil.WorldGeneration;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Summon;
@@ -245,7 +247,7 @@ public class WoodlandWraithStaff_FungiBall : ModProjectile
 	{
 		if (State == States.FlyAround)
 		{
-			if (Owner.IsStandingStillForSpecialEffects)
+			if (Owner.IsConsideredStandingStill)
 			{
 				PlayerStopTimer++;
 				if (PlayerStopTimer > 120)
@@ -556,7 +558,7 @@ public class WoodlandWraithStaff_FungiBall : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		// Draw self when not mycelume.
 		if (MyceliumAmount <= 0 || State != States.Mycelume)

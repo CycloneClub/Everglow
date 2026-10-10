@@ -40,7 +40,6 @@ public class DevilHeartHelmet : ModItem
 		player.GetDamage<SummonDamageClass>() += 0.08f; // Increases summon damage by 8%
 		player.maxMinions += 1; // Increases the number of minions the player can summon by 1
 		player.GetAttackSpeed<SummonDamageClass>() += 0.15f; // Increases summon attack speed by 15%
-		player.setBonus = this.GetLocalizedValue(LocalizationUtils.LocalizationKeys.SetBonus);
 	}
 
 	public override void AddRecipes()

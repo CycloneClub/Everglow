@@ -1,5 +1,7 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.SquamousShell;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
 
@@ -95,12 +97,9 @@ public class EyeOfAnabiosis_Matrix : ModProjectile
 		Projectile.netUpdate = true;
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		base.DrawBehind(index, behindNPCsAndTiles, behindNPCs, behindProjectiles, overPlayers, overWiresUI);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		float wink = Math.Clamp(Math.Min(WinkTimer, Projectile.timeLeft) / 60f, 0, 1);
 		wink = MathF.Pow(wink, 2);

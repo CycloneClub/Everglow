@@ -1,6 +1,7 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Commons.Skeleton2D.Renderer;
 using Everglow.Commons.Skeleton2D;
+using Microsoft.Xna.Framework;
 using Terraria.IO;
 using Everglow.Commons.Coroutines;
 using Everglow.Commons.Skeleton2D.Reader;
@@ -104,7 +105,7 @@ public class Faelanternbranch : ModProjectile
 		return;
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		var size = new Vector2(Projectile.width, Projectile.height);
 		Vector2 pos = Projectile.position - Main.screenPosition;

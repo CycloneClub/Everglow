@@ -56,7 +56,7 @@ public class ChoppingBlock : ModTile
 			item.stack--;
 			if (item.stack <= 0)
 			{
-				item.active = false;
+				item.TurnToAir();
 			}
 			Item.NewItem(null, new Vector2((int)(i - (tile.TileFrameX % 54 - 18f) / 18f), j) * 16 + new Vector2(8, -8), ModContent.ItemType<SpicyPepperRing>(), 1);
 			for (int t = 0; t < 12; t++)

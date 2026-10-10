@@ -1,6 +1,8 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Commons.Graphics;
 using Everglow.Yggdrasil.KelpCurtain.NPCs.VampireMat;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Enemies;
 
@@ -44,7 +46,7 @@ public class VampireMat_Attack_Proj_Ball_In_AbsorbVortex2 : ModProjectile
 		Projectile.friendly = false;
 		Projectile.hostile = true;
 		ProjectileID.Sets.DrawScreenCheckFluff[Type] = 4096;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Type] = true;
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 	}
 
 	private bool initialized;
@@ -188,7 +190,7 @@ public class VampireMat_Attack_Proj_Ball_In_AbsorbVortex2 : ModProjectile
 		base.OnHitPlayer(target, info);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;
 		Main.spriteBatch.End();

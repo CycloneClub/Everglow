@@ -18,11 +18,11 @@ public class GoldLanternLine : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 		Projectile.aiStyle = -1;
 		Projectile.ignoreWater = true;
 		Projectile.tileCollide = true;
 		ProjectileID.Sets.DrawScreenCheckFluff[Type] = 10240;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Projectile.type] = true;
 		Projectile.timeLeft = 300;
 		Projectile.hostile = true;
 		Projectile.friendly = false;
@@ -57,9 +57,9 @@ public class GoldLanternLine : ModProjectile
 		return base.Colliding(projHitbox, targetHitbox);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
-		Player player = Main.player[Player.FindClosest(Projectile.Center, 0, 0)];
+		Player targetPlayer = Main.player[Player.FindClosest(Projectile.Center, 0, 0)];
 		Texture2D star = Commons.ModAsset.StarSlash.Value;
 		float width = 0.5f;
 		if (Projectile.timeLeft < 200)
@@ -94,7 +94,7 @@ public class GoldLanternLine : ModProjectile
 
 		if (Timer > 50 && Timer < 100)
 		{
-			float rot = Vector2.Normalize(player.Center - Projectile.Center).ToRotationSafe() + MathHelper.PiOver2;
+			float rot = Vector2.Normalize(targetPlayer.Center - Projectile.Center).ToRotationSafe() + MathHelper.PiOver2;
 			if (Timer >= 80)
 			{
 				rot = LaserDirection + MathHelper.PiOver2;

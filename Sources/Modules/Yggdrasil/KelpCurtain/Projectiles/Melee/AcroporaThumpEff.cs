@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using Terraria;
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Melee;
 
 public class AcroporaThumpEff : ModProjectile
@@ -18,10 +20,11 @@ public class AcroporaThumpEff : ModProjectile
 		Projectile.tileCollide = false;
 		Projectile.penetrate = -1;
 		Projectile.extraUpdates = 3;
-		Projectile.hide = true;
 		Projectile.DamageType = DamageClass.Melee;
 		ProjectileID.Sets.DrawScreenCheckFluff[Projectile.type] = 100;
 		oldPos = new Vector2[35];
+		Projectile.drawLayer = ProjectileDrawLayerID.OverPlayers;
+		Projectile.usesOwnerLight = true;
 	}
 
 	private Vector2[] oldPos = new Vector2[35];
@@ -61,18 +64,14 @@ public class AcroporaThumpEff : ModProjectile
 		Projectile.position += Projectile.velocity * 6;
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		overPlayers.Add(index);
-		base.DrawBehind(index, behindNPCsAndTiles, behindNPCs, behindProjectiles, overPlayers, overWiresUI);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		return false;
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		var bars = new List<Vertex2D>();
 		var barsII = new List<Vertex2D>();

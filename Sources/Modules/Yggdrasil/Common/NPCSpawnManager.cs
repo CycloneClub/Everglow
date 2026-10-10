@@ -1,4 +1,6 @@
 using SubworldLibrary;
+using System.Collections.Generic;
+using Terraria;
 
 namespace Everglow.Yggdrasil.Common;
 
@@ -8,7 +10,7 @@ public class NPCSpawnManager : GlobalNPC
 
 	public static void RegisterNPC(int type) => yggdrasilNPC.Add(type);
 
-	public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
+	public override void EditSpawnPool(IDictionary<int, float> pool, NPC.Spawner spawner)
 	{
 		if (!SubworldSystem.IsActive<YggdrasilWorld>())
 		{

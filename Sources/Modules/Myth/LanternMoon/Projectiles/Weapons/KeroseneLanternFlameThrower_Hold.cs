@@ -136,16 +136,25 @@ public class KeroseneLanternFlameThrower_Hold : HandholdProjectile, IWarpProject
 		return 12f;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
-		DrawBaseTexture(lightColor);
+		Player previousDrawPlayer = DrawPlayer;
+		DrawPlayer = player;
+		try
+		{
+			DrawBaseTexture(lightColor);
 
-		return false;
+			return false;
+		}
+		finally
+		{
+			DrawPlayer = previousDrawPlayer;
+		}
 	}
 
 	public override void DrawBaseTexture(Color lightColor)
 	{
-		Player player = Main.player[Projectile.owner];
+		Player player = (DrawPlayer ?? Main.player[Projectile.owner]);
 		var texMain = ModAsset.KeroseneLanternFlameThrower_Hold.Value;
 		SpriteEffects se = SpriteEffects.None;
 		if (player.direction == -1)

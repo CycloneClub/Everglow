@@ -56,7 +56,7 @@ public class ScaleWingBladeProj : MeleeProj
 				for (int i = 0; i < counts; i++)
 				{
 					Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), target.Center, Main.rand.NextVector2Unit() * Main.rand.Next(6, 13), ModContent.ProjectileType<ButterflyDreamFriendly>(), Projectile.damage / 4, 0, Main.myPlayer, target.whoAmI);
-					proj.netUpdate2 = true;
+					proj.netUpdate = true;
 					proj.CritChance = Projectile.CritChance;
 				}
 			}
@@ -70,7 +70,7 @@ public class ScaleWingBladeProj : MeleeProj
 				for (int i = 0; i < counts; i++)
 				{
 					Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), target.Center, Main.rand.NextVector2Unit() * Main.rand.Next(6, 13), ModContent.ProjectileType<ButterflyDreamFriendly>(), Projectile.damage / 4, 0, Main.myPlayer, target.whoAmI);
-					proj.netUpdate2 = true;
+					proj.netUpdate = true;
 					proj.CritChance = Projectile.CritChance;
 				}
 			}
@@ -276,7 +276,7 @@ public class ScaleWingBladeProj : MeleeProj
 						{
 							var vel = new Vector2(Projectile.spriteDirection * 10, 0);
 							Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + vel, vel + Main.rand.NextVector2Unit() * 5, ModContent.ProjectileType<ButterflyDreamFriendly>(), Projectile.damage / 2, 0, Main.myPlayer, target.whoAmI);
-							proj.netUpdate2 = true;
+							proj.netUpdate = true;
 							proj.CritChance = Projectile.CritChance;
 						}
 					}

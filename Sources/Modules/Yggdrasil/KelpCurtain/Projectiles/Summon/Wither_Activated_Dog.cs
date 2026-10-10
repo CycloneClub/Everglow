@@ -1,4 +1,6 @@
 using Everglow.Yggdrasil.KelpCurtain.Buffs;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Summon;
 
@@ -483,7 +485,7 @@ public class Wither_Activated_Dog : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		Rectangle drawFrame = new Rectangle(0, Projectile.frame * 64, 94, 64);
 		Texture2D mainTex = ModAsset.Wither_Activated_Dog.Value;

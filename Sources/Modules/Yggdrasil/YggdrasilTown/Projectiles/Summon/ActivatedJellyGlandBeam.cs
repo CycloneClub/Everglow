@@ -1,4 +1,6 @@
 using Everglow.Commons.VFX.CommonVFXDusts;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Summon;
@@ -39,7 +41,7 @@ public class ActivatedJellyGlandBeam : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		return false;
 	}

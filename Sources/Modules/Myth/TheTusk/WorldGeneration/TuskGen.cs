@@ -2,6 +2,7 @@ using Everglow.Myth.Common;
 using Everglow.Myth.TheFirefly.WorldGeneration;
 using Everglow.Myth.TheTusk.Tiles;
 using SubworldLibrary;
+using System.Collections.Generic;
 using Terraria.Graphics.Effects;
 using Terraria.IO;
 using Terraria.ModLoader.IO;
@@ -118,7 +119,7 @@ public class TuskGen : ModSystem
 		}
 	}
 
-	public override void ModifyWorldGenTasks(List<GenPass> tasks, ref double totalWeight)
+	public override void ModifyWorldGenTasks(List<GenPass> tasks)
 	{
 		tasks.Add(new WorldTuskLandGenPass());
 	}

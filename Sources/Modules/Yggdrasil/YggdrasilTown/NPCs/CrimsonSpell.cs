@@ -1,6 +1,7 @@
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Enemies;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.NPCs;
@@ -33,7 +34,7 @@ public class CrimsonSpell : ModNPC
 	{
 	}
 
-	public override float SpawnChance(NPC.Spawner spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawner)
 	{
 		YggdrasilTownBiome YggdrasilTownBiome = ModContent.GetInstance<YggdrasilTownBiome>();
 		if (!YggdrasilTownBiome.IsBiomeActive(Main.LocalPlayer))

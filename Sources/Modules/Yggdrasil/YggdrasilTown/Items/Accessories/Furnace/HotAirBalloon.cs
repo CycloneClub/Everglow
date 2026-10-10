@@ -1,3 +1,4 @@
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories.Furnace;
@@ -80,7 +81,7 @@ internal class HotAirBalloonPlayer : ModPlayer
 			DrawData item_glow;
 			Texture2D ballonTexture = ModAsset.HotAirBalloon_Balloon.Value;
 
-			int num = (Main.hasFocus && (!Main.ingameOptionsWindow || !Main.autoPause)) ? (DateTime.Now.Millisecond % 800 / 200) : 0;
+			int num = (FocusHelper.IsSelectedApplication/* tModPorter Suggestion: Also consider FocusHelper.AllowInputProcessing, FocusHelper.GameplayActive, FocusHelper.UpdateVisualEffects, or others */ && (!Main.ingameOptionsWindow || !Main.autoPause)) ? (DateTime.Now.Millisecond % 800 / 200) : 0;
 			Vector2 vector = Main.OffsetsPlayerOffhand[drawInfo.drawPlayer.bodyFrame.Y / 56];
 			if (drawInfo.drawPlayer.direction != 1)
 			{

@@ -1,5 +1,6 @@
 using Everglow.Myth.Common;
 using Everglow.Myth.TheFirefly.Items.Materials;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent.ItemDropRules;
 
@@ -24,7 +25,7 @@ public class Dendroid_normal : ModNPC
 		NPC.aiStyle = NPCAIStyleID.Fighter;
 	}
 
-	public override float SpawnChance(NPC.Spawner spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawner)
 	{
 		FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
 		if (!fireflyBiome.IsBiomeActive(Main.LocalPlayer))

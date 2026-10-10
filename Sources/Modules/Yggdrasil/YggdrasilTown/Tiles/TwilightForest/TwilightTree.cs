@@ -3,6 +3,7 @@ using Everglow.Commons.TileHelper;
 using Everglow.Yggdrasil.WorldGeneration;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts.TwilightForest;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
+using Microsoft.Xna.Framework;
 using Terraria.GameContent.Drawing;
 using Terraria.Localization;
 
@@ -232,8 +233,8 @@ public class TwilightTree : ModTile, ITileFluentlyDrawn
 					Dust.NewDust(new Vector2(i, breakingY) * 16, 16, 16, DustType);
 					Dust.NewDust(new Vector2(i + 1, breakingY) * 16, 16, 16, DustType);
 				}
-				Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, breakingY), i * 16, breakingY * 16, 16, 16, new Item(ModContent.ItemType<TwilightEucalyptusWood_Item>(), 1));
-				Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, breakingY), i * 16 + 16, breakingY * 16, 16, 16, new Item(ModContent.ItemType<TwilightEucalyptusWood_Item>(), 1));
+				Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, breakingY), new Point(i, breakingY).ToWorldCoordinates(), new Item(ModContent.ItemType<TwilightEucalyptusWood_Item>(), 1));
+				Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, breakingY), new Vector2(i * 16 + 16 + 16 / 2, breakingY * 16 + 16 / 2), new Item(ModContent.ItemType<TwilightEucalyptusWood_Item>(), 1));
 			}
 			else
 			{

@@ -139,21 +139,39 @@ public class GoldRoundYoyo : YoyoProjectile
 		base.OnHitNPC(target, hit, damageDone);
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
-		Texture2D texture = ModAsset.GoldRoundYoyoGlow.Value;
-		Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, new Color(1f, 0.7f, 0.1f, 0), Projectile.rotation, new Vector2(texture.Width / 2f, texture.Height / 2f), Projectile.scale, SpriteEffects.None, 0);
+		Player previousDrawPlayer = DrawPlayer;
+		DrawPlayer = player;
+		try
+		{
+			Texture2D texture = ModAsset.GoldRoundYoyoGlow.Value;
+			Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, new Color(1f, 0.7f, 0.1f, 0), Projectile.rotation, new Vector2(texture.Width / 2f, texture.Height / 2f), Projectile.scale, SpriteEffects.None, 0);
+		}
+		finally
+		{
+			DrawPlayer = previousDrawPlayer;
+		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
-		DrawCorona();
-		DrawYoyo_String();
-		DrawCorona2();
-		DrawBurningLine();
-		Texture2D texture = ModAsset.Melee_GoldRoundYoyo.Value;
-		Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, new Vector2(texture.Width / 2f, texture.Height / 2f), Projectile.scale, SpriteEffects.None, 0);
-		return false;
+		Player previousDrawPlayer = DrawPlayer;
+		DrawPlayer = player;
+		try
+		{
+			DrawCorona();
+			DrawYoyo_String();
+			DrawCorona2();
+			DrawBurningLine();
+			Texture2D texture = ModAsset.Melee_GoldRoundYoyo.Value;
+			Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, new Vector2(texture.Width / 2f, texture.Height / 2f), Projectile.scale, SpriteEffects.None, 0);
+			return false;
+		}
+		finally
+		{
+			DrawPlayer = previousDrawPlayer;
+		}
 	}
 
 	public void DrawCorona()

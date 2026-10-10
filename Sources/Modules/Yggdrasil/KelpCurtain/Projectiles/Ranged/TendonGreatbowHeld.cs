@@ -1,4 +1,6 @@
 using Everglow.Yggdrasil.KelpCurtain.Items.Weapons;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent;
@@ -22,6 +24,14 @@ public class TendonGreatbowHeld : ModProjectile
 
 	public override string Texture => $"Terraria/Images/Item_{ItemID.Marrow}";
 
+	public override void PostAI()
+	{
+		bool heldByOwner = Projectile.owner >= 0 && Projectile.owner < Main.maxPlayers
+			&& Main.player[Projectile.owner].heldProj == Projectile.whoAmI;
+		Projectile.drawLayer = heldByOwner ? ProjectileDrawLayerID.HeldProj : ProjectileDrawLayerID.Default;
+		Projectile.usesOwnerLight = heldByOwner;
+	}
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 20;
@@ -32,6 +42,8 @@ public class TendonGreatbowHeld : ModProjectile
 		Projectile.ignoreWater = true;
 		Projectile.penetrate = -1;
 		Projectile.timeLeft = 2;
+		Projectile.drawLayer = ProjectileDrawLayerID.HeldProj;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public override bool ShouldUpdatePosition() => false;
@@ -102,7 +114,7 @@ public class TendonGreatbowHeld : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		if (!Main.dedServ)
 		{

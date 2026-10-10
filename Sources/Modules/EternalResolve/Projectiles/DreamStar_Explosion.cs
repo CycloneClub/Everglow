@@ -1,4 +1,6 @@
 using Everglow.EternalResolve.Items.Weapons.StabbingSwords.Dusts;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 
@@ -63,7 +65,7 @@ namespace Everglow.EternalResolve.Projectiles
 			Projectile.velocity *= 0;
 		}
 
-		public override bool PreDraw(Player player, ref Color lightColor)
+		public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 		{
 			return false;
 		}

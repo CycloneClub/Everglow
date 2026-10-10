@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.GameContent;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Miscs.VineWand;
@@ -136,7 +138,7 @@ public class VineEnergyOrb : ModProjectile
 		// 使用基于时间的偏移，使曲线有动态变化
 		float offsetAmount = 40f;
 		float timeOffset = (float)Main.timeForVisualEffects * 0.03f;
-		float sinOffset = (float)System.Math.Sin(timeOffset + Projectile.identity * 0.5f) * offsetAmount;
+		float sinOffset = (float)System.Math.Sin(timeOffset + Projectile.IndexForVisuals * 0.5f) * offsetAmount;
 
 		Vector2 controlPoint = lineCenter + perpendicular * sinOffset;
 
@@ -149,7 +151,7 @@ public class VineEnergyOrb : ModProjectile
 		return position;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		// 绘制细长拖尾
 		DrawTrail();

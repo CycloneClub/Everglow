@@ -4,6 +4,7 @@ public class PrimordialJadeWinged_SpearShake : ModProjectile
 {
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCsAndTiles;
 		Projectile.width = 100;
 		Projectile.height = 180;
 		Projectile.ignoreWater = true;
@@ -16,19 +17,13 @@ public class PrimordialJadeWinged_SpearShake : ModProjectile
 
 	public override void AI()
 	{
-		Projectile.hide = true;
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindNPCsAndTiles.Add(index);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-		Player player = Main.player[Projectile.owner];
 		var Vx = new List<Vertex2D>();
 		Vector2 Vbase = Projectile.Center - Main.screenPosition + new Vector2(0, 24 * player.gravDir);
 		var v0 = new Vector2(0, -1);

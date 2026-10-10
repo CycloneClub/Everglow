@@ -1,5 +1,7 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.KelpCurtain.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Magic;
@@ -25,7 +27,8 @@ public class EmptyWaterStaff_proj_bubble : ModProjectile, IWarpProjectile_warpSt
 		Projectile.tileCollide = false;
 		Projectile.timeLeft = 180;
 		Projectile.penetrate = -1;
-		Projectile.hide = true;
+		Projectile.drawLayer = ProjectileDrawLayerID.OverPlayers;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public override void OnSpawn(IEntitySource source)
@@ -126,12 +129,9 @@ public class EmptyWaterStaff_proj_bubble : ModProjectile, IWarpProjectile_warpSt
 		return scale * 1.5f;
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		overPlayers.Add(index);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		GenerateBubbleBound();
 		if (BubbleBound.Count <= 0)

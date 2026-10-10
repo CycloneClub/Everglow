@@ -77,22 +77,31 @@ public class StarDancer : ClubProj
 		}
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
-		SpriteEffects effects = SpriteEffects.None;
-		if (Projectile.spriteDirection == 1)
+		Player previousDrawPlayer = DrawPlayer;
+		DrawPlayer = player;
+		try
 		{
-			effects = SpriteEffects.FlipHorizontally;
-		}
+			SpriteEffects effects = SpriteEffects.None;
+			if (Projectile.spriteDirection == 1)
+			{
+				effects = SpriteEffects.FlipHorizontally;
+			}
 
-		Texture2D texture = ModAsset.StarDancer_glow.Value;
-		Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, texture.Size() / 2f, Projectile.scale, effects, 0f);
-		for (int i = 0; i < 5; i++)
+			Texture2D texture = ModAsset.StarDancer_glow.Value;
+			Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, texture.Size() / 2f, Projectile.scale, effects, 0f);
+			for (int i = 0; i < 5; i++)
+			{
+				float fade = Omega * 2f + 0.2f;
+				fade *= (5 - i) / 5f;
+				var color2 = new Color(fade, fade, fade, 0);
+				Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, color2, Projectile.rotation - i * 0.75f * Omega, texture.Size() / 2f, Projectile.scale, effects, 0f);
+			}
+		}
+		finally
 		{
-			float fade = Omega * 2f + 0.2f;
-			fade *= (5 - i) / 5f;
-			var color2 = new Color(fade, fade, fade, 0);
-			Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, color2, Projectile.rotation - i * 0.75f * Omega, texture.Size() / 2f, Projectile.scale, effects, 0f);
+			DrawPlayer = previousDrawPlayer;
 		}
 	}
 

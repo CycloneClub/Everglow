@@ -79,9 +79,8 @@ internal class StarSlingshot : SlingshotProjectile
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, vertex2Ds.ToArray(), 0, vertex2Ds.Count - 2);
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
-		Player player = Main.player[Projectile.owner];
 		Texture2D TexMain = ModAsset.StarSlingsh_glow.Value;
 		var drawColor = new Color(255, 255, 255, 0);
 		SpriteEffects spriteEffect = SpriteEffects.None;
@@ -92,6 +91,6 @@ internal class StarSlingshot : SlingshotProjectile
 		}
 
 		Main.spriteBatch.Draw(TexMain, Projectile.Center - Main.screenPosition, null, drawColor, DrawRot, TexMain.Size() / 2f, 1f, spriteEffect, 0);
-		base.PostDraw(lightColor);
+		base.PostDraw(player, lightColor);
 	}
 }

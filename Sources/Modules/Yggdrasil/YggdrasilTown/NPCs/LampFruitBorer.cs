@@ -4,6 +4,7 @@ using Everglow.Commons.Templates.Enemies;
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.Items.PermanentBoosters;
+using Terraria;
 using Terraria.GameContent.ItemDropRules;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.NPCs;
@@ -62,7 +63,7 @@ public class LampFruitBorer : Caterpillar
 		return base.GetDrawFrame(Style);
 	}
 
-	public override float SpawnChance(NPC.Spawner spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawner)
 	{
 		YggdrasilTownBiome YggdrasilTownBiome = ModContent.GetInstance<YggdrasilTownBiome>();
 		if (!YggdrasilTownBiome.IsBiomeActive(Main.LocalPlayer))

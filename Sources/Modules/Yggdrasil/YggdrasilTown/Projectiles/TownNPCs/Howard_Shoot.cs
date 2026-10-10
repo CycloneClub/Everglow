@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 
@@ -16,7 +18,6 @@ public class Howard_Shoot : ModProjectile, IWarpProjectile_warpStyle2
 	public override void SetDefaults()
 	{
 		Projectile.usesLocalNPCImmunity = true;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Type] = true;
 		Projectile.localNPCHitCooldown = 60;
 		Projectile.ArmorPenetration = 0;
 		Projectile.friendly = true;
@@ -27,6 +28,7 @@ public class Howard_Shoot : ModProjectile, IWarpProjectile_warpStyle2
 		Projectile.height = 10;
 		Projectile.aiStyle = -1;
 		Target = null;
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 	}
 
 	public override void OnSpawn(IEntitySource source)
@@ -163,7 +165,7 @@ public class Howard_Shoot : ModProjectile, IWarpProjectile_warpStyle2
 		return false;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		Texture2D tex = ModAsset.Howard_Shoot.Value;
 		float gunRot = Projectile.rotation - MathHelper.PiOver2;

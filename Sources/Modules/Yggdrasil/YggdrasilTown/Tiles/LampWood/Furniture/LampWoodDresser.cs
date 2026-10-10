@@ -22,9 +22,9 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood.Furniture
 			TileID.Sets.DisableSmartCursor[Type] = true;
 			TileID.Sets.BasicDresser[Type] = true;
 			TileID.Sets.AvoidedByNPCs[Type] = true;
-			TileID.Sets.InteractibleByNPCs[Type] = true;
+			TileID.Sets.InteractableByNPCs[Type] = true;
 			TileID.Sets.IsAContainer[Type] = true;
-			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
+			TileID.Sets.RoomNeeds.CountsAsTable[Type] = true;
 
 			AdjTiles = new int[] { TileID.Dressers };
 			DustType = ModContent.DustType<LampWood_Dust>();
@@ -96,7 +96,6 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood.Furniture
 					if (left == player.chestX && top == player.chestY && player.chest != -1)
 					{
 						player.chest = -1;
-						Recipe.FindRecipes();
 						SoundEngine.PlaySound(SoundID.MenuClose);
 					}
 					else
@@ -116,7 +115,6 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood.Furniture
 						if (chestIndex == player.chest)
 						{
 							player.chest = -1;
-							Recipe.FindRecipes();
 							SoundEngine.PlaySound(SoundID.MenuClose);
 						}
 						else if (chestIndex != player.chest && player.chest == -1)
@@ -129,7 +127,6 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood.Furniture
 							player.OpenChest(left, top, chestIndex);
 							SoundEngine.PlaySound(SoundID.MenuTick);
 						}
-						Recipe.FindRecipes();
 					}
 				}
 			}
@@ -137,7 +134,6 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood.Furniture
 			{
 				Main.playerInventory = false;
 				player.chest = -1;
-				Recipe.FindRecipes();
 				player.SetTalkNPC(-1);
 				Main.npcChatCornerItem = 0;
 				Main.npcChatText = string.Empty;

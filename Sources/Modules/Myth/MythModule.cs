@@ -34,7 +34,7 @@ public class MythModule : EverglowModule
 			IL_WaterShaderData.Apply += WaterShaderData_Apply;
 			On_WaterShaderData.StepLiquids += WaterShaderData_StepLiquids;
 
-			On_FilterManager.EndCapture += FilterManager_EndCapture;
+			On_FilterManager.EndCapture_RenderTarget2D_RenderTarget2D_RenderTarget2D_Vector2_Vector2_Vector2 += FilterManager_EndCapture;
 			SkyManager.Instance["TuskSky"] = new TheTusk.Backgrounds.TuskBiomeSky();
 
 			On_WorldGen.oceanDepths += WorldGen_oceanDepths;
@@ -56,11 +56,11 @@ public class MythModule : EverglowModule
 		ReplaceEffectPass = null;
 	}
 
-	private void FilterManager_EndCapture(On_FilterManager.orig_EndCapture orig, FilterManager self, RenderTarget2D finalTexture, RenderTarget2D screenTarget1, RenderTarget2D screenTarget2, Color clearColor)
+	private void FilterManager_EndCapture(On_FilterManager.orig_EndCapture_RenderTarget2D_RenderTarget2D_RenderTarget2D_Vector2_Vector2_Vector2 orig, FilterManager self, RenderTarget2D finalTexture, RenderTarget2D screenTarget1, RenderTarget2D screenTarget2, Vector2 screenSize, Vector2 sceneSize, Vector2 sceneOffset)
 	{
 		fogPass.Update();
 		fogPass.Apply(screenTarget1, screenTarget2);
-		orig(self, finalTexture, screenTarget1, screenTarget2, clearColor);
+		orig(self, finalTexture, screenTarget1, screenTarget2, screenSize, sceneSize, sceneOffset);
 	}
 
 	private void WaterShaderData_Apply(ILContext il)

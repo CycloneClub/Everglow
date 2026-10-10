@@ -340,7 +340,6 @@ public static class FurnitureUtils
 			if (left == player.chestX && top == player.chestY && player.chest >= 0)
 			{
 				player.chest = -1;
-				Recipe.FindRecipes();
 				SoundEngine.PlaySound(SoundID.MenuClose);
 			}
 			else
@@ -364,13 +363,12 @@ public static class FurnitureUtils
 				{
 					player.chest = chest;
 					Main.playerInventory = true;
-					Main.recBigList = false;
+					Main.PipsUseGrid = false;
 					player.chestX = left;
 					player.chestY = top;
 					SoundEngine.PlaySound(SoundID.MenuOpen);
 				}
 
-				Recipe.FindRecipes();
 			}
 		}
 		return true;
@@ -504,7 +502,6 @@ public static class FurnitureUtils
 				if (left == player.chestX && top == player.chestY && player.chest != -1)
 				{
 					player.chest = -1;
-					Recipe.FindRecipes();
 					SoundEngine.PlaySound(SoundID.MenuClose);
 				}
 				else
@@ -523,14 +520,13 @@ public static class FurnitureUtils
 					if (num213 == player.chest)
 					{
 						player.chest = -1;
-						Recipe.FindRecipes();
 						SoundEngine.PlaySound(SoundID.MenuClose);
 					}
 					else if (num213 != player.chest && player.chest == -1)
 					{
 						player.chest = num213;
 						Main.playerInventory = true;
-						Main.recBigList = false;
+						Main.PipsUseGrid = false;
 						SoundEngine.PlaySound(SoundID.MenuOpen);
 						player.chestX = left;
 						player.chestY = top;
@@ -539,12 +535,11 @@ public static class FurnitureUtils
 					{
 						player.chest = num213;
 						Main.playerInventory = true;
-						Main.recBigList = false;
+						Main.PipsUseGrid = false;
 						SoundEngine.PlaySound(SoundID.MenuTick);
 						player.chestX = left;
 						player.chestY = top;
 					}
-					Recipe.FindRecipes();
 					return true;
 				}
 			}
@@ -552,7 +547,6 @@ public static class FurnitureUtils
 		}
 		Main.playerInventory = false;
 		player.chest = -1;
-		Recipe.FindRecipes(false);
 		Main.interactedDresserTopLeftX = Player.tileTargetX;
 		Main.interactedDresserTopLeftY = Player.tileTargetY;
 		Main.OpenClothesWindow();

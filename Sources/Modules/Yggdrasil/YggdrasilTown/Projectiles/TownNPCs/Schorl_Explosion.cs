@@ -1,5 +1,7 @@
 using Everglow.Yggdrasil.YggdrasilTown.Dusts.TownNPCAttack;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.TownNPCs;
@@ -13,7 +15,6 @@ public class Schorl_Explosion : ModProjectile
 	public override void SetDefaults()
 	{
 		Projectile.usesLocalNPCImmunity = true;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Type] = true;
 		Projectile.localNPCHitCooldown = 60;
 		Projectile.ArmorPenetration = 0;
 		Projectile.friendly = true;
@@ -24,6 +25,7 @@ public class Schorl_Explosion : ModProjectile
 		Projectile.height = 10;
 		Projectile.extraUpdates = 8;
 		Projectile.aiStyle = -1;
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 	}
 
 	public override void OnSpawn(IEntitySource source)
@@ -75,7 +77,7 @@ public class Schorl_Explosion : ModProjectile
 		return base.Colliding(projHitbox, targetHitbox);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		float timeValue = (120 - Projectile.timeLeft) / 120f;
 		float dark = MathF.Pow(timeValue, 0.5f);

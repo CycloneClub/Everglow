@@ -10,6 +10,7 @@ public class CobaltClub_falling : TrailingProjectile
 
 	public override void SetCustomDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCsAndTiles;
 		Projectile.width = 30;
 		Projectile.height = 30;
 		Projectile.aiStyle = -1;
@@ -46,17 +47,11 @@ public class CobaltClub_falling : TrailingProjectile
 		return false;
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindNPCsAndTiles.Add(index);
-		base.DrawBehind(index, behindNPCsAndTiles, behindNPCs, behindProjectiles, overPlayers, overWiresUI);
-	}
 
 	private int timeCounter = 0;
 
 	public override void AI()
 	{
-		Projectile.hide = true;
 		if (!hasHitTile)
 		{
 			if (Projectile.timeLeft < 60)
@@ -90,9 +85,9 @@ public class CobaltClub_falling : TrailingProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
-		return base.PreDraw(ref lightColor);
+		return base.PreDraw(player, ref lightColor);
 	}
 
 	public override void DrawSelf()

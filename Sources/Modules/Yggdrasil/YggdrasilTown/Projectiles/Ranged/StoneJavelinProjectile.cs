@@ -13,11 +13,6 @@ public class StoneJavelinProjectile : ModProjectile
 		set => Projectile.ai[2] = value;
 	}
 
-	public override void SetStaticDefaults()
-	{
-		ProjectileID.Sets.DontAttachHideToAlpha[Type] = true;
-	}
-
 	public override void SetDefaults()
 	{
 		Projectile.width = 16; // The width of projectile hitbox
@@ -30,7 +25,7 @@ public class StoneJavelinProjectile : ModProjectile
 		Projectile.timeLeft = 600; // The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
 		Projectile.ignoreWater = true; // Does the projectile's speed be influenced by water?
 		Projectile.tileCollide = true; // Can the projectile collide with tiles?
-		Projectile.hide = true; // Makes the projectile completely invisible. We need this to draw our projectile behind enemies/tiles in DrawBehind()
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCsAndTiles;
 	}
 
 	private const int GravityDelay = 45;
@@ -125,10 +120,7 @@ public class StoneJavelinProjectile : ModProjectile
 		return projHitbox.Intersects(targetHitbox);
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindNPCsAndTiles.Add(index);
-	}
+
 
 	private const int AlphaFadeInSpeed = 25;
 

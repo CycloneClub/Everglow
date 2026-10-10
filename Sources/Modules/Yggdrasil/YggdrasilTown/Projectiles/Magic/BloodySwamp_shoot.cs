@@ -1,4 +1,6 @@
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 using static Terraria.GameContent.Animations.IL_Actions.Sprites;
 
@@ -56,7 +58,7 @@ public class BloodySwamp_shoot : ModProjectile
 		base.OnKill(timeLeft);
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		return false;
 	}

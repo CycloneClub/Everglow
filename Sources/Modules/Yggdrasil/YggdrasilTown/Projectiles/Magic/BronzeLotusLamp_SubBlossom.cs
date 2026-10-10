@@ -1,4 +1,6 @@
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
 
@@ -60,7 +62,7 @@ public class BronzeLotusLamp_SubBlossom : ModProjectile
 		Ins.VFXManager.Add(lotusFlame2);
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		return false;
 	}

@@ -9,6 +9,7 @@ public class BoneSpike : ModProjectile, IWarpProjectile
 {
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.OverPlayers;
 		Projectile.width = 14;
 		Projectile.height = 14;
 		Projectile.friendly = false;
@@ -50,7 +51,6 @@ public class BoneSpike : ModProjectile, IWarpProjectile
 				Projectile.tileCollide = true;
 				shot = true;
 			}
-			Projectile.hide = true;
 		}
 		else
 		{
@@ -63,12 +63,8 @@ public class BoneSpike : ModProjectile, IWarpProjectile
 		target.AddBuff(BuffID.Burning, 180);
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		overPlayers.Add(index);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D Spice = ModAsset.BoneSpike.Value;
 		if (Projectile.timeLeft <= 1780)
@@ -80,7 +76,7 @@ public class BoneSpike : ModProjectile, IWarpProjectile
 		return false;
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		Texture2D Power = Commons.ModAsset.Trail_5.Value;
 		float Pdark = 0f;

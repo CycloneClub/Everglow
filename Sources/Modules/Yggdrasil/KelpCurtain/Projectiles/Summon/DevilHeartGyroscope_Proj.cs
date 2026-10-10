@@ -3,6 +3,8 @@ using Everglow.Commons.Templates.Weapons.Whips;
 using Everglow.Yggdrasil.KelpCurtain.Buffs;
 using Everglow.Yggdrasil.KelpCurtain.VFXs;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Summon;
 
@@ -274,7 +276,7 @@ public class DevilHeartGyroscope_Proj : GyroscopeProjectile
 		}
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		Texture2D texture = ModAsset.DevilHeartGyroscope_Proj.Value;
 		Texture2D textureBloom = ModAsset.DevilHeartGyroscope_bloom.Value;

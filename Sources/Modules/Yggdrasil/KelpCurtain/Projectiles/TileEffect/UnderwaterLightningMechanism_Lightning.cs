@@ -1,4 +1,6 @@
 using Everglow.Commons.Graphics;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.TileEffect;
 
@@ -355,7 +357,7 @@ public class UnderwaterLightningMechanism_Lightning : ModProjectile
 		return false;
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		if (LightningTrail.Count <= 1)
 		{

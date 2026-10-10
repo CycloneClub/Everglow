@@ -46,7 +46,7 @@ public class YggdrasilPlayerRoomDoor_Lock : ModTile
 				}
 				else
 				{
-					item.active = false;
+					item.TurnToAir();
 				}
 				break;
 			}

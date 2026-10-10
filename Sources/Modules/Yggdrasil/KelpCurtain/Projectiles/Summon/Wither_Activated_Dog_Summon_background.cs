@@ -1,6 +1,8 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.KelpCurtain.Buffs;
 using Everglow.Yggdrasil.KelpCurtain.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.Utilities;
 
@@ -22,7 +24,8 @@ public class Wither_Activated_Dog_Summon_background : ModProjectile
 		Projectile.timeLeft = 60;
 		Projectile.aiStyle = -1;
 		Projectile.penetrate = -1;
-		Projectile.hide = true;
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindProjectiles;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public override void AI()
@@ -30,12 +33,9 @@ public class Wither_Activated_Dog_Summon_background : ModProjectile
 		Timer++;
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindProjectiles.Add(index);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		float radius = 20 + MathF.Pow(Projectile.timeLeft / 60f, 0.5f) * 120;
 		float fade = MathF.Pow(Timer / 60f, 2.5f);

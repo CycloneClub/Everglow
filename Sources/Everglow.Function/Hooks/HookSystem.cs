@@ -52,7 +52,7 @@ public class HookSystem : ModSystem
 		On_Main.DrawBG += Main_DrawBG;
 		On_Main.DrawBackground += Main_DrawBackground;
 		On_Main.DoDraw_WallsTilesNPCs += Main_DoDraw_WallsTilesNPCs;
-		On_FilterManager.EndCapture += On_FilterManager_EndCapture;
+		On_FilterManager.EndCapture_RenderTarget2D_RenderTarget2D_RenderTarget2D_Vector2_Vector2_Vector2 += On_FilterManager_EndCapture;
 		Main.OnResolutionChanged += Main_OnResolutionChanged;
 	}
 
@@ -74,13 +74,14 @@ public class HookSystem : ModSystem
 		On_Main.DrawBG -= Main_DrawBG;
 		On_Main.DrawBackground -= Main_DrawBackground;
 		On_Main.DoDraw_WallsTilesNPCs -= Main_DoDraw_WallsTilesNPCs;
+		On_FilterManager.EndCapture_RenderTarget2D_RenderTarget2D_RenderTarget2D_Vector2_Vector2_Vector2 -= On_FilterManager_EndCapture;
 		Main.OnResolutionChanged -= Main_OnResolutionChanged;
 	}
 
-	private void On_FilterManager_EndCapture(On_FilterManager.orig_EndCapture orig, FilterManager self, RenderTarget2D finalTexture, RenderTarget2D screenTarget1, RenderTarget2D screenTarget2, Color clearColor)
+	private void On_FilterManager_EndCapture(On_FilterManager.orig_EndCapture_RenderTarget2D_RenderTarget2D_RenderTarget2D_Vector2_Vector2_Vector2 orig, FilterManager self, RenderTarget2D finalTexture, RenderTarget2D screenTarget1, RenderTarget2D screenTarget2, Vector2 screenSize, Vector2 sceneSize, Vector2 sceneOffset)
 	{
 		Invoke(CodeLayer.PreDrawFilter);
-		orig(self, finalTexture, screenTarget1, screenTarget2, clearColor);
+		orig(self, finalTexture, screenTarget1, screenTarget2, screenSize, sceneSize, sceneOffset);
 	}
 
 	public override void PostDrawTiles()
@@ -145,14 +146,14 @@ public class HookSystem : ModSystem
 		orig(self);
 	}
 
-	private void Main_DrawBG(On_Main.orig_DrawBG orig, Main self)
+	private void Main_DrawBG(On_Main.orig_DrawBG orig, Main self, Terraria.DataStructures.SpriteBatchBeginner parentSpriteBatchBeginner)
 	{
 		if (_manager.disableFlags.Has(TerrariaFunction.DrawSkyAndHell))
 		{
 			return;
 		}
 
-		orig(self);
+		orig(self, parentSpriteBatchBeginner);
 	}
 
 	private void Main_DrawDust(On_Main.orig_DrawDust orig, Main self)

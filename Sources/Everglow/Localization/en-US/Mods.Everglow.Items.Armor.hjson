@@ -45,6 +45,7 @@ FireflywoodBreastplate: {
 FireflywoodHelmet: {
 	DisplayName: Fireflywood Helmet
 	Tooltip: ""
+	SetBonus: Increases dealt damage by 20%
 }
 
 FireflywoodLeggings: {

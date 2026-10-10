@@ -1,6 +1,8 @@
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs.NPCEffects;
 using static Everglow.Yggdrasil.YggdrasilTown.VFXs.RandomNPC.VFXPerson;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Enemies;
 
@@ -93,7 +95,7 @@ public class PurpleBombCaterpillarDeath : ModProjectile
 		target.AddBuff(BuffID.Poisoned, 600);
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		if (Projectile.timeLeft < 5)
 		{

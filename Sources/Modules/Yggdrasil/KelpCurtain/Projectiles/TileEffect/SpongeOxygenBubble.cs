@@ -1,6 +1,8 @@
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
 using Everglow.Yggdrasil.KelpCurtain.Items.Placeables;
 using Everglow.Yggdrasil.KelpCurtain.Tiles.DeathJadeLake;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.TileEffect;
 
@@ -49,7 +51,7 @@ public class SpongeOxygenBubble : ModProjectile
 		base.ModifyHitPlayer(target, ref modifiers);
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		var texMain = (Texture2D)ModContent.Request<Texture2D>(Texture);
 		Rectangle frame = new Rectangle(0, Projectile.frame * 22, 22, 22);

@@ -1,7 +1,6 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Myth.LanternMoon.Gores;
 using Everglow.Myth.LanternMoon.NPCs;
-using Terraria;
 
 namespace Everglow.Myth.LanternMoon.Projectiles.PerWave15;
 
@@ -27,6 +26,7 @@ public class LargeBloodLanternGhost_Tentacles : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCs;
 		Projectile.width = 20;
 		Projectile.height = 20;
 		Projectile.aiStyle = -1;
@@ -119,7 +119,6 @@ public class LargeBloodLanternGhost_Tentacles : ModProjectile
 
 	public override void AI()
 	{
-		Projectile.hide = true;
 		Timer++;
 		UpdateEntity();
 		if (OwnerNPC != null && OwnerNPC.active && OwnerNPC.type == ModContent.NPCType<LargeBloodLanternGhost>())
@@ -180,13 +179,8 @@ public class LargeBloodLanternGhost_Tentacles : ModProjectile
 		return false;
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindNPCs.Add(index);
-		base.DrawBehind(index, behindNPCsAndTiles, behindNPCs, behindProjectiles, overPlayers, overWiresUI);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
 		if (TentacleEntities.Count > 0)

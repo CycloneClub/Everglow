@@ -1,4 +1,6 @@
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Enemies;
@@ -233,7 +235,7 @@ public class BloodSpell : ModProjectile
 		return true;
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		Texture2D fbm = Commons.ModAsset.FBM.Value;
 		Texture2D shade = Commons.ModAsset.Point_black.Value;

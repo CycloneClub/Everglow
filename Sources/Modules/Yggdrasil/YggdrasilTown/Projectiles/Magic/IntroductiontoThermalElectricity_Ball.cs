@@ -1,5 +1,7 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 
@@ -169,7 +171,7 @@ public class IntroductiontoThermalElectricity_Ball : ModProjectile
 		return false;
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		Texture2D tex = (Texture2D)ModContent.Request<Texture2D>(Texture);
 		Texture2D tex_bloom = Commons.ModAsset.LightPoint.Value;

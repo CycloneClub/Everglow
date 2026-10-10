@@ -7,12 +7,12 @@ public class Glow_Fall : TrailingProjectile
 {
 	public override void OnSpawn(IEntitySource source)
 	{
-		Projectile.hide = true;
 		Projectile.ai[2] = Main.MouseWorld.Y;
 	}
 
 	public override void SetCustomDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCsAndTiles;
 		TrailColor = new Color(0, 0.7f, 1f, 0);
 		TrailTextureBlack = Commons.ModAsset.Trail_black.Value;
 		SelfLuminous = true;
@@ -48,20 +48,15 @@ public class Glow_Fall : TrailingProjectile
 		}
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindNPCsAndTiles.Add(index);
-		base.DrawBehind(index, behindNPCsAndTiles, behindNPCs, behindProjectiles, overPlayers, overWiresUI);
-	}
 
 	public override void DrawSelf()
 	{
 		base.DrawSelf();
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
-		return base.PreDraw(ref lightColor);
+		return base.PreDraw(player, ref lightColor);
 	}
 
 	public override void DrawTrail()

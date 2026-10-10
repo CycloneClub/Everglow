@@ -1,4 +1,6 @@
 using Everglow.Commons.DataStructures;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Melee.EvilHalbertBarnacle;
 
@@ -14,6 +16,14 @@ public class EvilHalbertBarnacle_proj_Thrust : ModProjectile
 
 	public float HoldoutRangeMax => 162f;
 
+	public override void PostAI()
+	{
+		bool heldByOwner = Projectile.owner >= 0 && Projectile.owner < Main.maxPlayers
+			&& Main.player[Projectile.owner].heldProj == Projectile.whoAmI;
+		Projectile.drawLayer = heldByOwner ? ProjectileDrawLayerID.HeldProj : ProjectileDrawLayerID.Default;
+		Projectile.usesOwnerLight = heldByOwner;
+	}
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 30;
@@ -23,6 +33,8 @@ public class EvilHalbertBarnacle_proj_Thrust : ModProjectile
 		Projectile.penetrate = -1;
 		Projectile.tileCollide = false;
 		Projectile.timeLeft = 40;
+		Projectile.drawLayer = ProjectileDrawLayerID.HeldProj;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public override bool PreAI()
@@ -91,7 +103,7 @@ public class EvilHalbertBarnacle_proj_Thrust : ModProjectile
 
 	public Vector2 oldPos;
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
 		if (State == 1)
@@ -103,7 +115,7 @@ public class EvilHalbertBarnacle_proj_Thrust : ModProjectile
 		return false;
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		Vector2 drawCenter = Projectile.Center;
 		float timeValue = 1f;
@@ -115,7 +127,6 @@ public class EvilHalbertBarnacle_proj_Thrust : ModProjectile
 		Vector2 width = vel.RotatedBy(MathHelper.PiOver2) * 60 * timeValue;
 		float timeEffectValue = (float)(Main.time * 0.06f) + Projectile.whoAmI * 0.27f;
 
-		Player player = Main.player[Projectile.owner];
 		int duration = (int)(14 / player.meleeSpeed);
 		float progress2;
 		float halfDuration = duration * 0.5f;

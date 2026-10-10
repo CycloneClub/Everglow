@@ -1,4 +1,6 @@
 using Everglow.Commons.VFX.CommonVFXDusts;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Legacies;
@@ -6,6 +8,14 @@ namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Legacies;
 public class HandheldCircularSaw_proj : ModProjectile
 {
 	public override string LocalizationCategory => LocalizationUtils.Categories.MagicProjectiles;
+
+	public override void PostAI()
+	{
+		bool heldByOwner = Projectile.owner >= 0 && Projectile.owner < Main.maxPlayers
+			&& Main.player[Projectile.owner].heldProj == Projectile.whoAmI;
+		Projectile.drawLayer = heldByOwner ? ProjectileDrawLayerID.HeldProj : ProjectileDrawLayerID.Default;
+		Projectile.usesOwnerLight = heldByOwner;
+	}
 
 	public override void SetDefaults()
 	{
@@ -17,6 +27,8 @@ public class HandheldCircularSaw_proj : ModProjectile
 		Projectile.tileCollide = false;
 		Projectile.friendly = true;
 		Projectile.ignoreWater = true;
+		Projectile.drawLayer = ProjectileDrawLayerID.HeldProj;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public override void OnSpawn(IEntitySource source)
@@ -59,16 +71,15 @@ public class HandheldCircularSaw_proj : ModProjectile
 		FlameValue *= 0.92f;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		return false;
 	}
 
 	public float FlameValue = 0;
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
-		Player player = Main.player[Projectile.owner];
 		player.heldProj = Projectile.whoAmI;
 		var texMain = (Texture2D)ModContent.Request<Texture2D>(Texture);
 		var texSaw = ModAsset.HandheldCircularSaw_saw.Value;

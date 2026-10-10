@@ -1,6 +1,7 @@
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
 using SubworldLibrary;
+using Terraria;
 
 namespace Everglow.Yggdrasil.KelpCurtain.NPCs.SpinyMossCourt;
 
@@ -389,14 +390,14 @@ public class SmallBrodieFlydragon : ModNPC
 	/// </summary>
 	/// <param name="spawnInfo">The engine's spawn context.</param>
 	/// <returns>The lower conservative land weight, or <c>0f</c> outside the design's context.</returns>
-	public override float SpawnChance(NPC.Spawner spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawner)
 	{
-		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
+		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawner.Player))
 		{
 			return 0f;
 		}
 
-		if (!KelpCurtainSpawnConditions.IsDryLand(spawnInfo))
+		if (!KelpCurtainSpawnConditions.IsDryLand(spawner))
 		{
 			return 0f;
 		}

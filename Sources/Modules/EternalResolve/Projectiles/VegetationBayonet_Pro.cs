@@ -1,6 +1,8 @@
 using Everglow.Commons.Templates.Weapons.StabbingSwords;
 using Everglow.EternalResolve.Items.Weapons.StabbingSwords;
 using Everglow.EternalResolve.Items.Weapons.StabbingSwords.Dusts;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 
@@ -90,9 +92,8 @@ namespace Everglow.EternalResolve.Projectiles
 			Main.spriteBatch.Draw(flagTexture, ItemDraw.Postion + new Vector2(flagTopCenter, flagTopY).RotatedBy(ItemDraw.Rotation) - Main.screenPosition, null, lightColor, addRotation, new Vector2(0, flagTexture.Width / 2f), Projectile.scale, SpriteEffects.None, 0);
 		}
 
-		public override void PostDraw(Color lightColor)
+		public override void PostDraw(Player player, Color lightColor)
 		{
-			Player player = Main.player[Projectile.owner];
 			Texture2D Shadow = Commons.ModAsset.Star2_black.Value;
 			Texture2D light = Commons.ModAsset.StabbingProjectile.Value;
 			Vector2 drawOrigin = light.Size() / 2f;

@@ -35,6 +35,8 @@ public abstract class ClubProjSmash : MeleeProj
 
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.HeldProj;
+		Projectile.usesOwnerLight = true;
 		Projectile.width = 80;
 		Projectile.height = 80;
 		Projectile.scale = 1f;
@@ -338,11 +340,20 @@ public abstract class ClubProjSmash : MeleeProj
 		FixedDirection = Player.direction;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
-		DrawSmashTrail(lightColor);
-		DrawSelf(Main.spriteBatch, lightColor);
-		return false;
+		Player previousDrawPlayer = DrawPlayer;
+		DrawPlayer = player;
+		try
+		{
+			DrawSmashTrail(lightColor);
+			DrawSelf(Main.spriteBatch, lightColor);
+			return false;
+		}
+		finally
+		{
+			DrawPlayer = previousDrawPlayer;
+		}
 	}
 
 	public virtual void DrawSmashTrail(Color color)

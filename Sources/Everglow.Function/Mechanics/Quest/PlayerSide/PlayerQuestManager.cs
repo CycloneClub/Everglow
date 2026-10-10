@@ -2,7 +2,7 @@ using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.Hooks;
 using Everglow.Commons.Mechanics.Quest.PlayerSide.Abstractions;
 using MathNet.Numerics;
-
+using Terraria;
 using Terraria.ModLoader.IO;
 
 namespace Everglow.Commons.Mechanics.Quest.PlayerSide;
@@ -131,7 +131,7 @@ public class PlayerQuestManager
 	public void Update()
 	{
 		// Main.gamePaused always be false here when triggered by Main.OnTickForInternalCodeOnly hook.
-		if (Main.gameMenu || Main.gameInactive) // || Main.gamePaused
+		if (Main.gameMenu || !FocusHelper.GameplayActive) // || Main.gamePaused
 		{
 			return;
 		}

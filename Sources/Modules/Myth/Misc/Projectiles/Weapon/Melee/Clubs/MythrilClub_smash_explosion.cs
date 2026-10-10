@@ -8,6 +8,7 @@ public class MythrilClub_smash_explosion : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCsAndTiles;
 		Projectile.width = 20;
 		Projectile.height = 20;
 		Projectile.friendly = false;
@@ -35,20 +36,15 @@ public class MythrilClub_smash_explosion : ModProjectile
 
 	public override void AI()
 	{
-		Projectile.hide = true;
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindNPCsAndTiles.Add(index);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		return false;
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		if (Projectile.timeLeft > 60)
 		{

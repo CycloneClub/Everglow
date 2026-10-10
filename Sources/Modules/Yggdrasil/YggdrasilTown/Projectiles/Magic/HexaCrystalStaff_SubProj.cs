@@ -1,5 +1,7 @@
 using Everglow.Yggdrasil.YggdrasilTown.Buffs;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
@@ -82,7 +84,7 @@ public class HexaCrystalStaff_SubProj : ModProjectile
 		base.OnKill(timeLeft);
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		Texture2D tex = ModAsset.HexaCrystalStaff_SubProj.Value;
 		Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, null, new Color(0f, 0.7f, 1f, 1f), Projectile.rotation + MathHelper.PiOver2, tex.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);

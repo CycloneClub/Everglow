@@ -1,5 +1,8 @@
 using Everglow.Commons.Templates.Weapons.StabbingSwords;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Melee;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Weapons;
 
@@ -53,7 +56,7 @@ public class ResistanceWireBayonet : StabbingSwordItem
 		return true;
 	}
 
-	public override void Update(ref float gravity, ref float maxFallSpeed) => base.Update(ref gravity, ref maxFallSpeed);
+	public override void Update(WorldItem item, ref float gravity, ref float maxFallSpeed) => base.Update(item, ref gravity, ref maxFallSpeed);
 
 	public override void UpdateInventory(Player player)
 	{
@@ -68,9 +71,9 @@ public class ResistanceWireBayonet : StabbingSwordItem
 		base.UpdateInventory(player);
 	}
 
-	public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
+	public override bool PreDrawInWorld(WorldItem worldItem, SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
 	{
-		return base.PreDrawInWorld(spriteBatch, lightColor, alphaColor, ref rotation, ref scale, whoAmI);
+		return base.PreDrawInWorld(worldItem, spriteBatch, lightColor, alphaColor, ref rotation, ref scale, whoAmI);
 	}
 
 	public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)

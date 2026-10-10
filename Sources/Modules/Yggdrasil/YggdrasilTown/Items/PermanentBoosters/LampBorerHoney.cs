@@ -1,4 +1,5 @@
 using Everglow.Yggdrasil.Common;
+using Terraria;
 using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.PermanentBoosters;
@@ -33,9 +34,9 @@ public class LampBorerHoney : ModItem
 
 	public override bool? UseItem(Player player) => player.GetModPlayer<YggdrasilPlayer>().UseLampBorerHoney();
 
-	public override void Update(ref float gravity, ref float maxFallSpeed)
+	public override void Update(WorldItem worldItem, ref float gravity, ref float maxFallSpeed)
 	{
-		Lighting.AddLight(Item.Center, new Vector3(0.6f, 0.4f, 0));
-		base.Update(ref gravity, ref maxFallSpeed);
+		Lighting.AddLight(worldItem.Center, new Vector3(0.6f, 0.4f, 0));
+		base.Update(worldItem, ref gravity, ref maxFallSpeed);
 	}
 }

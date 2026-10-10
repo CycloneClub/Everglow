@@ -7,6 +7,7 @@ internal class CrystalStormArray : ModProjectile
 {
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCs;
 		Projectile.width = 28;
 		Projectile.height = 28;
 		Projectile.friendly = true;
@@ -54,14 +55,9 @@ internal class CrystalStormArray : ModProjectile
 		ringPos = ringPos * 0.9f + new Vector2(-12 * player.direction, -24 * player.gravDir) * 0.1f;
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindNPCs.Add(index);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
-		Projectile.hide = false;
 		DrawMagicArray(ModAsset.CrystalDarkline.Value, new Color(0.6f, 0.6f, 0.6f, 0.6f));
 
 		DrawMagicArray(Commons.ModAsset.Trail_5.Value, new Color(0, 120, 225, 0));

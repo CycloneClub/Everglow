@@ -6,6 +6,7 @@ public class LanternFlowLine : ModProjectile
 {
 	public override void SetDefaults()
 	{
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 		Projectile.width = 120;
 		Projectile.height = 20;
 		Projectile.aiStyle = -1;
@@ -16,7 +17,6 @@ public class LanternFlowLine : ModProjectile
 		Projectile.timeLeft = 600;
 		Projectile.penetrate = -1;
 		Projectile.scale = 0;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Projectile.type] = true;
 		ProjectileID.Sets.DrawScreenCheckFluff[Projectile.type] = 14400;
 	}
 
@@ -51,7 +51,7 @@ public class LanternFlowLine : ModProjectile
 		return targetHitbox.Left < projHitbox.Right + 60 * Projectile.scale && targetHitbox.Right > projHitbox.Left - 60 * Projectile.scale && Math.Abs(targetHitbox.Center.Y - projHitbox.Center.Y) < 2000 && Projectile.timeLeft < 550 && Projectile.timeLeft > 50;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;
 		Main.spriteBatch.End();

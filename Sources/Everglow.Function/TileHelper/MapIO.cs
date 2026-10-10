@@ -592,6 +592,8 @@ public class MapIO
 	public static void WriteChest(BinaryWriter writer, Rectangle range, bool withoutItem = false)
 	{
 		var it = Main.chest.Where(c => c != null && range.Contains(new Point(c.x, c.y)));
+		// Negative count marks chest payloads with explicit capacity (1.4.5).
+		writer.Write(-1);
 		writer.Write(it.Count());
 		foreach (var c in it)
 		{
@@ -599,6 +601,7 @@ public class MapIO
 			writer.Write(c.y - range.Y);
 			writer.Write(c.name);
 			writer.Write(c.frame);
+			writer.Write(c.maxItems);
 
 			if (withoutItem)
 			{
@@ -625,28 +628,35 @@ public class MapIO
 
 			if (range.Contains(new Point(chest.x, chest.y)))
 			{
-				Main.chest[i] = null;
+				Chest.RemoveChest(i);
 			}
 		}
 
 		int count = reader.ReadInt32();
+		bool hasCapacity = count == -1;
+		if (hasCapacity)
+		{
+			count = reader.ReadInt32();
+		}
 		for (int i = 0; i < count; i++)
 		{
 			int index = Array.IndexOf(Main.chest, null);
-			Main.chest[index] = new Chest()
+			int chestX = reader.ReadInt32() + range.X;
+			int chestY = reader.ReadInt32() + range.Y;
+			var chest = Chest.CreateWorldChest(index, chestX, chestY);
+			chest.name = reader.ReadString();
+			chest.frame = reader.ReadInt32();
+			if (hasCapacity)
 			{
-				x = reader.ReadInt32() + range.X,
-				y = reader.ReadInt32() + range.Y,
-				name = reader.ReadString(),
-				frame = reader.ReadInt32(),
-			};
+				chest.Resize(reader.ReadInt32());
+			}
 
 			if (withoutItem)
 			{
 				continue;
 			}
 
-			for (int j = 0; j < Chest.maxItems; j++)
+			for (int j = 0; j < Main.chest[index].maxItems; j++)
 			{
 				Main.chest[index].item[j] = ItemIO.Load(TagIO.Read(reader));
 			}
@@ -698,6 +708,9 @@ public class MapIO
 	public static void WriteTileEntity(BinaryWriter writer, Rectangle range, ModEntry entry, bool withoutData = false)
 	{
 		var it = TileEntity.ByID.Where(s => s.Value != null && range.Contains(s.Value.Position.ToPoint()));
+		// Version the entity payload while retaining support for existing 1.4.4 map assets.
+		writer.Write(-1);
+		writer.Write(Main.curRelease);
 		writer.Write(it.Count());
 		foreach (var (_, te) in it)
 		{
@@ -726,12 +739,19 @@ public class MapIO
 
 	public static void ReadTileEntity(BinaryReader reader, Rectangle range, ModEntry entry, bool withoutData = false)
 	{
+		const int LegacyGameVersion = 279; // Terraria 1.4.4.9: existing unversioned map assets.
+		int gameVersion = LegacyGameVersion;
 		int count = reader.ReadInt32();
+		if (count == -1)
+		{
+			gameVersion = reader.ReadInt32();
+			count = reader.ReadInt32();
+		}
 		for (int i = 0; i < count; i++)
 		{
 			int type = reader.ReadByte();
 			TileEntity te;
-			if (type > ModTileEntity.NumVanilla)
+			if (type >= (gameVersion == LegacyGameVersion ? 8 : ModTileEntity.NumVanilla))
 			{
 				type = entry.typeMaping[reader.ReadUInt16()];
 				te = ModTileEntity.ConstructFromType(type);
@@ -745,17 +765,16 @@ public class MapIO
 			}
 			else
 			{
-				te = TileEntity.Read(reader);
+				te = TileEntity.Read(reader, gameVersion);
 			}
 			te.Position = new Point16(te.Position.X + range.X, te.Position.Y + range.Y);
 			te.ID = TileEntity.AssignNewID();
-			TileEntity.ByID[te.ID] = te;
 			if (TileEntity.ByPosition.TryGetValue(te.Position, out var oldTE))
 			{
-				TileEntity.ByID.Remove(oldTE.ID);
+				TileEntity.Remove(oldTE);
 			}
 
-			TileEntity.ByPosition[te.Position] = te;
+			TileEntity.Add(te);
 			if (Main.netMode == NetmodeID.MultiplayerClient)
 			{
 				NetMessage.SendData(MessageID.TileEntityPlacement, -1, -1, null, te.ID);
@@ -780,15 +799,7 @@ public class MapIO
 			foreach (Point16 pos in list)
 			{
 				TileEntity te = TileEntity.ByPosition[pos];
-				if (TileEntity.ByID.ContainsKey(te.ID))
-				{
-					TileEntity.ByID.Remove(te.ID);
-				}
-
-				if (TileEntity.ByPosition.ContainsKey(pos))
-				{
-					TileEntity.ByPosition.Remove(pos);
-				}
+				TileEntity.Remove(te);
 			}
 		}
 		catch

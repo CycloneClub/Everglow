@@ -1,16 +1,18 @@
 using Everglow.Myth.TheFirefly.WorldGeneration;
+using System.Collections.Generic;
+using Terraria;
 
 namespace Everglow.Myth.TheFirefly.GlobalNPCs;
 
 public class SpawnControl : GlobalNPC
 {
 	// 编辑 NPC 生成池子。
-	public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
+	public override void EditSpawnPool(IDictionary<int, float> pool, NPC.Spawner spawner)
 	{
 		foreach (var kv in pool)
 		{
 			// 生成位置在流萤地形内的原版 NPC 禁止生成。
-			if (!CanSpawnToFirefly(kv.Key, spawnInfo))
+			if (!CanSpawnToFirefly(kv.Key, spawner))
 			{
 				pool.Remove(kv.Key);
 			}
@@ -18,7 +20,7 @@ public class SpawnControl : GlobalNPC
 	}
 
 	// 能否生成与流萤地形。如果给流萤地生物创建好集合了，还需要在这个地方修改下。
-	public static bool CanSpawnToFirefly(int type, NPCSpawnInfo spawnInfo)
+	public static bool CanSpawnToFirefly(int type, NPC.Spawner spawnInfo)
 	{
 		// 0 代表是原版 NPC，不会在这里给出要生成的怪的 Type，ModNPC 会直接给出来。
 		if (type == 0 && true &&

@@ -11,6 +11,9 @@ namespace Everglow.Commons.MEAC;
 
 public abstract class MeleeProj : ModProjectile, IWarpProjectile, IBloomProjectile
 {
+	// Keep virtual draw helpers on the player supplied by tML, including mannequins.
+	protected Player DrawPlayer { get; set; }
+
 	/// <summary>
 	/// The currant attack style. range from 0 to (<see cref="maxAttackType"/> - 1) (include).<br></br>
 	/// If you do not override the style swithcing logic, this value loops inside the range, adding by 1 after a entire attack.
@@ -96,6 +99,8 @@ public abstract class MeleeProj : ModProjectile, IWarpProjectile, IBloomProjecti
 
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.HeldProj;
+		Projectile.usesOwnerLight = true;
 		Projectile.width = 30;
 		Projectile.height = 15;
 		Projectile.aiStyle = -1;
@@ -120,7 +125,7 @@ public abstract class MeleeProj : ModProjectile, IWarpProjectile, IBloomProjecti
 
 	public string ShaderTypeName => shaderType.ToString();
 
-	public Player Player => Main.player[Projectile.owner];
+	public Player Player => DrawPlayer ?? Main.player[Projectile.owner];
 
 	public Vector2 MainVec_WithoutGravDir
 	{
@@ -368,12 +373,21 @@ public abstract class MeleeProj : ModProjectile, IWarpProjectile, IBloomProjecti
 				ProjCenter_WithoutGravDir + MainVec_WithoutGravDir * Projectile.scale);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
-		DrawTrail(lightColor);
-		DrawSelf(Main.spriteBatch, lightColor);
-		ProduceWaterRipples(new Vector2(mainAxisDirection.Length(), 30));
-		return false;
+		Player previousDrawPlayer = DrawPlayer;
+		DrawPlayer = player;
+		try
+		{
+			DrawTrail(lightColor);
+			DrawSelf(Main.spriteBatch, lightColor);
+			ProduceWaterRipples(new Vector2(mainAxisDirection.Length(), 30));
+			return false;
+		}
+		finally
+		{
+			DrawPlayer = previousDrawPlayer;
+		}
 	}
 
 	public virtual void DrawSelf(SpriteBatch spriteBatch, Color lightColor, Vector4 diagonal = default, Vector2 drawScale = default, Texture2D glowTexture = null)

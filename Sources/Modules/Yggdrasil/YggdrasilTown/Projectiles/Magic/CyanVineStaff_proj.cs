@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
@@ -5,6 +7,14 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
 public class CyanVineStaff_proj : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
+	public override void PostAI()
+	{
+		bool heldByOwner = Projectile.owner >= 0 && Projectile.owner < Main.maxPlayers
+			&& Main.player[Projectile.owner].heldProj == Projectile.whoAmI;
+		Projectile.drawLayer = heldByOwner ? ProjectileDrawLayerID.HeldProj : ProjectileDrawLayerID.Default;
+		Projectile.usesOwnerLight = heldByOwner;
+	}
 
 	public override void SetDefaults()
 	{
@@ -14,6 +24,8 @@ public class CyanVineStaff_proj : ModProjectile
 		Projectile.timeLeft = 360000;
 		Projectile.tileCollide = false;
 		Projectile.DamageType = DamageClass.Magic;
+		Projectile.drawLayer = ProjectileDrawLayerID.HeldProj;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public override Color? GetAlpha(Color lightColor)
@@ -44,7 +56,7 @@ public class CyanVineStaff_proj : ModProjectile
 			}
 			if (player.itemTime == 0)
 			{
-				if (player.ItemCheck_PayMana(player.HeldItem, true))
+				if (player.CheckMana(player.HeldItem, pay: true))
 				{
 					player.ItemCheck_ApplyManaRegenDelay(player.HeldItem);
 					player.itemTime = player.itemTimeMax;
@@ -88,14 +100,13 @@ public class CyanVineStaff_proj : ModProjectile
 		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + v0 * 36, v0 * player.HeldItem.shootSpeed * 0.5f, ModContent.ProjectileType<CyanVineStaff_proj_shoot>(), Projectile.damage, Projectile.knockBack, player.whoAmI, 20);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		return false;
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
-		Player player = Main.player[Projectile.owner];
 		player.heldProj = Projectile.whoAmI;
 		var texMain = (Texture2D)ModContent.Request<Texture2D>(Texture);
 		Color drawColor = Lighting.GetColor((int)Projectile.Center.X / 16, (int)(Projectile.Center.Y / 16.0));

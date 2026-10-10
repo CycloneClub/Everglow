@@ -1,5 +1,7 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.SquamousShell;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
 
@@ -23,6 +25,7 @@ public class EyeOfAnabiosis_MagicCircleFront : ModProjectile
 		Projectile.DamageType = DamageClass.Magic;
 		Projectile.penetrate = -1;
 		Projectile.ignoreWater = true;
+		Projectile.drawLayer = ProjectileDrawLayerID.OverPlayers;
 	}
 
 	public override void AI()
@@ -76,12 +79,9 @@ public class EyeOfAnabiosis_MagicCircleFront : ModProjectile
 		TextList.RemoveAll(text => text.RelativePosition.Y < -MagicCircleHeight);
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		overPlayers.Add(index);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		SpriteBatchState sBS = Main.spriteBatch.GetState().Value;
 		Main.spriteBatch.End();
@@ -94,10 +94,10 @@ public class EyeOfAnabiosis_MagicCircleFront : ModProjectile
 
 		// Beam of magic circle
 		var magicCirTexture = Commons.ModAsset.Point.Value;
-		var magicCirPosition = Owner.gravDir == 1 ? Owner.Bottom : Owner.Top;
-		magicCirPosition = magicCirPosition - Main.screenPosition + new Vector2(0, 2 * Owner.gravDir);
+		var magicCirPosition = player.gravDir == 1 ? player.Bottom : player.Top;
+		magicCirPosition = magicCirPosition - Main.screenPosition + new Vector2(0, 2 * player.gravDir);
 		var magicCirScale = new Vector2(0.30f, 0.30f);
-		var magicCirRotation = Owner.gravDir == 1 ? 0 : MathF.PI;
+		var magicCirRotation = player.gravDir == 1 ? 0 : MathF.PI;
 		var magicCirColor = Color.White * 0.8f;
 		Main.spriteBatch.Draw(magicCirTexture, magicCirPosition, null, magicCirColor, magicCirRotation, new Vector2(magicCirTexture.Width / 2, magicCirTexture.Height), magicCirScale, SpriteEffects.None, 0);
 
@@ -133,7 +133,7 @@ public class EyeOfAnabiosis_MagicCircleFront : ModProjectile
 		foreach (var text in TextList)
 		{
 			var textColor = text.Color * (1 + text.RelativePosition.Y / MagicCircleHeight);
-			Main.spriteBatch.Draw(textTexture, magicCirPosition + text.RelativePosition * Owner.gravDir, text.SourceRectangle, textColor, magicCirRotation, text.Origin, text.Scale, SpriteEffects.None, 0);
+			Main.spriteBatch.Draw(textTexture, magicCirPosition + text.RelativePosition * player.gravDir, text.SourceRectangle, textColor, magicCirRotation, text.Origin, text.Scale, SpriteEffects.None, 0);
 		}
 
 		return false;

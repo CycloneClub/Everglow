@@ -1,6 +1,9 @@
 using Everglow.Yggdrasil.YggdrasilTown.Items.Accessories.SquamousShell;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Rock;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.SquamousShell;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.BossDrops;
 
@@ -64,20 +67,20 @@ public class SquamousShellTreasureBag : ModItem
 
 	private int myLightTimer = 0;
 
-	public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
+	public override bool PreDrawInWorld(WorldItem worldItem, SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
 	{
 		Texture2D t = ModAsset.SquamousShellTreasureBag.Value;
 		for (int i = 0; i < 4; i++)
 		{
 			Vector2 v = new Vector2(0, 8 * ((float)Math.Sin((double)(Main.GlobalTimeWrappedHourly * 6.28318548f / 4f)) * 0.3f + 0.7f)).RotatedBy((double)(Main.GlobalTimeWrappedHourly * 6.28318548f / 4f) + MathHelper.Pi * i / 2d);
 
-			// spriteBatch.Draw(t, Item.Center, new Rectangle(0,0,32,32), new Color(100, 100, 100, 0), 0, new Vector2(16, 16), 3f, SpriteEffects.None, 1);
-			Main.EntitySpriteDraw(t, Item.Center - Main.screenPosition + v, null, new Color(100, 100, 100, 0), 0, new Vector2(16, 16), 1f, SpriteEffects.None, 0);
+			// spriteBatch.Draw(t, worldItem.Center, new Rectangle(0,0,32,32), new Color(100, 100, 100, 0), 0, new Vector2(16, 16), 3f, SpriteEffects.None, 1);
+			Main.EntitySpriteDraw(t, worldItem.Center - Main.screenPosition + v, null, new Color(100, 100, 100, 0), 0, new Vector2(16, 16), 1f, SpriteEffects.None, 0);
 		}
 		if (!Main.gamePaused && myLightTimer % 20 == 19)
 		{
 			myLightTimer = 0;
-			int num37 = Dust.NewDust(Item.Center + new Vector2(Main.rand.Next(-16, 6), 0), 0, 0, DustID.SilverCoin, 0f, 0f, 254, Color.White, 1f);
+			int num37 = Dust.NewDust(worldItem.Center + new Vector2(Main.rand.Next(-16, 6), 0), 0, 0, DustID.SilverCoin, 0f, 0f, 254, Color.White, 1f);
 			Main.dust[num37].velocity = new Vector2(0, -Main.rand.NextFloat(0.3f, 0.9f));
 			Main.dust[num37].rotation = 0;
 			Main.dust[num37].noLight = true;
@@ -86,7 +89,7 @@ public class SquamousShellTreasureBag : ModItem
 		if (!Main.gamePaused)
 		{
 			myLightTimer++;
-			Lighting.AddLight((int)(Item.Center.X / 16f), (int)(Item.Center.Y / 16f), 0.5f, 0.15f, 0.0f);
+			Lighting.AddLight((int)(worldItem.Center.X / 16f), (int)(worldItem.Center.Y / 16f), 0.5f, 0.15f, 0.0f);
 		}
 
 		return true;

@@ -24,7 +24,7 @@ public class FurnaceMeltingChest : ModTile
 		TileID.Sets.BasicChest[Type] = true;
 		TileID.Sets.DisableSmartCursor[Type] = true;
 		TileID.Sets.AvoidedByNPCs[Type] = true;
-		TileID.Sets.InteractibleByNPCs[Type] = true;
+		TileID.Sets.InteractableByNPCs[Type] = true;
 		TileID.Sets.IsAContainer[Type] = true;
 		TileID.Sets.GeneralPlacementTiles[Type] = false;
 
@@ -228,7 +228,6 @@ public class FurnaceMeltingChest : ModTile
 			if (left == player.chestX && top == player.chestY && player.chest >= 0)
 			{
 				player.chest = -1;
-				Recipe.FindRecipes();
 				SoundEngine.PlaySound(SoundID.MenuClose);
 			}
 			else
@@ -252,13 +251,12 @@ public class FurnaceMeltingChest : ModTile
 				{
 					player.chest = chest;
 					Main.playerInventory = true;
-					Main.recBigList = false;
+					Main.PipsUseGrid = false;
 					player.chestX = left;
 					player.chestY = top;
 					SoundEngine.PlaySound(SoundID.MenuOpen);
 				}
 
-				Recipe.FindRecipes();
 			}
 		}
 		return true;

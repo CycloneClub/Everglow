@@ -76,7 +76,7 @@ internal class FireFeatherMagicBook : MagicBookProjectile
 	/// <param name="MulSize">相对于 BookScale 的额外绘制尺寸倍率。</param>
 	public override void DrawFront(Texture2D tex, int GlowType = 0, float MulSize = 1f)
 	{
-		Player player = Main.player[Projectile.owner];
+		Player player = (DrawPlayer ?? Main.player[Projectile.owner]);
 		Vector2 x0 = new Vector2(BookScale * player.direction, BookScale * player.gravDir) * 0.5f * MulSize;
 		Vector2 y0 = new Vector2(BookScale * player.direction, -BookScale * player.gravDir) * 0.707f * MulSize;
 		Color c0 = GlowColor;

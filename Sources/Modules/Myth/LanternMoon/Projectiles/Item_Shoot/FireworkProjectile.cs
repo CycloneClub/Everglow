@@ -610,7 +610,7 @@ public abstract class FireworkProjectile : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		return false;
 	}
@@ -619,7 +619,7 @@ public abstract class FireworkProjectile : ModProjectile
 public class FireworkProjectileDraw : GlobalProjectile
 {
 	// 全部合批
-	public override bool PreDraw(Projectile projectile, ref Color lightColor)
+	public override bool PreDraw(Projectile projectile, Player player, ref Color lightColor)
 	{
 		Texture2D flame = Commons.ModAsset.LightPoint.Value;
 		var trailBars0 = new List<Vertex2D>();
@@ -894,6 +894,6 @@ public class FireworkProjectileDraw : GlobalProjectile
 			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 			Main.graphics.GraphicsDevice.Textures[0] = flame;
 		}
-		return base.PreDraw(projectile, ref lightColor);
+		return base.PreDraw(projectile, player, ref lightColor);
 	}
 }

@@ -1,4 +1,5 @@
 using Everglow.Myth.TheFirefly.NPCs.Bosses;
+using Terraria;
 
 namespace Everglow.Myth.TheFirefly.Items.SummonItems;
 
@@ -21,7 +22,7 @@ public class EvilCocoon : ModItem
 	{
 	}
 
-	public override void Update(ref float gravity, ref float maxFallSpeed)
+	public override void Update(WorldItem item, ref float gravity, ref float maxFallSpeed)
 	{
 	}
 

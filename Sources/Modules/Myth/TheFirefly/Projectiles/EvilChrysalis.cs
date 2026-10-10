@@ -67,9 +67,8 @@ internal class EvilChrysalis : ModProjectile
 
 	private float dy = 0;
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
-		Player player = Main.player[Projectile.owner];
 		Texture2D t = ModAsset.EvilChrysalis.Value;
 		Texture2D tG = ModAsset.EvilChrysalisG.Value;
 		var drawOrigin = new Vector2(t.Width * 0.5f, t.Height * 0.5f);
@@ -163,9 +162,8 @@ internal class EvilChrysalis : ModProjectile
 	private float cy2 = -37.5f;
 	private float cirpro = 0;
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
-		Player player = Main.player[Projectile.owner];
 		if (Projectile.timeLeft < 75)
 		{
 			cy2 = 27.5f - Projectile.timeLeft;

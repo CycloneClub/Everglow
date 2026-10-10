@@ -270,60 +270,69 @@ public class BloodyBoneYoyo : YoyoProjectile
 		return base.Colliding(projHitbox, targetHitbox);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
-		DrawYoyo_String();
-		List<Vertex2D> bars = new List<Vertex2D>();
-		foreach (Tentacle tentacle in tentacles)
+		Player previousDrawPlayer = DrawPlayer;
+		DrawPlayer = player;
+		try
 		{
-			for (int x = 0; x < tentacle.oldPos.Count; x++)
+			DrawYoyo_String();
+			List<Vertex2D> bars = new List<Vertex2D>();
+			foreach (Tentacle tentacle in tentacles)
 			{
-				Vector2 drawPos = tentacle.oldPos[x] + Projectile.Center;
-				Vector2 posLeft = Vector2.Normalize(tentacle.oldPos[x]).RotatedBy(MathHelper.PiOver2) * 5f;
-				if (x > 0)
+				for (int x = 0; x < tentacle.oldPos.Count; x++)
 				{
-					posLeft = Vector2.Normalize(tentacle.oldPos[x] - tentacle.oldPos[x - 1]).RotatedBy(MathHelper.PiOver2) * 5f;
-				}
-				float factor = (x + 120 - tentacle.oldPos.Count) / 120f;
-				float width = 1f;
-				if (factor > 0.8f)
-				{
-					width = MathF.Sin((1 - factor) * 2.5f * MathF.PI);
-				}
-				if (x == 0)
-				{
-					bars.Add(Projectile.Center + posLeft, Color.Transparent, new Vector3(factor, 0, width));
-					bars.Add(Projectile.Center - posLeft, Color.Transparent, new Vector3(factor, 1, width));
-					bars.Add(Projectile.Center + posLeft, lightColor, new Vector3(factor, 0, width));
-					bars.Add(Projectile.Center - posLeft, lightColor, new Vector3(factor, 1, width));
-				}
-				Color newLightColor = Lighting.GetColor(drawPos.ToTileCoordinates());
-				bars.Add(drawPos + posLeft, newLightColor, new Vector3(factor, 0, width));
-				bars.Add(drawPos - posLeft, newLightColor, new Vector3(factor, 1, width));
-				if (x == tentacle.oldPos.Count - 1)
-				{
-					bars.Add(drawPos + posLeft, Color.Transparent, new Vector3(factor, 0, width));
-					bars.Add(drawPos - posLeft, Color.Transparent, new Vector3(factor, 1, width));
+					Vector2 drawPos = tentacle.oldPos[x] + Projectile.Center;
+					Vector2 posLeft = Vector2.Normalize(tentacle.oldPos[x]).RotatedBy(MathHelper.PiOver2) * 5f;
+					if (x > 0)
+					{
+						posLeft = Vector2.Normalize(tentacle.oldPos[x] - tentacle.oldPos[x - 1]).RotatedBy(MathHelper.PiOver2) * 5f;
+					}
+					float factor = (x + 120 - tentacle.oldPos.Count) / 120f;
+					float width = 1f;
+					if (factor > 0.8f)
+					{
+						width = MathF.Sin((1 - factor) * 2.5f * MathF.PI);
+					}
+					if (x == 0)
+					{
+						bars.Add(Projectile.Center + posLeft, Color.Transparent, new Vector3(factor, 0, width));
+						bars.Add(Projectile.Center - posLeft, Color.Transparent, new Vector3(factor, 1, width));
+						bars.Add(Projectile.Center + posLeft, lightColor, new Vector3(factor, 0, width));
+						bars.Add(Projectile.Center - posLeft, lightColor, new Vector3(factor, 1, width));
+					}
+					Color newLightColor = Lighting.GetColor(drawPos.ToTileCoordinates());
+					bars.Add(drawPos + posLeft, newLightColor, new Vector3(factor, 0, width));
+					bars.Add(drawPos - posLeft, newLightColor, new Vector3(factor, 1, width));
+					if (x == tentacle.oldPos.Count - 1)
+					{
+						bars.Add(drawPos + posLeft, Color.Transparent, new Vector3(factor, 0, width));
+						bars.Add(drawPos - posLeft, Color.Transparent, new Vector3(factor, 1, width));
+					}
 				}
 			}
-		}
-		Main.spriteBatch.End();
-		Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-		Effect effect = Commons.ModAsset.Trailing.Value;
-		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
-		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) * Main.GameViewMatrix.TransformationMatrix;
-		effect.Parameters["uTransform"].SetValue(model * projection);
-		effect.CurrentTechnique.Passes[0].Apply();
-		Main.graphics.GraphicsDevice.RasterizerState = RasterizerState.CullNone;
-		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.BloodyBoneYoyo_tentacle.Value;
-		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
-		if (bars.Count > 3)
-		{
-			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
-		}
+			Main.spriteBatch.End();
+			Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
+			Effect effect = Commons.ModAsset.Trailing.Value;
+			var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
+			var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) * Main.GameViewMatrix.TransformationMatrix;
+			effect.Parameters["uTransform"].SetValue(model * projection);
+			effect.CurrentTechnique.Passes[0].Apply();
+			Main.graphics.GraphicsDevice.RasterizerState = RasterizerState.CullNone;
+			Main.graphics.GraphicsDevice.Textures[0] = ModAsset.BloodyBoneYoyo_tentacle.Value;
+			Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
+			if (bars.Count > 3)
+			{
+				Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
+			}
 
-		Main.spriteBatch.End();
-		Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-		return true;
+			Main.spriteBatch.End();
+			Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
+			return true;
+		}
+		finally
+		{
+			DrawPlayer = previousDrawPlayer;
+		}
 	}
 }

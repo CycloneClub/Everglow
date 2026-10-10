@@ -1,5 +1,5 @@
 using Everglow.Yggdrasil.YggdrasilTown.Items.Miscs;
-using Terraria.Localization;
+using Terraria.GameContent;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs;
 
@@ -67,17 +67,9 @@ public class QuestCounter_Consultant : ModNPC
 
 	public override string GetChat() => base.GetChat();
 
-	public override void OnChatButtonClicked(bool firstButton, ref string shopName)
+	public override void RegisterChatButtons(NPCInteractionList interactions)
 	{
-		if (firstButton)
-		{
-			shopName = "Yggdrasil Town Union Shop";
-		}
-	}
-
-	public override void SetChatButtons(ref string button, ref string button2)
-	{
-		button = Language.GetTextValue("LegacyInterface.28");
+		interactions.InsertBefore(NPCInteractions.Shop("Yggdrasil Town Union Shop"), NPCInteractionDatabase.CloseButton);
 	}
 
 	public override void AddShops()

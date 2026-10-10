@@ -9,6 +9,7 @@ public class LanternFlow : TrailingProjectile
 {
 	public override void SetCustomDefaults()
 	{
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 		Projectile.width = 20;
 		Projectile.height = 20;
 		Projectile.aiStyle = -1;
@@ -22,7 +23,6 @@ public class LanternFlow : TrailingProjectile
 		Projectile.scale = 1f;
 		TrailLength = 400;
 		ProjectileID.Sets.DrawScreenCheckFluff[Projectile.type] = 20000;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Projectile.type] = true;
 		TrailColor = new Color(1f, 0.2f, 0f, 0f) * 0.3f;
 		TrailBackgroundDarkness = 0.3f;
 		TrailWidth = 240f;

@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 
@@ -213,7 +215,7 @@ public class CyanVineStaff_proj_shoot : ModProjectile, IWarpProjectile
 		}
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		DrawTrail();
 		Texture2D star = ModAsset.CyanVineStaff_proj_shoot_black.Value;

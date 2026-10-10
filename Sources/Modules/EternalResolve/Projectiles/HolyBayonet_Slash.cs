@@ -2,6 +2,8 @@ using Everglow.Commons.MEAC;
 using Everglow.Commons.Vertex;
 using Everglow.Commons.VFX;
 using Everglow.EternalResolve.Items.Weapons.StabbingSwords.Dusts;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 
@@ -49,7 +51,7 @@ namespace Everglow.EternalResolve.Projectiles
 			}
 		}
 
-		public override bool PreDraw(Player player, ref Color lightColor)
+		public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 		{
 			float value0 = (120 - Projectile.timeLeft) / 120f;
 			float value1 = MathF.Pow(value0, 0.5f);

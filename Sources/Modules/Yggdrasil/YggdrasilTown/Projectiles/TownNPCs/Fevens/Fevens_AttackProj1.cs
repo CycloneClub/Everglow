@@ -1,5 +1,7 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 
@@ -26,9 +28,9 @@ public class Fevens_AttackProj1 : ModProjectile, IWarpProjectile
 		Projectile.DamageType = DamageClass.Magic;
 		Projectile.usesLocalNPCImmunity = true;
 		Projectile.localNPCHitCooldown = 30;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Projectile.type] = true;
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 90;
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 	}
 
 	public override void OnSpawn(IEntitySource source)
@@ -216,7 +218,7 @@ public class Fevens_AttackProj1 : ModProjectile, IWarpProjectile
 		Main.spriteBatch.Begin(sBS);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		DrawTrail();
 		Texture2D star = ModAsset.FevensChasingProj.Value;

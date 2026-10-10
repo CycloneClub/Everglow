@@ -31,9 +31,8 @@ internal class EvilChrysalisRightClick : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
-		Player player = Main.player[Projectile.owner];
 
 		Vector2 Vdr = Main.MouseWorld - Projectile.Center;
 

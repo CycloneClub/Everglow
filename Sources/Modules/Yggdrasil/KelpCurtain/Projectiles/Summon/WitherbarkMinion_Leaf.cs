@@ -1,4 +1,6 @@
 using static Everglow.Yggdrasil.KelpCurtain.Projectiles.Summon.WitherbarkMinion;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Summon;
 
@@ -174,7 +176,7 @@ public class WitherbarkMinion_Leaf : ModProjectile
 		Projectile.netUpdate = true;
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		var texture = ModContent.Request<Texture2D>(Texture).Value;
 		var frame = texture.Frame(1, Main.projFrames[Projectile.type], 0, Projectile.frame);

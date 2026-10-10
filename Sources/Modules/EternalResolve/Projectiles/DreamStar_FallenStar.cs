@@ -1,6 +1,8 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Commons.Utilities;
 using Everglow.Commons.Vertex;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent.Drawing;
@@ -85,7 +87,7 @@ namespace Everglow.EternalResolve.Projectiles
 			});
 		}
 
-		public override bool PreDraw(Player player, ref Color lightColor)
+		public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 		{
 			Texture2D tex0 = Terraria.GameContent.TextureAssets.MagicPixel.Value;
 

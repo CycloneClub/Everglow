@@ -76,7 +76,7 @@ public abstract class WorldObjectiveBase : IDeltaSyncObjective
 			{
 				foreach (var item in RewardItems)
 				{
-					Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_Misc(WorldQuestBase.RewardItemsSourceContext), item, item.stack);
+					Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_Misc(WorldQuestBase.RewardItemsSourceContext), item.Clone());
 				}
 
 				RewardClaimed = true;

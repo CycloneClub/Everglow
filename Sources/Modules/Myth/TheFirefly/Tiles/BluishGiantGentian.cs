@@ -2,6 +2,7 @@ using Everglow.Commons.TileHelper;
 using Everglow.Myth.TheFirefly.Dusts;
 using Everglow.Myth.TheFirefly.Gores;
 using Everglow.Myth.TheFirefly.Items.Materials;
+using Microsoft.Xna.Framework;
 using Terraria.Audio;
 using Terraria.GameContent.Drawing;
 using Terraria.ObjectData;
@@ -60,7 +61,7 @@ public class BluishGiantGentian : ModTile, ITileFluentlyDrawn
 		}
 		if (Main.rand.NextBool(4))
 		{
-			Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, new Item(ModContent.ItemType<GlowingPetal>(), 1));
+			Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(), new Item(ModContent.ItemType<GlowingPetal>(), 1));
 		}
 		SoundEngine.PlaySound(HitSound, new Vector2(i * 16, j * 16));
 	}

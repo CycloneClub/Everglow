@@ -42,6 +42,7 @@ FireflywoodBreastplate: {
 FireflywoodHelmet: {
 	DisplayName: 流萤头盔
 	Tooltip: ""
+	SetBonus: 造成的伤害提高20%
 }
 
 FireflywoodLeggings: {

@@ -6,6 +6,7 @@ internal class TuskSummon : ModProjectile
 {
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCsAndTiles;
 		Projectile.tileCollide = false;
 		Projectile.friendly = true;
 		Projectile.hostile = false;
@@ -189,7 +190,6 @@ internal class TuskSummon : ModProjectile
 	public override void AI()
 	{
 		Player player = Main.player[Projectile.owner];
-		Projectile.hide = true;
 		CheckKill();
 		if (TelePortCooling > 0)
 		{
@@ -223,12 +223,8 @@ internal class TuskSummon : ModProjectile
 		}
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindNPCsAndTiles.Add(index);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		float speed = Projectile.velocity.Length();
 		if (speed > 10f)
@@ -241,7 +237,7 @@ internal class TuskSummon : ModProjectile
 				Main.spriteBatch.Draw(texture, Projectile.oldPos[i] + new Vector2(Projectile.width, Projectile.height) / 2f - Main.screenPosition, null, colori, Projectile.oldRot[i], new Vector2(Projectile.width, Projectile.height) / 2f, Projectile.scale, Projectile.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
 			}
 		}
-		return base.PreDraw(ref lightColor);
+		return base.PreDraw(player, ref lightColor);
 	}
 
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

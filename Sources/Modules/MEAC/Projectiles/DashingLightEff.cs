@@ -10,6 +10,7 @@ public class DashingLightEff : ModProjectile, IWarpProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.OverPlayers;
 		Projectile.width = 30;
 		Projectile.height = 30;
 		Projectile.aiStyle = -1;
@@ -20,7 +21,6 @@ public class DashingLightEff : ModProjectile, IWarpProjectile
 		Projectile.tileCollide = false;
 		Projectile.penetrate = -1;
 		Projectile.extraUpdates = 2;
-		Projectile.hide = true;
 		Projectile.DamageType = DamageClass.Melee;
 		ProjectileID.Sets.DrawScreenCheckFluff[Projectile.type] = 1000;
 		oldPos = new Vector2[25];
@@ -64,10 +64,6 @@ public class DashingLightEff : ModProjectile, IWarpProjectile
 		}
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		overPlayers.Add(index);
-	}
 
 	public void DrawWarp(VFXBatch spriteBatch)
 	{
@@ -104,7 +100,7 @@ public class DashingLightEff : ModProjectile, IWarpProjectile
 
 	public int collisionTimer = 0;
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Vector2 drawCenter = Projectile.Center + Vector2.Normalize(Projectile.velocity) * (100 - Projectile.timeLeft) * 3;
 		float timeValue = 1f;

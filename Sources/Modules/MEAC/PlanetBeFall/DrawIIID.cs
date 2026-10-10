@@ -29,13 +29,13 @@ internal class DrawIIID : ModSystem
 		bloom = ModAsset.Bloom.Value;
 		goldenCrackVFX = ModAsset.GoldenCrackEffect.Value;
 		radial = ModAsset.Radial.Value;
-		On_FilterManager.EndCapture += FilterManager_EndCapture; // 原版绘制场景的最后部分——滤镜。在这里运用render保证不会与原版冲突
+		On_FilterManager.EndCapture_RenderTarget2D_RenderTarget2D_RenderTarget2D_Vector2_Vector2_Vector2 += FilterManager_EndCapture; // 原版绘制场景的最后部分——滤镜。在这里运用render保证不会与原版冲突
 		Main.OnResolutionChanged += Main_OnResolutionChanged;
 	}
 
 	public override void Unload()
 	{
-		On_FilterManager.EndCapture -= FilterManager_EndCapture;
+		On_FilterManager.EndCapture_RenderTarget2D_RenderTarget2D_RenderTarget2D_Vector2_Vector2_Vector2 -= FilterManager_EndCapture;
 		Main.OnResolutionChanged -= Main_OnResolutionChanged;
 	}
 
@@ -56,7 +56,7 @@ internal class DrawIIID : ModSystem
 		ZFar = 2000,
 	};
 
-	private void FilterManager_EndCapture(On_FilterManager.orig_EndCapture orig, FilterManager self, RenderTarget2D finalTexture, RenderTarget2D screenTarget1, RenderTarget2D screenTarget2, Color clearColor)
+	private void FilterManager_EndCapture(On_FilterManager.orig_EndCapture_RenderTarget2D_RenderTarget2D_RenderTarget2D_Vector2_Vector2_Vector2 orig, FilterManager self, RenderTarget2D finalTexture, RenderTarget2D screenTarget1, RenderTarget2D screenTarget2, Vector2 screenSize, Vector2 sceneSize, Vector2 sceneOffset)
 	{
 		GraphicsDevice gd = Main.instance.GraphicsDevice;
 		SpriteBatch sb = Main.spriteBatch;
@@ -96,7 +96,7 @@ internal class DrawIIID : ModSystem
 				if (proj.active && proj.type == ModContent.ProjectileType<GoldenCrack>())
 				{
 					Color c3 = Color.Gold;
-					(proj.ModProjectile as GoldenCrack).PreDraw(ref c3);
+					(proj.ModProjectile as GoldenCrack).PreDraw(Main.player[proj.owner], ref c3);
 				}
 				if (proj.active && proj.type == ModContent.ProjectileType<PlanetBefallArray>())
 				{
@@ -165,7 +165,7 @@ internal class DrawIIID : ModSystem
 				if (proj.active && proj.type == ModContent.ProjectileType<GoldenCrack>())
 				{
 					Color c3 = Color.Gold;
-					(proj.ModProjectile as GoldenCrack).PreDraw(ref c3);
+					(proj.ModProjectile as GoldenCrack).PreDraw(Main.player[proj.owner], ref c3);
 				}
 			}
 
@@ -219,7 +219,7 @@ internal class DrawIIID : ModSystem
 			}
 		}
 
-		orig(self, finalTexture, screenTarget1, screenTarget2, clearColor);
+		orig(self, finalTexture, screenTarget1, screenTarget2, screenSize, sceneSize, sceneOffset);
 	}
 
 	public override void OnModLoad()

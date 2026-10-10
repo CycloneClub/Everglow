@@ -1,4 +1,6 @@
 using Everglow.Commons.Vertex;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.EternalResolve.Projectiles
@@ -34,7 +36,7 @@ namespace Everglow.EternalResolve.Projectiles
 			Projectile.velocity *= 0.93f;
 		}
 
-		public override bool PreDraw(Player player, ref Color lightColor)
+		public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 		{
 			Vector2 hitCenter = startCenter + Vector2.Normalize(Projectile.velocity) * 20f;
 			lightColor = Lighting.GetColor((int)(hitCenter.X / 16f), (int)(hitCenter.Y / 16f));

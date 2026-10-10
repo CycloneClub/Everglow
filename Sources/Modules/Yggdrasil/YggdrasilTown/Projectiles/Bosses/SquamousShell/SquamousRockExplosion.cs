@@ -1,5 +1,7 @@
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Bosses.SquamousShell;
 
@@ -18,7 +20,7 @@ public class SquamousRockExplosion : ModProjectile, IWarpProjectile
 		Projectile.timeLeft = 200;
 		Projectile.tileCollide = false;
 		Projectile.extraUpdates = 6;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Projectile.type] = true;
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 	}
 
 	public override void AI()
@@ -55,7 +57,7 @@ public class SquamousRockExplosion : ModProjectile, IWarpProjectile
 		return bool0 || bool1 || bool2 || bool3;
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		var light = lightColor.ToVector4();
 		float timeValue = (200 - Projectile.timeLeft) / 200f;
@@ -81,7 +83,7 @@ public class SquamousRockExplosion : ModProjectile, IWarpProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		return false;
 	}

@@ -14,6 +14,7 @@ public class GoldShield : ModProjectile, IWarpProjectile
 {
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.OverPlayers;
 		Projectile.width = 10;
 		Projectile.height = 10;
 		Projectile.aiStyle = -1;
@@ -239,7 +240,6 @@ public class GoldShield : ModProjectile, IWarpProjectile
 			Projectile.ai[0] = 0;
 		}
 		Projectile.Center = Main.player[Projectile.owner].Center;
-		Projectile.hide = true;
 		Lighting.AddLight((int)(Projectile.Center.X / 16), (int)(Projectile.Center.Y / 16), 0.8f, 0.6f, 0);
 	}
 
@@ -249,12 +249,8 @@ public class GoldShield : ModProjectile, IWarpProjectile
 		base.OnKill(timeLeft);
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		overPlayers.Add(index);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D tex = TextureAssets.Projectile[Projectile.type].Value;
 		int LeftTime = 1200 - Projectile.timeLeft;

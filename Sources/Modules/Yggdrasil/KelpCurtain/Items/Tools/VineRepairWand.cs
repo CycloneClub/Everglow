@@ -1,5 +1,8 @@
 using Everglow.Yggdrasil.KelpCurtain.Projectiles.Miscs.VineWand;
 using Everglow.Yggdrasil.KelpCurtain.Tiles.ForestRainVines;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Items.Tools;
 
@@ -318,12 +321,12 @@ public class VineRepairWand : ModItem
 		return false;
 	}
 
-	public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+	public override void PostDrawInWorld(WorldItem worldItem, SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 	{
 		if (currentAdjustment != null && currentAdjustment.IsAdjusting)
 		{
 			Texture2D texture = ModContent.Request<Texture2D>(Texture).Value;
-			Vector2 position = Item.position - Main.screenPosition + new Vector2(Item.width / 2, Item.height - texture.Height * 0.5f + 2f);
+			Vector2 position = worldItem.position - Main.screenPosition + new Vector2(worldItem.width / 2, worldItem.height - texture.Height * 0.5f + 2f);
 
 			Color glowColor = currentAdjustment.LastManaChange >= 0 ?
 				Color.Lerp(Color.White, Color.LightGreen, (float)System.Math.Sin(Main.GlobalTimeWrappedHourly * 6f) * 0.3f + 0.7f) :

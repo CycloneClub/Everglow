@@ -1,4 +1,6 @@
 using Everglow.Commons.DataStructures;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 
@@ -18,7 +20,7 @@ public class Fevens_AttackProj0 : ModProjectile
 		Projectile.penetrate = 1;
 		Projectile.timeLeft = 3600;
 		Projectile.tileCollide = false;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Projectile.type] = true;
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 	}
 
 	internal int Target = -1;
@@ -90,7 +92,7 @@ public class Fevens_AttackProj0 : ModProjectile
 		SoundEngine.PlaySound(SoundID.Item98.WithVolume(Main.rand.NextFloat(0.14f, 0.22f)).WithPitchOffset(Main.rand.NextFloat(0.7f, 0.9f)), Projectile.Center);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		if (TimeTokill > 0)
 		{
@@ -105,7 +107,7 @@ public class Fevens_AttackProj0 : ModProjectile
 		}
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		DrawTrail(lightColor);
 	}

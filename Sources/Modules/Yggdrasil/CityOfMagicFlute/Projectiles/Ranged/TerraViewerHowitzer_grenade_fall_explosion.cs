@@ -1,5 +1,7 @@
 using Everglow.Commons.VFX.CommonVFXDusts;
 using Everglow.Yggdrasil.CityOfMagicFlute.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.CityOfMagicFlute.Projectiles.Ranged;
@@ -24,6 +26,8 @@ public class TerraViewerHowitzer_grenade_fall_explosion : ModProjectile, IWarpPr
 		Projectile.usesLocalNPCImmunity = true;
 		Projectile.localNPCHitCooldown = 20;
 		Projectile.DamageType = DamageClass.Magic;
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCsAndTiles;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public void Spark(int count)
@@ -113,7 +117,6 @@ public class TerraViewerHowitzer_grenade_fall_explosion : ModProjectile, IWarpPr
 
 	public override void AI()
 	{
-		Projectile.hide = true;
 		Projectile.velocity *= 0;
 		if (Projectile.timeLeft == 190)
 		{
@@ -144,12 +147,9 @@ public class TerraViewerHowitzer_grenade_fall_explosion : ModProjectile, IWarpPr
 		return bool0 || bool1 || bool2 || bool3;
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindNPCsAndTiles.Add(index);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		float timeValue = (200 - Projectile.timeLeft) / 200f;
 		float dark = Math.Max((Projectile.timeLeft - 150) / 50f, 0);

@@ -10,6 +10,9 @@ namespace Everglow.Commons.MEAC;
 
 public abstract partial class MeleeProj_3D : ModProjectile, IWarpProjectile_warpStyle2, IBloomProjectile
 {
+	// Keep virtual draw helpers on the player supplied by tML, including mannequins.
+	protected Player DrawPlayer { get; set; }
+
 	public bool EnableSphereCoordDraw = false;
 
 	public bool SelfLuminous = false;
@@ -29,78 +32,82 @@ public abstract partial class MeleeProj_3D : ModProjectile, IWarpProjectile_warp
 		   2000f);
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
-		overPlayers.Add(index);
-	}
-
-	public override bool PreDraw(ref Color lightColor)
-	{
-		if (!Visible)
+		Player previousDrawPlayer = DrawPlayer;
+		DrawPlayer = player;
+		try
 		{
+			if (!Visible)
+			{
+				return false;
+			}
+			SpriteBatchState sBS = Main.spriteBatch.GetState().Value;
+			Main.spriteBatch.End();
+			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
+			if (EnableSphereCoordDraw)
+			{
+				DrawReferenceSphere(RadialDistance);
+			}
+			DrawWeapon(WeaponAxis, MainAxis * 0.15f, new Vector3(0, 0, CenterZ));
+			DrawTrail();
+
+			Main.spriteBatch.End();
+			Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
+			Main.spriteBatch.End();
+			Main.spriteBatch.Begin(sBS);
+			for (int k = SlashEffects.Count - 1; k >= 0; k--)
+			{
+				SlashEffect sEffect = SlashEffects[k];
+				if (sEffect.SlashTrail_Smoothed is null || !sEffect.Active)
+				{
+					continue;
+				}
+				int starIndex = sEffect.SlashTrail_Smoothed.Count - 1;
+				if (starIndex < 0)
+				{
+					continue;
+				}
+				Vector3 wldPos3D = sEffect.SlashTrail_Smoothed[starIndex] + new Vector3(0, 0, CenterZ);
+				Vector2 wldPos = Project(wldPos3D, ProjectionMatrix()) + Projectile.Center;
+				float starScale = 1f;
+				Color starColor = SlashColor;
+				float threthod = 40;
+				if (sEffect.Timer > sEffect.MaxTime - threthod)
+				{
+					float value = 1 - (sEffect.Timer - sEffect.MaxTime + threthod) / threthod;
+					value -= 0.2f;
+					if (value < 0)
+					{
+						value = 0;
+					}
+					starColor *= value;
+					value -= 0.5f;
+					if (value < 0)
+					{
+						value = 0;
+					}
+					starScale *= value;
+				}
+				if (!SelfLuminous)
+				{
+					Color lightC = Lighting.GetColor(wldPos.ToTileCoordinates());
+					starColor.R = (byte)(lightC.R * starColor.R / 255f);
+					starColor.G = (byte)(lightC.G * starColor.G / 255f);
+					starColor.B = (byte)(lightC.B * starColor.B / 255f);
+				}
+				starColor *= 1.2f;
+				Texture2D star = ModAsset.StarSlash.Value;
+				Main.spriteBatch.Draw(star, wldPos - Main.screenPosition, null, starColor, 0, star.Size() * 0.5f, starScale, SpriteEffects.None, 0);
+				Main.spriteBatch.Draw(star, wldPos - Main.screenPosition, null, starColor, MathHelper.PiOver2, star.Size() * 0.5f, starScale, SpriteEffects.None, 0);
+			}
+
 			return false;
 		}
-		SpriteBatchState sBS = Main.spriteBatch.GetState().Value;
-		Main.spriteBatch.End();
-		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-		if (EnableSphereCoordDraw)
+		finally
 		{
-			DrawReferenceSphere(RadialDistance);
+			DrawPlayer = previousDrawPlayer;
 		}
-		DrawWeapon(WeaponAxis, MainAxis * 0.15f, new Vector3(0, 0, CenterZ));
-		DrawTrail();
-
-		Main.spriteBatch.End();
-		Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-		Main.spriteBatch.End();
-		Main.spriteBatch.Begin(sBS);
-		for (int k = SlashEffects.Count - 1; k >= 0; k--)
-		{
-			SlashEffect sEffect = SlashEffects[k];
-			if (sEffect.SlashTrail_Smoothed is null || !sEffect.Active)
-			{
-				continue;
-			}
-			int starIndex = sEffect.SlashTrail_Smoothed.Count - 1;
-			if (starIndex < 0)
-			{
-				continue;
-			}
-			Vector3 wldPos3D = sEffect.SlashTrail_Smoothed[starIndex] + new Vector3(0, 0, CenterZ);
-			Vector2 wldPos = Project(wldPos3D, ProjectionMatrix()) + Projectile.Center;
-			float starScale = 1f;
-			Color starColor = SlashColor;
-			float threthod = 40;
-			if (sEffect.Timer > sEffect.MaxTime - threthod)
-			{
-				float value = 1 - (sEffect.Timer - sEffect.MaxTime + threthod) / threthod;
-				value -= 0.2f;
-				if (value < 0)
-				{
-					value = 0;
-				}
-				starColor *= value;
-				value -= 0.5f;
-				if (value < 0)
-				{
-					value = 0;
-				}
-				starScale *= value;
-			}
-			if (!SelfLuminous)
-			{
-				Color lightC = Lighting.GetColor(wldPos.ToTileCoordinates());
-				starColor.R = (byte)(lightC.R * starColor.R / 255f);
-				starColor.G = (byte)(lightC.G * starColor.G / 255f);
-				starColor.B = (byte)(lightC.B * starColor.B / 255f);
-			}
-			starColor *= 1.2f;
-			Texture2D star = ModAsset.StarSlash.Value;
-			Main.spriteBatch.Draw(star, wldPos - Main.screenPosition, null, starColor, 0, star.Size() * 0.5f, starScale, SpriteEffects.None, 0);
-			Main.spriteBatch.Draw(star, wldPos - Main.screenPosition, null, starColor, MathHelper.PiOver2, star.Size() * 0.5f, starScale, SpriteEffects.None, 0);
-		}
-
-		return false;
 	}
 
 	public virtual void CustomDustDraw(MeleeProj_3D_Dust dust)

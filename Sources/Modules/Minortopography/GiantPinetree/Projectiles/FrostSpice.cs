@@ -1,7 +1,9 @@
 using Everglow.Commons.Vertex;
 using Everglow.Commons.VFX.CommonVFXDusts;
 using Everglow.Minortopography.GiantPinetree.Dusts;
+using Microsoft.Xna.Framework;
 using SteelSeries.GameSense;
+using Terraria;
 using Terraria.Audio;
 
 namespace Everglow.Minortopography.GiantPinetree.Projectiles;
@@ -82,7 +84,7 @@ public class FrostSpice : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		if (TimeTokill > 0)
 		{
@@ -96,7 +98,7 @@ public class FrostSpice : ModProjectile
 		}
 	}
 
-	public override void PostDraw(Player player, Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		DrawTrail(lightColor);
 	}

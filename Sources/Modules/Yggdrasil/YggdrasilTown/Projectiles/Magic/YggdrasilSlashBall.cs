@@ -1,6 +1,8 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.SquamousShell;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 
@@ -129,7 +131,7 @@ public class YggdrasilSlashBall : ModProjectile
 		base.ModifyHitNPC(target, ref modifiers);
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		Texture2D dark = Commons.ModAsset.Point_black.Value;
 		Vector2 pos = Projectile.Center - Main.screenPosition;

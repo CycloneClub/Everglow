@@ -1,5 +1,6 @@
 using Everglow.Commons.Coroutines;
 using Everglow.Commons.Utilities;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent.Drawing;
 
@@ -129,7 +130,7 @@ public abstract class Caterpillar : ModNPC
 	/// </summary>
 	public int AnyAliveCoroutineTimer;
 
-	public override float SpawnChance(NPC.Spawner spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawner)
 	{
 		return 0f;
 	}

@@ -1,3 +1,6 @@
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories.Furnace;
@@ -47,14 +50,14 @@ public class MoltenCore : ModItem
 		}
 	}
 
-	public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
+	public override bool PreDrawInWorld(WorldItem worldItem, SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
 	{
 		Texture2D texture = ModAsset.MoltenCore.Value;
 		int frameWidth = texture.Width;
 		int frameHeight = texture.Height / ItemFrames;
 		int frameOffsetY = frameHeight * (((int)Main.time / 5) % 4);
 
-		spriteBatch.Draw(texture, Item.Center - Main.screenPosition, new Rectangle(0, frameOffsetY, frameWidth, frameHeight), lightColor, 0, new Vector2(frameWidth, frameHeight / 2) / 2, 1, SpriteEffects.None, 0);
+		spriteBatch.Draw(texture, worldItem.Center - Main.screenPosition, new Rectangle(0, frameOffsetY, frameWidth, frameHeight), lightColor, 0, new Vector2(frameWidth, frameHeight / 2) / 2, 1, SpriteEffects.None, 0);
 
 		return false;
 	}

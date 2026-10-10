@@ -10,13 +10,14 @@ public class Living_Jawbone_Huge : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCsAndTiles;
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 		Projectile.width = 100;
 		Projectile.height = 100;
 		Projectile.friendly = false;
 		Projectile.hostile = true;
 		Projectile.tileCollide = false;
 		Projectile.timeLeft = 1000;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Type] = true;
 	}
 
 	public override void OnSpawn(IEntitySource source)
@@ -93,13 +94,8 @@ public class Living_Jawbone_Huge : ModProjectile
 		return b0 || b1;
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		Projectile.hide = true;
-		behindNPCsAndTiles.Add(index);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D upJaw = ModAsset.Living_Jawbone_Huge_up.Value;
 		Texture2D downJaw = ModAsset.Living_Jawbone_Huge_down.Value;

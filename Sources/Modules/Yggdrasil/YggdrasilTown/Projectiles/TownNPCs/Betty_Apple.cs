@@ -21,7 +21,6 @@ public class Betty_Apple : TrailingProjectile
 		Projectile.tileCollide = true;
 		Projectile.penetrate = 1;
 		Projectile.timeLeft = 600;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Type] = true;
 		TrailLength = 12;
 		TrailColor = new Color(0.2f, 0.2f, 0.2f, 0f);
 		TrailBackgroundDarkness = 0.1f;
@@ -30,6 +29,7 @@ public class Betty_Apple : TrailingProjectile
 		TrailTexture = Commons.ModAsset.Trail_10.Value;
 		TrailTextureBlack = Commons.ModAsset.Trail_10_black.Value;
 		TrailShader = Commons.ModAsset.Trailing.Value;
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 	}
 
 	public override void Behaviors()

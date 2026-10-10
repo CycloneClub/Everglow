@@ -1,6 +1,4 @@
 using Everglow.Commons.Modules;
-using Mono.Cecil.Cil;
-using MonoMod.Cil;
 using SubworldLibrary;
 using Terraria.Graphics.Effects;
 using Terraria.Map;
@@ -26,11 +24,10 @@ public class YggdrasilModule : EverglowModule
 	{
 		if (!Main.dedServ)
 		{
-			On_FilterManager.EndCapture += FilterManager_EndCapture;
+			On_FilterManager.EndCapture_RenderTarget2D_RenderTarget2D_RenderTarget2D_Vector2_Vector2_Vector2 += FilterManager_EndCapture;
 			On_WorldGen.oceanDepths += WorldGen_oceanDepths;
 			screenOcclusion = ModContent.Request<Effect>("Everglow/Yggdrasil/Effects/Occlusion", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
-			IL_Main.DrawToMap += IL_Main_DrawToMap;
-			IL_Main.DrawToMap_Section += IL_Main_DrawToMap_Section;
+			On_MapHelper.GetMapTileXnaColor += MapHelper_GetMapTileXnaColor;
 			On_Main.UpdateTime_StartDay += On_Main_UpdateTime_StartDay;
 			On_Main.UpdateTime_StartNight += On_Main_UpdateTime_StartNight;
 			On_Main.CanStartInvasion += On_Main_CanStartInvasion;
@@ -85,35 +82,11 @@ public class YggdrasilModule : EverglowModule
 		return orig(x, y);
 	}
 
-	private void IL_Main_DrawToMap_Section(ILContext il)
+	private static Color MapHelper_GetMapTileXnaColor(On_MapHelper.orig_GetMapTileXnaColor orig, MapTile tile, int x, int y)
 	{
-		ILCursor c = new(il);
-		if (!c.TryGotoNext(MoveType.After, i => i.MatchCall(typeof(MapHelper), nameof(MapHelper.GetMapTileXnaColor))))
-		{
-			throw new OperationCanceledException("fail to il drawtomap_section");
-		}
-		c.Emit(OpCodes.Ldloc, 12);
-		c.Emit(OpCodes.Ldloc, 11);
-		c.EmitDelegate(ILHook_DrawToMap_Section_ChangeMapTargetColor);
-	}
-
-	private static Color ILHook_DrawToMap_Section_ChangeMapTargetColor(Color color, int x, int y)
-	{
+		Color color = orig(tile, x, y);
 		ILHook_DrawToMap_ChangeMapTargetColor(ref color, x, y);
 		return color;
-	}
-
-	private void IL_Main_DrawToMap(ILContext il)
-	{
-		ILCursor c = new(il);
-		if (!c.TryGotoNext(MoveType.After, i => i.MatchStloc(23)))
-		{
-			throw new OperationCanceledException("fail to il drawtomap");
-		}
-		c.Emit(OpCodes.Ldloca, 23);
-		c.Emit(OpCodes.Ldloc, 16);
-		c.Emit(OpCodes.Ldloc, 17);
-		c.EmitDelegate(ILHook_DrawToMap_ChangeMapTargetColor);
 	}
 
 	private static void ILHook_DrawToMap_ChangeMapTargetColor(ref Color color, int x, int y)
@@ -142,7 +115,7 @@ public class YggdrasilModule : EverglowModule
 		color = Color.Lerp(Color.Green, Color.Red, (float)y / Main.maxTilesY);
 	}
 
-	private void FilterManager_EndCapture(On_FilterManager.orig_EndCapture orig, FilterManager self, RenderTarget2D finalTexture, RenderTarget2D screenTarget1, RenderTarget2D screenTarget2, Color clearColor)
+	private void FilterManager_EndCapture(On_FilterManager.orig_EndCapture_RenderTarget2D_RenderTarget2D_RenderTarget2D_Vector2_Vector2_Vector2 orig, FilterManager self, RenderTarget2D finalTexture, RenderTarget2D screenTarget1, RenderTarget2D screenTarget2, Vector2 screenSize, Vector2 sceneSize, Vector2 sceneOffset)
 	{
 		bool enable = false;
 		foreach (Projectile proj in Main.projectile)
@@ -154,7 +127,7 @@ public class YggdrasilModule : EverglowModule
 		}
 		if (!enable)
 		{
-			orig(self, finalTexture, screenTarget1, screenTarget2, clearColor);
+			orig(self, finalTexture, screenTarget1, screenTarget2, screenSize, sceneSize, sceneOffset);
 			return;
 		}
 
@@ -208,7 +181,7 @@ public class YggdrasilModule : EverglowModule
 		}
 		screen = null;
 		renderTargets.Release();
-		orig(self, finalTexture, screenTarget1, screenTarget2, clearColor);
+		orig(self, finalTexture, screenTarget1, screenTarget2, screenSize, sceneSize, sceneOffset);
 	}
 
 	private bool DrawOcclusion(VFXBatch spriteBatch)// 遮盖层

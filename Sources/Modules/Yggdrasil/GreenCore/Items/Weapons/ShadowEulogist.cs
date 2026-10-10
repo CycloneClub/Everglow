@@ -1,4 +1,7 @@
 using Everglow.Yggdrasil.GreenCore.Projectiles.Melee;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria;
 
 namespace Everglow.Yggdrasil.GreenCore.Items.Weapons
 {
@@ -27,7 +30,7 @@ namespace Everglow.Yggdrasil.GreenCore.Items.Weapons
 
 		public static BlendState bs;
 
-		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+		public override void PostDrawInWorld(WorldItem item, SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 		{
 			/*
             Main.spriteBatch.End();
@@ -56,7 +59,7 @@ namespace Everglow.Yggdrasil.GreenCore.Items.Weapons
 			{
 				float a = 0.5f + (float)Math.Sin(Main.timeForVisualEffects / 50f + i * 4f / tooltips.Count) + 0.5f;
 				Color c = new Color(a, a, a, 1);
-				tooltips[i].OverrideColor = c;
+				tooltips[i].Color = c;
 			}
 		}
 	}

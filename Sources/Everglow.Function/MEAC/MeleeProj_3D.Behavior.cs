@@ -96,7 +96,8 @@ public abstract partial class MeleeProj_3D : ModProjectile, IWarpProjectile_warp
 
 	public override void SetDefaults()
 	{
-		Projectile.hide = true;
+		Projectile.drawLayer = ProjectileDrawLayerID.OverPlayers;
+		Projectile.usesOwnerLight = true;
 		Projectile.aiStyle = -1;
 		Projectile.height = Projectile.width = 120;
 		Projectile.penetrate = -1;

@@ -1,4 +1,5 @@
 using Everglow.Ocean.Common;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria.DataStructures;
 
 namespace Everglow.Ocean.Items.Weapons;
@@ -94,7 +95,7 @@ public class RampageShark : ModItem
 		ShootType = type;
 		if (player.ownedProjectileCounts[ModContent.ProjectileType<Projectiles.Weapons.RampageShark>()] <= 0 && CrazyValue == 0)
 		{
-			Projectile.NewProjectile(Item.GetSource_FromAI(), position, velocity, ModContent.ProjectileType<Projectiles.Weapons.RampageShark>(), damage, knockback, player.whoAmI);
+			Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<Projectiles.Weapons.RampageShark>(), damage, knockback, player.whoAmI);
 		}
 
 		if (player.ownedProjectileCounts[ModContent.ProjectileType<Projectiles.Weapons.RampageShark>()] <= 0 && CrazyValue > 0)
@@ -123,20 +124,20 @@ public class RampageShark : ModItem
 		}
 	}
 
-	public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+	public override void PostDrawInWorld(WorldItem item, SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 	{
 		Texture2D texMainG = OceanContent.QuickTexture("Projectiles/Weapons/RampageShark/RampageShark_glow");
 		Texture2D TexEye = OceanContent.QuickTexture("Projectiles/Weapons/RampageShark/RampageShark_redEye");
 		float glow = CrazyValue / 16f;
-		spriteBatch.Draw(texMainG, Item.Center - Main.screenPosition, null, new Color(glow, glow * 0.2f, glow * 0.2f, 0), rotation, texMainG.Size() / 2f, scale, SpriteEffects.None, rotation);
+		spriteBatch.Draw(texMainG, item.Center - Main.screenPosition, null, new Color(glow, glow * 0.2f, glow * 0.2f, 0), rotation, texMainG.Size() / 2f, scale, SpriteEffects.None, rotation);
 		if (CrazyValue >= 15 && CrazyValue < 16)
 		{
 			float progress = CrazyValue - 15f;
-			Main.spriteBatch.Draw(TexEye, Item.Center - Main.screenPosition, null, new Color(progress, progress, progress, progress), rotation, texMainG.Size() / 2f, scale, SpriteEffects.None, 0);
+			Main.spriteBatch.Draw(TexEye, item.Center - Main.screenPosition, null, new Color(progress, progress, progress, progress), rotation, texMainG.Size() / 2f, scale, SpriteEffects.None, 0);
 		}
 		else if (CrazyValue >= 16)
 		{
-			Main.spriteBatch.Draw(TexEye, Item.Center - Main.screenPosition, null, new Color(1f, 1f, 1f, 1f), rotation, texMainG.Size() / 2f, scale, SpriteEffects.None, 0);
+			Main.spriteBatch.Draw(TexEye, item.Center - Main.screenPosition, null, new Color(1f, 1f, 1f, 1f), rotation, texMainG.Size() / 2f, scale, SpriteEffects.None, 0);
 		}
 		if (!Main.gamePaused)
 		{

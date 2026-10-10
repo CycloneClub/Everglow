@@ -14,6 +14,7 @@ public class LargeBloodLanternGhost_Minion : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCs;
 		Projectile.width = 20;
 		Projectile.height = 20;
 		Projectile.aiStyle = -1;
@@ -81,16 +82,10 @@ public class LargeBloodLanternGhost_Minion : ModProjectile
 			Projectile.rotation = MathF.Sin(Timer * 0.07f + Projectile.whoAmI) * 0.04f + Projectile.rotation * 0.9f;
 		}
 		Lighting.AddLight(Projectile.Center, new Vector3(1f, 0.3f * MathF.Sin(Timer * 0.03f + Projectile.whoAmI) + 0.3f, 0.3f * MathF.Cos(Timer * 0.03f + Projectile.whoAmI) + 0.3f) * 0.6f * fade);
-		Projectile.hide = Projectile.velocity.X > 0;
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindNPCs.Add(index);
-		base.DrawBehind(index, behindNPCsAndTiles, behindNPCs, behindProjectiles, overPlayers, overWiresUI);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
 		Texture2D bloom = ModAsset.LargeBloodLanternGhost_Minion_Bloom.Value;

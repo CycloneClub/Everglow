@@ -1,4 +1,5 @@
 using ReLogic.Content;
+using Terraria;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Tools;
 
@@ -111,7 +112,7 @@ public class ClimbingPickaxeProjectile : ModProjectile
 		return null;
 	}
 
-	public override bool PreDrawExtras(Player player)
+	public override bool PreDrawExtras(Player player)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		Texture2D chainTexture = ModAsset.AmberFlowerHook_Chain.Value;
 		Vector2 playerCenter = Main.player[Projectile.owner].MountedCenter;

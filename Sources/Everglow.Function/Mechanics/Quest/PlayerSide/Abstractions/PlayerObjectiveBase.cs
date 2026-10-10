@@ -58,7 +58,7 @@ public abstract class PlayerObjectiveBase : ITagCompoundEntity
 			{
 				foreach (var item in RewardItems)
 				{
-					Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_Misc(PlayerQuestBase.RewardItemsSourceContext), item, item.stack);
+					Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_Misc(PlayerQuestBase.RewardItemsSourceContext), item.Clone());
 				}
 
 				HasGivenRewardItems = true;

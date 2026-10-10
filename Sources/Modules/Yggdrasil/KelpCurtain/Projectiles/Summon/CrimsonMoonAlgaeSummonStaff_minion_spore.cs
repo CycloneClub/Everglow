@@ -3,6 +3,8 @@ using Everglow.Commons.Templates.Weapons;
 using Everglow.Commons.VFX.CommonVFXDusts;
 using Everglow.Yggdrasil.KelpCurtain.Buffs;
 using Everglow.Yggdrasil.KelpCurtain.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Summon;
 
@@ -62,7 +64,7 @@ public class CrimsonMoonAlgaeSummonStaff_minion_spore : ModProjectile, IRedAlgae
 		RedAlgae_FriendlyDebuff_glocalNPC.HandleProjectileHit(target, Projectile);
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		Texture2D texture = ModContent.Request<Texture2D>(Texture).Value;
 		Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, new Color(1f, 1f, 1f, 1f), Projectile.rotation, texture.Size() * 0.5f, 1, SpriteEffects.None);

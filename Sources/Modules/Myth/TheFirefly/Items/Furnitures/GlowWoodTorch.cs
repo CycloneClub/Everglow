@@ -36,9 +36,9 @@ public class GlowWoodTorch : ModItem
 		Lighting.AddLight(player.RotatedRelativePoint(new Vector2(player.itemLocation.X + 12f * player.direction + player.velocity.X, player.itemLocation.Y - 14f + player.velocity.Y), true, true), 0.7f, 0.06f, 1f);
 	}
 
-	public override void PostUpdate()
+	public override void PostUpdate(WorldItem item)
 	{
-		Lighting.AddLight(Item.Center, 1f, 1f, 1f);
+		Lighting.AddLight(item.Center, 1f, 1f, 1f);
 	}
 
 	public override void AddRecipes()

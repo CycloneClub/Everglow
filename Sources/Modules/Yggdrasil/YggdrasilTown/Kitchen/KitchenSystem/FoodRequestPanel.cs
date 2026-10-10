@@ -302,7 +302,7 @@ public class FoodRequestPanel
 							}
 							else
 							{
-								item.active = false;
+								item.TurnToAir();
 							}
 							SoundEngine.PlaySound(SoundID.Item35);
 							AddScore(Value);
@@ -322,15 +322,15 @@ public class FoodRequestPanel
 		{
 			foreach (var item in Main.LocalPlayer.inventory)
 			{
-				if (item.active && item.type == FoodType)
+				if (!item.IsAir && item.type == FoodType)
 				{
-					if (item.stack >= 1)
+					if (item.stack > 1)
 					{
 						item.stack--;
 					}
 					else
 					{
-						item.active = false;
+						item.TurnToAir();
 					}
 					SoundEngine.PlaySound(SoundID.Item35);
 					AddScore(Value);

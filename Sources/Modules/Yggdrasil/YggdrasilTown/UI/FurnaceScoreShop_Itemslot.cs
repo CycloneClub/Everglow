@@ -33,7 +33,7 @@ public class FurnaceScoreShop_Itemslot : UIItemSlot
 			}
 			Main.LocalPlayer.GetModPlayer<FurnacePlayer>().CurrentFurnaceScore += value;
 			ContainedItem = new Item();
-			ContainedItem.SetDefaults(ItemID.None, true);
+			ContainedItem.SetDefaults(ItemID.None);
 		};
 	}
 

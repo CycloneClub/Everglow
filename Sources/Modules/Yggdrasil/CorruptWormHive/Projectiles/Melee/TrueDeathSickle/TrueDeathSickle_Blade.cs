@@ -2,6 +2,8 @@ using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.CorruptWormHive.Buffs;
 using Everglow.Yggdrasil.CorruptWormHive.Items.Weapons;
 using Everglow.Yggdrasil.CorruptWormHive.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.Enums;
@@ -233,7 +235,7 @@ public class TrueDeathSickle_Blade : ModProjectile, IWarpProjectile_warpStyle2, 
 		}
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		if (Projectile.timeLeft > 120)
 		{

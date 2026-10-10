@@ -1,4 +1,6 @@
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Melee;
@@ -116,7 +118,7 @@ public class MagicalBoomerangSubProj : ModProjectile
 
 	public override void OnKill(int timeLeft) => base.OnKill(timeLeft);
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		Texture2D boomerang = ModAsset.MagicalBoomerangSubProj.Value;
 		Texture2D boomerangGlow = ModAsset.MagicalBoomerangSubProj_glow.Value;

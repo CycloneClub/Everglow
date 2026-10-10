@@ -170,7 +170,7 @@ public class CorruptMoth : ModNPC
 					{
 						var proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<CorMoth4DProj>(), NPC.damage / 7, 0, Main.myPlayer, NPC.whoAmI);
 						(proj.ModProjectile as CorMoth4DProj).targetPos = new Vector4(Vector3.Lerp(v1, v2, (float)i / (counts - 1)), w);
-						proj.netUpdate2 = true;
+						proj.netUpdate = true;
 					}
 				}
 				Vector3 v3 = cubeVec[ii] * scale;
@@ -179,7 +179,7 @@ public class CorruptMoth : ModNPC
 				{
 					var proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<CorMoth4DProj>(), NPC.damage / 7, 0, Main.myPlayer, NPC.whoAmI);
 					(proj.ModProjectile as CorMoth4DProj).targetPos = new Vector4(Vector3.Lerp(v3, v4, (float)i / (counts - 1)), w);
-					proj.netUpdate2 = true;
+					proj.netUpdate = true;
 				}
 			}
 		}
@@ -192,7 +192,7 @@ public class CorruptMoth : ModNPC
 				float c = (counts - 1) / 2;
 				var proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<CorMoth4DProj>(), NPC.damage / 7, 0, Main.myPlayer, NPC.whoAmI);
 				(proj.ModProjectile as CorMoth4DProj).targetPos = new Vector4(v * scale, (float)(i - c) * scale / c);
-				proj.netUpdate2 = true;
+				proj.netUpdate = true;
 			}
 		}
 	}
@@ -249,7 +249,7 @@ public class CorruptMoth : ModNPC
 		}
 		if (Timer % 15 == 0)
 		{
-			NPC.netUpdate2 = true;
+			NPC.netUpdate = true;
 		}
 
 		// 贴图旋转
@@ -588,7 +588,7 @@ public class CorruptMoth : ModNPC
 				NPC.Center = player.Center + Main.rand.NextVector2Unit() * new Vector2(1.4f, 1f) * 300;
 				PhamtomDis = 0;
 				NPC.alpha = 255;
-				NPC.netUpdate2 = true;
+				NPC.netUpdate = true;
 				if (phase2)
 				{
 					Timer += 20;
@@ -812,7 +812,7 @@ public class CorruptMoth : ModNPC
 					Vector2 vel = (i * MathHelper.TwoPi / 30).ToRotationVector2();
 					var proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, vel, ModContent.ProjectileType<ButterflyDream>(), NPC.damage / 10, 0, Main.myPlayer, NPC.whoAmI, 1); // This circles around the 4D Cube
 					proj.timeLeft = 800;
-					proj.netUpdate2 = true;
+					proj.netUpdate = true;
 				}
 			}
 			if (Timer is > 60 and < 260)

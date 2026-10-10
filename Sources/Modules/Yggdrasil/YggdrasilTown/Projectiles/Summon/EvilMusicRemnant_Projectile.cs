@@ -1,4 +1,6 @@
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Summon;
@@ -26,6 +28,7 @@ public class EvilMusicRemnant_Projectile : ModProjectile
 		Projectile.hostile = false;
 		Projectile.timeLeft = MaxTime;
 		Projectile.DamageType = DamageClass.Summon;
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindProjectiles;
 	}
 
 	public override void OnSpawn(IEntitySource source)
@@ -93,7 +96,7 @@ public class EvilMusicRemnant_Projectile : ModProjectile
 					{
 						BehideProj = true;
 					}
-					Projectile.hide = true;
+					Projectile.usesOwnerLight = true;
 					if (Projectile.timeLeft < 240 && Projectile.timeLeft > 60 && owner.ownedProjectileCounts[Type] <= 30)
 					{
 						Projectile.timeLeft = Main.rand.Next(240, 270);
@@ -101,7 +104,7 @@ public class EvilMusicRemnant_Projectile : ModProjectile
 				}
 				else
 				{
-					Projectile.hide = false;
+					Projectile.usesOwnerLight = false;
 				}
 			}
 		}
@@ -119,17 +122,16 @@ public class EvilMusicRemnant_Projectile : ModProjectile
 		}
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+	public override void PostAI()
 	{
 		if (BehideProj)
 		{
-			behindProjectiles.Add(index);
+			Projectile.drawLayer = ProjectileDrawLayerID.BehindProjectiles;
 		}
 		else
 		{
-			overPlayers.Add(index);
+			Projectile.drawLayer = ProjectileDrawLayerID.OverPlayers;
 		}
-		base.DrawBehind(index, behindNPCsAndTiles, behindNPCs, behindProjectiles, overPlayers, overWiresUI);
 	}
 
 	public void CheckClickCenter()
@@ -154,7 +156,7 @@ public class EvilMusicRemnant_Projectile : ModProjectile
 		ClickCenter = minDisPos;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		float fade = 1f;
 		if (Projectile.timeLeft < 60f)

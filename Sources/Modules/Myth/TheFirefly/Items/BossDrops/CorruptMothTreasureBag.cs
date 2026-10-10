@@ -3,6 +3,7 @@ using Everglow.Myth.TheFirefly.Items.Weapons;
 using Everglow.Myth.TheFirefly.NPCs.Bosses;
 using Everglow.Myth.TheTusk.Items.Accessories;
 using Everglow.Myth.TheTusk.Items.Weapons;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using Terraria.GameContent.Creative;
 
@@ -82,17 +83,17 @@ public class CorruptMothTreasureBag : ModItem
 		return Color.Lerp(lightColor, Color.White, 0.4f);
 	}
 
-	public override void PostUpdate()
+	public override void PostUpdate(WorldItem item)
 	{
 		// Spawn some light and dust when dropped in the world
-		Lighting.AddLight(Item.Center, Color.White.ToVector3() * 0.4f);
+		Lighting.AddLight(item.Center, Color.White.ToVector3() * 0.4f);
 
-		if (Item.timeSinceItemSpawned % 12 == 0)
+		if (item.timeSinceItemSpawned % 12 == 0)
 		{
-			Vector2 center = Item.Center + new Vector2(0f, Item.height * -0.1f);
+			Vector2 center = item.Center + new Vector2(0f, item.height * -0.1f);
 
 			// This creates a randomly rotated vector of length 1, which gets it's components multiplied by the parameters
-			Vector2 direction = Main.rand.NextVector2CircularEdge(Item.width * 0.6f, Item.height * 0.6f);
+			Vector2 direction = Main.rand.NextVector2CircularEdge(item.width * 0.6f, item.height * 0.6f);
 			float distance = 0.3f + Main.rand.NextFloat() * 0.5f;
 			var velocity = new Vector2(0f, -Main.rand.NextFloat() * 0.3f - 1.5f);
 
@@ -105,17 +106,17 @@ public class CorruptMothTreasureBag : ModItem
 		}
 	}
 
-	public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
+	public override bool PreDrawInWorld(WorldItem item, SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
 	{
 		// Draw the periodic glow effect behind the item when dropped in the world (hence PreDrawInWorld)
-		Texture2D texture = TextureAssets.Item[Item.type].Value;
+		Texture2D texture = TextureAssets.Item[item.type].Value;
 
 		Rectangle frame;
 
-		if (Main.itemAnimations[Item.type] != null)
+		if (Main.itemAnimations[item.type] != null)
 		{
 			// In case this item is animated, this picks the correct frame
-			frame = Main.itemAnimations[Item.type].GetFrame(texture, Main.itemFrameCounter[whoAmI]);
+			frame = Main.itemAnimations[item.type].GetFrame(texture, Main.itemFrameCounter[whoAmI]);
 		}
 		else
 		{
@@ -123,11 +124,11 @@ public class CorruptMothTreasureBag : ModItem
 		}
 
 		Vector2 frameOrigin = frame.Size() / 2f;
-		var offset = new Vector2(Item.width / 2 - frameOrigin.X, Item.height - frame.Height);
-		Vector2 drawPos = Item.position - Main.screenPosition + frameOrigin + offset;
+		var offset = new Vector2(item.width / 2 - frameOrigin.X, item.height - frame.Height);
+		Vector2 drawPos = item.position - Main.screenPosition + frameOrigin + offset;
 
 		float time = Main.GlobalTimeWrappedHourly;
-		float timer = Item.timeSinceItemSpawned / 240f + time * 0.04f;
+		float timer = item.timeSinceItemSpawned / 240f + time * 0.04f;
 
 		time %= 4f;
 		time /= 2f;

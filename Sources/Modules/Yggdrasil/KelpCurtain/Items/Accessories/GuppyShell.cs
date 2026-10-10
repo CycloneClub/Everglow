@@ -22,7 +22,7 @@ public class GuppyShell : ModItem
 		player.moveSpeed -= 0.05f; // Decrease movement speed by 5%.
 
 		// When player is not moving
-		if (player.IsStandingStillForSpecialEffects)
+		if (player.IsConsideredStandingStill)
 		{
 			player.endurance += 0.1f; // Increase damage reduction by 10%.
 			player.GetDamage<GenericDamageClass>() += 0.05f; // Increase damage by 5%.

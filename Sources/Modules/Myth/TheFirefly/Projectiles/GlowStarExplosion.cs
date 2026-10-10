@@ -6,6 +6,7 @@ public class GlowStarExplosion : ModProjectile, IWarpProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindProjectiles;
 		Projectile.extraUpdates = 3;
 		Projectile.width = 24;
 		Projectile.height = 24;
@@ -20,10 +21,9 @@ public class GlowStarExplosion : ModProjectile, IWarpProjectile
 
 	public override void AI()
 	{
-		Projectile.hide = true;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		float value = (200 - Projectile.timeLeft) / 200f;
 		value = MathF.Sqrt(value);
@@ -45,10 +45,6 @@ public class GlowStarExplosion : ModProjectile, IWarpProjectile
 		return false;
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindProjectiles.Add(index);
-	}
 
 	private static void DrawWarpTexCircle_VFXBatch(VFXBatch spriteBatch, float radius, float width, Color color, Vector2 center, Texture2D tex, double addRot = 0)
 	{

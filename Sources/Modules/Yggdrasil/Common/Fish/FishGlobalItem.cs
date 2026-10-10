@@ -1,4 +1,7 @@
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Graphics;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 
@@ -57,17 +60,17 @@ public class FishGlobalItem : GlobalItem
 		}
 	}
 
-	public override void OnSpawn(Item item, IEntitySource source)
+	public override void OnSpawn(WorldItem worldItem, IEntitySource source)
 	{
-		base.OnSpawn(item, source);
+		base.OnSpawn(worldItem, source);
 	}
 
-	public override bool OnPickup(Item item, Player player)
+	public override bool OnPickup(WorldItem worldItem, Player player)
 	{
 		HookedBy = null;
 		Hookable = false;
 		Hovered = false;
-		return base.OnPickup(item, player);
+		return base.OnPickup(worldItem, player);
 	}
 
 	public override void OnStack(Item destination, Item source, int numToTransfer)
@@ -90,7 +93,7 @@ public class FishGlobalItem : GlobalItem
 		return base.ConsumeItem(item, player);
 	}
 
-	public void CheckHover(Item item)
+	public void CheckHover(WorldItem worldItem)
 	{
 		if (HookedBy != null)
 		{
@@ -98,11 +101,11 @@ public class FishGlobalItem : GlobalItem
 			Hovered = false;
 			return;
 		}
-		Vector2 screenPos = item.position - Main.screenPosition;
+		Vector2 screenPos = worldItem.position - Main.screenPosition;
 		if (
 			Main.mouseX >= screenPos.X - 10 && Main.mouseY >= screenPos.Y - 10 &&
-			Main.mouseX < screenPos.X + item.width + 10 &&
-			Main.mouseY < screenPos.Y + item.height + 10
+			Main.mouseX < screenPos.X + worldItem.width + 10 &&
+			Main.mouseY < screenPos.Y + worldItem.height + 10
 		)
 		{
 			Hovered = true;
@@ -114,7 +117,7 @@ public class FishGlobalItem : GlobalItem
 		}
 	}
 
-	public void CheckHookable(Item item)
+	public void CheckHookable(WorldItem worldItem)
 	{
 		Hookable = false;
 		foreach (var proj in Main.projectile)
@@ -123,14 +126,14 @@ public class FishGlobalItem : GlobalItem
 			{
 				continue;
 			}
-			if (proj.Center.Distance(item.Center) < 64f)
+			if (proj.Center.Distance(worldItem.Center) < 64f)
 			{
 				Hookable = true;
 			}
 		}
 	}
 
-	public void CheckRightClick(Item item)
+	public void CheckRightClick(WorldItem worldItem)
 	{
 		if (!Main.mouseRight)
 		{
@@ -145,7 +148,7 @@ public class FishGlobalItem : GlobalItem
 				{
 					continue;
 				}
-				if (proj.Center.Distance(item.Center) < 64f)
+				if (proj.Center.Distance(worldItem.Center) < 64f)
 				{
 					HookedBy = proj;
 				}
@@ -153,83 +156,83 @@ public class FishGlobalItem : GlobalItem
 		}
 	}
 
-	public void UpdateOnVanillaLiquid(Item item, ref float gravity)
+	public void UpdateOnVanillaLiquid(WorldItem worldItem, ref float gravity)
 	{
-		Point itemPos = item.Center.ToTileCoordinates();
+		Point itemPos = worldItem.Center.ToTileCoordinates();
 		byte liquid = Main.tile[itemPos].LiquidAmount;
 		if (liquid > 0)
 		{
 			float percent = liquid / 255f;
 			float liqY = percent * 16f + itemPos.Y * 16f;
-			float delta = item.Center.Y - liqY;
+			float delta = worldItem.Center.Y - liqY;
 			if (delta < 0 || liquid == 255)
 			{
 				float ratio = Main.rand.NextFloat(1) + 0.5f;
-				float buoyancy = Math.Clamp(-delta / item.height * 2, 0, 1);
+				float buoyancy = Math.Clamp(-delta / worldItem.height * 2, 0, 1);
 				gravity *= -ratio * buoyancy;
-				item.velocity.Y *= 0.9f;
-				item.velocity.X = FloatSpeed;
+				worldItem.velocity.Y *= 0.9f;
+				worldItem.velocity.X = FloatSpeed;
 			}
 		}
 	}
 
-	public override void Update(Item item, ref float gravity, ref float maxFallSpeed)
+	public override void Update(WorldItem worldItem, ref float gravity, ref float maxFallSpeed)
 	{
-		if (!IsFishable(item))
+		if (!IsFishable(worldItem.inner))
 		{
 			return;
 		}
 		if (HookedBy != null)
 		{
-			item.position = HookedBy.position;
-			item.velocity = HookedBy.velocity;
+			worldItem.position = HookedBy.position;
+			worldItem.velocity = HookedBy.velocity;
 			Hovered = false;
 			Hookable = false;
 			return;
 		}
 		else
 		{
-			UpdateOnVanillaLiquid(item, ref gravity);
+			UpdateOnVanillaLiquid(worldItem, ref gravity);
 		}
-		CheckHover(item);
-		CheckHookable(item);
-		CheckRightClick(item);
-		base.Update(item, ref gravity, ref maxFallSpeed);
+		CheckHover(worldItem);
+		CheckHookable(worldItem);
+		CheckRightClick(worldItem);
+		base.Update(worldItem, ref gravity, ref maxFallSpeed);
 	}
 
-	public override void GrabRange(Item item, Player player, ref int grabRange)
+	public override void GrabRange(WorldItem worldItem, Player player, ref int grabRange)
 	{
 		if (Fishable && HookedBy == null)
 		{
 			grabRange = 0;
 		}
-		base.GrabRange(item, player, ref grabRange);
+		base.GrabRange(worldItem, player, ref grabRange);
 	}
 
-	public override bool CanPickup(Item item, Player player)
+	public override bool CanPickup(WorldItem worldItem, Player player)
 	{
 		if (Fishable && HookedBy == null)
 		{
 			return false;
 		}
-		return base.CanPickup(item, player);
+		return base.CanPickup(worldItem, player);
 	}
 
-	public override void PostDrawInWorld(Item item, SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+	public override void PostDrawInWorld(WorldItem worldItem, SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 	{
-		Vector2 basePos = item.Center - Main.screenPosition;
+		Vector2 basePos = worldItem.Center - Main.screenPosition;
 		if (Hookable)
 		{
 			Texture2D icon = ModAsset.HookItemIcon.Value;
-			spriteBatch.Draw(icon, new Rectangle((int)basePos.X - item.width / 2 - 4, (int)basePos.Y - item.width / 2 - 4, item.width + 8, item.width + 8), Color.White);
+			spriteBatch.Draw(icon, new Rectangle((int)basePos.X - worldItem.width / 2 - 4, (int)basePos.Y - worldItem.width / 2 - 4, worldItem.width + 8, worldItem.width + 8), Color.White);
 		}
 		if (Hovered && Hookable)
 		{
 			// var font = FontAssets.MouseText.Value;
 			// string hint = "Right click to hook";
 			// Vector2 size = font.MeasureString(hint);
-			// spriteBatch.DrawString(font, hint, basePos - size / 2 - new Vector2(0, item.height / 2 + 20), Color.Gold);
+			// spriteBatch.DrawString(font, hint, basePos - size / 2 - new Vector2(0, worldItem.height / 2 + 20), Color.Gold);
 		}
-		base.PostDrawInWorld(item, spriteBatch, lightColor, alphaColor, rotation, scale, whoAmI);
+		base.PostDrawInWorld(worldItem, spriteBatch, lightColor, alphaColor, rotation, scale, whoAmI);
 	}
 }

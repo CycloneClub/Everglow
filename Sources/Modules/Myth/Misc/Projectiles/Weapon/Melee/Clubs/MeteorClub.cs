@@ -16,29 +16,38 @@ public class MeteorClub : ClubProj
 		int type = DustID.Flare;
 		for (float d = 0.1f; d < Omega; d += 0.04f)
 		{
-			var D = Dust.NewDustDirect(target.Center - new Vector2(4)/*Dust的Size=8x8*/, 0, 0, type, 0, 0, 150, default, Main.rand.NextFloat(0.4f, 1.1f));
+			var D = Dust.NewDustDirect(target.Center - new Vector2(4)/*Dust?Size=8x8*/, 0, 0, type, 0, 0, 150, default, Main.rand.NextFloat(0.4f, 1.1f));
 			D.noGravity = true;
 			D.velocity = new Vector2(0, Main.rand.NextFloat(Omega * 25f)).RotatedByRandom(6.283);
 		}
 		target.AddBuff(BuffID.OnFire, 300);
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
-		SpriteEffects effects = SpriteEffects.None;
-		if (Projectile.spriteDirection == 1)
+		Player previousDrawPlayer = DrawPlayer;
+		DrawPlayer = player;
+		try
 		{
-			effects = SpriteEffects.FlipHorizontally;
-		}
+			SpriteEffects effects = SpriteEffects.None;
+			if (Projectile.spriteDirection == 1)
+			{
+				effects = SpriteEffects.FlipHorizontally;
+			}
 
-		Texture2D texture = ModAsset.MeteorClub_glow.Value;
-		Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, texture.Size() / 2f, Projectile.scale, effects, 0f);
-		for (int i = 0; i < 5; i++)
+			Texture2D texture = ModAsset.MeteorClub_glow.Value;
+			Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, texture.Size() / 2f, Projectile.scale, effects, 0f);
+			for (int i = 0; i < 5; i++)
+			{
+				float fade = Omega * 2f + 0.2f;
+				fade *= (5 - i) / 5f;
+				var color2 = new Color(fade, fade, fade, 0);
+				Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, color2, Projectile.rotation - i * 0.75f * Omega, texture.Size() / 2f, Projectile.scale, effects, 0f);
+			}
+		}
+		finally
 		{
-			float fade = Omega * 2f + 0.2f;
-			fade *= (5 - i) / 5f;
-			var color2 = new Color(fade, fade, fade, 0);
-			Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, color2, Projectile.rotation - i * 0.75f * Omega, texture.Size() / 2f, Projectile.scale, effects, 0f);
+			DrawPlayer = previousDrawPlayer;
 		}
 	}
 

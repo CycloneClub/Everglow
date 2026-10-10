@@ -1,4 +1,6 @@
 using Everglow.Commons.DataStructures;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.TownNPCs;
@@ -19,7 +21,8 @@ public class Georg_Hammer_Target : ModProjectile
 		Projectile.ignoreWater = false;
 		Projectile.tileCollide = true;
 		Projectile.timeLeft = 90;
-		Projectile.hide = true;
+		Projectile.drawLayer = ProjectileDrawLayerID.OverPlayers;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public Vector2 TargetPosition = Vector2.zeroVector;
@@ -37,7 +40,7 @@ public class Georg_Hammer_Target : ModProjectile
 		Projectile.velocity *= 0;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		SpriteBatchState sBS = Main.spriteBatch.GetState().Value;
 		Main.spriteBatch.End();
@@ -71,9 +74,5 @@ public class Georg_Hammer_Target : ModProjectile
 		return false;
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		overPlayers.Add(index);
-		base.DrawBehind(index, behindNPCsAndTiles, behindNPCs, behindProjectiles, overPlayers, overWiresUI);
-	}
+
 }

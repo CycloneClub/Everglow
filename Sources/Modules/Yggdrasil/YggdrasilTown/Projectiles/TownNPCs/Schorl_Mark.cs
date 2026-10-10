@@ -1,5 +1,7 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.TownNPCs;
 
@@ -16,7 +18,6 @@ public class Schorl_Mark : ModProjectile
 	public override void SetDefaults()
 	{
 		Projectile.usesLocalNPCImmunity = true;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Type] = true;
 		Projectile.localNPCHitCooldown = 60;
 		Projectile.ArmorPenetration = 0;
 		Projectile.friendly = true;
@@ -26,6 +27,7 @@ public class Schorl_Mark : ModProjectile
 		Projectile.width = 10;
 		Projectile.height = 10;
 		Projectile.aiStyle = -1;
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 	}
 
 	public override void AI()
@@ -76,7 +78,7 @@ public class Schorl_Mark : ModProjectile
 		return base.Colliding(projHitbox, targetHitbox);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		if (Target == null)
 		{

@@ -246,7 +246,7 @@ public abstract partial class WorldQuestBase
 	{
 		foreach (Item item in RewardItems)
 		{
-			player.QuickSpawnItem(player.GetSource_Misc(RewardItemsSourceContext), item, item.stack);
+			player.QuickSpawnItem(player.GetSource_Misc(RewardItemsSourceContext), item.Clone());
 		}
 	}
 

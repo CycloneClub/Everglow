@@ -1,5 +1,4 @@
 using Everglow.Myth.LanternMoon.Buffs;
-using Terraria;
 
 namespace Everglow.Myth.LanternMoon.Projectiles.DashCore;
 

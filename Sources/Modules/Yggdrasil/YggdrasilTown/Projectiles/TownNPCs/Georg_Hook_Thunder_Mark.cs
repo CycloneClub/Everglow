@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.TownNPCs;
@@ -40,7 +42,7 @@ public class Georg_Hook_Thunder_Mark : ModProjectile
 		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<Georg_Hook_Thunder>(), Projectile.damage, Projectile.knockBack, Main.myPlayer, Projectile.ai[0]);
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		Texture2D tex = ModAsset.Georg_Hook_Thunder.Value;
 		Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, null, new Color(1f, 1f, 1f, 0), 0, tex.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);

@@ -1,5 +1,7 @@
 using Everglow.Commons.Coroutines;
 using Everglow.Minortopography.GiantPinetree.Items;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Minortopography.GiantPinetree.Projectiles;
@@ -134,7 +136,7 @@ public class PineSprite : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		Texture2D mainTex = ModAsset.PineSprite.Value;
 		Texture2D glowTex = ModAsset.PineSprite_glow.Value;

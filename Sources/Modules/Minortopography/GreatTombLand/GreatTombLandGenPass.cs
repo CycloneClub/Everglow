@@ -1,4 +1,5 @@
 using Everglow.Commons.TileHelper;
+using System.Collections.Generic;
 using Terraria.DataStructures;
 using Terraria.IO;
 using Terraria.WorldBuilding;
@@ -52,7 +53,7 @@ public class GreatTombLand : ModSystem
 		}
 	}
 
-	public override void ModifyWorldGenTasks(List<GenPass> tasks, ref double totalWeight) => tasks.Add(new GreatTombLandGenPass());
+	public override void ModifyWorldGenTasks(List<GenPass> tasks) => tasks.Add(new GreatTombLandGenPass());
 
 	/// <summary>
 	/// 生成森林墓穴

@@ -3,6 +3,7 @@ using Everglow.Myth.TheFirefly.Pylon;
 using Everglow.Myth.TheFirefly.Tiles;
 using Everglow.Myth.TheFirefly.Walls;
 using Everglow.SpellAndSkull.Items;
+using System.Collections.Generic;
 using Terraria.DataStructures;
 using Terraria.IO;
 using Terraria.ModLoader.Default;
@@ -92,7 +93,7 @@ public class MothLand : ModSystem
 		}
 	}
 
-	public override void ModifyWorldGenTasks(List<GenPass> tasks, ref double totalWeight) => tasks.Add(new WorldMothLandGenPass());
+	public override void ModifyWorldGenTasks(List<GenPass> tasks) => tasks.Add(new WorldMothLandGenPass());
 
 	/// <summary>
 	/// 地形中心坐标

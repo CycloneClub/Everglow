@@ -112,8 +112,7 @@ internal class WaterDustRenderer
 			Vector2 value = new Vector2(Main.screenWidth, Main.screenHeight) * 0.5f * (Vector2.One - Vector2.One / Main.GameViewMatrix.Zoom);
 			Vector2 value2 = (Main.drawToScreen ? Vector2.Zero : new Vector2(Main.offScreenRange, Main.offScreenRange)) - Main.screenPosition - value;
 			Vector2 offset = -(value2 * 0.25f - lastDistortionDrawOffset) / new Vector2(disortionTarget.Width, disortionTarget.Height);
-			Vector2 targetPos = Main.screenPosition - Main.sceneWaterPos
-				+ new Vector2(Main.offScreenRange, Main.offScreenRange) + value - new Vector2(Main.offScreenRange, Main.offScreenRange);
+			Vector2 targetPos = Main.screenPosition + new Vector2(Main.offScreenRange, Main.offScreenRange) + value - Main.waterTarget.Position;
 
 			dustLogicEffect.Wait();
 			dustSpawnEffect.Wait();
@@ -135,12 +134,12 @@ internal class WaterDustRenderer
 			{
 				graphicsDevice.Textures[1] = disortionTarget;
 				graphicsDevice.SamplerStates[1] = SamplerState.PointClamp;
-				graphicsDevice.Textures[2] = Main.waterTarget;
+				graphicsDevice.Textures[2] = Main.waterTarget.Texture;
 				graphicsDevice.SamplerStates[2] = SamplerState.PointClamp;
 
 				dustSpawnEffect.Value.Parameters["uResolution"].SetValue(screenSizeZoom);
 				dustSpawnEffect.Value.Parameters["uTargetPos"].SetValue(targetPos);
-				dustSpawnEffect.Value.Parameters["uInvWaterSize"].SetValue(new Vector2(1f / Main.waterTarget.Width, 1f / Main.waterTarget.Height));
+				dustSpawnEffect.Value.Parameters["uInvWaterSize"].SetValue(new Vector2(1f / Main.waterTarget.Texture.Width, 1f / Main.waterTarget.Texture.Height));
 				dustSpawnEffect.Value.Parameters["uZoom"].SetValue(new Vector2(1f / Main.GameViewMatrix.Zoom.X, 1f / Main.GameViewMatrix.Zoom.Y));
 				dustSpawnEffect.Value.Parameters["uOffset"].SetValue(offset);
 				dustSpawnEffect.Value.Parameters["uThreasholdMin"].SetValue(0.03f);

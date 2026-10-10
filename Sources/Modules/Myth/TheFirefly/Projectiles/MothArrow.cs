@@ -1,6 +1,5 @@
 using Everglow.Myth.TheFirefly.Dusts;
 using Newtonsoft.Json.Linq;
-using Terraria;
 
 namespace Everglow.Myth.TheFirefly.Projectiles;
 

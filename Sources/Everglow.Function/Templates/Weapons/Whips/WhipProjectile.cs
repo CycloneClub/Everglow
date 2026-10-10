@@ -7,6 +7,9 @@ namespace Everglow.Commons.Templates.Weapons.Whips;
 
 public abstract class WhipProjectile : ModProjectile
 {
+	// Keep virtual draw helpers on the player supplied by tML, including mannequins.
+	protected Player DrawPlayer { get; set; }
+
 	public List<Vector2> WhipPointsForCollision = new List<Vector2>();
 
 	public override void SetDefaults()
@@ -50,6 +53,8 @@ public abstract class WhipProjectile : ModProjectile
 
 	public void DefaultToWhip()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.HeldProj;
+		Projectile.usesOwnerLight = true;
 		Projectile.width = 18;
 		Projectile.height = 18;
 		Projectile.aiStyle = -1; // 165
@@ -134,7 +139,7 @@ public abstract class WhipProjectile : ModProjectile
 		Projectile.ai[0] += 1f;
 		float rangeMultiplier = WhipLength / 300f;
 		Projectile.tileCollide = false;
-		Projectile.Center = Main.GetPlayerArmPosition(Projectile) + Projectile.velocity * (Projectile.ai[0] - 1f);
+		Projectile.Center = player.GetArmPosition() + Projectile.velocity * (Projectile.ai[0] - 1f);
 		Projectile.spriteDirection = Vector2.Dot(Projectile.velocity, Vector2.UnitX) < 0f ? -1 : 1;
 		if (Projectile.ai[0] >= TimeToFlyOut || player.itemAnimation == 0)
 		{
@@ -197,11 +202,11 @@ public abstract class WhipProjectile : ModProjectile
 			factor = (durationSquare15 - 1f) / 0.5f;
 			durationSquare15 = MathHelper.Lerp(1f, 0f, factor);
 		}
-		Player player = Main.player[Projectile.owner];
+		Player player = DrawPlayer ?? Main.player[Projectile.owner];
 		Item heldItem = player.HeldItem;
 		float durationValue = heldItem.useAnimation * 2 * duration * player.whipRangeMultiplier;
 		durationValue = Projectile.velocity.Length() * durationValue * durationSquare15 * rangeMultiplier / SegmentCount;
-		Vector2 startArmPosition = Main.GetPlayerArmPosition(Projectile);
+		Vector2 startArmPosition = player.GetArmPosition();
 		Vector2 value0 = startArmPosition;
 		float alpha = -MathHelper.PiOver2;
 		Vector2 value1 = value0;
@@ -232,20 +237,29 @@ public abstract class WhipProjectile : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
-		float lineSpeedMax = WhipLength / TimeToFlyOut / 3f;
-		// draw ghost image when line speed very fast.
-		if (lineSpeedMax >= 1)
+		Player previousDrawPlayer = DrawPlayer;
+		DrawPlayer = player;
+		try
 		{
-			for (int t = 1; t < lineSpeedMax; t++)
+			float lineSpeedMax = WhipLength / TimeToFlyOut / 3f;
+			// draw ghost image when line speed very fast.
+			if (lineSpeedMax >= 1)
 			{
-				float fade = 1 - t / MathF.Floor(lineSpeedMax + 1);
-				DrawWhip((1 - fade) * 3);
+				for (int t = 1; t < lineSpeedMax; t++)
+				{
+					float fade = 1 - t / MathF.Floor(lineSpeedMax + 1);
+					DrawWhip((1 - fade) * 3);
+				}
 			}
+			DrawWhip();
+			return false;
 		}
-		DrawWhip();
-		return false;
+		finally
+		{
+			DrawPlayer = previousDrawPlayer;
+		}
 	}
 
 	public virtual void DrawWhip(float foreStep = 0)

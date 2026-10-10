@@ -2,6 +2,8 @@ using Everglow.Commons.Templates.Weapons;
 using Everglow.Yggdrasil.KelpCurtain.Buffs;
 using Everglow.Yggdrasil.KelpCurtain.Items.Weapons.Legacies;
 using Everglow.Yggdrasil.KelpCurtain.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Legacies;
@@ -131,34 +133,43 @@ public class AncientSyringe_proj : HandholdProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
-		Player player = Main.player[Projectile.owner];
-		var texMain = (Texture2D)ModContent.Request<Texture2D>(Texture);
-		SpriteEffects se = SpriteEffects.None;
-		if (player.direction == -1)
+		Player previousDrawPlayer = DrawPlayer;
+		DrawPlayer = player;
+		try
 		{
-			se = SpriteEffects.FlipVertically;
-		}
+			var texMain = (Texture2D)ModContent.Request<Texture2D>(Texture);
+			SpriteEffects se = SpriteEffects.None;
+			if (player.direction == -1)
+			{
+				se = SpriteEffects.FlipVertically;
+			}
 
-		float rot = Projectile.rotation - (float)(Math.PI * 0.25) + TextureRotation * player.direction;
-		Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition + DrawOffset - new Vector2(54, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), null, lightColor, rot, texMain.Size() / 2f, 1f, se, 0);
-		int timeMax = (int)(player.itemTimeMax / player.meleeSpeed);
-		float duration = player.itemTime / (float)timeMax;
-		duration *= 1.5f;
-		duration -= 0.5f;
-		if (duration < 0)
-		{
-			duration = 0;
+			float rot = Projectile.rotation - (float)(Math.PI * 0.25) + TextureRotation * player.direction;
+			Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition + DrawOffset - new Vector2(54, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), null, lightColor, rot, texMain.Size() / 2f, 1f, se, 0);
+			int timeMax = (int)(player.itemTimeMax / player.meleeSpeed);
+			float duration = player.itemTime / (float)timeMax;
+			duration *= 1.5f;
+			duration -= 0.5f;
+			if (duration < 0)
+			{
+				duration = 0;
+			}
+			duration = MathF.Sin(duration * MathHelper.Pi);
+			Texture2D star = Commons.ModAsset.StarSlash_black.Value;
+			Color drawC = new Color(0.7f * lightColor.R / 255f, 2f * lightColor.G / 255f, 0.2f * lightColor.B / 255f, 0);
+			Main.spriteBatch.Draw(star, Projectile.Center - Main.screenPosition + DrawOffset + new Vector2(24, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), null, Color.White, MathHelper.PiOver2, star.Size() / 2f, 0.5f * duration, se, 0);
+			Main.spriteBatch.Draw(star, Projectile.Center - Main.screenPosition + DrawOffset + new Vector2(24, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), null, Color.White, 0, star.Size() / 2f, 0.5f * duration, se, 0);
+			star = Commons.ModAsset.StarSlash.Value;
+			Main.spriteBatch.Draw(star, Projectile.Center - Main.screenPosition + DrawOffset + new Vector2(24, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), null, drawC, MathHelper.PiOver2, star.Size() / 2f, 0.5f * duration, se, 0);
+			Main.spriteBatch.Draw(star, Projectile.Center - Main.screenPosition + DrawOffset + new Vector2(24, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), null, drawC, 0, star.Size() / 2f, 0.5f * duration, se, 0);
+			return false;
+
 		}
-		duration = MathF.Sin(duration * MathHelper.Pi);
-		Texture2D star = Commons.ModAsset.StarSlash_black.Value;
-		Color drawC = new Color(0.7f * lightColor.R / 255f, 2f * lightColor.G / 255f, 0.2f * lightColor.B / 255f, 0);
-		Main.spriteBatch.Draw(star, Projectile.Center - Main.screenPosition + DrawOffset + new Vector2(24, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), null, Color.White, MathHelper.PiOver2, star.Size() / 2f, 0.5f * duration, se, 0);
-		Main.spriteBatch.Draw(star, Projectile.Center - Main.screenPosition + DrawOffset + new Vector2(24, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), null, Color.White, 0, star.Size() / 2f, 0.5f * duration, se, 0);
-		star = Commons.ModAsset.StarSlash.Value;
-		Main.spriteBatch.Draw(star, Projectile.Center - Main.screenPosition + DrawOffset + new Vector2(24, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), null, drawC, MathHelper.PiOver2, star.Size() / 2f, 0.5f * duration, se, 0);
-		Main.spriteBatch.Draw(star, Projectile.Center - Main.screenPosition + DrawOffset + new Vector2(24, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), null, drawC, 0, star.Size() / 2f, 0.5f * duration, se, 0);
-		return false;
+		finally
+		{
+			DrawPlayer = previousDrawPlayer;
+		}
 	}
 }

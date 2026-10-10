@@ -13,6 +13,7 @@ using Everglow.Yggdrasil.YggdrasilTown.Items.BossDrops;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.SquamousShell;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Bosses.SquamousShell;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent.ItemDropRules;
@@ -86,7 +87,7 @@ public class SquamousShell : ModNPC
 		Main.npcFrameCount[NPC.type] = 1;
 	}
 
-	public override float SpawnChance(NPC.Spawner spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawner)
 	{
 		return 0f;
 	}

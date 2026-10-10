@@ -8,6 +8,7 @@ public class DarkLanternBombExplosion : ModProjectile, IWarpProjectile
 {
 	public override void SetDefaults()
 	{
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 		Projectile.width = 100;
 		Projectile.height = 100;
 		Projectile.aiStyle = -1;
@@ -16,7 +17,6 @@ public class DarkLanternBombExplosion : ModProjectile, IWarpProjectile
 		Projectile.tileCollide = false;
 		Projectile.timeLeft = 30;
 		Projectile.penetrate = -1;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Projectile.type] = true;
 	}
 
 	public override void AI()
@@ -226,7 +226,7 @@ public class DarkLanternBombExplosion : ModProjectile, IWarpProjectile
 		return new Vector2(Main.rand.NextFloat(minLength, maxLength), 0).RotatedByRandom(6.283);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		return false;
 	}

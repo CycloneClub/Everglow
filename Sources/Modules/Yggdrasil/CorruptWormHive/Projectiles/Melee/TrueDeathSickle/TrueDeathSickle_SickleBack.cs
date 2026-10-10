@@ -1,4 +1,6 @@
 using Everglow.Commons.DataStructures;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 using static Everglow.Yggdrasil.CorruptWormHive.Projectiles.Melee.TrueDeathSickle.TrueDeathSickle_Blade;
 
@@ -65,7 +67,7 @@ public class TrueDeathSickle_SickleBack : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		SpriteBatchState sBS = Main.spriteBatch.GetState().Value;
 		Main.spriteBatch.End();

@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using Terraria;
 namespace Everglow.Yggdrasil.CityOfMagicFlute.Projectiles.Ranged;
 
 public class TerraViewerHowitzer_proj_flame_blue : ModProjectile, IWarpProjectile, IBloomProjectile
@@ -89,7 +91,7 @@ public class TerraViewerHowitzer_proj_flame_blue : ModProjectile, IWarpProjectil
 		}
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		float value = (200 - Projectile.timeLeft) / 200f;
 		value = MathF.Sqrt(value);

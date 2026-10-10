@@ -51,7 +51,7 @@ public abstract class EverglowPylonBase<T> : ModPylon
 		TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(moddedPylon.Hook_AfterPlacement, -1, 0, false);
 		TileObjectData.addTile(Type);
 
-		TileID.Sets.InteractibleByNPCs[Type] = true;
+		TileID.Sets.InteractableByNPCs[Type] = true;
 		TileID.Sets.PreventsSandfall[Type] = true;
 		AddToArray(ref TileID.Sets.CountsAsPylon);
 	}
@@ -81,8 +81,8 @@ public abstract class EverglowPylonBase<T> : ModPylon
 
 	public override void DrawMapIcon(ref MapOverlayDrawContext context, ref string mouseOverText, TeleportPylonInfo pylonInfo, bool isNearPylon, Color drawColor, float deselectedScale, float selectedScale)
 	{
-		bool mouseOver = DefaultDrawMapIcon(ref context, MapIcon, pylonInfo.PositionInTiles.ToVector2() + new Vector2(1.5f, 2f), drawColor, deselectedScale, selectedScale);
-		DefaultMapClickHandle(mouseOver, pylonInfo, $"Mods.Everglow.ItemName.{GetType().Name}Item", ref mouseOverText);
+		bool mouseOver = DefaultDrawMapIcon(ref context, MapIcon, pylonInfo.PositionInTiles.ToVector2() + new Vector2(1.5f, 2f), drawColor, deselectedScale, selectedScale, out bool onScreen);
+		DefaultMapClickHandle(mouseOver, onScreen, pylonInfo, $"Mods.Everglow.ItemName.{GetType().Name}Item", ref mouseOverText);
 	}
 
 	/// <summary>

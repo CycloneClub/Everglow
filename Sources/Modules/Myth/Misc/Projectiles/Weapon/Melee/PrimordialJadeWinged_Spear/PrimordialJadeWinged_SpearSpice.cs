@@ -6,6 +6,7 @@ public class PrimordialJadeWinged_SpearSpice : ModProjectile
 {
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCsAndTiles;
 		Projectile.width = 100;
 		Projectile.height = 100;
 		Projectile.friendly = true;
@@ -17,14 +18,9 @@ public class PrimordialJadeWinged_SpearSpice : ModProjectile
 		Projectile.localNPCHitCooldown = 30;
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindNPCsAndTiles.Add(index);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
-		Player player = Main.player[Projectile.owner];
 		var bars = new List<Vertex2D>();
 		Vector2 drawRoot = Projectile.Center + new Vector2(0, 8 * player.gravDir);
 		var v0 = new Vector2(0, -1);
@@ -96,7 +92,6 @@ public class PrimordialJadeWinged_SpearSpice : ModProjectile
 		{
 			Projectile.friendly = false;
 		}
-		Projectile.hide = true;
 	}
 
 	public static int CyanStrike = 0;

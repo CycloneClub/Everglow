@@ -41,7 +41,7 @@ public class MossyRuby : ModItem
 			Item.stack--;
 			if (Item.stack <= 0)
 			{
-				Item.active = false;
+				Item.TurnToAir();
 			}
 			return true;
 		}

@@ -1,5 +1,7 @@
 using Everglow.Yggdrasil.KelpCurtain.Buffs;
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Melee;
@@ -43,33 +45,43 @@ public class BladeOfGreenMoss_Proj : MeleeProj
 		base.DrawSelf(spriteBatch, lightColor, diagonal, drawScale, glowTexture);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
-		DrawTrail(lightColor);
-		DrawSelf(Main.spriteBatch, lightColor);
-		if (timer < 60 && currantAttackType == 3)
+		Player previousDrawPlayer = DrawPlayer;
+		DrawPlayer = player;
+		try
 		{
-			float value = timer;
-			value /= 4f;
-			value = Math.Min(value, (60 - timer) * 0.3f) / 5;
-			Texture2D star = Commons.ModAsset.StarSlash.Value;
-			Vector2 starPos = Projectile.Center - Main.screenPosition + mainAxisDirection.RotatedBy(Projectile.spriteDirection * 0.175f) * 0.4f;
-			Lighting.AddLight(Projectile.Center + mainAxisDirection * 0.4f, new Vector3(0.1f, 0.36f, 0.24f) * value * 10);
-			Main.spriteBatch.Draw(star, starPos, null, new Color(0.1f, 1f, 0.6f, 0f), 0, star.Size() / 2f, new Vector2(0.4f, 0.5f) * value, SpriteEffects.None, 0);
-			Main.spriteBatch.Draw(star, starPos, null, new Color(0.1f, 1f, 0.6f, 0f), MathHelper.PiOver2, star.Size() / 2f, new Vector2(0.6f, 0.9f) * value, SpriteEffects.None, 0);
+			DrawTrail(lightColor);
+			DrawSelf(Main.spriteBatch, lightColor);
+			if (timer < 60 && currantAttackType == 3)
+			{
+				float value = timer;
+				value /= 4f;
+				value = Math.Min(value, (60 - timer) * 0.3f) / 5;
+				Texture2D star = Commons.ModAsset.StarSlash.Value;
+				Vector2 starPos = Projectile.Center - Main.screenPosition + mainAxisDirection.RotatedBy(Projectile.spriteDirection * 0.175f) * 0.4f;
+				Lighting.AddLight(Projectile.Center + mainAxisDirection * 0.4f, new Vector3(0.1f, 0.36f, 0.24f) * value * 10);
+				Main.spriteBatch.Draw(star, starPos, null, new Color(0.1f, 1f, 0.6f, 0f), 0, star.Size() / 2f, new Vector2(0.4f, 0.5f) * value, SpriteEffects.None, 0);
+				Main.spriteBatch.Draw(star, starPos, null, new Color(0.1f, 1f, 0.6f, 0f), MathHelper.PiOver2, star.Size() / 2f, new Vector2(0.6f, 0.9f) * value, SpriteEffects.None, 0);
+			}
+			if (timer < 60 && currantAttackType == 4)
+			{
+				float value = timer;
+				value /= 4f;
+				value = Math.Min(value, (60 - timer) * 0.3f) / 3;
+				Texture2D star = Commons.ModAsset.StarSlash.Value;
+				Vector2 starPos = Projectile.Center - Main.screenPosition + mainAxisDirection.RotatedBy(Projectile.spriteDirection * 0.175f) * 0.35f;
+				Lighting.AddLight(Projectile.Center + mainAxisDirection * 0.35f, new Vector3(0.1f, 0.36f, 0.24f) * value * 10);
+				Main.spriteBatch.Draw(star, starPos, null, new Color(0.1f, 1f, 0.6f, 0f), 0, star.Size() / 2f, new Vector2(0.4f, 0.5f) * value, SpriteEffects.None, 0);
+				Main.spriteBatch.Draw(star, starPos, null, new Color(0.1f, 1f, 0.6f, 0f), MathHelper.PiOver2, star.Size() / 2f, new Vector2(0.6f, 0.9f) * value, SpriteEffects.None, 0);
+			}
+			return false;
+
 		}
-		if (timer < 60 && currantAttackType == 4)
+		finally
 		{
-			float value = timer;
-			value /= 4f;
-			value = Math.Min(value, (60 - timer) * 0.3f) / 3;
-			Texture2D star = Commons.ModAsset.StarSlash.Value;
-			Vector2 starPos = Projectile.Center - Main.screenPosition + mainAxisDirection.RotatedBy(Projectile.spriteDirection * 0.175f) * 0.35f;
-			Lighting.AddLight(Projectile.Center + mainAxisDirection * 0.35f, new Vector3(0.1f, 0.36f, 0.24f) * value * 10);
-			Main.spriteBatch.Draw(star, starPos, null, new Color(0.1f, 1f, 0.6f, 0f), 0, star.Size() / 2f, new Vector2(0.4f, 0.5f) * value, SpriteEffects.None, 0);
-			Main.spriteBatch.Draw(star, starPos, null, new Color(0.1f, 1f, 0.6f, 0f), MathHelper.PiOver2, star.Size() / 2f, new Vector2(0.6f, 0.9f) * value, SpriteEffects.None, 0);
+			DrawPlayer = previousDrawPlayer;
 		}
-		return false;
 	}
 
 	public override void Attack()

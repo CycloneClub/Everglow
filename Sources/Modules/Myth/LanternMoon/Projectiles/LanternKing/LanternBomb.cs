@@ -9,6 +9,7 @@ public class LanternBomb : ModProjectile
 {
 	public override void SetDefaults()
 	{
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 		Projectile.width = 100;
 		Projectile.height = 100;
 		Projectile.aiStyle = -1;
@@ -16,7 +17,6 @@ public class LanternBomb : ModProjectile
 		Projectile.ignoreWater = true;
 		Projectile.tileCollide = false;
 		Projectile.extraUpdates = 3;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Projectile.type] = true;
 	}
 
 	public override void OnSpawn(IEntitySource source)
@@ -65,7 +65,7 @@ public class LanternBomb : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		var mainTex = (Texture2D)ModContent.Request<Texture2D>(Texture);
 		float timeValue = (900 - Projectile.timeLeft) / 900f;

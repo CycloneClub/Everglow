@@ -1,6 +1,8 @@
 using Everglow.Yggdrasil.YggdrasilTown.Buffs;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Summon;
@@ -10,6 +12,14 @@ public class DeadBeetleEgg_egg : ModProjectile
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.SummonProjectiles;
 
 	private Player Owner => Main.player[Projectile.owner];
+
+	public override void PostAI()
+	{
+		bool heldByOwner = Projectile.owner >= 0 && Projectile.owner < Main.maxPlayers
+			&& Main.player[Projectile.owner].heldProj == Projectile.whoAmI;
+		Projectile.drawLayer = heldByOwner ? ProjectileDrawLayerID.HeldProj : ProjectileDrawLayerID.Default;
+		Projectile.usesOwnerLight = heldByOwner;
+	}
 
 	public override void SetDefaults()
 	{
@@ -21,6 +31,8 @@ public class DeadBeetleEgg_egg : ModProjectile
 		Projectile.timeLeft = 60;
 		Projectile.aiStyle = -1;
 		Projectile.DamageType = DamageClass.Summon;
+		Projectile.drawLayer = ProjectileDrawLayerID.HeldProj;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public int ManaValue = 0;
@@ -101,13 +113,13 @@ public class DeadBeetleEgg_egg : ModProjectile
 	{
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D texture = ModAsset.DeadBeetleEgg_egg.Value;
 		Texture2D texture_glow = ModAsset.DeadBeetleEgg_egg_glow.Value;
 		var frame = new Rectangle(0, Projectile.frame * 40, 44, 40);
-		Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, frame, lightColor, 0, frame.Size() * 0.5f, Projectile.scale, Owner.direction == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
-		Main.spriteBatch.Draw(texture_glow, Projectile.Center - Main.screenPosition, frame, new Color(1f, 1f, 1f, 0), 0, frame.Size() * 0.5f, Projectile.scale, Owner.direction == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
+		Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, frame, lightColor, 0, frame.Size() * 0.5f, Projectile.scale, player.direction == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
+		Main.spriteBatch.Draw(texture_glow, Projectile.Center - Main.screenPosition, frame, new Color(1f, 1f, 1f, 0), 0, frame.Size() * 0.5f, Projectile.scale, player.direction == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
 
 		float newTimer = 40 - Projectile.timeLeft;
 		if (newTimer > 0 && newTimer < 20)

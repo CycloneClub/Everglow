@@ -10,7 +10,7 @@ public class GlowWoodSinkType2 : ModTile
 {
 	public override void SetStaticDefaults()
 	{
-		TileID.Sets.CountsAsWaterSource[Type] = true;
+		TileID.Sets.CountsAsWaterForCrafting[Type] = true;
 
 		Main.tileSolid[Type] = false;
 		Main.tileLavaDeath[Type] = false;

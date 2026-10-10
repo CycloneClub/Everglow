@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Summon;
@@ -14,6 +16,14 @@ public class WoodlandWraithStaff_SetAnimation : ModProjectile
 
 	public Player Owner => Main.player[Projectile.owner];
 
+	public override void PostAI()
+	{
+		bool heldByOwner = Projectile.owner >= 0 && Projectile.owner < Main.maxPlayers
+			&& Main.player[Projectile.owner].heldProj == Projectile.whoAmI;
+		Projectile.drawLayer = heldByOwner ? ProjectileDrawLayerID.HeldProj : ProjectileDrawLayerID.Default;
+		Projectile.usesOwnerLight = heldByOwner;
+	}
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 32;
@@ -24,6 +34,8 @@ public class WoodlandWraithStaff_SetAnimation : ModProjectile
 		Projectile.ignoreWater = true;
 		Projectile.tileCollide = false;
 		Projectile.timeLeft = AnimationDuration;
+		Projectile.drawLayer = ProjectileDrawLayerID.HeldProj;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public override void AI()
@@ -50,23 +62,23 @@ public class WoodlandWraithStaff_SetAnimation : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		var timeProgress = Projectile.timeLeft / (float)AnimationSwingInterval;
-		var armRot = Owner.direction * MathF.Cos(timeProgress * MathHelper.TwoPi) * 0.8f + MathHelper.Pi;
-		Vector2 armPosition = Owner.GetFrontHandPosition(Player.CompositeArmStretchAmount.Full, armRot);
-		armPosition.Y += Owner.gfxOffY;
+		var armRot = player.direction * MathF.Cos(timeProgress * MathHelper.TwoPi) * 0.8f + MathHelper.Pi;
+		Vector2 armPosition = player.GetFrontHandPosition(Player.CompositeArmStretchAmount.Full, armRot);
+		armPosition.Y += player.gfxOffY;
 
-		var gravDirAdaption = armPosition - Owner.Center;
-		gravDirAdaption.Y *= Owner.gravDir;
-		armPosition = Owner.Center + gravDirAdaption;
+		var gravDirAdaption = armPosition - player.Center;
+		gravDirAdaption.Y *= player.gravDir;
+		armPosition = player.Center + gravDirAdaption;
 
 		var texture = ModAsset.WoodlandWraithStaff.Value;
 		var weaponColor = Lighting.GetColor(armPosition.ToTileCoordinates());
-		var weaponRot = Owner.gravDir * armRot + MathHelper.Pi + MathHelper.PiOver4 - Owner.gravDir * MathHelper.PiOver2;
+		var weaponRot = player.gravDir * armRot + MathHelper.Pi + MathHelper.PiOver4 - player.gravDir * MathHelper.PiOver2;
 		var weaponOrigin = new Vector2(texture.Width * 0.1f, texture.Height * 0.9f);
 		var perspectiveScale = MathF.Sin(timeProgress * MathHelper.TwoPi) / MathHelper.Pi * 0.4f + 1;
-		var weaponScale = Owner.GetAdjustedItemScale(Owner.HeldItem) * Owner.HeldItem.scale * perspectiveScale;
+		var weaponScale = player.GetAdjustedItemScale(player.HeldItem) * player.HeldItem.scale * perspectiveScale;
 		Main.spriteBatch.Draw(texture, armPosition - Main.screenPosition, null, weaponColor, weaponRot, weaponOrigin, weaponScale, SpriteEffects.None, 0);
 
 		var handGlow = Commons.ModAsset.Point.Value;

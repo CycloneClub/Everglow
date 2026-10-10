@@ -33,9 +33,10 @@ public class EliminateLightSystem : ModSystem
 	/// </summary>
 	/// <param name="orig"></param>
 	/// <param name="self"></param>
+	/// <param name="intoRenderTargets"></param>
 	/// <param name="force"></param>
-	private void Main_DrawBlack(On_Main.orig_DrawBlack orig, Main self, bool force)
+	private void Main_DrawBlack(On_Main.orig_DrawBlack orig, Main self, bool intoRenderTargets, bool force)
 	{
-		// orig(self, force);
+		// orig(self, intoRenderTargets, force);
 	}
 }

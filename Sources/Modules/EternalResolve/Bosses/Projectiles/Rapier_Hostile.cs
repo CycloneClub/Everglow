@@ -1,6 +1,8 @@
 using Everglow.Commons.MEAC;
 using Everglow.Commons.Vertex;
 using Everglow.Commons.VFX;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.Enums;
 using Terraria.GameContent;
@@ -153,7 +155,7 @@ namespace Everglow.EternalResolve.Bosses.Projectiles
 			Utils.PlotTileLine(Projectile.Center, end, 80f * Projectile.scale, DelegateMethods.CutTiles);
 		}
 
-		public override bool PreDraw(Player player, ref Color lightColor)
+		public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 		{
 			return false;
 		}
@@ -373,7 +375,7 @@ namespace Everglow.EternalResolve.Bosses.Projectiles
 			}
 		}
 
-		public override void PostDraw(Player player, Color lightColor)
+		public override void PostDraw(Player player, Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 		{
 			DrawBeforeItem();
 			DrawItem(lightColor);

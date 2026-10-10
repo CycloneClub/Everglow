@@ -2,6 +2,8 @@ using Everglow.Commons.Templates.Weapons.StabbingSwords;
 using Everglow.Commons.VFX.CommonVFXDusts;
 using Everglow.EternalResolve.Buffs;
 using Everglow.EternalResolve.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
 
@@ -99,11 +101,10 @@ namespace Everglow.EternalResolve.Projectiles
 			}
 		}
 
-		public override void PostDraw(Color lightColor)
+		public override void PostDraw(Player player, Color lightColor)
 		{
 			Lighting.AddLight(Projectile.Center + Projectile.velocity, new Vector3(0.2f, 0.24f, 0.3f));
-			Player player = Main.player[Projectile.owner];
-			Texture2D itemTexture = TextureAssets.Item[Main.player[Projectile.owner].HeldItem.type].Value;
+			Texture2D itemTexture = TextureAssets.Item[player.HeldItem.type].Value;
 			Texture2D shadow = Commons.ModAsset.Star2_black.Value;
 			Texture2D light = Commons.ModAsset.StabbingProjectile.Value;
 			Vector2 drawOrigin = light.Size() / 2f;

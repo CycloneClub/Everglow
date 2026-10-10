@@ -1,5 +1,6 @@
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles;
+using Terraria;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 
@@ -54,12 +55,12 @@ public class RuinTorch_Item : ModItem
 		Lighting.AddLight(position, 0.5f, 1.1f, 1.1f);
 	}
 
-	public override void PostUpdate()
+	public override void PostUpdate(WorldItem worldItem)
 	{
-		// Create a white (1.0, 1.0, 1.0) light when the item is in world, and isn't underwater.
-		if (!Item.wet)
+		// Create a white (1.0, 1.0, 1.0) light when the worldItem is in world, and isn't underwater.
+		if (!worldItem.wet)
 		{
-			Lighting.AddLight(Item.Center, 0.5f, 1.1f, 1.1f);
+			Lighting.AddLight(worldItem.Center, 0.5f, 1.1f, 1.1f);
 		}
 	}
 }

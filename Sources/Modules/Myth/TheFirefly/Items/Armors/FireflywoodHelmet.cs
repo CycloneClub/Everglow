@@ -1,5 +1,7 @@
 using Everglow.Myth.TheFirefly.Items.Materials;
+using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
+using Terraria.Localization;
 
 namespace Everglow.Myth.TheFirefly.Items.Armors
 {
@@ -36,7 +38,6 @@ namespace Everglow.Myth.TheFirefly.Items.Armors
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Increases dealt damage by 20%"; // TODO: Use Localization Keys Instead
 			player.GetDamage(DamageClass.Generic) += 0.2f;
 		}
 
@@ -53,6 +54,35 @@ namespace Everglow.Myth.TheFirefly.Items.Armors
 			recipe.AddIngredient<GlowingPetal>(5);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
+		}
+	}
+
+	internal sealed class FireflywoodArmorSetSystem : ModSystem
+	{
+		private ArmorSetBonus armorSetBonus;
+
+		public override void PostSetupContent()
+		{
+			armorSetBonus = new ArmorSetBonus
+			{
+				Head = ModContent.ItemType<FireflywoodHelmet>(),
+				Body = ModContent.ItemType<FireflywoodBreastplate>(),
+				Legs = ModContent.ItemType<FireflywoodLeggings>(),
+				Effect = ModContent.GetInstance<FireflywoodHelmet>().UpdateArmorSet,
+				Description = Language.GetText("Mods.Everglow.Items.Armor.FireflywoodHelmet.SetBonus"),
+				PrimaryPart = ArmorSetBonus.PartType.Head,
+			};
+			ArmorSetBonuses.All.Add(armorSetBonus);
+			ArmorSetBonuses.BuildLookup();
+		}
+
+		public override void Unload()
+		{
+			if (armorSetBonus is not null)
+			{
+				ArmorSetBonuses.All.Remove(armorSetBonus);
+				armorSetBonus = null;
+			}
 		}
 	}
 }

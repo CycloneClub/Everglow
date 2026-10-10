@@ -7,6 +7,9 @@ namespace Everglow.Commons.Templates.Weapons;
 /// </summary>
 public abstract class HandholdProjectile : ModProjectile
 {
+	// Keep virtual draw helpers on the player supplied by tML, including mannequins.
+	protected Player DrawPlayer { get; set; }
+
 	/// <summary>
 	/// The rotation of texture.
 	/// default to pi / 4, almost terraria painter like this angle.
@@ -42,6 +45,8 @@ public abstract class HandholdProjectile : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.HeldProj;
+		Projectile.usesOwnerLight = true;
 		Projectile.width = 32;
 		Projectile.height = 32;
 		Projectile.aiStyle = -1;
@@ -126,15 +131,24 @@ public abstract class HandholdProjectile : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
-		DrawBaseTexture(lightColor);
-		return false;
+		Player previousDrawPlayer = DrawPlayer;
+		DrawPlayer = player;
+		try
+		{
+			DrawBaseTexture(lightColor);
+			return false;
+		}
+		finally
+		{
+			DrawPlayer = previousDrawPlayer;
+		}
 	}
 
 	public virtual void DrawBaseTexture(Color lightColor)
 	{
-		Player player = Main.player[Projectile.owner];
+		Player player = DrawPlayer ?? Main.player[Projectile.owner];
 		var texMain = (Texture2D)ModContent.Request<Texture2D>(Texture);
 		SpriteEffects se = SpriteEffects.None;
 		if (player.direction == -1)

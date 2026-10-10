@@ -1,6 +1,7 @@
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
 using SubworldLibrary;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.KelpCurtain.NPCs;
@@ -269,14 +270,14 @@ public class VerdantRods : ModNPC
 	/// spawn tile is rejected: this is an open-air flying creature. The per-region refinement
 	/// (亡碧湖 vs 森雨幽谷) is a recorded blocker because no regional biome predicate exists yet.
 	/// </summary>
-	public override float SpawnChance(NPC.Spawner spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawner)
 	{
-		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
+		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawner.Player))
 		{
 			return 0f;
 		}
 
-		if (spawnInfo.waterTile)
+		if (spawner.waterTile)
 		{
 			return 0f;
 		}

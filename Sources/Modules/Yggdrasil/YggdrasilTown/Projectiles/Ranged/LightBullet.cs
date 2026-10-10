@@ -1,5 +1,7 @@
 using Everglow.Yggdrasil.YggdrasilTown.Buffs;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Ranged;
@@ -55,7 +57,7 @@ internal class LightBullet : ModProjectile
 		target.AddBuff(ModContent.BuffType<Photolysis>(), 180);
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		var texMain = Commons.ModAsset.StarSlash.Value;
 		var drawColor = new Color(1f, 0.8f, 0f, 0f);

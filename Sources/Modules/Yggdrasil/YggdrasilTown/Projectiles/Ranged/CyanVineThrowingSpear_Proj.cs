@@ -1,4 +1,6 @@
 using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.CyanVine;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Ranged;
@@ -6,6 +8,14 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Ranged;
 public class CyanVineThrowingSpear_Proj : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
+
+	public override void PostAI()
+	{
+		bool heldByOwner = Projectile.owner >= 0 && Projectile.owner < Main.maxPlayers
+			&& Main.player[Projectile.owner].heldProj == Projectile.whoAmI;
+		Projectile.drawLayer = heldByOwner ? ProjectileDrawLayerID.HeldProj : ProjectileDrawLayerID.Default;
+		Projectile.usesOwnerLight = heldByOwner;
+	}
 
 	public override void SetDefaults()
 	{
@@ -16,6 +26,8 @@ public class CyanVineThrowingSpear_Proj : ModProjectile
 		Projectile.tileCollide = false;
 		Projectile.timeLeft = 1500;
 		Projectile.aiStyle = -1;
+		Projectile.drawLayer = ProjectileDrawLayerID.HeldProj;
+		Projectile.usesOwnerLight = true;
 	}
 
 	internal bool Shot = false;
@@ -69,13 +81,12 @@ public class CyanVineThrowingSpear_Proj : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D tex = ModAsset.CyanVineThrowingSpear_Proj.Value;
 		Texture2D flag = ModAsset.CyanVineThrowingSpear_flag.Value;
 
 		Vector2 redKnotPos = Projectile.Center - Main.screenPosition - Projectile.velocity.SafeNormalize(Vector2.zeroVector) * 40;
-		Player player = Main.player[Projectile.owner];
 
 		if (!Shot)
 		{

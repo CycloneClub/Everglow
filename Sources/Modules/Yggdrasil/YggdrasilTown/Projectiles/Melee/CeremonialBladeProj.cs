@@ -1,5 +1,7 @@
 using Everglow.Commons.DataStructures;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent;
@@ -85,9 +87,12 @@ public class CeremonialBladeProj : ModProjectile, IWarpProjectile_warpStyle2
 
 	public Queue<Vector2> OldRotScales = new Queue<Vector2>();
 
-	public override void SetStaticDefaults()
+	public override void PostAI()
 	{
-		ProjectileID.Sets.HeldProjDoesNotUsePlayerGfxOffY[Type] = true;
+		bool heldByOwner = Projectile.owner >= 0 && Projectile.owner < Main.maxPlayers
+			&& Main.player[Projectile.owner].heldProj == Projectile.whoAmI;
+		Projectile.drawLayer = heldByOwner ? ProjectileDrawLayerID.HeldProj : ProjectileDrawLayerID.Default;
+		Projectile.usesOwnerLight = heldByOwner;
 	}
 
 	public override void SetDefaults()
@@ -102,6 +107,8 @@ public class CeremonialBladeProj : ModProjectile, IWarpProjectile_warpStyle2
 		Projectile.localNPCHitCooldown = -1; // We set this to -1 to make sure the projectile doesn't hit twice
 		Projectile.ownerHitCheck = true; // Make sure the owner of the projectile has line of sight to the target (aka can't hit things through tile).
 		Projectile.DamageType = DamageClass.Melee; // Projectile is a melee projectile
+		Projectile.drawLayer = ProjectileDrawLayerID.HeldProj;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public override void OnSpawn(IEntitySource source)
@@ -178,7 +185,7 @@ public class CeremonialBladeProj : ModProjectile, IWarpProjectile_warpStyle2
 		Timer++;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		// Calculate origin of sword (hilt) based on orientation and offset sword rotation (as sword is angled in its sprite)
 		Vector2 origin;
@@ -376,7 +383,7 @@ public class CeremonialBladeProj : ModProjectile, IWarpProjectile_warpStyle2
 		Owner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation - MathHelper.ToRadians(90f)); // set arm position (90 degree offset since arm starts lowered)
 		Vector2 armPosition = Owner.GetFrontHandPosition(Player.CompositeArmStretchAmount.Full, Projectile.rotation - (float)Math.PI / 2); // get position of hand
 
-		armPosition.Y += Owner.gfxOffY;
+		armPosition = Owner.RotatedRelativePoint(armPosition);
 		Projectile.Center = armPosition; // Set projectile to arm position
 		Projectile.scale = Size * 1.2f * Owner.GetAdjustedItemScale(Owner.HeldItem); // Slightly scale up the projectile and also take into account melee size modifiers
 

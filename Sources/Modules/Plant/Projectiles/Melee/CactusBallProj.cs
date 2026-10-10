@@ -5,6 +5,8 @@ using Everglow.Commons.VFX;
 using Everglow.Plant.Buffs;
 using Everglow.Plant.Common;
 using Everglow.Plant.Dusts;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 
 namespace Everglow.Plant.Projectiles.Melee;
@@ -31,7 +33,7 @@ public class CactusBallProj : ModProjectile, IWarpProjectile
 		Projectile.penetrate = -1;
 		Projectile.tileCollide = false;
 		Projectile.ignoreWater = true;
-		DrawHeldProjInFrontOfHeldItemAndArms = true;
+		Projectile.drawLayer = ProjectileDrawLayerID.HeldProjOverHand;
 		SetDef();
 		trailVecsUp = new Queue<Vector2>(trailLength + 1);
 		trailVecsDown = new Queue<Vector2>(trailLength + 1);
@@ -53,6 +55,7 @@ public class CactusBallProj : ModProjectile, IWarpProjectile
 
 	public override void AI()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.Default;
 		Player player = Main.player[Projectile.owner];
 
 		Vector2 Radial = Projectile.Center;
@@ -154,6 +157,7 @@ public class CactusBallProj : ModProjectile, IWarpProjectile
 			if (vector.Y > 0f)
 			{
 				player.heldProj = Projectile.whoAmI;
+				Projectile.drawLayer = ProjectileDrawLayerID.HeldProjOverHand;
 			}
 
 			Projectile.velocity = Projectile.DirectionFromSafe(player.Center);
@@ -195,7 +199,7 @@ public class CactusBallProj : ModProjectile, IWarpProjectile
 
 	public override void OnHitPlayer(Player target, Player.HurtInfo info)
 	{
-		target.AddBuff(ModContent.BuffType<CactusBallBuff>(), 150, true, false);
+		target.AddBuff(ModContent.BuffType<CactusBallBuff>(), 150, false);
 	}
 
 	public override bool OnTileCollide(Vector2 oldVelocity)
@@ -278,11 +282,10 @@ public class CactusBallProj : ModProjectile, IWarpProjectile
 		Main.player[Projectile.owner].fullRotation = 0;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		DrawTrail(lightColor);
 		Color alpha = Projectile.GetAlpha(lightColor);
-		Player player = Main.player[Projectile.owner];
 		if (Projectile.ai[1] < 25f && (Projectile.Center - player.Center).Length() <= 120)
 		{
 			Texture2D chain = PlantUtils.GetTexture("Everglow/Plant/Projectiles/Melee/CactusBallChain");

@@ -1,4 +1,6 @@
 using Everglow.Commons.VFX.CommonVFXDusts;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using static Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.ScarpasScissors;
@@ -176,7 +178,7 @@ public abstract class ScarpasScissorsCutProj : ScarpasScissorsProjBase
 		return animationTime * AnimationRotationMax;
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		var drawColor = lightColor * Projectile.Opacity;
 		var distanceToArmCenter = DistanceToArmPosition * Projectile.scale;

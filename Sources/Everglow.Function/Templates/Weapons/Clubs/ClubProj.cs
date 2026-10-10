@@ -11,8 +11,13 @@ namespace Everglow.Commons.Templates.Weapons.Clubs;
 
 public abstract class ClubProj : ModProjectile, IWarpProjectile
 {
+	// Keep virtual draw helpers on the player supplied by tML, including mannequins.
+	protected Player DrawPlayer { get; set; }
+
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.HeldProj;
+		Projectile.usesOwnerLight = true;
 		Projectile.width = 80;
 		Projectile.height = 80;
 		Projectile.penetrate = -1;
@@ -256,25 +261,34 @@ public abstract class ClubProj : ModProjectile, IWarpProjectile
 		return false;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
-		SpriteEffects effects = SpriteEffects.None;
-		if (Projectile.spriteDirection == 1)
+		Player previousDrawPlayer = DrawPlayer;
+		DrawPlayer = player;
+		try
 		{
-			effects = SpriteEffects.FlipHorizontally;
-		}
+			SpriteEffects effects = SpriteEffects.None;
+			if (Projectile.spriteDirection == 1)
+			{
+				effects = SpriteEffects.FlipHorizontally;
+			}
 
-		var texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
-		Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, texture.Size() / 2f, Projectile.scale * Projectile.scale, effects, 0f);
-		for (int i = 0; i < 5; i++)
-		{
-			float alp = Omega / 0.4f * 0.5f;
-			var color2 = new Color((int)(lightColor.R * (5 - i) / 5f * alp), (int)(lightColor.G * (5 - i) / 5f * alp), (int)(lightColor.B * (5 - i) / 5f * alp), (int)(lightColor.A * (5 - i) / 5f * alp));
-			Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, color2, Projectile.rotation - i * 0.1f * Omega, texture.Size() / 2f, Projectile.scale * Projectile.scale, effects, 0f);
+			var texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
+			Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, texture.Size() / 2f, Projectile.scale * Projectile.scale, effects, 0f);
+			for (int i = 0; i < 5; i++)
+			{
+				float alp = Omega / 0.4f * 0.5f;
+				var color2 = new Color((int)(lightColor.R * (5 - i) / 5f * alp), (int)(lightColor.G * (5 - i) / 5f * alp), (int)(lightColor.B * (5 - i) / 5f * alp), (int)(lightColor.A * (5 - i) / 5f * alp));
+				Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, color2, Projectile.rotation - i * 0.1f * Omega, texture.Size() / 2f, Projectile.scale * Projectile.scale, effects, 0f);
+			}
+			DrawTrail();
+			PostPreDraw();
+			return false;
 		}
-		DrawTrail();
-		PostPreDraw();
-		return false;
+		finally
+		{
+			DrawPlayer = previousDrawPlayer;
+		}
 	}
 
 	public virtual void PostPreDraw()

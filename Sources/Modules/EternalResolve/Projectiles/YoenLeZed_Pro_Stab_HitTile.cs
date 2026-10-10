@@ -4,6 +4,8 @@ using Everglow.Commons.VFX;
 using Everglow.Commons.VFX.CommonVFXDusts;
 using Everglow.EternalResolve.Buffs;
 using Everglow.EternalResolve.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.EternalResolve.Projectiles;
 
@@ -62,13 +64,13 @@ public class YoenLeZed_Pro_Stab_HitTile : ModProjectile, IWarpProjectile
 		}
 	}
 
-	public override void PostDraw(Player player, Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		float timeValue = (200 - Projectile.timeLeft) / 200f;
 		DrawTexCircle(MathF.Sqrt(timeValue) * 6 * Projectile.ai[0], 2 * (1 - timeValue) * Projectile.ai[0], new Color(1f * (1 - timeValue) * (1 - timeValue), 1f * (1 - timeValue), 1.5f * (1 - timeValue), 0f), Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_0.Value);
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		float timeValue = (200 - Projectile.timeLeft) / 200f;
 		float dark = Math.Max((Projectile.timeLeft - 50) / 150f, 0);

@@ -77,7 +77,7 @@ public class ScarpasScissors : ModItem
 			{
 				// TODO: Replace type with mission item
 				// Drop special mission items when npc is killed
-				Owner.QuickSpawnItemDirect(target.GetSource_Loot(), ItemID.DirtBlock, Main.rand.Next(10, 20));
+				Owner.QuickSpawnItem(target.GetSource_Loot(), ItemID.DirtBlock, Main.rand.Next(10, 20));
 			}
 		}
 	}

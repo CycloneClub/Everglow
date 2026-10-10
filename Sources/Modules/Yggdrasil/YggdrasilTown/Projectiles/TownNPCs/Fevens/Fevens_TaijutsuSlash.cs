@@ -1,5 +1,7 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Commons.Utilities.BuffHelpers;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.TownNPCs.Fevens;
@@ -105,7 +107,7 @@ public class Fevens_TaijutsuSlash : ModProjectile, IWarpProjectile_warpStyle2
 
 	public List<Vector2> SmoothTrail = new List<Vector2>();
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		if (Projectile.timeLeft > 120)
 		{

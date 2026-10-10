@@ -11,6 +11,7 @@ public class BloodTusk_Sleep_Crack : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 		Projectile.width = 100;
 		Projectile.height = 100;
 		Projectile.friendly = false;
@@ -19,7 +20,6 @@ public class BloodTusk_Sleep_Crack : ModProjectile
 		Projectile.timeLeft = 10000000;
 		Projectile.alpha = 255;
 		Projectile.penetrate = -1;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Type] = true;
 	}
 
 	public override void AI()
@@ -54,7 +54,7 @@ public class BloodTusk_Sleep_Crack : ModProjectile
 		Projectile.velocity *= 0;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;
 		Main.spriteBatch.End();

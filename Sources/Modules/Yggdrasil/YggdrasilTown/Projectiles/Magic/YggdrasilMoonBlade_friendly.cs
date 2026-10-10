@@ -1,5 +1,7 @@
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Bosses.SquamousShell;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
@@ -96,7 +98,7 @@ public class YggdrasilMoonBlade_friendly : ModProjectile, IWarpProjectile
 		}
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		float colorValue = (300 - Projectile.timeLeft) / 40f;
 		int maxLength = 20;

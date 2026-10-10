@@ -1,5 +1,7 @@
 using Everglow.Myth.Common;
 using Everglow.Myth.TheFirefly.Items.Materials;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent.ItemDropRules;
 
@@ -28,7 +30,7 @@ public class GlowingFirefly : ModNPC
 		NPC.catchItem = ModContent.ItemType<Items.GlowingFirefly>();
 	}
 
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawner)
 	{
 		FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
 		if (!fireflyBiome.IsBiomeActive(Main.LocalPlayer))
@@ -162,7 +164,7 @@ public class GlowingFirefly : ModNPC
 
 	public override void OnCaughtBy(Player player, Item item, bool failed)
 	{
-		Item.NewItem(NPC.GetSource_FromThis(), NPC.Center, 0, 0, ModContent.ItemType<Items.GlowingFirefly>(), 1);
+		Item.NewItem(NPC.GetSource_FromThis(), NPC.Center, new Vector2(0, 0), ModContent.ItemType<Items.GlowingFirefly>(), 1);
 		NPC.active = false;
 	}
 }

@@ -257,44 +257,51 @@ public class ExamplePerson : ModNPC
 		return chosenChat;
 	}
 
-	public override void SetChatButtons(ref string button, ref string button2)
-	{ // What the chat buttons are when you open up the chat UI
-		button = Language.GetTextValue("LegacyInterface.28");
-		button2 = "Quest Panel";
-		if (Main.LocalPlayer.HasItem(ItemID.HiveBackpack))
-		{
-			button = "Upgrade " + Lang.GetItemNameValue(ItemID.HiveBackpack);
-		}
+	public override void RegisterChatButtons(NPCInteractionList interactions)
+	{
+		interactions.InsertBefore(new ShopButton(), NPCInteractionDatabase.CloseButton);
+		interactions.InsertBefore(new UpgradeButton(), NPCInteractionDatabase.CloseButton);
+		interactions.InsertBefore(new QuestPanelButton(), NPCInteractionDatabase.CloseButton);
 	}
 
-	public override void OnChatButtonClicked(bool firstButton, ref string shop)
+	private sealed class ShopButton : NPCInteractions.Actions.OpenShop
 	{
-		if (firstButton)
+		public ShopButton() : base(ShopName)
 		{
-			// We want 3 different functionalities for chat buttons, so we use HasItem to change button 1 between a shop and upgrade action.
+		}
 
-			if (Main.LocalPlayer.HasItem(ItemID.HiveBackpack))
+		public override bool Condition() => !LocalPlayer.HasItem(ItemID.HiveBackpack);
+	}
+
+	private sealed class UpgradeButton : NPCInteraction
+	{
+		public override bool Condition() => LocalPlayer.HasItem(ItemID.HiveBackpack);
+
+		public override string GetText() => "Upgrade " + Lang.GetItemNameValue(ItemID.HiveBackpack);
+
+		public override void Interact()
+		{
+			int hiveBackpackItemIndex = LocalPlayer.FindItem(ItemID.HiveBackpack);
+			if (hiveBackpackItemIndex < 0)
 			{
-				SoundEngine.PlaySound(SoundID.Item37); // Reforge/Anvil sound
-
-				Main.npcChatText = $"I upgraded your {Lang.GetItemNameValue(ItemID.HiveBackpack)} to a {Lang.GetItemNameValue(ItemID.DirtBlock)}";
-
-				int hiveBackpackItemIndex = Main.LocalPlayer.FindItem(ItemID.HiveBackpack);
-				var entitySource = NPC.GetSource_GiftOrReward();
-
-				Main.LocalPlayer.inventory[hiveBackpackItemIndex].TurnToAir();
-				Main.LocalPlayer.QuickSpawnItem(entitySource, ItemID.DirtBlock);
-
 				return;
 			}
 
-			shop = ShopName; // Name of the shop tab we want to open.
+			SoundEngine.PlaySound(SoundID.Item37); // Reforge/Anvil sound
+			Main.npcChatText = $"I upgraded your {Lang.GetItemNameValue(ItemID.HiveBackpack)} to a {Lang.GetItemNameValue(ItemID.DirtBlock)}";
+			var entitySource = TalkNPC.GetSource_GiftOrReward();
+			LocalPlayer.inventory[hiveBackpackItemIndex].TurnToAir();
+			LocalPlayer.QuickSpawnItem(entitySource, ItemID.DirtBlock);
 		}
-		else
-		{
-			// Open quest panel
-			QuestContainer.Instance.Show(QuestSourceTest1.Instance);
-		}
+	}
+
+	private sealed class QuestPanelButton : NPCInteraction
+	{
+		public override bool Condition() => true;
+
+		public override string GetText() => "Quest Panel";
+
+		public override void Interact() => QuestContainer.Instance.Show(QuestSourceTest1.Instance);
 	}
 
 	public override void AddShops()

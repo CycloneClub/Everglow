@@ -2,7 +2,9 @@ using Everglow.Commons.VFX.CommonVFXDusts;
 using Everglow.Yggdrasil.Common.Elevator.Tiles;
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
 using MathNet.Numerics.Distributions;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics.PackedVector;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent.RGB;
 using Terraria.Graphics.CameraModifiers;
@@ -25,9 +27,10 @@ internal class GreenSungloThorns : ModProjectile
 		Projectile.hostile = false;
 		Projectile.tileCollide = false;
 		Projectile.ignoreWater = true;
-		Projectile.hide = true;
 		Projectile.usesLocalNPCImmunity = true;
 		Projectile.localNPCHitCooldown = 30;
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCsAndTiles;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public Vector2[] Position = new Vector2[900];
@@ -49,10 +52,7 @@ internal class GreenSungloThorns : ModProjectile
 		}
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindNPCsAndTiles.Add(index);
-	}
+
 
 	public override void AI()
 	{
@@ -150,7 +150,7 @@ internal class GreenSungloThorns : ModProjectile
 		AI1[i] = 0;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		DrawVine();
 		DrawThorn();

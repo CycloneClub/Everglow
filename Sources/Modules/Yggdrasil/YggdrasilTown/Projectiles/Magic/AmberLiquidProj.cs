@@ -1,4 +1,6 @@
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
@@ -102,7 +104,7 @@ public class AmberLiquidProj : ModProjectile
 		Ins.VFXManager.Add(spark);
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		Texture2D texture = ModAsset.AmberLiquidProj.Value;
 		Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, new Rectangle(0, Projectile.frame * 50, 44, 50), lightColor, Projectile.rotation, new Vector2(22, 25), Projectile.scale, SpriteEffects.None, 0);

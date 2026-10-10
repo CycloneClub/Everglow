@@ -1,4 +1,6 @@
 using Everglow.Commons.DataStructures;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.TownNPCs;
@@ -14,7 +16,6 @@ public class Georg_Hammer : ModProjectile
 	public override void SetDefaults()
 	{
 		Projectile.usesLocalNPCImmunity = true;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Type] = true;
 		Projectile.localNPCHitCooldown = 60;
 		Projectile.ArmorPenetration = 0;
 		Projectile.friendly = true;
@@ -24,6 +25,7 @@ public class Georg_Hammer : ModProjectile
 		Projectile.width = 10;
 		Projectile.height = 10;
 		Projectile.aiStyle = -1;
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 	}
 
 	public override void OnSpawn(IEntitySource source)
@@ -98,7 +100,7 @@ public class Georg_Hammer : ModProjectile
 		target.AddBuff(BuffID.OnFire, 300);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		var bars = new List<Vertex2D>();
 		var barsDark = new List<Vertex2D>();

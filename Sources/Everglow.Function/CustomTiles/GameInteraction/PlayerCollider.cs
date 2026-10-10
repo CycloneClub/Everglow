@@ -49,9 +49,8 @@ public class PlayerCollider : ModPlayer, IEntityCollider<Player>
 	{
 		On_Player.CanFitSpace += Player_CanFitSpace;
 		On_Player.DryCollision += Player_DryCollision;
-		On_Player.WaterCollision += Player_WaterCollision;
+		On_Player.WetCollision += Player_WetCollision;
 		On_Player.JumpMovement += Player_JumpMovement;
-		On_Player.HoneyCollision += Player_HoneyCollision;
 		IL_Player.WallslideMovement += Player_WallslideMovement_IL;
 	}
 
@@ -117,18 +116,18 @@ public class PlayerCollider : ModPlayer, IEntityCollider<Player>
 		ColliderManager.EnableHook = true;
 	}
 
-	private static void Player_WaterCollision(On_Player.orig_WaterCollision orig, Player self, bool fallThrough, bool ignorePlats)
+	private static void Player_WetCollision(On_Player.orig_WetCollision orig, Player self, bool fallThrough, bool ignorePlats, float movementSpeed)
 	{
 		if (!ColliderManager.Enable || self.ghost)
 		{
-			orig(self, fallThrough, ignorePlats);
+			orig(self, fallThrough, ignorePlats, movementSpeed);
 			return;
 		}
 
 		ColliderManager.EnableHook = false;
 		IEntityCollider<Player> player = self.GetModPlayer<PlayerCollider>();
 		player.Prepare();
-		orig(self, fallThrough, ignorePlats);
+		orig(self, fallThrough, ignorePlats, movementSpeed);
 		player.Update();
 		ColliderManager.EnableHook = true;
 	}
@@ -145,22 +144,6 @@ public class PlayerCollider : ModPlayer, IEntityCollider<Player>
 		{
 			collider.jumpSpeed = 0;
 		}
-	}
-
-	private static void Player_HoneyCollision(On_Player.orig_HoneyCollision orig, Player self, bool fallThrough, bool ignorePlats)
-	{
-		if (!ColliderManager.Enable || self.ghost)
-		{
-			orig(self, fallThrough, ignorePlats);
-			return;
-		}
-
-		ColliderManager.EnableHook = false;
-		IEntityCollider<Player> player = self.GetModPlayer<PlayerCollider>();
-		player.Prepare();
-		orig(self, fallThrough, ignorePlats);
-		player.Update();
-		ColliderManager.EnableHook = true;
 	}
 
 	private static void Player_WallslideMovement_IL(ILContext il)
@@ -191,7 +174,13 @@ public class PlayerCollider : ModPlayer, IEntityCollider<Player>
 		cursor.Emit(OpCodes.Ldarg_0);
 		cursor.EmitDelegate((Player player) =>
 		{
-			return player.GetModPlayer<PlayerCollider>().Grab != null;
+			var collider = player.GetModPlayer<PlayerCollider>();
+			if (collider.Grab == null)
+			{
+				return false;
+			}
+			player.slideDir = collider.GrabDir;
+			return true;
 		});
 		cursor.Emit(OpCodes.Brfalse, skipSetFlag);
 

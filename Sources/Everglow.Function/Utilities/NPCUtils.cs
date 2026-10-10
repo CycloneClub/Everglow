@@ -223,13 +223,16 @@ public static class NPCUtils
 			.Sum();
 
 	/// <summary>
-	/// Set <see cref="NPC.lifeRegenExpectedLossPerSecond"/> to the max of current value and given value,
+	/// Set the expected DOT damage to the max of the current value and given value,
 	/// avoiding multiple debuffs stacking incorrectly.
 	/// </summary>
 	/// <param name="npc"></param>
 	/// <param name="value"></param>
-	public static void SetLifeRegenExpectedLossPerSecond(this NPC npc, int value) =>
-		npc.lifeRegenExpectedLossPerSecond = Math.Max(npc.lifeRegenExpectedLossPerSecond, value);
+	public static void SetLifeRegenExpectedLossPerSecond(this NPC npc, int value)
+	{
+		var globalNPC = npc.GetGlobalNPC<Everglow.Commons.Mechanics.EverglowGlobalNPC>();
+		globalNPC.ExpectedDotDamage = Math.Max(globalNPC.ExpectedDotDamage, value);
+	}
 
 	public static void StrikeNPCWithCustomCombatText(this NPC npc, NPC.HitInfo hit, Color textColor, bool dot = false)
 	{

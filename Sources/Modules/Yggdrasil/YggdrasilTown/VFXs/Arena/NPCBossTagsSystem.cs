@@ -678,7 +678,7 @@ public class NPCBossTagsSystem : TileVFX
 					int itemCount = 0;
 					foreach (var item in player.inventory)
 					{
-						if (item.active)
+						if (!item.IsAir)
 						{
 							itemCount++;
 						}
@@ -695,7 +695,7 @@ public class NPCBossTagsSystem : TileVFX
 					for (int i = 3; i < 9; i++)
 					{
 						Item item = player.armor[i];
-						if (item.active)
+						if (!item.IsAir)
 						{
 							itemCount++;
 						}

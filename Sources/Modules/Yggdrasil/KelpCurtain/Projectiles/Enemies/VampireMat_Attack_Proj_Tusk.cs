@@ -1,5 +1,7 @@
 using Everglow.Yggdrasil.KelpCurtain.Gores;
 using Everglow.Yggdrasil.KelpCurtain.NPCs.VampireMat;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Enemies;
 
@@ -77,7 +79,7 @@ public class VampireMat_Attack_Proj_Tusk : ModProjectile
 		base.OnHitPlayer(target, info);
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
 		Texture2D bloom = ModAsset.VampireMat_Attack_Proj_Tusk_bloom.Value;

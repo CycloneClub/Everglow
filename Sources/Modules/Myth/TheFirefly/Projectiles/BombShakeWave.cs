@@ -6,6 +6,7 @@ public class BombShakeWave : ModProjectile, IWarpProjectile
 {
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindProjectiles;
 		Projectile.extraUpdates = 6;
 		Projectile.width = 24;
 		Projectile.height = 24;
@@ -20,18 +21,13 @@ public class BombShakeWave : ModProjectile, IWarpProjectile
 
 	public override void AI()
 	{
-		Projectile.hide = true;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		return false;
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindProjectiles.Add(index);
-	}
 
 	private void DrawWarpTexCircle_VFXBatch(VFXBatch spriteBatch, float radius, float width, Vector2 center, Texture2D tex, float warpStrength, double addRot = 0)
 	{

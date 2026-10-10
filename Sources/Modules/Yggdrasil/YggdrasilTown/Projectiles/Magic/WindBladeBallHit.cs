@@ -1,4 +1,6 @@
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 
@@ -85,7 +87,7 @@ public class WindBladeBallHit : ModProjectile
 		}
 	}
 
-	public override void PostDraw(Player player, Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		Texture2D shadow = Commons.ModAsset.Point.Value;
 		float timeValue = (200 - Projectile.timeLeft) / 200f;
@@ -109,7 +111,7 @@ public class WindBladeBallHit : ModProjectile
 		Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		float dark = Math.Max((Projectile.timeLeft - 150) / 50f, 0);
 		var c = new Color(0f, 1f, 0.7f, 0f);

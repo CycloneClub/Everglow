@@ -170,14 +170,13 @@ public class World : ModProjectile, IWarpProjectile
 	{
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		return false;
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
-		Player player = Main.player[Projectile.owner];
 		Texture2D MainKnife = ModAsset.Weapons_World.Value;
 		var Knife = new List<Vertex2D>();
 		float KnifeLength = 180;

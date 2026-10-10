@@ -39,7 +39,7 @@ public class RedAlgae_FriendlyDebuff_glocalNPC : GlobalNPC
 		bool appliesToxin = projectile.ModProjectile is IRedAlgaeToxinProjectile;
 		if (Main.netMode == NetmodeID.MultiplayerClient)
 		{
-			ModIns.PacketResolver.Send(new RedAlgaeToxinPacket(npc, projectile.identity, projectile.type, true, applyOnly));
+			ModIns.PacketResolver.Send(new RedAlgaeToxinPacket(npc, projectile.key, projectile.type, true, applyOnly));
 			return;
 		}
 		Player attacker = projectile.owner < Main.maxPlayers ? Main.player[projectile.owner] : null;

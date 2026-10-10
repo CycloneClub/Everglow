@@ -18,6 +18,9 @@ namespace Everglow.Commons.Templates.Weapons.StabbingSwords;
 /// </summary>
 public abstract class StabbingProjectile : ModProjectile, IWarpProjectile
 {
+	// Keep virtual draw helpers on the player supplied by tML, including mannequins.
+	protected Player DrawPlayer { get; set; }
+
 	public override string LocalizationCategory => LocalizationUtils.Categories.MeleeProjectiles;
 
 	/// <summary>
@@ -100,12 +103,14 @@ public abstract class StabbingProjectile : ModProjectile, IWarpProjectile
 
 	public DrawParameters_Structure LightAttackEffect = default;
 
-	public Player Owner => Main.player[Projectile.owner];
+	public Player Owner => DrawPlayer ?? Main.player[Projectile.owner];
 
 	public override string Texture => ModAsset.StabbingProjectile_Mod;
 
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.HeldProj;
+		Projectile.usesOwnerLight = true;
 		Projectile.width = 30;
 		Projectile.height = 30;
 		Projectile.aiStyle = -1;
@@ -264,7 +269,7 @@ public abstract class StabbingProjectile : ModProjectile, IWarpProjectile
 		Utils.PlotTileLine(Projectile.Center, end, 80f * Projectile.scale, DelegateMethods.CutTiles);
 	}
 
-	public override bool PreDraw(ref Color lightColor) => false;
+	public override bool PreDraw(Player player, ref Color lightColor) => false;
 
 	public struct DrawParameters_Structure
 	{
@@ -451,7 +456,7 @@ public abstract class StabbingProjectile : ModProjectile, IWarpProjectile
 	/// <param name="mulVelocityRight"></param>
 	public virtual void DrawFlags(Color lightColor, float flagLeftX, float flagTopY, Texture2D flagTexture, float mulVelocityLeft = 1f, float mulVelocityRight = 1f)
 	{
-		Player player = Main.player[Projectile.owner];
+		Player player = DrawPlayer ?? Main.player[Projectile.owner];
 		float flagRightX = flagLeftX + flagTexture.Width;
 		Vector2 flagTopLeft = ItemDraw.Postion + new Vector2(flagLeftX, flagTopY).RotatedBy(ItemDraw.Rotation) - Main.screenPosition;
 		Vector2 flagTopRight = ItemDraw.Postion + new Vector2(flagRightX, flagTopY).RotatedBy(ItemDraw.Rotation) - Main.screenPosition;
@@ -481,7 +486,7 @@ public abstract class StabbingProjectile : ModProjectile, IWarpProjectile
 
 	public virtual void DrawItem(Color lightColor)
 	{
-		Player player = Main.player[Projectile.owner];
+		Player player = DrawPlayer ?? Main.player[Projectile.owner];
 		Texture2D itemTexture = TextureAssets.Item[player.HeldItem.type].Value;
 		Main.spriteBatch.Draw(itemTexture, ItemDraw.Postion - Main.screenPosition, null, lightColor, ItemDraw.Rotation, itemTexture.Size() / 2f, ItemDraw.Size, ItemDraw.SpriteEffect, 0f);
 	}
@@ -543,12 +548,21 @@ public abstract class StabbingProjectile : ModProjectile, IWarpProjectile
 		}
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
-		DrawBeforeItem();
-		DrawItem(lightColor);
-		DrawAfterItem();
-		DrawEffect(lightColor);
+		Player previousDrawPlayer = DrawPlayer;
+		DrawPlayer = player;
+		try
+		{
+			DrawBeforeItem();
+			DrawItem(lightColor);
+			DrawAfterItem();
+			DrawEffect(lightColor);
+		}
+		finally
+		{
+			DrawPlayer = previousDrawPlayer;
+		}
 	}
 
 	public void DrawWarp(VFXBatch sb)

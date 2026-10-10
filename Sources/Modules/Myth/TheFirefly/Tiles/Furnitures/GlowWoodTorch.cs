@@ -21,12 +21,12 @@ public class GlowWoodTorch : ModTile
 		Main.tileWaterDeath[Type] = true;
 		TileID.Sets.FramesOnKillWall[Type] = true;
 		TileID.Sets.DisableSmartCursor[Type] = true;
-		TileID.Sets.Torch[Type] = true;
+		TileID.Sets.Torches[Type] = true;
 
 		DustType = ModContent.DustType<Dusts.BlueToPurpleSpark>();
 		AdjTiles = new int[] { TileID.Torches };
 
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
+		TileID.Sets.RoomNeeds.CountsAsTorch[Type] = true;
 
 		// Placement
 		TileObjectData.newTile.CopyFrom(TileObjectData.StyleTorch);

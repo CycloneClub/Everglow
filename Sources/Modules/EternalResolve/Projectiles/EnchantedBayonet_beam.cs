@@ -2,6 +2,8 @@ using Everglow.Commons.DataStructures;
 using Everglow.Commons.Utilities;
 using Everglow.Commons.Vertex;
 using Everglow.EternalResolve.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 
 namespace Everglow.EternalResolve.Projectiles
@@ -52,7 +54,7 @@ namespace Everglow.EternalResolve.Projectiles
 			Ins.VFXManager.Add(spark);
 		}
 
-		public override bool PreDraw(Player player, ref Color lightColor)
+		public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 		{
 			float alphaValue = (255 - Projectile.alpha) / 255f;
 			Vector2 normalized = Vector2.Normalize(Projectile.velocity.RotatedBy(Math.PI * 0.5)) * 50 * alphaValue;

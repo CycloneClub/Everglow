@@ -1,5 +1,7 @@
 using Everglow.Commons.Mechanics.ElementalDebuff.Debuffs;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Ranged;
@@ -88,7 +90,7 @@ public class KissOfCthulhu_Projectile : ModProjectile
 		SoundEngine.PlaySound(SoundID.NPCDeath1, Projectile.Center);
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		// var drawColor = new Color(100, 100, 100, 255);
 		// float length = Projectile.timeLeft < (TimeLeftMax - ExpandTime)

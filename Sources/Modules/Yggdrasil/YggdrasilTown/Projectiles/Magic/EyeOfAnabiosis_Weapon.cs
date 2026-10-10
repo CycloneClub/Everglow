@@ -1,6 +1,8 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.SquamousShell;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
@@ -35,6 +37,14 @@ public class EyeOfAnabiosis_Weapon : ModProjectile
 		Main.projFrames[Type] = 4;
 	}
 
+	public override void PostAI()
+	{
+		bool heldByOwner = Projectile.owner >= 0 && Projectile.owner < Main.maxPlayers
+			&& Main.player[Projectile.owner].heldProj == Projectile.whoAmI;
+		Projectile.drawLayer = heldByOwner ? ProjectileDrawLayerID.HeldProj : ProjectileDrawLayerID.Default;
+		Projectile.usesOwnerLight = heldByOwner;
+	}
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 72;
@@ -47,6 +57,8 @@ public class EyeOfAnabiosis_Weapon : ModProjectile
 		Projectile.ignoreWater = true;
 
 		ChargeTimer = 0;
+		Projectile.drawLayer = ProjectileDrawLayerID.HeldProj;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public override void AI()
@@ -195,7 +207,7 @@ public class EyeOfAnabiosis_Weapon : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		if (!CanDisplay)
 		{
@@ -206,22 +218,22 @@ public class EyeOfAnabiosis_Weapon : ModProjectile
 		lightColor = Lighting.GetColor((int)Projectile.Center.X / 16, (int)(Projectile.Center.Y / 16.0));
 
 		var body_texture = ModAsset.EyeOfAnabiosis_Body.Value;
-		var body_position_offset = new Vector2(Owner.direction * (body_texture.Width / 2 - 12), Owner.gravDir * (-body_texture.Height / 2 + 16)) * Projectile.scale;
+		var body_position_offset = new Vector2(player.direction * (body_texture.Width / 2 - 12), player.gravDir * (-body_texture.Height / 2 + 16)) * Projectile.scale;
 		var body_position = Projectile.Center - Main.screenPosition + body_position_offset;
-		var body_rotation = Owner.direction == 1 ? 0f : MathF.PI;
-		var body_effects = (Owner.direction == 1 && Owner.gravDir == 1) || (Owner.gravDir == -1 && Owner.direction == -1) ? SpriteEffects.None : SpriteEffects.FlipVertically;
+		var body_rotation = player.direction == 1 ? 0f : MathF.PI;
+		var body_effects = (player.direction == 1 && player.gravDir == 1) || (player.gravDir == -1 && player.direction == -1) ? SpriteEffects.None : SpriteEffects.FlipVertically;
 		var body_origin = body_texture.Size() / 2;
 
 		Main.spriteBatch.Draw(body_texture, body_position, null, lightColor, body_rotation, body_origin, Projectile.scale, body_effects, 0);
 
 		var head_texture = ModAsset.EyeOfAnabiosis_Head.Value;
-		var head_position_offset = new Vector2(Owner.direction * 23, Owner.gravDir * -10) * Projectile.scale;
+		var head_position_offset = new Vector2(player.direction * 23, player.gravDir * -10) * Projectile.scale;
 		var head_position = body_position + head_position_offset;
-		var head_rotation = Owner.gravDir == 1 ? 0 : MathF.PI;
+		var head_rotation = player.gravDir == 1 ? 0 : MathF.PI;
 		{
-			head_rotation += Suspension_Rotation; // 0.1f * (MathF.Sin((float)Main.timeForVisualEffects * 0.05f) + 0.75f) * Main.windSpeedCurrent + Owner.velocity.X * 0.1f;
+			head_rotation += Suspension_Rotation; // 0.1f * (MathF.Sin((float)Main.timeForVisualEffects * 0.05f) + 0.75f) * Main.windSpeedCurrent + player.velocity.X * 0.1f;
 		}
-		var head_effects = (Owner.direction == 1 && Owner.gravDir == 1) || (Owner.gravDir == -1 && Owner.direction == -1) ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+		var head_effects = (player.direction == 1 && player.gravDir == 1) || (player.gravDir == -1 && player.direction == -1) ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 
 		var head_rope_texture = ModAsset.EyeOfAnabiosis_Rope.Value;
 		var head_rope_origin = new Vector2(head_rope_texture.Width / 2, 0);
@@ -252,7 +264,7 @@ public class EyeOfAnabiosis_Weapon : ModProjectile
 		if (Main.myPlayer == Projectile.owner && chargeProgress < 1)
 		{
 			var progressTexture = Commons.ModAsset.White.Value;
-			var progressPosition = Owner.Center - Main.screenPosition + Owner.gravDir * new Vector2(0, 36);
+			var progressPosition = player.Center - Main.screenPosition + player.gravDir * new Vector2(0, 36);
 
 			var frameColor = new Color(0.05f, 0.05f, 0.08f, 0.9f);
 			var frameColor2 = new Color(0.15f, 0.25f, 0.38f, 0.4f);

@@ -7,8 +7,13 @@ namespace Everglow.Commons.Templates.Weapons.Slingshots;
 
 public abstract class SlingshotProjectile : ModProjectile
 {
+	// Keep virtual draw helpers on the player supplied by tML, including mannequins.
+	protected Player DrawPlayer { get; set; }
+
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.HeldProj;
+		Projectile.usesOwnerLight = true;
 		Projectile.width = 36;
 		Projectile.height = 36;
 		Projectile.tileCollide = false;
@@ -110,51 +115,59 @@ public abstract class SlingshotProjectile : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		return false;
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
-		Player player = Main.player[Projectile.owner];
-		var TexMain = (Texture2D)ModContent.Request<Texture2D>(Texture);
-		Color drawColor = Lighting.GetColor((int)(Projectile.Center.X / 16.0), (int)(Projectile.Center.Y / 16.0));
-		SpriteEffects spriteEffect = SpriteEffects.None;
-		float DrawRot = Projectile.rotation - MathF.PI / 4f;
-
-		Vector2 MouseToPlayer = Main.MouseWorld - player.MountedCenter;
-		Vector2 SlingshotStringHead = new Vector2(SlingshotLength, -SlingshotLength).RotatedBy(DrawRot) + Projectile.Center - Main.MouseWorld;
-		Vector2 SlingshotStringTail = new Vector2(SlingshotLength, -SlingshotLength).RotatedBy(DrawRot) + Vector2.Normalize(SlingshotStringHead) * Power * 0.2625f;
-		if (player.direction == -1)
+		Player previousDrawPlayer = DrawPlayer;
+		DrawPlayer = player;
+		try
 		{
-			SlingshotStringHead = new Vector2(SlingshotLength, -SlingshotLength).RotatedBy(DrawRot + Math.PI / 2d) + Projectile.Center - Main.MouseWorld;
-			SlingshotStringTail = new Vector2(SlingshotLength, -SlingshotLength).RotatedBy(DrawRot + Math.PI / 2d) + Vector2.Normalize(SlingshotStringHead) * Power * 0.2625f;
-		}
+			var TexMain = (Texture2D)ModContent.Request<Texture2D>(Texture);
+			Color drawColor = Lighting.GetColor((int)(Projectile.Center.X / 16.0), (int)(Projectile.Center.Y / 16.0));
+			SpriteEffects spriteEffect = SpriteEffects.None;
+			float DrawRot = Projectile.rotation - MathF.PI / 4f;
 
-		Vector2 SlingshotStringTailToPlayer = player.MountedCenter - (Projectile.Center + SlingshotStringTail);
-
-		if (Projectile.Center.X < player.MountedCenter.X)
-		{
-			player.direction = -1;
-			spriteEffect = SpriteEffects.FlipVertically;
-			if (player.controlUseItem)
+			Vector2 MouseToPlayer = Main.MouseWorld - player.MountedCenter;
+			Vector2 SlingshotStringHead = new Vector2(SlingshotLength, -SlingshotLength).RotatedBy(DrawRot) + Projectile.Center - Main.MouseWorld;
+			Vector2 SlingshotStringTail = new Vector2(SlingshotLength, -SlingshotLength).RotatedBy(DrawRot) + Vector2.Normalize(SlingshotStringHead) * Power * 0.2625f;
+			if (player.direction == -1)
 			{
-				player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (float)(Math.Atan2(MouseToPlayer.Y, MouseToPlayer.X) - MathF.PI * 0.75f));
-				player.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.Full, (float)(Math.Atan2(SlingshotStringTailToPlayer.Y, SlingshotStringTailToPlayer.X) - MathF.PI * 1.5f));
+				SlingshotStringHead = new Vector2(SlingshotLength, -SlingshotLength).RotatedBy(DrawRot + Math.PI / 2d) + Projectile.Center - Main.MouseWorld;
+				SlingshotStringTail = new Vector2(SlingshotLength, -SlingshotLength).RotatedBy(DrawRot + Math.PI / 2d) + Vector2.Normalize(SlingshotStringHead) * Power * 0.2625f;
 			}
-		}
-		else
-		{
-			player.direction = 1;
-			if (player.controlUseItem)
+
+			Vector2 SlingshotStringTailToPlayer = player.MountedCenter - (Projectile.Center + SlingshotStringTail);
+
+			if (Projectile.Center.X < player.MountedCenter.X)
 			{
-				player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (float)(Math.Atan2(MouseToPlayer.Y, MouseToPlayer.X) - MathF.PI * 0.25f));
-				player.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.Full, (float)(Math.Atan2(SlingshotStringTailToPlayer.Y, SlingshotStringTailToPlayer.X) + MathF.PI * 0.5f));
+				player.direction = -1;
+				spriteEffect = SpriteEffects.FlipVertically;
+				if (player.controlUseItem)
+				{
+					player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (float)(Math.Atan2(MouseToPlayer.Y, MouseToPlayer.X) - MathF.PI * 0.75f));
+					player.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.Full, (float)(Math.Atan2(SlingshotStringTailToPlayer.Y, SlingshotStringTailToPlayer.X) - MathF.PI * 1.5f));
+				}
 			}
+			else
+			{
+				player.direction = 1;
+				if (player.controlUseItem)
+				{
+					player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (float)(Math.Atan2(MouseToPlayer.Y, MouseToPlayer.X) - MathF.PI * 0.25f));
+					player.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.Full, (float)(Math.Atan2(SlingshotStringTailToPlayer.Y, SlingshotStringTailToPlayer.X) + MathF.PI * 0.5f));
+				}
+			}
+			Main.spriteBatch.Draw(TexMain, Projectile.Center - Main.screenPosition, null, drawColor, DrawRot, TexMain.Size() / 2f, 1f, spriteEffect, 0);
+			DrawString();
 		}
-		Main.spriteBatch.Draw(TexMain, Projectile.Center - Main.screenPosition, null, drawColor, DrawRot, TexMain.Size() / 2f, 1f, spriteEffect, 0);
-		DrawString();
+		finally
+		{
+			DrawPlayer = previousDrawPlayer;
+		}
 	}
 
 	/// <summary>
@@ -162,7 +175,7 @@ public abstract class SlingshotProjectile : ModProjectile
 	/// </summary>
 	public virtual void DrawString()
 	{
-		Player player = Main.player[Projectile.owner];
+		Player player = DrawPlayer ?? Main.player[Projectile.owner];
 		Color drawColor = Lighting.GetColor((int)(Projectile.Center.X / 16.0), (int)(Projectile.Center.Y / 16.0));
 		float DrawRot = Projectile.rotation - MathF.PI / 4f;
 		Vector2 HeadCenter = new Vector2(SlingshotLength, -SlingshotLength).RotatedBy(DrawRot);

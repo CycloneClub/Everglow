@@ -2,6 +2,8 @@ using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs.KingJellyBall;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Bosses.KingJellyBall;
@@ -23,7 +25,7 @@ public class JellyBallElectricKill : ModProjectile
 		Projectile.penetrate = -1;
 		Projectile.ignoreWater = true;
 		Projectile.tileCollide = false;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Projectile.type] = true;
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 	}
 
 	public override void OnSpawn(IEntitySource source)
@@ -84,7 +86,7 @@ public class JellyBallElectricKill : ModProjectile
 		return false;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		if (OwnerBoss == null || !OwnerBoss.active || OwnerBoss.type != ModContent.NPCType<NPCs.KingJellyBall.KingJellyBall>() || OwnerBoss.life <= 0)
 		{

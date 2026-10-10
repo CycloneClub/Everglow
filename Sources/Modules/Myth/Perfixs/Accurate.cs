@@ -14,7 +14,17 @@ public class Accurate : ModPrefix
 
 	public override void Apply(Item item)
 	{
-		item.FindOwner(item.whoAmI);
+		if (Main.netMode != NetmodeID.SinglePlayer)
+		{
+			foreach (WorldItem worldItem in Main.item)
+			{
+				if (worldItem.active && ReferenceEquals(worldItem.inner, item))
+				{
+					worldItem.FindOwner();
+					break;
+				}
+			}
+		}
 	}
 
 	public override float RollChance(Item item)

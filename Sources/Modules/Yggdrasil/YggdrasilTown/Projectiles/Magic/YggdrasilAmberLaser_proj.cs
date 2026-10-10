@@ -3,6 +3,8 @@ using Everglow.Commons.Templates.Weapons;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 
@@ -189,127 +191,136 @@ public class YggdrasilAmberLaser_proj : HandholdProjectile
 
 	public float MaxStep = 0;
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
-		Player player = Main.player[Projectile.owner];
-		var texMain = (Texture2D)ModContent.Request<Texture2D>(Texture);
-		SpriteEffects se = SpriteEffects.None;
-		if (player.direction == -1)
+		Player previousDrawPlayer = DrawPlayer;
+		DrawPlayer = player;
+		try
 		{
-			se = SpriteEffects.FlipVertically;
-		}
-
-		float rot = Projectile.rotation - (float)(Math.PI * 0.25) + TextureRotation * player.direction;
-		var texMain_glow = ModAsset.YggdrasilAmberLaser_glow_proj.Value;
-		float duration = player.itemTime / (float)player.itemTimeMax;
-		duration *= 1.5f;
-		duration -= 0.5f;
-		if (duration < 0)
-		{
-			duration = 0;
-		}
-		duration = MathF.Sin(duration * MathHelper.Pi);
-
-		Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition + DrawOffset - new Vector2(54, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), null, lightColor, rot, texMain.Size() / 2f, 1f, se, 0);
-		var powerColor = new Color(duration, duration * duration, duration * duration, 0);
-		Main.spriteBatch.Draw(texMain_glow, Projectile.Center - Main.screenPosition + DrawOffset - new Vector2(54, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), null, powerColor, rot, texMain_glow.Size() / 2f, 1f, se, 0);
-
-		SpriteBatchState sBS = Main.spriteBatch.GetState().Value;
-		Main.spriteBatch.End();
-		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-		Effect effect = Commons.ModAsset.Trailing.Value;
-		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
-		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition, 0)) * Main.GameViewMatrix.TransformationMatrix;
-		effect.Parameters["uTransform"].SetValue(model * projection);
-		effect.CurrentTechnique.Passes[0].Apply();
-		Vector2 mouseToPlayer = new Vector2(0, 1).RotatedBy(Projectile.rotation - Math.PI * 0.75);
-		float timeValue = (float)Main.time * 0.06f;
-
-		int step = -6;
-		while (!Collision.SolidCollision(Projectile.Center + mouseToPlayer * step * 8, 0, 0))
-		{
-			step++;
-			if (step > 200)
+			var texMain = (Texture2D)ModContent.Request<Texture2D>(Texture);
+			SpriteEffects se = SpriteEffects.None;
+			if (player.direction == -1)
 			{
-				break;
+				se = SpriteEffects.FlipVertically;
 			}
-			Vector2 checkPoint = Projectile.Center + mouseToPlayer * step * 8;
-			if (!Main.gamePaused && Main.rand.NextBool(30))
+
+			float rot = Projectile.rotation - (float)(Math.PI * 0.25) + TextureRotation * player.direction;
+			var texMain_glow = ModAsset.YggdrasilAmberLaser_glow_proj.Value;
+			float duration = player.itemTime / (float)player.itemTimeMax;
+			duration *= 1.5f;
+			duration -= 0.5f;
+			if (duration < 0)
 			{
-				Vector2 newVelocity = mouseToPlayer.RotatedBy(Main.rand.NextFloat(-0.4f, 0.4f)) * 4f * duration;
-				var somg = new AmberFlameDust
+				duration = 0;
+			}
+			duration = MathF.Sin(duration * MathHelper.Pi);
+
+			Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition + DrawOffset - new Vector2(54, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), null, lightColor, rot, texMain.Size() / 2f, 1f, se, 0);
+			var powerColor = new Color(duration, duration * duration, duration * duration, 0);
+			Main.spriteBatch.Draw(texMain_glow, Projectile.Center - Main.screenPosition + DrawOffset - new Vector2(54, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), null, powerColor, rot, texMain_glow.Size() / 2f, 1f, se, 0);
+
+			SpriteBatchState sBS = Main.spriteBatch.GetState().Value;
+			Main.spriteBatch.End();
+			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
+			Effect effect = Commons.ModAsset.Trailing.Value;
+			var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
+			var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition, 0)) * Main.GameViewMatrix.TransformationMatrix;
+			effect.Parameters["uTransform"].SetValue(model * projection);
+			effect.CurrentTechnique.Passes[0].Apply();
+			Vector2 mouseToPlayer = new Vector2(0, 1).RotatedBy(Projectile.rotation - Math.PI * 0.75);
+			float timeValue = (float)Main.time * 0.06f;
+
+			int step = -6;
+			while (!Collision.SolidCollision(Projectile.Center + mouseToPlayer * step * 8, 0, 0))
+			{
+				step++;
+				if (step > 200)
 				{
-					Velocity = newVelocity,
-					Active = true,
-					Visible = true,
-					Position = checkPoint,
-					MaxTime = Main.rand.Next(37, 55) * duration,
-					Scale = Main.rand.NextFloat(1.20f, 4.35f) * duration,
-					Rotation = Main.rand.NextFloat(6.283f),
-					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
-				};
-				Ins.VFXManager.Add(somg);
+					break;
+				}
+				Vector2 checkPoint = Projectile.Center + mouseToPlayer * step * 8;
+				if (!Main.gamePaused && Main.rand.NextBool(30))
+				{
+					Vector2 newVelocity = mouseToPlayer.RotatedBy(Main.rand.NextFloat(-0.4f, 0.4f)) * 4f * duration;
+					var somg = new AmberFlameDust
+					{
+						Velocity = newVelocity,
+						Active = true,
+						Visible = true,
+						Position = checkPoint,
+						MaxTime = Main.rand.Next(37, 55) * duration,
+						Scale = Main.rand.NextFloat(1.20f, 4.35f) * duration,
+						Rotation = Main.rand.NextFloat(6.283f),
+						ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
+					};
+					Ins.VFXManager.Add(somg);
+				}
+				MaxStep = step;
+				EndPoint = Projectile.Center + MaxStep * mouseToPlayer * 8;
 			}
-			MaxStep = step;
-			EndPoint = Projectile.Center + MaxStep * mouseToPlayer * 8;
-		}
-		var bars = new List<Vertex2D>();
-		step = -6;
-		while (!Collision.SolidCollision(Projectile.Center + mouseToPlayer * step * 8, 0, 0))
-		{
-			step++;
-			if (step > 200)
+			var bars = new List<Vertex2D>();
+			step = -6;
+			while (!Collision.SolidCollision(Projectile.Center + mouseToPlayer * step * 8, 0, 0))
 			{
-				break;
+				step++;
+				if (step > 200)
+				{
+					break;
+				}
+				Vector2 checkPoint = Projectile.Center + mouseToPlayer * step * 8;
+				Vector2 toMouseLeft = mouseToPlayer.RotatedBy(MathHelper.PiOver2);
+				float width = 25f;
+				float duration2 = Math.Max(duration, 0);
+				var drawColor = new Color(duration * 0.7f, duration2 * duration2 * 0.52f, 0, 0) * 0.1f;
+				float mulWidth = 1f;
+				if (step + 4 <= 10)
+				{
+					mulWidth = MathF.Pow((step + 4) / 10f, 0.3f);
+				}
+				bars.Add(checkPoint + toMouseLeft * width, drawColor, new Vector3(step * 0.03f - timeValue, 0, mulWidth));
+				bars.Add(checkPoint - toMouseLeft * width, drawColor, new Vector3(step * 0.03f - timeValue, 1, mulWidth));
 			}
-			Vector2 checkPoint = Projectile.Center + mouseToPlayer * step * 8;
-			Vector2 toMouseLeft = mouseToPlayer.RotatedBy(MathHelper.PiOver2);
-			float width = 25f;
-			float duration2 = Math.Max(duration, 0);
-			var drawColor = new Color(duration * 0.7f, duration2 * duration2 * 0.52f, 0, 0) * 0.1f;
-			float mulWidth = 1f;
-			if (step + 4 <= 10)
+			for (int k = 0; k < 24; k++)
 			{
-				mulWidth = MathF.Pow((step + 4) / 10f, 0.3f);
+				if (bars.Count <= k * 2)
+				{
+					break;
+				}
+				Vertex2D v0 = bars[^(k * 2 + 1)];
+				Vertex2D v1 = bars[^(k * 2 + 2)];
+				float value = 24 - k;
+				value /= 4f;
+				value += 1f;
+				v0 = new Vertex2D(v0.position, v0.color * value, v0.texCoord);
+				v1 = new Vertex2D(v1.position, v1.color * value, v1.texCoord);
+				bars[^(k * 2 + 1)] = v0;
+				bars[^(k * 2 + 2)] = v1;
 			}
-			bars.Add(checkPoint + toMouseLeft * width, drawColor, new Vector3(step * 0.03f - timeValue, 0, mulWidth));
-			bars.Add(checkPoint - toMouseLeft * width, drawColor, new Vector3(step * 0.03f - timeValue, 1, mulWidth));
-		}
-		for (int k = 0; k < 24; k++)
-		{
-			if (bars.Count <= k * 2)
+			if (bars.Count > 2)
 			{
-				break;
+				Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_10.Value;
+				Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
+				Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 			}
-			Vertex2D v0 = bars[^(k * 2 + 1)];
-			Vertex2D v1 = bars[^(k * 2 + 2)];
-			float value = 24 - k;
-			value /= 4f;
-			value += 1f;
-			v0 = new Vertex2D(v0.position, v0.color * value, v0.texCoord);
-			v1 = new Vertex2D(v1.position, v1.color * value, v1.texCoord);
-			bars[^(k * 2 + 1)] = v0;
-			bars[^(k * 2 + 2)] = v1;
+			Main.spriteBatch.End();
+			Main.spriteBatch.Begin(sBS);
+
+			Texture2D star = Commons.ModAsset.StarSlash.Value;
+			var drawC = new Color(duration * 0.7f, duration * duration * 0.52f, duration * duration * 0.06f, 0);
+
+			Vector2 starCenter = EndPoint - Main.screenPosition;
+
+			Main.spriteBatch.Draw(star, starCenter, null, drawC, MathHelper.PiOver2 + timeValue, star.Size() / 2f, 1.9f * duration, se, 0);
+			Main.spriteBatch.Draw(star, starCenter, null, drawC, 0 + timeValue, star.Size() / 2f, 1.9f * duration, se, 0);
+			drawC = new Color(duration * 0.4f, duration * duration * 0.32f, duration * duration * 0.12f, 0);
+			Main.spriteBatch.Draw(star, starCenter, null, drawC * 0.6f, MathHelper.PiOver4 + timeValue, star.Size() / 2f, 1.3f * duration, se, 0);
+			Main.spriteBatch.Draw(star, starCenter, null, drawC * 0.6f, -MathHelper.PiOver4 + timeValue, star.Size() / 2f, 1.3f * duration, se, 0);
+			return false;
+
 		}
-		if (bars.Count > 2)
+		finally
 		{
-			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_10.Value;
-			Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
-			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
+			DrawPlayer = previousDrawPlayer;
 		}
-		Main.spriteBatch.End();
-		Main.spriteBatch.Begin(sBS);
-
-		Texture2D star = Commons.ModAsset.StarSlash.Value;
-		var drawC = new Color(duration * 0.7f, duration * duration * 0.52f, duration * duration * 0.06f, 0);
-
-		Vector2 starCenter = EndPoint - Main.screenPosition;
-
-		Main.spriteBatch.Draw(star, starCenter, null, drawC, MathHelper.PiOver2 + timeValue, star.Size() / 2f, 1.9f * duration, se, 0);
-		Main.spriteBatch.Draw(star, starCenter, null, drawC, 0 + timeValue, star.Size() / 2f, 1.9f * duration, se, 0);
-		drawC = new Color(duration * 0.4f, duration * duration * 0.32f, duration * duration * 0.12f, 0);
-		Main.spriteBatch.Draw(star, starCenter, null, drawC * 0.6f, MathHelper.PiOver4 + timeValue, star.Size() / 2f, 1.3f * duration, se, 0);
-		Main.spriteBatch.Draw(star, starCenter, null, drawC * 0.6f, -MathHelper.PiOver4 + timeValue, star.Size() / 2f, 1.3f * duration, se, 0);
-		return false;
 	}
 }

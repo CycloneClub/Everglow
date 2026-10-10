@@ -1,7 +1,9 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Commons.Mechanics.ElementalDebuff.Debuffs;
 using Everglow.Yggdrasil.KelpCurtain.Items.Weapons;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
+using Terraria;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Magic;
 
@@ -23,7 +25,8 @@ public class GreenSungloShield_A : ModProjectile
 		Projectile.tileCollide = false;
 		Projectile.timeLeft = 1200;
 		Projectile.penetrate = -1;
-		Projectile.hide = true;
+		Projectile.drawLayer = ProjectileDrawLayerID.OverPlayers;
+		Projectile.usesOwnerLight = true;
 	}
 
 	private float timer = 0;
@@ -66,12 +69,9 @@ public class GreenSungloShield_A : ModProjectile
 		modifiers.Knockback *= timer / 157;
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		overPlayers.Add(index);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		SpriteBatchState sBS = Main.spriteBatch.GetState().Value;
 		Main.spriteBatch.End();
@@ -82,7 +82,7 @@ public class GreenSungloShield_A : ModProjectile
 		shineEffect.Parameters["uNoise"].SetValue(Commons.ModAsset.NoiseWave.Value);
 		shineEffect.CurrentTechnique.Passes["MagicCircle_Pixel"].Apply();
 
-		Player Owner = Main.player[Projectile.owner];
+		Player Owner = player;
 		var CirTexture = Commons.ModAsset.Point.Value;
 		var CirPosition = Owner.gravDir == 1 ? Owner.Bottom : Owner.Top;
 		CirPosition = CirPosition - Main.screenPosition + new Vector2(0, Owner.gravDir);

@@ -2,6 +2,7 @@ using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
 using Everglow.Yggdrasil.KelpCurtain.Items.Accessories;
 using SubworldLibrary;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent.ItemDropRules;
 
@@ -174,9 +175,9 @@ public class MossyThornTurtle : ModNPC
 	/// this hook runs in single player or on the server only, where the client camera is zero.
 	/// The design supplies no weight, so a conservative value in the 1f-3f band is used (D-34).
 	/// </summary>
-	public override float SpawnChance(NPC.Spawner spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawner)
 	{
-		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
+		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawner.Player))
 		{
 			return 0f;
 		}

@@ -1,6 +1,8 @@
 using Everglow.Commons.Templates.Weapons.Gyroscopes;
 using Everglow.Yggdrasil.KelpCurtain.Buffs;
 using Everglow.Yggdrasil.KelpCurtain.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Summon;
 
@@ -186,7 +188,7 @@ public class RedAlgaeMinionGyroscope_Proj : GyroscopeProjectile, IRedAlgaeToxinP
 		Ins.VFXManager.Add(gasRing);
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		Texture2D texture = ModAsset.RedAlgaeMinionGyroscope_Proj.Value;
 		Texture2D textureBloom = ModAsset.RedAlgaeMinionGyroscope_bloom.Value;

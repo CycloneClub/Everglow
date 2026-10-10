@@ -2,6 +2,7 @@ using Everglow.Commons.Coroutines;
 using Everglow.Myth.Acytaea.Projectiles;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.GameContent;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.Personalities;
 using Terraria.Localization;
@@ -105,7 +106,7 @@ public class Acytaea : VisualNPC
 		});
 	}
 
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawner)
 	{
 		return 0;
 	}
@@ -683,32 +684,41 @@ public class Acytaea : VisualNPC
 		return list[Main.rand.Next(list.Count)];
 	}
 
-	public override void SetChatButtons(ref string button, ref string button2)
+	public override void RegisterChatButtons(NPCInteractionList interactions)
 	{
-		// TODO Hjson
-		if (Language.ActiveCulture.Name == "zh-Hans")
+		interactions.InsertBefore(new ChallengeInteraction(), NPCInteractionDatabase.CloseButton);
+		interactions.InsertBefore(new HelpInteraction(), NPCInteractionDatabase.CloseButton);
+	}
+
+	private sealed class ChallengeInteraction : NPCInteraction
+	{
+		public override bool Condition() => true;
+
+		public override string GetText() => Language.ActiveCulture.Name == "zh-Hans" ? "挑战" : "Challenge";
+
+		public override void Interact()
 		{
-			button = Language.GetTextValue("挑战");
-			button2 = Language.GetTextValue("帮助");
-		}
-		else
-		{
-			button = Language.GetTextValue("Challenge");
-			button2 = Language.GetTextValue("Help");
+			NPC npc = TalkNPC;
+			if (npc is null)
+			{
+				return;
+			}
+			NPC.NewNPC(npc.GetSource_FromAI(), (int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<Acytaea_Boss>());
+			npc.active = false;
 		}
 	}
 
-	public override void OnChatButtonClicked(bool firstButton, ref string shopName)
+	private sealed class HelpInteraction : NPCInteraction
 	{
-		if (firstButton)
-		{
-			NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<Acytaea_Boss>());
-			NPC.active = false;
-		}
-		else
+		public override bool Condition() => true;
+
+		public override string GetText() => Language.ActiveCulture.Name == "zh-Hans" ? "帮助" : "Help";
+
+		public override void Interact()
 		{
 		}
 	}
+
 
 	public override void FindFrame(int frameHeight)
 	{

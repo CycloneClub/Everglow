@@ -4,6 +4,7 @@ public class BeadShakeWave : ModProjectile, IWarpProjectile
 {
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindProjectiles;
 		Projectile.extraUpdates = 6;
 		Projectile.width = 24;
 		Projectile.height = 24;
@@ -18,10 +19,9 @@ public class BeadShakeWave : ModProjectile, IWarpProjectile
 
 	public override void AI()
 	{
-		Projectile.hide = true;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		float timeValue = (200 - Projectile.timeLeft) / 200f;
 		Color c = new Color(0.2f * MathF.Sqrt(1 - timeValue), 0.6f * (1 - timeValue) * (1 - timeValue), 3f * (1 - timeValue), 0f);
@@ -39,10 +39,6 @@ public class BeadShakeWave : ModProjectile, IWarpProjectile
 		return false;
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindProjectiles.Add(index);
-	}
 
 	private static void DrawTexCircle(float radius, float width, Color color, Vector2 center, Texture2D tex, double addRot = 0)
 	{

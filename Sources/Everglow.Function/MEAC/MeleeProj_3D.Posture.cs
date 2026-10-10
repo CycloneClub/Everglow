@@ -9,7 +9,7 @@ namespace Everglow.Commons.MEAC;
 /// </summary>
 public abstract partial class MeleeProj_3D : ModProjectile, IWarpProjectile_warpStyle2, IBloomProjectile
 {
-	public Player Owner => Main.player[Projectile.owner];
+	public Player Owner => DrawPlayer ?? Main.player[Projectile.owner];
 
 	public void HoldWeapon()
 	{

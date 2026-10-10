@@ -3,6 +3,7 @@ using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.Liquids;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Ranged;
 using ModLiquidLib.ModLoader;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 
@@ -68,16 +69,16 @@ public class KissOfCthulhu : ModItem
 
 	public override Vector2? HoldoutOrigin() => new Vector2(0, 0);
 
-	public override void Update(ref float gravity, ref float maxFallSpeed)
+	public override void Update(WorldItem worldItem, ref float gravity, ref float maxFallSpeed)
 	{
-		var centralTile = TileUtils.SafeGetTile(Item.Center.ToTileCoordinates());
+		var centralTile = TileUtils.SafeGetTile(worldItem.Center.ToTileCoordinates());
 		if (centralTile.LiquidType == LiquidLoader.LiquidType<DarkSludgeLiquid>())
 		{
-			if (Item.Center.Y % 16 > 16 - centralTile.LiquidAmount / 16f)
+			if (worldItem.Center.Y % 16 > 16 - centralTile.LiquidAmount / 16f)
 			{
 				maxFallSpeed *= -0.4f;
 			}
 		}
-		base.Update(ref gravity, ref maxFallSpeed);
+		base.Update(worldItem, ref gravity, ref maxFallSpeed);
 	}
 }

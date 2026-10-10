@@ -1,4 +1,6 @@
 using Everglow.Commons.VFX.CommonVFXDusts;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 
@@ -48,11 +50,13 @@ public class CharonDoubleSickle : ModProjectile
 		return !(Projectile.ai[1] == 0 && Vector2.Distance(Projectile.Center, Player.Center) < 30);
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+	public override void PostAI()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.Default;
+		Projectile.usesOwnerLight = Projectile.hide;
 		if (Projectile.hide)
 		{
-			overPlayers.Add(index);
+			Projectile.drawLayer = ProjectileDrawLayerID.OverPlayers;
 		}
 	}
 
@@ -197,7 +201,7 @@ public class CharonDoubleSickle : ModProjectile
 		return t - entity.Center != Vector2.Zero ? Vector2.Normalize(t - entity.Center) : Vector2.Zero;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
 		float rot = Projectile.rotation + 0.78f + (Projectile.spriteDirection == 1 ? 0 : 1.57f);

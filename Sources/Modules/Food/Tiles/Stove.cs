@@ -71,7 +71,7 @@ public class Stove : ModTile, ITileFluentlyDrawn
 							item.stack--;
 							if (item.stack <= 0)
 							{
-								item.active = false;
+								item.TurnToAir();
 							}
 							stoveEneity.PotState = 1;
 							return false;
@@ -81,7 +81,7 @@ public class Stove : ModTile, ITileFluentlyDrawn
 							item.stack--;
 							if (item.stack <= 0)
 							{
-								item.active = false;
+								item.TurnToAir();
 							}
 							stoveEneity.PotState = 2;
 							return false;

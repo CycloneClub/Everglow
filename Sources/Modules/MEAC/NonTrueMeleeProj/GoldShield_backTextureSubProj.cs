@@ -9,6 +9,7 @@ public class GoldShield_backTextureSubProj : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindProjectiles;
 		Projectile.width = 10;
 		Projectile.height = 10;
 		Projectile.aiStyle = -1;
@@ -50,7 +51,6 @@ public class GoldShield_backTextureSubProj : ModProjectile
 			Projectile.Kill();
 		}
 		Projectile.Center = Main.player[Projectile.owner].Center;
-		Projectile.hide = true;
 	}
 
 	public void DrawPost(Color color, int widthCount, float halfHeight, float initialPhase, Texture2D texture)
@@ -90,12 +90,8 @@ public class GoldShield_backTextureSubProj : ModProjectile
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, vertex2Ds.ToArray(), 0, vertex2Ds.Count / 3);
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindProjectiles.Add(index);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		if (Ins.VisualQuality.High)
 		{

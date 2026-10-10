@@ -13,6 +13,8 @@ public class BloodTusk_Tentacle : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCsAndTiles;
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 		Projectile.tileCollide = false;
 		Projectile.friendly = false;
 		Projectile.hostile = true;
@@ -22,7 +24,6 @@ public class BloodTusk_Tentacle : ModProjectile
 		Projectile.penetrate = -1;
 		Projectile.extraUpdates = 80;
 		ProjectileID.Sets.DrawScreenCheckFluff[Type] = 6400;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Type] = true;
 	}
 
 	public override void OnSpawn(IEntitySource source)
@@ -138,13 +139,8 @@ public class BloodTusk_Tentacle : ModProjectile
 		return false;
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		Projectile.hide = true;
-		behindNPCsAndTiles.Add(index);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		if (TentaclePoints.Count <= 1)
 		{

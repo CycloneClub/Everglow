@@ -1,5 +1,7 @@
 using Everglow.Commons.Templates.Weapons;
 using Everglow.Commons.Utilities;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.Example.Projectiles;
 
@@ -57,7 +59,7 @@ public class ExampleTrailingProjectile : TrailingProjectile
 		base.DrawTrail();
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		return base.PreDraw(player, ref lightColor);
 	}

@@ -1,4 +1,6 @@
 using Everglow.Commons.Templates.Weapons;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.Yggdrasil.CityOfMagicFlute.Projectiles.Ranged;
 
@@ -24,6 +26,8 @@ public class TerraViewerHowitzer_grenade_fall : TrailingProjectile
 		TrailTexture = Commons.ModAsset.Trail_12.Value;
 		TrailTextureBlack = Commons.ModAsset.Trail_4_black.Value;
 		ProjectileID.Sets.DrawScreenCheckFluff[Projectile.type] = 14400;
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCsAndTiles;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public override void Behaviors()
@@ -37,13 +41,9 @@ public class TerraViewerHowitzer_grenade_fall : TrailingProjectile
 		{
 			Projectile.tileCollide = true;
 		}
-		Projectile.hide = true;
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindNPCsAndTiles.Add(index);
-	}
+
 
 	public override void DestroyEntityEffect()
 	{
@@ -55,9 +55,9 @@ public class TerraViewerHowitzer_grenade_fall : TrailingProjectile
 		base.DrawTrail();
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
-		return base.PreDraw(ref lightColor);
+		return base.PreDraw(player, ref lightColor);
 	}
 
 	public override Color GetTrailColor(int style, Vector2 worldPos, int index, ref float factor, float extraValue0 = 0, float extraValue1 = 0)

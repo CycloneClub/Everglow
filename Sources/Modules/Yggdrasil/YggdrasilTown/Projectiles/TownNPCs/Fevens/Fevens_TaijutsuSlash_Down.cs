@@ -1,6 +1,8 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Commons.Utilities.BuffHelpers;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.TownNPCs.Fevens;
@@ -26,8 +28,8 @@ public class Fevens_TaijutsuSlash_Down : ModProjectile, IWarpProjectile_warpStyl
 		Projectile.localNPCHitCooldown = 60;
 		Projectile.usesLocalNPCImmunity = true;
 
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Projectile.type] = true;
 		ProjectileID.Sets.DrawScreenCheckFluff[Projectile.type] = 180000;
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 	}
 
 	public Queue<Vector3> OldPosSpace = new Queue<Vector3>();
@@ -173,7 +175,7 @@ public class Fevens_TaijutsuSlash_Down : ModProjectile, IWarpProjectile_warpStyl
 
 	public List<Vector2> SmoothFallingPos = new List<Vector2>();
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		if (Projectile.timeLeft > 120)
 		{

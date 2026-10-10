@@ -233,7 +233,7 @@ public class FoodBuffModPlayer : ModPlayer
 					if (!target.dontTakeDamage && !target.friendly && target.active)
 					{
 						target.AddBuff(ModContent.BuffType<CherryBuff>(), 1800);
-						Player.ApplyDamageToNPC(target, Math.Max(Player.HeldItem.damage * 4, 120), Math.Max(Player.HeldItem.knockBack * 4, 24), 0, Main.rand.NextBool(22, 33));
+						Player.ApplyDamageToNPC(target, Math.Max(Player.HeldItem.damage * 4, 120), Math.Max(Player.HeldItem.knockBack * 4, 24), 0, Main.rand.NextBool(22, 33), hitSource: default);
 					}
 				}
 			}

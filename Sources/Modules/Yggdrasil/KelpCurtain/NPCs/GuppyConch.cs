@@ -2,6 +2,7 @@ using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
 using Everglow.Yggdrasil.KelpCurtain.Items.Accessories;
 using SubworldLibrary;
+using Terraria;
 using Terraria.GameContent.ItemDropRules;
 
 namespace Everglow.Yggdrasil.KelpCurtain.NPCs;
@@ -246,20 +247,20 @@ public class GuppyConch : ModNPC
 	/// creature is a land crawler, so submerged spawn tiles and water spawns are rejected. The
 	/// design supplies no weight, so a conservative 0.75f is used (band 0.5f-2f, D-34).
 	/// </summary>
-	public override float SpawnChance(NPC.Spawner spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawner)
 	{
-		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
+		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawner.Player))
 		{
 			return 0f;
 		}
 
-		if (spawnInfo.waterTile)
+		if (spawner.waterTile)
 		{
 			return 0f;
 		}
 
-		int tileX = spawnInfo.SpawnTileX;
-		int tileY = spawnInfo.SpawnTileY;
+		int tileX = spawner.SpawnTileX;
+		int tileY = spawner.SpawnTileY;
 		if (WorldGen.InWorld(tileX, tileY, 1) && Main.tile[tileX, tileY].LiquidAmount > 0)
 		{
 			return 0f;

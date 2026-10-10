@@ -46,7 +46,7 @@ public class FurnaceScoreMilestoneRewardUI_Itemslot : UIItemSlot
 		if (ContainedItem.type > ItemID.None && Main.LocalPlayer.GetModPlayer<FurnacePlayer>().ReceivedReward[GetIndex()])
 		{
 			ContainedItem = new Item();
-			ContainedItem.SetDefaults(ItemID.None, true);
+			ContainedItem.SetDefaults(ItemID.None);
 		}
 		base.Update(gameTime);
 	}

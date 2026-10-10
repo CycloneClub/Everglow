@@ -1,5 +1,7 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Commons.Utilities.BuffHelpers;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.TownNPCs.Fevens;
@@ -30,8 +32,8 @@ public class Fevens_Wing_Slash : ModProjectile, IWarpProjectile
 		Projectile.localNPCHitCooldown = 60;
 		Projectile.timeLeft = 120;
 		Projectile.extraUpdates = 2;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Projectile.type] = true;
 		ProjectileID.Sets.DrawScreenCheckFluff[Projectile.type] = 180000;
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 	}
 
 	public override bool PreAI()
@@ -80,7 +82,7 @@ public class Fevens_Wing_Slash : ModProjectile, IWarpProjectile
 		base.OnHitPlayer(target, info);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		SpriteBatchState sBS = Main.spriteBatch.GetState().Value;
 		Main.spriteBatch.End();

@@ -59,7 +59,7 @@ public class MiningPowerPickaxe : ModItem
 	{
 		tooltips.Add(new TooltipLine(Mod, "Charge", Language.GetTextValue($"Charge: {ChargeProgressText}"))
 		{
-			OverrideColor = Color.LimeGreen,
+			Color = Color.LimeGreen,
 		});
 	}
 

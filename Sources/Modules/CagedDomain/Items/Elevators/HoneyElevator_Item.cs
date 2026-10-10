@@ -18,7 +18,7 @@ public class HoneyElevator_Item : ModItem
 	{
 		CreateRecipe()
 			.AddIngredient(ItemID.Wood, 40)
-			.AddIngredient(RecipeGroupID.IronBar, 10)
+			.AddRecipeGroup(RecipeGroups.IronBar, 10)
 			.AddIngredient(ItemID.Chain, 20)
 			.AddIngredient(ItemID.Wire, 5)
 			.AddTile(TileID.HeavyWorkBench)

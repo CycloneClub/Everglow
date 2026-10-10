@@ -1,6 +1,7 @@
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood;
+using Terraria;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 
@@ -55,17 +56,17 @@ public class Lamorch_Item : ModItem
 		Lighting.AddLight(position, 0.7f, 0.6f, 0.1f);
 	}
 
-	public override void PostUpdate()
+	public override void PostUpdate(WorldItem worldItem)
 	{
-		// Create a white (1.0, 1.0, 1.0) light when the item is in world, and isn't underwater.
-		Lighting.AddLight(Item.Center, 0.7f, 0.6f, 0.1f);
+		// Create a white (1.0, 1.0, 1.0) light when the worldItem is in world, and isn't underwater.
+		Lighting.AddLight(worldItem.Center, 0.7f, 0.6f, 0.1f);
 	}
 
 	public override void AddRecipes()
 	{
 		CreateRecipe(4)
 			.AddIngredient(ModContent.ItemType<LampFruit>(), 1)
-			.AddIngredient(RecipeGroupID.Wood, 1)
+			.AddRecipeGroup(RecipeGroups.Wood, 1)
 			.Register();
 	}
 }

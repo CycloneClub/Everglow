@@ -1,5 +1,7 @@
 using Everglow.Commons.VFX.CommonDusts;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
 
@@ -99,7 +101,7 @@ public class MeltingFireRing : ModProjectile
 		base.AI();
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		Effect shader = Commons.ModAsset.Dissolve0.Value;
 		Texture2D tex1 = Commons.ModAsset.Trail_5.Value;

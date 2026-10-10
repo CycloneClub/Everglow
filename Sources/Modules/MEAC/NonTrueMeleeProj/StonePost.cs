@@ -11,6 +11,7 @@ public class StonePost : ModProjectile, IWarpProjectile
 {
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCsAndTiles;
 		Projectile.width = 10;
 		Projectile.height = 10;
 		Projectile.aiStyle = -1;
@@ -25,7 +26,6 @@ public class StonePost : ModProjectile, IWarpProjectile
 
 	public override void AI()
 	{
-		Projectile.hide = true;
 		if (Projectile.timeLeft <= 27 && Projectile.timeLeft >= 15 && Projectile.timeLeft % 3 == 0)
 		{
 			for (int x = 0; x < 12; x++)
@@ -39,10 +39,6 @@ public class StonePost : ModProjectile, IWarpProjectile
 		}
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindNPCsAndTiles.Add(index);
-	}
 
 	public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 	{
@@ -149,7 +145,7 @@ public class StonePost : ModProjectile, IWarpProjectile
 		return orig.RotatedBy(Projectile.rotation);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D BackG = ModAsset.StonePostBackGround.Value;
 		Texture2D Front = ModAsset.StonePost.Value;
@@ -274,7 +270,6 @@ public class StonePost : ModProjectile, IWarpProjectile
 
 		if (LeftTime < 40)
 		{
-			Player player = Main.player[Projectile.owner];
 			float k = LeftTime / 40f;
 			k = (float)Math.Sqrt(k);
 			float Rot = (float)(-Math.PI * 0.6f) * player.direction * k;
@@ -283,7 +278,6 @@ public class StonePost : ModProjectile, IWarpProjectile
 		}
 		if (LeftTime is >= 40 and < 60)
 		{
-			Player player = Main.player[Projectile.owner];
 			float k = (60 - LeftTime) / 20f;
 			k = (float)Math.Sqrt(k);
 			float Rot = (float)(-Math.PI * 0.6f) * player.direction * k;

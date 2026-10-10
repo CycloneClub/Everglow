@@ -1,5 +1,6 @@
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
 using Everglow.Yggdrasil.KelpCurtain.Items.Critters;
+using Terraria;
 using Terraria.ModLoader.Utilities;
 
 namespace Everglow.Yggdrasil.KelpCurtain.NPCs;
@@ -382,9 +383,9 @@ public class RiverSlug : ModNPC
 		}
 	}
 
-	public override float SpawnChance(NPC.Spawner spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawner)
 	{
-		if (spawnInfo.Player.AnyEvent())
+		if (spawner.Player.AnyEvent())
 		{
 			return 0f;
 		}

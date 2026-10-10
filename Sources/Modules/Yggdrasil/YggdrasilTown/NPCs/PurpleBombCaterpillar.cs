@@ -3,6 +3,7 @@ using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Enemies;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs.NPCEffects;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.NPCs;
@@ -25,7 +26,7 @@ public class PurpleBombCaterpillar : ModNPC
 		NPCSpawnManager.RegisterNPC(Type);
 	}
 
-	public override float SpawnChance(NPC.Spawner spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawner)
 	{
 		LampWoodForest lampBiome = ModContent.GetInstance<LampWoodForest>();
 		return !lampBiome.IsBiomeActive(Main.LocalPlayer) ? 0f : 3f;

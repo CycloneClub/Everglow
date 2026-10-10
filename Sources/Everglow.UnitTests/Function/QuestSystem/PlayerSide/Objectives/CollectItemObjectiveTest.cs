@@ -1,13 +1,22 @@
+using Everglow.Commons.Mechanics.Quest.Hooks;
 using Everglow.Commons.Mechanics.Quest.PlayerSide.Objectives;
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
 namespace Everglow.UnitTests.Function.QuestSystem;
 
 [TestClass]
+[DoNotParallelize]
 public class CollectItemObjectiveTest
 {
+	[TestInitialize]
+	public void Initialize()
+	{
+		Program.SavePath = string.Empty;
+	}
+
 	[TestMethod]
 	public void Progress_Should_CalculateCorrectly_When_TypeIsSingle()
 	{
@@ -136,6 +145,27 @@ public class CollectItemObjectiveTest
 		{
 			new CollectItemObjective([ItemID.DirtBlock], 0);
 		});
+	}
+
+	[TestMethod]
+	public void WorldItemPickup_CountsMatchingStackAndAllowsInventoryPickup()
+	{
+		var objective = new CollectItemObjective([ItemID.DirtBlock], 10);
+		ModPlayer questPlayer = new QuestPlayer();
+		objective.Activate(null!);
+		try
+		{
+			bool allowMatchingPickup = questPlayer.OnPickup(new WorldItem(new Item { type = ItemID.DirtBlock, stack = 4 }));
+			bool allowOtherPickup = questPlayer.OnPickup(new WorldItem(new Item { type = ItemID.Wood, stack = 7 }));
+
+			Assert.IsTrue(allowMatchingPickup);
+			Assert.IsTrue(allowOtherPickup);
+			Assert.AreEqual(4, objective.CollectedCount);
+		}
+		finally
+		{
+			objective.Deactivate();
+		}
 	}
 
 	[TestMethod]

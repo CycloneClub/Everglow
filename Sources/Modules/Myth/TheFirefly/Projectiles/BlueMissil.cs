@@ -1,5 +1,4 @@
 using Everglow.Myth.Common;
-using Terraria;
 
 namespace Everglow.Myth.TheFirefly.Projectiles;
 

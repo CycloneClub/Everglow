@@ -30,6 +30,8 @@ public class TerraViewerHowitzer_shoot : TrailingProjectile
 		TrailTextureBlack = Commons.ModAsset.Trail_4_black.Value;
 		TrailBackgroundDarkness = 0.3f;
 		TrailColor = new Color(0.5f, 0.9f, 0.9f, 0);
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCsAndTiles;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public override void Behaviors()
@@ -39,13 +41,9 @@ public class TerraViewerHowitzer_shoot : TrailingProjectile
 		{
 			Projectile.friendly = true;
 		}
-		Projectile.hide = true;
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindNPCsAndTiles.Add(index);
-	}
+
 
 	public override void DestroyEntityEffect()
 	{

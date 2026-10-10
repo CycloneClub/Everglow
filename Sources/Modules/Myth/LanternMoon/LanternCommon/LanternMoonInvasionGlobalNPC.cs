@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Terraria;
 namespace Everglow.Myth.LanternMoon.LanternCommon;
 
 public class LanternMoonInvasionGlobalNPC : GlobalNPC
@@ -6,7 +8,7 @@ public class LanternMoonInvasionGlobalNPC : GlobalNPC
 
 	public override bool InstancePerEntity => true;
 
-	public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
+	public override void EditSpawnPool(IDictionary<int, float> pool, NPC.Spawner spawner)
 	{
 		if (LanternMoon is not null && LanternMoon.Active)
 		{
@@ -27,7 +29,7 @@ public class LanternMoonInvasionGlobalNPC : GlobalNPC
 				}
 			}
 		}
-		base.EditSpawnPool(pool, spawnInfo);
+		base.EditSpawnPool(pool, spawner);
 	}
 
 	public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)

@@ -2,6 +2,8 @@ using Everglow.Commons.Templates.Weapons.Gyroscopes;
 using Everglow.Commons.Templates.Weapons.Whips;
 using Everglow.Yggdrasil.KelpCurtain.Buffs;
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Summon;
 
@@ -203,7 +205,7 @@ public class LegumeGyroscope_Proj : GyroscopeProjectile
 		}
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		Texture2D texture = ModAsset.LegumeGyroscope_Proj.Value;
 		Texture2D textureBloom = ModAsset.LegumeGyroscope_bloom.Value;

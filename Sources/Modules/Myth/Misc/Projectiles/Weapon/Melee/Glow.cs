@@ -129,9 +129,8 @@ public class Glow : ModProjectile
 		info.HitDirection = (Main.player[Projectile.owner].Center.X < target.Center.X) ? 1 : (-1);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
-		Player player = Main.player[Projectile.owner];
 		Vector2 position = Projectile.Center - Main.screenPosition;
 		Texture2D texture = TextureAssets.Projectile[Type].Value;
 		Rectangle sourceRectangle = texture.Frame(1, 4); // The sourceRectangle says which frame to use.

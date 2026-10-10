@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 
@@ -18,8 +20,8 @@ public class ChainGrenadeProj : ModProjectile
 		Projectile.DamageType = DamageClass.Ranged;
 		Projectile.width = 12;
 		Projectile.height = 12;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Type] = true;
 		Timer = 0;
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 	}
 
 	public float Omega = 0;
@@ -108,7 +110,7 @@ public class ChainGrenadeProj : ModProjectile
 		base.OnKill(timeLeft);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		Texture2D tex = (Texture2D)ModContent.Request<Texture2D>(Texture);
 		Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, tex.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);

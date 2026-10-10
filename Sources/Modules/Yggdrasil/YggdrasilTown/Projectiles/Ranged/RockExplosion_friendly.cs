@@ -1,4 +1,6 @@
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Ranged;
 
@@ -61,7 +63,7 @@ public class RockExplosion_friendly : ModProjectile, IWarpProjectile
 		}
 	}
 
-	public override void PostDraw(Player player, Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		var light = lightColor.ToVector4();
 		float timeValue = (200 - Projectile.timeLeft) / 200f;
@@ -89,7 +91,7 @@ public class RockExplosion_friendly : ModProjectile, IWarpProjectile
 		}
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		return false;
 	}

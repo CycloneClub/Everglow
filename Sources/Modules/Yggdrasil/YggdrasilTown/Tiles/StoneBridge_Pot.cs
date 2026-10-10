@@ -1,5 +1,6 @@
 using Everglow.Commons.TileHelper;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
+using Microsoft.Xna.Framework;
 using Terraria.ObjectData;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Tiles;
@@ -52,180 +53,180 @@ public class StoneBridge_Pot : ModTile
 		switch (Main.rand.Next(7))
 		{
 			case 0:
-				Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.Rope, Main.rand.Next(9, 85)));
+				Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.Rope, Main.rand.Next(9, 85)));
 				break;
 			case 1:
 				if (Main.rand.NextBool(3))
 				{
-					Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.GoldCoin, Main.rand.Next(1, 3)));
+					Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.GoldCoin, Main.rand.Next(1, 3)));
 				}
 				else
 				{
-					Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.SilverCoin, Main.rand.Next(1, 80)));
-					Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.CopperCoin, Main.rand.Next(0, 99)));
+					Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.SilverCoin, Main.rand.Next(1, 80)));
+					Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.CopperCoin, Main.rand.Next(0, 99)));
 				}
 				break;
 			case 2:
 				if (Main.rand.NextBool(3))
 				{
-					Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.HealingPotion));
+					Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.HealingPotion));
 				}
 				else
 				{
-					Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.LesserHealingPotion, Main.rand.Next(1, 5)));
+					Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.LesserHealingPotion, Main.rand.Next(1, 5)));
 				}
 				break;
 			case 3:
 				switch (Main.rand.Next(46))
 				{
 					case 0:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.RestorationPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.RestorationPotion));
 						break;
 					case 1:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.ObsidianSkinPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.ObsidianSkinPotion));
 						break;
 					case 2:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.AmmoReservationPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.AmmoReservationPotion));
 						break;
 					case 3:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.ArcheryPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.ArcheryPotion));
 						break;
 					case 4:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.BattlePotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.BattlePotion));
 						break;
 					case 5:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.BiomeSightPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.BiomeSightPotion));
 						break;
 					case 6:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.BuilderPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.BuilderPotion));
 						break;
 					case 7:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.CalmingPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.CalmingPotion));
 						break;
 					case 8:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.CratePotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.CratePotion));
 						break;
 					case 9:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.EndurancePotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.EndurancePotion));
 						break;
 					case 10:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.FeatherfallPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.FeatherfallPotion));
 						break;
 					case 11:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.FishingPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.FishingPotion));
 						break;
 					case 12:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.FlipperPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.FlipperPotion));
 						break;
 					case 13:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.GenderChangePotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.GenderChangePotion));
 						break;
 					case 14:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.GillsPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.GillsPotion));
 						break;
 					case 15:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.GravitationPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.GravitationPotion));
 						break;
 					case 16:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.GreaterHealingPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.GreaterHealingPotion));
 						break;
 					case 17:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.GreaterManaPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.GreaterManaPotion));
 						break;
 					case 18:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.HeartreachPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.HeartreachPotion));
 						break;
 					case 19:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.HunterPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.HunterPotion));
 						break;
 					case 20:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.InfernoPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.InfernoPotion));
 						break;
 					case 21:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.InvisibilityPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.InvisibilityPotion));
 						break;
 					case 22:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.IronskinPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.IronskinPotion));
 						break;
 					case 23:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.LifeforcePotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.LifeforcePotion));
 						break;
 					case 24:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.LovePotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.LovePotion));
 						break;
 					case 25:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.LuckPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.LuckPotion));
 						break;
 					case 26:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.MagicPowerPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.MagicPowerPotion));
 						break;
 					case 27:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.ManaRegenerationPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.ManaRegenerationPotion));
 						break;
 					case 28:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.MiningPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.MiningPotion));
 						break;
 					case 29:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.NightOwlPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.NightOwlPotion));
 						break;
 					case 30:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.RagePotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.RagePotion));
 						break;
 					case 31:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.RecallPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.RecallPotion));
 						break;
 					case 32:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.RegenerationPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.RegenerationPotion));
 						break;
 					case 33:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.ShinePotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.ShinePotion));
 						break;
 					case 34:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.SonarPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.SonarPotion));
 						break;
 					case 35:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.SpelunkerPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.SpelunkerPotion));
 						break;
 					case 36:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.StinkPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.StinkPotion));
 						break;
 					case 37:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.SummoningPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.SummoningPotion));
 						break;
 					case 38:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.SwiftnessPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.SwiftnessPotion));
 						break;
 					case 39:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.TeleportationPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.TeleportationPotion));
 						break;
 					case 40:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.ThornsPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.ThornsPotion));
 						break;
 					case 41:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.TitanPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.TitanPotion));
 						break;
 					case 42:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.TrapsightPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.TrapsightPotion));
 						break;
 					case 43:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.WaterWalkingPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.WaterWalkingPotion));
 						break;
 					case 44:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.WormholePotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.WormholePotion));
 						break;
 					case 45:
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.WrathPotion));
+						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.WrathPotion));
 						break;
 				}
 				break;
 			case 4:
-				Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.Bomb, Main.rand.Next(2, 20)));
+				Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.Bomb, Main.rand.Next(2, 20)));
 				break;
 			case 5:
-				Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.Torch, Main.rand.Next(2, 35)));
+				Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.Torch, Main.rand.Next(2, 35)));
 				break;
 			case 6:
-				Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.Glowstick, Main.rand.Next(2, 25)));
+				Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(24, 24), new Item(ItemID.Glowstick, Main.rand.Next(2, 25)));
 				break;
 		}
 		for (int h = 0; h < 4; h++)

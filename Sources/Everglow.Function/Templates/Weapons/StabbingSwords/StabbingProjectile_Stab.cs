@@ -16,6 +16,9 @@ namespace Everglow.Commons.Templates.Weapons.StabbingSwords;
 
 public abstract class StabbingProjectile_Stab : ModProjectile, IWarpProjectile
 {
+	// Keep virtual draw helpers on the player supplied by tML, including mannequins.
+	protected Player DrawPlayer { get; set; }
+
 	public override string LocalizationCategory => LocalizationUtils.Categories.MeleeProjectiles;
 
 	/// <summary>
@@ -47,7 +50,7 @@ public abstract class StabbingProjectile_Stab : ModProjectile, IWarpProjectile
 	public Vector2 StabEndPoint_WorldPos = Vector2.Zero;
 	public int StabTimer = 120;
 
-	public Player Owner => Main.player[Projectile.owner];
+	public Player Owner => DrawPlayer ?? Main.player[Projectile.owner];
 
 	/// <summary>
 	/// Manager of Visual effect ring.
@@ -330,10 +333,19 @@ public abstract class StabbingProjectile_Stab : ModProjectile, IWarpProjectile
 		shaderData.QueueRipple(ripplePos, waveData, beamDims, RippleShape.Square, mainVec.ToRotation());
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
-		DrawItem(lightColor);
-		return false;
+		Player previousDrawPlayer = DrawPlayer;
+		DrawPlayer = player;
+		try
+		{
+			DrawItem(lightColor);
+			return false;
+		}
+		finally
+		{
+			DrawPlayer = previousDrawPlayer;
+		}
 	}
 
 	public virtual void DrawItem(Color lightColor)
@@ -345,9 +357,18 @@ public abstract class StabbingProjectile_Stab : ModProjectile, IWarpProjectile
 		}
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
-		DrawEffect(lightColor);
+		Player previousDrawPlayer = DrawPlayer;
+		DrawPlayer = player;
+		try
+		{
+			DrawEffect(lightColor);
+		}
+		finally
+		{
+			DrawPlayer = previousDrawPlayer;
+		}
 	}
 
 	public virtual void DrawEffect(Color lightColor)

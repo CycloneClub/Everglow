@@ -74,7 +74,7 @@ public class RedAlgaeToxinPacket : IPacket
 				Projectile source = null;
 				foreach (var candidate in Main.projectile)
 				{
-					if (candidate.active && candidate.owner == whoAmI && candidate.identity == data.sourceIdentity && candidate.type == data.sourceType)
+					if (candidate.active && candidate.owner == whoAmI && candidate.key == data.sourceIdentity && candidate.type == data.sourceType)
 					{
 						source = candidate;
 						break;

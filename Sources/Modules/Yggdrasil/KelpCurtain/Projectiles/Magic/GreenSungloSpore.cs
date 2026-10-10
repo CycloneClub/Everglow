@@ -3,8 +3,8 @@ using Everglow.Commons.Graphics;
 using Everglow.Commons.Templates.Weapons;
 using Everglow.Yggdrasil.KelpCurtain.VFXs;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Bosses.KingJellyBall;
+using Microsoft.Xna.Framework;
 using Terraria;
-using static Terraria.ModLoader.BackupIO;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Magic;
 
@@ -89,7 +89,7 @@ public class GreenSungloSpore : TrailingProjectile
 		modifiers.HideCombatText();
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		DrawTrail();
 		if (TimeAfterEntityDestroy <= 0)

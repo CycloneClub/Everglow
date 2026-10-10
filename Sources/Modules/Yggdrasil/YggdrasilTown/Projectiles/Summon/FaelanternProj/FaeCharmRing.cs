@@ -1,4 +1,6 @@
 using Everglow.Commons.DataStructures;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Summon.FaelanternProj;
 
@@ -26,7 +28,7 @@ public class FaeCharmRing : ModProjectile, IWarpProjectile
 		Projectile.velocity *= 0;
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		return false;
 	}
@@ -59,7 +61,7 @@ public class FaeCharmRing : ModProjectile, IWarpProjectile
 		}
 	}
 
-	public override void PostDraw(Player player, Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		var light = lightColor.ToVector4();
 		float timeValue = (200 - Projectile.timeLeft) / 200f;

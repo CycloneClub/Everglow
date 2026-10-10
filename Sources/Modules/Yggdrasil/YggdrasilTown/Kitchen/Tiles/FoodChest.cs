@@ -60,7 +60,7 @@ public class FoodChest : ModTile
 			int itemCountInventory = 0;
 			foreach (var item in Main.LocalPlayer.inventory)
 			{
-				if (item.active && item.type == itemType && item.stack > 0)
+				if (!item.IsAir && item.type == itemType && item.stack > 0)
 				{
 					itemCountInventory += item.stack;
 				}

@@ -1,5 +1,4 @@
 using Everglow.Myth.TheTusk;
-using Terraria;
 using Terraria.Localization;
 
 namespace Everglow.Myth.TheTusk.Projectiles.Weapon;
@@ -176,7 +175,7 @@ public class ToothMagicSplit : ModProjectile
 	private float delX = -1;
 	private bool[] hasBeenHit = new bool[200];
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		if (delX == -1)
 		{
@@ -234,7 +233,6 @@ public class ToothMagicSplit : ModProjectile
 						if (!hasBeenHit[j] && (Main.npc[j].Center - (Projectile.oldPos[i] + new Vector2(Projectile.width / 2f, Projectile.height / 2f))).Length() < 40 && !Main.npc[j].dontTakeDamage && !Main.npc[j].friendly)
 						{
 							hasBeenHit[j] = true;
-							Player player = Main.player[Projectile.owner];
 							NPC.HitModifiers npcHitM = new NPC.HitModifiers();
 							NPC.HitInfo hit = npcHitM.ToHitInfo(Projectile.damage * Main.rand.NextFloat(0.85f, 1.15f), Main.rand.NextFloat(100f) < player.GetTotalCritChance(Projectile.DamageType), 2);
 							Main.npc[j].StrikeNPC(hit, true, true);

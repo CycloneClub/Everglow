@@ -13,7 +13,7 @@ public class SlashAllTheItem : ISidebarElement
 			var item = Main.LocalPlayer.inventory[i];
 			if (!item.favorited)
 			{
-				item.SetDefaults();
+				item.TurnToAir();
 			}
 		}
 		Main.NewText("已清除背包");

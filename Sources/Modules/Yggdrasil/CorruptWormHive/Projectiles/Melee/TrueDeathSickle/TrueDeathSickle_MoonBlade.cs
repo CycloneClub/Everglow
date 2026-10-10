@@ -1,5 +1,7 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.CorruptWormHive.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.CorruptWormHive.Projectiles.Melee.TrueDeathSickle;
@@ -77,7 +79,7 @@ public class TrueDeathSickle_MoonBlade : ModProjectile, IWarpProjectile
 		Lighting.AddLight(Projectile.Center, 0.14f, 0.47f, 0.97f);
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		float colorValue = 0.1f;
 		int maxLength = (280 - Projectile.timeLeft) * 4;

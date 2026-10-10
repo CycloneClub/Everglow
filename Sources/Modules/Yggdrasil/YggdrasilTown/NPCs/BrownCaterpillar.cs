@@ -2,6 +2,7 @@ using Everglow.Commons.Mechanics.Miscs;
 using Everglow.Commons.Templates.Enemies;
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
+using Terraria;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.NPCs;
 
@@ -21,7 +22,7 @@ public class BrownCaterpillar : Caterpillar
 		DustType = ModContent.DustType<VerdantBlood>();
 	}
 
-	public override float SpawnChance(NPC.Spawner spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawner)
 	{
 		return 0f;
 	}

@@ -1,4 +1,5 @@
 using Everglow.Myth.TheFirefly.Projectiles;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Myth.TheFirefly.NPCs;
@@ -50,7 +51,7 @@ public class BlackStarFruit : ModNPC
 		}
 	}
 
-	public override float SpawnChance(NPC.Spawner spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawner)
 	{
 		FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
 		if (!fireflyBiome.IsBiomeActive(Main.LocalPlayer))

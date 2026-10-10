@@ -1,6 +1,8 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.YggdrasilTown.Buffs;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
@@ -20,6 +22,8 @@ public class YggdrasilAmberLaser_crystal : ModProjectile
 		Projectile.height = 10;
 		Projectile.aiStyle = -1;
 		CrystalTrack = new Vector2[50];
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCsAndTiles;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public Projectile LaserOwner;
@@ -32,7 +36,6 @@ public class YggdrasilAmberLaser_crystal : ModProjectile
 	{
 		CrystalTrack[0] = Projectile.Center;
 		Projectile.ai[0] = 0;
-		Projectile.hide = true;
 	}
 
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
@@ -146,12 +149,9 @@ public class YggdrasilAmberLaser_crystal : ModProjectile
 	{
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindNPCsAndTiles.Add(index);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		var bars = new List<Vertex2D>();
 

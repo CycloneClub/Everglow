@@ -1,5 +1,7 @@
 using Everglow.Commons.VFX.CommonVFXDusts;
 using Everglow.Minortopography.GiantPinetree.Dusts;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 
 namespace Everglow.Minortopography.GiantPinetree.Projectiles;
@@ -134,7 +136,7 @@ public class FrostBomb : ModProjectile
 		dust.noGravity = true;
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		return true;
 	}

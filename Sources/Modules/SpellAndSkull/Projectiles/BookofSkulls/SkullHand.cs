@@ -1,6 +1,5 @@
 using Everglow.Commons.Vertex;
 using Everglow.SpellAndSkull.Common;
-using Terraria;
 using Terraria.Audio;
 
 namespace Everglow.SpellAndSkull.Projectiles.BookofSkulls;
@@ -9,6 +8,7 @@ internal class SkullHand : ModProjectile
 {
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCsAndTiles;
 		Projectile.width = 100;
 		Projectile.height = 100;
 		Projectile.friendly = false;
@@ -215,19 +215,14 @@ internal class SkullHand : ModProjectile
 		return sel * value + aim * (1 - value);
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindNPCsAndTiles.Add(index);
-	}
 
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		target.AddBuff(BuffID.Burning, 180);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
-		Projectile.hide = true;
 		Texture2D bone = ModAsset.SkullHand.Value;
 		Texture2D Power = Commons.ModAsset.Trail_5.Value;
 		Vector2 v0 = Projectile.Center + direction * 60;

@@ -11,7 +11,8 @@ public class PlayerQuestManagerTest
 {
 	private bool _originalDedServ;
 	private bool _originalGameMenu;
-	private bool _originalGameInactive;
+	private bool _originalIsSelectedApplication;
+	private bool _originalGamePaused;
 	private double _originalTimeForVisualEffects;
 
 	private sealed class StubQuest : PlayerQuestBase
@@ -52,11 +53,13 @@ public class PlayerQuestManagerTest
 		Terraria.Program.SavePath = string.Empty;
 		_originalDedServ = Terraria.Main.dedServ;
 		_originalGameMenu = Terraria.Main.gameMenu;
-		_originalGameInactive = Terraria.Main.gameInactive;
+		_originalIsSelectedApplication = Terraria.FocusHelper.IsSelectedApplication;
+		_originalGamePaused = Terraria.Main.gamePaused;
 		_originalTimeForVisualEffects = Terraria.Main.timeForVisualEffects;
 		Terraria.Main.dedServ = true;
 		Terraria.Main.gameMenu = false;
-		Terraria.Main.gameInactive = false;
+		Terraria.FocusHelper.IsSelectedApplication = true;
+		Terraria.Main.gamePaused = false;
 		Terraria.Main.timeForVisualEffects = PlayerQuestManager.UpdateInterval;
 	}
 
@@ -65,7 +68,8 @@ public class PlayerQuestManagerTest
 	{
 		Terraria.Main.dedServ = _originalDedServ;
 		Terraria.Main.gameMenu = _originalGameMenu;
-		Terraria.Main.gameInactive = _originalGameInactive;
+		Terraria.FocusHelper.IsSelectedApplication = _originalIsSelectedApplication;
+		Terraria.Main.gamePaused = _originalGamePaused;
 		Terraria.Main.timeForVisualEffects = _originalTimeForVisualEffects;
 	}
 

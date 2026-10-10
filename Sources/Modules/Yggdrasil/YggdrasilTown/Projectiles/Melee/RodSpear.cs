@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Melee;
@@ -129,7 +131,7 @@ public class RodSpear : ModProjectile
 		return true;
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		var texStick = (Texture2D)ModContent.Request<Texture2D>(Texture);
 		var frame = new Rectangle(0, Projectile.frame * 52, 52, 52);

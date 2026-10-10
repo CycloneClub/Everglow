@@ -12,6 +12,7 @@ public class PineLeaves : ModTile
 		Main.tileMerge[Type][TileID.PineTree] = true;
 		Main.tileMerge[TileID.PineTree][Type] = true;
 		TileUtils.Sets.TileFragile[Type] = true;
+		TileID.Sets.SnowBiome[Type] = 5;
 	}
 
 	public override void PostSetDefaults()
@@ -34,16 +35,5 @@ public class PineSnowSystem : ModSystem
 	public override void TileCountsAvailable(ReadOnlySpan<int> tileCounts)
 	{
 		PineLeavesCount = tileCounts[ModContent.TileType<PineLeaves>()];
-	}
-
-	public override void Load()
-	{
-		On_SceneMetrics.ExportTileCountsToMain += SceneMetrics_ExportTileCountsToMain;
-	}
-
-	private void SceneMetrics_ExportTileCountsToMain(On_SceneMetrics.orig_ExportTileCountsToMain orig, Terraria.SceneMetrics self)
-	{
-		orig(self);
-		Main.SceneMetrics.SnowTileCount += PineLeavesCount * 5;
 	}
 }

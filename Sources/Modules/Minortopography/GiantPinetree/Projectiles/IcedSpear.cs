@@ -1,5 +1,7 @@
 using Everglow.Commons.VFX.CommonVFXDusts;
 using Everglow.Minortopography.GiantPinetree.Dusts;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 
 namespace Everglow.Minortopography.GiantPinetree.Projectiles;
@@ -18,6 +20,8 @@ public class IcedSpear : ModProjectile
 		Projectile.penetrate = -1;
 		Projectile.usesLocalNPCImmunity = true;
 		Projectile.localNPCHitCooldown = 15;
+		Projectile.drawLayer = ProjectileDrawLayerID.HeldProj;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public bool Shot = false;
@@ -109,6 +113,8 @@ public class IcedSpear : ModProjectile
 		{
 			GenerateDust();
 		}
+		Projectile.drawLayer = Shot ? ProjectileDrawLayerID.Default : ProjectileDrawLayerID.HeldProj;
+		Projectile.usesOwnerLight = !Shot;
 	}
 
 	public void GenerateDust()
@@ -202,7 +208,7 @@ public class IcedSpear : ModProjectile
 		return true;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		Texture2D texStick = ModAsset.IcedSpear_stick.Value;
 		Texture2D texIce = ModAsset.IcedSpear_ice.Value;

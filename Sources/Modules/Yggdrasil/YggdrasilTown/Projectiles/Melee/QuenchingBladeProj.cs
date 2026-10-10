@@ -1,6 +1,8 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
 using Mono.Cecil;
+using Terraria;
 using Terraria.Audio;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Melee;
@@ -487,15 +489,25 @@ public class QuenchingBladeProj : MeleeProj
 		Main.spriteBatch.Begin(sBS);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
-		if (currantAttackType == 4)
+		Player previousDrawPlayer = DrawPlayer;
+		DrawPlayer = player;
+		try
 		{
+			if (currantAttackType == 4)
+			{
+				return false;
+			}
+			DrawSelf(Main.spriteBatch, lightColor);
+			DrawTrail(lightColor);
 			return false;
+
 		}
-		DrawSelf(Main.spriteBatch, lightColor);
-		DrawTrail(lightColor);
-		return false;
+		finally
+		{
+			DrawPlayer = previousDrawPlayer;
+		}
 	}
 
 	public override void End()

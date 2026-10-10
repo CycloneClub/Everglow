@@ -193,7 +193,7 @@ internal class ShadowWingBow : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		return false;
 	}
@@ -239,9 +239,8 @@ internal class ShadowWingBow : ModProjectile
 		Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Main.Transform);
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
-		Player player = Main.player[Projectile.owner];
 		Texture2D TexMainU0 = ModAsset.ShadowWingBowU0.Value;
 		Texture2D TexMainU1 = ModAsset.ShadowWingBowU1.Value;
 		Texture2D TexMainU0G = ModAsset.ShadowWingBowU0Glow.Value;
@@ -303,10 +302,10 @@ internal class ShadowWingBow : ModProjectile
 
 			player.SetCompositeArmFront(true, PCAS, (float)(Math.Atan2(v0.Y, v0.X) * player.gravDir - Math.PI / 2d));
 		}
-		Vector2 vProA = Main.player[Projectile.owner].Center + Vector2.Normalize(v0) * (28f - 12f * b3);
+		Vector2 vProA = player.Center + Vector2.Normalize(v0) * (28f - 12f * b3);
 		for (int s = 0; s < 5; s++)
 		{
-			Vector2 vProB = Main.player[Projectile.owner].Center + Vector2.Normalize(v0).RotatedBy(arrowRot[s]) * (arrowVel[s] * 1.4f - 16f * b3);
+			Vector2 vProB = player.Center + Vector2.Normalize(v0).RotatedBy(arrowRot[s]) * (arrowVel[s] * 1.4f - 16f * b3);
 			Main.spriteBatch.Draw(TexMothArrow, vProB - Main.screenPosition, null, new Color(arrowcol[s], arrowcol[s], arrowcol[s], 0), Projectile.rotation + arrowRot[s], new Vector2(TexMothArrow.Width / 2f, TexMothArrow.Height / 2f), 1f, SpriteEffects.None, 0);
 		}
 		if (released)

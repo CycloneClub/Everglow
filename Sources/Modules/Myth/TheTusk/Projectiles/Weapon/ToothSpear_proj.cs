@@ -132,14 +132,13 @@ public class ToothSpear_proj : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D mainTex = ModAsset.ToothSpear_proj.Value;
 		Vector2 drawCenter = Projectile.Center - Vector2.Normalize(Projectile.velocity) * 75f;
 		Main.spriteBatch.Draw(mainTex, drawCenter - Main.screenPosition, null, lightColor, Projectile.rotation, mainTex.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
 		drawCenter = Projectile.Center + Vector2.Normalize(Projectile.velocity) * 20f;
 		float timeValue = 1f;
-		Player player = Main.player[Projectile.owner];
 		int duration = player.itemAnimationMax;
 		float halfDuration = duration * 0.5f;
 		if (Projectile.timeLeft < halfDuration * 0.2f + 10)

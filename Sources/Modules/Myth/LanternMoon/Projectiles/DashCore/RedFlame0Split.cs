@@ -1,4 +1,3 @@
-using Terraria;
 using Terraria.Audio;
 
 namespace Everglow.Myth.LanternMoon.Projectiles.DashCore;

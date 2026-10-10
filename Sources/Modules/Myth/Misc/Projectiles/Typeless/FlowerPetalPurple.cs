@@ -1,4 +1,3 @@
-using Terraria;
 using Terraria.Localization;
 
 namespace Everglow.Myth.Misc.Projectiles.Typeless;

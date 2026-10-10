@@ -1,4 +1,6 @@
 using Everglow.Commons.Mechanics.ElementalDebuff.Debuffs;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Magic;
 
@@ -31,7 +33,7 @@ public class DevilHeartStaff_proj_Kill : ModProjectile
 		return (targetHitbox.Center() - projHitbox.Center()).Length() < 110f;
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		var color = new Color(255, 255, 255, 0);
 		Texture2D star = Commons.ModAsset.StarSlash.Value;

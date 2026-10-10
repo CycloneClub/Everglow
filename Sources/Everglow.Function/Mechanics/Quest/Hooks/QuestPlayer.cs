@@ -74,9 +74,9 @@ public class QuestPlayer : ModPlayer
 		questManagerDataInitialized = false;
 	}
 
-	public override bool OnPickup(Item item)
+	public override bool OnPickup(WorldItem item)
 	{
-		OnPickupEvent?.Invoke(item);
+		OnPickupEvent?.Invoke(item.inner);
 		return true;
 	}
 

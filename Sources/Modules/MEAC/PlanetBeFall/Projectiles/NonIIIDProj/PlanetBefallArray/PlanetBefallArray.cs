@@ -6,8 +6,12 @@ namespace Everglow.MEAC.PlanetBeFall.Projectiles.NonIIIDProj.PlanetBefallArray
 {
 	public class PlanetBefallArray : ModProjectile // ,IBloomProjectile
 	{
+		// Keep virtual drawing on the player supplied by tML.
+		protected Player DrawPlayer { get; set; }
+
 		public override void SetDefaults()
 		{
+			Projectile.drawLayer = ProjectileDrawLayerID.OverPlayers;
 			Projectile.width = 28;
 			Projectile.height = 28;
 			Projectile.friendly = true;
@@ -50,29 +54,32 @@ namespace Everglow.MEAC.PlanetBeFall.Projectiles.NonIIIDProj.PlanetBefallArray
 			base.OnKill(timeLeft);
 		}
 
-		public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+
+		public override bool PreDraw(Player player, ref Color lightColor)
 		{
-			overPlayers.Add(index);
-		}
+			Player previousDrawPlayer = DrawPlayer;
+			DrawPlayer = player;
+			try
+			{
+				DrawMagicArray();
 
-		public override bool PreDraw(ref Color lightColor)
-		{
-			Projectile.hide = false;
-
-			DrawMagicArray();
-
-			return false;
+				return false;
+			}
+			finally
+			{
+				DrawPlayer = previousDrawPlayer;
+			}
 		}
 
 		public void DrawBloom()
 		{
 			Color c = Color.White;
-			PreDraw(ref c);
+			PreDraw(DrawPlayer ?? Main.player[Projectile.owner], ref c);
 		}
 
 		public void DrawMagicArray()
 		{
-			Player player = Main.player[Projectile.owner];
+			Player player = (DrawPlayer ?? Main.player[Projectile.owner]);
 			Texture2D PlantBeFallIn = ModAsset.PlantBeFallIn.Value;
 			Texture2D PlantBeFallOut = ModAsset.PlantBeFallOut.Value;
 			Texture2D GeoElement = ModAsset.GeoElement.Value;

@@ -1,4 +1,6 @@
 using Everglow.Yggdrasil.YggdrasilTown.Dusts.TownNPCAttack;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 
@@ -22,7 +24,7 @@ public class Betty_Fork : ModProjectile
 		Projectile.tileCollide = true;
 		Projectile.penetrate = 1;
 		Projectile.timeLeft = 600;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Type] = true;
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 	}
 
 	public override void AI()
@@ -68,7 +70,7 @@ public class Betty_Fork : ModProjectile
 		Projectile.Kill();
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		Texture2D texture = ModAsset.Betty_Fork.Value;
 		Vector2 drawCenter = Projectile.Center - Main.screenPosition;

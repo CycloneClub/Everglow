@@ -1,4 +1,7 @@
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
@@ -70,11 +73,11 @@ public class SkullCollection : ModItem
 		}
 	}
 
-	public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
+	public override bool PreDrawInWorld(WorldItem worldItem, SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
 	{
 		Texture2D texture = ModContent.Request<Texture2D>(Texture).Value;
 		var frame = texture.Frame(verticalFrames: ItemFrames, frameY: ((int)Main.time / 5) % ItemFrames);
-		spriteBatch.Draw(texture, Item.Center - Main.screenPosition, frame, lightColor, 0, new Vector2(texture.Width, texture.Height / ItemFrames) / 2, 1f, SpriteEffects.None, 0);
+		spriteBatch.Draw(texture, worldItem.Center - Main.screenPosition, frame, lightColor, 0, new Vector2(texture.Width, texture.Height / ItemFrames) / 2, 1f, SpriteEffects.None, 0);
 
 		return false;
 	}

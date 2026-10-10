@@ -1,4 +1,3 @@
-using Terraria;
 using Terraria.GameContent;
 using Terraria.Localization;
 

@@ -6,6 +6,7 @@ public class VineProj2 : ModProjectile
 {
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindProjectiles;
 		Projectile.extraUpdates = 1;
 		Projectile.width = 8;
 		Projectile.height = 8;
@@ -23,7 +24,6 @@ public class VineProj2 : ModProjectile
 
 	public override void AI()
 	{
-		Projectile.hide = true;
 		Player player = Main.player[Projectile.owner];
 		if (StartPos == Vector2.Zero)
 		{
@@ -59,9 +59,8 @@ public class VineProj2 : ModProjectile
 		}
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
-		Player player = Main.player[Projectile.owner];
 		float colorLight = Math.Min(Projectile.timeLeft / 100f, 1f);
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
@@ -134,15 +133,11 @@ public class VineProj2 : ModProjectile
 		// Main.spriteBatch.Draw(TextureAssets.MagicPixel.Value, DestR, new Color(200, 50, 0, 0));
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindProjectiles.Add(index);
-	}
 }
 
 internal class ProjectileHitBoxTexter : GlobalProjectile
 {
-	public override void PostDraw(Projectile projectile, Color lightColor)
+	public override void PostDraw(Projectile projectile, Player player, Color lightColor)
 	{
 		// Rectangle DestR = projectile.Hitbox;
 		// DestR.X -= (int)Main.screenPosition.X;

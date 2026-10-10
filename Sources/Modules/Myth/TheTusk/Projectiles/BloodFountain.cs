@@ -13,6 +13,8 @@ public class BloodFountain : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.OverWiresUI;
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 		Projectile.tileCollide = false;
 		Projectile.friendly = false;
 		Projectile.hostile = true;
@@ -20,7 +22,6 @@ public class BloodFountain : ModProjectile
 		Projectile.height = 40;
 		Projectile.timeLeft = 300;
 		Projectile.penetrate = -1;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Type] = true;
 	}
 
 	public override void OnSpawn(IEntitySource source)
@@ -84,13 +85,8 @@ public class BloodFountain : ModProjectile
 		return Rectangle.Intersect(targetHitbox, new Rectangle((int)Projectile.Center.X - 15, (int)(Projectile.Center.Y - 576 * Projectile.scale), 30, (int)(576 * Projectile.scale))) != Rectangle.emptyRectangle;
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		Projectile.hide = true;
-		overWiresUI.Add(index);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;
 		Main.spriteBatch.End();

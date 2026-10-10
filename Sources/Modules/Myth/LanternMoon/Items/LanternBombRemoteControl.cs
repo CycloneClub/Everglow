@@ -220,14 +220,14 @@ public class LanternBombRemoteControl : ModItem
 			{
 				vel *= 0.65f;
 			}
-			Projectile.NewProjectileDirect(Item.GetSource_FromAI(), pos, vel, ModContent.ProjectileType<GreenFlameSharpCrystal>(), 20, 1, Main.myPlayer);
+			Projectile.NewProjectileDirect(Main.LocalPlayer.GetSource_ItemUse(Item), pos, vel, ModContent.ProjectileType<GreenFlameSharpCrystal>(), 20, 1, Main.myPlayer);
 		}
 		Main.slimeRain = false;
 	}
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-		Projectile.NewProjectileDirect(Item.GetSource_FromAI(), Main.MouseWorld, Vector2.zeroVector, ModContent.ProjectileType<KillLanternMoonMobs>(), 20, 1, Main.myPlayer);
+		Projectile.NewProjectileDirect(source, Main.MouseWorld, Vector2.zeroVector, ModContent.ProjectileType<KillLanternMoonMobs>(), 20, 1, Main.myPlayer);
 		// KillGreenLanternEffect(Main.MouseWorld);
 		return false;
 	}

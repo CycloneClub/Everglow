@@ -1,4 +1,6 @@
 using Everglow.Commons.DataStructures;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.TownNPCs.Fevens;
 
@@ -28,7 +30,7 @@ public class Fevens_Slash_Shine : ModProjectile
 	{
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		float timeLeftValue = 1 - Projectile.timeLeft / 120f;
 		float width = 1 - MathF.Pow(timeLeftValue, 2);

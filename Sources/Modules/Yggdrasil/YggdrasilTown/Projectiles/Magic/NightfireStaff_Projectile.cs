@@ -1,4 +1,6 @@
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
@@ -85,7 +87,7 @@ public class NightfireStaff_Projectile : ModProjectile
 		dust.scale = Main.rand.NextFloat(1.1f, 1.7f);
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		// Draw firefly framed texture
 		Texture2D texture = ModContent.Request<Texture2D>(Texture).Value;

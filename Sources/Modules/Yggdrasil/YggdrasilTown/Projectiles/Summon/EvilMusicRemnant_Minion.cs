@@ -1,5 +1,7 @@
 using Everglow.Commons.Mechanics.ElementalDebuff.Debuffs;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Summon;
@@ -474,7 +476,7 @@ public class EvilMusicRemnant_Minion : ModProjectile
 		target.AddElementalDebuffBuildUp(Main.player[Projectile.owner], NervousImpairmentDebuff.ID, 125);
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		var sBS = Main.spriteBatch.GetState().Value;
 		Main.spriteBatch.End();

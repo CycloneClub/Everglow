@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using Terraria;
 namespace Everglow.Yggdrasil.CorruptWormHive.Projectiles.Melee.TrueDeathSickle;
 
 public class TrueDeathSickleHit : ModProjectile, IWarpProjectile
@@ -71,7 +73,7 @@ public class TrueDeathSickleHit : ModProjectile, IWarpProjectile
 		}
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		Texture2D Shadow = ModAsset.TrueDeathSickleHit.Value;
 		float Dark = Math.Max((Projectile.timeLeft - 150) / 50f, 0);

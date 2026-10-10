@@ -1,3 +1,4 @@
+using Terraria;
 namespace Everglow.Yggdrasil.KelpCurtain.Tiles.DeathJadeLake.IRProbe;
 
 public class IRVision_GlobalItem : GlobalItem
@@ -6,7 +7,7 @@ public class IRVision_GlobalItem : GlobalItem
 
 	public override bool InstancePerEntity => true;
 
-	public override void Update(Item item, ref float gravity, ref float maxFallSpeed)
+	public override void Update(WorldItem item, ref float gravity, ref float maxFallSpeed)
 	{
 		// if(IR_Visualize_Item == new List<int>())
 		// {

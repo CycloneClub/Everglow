@@ -1,5 +1,7 @@
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 
@@ -40,7 +42,7 @@ public class SquamousRollingStone_fly : ModProjectile
 		Projectile.tileCollide = true;
 		Projectile.timeLeft = 1500;
 		Projectile.aiStyle = -1;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Projectile.type] = true;
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 	}
 
 	public override void AI()
@@ -124,7 +126,7 @@ public class SquamousRollingStone_fly : ModProjectile
 		return false;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		var textureShade = ModAsset.SquamousRollingStone_Shade.Value;
 		var textureBloom = ModAsset.SquamousRollingStone_Bloom.Value;

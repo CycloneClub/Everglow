@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using Terraria;
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
 
 public class IstafelsSunfireGrasp_SkillVFX : ModProjectile
@@ -31,7 +33,7 @@ public class IstafelsSunfireGrasp_SkillVFX : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		var sBS = Main.spriteBatch.GetState().Value;
 		Main.spriteBatch.End();

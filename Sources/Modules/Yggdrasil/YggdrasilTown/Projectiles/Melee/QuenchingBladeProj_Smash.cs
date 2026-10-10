@@ -1,6 +1,8 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Media;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 
@@ -27,8 +29,8 @@ public class QuenchingBladeProj_Smash : ModProjectile, IWarpProjectile_warpStyle
 		Projectile.localNPCHitCooldown = 60;
 		Projectile.usesLocalNPCImmunity = true;
 
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Projectile.type] = true;
 		ProjectileID.Sets.DrawScreenCheckFluff[Projectile.type] = 180000;
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 	}
 
 	public Queue<Vector3> OldPosSpace = new Queue<Vector3>();
@@ -297,7 +299,7 @@ public class QuenchingBladeProj_Smash : ModProjectile, IWarpProjectile_warpStyle
 
 	public List<Vector2> SmoothFallingPos = new List<Vector2>();
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		if (Projectile.timeLeft > 120)
 		{

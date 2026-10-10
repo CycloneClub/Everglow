@@ -1,4 +1,6 @@
 using Everglow.EternalResolve.Items.Weapons.StabbingSwords.Dusts;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.EternalResolve.Projectiles
 {
@@ -72,7 +74,7 @@ namespace Everglow.EternalResolve.Projectiles
 			}
 		}
 
-		public override bool PreDraw(Player player, ref Color lightColor)
+		public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 		{
 			return false;
 		}

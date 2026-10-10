@@ -1,5 +1,7 @@
 using Everglow.Commons.VFX.CommonVFXDusts;
 using Everglow.Yggdrasil.CityOfMagicFlute.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.CityOfMagicFlute.Projectiles.Ranged;
@@ -26,6 +28,8 @@ public class TerraViewerHowitzer_shoot_explosion : ModProjectile, IWarpProjectil
 		Projectile.DamageType = DamageClass.Magic;
 		ProjectileID.Sets.DrawScreenCheckFluff[Type] = 30000;
 		ProjectileID.Sets.DrawScreenCheckFluff[Projectile.type] = 14400;
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCsAndTiles;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public void Spark()
@@ -190,7 +194,6 @@ public class TerraViewerHowitzer_shoot_explosion : ModProjectile, IWarpProjectil
 				}
 			}
 		}
-		Projectile.hide = true;
 	}
 
 	public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
@@ -202,12 +205,9 @@ public class TerraViewerHowitzer_shoot_explosion : ModProjectile, IWarpProjectil
 		return bool0 || bool1 || bool2 || bool3;
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindNPCsAndTiles.Add(index);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		float timeValue = (200 - Projectile.timeLeft) / 200f;
 		float dark = Math.Max((Projectile.timeLeft - 150) / 50f, 0);

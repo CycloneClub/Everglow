@@ -1,5 +1,7 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.KelpCurtain.Items.Weapons;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Magic;
 
@@ -53,7 +55,7 @@ public class GreenSungloShield_B : ModProjectile
 		Lighting.AddLight(Projectile.Center, new Vector3(0.375f, 0.75f, 0.375f) * timer / 157);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		SpriteBatchState sBS = Main.spriteBatch.GetState().Value;
 		Main.spriteBatch.End();
@@ -64,7 +66,7 @@ public class GreenSungloShield_B : ModProjectile
 		shineEffect.Parameters["uNoise"].SetValue(Commons.ModAsset.NoiseWave.Value);
 		shineEffect.CurrentTechnique.Passes["MagicCircle_Pixel"].Apply();
 
-		Player Owner = Main.player[Projectile.owner];
+		Player Owner = player;
 		var CirTexture = Commons.ModAsset.Point.Value;
 		var CirPosition = Owner.gravDir == 1 ? Owner.Bottom : Owner.Top;
 		CirPosition = CirPosition - Main.screenPosition + new Vector2(0, Owner.gravDir);

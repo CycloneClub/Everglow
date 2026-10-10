@@ -6,6 +6,7 @@ using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Bosses.KingJellyBall;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent.ItemDropRules;
 
@@ -102,7 +103,7 @@ public class KingJellyBall : ModNPC
 	{
 	}
 
-	public override float SpawnChance(NPC.Spawner spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawner)
 	{
 		return 0f;
 	}

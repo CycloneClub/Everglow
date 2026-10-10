@@ -24,6 +24,14 @@ public class CyanVineShortsword_Proj : ModProjectile
 		set => Projectile.ai[0] = value;
 	}
 
+	public override void PostAI()
+	{
+		bool heldByOwner = Projectile.owner >= 0 && Projectile.owner < Main.maxPlayers
+			&& Main.player[Projectile.owner].heldProj == Projectile.whoAmI;
+		Projectile.drawLayer = heldByOwner ? ProjectileDrawLayerID.HeldProj : ProjectileDrawLayerID.Default;
+		Projectile.usesOwnerLight = heldByOwner;
+	}
+
 	public override void SetDefaults()
 	{
 		Projectile.Size = new Vector2(18); // This sets width and height to the same value (important when projectiles can rotate)
@@ -36,7 +44,8 @@ public class CyanVineShortsword_Proj : ModProjectile
 		Projectile.ownerHitCheck = true; // Prevents hits through tiles. Most melee weapons that use projectiles have this
 		Projectile.extraUpdates = 1; // Update 1+extraUpdates times per tick
 		Projectile.timeLeft = 360; // This value does not matter since we manually kill it earlier, it just has to be higher than the duration we use in AI
-		Projectile.hide = true; // Important when used alongside player.heldProj. "Hidden" projectiles have special draw conditions
+		Projectile.drawLayer = ProjectileDrawLayerID.HeldProj;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public override void AI()

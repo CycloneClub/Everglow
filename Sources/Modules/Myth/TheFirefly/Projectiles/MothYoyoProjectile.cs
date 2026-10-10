@@ -33,7 +33,7 @@ internal class MothYoyoProjectile : YoyoProjectile
 				var proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<MothYoyoSub>(), Projectile.damage / 2, 0, Projectile.owner, Projectile.whoAmI);
 				(proj.ModProjectile as MothYoyoSub).targetPos = cubeVec[i] * 30;
 				proj.CritChance = Projectile.CritChance;
-				proj.netUpdate2 = true;
+				proj.netUpdate = true;
 			}
 			if (MothEye.LocalOwner != null && MothEye.LocalOwner.TryGetModPlayer(out MothEyePlayer mothEyePlayer))
 			{
@@ -44,17 +44,26 @@ internal class MothYoyoProjectile : YoyoProjectile
 						var proj2 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<MothYoyoSub>(), Projectile.damage / 2, 0, Projectile.owner, Projectile.whoAmI);
 						(proj2.ModProjectile as MothYoyoSub).targetPos = cubeVec[i] * 60;
 						proj2.CritChance = Projectile.CritChance;
-						proj2.netUpdate2 = true;
+						proj2.netUpdate = true;
 					}
 				}
 			}
 		}
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
-		Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
-		Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, null, new Color(255, 255, 255, 0), Projectile.rotation, tex.Size() / 2, Projectile.scale, 0, 0);
+		Player previousDrawPlayer = DrawPlayer;
+		DrawPlayer = player;
+		try
+		{
+			Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
+			Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, null, new Color(255, 255, 255, 0), Projectile.rotation, tex.Size() / 2, Projectile.scale, 0, 0);
+		}
+		finally
+		{
+			DrawPlayer = previousDrawPlayer;
+		}
 	}
 
 	public override Color ModifyYoyoStringColor_VanillaRender(int playerStringColor, Vector2 worldPos, float index, float stringCount) => new Color(0, 150, 255, 0) * 0.5f;

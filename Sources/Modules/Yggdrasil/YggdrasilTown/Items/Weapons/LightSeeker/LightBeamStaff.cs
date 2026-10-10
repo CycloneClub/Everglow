@@ -35,7 +35,7 @@ public class LightBeamStaff : ModItem
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-		Projectile.NewProjectile(Item.GetSource_FromAI(), position, velocity, type, damage, knockback, player.whoAmI);
+		Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
 		return false;
 	}
 }

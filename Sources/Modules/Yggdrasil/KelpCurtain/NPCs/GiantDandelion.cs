@@ -5,6 +5,7 @@ using Everglow.Yggdrasil.KelpCurtain.Items.Weapons;
 using Everglow.Yggdrasil.KelpCurtain.Items.Weapons.UnderwaterTreasury;
 using Everglow.Yggdrasil.KelpCurtain.Projectiles.Enemies;
 using SubworldLibrary;
+using Terraria;
 using Terraria.GameContent.ItemDropRules;
 
 namespace Everglow.Yggdrasil.KelpCurtain.NPCs;
@@ -651,20 +652,20 @@ public class GiantDandelion : ModNPC
 	/// design calls it 稀有 and supplies no weight, so a deliberately low 0.25f (band 0.1f-0.5f,
 	/// lower than every other tranche creature) is used (D-34).
 	/// </summary>
-	public override float SpawnChance(NPC.Spawner spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawner)
 	{
-		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
+		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawner.Player))
 		{
 			return 0f;
 		}
 
-		if (spawnInfo.waterTile)
+		if (spawner.waterTile)
 		{
 			return 0f;
 		}
 
-		int tileX = spawnInfo.SpawnTileX;
-		int tileY = spawnInfo.SpawnTileY;
+		int tileX = spawner.SpawnTileX;
+		int tileY = spawner.SpawnTileY;
 		if (WorldGen.InWorld(tileX, tileY, 1) && Main.tile[tileX, tileY].LiquidAmount > 0)
 		{
 			return 0f;

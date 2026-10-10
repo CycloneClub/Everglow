@@ -1,4 +1,6 @@
 using Everglow.Yggdrasil.KelpCurtain.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Melee.EvilHalbertBarnacle;
 
@@ -123,7 +125,7 @@ public class EvilHalbertBarnacle_ShootShuttle : ModProjectile
 
 	public Vector2 oldPos;
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
 		if (State == 1)

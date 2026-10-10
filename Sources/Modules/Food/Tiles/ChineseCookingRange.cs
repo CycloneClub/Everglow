@@ -72,7 +72,7 @@ public class ChineseCookingRange : ModTile, ITileFluentlyDrawn
 							item.stack--;
 							if (item.stack <= 0)
 							{
-								item.active = false;
+								item.TurnToAir();
 							}
 							chineseCookingRangeEntity.PotState = 1;
 							return false;
@@ -87,7 +87,7 @@ public class ChineseCookingRange : ModTile, ITileFluentlyDrawn
 							item.stack--;
 							if (item.stack <= 0)
 							{
-								item.active = false;
+								item.TurnToAir();
 							}
 							chineseCookingRangeEntity.PotState = 2;
 							return false;

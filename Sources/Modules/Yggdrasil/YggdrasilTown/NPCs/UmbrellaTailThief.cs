@@ -1,5 +1,6 @@
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.NPCs;
@@ -223,7 +224,7 @@ public class UmbrellaTailThief : ModNPC
 		target.AddBuff(BuffID.Poisoned, 600);
 	}
 
-	public override float SpawnChance(NPC.Spawner spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawner)
 	{
 		LampWoodForest lampBiome = ModContent.GetInstance<LampWoodForest>();
 		return !lampBiome.IsBiomeActive(Main.LocalPlayer) ? 0f : 3f;

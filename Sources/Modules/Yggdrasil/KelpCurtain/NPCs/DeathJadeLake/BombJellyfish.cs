@@ -2,6 +2,7 @@ using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
 using Everglow.Yggdrasil.KelpCurtain.Projectiles.Enemies;
 using SubworldLibrary;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent.ItemDropRules;
 
@@ -297,19 +298,19 @@ public class BombJellyfish : ModNPC
 	/// </summary>
 	/// <param name="spawnInfo">The engine's spawn context.</param>
 	/// <returns>The conservative water weight, or <c>0f</c> outside the design's context.</returns>
-	public override float SpawnChance(NPC.Spawner spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawner)
 	{
-		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
+		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawner.Player))
 		{
 			return 0f;
 		}
 
-		if (!spawnInfo.waterTile)
+		if (!spawner.waterTile)
 		{
 			return 0f;
 		}
 
-		if (MeasureLiquidColumn(spawnInfo) > ShallowColumnTiles)
+		if (MeasureLiquidColumn(spawner) > ShallowColumnTiles)
 		{
 			// Too deep for the 小 variant: 深水区 additionally spawns the 大 one, its sibling class.
 			return 0f;

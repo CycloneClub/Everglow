@@ -1,6 +1,5 @@
 using Everglow.Myth.Common;
 using Everglow.Myth.TheFirefly.Buffs;
-using Terraria;
 
 namespace Everglow.Myth.TheFirefly.Projectiles;
 
@@ -118,9 +117,8 @@ internal class DarkFan : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
-		Player player = Main.player[Projectile.owner];
 		Texture2D t = ModAsset.DarkFan.Value;
 		var drawOrigin = new Vector2(t.Width * 0.5f, t.Height * 0.5f);
 		if (extraKnife)
@@ -266,7 +264,7 @@ internal class DarkFan : ModProjectile
 	private Vector2[] vFanP = new Vector2[20];
 	private Color[] aDc = new Color[20];
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);

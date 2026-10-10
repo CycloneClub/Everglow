@@ -9,6 +9,7 @@ using Everglow.Yggdrasil.YggdrasilTown.Tiles.CyanVine;
 using Everglow.Yggdrasil.YggdrasilTown.Walls;
 using ModLiquidLib.ModLoader;
 using ReLogic.Utilities;
+using System.Collections.Generic;
 using Terraria.IO;
 using Terraria.WorldBuilding;
 using static Everglow.Commons.Utilities.TileUtils;
@@ -54,7 +55,7 @@ public class YggdrasilWorldGeneration : ModSystem
 		}
 	}
 
-	public override void ModifyWorldGenTasks(List<GenPass> tasks, ref double totalWeight) => tasks.Add(new MainWorldPylonRelicGenPass_Yggdrasil());
+	public override void ModifyWorldGenTasks(List<GenPass> tasks) => tasks.Add(new MainWorldPylonRelicGenPass_Yggdrasil());
 
 	public static int[,] PerlinPixel2 = new int[1024, 1024];
 	public static int[,] CellPixel = new int[512, 512];

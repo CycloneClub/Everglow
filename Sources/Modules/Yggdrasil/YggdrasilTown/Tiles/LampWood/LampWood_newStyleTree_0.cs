@@ -3,6 +3,7 @@ using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs;
+using Microsoft.Xna.Framework;
 using Terraria.GameContent.Drawing;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood;
@@ -34,10 +35,10 @@ public class LampWood_newStyleTree_0 : ShapeDataTile, ITileFluentlyDrawn
 	{
 		if (CustomItemType > 0)
 		{
-			Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, new Item(CustomItemType, 1));
+			Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(), new Item(CustomItemType, 1));
 			if (Main.rand.NextBool(6))
 			{
-				Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, new Item(ModContent.ItemType<LampFruit>(), 1));
+				Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(), new Item(ModContent.ItemType<LampFruit>(), 1));
 			}
 			if (Main.rand.NextBool(360))
 			{

@@ -358,9 +358,8 @@ public class GlowMoth : ModProjectile
 		}
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
-		Player player = Main.player[Projectile.owner];
 		MothOwner mothOwner = player.GetModPlayer<MothOwner>();
 		int Length = Projectile.oldPos.Length;
 		int iStart = 1;
@@ -415,7 +414,7 @@ public class GlowMoth : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		return true;
 	}

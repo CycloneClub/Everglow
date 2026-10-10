@@ -16,6 +16,7 @@ public class Glow_Fall_Explosion : ModProjectile, IWarpProjectile_warpStyle2
 
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCsAndTiles;
 		Projectile.friendly = false;
 		Projectile.hostile = false;
 		Projectile.timeLeft = 20;
@@ -49,13 +50,8 @@ public class Glow_Fall_Explosion : ModProjectile, IWarpProjectile_warpStyle2
 		Lighting.AddLight(Projectile.Center, new Vector3(0.3f, 0.4f, 0.8f) * Projectile.timeLeft / 5f);
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindNPCsAndTiles.Add(index);
-		base.DrawBehind(index, behindNPCsAndTiles, behindNPCs, behindProjectiles, overPlayers, overWiresUI);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		var bars = new List<Vertex2D>();
 		for (int i = 0; i <= 7; ++i)

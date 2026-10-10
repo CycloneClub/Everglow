@@ -1,4 +1,5 @@
 using Everglow.Commons.Utilities;
+using Microsoft.Xna.Framework;
 using Terraria.Audio;
 using Terraria.ObjectData;
 
@@ -125,7 +126,7 @@ public abstract class ShapeDataTile : ModTile
 	{
 		if (CustomItemType > 0)
 		{
-			Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, new Item(CustomItemType, 1));
+			Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), new Point(i, j).ToWorldCoordinates(), new Item(CustomItemType, 1));
 		}
 	}
 

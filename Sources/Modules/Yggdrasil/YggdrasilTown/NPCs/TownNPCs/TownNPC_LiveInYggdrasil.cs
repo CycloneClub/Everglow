@@ -3,7 +3,9 @@ using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.WorldGeneration;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs.Arena;
 using SubworldLibrary;
+using Terraria;
 using Terraria.DataStructures;
+using Terraria.GameContent;
 using Terraria.Localization;
 using static Everglow.Commons.Utilities.NPCUtils;
 
@@ -75,7 +77,7 @@ public abstract class TownNPC_LiveInYggdrasil : ModNPC
 		NPC.knockBackResist = 0;
 	}
 
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawner)
 	{
 		return 0;
 	}
@@ -573,30 +575,42 @@ public abstract class TownNPC_LiveInYggdrasil : ModNPC
 		return base.GetChat();
 	}
 
-	public override void SetChatButtons(ref string button, ref string button2)
+	public override void RegisterChatButtons(NPCInteractionList interactions)
 	{
-		if (!ChallengeClicked)
-		{
-			button = Language.GetTextValue("Challenge");
-		}
-		else
-		{
-			button = Language.GetTextValue("Fight Now");
-		}
-
-		button2 = Language.GetTextValue("Help");
+		interactions.InsertBefore(new ChallengeButton(), NPCInteractionDatabase.CloseButton);
+		interactions.InsertBefore(new HelpButton(), NPCInteractionDatabase.CloseButton);
 	}
 
-	public override void OnChatButtonClicked(bool firstButton, ref string shopName)
+	private sealed class ChallengeButton : NPCInteraction
 	{
-		if (firstButton && ChallengeClicked)
+		public override bool Condition() => true;
+
+		public override string GetText() => Language.GetTextValue(
+			((TownNPC_LiveInYggdrasil)TalkNPC.ModNPC).ChallengeClicked ? "Fight Now" : "Challenge");
+
+		public override void Interact()
 		{
-			YggdrasilTownCentralSystem.TryEnterArena();
+			var npc = (TownNPC_LiveInYggdrasil)TalkNPC.ModNPC;
+			if (npc.ChallengeClicked)
+			{
+				YggdrasilTownCentralSystem.TryEnterArena();
+			}
+			if (!npc.ChallengeClicked)
+			{
+				npc.ChallengeClicked = true;
+				YggdrasilTownCentralSystem.FightingRequestPlayerNPCType = new Point(Main.myPlayer, npc.Type);
+			}
 		}
-		if (firstButton && !ChallengeClicked)
+	}
+
+	private sealed class HelpButton : NPCInteraction
+	{
+		public override bool Condition() => true;
+
+		public override string GetText() => Language.GetTextValue("Help");
+
+		public override void Interact()
 		{
-			ChallengeClicked = true;
-			YggdrasilTownCentralSystem.FightingRequestPlayerNPCType = new Point(Main.myPlayer, Type);
 		}
 	}
 

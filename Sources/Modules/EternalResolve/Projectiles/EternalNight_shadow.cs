@@ -4,6 +4,8 @@ using Everglow.Commons.Utilities;
 using Everglow.Commons.Vertex;
 using Everglow.Commons.VFX;
 using Everglow.EternalResolve.Items.Weapons.StabbingSwords.Dusts;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 
@@ -22,7 +24,8 @@ namespace Everglow.EternalResolve.Projectiles
 			Projectile.ignoreWater = true;
 			Projectile.tileCollide = true;
 			Projectile.alpha = 255;
-			Projectile.hide = true;
+			Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCsAndTiles;
+			Projectile.usesOwnerLight = true;
 			Projectile.penetrate = -1;
 			Projectile.usesLocalNPCImmunity = true;
 			Projectile.localNPCHitCooldown = 4;
@@ -214,7 +217,7 @@ namespace Everglow.EternalResolve.Projectiles
 			return Collision.SolidCollision(positon, 0, 0);
 		}
 
-		public override bool PreDraw(ref Color lightColor)
+		public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 		{
 			SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;
 			Main.spriteBatch.End();
@@ -341,11 +344,6 @@ namespace Everglow.EternalResolve.Projectiles
 				};
 				sb.Draw(Commons.ModAsset.Trail_1.Value, bars, PrimitiveType.TriangleStrip);
 			}
-		}
-
-		public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-		{
-			behindNPCsAndTiles.Add(index);
 		}
 	}
 }

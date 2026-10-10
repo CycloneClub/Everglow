@@ -1,4 +1,6 @@
 using Everglow.Commons.DataStructures;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Melee.EvilHalbertBarnacle;
 
@@ -332,11 +334,21 @@ public class EvilHalbertBarnacle_proj : MeleeProj
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
-		DrawSelf(Main.spriteBatch, lightColor);
-		DrawTrail(lightColor);
-		return false;
+		Player previousDrawPlayer = DrawPlayer;
+		DrawPlayer = player;
+		try
+		{
+			DrawSelf(Main.spriteBatch, lightColor);
+			DrawTrail(lightColor);
+			return false;
+
+		}
+		finally
+		{
+			DrawPlayer = previousDrawPlayer;
+		}
 	}
 
 	public override void DrawTrail(Color color)

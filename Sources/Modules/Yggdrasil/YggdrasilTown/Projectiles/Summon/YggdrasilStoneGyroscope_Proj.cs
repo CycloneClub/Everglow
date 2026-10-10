@@ -2,6 +2,8 @@ using Everglow.Commons.Templates.Weapons.Gyroscopes;
 using Everglow.Commons.Templates.Weapons.Whips;
 using Everglow.Yggdrasil.YggdrasilTown.Buffs;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Summon;
 
@@ -223,7 +225,7 @@ public class YggdrasilStoneGyroscope_Proj : GyroscopeProjectile
 		}
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		Texture2D texture = ModAsset.YggdrasilStoneGyroscope_Proj.Value;
 		Texture2D textureGlow = ModAsset.YggdrasilStoneGyroscope_Proj_glow.Value;

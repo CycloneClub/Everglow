@@ -1,5 +1,7 @@
 using Everglow.Yggdrasil.KelpCurtain.Buffs;
 using Everglow.Yggdrasil.KelpCurtain.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Summon;
@@ -99,7 +101,7 @@ public class CrimsonMoonAlgaeSummonStaff_minion_Explosion : ModProjectile, IRedA
 		return MathUtils.IntersectsCircleAABB(Projectile.Center, 120, targetHitbox);
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		return false;
 	}

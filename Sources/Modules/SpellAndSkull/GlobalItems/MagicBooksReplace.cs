@@ -365,7 +365,7 @@ public class MagicBooksReplace : GlobalItem
 						if (Collision.SolidCollision(Main.MouseWorld + new Vector2(0, g * 5 * player.gravDir), 1, 1))
 						{
 							Vector2 ReleasePoint = Main.MouseWorld + new Vector2(0, g * 5 * player.gravDir);
-							var p = Projectile.NewProjectileDirect(item.GetSource_FromAI(), ReleasePoint, Vector2.Zero, ModContent.ProjectileType<SkullHand>(), player.HeldItem.damage * 3, player.HeldItem.knockBack * 6, player.whoAmI);
+							var p = Projectile.NewProjectileDirect(player.GetSource_ItemUse(item), ReleasePoint, Vector2.Zero, ModContent.ProjectileType<SkullHand>(), player.HeldItem.damage * 3, player.HeldItem.knockBack * 6, player.whoAmI);
 							p.CritChance = player.GetWeaponCrit(player.HeldItem);
 
 							mplayer.HandCooling = 18;

@@ -1,6 +1,5 @@
 using Everglow.Myth.TheFirefly.Dusts;
 using Everglow.Myth.TheFirefly.Items.Accessories;
-using Terraria;
 
 namespace Everglow.Myth.TheFirefly.Projectiles;
 

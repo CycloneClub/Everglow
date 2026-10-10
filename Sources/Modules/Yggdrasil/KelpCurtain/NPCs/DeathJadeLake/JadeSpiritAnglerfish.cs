@@ -3,6 +3,7 @@ using Everglow.Yggdrasil.KelpCurtain.Dusts;
 using Everglow.Yggdrasil.KelpCurtain.Items.Pets;
 using Everglow.Yggdrasil.KelpCurtain.Items.Weapons;
 using SubworldLibrary;
+using Terraria;
 using Terraria.GameContent.ItemDropRules;
 
 namespace Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake;
@@ -548,14 +549,14 @@ public class JadeSpiritAnglerfish : ModNPC
 	/// </summary>
 	/// <param name="spawnInfo">The engine's spawn context.</param>
 	/// <returns>The conservative rare / water-bottom weight, or <c>0f</c> outside the design's context.</returns>
-	public override float SpawnChance(NPC.Spawner spawnInfo)
+	public override float SpawnChance(NPC.Spawner spawner)
 	{
-		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
+		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawner.Player))
 		{
 			return 0f;
 		}
 
-		if (!KelpCurtainSpawnConditions.IsWaterBottom(spawnInfo))
+		if (!KelpCurtainSpawnConditions.IsWaterBottom(spawner))
 		{
 			return 0f;
 		}

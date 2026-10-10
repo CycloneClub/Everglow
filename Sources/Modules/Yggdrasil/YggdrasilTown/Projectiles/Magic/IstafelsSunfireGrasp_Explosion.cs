@@ -2,6 +2,8 @@ using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.CityOfMagicFlute.VFXs;
 using Everglow.Yggdrasil.YggdrasilTown.Buffs;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs.IstafelsEffects;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
@@ -30,6 +32,8 @@ public class IstafelsSunfireGrasp_Explosion : ModProjectile, IWarpProjectile_war
 		Projectile.DamageType = DamageClass.Magic;
 		ProjectileID.Sets.DrawScreenCheckFluff[Type] = 30000;
 		Timer = 0;
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCsAndTiles;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public override void AI()
@@ -153,7 +157,6 @@ public class IstafelsSunfireGrasp_Explosion : ModProjectile, IWarpProjectile_war
 			};
 			Ins.VFXManager.Add(splash);
 		}
-		Projectile.hide = true;
 	}
 
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
@@ -171,13 +174,9 @@ public class IstafelsSunfireGrasp_Explosion : ModProjectile, IWarpProjectile_war
 		return bool0 || bool1 || bool2 || bool3;
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindNPCsAndTiles.Add(index);
-		base.DrawBehind(index, behindNPCsAndTiles, behindNPCs, behindProjectiles, overPlayers, overWiresUI);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		var drawPos = Projectile.Center - Main.screenPosition;
 		var duration = 1 - Projectile.timeLeft / 120f;

@@ -6,6 +6,8 @@ using Everglow.Commons.Utilities;
 using Everglow.Commons.Vertex;
 using Everglow.EternalResolve.Items.Miscs;
 using Everglow.EternalResolve.Items.Weapons.StabbingSwords.Dusts;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.EternalResolve.Projectiles
 {
@@ -151,7 +153,7 @@ namespace Everglow.EternalResolve.Projectiles
 			Main.spriteBatch.Draw(ModAsset.DreamStar_glow.Value, ItemDraw.Postion - Main.screenPosition, null, new Color(1f, 1f, 1f, 0), ItemDraw.Rotation, itemTexture.Size() / 2f, ItemDraw.Size, ItemDraw.SpriteEffect, 0f);
 		}
 
-		public override void PostDraw(Player player, Color lightColor)
+		public override void PostDraw(Player player, Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 		{
 			Texture2D shadow = Commons.ModAsset.Star2_black.Value;
 			Texture2D light = Commons.ModAsset.StabbingProjectile.Value;

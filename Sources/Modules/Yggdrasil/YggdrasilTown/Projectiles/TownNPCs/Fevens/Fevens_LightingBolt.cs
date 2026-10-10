@@ -1,5 +1,7 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 
@@ -19,7 +21,7 @@ public class Fevens_LightingBolt : ModProjectile
 		Projectile.penetrate = 1;
 		Projectile.timeLeft = 30;
 		Projectile.tileCollide = false;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Projectile.type] = true;
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 	}
 
 	public List<Vector2> FlowPosList = new List<Vector2>();
@@ -34,7 +36,7 @@ public class Fevens_LightingBolt : ModProjectile
 
 	public override void AI() => base.AI();
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		float timeValue = (float)Main.time * 0.03f;
 		float mulColor = 1f;

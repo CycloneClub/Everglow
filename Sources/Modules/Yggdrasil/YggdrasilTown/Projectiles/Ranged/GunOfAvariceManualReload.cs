@@ -1,6 +1,8 @@
 using Everglow.Yggdrasil.Common.Dusts;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.TwilightForest;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Ranged;
@@ -19,8 +21,9 @@ public class GunOfAvariceManualReload : ModProjectile
 		Projectile.height = 32;
 		Projectile.timeLeft = GunOfAvarice.ManualReloadDuration;
 		Projectile.penetrate = -1;
-		Projectile.hide = true;
 		Projectile.scale = 0.75f;
+		Projectile.drawLayer = ProjectileDrawLayerID.OverPlayers;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public override void AI()
@@ -56,12 +59,9 @@ public class GunOfAvariceManualReload : ModProjectile
 		Projectile.Center = Owner.Center + offset + new Vector2(24 * Owner.direction, -8);
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		overPlayers.Add(index);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		Texture2D gun = ModAsset.GunOfAvarice.Value;
 		lightColor = Lighting.GetColor(Projectile.Center.ToTileCoordinates());

@@ -37,11 +37,10 @@ public class TileFluentDrawManager : ModSystem
 	public override void Load()
 	{
 		// 清除 cachedFluentTiles
-		On_TileDrawing.PreDrawTiles += (orig, self, solidLayer, forRenderTargets, intoRenderTargets) =>
+		On_TileDrawing.ClearCachedTileDraws += (orig, self, solidLayer) =>
 		{
-			orig.Invoke(self, solidLayer, forRenderTargets, intoRenderTargets);
-			bool flag = intoRenderTargets || Lighting.UpdateEveryFrame;
-			if (!solidLayer && flag)
+			orig.Invoke(self, solidLayer);
+			if (!solidLayer)
 			{
 				_fluentTiles.Clear();
 			}

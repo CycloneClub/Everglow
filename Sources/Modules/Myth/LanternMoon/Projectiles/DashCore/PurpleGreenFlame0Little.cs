@@ -1,4 +1,3 @@
-using Terraria;
 
 namespace Everglow.Myth.LanternMoon.Projectiles.DashCore;
 

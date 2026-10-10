@@ -1,5 +1,7 @@
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Summon;
@@ -82,13 +84,12 @@ public class ActivatedJellyGlandMinion : ModProjectile
 		ProjectileID.Sets.MinionSacrificable[Projectile.type] = true;
 
 		Main.projPet[Projectile.type] = true;
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCsAndTiles;
 	}
 
 	public override bool? CanCutTiles() => true;
 
 	public override bool MinionContactDamage() => false;
-
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI) => behindNPCsAndTiles.Add(index);
 
 	public override void AI()
 	{
@@ -297,7 +298,7 @@ public class ActivatedJellyGlandMinion : ModProjectile
 		base.ModifyHitNPC(target, ref modifiers);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		float glowStrength = HasTarget ? 1f : 0.4f;
 

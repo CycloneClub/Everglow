@@ -1,5 +1,7 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
@@ -19,6 +21,7 @@ public class VitalizedRocksProj : ModProjectile
 		Projectile.timeLeft = 60;
 		Projectile.aiStyle = -1;
 		Projectile.penetrate = -1;
+		Projectile.drawLayer = ProjectileDrawLayerID.OverPlayers;
 	}
 
 	private Vector2 p1 = new Vector2(Main.rand.NextFloat(), Main.rand.NextFloat());
@@ -143,12 +146,9 @@ public class VitalizedRocksProj : ModProjectile
 		Lighting.AddLight(Projectile.Center, new Vector3(0.7f, 0.2f, 1f) * Projectile.ai[0] / 60f);
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		overPlayers.Add(index);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		SpriteBatchState sBS = Main.spriteBatch.GetState().Value;
 		Main.spriteBatch.End();

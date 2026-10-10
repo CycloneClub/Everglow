@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using Terraria;
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
 
 public class FeatheredStaff_staff : ModProjectile
@@ -10,6 +12,14 @@ public class FeatheredStaff_staff : ModProjectile
 
 	private Vector2 OwnerMouseWorld => Owner.MouseWorld();
 
+	public override void PostAI()
+	{
+		bool heldByOwner = Projectile.owner >= 0 && Projectile.owner < Main.maxPlayers
+			&& Main.player[Projectile.owner].heldProj == Projectile.whoAmI;
+		Projectile.drawLayer = heldByOwner ? ProjectileDrawLayerID.HeldProj : ProjectileDrawLayerID.Default;
+		Projectile.usesOwnerLight = heldByOwner;
+	}
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 36;
@@ -19,6 +29,8 @@ public class FeatheredStaff_staff : ModProjectile
 		Projectile.tileCollide = false;
 		Projectile.DamageType = DamageClass.Magic;
 		Projectile.penetrate = -1;
+		Projectile.drawLayer = ProjectileDrawLayerID.HeldProj;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public override void AI()
@@ -39,7 +51,7 @@ public class FeatheredStaff_staff : ModProjectile
 			}
 			if (Owner.itemTime == 0)
 			{
-				if (Owner.ItemCheck_PayMana(Owner.HeldItem, true))
+				if (Owner.CheckMana(Owner.HeldItem, pay: true))
 				{
 					Owner.ItemCheck_ApplyManaRegenDelay(Owner.HeldItem);
 					Owner.itemTime = Owner.itemTimeMax;
@@ -80,20 +92,20 @@ public class FeatheredStaff_staff : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor) => false;
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */ => false;
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
-		Owner.heldProj = Projectile.whoAmI;
+		player.heldProj = Projectile.whoAmI;
 		var texMain = (Texture2D)ModContent.Request<Texture2D>(Texture);
 		Color drawColor = Lighting.GetColor((int)Projectile.Center.X / 16, (int)(Projectile.Center.Y / 16.0));
 		SpriteEffects se = SpriteEffects.None;
-		if (Owner.direction == -1)
+		if (player.direction == -1)
 		{
 			se = SpriteEffects.FlipVertically;
 		}
 
-		float rot0 = Projectile.rotation - (float)(Math.PI * 0.25) + MathF.PI * 0.3f * Owner.direction;
+		float rot0 = Projectile.rotation - (float)(Math.PI * 0.25) + MathF.PI * 0.3f * player.direction;
 		Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition, null, drawColor, rot0, texMain.Size() / 2f, 1f, se, 0);
 	}
 }

@@ -13,6 +13,7 @@ public class WizardLantern_Matrix_Curse : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCs;
 		Projectile.width = 20;
 		Projectile.height = 20;
 		Projectile.aiStyle = -1;
@@ -24,7 +25,6 @@ public class WizardLantern_Matrix_Curse : ModProjectile
 		Projectile.alpha = 0;
 		Projectile.penetrate = -1;
 		Projectile.scale = 0.1f;
-		Projectile.hide = true;
 	}
 
 	public override void AI()
@@ -93,13 +93,8 @@ public class WizardLantern_Matrix_Curse : ModProjectile
 		}
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindNPCs.Add(index);
-		base.DrawBehind(index, behindNPCsAndTiles, behindNPCs, behindProjectiles, overPlayers, overWiresUI);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		var drawPos = Projectile.Center;
 		var drawColor = new Color(1f, 0.1f, 0.1f, 0);

@@ -1,3 +1,5 @@
+using Terraria;
+
 namespace Everglow.Commons.Mechanics.Quest.WorldSide;
 
 public interface IGameStateProvider
@@ -21,7 +23,7 @@ public class GameStateProvider
 
 		public bool GameMenu => Main.gameMenu;
 
-		public bool GameInactive => Main.gameInactive;
+		public bool GameInactive => !FocusHelper.GameplayActive;
 
 		public bool GamePaused => Main.gamePaused;
 	}

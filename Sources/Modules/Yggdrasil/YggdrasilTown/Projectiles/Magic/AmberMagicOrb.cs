@@ -1,4 +1,6 @@
 using Everglow.Commons.Templates.Weapons;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
@@ -83,78 +85,87 @@ public class AmberMagicOrb : HandholdProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
-		Player player = Main.player[Projectile.owner];
-		var texMain = (Texture2D)ModContent.Request<Texture2D>(Texture);
-		var texGlow = ModAsset.AmberMagicOrb_glow.Value;
-		SpriteEffects se = SpriteEffects.None;
-		if (player.direction == -1)
+		Player previousDrawPlayer = DrawPlayer;
+		DrawPlayer = player;
+		try
 		{
-			se = SpriteEffects.FlipVertically;
-		}
-
-		float rot = Projectile.rotation - (float)(Math.PI * 0.25) + TextureRotation * player.direction;
-		Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition + DrawOffset, null, lightColor, rot + (float)Main.time * 0.25f, texMain.Size() / 2f, 1f, se, 0);
-		Main.spriteBatch.Draw(texGlow, Projectile.Center - Main.screenPosition + DrawOffset, null, new Color(1f, 1f, 1f, 0), rot + (float)Main.time * 0.25f, texGlow.Size() / 2f, 1f, se, 0);
-
-		var bars = new List<Vertex2D>();
-		for (int t = 0; t < 3; t++)
-		{
-			Vector2 v0 = Projectile.Center + new Vector2(0, -5 * player.direction).RotatedBy((float)Main.time * 0.25f + 1.5f);
-			Vector2 v1 = new Vector2(0, -2).RotatedBy(t / 3d * MathHelper.TwoPi + Projectile.rotation);
-			var drawC = new Color(1f, 0.5f, 0f, 0);
-			for (int i = 0; i < 150; i++)
+			var texMain = (Texture2D)ModContent.Request<Texture2D>(Texture);
+			var texGlow = ModAsset.AmberMagicOrb_glow.Value;
+			SpriteEffects se = SpriteEffects.None;
+			if (player.direction == -1)
 			{
-				float factor = i / 85f;
-				float timeValue = (float)Main.time * 0.006f;
+				se = SpriteEffects.FlipVertically;
+			}
 
-				Vector2 drawPos = v0;
-				Vector2 toPlayer = ArmRootPos - v0 - v1;
-				float mulColor = 1f;
-				if (toPlayer.Length() < 30)
+			float rot = Projectile.rotation - (float)(Math.PI * 0.25) + TextureRotation * player.direction;
+			Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition + DrawOffset, null, lightColor, rot + (float)Main.time * 0.25f, texMain.Size() / 2f, 1f, se, 0);
+			Main.spriteBatch.Draw(texGlow, Projectile.Center - Main.screenPosition + DrawOffset, null, new Color(1f, 1f, 1f, 0), rot + (float)Main.time * 0.25f, texGlow.Size() / 2f, 1f, se, 0);
+
+			var bars = new List<Vertex2D>();
+			for (int t = 0; t < 3; t++)
+			{
+				Vector2 v0 = Projectile.Center + new Vector2(0, -5 * player.direction).RotatedBy((float)Main.time * 0.25f + 1.5f);
+				Vector2 v1 = new Vector2(0, -2).RotatedBy(t / 3d * MathHelper.TwoPi + Projectile.rotation);
+				var drawC = new Color(1f, 0.5f, 0f, 0);
+				for (int i = 0; i < 150; i++)
 				{
-					mulColor = (toPlayer.Length() - 8f) / 30f;
-					mulColor = MathF.Max(0, mulColor);
-				}
-				float width = MathF.Sin(Math.Min(i / 25f, 0.5f) * MathHelper.Pi);
-				Vector2 v2 = Vector2.Normalize(v1) * 6;
-				if (i == 0)
-				{
-					bars.Add(new Vertex2D(drawPos + v2.RotatedBy(MathHelper.PiOver2) * 1.3f, drawC * 0, new Vector3(-factor * 2 + timeValue + t / 3f, 0.8f, width)));
-					bars.Add(new Vertex2D(drawPos - v2.RotatedBy(MathHelper.PiOver2) * 1.3f, drawC * 0, new Vector3(-factor * 2 + timeValue + t / 3f, 0.2f, width)));
-				}
-				bars.Add(new Vertex2D(drawPos + v2.RotatedBy(MathHelper.PiOver2) * 1.3f, drawC * mulColor, new Vector3(-factor * 2 + timeValue + t / 3f, 0.8f, width)));
-				bars.Add(new Vertex2D(drawPos - v2.RotatedBy(MathHelper.PiOver2) * 1.3f, drawC * mulColor, new Vector3(-factor * 2 + timeValue + t / 3f, 0.2f, width)));
-				v0 += v1;
-				if (toPlayer.Length() < 8)
-				{
-					bars.Add(new Vertex2D(drawPos + v2.RotatedBy(MathHelper.PiOver2) * 1.3f, drawC * 0, new Vector3(-factor * 2 + timeValue + t / 3f, 0.8f, width)));
-					bars.Add(new Vertex2D(drawPos - v2.RotatedBy(MathHelper.PiOver2) * 1.3f, drawC * 0, new Vector3(-factor * 2 + timeValue + t / 3f, 0.2f, width)));
-					break;
-				}
-				else
-				{
-					v1 *= 0.95f;
-					v1 += Vector2.Normalize(toPlayer) * 0.5f;
-					v1 = Vector2.Normalize(v1) * 2;
+					float factor = i / 85f;
+					float timeValue = (float)Main.time * 0.006f;
+
+					Vector2 drawPos = v0;
+					Vector2 toPlayer = ArmRootPos - v0 - v1;
+					float mulColor = 1f;
+					if (toPlayer.Length() < 30)
+					{
+						mulColor = (toPlayer.Length() - 8f) / 30f;
+						mulColor = MathF.Max(0, mulColor);
+					}
+					float width = MathF.Sin(Math.Min(i / 25f, 0.5f) * MathHelper.Pi);
+					Vector2 v2 = Vector2.Normalize(v1) * 6;
+					if (i == 0)
+					{
+						bars.Add(new Vertex2D(drawPos + v2.RotatedBy(MathHelper.PiOver2) * 1.3f, drawC * 0, new Vector3(-factor * 2 + timeValue + t / 3f, 0.8f, width)));
+						bars.Add(new Vertex2D(drawPos - v2.RotatedBy(MathHelper.PiOver2) * 1.3f, drawC * 0, new Vector3(-factor * 2 + timeValue + t / 3f, 0.2f, width)));
+					}
+					bars.Add(new Vertex2D(drawPos + v2.RotatedBy(MathHelper.PiOver2) * 1.3f, drawC * mulColor, new Vector3(-factor * 2 + timeValue + t / 3f, 0.8f, width)));
+					bars.Add(new Vertex2D(drawPos - v2.RotatedBy(MathHelper.PiOver2) * 1.3f, drawC * mulColor, new Vector3(-factor * 2 + timeValue + t / 3f, 0.2f, width)));
+					v0 += v1;
+					if (toPlayer.Length() < 8)
+					{
+						bars.Add(new Vertex2D(drawPos + v2.RotatedBy(MathHelper.PiOver2) * 1.3f, drawC * 0, new Vector3(-factor * 2 + timeValue + t / 3f, 0.8f, width)));
+						bars.Add(new Vertex2D(drawPos - v2.RotatedBy(MathHelper.PiOver2) * 1.3f, drawC * 0, new Vector3(-factor * 2 + timeValue + t / 3f, 0.2f, width)));
+						break;
+					}
+					else
+					{
+						v1 *= 0.95f;
+						v1 += Vector2.Normalize(toPlayer) * 0.5f;
+						v1 = Vector2.Normalize(v1) * 2;
+					}
 				}
 			}
-		}
 
-		Effect effect = Commons.ModAsset.Trailing.Value;
-		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
-		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition, 0)) * Main.GameViewMatrix.TransformationMatrix;
-		effect.Parameters["uTransform"].SetValue(model * projection);
-		effect.CurrentTechnique.Passes[0].Apply();
-		Main.graphics.GraphicsDevice.RasterizerState = RasterizerState.CullNone;
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_thick.Value;
-		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
-		if (bars.Count > 3)
+			Effect effect = Commons.ModAsset.Trailing.Value;
+			var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
+			var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition, 0)) * Main.GameViewMatrix.TransformationMatrix;
+			effect.Parameters["uTransform"].SetValue(model * projection);
+			effect.CurrentTechnique.Passes[0].Apply();
+			Main.graphics.GraphicsDevice.RasterizerState = RasterizerState.CullNone;
+			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_thick.Value;
+			Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
+			if (bars.Count > 3)
+			{
+				Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
+			}
+
+			return false;
+
+		}
+		finally
 		{
-			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
+			DrawPlayer = previousDrawPlayer;
 		}
-
-		return false;
 	}
 }

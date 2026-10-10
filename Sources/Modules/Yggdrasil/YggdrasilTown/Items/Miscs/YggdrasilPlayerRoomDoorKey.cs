@@ -1,3 +1,4 @@
+using Terraria;
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Miscs;
 
 public class YggdrasilPlayerRoomDoorKey : ModItem
@@ -15,5 +16,5 @@ public class YggdrasilPlayerRoomDoorKey : ModItem
 		Item.value = 60000;
 	}
 
-	public override bool CanStackInWorld(Item source) => true;
+	public override bool CanStackInWorld(WorldItem destination, WorldItem source) => true;
 }

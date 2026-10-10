@@ -1,7 +1,6 @@
 using Everglow.Commons.TileHelper;
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
 using Everglow.Yggdrasil.KelpCurtain.VFXs;
-using Microsoft.Build.Tasks;
 using Terraria.GameContent.Drawing;
 using Terraria.ObjectData;
 
@@ -67,7 +66,7 @@ public class IslePeachTree_large : ModTile, ITileFluentlyDrawn
 		return false;
 	}
 
-	public override void RandomUpdate(int i, int j)
+	public override void RandomUpdate(int i, int j, bool underground)
 	{
 		var tile = Main.tile[i, j];
 		var tile2 = Main.tile[i, j - 1];

@@ -1,6 +1,8 @@
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 
@@ -21,6 +23,8 @@ public class RockElemental_ThrowingStone : ModProjectile
 		Projectile.tileCollide = false;
 		Projectile.timeLeft = 1023;
 		Projectile.scale = 0;
+		Projectile.drawLayer = ProjectileDrawLayerID.OverPlayers;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public NPC MyOwner;
@@ -174,17 +178,17 @@ public class RockElemental_ThrowingStone : ModProjectile
 		}
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+	public override void PostAI()
 	{
 		if (PolymerizationTimer > 0 && PolymerizationTimer < 100)
 		{
-			Projectile.hide = true;
-			behindNPCsAndTiles.Add(index);
+			Projectile.usesOwnerLight = true;
+			Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCsAndTiles;
 		}
 		else
 		{
-			Projectile.hide = true;
-			overPlayers.Add(index);
+			Projectile.usesOwnerLight = true;
+			Projectile.drawLayer = ProjectileDrawLayerID.OverPlayers;
 		}
 	}
 
@@ -261,7 +265,7 @@ public class RockElemental_ThrowingStone : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		Texture2D texture = ModAsset.RockElemental_ThrowingStone.Value;
 		Vector2 drawCenter = Projectile.Center - Main.screenPosition;

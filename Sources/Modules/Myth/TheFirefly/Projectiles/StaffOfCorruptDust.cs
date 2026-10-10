@@ -62,9 +62,8 @@ internal class StaffOfCorruptDust : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
-		Player player = Main.player[Projectile.owner];
 
 		player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (float)(Projectile.rotation - Math.PI / 2d));
 		Texture2D t = ModAsset.StaffOfCorruptDust.Value;

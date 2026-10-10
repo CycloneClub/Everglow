@@ -96,7 +96,7 @@ public class SummonedButterfly : ModNPC
 			if (Vector2.Distance(NPC.Center, Owner.Center) > 300)
 			{
 				MoveTo(Owner.Center + Main.rand.NextVector2Unit() * 100, 10, 20);
-				NPC.netUpdate2 = true;
+				NPC.netUpdate = true;
 			}
 
 			NPC.friendly = true;
@@ -120,7 +120,7 @@ public class SummonedButterfly : ModNPC
 			{
 				NPC.ai[2] = Main.rand.Next(60, 200);
 				NPC.frame.Y = Main.rand.Next(3) * 34;
-				NPC.netUpdate2 = true;
+				NPC.netUpdate = true;
 			}
 			if (++Timer > NPC.ai[2] && Timer < NPC.ai[2] + 350)// 追踪玩家
 			{
@@ -213,7 +213,7 @@ public class SummonedButterfly : ModNPC
 				NPC.velocity *= 0.5f;
 				NPC.velocity += Main.rand.NextVector2Unit() * 10;
 				NPC.friendly = true;
-				NPC.netUpdate2 = true;
+				NPC.netUpdate = true;
 			}
 			if (Timer > 240)
 			{
@@ -259,7 +259,7 @@ public class SummonedButterfly : ModNPC
 			if (Timer == 220)
 			{
 				NPC.velocity = Main.rand.NextVector2Unit() * 10f;
-				NPC.netUpdate2 = true;
+				NPC.netUpdate = true;
 			}
 			if (Timer > 250)
 			{
@@ -312,7 +312,7 @@ public class SummonedButterfly : ModNPC
 				Timer = 0;
 				NPC.ai[0] = 0;
 				NPC.dontTakeDamage = false;
-				NPC.netUpdate2 = true;
+				NPC.netUpdate = true;
 			}
 		}
 	}

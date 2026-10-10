@@ -1,4 +1,6 @@
 using Everglow.Food.Items.Weapons;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Food.Projectiles;
@@ -13,6 +15,8 @@ public class CreamChocolateCupStaff_proj : ModProjectile
 		Projectile.timeLeft = 360000;
 		Projectile.tileCollide = false;
 		Projectile.DamageType = DamageClass.Magic;
+		Projectile.drawLayer = ProjectileDrawLayerID.HeldProj;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public float WeaponShake = 0;
@@ -40,7 +44,7 @@ public class CreamChocolateCupStaff_proj : ModProjectile
 			Projectile.velocity *= 0;
 			if (player.itemTime == 0)
 			{
-				if (player.ItemCheck_PayMana(player.HeldItem, true))
+				if (player.CheckMana(player.HeldItem, pay: true))
 				{
 					player.ItemCheck_ApplyManaRegenDelay(player.HeldItem);
 					player.itemTime = player.itemTimeMax;
@@ -66,14 +70,13 @@ public class CreamChocolateCupStaff_proj : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		return false;
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
-		Player player = Main.player[Projectile.owner];
 		player.heldProj = Projectile.whoAmI;
 
 		var texMain = ModAsset.CreamChocolateCupStaff_cup.Value;
@@ -103,6 +106,8 @@ public class CreamChocolateCupStaff_proj_rightClick : ModProjectile
 		Projectile.timeLeft = 11;
 		Projectile.tileCollide = false;
 		Projectile.DamageType = DamageClass.Magic;
+		Projectile.drawLayer = ProjectileDrawLayerID.HeldProj;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public float WeaponShake = 0;
@@ -159,14 +164,13 @@ public class CreamChocolateCupStaff_proj_rightClick : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		return false;
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
-		Player player = Main.player[Projectile.owner];
 		player.heldProj = Projectile.whoAmI;
 
 		var texMain = ModAsset.CreamChocolateCupStaff_cupFront.Value;
@@ -196,6 +200,8 @@ public class CreamChocolateCupStaff_proj_held : ModProjectile
 		Projectile.timeLeft = 360000;
 		Projectile.tileCollide = false;
 		Projectile.DamageType = DamageClass.Magic;
+		Projectile.drawLayer = ProjectileDrawLayerID.HeldProj;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public float Cooling = 0;
@@ -230,14 +236,13 @@ public class CreamChocolateCupStaff_proj_held : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		return false;
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
-		Player player = Main.player[Projectile.owner];
 		player.heldProj = Projectile.whoAmI;
 		Vector2 v0 = Projectile.Center - player.MountedCenter;
 

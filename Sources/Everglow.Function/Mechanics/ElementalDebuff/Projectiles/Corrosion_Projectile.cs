@@ -27,6 +27,7 @@ public class Corrosion_Projectile : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCs;
 		Projectile.width = 24;
 		Projectile.height = 24;
 		Projectile.timeLeft = 300;
@@ -125,12 +126,7 @@ public class Corrosion_Projectile : ModProjectile
 		return base.Colliding(projHitbox, targetHitbox);
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindNPCs.Add(index);
-	}
-
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		DrawTentacles(lightColor);
 

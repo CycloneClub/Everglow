@@ -126,7 +126,14 @@ public class MEACVFX : Visual
 			Center += Velocity;
 			if (OwnerData.HasOwner)
 			{
-				if (!OwnerData.Owner.active)
+				if (!(OwnerData.Owner switch
+				{
+					Player player => player.active,
+					NPC npc => npc.active,
+					Projectile projectile => projectile.active,
+					WorldItem item => item.active,
+					_ => false,
+				}))
 				{
 					OwnerData.HasOwner = false;
 				}

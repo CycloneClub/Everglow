@@ -1,4 +1,6 @@
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Bosses.SquamousShell;
@@ -16,7 +18,7 @@ public class YggdrasilMoonBlade : ModProjectile, IWarpProjectile
 		Projectile.tileCollide = true;
 		Projectile.timeLeft = 300;
 		Projectile.aiStyle = -1;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Projectile.type] = true;
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 	}
 
 	public Vector2 startVelocity;
@@ -77,7 +79,7 @@ public class YggdrasilMoonBlade : ModProjectile, IWarpProjectile
 		Ins.VFXManager.Add(spark);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		float colorValue = 0.1f;
 		int maxLength = 280 - Projectile.timeLeft;

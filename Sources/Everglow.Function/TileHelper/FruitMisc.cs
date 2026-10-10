@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.Utilities;
@@ -27,7 +29,7 @@ public class ShakeTreeTweak
 
 	private class ShakeTreeItem : GlobalItem
 	{
-		public override void OnSpawn(Item item, IEntitySource source)
+		public override void OnSpawn(WorldItem item, IEntitySource source)
 		{
 			if (_isShakingTree && source is EntitySource_ShakeTree)
 			{
@@ -95,7 +97,7 @@ public class ShakeTreeTweak
 			int fruit = GetShakeTreeFruit(treeType);
 			if (fruit > -1)
 			{
-				Item.NewItem(WorldGen.GetItemSource_FromTreeShake(x, y), x * 16, y * 16, 16, 16, fruit);
+				Item.NewItem(WorldGen.GetItemSource_FromTreeShake(x, y), new Point(x, y).ToWorldCoordinates(), fruit);
 			}
 		};
 	}

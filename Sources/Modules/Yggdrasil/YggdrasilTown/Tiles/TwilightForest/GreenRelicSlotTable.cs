@@ -47,7 +47,7 @@ public class GreenRelicSlotTable : ModTile
 				item.stack--;
 				if (item.stack <= 0)
 				{
-					item.active = false;
+					item.TurnToAir();
 					return false;
 				}
 				Tile tile = TileUtils.SafeGetTile(i, j);

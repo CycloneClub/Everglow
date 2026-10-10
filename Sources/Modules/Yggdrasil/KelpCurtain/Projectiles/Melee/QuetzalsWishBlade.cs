@@ -1,5 +1,7 @@
 using Everglow.Yggdrasil.KelpCurtain.Buffs;
 using Everglow.Yggdrasil.KelpCurtain.Items.Weapons;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
 
@@ -55,6 +57,14 @@ public class QuetzalsWishBlade : ModProjectile
 
 	public override string Texture => $"Terraria/Images/Item_{ItemID.TerraBlade}";
 
+	public override void PostAI()
+	{
+		bool heldByOwner = Projectile.owner >= 0 && Projectile.owner < Main.maxPlayers
+			&& Main.player[Projectile.owner].heldProj == Projectile.whoAmI;
+		Projectile.drawLayer = heldByOwner ? ProjectileDrawLayerID.HeldProj : ProjectileDrawLayerID.Default;
+		Projectile.usesOwnerLight = heldByOwner;
+	}
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 40;
@@ -67,6 +77,8 @@ public class QuetzalsWishBlade : ModProjectile
 		Projectile.timeLeft = 240;
 		Projectile.usesLocalNPCImmunity = true;
 		Projectile.localNPCHitCooldown = -1;
+		Projectile.drawLayer = ProjectileDrawLayerID.HeldProj;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public override bool ShouldUpdatePosition() => Stage is AttackStage.Thrown or AttackStage.GroundSlash;
@@ -320,7 +332,7 @@ public class QuetzalsWishBlade : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		if (Main.dedServ || Stage == AttackStage.Explosion)
 		{

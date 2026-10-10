@@ -3,6 +3,8 @@ using Everglow.Commons.VFX.CommonVFXDusts;
 using Everglow.Yggdrasil.YggdrasilTown.Buffs;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs.IstafelsEffects;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
@@ -230,7 +232,7 @@ public class IstafelsSunfireGrasp_FireBall : TrailingProjectile, IWarpProjectile
 		Projectile.penetrate = 1;
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		var drawPos = Projectile.Center - Main.screenPosition;
 		var drawScale = MathHelper.Lerp(InitialScale, 1f, BuildUpProgress);

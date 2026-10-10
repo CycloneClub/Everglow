@@ -1,4 +1,6 @@
 using Everglow.Yggdrasil.KelpCurtain.Items.Weapons.UnderwaterTreasury;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Ranged;
@@ -24,6 +26,8 @@ public class ArcI_proj : ModProjectile
 		Projectile.width = 30;
 		Projectile.height = 30;
 		Projectile.tileCollide = false;
+		Projectile.drawLayer = ProjectileDrawLayerID.OverPlayers;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public override void OnSpawn(IEntitySource source)
@@ -43,7 +47,6 @@ public class ArcI_proj : ModProjectile
 		{
 			overridedamage = -1;
 		}
-		Projectile.hide = true;
 		base.OnSpawn(source);
 	}
 
@@ -176,12 +179,9 @@ public class ArcI_proj : ModProjectile
 		return index;
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		overPlayers.Add(index);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		Texture2D tex = ModAsset.ArcI_proj.Value;
 		Texture2D tex_glow = ModAsset.ArcI_glow.Value;

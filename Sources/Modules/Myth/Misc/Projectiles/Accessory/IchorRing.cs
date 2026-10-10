@@ -253,7 +253,7 @@ public class IchorRing : ModProjectile
 			Vector2 v0 = new Vector2(0, Projectile.ai[0] * Main.rand.NextFloat(0.9f, 1.2f) * energyValue).RotatedByRandom(MathHelper.TwoPi);
 
 			float speed = 0.08f;
-			var d = Dust.NewDustDirect(Projectile.Center + v0 - new Vector2(4)/*Dust的Size=8x8*/, 0, 0, DustID.Ichor, -v0.Y * speed, v0.X * speed, 150, default, Main.rand.NextFloat(0.4f, 1.1f));
+			var d = Dust.NewDustDirect(Projectile.Center + v0 - new Vector2(4)/*Dust?Size=8x8*/, 0, 0, DustID.Ichor, -v0.Y * speed, v0.X * speed, 150, default, Main.rand.NextFloat(0.4f, 1.1f));
 			d.noGravity = true;
 			d.velocity = v0.RotatedBy(-2f) * speed;
 			d.scale *= Energy / 600f;
@@ -275,7 +275,7 @@ public class IchorRing : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		DrawPowerEffect();
 		return false;

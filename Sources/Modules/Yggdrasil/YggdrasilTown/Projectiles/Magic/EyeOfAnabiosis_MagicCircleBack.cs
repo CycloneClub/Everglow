@@ -1,4 +1,6 @@
 using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.SquamousShell;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
 
@@ -22,6 +24,7 @@ public class EyeOfAnabiosis_MagicCircleBack : ModProjectile
 		Projectile.DamageType = DamageClass.Magic;
 		Projectile.penetrate = -1;
 		Projectile.ignoreWater = true;
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindProjectiles;
 	}
 
 	public override void AI()
@@ -68,23 +71,20 @@ public class EyeOfAnabiosis_MagicCircleBack : ModProjectile
 		TextList.RemoveAll(text => text.RelativePosition.Y < -MagicCircleHeight);
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindProjectiles.Add(index);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
-		var magicCirPosition = Owner.gravDir == 1 ? Owner.Bottom : Owner.Top;
-		magicCirPosition = magicCirPosition - Main.screenPosition + new Vector2(0, 2 * Owner.gravDir);
-		var magicCirRotation = Owner.gravDir == 1 ? 0 : MathF.PI;
+		var magicCirPosition = player.gravDir == 1 ? player.Bottom : player.Top;
+		magicCirPosition = magicCirPosition - Main.screenPosition + new Vector2(0, 2 * player.gravDir);
+		var magicCirRotation = player.gravDir == 1 ? 0 : MathF.PI;
 
 		// Text of magic circle
 		var textTexture = Commons.ModAsset.AlienWriting.Value;
 		foreach (var text in TextList)
 		{
 			var textColor = text.Color * (1 + text.RelativePosition.Y / MagicCircleHeight) * 0.3f;
-			Main.spriteBatch.Draw(textTexture, magicCirPosition + text.RelativePosition * Owner.gravDir, text.SourceRectangle, textColor, magicCirRotation, text.Origin, text.Scale, SpriteEffects.None, 0);
+			Main.spriteBatch.Draw(textTexture, magicCirPosition + text.RelativePosition * player.gravDir, text.SourceRectangle, textColor, magicCirRotation, text.Origin, text.Scale, SpriteEffects.None, 0);
 		}
 
 		return false;

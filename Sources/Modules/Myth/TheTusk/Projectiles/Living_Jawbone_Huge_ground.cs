@@ -16,6 +16,8 @@ public class Living_Jawbone_Huge_ground : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCsAndTiles;
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 		Projectile.width = 100;
 		Projectile.height = 100;
 		Projectile.friendly = false;
@@ -24,7 +26,6 @@ public class Living_Jawbone_Huge_ground : ModProjectile
 		Projectile.timeLeft = 180;
 		Projectile.alpha = 255;
 		Projectile.penetrate = -1;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Type] = true;
 	}
 
 	public override void OnSpawn(IEntitySource source)
@@ -341,13 +342,8 @@ public class Living_Jawbone_Huge_ground : ModProjectile
 		return b0 || b1;
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		Projectile.hide = true;
-		behindNPCsAndTiles.Add(index);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;
 		BeginDissolveShader(Math.Clamp(Projectile.timeLeft / 50f - 0.2f, -0.2f, 1), new Vector4(0.3f, 0f, 0f, 0.7f));

@@ -173,7 +173,7 @@ public abstract class FixCoinProjectile : ModProjectile
 		CombatText.NewText(new Rectangle((int)player.Center.X - 10, (int)player.Center.Y - 10, 20, 20), Color.LightGray, tex3);
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		var ColorVec = new Vector4(0.03f, 0.03f, 0.03f, 1);
 
@@ -197,7 +197,6 @@ public abstract class FixCoinProjectile : ModProjectile
 		for (int j = 0; j < Level(); j++)
 		{
 			var bars = new List<Vertex2D>();
-			Player player = Main.player[Projectile.owner];
 			Vector2 v0 = Projectile.Center;
 			Vector2 Vi = IniV[j];
 			for (int i = 1; i < 300; ++i)

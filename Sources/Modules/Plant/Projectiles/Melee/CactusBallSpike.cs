@@ -26,6 +26,6 @@ public class CactusBallSpike : ModProjectile
 
 	public override void OnHitPlayer(Player target, Player.HurtInfo info)
 	{
-		target.AddBuff(ModContent.BuffType<CactusBallBuff>(), 60, true, false);
+		target.AddBuff(ModContent.BuffType<CactusBallBuff>(), 60, false);
 	}
 }

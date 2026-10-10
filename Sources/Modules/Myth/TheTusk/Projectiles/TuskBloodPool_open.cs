@@ -11,6 +11,7 @@ public class TuskBloodPool_open : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCsAndTiles;
 		Projectile.tileCollide = false;
 		Projectile.friendly = false;
 		Projectile.hostile = false;
@@ -43,13 +44,8 @@ public class TuskBloodPool_open : ModProjectile
 		}
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		Projectile.hide = true;
-		behindNPCsAndTiles.Add(index);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		float timeValue = (Projectile.timeLeft - 150f) / 30f;
 		timeValue = Math.Max(timeValue, 0);

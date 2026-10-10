@@ -1,3 +1,4 @@
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.Localization;
 
@@ -34,9 +35,9 @@ public class BurningFrozenHeart : ModItem
 		player.buffImmune[BuffID.Chilled] = true;
 	}
 
-	public override void Update(ref float gravity, ref float maxFallSpeed)
+	public override void Update(WorldItem item, ref float gravity, ref float maxFallSpeed)
 	{
-		Lighting.AddLight(Item.Center, 0, 0.6f, 1.2f);
-		base.Update(ref gravity, ref maxFallSpeed);
+		Lighting.AddLight(item.Center, 0, 0.6f, 1.2f);
+		base.Update(item, ref gravity, ref maxFallSpeed);
 	}
 }

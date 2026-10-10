@@ -60,7 +60,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Melee
 
 		public override void DrawEffect(Color lightColor)
 		{
-			Player player = Main.player[Projectile.owner];
+			Player player = DrawPlayer ?? Main.player[Projectile.owner];
 			ResistanceWireBayonet rWB = null;
 			if (player.HeldItem.ModItem is not null)
 			{

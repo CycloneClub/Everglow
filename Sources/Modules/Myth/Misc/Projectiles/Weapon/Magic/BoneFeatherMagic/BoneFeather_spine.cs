@@ -6,6 +6,7 @@ public class BoneFeather_spine : ModProjectile
 {
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCsAndTiles;
 		Projectile.width = 10;
 		Projectile.height = 10;
 		Projectile.friendly = true;
@@ -54,7 +55,6 @@ public class BoneFeather_spine : ModProjectile
 
 	public override void OnSpawn(IEntitySource source)
 	{
-		Projectile.hide = true;
 		VelocityPerStep = Vector2.Normalize(Projectile.velocity) * 20f;
 	}
 
@@ -103,12 +103,8 @@ public class BoneFeather_spine : ModProjectile
 		base.ModifyHitNPC(target, ref modifiers);
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindNPCsAndTiles.Add(index);
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		if (OldPos.Count < 2)
 		{

@@ -11,6 +11,7 @@ public class LilyHarpNote : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindProjectiles;
 		Projectile.extraUpdates = 1;
 		Projectile.width = 24;
 		Projectile.height = 24;
@@ -25,7 +26,6 @@ public class LilyHarpNote : ModProjectile
 
 	public override void AI()
 	{
-		Projectile.hide = true;
 
 		if (Projectile.timeLeft < 220)
 		{
@@ -88,23 +88,19 @@ public class LilyHarpNote : ModProjectile
 		Projectile.ai[1] = AimWhoAmI;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D t = ModAsset.LilyHarpNote.Value;
 		SpriteEffects se = SpriteEffects.None;
-		if (Main.player[Projectile.owner].gravDir == -1)
+		if (player.gravDir == -1)
 		{
 			se = SpriteEffects.FlipVertically;
 		}
 
-		Main.spriteBatch.Draw(t, Projectile.Center - Main.screenLastPosition, null, new Color(255, 255, 255, 120), Projectile.rotation, t.Size() / 2f, Projectile.scale, se, 0);
+		Main.spriteBatch.Draw(t, Projectile.Center - Main.screenPosition, null, new Color(255, 255, 255, 120), Projectile.rotation, t.Size() / 2f, Projectile.scale, se, 0);
 		return false;
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindProjectiles.Add(index);
-	}
 
 	public override void OnKill(int timeLeft)
 	{

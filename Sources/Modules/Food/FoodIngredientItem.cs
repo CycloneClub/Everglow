@@ -28,7 +28,7 @@ public abstract class FoodIngredientItem : ModItem
 			Item.stack--;
 			if (Item.stack <= 0)
 			{
-				Item.active = false;
+				Item.TurnToAir();
 			}
 			Item.NewItem(null, new Vector2(i, j) * 16 + new Vector2(8, -8), SlicedItemType, 1);
 			for (int t = 0; t < 12; t++)

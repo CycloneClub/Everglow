@@ -15,6 +15,7 @@ public class ThunderSpell_Thunder : ModProjectile, IBloomProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 		Projectile.width = 20;
 		Projectile.height = 20;
 		Projectile.aiStyle = -1;
@@ -27,7 +28,6 @@ public class ThunderSpell_Thunder : ModProjectile, IBloomProjectile
 		Projectile.alpha = 0;
 		Projectile.penetrate = -1;
 		Projectile.scale = 0.75f;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Projectile.type] = true;
 	}
 
 	public override void OnSpawn(IEntitySource source)
@@ -156,7 +156,7 @@ public class ThunderSpell_Thunder : ModProjectile, IBloomProjectile
 		Main.EntitySpriteDraw(spot, Projectile.Center - Main.screenPosition, null, lightningColor, 0, spot.Size() * 0.5f, fade * 2.4f, SpriteEffects.None, 0);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		DrawLightningBolt();
 		return false;

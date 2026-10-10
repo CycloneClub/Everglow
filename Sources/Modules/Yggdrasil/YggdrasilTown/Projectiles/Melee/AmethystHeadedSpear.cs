@@ -1,4 +1,6 @@
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Melee;
 
@@ -10,9 +12,19 @@ public class AmethystHeadedSpear : ModProjectile
 
 	protected virtual float HoldoutRangeMax => 112f;
 
+	public override void PostAI()
+	{
+		bool heldByOwner = Projectile.owner >= 0 && Projectile.owner < Main.maxPlayers
+			&& Main.player[Projectile.owner].heldProj == Projectile.whoAmI;
+		Projectile.drawLayer = heldByOwner ? ProjectileDrawLayerID.HeldProj : ProjectileDrawLayerID.Default;
+		Projectile.usesOwnerLight = heldByOwner;
+	}
+
 	public override void SetDefaults()
 	{
 		Projectile.CloneDefaults(ProjectileID.Spear);
+		Projectile.drawLayer = ProjectileDrawLayerID.HeldProj;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public override bool PreAI()
@@ -52,7 +64,7 @@ public class AmethystHeadedSpear : ModProjectile
 
 	public Vector2 oldPos;
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		if (oldPos == default)
 		{
@@ -63,12 +75,11 @@ public class AmethystHeadedSpear : ModProjectile
 		float rotation = (Projectile.Center - oldPos).ToRotation() + MathHelper.PiOver2;
 		Main.spriteBatch.Draw(flag, Projectile.Center - Main.screenPosition - normalVel * 28f, null, lightColor, rotation, new Vector2(3, 0), new Vector2(1f, 2f), SpriteEffects.None, 0);
 		oldPos = Projectile.Center;
-		return base.PreDraw(ref lightColor);
+		return base.PreDraw(player, ref lightColor);
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
-		Player player = Main.player[Projectile.owner];
 		Texture2D head = ModAsset.AmethystHead.Value;
 		var normalVel = Vector2.Normalize(Projectile.velocity);
 		Main.spriteBatch.Draw(head, Projectile.Center - Main.screenPosition - normalVel * 14.142f, null, lightColor * 0.9f, Projectile.rotation, head.Size() * 0.5f, 1f, SpriteEffects.None, 0);

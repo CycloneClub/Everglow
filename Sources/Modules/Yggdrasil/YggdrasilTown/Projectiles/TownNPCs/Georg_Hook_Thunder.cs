@@ -2,6 +2,8 @@ using Everglow.Commons.DataStructures;
 using Everglow.Commons.VFX.CommonVFXDusts;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs.TownNPCAttack;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 
@@ -21,7 +23,7 @@ public class Georg_Hook_Thunder : ModProjectile
 		Projectile.penetrate = 1;
 		Projectile.timeLeft = 30;
 		Projectile.tileCollide = false;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Projectile.type] = true;
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 	}
 
 	public List<Vector2> FlowPosList = new List<Vector2>();
@@ -36,7 +38,7 @@ public class Georg_Hook_Thunder : ModProjectile
 
 	public override void AI() => base.AI();
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		float timeValue = (float)Main.time * 0.03f;
 		float mulColor = 1f;

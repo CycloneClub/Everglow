@@ -1,5 +1,7 @@
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Melee;
@@ -11,6 +13,14 @@ public class HyperockSpearProj : ModProjectile
 	public override void SetStaticDefaults()
 	{
 		ProjectileID.Sets.IsAnNPCAttachedExplosive[Projectile.type] = true;
+	}
+
+	public override void PostAI()
+	{
+		bool heldByOwner = Projectile.owner >= 0 && Projectile.owner < Main.maxPlayers
+			&& Main.player[Projectile.owner].heldProj == Projectile.whoAmI;
+		Projectile.drawLayer = heldByOwner ? ProjectileDrawLayerID.HeldProj : ProjectileDrawLayerID.Default;
+		Projectile.usesOwnerLight = heldByOwner;
 	}
 
 	public override void SetDefaults()
@@ -25,6 +35,8 @@ public class HyperockSpearProj : ModProjectile
 		Projectile.ArmorPenetration = 5;
 		Projectile.penetrate = -1;
 		Projectile.melee = true;
+		Projectile.drawLayer = ProjectileDrawLayerID.HeldProj;
+		Projectile.usesOwnerLight = true;
 	}
 
 	internal bool Shot = false;
@@ -191,7 +203,7 @@ public class HyperockSpearProj : ModProjectile
 		Lighting.AddLight(Projectile.Center + Vector2.One.RotatedBy(Projectile.rotation + MathF.PI * 0.48) * 12.5f, 0.25f, 0.05f, 0.4f);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		Texture2D tex = ModAsset.HyperockSpearProj.Value;
 		Texture2D glow = ModAsset.HyperockSpearProj_glow.Value;

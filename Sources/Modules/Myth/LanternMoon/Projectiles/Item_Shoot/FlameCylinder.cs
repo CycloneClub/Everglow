@@ -7,7 +7,7 @@ public class FlameCylinder : TrailingProjectile
 {
 	public override void SetCustomDefaults()
 	{
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Projectile.type] = true;
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 
 		TrailLength = 400;
 		TrailColor = new Color(1, 0.65f, 0, 0f);

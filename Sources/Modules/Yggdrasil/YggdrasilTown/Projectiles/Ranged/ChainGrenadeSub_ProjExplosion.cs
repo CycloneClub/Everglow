@@ -1,6 +1,8 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Commons.VFX.CommonVFXDusts;
 using Everglow.Yggdrasil.CityOfMagicFlute.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Ranged;
@@ -23,18 +25,16 @@ public class ChainGrenadeSub_ProjExplosion : ModProjectile, IWarpProjectile
 		Projectile.usesLocalNPCImmunity = true;
 		Projectile.localNPCHitCooldown = 20;
 		Projectile.DamageType = DamageClass.Ranged;
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Type] = true;
 
 		Timer = 0;
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
+		Projectile.drawLayer = ProjectileDrawLayerID.BehindNPCsAndTiles;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public int Timer = 0;
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-		behindNPCsAndTiles.Add(index);
-		base.DrawBehind(index, behindNPCsAndTiles, behindNPCs, behindProjectiles, overPlayers, overWiresUI);
-	}
+
 
 	public override void OnSpawn(IEntitySource source)
 	{
@@ -128,7 +128,6 @@ public class ChainGrenadeSub_ProjExplosion : ModProjectile, IWarpProjectile
 		{
 			Projectile.friendly = false;
 		}
-		Projectile.hide = true;
 		Projectile.velocity *= 0;
 		if (Timer == 10)
 		{
@@ -207,7 +206,7 @@ public class ChainGrenadeSub_ProjExplosion : ModProjectile, IWarpProjectile
 
 	public override void OnKill(int timeLeft) => base.OnKill(timeLeft);
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		var drawPos = Projectile.Center - Main.screenPosition;
 		var duration = Timer / 200f;

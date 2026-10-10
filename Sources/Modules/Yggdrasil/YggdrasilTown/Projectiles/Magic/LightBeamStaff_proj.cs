@@ -2,6 +2,8 @@ using Everglow.Commons.DataStructures;
 using Everglow.Commons.Templates.Weapons;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.LightSeeker;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 
@@ -75,30 +77,39 @@ public class LightBeamStaff_proj : HandholdProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
-		Player player = Main.player[Projectile.owner];
-		var texMain = (Texture2D)ModContent.Request<Texture2D>(Texture);
-		SpriteEffects se = SpriteEffects.None;
-		if (player.direction == -1)
+		Player previousDrawPlayer = DrawPlayer;
+		DrawPlayer = player;
+		try
 		{
-			se = SpriteEffects.FlipVertically;
-		}
-		lightColor = Lighting.GetColor(Projectile.Center.ToTileCoordinates());
-		float rot = Projectile.rotation - (float)(Math.PI * 0.25) + TextureRotation * player.direction;
-		var texMain_glow = ModAsset.LightBeamStaff_glow.Value;
-		float duration = player.itemTime / (float)player.itemTimeMax;
-		duration *= 1.5f;
-		duration -= 0.5f;
-		if (duration < 0)
-		{
-			duration = 0;
-		}
-		duration = MathF.Sin(duration * MathHelper.Pi);
+			var texMain = (Texture2D)ModContent.Request<Texture2D>(Texture);
+			SpriteEffects se = SpriteEffects.None;
+			if (player.direction == -1)
+			{
+				se = SpriteEffects.FlipVertically;
+			}
+			lightColor = Lighting.GetColor(Projectile.Center.ToTileCoordinates());
+			float rot = Projectile.rotation - (float)(Math.PI * 0.25) + TextureRotation * player.direction;
+			var texMain_glow = ModAsset.LightBeamStaff_glow.Value;
+			float duration = player.itemTime / (float)player.itemTimeMax;
+			duration *= 1.5f;
+			duration -= 0.5f;
+			if (duration < 0)
+			{
+				duration = 0;
+			}
+			duration = MathF.Sin(duration * MathHelper.Pi);
 
-		Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition + DrawOffset - new Vector2(54, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), null, lightColor, rot, texMain.Size() / 2f, 1f, se, 0);
-		var powerColor = new Color(duration + 0.3f, duration * duration, duration * duration, 0);
-		Main.spriteBatch.Draw(texMain_glow, Projectile.Center - Main.screenPosition + DrawOffset - new Vector2(54, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), null, powerColor, rot, texMain_glow.Size() / 2f, 1f, se, 0);
-		return false;
+			Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition + DrawOffset - new Vector2(54, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), null, lightColor, rot, texMain.Size() / 2f, 1f, se, 0);
+			var powerColor = new Color(duration + 0.3f, duration * duration, duration * duration, 0);
+			Main.spriteBatch.Draw(texMain_glow, Projectile.Center - Main.screenPosition + DrawOffset - new Vector2(54, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), null, powerColor, rot, texMain_glow.Size() / 2f, 1f, se, 0);
+			return false;
+
+		}
+		finally
+		{
+			DrawPlayer = previousDrawPlayer;
+		}
 	}
 }

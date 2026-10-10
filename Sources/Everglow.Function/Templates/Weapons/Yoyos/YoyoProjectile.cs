@@ -1,7 +1,6 @@
 using System.Reflection;
 using Everglow.Commons.CustomTiles;
 using Everglow.Commons.Utilities;
-using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using Terraria.DataStructures;
 using Terraria.GameContent;
@@ -10,6 +9,9 @@ namespace Everglow.Commons.Templates.Weapons.Yoyos;
 
 public abstract class YoyoProjectile : ModProjectile
 {
+	// Keep virtual draw helpers on the player supplied by tML, including mannequins.
+	protected Player DrawPlayer { get; set; }
+
 	/// <summary>
 	/// Maximum seconds the yoyo will remain deployed before returning.
 	/// Set less than 0 for infinite lifetime.
@@ -81,6 +83,7 @@ public abstract class YoyoProjectile : ModProjectile
 
 	public sealed override void SetDefaults()
 	{
+		Projectile.drawLayer = ProjectileDrawLayerID.HeldProj;
 		Projectile.friendly = true;
 		Projectile.hostile = false;
 		Projectile.penetrate = -1;
@@ -102,59 +105,23 @@ public abstract class YoyoProjectile : ModProjectile
 
 	public override void Load()
 	{
-		Ins.HookManager.AddHook(typeof(Projectile).GetMethod(nameof(Projectile.AI_099_1), BindingFlags.NonPublic | BindingFlags.Instance), ILHook_Projectile_Counterweight);
+		Ins.HookManager.AddHook(typeof(Projectile).GetMethod("AI_099_1_Counterweights", BindingFlags.NonPublic | BindingFlags.Instance), ILHook_Projectile_Counterweight);
 	}
 
 	/// <summary>
-	/// Injects IL to adjust the counterweight check inside Projectile.AI_099_1 so modded yoyo projectiles are handled.
+	/// Injects IL to adjust the counterweight check inside Projectile.AI_099_1_Counterweights so modded yoyo projectiles are handled.
 	/// </summary>
 	/// <param name="il">The IL context provided by MonoMod for the hook.</param>
 	private void ILHook_Projectile_Counterweight(ILContext il)
 	{
 		ILCursor cursor = new ILCursor(il);
-
-		var isNotModYoyoProjLabel = cursor.DefineLabel();
-		if (cursor.TryGotoNext(
+		cursor.GotoNext(
 			MoveType.Before,
-			x => x.MatchLdsfld(typeof(Main).GetField("projectile")),
-			x => x.MatchLdloc(10),
-			x => x.MatchLdelemRef(),
-			x => x.MatchLdfld<Projectile>("aiStyle"),
-			x => x.MatchLdcI4(99)))
-		{
-			cursor.MarkLabel(isNotModYoyoProjLabel);
-		}
-
-		var isYoyoProjLabel = cursor.DefineLabel();
-		if (cursor.TryGotoNext(
-			MoveType.After,
-			x => x.MatchLdfld<Projectile>("type"),
-			x => x.MatchLdcI4(561),
-			x => x.MatchBle(out _)))
-		{
-			cursor.MarkLabel(isYoyoProjLabel);
-		}
-
-		if (cursor.TryGotoPrev(
-			MoveType.After,
-			x => x.MatchLdfld<Projectile>("owner"),
-			x => x.MatchLdarg0(),
-			x => x.MatchLdfld<Projectile>("owner"),
-			x => x.MatchBneUn(out _))) // find the following branch instruction
-		{
-			cursor.EmitLdsfld(typeof(Main).GetField("projectile"));
-			cursor.EmitLdloc(10);
-			cursor.EmitLdelemRef();
-			cursor.EmitCallvirt(typeof(Projectile).GetMethod("get_ModProjectile"));
-			cursor.EmitBrfalse(isNotModYoyoProjLabel);
-
-			cursor.EmitLdsfld(typeof(Main).GetField("projectile"));
-			cursor.EmitLdloc(10);
-			cursor.EmitLdelemRef();
-			cursor.Emit(OpCodes.Callvirt, typeof(Projectile).GetMethod("get_ModProjectile"));
-			cursor.EmitIsinst(typeof(YoyoProjectile));
-			cursor.EmitBrtrue(isYoyoProjLabel);
-		}
+			x => x.MatchLdfld<Projectile>(nameof(Projectile.aiStyle)),
+			x => x.MatchLdcI4(ProjAIStyleID.Yoyo));
+		cursor.Remove();
+		cursor.EmitDelegate<Func<Projectile, int>>(projectile =>
+			projectile.ModProjectile is YoyoProjectile ? ProjAIStyleID.Yoyo : projectile.aiStyle);
 	}
 
 	public override void AI()
@@ -475,10 +442,19 @@ public abstract class YoyoProjectile : ModProjectile
 		Projectile.rotation += RotationalSpeed;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
-		DrawYoyo_String();
-		return true;
+		Player previousDrawPlayer = DrawPlayer;
+		DrawPlayer = player;
+		try
+		{
+			DrawYoyo_String();
+			return true;
+		}
+		finally
+		{
+			DrawPlayer = previousDrawPlayer;
+		}
 	}
 
 	/// <summary>
@@ -487,7 +463,7 @@ public abstract class YoyoProjectile : ModProjectile
 	/// <param name="playerHeldPos"></param>
 	public virtual void DrawYoyo_String(Vector2 playerHeldPos = default)
 	{
-		Player player = Main.player[Projectile.owner];
+		Player player = DrawPlayer ?? Main.player[Projectile.owner];
 		Vector2 mountedCenter = player.MountedCenter;
 		Vector2 stringUnitPos = mountedCenter;
 		stringUnitPos.Y += player.gfxOffY;

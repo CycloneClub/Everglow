@@ -1,4 +1,6 @@
 using Everglow.Yggdrasil.CityOfMagicFlute.Items.Weapons;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.CityOfMagicFlute.Projectiles.Ranged;
@@ -11,6 +13,14 @@ public class TerraViewerHowitzer_proj : ModProjectile
 
 	private Vector2 OwnerMouseWorld => Main.player[Projectile.owner].MouseWorld();
 
+	public override void PostAI()
+	{
+		bool heldByOwner = Projectile.owner >= 0 && Projectile.owner < Main.maxPlayers
+			&& Main.player[Projectile.owner].heldProj == Projectile.whoAmI;
+		Projectile.drawLayer = heldByOwner ? ProjectileDrawLayerID.HeldProj : ProjectileDrawLayerID.Default;
+		Projectile.usesOwnerLight = heldByOwner;
+	}
+
 	public override void SetDefaults()
 	{
 		Projectile.aiStyle = -1;
@@ -19,6 +29,8 @@ public class TerraViewerHowitzer_proj : ModProjectile
 		Projectile.hostile = false;
 		Projectile.tileCollide = false;
 		Projectile.DamageType = DamageClass.Ranged;
+		Projectile.drawLayer = ProjectileDrawLayerID.HeldProj;
+		Projectile.usesOwnerLight = true;
 	}
 
 	public int useCount = 0;
@@ -102,6 +114,7 @@ public class TerraViewerHowitzer_proj : ModProjectile
 
 	public override void AI()
 	{
+		Main.player[Projectile.owner].heldProj = Projectile.whoAmI;
 		Player player = Main.player[Projectile.owner];
 		var tsunamiS = player.HeldItem.ModItem as TerraViewerHowitzer;
 		if (tsunamiS == null)
@@ -197,14 +210,13 @@ public class TerraViewerHowitzer_proj : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		return false;
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
-		Player player = Main.player[Projectile.owner];
 		player.heldProj = Projectile.whoAmI;
 		Vector2 toMouse = Projectile.Center - player.MountedCenter;
 		toMouse = toMouse.SafeNormalize(Vector2.zeroVector);

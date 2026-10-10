@@ -1,4 +1,6 @@
 using Everglow.Yggdrasil.KelpCurtain.Buffs;
+using Microsoft.Xna.Framework;
+using Terraria;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Summon;
 
@@ -266,7 +268,7 @@ public class CrimsonMoonAlgaeSummonStaff_minion : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		var texture = ModContent.Request<Texture2D>(Texture).Value;
 		var texture_glow = ModAsset.CrimsonMoonAlgaeSummonStaff_minion_glow.Value;
@@ -277,7 +279,7 @@ public class CrimsonMoonAlgaeSummonStaff_minion : ModProjectile
 		// Fix projectile direction when chasing owner.
 		if (MathF.Abs(Projectile.velocity.X) <= 1E-05f && TargetWhoAmI == -1)
 		{
-			Projectile.direction = Owner.direction;
+			Projectile.direction = player.direction;
 		}
 		var spriteEffect = Projectile.direction < 0 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 		Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, frame, lightColor, Projectile.rotation, frame.Size() / 2f, Projectile.scale, spriteEffect, 0f);

@@ -61,11 +61,8 @@ public class TuskBloodPool_close : ModProjectile
 		}
 	}
 
-	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-	{
-	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		float timeValue = Projectile.timeLeft / 150f;
 		timeValue = Math.Min(timeValue, 1);

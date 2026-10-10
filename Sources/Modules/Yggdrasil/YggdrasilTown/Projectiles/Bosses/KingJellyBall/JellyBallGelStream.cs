@@ -3,6 +3,8 @@ using Everglow.Commons.Templates.Weapons;
 using Everglow.Yggdrasil.YggdrasilTown.Buffs;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 
@@ -23,7 +25,6 @@ public class JellyBallGelStream : TrailingProjectile
 		Projectile.penetrate = 1;
 		Projectile.timeLeft = 3600;
 
-		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Projectile.type] = true;
 		TrailLength = 20;
 		TrailColor = new Color(0.1f, 0.3f, 1, 0f);
 		TrailWidth = 40f;
@@ -31,6 +32,7 @@ public class JellyBallGelStream : TrailingProjectile
 		TrailTexture = Commons.ModAsset.Trail_2_thick.Value;
 		TrailTextureBlack = Commons.ModAsset.Trail_2_black.Value;
 		TrailShader = Commons.ModAsset.Trailing.Value;
+		Projectile.hostileDamageScaling = Terraria.DataStructures.GameDifficultyData.NoDifficultyPlayerDamageScaling;
 	}
 
 	public override void Behaviors()
@@ -117,7 +119,7 @@ public class JellyBallGelStream : TrailingProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		float value = (Projectile.timeLeft - 540) / 60f;
 		if (value > 1)
@@ -125,7 +127,7 @@ public class JellyBallGelStream : TrailingProjectile
 			value = 1;
 		}
 		TrailColor = new Color(0.1f, 0.3f, 1, 0f) * value;
-		return base.PreDraw(ref lightColor);
+		return base.PreDraw(player, ref lightColor);
 	}
 
 	public override void DrawSelf()

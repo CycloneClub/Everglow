@@ -90,16 +90,25 @@ public class ToothBow : HandholdProjectile
 		player.direction = dir;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
-		DrawBaseTexture(lightColor);
+		Player previousDrawPlayer = DrawPlayer;
+		DrawPlayer = player;
+		try
+		{
+			DrawBaseTexture(lightColor);
 
-		return false;
+			return false;
+		}
+		finally
+		{
+			DrawPlayer = previousDrawPlayer;
+		}
 	}
 
 	public override void DrawBaseTexture(Color lightColor)
 	{
-		Player player = Main.player[Projectile.owner];
+		Player player = (DrawPlayer ?? Main.player[Projectile.owner]);
 		var texMain = ModAsset.ToothBow_bow.Value;
 		var texArrow = ModAsset.ToothBow_BloodArrow.Value;
 		SpriteEffects se = SpriteEffects.None;

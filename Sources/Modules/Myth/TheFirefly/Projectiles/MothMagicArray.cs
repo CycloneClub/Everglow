@@ -33,7 +33,7 @@ public class MothMagicArray : ModProjectile
 				for (int f = 0; f < player.ownedProjectileCounts[ModContent.ProjectileType<GlowMoth>()]; f++)
 				{
 					var proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Main.rand.NextVector2Unit() * Main.rand.Next(6, 13), ModContent.ProjectileType<PhantomMoth>(), (int)(Projectile.damage * 0.7), 0, Projectile.owner, Main.MouseWorld.X, Main.MouseWorld.Y);
-					proj.netUpdate2 = true;
+					proj.netUpdate = true;
 					proj.CritChance = Projectile.CritChance;
 				}
 			}
@@ -87,9 +87,8 @@ public class MothMagicArray : ModProjectile
 
 	private Vector2 oldAimPos = Vector2.Zero;
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
-		Player player = Main.player[Projectile.owner];
 		int AttackTime = (int)(player.HeldItem.useTime / 0.6);
 		cirR0 += 0.007f;
 		float Rad;
@@ -282,7 +281,7 @@ public class MothMagicArray : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		return true;
 	}

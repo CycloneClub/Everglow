@@ -56,9 +56,8 @@ public class ToothMagicBall : ModProjectile
 	private Vector2[] vT = new Vector2[10];
 	private Vector2[] vTMax = new Vector2[10];
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
-		Player player = Main.player[Projectile.owner];
 		DrawPowerEffect();
 		if (!player.controlUseItem)
 		{

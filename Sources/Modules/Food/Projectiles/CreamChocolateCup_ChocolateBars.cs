@@ -1,4 +1,6 @@
 using Everglow.Food.Dusts;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 
 namespace Everglow.Food.Projectiles;
@@ -43,7 +45,7 @@ internal class CreamChocolateCup_ChocolateBars : ModProjectile
 		base.OnKill(timeLeft);
 	}
 
-	public override bool PreDraw(Player player, ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)/* tModPorter Replace 'Main.player[Projectile.owner]' with 'player'. */
 	{
 		Texture2D mainTex = ModAsset.CreamChocolateCup_ChocolateBars.Value;
 		Rectangle rectangle = new Rectangle(Projectile.frame % 5 * 20, Projectile.frame > 5 ? 0 : 22, 20, 22);
