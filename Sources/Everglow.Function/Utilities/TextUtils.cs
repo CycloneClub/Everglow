@@ -28,11 +28,20 @@ public static class TextUtils
 		char prevChar = text[index - 1];
 		char currentChar = text[index];
 
-		return char.IsWhiteSpace(currentChar)
+		// Han text wraps by character; only Latin words need to retreat to a word boundary.
+		return IsCjkIdeograph(prevChar)
+			|| IsCjkIdeograph(currentChar)
+			|| char.IsWhiteSpace(currentChar)
 			|| char.IsPunctuation(currentChar)
 			|| char.IsDigit(currentChar)
 			|| (IsEnglishCharacter(prevChar) && !IsEnglishCharacter(currentChar));
 	}
+
+	// Unified ideographs, Extension A, and compatibility ideographs.
+	private static bool IsCjkIdeograph(char character) =>
+		character is >= '\u3400' and <= '\u4DBF'
+			or >= '\u4E00' and <= '\u9FFF'
+			or >= '\uF900' and <= '\uFAFF';
 
 	/// <summary>
 	/// Find the previous split boundary
