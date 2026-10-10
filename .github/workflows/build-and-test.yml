@@ -142,11 +142,14 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          # Hosted Windows images are Windows Server, not Windows 10/11 x64.
+          # Hosted x64 Windows images are Windows Server, not desktop Windows.
           - platform: windows-server-2022
             runner: windows-2022
           - platform: windows-latest
             runner: windows-latest
+          # tML ships x64 Windows native libraries, so test Win11 ARM via x64 emulation.
+          - platform: windows-11-arm-x64-emulated
+            runner: windows-11-arm
           - platform: ubuntu-22.04
             runner: ubuntu-22.04
           - platform: ubuntu-24.04
@@ -169,14 +172,29 @@ jobs:
       uses: actions/checkout@v6
 
     - name: Setup .NET 8.0
-      if: ${{ !matrix.container }}
+      if: ${{ !matrix.container && matrix.runner != 'windows-11-arm' }}
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
 
+    - name: Setup x64 .NET 8.0 runtime on Windows 11 ARM
+      if: matrix.runner == 'windows-11-arm'
+      run: |
+        $ErrorActionPreference = 'Stop'
+        $installer = Join-Path $env:RUNNER_TEMP 'dotnet-install.ps1'
+        $dotnetDirectory = Join-Path $env:RUNNER_TEMP 'dotnet-x64'
+        Invoke-WebRequest 'https://dot.net/v1/dotnet-install.ps1' -OutFile $installer
+        & $installer -Channel 8.0 -Runtime dotnet -Architecture x64 -InstallDir $dotnetDirectory -NoPath
+        & "$dotnetDirectory/dotnet.exe" --info
+        if ($LASTEXITCODE -ne 0) { throw "x64 .NET runtime failed: $LASTEXITCODE" }
+        $dotnetDirectory | Out-File -FilePath $env:GITHUB_PATH -Append -Encoding utf8
+        "DOTNET_ROOT=$dotnetDirectory" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+        "DOTNET_ROOT_X64=$dotnetDirectory" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+
     - name: Record load test environment
       run: |
         [Runtime.InteropServices.RuntimeInformation]::OSDescription
+        [Runtime.InteropServices.RuntimeInformation]::OSArchitecture
         [Runtime.InteropServices.RuntimeInformation]::ProcessArchitecture
         if ($IsLinux) { Get-Content /etc/os-release }
         dotnet --info
