@@ -5,46 +5,51 @@ namespace Everglow.Commons.Coroutines;
 /// </summary>
 public class Coroutine : ICoroutine
 {
-	private List<IEnumerator<ICoroutineInstruction>> m_enumerator;
-	private ICoroutineInstruction m_lastInstruction;
+	private List<IEnumerator<ICoroutineInstruction>> enumerator;
+	private ICoroutineInstruction lastInstruction;
+
 	public Coroutine(IEnumerator<ICoroutineInstruction> enumerator)
 	{
-		m_enumerator = new List<IEnumerator<ICoroutineInstruction>> { enumerator };
-		m_lastInstruction = null;
+		this.enumerator = new List<IEnumerator<ICoroutineInstruction>> { enumerator };
+		lastInstruction = null;
 	}
 
 	public bool MoveNext()
 	{
-		if (m_enumerator.Count == 0)
+		if (enumerator.Count == 0)
+		{
 			return false;
+		}
 
-		bool canRunNext = m_lastInstruction == null || !m_lastInstruction.ShouldWait();
+		bool canRunNext = lastInstruction == null || !lastInstruction.ShouldWait();
 
 		if (!canRunNext)
 		{
-			m_lastInstruction.Update();
+			lastInstruction.Update();
 			return true;
 		}
 
 		if (canRunNext)
 		{
-			var currentIE = m_enumerator[^1];
+			var currentIE = enumerator[^1];
 			if (!currentIE.MoveNext())
 			{
-				m_enumerator.RemoveAt(m_enumerator.Count - 1);
-				if (m_enumerator.Count == 0)
+				enumerator.RemoveAt(enumerator.Count - 1);
+				if (enumerator.Count == 0)
+				{
 					return false;
+				}
 			}
 
 			var instruction = currentIE.Current;
 			if (instruction is AwaitForTask)
 			{
-				m_enumerator.Add((instruction as AwaitForTask).Task);
-				m_lastInstruction = null;
+				enumerator.Add((instruction as AwaitForTask).Task);
+				lastInstruction = null;
 				return true;
 			}
 
-			m_lastInstruction = instruction;
+			lastInstruction = instruction;
 		}
 		return true;
 	}

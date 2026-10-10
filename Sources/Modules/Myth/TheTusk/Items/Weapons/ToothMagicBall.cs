@@ -35,10 +35,14 @@ public class ToothMagicBall : ModItem
 		Item.crit = 1;
 		Item.mana = 16;
 	}
+
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		if (player.ownedProjectileCounts[ModContent.ProjectileType<Projectiles.Weapon.ToothMagicBall>()] < 1)
+		{
 			return true;
+		}
+
 		return false;
 	}
 }

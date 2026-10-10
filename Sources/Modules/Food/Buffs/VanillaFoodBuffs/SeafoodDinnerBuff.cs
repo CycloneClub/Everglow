@@ -4,8 +4,8 @@ public class SeafoodDinnerBuff : ModBuff
 {
 	public override void SetStaticDefaults()
 	{
-		//DisplayName.SetDefault("SeafoodDinnerBuff");
-		//Description.SetDefault("增加6%暴击，伤害，攻速，爆伤\n“够生猛！”");
+		// DisplayName.SetDefault("SeafoodDinnerBuff");
+		// Description.SetDefault("增加6%暴击，伤害，攻速，爆伤\n“够生猛！”");
 		Main.buffNoTimeDisplay[Type] = false;
 		Main.debuff[Type] = false; // 添加这个，这样护士在治疗时就不会去除buff
 	}
@@ -18,4 +18,3 @@ public class SeafoodDinnerBuff : ModBuff
 		FoodBuffModPlayer.AddCritDamage += 0.06f;
 	}
 }
-

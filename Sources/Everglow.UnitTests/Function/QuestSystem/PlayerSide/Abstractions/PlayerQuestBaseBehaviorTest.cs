@@ -9,10 +9,10 @@ namespace Everglow.UnitTests.Function.QuestSystem;
 [DoNotParallelize]
 public class PlayerQuestBaseBehaviorTest
 {
-	private PlayerQuestSystem _system;
-	private PlayerQuestSystem _originalSystem;
-	private IReadOnlyList<PlayerQuestSystem> _originalSystems;
-	private PlayerQuestManager _manager;
+	private PlayerQuestSystem _system = null!;
+	private PlayerQuestSystem? _originalSystem;
+	private IReadOnlyList<PlayerQuestSystem>? _originalSystems;
+	private PlayerQuestManager _manager = null!;
 
 	private sealed class StubQuest : PlayerQuestBase
 	{
@@ -64,7 +64,7 @@ public class PlayerQuestBaseBehaviorTest
 		managerProperty.SetValue(_system, manager);
 	}
 
-	private static void SetContentInstances(PlayerQuestSystem instance, IReadOnlyList<PlayerQuestSystem> instances)
+	private static void SetContentInstances(PlayerQuestSystem? instance, IReadOnlyList<PlayerQuestSystem>? instances)
 	{
 		Type contentInstanceType = typeof(ContentInstance<PlayerQuestSystem>);
 		contentInstanceType.GetProperty(nameof(ContentInstance<PlayerQuestSystem>.Instance))!

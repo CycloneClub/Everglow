@@ -14,9 +14,12 @@ namespace Everglow.SpellAndSkull.GlobalItems;
 
 public class MagicBooksReplace : GlobalItem
 {
-	private static string SpellbookExtra = "Mods.Everglow.ExtraTooltip.Spellbook.";
-	private static string SpellbookGTV(string key) => Language.GetTextValue(SpellbookExtra + key);
+	private static string spellbookExtra = "Mods.Everglow.ExtraTooltip.Spellbook.";
+
+	private static string SpellbookGTV(string key) => Language.GetTextValue(spellbookExtra + key);
+
 	public static List<int> MagicBookType = new List<int>();
+
 	public override void SetDefaults(Item entity)
 	{
 		AddContentsToMagicBookList(ItemID.WaterBolt);
@@ -30,6 +33,7 @@ public class MagicBooksReplace : GlobalItem
 		AddContentsToMagicBookList(ItemID.LunarFlareBook);
 		base.SetDefaults(entity);
 	}
+
 	public void AddContentsToMagicBookList(int type)
 	{
 		if (!MagicBookType.Contains(type))
@@ -37,6 +41,7 @@ public class MagicBooksReplace : GlobalItem
 			MagicBookType.Add(type);
 		}
 	}
+
 	public override bool PreDrawTooltipLine(Item item, DrawableTooltipLine line, ref int yOffset)
 	{
 		if (Main.LocalPlayer.TryGetModPlayer(out MagicBookPlayer modplayer))
@@ -56,25 +61,52 @@ public class MagicBooksReplace : GlobalItem
 		if (Main.LocalPlayer.GetModPlayer<MagicBookPlayer>().MagicBookLevel == 1)
 		{
 			if (item.type == ItemID.WaterBolt)
+			{
 				tooltips.Add(new TooltipLine(ModLoader.GetMod("Everglow"), "ExtraTooltip", SpellbookGTV("WaterBolt")));
+			}
+
 			if (item.type == ItemID.DemonScythe)
+			{
 				tooltips.Add(new TooltipLine(ModLoader.GetMod("Everglow"), "ExtraTooltip", SpellbookGTV("DemonScythe")));
+			}
+
 			if (item.type == ItemID.BookofSkulls)
+			{
 				tooltips.Add(new TooltipLine(ModLoader.GetMod("Everglow"), "ExtraTooltip", SpellbookGTV("BookofSkulls")));
+			}
+
 			if (item.type == ItemID.CrystalStorm)
+			{
 				tooltips.Add(new TooltipLine(ModLoader.GetMod("Everglow"), "ExtraTooltip", SpellbookGTV("CrystalStorm")));
+			}
+
 			if (item.type == ItemID.CursedFlames)
+			{
 				tooltips.Add(new TooltipLine(ModLoader.GetMod("Everglow"), "ExtraTooltip", SpellbookGTV("CursedFlames")));
+			}
+
 			if (item.type == ItemID.GoldenShower)
+			{
 				tooltips.Add(new TooltipLine(ModLoader.GetMod("Everglow"), "ExtraTooltip", SpellbookGTV("GoldenShower")));
+			}
+
 			if (item.type == ItemID.MagnetSphere)
+			{
 				tooltips.Add(new TooltipLine(ModLoader.GetMod("Everglow"), "ExtraTooltip", SpellbookGTV("MagnetSphere")));
+			}
+
 			if (item.type == ItemID.RazorbladeTyphoon)
+			{
 				tooltips.Add(new TooltipLine(ModLoader.GetMod("Everglow"), "ExtraTooltip", SpellbookGTV("RazorbladeTyphoon")));
+			}
+
 			if (item.type == ItemID.LunarFlareBook)
+			{
 				tooltips.Add(new TooltipLine(ModLoader.GetMod("Everglow"), "ExtraTooltip", SpellbookGTV("LunarFlareBook")));
+			}
 		}
 	}
+
 	internal void CheckItemIsSpellOrNot(Item item, Player player)
 	{
 		if (player.GetModPlayer<MagicBookPlayer>().MagicBookLevel == 0)
@@ -108,6 +140,7 @@ public class MagicBooksReplace : GlobalItem
 			}
 		}
 	}
+
 	internal void CheckItemIsModSpell(Item item, Player player)
 	{
 		if (item.ModItem is SpellTomeItem)
@@ -119,11 +152,14 @@ public class MagicBooksReplace : GlobalItem
 				foreach (int type in sTI.DecorativeProjectileTypes)
 				{
 					if (player.ownedProjectileCounts[type] < 1)
+					{
 						Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, type, 0, 0, player.whoAmI);
+					}
 				}
 			}
 		}
 	}
+
 	public override bool? UseItem(Item item, Player player)
 	{
 		CheckItemIsSpellOrNot(item, player);
@@ -133,82 +169,127 @@ public class MagicBooksReplace : GlobalItem
 			{
 				int aimType = ModContent.ProjectileType<WaterBoltBook>();
 				if (player.ownedProjectileCounts[aimType] < 1)
+				{
 					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
+				}
+
 				aimType = ModContent.ProjectileType<WaterBoltArray>();
 				if (player.ownedProjectileCounts[aimType] < 1)
+				{
 					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
+				}
 			}
 			if (item.type == ItemID.DemonScythe)
 			{
 				int aimType = ModContent.ProjectileType<Projectiles.DemonScythe.DemonScytheBook>();
 				if (player.ownedProjectileCounts[aimType] < 1)
+				{
 					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
+				}
+
 				aimType = ModContent.ProjectileType<Projectiles.DemonScythe.DemonScytheArray>();
 				if (player.ownedProjectileCounts[aimType] < 1)
+				{
 					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
+				}
 			}
 			if (item.type == ItemID.MagnetSphere)
 			{
 				int aimType = ModContent.ProjectileType<MagnetSphereBook>();
 				if (player.ownedProjectileCounts[aimType] < 1)
+				{
 					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
+				}
+
 				aimType = ModContent.ProjectileType<MagnetSphereArray>();
 				if (player.ownedProjectileCounts[aimType] < 1)
+				{
 					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
+				}
 			}
 			if (item.type == ItemID.RazorbladeTyphoon)
 			{
 				int aimType = ModContent.ProjectileType<RazorbladeTyphoonBook>();
 				if (player.ownedProjectileCounts[aimType] < 1)
+				{
 					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, player.HeldItem.damage, 0, player.whoAmI);
+				}
+
 				aimType = ModContent.ProjectileType<RazorbladeTyphoonArray>();
 				if (player.ownedProjectileCounts[aimType] < 1)
+				{
 					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
+				}
 			}
 			if (item.type == ItemID.CursedFlames)
 			{
 				int aimType = ModContent.ProjectileType<CursedFlamesBook>();
 				if (player.ownedProjectileCounts[aimType] < 1)
+				{
 					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
+				}
+
 				aimType = ModContent.ProjectileType<CursedFlamesArray>();
 				if (player.ownedProjectileCounts[aimType] < 1)
+				{
 					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
+				}
 			}
 			if (item.type == ItemID.CrystalStorm)
 			{
 				int aimType = ModContent.ProjectileType<CrystalStormBook>();
 				if (player.ownedProjectileCounts[aimType] < 1)
+				{
 					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
+				}
+
 				aimType = ModContent.ProjectileType<CrystalStormArray>();
 				if (player.ownedProjectileCounts[aimType] < 1)
+				{
 					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
+				}
 			}
 			if (item.type == ItemID.BookofSkulls)
 			{
 				int aimType = ModContent.ProjectileType<BookofSkullsBook>();
 				if (player.ownedProjectileCounts[aimType] < 1)
+				{
 					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
+				}
+
 				aimType = ModContent.ProjectileType<BookofSkullsArray>();
 				if (player.ownedProjectileCounts[aimType] < 1)
+				{
 					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
+				}
 			}
 			if (item.type == ItemID.GoldenShower)
 			{
 				int aimType = ModContent.ProjectileType<GoldenShowerBook>();
 				if (player.ownedProjectileCounts[aimType] < 1)
+				{
 					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
+				}
+
 				aimType = ModContent.ProjectileType<GoldenShowerArray>();
 				if (player.ownedProjectileCounts[aimType] < 1)
+				{
 					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
+				}
 			}
 			if (item.type == ItemID.LunarFlareBook)
 			{
 				int aimType = ModContent.ProjectileType<LunarFlareBook>();
 				if (player.ownedProjectileCounts[aimType] < 1)
+				{
 					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
+				}
+
 				aimType = ModContent.ProjectileType<LunarFlareArray>();
 				if (player.ownedProjectileCounts[aimType] < 1)
+				{
 					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
+				}
 			}
 			CheckItemIsModSpell(item, player);
 		}
@@ -218,25 +299,55 @@ public class MagicBooksReplace : GlobalItem
 	public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		if (player.GetModPlayer<MagicBookPlayer>().MagicBookLevel == 0)
+		{
 			return base.Shoot(item, player, source, position, velocity, type, damage, knockback);
+		}
+
 		if (item.type == ItemID.WaterBolt)
+		{
 			return false;
+		}
+
 		if (item.type == ItemID.DemonScythe)
+		{
 			return false;
+		}
+
 		if (item.type == ItemID.BookofSkulls)
+		{
 			return false;
+		}
+
 		if (item.type == ItemID.GoldenShower)
+		{
 			return false;
+		}
+
 		if (item.type == ItemID.CursedFlames)
+		{
 			return false;
+		}
+
 		if (item.type == ItemID.CrystalStorm)
+		{
 			return false;
+		}
+
 		if (item.type == ItemID.MagnetSphere)
+		{
 			return false;
+		}
+
 		if (item.type == ItemID.RazorbladeTyphoon)
+		{
 			return false;
+		}
+
 		if (item.type == ItemID.LunarFlareBook)
+		{
 			return false;
+		}
+
 		return base.Shoot(item, player, source, position, velocity, type, damage, knockback);
 	}
 
@@ -278,17 +389,22 @@ public class MagicBookPlayer : ModPlayer
 	{
 		MagicBookLevel = 0;
 		if (HandCooling > 0)
+		{
 			HandCooling--;
+		}
+
 		base.PreUpdate();
 	}
 
 	public override bool PreItemCheck()
 	{
-		//MagicBookLevel = 0;
+		// MagicBookLevel = 0;
 		if (WaterBoltHasHit > 0)
 		{
 			if (Player.HeldItem.type != ItemID.WaterBolt || MagicBookLevel == 0)
+			{
 				WaterBoltHasHit = 0;
+			}
 		}
 		return base.PreItemCheck();
 	}

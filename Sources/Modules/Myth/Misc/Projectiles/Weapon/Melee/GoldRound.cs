@@ -7,6 +7,7 @@ public class GoldRound : ModProjectile
 	public override void SetStaticDefaults()
 	{
 	}
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 16;
@@ -21,14 +22,17 @@ public class GoldRound : ModProjectile
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 	}
-	private float Omega = 0.4f;
+
+	private float omega = 0.4f;
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		base.OnSpawn(source);
 	}
+
 	public override void AI()
 	{
-		Projectile.rotation += Omega;
+		Projectile.rotation += omega;
 		Projectile.velocity *= 0.98f;
 		Player player = Main.player[Projectile.owner];
 		if (Projectile.timeLeft < 1470)
@@ -67,19 +71,22 @@ public class GoldRound : ModProjectile
 			Projectile.velocity += Vector2.Normalize(aimTarget - Projectile.Center - Projectile.velocity) * 5f;
 		}
 	}
+
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		for (int i = 0; i < 6; i++)
 		{
 			Vector2 v = new Vector2(0, Main.rand.NextFloat(1.5f, 4f)).RotatedByRandom(MathHelper.TwoPi);
-			int num = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, 87, 0f, 0f, 100, default, 1.2f);
+			int num = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.GemTopaz, 0f, 0f, 100, default, 1.2f);
 			Main.dust[num].velocity *= v;
 			Main.dust[num].noGravity = true;
 		}
 	}
+
 	public override void OnKill(int timeLeft)
 	{
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D t = ModAsset.GoldRound.Value;

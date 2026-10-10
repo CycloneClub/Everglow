@@ -12,6 +12,7 @@ public class MothScaleDust : ModItem
 		Item.height = 20;
 		Item.maxStack = Item.CommonMaxStack;
 	}
+
 	public override void AddRecipes()
 	{
 		Recipe recipe = CreateRecipe();
@@ -19,6 +20,7 @@ public class MothScaleDust : ModItem
 		recipe.AddTile(TileID.WorkBenches);
 		recipe.Register();
 	}
+
 	public override void Update(ref float gravity, ref float maxFallSpeed)
 	{
 		if (Item.velocity.Length() > 0.1f)

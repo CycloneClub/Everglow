@@ -17,7 +17,6 @@ public class VineEnergyOrb : ModProjectile
 	private const int MaxTrailLength = 20;
 
 	// 添加动态效果变量
-	private float timer = 0f;
 	private float pulseTimer = 0f;
 	private float pulse = 0f;
 
@@ -157,7 +156,6 @@ public class VineEnergyOrb : ModProjectile
 
 		// 绘制能量球头部
 		DrawHead();
-
 
 		return false;
 	}

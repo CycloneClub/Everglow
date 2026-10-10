@@ -19,13 +19,13 @@ public class ExamplePerson : ModNPC
 	public const string ShopName = "Shop";
 	public int NumberOfTimesTalkedTo = 0;
 
-	private static int ShimmerHeadIndex;
-	private static Profiles.StackedNPCProfile NPCProfile;
+	private static int shimmerHeadIndex;
+	private static Profiles.StackedNPCProfile nPCProfile;
 
 	public override void Load()
 	{
 		// Adds our Shimmer Head to the NPCHeadLoader.
-		ShimmerHeadIndex = Mod.AddNPCHeadTexture(Type, Texture + "_Shimmer_Head");
+		shimmerHeadIndex = Mod.AddNPCHeadTexture(Type, Texture + "_Shimmer_Head");
 	}
 
 	public override void SetStaticDefaults()
@@ -63,10 +63,9 @@ public class ExamplePerson : ModNPC
 		; // < Mind the semicolon!
 
 		// This creates a "profile" for ExamplePerson, which allows for different textures during a party and/or while the NPC is shimmered.
-		NPCProfile = new Profiles.StackedNPCProfile(
+		nPCProfile = new Profiles.StackedNPCProfile(
 			new Profiles.DefaultNPCProfile(Texture, NPCHeadLoader.GetHeadSlot(HeadTexture), Texture + "_Party"),
-			new Profiles.DefaultNPCProfile(Texture + "_Shimmer", ShimmerHeadIndex, Texture + "_Shimmer_Party")
-		);
+			new Profiles.DefaultNPCProfile(Texture + "_Shimmer", shimmerHeadIndex, Texture + "_Shimmer_Party"));
 	}
 
 	public override void SetDefaults()
@@ -75,7 +74,7 @@ public class ExamplePerson : ModNPC
 		NPC.friendly = true; // NPC Will not attack player
 		NPC.width = 18;
 		NPC.height = 40;
-		NPC.aiStyle = 7;
+		NPC.aiStyle = NPCAIStyleID.Passive;
 		NPC.damage = 10;
 		NPC.defense = 15;
 		NPC.lifeMax = 250;
@@ -89,7 +88,8 @@ public class ExamplePerson : ModNPC
 	public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 	{
 		// We can use AddRange instead of calling Add multiple times in order to add multiple items at once
-		bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+		bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+		{
 			// Sets the preferred biomes of this town NPC listed in the bestiary.
 			// With Town NPCs, you usually set this to what biome it likes the most in regards to NPC happiness.
 			BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
@@ -99,7 +99,7 @@ public class ExamplePerson : ModNPC
 
 			// You can add multiple elements if you really wanted to
 			// You can also use localization keys (see Localization/en-US.lang)
-			new FlavorTextBestiaryInfoElement("Mods.ExampleMod.Bestiary.ExamplePerson")
+			new FlavorTextBestiaryInfoElement("Mods.ExampleMod.Bestiary.ExamplePerson"),
 		});
 	}
 
@@ -134,26 +134,31 @@ public class ExamplePerson : ModNPC
 		if (Main.netMode != NetmodeID.Server && NPC.life <= 0)
 		{
 			// Retrieve the gore types. This NPC has shimmer and party variants for head, arm, and leg gore. (12 total gores)
-			string variant = "";
+			string variant = string.Empty;
 			if (NPC.IsShimmerVariant)
+			{
 				variant += "_Shimmer";
+			}
+
 			if (NPC.altTexture == 1)
+			{
 				variant += "_Party";
-			//int hatGore = NPC.GetPartyHatGore();
-			//int headGore = Mod.Find<ModGore>($"{Name}_Gore{variant}_Head").Type;
-			//int armGore = Mod.Find<ModGore>($"{Name}_Gore{variant}_Arm").Type;
-			//int legGore = Mod.Find<ModGore>($"{Name}_Gore{variant}_Leg").Type;
+			}
+			// int hatGore = NPC.GetPartyHatGore();
+			// int headGore = Mod.Find<ModGore>($"{Name}_Gore{variant}_Head").Type;
+			// int armGore = Mod.Find<ModGore>($"{Name}_Gore{variant}_Arm").Type;
+			// int legGore = Mod.Find<ModGore>($"{Name}_Gore{variant}_Leg").Type;
 
 			// Spawn the gores. The positions of the arms and legs are lowered for a more natural look.
-			//if (hatGore > 0)
-			//{
-			//	Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, hatGore);
-			//}
-			//Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, headGore, 1f);
-			//Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(0, 20), NPC.velocity, armGore);
-			//Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(0, 20), NPC.velocity, armGore);
-			//Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(0, 34), NPC.velocity, legGore);
-			//Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(0, 34), NPC.velocity, legGore);
+			// if (hatGore > 0)
+			// {
+			// Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, hatGore);
+			// }
+			// Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, headGore, 1f);
+			// Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(0, 20), NPC.velocity, armGore);
+			// Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(0, 20), NPC.velocity, armGore);
+			// Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(0, 34), NPC.velocity, legGore);
+			// Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(0, 34), NPC.velocity, legGore);
 		}
 	}
 
@@ -189,16 +194,17 @@ public class ExamplePerson : ModNPC
 
 	public override ITownNPCProfile TownNPCProfile()
 	{
-		return NPCProfile;
+		return nPCProfile;
 	}
 
 	public override List<string> SetNPCNameList()
 	{
-		return new List<string>() {
+		return new List<string>()
+		{
 			"Someone",
 			"Somebody",
 			"Blocky",
-			"Colorless"
+			"Colorless",
 		};
 	}
 
@@ -235,7 +241,7 @@ public class ExamplePerson : ModNPC
 		NumberOfTimesTalkedTo++;
 		if (NumberOfTimesTalkedTo >= 10)
 		{
-			//This counter is linked to a single instance of the NPC, so if ExamplePerson is killed, the counter will reset.
+			// This counter is linked to a single instance of the NPC, so if ExamplePerson is killed, the counter will reset.
 			chat.Add(Language.GetTextValue("Mods.ExampleMod.Dialogue.ExamplePerson.TalkALot"));
 		}
 

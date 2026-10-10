@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+
 namespace Everglow.Food.InfoDisplays;
 
 internal class ThirstystateInfoDisplay : InfoDisplay
@@ -12,7 +13,9 @@ internal class ThirstystateInfoDisplay : InfoDisplay
 	{
 		bool Thirstystate = Main.LocalPlayer.GetModPlayer<FoodModPlayer>().Thirstystate;
 		if (Thirstystate)
+		{
 			return Terraria.Localization.Language.GetTextValue("Mods.Everglow.InfoDisplay.Thirsty");
+		}
 		else
 		{
 			return Terraria.Localization.Language.GetTextValue("Mods.Everglow.InfoDisplay.NotThirsty");
@@ -24,6 +27,7 @@ public class ThirstystateInfoDisplayplayer : ModPlayer
 {
 	public bool AccOsmoticPressureMonitor;
 	public bool ShowThirstystate;
+
 	public override void ResetEffects()
 	{
 		AccOsmoticPressureMonitor = false;
@@ -33,6 +37,8 @@ public class ThirstystateInfoDisplayplayer : ModPlayer
 	public override void UpdateEquips()
 	{
 		if (AccOsmoticPressureMonitor)
+		{
 			ShowThirstystate = true;
+		}
 	}
 }

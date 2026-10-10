@@ -26,6 +26,7 @@ public class IcedSpear : ModItem
 
 		Item.shoot = ModContent.ProjectileType<Projectiles.IcedSpear>();
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe(8)

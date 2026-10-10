@@ -97,6 +97,7 @@ public class FoodBuffModPlayer : ModPlayer
 		CriticalDamage = 1f;
 		AddCritDamage = 0;
 	}
+
 	public override void ResetEffects()
 	{
 		WingTimeModifier = 1f;
@@ -142,8 +143,8 @@ public class FoodBuffModPlayer : ModPlayer
 
 		CriticalDamage = 1f;
 		AddCritDamage = 0;
-
 	}
+
 	public override void PostUpdateBuffs()
 	{
 		if (StinkyTofuBuff)
@@ -151,13 +152,20 @@ public class FoodBuffModPlayer : ModPlayer
 			foreach (NPC target in Main.npc)
 			{
 				if (!target.friendly && Main.rand.NextBool(100) && Player.WithinRange(target.Center, 300))
+				{
 					target.AddBuff(BuffID.Confused, 600);
+				}
 			}
 		}
 		if (RoastedBirdBuff)
+		{
 			Player.wingTimeMax = (int)(Player.wingTimeMax * WingTimeModifier);
+		}
+
 		if (RoastedDuckBuff)
+		{
 			Player.wingTimeMax = (int)(Player.wingTimeMax * WingTimeModifier);
+		}
 
 		var mp = Player.GetModPlayer<EverglowPlayer>();
 		if (BananaBuff)
@@ -183,7 +191,9 @@ public class FoodBuffModPlayer : ModPlayer
 	public override void ModifyHurt(ref Player.HurtModifiers modifiers)
 	{
 		if (Player.whoAmI == Main.myPlayer && SmoothieofDarknessBuff && Main.rand.NextBool(2))
+		{
 			Player.NinjaDodge();
+		}
 	}
 
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
@@ -200,13 +210,14 @@ public class FoodBuffModPlayer : ModPlayer
 			BloodyMoscatoHealCount += 2;
 		}
 	}
+
 	public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource)
 	{
 		if (CherryBuff)
 		{
 			SoundEngine.PlaySound(SoundID.DD2_ExplosiveTrapExplode);
-			//ScreenShaker Gsplayer = Player.GetModPlayer<ScreenShaker>();
-			//Gsplayer.FlyCamPosition = new Vector2(0, 150).RotatedByRandom(6.283);
+			// ScreenShaker Gsplayer = Player.GetModPlayer<ScreenShaker>();
+			// Gsplayer.FlyCamPosition = new Vector2(0, 150).RotatedByRandom(6.283);
 			ShakerManager.AddShaker(UndirectedShakerInfo.Create(Player.Center, 150));
 
 			float k1 = Math.Clamp(Player.velocity.Length(), 1, 3);
@@ -236,28 +247,40 @@ public class FoodBuffModPlayer : ModPlayer
 		if (GrubSoupBuff)
 		{
 			if (Player.lifeRegen > 0)
+			{
 				Player.lifeRegen = 0;
+			}
+
 			Player.lifeRegenTime = 0;
 			Player.lifeRegen -= MangoBuff ? 2 : 4;
 		}
 		if (MonsterLasagnaBuff)
 		{
 			if (Player.lifeRegen > 0)
+			{
 				Player.lifeRegen = 0;
+			}
+
 			Player.lifeRegenTime = 0;
 			Player.lifeRegen -= MangoBuff ? 3 : 6;
 		}
 		if (SashimiBuff)
 		{
 			if (Player.lifeRegen > 0)
+			{
 				Player.lifeRegen = 0;
+			}
+
 			Player.lifeRegenTime = 0;
 			Player.lifeRegen -= MangoBuff ? 2 : 4;
 		}
 		if (ShuckedOysterBuff)
 		{
 			if (Player.lifeRegen > 0)
+			{
 				Player.lifeRegen = 0;
+			}
+
 			Player.lifeRegenTime = 0;
 			Player.lifeRegen -= MangoBuff ? 2 : 4;
 		}

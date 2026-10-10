@@ -19,10 +19,14 @@ public class CyanVineOreTile : ModTile
 		var modTranslation = CreateMapEntryName();
 		AddMapEntry(new Color(80, 130, 154), modTranslation);
 	}
+
 	public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
 	{
 		if (fail)
+		{
 			return;
+		}
+
 		var ThisTile = Main.tile[i, j];
 		int X0 = i - ThisTile.TileFrameX / 18;
 		int Y0 = j - ThisTile.TileFrameY / 18;
@@ -34,41 +38,56 @@ public class CyanVineOreTile : ModTile
 				if (tile.TileFrameX == x * 18 && tile.TileFrameY == y * 18)
 				{
 					if (tile.TileType == ModContent.TileType<CyanVineOreTile>())
+					{
 						tile.HasTile = false;
+					}
 				}
 				if (tile.TileFrameX % 108 == x * 18 + 18 && tile.TileFrameY == y * 18 + 18)
 				{
 					if (tile.TileType == ModContent.TileType<CyanVineOreLarge>())
+					{
 						WorldGen.KillTile(X0 + x, Y0 + y);
+					}
 				}
 				if (tile.TileFrameX % 108 == x * 18 && tile.TileFrameY == y * 18 + 18)
 				{
 					if (tile.TileType == ModContent.TileType<CyanVineOreLarge>())
+					{
 						WorldGen.KillTile(X0 + x, Y0 + y);
+					}
 				}
 				if (tile.TileFrameX % 72 == x * 18 && tile.TileFrameY == y * 18 + 18)
 				{
 					if (tile.TileType == ModContent.TileType<CyanVineOreMiddle>())
+					{
 						WorldGen.KillTile(X0 + x, Y0 + y);
+					}
 				}
 				if (tile.TileFrameX % 54 == x * 18 && tile.TileFrameY == y * 18 + 18)
 				{
 					if (tile.TileType == ModContent.TileType<CyanVineOreSmall>())
+					{
 						WorldGen.KillTile(X0 + x, Y0 + y);
+					}
 				}
 				if (tile.TileFrameX % 54 == x * 18 && tile.TileFrameY == y * 18)
 				{
 					if (tile.TileType == ModContent.TileType<CyanVineOreSmallUp>())
+					{
 						WorldGen.KillTile(X0 + x, Y0 + y);
+					}
 				}
 				if (tile.TileFrameX % 54 == x * 18 && tile.TileFrameY == y * 18)
 				{
 					if (tile.TileType == ModContent.TileType<CyanVineOreLargeUp>())
+					{
 						WorldGen.KillTile(X0 + x, Y0 + y);
+					}
 				}
 			}
 		}
 	}
+
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		return false;

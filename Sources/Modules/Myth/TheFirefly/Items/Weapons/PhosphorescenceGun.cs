@@ -10,16 +10,14 @@ public class PhosphorescenceGun : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedWeapons;
 
-	FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
+	private FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
+
 	public override void SetStaticDefaults()
 	{
-
 	}
 
 	public override void SetDefaults()
 	{
-
-
 		Item.width = 70;
 		Item.height = 40;
 		Item.rare = ItemRarityID.Green;
@@ -48,7 +46,9 @@ public class PhosphorescenceGun : ModItem
 		Gsplayer.FlyCamPosition = new Vector2(0, 100).RotatedByRandom(6.283);
 		const int NumProjectiles = 4;
 		if (player.ownedProjectileCounts[ModContent.ProjectileType<Projectiles.PhosphorescenceGun>()] < 1)
+		{
 			Projectile.NewProjectileDirect(source, position + velocity * 2.0f - new Vector2(0, 4), Vector2.Zero, ModContent.ProjectileType<Projectiles.PhosphorescenceGun>(), damage, knockback, player.whoAmI, 1f, Item.useAnimation);
+		}
 		else
 		{
 			for (int x = 0; x < Main.projectile.Length; x++)
@@ -64,7 +64,9 @@ public class PhosphorescenceGun : ModItem
 							if (MothEye.LocalOwner != null && MothEye.LocalOwner.TryGetModPlayer(out MothEyePlayer mothEyePlayer))
 							{
 								if (!mothEyePlayer.MothEyeEquipped && !fireflyBiome.IsBiomeActive(Main.LocalPlayer) && !Main.hardMode)
+								{
 									player.velocity -= velocity * 0.2f;
+								}
 							}
 						}
 					}
@@ -84,7 +86,9 @@ public class PhosphorescenceGun : ModItem
 			if (MothEye.LocalOwner != null && MothEye.LocalOwner.TryGetModPlayer(out MothEyePlayer mothEyePlayer))
 			{
 				if (mothEyePlayer.MothEyeEquipped && fireflyBiome.IsBiomeActive(Main.LocalPlayer) && Main.hardMode)
+				{
 					Projectile.NewProjectileDirect(source, position + velocity * 2.0f - new Vector2(0, 4), newVelocity, ModContent.ProjectileType<PhosphorescenceBullet>(), (int)(damage * 0.39f), knockback, player.whoAmI);
+				}
 				else
 				{
 					Projectile.NewProjectileDirect(source, position + velocity * 2.0f - new Vector2(0, 4), newVelocity, ModContent.ProjectileType<PhosphorescenceBullet>(), (int)(damage * 0.26f), knockback, player.whoAmI);
@@ -116,6 +120,7 @@ public class PhosphorescenceGun : ModItem
 		}
 		return false;
 	}
+
 	public override void ModifyTooltips(List<TooltipLine> tooltips)
 	{
 		if (MothEye.LocalOwner != null && MothEye.LocalOwner.TryGetModPlayer(out MothEyePlayer mothEyePlayer))

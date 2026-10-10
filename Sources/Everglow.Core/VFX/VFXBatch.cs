@@ -8,10 +8,10 @@ public class VFXBatch : IDisposable
 {
 	#region Private Field
 
-	//如果所有网格都是Strip形式
+	// 如果所有网格都是Strip形式
 	private const int MAX_INDICES = MAX_VERTICES * 3;
 
-	//numbers Copy from SpriteBatch
+	// numbers Copy from SpriteBatch
 	private const int MAX_VERTICES = 1048576;
 
 	private List<IBuffers> buffers = new();
@@ -32,7 +32,7 @@ public class VFXBatch : IDisposable
 		_mainThread = mainThread;
 		mainThread.AddTask(() =>
 		{
-			RegisterVertex<VFX2D>(MAX_VERTICES, MAX_VERTICES * 6 / 4);//四个顶点两个三角形六个下标
+			RegisterVertex<VFX2D>(MAX_VERTICES, MAX_VERTICES * 6 / 4); // 四个顶点两个三角形六个下标
 			RegisterVertex<Vertex2D>();
 		});
 	}
@@ -51,12 +51,13 @@ public class VFXBatch : IDisposable
 			Buffer<VFX2D>.Textures.Add(tex);
 		}
 		needFlush[0] = true;
-		Buffer<VFX2D>.AddVertex(new VFX2D[]
+		Buffer<VFX2D>.AddVertex(
+			new VFX2D[]
 		{
-			new VFX2D(position, color, new Vector2(0,0)),
-			new VFX2D(position + new Vector2(tex.Width, 0), color, new Vector2(1,0)),
-			new VFX2D(position + new Vector2(0, tex.Height), color, new Vector2(0,1)),
-			new VFX2D(position + new Vector2(tex.Width, tex.Height), color, new Vector2(1,1))
+			new VFX2D(position, color, new Vector2(0, 0)),
+			new VFX2D(position + new Vector2(tex.Width, 0), color, new Vector2(1, 0)),
+			new VFX2D(position + new Vector2(0, tex.Height), color, new Vector2(0, 1)),
+			new VFX2D(position + new Vector2(tex.Width, tex.Height), color, new Vector2(1, 1)),
 		}, PrimitiveType.TriangleStrip);
 	}
 
@@ -76,12 +77,13 @@ public class VFXBatch : IDisposable
 		float y = sourceRect.Y / (float)tex.Height;
 		float width = sourceRect.Width / (float)tex.Width;
 		float height = sourceRect.Height / (float)tex.Height;
-		Buffer<VFX2D>.AddVertex(new VFX2D[]
+		Buffer<VFX2D>.AddVertex(
+			new VFX2D[]
 		{
 			new VFX2D(position, color, new Vector2(x, y)),
 			new VFX2D(position + new Vector2(sourceRect.Width, 0), color, new Vector2(x + width, y)),
 			new VFX2D(position + new Vector2(0, sourceRect.Height), color, new Vector2(x, y + height)),
-			new VFX2D(position + new Vector2(sourceRect.Width, sourceRect.Height), color, new Vector2(x + width, y + height))
+			new VFX2D(position + new Vector2(sourceRect.Width, sourceRect.Height), color, new Vector2(x + width, y + height)),
 		}, PrimitiveType.TriangleStrip);
 	}
 
@@ -125,12 +127,13 @@ public class VFXBatch : IDisposable
 			(topLeft, bottomLeft) = (bottomLeft, topLeft);
 			(topRight, bottomRight) = (bottomRight, topRight);
 		}
-		Buffer<VFX2D>.AddVertex(new VFX2D[]
+		Buffer<VFX2D>.AddVertex(
+			new VFX2D[]
 		{
 			new VFX2D(Vector2.Transform(topLeftPosition, matrix), color, topLeft),
 			new VFX2D(Vector2.Transform(topLeftPosition + new Vector2(sourceRect.Width, 0), matrix), color, topRight),
 			new VFX2D(Vector2.Transform(topLeftPosition + new Vector2(0, sourceRect.Height), matrix), color, bottomLeft),
-			new VFX2D(Vector2.Transform(topLeftPosition + new Vector2(sourceRect.Width, sourceRect.Height), matrix), color, bottomRight)
+			new VFX2D(Vector2.Transform(topLeftPosition + new Vector2(sourceRect.Width, sourceRect.Height), matrix), color, bottomRight),
 		}, PrimitiveType.TriangleStrip);
 	}
 
@@ -150,12 +153,13 @@ public class VFXBatch : IDisposable
 		float width = sourceRect.Width / (float)tex.Width;
 		float height = sourceRect.Height / (float)tex.Height;
 
-		Buffer<VFX2D>.AddVertex(new VFX2D[]
+		Buffer<VFX2D>.AddVertex(
+			new VFX2D[]
 		{
 			new VFX2D(Vector2.Transform(position, matrix), color, new Vector2(x, y)),
 			new VFX2D(Vector2.Transform(position + new Vector2(sourceRect.Width, 0), matrix), color, new Vector2(x + width, y)),
 			new VFX2D(Vector2.Transform(position + new Vector2(0, sourceRect.Height), matrix), color, new Vector2(x, y + height)),
-			new VFX2D(Vector2.Transform(position + new Vector2(sourceRect.Width, sourceRect.Height), matrix), color, new Vector2(x + width, y + height))
+			new VFX2D(Vector2.Transform(position + new Vector2(sourceRect.Width, sourceRect.Height), matrix), color, new Vector2(x + width, y + height)),
 		}, PrimitiveType.TriangleStrip);
 	}
 
@@ -169,12 +173,13 @@ public class VFXBatch : IDisposable
 			Buffer<VFX2D>.Textures.Add(tex);
 		}
 		needFlush[0] = true;
-		Buffer<VFX2D>.AddVertex(new VFX2D[]
+		Buffer<VFX2D>.AddVertex(
+			new VFX2D[]
 		{
 			new VFX2D(new Vector2(destinationRectangle.X, destinationRectangle.Y), color, Vector2.Zero),
 			new VFX2D(new Vector2(destinationRectangle.X + destinationRectangle.Width, destinationRectangle.Y), color, Vector2.UnitX),
 			new VFX2D(new Vector2(destinationRectangle.X, destinationRectangle.Y + destinationRectangle.Height), color, Vector2.UnitY),
-			new VFX2D(new Vector2(destinationRectangle.X + destinationRectangle.Width, destinationRectangle.Y + destinationRectangle.Height), color, Vector2.One)
+			new VFX2D(new Vector2(destinationRectangle.X + destinationRectangle.Width, destinationRectangle.Y + destinationRectangle.Height), color, Vector2.One),
 		}, PrimitiveType.TriangleStrip);
 	}
 
@@ -193,12 +198,13 @@ public class VFXBatch : IDisposable
 		float y = sourceRect.Y / (float)tex.Height;
 		float width = sourceRect.Width / (float)tex.Width;
 		float height = sourceRect.Height / (float)tex.Height;
-		Buffer<VFX2D>.AddVertex(new VFX2D[]
+		Buffer<VFX2D>.AddVertex(
+			new VFX2D[]
 		{
 			new VFX2D(new Vector2(destinationRectangle.X, destinationRectangle.Y), color, new Vector2(x, y)),
 			new VFX2D(new Vector2(destinationRectangle.X + destinationRectangle.Width, destinationRectangle.Y), color, new Vector2(x + width, y)),
 			new VFX2D(new Vector2(destinationRectangle.X, destinationRectangle.Y + destinationRectangle.Height), color, new Vector2(x, y + height)),
-			new VFX2D(new Vector2(destinationRectangle.X + destinationRectangle.Width, destinationRectangle.Y + destinationRectangle.Height), color, new Vector2(x + width, y + height))
+			new VFX2D(new Vector2(destinationRectangle.X + destinationRectangle.Width, destinationRectangle.Y + destinationRectangle.Height), color, new Vector2(x + width, y + height)),
 		}, PrimitiveType.TriangleStrip);
 	}
 
@@ -238,16 +244,18 @@ public class VFXBatch : IDisposable
 			(topLeft, bottomLeft) = (bottomLeft, topLeft);
 			(topRight, bottomRight) = (bottomRight, topRight);
 		}
-		Buffer<VFX2D>.AddVertex(new VFX2D[]
+		Buffer<VFX2D>.AddVertex(
+			new VFX2D[]
 		{
 			new VFX2D(Vector2.Transform(topLeftPosition, matrix), color, topLeft),
 			new VFX2D(Vector2.Transform(topLeftPosition + new Vector2(sourceRect.Width, 0), matrix), color, topRight),
 			new VFX2D(Vector2.Transform(topLeftPosition + new Vector2(0, sourceRect.Height), matrix), color, bottomLeft),
-			new VFX2D(Vector2.Transform(topLeftPosition + new Vector2(sourceRect.Width, sourceRect.Height), matrix), color, bottomRight)
+			new VFX2D(Vector2.Transform(topLeftPosition + new Vector2(sourceRect.Width, sourceRect.Height), matrix), color, bottomRight),
 		}, PrimitiveType.TriangleStrip);
 	}
 
-	public void Draw<T>(IEnumerable<T> vertices, PrimitiveType type) where T : struct, IVertexType
+	public void Draw<T>(IEnumerable<T> vertices, PrimitiveType type)
+		where T : struct, IVertexType
 	{
 		if (!vertices.Any())
 		{
@@ -312,7 +320,8 @@ public class VFXBatch : IDisposable
 	/// <typeparam name="T"></typeparam>
 	/// <param name="texture"></param>
 	/// <returns>this</returns>
-	public VFXBatch BindTexture<T>(Texture2D texture) where T : struct, IVertexType
+	public VFXBatch BindTexture<T>(Texture2D texture)
+		where T : struct, IVertexType
 	{
 		if (Buffer<T>.Textures.Count == 0)
 		{
@@ -361,7 +370,8 @@ public class VFXBatch : IDisposable
 		}
 	}
 
-	public void Flush<T>() where T : struct, IVertexType
+	public void Flush<T>()
+		where T : struct, IVertexType
 	{
 		Buffer<T>.Instance.DrawPrimitive();
 		Buffer<T>.Instance.Clear();
@@ -371,27 +381,28 @@ public class VFXBatch : IDisposable
 
 	#region Vertex
 
-	public void RegisterVertex<T>(int maxVertices = MAX_VERTICES, int maxIndices = MAX_INDICES) where T : struct, IVertexType
+	public void RegisterVertex<T>(int maxVertices = MAX_VERTICES, int maxIndices = MAX_INDICES)
+		where T : struct, IVertexType
 	{
 		buffers.Add(Buffer<T>.Create(GraphicsDevice, maxVertices, maxIndices));
 		needFlush.Add(false);
 	}
 
-	private int GetBufferIndex<T>() where T : struct, IVertexType
+	private int GetBufferIndex<T>()
+		where T : struct, IVertexType
 	{
 		return buffers.IndexOf(Buffer<T>.Instance);
 	}
 
 	private struct VFX2D : IVertexType
 	{
-
-
 		private static VertexDeclaration _vertexDeclaration = new(new VertexElement[3]
 	 {
 		new VertexElement(0, VertexElementFormat.Vector2, VertexElementUsage.Position, 0),
 		new VertexElement(8, VertexElementFormat.Color, VertexElementUsage.Color, 0),
-		new VertexElement(12, VertexElementFormat.Vector3, VertexElementUsage.TextureCoordinate, 0)
+		new VertexElement(12, VertexElementFormat.Vector3, VertexElementUsage.TextureCoordinate, 0),
 	 });
+
 		public Vector2 position;
 		public Color color;
 		public Vector3 texCoord;
@@ -427,7 +438,8 @@ public class VFXBatch : IDisposable
 		void DrawPrimitive();
 	}
 
-	private static class Buffer<T> where T : struct, IVertexType
+	private static class Buffer<T>
+		where T : struct, IVertexType
 	{
 		private static Buffers instance;
 
@@ -448,7 +460,7 @@ public class VFXBatch : IDisposable
 
 		public static IBuffers Instance => instance;
 
-		public static Queue<(int index, int vertex)> SameTexture => instance.sameTexture;
+		public static Queue<(int Index, int Vertex)> SameTexture => instance.sameTexture;
 
 		public static List<Texture2D> Textures => instance.textures;
 
@@ -507,8 +519,8 @@ public class VFXBatch : IDisposable
 				vertexBuffer = new DynamicVertexBuffer(graphicsDevice, typeof(T), maxVertices, BufferUsage.WriteOnly),
 				indexBuffer = new DynamicIndexBuffer(graphicsDevice, IndexElementSize.ThirtyTwoBits, maxIndices, BufferUsage.WriteOnly),
 				textures = new List<Texture2D>(),
-				sameTexture = new Queue<(int index, int vertex)>(),
-				graphicsDevice = graphicsDevice
+				sameTexture = new Queue<(int Index, int Vertex)>(),
+				graphicsDevice = graphicsDevice,
 			};
 			return instance;
 		}
@@ -519,11 +531,12 @@ public class VFXBatch : IDisposable
 			public DynamicIndexBuffer indexBuffer;
 			public int indexPosition;
 			public int[] indices;
-			public Queue<(int index, int vertex)> sameTexture;
+			public Queue<(int Index, int Vertex)> sameTexture;
 			public List<Texture2D> textures;
 			public DynamicVertexBuffer vertexBuffer;
 			public int vertexPosition;
 			public T[] vertices;
+
 			public Type VertexType => typeof(T);
 
 			public void Clear()

@@ -12,10 +12,12 @@ public class XmasWhip : WhipProjectile
 		WhipLength = 420;
 		DustType = ModContent.DustType<PinePin>();
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return base.PreDraw(ref lightColor);
 	}
+
 	public override void DrawWhip(float foreStep = 0)
 	{
 		var list = new List<Vector2>();
@@ -81,6 +83,7 @@ public class XmasWhip : WhipProjectile
 			}
 		}
 	}
+
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		if (Projectile.ai[1] == 0)
@@ -99,11 +102,12 @@ public class XmasWhip : WhipProjectile
 				if (Main.rand.NextBool(2))
 				{
 					Vector2 v = new Vector2(0, Main.rand.NextFloat(6f, 8f)).RotatedBy(Math.PI * z / 15 + rot);
-					Projectile.NewProjectile(Terraria.Entity.InheritSource(Projectile), target.Center + v * 7, v, 336, Projectile.damage, 0.2f, player.whoAmI, player.GetCritChance(DamageClass.Summon), (int)(Projectile.damage * 0.3));
+					Projectile.NewProjectile(Terraria.Entity.InheritSource(Projectile), target.Center + v * 7, v, ProjectileID.PineNeedleFriendly, Projectile.damage, 0.2f, player.whoAmI, player.GetCritChance(DamageClass.Summon), (int)(Projectile.damage * 0.3));
 				}
 			}
 		}
 	}
+
 	public override void GenerateDusts()
 	{
 		if (WhipPointsForCollision.Count > 10)
@@ -134,6 +138,5 @@ public class XmasWhip : WhipProjectile
 				Dust.NewDustDirect(WhipPointsForCollision[WhipPointsForCollision.Count - 1], 0, 0, DustID.GoldCoin);
 			}
 		}
-
 	}
 }

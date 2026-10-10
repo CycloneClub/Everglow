@@ -70,7 +70,7 @@ public class Guard_Attack_Fist : ModProjectile
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Vector2 vel = Projectile.velocity;
-		//float moveX1 = Progress * 5;
+		// float moveX1 = Progress * 5;
 		float moveX2 = Progress * 20f - 10f;
 
 		List<Vertex2D> bars1 = new();

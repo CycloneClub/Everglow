@@ -32,7 +32,10 @@ internal class DemonScythePlusCrack : ModProjectile
 		for (float x = -vL; x < vL + 1; x += 1)
 		{
 			if (x < vL * 0.6f)
+			{
 				continue;
+			}
+
 			float size = Main.rand.NextFloat(1.45f, 1.75f) * kSize * Projectile.ai[0] * 0.5f;
 			var d0 = Dust.NewDustDirect(Projectile.Center - new Vector2(size * 4, size * 4.5f), 0, 0, ModContent.DustType<Dusts.DemoFlame>(), 0, 0, 0, default, size);
 			d0.fadeIn = 12f;
@@ -41,7 +44,9 @@ internal class DemonScythePlusCrack : ModProjectile
 
 		Lighting.AddLight((int)(Projectile.Center.X / 16), (int)(Projectile.Center.Y / 16), 0.11f * kTime, 0f, 0.45f * kTime);
 		if (Collision.SolidCollision(Projectile.Center, 0, 0))
+		{
 			Projectile.velocity *= 0.6f;
+		}
 		else
 		{
 			Projectile.rotation += 0.3f;
@@ -53,7 +58,6 @@ internal class DemonScythePlusCrack : ModProjectile
 
 	public override void OnKill(int timeLeft)
 	{
-
 	}
 
 	public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
@@ -69,15 +73,20 @@ internal class DemonScythePlusCrack : ModProjectile
 		var c0 = new Color(0.4f, 0.0f, 0.8f, 0);
 		float width = 16 * Projectile.ai[0];
 		if (Projectile.timeLeft < 30)
+		{
 			width *= Projectile.timeLeft / 30f;
+		}
+
 		int TrueL = 0;
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
+
 			TrueL++;
 		}
-
 
 		DrawFlameTrail(TrueL, width, true, Color.White);
 
@@ -85,7 +94,10 @@ internal class DemonScythePlusCrack : ModProjectile
 
 		float Scl = 1f;
 		if (Projectile.timeLeft < 30)
+		{
 			Scl *= Projectile.timeLeft / 30f;
+		}
+
 		Vector2 BasePos = Projectile.Center - Main.screenPosition;
 		var circle = new List<Vertex2D>();
 		circle.Add(new Vertex2D(BasePos + new Vector2(10, -10).RotatedBy(Projectile.rotation) * Scl, Color.Violet, new Vector3(0.5f, 1, 0)));
@@ -98,31 +110,42 @@ internal class DemonScythePlusCrack : ModProjectile
 		}
 		return false;
 	}
-	private void DrawFlameTrail(int TrueL, float width, bool Shade = false, Color c0 = new Color(), float Mulfactor = 1.6f)
+
+	private void DrawFlameTrail(int TrueL, float width, bool Shade = false, Color c0 = default(Color), float Mulfactor = 1.6f)
 	{
 		var bars = new List<Vertex2D>();
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
+
 			float MulColor = 1f;
 			var normalDir = Projectile.oldPos[i - 1] - Projectile.oldPos[i];
 			normalDir = Vector2.Normalize(new Vector2(-normalDir.Y, normalDir.X));
 			if (i == 1)
+			{
 				MulColor = 0f;
+			}
+
 			if (i >= 2)
 			{
 				var normalDirII = Projectile.oldPos[i - 2] - Projectile.oldPos[i - 1];
 				normalDirII = Vector2.Normalize(new Vector2(-normalDirII.Y, normalDirII.X));
 				if (Vector2.Dot(normalDirII, normalDir) <= 0.965f)
+				{
 					MulColor = 0f;
+				}
 			}
 			if (i < Projectile.oldPos.Length - 1)
 			{
 				var normalDirII = Projectile.oldPos[i] - Projectile.oldPos[i + 1];
 				normalDirII = Vector2.Normalize(new Vector2(-normalDirII.Y, normalDirII.X));
 				if (Vector2.Dot(normalDirII, normalDir) <= 0.965f)
+				{
 					MulColor = 0f;
+				}
 			}
 			var factor = i / (float)TrueL;
 			float x0 = factor * Mulfactor - (float)(Main.timeForVisualEffects / 15d) + 100000;
@@ -145,10 +168,15 @@ internal class DemonScythePlusCrack : ModProjectile
 		}
 		Texture2D t = Commons.ModAsset.Trail_6.Value;
 		if (Shade)
+		{
 			t = ModAsset.Darkline.Value;
+		}
+
 		Main.graphics.GraphicsDevice.Textures[0] = t;
 
 		if (bars.Count > 3)
+		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
+		}
 	}
 }

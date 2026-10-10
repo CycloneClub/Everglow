@@ -66,6 +66,7 @@ public class ValueBarHelper
 	/// <param name="color0"></param>
 	/// <param name="color1"></param>
 	/// <param name="scale"></param>
+	/// <param name="centerIcon">Optional texture drawn at the center of the progress bar.</param>
 	public static void DrawCircleValueBar(SpriteBatch spriteBatch, Vector2 position, float value, Color color0, Color color1, float scale = 1, Texture2D centerIcon = null)
 	{
 		var bloom_shadow = ModAsset.PieChartBloom_black.Value;
@@ -126,6 +127,7 @@ public class ValueBarHelper
 	/// <param name="radius"></param>
 	/// <param name="radiusOffset"></param>
 	/// <param name="progress"></param>
+	/// <param name="clockwise">Whether the arc advances clockwise from its starting direction.</param>
 	/// <param name="totalVertexCount"></param>
 	public static void DrawCircle(SpriteBatch spriteBatch, Vector2 position, Color color, Vector2 radius, Vector2 radiusOffset, float progress, bool clockwise = true, int totalVertexCount = 180)
 	{

@@ -9,4 +9,3 @@ internal class TopazSlingshot : GemSlingshotProjectile
 		base.SetDef();
 	}
 }
-

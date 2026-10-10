@@ -8,15 +8,15 @@ namespace Everglow.Commons.ObjectPool;
 /// </summary>
 public class RenderTargetPool
 {
-	private List<RenderTarget2D> m_renderTargetsPool;
-	private LinkedList<int> m_renderTargetsFreeList;
-	private GraphicsDevice m_graphicsDevice;
+	private List<RenderTarget2D> renderTargetsPool;
+	private LinkedList<int> renderTargetsFreeList;
+	private GraphicsDevice graphicsDevice;
 
 	public RenderTargetPool(IHookManager hookManager)
 	{
-		m_renderTargetsPool = new List<RenderTarget2D>();
-		m_renderTargetsFreeList = new LinkedList<int>();
-		m_graphicsDevice = Ins.Device;
+		renderTargetsPool = new List<RenderTarget2D>();
+		renderTargetsFreeList = new LinkedList<int>();
+		graphicsDevice = Ins.Device;
 
 		hookManager.AddHook(CodeLayer.ResolutionChanged, Main_OnResolutionChanged);
 	}
@@ -27,15 +27,16 @@ public class RenderTargetPool
 	/// <param name="size"></param>
 	private void Main_OnResolutionChanged(Vector2 size)
 	{
-		int poolSize = m_renderTargetsPool.Count;
+		int poolSize = renderTargetsPool.Count;
 		for (int i = 0; i < poolSize; i++)
 		{
-			if (m_renderTargetsPool[i] != null)
+			if (renderTargetsPool[i] != null)
 			{
-				m_renderTargetsPool[i].Dispose();
-				m_renderTargetsPool[i] = null;
+				renderTargetsPool[i].Dispose();
+				renderTargetsPool[i] = null;
 			}
-			m_renderTargetsPool[i] = new RenderTarget2D(m_graphicsDevice,
+			renderTargetsPool[i] = new RenderTarget2D(
+				graphicsDevice,
 				(int)size.X,
 				(int)size.Y);
 		}
@@ -48,7 +49,7 @@ public class RenderTargetPool
 	public ResourceLocker<RenderTarget2D> GetRenderTarget2D()
 	{
 		int index = GetNextFreeIndexAndOccupy();
-		return new ResourceLocker<RenderTarget2D>(m_renderTargetsPool[index], () =>
+		return new ResourceLocker<RenderTarget2D>(renderTargetsPool[index], () =>
 	   {
 		   ReleaseResourceAt(index);
 	   });
@@ -67,7 +68,7 @@ public class RenderTargetPool
 		{
 			int index = GetNextFreeIndexAndOccupy();
 			indices.Add(index);
-			renderTargets.Add(m_renderTargetsPool[index]);
+			renderTargets.Add(renderTargetsPool[index]);
 		}
 
 		return new ResourceLocker<RenderTarget2D[]>(renderTargets.ToArray(), () =>
@@ -77,7 +78,6 @@ public class RenderTargetPool
 				ReleaseResourceAt(i);
 			}
 		});
-
 	}
 
 	/// <summary>
@@ -89,19 +89,20 @@ public class RenderTargetPool
 		lock (this)
 		{
 			// 如果 freelist 没有空位就扩充我们的 rendertarget 池子
-			if (m_renderTargetsFreeList.Count == 0)
+			if (renderTargetsFreeList.Count == 0)
 			{
-				int index = m_renderTargetsPool.Count;
-				m_renderTargetsPool.Add(new RenderTarget2D(m_graphicsDevice,
-					m_graphicsDevice.Viewport.Width,
-					m_graphicsDevice.Viewport.Height));
+				int index = renderTargetsPool.Count;
+				renderTargetsPool.Add(new RenderTarget2D(
+					graphicsDevice,
+					graphicsDevice.Viewport.Width,
+					graphicsDevice.Viewport.Height));
 				return index;
 			}
 			else
 			{
 				// 否则我们就把之前的空位复用
-				int index = m_renderTargetsFreeList.First.Value;
-				m_renderTargetsFreeList.RemoveFirst();
+				int index = renderTargetsFreeList.First.Value;
+				renderTargetsFreeList.RemoveFirst();
 				return index;
 			}
 		}
@@ -111,7 +112,7 @@ public class RenderTargetPool
 	{
 		lock (this)
 		{
-			m_renderTargetsFreeList.AddFirst(index);
+			renderTargetsFreeList.AddFirst(index);
 		}
 	}
 }

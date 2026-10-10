@@ -8,6 +8,7 @@ internal class FlameRingPipeline : Pipeline
 	{
 		effect = ModAsset.FlameRing;
 	}
+
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
@@ -28,6 +29,7 @@ internal class FlameRingPipeline : Pipeline
 		Ins.Batch.End();
 	}
 }
+
 [Pipeline(typeof(FlameRingPipeline), typeof(BloomPipeline))]
 internal class FireFeatherMagicArray : VisualProjectile
 {
@@ -35,7 +37,9 @@ internal class FireFeatherMagicArray : VisualProjectile
 	public bool OldControlUp = false;
 	public int timer = 0;
 	public Vector2 ringPos = Vector2.Zero;
+
 	public override string Texture => "Everglow/" + ModAsset.FireFeatherMagic_Path;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 28;
@@ -47,10 +51,12 @@ internal class FireFeatherMagicArray : VisualProjectile
 		Projectile.tileCollide = false;
 		base.SetDefaults();
 	}
+
 	public override bool? CanCutTiles()
 	{
 		return false;
 	}
+
 	public override void AI()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -83,12 +89,13 @@ internal class FireFeatherMagicArray : VisualProjectile
 		{
 			timer--;
 			if (timer < 0)
+			{
 				Projectile.Kill();
+			}
 		}
 
 		Projectile.rotation = player.fullRotation;
 		ringPos = ringPos * 0.9f + new Vector2(-12 * player.direction, -24 * player.gravDir) * 0.1f;
-
 
 		FireFeatherOwner mplayer = player.GetModPlayer<FireFeatherOwner>();
 		mplayer.HasFlameWing = false;
@@ -126,7 +133,7 @@ internal class FireFeatherMagicArray : VisualProjectile
 		OldControlUp = player.controlUp && player.velocity.Y != 0;
 		if (Main.mouseRight && Main.mouseRightRelease)
 		{
-			//_coroutineManager.StartCoroutine(new Coroutine(RightClick((int)(WingPower / 21))));
+			// _coroutineManager.StartCoroutine(new Coroutine(RightClick((int)(WingPower / 21))));
 			if (WingPower < 21)
 			{
 				return;
@@ -138,12 +145,15 @@ internal class FireFeatherMagicArray : VisualProjectile
 			timer = 30;
 		}
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Projectile.hide = false;
 		return false;
 	}
+
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawTiles;
+
 	public override void Draw()
 	{
 		Vector2 toBottom = new Vector2(0, 40);
@@ -164,9 +174,11 @@ internal class FireFeatherMagicArray : VisualProjectile
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);
 	}
 }
-class FireFeatherOwner : ModPlayer
+
+internal class FireFeatherOwner : ModPlayer
 {
 	public bool HasFlameWing = false;
+
 	public override void PostUpdateMiscEffects()
 	{
 		if (HasFlameWing)
@@ -185,4 +197,3 @@ class FireFeatherOwner : ModPlayer
 		}
 	}
 }
-

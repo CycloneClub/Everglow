@@ -67,13 +67,13 @@ public class BloodLanternGhost : LanternMoonNPC
 		if (StayPosition == Vector2.zeroVector || Timer == 1)
 		{
 			Vector2 toPlayer = new Vector2(0, -Main.rand.NextFloat(180, 420)).RotatedByRandom(0.75f);
-			//	player.Center - NPC.Center;
-			//toPlayer = -toPlayer.NormalizeSafe() * Main.rand.NextFloat(180, 420);
-			//toPlayer = toPlayer.RotatedByRandom(MathHelper.PiOver4);
-			//if (toPlayer.Y > 0)
-			//{
-			//	toPlayer.Y *= -1;
-			//}
+			// player.Center - NPC.Center;
+			// toPlayer = -toPlayer.NormalizeSafe() * Main.rand.NextFloat(180, 420);
+			// toPlayer = toPlayer.RotatedByRandom(MathHelper.PiOver4);
+			// if (toPlayer.Y > 0)
+			// {
+			// toPlayer.Y *= -1;
+			// }
 			StayPosition = player.Center + toPlayer;
 		}
 		if (Timer > 1 && Timer < 60)

@@ -116,6 +116,5 @@ public class BakeryChair : ModTile
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		return false;
-		return base.PreDraw(i, j, spriteBatch);
 	}
 }

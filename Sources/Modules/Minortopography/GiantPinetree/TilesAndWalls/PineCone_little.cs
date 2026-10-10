@@ -15,6 +15,7 @@ public class PineCone_little : ModTile
 
 		AddMapEntry(new Color(119, 77, 63));
 	}
+
 	public override bool TileFrame(int i, int j, ref bool resetFrame, ref bool noBreak)
 	{
 		return false;

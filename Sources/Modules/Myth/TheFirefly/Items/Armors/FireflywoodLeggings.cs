@@ -28,6 +28,7 @@ namespace Everglow.Myth.TheFirefly.Items.Armors
 		{
 			player.moveSpeed += 0.05f;
 		}
+
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();

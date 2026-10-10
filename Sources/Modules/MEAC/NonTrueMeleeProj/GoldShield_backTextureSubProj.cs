@@ -6,6 +6,7 @@ namespace Everglow.MEAC.NonTrueMeleeProj;
 public class GoldShield_backTextureSubProj : ModProjectile
 {
 	public override string Texture => ModAsset.GoldShield_Mod;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 10;
@@ -17,7 +18,9 @@ public class GoldShield_backTextureSubProj : ModProjectile
 		Projectile.timeLeft = 1200;
 		Projectile.penetrate = -1;
 	}
+
 	public Projectile MainProj;
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		if (Main.projectile == null)
@@ -39,6 +42,7 @@ public class GoldShield_backTextureSubProj : ModProjectile
 		}
 		base.OnSpawn(source);
 	}
+
 	public override void AI()
 	{
 		if (MainProj == null || !MainProj.active)
@@ -48,6 +52,7 @@ public class GoldShield_backTextureSubProj : ModProjectile
 		Projectile.Center = Main.player[Projectile.owner].Center;
 		Projectile.hide = true;
 	}
+
 	public void DrawPost(Color color, int widthCount, float halfHeight, float initialPhase, Texture2D texture)
 	{
 		if (!Projectile.active || Projectile == null)
@@ -84,10 +89,12 @@ public class GoldShield_backTextureSubProj : ModProjectile
 		Main.graphics.GraphicsDevice.Textures[0] = texture;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, vertex2Ds.ToArray(), 0, vertex2Ds.Count / 3);
 	}
+
 	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
 	{
 		behindProjectiles.Add(index);
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		if (Ins.VisualQuality.High)

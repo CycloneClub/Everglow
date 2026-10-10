@@ -8,6 +8,7 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee.Clubs;
 public class ChlorophyteClub_VFX_2 : ModProjectile
 {
 	public override string Texture => "Everglow/" + ModAsset.IchorClub_Path;
+
 	internal Vector2[] Position = new Vector2[900];
 	internal Vector2[] StartPosition = new Vector2[900];
 	internal Vector2[,] OldPosition = new Vector2[900/*编号*/, 60/*位置*/];
@@ -17,6 +18,7 @@ public class ChlorophyteClub_VFX_2 : ModProjectile
 	internal int[] TimeLeft = new int[900];
 	internal bool[] Active = new bool[900];
 	internal bool[] Smaller = new bool[900];
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		Projectile.tileCollide = false;
@@ -34,6 +36,7 @@ public class ChlorophyteClub_VFX_2 : ModProjectile
 		}
 		SoundEngine.PlaySound(SoundID.DD2_BetsyFlameBreath.WithPitchOffset(0.3f), Projectile.Center);
 	}
+
 	public override void AI()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -54,6 +57,7 @@ public class ChlorophyteClub_VFX_2 : ModProjectile
 			}
 		}
 	}
+
 	internal void ActivateVine(int i, Vector2 position, Vector2 velocity, int timeleft = 300, float ai0 = 0, float ai1 = 0, bool smaller = false)
 	{
 		Player player = Main.player[Projectile.owner];
@@ -74,13 +78,17 @@ public class ChlorophyteClub_VFX_2 : ModProjectile
 		Smaller[i] = smaller;
 		Active[i] = true;
 	}
+
 	internal void UpdateMoving()
 	{
 		Player player = Main.player[Projectile.owner];
 		for (int i = 0; i < 900; i++)
 		{
 			if (!Active[i])
+			{
 				continue;
+			}
+
 			TimeLeft[i] -= 1;
 
 			OldPosition[i, 0] = Position[i];
@@ -93,7 +101,7 @@ public class ChlorophyteClub_VFX_2 : ModProjectile
 			float colorLight = Math.Min(TimeLeft[i] / 100f, 1f);
 			if (TimeLeft[i] < 75)
 			{
-				if (AI0[i] > 60 && AI0[i] <= 85)//0~100
+				if (AI0[i] > 60 && AI0[i] <= 85)// 0~100
 				{
 					Velocity[i] = Velocity[i].RotatedBy(Math.PI / -20f);
 					Velocity[i] *= 0.975f;
@@ -107,7 +115,7 @@ public class ChlorophyteClub_VFX_2 : ModProjectile
 				}
 				else
 				{
-					AI1[i] += 1 / 30f;//0.0~2.0
+					AI1[i] += 1 / 30f; // 0.0~2.0
 					Velocity[i] = Velocity[i].RotatedBy(Math.PI / 60d * (float)Math.Sin(AI1[i] * Math.PI));
 					Velocity[i] *= 0.975f;
 					Lighting.AddLight(Position[i], colorLight * 0.0f, colorLight * 0.3f, colorLight * 0.0f);
@@ -116,17 +124,25 @@ public class ChlorophyteClub_VFX_2 : ModProjectile
 			else
 			{
 				if ((Position[i] - StartPosition[i]).Length() >= 60)
+				{
 					TimeLeft[i] -= 5;
-				AI1[i] += 1 / 30f;//0.0~2.0
+				}
+
+				AI1[i] += 1 / 30f; // 0.0~2.0
 				Velocity[i] = Velocity[i].RotatedBy(Math.PI / 60d * (float)Math.Sin(AI1[i] * Math.PI));
 				Lighting.AddLight(Position[i], 0, colorLight * 0.3f, 0);
 				if (Main.rand.NextBool(40) && !Smaller[i])
+				{
 					ActivateVine(i, Position[i] + Projectile.Center - StartPosition[i], Velocity[i], Main.rand.Next(70, 140), Main.rand.Next(100), Main.rand.NextFloat(0, 2f), true);
+				}
 			}
 			if (TimeLeft[i] <= 0)
+			{
 				KillVine(i);
+			}
 		}
 	}
+
 	internal void KillVine(int i)
 	{
 		StartPosition[i] = Vector2.Zero;
@@ -140,6 +156,7 @@ public class ChlorophyteClub_VFX_2 : ModProjectile
 		AI0[i] = 0;
 		AI1[i] = 0;
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;
@@ -151,7 +168,7 @@ public class ChlorophyteClub_VFX_2 : ModProjectile
 			float value = (60 - Projectile.timeLeft) / 30f;
 			if (value < 1)
 			{
-				DrawCircleDark(MathF.Pow(value, 0.3f) * 140 * Projectile.ai[0] * 2.2f, 85 * (1 - value) + 62 * Projectile.ai[0] * 2.2f, (1 - value), Projectile.Center - Main.screenPosition, Main.time / 16f);
+				DrawCircleDark(MathF.Pow(value, 0.3f) * 140 * Projectile.ai[0] * 2.2f, 85 * (1 - value) + 62 * Projectile.ai[0] * 2.2f, 1 - value, Projectile.Center - Main.screenPosition, Main.time / 16f);
 				float x = (value - 0.5f) * 2f;
 				float mulColor = MathF.Pow(Math.Min(MathF.Cos(MathHelper.PiOver2 * x), 1 - Math.Abs(x)), 2) * 2;
 				Color c0 = new Color(0.2f * (1 - value), 1.5f * (1 - value), 0.8f * (1 - value), 0) * mulColor;
@@ -163,32 +180,41 @@ public class ChlorophyteClub_VFX_2 : ModProjectile
 				float x = (value - 0.5f) * 2f;
 				float mulColor = MathF.Pow(Math.Min(MathF.Cos(MathHelper.PiOver2 * x), 1 - Math.Abs(x)), 2) * 5;
 				Color c0 = new Color(0.2f * (1 - value), 1f * (1 - value), 0.8f * (1 - value), 0) * mulColor;
-				DrawCircleDark(MathF.Pow(value, 0.3f) * 104 * Projectile.ai[0] * 2.2f, 47 * (1 - value) + 32 * Projectile.ai[0] * 2.2f, (1 - value), Projectile.Center - Main.screenPosition, -Main.time / 32f);
+				DrawCircleDark(MathF.Pow(value, 0.3f) * 104 * Projectile.ai[0] * 2.2f, 47 * (1 - value) + 32 * Projectile.ai[0] * 2.2f, 1 - value, Projectile.Center - Main.screenPosition, -Main.time / 32f);
 				DrawCircle(MathF.Pow(value, 0.3f) * 104 * Projectile.ai[0] * 2.2f, 47 * (1 - value) + 32 * Projectile.ai[0] * 2.2f, c0, Projectile.Center - Main.screenPosition, -Main.time / 32f);
 			}
 		}
 		for (int i = 0; i < 900; i++)
 		{
 			if (Position[i] == Vector2.Zero || !Active[i])
+			{
 				continue;
+			}
 
 			var bars = new List<Vertex2D>();
 			float colorLight = Math.Min(TimeLeft[i] / 100f, 1f);
 			float width = 6;
 			if (TimeLeft[i] < 60)
+			{
 				width = TimeLeft[i] / 10f;
+			}
+
 			if (Smaller[i])
 			{
 				width = 5;
 				if (TimeLeft[i] < 60)
+				{
 					width = TimeLeft[i] / 12f;
+				}
 			}
 
 			int TrueL = 0;
 			for (int j = 1; j < 60; ++j)
 			{
 				if (OldPosition[i, j] == Vector2.Zero)
+				{
 					break;
+				}
 
 				TrueL++;
 			}
@@ -196,7 +222,9 @@ public class ChlorophyteClub_VFX_2 : ModProjectile
 			for (int j = 2; j < 60; ++j)
 			{
 				if (OldPosition[i, j] == Vector2.Zero)
+				{
 					break;
+				}
 
 				var normalDir = OldPosition[i, j - 1] - OldPosition[i, j];
 				normalDir = Vector2.Normalize(new Vector2(-normalDir.Y, normalDir.X));
@@ -206,7 +234,10 @@ public class ChlorophyteClub_VFX_2 : ModProjectile
 				Vector2 DrawPos = Projectile.Center + OldPosition[i, j] - StartPosition[i] + new Vector2(4) - Main.screenPosition;
 				var color = new Color(0.2f, 1f, 0.7f, 0f);
 				if (Smaller[i])
+				{
 					color = new Color(0.0f, 0.4f, 0.3f, 0);
+				}
+
 				bars.Add(new Vertex2D(DrawPos + normalDir * width, color, new Vector3(factor + 0.008f, 1, w)));
 				bars.Add(new Vertex2D(DrawPos - normalDir * width, color, new Vector3(factor + 0.008f, 0, w)));
 			}
@@ -257,6 +288,7 @@ public class ChlorophyteClub_VFX_2 : ModProjectile
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, circle.ToArray(), 0, circle.Count - 2);
 		}
 	}
+
 	private static void DrawCircleDark(float radius, float width, float alpha, Vector2 center, double addRot = 0)
 	{
 		Color color = new Color(1f, 1f, 1f, alpha * 1.6f);

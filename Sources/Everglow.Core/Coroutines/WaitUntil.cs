@@ -5,15 +5,18 @@ namespace Everglow.Commons.Coroutines;
 /// </summary>
 public class WaitUntil : ICoroutineInstruction
 {
-	private Func<bool> m_predicate;
+	private Func<bool> predicate;
+
 	public WaitUntil(Func<bool> predicate)
 	{
-		m_predicate = predicate;
+		this.predicate = predicate;
 	}
+
 	public bool ShouldWait()
 	{
-		return !m_predicate();
+		return !predicate();
 	}
+
 	public void Update()
 	{
 	}

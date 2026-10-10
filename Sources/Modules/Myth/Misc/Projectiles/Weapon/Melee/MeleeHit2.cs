@@ -8,6 +8,7 @@ public class MeleeHit2 : ModProjectile
 	{
 		// DisplayName.SetDefault("Null");
 	}
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 40;
@@ -23,6 +24,7 @@ public class MeleeHit2 : ModProjectile
 		Projectile.penetrate = 1;
 		Projectile.scale = 1;
 	}
+
 	public override void AI()
 	{
 	}

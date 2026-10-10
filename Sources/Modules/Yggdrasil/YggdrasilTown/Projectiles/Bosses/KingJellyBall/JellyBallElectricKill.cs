@@ -41,7 +41,7 @@ public class JellyBallElectricKill : ModProjectile
 			}
 			return;
 		}
-		if (Killee == null || !Killee.active || Killee.type != ModContent.NPCType<JellyBall>() && Killee.type != ModContent.NPCType<GiantJellyBall>() || Killee.life <= 0)
+		if (Killee == null || !Killee.active || (Killee.type != ModContent.NPCType<JellyBall>() && Killee.type != ModContent.NPCType<GiantJellyBall>()) || Killee.life <= 0)
 		{
 			if (Projectile.timeLeft > 60)
 			{

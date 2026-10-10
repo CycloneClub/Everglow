@@ -1,0 +1,86 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>preview</LangVersion>
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <NoWarn>$(NoWarn);CS0436</NoWarn>
+    <!-- Add a rule here only after its existing violations have been fixed. -->
+    <WarningsAsErrors>
+      $(WarningsAsErrors);
+      SA1001;
+      SA1002;
+      SA1003;
+      SA1005;
+      SA1028;
+      SA1106;
+      SA1116;
+      SA1122;
+      SA1127;
+      SA1128;
+      SA1137;
+      SA1306;
+      SA1308;
+      SA1400;
+      SA1413;
+      SA1500;
+      SA1502;
+      SA1503;
+      SA1505;
+      SA1507;
+      SA1508;
+      SA1516;
+      SA1518;
+      SA1520;
+      SA1119;
+      SA1008;
+      SA1015;
+      SA1111;
+      SA1121;
+      SA1132;
+      SA1408;
+      SA1501;
+      SA1504;
+      SA1509;
+      SA1510;
+      SA1517;
+      SA1519;
+      SA1129;
+      ChangeMagicNumberToID;
+      SA1025;
+      SA1120;
+      SA1100;
+      SA1303;
+      SA1414;
+      SA1316;
+      SA1300;
+      SA1123
+    </WarningsAsErrors>
+    <Modules>AssetReplace;CagedDomain;EternalResolve;Example;Food;MEAC;Minortopography;Myth;Ocean;Plant;PlantAndFarm;SpellAndSkull;SubSpace;Yggdrasil</Modules>
+    <DefineConstants>$(DefineConstants);$(Modules)</DefineConstants>
+    <EnableModBuilder>false</EnableModBuilder>
+    <EnablePathGenerator>true</EnablePathGenerator>
+    <CompileEffect>true</CompileEffect>
+    <NotCopyLocal>true</NotCopyLocal>
+  </PropertyGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="**\*.json" Pack="true" ModPath="%(Identity)" />
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="**\*.atlas" Pack="true" ModPath="%(Identity)" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Solaestas.tModLoader.ModBuilder" Version="1.5.11" />
+    <PackageReference Include="StyleCop.Analyzers.Unstable" Version="1.2.0.556">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <Publicize Include="ReLogic" />
+    <Publicize Include="MonoMod.RuntimeDetour" />
+    <Publicize Include="MonoMod.Utils" />
+    <AdditionalFiles Include="**\*.obj;**\*.bmp;**\*.mapio;**\*.ttf" Pack="true" ModPath="%(Identity)" Exclude="bin\**\*;obj\**\*" />
+    <AdditionalFiles Include="$(MSBuildThisFileFullPath)" Pack="false" Visible="false" />
+  </ItemGroup>
+</Project>

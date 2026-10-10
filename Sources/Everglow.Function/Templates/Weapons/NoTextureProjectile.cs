@@ -1,4 +1,5 @@
 namespace Everglow.Commons.Templates.Weapons;
+
 /// <summary>
 /// If a custom rendering projectile don't use texture itself, inherit this one.
 /// </summary>

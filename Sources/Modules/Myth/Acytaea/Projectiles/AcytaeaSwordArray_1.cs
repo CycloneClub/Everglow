@@ -7,6 +7,7 @@ namespace Everglow.Myth.Acytaea.Projectiles;
 public class AcytaeaSwordArray_1 : ModProjectile
 {
 	public override string Texture => "Everglow/Myth/Acytaea/Projectiles/AcytaeaSword_projectile";
+
 	public override void SetDefaults()
 	{
 		Projectile.aiStyle = -1;
@@ -23,12 +24,14 @@ public class AcytaeaSwordArray_1 : ModProjectile
 		Projectile.width = 80;
 		Projectile.height = 80;
 	}
+
 	public int Timer = 0;
 	public float AddRot = 0;
 	public float Omega = 0;
 	public float Range = 0;
 	public NPC Owner = new NPC();
 	public List<bool> subProjActive;
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		int index = (int)Projectile.ai[0];
@@ -48,6 +51,7 @@ public class AcytaeaSwordArray_1 : ModProjectile
 		Projectile.frame = 0;
 		base.OnSpawn(source);
 	}
+
 	public override void AI()
 	{
 		if (Owner == null || !Owner.active)
@@ -116,6 +120,7 @@ public class AcytaeaSwordArray_1 : ModProjectile
 		}
 		Projectile.Kill();
 	}
+
 	private void GenerateVFX()
 	{
 		for (int k = 0; k < subProjActive.Count; k++)
@@ -139,7 +144,7 @@ public class AcytaeaSwordArray_1 : ModProjectile
 							Visible = true,
 							position = positionVFX,
 							maxTime = Main.rand.Next(14, 16),
-							ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.04f, 0.04f), Main.rand.NextFloat(18f, 30f) }
+							ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.04f, 0.04f), Main.rand.NextFloat(18f, 30f) },
 						};
 						Ins.VFXManager.Add(acytaeaFlame);
 					}
@@ -156,7 +161,7 @@ public class AcytaeaSwordArray_1 : ModProjectile
 							Visible = true,
 							position = positionVFX,
 							maxTime = Main.rand.Next(14, 36),
-							ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.04f, 0.04f), Main.rand.NextFloat(8f, 10f) }
+							ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.04f, 0.04f), Main.rand.NextFloat(8f, 10f) },
 						};
 						Ins.VFXManager.Add(acytaeaFlame);
 					}
@@ -164,6 +169,7 @@ public class AcytaeaSwordArray_1 : ModProjectile
 			}
 		}
 	}
+
 	public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 	{
 		for (int k = 0; k < subProjActive.Count; k++)
@@ -184,10 +190,11 @@ public class AcytaeaSwordArray_1 : ModProjectile
 		}
 		return false;
 	}
+
 	public override void OnKill(int timeLeft)
 	{
-
 	}
+
 	public void AmmoHit(int whoAmI)
 	{
 		Vector2 deltaVector = new Vector2(0, Range).RotatedBy(whoAmI / (float)subProjActive.Count * MathHelper.TwoPi + AddRot);
@@ -198,7 +205,7 @@ public class AcytaeaSwordArray_1 : ModProjectile
 		Projectile.friendly = false;
 		Projectile.ignoreWater = true;
 		Projectile.velocity = Projectile.oldVelocity;
-		SoundEngine.PlaySound((SoundID.DD2_WitherBeastCrystalImpact.WithVolume(0.3f)).WithPitchOffset(Main.rand.NextFloat(-0.4f, 0.4f)), test);
+		SoundEngine.PlaySound(SoundID.DD2_WitherBeastCrystalImpact.WithVolume(0.3f).WithPitchOffset(Main.rand.NextFloat(-0.4f, 0.4f)), test);
 		for (int x = 0; x < 5; x++)
 		{
 			Vector2 newVec = new Vector2(0, Main.rand.NextFloat(4f, 12f)).RotatedByRandom(6.238f);
@@ -211,15 +218,17 @@ public class AcytaeaSwordArray_1 : ModProjectile
 				Visible = true,
 				position = positionVFX,
 				maxTime = Main.rand.Next(14, 16),
-				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.04f, 0.04f), Main.rand.NextFloat(18f, 30f) }
+				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.04f, 0.04f), Main.rand.NextFloat(18f, 30f) },
 			};
 			Ins.VFXManager.Add(acytaeaFlame);
 		}
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
 		Texture2D tex = ModAsset.AcytaeaFlySword_red.Value;

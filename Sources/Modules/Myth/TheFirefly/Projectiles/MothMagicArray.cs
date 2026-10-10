@@ -38,7 +38,10 @@ public class MothMagicArray : ModProjectile
 				}
 			}
 			if (Projectile.localAI[0] % (AttackTime / 5) == 0)
+			{
 				player.statMana -= player.ownedProjectileCounts[ModContent.ProjectileType<GlowMoth>()];
+			}
+
 			Projectile.timeLeft = 20;
 		}
 		else
@@ -68,7 +71,7 @@ public class MothMagicArray : ModProjectile
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, vertex2Ds.ToArray(), 0, vertex2Ds.Count / 3);
 	}
 
-	private float CirR0 = 0;
+	private float cirR0 = 0;
 
 	public Color GetProjectileAlpha(Color orig)
 	{
@@ -77,21 +80,23 @@ public class MothMagicArray : ModProjectile
 			R = (byte)(orig.R * (255 - Projectile.alpha) / 255f),
 			G = (byte)(orig.G * (255 - Projectile.alpha) / 255f),
 			B = (byte)(orig.B * (255 - Projectile.alpha) / 255f),
-			A = (byte)(orig.A * (255 - Projectile.alpha) / 255f)
+			A = (byte)(orig.A * (255 - Projectile.alpha) / 255f),
 		};
 		return color;
 	}
 
-	private Vector2 OldAimPos = Vector2.Zero;
+	private Vector2 oldAimPos = Vector2.Zero;
 
 	public override void PostDraw(Color lightColor)
 	{
 		Player player = Main.player[Projectile.owner];
 		int AttackTime = (int)(player.HeldItem.useTime / 0.6);
-		CirR0 += 0.007f;
+		cirR0 += 0.007f;
 		float Rad;
 		if (Projectile.timeLeft >= 20)
+		{
 			Rad = Math.Min(Projectile.localAI[0] * 3, 90);
+		}
 		else
 		{
 			Rad = Math.Min(Projectile.localAI[0] * 3, 90) * Projectile.timeLeft / 20f;
@@ -115,8 +120,8 @@ public class MothMagicArray : ModProjectile
 
 		for (int h = 0; h < 90; h++)
 		{
-			Vector2 v0 = new Vector2(0, Rad * 0.78f).RotatedBy(h / 45d * Math.PI - CirR0 * 0.3f);
-			Vector2 v1 = new Vector2(0, Rad * 0.78f).RotatedBy((h + 1) / 45d * Math.PI - CirR0 * 0.3f);
+			Vector2 v0 = new Vector2(0, Rad * 0.78f).RotatedBy(h / 45d * Math.PI - cirR0 * 0.3f);
+			Vector2 v1 = new Vector2(0, Rad * 0.78f).RotatedBy((h + 1) / 45d * Math.PI - cirR0 * 0.3f);
 			Vx.Add(new Vertex2D(vf + v0, new Color(0, 0, 0, 0.1f * Rad / 90f), new Vector3(h / 30f % 1f, 0, 0)));
 			Vx.Add(new Vertex2D(vf + v1, new Color(0, 0, 0, 0.1f * Rad / 90f), new Vector3((0.999f + h) / 30f % 1f, 0, 0)));
 			Vx.Add(new Vertex2D(vf, new Color(0, 0, 0, 0.9f * Rad / 90f), new Vector3((0.5f + h) / 30f % 1f, 1, 0)));
@@ -125,15 +130,15 @@ public class MothMagicArray : ModProjectile
 		Main.graphics.GraphicsDevice.Textures[0] = t;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, Vx.ToArray(), 0, Vx.Count / 3);
 
-		//鼠标圈
+		// 鼠标圈
 
 		t = ModAsset.BlueFlyD.Value;
 		Main.spriteBatch.Draw(t, Main.MouseScreen, null, new Color(0.5f, 0.5f, 0.5f, 0), 0, t.Size() / 2f, 0.75f, SpriteEffects.None, 0);
 
-		//攻击位置,此处顺带标记距离小于120的
+		// 攻击位置,此处顺带标记距离小于120的
 		if (Projectile.localAI[0] % AttackTime == 0)
 		{
-			OldAimPos = Main.MouseWorld;
+			oldAimPos = Main.MouseWorld;
 			float distance = 120;
 			foreach (NPC target in Main.npc)
 			{
@@ -147,15 +152,15 @@ public class MothMagicArray : ModProjectile
 				}
 			}
 		}
-		if (OldAimPos != Vector2.Zero)
+		if (oldAimPos != Vector2.Zero)
 		{
 			float k = (AttackTime - Projectile.localAI[0] % AttackTime) / (AttackTime * 0.5f);
 			k = Math.Min(k, 1);
-			Vector2 v2 = OldAimPos - Main.screenPosition;
+			Vector2 v2 = oldAimPos - Main.screenPosition;
 			for (int h = 0; h < 90; h++)
 			{
-				Vector2 v0 = new Vector2(0, Rad * 0.4f * k).RotatedBy(h / 45d * Math.PI - CirR0 * 2.3f);
-				Vector2 v1 = new Vector2(0, Rad * 0.4f * k).RotatedBy((h + 1) / 45d * Math.PI - CirR0 * 2.3f);
+				Vector2 v0 = new Vector2(0, Rad * 0.4f * k).RotatedBy(h / 45d * Math.PI - cirR0 * 2.3f);
+				Vector2 v1 = new Vector2(0, Rad * 0.4f * k).RotatedBy((h + 1) / 45d * Math.PI - cirR0 * 2.3f);
 
 				Vx.Add(new Vertex2D(v2 + v0, color3, new Vector3(h / 30f % 1f, 0, 0)));
 				Vx.Add(new Vertex2D(v2 + v1, color3, new Vector3((1 + h) / 30f % 1f, 0, 0)));
@@ -169,11 +174,11 @@ public class MothMagicArray : ModProjectile
 			Main.spriteBatch.Draw(t, v2, null, new Color(0.5f * k, 0.5f * k, 0.5f * k, 0f * k), 0, t.Size() / 2f, 0.75f, SpriteEffects.None, 0);
 		}
 
-		//花边圈
+		// 花边圈
 		for (int h = 0; h < 90; h++)
 		{
-			Vector2 v0 = new Vector2(0, Rad).RotatedBy(h / 45d * Math.PI - CirR0 * 0.3f);
-			Vector2 v1 = new Vector2(0, Rad).RotatedBy((h + 1) / 45d * Math.PI - CirR0 * 0.3f);
+			Vector2 v0 = new Vector2(0, Rad).RotatedBy(h / 45d * Math.PI - cirR0 * 0.3f);
+			Vector2 v1 = new Vector2(0, Rad).RotatedBy((h + 1) / 45d * Math.PI - cirR0 * 0.3f);
 			Vx.Add(new Vertex2D(vf + v0, color2, new Vector3(h / 30f % 1f, 0, 0)));
 			Vx.Add(new Vertex2D(vf + v1, color2, new Vector3((0.999f + h) / 30f % 1f, 0, 0)));
 			Vx.Add(new Vertex2D(vf, color2, new Vector3((0.5f + h) / 30f % 1f, 1, 0)));
@@ -182,12 +187,12 @@ public class MothMagicArray : ModProjectile
 		Main.graphics.GraphicsDevice.Textures[0] = t;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, Vx.ToArray(), 0, Vx.Count / 3);
 
-		//噪声圈
+		// 噪声圈
 		var Vx2 = new List<Vertex2D>();
 		for (int h = 0; h < 90; h++)
 		{
-			Vector2 v0 = new Vector2(0, Rad).RotatedBy(h / 45d * Math.PI + CirR0 * 0.4f);
-			Vector2 v1 = new Vector2(0, Rad).RotatedBy((h + 1) / 45d * Math.PI + CirR0 * 0.4f);
+			Vector2 v0 = new Vector2(0, Rad).RotatedBy(h / 45d * Math.PI + cirR0 * 0.4f);
+			Vector2 v1 = new Vector2(0, Rad).RotatedBy((h + 1) / 45d * Math.PI + cirR0 * 0.4f);
 			Vx2.Add(new Vertex2D(vf + v0, color4, new Vector3(h / 30f % 1f, 0, 0)));
 			Vx2.Add(new Vertex2D(vf + v1, color4, new Vector3((1 + h) / 30f % 1f, 0, 0)));
 			Vx2.Add(new Vertex2D(vf, color4, new Vector3((0.5f + h) / 30f % 1f, 1, 0)));
@@ -196,12 +201,12 @@ public class MothMagicArray : ModProjectile
 		Main.graphics.GraphicsDevice.Textures[0] = t;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, Vx2.ToArray(), 0, Vx2.Count / 3);
 
-		//内部圈
+		// 内部圈
 		var Vx3 = new List<Vertex2D>();
 		for (int h = 0; h < 90; h++)
 		{
-			Vector2 v0 = new Vector2(0, Rad).RotatedBy(h / 45d * Math.PI + CirR0);
-			Vector2 v1 = new Vector2(0, Rad).RotatedBy((h + 1) / 45d * Math.PI + CirR0);
+			Vector2 v0 = new Vector2(0, Rad).RotatedBy(h / 45d * Math.PI + cirR0);
+			Vector2 v1 = new Vector2(0, Rad).RotatedBy((h + 1) / 45d * Math.PI + cirR0);
 			if (h % 2 == 1)
 			{
 				Vx3.Add(new Vertex2D(vf + v0, color3, new Vector3(h / 30f % 1f, 0, 0)));
@@ -219,12 +224,12 @@ public class MothMagicArray : ModProjectile
 		Main.graphics.GraphicsDevice.Textures[0] = t;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, Vx3.ToArray(), 0, Vx3.Count / 3);
 
-		//旋转线
+		// 旋转线
 		var color5 = new Color(84, 0, 255, 0);
 		for (int h = 0; h < 7; h++)
 		{
-			Vector2 v0 = new Vector2(0, Rad * 0.78f).RotatedBy(h / 3.5 * Math.PI - CirR0 * 0.9);
-			Vector2 v1 = new Vector2(0, Rad * 0.78f).RotatedBy(h / 3.5 * Math.PI - CirR0 * 0.9 + (Projectile.localAI[0] + AttackTime * 0.5) / (AttackTime * 0.5) * Math.PI);
+			Vector2 v0 = new Vector2(0, Rad * 0.78f).RotatedBy(h / 3.5 * Math.PI - cirR0 * 0.9);
+			Vector2 v1 = new Vector2(0, Rad * 0.78f).RotatedBy(h / 3.5 * Math.PI - cirR0 * 0.9 + (Projectile.localAI[0] + AttackTime * 0.5) / (AttackTime * 0.5) * Math.PI);
 			DrawDoubleLine(vf + v0, vf + (v1 + v0) * 0.5f, new Color(0, 0, 40, 0), color3);
 			DrawDoubleLine(vf + (v1 + v0) * 0.5f, vf + v1, color3, new Color(0, 0, 40, 0));
 		}
@@ -235,15 +240,15 @@ public class MothMagicArray : ModProjectile
 
 		color5 = GetProjectileAlpha(color5);
 
-		//固定线
+		// 固定线
 		for (int h = 0; h < 7; h++)
 		{
-			Vector2 v0 = new Vector2(0, Rad * 0.78f).RotatedBy(h / 3.5 * Math.PI - CirR0 * 0.3);
-			Vector2 v1 = new Vector2(0, Rad * 0.78f).RotatedBy(h / 3.5 * Math.PI - CirR0 * 0.3 - (4 + ((Projectile.localAI[0] + AttackTime * 0.5) % (AttackTime * 2) > AttackTime ? 0 : 2)) / 7d * Math.PI);
+			Vector2 v0 = new Vector2(0, Rad * 0.78f).RotatedBy(h / 3.5 * Math.PI - cirR0 * 0.3);
+			Vector2 v1 = new Vector2(0, Rad * 0.78f).RotatedBy(h / 3.5 * Math.PI - cirR0 * 0.3 - (4 + ((Projectile.localAI[0] + AttackTime * 0.5) % (AttackTime * 2) > AttackTime ? 0 : 2)) / 7d * Math.PI);
 			DrawDoubleLine(vf + v0, vf + (v1 + v0) * 0.5f, new Color(0, 0, 0, 0), color5);
 			DrawDoubleLine(vf + (v1 + v0) * 0.5f, vf + v1, color5, new Color(0, 0, 0, 0));
 		}
-		//对召唤物的连线
+		// 对召唤物的连线
 		foreach (Projectile p in Main.projectile)
 		{
 			if (p.active)
@@ -296,11 +301,15 @@ public class MothMagicArray : ModProjectile
 		{
 			Texture2D t = ModAsset.Wave.Value;
 			if (Black)
+			{
 				t = ModAsset.WaveBlack.Value;
+			}
+
 			Main.graphics.GraphicsDevice.Textures[0] = t;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, circle.ToArray(), 0, circle.Count - 2);
 		}
 	}
+
 	private static void DrawCircle(float radius, float width, Color color, Vector2 center, float value0 = 0, float valu1 = 0)
 	{
 		var circle = new List<Vertex2D>();

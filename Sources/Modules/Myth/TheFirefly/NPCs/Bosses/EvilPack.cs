@@ -28,7 +28,7 @@ public class EvilPack : ModNPC
 		NPC.noGravity = true;
 		NPC.noTileCollide = true;
 		NPC.behindTiles = true;
-		NPC.HitSound = SoundID.NPCHit18; //Or use NPCHit11. Whichever one sounds more realistic to the cocoon. ~Setnour6
+		NPC.HitSound = SoundID.NPCHit18; // Or use NPCHit11. Whichever one sounds more realistic to the cocoon. ~Setnour6
 		NPC.DeathSound = SoundID.NPCDeath11;
 		NPC.aiStyle = -1;
 		NPC.boss = false;
@@ -45,11 +45,12 @@ public class EvilPack : ModNPC
 		NPC.frame = new Rectangle(186 * valueTime, 0, 186, 278);
 		float ValueLight = MathUtils.Sin((float)(Main.timeForVisualEffects * 0.26 * Math.PI / 7d + 0.5)) * 0.2f + 0.2f;
 		if (ValueLight > 1)
+		{
 			ValueLight *= ValueLight;
-		//Lighting.AddLight((int)(NPC.Center.X / 16f), (int)(NPC.Center.Y / 16f),0.2f * ValueLight, 0.2f * ValueLight, 0.4f * ValueLight);
+		}
+		// Lighting.AddLight((int)(NPC.Center.X / 16f), (int)(NPC.Center.Y / 16f),0.2f * ValueLight, 0.2f * ValueLight, 0.4f * ValueLight);
 		if (NPC.ai[0] < 10)
 		{
-
 		}
 		else
 		{
@@ -97,7 +98,6 @@ public class EvilPack : ModNPC
 							Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, new Vector2(-35, 35).RotateRandom(Main.rand.NextFloat(-0.5f, 0.5f) * Main.rand.NextFloat(0.75f, 1.25f)) + new Vector2(0, Main.rand.NextFloat(0.75f, 12.5f)).RotateRandom(6.283), ModContent.ProjectileType<MothSummonEffect>(), 0, 0, -1, Main.rand.NextFloat(-0.2f, 0.2f));
 						}
 					}
-
 
 					NPC.ai[2] += 1;
 				}
@@ -149,11 +149,15 @@ public class EvilPack : ModNPC
 	public override void HitEffect(NPC.HitInfo hit)
 	{
 		if (NPC.ai[0] < 10)
+		{
 			NPC.ai[0] += 1;
+		}
 		else
 		{
 			if (NPC.ai[1] < 90f)
+			{
 				NPC.ai[1] += 0.01f;
+			}
 			else
 			{
 				NPC.ai[1] = 91f;
@@ -161,7 +165,9 @@ public class EvilPack : ModNPC
 		}
 		NPC.life = NPC.lifeMax;
 		if (Math.Abs(omega) < 0.2f)
+		{
 			omega -= Math.Min(hit.HitDirection * (float)hit.Damage / 10000f, 0.05f);
+		}
 	}
 
 	public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
@@ -204,13 +210,15 @@ public class EvilPack : ModNPC
 		{
 			SpriteEffects effects = SpriteEffects.None;
 			if (NPC.spriteDirection == 1)
+			{
 				effects = SpriteEffects.FlipHorizontally;
+			}
+
 			Texture2D glowTex = ModAsset.EvilHiveGlow.Value;
 			float C = (float)Math.Sqrt(Math.Max((90 - NPC.ai[1]) / 90f, 0)) * 0.6f + Math.Abs(omega * 15);
 			C = 0.8f + C * 0.2f;
 			var color = new Color(C, C, C, 0);
 			var drawOrigin = new Vector2(glowTex.Width / 2f / Main.npcFrameCount[NPC.type], 0);
-
 
 			Main.spriteBatch.Draw(glowTex, NPC.position + drawOffset - Main.screenPosition, new Rectangle?(NPC.frame), color, NPC.rotation, drawOrigin, 1f, effects, 0f);
 		}

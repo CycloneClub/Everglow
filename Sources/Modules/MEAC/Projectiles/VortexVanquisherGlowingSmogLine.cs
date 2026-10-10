@@ -4,7 +4,7 @@ using Everglow.Commons.VFX;
 
 namespace Everglow.MEAC.Projectiles;
 
-public class VortexVanquisherGlowingSmogLinePipeline : Pipeline//这个绘制层在火焰之之后，被火焰覆盖
+public class VortexVanquisherGlowingSmogLinePipeline : Pipeline// 这个绘制层在火焰之之后，被火焰覆盖
 {
 	public override void Load()
 	{
@@ -12,6 +12,7 @@ public class VortexVanquisherGlowingSmogLinePipeline : Pipeline//这个绘制层
 		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_flame_0.Value);
 		effect.Value.Parameters["uLine"].SetValue(Commons.ModAsset.TrailV.Value);
 	}
+
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
@@ -29,10 +30,12 @@ public class VortexVanquisherGlowingSmogLinePipeline : Pipeline//这个绘制层
 		Ins.Batch.End();
 	}
 }
+
 [Pipeline(typeof(VortexVanquisherGlowingSmogLinePipeline))]
 public class VortexVanquisherGlowingSmogLine_front : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
+
 	public List<Vector2> oldPos = new List<Vector2>();
 	public Vector2 position;
 	public Vector2 velocity;
@@ -41,16 +44,25 @@ public class VortexVanquisherGlowingSmogLine_front : Visual
 	public float maxTime;
 	public float scale;
 	public float alpha;
-	public VortexVanquisherGlowingSmogLine_front() { }
+
+	public VortexVanquisherGlowingSmogLine_front()
+	{
+	}
 
 	public override void Update()
 	{
 		oldPos.Add(position);
 		if (oldPos.Count > 200)
+		{
 			oldPos.RemoveAt(0);
+		}
+
 		timer++;
 		if (timer > maxTime)
+		{
 			Active = false;
+		}
+
 		velocity *= 0.9f;
 		position += velocity;
 	}
@@ -61,7 +73,10 @@ public class VortexVanquisherGlowingSmogLine_front : Visual
 		float fx = timer / maxTime;
 		int len = pos.Length;
 		if (len <= 2)
+		{
 			return;
+		}
+
 		var bars = new List<Vertex2D>();
 		for (int i = 1; i < len; i++)
 		{

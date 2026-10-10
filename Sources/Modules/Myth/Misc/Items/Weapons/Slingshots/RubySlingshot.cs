@@ -6,7 +6,7 @@ public class RubySlingshot : SlingshotItem
 {
 	public override void SetDef()
 	{
-		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Ranged.Slingshots.RubySlingshot>();
+		projType = ModContent.ProjectileType<Projectiles.Weapon.Ranged.Slingshots.RubySlingshot>();
 		Item.damage = 23;
 		Item.width = 38;
 		Item.height = 36;
@@ -15,6 +15,7 @@ public class RubySlingshot : SlingshotItem
 		Item.rare = ItemRarityID.Orange;
 		Item.value = Item.sellPrice(0, 0, 17, 0);
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

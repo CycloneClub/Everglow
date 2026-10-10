@@ -11,6 +11,7 @@ public class ShadewoodClub_Item : ClubItem
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.ShadewoodClub>();
 		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.ShadewoodClub_smash>();
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

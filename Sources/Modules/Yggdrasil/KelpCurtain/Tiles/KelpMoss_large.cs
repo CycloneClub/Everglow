@@ -6,6 +6,7 @@ namespace Everglow.Yggdrasil.KelpCurtain.Tiles;
 public class KelpMoss_large_fore : TileVFX
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawPlayers;
+
 	public override void OnSpawn()
 	{
 		Texture = ModAsset.KelpMoss_large.Value;

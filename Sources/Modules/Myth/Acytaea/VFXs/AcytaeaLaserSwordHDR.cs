@@ -9,6 +9,7 @@ public class AcytaeaLaserSwordHDRPipeline : Pipeline
 	{
 		effect = ModAsset.Acytaea_None;
 	}
+
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
@@ -27,11 +28,13 @@ public class AcytaeaLaserSwordHDRPipeline : Pipeline
 		Ins.Batch.End();
 	}
 }
+
 public class AcytaeaLaserSwordHDRPipeline2 : PostPipeline
 {
 	private RenderTarget2D acytaeaLaserSwordHDRScreen;
 	private RenderTarget2D acytaeaLaserSwordHDRScreenSwap;
-	private float UnstableValue = 0.125f;
+	private float unstableValue = 0.125f;
+
 	private static int ScreenWidth => Main.screenWidth;
 
 	private static int ScreenHeight => Main.screenHeight;
@@ -79,26 +82,33 @@ public class AcytaeaLaserSwordHDRPipeline2 : PostPipeline
 		sb.Begin(SpriteSortMode.Immediate, BlendState.Opaque, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullNone);
 		effect.Parameters["uShade"].SetValue(rt2D);
 		effect.CurrentTechnique.Passes["Vivid"].Apply();
-		UnstableValue = (float)Utils.Lerp(UnstableValue, Main.rand.NextFloat(0.125f, 0.25f), 0.05f);
-		sb.Draw(cur, Vector2.Zero, new Color(UnstableValue, 1, 1, 1));
+		unstableValue = (float)Utils.Lerp(unstableValue, Main.rand.NextFloat(0.125f, 0.25f), 0.05f);
+		sb.Draw(cur, Vector2.Zero, new Color(unstableValue, 1, 1, 1));
 		gd.BlendState = BlendState.AlphaBlend;
 		sb.Draw(acytaeaLaserSwordHDRScreen, Vector2.Zero, new Color(255, 255, 255, 255));
 		sb.End();
 	}
 }
+
 [Pipeline(typeof(AcytaeaLaserSwordHDRPipeline), typeof(AcytaeaLaserSwordHDRPipeline2))]
 public class AcytaeaLaserSwordHDREffect : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PreDrawFilter;
+
 	public float timer;
 	public float maxTime;
 	public NPC owner;
-	public AcytaeaLaserSwordHDREffect() { }
+
+	public AcytaeaLaserSwordHDREffect()
+	{
+	}
+
 	public AcytaeaLaserSwordHDREffect(int maxTime, NPC owner)
 	{
 		this.maxTime = maxTime;
 		this.owner = owner;
 	}
+
 	public override void Update()
 	{
 		timer++;
@@ -108,7 +118,9 @@ public class AcytaeaLaserSwordHDREffect : Visual
 			Active = false;
 		}
 		if (timer >= maxTime)
+		{
 			Active = false;
+		}
 	}
 
 	public override void Draw()
@@ -148,7 +160,7 @@ public class AcytaeaLaserSwordHDREffect : Visual
 
 			new Vertex2D(new Vector2(width, 0), background, coord),
 			new Vertex2D(new Vector2(0, height), background, coord),
-			new Vertex2D(new Vector2(width, height), background, coord)
+			new Vertex2D(new Vector2(width, height), background, coord),
 		};
 		Color lightDot = new Color(255, 255, 255, 0);
 		foreach (Projectile p in Main.projectile)

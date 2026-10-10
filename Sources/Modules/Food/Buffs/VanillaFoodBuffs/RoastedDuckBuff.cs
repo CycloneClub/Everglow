@@ -4,8 +4,8 @@ public class RoastedDuckBuff : ModBuff
 {
 	public override void SetStaticDefaults()
 	{
-		//DisplayName.SetDefault("RoastedDuckBuff");
-		//Description.SetDefault("可以在水上行走，提升飞行能力\n“这是烤鸭”");
+		// DisplayName.SetDefault("RoastedDuckBuff");
+		// Description.SetDefault("可以在水上行走，提升飞行能力\n“这是烤鸭”");
 		Main.buffNoTimeDisplay[Type] = false;
 		Main.debuff[Type] = false; // 添加这个，这样护士在治疗时就不会去除buff
 	}
@@ -18,7 +18,5 @@ public class RoastedDuckBuff : ModBuff
 		player.maxFallSpeed *= 0.5f;
 		player.extraFall += 30;
 		player.waterWalk = true;
-
 	}
 }
-

@@ -8,7 +8,7 @@ public class GelSlingshot : SlingshotItem
 	{
 		Item.damage = 12;
 		Item.crit = 4;
-		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Ranged.Slingshots.GelSlingshot>();
+		projType = ModContent.ProjectileType<Projectiles.Weapon.Ranged.Slingshots.GelSlingshot>();
 
 		Item.rare = ItemRarityID.Green;
 		Item.value = Item.sellPrice(0, 1, 0, 0);

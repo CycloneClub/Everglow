@@ -85,7 +85,7 @@ public class FurnaceCopperPipe_Large_V : ModTile
 	{
 		if (tile.TileType == ModContent.TileType<FurnaceCopperPipe_Large_Corner>())
 		{
-			return tile.TileFrameX == 0 && tile.TileFrameY == 36 || tile.TileFrameX == 72 && tile.TileFrameY == 36;
+			return (tile.TileFrameX == 0 && tile.TileFrameY == 36) || (tile.TileFrameX == 72 && tile.TileFrameY == 36);
 		}
 		return tile.TileType == Type && tile.TileFrameX % 36 == 0 && tile.TileFrameY == 36;
 	}
@@ -94,7 +94,7 @@ public class FurnaceCopperPipe_Large_V : ModTile
 	{
 		if (tile.TileType == ModContent.TileType<FurnaceCopperPipe_Large_Corner>())
 		{
-			return tile.TileFrameX == 108 && tile.TileFrameY == 0 || tile.TileFrameX == 180 && tile.TileFrameY == 0;
+			return (tile.TileFrameX == 108 && tile.TileFrameY == 0) || (tile.TileFrameX == 180 && tile.TileFrameY == 0);
 		}
 		return tile.TileType == Type && tile.TileFrameX % 36 == 0 && tile.TileFrameY == 0;
 	}

@@ -6,6 +6,7 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee;
 public class GhostHit : ModProjectile
 {
 	public override string Texture => "Everglow/Myth/Acytaea/Projectiles/AcytaeaSword_projectile";
+
 	public override void SetDefaults()
 	{
 		Projectile.aiStyle = -1;
@@ -24,6 +25,7 @@ public class GhostHit : ModProjectile
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30;
 	}
+
 	public override void AI()
 	{
 		if (Projectile.timeLeft > 15)
@@ -32,6 +34,7 @@ public class GhostHit : ModProjectile
 			Projectile.velocity = Projectile.velocity.RotatedBy(Projectile.ai[0]);
 		}
 	}
+
 	public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 	{
 		for (int k = 0; k < Projectile.oldPos.Length; k++)
@@ -47,55 +50,59 @@ public class GhostHit : ModProjectile
 		}
 		return false;
 	}
+
 	public override void OnSpawn(IEntitySource source)
 	{
 	}
+
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
-		//for (int x = 0; x < 5; x++)
-		//{
-		//	Vector2 newVec = new Vector2(0, Main.rand.NextFloat(2f, 5f)).RotatedByRandom(6.238f);
-		//	var positionVFX = target.Center + newVec * Main.rand.NextFloat(0.7f, 0.9f);
+		// for (int x = 0; x < 5; x++)
+		// {
+		// Vector2 newVec = new Vector2(0, Main.rand.NextFloat(2f, 5f)).RotatedByRandom(6.238f);
+		// var positionVFX = target.Center + newVec * Main.rand.NextFloat(0.7f, 0.9f);
 
-		//	var acytaeaFlame = new AcytaeaFlameDust
-		//	{
-		//		velocity = newVec,
-		//		Active = true,
-		//		Visible = true,
-		//		position = positionVFX,
-		//		maxTime = Main.rand.Next(14, 16),
-		//		ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.04f, 0.04f), Main.rand.NextFloat(9f, 15f) }
-		//	};
-		//	Ins.VFXManager.Add(acytaeaFlame);
-		//}
-		//for (int x = 0; x < 12; x++)
-		//{
-		//	Vector2 newVec = new Vector2(0, Main.rand.NextFloat(2f, 5f)).RotatedByRandom(6.238f);
-		//	var positionVFX = target.Center + newVec * Main.rand.NextFloat(0.7f, 0.9f);
+		// var acytaeaFlame = new AcytaeaFlameDust
+		// {
+		// velocity = newVec,
+		// Active = true,
+		// Visible = true,
+		// position = positionVFX,
+		// maxTime = Main.rand.Next(14, 16),
+		// ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.04f, 0.04f), Main.rand.NextFloat(9f, 15f) }
+		// };
+		// Ins.VFXManager.Add(acytaeaFlame);
+		// }
+		// for (int x = 0; x < 12; x++)
+		// {
+		// Vector2 newVec = new Vector2(0, Main.rand.NextFloat(2f, 5f)).RotatedByRandom(6.238f);
+		// var positionVFX = target.Center + newVec * Main.rand.NextFloat(0.7f, 0.9f);
 
-		//	var acytaeaSpark = new AcytaeaSparkDust
-		//	{
-		//		velocity = newVec,
-		//		Active = true,
-		//		Visible = true,
-		//		position = positionVFX,
-		//		maxTime = Main.rand.Next(14, 30),
-		//		ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.01f, 0.01f), Main.rand.NextFloat(4f, 5f) }
-		//	};
-		//	Ins.VFXManager.Add(acytaeaSpark);
-		//}
+		// var acytaeaSpark = new AcytaeaSparkDust
+		// {
+		// velocity = newVec,
+		// Active = true,
+		// Visible = true,
+		// position = positionVFX,
+		// maxTime = Main.rand.Next(14, 30),
+		// ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.01f, 0.01f), Main.rand.NextFloat(4f, 5f) }
+		// };
+		// Ins.VFXManager.Add(acytaeaSpark);
+		// }
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
 		DrawTrail();
 	}
+
 	public virtual void DrawTrail()
 	{
-
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 		DrawDark();
@@ -105,6 +112,7 @@ public class GhostHit : ModProjectile
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 	}
+
 	private void DrawLight()
 	{
 		for (int z = 0; z < 3; z++)
@@ -129,7 +137,7 @@ public class GhostHit : ModProjectile
 			{
 				return;
 			}
-			List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(oldPosNoneZero.ToArray());//平滑
+			List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(oldPosNoneZero.ToArray()); // 平滑
 			var SmoothTrail = new List<Vector2>();
 			for (int x = 0; x <= SmoothTrailX.Count - 1; x++)
 			{
@@ -139,7 +147,10 @@ public class GhostHit : ModProjectile
 
 			int length = SmoothTrail.Count;
 			if (length <= 3)
+			{
 				return;
+			}
+
 			Vector2[] trail = SmoothTrail.ToArray();
 
 			List<Vertex2D> bars = new List<Vertex2D>();
@@ -184,6 +195,7 @@ public class GhostHit : ModProjectile
 			}
 		}
 	}
+
 	private void DrawDark()
 	{
 		for (int z = 0; z < 3; z++)
@@ -208,7 +220,7 @@ public class GhostHit : ModProjectile
 			{
 				return;
 			}
-			List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(oldPosNoneZero.ToArray());//平滑
+			List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(oldPosNoneZero.ToArray()); // 平滑
 			var SmoothTrail = new List<Vector2>();
 			for (int x = 0; x <= SmoothTrailX.Count - 1; x++)
 			{
@@ -218,7 +230,10 @@ public class GhostHit : ModProjectile
 
 			int length = SmoothTrail.Count;
 			if (length <= 3)
+			{
 				return;
+			}
+
 			Vector2[] trail = SmoothTrail.ToArray();
 
 			List<Vertex2D> bars = new List<Vertex2D>();
@@ -245,7 +260,6 @@ public class GhostHit : ModProjectile
 				}
 				bars.Add(new Vertex2D(trail[i] - normalDir * width + offset + new Vector2(Projectile.width / 2f), color, new Vector3(factor, 0.5f - Projectile.spriteDirection * 0.5f, factor)));
 				bars.Add(new Vertex2D(trail[i] + normalDir * width + offset + new Vector2(Projectile.width / 2f), color, new Vector3(factor, 0.5f + Projectile.spriteDirection * 0.5f, factor)));
-
 			}
 
 			if (bars.Count > 2)

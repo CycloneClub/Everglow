@@ -6,6 +6,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.TwilightForest;
 public class TwilightGrass_grass_fore : TileVFX
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawPlayers;
+
 	public override void OnSpawn()
 	{
 		Texture = ModAsset.TwilightGrass_grass.Value;
@@ -65,17 +66,17 @@ public class TwilightGrass_grass_fore : TileVFX
 			return;
 		}
 
-		//if (!Grass_FurPipeline.ShouldUpdateRenderTarget)
-		//{
-		//	Vector2 deltaPos = Grass_FurPipeline.TotalMovedPosition;
-		//	int rectangleX = (int)(Main.screenPosition - deltaPos).X;
-		//	int rectangleY = (int)(Main.screenPosition - deltaPos).Y;
-		//	Rectangle checkRectangle = new Rectangle(rectangleX, rectangleY, Main.screenWidth - 8, Main.screenHeight - 8);
-		//	if (checkRectangle.Contains((int)Position.X, (int)Position.Y))
-		//	{
-		//		return;
-		//	}
-		//}
+		// if (!Grass_FurPipeline.ShouldUpdateRenderTarget)
+		// {
+		// Vector2 deltaPos = Grass_FurPipeline.TotalMovedPosition;
+		// int rectangleX = (int)(Main.screenPosition - deltaPos).X;
+		// int rectangleY = (int)(Main.screenPosition - deltaPos).Y;
+		// Rectangle checkRectangle = new Rectangle(rectangleX, rectangleY, Main.screenWidth - 8, Main.screenHeight - 8);
+		// if (checkRectangle.Contains((int)Position.X, (int)Position.Y))
+		// {
+		// return;
+		// }
+		// }
 		var bars = new List<Vertex2D>();
 		if (tile.Slope == SlopeType.Solid && !tile.halfBrick())
 		{

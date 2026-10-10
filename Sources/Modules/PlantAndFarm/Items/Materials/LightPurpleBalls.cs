@@ -6,9 +6,10 @@ public class LightPurpleBalls : ModItem
 
 	public override void SetStaticDefaults()
 	{
-		//DisplayName.SetDefault("\"Purple Balls\"");
-		//DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "暮色绒");
+		// DisplayName.SetDefault("\"Purple Balls\"");
+		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "暮色绒");
 	}
+
 	public override void SetDefaults()
 	{
 		Item.width = 26;

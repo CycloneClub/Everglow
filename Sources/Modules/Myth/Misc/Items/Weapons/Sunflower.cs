@@ -8,8 +8,7 @@ public class Sunflower : ModItem
 
 	public override void SetDefaults()
 	{
-
-		Item.useStyle = 1;
+		Item.useStyle = ItemUseStyleID.Swing;
 		Item.shootSpeed = 9f;
 		Item.shoot = ModContent.ProjectileType<Projectiles.Weapon.Melee.Sunflower>();
 		Item.DamageType = DamageClass.Melee;
@@ -20,16 +19,18 @@ public class Sunflower : ModItem
 		Item.useTime = 24;
 		Item.noUseGraphic = true;
 		Item.noMelee = true;
-		Item.rare = 1;
+		Item.rare = ItemRarityID.Blue;
 		Item.damage = 8;
 		Item.autoReuse = false;
 		Item.knockBack = 2;
 	}
+
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		Projectile.NewProjectile(source, position + velocity * 3f, velocity, type, damage, knockback, player.whoAmI, 0);
 		return false;
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

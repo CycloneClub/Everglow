@@ -136,7 +136,7 @@ public class YggdrasilTownFishingTests
 
 	private int Catch(FishingAttempt attempt, int item = ItemID.Bass, int npc = -1)
 	{
-		var sonar = new AdvancedPopupRequest();
+		AdvancedPopupRequest sonar = default;
 		var sonarPosition = Vector2.Zero;
 		int originalNpc = npc;
 		fishingPlayer.CatchFish(attempt, ref item, ref npc, ref sonar, ref sonarPosition);
@@ -144,19 +144,22 @@ public class YggdrasilTownFishingTests
 		return item;
 	}
 
-	private void SetItem<T>() where T : ModItem, new()
+	private void SetItem<T>()
+		where T : ModItem, new()
 	{
 		SetInstance((T)new T().NewInstance(new Item { type = nextItemType++ }));
 	}
 
-	private void SetBiome<T>(int type) where T : ModBiome, new()
+	private void SetBiome<T>(int type)
+		where T : ModBiome, new()
 	{
 		var biome = new T();
 		typeof(ModSceneEffect).GetProperty(nameof(ModSceneEffect.Type))!.SetValue(biome, type);
 		SetInstance(biome);
 	}
 
-	private void SetInstance<T>(T instance) where T : class
+	private void SetInstance<T>(T instance)
+		where T : class
 	{
 		var property = typeof(ContentInstance<T>).GetProperty(nameof(ContentInstance<T>.Instance))!;
 		object? original = property.GetValue(null);

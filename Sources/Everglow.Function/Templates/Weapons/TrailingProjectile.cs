@@ -282,6 +282,9 @@ public abstract class TrailingProjectile : ModProjectile, IWarpProjectile_warpSt
 	/// <param name="bars1"></param>
 	/// <param name="bars2"></param>
 	/// <param name="style"></param>
+	/// <param name="offset">Position offset applied to all generated trail vertices, such as a world-to-screen translation.</param>
+	/// <param name="extraValue0">Value passed to GetTrailColor; the base implementation uses it as the background color multiplier.</param>
+	/// <param name="extraValue1">Additional value passed to GetTrailColor for custom color overrides.</param>
 	public virtual void CreateTrailVertex(List<Vertex2D> bars0, List<Vertex2D> bars1, List<Vertex2D> bars2, int style, Vector2 offset = default, float extraValue0 = 0, float extraValue1 = 0)
 	{
 		// If there is no any element here, return.
@@ -337,6 +340,8 @@ public abstract class TrailingProjectile : ModProjectile, IWarpProjectile_warpSt
 	/// <param name="worldPos"></param>
 	/// <param name="index"></param>
 	/// <param name="factor"></param>
+	/// <param name="extraValue0">Color multiplier for the black background style; unused by the other built-in styles.</param>
+	/// <param name="extraValue1">Additional value for custom color overrides; unused by the base implementation.</param>
 	/// <returns></returns>
 	public virtual Color GetTrailColor(int style, Vector2 worldPos, int index, ref float factor, float extraValue0 = 0, float extraValue1 = 0)
 	{

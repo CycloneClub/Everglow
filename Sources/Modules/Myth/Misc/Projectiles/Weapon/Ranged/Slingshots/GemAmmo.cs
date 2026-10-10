@@ -12,29 +12,38 @@ public abstract class GemAmmo : SlingshotAmmo
 	/// 拖尾的颜色
 	/// </summary>
 	internal Color TrailColor = new Color(255, 255, 255, 0);
+
 	/// <summary>
 	/// 拖尾的路径
 	/// </summary>
-	internal string TrailTexPath = "";
+	internal string TrailTexPath = string.Empty;
+
 	/// <summary>
 	/// Dust(粒子)种类,默认钻石粉尘
 	/// </summary>
 	internal int dustType = ModContent.DustType<DiamondDust>();
+
 	public override void AI()
 	{
-		if (TimeTokill >= 0 && TimeTokill <= 2)
+		if (timeTokill >= 0 && timeTokill <= 2)
+		{
 			Projectile.Kill();
-		if (TimeTokill <= 15 && TimeTokill > 0)
+		}
+
+		if (timeTokill <= 15 && timeTokill > 0)
+		{
 			Projectile.velocity = Projectile.oldVelocity;
-		TimeTokill--;
-		if (TimeTokill < 0)
+		}
+
+		timeTokill--;
+		if (timeTokill < 0)
 		{
 			Projectile.velocity.Y += 0.17f;
 			Dust.NewDustDirect(Projectile.Center - new Vector2(4, 3)/*Half Dust Size*/, 0, 0, dustType, 0, 0, 0, default, Main.rand.NextFloat(0.85f, 1.15f));
 		}
 		else
 		{
-			if (TimeTokill < 30)
+			if (timeTokill < 30)
 			{
 				Projectile.damage = 0;
 				Projectile.friendly = false;
@@ -42,6 +51,7 @@ public abstract class GemAmmo : SlingshotAmmo
 			Projectile.velocity *= 0f;
 		}
 	}
+
 	public override void DrawTrail()
 	{
 		DrawShade();
@@ -52,7 +62,10 @@ public abstract class GemAmmo : SlingshotAmmo
 			if (Projectile.oldPos[i] == Vector2.Zero)
 			{
 				if (i == 1)
+				{
 					return;
+				}
+
 				break;
 			}
 
@@ -61,11 +74,16 @@ public abstract class GemAmmo : SlingshotAmmo
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
 
 			float width = 4;
 			if (Projectile.timeLeft <= 30)
+			{
 				width *= Projectile.timeLeft / 30f;
+			}
+
 			var normalDir = Projectile.oldPos[i - 1] - Projectile.oldPos[i];
 			normalDir = new Vector2(-normalDir.Y, normalDir.X).SafeNormalize(Vector2.Zero);
 
@@ -74,7 +92,7 @@ public abstract class GemAmmo : SlingshotAmmo
 
 			float fac1 = factor * 3 + (float)(-Main.timeForVisualEffects * 0.03) + 100000;
 			float fac2 = (i + 1) / (float)TrueL * 3 + (float)(-Main.timeForVisualEffects * 0.03) + 100000;
-			//TODO:925分钟之后会炸
+			// TODO:925分钟之后会炸
 
 			fac1 %= 1f;
 			fac2 %= 1f;
@@ -109,6 +127,7 @@ public abstract class GemAmmo : SlingshotAmmo
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 	}
+
 	private void DrawShade()
 	{
 		var bars = new List<Vertex2D>();
@@ -118,7 +137,10 @@ public abstract class GemAmmo : SlingshotAmmo
 			if (Projectile.oldPos[i] == Vector2.Zero)
 			{
 				if (i == 1)
+				{
 					return;
+				}
+
 				break;
 			}
 
@@ -127,11 +149,16 @@ public abstract class GemAmmo : SlingshotAmmo
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
 
 			float width = 4;
 			if (Projectile.timeLeft <= 30)
+			{
 				width *= Projectile.timeLeft / 30f;
+			}
+
 			var normalDir = Projectile.oldPos[i - 1] - Projectile.oldPos[i];
 			normalDir = new Vector2(-normalDir.Y, normalDir.X).SafeNormalize(Vector2.Zero);
 
@@ -173,11 +200,12 @@ public abstract class GemAmmo : SlingshotAmmo
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 	}
+
 	public override void AmmoHit()
 	{
 		SoundEngine.PlaySound(SoundID.Item27, Projectile.Center);
 		Projectile.NewProjectile(Terraria.Entity.InheritSource(Projectile), Projectile.Center + Projectile.velocity, Vector2.Zero, ModContent.ProjectileType<NormalHit>(), Projectile.damage, Projectile.knockBack, Projectile.owner, Projectile.velocity.Length(), Main.rand.NextFloat(6.283f));
-		TimeTokill = 30;
+		timeTokill = 30;
 		float Power = Projectile.ai[0] + 0.5f;
 		Projectile.velocity = Projectile.oldVelocity;
 		Player player = Main.player[Projectile.owner];

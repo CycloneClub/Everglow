@@ -22,14 +22,16 @@ public class Dendroid_normal : ModNPC
 		NPC.knockBackResist = 0.4f;
 		NPC.value = Item.buyPrice(0, 0, 12, 0);
 		NPC.aiStyle = NPCAIStyleID.Fighter;
-
 	}
 
 	public override float SpawnChance(NPCSpawnInfo spawnInfo)
 	{
 		FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
 		if (!fireflyBiome.IsBiomeActive(Main.LocalPlayer))
+		{
 			return 0f;
+		}
+
 		return 0.24f;
 	}
 
@@ -37,7 +39,9 @@ public class Dendroid_normal : ModNPC
 	{
 		Player player = Main.player[NPC.FindClosestPlayer()];
 		if (NPC.velocity.X > 0)
+		{
 			NPC.spriteDirection = 1;
+		}
 		else
 		{
 			NPC.spriteDirection = -1;
@@ -56,8 +60,8 @@ public class Dendroid_normal : ModNPC
 				}
 			}
 		}
-
 	}
+
 	public override void FindFrame(int frameHeight)
 	{
 		frameHeight = NPC.height;
@@ -66,12 +70,17 @@ public class Dendroid_normal : ModNPC
 		if (NPC.collideY || NPC.collideX)
 		{
 			if (NPC.frame.Y < 6 * frameHeight)
+			{
 				NPC.frame.Y = 6 * frameHeight;
+			}
+
 			if (NPC.frameCounter > frameChangeFrequency)
 			{
 				NPC.frameCounter = 0;
 				if (NPC.frame.Y < 19 * frameHeight)
+				{
 					NPC.frame.Y += frameHeight;
+				}
 				else
 				{
 					NPC.frame.Y = 6 * frameHeight;
@@ -83,6 +92,7 @@ public class Dendroid_normal : ModNPC
 			NPC.frame.Y = 5 * frameHeight;
 		}
 	}
+
 	public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
 		spriteBatch.Draw(ModAsset.Dendroid_normal_glow.Value, NPC.Center - Main.screenPosition, NPC.frame, new Color(255, 255, 255, 0), NPC.rotation, new Vector2(NPC.width, NPC.height) / 2f, NPC.scale, NPC.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);

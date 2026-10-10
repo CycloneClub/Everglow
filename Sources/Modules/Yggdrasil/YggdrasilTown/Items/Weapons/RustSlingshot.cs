@@ -19,6 +19,6 @@ public class RustSlingshot : SlingshotItem
 		Item.value = Item.buyPrice(platinum: 0, gold: 1, silver: 23);
 		Item.rare = ItemRarityID.Green;
 
-		ProjType = ModContent.ProjectileType<RustSlingshot_Weapon>();
+		projType = ModContent.ProjectileType<RustSlingshot_Weapon>();
 	}
 }

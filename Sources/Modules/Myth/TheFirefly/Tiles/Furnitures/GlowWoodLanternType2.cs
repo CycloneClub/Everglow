@@ -40,14 +40,17 @@ public class GlowWoodLanternType2 : ModTile, ITileFluentlyDrawn
 		LocalizedText name = CreateMapEntryName();
 		AddMapEntry(new Color(251, 235, 127), name);
 	}
+
 	public override void NumDust(int i, int j, bool fail, ref int num)
 	{
 		num = 0;
 	}
+
 	public override void HitWire(int i, int j)
 	{
 		FurnitureUtils.LightHitwire(i, j, Type, 1, 2);
 	}
+
 	public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 	{
 		Tile tile = Main.tile[i, j];
@@ -64,6 +67,7 @@ public class GlowWoodLanternType2 : ModTile, ITileFluentlyDrawn
 			b = 0f;
 		}
 	}
+
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		TileFluentDrawManager.AddFluentPoint(this, i, j);

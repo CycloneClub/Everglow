@@ -11,7 +11,6 @@ public class BladeOfGreenMoss_Proj : MeleeProj
 		maxAttackType = 4;
 		maxSlashTrailLength = 20;
 		shaderType = Commons.MEAC.Enums.MeleeTrailShaderType.ArcBladeTransparentedByZ;
-		;
 		autoEnd = false;
 		canLongLeftClick = true;
 		maxClickTimer = 240;
@@ -218,7 +217,6 @@ public class BladeOfGreenMoss_Proj : MeleeProj
 				mainAxisDirection = Vector2.Lerp(mainAxisDirection, Vector2Elipse(120, targetRot, -1.2f), 0.1f);
 				mainAxisDirection += Projectile.DirectionFrom(player.Center) * 3;
 				Projectile.rotation = mainAxisDirection.ToRotation();
-
 			}
 
 			if (timer == 65)
@@ -269,14 +267,16 @@ public class BladeOfGreenMoss_Proj : MeleeProj
 	public override void DrawTrail(Color color)
 	{
 		base.DrawTrail(color);
-		List<Vector2> smoothTrail_current = GraphicsUtils.CatmullRom(slashTrail.ToList());//平滑
+		List<Vector2> smoothTrail_current = GraphicsUtils.CatmullRom(slashTrail.ToList()); // 平滑
 		var SmoothTrail = new List<Vector2>();
 		for (int x = 0; x < smoothTrail_current.Count - 1; x++)
 		{
 			SmoothTrail.Add(smoothTrail_current[x]);
 		}
 		if (slashTrail.Count != 0)
+		{
 			SmoothTrail.Add(slashTrail.ToArray()[slashTrail.Count - 1]);
+		}
 
 		int length = SmoothTrail.Count;
 		if (length <= 3)
@@ -349,7 +349,6 @@ public class BladeOfGreenMoss_Proj : MeleeProj
 
 	public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 	{
-
 		if (currantAttackType == 4)
 		{
 			modifiers.FinalDamage *= 2f;

@@ -7,10 +7,12 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee;
 public class ComingGhost_Shimmer : ModProjectile
 {
 	public override string Texture => Commons.ModAsset.StabbingProjectile_Mod;
+
 	public override void OnSpawn(IEntitySource source)
 	{
-		//Projectile.ai[1] = Main.player[Projectile.owner].direction;
+		// Projectile.ai[1] = Main.player[Projectile.owner].direction;
 	}
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 30;
@@ -25,10 +27,12 @@ public class ComingGhost_Shimmer : ModProjectile
 		Projectile.timeLeft = 120;
 		Projectile.extraUpdates = 2;
 	}
+
 	public override void AI()
 	{
 		Projectile.velocity *= 0f;
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Color c0 = new Color(1f, 0, 0, 0);

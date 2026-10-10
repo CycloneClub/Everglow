@@ -29,6 +29,7 @@ public class SpellAndSkullUtils
 		Main.graphics.GraphicsDevice.Textures[0] = tex;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, vertex2Ds.ToArray(), 0, vertex2Ds.Count / 3);
 	}
+
 	public static void DrawTexLine(VFXBatch spriteBatch, Vector2 StartPos, Vector2 EndPos, Color color1, Color color2, Texture2D tex)
 	{
 		float Wid = 6f;
@@ -73,6 +74,7 @@ public class SpellAndSkullUtils
 		}
 		spriteBatch.Draw(tex, vertex2Ds, PrimitiveType.TriangleList);
 	}
+
 	public static void DrawTexCircle(float radius, float width, Color color, Vector2 center, Texture2D tex, double addRot = 0, int precise = 1)
 	{
 		var circle = new List<Vertex2D>();
@@ -110,6 +112,7 @@ public class SpellAndSkullUtils
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, circle.ToArray(), 0, circle.Count - 2);
 		}
 	}
+
 	public static void DrawTexCircle_Warp(VFXBatch spriteBatch, float radius, float width, Color color, Vector2 center, Texture2D tex, double addRot = 0)
 	{
 		var circle = new List<Vertex2D>();
@@ -127,6 +130,8 @@ public class SpellAndSkullUtils
 		circle.Add(new Vertex2D(center + new Vector2(0, Math.Max(radius - width, 0)).RotatedBy(addRot), c0, new Vector3(0, 1, 0)));
 		circle.Add(new Vertex2D(center + new Vector2(0, radius).RotatedBy(addRot), c0, new Vector3(0, 0, 0)));
 		if (circle.Count > 2 && radius > 1)
+		{
 			spriteBatch.Draw(tex, circle, PrimitiveType.TriangleStrip);
+		}
 	}
 }

@@ -33,16 +33,16 @@ public class GenerateMazeRoom : ModItem
 	public override bool CanUseItem(Player player)
 	{
 		BuildMazeRoom(Main.MouseWorld);
-		//ClearMazeRooms(Main.MouseWorld);
-		//BuildEntireMaze(Main.MouseWorld);
+		// ClearMazeRooms(Main.MouseWorld);
+		// BuildEntireMaze(Main.MouseWorld);
 
 		// ConnectDeliveryHole(player.MountedCenter, Main.MouseWorld);
-		//List<Vector2> polygon = new List<Vector2>();
-		//for(int h = 0;h < 5;h++)
-		//{
-		//	polygon.Add(Main.MouseWorld + new Vector2(0, 720).RotatedBy(h / 5f * MathHelper.TwoPi));
-		//}
-		//PlacePolygonBoundOfBlock(polygon, TileID.Dirt, 16);
+		// List<Vector2> polygon = new List<Vector2>();
+		// for(int h = 0;h < 5;h++)
+		// {
+		// polygon.Add(Main.MouseWorld + new Vector2(0, 720).RotatedBy(h / 5f * MathHelper.TwoPi));
+		// }
+		// PlacePolygonBoundOfBlock(polygon, TileID.Dirt, 16);
 		return false;
 	}
 

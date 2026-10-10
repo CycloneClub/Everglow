@@ -16,30 +16,31 @@ public class PiercoldWind : DrinkBase
 				Thirsty = false,
 				BuffType = ModContent.BuffType<PiercoldWindBuff>(),
 				BuffTime = new FoodDuration(0, 10, 0),
-				Name = "PiercoldWindBuff"
+				Name = "PiercoldWindBuff",
 			};
 		}
 	}
+
 	public override void SetStaticDefaults()
 	{
 		CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 5;
 
 		Main.RegisterItemAnimation(Type, new DrawAnimationVertical(int.MaxValue, 3));
 
-		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3] {
+		ItemID.Sets.FoodParticleColors[Item.type] = new Color[3]
+		{
 			new Color(70, 45, 181),
 			new Color(74, 173, 226),
-			new Color(53, 86, 161)
+			new Color(53, 86, 161),
 		};
 
 		ItemID.Sets.IsFood[Type] = true;
 	}
+
 	public override void SetDefaults()
 	{
-
 		Item.DefaultToFood(22, 22, BuffID.WellFed3, 57600);
 		Item.value = Item.buyPrice(0, 3);
 		Item.rare = ItemRarityID.Blue;
 	}
-
 }

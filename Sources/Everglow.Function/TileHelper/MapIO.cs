@@ -30,7 +30,9 @@ public class ModEntry
 	{
 		var key = $"{block.FullName}{GetPostFix(block)}";
 		if (entries.ContainsKey(key))
+		{
 			return entries[key];
+		}
 
 		entries.Add(key, (ushort)entries.Count);
 		return (ushort)(entries.Count - 1);
@@ -73,6 +75,7 @@ public class ModEntry
 		}
 	}
 }
+
 public class MapIO
 {
 	public static int AirTileType => ModContent.TileType<AirTile>();
@@ -224,7 +227,9 @@ public class MapIO
 	public static void WriteTile(BinaryWriter writer, ITileAccessor accessor, ModEntry entry)
 	{
 		if (!accessor.MoveNext())
+		{
 			return;
+		}
 
 		int airBlockType = AirTileType;
 		do
@@ -330,16 +335,22 @@ public class MapIO
 
 				int style = (int)tile.BlockType;
 				if ((style & 1) == 1)
+				{
 					heads[1][0] = true;
+				}
 
 				if ((style & 2) == 2)
+				{
 					heads[1][1] = true;
+				}
 
 				if ((style & 4) == 4)
+				{
 					heads[1][2] = true;
+				}
 			}
 
-			if (tile.WallType == 0)
+			if (tile.WallType == WallID.None)
 			{
 				// 无墙壁
 				heads[1][3] = false;
@@ -400,12 +411,12 @@ public class MapIO
 			heads[2][3] = tile.YellowWire;
 			heads[2][4] = tile.HasActuator;
 			heads[2][5] = tile.IsActuated;
-			if (tile.TileColor != 0)
+			if (tile.TileColor != PaintID.None)
 			{
 				heads[2][6] = true;
 				writer_local.Write(tile.TileColor);
 			}
-			if (tile.WallColor != 0)
+			if (tile.WallColor != PaintID.None)
 			{
 				heads[2][7] = true;
 				writer_local.Write(tile.WallColor);
@@ -427,17 +438,25 @@ public class MapIO
 			}
 
 			if (heads[2] != 0)
+			{
 				heads[1][7] = true;
+			}
 
 			if (heads[1] != 0)
+			{
 				heads[0][7] = true;
+			}
 
 			writer.Write(heads[0]);
 			if (heads[0][7])
+			{
 				writer.Write(heads[1]);
+			}
 
 			if (heads[1][7])
+			{
 				writer.Write(heads[2]);
+			}
 
 			writer.Write(memoryStream.ToArray());
 		}
@@ -452,16 +471,22 @@ public class MapIO
 			var heads = new BitsByte[3];
 			heads[0] = reader.ReadByte();
 			if (heads[0][7])
+			{
 				heads[1] = reader.ReadByte();
+			}
 
 			if (heads[1][7])
+			{
 				heads[2] = reader.ReadByte();
+			}
 
 			if (!heads[0][0])
 			{
 				if (!heads[0][1])
+				{
 					// 空气
 					tile.HasTile = false;
+				}
 			}
 			else
 			{
@@ -488,7 +513,9 @@ public class MapIO
 			if (!heads[1][3])
 			{
 				if (!heads[1][4])
-					tile.WallType = 0;
+				{
+					tile.WallType = WallID.None;
+				}
 			}
 			else
 			{
@@ -537,7 +564,7 @@ public class MapIO
 			}
 			else
 			{
-				tile.TileColor = 0;
+				tile.TileColor = PaintID.None;
 			}
 
 			if (heads[2][7])
@@ -546,7 +573,7 @@ public class MapIO
 			}
 			else
 			{
-				tile.WallColor = 0;
+				tile.WallColor = PaintID.None;
 			}
 
 			if (heads[0][6])
@@ -574,7 +601,9 @@ public class MapIO
 			writer.Write(c.frame);
 
 			if (withoutItem)
+			{
 				continue;
+			}
 
 			foreach (var item in c.item)
 			{
@@ -590,10 +619,14 @@ public class MapIO
 		{
 			var chest = Main.chest[i];
 			if (chest == null)
+			{
 				continue;
+			}
 
 			if (range.Contains(new Point(chest.x, chest.y)))
+			{
 				Main.chest[i] = null;
+			}
 		}
 
 		int count = reader.ReadInt32();
@@ -609,7 +642,9 @@ public class MapIO
 			};
 
 			if (withoutItem)
+			{
 				continue;
+			}
 
 			for (int j = 0; j < Chest.maxItems; j++)
 			{
@@ -637,10 +672,14 @@ public class MapIO
 		{
 			var sign = Main.sign[i];
 			if (sign == null)
+			{
 				continue;
+			}
 
 			if (range.Contains(new Point(sign.x, sign.y)))
+			{
 				Main.sign[i] = null;
+			}
 		}
 
 		int count = reader.ReadInt32();
@@ -672,7 +711,9 @@ public class MapIO
 				writer.Write((short)(modTE.Position.Y - range.Y));
 
 				if (!withoutData)
+				{
 					TagIO.Write(tag, writer);
+				}
 			}
 			else
 			{
@@ -698,7 +739,9 @@ public class MapIO
 				te.Position = new Point16(reader.ReadInt16(), reader.ReadInt16());
 
 				if (!withoutData)
+				{
 					te.LoadData(TagIO.Read(reader));
+				}
 			}
 			else
 			{
@@ -708,11 +751,15 @@ public class MapIO
 			te.ID = TileEntity.AssignNewID();
 			TileEntity.ByID[te.ID] = te;
 			if (TileEntity.ByPosition.TryGetValue(te.Position, out var oldTE))
+			{
 				TileEntity.ByID.Remove(oldTE.ID);
+			}
 
 			TileEntity.ByPosition[te.Position] = te;
 			if (Main.netMode == NetmodeID.MultiplayerClient)
+			{
 				NetMessage.SendData(MessageID.TileEntityPlacement, -1, -1, null, te.ID);
+			}
 		}
 
 		// 移除被覆盖的TE，Copy from vanilla
@@ -734,10 +781,14 @@ public class MapIO
 			{
 				TileEntity te = TileEntity.ByPosition[pos];
 				if (TileEntity.ByID.ContainsKey(te.ID))
+				{
 					TileEntity.ByID.Remove(te.ID);
+				}
 
 				if (TileEntity.ByPosition.ContainsKey(pos))
+				{
 					TileEntity.ByPosition.Remove(pos);
+				}
 			}
 		}
 		catch
@@ -751,21 +802,31 @@ public class MapIO
 		static bool IsSameTile(Tile tile, Tile compTile)
 		{
 			if (tile.Get<TileWallWireStateData>().NonFrameBits != compTile.Get<TileWallWireStateData>().NonFrameBits)
+			{
 				return false;
+			}
 
 			if (tile.WallType != compTile.WallType || tile.LiquidAmount != compTile.LiquidAmount)
+			{
 				return false;
+			}
 
 			if (tile.LiquidAmount > 0 && tile.LiquidType != compTile.LiquidType)
+			{
 				return false;
+			}
 
 			if (tile.HasTile)
 			{
 				if (tile.TileType != compTile.TileType)
+				{
 					return false;
+				}
 
 				if (Main.tileFrameImportant[tile.TileType] && (tile.TileFrameX != compTile.TileFrameX || tile.TileFrameY != compTile.TileFrameY))
+				{
 					return false;
+				}
 			}
 
 			return true;

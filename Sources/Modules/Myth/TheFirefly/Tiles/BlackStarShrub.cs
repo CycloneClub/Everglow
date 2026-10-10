@@ -27,11 +27,11 @@ public class BlackStarShrub : ModTile, ITileFluentlyDrawn
 		{
 			16,
 			16,
-			20
+			20,
 		};
 		TileObjectData.newTile.CoordinateWidth = 72;
 		TileObjectData.addTile(Type);
-		DustType = 191;
+		DustType = DustID.SpookyWood;
 		var modTranslation = CreateMapEntryName();
 		AddMapEntry(new Color(84, 172, 255), modTranslation);
 		HitSound = SoundID.Grass;
@@ -72,7 +72,7 @@ public class BlackStarShrub : ModTile, ITileFluentlyDrawn
 		{
 			DrawCenterPos = drawCenterPos,
 			SpriteBatch = spriteBatch,
-			TileDrawing = tileDrawing
+			TileDrawing = tileDrawing,
 		};
 
 		DrawShrubPiece(Frame(0), 0.1f, SwayHitboxPos(0), PaintPos(1), drawInfo);
@@ -105,7 +105,9 @@ public class BlackStarShrub : ModTile, ITileFluentlyDrawn
 
 		// 回声涂料
 		if (!TileDrawing.IsVisible(tile))
+		{
 			return;
+		}
 
 		int paint = Main.tile[paintPos].TileColor;
 		int textureStyle = tile.TileFrameX + frame.Y * 50;
@@ -114,7 +116,9 @@ public class BlackStarShrub : ModTile, ITileFluentlyDrawn
 
 		float windCycle = 0;
 		if (tileDrawing.InAPlaceWithWind(tilePos.X, tilePos.Y, 1, 1))
+		{
 			windCycle = tileDrawing.GetWindCycle(tilePos.X, tilePos.Y, tileDrawing._sunflowerWindCounter);
+		}
 
 		int totalPushTime = 80;
 		float pushForcePerFrame = 1.26f;
@@ -151,7 +155,10 @@ public class BlackStarShrub : ModTile, ITileFluentlyDrawn
 			var dustSpawnPos = drawCenterPos + dustSpawnOffset.RotatedBy(rotation) + Main.screenPosition;
 			var dustVelocity = new Vector2(-1f, 0f).RotatedBy(angularVelocity) * 0.7f;
 			if (angularVelocity > 0)
+			{
 				dustVelocity = -dustVelocity;
+			}
+
 			var d = Dust.NewDustDirect(dustSpawnPos, 14, 16, ModContent.DustType<BlueParticleDark>(), Alpha: 150);
 			var d2 = Dust.NewDustDirect(dustSpawnPos, 14, 16, ModContent.DustType<BlueParticle>(), Alpha: 150);
 			d.scale = Main.rand.NextFloat() * 0.2f + 0.2f;

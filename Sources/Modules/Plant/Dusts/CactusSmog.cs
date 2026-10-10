@@ -9,6 +9,7 @@ public class CactusSmog : ModDust
 		dust.scale *= 1f;
 		dust.alpha = 0;
 	}
+
 	public override bool Update(Dust dust)
 	{
 		dust.position += dust.velocity;
@@ -18,15 +19,21 @@ public class CactusSmog : ModDust
 		dust.alpha++;
 		Lighting.AddLight(dust.position, 0, 0, (float)((255 - dust.alpha) * 0.0015f));
 		if (dust.alpha > 254)
+		{
 			dust.active = false;
+		}
+
 		return false;
 	}
+
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		float k = (255 - dust.alpha) / 255f;
 		float k2 = (float)Math.Sqrt(k);
 		if (dust.scale > 0.6f)
+		{
 			return new Color?(new Color(0f, 0f, 0f, k));
+		}
 		else
 		{
 			return new Color?(new Color(0f, 0f, 0f, k));

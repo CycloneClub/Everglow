@@ -1,6 +1,7 @@
 using Terraria.Enums;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Melee;
+
 // Shortsword projectiles are handled in a special way with how they draw and damage things
 // The "hitbox" itself is closer to the player, the sprite is centered on it
 // However the interactions with the world will occur offset from this hitbox, closer to the sword's tip (CutTiles, Colliding)
@@ -90,16 +91,16 @@ public class CyanVineShortsword_Proj : ModProjectile
 		DrawOriginOffsetY = -(HalfSpriteHeight - HalfProjHeight);
 
 		// Vanilla configuration for "hitbox towards the end"
-		//if (Projectile.spriteDirection == 1) {
-		//	DrawOriginOffsetX = -(HalfProjWidth - HalfSpriteWidth);
-		//	DrawOffsetX = (int)-DrawOriginOffsetX * 2;
-		//	DrawOriginOffsetY = 0;
-		//}
-		//else {
-		//	DrawOriginOffsetX = (HalfProjWidth - HalfSpriteWidth);
-		//	DrawOffsetX = 0;
-		//	DrawOriginOffsetY = 0;
-		//}
+		// if (Projectile.spriteDirection == 1) {
+		// DrawOriginOffsetX = -(HalfProjWidth - HalfSpriteWidth);
+		// DrawOffsetX = (int)-DrawOriginOffsetX * 2;
+		// DrawOriginOffsetY = 0;
+		// }
+		// else {
+		// DrawOriginOffsetX = (HalfProjWidth - HalfSpriteWidth);
+		// DrawOffsetX = 0;
+		// DrawOriginOffsetY = 0;
+		// }
 	}
 
 	public override bool ShouldUpdatePosition()

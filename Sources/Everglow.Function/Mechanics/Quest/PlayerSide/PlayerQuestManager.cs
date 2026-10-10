@@ -10,11 +10,15 @@ namespace Everglow.Commons.Mechanics.Quest.PlayerSide;
 public class PlayerQuestManager
 {
 	public const int UpdateInterval = 20;
+
 	public static PlayerQuestManager Instance => ModContent.GetInstance<PlayerQuestSystem>().Manager;
 
 	public event Action<QuestIdentity> QuestAdded;
+
 	public event Action<QuestIdentity> QuestRemoved;
+
 	public event Action<QuestIdentity> QuestStatusUpdated;
+
 	public event Action<QuestIdentity> QuestObjectiveUpdated;
 
 	private List<PlayerQuestBase> _quests = [];
@@ -213,6 +217,7 @@ public class PlayerQuestManager
 	/// </summary>
 	/// <param name="quest">任务</param>
 	/// <param name="state">任务状态</param>
+	/// <param name="showText">是否在成功添加新任务时显示提示文本。</param>
 	public void AddQuest(PlayerQuestBase quest, PlayerQuestState state, bool showText = true)
 	{
 		if (!_quests.Any(m => m.Name == quest.Name))

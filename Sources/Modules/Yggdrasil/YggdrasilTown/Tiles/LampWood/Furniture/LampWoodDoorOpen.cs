@@ -32,7 +32,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood.Furniture
 			TileID.Sets.CloseDoorID[Type] = ModContent.TileType<LampWoodDoorClosed>();
 
 			// Names
-			//AddMapEntry(new Color(200, 200, 200), Language.GetText("MapObject.Door"));
+			// AddMapEntry(new Color(200, 200, 200), Language.GetText("MapObject.Door"));
 
 			// Placement
 			TileObjectData.newTile.Width = 2;

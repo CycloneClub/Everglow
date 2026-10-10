@@ -43,10 +43,12 @@ public class GlowWoodDresserType2 : ModTile
 		LocalizedText name = CreateMapEntryName();
 		AddMapEntry(new Color(69, 36, 78), name);
 	}
+
 	public override void NumDust(int i, int j, bool fail, ref int num)
 	{
 		num = 0;
 	}
+
 	public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => true;
 
 	public override bool RightClick(int i, int j)
@@ -54,24 +56,27 @@ public class GlowWoodDresserType2 : ModTile
 		return FurnitureUtils.DresserRightClick();
 	}
 
-	//不确定hjson能否解决，先禁掉了
-	//public override void MouseOver(int i, int j)
-	//{
-	//	string chestName = LocalizedText;
-	//	FurnitureUtils.ChestMouseOver<Items.Furnitures.GlowWoodChest>(chestName, i, j);
-	//}
+	// 不确定hjson能否解决，先禁掉了
+	// public override void MouseOver(int i, int j)
+	// {
+	// string chestName = LocalizedText;
+	// FurnitureUtils.ChestMouseOver<Items.Furnitures.GlowWoodChest>(chestName, i, j);
+	// }
 
-	//public override void MouseOverFar(int i, int j)
-	//{
-	//	string chestName = ContainerName.GetDefault();
-	//	FurnitureUtils.ChestMouseFar<Items.Furnitures.GlowWoodChest>(chestName, i, j);
-	//}
+	// public override void MouseOverFar(int i, int j)
+	// {
+	// string chestName = ContainerName.GetDefault();
+	// FurnitureUtils.ChestMouseFar<Items.Furnitures.GlowWoodChest>(chestName, i, j);
+	// }
 	public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		var tile = Main.tile[i, j];
 		var zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
 		if (Main.drawToScreen)
+		{
 			zero = Vector2.Zero;
+		}
+
 		Texture2D tex = ModAsset.GlowWoodDresserType2Glow.Value;
 		spriteBatch.Draw(tex, new Vector2(i * 16, j * 16) - Main.screenPosition + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16), new Color(0.8f, 0.8f, 0.8f, 0), 0, new Vector2(0), 1, SpriteEffects.None, 0);
 

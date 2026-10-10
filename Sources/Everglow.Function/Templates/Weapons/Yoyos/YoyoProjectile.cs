@@ -253,11 +253,6 @@ public abstract class YoyoProjectile : ModProjectile
 	/// <summary>
 	/// Yoyo AI from vanilla. Based on vanilla <see cref="Projectile.AI_099_2"/>.
 	/// </summary>
-	/// <param name="index"></param>
-	/// <param name="seconds"></param>
-	/// <param name="MaxRopeLength"></param>
-	/// <param name="acceleration"></param>
-	/// <param name="rotationSpeed"></param>
 	public virtual void YoyoAI()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -549,7 +544,7 @@ public abstract class YoyoProjectile : ModProjectile
 	}
 
 	/// <summary>
-	/// Generate a yoyo-string that consist of a List<Vector2>().
+	/// Generate a yoyo-string that consist of a <see cref="List{Vector2}"/>.
 	/// </summary>
 	/// <param name="stringUnitPos"></param>
 	/// <param name="yoyo_string_pos"></param>

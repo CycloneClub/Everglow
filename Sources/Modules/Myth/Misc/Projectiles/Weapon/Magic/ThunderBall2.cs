@@ -22,7 +22,9 @@ public class ThunderBall2 : ModProjectile
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 60;
 	}
-	int Tokill = -1;
+
+	private int tokill = -1;
+
 	public override void AI()
 	{
 		Projectile.velocity = Projectile.velocity.RotatedBy(Main.rand.NextFloat(Main.rand.NextFloat(-10f / Projectile.timeLeft, 0f), Main.rand.NextFloat(0f, 10f / Projectile.timeLeft)));
@@ -49,43 +51,57 @@ public class ThunderBall2 : ModProjectile
 				}
 			}
 		}
-
 	}
-	private bool Nul = false;
+
+	private bool nul = false;
+
 	public override Color? GetAlpha(Color lightColor)
 	{
-		if (!Nul)
+		if (!nul)
+		{
 			return new Color?(new Color(255, 255, 255, 0));
+		}
 		else
 		{
-			return new Color?(new Color(Tokill / 45f, Tokill / 45f, Tokill / 45f, 0));
+			return new Color?(new Color(tokill / 45f, tokill / 45f, tokill / 45f, 0));
 		}
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
-		Projectile.ai[0] = Tokill;
+		Projectile.ai[0] = tokill;
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 		var bars = new List<Vertex2D>();
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
 		}
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
+
 			float width = 18;
 			if (Projectile.timeLeft > 30)
+			{
 				width = 18;
+			}
 			else
 			{
 				width = Projectile.timeLeft / 5f * 3;
 			}
 			var normalDir = Projectile.oldPos[i - 1] - Projectile.oldPos[i];
 			if (normalDir.Length() < 0.2f)
+			{
 				normalDir = Projectile.velocity / Projectile.velocity.Length();
+			}
+
 			normalDir = Vector2.Normalize(new Vector2(-normalDir.Y, normalDir.X));
 
 			var factor = i / (float)Projectile.oldPos.Length;
@@ -100,8 +116,11 @@ public class ThunderBall2 : ModProjectile
 		{
 			triangleList.Add(bars[0]);
 			Vector2 va = Projectile.velocity * 1.5f;
-			if (Tokill <= 44 && Tokill > 0)
+			if (tokill <= 44 && tokill > 0)
+			{
 				va = Projectile.velocity * 0.05f;
+			}
+
 			var vertex = new Vertex2D((bars[0].position + bars[1].position) * 0.5f + va, new Color(0, 0.9f, 1f, 0), new Vector3(0, 0.5f, 1));
 			triangleList.Add(bars[1]);
 			triangleList.Add(vertex);
@@ -116,7 +135,7 @@ public class ThunderBall2 : ModProjectile
 				triangleList.Add(bars[i + 3]);
 			}
 			Texture2D t = ModContent.Request<Texture2D>("Everglow/Myth/UIImages/VisualTextures/FogTraceTheta2").Value;
-			Main.graphics.GraphicsDevice.Textures[0] = t;//GlodenBloodScaleMirror
+			Main.graphics.GraphicsDevice.Textures[0] = t; // GlodenBloodScaleMirror
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, triangleList.ToArray(), 0, triangleList.Count / 3);
 			Main.spriteBatch.End();
 			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);

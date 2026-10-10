@@ -11,6 +11,7 @@ public class RawXiaoLongBao : FoodIngredientItem
 		SlicedItemType = ModContent.ItemType<GroundMeat>();
 		SliceDustType = ModContent.DustType<SteakDust>();
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe(6)

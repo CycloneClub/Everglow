@@ -15,12 +15,12 @@ public class CocoonRock : ModTile
 		TileObjectData.newTile.Width = 2;
 		TileObjectData.newTile.CoordinateHeights = new int[]
 		{
-			18
+			18,
 		};
 		TileObjectData.newTile.CoordinateWidth = 16;
 		TileObjectData.newTile.StyleHorizontal = true;
 		TileObjectData.addTile(Type);
-		DustType = 191;
+		DustType = DustID.SpookyWood;
 		AddMapEntry(new Color(25, 24, 25));
 		HitSound = SoundID.Dig;
 	}

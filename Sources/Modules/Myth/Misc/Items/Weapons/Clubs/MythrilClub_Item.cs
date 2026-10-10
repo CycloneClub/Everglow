@@ -12,6 +12,7 @@ public class MythrilClub_Item : ClubItem
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.MythrilClub>();
 		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.MythrilClub_smash>();
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

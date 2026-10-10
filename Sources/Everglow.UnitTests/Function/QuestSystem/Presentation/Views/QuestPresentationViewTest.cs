@@ -14,5 +14,4 @@ public class QuestPresentationViewTest
 		Assert.AreEqual(60, active.RemainingTime);
 		Assert.AreEqual(0, expired.RemainingTime);
 	}
-
 }

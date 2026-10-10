@@ -22,13 +22,16 @@ public class RockArrow : ModProjectile
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
 	}
+
 	internal int Target = -1;
 	internal int TimeTokill = -1;
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		Projectile.knockBack *= 3;
 		Target = (int)Projectile.ai[0];
 	}
+
 	public override void AI()
 	{
 		if (Target == -1)
@@ -38,9 +41,15 @@ public class RockArrow : ModProjectile
 		}
 		Player player = Main.player[Target];
 		if (TimeTokill >= 0 && TimeTokill <= 2)
+		{
 			Projectile.Kill();
+		}
+
 		if (TimeTokill <= 15 && TimeTokill > 0)
+		{
 			Projectile.velocity = Projectile.oldVelocity;
+		}
+
 		TimeTokill--;
 		if (TimeTokill < 0)
 		{
@@ -57,6 +66,7 @@ public class RockArrow : ModProjectile
 			Projectile.velocity *= 0f;
 		}
 	}
+
 	public void GenerateSmog(int Frequency)
 	{
 		for (int g = 0; g < Frequency / 2 + 1; g++)
@@ -71,11 +81,12 @@ public class RockArrow : ModProjectile
 				MaxTime = Main.rand.Next(17, 25),
 				Scale = Main.rand.NextFloat(40f, 55f),
 				Rotation = Main.rand.NextFloat(6.283f),
-				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 }
+				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
 			Ins.VFXManager.Add(somg);
 		}
 	}
+
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
 		Projectile.tileCollide = false;
@@ -83,6 +94,7 @@ public class RockArrow : ModProjectile
 		AmmoHit();
 		return false;
 	}
+
 	public void AmmoHit()
 	{
 		TimeTokill = 240;
@@ -101,14 +113,19 @@ public class RockArrow : ModProjectile
 		SoundEngine.PlaySound(SoundID.DD2_ExplosiveTrapExplode, Projectile.Center);
 		Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<RockExplosion_friendly>(), Projectile.damage, 0, Projectile.owner, 6);
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		if (TimeTokill > 0)
+		{
 			return false;
+		}
+
 		var TexMain = (Texture2D)ModContent.Request<Texture2D>(Texture);
 		Main.spriteBatch.Draw(TexMain, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, TexMain.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
 		return false;
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
 		Main.spriteBatch.End();
@@ -116,9 +133,9 @@ public class RockArrow : ModProjectile
 		DrawTrail_dark(lightColor);
 		DrawTrail(lightColor);
 	}
+
 	public void DrawTrail(Color light)
 	{
-
 		float drawC = 0.2f;
 		float timer = (float)Main.timeForVisualEffects * 0.02f + Projectile.whoAmI / 17f;
 		var bars = new List<Vertex2D>();
@@ -128,7 +145,10 @@ public class RockArrow : ModProjectile
 			if (Projectile.oldPos[i] == Vector2.Zero)
 			{
 				if (i == 1)
+				{
 					return;
+				}
+
 				break;
 			}
 
@@ -137,11 +157,16 @@ public class RockArrow : ModProjectile
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
 
 			float width = 12;
 			if (Projectile.timeLeft <= 30)
+			{
 				width *= Projectile.timeLeft / 30f;
+			}
+
 			var normalDir = Projectile.oldPos[i - 1] - Projectile.oldPos[i];
 			normalDir = new Vector2(-normalDir.Y, normalDir.X).SafeNormalize(Vector2.Zero);
 
@@ -149,7 +174,6 @@ public class RockArrow : ModProjectile
 			var color = Color.Lerp(new Color(drawC * light.R / 255f * 0.3f, drawC * light.G / 255f * 0.2f, drawC * light.B / 255f * 0.1f, 0), new Color(0, 0, 0, 0), factor);
 			bars.Add(new Vertex2D(Projectile.oldPos[i] + normalDir * -width + new Vector2(Projectile.width / 2f) - Main.screenPosition, color, new Vector3(timer, 0, 0)));
 			bars.Add(new Vertex2D(Projectile.oldPos[i] + normalDir * width + new Vector2(Projectile.width / 2f) - Main.screenPosition, color, new Vector3(timer, 1, 0)));
-
 		}
 		if (bars.Count > 2)
 		{
@@ -159,6 +183,7 @@ public class RockArrow : ModProjectile
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 	}
+
 	public void DrawTrail_dark(Color light)
 	{
 		float drawC = 0.2f;
@@ -170,7 +195,10 @@ public class RockArrow : ModProjectile
 			if (Projectile.oldPos[i] == Vector2.Zero)
 			{
 				if (i == 1)
+				{
 					return;
+				}
+
 				break;
 			}
 			trueL = i;
@@ -178,11 +206,16 @@ public class RockArrow : ModProjectile
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
 
 			float width = 12;
 			if (Projectile.timeLeft <= 30)
+			{
 				width *= Projectile.timeLeft / 30f;
+			}
+
 			var normalDir = Projectile.oldPos[i - 1] - Projectile.oldPos[i];
 			normalDir = new Vector2(-normalDir.Y, normalDir.X).SafeNormalize(Vector2.Zero);
 

@@ -8,11 +8,12 @@ public class CactusBall : ModItem
 
 	public override void SetStaticDefaults()
 	{
-		//DisplayName.SetDefault("Rolling Cactus");
-		//DisplayName.AddTranslation(PlantUtils.LocaizationChinese, "滚动的仙人掌");
-		//Tooltip.SetDefault("Spin and throw out your cactus ball!\nShred enemy armour and make them bleed");
-		//Tooltip.AddTranslation(PlantUtils.LocaizationChinese, "旋转并掷出你的仙人掌球！\n击碎敌人护甲，并让它们流血");
+		// DisplayName.SetDefault("Rolling Cactus");
+		// DisplayName.AddTranslation(PlantUtils.LocaizationChinese, "滚动的仙人掌");
+		// Tooltip.SetDefault("Spin and throw out your cactus ball!\nShred enemy armour and make them bleed");
+		// Tooltip.AddTranslation(PlantUtils.LocaizationChinese, "旋转并掷出你的仙人掌球！\n击碎敌人护甲，并让它们流血");
 	}
+
 	public override void SetDefaults()
 	{
 		Item.width = 50;
@@ -28,6 +29,7 @@ public class CactusBall : ModItem
 		Item.shootSpeed = 10f;
 		Item.channel = true;
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe(1)

@@ -6,17 +6,20 @@ public class WhisperingGhostGas_hot : ModDust
 	{
 		base.SetStaticDefaults();
 	}
+
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		float value = 255 - dust.alpha;
 		value /= 255f;
 		return new Color(value, value, value, value * 0.2f);
 	}
+
 	public override void OnSpawn(Dust dust)
 	{
 		dust.alpha = 0;
 		base.OnSpawn(dust);
 	}
+
 	public override bool Update(Dust dust)
 	{
 		dust.rotation += 0.4f;

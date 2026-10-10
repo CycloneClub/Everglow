@@ -56,7 +56,9 @@ public class MagnetSphereII : ModProjectile
 								SoundEngine.PlaySound(SoundID.DD2_LightningBugZap, target.Center);
 								Projectile.penetrate--;
 								if (Projectile.penetrate < 0)
+								{
 									Projectile.Kill();
+								}
 							}
 						}
 					}
@@ -64,10 +66,12 @@ public class MagnetSphereII : ModProjectile
 			}
 		}
 	}
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		Projectile.ai[0] = 0;
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		float timeValue = (float)(Main.timeForVisualEffects * 0.008f);
@@ -117,8 +121,6 @@ public class MagnetSphereII : ModProjectile
 		return false;
 	}
 
-
-
 	public override void OnKill(int timeLeft)
 	{
 		ScreenShaker Gsplayer = Main.player[Projectile.owner].GetModPlayer<ScreenShaker>();
@@ -139,10 +141,12 @@ public class MagnetSphereII : ModProjectile
 	{
 		Spark();
 	}
+
 	public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 	{
 		Spark();
 	}
+
 	private void Spark()
 	{
 		ScreenShaker Gsplayer = Main.player[Projectile.owner].GetModPlayer<ScreenShaker>();
@@ -156,23 +160,36 @@ public class MagnetSphereII : ModProjectile
 		}
 		Projectile.penetrate -= 5;
 		if (Projectile.penetrate < 0)
+		{
 			Projectile.Kill();
+		}
+
 		int HitType = ModContent.ProjectileType<MagnetSphereHit>();
 		var p = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.One, HitType, (int)(Projectile.damage * 2f), Projectile.knockBack, Projectile.owner, 18, Projectile.rotation + Main.rand.NextFloat(6.283f));
 		p.CritChance = Projectile.CritChance;
 		Projectile.damage = (int)(Projectile.damage * 1.2);
 	}
+
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
 		Spark();
 		if (Projectile.velocity.X != oldVelocity.X)
+		{
 			Projectile.velocity.X = -oldVelocity.X;
+		}
+
 		if (Projectile.velocity.Y != oldVelocity.Y)
+		{
 			Projectile.velocity.Y = -oldVelocity.Y;
+		}
+
 		Projectile.velocity *= 0.98f;
 		Projectile.penetrate -= 5;
 		if (Projectile.penetrate < 0)
+		{
 			Projectile.Kill();
+		}
+
 		return false;
 	}
 }

@@ -95,7 +95,7 @@ public class JadeLakeRedAlgae : ModTile, ITileFluentlyDrawn
 		var tileRight = Main.tile[tilePos + new Point(1, 0)];
 		var tileUp = Main.tile[tilePos + new Point(0, -1)];
 		var tileDown = Main.tile[tilePos + new Point(0, 1)];
-		if (tile.WallType == 0 && (!tileLeft.HasTile || !Main.tileSolid[tileLeft.TileType]) && (!tileRight.HasTile || !Main.tileSolid[tileRight.TileType])
+		if (tile.WallType == WallID.None && (!tileLeft.HasTile || !Main.tileSolid[tileLeft.TileType]) && (!tileRight.HasTile || !Main.tileSolid[tileRight.TileType])
 			 && (!tileUp.HasTile || !Main.tileSolid[tileUp.TileType]) && (!tileDown.HasTile || !Main.tileSolid[tileDown.TileType]))
 		{
 			WorldGen.KillTile(i, j);
@@ -141,7 +141,7 @@ public class JadeLakeRedAlgae : ModTile, ITileFluentlyDrawn
 		var tileRight = Main.tile[tilePos + new Point(1, 0)];
 		var tileUp = Main.tile[tilePos + new Point(0, -1)];
 		var tileDown = Main.tile[tilePos + new Point(0, 1)];
-		if (tile.WallType > 0 && (!tileLeft.HasTile || !Main.tileSolid[tileLeft.TileType]) && (!tileRight.HasTile || !Main.tileSolid[tileRight.TileType])
+		if (tile.WallType > WallID.None && (!tileLeft.HasTile || !Main.tileSolid[tileLeft.TileType]) && (!tileRight.HasTile || !Main.tileSolid[tileRight.TileType])
 			 && (!tileUp.HasTile || !Main.tileSolid[tileUp.TileType]) && (!tileDown.HasTile || !Main.tileSolid[tileDown.TileType]))
 		{
 			styleWall = true;

@@ -16,10 +16,12 @@ internal class CrystalStormArray : ModProjectile
 		Projectile.DamageType = DamageClass.Magic;
 		Projectile.tileCollide = false;
 	}
+
 	public override bool? CanCutTiles()
 	{
 		return false;
 	}
+
 	public override void AI()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -30,13 +32,17 @@ internal class CrystalStormArray : ModProjectile
 		{
 			Projectile.timeLeft = player.itemTime + 60;
 			if (timer < 30)
+			{
 				timer++;
+			}
 		}
 		else
 		{
 			timer--;
 			if (timer < 0)
+			{
 				Projectile.Kill();
+			}
 		}
 		Player.CompositeArmStretchAmount PCAS = Player.CompositeArmStretchAmount.Full;
 
@@ -47,10 +53,12 @@ internal class CrystalStormArray : ModProjectile
 
 		ringPos = ringPos * 0.9f + new Vector2(-12 * player.direction, -24 * player.gravDir) * 0.1f;
 	}
+
 	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
 	{
 		behindNPCs.Add(index);
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Projectile.hide = false;
@@ -58,11 +66,12 @@ internal class CrystalStormArray : ModProjectile
 
 		DrawMagicArray(Commons.ModAsset.Trail_5.Value, new Color(0, 120, 225, 0));
 
-
 		return false;
 	}
+
 	internal int timer = 0;
 	internal Vector2 ringPos = Vector2.Zero;
+
 	public void DrawMagicArray(Texture2D tex, Color c0)
 	{
 		Player player = Main.player[Projectile.owner];
@@ -78,7 +87,6 @@ internal class CrystalStormArray : ModProjectile
 		var c2 = new Color(0, 0, 255, 0);
 		DrawTexSquire(timer * 2.88f, 11, c0, player.Center + ringPos - Main.screenPosition, Water, -Main.timeForVisualEffects / 300);
 		DrawTexSquire(timer * 3.1f, 24, c2, player.Center + ringPos - Main.screenPosition, Crystalline, -Main.timeForVisualEffects / 300);
-
 
 		DrawTexSquire(timer * 3.18f, 11, c0, player.Center + ringPos - Main.screenPosition, Water, -Main.timeForVisualEffects / 300 + MathHelper.PiOver4);
 		DrawTexSquire(timer * 3.3f, 24, c0, player.Center + ringPos - Main.screenPosition, Crystalline, -Main.timeForVisualEffects / 300 + MathHelper.PiOver4);
@@ -105,7 +113,6 @@ internal class CrystalStormArray : ModProjectile
 		Vector2 Point7_ = player.Center + ringPos - Main.screenPosition + new Vector2(0, timer * 1.4f).RotatedBy(Math.PI * 6 / 4d + timeRot + 0.2);
 		Vector2 Point8_ = player.Center + ringPos - Main.screenPosition + new Vector2(0, timer * 1.4f).RotatedBy(Math.PI * 7 / 4d + timeRot + 0.2);
 
-
 		DrawTexLine(Point1_, Point3, c0, c0, CrystalLight, 0.1f);
 		DrawTexLine(Point2_, Point4, c0, c0, CrystalLight, 0.4f);
 		DrawTexLine(Point3_, Point5, c0, c0, CrystalLight, 0.2f);
@@ -126,8 +133,8 @@ internal class CrystalStormArray : ModProjectile
 
 		DrawTexLine(Point2_, Point7, c0, c0, CrystalLight, 0.5f);
 		DrawTexLine(Point3_, Point6, c0, c0, CrystalLight, 0.7f);
-
 	}
+
 	private static void DrawTexCircle(float radius, float width, Color color, Vector2 center, Texture2D tex, double addRot = 0)
 	{
 		var circle = new List<Vertex2D>();
@@ -146,6 +153,7 @@ internal class CrystalStormArray : ModProjectile
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, circle.ToArray(), 0, circle.Count - 2);
 		}
 	}
+
 	private static void DrawTexSquire(float radius, float width, Color color, Vector2 center, Texture2D tex, double addRot = 0)
 	{
 		var circle = new List<Vertex2D>();
@@ -171,7 +179,6 @@ internal class CrystalStormArray : ModProjectile
 					circle.Add(new Vertex2D(center + new Vector2(0, Math.Max(radius - width, 0)).RotatedBy(Math.PI / 2 * h + addRot) + Delta * D0, color, new Vector3(0, 1, 0)));
 					circle.Add(new Vertex2D(center + new Vector2(0, radius).RotatedBy(Math.PI / 2 * h + addRot) + DeltaWidth * D0, color, new Vector3(0, 0, 0)));
 				}
-
 			}
 		}
 		if (circle.Count > 0)
@@ -179,8 +186,8 @@ internal class CrystalStormArray : ModProjectile
 			Main.graphics.GraphicsDevice.Textures[0] = tex;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, circle.ToArray(), 0, circle.Count - 2);
 		}
-
 	}
+
 	public void DrawTexLine(Vector2 StartPos, Vector2 EndPos, Color color1, Color color2, Texture2D tex, float AddValue = 0)
 	{
 		float Wid = 24f;
@@ -199,8 +206,6 @@ internal class CrystalStormArray : ModProjectile
 
 			vertex2Ds.Add(new Vertex2D(StartPos + Width, color1, new Vector3(Value0, 0, 0)));
 			vertex2Ds.Add(new Vertex2D(StartPos - Width, color1, new Vector3(Value0, 1, 0)));
-
-
 
 			vertex2Ds.Add(new Vertex2D(StartPos + Delta * D0 + Width, color1, new Vector3(0, 0, 0)));
 			vertex2Ds.Add(new Vertex2D(StartPos + Delta * D0 - Width, color1, new Vector3(0, 1, 0)));

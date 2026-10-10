@@ -24,7 +24,7 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords.Dusts
 				Vector2 normalizeAcceleration = Utils.SafeNormalize(acceleration, Vector2.zeroVector);
 				float value3 = 60f;
 				dust.velocity += normalizeAcceleration / acceleration.Length() * MathF.Pow((120 + value3 - proj.timeLeft) / value3, 1.0f) * 100f;
-				//dust.velocity += (acceleration.Length() - 20) / 400f * normalizeAcceleration;
+				// dust.velocity += (acceleration.Length() - 20) / 400f * normalizeAcceleration;
 				dust.scale += 0.02f;
 			}
 			else if (proj.timeLeft == 54f)
@@ -47,12 +47,14 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords.Dusts
 			dust.rotation += 0.02f;
 			return false;
 		}
+
 		public override Color? GetAlpha(Dust dust, Color lightColor)
 		{
 			Color c0 = lightColor;
 			c0.A = dust.color.A;
 			return c0;
 		}
+
 		public override void OnSpawn(Dust dust)
 		{
 			dust.color.A = 150;

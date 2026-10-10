@@ -9,15 +9,21 @@ public class TuskBreak : ModDust
 		dust.alpha = 0;
 		dust.rotation = Main.rand.NextFloat(MathHelper.TwoPi);
 	}
+
 	public override bool Update(Dust dust)
 	{
 		if (dust.fadeIn == 0)
+		{
 			dust.fadeIn = Main.rand.NextFloat(-0.019f, 0.019f);
+		}
 
 		dust.position += dust.velocity;
 
 		if (dust.alpha > 245)
+		{
 			dust.active = false;
+		}
+
 		if (Collision.SolidCollision(dust.position + new Vector2(10) + new Vector2(dust.velocity.X, 0), 0, 0))
 		{
 			if (dust.velocity.Length() >= 1)
@@ -48,7 +54,9 @@ public class TuskBreak : ModDust
 			dust.velocity.Y += 0.15f;
 		}
 		if (dust.velocity.Length() < 0.03f)
+		{
 			dust.alpha += 2;
+		}
 
 		return false;
 	}

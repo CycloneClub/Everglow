@@ -7,6 +7,7 @@ namespace Everglow.Ocean.Projectiles.Weapons;
 public class TsunamiShark : ModProjectile
 {
 	public override string Texture => "Everglow/Ocean/Projectiles/Weapons/TsunamiShark/TsunamiShark_proj";
+
 	public override void SetDefaults()
 	{
 		Projectile.aiStyle = -1;
@@ -16,9 +17,11 @@ public class TsunamiShark : ModProjectile
 		Projectile.tileCollide = false;
 		Projectile.DamageType = DamageClass.Ranged;
 	}
-	private int UseCount = 0;
+
+	private int useCount = 0;
 	private int overridedamage;
 	internal IEntitySource shootSource = null;
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		shootSource = source;
@@ -27,7 +30,8 @@ public class TsunamiShark : ModProjectile
 			var modifer = owner.GetTotalDamage(withammo.Item.DamageType);
 			modifer.CombineWith(owner.bulletDamage);
 			CombinedHooks.ModifyWeaponDamage(owner, withammo.Item, ref modifer);
-			overridedamage = Math.Max(1,
+			overridedamage = Math.Max(
+				1,
 				(int)modifer.ApplyTo(withammo.Item.damage + ContentSamples.ItemsByType[withammo.AmmoItemIdUsed].damage));
 		}
 		else
@@ -35,6 +39,7 @@ public class TsunamiShark : ModProjectile
 			overridedamage = -1;
 		}
 	}
+
 	private void Shoot()
 	{
 		Vector2 toMuzzle = new Vector2(15, -15);
@@ -50,8 +55,8 @@ public class TsunamiShark : ModProjectile
 			Gsplayer.FlyCamPosition = new Vector2(0, 2).RotatedByRandom(6.283);
 			SoundEngine.PlaySound(new SoundStyle("Everglow/Ocean/Sounds/WaterGun").WithVolumeScale(0.8f), Projectile.Center);
 
-
-			Projectile p = Projectile.NewProjectileDirect(shootSource,
+			Projectile p = Projectile.NewProjectileDirect(
+				shootSource,
 				Projectile.Center + toMuzzle + random,
 				velocity,
 				ModContent.ProjectileType<TsunamiShark_bullet>(),
@@ -61,8 +66,9 @@ public class TsunamiShark : ModProjectile
 			p.CritChance = (int)(item.crit + player.GetCritChance(DamageClass.Generic));
 
 			float rot = velocity.ToRotation();
-			//TODO:子弹伤害校正，要求和被消耗的弹药种类挂钩
-			Projectile.NewProjectile(shootSource,
+			// TODO:子弹伤害校正，要求和被消耗的弹药种类挂钩
+			Projectile.NewProjectile(
+				shootSource,
 				Projectile.Center + toMuzzle * 1.5f + velocity * 2.2f + random,
 				Vector2.Zero,
 				ModContent.ProjectileType<TsunamiShark_flame>(),
@@ -72,16 +78,17 @@ public class TsunamiShark : ModProjectile
 				0.36f,
 				rot);
 		}
-		UseCount++;
-		if (UseCount == 12)
+		useCount++;
+		if (useCount == 12)
 		{
 			if (player.ownedProjectileCounts[ModContent.ProjectileType<TsunamiShark_missile>()] < 20)
 			{
 				Projectile.NewProjectileDirect(shootSource, Projectile.Center + toMuzzle, velocity.RotatedBy(-Main.rand.NextFloat(-0.2f, 0.4f) * player.direction) * 2.4f, ModContent.ProjectileType<TsunamiShark_missile>(), (int)((overridedamage == -1 ? item.damage : overridedamage) * 3.64f), item.knockBack, player.whoAmI, Main.rand.NextFloat(0.6f, 1.4f));
 			}
-			UseCount = 0;
+			useCount = 0;
 		}
 	}
+
 	public override void AI()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -112,13 +119,16 @@ public class TsunamiShark : ModProjectile
 			}
 			Projectile.velocity *= 0;
 			if (Projectile.timeLeft % player.HeldItem.useTime == 0)
+			{
 				Shoot();
+			}
 		}
 		else
 		{
 			Projectile.Kill();
 		}
 	}
+
 	public void GenerateVFXKill(int Frequency)
 	{
 		float mulVelocity = 0.6f;
@@ -132,7 +142,7 @@ public class TsunamiShark : ModProjectile
 				Visible = true,
 				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) - Projectile.velocity * Main.rand.NextFloat(3f, 14f),
 				maxTime = Main.rand.Next(21, 32),
-				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0, Main.rand.NextFloat(6f, 12f) }
+				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0, Main.rand.NextFloat(6f, 12f) },
 			};
 			Ins.VFXManager.Add(wave);
 		}
@@ -147,22 +157,26 @@ public class TsunamiShark : ModProjectile
 				Visible = true,
 				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) - Projectile.velocity * Main.rand.NextFloat(3f, 14f),
 				maxTime = Main.rand.Next(21, 32),
-				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0, Main.rand.NextFloat(6f, 12f) }
+				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0, Main.rand.NextFloat(6f, 12f) },
 			};
 			Ins.VFXManager.Add(wave);
 		}
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
 		Player player = Main.player[Projectile.owner];
 		player.heldProj = Projectile.whoAmI;
 		Vector2 toMouse = Projectile.Center - player.MountedCenter;
 		if (player.controlUseItem)
+		{
 			player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (float)(Math.Atan2(toMouse.Y, toMouse.X) - Math.PI / 2d));
+		}
 
 		Texture2D texMain = ModAsset.TsunamiShark_proj.Value;
 		Texture2D texMainGlow = ModAsset.TsunamiShark_proj_glow.Value;
@@ -182,7 +196,6 @@ public class TsunamiShark : ModProjectile
 		var offset = new Vector2(0, -5);
 		Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition + offset - random, null, lightColor, Projectile.rotation - (float)(Math.PI * 0.25), origin, 1f, se, 0);
 		Main.spriteBatch.Draw(texMainGlow, Projectile.Center - Main.screenPosition + offset - random, null, new Color(1f, 1f, 1f, 0), Projectile.rotation - (float)(Math.PI * 0.25), origin, 1f, se, 0);
-
 
 		Texture2D texMark = ModAsset.TsunamiShark_mark.Value;
 		var tsunamiS = player.HeldItem.ModItem as Items.Weapons.TsunamiShark;

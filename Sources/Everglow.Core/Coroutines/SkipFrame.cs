@@ -5,12 +5,16 @@ namespace Everglow.Commons.Coroutines;
 /// </summary>
 public class SkipThisFrame : ICoroutineInstruction
 {
-	public SkipThisFrame() { }
+	public SkipThisFrame()
+	{
+	}
 
 	public bool ShouldWait()
 	{
 		return false;
 	}
 
-	public void Update() { }
+	public void Update()
+	{
+	}
 }

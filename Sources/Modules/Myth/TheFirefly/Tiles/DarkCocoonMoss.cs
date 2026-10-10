@@ -10,7 +10,7 @@ public class DarkCocoonMoss : ModTile
 		Main.tileMerge[Type][ModContent.TileType<DarkCocoon>()] = true;
 		Main.tileMerge[Type][ModContent.TileType<DarkCocoonSpecial>()] = true;
 		MinPick = 175;
-		DustType = 191;
+		DustType = DustID.SpookyWood;
 		AddMapEntry(new Color(35, 49, 122));
 	}
 

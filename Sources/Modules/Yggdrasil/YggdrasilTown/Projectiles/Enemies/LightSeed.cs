@@ -17,9 +17,11 @@ public class LightSeed : ModProjectile
 		Projectile.tileCollide = true;
 		Projectile.timeLeft = 150;
 	}
-	Vector2 Point = Vector2.Zero;
-	float x;
-	float k;
+
+	private Vector2 point = Vector2.Zero;
+	private float x;
+	private float k;
+
 	public override void AI()
 	{
 		if (Projectile.timeLeft >= 140)
@@ -30,7 +32,6 @@ public class LightSeed : ModProjectile
 		if (Projectile.scale > 0.7f)
 		{
 			Projectile.ai[0] *= 0.985f;
-
 		}
 		else
 		{
@@ -42,26 +43,29 @@ public class LightSeed : ModProjectile
 			Projectile.scale *= 0.85f;
 		}
 		x += Projectile.ai[0];
-		Projectile.Center = Point + new Vector2(x, MathF.Sin(MathF.Abs(x) / 30) * 1800 / (MathF.Abs(x) + 12) + k * x);
+		Projectile.Center = point + new Vector2(x, MathF.Sin(MathF.Abs(x) / 30) * 1800 / (MathF.Abs(x) + 12) + k * x);
 		Lighting.AddLight(Projectile.Center, 1.6f * Projectile.scale, 1.6f * Projectile.scale, 0);
 	}
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		Projectile.ai[0] = Projectile.velocity.X;
 		k = Projectile.velocity.Y / Projectile.velocity.X;
-		Point = Projectile.Center;
+		point = Projectile.Center;
 		x = 0;
 		Projectile.velocity = Vector2.Zero;
 		Projectile.scale = 0;
 	}
+
 	public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 	{
 		target.AddBuff(BuffID.Poisoned, 600);
 	}
+
 	public override void OnKill(int timeLeft)
 	{
-
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D texture = ModAsset.LightSeed.Value;

@@ -5,6 +5,7 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee;
 public class FocusRay : ModProjectile
 {
 	public override string Texture => Commons.ModAsset.StabbingProjectile_Mod;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 16;
@@ -20,12 +21,15 @@ public class FocusRay : ModProjectile
 		Projectile.usesLocalNPCImmunity = true;
 		Projectile.localNPCHitCooldown = 60;
 	}
+
 	public NPC StickTarget;
 	public Projectile Yoyo;
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		base.OnSpawn(source);
 	}
+
 	public override void AI()
 	{
 		if (StickTarget == null)
@@ -35,6 +39,7 @@ public class FocusRay : ModProjectile
 		}
 		Projectile.Center = StickTarget.Center;
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		float energyValue = Projectile.timeLeft / 60f;

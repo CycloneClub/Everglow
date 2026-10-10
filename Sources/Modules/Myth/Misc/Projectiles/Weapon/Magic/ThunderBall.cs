@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.Audio;
+
 namespace Everglow.Myth.Misc.Projectiles.Weapon.Magic;
 
 public class ThunderBall : ModProjectile
@@ -19,21 +20,29 @@ public class ThunderBall : ModProjectile
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 60;
 	}
+
 	internal int Tokill = -1;
 	internal bool[] HasBeenHit = new bool[200];
 	internal int[] HasCool = new int[200];
 	internal int[] coolingHit = new int[200];
 	internal int TotalPower = 10;
 	internal int addi = 0;
-	private bool Nul = false;
+	private bool nul = false;
 	private Vector2[] vdp = new Vector2[65];
+
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
 		Projectile.penetrate--;
 		if (Projectile.velocity.X != oldVelocity.X)
+		{
 			Projectile.velocity.X = -oldVelocity.X;
+		}
+
 		if (Projectile.velocity.Y != oldVelocity.Y)
+		{
 			Projectile.velocity.Y = -oldVelocity.Y;
+		}
+
 		float a = Main.rand.NextFloat(0, 500.5f);
 		Player player = Main.player[Projectile.owner];
 		for (int y = 0; y < 3; y++)
@@ -45,11 +54,12 @@ public class ThunderBall : ModProjectile
 		for (int θ = 0; θ < 40; θ++)
 		{
 			Vector2 v = new Vector2(0, Main.rand.Next(25, 75) / 50f).RotatedByRandom(Math.PI * 2);
-			int num25 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 88, v.X, v.Y, 150, default, 0.6f);
+			int num25 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GemSapphire, v.X, v.Y, 150, default, 0.6f);
 			Main.dust[num25].noGravity = false;
 		}
 		return false;
 	}
+
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		float a = Main.rand.NextFloat(0, 500.5f);
@@ -63,15 +73,19 @@ public class ThunderBall : ModProjectile
 		for (int θ = 0; θ < 40; θ++)
 		{
 			Vector2 v = new Vector2(0, Main.rand.Next(25, 75) / 50f).RotatedByRandom(Math.PI * 2);
-			int num25 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 88, v.X, v.Y, 150, default, 0.6f);
+			int num25 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GemSapphire, v.X, v.Y, 150, default, 0.6f);
 			Main.dust[num25].noGravity = false;
 		}
 	}
+
 	public override void AI()
 	{
 		addi += 1;
 		if (addi % 60 == 1)
+		{
 			SoundEngine.PlaySound(new SoundStyle("Everglow/Myth/Sounds/ElectricCurrency"), Projectile.Center);
+		}
+
 		Projectile.velocity.Y += 0.15f;
 		if (Projectile.timeLeft >= 1079)
 		{
@@ -102,11 +116,16 @@ public class ThunderBall : ModProjectile
 					HasCool[j] = 15;
 				}
 				if (HasCool[j] > 0)
+				{
 					HasCool[j]--;
+				}
+
 				if (HasBeenHit[j])
 				{
 					if (coolingHit[j] > 0)
+					{
 						coolingHit[j]--;
+					}
 					else
 					{
 						coolingHit[j] = 0;
@@ -127,16 +146,21 @@ public class ThunderBall : ModProjectile
 			Projectile.aiStyle = -1;
 			Projectile.penetrate = -1;
 			Projectile.timeLeft = 200;
-			Nul = true;
+			nul = true;
 		}
 		for (int i = 0; i < 61; i++)
 		{
 			vdp[i] += new Vector2(0, Main.rand.NextFloat(0, 0.5f)).RotatedByRandom(Math.PI * 2d);
 			if (vdp[i].Length() > 12)
+			{
 				vdp[i] = new Vector2(0, Main.rand.NextFloat(0, 5f)).RotatedByRandom(Math.PI * 2d);
+			}
 		}
 		if (Tokill >= 0 && Tokill <= 2)
+		{
 			Projectile.Kill();
+		}
+
 		if (Tokill <= 44 && Tokill > 0)
 		{
 			Projectile.position = Projectile.oldPosition;
@@ -149,7 +173,7 @@ public class ThunderBall : ModProjectile
 				for (int i = 0; i < 4; i++)
 				{
 					Vector2 v = new Vector2(0, Main.rand.Next(25, 75) / 50f).RotatedByRandom(Math.PI * 2);
-					int num25 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 88, v.X, v.Y, 150, default, 0.6f);
+					int num25 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GemSapphire, v.X, v.Y, 150, default, 0.6f);
 					Main.dust[num25].noGravity = false;
 				}
 			}
@@ -159,7 +183,7 @@ public class ThunderBall : ModProjectile
 			for (int i = 0; i < 4; i++)
 			{
 				Vector2 v = new Vector2(0, Main.rand.Next(25, 75) / 50f).RotatedByRandom(Math.PI * 2);
-				int num25 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 88, v.X * Projectile.timeLeft / 60f, v.Y * Projectile.timeLeft / 60f, 150, default, 0.6f * Projectile.timeLeft / 60f);
+				int num25 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GemSapphire, v.X * Projectile.timeLeft / 60f, v.Y * Projectile.timeLeft / 60f, 150, default, 0.6f * Projectile.timeLeft / 60f);
 				Main.dust[num25].noGravity = false;
 			}
 		}
@@ -169,11 +193,12 @@ public class ThunderBall : ModProjectile
 
 	public override Color? GetAlpha(Color lightColor)
 	{
-		if (!Nul)
+		if (!nul)
 		{
-
 			if (Projectile.timeLeft > 60f)
+			{
 				return new Color?(new Color(255, 255, 255, 0));
+			}
 			else
 			{
 				return new Color?(new Color(Projectile.timeLeft / 60f, Projectile.timeLeft / 60f, Projectile.timeLeft / 60f, 0));
@@ -192,10 +217,15 @@ public class ThunderBall : ModProjectile
 		{
 			int g = (i + 1080 - Projectile.timeLeft) % 60;
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
+
 			float width = 5;
 			if (Projectile.timeLeft > 30)
+			{
 				width = 5;
+			}
 			else
 			{
 				width = Projectile.timeLeft / 6f;
@@ -209,7 +239,9 @@ public class ThunderBall : ModProjectile
 					i++;
 					var normalDir2 = Projectile.oldPos[i - 1] - Projectile.oldPos[i];
 					if (normalDir2.Length() >= 0.2f)
+					{
 						break;
+					}
 				}
 			}
 			normalDir = Vector2.Normalize(new Vector2(-normalDir.Y, normalDir.X));
@@ -251,7 +283,6 @@ public class ThunderBall : ModProjectile
 			Main.graphics.GraphicsDevice.Textures[0] = ModContent.Request<Texture2D>("Everglow/Myth/UIImages/VisualTextures/ElecLine").Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, triangleList.ToArray(), 0, triangleList.Count / 3);
 			Main.graphics.GraphicsDevice.RasterizerState = originalState;
-
 		}
 	}
 }

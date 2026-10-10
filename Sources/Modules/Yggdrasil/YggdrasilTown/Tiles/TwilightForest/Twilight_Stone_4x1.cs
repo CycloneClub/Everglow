@@ -16,7 +16,7 @@ public class Twilight_Stone_4x1 : ModTile
 		TileObjectData.newTile.Width = 4;
 		TileObjectData.newTile.CoordinateHeights = new int[]
 		{
-			18
+			18,
 		};
 		TileObjectData.newTile.StyleHorizontal = true;
 		TileObjectData.newTile.LavaDeath = false;
@@ -24,6 +24,7 @@ public class Twilight_Stone_4x1 : ModTile
 		DustType = ModContent.DustType<TwilightStone_Dust>();
 		AddMapEntry(new Color(39, 50, 52));
 	}
+
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		return base.PreDraw(i, j, spriteBatch);

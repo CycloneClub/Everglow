@@ -111,5 +111,4 @@ public class QuestGlobalNPC : GlobalNPC
 
 		return playerSideNPCs.Concat(worldSideNPCs).Distinct();
 	}
-
 }

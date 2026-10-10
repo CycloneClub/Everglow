@@ -71,14 +71,17 @@ public class GlowWoodDoorOpened : ModTile
 		LocalizedText name = CreateMapEntryName();
 		AddMapEntry(new Color(69, 36, 78), name);
 	}
+
 	public override void NumDust(int i, int j, bool fail, ref int num)
 	{
 		num = 0;
 	}
+
 	public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings)
 	{
 		return true;
 	}
+
 	public override void MouseOver(int i, int j)
 	{
 		Player player = Main.LocalPlayer;
@@ -92,7 +95,10 @@ public class GlowWoodDoorOpened : ModTile
 		var tile = Main.tile[i, j];
 		var zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
 		if (Main.drawToScreen)
+		{
 			zero = Vector2.Zero;
+		}
+
 		Texture2D tex = ModAsset.GlowWoodDoorOpenedGlow.Value;
 		spriteBatch.Draw(tex, new Vector2(i * 16, j * 16) - Main.screenPosition + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16), new Color(0.2f, 0.2f, 0.2f, 0), 0, new Vector2(0), 1, SpriteEffects.None, 0);
 

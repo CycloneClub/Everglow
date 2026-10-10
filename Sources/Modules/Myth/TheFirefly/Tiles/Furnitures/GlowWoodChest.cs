@@ -38,10 +38,12 @@ public class GlowWoodChest : ModTile
 		LocalizedText name = CreateMapEntryName();
 		AddMapEntry(new Color(69, 36, 78), name);
 	}
+
 	public override void NumDust(int i, int j, bool fail, ref int num)
 	{
 		num = 0;
 	}
+
 	public override ushort GetMapOption(int i, int j)
 	{
 		return (ushort)(Main.tile[i, j].TileFrameX / 36);
@@ -58,37 +60,46 @@ public class GlowWoodChest : ModTile
 		int top = j;
 		Tile tile = Main.tile[i, j];
 		if (tile.TileFrameX % 36 != 0)
+		{
 			left--;
+		}
 
 		if (tile.TileFrameY != 0)
+		{
 			top--;
+		}
 
 		int chest = Chest.FindChest(left, top);
 		if (chest < 0)
+		{
 			return Language.GetTextValue("LegacyChestType.0");
+		}
 
-		if (Main.chest[chest].name == "")
+		if (Main.chest[chest].name == string.Empty)
+		{
 			return name;
+		}
 
 		return name + ": " + Main.chest[chest].name;
 	}
+
 	public override bool RightClick(int i, int j)
 	{
 		return FurnitureUtils.ChestRightClick(i, j);
 	}
 
-	//不确定hjson能否解决，先禁掉了
-	//public override void MouseOver(int i, int j)
-	//{
-	//	string chestName = LocalizedText;
-	//	FurnitureUtils.ChestMouseOver<Items.Furnitures.GlowWoodChest>(chestName, i, j);
-	//}
+	// 不确定hjson能否解决，先禁掉了
+	// public override void MouseOver(int i, int j)
+	// {
+	// string chestName = LocalizedText;
+	// FurnitureUtils.ChestMouseOver<Items.Furnitures.GlowWoodChest>(chestName, i, j);
+	// }
 
-	//public override void MouseOverFar(int i, int j)
-	//{
-	//	string chestName = ContainerName.GetDefault();
-	//	FurnitureUtils.ChestMouseFar<Items.Furnitures.GlowWoodChest>(chestName, i, j);
-	//}
+	// public override void MouseOverFar(int i, int j)
+	// {
+	// string chestName = ContainerName.GetDefault();
+	// FurnitureUtils.ChestMouseFar<Items.Furnitures.GlowWoodChest>(chestName, i, j);
+	// }
 
 	public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 	{

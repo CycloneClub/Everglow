@@ -23,6 +23,7 @@ public class LampWoodHammer : ModItem
 		Item.value = 100;
 		Item.hammer = 45;
 	}
+
 	public override void MeleeEffects(Player player, Rectangle hitbox)
 	{
 		var d = Dust.NewDustDirect(hitbox.TopLeft(), hitbox.Width, hitbox.Height, ModContent.DustType<LampWood_Dust_fluorescent_appear>());
@@ -30,6 +31,7 @@ public class LampWoodHammer : ModItem
 		d.rotation = Main.rand.NextFloat(0.4f, 1.2f);
 		base.MeleeEffects(player, hitbox);
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

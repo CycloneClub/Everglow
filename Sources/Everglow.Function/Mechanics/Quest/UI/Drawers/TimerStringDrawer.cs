@@ -15,7 +15,10 @@ internal class TimerStringDrawer : TextDrawer
 	protected override Vector2 GetTextSize(string text)
 	{
 		if (!TryGetQuest(out QuestView quest))
+		{
 			return Vector2.Zero;
+		}
+
 		text = TextDefinition.GetRemainingTimeText(quest.RemainingTime);
 		return base.GetTextSize(text);
 	}
@@ -24,18 +27,25 @@ internal class TimerStringDrawer : TextDrawer
 	{
 		base.Init(stringDrawer, originalText, name, stringParameters);
 		if (stringParameters == null)
+		{
 			return;
-		QuestName = stringParameters.GetString("QuestName",
-			stringDrawer.DefaultParameters.GetString("MSTQuestName", string.Empty));
-		TimerStyle = stringParameters.GetInt("TimerStyle",
-			stringDrawer.DefaultParameters.GetInt("MSTTimerStyle", 0));
+		}
 
+		QuestName = stringParameters.GetString(
+			"QuestName",
+			stringDrawer.DefaultParameters.GetString("MSTQuestName", string.Empty));
+		TimerStyle = stringParameters.GetInt(
+			"TimerStyle",
+			stringDrawer.DefaultParameters.GetInt("MSTTimerStyle", 0));
 	}
 
 	public override void Draw(SpriteBatch sb)
 	{
 		if (!TryGetQuest(out QuestView quest))
+		{
 			return;
+		}
+
 		var pos = Position;
 		string text = TextDefinition.GetRemainingTimeText(quest.RemainingTime);
 		sb.DrawString(Font, text, Position + Offset, Color, Scale, Rotation,

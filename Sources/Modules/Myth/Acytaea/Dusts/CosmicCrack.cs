@@ -16,7 +16,9 @@ public class CosmicCrack : Particle
 		scale -= 0.03f;
 		velocity *= 0.99f;
 		if (scale <= 0)
+		{
 			Active = false;
+		}
 	}
 
 	public override void Draw()

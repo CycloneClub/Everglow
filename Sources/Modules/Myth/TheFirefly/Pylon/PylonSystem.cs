@@ -7,6 +7,7 @@ namespace Everglow.Myth.TheFirefly.Pylon;
 internal class PylonSystem : ModSystem
 {
 	public static PylonSystem Instance => ModContent.GetInstance<PylonSystem>();
+
 	public const string DataName = "pylon";
 	public bool shabbyPylonEnable = false;
 	public bool firstEnableAnimation = false;

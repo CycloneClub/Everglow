@@ -4,10 +4,10 @@ using Terraria.GameContent.Drawing;
 using Terraria.Graphics.Renderers;
 
 namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee;
+
 // This is a copy of the Excalibur's projectile
 public class CyanFrostProj : ModProjectile
 {
-
 	// We could use a vanilla texture if we want instead of supplying our own.
 	// public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.Excalibur;
 
@@ -70,8 +70,8 @@ public class CyanFrostProj : ModProjectile
 		float adjustedRotation = MathHelper.Pi * direction * percentageOfLife + velocityRotation + direction * MathHelper.Pi + player.fullRotation;
 		Projectile.rotation = adjustedRotation; // Set the rotation to our to the new rotation we calculated.
 
-		float scaleMulti = 1.2f; // Excalibur, Terra Blade, and The Horseman's Blade is 0.6f; True Excalibur is 1f; default is 0.2f 
-		float scaleAdder = 1.2f; // Excalibur, Terra Blade, and The Horseman's Blade is 1f; True Excalibur is 1.2f; default is 1f 
+		float scaleMulti = 1.2f; // Excalibur, Terra Blade, and The Horseman's Blade is 0.6f; True Excalibur is 1f; default is 0.2f
+		float scaleAdder = 1.2f; // Excalibur, Terra Blade, and The Horseman's Blade is 1f; True Excalibur is 1.2f; default is 1f
 
 		Projectile.Center = player.RotatedRelativePoint(player.MountedCenter) - Projectile.velocity;
 		Projectile.scale = scaleAdder + percentageOfLife * scaleMulti;
@@ -185,9 +185,9 @@ public class CyanFrostProj : ModProjectile
 
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
-		//	ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.Excalibur,
-		//			new ParticleOrchestraSettings { PositionInWorld = Main.rand.NextVector2FromRectangle(target.Hitbox) },
-		//			Projectile.owner);
+		// ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.Excalibur,
+		// new ParticleOrchestraSettings { PositionInWorld = Main.rand.NextVector2FromRectangle(target.Hitbox) },
+		// Projectile.owner);
 		Spawn_CustomColorExcalibur(new ParticleOrchestraSettings { PositionInWorld = Main.rand.NextVector2FromRectangle(target.Hitbox) }, new Color(0f, 0.5f, 0.6f, 0.5f), new Color(0f, 0.82f, 0.82f, 1f));
 
 		// Set the target's hit direction to away from the player so the knockback is in the correct direction.
@@ -195,7 +195,9 @@ public class CyanFrostProj : ModProjectile
 
 		target.AddBuff(BuffID.Chilled, 100);
 		if (Main.rand.NextBool(10))
+		{
 			target.AddBuff(BuffID.Frostburn, 100);
+		}
 	}
 
 	public override void OnHitPlayer(Player target, Player.HurtInfo info)
@@ -217,7 +219,7 @@ public class CyanFrostProj : ModProjectile
 		Rectangle sourceRectangle = texture.Frame(1, 4); // The sourceRectangle says which frame to use.
 		Vector2 origin = sourceRectangle.Size() / 2f;
 		float scale = Projectile.scale * 1.1f;
-		SpriteEffects spriteEffects = ((!(Projectile.ai[0] >= 0f)) ? SpriteEffects.FlipVertically : SpriteEffects.None); // Flip the sprite based on the direction it is facing.
+		SpriteEffects spriteEffects = (!(Projectile.ai[0] >= 0f)) ? SpriteEffects.FlipVertically : SpriteEffects.None; // Flip the sprite based on the direction it is facing.
 		float percentageOfLife = Projectile.localAI[0] / Projectile.ai[1]; // The current time over the max time.
 		float lerpTime = Utils.Remap(percentageOfLife, 0f, 0.6f, 0f, 1f) * Utils.Remap(percentageOfLife, 0.6f, 1f, 1f, 0f);
 		float lightingColor = Lighting.GetColor(Projectile.Center.ToTileCoordinates()).ToVector3().Length() / (float)Math.Sqrt(3.0);
@@ -271,7 +273,7 @@ public class CyanFrostProj : ModProjectile
 	// Copied from Main.DrawPrettyStarSparkle() which is private
 	private static void DrawPrettyStarSparkle(float opacity, SpriteEffects dir, Vector2 drawpos, Color drawColor, Color shineColor, float flareCounter, float fadeInStart, float fadeInEnd, float fadeOutStart, float fadeOutEnd, float rotation, Vector2 scale, Vector2 fatness)
 	{
-		Texture2D sparkleTexture = TextureAssets.Extra[98].Value;
+		Texture2D sparkleTexture = TextureAssets.Extra[ExtrasID.SharpTears].Value;
 		Color bigColor = shineColor * opacity * 0.5f;
 		bigColor.A = 0;
 		Vector2 origin = sparkleTexture.Size() / 2f;
@@ -291,7 +293,9 @@ public class CyanFrostProj : ModProjectile
 
 	// Copied from Terraria.GameContent.Drawing.ParticleOrchestra.Spawn_Excalibur which is private
 	private static PrettySparkleParticle GetNewPrettySparkleParticle() => new PrettySparkleParticle();
+
 	private static ParticlePool<PrettySparkleParticle> _poolPrettySparkle = new ParticlePool<PrettySparkleParticle>(200, GetNewPrettySparkleParticle);
+
 	/// <summary>
 	/// A custom version of Spawn_Excalibur from Terraria.GameContent.Drawing.ParticleOrchestra
 	/// </summary>
@@ -301,7 +305,10 @@ public class CyanFrostProj : ModProjectile
 	internal static void Spawn_CustomColorExcalibur(ParticleOrchestraSettings settings, Color colorTint1, Color colorTint2 = default)
 	{
 		if (colorTint2 == default)
+		{
 			colorTint2 = colorTint1;
+		}
+
 		float num = 30f;
 		float num2 = 0f;
 		for (float num3 = 0f; num3 < 4f; num3 += 1f)
@@ -355,22 +362,22 @@ public class CyanFrostProj : ModProjectile
 			Main.ParticleSystem_World_OverPlayers.Add(prettySparkleParticle2);
 			for (int i = 0; i < 1; i++)
 			{
-				Dust dust = Dust.NewDustPerfect(settings.PositionInWorld, 92, vector2.RotatedBy(Main.rand.NextFloatDirection() * ((float)Math.PI * 2f) * 0.025f) * Main.rand.NextFloat());
+				Dust dust = Dust.NewDustPerfect(settings.PositionInWorld, DustID.Frost, vector2.RotatedBy(Main.rand.NextFloatDirection() * ((float)Math.PI * 2f) * 0.025f) * Main.rand.NextFloat());
 				dust.noGravity = true;
 				dust.scale = 0.8f;
-				Dust dust2 = Dust.NewDustPerfect(settings.PositionInWorld, 92, -vector2.RotatedBy(Main.rand.NextFloatDirection() * ((float)Math.PI * 2f) * 0.025f) * Main.rand.NextFloat());
+				Dust dust2 = Dust.NewDustPerfect(settings.PositionInWorld, DustID.Frost, -vector2.RotatedBy(Main.rand.NextFloatDirection() * ((float)Math.PI * 2f) * 0.025f) * Main.rand.NextFloat());
 				dust2.noGravity = true;
 				dust2.scale = 0.8f;
 			}
 		}
 	}
 	// Do we need this:
-	//internal static void Spawn_CustomColorExcaliburWithRequests(bool clientOnly, ParticleOrchestraType type, ParticleOrchestraSettings settings, int? overrideInvokingPlayerIndex = null)
-	//{
-	//	if (clientOnly)
-	//		ParticleOrchestrator.SpawnParticlesDirect(type, settings);
-	//	else
-	//		NetManager.Instance.SendToServerAndSelf(NetParticlesModule.Serialize(type, settings));
-	//	Spawn_CustomColorExcalibur(settings, new Color(0f, 0.56f, 0.6f, 0.5f));
-	//}
+	// internal static void Spawn_CustomColorExcaliburWithRequests(bool clientOnly, ParticleOrchestraType type, ParticleOrchestraSettings settings, int? overrideInvokingPlayerIndex = null)
+	// {
+	// if (clientOnly)
+	// ParticleOrchestrator.SpawnParticlesDirect(type, settings);
+	// else
+	// NetManager.Instance.SendToServerAndSelf(NetParticlesModule.Serialize(type, settings));
+	// Spawn_CustomColorExcalibur(settings, new Color(0f, 0.56f, 0.6f, 0.5f));
+	// }
 }

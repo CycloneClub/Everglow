@@ -5,7 +5,6 @@ namespace Everglow.Yggdrasil.KelpCurtain.Background;
 
 public class IsleOfBloom_Underground_close : BackgroundSlideBase
 {
-
 	public List<Point> BgTiles = new List<Point>();
 
 	public override void SetDefaults()

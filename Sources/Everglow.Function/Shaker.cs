@@ -13,6 +13,7 @@ public class ShakerInfo
 	internal int maxTick;
 	internal int propagationDelayTimer;
 	internal int maxPropagationTime;
+
 	public virtual bool Update()
 	{
 		tickTimer++;
@@ -26,6 +27,7 @@ public class ShakerInfo
 		}
 		return true;
 	}
+
 	public virtual void ApplyTo(Vector2 pos, ref Vector2 effect)
 	{
 		int tracetime = (int)(Vector2.Distance(center, pos) / propagationSpeed);
@@ -45,7 +47,8 @@ public class ShakerInfo
 		float attenuatedStrength = vStrength * attenuation;
 		effect += attenuatedStrength * vdir;
 	}
-	//根据标识头(FullName)调用解析
+
+	// 根据标识头(FullName)调用解析
 	public virtual ShakerInfo NetRecive(BinaryReader reader)
 	{
 		return new()
@@ -59,10 +62,11 @@ public class ShakerInfo
 			tickTimer = reader.ReadInt32(),
 			maxTick = reader.ReadInt32(),
 			propagationDelayTimer = reader.ReadInt32(),
-			maxPropagationTime = reader.ReadInt32()
+			maxPropagationTime = reader.ReadInt32(),
 		};
 	}
-	//调用此方法前写入标识头，便于根据标识头(FullName)调用解析
+
+	// 调用此方法前写入标识头，便于根据标识头(FullName)调用解析
 	public virtual void NetSend(BinaryWriter writer)
 	{
 		writer.Write(center.X);
@@ -78,6 +82,7 @@ public class ShakerInfo
 		writer.Write(maxPropagationTime);
 	}
 }
+
 public class UndirectedShakerInfo : ShakerInfo
 {
 	public static UndirectedShakerInfo Create(Vector2 center, float strength = 20, float period = 60, float speed = 30, float acv = 0.9f, float acp = 0.9f, int maxtick = 10)
@@ -110,6 +115,7 @@ public class UndirectedShakerInfo : ShakerInfo
 			maxTick = maxtick,
 		};
 	}
+
 	public override void ApplyTo(Vector2 pos, ref Vector2 effect)
 	{
 		int tracetime = (int)(Vector2.Distance(center, pos) / propagationSpeed);
@@ -129,6 +135,7 @@ public class UndirectedShakerInfo : ShakerInfo
 		float attenuatedStrength = vStrength * attenuation;
 		effect += attenuatedStrength * vdir;
 	}
+
 	public override ShakerInfo NetRecive(BinaryReader reader)
 	{
 		return new()
@@ -142,23 +149,27 @@ public class UndirectedShakerInfo : ShakerInfo
 			tickTimer = reader.ReadInt32(),
 			maxTick = reader.ReadInt32(),
 			propagationDelayTimer = reader.ReadInt32(),
-			maxPropagationTime = reader.ReadInt32()
+			maxPropagationTime = reader.ReadInt32(),
 		};
 	}
 }
+
 public class ShakerManager : ModSystem
 {
-	static List<ShakerInfo> shakers;
-	static List<ShakerInfo> waitremove;
+	private static List<ShakerInfo> shakers;
+	private static List<ShakerInfo> waitremove;
+
 	/// <summary>
 	/// 关闭此震动系统的屏幕移动效果,每帧重置
 	/// </summary>
 	public static bool LockScreen { get; set; }
+
 	public override void Load()
 	{
 		shakers = new();
 		waitremove = new();
 	}
+
 	public override void Unload()
 	{
 		shakers.Clear();
@@ -166,7 +177,9 @@ public class ShakerManager : ModSystem
 		waitremove.Clear();
 		waitremove = null;
 	}
+
 	public override void PostUpdateEverything() => Update();
+
 	public override void ModifyScreenPosition()
 	{
 		if (LockScreen)
@@ -176,6 +189,7 @@ public class ShakerManager : ModSystem
 		}
 		Main.screenPosition += GetEffectOn(Main.screenPosition + new Vector2(Main.screenWidth, Main.screenHeight) / 2);
 	}
+
 	/// <summary>
 	/// 加入一个默认有向振动源
 	/// </summary>
@@ -221,20 +235,23 @@ public class ShakerManager : ModSystem
 		};
 		shakers.Add(info);
 	}
+
 	/// <summary>
 	/// 加入一个自定义震动源
-	/// <br>由联机同步得到的震动源务必关闭<see cref="ShakerInfo.NeedNetSync"/>以避免无限同步</br>
+	/// <br>本方法仅将震动源加入本地列表；处理联机收到的震动源时，应避免再次发送该震动源而形成同步循环。</br>
 	/// </summary>
 	/// <param name="info"></param>
 	public static void AddShaker(ShakerInfo info)
 	{
 		shakers.Add(info);
 	}
+
 	/// <summary>
 	/// 清空所有震动源
 	/// </summary>
 	public static void Clear() => shakers.Clear();
-	static void Update()
+
+	private static void Update()
 	{
 		waitremove.Clear();
 		foreach (ShakerInfo info in shakers)
@@ -246,6 +263,7 @@ public class ShakerManager : ModSystem
 		}
 		shakers.RemoveAll(waitremove.Contains);
 	}
+
 	/// <summary>
 	/// 获取某一点受到该震动系统内所有震源的影响效果
 	/// </summary>

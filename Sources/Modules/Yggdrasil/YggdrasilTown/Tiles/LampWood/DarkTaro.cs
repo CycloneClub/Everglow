@@ -18,7 +18,7 @@ public class DarkTaro : ModTile, ITileFluentlyDrawn
 		{
 			16,
 			16,
-			20
+			20,
 		};
 		TileObjectData.newTile.CoordinateWidth = 96;
 		TileObjectData.addTile(Type);
@@ -26,13 +26,13 @@ public class DarkTaro : ModTile, ITileFluentlyDrawn
 		AddMapEntry(new Color(51, 41, 96));
 		HitSound = SoundID.Grass;
 	}
-	//public override void PlaceInWorld(int i, int j, Item item)
-	//{
-	//	short num = (short)Main.rand.Next(0, 3);
-	//	Main.tile[i, j].TileFrameX = (short)(num * 72);
-	//	Main.tile[i, j + 1].TileFrameX = (short)(num * 72);
-	//	Main.tile[i, j + 2].TileFrameX = (short)(num * 72);
-	//}
+	// public override void PlaceInWorld(int i, int j, Item item)
+	// {
+	// short num = (short)Main.rand.Next(0, 3);
+	// Main.tile[i, j].TileFrameX = (short)(num * 72);
+	// Main.tile[i, j + 1].TileFrameX = (short)(num * 72);
+	// Main.tile[i, j + 2].TileFrameX = (short)(num * 72);
+	// }
 
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{
@@ -56,7 +56,7 @@ public class DarkTaro : ModTile, ITileFluentlyDrawn
 		{
 			DrawCenterPos = drawCenterPos,
 			SpriteBatch = spriteBatch,
-			TileDrawing = tileDrawing
+			TileDrawing = tileDrawing,
 		};
 
 		DrawShrubPiece(Frame(0), 0.1f, SwayHitboxPos(0), PaintPos(1), drawInfo);
@@ -66,6 +66,7 @@ public class DarkTaro : ModTile, ITileFluentlyDrawn
 		DrawShrubPiece(Frame(384), 0.053f, SwayHitboxPos(1), PaintPos(3), drawInfo);
 		DrawShrubPiece(Frame(480), 0, SwayHitboxPos(-1), PaintPos(2), drawInfo);
 	}
+
 	/// <summary>
 	/// 绘制灌木的一个小Piece
 	/// </summary>
@@ -80,7 +81,9 @@ public class DarkTaro : ModTile, ITileFluentlyDrawn
 
 		// 回声涂料
 		if (!TileDrawing.IsVisible(tile))
+		{
 			return;
+		}
 
 		int paint = Main.tile[paintPos].TileColor;
 		int textureStyle = tile.TileFrameX + frame.Y * 50;
@@ -89,7 +92,9 @@ public class DarkTaro : ModTile, ITileFluentlyDrawn
 
 		float windCycle = 0;
 		if (tileDrawing.InAPlaceWithWind(tilePos.X, tilePos.Y, 1, 1))
+		{
 			windCycle = tileDrawing.GetWindCycle(tilePos.X, tilePos.Y, tileDrawing._sunflowerWindCounter);
+		}
 
 		int totalPushTime = 80;
 		float pushForcePerFrame = 1.26f;

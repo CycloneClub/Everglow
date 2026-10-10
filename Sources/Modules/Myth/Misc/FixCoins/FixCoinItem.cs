@@ -10,12 +10,14 @@ public abstract class FixCoinItem : ModItem
 	{
 		return 1;
 	}
+
 	/// <summary>
 	/// 额外属性设置
 	/// </summary>
 	public virtual void SSD()
 	{
 	}
+
 	public override void SetDefaults()
 	{
 		Item.width = 28;
@@ -36,20 +38,23 @@ public abstract class FixCoinItem : ModItem
 
 		SSD();
 	}
+
 	public override bool CanUseItem(Player player)
 	{
 		foreach (Item item in player.inventory)
 		{
 			if (item.accessory)
+			{
 				return true;
+			}
 		}
-		//TODO:你的背包里没有饰品
-		//string tex3 = "There's no accessory in your inventory";
-		//if (Language.ActiveCulture.Name == "zh-Hans")
-		//{
+		// TODO:你的背包里没有饰品
+		// string tex3 = "There's no accessory in your inventory";
+		// if (Language.ActiveCulture.Name == "zh-Hans")
+		// {
 		//    tex3 = "你的背包中没有饰品";
-		//}
-		//CombatText.NewText(new Rectangle((int)player.Center.X - 10, (int)player.Center.Y - 10, 20, 20), Color.White, tex3);
+		// }
+		// CombatText.NewText(new Rectangle((int)player.Center.X - 10, (int)player.Center.Y - 10, 20, 20), Color.White, tex3);
 		return false;
 	}
 }

@@ -28,6 +28,7 @@ public class CorMoth4DProj : ModProjectile
 	}
 
 	private NPC Owner => Main.npc[(int)Projectile.ai[0]];
+
 	public Vector4 targetPos;
 	private Vector4 v4Position;
 	private int maxTimeleft;
@@ -51,7 +52,9 @@ public class CorMoth4DProj : ModProjectile
 	public override void AI()
 	{
 		if (Projectile.timeLeft % 3 == 0 && Main.rand.NextBool())
+		{
 			Projectile.frame++;
+		}
 
 		int t = maxTimeleft - Projectile.timeLeft;
 		if (t == 0)
@@ -59,9 +62,11 @@ public class CorMoth4DProj : ModProjectile
 			Projectile.spriteDirection = Main.rand.NextBool() ? 1 : -1;
 			Projectile.ai[1] = 1;
 		}
-		//逐维度展开
+		// 逐维度展开
 		if (t < 50)
+		{
 			v4Position.Y = MathHelper.Lerp(v4Position.Y, targetPos.Y, 0.05f);
+		}
 		else if (t < 100)
 		{
 			v4Position.X = MathHelper.Lerp(v4Position.X, targetPos.X, 0.05f);
@@ -78,7 +83,7 @@ public class CorMoth4DProj : ModProjectile
 		{
 			v4Position = VecRotByYoZ(v4Position, 0.01f);
 			Projectile.ai[1] += 0.001f;
-			//Position = Vector4.Normalize(Position) * (Position.Length() + 1f);
+			// Position = Vector4.Normalize(Position) * (Position.Length() + 1f);
 		}
 
 		if (!Owner.active)
@@ -91,7 +96,7 @@ public class CorMoth4DProj : ModProjectile
 		if (v3.Z < 800)
 		{
 			Projectile.hostile = true;
-			//Vector2 pos = Projection2(v3, Main.screenPosition + new Vector2(Main.screenWidth, Main.screenHeight) / 2, out float scale, 1000);
+			// Vector2 pos = Projection2(v3, Main.screenPosition + new Vector2(Main.screenWidth, Main.screenHeight) / 2, out float scale, 1000);
 			Projectile.Center = new(v3.X, v3.Y);
 		}
 		else
@@ -115,7 +120,6 @@ public class CorMoth4DProj : ModProjectile
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D Light = ModAsset.FixCoinLight3.Value;
-		;
 		Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
 		var origin = new Vector2(tex.Width / 2, tex.Height / 6);
 		Rectangle sourceRec = tex.Frame(1, 4, 0, Projectile.frame % 4);
@@ -130,10 +134,10 @@ public class CorMoth4DProj : ModProjectile
 		}
 		else
 		{
-
 		}
 		return false;
 	}
+
 	public void DrawTexLine(Vector2 StartPos, Vector2 EndPos, Color color1, Color color2, Texture2D tex, float AddValue = 0)
 	{
 		float Wid = 24f;
@@ -153,8 +157,6 @@ public class CorMoth4DProj : ModProjectile
 			vertex2Ds.Add(new Vertex2D(StartPos + Width, color1, new Vector3(Value0, 0, 0)));
 			vertex2Ds.Add(new Vertex2D(StartPos - Width, color1, new Vector3(Value0, 1, 0)));
 
-
-
 			vertex2Ds.Add(new Vertex2D(StartPos + Delta * D0 + Width, color1, new Vector3(0, 0, 0)));
 			vertex2Ds.Add(new Vertex2D(StartPos + Delta * D0 - Width, color1, new Vector3(0, 1, 0)));
 
@@ -173,6 +175,7 @@ public class CorMoth4DProj : ModProjectile
 		Main.graphics.GraphicsDevice.Textures[0] = tex;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, vertex2Ds.ToArray(), 0, vertex2Ds.Count - 2);
 	}
+
 	private Vector3 Projection(Vector4 vec, float viewZ)
 	{
 		float k1 = -viewZ / (vec.W - viewZ);

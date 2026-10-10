@@ -6,11 +6,13 @@ internal class TraillingStar : Star
 {
 	public Vector2[] oldPos = new Vector2[15];
 	public Vector2 velocity;
+
 	public override void Update()
 	{
 		position += velocity;
 		base.Update();
 	}
+
 	public override void Draw()
 	{
 		base.Draw();
@@ -35,7 +37,10 @@ internal class TraillingStar : Star
 
 			float a = 0.7f;
 			if (f > 0.5f)
+			{
 				a *= 1 - f;
+			}
+
 			vertices.Add(new(oldPos[i] + w * v, c * a, new Vector3(f, 0, 0)));
 			vertices.Add(new(oldPos[i] - w * v, c * a, new Vector3(f, 1, 0)));
 		}

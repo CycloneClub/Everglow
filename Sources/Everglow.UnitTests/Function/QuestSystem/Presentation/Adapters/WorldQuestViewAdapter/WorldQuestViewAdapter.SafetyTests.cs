@@ -2,6 +2,7 @@ using Everglow.Commons.Mechanics.Quest.Presentation.Adapters;
 using Everglow.Commons.Mechanics.Quest.Presentation.Views;
 using Everglow.Commons.Mechanics.Quest.WorldSide;
 using Terraria;
+using Terraria.ID;
 
 namespace Everglow.UnitTests.Function.QuestSystem;
 
@@ -10,7 +11,7 @@ public partial class WorldQuestViewAdapterTest
 	[TestMethod]
 	public void Create_DoesNotTriggerObjectiveBehaviorPersistenceNetworkOrRewardClaims()
 	{
-		var reward = new Item { type = 1, stack = 1 };
+		var reward = new Item { type = ItemID.IronPickaxe, stack = 1 };
 		var objective = new StubObjective { ProgressValue = 0.6f };
 		var quest = new StubQuest
 		{

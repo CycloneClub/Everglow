@@ -9,6 +9,7 @@ public class AcytaeaInferno : ModBuff
 		Main.debuff[Type] = true;
 		Main.buffNoSave[Type] = true;
 	}
+
 	public override void Update(NPC npc, ref int buffIndex)
 	{
 		int buffDamage = 100;
@@ -20,6 +21,7 @@ public class AcytaeaInferno : ModBuff
 
 		base.Update(npc, ref buffIndex);
 	}
+
 	public override void Update(Player player, ref int buffIndex)
 	{
 		int buffDamage = (int)(5 + player.velocity.Length() * 8);
@@ -29,6 +31,7 @@ public class AcytaeaInferno : ModBuff
 		GenerateFire(1, player.Center);
 		base.Update(player, ref buffIndex);
 	}
+
 	public void GenerateFire(int amount, Vector2 position)
 	{
 		for (int x = 0; x < amount; x++)
@@ -43,7 +46,7 @@ public class AcytaeaInferno : ModBuff
 				Visible = true,
 				position = positionVFX - newVec * 4,
 				maxTime = Main.rand.Next(14, 26),
-				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.10f, 0.10f), Main.rand.NextFloat(8f, 11f) }
+				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.10f, 0.10f), Main.rand.NextFloat(8f, 11f) },
 			};
 			Ins.VFXManager.Add(acytaeaFlame);
 		}

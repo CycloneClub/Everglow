@@ -1,4 +1,3 @@
-
 namespace Everglow.Yggdrasil.KelpCurtain.Dusts;
 
 public class CrimsonMoonAlgea_fruitDust : ModDust

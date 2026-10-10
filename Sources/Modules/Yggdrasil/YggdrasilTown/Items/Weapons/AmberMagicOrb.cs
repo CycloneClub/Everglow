@@ -28,6 +28,7 @@ public class AmberMagicOrb : ModItem
 		Item.shoot = ModContent.ProjectileType<Projectiles.Magic.AmberMagicOrb>();
 		Item.shootSpeed = 12;
 	}
+
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		if (player.ownedProjectileCounts[type] <= 0)

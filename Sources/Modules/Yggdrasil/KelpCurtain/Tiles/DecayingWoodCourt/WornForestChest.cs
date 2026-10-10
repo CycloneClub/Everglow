@@ -98,6 +98,7 @@ public class WornForestChest : ModTile
 	{
 		num = 1;
 	}
+
 	public override void MouseOver(int i, int j)
 	{
 		Player player = Main.LocalPlayer;
@@ -147,7 +148,7 @@ public class WornForestChest : ModTile
 		if (player.cursorItemIconText == string.Empty)
 		{
 			player.cursorItemIconEnabled = false;
-			player.cursorItemIconID = 0;
+			player.cursorItemIconID = ItemID.None;
 		}
 	}
 

@@ -60,7 +60,7 @@ public class KelpCurtainBiome : ModBiome
 	/// This is a <b>player-centred</b> band, not a copy of the camera-driven visual band, and the two
 	/// do not cover the same world rows. <see cref="IsBiomeActive"/> compares the camera top
 	/// (<see cref="Main.screenPosition"/>.Y) against <c>[0.72, 0.9] * maxTilesY * 16</c>, while this
-	/// predicate compares <see cref="Player.Center"/>.Y against the same numbers; because the camera
+	/// predicate compares <see cref="Terraria.Entity.Center"/>.Y against the same numbers; because the camera
 	/// top sits roughly half a screen above the player, the visual band in player-centre coordinates
 	/// starts and ends about half a screen (tens of tiles) lower. That offset is deliberate and
 	/// server-safe: <see cref="Main.screenPosition"/> and <c>Main.screenHeight</c> are client-only and

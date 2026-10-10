@@ -52,10 +52,12 @@ public class GlowWoodChandelierType4 : ModTile, ITileFluentlyDrawn
 	{
 		num = 0;
 	}
+
 	public override void HitWire(int i, int j)
 	{
 		FurnitureUtils.LightHitwire(i, j, Type, 3, 3);
 	}
+
 	public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 	{
 		var tile = Main.tile[i, j];
@@ -72,11 +74,13 @@ public class GlowWoodChandelierType4 : ModTile, ITileFluentlyDrawn
 			b = 0f;
 		}
 	}
+
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		TileFluentDrawManager.AddFluentPoint(this, i, j);
 		return false;
 	}
+
 	public void FluentDraw(Vector2 screenPosition, Point pos, SpriteBatch spriteBatch, TileDrawing tileDrawing)
 	{
 		FurnitureUtils.Chandelier3x3FluentDraw(screenPosition, pos, spriteBatch, tileDrawing);

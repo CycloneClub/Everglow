@@ -13,6 +13,7 @@ public class StarCrack : ModBuff
 		player.buffTime[buffIndex] += 1;
 	}
 }
+
 public class StarCrackPlayer : ModPlayer
 {
 	public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)

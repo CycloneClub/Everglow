@@ -228,7 +228,7 @@ public class LanternBombRemoteControl : ModItem
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		Projectile.NewProjectileDirect(Item.GetSource_FromAI(), Main.MouseWorld, Vector2.zeroVector, ModContent.ProjectileType<KillLanternMoonMobs>(), 20, 1, Main.myPlayer);
-		//KillGreenLanternEffect(Main.MouseWorld);
+		// KillGreenLanternEffect(Main.MouseWorld);
 		return false;
 	}
 }

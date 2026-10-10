@@ -21,7 +21,9 @@ namespace Everglow.Commons.UI.UIElements
 			Events.OnLeftClick += element =>
 			{
 				if (CanDrag)
+				{
 					dragging = false;
+				}
 			};
 		}
 
@@ -66,12 +68,12 @@ namespace Everglow.Commons.UI.UIElements
 			Texture2D texture = ModAsset.Panel.Value;
 			Point textureSize = new Point(texture.Width, texture.Height);
 			Rectangle rectangle = Info.TotalHitBox;
-			//绘制四个角
+			// 绘制四个角
 			sb.Draw(texture, new Vector2(rectangle.X, rectangle.Y), new Rectangle(0, 0, 6, 6), PanelColor);
 			sb.Draw(texture, new Vector2(rectangle.X + rectangle.Width - 6, rectangle.Y), new Rectangle(textureSize.X - 6, 0, 6, 6), PanelColor);
 			sb.Draw(texture, new Vector2(rectangle.X, rectangle.Y + rectangle.Height - 6), new Rectangle(0, textureSize.Y - 6, 6, 6), PanelColor);
 			sb.Draw(texture, new Vector2(rectangle.X + rectangle.Width - 6, rectangle.Y + rectangle.Height - 6), new Rectangle(textureSize.X - 6, textureSize.Y - 6, 6, 6), PanelColor);
-			//绘制本体
+			// 绘制本体
 			sb.Draw(texture, new Rectangle(rectangle.X + 6, rectangle.Y, rectangle.Width - 12, 6), new Rectangle(6, 0, textureSize.X - 12, 6), PanelColor);
 			sb.Draw(texture, new Rectangle(rectangle.X + 6, rectangle.Y + rectangle.Height - 6, rectangle.Width - 12, 6), new Rectangle(6, textureSize.Y - 6, textureSize.X - 12, 6), PanelColor);
 			sb.Draw(texture, new Rectangle(rectangle.X, rectangle.Y + 6, 6, rectangle.Height - 12), new Rectangle(0, 6, 6, textureSize.Y - 12), PanelColor);

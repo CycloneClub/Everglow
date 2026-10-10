@@ -10,6 +10,7 @@ public class ToothMagicSplit2 : ModProjectile
 	{
 		// DisplayName.SetDefault("Tooth Magic Ball");
 	}
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 18;
@@ -27,8 +28,10 @@ public class ToothMagicSplit2 : ModProjectile
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 45;
 	}
-	int addi = 0;
-	int MaxAdd = -1;
+
+	private int addi = 0;
+	private int maxAdd = -1;
+
 	public override void AI()
 	{
 		Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X);
@@ -39,7 +42,7 @@ public class ToothMagicSplit2 : ModProjectile
             Main.dust[num90].noGravity = true;
             Main.dust[num90].velocity *= 0.5f;*/
 		addi++;
-		if (Tokill < 0)
+		if (tokill < 0)
 		{
 			float num2 = Projectile.Center.X;
 			float num3 = Projectile.Center.Y;
@@ -75,11 +78,17 @@ public class ToothMagicSplit2 : ModProjectile
 				Projectile.velocity.Y = (Projectile.velocity.Y * 20f + num10) / 21f;
 			}
 		}
-		if (Tokill >= 0 && Tokill <= 2)
+		if (tokill >= 0 && tokill <= 2)
+		{
 			Projectile.Kill();
-		if (Tokill > 0)
-			Tokill--;
-		if (Tokill <= 44 && Tokill > 0)
+		}
+
+		if (tokill > 0)
+		{
+			tokill--;
+		}
+
+		if (tokill <= 44 && tokill > 0)
 		{
 			Projectile.position = Projectile.oldPosition;
 			Projectile.velocity = Projectile.oldVelocity;
@@ -88,35 +97,50 @@ public class ToothMagicSplit2 : ModProjectile
             Main.dust[r2].noGravity = true;
             int r = Dust.NewDust(new Vector2(Projectile.Center.X, Projectile.Center.Y) - new Vector2(4, 4) + Projectile.velocity / Projectile.velocity.Length() * 12f, 0, 0, 183, 0, 0, 0, default, 4f);
             Main.dust[r].noGravity = true;*/
-		if (MaxAdd == -1)
-			MaxAdd = Main.rand.Next(12, 27);
-		if (FirstVel == Vector2.Zero)
-			FirstVel = Vector2.Normalize(Projectile.velocity).RotatedBy(Main.rand.NextFloat(-1.5f, 1.5f)) * 0.9f;
-		if (addi < MaxAdd)
-			Projectile.velocity += (float)(1 - Math.Cos(addi / 7.5d * Math.PI)) * FirstVel;
+		if (maxAdd == -1)
+		{
+			maxAdd = Main.rand.Next(12, 27);
+		}
+
+		if (firstVel == Vector2.Zero)
+		{
+			firstVel = Vector2.Normalize(Projectile.velocity).RotatedBy(Main.rand.NextFloat(-1.5f, 1.5f)) * 0.9f;
+		}
+
+		if (addi < maxAdd)
+		{
+			Projectile.velocity += (float)(1 - Math.Cos(addi / 7.5d * Math.PI)) * firstVel;
+		}
 		else
 		{
-			if (Tokill < 0)
+			if (tokill < 0)
 			{
 				Projectile.tileCollide = true;
 				Projectile.friendly = true;
 			}
 		}
-		if (Projectile.damage <= 0 && Tokill <= 0)
+		if (Projectile.damage <= 0 && tokill <= 0)
+		{
 			Projectile.Kill();
+		}
+
 		if (Projectile.velocity.Length() > 7)
+		{
 			Projectile.velocity = Projectile.velocity.RotatedBy(Projectile.velocity.Length() / 30f * (Projectile.whoAmI % 2 - 0.5f)) * 0.96f;
+		}
 		else
 		{
 			Projectile.velocity = Projectile.velocity.RotatedBy(Projectile.velocity.Length() / 100f * (Projectile.whoAmI % 2 - 0.5f));
 		}
 	}
-	int Tokill = -1;
-	float wid = -1;
+
+	private int tokill = -1;
+	private float wid = -1;
+
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
 		Projectile.velocity = Projectile.oldVelocity;
-		Tokill = 45;//0.75s后消掉
+		tokill = 45; // 0.75s后消掉
 		Projectile.friendly = false;
 		Projectile.damage = 0;
 		Projectile.tileCollide = false;
@@ -124,66 +148,82 @@ public class ToothMagicSplit2 : ModProjectile
 		Projectile.aiStyle = -1;
 		return false;
 	}
+
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		Projectile.velocity = Projectile.oldVelocity;
-		Tokill = 45;//0.75s后消掉
+		tokill = 45; // 0.75s后消掉
 		Projectile.friendly = false;
 		Projectile.damage = 0;
 		Projectile.tileCollide = false;
 		Projectile.ignoreWater = true;
 		Projectile.aiStyle = -1;
 	}
-	Vector2 FirstVel = Vector2.Zero;
-	int TrueL = 1;
-	Vector2 ovel = Vector2.One;
-	float DelX = -1;
-	bool[] HasBeenHit = new bool[200];
+
+	private Vector2 firstVel = Vector2.Zero;
+	private int trueL = 1;
+	private Vector2 ovel = Vector2.One;
+	private float delX = -1;
+	private bool[] hasBeenHit = new bool[200];
+
 	public override void PostDraw(Color lightColor)
 	{
+		if (delX == -1)
+		{
+			delX = Main.rand.NextFloat(1f, 40f);
+		}
 
-		if (DelX == -1)
-			DelX = Main.rand.NextFloat(1f, 40f);
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 		var bars = new List<Vertex2D>();
 		float width = 2;
-		if (Projectile.timeLeft < 45 && Tokill > 0)
+		if (Projectile.timeLeft < 45 && tokill > 0)
+		{
 			width = Projectile.timeLeft / 22.5f;
-		TrueL = 0;
+		}
+
+		trueL = 0;
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
+
 			if (i == 1)
 			{
 				for (int j = 0; j < Projectile.oldPos.Length - 2; ++j)
 				{
 					if (Projectile.oldPos[i] == Projectile.oldPos[i - 1])
+					{
 						i++;
+					}
 					else
 					{
-						//i+=2;
+						// i+=2;
 						break;
 					}
 				}
 			}
-			TrueL++;
+			trueL++;
 		}
 
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
+
 			if (!Main.gamePaused)
 			{
-				if (addi == MaxAdd - 1)
+				if (addi == maxAdd - 1)
 				{
 					for (int j = 0; j < 200; j++)
 					{
-						if (!HasBeenHit[j] && (Main.npc[j].Center - (Projectile.oldPos[i] + new Vector2(Projectile.width / 2f, Projectile.height / 2f))).Length() < 40 && !Main.npc[j].dontTakeDamage && !Main.npc[j].friendly)
+						if (!hasBeenHit[j] && (Main.npc[j].Center - (Projectile.oldPos[i] + new Vector2(Projectile.width / 2f, Projectile.height / 2f))).Length() < 40 && !Main.npc[j].dontTakeDamage && !Main.npc[j].friendly)
 						{
-							HasBeenHit[j] = true;
+							hasBeenHit[j] = true;
 							Player player = Main.player[Projectile.owner];
 							NPC.HitModifiers npcHitM = new NPC.HitModifiers();
 							NPC.HitInfo hit = npcHitM.ToHitInfo(Projectile.damage * Main.rand.NextFloat(0.85f, 1.15f), Main.rand.NextFloat(100f) < player.GetTotalCritChance(Projectile.DamageType), 2);
@@ -198,10 +238,12 @@ public class ToothMagicSplit2 : ModProjectile
 				for (int j = 0; j < Projectile.oldPos.Length - 2; ++j)
 				{
 					if (Projectile.oldPos[i] == Projectile.oldPos[i - 1])
+					{
 						i++;
+					}
 					else
 					{
-						//i+=2;
+						// i+=2;
 						break;
 					}
 				}
@@ -209,18 +251,27 @@ public class ToothMagicSplit2 : ModProjectile
 			var normalDir = Projectile.oldPos[i - 1] - Projectile.oldPos[i];
 			normalDir = Vector2.Normalize(new Vector2(-normalDir.Y, normalDir.X));
 
-			var factor = i / (float)TrueL;
+			var factor = i / (float)trueL;
 			var w = MathHelper.Lerp(1f, 0.05f, factor);
 
-			float CosWid = 1f;//粗细
-			if (TrueL - i < 25)
-				CosWid *= (float)(Math.Cos((25 - Math.Clamp(TrueL - i, 0, 25)) / 25d * Math.PI) + 1) / 2f;
+			float CosWid = 1f; // 粗细
+			if (trueL - i < 25)
+			{
+				CosWid *= (float)(Math.Cos((25 - Math.Clamp(trueL - i, 0, 25)) / 25d * Math.PI) + 1) / 2f;
+			}
+
 			if (wid == -1)
+			{
 				wid = Main.rand.NextFloat(1.0f, 2f);
-			float SinFx0 = 0;//摆动函数
-			float CosFx0 = 1 * CosWid * wid;//求导简便计算透视投影
+			}
+
+			float SinFx0 = 0; // 摆动函数
+			float CosFx0 = 1 * CosWid * wid; // 求导简便计算透视投影
 			if (Projectile.timeLeft < 30)
+			{
 				CosFx0 *= Projectile.timeLeft / 30f;
+			}
+
 			Vector2 P0 = Projectile.oldPos[i] + normalDir * SinFx0 + normalDir * width * CosFx0 + new Vector2(9, 9);
 			Vector2 P1 = Projectile.oldPos[i] + normalDir * SinFx0 + normalDir * -width * CosFx0 + new Vector2(9, 9);
 			Color c0 = Lighting.GetColor((int)(P0.X / 16f), (int)(P0.Y / 16f));
@@ -233,7 +284,10 @@ public class ToothMagicSplit2 : ModProjectile
 		{
 			Vx.Add(bars[0]);
 			if (Projectile.velocity.Length() > 0.05f)
+			{
 				ovel = Projectile.velocity;
+			}
+
 			Vector2 P2 = (bars[0].position + bars[1].position) * 0.5f + Vector2.Normalize(ovel) * 30;
 			Color c2 = Lighting.GetColor((int)(P2.X / 16f), (int)(P2.Y / 16f));
 			var vertex = new Vertex2D(P2, c2, new Vector3(0, 0.5f, 1));
@@ -251,7 +305,7 @@ public class ToothMagicSplit2 : ModProjectile
 			}
 		}
 		Texture2D t = ModContent.Request<Texture2D>("Everglow/Myth/UIImages/Tusk/DarkBloodRope").Value;
-		Main.graphics.GraphicsDevice.Textures[0] = t;//GlodenBloodScaleMirror
+		Main.graphics.GraphicsDevice.Textures[0] = t; // GlodenBloodScaleMirror
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, Vx.ToArray(), 0, Vx.Count / 3);
 	}
 }

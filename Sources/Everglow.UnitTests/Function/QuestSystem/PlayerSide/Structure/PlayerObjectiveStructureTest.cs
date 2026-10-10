@@ -1,6 +1,5 @@
 using Everglow.Commons.Mechanics.Quest.PlayerSide;
 using Everglow.Commons.Mechanics.Quest.PlayerSide.Abstractions;
-using Everglow.Commons.Mechanics.Quest.PlayerSide;
 using Everglow.Commons.Mechanics.Quest.PlayerSide.Structure;
 using Everglow.Commons.Mechanics.Quest.Presentation.Icons;
 using Terraria.ModLoader.IO;
@@ -56,7 +55,6 @@ public class PlayerObjectiveStructureTest
 		{
 			Ready = tag.TryGet<int>(nameof(Ready), out var ready) && ready != 0;
 		}
-
 	}
 
 	[TestMethod]

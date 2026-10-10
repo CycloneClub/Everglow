@@ -14,6 +14,7 @@ public class CreamChocolateCupStaff_proj : ModProjectile
 		Projectile.tileCollide = false;
 		Projectile.DamageType = DamageClass.Magic;
 	}
+
 	public float WeaponShake = 0;
 
 	public override void OnSpawn(IEntitySource source)
@@ -23,11 +24,11 @@ public class CreamChocolateCupStaff_proj : ModProjectile
 		mouseToPlayer = Vector2.Normalize(mouseToPlayer);
 		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, mouseToPlayer * 16f, ModContent.ProjectileType<CreamChocolateCup_ChocolateBars>(), Projectile.damage * 2, 0.4f, player.whoAmI);
 	}
+
 	public override void AI()
 	{
 		Player player = Main.player[Projectile.owner];
 		player.heldProj = Projectile.whoAmI;
-
 
 		Vector2 mouseToPlayer = Main.MouseWorld - player.MountedCenter;
 		mouseToPlayer = Vector2.Normalize(mouseToPlayer);
@@ -56,7 +57,9 @@ public class CreamChocolateCupStaff_proj : ModProjectile
 			Projectile.Kill();
 		}
 		if (Projectile.Center.X < player.MountedCenter.X)
+		{
 			player.direction = -1;
+		}
 		else
 		{
 			player.direction = 1;
@@ -78,15 +81,20 @@ public class CreamChocolateCupStaff_proj : ModProjectile
 		Color drawColor = Lighting.GetColor((int)Projectile.Center.X / 16, (int)(Projectile.Center.Y / 16.0));
 		SpriteEffects se = SpriteEffects.None;
 		if (player.direction == -1)
+		{
 			se = SpriteEffects.FlipVertically;
+		}
+
 		float rot0 = Projectile.rotation - (float)(Math.PI * 0.25) + MathF.PI * 0.25f * player.direction;
 
 		Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition, null, drawColor, rot0, texMain.Size() / 2f, 1f, se, 0);
 	}
 }
+
 public class CreamChocolateCupStaff_proj_rightClick : ModProjectile
 {
 	public override string Texture => "Everglow/Food/Projectiles/CreamChocolateCupStaff_proj";
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 36;
@@ -96,13 +104,16 @@ public class CreamChocolateCupStaff_proj_rightClick : ModProjectile
 		Projectile.tileCollide = false;
 		Projectile.DamageType = DamageClass.Magic;
 	}
+
 	public float WeaponShake = 0;
 	public Projectile CreamFlow;
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		Player player = Main.player[Projectile.owner];
 		CreamFlow = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), player.Center, Vector2.zeroVector, ModContent.ProjectileType<CreamChocolateCup_CreamFlow>(), Projectile.damage, 0.4f, player.whoAmI);
 	}
+
 	public override void AI()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -139,7 +150,9 @@ public class CreamChocolateCupStaff_proj_rightClick : ModProjectile
 			Projectile.Kill();
 		}
 		if (Projectile.Center.X < player.MountedCenter.X)
+		{
 			player.direction = -1;
+		}
 		else
 		{
 			player.direction = 1;
@@ -161,15 +174,20 @@ public class CreamChocolateCupStaff_proj_rightClick : ModProjectile
 		Color drawColor = Lighting.GetColor((int)Projectile.Center.X / 16, (int)(Projectile.Center.Y / 16.0));
 		SpriteEffects se = SpriteEffects.None;
 		if (player.direction == -1)
+		{
 			se = SpriteEffects.FlipVertically;
+		}
+
 		float rot0 = Projectile.rotation - (float)(Math.PI * 0.25) + MathF.PI * 0.25f * player.direction;
 
 		Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition, null, drawColor, rot0, texMain.Size() / 2f, 1f, se, 0);
 	}
 }
+
 public class CreamChocolateCupStaff_proj_held : ModProjectile
 {
 	public override string Texture => "Everglow/Food/Projectiles/CreamChocolateCupStaff_proj";
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 36;
@@ -179,11 +197,14 @@ public class CreamChocolateCupStaff_proj_held : ModProjectile
 		Projectile.tileCollide = false;
 		Projectile.DamageType = DamageClass.Magic;
 	}
+
 	public float Cooling = 0;
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		Cooling = 60;
 	}
+
 	public override void AI()
 	{
 		if (Cooling > 0)
@@ -220,17 +241,20 @@ public class CreamChocolateCupStaff_proj_held : ModProjectile
 		player.heldProj = Projectile.whoAmI;
 		Vector2 v0 = Projectile.Center - player.MountedCenter;
 
-
-
 		if (player.controlUseTile)
+		{
 			player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (float)(Math.Atan2(v0.Y, v0.X) - Math.PI / 2d));
+		}
 
 		var texMain = ModAsset.CreamChocolateCupStaff_cupFront.Value;
 
 		Color drawColor = Lighting.GetColor((int)Projectile.Center.X / 16, (int)(Projectile.Center.Y / 16.0));
 		SpriteEffects se = SpriteEffects.None;
 		if (player.direction == -1)
+		{
 			se = SpriteEffects.FlipVertically;
+		}
+
 		float rot0 = Projectile.rotation - (float)(Math.PI * 0.25) + MathF.PI * 0.25f * player.direction;
 
 		Texture2D cream = ModAsset.CreamChocolateCupStaff_cream.Value;

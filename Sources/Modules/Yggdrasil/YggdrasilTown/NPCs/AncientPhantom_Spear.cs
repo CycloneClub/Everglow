@@ -71,7 +71,7 @@ public class AncientPhantom_Spear : ModNPC
 
 	public override void AI()
 	{
-		//NPC.AI_003_Fighters();
+		// NPC.AI_003_Fighters();
 		NPCUtils.Vanilla_NPC_AI_003_Fighters(NPC, 3f, true);
 	}
 

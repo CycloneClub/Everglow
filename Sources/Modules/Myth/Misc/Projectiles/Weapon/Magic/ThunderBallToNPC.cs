@@ -16,19 +16,24 @@ public class ThunderBallToNPC : ModProjectile
 		Projectile.extraUpdates = 10;
 		Projectile.timeLeft = 300;
 	}
+
 	public override void AI()
 	{
 		if (Main.npc[(int)Projectile.ai[1]].active)
+		{
 			Projectile.Center = Main.npc[(int)Projectile.ai[1]].Center;
+		}
 		else
 		{
 			Projectile.extraUpdates = 20;
 		}
 		streng = (int)(Projectile.timeLeft / 30f);
 	}
+
 	internal Vector2[,] vP = new Vector2[8, 600];
 	internal Vector2[,] vvP = new Vector2[8, 600];
 	internal int streng = 9;
+
 	public override void PostDraw(Color lightColor)
 	{
 		if (vP[0, 0] == Vector2.Zero)
@@ -56,7 +61,9 @@ public class ThunderBallToNPC : ModProjectile
 			for (int i = 0; i < 600; ++i)
 			{
 				if (vP[a, i].Length() < 3f)
+				{
 					vP[a, i] += vvP[a, i];
+				}
 				else
 				{
 					vvP[a, i] = new Vector2(0, Main.rand.NextFloat(0.03f, 0.4f)).RotatedByRandom(6.283);
@@ -74,7 +81,10 @@ public class ThunderBallToNPC : ModProjectile
 			{
 				Vector2 WholeLeng = Main.projectile[(int)Projectile.ai[0]].Center - VStart;
 				if (WholeLeng.Length() < 4)
+				{
 					break;
+				}
+
 				var NDpos = Vector2.Normalize(Main.projectile[(int)Projectile.ai[0]].Center - VStart);
 				Vector2 vDp = NDpos.RotatedBy(Math.PI / 2d);
 				var normalDir = Vector2.Normalize(vDp);
@@ -85,7 +95,10 @@ public class ThunderBallToNPC : ModProjectile
 				var w = MathHelper.Lerp(1f, 0.05f, 0.5f);
 				Vector2 va = Vector2.Zero;
 				if (a > 1)
+				{
 					va = new Vector2(0, 1).RotatedBy(a / 4d * Math.PI);
+				}
+
 				bars.Add(new Vertex2D(VStart + normalDir * width + va, color, new Vector3(factor, 1, w)));
 				bars.Add(new Vertex2D(VStart + normalDir * -width + va, color, new Vector3(factor, 0, w)));
 			}
@@ -110,7 +123,6 @@ public class ThunderBallToNPC : ModProjectile
 				}
 				RasterizerState originalState = Main.graphics.GraphicsDevice.RasterizerState;
 
-
 				Main.graphics.GraphicsDevice.Textures[0] = ModAsset.heatmapBlue2.Value;
 
 				Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, triangleList.ToArray(), 0, triangleList.Count / 3);
@@ -119,6 +131,7 @@ public class ThunderBallToNPC : ModProjectile
 			}
 		}
 	}
+
 	public override Color? GetAlpha(Color lightColor)
 	{
 		return new Color?(new Color(0, 0, 0, 0));

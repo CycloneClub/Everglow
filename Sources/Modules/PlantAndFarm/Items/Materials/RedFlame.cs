@@ -6,9 +6,10 @@ public class RedFlame : ModItem
 
 	public override void SetStaticDefaults()
 	{
-		//DisplayName.SetDefault("Red Blossom");
-		//DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "赤锦");
+		// DisplayName.SetDefault("Red Blossom");
+		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "赤锦");
 	}
+
 	public override void SetDefaults()
 	{
 		Item.width = 26;

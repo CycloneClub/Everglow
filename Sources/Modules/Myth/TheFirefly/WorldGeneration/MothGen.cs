@@ -145,7 +145,7 @@ public class MothLand : ModSystem
 						case 0:
 							if (pixel.R == 255 && pixel.G == 0 && pixel.B == 0)// == new SixLabors.ImageSharp.PixelFormats.Rgb24(255, 0, 0))
 							{
-								if (tile.TileType != 21 && Main.tile[x + a, y + b - 1].TileType != 21)
+								if (tile.TileType != TileID.Containers && Main.tile[x + a, y + b - 1].TileType != TileID.Containers)
 								{
 									tile.ClearEverything();
 								}
@@ -155,7 +155,7 @@ public class MothLand : ModSystem
 						case 1:
 							if (pixel.R == 56 && pixel.G == 48 && pixel.B == 61)
 							{
-								if (tile.TileType != 21 && Main.tile[x + a, y + b - 1].TileType != 21)
+								if (tile.TileType != TileID.Containers && Main.tile[x + a, y + b - 1].TileType != TileID.Containers)
 								{
 									tile.TileType = (ushort)ModContent.TileType<DarkCocoon>();
 									tile.HasTile = true;
@@ -163,7 +163,7 @@ public class MothLand : ModSystem
 							}
 							if (pixel.R == 255 && pixel.G == 0 && pixel.B == 0)
 							{
-								if (tile.TileType != 21 && Main.tile[x + a, y + b - 1].TileType != 21)
+								if (tile.TileType != TileID.Containers && Main.tile[x + a, y + b - 1].TileType != TileID.Containers)
 								{
 									tile.TileType = (ushort)ModContent.TileType<DarkCocoonSpecial>();
 									tile.HasTile = true;
@@ -171,7 +171,7 @@ public class MothLand : ModSystem
 							}
 							if (pixel.R == 35 && pixel.G == 49 && pixel.B == 122)
 							{
-								if (tile.TileType != 21 && Main.tile[x + a, y + b - 1].TileType != 21)
+								if (tile.TileType != TileID.Containers && Main.tile[x + a, y + b - 1].TileType != TileID.Containers)
 								{
 									tile.TileType = (ushort)ModContent.TileType<DarkCocoonMoss>();
 									tile.HasTile = true;
@@ -179,7 +179,7 @@ public class MothLand : ModSystem
 							}
 							if (pixel.R == 112 && pixel.G == 130 && pixel.B == 175)
 							{
-								if (tile.TileType != 21 && Main.tile[x + a, y + b - 1].TileType != 21)
+								if (tile.TileType != TileID.Containers && Main.tile[x + a, y + b - 1].TileType != TileID.Containers)
 								{
 									tile.TileType = (ushort)ModContent.TileType<DarkCocoon_petal>();
 									tile.HasTile = true;
@@ -187,7 +187,7 @@ public class MothLand : ModSystem
 							}
 							if (pixel.R == 0 && pixel.G == 0 && pixel.B == 255)
 							{
-								if (tile.TileType != 21 && Main.tile[x + a, y + b - 1].TileType != 21)
+								if (tile.TileType != TileID.Containers && Main.tile[x + a, y + b - 1].TileType != TileID.Containers)
 								{
 									tile.LiquidType = LiquidID.Water;
 									tile.LiquidAmount = 200;
@@ -209,7 +209,7 @@ public class MothLand : ModSystem
 						case 2:
 							if (pixel.R == 0 && pixel.G == 0 && pixel.B == 5)
 							{
-								if (tile.TileType != 21 && Main.tile[x + a, y + b - 1].TileType != 21)
+								if (tile.TileType != TileID.Containers && Main.tile[x + a, y + b - 1].TileType != TileID.Containers)
 								{
 									tile.WallType = (ushort)ModContent.WallType<DarkCocoonWall>();
 								}

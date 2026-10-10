@@ -102,10 +102,10 @@ Everglow -> composition, content discovery, resource merge, .tmod output
 - Before a test first touches `Terraria.Main`, set `Program.SavePath = string.Empty;` in `[TestInitialize]`. Do not construct `Main`, start graphics/content loading, or run the game loop. Shared `Main` state means affected tests must not run in parallel.
 - For `Player.talkNPC`, set the private property with reflection; do not call `SetTalkNPC`.
 - Every code change requires `dotnet build`. Clearly state any tML runtime behavior that could not be verified locally.
-- After text edits, run this byte-level UTF-8 BOM check against `origin/master`; do not substitute `git diff --check` or a text reader.
+- After text edits, run this byte-level UTF-8 BOM check against `origin/1.4.4`; do not substitute `git diff --check` or a text reader.
 
 ```powershell
-$base = git merge-base HEAD origin/master
+$base = git merge-base HEAD origin/1.4.4
 $files = @((git -c core.quotepath=false diff --name-only --diff-filter=ACMRTUXB $base --) + (git -c core.quotepath=false ls-files --others --exclude-standard)) | Sort-Object -Unique
 $bom = @($files | Where-Object {
 	if (-not (Test-Path -LiteralPath $_ -PathType Leaf)) { return $false }

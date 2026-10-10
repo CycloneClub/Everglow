@@ -1,4 +1,3 @@
-
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Melee;
 
 public class CyanVineSword_Projectile : MeleeProj

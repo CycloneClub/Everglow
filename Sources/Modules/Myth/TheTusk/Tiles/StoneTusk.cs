@@ -16,15 +16,16 @@ public class StoneTusk : ModTile
 		{
 			16,
 			16,
-			20
+			20,
 		};
 		TileObjectData.newTile.CoordinateWidth = 36;
 		TileObjectData.addTile(Type);
-		DustType = 191;
+		DustType = DustID.SpookyWood;
 		var modTranslation = CreateMapEntryName();
 		AddMapEntry(new Color(112, 83, 67), modTranslation);
 		HitSound = SoundID.DD2_SkeletonHurt;
 	}
+
 	public override void NumDust(int i, int j, bool fail, ref int num)
 	{
 		num = fail ? 1 : 3;
@@ -33,10 +34,12 @@ public class StoneTusk : ModTile
 	public override void NearbyEffects(int i, int j, bool closer)
 	{
 	}
+
 	public override IEnumerable<Item> GetItemDrops(int i, int j)
 	{
 		yield return new Item(ModContent.ItemType<Items.Materials.StoneTusk>(), 3);
 	}
+
 	public override void PlaceInWorld(int i, int j, Item item)
 	{
 		short num = (short)Main.rand.Next(0, 12);

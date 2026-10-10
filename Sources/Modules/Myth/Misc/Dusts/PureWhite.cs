@@ -9,6 +9,7 @@ public class PureWhite : ModDust
 		dust.scale *= 1f;
 		dust.alpha = 0;
 	}
+
 	public override bool Update(Dust dust)
 	{
 		dust.position += dust.velocity;
@@ -19,9 +20,13 @@ public class PureWhite : ModDust
 
 		Lighting.AddLight(dust.position, dust.scale * 0.05f, dust.scale * 0.05f, dust.scale * 0.05f);
 		if (dust.scale < 0.25f)
+		{
 			dust.active = false;
+		}
+
 		return false;
 	}
+
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		return new Color?(new Color(0.1f, 0.1f, 0.1f, 0f));

@@ -9,6 +9,7 @@ public class WindBladeBallHit : ModProjectile
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
 
 	public override string Texture => ModAsset.YggdrasilMoonBlade_friendly_Mod;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 120;
@@ -22,9 +23,11 @@ public class WindBladeBallHit : ModProjectile
 		Projectile.extraUpdates = 6;
 		Projectile.DamageType = DamageClass.Magic;
 	}
+
 	public override void OnSpawn(IEntitySource source)
 	{
 	}
+
 	public void GenerateSpark(int Frequency)
 	{
 		for (int g = 0; g < Frequency; g++)
@@ -39,17 +42,21 @@ public class WindBladeBallHit : ModProjectile
 				MaxTime = Main.rand.Next(37, 145) * Projectile.ai[0] / 10f,
 				Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(4f, 17.0f)) * Projectile.ai[0] / 10f,
 				Rotation = Main.rand.NextFloat(6.283f),
-				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.03f, 0.03f) }
+				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.03f, 0.03f) },
 			};
 			Ins.VFXManager.Add(spark);
 		}
 	}
+
 	public override void AI()
 	{
 		Projectile.velocity *= 0;
 		if (Projectile.timeLeft <= 199)
+		{
 			Projectile.friendly = false;
+		}
 	}
+
 	public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 	{
 		bool bool0 = (targetHitbox.TopLeft() - projHitbox.Center()).Length() < 9 * Projectile.ai[0];
@@ -58,6 +65,7 @@ public class WindBladeBallHit : ModProjectile
 		bool bool3 = (targetHitbox.BottomRight() - projHitbox.Center()).Length() < 9 * Projectile.ai[0];
 		return bool0 || bool1 || bool2 || bool3;
 	}
+
 	private static void DrawTexCircle(float radious, float width, Color color, Vector2 center, Texture2D tex, double addRot = 0)
 	{
 		var circle = new List<Vertex2D>();
@@ -76,6 +84,7 @@ public class WindBladeBallHit : ModProjectile
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, circle.ToArray(), 0, circle.Count - 2);
 		}
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
 		Texture2D shadow = Commons.ModAsset.Point.Value;
@@ -98,8 +107,8 @@ public class WindBladeBallHit : ModProjectile
 		DrawTexCircle(MathF.Sqrt(timeValue) * 12 * Projectile.ai[0], 24 * Projectile.ai[0], c, Projectile.Center, Commons.ModAsset.Trail_0.Value);
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		float dark = Math.Max((Projectile.timeLeft - 150) / 50f, 0);
@@ -122,6 +131,7 @@ public class WindBladeBallHit : ModProjectile
 		}
 		return false;
 	}
+
 	private static void DrawTexCircle_VFXBatch(VFXBatch spriteBatch, float radious, float width, Color color, Vector2 center, Texture2D tex, double addRot = 0)
 	{
 		var circle = new List<Vertex2D>();
@@ -138,23 +148,28 @@ public class WindBladeBallHit : ModProjectile
 		circle.Add(new Vertex2D(center + new Vector2(0, Math.Max(radious - width, 0)).RotatedBy(addRot), c0, new Vector3(0, 1, 0)));
 		circle.Add(new Vertex2D(center + new Vector2(0, radious).RotatedBy(addRot), c0, new Vector3(0, 0, 0)));
 		if (circle.Count > 2)
+		{
 			spriteBatch.Draw(tex, circle, PrimitiveType.TriangleStrip);
+		}
 	}
+
 	public void DrawWarp(VFXBatch spriteBatch)
 	{
 		float value = (200 - Projectile.timeLeft) / 200f;
 		float colorV = 0.9f * (1 - value);
 		if (Projectile.ai[0] >= 10)
+		{
 			colorV *= Projectile.ai[0] / 10f;
-		Texture2D t = Commons.ModAsset.Trail_6.Value;
+		}
 
+		Texture2D t = Commons.ModAsset.Trail_6.Value;
 
 		DrawTexCircle_VFXBatch(spriteBatch, MathF.Sqrt(value) * 12f * Projectile.ai[0], 12 * (1 - value) * Projectile.ai[0], new Color(colorV, colorV * 0.1f, colorV, 0f), Projectile.Center - Main.screenPosition, t, Math.PI * 0.5);
 	}
+
 	public override void OnHitPlayer(Player target, Player.HurtInfo info)
 	{
 		target.AddBuff(BuffID.Bleeding, 360);
 		target.AddBuff(BuffID.BrokenArmor, 360);
 	}
 }
-

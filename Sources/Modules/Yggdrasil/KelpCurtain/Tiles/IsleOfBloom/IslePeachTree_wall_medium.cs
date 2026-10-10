@@ -117,6 +117,7 @@ public class IslePeachTree_wall_medium : ModTile, ITileFluentlyDrawn
 		}
 		TileUtils.VertexDraw_Grid(drawCenterPos + offset, frame, origin, tex, spriteBatch, rotation);
 	}
+
 	public void GenerateDust(int i, int j, Vector2 origin, Rectangle frame)
 	{
 		if (!Main.gamePaused)

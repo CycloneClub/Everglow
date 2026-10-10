@@ -8,6 +8,7 @@ namespace Everglow.Myth.Acytaea.Projectiles;
 public class AcytaeaTornado : ModProjectile
 {
 	public override string Texture => "Everglow/Myth/Acytaea/Projectiles/AcytaeaSword_projectile";
+
 	public override void SetDefaults()
 	{
 		Projectile.aiStyle = -1;
@@ -24,8 +25,10 @@ public class AcytaeaTornado : ModProjectile
 		Projectile.height = 80;
 		ProjectileID.Sets.DrawScreenCheckFluff[Type] = 8192;
 	}
+
 	public float Timer = 0;
 	public Vector2 TornadoBottom = Vector2.zeroVector;
+
 	public override void AI()
 	{
 		Player player = Main.player[Player.FindClosest(Projectile.Center, 0, 0)];
@@ -61,6 +64,7 @@ public class AcytaeaTornado : ModProjectile
 			SoundEngine.PlaySound(new SoundStyle("Everglow/Myth/Sounds/TyphoonBlackHoleStrong").WithVolumeScale(100f / ((player.Center - Projectile.Center).Length() + 100)), Projectile.Center);
 		}
 	}
+
 	public void GenerateVFX()
 	{
 		float value2 = 1f;
@@ -84,7 +88,7 @@ public class AcytaeaTornado : ModProjectile
 				Visible = true,
 				position = positionVFX,
 				maxTime = Main.rand.Next(14, 16),
-				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.04f, 0.04f), Main.rand.NextFloat(8f, 16f) * value2 }
+				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.04f, 0.04f), Main.rand.NextFloat(8f, 16f) * value2 },
 			};
 			Ins.VFXManager.Add(acytaeaFlame);
 		}
@@ -101,19 +105,22 @@ public class AcytaeaTornado : ModProjectile
 				Visible = true,
 				position = positionVFX,
 				maxTime = Main.rand.Next(14, 56),
-				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.04f, 0.04f), Main.rand.NextFloat(5f, 10f) * value2 }
+				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.04f, 0.04f), Main.rand.NextFloat(5f, 10f) * value2 },
 			};
 			Ins.VFXManager.Add(acytaeaFlame);
 		}
 	}
+
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
 		return false;
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;
 	}
+
 	public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 	{
 		float heightValue = 0.75f;
@@ -136,11 +143,13 @@ public class AcytaeaTornado : ModProjectile
 		}
 		return r.Intersects(targetHitbox);
 	}
+
 	public override void OnHitPlayer(Player target, Player.HurtInfo info)
 	{
 		target.AddBuff(ModContent.BuffType<AcytaeaInferno>(), 450);
 		base.OnHitPlayer(target, info);
 	}
+
 	public void DrawTornado(Texture2D tex, Color color, float width = 80, string pass = "", float dissolveRange = 0.2f, float deltaY = 0, float valueX = 13f, float valueY = 84f)
 	{
 		float uTime = (float)Main.time * 0.02f * Math.Abs(width) / 80f;
@@ -207,7 +216,7 @@ public class AcytaeaTornado : ModProjectile
 		{
 			value2 = Timer / 24f;
 		}
-		value2 *= (1 + dissolveRange);
+		value2 *= 1 + dissolveRange;
 		value2 -= dissolveRange;
 		tornado.Parameters["duration"].SetValue(value2 * 0.8f);
 		tornado.Parameters["dissolveRange"].SetValue(dissolveRange);
@@ -215,8 +224,11 @@ public class AcytaeaTornado : ModProjectile
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		Main.graphics.GraphicsDevice.Textures[0] = tex;
 		if (bars.Count > 3)
+		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
+		}
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
 		DrawTornado(Commons.ModAsset.Noise_crack_dense_black.Value, new Color(1f, 1f, 1f, 1f), -160, "DarkEffect", 0.1f, 0.13f);

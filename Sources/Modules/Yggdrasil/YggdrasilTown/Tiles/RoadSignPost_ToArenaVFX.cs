@@ -59,7 +59,7 @@ public class RoadSignPost_ToArenaVFX : TileVFX
 			{
 				Tile tile = TileUtils.SafeGetTile(x, y);
 				tile.HasTile = false;
-				tile.WallType = 0;
+				tile.WallType = WallID.None;
 			}
 			for (int y = 200; y < Main.maxTilesY - 20; y++)
 			{
@@ -96,7 +96,7 @@ public class RoadSignPost_ToArenaVFX : TileVFX
 			for (int y = 20; y < 23; y++)
 			{
 				Tile tile = TileUtils.SafeGetTile(x, y);
-				tile.WallType = 1;
+				tile.WallType = WallID.Stone;
 				ushort typeChange = (ushort)ModContent.TileType<ArenaCommandBlock>();
 				if (y == 22)
 				{

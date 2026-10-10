@@ -87,7 +87,7 @@ public abstract class EverglowPylonBase<T> : ModPylon
 
 	/// <summary>
 	/// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------<br/>
-	/// <see cref="ModPylon.DefaultDrawPylonCrystal"/>Can not generate pylon dust effect correctly.<br/>
+	/// <see cref="ModPylon.DefaultDrawPylonCrystal(SpriteBatch, int, int, Asset{Texture2D}, Asset{Texture2D}, Vector2, Color, Color, int, int)"/>Can not generate pylon dust effect correctly.<br/>
 	/// So we copy and modify it here and allow custom adjustments.
 	/// </summary>
 	/// <param name="spriteBatch"></param>
@@ -98,7 +98,6 @@ public abstract class EverglowPylonBase<T> : ModPylon
 	/// <param name="crystalOffset"></param>
 	/// <param name="pylonShadowColor"></param>
 	/// <param name="dustColor"></param>
-	/// <param name="dustChanceDenominator"></param>
 	/// <param name="crystalVerticalFrameCount"></param>
 	/// <param name="animation"></param>
 	/// <param name="dustType"></param>

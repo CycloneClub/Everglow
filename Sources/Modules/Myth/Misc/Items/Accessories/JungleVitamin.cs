@@ -13,6 +13,7 @@ public class JungleVitamin : ModItem
 		Item.accessory = true;
 		Item.rare = ItemRarityID.Green;
 	}
+
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
 		player.statLifeMax2 += 50;

@@ -23,6 +23,7 @@ public abstract partial class PlayerQuestBase : ITagCompoundEntity
 	/// </summary>
 	/// <param name="tag"></param>
 	/// <param name="objectives"></param>
+	/// <param name="key">在存档标签中保存目标数据列表的键。</param>
 	public static void SaveObjectives(TagCompound tag, IEnumerable<PlayerObjectiveBase> objectives, string key = nameof(Objectives))
 	{
 		var oTags = new List<TagCompound>();
@@ -92,6 +93,8 @@ public abstract partial class PlayerQuestBase : ITagCompoundEntity
 	/// </summary>
 	/// <param name="tag"></param>
 	/// <param name="objectives"></param>
+	/// <param name="key">存档标签中目标数据列表的键。</param>
+	/// <param name="useObjectiveID">为 true 时使用目标 ID 索引存档列表；为 false 时按目标枚举顺序索引。</param>
 	public static void LoadObjectives(TagCompound tag, IEnumerable<PlayerObjectiveBase> objectives, string key = nameof(Objectives), bool useObjectiveID = true)
 	{
 		if (tag.TryGet<IList<TagCompound>>(key, out var oTags))

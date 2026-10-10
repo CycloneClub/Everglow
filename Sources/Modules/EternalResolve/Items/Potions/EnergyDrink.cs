@@ -3,7 +3,7 @@ using Terraria.Localization;
 
 namespace Everglow.EternalResolve.Items.Potions
 {
-	//TODO:翻译 能量饮料 NightElixir
+	// TODO:翻译 能量饮料 NightElixir
 	public class EnergyDrink : ModItem
 	{
 		public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Potions;
@@ -35,6 +35,7 @@ namespace Everglow.EternalResolve.Items.Potions
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
 		}
+
 		public override void AddRecipes()
 		{
 			CreateRecipe().AddIngredient(ItemID.Bottle).AddRecipeGroup(RecipeGroupID.Fruit).AddTile(TileID.CookingPots).AddCondition(Condition.NearHoney).Register();

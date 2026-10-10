@@ -11,6 +11,7 @@ public class TuskPin : ModProjectile
 	{
 		Projectile.rotation = MathF.Atan2(Projectile.velocity.Y, Projectile.velocity.X) - MathHelper.PiOver2;
 	}
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 30;
@@ -26,26 +27,31 @@ public class TuskPin : ModProjectile
 		Projectile.extraUpdates = 1;
 		Projectile.tileCollide = true;
 	}
-	bool HasHitTile = false;
+
+	private bool hasHitTile = false;
+
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
-		HasHitTile = true;
+		hasHitTile = true;
 		Projectile.tileCollide = false;
 		Projectile.position += Projectile.velocity * 2;
 		Projectile.velocity *= 0;
 		Projectile.timeLeft = 30;
 		return false;
 	}
+
 	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
 	{
 		behindNPCsAndTiles.Add(index);
 		base.DrawBehind(index, behindNPCsAndTiles, behindNPCs, behindProjectiles, overPlayers, overWiresUI);
 	}
-	int timeCounter = 0;
+
+	private int timeCounter = 0;
+
 	public override void AI()
 	{
 		Projectile.hide = true;
-		if (!HasHitTile)
+		if (!hasHitTile)
 		{
 			if (Projectile.timeLeft < 60)
 			{
@@ -59,12 +65,12 @@ public class TuskPin : ModProjectile
 		}
 		base.AI();
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D texture = ModAsset.TuskPin.Value;
 		Texture2D textureWhite = ModAsset.TuskPinWhite.Value;
 		Texture2D textureBlack = ModAsset.TuskPinDark.Value;
-
 
 		if (Projectile.timeLeft < 65)
 		{
@@ -96,7 +102,7 @@ public class TuskPin : ModProjectile
 		{
 			if (Projectile.timeLeft < 85)
 			{
-				Main.EntitySpriteDraw(textureBlack, Projectile.Center - Main.screenPosition, null, Color.White * (Math.Min(1, (85 - Projectile.timeLeft) / 5f)), Projectile.rotation, texture.Size() / 2f, Projectile.scale, SpriteEffects.None);
+				Main.EntitySpriteDraw(textureBlack, Projectile.Center - Main.screenPosition, null, Color.White * Math.Min(1, (85 - Projectile.timeLeft) / 5f), Projectile.rotation, texture.Size() / 2f, Projectile.scale, SpriteEffects.None);
 			}
 			if (Projectile.timeLeft < 80 && Projectile.timeLeft > 75)
 			{

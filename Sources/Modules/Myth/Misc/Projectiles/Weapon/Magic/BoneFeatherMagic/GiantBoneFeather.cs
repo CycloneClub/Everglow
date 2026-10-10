@@ -21,13 +21,21 @@ public class GiantBoneFeather : ModProjectile
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 80;
 	}
+
 	internal int timeTokill = -1;
+
 	public override void AI()
 	{
 		if (timeTokill >= 0 && timeTokill <= 2)
+		{
 			Projectile.Kill();
+		}
+
 		if (timeTokill <= 80 && timeTokill > 0)
+		{
 			Projectile.velocity = Projectile.oldVelocity;
+		}
+
 		timeTokill--;
 		if (timeTokill >= 0)
 		{
@@ -64,10 +72,12 @@ public class GiantBoneFeather : ModProjectile
 			Projectile.Kill();
 		}
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
 		Main.spriteBatch.End();
@@ -86,7 +96,10 @@ public class GiantBoneFeather : ModProjectile
 		}
 		SpriteEffects spriteEffects = SpriteEffects.None;
 		if (Projectile.spriteDirection == -1)
+		{
 			spriteEffects = SpriteEffects.FlipHorizontally;
+		}
+
 		var texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
 		int frameHeight = texture.Height / Main.projFrames[Projectile.type];
 		int startY = frameHeight * Projectile.frame;
@@ -113,17 +126,19 @@ public class GiantBoneFeather : ModProjectile
 		}
 		Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), sourceRectangle, drawColor, Projectile.rotation, origin, Projectile.scale, spriteEffects, 0);
 	}
+
 	public void DrawTrail(Texture2D tex, Color color, float width = 36)
 	{
 		var c0 = color;
 		var bars = new List<Vertex2D>();
 
-
 		int trueL = 0;
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
 
 			trueL++;
 		}
@@ -139,11 +154,19 @@ public class GiantBoneFeather : ModProjectile
 		{
 			float width2 = width;
 			if (Projectile.timeLeft <= 40)
+			{
 				width2 = Projectile.timeLeft * 0.9f;
+			}
+
 			if (i < 10)
+			{
 				width2 *= i / 10f;
+			}
+
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
 
 			var normalDir = Projectile.oldPos[i - 1] - Projectile.oldPos[i];
 			if (normalDir == Vector2.zeroVector)
@@ -170,15 +193,18 @@ public class GiantBoneFeather : ModProjectile
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		Main.graphics.GraphicsDevice.Textures[0] = t;
 		if (bars.Count > 3)
+		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
-
+		}
 	}
+
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
 		AmmoHit();
 		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<GiantBoneFeatherExplosion>(), Projectile.damage, 10, Projectile.owner);
 		return false;
 	}
+
 	public void AmmoHit()
 	{
 		SoundEngine.PlaySound(SoundID.Shatter.WithVolumeScale(0.8f), Projectile.Center);
@@ -192,7 +218,7 @@ public class GiantBoneFeather : ModProjectile
 		Projectile.friendly = false;
 		Projectile.ignoreWater = true;
 		Projectile.velocity = Projectile.oldVelocity;
-		SoundEngine.PlaySound((SoundID.DD2_WitherBeastCrystalImpact.WithVolume(0.3f)).WithPitchOffset(Main.rand.NextFloat(-0.4f, 0.4f)), Projectile.Center);
+		SoundEngine.PlaySound(SoundID.DD2_WitherBeastCrystalImpact.WithVolume(0.3f).WithPitchOffset(Main.rand.NextFloat(-0.4f, 0.4f)), Projectile.Center);
 		for (int j = 0; j < 80; j++)
 		{
 			Vector2 v = new Vector2(0, Main.rand.NextFloat(7, 160)).RotatedByRandom(MathHelper.TwoPi);
@@ -212,6 +238,7 @@ public class GiantBoneFeather : ModProjectile
 		}
 		Projectile.position -= Projectile.velocity;
 	}
+
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		AmmoHit();

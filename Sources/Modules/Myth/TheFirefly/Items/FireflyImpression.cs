@@ -17,16 +17,21 @@ public class FireflyImpression : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.consumable = false;
 	}
+
 	public override bool? UseItem(Player player)
 	{
 		if (player.itemAnimation == player.itemAnimationMax)
 		{
 			if (SubworldSystem.IsActive<MothWorld>())
+			{
 				SubworldSystem.Exit();
+			}
 			else
 			{
 				if (!SubworldSystem.Enter<MothWorld>())
+				{
 					Main.NewText("Fail!");
+				}
 			}
 		}
 		return base.UseItem(player);

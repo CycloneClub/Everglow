@@ -13,14 +13,20 @@ public class Future<T>
 		get
 		{
 			if (!IsLoaded)
+			{
 				throw new InvalidOperationException("Hasn't been Loaded");
+			}
+
 			return value;
 		}
 
 		set
 		{
 			if (IsLoaded)
+			{
 				throw new InvalidOperationException("Has been Loaded");
+			}
+
 			isLoaded = true;
 			this.value = value;
 		}

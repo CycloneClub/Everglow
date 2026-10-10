@@ -24,7 +24,7 @@ public class CrimsonOrbStonePost : ModTile
 			16,
 			16,
 			16,
-			18
+			18,
 		};
 		TileObjectData.newTile.Origin = new Point16(0, 8);
 		TileObjectData.newTile.StyleHorizontal = true;
@@ -39,7 +39,10 @@ public class CrimsonOrbStonePost : ModTile
 		var zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
 
 		if (Main.drawToScreen)
+		{
 			zero = Vector2.Zero;
+		}
+
 		Texture2D tex = ModAsset.CrimsonOrbStonePost_glow.Value;
 
 		spriteBatch.Draw(tex, new Vector2(i * 16, j * 16) - Main.screenPosition + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16), new Color(1f, 1f, 1f, 0), 0, new Vector2(0), 1, SpriteEffects.None, 0);
@@ -104,10 +107,10 @@ public class CrimsonOrbStonePost : ModTile
 			}
 			Main.spriteBatch.End();
 			Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.EffectMatrix);
-
 		}
 		base.PostDraw(i, j, spriteBatch);
 	}
+
 	public override void NearbyEffects(int i, int j, bool closer)
 	{
 		if (closer && !NPC.downedBoss2)
@@ -142,6 +145,7 @@ public class CrimsonOrbStonePost : ModTile
 		}
 		base.NearbyEffects(i, j, closer);
 	}
+
 	public override bool CanExplode(int i, int j)
 	{
 		return false;

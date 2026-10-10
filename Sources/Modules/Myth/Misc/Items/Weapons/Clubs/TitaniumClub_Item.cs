@@ -12,6 +12,7 @@ public class TitaniumClub_Item : ClubItem
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.TitaniumClub>();
 		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.TitaniumClub_smash>();
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

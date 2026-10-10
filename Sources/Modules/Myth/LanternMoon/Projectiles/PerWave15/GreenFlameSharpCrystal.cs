@@ -9,7 +9,6 @@ namespace Everglow.Myth.LanternMoon.Projectiles.PerWave15;
 
 public class GreenFlameSharpCrystal : TrailingProjectile
 {
-
 	public override void SetCustomDefaults()
 	{
 		TrailColor = new Color(1, 0.07f, 0.1f, 0f);

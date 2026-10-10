@@ -483,7 +483,6 @@ public class RapierMaster_Boss : ModNPC
 
 	public class JumpAI : AIState
 	{
-		private bool doublejump = false;
 		public Vector2 Velocity = Vector2.UnitX;
 
 		public override void Update(NPC npc)

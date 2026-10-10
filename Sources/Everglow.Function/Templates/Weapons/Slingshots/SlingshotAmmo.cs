@@ -40,38 +40,38 @@ public abstract class SlingshotAmmo : ModProjectile
 	/// <summary>
 	/// 内部变量,别动
 	/// </summary>
-	protected int TimeTokill = -1;
+	protected int timeTokill = -1;
 
 	/// <summary>
 	/// 碰撞长宽,默认10
 	/// </summary>
-	protected int HitBoxSize = 10;
+	protected int hitBoxSize = 10;
 
 	/// <summary>
 	/// 撞激弹幕
 	/// </summary>
-	protected int HitProjType = ModContent.ProjectileType<NormalHit>();
+	protected int hitProjType = ModContent.ProjectileType<NormalHit>();
 
 	public override void AI()
 	{
-		if (TimeTokill >= 0 && TimeTokill <= 2)
+		if (timeTokill >= 0 && timeTokill <= 2)
 		{
 			Projectile.Kill();
 		}
 
-		if (TimeTokill <= 15 && TimeTokill > 0)
+		if (timeTokill <= 15 && timeTokill > 0)
 		{
 			Projectile.velocity = Projectile.oldVelocity;
 		}
 
-		TimeTokill--;
-		if (TimeTokill < 0)
+		timeTokill--;
+		if (timeTokill < 0)
 		{
 			Projectile.velocity.Y += 0.17f;
 		}
 		else
 		{
-			if (TimeTokill < 10)
+			if (timeTokill < 10)
 			{
 				Projectile.damage = 0;
 				Projectile.friendly = false;
@@ -82,7 +82,7 @@ public abstract class SlingshotAmmo : ModProjectile
 
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
-		TimeTokill = 30;
+		timeTokill = 30;
 		Projectile.tileCollide = false;
 		Projectile.ignoreWater = true;
 		AmmoHit();
@@ -110,7 +110,7 @@ public abstract class SlingshotAmmo : ModProjectile
 
 	public override bool PreDraw(ref Color lightColor)
 	{
-		if (TimeTokill > 0)
+		if (timeTokill > 0)
 		{
 			return false;
 		}

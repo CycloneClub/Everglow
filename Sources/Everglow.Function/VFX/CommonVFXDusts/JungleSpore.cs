@@ -44,7 +44,6 @@ public class JungleSporeDust : Visual
 	public float Scale;
 	public float Rotation;
 
-
 	public override void Update()
 	{
 		ai[1] *= 0.99f;

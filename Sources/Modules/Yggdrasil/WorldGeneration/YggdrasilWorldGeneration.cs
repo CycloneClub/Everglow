@@ -272,10 +272,8 @@ public class YggdrasilWorldGeneration : ModSystem
 	/// <summary>
 	/// Fill tiles by given area:(center and half side length);type = -1 to kill tiles.
 	/// </summary>
-	/// <param name="x0"></param>
-	/// <param name="y0"></param>
-	/// <param name="x1"></param>
-	/// <param name="y1"></param>
+	/// <param name="point">The center of the square in tile coordinates.</param>
+	/// <param name="halfSideRange">The number of tiles from the center to each edge; the inclusive side length is twice this value plus one.</param>
 	/// <param name="type"></param>
 	public static void PlaceSquareAreaOfBlock(Point point, int halfSideRange, int type)
 	{
@@ -305,10 +303,8 @@ public class YggdrasilWorldGeneration : ModSystem
 	/// <summary>
 	/// Fill liquids by given area:(center and half side length);type = -1 to kill tiles.
 	/// </summary>
-	/// <param name="x0"></param>
-	/// <param name="y0"></param>
-	/// <param name="x1"></param>
-	/// <param name="y1"></param>
+	/// <param name="point">The center of the square in tile coordinates.</param>
+	/// <param name="halfSideRange">The number of tiles from the center to each edge; the inclusive side length is twice this value plus one.</param>
 	/// <param name="type"></param>
 	public static void PlaceSquareAreaOfLiquid(Point point, int halfSideRange, int type)
 	{
@@ -331,10 +327,8 @@ public class YggdrasilWorldGeneration : ModSystem
 	/// <summary>
 	/// Fill walls by given area:(center and half side length)
 	/// </summary>
-	/// <param name="x0"></param>
-	/// <param name="y0"></param>
-	/// <param name="x1"></param>
-	/// <param name="y1"></param>
+	/// <param name="point">The center of the square in tile coordinates.</param>
+	/// <param name="halfSideRange">The number of tiles from the center to each edge; the inclusive side length is twice this value plus one.</param>
 	/// <param name="type"></param>
 	public static void PlaceSquareAreaOfWall(Point point, int halfSideRange, int type)
 	{
@@ -381,7 +375,6 @@ public class YggdrasilWorldGeneration : ModSystem
 	/// <param name="y0"></param>
 	/// <param name="x1"></param>
 	/// <param name="y1"></param>
-	/// <param name="type"></param>
 	public static void ClearRectangleArea(int x0, int y0, int x1, int y1)
 	{
 		for (int x = x0; x <= x1; x += 1)
@@ -402,7 +395,6 @@ public class YggdrasilWorldGeneration : ModSystem
 	/// <param name="y0"></param>
 	/// <param name="x1"></param>
 	/// <param name="y1"></param>
-	/// <param name="type"></param>
 	public static void KillRectangleAreaOfTile(int x0, int y0, int x1, int y1)
 	{
 		for (int x = x0; x <= x1; x += 1)
@@ -467,7 +459,6 @@ public class YggdrasilWorldGeneration : ModSystem
 	/// <param name="y0"></param>
 	/// <param name="x1"></param>
 	/// <param name="y1"></param>
-	/// <param name="type"></param>
 	public static void KillRectangleAreaOfWall(int x0, int y0, int x1, int y1)
 	{
 		for (int x = x0; x <= x1; x += 1)
@@ -475,7 +466,7 @@ public class YggdrasilWorldGeneration : ModSystem
 			for (int y = y0; y <= y1; y += 1)
 			{
 				Tile tile = SafeGetTile(x, y);
-				tile.WallType = 0;
+				tile.WallType = WallID.None;
 			}
 		}
 		SmoothTile_XXYY(x0, y0, x1, y1);
@@ -487,6 +478,7 @@ public class YggdrasilWorldGeneration : ModSystem
 	/// <param name="x"></param>
 	/// <param name="y"></param>
 	/// <param name="Path"></param>
+	/// <param name="stopSmooth">Whether to register the prefab area so later terrain smoothing skips it.</param>
 	public static void QuickBuild(int x, int y, string Path, bool stopSmooth = true)
 	{
 		var mapIO = new MapIO(x, y);
@@ -895,6 +887,7 @@ public class YggdrasilWorldGeneration : ModSystem
 	/// <param name="step"></param>
 	/// <param name="thick"></param>
 	/// <param name="clockwise"></param>
+	/// <param name="type">沿地表铺设的物块类型；寻找起始物块时排除此类型。</param>
 	public static void CrawlCarpetOfTile(int x, int y, int step, int thick, int type, bool clockwise = false)
 	{
 		Point checkPoint = NearestBlockCoordinateIn100Tile(x, y, type);
@@ -932,6 +925,8 @@ public class YggdrasilWorldGeneration : ModSystem
 	/// <param name="step"></param>
 	/// <param name="thick"></param>
 	/// <param name="clockwise"></param>
+	/// <param name="type">沿地表铺设的物块类型；寻找起始物块时排除此类型。</param>
+	/// <param name="backgroundType">用于计算地表法线和行进方向的基底物块类型。</param>
 	public static void CrawlCarpetOfTypeTile(int x, int y, int step, int thick, int type, int backgroundType, bool clockwise = false)
 	{
 		Point checkPoint = NearestBlockCoordinateIn100Tile(x, y, type);
@@ -1025,8 +1020,8 @@ public class YggdrasilWorldGeneration : ModSystem
 	/// <summary>
 	/// Set 2 point as diameter that defines a circle in tile coordinate, and (type >= 0, place that type of tile, type = -1,clear tiles; tile = -2,clear everything).
 	/// </summary>
-	/// <param name="center"></param>
-	/// <param name="radius"></param>
+	/// <param name="pointA">One endpoint of the circle diameter in tile coordinates.</param>
+	/// <param name="pointB">The opposite endpoint of the circle diameter in tile coordinates.</param>
 	/// <param name="type"></param>
 	/// <param name="force"></param>
 	public static void CircleTile(Vector2 pointA, Vector2 pointB, int type, bool force = false)
@@ -1065,7 +1060,7 @@ public class YggdrasilWorldGeneration : ModSystem
 						}
 						else
 						{
-							if (tile.WallType <= 0)
+							if (tile.WallType <= WallID.None)
 							{
 								tile.WallType = (ushort)type;
 							}
@@ -1079,8 +1074,8 @@ public class YggdrasilWorldGeneration : ModSystem
 	/// <summary>
 	/// 两点为直径布设圆形墙
 	/// </summary>
-	/// <param name="center"></param>
-	/// <param name="radius"></param>
+	/// <param name="pointA">圆的直径一端，使用物块坐标。</param>
+	/// <param name="pointB">圆的直径另一端，使用物块坐标。</param>
 	/// <param name="type"></param>
 	/// <param name="force"></param>
 	public static void CircleWall(Vector2 pointA, Vector2 pointB, int type, bool force = false)
@@ -1098,6 +1093,7 @@ public class YggdrasilWorldGeneration : ModSystem
 	/// <param name="radius"></param>
 	/// <param name="type"></param>
 	/// <param name="force"></param>
+	/// <param name="noiseSize">The scale in tiles of the sampled noise subtracted from the radius at each position.</param>
 	public static void CircleTileWithRandomNoise(Vector2 center, float radius, int type, float noiseSize = 10f, bool force = false)
 	{
 		int x0CoordPerlin = GenRand.Next(1024);
@@ -1146,6 +1142,7 @@ public class YggdrasilWorldGeneration : ModSystem
 	/// <param name="radius"></param>
 	/// <param name="type"></param>
 	/// <param name="force"></param>
+	/// <param name="noiseSize">噪声对边界半径的缩减幅度，以物块为单位。</param>
 	public static void CircleTileWithRandomNoise(Point center, float radius, int type, float noiseSize = 10f, bool force = false)
 	{
 		CircleTileWithRandomNoise(center.ToVector2(), radius, type, noiseSize, force);
@@ -1395,13 +1392,14 @@ public class YggdrasilWorldGeneration : ModSystem
 	/// <summary>
 	/// Digtunnel, mimic from WorldGen vanilla.
 	/// </summary>
-	/// <param name="X"></param>
-	/// <param name="Y"></param>
+	/// <param name="x">The starting horizontal tile coordinate, clamped to the world bounds.</param>
+	/// <param name="y">The starting vertical tile coordinate, clamped to the world bounds.</param>
 	/// <param name="xDir"></param>
 	/// <param name="yDir"></param>
-	/// <param name="Steps"></param>
-	/// <param name="Size"></param>
-	/// <param name="Wet"></param>
+	/// <param name="steps">The maximum number of tunnel-carving steps.</param>
+	/// <param name="size">The initial tunnel radius in tiles, varied randomly as the tunnel advances.</param>
+	/// <param name="wet">Whether to fill carved tiles to the maximum liquid amount.</param>
+	/// <param name="wallType">The wall type placed in carved tiles, or -1 to leave existing walls unchanged.</param>
 	/// <returns></returns>
 	public static Vector2D DigTunnel(double x, double y, double xDir, double yDir, int steps, int size, bool wet = false, int wallType = -1)
 	{
@@ -1486,13 +1484,15 @@ public class YggdrasilWorldGeneration : ModSystem
 	/// <summary>
 	/// Digtunnel, only dig in request type of tile, mimic from WorldGen vanilla.
 	/// </summary>
-	/// <param name="X"></param>
-	/// <param name="Y"></param>
+	/// <param name="x">The starting horizontal tile coordinate, clamped to the world bounds.</param>
+	/// <param name="y">The starting vertical tile coordinate, clamped to the world bounds.</param>
 	/// <param name="xDir"></param>
 	/// <param name="yDir"></param>
-	/// <param name="Steps"></param>
-	/// <param name="Size"></param>
-	/// <param name="Wet"></param>
+	/// <param name="steps">The maximum number of tunnel-carving steps.</param>
+	/// <param name="size">The initial tunnel radius in tiles, varied randomly as the tunnel advances.</param>
+	/// <param name="type">The tile type that may be carved; encountering another type stops the tunnel.</param>
+	/// <param name="wet">Whether to fill carved tiles to the maximum liquid amount.</param>
+	/// <param name="wallType">The wall type placed in carved tiles, or -1 to leave existing walls unchanged.</param>
 	/// <returns></returns>
 	public static Vector2D DigTunnelInReQuestTiles(double x, double y, double xDir, double yDir, int steps, int size, int type, bool wet = false, int wallType = -1)
 	{

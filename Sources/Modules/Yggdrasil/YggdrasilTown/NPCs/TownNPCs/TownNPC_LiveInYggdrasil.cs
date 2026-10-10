@@ -172,7 +172,7 @@ public abstract class TownNPC_LiveInYggdrasil : ModNPC
 		// so we should prevent other npc from sitting the same chair.
 		if (Sit)
 		{
-			NPC.aiStyle = 7;
+			NPC.aiStyle = NPCAIStyleID.Passive;
 			NPC.ai[0] = 5;
 		}
 		else
@@ -928,7 +928,7 @@ public abstract class TownNPC_LiveInYggdrasil : ModNPC
 				for (int x = 20; x < Main.maxTilesX - 20; x++)
 				{
 					var tile = TileUtils.SafeGetTile(x, y);
-					tile.TileType = 0;
+					tile.TileType = TileID.Dirt;
 					tile.HasTile = false;
 				}
 			}
@@ -938,7 +938,7 @@ public abstract class TownNPC_LiveInYggdrasil : ModNPC
 				for (int x = 20; x < Main.maxTilesX - 20; x++)
 				{
 					var tile = TileUtils.SafeGetTile(x, y);
-					tile.TileType = 0;
+					tile.TileType = TileID.Dirt;
 					tile.HasTile = false;
 				}
 			}
@@ -948,14 +948,14 @@ public abstract class TownNPC_LiveInYggdrasil : ModNPC
 				for (int x = 20; x < Main.maxTilesX / 2; x++)
 				{
 					var tile = TileUtils.SafeGetTile(x, y);
-					tile.TileType = 0;
+					tile.TileType = TileID.Dirt;
 					tile.HasTile = false;
 				}
 				y = 185;
 				for (int x = 20; x < Main.maxTilesX / 2; x++)
 				{
 					var tile = TileUtils.SafeGetTile(x, y);
-					tile.TileType = 0;
+					tile.TileType = TileID.Dirt;
 					tile.HasTile = false;
 				}
 			}
@@ -965,14 +965,14 @@ public abstract class TownNPC_LiveInYggdrasil : ModNPC
 				for (int x = Main.maxTilesX / 2; x < Main.maxTilesX - 20; x++)
 				{
 					var tile = TileUtils.SafeGetTile(x, y);
-					tile.TileType = 0;
+					tile.TileType = TileID.Dirt;
 					tile.HasTile = false;
 				}
 				y = 185;
 				for (int x = Main.maxTilesX / 2; x < Main.maxTilesX - 20; x++)
 				{
 					var tile = TileUtils.SafeGetTile(x, y);
-					tile.TileType = 0;
+					tile.TileType = TileID.Dirt;
 					tile.HasTile = false;
 				}
 			}

@@ -18,14 +18,18 @@ public class CyanVineBar : ModTile
 		var modTranslation = CreateMapEntryName();
 		AddMapEntry(new Color(224, 194, 101), modTranslation);
 	}
+
 	public override bool CreateDust(int i, int j, ref int type)
 	{
 		type = ModContent.DustType<Dusts.CyanVine>();
 		return true;
 	}
+
 	public override void NearbyEffects(int i, int j, bool closer)
 	{
 		if (Main.tile[i, j + 1].Slope != SlopeType.Solid || !Main.tile[i, j + 1].HasTile || Main.tile[i, j + 1].IsHalfBlock)
+		{
 			WorldGen.KillTile(i, j);
+		}
 	}
 }

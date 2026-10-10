@@ -19,7 +19,7 @@ public class BloodyMossWheel : ModTile
 		};
 		TileObjectData.newTile.CoordinateWidth = 16;
 		TileObjectData.addTile(Type);
-		DustType = 4;
+		DustType = DustID.TintableDust;
 		var modTranslation = CreateMapEntryName();
 		AddMapEntry(new Color(96, 93, 91), modTranslation);
 	}

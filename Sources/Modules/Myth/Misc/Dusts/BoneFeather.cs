@@ -9,6 +9,7 @@ public class BoneFeather : ModDust
 		dust.scale *= 1f;
 		dust.rotation = Main.rand.NextFloat(6.283f);
 	}
+
 	public override bool Update(Dust dust)
 	{
 		dust.position += dust.velocity;
@@ -45,9 +46,13 @@ public class BoneFeather : ModDust
 			dust.velocity += new Vector2(Main.windSpeedCurrent * 0.25f, 0.02f * dust.scale * dust.scale);
 		}
 		if (dust.scale < 0.35f)
+		{
 			dust.active = false;
+		}
+
 		return false;
 	}
+
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		float light = (lightColor.R + lightColor.G + lightColor.B) / 765f;

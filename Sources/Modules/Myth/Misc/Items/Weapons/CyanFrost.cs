@@ -27,6 +27,7 @@ public class CyanFrost : ModItem
 		Item.autoReuse = true;
 		Item.crit = 16;
 	}
+
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		float adjustedItemScale = player.GetAdjustedItemScale(Item); // Get the melee scale of the player and item.
@@ -35,6 +36,7 @@ public class CyanFrost : ModItem
 
 		return base.Shoot(player, source, position, velocity, type, damage, knockback);
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe().AddIngredient(ItemID.CobaltBar, 6).AddIngredient(ItemID.IceBlade).AddIngredient(ItemID.FrostCore).AddTile(TileID.MythrilAnvil).Register();

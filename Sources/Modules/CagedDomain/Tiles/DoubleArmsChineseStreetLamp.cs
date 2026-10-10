@@ -25,7 +25,7 @@ public class DoubleArmsChineseStreetLamp : ModTile, ITileFluentlyDrawn
 			16,
 			16,
 			16,
-			18
+			18,
 		};
 		TileObjectData.newTile.CoordinateWidth = 18;
 		TileObjectData.newTile.Origin = new Point16(0, 4);
@@ -33,10 +33,12 @@ public class DoubleArmsChineseStreetLamp : ModTile, ITileFluentlyDrawn
 		DustType = DustID.DynastyWood;
 		AddMapEntry(new Color(135, 103, 90));
 	}
+
 	public override void HitWire(int i, int j)
 	{
 		FurnitureUtils.LightHitwire(i, j, Type, 3, 5);
 	}
+
 	public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 	{
 		var tile = Main.tile[i, j];
@@ -53,6 +55,7 @@ public class DoubleArmsChineseStreetLamp : ModTile, ITileFluentlyDrawn
 			b = 0f;
 		}
 	}
+
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		var tile = Main.tile[i, j];
@@ -75,7 +78,10 @@ public class DoubleArmsChineseStreetLamp : ModTile, ITileFluentlyDrawn
 		float thirdSway = 0.48f;
 		int addRecX = 0;
 		if (tile.TileFrameX >= 54)
+		{
 			addRecX = 18;
+		}
+
 		DrawLanternPiece(new Rectangle(2 + addRecX, 80, 14, 10), firstSway, new Vector2(0, 18), pos + new Point(0, 1), pos + new Point(0, 1), drawCenterPos, new Vector2(7, 0), spriteBatch, tileDrawing);
 		Vector2 firstOffsetLeft = new Vector2(0, 10).RotatedBy(GetWindRot(pos + new Point(0, 1), 1, 1, firstSway, tileDrawing));
 		DrawLanternPiece(new Rectangle(4 + addRecX, 90, 10, 10), secondSway, new Vector2(0, 18) + firstOffsetLeft, pos + new Point(0, 2), pos + new Point(0, 2), drawCenterPos, new Vector2(5, 0), spriteBatch, tileDrawing);
@@ -96,11 +102,14 @@ public class DoubleArmsChineseStreetLamp : ModTile, ITileFluentlyDrawn
 			DrawLanternPiece(new Rectangle(4 + addRecX, 90, 10, 10), secondSway, new Vector2(32, 18) + firstOffsetRight, pos + new Point(2, 2), pos + new Point(0, 1), drawCenterPos, new Vector2(5, 0), spriteBatch, tileDrawing, new Color(1f, 0.5f, 0f, 0));
 		}
 	}
+
 	public float GetWindRot(int x, int y, int width, int height, float swayCoefficient, TileDrawing tileDrawing)
 	{
 		float windCycle = 0;
 		if (tileDrawing.InAPlaceWithWind(x, y, width, height))
+		{
 			windCycle = tileDrawing.GetWindCycle(x, y, tileDrawing._sunflowerWindCounter);
+		}
 
 		int totalPushTime = 80;
 		float pushForcePerFrame = 1.26f;
@@ -108,11 +117,14 @@ public class DoubleArmsChineseStreetLamp : ModTile, ITileFluentlyDrawn
 		windCycle += highestWindGridPushComplex;
 		return -windCycle * swayCoefficient;
 	}
+
 	public float GetWindRot(Point pos, int width, int height, float swayCoefficient, TileDrawing tileDrawing)
 	{
 		float windCycle = 0;
 		if (tileDrawing.InAPlaceWithWind(pos.X, pos.Y, width, height))
+		{
 			windCycle = tileDrawing.GetWindCycle(pos.X, pos.Y, tileDrawing._sunflowerWindCounter);
+		}
 
 		int totalPushTime = 80;
 		float pushForcePerFrame = 1.26f;
@@ -120,24 +132,27 @@ public class DoubleArmsChineseStreetLamp : ModTile, ITileFluentlyDrawn
 		windCycle += highestWindGridPushComplex;
 		return -windCycle * swayCoefficient;
 	}
+
 	/// <summary>
 	/// 画侧挂灯
 	/// </summary>
 	/// <param name="frame"></param>
 	/// <param name="swayCoefficient"></param>
-	/// <param name="offsetX"></param>
-	/// <param name="offsetY"></param>
 	/// <param name="tilePos"></param>
 	/// <param name="paintPos"></param>
 	/// <param name="drawCenterPos"></param>
 	/// <param name="spriteBatch"></param>
 	/// <param name="tileDrawing"></param>
 	/// <param name="color"></param>
-	private void DrawLanternPiece(Rectangle frame, float swayCoefficient, Vector2 offset, Point tilePos, Point paintPos, Vector2 drawCenterPos, Vector2 origin, SpriteBatch spriteBatch, TileDrawing tileDrawing, Color color = new Color())
+	/// <param name="offset">相对于 drawCenterPos 的绘制偏移，单位为像素。</param>
+	/// <param name="origin">相对于源矩形左上角的旋转原点，单位为像素。</param>
+	private void DrawLanternPiece(Rectangle frame, float swayCoefficient, Vector2 offset, Point tilePos, Point paintPos, Vector2 drawCenterPos, Vector2 origin, SpriteBatch spriteBatch, TileDrawing tileDrawing, Color color = default(Color))
 	{
-		// 回声涂料	
+		// 回声涂料
 		if (!TileDrawing.IsVisible(Main.tile[paintPos]))
+		{
 			return;
+		}
 
 		var tile = Main.tile[tilePos];
 		ushort type = tile.TileType;
@@ -150,7 +165,9 @@ public class DoubleArmsChineseStreetLamp : ModTile, ITileFluentlyDrawn
 
 		float windCycle = 0;
 		if (tileDrawing.InAPlaceWithWind(tilePos.X, tilePos.Y, sizeX, sizeY))
+		{
 			windCycle = tileDrawing.GetWindCycle(tilePos.X, tilePos.Y, tileDrawing._sunflowerWindCounter);
+		}
 
 		int totalPushTime = 80;
 		float pushForcePerFrame = 1.26f;
@@ -159,7 +176,7 @@ public class DoubleArmsChineseStreetLamp : ModTile, ITileFluentlyDrawn
 
 		// 支持发光涂料
 		Color tileLight;
-		if (color != new Color())
+		if (color != default(Color))
 		{
 			tileLight = color;
 		}

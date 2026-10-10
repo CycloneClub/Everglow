@@ -2,7 +2,6 @@ namespace Everglow.Yggdrasil.KelpCurtain.Items.Accessories;
 
 public class ThornTurtleShell : ModItem
 {
-
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
 	public override void SetDefaults()

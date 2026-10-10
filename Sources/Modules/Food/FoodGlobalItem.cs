@@ -9,640 +9,702 @@ namespace Everglow.Food;
 public class FoodGlobalItem : GlobalItem
 {
 	// 对于原版的食物进行类型Id到 FoodInfo 的映射，直接获取FoodInfo实例
-	public static Dictionary<int, FoodInfo> m_vanillaFoodInfos;
+	public static Dictionary<int, FoodInfo> VanillaFoodInfos;
+
 	public override void Unload()
 	{
-		m_vanillaFoodInfos = null;
+		VanillaFoodInfos = null;
 	}
+
 	public FoodGlobalItem()
 	{
-		m_vanillaFoodInfos = new Dictionary<int, FoodInfo>
+		VanillaFoodInfos = new Dictionary<int, FoodInfo>
 		{
-                //苹果 
-                {
+			// 苹果
+			{
 				ItemID.Apple,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<AppleBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
-					Name = "AppleBuff"
+					Name = "AppleBuff",
 				}
 			},
-                //苹果派 
-                {
+			// 苹果派
+			{
 				ItemID.ApplePie,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 15,
 					BuffType = ModContent.BuffType<ApplePieBuff>(),
 					BuffTime = new FoodDuration(6, 0, 0),
-					Name = "ApplePieBuff"
+					Name = "ApplePieBuff",
 				}
 			},
-                //杏 
-                {
+			// 杏
+			{
 				ItemID.Apricot,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<ApricotBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
-					Name = "ApricotBuff"
+					Name = "ApricotBuff",
 				}
 			},
-                //培根
-                {
+			// 培根
+			{
 				ItemID.Bacon,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<BaconBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
-					Name = "BaconBuff"
+					Name = "BaconBuff",
 				}
 			},
-                //香蕉
-                {
+			// 香蕉
+			{
 				ItemID.Banana,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<BananaBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
-					Name = "BaconBuff"
+					Name = "BaconBuff",
 				}
 			},
-                //香蕉船
-                {
+			// 香蕉船
+			{
 				ItemID.BananaSplit,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 15,
 					BuffType = ModContent.BuffType<BananaSplitBuff>(),
 					BuffTime = new FoodDuration(6, 0, 0),
-					Name = "BananaSplitBuff"
+					Name = "BananaSplitBuff",
 				}
 			},
-                //烧烤肋排
-                {
+			// 烧烤肋排
+			{
 				ItemID.BBQRibs,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<BBQRibsBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
-					Name = "BBQRibsBuff"
+					Name = "BBQRibsBuff",
 				}
 			},
-                //黑醋栗
-                {
+			// 黑醋栗
+			{
 				ItemID.BlackCurrant,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<BlackCurrantBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
-					Name = "BlackCurrantBuff"
+					Name = "BlackCurrantBuff",
 				}
 			},
-                //血橙
-                {
+			// 血橙
+			{
 				ItemID.BloodOrange,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<BloodOrangeBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
-					Name = "BloodOrangeBuff"
+					Name = "BloodOrangeBuff",
 				}
 			},
-                //鱼菇汤
-                {
+			// 鱼菇汤
+			{
 				ItemID.BowlofSoup,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 15,
 					BuffType = ModContent.BuffType<BowlofSoupBuff>(),
 					BuffTime = new FoodDuration(6, 0, 0),
-					Name = "BowlofSoupBuff"
+					Name = "BowlofSoupBuff",
 				}
 			},
-                //炖兔兔
-                {
+			// 炖兔兔
+			{
 				ItemID.BunnyStew,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<BunnyStewBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
-					Name = "BunnyStewBuff"
+					Name = "BunnyStewBuff",
 				}
 			},
-                //汉堡
-                {
+			// 汉堡
+			{
 				ItemID.Burger,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 15,
 					BuffType = ModContent.BuffType<BurgerBuff>(),
 					BuffTime = new FoodDuration(6, 0, 0),
-					Name = "BurgerBuff"
+					Name = "BurgerBuff",
 				}
 			},
-                //樱桃
-                {
+			// 樱桃
+			{
 				ItemID.Cherry,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<CherryBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
-					Name = "CherryBuff"
+					Name = "CherryBuff",
 				}
 			},
-                //鸡块
-                {
+			// 鸡块
+			{
 				ItemID.ChickenNugget,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<ChickenNuggetBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
-					Name = "ChickenNuggetBuff"
+					Name = "ChickenNuggetBuff",
 				}
 			},
-                //巧克力曲奇饼干
-                {
+			// 巧克力曲奇饼干
+			{
 				ItemID.ChocolateChipCookie,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<ChocolateChipCookieBuff>(),
-					BuffTime = new FoodDuration(4,0,0 ),
-					Name = "ChocolateChipCookieBuff"
+					BuffTime = new FoodDuration(4, 0, 0 ),
+					Name = "ChocolateChipCookieBuff",
 				}
 			},
-                //圣诞布丁
-                {
+			// 圣诞布丁
+			{
 				ItemID.ChristmasPudding,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<ChristmasPuddingBuff>(),
 					BuffTime = new FoodDuration(6, 0, 0),
-					Name = "ChristmasPuddingBuff"
+					Name = "ChristmasPuddingBuff",
 				}
 			},
-                //椰子
-                {
+			// 椰子
+			{
 				ItemID.Coconut,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<CoconutBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
-					Name = "CoconutBuff"
+					Name = "CoconutBuff",
 				}
 			},
-                //熟鱼
-                {
+			// 熟鱼
+			{
 				ItemID.CookedFish,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<CookedFishBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
-					Name = "CookedFishBuff"
+					Name = "CookedFishBuff",
 				}
 			},
-                //熟棉花糖
-                {
+			// 熟棉花糖
+			{
 				ItemID.CookedMarshmallow,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 5,
 					BuffType = ModContent.BuffType<CookedMarshmallowBuff>(),
 					BuffTime = new FoodDuration(5, 0, 0),
-					Name = "CookedMarshmallowBuff"
+					Name = "CookedMarshmallowBuff",
 				}
 			},
-                //熟虾
-                {
+			// 熟虾
+			{
 				ItemID.CookedShrimp,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<CookedShrimpBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
-					Name = "CookedShrimpBuff"
+					Name = "CookedShrimpBuff",
 				}
 			},
-                //火龙果
-                {
+			// 火龙果
+			{
 				ItemID.Dragonfruit,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<DragonfruitBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
-					Name = "DragonfruitBuff"
+					Name = "DragonfruitBuff",
 				}
 			},
-                //接骨木果
-                {
+			// 接骨木果
+			{
 				ItemID.Elderberry,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<ElderberryBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
-					Name = "ElderberryBuff"
+					Name = "ElderberryBuff",
 				}
 			},
-                //食用蜗牛
-                {
+			// 食用蜗牛
+			{
 				ItemID.Escargot,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<EscargotBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
-					Name = "EscargotBuff"
+					Name = "EscargotBuff",
 				}
 			},
-                //煎蛋
-                {
+			// 煎蛋
+			{
 				ItemID.FriedEgg,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<FriedEggBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
-					Name = "FriedEggBuff"
+					Name = "FriedEggBuff",
 				}
 			},
-                //薯条
-                {
+			// 薯条
+			{
 				ItemID.Fries,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<FriesBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
-					Name = "FriesBuff"
+					Name = "FriesBuff",
 				}
 			},
-                //蛙腿三明治
-                {
+			// 蛙腿三明治
+			{
 				ItemID.FroggleBunwich,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<FroggleBunwichBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
-					Name = "FroggleBunwichBuff"
+					Name = "FroggleBunwichBuff",
 				}
 			},
-                //水果色拉
-                {
+			// 水果色拉
+			{
 				ItemID.FruitSalad,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<FruitSaladBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
-					Name = "FruitSaladBuff"
+					Name = "FruitSaladBuff",
 				}
 			},
-                //姜饼
-                {
+			// 姜饼
+			{
 				ItemID.GingerbreadCookie,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<GingerbreadCookieBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
-					Name = "GingerbreadCookieBuff"
+					Name = "GingerbreadCookieBuff",
 				}
 			},
-                //金美味
-                {
+			// 金美味
+			{
 				ItemID.GoldenDelight,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 30,
 					BuffType = ModContent.BuffType<GoldenDelightBuff>(),
 					BuffTime = new FoodDuration(10, 0, 0),
-					Name = "GoldenDelightBuff"
+					Name = "GoldenDelightBuff",
 				}
 			},
-                //葡萄柚
-                {
+			// 葡萄柚
+			{
 				ItemID.Grapefruit,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<GrapefruitBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
-					Name = "GrapefruitBuff"
+					Name = "GrapefruitBuff",
 				}
 			},
-                //葡萄
-                {
+			// 葡萄
+			{
 				ItemID.Grapes,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<GrapesBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
-					Name = "GrapesBuff"
+					Name = "GrapesBuff",
 				}
 			},
-                //烤松鼠
-                {
+			// 烤松鼠
+			{
 				ItemID.GrilledSquirrel,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<GrilledSquirrelBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
-					Name = "GrilledSquirrelBuff"
+					Name = "GrilledSquirrelBuff",
 				}
 			},
-                //蛆虫汤
-                {
+			// 蛆虫汤
+			{
 				ItemID.GrubSoup,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 15,
 					BuffType = ModContent.BuffType<GrubSoupBuff>(),
 					BuffTime = new FoodDuration(6, 0, 0),
-					Name = "GrubSoupBuff"
+					Name = "GrubSoupBuff",
 				}
 			},
-                //热狗
-                {
+			// 热狗
+			{
 				ItemID.Hotdog,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 15,
 					BuffType = ModContent.BuffType<HotdogBuff>(),
 					BuffTime = new FoodDuration(6, 0, 0),
-					Name = "HotdogBuff"
+					Name = "HotdogBuff",
 				}
 			},
-                //冰淇淋
-                {
+			// 冰淇淋
+			{
 				ItemID.IceCream,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<IceCreamBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
-					Name = "IceCreamBuff"
+					Name = "IceCreamBuff",
 				}
 			},
-                //柠檬
-                {
+			// 柠檬
+			{
 				ItemID.Lemon,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<LemonBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
-					Name = "LemonBuff"
+					Name = "LemonBuff",
 				}
 			},
-                //龙虾尾
-                {
+			// 龙虾尾
+			{
 				ItemID.LobsterTail,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<LobsterTailBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
-					Name = "LobsterTailBuff"
+					Name = "LobsterTailBuff",
 				}
 			},
-                //芒果
-                {
+			// 芒果
+			{
 				ItemID.Mango,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<MangoBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
-					Name = "MangoBuff"
+					Name = "MangoBuff",
 				}
 			},
-                //棉花糖
-                {
+			// 棉花糖
+			{
 				ItemID.Marshmallow,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 5,
 					BuffType = ModContent.BuffType<MarshmallowBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
-					Name = "MarshmallowBuff"
+					Name = "MarshmallowBuff",
 				}
 			},
-                //怪物三明治
-                {
+			// 怪物三明治
+			{
 				ItemID.MonsterLasagna,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<MonsterLasagnaBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
-					Name = "MonsterLasagnaBuff"
+					Name = "MonsterLasagnaBuff",
 				}
 			},
-                //玉米片
-                {
+			// 玉米片
+			{
 				ItemID.Nachos,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<NachosBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
-					Name = "NachosBuff"
+					Name = "NachosBuff",
 				}
 			},
-                //泰式炒面
-                {
+			// 泰式炒面
+			{
 				ItemID.PadThai,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<PadThaiBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
-					Name = "PadThaiBuff"
+					Name = "PadThaiBuff",
 				}
 			},
-                //桃子
-                {
+			// 桃子
+			{
 				ItemID.Peach,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<PeachBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
-					Name = "PeachBuff"
+					Name = "PeachBuff",
 				}
 			},
-                //越南河粉
-                {
+			// 越南河粉
+			{
 				ItemID.Pho,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<PhoBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
-					Name = "PhoBuff"
+					Name = "PhoBuff",
 				}
 			},
-                //菠萝
-                {
+			// 菠萝
+			{
 				ItemID.Pineapple,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<PineappleBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
-					Name = "PineappleBuff"
+					Name = "PineappleBuff",
 				}
 			},
-                //披萨
-                {
+			// 披萨
+			{
 				ItemID.Pizza,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 15,
 					BuffType = ModContent.BuffType<PizzaBuff>(),
 					BuffTime = new FoodDuration(6, 0, 0),
-					Name ="PizzaBuff"
+					Name = "PizzaBuff",
 				}
 			},
-                //李子
-                {
+			// 李子
+			{
 				ItemID.Plum,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<PlumBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
-					Name = "PlumBuff"
+					Name = "PlumBuff",
 				}
 			},
-                //薯片
-                {
+			// 薯片
+			{
 				ItemID.PotatoChips,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 15,
 					BuffType = ModContent.BuffType<PotatoChipsBuff>(),
 					BuffTime = new FoodDuration(6, 0, 0),
-					Name = "PotatoChipsBuff"
+					Name = "PotatoChipsBuff",
 				}
 			},
-                //南瓜派
-                {
+			// 南瓜派
+			{
 				ItemID.PumpkinPie,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<PumpkinPieBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
-					Name = "PumpkinPieBuff"
+					Name = "PumpkinPieBuff",
 				}
 			},
-                //红毛丹
-                {
+			// 红毛丹
+			{
 				ItemID.Rambutan,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<RambutanBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
-					Name = "RambutanBuff"
+					Name = "RambutanBuff",
 				}
 			},
-                //烤鸟
-                {
+			// 烤鸟
+			{
 				ItemID.RoastedBird,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<RoastedBirdBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
-					Name = "RoastedBirdBuff"
+					Name = "RoastedBirdBuff",
 				}
 			},
-                //烤鸭
-                {
+			// 烤鸭
+			{
 				ItemID.RoastedDuck,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<RoastedDuckBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
-					Name = "RoastedDuckBuff"
+					Name = "RoastedDuckBuff",
 				}
 			},
-                //生鱼片
-                {
+			// 生鱼片
+			{
 				ItemID.Sashimi,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<SashimiBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
-					Name = "SashimiBuff"
+					Name = "SashimiBuff",
 				}
 			},
-                //炒蛙腿
-                {
+			// 炒蛙腿
+			{
 				ItemID.SauteedFrogLegs,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<SauteedFrogLegsBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
-					Name = "SauteedFrogLegsBuff"
+					Name = "SauteedFrogLegsBuff",
 				}
 			},
-                //海鲜大餐
-                {
+			// 海鲜大餐
+			{
 				ItemID.SeafoodDinner,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 30,
 					BuffType = ModContent.BuffType<SeafoodDinnerBuff>(),
 					BuffTime = new FoodDuration(10, 0, 0),
-					Name = "SeafoodDinnerBuff"
+					Name = "SeafoodDinnerBuff",
 				}
 			},
-                //鲜虾三明治
-                {
+			// 鲜虾三明治
+			{
 				ItemID.ShrimpPoBoy,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 15,
 					BuffType = ModContent.BuffType<ShrimpPoBoyBuff>(),
 					BuffTime = new FoodDuration(6, 0, 0),
-					Name = "ShrimpPoBoyBuff"
+					Name = "ShrimpPoBoyBuff",
 				}
 			},
-                //去壳牡蛎
-                {
+			// 去壳牡蛎
+			{
 				ItemID.ShuckedOyster,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<ShuckedOysterBuff>(),
 					BuffTime = new FoodDuration(6, 0, 0),
-					Name = "ShuckedOysterBuff"
+					Name = "ShuckedOysterBuff",
 				}
 			},
-                //意大利面
-                {
+			// 意大利面
+			{
 				ItemID.Spaghetti,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<SpaghettiBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
-					Name = "SpaghettiBuff"
+					Name = "SpaghettiBuff",
 				}
 			},
-                //杨桃
-                {
+			// 杨桃
+			{
 				ItemID.Starfruit,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<StarfruitBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
-					Name = "StarfruitBuff"
+					Name = "StarfruitBuff",
 				}
 			},
-                //牛排
-                {
+			// 牛排
+			{
 				ItemID.Steak,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 20,
 					BuffType = ModContent.BuffType<SteakBuff>(),
 					BuffTime = new FoodDuration(8, 0, 0),
-					Name = "SteakBuff"
+					Name = "SteakBuff",
 				}
 			},
-                //蜜糖饼干
-                {
+			// 蜜糖饼干
+			{
 				ItemID.SugarCookie,
-				new FoodInfo() {
+				new FoodInfo()
+				{
 					Satiety = 10,
 					BuffType = ModContent.BuffType<SugarCookieBuff>(),
 					BuffTime = new FoodDuration(4, 0, 0),
-					Name = "SugarCookieBuff"
+					Name = "SugarCookieBuff",
 				}
 			},
 		};
-
 	}
+
 	public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
 	{
-		if (m_vanillaFoodInfos.ContainsKey(item.type) /*|| (item.ModItem is FoodBase)*/)
+		if (VanillaFoodInfos.ContainsKey(item.type) /*|| (item.ModItem is FoodBase)*/)
 		{
-
 			int firstIndex = -1;
 			firstIndex = tooltips.FindIndex((tpline) =>
 			{
 				return tpline.Name.Contains("Tooltip");
 			});
 			// 如果有tooltip，就删掉所有Tooltip的line然后插入到第一个所在位置
-			var FoodInfo = m_vanillaFoodInfos[item.type];
+			var FoodInfo = VanillaFoodInfos[item.type];
 			if (firstIndex >= 0)
 			{
 				tooltips.RemoveAll((tp) => tp.Name.Contains("Tooltip"));
@@ -658,7 +720,9 @@ public class FoodGlobalItem : GlobalItem
 
 			int buffTimeIndex = tooltips.FindIndex((tp) => tp.Name.Contains("BuffTime"));
 			if (buffTimeIndex != -1)
+			{
 				tooltips[buffTimeIndex].Text = FoodInfo.BuffTime.ToBuffTimeString();
+			}
 		}
 		if (item.ModItem is FoodBase)
 		{
@@ -685,21 +749,22 @@ public class FoodGlobalItem : GlobalItem
 
 			int buffTimeIndex = tooltips.FindIndex((tp) => tp.Name.Contains("BuffTime"));
 			if (buffTimeIndex != -1)
+			{
 				tooltips[buffTimeIndex].Text = FoodInfo.BuffTime.ToBuffTimeString();
+			}
 		}
 	}
+
 	public override void SetStaticDefaults()
 	{
-
-
 	}
 
 	public override void SetDefaults(Item item)
 	{
 		// 如果是原版的食物，那么就手动处理
-		if (m_vanillaFoodInfos.ContainsKey(item.type))
+		if (VanillaFoodInfos.ContainsKey(item.type))
 		{
-			var FoodInfo = m_vanillaFoodInfos[item.type];
+			var FoodInfo = VanillaFoodInfos[item.type];
 		}
 		base.SetDefaults(item);
 	}
@@ -707,14 +772,14 @@ public class FoodGlobalItem : GlobalItem
 	public override void OnConsumeItem(Item item, Player player)
 	{
 		// 如果是原版的食物，那么就手动处理，因为已经使用了物品，说明玩家满足饱食度要求
-		if (m_vanillaFoodInfos.ContainsKey(item.type))
+		if (VanillaFoodInfos.ContainsKey(item.type))
 		{
-			var FoodInfo = m_vanillaFoodInfos[item.type];
+			var FoodInfo = VanillaFoodInfos[item.type];
 			var FoodPlayer = player.GetModPlayer<FoodModPlayer>();
 
 			// 增加饱食度
 			FoodPlayer.CurrentSatiety += FoodInfo.Satiety;
-			//加上Buff
+			// 加上Buff
 			player.AddBuff(FoodInfo.BuffType, FoodInfo.BuffTime.TotalFrames);
 		}
 		else if (item.ModItem is FoodBase)
@@ -724,26 +789,25 @@ public class FoodGlobalItem : GlobalItem
 			var FoodPlayer = player.GetModPlayer<FoodModPlayer>();
 			// 增加饱食度
 			FoodPlayer.CurrentSatiety += FoodInfo.Satiety;
-			//加上Buff
+			// 加上Buff
 			player.AddBuff(FoodInfo.BuffType, FoodInfo.BuffTime.TotalFrames);
 		}
 	}
-
-
 
 	public override bool CanUseItem(Item item, Player player)
 	{
 		var foodPlayer = player.GetModPlayer<FoodModPlayer>();
 		// 判断能否吃下物品
-		if (m_vanillaFoodInfos.ContainsKey(item.type))
+		if (VanillaFoodInfos.ContainsKey(item.type))
 		{
-			var FoodInfo = m_vanillaFoodInfos[item.type];
+			var FoodInfo = VanillaFoodInfos[item.type];
 			if (!foodPlayer.CanEat(FoodInfo) && foodPlayer.CanText())
 			{
-				CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height),
-				new Color(255, 0, 0),
-				Language.GetTextValue("Mods.Everglow.Common.FoodSystem.CannotEat"),
-				true, false);
+				CombatText.NewText(
+					new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height),
+					new Color(255, 0, 0),
+					Language.GetTextValue("Mods.Everglow.Common.FoodSystem.CannotEat"),
+					true, false);
 
 				foodPlayer.TextTimer = FoodUtils.GetFrames(0, 0, 2, 30);
 				return false;
@@ -755,10 +819,11 @@ public class FoodGlobalItem : GlobalItem
 			var FoodInfo = foodItem.FoodInfo;
 			if (!foodPlayer.CanEat(FoodInfo) && foodPlayer.CanText())
 			{
-				CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height),
-				new Color(255, 0, 0),
-				Language.GetTextValue("Mods.Everglow.Common.FoodSystem.CannotEat"),
-				true, false);
+				CombatText.NewText(
+					new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height),
+					new Color(255, 0, 0),
+					Language.GetTextValue("Mods.Everglow.Common.FoodSystem.CannotEat"),
+					true, false);
 
 				foodPlayer.TextTimer = FoodUtils.GetFrames(0, 0, 2, 30);
 				return false;
@@ -771,20 +836,24 @@ public class FoodGlobalItem : GlobalItem
 	{
 		var foodPlayer = player.GetModPlayer<FoodModPlayer>();
 		// 判断能否吃下物品
-		if (m_vanillaFoodInfos.ContainsKey(item.type))
+		if (VanillaFoodInfos.ContainsKey(item.type))
 		{
-			var foodInfo = m_vanillaFoodInfos[item.type];
+			var foodInfo = VanillaFoodInfos[item.type];
 			if (!foodPlayer.CanEat(foodInfo))
-				//  Main.NewText($"Cannot eat this!");
+			{
+				// Main.NewText($"Cannot eat this!");
 				return false;
+			}
 		}
 		else if (item.ModItem is FoodBase)
 		{
 			var foodItem = item.ModItem as FoodBase;
 			var foodInfo = foodItem.FoodInfo;
 			if (!foodPlayer.CanEat(foodInfo))
-				//    Main.NewText($"Cannot eat this!");
+			{
+				// Main.NewText($"Cannot eat this!");
 				return false;
+			}
 		}
 		return true;
 	}

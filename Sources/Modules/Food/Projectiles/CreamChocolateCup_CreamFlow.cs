@@ -20,14 +20,17 @@ internal class CreamChocolateCup_CreamFlow : ModProjectile
 		Projectile.DamageType = DamageClass.Magic;
 		base.SetDefaults();
 	}
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		Joints = new List<Vector2>();
 		JointVelocity = new List<Vector2>();
 	}
+
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 	}
+
 	public override void AI()
 	{
 		Player player = Main.player[Player.FindClosest(Projectile.position, Projectile.width, Projectile.height)];
@@ -86,14 +89,17 @@ internal class CreamChocolateCup_CreamFlow : ModProjectile
 			JointVelocity.RemoveAt(0);
 		}
 
-		List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(Joints.ToList());//平滑
+		List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(Joints.ToList()); // 平滑
 		var SmoothTrail = new List<Vector2>();
 		for (int x = 0; x < SmoothTrailX.Count - 1; x++)
 		{
 			SmoothTrail.Add(SmoothTrailX[x]);
 		}
 		if (Joints.Count != 0)
+		{
 			SmoothTrail.Add(Joints.ToArray()[Joints.Count - 1]);
+		}
+
 		if (Projectile.timeLeft < 140 && Projectile.timeLeft > 40)
 		{
 			for (int x = 0; x < SmoothTrail.Count - 1; x++)
@@ -115,20 +121,24 @@ internal class CreamChocolateCup_CreamFlow : ModProjectile
 			}
 		}
 	}
+
 	public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 	{
 		if (Projectile.timeLeft < 120)
 		{
 			return false;
 		}
-		List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(Joints.ToList());//平滑
+		List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(Joints.ToList()); // 平滑
 		var SmoothTrail = new List<Vector2>();
 		for (int x = 0; x < SmoothTrailX.Count - 1; x++)
 		{
 			SmoothTrail.Add(SmoothTrailX[x]);
 		}
 		if (Joints.Count != 0)
+		{
 			SmoothTrail.Add(Joints.ToArray()[Joints.Count - 1]);
+		}
+
 		foreach (Vector2 v0 in SmoothTrail)
 		{
 			Vector2 v1 = v0 + Projectile.Center;
@@ -140,20 +150,25 @@ internal class CreamChocolateCup_CreamFlow : ModProjectile
 		}
 		return false;
 	}
+
 	public List<Vector2> Joints = new List<Vector2>();
 	public List<Vector2> JointVelocity = new List<Vector2>();
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		if (Joints.Count > 1)
 		{
-			List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(Joints.ToList());//平滑
+			List<Vector2> SmoothTrailX = GraphicsUtils.CatmullRom(Joints.ToList()); // 平滑
 			var SmoothTrail = new List<Vector2>();
 			for (int x = 0; x < SmoothTrailX.Count - 1; x++)
 			{
 				SmoothTrail.Add(SmoothTrailX[x]);
 			}
 			if (Joints.Count != 0)
+			{
 				SmoothTrail.Add(Joints.ToArray()[Joints.Count - 1]);
+			}
+
 			Vector2 jointVelocity0 = Utils.SafeNormalize(SmoothTrail[1] - SmoothTrail[0], Vector2.zeroVector);
 			Vector2 jointVelocity0Left = jointVelocity0.RotatedBy(MathHelper.PiOver2) * 10;
 			List<Vertex2D> bars = new List<Vertex2D>();

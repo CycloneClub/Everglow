@@ -12,6 +12,7 @@ namespace Everglow.Commons.Templates.Weapons.CrossBow
 		public Vector2 HeldProjectileOffset;
 		public int ShootProjType = -1;
 		public Item Weapon;
+
 		public override void SetDefaults()
 		{
 			Projectile.width = 30;
@@ -23,10 +24,11 @@ namespace Everglow.Commons.Templates.Weapons.CrossBow
 			HeldProjectileOffset = new Vector2(0);
 			SetDef();
 		}
+
 		public virtual void SetDef()
 		{
-
 		}
+
 		public override void OnSpawn(IEntitySource source)
 		{
 			Player player = Main.player[Projectile.owner];
@@ -34,6 +36,7 @@ namespace Everglow.Commons.Templates.Weapons.CrossBow
 			Projectile.timeLeft = player.itemTime + 1;
 			base.OnSpawn(source);
 		}
+
 		public override void AI()
 		{
 			Player player = Main.player[Projectile.owner];
@@ -90,6 +93,7 @@ namespace Everglow.Commons.Templates.Weapons.CrossBow
 				Projectile.Kill();
 			}
 		}
+
 		public virtual void Shoot()
 		{
 			if (Weapon == null || ShootProjType == -1)
@@ -101,6 +105,7 @@ namespace Everglow.Commons.Templates.Weapons.CrossBow
 			SoundEngine.PlaySound(SoundID.Item5, Projectile.Center);
 			Projectile.Kill();
 		}
+
 		public override bool PreDraw(ref Color lightColor)
 		{
 			DrawArrow(Main.spriteBatch, lightColor);
@@ -108,6 +113,7 @@ namespace Everglow.Commons.Templates.Weapons.CrossBow
 			DrawChord(Main.spriteBatch, lightColor);
 			return false;
 		}
+
 		public virtual void DrawArrow(SpriteBatch spriteBatch, Color lightColor)
 		{
 			Player player = Main.player[Projectile.owner];
@@ -117,6 +123,7 @@ namespace Everglow.Commons.Templates.Weapons.CrossBow
 				Texture2D arrow = TextureAssets.Projectile[ShootProjType].Value;
 			}
 		}
+
 		public virtual void DrawCrossBow(SpriteBatch spriteBatch, Color lightColor)
 		{
 			Player player = Main.player[Projectile.owner];
@@ -129,9 +136,9 @@ namespace Everglow.Commons.Templates.Weapons.CrossBow
 				spriteBatch.Draw(CrossBowTexture, Projectile.Center + HeldPoint - Main.screenPosition, null, lightColor, Projectile.rotation, CrossBowTexture.Size() * 0.5f, Projectile.scale, player.direction * player.gravDir > 0 ? SpriteEffects.None : SpriteEffects.FlipVertically, 0);
 			}
 		}
+
 		public virtual void DrawChord(SpriteBatch spriteBatch, Color lightColor)
 		{
-
 		}
 	}
 }

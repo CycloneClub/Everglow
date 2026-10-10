@@ -45,7 +45,6 @@ public class Flare : Visual
 
 	public float SpeedLimits = 1;
 
-
 	public override void OnSpawn()
 	{
 		rotation = Main.rand.NextFloat(6.28f);

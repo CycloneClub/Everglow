@@ -11,6 +11,7 @@ internal class JungleSlingshot : SlingshotProjectile
 		SlingshotLength = 8;
 		SplitBranchDis = 6;
 	}
+
 	public override void DrawString()
 	{
 		base.DrawString();
@@ -19,7 +20,10 @@ internal class JungleSlingshot : SlingshotProjectile
 		float DrawRot = Projectile.rotation - MathF.PI / 4f;
 		Vector2 HeadCenter = new Vector2(SlingshotLength, -SlingshotLength).RotatedBy(DrawRot);
 		if (player.direction == -1)
+		{
 			HeadCenter = new Vector2(SlingshotLength, -SlingshotLength).RotatedBy(DrawRot + Math.PI / 2d);
+		}
+
 		HeadCenter += Projectile.Center - Main.screenPosition;
 		Vector2 SlingshotStringHead = new Vector2(SlingshotLength, -SlingshotLength).RotatedBy(DrawRot) + Projectile.Center - Main.MouseWorld;
 		Vector2 SlingshotStringTail = new Vector2(SlingshotLength, -SlingshotLength).RotatedBy(DrawRot) + Vector2.Normalize(SlingshotStringHead) * Power * 0.2625f;

@@ -11,7 +11,6 @@ namespace Everglow.Myth.TheFirefly.Items.BossDrops;
 // Basic code for a boss treasure bag
 public class CorruptMothTreasureBag : ModItem
 {
-
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.TreasureBags;
 
 	public override void SetStaticDefaults()
@@ -38,6 +37,7 @@ public class CorruptMothTreasureBag : ModItem
 	{
 		return true;
 	}
+
 	public override void RightClick(Player player)
 	{
 		switch (Main.rand.Next(9))
@@ -113,8 +113,10 @@ public class CorruptMothTreasureBag : ModItem
 		Rectangle frame;
 
 		if (Main.itemAnimations[Item.type] != null)
+		{
 			// In case this item is animated, this picks the correct frame
 			frame = Main.itemAnimations[Item.type].GetFrame(texture, Main.itemFrameCounter[whoAmI]);
+		}
 		else
 		{
 			frame = texture.Frame();
@@ -131,7 +133,9 @@ public class CorruptMothTreasureBag : ModItem
 		time /= 2f;
 
 		if (time >= 1f)
+		{
 			time = 2f - time;
+		}
 
 		time = time * 0.5f + 0.5f;
 

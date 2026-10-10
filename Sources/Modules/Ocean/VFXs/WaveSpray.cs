@@ -12,6 +12,7 @@ internal class WaveSprayPipeline : Pipeline
 		effect = ModContent.Request<Effect>("Everglow/Ocean/VFXs/WaveSpray", AssetRequestMode.ImmediateLoad);
 		effect.Value.Parameters["uNoise"].SetValue(ModAsset.HiveCyberNoise.Value);
 	}
+
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
@@ -30,6 +31,7 @@ internal class WaveSprayPipeline : Pipeline
 		Ins.Batch.End();
 	}
 }
+
 [Pipeline(typeof(WaveSprayPipeline))]
 internal class WaveSprayDust : ShaderDraw
 {
@@ -37,8 +39,13 @@ internal class WaveSprayDust : ShaderDraw
 	public List<Vector2> oldPos = new List<Vector2>();
 	public float timer;
 	public float maxTime;
-	public WaveSprayDust() { }
-	public WaveSprayDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai) : base(position, velocity, ai)
+
+	public WaveSprayDust()
+	{
+	}
+
+	public WaveSprayDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai)
+		: base(position, velocity, ai)
 	{
 		this.maxTime = maxTime;
 	}
@@ -48,17 +55,25 @@ internal class WaveSprayDust : ShaderDraw
 		position += velocity * 0.001f;
 		oldPos.Add(position);
 		if (oldPos.Count > 15)
+		{
 			oldPos.RemoveAt(0);
+		}
+
 		velocity.Y += 0.1f;
 		timer++;
 		if (timer > maxTime)
+		{
 			Active = false;
+		}
+
 		velocity = velocity.RotatedBy(ai[1]);
 
 		for (int f = oldPos.Count - 1; f > 0; f--)
 		{
 			if (oldPos[f] != Vector2.Zero)
+			{
 				oldPos[f] += vsadd;
+			}
 		}
 		ai[2] += 0.4f;
 		if (Collision.SolidCollision(position, 0, 0) || Main.tile[(int)(position.X / 16f), (int)(position.Y / 16f)].LiquidAmount > 0)
@@ -81,7 +96,10 @@ internal class WaveSprayDust : ShaderDraw
 		float fx = timer / maxTime;
 		int len = pos.Length;
 		if (len <= 2)
+		{
 			return;
+		}
+
 		var bars = new Vertex2D[len * 2 - 1];
 		for (int i = 1; i < len; i++)
 		{

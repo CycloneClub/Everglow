@@ -11,6 +11,7 @@ public class BorealWoodClub_Item : ClubItem
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.BorealWoodClub>();
 		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.BorealWoodClub_smash>();
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

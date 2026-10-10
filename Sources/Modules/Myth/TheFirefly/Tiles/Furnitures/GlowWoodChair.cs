@@ -47,10 +47,12 @@ public class GlowWoodChair : ModTile
 		LocalizedText name = CreateMapEntryName();
 		AddMapEntry(new Color(69, 36, 78), name);
 	}
+
 	public override void NumDust(int i, int j, bool fail, ref int num)
 	{
 		num = 0;
 	}
+
 	public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings)
 	{
 		return settings.player.IsWithinSnappngRangeToTile(i, j, PlayerSittingHelper.ChairSittingMaxDistance); // Avoid being able to trigger it from long range
@@ -61,12 +63,14 @@ public class GlowWoodChair : ModTile
 		// It is very important to know that this is called on both players and NPCs, so do not use Main.LocalPlayer for example, use info.restingEntity
 		Tile tile = Framing.GetTileSafely(i, j);
 
-		//info.directionOffset = info.restingEntity is Player ? 6 : 2; // Default to 6 for players, 2 for NPCs
-		//info.visualOffset = Vector2.Zero; // Defaults to (0,0)
+		// info.directionOffset = info.restingEntity is Player ? 6 : 2; // Default to 6 for players, 2 for NPCs
+		// info.visualOffset = Vector2.Zero; // Defaults to (0,0)
 
 		info.TargetDirection = -1;
 		if (tile.TileFrameX != 0)
+		{
 			info.TargetDirection = 1; // Facing right if sat down on the right alternate (added through addAlternate in SetStaticDefaults earlier)
+		}
 
 		// The anchor represents the bottom-most tile of the chair. This is used to align the entity hitbox
 		// Since i and j may be from any coordinate of the chair, we need to adjust the anchor based on that
@@ -74,7 +78,9 @@ public class GlowWoodChair : ModTile
 		info.AnchorTilePosition.Y = j;
 
 		if (tile.TileFrameY % NextStyleHeight == 0)
+		{
 			info.AnchorTilePosition.Y++; // Here, since our chair is only 2 tiles high, we can just check if the tile is the top-most one, then move it 1 down
+		}
 	}
 
 	public override bool RightClick(int i, int j)
@@ -92,7 +98,10 @@ public class GlowWoodChair : ModTile
 		var tile = Main.tile[i, j];
 		var zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
 		if (Main.drawToScreen)
+		{
 			zero = Vector2.Zero;
+		}
+
 		Texture2D tex = ModAsset.GlowWoodChairGlow.Value;
 		spriteBatch.Draw(tex, new Vector2(i * 16, j * 16) - Main.screenPosition + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16), new Color(0.8f, 0.8f, 0.8f, 0), 0, new Vector2(0), 1, SpriteEffects.None, 0);
 

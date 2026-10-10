@@ -8,15 +8,20 @@ namespace Everglow.SpellAndSkull.Projectiles.CrystalStorm;
 internal abstract class ShaderDraw : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
+
 	public Vector2 position;
 	public Vector2 velocity;
 	public float[] ai;
-	public ShaderDraw() { }
+
+	public ShaderDraw()
+	{
+	}
+
 	public ShaderDraw(Vector2 position, Vector2 velocity, params float[] ai)
 	{
 		this.position = position;
 		this.velocity = velocity;
-		this.ai = ai;//可以认为params传入的都是右值，可以直接引用
+		this.ai = ai; // 可以认为params传入的都是右值，可以直接引用
 	}
 }
 
@@ -26,6 +31,7 @@ internal class CrystalWindPipeline : Pipeline
 	{
 		effect = ModAsset.CursedFlame;
 	}
+
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
@@ -45,6 +51,7 @@ internal class CrystalWindPipeline : Pipeline
 		Ins.Batch.End();
 	}
 }
+
 [Pipeline(typeof(CrystalWindPipeline), typeof(BloomPipeline))]
 internal class CrystalWindVFX : ShaderDraw
 {
@@ -52,59 +59,69 @@ internal class CrystalWindVFX : ShaderDraw
 	public float timer;
 	public float maxTime;
 	public float rotation;
-	private Vector2 AimCenter = Vector2.Zero;
-	private Vector2 OldAimCenter = Vector2.Zero;
+	private Vector2 aimCenter = Vector2.Zero;
+	private Vector2 oldAimCenter = Vector2.Zero;
+
 	/// <summary>
 	/// ai[0]纹理相位,ai[1]上升力系数,ai[2]归属于哪个弹幕,ai[3]x轴迁移系数
 	/// </summary>
-	public CrystalWindVFX() { }
-	public CrystalWindVFX(int maxTime, Vector2 position, Vector2 velocity, params float[] ai) : base(position, velocity, ai)
+	public CrystalWindVFX()
+	{
+	}
+
+	public CrystalWindVFX(int maxTime, Vector2 position, Vector2 velocity, params float[] ai)
+		: base(position, velocity, ai)
 	{
 		this.maxTime = maxTime;
 	}
 
 	public override void Update()
 	{
-		//Base Datas
+		// Base Datas
 		for (int x = 0; x < 3; x++)
 		{
 			position += velocity;
 			oldPos.Add(position);
 			if (oldPos.Count > 30)
+			{
 				oldPos.RemoveAt(0);
+			}
+
 			timer++;
 			if (timer > maxTime)
+			{
 				Active = false;
+			}
 
 			float delC = 0.05f * (float)Math.Sin((maxTime - timer) / 40d * Math.PI);
 			Lighting.AddLight((int)(position.X / 16), (int)(position.Y / 16), 0.15f * delC, 0, 0.85f * delC);
 			if (Collision.SolidCollision(position, 0, 0))
+			{
 				Active = false;
+			}
 
-
-
-
-			if ((OldAimCenter - Main.projectile[(int)ai[2]].Center).Length() > 200 && OldAimCenter != Vector2.Zero)
+			if ((oldAimCenter - Main.projectile[(int)ai[2]].Center).Length() > 200 && oldAimCenter != Vector2.Zero)
 			{
 				if (timer < maxTime - 20)
+				{
 					timer += 5;
+				}
 			}
 			if (Main.projectile[(int)ai[2]].active && Main.projectile[(int)ai[2]].timeLeft > 200 && Main.projectile[(int)ai[2]].type == ModContent.ProjectileType<Storm>())
 			{
-				AimCenter = Main.projectile[(int)ai[2]].Center;
-				OldAimCenter = Main.projectile[(int)ai[2]].Center;
+				aimCenter = Main.projectile[(int)ai[2]].Center;
+				oldAimCenter = Main.projectile[(int)ai[2]].Center;
 			}
 
-			float Dy = AimCenter.Y - position.Y;
+			float Dy = aimCenter.Y - position.Y;
 			float xCoefficient = Dy * Dy / 600f - 0.4f * Dy + 50;
-			Vector2 TrueAim = AimCenter + new Vector2(xCoefficient * (float)Math.Sin(Main.timeForVisualEffects * 0.3f + rotation), 0) - position;
+			Vector2 TrueAim = aimCenter + new Vector2(xCoefficient * (float)Math.Sin(Main.timeForVisualEffects * 0.3f + rotation), 0) - position;
 
 			ai[3] = (byte)(ai[3] * 0.95 + xCoefficient * 0.05);
 
 			velocity = velocity * 0.75f + new Vector2(TrueAim.SafeNormalize(new Vector2(0, 0.05f)).X, -ai[1] * 0.3f) * 0.25f / ai[3] * 500f;
 			velocity *= Main.rand.NextFloat(0.85f, 1.15f);
 		}
-
 	}
 
 	public override void Draw()
@@ -113,7 +130,10 @@ internal class CrystalWindVFX : ShaderDraw
 		float fx = timer / maxTime;
 		int len = pos.Length;
 		if (len <= 2)
+		{
 			return;
+		}
+
 		var bars = new Vertex2D[len * 2 - 1];
 		for (int i = 1; i < len; i++)
 		{

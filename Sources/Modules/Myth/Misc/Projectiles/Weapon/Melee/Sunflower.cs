@@ -1,4 +1,5 @@
 using Terraria;
+
 namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee;
 
 public class Sunflower : ModProjectile
@@ -13,18 +14,25 @@ public class Sunflower : ModProjectile
 		Projectile.timeLeft = 3000;
 		Main.projFrames[Projectile.type] = 5;
 	}
+
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
 		if (Projectile.timeLeft > 2950)
 		{
 			Projectile.soundDelay = 10;
 			if (Projectile.velocity.X != oldVelocity.X && Math.Abs(oldVelocity.X) > 1f)
+			{
 				Projectile.velocity.X = oldVelocity.X * -0.9f;
+			}
+
 			if (Projectile.velocity.Y != oldVelocity.Y && Math.Abs(oldVelocity.Y) > 1f)
+			{
 				Projectile.velocity.Y = oldVelocity.Y * -0.9f;
+			}
 		}
 		return false;
 	}
+
 	/*public override void PostDraw(Color lightColor)
         {
             Texture2D texture = ModContent.Request<Texture2D>("Everglow/Myth/Misc/Projectiles/Weapon/Melee/Sunflower_Glow").Value;
@@ -36,6 +44,7 @@ public class Sunflower : ModProjectile
 		Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, new Rectangle(0, 46 * Projectile.frame, 46, 46), lightColor, Projectile.rotation, new Vector2(23), 1f, SpriteEffects.None, 0f);
 		return false;
 	}
+
 	public override void AI()
 	{
 		float num7 = (float)Math.Sqrt(Projectile.velocity.X * Projectile.velocity.X + Projectile.velocity.Y * Projectile.velocity.Y);
@@ -45,9 +54,15 @@ public class Sunflower : ModProjectile
 		if (Projectile.timeLeft <= 2950)
 		{
 			if (num7 < 9f)
+			{
 				Projectile.velocity *= 1.2f;
+			}
+
 			if (num7 > 10f)
+			{
 				Projectile.velocity *= 0.86f;
+			}
+
 			int num3 = Player.FindClosest(Projectile.Center, 1, 1);
 			Projectile.velocity = Projectile.velocity * 0.98f + (p.Center - Projectile.Center) / num6 * 3.5f;
 			Projectile.tileCollide = false;
@@ -55,14 +70,23 @@ public class Sunflower : ModProjectile
 		else
 		{
 			if (num7 < 9f)
+			{
 				Projectile.velocity *= 1.2f;
+			}
+
 			if (num7 > 10f)
+			{
 				Projectile.velocity *= 0.96f;
+			}
+
 			Projectile.velocity = Projectile.velocity * 0.995f + (p.Center - Projectile.Center) / num6 * 0.15f;
 		}
 		if (num6 < 60 && Projectile.timeLeft < 2950)
+		{
 			Projectile.timeLeft = 0;
+		}
 	}
+
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		Vector2 v1 = target.Center;

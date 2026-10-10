@@ -35,12 +35,13 @@ public class TwilightEucalyptusDresser : ModTile
 		TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
 		TileObjectData.newTile.HookCheckIfCanPlace = new PlacementHook(Chest.FindEmptyChest, -1, 0, true);
 		TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(Chest.AfterPlacement_Hook, -1, 0, false);
-		TileObjectData.newTile.AnchorInvalidTiles = new int[] {
+		TileObjectData.newTile.AnchorInvalidTiles = new int[]
+		{
 			TileID.MagicalIceBlock,
 			TileID.Boulder,
 			TileID.BouncyBoulder,
 			TileID.LifeCrystalBoulder,
-			TileID.RollingCactus
+			TileID.RollingCactus,
 		};
 		TileObjectData.newTile.LavaDeath = false;
 		TileObjectData.addTile(Type);
@@ -89,7 +90,7 @@ public class TwilightEucalyptusDresser : ModTile
 		{
 			string defaultName = TileLoader.DefaultContainerName(tile.TileType, tile.TileFrameX, tile.TileFrameY); // This gets the ContainerName text for the currently selected language
 
-			if (Main.chest[chestIndex].name != "")
+			if (Main.chest[chestIndex].name != string.Empty)
 			{
 				player.cursorItemIconText = Main.chest[chestIndex].name;
 			}
@@ -100,7 +101,7 @@ public class TwilightEucalyptusDresser : ModTile
 			if (player.cursorItemIconText == defaultName)
 			{
 				player.cursorItemIconID = ModContent.ItemType<Items.Placeables.Furniture.TwilightForest.TwilightEucalyptusDresser>();
-				player.cursorItemIconText = "";
+				player.cursorItemIconText = string.Empty;
 			}
 		}
 		player.noThrow = 2;
@@ -111,10 +112,10 @@ public class TwilightEucalyptusDresser : ModTile
 	{
 		Player player = Main.LocalPlayer;
 		MouseOverNearAndFarSharedLogic(player, i, j);
-		if (player.cursorItemIconText == "")
+		if (player.cursorItemIconText == string.Empty)
 		{
 			player.cursorItemIconEnabled = false;
-			player.cursorItemIconID = 0;
+			player.cursorItemIconID = ItemID.None;
 		}
 	}
 
@@ -125,7 +126,7 @@ public class TwilightEucalyptusDresser : ModTile
 		if (Main.tile[i, j].TileFrameY > 0)
 		{
 			player.cursorItemIconID = ItemID.FamiliarShirt;
-			player.cursorItemIconText = "";
+			player.cursorItemIconText = string.Empty;
 		}
 	}
 
@@ -160,7 +161,7 @@ public class TwilightEucalyptusDresser : ModTile
 			return Language.GetTextValue("LegacyDresserType.0");
 		}
 
-		if (Main.chest[chest].name == "")
+		if (Main.chest[chest].name == string.Empty)
 		{
 			return name;
 		}

@@ -22,10 +22,12 @@ public class LampWood_Tree : ModTile
 		DustType = ModContent.DustType<LampWood_Dust>();
 		AdjTiles = new int[] { Type };
 	}
+
 	public override IEnumerable<Item> GetItemDrops(int i, int j)
 	{
 		yield return new Item(ModContent.ItemType<LampWood_Wood>());
 	}
+
 	public override bool CanDrop(int i, int j)
 	{
 		var tile = Main.tile[i, j];
@@ -68,6 +70,7 @@ public class LampWood_Tree : ModTile
 			}
 		}
 	}
+
 	public override void NearbyEffects(int i, int j, bool closer)
 	{
 		Tile tile = Main.tile[i, j];
@@ -86,12 +89,13 @@ public class LampWood_Tree : ModTile
 		}
 		base.NearbyEffects(i, j, closer);
 	}
+
 	public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
 	{
-		int deltaY = -1;//向上破坏的自变化Y坐标
+		int deltaY = -1; // 向上破坏的自变化Y坐标
 		if (!fail)
 		{
-			deltaY = -1;//向上破坏的自变化Y坐标
+			deltaY = -1; // 向上破坏的自变化Y坐标
 			while (Main.tile[i, j + deltaY].TileType == Type && deltaY > -100)
 			{
 				Tile baseTile = Main.tile[i, j + deltaY];
@@ -115,7 +119,10 @@ public class LampWood_Tree : ModTile
 		Texture2D treeTexture = ModAsset.LampWood_Tree.Value;
 		var zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
 		if (Main.drawToScreen)
+		{
 			zero = Vector2.Zero;
+		}
+
 		Tile tile = Main.tile[i, j];
 		int Width;
 		int Height = 16;
@@ -129,18 +136,18 @@ public class LampWood_Tree : ModTile
 			default:
 				return false;
 
-			case 0:  //树桩
+			case 0: // 树桩
 				Width = 38;
 				Height = 22;
 				TexCoordY = 304;
 				break;
 
-			case 1:  //树干
+			case 1: // 树干
 				Width = 24;
 				TexCoordY = 236;
 				break;
 
-			case 2:  //树冠
+			case 2: // 树冠
 				Width = 200;
 				Height = 234;
 				TexCoordY = 0;
@@ -148,7 +155,7 @@ public class LampWood_Tree : ModTile
 				Rot = Wind + (float)Math.Sin(j + Main.timeForVisualEffects / 30f) * Wind * 0.3f;
 				OffsetY = 22;
 				break;
-			case 3:  //树干长串
+			case 3: // 树干长串
 				Width = 38;
 				Height = 48;
 				TexCoordY = 254;

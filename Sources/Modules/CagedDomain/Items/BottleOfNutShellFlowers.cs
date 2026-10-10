@@ -19,10 +19,12 @@ public class BottleOfNutShellFlowers : ModItem
 		Item.useTime = 10;
 		Item.useAnimation = 10;
 	}
+
 	public override bool? UseItem(Player player)
 	{
 		return base.UseItem(player);
 	}
+
 	public override void HoldItem(Player player)
 	{
 		Item.placeStyle = Math.Max(player.direction, 0);

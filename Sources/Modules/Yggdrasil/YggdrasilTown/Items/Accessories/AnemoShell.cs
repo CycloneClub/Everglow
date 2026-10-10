@@ -408,7 +408,6 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories
 				Vector2 shellPos = center - new Vector2(30, 60);
 				Main.spriteBatch.Begin(sBS);
 				Main.spriteBatch.Draw(ShellTarget, new Rectangle((int)shellPos.X, (int)shellPos.Y, 60, 60), light);
-
 			}
 			else
 			{

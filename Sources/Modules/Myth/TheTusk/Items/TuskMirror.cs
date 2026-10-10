@@ -17,16 +17,21 @@ public class TuskMirror : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.consumable = false;
 	}
+
 	public override bool? UseItem(Player player)
 	{
 		if (player.itemAnimation == player.itemAnimationMax)
 		{
 			if (SubworldSystem.IsActive<TuskWorld>())
+			{
 				SubworldSystem.Exit();
+			}
 			else
 			{
 				if (!SubworldSystem.Enter<TuskWorld>())
+				{
 					Main.NewText("Fail!");
+				}
 			}
 		}
 		return base.UseItem(player);

@@ -6,9 +6,10 @@ public class Lavender : ModItem
 
 	public override void SetStaticDefaults()
 	{
-		//DisplayName.SetDefault("Lavender");
-		//DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "紫笔头");
+		// DisplayName.SetDefault("Lavender");
+		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "紫笔头");
 	}
+
 	public override void SetDefaults()
 	{
 		Item.width = 12;

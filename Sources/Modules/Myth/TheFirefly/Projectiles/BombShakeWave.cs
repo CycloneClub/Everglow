@@ -32,6 +32,7 @@ public class BombShakeWave : ModProjectile, IWarpProjectile
 	{
 		behindProjectiles.Add(index);
 	}
+
 	private void DrawWarpTexCircle_VFXBatch(VFXBatch spriteBatch, float radius, float width, Vector2 center, Texture2D tex, float warpStrength, double addRot = 0)
 	{
 		var circle = new List<Vertex2D>();
@@ -57,8 +58,11 @@ public class BombShakeWave : ModProjectile, IWarpProjectile
 		circle.Add(new Vertex2D(center + new Vector2(0, Math.Max(radius - width, 0)).RotatedBy(addRot), color, new Vector3(0, 0.8f, 0)));
 		circle.Add(new Vertex2D(center + new Vector2(0, radius).RotatedBy(addRot), color, new Vector3(0, 0.2f, 0)));
 		if (circle.Count > 2)
+		{
 			spriteBatch.Draw(tex, circle, PrimitiveType.TriangleStrip);
+		}
 	}
+
 	public void DrawWarp(VFXBatch sb)
 	{
 		float value = (200 - Projectile.timeLeft) / 100f;
@@ -66,7 +70,10 @@ public class BombShakeWave : ModProjectile, IWarpProjectile
 		Texture2D t = ModAsset.HiveCyberNoiseThicker.Value;
 		float width = 60;
 		if (Projectile.timeLeft < 60)
+		{
 			width = Projectile.timeLeft;
+		}
+
 		DrawWarpTexCircle_VFXBatch(sb, value * value * 450, width * 3, Projectile.Center - Main.screenPosition, t, Projectile.timeLeft / 2000f);
 		DrawWarpTexCircle_VFXBatch(sb, 150 + MathF.Sqrt(value) * 40, 180, Projectile.Center - Main.screenPosition, t, Projectile.timeLeft / 2000f);
 	}

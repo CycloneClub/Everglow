@@ -9,15 +9,14 @@ public class EvilChrysalis : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.SummonWeapons;
 
-	FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
+	private FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
+
 	public override void SetStaticDefaults()
 	{
-
 	}
 
 	public override void SetDefaults()
 	{
-
 		Item.damage = 24;
 		Item.mana = 6;
 		Item.width = 50;
@@ -59,6 +58,7 @@ public class EvilChrysalis : ModItem
 		}
 		return base.CanUseItem(player);
 	}
+
 	public override void ModifyTooltips(List<TooltipLine> tooltips)
 	{
 		if (MothEye.LocalOwner != null && MothEye.LocalOwner.TryGetModPlayer(out MothEyePlayer mothEyePlayer))

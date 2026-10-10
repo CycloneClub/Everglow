@@ -19,7 +19,8 @@ public class OnMoth : ModBuff
 
 public class MothBuffTarget : GlobalNPC
 {
-	public static int[] mothStack = new int[256]; //TODO: Have this increase. Currently stays at 0
+	public static int[] mothStack = new int[256]; // TODO: Have this increase. Currently stays at 0
+
 	public override bool InstancePerEntity => true;
 
 	public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref NPC.HitModifiers modifiers)
@@ -31,7 +32,6 @@ public class MothBuffTarget : GlobalNPC
 				float velocityValue = MathF.Log(npc.velocity.Length() + 1) / 10f;
 				if (!npc.collideX && !npc.collideY)
 				{
-
 				}
 				modifiers.FinalDamage = modifiers.FinalDamage * (1 + mothStack[npc.whoAmI] * 0.1f + velocityValue);
 			}
@@ -57,7 +57,7 @@ public class MothBuffTarget : GlobalNPC
 			int index = mothStack[npc.whoAmI];
 			Texture2D number = MythContent.QuickTexture("TheFirefly/Projectiles/GlowFanTex/" + index.ToString());
 			Texture2D butterfly = ModAsset.BlueFly.Value;
-			//Texture2D butterflyD = ModAsset.BlueFlyD.Value;
+			// Texture2D butterflyD = ModAsset.BlueFlyD.Value;
 
 			spriteBatch.End();
 			spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
@@ -72,8 +72,8 @@ public class MothBuffTarget : GlobalNPC
 			spriteBatch.Draw(butterfly, npc.Top - new Vector2(0, 30), null, new Color(1, 1, 1, 0), 0, butterfly.Size() * 0.5f, 0.75f, SpriteEffects.None, 0f);
 			spriteBatch.Draw(number, npc.Top - new Vector2(0, 60), null, new Color(1, 1, 1, 0), 0, number.Size() * 0.5f, 1, SpriteEffects.None, 0f);
 
-			//spriteBatch.Draw(butterfly, npc.Center - Main.screenPosition, null, new Color(1, 1, 1, 0), 0, butterfly.Size() * 0.5f, 0.5f, SpriteEffects.None, 0f);
-			//spriteBatch.Draw(number, npc.Center- Main.screenPosition, null, new Color(1, 1, 1, 0), 0, number.Size() * 0.5f, 0.5f, SpriteEffects.None, 0f);
+			// spriteBatch.Draw(butterfly, npc.Center - Main.screenPosition, null, new Color(1, 1, 1, 0), 0, butterfly.Size() * 0.5f, 0.5f, SpriteEffects.None, 0f);
+			// spriteBatch.Draw(number, npc.Center- Main.screenPosition, null, new Color(1, 1, 1, 0), 0, number.Size() * 0.5f, 0.5f, SpriteEffects.None, 0f);
 
 			spriteBatch.End();
 			spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
