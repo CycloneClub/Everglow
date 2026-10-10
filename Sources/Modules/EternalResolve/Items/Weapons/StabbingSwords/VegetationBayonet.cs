@@ -29,7 +29,7 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords
 				AddIngredient(ItemID.Stinger, 2).
 				AddIngredient(ItemID.Vine, 8).
 				AddIngredient(ItemID.JungleSpores, 2).
-				AddRecipeGroup(RecipeGroupID.Wood, 14).
+				AddRecipeGroup(RecipeGroups.Wood, 14).
 				AddTile(TileID.Anvils).
 				Register();
 			base.AddRecipes();

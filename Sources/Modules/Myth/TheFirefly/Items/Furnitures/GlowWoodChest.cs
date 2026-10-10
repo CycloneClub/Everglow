@@ -30,7 +30,7 @@ public class GlowWoodChest : ModItem
 	{
 		Recipe recipe = CreateRecipe();
 		recipe.AddIngredient(ModContent.ItemType<GlowWood>(), 8);
-		recipe.AddRecipeGroup(RecipeGroupID.IronBar, 2);
+		recipe.AddRecipeGroup(RecipeGroups.IronBar, 2);
 		recipe.AddTile(TileID.WorkBenches);
 		recipe.Register();
 	}

@@ -36,7 +36,7 @@ public class OsmoticPressureMonitor : ModItem
 		CreateRecipe()
 			.AddIngredient(ItemID.Wire, 10)
 			.AddIngredient(ItemID.Glass, 20)
-			.AddRecipeGroup(RecipeGroupID.IronBar, 10)
+			.AddRecipeGroup(RecipeGroups.IronBar, 10)
 			.AddTile(TileID.HeavyWorkBench)
 			.Register();
 	}

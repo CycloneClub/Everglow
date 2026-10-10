@@ -36,7 +36,7 @@ public class BloodGlucoseMonitor : ModItem
 		CreateRecipe()
 			.AddIngredient(ItemID.Wire, 10)
 			.AddIngredient(ItemID.Lens, 5)
-			.AddRecipeGroup(RecipeGroupID.IronBar, 10)
+			.AddRecipeGroup(RecipeGroups.IronBar, 10)
 			.AddTile(TileID.Anvils)
 			.Register();
 	}

@@ -24,7 +24,7 @@ public class GlowWoodClock : ModItem
 		recipe.AddIngredient(ModContent.ItemType<GlowWood>(), 10);
 		recipe.AddIngredient(ItemID.Glass, 6);
 		recipe.AddIngredient(ItemID.IronBar, 3);
-		recipe.AddRecipeGroup(RecipeGroupID.IronBar, 2);
+		recipe.AddRecipeGroup(RecipeGroups.IronBar, 2);
 		recipe.AddTile(TileID.WorkBenches);
 		recipe.Register();
 	}

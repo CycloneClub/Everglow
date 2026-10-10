@@ -21,7 +21,7 @@ public class LampWood_Chest_Item : ModItem
 	{
 		Recipe recipe = CreateRecipe();
 		recipe.AddIngredient(ModContent.ItemType<LampWood_Wood>(), 8);
-		recipe.AddRecipeGroup(RecipeGroupID.IronBar, 2);
+		recipe.AddRecipeGroup(RecipeGroups.IronBar, 2);
 		recipe.AddTile(TileID.WorkBenches);
 		recipe.Register();
 	}

@@ -2,29 +2,29 @@ namespace Everglow.Commons.Utilities;
 
 public static partial class ItemUtils
 {
-	public static List<int> VanillaDuck => RecipeGroup.recipeGroups[RecipeGroupID.Ducks].ValidItems.ToList();
+	public static List<int> VanillaDuck => RecipeGroups.Ducks.ValidItems.ToList();
 
-	public static List<int> VanillaButterfly => RecipeGroup.recipeGroups[RecipeGroupID.Butterflies].ValidItems.ToList();
+	public static List<int> VanillaButterfly => RecipeGroups.Butterflies.ValidItems.ToList();
 
-	public static List<int> VanillaFruit => RecipeGroup.recipeGroups[RecipeGroupID.Fruit].ValidItems.Concat([ItemID.Grapes]).ToList();
+	public static List<int> VanillaFruit => RecipeGroups.Fruit.ValidItems.Concat([ItemID.Grapes]).ToList();
 
-	public static List<int> VanillaTurtle => RecipeGroup.recipeGroups[RecipeGroupID.Turtles].ValidItems.ToList();
+	public static List<int> VanillaTurtle => RecipeGroups.Turtles.ValidItems.ToList();
 
-	public static List<int> VanillaBug => RecipeGroup.recipeGroups[RecipeGroupID.Bugs].ValidItems.ToList();
+	public static List<int> VanillaBug => RecipeGroups.Bugs.ValidItems.ToList();
 
-	public static List<int> VanillaSquirrel => RecipeGroup.recipeGroups[RecipeGroupID.Squirrels].ValidItems.ToList();
+	public static List<int> VanillaSquirrel => RecipeGroups.Squirrels.ValidItems.ToList();
 
-	public static List<int> VanillaDragonfly => RecipeGroup.recipeGroups[RecipeGroupID.Dragonflies].ValidItems.ToList();
+	public static List<int> VanillaDragonfly => RecipeGroups.Dragonflies.ValidItems.ToList();
 
-	public static List<int> VanillaSnail => RecipeGroup.recipeGroups[RecipeGroupID.Snails].ValidItems.ToList();
+	public static List<int> VanillaSnail => RecipeGroups.Snails.ValidItems.ToList();
 
-	public static List<int> VanillaFirefly => RecipeGroup.recipeGroups[RecipeGroupID.Fireflies].ValidItems.ToList();
+	public static List<int> VanillaFirefly => RecipeGroups.Fireflies.ValidItems.ToList();
 
-	public static List<int> VanillaScorpion => RecipeGroup.recipeGroups[RecipeGroupID.Scorpions].ValidItems.ToList();
+	public static List<int> VanillaScorpion => RecipeGroups.Scorpions.ValidItems.ToList();
 
-	public static List<int> VanillaParrot => RecipeGroup.recipeGroups[RecipeGroupID.Cockatiels].ValidItems.Concat(RecipeGroup.recipeGroups[RecipeGroupID.Macaws].ValidItems).ToList();
+	public static List<int> VanillaParrot => RecipeGroups.Cockatiels.ValidItems.Concat(RecipeGroups.Macaws.ValidItems).ToList();
 
-	public static List<int> VanillaBird => RecipeGroup.recipeGroups[RecipeGroupID.Birds].ValidItems.Concat(VanillaParrot).ToList();
+	public static List<int> VanillaBird => RecipeGroups.Birds.ValidItems.Concat(VanillaParrot).ToList();
 
 	public static List<int> VanillaQuestFish => Main.anglerQuestItemNetIDs.ToList();
 
