@@ -78,7 +78,6 @@ public abstract partial class PlayerQuestBase : ITagCompoundEntity
 	/// <summary>
 	/// 每帧更新
 	/// </summary>
-	/// <param name="gt"></param>
 	public virtual void Update()
 	{
 		UpdateTime();

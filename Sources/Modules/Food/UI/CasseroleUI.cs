@@ -132,10 +132,10 @@ public class CasseroleUI : PotUI
 	{
 		List<int[]> ingredientsCopy = [.. cookingUnit.Ingredients];
 		List<int> CopyInUI = Ingredients.ToList();
-		//for (int i = 0; i < ingredientsCopy.Count(); i++)
-		//{
-		//	Main.NewText(ingredientsCopy[i][0]);
-		//}
+		// for (int i = 0; i < ingredientsCopy.Count(); i++)
+		// {
+		// Main.NewText(ingredientsCopy[i][0]);
+		// }
 
 		foreach (int type in Ingredients)
 		{

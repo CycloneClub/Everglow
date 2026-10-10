@@ -40,6 +40,7 @@ public class GlowWoodTorch : ModItem
 	{
 		Lighting.AddLight(Item.Center, 1f, 1f, 1f);
 	}
+
 	public override void AddRecipes()
 	{
 		Recipe recipe = CreateRecipe(3);

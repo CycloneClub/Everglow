@@ -25,6 +25,7 @@ public class AncientSyringe : ModItem
 		Item.shootSpeed = 5f;
 		Item.value = Item.sellPrice(gold: 1);
 	}
+
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		if (player.ownedProjectileCounts[type] == 0)

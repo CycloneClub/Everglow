@@ -1,6 +1,7 @@
 using Everglow.Commons.MEAC;
 using Everglow.Commons.VFX;
 using static Everglow.SpellAndSkull.Common.SpellAndSkullUtils;
+
 namespace Everglow.SpellAndSkull.Projectiles.WaterBolt;
 
 public class WaterBoltArray : ModProjectile, IWarpProjectile
@@ -16,10 +17,12 @@ public class WaterBoltArray : ModProjectile, IWarpProjectile
 		Projectile.DamageType = DamageClass.Summon;
 		Projectile.tileCollide = false;
 	}
+
 	public override bool? CanCutTiles()
 	{
 		return false;
 	}
+
 	public override void AI()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -30,13 +33,17 @@ public class WaterBoltArray : ModProjectile, IWarpProjectile
 		{
 			Projectile.timeLeft = player.itemTime + 60;
 			if (timer < 30)
+			{
 				timer++;
+			}
 		}
 		else
 		{
 			timer--;
 			if (timer < 0)
+			{
 				Projectile.Kill();
+			}
 		}
 		Player.CompositeArmStretchAmount PCAS = Player.CompositeArmStretchAmount.Full;
 
@@ -88,9 +95,6 @@ public class WaterBoltArray : ModProjectile, IWarpProjectile
 		DrawTexLine(Point5, Point6, c1, c1, Water);
 		DrawTexLine(Point6, Point4, c1, c1, Water);
 	}
-
-
-
 
 	public void DrawWarp(VFXBatch spriteBatch)
 	{

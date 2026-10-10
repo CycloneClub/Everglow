@@ -1,4 +1,5 @@
 using Terraria.GameContent;
+
 namespace Everglow.Myth.Common;
 
 public static class ProjectileExtras
@@ -20,17 +21,24 @@ public static class ProjectileExtras
 		for (int i = 0; i < projectile.whoAmI; i++)
 		{
 			if (Main.projectile[i].active && Main.projectile[i].owner == projectile.owner && Main.projectile[i].type == projectile.type)
+			{
 				checkSelf = true;
+			}
 		}
 		if (projectile.owner == Main.myPlayer)
 		{
 			projectile.localAI[0] += 1f;
 			if (checkSelf)
+			{
 				projectile.localAI[0] += Main.rand.NextFloat(1.0f, 3.1f);
+			}
+
 			float num = projectile.localAI[0] / 60f;
 			num /= (1f + player.GetAttackSpeed(DamageClass.Generic)) / 2f;
 			if (num > seconds)
+			{
 				projectile.ai[0] = -1f;
+			}
 		}
 		if (player.dead)
 		{
@@ -54,21 +62,33 @@ public static class ProjectileExtras
 			}
 		}
 		if (projectile.velocity.HasNaNs())
+		{
 			projectile.Kill();
+		}
+
 		projectile.timeLeft = 6;
 
 		if (player.yoyoString)
+		{
 			length = length * 1.25f + 30f;
+		}
+
 		length /= (1f + player.GetAttackSpeed(DamageClass.Generic) * 3f) / 4f;
 		float num3 = acceleration / ((1f + player.GetAttackSpeed(DamageClass.Generic) * 3f) / 4f);
 		float num4 = 14f - num3 / 2f;
 		float num5 = 5f + num3 / 2f;
 		if (checkSelf)
+		{
 			num5 += 20f;
+		}
+
 		if (projectile.ai[0] >= 0f)
 		{
 			if (projectile.velocity.Length() > num3)
+			{
 				projectile.velocity *= 0.98f;
+			}
+
 			bool flag3 = false;
 			bool flag4 = false;
 			Vector2 vector = player.Center - projectile.Center;
@@ -76,7 +96,9 @@ public static class ProjectileExtras
 			{
 				flag3 = true;
 				if ((double)vector.Length() > (double)length * 1.3)
+				{
 					flag4 = true;
+				}
 			}
 			if (projectile.owner == Main.myPlayer)
 			{
@@ -130,13 +152,24 @@ public static class ProjectileExtras
 					num4 /= 2f;
 					num3 *= 2f;
 					if (projectile.Center.X > player.Center.X && projectile.velocity.X > 0f)
+					{
 						projectile.velocity.X = projectile.velocity.X * 0.5f;
+					}
+
 					if (projectile.Center.Y > player.Center.Y && projectile.velocity.Y > 0f)
+					{
 						projectile.velocity.Y = projectile.velocity.Y * 0.5f;
+					}
+
 					if (projectile.Center.X < player.Center.X && projectile.velocity.X > 0f)
+					{
 						projectile.velocity.X = projectile.velocity.X * 0.5f;
+					}
+
 					if (projectile.Center.Y < player.Center.Y && projectile.velocity.Y > 0f)
+					{
 						projectile.velocity.Y = projectile.velocity.Y * 0.5f;
+					}
 				}
 				var value2 = new Vector2(projectile.ai[0], projectile.ai[1]);
 				Vector2 vector5 = value2 - projectile.Center;
@@ -176,7 +209,9 @@ public static class ProjectileExtras
 			Vector2 vector6 = player.position - projectile.Center;
 			float num6 = vector6.Length();
 			if (num6 < num3 + 10f || num6 == 0f)
+			{
 				projectile.Kill();
+			}
 			else
 			{
 				vector6.Normalize();
@@ -186,6 +221,7 @@ public static class ProjectileExtras
 		}
 		projectile.rotation += rotationSpeed;
 	}
+
 	public static void DrawString(int index, Vector2 to = default)
 	{
 		Projectile projectile = Main.projectile[index];
@@ -194,7 +230,10 @@ public static class ProjectileExtras
 		Vector2 vector = mountedCenter;
 		vector.Y += player.gfxOffY;
 		if (to != default)
+		{
 			vector = to;
+		}
+
 		float num = projectile.Center.X - vector.X;
 		float num2 = projectile.Center.Y - vector.Y;
 		Math.Sqrt((double)(num * num + num2 * num2));
@@ -203,13 +242,18 @@ public static class ProjectileExtras
 		{
 			int num3 = -1;
 			if (projectile.position.X + projectile.width / 2 < player.position.X + player.width / 2)
+			{
 				num3 = 1;
+			}
+
 			num3 *= -1;
 			player.itemRotation = (float)Math.Atan2((double)(num2 * num3), (double)(num * num3));
 		}
 		bool checkSelf = true;
 		if (num == 0f && num2 == 0f)
+		{
 			checkSelf = false;
+		}
 		else
 		{
 			float num4 = (float)Math.Sqrt((double)(num * num + num2 * num2));
@@ -227,7 +271,9 @@ public static class ProjectileExtras
 			float num6 = (float)Math.Sqrt((double)(num * num + num2 * num2));
 			float num7 = num6;
 			if (float.IsNaN(num6) || float.IsNaN(num7))
+			{
 				checkSelf = false;
+			}
 			else
 			{
 				if (num6 < 20f)
@@ -247,15 +293,24 @@ public static class ProjectileExtras
 					float num8 = 0.3f;
 					float num9 = Math.Abs(projectile.velocity.X) + Math.Abs(projectile.velocity.Y);
 					if (num9 > 16f)
+					{
 						num9 = 16f;
+					}
+
 					num9 = 1f - num9 / 16f;
 					num8 *= num9;
 					num9 = num7 / 80f;
 					if (num9 > 1f)
+					{
 						num9 = 1f;
+					}
+
 					num8 *= num9;
 					if (num8 < 0f)
+					{
 						num8 = 0f;
+					}
+
 					num8 *= num9;
 					num8 *= 0.5f;
 					if (num2 > 0f)
@@ -267,11 +322,17 @@ public static class ProjectileExtras
 					{
 						num9 = Math.Abs(projectile.velocity.X) / 3f;
 						if (num9 > 1f)
+						{
 							num9 = 1f;
+						}
+
 						num9 -= 0.5f;
 						num8 *= num9;
 						if (num8 > 0f)
+						{
 							num8 *= 2f;
+						}
+
 						num2 *= 1f + num8;
 						num *= 1f - num8;
 					}
@@ -280,13 +341,24 @@ public static class ProjectileExtras
 				int stringColor = player.stringColor;
 				Color color = WorldGen.paintColor(stringColor);
 				if (color.R < 75)
+				{
 					color.R = 75;
+				}
+
 				if (color.G < 75)
+				{
 					color.G = 75;
+				}
+
 				if (color.B < 75)
+				{
 					color.B = 75;
+				}
+
 				if (stringColor == 13)
+				{
 					color = new Color(20, 20, 20);
+				}
 				else if (stringColor == 14 || stringColor == 0)
 				{
 					color = new Color(200, 200, 200);

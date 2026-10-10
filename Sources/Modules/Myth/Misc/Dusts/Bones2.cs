@@ -32,7 +32,9 @@ public class Bones2 : ModDust
 		{
 			dust.alpha += 15;
 			if (dust.alpha > 245)
+			{
 				dust.active = false;
+			}
 		}
 
 		return false;

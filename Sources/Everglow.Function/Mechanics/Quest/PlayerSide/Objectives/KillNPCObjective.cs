@@ -37,7 +37,8 @@ public class KillNPCObjective : PlayerObjectiveBase
 
 	public override bool CheckCompletion() => Progress >= 1f;
 
-	public override float Progress => Math.Clamp((EnableIndividualCounter
+	public override float Progress => Math.Clamp(
+		(EnableIndividualCounter
 		? KilledCount
 		: PlayerQuestManager.Instance.NPCKillCounter.Where(x => NPCTypes.Contains(x.Key)).Sum(x => x.Value)) / (float)NPCCount, 0f, 1f);
 

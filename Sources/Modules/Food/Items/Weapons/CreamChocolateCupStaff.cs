@@ -38,6 +38,7 @@ public class CreamChocolateCupStaff : ModItem
 	{
 		return true;
 	}
+
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		if (player.altFunctionUse == 2)
@@ -46,9 +47,13 @@ public class CreamChocolateCupStaff : ModItem
 			return false;
 		}
 		if (player.ownedProjectileCounts[Item.shoot] < 1)
+		{
 			Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 0, 0);
+		}
+
 		return false;
 	}
+
 	public override bool CanUseItem(Player player)
 	{
 		if (player.altFunctionUse == 2)
@@ -63,6 +68,7 @@ public class CreamChocolateCupStaff : ModItem
 		}
 		return true;
 	}
+
 	public override void HoldItem(Player player)
 	{
 		if (player.ownedProjectileCounts[ModContent.ProjectileType<CreamChocolateCupStaff_proj_rightClick>()] + player.ownedProjectileCounts[ModContent.ProjectileType<CreamChocolateCupStaff_proj>()] + player.ownedProjectileCounts[ModContent.ProjectileType<CreamChocolateCupStaff_proj_held>()] == 0)

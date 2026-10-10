@@ -15,10 +15,12 @@ public class KelpMoss_large_tile : ModTile, ISceneTile
 
 		AddMapEntry(new Color(29, 63, 46));
 	}
+
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		return false;
 	}
+
 	public void AddScene(int i, int j)
 	{
 		KelpMoss_large_fore kelp = new KelpMoss_large_fore { Position = new Vector2(i, j) * 16, Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = ModContent.TileType<KelpMoss_large_tile>() };
@@ -31,9 +33,10 @@ public class KelpMoss_large_tile : ModTile, ISceneTile
 		kelp.Position -= new Vector2(0, 12).RotatedBy(kelp.startRotation) - new Vector2(8);
 		Ins.VFXManager.Add(kelp);
 	}
+
 	private static float GetNeighborTileRotation(Vector2 worldCoord)
 	{
-		Vector2 totalVector = Vector2.Zero;//合向量
+		Vector2 totalVector = Vector2.Zero; // 合向量
 		int tileCount = 0;
 		for (int a = 0; a < 12; a++)
 		{
@@ -62,7 +65,9 @@ public class KelpMoss_large_tile : ModTile, ISceneTile
 			}
 		}
 		if (totalVector == Vector2.Zero || tileCount > 30)
+		{
 			return 0;
+		}
 
 		return MathF.Asin(Vector3.Cross(new Vector3(0, 1, 0), new Vector3(Vector2.Normalize(totalVector), 0)).Z);
 	}

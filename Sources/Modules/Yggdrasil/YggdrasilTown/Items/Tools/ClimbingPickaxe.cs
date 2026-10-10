@@ -12,9 +12,9 @@ public class ClimbingPickaxe : ModItem
 		Item.shootSpeed = 18f;
 		Item.shoot = ModContent.ProjectileType<ClimbingPickaxeProjectile>();
 
-		//Item.useStyle = ItemUseStyleID.None;
-		//Item.useTime = Item.useAnimation = 0;
-		//Item.noUseGraphic = true;
+		// Item.useStyle = ItemUseStyleID.None;
+		// Item.useTime = Item.useAnimation = 0;
+		// Item.noUseGraphic = true;
 	}
 }
 
@@ -59,7 +59,7 @@ public class ClimbingPickaxeProjectile : ModProjectile
 	}
 
 	/// <summary>
-	/// How fast the grapple returns to you after meeting its max shoot distance. 
+	/// How fast the grapple returns to you after meeting its max shoot distance.
 	/// Default is 11, Lunar is 24
 	/// </summary>
 	/// <param name="player"></param>

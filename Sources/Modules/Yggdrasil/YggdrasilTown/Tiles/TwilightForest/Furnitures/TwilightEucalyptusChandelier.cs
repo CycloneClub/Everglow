@@ -10,8 +10,6 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.TwilightForest.Furnitures;
 
 public class TwilightEucalyptusChandelier : ModTile, ITileFluentlyDrawn
 {
-
-
 	public override void SetStaticDefaults()
 	{
 		Main.tileFlame[Type] = true;
@@ -39,8 +37,6 @@ public class TwilightEucalyptusChandelier : ModTile, ITileFluentlyDrawn
 		TileObjectData.newTile.StyleLineSkip = 2;
 		TileObjectData.newTile.DrawYOffset = -2;
 		TileObjectData.addTile(Type);
-
-
 
 		LocalizedText name = CreateMapEntryName();
 		AddMapEntry(new Color(69, 36, 78), name);
@@ -83,6 +79,4 @@ public class TwilightEucalyptusChandelier : ModTile, ITileFluentlyDrawn
 	{
 		FurnitureUtils.Chandelier3x3FluentDraw(screenPosition, pos, spriteBatch, tileDrawing);
 	}
-
-
 }

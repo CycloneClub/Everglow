@@ -12,6 +12,7 @@ internal class PickItemSoundReplaceModule : IModule
 	{
 		Code = GetType().Assembly;
 	}
+
 	public string Name => "Pick Item Sound Modify";
 
 	public Assembly Code { get; }
@@ -36,7 +37,9 @@ internal class PickItemSoundReplaceModule : IModule
 			IModifyItemPickSound.Invoke(inv[slot], context, false, ref customSoundStyle, ref _playOriginalSound);
 
 			if (customSoundStyle.HasValue)
+			{
 				SoundEngine.PlaySound(customSoundStyle.Value);
+			}
 
 			orig.Invoke(inv, context, slot);
 			return;
@@ -52,12 +55,18 @@ internal class PickItemSoundReplaceModule : IModule
 			SoundStyle? customSoundStyle = null;
 
 			if (!Main.mouseItem.IsAir)
+			{
 				IModifyItemPickSound.Invoke(Main.mouseItem, context, true, ref customSoundStyle, ref _playOriginalSound);
+			}
 			else if (!inv[slot].IsAir)
+			{
 				IModifyItemPickSound.Invoke(inv[slot], context, false, ref customSoundStyle, ref _playOriginalSound);
+			}
 
 			if (customSoundStyle.HasValue)
+			{
 				SoundEngine.PlaySound(customSoundStyle.Value);
+			}
 
 			orig.Invoke(inv, context, slot);
 			return;
@@ -68,7 +77,10 @@ internal class PickItemSoundReplaceModule : IModule
 	private SoundEffectInstance PatchLegacyIDPlaySound(On_SoundEngine.orig_PlaySound_int_int_int_int_float_float orig, int type, int x, int y, int Style, float volumeScale, float pitchOffset)
 	{
 		if (_playOriginalSound)
+		{
 			return orig.Invoke(type, x, y, Style, volumeScale, pitchOffset);
+		}
+
 		return null;
 	}
 

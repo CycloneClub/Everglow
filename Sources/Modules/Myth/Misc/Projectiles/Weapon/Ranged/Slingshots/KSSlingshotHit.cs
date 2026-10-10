@@ -1,6 +1,6 @@
 namespace Everglow.Myth.Misc.Projectiles.Weapon.Ranged.Slingshots;
 
-class KSSlingshotHit : ModProjectile
+internal class KSSlingshotHit : ModProjectile
 {
 	public override void SetDefaults()
 	{
@@ -15,16 +15,20 @@ class KSSlingshotHit : ModProjectile
 		Projectile.tileCollide = false;
 		Projectile.extraUpdates = 3;
 	}
+
 	public override void AI()
 	{
 		Projectile.velocity *= 0;
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;
 	}
+
 	private Effect ef;
-	float radius = 0;
+	private float radius = 0;
+
 	public override void PostDraw(Color lightColor)
 	{
 		Main.spriteBatch.End();
@@ -45,7 +49,10 @@ class KSSlingshotHit : ModProjectile
 			var w = MathHelper.Lerp(1f, 0.05f, 0.5f);
 			float delk0 = (width - radius) / (float)width / 2f;
 			if (delk0 < 0)
+			{
 				delk0 = 0;
+			}
+
 			bars.Add(new Vertex2D(vDp + Projectile.Center + normalDir * width, color, new Vector3((float)Math.Sqrt(factor), 1, w)));
 			bars.Add(new Vertex2D(vDp + Projectile.Center + normalDir * -Math.Clamp(width, 0, radius), color, new Vector3((float)Math.Sqrt(factor), delk0, w)));
 		}

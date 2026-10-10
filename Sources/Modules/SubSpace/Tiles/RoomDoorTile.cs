@@ -23,6 +23,7 @@ public abstract class RoomDoorTile : ModTile
 		AddMapEntry(new Color(86, 62, 44));
 		base.SetStaticDefaults();
 	}
+
 	public void WoodenRoomGen()
 	{
 		var mapIO = new MapIO(5, 5);

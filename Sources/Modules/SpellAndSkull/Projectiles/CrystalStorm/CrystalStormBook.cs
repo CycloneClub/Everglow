@@ -33,12 +33,14 @@ internal class CrystalStormBook : MagicBookProjectile
 			}
 			times++;
 			if (times > 33)
+			{
 				times = 0;
+			}
 		}
 
-		//string pathBase = "SpellAndSkull/Textures/";
-		//FrontTexPath = pathBase + "CrystalStorm_A";
-		//PaperTexPath = pathBase + "CrystalStorm_C";
-		//BackTexPath = pathBase + "CrystalStorm_B";
+		// string pathBase = "SpellAndSkull/Textures/";
+		// FrontTexPath = pathBase + "CrystalStorm_A";
+		// PaperTexPath = pathBase + "CrystalStorm_C";
+		// BackTexPath = pathBase + "CrystalStorm_B";
 	}
 }

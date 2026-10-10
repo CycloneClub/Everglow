@@ -7,6 +7,7 @@ namespace Everglow.Myth.Acytaea.Projectiles;
 public class AcytaeaSword_following : ModProjectile
 {
 	public override string Texture => "Everglow/Myth/Acytaea/Projectiles/AcytaeaSword_projectile";
+
 	public override void SetDefaults()
 	{
 		Projectile.aiStyle = -1;
@@ -23,8 +24,10 @@ public class AcytaeaSword_following : ModProjectile
 		Projectile.width = 80;
 		Projectile.height = 80;
 	}
+
 	public Vector2 EndPos = Vector2.Zero;
 	public NPC Owner = new NPC();
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		int index = (int)Projectile.ai[0];
@@ -37,6 +40,7 @@ public class AcytaeaSword_following : ModProjectile
 			Projectile.Kill();
 		}
 	}
+
 	public override void AI()
 	{
 		Projectile.tileCollide = false;
@@ -62,10 +66,12 @@ public class AcytaeaSword_following : ModProjectile
 			Projectile.Kill();
 		}
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return true;
 	}
+
 	public override bool ShouldUpdatePosition()
 	{
 		return true;

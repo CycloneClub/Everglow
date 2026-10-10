@@ -17,20 +17,30 @@ namespace Everglow.Commons.UI.StringDrawerSystem.DrawerItems.TextDrawers
 		{
 			base.Init(stringDrawer, originalText, name, stringParameters);
 			if (stringParameters == null)
+			{
 				return;
-			AnimationTime = stringParameters.GetFloat("AnimationTime",
+			}
+
+			AnimationTime = stringParameters.GetFloat(
+				"AnimationTime",
 				stringDrawer.DefaultParameters.GetFloat("AnimationTime", 0.2f)) * 60f;
-			CursorBlinkingTime = stringParameters.GetFloat("CursorBlinkingTime",
+			CursorBlinkingTime = stringParameters.GetFloat(
+				"CursorBlinkingTime",
 				stringDrawer.DefaultParameters.GetFloat("CursorBlinkingTime", 0.2f)) * 60f;
-			CursorBlinkingInterval = stringParameters.GetFloat("CursorBlinkingInterval",
+			CursorBlinkingInterval = stringParameters.GetFloat(
+				"CursorBlinkingInterval",
 				stringDrawer.DefaultParameters.GetFloat("CursorBlinkingInterval"));
-			CursorColor = stringParameters.GetColor("CursorColor",
+			CursorColor = stringParameters.GetColor(
+				"CursorColor",
 				stringDrawer.DefaultParameters.GetColor("CursorColor", Color.White));
-			CursorScale = stringParameters.GetVector2("CursorScale",
+			CursorScale = stringParameters.GetVector2(
+				"CursorScale",
 				stringDrawer.DefaultParameters.GetVector2("CursorScale", Vector2.One));
-			RepeatAnimationTime = stringParameters.GetFloat("RepeatAnimationTime",
+			RepeatAnimationTime = stringParameters.GetFloat(
+				"RepeatAnimationTime",
 				stringDrawer.DefaultParameters.GetFloat("RepeatAnimationTime", -1)) * 60f;
-			RepeatLinkAnimationTime = stringParameters.GetFloat("RepeatLinkAnimationTime",
+			RepeatLinkAnimationTime = stringParameters.GetFloat(
+				"RepeatLinkAnimationTime",
 				stringDrawer.DefaultParameters.GetFloat("RepeatLinkAnimationTime", -1)) * 60f;
 		}
 
@@ -102,7 +112,10 @@ namespace Everglow.Commons.UI.StringDrawerSystem.DrawerItems.TextDrawers
 				FontSystemEffect, EffectAmount);
 			pos.X += GetTextSize(text).X;
 			if (!EnableAnimation || textIndex >= Text.Length)
+			{
 				return;
+			}
+
 			if (time1 >= CursorBlinkingInterval)
 			{
 				time1 = 0f;
@@ -129,7 +142,9 @@ namespace Everglow.Commons.UI.StringDrawerSystem.DrawerItems.TextDrawers
 			}
 			time += 1f;
 			if (time2 <= 0f)
+			{
 				time1 += 1f;
+			}
 		}
 	}
 }

@@ -6,5 +6,6 @@ namespace Everglow.Commons.Coroutines;
 public interface ICoroutineInstruction
 {
 	void Update();
+
 	bool ShouldWait();
 }

@@ -16,8 +16,10 @@ public abstract class EverglowModule : IModule
 	public abstract string Name { get; }
 
 	public virtual void Load()
-	{ }
+	{
+	}
 
 	public virtual void Unload()
-	{ }
+	{
+	}
 }

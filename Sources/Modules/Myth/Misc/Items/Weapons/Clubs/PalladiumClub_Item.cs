@@ -12,6 +12,7 @@ public class PalladiumClub_Item : ClubItem
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.PalladiumClub>();
 		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.PalladiumClub_smash>();
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

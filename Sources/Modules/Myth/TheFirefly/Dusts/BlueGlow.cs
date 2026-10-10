@@ -18,7 +18,10 @@ public class BlueGlow : ModDust
 		dust.scale *= 0.94f;
 		Lighting.AddLight(dust.position, 0.0096f * dust.scale / 1.8f, 0.0955f * dust.scale / 1.8f, 0.4758f * dust.scale / 1.8f);
 		if (dust.scale < 0.07f)
+		{
 			dust.active = false;
+		}
+
 		return false;
 	}
 

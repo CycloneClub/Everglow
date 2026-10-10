@@ -12,19 +12,21 @@ namespace Everglow.Myth.TheFirefly.NPCs;
 internal class CentipedeHead : FireWormHead
 {
 	public override int BodyType => ModContent.NPCType<CentipedeBody>();
+
 	public override int TailType => ModContent.NPCType<CentipedeTail>();
+
 	public float wormSpeed = 1.0f;
 	public int checkHitWidth = 24;
 	public Vector2 OldSpeedDirection = new Vector2(1.0f, 0.0f);
 
 	public override void SetStaticDefaults()
 	{
-		var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+		var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers()
 		{
 			CustomTexturePath = "Everglow/Myth/TheFirefly/NPCs/FireflyCentipede_Bestiary",
 			Position = new Vector2(40f, 24f),
 			PortraitPositionXOverride = 0f,
-			PortraitPositionYOverride = 12f
+			PortraitPositionYOverride = 12f,
 		};
 		NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifier);
 	}
@@ -52,20 +54,27 @@ internal class CentipedeHead : FireWormHead
 	public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 	{
 		// 我们可以使用AddRange，而不是多次调用Add，以便一次添加多个项目
-		bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+		bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+		{
 			BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Underground,
 			BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Caverns,
 
-			new FlavorTextBestiaryInfoElement(Language.GetTextValue("Mods.Everglow.Bestiary.Centipede.Flavor"))
+			new FlavorTextBestiaryInfoElement(Language.GetTextValue("Mods.Everglow.Bestiary.Centipede.Flavor")),
 		});
 	}
+
 	public override float SpawnChance(NPCSpawnInfo spawnInfo)
 	{
 		FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
 		if (!fireflyBiome.IsBiomeActive(Main.LocalPlayer))
+		{
 			return 0f;
+		}
+
 		if (NPC.CountNPCS(ModContent.NPCType<Bosses.CorruptMoth>()) > 0)
+		{
 			return 0;
+		}
 		else if (NPC.CountNPCS(ModContent.NPCType<CentipedeHead>()) > 1)
 		{
 			return 0f;
@@ -76,6 +85,7 @@ internal class CentipedeHead : FireWormHead
 		}
 		return 0.08f;
 	}
+
 	public override void Init()
 	{
 		MinSegmentLength = 24;
@@ -118,11 +128,13 @@ internal class CentipedeHead : FireWormHead
 			NPC.netUpdate = true;
 		}
 	}
+
 	public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
 		Texture2D tex = ModAsset.CentipedeHead_Glow.Value;
 		spriteBatch.Draw(tex, NPC.Center - Main.screenPosition + new Vector2(0, -28), null, new Color(255, 255, 255, 0), NPC.rotation, tex.Size() / 2f, NPC.scale, SpriteEffects.None, 0);
 	}
+
 	private bool HeadAI_CheckCollisionForDustSpawns()
 	{
 		int minTilePosX = (int)(NPC.Left.X / 16) - 1;
@@ -145,7 +157,7 @@ internal class CentipedeHead : FireWormHead
 				Tile tile = Main.tile[i, j];
 
 				// 如果物体是实心的或被认为是一个平台，那么就有有效的碰撞。
-				if (tile.HasUnactuatedTile && (Main.tileSolid[tile.TileType] || Main.tileSolidTop[tile.TileType] && tile.TileFrameY == 0))
+				if (tile.HasUnactuatedTile && (Main.tileSolid[tile.TileType] || (Main.tileSolidTop[tile.TileType] && tile.TileFrameY == 0)))
 				{
 					Vector2 tileWorld = new Point16(i, j).ToWorldCoordinates(0, 0);
 
@@ -155,7 +167,9 @@ internal class CentipedeHead : FireWormHead
 						collision = true;
 
 						if (Main.rand.NextBool(100))
+						{
 							WorldGen.KillTile(i, j, fail: true, effectOnly: true, noItem: false);
+						}
 					}
 				}
 			}
@@ -182,7 +196,9 @@ internal class CentipedeHead : FireWormHead
 				Player player = Main.player[i];
 
 				if (ForcedTargetPosition is Vector2 target)
+				{
 					areaCheck = new Rectangle((int)target.X - maxDistance, (int)target.Y - maxDistance, maxDistance * 2, maxDistance * 2);
+				}
 				else if (player.active && !player.dead && !player.ghost)
 				{
 					areaCheck = new Rectangle((int)player.position.X - maxDistance, (int)player.position.Y - maxDistance, maxDistance * 2, maxDistance * 2);
@@ -200,7 +216,9 @@ internal class CentipedeHead : FireWormHead
 			}
 
 			if (tooFar)
+			{
 				collision = true;
+			}
 		}
 	}
 
@@ -234,7 +252,9 @@ internal class CentipedeHead : FireWormHead
 
 		// 如果我们没有任何类型的碰撞，我们希望NPC向下并沿X轴减速。
 		if (!collision && !CanFly)
+		{
 			HeadAI_Movement_HandleFallingFromNoCollision(dirX, speed * NPC.localAI[0], acceleration);
+		}
 		else
 		{
 			// 否则，我们要播放一些音频（soundDelay）并向我们的目标移动。
@@ -254,14 +274,18 @@ internal class CentipedeHead : FireWormHead
 
 		// Ensure that the NPC does not fall too quickly
 		if (NPC.velocity.Y > speed + 12.5)
+		{
 			NPC.velocity.Y = speed + 12.5f;
+		}
 
 		// 以下行为模仿了香草虫的运动
 		if (Math.Abs(NPC.velocity.X) + Math.Abs(NPC.velocity.Y) < speed * 0.4f)
 		{
 			// 速度足够快，但不能太快
 			if (NPC.velocity.X < 0.0f)
+			{
 				NPC.velocity.X -= acceleration * 1.1f;
+			}
 			else
 			{
 				NPC.velocity.X += acceleration * 1.1f;
@@ -271,7 +295,9 @@ internal class CentipedeHead : FireWormHead
 		{
 			// NPC has reached terminal velocity
 			if (NPC.velocity.X < dirX)
+			{
 				NPC.velocity.X += acceleration;
+			}
 			else if (NPC.velocity.X > dirX)
 			{
 				NPC.velocity.X -= acceleration;
@@ -280,7 +306,9 @@ internal class CentipedeHead : FireWormHead
 		else if (NPC.velocity.Y > 4)
 		{
 			if (NPC.velocity.X < 0)
+			{
 				NPC.velocity.X += acceleration * 0.9f;
+			}
 			else
 			{
 				NPC.velocity.X -= acceleration * 0.9f;
@@ -296,10 +324,14 @@ internal class CentipedeHead : FireWormHead
 			float num1 = length / 40f;
 
 			if (num1 < 10)
+			{
 				num1 = 10f;
+			}
 
 			if (num1 > 20)
+			{
 				num1 = 20f;
+			}
 
 			NPC.soundDelay = (int)num1;
 			Tile tile = Main.tile[(int)(NPC.Center.X / 16f), (int)(NPC.Center.Y / 16f)];
@@ -321,38 +353,46 @@ internal class CentipedeHead : FireWormHead
 		dirX *= newSpeed;
 		dirY *= newSpeed;
 		// 蠕虫速度方向和目标方向有相同方向的
-		if (NPC.velocity.X > 0 && dirX > 0 || NPC.velocity.X < 0 && dirX < 0 || NPC.velocity.Y > 0 && dirY > 0 || NPC.velocity.Y < 0 && dirY < 0)
+		if ((NPC.velocity.X > 0 && dirX > 0) || (NPC.velocity.X < 0 && dirX < 0) || (NPC.velocity.Y > 0 && dirY > 0) || (NPC.velocity.Y < 0 && dirY < 0))
 		{
 			// 该NPC正在向目标地点移动
 			if (NPC.velocity.X < dirX)
+			{
 				NPC.velocity.X += acceleration;
+			}
 			else if (NPC.velocity.X > dirX)
 			{
 				NPC.velocity.X -= acceleration;
 			}
 
 			if (NPC.velocity.Y < dirY)
+			{
 				NPC.velocity.Y += acceleration;
+			}
 			else if (NPC.velocity.Y > dirY)
 			{
 				NPC.velocity.Y -= acceleration;
 			}
 
 			// 预定的Y-速度很小，而且NPC正在向左移动，目标在NPC的右边，反之亦然。
-			if (Math.Abs(dirY) < speed * 0.2 && (NPC.velocity.X > 0 && dirX < 0 || NPC.velocity.X < 0 && dirX > 0))
+			if (Math.Abs(dirY) < speed * 0.2 && ((NPC.velocity.X > 0 && dirX < 0) || (NPC.velocity.X < 0 && dirX > 0)))
 			{
 				if (NPC.velocity.Y > 0)
+				{
 					NPC.velocity.Y += acceleration * 2f;
+				}
 				else
 				{
 					NPC.velocity.Y -= acceleration * 2f;
 				}
 			}
 			// 预定的X-速度很小，而且NPC正在向上/向下移动，目标在NPC的下方/上方。
-			if (Math.Abs(dirX) < speed * 0.2 && (NPC.velocity.Y > 0 && dirY < 0 || NPC.velocity.Y < 0 && dirY > 0))
+			if (Math.Abs(dirX) < speed * 0.2 && ((NPC.velocity.Y > 0 && dirY < 0) || (NPC.velocity.Y < 0 && dirY > 0)))
 			{
 				if (NPC.velocity.X > 0)
+				{
 					NPC.velocity.X = NPC.velocity.X + acceleration * 2f;
+				}
 				else
 				{
 					NPC.velocity.X = NPC.velocity.X - acceleration * 2f;
@@ -363,7 +403,9 @@ internal class CentipedeHead : FireWormHead
 		{
 			// X距离比Y距离大。 迫使沿X轴的运动更强烈
 			if (NPC.velocity.X < dirX)
+			{
 				NPC.velocity.X += acceleration * 1.1f;
+			}
 			else if (NPC.velocity.X > dirX)
 			{
 				NPC.velocity.X -= acceleration * 1.1f;
@@ -372,7 +414,9 @@ internal class CentipedeHead : FireWormHead
 			if (Math.Abs(NPC.velocity.X) + Math.Abs(NPC.velocity.Y) < speed * 0.5)
 			{
 				if (NPC.velocity.Y > 0)
+				{
 					NPC.velocity.Y += acceleration;
+				}
 				else
 				{
 					NPC.velocity.Y -= acceleration;
@@ -382,7 +426,9 @@ internal class CentipedeHead : FireWormHead
 		else
 		{
 			if (NPC.velocity.Y < dirY)
+			{
 				NPC.velocity.Y += acceleration * 1.1f;
+			}
 			else if (NPC.velocity.Y > dirY)
 			{
 				NPC.velocity.Y -= acceleration * 1.1f;
@@ -391,7 +437,9 @@ internal class CentipedeHead : FireWormHead
 			if (Math.Abs(NPC.velocity.X) + Math.Abs(NPC.velocity.Y) < speed * 0.5)
 			{
 				if (NPC.velocity.X > 0)
+				{
 					NPC.velocity.X += acceleration;
+				}
 				else
 				{
 					NPC.velocity.X -= acceleration;
@@ -409,23 +457,30 @@ internal class CentipedeHead : FireWormHead
 		// 一些netupdate的东西（多人游戏兼容性）。
 		if (collision)
 		{
-			if (NPC.localAI[0] != 1)  // 碰撞检测同步
+			if (NPC.localAI[0] != 1) // 碰撞检测同步
+			{
 				NPC.netUpdate = true;
+			}
 
 			NPC.localAI[0] = 1f;
 		}
 		else
 		{
 			if (NPC.localAI[0] != 0)
+			{
 				NPC.netUpdate = true;
+			}
 
 			NPC.localAI[0] = 0f;
 		}
 
 		// 如果NPC的速度发生变化，并且没有被玩家 "击中"，则强制进行网络更新。
-		if ((NPC.velocity.X > 0 && NPC.oldVelocity.X < 0 || NPC.velocity.X < 0 && NPC.oldVelocity.X > 0 || NPC.velocity.Y > 0 && NPC.oldVelocity.Y < 0 || NPC.velocity.Y < 0 && NPC.oldVelocity.Y > 0) && !NPC.justHit)
+		if (((NPC.velocity.X > 0 && NPC.oldVelocity.X < 0) || (NPC.velocity.X < 0 && NPC.oldVelocity.X > 0) || (NPC.velocity.Y > 0 && NPC.oldVelocity.Y < 0) || (NPC.velocity.Y < 0 && NPC.oldVelocity.Y > 0)) && !NPC.justHit)
+		{
 			NPC.netUpdate = true;
+		}
 	}
+
 	public override void OnKill()
 	{
 		Gore.NewGore(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, Main.rand.Next(40)).RotatedByRandom(6.283),
@@ -440,6 +495,7 @@ internal class CentipedeHead : FireWormHead
 			Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, ModContent.DustType<Dusts.NavyBlood>(), v0.X, v0.Y, 0, default, Main.rand.NextFloat(0.85f, 2.75f));
 		}
 	}
+
 	public override void HitEffect(NPC.HitInfo hit)
 	{
 		for (int f = 0; f < 8; f++)
@@ -448,6 +504,7 @@ internal class CentipedeHead : FireWormHead
 			Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, ModContent.DustType<Dusts.NavyBlood>(), v0.X, v0.Y, 0, default, Main.rand.NextFloat(0.85f, 1.75f));
 		}
 	}
+
 	public override bool CheckActive()
 	{
 		Player player = Main.player[NPC.target];
@@ -459,10 +516,10 @@ internal class CentipedeBody : FireWormBody
 {
 	public override void SetStaticDefaults()
 	{
-		var value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+		var value = new NPCID.Sets.NPCBestiaryDrawModifiers()
 		{
 			// 将此NPC从Bestiary中隐藏起来，对于你只想要一个条目的多部分NPC很有用。
-			Hide = true
+			Hide = true,
 		};
 		NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, value);
 	}
@@ -490,27 +547,40 @@ internal class CentipedeBody : FireWormBody
 	{
 		CentipedeHead.CommonWormInit(this);
 	}
+
 	public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
 		float AddRot = (float)(Math.Sin(Main.timeForVisualEffects * 0.2 + NPC.ai[2] * 0.7) * 0.3f);
 		Texture2D tex = ModAsset.CentipedeBody.Value;
 		int FrameType = (int)NPC.ai[2] % 2;
 		if (FrameType == 1 && (int)NPC.ai[2] % 4 == 1)
+		{
 			FrameType = 2;
+		}
+
 		if (FrameType == 1)
+		{
 			tex = ModAsset.CentipedeBody1.Value;
+		}
+
 		if (FrameType == 2)
+		{
 			tex = ModAsset.CentipedeBody2.Value;
+		}
+
 		spriteBatch.Draw(tex, NPC.Center - Main.screenPosition + new Vector2(0, -28), null, Lighting.GetColor((int)(NPC.Center.X / 16), (int)(NPC.Center.Y / 16)), NPC.rotation + AddRot, tex.Size() / 2f, NPC.scale, SpriteEffects.None, 0);
 		return false;
 	}
+
 	public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
-
 		float AddRot = (float)(Math.Sin(Main.timeForVisualEffects * 0.2 + NPC.ai[2] * 0.7) * 0.3f);
 		int FrameType = (int)NPC.ai[2] % 2;
 		if (FrameType == 1 && (int)NPC.ai[2] % 4 == 1)
+		{
 			FrameType = 2;
+		}
+
 		if (FrameType == 1)
 		{
 			Texture2D tex = ModAsset.CentipedeBody1_Glow.Value;
@@ -522,13 +592,17 @@ internal class CentipedeBody : FireWormBody
 			spriteBatch.Draw(tex, NPC.Center - Main.screenPosition + new Vector2(0, -28), null, new Color(255, 255, 255, 0), NPC.rotation + AddRot, tex.Size() / 2f, NPC.scale, SpriteEffects.None, 0);
 		}
 	}
+
 	public override void AI()
 	{
 		if (NPC.life <= 0)
 		{
 			int FrameType = (int)NPC.ai[2] % 2;
 			if (FrameType == 1 && (int)NPC.ai[2] % 4 == 1)
+			{
 				FrameType = 2;
+			}
+
 			if (FrameType == 0)
 			{
 				if (Main.rand.NextBool(2))
@@ -566,6 +640,7 @@ internal class CentipedeBody : FireWormBody
 			}
 		}
 	}
+
 	public override void HitEffect(NPC.HitInfo hit)
 	{
 		for (int f = 0; f < 8; f++)
@@ -574,6 +649,7 @@ internal class CentipedeBody : FireWormBody
 			Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, ModContent.DustType<Dusts.NavyBlood>(), v0.X, v0.Y, 0, default, Main.rand.NextFloat(0.85f, 1.75f));
 		}
 	}
+
 	public override bool CheckActive()
 	{
 		Player player = Main.player[NPC.target];
@@ -583,12 +659,11 @@ internal class CentipedeBody : FireWormBody
 
 internal class CentipedeTail : FireWormTail
 {
-	[Obsolete]
 	public override void SetStaticDefaults()
 	{
-		var value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+		var value = new NPCID.Sets.NPCBestiaryDrawModifiers()
 		{
-			Hide = true
+			Hide = true,
 		};
 		NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, value);
 	}
@@ -616,6 +691,7 @@ internal class CentipedeTail : FireWormTail
 	{
 		CentipedeHead.CommonWormInit(this);
 	}
+
 	public override void HitEffect(NPC.HitInfo hit)
 	{
 		for (int f = 0; f < 8; f++)
@@ -624,6 +700,7 @@ internal class CentipedeTail : FireWormTail
 			Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, ModContent.DustType<Dusts.NavyBlood>(), v0.X, v0.Y, 0, default, Main.rand.NextFloat(0.85f, 1.75f));
 		}
 	}
+
 	public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
 		Texture2D tex = ModAsset.CentipedeTail_Glow.Value;
@@ -643,12 +720,13 @@ internal class CentipedeTail : FireWormTail
 				Vector2 v0 = new Vector2(0, Main.rand.NextFloat(9f)).RotatedByRandom(6.283);
 				var d = Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, ModContent.DustType<Dusts.NavyBlood>(), v0.X, v0.Y, 0, default, Main.rand.NextFloat(0.85f, 2.75f));
 
-				//Dust d2 = Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, ModContent.DustType<Dusts.BlueParticleDark2StoppedByTile>(), v0.X, v0.Y, 0, default, Main.rand.NextFloat(1.65f, 3.75f));
-				//d2.alpha = (int)(d2.scale * 50);
-				//d2.rotation = Main.rand.NextFloat(0, 6.283f);
+				// Dust d2 = Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, ModContent.DustType<Dusts.BlueParticleDark2StoppedByTile>(), v0.X, v0.Y, 0, default, Main.rand.NextFloat(1.65f, 3.75f));
+				// d2.alpha = (int)(d2.scale * 50);
+				// d2.rotation = Main.rand.NextFloat(0, 6.283f);
 			}
 		}
 	}
+
 	public override bool CheckActive()
 	{
 		Player player = Main.player[NPC.target];

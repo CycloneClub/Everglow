@@ -16,6 +16,7 @@ public class SilverWing : ModItem
 		Item.accessory = true;
 		Item.rare = ItemRarityID.White;
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()
@@ -29,12 +30,15 @@ public class SilverWing : ModItem
 			.AddTile(TileID.Anvils)
 			.Register();
 	}
+
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
 		MythContentPlayer mplayer = player.GetModPlayer<MythContentPlayer>();
 		mplayer.CriticalDamage += 0.08f;
 		if (player.controlUseItem)
+		{
 			noContinueUsingWeaponTime = 0;
+		}
 		else
 		{
 			noContinueUsingWeaponTime++;
@@ -44,5 +48,6 @@ public class SilverWing : ModItem
 			player.GetDamage(DamageClass.Generic) *= 1.4f;
 		}
 	}
+
 	internal int noContinueUsingWeaponTime = 0;
 }

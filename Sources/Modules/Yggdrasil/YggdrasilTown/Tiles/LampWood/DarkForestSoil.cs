@@ -18,6 +18,7 @@ public class DarkForestSoil : ModTile
 		TileID.Sets.ChecksForMerge[(ushort)ModContent.TileType<YggdrasilGrayRock>()] = true;
 		AddMapEntry(new Color(63, 53, 62));
 	}
+
 	public override void RandomUpdate(int i, int j)
 	{
 		Tile tile = Main.tile[i, j];
@@ -28,9 +29,9 @@ public class DarkForestSoil : ModTile
 				for (int y = -2; y < 3; y++)
 				{
 					Tile checkTile = Main.tile[i + x, j + y];
-					if (checkTile.TileType == (ushort)(ModContent.TileType<DarkForestGrass>()))
+					if (checkTile.TileType == (ushort)ModContent.TileType<DarkForestGrass>())
 					{
-						tile.TileType = (ushort)(ModContent.TileType<DarkForestGrass>());
+						tile.TileType = (ushort)ModContent.TileType<DarkForestGrass>();
 						return;
 					}
 				}

@@ -11,6 +11,7 @@ public class FireflyPiranhaInfected : ModNPC
 	{
 		Main.npcFrameCount[NPC.type] = 13;
 	}
+
 	public override void SetDefaults()
 	{
 		NPC.damage = 36;
@@ -24,12 +25,14 @@ public class FireflyPiranhaInfected : ModNPC
 		NPC.HitSound = SoundID.NPCHit1;
 		NPC.DeathSound = SoundID.NPCDeath1;
 	}
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		NPC.localAI[0] = 0;
 		NPC.scale = Main.rand.NextFloat(0.85f, 1.15f);
 	}
-	private int PhysicalStrength = 1200;
+
+	private int physicalStrength = 1200;
 
 	public override void AI()
 	{
@@ -39,20 +42,20 @@ public class FireflyPiranhaInfected : ModNPC
 			{
 				NPC.TargetClosest();
 				WanderingWithoutTarget();
-				NPCFrameAnimationType = 0;
+				nPCFrameAnimationType = 0;
 			}
 			NPC.knockBackResist = 0.4f;
 			NPC.noGravity = true;
 
-			if (NPC.HasPlayerTarget && PhysicalStrength > 0)
+			if (NPC.HasPlayerTarget && physicalStrength > 0)
 			{
 				Player player = Main.player[NPC.target];
 				NormalAttack(player);
-				NPCFrameAnimationType = 1;
-				PhysicalStrength -= 1;
-				if (PhysicalStrength <= 2)
+				nPCFrameAnimationType = 1;
+				physicalStrength -= 1;
+				if (physicalStrength <= 2)
 				{
-					PhysicalStrength = -600;
+					physicalStrength = -600;
 					if (NPC.Center.X > player.Center.X)
 					{
 						NPC.velocity.X = -5;
@@ -63,15 +66,15 @@ public class FireflyPiranhaInfected : ModNPC
 					}
 				}
 			}
-			if (NPC.HasPlayerTarget && PhysicalStrength <= 0)
+			if (NPC.HasPlayerTarget && physicalStrength <= 0)
 			{
 				Player player = Main.player[NPC.target];
 				Wander(player);
-				NPCFrameAnimationType = 0;
-				PhysicalStrength++;
-				if (PhysicalStrength >= 0)
+				nPCFrameAnimationType = 0;
+				physicalStrength++;
+				if (physicalStrength >= 0)
 				{
-					PhysicalStrength = 600;
+					physicalStrength = 600;
 				}
 			}
 			NPC.rotation = NPC.velocity.ToRotation() + (1 - NPC.spriteDirection) * MathF.PI / 2f;
@@ -79,27 +82,27 @@ public class FireflyPiranhaInfected : ModNPC
 		else
 		{
 			NPC.knockBackResist = 0;
-			if (PhysicalStrength > 0)
+			if (physicalStrength > 0)
 			{
-				PhysicalStrength -= 1;
+				physicalStrength -= 1;
 			}
 			NPC.localAI[0] += 1;
 			NPC.noGravity = false;
 			NPC.velocity.Y += 0.15f;
 			if (NPC.localAI[0] % 4 == 0 && NPC.collideY)
 			{
-				PhysicalStrength -= 100;
+				physicalStrength -= 100;
 				NPC.velocity += new Vector2(Main.rand.NextFloat(-2f, 2f), Main.rand.NextFloat(-24f, -12f));
 				NPC.rotation = Main.rand.NextFloat(-0.2f, 0.2f);
 			}
 			if (NPC.collideX)
 			{
-				PhysicalStrength -= 100;
+				physicalStrength -= 100;
 				NPC.velocity += new Vector2(Main.rand.NextFloat(-6f, 6f), Main.rand.NextFloat(-4f, -2f));
 				NPC.rotation = Main.rand.NextFloat(-0.2f, 0.2f);
 			}
 			NPC.velocity *= MathF.Pow(0.996f, NPC.velocity.Length());
-			if (PhysicalStrength > 0)
+			if (physicalStrength > 0)
 			{
 				NPC.rotation = NPC.velocity.ToRotation() + (1 - NPC.spriteDirection) * MathF.PI / 2f;
 			}
@@ -117,6 +120,7 @@ public class FireflyPiranhaInfected : ModNPC
 			NPC.spriteDirection = -1;
 		}
 	}
+
 	private void NormalAttack(Player target)
 	{
 		Vector2 toPlayer = target.Center - NPC.Center;
@@ -162,6 +166,7 @@ public class FireflyPiranhaInfected : ModNPC
 		}
 		SoundEngine.PlaySound(SoundID.SplashWeak.WithPitchOffset(Main.rand.NextFloat(-1f, -0.2f)));
 	}
+
 	private void WanderingWithoutTarget()
 	{
 		int waterDepth = 0;
@@ -220,6 +225,7 @@ public class FireflyPiranhaInfected : ModNPC
 			NPC.velocity.X *= -1f;
 		}
 	}
+
 	private void Wander(Player target)
 	{
 		int waterDepth = 0;
@@ -273,13 +279,15 @@ public class FireflyPiranhaInfected : ModNPC
 			NPC.velocity.Y *= 0.94f;
 		}
 	}
-	private int NPCFrameAnimationType = 0;
+
+	private int nPCFrameAnimationType = 0;
+
 	public override void FindFrame(int frameHeight)
 	{
 		frameHeight = 72;
 		NPC.frameCounter += Math.Max(Math.Abs(NPC.velocity.X), 0.5f) / NPC.scale;
 
-		switch (NPCFrameAnimationType)
+		switch (nPCFrameAnimationType)
 		{
 			case 0:
 				if (NPC.frameCounter > 12)
@@ -323,22 +331,25 @@ public class FireflyPiranhaInfected : ModNPC
 				break;
 		}
 	}
+
 	public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
 		return false;
 	}
+
 	public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
 		Texture2D tex = ModAsset.FireflyPiranhaInfected.Value;
 		spriteBatch.Draw(tex, NPC.Center - screenPos, NPC.frame, drawColor, NPC.rotation, new Vector2(NPC.frame.Width, NPC.frame.Height) * 0.5f, NPC.scale, NPC.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
 		tex = ModAsset.FireflyPiranhaInfected_glow.Value;
 		float colorValue = 0.1f;
-		if (NPCFrameAnimationType == 1)
+		if (nPCFrameAnimationType == 1)
 		{
 			colorValue = MathF.Sin((float)Main.time * 0.3f + NPC.whoAmI * 1.5f) * 0.4f + 0.6f;
 		}
 		spriteBatch.Draw(tex, NPC.Center - screenPos, NPC.frame, new Color(colorValue, colorValue, colorValue, 0), NPC.rotation, new Vector2(NPC.frame.Width, NPC.frame.Height) * 0.5f, NPC.scale, NPC.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
 	}
+
 	public override void OnKill()
 	{
 		Gore.NewGore(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, Main.rand.Next(40)).RotatedByRandom(6.283),
@@ -358,6 +369,7 @@ public class FireflyPiranhaInfected : ModNPC
 			Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, ModContent.DustType<Dusts.BlueGlowAppearOnlyInWater>(), v0.X, v0.Y, 0, default, Main.rand.NextFloat(0.85f, 1.75f));
 		}
 	}
+
 	public override void OnHitByProjectile(Projectile projectile, NPC.HitInfo hit, int damageDone)
 	{
 		NPC.target = projectile.owner;
@@ -372,6 +384,7 @@ public class FireflyPiranhaInfected : ModNPC
 			Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, ModContent.DustType<Dusts.BlueGlowAppearOnlyInWater>(), v0.X, v0.Y, 0, default, Main.rand.NextFloat(0.85f, 1.75f));
 		}
 	}
+
 	public override void OnHitByItem(Player player, Item item, NPC.HitInfo hit, int damageDone)
 	{
 		NPC.target = player.whoAmI;

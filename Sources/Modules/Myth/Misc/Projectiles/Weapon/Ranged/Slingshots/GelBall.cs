@@ -14,6 +14,7 @@ public class GelBall : SlingshotAmmo
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30;
 	}
+
 	public override void DrawTrail()
 	{
 		DrawShade();
@@ -24,7 +25,10 @@ public class GelBall : SlingshotAmmo
 			if (Projectile.oldPos[i] == Vector2.Zero)
 			{
 				if (i == 1)
+				{
 					return;
+				}
+
 				break;
 			}
 
@@ -34,11 +38,16 @@ public class GelBall : SlingshotAmmo
 		{
 			float MulColor = 1f;
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
 
 			float width = 4;
 			if (Projectile.timeLeft <= 30)
+			{
 				width *= Projectile.timeLeft / 30f;
+			}
+
 			var normalDir = Projectile.oldPos[i - 1] - Projectile.oldPos[i];
 			normalDir = new Vector2(-normalDir.Y, normalDir.X).SafeNormalize(Vector2.Zero);
 
@@ -47,14 +56,18 @@ public class GelBall : SlingshotAmmo
 				var normalDirII = Projectile.oldPos[i - 2] - Projectile.oldPos[i - 1];
 				normalDirII = Vector2.Normalize(new Vector2(-normalDirII.Y, normalDirII.X));
 				if (Vector2.Dot(normalDirII, normalDir) <= 0.965f)
+				{
 					MulColor = 0f;
+				}
 			}
 			if (i < Projectile.oldPos.Length - 1)
 			{
 				var normalDirII = Projectile.oldPos[i] - Projectile.oldPos[i + 1];
 				normalDirII = Vector2.Normalize(new Vector2(-normalDirII.Y, normalDirII.X));
 				if (Vector2.Dot(normalDirII, normalDir) <= 0.965f)
+				{
 					MulColor = 0f;
+				}
 			}
 
 			var factor = i / (float)TrueL;
@@ -64,7 +77,7 @@ public class GelBall : SlingshotAmmo
 
 			float fac1 = factor * 3 + (float)(-Main.timeForVisualEffects * 0.03) + 100000;
 			float fac2 = (i + 1) / (float)TrueL * 3 + (float)(-Main.timeForVisualEffects * 0.03) + 100000;
-			//TODO:925分钟之后会炸
+			// TODO:925分钟之后会炸
 
 			fac1 %= 1f;
 			fac2 %= 1f;
@@ -99,6 +112,7 @@ public class GelBall : SlingshotAmmo
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 	}
+
 	private void DrawShade()
 	{
 		var bars = new List<Vertex2D>();
@@ -108,7 +122,10 @@ public class GelBall : SlingshotAmmo
 			if (Projectile.oldPos[i] == Vector2.Zero)
 			{
 				if (i == 1)
+				{
 					return;
+				}
+
 				break;
 			}
 
@@ -118,11 +135,16 @@ public class GelBall : SlingshotAmmo
 		{
 			float MulColor = 1f;
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
 
 			float width = 4;
 			if (Projectile.timeLeft <= 30)
+			{
 				width *= Projectile.timeLeft / 30f;
+			}
+
 			var normalDir = Projectile.oldPos[i - 1] - Projectile.oldPos[i];
 			normalDir = new Vector2(-normalDir.Y, normalDir.X).SafeNormalize(Vector2.Zero);
 
@@ -131,14 +153,18 @@ public class GelBall : SlingshotAmmo
 				var normalDirII = Projectile.oldPos[i - 2] - Projectile.oldPos[i - 1];
 				normalDirII = Vector2.Normalize(new Vector2(-normalDirII.Y, normalDirII.X));
 				if (Vector2.Dot(normalDirII, normalDir) <= 0.965f)
+				{
 					MulColor = 0f;
+				}
 			}
 			if (i < Projectile.oldPos.Length - 1)
 			{
 				var normalDirII = Projectile.oldPos[i] - Projectile.oldPos[i + 1];
 				normalDirII = Vector2.Normalize(new Vector2(-normalDirII.Y, normalDirII.X));
 				if (Vector2.Dot(normalDirII, normalDir) <= 0.965f)
+				{
 					MulColor = 0f;
+				}
 			}
 
 			var factor = i / (float)TrueL;
@@ -179,6 +205,7 @@ public class GelBall : SlingshotAmmo
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 	}
+
 	public override void AmmoHit()
 	{
 		SoundEngine.PlaySound(SoundID.Drip, Projectile.Center);
@@ -190,6 +217,7 @@ public class GelBall : SlingshotAmmo
 			d.velocity = new Vector2(0, Main.rand.NextFloat(Main.rand.NextFloat(1f, 2f), 4f)).RotatedByRandom(6.283) * Power;
 		}
 	}
+
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
 		Projectile.penetrate--;
@@ -197,14 +225,20 @@ public class GelBall : SlingshotAmmo
 		if (Projectile.penetrate >= 2)
 		{
 			if (Projectile.velocity.X != oldVelocity.X)
+			{
 				Projectile.velocity.X = -oldVelocity.X;
+			}
+
 			if (Projectile.velocity.Y != oldVelocity.Y)
+			{
 				Projectile.velocity.Y = -oldVelocity.Y;
+			}
+
 			Projectile.velocity *= 0.98f;
 		}
 		if (Projectile.penetrate < 2)
 		{
-			TimeTokill = 30;
+			timeTokill = 30;
 			Projectile.velocity *= 0;
 			Projectile.tileCollide = false;
 		}

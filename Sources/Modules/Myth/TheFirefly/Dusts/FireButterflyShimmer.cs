@@ -50,7 +50,10 @@ public class FireButterflyShimmer : ModDust
 		dust.scale *= 0.98f;
 		dust.velocity *= 0.94f;
 		if (dust.scale < 0.05f)
+		{
 			dust.active = false;
+		}
+
 		return false;
 	}
 

@@ -23,14 +23,18 @@ public class GoldShield : ModProjectile, IWarpProjectile
 		Projectile.timeLeft = 1200;
 		Projectile.penetrate = -1;
 	}
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		base.OnSpawn(source);
 	}
+
 	public static Texture2D ShieldTexture;
-	private RenderTarget2D BlackAreaSwap;
-	private RenderTarget2D BlackAreaOrig;
+	private RenderTarget2D blackAreaSwap;
+	private RenderTarget2D blackAreaOrig;
+
 	public Vector2 DrawSize => new Vector2(240, 200);
+
 	public override void Load()
 	{
 		if (Main.netMode != NetmodeID.Server)
@@ -42,19 +46,20 @@ public class GoldShield : ModProjectile, IWarpProjectile
 			});
 			Ins.HookManager.AddHook(CodeLayer.ResolutionChanged, (Vector2 size) =>
 			{
-				BlackAreaSwap?.Dispose();
-				BlackAreaOrig?.Dispose();
+				blackAreaSwap?.Dispose();
+				blackAreaOrig?.Dispose();
 				AllocateRenderTarget(size);
 			}, "Realloc RenderTarget");
 		}
 	}
+
 	private void AllocateRenderTarget(Vector2 size)
 	{
 		if (Ins.VisualQuality.High)
 		{
 			var gd = Main.instance.GraphicsDevice;
-			BlackAreaSwap = new RenderTarget2D(gd, (int)size.X, (int)size.Y);
-			BlackAreaOrig = new RenderTarget2D(gd, Main.screenWidth, Main.screenHeight);
+			blackAreaSwap = new RenderTarget2D(gd, (int)size.X, (int)size.Y);
+			blackAreaOrig = new RenderTarget2D(gd, Main.screenWidth, Main.screenHeight);
 		}
 	}
 
@@ -70,7 +75,7 @@ public class GoldShield : ModProjectile, IWarpProjectile
 
 		sb.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 
-		gd.SetRenderTarget(BlackAreaSwap);
+		gd.SetRenderTarget(blackAreaSwap);
 		gd.Clear(Color.Transparent);
 
 		var projection = Matrix.CreateOrthographicOffCenter(0, DrawSize.X, DrawSize.Y, 0, 0, 1);
@@ -78,7 +83,7 @@ public class GoldShield : ModProjectile, IWarpProjectile
 		Effect effect = ModAsset.Null.Value;
 		effect.Parameters["uTransform"].SetValue(model * projection);
 		effect.CurrentTechnique.Passes[0].Apply();
-		//花纹
+		// 花纹
 		float timeValue = (float)Main.time * 0.006f;
 		Texture2D texPiece = ModAsset.GoldShieldScale_dark.Value;
 		Vector2 drawPos = DrawSize / 2f;
@@ -94,10 +99,10 @@ public class GoldShield : ModProjectile, IWarpProjectile
 			sb.Draw(texPiece, drawPos + new Vector2((i + 0.5f) * 120 / count, MathF.Sin((i / count - 0.25f) * MathF.PI) * 80), null, Color.White, 0, texPiece.Size() / 2f, new Vector2(phi2, phi2 * 3f), SpriteEffects.None, 0);
 			sb.Draw(texPiece, drawPos + new Vector2((i + 0.5f) * 120 / count, MathF.Sin((i / count + 0.75f) * MathF.PI) * 80), null, Color.White, 0, texPiece.Size() / 2f, new Vector2(phi, phi * 3f), SpriteEffects.None, 0);
 		}
-		ShieldTexture = BlackAreaSwap;
+		ShieldTexture = blackAreaSwap;
 		sb.End();
 
-		gd.SetRenderTarget(BlackAreaOrig);
+		gd.SetRenderTarget(blackAreaOrig);
 		gd.Clear(Color.Transparent);
 		sb.Begin(SpriteSortMode.Immediate, BlendState.Opaque, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Matrix.Invert(Main.GameViewMatrix.TransformationMatrix)/*我不知道为什么,乘一个矩阵的逆就好了*/);
 
@@ -108,34 +113,36 @@ public class GoldShield : ModProjectile, IWarpProjectile
 		gd.Clear(Color.Transparent);
 		sb.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 
-		sb.Draw(BlackAreaOrig, Vector2.Zero, Color.White);
+		sb.Draw(blackAreaOrig, Vector2.Zero, Color.White);
 		sb.End();
 	}
+
 	public void DrawWarp(VFXBatch spriteBatch)
 	{
-		//float WaveRange = 0.7f;
+		// float WaveRange = 0.7f;
 		////Texture2D BackG = ModContent.Request<Texture2D>("Everglow/MEAC/NonTrueMeleeProj/Black").Value;
 
-		//float k0 = (float)Math.Sqrt(1200 - Projectile.timeLeft) / 6f;//画方波
-		//if (k0 is < 1 and > 0)
-		//{
-		//	k0 = Math.Max(k0 - 0.025f, 0);
-		//	float k1 = 1 - k0;
-		//	float k2 = k1 * k1;
-		//	float k3 = (float)Math.Sqrt(k1);
-		//	Vector2 DrawCen = Projectile.Center - Main.screenPosition;
+		// float k0 = (float)Math.Sqrt(1200 - Projectile.timeLeft) / 6f;//画方波
+		// if (k0 is < 1 and > 0)
+		// {
+		// k0 = Math.Max(k0 - 0.025f, 0);
+		// float k1 = 1 - k0;
+		// float k2 = k1 * k1;
+		// float k3 = (float)Math.Sqrt(k1);
+		// Vector2 DrawCen = Projectile.Center - Main.screenPosition;
 
-		//	DrawDoubleLine(spriteBatch, DrawCen + new Vector2(0, -k0 * 150) * WaveRange, DrawCen + new Vector2(k0 * 75, -k0 * 75) * WaveRange, new Color(1f * k3, 0.6f * k3, 0f, 0f), new Color(1f * k2, 0.7f * k2, 0f, 0f));
-		//	DrawDoubleLine(spriteBatch, DrawCen + new Vector2(k0 * 75, -k0 * 75) * WaveRange, DrawCen + new Vector2(k0 * 150, 0) * WaveRange, new Color(1f * k2, 0.7f * k2, 0f, 0f), new Color(1f * k3, 0.6f * k3, 0f, 0f));
-		//	DrawDoubleLine(spriteBatch, DrawCen + new Vector2(0, -k0 * 150) * WaveRange, DrawCen + new Vector2(-k0 * 75, -k0 * 75) * WaveRange, new Color(1f * k3, 0.6f * k3, 0f, 0f), new Color(1f * k2, 0.7f * k2, 0f, 0f));
-		//	DrawDoubleLine(spriteBatch, DrawCen + new Vector2(-k0 * 75, -k0 * 75) * WaveRange, DrawCen + new Vector2(-k0 * 150, 0) * WaveRange, new Color(1f * k2, 0.7f * k2, 0f, 0f), new Color(1f * k3, 0.6f * k3, 0f, 0f));
+		// DrawDoubleLine(spriteBatch, DrawCen + new Vector2(0, -k0 * 150) * WaveRange, DrawCen + new Vector2(k0 * 75, -k0 * 75) * WaveRange, new Color(1f * k3, 0.6f * k3, 0f, 0f), new Color(1f * k2, 0.7f * k2, 0f, 0f));
+		// DrawDoubleLine(spriteBatch, DrawCen + new Vector2(k0 * 75, -k0 * 75) * WaveRange, DrawCen + new Vector2(k0 * 150, 0) * WaveRange, new Color(1f * k2, 0.7f * k2, 0f, 0f), new Color(1f * k3, 0.6f * k3, 0f, 0f));
+		// DrawDoubleLine(spriteBatch, DrawCen + new Vector2(0, -k0 * 150) * WaveRange, DrawCen + new Vector2(-k0 * 75, -k0 * 75) * WaveRange, new Color(1f * k3, 0.6f * k3, 0f, 0f), new Color(1f * k2, 0.7f * k2, 0f, 0f));
+		// DrawDoubleLine(spriteBatch, DrawCen + new Vector2(-k0 * 75, -k0 * 75) * WaveRange, DrawCen + new Vector2(-k0 * 150, 0) * WaveRange, new Color(1f * k2, 0.7f * k2, 0f, 0f), new Color(1f * k3, 0.6f * k3, 0f, 0f));
 
-		//	DrawDoubleLine(spriteBatch, DrawCen + new Vector2(0, k0 * 150) * WaveRange, DrawCen + new Vector2(k0 * 75, k0 * 75) * WaveRange, new Color(1f * k3, 0.6f * k3, 0f, 0f), new Color(1f * k2, 0.7f * k2, 0f, 0f));
-		//	DrawDoubleLine(spriteBatch, DrawCen + new Vector2(k0 * 75, k0 * 75) * WaveRange, DrawCen + new Vector2(k0 * 150, 0) * WaveRange, new Color(1f * k2, 0.7f * k2, 0f, 0f), new Color(1f * k3, 0.6f * k3, 0f, 0f));
-		//	DrawDoubleLine(spriteBatch, DrawCen + new Vector2(0, k0 * 150) * WaveRange, DrawCen + new Vector2(-k0 * 75, k0 * 75) * WaveRange, new Color(1f * k3, 0.6f * k3, 0f, 0f), new Color(1f * k2, 0.7f * k2, 0f, 0f));
-		//	DrawDoubleLine(spriteBatch, DrawCen + new Vector2(-k0 * 75, k0 * 75) * WaveRange, DrawCen + new Vector2(-k0 * 150, 0) * WaveRange, new Color(1f * k2, 0.7f * k2, 0f, 0f), new Color(1f * k3, 0.6f * k3, 0f, 0f));
-		//}
+		// DrawDoubleLine(spriteBatch, DrawCen + new Vector2(0, k0 * 150) * WaveRange, DrawCen + new Vector2(k0 * 75, k0 * 75) * WaveRange, new Color(1f * k3, 0.6f * k3, 0f, 0f), new Color(1f * k2, 0.7f * k2, 0f, 0f));
+		// DrawDoubleLine(spriteBatch, DrawCen + new Vector2(k0 * 75, k0 * 75) * WaveRange, DrawCen + new Vector2(k0 * 150, 0) * WaveRange, new Color(1f * k2, 0.7f * k2, 0f, 0f), new Color(1f * k3, 0.6f * k3, 0f, 0f));
+		// DrawDoubleLine(spriteBatch, DrawCen + new Vector2(0, k0 * 150) * WaveRange, DrawCen + new Vector2(-k0 * 75, k0 * 75) * WaveRange, new Color(1f * k3, 0.6f * k3, 0f, 0f), new Color(1f * k2, 0.7f * k2, 0f, 0f));
+		// DrawDoubleLine(spriteBatch, DrawCen + new Vector2(-k0 * 75, k0 * 75) * WaveRange, DrawCen + new Vector2(-k0 * 150, 0) * WaveRange, new Color(1f * k2, 0.7f * k2, 0f, 0f), new Color(1f * k3, 0.6f * k3, 0f, 0f));
+		// }
 	}
+
 	public void DrawDoubleLine(VFXBatch spriteBatch, Vector2 StartPos, Vector2 EndPos, Color color1, Color color2)
 	{
 		Vector2 DrawCen = Projectile.Center - Main.screenPosition;
@@ -157,6 +164,7 @@ public class GoldShield : ModProjectile, IWarpProjectile
 
 		spriteBatch.Draw(TextureAssets.MagicPixel.Value, vertex2Ds, PrimitiveType.TriangleList);
 	}
+
 	public void DrawDoubleLine(Vector2 StartPos, Vector2 EndPos, Color color1, Color color2)
 	{
 		float timeValue = (Projectile.timeLeft - 1170) / 2f;
@@ -169,10 +177,10 @@ public class GoldShield : ModProjectile, IWarpProjectile
 		vertex2Ds.Add(new Vertex2D(EndPos + width, color2, new Vector3(0, 0, 0)));
 		vertex2Ds.Add(new Vertex2D(EndPos - width, color2, new Vector3(0, 0, 0)));
 
-
 		Main.graphics.GraphicsDevice.Textures[0] = TextureAssets.MagicPixel.Value;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, vertex2Ds.ToArray(), 0, vertex2Ds.Count - 2);
 	}
+
 	public void DrawPost(Color color, int widthCount, float halfHeight, float initialPhase, Texture2D texture, Texture2D texture1 = null)
 	{
 		var vertex2Ds = new List<Vertex2D>();
@@ -193,7 +201,6 @@ public class GoldShield : ModProjectile, IWarpProjectile
 			const float scale = 0.19f;
 			const float frequency = 0.3f;
 
-
 			vertex2Ds.Add(new Vertex2D(DrawCen + new Vector2(x * scale - 0.5f, halfHeight), color, new Vector3(r1 * frequency, 1, 0)));
 			vertex2Ds.Add(new Vertex2D(DrawCen + new Vector2(x * scale + 0.5f, halfHeight), color, new Vector3(r2 * frequency, 1, 0)));
 			vertex2Ds.Add(new Vertex2D(DrawCen + new Vector2(x * scale + 0.5f, -halfHeight), color, new Vector3(r2 * frequency, 0, 0)));
@@ -211,12 +218,15 @@ public class GoldShield : ModProjectile, IWarpProjectile
 		}
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, vertex2Ds.ToArray(), 0, vertex2Ds.Count / 3);
 	}
+
 	public static int ProjectileCount = 0;
+
 	public override bool PreAI()
 	{
 		ProjectileCount = 0;
 		return base.PreAI();
 	}
+
 	public override void AI()
 	{
 		ProjectileCount++;
@@ -232,16 +242,18 @@ public class GoldShield : ModProjectile, IWarpProjectile
 		Projectile.hide = true;
 		Lighting.AddLight((int)(Projectile.Center.X / 16), (int)(Projectile.Center.Y / 16), 0.8f, 0.6f, 0);
 	}
+
 	public override void OnKill(int timeLeft)
 	{
 		ProjectileCount--;
 		base.OnKill(timeLeft);
 	}
+
 	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
 	{
 		overPlayers.Add(index);
-
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D tex = TextureAssets.Projectile[Projectile.type].Value;
@@ -252,9 +264,10 @@ public class GoldShield : ModProjectile, IWarpProjectile
 		if (Projectile.ai[0] > 0)
 		{
 			if (Projectile.ai[0] < 10)
+			{
 				glowStrength2 = (float)(-Math.Cos(Projectile.ai[0] / 5d * Math.PI) + 1) * 120f;
+			}
 		}
-
 
 		if (LeftTime < 10)
 		{
@@ -273,7 +286,7 @@ public class GoldShield : ModProjectile, IWarpProjectile
 		{
 			glowStrength = (float)(-Math.Cos((Projectile.timeLeft + 75) / 30d * Math.PI) + 1) * 120f;
 		}
-		if (glowStrength + glowStrength2 > 0)//光效
+		if (glowStrength + glowStrength2 > 0)// 光效
 		{
 			for (int x = 0; x < glowStrength + glowStrength2; x++)
 			{
@@ -346,7 +359,7 @@ public class GoldShield : ModProjectile, IWarpProjectile
 
 		float WaveRange = 0.7f;
 
-		float k0 = (float)Math.Sqrt(1200 - Projectile.timeLeft) / 6f;//画方波
+		float k0 = (float)Math.Sqrt(1200 - Projectile.timeLeft) / 6f; // 画方波
 		if (k0 is < 1 and > 0)
 		{
 			k0 = Math.Max(k0 - 0.025f, 0);
@@ -354,7 +367,6 @@ public class GoldShield : ModProjectile, IWarpProjectile
 			float k2 = k1 * k1;
 			float k3 = (float)Math.Sqrt(k1);
 			Vector2 DrawCen = Projectile.Center - Main.screenPosition;
-
 
 			Main.spriteBatch.End();
 			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
@@ -377,7 +389,6 @@ public class GoldShield : ModProjectile, IWarpProjectile
 
 			Main.spriteBatch.End();
 			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-
 
 			DrawDoubleLine(DrawCen + new Vector2(0, -k0 * 120) * WaveRange + new Vector2(timeValueOfWidth), DrawCen + new Vector2(k0 * 60, -k0 * 60) * WaveRange, publicC3, publicC4);
 			DrawDoubleLine(DrawCen + new Vector2(k0 * 60, -k0 * 60) * WaveRange, DrawCen + new Vector2(k0 * 120, 0) * WaveRange + new Vector2(timeValueOfWidth), publicC4, publicC3);
@@ -402,12 +413,12 @@ public class GoldShieldUIDrawer : ModSystem
 		int ShieldBarIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Resource Bars"));
 		if (ShieldBarIndex != -1)
 		{
-			
+
 			layers.Insert(ShieldBarIndex, new LegacyGameInterfaceLayer(
 				"EverglowMod: Shield Bar",
 				delegate
 				{
-					
+
 					ShieldBarDraw(Main.spriteBatch);
 					return true;
 				},
@@ -421,15 +432,13 @@ public class GoldShieldUIDrawer : ModSystem
 	{
 		ShieldBarDraw(Main.spriteBatch);
 	}
+
 	public void ShieldBarDraw(SpriteBatch spriteBatch)
 	{
-
 		Player p = Main.LocalPlayer;
 
 		if (p.GetModPlayer<GoldShieldPlayer>().HasShield)
 		{
-
-
 			if (Main.ResourceSetsManager.ActiveSet.DisplayedName == Language.GetTextValue("UI.HealthManaStyle_Default"))
 			{
 				p.GetModPlayer<GoldShieldPlayer>().ClassicDraw();
@@ -459,7 +468,6 @@ public class GoldShieldUIDrawer : ModSystem
 
 	public class GoldShieldPlayer : ModPlayer
 	{
-
 		public float GoldShieldDurability;
 		public bool Dodge;
 		public bool HasShield;
@@ -482,7 +490,7 @@ public class GoldShieldUIDrawer : ModSystem
 				{
 					HasShield = true;
 					GoldShieldDurability = proj.ai[1];
-					//		GoldShieldDurability -= 0.1f;
+					// GoldShieldDurability -= 0.1f;
 					if (GoldShieldDurability <= 0)
 					{
 						GoldShieldDurability = 0;
@@ -497,14 +505,17 @@ public class GoldShieldUIDrawer : ModSystem
 				}
 			}
 		}
+
 		public override void PreUpdate()
 		{
 			ShieldDuration();
 		}
+
 		public override void PostUpdate()
 		{
 			ShieldDuration();
 		}
+
 		public void PreHurt(ref Player.HurtInfo info)
 		{
 			bool shieldsTookHit = false;
@@ -512,7 +523,6 @@ public class GoldShieldUIDrawer : ModSystem
 			{
 				if (HasShield)
 				{
-
 					GoldShieldDurability = (int)proj.ai[1];
 					if (GoldShieldDurability >= info.Damage)
 					{
@@ -545,6 +555,7 @@ public class GoldShieldUIDrawer : ModSystem
 				}
 			}
 		}
+
 		public override void ModifyHurt(ref Player.HurtModifiers modifiers)
 		{
 			modifiers.ModifyHurtInfo += new Player.HurtModifiers.HurtInfoModifier(this.PreHurt);
@@ -555,22 +566,19 @@ public class GoldShieldUIDrawer : ModSystem
 			}
 		}
 
-
-		int _lastHeartPanelIndex;
-		float _currentPlayerLife;
-		float _lifePerHeart;
-		int _playerLifeFruitCount;
-		int _lastHeartFillingIndex;
-		int _heartCountRow1;
-		int _heartCountRow2;
-		bool _drawText;
+		private int _lastHeartPanelIndex;
+		private float _currentPlayerLife;
+		private float _lifePerHeart;
+		private int _playerLifeFruitCount;
+		private int _lastHeartFillingIndex;
+		private int _heartCountRow1;
+		private int _heartCountRow2;
+		private bool _drawText;
 
 		#region ClassicDraw
 
 		public void ClassicDraw()
 		{
-
-
 			SpriteBatch spriteBatch = Main.spriteBatch;
 			Color color = new Color(Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor);
 			PlayerStatsSnapshot snapshot = new PlayerStatsSnapshot(Player);
@@ -578,7 +586,9 @@ public class GoldShieldUIDrawer : ModSystem
 
 			ing.UI_ScreenAnchorX = Main.screenWidth - 800;
 			if (Player.ghost || Player.statLifeMax2 <= 0 || snapshot.AmountOfLifeHearts <= 0)
+			{
 				return;
+			}
 
 			int MaxGoldShieldDurability;
 			MaxGoldShieldDurability = (int)(Player.statLifeMax * 0.6f);
@@ -599,8 +609,6 @@ public class GoldShieldUIDrawer : ModSystem
 					spriteBatch.DrawString(FontAssets.MouseText.Value, ((int)GoldShieldDurability+1) + "/" + MaxGoldShieldDurability, new Vector2((float)(500 + 13 * num4) + vector.X * 0.5f + Main.screenWidth - 800, 6f), color, 0f, new Vector2(FontAssets.MouseText.Value.MeasureString(Player.statLife + "/" + Player.statLifeMax2).X, 0f), 1f, SpriteEffects.None, 0f);
 				}*/
 
-
-
 			for (int i = 1; i < (int)((float)MaxGoldShieldDurability / UIDisplay_ShieldOnHeart) + 1; i++)
 			{
 				int num5 = 255;
@@ -610,25 +618,35 @@ public class GoldShieldUIDrawer : ModSystem
 				{
 					num5 = 255;
 					if ((float)GoldShieldDurability == (float)i * UIDisplay_ShieldOnHeart)
+					{
 						flag = true;
+					}
 				}
 				else
 				{
 					float num7 = ((float)GoldShieldDurability - (float)(i - 1) * UIDisplay_ShieldOnHeart) / UIDisplay_ShieldOnHeart;
 					num5 = (int)(30f + 225f * num7);
 					if (num5 < 30)
+					{
 						num5 = 30;
+					}
 
 					num6 = num7 / 4f + 0.75f;
 					if ((double)num6 < 0.75)
+					{
 						num6 = 0.75f;
+					}
 
 					if (num7 > 0f)
+					{
 						flag = true;
+					}
 				}
 
 				if (flag)
+				{
 					num6 += Main.cursorScale - 1f;
+				}
 
 				int num8 = 0;
 				int num9 = 0;
@@ -638,13 +656,10 @@ public class GoldShieldUIDrawer : ModSystem
 					num9 += 26;
 				}
 
-
-
 				int a = (int)((double)num5 * 0.9);
 				if (!Player.ghost)
 				{
 					var heartTexture = ModAsset.ShieldHeart;
-
 
 					float num2 = 1f / (float)HeartsNum;
 					float _hpPercent = (float)GoldShieldDurability / MaxGoldShieldDurability;
@@ -659,7 +674,6 @@ public class GoldShieldUIDrawer : ModSystem
 
 					value.Width -= num3;
 
-
 					Vector2 position = new Vector2(Main.screenWidth - 312 + 26 * (i - 1) + num8 + UIDisplay_ShieldOnHeart + heartTexture.Width() / 2, 32f + heartTexture.Height() * (1 - num6) / 2f + num9 + heartTexture.Height() / 2);
 
 					ResourceOverlayDrawContext drawContext = new ResourceOverlayDrawContext(snapshot, ing, i - 1, heartTexture)
@@ -668,26 +682,19 @@ public class GoldShieldUIDrawer : ModSystem
 						source = value,
 						color = new Color(num5, num5, num5, a),
 						origin = heartTexture.Size() / 2f,
-						scale = new Vector2(num6)
+						scale = new Vector2(num6),
 					};
 					ResourceOverlayLoader.DrawResource(drawContext);
 				}
 			}
-
 		}
-
-
-
 
 		#endregion
 
 		#region FancyDraw
 
-
-
 		public void FancyDraw(FancyClassicPlayerResourcesDisplaySet Displayset)
 		{
-
 			SpriteBatch spriteBatch = Main.spriteBatch;
 			PlayerStatsSnapshot playerStatsSnapshot = new PlayerStatsSnapshot(Player);
 			int MaxGoldShieldDurability;
@@ -718,15 +725,17 @@ public class GoldShieldUIDrawer : ModSystem
 			ResourceDrawSettings defaultResourceDrawSettings = default;
 			defaultResourceDrawSettings.StatsSnapshot = preparedSnapshot;
 			defaultResourceDrawSettings.DisplaySet = Displayset;
-			;
-
 
 			Color color = new Color(Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor);
 
 			if (Displayset.ConfigKey == "NewWithText")
+			{
 				_drawText = true;
+			}
 			else
+			{
 				_drawText = false;
+			}
 
 			Vector2 vector = new Vector2(Main.screenWidth - 300 + 4, 15f);
 			if (_drawText)
@@ -760,8 +769,6 @@ public class GoldShieldUIDrawer : ModSystem
 
 		private void HeartFillingDrawer(int elementIndex, int firstElementIndex, int lastElementIndex, out Asset<Texture2D> sprite, out Vector2 offset, out float drawScale, out Rectangle? sourceRect)
 		{
-
-
 			sourceRect = null;
 			offset = Vector2.Zero;
 			sprite = ModAsset.ShieldHeart;
@@ -799,10 +806,7 @@ public class GoldShieldUIDrawer : ModSystem
 		#region HorizontalDraw
 		public void HorizontalDraw(HorizontalBarsPlayerResourcesDisplaySet Displayset)
 		{
-
-
 			Asset<Texture2D> _panelMiddleHP = Main.Assets.Request<Texture2D>("Images\\UI\\PlayerResourceSets\\HorizontalBars\\HP_Panel_Middle", AssetRequestMode.ImmediateLoad);
-
 
 			PlayerStatsSnapshot playerStatsSnapshot = new PlayerStatsSnapshot(Player);
 
@@ -816,11 +820,17 @@ public class GoldShieldUIDrawer : ModSystem
 			MaxGoldShieldDurability = (int)(Player.statLifeMax * 0.6f);
 
 			if (Displayset.ConfigKey == "HorizontalBarsWithFullText")
+			{
 				_drawTextStyle = 2;
+			}
 			else if (Displayset.ConfigKey == "HorizontalBarsWithText")
+			{
 				_drawTextStyle = 1;
+			}
 			else
+			{
 				_drawTextStyle = 0;
+			}
 
 			int HeartsNum = playerStatsSnapshot.AmountOfLifeHearts;
 
@@ -836,7 +846,6 @@ public class GoldShieldUIDrawer : ModSystem
 			if (_drawTextStyle == 2)
 			{
 				num2 += 2;
-
 			}
 			else if (_drawTextStyle == 1)
 			{
@@ -845,12 +854,10 @@ public class GoldShieldUIDrawer : ModSystem
 
 			Color color = new Color(Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor);
 
-
 			Vector2 vector = new Vector2(num3, num2);
 			vector.X += (_maxSegmentCount - HeartsNum) * _panelMiddleHP.Width();
 			bool isHovered = false;
 			ResourceDrawSettings resourceDrawSettings = default(ResourceDrawSettings);
-
 
 			resourceDrawSettings = default(ResourceDrawSettings);
 			resourceDrawSettings.ElementCount = HeartsNum;
@@ -865,10 +872,7 @@ public class GoldShieldUIDrawer : ModSystem
 			resourceDrawSettings.StatsSnapshot = preparedSnapshot;
 			resourceDrawSettings.DisplaySet = Displayset;
 			resourceDrawSettings.Draw(spriteBatch, ref isHovered);
-
-
 		}
-
 
 		private void LifeFillingDrawer(int elementIndex, int firstElementIndex, int lastElementIndex, out Asset<Texture2D> sprite, out Vector2 offset, out float drawScale, out Rectangle? sourceRect)
 		{
@@ -879,7 +883,6 @@ public class GoldShieldUIDrawer : ModSystem
 			int MaxGoldShieldDurability;
 			MaxGoldShieldDurability = (int)(Player.statLifeMax * 0.6f);
 			float _hpPercent = (float)GoldShieldDurability / MaxGoldShieldDurability;
-
 
 			FillBarByValues(elementIndex, sprite, HeartsNum, _hpPercent, out offset, out drawScale, out sourceRect);
 
@@ -916,7 +919,6 @@ public class GoldShieldUIDrawer : ModSystem
 		}
 
 		#endregion HorizontalDraw
-
 
 	}
 }

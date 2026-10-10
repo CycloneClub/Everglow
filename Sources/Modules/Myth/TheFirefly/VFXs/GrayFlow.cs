@@ -5,15 +5,20 @@ namespace Everglow.Myth.TheFirefly.VFXs;
 internal abstract class ShaderDraw : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
+
 	public Vector2 position;
 	public Vector2 velocity;
 	public float[] ai;
-	public ShaderDraw() { }
+
+	public ShaderDraw()
+	{
+	}
+
 	public ShaderDraw(Vector2 position, Vector2 velocity, params float[] ai)
 	{
 		this.position = position;
 		this.velocity = velocity;
-		this.ai = ai;//可以认为params传入的都是右值，可以直接引用
+		this.ai = ai; // 可以认为params传入的都是右值，可以直接引用
 	}
 }
 
@@ -24,6 +29,7 @@ internal class GrayFlowPipeline : Pipeline
 		effect = ModContent.Request<Effect>("Everglow/Myth/TheFirefly/VFXs/GrayFlow", AssetRequestMode.ImmediateLoad);
 		effect.Value.Parameters["uNoise"].SetValue(ModContent.Request<Texture2D>("Everglow/Example/VFX/Perlin", AssetRequestMode.ImmediateLoad).Value);
 	}
+
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
@@ -42,6 +48,7 @@ internal class GrayFlowPipeline : Pipeline
 		Ins.Batch.End();
 	}
 }
+
 [Pipeline(typeof(GrayFlowPipeline), typeof(BloomPipeline))]
 internal class GrayFlowLine : ShaderDraw
 {
@@ -49,8 +56,13 @@ internal class GrayFlowLine : ShaderDraw
 	public List<Vector2> oldPos = new List<Vector2>();
 	public float timer;
 	public float maxTime;
-	public GrayFlowLine() { }
-	public GrayFlowLine(int maxTime, Vector2 position, Vector2 velocity, params float[] ai) : base(position, velocity, ai)
+
+	public GrayFlowLine()
+	{
+	}
+
+	public GrayFlowLine(int maxTime, Vector2 position, Vector2 velocity, params float[] ai)
+		: base(position, velocity, ai)
 	{
 		this.maxTime = maxTime;
 	}
@@ -59,13 +71,16 @@ internal class GrayFlowLine : ShaderDraw
 	{
 		position += velocity;
 		oldPos.Add(position);
-		float removePosition = (maxTime - timer);
+		float removePosition = maxTime - timer;
 		if (removePosition > 15)
 		{
 			removePosition = 15;
 		}
 		if (oldPos.Count > removePosition)
+		{
 			oldPos.RemoveAt(0);
+		}
+
 		if (velocity.Length() > 4f)
 		{
 			velocity *= 0.93f;
@@ -80,22 +95,29 @@ internal class GrayFlowLine : ShaderDraw
 		}
 		else
 		{
-			ai[1] += MathF.Sin((float)(Main.time) * 0.1f + ai[0] * 100) * 0.01f * ai[0];
+			ai[1] += MathF.Sin((float)Main.time * 0.1f + ai[0] * 100) * 0.01f * ai[0];
 		}
 		timer++;
 		if (timer > maxTime)
+		{
 			ai[2] *= 0.95f;
+		}
+
 		velocity = velocity.RotatedBy(ai[1]);
 
 		for (int f = oldPos.Count - 1; f > 0; f--)
 		{
 			if (oldPos[f] != Vector2.Zero)
+			{
 				oldPos[f] += vsadd;
+			}
 		}
 		float delC = ai[2] * 0.05f * (float)Math.Sin((maxTime - timer) / 40d * Math.PI);
 		Lighting.AddLight((int)(position.X / 16), (int)(position.Y / 16), 0.45f * delC, 0.85f * delC, 0f);
 		if (ai[2] < 0.01)
+		{
 			Active = false;
+		}
 	}
 
 	public override void Draw()
@@ -104,7 +126,10 @@ internal class GrayFlowLine : ShaderDraw
 		float fx = timer / maxTime;
 		int len = pos.Length;
 		if (len <= 2)
+		{
 			return;
+		}
+
 		var bars = new Vertex2D[len * 2 - 1];
 		for (int i = 1; i < len; i++)
 		{

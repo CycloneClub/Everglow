@@ -3,7 +3,7 @@ using Everglow.EternalResolve.Projectiles;
 
 namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords
 {
-	//TODO:翻译：拐剑\n第一次命中敌人后如果暴击则造成270%的伤害\n特务使用的武器，非常适合暗杀
+	// TODO:翻译：拐剑\n第一次命中敌人后如果暴击则造成270%的伤害\n特务使用的武器，非常适合暗杀
 	public class CrutchBayonet : StabbingSwordItem
 	{
 		public override void SetDefaults()

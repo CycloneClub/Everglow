@@ -27,8 +27,8 @@ public class GeometryBuffer
 	public void Begin()
 	{
 		vertices.Clear();
-		//device.RasterizerState = new RasterizerState();
-		//device.BlendState = BlendState.AlphaBlend;
+		// device.RasterizerState = new RasterizerState();
+		// device.BlendState = BlendState.AlphaBlend;
 	}
 
 	public void Line(float x1, float y1, float x2, float y2, float z = 0f)
@@ -93,7 +93,9 @@ public class GeometryBuffer
 	public void Polygon(float[] polygonVertices, int offset, int count, float z = 0f)
 	{
 		if (count < 3)
+		{
 			throw new ArgumentException("Polygon must contain at least 3 vertices");
+		}
 
 		offset <<= 1;
 

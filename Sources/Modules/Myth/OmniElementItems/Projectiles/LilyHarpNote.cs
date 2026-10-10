@@ -55,7 +55,9 @@ public class LilyHarpNote : ModProjectile
                 }*/
 			Projectile.friendly = true;
 			if (Main.mouseLeft)
+			{
 				Projectile.velocity = Vector2.Lerp(Projectile.velocity, Projectile.DirectionTo(Main.MouseWorld) * 15, 0.05f);
+			}
 		}
 		else
 		{
@@ -74,7 +76,9 @@ public class LilyHarpNote : ModProjectile
 				Vector2 v2 = Main.MouseWorld;
 
 				if (AimWhoAmI == -1)
+				{
 					AimWhoAmI = j;
+				}
 				else if ((v1 - v2).Length() < (Main.npc[j].Center - v2).Length())
 				{
 					AimWhoAmI = j;
@@ -89,7 +93,10 @@ public class LilyHarpNote : ModProjectile
 		Texture2D t = ModAsset.LilyHarpNote.Value;
 		SpriteEffects se = SpriteEffects.None;
 		if (Main.player[Projectile.owner].gravDir == -1)
+		{
 			se = SpriteEffects.FlipVertically;
+		}
+
 		Main.spriteBatch.Draw(t, Projectile.Center - Main.screenLastPosition, null, new Color(255, 255, 255, 120), Projectile.rotation, t.Size() / 2f, Projectile.scale, se, 0);
 		return false;
 	}

@@ -4,7 +4,7 @@ using Terraria.DataStructures;
 
 namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee.PrimordialJadeWinged_Spear;
 
-class XiaoHit : ModProjectile
+internal class XiaoHit : ModProjectile
 {
 	public override void SetDefaults()
 	{
@@ -19,10 +19,12 @@ class XiaoHit : ModProjectile
 		Projectile.tileCollide = false;
 		Projectile.extraUpdates = 3;
 	}
+
 	public override void AI()
 	{
 		Projectile.velocity *= 0;
 	}
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		for (int x = 0; x < 5; x++)
@@ -30,6 +32,7 @@ class XiaoHit : ModProjectile
 			GenerateVFX();
 		}
 	}
+
 	private void GenerateVFX()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -43,7 +46,7 @@ class XiaoHit : ModProjectile
 			Visible = true,
 			position = positionVFX,
 			maxTime = Main.rand.Next(17, 56),
-			ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.03f, 0.03f), Main.rand.NextFloat(18f, 30f) * Projectile.ai[0] }
+			ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.03f, 0.03f), Main.rand.NextFloat(18f, 30f) * Projectile.ai[0] },
 		};
 		Ins.VFXManager.Add(filthy);
 		var filthy2 = new FilthyLucreFlameDust
@@ -53,10 +56,11 @@ class XiaoHit : ModProjectile
 			Visible = true,
 			position = positionVFX,
 			maxTime = Main.rand.Next(17, 56),
-			ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.1f, 0.1f), Main.rand.NextFloat(18f, 30f) * Projectile.ai[0] }
+			ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.1f, 0.1f), Main.rand.NextFloat(18f, 30f) * Projectile.ai[0] },
 		};
 		Ins.VFXManager.Add(filthy2);
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;

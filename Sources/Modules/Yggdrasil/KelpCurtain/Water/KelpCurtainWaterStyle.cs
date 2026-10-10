@@ -9,7 +9,7 @@ public class KelpCurtainWaterStyle : ModWaterStyle
 
 	public override int GetSplashDust() => ModContent.DustType<KelpCurtainWater>();
 
-	public override int GetDropletGore() => base.Slot;
+	public override int GetDropletGore() => Slot;
 
 	public override void LightColorMultiplier(ref float r, ref float g, ref float b)
 	{

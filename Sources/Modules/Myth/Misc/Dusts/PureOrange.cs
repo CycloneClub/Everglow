@@ -9,6 +9,7 @@ public class PureOrange : ModDust
 		dust.scale *= 1f;
 		dust.alpha = 0;
 	}
+
 	public override bool Update(Dust dust)
 	{
 		dust.position += dust.velocity;
@@ -19,9 +20,13 @@ public class PureOrange : ModDust
 
 		Lighting.AddLight(dust.position, dust.scale * 0.32f, dust.scale * 0.2f, dust.scale * 0f);
 		if (dust.scale < 0.25f)
+		{
 			dust.active = false;
+		}
+
 		return false;
 	}
+
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		return new Color?(new Color(0.4f, 0.1f, 0, 0f));

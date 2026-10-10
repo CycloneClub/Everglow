@@ -20,7 +20,7 @@ public class ChineseStyleFloorLamp : ModTile
 			16,
 			16,
 			16,
-			16
+			16,
 		};
 		TileObjectData.newTile.CoordinateWidth = 48;
 		TileObjectData.newTile.Origin = new Point16(0, 5);
@@ -28,15 +28,20 @@ public class ChineseStyleFloorLamp : ModTile
 		DustType = DustID.DynastyWood;
 		AddMapEntry(new Color(135, 103, 90));
 	}
+
 	public override void NearbyEffects(int i, int j, bool closer)
 	{
 		if (Main.tile[i, j].TileFrameX < 40 && Main.tile[i, j].TileFrameY < 40)
+		{
 			Lighting.AddLight(new Vector2(i * 16, j * 16), new Vector3(1f, 0.8f, 0.5f));
+		}
 	}
+
 	public override void NumDust(int i, int j, bool fail, ref int num)
 	{
 		num = 0;
 	}
+
 	public override void HitWire(int i, int j)
 	{
 		int k = i;
@@ -45,13 +50,17 @@ public class ChineseStyleFloorLamp : ModTile
 			if (Main.tile[k, l].HasTile && Main.tile[k, l].TileType == Type)
 			{
 				if (Main.tile[k, l].TileFrameX < 40)
+				{
 					Main.tile[k, l].TileFrameX += 48;
+				}
 				else
 				{
 					Main.tile[k, l].TileFrameX -= 48;
 				}
 				if (Wiring.running)
+				{
 					Wiring.SkipWire(k, l);
+				}
 			}
 			else
 			{
@@ -63,13 +72,17 @@ public class ChineseStyleFloorLamp : ModTile
 			if (Main.tile[k, l].HasTile && Main.tile[k, l].TileType == Type)
 			{
 				if (Main.tile[k, l].TileFrameX < 40)
+				{
 					Main.tile[k, l].TileFrameX += 48;
+				}
 				else
 				{
 					Main.tile[k, l].TileFrameX -= 48;
 				}
 				if (Wiring.running)
+				{
 					Wiring.SkipWire(k, l);
+				}
 			}
 			else
 			{

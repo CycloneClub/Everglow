@@ -27,7 +27,11 @@ public abstract class Visual : IVisual
 		Active = false;
 	}
 
-	public virtual void OnSpawn() { }
+	public virtual void OnSpawn()
+	{
+	}
 
-	public virtual void Update() { }
+	public virtual void Update()
+	{
+	}
 }

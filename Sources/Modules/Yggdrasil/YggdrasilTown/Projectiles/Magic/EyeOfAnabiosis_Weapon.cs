@@ -209,7 +209,7 @@ public class EyeOfAnabiosis_Weapon : ModProjectile
 		var body_position_offset = new Vector2(Owner.direction * (body_texture.Width / 2 - 12), Owner.gravDir * (-body_texture.Height / 2 + 16)) * Projectile.scale;
 		var body_position = Projectile.Center - Main.screenPosition + body_position_offset;
 		var body_rotation = Owner.direction == 1 ? 0f : MathF.PI;
-		var body_effects = Owner.direction == 1 && Owner.gravDir == 1 || Owner.gravDir == -1 && Owner.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipVertically;
+		var body_effects = (Owner.direction == 1 && Owner.gravDir == 1) || (Owner.gravDir == -1 && Owner.direction == -1) ? SpriteEffects.None : SpriteEffects.FlipVertically;
 		var body_origin = body_texture.Size() / 2;
 
 		Main.spriteBatch.Draw(body_texture, body_position, null, lightColor, body_rotation, body_origin, Projectile.scale, body_effects, 0);
@@ -221,7 +221,7 @@ public class EyeOfAnabiosis_Weapon : ModProjectile
 		{
 			head_rotation += Suspension_Rotation; // 0.1f * (MathF.Sin((float)Main.timeForVisualEffects * 0.05f) + 0.75f) * Main.windSpeedCurrent + Owner.velocity.X * 0.1f;
 		}
-		var head_effects = Owner.direction == 1 && Owner.gravDir == 1 || Owner.gravDir == -1 && Owner.direction == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+		var head_effects = (Owner.direction == 1 && Owner.gravDir == 1) || (Owner.gravDir == -1 && Owner.direction == -1) ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 
 		var head_rope_texture = ModAsset.EyeOfAnabiosis_Rope.Value;
 		var head_rope_origin = new Vector2(head_rope_texture.Width / 2, 0);

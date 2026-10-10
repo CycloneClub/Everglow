@@ -6,11 +6,13 @@ namespace Everglow.Myth.TheFirefly.Buffs;
 public class ShadowPotionBuff : ModBuff
 {
 	internal int LightTime = 0;
-	Player player = Main.LocalPlayer;
+	private Player player = Main.LocalPlayer;
+
 	public override void SetStaticDefaults()
 	{
 		Main.buffNoSave[Type] = true;
 	}
+
 	public override void Update(Player player, ref int buffIndex)
 	{
 		Color playerLight = Lighting.GetColor((int)(player.Center.X / 16), (int)(player.Center.Y / 16));
@@ -47,7 +49,8 @@ public class ShadowPotionBuff : ModBuff
 			player.nightVision = true;
 		}
 		if (LightTime > 20)
-		{ LightTime = 20; }
-
+		{
+			LightTime = 20;
+		}
 	}
 }

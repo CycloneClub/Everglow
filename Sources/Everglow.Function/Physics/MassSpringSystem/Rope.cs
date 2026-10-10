@@ -11,7 +11,7 @@ public class Rope : IMassSpringMesh
 	/// <summary>
 	/// 自动生成一串由位置决定的绳子链
 	/// </summary>
-	/// <param name="positions"> </param>
+	/// <param name="count">绳子包含的质点数量，相邻质点之间各分配一个弹簧约束。</param>
 	private Rope(int count)
 	{
 		_masses = new Mass[count];
@@ -196,6 +196,7 @@ public class Rope : IMassSpringMesh
 	/// <param name="count">The number of masses.</param>
 	/// <param name="elasticity"></param>
 	/// <param name="mass">The weight of normal mass.</param>
+	/// <param name="springLength">Rest length of each spring between adjacent masses.</param>
 	/// <returns> </returns>
 	public static Rope Create_Fixed_StartPos(Vector2 start, int count, float elasticity, float mass, float springLength)
 	{

@@ -6,6 +6,7 @@ namespace Everglow.Ocean.Projectiles.Weapons;
 public class TsunamiShark_bullet : ModProjectile
 {
 	public override string Texture => "Everglow/Ocean/Projectiles/Weapons/TsunamiShark/TsunamiShark_proj";
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 10;
@@ -22,16 +23,24 @@ public class TsunamiShark_bullet : ModProjectile
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 30;
 	}
+
 	/// <summary>
 	/// 内部变量,别动
 	/// </summary>
 	internal int TimeTokill = -1;
+
 	public override void AI()
 	{
 		if (TimeTokill >= 0 && TimeTokill <= 2)
+		{
 			Projectile.Kill();
+		}
+
 		if (TimeTokill <= 15 && TimeTokill > 0)
+		{
 			Projectile.velocity = Projectile.oldVelocity;
+		}
+
 		TimeTokill--;
 		float valueLight = 0.4f;
 		if (TimeTokill >= 0)
@@ -46,15 +55,18 @@ public class TsunamiShark_bullet : ModProjectile
 		}
 		Lighting.AddLight(Projectile.Center, 0, valueLight * valueLight * 0.1f, valueLight);
 	}
+
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
 		AmmoHit();
 		return false;
 	}
+
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		AmmoHit();
 	}
+
 	public virtual void AmmoHit()
 	{
 		TimeTokill = 30;
@@ -77,6 +89,7 @@ public class TsunamiShark_bullet : ModProjectile
 		}
 		Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<TsunamiShark_bullet_hit>(), Projectile.damage, Projectile.knockBack);
 	}
+
 	public void GenerateVFXKill(int Frequency)
 	{
 		float mulVelocity = 1.5f;
@@ -90,7 +103,7 @@ public class TsunamiShark_bullet : ModProjectile
 				Visible = true,
 				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
 				maxTime = Main.rand.Next(12, 24),
-				ai = new float[] { Main.rand.NextFloat(0.0f, 0.23f), 0, Main.rand.NextFloat(2f, 4f) }
+				ai = new float[] { Main.rand.NextFloat(0.0f, 0.23f), 0, Main.rand.NextFloat(2f, 4f) },
 			};
 			Ins.VFXManager.Add(wave);
 		}
@@ -105,20 +118,23 @@ public class TsunamiShark_bullet : ModProjectile
 				Visible = true,
 				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
 				maxTime = Main.rand.Next(12, 24),
-				ai = new float[] { Main.rand.NextFloat(0.0f, 0.23f), 0, Main.rand.NextFloat(6f, 12f) }
+				ai = new float[] { Main.rand.NextFloat(0.0f, 0.23f), 0, Main.rand.NextFloat(6f, 12f) },
 			};
 			Ins.VFXManager.Add(wave);
 		}
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
 		DrawWaterDarkTrail();
 		DrawWaterTrail();
 	}
+
 	public void DrawWaterDarkTrail()
 	{
 		var bars = new List<Vertex2D>();
@@ -128,7 +144,10 @@ public class TsunamiShark_bullet : ModProjectile
 			if (Projectile.oldPos[i] == Vector2.Zero)
 			{
 				if (i == 1)
+				{
 					return;
+				}
+
 				break;
 			}
 
@@ -137,11 +156,16 @@ public class TsunamiShark_bullet : ModProjectile
 		for (int i = 1; i < TrueL; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
 
 			float width = 6;
 			if (Projectile.timeLeft <= 30)
+			{
 				width *= Projectile.timeLeft / 30f;
+			}
+
 			var normalDir = Projectile.oldPos[i - 1] - Projectile.oldPos[i];
 			normalDir = new Vector2(-normalDir.Y, normalDir.X).SafeNormalize(Vector2.Zero);
 
@@ -150,7 +174,6 @@ public class TsunamiShark_bullet : ModProjectile
 
 			bars.Add(new Vertex2D(Projectile.oldPos[i] + normalDir * -width + new Vector2(5) - Main.screenPosition, color, new Vector3(factor, 0, 0)));
 			bars.Add(new Vertex2D(Projectile.oldPos[i] + normalDir * width + new Vector2(5) - Main.screenPosition, color, new Vector3(factor, 1, 0)));
-
 		}
 
 		if (bars.Count > 2)
@@ -160,6 +183,7 @@ public class TsunamiShark_bullet : ModProjectile
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 	}
+
 	public void DrawWaterTrail()
 	{
 		var bars = new List<Vertex2D>();
@@ -169,7 +193,10 @@ public class TsunamiShark_bullet : ModProjectile
 			if (Projectile.oldPos[i] == Vector2.Zero)
 			{
 				if (i == 1)
+				{
 					return;
+				}
+
 				break;
 			}
 
@@ -178,11 +205,16 @@ public class TsunamiShark_bullet : ModProjectile
 		for (int i = 1; i < TrueL; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
 
 			float width = 6;
 			if (Projectile.timeLeft <= 30)
+			{
 				width *= Projectile.timeLeft / 30f;
+			}
+
 			var normalDir = Projectile.oldPos[i - 1] - Projectile.oldPos[i];
 			normalDir = new Vector2(-normalDir.Y, normalDir.X).SafeNormalize(Vector2.Zero);
 
@@ -191,7 +223,6 @@ public class TsunamiShark_bullet : ModProjectile
 
 			bars.Add(new Vertex2D(Projectile.oldPos[i] + normalDir * -width + new Vector2(5) - Main.screenPosition, color, new Vector3(factor, 0, 0)));
 			bars.Add(new Vertex2D(Projectile.oldPos[i] + normalDir * width + new Vector2(5) - Main.screenPosition, color, new Vector3(factor, 1, 0)));
-
 		}
 
 		if (bars.Count > 2)

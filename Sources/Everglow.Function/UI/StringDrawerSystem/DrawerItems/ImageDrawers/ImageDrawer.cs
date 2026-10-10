@@ -48,23 +48,32 @@ namespace Everglow.Commons.UI.StringDrawerSystem.DrawerItems.ImageDrawers
 			{
 				Texture = ModIns.Mod.Assets.Request<Texture2D>(stringParameters["Image"]).Value;
 			}
-			Color = stringParameters.GetColor("Color",
+			Color = stringParameters.GetColor(
+				"Color",
 				stringDrawer.DefaultParameters.GetColor("ImgColor", Color.White));
-			Scale = stringParameters.GetVector2("Scale",
+			Scale = stringParameters.GetVector2(
+				"Scale",
 				stringDrawer.DefaultParameters.GetVector2("ImgScale", Vector2.One));
-			Origin = stringParameters.GetVector2("Origin",
+			Origin = stringParameters.GetVector2(
+				"Origin",
 				stringDrawer.DefaultParameters.GetVector2("ImgOrigin"));
-			Offset = stringParameters.GetVector2("Offset",
+			Offset = stringParameters.GetVector2(
+				"Offset",
 				stringDrawer.DefaultParameters.GetVector2("ImgOffset"));
-			Size = stringParameters.GetVector2("Size",
+			Size = stringParameters.GetVector2(
+				"Size",
 				stringDrawer.DefaultParameters.GetVector2("ImgSize", Texture.Size()));
-			Rotation = stringParameters.GetFloat("Rotation",
+			Rotation = stringParameters.GetFloat(
+				"Rotation",
 				stringDrawer.DefaultParameters.GetFloat("ImgRotation"));
-			LayerDepth = stringParameters.GetFloat("LayerDepth",
+			LayerDepth = stringParameters.GetFloat(
+				"LayerDepth",
 				stringDrawer.DefaultParameters.GetFloat("ImgLayerDepth", 1f));
-			Effects = (SpriteEffects)stringParameters.GetInt("SpriteEffects",
+			Effects = (SpriteEffects)stringParameters.GetInt(
+				"SpriteEffects",
 				stringDrawer.DefaultParameters.GetInt("ImgSpriteEffects"));
-			SourceRectangle = stringParameters.GetRectangle("SourceRectangle",
+			SourceRectangle = stringParameters.GetRectangle(
+				"SourceRectangle",
 				stringDrawer.DefaultParameters.GetRectangle("ImgSourceRectangle"));
 		}
 

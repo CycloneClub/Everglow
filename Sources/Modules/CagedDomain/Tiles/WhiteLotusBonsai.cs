@@ -1,5 +1,6 @@
 using Terraria.DataStructures;
 using Terraria.ObjectData;
+
 namespace Everglow.CagedDomain.Tiles;
 
 public class WhiteLotusBonsai : ModTile
@@ -26,16 +27,17 @@ public class WhiteLotusBonsai : ModTile
 			16,
 			16,
 			16,
-			16
+			16,
 		};
 		TileObjectData.newTile.CoordinateWidth = 16;
 		TileObjectData.newTile.Origin = new Point16(3, 10);
 		TileObjectData.addTile(Type);
-		DustType = 1;
+		DustType = DustID.Stone;
 		var modTranslation = CreateMapEntryName();
 		AddMapEntry(new Color(90, 90, 90), modTranslation);
 		HitSound = SoundID.DD2_SkeletonHurt;
 	}
+
 	public override void PlaceInWorld(int i, int j, Item item)
 	{
 		Main.tile[i, j].TileFrameX += (short)(item.placeStyle * 108);

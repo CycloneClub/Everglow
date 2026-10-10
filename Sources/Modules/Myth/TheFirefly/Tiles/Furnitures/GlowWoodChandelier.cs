@@ -43,19 +43,24 @@ public class GlowWoodChandelier : ModTile, ITileFluentlyDrawn, ITileFlameData
 		TileObjectData.addTile(Type);
 
 		if (!Main.dedServ)
+		{
 			flameTexture = ModContent.Request<Texture2D>("Everglow/Myth/TheFirefly/Tiles/Furnitures/GlowWoodChandelier_Flame");
+		}
 
 		LocalizedText name = CreateMapEntryName();
 		AddMapEntry(new Color(69, 36, 78), name);
 	}
+
 	public override void NumDust(int i, int j, bool fail, ref int num)
 	{
 		num = 0;
 	}
+
 	public override void HitWire(int i, int j)
 	{
 		FurnitureUtils.LightHitwire(i, j, Type, 3, 3);
 	}
+
 	public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 	{
 		var tile = Main.tile[i, j];
@@ -72,11 +77,13 @@ public class GlowWoodChandelier : ModTile, ITileFluentlyDrawn, ITileFlameData
 			b = 0f;
 		}
 	}
+
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		TileFluentDrawManager.AddFluentPoint(this, i, j);
 		return false;
 	}
+
 	public void FluentDraw(Vector2 screenPosition, Point pos, SpriteBatch spriteBatch, TileDrawing tileDrawing)
 	{
 		FurnitureUtils.Chandelier3x3FluentDraw(screenPosition, pos, spriteBatch, tileDrawing);
@@ -93,6 +100,6 @@ public class GlowWoodChandelier : ModTile, ITileFluentlyDrawn, ITileFlameData
 			flameRangeYMin = -10,
 			flameRangeYMax = 1,
 			flameRangeMultY = 0.35f,
-			flameColor = new Color(30, 30, 30, 0)
+			flameColor = new Color(30, 30, 30, 0),
 		};
 }

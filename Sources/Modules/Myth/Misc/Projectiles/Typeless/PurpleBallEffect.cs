@@ -8,6 +8,7 @@ public class PurpleBallEffect : ModProjectile
 	{
 		// DisplayName.SetDefault("PurpleBallEffect");
 	}
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 20;
@@ -20,29 +21,35 @@ public class PurpleBallEffect : ModProjectile
 		Projectile.tileCollide = false;
 		Projectile.scale = 5;
 	}
+
 	public override void AI()
 	{
 		Projectile.velocity *= 0;
 		v0 = Projectile.Center;
 		if (Projectile.timeLeft >= 180)
-			Pro = (240 - Projectile.timeLeft) * (240 - Projectile.timeLeft) / 12;
+		{
+			pro = (240 - Projectile.timeLeft) * (240 - Projectile.timeLeft) / 12;
+		}
 		else
 		{
-			Pro = 300;
+			pro = 300;
 		}
 		if (Projectile.timeLeft >= 150)
-			Scale = 1;
+		{
+			scale = 1;
+		}
 		else
 		{
 			float k0 = Projectile.timeLeft / 150f;
-			Scale = k0 * k0 * k0 * k0;
+			scale = k0 * k0 * k0 * k0;
 		}
-		AI0 = Projectile.ai[0];
+		aI0 = Projectile.ai[0];
 	}
-	Vector2 v0;
-	float Scale = 1;
-	int Pro = 0;
-	float AI0 = 0;
+
+	private Vector2 v0;
+	private float scale = 1;
+	private int pro = 0;
+	private float aI0 = 0;
 
 	public override bool PreDraw(ref Color lightColor)
 	{
@@ -60,8 +67,8 @@ public class PurpleBallEffect : ModProjectile
 		Texture2D tex2 = ModContent.Request<Texture2D>("Everglow/Myth/Acytaea/Dusts/CosmicCrack3").Value;
 		for (float r = 0; r < Col + 0.1; r += 0.1f)
 		{
-			Main.spriteBatch.Draw(tex2, v0 - Main.screenPosition, new Rectangle(0, 0, Pro, 50), new Color(0.1f, 0.1f, 0.1f, 0), AI0, tex2.Size() / 2f, Scale, SpriteEffects.None, 0);
-			Main.spriteBatch.Draw(tex2, v0 - Main.screenPosition, new Rectangle(0, 0, 300, 50), new Color(0.1f, 0.1f, 0.1f, 0), AI0 + 1.57f, tex2.Size() / 2f, Scale / 3.3f, SpriteEffects.None, 0);
+			Main.spriteBatch.Draw(tex2, v0 - Main.screenPosition, new Rectangle(0, 0, pro, 50), new Color(0.1f, 0.1f, 0.1f, 0), aI0, tex2.Size() / 2f, scale, SpriteEffects.None, 0);
+			Main.spriteBatch.Draw(tex2, v0 - Main.screenPosition, new Rectangle(0, 0, 300, 50), new Color(0.1f, 0.1f, 0.1f, 0), aI0 + 1.57f, tex2.Size() / 2f, scale / 3.3f, SpriteEffects.None, 0);
 		}
 		return true;
 	}

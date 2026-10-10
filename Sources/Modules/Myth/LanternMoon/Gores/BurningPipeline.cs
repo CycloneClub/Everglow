@@ -11,7 +11,6 @@ public class BurningPipeline : Pipeline
 	{
 		Ins.Batch.Begin();
 
-
 		// 设置参数
 		effect.Value.Parameters["uTransform"].SetValue(
 			Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) *
@@ -20,9 +19,8 @@ public class BurningPipeline : Pipeline
 		effect.Value.Parameters["rand1"].SetValue(40);
 		effect.Value.Parameters["rand2"].SetValue(60);
 		effect.Value.Parameters["rand3"].SetValue(1200);
-		//effect.Value.Parameters["NoiseTexture"].SetValue(Commons.ModAsset.Noise_burn.Value); // 噪声纹理
+		// effect.Value.Parameters["NoiseTexture"].SetValue(Commons.ModAsset.Noise_burn.Value); // 噪声纹理
 		effect.Value.CurrentTechnique.Passes[0].Apply();
-
 	}
 
 	public override void EndRender()

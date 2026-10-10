@@ -6,14 +6,17 @@ public class WhisperingGhostGasSmalling : ModDust
 	{
 		base.SetStaticDefaults();
 	}
+
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		return lightColor;
 	}
+
 	public override void OnSpawn(Dust dust)
 	{
 		base.OnSpawn(dust);
 	}
+
 	public override bool Update(Dust dust)
 	{
 		dust.scale *= 0.98f;

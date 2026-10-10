@@ -6,12 +6,12 @@ public class XmasWhip : ModItem
 
 	public override void SetDefaults()
 	{
-
 		DefaultToWhip(ModContent.ProjectileType<Projectiles.Weapon.Summon.XmasWhip>(), 348, 2f, 5.4f, 30);
 		Item.rare = ItemRarityID.Purple;
 		Item.damage = 308;
 		Item.value = Item.sellPrice(0, 10, 0, 0);
 	}
+
 	public override bool? UseItem(Player player)
 	{
 		if (player.autoReuseGlove)
@@ -22,13 +22,17 @@ public class XmasWhip : ModItem
 		Item.autoReuse = false;
 		return true;
 	}
+
 	private void DefaultToWhip(int projectileId, int dmg, float kb, float shootspeed, int animationTotalTime = 30)
 	{
 		Player player = Main.LocalPlayer;
 		Item.autoReuse = false;
 		if (player.autoReuseGlove)
+		{
 			Item.autoReuse = true;
-		Item.useStyle = 1;
+		}
+
+		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useAnimation = animationTotalTime;
 		Item.useTime = animationTotalTime;
 		Item.width = 18;

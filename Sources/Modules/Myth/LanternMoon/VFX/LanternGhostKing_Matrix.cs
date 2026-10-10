@@ -95,19 +95,19 @@ public class LanternGhostKing_Matrix : Visual
 		arrowScale += Math.Min(1.5f, Timer / 70f);
 		Ins.Batch.Draw(star, arrowRot, null, powerColor * fade, Rotation, star.Size() * 0.5f, new Vector2(1f, arrowScale) * Scale, SpriteEffects.None);
 
-		//if (!VFXManager.InScreen(arrowRot, -20))
-		//{
-		//	for (int i = 0; i < 100; i++)
-		//	{
-		//		arrowRot += new Vector2(0, 10).RotatedBy(Rotation);
-		//		if (VFXManager.InScreen(arrowRot, -20))
-		//		{
-		//			arrowRot += new Vector2(0, 300).RotatedBy(Rotation);
-		//			Ins.Batch.Draw(star, arrowRot, null, powerColor * fade, Rotation, star.Size() * 0.5f, new Vector2(1f, arrowScale) * Scale, SpriteEffects.None);
-		//			break;
-		//		}
-		//	}
-		//}
+		// if (!VFXManager.InScreen(arrowRot, -20))
+		// {
+		// for (int i = 0; i < 100; i++)
+		// {
+		// arrowRot += new Vector2(0, 10).RotatedBy(Rotation);
+		// if (VFXManager.InScreen(arrowRot, -20))
+		// {
+		// arrowRot += new Vector2(0, 300).RotatedBy(Rotation);
+		// Ins.Batch.Draw(star, arrowRot, null, powerColor * fade, Rotation, star.Size() * 0.5f, new Vector2(1f, arrowScale) * Scale, SpriteEffects.None);
+		// break;
+		// }
+		// }
+		// }
 
 		float rotOffset = 1.5f;
 		rotOffset -= Math.Min(1.5f, Timer / 100f);

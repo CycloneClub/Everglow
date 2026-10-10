@@ -16,14 +16,15 @@ internal class StaffOfCorruptDust : ModProjectile
 		Projectile.tileCollide = false;
 		Projectile.ignoreWater = true;
 	}
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		Projectile.localAI[0] = 0;
 		SoundEngine.PlaySound(new SoundStyle("Everglow/Myth/Sounds/CorruptDust_start"), Projectile.Center);
 	}
+
 	public override void AI()
 	{
-
 		Player player = Main.player[Projectile.owner];
 		float ProjectileToPlayerDistance = 48f;
 		Projectile.velocity *= 0;
@@ -60,17 +61,19 @@ internal class StaffOfCorruptDust : ModProjectile
 			SoundEngine.PlaySound(new SoundStyle("Everglow/Myth/Sounds/CorruptDust_medium").WithPitchOffset(Main.rand.NextFloat(-0.1f, 0.1f)), Projectile.Center);
 		}
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Player player = Main.player[Projectile.owner];
-
 
 		player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (float)(Projectile.rotation - Math.PI / 2d));
 		Texture2D t = ModAsset.StaffOfCorruptDust.Value;
 		Color color = Lighting.GetColor((int)Projectile.Center.X / 16, (int)(Projectile.Center.Y / 16.0));
 		SpriteEffects S = SpriteEffects.None;
 		if (Projectile.Center.X < player.MountedCenter.X)
+		{
 			player.direction = -1;
+		}
 		else
 		{
 			player.direction = 1;
@@ -79,6 +82,7 @@ internal class StaffOfCorruptDust : ModProjectile
 		Main.spriteBatch.Draw(t, Projectile.Center - Main.screenPosition, null, color, Projectile.rotation + MathF.PI * 0.27f, t.Size() / 2f, Projectile.scale, S, 0f);
 		return false;
 	}
+
 	public override void OnKill(int timeLeft)
 	{
 		SoundEngine.PlaySound(new SoundStyle("Everglow/Myth/Sounds/CorruptDust_end"), Projectile.Center);

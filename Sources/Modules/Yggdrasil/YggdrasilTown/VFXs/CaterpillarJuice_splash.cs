@@ -14,7 +14,6 @@ public class CaterpillarJuice_splash : Visual
 	public float Scale;
 	public float Alpha;
 
-
 	public override void Update()
 	{
 		if (Position.X <= 320 || Position.X >= Main.maxTilesX * 16 - 320)

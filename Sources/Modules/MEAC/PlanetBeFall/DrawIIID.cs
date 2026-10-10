@@ -9,7 +9,6 @@ using Everglow.MEAC.PlanetBeFall.Projectiles.NonIIIDProj.PlanetBefallArray;
 using Everglow.MEAC.PlanetBeFall.Projectiles.NonIIIDProj.PlanetBefallExplosion;
 using Terraria.Graphics.Effects;
 
-
 namespace Everglow.MEAC.PlanetBeFall;
 
 internal class DrawIIID : ModSystem
@@ -80,7 +79,7 @@ internal class DrawIIID : ModSystem
 		}
 		if (flag)
 		{
-			#region drawcrack 
+			// drawcrack
 			bloom = ModAsset.Bloom.Value;
 			gd.SetRenderTarget(Main.screenTargetSwap);
 			gd.Clear(Color.Black);
@@ -185,7 +184,6 @@ internal class DrawIIID : ModSystem
 			goldenCrackVFX.Parameters["n"].SetValue(0.01f);
 			sb.Draw(render, Vector2.Zero, Color.White);
 			sb.End();
-			#endregion
 
 			Main.spriteBatch.Begin(0, BlendState.Additive);
 			foreach (Projectile proj in Main.projectile)
@@ -198,7 +196,7 @@ internal class DrawIIID : ModSystem
 			Main.spriteBatch.End();
 		}
 
-		#region drawexplosion
+		// drawexplosion
 		foreach (Projectile proj in Main.projectile)
 		{
 			if (proj.active && proj.type == ModContent.ProjectileType<PlanetBefallExplosion>())
@@ -220,7 +218,6 @@ internal class DrawIIID : ModSystem
 				sb.End();
 			}
 		}
-		#endregion
 
 		orig(self, finalTexture, screenTarget1, screenTarget2, clearColor);
 	}

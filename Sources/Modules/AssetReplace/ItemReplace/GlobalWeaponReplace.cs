@@ -1,4 +1,3 @@
-
 using Everglow.AssetReplace.ItemReplace.Item_4923_PiercingStarlight;
 using Everglow.Commons.FeatureFlags;
 using Everglow.Commons.Templates.Weapons.StabbingSwords;

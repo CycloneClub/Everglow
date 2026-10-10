@@ -9,7 +9,6 @@ namespace Everglow.Food;
 
 public class FoodModPlayer : ModPlayer
 {
-
 	/// <summary>
 	/// 玩家当前饱食度
 	/// </summary>
@@ -25,27 +24,34 @@ public class FoodModPlayer : ModPlayer
 	{
 		get; set;
 	}
+
 	/// <summary>
 	/// 玩家的饱食等级
 	/// </summary>
 	public int SatietyLevel { get; private set; }
+
 	private int starvationCounter = 0;
+
 	public int StarvationCounter
 	{
 		get
 		{
 			return starvationCounter;
 		}
+
 		private set
 		{
 			if (value < 0)
+			{
 				starvationCounter = 0;
+			}
 			else
 			{
 				starvationCounter = value;
 			}
 		}
 	}
+
 	/// <summary>
 	/// 玩家当前渴觉状态
 	/// </summary>
@@ -53,6 +59,7 @@ public class FoodModPlayer : ModPlayer
 	{
 		get; set;
 	}
+
 	public FoodModPlayer()
 	{
 	}
@@ -65,7 +72,10 @@ public class FoodModPlayer : ModPlayer
 	public bool CanEat(FoodInfo foodInfo)
 	{
 		if (CurrentSatiety + foodInfo.Satiety <= MaximumSatiety)
+		{
 			return true;
+		}
+
 		return false;
 	}
 
@@ -75,35 +85,41 @@ public class FoodModPlayer : ModPlayer
 	public bool CanDrink(DrinkInfo drinkInfo)
 	{
 		if (Thirstystate)
+		{
 			return true;
+		}
+
 		return false;
 	}
 
 	public bool CanText()
 	{
 		if (TextTimer <= 0)
+		{
 			return true;
+		}
+
 		return false;
 	}
-	/*
-         
-         
-         */
+
 	/// <summary>
 	/// 以下为计时器
 	/// </summary>
 	public int SatietyLossTimer
 	{
 		get; private set;
-	}//饱食损失计时器
+	}// 饱食损失计时器
+
 	public int ThirstyChangeTimer
 	{
 		get; private set;
-	}//口渴变化计时器
+	}// 口渴变化计时器
+
 	public int TextTimer
 	{
 		get; set;
 	}
+
 	public override void PostUpdateMiscEffects()
 	{
 		Player.buffImmune[BuffID.WellFed] = true;
@@ -115,12 +131,14 @@ public class FoodModPlayer : ModPlayer
 		Player.buffImmune[BuffID.Starving] = true;
 		base.PostUpdateMiscEffects();
 	}
+
 	public override void PostUpdate()
 	{
 		FoodState();
 		UpdateHungerEmote();
 		base.PostUpdate();
 	}
+
 	public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource)
 	{
 		CurrentSatiety = 0;
@@ -129,6 +147,7 @@ public class FoodModPlayer : ModPlayer
 		starvationCounter = 0;
 		base.Kill(damage, hitDirection, pvp, damageSource);
 	}
+
 	public override void Initialize()
 	{
 		CurrentSatiety = 0;
@@ -143,6 +162,7 @@ public class FoodModPlayer : ModPlayer
 
 		base.Initialize();
 	}
+
 	public override void SaveData(TagCompound tag)
 	{
 		tag.Add("CurrentSatiety", CurrentSatiety);
@@ -154,31 +174,43 @@ public class FoodModPlayer : ModPlayer
 	public override void LoadData(TagCompound tag)
 	{
 		if (tag.ContainsKey("CurrentSatiety"))
+		{
 			CurrentSatiety = tag.GetInt("CurrentSatiety");
+		}
 
 		if (tag.ContainsKey("Thirstystate"))
+		{
 			Thirstystate = tag.GetBool("Thirstystate");
+		}
+
 		if (tag.ContainsKey("StarvationCounter"))
+		{
 			StarvationCounter = tag.GetInt("StarvationCounter");
+		}
+
 		base.LoadData(tag);
 	}
 
 	public void FoodState()
 	{
-		//从吃食物后开始计时
+		// 从吃食物后开始计时
 		if (CurrentSatiety > 0)
 		{
 			SatietyLossTimer++;
 			StarvationCounter = 0;
 		}
-		//从喝饮料后开始计时
+		// 从喝饮料后开始计时
 		if (!Thirstystate)
+		{
 			ThirstyChangeTimer++;
+		}
 
 		if (!CanText())
+		{
 			TextTimer--;
+		}
 
-		//每三十秒减少一饱食度
+		// 每三十秒减少一饱食度
 		if (Player.GetModPlayer<FoodBuffModPlayer>().DurianBuff)
 		{
 			if (SatietyLossTimer >= FoodUtils.GetFrames(0, 0, 15, 0))
@@ -201,9 +233,11 @@ public class FoodModPlayer : ModPlayer
 			CurrentSatiety = 0;
 			StarvationCounter++;
 
-			#region Set satiety level
+			// Set satiety level
 			if (StarvationCounter > FoodUtils.GetFrames(0, 15, 0, 0)) // starving
+			{
 				SatietyLevel = -3;
+			}
 			else if (StarvationCounter > FoodUtils.GetFrames(0, 10, 0, 0)) // hungry
 			{
 				SatietyLevel = -2;
@@ -216,15 +250,16 @@ public class FoodModPlayer : ModPlayer
 			{
 				SatietyLevel = 0;
 			}
-			#endregion
 		}
 		else
 		{
 			StarvationCounter = 0;
 
-			#region Set satiety level
+			// Set satiety level
 			if (CurrentSatiety <= MaximumSatiety * 0.5f) // well fed
+			{
 				SatietyLevel = 1;
+			}
 			else if (CurrentSatiety > MaximumSatiety * 0.5f && CurrentSatiety <= MaximumSatiety * 0.75f) // plently satisfied
 			{
 				SatietyLevel = 2;
@@ -233,23 +268,24 @@ public class FoodModPlayer : ModPlayer
 			{
 				SatietyLevel = 3;
 			}
-			#endregion
 		}
-		//每五分钟从口渴变得不口渴
+		// 每五分钟从口渴变得不口渴
 		if (ThirstyChangeTimer >= FoodUtils.GetFrames(0, 5, 0, 0))
 		{
 			Thirstystate = true;
 			ThirstyChangeTimer = 0;
 		}
 	}
+
 	public override void PostUpdateBuffs()
 	{
-		#region Well fed life regen effect
+		// Well fed life regen effect
 		if (SatietyLevel > 0 || !Thirstystate)
+		{
 			Player.wellFed = true;
-		#endregion
+		}
 
-		#region Give effects based on satiety level
+		// Give effects based on satiety level
 		if (SatietyLevel == 1) // well fed
 		{
 			Player.statDefense += 1;
@@ -290,7 +326,9 @@ public class FoodModPlayer : ModPlayer
 				Player.moveSpeed -= 0.02f;
 				Player.pickSpeed += 0.05f;
 				if (Player.lifeRegen > 0)
+				{
 					Player.lifeRegen = 0;
+				}
 			}
 		}
 		else if (SatietyLevel == -2) // hungry
@@ -305,7 +343,10 @@ public class FoodModPlayer : ModPlayer
 				Player.moveSpeed -= 0.04f;
 				Player.pickSpeed += 0.1f;
 				if (Player.lifeRegen > 0)
+				{
 					Player.lifeRegen = 0;
+				}
+
 				Player.lifeRegen -= (int)(Player.statLifeMax2 * 0.01f);
 			}
 		}
@@ -321,20 +362,25 @@ public class FoodModPlayer : ModPlayer
 				Player.moveSpeed -= 0.08f;
 				Player.pickSpeed += 0.2f;
 				if (Player.lifeRegen > 0)
+				{
 					Player.lifeRegen = 0;
+				}
+
 				Player.lifeRegen -= (int)(Player.statLifeMax2 * 0.02f);
 				Player.starving = true;
 			}
 		}
-		#endregion
 		base.PostUpdateBuffs();
 	}
+
 	public void UpdateHungerEmote()
 	{
 		if (Main.dontStarveWorld)
 		{
 			if (StarvationCounter == FoodUtils.GetFrames(0, 15, 0, 0)) // starving
+			{
 				EmoteBubble.MakeLocalPlayerEmote(148);
+			}
 			else if (StarvationCounter == FoodUtils.GetFrames(0, 10, 0, 0)) // hungry
 			{
 				EmoteBubble.MakeLocalPlayerEmote(147);
@@ -345,5 +391,4 @@ public class FoodModPlayer : ModPlayer
 			}
 		}
 	}
-
 }

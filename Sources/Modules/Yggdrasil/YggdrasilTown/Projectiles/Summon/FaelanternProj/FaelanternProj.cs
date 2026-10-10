@@ -26,7 +26,7 @@ public class FaelanternProj : ModProjectile
 		Projectile.penetrate = -1;
 		Projectile.sentry = true;
 		Projectile.DamageType = DamageClass.Summon;
-		//Projectile.hide = true;
+		// Projectile.hide = true;
 	}
 
 	public void Suicide()
@@ -44,7 +44,6 @@ public class FaelanternProj : ModProjectile
 	{
 		return false;
 	}
-
 
 	public CoroutineManager _coroutineManager = new CoroutineManager();
 	public Skeleton2D FaelanternSkeleton;
@@ -64,20 +63,20 @@ public class FaelanternProj : ModProjectile
 		}
 	}
 
-	int timer = 0;
-	Projectile Fae;
+	private int timer = 0;
+	private Projectile fae;
+
 	public override void AI()
 	{
-
 		FaelanternSkeleton.AnimationState.Apply(FaelanternSkeleton.Skeleton);
 		timer++;
 		if (timer == 10)
 		{
 			FaelanternSkeleton.Skeleton.UpdateWorldTransform();
 			var pos = new Vector2(FaelanternSkeleton.Skeleton.FindBone("bone6").WorldX, FaelanternSkeleton.Skeleton.FindBone("bone6").WorldY);
-			Fae = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), pos, Vector2.Zero, ModContent.ProjectileType<Fae>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
-			Fae.ai[0] = Projectile.whoAmI;
-			Fae.ai[1] = -1;
+			fae = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), pos, Vector2.Zero, ModContent.ProjectileType<Fae>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+			fae.ai[0] = Projectile.whoAmI;
+			fae.ai[1] = -1;
 		}
 		_coroutineManager.Update();
 		FaelanternSkeleton.Position = Projectile.Bottom;
@@ -94,7 +93,6 @@ public class FaelanternProj : ModProjectile
 		FaelanternSkeleton.AnimationState.SetAnimation(0, "growth", true);
 		for (int i = 0; i < 120; i++)
 		{
-
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 2f)).RotatedByRandom(MathHelper.TwoPi);
 			if (i % 2 == 0)
 			{
@@ -111,7 +109,6 @@ public class FaelanternProj : ModProjectile
 				};
 				Ins.VFXManager.Add(somg);
 			}
-
 
 			FaelanternSkeleton.AnimationState.Update(1 / 60f);
 			yield return new SkipThisFrame();
@@ -151,7 +148,8 @@ public class FaelanternProj : ModProjectile
 				int tileY = (int)Target.Center.Y / 16 - 3;
 
 				for (; tileY < Main.maxTilesY - 10 && (Findtile(tileX + 3 * direction, tileY + 4) || Findtile(tileX + 4 * direction, tileY + 4) || Findtile(tileX + 5 * direction, tileY + 4) || Findtile(tileX + 6 * direction, tileY + 4)); tileY++)
-				{ }
+				{
+				}
 
 				var pos = new Vector2(tileX * 16, tileY * 16 + 8);
 				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), pos, Vector2.Zero, ModContent.ProjectileType<Faelanternbranch>(), Projectile.damage, Projectile.knockBack, Projectile.owner, direction);
@@ -174,11 +172,10 @@ public class FaelanternProj : ModProjectile
 			FaelanternSkeleton.AnimationState.Update(1 / 60f);
 			if (i == 30)
 			{
-				Fae.ai[1] = target;
+				fae.ai[1] = target;
 			}
 			yield return new SkipThisFrame();
 		}
-
 
 		_coroutineManager.StartCoroutine(new Coroutine(NextAttack()));
 	}
@@ -238,7 +235,7 @@ public class FaelanternProj : ModProjectile
 			}
 		}
 
-		if (charm && Fae.ai[1] == -1)
+		if (charm && fae.ai[1] == -1)
 		{
 			_coroutineManager.StartCoroutine(new Coroutine(Charm(charmtarget)));
 		}

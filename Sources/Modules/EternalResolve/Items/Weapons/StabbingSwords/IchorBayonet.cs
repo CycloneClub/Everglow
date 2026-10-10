@@ -5,8 +5,8 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords
 {
 	public class IchorBayonet : StabbingSwordItem
 	{
-		//TODO:翻译
-		//灵液刺剑
+		// TODO:翻译
+		// 灵液刺剑
 		public override void SetDefaults()
 		{
 			Item.damage = 44;
@@ -19,6 +19,7 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords
 			PowerfulStabProj = ModContent.ProjectileType<IchorBayonet_Pro_Stab>();
 			base.SetDefaults();
 		}
+
 		public override void AddRecipes()
 		{
 			CreateRecipe().

@@ -34,6 +34,7 @@ public class HangingSkyLantern : ModTile, ITileFluentlyDrawn
 
 		AddMapEntry(new Color(135, 103, 90));
 	}
+
 	public override void HitWire(int i, int j)
 	{
 		FurnitureUtils.LightHitwire(i, j, Type, 3, 3);
@@ -72,7 +73,10 @@ public class HangingSkyLantern : ModTile, ITileFluentlyDrawn
 		var drawCenterPos = pos.ToWorldCoordinates(autoAddY: 0) - screenPosition;
 		int Adx = 0;
 		if (tile.TileFrameX > 54)
+		{
 			Adx = 70; // 改了下贴图，所以是70
+		}
+
 		DrawLanternPiece(42 + Adx, 58, 0.15f, -2, pos, pos, drawCenterPos, spriteBatch, tileDrawing);
 		DrawLanternPiece(56 + Adx, 44, 0.11f, -4, pos, pos + new Point(-1, 0), drawCenterPos, spriteBatch, tileDrawing);
 		DrawLanternPiece(28 + Adx, 40, 0.13f, 2, pos, pos + new Point(1, 0), drawCenterPos, spriteBatch, tileDrawing);
@@ -94,12 +98,16 @@ public class HangingSkyLantern : ModTile, ITileFluentlyDrawn
 	/// <param name="tileDrawing">原版TileDrawing类的实例，有很多好用的方法（各个卷筒纸共享一个值）</param>
 	private void DrawLanternPiece(int frameX, int frameHeight, float swayCoefficient, int offsetX, Point tilePos, Point paintPos, Vector2 drawCenterPos, SpriteBatch spriteBatch, TileDrawing tileDrawing)
 	{
-		// 回声涂料	
+		// 回声涂料
 		if (!TileDrawing.IsVisible(Main.tile[paintPos]))
+		{
 			return;
+		}
 
 		if (!TileDrawing.IsVisible(Main.tile[paintPos]))
+		{
 			return;
+		}
 
 		var tile = Main.tile[tilePos];
 		ushort type = tile.TileType;
@@ -113,7 +121,9 @@ public class HangingSkyLantern : ModTile, ITileFluentlyDrawn
 
 		float windCycle = 0;
 		if (tileDrawing.InAPlaceWithWind(tilePos.X, tilePos.Y, sizeX, sizeY))
+		{
 			windCycle = tileDrawing.GetWindCycle(tilePos.X, tilePos.Y, tileDrawing._sunflowerWindCounter);
+		}
 
 		int totalPushTime = 80;
 		float pushForcePerFrame = 1.26f;

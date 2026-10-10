@@ -9,7 +9,6 @@ namespace Everglow.Myth.TheFirefly.Tiles.Furnitures;
 
 public class GlowWoodCampfire : ModTile
 {
-
 	public override void SetStaticDefaults()
 	{
 		// Properties
@@ -38,10 +37,12 @@ public class GlowWoodCampfire : ModTile
 		LocalizedText name = CreateMapEntryName();
 		AddMapEntry(new Color(69, 36, 78), name);
 	}
+
 	public override void NumDust(int i, int j, bool fail, ref int num)
 	{
 		num = 0;
 	}
+
 	public override void AnimateTile(ref int frame, ref int frameCounter)
 	{
 		frameCounter++;
@@ -51,6 +52,7 @@ public class GlowWoodCampfire : ModTile
 			frameCounter = 0;
 		}
 	}
+
 	public override bool CreateDust(int i, int j, ref int type)
 	{
 		Tile tile = Main.tile[i, j];
@@ -70,12 +72,18 @@ public class GlowWoodCampfire : ModTile
 		Tile tile = Main.tile[i, j];
 		Player player = Main.LocalPlayer;
 		if (player != null && !player.dead && player.active && tile.TileFrameX < 54)
+		{
 			Main.SceneMetrics.HasCampfire = true;
+		}
+
 		if (tile.TileFrameX < 54 && tile.TileFrameY == 18)
 		{
 			int frequency = 24;
 			if (tile.TileFrameX == 18)
+			{
 				frequency = 8;
+			}
+
 			if (!Main.gamePaused && Main.instance.IsActive && (!Lighting.UpdateEveryFrame || Main.rand.NextBool(4)) && Main.rand.NextBool(frequency))
 			{
 				Rectangle dustBox = Utils.CenteredRectangle(new Vector2(i * 16, j * 16), new Vector2(16, 16));
@@ -130,7 +138,10 @@ public class GlowWoodCampfire : ModTile
 			for (int n = y; n < y + tileY; n++)
 			{
 				if (!tile.HasTile)
+				{
 					continue;
+				}
+
 				if (tile.TileType == Type)
 				{
 					tile = Main.tile[m, n];
@@ -162,16 +173,23 @@ public class GlowWoodCampfire : ModTile
 		player.cursorItemIconEnabled = true;
 		player.cursorItemIconID = ModContent.ItemType<Items.Furnitures.GlowWoodCampfire>();
 	}
+
 	public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		var tile = Main.tile[i, j];
 		var zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
 		if (Main.drawToScreen)
+		{
 			zero = Vector2.Zero;
+		}
+
 		Texture2D tex = ModAsset.GlowWoodCampfireGlow.Value;
 		int frameYOffset = Main.tileFrame[Type] * AnimationFrameHeight;
 		if (tile.TileFrameX < 54)
+		{
 			spriteBatch.Draw(tex, new Vector2(i * 16, j * 16 + 3) - Main.screenPosition + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY + frameYOffset, 16, 16), new Color(0.8f, 0.8f, 0.8f, 0), 0, new Vector2(0), 1, SpriteEffects.None, 0);
+		}
+
 		if (tile.TileFrameX == 18 && tile.TileFrameY % 36 == 0)
 		{
 			Color cTile = Lighting.GetColor(i, j - 1);

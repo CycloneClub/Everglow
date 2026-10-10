@@ -9,6 +9,7 @@ namespace Everglow.Myth.Acytaea.Projectiles;
 public class AcytaeaMagicArray : ModProjectile
 {
 	public override string Texture => "Everglow/Myth/Acytaea/Projectiles/AcytaeaSword_projectile";
+
 	public override void SetDefaults()
 	{
 		Projectile.aiStyle = -1;
@@ -22,8 +23,8 @@ public class AcytaeaMagicArray : ModProjectile
 		Projectile.DamageType = DamageClass.Melee;
 		Projectile.width = 40;
 		Projectile.height = 40;
-
 	}
+
 	public override void AI()
 	{
 		Projectile.velocity *= 0;
@@ -33,6 +34,7 @@ public class AcytaeaMagicArray : ModProjectile
 	{
 		return false;
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
 		SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;

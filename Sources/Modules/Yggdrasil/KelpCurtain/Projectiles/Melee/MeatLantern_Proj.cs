@@ -12,7 +12,6 @@ public class MeatLantern_Proj : MeleeProj
 		maxSlashTrailLength = 20;
 		longHandle = true;
 		shaderType = Commons.MEAC.Enums.MeleeTrailShaderType.ArcBladeTransparentedByZ;
-		;
 		autoEnd = false;
 		canLongLeftClick = true;
 	}
@@ -26,17 +25,19 @@ public class MeatLantern_Proj : MeleeProj
 	{
 		return base.TrailAlpha(factor) * 2f;
 	}
+
 	public override BlendState TrailBlendState()
 	{
 		return BlendState.Additive;
 	}
-	public override void DrawSelf(SpriteBatch spriteBatch, Color lightColor, Vector4 diagonal = new Vector4(), Vector2 drawScale = new Vector2(), Texture2D glowTexture = null)
+
+	public override void DrawSelf(SpriteBatch spriteBatch, Color lightColor, Vector4 diagonal = default(Vector4), Vector2 drawScale = default(Vector2), Texture2D glowTexture = null)
 	{
-		if (diagonal == new Vector4())
+		if (diagonal == default(Vector4))
 		{
 			diagonal = new Vector4(0, 1, 1, 0);
 		}
-		if (drawScale == new Vector2())
+		if (drawScale == default(Vector2))
 		{
 			drawScale = new Vector2(0, 1);
 			if (longHandle)
@@ -57,6 +58,7 @@ public class MeatLantern_Proj : MeleeProj
 		spriteBatch.End();
 		spriteBatch.Begin(sBS);
 	}
+
 	public void DrawVertexByTwoLine(Texture2D texture, Color drawColor, Vector2 textureCoordStart, Vector2 textureCoordEnd, Vector2 positionStart, Vector2 positionEnd)
 	{
 		Vector2 coordVector = textureCoordEnd - textureCoordStart;
@@ -86,7 +88,6 @@ public class MeatLantern_Proj : MeleeProj
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, vertex2Ds.ToArray(), 0, vertex2Ds.Count - 2);
 	}
 
-
 	public override void Attack()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -94,7 +95,6 @@ public class MeatLantern_Proj : MeleeProj
 		Tplayer.HideLeg = true;
 		if (Main.myPlayer == Projectile.owner && Main.mouseRight && Main.mouseRightRelease)
 		{
-
 		}
 
 		useSlash = true;
@@ -106,12 +106,16 @@ public class MeatLantern_Proj : MeleeProj
 			if (player.direction == -1)
 			{
 				if (AddHeadRotation >= 0.57f && AddHeadRotation < 2)
+				{
 					AddHeadRotation = 0.57f;
+				}
 			}
 			else
 			{
 				if (AddHeadRotation <= -0.57f)
+				{
 					AddHeadRotation = -0.57f;
+				}
 			}
 		}
 		else
@@ -119,12 +123,16 @@ public class MeatLantern_Proj : MeleeProj
 			if (player.direction == -1)
 			{
 				if (AddHeadRotation >= 2 && AddHeadRotation < 5.71f)
+				{
 					AddHeadRotation = 5.71f;
+				}
 			}
 			else
 			{
 				if (AddHeadRotation >= 0.57f)
+				{
 					AddHeadRotation = 0.57f;
+				}
 			}
 		}
 
@@ -155,7 +163,9 @@ public class MeatLantern_Proj : MeleeProj
 				mainAxisDirection = Vector2Elipse(75, Projectile.rotation, -0.75f, rot);
 			}
 			if (timer > 40)
+			{
 				NextAttackType();
+			}
 			else if (timer > 1)
 			{
 				float BodyRotation = (float)Math.Sin((timer - 10) / 30d * Math.PI) * 0.2f * player.direction * player.gravDir;
@@ -193,7 +203,9 @@ public class MeatLantern_Proj : MeleeProj
 				mainAxisDirection = Vector2Elipse(75, Projectile.rotation, -0.75f, rot);
 			}
 			if (timer > 40)
+			{
 				NextAttackType();
+			}
 			else if (timer > 1)
 			{
 				float BodyRotation = (float)Math.Sin((timer - 10) / 30d * Math.PI) * 0.2f * player.direction * player.gravDir;
@@ -222,7 +234,10 @@ public class MeatLantern_Proj : MeleeProj
 			Commons.ModAsset.TrueMeleeSwing_Mod));
 			}
 			if (timer % 10 == 8 && timer > 30)
+			{
 				SoundEngine.PlaySound(SoundID.Item1, Projectile.Center);
+			}
+
 			if (timer > 20 && timer < 75)
 			{
 				Lighting.AddLight(Projectile.Center + mainAxisDirection, 0.36f, 0.36f, 0.24f);
@@ -288,7 +303,6 @@ public class MeatLantern_Proj : MeleeProj
 			{
 				NextAttackType();
 			}
-
 			else if (timer > 1)
 			{
 				float BodyRotation = (float)Math.Sin((timer - 10) / 30d * Math.PI) * 0.2f * player.direction * player.gravDir;
@@ -306,21 +320,27 @@ public class MeatLantern_Proj : MeleeProj
 			d.noGravity = true;
 		}
 	}
+
 	public override void DrawTrail(Color color)
 	{
 		base.DrawTrail(color);
-		List<Vector2> smoothTrail_current = GraphicsUtils.CatmullRom(slashTrail.ToList());//平滑
+		List<Vector2> smoothTrail_current = GraphicsUtils.CatmullRom(slashTrail.ToList()); // 平滑
 		var SmoothTrail = new List<Vector2>();
 		for (int x = 0; x < smoothTrail_current.Count - 1; x++)
 		{
 			SmoothTrail.Add(smoothTrail_current[x]);
 		}
 		if (slashTrail.Count != 0)
+		{
 			SmoothTrail.Add(slashTrail.ToArray()[slashTrail.Count - 1]);
+		}
 
 		int length = SmoothTrail.Count;
 		if (length <= 3)
+		{
 			return;
+		}
+
 		Vector2[] trail = SmoothTrail.ToArray();
 		var bars = new List<Vertex2D>();
 
@@ -356,8 +376,8 @@ public class MeatLantern_Proj : MeleeProj
 
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-
 	}
+
 	public override void End()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -371,6 +391,7 @@ public class MeatLantern_Proj : MeleeProj
 		Projectile.Kill();
 		player.GetModPlayer<MEACPlayer>().isUsingMeleeProj = false;
 	}
+
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		Player player = Main.player[Projectile.owner];
@@ -390,7 +411,5 @@ public class MeatLantern_Proj : MeleeProj
 			d.velocity = target.velocity * 0.3f + v;
 			d.noGravity = true;
 		}
-
 	}
 }
-

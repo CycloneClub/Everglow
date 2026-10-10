@@ -1,5 +1,6 @@
 using Terraria.DataStructures;
 using Terraria.ObjectData;
+
 namespace Everglow.CagedDomain.Tiles;
 
 public class BottleOfNutShellFlowers : ModTile
@@ -21,20 +22,22 @@ public class BottleOfNutShellFlowers : ModTile
 			16,
 			16,
 			16,
-			16
+			16,
 		};
 		TileObjectData.newTile.CoordinateWidth = 72;
 		TileObjectData.newTile.Origin = new Point16(0, 5);
 		TileObjectData.addTile(Type);
-		DustType = 1;
+		DustType = DustID.Stone;
 		var modTranslation = CreateMapEntryName();
 		AddMapEntry(new Color(90, 90, 90), modTranslation);
 		HitSound = SoundID.DD2_SkeletonHurt;
 	}
+
 	public override IEnumerable<Item> GetItemDrops(int i, int j)
 	{
 		yield return new Item(ModContent.ItemType<Items.BottleOfNutShellFlowers>());
 	}
+
 	public override void PlaceInWorld(int i, int j, Item item)
 	{
 		Main.tile[i, j].TileFrameX = (short)(item.placeStyle * 72);

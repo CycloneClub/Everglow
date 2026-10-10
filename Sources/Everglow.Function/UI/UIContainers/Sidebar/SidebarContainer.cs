@@ -37,7 +37,8 @@ namespace Everglow.Commons.UI.UIContainers.Sidebar
 			quickBar.Info.Left.SetValue(0f, 0.15f);
 			quickBar.Events.OnCalculation += element =>
 			{
-				mainPanel.Info.Height.SetValue(element.Info.Size.Y + mainPanel.Info.TopMargin.Pixel + mainPanel.Info.BottomMargin.Pixel,
+				mainPanel.Info.Height.SetValue(
+					element.Info.Size.Y + mainPanel.Info.TopMargin.Pixel + mainPanel.Info.BottomMargin.Pixel,
 					0f + mainPanel.Info.TopMargin.Percent + mainPanel.Info.BottomMargin.Percent);
 				return false;
 			};
@@ -52,9 +53,14 @@ namespace Everglow.Commons.UI.UIContainers.Sidebar
 			image.Events.OnUpdate += (element, gt) =>
 			{
 				if (mainPanel.Info.TotalLocation.X - mainPanel.Info.TotalSize.X < 4f)
+				{
 					((UIImage)element).SpriteEffects = SpriteEffects.None;
+				}
+
 				if (mainPanel.Info.TotalLocation.X < 2f && mainPanel.Info.TotalLocation.X > -2f)
+				{
 					((UIImage)element).SpriteEffects = SpriteEffects.FlipHorizontally;
+				}
 			};
 			image.Events.OnLeftClick += element =>
 			{

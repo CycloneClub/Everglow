@@ -242,6 +242,5 @@ namespace Everglow.Commons.UI
 			orig(spriteBatch);
 			PostDrawChestUI?.Invoke(this, spriteBatch);
 		}
-
 	}
 }

@@ -5,7 +5,7 @@ namespace Everglow.Commons.Mechanics.Quest.WorldSide.Tests;
 
 public class TestDeltaSyncObjective : WorldObjectiveBase, IDeltaSyncObjective
 {
-	public bool NeedDeltaSync => true;
+	public override bool NeedDeltaSync => true;
 
 	public override bool CheckCompletion() => false;
 
@@ -15,24 +15,24 @@ public class TestDeltaSyncObjective : WorldObjectiveBase, IDeltaSyncObjective
 	{
 	}
 
-	public void ReceiveDelta(BinaryReader br)
+	public override void ReceiveDelta(BinaryReader br)
 	{
 		var value = br.ReadInt32();
 		// Console.WriteLine(value);
 	}
 
-	public void ReceiveMain(BinaryReader br)
+	public override void ReceiveMain(BinaryReader br)
 	{
 		var value = br.ReadInt32();
 		// Console.WriteLine(value);
 	}
 
-	public void SendDelta(BinaryWriter bw)
+	public override void SendDelta(BinaryWriter bw)
 	{
 		bw.Write(123);
 	}
 
-	public void SendMain(BinaryWriter bw)
+	public override void SendMain(BinaryWriter bw)
 	{
 		bw.Write(456);
 	}

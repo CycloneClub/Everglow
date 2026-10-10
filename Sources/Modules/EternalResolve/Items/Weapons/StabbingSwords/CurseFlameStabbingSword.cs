@@ -5,8 +5,8 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords
 {
 	public class CurseFlameStabbingSword : StabbingSwordItem
 	{
-		//TODO:翻译
-		//用诅咒火焰点燃敌人！
+		// TODO:翻译
+		// 用诅咒火焰点燃敌人！
 		public override void SetDefaults()
 		{
 			Item.damage = 40;
@@ -19,6 +19,7 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords
 			PowerfulStabProj = ModContent.ProjectileType<CurseFlameStabbingSword_Pro_Stab>();
 			base.SetDefaults();
 		}
+
 		public override void AddRecipes()
 		{
 			CreateRecipe().

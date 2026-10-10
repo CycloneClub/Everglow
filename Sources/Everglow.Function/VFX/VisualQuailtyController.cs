@@ -9,6 +9,6 @@ public class VisualQualityController : IVisualQualityController
 	public VisualQuality Quality => Lighting.Mode switch
 	{
 		LightMode.Color or LightMode.White => VisualQuality.High,
-		_ => VisualQuality.Low
+		_ => VisualQuality.Low,
 	};
 }

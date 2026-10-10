@@ -125,7 +125,7 @@ public class YggdrasilModule : EverglowModule
 
 		// 修改小地图绘制颜色在这里写
 		Tile tile = Main.tile[x, y];
-		if (tile.HasTile || tile.WallType > 0 || tile.LiquidAmount > 0)
+		if (tile.HasTile || tile.WallType > WallID.None || tile.LiquidAmount > 0)
 		{
 			return;
 		}

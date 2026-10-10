@@ -160,7 +160,7 @@ public class TileDataReaderSystem : Visual
 		string datas = "\nCoordinate: [" + i + ", " + j + "]";
 		datas += "\nHasTile: " + tile.HasTile;
 		datas += "\nType :" + tile.TileType;
-		//datas += "\nPaint :" + tile.BlockColorAndCoating().Invisible;
+		// datas += "\nPaint :" + tile.BlockColorAndCoating().Invisible;
 		if (tile.HasTile)
 		{
 			datas += " " + TileID.Search.GetName(tile.TileType);
@@ -186,9 +186,9 @@ public class TileDataReaderSystem : Visual
 				datas += "\nCan Fill Liquid Blocks: " + CheckLiquidTiles.Count;
 			}
 		}
-		//float waterLine;
-		//Collision.GetWaterLine(i, j, out waterLine);
-		//datas += "\n" + waterLine;
+		// float waterLine;
+		// Collision.GetWaterLine(i, j, out waterLine);
+		// datas += "\n" + waterLine;
 
 		if (tile.WallType > WallID.None)
 		{
@@ -202,7 +202,7 @@ public class TileDataReaderSystem : Visual
 	}
 
 	/// <summary>
-	/// When there is an isolated tile area(<=MaxContinueCount tiles), you can check the number of continue tiles.
+	/// When there is an isolated tile area(&lt;=MaxContinueCount tiles), you can check the number of continue tiles.
 	/// </summary>
 	/// <returns></returns>
 	public void UpdateContinueTiles(int i, int j)

@@ -1,5 +1,6 @@
 using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
+
 namespace Everglow.Myth.TheTusk.Items.Weapons;
 
 public class ToothStaff : ModItem
@@ -8,11 +9,11 @@ public class ToothStaff : ModItem
 
 	public override void SetStaticDefaults()
 	{
-		//TODO:翻译完记得删掉注释
-		//DisplayName.SetDefault("Tusk Staff");
-		//		//		//Tooltip.SetDefault("Raises tusks from the ground");
-		//Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "释放拔地而起的獠牙刺");
-		//Tooltip.AddTranslation((int)GameCulture.CultureName.Russian, "Поднимает клыки с земли");
+		// TODO:翻译完记得删掉注释
+		// DisplayName.SetDefault("Tusk Staff");
+		// //		//Tooltip.SetDefault("Raises tusks from the ground");
+		// Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "释放拔地而起的獠牙刺");
+		// Tooltip.AddTranslation((int)GameCulture.CultureName.Russian, "Поднимает клыки с земли");
 		CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 	}
 
@@ -40,10 +41,14 @@ public class ToothStaff : ModItem
 
 		Item.shoot = ModContent.ProjectileType<Projectiles.Weapon.TuskSummon>();
 	}
+
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		if (player.numMinions >= player.maxMinions)
+		{
 			return false;
+		}
+
 		player.AddBuff(ModContent.BuffType<Buffs.TuskStaff>(), 18000);
 		Projectile.NewProjectile(player.GetSource_ItemUse(Item), position, velocity, type, damage, knockback, player.whoAmI, player.ownedProjectileCounts[type] + 1);
 		int ai0 = 1;

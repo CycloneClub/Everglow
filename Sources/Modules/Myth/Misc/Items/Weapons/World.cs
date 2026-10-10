@@ -1,4 +1,5 @@
 using Terraria.DataStructures;
+
 namespace Everglow.Myth.Misc.Items.Weapons;
 
 public class World : ModItem
@@ -24,10 +25,14 @@ public class World : ModItem
 		Item.shootSpeed = 0;
 		Item.crit = 8;
 	}
+
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		if (player.ownedProjectileCounts[type] == 0)
+		{
 			Projectile.NewProjectile(source, player.Center, velocity, type, damage, knockback, player.whoAmI, 2, 0f);
+		}
+
 		return false;
 	}
 }

@@ -23,7 +23,9 @@ internal class LilyHarpWave : ModProjectile
 		Projectile.spriteDirection = player.direction;
 		Projectile.velocity *= 0;
 		if (player.itemTime <= 0)
+		{
 			Projectile.Kill();
+		}
 	}
 
 	public override bool PreDraw(ref Color lightColor)

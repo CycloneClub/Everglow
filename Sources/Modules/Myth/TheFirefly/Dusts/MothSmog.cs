@@ -15,7 +15,10 @@ public class MothSmog : ModDust
 		dust.alpha += 4;
 		Lighting.AddLight(dust.position, 0, 0, (float)((255 - dust.alpha) * 0.0015f));
 		if (dust.alpha > 254)
+		{
 			dust.active = false;
+		}
+
 		return false;
 	}
 
@@ -24,7 +27,9 @@ public class MothSmog : ModDust
 		float k = (255 - dust.alpha) / 255f;
 		float k2 = (float)Math.Sqrt(k);
 		if (dust.scale > 0.6f)
+		{
 			return new Color?(new Color(0f, 0f, 0f, k));
+		}
 		else
 		{
 			return new Color?(new Color(0f, 0f, 0f, k));

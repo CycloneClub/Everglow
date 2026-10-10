@@ -6,54 +6,61 @@ namespace Everglow.Yggdrasil.GreenCore.Projectiles.Melee;
 public class ShadowEulogistProj : MeleeProj
 {
 	public override string Texture => ModAsset.ShadowEulogist_Mod;
+
 	public override void SetDef()
 	{
 		maxAttackType = 1;
 		maxSlashTrailLength = 7;
 		Projectile.hide = true;
-		//shadertype = Commons.MEAC.Enums.MeleeTrailShaderType.ArcBladeTransparentedByZ;;
+		// shadertype = Commons.MEAC.Enums.MeleeTrailShaderType.ArcBladeTransparentedByZ;;
 		Projectile.scale *= 1.0f;
 		longHandle = true;
 	}
+
 	public override string TrailShapeTex()
 	{
 		return Commons.ModAsset.Melee_Mod;
 	}
+
 	public override string TrailColorTex()
 	{
 		return Texture + "_Color";
 	}
+
 	public override float TrailAlpha(float factor)
 	{
 		return base.TrailAlpha(factor);
 	}
+
 	public override BlendState TrailBlendState()
 	{
 		return CustomBlendStates.Reverse;
 	}
+
 	public override void DrawSelf(SpriteBatch spriteBatch, Color lightColor, Vector4 diagonal = default, Vector2 drawScale = default, Texture2D glowTexture = null)
 	{
 		base.DrawSelf(spriteBatch, lightColor, diagonal, drawScale, glowTexture);
 	}
+
 	public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 	{
-
 	}
+
 	public new void DrawBloom()
 	{
-
 	}
+
 	public override void Attack()
 	{
 		useBloom = false;
 		disFromPlayer = 20;
-		//drawScaleFactor = 10.1f;
+		// drawScaleFactor = 10.1f;
 		Player player = Main.player[Projectile.owner];
 		useSlash = true;
 
 		if (currantAttackType == 0)
 		{
-			if (timer < 20)//前摇
+			if (timer < 20)// 前摇
 			{
 				useSlash = false;
 				LockPlayerDir(player);
@@ -63,7 +70,10 @@ public class ShadowEulogistProj : MeleeProj
 				Projectile.rotation = mainAxisDirection.ToRotation();
 			}
 			if (timer == 20)
+			{
 				AttSound(SoundID.Item1);
+			}
+
 			if (timer > 20 && timer < 40)
 			{
 				canHit = true;
@@ -92,7 +102,7 @@ public class ShadowEulogistProj : MeleeProj
 
 		if (currantAttackType == 1)
 		{
-			if (timer < 30)//前摇
+			if (timer < 30)// 前摇
 			{
 				useSlash = false;
 				LockPlayerDir(player);
@@ -102,7 +112,10 @@ public class ShadowEulogistProj : MeleeProj
 				Projectile.rotation = mainAxisDirection.ToRotation();
 			}
 			if (timer == 20)
+			{
 				AttSound(SoundID.Item1);
+			}
+
 			if (timer > 30 && timer < 45)
 			{
 				canHit = true;

@@ -5,21 +5,21 @@ namespace Everglow.Commons.Coroutines;
 /// </summary>
 public class CoroutineManager
 {
-	private LinkedList<ICoroutine> m_coroutines;
+	private LinkedList<ICoroutine> coroutines;
 
 	public CoroutineManager()
 	{
-		m_coroutines = new LinkedList<ICoroutine>();
+		coroutines = new LinkedList<ICoroutine>();
 	}
 
 	public void StartCoroutine(ICoroutine coroutine)
 	{
-		m_coroutines.AddLast(coroutine);
+		coroutines.AddLast(coroutine);
 	}
 
 	public void Update()
 	{
-		var node = m_coroutines.First;
+		var node = coroutines.First;
 
 		while (node != null)
 		{
@@ -28,10 +28,14 @@ public class CoroutineManager
 			var current = node.Value;
 			bool finished = false;
 			if (current != null)
+			{
 				finished = !current.MoveNext();
+			}
 
 			if (finished)
-				m_coroutines.Remove(node);
+			{
+				coroutines.Remove(node);
+			}
 
 			node = nextNode;
 		}

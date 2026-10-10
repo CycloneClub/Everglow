@@ -5,9 +5,9 @@ namespace Everglow.Minortopography.GiantPinetree.Items
 {
 	public class PineStab : StabbingSwordItem
 	{
-		//TODO:翻译
-		//松叶较轻,故体力耗费为一般刺剑的72%
-		//怪物的防御力3倍有效
+		// TODO:翻译
+		// 松叶较轻,故体力耗费为一般刺剑的72%
+		// 怪物的防御力3倍有效
 		public override void SetDefaults()
 		{
 			StaminaCost = 0.72f;

@@ -41,7 +41,6 @@ public class HeatMapRenderPipeline_cursedFlame : PostPipeline
 
 		sb.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullNone);
 
-
 		gd.SetRenderTarget(heatMapScreen);
 		effect.Parameters["uTransform"].SetValue(Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1));
 		effect.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_curseFlame.Value);
@@ -61,6 +60,7 @@ public class HeatMapRenderPipeline_cursedFlame : PostPipeline
 		sb.Draw(heatMapScreen, Vector2.Zero, new Color(255, 255, 255, 0) * 0.4f);
 		sb.End();
 	}
+
 	public static Vector2 GetSunPos()
 	{
 		float HalfMaxTime = Main.dayTime ? 27000 : 16200;
@@ -72,7 +72,9 @@ public class HeatMapRenderPipeline_cursedFlame : PostPipeline
 		if (Main.LocalPlayer != null)
 		{
 			if (Main.LocalPlayer.gravDir == -1)
+			{
 				return new Vector2(StarX, Main.screenHeight - StarY);
+			}
 		}
 
 		return new Vector2(StarX, StarY);

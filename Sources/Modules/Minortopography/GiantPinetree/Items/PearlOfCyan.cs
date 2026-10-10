@@ -1,6 +1,7 @@
 namespace Everglow.Minortopography.GiantPinetree.Items;
-//TODO:翻译
-//任何攻击的暴击会召唤若干基础伤害为4的松针，算作魔法伤害
+
+// TODO:翻译
+// 任何攻击的暴击会召唤若干基础伤害为4的松针，算作魔法伤害
 public class PearlOfCyan : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
@@ -13,18 +14,22 @@ public class PearlOfCyan : ModItem
 		Item.accessory = true;
 		Item.rare = ItemRarityID.Orange;
 	}
+
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
 		player.GetModPlayer<PearlOfCyanPlayer>().PearlOfCyanOpen = true;
 	}
 }
+
 public class PearlOfCyanPlayer : ModPlayer
 {
 	internal bool PearlOfCyanOpen = false;
+
 	public override void ResetEffects()
 	{
 		PearlOfCyanOpen = false;
 	}
+
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		if (PearlOfCyanOpen)

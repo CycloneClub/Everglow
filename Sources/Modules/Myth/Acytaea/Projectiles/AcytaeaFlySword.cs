@@ -8,6 +8,7 @@ namespace Everglow.Myth.Acytaea.Projectiles;
 public class AcytaeaFlySword : ModProjectile
 {
 	public override string Texture => "Everglow/Myth/Acytaea/Projectiles/AcytaeaSword_projectile";
+
 	public override void SetDefaults()
 	{
 		Projectile.aiStyle = -1;
@@ -26,14 +27,22 @@ public class AcytaeaFlySword : ModProjectile
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 60;
 	}
+
 	public int TimeTokill = -1;
 	public Vector2 Aim = Vector2.Zero;
+
 	public override void AI()
 	{
 		if (TimeTokill >= 0 && TimeTokill <= 2)
+		{
 			Projectile.Kill();
+		}
+
 		if (TimeTokill <= 80 && TimeTokill > 0)
+		{
 			Projectile.velocity = Projectile.oldVelocity;
+		}
+
 		TimeTokill--;
 		if (TimeTokill >= 0)
 		{
@@ -69,12 +78,14 @@ public class AcytaeaFlySword : ModProjectile
 			}
 		}
 	}
+
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
 		AmmoHit();
 		Projectile.tileCollide = false;
 		return false;
 	}
+
 	public void AmmoHit()
 	{
 		SoundEngine.PlaySound(SoundID.DD2_GoblinBomb.WithPitchOffset(-1), Projectile.Center);
@@ -88,7 +99,7 @@ public class AcytaeaFlySword : ModProjectile
 		Projectile.friendly = false;
 		Projectile.ignoreWater = true;
 		Projectile.velocity = Projectile.oldVelocity;
-		SoundEngine.PlaySound((SoundID.DD2_WitherBeastCrystalImpact.WithVolume(0.3f)).WithPitchOffset(Main.rand.NextFloat(-0.4f, 0.4f)), Projectile.Center);
+		SoundEngine.PlaySound(SoundID.DD2_WitherBeastCrystalImpact.WithVolume(0.3f).WithPitchOffset(Main.rand.NextFloat(-0.4f, 0.4f)), Projectile.Center);
 		for (int x = 0; x < 25; x++)
 		{
 			Vector2 newVec = new Vector2(0, Main.rand.NextFloat(4f, 12f)).RotatedByRandom(6.238f);
@@ -101,23 +112,26 @@ public class AcytaeaFlySword : ModProjectile
 				Visible = true,
 				position = positionVFX,
 				maxTime = Main.rand.Next(14, 16),
-				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.04f, 0.04f), Main.rand.NextFloat(18f, 30f) }
+				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.04f, 0.04f), Main.rand.NextFloat(18f, 30f) },
 			};
 			Ins.VFXManager.Add(acytaeaFlame);
 		}
-		//Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<AcytaeaFlySwordExplosion>(), Projectile.damage, Projectile.knockBack, player.whoAmI, 14);
+		// Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<AcytaeaFlySwordExplosion>(), Projectile.damage, Projectile.knockBack, player.whoAmI, 14);
 		Projectile.position -= Projectile.velocity;
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;
 	}
+
 	public override void OnHitPlayer(Player target, Player.HurtInfo info)
 	{
 		AmmoHit();
 		target.AddBuff(ModContent.BuffType<AcytaeaInferno>(), 450);
 		base.OnHitPlayer(target, info);
 	}
+
 	public void DrawTrail(Texture2D tex, Color color, float width = 36)
 	{
 		var c0 = color;
@@ -126,7 +140,9 @@ public class AcytaeaFlySword : ModProjectile
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
 
 			trueL++;
 		}
@@ -142,9 +158,14 @@ public class AcytaeaFlySword : ModProjectile
 		{
 			float width2 = width;
 			if (i < 10)
+			{
 				width2 *= i / 10f;
+			}
+
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
 
 			var normalDir = Projectile.oldPos[i - 1] - Projectile.oldPos[i];
 			if (normalDir == Vector2.zeroVector)
@@ -170,8 +191,11 @@ public class AcytaeaFlySword : ModProjectile
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		Main.graphics.GraphicsDevice.Textures[0] = t;
 		if (bars.Count > 3)
+		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
+		}
 	}
+
 	private void CheckFrame()
 	{
 		Projectile.frameCounter++;
@@ -188,6 +212,7 @@ public class AcytaeaFlySword : ModProjectile
 			Projectile.frameCounter = 0;
 		}
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
 		Main.spriteBatch.End();

@@ -7,6 +7,7 @@ namespace Everglow.Yggdrasil.KelpCurtain.Tiles.DeathJadeLake.IRProbe;
 public class IRProbe_Normal_Laser : TileVFX
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawPlayers;
+
 	public float Rotation;
 	public float Omega;
 	public float StartRotation;

@@ -23,10 +23,14 @@ public class CyanVineOreLargeUp : ModTile
 		DustType = ModContent.DustType<Dusts.CyanVine>();
 		AdjTiles = new int[] { Type };
 	}
+
 	public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
 	{
 		if (fail)
+		{
 			return;
+		}
+
 		var ThisTile = Main.tile[i, j];
 		int X0 = i - ThisTile.TileFrameX / 18;
 		int Y0 = j - ThisTile.TileFrameY / 18;
@@ -38,7 +42,9 @@ public class CyanVineOreLargeUp : ModTile
 				if (tile.TileFrameX == x * 18 && tile.TileFrameY == y * 18)
 				{
 					if (tile.TileType == ModContent.TileType<CyanVineOreTile>() && tile.HasTile)
+					{
 						tile.HasTile = false;
+					}
 				}
 			}
 		}
@@ -56,12 +62,16 @@ public class CyanVineOreLargeUp : ModTile
 			Dust.NewDust(new Vector2(i * 16 + Main.rand.Next(90) - 16, j * 16 + Main.rand.Next(64)) + vF, 0, 0, ModContent.DustType<Dusts.CyanVine>(), vF.X, vF.Y);
 		}
 	}
+
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		var tile = Main.tile[i, j];
 		var zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
 		if (Main.drawToScreen)
+		{
 			zero = Vector2.Zero;
+		}
+
 		if (tile.TileFrameX % 90 == 36 && tile.TileFrameY == 0)
 		{
 			for (int x = -2; x < 3; x++)

@@ -24,7 +24,9 @@ public class FireflyBorageBadge : ModItem
 		if (CorruptMoth.CorruptMothNPC != null && CorruptMoth.CorruptMothNPC.active)
 		{
 			if (player.statDefense <= 48)
-				player.statDefense -= player.statDefense / 4; //48 / 4, would be player.statDefense / 4, up to a value change of -12.
+			{
+				player.statDefense -= player.statDefense / 4; // 48 / 4, would be player.statDefense / 4, up to a value change of -12.
+			}
 			else
 			{
 				player.statDefense -= 12;
@@ -73,11 +75,10 @@ public class FireflyBorageBadge : ModItem
 	public override void AddRecipes()
 	{
 		CreateRecipe()
-			//.AddIngredient(ModContent.ItemType<Everglow.PlantAndFarm.Items.Materials.WindMoveSeed>(), 8) // 15
+			// .AddIngredient(ModContent.ItemType<Everglow.PlantAndFarm.Items.Materials.WindMoveSeed>(), 8) // 15
 			.AddIngredient(ModContent.ItemType<BlackStarShrub>(), 24)
 			.AddIngredient(ModContent.ItemType<GlowingPetal>(), 6)
 			.AddTile(TileID.LivingLoom)
 			.Register();
 	}
-
 }

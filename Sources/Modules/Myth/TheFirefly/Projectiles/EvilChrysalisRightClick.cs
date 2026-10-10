@@ -26,7 +26,9 @@ internal class EvilChrysalisRightClick : ModProjectile
 		Projectile.position = player.MountedCenter - new Vector2(25, 25);
 		player.heldProj = Projectile.whoAmI;
 		if (Main.mouseRight && player.statMana >= player.ownedProjectileCounts[ModContent.ProjectileType<GlowMoth>()])
+		{
 			Projectile.timeLeft = 5;
+		}
 	}
 
 	public override bool PreDraw(ref Color lightColor)
@@ -42,7 +44,9 @@ internal class EvilChrysalisRightClick : ModProjectile
 		Color color = Lighting.GetColor((int)Projectile.Center.X / 16, (int)(Projectile.Center.Y / 16.0));
 		SpriteEffects S = SpriteEffects.None;
 		if (Math.Sign(Vdr.X) == -1)
+		{
 			player.direction = -1;
+		}
 		else
 		{
 			player.direction = 1;

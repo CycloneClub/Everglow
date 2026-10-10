@@ -22,26 +22,31 @@ public class MothWorldDoor : ModTile
 			16,
 			16,
 			16,
-			16
+			16,
 		};
 		TileObjectData.newTile.StyleHorizontal = true;
 		TileObjectData.addTile(Type);
 		var modTranslation = CreateMapEntryName();
 		AddMapEntry(new Color(148, 0, 255), modTranslation);
 	}
+
 	public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 	{
 		r = 0f;
 		g = 0f;
 		b = 0f;
 	}
+
 	public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		var tile = Main.tile[i, j];
 		var zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
 
 		if (Main.drawToScreen)
+		{
 			zero = Vector2.Zero;
+		}
+
 		Texture2D tex = ModAsset.MothWorldDoorGlow.Value;
 
 		spriteBatch.Draw(tex, new Vector2(i * 16, j * 16) - Main.screenPosition + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16), new Color(1f, 1f, 1f, 0), 0, new Vector2(0), 1, SpriteEffects.None, 0);
@@ -61,6 +66,7 @@ public class MothWorldDoor : ModTile
 	{
 		return false;
 	}
+
 	public override void RandomUpdate(int i, int j)
 	{
 		if (DrawMagicArraySystem.ArrayPosition != Vector2.zeroVector)
@@ -84,15 +90,16 @@ public class MothWorldDoor : ModTile
 		}
 		base.RandomUpdate(i, j);
 	}
+
 	public override void NearbyEffects(int i, int j, bool closer)
 	{
 		Player player = Main.LocalPlayer;
 		if ((player.Center - new Vector2(i * 16, j * 16)).Length() < 12)
 		{
-
 		}
 		base.NearbyEffects(i, j, closer);
 	}
+
 	public override void MouseOver(int i, int j)
 	{
 		Player player = Main.LocalPlayer;
@@ -100,18 +107,24 @@ public class MothWorldDoor : ModTile
 		player.cursorItemIconEnabled = true;
 		player.cursorItemIconID = ModContent.ItemType<Items.FireflyImpression>();
 	}
+
 	public override bool RightClick(int i, int j)
 	{
 		if (SubworldSystem.IsActive<MothWorld>())
+		{
 			SubworldSystem.Exit();
+		}
 		else
 		{
 			if (!SubworldSystem.Enter<MothWorld>())
+			{
 				Main.NewText("Fail!");
+			}
 		}
 		return base.RightClick(i, j);
 	}
 }
+
 public class DrawMagicArraySystem : ModSystem
 {
 	public override void OnModLoad()
@@ -121,10 +134,11 @@ public class DrawMagicArraySystem : ModSystem
 			Ins.HookManager.AddHook(CodeLayer.PostDrawTiles, DrawMagicArray);
 		}
 	}
+
 	public static Vector2 ArrayPosition = Vector2.zeroVector;
+
 	public static void DrawMagicArray()
 	{
-
 		if (ArrayPosition == Vector2.zeroVector)
 		{
 			return;
@@ -173,9 +187,8 @@ public class DrawMagicArraySystem : ModSystem
 		DrawTexLine(Point4, Point5, c1, c1, magicSeal);
 		DrawTexLine(Point5, Point6, c1, c1, magicSeal);
 		DrawTexLine(Point6, Point4, c1, c1, magicSeal);
-
-
 	}
+
 	public static void DrawTexLine(Vector2 StartPos, Vector2 EndPos, Color color1, Color color2, Texture2D tex)
 	{
 		float Wid = 4f;
@@ -189,7 +202,7 @@ public class DrawMagicArraySystem : ModSystem
 
 		if (value1 < value0)
 		{
-			float valueMiddle = (1 - value0) / (0.4f);
+			float valueMiddle = (1 - value0) / 0.4f;
 			Vector2 Delta = EndPos - StartPos;
 			vertex2Ds.Add(new Vertex2D(StartPos + Width, color1, new Vector3(value0, 0, 0)));
 			vertex2Ds.Add(new Vertex2D(StartPos + Delta * valueMiddle + Width, color2, new Vector3(1, 0, 0)));
@@ -220,6 +233,7 @@ public class DrawMagicArraySystem : ModSystem
 		Main.graphics.GraphicsDevice.Textures[0] = tex;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, vertex2Ds.ToArray(), 0, vertex2Ds.Count / 3);
 	}
+
 	public static void DrawTexCircle(float radius, float width, Color color, Vector2 center, Texture2D tex, double addRot = 0)
 	{
 		float timer = (float)(Main.time * 0.003f);

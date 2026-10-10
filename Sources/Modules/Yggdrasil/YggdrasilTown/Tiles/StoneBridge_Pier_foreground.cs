@@ -7,6 +7,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Tiles;
 public class StoneBridge_Pier_foreground : TileVFX
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawPlayers;
+
 	public override void Update()
 	{
 		if (!SubworldSystem.IsActive<YggdrasilWorld>())

@@ -12,6 +12,7 @@ public class Spark_EnchantedStabPipeline : Pipeline
 		effect = ModAsset.Spark_EnchantedStab;
 		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Enchanted.Value);
 	}
+
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
@@ -24,15 +25,18 @@ public class Spark_EnchantedStabPipeline : Pipeline
 		Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.None, SamplerState.PointWrap, RasterizerState.CullNone);
 		effect.CurrentTechnique.Passes[0].Apply();
 	}
+
 	public override void EndRender()
 	{
 		Ins.Batch.End();
 	}
 }
+
 [Pipeline(typeof(Spark_EnchantedStabPipeline), typeof(BloomPipeline))]
 public class Spark_EnchantedStabDust : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
+
 	public Vector2 position;
 	public Vector2 velocity;
 	public float[] ai;
@@ -41,7 +45,11 @@ public class Spark_EnchantedStabDust : Visual
 	public float scale;
 	public float rotation;
 	public bool noGravity;
-	public Spark_EnchantedStabDust() { }
+
+	public Spark_EnchantedStabDust()
+	{
+	}
+
 	public override void Update()
 	{
 		ai[1] *= 0.99f;
@@ -62,7 +70,10 @@ public class Spark_EnchantedStabDust : Visual
 		scale *= 0.995f;
 		timer++;
 		if (timer > maxTime)
+		{
 			Active = false;
+		}
+
 		velocity = velocity.RotatedBy(ai[1]);
 		if (Collision.SolidCollision(position, 0, 0))
 		{
@@ -100,11 +111,11 @@ public class Spark_EnchantedStabDust : Visual
 		Vector2 toCorner = new Vector2(0, scale * 0.2f).RotatedBy(rotation);
 		List<Vertex2D> bars = new List<Vertex2D>()
 		{
-			new Vertex2D(position + toCorner + velocity * 3,new Color(0, 0,pocession, 0.0f), new Vector3(0)),
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 0.5),new Color(0, 1, pocession, 0.0f), new Vector3(0)),
+			new Vertex2D(position + toCorner + velocity * 3, new Color(0, 0, pocession, 0.0f), new Vector3(0)),
+			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 0.5), new Color(0, 1, pocession, 0.0f), new Vector3(0)),
 
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 1.5),new Color(1, 0 ,pocession, 0.0f), new Vector3(0)),
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 1) - velocity,new Color(1, 1, pocession, 0.0f), new Vector3(0))
+			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 1.5), new Color(1, 0, pocession, 0.0f), new Vector3(0)),
+			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 1) - velocity, new Color(1, 1, pocession, 0.0f), new Vector3(0)),
 		};
 
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);

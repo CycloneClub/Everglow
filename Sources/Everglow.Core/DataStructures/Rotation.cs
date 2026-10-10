@@ -76,7 +76,7 @@ public struct Rotation
 	public readonly float XFilpAngle => _radian switch
 	{
 		< 0 => -MathHelper.Pi - _radian,
-		_ => MathHelper.Pi - _radian
+		_ => MathHelper.Pi - _radian,
 	};
 
 	/// <summary>
@@ -112,6 +112,7 @@ public struct Rotation
 	/// <summary>
 	/// 选择就近的旋转方向进行逼近
 	/// </summary>
+	/// <param name="start">开始逼近时的旋转角度。</param>
 	/// <param name="target"> </param>
 	/// <param name="value"> </param>
 	/// <returns> </returns>
@@ -120,7 +121,10 @@ public struct Rotation
 		float dis = Math.Abs(start._radian - target._radian);
 		bool clockwise = dis < MathHelper.Pi;
 		if ((clockwise ? dis : MathHelper.TwoPi - dis) <= value)
+		{
 			return target;
+		}
+
 		return new Rotation(start._radian + value * (clockwise ^ start._radian > target._radian ? 1 : -1));
 	}
 
@@ -146,7 +150,10 @@ public struct Rotation
 	public static Rotation Lerp(Rotation from, Rotation to, float value)
 	{
 		if (Math.Abs(from._radian - to._radian) > MathHelper.Pi)
+		{
 			to._radian -= Math.Sign(to._radian) * MathHelper.TwoPi;
+		}
+
 		return from * (1 - value) + to * value;
 	}
 

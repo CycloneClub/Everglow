@@ -15,20 +15,22 @@ public class BlackVine : ModTile
 		Main.tileSolid[Type] = false;
 		TileID.Sets.IsVine[Type] = true;
 		TileID.Sets.VineThreads[Type] = true;
-		DustType = 191;
+		DustType = DustID.SpookyWood;
 		Main.tileCut[Type] = true;
 		var modTranslation = CreateMapEntryName();
 		AddMapEntry(new Color(11, 11, 11), modTranslation);
 		HitSound = SoundID.Grass;
-
 	}
+
 	public override void PlaceInWorld(int i, int j, Item item)
 	{
 	}
+
 	public override IEnumerable<Item> GetItemDrops(int i, int j)
 	{
 		yield break;
 	}
+
 	public override void RandomUpdate(int i, int j)
 	{
 		int deltaY = 0;
@@ -56,11 +58,14 @@ public class BlackVine : ModTile
 				// frame调整与联机同步
 				WorldGen.SquareTileFrame(i, j + 1);
 				if (Main.netMode is NetmodeID.Server)
+				{
 					NetMessage.SendTileSquare(-1, i, j + 1);
+				}
 			}
 		}
 		base.RandomUpdate(i, j);
 	}
+
 	public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
 	{
 		base.KillTile(i, j, ref fail, ref effectOnly, ref noItem);
@@ -80,6 +85,8 @@ public class BlackVine : ModTile
 	public override void SetSpriteEffects(int i, int j, ref SpriteEffects spriteEffects)
 	{
 		if (i % 2 == 0)
+		{
 			spriteEffects = SpriteEffects.FlipHorizontally;
+		}
 	}
 }

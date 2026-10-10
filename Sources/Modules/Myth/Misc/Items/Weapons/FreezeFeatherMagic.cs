@@ -14,6 +14,7 @@ public class FreezeFeatherMagic : SpellTomeItem
 	{
 		CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 	}
+
 	public override void SetDefaults()
 	{
 		Item.damage = 41;
@@ -36,6 +37,7 @@ public class FreezeFeatherMagic : SpellTomeItem
 		DecorativeProjectileTypes.Add(ModContent.ProjectileType<FreezeFeatherMagicBook>());
 		DecorativeProjectileTypes.Add(ModContent.ProjectileType<FreezeFeatherMagicArray>());
 	}
+
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		if (player.GetModPlayer<MagicBookPlayer>().MagicBookLevel == 1)
@@ -53,9 +55,11 @@ public class FreezeFeatherMagic : SpellTomeItem
 		}
 		return false;
 	}
+
 	public override void HoldItem(Player player)
 	{
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

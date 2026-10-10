@@ -2,8 +2,9 @@ using Terraria.DataStructures;
 using static Everglow.Commons.TileHelper.ShakeTreeTweak;
 
 namespace Everglow.Minortopography.GiantPinetree.Items;
-//TODO:翻译
-//摇树掉落水果
+
+// TODO:翻译
+// 摇树掉落水果
 public class HarvestingClaw : FruitPickerTool
 {
 	public override void SetDefaults()
@@ -23,5 +24,3 @@ public class HarvestingClaw : FruitPickerTool
 		Item.axe = 1;
 	}
 }
-
-

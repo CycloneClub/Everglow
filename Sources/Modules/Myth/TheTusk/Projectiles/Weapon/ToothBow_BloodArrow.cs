@@ -23,6 +23,7 @@ public class ToothBow_BloodArrow : ModProjectile
 		Projectile.localNPCHitCooldown = 4;
 		Projectile.aiStyle = -1;
 	}
+
 	public int stickNPC = -1;
 	public float relativeAngle = 0;
 	public Vector2 relativePos = Vector2.zeroVector;
@@ -30,10 +31,12 @@ public class ToothBow_BloodArrow : ModProjectile
 	public bool HasHitTile = false;
 	public int HitCount = 0;
 	public float Power = 0;
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		HasHitTile = false;
 	}
+
 	public override void AI()
 	{
 		Power *= 0.75f;
@@ -58,6 +61,7 @@ public class ToothBow_BloodArrow : ModProjectile
 			}
 		}
 	}
+
 	public void StickToTarget()
 	{
 		Projectile.velocity *= 0;
@@ -75,13 +79,14 @@ public class ToothBow_BloodArrow : ModProjectile
 			}
 		}
 	}
+
 	public bool Collide(Vector2 positon)
 	{
 		foreach (NPC npc in Main.npc)
 		{
 			if (npc.active && !npc.dontTakeDamage)
 			{
-				if ((new Rectangle((int)Projectile.Center.X, (int)Projectile.Center.Y, 1, 1)).Intersects(npc.Hitbox))
+				if (new Rectangle((int)Projectile.Center.X, (int)Projectile.Center.Y, 1, 1).Intersects(npc.Hitbox))
 				{
 					relativeAngle = Projectile.rotation - npc.rotation;
 					hitTargetAngle = Projectile.rotation;
@@ -93,6 +98,7 @@ public class ToothBow_BloodArrow : ModProjectile
 		}
 		return Collision.SolidCollision(positon, 0, 0);
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		if (Power > 1f)
@@ -106,12 +112,14 @@ public class ToothBow_BloodArrow : ModProjectile
 		Main.spriteBatch.Draw(tex, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, tex.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
 		return false;
 	}
+
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
 		Projectile.velocity *= 0;
 		HasHitTile = true;
 		return true;
 	}
+
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		if (Projectile.ai[0] != 3)
@@ -151,10 +159,12 @@ public class ToothBow_BloodArrow : ModProjectile
 		}
 		base.OnHitNPC(target, hit, damageDone);
 	}
+
 	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
 	{
 		behindNPCsAndTiles.Add(index);
 	}
+
 	public override void OnKill(int timeLeft)
 	{
 		for (int i = 0; i < 7; i++)

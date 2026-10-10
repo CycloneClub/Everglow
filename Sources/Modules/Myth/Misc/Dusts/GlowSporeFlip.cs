@@ -8,6 +8,7 @@ public class GlowSporeFlip : ModDust
 		dust.alpha = 0;
 		dust.rotation = 0;
 	}
+
 	public override bool Update(Dust dust)
 	{
 		// Move the dust based on its velocity and reduce its size to then remove it, as the 'return false;' at the end will prevent vanilla logic.
@@ -20,31 +21,37 @@ public class GlowSporeFlip : ModDust
 		{
 			int type = dust.type;
 			if (Main.rand.Next(100) > 50)
+			{
 				type = ModContent.DustType<GlowSpore>();
+			}
+
 			int r1 = Dust.NewDust(dust.position, 0, 0, type, 0, 0, 200, default, dust.scale * 0.75f);
 			Main.dust[r1].velocity = dust.velocity.RotatedBy(Main.rand.NextFloat(0.2f, 1.3f));
 			Main.dust[r1].noGravity = true;
 			int r2 = Dust.NewDust(dust.position, 0, 0, type, 0, 0, 200, default, dust.scale * 0.75f);
 			Main.dust[r2].velocity = dust.velocity.RotatedBy(Main.rand.NextFloat(-1.3f, -0.2f));
 			Main.dust[r2].noGravity = true;
-			//dust.active = false;
+			// dust.active = false;
 		}
 		if (dust.scale < 0.01f)
+		{
 			dust.active = false;
+		}
 		/*if(Main.tile[(int)((dust.position.X + dust.velocity.X * 6) / 16f), (int)((dust.position.Y + dust.velocity.Y * 6) / 16f)].CollisionType == 0)
-            {
-                dust.velocity *= -1;
-            }
-            if (Main.tile[(int)((dust.position.X + dust.velocity.X * 6) / 16f), (int)((dust.position.Y + dust.velocity.Y * 6) / 16f)].CollisionType == 1)
-            {
-                dust.velocity.X *= -1;
-            }
-            if (Main.tile[(int)((dust.position.X + dust.velocity.X * 6) / 16f), (int)((dust.position.Y + dust.velocity.Y * 6) / 16f)].CollisionType == 2)
-            {
-                dust.velocity.Y *= -1;
-            }*/
+	{
+		dust.velocity *= -1;
+	}
+	if (Main.tile[(int)((dust.position.X + dust.velocity.X * 6) / 16f), (int)((dust.position.Y + dust.velocity.Y * 6) / 16f)].CollisionType == 1)
+	{
+		dust.velocity.X *= -1;
+	}
+	if (Main.tile[(int)((dust.position.X + dust.velocity.X * 6) / 16f), (int)((dust.position.Y + dust.velocity.Y * 6) / 16f)].CollisionType == 2)
+	{
+		dust.velocity.Y *= -1;
+	}*/
 		return false;
 	}
+
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		return new Color?(new Color(255, 255, 255, 0f));

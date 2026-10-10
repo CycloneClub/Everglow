@@ -1,4 +1,5 @@
 using Terraria.DataStructures;
+
 namespace Everglow.Myth.Misc.Items.Weapons;
 
 public class SilveralGun : ModItem
@@ -17,7 +18,7 @@ public class SilveralGun : ModItem
 		Item.noMelee = true;
 		Item.knockBack = 0;
 		Item.value = 500;
-		Item.rare = 1;
+		Item.rare = ItemRarityID.Blue;
 		Item.UseSound = SoundID.Item11;
 		Item.autoReuse = true;
 		Item.shoot = ProjectileID.PurificationPowder;
@@ -25,15 +26,18 @@ public class SilveralGun : ModItem
 		Item.useAmmo = AmmoID.Bullet;
 		Item.crit = 0;
 	}
+
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		Projectile.NewProjectile(source, position + velocity * 2 + new Vector2(0, -2), velocity, type, damage, knockback, player.whoAmI, 0);
 		return false;
 	}
+
 	public override Vector2? HoldoutOffset()
 	{
 		return new Vector2(-6f, 0);
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

@@ -25,7 +25,7 @@ public class YggdrasilPlayerRoomDoor : RoomDoorTile
 			for (int y = 20; y < 23; y++)
 			{
 				Tile tile = TileUtils.SafeGetTile(x, y);
-				tile.WallType = 1;
+				tile.WallType = WallID.Stone;
 				ushort typeChange = (ushort)ModContent.TileType<PlayerRoomCommandBlock>();
 				if (y == 22)
 				{

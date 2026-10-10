@@ -22,14 +22,17 @@ public class PierWithSlabs : ModTile
 		// Etc
 		AddMapEntry(new Color(86, 86, 86));
 	}
+
 	public override void NumDust(int i, int j, bool fail, ref int num)
 	{
 		num = 0;
 	}
+
 	public override bool CanExplode(int i, int j)
 	{
 		return false;
 	}
+
 	public override bool CanKillTile(int i, int j, ref bool blockDamaged)
 	{
 		return false;

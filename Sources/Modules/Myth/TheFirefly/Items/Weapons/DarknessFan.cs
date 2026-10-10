@@ -14,10 +14,10 @@ public class DarknessFan : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.SummonWeapons;
 
-	FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
+	private FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
+
 	public override void SetDefaults()
 	{
-
 		Item.damage = 9;
 		Item.DamageType = DamageClass.Summon;
 		Item.mana = 12;
@@ -36,6 +36,7 @@ public class DarknessFan : ModItem
 		Item.shoot = ModContent.ProjectileType<GlowingButterfly>();
 		Item.shootSpeed = 8;
 	}
+
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		if (player.altFunctionUse == 2 && colling == 0)
@@ -44,7 +45,7 @@ public class DarknessFan : ModItem
 			Projectile.NewProjectile(source, position + new Vector2(0, -24), velocity * 3.4f, ModContent.ProjectileType<DarkFanFly>(), (int)(damage * 1.4), knockback, player.whoAmI, 6 + player.maxMinions * 1.5f, 0f);
 			Item.useTime = 6;
 			Item.useAnimation = 6;
-			//Item.UseSound = SoundID.DD2_JavelinThrowersAttack;
+			// Item.UseSound = SoundID.DD2_JavelinThrowersAttack;
 			return false;
 		}
 		type = ModContent.ProjectileType<DarkFan>();
@@ -77,6 +78,7 @@ public class DarknessFan : ModItem
 		}
 		return true;
 	}
+
 	public override void ModifyTooltips(List<TooltipLine> tooltips)
 	{
 		if (MothEye.LocalOwner != null && MothEye.LocalOwner.TryGetModPlayer(out MothEyePlayer mothEyePlayer))
@@ -91,6 +93,7 @@ public class DarknessFan : ModItem
 			}
 		}
 	}
+
 	public override void UpdateInventory(Player player)
 	{
 		if (colling > 0)

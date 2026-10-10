@@ -4,8 +4,8 @@ public class ElderberryBuff : ModBuff
 {
 	public override void SetStaticDefaults()
 	{
-		//DisplayName.SetDefault("ElderberryBuff");
-		//Description.SetDefault("你可以短距离冲刺\n“抗氧化”");
+		// DisplayName.SetDefault("ElderberryBuff");
+		// Description.SetDefault("你可以短距离冲刺\n“抗氧化”");
 		Main.buffNoTimeDisplay[Type] = false;
 		Main.debuff[Type] = false; // 添加这个，这样护士在治疗时就不会去除buff
 	}
@@ -14,9 +14,9 @@ public class ElderberryBuff : ModBuff
 	{
 		ElderberryBuffDash ElderberryBuffDash = player.GetModPlayer<ElderberryBuffDash>();
 		ElderberryBuffDash.ElderberryBuff = true;
-
 	}
 }
+
 public class ElderberryBuffDash : ModPlayer
 {
 	public const int DashDown = 0;
@@ -27,9 +27,7 @@ public class ElderberryBuffDash : ModPlayer
 	public const int DashCooldown = 50;
 	public const int DashDuration = 35;
 
-
 	public const float DashVelocity = 8f;
-
 
 	public int DashDir = -1;
 
@@ -42,7 +40,9 @@ public class ElderberryBuffDash : ModPlayer
 		ElderberryBuff = false;
 
 		if (Player.controlDown && Player.releaseDown && Player.doubleTapCardinalTimer[DashDown] < 15)
+		{
 			DashDir = DashDown;
+		}
 		else if (Player.controlUp && Player.releaseUp && Player.doubleTapCardinalTimer[DashUp] < 15)
 		{
 			DashDir = DashUp;
@@ -90,15 +90,15 @@ public class ElderberryBuffDash : ModPlayer
 			DashDelay = DashCooldown;
 			DashTimer = DashDuration;
 			Player.velocity = newVelocity;
-
 		}
 
 		if (DashDelay > 0)
+		{
 			DashDelay--;
+		}
 
 		if (DashTimer > 0)
 		{
-
 			Player.eocDash = DashTimer;
 			Player.armorEffectDrawShadowEOCShield = true;
 
@@ -114,4 +114,3 @@ public class ElderberryBuffDash : ModPlayer
 			&& !Player.mount.Active;
 	}
 }
-

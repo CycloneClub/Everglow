@@ -4,9 +4,10 @@ public class ScreenShaker : ModPlayer
 {
 	public Vector2 FlyCamPosition = Vector2.Zero;
 	public Vector2 FlyCamPosition2;
-	public float DirFlyCamPosStrength = 1f; //ShakeStrength
-	public int DirFlyCamPos = 0; //Shake
-	public int MinaFlyCamPos = 0; //MinaShake
+	public float DirFlyCamPosStrength = 1f; // ShakeStrength
+	public int DirFlyCamPos = 0; // Shake
+	public int MinaFlyCamPos = 0; // MinaShake
+
 	public override void ModifyScreenPosition()
 	{
 		FlyCamPosition *= 0.25f;
@@ -17,7 +18,9 @@ public class ScreenShaker : ModPlayer
 			DirFlyCamPos -= 1;
 			FlyCamPosition2 = new Vector2(Main.rand.NextFloat(-16 * DirFlyCamPosStrength, 16 * DirFlyCamPosStrength), Main.rand.Next(-16, 16));
 			if (DirFlyCamPos == 1)
+			{
 				FlyCamPosition2 = Vector2.Zero;
+			}
 		}
 		else
 		{
@@ -29,7 +32,9 @@ public class ScreenShaker : ModPlayer
 			MinaFlyCamPos -= 1;
 			FlyCamPosition2 = new Vector2(Main.rand.NextFloat(-4 * DirFlyCamPosStrength, 4 * DirFlyCamPosStrength), Main.rand.NextFloat(-4 * DirFlyCamPosStrength, 4 * DirFlyCamPosStrength));
 			if (MinaFlyCamPos == 1)
+			{
 				FlyCamPosition2 = Vector2.Zero;
+			}
 		}
 		else
 		{

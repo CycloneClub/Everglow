@@ -20,7 +20,10 @@ public class GreyBlue : ModDust
 
 		Lighting.AddLight(dust.position, dust.scale * 0f, dust.scale * 0f, dust.scale * 0.25f);
 		if (dust.scale < 0.25f)
+		{
 			dust.active = false;
+		}
+
 		return false;
 	}
 

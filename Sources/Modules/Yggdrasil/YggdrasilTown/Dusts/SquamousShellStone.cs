@@ -53,6 +53,7 @@ public class SquamousShellStone : ModDust
 		}
 		return false;
 	}
+
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		return lightColor * ((255 - dust.alpha) / 255f);

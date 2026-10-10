@@ -1,5 +1,6 @@
 using Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood.Furniture;
 using Terraria.GameContent.Creative;
+
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Placeables.Furniture.LampWood;
 
 public class LampWood_Platform : ModItem

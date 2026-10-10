@@ -11,29 +11,33 @@ public class GlowSporeBead : SlingshotAmmo
 	public override void SetDef()
 	{
 	}
+
 	public override void AI()
 	{
-		if (TimeTokill >= 0 && TimeTokill <= 2)
+		if (timeTokill >= 0 && timeTokill <= 2)
+		{
 			Projectile.Kill();
-		if (TimeTokill <= 15 && TimeTokill > 0)
+		}
+
+		if (timeTokill <= 15 && timeTokill > 0)
+		{
 			Projectile.velocity = Projectile.oldVelocity;
-		TimeTokill--;
-		if (TimeTokill < 0)
+		}
+
+		timeTokill--;
+		if (timeTokill < 0)
 		{
 			Projectile.velocity.Y += 0.17f;
 			int index = Dust.NewDust(Projectile.position - new Vector2(4), Projectile.width, Projectile.height, ModContent.DustType<JungleSpore>(), 0f, 0f, 100, default, Main.rand.NextFloat(0.6f, 1.1f));
 			Main.dust[index].velocity = Projectile.velocity * 0.5f;
 			for (float v = 0; v < Projectile.velocity.Length(); v += 1f)
 			{
-
-
 				if (v % 8 == 0)
 				{
 					int index2 = Dust.NewDust(Projectile.position - Projectile.velocity.SafeNormalize(Vector2.Zero) * v - new Vector2(4), Projectile.width, Projectile.height, ModContent.DustType<JungleSmogStoppedByTile>(), 0f, 0f, 0, default, Main.rand.NextFloat(3.7f, 5.1f));
 					Main.dust[index2].velocity = Projectile.velocity * 0.5f;
 					Main.dust[index2].alpha = (int)(Main.dust[index2].scale * 50);
 				}
-
 
 				int type = ModContent.DustType<LittleJungleSpore>();
 				if (Main.rand.NextBool(8))
@@ -46,7 +50,7 @@ public class GlowSporeBead : SlingshotAmmo
 		}
 		else
 		{
-			if (TimeTokill < 10)
+			if (timeTokill < 10)
 			{
 				Projectile.damage = 0;
 				Projectile.friendly = false;
@@ -54,6 +58,7 @@ public class GlowSporeBead : SlingshotAmmo
 			Projectile.velocity *= 0f;
 		}
 	}
+
 	public override void DrawTrail()
 	{
 		DrawShade();
@@ -64,7 +69,10 @@ public class GlowSporeBead : SlingshotAmmo
 			if (Projectile.oldPos[i] == Vector2.Zero)
 			{
 				if (i == 1)
+				{
 					return;
+				}
+
 				break;
 			}
 
@@ -73,11 +81,16 @@ public class GlowSporeBead : SlingshotAmmo
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
 
 			float width = 8;
 			if (Projectile.timeLeft <= 30)
+			{
 				width *= Projectile.timeLeft / 30f;
+			}
+
 			var normalDir = Projectile.oldPos[i - 1] - Projectile.oldPos[i];
 			normalDir = new Vector2(-normalDir.Y, normalDir.X).SafeNormalize(Vector2.Zero);
 
@@ -86,7 +99,7 @@ public class GlowSporeBead : SlingshotAmmo
 
 			float fac1 = factor * 3 + (float)(-Main.timeForVisualEffects * 0.09) + 100000;
 			float fac2 = (i + 1) / (float)TrueL * 3 + (float)(-Main.timeForVisualEffects * 0.09) + 100000;
-			//TODO:925分钟之后会炸
+			// TODO:925分钟之后会炸
 
 			fac1 %= 1f;
 			fac2 %= 1f;
@@ -122,6 +135,7 @@ public class GlowSporeBead : SlingshotAmmo
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 	}
+
 	private void DrawShade()
 	{
 		var bars = new List<Vertex2D>();
@@ -131,7 +145,10 @@ public class GlowSporeBead : SlingshotAmmo
 			if (Projectile.oldPos[i] == Vector2.Zero)
 			{
 				if (i == 1)
+				{
 					return;
+				}
+
 				break;
 			}
 
@@ -140,11 +157,16 @@ public class GlowSporeBead : SlingshotAmmo
 		for (int i = 1; i < Projectile.oldPos.Length; ++i)
 		{
 			if (Projectile.oldPos[i] == Vector2.Zero)
+			{
 				break;
+			}
 
 			float width = 8;
 			if (Projectile.timeLeft <= 30)
+			{
 				width *= Projectile.timeLeft / 30f;
+			}
+
 			var normalDir = Projectile.oldPos[i - 1] - Projectile.oldPos[i];
 			normalDir = new Vector2(-normalDir.Y, normalDir.X).SafeNormalize(Vector2.Zero);
 
@@ -186,6 +208,7 @@ public class GlowSporeBead : SlingshotAmmo
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 	}
+
 	public override void AmmoHit()
 	{
 		SoundEngine.PlaySound(SoundID.Drip, Projectile.Center);
@@ -205,10 +228,12 @@ public class GlowSporeBead : SlingshotAmmo
 			Main.dust[r2].noGravity = true;
 		}
 	}
+
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		target.AddBuff(BuffID.Poisoned, 540);
 	}
+
 	public override void OnHitPlayer(Player target, Player.HurtInfo info)
 	{
 		target.AddBuff(BuffID.Poisoned, 540);

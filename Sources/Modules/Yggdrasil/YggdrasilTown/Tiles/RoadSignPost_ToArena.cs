@@ -51,24 +51,24 @@ public class RoadSignPost_ToArena : ModTile, ISceneTile
 
 	public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 	{
-		//Tile tile = TileUtils.SafeGetTile(i, j);
-		//if (tile.TileFrameX == 0 && tile.TileFrameY == 0)
-		//{
-		//	Vector2 zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
-		//	if (Main.drawToScreen)
-		//	{
-		//		zero = Vector2.Zero;
-		//	}
-		//	var drawPos = new Point(i, j).ToWorldCoordinates() - Main.screenPosition + zero;
-		//	Texture2D tileTex = ModAsset.RoadSignPost_ToArena.Value;
-		//	var frame0 = new Rectangle(98, 0, 62, 16);
-		//	var color0 = Lighting.GetColor(i + 3, j + 1);
-		//	spriteBatch.Draw(tileTex, drawPos, frame0, color0, 0, new Vector2(0, 8), 1f, SpriteEffects.None, 0);
+		// Tile tile = TileUtils.SafeGetTile(i, j);
+		// if (tile.TileFrameX == 0 && tile.TileFrameY == 0)
+		// {
+		// Vector2 zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
+		// if (Main.drawToScreen)
+		// {
+		// zero = Vector2.Zero;
+		// }
+		// var drawPos = new Point(i, j).ToWorldCoordinates() - Main.screenPosition + zero;
+		// Texture2D tileTex = ModAsset.RoadSignPost_ToArena.Value;
+		// var frame0 = new Rectangle(98, 0, 62, 16);
+		// var color0 = Lighting.GetColor(i + 3, j + 1);
+		// spriteBatch.Draw(tileTex, drawPos, frame0, color0, 0, new Vector2(0, 8), 1f, SpriteEffects.None, 0);
 
-		//	var frame1 = new Rectangle(18, 10, 64, 16);
-		//	var color1 = Lighting.GetColor(i - 3, j + 1);
-		//	spriteBatch.Draw(tileTex, drawPos + new Vector2(0, 16), frame1, color1, 0, new Vector2(64, 8), 1f, SpriteEffects.None, 0);
-		//}
+		// var frame1 = new Rectangle(18, 10, 64, 16);
+		// var color1 = Lighting.GetColor(i - 3, j + 1);
+		// spriteBatch.Draw(tileTex, drawPos + new Vector2(0, 16), frame1, color1, 0, new Vector2(64, 8), 1f, SpriteEffects.None, 0);
+		// }
 		base.PostDraw(i, j, spriteBatch);
 	}
 

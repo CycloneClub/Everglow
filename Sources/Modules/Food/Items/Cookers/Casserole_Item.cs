@@ -14,6 +14,5 @@ public class Casserole_Item : ModItem
 
 	public override void HoldItem(Player player)
 	{
-
 	}
 }

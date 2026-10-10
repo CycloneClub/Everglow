@@ -23,7 +23,6 @@ public class LeafMagic : ModDust
 		{
 			dust.scale += 0.003f;
 			dust.velocity += new Vector2(0, 0.1f).RotatedBy(Noise(dust));
-
 		}
 		if ((float)dust.customData < 60f)
 		{

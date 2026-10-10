@@ -2,6 +2,7 @@ using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood;
 using static Everglow.Yggdrasil.WorldGeneration.YggdrasilWorldGeneration;
+
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Tools.Developer;
 
 public class BoneAndPlatformCreate : ModItem
@@ -16,6 +17,7 @@ public class BoneAndPlatformCreate : ModItem
 		Item.autoReuse = false;
 		Item.useStyle = ItemUseStyleID.Swing;
 	}
+
 	public override bool CanUseItem(Player player)
 	{
 		int x0 = (int)(Main.MouseWorld.X / 16);
@@ -27,6 +29,7 @@ public class BoneAndPlatformCreate : ModItem
 		TileUtils.PlaceFrameImportantTiles(x0, y0, 60, 1, ModContent.TileType<BoneAndPlatform_tile>(), 0, 0);
 		return false;
 	}
+
 	public override bool? UseItem(Player player)
 	{
 		return base.UseItem(player);

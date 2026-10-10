@@ -1,4 +1,3 @@
-
 using Everglow.Yggdrasil.YggdrasilTown.Tiles.FurnaceTiles;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;

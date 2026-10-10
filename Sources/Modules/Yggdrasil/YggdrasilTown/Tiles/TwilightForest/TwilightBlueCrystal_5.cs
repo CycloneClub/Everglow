@@ -18,7 +18,7 @@ public class TwilightBlueCrystal_5 : ModTile
 		TileObjectData.newTile.CoordinateHeights = new int[]
 		{
 			16,
-			18
+			18,
 		};
 		TileObjectData.newTile.StyleHorizontal = true;
 		TileObjectData.newTile.LavaDeath = false;
@@ -26,6 +26,7 @@ public class TwilightBlueCrystal_5 : ModTile
 		AddMapEntry(new Color(40, 80, 148));
 		DustType = ModContent.DustType<TwilightCrystalDust>();
 	}
+
 	public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 	{
 		r = 0.05f;
@@ -33,6 +34,7 @@ public class TwilightBlueCrystal_5 : ModTile
 		b = 0.45f;
 		base.ModifyLight(i, j, ref r, ref g, ref b);
 	}
+
 	public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		Color lightColor = Lighting.GetColor(i, j);
@@ -40,7 +42,10 @@ public class TwilightBlueCrystal_5 : ModTile
 		var zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
 
 		if (Main.drawToScreen)
+		{
 			zero = Vector2.Zero;
+		}
+
 		spriteBatch.Draw(ModContent.Request<Texture2D>(Texture).Value, new Vector2(i, j) * 16 - Main.screenPosition + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16), lightColor * 3.1f, 0, Vector2.zeroVector, 1, SpriteEffects.None, 0);
 	}
 }

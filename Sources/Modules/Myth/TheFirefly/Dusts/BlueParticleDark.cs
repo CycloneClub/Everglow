@@ -18,7 +18,10 @@ public class BlueParticleDark : ModDust
 		dust.alpha++;
 		Lighting.AddLight(dust.position, 0, 0, (float)((255 - dust.alpha) * 0.0015f));
 		if (dust.alpha > 254)
+		{
 			dust.active = false;
+		}
+
 		return false;
 	}
 
@@ -26,7 +29,9 @@ public class BlueParticleDark : ModDust
 	{
 		float k = (255 - dust.alpha) / 255f;
 		if (dust.scale > 0.6f)
+		{
 			return new Color?(new Color(0f, 0.6f * k, 0.9f * k, 0f));
+		}
 		else
 		{
 			return new Color?(new Color(0, 0.6f * k, 0.9f * k, 0));

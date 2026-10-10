@@ -8,16 +8,19 @@ public class Freeze : ModBuff
 		Main.pvpBuff[Type] = true;
 		Main.buffNoSave[Type] = true;
 	}
+
 	public override void Update(NPC npc, ref int buffIndex)
 	{
 		base.Update(npc, ref buffIndex);
 	}
 }
+
 public class FrozenNPC : GlobalNPC
 {
 	public override void UpdateLifeRegen(NPC npc, ref int damage)
 	{
 	}
+
 	public override bool PreDraw(NPC npc, SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
 		if (npc.HasBuff(ModContent.BuffType<Freeze>()))
@@ -33,6 +36,7 @@ public class FrozenNPC : GlobalNPC
 		}
 		return base.PreDraw(npc, spriteBatch, screenPos, drawColor);
 	}
+
 	public override void PostDraw(NPC npc, SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
 		if (npc.HasBuff(ModContent.BuffType<Freeze>()))
@@ -42,6 +46,7 @@ public class FrozenNPC : GlobalNPC
 		}
 		base.PostDraw(npc, spriteBatch, screenPos, drawColor);
 	}
+
 	public override void FindFrame(NPC npc, int frameHeight)
 	{
 		if (npc.HasBuff(ModContent.BuffType<Freeze>()))
@@ -50,9 +55,9 @@ public class FrozenNPC : GlobalNPC
 		}
 		base.FindFrame(npc, frameHeight);
 	}
+
 	public override bool PreAI(NPC npc)
 	{
-
 		if (npc.HasBuff(ModContent.BuffType<Freeze>()))
 		{
 			npc.velocity *= 0;
@@ -66,7 +71,6 @@ public class FrozenNPC : GlobalNPC
 
 	public override void AI(NPC npc)
 	{
-
 		if (npc.HasBuff(ModContent.BuffType<Freeze>()))
 		{
 			npc.velocity *= 0;

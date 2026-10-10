@@ -8,13 +8,12 @@ public class OsmoticPressureMonitor : ModItem
 
 	public override void SetStaticDefaults()
 	{
-		//DisplayName.SetDefault("渗透压检测仪");
-		//Tooltip.SetDefault("显示渴觉状态");
+		// DisplayName.SetDefault("渗透压检测仪");
+		// Tooltip.SetDefault("显示渴觉状态");
 	}
 
 	public override void SetDefaults()
 	{
-
 		Item.value = Item.buyPrice(50000);
 		Item.rare = ItemRarityID.Green;
 		Item.accessory = true;
@@ -25,6 +24,7 @@ public class OsmoticPressureMonitor : ModItem
 		ThirstystateInfoDisplayplayer ThirstystateInfo = player.GetModPlayer<ThirstystateInfoDisplayplayer>();
 		ThirstystateInfo.AccOsmoticPressureMonitor = true;
 	}
+
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
 		ThirstystateInfoDisplayplayer ThirstystateInfo = player.GetModPlayer<ThirstystateInfoDisplayplayer>();

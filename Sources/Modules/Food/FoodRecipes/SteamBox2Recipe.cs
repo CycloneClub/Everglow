@@ -9,8 +9,8 @@ public class SteamBox2Recipe : FoodRecipes
 	{
 		CookingUnitWithOrderMenu = new List<CookingUnitWithOrder>
 		{
-                // 小笼包*2
-            {
+			// 小笼包*2
+			{
 				new CookingUnitWithOrder(
 					ModContent.ItemType<XiaoLongBao>(),
 					2,
@@ -34,14 +34,4 @@ public class SteamBox2Recipe : FoodRecipes
 		{
 		};
 	}
-
-
-
-
-
-
-
-
-
-
 }

@@ -7,17 +7,23 @@ public class IceParticle : ModDust
 		dust.frame = new Rectangle(0, Main.rand.Next(3) * 10, 10, 9);
 		dust.rotation = Main.rand.NextFloat(MathHelper.TwoPi);
 	}
+
 	public override bool Update(Dust dust)
 	{
 		dust.rotation += dust.velocity.X * 0.3f;
 		dust.velocity.X += Main.rand.NextFloat(-0.07f, 0.07f) + Main.windSpeedCurrent / 30f;
 		dust.velocity.Y += 0.14f;
 		if (Math.Abs(dust.velocity.X) > 1.7f)
+		{
 			dust.velocity.X *= 0.98f;
+		}
+
 		dust.position += dust.velocity;
 
 		if (dust.alpha > 245)
+		{
 			dust.active = false;
+		}
 
 		if (Collision.SolidCollision(dust.position - Vector2.One * 5f + new Vector2(dust.velocity.X, 0), 10, 10))
 		{
@@ -38,6 +44,7 @@ public class IceParticle : ModDust
 		}
 		return false;
 	}
+
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		return lightColor * ((255 - dust.alpha) / 255f);

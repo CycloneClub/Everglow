@@ -10,19 +10,23 @@ public abstract class FixCoinProjectile : ModProjectile
 {
 	public virtual string HeatMapTexture()
 	{
-		return "";
+		return string.Empty;
 	}
+
 	public virtual int PrefixID()
 	{
 		return 0;
 	}
+
 	public virtual int Level()
 	{
 		return 1;
 	}
+
 	internal float LightColorI = 0;
 	internal float LightColorII = 0;
 	internal Vector2[] IniV = new Vector2[5];
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 28;
@@ -32,29 +36,38 @@ public abstract class FixCoinProjectile : ModProjectile
 		Projectile.tileCollide = false;
 		Projectile.timeLeft = 150;
 	}
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		for (int i = 0; i < 5; i++)
 		{
 			if (IniV[i] == Vector2.Zero)
+			{
 				IniV[i] = new Vector2(0, Main.rand.NextFloat(2f, 4f)).RotatedByRandom(6.283);
+			}
 		}
 	}
+
 	public override void AI()
 	{
 		Projectile.rotation = 0;
 		Projectile.velocity *= 0.98f * Projectile.timeLeft / 150f;
 		if (Projectile.velocity.Length() > 0.3f)
+		{
 			Projectile.velocity.Y -= 0.75f * Projectile.timeLeft / 150f;
+		}
 
 		if (Projectile.timeLeft > 50 && Projectile.timeLeft < 120)
+		{
 			LightColorII += 1 / 70f;
+		}
 		else
 		{
 			LightColorII *= 0.95f;
 		}
 		LightColorI += 1 / 150f;
 	}
+
 	public override void OnKill(int timeLeft)
 	{
 		SoundEngine.PlaySound(SoundID.DD2_WitherBeastCrystalImpact, Projectile.Center);
@@ -112,7 +125,7 @@ public abstract class FixCoinProjectile : ModProjectile
 					Main.dust[r].noGravity = true;
 					Main.dust[r].velocity = v3;
 				}
-				//TODO:你的饰品得到了附魔
+				// TODO:你的饰品得到了附魔
 				string tex1 = "Your ";
 				string tex2 = " get prefix";
 				if (Language.ActiveCulture.Name == "zh-Hans")
@@ -123,7 +136,6 @@ public abstract class FixCoinProjectile : ModProjectile
 				CombatText.NewText(new Rectangle((int)player.Center.X - 10, (int)player.Center.Y - 10, 20, 20), ColorVec, tex1 + player.inventory[x].Name + tex2);
 				return;
 			}
-
 		}
 		for (int x = X0; x >= 0; x--)
 		{
@@ -138,7 +150,7 @@ public abstract class FixCoinProjectile : ModProjectile
 					Main.dust[r].noGravity = true;
 					Main.dust[r].velocity = v3;
 				}
-				//TODO:你的饰品得到了附魔
+				// TODO:你的饰品得到了附魔
 				string tex1 = "Your ";
 				string tex2 = " get prefix";
 				if (Language.ActiveCulture.Name == "zh-Hans")
@@ -150,13 +162,17 @@ public abstract class FixCoinProjectile : ModProjectile
 				return;
 			}
 		}
-		//TODO:你的背包中没有饰品
+		// TODO:你的背包中没有饰品
 		string tex3 = "Please put at lease 1 accessory item in your inventory";
 		if (Language.ActiveCulture.Name == "zh-Hans")
+		{
 			tex3 = "你的背包中没有饰品";
+		}
+
 		Item.NewItem(null, Projectile.Center, ModContent.ItemType<Misc.FixCoins.FixCoinCrit1>());
 		CombatText.NewText(new Rectangle((int)player.Center.X - 10, (int)player.Center.Y - 10, 20, 20), Color.LightGray, tex3);
 	}
+
 	public override void PostDraw(Color lightColor)
 	{
 		var ColorVec = new Vector4(0.03f, 0.03f, 0.03f, 1);
@@ -188,7 +204,10 @@ public abstract class FixCoinProjectile : ModProjectile
 			{
 				Vector2 v1 = player.Center - v0;
 				if (v1.Length() < 5)
+				{
 					break;
+				}
+
 				v1 /= v1.Length();
 				Vector2 v2 = v0;
 				v0 += Vi + v1 * 5;
@@ -227,7 +246,9 @@ public abstract class FixCoinProjectile : ModProjectile
 		color = Projectile.GetAlpha(color) * ((255 - Projectile.alpha) / 255f);
 		Main.spriteBatch.Draw(Light, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, new Color((int)(255 * LightColorII * ColorVec.X), (int)(255 * LightColorII * ColorVec.Y), (int)(255 * LightColorII * ColorVec.Z), 0), Projectile.rotation, new Vector2(56f, 56f), Projectile.scale, SpriteEffects.None, 0);
 		if (Projectile.timeLeft > 50)
+		{
 			Main.spriteBatch.Draw(Ball, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, new Color(255 + color.R, 255 + color.G, 255 + color.B, color.A), Projectile.rotation, new Vector2(14f, 14f), Projectile.scale, SpriteEffects.None, 0);
+		}
 		else
 		{
 			Main.spriteBatch.Draw(Ball, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, new Color((int)(255 * LightColorII) + color.R, (int)(255 * LightColorII) + color.G, (int)(255 * LightColorII) + color.B, color.A), Projectile.rotation, new Vector2(14f, 14f), Projectile.scale, SpriteEffects.None, 0);

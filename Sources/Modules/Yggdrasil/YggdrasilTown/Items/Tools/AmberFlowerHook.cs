@@ -132,10 +132,10 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Tools
 
 			// Tree trunks cannot be actuated so we don't need to check for that here
 			Tile tile = Main.tile[x, y];
-			//if (TileID.Sets.IsATreeTrunk[tile.TileType] || tile.TileType == TileID.PalmTree)
-			//{
-			//	return true;
-			//}
+			// if (TileID.Sets.IsATreeTrunk[tile.TileType] || tile.TileType == TileID.PalmTree)
+			// {
+			// return true;
+			// }
 
 			// In any other case, behave like a normal hook
 			return null;

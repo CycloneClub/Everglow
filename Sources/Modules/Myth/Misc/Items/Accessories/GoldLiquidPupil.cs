@@ -17,19 +17,23 @@ public class GoldLiquidPupil : ModItem
 		Item.accessory = true;
 		Item.rare = ItemRarityID.Pink;
 	}
+
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
 		GoldLiquidPupilEquiper gLPE = player.GetModPlayer<GoldLiquidPupilEquiper>();
 		gLPE.GoldLiquidPupilEnable = true;
 	}
 }
-class GoldLiquidPupilEquiper : ModPlayer
+
+internal class GoldLiquidPupilEquiper : ModPlayer
 {
 	public bool GoldLiquidPupilEnable = false;
+
 	public override void ResetEffects()
 	{
 		GoldLiquidPupilEnable = false;
 	}
+
 	public override void PostHurt(Player.HurtInfo info)
 	{
 		if (GoldLiquidPupilEnable)
@@ -45,11 +49,12 @@ class GoldLiquidPupilEquiper : ModPlayer
 			}
 		}
 	}
+
 	public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 	{
 		if (GoldLiquidPupilEnable)
 		{
-			//modifiers.FinalDamage += target.defense * 0.175f;
+			// modifiers.FinalDamage += target.defense * 0.175f;
 		}
 	}
 
@@ -64,6 +69,7 @@ class GoldLiquidPupilEquiper : ModPlayer
 			}
 		}
 	}
+
 	private void GenerateDust()
 	{
 		Vector2 velocity = new Vector2(0, Main.rand.NextFloat(4.3f, 6f)).RotatedByRandom(6.283);

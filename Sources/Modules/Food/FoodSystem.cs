@@ -10,6 +10,7 @@ internal class FoodSystem : EverglowModule
 	{
 		On_Player.UpdateStarvingState += Player_UpdateStarvingState;
 	}
+
 	private void Player_UpdateStarvingState(Terraria.On_Player.orig_UpdateStarvingState orig, Player self, bool withEmote)
 	{
 		orig(self, false);

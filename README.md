@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/CycloneClub/Everglow/refs/heads/master/Sources/Everglow/icon.png" alt="Everglow" width="200">
+<img src="https://raw.githubusercontent.com/CycloneClub/Everglow/refs/heads/1.4.4/Sources/Everglow/icon.png" alt="Everglow" width="200">
 
 # Everglow
 
@@ -51,7 +51,7 @@ If you would like to contact us or TML users, it's best to join our [Discord ser
 
 ## 📑 License
 
-All code of this repository is provided under the [GPL-3.0](https://github.com/CycloneClub/Everglow/blob/master/LICENSE) license.
+All code of this repository is provided under the [GPL-3.0](https://github.com/CycloneClub/Everglow/blob/1.4.4/LICENSE) license.
 
 All of the art, audio, and other non-code assets belong to their respective owners and are used non-commercially either with a permission, a royalty-free license, or with various modifications & trust in the holiness of videogame modding.
 

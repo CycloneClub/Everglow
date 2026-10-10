@@ -16,7 +16,7 @@ public class PAFGlobalTile : GlobalTile
 			Rectangle rec = new(i * 16, j * 16, 16, 16);
 			switch (Main.tile[i, j].frameX / 18)
 			{
-				//grass
+				// grass
 				case 0:
 				case 1:
 				case 2:
@@ -36,7 +36,7 @@ public class PAFGlobalTile : GlobalTile
 						Item.NewItem(source, rec, ModContent.ItemType<DarkPoppy>());
 						break;
 					}
-				//mushroom
+				// mushroom
 				case 8:
 					{
 						break;

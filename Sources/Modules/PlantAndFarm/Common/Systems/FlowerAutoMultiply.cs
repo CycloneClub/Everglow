@@ -5,36 +5,38 @@ public class FlowerAutoMultiply : GlobalTile
 	public override void RandomUpdate(int i, int j, int type)
 	{
 		Vector2[] Types =
-		 { new Vector2(1, 10)
-		 , new Vector2(1, 11)
-		 , new Vector2(2, 13)
-		 , new Vector2(2, 18)
-		 , new Vector2(3, 22)
-		 , new Vector2(3, 23)
-		 , new Vector2(3, 21)
-		 , new Vector2(4, 25)
-		 , new Vector2(4, 26)
-		 , new Vector2(4, 24)
-		 , new Vector2(5, 28)
-		 , new Vector2(5, 29)
-		 , new Vector2(5, 27)
-		 , new Vector2(6, 31)
-		 , new Vector2(6, 32)
-		 , new Vector2(6, 30)
-		 , new Vector2(7, 34)
-		 , new Vector2(7, 35)
-		 , new Vector2(7, 33)
-		 , new Vector2(8, 37)
-		 , new Vector2(8, 38)
-		 , new Vector2(8, 36)
-		 , new Vector2(9, 40)
-		 , new Vector2(9, 41)
-		 , new Vector2(9, 39)
-		 , new Vector2(10, 43)
-		 , new Vector2(10, 44)
-		 , new Vector2(10, 42)};
+		{
+			new Vector2(1, 10),
+			new Vector2(1, 11),
+			new Vector2(2, 13),
+			new Vector2(2, 18),
+			new Vector2(3, 22),
+			new Vector2(3, 23),
+			new Vector2(3, 21),
+			new Vector2(4, 25),
+			new Vector2(4, 26),
+			new Vector2(4, 24),
+			new Vector2(5, 28),
+			new Vector2(5, 29),
+			new Vector2(5, 27),
+			new Vector2(6, 31),
+			new Vector2(6, 32),
+			new Vector2(6, 30),
+			new Vector2(7, 34),
+			new Vector2(7, 35),
+			new Vector2(7, 33),
+			new Vector2(8, 37),
+			new Vector2(8, 38),
+			new Vector2(8, 36),
+			new Vector2(9, 40),
+			new Vector2(9, 41),
+			new Vector2(9, 39),
+			new Vector2(10, 43),
+			new Vector2(10, 44),
+			new Vector2(10, 42),
+		};
 		Tile tile = Main.tile[i, j];
-		if (tile.TileType == 3)
+		if (tile.TileType == TileID.Plants)
 		{
 			int X = tile.TileFrameX / 18;
 			for (int u = 1; u < 11; u++)
@@ -46,16 +48,25 @@ public class FlowerAutoMultiply : GlobalTile
 					{
 						for (int y = -2; y < 3; y++)
 						{
-							if (!((Tile)Main.tile[i + x, j + y]).HasTile && Main.tile[i + x, j + y + 1].TileType == 2 && Main.tile[i + x, j + y + 1].Slope == SlopeType.Solid && !(Main.tile[i + x, j + y].LiquidAmount > 1))
+							if (!((Tile)Main.tile[i + x, j + y]).HasTile && Main.tile[i + x, j + y + 1].TileType == TileID.Grass && Main.tile[i + x, j + y + 1].Slope == SlopeType.Solid && !(Main.tile[i + x, j + y].LiquidAmount > 1))
 							{
 								int TYPE = 0;
 								if (u >= 3)
+								{
 									TYPE = u * 3 + Main.rand.Next(3) + 12;
+								}
+
 								if (u == 2)
+								{
 									TYPE = Main.rand.NextBool() ? 13 : 18;
+								}
+
 								if (u == 1)
+								{
 									TYPE = Main.rand.NextBool() ? 10 : 11;
-								Main.tile[i + x, j + y].TileType = 3;
+								}
+
+								Main.tile[i + x, j + y].TileType = TileID.Plants;
 								Main.tile[i + x, j + y].TileFrameX = (short)(TYPE * 18);
 								((Tile)Main.tile[i + x, j + y]).HasTile = true;
 							}
@@ -65,6 +76,7 @@ public class FlowerAutoMultiply : GlobalTile
 			}
 		}
 	}
+
 	public override void KillTile(int i, int j, int type, ref bool fail, ref bool effectOnly, ref bool noItem)
 	{
 		/*bool Lootf = false;

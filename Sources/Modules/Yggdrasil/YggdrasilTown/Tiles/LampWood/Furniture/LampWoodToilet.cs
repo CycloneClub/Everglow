@@ -8,7 +8,7 @@ using Terraria.ObjectData;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood.Furniture
 {
-	//Very similar to ExampleChair, but has special HitWire code and potentially additional AdjTiles
+	// Very similar to ExampleChair, but has special HitWire code and potentially additional AdjTiles
 	public class LampWoodToilet : ModTile
 	{
 		public const int NextStyleHeight = 40; // Calculated by adding all CoordinateHeights + CoordinatePaddingFix.Y applied to all of them + 2
@@ -63,8 +63,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood.Furniture
 			// It is very important to know that this is called on both players and NPCs, so do not use Main.LocalPlayer for example, use info.restingEntity
 			Tile tile = Framing.GetTileSafely(i, j);
 
-			//info.directionOffset = info.restingEntity is Player ? 6 : 2; // Default to 6 for players, 2 for NPCs
-			//info.visualOffset = Vector2.Zero; // Defaults to (0,0)
+			// info.directionOffset = info.restingEntity is Player ? 6 : 2; // Default to 6 for players, 2 for NPCs
+			// info.visualOffset = Vector2.Zero; // Defaults to (0,0)
 
 			info.TargetDirection = -1;
 

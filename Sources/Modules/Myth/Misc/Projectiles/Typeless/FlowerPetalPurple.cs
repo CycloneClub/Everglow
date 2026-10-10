@@ -10,6 +10,7 @@ public class FlowerPetalPurple : ModProjectile
 		// DisplayName.SetDefault("Flower Petal Purple");
 		Main.projFrames[Projectile.type] = 8;
 	}
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 12;
@@ -20,29 +21,40 @@ public class FlowerPetalPurple : ModProjectile
 		Projectile.tileCollide = true;
 		Projectile.timeLeft = 9000;
 	}
+
 	public override Color? GetAlpha(Color lightColor)
 	{
 		if (Projectile.timeLeft < 60)
+		{
 			return new Color?(new Color(0.5f * Projectile.timeLeft / 60f, 0.5f * Projectile.timeLeft / 60f, 0.5f * Projectile.timeLeft / 60f, 0));
+		}
 		else
 		{
 			return new Color?(new Color(0.5f, 0.5f, 0.5f, 0));
 		}
 	}
+
 	public float num2 = 0;
 	public bool Hittil = false;
-	int TLF = 400;
+	private int tLF = 400;
+
 	public override void AI()
 	{
 		if (Projectile.timeLeft >= 8999)
 		{
-			TLF = Main.rand.Next(600, 1000);
-			Projectile.timeLeft = TLF;
+			tLF = Main.rand.Next(600, 1000);
+			Projectile.timeLeft = tLF;
 		}
 		if (num2 == 0)
+		{
 			num2 = Main.rand.Next(-100, 100) / 1000f;
-		if (Projectile.timeLeft < TLF - 20)
+		}
+
+		if (Projectile.timeLeft < tLF - 20)
+		{
 			Projectile.friendly = true;
+		}
+
 		if (Projectile.velocity.Length() > 0.1f)
 		{
 			Projectile.frameCounter++;
@@ -52,17 +64,28 @@ public class FlowerPetalPurple : ModProjectile
 				Projectile.frameCounter = 0;
 			}
 			if (Projectile.frame > 7)
+			{
 				Projectile.frame = 0;
+			}
 		}
 		if (!Hittil)
 		{
 			Projectile.rotation += num2;
 			if (Projectile.velocity.Length() < 3.6f && Projectile.timeLeft > 60)
+			{
 				Projectile.velocity.Y += 0.025f;
+			}
+
 			if (Projectile.timeLeft > 60)
+			{
 				Projectile.velocity.X += (float)Math.Sin(Projectile.timeLeft / 30f) * 0.035f;
+			}
+
 			if (Projectile.velocity.Length() > 3.6f)
+			{
 				Projectile.velocity *= 0.96f;
+			}
+
 			Projectile.velocity += new Vector2(Main.windSpeedCurrent * 0.05f, 0);
 		}
 		if (Projectile.timeLeft >= 60)
@@ -76,6 +99,7 @@ public class FlowerPetalPurple : ModProjectile
 			Projectile.alpha = (int)((60 - Projectile.timeLeft) / 60f * 255f);
 		}
 	}
+
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
 		Projectile.timeLeft = 60;
@@ -92,6 +116,7 @@ public class FlowerPetalPurple : ModProjectile
 		}
 		return false;
 	}
+
 	/*public override Color? GetAlpha(Color lightColor)
         {
             if (Projectile.timeLeft > 60)
@@ -110,6 +135,7 @@ public class FlowerPetalPurple : ModProjectile
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		var texture2D = (Texture2D)ModContent.Request<Texture2D>(Texture);

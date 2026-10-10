@@ -6,9 +6,10 @@ public class SilverClock : ModItem
 
 	public override void SetStaticDefaults()
 	{
-		//DisplayName.SetDefault("Nine Petals");
-		//DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "九瓣银");
+		// DisplayName.SetDefault("Nine Petals");
+		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "九瓣银");
 	}
+
 	public override void SetDefaults()
 	{
 		Item.width = 24;

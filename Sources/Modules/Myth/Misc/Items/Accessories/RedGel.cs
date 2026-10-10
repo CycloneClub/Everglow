@@ -15,6 +15,7 @@ public class RedGel : ModItem
 		Item.accessory = true;
 		Item.rare = ItemRarityID.Orange;
 	}
+
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
 		player.GetCritChance(DamageClass.Generic) += 6;

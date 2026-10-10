@@ -16,7 +16,7 @@ public class CharonDoubleSickle_Item : ModItem
 		Item.useAnimation = 15;
 		Item.noUseGraphic = true;
 		Item.noMelee = true;
-		Item.useStyle = 1;
+		Item.useStyle = ItemUseStyleID.Swing;
 		Item.autoReuse = true;
 		Item.channel = true;
 		Item.useLimitPerAnimation = 2;

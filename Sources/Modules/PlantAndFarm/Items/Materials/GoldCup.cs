@@ -6,9 +6,10 @@ public class GoldCup : ModItem
 
 	public override void SetStaticDefaults()
 	{
-		//DisplayName.SetDefault("Golden Bell");
-		//DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "风摆铃");
+		// DisplayName.SetDefault("Golden Bell");
+		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "风摆铃");
 	}
+
 	public override void SetDefaults()
 	{
 		Item.width = 32;

@@ -23,7 +23,7 @@ public class SideHangingLantern_White : ModTile, ITileFluentlyDrawn
 		{
 			16,
 			16,
-			16
+			16,
 		};
 
 		TileObjectData.newAlternate.Alternates = new List<TileObjectData>();
@@ -39,6 +39,7 @@ public class SideHangingLantern_White : ModTile, ITileFluentlyDrawn
 
 		AddMapEntry(new Color(135, 103, 90));
 	}
+
 	public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 	{
 		var tile = Main.tile[i, j];
@@ -55,10 +56,12 @@ public class SideHangingLantern_White : ModTile, ITileFluentlyDrawn
 			b = 0f;
 		}
 	}
+
 	public override void HitWire(int i, int j)
 	{
 		FurnitureUtils.LightHitwireStyleVertical(i, j, Type, 2, 3);
 	}
+
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		var tile = Main.tile[i, j];
@@ -92,8 +95,9 @@ public class SideHangingLantern_White : ModTile, ITileFluentlyDrawn
 		{
 			DrawLanternPiece(new Rectangle(6, 110, 22, 32), 0.16f, 12 + offXByDir, 8, pos + new Point(0, 1), pos + new Point(0, 1), drawCenterPos, spriteBatch, tileDrawing);
 		}
-		//这种白色的灯纸比较浑浊,免去glow
+		// 这种白色的灯纸比较浑浊,免去glow
 	}
+
 	/// <summary>
 	/// 画侧挂灯
 	/// </summary>
@@ -107,11 +111,13 @@ public class SideHangingLantern_White : ModTile, ITileFluentlyDrawn
 	/// <param name="spriteBatch"></param>
 	/// <param name="tileDrawing"></param>
 	/// <param name="color"></param>
-	private void DrawLanternPiece(Rectangle frame, float swayCoefficient, int offsetX, int offsetY, Point tilePos, Point paintPos, Vector2 drawCenterPos, SpriteBatch spriteBatch, TileDrawing tileDrawing, Color color = new Color())
+	private void DrawLanternPiece(Rectangle frame, float swayCoefficient, int offsetX, int offsetY, Point tilePos, Point paintPos, Vector2 drawCenterPos, SpriteBatch spriteBatch, TileDrawing tileDrawing, Color color = default(Color))
 	{
-		// 回声涂料	
+		// 回声涂料
 		if (!TileDrawing.IsVisible(Main.tile[paintPos]))
+		{
 			return;
+		}
 
 		var tile = Main.tile[tilePos];
 		ushort type = tile.TileType;
@@ -124,7 +130,9 @@ public class SideHangingLantern_White : ModTile, ITileFluentlyDrawn
 
 		float windCycle = 0;
 		if (tileDrawing.InAPlaceWithWind(tilePos.X, tilePos.Y, sizeX, sizeY))
+		{
 			windCycle = tileDrawing.GetWindCycle(tilePos.X, tilePos.Y, tileDrawing._sunflowerWindCounter);
+		}
 
 		int totalPushTime = 80;
 		float pushForcePerFrame = 1.26f;
@@ -133,7 +141,7 @@ public class SideHangingLantern_White : ModTile, ITileFluentlyDrawn
 
 		// 支持发光涂料
 		Color tileLight;
-		if (color != new Color())
+		if (color != default(Color))
 		{
 			tileLight = color;
 		}

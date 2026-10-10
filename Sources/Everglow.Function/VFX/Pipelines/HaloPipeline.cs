@@ -37,7 +37,6 @@ public class HaloPipeline : PostPipeline
 
 		sb.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullNone);
 
-
 		gd.SetRenderTarget(haloScreen);
 		effect.Parameters["uTransform"].SetValue(Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1));
 		effect.Parameters["uHaloSize"].SetValue(6);
@@ -61,6 +60,7 @@ public class HaloPipeline : PostPipeline
 		sb.Draw(haloScreen, Vector2.Zero, new Color(255, 255, 255, 0));
 		sb.End();
 	}
+
 	public static Vector2 GetSunPos()
 	{
 		float HalfMaxTime = Main.dayTime ? 27000 : 16200;
@@ -72,7 +72,9 @@ public class HaloPipeline : PostPipeline
 		if (Main.LocalPlayer != null)
 		{
 			if (Main.LocalPlayer.gravDir == -1)
+			{
 				return new Vector2(StarX, Main.screenHeight - StarY);
+			}
 		}
 
 		return new Vector2(StarX, StarY);

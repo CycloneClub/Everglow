@@ -6,9 +6,10 @@ public class PinkSun : ModItem
 
 	public override void SetStaticDefaults()
 	{
-		//DisplayName.SetDefault("Pink Thistle");
-		//DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "酱粉蓟");
+		// DisplayName.SetDefault("Pink Thistle");
+		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "酱粉蓟");
 	}
+
 	public override void SetDefaults()
 	{
 		Item.width = 22;

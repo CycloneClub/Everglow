@@ -6,10 +6,12 @@ public class FixCoinMelee2 : FixCoinProjectile
 	{
 		return "heatmapLime";
 	}
+
 	public override int PrefixID()
 	{
 		return 0;
 	}
+
 	public override int Level()
 	{
 		return 2;

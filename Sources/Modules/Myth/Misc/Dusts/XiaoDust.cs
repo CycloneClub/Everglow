@@ -8,6 +8,7 @@ public class XiaoDust : ModDust
 		dust.alpha = 0;
 		dust.rotation = 0;
 	}
+
 	public override bool Update(Dust dust)
 	{
 		dust.position += dust.velocity;
@@ -15,7 +16,10 @@ public class XiaoDust : ModDust
 		dust.velocity *= 0.9f;
 		dust.scale *= 0.9f;
 		if (dust.scale < 0.05f)
+		{
 			dust.active = false;
+		}
+
 		return false;
 	}
 }

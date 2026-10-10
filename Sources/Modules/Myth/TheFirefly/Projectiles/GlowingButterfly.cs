@@ -6,7 +6,8 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 
 public class GlowingButterfly : ModProjectile
 {
-	FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
+	private FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
+
 	public override void SetStaticDefaults()
 	{
 		Main.projFrames[Projectile.type] = 6;
@@ -23,7 +24,9 @@ public class GlowingButterfly : ModProjectile
 		if (MothEye.LocalOwner != null && MothEye.LocalOwner.TryGetModPlayer(out MothEyePlayer mothEyePlayer))
 		{
 			if (mothEyePlayer.MothEyeEquipped && fireflyBiome.IsBiomeActive(Main.LocalPlayer) && Main.hardMode)
+			{
 				Projectile.timeLeft = 400;
+			}
 			else
 			{
 				Projectile.timeLeft = 100;
@@ -38,12 +41,12 @@ public class GlowingButterfly : ModProjectile
 	private float omega = 0;
 
 	private int useStyle = 0;
+
 	public override void AI()
 	{
 		Player owner = Main.player[Projectile.owner];
 		if (MothEye.LocalOwner != null && MothEye.LocalOwner.TryGetModPlayer(out MothEyePlayer mothEyePlayer))
 		{
-
 			if (mothEyePlayer.MothEyeEquipped && fireflyBiome.IsBiomeActive(Main.LocalPlayer) && Main.hardMode)
 			{
 				if (useStyle == 0)
@@ -55,11 +58,19 @@ public class GlowingButterfly : ModProjectile
 					useStyle = ItemUseStyleID.Swing;
 				}
 				if (Projectile.timeLeft > 100 && Projectile.alpha >= 8)
+				{
 					Projectile.alpha -= 4;
+				}
+
 				if (Projectile.timeLeft <= 66)
+				{
 					Projectile.alpha += 4;
+				}
+
 				if (Projectile.alpha < 100)
+				{
 					Projectile.friendly = true;
+				}
 				else
 				{
 					Projectile.friendly = false;
@@ -76,11 +87,19 @@ public class GlowingButterfly : ModProjectile
 					useStyle = ItemUseStyleID.Swing;
 				}
 				if (Projectile.timeLeft > 50 && Projectile.alpha >= 8)
+				{
 					Projectile.alpha -= 8;
+				}
+
 				if (Projectile.timeLeft <= 33)
+				{
 					Projectile.alpha += 8;
+				}
+
 				if (Projectile.alpha < 50)
+				{
 					Projectile.friendly = true;
+				}
 				else
 				{
 					Projectile.friendly = false;
@@ -88,38 +107,50 @@ public class GlowingButterfly : ModProjectile
 			}
 		}
 
-		//Projectile.spriteDirection = Projectile.velocity.X > 0 ? -1 : 1;
+		// Projectile.spriteDirection = Projectile.velocity.X > 0 ? -1 : 1;
 		Projectile.rotation = (float)(Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + Math.PI * 0.75);
 		Projectile.velocity = Projectile.velocity.RotatedBy(omega);
 		omega += Math.Sign(omega) * 0.001f;
 		if (Projectile.frame != 5)
+		{
 			Projectile.velocity *= 1.04f;
+		}
 		else
 		{
 			Projectile.velocity *= 0.98f;
 		}
 		if (Collision.SolidCollision(Projectile.Center - Projectile.velocity, 1, 1))
+		{
 			Projectile.tileCollide = true;
+		}
+
 		if (Projectile.timeLeft % 5 == 0)
 		{
 			if (Projectile.frame != 5)
+			{
 				Projectile.frame++;
+			}
 			else
 			{
 				if (Main.rand.NextFloat(0, 7) >= Projectile.velocity.Length())
+				{
 					Projectile.frame = 0;
+				}
 			}
 		}
 		if (Projectile.frame > 5)
+		{
 			Projectile.frame = 0;
+		}
+
 		Projectile.velocity.Y *= 0.96f;
 		if (Projectile.timeLeft % 12 == 0)
 		{
 			int type = ModContent.DustType<BlueGlowAppear>();
-			//if (Projectile.ai[0] == 0)
-			//{
-			//	type = ModContent.DustType<BlueGlowAppear_dark>();
-			//}
+			// if (Projectile.ai[0] == 0)
+			// {
+			// type = ModContent.DustType<BlueGlowAppear_dark>();
+			// }
 			Dust dust = Dust.NewDustDirect(Projectile.position - new Vector2(8), Projectile.width, Projectile.height, type, 0f, 0f, 100, default, Main.rand.NextFloat(0.9f, 2.2f));
 			dust.velocity = Projectile.velocity * 0.5f;
 		}
@@ -165,14 +196,18 @@ public class GlowingButterfly : ModProjectile
 			if (i != Projectile.whoAmI && other.active && other.owner == Projectile.owner && Math.Abs(Projectile.position.X - other.position.X) + Math.Abs(Projectile.position.Y - other.position.Y) < Projectile.width)
 			{
 				if (Projectile.position.X < other.position.X)
+				{
 					Projectile.velocity.X -= overlapVelocity;
+				}
 				else
 				{
 					Projectile.velocity.X += overlapVelocity;
 				}
 
 				if (Projectile.position.Y < other.position.Y)
+				{
 					Projectile.velocity.Y -= overlapVelocity;
+				}
 				else
 				{
 					Projectile.velocity.Y += overlapVelocity;
@@ -220,7 +255,7 @@ public class GlowingButterfly : ModProjectile
 					// The number depends on various parameters seen in the movement code below. Test different ones out until it works alright
 					bool closeThroughWall = between < 100f;
 
-					if ((closest && inRange || !foundTarget) && (lineOfSight || closeThroughWall))
+					if (((closest && inRange) || !foundTarget) && (lineOfSight || closeThroughWall))
 					{
 						distanceFromTarget = between;
 						targetCenter = npc.Center;
@@ -234,7 +269,7 @@ public class GlowingButterfly : ModProjectile
 		// friendly needs to be set to false so it doesn't damage things like target dummies while idling
 		// Both things depend on if it has a target or not, so it's just one assignment here
 		// You don't need this assignment if your minion is shooting things instead of dealing contact damage
-		//Projectile.friendly = foundTarget;
+		// Projectile.friendly = foundTarget;
 	}
 
 	private void Movement(bool foundTarget, float distanceFromTarget, Vector2 targetCenter, float distanceToIdlePosition, Vector2 vectorToIdlePosition)
@@ -302,27 +337,30 @@ public class GlowingButterfly : ModProjectile
 	public override void OnKill(int timeLeft)
 	{
 		if (Projectile.alpha > 180)
+		{
 			return;
+		}
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D tex = ModAsset.GlowingButterfly.Value;
-		//Texture2D texDark = ModAsset.GlowingButterfly_dark.Value;
-		//Texture2D texBound = ModAsset.GlowingButterfly_bound.Value;
+		// Texture2D texDark = ModAsset.GlowingButterfly_dark.Value;
+		// Texture2D texBound = ModAsset.GlowingButterfly_bound.Value;
 		Color lightC = new Color(55 - Projectile.alpha, 255 - Projectile.alpha, 255 - Projectile.alpha, (255 - Projectile.alpha) / 2);
-		//if(Projectile.ai[0] == 1)
-		//{
-		//	lightC = Color.Transparent;
-		//}
-		//if (Projectile.ai[0] == 2)
-		//{
-		//	lightC = new Color(55 - Projectile.alpha, 255 - Projectile.alpha, 255 - Projectile.alpha, (255 - Projectile.alpha) / 2);
-		//}
-		//float colorValue = (255 - Projectile.alpha) / 255f;
+		// if(Projectile.ai[0] == 1)
+		// {
+		// lightC = Color.Transparent;
+		// }
+		// if (Projectile.ai[0] == 2)
+		// {
+		// lightC = new Color(55 - Projectile.alpha, 255 - Projectile.alpha, 255 - Projectile.alpha, (255 - Projectile.alpha) / 2);
+		// }
+		// float colorValue = (255 - Projectile.alpha) / 255f;
 		Rectangle frame = new Rectangle(0, Projectile.frame * 46, 46, 46);
-		//Main.spriteBatch.Draw(texDark, Projectile.Center - Main.screenPosition, frame, Color.White * colorValue, Projectile.rotation, frame.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
-		//Main.spriteBatch.Draw(tex, Projectile.Center - Main.screenPosition, frame, lightC, Projectile.rotation, frame.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
-		//Main.spriteBatch.Draw(texBound, Projectile.Center - Main.screenPosition, frame, Color.White * ((255 - Projectile.alpha) / 400f), Projectile.rotation, frame.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
+		// Main.spriteBatch.Draw(texDark, Projectile.Center - Main.screenPosition, frame, Color.White * colorValue, Projectile.rotation, frame.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
+		// Main.spriteBatch.Draw(tex, Projectile.Center - Main.screenPosition, frame, lightC, Projectile.rotation, frame.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
+		// Main.spriteBatch.Draw(texBound, Projectile.Center - Main.screenPosition, frame, Color.White * ((255 - Projectile.alpha) / 400f), Projectile.rotation, frame.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
 		Main.spriteBatch.Draw(tex, Projectile.Center - Main.screenPosition, frame, lightC, Projectile.rotation, frame.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
 		return false;
 	}

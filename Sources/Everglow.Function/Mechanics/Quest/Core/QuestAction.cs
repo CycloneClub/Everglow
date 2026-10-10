@@ -1,3 +1,5 @@
+#nullable enable annotations
+
 namespace Everglow.Commons.Mechanics.Quest.Core;
 
 public enum QuestActionType

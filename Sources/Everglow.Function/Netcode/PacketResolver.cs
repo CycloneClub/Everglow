@@ -4,7 +4,7 @@ namespace Everglow.Commons.Netcode;
 
 /// <summary>
 /// Specifies the network destination for a packet, relative to the caller's role.
-/// <para/> Determined by <see cref="NetUtils"/> based on <see cref="Main.netMode"/> and <see cref="SubworldSystem.Current"/>.
+/// <para/> Determined by <see cref="Everglow.Commons.Utilities.NetUtils"/> based on <see cref="Main.netMode"/> and <see cref="SubworldLibrary.SubworldSystem.Current"/>.
 /// </summary>
 public enum RouteDestination
 {

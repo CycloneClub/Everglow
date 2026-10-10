@@ -131,7 +131,7 @@ public class AncientPhantom_Sheild : ModNPC
 
 	public override void OnKill()
 	{
-		for (int h = 0;h < 40;h++)
+		for (int h = 0; h < 40; h++)
 		{
 			Dust dust = Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, ModContent.DustType<TwilightCrystalDust>());
 			dust.velocity = new Vector2(0, MathF.Sqrt(Main.rand.NextFloat()) * 6).RotatedByRandom(MathHelper.TwoPi);

@@ -2,15 +2,15 @@ using Everglow.Commons.Physics;
 using Everglow.Myth.Common;
 using Everglow.Myth.TheTusk.WorldGeneration;
 using Terraria.Graphics.Effects;
-namespace Everglow.Myth.TheTusk.Backgrounds;
 
+namespace Everglow.Myth.TheTusk.Backgrounds;
 
 public class TuskBiomeSky : CustomSky
 {
 	public static bool Open = false;
+
 	public override void OnLoad()
 	{
-
 	}
 
 	public override void Deactivate(params object[] args)
@@ -30,12 +30,14 @@ public class TuskBiomeSky : CustomSky
 	public override void Activate(Vector2 position, params object[] args)
 	{
 	}
+
 	private class Rock
 	{
 		public Vector3 pos;
 		public Vector3 velocity;
 		public int style;
 	}
+
 	public class RedLightning
 	{
 		public Vector3 pos;
@@ -44,6 +46,7 @@ public class TuskBiomeSky : CustomSky
 		public List<Vector2> nodes = new();
 		public int timeleft;
 		public int maxTimeleft;
+
 		public Vertex3D_2[] GetVertices(float maxWidth, Color c)
 		{
 			List<Vertex3D_2> vertices = new();
@@ -57,7 +60,10 @@ public class TuskBiomeSky : CustomSky
 				float width = MathHelper.Lerp(maxWidth, 0, factor);
 				width *= (float)timeleft / maxTimeleft;
 				if (sub)
+				{
 					width *= 0.5f;
+				}
+
 				Vector2 posV2 = nodes[i] + normalDir * width;
 				vertices.Add(new Vertex3D_2(new Vector3(posV2, pos.Z), new Vector3(factor, 1, w), c));
 				posV2 = nodes[i] - normalDir * width;
@@ -65,12 +71,16 @@ public class TuskBiomeSky : CustomSky
 			}
 			return vertices.ToArray();
 		}
+
 		public void Create()
 		{
 			timeleft = maxTimeleft;
 			int counts = Main.rand.Next(15, 80);
 			if (sub)
+			{
 				counts = Main.rand.Next(5, 12);
+			}
+
 			var vec = new Vector2(pos.X, pos.Y);
 			for (int i = 0; i < counts; i++)
 			{
@@ -85,7 +95,8 @@ public class TuskBiomeSky : CustomSky
 			}
 		}
 	}
-	List<Rock> rocks = new List<Rock>();
+
+	private List<Rock> rocks = new List<Rock>();
 	private static List<RedLightning> lightnings = new();
 
 	private void CreateAndDrawLightning(Vector3 cloudCenter)
@@ -97,7 +108,6 @@ public class TuskBiomeSky : CustomSky
 			var l = new RedLightning() { pos = pos, rotation = 1.57f, maxTimeleft = 40 };
 			l.Create();
 			lightnings.Add(l);
-
 		}
 		if (!Main.gamePaused)
 		{
@@ -108,10 +118,12 @@ public class TuskBiomeSky : CustomSky
 				if (!lightning.sub && lightning.pos.Z < 8000)
 				{
 					float a = MathHelper.Clamp(1 - lightning.pos.Z / 8000f, 0f, 1f);
-					Main.ColorOfTheSkies = Color.Lerp(Main.ColorOfTheSkies, new Color(0.8f, 0.6f, 0.6f), 0.3f * a * lightning.timeleft / 60f);//闪电背景颜色
+					Main.ColorOfTheSkies = Color.Lerp(Main.ColorOfTheSkies, new Color(0.8f, 0.6f, 0.6f), 0.3f * a * lightning.timeleft / 60f); // 闪电背景颜色
 				}
 				if (lightning.timeleft <= 0)
+				{
 					lightnings.Remove(lightning);
+				}
 			}
 		}
 		for (int i = 0; i < lightnings.Count; i++)
@@ -119,17 +131,18 @@ public class TuskBiomeSky : CustomSky
 			RedLightning lightning = lightnings[i];
 			float alpha = 0;
 			if (lightning.pos.Z > 7000)
+			{
 				alpha = (lightning.pos.Z - 7000) / 10000f;
+			}
+
 			Vertex3D_2[] vertices = lightning.GetVertices(30, new Color(1, 1f - alpha, 1f - alpha, 0f));
 			Main.graphics.GraphicsDevice.Textures[0] = ModAsset.RedPoint.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, vertices, 0, vertices.Length - 2);
-
 		}
 	}
 
 	private void CreateAndDrawRocks(Vector3 cloudCenter)
 	{
-
 		if (Main.rand.NextBool(45) && !Main.gamePaused)
 		{
 			Vector3 pos = cloudCenter + new Vector3(Main.rand.Next(-500, 500), +3000, Main.rand.Next(-500, 500));
@@ -137,14 +150,14 @@ public class TuskBiomeSky : CustomSky
 		}
 		if (!Main.gamePaused)
 		{
-			for (int i = 0; i < rocks.Count; i++)//Update 更新 以及石块的ai
+			for (int i = 0; i < rocks.Count; i++)// Update 更新 以及石块的ai
 			{
 				Rock rock = rocks[i];
 
 				rock.pos += rock.velocity;
 
 				var vecToCenter = new Vector2(cloudCenter.X - rock.pos.X, cloudCenter.Z - rock.pos.Z);
-				if (vecToCenter.Length() > 320)//向心的加速
+				if (vecToCenter.Length() > 320)// 向心的加速
 				{
 					var velxz = new Vector2(rock.velocity.X, rock.velocity.Z);
 					Vector2 acc = 2.8f * Vector2.Normalize(vecToCenter) * velxz.LengthSquared() / vecToCenter.Length();
@@ -152,11 +165,12 @@ public class TuskBiomeSky : CustomSky
 					rock.velocity.Z += acc.Y;
 				}
 				if (rock.pos.Y < cloudCenter.Y - 100)
+				{
 					rocks.Remove(rock);
-
+				}
 			}
 		}
-		for (int i = 0; i < rocks.Count; i++)//Draw
+		for (int i = 0; i < rocks.Count; i++)// Draw
 		{
 			Color color = Main.ColorOfTheSkies * opacity;
 
@@ -166,10 +180,12 @@ public class TuskBiomeSky : CustomSky
 			{
 				float alpha = (cloudCenter.Y + 300 - rock.pos.Y) / 400f;
 				if (alpha > 0)
+				{
 					color *= 1 - alpha;
+				}
 			}
 
-			Texture2D tex = MythContent.QuickTexture("TheTusk/Backgrounds/Stone" + rock.style);//贴图
+			Texture2D tex = MythContent.QuickTexture("TheTusk/Backgrounds/Stone" + rock.style); // 贴图
 			List<Vertex3D_2> vertices = new();
 			vertices.Add(new(rock.pos, new Vector3(0, 0, 0), color));
 			vertices.Add(new(rock.pos + new Vector3(tex.Width, 0, 0) * scale, new Vector3(1, 0, 0), color));
@@ -182,11 +198,13 @@ public class TuskBiomeSky : CustomSky
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, vertices.ToArray(), 0, vertices.Count / 3);
 		}
 	}
+
 	/// <summary>
 	/// 获取绘制矩形
 	/// </summary>
 	/// <param name="texSize"></param>
 	/// <param name="MoveStep"></param>
+	/// <param name="MulSize">背景绘制倍率，用于将屏幕尺寸换算为采样矩形的尺寸。</param>
 	/// <returns></returns>
 	public Rectangle GetDrawRect(Vector2 texSize, float MoveStep, float MulSize = 1)
 	{
@@ -212,16 +230,14 @@ public class TuskBiomeSky : CustomSky
 		Vector2 TuskBiomeCenterToScreenPosition = Main.screenPosition - TuskBiomeCenter;
 		Color DrawC = Main.ColorOfTheSkies * opacity;
 
-		#region #1：背景光
+		// #1：背景光
 		int yoffset = (int)Main.screenPosition.Y / 50;
 		Texture2D tex = ModAsset.TuskBiomeSky.Value;
 		spriteBatch.Draw(tex, new Rectangle(-1300, -yoffset - 600, Main.screenWidth + 2600, Main.screenHeight + yoffset * 2 + 1200), DrawC * Math.Min(1f, (Main.screenPosition.Y - 800f) / 1000f));
-		#endregion
-		#region #2：风暴
+		// #2：风暴
 
 		spriteBatch.End();
 		spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.NonPremultiplied, SamplerState.PointWrap, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-
 
 		Vector2 FarS = new Vector2(Main.screenWidth / 2f, Main.screenHeight + 80) - TuskBiomeCenterToScreenPosition * 0.04f;
 		var VskyF = new List<Vertex2D>();
@@ -235,13 +251,12 @@ public class TuskBiomeSky : CustomSky
 		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.TuskFar.Value;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, VskyF.ToArray(), 0, VskyF.Count / 3);
 
-
 		spriteBatch.End();
 		spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 
-		//计算矩阵
+		// 计算矩阵
 		var camPos = new Vector3(Main.screenWidth / 2 + Main.screenPosition.X, Main.screenHeight / 2 + Main.screenPosition.Y, -300);
-		int lookup = 50;//往上看
+		int lookup = 50; // 往上看
 		var matrix = Matrix.CreateLookAt(camPos, new Vector3(camPos.X, camPos.Y - lookup, 1), Vector3.Down * Main.LocalPlayer.gravDir);
 		matrix *= Matrix.CreatePerspectiveFieldOfView(MathHelper.Pi / 5, Main.graphics.GraphicsDevice.Viewport.AspectRatio, 1, 12500);
 
@@ -268,8 +283,7 @@ public class TuskBiomeSky : CustomSky
 
 		for (int i = 3; i < 10; i++)
 		{
-
-			#region decide values
+			// decide values
 			if (i == 1)
 			{
 				Blength = 1640;
@@ -315,16 +329,21 @@ public class TuskBiomeSky : CustomSky
 				Blength = 135;
 				OneDevideRotaSpeed = 220d;
 			}
-			#endregion
 			var Vx = new List<Vertex3D_2>();
 			float counts = 30;
 
-			var center = new Vector3(SkyVortex.X + 1000, SkyVortex.Y - 3250 + (float)Math.Pow(i, 1f) * 130, 6000);//云的中心位置
+			var center = new Vector3(SkyVortex.X + 1000, SkyVortex.Y - 3250 + (float)Math.Pow(i, 1f) * 130, 6000); // 云的中心位置
 
 			if (i == 7)
+			{
 				CreateAndDrawLightning(center);
+			}
+
 			if (i == 9)
+			{
 				CreateAndDrawRocks(center + new Vector3(0, -400, 0));
+			}
+
 			for (int u = 0; u <= counts; u++)
 			{
 				var rot = Matrix.CreateRotationY((float)(1f / OneDevideRotaSpeed * Main.timeForVisualEffects + u * MathHelper.TwoPi / counts));
@@ -332,16 +351,24 @@ public class TuskBiomeSky : CustomSky
 
 				Color c = DrawC;
 				if (i == 9)
+				{
 					c *= 0.9f;
+				}
 
 				if (i == 8)
+				{
 					c *= 0.68f;
+				}
 
 				if (i == 7)
+				{
 					c *= 0.7f;
+				}
 
 				if (i == 6)
+				{
 					c *= 0.6f;
+				}
 
 				float n = 0.5f;
 				int storey = 9 - i;
@@ -353,11 +380,10 @@ public class TuskBiomeSky : CustomSky
 				Vx.Add(new Vertex3D_2(center + offset * 1, new Vector3(u / counts, 0, 0), c));
 				Vx.Add(new Vertex3D_2(center + offset * n, new Vector3(u / counts, 1f, 0), c));
 			}
-			Main.graphics.GraphicsDevice.Textures[0] = CloudLine[i];//GlodenBloodScaleMirror
+			Main.graphics.GraphicsDevice.Textures[0] = CloudLine[i]; // GlodenBloodScaleMirror
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, Vx.ToArray(), 0, Vx.Count - 2);
 		}
-		#endregion
-		#region #3：前景
+		// #3：前景
 		spriteBatch.End();
 		spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 		var texCloseII = ModAsset.TuskMiddle.Value;
@@ -370,11 +396,11 @@ public class TuskBiomeSky : CustomSky
 		{
 			new Vertex2D(new Vector2(0, 0), DrawC, new Vector3(rvcII.X / (float)texCloseII.Width, UpY, 0)),
 			new Vertex2D(new Vector2(Main.screenWidth * 2, 0), DrawC, new Vector3((rvcII.X + rvcII.Width) / (float)texCloseII.Width, UpY, 0)),
-			new Vertex2D(new Vector2(0, Main.screenHeight* 2), DrawC, new Vector3(rvcII.X / (float)texCloseII.Width, DownY, 0)),
+			new Vertex2D(new Vector2(0, Main.screenHeight * 2), DrawC, new Vector3(rvcII.X / (float)texCloseII.Width, DownY, 0)),
 
-			new Vertex2D(new Vector2(0, Main.screenHeight* 2), DrawC, new Vector3(rvcII.X / (float)texCloseII.Width, DownY, 0)),
-			new Vertex2D(new Vector2(Main.screenWidth* 2, 0), DrawC, new Vector3((rvcII.X + rvcII.Width) / (float)texCloseII.Width, UpY, 0)),
-			new Vertex2D(new Vector2(Main.screenWidth* 2, Main.screenHeight* 2), DrawC, new Vector3((rvcII.X + rvcII.Width) / (float)texCloseII.Width, DownY, 0))
+			new Vertex2D(new Vector2(0, Main.screenHeight * 2), DrawC, new Vector3(rvcII.X / (float)texCloseII.Width, DownY, 0)),
+			new Vertex2D(new Vector2(Main.screenWidth * 2, 0), DrawC, new Vector3((rvcII.X + rvcII.Width) / (float)texCloseII.Width, UpY, 0)),
+			new Vertex2D(new Vector2(Main.screenWidth * 2, Main.screenHeight * 2), DrawC, new Vector3((rvcII.X + rvcII.Width) / (float)texCloseII.Width, DownY, 0)),
 		};
 		if (CloseII.Count > 2)
 		{
@@ -385,8 +411,8 @@ public class TuskBiomeSky : CustomSky
 
 		spriteBatch.End();
 		spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-		#endregion
 	}
+
 	public override void Update(GameTime gameTime)
 	{
 		bool skyActive = TuskGen.TuskLandActive();
@@ -396,8 +422,11 @@ public class TuskBiomeSky : CustomSky
 			return;
 		}
 		if (!skyActive && opacity > 0f)
+		{
 			opacity -= 0.02f;
+		}
 	}
+
 	public override float GetCloudAlpha()
 	{
 		return (1f - opacity) * 0.97f + 0.03f;

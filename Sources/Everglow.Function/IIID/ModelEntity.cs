@@ -14,8 +14,9 @@ namespace Everglow.Commons.IIID
 			new VertexElement(0, VertexElementFormat.Vector3, VertexElementUsage.Position, 0),
 			new VertexElement(12, VertexElementFormat.Vector3, VertexElementUsage.TextureCoordinate, 0),
 			new VertexElement(24, VertexElementFormat.Vector3, VertexElementUsage.Normal, 0),
-			new VertexElement(36, VertexElementFormat.Vector3, VertexElementUsage.Normal, 1)
+			new VertexElement(36, VertexElementFormat.Vector3, VertexElementUsage.Normal, 1),
 		});
+
 		public Vector3 position;
 		public Vector3 texcoord;
 		public Vector3 normal;
@@ -37,6 +38,7 @@ namespace Everglow.Commons.IIID
 			}
 		}
 	}
+
 	public class ModelEntity
 	{
 		/// <summary>
@@ -70,7 +72,6 @@ namespace Everglow.Commons.IIID
 		{
 			get; set;
 		}
-
 
 		/// <summary>
 		/// 模型的发光贴图参数（HDR，或者用 （r，g，b）* a * 256的方式

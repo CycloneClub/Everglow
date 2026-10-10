@@ -6,7 +6,7 @@ public class SapphireSlingshot : SlingshotItem
 {
 	public override void SetDef()
 	{
-		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Ranged.Slingshots.SapphireSlingshot>();
+		projType = ModContent.ProjectileType<Projectiles.Weapon.Ranged.Slingshots.SapphireSlingshot>();
 		Item.damage = 19;
 		Item.width = 38;
 		Item.height = 36;
@@ -15,6 +15,7 @@ public class SapphireSlingshot : SlingshotItem
 		Item.rare = ItemRarityID.Orange;
 		Item.value = Item.sellPrice(0, 0, 12, 0);
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

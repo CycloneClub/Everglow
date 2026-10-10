@@ -593,6 +593,7 @@ public class RockElemental : ModNPC
 	}
 
 	private int collidetimer = 0;
+
 	/// <summary>
 	/// 碰撞
 	/// </summary>

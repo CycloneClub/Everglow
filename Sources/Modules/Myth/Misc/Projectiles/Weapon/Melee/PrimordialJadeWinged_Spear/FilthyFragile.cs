@@ -7,6 +7,7 @@ public class FilthyFragilePipeline : Pipeline
 		effect = ModAsset.FilthyFragile;
 		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.FilthyFragile_Color.Value);
 	}
+
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
@@ -25,10 +26,12 @@ public class FilthyFragilePipeline : Pipeline
 		Ins.Batch.End();
 	}
 }
+
 [Pipeline(typeof(FilthyFragilePipeline))]
 public class FilthyFragileDust : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
+
 	public Vector2 position;
 	public Vector2 velocity;
 	public Vector2 coord;
@@ -40,7 +43,11 @@ public class FilthyFragileDust : Visual
 	public float rotation2;
 	public float omega;
 	public float phi;
-	public FilthyFragileDust() { }
+
+	public FilthyFragileDust()
+	{
+	}
+
 	public override void Update()
 	{
 		position += velocity;
@@ -59,7 +66,10 @@ public class FilthyFragileDust : Visual
 		}
 		timer++;
 		if (timer > maxTime)
+		{
 			Active = false;
+		}
+
 		if (Collision.SolidCollision(position, 0, 0))
 		{
 			velocity *= -0.2f;
@@ -89,12 +99,12 @@ public class FilthyFragileDust : Visual
 		Vector2[] Corner = new Vector2[sideCount];
 		for (int x = 0; x < sideCount; x++)
 		{
-			Corner[x] = toCorner.RotatedBy(x / (float)(sideCount) * Math.Tau);
+			Corner[x] = toCorner.RotatedBy(x / (float)sideCount * Math.Tau);
 			Corner[x].Y *= MathF.Sin(phi + (float)(Main.time * 0.03 * omega));
 			Corner[x] = Corner[x].RotatedBy(rotation2);
 		}
 		Color lightColor = new Color(255, 0, 0, 0);
-		float reflectionLight = (1 - pocession) * MathF.Pow((MathF.Sin(phi + (float)(Main.time * 0.03 * omega + 1.57f)) + 1), 4) * 1.6f;
+		float reflectionLight = (1 - pocession) * MathF.Pow(MathF.Sin(phi + (float)(Main.time * 0.03 * omega + 1.57f)) + 1, 4) * 1.6f;
 		List<Vertex2D> bars = new List<Vertex2D>();
 		for (int x = 0; x < sideCount; x++)
 		{

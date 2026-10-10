@@ -25,25 +25,29 @@ public class Acytaea_sword_Item : ModItem
 		Item.shootSpeed = 5f;
 		Item.shoot = ModContent.ProjectileType<Projectiles.AcytaeaSword_projectile>();
 	}
+
 	public override bool CanUseItem(Player player)
 	{
 		Item.useTime = (int)(18f / player.meleeSpeed);
 		Item.useAnimation = (int)(18f / player.meleeSpeed);
 		return player.ownedProjectileCounts[Item.shoot] < 1;
 	}
+
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-
 		if (player.ownedProjectileCounts[Item.shoot] < 1)
 		{
 			Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 0f, 0f);
 		}
 		return false;
 	}
+
 	public override bool? UseItem(Player player)
 	{
 		if (!Main.dedServ)
+		{
 			SoundEngine.PlaySound(Item.UseSound, player.Center);
+		}
 
 		return null;
 	}

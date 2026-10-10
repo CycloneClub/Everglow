@@ -11,6 +11,7 @@ public class TinClub_Item : ClubItem
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.TinClub>();
 		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.TinClub_smash>();
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

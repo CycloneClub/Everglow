@@ -6,7 +6,7 @@ public enum WormSegmentType
 {
 	Head,
 	Body,
-	Tail
+	Tail,
 }
 
 /// <summary>
@@ -36,7 +36,7 @@ public abstract class FireWorm : ModNPC
 	public override sealed bool PreAI()
 	{
 		if (NPC.localAI[1] == 0)
-		{  // 判断是否初始化了，如果没有则初始化
+		{ // 判断是否初始化了，如果没有则初始化
 			NPC.localAI[1] = 1f;
 			Init();
 		}
@@ -78,10 +78,12 @@ public abstract class FireWorm : ModNPC
 	// Not visible to public API, but is used to indicate what AI to run
 	// 对公共API不可见，但用于指示运行什么AI
 	internal virtual void HeadAI()
-	{ }
+	{
+	}
 
 	internal virtual void BodyTailAI()
-	{ }
+	{
+	}
 
 	public abstract void Init();
 }
@@ -140,6 +142,7 @@ public abstract class FireWormHead : FireWorm
 	/// <param name="source">蠕虫来源</param>
 	/// <param name="type">蠕虫NPC的段的ID。T</param>
 	/// <param name="latestNPC">The whoAmI of the most-recently spawned segment NPC in the worm, including the head</param>
+	/// <param name="ai2">写入 latestNPC 所指向的上一节 NPC 的 ai[2] 的值。</param>
 	/// <returns></returns>
 	public int SpawnSegment(IEntitySource source, int type, int latestNPC, int ai2 = 0)
 	{
@@ -190,8 +193,10 @@ public abstract class FireWormHead : FireWorm
 				IEntitySource source = NPC.GetSource_FromAI();
 
 				if (HasCustomBodySegments)
+				{
 					// 调用处理催生体段的方法
 					latestNPC = SpawnBodySegments(distance);
+				}
 				else
 				{
 					// 像往常一样产生体节
@@ -215,7 +220,9 @@ public abstract class FireWormHead : FireWorm
 					NPC n = Main.npc[i];
 
 					if (n.active && (n.type == Type || n.type == BodyType || n.type == TailType) && n.realLife == NPC.whoAmI)
+					{
 						count++;
+					}
 				}
 
 				if (count != randomWormLength)
@@ -495,10 +502,14 @@ public abstract class FireWormBody : FireWorm
 	internal static void CommonAI_BodyTail(FireWorm worm)
 	{
 		if (!worm.NPC.HasValidTarget)
+		{
 			worm.NPC.TargetClosest(true);
+		}
 
 		if (Main.player[worm.NPC.target].dead && worm.NPC.timeLeft > 30000)
+		{
 			worm.NPC.timeLeft = 10;
+		}
 
 		NPC following = worm.NPC.ai[1] >= Main.maxNPCs ? null : worm.FollowingNPC;
 		if (Main.netMode != NetmodeID.MultiplayerClient)

@@ -19,12 +19,14 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords.Dusts
 			}
 			return true;
 		}
+
 		public override Color? GetAlpha(Dust dust, Color lightColor)
 		{
 			Color c0 = Color.White;
 			c0.A = 50;
 			return c0;
 		}
+
 		public override void OnSpawn(Dust dust)
 		{
 			dust.frame = new Rectangle(Main.rand.Next(3) * 10, Main.rand.Next(3) * 10, 10, 10);

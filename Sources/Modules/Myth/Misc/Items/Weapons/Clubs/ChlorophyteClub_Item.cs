@@ -12,6 +12,7 @@ public class ChlorophyteClub_Item : ClubItem
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.ChlorophyteClub>();
 		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.ChlorophyteClub_smash>();
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

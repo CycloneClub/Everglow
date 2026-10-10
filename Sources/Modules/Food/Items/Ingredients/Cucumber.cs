@@ -9,6 +9,5 @@ public class Cucumber : FoodIngredientItem
 		DefaultAsIngredient(100);
 		SlicedItemType = ModContent.ItemType<CucumberPieces>();
 		SliceDustType = ModContent.DustType<CucumberDust>();
-
 	}
 }

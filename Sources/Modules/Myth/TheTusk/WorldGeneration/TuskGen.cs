@@ -14,6 +14,7 @@ public class TuskGen : ModSystem
 	public override void PostUpdateEverything()
 	{
 	}
+
 	public static void QuickBuild(int x, int y, string Path)
 	{
 		var mapIO = new Commons.TileHelper.MapIO(x, y);
@@ -27,6 +28,7 @@ public class TuskGen : ModSystem
 			WorldGen.SquareWallFrame(it.CurrentCoord.X, it.CurrentCoord.Y);
 		}
 	}
+
 	/// <summary>
 	/// 判定是否开启地形
 	/// </summary>
@@ -42,7 +44,9 @@ public class TuskGen : ModSystem
 			return true;
 		}
 	}
+
 	internal float TuskS = 0;
+
 	public override void ModifySunLightColor(ref Color tileColor, ref Color backgroundColor)
 	{
 		if (TuskLandActive())
@@ -55,7 +59,6 @@ public class TuskGen : ModSystem
 			{
 				TuskS = 1f;
 			}
-
 
 			if (!SkyManager.Instance["TuskSky"].IsActive())
 			{
@@ -83,9 +86,11 @@ public class TuskGen : ModSystem
 		backgroundColor *= 1 - TuskS * 0.4f;
 		backgroundColor.A = 255;
 	}
+
 	internal class WorldTuskLandGenPass : GenPass
 	{
-		public WorldTuskLandGenPass() : base("TuskLand", 500)//TODO:给大地安装血肉之颌
+		public WorldTuskLandGenPass()
+			: base("TuskLand", 500)// TODO:给大地安装血肉之颌
 		{
 		}
 
@@ -96,9 +101,11 @@ public class TuskGen : ModSystem
 			BuildTuskArray(point.X, point.Y);
 		}
 	}
+
 	internal class SubWorldTuskLandGenPass : GenPass
 	{
-		public SubWorldTuskLandGenPass() : base("TuskLand", 500)//TODO:给大地安装血肉之颌
+		public SubWorldTuskLandGenPass()
+			: base("TuskLand", 500)// TODO:给大地安装血肉之颌
 		{
 		}
 
@@ -110,6 +117,7 @@ public class TuskGen : ModSystem
 			Main.spawnTileY = 220;
 		}
 	}
+
 	public override void ModifyWorldGenTasks(List<GenPass> tasks, ref double totalWeight)
 	{
 		tasks.Add(new WorldTuskLandGenPass());
@@ -131,11 +139,13 @@ public class TuskGen : ModSystem
 		tag["TUSKcenterX"] = tuskCenterX;
 		tag["TUSKcenterY"] = tuskCenterY;
 	}
+
 	public override void LoadWorldData(TagCompound tag)
 	{
 		tuskCenterX = tag.GetAsInt("TUSKcenterX");
 		tuskCenterY = tag.GetAsInt("TUSKcenterY");
 	}
+
 	/// <summary>
 	/// 原版方法,让物块边缘自然
 	/// </summary>
@@ -175,12 +185,12 @@ public class TuskGen : ModSystem
 
 					ref var pixel = ref pixelRow[x];
 					Tile tile = Main.tile[x + a, y + b];
-					switch (type)//21是箱子
+					switch (type)// 21是箱子
 					{
 						case 0:
 							if (pixel.R == 255 && pixel.G == 0 && pixel.B == 0)
 							{
-								if (tile.TileType != 21 && Main.tile[x + a, y + b - 1].TileType != 21)
+								if (tile.TileType != TileID.Containers && Main.tile[x + a, y + b - 1].TileType != TileID.Containers)
 								{
 									tile.ClearEverything();
 								}
@@ -192,7 +202,7 @@ public class TuskGen : ModSystem
 							var Plc2 = new Vector2[60];
 							if (pixel.R == 158 && pixel.G == 26 && pixel.B == 37)
 							{
-								if (tile.TileType != 21 && Main.tile[x + a, y + b - 1].TileType != 21)
+								if (tile.TileType != TileID.Containers && Main.tile[x + a, y + b - 1].TileType != TileID.Containers)
 								{
 									tile.TileType = (ushort)ModContent.TileType<TuskFlesh>();
 									tile.HasTile = true;
@@ -200,7 +210,7 @@ public class TuskGen : ModSystem
 							}
 							if (pixel.R == 91 && pixel.G == 27 && pixel.B == 52)
 							{
-								if (tile.TileType != 21 && Main.tile[x + a, y + b - 1].TileType != 21)
+								if (tile.TileType != TileID.Containers && Main.tile[x + a, y + b - 1].TileType != TileID.Containers)
 								{
 									tile.TileType = TileID.BoneBlock;
 									tile.HasTile = true;
@@ -208,7 +218,7 @@ public class TuskGen : ModSystem
 							}
 							if (pixel.R == 255 && pixel.G == 0 && pixel.B == 0)
 							{
-								if (tile.TileType != 21 && Main.tile[x + a, y + b - 1].TileType != 21)
+								if (tile.TileType != TileID.Containers && Main.tile[x + a, y + b - 1].TileType != TileID.Containers)
 								{
 									tile.TileType = (ushort)ModContent.TileType<AbTuskFlesh>();
 									tile.HasTile = true;
@@ -219,7 +229,7 @@ public class TuskGen : ModSystem
 						case 2:
 							if (pixel.R == 96 && pixel.G == 8 && pixel.B == 14)
 							{
-								if (tile.TileType != 21 && Main.tile[x + a, y + b - 1].TileType != 21)
+								if (tile.TileType != TileID.Containers && Main.tile[x + a, y + b - 1].TileType != TileID.Containers)
 								{
 									tile.WallType = (ushort)ModContent.WallType<Walls.BloodyStoneWall>();
 								}
@@ -230,6 +240,7 @@ public class TuskGen : ModSystem
 			}
 		});
 	}
+
 	/// <summary>
 	/// 主要程序
 	/// </summary>
@@ -245,8 +256,9 @@ public class TuskGen : ModSystem
 		TuskGen tuskGen = ModContent.GetInstance<TuskGen>();
 		tuskGen.tuskCenterX = a + 80;
 		tuskGen.tuskCenterY = b + 10;
-		//BuildTuskArray(a, b);
+		// BuildTuskArray(a, b);
 	}
+
 	public static Point GetFlattenPoint()
 	{
 		for (int times = 0; times < 200; times++)
@@ -283,24 +295,25 @@ public class TuskGen : ModSystem
 
 			if (score > 6000)
 			{
-				//Debug Code.
-				//for (int j = 0; j < score / 1000; j++)
-				//{
-				//	Tile tile = Main.tile[x, y - j - 20];
-				//	tile.TileType = TileID.Stone;
-				//	tile.HasTile = true;
-				//}
-				//for (int j = 0; j < times; j++)
-				//{
-				//	Tile tile = Main.tile[x + 1, y - j - 20];
-				//	tile.TileType = TileID.Copper;
-				//	tile.HasTile = true;
-				//}
+				// Debug Code.
+				// for (int j = 0; j < score / 1000; j++)
+				// {
+				// Tile tile = Main.tile[x, y - j - 20];
+				// tile.TileType = TileID.Stone;
+				// tile.HasTile = true;
+				// }
+				// for (int j = 0; j < times; j++)
+				// {
+				// Tile tile = Main.tile[x + 1, y - j - 20];
+				// tile.TileType = TileID.Copper;
+				// tile.HasTile = true;
+				// }
 				return new Point(x, y);
 			}
 		}
 		return new Point(Main.maxTilesX / 3, 600);
 	}
+
 	/// <summary>
 	/// 制造獠牙地形下半部分的一个盘状物
 	/// </summary>
@@ -350,7 +363,7 @@ public class TuskGen : ModSystem
 				}
 				if (Length < 28f)
 				{
-					if (tile.WallType != 0 || (Length < 22f && j > -5))
+					if (tile.WallType != WallID.None || (Length < 22f && j > -5))
 					{
 						tile.WallType = (ushort)ModContent.WallType<Walls.TuskFleshWall>();
 					}
@@ -367,6 +380,7 @@ public class TuskGen : ModSystem
 		tileWheel.TileType = (ushort)ModContent.TileType<BloodyMossWheel>();
 		tileWheel.HasTile = true;
 	}
+
 	/// <summary>
 	/// 放置石碑
 	/// </summary>
@@ -407,6 +421,7 @@ public class TuskGen : ModSystem
 			}
 		}
 	}
+
 	/// <summary>
 	/// 判定被抽出来的点是否具备建造獠牙地形的条件
 	/// </summary>
@@ -436,6 +451,7 @@ public class TuskGen : ModSystem
 		}
 		return true;
 	}
+
 	/// <summary>
 	/// 让獠牙地里面的物块执行ShapeTile
 	/// </summary>

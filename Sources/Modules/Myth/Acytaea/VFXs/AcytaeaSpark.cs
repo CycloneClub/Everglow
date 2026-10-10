@@ -6,6 +6,7 @@ internal class AcytaeaSparkPipeline : Pipeline
 	{
 		effect = ModAsset.AcytaeaSpark;
 	}
+
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
@@ -26,14 +27,20 @@ internal class AcytaeaSparkPipeline : Pipeline
 		Ins.Batch.End();
 	}
 }
+
 [Pipeline(typeof(AcytaeaSparkPipeline), typeof(BloomPipeline))]
 internal class AcytaeaSparkDust : ShaderDraw
 {
 	public List<Vector2> oldPos = new List<Vector2>();
 	public float timer;
 	public float maxTime;
-	public AcytaeaSparkDust() { }
-	public AcytaeaSparkDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai) : base(position, velocity, ai)
+
+	public AcytaeaSparkDust()
+	{
+	}
+
+	public AcytaeaSparkDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai)
+		: base(position, velocity, ai)
 	{
 		this.maxTime = maxTime;
 	}
@@ -47,10 +54,16 @@ internal class AcytaeaSparkDust : ShaderDraw
 				position += velocity;
 				oldPos.Add(position);
 				if (oldPos.Count > 7)
+				{
 					oldPos.RemoveAt(0);
+				}
+
 				velocity *= 0.99f;
 				if (timer > maxTime)
+				{
 					Active = false;
+				}
+
 				velocity = velocity.RotatedBy(ai[1]);
 			}
 		}
@@ -59,16 +72,23 @@ internal class AcytaeaSparkDust : ShaderDraw
 			position += velocity;
 			oldPos.Add(position);
 			if (oldPos.Count > 7)
+			{
 				oldPos.RemoveAt(0);
+			}
+
 			velocity *= 0.99f;
 			timer++;
 			if (timer > maxTime)
+			{
 				Active = false;
+			}
+
 			velocity = velocity.RotatedBy(ai[1]);
 		}
 		float delC = ai[2] * 0.05f * (float)Math.Sin((maxTime - timer) / 40d * Math.PI);
 		Lighting.AddLight((int)(position.X / 16), (int)(position.Y / 16), 0.85f * delC, 0, 0);
 	}
+
 	public override void Draw()
 	{
 		float pocession = timer / maxTime;
@@ -76,7 +96,10 @@ internal class AcytaeaSparkDust : ShaderDraw
 		Vector2[] pos = oldPos.Reverse<Vector2>().ToArray();
 		int len = pos.Length;
 		if (len <= 2)
+		{
 			return;
+		}
+
 		var bars = new Vertex2D[len * 2 - 1];
 		for (int i = 1; i < len; i++)
 		{

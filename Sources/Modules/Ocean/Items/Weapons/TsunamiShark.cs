@@ -6,19 +6,20 @@ namespace Everglow.Ocean.Items.Weapons;
 
 public class TsunamiShark : ModItem
 {
-	//海啸银鲨
-	//子弹特效变成海蓝色，覆盖原有的子弹效果，但是保留子弹属性
-	//右键标记距离鼠标最近的怪物，如果有多个怪物的碰撞箱已经包含在鼠标内，优先标记Boss，其次是剩余血量多的怪物
-	//每20次攻击释放鲨鱼能量弹幕，可以穿墙，追踪被标记的敌人。击中被标记的目标或者穿透十次之后该弹幕爆炸造成范围伤害，目标在被击中前死亡则导致弹幕无法穿墙且在任意一次命中之后爆炸
-	//50%的概率不消耗弹药
+	// 海啸银鲨
+	// 子弹特效变成海蓝色，覆盖原有的子弹效果，但是保留子弹属性
+	// 右键标记距离鼠标最近的怪物，如果有多个怪物的碰撞箱已经包含在鼠标内，优先标记Boss，其次是剩余血量多的怪物
+	// 每20次攻击释放鲨鱼能量弹幕，可以穿墙，追踪被标记的敌人。击中被标记的目标或者穿透十次之后该弹幕爆炸造成范围伤害，目标在被击中前死亡则导致弹幕无法穿墙且在任意一次命中之后爆炸
+	// 50%的概率不消耗弹药
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedWeapons;
 
-	//海啸银鲨
-	//子弹特效变成海蓝色，覆盖原有的子弹效果，但是保留子弹属性
-	//右键标记距离鼠标最近的怪物，如果有多个怪物的碰撞箱已经包含在鼠标内，优先标记Boss，其次是剩余血量多的怪物
-	//每20次攻击释放鲨鱼能量弹幕，可以穿墙，追踪被标记的敌人。击中被标记的目标或者穿透十次之后该弹幕爆炸造成范围伤害，目标在被击中前死亡则导致弹幕无法穿墙且在任意一次命中之后爆炸
-	//50%的概率不消耗弹药
+	// 海啸银鲨
+	// 子弹特效变成海蓝色，覆盖原有的子弹效果，但是保留子弹属性
+	// 右键标记距离鼠标最近的怪物，如果有多个怪物的碰撞箱已经包含在鼠标内，优先标记Boss，其次是剩余血量多的怪物
+	// 每20次攻击释放鲨鱼能量弹幕，可以穿墙，追踪被标记的敌人。击中被标记的目标或者穿透十次之后该弹幕爆炸造成范围伤害，目标在被击中前死亡则导致弹幕无法穿墙且在任意一次命中之后爆炸
+	// 50%的概率不消耗弹药
 	public int ShootType = 0;
+
 	public override void SetDefaults()
 	{
 		Item.damage = 88;
@@ -39,11 +40,14 @@ public class TsunamiShark : ModItem
 		Item.useTime = 6;
 		Item.useAnimation = 6;
 	}
+
 	internal NPC MarkedTarget = null;
+
 	public override bool AltFunctionUse(Player player)
 	{
 		return true;
 	}
+
 	public override void UpdateInventory(Player player)
 	{
 		if (MarkedTarget != null)
@@ -58,12 +62,14 @@ public class TsunamiShark : ModItem
 			}
 		}
 	}
+
 	public override void HoldItem(Player player)
 	{
 		if (player.controlUseItem && player.ownedProjectileCounts[ModContent.ProjectileType<Projectiles.Weapons.TsunamiShark>()] > 0)
 		{
 		}
 	}
+
 	public override bool CanUseItem(Player player)
 	{
 		if (player.altFunctionUse == 2)
@@ -73,13 +79,18 @@ public class TsunamiShark : ModItem
 		}
 		return true;
 	}
+
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		ShootType = type;
 		if (player.ownedProjectileCounts[ModContent.ProjectileType<Projectiles.Weapons.TsunamiShark>()] <= 0)
+		{
 			Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<Projectiles.Weapons.TsunamiShark>(), damage, knockback, player.whoAmI);
+		}
+
 		return false;
 	}
+
 	public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
 	{
 		Texture2D texMark = ModAsset.TsunamiShark_mark.Value;
@@ -95,10 +106,12 @@ public class TsunamiShark : ModItem
 			}
 		}
 	}
+
 	public override bool CanConsumeAmmo(Item ammo, Player player)
 	{
 		return Main.rand.NextBool(2);
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

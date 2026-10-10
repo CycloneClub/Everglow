@@ -6,7 +6,6 @@ namespace Everglow.Yggdrasil.KelpCurtain.Background;
 
 public class VampireMatCaveWall : BackgroundSlideBase
 {
-
 	public List<Point> BgTiles = new List<Point>();
 
 	public override void SetDefaults()

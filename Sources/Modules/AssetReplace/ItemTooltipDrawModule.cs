@@ -12,6 +12,7 @@ public class ItemTooltipDrawModule : IModule
 	{
 		Code = GetType().Assembly;
 	}
+
 	public string Name => "Tooltip Drawing Modify";
 
 	public Assembly Code { get; }
@@ -44,11 +45,17 @@ public class ItemTooltipDrawModule : IModule
 	{
 		var c = new ILCursor(il);
 		if (!c.TryGotoNext(MoveType.After, i => i.MatchLdsfld<Main>(nameof(Main.SettingsEnabled_OpaqueBoxBehindTooltips))))
+		{
 			return;
+		}
+
 		c.EmitDelegate<Func<bool, bool>>((returnValue) =>
 		{
 			if (IsFakeItem)
+			{
 				return returnValue;
+			}
+
 			return ModContent.GetInstance<AssetReplaceConfig>().TextureReplace == TextureReplaceMode.Terraria && returnValue;
 		});
 	}
@@ -61,6 +68,5 @@ public class ItemTooltipDrawModule : IModule
 
 	public void Unload()
 	{
-
 	}
 }

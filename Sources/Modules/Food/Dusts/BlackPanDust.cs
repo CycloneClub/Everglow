@@ -6,6 +6,7 @@ public class BlackPanDust : ModDust
 	{
 		return true;
 	}
+
 	public override bool Update(Dust dust)
 	{
 		dust.rotation = dust.velocity.ToRotation();
@@ -24,13 +25,18 @@ public class BlackPanDust : ModDust
 			dust.active = false;
 		}
 		if (dust.scale < 0.05f)
+		{
 			dust.active = false;
+		}
+
 		return false;
 	}
+
 	public override void OnSpawn(Dust dust)
 	{
 		base.OnSpawn(dust);
 	}
+
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		return new Color(255, 255, 255, 255);

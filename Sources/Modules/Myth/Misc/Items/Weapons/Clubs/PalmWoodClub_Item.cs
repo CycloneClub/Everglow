@@ -11,6 +11,7 @@ public class PalmWoodClub_Item : ClubItem
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.PalmWoodClub>();
 		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.PalmWoodClub_smash>();
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

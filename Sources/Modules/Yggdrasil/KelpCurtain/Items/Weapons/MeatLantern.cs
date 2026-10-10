@@ -25,6 +25,7 @@ public class MeatLantern : ModItem
 
 		Item.value = Item.sellPrice(gold: 1);
 	}
+
 	public override bool CanUseItem(Player player)
 	{
 		if (base.CanUseItem(player))
@@ -32,8 +33,10 @@ public class MeatLantern : ModItem
 			if (Main.myPlayer == player.whoAmI)
 			{
 				if (player.altFunctionUse != 2)
+				{
 					Projectile.NewProjectile(player.GetSource_ItemUse(Item), player.Center, Vector2.Zero, ModContent.ProjectileType<MeatLantern_Proj>(), player.GetWeaponDamage(Item), Item.knockBack, player.whoAmI);
-				else//右键
+				}
+				else// 右键
 				{
 				}
 			}

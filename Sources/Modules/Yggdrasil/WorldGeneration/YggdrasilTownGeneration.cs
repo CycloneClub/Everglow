@@ -684,13 +684,15 @@ public class YggdrasilTownGeneration
 	/// <summary>
 	/// Digtunnel Avoid YggdrasilTown.
 	/// </summary>
-	/// <param name="X"></param>
-	/// <param name="Y"></param>
+	/// <param name="x">The starting horizontal tile coordinate, clamped to the world bounds.</param>
+	/// <param name="y">The starting vertical tile coordinate, clamped to the world bounds.</param>
 	/// <param name="xDir"></param>
 	/// <param name="yDir"></param>
-	/// <param name="Steps"></param>
-	/// <param name="Size"></param>
-	/// <param name="Wet"></param>
+	/// <param name="steps">The maximum number of tunnel-carving steps.</param>
+	/// <param name="size">The initial tunnel radius in tiles, varied randomly as the tunnel advances.</param>
+	/// <param name="type">The tile type that may be carved; encountering another type stops the tunnel.</param>
+	/// <param name="wet">Whether to fill carved tiles to the maximum liquid amount.</param>
+	/// <param name="wallType">The wall type placed in carved tiles, or -1 to leave existing walls unchanged.</param>
 	/// <returns></returns>
 	public static Vector2D DigTunnelAvoidYggdrasilTown(double x, double y, double xDir, double yDir, int steps, int size, int type, bool wet = false, int wallType = -1)
 	{
@@ -1556,6 +1558,7 @@ public class YggdrasilTownGeneration
 	/// <param name="startPoint"></param>
 	/// <param name="maxStep"></param>
 	/// <param name="width"></param>
+	/// <param name="velocity">树干的初始生长向量；每步位移按当前宽度缩放，随后受随机偏移和回旋影响。</param>
 	public static void LifeLampTreeStructure(List<(Vector2 TrunkPos, float Width)> trunkPoints, Vector2 startPoint, Vector2 velocity, float maxStep, float width)
 	{
 		Vector2 checkTrunk = startPoint;

@@ -28,7 +28,10 @@ public class BoneSpike : ModProjectile, IWarpProjectile
 		{
 			Vector2 AIM0 = player.Center + new Vector2(0, 12 * player.gravDir * (float)(0.2 + Math.Sin(Main.timeForVisualEffects / 18d) / 2d)) + new Vector2(-60 * player.direction, 30).RotatedBy((Projectile.ai[0] - 1) / 4.5 * Math.PI * player.direction) * Projectile.ai[1];
 			if (player.itemTime > 0 && player.active)
+			{
 				AIM0 = player.Center + new Vector2(player.direction * -12, -24 * player.gravDir * (float)(0.2 + Math.Sin(Main.timeForVisualEffects / 18d) / 2d)) + new Vector2(-120 * player.direction, 60).RotatedBy((Projectile.ai[0] - 1) / 4.5 * Math.PI * player.direction) * Projectile.ai[1];
+			}
+
 			Projectile.Center = Projectile.Center * (-Projectile.ai[0] / 50f + 0.97f) + AIM0 * (Projectile.ai[0] / 50f + 0.03f);
 			Projectile.rotation = Math.Clamp(Projectile.velocity.X / 21f, -1, 1);
 			Projectile.velocity *= 0.9f;
@@ -149,7 +152,6 @@ public class BoneSpike : ModProjectile, IWarpProjectile
 
 		for (int x = 0; x < 3; x++)
 		{
-
 			vertex2Ds.Add(new Vertex2D(StartPos + Width + new Vector2(x / 3f).RotatedBy(x) - Main.screenPosition, c0, new Vector3(0, 0, 0)));
 			vertex2Ds.Add(new Vertex2D(EndPos + Width + new Vector2(x / 3f).RotatedBy(x) - Main.screenPosition, c0, new Vector3(0, 1, 0)));
 			vertex2Ds.Add(new Vertex2D(StartPos - Width + new Vector2(x / 3f).RotatedBy(x) - Main.screenPosition, c0, new Vector3(1, 0, 0)));
@@ -162,6 +164,7 @@ public class BoneSpike : ModProjectile, IWarpProjectile
 		Main.graphics.GraphicsDevice.Textures[0] = tex;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, vertex2Ds.ToArray(), 0, vertex2Ds.Count / 3);
 	}
+
 	public void DrawTexLineColor(VFXBatch spriteBatch, Vector2 StartPos, Vector2 EndPos, Color color1, Color color2, float Wid, Texture2D tex)
 	{
 		Vector2 Width = Vector2.Normalize(StartPos - EndPos).RotatedBy(Math.PI / 2d) * Wid;

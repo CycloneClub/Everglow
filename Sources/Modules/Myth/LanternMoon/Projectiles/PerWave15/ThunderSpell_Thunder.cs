@@ -86,7 +86,7 @@ public class ThunderSpell_Thunder : ModProjectile, IBloomProjectile
 
 	public override void OnHitPlayer(Player target, Player.HurtInfo info)
 	{
-		//Main.NewText(info.Damage);
+		// Main.NewText(info.Damage);
 		target.AddBuff(ModContent.BuffType<ShortImmune3>(), 6);
 		base.OnHitPlayer(target, info);
 	}

@@ -20,6 +20,7 @@ public class BoneFeather_spine : ModProjectile
 		Projectile.extraUpdates = 4;
 		Projectile.aiStyle = -1;
 	}
+
 	public override void AI()
 	{
 		Projectile.velocity = Vector2.Zero;
@@ -50,15 +51,18 @@ public class BoneFeather_spine : ModProjectile
 			Projectile.extraUpdates = 0;
 		}
 	}
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		Projectile.hide = true;
 		VelocityPerStep = Vector2.Normalize(Projectile.velocity) * 20f;
 	}
+
 	public float Beta = 0;
 	public float Omega = 0;
 	public Vector2 VelocityPerStep;
 	public List<Vector2> OldPos = new List<Vector2>();
+
 	public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 	{
 		foreach (Vector2 v in OldPos)
@@ -73,6 +77,7 @@ public class BoneFeather_spine : ModProjectile
 		}
 		return false;
 	}
+
 	public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 	{
 		if (target.velocity.X > 0)
@@ -97,10 +102,12 @@ public class BoneFeather_spine : ModProjectile
 		}
 		base.ModifyHitNPC(target, ref modifiers);
 	}
+
 	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
 	{
 		behindNPCsAndTiles.Add(index);
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		if (OldPos.Count < 2)

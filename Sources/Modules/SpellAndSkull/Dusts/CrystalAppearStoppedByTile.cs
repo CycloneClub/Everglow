@@ -7,9 +7,9 @@ public class CrystalAppearStoppedByTile : ModDust
 		dust.noGravity = true;
 		dust.frame = new Rectangle(0, 0, 16, 16);
 		dust.alpha = 0;
-		dust.color.R = (byte)(dust.scale * 100f);//用红度存尺寸极值
-		dust.color.G = (byte)Main.rand.NextFloat(0f, 255f);//用绿度存相位
-		dust.alpha = (byte)Main.rand.NextFloat(0f, 55f);//用透明度存timeleft
+		dust.color.R = (byte)(dust.scale * 100f); // 用红度存尺寸极值
+		dust.color.G = (byte)Main.rand.NextFloat(0f, 255f); // 用绿度存相位
+		dust.alpha = (byte)Main.rand.NextFloat(0f, 55f); // 用透明度存timeleft
 	}
 
 	public override bool Update(Dust dust)
@@ -21,7 +21,10 @@ public class CrystalAppearStoppedByTile : ModDust
 		dust.velocity *= 0.95f;
 		dust.scale = (float)(Math.Sin(dust.alpha / 25d * Math.PI + dust.color.G) + 1.5f) * dust.color.R * 0.003f;
 		if (dust.alpha > 200)
+		{
 			dust.scale *= (255 - dust.alpha) / 55f;
+		}
+
 		Lighting.AddLight(dust.position, 0.0096f * dust.scale / 1.8f, 0.0955f * dust.scale / 1.8f, 0.4758f * dust.scale / 1.8f);
 		if (Collision.SolidCollision(dust.position, 8, 8))
 		{
@@ -40,7 +43,9 @@ public class CrystalAppearStoppedByTile : ModDust
 			dust.velocity = v0;
 		}
 		if (dust.alpha > 254)
+		{
 			dust.active = false;
+		}
 
 		return false;
 	}

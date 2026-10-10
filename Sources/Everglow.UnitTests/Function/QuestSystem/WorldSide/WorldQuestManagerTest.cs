@@ -39,7 +39,7 @@ public class WorldQuestManagerTest
 
 	private sealed class CheckingQuest : WorldQuestBase
 	{
-		public string NameValue { get; init; }
+		public required string NameValue { get; init; }
 
 		public override string Name => NameValue;
 
@@ -149,5 +149,4 @@ public class WorldQuestManagerTest
 		CollectionAssert.AreEqual(expectedIdentities, objectiveUpdates);
 		Assert.AreEqual(WorldQuestState.Locked, missing.State);
 	}
-
 }

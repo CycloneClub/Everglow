@@ -6,11 +6,12 @@ public class PearlwoodSlingshot : SlingshotItem
 {
 	public override void SetDef()
 	{
-		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Ranged.Slingshots.PearlwoodSlingshot>();
+		projType = ModContent.ProjectileType<Projectiles.Weapon.Ranged.Slingshots.PearlwoodSlingshot>();
 		Item.damage = 18;
 		Item.useTime = 21;
 		Item.useAnimation = 21;
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

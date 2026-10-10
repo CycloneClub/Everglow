@@ -9,4 +9,3 @@ internal class RubySlingshot : GemSlingshotProjectile
 		base.SetDef();
 	}
 }
-

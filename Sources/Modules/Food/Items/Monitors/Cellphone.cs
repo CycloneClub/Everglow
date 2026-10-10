@@ -9,13 +9,14 @@ public class Cellphone : GlobalItem
 		if (item.type == ItemID.CellPhone || item.type is 5358 or 5359 or 5360 or 5361) // CellPhone or any ShellPhone
 		{
 			FoodSatietyInfoDisplayplayer SatietyInfo = player.GetModPlayer<FoodSatietyInfoDisplayplayer>();
-			SatietyInfo.AccBloodGlucoseMonitor = true;//显示当前饱食度
+			SatietyInfo.AccBloodGlucoseMonitor = true; // 显示当前饱食度
 
 			ThirstystateInfoDisplayplayer ThirstystateInfo = player.GetModPlayer<ThirstystateInfoDisplayplayer>();
-			ThirstystateInfo.AccOsmoticPressureMonitor = true;//显示渴觉状态
+			ThirstystateInfo.AccOsmoticPressureMonitor = true; // 显示渴觉状态
 		}
 	}
 }
+
 public class CellphoneRecipe : ModSystem
 {
 	public override void PostAddRecipes()

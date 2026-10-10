@@ -1,6 +1,6 @@
 namespace Everglow.PlantAndFarm.Dusts;
 
-public class PFMBuff : ModDust //PFM = Plant-Farm Module
+public class PFMBuff : ModDust // PFM = Plant-Farm Module
 {
 	public override void OnSpawn(Dust dust)
 	{
@@ -18,21 +18,24 @@ public class PFMBuff : ModDust //PFM = Plant-Farm Module
 		dust.alpha += 3;
 
 		if (dust.alpha > 253)
+		{
 			dust.active = false;
+		}
 		/*if(Main.tile[(int)((dust.position.X + dust.velocity.X * 6) / 16f), (int)((dust.position.Y + dust.velocity.Y * 6) / 16f)].CollisionType == 0)
-            {
-                dust.velocity *= -1;
-            }
-            if (Main.tile[(int)((dust.position.X + dust.velocity.X * 6) / 16f), (int)((dust.position.Y + dust.velocity.Y * 6) / 16f)].CollisionType == 1)
-            {
-                dust.velocity.X *= -1;
-            }
-            if (Main.tile[(int)((dust.position.X + dust.velocity.X * 6) / 16f), (int)((dust.position.Y + dust.velocity.Y * 6) / 16f)].CollisionType == 2)
-            {
-                dust.velocity.Y *= -1;
-            }*/
+	{
+		dust.velocity *= -1;
+	}
+	if (Main.tile[(int)((dust.position.X + dust.velocity.X * 6) / 16f), (int)((dust.position.Y + dust.velocity.Y * 6) / 16f)].CollisionType == 1)
+	{
+		dust.velocity.X *= -1;
+	}
+	if (Main.tile[(int)((dust.position.X + dust.velocity.X * 6) / 16f), (int)((dust.position.Y + dust.velocity.Y * 6) / 16f)].CollisionType == 2)
+	{
+		dust.velocity.Y *= -1;
+	}*/
 		return false;
 	}
+
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		double Deep = Math.Sqrt((255 - dust.alpha) / 255d) * 2;

@@ -23,7 +23,7 @@ public class CyanOreBeetle : ModNPC
 		NPC.damage = 16;
 		NPC.defense = 6;
 		NPC.friendly = false;
-		NPC.aiStyle = 3;
+		NPC.aiStyle = NPCAIStyleID.Fighter;
 		NPC.knockBackResist = 0.75f;
 		NPC.value = 30;
 		NPC.HitSound = SoundID.NPCHit4;

@@ -1,4 +1,3 @@
-
 namespace Everglow.Commons.TileHelper;
 
 public class AirWall : ModWall
@@ -11,7 +10,6 @@ public class AirWall : ModWall
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		return false;
-		base.PreDraw(i, j, spriteBatch);
 	}
 }
 

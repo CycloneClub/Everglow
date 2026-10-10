@@ -20,7 +20,7 @@ public class Thermoprobe_Fireball : ModProjectile
 
 	public override void AI()
 	{
-		var d = Dust.NewDustPerfect(Projectile.Center, 6);
+		var d = Dust.NewDustPerfect(Projectile.Center, DustID.Torch);
 	}
 
 	public override bool PreDraw(ref Color lightColor)

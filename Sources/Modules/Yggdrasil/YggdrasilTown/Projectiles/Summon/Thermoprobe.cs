@@ -123,10 +123,10 @@ public class Thermoprobe : ModProjectile
 			}
 			Projectile.rotation = Projectile.velocity.ToRotation();
 		}
-		var d = Dust.NewDustPerfect(Projectile.Center + (Projectile.rotation + 1.8f).ToRotationVector2() * 10 * MathF.Sin(Projectile.ai[2] / 24 * MathF.PI), 6);
+		var d = Dust.NewDustPerfect(Projectile.Center + (Projectile.rotation + 1.8f).ToRotationVector2() * 10 * MathF.Sin(Projectile.ai[2] / 24 * MathF.PI), DustID.Torch);
 		d.noGravity = true;
 
-		d = Dust.NewDustPerfect(Projectile.Center + (Projectile.rotation - 1.8f).ToRotationVector2() * 10 * MathF.Sin(Projectile.ai[2] / 24 * MathF.PI), 6);
+		d = Dust.NewDustPerfect(Projectile.Center + (Projectile.rotation - 1.8f).ToRotationVector2() * 10 * MathF.Sin(Projectile.ai[2] / 24 * MathF.PI), DustID.Torch);
 		d.noGravity = true;
 	}
 

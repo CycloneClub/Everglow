@@ -12,6 +12,7 @@ public class AmberStick : ModBuff
 	{
 	}
 }
+
 public class AmberStickNPC : GlobalNPC
 {
 	public override void PostAI(NPC npc)

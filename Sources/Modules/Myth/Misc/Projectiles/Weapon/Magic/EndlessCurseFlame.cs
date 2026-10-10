@@ -6,6 +6,7 @@ public class EndlessCurseFlame : ModProjectile
 	{
 		// DisplayName.SetDefault("EndlessCurseFlame");
 	}
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 210;
@@ -18,10 +19,12 @@ public class EndlessCurseFlame : ModProjectile
 		Projectile.extraUpdates = 3;
 		Projectile.timeLeft = 300;
 	}
+
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
-		target.AddBuff(39, 60, false);
+		target.AddBuff(BuffID.CursedInferno, 60, false);
 	}
+
 	public override void AI()
 	{
 		if (Projectile.timeLeft > 100)
@@ -39,6 +42,7 @@ public class EndlessCurseFlame : ModProjectile
 			Main.dust[num3].velocity = v;
 		}
 	}
+
 	public override Color? GetAlpha(Color lightColor)
 	{
 		return new Color?(new Color(0, 0, 0, 0));

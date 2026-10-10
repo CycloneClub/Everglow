@@ -5,15 +5,20 @@ namespace Everglow.Myth.Acytaea.VFXs;
 internal abstract class ShaderDraw : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
+
 	public Vector2 position;
 	public Vector2 velocity;
 	public float[] ai;
-	public ShaderDraw() { }
+
+	public ShaderDraw()
+	{
+	}
+
 	public ShaderDraw(Vector2 position, Vector2 velocity, params float[] ai)
 	{
 		this.position = position;
 		this.velocity = velocity;
-		this.ai = ai;//可以认为params传入的都是右值，可以直接引用
+		this.ai = ai; // 可以认为params传入的都是右值，可以直接引用
 	}
 }
 
@@ -23,6 +28,7 @@ internal class AcytaeaFlamePipeline : Pipeline
 	{
 		effect = ModAsset.AcytaeaFlame;
 	}
+
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
@@ -43,14 +49,20 @@ internal class AcytaeaFlamePipeline : Pipeline
 		Ins.Batch.End();
 	}
 }
+
 [Pipeline(typeof(AcytaeaFlamePipeline), typeof(BloomPipeline))]
 internal class AcytaeaFlameDust : ShaderDraw
 {
 	public List<Vector2> oldPos = new List<Vector2>();
 	public float timer;
 	public float maxTime;
-	public AcytaeaFlameDust() { }
-	public AcytaeaFlameDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai) : base(position, velocity, ai)
+
+	public AcytaeaFlameDust()
+	{
+	}
+
+	public AcytaeaFlameDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai)
+		: base(position, velocity, ai)
 	{
 		this.maxTime = maxTime;
 	}
@@ -64,10 +76,16 @@ internal class AcytaeaFlameDust : ShaderDraw
 				position += velocity;
 				oldPos.Add(position);
 				if (oldPos.Count > 15)
+				{
 					oldPos.RemoveAt(0);
+				}
+
 				velocity *= 0.99f;
 				if (timer > maxTime)
+				{
 					Active = false;
+				}
+
 				velocity = velocity.RotatedBy(ai[1]);
 			}
 		}
@@ -76,16 +94,23 @@ internal class AcytaeaFlameDust : ShaderDraw
 			position += velocity;
 			oldPos.Add(position);
 			if (oldPos.Count > 15)
+			{
 				oldPos.RemoveAt(0);
+			}
+
 			velocity *= 0.99f;
 			timer++;
 			if (timer > maxTime)
+			{
 				Active = false;
+			}
+
 			velocity = velocity.RotatedBy(ai[1]);
 		}
 		float delC = ai[2] * 0.05f * (float)Math.Sin((maxTime - timer) / 40d * Math.PI);
 		Lighting.AddLight((int)(position.X / 16), (int)(position.Y / 16), 0.85f * delC, 0, 0);
 	}
+
 	public override void Draw()
 	{
 		float pocession = timer / maxTime;
@@ -93,7 +118,10 @@ internal class AcytaeaFlameDust : ShaderDraw
 		Vector2[] pos = oldPos.Reverse<Vector2>().ToArray();
 		int len = pos.Length;
 		if (len <= 2)
+		{
 			return;
+		}
+
 		var bars = new Vertex2D[len * 2 - 1];
 		for (int i = 1; i < len; i++)
 		{

@@ -153,7 +153,7 @@ internal class LargeFireBulb : ModTile, ITileFluentlyDrawn
 				GenerateProjectile(i, j);
 			}
 		}
-		//tile.TileFrameX %= 36;
+		// tile.TileFrameX %= 36;
 		return base.TileFrame(i, j, ref resetFrame, ref noBreak);
 	}
 

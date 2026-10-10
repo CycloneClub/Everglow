@@ -7,6 +7,7 @@ namespace Everglow.Minortopography.GiantPinetree.Projectiles;
 public class PineSprite : ModProjectile
 {
 	private CoroutineManager _coroutineManager = new CoroutineManager();
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 40;
@@ -20,11 +21,14 @@ public class PineSprite : ModProjectile
 		Projectile.usesLocalNPCImmunity = true;
 		Projectile.localNPCHitCooldown = 2;
 	}
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		_coroutineManager.StartCoroutine(new Coroutine(ChasePlayer()));
 	}
+
 	private int targetWhoAmI = -1;
+
 	public override void AI()
 	{
 		_coroutineManager.Update();
@@ -75,6 +79,7 @@ public class PineSprite : ModProjectile
 		d.noGravity = true;
 		d.scale = Main.rand.NextFloat(0.85f, 1.15f);
 	}
+
 	private IEnumerator<ICoroutineInstruction> ChasePlayer()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -95,6 +100,7 @@ public class PineSprite : ModProjectile
 			yield return new SkipThisFrame();
 		}
 	}
+
 	private IEnumerator<ICoroutineInstruction> ChaseEnemy(NPC npc)
 	{
 		while (npc.active && !npc.dontTakeDamage && !npc.friendly && npc.CanBeChasedBy() && npc.life > 0)
@@ -127,6 +133,7 @@ public class PineSprite : ModProjectile
 			yield return new SkipThisFrame();
 		}
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D mainTex = ModAsset.PineSprite.Value;

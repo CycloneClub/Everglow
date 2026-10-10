@@ -26,9 +26,15 @@ public class DemonScythePlus : ModProjectile
 	{
 		Lighting.AddLight((int)(Projectile.Center.X / 16), (int)(Projectile.Center.Y / 16), 0.22f, 0f, 0.9f);
 		if (timer < 30)
+		{
 			timer += 2;
+		}
+
 		if (Projectile.velocity.Length() < 48f)
+		{
 			Projectile.velocity *= 1.05f;
+		}
+
 		float vL = Projectile.velocity.Length() * 0.1f;
 		vL = Math.Min(vL, 4f);
 		float kSize = Math.Min(vL, 1f);
@@ -45,7 +51,9 @@ public class DemonScythePlus : ModProjectile
 			d0.velocity = Projectile.velocity + lineVel2 * 0.1f + Main.rand.NextVector2Unit() * 0.3f;
 		}
 		if (Collision.SolidCollision(Projectile.Center, 0, 0))
+		{
 			Projectile.Kill();
+		}
 	}
 
 	public override void OnKill(int timeLeft)
@@ -128,14 +136,15 @@ public class DemonScythePlus : ModProjectile
 			circle.Add(new Vertex2D(center + up, color, new Vector3(h * 0.2f / radius, 1, 0)));
 			circle.Add(new Vertex2D(center + down, color, new Vector3(h * 0.2f / radius, 0, 0)));
 		}
-		//circle.Add(new Vertex2D(center + new Vector2(0, radius).RotatedBy(addRot), color, new Vector3(0.5f, 1, 0)));
-		//circle.Add(new Vertex2D(center + new Vector2(0, radius + width).RotatedBy(addRot), color, new Vector3(0.5f, 0, 0)));
+		// circle.Add(new Vertex2D(center + new Vector2(0, radius).RotatedBy(addRot), color, new Vector3(0.5f, 1, 0)));
+		// circle.Add(new Vertex2D(center + new Vector2(0, radius + width).RotatedBy(addRot), color, new Vector3(0.5f, 0, 0)));
 		if (circle.Count > 0)
 		{
 			Main.graphics.GraphicsDevice.Textures[0] = tex;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, circle.ToArray(), 0, circle.Count - 2);
 		}
 	}
+
 	private void DrawTexMoon(VFXBatch spriteBatch, float radius, float width, Color color, Vector2 center, Texture2D tex, double addRot = 0)
 	{
 		var circle = new List<Vertex2D>();
@@ -148,11 +157,14 @@ public class DemonScythePlus : ModProjectile
 			circle.Add(new Vertex2D(center + up, color, new Vector3(h * 0.2f / radius, 1, 0)));
 			circle.Add(new Vertex2D(center + down, color, new Vector3(h * 0.2f / radius, 0, 0)));
 		}
-		//circle.Add(new Vertex2D(center + new Vector2(0, radius).RotatedBy(addRot), color, new Vector3(0.5f, 1, 0)));
-		//circle.Add(new Vertex2D(center + new Vector2(0, radius + width).RotatedBy(addRot), color, new Vector3(0.5f, 0, 0)));
+		// circle.Add(new Vertex2D(center + new Vector2(0, radius).RotatedBy(addRot), color, new Vector3(0.5f, 1, 0)));
+		// circle.Add(new Vertex2D(center + new Vector2(0, radius + width).RotatedBy(addRot), color, new Vector3(0.5f, 0, 0)));
 		if (circle.Count > 0)
+		{
 			spriteBatch.Draw(tex, circle, PrimitiveType.TriangleStrip);
+		}
 	}
+
 	private Vector2 RotAndEclipse(Vector2 orig)
 	{
 		return new Vector2(orig.X, orig.Y * 0.6f).RotatedBy(Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X));

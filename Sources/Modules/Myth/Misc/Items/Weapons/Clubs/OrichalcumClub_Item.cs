@@ -12,6 +12,7 @@ public class OrichalcumClub_Item : ClubItem
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.OrichalcumClub>();
 		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.OrichalcumClub_smash>();
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

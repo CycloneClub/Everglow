@@ -8,8 +8,6 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.FurnaceTiles;
 
 public class HeatproofCandelabra : ModTile
 {
-	private Asset<Texture2D> flameTexture;
-
 	public override void SetStaticDefaults()
 	{
 		// Properties
@@ -34,10 +32,12 @@ public class HeatproofCandelabra : ModTile
 		LocalizedText name = CreateMapEntryName();
 		AddMapEntry(new Color(69, 36, 78), name);
 	}
+
 	public override void NumDust(int i, int j, bool fail, ref int num)
 	{
 		num = 0;
 	}
+
 	public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 	{
 		r = 1f;
@@ -49,6 +49,7 @@ public class HeatproofCandelabra : ModTile
 	{
 		FurnitureUtils.LightHitwire(i, j, Type, 2, 2);
 	}
+
 	public override void NearbyEffects(int i, int j, bool closer)
 	{
 		Tile tile = Main.tile[i, j];

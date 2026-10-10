@@ -5,6 +5,7 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Magic.BoneFeatherMagic;
 internal class BoneFeatherMagicBook : MagicBookProjectile
 {
 	public override string Texture => "Everglow/" + ModAsset.BoneFeatherMagic_Path;
+
 	public override void SetDef()
 	{
 		ProjType = ModContent.ProjectileType<BoneFeather>();
@@ -23,25 +24,30 @@ internal class BoneFeatherMagicBook : MagicBookProjectile
 		TexCoordDown = new Vector2(28, 39);
 		TexCoordRight = new Vector2(43, 9);
 	}
+
 	public override void AI()
 	{
 		Player player = Main.player[Projectile.owner];
-		Projectile.Center = Projectile.Center * 0.7f + (player.Center + new Vector2(player.direction * 22, 12 * player.gravDir * (float)(0.2 + Math.Sin(Main.timeForVisualEffects / 18d) / 2d))) * 0.3f;//书跟着玩家飞
+		Projectile.Center = Projectile.Center * 0.7f + (player.Center + new Vector2(player.direction * 22, 12 * player.gravDir * (float)(0.2 + Math.Sin(Main.timeForVisualEffects / 18d) / 2d))) * 0.3f; // 书跟着玩家飞
 		Projectile.spriteDirection = player.direction;
 		Projectile.velocity *= 0;
-		if (player.itemTime > 0 && player.HeldItem.type == ItemType && player.active && !player.dead)//检测手持物品
+		if (player.itemTime > 0 && player.HeldItem.type == ItemType && player.active && !player.dead)// 检测手持物品
 		{
 			Projectile.timeLeft = player.itemTime + 60;
 			if (timer < 30)
+			{
 				timer++;
+			}
 		}
 		else
 		{
 			timer--;
 			if (timer < 0)
+			{
 				Projectile.Kill();
+			}
 		}
-		Player.CompositeArmStretchAmount PCAS = Player.CompositeArmStretchAmount.Full;//玩家动作
+		Player.CompositeArmStretchAmount PCAS = Player.CompositeArmStretchAmount.Full; // 玩家动作
 
 		player.SetCompositeArmFront(true, PCAS, (float)(-Math.Sin(Main.timeForVisualEffects / 18d) * 0.6 + 1.2) * -player.direction);
 		Vector2 vTOMouse = Main.MouseWorld - player.Center;
@@ -49,7 +55,10 @@ internal class BoneFeatherMagicBook : MagicBookProjectile
 		Projectile.rotation = player.fullRotation;
 		SpecialAI();
 		if (ProjType == -1)
+		{
 			return;
+		}
+
 		if (player.itemTime == player.itemTimeMax - 2 && player.HeldItem.type == ItemType)
 		{
 			for (int x = 0; x < 4; x++)

@@ -1,6 +1,7 @@
 using Terraria.DataStructures;
 
 namespace Everglow.Commons.Templates.Weapons;
+
 /// <summary>
 /// Handhold projectile.
 /// </summary>
@@ -11,28 +12,34 @@ public abstract class HandholdProjectile : ModProjectile
 	/// default to pi / 4, almost terraria painter like this angle.
 	/// </summary>
 	public float TextureRotation = 0;
+
 	/// <summary>
 	/// Max rotation speed of this projectile.
 	/// default to 6.284, projectile will reach the rotation of playerCenter to mouseWorld in a sudden.
 	/// </summary>
 	public float MaxRotationSpeed = 6.284f;
+
 	/// <summary>
 	/// default to 1, projectile will reach the rotation of playerCenter to mouseWorld in a sudden.
 	/// </summary>
 	public float LerpFactorOfRotation = 1;
+
 	/// <summary>
 	/// default to (0, 0).
 	/// </summary>
 	public Vector2 DrawOffset = Vector2.zeroVector;
+
 	/// <summary>
 	/// Length to player arm.default to 50.
 	/// </summary>
 	public float DepartLength = 50;
 	public Vector2 ArmRootPos = Vector2.zeroVector;
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		base.OnSpawn(source);
 	}
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 32;
@@ -46,16 +53,18 @@ public abstract class HandholdProjectile : ModProjectile
 		TextureRotation = MathHelper.PiOver4;
 		SetDef();
 	}
+
 	public virtual void SetDef()
 	{
-
 	}
+
 	public override void AI()
 	{
 		HeldProjectileAI();
 		Player player = Main.player[Projectile.owner];
 		RemoveExtraSameProjectiles(player);
 	}
+
 	public virtual void HeldProjectileAI()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -82,12 +91,15 @@ public abstract class HandholdProjectile : ModProjectile
 			Projectile.Kill();
 		}
 		if (Projectile.Center.X < ArmRootPos.X)
+		{
 			player.direction = -1;
+		}
 		else
 		{
 			player.direction = 1;
 		}
 	}
+
 	public virtual void RemoveExtraSameProjectiles(Player owner)
 	{
 		if (owner.ownedProjectileCounts[Projectile.type] > 1)
@@ -113,18 +125,23 @@ public abstract class HandholdProjectile : ModProjectile
 			}
 		}
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		DrawBaseTexture(lightColor);
 		return false;
 	}
+
 	public virtual void DrawBaseTexture(Color lightColor)
 	{
 		Player player = Main.player[Projectile.owner];
 		var texMain = (Texture2D)ModContent.Request<Texture2D>(Texture);
 		SpriteEffects se = SpriteEffects.None;
 		if (player.direction == -1)
+		{
 			se = SpriteEffects.FlipVertically;
+		}
+
 		float rot = Projectile.rotation - (float)(Math.PI * 0.25) + TextureRotation * player.direction;
 		Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition + DrawOffset, null, lightColor, rot, texMain.Size() / 2f, 1f, se, 0);
 	}

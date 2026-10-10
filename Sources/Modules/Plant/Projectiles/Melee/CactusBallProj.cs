@@ -87,7 +87,7 @@ public class CactusBallProj : ModProjectile, IWarpProjectile
 					SoundEngine.PlaySound(SoundID.NPCHit11);
 				}
 
-				Projectile.aiStyle = 25;
+				Projectile.aiStyle = ProjAIStyleID.Boulder;
 				return;
 			}
 		}

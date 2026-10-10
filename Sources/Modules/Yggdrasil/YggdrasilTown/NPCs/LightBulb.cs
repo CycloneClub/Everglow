@@ -34,23 +34,23 @@ public class LightBulb : ModNPC
 		NPC.value = 100;
 		NPC.HitSound = SoundID.NPCHit1;
 		NPC.DeathSound = SoundID.NPCDeath1;
-
 	}
+
 	public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 	{
 		target.AddBuff(BuffID.Poisoned, 600);
 	}
+
 	public override void FindFrame(int frameHeight)
 	{
-		switch (State)
+		switch (state)
 		{
 			case (int)NPCState.Sleep:
 				{
-
 					NPC.frame.Y = (int)(NPC.frameCounter / 8 % 4 + 8) * frameHeight;
 					break;
 				}
-			case (int)NPCState.charge:
+			case (int)NPCState.Charge:
 				{
 					NPC.frame.Y = (int)(NPC.frameCounter / 6 % 12) * frameHeight;
 					break;
@@ -65,7 +65,6 @@ public class LightBulb : ModNPC
 					NPC.frame.Y = (int)(NPC.frameCounter / 8 % 4 + 8) * frameHeight;
 					break;
 				}
-
 		}
 	}
 
@@ -73,22 +72,26 @@ public class LightBulb : ModNPC
 	{
 		YggdrasilTownBiome YggdrasilTownBiome = ModContent.GetInstance<YggdrasilTownBiome>();
 		if (!YggdrasilTownBiome.IsBiomeActive(Main.LocalPlayer))
+		{
 			return 0f;
+		}
+
 		return 3f;
 	}
 
 	public override void OnSpawn(IEntitySource source)
 	{
-		State = (int)NPCState.Sleep;
+		state = (int)NPCState.Sleep;
 	}
-	int State;
+
+	private int state;
 
 	private enum NPCState
 	{
 		Sleep,
-		charge,
+		Charge,
 		Attack,
-		Cooldown
+		Cooldown,
 	}
 
 	public override void AI()
@@ -98,7 +101,7 @@ public class LightBulb : ModNPC
 		{
 			Lighting.AddLight(NPC.Center, 2.6f, 2.6f, 0.6f);
 		}
-		switch (State)
+		switch (state)
 		{
 			case (int)NPCState.Sleep:
 				{
@@ -107,20 +110,19 @@ public class LightBulb : ModNPC
 					NPC.ai[0] = 0;
 					if (NPC.HasValidTarget && Main.player[NPC.target].Distance(NPC.Center) <= 750)
 					{
-						State = (int)NPCState.charge;
+						state = (int)NPCState.Charge;
 						NPC.ai[0] = 0;
 						NPC.frameCounter = 0;
-
 					}
 					break;
 				}
-			case (int)NPCState.charge:
+			case (int)NPCState.Charge:
 				{
 					NPC.frameCounter++;
 					NPC.ai[0]++;
 					if ((NPC.ai[0] % 18) == 0)
 					{
-						State = (int)NPCState.Attack;
+						state = (int)NPCState.Attack;
 						NPC.ai[0] = 0;
 					}
 					break;
@@ -155,7 +157,7 @@ public class LightBulb : ModNPC
 
 					if ((NPC.ai[0] % 30) == 0)
 					{
-						State = (int)NPCState.Cooldown;
+						state = (int)NPCState.Cooldown;
 					}
 					break;
 				}
@@ -165,16 +167,16 @@ public class LightBulb : ModNPC
 					NPC.ai[0]++;
 
 					NPC.TargetClosest();
-					if (NPC.HasValidTarget && Main.player[NPC.target].Distance(NPC.Center) > 750 || (NPC.ai[0] % 160) == 0)
+					if ((NPC.HasValidTarget && Main.player[NPC.target].Distance(NPC.Center) > 750) || (NPC.ai[0] % 160) == 0)
 					{
-						State = (int)NPCState.Sleep;
+						state = (int)NPCState.Sleep;
 						NPC.ai[0] = 0;
 					}
 					break;
 				}
-
 		}
 	}
+
 	public override void OnKill()
 	{
 		for (int i = 0; i < 5; i++)
@@ -189,13 +191,14 @@ public class LightBulb : ModNPC
 			int type = ModContent.Find<ModGore>("Everglow/GlowingBlossom_gore" + Main.rand.Next(4, 7)).Type;
 			Gore.NewGore(NPC.GetSource_Death(), NPC.Center, v0, type, NPC.scale);
 		}
-
 	}
+
 	public override void ModifyNPCLoot(NPCLoot npcLoot)
 	{
 		npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<UnstablePollen>(), 1, 1, 2));
 		npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<LightBulbOvule>(), 24, 1));
 	}
+
 	public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
 		Texture2D glow = ModAsset.LightBulb_glow.Value;

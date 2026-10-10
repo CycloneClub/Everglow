@@ -26,7 +26,9 @@ public class WorldQuestManager
 	public static bool NormalUpdate => Instance.UpdateTimer % UpdateInterval == 0;
 
 	public event Action<QuestIdentity> QuestStatusUpdated;
+
 	public event Action<QuestIdentity> QuestObjectiveUpdated;
+
 	public static event Action<QuestNotification> NotificationRequested;
 
 	private IGameStateProvider _gameState;

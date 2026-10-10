@@ -9,6 +9,7 @@ public class MythrilFlare : ModDust
 		dust.scale *= 1f;
 		dust.alpha = 0;
 	}
+
 	public override bool Update(Dust dust)
 	{
 		dust.position += dust.velocity;
@@ -38,9 +39,13 @@ public class MythrilFlare : ModDust
 			dust.velocity += new Vector2(0, 0.005f * dust.scale * dust.scale);
 		}
 		if (dust.scale < 0.15f)
+		{
 			dust.active = false;
+		}
+
 		return false;
 	}
+
 	public override Color? GetAlpha(Dust dust, Color lightColor)
 	{
 		return new Color(0.1f, 0.7f, 0.6f, 0.4f);

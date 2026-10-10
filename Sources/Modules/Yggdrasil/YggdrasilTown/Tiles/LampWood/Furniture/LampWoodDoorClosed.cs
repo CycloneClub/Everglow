@@ -29,7 +29,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood.Furniture
 			AdjTiles = new int[] { TileID.ClosedDoor };
 
 			// Names
-			//AddMapEntry(new Color(200, 200, 200), Language.GetText("MapObject.Door"));
+			// AddMapEntry(new Color(200, 200, 200), Language.GetText("MapObject.Door"));
 
 			// Placement
 			TileObjectData.newTile.CopyFrom(TileObjectData.GetTileData(TileID.ClosedDoor, 0));

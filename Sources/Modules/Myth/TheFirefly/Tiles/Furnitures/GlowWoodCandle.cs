@@ -28,20 +28,23 @@ public class GlowWoodCandle : ModTile
 		TileObjectData.newTile.CopyFrom(TileObjectData.StyleOnTable1x1);
 		TileObjectData.addTile(Type);
 
-
 		if (!Main.dedServ)
 		{
 			if (!Main.dedServ)
+			{
 				flameTexture = ModContent.Request<Texture2D>("Everglow/Myth/TheFirefly/Tiles/Furnitures/GlowWoodCandle_Flame");
+			}
 		}
 
 		LocalizedText name = CreateMapEntryName();
 		AddMapEntry(new Color(69, 36, 78), name);
 	}
+
 	public override void NumDust(int i, int j, bool fail, ref int num)
 	{
 		num = 0;
 	}
+
 	public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 	{
 		r = 0.1f;
@@ -53,6 +56,7 @@ public class GlowWoodCandle : ModTile
 	{
 		FurnitureUtils.LightHitwire(i, j, Type, 1, 1);
 	}
+
 	public override void NearbyEffects(int i, int j, bool closer)
 	{
 		Tile tile = Main.tile[i, j];
@@ -69,12 +73,15 @@ public class GlowWoodCandle : ModTile
 			}
 		}
 	}
+
 	public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		var zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
 
 		if (Main.drawToScreen)
+		{
 			zero = Vector2.Zero;
+		}
 
 		ulong randSeed = Main.TileFrameSeed ^ (ulong)((long)j << 32 | (uint)i); // Don't remove any casts.
 		var color = new Color(55, 5, 255, 0);

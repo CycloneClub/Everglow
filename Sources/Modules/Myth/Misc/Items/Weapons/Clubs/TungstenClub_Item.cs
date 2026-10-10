@@ -11,6 +11,7 @@ public class TungstenClub_Item : ClubItem
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.TungstenClub>();
 		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.TungstenClub_smash>();
 	}
+
 	public override void AddRecipes()
 	{
 		CreateRecipe()

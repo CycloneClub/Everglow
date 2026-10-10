@@ -10,8 +10,7 @@ internal class RedPipeline : PostPipeline
 		sb.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
 		effect.Value.Parameters["uColor"].SetValue(Color.Red.ToVector4());
 		effect.Value.Parameters["uTransform"].SetValue(
-			Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1)
-			);
+			Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1));
 		effect.Value.CurrentTechnique.Passes[0].Apply();
 		sb.Draw(rt2D, Vector2.Zero, Color.White);
 		sb.End();

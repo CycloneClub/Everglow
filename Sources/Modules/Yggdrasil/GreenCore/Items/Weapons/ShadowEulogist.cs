@@ -24,13 +24,15 @@ namespace Everglow.Yggdrasil.GreenCore.Items.Weapons
 
 			Item.value = Item.sellPrice(gold: 1);
 		}
+
 		public static BlendState bs;
+
 		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 		{
 			/*
             Main.spriteBatch.End();
             Main.spriteBatch.Begin(SpriteSortMode.Immediate,CustomBlendStates.Reverse, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-            
+
 
             Main.spriteBatch.Draw(Commons.ModAsset.Trail.Value, new Vector2(500, 500), null, Color.White, 0, Vector2.Zero, 1, 0, 0);
 
@@ -38,24 +40,23 @@ namespace Everglow.Yggdrasil.GreenCore.Items.Weapons
             Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
             */
 		}
+
 		public override bool CanUseItem(Player player)
 		{
 			if (Main.myPlayer == player.whoAmI)
 			{
 				Projectile.NewProjectile(player.GetSource_ItemUse(Item), player.Center, Vector2.Zero, ModContent.ProjectileType<ShadowEulogistProj>(), player.GetWeaponDamage(Item), Item.knockBack, player.whoAmI);
-
 			}
 			return base.CanUseItem(player);
 		}
+
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
 			for (int i = 0; i < tooltips.Count; i++)
 			{
-
 				float a = 0.5f + (float)Math.Sin(Main.timeForVisualEffects / 50f + i * 4f / tooltips.Count) + 0.5f;
 				Color c = new Color(a, a, a, 1);
 				tooltips[i].OverrideColor = c;
-
 			}
 		}
 	}

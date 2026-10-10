@@ -9,8 +9,10 @@ public class MothEye : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
-	FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
+	private FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
+
 	public static Player LocalOwner => Main.LocalPlayer;
+
 	public override void SetDefaults()
 	{
 		Item.width = 44;
@@ -18,7 +20,7 @@ public class MothEye : ModItem
 		Item.value = 2000;
 		Item.accessory = true;
 		Item.rare = ItemRarityID.Green;
-		//Item.vanity = true;
+		// Item.vanity = true;
 	}
 
 	public override void UpdateAccessory(Player player, bool hideVisual)
@@ -33,6 +35,7 @@ public class MothEye : ModItem
 			player.manaCost -= 0.05f;
 		}
 	}
+
 	public override void ModifyTooltips(List<TooltipLine> tooltips)
 	{
 		if (fireflyBiome.IsBiomeActive(Main.LocalPlayer) && Main.hardMode)
@@ -51,6 +54,7 @@ public class MothEye : ModItem
 			tooltips.Add(new TooltipLine(ModIns.Mod, "MothEyeCriteriaText", Language.GetTextValue("Mods.Everglow.ExtraTooltip.FireflyItems.MothEyeCriteriaText")));
 		}
 	}
+
 	public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
 	{
 		if (fireflyBiome.IsBiomeActive(Main.LocalPlayer) && Main.hardMode)
@@ -74,17 +78,19 @@ public class MothEye : ModItem
 			spriteBatch.Draw(mEyeTex, position, null, drawColor, 0f, origin, scale, 0, 0f);
 		}
 	}
-	//TODO:DIDNOT FINISH Equipped Effect:Change texture in Firefly biome, fail.
+	// TODO:DIDNOT FINISH Equipped Effect:Change texture in Firefly biome, fail.
 }
-class MothEyePlayer : ModPlayer
+
+internal class MothEyePlayer : ModPlayer
 {
-	FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
+	private FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
 	public bool MothEyeEquipped;
 
 	public override void ResetEffects()
 	{
 		MothEyeEquipped = false;
 	}
+
 	public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
 	{
 		if (fireflyBiome.IsBiomeActive(Main.LocalPlayer) && Main.hardMode)
@@ -92,27 +98,33 @@ class MothEyePlayer : ModPlayer
 			for (int f = 0; f < Player.armor.Length; f++)
 			{
 				if (Player.armor[f].type != ModContent.ItemType<MothEye>())
+				{
 					continue;
+				}
+
 				int[] FireflyWeapon =
 				{
-						ModContent.ItemType<DarknessFan>(),
-						ModContent.ItemType<DreamWeaver>(), // no MothEye effect
-                            ModContent.ItemType<DustOfCorrupt>(), // no MothEye effect
-                            ModContent.ItemType<EvilChrysalis>(),
-						ModContent.ItemType<FlowLightMissile>(), // no MothEye effect
-                            ModContent.ItemType<GlowBeadGun>(), // no MothEye effect
-                            ModContent.ItemType<GlowWoodSword>(),
-						ModContent.ItemType<MothYoyo>(),
-						ModContent.ItemType<NavyThunder>(), // no MothEye effect
-                            ModContent.ItemType<PhosphorescenceGun>(),
-						ModContent.ItemType<ScaleWingBlade>(),
-						ModContent.ItemType<ShadowWingBow>()
-					 };
+					ModContent.ItemType<DarknessFan>(),
+					ModContent.ItemType<DreamWeaver>(), // no MothEye effect
+					ModContent.ItemType<DustOfCorrupt>(), // no MothEye effect
+					ModContent.ItemType<EvilChrysalis>(),
+					ModContent.ItemType<FlowLightMissile>(), // no MothEye effect
+					ModContent.ItemType<GlowBeadGun>(), // no MothEye effect
+					ModContent.ItemType<GlowWoodSword>(),
+					ModContent.ItemType<MothYoyo>(),
+					ModContent.ItemType<NavyThunder>(), // no MothEye effect
+					ModContent.ItemType<PhosphorescenceGun>(),
+					ModContent.ItemType<ScaleWingBlade>(),
+					ModContent.ItemType<ShadowWingBow>(),
+				};
 				if (Array.IndexOf(FireflyWeapon, item.type) != -1)
+				{
 					damage *= 1.05f;
+				}
+
 				break;
 			}
 		}
 	}
 }
-//   TODO: Finish Item Equip Effects (Displays a different equip texture when in the Firefly Biome, See MothEye_Neck.png and MothEye_NeckOff.png
+// TODO: Finish Item Equip Effects (Displays a different equip texture when in the Firefly Biome, See MothEye_Neck.png and MothEye_NeckOff.png

@@ -185,5 +185,4 @@ public class PlayerQuestManagerTest
 		Assert.AreEqual(3, first.NPCKillCounter[NPCID.BlueSlime]);
 		Assert.IsFalse(second.NPCKillCounter.ContainsKey(NPCID.BlueSlime));
 	}
-
 }

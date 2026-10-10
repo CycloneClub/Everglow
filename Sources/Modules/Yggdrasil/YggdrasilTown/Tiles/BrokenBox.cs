@@ -19,16 +19,18 @@ public class BrokenBox : ModTile
 		DustType = ModContent.DustType<BoxWoodDust_LampWood>();
 		AddMapEntry(new Color(102, 70, 51));
 	}
+
 	public override void KillMultiTile(int i, int j, int frameX, int frameY)
 	{
-
 		base.KillMultiTile(i, j, frameX, frameY);
 	}
+
 	public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
 	{
 		noItem = true;
 		base.KillTile(i, j, ref fail, ref effectOnly, ref noItem);
 	}
+
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		Tile tile = Main.tile[i, j];
@@ -36,11 +38,9 @@ public class BrokenBox : ModTile
 		{
 			if (tile.TileFrameX == 36)
 			{
-
 			}
 			if (tile.TileFrameX == 54)
 			{
-
 			}
 		}
 		return base.PreDraw(i, j, spriteBatch);

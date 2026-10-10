@@ -43,7 +43,7 @@ public class JellyBallLifeAbsorb : ModProjectile
 			}
 			return;
 		}
-		if (Absorbee == null || !Absorbee.active || Absorbee.type != ModContent.NPCType<JellyBall>() && Absorbee.type != ModContent.NPCType<GiantJellyBall>() || Absorbee.life <= 0)
+		if (Absorbee == null || !Absorbee.active || (Absorbee.type != ModContent.NPCType<JellyBall>() && Absorbee.type != ModContent.NPCType<GiantJellyBall>()) || Absorbee.life <= 0)
 		{
 			if (Projectile.timeLeft > 60)
 			{

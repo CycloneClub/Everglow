@@ -2,17 +2,19 @@ using Everglow.Myth.TheFirefly.Items.Accessories;
 
 namespace Everglow.Myth.TheFirefly.Projectiles;
 
-
 public class ButterflyDreamFriendly : ModProjectile
 {
 	public Player owner;
+
 	public override string Texture => "Everglow/Myth/TheFirefly/Projectiles/ButterflyDream";
+
 	public override void SetStaticDefaults()
 	{
 		Main.projFrames[Projectile.type] = 4;
-		//ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
-		//ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
+		// ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
+		// ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 	}
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 36;
@@ -25,14 +27,17 @@ public class ButterflyDreamFriendly : ModProjectile
 		Projectile.tileCollide = false;
 		Projectile.usesLocalNPCImmunity = false;
 	}
+
 	public override void SendExtraAI(BinaryWriter writer)
 	{
 		writer.Write(Projectile.timeLeft);
 	}
+
 	public override void ReceiveExtraAI(BinaryReader reader)
 	{
 		Projectile.timeLeft = reader.ReadInt32();
 	}
+
 	public override void AI()
 	{
 		// TODO None
@@ -44,17 +49,21 @@ public class ButterflyDreamFriendly : ModProjectile
 			Projectile.friendly = true;
 			NPC target = Main.npc[(int)Projectile.ai[0]];
 			if (!target.active && Projectile.timeLeft > 10)
+			{
 				Projectile.timeLeft = 10;
-			else//追踪目标
+			}
+			else// 追踪目标
 			{
 				if (MothEye.LocalOwner != null && MothEye.LocalOwner.TryGetModPlayer(out MothEyePlayer mothEyePlayer))
 				{
 					if (mothEyePlayer.MothEyeEquipped && fireflyBiome.IsBiomeActive(Main.LocalPlayer))
+					{
 						Projectile.velocity = Vector2.Lerp(Projectile.velocity * 1.06f, Projectile.DirectionTo(target.Center) * 15, 0.05f);
+					}
+
 					Projectile.velocity = Vector2.Lerp(Projectile.velocity, Projectile.DirectionTo(target.Center) * 15, 0.05f);
 				}
-				//else
-
+				// else
 			}
 		}
 		else
@@ -62,21 +71,33 @@ public class ButterflyDreamFriendly : ModProjectile
 			Projectile.velocity *= 0.98f;
 		}
 		if (Projectile.timeLeft < 10)
+		{
 			Projectile.scale -= 0.1f;
+		}
+
 		if (Projectile.timeLeft == 300)
+		{
 			Projectile.frame = Main.rand.Next(3);
+		}
+
 		if (Projectile.frame > 3)
+		{
 			Projectile.frame = 0;
+		}
+
 		if (Projectile.timeLeft % 6 == 0)
+		{
 			Projectile.frame++;
+		}
+
 		if (Projectile.timeLeft % 3 == 0)
 		{
 			int index = Dust.NewDust(Projectile.position - new Vector2(8), Projectile.width, Projectile.height, ModContent.DustType<Dusts.BlueGlowAppear>(), 0f, 0f, 100, default, Main.rand.NextFloat(0.7f, 1.9f));
 			Main.dust[index].velocity = Projectile.velocity * 0.5f;
 		}
-		//int index2 = Dust.NewDust(Projectile.position - new Vector2(8), Projectile.width, Projectile.height, ModContent.DustType<Dusts.BlueParticleDark2>(), 0f, 0f, 0, default, Main.rand.NextFloat(3.7f, 5.1f));
-		//Main.dust[index2].velocity = Projectile.velocity * 0.5f;
-		//Main.dust[index2].alpha = (int)(Main.dust[index2].scale * 50);
+		// int index2 = Dust.NewDust(Projectile.position - new Vector2(8), Projectile.width, Projectile.height, ModContent.DustType<Dusts.BlueParticleDark2>(), 0f, 0f, 0, default, Main.rand.NextFloat(3.7f, 5.1f));
+		// Main.dust[index2].velocity = Projectile.velocity * 0.5f;
+		// Main.dust[index2].alpha = (int)(Main.dust[index2].scale * 50);
 	}
 
 	public override void OnKill(int timeLeft)
@@ -95,9 +116,9 @@ public class ButterflyDreamFriendly : ModProjectile
 			}
 		}
 	}
+
 	public override Color? GetAlpha(Color lightColor)
 	{
 		return new Color(0.9f, 0.9f, 1f, 0) * (1 - Projectile.alpha / 255f);
 	}
-
 }

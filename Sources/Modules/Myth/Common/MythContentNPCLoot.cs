@@ -3,15 +3,14 @@ using Terraria.Localization;
 
 namespace Everglow.Myth.Common;
 
-
 public class MythContentNPCLoot : GlobalNPC
 {
-	//ModifyNPCLoot uses a unique system called the ItemDropDatabase, which has many different rules for many different drop use cases.
-	//Here we go through all of them, and how they can be used.
-	//There are tons of other examples in vanilla! In a decompiled vanilla build, GameContent/ItemDropRules/ItemDropDatabase adds item drops to every single vanilla NPC, which can be a good resource.
+	// ModifyNPCLoot uses a unique system called the ItemDropDatabase, which has many different rules for many different drop use cases.
+	// Here we go through all of them, and how they can be used.
+	// There are tons of other examples in vanilla! In a decompiled vanilla build, GameContent/ItemDropRules/ItemDropDatabase adds item drops to every single vanilla NPC, which can be a good resource.
 	// TODO: Finish Weapon Ports first
-	//public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
-	//{
+	// public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
+	// {
 	//    Player player = Main.LocalPlayer;
 	//    if (npc.type == NPCID.Nutcracker || npc.type == 349)
 	//    {
@@ -94,7 +93,7 @@ public class MythContentNPCLoot : GlobalNPC
 	//        /*ÆÕÍ¨*/
 	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<BloodGoldBlade>(), 500/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
 
-	//    }
+	// }
 	//    if (npc.type == 134)
 	//    {
 	//        /*´óÊ¦*/
@@ -282,272 +281,370 @@ public class MythContentNPCLoot : GlobalNPC
 	//        npcLoot.Add(ItemDropRule.ByCondition(new InFrostMoonFinal(), ModContent.ItemType<FrozenStormPine>(), 50/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
 	//        npcLoot.Add(ItemDropRule.ByCondition(new InFrostMoonFinal(), ModContent.ItemType<XmasWhip>(), 50/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
 	//    }
-	//}
+	// }
 }
-class CrimsonExpertHardmode : IItemDropRuleCondition
+
+internal class CrimsonExpertHardmode : IItemDropRuleCondition
 {
-	//TODO:ÏÂÁÐµôÂäÌõ¼þÐèÒª·­Òë
-	bool CanD => Main.expertMode && !Main.masterMode && Main.hardMode && Main.LocalPlayer.ZoneCrimson;
+	// TODO:ÏÂÁÐµôÂäÌõ¼þÐèÒª·­Òë
+	private bool CanD => Main.expertMode && !Main.masterMode && Main.hardMode && Main.LocalPlayer.ZoneCrimson;
+
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
 	}
+
 	public bool CanShowItemDropInUI()
 	{
 		return CanD;
 	}
+
 	public string GetConditionDescription()
 	{
 		string desc = "Only hardmode and in the Crimson";
 		if (Language.ActiveCulture.Name == "zh-Hans")
+		{
 			desc = "½öÔÚÀ§ÄÑÄ£Ê½µÄÐÉºìÖ®µØ";
+		}
+
 		return desc;
 	}
 }
-class CrimsonMasterHardmode : IItemDropRuleCondition
+
+internal class CrimsonMasterHardmode : IItemDropRuleCondition
 {
-	bool CanD => Main.masterMode && Main.hardMode && Main.LocalPlayer.ZoneCrimson;
+	private bool CanD => Main.masterMode && Main.hardMode && Main.LocalPlayer.ZoneCrimson;
+
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
 	}
+
 	public bool CanShowItemDropInUI()
 	{
 		return CanD;
 	}
+
 	public string GetConditionDescription()
 	{
 		string desc = "Only hardmode and in the  Crimson";
 		if (Language.ActiveCulture.Name == "zh-Hans")
+		{
 			desc = "½öÔÚÀ§ÄÑÄ£Ê½µÄÐÉºìÖ®µØ";
+		}
+
 		return desc;
 	}
 }
-class CrimsonNormalHardmode : IItemDropRuleCondition
+
+internal class CrimsonNormalHardmode : IItemDropRuleCondition
 {
-	bool CanD => !Main.expertMode && Main.hardMode && Main.LocalPlayer.ZoneCrimson;
+	private bool CanD => !Main.expertMode && Main.hardMode && Main.LocalPlayer.ZoneCrimson;
+
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
 	}
+
 	public bool CanShowItemDropInUI()
 	{
 		return CanD;
 	}
+
 	public string GetConditionDescription()
 	{
 		string desc = "Only hardmode and in the  Crimson";
 		if (Language.ActiveCulture.Name == "zh-Hans")
+		{
 			desc = "½öÔÚÀ§ÄÑÄ£Ê½µÄÐÉºìÖ®µØ";
+		}
+
 		return desc;
 	}
 }
-class CorruptionExpertHardmode : IItemDropRuleCondition
+
+internal class CorruptionExpertHardmode : IItemDropRuleCondition
 {
-	bool CanD => Main.expertMode && !Main.masterMode && Main.hardMode && Main.LocalPlayer.ZoneCorrupt;
+	private bool CanD => Main.expertMode && !Main.masterMode && Main.hardMode && Main.LocalPlayer.ZoneCorrupt;
+
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
 	}
+
 	public bool CanShowItemDropInUI()
 	{
 		return CanD;
 	}
+
 	public string GetConditionDescription()
 	{
 		string desc = "Only hardmode and in the Corrupt";
 		if (Language.ActiveCulture.Name == "zh-Hans")
+		{
 			desc = "½öÔÚÀ§ÄÑÄ£Ê½µÄ¸¯»¯Ö®µØ";
+		}
+
 		return desc;
 	}
 }
-class CorruptionMasterHardmode : IItemDropRuleCondition
+
+internal class CorruptionMasterHardmode : IItemDropRuleCondition
 {
-	bool CanD => Main.masterMode && Main.hardMode && Main.LocalPlayer.ZoneCorrupt;
+	private bool CanD => Main.masterMode && Main.hardMode && Main.LocalPlayer.ZoneCorrupt;
+
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
 	}
+
 	public bool CanShowItemDropInUI()
 	{
 		return CanD;
 	}
+
 	public string GetConditionDescription()
 	{
 		string desc = "Only hardmode and in the Corrupt";
 		if (Language.ActiveCulture.Name == "zh-Hans")
+		{
 			desc = "½öÔÚÀ§ÄÑÄ£Ê½µÄ¸¯»¯Ö®µØ";
+		}
+
 		return desc;
 	}
 }
-class CorruptionNormalHardmode : IItemDropRuleCondition
+
+internal class CorruptionNormalHardmode : IItemDropRuleCondition
 {
-	bool CanD => !Main.expertMode && Main.hardMode && Main.LocalPlayer.ZoneCorrupt;
+	private bool CanD => !Main.expertMode && Main.hardMode && Main.LocalPlayer.ZoneCorrupt;
+
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
 	}
+
 	public bool CanShowItemDropInUI()
 	{
 		return CanD;
 	}
+
 	public string GetConditionDescription()
 	{
 		string desc = "Only hardmode and in the Corrupt";
 		if (Language.ActiveCulture.Name == "zh-Hans")
+		{
 			desc = "½öÔÚÀ§ÄÑÄ£Ê½µÄ¸¯»¯Ö®µØ";
+		}
+
 		return desc;
 	}
 }
-class HallowExpertHardmode : IItemDropRuleCondition
+
+internal class HallowExpertHardmode : IItemDropRuleCondition
 {
-	bool CanD => Main.expertMode && !Main.masterMode && Main.hardMode && Main.LocalPlayer.ZoneHallow;
+	private bool CanD => Main.expertMode && !Main.masterMode && Main.hardMode && Main.LocalPlayer.ZoneHallow;
+
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
 	}
+
 	public bool CanShowItemDropInUI()
 	{
 		return CanD;
 	}
+
 	public string GetConditionDescription()
 	{
 		string desc = "Only hardmode and in the Hallow";
 		if (Language.ActiveCulture.Name == "zh-Hans")
+		{
 			desc = "½öÔÚÀ§ÄÑÄ£Ê½µÄÉñÊ¥Ö®µØ";
+		}
+
 		return desc;
 	}
 }
-class HallowMasterHardmode : IItemDropRuleCondition
+
+internal class HallowMasterHardmode : IItemDropRuleCondition
 {
-	bool CanD => Main.masterMode && Main.hardMode && Main.LocalPlayer.ZoneHallow;
+	private bool CanD => Main.masterMode && Main.hardMode && Main.LocalPlayer.ZoneHallow;
+
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
 	}
+
 	public bool CanShowItemDropInUI()
 	{
 		return CanD;
 	}
+
 	public string GetConditionDescription()
 	{
 		string desc = "Only hardmode and in the Hallow";
 		if (Language.ActiveCulture.Name == "zh-Hans")
+		{
 			desc = "½öÔÚÀ§ÄÑÄ£Ê½µÄÉñÊ¥Ö®µØ";
+		}
+
 		return desc;
 	}
 }
-class HallowNormalHardmode : IItemDropRuleCondition
+
+internal class HallowNormalHardmode : IItemDropRuleCondition
 {
-	bool CanD => !Main.expertMode && Main.hardMode && Main.LocalPlayer.ZoneHallow;
+	private bool CanD => !Main.expertMode && Main.hardMode && Main.LocalPlayer.ZoneHallow;
+
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
 	}
+
 	public bool CanShowItemDropInUI()
 	{
 		return CanD;
 	}
+
 	public string GetConditionDescription()
 	{
 		string desc = "Only hardmode and in the Hallow";
 		if (Language.ActiveCulture.Name == "zh-Hans")
+		{
 			desc = "½öÔÚÀ§ÄÑÄ£Ê½µÄÉñÊ¥Ö®µØ";
+		}
+
 		return desc;
 	}
 }
-class EclipseExpertPostPlant : IItemDropRuleCondition
+
+internal class EclipseExpertPostPlant : IItemDropRuleCondition
 {
-	bool CanD => Main.expertMode && !Main.masterMode && Main.eclipse && NPC.downedPlantBoss;
+	private bool CanD => Main.expertMode && !Main.masterMode && Main.eclipse && NPC.downedPlantBoss;
+
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
 	}
+
 	public bool CanShowItemDropInUI()
 	{
 		return CanD;
 	}
+
 	public string GetConditionDescription()
 	{
 		string desc = "Only defeated Plantera and in the Eclipse";
 		if (Language.ActiveCulture.Name == "zh-Hans")
+		{
 			desc = "½öÔÚÊÀ¼ÍÖ®»¨ºóÈÕÊ³";
+		}
+
 		return desc;
 	}
 }
-class EclipseMasterPostPlant : IItemDropRuleCondition
+
+internal class EclipseMasterPostPlant : IItemDropRuleCondition
 {
-	bool CanD => Main.masterMode && Main.eclipse && NPC.downedPlantBoss;
+	private bool CanD => Main.masterMode && Main.eclipse && NPC.downedPlantBoss;
+
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
 	}
+
 	public bool CanShowItemDropInUI()
 	{
 		return CanD;
 	}
+
 	public string GetConditionDescription()
 	{
 		string desc = "Only defeated Plantera and in the Eclipse";
 		if (Language.ActiveCulture.Name == "zh-Hans")
+		{
 			desc = "½öÔÚÊÀ¼ÍÖ®»¨ºóÈÕÊ³";
+		}
+
 		return desc;
 	}
 }
-class EclipseNormalPostPlant : IItemDropRuleCondition
+
+internal class EclipseNormalPostPlant : IItemDropRuleCondition
 {
-	bool CanD => !Main.expertMode && Main.eclipse && NPC.downedPlantBoss;
+	private bool CanD => !Main.expertMode && Main.eclipse && NPC.downedPlantBoss;
+
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
 	}
+
 	public bool CanShowItemDropInUI()
 	{
 		return CanD;
 	}
+
 	public string GetConditionDescription()
 	{
 		string desc = "Only defeated Plantera and in the Eclipse";
 		if (Language.ActiveCulture.Name == "zh-Hans")
+		{
 			desc = "½öÔÚÊÀ¼ÍÖ®»¨ºóÈÕÊ³";
+		}
+
 		return desc;
 	}
 }
-class InFrostMoonFinal : IItemDropRuleCondition
+
+internal class InFrostMoonFinal : IItemDropRuleCondition
 {
-	bool CanD => Main.snowMoon && Main.invasionProgressWave >= 20;
+	private bool CanD => Main.snowMoon && Main.invasionProgressWave >= 20;
+
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
 	}
+
 	public bool CanShowItemDropInUI()
 	{
 		return CanD;
 	}
+
 	public string GetConditionDescription()
 	{
 		string desc = "Only Frost Moon during Chrismas";
 		if (Language.ActiveCulture.Name == "zh-Hans")
+		{
 			desc = "½öÔÚÊ¥µ®½ÚÆÚ¼äËªÔÂ";
+		}
+
 		return desc;
 	}
 }
-class InPumpkMoonFinal : IItemDropRuleCondition
+
+internal class InPumpkMoonFinal : IItemDropRuleCondition
 {
-	bool CanD => Main.pumpkinMoon && Main.invasionProgressWave >= 20;
+	private bool CanD => Main.pumpkinMoon && Main.invasionProgressWave >= 20;
+
 	public bool CanDrop(DropAttemptInfo info)
 	{
 		return CanD;
 	}
+
 	public bool CanShowItemDropInUI()
 	{
 		return CanD;
 	}
+
 	public string GetConditionDescription()
 	{
 		string desc = "Only Pumpkin Moon during Chrismas";
 		if (Language.ActiveCulture.Name == "zh-Hans")
+		{
 			desc = "½öÔÚÊ¥µ®½ÚÆÚ¼äËªÔÂ";
+		}
+
 		return desc;
 	}
 }

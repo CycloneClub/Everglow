@@ -17,14 +17,21 @@ public class ToothMagicBall : ModProjectile
 		Projectile.penetrate = -1;
 		Projectile.scale = 1;
 	}
+
 	public override void AI()
 	{
 		Player player = Main.player[Projectile.owner];
 		player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (float)(Math.PI / 2d) * -player.direction);
 		if (Projectile.timeLeft >= 1000)
+		{
 			Projectile.timeLeft = 10;
+		}
+
 		if (player.controlUseItem && player.statMana > player.HeldItem.mana)
+		{
 			Projectile.timeLeft = 10;
+		}
+
 		if (player.itemTime == player.itemTimeMax)
 		{
 			Vector2 velocity = Vector2.Normalize(Main.MouseWorld - player.Center) * player.HeldItem.shootSpeed;
@@ -44,9 +51,10 @@ public class ToothMagicBall : ModProjectile
 			Energy *= 0.7f;
 		}
 	}
-	Vector2[] VB = new Vector2[4];
-	Vector2[] VT = new Vector2[10];
-	Vector2[] VTMax = new Vector2[10];
+
+	private Vector2[] vB = new Vector2[4];
+	private Vector2[] vT = new Vector2[10];
+	private Vector2[] vTMax = new Vector2[10];
 
 	public override void PostDraw(Color lightColor)
 	{
@@ -76,35 +84,40 @@ public class ToothMagicBall : ModProjectile
 		SpriteEffects sp = SpriteEffects.None;
 
 		if (player.direction == -1)
+		{
 			sp = SpriteEffects.FlipHorizontally;
-		if (VTMax[0] == Vector2.Zero)
+		}
+
+		if (vTMax[0] == Vector2.Zero)
 		{
 			for (int s = 0; s < 10; s++)
 			{
-				VTMax[s] = new Vector2(0, Main.rand.NextFloat(2.5f, 4f)).RotatedBy(s / 7.5 * Math.PI);
+				vTMax[s] = new Vector2(0, Main.rand.NextFloat(2.5f, 4f)).RotatedBy(s / 7.5 * Math.PI);
 			}
 		}
 		for (int s = 0; s < 10; s++)
 		{
-			VT[s] = VTMax[s] * (float)(Math.Sin(s + Main.time * 0.03f) + 0.4);
+			vT[s] = vTMax[s] * (float)(Math.Sin(s + Main.time * 0.03f) + 0.4);
 		}
 		Main.spriteBatch.Draw(TC, player.Center + new Vector2(20 * player.direction, -7) - Main.screenPosition, null, c0, 0, drawOrigin, player.itemTime / (float)player.itemTimeMax, sp, 0);
-		Main.spriteBatch.Draw(TB0, player.Center + VB[0] + new Vector2(28 * player.direction, -5) - Main.screenPosition, null, c0, 0, drawOrigin, 1, sp, 0);
-		Main.spriteBatch.Draw(TB1, player.Center + VB[1] + new Vector2(28 * player.direction, -5) - Main.screenPosition, null, c0, 0, drawOrigin, 1, sp, 0);
-		Main.spriteBatch.Draw(TB2, player.Center + VB[2] + new Vector2(28 * player.direction, -5) - Main.screenPosition, null, c0, 0, drawOrigin, 1, sp, 0);
-		Main.spriteBatch.Draw(TB3, player.Center + VB[3] + new Vector2(28 * player.direction, -5) - Main.screenPosition, null, c0, 0, drawOrigin, 1, sp, 0);
-		Main.spriteBatch.Draw(TT0, player.Center + VT[0] + new Vector2(28 * player.direction, -5) - Main.screenPosition, null, c0, 0, drawOrigin, 1, sp, 0);
-		Main.spriteBatch.Draw(TT1, player.Center + VT[1] + new Vector2(28 * player.direction, -5) - Main.screenPosition, null, c0, 0, drawOrigin, 1, sp, 0);
-		Main.spriteBatch.Draw(TT2, player.Center + VT[2] + new Vector2(28 * player.direction, -5) - Main.screenPosition, null, c0, 0, drawOrigin, 1, sp, 0);
-		Main.spriteBatch.Draw(TT3, player.Center + VT[3] + new Vector2(28 * player.direction, -5) - Main.screenPosition, null, c0, 0, drawOrigin, 1, sp, 0);
-		Main.spriteBatch.Draw(TT4, player.Center + VT[4] + new Vector2(28 * player.direction, -5) - Main.screenPosition, null, c0, 0, drawOrigin, 1, sp, 0);
-		Main.spriteBatch.Draw(TT5, player.Center + VT[5] + new Vector2(28 * player.direction, -5) - Main.screenPosition, null, c0, 0, drawOrigin, 1, sp, 0);
-		Main.spriteBatch.Draw(TT6, player.Center + VT[6] + new Vector2(28 * player.direction, -5) - Main.screenPosition, null, c0, 0, drawOrigin, 1, sp, 0);
-		Main.spriteBatch.Draw(TT7, player.Center + VT[7] + new Vector2(28 * player.direction, -5) - Main.screenPosition, null, c0, 0, drawOrigin, 1, sp, 0);
-		Main.spriteBatch.Draw(TT8, player.Center + VT[8] + new Vector2(28 * player.direction, -5) - Main.screenPosition, null, c0, 0, drawOrigin, 1, sp, 0);
-		Main.spriteBatch.Draw(TT9, player.Center + VT[9] + new Vector2(28 * player.direction, -5) - Main.screenPosition, null, c0, 0, drawOrigin, 1, sp, 0);
+		Main.spriteBatch.Draw(TB0, player.Center + vB[0] + new Vector2(28 * player.direction, -5) - Main.screenPosition, null, c0, 0, drawOrigin, 1, sp, 0);
+		Main.spriteBatch.Draw(TB1, player.Center + vB[1] + new Vector2(28 * player.direction, -5) - Main.screenPosition, null, c0, 0, drawOrigin, 1, sp, 0);
+		Main.spriteBatch.Draw(TB2, player.Center + vB[2] + new Vector2(28 * player.direction, -5) - Main.screenPosition, null, c0, 0, drawOrigin, 1, sp, 0);
+		Main.spriteBatch.Draw(TB3, player.Center + vB[3] + new Vector2(28 * player.direction, -5) - Main.screenPosition, null, c0, 0, drawOrigin, 1, sp, 0);
+		Main.spriteBatch.Draw(TT0, player.Center + vT[0] + new Vector2(28 * player.direction, -5) - Main.screenPosition, null, c0, 0, drawOrigin, 1, sp, 0);
+		Main.spriteBatch.Draw(TT1, player.Center + vT[1] + new Vector2(28 * player.direction, -5) - Main.screenPosition, null, c0, 0, drawOrigin, 1, sp, 0);
+		Main.spriteBatch.Draw(TT2, player.Center + vT[2] + new Vector2(28 * player.direction, -5) - Main.screenPosition, null, c0, 0, drawOrigin, 1, sp, 0);
+		Main.spriteBatch.Draw(TT3, player.Center + vT[3] + new Vector2(28 * player.direction, -5) - Main.screenPosition, null, c0, 0, drawOrigin, 1, sp, 0);
+		Main.spriteBatch.Draw(TT4, player.Center + vT[4] + new Vector2(28 * player.direction, -5) - Main.screenPosition, null, c0, 0, drawOrigin, 1, sp, 0);
+		Main.spriteBatch.Draw(TT5, player.Center + vT[5] + new Vector2(28 * player.direction, -5) - Main.screenPosition, null, c0, 0, drawOrigin, 1, sp, 0);
+		Main.spriteBatch.Draw(TT6, player.Center + vT[6] + new Vector2(28 * player.direction, -5) - Main.screenPosition, null, c0, 0, drawOrigin, 1, sp, 0);
+		Main.spriteBatch.Draw(TT7, player.Center + vT[7] + new Vector2(28 * player.direction, -5) - Main.screenPosition, null, c0, 0, drawOrigin, 1, sp, 0);
+		Main.spriteBatch.Draw(TT8, player.Center + vT[8] + new Vector2(28 * player.direction, -5) - Main.screenPosition, null, c0, 0, drawOrigin, 1, sp, 0);
+		Main.spriteBatch.Draw(TT9, player.Center + vT[9] + new Vector2(28 * player.direction, -5) - Main.screenPosition, null, c0, 0, drawOrigin, 1, sp, 0);
 	}
+
 	public float Energy = 0;
+
 	public void DrawPowerEffect()
 	{
 		Player player = Main.player[Projectile.owner];
@@ -167,7 +180,6 @@ public class ToothMagicBall : ModProjectile
 		}
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-
 
 		if (!player.controlUseItem)
 		{

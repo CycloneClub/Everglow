@@ -4,6 +4,7 @@ using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.TwilightForest;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
 using Terraria.Audio;
 using Terraria.DataStructures;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Ranged;
 
@@ -43,7 +44,7 @@ public class GunOfAvariceAutoReload : ModProjectile
 			else
 			{
 				FailureVFX(Level);
-				Owner.Hurt(PlayerDeathReason.ByCustomReason($"{Owner.name} died in explosion!"), Projectile.damage, 0, false, false, 0);
+				Owner.Hurt(PlayerDeathReason.ByCustomReason(NetworkText.FromLiteral($"{Owner.name} died in explosion!")), Projectile.damage, 0, false, false, 0);
 			}
 			for (int i = 0; i < 14; i++)
 			{
