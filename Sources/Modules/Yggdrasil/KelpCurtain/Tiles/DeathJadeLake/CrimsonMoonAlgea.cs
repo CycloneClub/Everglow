@@ -36,7 +36,7 @@ public class CrimsonMoonAlgea : ModTile, ITileFluentlyDrawn
 		return false;
 	}
 
-	public override void RandomUpdate(int i, int j)
+	public override void RandomUpdate(int i, int j, bool underground)
 	{
 		var tile = Main.tile[i, j];
 		if (tile.LiquidAmount <= 0)

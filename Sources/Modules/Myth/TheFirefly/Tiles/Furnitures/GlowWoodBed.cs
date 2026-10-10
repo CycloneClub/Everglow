@@ -16,11 +16,11 @@ public class GlowWoodBed : ModTile
 		Main.tileLavaDeath[Type] = true;
 		TileID.Sets.HasOutlines[Type] = true;
 		TileID.Sets.CanBeSleptIn[Type] = true; // Facilitates calling ModifySleepingTargetInfo
-		TileID.Sets.InteractibleByNPCs[Type] = true; // Town NPCs will palm their hand at this tile
+		TileID.Sets.InteractableByNPCs[Type] = true; // Town NPCs will palm their hand at this tile
 		TileID.Sets.IsValidSpawnPoint[Type] = true;
 		TileID.Sets.DisableSmartCursor[Type] = true;
 
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair); // Beds count as chairs for the purpose of suitable room creation
+		TileID.Sets.RoomNeeds.CountsAsChair[Type] = true; // Beds count as chairs for the purpose of suitable room creation
 
 		DustType = ModContent.DustType<BlueGlow>();
 		AdjTiles = new int[] { TileID.Beds };

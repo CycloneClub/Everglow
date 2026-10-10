@@ -18,7 +18,7 @@ public class HangingSkyLantern : ModTile, ITileFluentlyDrawn
 		Main.tileSolid[Type] = false;
 		Main.tileNoFail[Type] = true;
 
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
+		TileID.Sets.RoomNeeds.CountsAsTorch[Type] = true;
 
 		DustType = DustID.DynastyWood;
 		AdjTiles = new int[] { TileID.Chandeliers };

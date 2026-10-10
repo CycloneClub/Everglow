@@ -45,11 +45,11 @@ public class WaterErodedGreenBrickWall_Fixed : ModWall
 		return false;
 	}
 
-	public override void RandomUpdate(int i, int j)
+	public override void RandomUpdate(int i, int j, bool underground)
 	{
 		Tile tile = Main.tile[i, j];
 		tile.LiquidType = LiquidID.Water;
 		tile.LiquidAmount = 255;
-		base.RandomUpdate(i, j);
+		base.RandomUpdate(i, j, underground);
 	}
 }

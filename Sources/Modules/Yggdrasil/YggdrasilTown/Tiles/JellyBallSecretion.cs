@@ -25,7 +25,7 @@ public class JellyBallSecretion : ModTile
 		return base.PreDraw(i, j, spriteBatch);
 	}
 
-	public override void RandomUpdate(int i, int j)
+	public override void RandomUpdate(int i, int j, bool underground)
 	{
 		Tile tile = Main.tile[i, j];
 		Tile tileLeft = Main.tile[i + 1, j];

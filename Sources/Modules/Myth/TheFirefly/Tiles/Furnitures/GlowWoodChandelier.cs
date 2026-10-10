@@ -25,7 +25,7 @@ public class GlowWoodChandelier : ModTile, ITileFluentlyDrawn, ITileFlameData
 		Main.tileNoFail[Type] = true;
 		TileID.Sets.HasOutlines[Type] = true;
 
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
+		TileID.Sets.RoomNeeds.CountsAsTorch[Type] = true;
 
 		DustType = ModContent.DustType<BlueGlow>();
 		AdjTiles = new int[] { TileID.Chandeliers };

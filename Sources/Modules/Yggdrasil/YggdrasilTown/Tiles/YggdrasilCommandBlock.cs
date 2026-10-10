@@ -39,7 +39,7 @@ public class YggdrasilCommandBlock : ModTile
 		AddMapEntry(new Color(96, 96, 96));
 	}
 
-	public override void RandomUpdate(int i, int j)
+	public override void RandomUpdate(int i, int j, bool underground)
 	{
 		if (SubworldSystem.Current is YggdrasilWorld)
 		{

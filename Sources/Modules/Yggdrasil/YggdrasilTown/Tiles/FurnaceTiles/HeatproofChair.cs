@@ -24,7 +24,7 @@ public class HeatproofChair : ModTile
 		TileID.Sets.CanBeSatOnForPlayers[Type] = true; // Facilitates calling ModifySittingTargetInfo for Players
 		TileID.Sets.DisableSmartCursor[Type] = true;
 
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
+		TileID.Sets.RoomNeeds.CountsAsChair[Type] = true;
 
 		DustType = ModContent.DustType<Heatproof_Furniture_Dust>(); // You should set a kind of dust manually.
 		AdjTiles = new int[] { TileID.Chairs };

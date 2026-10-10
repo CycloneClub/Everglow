@@ -17,7 +17,7 @@ public class SungloChandelier : ModTile, ITileFluentlyDrawn, ITileFlameData
 		Main.tileSolid[Type] = false;
 		TileID.Sets.HasOutlines[Type] = true;
 
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
+		TileID.Sets.RoomNeeds.CountsAsTorch[Type] = true;
 
 		DustType = DustID.BrownMoss;
 		AdjTiles = new int[] { TileID.Chandeliers };

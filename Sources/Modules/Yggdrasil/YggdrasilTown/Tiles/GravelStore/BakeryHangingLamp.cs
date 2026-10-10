@@ -18,7 +18,7 @@ public class BakeryHangingLamp : ModTile, ITileFluentlyDrawn
 		Main.tileSolid[Type] = false;
 		Main.tileNoFail[Type] = true;
 
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
+		TileID.Sets.RoomNeeds.CountsAsTorch[Type] = true;
 
 		DustType = DustID.BorealWood; // You should set a kind of dust manually.
 		AdjTiles = new int[] { TileID.HangingLanterns };

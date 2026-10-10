@@ -25,7 +25,7 @@ public class GlowWoodDoorClosed : ModTile
 		TileID.Sets.HasOutlines[Type] = true;
 		TileID.Sets.DisableSmartCursor[Type] = true;
 
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
+		TileID.Sets.RoomNeeds.CountsAsDoor[Type] = true;
 
 		DustType = ModContent.DustType<BlueGlow>();
 		AdjTiles = new int[] { TileID.ClosedDoor };

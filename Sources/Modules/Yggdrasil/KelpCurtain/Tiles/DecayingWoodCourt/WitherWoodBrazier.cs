@@ -21,7 +21,7 @@ public class WitherWoodBrazier : ModTile, ITileFluentlyDrawn
 		Main.tileNoFail[Type] = true;
 		TileID.Sets.HasOutlines[Type] = true;
 
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
+		TileID.Sets.RoomNeeds.CountsAsTorch[Type] = true;
 
 		DustType = ModContent.DustType<WitherWoodDust>(); // You should set a kind of dust manually.
 		AdjTiles = new int[] { TileID.Chandeliers };

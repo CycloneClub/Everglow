@@ -19,7 +19,7 @@ public class DarkCocoonMoss : ModTile
 		yield return new Item(ModContent.ItemType<Items.DarkCocoon>());
 	}
 
-	public override void RandomUpdate(int i, int j)
+	public override void RandomUpdate(int i, int j, bool underground)
 	{
 		Tile t0 = Main.tile[i, j];
 		Tile t1 = Main.tile[i, j - 1];

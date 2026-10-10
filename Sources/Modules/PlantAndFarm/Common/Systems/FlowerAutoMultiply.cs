@@ -2,7 +2,7 @@ namespace Everglow.PlantAndFarm.Common.Systems;
 
 public class FlowerAutoMultiply : GlobalTile
 {
-	public override void RandomUpdate(int i, int j, int type)
+	public override void RandomUpdate(int i, int j, int type, bool underground)
 	{
 		Vector2[] Types =
 		{

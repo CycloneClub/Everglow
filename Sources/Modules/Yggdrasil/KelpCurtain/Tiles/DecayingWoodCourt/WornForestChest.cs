@@ -22,7 +22,7 @@ public class WornForestChest : ModTile
 		TileID.Sets.BasicChest[Type] = true;
 		TileID.Sets.DisableSmartCursor[Type] = true;
 		TileID.Sets.AvoidedByNPCs[Type] = true;
-		TileID.Sets.InteractibleByNPCs[Type] = true;
+		TileID.Sets.InteractableByNPCs[Type] = true;
 		TileID.Sets.IsAContainer[Type] = true;
 		TileID.Sets.FriendlyFairyCanLureTo[Type] = true;
 

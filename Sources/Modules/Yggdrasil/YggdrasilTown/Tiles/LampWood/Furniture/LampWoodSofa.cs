@@ -20,7 +20,7 @@ public class LampWoodSofa : ModTile
 		TileID.Sets.CanBeSatOnForPlayers[Type] = true; // Facilitates calling ModifySittingTargetInfo for Players
 		TileID.Sets.DisableSmartCursor[Type] = true;
 
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
+		TileID.Sets.RoomNeeds.CountsAsChair[Type] = true;
 
 		DustType = ModContent.DustType<LampWood_Dust>();
 		AdjTiles = new int[] { TileID.Benches };

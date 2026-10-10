@@ -23,7 +23,7 @@ public class UnionOfficeDoorClosed : ModTile
 		TileID.Sets.DisableSmartCursor[Type] = true;
 
 		// TileID.Sets.OpenDoorID[Type] = ModContent.TileType<UnionOfficeDoorOpen>();
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
+		TileID.Sets.RoomNeeds.CountsAsDoor[Type] = true;
 
 		DustType = ModContent.DustType<UnionMarblePost_Dust_Khaki>();
 

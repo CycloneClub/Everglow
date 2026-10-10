@@ -27,7 +27,7 @@ public class GlowWoodBookcase : ModTile
 		TileObjectData.newTile.CoordinatePaddingFix = new Point16(0, -2);
 		TileObjectData.addTile(Type);
 
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
+		TileID.Sets.RoomNeeds.CountsAsTable[Type] = true;
 	}
 
 	public override void NumDust(int i, int j, bool fail, ref int num)

@@ -21,7 +21,7 @@ public class WitherWoodDoorClosed : ModTile
 		TileID.Sets.DisableSmartCursor[Type] = true;
 		TileID.Sets.OpenDoorID[Type] = ModContent.TileType<WitherWoodDoor>();
 
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
+		TileID.Sets.RoomNeeds.CountsAsDoor[Type] = true;
 
 		DustType = ModContent.DustType<WitherWoodDust>(); // You should set a kind of dust manually.
 		AdjTiles = new int[] { TileID.ClosedDoor };

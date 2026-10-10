@@ -14,7 +14,7 @@ public class TwilightEucalyptusBathtub : ModTile
 		Main.tileLavaDeath[Type] = true;
 		TileID.Sets.DisableSmartCursor[Type] = true;
 
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair); // Beds count as chairs for the purpose of suitable room creation
+		TileID.Sets.RoomNeeds.CountsAsChair[Type] = true; // Beds count as chairs for the purpose of suitable room creation
 
 		DustType = ModContent.DustType<TwilightEucalyptusWoodDust>(); // You should set a kind of dust manually.
 		AdjTiles = new int[] { TileID.Bathtubs };

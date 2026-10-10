@@ -17,7 +17,7 @@ public class SnowPineDoor : ModTile
 		TileID.Sets.HasOutlines[Type] = true;
 		TileID.Sets.DisableSmartCursor[Type] = true;
 
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
+		TileID.Sets.RoomNeeds.CountsAsDoor[Type] = true;
 
 		DustType = DustID.BorealWood;
 		AdjTiles = new int[] { TileID.OpenDoor };

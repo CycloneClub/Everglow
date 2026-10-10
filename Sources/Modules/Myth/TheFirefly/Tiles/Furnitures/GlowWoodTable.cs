@@ -28,7 +28,7 @@ public class GlowWoodTable : ModTile
 		TileObjectData.newTile.CoordinateHeights = new[] { 16, 18 };
 		TileObjectData.addTile(Type);
 
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
+		TileID.Sets.RoomNeeds.CountsAsTable[Type] = true;
 
 		LocalizedText name = CreateMapEntryName();
 		AddMapEntry(new Color(69, 36, 78), name);

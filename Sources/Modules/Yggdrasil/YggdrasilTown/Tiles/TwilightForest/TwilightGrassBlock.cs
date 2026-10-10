@@ -35,7 +35,7 @@ public class TwilightGrassBlock : ModTile, ISceneTile
 		return base.TileFrame(i, j, ref resetFrame, ref noBreak);
 	}
 
-	public override void RandomUpdate(int i, int j)
+	public override void RandomUpdate(int i, int j, bool underground)
 	{
 		Tile tile = Main.tile[i, j];
 		int blockCount = 0;

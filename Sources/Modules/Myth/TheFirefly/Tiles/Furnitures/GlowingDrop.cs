@@ -23,10 +23,10 @@ public class GlowingDrop : ModTile, ITileFluentlyDrawn
 		Main.tileNoFail[Type] = true;
 		TileID.Sets.HasOutlines[Type] = true;
 		TileID.Sets.CanBeSleptIn[Type] = true;
-		TileID.Sets.InteractibleByNPCs[Type] = true;
+		TileID.Sets.InteractableByNPCs[Type] = true;
 		TileID.Sets.IsValidSpawnPoint[Type] = true;
 
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
+		TileID.Sets.RoomNeeds.CountsAsTorch[Type] = true;
 
 		DustType = ModContent.DustType<BlueGlow>();
 		AdjTiles = new int[] { TileID.Chandeliers };

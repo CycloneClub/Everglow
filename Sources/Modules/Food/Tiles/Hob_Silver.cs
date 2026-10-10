@@ -12,7 +12,7 @@ namespace Everglow.Food.Tiles
 			Main.tileTable[Type] = true;
 			Main.tileLavaDeath[Type] = true;
 			Main.tileSolidTop[Type] = true;
-			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
+			TileID.Sets.RoomNeeds.CountsAsTable[Type] = true;
 
 			DustType = DustID.Silver;
 

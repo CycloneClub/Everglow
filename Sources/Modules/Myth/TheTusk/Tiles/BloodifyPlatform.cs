@@ -27,7 +27,7 @@ public class BloodifyPlatform : ModTile
 		TileObjectData.newTile.UsesCustomCanPlace = false;
 		TileObjectData.newTile.LavaDeath = true;
 		TileObjectData.addTile(Type);
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
+		TileID.Sets.RoomNeeds.CountsAsDoor[Type] = true;
 		var modTranslation = CreateMapEntryName();
 		AddMapEntry(new Color(168, 11, 0), modTranslation);
 		HitSound = SoundID.Grass;

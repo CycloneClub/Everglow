@@ -65,7 +65,7 @@ public class FluorescentHydraTree : ModTile, ITileFluentlyDrawn
 		return false;
 	}
 
-	public override void RandomUpdate(int i, int j)
+	public override void RandomUpdate(int i, int j, bool underground)
 	{
 		var tile = Main.tile[i, j];
 		var tile2 = Main.tile[i, j - 1];

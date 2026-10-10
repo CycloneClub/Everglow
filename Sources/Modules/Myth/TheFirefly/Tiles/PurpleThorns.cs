@@ -22,7 +22,7 @@ public class PurpleThorns : ModTile
 		return false;
 	}
 
-	public override void RandomUpdate(int i, int j)
+	public override void RandomUpdate(int i, int j, bool underground)
 	{
 		int nearCount = 0;
 		for (int x = -5; x < 6; x++)

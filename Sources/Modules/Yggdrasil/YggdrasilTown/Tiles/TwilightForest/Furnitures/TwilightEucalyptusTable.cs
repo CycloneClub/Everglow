@@ -26,7 +26,7 @@ public class TwilightEucalyptusTable : ModTile
 		TileObjectData.newTile.CoordinateHeights = new[] { 16, 16 };
 		TileObjectData.addTile(Type);
 
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
+		TileID.Sets.RoomNeeds.CountsAsTable[Type] = true;
 
 		// Etc
 		AddMapEntry(new Color(200, 200, 200), Language.GetText("MapObject.Table"));

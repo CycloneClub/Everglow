@@ -35,7 +35,7 @@ public class AbTuskFlesh : ModTile
 		}
 	}
 
-	public override void RandomUpdate(int i, int j)
+	public override void RandomUpdate(int i, int j, bool underground)
 	{
 		if (!Main.tile[i, j - 1].HasTile)
 		{

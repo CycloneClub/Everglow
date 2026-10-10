@@ -14,7 +14,7 @@ public class LampWoodBathtub : ModTile
 		Main.tileLavaDeath[Type] = true;
 		TileID.Sets.DisableSmartCursor[Type] = true;
 
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair); // Beds count as chairs for the purpose of suitable room creation
+		TileID.Sets.RoomNeeds.CountsAsChair[Type] = true; // Beds count as chairs for the purpose of suitable room creation
 
 		DustType = ModContent.DustType<LampWood_Dust>();
 		AdjTiles = new int[] { TileID.Bathtubs };

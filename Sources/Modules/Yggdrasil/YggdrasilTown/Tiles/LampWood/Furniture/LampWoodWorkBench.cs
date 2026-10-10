@@ -22,7 +22,7 @@ public class LampWoodWorkBench : ModTile
 		TileObjectData.newTile.CoordinateHeights = new[] { 18 };
 		TileObjectData.addTile(Type);
 
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
+		TileID.Sets.RoomNeeds.CountsAsTable[Type] = true;
 		AddMapEntry(new Color(84, 84, 84));
 	}
 

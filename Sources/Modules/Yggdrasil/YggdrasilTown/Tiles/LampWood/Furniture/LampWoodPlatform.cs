@@ -16,7 +16,7 @@ public class LampWoodPlatform : ModTile
 		TileID.Sets.Platforms[Type] = true;
 		TileID.Sets.DisableSmartCursor[Type] = true;
 
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
+		TileID.Sets.RoomNeeds.CountsAsDoor[Type] = true;
 		AddMapEntry(new Color(0, 14, 175));
 
 		DustType = ModContent.DustType<Dusts.LampWood_Dust>();

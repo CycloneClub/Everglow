@@ -22,7 +22,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood.Furniture
 			TileID.Sets.DisableSmartCursor[Type] = true;
 			TileID.Sets.OpenDoorID[Type] = ModContent.TileType<LampWoodDoorOpen>();
 
-			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
+			TileID.Sets.RoomNeeds.CountsAsDoor[Type] = true;
 
 			DustType = ModContent.DustType<LampWood_Dust>();
 

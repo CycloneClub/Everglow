@@ -18,7 +18,7 @@ public class LampWoodCandelabra : ModTile
 		Main.tileNoAttach[Type] = true;
 		Main.tileLavaDeath[Type] = true;
 
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
+		TileID.Sets.RoomNeeds.CountsAsTorch[Type] = true;
 
 		DustType = ModContent.DustType<LampWood_Dust>();
 		AdjTiles = new int[] { TileID.Candelabras };

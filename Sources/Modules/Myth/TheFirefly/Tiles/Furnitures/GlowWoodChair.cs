@@ -24,7 +24,7 @@ public class GlowWoodChair : ModTile
 		TileID.Sets.CanBeSatOnForPlayers[Type] = true; // Facilitates calling ModifySittingTargetInfo for Players
 		TileID.Sets.DisableSmartCursor[Type] = true;
 
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
+		TileID.Sets.RoomNeeds.CountsAsChair[Type] = true;
 
 		DustType = ModContent.DustType<BlueGlow>();
 		AdjTiles = new int[] { TileID.Chairs };

@@ -157,7 +157,7 @@ internal class LargeFireBulb : ModTile, ITileFluentlyDrawn
 		return base.TileFrame(i, j, ref resetFrame, ref noBreak);
 	}
 
-	public override void RandomUpdate(int i, int j)
+	public override void RandomUpdate(int i, int j, bool underground)
 	{
 		var tile = Main.tile[i, j];
 		if (tile.TileFrameX % 36 != 0)
@@ -186,7 +186,7 @@ internal class LargeFireBulb : ModTile, ITileFluentlyDrawn
 			TryGrow(i, keyCoord.Y + 4);
 		}
 
-		base.RandomUpdate(i, j);
+		base.RandomUpdate(i, j, underground);
 	}
 
 	private bool TryGrow(int x, int y, bool broadcast = true)

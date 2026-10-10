@@ -25,7 +25,7 @@ public class TwilightCrystalMill : ModTile
 		TileObjectData.newTile.CoordinatePaddingFix = new Point16(0, -2);
 		TileObjectData.addTile(Type);
 		AddMapEntry(new Color(40, 80, 148));
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
+		TileID.Sets.RoomNeeds.CountsAsTable[Type] = true;
 	}
 
 	public override void AnimateTile(ref int frame, ref int frameCounter)

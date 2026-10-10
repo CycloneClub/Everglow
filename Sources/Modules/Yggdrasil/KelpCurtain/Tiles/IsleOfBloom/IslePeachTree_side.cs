@@ -53,7 +53,7 @@ public class IslePeachTree_side : ModTile, ITileFluentlyDrawn, ITileOffsetOverSc
 		num = fail ? 1 : 3;
 	}
 
-	public override void RandomUpdate(int i, int j)
+	public override void RandomUpdate(int i, int j, bool underground)
 	{
 		var petal = new PeachBlossom
 		{

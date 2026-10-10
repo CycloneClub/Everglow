@@ -19,7 +19,7 @@ public class DarkForestSoil : ModTile
 		AddMapEntry(new Color(63, 53, 62));
 	}
 
-	public override void RandomUpdate(int i, int j)
+	public override void RandomUpdate(int i, int j, bool underground)
 	{
 		Tile tile = Main.tile[i, j];
 		if (Main.rand.NextBool(25))

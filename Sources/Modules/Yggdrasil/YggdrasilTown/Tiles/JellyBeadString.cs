@@ -25,7 +25,7 @@ public class JellyBeadString : ModTile
 		yield break;
 	}
 
-	public override void RandomUpdate(int i, int j)
+	public override void RandomUpdate(int i, int j, bool underground)
 	{
 		int deltaY = 0;
 		while (Main.tile[i, j - 1 - deltaY].TileType == Type)
@@ -59,7 +59,7 @@ public class JellyBeadString : ModTile
 				}
 			}
 		}
-		base.RandomUpdate(i, j);
+		base.RandomUpdate(i, j, underground);
 	}
 
 	public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)

@@ -13,7 +13,7 @@ public class RichOxygenSpongeWall : ModWall
 		AddMapEntry(new Color(94, 75, 10));
 	}
 
-	public override void RandomUpdate(int i, int j)
+	public override void RandomUpdate(int i, int j, bool underground)
 	{
 		for (int x = -1; x < 2; x++)
 		{
@@ -26,6 +26,6 @@ public class RichOxygenSpongeWall : ModWall
 				}
 			}
 		}
-		base.RandomUpdate(i, j);
+		base.RandomUpdate(i, j, underground);
 	}
 }

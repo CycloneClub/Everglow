@@ -23,9 +23,9 @@ public class HeatproofDresser : ModTile
 		TileID.Sets.DisableSmartCursor[Type] = true;
 		TileID.Sets.BasicDresser[Type] = true;
 		TileID.Sets.AvoidedByNPCs[Type] = true;
-		TileID.Sets.InteractibleByNPCs[Type] = true;
+		TileID.Sets.InteractableByNPCs[Type] = true;
 		TileID.Sets.IsAContainer[Type] = true;
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
+		TileID.Sets.RoomNeeds.CountsAsTable[Type] = true;
 
 		AdjTiles = new int[] { TileID.Dressers };
 		DustType = ModContent.DustType<Heatproof_Furniture_Dust>(); // You should set a kind of dust manually.

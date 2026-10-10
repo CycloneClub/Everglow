@@ -21,7 +21,7 @@ public class TwilightEucalyptusChandelier : ModTile, ITileFluentlyDrawn
 		Main.tileNoFail[Type] = true;
 		TileID.Sets.HasOutlines[Type] = true;
 
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
+		TileID.Sets.RoomNeeds.CountsAsTorch[Type] = true;
 
 		DustType = ModContent.DustType<TwilightEucalyptusWoodDust>(); // You should set a kind of dust manually.
 		AdjTiles = new int[] { TileID.Chandeliers };

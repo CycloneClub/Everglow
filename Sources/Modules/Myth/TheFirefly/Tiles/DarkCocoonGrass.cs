@@ -25,14 +25,14 @@ public class DarkCocoonGrass : ModTile
 		HitSound = SoundID.Grass;
 	}
 
-	public override void RandomUpdate(int i, int j)
+	public override void RandomUpdate(int i, int j, bool underground)
 	{
 		Tile tile = Main.tile[i, j];
 		if (tile.TileFrameX < 108)
 		{
 			tile.TileFrameX += 108;
 		}
-		base.RandomUpdate(i, j);
+		base.RandomUpdate(i, j, underground);
 	}
 
 	public override void PlaceInWorld(int i, int j, Item item)

@@ -67,7 +67,7 @@ public class MothWorldDoor : ModTile
 		return false;
 	}
 
-	public override void RandomUpdate(int i, int j)
+	public override void RandomUpdate(int i, int j, bool underground)
 	{
 		if (DrawMagicArraySystem.ArrayPosition != Vector2.zeroVector)
 		{
@@ -88,7 +88,7 @@ public class MothWorldDoor : ModTile
 				DrawMagicArraySystem.ArrayPosition = Vector2.zeroVector;
 			}
 		}
-		base.RandomUpdate(i, j);
+		base.RandomUpdate(i, j, underground);
 	}
 
 	public override void NearbyEffects(int i, int j, bool closer)

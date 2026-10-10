@@ -16,7 +16,7 @@ public class DarkCocoon : ModTile
 		AddMapEntry(new Color(17, 16, 17));
 	}
 
-	public override void RandomUpdate(int i, int j)
+	public override void RandomUpdate(int i, int j, bool underground)
 	{
 		var thisTile = Main.tile[i, j];
 		bool slope = thisTile.Slope != SlopeType.Solid;

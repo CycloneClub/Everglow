@@ -22,7 +22,7 @@ public class HeatproofDoor : ModTile
 		TileID.Sets.DisableSmartCursor[Type] = true;
 		TileID.Sets.CloseDoorID[Type] = ModContent.TileType<HeatproofDoorClosed>();
 
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
+		TileID.Sets.RoomNeeds.CountsAsDoor[Type] = true;
 
 		DustType = ModContent.DustType<Heatproof_Furniture_Dust>(); // You should set a kind of dust manually.
 		AdjTiles = new int[] { TileID.OpenDoor };

@@ -18,7 +18,7 @@ public class GiantFurnace_Platform : ModTile, ISceneTile
 		TileID.Sets.Platforms[Type] = true;
 		TileID.Sets.DisableSmartCursor[Type] = true;
 
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
+		TileID.Sets.RoomNeeds.CountsAsDoor[Type] = true;
 		AddMapEntry(new Color(84, 84, 84));
 		MinPick = 1000000;
 		DustType = DustID.Iron;

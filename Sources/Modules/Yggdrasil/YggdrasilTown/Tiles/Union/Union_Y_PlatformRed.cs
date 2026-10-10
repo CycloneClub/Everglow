@@ -19,7 +19,7 @@ public class Union_Y_PlatformRed : ModTile
 		TileID.Sets.DisableSmartCursor[Type] = true;
 		DustType = ModContent.DustType<Union_Y_PlatformRed_Dust>();
 		MinPick = 300;
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
+		TileID.Sets.RoomNeeds.CountsAsDoor[Type] = true;
 
 		DustType = DustID.DynastyWood;
 		AdjTiles = new int[] { TileID.Platforms };

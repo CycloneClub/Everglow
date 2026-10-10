@@ -17,7 +17,7 @@ public class YggdrasilBlackRock_NoctilucentFluoriteLump_Platform : ModTile
 		TileID.Sets.Platforms[Type] = true;
 		TileID.Sets.DisableSmartCursor[Type] = true;
 
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
+		TileID.Sets.RoomNeeds.CountsAsDoor[Type] = true;
 		AddMapEntry(new Color(0, 14, 175));
 
 		DustType = ModContent.DustType<NoctilucentFluoriteLump_Dust>();

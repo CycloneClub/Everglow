@@ -24,7 +24,7 @@ public class BakeryChair : ModTile
 		TileID.Sets.CanBeSatOnForPlayers[Type] = true; // Facilitates calling ModifySittingTargetInfo for Players
 		TileID.Sets.DisableSmartCursor[Type] = true;
 
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
+		TileID.Sets.RoomNeeds.CountsAsChair[Type] = true;
 
 		DustType = DustID.BorealWood; // You should set a kind of dust manually.
 		AdjTiles = new int[] { TileID.Chairs };

@@ -22,7 +22,7 @@ public class DarkSludgeLiquid_SolidBlock : ModTile
 		return false;
 	}
 
-	public override void RandomUpdate(int i, int j)
+	public override void RandomUpdate(int i, int j, bool underground)
 	{
 		Tile tile = Main.tile[i, j];
 		tile.ClearTile();

@@ -27,7 +27,7 @@ public class KelpCurtainBracken : ModTile
 		AddMapEntry(new Color(89, 130, 46));
 	}
 
-	public override void RandomUpdate(int i, int j)
+	public override void RandomUpdate(int i, int j, bool underground)
 	{
 		Tile tile = Main.tile[i, j];
 		if (tile.TileFrameX > 88)
@@ -38,6 +38,6 @@ public class KelpCurtainBracken : ModTile
 		{
 			tile.TileFrameX += 22;
 		}
-		base.RandomUpdate(i, j);
+		base.RandomUpdate(i, j, underground);
 	}
 }

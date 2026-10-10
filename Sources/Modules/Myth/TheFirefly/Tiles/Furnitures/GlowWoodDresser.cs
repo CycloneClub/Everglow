@@ -24,7 +24,7 @@ public class GlowWoodDresser : ModTile
 
 		DustType = ModContent.DustType<BlueGlow>();
 		AdjTiles = new int[] { TileID.Dressers };
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
+		TileID.Sets.RoomNeeds.CountsAsTable[Type] = true;
 
 		// Placement
 		TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);

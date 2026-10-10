@@ -21,7 +21,7 @@ public class GlowWoodCampfire : ModTile
 		TileID.Sets.IsValidSpawnPoint[Type] = true;
 		TileID.Sets.DisableSmartCursor[Type] = true;
 
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
+		TileID.Sets.RoomNeeds.CountsAsTorch[Type] = true;
 
 		DustType = ModContent.DustType<Dusts.BlueToPurpleSpark>();
 		AdjTiles = new int[] { TileID.Campfire };

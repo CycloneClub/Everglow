@@ -37,7 +37,7 @@ public class IslePeachTree_wall_large : ModTile, ITileFluentlyDrawn
 		return false;
 	}
 
-	public override void RandomUpdate(int i, int j)
+	public override void RandomUpdate(int i, int j, bool underground)
 	{
 		var petal = new PeachBlossom
 		{

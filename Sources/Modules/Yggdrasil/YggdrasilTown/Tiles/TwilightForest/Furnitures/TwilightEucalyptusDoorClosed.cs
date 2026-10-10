@@ -21,7 +21,7 @@ public class TwilightEucalyptusDoorClosed : ModTile
 		TileID.Sets.DisableSmartCursor[Type] = true;
 		TileID.Sets.OpenDoorID[Type] = ModContent.TileType<TwilightEucalyptusDoor>();
 
-		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
+		TileID.Sets.RoomNeeds.CountsAsDoor[Type] = true;
 
 		DustType = ModContent.DustType<TwilightEucalyptusWoodDust>(); // You should set a kind of dust manually.
 		AdjTiles = new int[] { TileID.ClosedDoor };

@@ -22,7 +22,7 @@ public class OldMoss : ModTile
 		AddMapEntry(new Color(68, 91, 27));
 	}
 
-	public override void RandomUpdate(int i, int j)
+	public override void RandomUpdate(int i, int j, bool underground)
 	{
 		// if (Main.tile[i, j].Slope == SlopeType.Solid && Main.tile[i + 1, j].TileType == Type && Main.tile[i + 1, j].Slope == SlopeType.Solid && Main.tile[i - 1, j].Slope == SlopeType.Solid && Main.tile[i - 1, j].TileType == Type &&
 		// !Main.tile[i, j + 1].HasTile && !Main.tile[i + 1, j + 1].HasTile && !Main.tile[i - 1, j + 1].HasTile)// 巨大帘幕苔
