@@ -4,6 +4,8 @@ namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Melee;
 
 public class AcroporaSpear_proj : MeleeProj
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	public override void SetDef()
 	{
 		maxAttackType = 3;

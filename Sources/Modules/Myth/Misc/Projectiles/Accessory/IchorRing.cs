@@ -5,6 +5,8 @@ namespace Everglow.Myth.Misc.Projectiles.Accessory;
 
 public class IchorRing : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.TypelessProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.timeLeft = 780;

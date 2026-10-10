@@ -4,6 +4,8 @@ namespace Everglow.Myth.TheTusk.Projectiles.Weapon;
 
 internal class TuskSummon : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.SummonProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.tileCollide = false;

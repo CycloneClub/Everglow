@@ -9,6 +9,8 @@ namespace Everglow.MEAC.NonTrueMeleeProj;
 
 public class StonePost : ModProjectile, IWarpProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 10;

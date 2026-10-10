@@ -6,6 +6,8 @@ namespace Everglow.SpellAndSkull.Projectiles.CrystalStorm;
 
 public class CrystalWind : ModProjectile, IWarpProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 10;

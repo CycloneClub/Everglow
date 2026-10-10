@@ -6,6 +6,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Ranged;
 
 public class PearShapedNeedle_Needle : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
+
 	public float Timer = 0;
 
 	public Vector2 StartPosition = default;

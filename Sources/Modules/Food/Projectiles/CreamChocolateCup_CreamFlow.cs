@@ -8,6 +8,8 @@ namespace Everglow.Food.Projectiles;
 
 internal class CreamChocolateCup_CreamFlow : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 20;

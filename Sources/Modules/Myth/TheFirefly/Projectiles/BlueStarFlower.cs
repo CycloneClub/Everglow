@@ -7,6 +7,8 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 
 public class BlueStarFlower : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
+
 	public override string Texture => "Everglow/Myth/TheFirefly/Projectiles/CorruptLight";
 
 	public override void SetDefaults()

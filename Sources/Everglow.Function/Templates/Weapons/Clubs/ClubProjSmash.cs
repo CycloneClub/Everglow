@@ -9,6 +9,8 @@ namespace Everglow.Commons.Templates.Weapons.Clubs;
 
 public abstract class ClubProjSmash : MeleeProj
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	private static readonly List<int> ownSmashClubPlayers = [];
 
 	public static IReadOnlyCollection<int> OwnSmashClubPlayers => ownSmashClubPlayers;

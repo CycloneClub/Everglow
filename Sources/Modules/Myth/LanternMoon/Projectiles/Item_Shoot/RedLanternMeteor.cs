@@ -5,6 +5,8 @@ namespace Everglow.Myth.LanternMoon.Projectiles.Item_Shoot;
 
 public class RedLanternMeteor : TrailingProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MiscsProjectiles;
+
 	public override void SetCustomDefaults()
 	{
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 40;

@@ -7,6 +7,8 @@ namespace Everglow.Myth.LanternMoon.Projectiles.PerWave15;
 
 public class BloodLanternGhost_PowerBall_Explosion : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.EnemyProjectiles;
+
 	public float Timer = 0;
 
 	public struct LightningBolt()

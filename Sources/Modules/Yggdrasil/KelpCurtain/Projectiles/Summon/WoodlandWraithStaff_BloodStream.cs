@@ -6,6 +6,8 @@ namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Summon;
 
 public class WoodlandWraithStaff_BloodStream : TrailingProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.SummonProjectiles;
+
 	public const float GlowTime = 90;
 
 	public override void SetCustomDefaults()

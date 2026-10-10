@@ -8,6 +8,8 @@ namespace Everglow.Myth.TheTusk.Projectiles;
 
 public class TuskBloodPool : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
+
 	public override string Texture => ModAsset.Empty_Mod;
 
 	public List<Point> DissolvingTile;

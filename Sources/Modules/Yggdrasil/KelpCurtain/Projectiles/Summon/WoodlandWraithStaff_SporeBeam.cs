@@ -6,6 +6,8 @@ namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Summon;
 
 public class WoodlandWraithStaff_SporeBeam : TrailingProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.SummonProjectiles;
+
 	public override void SetCustomDefaults()
 	{
 		TrailColor = new Color(0.9f, 0.9f, 0.95f, 0f);

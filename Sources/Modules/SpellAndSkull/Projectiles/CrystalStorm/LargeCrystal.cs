@@ -6,6 +6,8 @@ namespace Everglow.SpellAndSkull.Projectiles.CrystalStorm;
 
 public class LargeCrystal : ModProjectile// This proj summon storm at breaking
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 10;

@@ -2,6 +2,8 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Magic;
 
 public class EndlessCurseFlame : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.TypelessProjectiles;
+
 	public override void SetStaticDefaults()
 	{
 		// DisplayName.SetDefault("EndlessCurseFlame");

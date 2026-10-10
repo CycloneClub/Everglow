@@ -5,6 +5,8 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 
 internal class GlowBeadGun : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override string Texture => ModAsset.GlowBeadGun_Mod;
 
 	public Player Owner => Main.player[Projectile.owner];

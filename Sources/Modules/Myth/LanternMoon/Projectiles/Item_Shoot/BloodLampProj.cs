@@ -6,6 +6,8 @@ namespace Everglow.Myth.LanternMoon.Projectiles.Item_Shoot;
 
 public class BloodLampProj : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MiscsProjectiles;
+
 	private CoroutineManager _coroutineManager = new CoroutineManager();
 
 	public override void SetDefaults()

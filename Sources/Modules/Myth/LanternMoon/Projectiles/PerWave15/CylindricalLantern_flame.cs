@@ -2,6 +2,8 @@ namespace Everglow.Myth.LanternMoon.Projectiles.PerWave15;
 
 public class CylindricalLantern_flame : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.EnemyProjectiles;
+
 	public struct MovingEntity()
 	{
 		public Vector2 Position;

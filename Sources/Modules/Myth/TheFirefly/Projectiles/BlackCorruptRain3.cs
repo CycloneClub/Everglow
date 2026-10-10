@@ -2,6 +2,8 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 
 public class BlackCorruptRain3 : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 8;

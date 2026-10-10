@@ -8,6 +8,8 @@ namespace Everglow.SpellAndSkull.Projectiles.LunarFlare;
 
 public class LunarFlareII : ModProjectile, IWarpProjectile// 将接口改为使用IWarpProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 26;

@@ -5,6 +5,8 @@ namespace Everglow.Myth.TheTusk.Projectiles.Weapon;
 
 public class ToothSpear_proj : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	public virtual float HoldoutRangeMin => 24f;
 
 	public virtual float HoldoutRangeMax => 150f;

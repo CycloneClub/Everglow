@@ -5,6 +5,8 @@ namespace Everglow.Myth.LanternMoon.Projectiles.Item_Shoot;
 
 public class RisingFirework : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MiscsProjectiles;
+
 	public override string Texture => "Everglow/Myth/UIImages/VisualTextures/DarkGrey";
 
 	public override void SetDefaults()

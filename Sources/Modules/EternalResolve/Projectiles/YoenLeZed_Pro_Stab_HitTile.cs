@@ -9,6 +9,8 @@ namespace Everglow.EternalResolve.Projectiles;
 
 public class YoenLeZed_Pro_Stab_HitTile : ModProjectile, IWarpProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 120;

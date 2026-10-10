@@ -4,6 +4,8 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon;
 
 public class MagicHit : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override void SetStaticDefaults()
 	{
 		// DisplayName.SetDefault("");

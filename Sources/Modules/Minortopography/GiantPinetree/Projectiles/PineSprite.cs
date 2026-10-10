@@ -6,6 +6,8 @@ namespace Everglow.Minortopography.GiantPinetree.Projectiles;
 
 public class PineSprite : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.SummonProjectiles;
+
 	private CoroutineManager _coroutineManager = new CoroutineManager();
 
 	public override void SetDefaults()

@@ -5,6 +5,8 @@ namespace Everglow.Myth.Misc.Projectiles;
 
 public class CloudBall : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
+
 	public override void SetStaticDefaults()
 	{
 		// DisplayName.SetDefault("CloudBall");
