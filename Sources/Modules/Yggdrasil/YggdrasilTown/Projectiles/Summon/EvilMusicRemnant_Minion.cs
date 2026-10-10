@@ -474,7 +474,7 @@ public class EvilMusicRemnant_Minion : ModProjectile
 		target.AddElementalDebuffBuildUp(Main.player[Projectile.owner], NervousImpairmentDebuff.ID, 125);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		var sBS = Main.spriteBatch.GetState().Value;
 		Main.spriteBatch.End();

@@ -114,7 +114,7 @@ namespace Everglow.EternalResolve.Projectiles
 			Projectile.velocity += (aim - Projectile.Center - Projectile.velocity).SafeNormalize(Vector2.zeroVector) * 0.4f * mulAcc;
 		}
 
-		public override bool PreDraw(ref Color lightColor)
+		public override bool PreDraw(Player player, ref Color lightColor)
 		{
 			if (!Main.gamePaused)
 			{

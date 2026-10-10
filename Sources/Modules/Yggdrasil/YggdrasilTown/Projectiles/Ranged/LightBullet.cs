@@ -55,7 +55,7 @@ internal class LightBullet : ModProjectile
 		target.AddBuff(ModContent.BuffType<Photolysis>(), 180);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		var texMain = Commons.ModAsset.StarSlash.Value;
 		var drawColor = new Color(1f, 0.8f, 0f, 0f);

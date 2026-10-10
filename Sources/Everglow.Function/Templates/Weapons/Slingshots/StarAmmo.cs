@@ -99,7 +99,7 @@ public class StarAmmo : SlingshotAmmo
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		float Power = Projectile.ai[0] * 0.5f + 0.5f;
 		var Light = new Color(Power, Power / 2.1f, 0, 0);
@@ -114,7 +114,7 @@ public class StarAmmo : SlingshotAmmo
 		Main.spriteBatch.Draw(star, Projectile.Center - Main.screenPosition - Projectile.velocity, null, Light, MathF.PI / 2, star.Size() / 2f, new Vector2(0.06f, 0.23f + MathF.Sin((float)(Main.timeForVisualEffects * 0.1)) * 0.2f) * Power * 2f * kSize, SpriteEffects.None, 0);
 
 		Lighting.AddLight(Projectile.Center, Light.R / 555f, Light.G / 555f, Light.B / 555f);
-		return base.PreDraw(ref lightColor);
+		return base.PreDraw(player, ref lightColor);
 	}
 
 	public override Color? GetAlpha(Color lightColor)

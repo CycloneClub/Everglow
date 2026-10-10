@@ -87,7 +87,7 @@ public class GoldRound : ModProjectile
 	{
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D t = ModAsset.GoldRound.Value;
 		Color c0 = new Color(0.5f, 0.3f, 0.04f, 0);

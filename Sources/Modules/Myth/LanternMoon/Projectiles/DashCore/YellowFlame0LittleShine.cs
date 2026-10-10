@@ -73,14 +73,14 @@ internal class YellowFlame0LittleShine : ModProjectile
 	private Color[] projOldColor = new Color[70];
 	private float kb = 1;
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		return false;
 	}
 
 	private int trueL = 1;
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		float dx = 120 - Projectile.timeLeft;
 		float F0 = (float)(Math.Sin(dx * dx / 192d) + 1);

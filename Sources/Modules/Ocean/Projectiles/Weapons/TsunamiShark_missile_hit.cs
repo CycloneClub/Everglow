@@ -101,7 +101,7 @@ public class TsunamiShark_missile_hit : ModProjectile, IWarpProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		float value = (208 - Projectile.timeLeft) / 208f;
 		value = MathF.Sqrt(value);

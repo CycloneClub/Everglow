@@ -108,7 +108,7 @@ public class BacterialAgent_proj : TrailingProjectile
 		p.rotation = Main.rand.NextFloat(6.283f);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		DrawTrail();
 		if (TimeAfterEntityDestroy > 0)

@@ -233,7 +233,7 @@ public class BloodSpell : ModProjectile
 		return true;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D fbm = Commons.ModAsset.FBM.Value;
 		Texture2D shade = Commons.ModAsset.Point_black.Value;

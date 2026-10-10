@@ -64,7 +64,7 @@ public class CorruptDust : ModProjectile
 		Projectile.velocity *= Main.rand.NextFloat(0.3f, 0.8f);
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		float dark = 0.7f;
 		DrawTrail(new Color(dark, dark, dark, dark), ModAsset.CorruptDustDark.Value);

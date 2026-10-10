@@ -85,7 +85,7 @@ public class RockElemental_Stonefragment : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D texture = ModAsset.RockElemental_Stonefragment.Value;
 		Vector2 drawCenter = Projectile.Center - Main.screenPosition;

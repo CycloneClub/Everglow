@@ -95,7 +95,7 @@ public class BlackCorruptRainFriendly : ModProjectile
 		Lighting.AddLight(Projectile.Center, 0, kColor * 0.01f, kColor * 0.6f * Projectile.scale);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D Light = ModAsset.FixCoinLight3.Value;
 		int C = (int)(255 * stre2);

@@ -85,7 +85,7 @@ public class NightfireStaff_Projectile : ModProjectile
 		dust.scale = Main.rand.NextFloat(1.1f, 1.7f);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		// Draw firefly framed texture
 		Texture2D texture = ModContent.Request<Texture2D>(Texture).Value;

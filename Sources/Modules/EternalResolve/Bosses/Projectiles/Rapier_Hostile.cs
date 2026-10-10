@@ -153,7 +153,7 @@ namespace Everglow.EternalResolve.Bosses.Projectiles
 			Utils.PlotTileLine(Projectile.Center, end, 80f * Projectile.scale, DelegateMethods.CutTiles);
 		}
 
-		public override bool PreDraw(ref Color lightColor)
+		public override bool PreDraw(Player player, ref Color lightColor)
 		{
 			return false;
 		}
@@ -373,7 +373,7 @@ namespace Everglow.EternalResolve.Bosses.Projectiles
 			}
 		}
 
-		public override void PostDraw(Color lightColor)
+		public override void PostDraw(Player player, Color lightColor)
 		{
 			DrawBeforeItem();
 			DrawItem(lightColor);

@@ -179,7 +179,7 @@ public class BlueStarFlower : ModProjectile
 		}
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		Vector2 center = Projectile.Center - Main.screenPosition;
 		Texture2D star = Commons.ModAsset.StarSlash.Value;
@@ -251,7 +251,7 @@ public class BlueStarFlower : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		return false;
 	}

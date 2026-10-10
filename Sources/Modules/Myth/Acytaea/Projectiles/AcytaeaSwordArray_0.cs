@@ -74,12 +74,12 @@ public class AcytaeaSwordArray_0 : ModProjectile
 		p.frameCounter = Main.rand.Next(6);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		return false;
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		Texture2D tex = ModAsset.AcytaeaFlySword_red.Value;
 		Rectangle projFrame = new Rectangle(0, Projectile.frame * Projectile.height, Projectile.width, Projectile.height);

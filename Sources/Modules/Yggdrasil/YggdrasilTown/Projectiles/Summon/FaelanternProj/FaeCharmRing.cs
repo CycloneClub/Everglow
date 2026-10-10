@@ -26,7 +26,7 @@ public class FaeCharmRing : ModProjectile, IWarpProjectile
 		Projectile.velocity *= 0;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		return false;
 	}
@@ -59,7 +59,7 @@ public class FaeCharmRing : ModProjectile, IWarpProjectile
 		}
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		var light = lightColor.ToVector4();
 		float timeValue = (200 - Projectile.timeLeft) / 200f;

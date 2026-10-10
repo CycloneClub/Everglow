@@ -144,12 +144,12 @@ internal class GlowBeadGun : ModProjectile
 		Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center + v0 * 52f + offset, Vector2.Zero, ModContent.ProjectileType<GlowBeadGunShootFlame>(), 0, 0, Owner.whoAmI, energy / 450f + 0.1f, Projectile.rotation - MathF.PI / 4);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		return false;
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		Owner.heldProj = Projectile.whoAmI;
 		Vector2 v0 = Projectile.Center - Owner.MountedCenter;

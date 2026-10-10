@@ -105,7 +105,7 @@ public class ScarpasScissorsProj : ScarpasScissorsProjBase
 		Projectile.scale = Owner.GetAdjustedItemScale(Owner.HeldItem); // Slightly scale up the projectile and also take into account melee size modifiers
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Vector2 origin;
 		float rotationOffset;

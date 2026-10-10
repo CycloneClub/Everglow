@@ -21,7 +21,7 @@ public class LanternPhantomBullet : ModProjectile
 		Lighting.AddLight(Projectile.Center, new Vector3(1f, 0f, 0.1f));
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D black = ModAsset.LanternBullet_black.Value;
 		Texture2D bullet = ModContent.Request<Texture2D>(Texture).Value;

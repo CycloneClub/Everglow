@@ -67,7 +67,7 @@ public class ThunderBall2 : ModProjectile
 		}
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		Projectile.ai[0] = tokill;
 		Main.spriteBatch.End();

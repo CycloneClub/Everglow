@@ -72,7 +72,7 @@ public class MagnetSphereII : ModProjectile
 		Projectile.ai[0] = 0;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		float timeValue = (float)(Main.timeForVisualEffects * 0.008f);
 		float mulSize = 1f + MathF.Sin(timeValue * 15f + Projectile.whoAmI) * 0.15f;

@@ -90,7 +90,7 @@ public class FruitBomb : ModProjectile
 		}
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		Texture2D shadow = ModAsset.CursedHitLight.Value;
 		float timeValue = (200 - Projectile.timeLeft) / 200f;
@@ -101,7 +101,7 @@ public class FruitBomb : ModProjectile
 		DrawTexCircle(MathF.Sqrt(timeValue) * 12 * Projectile.ai[0], 4 * (1 - timeValue) * Projectile.ai[0], c * 0.4f, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_2_thick.Value);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D shadow = ModAsset.CursedHit.Value;
 		float dark = Math.Max((Projectile.timeLeft - 50) / 50f, 0);

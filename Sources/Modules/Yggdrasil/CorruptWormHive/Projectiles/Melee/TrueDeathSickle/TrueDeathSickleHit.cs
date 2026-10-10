@@ -71,7 +71,7 @@ public class TrueDeathSickleHit : ModProjectile, IWarpProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D Shadow = ModAsset.TrueDeathSickleHit.Value;
 		float Dark = Math.Max((Projectile.timeLeft - 150) / 50f, 0);

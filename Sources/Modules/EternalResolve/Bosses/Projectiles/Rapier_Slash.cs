@@ -41,7 +41,7 @@ namespace Everglow.EternalResolve.Bosses.Projectiles
 			}
 		}
 
-		public override bool PreDraw(ref Color lightColor)
+		public override bool PreDraw(Player player, ref Color lightColor)
 		{
 			Texture2D tex = Terraria.GameContent.TextureAssets.Projectile[Type].Value;
 			float factor = (float)Math.Sin(Main.timeForVisualEffects * 0.2f) / 2 + 0.5f;

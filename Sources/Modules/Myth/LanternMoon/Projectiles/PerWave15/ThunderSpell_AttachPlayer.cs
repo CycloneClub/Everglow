@@ -92,7 +92,7 @@ public class ThunderSpell_AttachPlayer : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		SpriteEffects effects = SpriteEffects.None;
 		Projectile.spriteDirection = Projectile.direction;

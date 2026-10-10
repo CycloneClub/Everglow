@@ -154,7 +154,7 @@ internal class CreamChocolateCup_CreamFlow : ModProjectile
 	public List<Vector2> Joints = new List<Vector2>();
 	public List<Vector2> JointVelocity = new List<Vector2>();
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		if (Joints.Count > 1)
 		{

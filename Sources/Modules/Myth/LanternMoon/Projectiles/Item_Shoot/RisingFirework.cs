@@ -144,12 +144,12 @@ public class RisingFirework : ModProjectile
 		Projectile.velocity *= Main.rand.NextFloat(0.3f, 0.8f);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		return false;
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		DrawTrail(new Color(1f, 0.7f, 0.4f, 0));
 	}

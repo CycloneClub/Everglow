@@ -136,7 +136,7 @@ public class AcytaeaSword_projectile_Boss_shoot : ModProjectile, IWarpProjectile
 		Projectile.spriteDirection = Owner.spriteDirection;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		DrawTrail(lightColor);
 		DrawSelf(Main.spriteBatch, lightColor);

@@ -51,7 +51,7 @@ public class PurpleBallEffect : ModProjectile
 	private int pro = 0;
 	private float aI0 = 0;
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		float Col = 0;
 		if (Projectile.timeLeft > 180)

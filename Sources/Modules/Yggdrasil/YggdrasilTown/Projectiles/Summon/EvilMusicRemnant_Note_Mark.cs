@@ -95,7 +95,7 @@ public class EvilMusicRemnant_Note_Mark : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		var texture = Commons.ModAsset.StarSlash.Value;
 		var textureBlack = Commons.ModAsset.StarSlash_black.Value;

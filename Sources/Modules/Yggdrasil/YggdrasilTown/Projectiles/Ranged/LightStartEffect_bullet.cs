@@ -101,7 +101,7 @@ public class LightStartEffect_bullet : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		var texMain = Commons.ModAsset.StarSlash.Value;
 		var drawColor = new Color(0.5f, 0.4f, 0.2f, 0f);

@@ -28,7 +28,7 @@ public class Fevens_Slash_Shine : ModProjectile
 	{
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		float timeLeftValue = 1 - Projectile.timeLeft / 120f;
 		float width = 1 - MathF.Pow(timeLeftValue, 2);

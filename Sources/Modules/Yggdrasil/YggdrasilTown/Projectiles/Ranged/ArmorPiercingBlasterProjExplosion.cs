@@ -143,7 +143,7 @@ public class ArmorPiercingBlasterProjExplosion : ModProjectile, IWarpProjectile
 
 	public override void OnKill(int timeLeft) => base.OnKill(timeLeft);
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		return false;
 	}

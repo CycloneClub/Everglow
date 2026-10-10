@@ -525,7 +525,7 @@ public class DeadBeetleEgg_beetle : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D texture = ModAsset.DeadBeetleEgg_beetle.Value;
 		Texture2D textureglow = ModAsset.DeadBeetleEgg_beetle_glow.Value;

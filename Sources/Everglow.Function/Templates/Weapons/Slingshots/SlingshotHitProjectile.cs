@@ -48,7 +48,7 @@ public abstract class SlingshotHitProjectile : ModProjectile, IWarpProjectile
 		}
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		float value = (200 - Projectile.timeLeft) / 200f;
 		float colorV = 0.02f * MathF.Sqrt(Projectile.ai[0]) * (1 - value);
@@ -56,7 +56,7 @@ public abstract class SlingshotHitProjectile : ModProjectile, IWarpProjectile
 		DrawTexCircle(value * 22 * MathF.Sqrt(Projectile.ai[0]), 8 * MathF.Sqrt(Projectile.ai[0]) * value, new Color(colorV, colorV, colorV, 0f), Projectile.Center - Main.screenPosition, t);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		return false;
 	}

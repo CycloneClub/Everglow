@@ -23,7 +23,7 @@ internal class XiaoBlackWave : ModProjectile
 		addi++;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		return false;
 	}
@@ -36,7 +36,7 @@ internal class XiaoBlackWave : ModProjectile
 	internal int addi = 0;
 	internal Vector2 v0 = Vector2.Zero;
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		if (v0 == Vector2.Zero)
 		{

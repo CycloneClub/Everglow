@@ -49,7 +49,7 @@ public class SpongeOxygenBubble : ModProjectile
 		base.ModifyHitPlayer(target, ref modifiers);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		var texMain = (Texture2D)ModContent.Request<Texture2D>(Texture);
 		Rectangle frame = new Rectangle(0, Projectile.frame * 22, 22, 22);

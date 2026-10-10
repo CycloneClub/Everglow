@@ -48,7 +48,7 @@ namespace Everglow.EternalResolve.Projectiles
 			}
 		}
 
-		public override bool PreDraw(ref Color lightColor)
+		public override bool PreDraw(Player player, ref Color lightColor)
 		{
 			Vector2 hitCenter = startCenter + Vector2.Normalize(Projectile.velocity) * 120f;
 			lightColor = Lighting.GetColor((int)(hitCenter.X / 16f), (int)(hitCenter.Y / 16f));

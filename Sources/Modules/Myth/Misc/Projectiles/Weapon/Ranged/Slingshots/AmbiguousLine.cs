@@ -27,7 +27,7 @@ public class AmbiguousLine : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;
 		Main.spriteBatch.End();
@@ -48,7 +48,7 @@ public class AmbiguousLine : ModProjectile
 		return false;
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		Texture2D shadow = ModAsset.CursedHit.Value;
 		Texture2D blackHole = ModAsset.BlackHole_texture.Value;

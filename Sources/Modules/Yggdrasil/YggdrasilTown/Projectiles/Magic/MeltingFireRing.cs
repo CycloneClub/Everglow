@@ -99,7 +99,7 @@ public class MeltingFireRing : ModProjectile
 		base.AI();
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Effect shader = Commons.ModAsset.Dissolve0.Value;
 		Texture2D tex1 = Commons.ModAsset.Trail_5.Value;

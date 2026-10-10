@@ -126,7 +126,7 @@ public class Pycnidium_explosion : ModProjectile, IWarpProjectile
 		}
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		Texture2D shadow = Commons.ModAsset.Textures_Star.Value;
 		float timeValue = (200 - Projectile.timeLeft) / 200f;
@@ -138,7 +138,7 @@ public class Pycnidium_explosion : ModProjectile, IWarpProjectile
 		DrawTexCircle(MathF.Sqrt(timeValue) * 40, 20 * (1 - timeValue), c * 0.4f, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_6.Value);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		float timeValue = (200 - Projectile.timeLeft) / 200f;
 		float dark = Math.Max((Projectile.timeLeft - 150) / 50f, 0);

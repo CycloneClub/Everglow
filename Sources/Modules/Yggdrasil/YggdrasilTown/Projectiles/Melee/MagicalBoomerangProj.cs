@@ -161,7 +161,7 @@ public class MagicalBoomerangProj : ModProjectile
 
 	public override void OnKill(int timeLeft) => base.OnKill(timeLeft);
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D boomerang = ModAsset.MagicalBoomerangProj.Value;
 		Texture2D boomerangGlow = ModAsset.MagicalBoomerangProj_glow.Value;

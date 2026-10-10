@@ -52,7 +52,7 @@ namespace Everglow.EternalResolve.Projectiles
 			Ins.VFXManager.Add(spark);
 		}
 
-		public override bool PreDraw(ref Color lightColor)
+		public override bool PreDraw(Player player, ref Color lightColor)
 		{
 			float alphaValue = (255 - Projectile.alpha) / 255f;
 			Vector2 normalized = Vector2.Normalize(Projectile.velocity.RotatedBy(Math.PI * 0.5)) * 50 * alphaValue;

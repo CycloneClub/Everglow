@@ -113,7 +113,7 @@ public class BloodySwamp_area : ModProjectile, IWarpProjectile_warpStyle2
 		base.OnKill(timeLeft);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		var drawPos = Projectile.Center - Main.screenPosition;
 		var fade = 1f;

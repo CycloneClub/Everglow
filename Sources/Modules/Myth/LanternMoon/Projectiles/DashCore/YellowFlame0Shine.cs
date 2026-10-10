@@ -71,14 +71,14 @@ internal class YellowFlame0Shine : ModProjectile
 	private Color[] projOldColor = new Color[70];
 	private float kb = 1;
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		return false;
 	}
 
 	private int trueL = 1;
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		var texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
 		float dx = 120 - Projectile.timeLeft;

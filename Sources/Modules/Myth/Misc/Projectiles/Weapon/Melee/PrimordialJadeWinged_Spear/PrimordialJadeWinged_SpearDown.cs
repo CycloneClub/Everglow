@@ -329,7 +329,7 @@ public class PrimordialJadeWinged_SpearDown : ModProjectile, IWarpProjectile
 		Ins.VFXManager.Add(smog);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D mainTex = ModAsset.PrimordialJadeWinged_Spear_PrimordialJadeWinged_Spear.Value;
 		Vector2 drawCenter = Projectile.Center - Vector2.Normalize(Projectile.velocity) * 150f;

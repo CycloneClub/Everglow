@@ -37,7 +37,7 @@ public class CobaltClub_falling_Shoot : ModProjectile, IWarpProjectile
 		}
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		if (Projectile.timeLeft > 200)
 		{
@@ -50,7 +50,7 @@ public class CobaltClub_falling_Shoot : ModProjectile, IWarpProjectile
 		DrawTexCircle(timeValue * 24 * Projectile.ai[0], 8 * (1 - timeValue) * Projectile.ai[0], new Color(0.1f * (1 - timeValue) * (1 - timeValue), 0.6f * (1 - timeValue) * (1 - timeValue), 1 - timeValue, 0f), Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_2_thick.Value);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		if (Projectile.timeLeft > 200)
 		{

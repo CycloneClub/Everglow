@@ -122,7 +122,7 @@ public class LichensPycnidium : ModProjectile
 		return lichen;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D texture = ModAsset.LichensPycnidium.Value;
 		var bars = new List<Vertex2D>();

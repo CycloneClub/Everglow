@@ -82,7 +82,7 @@ public class FrostSpice : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		if (TimeTokill > 0)
 		{
@@ -96,7 +96,7 @@ public class FrostSpice : ModProjectile
 		}
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		DrawTrail(lightColor);
 	}

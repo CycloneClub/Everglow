@@ -77,7 +77,7 @@ public class BlueMissil : ModProjectile
 		return new Color(1f, 1f, 1f, 0);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D Light = ModAsset.FixCoinLight3.Value;
 		Main.spriteBatch.Draw(Light, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, new Color((int)(255 * stre2), (int)(255 * stre2), (int)(255 * stre2), 0), Projectile.rotation, new Vector2(56f, 56f), Projectile.scale * 2, SpriteEffects.None, 0);

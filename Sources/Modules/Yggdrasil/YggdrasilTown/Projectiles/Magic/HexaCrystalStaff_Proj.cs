@@ -141,7 +141,7 @@ public class HexaCrystalStaff_Proj : ModProjectile
 		base.OnKill(timeLeft);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D tex = ModAsset.HexaCrystalStaff_Proj.Value;
 		Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, null, new Color(0f, 0.7f, 1f, 1f), Projectile.rotation + MathHelper.PiOver2, tex.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);

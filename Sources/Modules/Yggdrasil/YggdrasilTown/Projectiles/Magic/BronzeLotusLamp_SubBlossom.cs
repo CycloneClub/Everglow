@@ -60,7 +60,7 @@ public class BronzeLotusLamp_SubBlossom : ModProjectile
 		Ins.VFXManager.Add(lotusFlame2);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		return false;
 	}

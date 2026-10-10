@@ -230,7 +230,7 @@ public class IstafelsSunfireGrasp_FireBall : TrailingProjectile, IWarpProjectile
 		Projectile.penetrate = 1;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		var drawPos = Projectile.Center - Main.screenPosition;
 		var drawScale = MathHelper.Lerp(InitialScale, 1f, BuildUpProgress);

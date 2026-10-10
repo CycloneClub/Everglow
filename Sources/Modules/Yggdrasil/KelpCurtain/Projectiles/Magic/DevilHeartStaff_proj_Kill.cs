@@ -31,7 +31,7 @@ public class DevilHeartStaff_proj_Kill : ModProjectile
 		return (targetHitbox.Center() - projHitbox.Center()).Length() < 110f;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		var color = new Color(255, 255, 255, 0);
 		Texture2D star = Commons.ModAsset.StarSlash.Value;

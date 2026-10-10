@@ -69,7 +69,7 @@ public class LargeCrystal : ModProjectile// This proj summon storm at breaking
 		HitTile();
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D light = ModAsset.LargeCrystal.Value;
 		float k1 = (100f + Projectile.ai[0] * 25) * 0.3f;

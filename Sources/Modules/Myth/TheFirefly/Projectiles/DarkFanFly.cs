@@ -131,7 +131,7 @@ internal class DarkFanFly : ModProjectile
 	private Vector2 posRot1 = new Vector2(100, 0);
 	private Vector2 posRot2 = new Vector2(-100, 100);
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		return false;
 	}
@@ -139,7 +139,7 @@ internal class DarkFanFly : ModProjectile
 	private Vector2[] oldVelocity = new Vector2[60];
 	private float[] oldScale = new float[60];
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);

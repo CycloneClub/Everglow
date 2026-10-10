@@ -24,7 +24,7 @@ public class DreamWeaver_hit : ModProjectile, IWarpProjectile
 		Projectile.velocity *= 0;
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		if (Projectile.timeLeft > 200)
 		{
@@ -42,7 +42,7 @@ public class DreamWeaver_hit : ModProjectile, IWarpProjectile
 		Main.spriteBatch.Begin(sBS);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		if (Projectile.timeLeft > 200)
 		{

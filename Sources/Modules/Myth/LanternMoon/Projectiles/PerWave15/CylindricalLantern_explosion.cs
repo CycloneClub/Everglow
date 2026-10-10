@@ -138,7 +138,7 @@ public class CylindricalLantern_explosion : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D star = Commons.ModAsset.StarSlash.Value;
 		Texture2D trail = Commons.ModAsset.TrailV.Value;

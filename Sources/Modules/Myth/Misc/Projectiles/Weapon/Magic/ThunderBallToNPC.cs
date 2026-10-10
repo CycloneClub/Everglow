@@ -34,7 +34,7 @@ public class ThunderBallToNPC : ModProjectile
 	internal Vector2[,] vvP = new Vector2[8, 600];
 	internal int streng = 9;
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		if (vP[0, 0] == Vector2.Zero)
 		{

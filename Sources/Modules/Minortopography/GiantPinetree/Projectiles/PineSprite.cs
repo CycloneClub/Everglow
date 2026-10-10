@@ -134,7 +134,7 @@ public class PineSprite : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D mainTex = ModAsset.PineSprite.Value;
 		Texture2D glowTex = ModAsset.PineSprite_glow.Value;

@@ -71,7 +71,7 @@ public class LunarFlareII : ModProjectile, IWarpProjectile// 将接口改为使�
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		var c0 = new Color(0, 155, 155, 0);
 

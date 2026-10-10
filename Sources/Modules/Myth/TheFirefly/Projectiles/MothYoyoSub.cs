@@ -93,7 +93,7 @@ public class MothYoyoSub : ModProjectile
 		Projectile.Center = owner.Center + new Vector2(v3Position.X, v3Position.Y);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D Light = ModAsset.FixCoinLight3.Value;
 		Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;

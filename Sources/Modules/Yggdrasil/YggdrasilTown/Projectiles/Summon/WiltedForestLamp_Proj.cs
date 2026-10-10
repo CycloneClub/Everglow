@@ -139,7 +139,7 @@ public class WiltedForestLamp_Proj : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D lamp = ModAsset.WiltedForestLamp_Proj.Value;
 		Texture2D lamp2 = ModAsset.WiltedForestLamp_Proj_Wilted.Value;

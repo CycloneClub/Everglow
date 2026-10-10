@@ -57,7 +57,7 @@ public class GlowWoodSword : ModProjectile
 		return true;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		float k0 = Projectile.timeLeft / 60f;
 		var c0 = new Color(k0 * k0 * 0.3f, k0 * k0 * 0.8f, k0 * 0.8f + 0.2f, 1 - k0);
@@ -98,7 +98,7 @@ public class GlowWoodSword : ModProjectile
 		return true;
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		Texture2D Light = ModAsset.Projectiles_GlowWoodSword.Value;
 		float k0 = Projectile.timeLeft / 60f;
@@ -109,7 +109,7 @@ public class GlowWoodSword : ModProjectile
 		// rt.X -= (int)Main.screenPosition.X;
 		// rt.Y -= (int)Main.screenPosition.Y;
 		// Main.spriteBatch.Draw(TextureAssets.MagicPixel.Value,rt,new Color(55,0,0,0));
-		base.PostDraw(lightColor);
+		base.PostDraw(player, lightColor);
 	}
 
 	public override void OnKill(int timeLeft)

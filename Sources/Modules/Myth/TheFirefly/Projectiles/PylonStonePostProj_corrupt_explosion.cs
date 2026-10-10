@@ -131,7 +131,7 @@ public class PylonStonePostProj_corrupt_explosion : NoTextureProjectile, IWarpPr
 		}
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		Texture2D shadow = ModAsset.CursedHitLight.Value;
 		float timeValue = (200 - Projectile.timeLeft) / 200f;
@@ -143,7 +143,7 @@ public class PylonStonePostProj_corrupt_explosion : NoTextureProjectile, IWarpPr
 		DrawTexCircle(MathF.Sqrt(timeValue) * 12 * Projectile.ai[0], 4 * (1 - timeValue) * Projectile.ai[0], c * 0.4f, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_6.Value);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D shadow = ModAsset.CursedHit.Value;
 		float timeValue = (200 - Projectile.timeLeft) / 200f;

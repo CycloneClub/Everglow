@@ -104,7 +104,7 @@ public class Faelanternbranch : ModProjectile
 		return;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		var size = new Vector2(Projectile.width, Projectile.height);
 		Vector2 pos = Projectile.position - Main.screenPosition;

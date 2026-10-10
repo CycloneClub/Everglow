@@ -25,7 +25,7 @@ public class SquamousShell_shade : ModProjectile
 		Timer++;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		float fade = 1f;
 		if (Projectile.timeLeft < 20f)

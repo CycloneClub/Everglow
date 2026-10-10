@@ -174,7 +174,7 @@ public class WitherbarkMinion_Leaf : ModProjectile
 		Projectile.netUpdate = true;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		var texture = ModContent.Request<Texture2D>(Texture).Value;
 		var frame = texture.Frame(1, Main.projFrames[Projectile.type], 0, Projectile.frame);

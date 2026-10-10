@@ -98,7 +98,7 @@ public class BloodLanternGhost_PowerBall : ModProjectile
 		return CheckCenter(targetHitbox.TopLeft()) || CheckCenter(targetHitbox.TopRight()) || CheckCenter(targetHitbox.BottomLeft()) || CheckCenter(targetHitbox.BottomRight());
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
 		float mulScale = MathF.Sin(Timer * 0.03f) * 0.15f + 1f;

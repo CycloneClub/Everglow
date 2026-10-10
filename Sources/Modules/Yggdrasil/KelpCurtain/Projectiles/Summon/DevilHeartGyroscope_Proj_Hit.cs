@@ -25,7 +25,7 @@ public class DevilHeartGyroscope_Proj_Hit : ModProjectile
 
 	public override void AI() => base.AI();
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		float timeValue = Projectile.timeLeft / 60f;
 		var drawColor = new Color(220, 20, 239, 0);

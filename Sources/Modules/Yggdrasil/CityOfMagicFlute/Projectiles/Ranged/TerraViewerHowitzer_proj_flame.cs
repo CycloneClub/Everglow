@@ -89,7 +89,7 @@ public class TerraViewerHowitzer_proj_flame : ModProjectile, IWarpProjectile, IB
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		float value = (200 - Projectile.timeLeft) / 200f;
 		value = MathF.Sqrt(value);

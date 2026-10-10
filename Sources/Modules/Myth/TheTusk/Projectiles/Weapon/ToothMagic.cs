@@ -280,7 +280,7 @@ public class ToothMagic : ModProjectile, IWarpProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D Light = ModAsset.BloodProj.Value;
 		Texture2D Shade = ModAsset.BloodShade.Value;

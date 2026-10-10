@@ -274,7 +274,7 @@ public class DevilHeartGyroscope_Proj : GyroscopeProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D texture = ModAsset.DevilHeartGyroscope_Proj.Value;
 		Texture2D textureBloom = ModAsset.DevilHeartGyroscope_bloom.Value;

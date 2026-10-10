@@ -104,7 +104,7 @@ internal class ImmuneCircle : ModProjectile
 	private Color aimcolor = new Color(0, 0, 0);
 	private float kb = 1;
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		return false;
 	}
@@ -112,7 +112,7 @@ internal class ImmuneCircle : ModProjectile
 	private float cirR0 = 0;
 	private float cirPro0 = 0;
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		cirR0 += 0.007f;
 		cirPro0 += 0.1f;

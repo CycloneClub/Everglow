@@ -169,7 +169,7 @@ public class IntroductiontoThermalElectricity_Ball : ModProjectile
 		return false;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D tex = (Texture2D)ModContent.Request<Texture2D>(Texture);
 		Texture2D tex_bloom = Commons.ModAsset.LightPoint.Value;

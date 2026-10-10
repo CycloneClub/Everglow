@@ -117,7 +117,7 @@ public class CorMoth4DProj : ModProjectile
 		return new Vector4(v.X, vec.Y, vec.Z, v.Y);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D Light = ModAsset.FixCoinLight3.Value;
 		Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;

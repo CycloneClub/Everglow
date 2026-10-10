@@ -83,7 +83,7 @@ public class GoldenShowerBomb : ModProjectile, IWarpProjectile
 		Projectile.velocity *= 0;
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		Texture2D shadow = ModAsset.CursedHitLight.Value;
 		float dark = Math.Max((Projectile.timeLeft - 100) / 50f, 0);
@@ -98,7 +98,7 @@ public class GoldenShowerBomb : ModProjectile, IWarpProjectile
 		DrawTexCircle(MathF.Sqrt(timeValue) * 48 * Projectile.ai[0], 40 * Projectile.ai[0], new Color(255, 145, 0, 0) * dark2, Projectile.Center - Main.screenPosition, Commons.ModAsset.Noise_hiveCyber.Value);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D shadow = ModAsset.CursedHit.Value;
 		float dark = Math.Max((Projectile.timeLeft - 120) / 80f, 0);

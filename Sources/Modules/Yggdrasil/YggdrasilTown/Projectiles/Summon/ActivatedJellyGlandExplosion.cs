@@ -19,7 +19,7 @@ public class ActivatedJellyGlandExplosion : ModProjectile
 		Projectile.penetrate = -1;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		SpriteBatchState sBS = Main.spriteBatch.GetState().Value;
 		Main.spriteBatch.End();

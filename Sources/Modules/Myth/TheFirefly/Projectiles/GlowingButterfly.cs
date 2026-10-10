@@ -342,7 +342,7 @@ public class GlowingButterfly : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D tex = ModAsset.GlowingButterfly.Value;
 		// Texture2D texDark = ModAsset.GlowingButterfly_dark.Value;

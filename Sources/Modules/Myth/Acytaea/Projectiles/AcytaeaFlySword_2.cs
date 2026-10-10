@@ -92,7 +92,7 @@ public class AcytaeaFlySword_2 : TrailingProjectile
 		base.OnHitPlayer(target, info);
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;
 		Main.spriteBatch.End();

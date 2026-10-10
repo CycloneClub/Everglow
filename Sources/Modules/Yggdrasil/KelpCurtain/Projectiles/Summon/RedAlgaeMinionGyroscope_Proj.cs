@@ -186,7 +186,7 @@ public class RedAlgaeMinionGyroscope_Proj : GyroscopeProjectile, IRedAlgaeToxinP
 		Ins.VFXManager.Add(gasRing);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D texture = ModAsset.RedAlgaeMinionGyroscope_Proj.Value;
 		Texture2D textureBloom = ModAsset.RedAlgaeMinionGyroscope_bloom.Value;

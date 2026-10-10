@@ -41,7 +41,7 @@ public class LanternZoneBullet : ModProjectile
 		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<LanternZone>(), 0, 0, Projectile.owner);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D black = ModAsset.LanternZoneBullet_black.Value;
 		Texture2D bullet = ModContent.Request<Texture2D>(Texture).Value;

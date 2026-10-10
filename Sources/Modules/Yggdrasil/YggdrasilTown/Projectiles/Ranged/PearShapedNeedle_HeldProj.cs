@@ -61,10 +61,10 @@ public class PearShapedNeedle_HeldProj : HandholdProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		DrawNeedles();
-		return base.PreDraw(ref lightColor);
+		return base.PreDraw(player, ref lightColor);
 	}
 
 	public void DrawNeedles()

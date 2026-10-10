@@ -101,7 +101,7 @@ public class SquamousDashEffect : ModProjectile, IWarpProjectile_warpStyle2
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		if (NPCOwner >= 0 && NPCOwner < Main.npc.Length)
 		{

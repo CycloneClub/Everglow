@@ -483,7 +483,7 @@ public class Wither_Activated_Dog : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Rectangle drawFrame = new Rectangle(0, Projectile.frame * 64, 94, 64);
 		Texture2D mainTex = ModAsset.Wither_Activated_Dog.Value;

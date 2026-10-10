@@ -33,7 +33,7 @@ public class FreezeShoot : ModProjectile, IWarpProjectile
 		Projectile.position += Main.player[Projectile.owner].velocity / (Projectile.extraUpdates + 1);
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		if (Projectile.timeLeft > 200)
 		{
@@ -46,7 +46,7 @@ public class FreezeShoot : ModProjectile, IWarpProjectile
 		DrawTexCircle(timeValue * 24 * Projectile.ai[0], 8 * (1 - timeValue) * Projectile.ai[0], new Color(1f * (1 - timeValue) * (1 - timeValue), 1f * (1 - timeValue), 1.5f * (1 - timeValue), 0f), Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_6.Value);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		if (Projectile.timeLeft > 200)
 		{

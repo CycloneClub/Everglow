@@ -42,7 +42,7 @@ public class BlackCorruptRain3Friendly : ModProjectile
 		Lighting.AddLight(Projectile.Center, 0, 0.4f, 0.9f);
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		Texture2D t = Commons.ModAsset.Trail_2.Value;
 		float width = 20;
@@ -56,7 +56,7 @@ public class BlackCorruptRain3Friendly : ModProjectile
 		Ins.Batch.End();
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D Light = ModAsset.FixCoinLight3.Value;
 		Main.spriteBatch.Draw(Light, Projectile.Center - Main.screenPosition, null, new Color(1f, 1f, 1f, 0), Projectile.rotation, Light.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);

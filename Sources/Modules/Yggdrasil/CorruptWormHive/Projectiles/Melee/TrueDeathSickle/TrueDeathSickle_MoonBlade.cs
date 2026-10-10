@@ -77,7 +77,7 @@ public class TrueDeathSickle_MoonBlade : ModProjectile, IWarpProjectile
 		Lighting.AddLight(Projectile.Center, 0.14f, 0.47f, 0.97f);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		float colorValue = 0.1f;
 		int maxLength = (280 - Projectile.timeLeft) * 4;

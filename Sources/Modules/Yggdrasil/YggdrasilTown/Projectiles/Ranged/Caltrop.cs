@@ -72,7 +72,7 @@ public class Caltrop : ModProjectile
 		Dust.NewDust(Projectile.Center, 1, 1, DustID.Iron);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		var texture = ModContent.Request<Texture2D>(Texture).Value;
 		var origin = texture.Size() * 0.5f;

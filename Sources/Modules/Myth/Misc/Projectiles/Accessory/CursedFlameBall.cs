@@ -137,7 +137,7 @@ public class CursedFlameBall : ModProjectile, IWarpProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D light = ModAsset.GlowStar.Value;
 		Texture2D shade = Commons.ModAsset.Point_black.Value;

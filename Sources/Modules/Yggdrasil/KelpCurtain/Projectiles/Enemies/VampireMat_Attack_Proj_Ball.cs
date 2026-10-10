@@ -74,7 +74,7 @@ public class VampireMat_Attack_Proj_Ball : ModProjectile
 		base.OnHitPlayer(target, info);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;
 		Main.spriteBatch.End();

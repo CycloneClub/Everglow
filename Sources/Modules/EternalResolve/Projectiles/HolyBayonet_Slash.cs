@@ -49,7 +49,7 @@ namespace Everglow.EternalResolve.Projectiles
 			}
 		}
 
-		public override bool PreDraw(ref Color lightColor)
+		public override bool PreDraw(Player player, ref Color lightColor)
 		{
 			float value0 = (120 - Projectile.timeLeft) / 120f;
 			float value1 = MathF.Pow(value0, 0.5f);

@@ -21,7 +21,7 @@ internal class KSSlingshotHitPink : ModProjectile
 		Projectile.velocity *= 0;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		return false;
 	}
@@ -29,7 +29,7 @@ internal class KSSlingshotHitPink : ModProjectile
 	private Effect ef;
 	private float radius = 0;
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.ZoomMatrix);

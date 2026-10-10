@@ -65,7 +65,7 @@ public class DemoSpark : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		DrawSpark(Color.White, Math.Min(Projectile.timeLeft / 8f, 20f), ModAsset.SparkDark.Value);
 		DrawSpark(new Color(131, 0, 255, 0), Math.Min(Projectile.timeLeft / 8f, 20f), ModAsset.SparkLight.Value);

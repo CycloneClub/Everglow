@@ -92,7 +92,7 @@ public class EmptyWaterStaff_proj : TrailingProjectile
 		base.DestroyEntity();
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		DrawTrail();
 		if (TimeAfterEntityDestroy <= 0)

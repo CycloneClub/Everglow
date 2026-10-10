@@ -117,7 +117,7 @@ public class SunFlowerpetal : ModProjectile
 	{
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		var texture2D = (Texture2D)ModContent.Request<Texture2D>(Texture);
 		int num = texture2D.Height / Main.projFrames[Projectile.type];

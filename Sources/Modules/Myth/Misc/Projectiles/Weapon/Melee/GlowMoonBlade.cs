@@ -103,7 +103,7 @@ public class GlowMoonBlade : ModProjectile
 		return new Color(255 - Projectile.alpha, 255 - Projectile.alpha, 255 - Projectile.alpha, 255 - Projectile.alpha);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		double range = Projectile.scale * 2.2f;
 		double range2 = Projectile.scale * 2.2f;

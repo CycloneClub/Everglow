@@ -46,7 +46,7 @@ public class FallenDropFruit : ModProjectile
 		Lighting.AddLight(Projectile.Center, new Vector3(1f, 1.6f, 1.8f));
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		if (!Projectile.tileCollide)
 		{

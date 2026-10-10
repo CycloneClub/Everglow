@@ -152,7 +152,7 @@ public class DreamWeaver_proj : ModProjectile, IWarpProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		float k1 = 60f;
 		float k0 = (240 - Projectile.timeLeft) / k1;

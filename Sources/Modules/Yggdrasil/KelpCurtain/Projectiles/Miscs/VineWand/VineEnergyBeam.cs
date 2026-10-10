@@ -64,7 +64,7 @@ public class VineEnergyBeam : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Vector2 start = StartPosition - Main.screenPosition;
 		Vector2 end = EndPosition - Main.screenPosition;

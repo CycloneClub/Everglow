@@ -142,7 +142,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Tools
 		}
 
 		// Draws the grappling hook's chain.
-		public override bool PreDrawExtras()
+		public override bool PreDrawExtras(Player player)
 		{
 			Vector2 playerCenter = Main.player[Projectile.owner].MountedCenter;
 			Vector2 center = Projectile.Center;

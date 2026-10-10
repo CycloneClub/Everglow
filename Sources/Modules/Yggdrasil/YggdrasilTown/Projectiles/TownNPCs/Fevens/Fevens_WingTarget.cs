@@ -30,7 +30,7 @@ public class Fevens_WingTarget : ModProjectile
 		Projectile.velocity *= 0;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		SpriteBatchState sBS = Main.spriteBatch.GetState().Value;
 		Main.spriteBatch.End();

@@ -88,7 +88,7 @@ public class KissOfCthulhu_Projectile : ModProjectile
 		SoundEngine.PlaySound(SoundID.NPCDeath1, Projectile.Center);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		// var drawColor = new Color(100, 100, 100, 255);
 		// float length = Projectile.timeLeft < (TimeLeftMax - ExpandTime)

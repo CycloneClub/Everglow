@@ -93,7 +93,7 @@ public class YggdrasilMoonBladeHit : ModProjectile, IWarpProjectile
 		}
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		// Texture2D shadow = Commons.ModAsset.Point.Value;
 		// float timeValue = (200 - Projectile.timeLeft) / 200f;
@@ -118,7 +118,7 @@ public class YggdrasilMoonBladeHit : ModProjectile, IWarpProjectile
 		// Main.spriteBatch.Begin(sBS);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D shadow = Commons.ModAsset.Point_black.Value;
 		float dark = Math.Max((Projectile.timeLeft - 150) / 50f, 0);

@@ -145,7 +145,7 @@ public class NavyThunderBomb : ModProjectile, IWarpProjectile
 		return false;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		float lightValue = (Projectile.timeLeft - 100f) / 200f;
 		Texture2D Water = ModAsset.ElecLine.Value;

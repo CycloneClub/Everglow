@@ -68,7 +68,7 @@ internal class DemonScythePlusCrack : ModProjectile
 		target.AddBuff(BuffID.ShadowFlame, 30);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		var c0 = new Color(0.4f, 0.0f, 0.8f, 0);
 		float width = 16 * Projectile.ai[0];

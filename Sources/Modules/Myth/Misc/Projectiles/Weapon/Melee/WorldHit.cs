@@ -51,7 +51,7 @@ internal class WorldHit : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		return false;
 	}
@@ -63,7 +63,7 @@ internal class WorldHit : ModProjectile
 	internal Vector2[,] DrawLine = new Vector2[23, 18];
 	internal Vector2[] DrawLineVelocity = new Vector2[23];
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		if (FirstRo == 0)
 		{

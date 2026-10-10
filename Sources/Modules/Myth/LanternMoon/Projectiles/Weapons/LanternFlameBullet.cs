@@ -40,7 +40,7 @@ public class LanternFlameBullet : ModProjectile
 		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<Lantern_ExplosionEffect>(), Projectile.damage, 2, Projectile.owner, 3);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D black = ModAsset.LanternBullet_black.Value;
 		Texture2D bullet = ModContent.Request<Texture2D>(Texture).Value;

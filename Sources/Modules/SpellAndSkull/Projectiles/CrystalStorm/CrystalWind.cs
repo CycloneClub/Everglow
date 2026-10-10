@@ -50,7 +50,7 @@ public class CrystalWind : ModProjectile, IWarpProjectile
 		Projectile.velocity *= Main.rand.NextFloat(0.85f, 1.15f);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		float timeValue = (120 - Projectile.timeLeft) / 120f;
 

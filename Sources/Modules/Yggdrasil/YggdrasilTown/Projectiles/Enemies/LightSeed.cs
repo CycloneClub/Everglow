@@ -66,7 +66,7 @@ public class LightSeed : ModProjectile
 	{
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D texture = ModAsset.LightSeed.Value;
 		Texture2D textureD = ModAsset.LightSeed_dark.Value;

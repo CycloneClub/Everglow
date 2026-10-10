@@ -41,7 +41,7 @@ public class BlueMissilFriendly : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		float lightValue = Projectile.timeLeft / 120f;
 		Texture2D Light = ModAsset.FixCoinLight3.Value;

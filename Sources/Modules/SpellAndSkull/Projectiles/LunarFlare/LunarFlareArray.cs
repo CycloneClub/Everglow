@@ -79,7 +79,7 @@ internal class LunarFlareArray : ModProjectile
 		SubStars.ForEach(sub => sub.Update());
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		EliminateLightManager.AddCircle(Projectile.Center, 400 * Projectile.scale);
 		return false;

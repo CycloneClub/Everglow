@@ -43,7 +43,7 @@ internal class CreamChocolateCup_ChocolateBars : ModProjectile
 		base.OnKill(timeLeft);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D mainTex = ModAsset.CreamChocolateCup_ChocolateBars.Value;
 		Rectangle rectangle = new Rectangle(Projectile.frame % 5 * 20, Projectile.frame > 5 ? 0 : 22, 20, 22);

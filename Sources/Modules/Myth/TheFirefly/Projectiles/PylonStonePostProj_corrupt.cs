@@ -145,7 +145,7 @@ public class PylonStonePostProj_corrupt : TrailingProjectile
 		return new Vector3(x, y, z);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		DrawTrail();
 		if (TimeAfterEntityDestroy <= 0)

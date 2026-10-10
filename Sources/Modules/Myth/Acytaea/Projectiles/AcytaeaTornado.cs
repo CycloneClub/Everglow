@@ -116,7 +116,7 @@ public class AcytaeaTornado : ModProjectile
 		return false;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		return false;
 	}
@@ -229,7 +229,7 @@ public class AcytaeaTornado : ModProjectile
 		}
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		DrawTornado(Commons.ModAsset.Noise_crack_dense_black.Value, new Color(1f, 1f, 1f, 1f), -160, "DarkEffect", 0.1f, 0.13f);
 		DrawTornado(Commons.ModAsset.Noise_burn.Value, new Color(1f, 0, 0.4f, 0), -110, "RedEffect", 0.2f, 0.13f);

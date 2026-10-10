@@ -62,7 +62,7 @@ public class CrimsonMoonAlgaeSummonStaff_minion_spore : ModProjectile, IRedAlgae
 		RedAlgae_FriendlyDebuff_glocalNPC.HandleProjectileHit(target, Projectile);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D texture = ModContent.Request<Texture2D>(Texture).Value;
 		Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, new Color(1f, 1f, 1f, 1f), Projectile.rotation, texture.Size() * 0.5f, 1, SpriteEffects.None);

@@ -77,7 +77,7 @@ public class MossySpellArray : NoTextureProjectile
 		ringPos = ringPos * 0.9f + new Vector2(-72 * player.direction, -24 * player.gravDir) * 0.1f;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		DrawMagicArray();
 		return false;

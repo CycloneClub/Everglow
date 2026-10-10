@@ -111,7 +111,7 @@ public class ClimbingPickaxeProjectile : ModProjectile
 		return null;
 	}
 
-	public override bool PreDrawExtras()
+	public override bool PreDrawExtras(Player player)
 	{
 		Texture2D chainTexture = ModAsset.AmberFlowerHook_Chain.Value;
 		Vector2 playerCenter = Main.player[Projectile.owner].MountedCenter;

@@ -102,7 +102,7 @@ public class AmberLiquidProj : ModProjectile
 		Ins.VFXManager.Add(spark);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D texture = ModAsset.AmberLiquidProj.Value;
 		Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, new Rectangle(0, Projectile.frame * 50, 44, 50), lightColor, Projectile.rotation, new Vector2(22, 25), Projectile.scale, SpriteEffects.None, 0);

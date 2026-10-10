@@ -338,7 +338,7 @@ public class Firework12Inches : FireworkProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D flame = Commons.ModAsset.LightPoint.Value;
 		var trailBars0 = new List<Vertex2D>();

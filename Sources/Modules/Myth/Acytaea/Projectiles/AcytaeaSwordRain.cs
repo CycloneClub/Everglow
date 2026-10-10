@@ -47,7 +47,7 @@ public class AcytaeaSwordRain : ModProjectile
 	{
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		float timeValue = (float)Main.time * 0.2f;
 		float sizeH = 1f + 0.3f * MathF.Cos(timeValue);

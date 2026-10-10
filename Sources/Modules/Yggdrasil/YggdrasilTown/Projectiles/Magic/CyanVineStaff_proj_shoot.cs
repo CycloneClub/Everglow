@@ -213,7 +213,7 @@ public class CyanVineStaff_proj_shoot : ModProjectile, IWarpProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		DrawTrail();
 		Texture2D star = ModAsset.CyanVineStaff_proj_shoot_black.Value;

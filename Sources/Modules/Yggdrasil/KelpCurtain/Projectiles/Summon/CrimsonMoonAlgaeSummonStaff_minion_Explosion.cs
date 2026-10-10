@@ -99,7 +99,7 @@ public class CrimsonMoonAlgaeSummonStaff_minion_Explosion : ModProjectile, IRedA
 		return MathUtils.IntersectsCircleAABB(Projectile.Center, 120, targetHitbox);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		return false;
 	}

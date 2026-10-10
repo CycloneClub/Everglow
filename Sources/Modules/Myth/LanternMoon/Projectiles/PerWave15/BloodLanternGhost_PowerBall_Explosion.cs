@@ -155,7 +155,7 @@ public class BloodLanternGhost_PowerBall_Explosion : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		var drawPos = Projectile.Center;
 		float disValue = MathF.Sqrt(Timer) * 22;

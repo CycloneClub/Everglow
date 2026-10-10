@@ -124,7 +124,7 @@ public class AcytaeaSword_projectile_Tornado : ModProjectile, IWarpProjectile, I
 		Projectile.Center = Owner.Center + mainVec * 0.02f;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		DrawTrail(lightColor);
 		DrawSelf(Main.spriteBatch, lightColor);

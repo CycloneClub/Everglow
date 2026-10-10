@@ -58,7 +58,7 @@ public class MeltingFireExplode : ModProjectile
 		return false;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D tex = Commons.ModAsset.LightPoint2.Value;
 		Main.spriteBatch.Draw(tex, Projectile.Center + new Vector2(0, 15) - Main.screenPosition, null, new Color(1, 1, 1, 0f) * 0.8f, 0, tex.Size() / 2, 2, 0, 0);

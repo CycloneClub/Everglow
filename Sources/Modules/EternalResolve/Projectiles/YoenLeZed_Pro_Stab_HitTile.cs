@@ -62,13 +62,13 @@ public class YoenLeZed_Pro_Stab_HitTile : ModProjectile, IWarpProjectile
 		}
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		float timeValue = (200 - Projectile.timeLeft) / 200f;
 		DrawTexCircle(MathF.Sqrt(timeValue) * 6 * Projectile.ai[0], 2 * (1 - timeValue) * Projectile.ai[0], new Color(1f * (1 - timeValue) * (1 - timeValue), 1f * (1 - timeValue), 1.5f * (1 - timeValue), 0f), Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_0.Value);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		float timeValue = (200 - Projectile.timeLeft) / 200f;
 		float dark = Math.Max((Projectile.timeLeft - 50) / 150f, 0);

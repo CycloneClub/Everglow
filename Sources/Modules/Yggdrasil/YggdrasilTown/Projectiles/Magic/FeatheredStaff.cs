@@ -276,7 +276,7 @@ internal class FeatheredStaff : ModProjectile
 		return false;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		if (LifeTimer < P1Duration)
 		{

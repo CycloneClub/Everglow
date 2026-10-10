@@ -171,7 +171,7 @@ public class PrimordialJadeWinged_Spear_thrust2 : ModProjectile, IWarpProjectile
 
 	public int collisionTimer = 0;
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D mainTex = ModAsset.PrimordialJadeWinged_Spear_PrimordialJadeWinged_Spear.Value;
 		Vector2 drawCenter = Projectile.Center - Vector2.Normalize(Projectile.velocity) * 150f;

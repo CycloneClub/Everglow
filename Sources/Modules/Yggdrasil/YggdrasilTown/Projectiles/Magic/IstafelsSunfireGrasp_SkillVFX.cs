@@ -31,7 +31,7 @@ public class IstafelsSunfireGrasp_SkillVFX : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		var sBS = Main.spriteBatch.GetState().Value;
 		Main.spriteBatch.End();

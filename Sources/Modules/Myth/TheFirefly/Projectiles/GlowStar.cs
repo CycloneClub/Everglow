@@ -62,7 +62,7 @@ public class GlowStar : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		float k1 = 200;
 		float k0 = (1000 - Projectile.timeLeft) / k1;

@@ -82,7 +82,7 @@ public class SpringOfQuicksand_Sandflow : TrailingProjectile
 		return base.Colliding(projHitbox, targetHitbox);
 	}
 
-	public override bool PreDraw(ref Color lightColor) => base.PreDraw(ref lightColor);
+	public override bool PreDraw(Player player, ref Color lightColor) => base.PreDraw(player, ref lightColor);
 
 	public override float TrailWidthFunction(float factor) => base.TrailWidthFunction(factor);
 

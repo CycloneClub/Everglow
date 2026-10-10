@@ -145,7 +145,7 @@ public class DarkFlower_Proj : ModProjectile
 		ProjectileUtils.TrackOldValue(oldPos, Projectile.Center);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D tex = Terraria.GameContent.TextureAssets.Projectile[Projectile.type].Value;
 		Color c = new Color(1f, 0.5f, 0.2f) * alpha;

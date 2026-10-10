@@ -68,7 +68,7 @@ public class HexaCrystalStaff_ProjExplosion : ModProjectile, IWarpProjectile_war
 		base.OnKill(timeLeft);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D drawTex = Commons.ModAsset.Noise_turtleCrack.Value;
 		var drawPos = Projectile.Center - Main.screenPosition;

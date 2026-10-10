@@ -146,7 +146,7 @@ public class VortexVanquisherThump : ModProjectile
 		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), CheckPoint + TotalVector * 180, -TotalVector * (0.9f + FallVelocity * 0.06f), ModContent.ProjectileType<VortexVanquisher3>(), (int)(Projectile.damage * (1 + FallVelocity * 0.02f)), 0, player.whoAmI, 1).CritChance = Projectile.CritChance;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		return false;
 	}

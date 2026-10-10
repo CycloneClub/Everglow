@@ -188,7 +188,7 @@ public class ChlorophyteClub_fly_2 : ModProjectile, IWarpProjectile
 		ProduceWaterRipples(new Vector2(HitLength * Projectile.scale));
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		SpriteEffects effects = SpriteEffects.None;
 		if (Projectile.spriteDirection == 1)

@@ -100,7 +100,7 @@ public class BlackCorruptRain : ModProjectile
 		Lighting.AddLight(Projectile.Center, (255 - Projectile.alpha) * 0f / 255f * Projectile.scale, (255 - Projectile.alpha) * 0.01f / 255f, (255 - Projectile.alpha) * 0.6f / 255f * Projectile.scale);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D Light = ModAsset.FixCoinLight3.Value;
 		Main.spriteBatch.Draw(Light, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, new Color((int)(255 * stre2), (int)(255 * stre2), (int)(255 * stre2), 0), Projectile.rotation, new Vector2(56f, 56f), Projectile.scale, SpriteEffects.None, 0);

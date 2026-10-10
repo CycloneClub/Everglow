@@ -66,14 +66,14 @@ public class LunarFlareHit : ModProjectile, IWarpProjectile, IBloomProjectile
 		Lighting.AddLight(Projectile.Center, 0, Projectile.timeLeft / 100f, Projectile.timeLeft / 100f);
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		Texture2D Shadow = ModAsset.CursedHitLight.Value;
 		float dark = Math.Max((Projectile.timeLeft - 150) / 50f, 0);
 		Main.spriteBatch.Draw(Shadow, Projectile.Center - Main.screenPosition, null, new Color(0, 255, 255, 0) * dark, 0, Shadow.Size() / 2f, 2.2f * Projectile.ai[0] / 15f * dark, SpriteEffects.None, 0);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D Shadow = ModAsset.CursedHit.Value;
 		float dark = Math.Max((Projectile.timeLeft - 150) / 50f, 0);

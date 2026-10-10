@@ -416,7 +416,7 @@ public abstract class TrailingProjectile : ModProjectile, IWarpProjectile_warpSt
 		return MathF.Sin(factor * MathHelper.Pi);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		DrawTrail();
 		if (TimeAfterEntityDestroy <= 0)

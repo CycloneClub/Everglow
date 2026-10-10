@@ -33,7 +33,7 @@ public class ComingGhost_Shimmer : ModProjectile
 		Projectile.velocity *= 0f;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Color c0 = new Color(1f, 0, 0, 0);
 		float energyValue = Projectile.timeLeft / 300f;

@@ -105,7 +105,7 @@ public class Fevens_TaijutsuSlash : ModProjectile, IWarpProjectile_warpStyle2
 
 	public List<Vector2> SmoothTrail = new List<Vector2>();
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		if (Projectile.timeLeft > 120)
 		{

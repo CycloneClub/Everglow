@@ -24,7 +24,7 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee
 			Projectile.velocity *= 0;
 		}
 
-		public override bool PreDraw(ref Color lightColor)
+		public override bool PreDraw(Player player, ref Color lightColor)
 		{
 			float energyValue = Projectile.timeLeft / 300f;
 

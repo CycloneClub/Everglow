@@ -108,7 +108,7 @@ public abstract class SlingshotAmmo : ModProjectile
 		SoundEngine.PlaySound(SoundID.NPCHit1.WithPitchOffset(1f), Projectile.Center);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		if (timeTokill > 0)
 		{
@@ -127,7 +127,7 @@ public abstract class SlingshotAmmo : ModProjectile
 		}
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;
 		Main.spriteBatch.End();

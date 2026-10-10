@@ -36,7 +36,7 @@ public class BlackCorruptRain3 : ModProjectile
 		Lighting.AddLight(Projectile.Center, 0, 0.4f, 0.9f);
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		float width = 20;
 		if (Projectile.timeLeft < 120)
@@ -50,7 +50,7 @@ public class BlackCorruptRain3 : ModProjectile
 		Ins.Batch.End();
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D light = ModAsset.FixCoinLight3.Value;
 		Texture2D dark = Commons.ModAsset.Point_black.Value;

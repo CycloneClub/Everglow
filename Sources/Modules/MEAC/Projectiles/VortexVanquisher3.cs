@@ -111,7 +111,7 @@ public class VortexVanquisher3 : ModProjectile
 		return orig.RotatedBy(Projectile.rotation - Math.PI * 0.75);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
 		Main.spriteBatch.Draw(tex, Projectile.Center - startVelocity * 90 - Main.screenPosition, null, lightColor, Projectile.rotation, tex.Size() / 2, Projectile.scale, 0, 0);

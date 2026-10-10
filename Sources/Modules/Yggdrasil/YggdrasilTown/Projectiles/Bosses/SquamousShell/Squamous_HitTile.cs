@@ -41,7 +41,7 @@ public class Squamous_HitTile : ModProjectile, IWarpProjectile
 		}
 	}
 
-	public override void PostDraw(Color lightColor)
+	public override void PostDraw(Player player, Color lightColor)
 	{
 		Texture2D shadow = Commons.ModAsset.Point.Value;
 		float timeValue = (200 - Projectile.timeLeft) / 200f;
@@ -52,7 +52,7 @@ public class Squamous_HitTile : ModProjectile, IWarpProjectile
 		DrawTexCircle(MathF.Sqrt(timeValue) * 24 * Projectile.ai[0], 8 * (1 - timeValue) * Projectile.ai[0], new Color(0.32f * light.X, 0.18f * light.Y, 0.24f * light.Z, 0f) * (1 - timeValue), Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_6.Value);
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		Texture2D shadow = Commons.ModAsset.Point_black.Value;
 		float timeValue = (200 - Projectile.timeLeft) / 200f;

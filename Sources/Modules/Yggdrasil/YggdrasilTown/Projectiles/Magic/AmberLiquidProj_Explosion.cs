@@ -132,7 +132,7 @@ public class AmberLiquidProj_Explosion : ModProjectile, IWarpProjectile
 		return bool0 || bool1 || bool2 || bool3;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		float timeValue = (200 - Projectile.timeLeft) / 200f;
 		float dark = Math.Max((Projectile.timeLeft - 150) / 50f, 0);

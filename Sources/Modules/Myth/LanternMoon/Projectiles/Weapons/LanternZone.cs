@@ -24,7 +24,7 @@ public class LanternZone : ModProjectile
 		Timer++;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		var drawPos = Projectile.Center;
 		var drawColor = new Color(1f, 1f, 1f, 0);

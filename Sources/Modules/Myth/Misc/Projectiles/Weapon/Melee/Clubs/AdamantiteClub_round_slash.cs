@@ -74,7 +74,7 @@ public class AdamantiteClub_round_slash : ModProjectile, IWarpProjectile
 		Projectile.velocity *= 0.85f;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
+	public override bool PreDraw(Player player, ref Color lightColor)
 	{
 		if (StickProjectile == null)
 		{
