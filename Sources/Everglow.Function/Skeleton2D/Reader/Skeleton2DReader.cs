@@ -227,13 +227,25 @@ namespace Everglow.Commons.Skeleton2D.Reader;
 // }
 public class Skeleton2DReader
 {
+	/// <summary>
+	/// Loads skeleton and animation data without creating graphics resources.
+	/// Atlas pages must declare their dimensions.
+	/// </summary>
+	public static Skeleton2D ReadSkeleton(byte[] atlasData, byte[] jsonData, float scale = 1.0f)
+	{
+		return ReadSkeleton(atlasData, jsonData, null, scale);
+	}
+
 	public static Skeleton2D ReadSkeleton(byte[] atlasData, byte[] jsonData, Texture2D atlasTexture, float scale = 1.0f)
 	{
 		using var ms_atlas = new MemoryStream(atlasData);
 		using var sr_atlas = new StreamReader(ms_atlas);
 
 		// Using empty dir string here because we do not support multiple layers
-		Atlas atlas = new Atlas(sr_atlas, string.Empty, new XnaTextureLoader(atlasTexture));
+		TextureLoader textureLoader = atlasTexture is null
+			? new ServerTextureLoader()
+			: new XnaTextureLoader(atlasTexture);
+		Atlas atlas = new Atlas(sr_atlas, string.Empty, textureLoader);
 
 		using var ms_json = new MemoryStream(jsonData);
 		using var sr_json = new StreamReader(ms_json);
@@ -243,8 +255,11 @@ public class Skeleton2DReader
 
 		Skeleton skeleton = new Skeleton(skeletonData);
 
-		skeleton.X = Main.screenWidth / 2;
-		skeleton.Y = Main.screenHeight;
+		if (atlasTexture is not null)
+		{
+			skeleton.X = Main.screenWidth / 2;
+			skeleton.Y = Main.screenHeight;
+		}
 
 		return ConvertTopublicSkeleton(skeleton, atlas);
 	}

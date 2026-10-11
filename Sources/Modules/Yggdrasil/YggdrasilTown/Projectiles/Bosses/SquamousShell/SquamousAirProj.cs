@@ -2,7 +2,6 @@ using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
 using Terraria.Audio;
-using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Bosses.SquamousShell;
 
@@ -24,17 +23,18 @@ public class SquamousAirProj : ModProjectile
 		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Projectile.type] = true;
 	}
 
-	internal int Target = -1;
-	internal int TimeTokill = -1;
-
-	public override void OnSpawn(IEntitySource source)
+	private enum AiSlot
 	{
-		Target = (int)Projectile.ai[0];
+		Target,
 	}
+
+	private int Target => (int)Projectile.ai[(int)AiSlot.Target];
+
+	internal int TimeTokill = -1;
 
 	public override void AI()
 	{
-		if (Target == -1)
+		if (Target < 0 || Target >= Main.maxPlayers)
 		{
 			Projectile.Kill();
 			return;
@@ -77,7 +77,10 @@ public class SquamousAirProj : ModProjectile
 				}
 			}
 			Projectile.velocity.Y += 0.05f;
-			Lighting.AddLight(Projectile.Center, 0, 0.4f, 0.7f);
+			if (!Main.dedServ)
+			{
+				Lighting.AddLight(Projectile.Center, 0, 0.4f, 0.7f);
+			}
 		}
 		else
 		{

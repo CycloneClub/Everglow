@@ -1,11 +1,20 @@
+using Everglow.Yggdrasil.Netcode;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs.SquamousShell;
+using Terraria.DataStructures;
 using Terraria.ObjectData;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Tiles;
 
 public class SquamousShellSeal : ModTile
 {
+	/// <summary>
+	/// Respawn cooldown
+	/// </summary>
 	public int ReSpawnTimer = 0;
+
+	/// <summary>
+	/// Used for dissolve VFX
+	/// </summary>
 	public int DissolveTimer = 0;
 
 	public override void SetStaticDefaults()
@@ -144,26 +153,68 @@ public class SquamousShellSeal : ModTile
 	{
 		if (ReSpawnTimer <= 0)
 		{
-			if (NPC.CountNPCS(ModContent.NPCType<SquamousShell>()) == 0)
+			if (Main.netMode == NetmodeID.MultiplayerClient)
 			{
-				for (int x = -20; x <= 20; x++)
+				ModIns.PacketResolver.Send(new SquamousShellSummonPacket { TileX = i, TileY = j });
+			}
+			else if (Main.netMode == NetmodeID.SinglePlayer)
+			{
+				ModContent.GetInstance<SquamousShellSeal>().TrySummon(i, j, Main.myPlayer);
+			}
+		}
+		return true;
+	}
+
+	public bool TrySummon(int i, int j, int playerIndex)
+	{
+		if (Main.netMode == NetmodeID.MultiplayerClient
+			|| playerIndex < 0
+			|| playerIndex >= Main.maxPlayers
+			|| !WorldGen.InWorld(i, j))
+		{
+			return false;
+		}
+
+		Player player = Main.player[playerIndex];
+		Tile clickedTile = Main.tile[i, j];
+		if (!player.active || player.dead || !player.InInteractionRange(i, j, TileReachCheckSettings.Simple)
+			|| !clickedTile.HasTile || clickedTile.TileType != Type || NPC.AnyNPCs(ModContent.NPCType<SquamousShell>()))
+		{
+			return false;
+		}
+
+		for (int x = -20; x <= 20; x++)
+		{
+			for (int y = -10; y <= 10; y++)
+			{
+				if (!WorldGen.InWorld(i + x, j + y))
 				{
-					for (int y = -10; y <= 10; y++)
+					continue;
+				}
+				Tile tile = Main.tile[i + x, j + y];
+				if (tile.HasTile && tile.TileType == Type && tile.TileFrameX == 180 && tile.TileFrameY == 162)
+				{
+					int index = NPC.NewNPC(new EntitySource_TileInteraction(player, i, j), (i + x) * 16 + 18, (j + y) * 16 + 14, ModContent.NPCType<SquamousShell>());
+					Main.npc[index].netUpdate = true;
+					if (NetUtils.IsServer)
 					{
-						Tile tile = Main.tile[i + x, j + y];
-						if (tile.TileType == Type)
-						{
-							if (tile.TileFrameX == 180 && tile.TileFrameY == 162)
-							{
-								NPC.NewNPC(null, (i + x) * 16 + 18, (j + y) * 16 + 14, ModContent.NPCType<SquamousShell>());
-								ReSpawnTimer = 360000;
-								DissolveTimer = 60;
-							}
-						}
+						NetMessage.SendData(MessageID.SyncNPC, number: index);
 					}
+
+					ApplyPostSummonEffect();
+					return true;
 				}
 			}
 		}
-		return base.RightClick(i, j);
+		return false;
+	}
+
+	/// <summary>
+	/// Set timers after summon, should be applyed on all ends.
+	/// </summary>
+	public void ApplyPostSummonEffect()
+	{
+		ReSpawnTimer = 360000;
+		DissolveTimer = 60;
 	}
 }

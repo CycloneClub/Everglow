@@ -12,6 +12,23 @@ public class SquamousRollingStone_fly : ModProjectile
 	public int StartDirection = 0;
 	public int StopTimer = 0;
 
+	public override void SendExtraAI(BinaryWriter writer)
+	{
+		writer.Write(Projectile.scale);
+		writer.Write(StartDirection);
+		writer.Write(StopTimer);
+		writer.Write(Projectile.timeLeft);
+	}
+
+	public override void ReceiveExtraAI(BinaryReader reader)
+	{
+		Projectile.scale = reader.ReadSingle();
+		StartDirection = reader.ReadInt32();
+		StopTimer = reader.ReadInt32();
+		Projectile.timeLeft = reader.ReadInt32();
+		Projectile.width = Projectile.height = (int)(Projectile.scale * 100f);
+	}
+
 	public override string Texture => ModAsset.SquamousRollingStone_Mod;
 
 	public override void OnSpawn(IEntitySource source)
@@ -35,6 +52,7 @@ public class SquamousRollingStone_fly : ModProjectile
 	{
 		Projectile.friendly = false;
 		Projectile.hostile = true;
+		Projectile.netImportant = true;
 		Projectile.width = 100;
 		Projectile.height = 100;
 		Projectile.tileCollide = true;

@@ -6,12 +6,14 @@ using Everglow.Commons.Skeleton2D;
 using Everglow.Commons.Skeleton2D.Reader;
 using Everglow.Commons.Skeleton2D.Renderer;
 using Everglow.Commons.Skeleton2D.Renderer.DrawCommands;
+using Everglow.Yggdrasil.Netcode;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Accessories.SquamousShell;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Rock;
 using Everglow.Yggdrasil.YggdrasilTown.Items.BossDrops;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.SquamousShell;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Bosses.SquamousShell;
+using Everglow.Yggdrasil.YggdrasilTown.Tiles;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -76,6 +78,9 @@ public class SquamousShell : ModNPC
 	public Skeleton2D SquamousShellSkeleton;
 	public SkeletonRenderer skeletonRenderer = new SkeletonRenderer();
 	public SkeletonDebugRenderer skeletonDebugRenderer = new SkeletonDebugRenderer();
+	private float animationStep;
+	private int syncTimer;
+	private readonly CoroutineManager playerHitCoroutines = new CoroutineManager();
 
 	public override void Load()
 	{
@@ -93,40 +98,114 @@ public class SquamousShell : ModNPC
 
 	public override void OnSpawn(IEntitySource source)
 	{
+		EnsureSkeleton();
+		if (Main.netMode == NetmodeID.MultiplayerClient)
+		{
+			return;
+		}
+
 		NPC.velocity.Y = 2f;
 		_coroutineManager.StartCoroutine(new Coroutine(Landing()));
-		var data = Mod.GetFileBytes(ModAsset.monsterj_Path);
-		if (!Main.dedServ)
+	}
+
+	private void EnsureSkeleton()
+	{
+		if (SquamousShellSkeleton != null)
 		{
-			if (SquamousShellSkeleton == null)
-			{
-				var json = Mod.GetFileBytes(ModAsset.monsterj_Path);
-				var atlas = Mod.GetFileBytes(ModAsset.monstera_Path);
-				SquamousShellSkeleton = Skeleton2DReader.ReadSkeleton(atlas, json, ModAsset.monster.Value);
-				SquamousShellSkeleton.AnimationState.SetAnimation(0, "walk4", true);
-			}
+			return;
 		}
+
+		var json = Mod.GetFileBytes(ModAsset.monsterj_Path);
+		var atlas = Mod.GetFileBytes(ModAsset.monstera_Path);
+		SquamousShellSkeleton = Main.dedServ
+			? Skeleton2DReader.ReadSkeleton(atlas, json)
+			: Skeleton2DReader.ReadSkeleton(atlas, json, ModAsset.monster.Value);
+		SquamousShellSkeleton.AnimationState.SetAnimation(0, "walk4", true);
 	}
 
 	public override bool CheckActive() => false;
 
+	public override void SendExtraAI(BinaryWriter writer)
+	{
+		writer.Write(Flying);
+		writer.Write(Smashing);
+		writer.Write(Dashing);
+		writer.Write(TrapedInTiles);
+		writer.Write(PhantomValue);
+		writer.Write(SmashValue);
+		writer.Write(SpawnPos.X);
+		writer.Write(SpawnPos.Y);
+		writer.Write(wakingTimer);
+		writer.Write(NPC.rotation);
+		writer.Write(NPC.spriteDirection);
+		writer.Write(NPC.hide);
+		writer.Write(NPC.alpha);
+		writer.Write(NPC.noTileCollide);
+		var track = SquamousShellSkeleton.AnimationState.GetCurrent(0);
+		writer.Write(track.Animation.Name);
+		writer.Write(track.Loop);
+		writer.Write(track.TrackTime);
+		writer.Write(animationStep);
+	}
+
+	public override void ReceiveExtraAI(BinaryReader reader)
+	{
+		Flying = reader.ReadBoolean();
+		Smashing = reader.ReadBoolean();
+		Dashing = reader.ReadBoolean();
+		TrapedInTiles = reader.ReadInt32();
+		PhantomValue = reader.ReadSingle();
+		SmashValue = reader.ReadSingle();
+		SpawnPos = new Vector2(reader.ReadSingle(), reader.ReadSingle());
+		wakingTimer = reader.ReadInt32();
+		NPC.rotation = reader.ReadSingle();
+		NPC.spriteDirection = reader.ReadInt32();
+		NPC.hide = reader.ReadBoolean();
+		NPC.alpha = reader.ReadInt32();
+		NPC.noTileCollide = reader.ReadBoolean();
+		string animation = reader.ReadString();
+		bool loop = reader.ReadBoolean();
+		float time = reader.ReadSingle();
+		animationStep = reader.ReadSingle();
+		EnsureSkeleton();
+		var track = SquamousShellSkeleton.AnimationState.GetCurrent(0);
+		if (track == null || track.Animation.Name != animation || track.Loop != loop || time < track.TrackTime)
+		{
+			track = SquamousShellSkeleton.AnimationState.SetAnimation(0, animation, loop);
+		}
+		track.TrackTime = time;
+	}
+
 	public override void AI()
 	{
-		if (!Main.dedServ)
-		{
-			SquamousShellSkeleton.AnimationState.Apply(SquamousShellSkeleton.Skeleton);
-		}
-
+		// Multiplayer clients do not run OnSpawn when receiving an NPC.
+		EnsureSkeleton();
 		NPC.localAI[0] += 1;
-		NPC.TargetClosest(false);
-		Player player = Main.player[NPC.target];
-		_coroutineManager.Update();
-		SquamousShellSkeleton.Position = NPC.Bottom;
+		if (Main.netMode != NetmodeID.MultiplayerClient)
+		{
+			NPC.TargetClosest(false);
+			var previousTrack = SquamousShellSkeleton.AnimationState.GetCurrent(0);
+			bool wasHidden = NPC.hide;
+			animationStep = 0;
+			_coroutineManager.Update();
+			if (++syncTimer >= 6 || previousTrack != SquamousShellSkeleton.AnimationState.GetCurrent(0) || wasHidden != NPC.hide)
+			{
+				syncTimer = 0;
+				NPC.netUpdate = true;
+			}
+		}
+		else
+		{
+			SquamousShellSkeleton.AnimationState.Update(animationStep);
+		}
+		playerHitCoroutines.Update();
+		SquamousShellSkeleton.AnimationState.Apply(SquamousShellSkeleton.Skeleton);
 		SquamousShellSkeleton.Skeleton.FindBone("root").Rotation = NPC.rotation / Spine.MathUtils.DegRad;
 		SquamousShellSkeleton.Skeleton.FindBone("root").ScaleY = NPC.spriteDirection;
 		SquamousShellSkeleton.Skeleton.FindBone("root").ScaleX = -1;
+		SquamousShellSkeleton.Position = NPC.Bottom;
 
-		if (Flying)
+		if (Flying && !Main.dedServ)
 		{
 			NPC.frameCounter++;
 			if (NPC.frameCounter > 3)
@@ -158,8 +237,19 @@ public class SquamousShell : ModNPC
 		}
 	}
 
+	private void AdvanceAnimation(float delta)
+	{
+		animationStep += delta;
+		SquamousShellSkeleton.AnimationState.Update(delta);
+	}
+
 	public void DiswingEffect()
 	{
+		if (Main.dedServ)
+		{
+			return;
+		}
+
 		for (int i = 0; i < 75; i++)
 		{
 			Vector2 pos0 = new Vector2(SquamousShellSkeleton.Skeleton.FindBone("Armor1").WorldX, SquamousShellSkeleton.Skeleton.FindBone("Armor1").WorldY);
@@ -323,7 +413,7 @@ public class SquamousShell : ModNPC
 
 			// 动画表现
 			NPC.spriteDirection = direction;
-			SquamousShellSkeleton.AnimationState.Update(Math.Clamp(Math.Abs(NPC.velocity.X) / 300f, 0f, 0.08f));
+			AdvanceAnimation(Math.Clamp(Math.Abs(NPC.velocity.X) / 300f, 0f, 0.08f));
 			if ((Main.player[NPC.target].Center.X - NPC.Center.X < -1000 && direction == 1) || (Main.player[NPC.target].Center.X - NPC.Center.X > 1000 && direction == -1))
 			{
 				direction *= -1;
@@ -504,10 +594,11 @@ public class SquamousShell : ModNPC
 		{
 			damage = 133;
 		}
-		Projectile rock = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, new Vector2(direction * 4, 0), ModContent.ProjectileType<SquamousRollingStone>(), damage, 6, 0, direction);
+		Projectile rock = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, new Vector2(direction * 4, 0), ModContent.ProjectileType<SquamousRollingStone>(), damage, 6, Main.myPlayer, direction);
 		rock.scale = 0;
 		rock.width = 0;
 		rock.height = 0;
+		rock.netUpdate = true;
 		NPC.spriteDirection = direction;
 		NPC.rotation = 0;
 		if (NPC.spriteDirection == -1)
@@ -532,8 +623,9 @@ public class SquamousShell : ModNPC
 				rock.width = (int)(rock.scale * 100f);
 				rock.height = (int)(rock.scale * 100f);
 				rock.Center = NPC.Center + Vector2.Lerp(new Vector2(70 * direction, 60), new Vector2(140 * direction, 20), (x - startTime) / (61f - startTime));
+				rock.netUpdate |= x % 6 == 0;
 			}
-			SquamousShellSkeleton.AnimationState.Update(1f / 30f);
+			AdvanceAnimation(1f / 30f);
 			yield return new SkipThisFrame();
 		}
 
@@ -547,14 +639,15 @@ public class SquamousShell : ModNPC
 		}
 		for (int x = 0; x < 5; x++)
 		{
-			SquamousShellSkeleton.AnimationState.Update(1f / 30f);
+			AdvanceAnimation(1f / 30f);
 			rock.Center = NPC.Center + Vector2.Lerp(new Vector2(140 * direction, 20), new Vector2(170 * direction, -20), x / 5f);
+			rock.netUpdate |= x == 4;
 			yield return new SkipThisFrame();
 		}
 
 		for (int x = 0; x < 20; x++)
 		{
-			SquamousShellSkeleton.AnimationState.Update(1f / 30f);
+			AdvanceAnimation(1f / 30f);
 			if (x < 5)
 			{
 				rock.Center = NPC.Center + new Vector2(170 * direction, -20);
@@ -581,6 +674,7 @@ public class SquamousShell : ModNPC
 					speed = 15;
 				}
 				rock.velocity = new Vector2(speed * direction, -3);
+				rock.netUpdate = true;
 				ShakerManager.AddShaker(rock.Center, Vector2.One.RotatedByRandom(MathHelper.Pi), 10 * MathF.Pow(rock.scale / 1.2f, 2f), 20f, 120, 0.9f, 0.8f, 150);
 			}
 			yield return new SkipThisFrame();
@@ -635,10 +729,11 @@ public class SquamousShell : ModNPC
 		{
 			damage = 133;
 		}
-		Projectile rock = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, new Vector2(direction * 4, -24), ModContent.ProjectileType<SquamousRollingStone_fly>(), damage, 6, 0, direction);
+		Projectile rock = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, new Vector2(direction * 4, -24), ModContent.ProjectileType<SquamousRollingStone_fly>(), damage, 6, Main.myPlayer, direction);
 		rock.scale = 0;
 		rock.width = 0;
 		rock.height = 0;
+		rock.netUpdate = true;
 		NPC.spriteDirection = direction;
 		NPC.rotation = 0;
 		if (NPC.spriteDirection == -1)
@@ -663,8 +758,9 @@ public class SquamousShell : ModNPC
 				rock.width = (int)(rock.scale * 100f);
 				rock.height = (int)(rock.scale * 100f);
 				rock.Center = NPC.Center + Vector2.Lerp(new Vector2(70 * direction, 60), new Vector2(140 * direction, 20), (x - startTime) / (61f - startTime));
+				rock.netUpdate |= x % 6 == 0;
 			}
-			SquamousShellSkeleton.AnimationState.Update(1f / 30f);
+			AdvanceAnimation(1f / 30f);
 			yield return new SkipThisFrame();
 		}
 
@@ -678,14 +774,15 @@ public class SquamousShell : ModNPC
 		}
 		for (int x = 0; x < 5; x++)
 		{
-			SquamousShellSkeleton.AnimationState.Update(1f / 30f);
+			AdvanceAnimation(1f / 30f);
 			rock.Center = NPC.Center + Vector2.Lerp(new Vector2(140 * direction, 20), new Vector2(170 * direction, -20), x / 5f);
+			rock.netUpdate |= x == 4;
 			yield return new SkipThisFrame();
 		}
 
 		for (int x = 0; x < 20; x++)
 		{
-			SquamousShellSkeleton.AnimationState.Update(1f / 30f);
+			AdvanceAnimation(1f / 30f);
 			if (x < 5)
 			{
 				rock.Center = NPC.Center + new Vector2(170 * direction, -20);
@@ -712,6 +809,7 @@ public class SquamousShell : ModNPC
 					speed = 15;
 				}
 				rock.velocity = new Vector2(speed * direction, -10) * Main.rand.NextFloat(0.65f, 1f);
+				rock.netUpdate = true;
 				ShakerManager.AddShaker(rock.Center, Vector2.One.RotatedByRandom(MathHelper.Pi), 30 * MathF.Pow(rock.scale / 1.2f, 2f), 20f, 120, 0.9f, 0.8f, 150);
 			}
 			yield return new SkipThisFrame();
@@ -735,7 +833,7 @@ public class SquamousShell : ModNPC
 		SquamousShellSkeleton.AnimationState.SetAnimation(0, "takeOff", false);
 		for (int i = 0; i < 10; i++)
 		{
-			SquamousShellSkeleton.AnimationState.Update(1 / 30f);
+			AdvanceAnimation(1 / 30f);
 			yield return new SkipThisFrame();
 		}
 		NPC.velocity = new Vector2(direction * 4, -7);
@@ -753,7 +851,7 @@ public class SquamousShell : ModNPC
 		}
 		for (int x = 0; x < 120; x++)
 		{
-			SquamousShellSkeleton.AnimationState.Update(1 / 100f);
+			AdvanceAnimation(1 / 100f);
 			if ((player.Center - NPC.Center).X * direction < 0)
 			{
 				NPC.velocity.Y += accleration * 2;
@@ -810,7 +908,7 @@ public class SquamousShell : ModNPC
 		}
 		for (int x = 0; x < waitintTime; x++)
 		{
-			SquamousShellSkeleton.AnimationState.Update(1 / 100f);
+			AdvanceAnimation(1 / 100f);
 			PhantomValue = 1 - x / (float)waitintTime;
 			yield return new SkipThisFrame();
 		}
@@ -825,7 +923,7 @@ public class SquamousShell : ModNPC
 			{
 				SmashValue = 1f;
 			}
-			SquamousShellSkeleton.AnimationState.Update(1 / 100f);
+			AdvanceAnimation(1 / 100f);
 			NPC.velocity.X = 0;
 			NPC.velocity.Y = 40 + x;
 			Smashing = true;
@@ -851,53 +949,56 @@ public class SquamousShell : ModNPC
 
 			yield return new SkipThisFrame();
 		}
-		ShakerManager.AddShaker(NPC.Bottom, Vector2.One.RotatedByRandom(MathHelper.Pi), 60, 20f, 60, 0.9f, 0.8f, 150);
-		for (int g = 0; g < 35; g++)
+		if (!Main.dedServ)
 		{
-			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(12f, 37f)).RotatedByRandom(MathHelper.TwoPi);
-			newVelocity.Y = -Math.Abs(newVelocity.Y);
-			newVelocity.Y *= Main.rand.NextFloat(0.1f, 1.4f);
-			newVelocity.X *= 0.01f;
-			var somg = new RockSmog_Cone_FallingSandDust
+			ShakerManager.AddShaker(NPC.Bottom, Vector2.One.RotatedByRandom(MathHelper.Pi), 60, 20f, 60, 0.9f, 0.8f, 150);
+			for (int g = 0; g < 35; g++)
 			{
-				Velocity = newVelocity,
-				Active = true,
-				Visible = true,
-				Position = NPC.Bottom + new Vector2(newVelocity.X * 600, 8),
-				MaxTime = Main.rand.NextFloat(90, Math.Max(newVelocity.Y * 6, 163)),
-				Scale = Main.rand.NextFloat(12f, 13f),
-				Rotation = Main.rand.NextFloat(6.283f),
-				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
-			};
-			Ins.VFXManager.Add(somg);
-		}
-		for (int g = 0; g < 20; g++)
-		{
-			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(6f, 33f)).RotatedByRandom(MathHelper.TwoPi);
-			newVelocity.Y = -Math.Abs(newVelocity.Y);
-			newVelocity.X *= 0.01f;
-			var somg = new RockSmog_Cone_FallingSandDust
+				Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(12f, 37f)).RotatedByRandom(MathHelper.TwoPi);
+				newVelocity.Y = -Math.Abs(newVelocity.Y);
+				newVelocity.Y *= Main.rand.NextFloat(0.1f, 1.4f);
+				newVelocity.X *= 0.01f;
+				var somg = new RockSmog_Cone_FallingSandDust
+				{
+					Velocity = newVelocity,
+					Active = true,
+					Visible = true,
+					Position = NPC.Bottom + new Vector2(newVelocity.X * 600, 8),
+					MaxTime = Main.rand.NextFloat(90, Math.Max(newVelocity.Y * 6, 163)),
+					Scale = Main.rand.NextFloat(12f, 13f),
+					Rotation = Main.rand.NextFloat(6.283f),
+					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
+				};
+				Ins.VFXManager.Add(somg);
+			}
+			for (int g = 0; g < 20; g++)
 			{
-				Velocity = newVelocity,
-				Active = true,
-				Visible = true,
-				Position = NPC.Bottom + new Vector2(newVelocity.X * 600, 8),
-				MaxTime = Main.rand.NextFloat(90, Math.Max(newVelocity.Y * 6, 163)),
-				Scale = Main.rand.NextFloat(6f, 7f),
-				Rotation = Main.rand.NextFloat(6.283f),
-				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
-			};
-			Ins.VFXManager.Add(somg);
-		}
-		for (int x = 0; x < 20; x++)
-		{
-			Dust dust = Dust.NewDustDirect(NPC.Center + new Vector2(-4 + (x - 10) * 10, -4), 0, 0, ModContent.DustType<SquamousShellStone>(), 0f, 0f, 0, default, Main.rand.NextFloat(0.7f, 1.7f));
-			dust.velocity = new Vector2((x - 10) * 0.15f, -Main.rand.NextFloat(0f, 7f) * (MathF.Sin(x / 20f * MathF.PI) + 1.5f));
-		}
-		for (int x = 0; x < 20; x++)
-		{
-			Dust dust = Dust.NewDustDirect(NPC.Center + new Vector2(-4 + (x - 10) * 10, -4), 0, 0, ModContent.DustType<SquamousShellStone_dark>(), 0f, 0f, 0, default, Main.rand.NextFloat(0.5f, 1.3f));
-			dust.velocity = new Vector2((x - 10) * 0.15f, -Main.rand.NextFloat(0f, 5f) * (MathF.Sin(x / 20f * MathF.PI) + 1.5f));
+				Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(6f, 33f)).RotatedByRandom(MathHelper.TwoPi);
+				newVelocity.Y = -Math.Abs(newVelocity.Y);
+				newVelocity.X *= 0.01f;
+				var somg = new RockSmog_Cone_FallingSandDust
+				{
+					Velocity = newVelocity,
+					Active = true,
+					Visible = true,
+					Position = NPC.Bottom + new Vector2(newVelocity.X * 600, 8),
+					MaxTime = Main.rand.NextFloat(90, Math.Max(newVelocity.Y * 6, 163)),
+					Scale = Main.rand.NextFloat(6f, 7f),
+					Rotation = Main.rand.NextFloat(6.283f),
+					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
+				};
+				Ins.VFXManager.Add(somg);
+			}
+			for (int x = 0; x < 20; x++)
+			{
+				Dust dust = Dust.NewDustDirect(NPC.Center + new Vector2(-4 + (x - 10) * 10, -4), 0, 0, ModContent.DustType<SquamousShellStone>(), 0f, 0f, 0, default, Main.rand.NextFloat(0.7f, 1.7f));
+				dust.velocity = new Vector2((x - 10) * 0.15f, -Main.rand.NextFloat(0f, 7f) * (MathF.Sin(x / 20f * MathF.PI) + 1.5f));
+			}
+			for (int x = 0; x < 20; x++)
+			{
+				Dust dust = Dust.NewDustDirect(NPC.Center + new Vector2(-4 + (x - 10) * 10, -4), 0, 0, ModContent.DustType<SquamousShellStone_dark>(), 0f, 0f, 0, default, Main.rand.NextFloat(0.5f, 1.3f));
+				dust.velocity = new Vector2((x - 10) * 0.15f, -Main.rand.NextFloat(0f, 5f) * (MathF.Sin(x / 20f * MathF.PI) + 1.5f));
+			}
 		}
 		if (Main.expertMode)
 		{
@@ -933,14 +1034,14 @@ public class SquamousShell : ModNPC
 			{
 				SmashValue = 0f;
 			}
-			SquamousShellSkeleton.AnimationState.Update(1 / 30f);
+			AdvanceAnimation(1 / 30f);
 			yield return new SkipThisFrame();
 		}
 		SmashValue = 0f;
 		SquamousShellSkeleton.AnimationState.SetAnimation(0, "idle", false);
 		for (int i = 0; i < 60; i++)
 		{
-			SquamousShellSkeleton.AnimationState.Update(1 / 30f);
+			AdvanceAnimation(1 / 30f);
 			yield return new SkipThisFrame();
 		}
 		_coroutineManager.StartCoroutine(new Coroutine(NextAttack()));
@@ -962,7 +1063,7 @@ public class SquamousShell : ModNPC
 		SquamousShellSkeleton.AnimationState.SetAnimation(0, "takeOff", false);
 		for (int i = 0; i < 10; i++)
 		{
-			SquamousShellSkeleton.AnimationState.Update(1 / 30f);
+			AdvanceAnimation(1 / 30f);
 			yield return new SkipThisFrame();
 		}
 		NPC.velocity = new Vector2(direction * 4, -7);
@@ -975,7 +1076,7 @@ public class SquamousShell : ModNPC
 		}
 		for (int x = 0; x < 100; x++)
 		{
-			SquamousShellSkeleton.AnimationState.Update(1 / 100f);
+			AdvanceAnimation(1 / 100f);
 			if (NPC.Center.Y - player.Center.Y < -200)
 			{
 				Vector2 aimPos = player.Center + new Vector2(-400 * direction, -300);
@@ -997,7 +1098,7 @@ public class SquamousShell : ModNPC
 		// 减速
 		for (int x = 0; x < 12; x++)
 		{
-			SquamousShellSkeleton.AnimationState.Update(1 / 100f);
+			AdvanceAnimation(1 / 100f);
 			NPC.velocity *= 0.8f;
 			yield return new SkipThisFrame();
 		}
@@ -1056,7 +1157,7 @@ public class SquamousShell : ModNPC
 		}
 		for (int x = 0; x < 20; x++)
 		{
-			SquamousShellSkeleton.AnimationState.Update(1 / 30f);
+			AdvanceAnimation(1 / 30f);
 
 			Vector2 aimPos = playerPos + new Vector2(-400 * direction, -300);
 			Vector2 toTarget = aimPos - NPC.Center - NPC.velocity;
@@ -1164,7 +1265,7 @@ public class SquamousShell : ModNPC
 		SquamousShellSkeleton.AnimationState.SetAnimation(0, "drop", false);
 		for (int i = 0; i < 10; i++)
 		{
-			SquamousShellSkeleton.AnimationState.Update(1 / 30f);
+			AdvanceAnimation(1 / 30f);
 			yield return new SkipThisFrame();
 		}
 		_coroutineManager.StartCoroutine(new Coroutine(NextAttack()));
@@ -1186,7 +1287,7 @@ public class SquamousShell : ModNPC
 		SquamousShellSkeleton.AnimationState.SetAnimation(0, "takeOff", false);
 		for (int i = 0; i < 10; i++)
 		{
-			SquamousShellSkeleton.AnimationState.Update(1 / 30f);
+			AdvanceAnimation(1 / 30f);
 			yield return new SkipThisFrame();
 		}
 		NPC.velocity = new Vector2(direction * 4, -7);
@@ -1199,7 +1300,7 @@ public class SquamousShell : ModNPC
 		}
 		for (int x = 0; x < 100; x++)
 		{
-			SquamousShellSkeleton.AnimationState.Update(1 / 100f);
+			AdvanceAnimation(1 / 100f);
 			if (NPC.Center.Y - player.Center.Y < -200)
 			{
 				Vector2 aimPos = player.Center + new Vector2(-400 * direction, -300);
@@ -1221,7 +1322,7 @@ public class SquamousShell : ModNPC
 		// 减速
 		for (int x = 0; x < 12; x++)
 		{
-			SquamousShellSkeleton.AnimationState.Update(1 / 100f);
+			AdvanceAnimation(1 / 100f);
 			NPC.velocity *= 0.8f;
 			yield return new SkipThisFrame();
 		}
@@ -1232,7 +1333,7 @@ public class SquamousShell : ModNPC
 		Vector2 toPlayer = playerPos - NPC.Center;
 		for (int x = 0; x < 30; x++)
 		{
-			SquamousShellSkeleton.AnimationState.Update(1 / 30f);
+			AdvanceAnimation(1 / 30f);
 			if (x % 20 == 0)
 			{
 				playerPos = player.Center;
@@ -1339,7 +1440,7 @@ public class SquamousShell : ModNPC
 		SquamousShellSkeleton.AnimationState.SetAnimation(0, "drop", false);
 		for (int i = 0; i < 10; i++)
 		{
-			SquamousShellSkeleton.AnimationState.Update(1 / 30f);
+			AdvanceAnimation(1 / 30f);
 			yield return new SkipThisFrame();
 		}
 		_coroutineManager.StartCoroutine(new Coroutine(NextAttack()));
@@ -1370,7 +1471,7 @@ public class SquamousShell : ModNPC
 		SquamousShellSkeleton.AnimationState.SetAnimation(0, "takeOff", false);
 		for (int i = 0; i < 10; i++)
 		{
-			SquamousShellSkeleton.AnimationState.Update(1 / 30f);
+			AdvanceAnimation(1 / 30f);
 			yield return new SkipThisFrame();
 		}
 		NPC.velocity = new Vector2(direction * 4, -7);
@@ -1379,7 +1480,7 @@ public class SquamousShell : ModNPC
 		Flying = true;
 		for (int x = 0; x < 100; x++)
 		{
-			SquamousShellSkeleton.AnimationState.Update(1 / 100f);
+			AdvanceAnimation(1 / 100f);
 			Vector2 aimPos = player.Center + new Vector2(-300 * direction, -300);
 			Vector2 toTarget = aimPos - NPC.Center - NPC.velocity;
 			NPC.velocity = NPC.velocity * 0.8f + toTarget * 0.2f * 0.1f;
@@ -1393,7 +1494,7 @@ public class SquamousShell : ModNPC
 		// 减速
 		for (int x = 0; x < 12; x++)
 		{
-			SquamousShellSkeleton.AnimationState.Update(1 / 100f);
+			AdvanceAnimation(1 / 100f);
 			NPC.velocity *= 0.8f;
 			yield return new SkipThisFrame();
 		}
@@ -1402,7 +1503,7 @@ public class SquamousShell : ModNPC
 		Vector2 playerPos = player.Center;
 		for (int x = 0; x < 30; x++)
 		{
-			SquamousShellSkeleton.AnimationState.Update(1 / 100f);
+			AdvanceAnimation(1 / 100f);
 			Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, new Vector2(0, -15 * Main.rand.NextFloat(0.75f, 1.25f)).RotatedBy(Main.rand.NextFloat(-1.5f, 1.5f)), ModContent.ProjectileType<SquamousAirProj>(), (int)(NPC.damage * 0.45f), 0, 0, player.whoAmI);
 			if (Main.masterMode && x % 12 == 0)
 			{
@@ -1468,7 +1569,7 @@ public class SquamousShell : ModNPC
 		SquamousShellSkeleton.AnimationState.SetAnimation(0, "drop", false);
 		for (int i = 0; i < 10; i++)
 		{
-			SquamousShellSkeleton.AnimationState.Update(1 / 30f);
+			AdvanceAnimation(1 / 30f);
 			yield return new SkipThisFrame();
 		}
 		_coroutineManager.StartCoroutine(new Coroutine(NextAttack()));
@@ -1499,7 +1600,7 @@ public class SquamousShell : ModNPC
 		SquamousShellSkeleton.AnimationState.SetAnimation(0, "takeOff", false);
 		for (int i = 0; i < 10; i++)
 		{
-			SquamousShellSkeleton.AnimationState.Update(1 / 30f);
+			AdvanceAnimation(1 / 30f);
 			yield return new SkipThisFrame();
 		}
 		NPC.velocity = new Vector2(direction * 4, -7);
@@ -1507,7 +1608,7 @@ public class SquamousShell : ModNPC
 		Flying = true;
 		for (int x = 0; x < 100; x++)
 		{
-			SquamousShellSkeleton.AnimationState.Update(1 / 100f);
+			AdvanceAnimation(1 / 100f);
 			Vector2 aimPos = player.Center + new Vector2(-400 * direction, -300);
 			Vector2 toTarget = aimPos - NPC.Center - NPC.velocity;
 			NPC.velocity = NPC.velocity * 0.8f + toTarget * 0.2f * 0.1f;
@@ -1521,7 +1622,7 @@ public class SquamousShell : ModNPC
 		// 减速
 		for (int x = 0; x < 12; x++)
 		{
-			SquamousShellSkeleton.AnimationState.Update(1 / 100f);
+			AdvanceAnimation(1 / 100f);
 			NPC.velocity *= 0.8f;
 			yield return new SkipThisFrame();
 		}
@@ -1530,7 +1631,7 @@ public class SquamousShell : ModNPC
 		Vector2 playerPos = player.Center;
 		for (int x = 0; x < 140; x++)
 		{
-			SquamousShellSkeleton.AnimationState.Update(1 / 100f);
+			AdvanceAnimation(1 / 100f);
 			playerPos = player.Center;
 			NPC.velocity = NPC.velocity * 0.9f + new Vector2(5 * direction, 0) * 0.1f;
 			int freq = 20;
@@ -1573,7 +1674,7 @@ public class SquamousShell : ModNPC
 		SquamousShellSkeleton.AnimationState.SetAnimation(0, "drop", false);
 		for (int i = 0; i < 10; i++)
 		{
-			SquamousShellSkeleton.AnimationState.Update(1 / 30f);
+			AdvanceAnimation(1 / 30f);
 			yield return new SkipThisFrame();
 		}
 		_coroutineManager.StartCoroutine(new Coroutine(NextAttack()));
@@ -1719,7 +1820,7 @@ public class SquamousShell : ModNPC
 		{
 			modifiers.FinalDamage *= 1.5f;
 			target.position += new Vector2(NPC.velocity.X * 0.7f, -6f) * 5;
-			_coroutineManager.StartCoroutine(new Coroutine(RushHitPlayerFly(target, new Vector2(NPC.velocity.X * 0.7f, -6f) * 1.5f)));
+			playerHitCoroutines.StartCoroutine(new Coroutine(RushHitPlayerFly(target, new Vector2(NPC.velocity.X * 0.7f, -6f) * 1.5f)));
 		}
 		if (Smashing)
 		{
@@ -1750,13 +1851,7 @@ public class SquamousShell : ModNPC
 			Main.spriteBatch.Begin(sBS);
 		}
 
-		if (SquamousShellSkeleton == null)
-		{
-			var json = Mod.GetFileBytes(ModAsset.monsterj_Path);
-			var atlas = Mod.GetFileBytes(ModAsset.monstera_Path);
-			SquamousShellSkeleton = Skeleton2DReader.ReadSkeleton(atlas, json, ModAsset.monster.Value);
-			SquamousShellSkeleton.AnimationState.SetAnimation(0, "walk4", true);
-		}
+		EnsureSkeleton();
 
 		skeletonDebugRenderer.DisableAll();
 		skeletonDebugRenderer.DrawBones = true;
@@ -1889,6 +1984,11 @@ public class SquamousShell : ModNPC
 
 	public override void OnKill()
 	{
+		if (Main.dedServ)
+		{
+			return;
+		}
+
 		for (int i = 0; i < 14; i++)
 		{
 			Vector2 v0 = new Vector2(0, Main.rand.NextFloat(0, 6f)).RotatedByRandom(MathHelper.TwoPi);
@@ -1945,6 +2045,11 @@ public class SquamousShell : ModNPC
 	//--------------------------以下为辅助功能模块-------------------------------------------------以下为辅助功能模块-------------------------------------------------以下为辅助功能模块-------------------------------------------------以下为辅助功能模块-------------------------------------------------以下为辅助功能模块-------------------------------------------------
 	public void GenerateSmogAtBottom(int Frequency)
 	{
+		if (Main.dedServ)
+		{
+			return;
+		}
+
 		for (int g = 0; g < Frequency / 2 + 1; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, MathF.Sqrt(Main.rand.NextFloat(0f, 1f)) * 12).RotatedByRandom(MathHelper.TwoPi);
