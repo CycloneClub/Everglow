@@ -55,6 +55,12 @@ public class CyanVineOreMiddle : ModTile
 		{
 			Item.NewItem(null, i * 16 + Main.rand.Next(94) - 16, j * 16 + Main.rand.Next(64) - 48, 16, 16, ModContent.ItemType<CyanVineOre>());
 		}
+
+		if (Main.dedServ)
+		{
+			return;
+		}
+
 		for (int f = 0; f < 8; f++)
 		{
 			Vector2 vF = new Vector2(0, Main.rand.NextFloat(0, 3f)).RotatedByRandom(6.28d);

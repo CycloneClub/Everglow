@@ -64,6 +64,11 @@ public class CyanVineOreLarge : ModTile
 			Times = 9;
 		}
 
+		if (Main.dedServ)
+		{
+			return;
+		}
+
 		for (int f = 0; f < Times; f++)
 		{
 			Vector2 vF = new Vector2(0, Main.rand.NextFloat(0, 3f)).RotatedByRandom(6.28d);

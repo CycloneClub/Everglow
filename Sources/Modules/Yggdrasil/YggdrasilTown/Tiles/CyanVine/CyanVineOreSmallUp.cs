@@ -55,6 +55,12 @@ public class CyanVineOreSmallUp : ModTile
 		{
 			Item.NewItem(null, i * 16 + Main.rand.Next(24) - 16, j * 16 + Main.rand.Next(48), 16, 16, ModContent.ItemType<CyanVineOre>());
 		}
+
+		if (Main.dedServ)
+		{
+			return;
+		}
+
 		for (int f = 0; f < 4; f++)
 		{
 			Vector2 vF = new Vector2(0, Main.rand.NextFloat(0, 3f)).RotatedByRandom(6.28d);

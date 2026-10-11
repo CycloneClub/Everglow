@@ -54,6 +54,12 @@ public class CyanVineOreLargeUp : ModTile
 		{
 			Item.NewItem(null, i * 16 + Main.rand.Next(90) - 45, j * 16 + Main.rand.Next(64), 16, 16, ModContent.ItemType<CyanVineOre>());
 		}
+
+		if (Main.dedServ)
+		{
+			return;
+		}
+
 		for (int f = 0; f < 11; f++)
 		{
 			Vector2 vF = new Vector2(0, Main.rand.NextFloat(0, 3f)).RotatedByRandom(6.28d);
