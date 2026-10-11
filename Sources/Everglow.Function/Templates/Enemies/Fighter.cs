@@ -10,6 +10,8 @@ public abstract class Fighter : ModNPC
 
 	public float MaxSpeedX = 1f;
 
+	public float JumpScale = 1f;
+
 	public float AggroThreshold = 60f;
 
 	public override void SetDefaults()
@@ -344,28 +346,28 @@ public abstract class Fighter : ModNPC
 			{
 				if (Main.tile[pushTileX, pushTileY - 3].HasUnactuatedTile && Main.tileSolid[Main.tile[pushTileX, pushTileY - 3].TileType])
 				{
-					NPC.velocity.Y = -8f;
+					NPC.velocity.Y = -8f * JumpScale;
 					NPC.netUpdate = true;
 				}
 				else
 				{
-					NPC.velocity.Y = -7f;
+					NPC.velocity.Y = -7f * JumpScale;
 					NPC.netUpdate = true;
 				}
 			}
 			else if (Main.tile[pushTileX, pushTileY - 1].HasUnactuatedTile && Main.tileSolid[Main.tile[pushTileX, pushTileY - 1].TileType])
 			{
-				NPC.velocity.Y = -6f;
+				NPC.velocity.Y = -6f * JumpScale;
 				NPC.netUpdate = true;
 			}
 			else if (NPC.position.Y + NPC.height - pushTileY * 16 > 20f && Main.tile[pushTileX, pushTileY].HasUnactuatedTile && !Main.tile[pushTileX, pushTileY].TopSlope && Main.tileSolid[Main.tile[pushTileX, pushTileY].TileType])
 			{
-				NPC.velocity.Y = -5f;
+				NPC.velocity.Y = -5f * JumpScale;
 				NPC.netUpdate = true;
 			}
 			else if (NPC.directionY < 0 && (!Main.tile[pushTileX, pushTileY + 1].HasUnactuatedTile || !Main.tileSolid[Main.tile[pushTileX, pushTileY + 1].TileType]) && (!Main.tile[pushTileX + NPC.direction, pushTileY + 1].HasUnactuatedTile || !Main.tileSolid[Main.tile[pushTileX + NPC.direction, pushTileY + 1].TileType]))
 			{
-				NPC.velocity.Y = -8f;
+				NPC.velocity.Y = -8f * JumpScale;
 				NPC.velocity.X *= 1.5f;
 				NPC.netUpdate = true;
 			}
@@ -373,7 +375,7 @@ public abstract class Fighter : ModNPC
 			// Jump when starting to accumulate aggro. "I found you! Look at me!"
 			if (NPC.velocity.Y == 0f && canJump && NPC.ai[3] == 1f)
 			{
-				NPC.velocity.Y = -5f;
+				NPC.velocity.Y = -5f * JumpScale;
 			}
 
 			// Jump and attack target.
@@ -382,7 +384,7 @@ public abstract class Fighter : ModNPC
 				int maxTileOverHead = 6;
 				if (player.Bottom.Y > NPC.Top.Y - maxTileOverHead * 16)
 				{
-					NPC.velocity.Y = -7.9f;
+					NPC.velocity.Y = -7.9f * JumpScale;
 				}
 				else
 				{
@@ -392,7 +394,7 @@ public abstract class Fighter : ModNPC
 					{
 						if (Main.tile[centerTileX, y].HasUnactuatedTile && TileID.Sets.Platforms[Main.tile[centerTileX, y].TileType])
 						{
-							NPC.velocity.Y = -7.9f;
+							NPC.velocity.Y = -7.9f * JumpScale;
 							break;
 						}
 					}
