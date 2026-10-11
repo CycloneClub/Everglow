@@ -1,0 +1,74 @@
+name: Publish development tmod
+
+on:
+  workflow_run:
+    workflows: [".NET Build and Test"]
+    branches: ["1.4.4"]
+    types: [completed]
+
+permissions:
+  actions: read
+  contents: write
+
+# Do not interrupt an asset replacement. The SHA check also rejects late old builds.
+concurrency:
+  group: publish-development-tmod
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push' &&
+      github.event.workflow_run.head_branch == '1.4.4' &&
+      github.event.workflow_run.head_repository.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      # Download data only: never execute code from the triggering run or artifact.
+      - name: Download the tested build
+        uses: actions/download-artifact@v4
+        with:
+          name: tmodloader-load-inputs
+          path: ${{ runner.temp }}/tested-build
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      # Resolve the current branch tip; never execute scripts from this checkout.
+      - name: Checkout the current main branch
+        id: source
+        uses: actions/checkout@v6
+        with:
+          ref: "1.4.4"
+          sparse-checkout: .github
+
+      - name: Check the tmod is not empty
+        if: steps.source.outputs.commit == github.event.workflow_run.head_sha
+        run: test -s "$RUNNER_TEMP/tested-build/Everglow.tmod"
+
+      - name: Update the development tag
+        if: steps.source.outputs.commit == github.event.workflow_run.head_sha
+        uses: EndBug/latest-tag@8fcae8848c1e23fd8212258f69a9619bc62cad67 # v1.6.3
+        with:
+          ref: dev
+
+      - name: Update the development release
+        if: steps.source.outputs.commit == github.event.workflow_run.head_sha
+        uses: softprops/action-gh-release@v3
+        with:
+          tag_name: dev
+          target_commitish: ${{ github.event.workflow_run.head_sha }}
+          name: Everglow development build
+          prerelease: false
+          make_latest: "true"
+          overwrite_files: true
+          fail_on_unmatched_files: true
+          files: ${{ runner.temp }}/tested-build/Everglow.tmod
+          body: |
+            Latest development build from `1.4.4`. This development release is updated in place.
+
+            Commit: ${{ github.event.workflow_run.head_sha }}
+            Build and tests: ${{ github.event.workflow_run.html_url }}
+
+            Download Everglow.tmod below and place it in your tModLoader Mods directory.
+            Requires [SubworldLibrary](https://steamcommunity.com/sharedfiles/filedetails/?id=2785100219) and [ModLiquidLib](https://steamcommunity.com/sharedfiles/filedetails/?id=3539368598).
