@@ -27,6 +27,18 @@ public class SquamousRockSpike_Falling_Predict : ModProjectile
 		Projectile.timeLeft += Main.rand.Next(-5, 60);
 	}
 
+	public override void SendExtraAI(BinaryWriter writer)
+	{
+		writer.Write(Projectile.rotation);
+		writer.Write(Projectile.timeLeft);
+	}
+
+	public override void ReceiveExtraAI(BinaryReader reader)
+	{
+		Projectile.rotation = reader.ReadSingle();
+		Projectile.timeLeft = reader.ReadInt32();
+	}
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 30;
@@ -51,9 +63,9 @@ public class SquamousRockSpike_Falling_Predict : ModProjectile
 	public override void AI()
 	{
 		Projectile.velocity *= 0;
-		if (Projectile.timeLeft == 5)
+		if (Projectile.timeLeft == 5 && Main.netMode != NetmodeID.MultiplayerClient)
 		{
-			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, new Vector2(0, 18), ModContent.ProjectileType<SquamousRockSpike_Falling>(), Projectile.damage, Projectile.knockBack, Projectile.owner, Projectile.owner);
+			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, new Vector2(0, 18), ModContent.ProjectileType<SquamousRockSpike_Falling>(), Projectile.damage, Projectile.knockBack, Main.myPlayer);
 		}
 	}
 

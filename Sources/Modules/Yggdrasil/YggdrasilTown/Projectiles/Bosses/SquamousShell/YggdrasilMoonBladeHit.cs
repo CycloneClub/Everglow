@@ -23,8 +23,15 @@ public class YggdrasilMoonBladeHit : ModProjectile, IWarpProjectile
 		Projectile.DamageType = DamageClass.Magic;
 	}
 
-	public override void OnSpawn(IEntitySource source)
+	private bool spawnEffectsPlayed;
+
+	private void PlaySpawnEffects()
 	{
+		if (Main.dedServ || spawnEffectsPlayed)
+		{
+			return;
+		}
+		spawnEffectsPlayed = true;
 		SoundEngine.PlaySound(SoundID.Shatter, Projectile.Center);
 		for (int x = 0; x < 40; x++)
 		{
@@ -58,6 +65,7 @@ public class YggdrasilMoonBladeHit : ModProjectile, IWarpProjectile
 
 	public override void AI()
 	{
+		PlaySpawnEffects();
 		Projectile.velocity *= 0;
 		if (Projectile.timeLeft <= 199)
 		{

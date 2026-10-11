@@ -180,7 +180,10 @@ public class SquamousRollingStone : ModProjectile
 		{
 			scaleDamage = 3;
 		}
-		Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<SquamousRockExplosion>(), Projectile.damage * scaleDamage, Projectile.knockBack, Projectile.owner, 40);
+		if (Main.netMode != NetmodeID.MultiplayerClient)
+		{
+			Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<SquamousRockExplosion>(), Projectile.damage * scaleDamage, Projectile.knockBack, Main.myPlayer, 40);
+		}
 		ShakerManager.AddShaker(Projectile.Center, Vector2.One.RotatedByRandom(MathHelper.Pi), 120, 20f, 120, 0.9f, 0.8f, 150);
 	}
 

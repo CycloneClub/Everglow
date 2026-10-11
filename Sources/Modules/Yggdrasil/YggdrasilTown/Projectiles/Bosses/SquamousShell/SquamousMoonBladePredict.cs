@@ -17,6 +17,18 @@ public class SquamousMoonBladePredict : ModProjectile
 		Projectile.velocity *= 0;
 	}
 
+	public override void SendExtraAI(BinaryWriter writer)
+	{
+		writer.Write(Projectile.rotation);
+		writer.Write(Projectile.timeLeft);
+	}
+
+	public override void ReceiveExtraAI(BinaryReader reader)
+	{
+		Projectile.rotation = reader.ReadSingle();
+		Projectile.timeLeft = reader.ReadInt32();
+	}
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 30;

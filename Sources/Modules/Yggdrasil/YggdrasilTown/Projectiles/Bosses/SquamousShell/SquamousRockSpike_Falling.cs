@@ -131,7 +131,10 @@ public class SquamousRockSpike_Falling : ModProjectile
 		}
 		GenerateSmog();
 		SoundEngine.PlaySound(SoundID.DD2_BetsyFireballImpact.WithVolume(0.4f), Projectile.Center);
-		Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<SquamousRockExplosion>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 8);
+		if (Main.netMode != NetmodeID.MultiplayerClient)
+		{
+			Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<SquamousRockExplosion>(), Projectile.damage, Projectile.knockBack, Main.myPlayer, 8);
+		}
 	}
 
 	public override bool PreDraw(ref Color lightColor)

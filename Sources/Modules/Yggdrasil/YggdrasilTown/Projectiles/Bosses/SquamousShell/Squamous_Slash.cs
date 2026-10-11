@@ -53,6 +53,42 @@ public class Squamous_Slash : ModProjectile, IWarpProjectile_warpStyle2
 		return base.PreAI();
 	}
 
+	public override void SendExtraAI(BinaryWriter writer)
+	{
+		writer.Write(SpacePos.X);
+		writer.Write(SpacePos.Y);
+		writer.Write(SpacePos.Z);
+		writer.Write(RotatedAxis.X);
+		writer.Write(RotatedAxis.Y);
+		writer.Write(RotatedAxis.Z);
+		writer.Write(Omega);
+		writer.Write(Projectile.timeLeft);
+		writer.Write(Projectile.hostile);
+		writer.Write((byte)OldPosSpace.Count);
+		foreach (var position in OldPosSpace)
+		{
+			writer.Write(position.X);
+			writer.Write(position.Y);
+			writer.Write(position.Z);
+		}
+	}
+
+	public override void ReceiveExtraAI(BinaryReader reader)
+	{
+		SpacePos = new Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle());
+		RotatedAxis = new Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle());
+		Omega = reader.ReadSingle();
+		Projectile.timeLeft = reader.ReadInt32();
+		Projectile.hostile = reader.ReadBoolean();
+		OldPosSpace.Clear();
+		int count = reader.ReadByte();
+		for (int i = 0; i < count; i++)
+		{
+			OldPosSpace.Add(new Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle()));
+		}
+		UpdateTrail();
+	}
+
 	public override bool ShouldUpdatePosition()
 	{
 		return false;
@@ -72,6 +108,7 @@ public class Squamous_Slash : ModProjectile, IWarpProjectile_warpStyle2
 			// SoundEngine.PlaySound(new SoundStyle("Everglow/EternalResolve/Sounds/Slash").WithVolumeScale(0.33f), Projectile.Center);
 		}
 		DeltaVelocity = new Vector2(delta0.X, delta0.Y);
+		UpdateTrail();
 	}
 
 	public int HitTimes = 0;
@@ -103,6 +140,11 @@ public class Squamous_Slash : ModProjectile, IWarpProjectile_warpStyle2
 
 	public List<Vector2> SmoothTrail = new List<Vector2>();
 
+	private void UpdateTrail()
+	{
+		SmoothTrail = GraphicsUtils.CatmullRom(OldPosSpace.Select(position => Projection2D(position, Vector2.Zero, 500, out _)));
+	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		if (Projectile.timeLeft > 120)
@@ -121,26 +163,6 @@ public class Squamous_Slash : ModProjectile, IWarpProjectile_warpStyle2
 		float value1 = MathF.Pow(value0, 0.3f);
 		value1 = MathF.Sin(value1 * MathF.PI);
 		float width = value1 * 70f;
-
-		var scales = new List<Vector2>();
-		var SmoothTrailProjectile = new List<Vector2>();
-		for (int x = 0; x <= OldPosSpace.Count - 1; x++)
-		{
-			float scaleValue;
-			SmoothTrailProjectile.Add(Projection2D(OldPosSpace[x], Vector2.zeroVector, 500, out scaleValue));
-			scales.Add(new Vector2(scaleValue, x * 40));
-		}
-
-		var scalesSmooth = new List<float>();
-		List<Vector2> smoothTrail_current = GraphicsUtils.CatmullRom(SmoothTrailProjectile.ToList()); // 平滑
-		List<Vector2> Smoothscales = GraphicsUtils.CatmullRom(scales.ToList()); // 平滑
-		SmoothTrail = new List<Vector2>();
-		for (int x = 0; x < smoothTrail_current.Count; x++)
-		{
-			float value2 = x / (float)smoothTrail_current.Count;
-			scalesSmooth.Add(Smoothscales[Math.Clamp((int)value2, 0, Smoothscales.Count - 1)].X);
-			SmoothTrail.Add(smoothTrail_current[x]);
-		}
 
 		int length = SmoothTrail.Count;
 		if (length <= 3)

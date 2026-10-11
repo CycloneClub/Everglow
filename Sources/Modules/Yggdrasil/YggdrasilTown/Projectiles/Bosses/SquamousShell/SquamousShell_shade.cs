@@ -22,6 +22,7 @@ public class SquamousShell_shade : ModProjectile
 
 	public override void AI()
 	{
+		Projectile.rotation = Projectile.velocity.ToRotation();
 		Timer++;
 	}
 

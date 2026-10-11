@@ -200,6 +200,120 @@ public class SquamousShellServerTests
 		}
 	}
 
+	[TestMethod]
+	public void Slash_ReceivedWithoutOnSpawn_ReconstructsTrajectoryAndCollisionWithoutDrawing()
+	{
+		var server = (Squamous_Slash)new Squamous_Slash().NewInstance(new Projectile { timeLeft = 114, damage = 40 });
+		server.SpacePos = new Vector3(100, 20, 30);
+		server.RotatedAxis = new Vector3(1, -8, 2);
+		server.Omega = 0.7f;
+		for (int i = 0; i < 8; i++)
+		{
+			server.AI();
+		}
+		var client = (Squamous_Slash)new Squamous_Slash().NewInstance(new Projectile { timeLeft = 120, damage = 40 });
+		TransferExtraAI(server, client);
+		Assert.AreEqual(server.SpacePos, client.SpacePos);
+		Assert.AreEqual(server.RotatedAxis, client.RotatedAxis);
+		Assert.AreEqual(server.Omega, client.Omega);
+		Assert.AreEqual(server.Projectile.timeLeft, client.Projectile.timeLeft);
+		CollectionAssert.AreEqual(server.SmoothTrail, client.SmoothTrail);
+		server.AI();
+		client.AI();
+		Assert.AreEqual(server.SpacePos, client.SpacePos);
+		Assert.IsTrue(server.SmoothTrail.Count > 4);
+		Vector2 hitPoint = server.Projectile.Center + server.SmoothTrail[0];
+		Assert.AreEqual(true, server.Colliding(default, new Rectangle((int)hitPoint.X - 5, (int)hitPoint.Y - 5, 10, 10)));
+	}
+
+	[TestMethod]
+	[DataRow(typeof(SquamousMoonBladePredict))]
+	[DataRow(typeof(SquamousRockSpike_Falling_Predict))]
+	public void PredictionExtraAI_PreservesHeadingAndLifetime(Type type)
+	{
+		var template = (Terraria.ModLoader.ModProjectile)Activator.CreateInstance(type)!;
+		var server = template.NewInstance(new Projectile { rotation = 1.4f, timeLeft = 137 });
+		var client = template.NewInstance(new Projectile { timeLeft = 95 });
+		TransferExtraAI(server, client);
+		Assert.AreEqual(1.4f, client.Projectile.rotation);
+		Assert.AreEqual(137, client.Projectile.timeLeft);
+	}
+
+	[TestMethod]
+	public void MoonBlade_ReceivedWithoutOnSpawn_InitializesDirectionWithoutGraphics()
+	{
+		var blade = (YggdrasilMoonBlade)new YggdrasilMoonBlade().NewInstance(new Projectile { velocity = new Vector2(3, 4), timeLeft = 300 });
+		blade.AI();
+		Assert.AreEqual(new Vector2(0.6f, 0.8f), blade.startVelocity);
+	}
+
+	[TestMethod]
+	public void Shade_ReceivedWithoutOnSpawn_DerivesHeadingFromVelocity()
+	{
+		var shade = (SquamousShell_shade)new SquamousShell_shade().NewInstance(new Projectile { velocity = new Vector2(0, -4) });
+		shade.AI();
+		Assert.AreEqual(-MathHelper.PiOver2, shade.Projectile.rotation, 0.001f);
+	}
+
+	[TestMethod]
+	public void RockSpike_ReceivedWithoutOnSpawn_UsesSyncedTarget()
+	{
+		Player originalPlayer = Main.player[0];
+		try
+		{
+			Main.player[0] = new Player { active = true, position = new Vector2(500, 500) };
+			var projectile = new Projectile { active = true, timeLeft = 3599, velocity = Vector2.UnitY };
+			projectile.ai[0] = 0;
+			var spike = (SquamousRockSpike)new SquamousRockSpike().NewInstance(projectile);
+			spike.AI();
+			Assert.IsTrue(projectile.active);
+			Assert.IsTrue(projectile.velocity.X > 0);
+		}
+		finally
+		{
+			Main.player[0] = originalPlayer;
+		}
+	}
+
+	[TestMethod]
+	public void EffectPacket_PreservesEventAndWorldPosition()
+	{
+		foreach (var effect in Enum.GetValues<SquamousShellEffect>())
+		{
+			var sent = new SquamousShellEffectPacket { NPCIndex = 47, Effect = effect, Position = new Vector2(1234, 234567), Scale = 1.25f };
+			using var stream = new MemoryStream();
+			using var writer = new BinaryWriter(stream, System.Text.Encoding.UTF8, leaveOpen: true);
+			sent.Send(writer);
+			stream.Position = 0;
+			using var reader = new BinaryReader(stream);
+			var received = new SquamousShellEffectPacket();
+			received.Receive(reader, 0);
+			Assert.AreEqual(sent.NPCIndex, received.NPCIndex);
+			Assert.AreEqual(sent.Effect, received.Effect);
+			Assert.AreEqual(sent.Position, received.Position);
+			Assert.AreEqual(sent.Scale, received.Scale);
+			Assert.AreEqual(stream.Length, stream.Position);
+		}
+	}
+
+	[TestMethod]
+	public void EffectPacket_OnDedicatedServer_IgnoresClientRequests()
+	{
+		new SquamousShellEffectPacket.Handler().Handle(new SquamousShellEffectPacket { NPCIndex = -1 }, 0);
+		var impact = (YggdrasilMoonBladeHit)new YggdrasilMoonBladeHit().NewInstance(new Projectile { timeLeft = 200 });
+		impact.AI();
+	}
+
+	private static void TransferExtraAI(Terraria.ModLoader.ModProjectile source, Terraria.ModLoader.ModProjectile target)
+	{
+		using var stream = new MemoryStream();
+		using var writer = new BinaryWriter(stream, System.Text.Encoding.UTF8, leaveOpen: true);
+		source.SendExtraAI(writer);
+		stream.Position = 0;
+		using var reader = new BinaryReader(stream);
+		target.ReceiveExtraAI(reader);
+	}
+
 	private static Boss CreateBossDuringTakeoff()
 	{
 		var boss = (Boss)new Boss().NewInstance(new NPC());

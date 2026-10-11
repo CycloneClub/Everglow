@@ -24,12 +24,25 @@ public class SquamousRockSpike : ModProjectile
 		ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Projectile.type] = true;
 	}
 
-	internal int Target = -1;
+	private enum AiSlot
+	{
+		Target,
+	}
+
+	private int Target => (int)Projectile.ai[(int)AiSlot.Target];
 	internal int TimeTokill = -1;
 
 	public override void OnSpawn(IEntitySource source)
 	{
-		Target = (int)Projectile.ai[0];
+		UpdateExtraUpdates();
+	}
+
+	private void UpdateExtraUpdates()
+	{
+		if (Projectile.timeLeft < 3500)
+		{
+			return;
+		}
 		if (Main.expertMode)
 		{
 			Projectile.extraUpdates = 1;
@@ -42,7 +55,8 @@ public class SquamousRockSpike : ModProjectile
 
 	public override void AI()
 	{
-		if (Target == -1)
+		UpdateExtraUpdates();
+		if (Target < 0 || Target >= Main.maxPlayers)
 		{
 			Projectile.Kill();
 			return;
@@ -96,7 +110,7 @@ public class SquamousRockSpike : ModProjectile
 			}
 			Projectile.velocity *= 0f;
 		}
-		if (Projectile.timeLeft > 3550)
+		if (!Main.dedServ && Projectile.timeLeft > 3550)
 		{
 			ConcentratingDust(1);
 		}
@@ -188,7 +202,10 @@ public class SquamousRockSpike : ModProjectile
 		}
 		GenerateSmog(4);
 		SoundEngine.PlaySound(SoundID.DD2_BetsyFireballImpact.WithVolume(0.4f), Projectile.Center);
-		Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<SquamousRockExplosion>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 10);
+		if (Main.netMode != NetmodeID.MultiplayerClient)
+		{
+			Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<SquamousRockExplosion>(), Projectile.damage, Projectile.knockBack, Main.myPlayer, 10);
+		}
 	}
 
 	public override bool PreDraw(ref Color lightColor)

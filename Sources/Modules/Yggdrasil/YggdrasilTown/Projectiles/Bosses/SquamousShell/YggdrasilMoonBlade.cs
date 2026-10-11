@@ -23,12 +23,17 @@ public class YggdrasilMoonBlade : ModProjectile, IWarpProjectile
 
 	public override void OnSpawn(IEntitySource source)
 	{
-		startVelocity = Vector2.Normalize(Projectile.velocity);
+		startVelocity = Projectile.velocity.SafeNormalize(Vector2.UnitX);
 		base.OnSpawn(source);
 	}
 
 	public void GenerateSmog(int Frequency)
 	{
+		if (Main.dedServ)
+		{
+			return;
+		}
+
 		for (int g = 0; g < Frequency; g++)
 		{
 			Vector2 vel = new Vector2(0, Main.rand.NextFloat(6.6f, 18f)).RotateRandom(MathHelper.TwoPi);
@@ -49,6 +54,10 @@ public class YggdrasilMoonBlade : ModProjectile, IWarpProjectile
 
 	public override void AI()
 	{
+		if (startVelocity == Vector2.Zero)
+		{
+			startVelocity = Projectile.velocity.SafeNormalize(Vector2.UnitX);
+		}
 		if (Projectile.timeLeft == 295)
 		{
 			Projectile.extraUpdates = 4;
@@ -60,6 +69,10 @@ public class YggdrasilMoonBlade : ModProjectile, IWarpProjectile
 		if (Projectile.timeLeft < 260)
 		{
 			Projectile.velocity = Vector2.Normalize(Projectile.velocity) * Projectile.ai[2];
+		}
+		if (Main.dedServ)
+		{
+			return;
 		}
 		Lighting.AddLight(Projectile.Center, 0.14f, 0.47f, 0.97f);
 		Vector2 newVelocity = Projectile.velocity + new Vector2(0, Main.rand.NextFloat(1.0f, 4f)).RotatedByRandom(MathHelper.TwoPi);
@@ -165,6 +178,9 @@ public class YggdrasilMoonBlade : ModProjectile, IWarpProjectile
 
 	public override void OnKill(int timeLeft)
 	{
-		Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<YggdrasilMoonBladeHit>(), 0, 0, -1, 20, startVelocity.ToRotation());
+		if (Main.netMode != NetmodeID.MultiplayerClient)
+		{
+			Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<YggdrasilMoonBladeHit>(), 0, 0, Main.myPlayer, 20, startVelocity.ToRotation());
+		}
 	}
 }
