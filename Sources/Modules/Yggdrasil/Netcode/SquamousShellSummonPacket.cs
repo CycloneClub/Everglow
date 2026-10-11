@@ -13,6 +13,7 @@ public class SquamousShellSummonPacket : IPacket
 	{
 		writer.Write(TileX);
 		writer.Write(TileY);
+		writer.Write(Spawned);
 	}
 
 	public void Receive(BinaryReader reader, int whoAmI)
