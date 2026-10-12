@@ -64,7 +64,6 @@ public class GuppyConch : ModNPC
 		// The approved sprite (114x58) is a single frame: textureHeight / textureWidth is below 1,
 		// so the whole texture is one frame (recording the derived value, not a design value).
 		Main.npcFrameCount[NPC.type] = 1;
-		NPCSpawnManager.RegisterNPC(Type);
 
 		// 免疫 困惑 (the design row's 免疫 cell): the confused debuff is the only immunity.
 		NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.Confused] = true;

@@ -51,7 +51,6 @@ public class VerdantRods : ModNPC
 		// The approved sprite is 54x432; 432 / 54 = 8, so it is an eight-frame vertical strip,
 		// matching the existing DarkGlimmeringRods eight-frame precedent.
 		Main.npcFrameCount[NPC.type] = 8;
-		NPCSpawnManager.RegisterNPC(Type);
 
 		// 免疫 中毒 (the design row's 免疫 cell): the poisoned debuff is the only immunity.
 		NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.Poisoned] = true;

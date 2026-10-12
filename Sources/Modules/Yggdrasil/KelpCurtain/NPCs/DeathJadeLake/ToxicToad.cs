@@ -120,7 +120,6 @@ public class ToxicToad : ModNPC
 	{
 		// No approved sprite exists, so there is nothing to slice: the whole texture is one frame.
 		Main.npcFrameCount[NPC.type] = 1;
-		NPCSpawnManager.RegisterNPC(Type);
 
 		// 免疫 中毒、酸性毒液 (the design row's 免疫 cell): exactly these two. 酸性毒液 maps to the vanilla
 		// BuffID.Venom, because BuffID.AcidVenom does not exist in this tML build and creating a debuff

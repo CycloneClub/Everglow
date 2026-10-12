@@ -119,7 +119,6 @@ public class AlgaeOctopus : ModNPC
 	{
 		// No approved sprite exists, so there is nothing to slice: the whole texture is one frame.
 		Main.npcFrameCount[NPC.type] = 1;
-		NPCSpawnManager.RegisterNPC(Type);
 
 		// 免疫 困惑 (the design row's 免疫 cell): exactly this one immunity.
 		NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.Confused] = true;

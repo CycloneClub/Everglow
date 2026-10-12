@@ -22,7 +22,6 @@ public class PurpleBombCaterpillar : ModNPC
 	public override void SetStaticDefaults()
 	{
 		Main.npcFrameCount[NPC.type] = 10;
-		NPCSpawnManager.RegisterNPC(Type);
 	}
 
 	public override float SpawnChance(NPCSpawnInfo spawnInfo)

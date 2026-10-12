@@ -193,7 +193,6 @@ public class GlowSalamander : ModNPC
 		// so whichever sheet the D-49 migration lands must carry the variant frames the synced
 		// NPC.localAI[1] slot selects (OQ2).
 		Main.npcFrameCount[NPC.type] = 1;
-		NPCSpawnManager.RegisterNPC(Type);
 
 		// 免疫 中毒 (the design row's 免疫 cell): the poisoned debuff is the only immunity.
 		NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.Poisoned] = true;

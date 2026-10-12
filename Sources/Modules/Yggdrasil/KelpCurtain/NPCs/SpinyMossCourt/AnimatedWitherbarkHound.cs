@@ -133,7 +133,6 @@ public class AnimatedWitherbarkHound : ModNPC
 	{
 		// No approved sprite exists, so there is nothing to slice: the whole texture is one frame.
 		Main.npcFrameCount[NPC.type] = 1;
-		NPCSpawnManager.RegisterNPC(Type);
 
 		// 免疫 中毒 (the design row's 免疫 cell for this variant): the poisoned debuff is the only immunity.
 		NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.Poisoned] = true;

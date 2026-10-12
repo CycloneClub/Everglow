@@ -151,7 +151,6 @@ public class CourtCommander : ModNPC
 	{
 		// No approved sprite exists, so there is nothing to slice: the whole texture is one frame.
 		Main.npcFrameCount[NPC.type] = 1;
-		NPCSpawnManager.RegisterNPC(Type);
 
 		// The design's commander table (YVgWdPMdToFnOTxZXKJcGgDqnDf) names no 免疫 cell at all, so this class
 		// declares no specific debuff immunity.

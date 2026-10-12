@@ -43,7 +43,6 @@ public class MossyThornTurtle : ModNPC
 		// The approved sprite (84x46) is a single frame: textureHeight / textureWidth is not an
 		// integer of at least 1, so the whole texture is one frame.
 		Main.npcFrameCount[NPC.type] = 1;
-		NPCSpawnManager.RegisterNPC(Type);
 
 		// The design row's 免疫 cell is empty, so no specific debuff immunity is declared.
 	}

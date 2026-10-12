@@ -122,7 +122,6 @@ public class WaterStrider : ModNPC
 	{
 		// No approved sprite exists, so there is nothing to slice: the whole texture is one frame.
 		Main.npcFrameCount[NPC.type] = 1;
-		NPCSpawnManager.RegisterNPC(Type);
 
 		// 免疫 中毒、潮湿 (the design row's 免疫 cell): exactly these two immunities. The design's 潮湿
 		// maps to the vanilla BuffID.Wet, verified present in this tML build (04-DEVIATIONS.md section 10).

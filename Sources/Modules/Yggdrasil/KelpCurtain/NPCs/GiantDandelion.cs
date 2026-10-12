@@ -165,7 +165,6 @@ public class GiantDandelion : ModNPC
 		// integer of at least 2, so the whole texture is one frame (the derived value is recorded
 		// in 03-BIOLOGY.json as frame_count).
 		Main.npcFrameCount[NPC.type] = 1;
-		NPCSpawnManager.RegisterNPC(Type);
 
 		// The design row's 免疫 cell is empty, so no specific debuff immunity is declared. The
 		// 击退抗性 免疫击退 cell is expressed as NPC.knockBackResist = 0f in SetDefaults instead.

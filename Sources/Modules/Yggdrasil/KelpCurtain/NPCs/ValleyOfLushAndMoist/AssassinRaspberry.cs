@@ -105,7 +105,6 @@ public class AssassinRaspberry : ModNPC
 	{
 		// No approved sprite exists, so there is nothing to slice: the whole texture is one frame.
 		Main.npcFrameCount[NPC.type] = 1;
-		NPCSpawnManager.RegisterNPC(Type);
 
 		// 免疫 中毒、困惑 (the design row's 免疫 cell): exactly these two immunities.
 		NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.Poisoned] = true;
