@@ -8,6 +8,8 @@ namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Summon;
 
 public class Legume_Proj : TrailingProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.SummonProjectiles;
+
 	public override void SetCustomDefaults()
 	{
 		Projectile.width = 20;

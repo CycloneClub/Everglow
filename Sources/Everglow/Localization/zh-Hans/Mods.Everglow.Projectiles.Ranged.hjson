@@ -1,103 +1,112 @@
-ArmorPiercingBlasterProj: {
-	DisplayName: Armor Piercing Blaster Proj
-}
-
-ArmorPiercingBlasterProjExplosion: {
-	DisplayName: Armor Piercing Blaster Proj Explosion
-}
-
-BrittleRockSlingshotStone_Explosion: {
-	DisplayName: Brittle Rock Slingshot Stone_ Explosion
-}
-
-Caltrop: {
-	DisplayName: Caltrop
-}
-
-CaterpillarJuiceArrow: {
-	DisplayName: Caterpillar Juice Arrow
-}
-
-CyanVineThrowingSpear_Proj: {
-	DisplayName: Cyan Vine Throwing Spear_ Proj
-}
-
-GunOfAvariceAutoReload: {
-	DisplayName: Gun Of Avarice Auto Reload
-}
-
-GunOfAvariceManualReload: {
-	DisplayName: Gun Of Avarice Manual Reload
-}
-
-KissOfCthulhu_Projectile: {
-	DisplayName: Kiss Of Cthulhu_ Projectile
-}
-
-LightArrow: {
-	DisplayName: Light Arrow
-}
-
-LightBullet: {
-	DisplayName: Light Bullet
-}
-
-LightStartEffect_arrow: {
-	DisplayName: Light Start Effect_arrow
-}
-
-LightStartEffect_bullet: {
-	DisplayName: Light Start Effect_bullet
-}
-
-NehemothBullet: {
-	DisplayName: Nehemoth Bullet
-}
-
-RockArrow: {
-	DisplayName: Rock Arrow
-}
-
-RockExplosion_friendly: {
-	DisplayName: Rock Explosion_friendly
-}
-
-StoneJavelinProjectile: {
-	DisplayName: Stone Javelin Projectile
-}
-
-CyatheaArrow_proj: {
-	DisplayName: Cyathea Arrow_proj
-}
-
-CyatheaArrow_spike: {
-	DisplayName: Cyathea Arrow_spike
-}
-
-GreenThornLauncher_Proj: {
-	DisplayName: Green Thorn Launcher_ Proj
-}
-
-GreenThornLauncher_SubProj: {
-	DisplayName: Green Thorn Launcher_ Sub Proj
-}
-
-TerraViewerHowitzer_grenade_fall_explosion: {
-	DisplayName: Terra Viewer Howitzer_grenade_fall_explosion
-}
-
-TerraViewerHowitzer_proj: {
-	DisplayName: Terra Viewer Howitzer_proj
-}
-
-TerraViewerHowitzer_proj_flame: {
-	DisplayName: Terra Viewer Howitzer_proj_flame
-}
-
-TerraViewerHowitzer_proj_flame_blue: {
-	DisplayName: Terra Viewer Howitzer_proj_flame_blue
-}
-
-TerraViewerHowitzer_shoot_explosion: {
-	DisplayName: Terra Viewer Howitzer_shoot_explosion
-}
+AmbiguousLine.DisplayName: Ambiguous Line
+AmbiguousNight.DisplayName: Ambiguous Night
+AmbiguousNightAmmo.DisplayName: Ambiguous Night Ammo
+AmbiguousNightHit.DisplayName: Ambiguous Night Hit
+AmethystBead.DisplayName: Amethyst Bead
+AmethystSlingshot.DisplayName: Amethyst Slingshot
+ArcI_Current.DisplayName: "{$Mods.Everglow.Items.Weapons.Ranged.ArcI.DisplayName}"
+ArcI_proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Ranged.ArcI.DisplayName}"
+ArmorPiercingBlasterProj.DisplayName: Armor Piercing Blaster Proj
+ArmorPiercingBlasterProjExplosion.DisplayName: Armor Piercing Blaster Proj Explosion
+BorealWoodSlingshot.DisplayName: Boreal Wood Slingshot
+BoulderCatapult_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Ranged.BoulderCatapult.DisplayName}"
+BoulderCatapult_SubProj.DisplayName: "{$Mods.Everglow.Items.Weapons.Ranged.BoulderCatapult.DisplayName}"
+BrittleRockSlingshotProj.DisplayName: Brittle Rock Slingshot Proj
+BrittleRockSlingshotStone_Explosion.DisplayName: Brittle Rock Slingshot Stone_ Explosion
+BrittleRockSlingshotStone.DisplayName: Brittle Rock Slingshot Stone
+CactusSlingShot.DisplayName: Cactus Sling Shot
+Caltrop.DisplayName: Caltrop
+CaterpillarJuiceArrow.DisplayName: Caterpillar Juice Arrow
+ChainGrenadeProj.DisplayName: Chain Grenade Proj
+ChainGrenadeProjExplosion.DisplayName: Chain Grenade Proj Explosion
+ChainGrenadeSub_Proj.DisplayName: Chain Grenade Sub_ Proj
+ChainGrenadeSub_ProjExplosion.DisplayName: Chain Grenade Sub_ Proj Explosion
+CloudBall.DisplayName: Cloud Ball
+CyanBullet.DisplayName: Cyan Bullet
+CyanVineCrossBow_Proj.DisplayName: Cyan Vine Cross Bow_ Proj
+CyanVineThrowingSpear_Proj.DisplayName: Cyan Vine Throwing Spear_ Proj
+CyatheaArrow_proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Ranged.CyatheaArrow.DisplayName}"
+CyatheaArrow_spike.DisplayName: "{$Mods.Everglow.Items.Weapons.Ranged.CyatheaArrow.DisplayName}"
+DiamondBead.DisplayName: Diamond Bead
+DiamondSlingshot.DisplayName: Diamond Slingshot
+EbonwoodSlingshot.DisplayName: Ebonwood Slingshot
+EmeraldBead.DisplayName: Emerald Bead
+EmeraldSlingshot.DisplayName: Emerald Slingshot
+FallingSand_DecaySandSoil.DisplayName: Falling Sand_ Decay Sand Soil
+FrostSpice.DisplayName: Frost Spice
+GelBall.DisplayName: Gel Ball
+GelSlingshot.DisplayName: Gel Slingshot
+GildingRevolver_Hold.DisplayName: Gilding Revolver_ Hold
+GlowSporeBead.DisplayName: Glow Spore Bead
+GreenThornLauncher_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Ranged.GreenThornBallLauncher.DisplayName}"
+GreenThornLauncher_SubProj.DisplayName: "{$Mods.Everglow.Items.Weapons.Ranged.GreenThornBallLauncher.DisplayName}"
+GunOfAvariceAutoReload.DisplayName: Gun Of Avarice Auto Reload
+GunOfAvariceManualReload.DisplayName: Gun Of Avarice Manual Reload
+HuskburstBullet_Proj.DisplayName: "{$Mods.Everglow.Items.Ammo.HuskburstBullet.DisplayName}"
+HuskburstBullet_SubProj.DisplayName: "{$Mods.Everglow.Items.Ammo.HuskburstBullet.DisplayName}"
+IcedSpear.DisplayName: Iced Spear
+JungleSlingshot.DisplayName: Jungle Slingshot
+KeroseneLanternFlameThrower_Hold.DisplayName: Kerosene Lantern Flame Thrower_ Hold
+KeroseneLanternFlameThrower_Shoot.DisplayName: Kerosene Lantern Flame Thrower_ Shoot
+KissOfCthulhu_Projectile.DisplayName: Kiss Of Cthulhu_ Projectile
+LampFruitCurrent.DisplayName: Lamp Fruit Current
+LanternFlameBullet.DisplayName: Lantern Flame Bullet
+LanternPhantomBullet.DisplayName: Lantern Phantom Bullet
+LanternZone.DisplayName: Lantern Zone
+LanternZoneBullet.DisplayName: Lantern Zone Bullet
+LightArrow.DisplayName: Light Arrow
+LightBullet.DisplayName: Light Bullet
+LightStartEffect_arrow.DisplayName: Light Start Effect_arrow
+LightStartEffect_bullet.DisplayName: Light Start Effect_bullet
+MothArrow.DisplayName: Moth Arrow
+NehemothBullet.DisplayName: Nehemoth Bullet
+NormalAmmo.DisplayName: Normal Ammo
+NormalHit.DisplayName: Normal Hit
+PalmWoodSlingshot.DisplayName: Palm Wood Slingshot
+PearlwoodSlingshot.DisplayName: Pearlwood Slingshot
+PearShapedNeedle_HeldProj.DisplayName: Pear Shaped Needle_ Held Proj
+PearShapedNeedle_Needle.DisplayName: Pear Shaped Needle_ Needle
+PhosphorescenceBullet.DisplayName: Phosphorescence Bullet
+PhosphorescenceGun.DisplayName: Phosphorescence Gun
+RampageShark.DisplayName: Rampage Shark
+RampageSharkHit.DisplayName: Rampage Shark Hit
+RichMahoganySlingshot.DisplayName: Rich Mahogany Slingshot
+RockArrow.DisplayName: Rock Arrow
+RockExplosion_friendly.DisplayName: Rock Explosion_friendly
+RockSpikeBallista_Proj.DisplayName: Rock Spike Ballista_ Proj
+RubyBead.DisplayName: Ruby Bead
+RubySlingshot.DisplayName: Ruby Slingshot
+RustSlingshot_Projectile.DisplayName: Rust Slingshot_ Projectile
+RustSlingshot_Weapon.DisplayName: Rust Slingshot_ Weapon
+SapphireBead.DisplayName: Sapphire Bead
+SapphireSlingshot.DisplayName: Sapphire Slingshot
+ShadewoodSlingShot.DisplayName: Shadewood Sling Shot
+ShadowWingBow.DisplayName: Shadow Wing Bow
+SpineGun.DisplayName: Spine Gun
+SplieSpineBullet.DisplayName: Splie Spine Bullet
+SpongeOxygenBubble.DisplayName: Sponge Oxygen Bubble
+StarAmmo.DisplayName: Star Ammo
+StarSlingshot.DisplayName: Star Slingshot
+StoneJavelinProjectile.DisplayName: Stone Javelin Projectile
+TendonGreatbow_Arrow.DisplayName: Tendon Greatbow_ Arrow
+TendonGreatbowHeld.DisplayName: Tendon Greatbow Held
+TerraViewerHowitzer_grenade_fall_explosion.DisplayName: Terra Viewer Howitzer_grenade_fall_explosion
+TerraViewerHowitzer_grenade_fall.DisplayName: Terra Viewer Howitzer_grenade_fall
+TerraViewerHowitzer_proj_flame_blue.DisplayName: Terra Viewer Howitzer_proj_flame_blue
+TerraViewerHowitzer_proj_flame.DisplayName: Terra Viewer Howitzer_proj_flame
+TerraViewerHowitzer_proj.DisplayName: Terra Viewer Howitzer_proj
+TerraViewerHowitzer_shoot_explosion.DisplayName: Terra Viewer Howitzer_shoot_explosion
+TerraViewerHowitzer_shoot.DisplayName: Terra Viewer Howitzer_shoot
+ToothBow_BloodArrow.DisplayName: Tooth Bow_ Blood Arrow
+ToothBow.DisplayName: Tooth Bow
+TopazBead.DisplayName: Topaz Bead
+TopazSlingshot.DisplayName: Topaz Slingshot
+TsunamiShark_bullet_hit.DisplayName: Tsunami Shark_bullet_hit
+TsunamiShark_bullet.DisplayName: Tsunami Shark_bullet
+TsunamiShark_flame.DisplayName: Tsunami Shark_flame
+TsunamiShark_marking.DisplayName: Tsunami Shark_marking
+TsunamiShark_missile_hit.DisplayName: Tsunami Shark_missile_hit
+TsunamiShark_missile.DisplayName: Tsunami Shark_missile
+TsunamiShark.DisplayName: Tsunami Shark
+UnderwaterLightningMechanism_Lightning.DisplayName: Underwater Lightning Mechanism_ Lightning
+WoodSlingshot.DisplayName: Wood Slingshot

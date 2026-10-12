@@ -2,6 +2,8 @@ namespace Everglow.Commons.DeveloperContent.Items;
 
 internal class ScreenPositionPrintItem : ModItem
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Tools;
+
 	public override string Texture => ModAsset.Wires_0_Mod;
 
 	public override void SetDefaults()

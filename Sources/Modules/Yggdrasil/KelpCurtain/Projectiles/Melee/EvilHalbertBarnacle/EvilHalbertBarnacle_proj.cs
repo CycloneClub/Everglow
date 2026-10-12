@@ -4,6 +4,8 @@ namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Melee.EvilHalbertBarnacle;
 
 public class EvilHalbertBarnacle_proj : MeleeProj
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	public float Omega;
 
 	public bool NoTrail = false;

@@ -1,8 +1,3 @@
-TuskTreasureBag: {
-	DisplayName: Tusk Treasure Bag
-	Tooltip: ""
-}
-
 CorruptMothTreasureBag: {
 	DisplayName: Corrupt Moth Treasure Bag
 	Tooltip: ""
@@ -10,5 +5,20 @@ CorruptMothTreasureBag: {
 
 SquamousShellTreasureBag: {
 	DisplayName: Squamous Shell Treasure Bag
+	Tooltip: ""
+}
+
+TreasureBag_LanternGhostKing: {
+	DisplayName: Treasure Bag_ Lantern Ghost King
+	Tooltip: ""
+}
+
+TuskTreasureBag: {
+	DisplayName: Tusk Treasure Bag
+	Tooltip: ""
+}
+
+VampireMatTreasureBag: {
+	DisplayName: Vampire Mat Treasure Bag
 	Tooltip: ""
 }

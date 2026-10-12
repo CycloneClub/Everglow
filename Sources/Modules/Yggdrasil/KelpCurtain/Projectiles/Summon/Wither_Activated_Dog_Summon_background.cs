@@ -8,6 +8,8 @@ namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Summon;
 
 public class Wither_Activated_Dog_Summon_background : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.SummonProjectiles;
+
 	public int Timer = 0;
 
 	public override string Texture => ModAsset.Wither_Activated_Dog_Summon_Mod;

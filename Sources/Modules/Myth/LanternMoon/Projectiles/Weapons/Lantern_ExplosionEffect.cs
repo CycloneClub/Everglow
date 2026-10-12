@@ -6,6 +6,8 @@ namespace Everglow.Myth.LanternMoon.Projectiles.Weapons;
 
 public class Lantern_ExplosionEffect : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.TypelessProjectiles;
+
 	public override string Texture => Commons.ModAsset.Empty_Mod;
 
 	public int Timer = 0;

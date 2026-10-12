@@ -21,7 +21,7 @@ public static class PlayerQuestViewAdapter
 		ObjectiveNodeView[] objectiveNodes = CreateObjectiveNodes(quest);
 		RewardView[] rewards = CreateRewards(quest);
 
-		QuestIconBase[] icons = CreateIcons(quest);
+		QuestIconBase[] icons = CreateIcons(quest, objectiveNodes);
 
 		return new QuestView
 		{
@@ -32,7 +32,7 @@ public static class PlayerQuestViewAdapter
 			DisplayName = quest.DisplayName ?? string.Empty,
 			Description = quest.Description ?? string.Empty,
 			Hint = hint,
-			Visible = quest.IsVisible,
+			HideMode = quest.HideMode,
 			Icons = icons,
 			State = MapState(quest.State),
 			Progress = progress,
@@ -43,11 +43,13 @@ public static class PlayerQuestViewAdapter
 		};
 	}
 
-	private static QuestIconBase[] CreateIcons(PlayerQuestBase quest)
+	private static QuestIconBase[] CreateIcons(PlayerQuestBase quest, IReadOnlyList<ObjectiveNodeView> nodes)
 	{
 		var iconGroup = new QuestIconGroup();
-		iconGroup.Add(QuestSourceIcon.Create(quest.Source ?? QuestSourceBase.Default, quest.SubSource));
-		quest.Objectives.GetObjectivesIcon(iconGroup);
+		foreach (ObjectiveView objective in QuestObjectiveDisplay.GetObjectives(MapState(quest.State), nodes))
+		{
+			quest.Objectives.AllObjectives[objective.Id].GetObjectivesIcon(iconGroup);
+		}
 		return iconGroup.Icons.ToArray();
 	}
 
@@ -60,32 +62,34 @@ public static class PlayerQuestViewAdapter
 		}
 
 		return quest.Objectives.AllNodes
-			.Select(node => CreateObjectiveNode(node, activeObjectives))
+			.Select(node => CreateObjectiveNode(quest, node, activeObjectives))
 			.ToArray();
 	}
 
 	private static ObjectiveNodeView CreateObjectiveNode(
+		PlayerQuestBase quest,
 		PlayerObjectiveNodeBase node,
 		IReadOnlySet<PlayerObjectiveBase> activeObjectives)
 	{
 		return node switch
 		{
 			PlayerLeafNode leaf => new LeafObjectiveNodeView(
-				CreateObjective(leaf.Objective, activeObjectives, skipped: false)),
+				CreateObjective(quest, leaf.Objective, activeObjectives, skipped: false)),
 			PlayerParallelNode parallel => new ParallelObjectiveNodeView(
 				parallel.Objectives
-					.Select(objective => CreateObjective(objective, activeObjectives, skipped: false))
+					.Select(objective => CreateObjective(quest, objective, activeObjectives, skipped: false))
 					.ToArray()),
 			PlayerOptionalNode optional => new AnyOfObjectiveNodeView(
 				optional.Objectives
-					.Select(objective => CreateObjective(objective, activeObjectives, skipped: false))
+					.Select(objective => CreateObjective(quest, objective, activeObjectives, skipped: false))
 					.ToArray()),
-			PlayerBranchNode branch => CreateBranchNode(branch, activeObjectives),
+			PlayerBranchNode branch => CreateBranchNode(quest, branch, activeObjectives),
 			_ => throw new InvalidDataException($"Unknown player objective node type {node.GetType().FullName}."),
 		};
 	}
 
 	private static BranchObjectiveNodeView CreateBranchNode(
+		PlayerQuestBase quest,
 		PlayerBranchNode node,
 		IReadOnlySet<PlayerObjectiveBase> activeObjectives)
 	{
@@ -101,7 +105,7 @@ public static class PlayerQuestViewAdapter
 			};
 			bool skipped = state == ObjectiveBranchState.Skipped;
 			ObjectiveView[] objectives = node.Branches[branchIndex]
-				.Select(objective => CreateObjective(objective, activeObjectives, skipped))
+				.Select(objective => CreateObjective(quest, objective, activeObjectives, skipped))
 				.ToArray();
 			branches[branchIndex] = new ObjectiveBranchView(state, objectives);
 		}
@@ -110,6 +114,7 @@ public static class PlayerQuestViewAdapter
 	}
 
 	private static ObjectiveView CreateObjective(
+		PlayerQuestBase quest,
 		PlayerObjectiveBase objective,
 		IReadOnlySet<PlayerObjectiveBase> activeObjectives,
 		bool skipped)
@@ -146,6 +151,7 @@ public static class PlayerQuestViewAdapter
 			ObjectiveText = objective.GetObjectiveText(),
 			Progress = progress,
 			State = state,
+			CanRetry = quest.CanRetryObjective(objective.ObjectiveID),
 			Timer = objective.Timer is null
 				? null
 				: new TimerView

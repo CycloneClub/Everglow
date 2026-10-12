@@ -8,6 +8,8 @@ namespace Everglow.Ocean.Projectiles.Weapons;
 
 public class TsunamiShark_marking : ModProjectile, IWarpProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
+
 	public override string Texture => "Everglow/Ocean/Projectiles/Weapons/TsunamiShark/TsunamiShark_proj";
 
 	public override void SetDefaults()

@@ -4,6 +4,8 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 
 public class ButterflyDreamFriendly : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	public Player owner;
 
 	public override string Texture => "Everglow/Myth/TheFirefly/Projectiles/ButterflyDream";

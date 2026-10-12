@@ -2,6 +2,8 @@ namespace Everglow.SpellAndSkull.Projectiles.CrystalStorm;
 
 internal class Storm : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 28;

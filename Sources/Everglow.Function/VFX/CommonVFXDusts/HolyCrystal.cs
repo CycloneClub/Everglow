@@ -225,6 +225,8 @@ public class HolyCrystal : Visual
 
 public class HolyCrystalProjectile : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.TypelessProjectiles;
+
 	public Vector2 StartPos = Vector2.zeroVector;
 
 	public override string Texture => "Everglow/" + ModAsset.Empty_Path;

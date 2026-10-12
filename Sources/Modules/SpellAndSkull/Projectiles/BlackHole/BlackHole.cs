@@ -9,6 +9,8 @@ namespace Everglow.SpellAndSkull.Projectiles.BlackHole;
 // [Pipeline(typeof(BlackHolePipeline))]
 internal class BlackHole : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public static Projectile proj; // 只能存在一个
 
 	public override void SetDefaults()

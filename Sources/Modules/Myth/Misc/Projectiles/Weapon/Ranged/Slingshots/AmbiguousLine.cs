@@ -5,6 +5,8 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Ranged.Slingshots;
 
 public class AmbiguousLine : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 10;

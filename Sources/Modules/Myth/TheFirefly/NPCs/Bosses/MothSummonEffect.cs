@@ -5,6 +5,8 @@ namespace Everglow.Myth.TheFirefly.NPCs.Bosses;
 
 public class MothSummonEffect : TrailingProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
+
 	public override string Texture => Commons.ModAsset.LightPoint_Mod;
 
 	public NPC Moth;

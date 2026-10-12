@@ -4,6 +4,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Melee;
 
 public class DarkMassacreDagger_Projectile : MeleeProj
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	public override void SetDef()
 	{
 		Projectile.aiStyle = -1;

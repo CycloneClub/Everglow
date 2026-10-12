@@ -41,8 +41,11 @@ public class NPCQuestIcon : QuestIconBase
 		}
 
 		var texture = TextureAssets.Npc[nPCType]?.Value;
-		var frameRect = texture.Frame(verticalFrames: Main.npcFrameCount[nPCType], frameY: (int)(Main.timeForVisualEffects / 10) % Main.npcFrameCount[nPCType]);
-		var origin = new Vector2(texture.Width, texture.Height / Main.npcFrameCount[nPCType]) / 2;
+		int animationFrame = (int)(Main.timeForVisualEffects / 10);
+		var frameRect = NPCLoader.GetNPC(nPCType) is INPCQuestIconFrameProvider frameProvider
+			? frameProvider.GetQuestIconFrame(animationFrame)
+			: texture.Frame(verticalFrames: Main.npcFrameCount[nPCType], frameY: animationFrame % Main.npcFrameCount[nPCType]);
+		var origin = frameRect.Size() / 2;
 		float scale = GetTextureScale(destinationRectangle, frameRect, baseScale) * baseScale;
 
 		spriteBatch.Draw(texture, drawCenter, frameRect, color, 0, origin, scale, SpriteEffects.None, 0);

@@ -6,6 +6,8 @@ namespace Everglow.Minortopography.GiantPinetree.Projectiles;
 
 public class FrostBall : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 10;

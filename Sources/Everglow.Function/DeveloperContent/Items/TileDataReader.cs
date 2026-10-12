@@ -13,6 +13,8 @@ namespace Everglow.Commons.DeveloperContent.Items;
 /// </summary>
 public class TileDataReader : ModItem
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Tools;
+
 	public bool EnableResidentEffect = false;
 
 	public override void SetDefaults()

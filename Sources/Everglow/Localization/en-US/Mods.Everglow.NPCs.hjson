@@ -1,211 +1,129 @@
-GiantJellyBall: {
-	DisplayName: Giant Jelly Ball
-}
-
-RapierMaster_Boss: {
-	DisplayName: Rapier Master_ Boss
-}
-
-InfoRegisteryTestNPC: {
-	DisplayName: Info Registery TestNPC
-}
-
-BloodTusk: {
-	DisplayName: Blood Tusk
-}
-
-Living_Jawbone: {
-	DisplayName: Living_ Jawbone
-}
-
-GlowingHeal: {
-	DisplayName: Glowing Heal
-}
-
-BlackStarFruit: {
-	DisplayName: Black Star Fruit
-}
-
-CentipedeHead: {
-	DisplayName: Centipede Head
-}
-
-CentipedeBody: {
-	DisplayName: Centipede Body
-}
-
-CentipedeTail: {
-	DisplayName: Centipede Tail
-}
-
-Dendroid_normal: {
-	DisplayName: Dendroid_normal
-}
-
-FireflyPiranha: {
-	DisplayName: Firefly Piranha
-}
-
-FireflyPiranhaInfected: {
-	DisplayName: Firefly Piranha Infected
-}
-
-FireflyPiranhaInfected_small: {
-	DisplayName: Firefly Piranha Infected_small
-}
-
-FireflyPiranha_small: {
-	DisplayName: Firefly Piranha_small
-}
-
-GlowingFirefly: {
-	DisplayName: Glowing Firefly
-}
-
-LittleFireBulb: {
-	DisplayName: Little Fire Bulb
-}
-
-CorruptMoth: {
-	DisplayName: Corrupt Moth
-}
-
-EvilPack: {
-	DisplayName: Evil Pack
-}
-
-SummonedButterfly: {
-	DisplayName: Summoned Butterfly
-}
-
-ExplosiveLantern_growing: {
-	DisplayName: Explosive Lantern_growing
-}
-
-BloodLanternGhost: {
-	DisplayName: Blood Lantern Ghost
-}
-
-BombLantern: {
-	DisplayName: Bomb Lantern
-}
-
-CylindricalLantern: {
-	DisplayName: Cylindrical Lantern
-}
-
-FloatLantern: {
-	DisplayName: Float Lantern
-}
-
-RedPackBomber: {
-	DisplayName: Red Pack Bomber
-}
-
-LanternGhostKing: {
-	DisplayName: Lantern Ghost King
-}
-
-BlueCore: {
-	DisplayName: Blue Core
-}
-
-FlamingDashCore: {
-	DisplayName: Flaming Dash Core
-}
-
-GreenCore: {
-	DisplayName: Green Core
-}
-
-RedCore: {
-	DisplayName: Red Core
-}
-
-YellowCore: {
-	DisplayName: Yellow Core
-}
-
 Acytaea: {
 	DisplayName: Acytaea
+
+	TownNPCMood: {
+		Content: I am content.
+		DislikeBiome: I dislike {BiomeName}.
+		DislikeCrowded: I dislike how crowded I am.
+		FarFromHome: I am too far from home.
+		HateCrowded: I hate how crowded I am.
+		LikeBiome: I like {BiomeName}.
+		LikeNPC_Princess: I like {NPCName}.
+		LoveSpace: I love having so much space.
+		NoHome: I hate not having a home.
+		Princess_LovesNPC: I like {NPCName}.
+	}
 }
 
-Acytaea_Boss: {
-	DisplayName: Acytaea_ Boss
+Acytaea_Boss.DisplayName: Acytaea_ Boss
+Acytaea_yggdrasil.DisplayName: Acytaea_yggdrasil
+AlgaeOctopus.DisplayName: Algae-Covered Octopus
+AnimatedWitherbarkHound.DisplayName: Animated Witherbark Hound
+AnimatedWitherbarkSoldier.DisplayName: Animated Witherbark Soldier
+AnimatedWitherbarkSoldierRanged.DisplayName: Animated Witherbark Marksman
+AnimatedWitherbarkSoldierSpell.DisplayName: Animated Witherbark Mage
+ArmoredShrimp.DisplayName: Armored Shrimp
+AssassinRaspberry.DisplayName: Assassin Raspberry
+BarkSpicyCaterpillar.DisplayName: Bark Spicy Caterpillar
+BlackStarFruit.DisplayName: Black Star Fruit
+BloodLanternGhost.DisplayName: Blood Lantern Ghost
+BloodTusk.DisplayName: Blood Tusk
+BlueCore.DisplayName: Blue Core
+BombJellyfish.DisplayName: Bomb Jellyfish
+BombLantern.DisplayName: Bomb Lantern
+BrodieFlydragon.DisplayName: Brodie Flydragon
+BrownCaterpillar.DisplayName: Brown Caterpillar
+CannonBarnacle.DisplayName: Cannon Barnacle
+CarapaceCaterpillar.DisplayName: Carapace Caterpillar
+CentipedeBody.DisplayName: Centipede Body
+CentipedeHead.DisplayName: Centipede Head
+CentipedeTail.DisplayName: Centipede Tail
+CorruptMoth.DisplayName: Corrupt Moth
+CourtCommander.DisplayName: Court Commander
+CrimsonSpell.DisplayName: Crimson Spell
+CyanOreBeetle.DisplayName: Cyan Ore Beetle
+CylindricalLantern.DisplayName: Cylindrical Lantern
+DarkGlimmeringRods.DisplayName: Dark Glimmering Rods
+Dendroid_normal.DisplayName: Dendroid_normal
+EvilLantern.DisplayName: Evil Lantern
+EvilPack.DisplayName: Evil Pack
+ExamplePerson.DisplayName: Example Person
+ExplosiveLantern_growing.DisplayName: Explosive Lantern_growing
+FireflyPiranha_small.DisplayName: Firefly Piranha_small
+FireflyPiranha.DisplayName: Firefly Piranha
+FireflyPiranhaInfected_small.DisplayName: Firefly Piranha Infected_small
+FireflyPiranhaInfected.DisplayName: Firefly Piranha Infected
+FlamingDashCore.DisplayName: Flaming Dash Core
+FloatLantern.DisplayName: Float Lantern
+FluorescentHydra.DisplayName: Fluorescent Hydra
+GiantDandelion.DisplayName: Giant Tree Man
+GiantJellyBall.DisplayName: Giant Jelly Ball
+GiantTigerShrimp.DisplayName: Giant Tiger Shrimp
+GlowingFirefly.DisplayName: Glowing Firefly
+GlowingHeal.DisplayName: Glowing Heal
+GlowSalamander.DisplayName: Glowing Salamander
+GreenCore.DisplayName: Green Core
+GreenFlameLantern.DisplayName: Green Flame Lantern
+Guard_Slimy.DisplayName: Guard_ Slimy
+GuppyConch.DisplayName: Guppy Conch
+InfoRegisteryTestNPC.DisplayName: Info Registery TestNPC
+JadeSpiritAnglerfish.DisplayName: Jade Spirit Anglerfish
+JellyBall.DisplayName: Jelly Ball
+KingJellyBall.DisplayName: King Jelly Ball
+LampFruitBorer.DisplayName: Lamp Fruit Borer
+LanternGhostKing.DisplayName: Lantern Ghost King
+LargeAlgaeOctopus.DisplayName: Large Algae-Covered Octopus
+LargeBloodLanternGhost.DisplayName: Large Blood Lantern Ghost
+LargeBombJellyfish.DisplayName: Large Bomb Jellyfish
+LargeMossyThornTurtle.DisplayName: Large Thorn Mossy Tortoise
+LeafcutterAnt.DisplayName: Leafcutter Ant
+LightBulb.DisplayName: Light Bulb
+LittleFireBulb.DisplayName: Little Fire Bulb
+LittleRedPaperFigure.DisplayName: Little Red Paper Figure
+Living_Jawbone.DisplayName: Living_ Jawbone
+MossyThornTurtle.DisplayName: Thorn Mossy Tortoise
+OverrideRegistryTestNPC.DisplayName: Override Registry TestNPC
+PurpleBombCaterpillar.DisplayName: Purple Bomb Caterpillar
+QuestCounter_Consultant.DisplayName: Quest Counter_ Consultant
+Radiolarian.DisplayName: Radiolarian
+RapierMaster_Boss.DisplayName: Rapier Master_ Boss
+RedCore.DisplayName: Red Core
+RedNeedleCaterpillar.DisplayName: Red Needle Caterpillar
+RedPackBomber.DisplayName: Red Pack Bomber
+RedpaperGiant.DisplayName: Redpaper Giant
+
+Resturateur: {
+	DisplayName: Resturateur
+
+	TownNPCMood: {
+		Content: I am content.
+		DislikeBiome: I dislike {BiomeName}.
+		DislikeCrowded: I dislike how crowded I am.
+		FarFromHome: I am too far from home.
+		HateCrowded: I hate how crowded I am.
+		LikeBiome: I like {BiomeName}.
+		LikeNPC_Princess: I like {NPCName}.
+		LoveSpace: I love having so much space.
+		NoHome: I hate not having a home.
+		Princess_LovesNPC: I like {NPCName}.
+	}
 }
 
-BarkSpicyCaterpillar: {
-	DisplayName: Bark Spicy Caterpillar
-}
-
-BrownCaterpillar: {
-	DisplayName: Brown Caterpillar
-}
-
-CarapaceCaterpillar: {
-	DisplayName: Carapace Caterpillar
-}
-
-CrimsonSpell: {
-	DisplayName: Crimson Spell
-}
-
-CyanOreBeetle: {
-	DisplayName: Cyan Ore Beetle
-}
-
-DarkGlimmeringRods: {
-	DisplayName: Dark Glimmering Rods
-}
-
-Guard_Slimy: {
-	DisplayName: Guard_ Slimy
-}
-
-JellyBall: {
-	DisplayName: Jelly Ball
-}
-
-LampFruitBorer: {
-	DisplayName: Lamp Fruit Borer
-}
-
-LeafcutterAnt: {
-	DisplayName: Leafcutter Ant
-}
-
-LightBulb: {
-	DisplayName: Light Bulb
-}
-
-RockElemental: {
-	DisplayName: Rock Elemental
-}
-
-ShadowstrikeCaterpillar: {
-	DisplayName: Shadowstrike Caterpillar
-}
-
-WhisperingGhost: {
-	DisplayName: Whispering Ghost
-}
-
-Acytaea_yggdrasil: {
-	DisplayName: Acytaea_yggdrasil
-}
-
-SquamousShell: {
-	DisplayName: Squamous Shell
-}
-
-KingJellyBall: {
-	DisplayName: King Jelly Ball
-}
-
-RiverSlug: {
-	DisplayName: River Slug
-}
-
-TestNPC: {
-	DisplayName: TestNPC
-}
+RiverSlug.DisplayName: Water Slug
+RockElemental.DisplayName: Rock Elemental
+SailfinSnakehead.DisplayName: Sailfin Snakehead
+SerpentMoss.DisplayName: Serpent Moss
+ShadowstrikeCaterpillar.DisplayName: Shadowstrike Caterpillar
+SmallBrodieFlydragon.DisplayName: Small Brodie Flydragon
+SmallGuppyConch.DisplayName: Small Guppy Conch
+SquamousShell.DisplayName: Squamous Shell
+SummonedButterfly.DisplayName: Summoned Butterfly
+TestNPC.DisplayName: TestNPC
+ToxicToad.DisplayName: Toxic Toad
+UmbrellaTailThief.DisplayName: Umbrella Tail Thief
+VampireMat.DisplayName: Vampire Mat
+VerdantRods.DisplayName: Verdant Rod
+WaterStrider.DisplayName: Water Strider
+WhisperingGhost.DisplayName: Whispering Ghost
+WizardLantern.DisplayName: Wizard Lantern
+YellowCore.DisplayName: Yellow Core

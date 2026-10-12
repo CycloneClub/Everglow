@@ -8,6 +8,8 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Magic;
 
 public class FreezeFeather : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 10;

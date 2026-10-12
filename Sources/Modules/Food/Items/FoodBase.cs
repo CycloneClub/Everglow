@@ -5,6 +5,8 @@ namespace Everglow.Food.Items;
 /// </summary>
 public abstract class FoodBase : ModItem
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Miscs;
+
 	public abstract FoodInfo FoodInfo
 	{
 		get;
@@ -16,6 +18,8 @@ public abstract class FoodBase : ModItem
 /// </summary>
 public abstract class DrinkBase : ModItem
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Miscs;
+
 	public abstract DrinkInfo DrinkInfo
 	{
 		get;

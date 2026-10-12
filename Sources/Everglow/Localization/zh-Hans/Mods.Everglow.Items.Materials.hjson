@@ -1,25 +1,25 @@
-StoneTusk: {
-	DisplayName: 石化獠牙
+AuburnRodSkeleton: {
+	DisplayName: 金棕飞棍骨
+	Tooltip: ""
+}
+
+BellPepper_green: {
+	DisplayName: Bell Pepper_green
+	Tooltip: ""
+}
+
+BellPepper_red: {
+	DisplayName: Bell Pepper_red
+	Tooltip: ""
+}
+
+BellPepper_yellow: {
+	DisplayName: Bell Pepper_yellow
 	Tooltip: ""
 }
 
 BlackStarShrub: {
 	DisplayName: 黑星灌丛
-	Tooltip: ""
-}
-
-FireflyPigment: {
-	DisplayName: 流萤色素
-	Tooltip: ""
-}
-
-GlowingPetal: {
-	DisplayName: 萤火花瓣
-	Tooltip: ""
-}
-
-MothScaleDust: {
-	DisplayName: 飞蛾鳞片尘
 	Tooltip: ""
 }
 
@@ -33,9 +33,69 @@ BluePedal: {
 	Tooltip: ""
 }
 
+Broccoli: {
+	DisplayName: Broccoli
+	Tooltip: ""
+}
+
+BrokenMiningLamp: {
+	DisplayName: 损坏矿灯
+	Tooltip: ""
+}
+
+Carrot: {
+	DisplayName: Carrot
+	Tooltip: ""
+}
+
+CaterpillarJuice: {
+	DisplayName: 虫汁
+	Tooltip: ""
+}
+
+CelticKeyStone: {
+	DisplayName: 凯尔特机关石
+	Tooltip: 放入暮光森林的绿色城堡底部以打开密室
+}
+
+ChoppedPoultry: {
+	DisplayName: Chopped Poultry
+	Tooltip: ""
+}
+
+ChoppedScallion: {
+	DisplayName: Chopped Scallion
+	Tooltip: ""
+}
+
+CrimsonMoonSap: {
+	DisplayName: 红月髓
+	Tooltip: ""
+}
+
+CrystalNucleusOfJellyKing: {
+	DisplayName: 晶核
+	Tooltip: “让球冻王长这么大的罪魁祸首”
+}
+
+Cucumber: {
+	DisplayName: Cucumber
+	Tooltip: ""
+}
+
+CucumberPieces: {
+	DisplayName: Cucumber Pieces
+	Tooltip: ""
+}
+
 CyanHyacinth: {
 	DisplayName: 天青盏
 	Tooltip: ""
+}
+
+CyanVineBar: {
+	DisplayName: 青缎锭
+	Tooltip: “展现出深沉的青色光泽，散发着浓重的矿石气息”
 }
 
 DarkPoppy: {
@@ -43,9 +103,69 @@ DarkPoppy: {
 	Tooltip: ""
 }
 
+DevilHeartIronBar_Item: {
+	DisplayName: 魔心铁锭
+	Tooltip: ""
+}
+
+Doubanjiang: {
+	DisplayName: Doubanjiang
+	Tooltip: ""
+}
+
+Eggplant: {
+	DisplayName: Eggplant
+	Tooltip: ""
+}
+
+EggplantCubes: {
+	DisplayName: Eggplant Cubes
+	Tooltip: ""
+}
+
+ElftigernPowder: {
+	DisplayName: 厄佛提根的净化粉末
+	Tooltip: ""
+}
+
+FireflyPigment: {
+	DisplayName: 流萤色素
+	Tooltip: ""
+}
+
+FleshOfVampireMat: {
+	DisplayName: 吸血魔毯血肉
+	Tooltip: ""
+}
+
+Flour: {
+	DisplayName: Flour
+	Tooltip: ""
+}
+
 FlowerBrochure: {
 	DisplayName: 野花收集指南
-	Tooltip: "携带后可以收集野花"
+	Tooltip: 携带后可以收集野花
+}
+
+FrogMeat: {
+	DisplayName: Frog Meat
+	Tooltip: ""
+}
+
+Garlic: {
+	DisplayName: Garlic
+	Tooltip: ""
+}
+
+Gelatin_Sheet: {
+	DisplayName: Gelatin_ Sheet
+	Tooltip: ""
+}
+
+GlowingPetal: {
+	DisplayName: 萤火花瓣
+	Tooltip: ""
 }
 
 GoldCup: {
@@ -58,13 +178,38 @@ GoldWhip: {
 	Tooltip: ""
 }
 
+GreenCrab: {
+	DisplayName: Green Crab
+	Tooltip: ""
+}
+
+GroundMeat: {
+	DisplayName: Ground Meat
+	Tooltip: ""
+}
+
+GroundPotato: {
+	DisplayName: Ground Potato
+	Tooltip: ""
+}
+
 HotPinkTulip: {
 	DisplayName: 粉酒杯花
 	Tooltip: ""
 }
 
+LampFruit: {
+	DisplayName: 灯果
+	Tooltip: ""
+}
+
 Lavender: {
 	DisplayName: 紫笔头
+	Tooltip: ""
+}
+
+LightBulbOvule: {
+	DisplayName: 灯光胚珠
 	Tooltip: ""
 }
 
@@ -75,6 +220,26 @@ LightChrysanthemum: {
 
 LightPurpleBalls: {
 	DisplayName: 暮色绒
+	Tooltip: ""
+}
+
+MagicosCrystal: {
+	DisplayName: 纯能魔晶
+	Tooltip: ""
+}
+
+MincedGarlic: {
+	DisplayName: Minced Garlic
+	Tooltip: ""
+}
+
+MothScaleDust: {
+	DisplayName: 飞蛾鳞片尘
+	Tooltip: ""
+}
+
+NylonRope: {
+	DisplayName: 尼龙绳
 	Tooltip: ""
 }
 
@@ -93,6 +258,16 @@ PinkSun: {
 	Tooltip: ""
 }
 
+Potato: {
+	DisplayName: Potato
+	Tooltip: ""
+}
+
+Poultry: {
+	DisplayName: Poultry
+	Tooltip: ""
+}
+
 PurplePhantom: {
 	DisplayName: 幻蝶兰
 	Tooltip: ""
@@ -103,8 +278,43 @@ PurpleTail: {
 	Tooltip: ""
 }
 
+Radish: {
+	DisplayName: Radish
+	Tooltip: ""
+}
+
+RawEgg: {
+	DisplayName: Raw Egg
+	Tooltip: ""
+}
+
+RawSteak: {
+	DisplayName: Raw Steak
+	Tooltip: ""
+}
+
+RawXiaoLongBao: {
+	DisplayName: Raw Xiao Long Bao
+	Tooltip: ""
+}
+
 RedFlame: {
 	DisplayName: 赤锦
+	Tooltip: ""
+}
+
+Rice: {
+	DisplayName: Rice
+	Tooltip: ""
+}
+
+RodWing: {
+	DisplayName: 飞棍鳍
+	Tooltip: ""
+}
+
+Scallion: {
+	DisplayName: Scallion
 	Tooltip: ""
 }
 
@@ -113,8 +323,63 @@ ShallowNight: {
 	Tooltip: ""
 }
 
+SichuanPepper: {
+	DisplayName: Sichuan Pepper
+	Tooltip: ""
+}
+
 SilverClock: {
 	DisplayName: 九瓣银
+	Tooltip: ""
+}
+
+SpicyPepperRing: {
+	DisplayName: Spicy Pepper Ring
+	Tooltip: ""
+}
+
+Spinach: {
+	DisplayName: Spinach
+	Tooltip: ""
+}
+
+StoneTusk: {
+	DisplayName: 石化獠牙
+	Tooltip: ""
+}
+
+Tofu: {
+	DisplayName: Tofu
+	Tooltip: ""
+}
+
+TofuCubes: {
+	DisplayName: Tofu Cubes
+	Tooltip: ""
+}
+
+Tomato: {
+	DisplayName: Tomato
+	Tooltip: ""
+}
+
+TomatoPieces: {
+	DisplayName: Tomato Pieces
+	Tooltip: ""
+}
+
+TwilightCrystal: {
+	DisplayName: 暮光水晶
+	Tooltip: 蕴含了魔能的蓝色晶体
+}
+
+TwilightCrystalExteactedLiquid: {
+	DisplayName: 暮晶萃取液
+	Tooltip: ""
+}
+
+UnstablePollen: {
+	DisplayName: 脱稳花粉
 	Tooltip: ""
 }
 
@@ -133,82 +398,7 @@ WindMoveSeed: {
 	Tooltip: ""
 }
 
-AuburnRodSkeleton: {
-	DisplayName: 金棕飞棍骨
-	Tooltip: ""
-}
-
-BrokenMiningLamp: {
-	DisplayName: 损坏矿灯
-	Tooltip: ""
-}
-
-CaterpillarJuice: {
-	DisplayName: 虫汁
-	Tooltip: ""
-}
-
-CelticKeyStone: {
-	DisplayName: 凯尔特机关石
-	Tooltip: "放入暮光森林的绿色城堡底部以打开密室"
-}
-
-CrystalNucleusOfJellyKing: {
-	DisplayName: 球冻王晶核
-	Tooltip: ""
-}
-
-CyanVineBar: {
-	DisplayName: 青锻锭
-	Tooltip: ""
-}
-
-LampFruit: {
-	DisplayName: 灯果
-	Tooltip: ""
-}
-
-LightBulbOvule: {
-	DisplayName: 灯光胚珠
-	Tooltip: ""
-}
-
-MagicosCrystal: {
-	DisplayName: 纯能魔晶
-	Tooltip: ""
-}
-
-NylonRope: {
-	DisplayName: 尼龙绳
-	Tooltip: ""
-}
-
-RodWing: {
-	DisplayName: 飞棍鳍
-	Tooltip: ""
-}
-
-TwilightCrystal: {
-	DisplayName: 暮光水晶
-	Tooltip: ""
-}
-
-TwilightCrystalExteactedLiquid: {
-	DisplayName: 暮晶萃取液
-	Tooltip: ""
-}
-
-UnstablePollen: {
-	DisplayName: 脱稳花粉
-	Tooltip: ""
-}
-
 YggdrasilAmber: {
 	DisplayName: 天穹琥珀
-	Tooltip: ""
-}
-
-DevilHeartIronBar_Item: {
-	DisplayName: 魔心铁锭
 	Tooltip: ""
 }

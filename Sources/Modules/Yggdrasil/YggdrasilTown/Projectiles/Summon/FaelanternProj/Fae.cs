@@ -6,6 +6,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Summon.FaelanternProj;
 
 public class Fae : TrailingProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.SummonProjectiles;
+
 	public override void SetStaticDefaults()
 	{
 		Main.projFrames[Projectile.type] = 7;

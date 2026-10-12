@@ -4,6 +4,8 @@ namespace Everglow.Myth.TheTusk.Projectiles.Weapon;
 
 public class ToothKnife : MeleeProj, IWarpProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	public override void SetDef()
 	{
 		Projectile.aiStyle = -1;

@@ -1,15 +1,55 @@
-RodSpear: {
-	DisplayName: Rod Spear
-	Tooltip: It can fly like a living Rod.
+AcroporaSpear: {
+	DisplayName: Acropora Spear
+	Tooltip: ""
 }
 
-DevilHeartBayonet: {
-	DisplayName: Devil Heart Bayonet
-	Tooltip: Heals [?] health when stamina is exhausted
+Acytaea_sword_Item: {
+	DisplayName: Acytaea_sword_ Item
+	Tooltip: ""
+}
+
+AdamantiteClub_Item: {
+	DisplayName: Adamantite Club_ Item
+	Tooltip: ""
+}
+
+AmberHeadedSpear: {
+	DisplayName: Amber Headed Spear
+	Tooltip: ""
+}
+
+AmethystHeadedSpear: {
+	DisplayName: Amethyst Headed Spear
+	Tooltip: ""
+}
+
+ArmOfGiantTree: {
+	DisplayName: Arm of the Giant Tree
+	Tooltip:
+		'''
+		Hold left-click to charge for up to 2.5 seconds, then release to smash for 75%–200% damage
+		A fully charged smash releases a shockwave dealing 100% weapon damage
+		Recover for 0.5 seconds after smashing
+		Right-click for a normal swing
+		'''
+}
+
+BladeOfGreenMoss: {
+	DisplayName: Blade of Green Moss
+	Tooltip:
+		'''
+		Hitting enemies grants Moss Cover for 3 seconds, increasing defense by 5 and granting immunity to Corrosion
+		Hits have a 12.5% chance to poison enemies for 7 seconds
+		'''
 }
 
 BloodGoldBayonet: {
 	DisplayName: Blood Gold Bayonet
+	Tooltip: ""
+}
+
+BloodyBoneYoyo: {
+	DisplayName: Bloody Bone Yoyo
 	Tooltip: ""
 }
 
@@ -23,218 +63,33 @@ BlueRibbonBayonet: {
 	Tooltip: ""
 }
 
-CopperBayonet: {
-	DisplayName: Copper Bayonet
-	Tooltip: ""
-}
-
-CrutchBayonet: {
-	DisplayName: Crutch Bayonet
-	Tooltip: ""
-}
-
-CurseFlameStabbingSword: {
-	DisplayName: Curse Flame Stabbing Sword
-	Tooltip: ""
-}
-
-DreamStar: {
-	DisplayName: Dream Star
-	Tooltip: ""
-}
-
-EnchantedBayonet: {
-	DisplayName: Enchanted Bayonet
-	Tooltip: ""
-}
-
-EternalNight: {
-	DisplayName: Eternal Night
-	Tooltip: ""
-}
-
-GoldenStabbingSword: {
-	DisplayName: Golden Stabbing Sword
-	Tooltip: ""
-}
-
-HolyBayonet: {
-	DisplayName: Holy Bayonet
-	Tooltip: ""
-}
-
-IchorBayonet: {
-	DisplayName: Ichor Bayonet
-	Tooltip: ""
-}
-
-IronStabbingSword: {
-	DisplayName: Iron Stabbing Sword
-	Tooltip: ""
-}
-
-LeadStabbingSword: {
-	DisplayName: Lead Stabbing Sword
-	Tooltip: ""
-}
-
-MechanicMosquito: {
-	DisplayName: Mechanic Mosquito
-	Tooltip: ""
-}
-
-PlatinumStabbingSword: {
-	DisplayName: Platinum Stabbing Sword
-	Tooltip: ""
-}
-
-PrisonFireBayonet: {
-	DisplayName: Prison Fire Bayonet
-	Tooltip: ""
-}
-
-RedRibbonBayonet: {
-	DisplayName: Red Ribbon Bayonet
-	Tooltip: ""
-}
-
-RottenGoldBayonet: {
-	DisplayName: Rotten Gold Bayonet
-	Tooltip: ""
-}
-
-SilverStabbingSword: {
-	DisplayName: Silver Stabbing Sword
-	Tooltip: ""
-}
-
-SwordfishBeak: {
-	DisplayName: Swordfish Beak
-	Tooltip: ""
-}
-
-TinStabbingSword: {
-	DisplayName: Tin Stabbing Sword
-	Tooltip: ""
-}
-
-TungstenStabbingSword: {
-	DisplayName: Tungsten Stabbing Sword
-	Tooltip: ""
-}
-
-VegetationBayonet: {
-	DisplayName: Vegetation Bayonet
-	Tooltip: ""
-}
-
-VertebralSpur: {
-	DisplayName: Vertebral Spur
-	Tooltip: ""
-}
-
-YoenLeZed: {
-	DisplayName: Yoen Le Zed
-	Tooltip: ""
-}
-
-CheeseYoyo: {
-	DisplayName: Cheese Yoyo
-	Tooltip: ""
-}
-
-FryingPanItem: {
-	DisplayName: Frying Pan Item
-	Tooltip: ""
-}
-
-VortexVanquisherItem: {
-	DisplayName: Vortex Vanquisher Item
-	Tooltip: ""
-}
-
-PineStab: {
-	DisplayName: Pine Stab
-	Tooltip: ""
-}
-
-BloodyBoneYoyo: {
-	DisplayName: Bloody Bone Yoyo
-	Tooltip: ""
-}
-
-ToothKnife: {
-	DisplayName: Tooth Knife
-	Tooltip: ""
-}
-
-ToothSpear: {
-	DisplayName: Tooth Spear
-	Tooltip: ""
-}
-
-GlowWoodSword: {
-	DisplayName: Glow Wood Sword
-	Tooltip: ""
-}
-
-MothYoyo: {
-	DisplayName: Moth Yoyo
-	Tooltip: ""
-}
-
-ScaleWingBlade: {
-	DisplayName: Scale Wing Blade
-	Tooltip: ""
-}
-
-ComingGhost: {
-	DisplayName: Coming Ghost
-	Tooltip: ""
-}
-
-CyanFrost: {
-	DisplayName: Cyan Frost
-	Tooltip: ""
-}
-
-Glow: {
-	DisplayName: Glow
-	Tooltip: ""
-}
-
-GoldRoundYoyo: {
-	DisplayName: Gold Round Yoyo
-	Tooltip: ""
-}
-
-PrimordialJadeWinged_Spear: {
-	DisplayName: Primordial Jade Winged_ Spear
-	Tooltip: ""
-}
-
-Sunflower: {
-	DisplayName: Sunflower
-	Tooltip: ""
-}
-
-World: {
-	DisplayName: World
-	Tooltip: ""
-}
-
-AdamantiteClub_Item: {
-	DisplayName: Adamantite Club_ Item
-	Tooltip: ""
-}
-
 BorealWoodClub_Item: {
 	DisplayName: Boreal Wood Club_ Item
 	Tooltip: ""
 }
 
+CactusBall: {
+	DisplayName: Cactus Ball
+	Tooltip: ""
+}
+
 CactusClub_Item: {
 	DisplayName: Cactus Club_ Item
+	Tooltip: ""
+}
+
+CeremonialBlade: {
+	DisplayName: Ceremonial Blade
+	Tooltip: ""
+}
+
+CharonDoubleSickle_Item: {
+	DisplayName: Charon Double Sickle_ Item
+	Tooltip: ""
+}
+
+CheeseYoyo: {
+	DisplayName: Cheese Yoyo
 	Tooltip: ""
 }
 
@@ -245,6 +100,16 @@ ChlorophyteClub_Item: {
 
 CobaltClub_Item: {
 	DisplayName: Cobalt Club_ Item
+	Tooltip: ""
+}
+
+ComingGhost: {
+	DisplayName: Coming Ghost
+	Tooltip: ""
+}
+
+CopperBayonet: {
+	DisplayName: Copper Bayonet
 	Tooltip: ""
 }
 
@@ -263,6 +128,11 @@ CrimsonClub_Item: {
 	Tooltip: ""
 }
 
+CrutchBayonet: {
+	DisplayName: Crutch Bayonet
+	Tooltip: ""
+}
+
 CrystalClub_Item: {
 	DisplayName: Crystal Club_ Item
 	Tooltip: ""
@@ -273,13 +143,138 @@ CurseClub_Item: {
 	Tooltip: ""
 }
 
+CurseFlameStabbingSword: {
+	DisplayName: Curse Flame Stabbing Sword
+	Tooltip: ""
+}
+
+CyanFrost: {
+	DisplayName: Cyan Frost
+	Tooltip: ""
+}
+
+CyanVineShortsword: {
+	DisplayName: Cyan Shortsword
+	Tooltip: "'A deep cyan sheen and the heavy scent of ore'"
+}
+
+CyanVineSword: {
+	DisplayName: Cyan Broadsword
+	Tooltip: "'A deep cyan sheen and the heavy scent of ore'"
+}
+
+DarkMassacreDagger: {
+	DisplayName: Dark Massacre Dagger
+	Tooltip: ""
+}
+
+DevilHeartBayonet: {
+	DisplayName: Devil Heart Bayonet
+	Tooltip: Restores 5 life when your stamina is depleted
+}
+
+DivineAscend: {
+	DisplayName: Divine Ascend
+	Tooltip: ""
+}
+
+DreamStar: {
+	DisplayName: Dream Star
+	Tooltip: ""
+}
+
 EbonwoodClub_Item: {
 	DisplayName: Ebonwood Club_ Item
 	Tooltip: ""
 }
 
+EnchantedBayonet: {
+	DisplayName: Enchanted Bayonet
+	Tooltip: ""
+}
+
+EternalNight: {
+	DisplayName: Eternal Night
+	Tooltip: ""
+}
+
+EvilHalbertBarnacle: {
+	DisplayName: Evil Halberd Barnacle
+	Tooltip:
+		'''
+		Left-click to perform a melee combo
+		Right-click and release to launch the cone
+		Melee attacks make the launched cone spin around you before returning
+		'''
+}
+
+ExampleClub: {
+	DisplayName: Example Club
+	Tooltip: ""
+}
+
+ExampleEverglowYoyo: {
+	DisplayName: Example Everglow Yoyo
+	Tooltip: ""
+}
+
+ExampleMeleeItem: {
+	DisplayName: Example Melee Item
+	Tooltip: ""
+}
+
+ExampleStabbingSword: {
+	DisplayName: Example Stabbing Sword
+	Tooltip: ""
+}
+
+FryingPanItem: {
+	DisplayName: Frying Pan Item
+	Tooltip: ""
+}
+
+Glow: {
+	DisplayName: Glow
+	Tooltip: ""
+}
+
+GlowWoodSword: {
+	DisplayName: Glow Wood Sword
+	Tooltip: ""
+}
+
 GoldClub_Item: {
 	DisplayName: Gold Club_ Item
+	Tooltip: ""
+}
+
+GoldenStabbingSword: {
+	DisplayName: Golden Stabbing Sword
+	Tooltip: ""
+}
+
+GoldRoundYoyo: {
+	DisplayName: Gold Round Yoyo
+	Tooltip: ""
+}
+
+HandheldCircularSaw: {
+	DisplayName: Handheld Circular Saw
+	Tooltip: ""
+}
+
+HolyBayonet: {
+	DisplayName: Holy Bayonet
+	Tooltip: ""
+}
+
+HyperockSpear: {
+	DisplayName: Hyperock Spear
+	Tooltip: ""
+}
+
+IchorBayonet: {
+	DisplayName: Ichor Bayonet
 	Tooltip: ""
 }
 
@@ -293,13 +288,72 @@ IronClub_Item: {
 	Tooltip: ""
 }
 
+IronStabbingSword: {
+	DisplayName: Iron Stabbing Sword
+	Tooltip: ""
+}
+
+LampWoodSword: {
+	DisplayName: Lampwood Sword
+	Tooltip: "'The first light to guide your way here'"
+}
+
+LampWoodYoyo: {
+	DisplayName: Lampwood Yoyo
+	Tooltip: "'The first light to guide your way here'"
+}
+
+LanternSword: {
+	DisplayName: Lantern Sword
+	Tooltip: ""
+}
+
+LanternYoyo: {
+	DisplayName: Lantern Yoyo
+	Tooltip: ""
+}
+
 LeadClub_Item: {
 	DisplayName: Lead Club_ Item
 	Tooltip: ""
 }
 
+LeadStabbingSword: {
+	DisplayName: Lead Stabbing Sword
+	Tooltip: ""
+}
+
+MagicalBoomerang: {
+	DisplayName: Magical Boomerang
+	Tooltip: ""
+}
+
+MeatLantern: {
+	DisplayName: Meat Lantern
+	Tooltip:
+		'''
+		Performs a three-stage combo, restoring 1 life on each hit
+		At half life or less, the combo gains a finishing attack that restores 15 life on each hit
+		'''
+}
+
+MechanicMosquito: {
+	DisplayName: Mechanic Mosquito
+	Tooltip: ""
+}
+
+MechanismHalberd: {
+	DisplayName: Mechanism Halberd
+	Tooltip: ""
+}
+
 MeteorClub_Item: {
 	DisplayName: Meteor Club_ Item
+	Tooltip: ""
+}
+
+MothYoyo: {
+	DisplayName: Moth Yoyo
 	Tooltip: ""
 }
 
@@ -328,13 +382,83 @@ PearlwoodClub_Item: {
 	Tooltip: ""
 }
 
+PineStab: {
+	DisplayName: Pine Stab
+	Tooltip: ""
+}
+
 PlatinumClub_Item: {
 	DisplayName: Platinum Club_ Item
 	Tooltip: ""
 }
 
+PlatinumStabbingSword: {
+	DisplayName: Platinum Stabbing Sword
+	Tooltip: ""
+}
+
+PrimordialJadeWinged_Spear: {
+	DisplayName: Primordial Jade Winged_ Spear
+	Tooltip: ""
+}
+
+PrisonFireBayonet: {
+	DisplayName: Prison Fire Bayonet
+	Tooltip: ""
+}
+
+QuenchingBlade: {
+	DisplayName: Quenching Blade
+	Tooltip: A massive steel blade, heavy and powerful
+}
+
+QuetzalsWish: {
+	DisplayName: Quetzal's Wish
+	Tooltip:
+		'''
+		Left-click to perform a four-stage combo
+		Right-click during the third or fourth stage to lunge forward with a double spin
+		Hold right-click outside a combo for 2 seconds to throw the blade, which explodes on impact
+		Hits inflict Wound for 5 seconds, dealing 12 damage per second while the target moves
+		'''
+}
+
+RedRibbonBayonet: {
+	DisplayName: Red Ribbon Bayonet
+	Tooltip: ""
+}
+
+ResistanceWireBayonet: {
+	DisplayName: Resistance Wire Bayonet
+	Tooltip:
+		'''
+		Gradually charges and grows stronger
+		Hitting an enemy expends its charge
+		'''
+}
+
 RichMahoganyClub_Item: {
 	DisplayName: Rich Mahogany Club_ Item
+	Tooltip: ""
+}
+
+RodSpear: {
+	DisplayName: Rod Spear
+	Tooltip: Throws a spear that flies like a living rod
+}
+
+RottenGoldBayonet: {
+	DisplayName: Rotten Gold Bayonet
+	Tooltip: ""
+}
+
+ScaleWingBlade: {
+	DisplayName: Scale Wing Blade
+	Tooltip: ""
+}
+
+ScarpasScissors: {
+	DisplayName: Scarpas Scissors
 	Tooltip: ""
 }
 
@@ -343,8 +467,18 @@ ShadewoodClub_Item: {
 	Tooltip: ""
 }
 
+ShadowEulogist: {
+	DisplayName: Shadow Eulogist
+	Tooltip: ""
+}
+
 SilverClub_Item: {
 	DisplayName: Silver Club_ Item
+	Tooltip: ""
+}
+
+SilverStabbingSword: {
+	DisplayName: Silver Stabbing Sword
 	Tooltip: ""
 }
 
@@ -358,8 +492,23 @@ StarDancer_Item: {
 	Tooltip: ""
 }
 
+Sunflower: {
+	DisplayName: Sunflower
+	Tooltip: ""
+}
+
+SwordfishBeak: {
+	DisplayName: Swordfish Beak
+	Tooltip: ""
+}
+
 TinClub_Item: {
 	DisplayName: Tin Club_ Item
+	Tooltip: ""
+}
+
+TinStabbingSword: {
+	DisplayName: Tin Stabbing Sword
 	Tooltip: ""
 }
 
@@ -368,68 +517,33 @@ TitaniumClub_Item: {
 	Tooltip: ""
 }
 
-TungstenClub_Item: {
-	DisplayName: Tungsten Club_ Item
+ToothKnife: {
+	DisplayName: Tooth Knife
 	Tooltip: ""
 }
 
-WoodenClub_Item: {
-	DisplayName: Wooden Club_ Item
-	Tooltip: ""
-}
-
-Acytaea_sword_Item: {
-	DisplayName: Acytaea_sword_ Item
-	Tooltip: ""
-}
-
-CactusBall: {
-	DisplayName: Cactus Ball
-	Tooltip: ""
-}
-
-AmberHeadedSpear: {
-	DisplayName: Amber Headed Spear
-	Tooltip: ""
-}
-
-AmethystHeadedSpear: {
-	DisplayName: Amethyst Headed Spear
-	Tooltip: ""
-}
-
-CeremonialBlade: {
-	DisplayName: Ceremonial Blade
-	Tooltip: ""
-}
-
-DarkMassacreDagger: {
-	DisplayName: Dark Massacre Dagger
-	Tooltip: ""
-}
-
-MagicalBoomerang: {
-	DisplayName: Magical Boomerang
-	Tooltip: ""
-}
-
-QuenchingBlade: {
-	DisplayName: Quenching Blade
-	Tooltip: ""
-}
-
-ResistanceWireBayonet: {
-	DisplayName: Resistance Wire Bayonet
-	Tooltip: ""
-}
-
-ScarpasScissors: {
-	DisplayName: Scarpas Scissors
+ToothSpear: {
+	DisplayName: Tooth Spear
 	Tooltip: ""
 }
 
 TopaztHeadedSpear: {
 	DisplayName: Topazt Headed Spear
+	Tooltip: ""
+}
+
+TrueDeathSickle: {
+	DisplayName: True Death Sickle
+	Tooltip: ""
+}
+
+TungstenClub_Item: {
+	DisplayName: Tungsten Club_ Item
+	Tooltip: ""
+}
+
+TungstenStabbingSword: {
+	DisplayName: Tungsten Stabbing Sword
 	Tooltip: ""
 }
 
@@ -453,62 +567,32 @@ TwilightShamanStaff: {
 	Tooltip: ""
 }
 
-HyperockSpear: {
-	DisplayName: Hyperock Spear
+VegetationBayonet: {
+	DisplayName: Vegetation Bayonet
 	Tooltip: ""
 }
 
-LampWoodSword: {
-	DisplayName: Lamp Wood Sword
+VertebralSpur: {
+	DisplayName: Vertebral Spur
 	Tooltip: ""
 }
 
-LampWoodYoyo: {
-	DisplayName: Lamp Wood Yoyo
+VortexVanquisherItem: {
+	DisplayName: Vortex Vanquisher Item
 	Tooltip: ""
 }
 
-CyanVineShortsword: {
-	DisplayName: Cyan Vine Shortsword
+WoodenClub_Item: {
+	DisplayName: Wooden Club_ Item
 	Tooltip: ""
 }
 
-CyanVineSword: {
-	DisplayName: Cyan Vine Sword
+World: {
+	DisplayName: World
 	Tooltip: ""
 }
 
-BladeOfGreenMoss: {
-	DisplayName: Blade Of Green Moss
-	Tooltip: ""
-}
-
-MeatLantern: {
-	DisplayName: Meat Lantern
-	Tooltip: ""
-}
-
-HandheldCircularSaw: {
-	DisplayName: Handheld Circular Saw
-	Tooltip: ""
-}
-
-AcroporaSpear: {
-	DisplayName: Acropora Spear
-	Tooltip: ""
-}
-
-CharonDoubleSickle_Item: {
-	DisplayName: Charon Double Sickle_ Item
-	Tooltip: ""
-}
-
-ShadowEulogist: {
-	DisplayName: Shadow Eulogist
-	Tooltip: ""
-}
-
-TrueDeathSickle: {
-	DisplayName: True Death Sickle
+YoenLeZed: {
+	DisplayName: Yoen Le Zed
 	Tooltip: ""
 }

@@ -10,11 +10,6 @@ public static class WorldQuestActionAdapter
 	{
 		ArgumentNullException.ThrowIfNull(quest);
 
-		if (QuestHintRules.HasContent(quest.Hint))
-		{
-			return [];
-		}
-
 		var identity = new QuestIdentity(QuestSide.World, quest.Name, quest.Name);
 		return WorldQuestActions.GetAvailableTypes(quest)
 			.Select(type => new QuestAction(identity, type))

@@ -20,11 +20,15 @@ public class PlayerQuestActionTest
 
 		public string HintValue { get; set; } = string.Empty;
 
+		public QuestHideMode HideModeValue { get; set; }
+
 		public override string DisplayName => nameof(StubQuest);
 
 		public override bool Cancellable => CancellableValue;
 
 		public override string Hint => HintValue;
+
+		public override QuestHideMode HideMode => HideModeValue;
 
 		public override bool CheckComplete() => CompleteValue;
 	}
@@ -84,7 +88,7 @@ public class PlayerQuestActionTest
 	}
 
 	[TestMethod]
-	public void HintedCompleteAcceptedQuest_ExportsNoActions()
+	public void HintedCompleteAcceptedQuest_ExportsSubmitAction()
 	{
 		var quest = new StubQuest
 		{
@@ -95,7 +99,8 @@ public class PlayerQuestActionTest
 
 		IReadOnlyList<QuestAction> actions = PlayerQuestActionAdapter.GetActions(quest);
 
-		Assert.IsEmpty(actions);
+		Assert.HasCount(1, actions);
+		Assert.AreEqual(QuestActionType.Submit, actions[0].Type);
 	}
 
 	[TestMethod]
@@ -152,17 +157,22 @@ public class PlayerQuestActionTest
 	[TestMethod]
 	[DataRow("Follow the trail")]
 	[DataRow(QuestHintText.Masked)]
-	public void HintedAvailableQuest_ExportsNoActions(string hint)
+	public void HintedAvailableQuest_ExportsAndExecutesAcceptAction(string hint)
 	{
 		var quest = new StubQuest
 		{
 			State = PlayerQuestState.Available,
 			HintValue = hint,
 		};
+		_manager.ApplyData(new PlayerQuestManagerData([], [quest]));
 
 		IReadOnlyList<QuestAction> actions = PlayerQuestActionAdapter.GetActions(quest);
 
-		Assert.IsEmpty(actions);
+		Assert.HasCount(1, actions);
+		Assert.AreEqual(QuestActionType.Accept, actions[0].Type);
+		Assert.IsTrue(_actions.TryExecute(actions[0]));
+		Assert.IsFalse(_actions.TryExecute(actions[0]));
+		Assert.AreEqual(PlayerQuestState.Accepted, quest.State);
 	}
 
 	[TestMethod]
@@ -219,7 +229,7 @@ public class PlayerQuestActionTest
 	}
 
 	[TestMethod]
-	public void HintAddedAfterExport_PreventsExecution()
+	public void HintAddedAfterExport_DoesNotPreventAcceptExecution()
 	{
 		var quest = new StubQuest { State = PlayerQuestState.Available };
 		_manager.ApplyData(new PlayerQuestManagerData([], [quest]));
@@ -228,17 +238,18 @@ public class PlayerQuestActionTest
 
 		bool applied = _actions.TryExecute(action);
 
-		Assert.IsFalse(applied);
-		Assert.AreEqual(PlayerQuestState.Available, quest.State);
+		Assert.IsTrue(applied);
+		Assert.IsFalse(_actions.TryExecute(action));
+		Assert.AreEqual(PlayerQuestState.Accepted, quest.State);
 	}
 
 	[TestMethod]
-	public void InvisibleAvailableQuest_StillExportsAcceptAction()
+	public void HiddenNameAndConditionsAvailableQuest_StillExportsAcceptAction()
 	{
 		var quest = new StubQuest
 		{
 			State = PlayerQuestState.Available,
-			IsVisible = false,
+			HideModeValue = QuestHideMode.NameAndConditions,
 		};
 
 		IReadOnlyList<QuestAction> actions = PlayerQuestActionAdapter.GetActions(quest);

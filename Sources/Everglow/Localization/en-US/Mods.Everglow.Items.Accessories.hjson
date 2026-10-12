@@ -1,11 +1,15 @@
-StaminaItem: {
-	DisplayName: Stamina Item
+AnemoShell: {
+	DisplayName: Anemo Shell
 	Tooltip: ""
 }
 
-EnergyBand: {
-	DisplayName: Energy Band
-	Tooltip: ""
+AntiCorrosiveSole: {
+	DisplayName: Anti-corrosive Sole
+	Tooltip:
+		'''
+		5% increased movement speed
+		Grants immunity to Corrosion
+		'''
 }
 
 BloodGlucoseMonitor: {
@@ -13,43 +17,8 @@ BloodGlucoseMonitor: {
 	Tooltip: ""
 }
 
-OsmoticPressureMonitor: {
-	DisplayName: Osmotic Pressure Monitor
-	Tooltip: ""
-}
-
-PlayerPenetrationTest: {
-	DisplayName: Player Penetration Test
-	Tooltip: ""
-}
-
-BurningFrozenHeart: {
-	DisplayName: Burning Frozen Heart
-	Tooltip: ""
-}
-
-PearlOfCyan: {
-	DisplayName: Pearl Of Cyan
-	Tooltip: ""
-}
-
-SnowPineLockBox: {
-	DisplayName: Snow Pine Lock Box
-	Tooltip: ""
-}
-
-TuskLace: {
-	DisplayName: Tusk Lace
-	Tooltip: ""
-}
-
-FireflyBorageBadge: {
-	DisplayName: Firefly Borage Badge
-	Tooltip: ""
-}
-
-MothEye: {
-	DisplayName: Moth Eye
+BloodTearCrystalCrown: {
+	DisplayName: Blood Tear Crystal Crown
 	Tooltip: ""
 }
 
@@ -68,53 +37,48 @@ BlueGel: {
 	Tooltip: ""
 }
 
+BlueTorchFlower: {
+	DisplayName: Blue Torch Flower
+	Tooltip: ""
+}
+
+BurningFrozenHeart: {
+	DisplayName: Burning Frozen Heart
+	Tooltip: ""
+}
+
+CelesteStoneWaistPendant: {
+	DisplayName: Celeste Stone Waist Pendant
+	Tooltip: ""
+}
+
+CelticSeal: {
+	DisplayName: Celtic Seal
+	Tooltip: ""
+}
+
+ConcealSpell: {
+	DisplayName: Conceal Spell
+	Tooltip: ""
+}
+
+CorrodedPearl: {
+	DisplayName: Corroded Pearl
+	Tooltip:
+		'''
+		50% increased breath duration
+		Slightly increases underwater movement speed
+		5% increased summon damage
+		'''
+}
+
 CorruptEye: {
 	DisplayName: Corrupt Eye
 	Tooltip: ""
 }
 
-DukeTooth: {
-	DisplayName: Duke Tooth
-	Tooltip: ""
-}
-
-GoldLiquidPupil: {
-	DisplayName: Gold Liquid Pupil
-	Tooltip: ""
-}
-
-GreenGel: {
-	DisplayName: Green Gel
-	Tooltip: ""
-}
-
-JungleVitamin: {
-	DisplayName: Jungle Vitamin
-	Tooltip: ""
-}
-
-Odd8Ring: {
-	DisplayName: Odd8 Ring
-	Tooltip: ""
-}
-
-RedGel: {
-	DisplayName: Red Gel
-	Tooltip: ""
-}
-
-SilverWing: {
-	DisplayName: Silver Wing
-	Tooltip: ""
-}
-
-WalnutClip: {
-	DisplayName: Walnut Clip
-	Tooltip: ""
-}
-
-BlueTorchFlower: {
-	DisplayName: Blue Torch Flower
+CrystalSkull: {
+	DisplayName: Crystal Skull
 	Tooltip: ""
 }
 
@@ -128,8 +92,72 @@ CyanPedal: {
 	Tooltip: ""
 }
 
+CyanVineRing: {
+	DisplayName: Cyan Vine Ring
+	Tooltip: ""
+}
+
 DarkHat: {
 	DisplayName: Dark Hat
+	Tooltip: ""
+}
+
+DukeTooth: {
+	DisplayName: Duke Tooth
+	Tooltip: ""
+}
+
+EmptyFowlbeast: {
+	DisplayName: Empty Fowlbeast
+	Tooltip:
+		'''
+		Your minions' direct hits deal extra magic damage equal to 7% of your maximum mana
+		You take 20% more contact damage from enemies
+		'''
+}
+
+EnergyBand: {
+	DisplayName: Energy Band
+	Tooltip: ""
+}
+
+FireflyBorageBadge: {
+	DisplayName: Firefly Borage Badge
+	Tooltip: ""
+}
+
+ForestMino: {
+	DisplayName: Forest Mino
+	Tooltip: In the Kelp Curtain, increases movement speed by 25% and makes enemies less likely to target you
+}
+
+ForsakenBoots: {
+	DisplayName: Forsaken Boots
+	Tooltip:
+		'''
+		8% increased movement speed
+		Allows the wearer to run fast
+		'Race against time'
+		'''
+}
+
+FragmentsOfWreckage: {
+	DisplayName: Fragments Of Wreckage
+	Tooltip: ""
+}
+
+FuneraryGoods: {
+	DisplayName: Funerary Goods
+	Tooltip: ""
+}
+
+FurnaceIronGloves: {
+	DisplayName: Furnace Iron Gloves
+	Tooltip: ""
+}
+
+GoldLiquidPupil: {
+	DisplayName: Gold Liquid Pupil
 	Tooltip: ""
 }
 
@@ -138,8 +166,66 @@ GoldRound: {
 	Tooltip: ""
 }
 
+GreenGel: {
+	DisplayName: Green Gel
+	Tooltip: ""
+}
+
+GuppyShell: {
+	DisplayName: Guppy Shell
+	Tooltip:
+		'''
+		5% reduced movement speed
+		While standing still, gain 10% damage reduction and 5% increased damage
+		'''
+}
+
+HardenedWitherbarkHeart: {
+	DisplayName: Hardened Witherbark Heart
+	Tooltip:
+		'''
+		10% reduced movement speed and 40% reduced sprint speed
+		Reduces the next enemy contact hit by 90%, then leaves you vulnerable for 10 seconds
+		While vulnerable, enemy contact hits deal 50% more damage
+		'''
+}
+
+HeatEmblem: {
+	DisplayName: Heat Emblem
+	Tooltip:
+		'''
+		Increases life regeneration
+		Taking damage has a 33% chance to set you on fire for 5 seconds
+		'''
+}
+
+HotAirBalloon: {
+	DisplayName: Hot Air Balloon
+	Tooltip: Increases jump height and leaves a trail of fire
+}
+
 HotPinkCrown: {
 	DisplayName: Hot Pink Crown
+	Tooltip: ""
+}
+
+IstafelsSunfireGrasp: {
+	DisplayName: Istafels Sunfire Grasp
+	Tooltip: ""
+}
+
+JellyBallInhibitor: {
+	DisplayName: Jelly Ball Inhibitor
+	Tooltip: ""
+}
+
+JungleVitamin: {
+	DisplayName: Jungle Vitamin
+	Tooltip: ""
+}
+
+LampWoodPollenBottle: {
+	DisplayName: Lamp Wood Pollen Bottle
 	Tooltip: ""
 }
 
@@ -148,8 +234,49 @@ LightPurplePen: {
 	Tooltip: ""
 }
 
+LivingWoodplate: {
+	DisplayName: Living Woodplate
+	Tooltip: Entering water grants 40 maximum life and 4 life regeneration per second for 30 seconds
+}
+
+ManaThermalPipeline: {
+	DisplayName: Mana Thermal Pipeline
+	Tooltip: ""
+}
+
 ManyWhiteFlower: {
 	DisplayName: Many White Flower
+	Tooltip: ""
+}
+
+MelterGear: {
+	DisplayName: Melter Gear
+	Tooltip:
+		'''
+		9% increased ranged attack speed and 2 defense
+		Hits have a 33% chance to set enemies on fire for 5 seconds
+		Hitting a burning enemy has a 33% chance to set you on fire for 5 seconds
+		The effect on the wearer has a 15-second cooldown
+		'''
+}
+
+MoltenCore: {
+	DisplayName: Molten Core
+	Tooltip:
+		'''
+		While afflicted with On Fire!, Hellfire, or Cursed Inferno:
+		Reduces damage taken and grants 5 defense
+		Increases damage, critical strike chance, and movement speed by 5%, and slightly increases jump speed
+		'''
+}
+
+MothEye: {
+	DisplayName: Moth Eye
+	Tooltip: ""
+}
+
+Odd8Ring: {
+	DisplayName: Odd8 Ring
 	Tooltip: ""
 }
 
@@ -163,8 +290,33 @@ OrangeStick: {
 	Tooltip: ""
 }
 
+OrfeoBoots: {
+	DisplayName: Orfeo Boots
+	Tooltip:
+		'''
+		Allows you to run fast
+		12% increased movement speed
+		Nearby creatures further increase your running and jumping speed
+		'''
+}
+
+OsmoticPressureMonitor: {
+	DisplayName: Osmotic Pressure Monitor
+	Tooltip: ""
+}
+
+PearlOfCyan: {
+	DisplayName: Pearl Of Cyan
+	Tooltip: ""
+}
+
 PinkFourPedal: {
 	DisplayName: Pink Four Pedal
+	Tooltip: ""
+}
+
+PlayerPenetrationTest: {
+	DisplayName: Player Penetration Test
 	Tooltip: ""
 }
 
@@ -178,8 +330,37 @@ PurpleReedHalo: {
 	Tooltip: ""
 }
 
+RadialCarapace: {
+	DisplayName: Radial Carapace
+	Tooltip:
+		'''
+		4 additional defense and 35% increased movement speed while submerged
+		5% reduced movement speed on land
+		'''
+}
+
+RecoveryBand: {
+	DisplayName: Recovery Band
+	Tooltip: ""
+}
+
+RedGel: {
+	DisplayName: Red Gel
+	Tooltip: ""
+}
+
 RedTriangle: {
 	DisplayName: Red Triangle
+	Tooltip: ""
+}
+
+RingOfMatter: {
+	DisplayName: Ring Of Matter
+	Tooltip: ""
+}
+
+ShacklesBall: {
+	DisplayName: Shackles Ball
 	Tooltip: ""
 }
 
@@ -188,8 +369,83 @@ SilverCupFlower: {
 	Tooltip: ""
 }
 
+SilverWing: {
+	DisplayName: Silver Wing
+	Tooltip: ""
+}
+
+SkullCollection: {
+	DisplayName: Skull Collection
+	Tooltip: ""
+}
+
+SnowPineLockBox: {
+	DisplayName: Snow Pine Lock Box
+	Tooltip: ""
+}
+
+SpikedParma: {
+	DisplayName: Spicy Shield
+	Tooltip: ""
+}
+
+StaminaItem: {
+	DisplayName: Stamina Item
+	Tooltip: ""
+}
+
+TelescopicPlatformAlpha: {
+	DisplayName: Telescopic Platform Alpha
+	Tooltip: ""
+}
+
+TelescopicPlatformBeta: {
+	DisplayName: Telescopic Platform Beta
+	Tooltip: ""
+}
+
+TheGreenSolar: {
+	DisplayName: The Green Solar
+	Tooltip:
+		'''
+		Increases maximum life by 20
+		Prevents death once every 10 minutes, immobilizing you in a state of rebirth
+		While reborn, you are immune to enemy contact and projectiles and recover 5 life per second until reaching 200 life, or full life if lower
+		Sets enemies within 5 tiles on fire for 10 seconds during rebirth
+		'''
+}
+
+ThermalConductor: {
+	DisplayName: Thermal Conductor
+	Tooltip:
+		'''
+		Increases maximum mana by 60 and mana cost by 10%
+		While below 20% mana, each second has a 33% chance to restore 100 mana and inflict Cursed Inferno for 3 seconds
+		'''
+}
+
+ThornTurtleShell: {
+	DisplayName: Thorn Turtle Shell
+	Tooltip:
+		'''
+		Reflects damage back at attackers
+		5% increased damage reduction
+		7% reduced movement speed and 5% reduced maximum running speed
+		'''
+}
+
 ThreeColorCrown: {
 	DisplayName: Three Color Crown
+	Tooltip: ""
+}
+
+TuskLace: {
+	DisplayName: Tusk Lace
+	Tooltip: ""
+}
+
+WalnutClip: {
+	DisplayName: Walnut Clip
 	Tooltip: ""
 }
 
@@ -210,195 +466,5 @@ WhiteWoodFlower: {
 
 YellowBellFlower: {
 	DisplayName: Yellow Bell Flower
-	Tooltip: ""
-}
-
-CrystalSkull: {
-	DisplayName: Crystal Skull
-	Tooltip: ""
-}
-
-AnemoShell: {
-	DisplayName: Anemo Shell
-	Tooltip: ""
-}
-
-BloodTearCrystalCrown: {
-	DisplayName: Blood Tear Crystal Crown
-	Tooltip: ""
-}
-
-CelesteStoneWaistPendant: {
-	DisplayName: Celeste Stone Waist Pendant
-	Tooltip: ""
-}
-
-CelticSeal: {
-	DisplayName: Celtic Seal
-	Tooltip: ""
-}
-
-ConcealSpell: {
-	DisplayName: Conceal Spell
-	Tooltip: ""
-}
-
-CyanVineRing: {
-	DisplayName: Cyan Vine Ring
-	Tooltip: ""
-}
-
-ForsakenBoots: {
-	DisplayName: Forsaken Boots
-	Tooltip: ""
-}
-
-FragmentsOfWreckage: {
-	DisplayName: Fragments Of Wreckage
-	Tooltip: ""
-}
-
-FuneraryGoods: {
-	DisplayName: Funerary Goods
-	Tooltip: ""
-}
-
-FurnaceIronGloves: {
-	DisplayName: Furnace Iron Gloves
-	Tooltip: ""
-}
-
-IstafelsSunfireGrasp: {
-	DisplayName: Istafels Sunfire Grasp
-	Tooltip: ""
-}
-
-JellyBallInhibitor: {
-	DisplayName: Jelly Ball Inhibitor
-	Tooltip: ""
-}
-
-LampWoodPollenBottle: {
-	DisplayName: Lamp Wood Pollen Bottle
-	Tooltip: ""
-}
-
-ManaThermalPipeline: {
-	DisplayName: Mana Thermal Pipeline
-	Tooltip: ""
-}
-
-RecoveryBand: {
-	DisplayName: Recovery Band
-	Tooltip: ""
-}
-
-RingOfMatter: {
-	DisplayName: Ring Of Matter
-	Tooltip: ""
-}
-
-ShacklesBall: {
-	DisplayName: Shackles Ball
-	Tooltip: ""
-}
-
-SkullCollection: {
-	DisplayName: Skull Collection
-	Tooltip: ""
-}
-
-SpikedParma: {
-	DisplayName: Spicy Shield
-	Tooltip: ""
-}
-
-TelescopicPlatformAlpha: {
-	DisplayName: Telescopic Platform Alpha
-	Tooltip: ""
-}
-
-TelescopicPlatformBeta: {
-	DisplayName: Telescopic Platform Beta
-	Tooltip: ""
-}
-
-HeatEmblem: {
-	DisplayName: Heat Emblem
-	Tooltip: ""
-}
-
-HotAirBalloon: {
-	DisplayName: Hot Air Balloon
-	Tooltip: ""
-}
-
-MelterGear: {
-	DisplayName: Melter Gear
-	Tooltip: ""
-}
-
-MoltenCore: {
-	DisplayName: Molten Core
-	Tooltip: ""
-}
-
-ThermalConductor: {
-	DisplayName: Thermal Conductor
-	Tooltip: ""
-}
-
-AntiCorrosiveSole: {
-	DisplayName: Anti Corrosive Sole
-	Tooltip: ""
-}
-
-CorrodedPearl: {
-	DisplayName: Corroded Pearl
-	Tooltip: ""
-}
-
-EmptyFowlbeast: {
-	DisplayName: Empty Fowlbeast
-	Tooltip: ""
-}
-
-ForestMino: {
-	DisplayName: Forest Mino
-	Tooltip: ""
-}
-
-GuppyShell: {
-	DisplayName: Guppy Shell
-	Tooltip: ""
-}
-
-HardenedWitherbarkHeart: {
-	DisplayName: Hardened Witherbark Heart
-	Tooltip: ""
-}
-
-LivingWoodplate: {
-	DisplayName: Living Woodplate
-	Tooltip: ""
-}
-
-OrfeoBoots: {
-	DisplayName: Orfeo Boots
-	Tooltip: ""
-}
-
-RadialCarapace: {
-	DisplayName: Radial Carapace
-	Tooltip: ""
-}
-
-TheGreenSolar: {
-	DisplayName: The Green Solar
-	Tooltip: ""
-}
-
-ThornTurtleShell: {
-	DisplayName: Thorn Turtle Shell
 	Tooltip: ""
 }

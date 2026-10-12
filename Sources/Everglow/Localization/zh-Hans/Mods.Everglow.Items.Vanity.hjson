@@ -2,3 +2,8 @@ Acytaea_horn: {
 	DisplayName: 雅斯塔亚的角
 	Tooltip: ""
 }
+
+WitheredMask: {
+	DisplayName: 枯萎面具
+	Tooltip: ""
+}

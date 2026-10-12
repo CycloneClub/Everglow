@@ -26,6 +26,12 @@ public static class ColorDefinition
 		_ => new Rectangle(0, 0, 33, 33),
 	};
 
+	public static Rectangle GetQuestTypeGemFrame(QuestType? questType)
+	{
+		int frameIndex = GetGemFrame(questType).X / 33;
+		return new Rectangle(26 * frameIndex, 0, 26, 26);
+	}
+
 	public static Rectangle GetQuestStateFrame(QuestViewState? questState) => questState switch
 	{
 		QuestViewState.Active => new Rectangle(139, 36, 17, 67),
@@ -40,12 +46,15 @@ public static class ColorDefinition
 	public static Rectangle GetQuestStateGemFrame(QuestViewState? questState)
 	{
 		const int FrameSize = 26;
-		const int LockedFrameIndex = 5;
 		int frameIndex = questState switch
 		{
 			null => 0,
-			QuestViewState.Locked => LockedFrameIndex,
-			_ => (int)questState.Value,
+			QuestViewState.Completed => 1,
+			QuestViewState.Locked => 2,
+			QuestViewState.Failed => 3,
+			QuestViewState.Available => 4,
+			QuestViewState.Active => 5,
+			_ => 0,
 		};
 		return new Rectangle(FrameSize * frameIndex, FrameSize, FrameSize, FrameSize);
 	}

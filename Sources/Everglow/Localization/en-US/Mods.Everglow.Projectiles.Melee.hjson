@@ -1,83 +1,248 @@
-AmberHeadedSpear: {
-	DisplayName: Amber Headed Spear
-}
-
-AmethystHeadedSpear: {
-	DisplayName: Amethyst Headed Spear
-}
-
-CeremonialBladeProj: {
-	DisplayName: Ceremonial Blade Proj
-}
-
-CyanVineShortsword_Proj: {
-	DisplayName: Cyan Vine Shortsword_ Proj
-}
-
-HyperockSpearProj: {
-	DisplayName: Hyperock Spear Proj
-}
-
-LampWoodYoyo: {
-	DisplayName: Lamp Wood Yoyo
-}
-
-MagicalBoomerangProj: {
-	DisplayName: Magical Boomerang Proj
-}
-
-MagicalBoomerangSubProj: {
-	DisplayName: Magical Boomerang Sub Proj
-}
-
-MiningPowerPickaxe_Proj: {
-	DisplayName: Mining Power Pickaxe_ Proj
-}
-
-QuenchingBladeProj_Smash: {
-	DisplayName: Quenching Blade Proj_ Smash
-}
-
-RodSpear: {
-	DisplayName: Rod Spear
-}
-
-TopazHeadedSpear: {
-	DisplayName: Topaz Headed Spear
-}
-
-TwilightEucalyptusBoomerangKnift_Projectile: {
-	DisplayName: Twilight Eucalyptus Boomerang Knift_ Projectile
-}
-
-AcroporaThumpEff: {
-	DisplayName: Acropora Thump Eff
-}
-
-CharonDoubleSickle: {
-	DisplayName: Charon Double Sickle
-}
-
-TrueDeathSickleHit: {
-	DisplayName: True Death Sickle Hit
-}
-
-TrueDeathSickleManager: {
-	DisplayName: True Death Sickle Manager
-}
-
-TrueDeathSickle_Blade: {
-	DisplayName: True Death Sickle_ Blade
-}
-
-TrueDeathSickle_MoonBlade: {
-	DisplayName: True Death Sickle_ Moon Blade
-}
-
-TrueDeathSickle_RightClick: {
-	DisplayName: True Death Sickle_ Right Click
-}
-
-TrueDeathSickle_SickleBack: {
-	DisplayName: True Death Sickle_ Sickle Back
-}
+AcroporaSpear_proj.DisplayName: Acropora Spear_proj
+AcroporaThumpEff.DisplayName: Acropora Thump Eff
+AcytaeaSword_projectile.DisplayName: Acytaea Sword_projectile
+AdamantiteClub_round.DisplayName: Adamantite Club_round
+AdamantiteClub_smash.DisplayName: Adamantite Club_smash
+AdamantiteClub.DisplayName: Adamantite Club
+AmberHeadedSpear.DisplayName: Amber Headed Spear
+AmethystHeadedSpear.DisplayName: Amethyst Headed Spear
+ArmOfGiantTreeHeld.DisplayName: "{$Mods.Everglow.Items.Weapons.Melee.ArmOfGiantTree.DisplayName}"
+BladeOfGreenMoss_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Melee.BladeOfGreenMoss.DisplayName}"
+BloodGoldBayonet_Pro_Stab.DisplayName: Blood Gold Bayonet_ Pro_ Stab
+BloodGoldBayonet_Pro.DisplayName: Blood Gold Bayonet_ Pro
+BloodyBoneYoyo.DisplayName: Bloody Bone Yoyo
+BlossomThorn_Pro_Stab.DisplayName: Blossom Thorn_ Pro_ Stab
+BlossomThorn_Pro.DisplayName: Blossom Thorn_ Pro
+BlossomThorn_Spike.DisplayName: Blossom Thorn_ Spike
+BlueRibbonBayonet_Pro_Stab.DisplayName: Blue Ribbon Bayonet_ Pro_ Stab
+BlueRibbonBayonet_Pro.DisplayName: Blue Ribbon Bayonet_ Pro
+BorealWoodClub_smash.DisplayName: Boreal Wood Club_smash
+BorealWoodClub.DisplayName: Boreal Wood Club
+ButterflyDreamFriendly.DisplayName: Butterfly Dream Friendly
+CactusBallProj.DisplayName: Cactus Ball Proj
+CactusBallSpike.DisplayName: Cactus Ball Spike
+CactusClub_smash.DisplayName: Cactus Club_smash
+CactusClub.DisplayName: Cactus Club
+CeremonialBladeProj.DisplayName: Ceremonial Blade Proj
+CharonDoubleSickle.DisplayName: Charon Double Sickle
+CheeseYoyo.DisplayName: Cheese Yoyo
+ChlorophyteClub_fly_2.DisplayName: Chlorophyte Club_fly_2
+ChlorophyteClub_fly.DisplayName: Chlorophyte Club_fly
+ChlorophyteClub_smash.DisplayName: Chlorophyte Club_smash
+ChlorophyteClub.DisplayName: Chlorophyte Club
+CobaltClub_falling_Shoot.DisplayName: Cobalt Club_falling_ Shoot
+CobaltClub_falling.DisplayName: Cobalt Club_falling
+CobaltClub_smash.DisplayName: Cobalt Club_smash
+CobaltClub.DisplayName: Cobalt Club
+ComingGhost_Slash.DisplayName: Coming Ghost_ Slash
+ComingGhost.DisplayName: Coming Ghost
+CopperClub_smash.DisplayName: Copper Club_smash
+CopperClub.DisplayName: Copper Club
+CopperStabbingSword_Pro_Stab.DisplayName: Copper Stabbing Sword_ Pro_ Stab
+CopperStabbingSword_Pro.DisplayName: Copper Stabbing Sword_ Pro
+CorruptClub_smash.DisplayName: Corrupt Club_smash
+CorruptClub.DisplayName: Corrupt Club
+CrimsonClub_smash.DisplayName: Crimson Club_smash
+CrimsonClub.DisplayName: Crimson Club
+CrutchBayonet_Pro_Stab.DisplayName: Crutch Bayonet_ Pro_ Stab
+CrutchBayonet_Pro.DisplayName: Crutch Bayonet_ Pro
+CrystalClub_fly.DisplayName: Crystal Club_fly
+CrystalClub_smash.DisplayName: Crystal Club_smash
+CrystalClub.DisplayName: Crystal Club
+CurseClub_fly.DisplayName: Curse Club_fly
+CurseClub_smash.DisplayName: Curse Club_smash
+CurseClub.DisplayName: Curse Club
+CurseFlameStabbingSword_Pro_Stab.DisplayName: Curse Flame Stabbing Sword_ Pro_ Stab
+CurseFlameStabbingSword_Pro.DisplayName: Curse Flame Stabbing Sword_ Pro
+CyanFrostProj.DisplayName: Cyan Frost Proj
+CyanVineShortsword_Proj.DisplayName: Cyan Vine Shortsword_ Proj
+CyanVineSword_Projectile.DisplayName: Cyan Vine Sword_ Projectile
+DarkFan.DisplayName: Dark Fan
+DarkMassacreDagger_Projectile_thrust.DisplayName: Dark Massacre Dagger_ Projectile_thrust
+DarkMassacreDagger_Projectile.DisplayName: Dark Massacre Dagger_ Projectile
+DashingLightEff.DisplayName: Dashing Light Eff
+DevilHeartBayonet_proj_stab.DisplayName: "{$Mods.Everglow.Items.Weapons.Melee.DevilHeartBayonet.DisplayName}"
+DevilHeartBayonet_proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Melee.DevilHeartBayonet.DisplayName}"
+DivineAscendProj.DisplayName: Divine Ascend Proj
+DragonScaleHammerProj.DisplayName: Dragon Scale Hammer Proj
+DreamStar_Explosion.DisplayName: Dream Star_ Explosion
+DreamStar_FallenStar.DisplayName: Dream Star_ Fallen Star
+DreamStar_Pro_Stab.DisplayName: Dream Star_ Pro_ Stab
+DreamStar_Pro.DisplayName: Dream Star_ Pro
+EbonwoodClub_smash.DisplayName: Ebonwood Club_smash
+EbonwoodClub.DisplayName: Ebonwood Club
+EnchantedBayonet_beam.DisplayName: Enchanted Bayonet_beam
+EnchantedBayonet_Pro_Stab.DisplayName: Enchanted Bayonet_ Pro_ Stab
+EnchantedBayonet_Pro.DisplayName: Enchanted Bayonet_ Pro
+EternalNight_Pro_Stab.DisplayName: Eternal Night_ Pro_ Stab
+EternalNight_Pro.DisplayName: Eternal Night_ Pro
+EternalNight_shadow.DisplayName: Eternal Night_shadow
+EvilHalbertBarnacle_proj_shuttle.DisplayName: "{$Mods.Everglow.Items.Weapons.Melee.EvilHalbertBarnacle.DisplayName}"
+EvilHalbertBarnacle_proj_Thrust.DisplayName: "{$Mods.Everglow.Items.Weapons.Melee.EvilHalbertBarnacle.DisplayName}"
+EvilHalbertBarnacle_proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Melee.EvilHalbertBarnacle.DisplayName}"
+EvilHalbertBarnacle_ShootShuttle.DisplayName: "{$Mods.Everglow.Items.Weapons.Melee.EvilHalbertBarnacle.DisplayName}"
+ExampleClubProj.DisplayName: Example Club Proj
+ExampleClubSmash.DisplayName: Example Club Smash
+ExampleEverglowYoyo_Projectile.DisplayName: Example Everglow Yoyo_ Projectile
+ExampleMeleeProjectile.DisplayName: Example Melee Projectile
+ExampleStabbingSword_Pro_Stab.DisplayName: Example Stabbing Sword_ Pro_ Stab
+ExampleStabbingSword_Pro.DisplayName: Example Stabbing Sword_ Pro
+FocusRay.DisplayName: Focus Ray
+FryingPan.DisplayName: Frying Pan
+GhostHit.DisplayName: Ghost Hit
+Glow_Fall.DisplayName: Glow_ Fall
+Glow.DisplayName: Glow
+GlowMoonBlade_ash.DisplayName: Glow Moon Blade_ash
+GlowMoonBlade.DisplayName: Glow Moon Blade
+GlowWoodSword.DisplayName: Glow Wood Sword
+GoldClub_smash.DisplayName: Gold Club_smash
+GoldClub.DisplayName: Gold Club
+GoldenCrack.DisplayName: Golden Crack
+GoldenStabbingSword_Pro_Stab.DisplayName: Golden Stabbing Sword_ Pro_ Stab
+GoldenStabbingSword_Pro.DisplayName: Golden Stabbing Sword_ Pro
+GoldRound.DisplayName: Gold Round
+GoldRoundYoyo.DisplayName: Gold Round Yoyo
+GoldShield_backTextureSubProj.DisplayName: Gold Shield_back Texture Sub Proj
+GoldShield.DisplayName: Gold Shield
+HolyBayonet_Pro_Stab.DisplayName: Holy Bayonet_ Pro_ Stab
+HolyBayonet_Pro.DisplayName: Holy Bayonet_ Pro
+HolyBayonet_Slash.DisplayName: Holy Bayonet_ Slash
+HyperockSpearProj.DisplayName: Hyperock Spear Proj
+IchorBayonet_Pro_Stab.DisplayName: Ichor Bayonet_ Pro_ Stab
+IchorBayonet_Pro.DisplayName: Ichor Bayonet_ Pro
+IchorClub_fly.DisplayName: Ichor Club_fly
+IchorClub_smash.DisplayName: Ichor Club_smash
+IchorClub.DisplayName: Ichor Club
+IronClub_smash.DisplayName: Iron Club_smash
+IronClub.DisplayName: Iron Club
+IronStabbingSword_Pro_Stab.DisplayName: Iron Stabbing Sword_ Pro_ Stab
+IronStabbingSword_Pro.DisplayName: Iron Stabbing Sword_ Pro
+LampWoodSword_Projectile.DisplayName: Lamp Wood Sword_ Projectile
+LampWoodYoyo.DisplayName: Lamp Wood Yoyo
+LanternSword_Proj.DisplayName: Lantern Sword_ Proj
+LanternSword_Slash.DisplayName: Lantern Sword_ Slash
+LanternYoyo_fireYoyo.DisplayName: Lantern Yoyo_fire Yoyo
+LanternYoyoProjectile.DisplayName: Lantern Yoyo Projectile
+LeadClub_smash.DisplayName: Lead Club_smash
+LeadClub.DisplayName: Lead Club
+LeadStabbingSword_Pro_Stab.DisplayName: Lead Stabbing Sword_ Pro_ Stab
+LeadStabbingSword_Pro.DisplayName: Lead Stabbing Sword_ Pro
+MagicalBoomerangProj.DisplayName: Magical Boomerang Proj
+MagicalBoomerangSubProj.DisplayName: Magical Boomerang Sub Proj
+MeatLantern_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Melee.MeatLantern.DisplayName}"
+MechanicMosquito_Mosquito.DisplayName: Mechanic Mosquito_ Mosquito
+MechanicMosquito_Pro_Stab.DisplayName: Mechanic Mosquito_ Pro_ Stab
+MechanicMosquito_Pro.DisplayName: Mechanic Mosquito_ Pro
+MechanismHalberd_Proj.DisplayName: Mechanism Halberd_ Proj
+MechanismSpike.DisplayName: Mechanism Spike
+MeleeHit.DisplayName: Melee Hit
+MeleeHit2.DisplayName: Melee Hit2
+MeteorClub_smash.DisplayName: Meteor Club_smash
+MeteorClub.DisplayName: Meteor Club
+MiningPowerPickaxe_Proj.DisplayName: Mining Power Pickaxe_ Proj
+MothYoyoProjectile.DisplayName: Moth Yoyo Projectile
+MothYoyoSub.DisplayName: Moth Yoyo Sub
+MythrilClub_smash.DisplayName: Mythril Club_smash
+MythrilClub_smashMagicBall.DisplayName: Mythril Club_smash Magic Ball
+MythrilClub.DisplayName: Mythril Club
+OrichalcumClub_smash.DisplayName: Orichalcum Club_smash
+OrichalcumClub.DisplayName: Orichalcum Club
+OrichalcumPedal_slash.DisplayName: Orichalcum Pedal_slash
+PalladiumClub_small.DisplayName: Palladium Club_small
+PalladiumClub_smash.DisplayName: Palladium Club_smash
+PalladiumClub.DisplayName: Palladium Club
+PalmWoodClub_smash.DisplayName: Palm Wood Club_smash
+PalmWoodClub.DisplayName: Palm Wood Club
+PearlwoodClub_smash.DisplayName: Pearlwood Club_smash
+PearlwoodClub.DisplayName: Pearlwood Club
+PiercingStarlight_new_Stab.DisplayName: Piercing Starlight_new_ Stab
+PiercingStarlight_new.DisplayName: Piercing Starlight_new
+PineStab_Pro_Stab.DisplayName: Pine Stab_ Pro_ Stab
+PineStab_Pro.DisplayName: Pine Stab_ Pro
+PlanetBeFall_Proj.DisplayName: Planet Be Fall_ Proj
+PlanetBefallArray.DisplayName: Planet Befall Array
+PlanetBefallExplosion.DisplayName: Planet Befall Explosion
+PlatinumClub_smash.DisplayName: Platinum Club_smash
+PlatinumClub.DisplayName: Platinum Club
+PlatinumStabbingSword_Pro_Stab.DisplayName: Platinum Stabbing Sword_ Pro_ Stab
+PlatinumStabbingSword_Pro.DisplayName: Platinum Stabbing Sword_ Pro
+PrimordialJadeWinged_Spear_thrust.DisplayName: Primordial Jade Winged_ Spear_thrust
+PrimordialJadeWinged_Spear_thrust2.DisplayName: Primordial Jade Winged_ Spear_thrust2
+PrimordialJadeWinged_Spear.DisplayName: Primordial Jade Winged_ Spear
+PrimordialJadeWinged_SpearDown.DisplayName: Primordial Jade Winged_ Spear Down
+PrimordialJadeWinged_SpearSpice.DisplayName: Primordial Jade Winged_ Spear Spice
+PrisonFireBayonet_Pro_Stab.DisplayName: Prison Fire Bayonet_ Pro_ Stab
+PrisonFireBayonet_Pro.DisplayName: Prison Fire Bayonet_ Pro
+QuenchingBladeProj_Smash.DisplayName: Quenching Blade Proj_ Smash
+QuenchingBladeProj.DisplayName: Quenching Blade Proj
+QuetzalsWishBlade.DisplayName: Quetzal's Wish
+RedRibbonBayonet_Pro_Stab.DisplayName: Red Ribbon Bayonet_ Pro_ Stab
+RedRibbonBayonet_Pro.DisplayName: Red Ribbon Bayonet_ Pro
+ResistanceWireBayonet_proj_stab.DisplayName: Resistance Wire Bayonet_proj_stab
+ResistanceWireBayonet_proj.DisplayName: Resistance Wire Bayonet_proj
+RichMahoganyClub_smash.DisplayName: Rich Mahogany Club_smash
+RichMahoganyClub.DisplayName: Rich Mahogany Club
+RodSpear.DisplayName: Rod Spear
+RottenGoldBayonet_Mark.DisplayName: Rotten Gold Bayonet_ Mark
+RottenGoldBayonet_Pro_Stab.DisplayName: Rotten Gold Bayonet_ Pro_ Stab
+RottenGoldBayonet_Pro.DisplayName: Rotten Gold Bayonet_ Pro
+RottenGoldBayonet_Slash.DisplayName: Rotten Gold Bayonet_ Slash
+ScaleWingBladeProj.DisplayName: Scale Wing Blade Proj
+ScarpasScissorsLeft.DisplayName: Scarpas Scissors Left
+ScarpasScissorsProj.DisplayName: Scarpas Scissors Proj
+ScarpasScissorsRight.DisplayName: Scarpas Scissors Right
+ShadewoodClub_smash.DisplayName: Shadewood Club_smash
+ShadewoodClub.DisplayName: Shadewood Club
+ShadowEulogistProj.DisplayName: Shadow Eulogist Proj
+SilverClub_smash.DisplayName: Silver Club_smash
+SilverClub.DisplayName: Silver Club
+SilverStabbingSword_Pro_Stab.DisplayName: Silver Stabbing Sword_ Pro_ Stab
+SilverStabbingSword_Pro.DisplayName: Silver Stabbing Sword_ Pro
+SpikeClub_smash.DisplayName: Spike Club_smash
+SpikeClub.DisplayName: Spike Club
+SpikeClubSlash.DisplayName: Spike Club Slash
+StarDancer_smash.DisplayName: Star Dancer_smash
+StarDancer_starProj.DisplayName: Star Dancer_star Proj
+StarDancer_starProj2.DisplayName: Star Dancer_star Proj2
+StarDancer.DisplayName: Star Dancer
+StonePost.DisplayName: Stone Post
+Sunflower.DisplayName: Sunflower
+SwordfishBeak_Pro_Stab.DisplayName: Swordfish Beak_ Pro_ Stab
+SwordfishBeak_Pro.DisplayName: Swordfish Beak_ Pro
+TinClub_smash.DisplayName: Tin Club_smash
+TinClub.DisplayName: Tin Club
+TinStabbingSword_Pro_Stab.DisplayName: Tin Stabbing Sword_ Pro_ Stab
+TinStabbingSword_Pro.DisplayName: Tin Stabbing Sword_ Pro
+Titanium_Fragment.DisplayName: Titanium_ Fragment
+TitaniumClub_smash.DisplayName: Titanium Club_smash
+TitaniumClub.DisplayName: Titanium Club
+ToothKnife.DisplayName: Tooth Knife
+ToothSpear_proj.DisplayName: Tooth Spear_proj
+TopazHeadedSpear.DisplayName: Topaz Headed Spear
+TrueDeathSickle_Blade.DisplayName: True Death Sickle_ Blade
+TrueDeathSickle_MoonBlade.DisplayName: True Death Sickle_ Moon Blade
+TrueDeathSickle_RightClick.DisplayName: True Death Sickle_ Right Click
+TrueDeathSickle_SickleBack.DisplayName: True Death Sickle_ Sickle Back
+TrueDeathSickleHit.DisplayName: True Death Sickle Hit
+TrueDeathSickleManager.DisplayName: True Death Sickle Manager
+TungstenClub_smash.DisplayName: Tungsten Club_smash
+TungstenClub.DisplayName: Tungsten Club
+TungstenStabbingSword_Pro_Stab.DisplayName: Tungsten Stabbing Sword_ Pro_ Stab
+TungstenStabbingSword_Pro.DisplayName: Tungsten Stabbing Sword_ Pro
+TuskPin.DisplayName: Tusk Pin
+TuskSlash.DisplayName: Tusk Slash
+TwilightEucalyptusBoomerangKnift_Projectile.DisplayName: Twilight Eucalyptus Boomerang Knift_ Projectile
+VegetationBayonet_Pro_Stab.DisplayName: Vegetation Bayonet_ Pro_ Stab
+VegetationBayonet_Pro.DisplayName: Vegetation Bayonet_ Pro
+VertebralSpur_Pro_Stab.DisplayName: Vertebral Spur_ Pro_ Stab
+VertebralSpur_Pro.DisplayName: Vertebral Spur_ Pro
+VortexVanquisher.DisplayName: Vortex Vanquisher
+VortexVanquisher2.DisplayName: Vortex Vanquisher2
+VortexVanquisher3.DisplayName: Vortex Vanquisher3
+VortexVanquisherThump.DisplayName: Vortex Vanquisher Thump
+WoodenClub_smash.DisplayName: Wooden Club_smash
+WoodenClub.DisplayName: Wooden Club
+World.DisplayName: World
+YoenLeZed_Pro_Stab_HitTile.DisplayName: Yoen Le Zed_ Pro_ Stab_ Hit Tile
+YoenLeZed_Pro_Stab.DisplayName: Yoen Le Zed_ Pro_ Stab
+YoenLeZed_Pro.DisplayName: Yoen Le Zed_ Pro

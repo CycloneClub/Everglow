@@ -6,6 +6,8 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 
 public class GlowWoodSword : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	private FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
 
 	public override void SetDefaults()

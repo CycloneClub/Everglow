@@ -1,4 +1,8 @@
 JellyBubbleItem: {
-	DisplayName: Jelly Bubble Item
-	Tooltip: ""
+	DisplayName: Jelly Bubble
+	Tooltip:
+		'''
+		Summons a jelly bubble mount
+		'Now you can explore the heights above'
+		'''
 }

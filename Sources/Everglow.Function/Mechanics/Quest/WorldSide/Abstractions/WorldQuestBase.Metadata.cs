@@ -6,11 +6,15 @@ public abstract partial class WorldQuestBase
 {
 	public virtual string Name => GetType().Name;
 
+	public virtual string LocalizationKey => $"Mods.Everglow.Quests.{Name}";
+
 	public virtual string DisplayName => Name;
 
 	public virtual string Description => string.Empty;
 
 	public virtual string Hint => string.Empty;
+
+	public virtual QuestHideMode HideMode => QuestHideMode.None;
 
 	public virtual QuestType Type => QuestType.None;
 
@@ -19,11 +23,6 @@ public abstract partial class WorldQuestBase
 	public List<Item> RewardItems { get; protected set; } = [];
 
 	public virtual int TimeLimit => 0;
-
-	/// <summary>
-	/// Represents the quest unlock condition is visible before unlocked.
-	/// </summary>
-	public virtual bool Visible => true;
 
 	public virtual bool CanUnlock() => true;
 

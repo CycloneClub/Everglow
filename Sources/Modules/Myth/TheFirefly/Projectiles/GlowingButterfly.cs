@@ -6,6 +6,8 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 
 public class GlowingButterfly : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.SummonProjectiles;
+
 	private FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
 
 	public override void SetStaticDefaults()

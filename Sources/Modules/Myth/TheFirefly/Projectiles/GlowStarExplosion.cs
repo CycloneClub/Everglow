@@ -2,6 +2,8 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 
 public class GlowStarExplosion : ModProjectile, IWarpProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MiscsProjectiles;
+
 	public override string Texture => ModAsset.GlowStar_Mod;
 
 	public override void SetDefaults()

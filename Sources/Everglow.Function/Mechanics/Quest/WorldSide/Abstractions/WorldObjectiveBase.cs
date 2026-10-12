@@ -2,6 +2,7 @@ using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Structure;
 using Everglow.Commons.Mechanics.Quest.Presentation.Icons;
 using Terraria.ModLoader.IO;
+using Terraria.Localization;
 
 namespace Everglow.Commons.Mechanics.Quest.WorldSide.Abstractions;
 
@@ -13,17 +14,23 @@ public abstract class WorldObjectiveBase : IDeltaSyncObjective
 	{
 	}
 
+	public event Action<WorldObjectiveBase> OnRewardRequested;
+
 	public bool Completed { get; private set; }
 
 	public QuestTimer Timer { get; private set; }
 
 	public bool IsTimedOut => Timer?.IsExpired == true;
 
+	public bool IsRetriable { get; private set; }
+
 	internal bool CanProgress => !Completed && !IsTimedOut;
 
 	public int ObjectiveID { get; set; }
 
-	public string Description { get; private set; } = string.Empty;
+	public string LocalizationKey { get; set; } = string.Empty;
+
+	public string Description => GetText("Description");
 
 	public virtual float Progress { get; } = 1f;
 
@@ -36,15 +43,19 @@ public abstract class WorldObjectiveBase : IDeltaSyncObjective
 
 	public virtual bool NeedDeltaSync { get; protected set; } = false;
 
-	public WorldObjectiveBase WithDescription(string description)
+	/// <summary>
+	/// Adds reward items and returns this objective for fluent configuration.
+	/// </summary>
+	public WorldObjectiveBase WithRewards(params Item[] rewards)
 	{
-		Description = description;
+		RewardItems.AddRange(rewards);
 		return this;
 	}
 
-	public WorldObjectiveBase WithTimeLimit(int timeLimit)
+	public WorldObjectiveBase WithTimeLimit(int timeLimit, bool retriable = true)
 	{
 		Timer = new QuestTimer(timeLimit);
+		IsRetriable = retriable;
 		return this;
 	}
 
@@ -70,19 +81,44 @@ public abstract class WorldObjectiveBase : IDeltaSyncObjective
 	/// </summary>
 	public virtual void Complete()
 	{
-		if (!Completed)
+		if (Completed)
 		{
-			if (!RewardClaimed)
-			{
-				foreach (var item in RewardItems)
-				{
-					Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_Misc(WorldQuestBase.RewardItemsSourceContext), item, item.stack);
-				}
+			return;
+		}
 
-				RewardClaimed = true;
-			}
+		Completed = true;
+		if (RewardClaimed)
+		{
+			return;
+		}
+		if (RewardItems.Count == 0)
+		{
+			RewardClaimed = true;
+			return;
+		}
 
-			Completed = true;
+		// 客户端的进度推演不能自行发奖；只响应服务端奖励包。
+		if (Main.netMode == NetmodeID.MultiplayerClient)
+		{
+			return;
+		}
+
+		RewardClaimed = true;
+		if (Main.netMode == NetmodeID.SinglePlayer)
+		{
+			GiveRewards(Main.LocalPlayer);
+		}
+		else if (Main.netMode == NetmodeID.Server)
+		{
+			OnRewardRequested?.Invoke(this);
+		}
+	}
+
+	public void GiveRewards(Player player)
+	{
+		foreach (var item in RewardItems)
+		{
+			player.QuickSpawnItem(player.GetSource_Misc(WorldQuestBase.RewardItemsSourceContext), item, item.stack);
 		}
 	}
 
@@ -103,7 +139,13 @@ public abstract class WorldObjectiveBase : IDeltaSyncObjective
 
 	public abstract void GetObjectivesIcon(QuestIconGroup iconGroup);
 
-	public abstract string GetObjectiveText();
+	public string GetText(string field)
+	{
+		string key = LocalizationKey + "." + field;
+		return Language.Exists(key) ? Language.GetTextValue(key) : string.Empty;
+	}
+
+	public virtual string GetObjectiveText() => GetText("ObjectiveText");
 
 	public virtual void LoadData(TagCompound tag)
 	{

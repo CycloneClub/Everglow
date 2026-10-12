@@ -5,6 +5,8 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee.Clubs;
 
 public class AdamantiteClub_round_slash : ModProjectile, IWarpProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MiscsProjectiles;
+
 	public override string Texture => Commons.ModAsset.StabbingProjectile_Mod;
 
 	private Vector2 startCenter;

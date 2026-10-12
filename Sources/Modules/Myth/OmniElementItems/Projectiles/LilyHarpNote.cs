@@ -5,6 +5,8 @@ namespace Everglow.Myth.OmniElementItems.Projectiles;
 
 public class LilyHarpNote : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override void SetStaticDefaults()
 	{
 	}

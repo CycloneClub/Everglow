@@ -1,3 +1,4 @@
+using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.Hooks;
 using Everglow.Commons.Mechanics.Quest.PlayerSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.Presentation.Icons;
@@ -47,10 +48,10 @@ public class ConsumeItemObjective : PlayerObjectiveBase
 		if (ItemTypes.Count > 1)
 		{
 			var itemString = string.Join(' ', ItemTypes.ConvertAll(i => ItemDrawer.Create(i)));
-			return $"消耗{itemString}合计{ItemCount}个 {progress}";
+			return QuestText.Get("Objectives.ConsumeAny", itemString, ItemCount, progress);
 		}
 
-		return $"消耗{ItemDrawer.Create(ItemTypes.First())}{ItemCount}个 {progress}";
+		return QuestText.Get("Objectives.Consume", ItemDrawer.Create(ItemTypes.First()), ItemCount, progress);
 	}
 
 	public override void Activate(PlayerQuestBase sourceQuest)

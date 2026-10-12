@@ -1,0 +1,7 @@
+{
+	DrunkenMinerInvasion: {
+		Name: Drunken Miners' March
+		StartMessage: Drunken miners are causing trouble in Yggdrasil Town!
+		EndMessage: The drunken miners' unrest has been quelled!
+	}
+}

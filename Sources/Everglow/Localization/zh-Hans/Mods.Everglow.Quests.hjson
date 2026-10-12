@@ -1,0 +1,52 @@
+{
+	"TestExplore": {
+		"Objectives": [
+			{
+				"ObjectiveText": "在丛林中探索"
+			}
+		]
+	},
+	"TestReach": {
+		"Objectives": [
+			{
+				"ObjectiveText": "到达沙漠"
+			}
+		]
+	},
+	"TestNewObj": {
+		"Objectives": [
+			{},
+			{},
+			{
+				"ObjectiveText": "到达沙漠"
+			},
+			{}
+		]
+	},
+	"TestStructure": {
+		"Objectives": [
+			{
+				"ObjectiveText": "到达地牢"
+			},
+			{},
+			{},
+			{},
+			{},
+			{},
+			{
+				"ObjectiveText": "到达丛林"
+			},
+			{
+				"ObjectiveText": "到达洞穴层"
+			}
+		]
+	},
+	"GiveItemQuestTest": {
+		"Objectives": [
+			{
+				"StartText": "请给我十个土块。",
+				"EndText": "谢谢你。"
+			}
+		]
+	}
+}

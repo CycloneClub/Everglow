@@ -5,6 +5,8 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee;
 
 public class Glow_Fall_Explosion : ModProjectile, IWarpProjectile_warpStyle2
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MiscsProjectiles;
+
 	public override string Texture => "Everglow/Myth/Acytaea/Projectiles/AcytaeaSword_projectile";
 
 	public override void OnSpawn(IEntitySource source)

@@ -2,6 +2,8 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee.PrimordialJadeWinged_Spear
 
 public class PrimordialJadeWinged_SpearShake : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MiscsProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 100;

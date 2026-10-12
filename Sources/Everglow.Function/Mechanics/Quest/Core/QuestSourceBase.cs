@@ -8,7 +8,7 @@ public abstract class QuestSourceBase
 	{
 		public override Texture2D Texture => ModAsset.Point.Value;
 
-		public override string Name => "Everglow System";
+		public override string Name => QuestText.Get("Common.SystemSource");
 	}
 
 	public static readonly QuestSourceBase Default = new SystemQuestSource();

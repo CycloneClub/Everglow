@@ -4,6 +4,8 @@ namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Miscs.VineWand;
 
 public class VineEnergyOrb : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MiscsProjectiles;
+
 	public Vector2 StartPosition;
 	public Vector2 EndPosition;
 

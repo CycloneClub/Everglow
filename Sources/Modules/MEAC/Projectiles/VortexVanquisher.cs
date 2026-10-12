@@ -5,6 +5,8 @@ namespace Everglow.MEAC.Projectiles;
 
 public class VortexVanquisher : MeleeProj, IBloomProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	public override void SetDef()
 	{
 		maxAttackType = 4;

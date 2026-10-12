@@ -1,3 +1,4 @@
+using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.Presentation.Icons;
 using Everglow.Commons.Utilities;
@@ -24,6 +25,8 @@ public class WorldTalkObjective : WorldObjectiveBase
 
 	public int NPCType { get; private set; }
 
+	public string NPCText => GetText("NPCText");
+
 	public override float Progress => Talked ? 1f : 0f;
 
 	public override bool NeedDeltaSync { get; protected set; } = false;
@@ -41,11 +44,20 @@ public class WorldTalkObjective : WorldObjectiveBase
 	{
 		var npc = new NPC();
 		npc.SetDefaults(NPCType);
-		return $"和{npc.TypeName}对话";
+		return QuestText.Get("Objectives.Talk", npc.TypeName);
 	}
 
 	public override void Update()
 	{
+		if (!CanProgress || Talked)
+		{
+			return;
+		}
+		// Dialogue is local presentation; world completion remains server-authoritative.
+		if (NetUtils.NotServer && Main.LocalPlayer.TalkNPC?.netID == NPCType && !string.IsNullOrEmpty(NPCText))
+		{
+			Main.npcChatText = NPCText;
+		}
 		if (NetUtils.IsSingle || NetUtils.IsMainServer)
 		{
 			foreach (var player in Main.ActivePlayers)

@@ -6,6 +6,8 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 
 public class MothMiddleBullet : TrailingProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
+
 	public override void SetCustomDefaults()
 	{
 		Projectile.friendly = false;

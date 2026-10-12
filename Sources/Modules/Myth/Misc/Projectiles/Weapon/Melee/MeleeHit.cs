@@ -4,6 +4,8 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee;
 
 public class MeleeHit : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	public override void SetStaticDefaults()
 	{
 		// DisplayName.SetDefault("Null");

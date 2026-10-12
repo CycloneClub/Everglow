@@ -7,6 +7,8 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 
 public class MothBall : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
+
 	private float subscale = 0f;
 
 	public override void SetDefaults()

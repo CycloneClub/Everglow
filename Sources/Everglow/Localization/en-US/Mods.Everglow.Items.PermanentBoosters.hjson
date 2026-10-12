@@ -1,11 +1,15 @@
-PineNut: {
-	DisplayName: Pine Nut
-	Tooltip: ""
-}
-
 AntiHeavenSicknessPill: {
 	DisplayName: Anti Heaven Sickness Pill
 	Tooltip: ""
+}
+
+JadeFruit: {
+	DisplayName: Jade Fruit
+	Tooltip:
+		'''
+		Permanently increases maximum life by {1}
+		Can be used up to {0} times
+		'''
 }
 
 LampBorerHoney: {
@@ -13,12 +17,25 @@ LampBorerHoney: {
 	Tooltip: ""
 }
 
-SquamousCore: {
-	DisplayName: Squamous Core
+Photophore: {
+	DisplayName: Photophore
+	Tooltip:
+		'''
+		Permanently increases maximum life by {1}
+		Can be used up to {0} times, sharing the limit with Jade Fruit
+		'''
+}
+
+PineNut: {
+	DisplayName: Pine Nut
 	Tooltip: ""
 }
 
-JadeFruit: {
-	DisplayName: Jade Fruit
-	Tooltip: ""
+SquamousCore: {
+	DisplayName: Squamous Core
+	Tooltip:
+		'''
+		Permanently increases maximum life by {0}
+		Can only be used {1} time
+		'''
 }

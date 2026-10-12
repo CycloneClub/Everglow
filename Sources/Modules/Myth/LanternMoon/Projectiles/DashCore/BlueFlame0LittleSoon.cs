@@ -5,6 +5,8 @@ namespace Everglow.Myth.LanternMoon.Projectiles.DashCore;
 
 internal class BlueFlame0LittleSoon : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 34;

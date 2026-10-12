@@ -1,3 +1,251 @@
+AgedGreenCourtBrick_Item: {
+	DisplayName: Aged Green Court Brick_ Item
+	Tooltip: ""
+}
+
+AgedGreenCourtWall_Item: {
+	DisplayName: Aged Green Court Wall_ Item
+	Tooltip: ""
+}
+
+AirTileItem: {
+	DisplayName: 空块
+	Tooltip: 开发者物品
+}
+
+AirWallItem: {
+	DisplayName: 空墙
+	Tooltip: 开发者物品
+}
+
+AlgaeCoveredChest_Item: {
+	DisplayName: 覆藻宝箱
+	Tooltip: ""
+}
+
+AlgaeExtractor_Item: {
+	DisplayName: 藻类提取机
+	Tooltip: ""
+}
+
+ArrowSign_Item_Down: {
+	DisplayName: Arrow Sign_ Item_ Down
+	Tooltip: ""
+}
+
+ArrowSign_Item_Left: {
+	DisplayName: Arrow Sign_ Item_ Left
+	Tooltip: ""
+}
+
+ArrowSign_Item_LeftDown: {
+	DisplayName: Arrow Sign_ Item_ Left Down
+	Tooltip: ""
+}
+
+ArrowSign_Item_LeftUp: {
+	DisplayName: Arrow Sign_ Item_ Left Up
+	Tooltip: ""
+}
+
+ArrowSign_Item_Right: {
+	DisplayName: Arrow Sign_ Item_ Right
+	Tooltip: ""
+}
+
+ArrowSign_Item_RightDown: {
+	DisplayName: Arrow Sign_ Item_ Right Down
+	Tooltip: ""
+}
+
+ArrowSign_Item_RightUp: {
+	DisplayName: Arrow Sign_ Item_ Right Up
+	Tooltip: ""
+}
+
+ArrowSign_Item_Up: {
+	DisplayName: Arrow Sign_ Item_ Up
+	Tooltip: ""
+}
+
+AshWoodElevator_Indicator_Lamp_Item: {
+	DisplayName: Ash Wood Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+AshWoodElevator_Item: {
+	DisplayName: Ash Wood Elevator_ Item
+	Tooltip: ""
+}
+
+BakeryBuckHead_Item: {
+	DisplayName: Bakery Buck Head_ Item
+	Tooltip: ""
+}
+
+BakeryChair_Item: {
+	DisplayName: Bakery Chair_ Item
+	Tooltip: ""
+}
+
+BakeryCounter_Item: {
+	DisplayName: Bakery Counter_ Item
+	Tooltip: ""
+}
+
+BakeryCounterSide_Item: {
+	DisplayName: Bakery Counter Side_ Item
+	Tooltip: ""
+}
+
+BakeryGlassTable_Item: {
+	DisplayName: Bakery Glass Table_ Item
+	Tooltip: ""
+}
+
+BakeryHangingLamp_Item: {
+	DisplayName: Bakery Hanging Lamp_ Item
+	Tooltip: ""
+}
+
+BakeryMenu_Item: {
+	DisplayName: Bakery Menu_ Item
+	Tooltip: ""
+}
+
+BakeryShelf_Item: {
+	DisplayName: Bakery Shelf_ Item
+	Tooltip: ""
+}
+
+BakerySideLamp_Item: {
+	DisplayName: Bakery Side Lamp_ Item
+	Tooltip: ""
+}
+
+BakeryTable_Item: {
+	DisplayName: Bakery Table_ Item
+	Tooltip: ""
+}
+
+BakeryVase_GoldFlower: {
+	DisplayName: Bakery Vase_ Gold Flower
+	Tooltip: ""
+}
+
+BakeryVase_LightTanFlower: {
+	DisplayName: Bakery Vase_ Light Tan Flower
+	Tooltip: ""
+}
+
+BakeryVase_RedFlower: {
+	DisplayName: Bakery Vase_ Red Flower
+	Tooltip: ""
+}
+
+BallooonElevator_Indicator_Lamp_Item: {
+	DisplayName: Ballooon Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+BallooonElevator_Item: {
+	DisplayName: Ballooon Elevator_ Item
+	Tooltip: ""
+}
+
+BambooElevator_Indicator_Lamp_Item: {
+	DisplayName: Bamboo Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+BambooElevator_Item: {
+	DisplayName: Bamboo Elevator_ Item
+	Tooltip: ""
+}
+
+BarrierBlock_Item: {
+	DisplayName: Barrier Block_ Item
+	Tooltip: ""
+}
+
+BarrierPlatform_Item: {
+	DisplayName: Barrier Platform_ Item
+	Tooltip: ""
+}
+
+BlackAwningBoatSign_Item: {
+	DisplayName: 乌篷船路牌
+	Tooltip: ""
+}
+
+BlackVine: {
+	DisplayName: 黑藤
+	Tooltip: ""
+}
+
+BloodLightCrystal: {
+	DisplayName: 血解光石
+	Tooltip: ""
+}
+
+BloodMossStone: {
+	DisplayName: 血苔石
+	Tooltip: ""
+}
+
+BloodyStoneWall: {
+	DisplayName: 血苔石墙
+	Tooltip: ""
+}
+
+BloodyTuskTrophy: {
+	DisplayName: 鲜血獠牙纪念章
+	Tooltip: ""
+}
+
+BlueDungeonElevator_Indicator_Lamp_Item: {
+	DisplayName: Blue Dungeon Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+BlueDungeonElevator_Item: {
+	DisplayName: Blue Dungeon Elevator_ Item
+	Tooltip: ""
+}
+
+BlueGlassbulbBand_item: {
+	DisplayName: 蓝LED灯带
+	Tooltip:
+		'''
+		放置物为绳头
+		手持此物右键点击绳头引出绳子
+		把绳子牵引到另一处绳头再右键点击即可完成挂绳
+		手持其他物品，右键点击挂好了的绳头取消原绳
+		每个绳头可以引出无数条绳，但是只能接受1条绳
+		控制灯光的电路需要通过引出绳子的绳头，接受绳子的绳头无效
+		'''
+}
+
+BoneElevator_Indicator_Lamp_Item: {
+	DisplayName: Bone Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+BoneElevator_Item: {
+	DisplayName: Bone Elevator_ Item
+	Tooltip: ""
+}
+
+BorealWoodElevator_Indicator_Lamp_Item: {
+	DisplayName: Boreal Wood Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+BorealWoodElevator_Item: {
+	DisplayName: Boreal Wood Elevator_ Item
+	Tooltip: ""
+}
+
 BottleOfNutShellFlowers: {
 	DisplayName: 瓶中干花
 	Tooltip: ""
@@ -13,6 +261,50 @@ BronzeLamp_Item: {
 	Tooltip: ""
 }
 
+CableCarJoin_item: {
+	DisplayName: 缆车节点
+	Tooltip: ""
+}
+
+CactusElevator_Indicator_Lamp_Item: {
+	DisplayName: Cactus Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+CactusElevator_Item: {
+	DisplayName: Cactus Elevator_ Item
+	Tooltip: ""
+}
+
+CanteenDoor_Item: {
+	DisplayName: 进入餐厅门
+	Tooltip: ""
+}
+
+CanteenExit_Item: {
+	DisplayName: 离开餐厅门
+	Tooltip: ""
+}
+
+Casserole_Item: {
+	DisplayName: Casserole_ Item
+	Tooltip: ""
+}
+
+ChainCable_item: {
+	DisplayName: 链绳
+	Tooltip: ""
+}
+
+ChineseKitchenDoor_Item: {
+	DisplayName: 中式厨房门
+	Tooltip:
+		'''
+		右键门可以进入一个中式风格的厨房，根据提示可以开启餐厅经营游戏
+		餐厅经营游戏可以解锁新的菜谱
+		'''
+}
+
 ChinesePartitionLamp: {
 	DisplayName: 中式屏风灯
 	Tooltip: ""
@@ -21,153 +313,6 @@ ChinesePartitionLamp: {
 ChineseStyleFloorLamp: {
 	DisplayName: 中式地灯
 	Tooltip: ""
-}
-
-DoubleArmsChineseStreetLamp: {
-	DisplayName: 双垂中式街灯笼
-	Tooltip: ""
-}
-
-FluoriteHangLamp: {
-	DisplayName: 荧光吊灯
-	Tooltip: ""
-}
-
-FluoriteLampPost_Item: {
-	DisplayName: 荧光灯柱
-	Tooltip: ""
-}
-
-GiantBell: {
-	DisplayName: 巨钟
-	Tooltip: ""
-}
-
-GiantCampFire: {
-	DisplayName: 巨型篝火
-	Tooltip: ""
-}
-
-HangingSkyLantern: {
-	DisplayName: 挂式灯笼
-	Tooltip: ""
-}
-
-HexagonalCeilingLamp: {
-	DisplayName: 六角宫灯
-	Tooltip: ""
-}
-
-LapisLazuliDome_Item: {
-	DisplayName: 蓝色穹顶
-	Tooltip: ""
-}
-
-LapisLazuliDome_mini_Item: {
-	DisplayName: 小型蓝色穹顶
-	Tooltip: ""
-}
-
-PierWithSlabs: {
-	DisplayName: 石板石墩
-	Tooltip: ""
-}
-
-PierWithSlabsTop: {
-	DisplayName: 石板石墩顶
-	Tooltip: ""
-}
-
-PlumBlossomInABowl: {
-	DisplayName: 一碗梅花
-	Tooltip: ""
-}
-
-SideHangingLantern_Red: {
-	DisplayName: 侧挂红灯笼
-	Tooltip: ""
-}
-
-SideHangingLantern_White: {
-	DisplayName: 侧挂白灯笼
-	Tooltip: ""
-}
-
-StreetLantern: {
-	DisplayName: 曲杆中式街灯笼
-	Tooltip: ""
-}
-
-WhiteCallaLily_Item: {
-	DisplayName: 白色马蹄莲
-	Tooltip: ""
-}
-
-WhiteLotusBonsai: {
-	DisplayName: 白莲花盆景
-	Tooltip: ""
-}
-
-YellowDynastyShingles: {
-	DisplayName: 黄王朝瓦
-	Tooltip: ""
-}
-
-BlueGlassbulbBand_item: {
-	DisplayName: 蓝LED灯带
-	Tooltip: 
-	'''
-	放置物为绳头
-	手持此物右键点击绳头引出绳子
-	把绳子牵引到另一处绳头再右键点击即可完成挂绳
-	手持其他物品，右键点击挂好了的绳头取消原绳
-	每个绳头可以引出无数条绳，但是只能接受1条绳
-	控制灯光的电路需要通过引出绳子的绳头，接受绳子的绳头无效
-	'''
-}
-
-ChainCable_item: {
-	DisplayName: 链绳
-	Tooltip: ""
-}
-
-GreenGlassbulbBand_item: {
-	DisplayName: 绿LED灯带
-	Tooltip: 
-	'''
-	放置物为绳头
-	手持此物右键点击绳头引出绳子
-	把绳子牵引到另一处绳头再右键点击即可完成挂绳
-	手持其他物品，右键点击挂好了的绳头取消原绳
-	每个绳头可以引出无数条绳，但是只能接受1条绳
-	控制灯光的电路需要通过引出绳子的绳头，接受绳子的绳头无效
-	'''
-}
-
-LightbulbBand_item: {
-	DisplayName: 灯泡灯带
-	Tooltip: 
-	'''
-	放置物为绳头
-	手持此物右键点击绳头引出绳子
-	把绳子牵引到另一处绳头再右键点击即可完成挂绳
-	手持其他物品，右键点击挂好了的绳头取消原绳
-	每个绳头可以引出无数条绳，但是只能接受1条绳
-	控制灯光的电路需要通过引出绳子的绳头，接受绳子的绳头无效
-	'''
-}
-
-RedGlassbulbBand_item: {
-	DisplayName: 红LED灯带
-	Tooltip: 
-	'''
-	放置物为绳头
-	手持此物右键点击绳头引出绳子
-	把绳子牵引到另一处绳头再右键点击即可完成挂绳
-	手持其他物品，右键点击挂好了的绳头取消原绳
-	每个绳头可以引出无数条绳，但是只能接受1条绳
-	控制灯光的电路需要通过引出绳子的绳头，接受绳子的绳头无效
-	'''
 }
 
 ChoppingBlock_Item: {
@@ -180,163 +325,33 @@ CleaverRack_Item: {
 	Tooltip: ""
 }
 
+ClothesShelf_Feature_Nature_Item: {
+	DisplayName: Clothes Shelf_ Feature_ Nature_ Item
+	Tooltip: ""
+}
+
+ClothesShopBonsai_Feature_Nature_Item: {
+	DisplayName: Clothes Shop Bonsai_ Feature_ Nature_ Item
+	Tooltip: ""
+}
+
+ClothesShopModel_Feature_Nature_Item: {
+	DisplayName: Clothes Shop Model_ Feature_ Nature_ Item
+	Tooltip: ""
+}
+
+ClothesShopSofa_Feature_Nature_Item: {
+	DisplayName: Clothes Shop Sofa_ Feature_ Nature_ Item
+	Tooltip: ""
+}
+
+ClothesShopTable_Feature_Nature_Item: {
+	DisplayName: Clothes Shop Table_ Feature_ Nature_ Item
+	Tooltip: ""
+}
+
 CookwareRack_Item: {
 	DisplayName: 锅铲挂排
-	Tooltip: ""
-}
-
-Hob_Silver_Item: {
-	DisplayName: 银色厨柜
-	Tooltip: ""
-}
-
-Refrigerator_Silver_Item: {
-	DisplayName: 银色冰箱
-	Tooltip: ""
-}
-
-Stove_Item: {
-	DisplayName: 炉灶
-	Tooltip: ""
-}
-
-AirTileItem: {
-	DisplayName: 空块
-	Tooltip: "开发者物品"
-}
-
-AirWallItem: {
-	DisplayName: 空墙
-	Tooltip: "开发者物品"
-}
-
-CableCarJoin_item: {
-	DisplayName: 缆车节点
-	Tooltip: ""
-}
-
-CreatPineTree: {
-	DisplayName: 建造巨大雪松
-	Tooltip: "开发者物品"
-}
-
-SnowPineChest: {
-	DisplayName: 雪松宝箱
-	Tooltip: ""
-}
-
-SnowPineChest_fresh: {
-	DisplayName: 雪松宝箱
-	Tooltip: ""
-}
-
-SnowPineChest_gold: {
-	DisplayName: 雪松宝箱
-	Tooltip: ""
-}
-
-SnowPineDoor: {
-	DisplayName: 雪松门
-	Tooltip: ""
-}
-
-SnowPineLeaveStaff: {
-	DisplayName: 雪松针叶法杖
-	Tooltip: ""
-}
-
-SnowPineLeavesWall: {
-	DisplayName: 雪松针叶墙
-	Tooltip: ""
-}
-
-SnowPineWoodStaff: {
-	DisplayName: 雪松原木法杖
-	Tooltip: ""
-}
-
-SnowPineWoodWall: {
-	DisplayName: 雪松木墙
-	Tooltip: ""
-}
-
-SungloChandelier: {
-	DisplayName: 松萝吊灯
-	Tooltip: ""
-}
-
-Thatched: {
-	DisplayName: 屋用茅草
-	Tooltip: ""
-}
-
-ThatchedWall: {
-	DisplayName: 屋用茅草墙
-	Tooltip: ""
-}
-
-PineLiftWinch: {
-	DisplayName: 松树电梯
-	Tooltip: ""
-}
-
-BloodMossStone: {
-	DisplayName: 血苔石
-	Tooltip: ""
-}
-
-BloodyStoneWall: {
-	DisplayName: 血苔石墙
-	Tooltip: ""
-}
-
-TuskFlesh_Item: {
-	DisplayName: 獠牙龈块
-	Tooltip: ""
-}
-
-TuskStatusI: {
-	DisplayName: 獠牙石碑
-	Tooltip: ""
-}
-
-TuskStatusII: {
-	DisplayName: 獠牙石碑
-	Tooltip: ""
-}
-
-TuskStatusIII: {
-	DisplayName: 獠牙石碑
-	Tooltip: ""
-}
-
-TuskStatusIV: {
-	DisplayName: 獠牙石碑
-	Tooltip: ""
-}
-
-BloodyTuskTrophy: {
-	DisplayName: 鲜血獠牙纪念章
-	Tooltip: ""
-}
-
-TuskRelic: {
-	DisplayName: 鲜血獠牙圣物
-	Tooltip: ""
-}
-
-FireflyPylonItem: {
-	DisplayName: 流萤晶塔
-	Tooltip: ""
-}
-
-ShabbyPylonItem: {
-	DisplayName: 破旧晶塔
-	Tooltip: ""
-}
-
-BlackVine: {
-	DisplayName: 黑藤
 	Tooltip: ""
 }
 
@@ -345,8 +360,43 @@ CorruptOrbStonePost: {
 	Tooltip: ""
 }
 
+CrackedForestThrone_Item: {
+	DisplayName: Cracked Forest Throne_ Item
+	Tooltip: ""
+}
+
+CreatPineTree: {
+	DisplayName: 建造巨大雪松
+	Tooltip: 开发者物品
+}
+
 CrimsonOrbStonePost: {
 	DisplayName: 猩红法术石柱
+	Tooltip: ""
+}
+
+CrystalElevator_Indicator_Lamp_Item: {
+	DisplayName: Crystal Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+CrystalElevator_Item: {
+	DisplayName: Crystal Elevator_ Item
+	Tooltip: ""
+}
+
+CurrentEnergyTube_Item: {
+	DisplayName: 能流管
+	Tooltip: ""
+}
+
+CyanVineOre: {
+	DisplayName: 青缎矿
+	Tooltip: ""
+}
+
+CyanWindGranite: {
+	DisplayName: 青风岗岩
 	Tooltip: ""
 }
 
@@ -365,34 +415,204 @@ DarkCocoonWithPetal: {
 	Tooltip: ""
 }
 
+DarkForestSoil_Item: {
+	DisplayName: 暗森土壤
+	Tooltip: ""
+}
+
+DarkLakeBottomMud_Item: {
+	DisplayName: 暗湖底泥
+	Tooltip: ""
+}
+
+DarklakeBottomMud_Item: {
+	DisplayName: 暗湖底泥
+	Tooltip: ""
+}
+
+DarkLakeBottomMudWall_Item: {
+	DisplayName: 暗湖底泥墙
+	Tooltip: ""
+}
+
+DarkSludge_Item: {
+	DisplayName: 黑沼泥
+	Tooltip: ""
+}
+
+DarkSludgeBlock_Item: {
+	DisplayName: Dark Sludge Block_ Item
+	Tooltip: ""
+}
+
+DecayingWood_Item: {
+	DisplayName: 朽木
+	Tooltip: ""
+}
+
+DecayingWoodWall_Item: {
+	DisplayName: Decaying Wood Wall_ Item
+	Tooltip: ""
+}
+
+DecaySandSoil_Item: {
+	DisplayName: 腐朽砂土
+	Tooltip: ""
+}
+
+DecaySandSoilWall_Item: {
+	DisplayName: 腐朽砂土墙
+	Tooltip: ""
+}
+
+Desert_NavyAnkhBanner_Item: {
+	DisplayName: Desert_ Navy Ankh Banner_ Item
+	Tooltip: ""
+}
+
+Desert_NavyBanner_Item: {
+	DisplayName: Desert_ Navy Banner_ Item
+	Tooltip: ""
+}
+
+Desert_NavyOmegaBanner_Item: {
+	DisplayName: Desert_ Navy Omega Banner_ Item
+	Tooltip: ""
+}
+
+Desert_NavySnakeBanner_Item: {
+	DisplayName: Desert_ Navy Snake Banner_ Item
+	Tooltip: ""
+}
+
+DevilHeartIronOre_Item: {
+	DisplayName: 魔心铁矿
+	Tooltip: ""
+}
+
+DilapidatedDangerSigns: {
+	DisplayName: “小心地滑”
+	Tooltip: ""
+}
+
+DoubleArmsChineseStreetLamp: {
+	DisplayName: 双垂中式街灯笼
+	Tooltip: ""
+}
+
+DragonChest_DarkDragonRoom_Item: {
+	DisplayName: Dragon Chest_ Dark Dragon Room_ Item
+	Tooltip: ""
+}
+
+DragonScaleWood: {
+	DisplayName: 龙鳞木
+	Tooltip: ""
+}
+
+DragonScaleWoodWall_Item: {
+	DisplayName: 龙鳞木墙
+	Tooltip: ""
+}
+
+DryIsleBamboo_Item: {
+	DisplayName: 干枯的夭华箭竹
+	Tooltip: ""
+}
+
+DynastyElevator_Indicator_Lamp_Item: {
+	DisplayName: Dynasty Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+DynastyElevator_Item: {
+	DisplayName: Dynasty Elevator_ Item
+	Tooltip: ""
+}
+
+EbonwoodElevator_Indicator_Lamp_Item: {
+	DisplayName: Ebonwood Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+EbonwoodElevator_Item: {
+	DisplayName: Ebonwood Elevator_ Item
+	Tooltip: ""
+}
+
+ElevatorManual: {
+	DisplayName: Elevator Manual
+	Tooltip: ""
+}
+
+ExampleElevator_Indicator_Lamp_Item: {
+	DisplayName: Example Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+ExampleElevator_Item: {
+	DisplayName: Example Elevator_ Item
+	Tooltip: ""
+}
+
+ExamplePylon_Item: {
+	DisplayName: Example Pylon_ Item
+	Tooltip: ""
+}
+
+ExitSignBoard_Item: {
+	DisplayName: 安全出口
+	Tooltip: ""
+}
+
+ExitUnionTile_Item: {
+	DisplayName: 离开工会的门
+	Tooltip: ""
+}
+
+FemaleLampLeaves_Item: {
+	DisplayName: 灯木母树原木
+	Tooltip: ""
+}
+
+FevensPortrait_Item: {
+	DisplayName: Fevens Portrait_ Item
+	Tooltip: ""
+}
+
+FireCrackerLauncher: {
+	DisplayName: 礼花弹发射管
+	Tooltip: ""
+}
+
+FireflyMoss_Item: {
+	DisplayName: Firefly Moss_ Item
+	Tooltip: ""
+}
+
 FireflyPiranhaBanner: {
 	DisplayName: 流萤虎鱼旗
 	Tooltip: ""
 }
 
-GlowingReedSeed: {
-	DisplayName: 夜光芦苇种子
+FireflyPylonItem: {
+	DisplayName: 流萤晶塔
 	Tooltip: ""
 }
 
-GlowWood: {
-	DisplayName: 萤火木
+FleshElevator_Indicator_Lamp_Item: {
+	DisplayName: Flesh Elevator_ Indicator_ Lamp_ Item
 	Tooltip: ""
 }
 
-GlowWoodWall: {
-	DisplayName: 萤火木墙
+FleshElevator_Item: {
+	DisplayName: Flesh Elevator_ Item
 	Tooltip: ""
 }
 
-LiveFluorescentLeafWall: {
-	DisplayName: 生命萤火叶墙
-	Tooltip: ""
-}
-
-LiveFluorescentWoodWall: {
-	DisplayName: 生命萤火木墙
-	Tooltip: ""
+FloorScaleForPlayers_Item: {
+	DisplayName: 炉心区地磅
+	Tooltip: 站上去后炉心区的贡献程序会获得玩家身份
 }
 
 FluorescentLeafStaff: {
@@ -405,8 +625,153 @@ FluorescentWoodStaff: {
 	Tooltip: ""
 }
 
+FluoriteHangLamp: {
+	DisplayName: 荧光吊灯
+	Tooltip: ""
+}
+
+FluoriteLampPost_Item: {
+	DisplayName: 荧光灯柱
+	Tooltip: ""
+}
+
+ForestRainVineTile_Thick_Item: {
+	DisplayName: Forest Rain Vine Tile_ Thick_ Item
+	Tooltip: ""
+}
+
+ForestRainVineTile_Thin_Item: {
+	DisplayName: Forest Rain Vine Tile_ Thin_ Item
+	Tooltip: ""
+}
+
+FrozenElevator_Indicator_Lamp_Item: {
+	DisplayName: Frozen Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+FrozenElevator_Item: {
+	DisplayName: Frozen Elevator_ Item
+	Tooltip: ""
+}
+
+FurnaceCopperGear_Large_Item: {
+	DisplayName: 大型炉心铜齿轮
+	Tooltip: ""
+}
+
+FurnaceCopperGear_Middle_Item: {
+	DisplayName: 中型炉心铜齿轮
+	Tooltip: ""
+}
+
+FurnaceCopperPipe_Item: {
+	DisplayName: 炉心铜管
+	Tooltip: ""
+}
+
+FurnaceCopperPipe_Large_Corner_Item: {
+	DisplayName: 炉心大铜管转角
+	Tooltip: ""
+}
+
+FurnaceCopperPipe_Large_Item: {
+	DisplayName: 炉心大铜管
+	Tooltip: ""
+}
+
+FurnaceEmergencyLamp_Item: {
+	DisplayName: 炉心应急灯
+	Tooltip: ""
+}
+
+FurnaceHeatProofPlatingWall_Item: {
+	DisplayName: 炉心强效隔热镀层墙
+	Tooltip: ""
+}
+
+FurnaceLavaband_Item: {
+	DisplayName: 炉心熔岩灯带
+	Tooltip: ""
+}
+
+FurnaceLavaLamp_Item: {
+	DisplayName: 炉心熔岩灯
+	Tooltip: ""
+}
+
+FurnaceMeltingChest_Item: {
+	DisplayName: Furnace Melting Chest_ Item
+	Tooltip: ""
+}
+
+FurnacePlatingBlock: {
+	DisplayName: 炉心镀层块
+	Tooltip: ""
+}
+
+FurnaceScoreClear: {
+	DisplayName: Furnace Score Clear
+	Tooltip: ""
+}
+
+FurnaceTrapDoor_Item: {
+	DisplayName: 炉心活板门
+	Tooltip: ""
+}
+
+GeyserAirBudsItem: {
+	DisplayName: 间歇泉气苞
+	Tooltip: ""
+}
+
+GiantBell: {
+	DisplayName: 巨钟
+	Tooltip: ""
+}
+
+GiantCampFire: {
+	DisplayName: 巨型篝火
+	Tooltip: ""
+}
+
+GiantFurnacePlaceItem: {
+	DisplayName: 巨型炉心
+	Tooltip: 真的超大一个
+}
+
+GiantGhostClawBarnacle_Item: {
+	DisplayName: 巨型魔爪藤壶
+	Tooltip: ""
+}
+
+GiantPineTreeElevator_Item: {
+	DisplayName: Giant Pine Tree Elevator_ Item
+	Tooltip: ""
+}
+
+GlassElevator_Indicator_Lamp_Item: {
+	DisplayName: Glass Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+GlassElevator_Item: {
+	DisplayName: Glass Elevator_ Item
+	Tooltip: ""
+}
+
 GlowingDrop: {
 	DisplayName: 萤火吊
+	Tooltip: ""
+}
+
+GlowingReedSeed: {
+	DisplayName: 夜光芦苇种子
+	Tooltip: ""
+}
+
+GlowWood: {
+	DisplayName: 萤火木
 	Tooltip: ""
 }
 
@@ -555,167 +920,91 @@ GlowWoodTorch: {
 	Tooltip: ""
 }
 
+GlowWoodWall: {
+	DisplayName: 萤火木墙
+	Tooltip: ""
+}
+
 GlowWoodWorkBench: {
 	DisplayName: 萤火木工作台
 	Tooltip: ""
 }
 
-MothRelic: {
-	DisplayName: 腐檀巨蛾圣物
+GoldenElevator_Indicator_Lamp_Item: {
+	DisplayName: Golden Elevator_ Indicator_ Lamp_ Item
 	Tooltip: ""
 }
 
-FireCrackerLauncher: {
-	DisplayName: 礼花弹发射管
+GoldenElevator_Item: {
+	DisplayName: Golden Elevator_ Item
 	Tooltip: ""
 }
 
-RoomBlackBox_Item: {
-	DisplayName: 房间世界的黑匣子
-	Tooltip: "开发者物品"
-}
-
-WoodenRoomDoor_exit_Item: {
-	DisplayName: 离开房间的木门
-	Tooltip: "右键离开房间"
-}
-
-WoodenRoomDoor_Item: {
-	DisplayName: 进入房间的木门
-	Tooltip: "右键进入一个木制的房间"
-}
-
-ChineseKitchenDoor_Item: {
-	DisplayName: 中式厨房门
-	Tooltip: 
-	'''
-	右键门可以进入一个中式风格的厨房，根据提示可以开启餐厅经营游戏
-	餐厅经营游戏可以解锁新的菜谱
-	'''
-}
-
-RestaurantLogoBoard_Item: {
-	DisplayName: 餐厅标志
+GraniteElevator_Indicator_Lamp_Item: {
+	DisplayName: Granite Elevator_ Indicator_ Lamp_ Item
 	Tooltip: ""
 }
 
-ServingCounter_ChineseStyle_Item: {
-	DisplayName: 中式服务台
-	Tooltip: "把符合订单的菜品放上去或从上空丢过去以完成订单"
-}
-
-ExitUnionTile_Item: {
-	DisplayName: 离开工会的门
+GraniteElevator_Item: {
+	DisplayName: Granite Elevator_ Item
 	Tooltip: ""
 }
 
-GiantFurnacePlaceItem: {
-	DisplayName: 巨型炉心
-	Tooltip: "真的超大一个"
-}
-
-CanteenDoor_Item: {
-	DisplayName: 进入餐厅门
+GravelStoreWall_Thick_Item: {
+	DisplayName: Gravel Store Wall_ Thick_ Item
 	Tooltip: ""
 }
 
-CanteenExit_Item: {
-	DisplayName: 离开餐厅门
+GravelStoreWall_Thin_Item: {
+	DisplayName: Gravel Store Wall_ Thin_ Item
 	Tooltip: ""
 }
 
-CurrentEnergyTube_Item: {
-	DisplayName: 能流管
+GreenCourtBrick_Item: {
+	DisplayName: 绿王庭砖
 	Tooltip: ""
 }
 
-DarkForestSoil_Item: {
-	DisplayName: 暗森土壤
+GreenCourtWall_Item: {
+	DisplayName: 绿王庭砖墙
 	Tooltip: ""
 }
 
-DarkSludge_Item: {
-	DisplayName: 黑沼泥
+GreenDungeonElevator_Indicator_Lamp_Item: {
+	DisplayName: Green Dungeon Elevator_ Indicator_ Lamp_ Item
 	Tooltip: ""
 }
 
-DilapidatedDangerSigns: {
-	DisplayName: “小心地滑”
+GreenDungeonElevator_Item: {
+	DisplayName: Green Dungeon Elevator_ Item
 	Tooltip: ""
 }
 
-ExitSignBoard_Item: {
-	DisplayName: 安全出口
-	Tooltip: ""
-}
-
-FemaleLampLeaves_Item: {
-	DisplayName: 灯木母树原木
-	Tooltip: ""
-}
-
-FloorScaleForPlayers_Item: {
-	DisplayName: 炉心区地磅
-	Tooltip: "站上去后炉心区的贡献程序会获得玩家身份"
-}
-
-FurnaceCopperGear_Large_Item: {
-	DisplayName: 大型炉心铜齿轮
-	Tooltip: ""
-}
-
-FurnaceCopperGear_Middle_Item: {
-	DisplayName: 中型炉心铜齿轮
-	Tooltip: ""
-}
-
-FurnaceCopperPipe_Item: {
-	DisplayName: 炉心铜管
-	Tooltip: ""
-}
-
-FurnaceCopperPipe_Large_Corner_Item: {
-	DisplayName: 炉心大铜管转角
-	Tooltip: ""
-}
-
-FurnaceCopperPipe_Large_Item: {
-	DisplayName: 炉心大铜管
-	Tooltip: ""
-}
-
-FurnaceEmergencyLamp_Item: {
-	DisplayName: 炉心应急灯
-	Tooltip: ""
-}
-
-FurnaceHeatProofPlatingWall_Item: {
-	DisplayName: 炉心强效隔热镀层墙
-	Tooltip: ""
-}
-
-FurnaceLavaband_Item: {
-	DisplayName: 炉心熔岩灯带
-	Tooltip: ""
-}
-
-FurnaceLavaLamp_Item: {
-	DisplayName: 炉心熔岩灯
-	Tooltip: ""
-}
-
-FurnacePlatingBlock: {
-	DisplayName: 炉心镀层块
-	Tooltip: ""
-}
-
-FurnaceTrapDoor_Item: {
-	DisplayName: 炉心活板门
-	Tooltip: ""
+GreenGlassbulbBand_item: {
+	DisplayName: 绿LED灯带
+	Tooltip:
+		'''
+		放置物为绳头
+		手持此物右键点击绳头引出绳子
+		把绳子牵引到另一处绳头再右键点击即可完成挂绳
+		手持其他物品，右键点击挂好了的绳头取消原绳
+		每个绳头可以引出无数条绳，但是只能接受1条绳
+		控制灯光的电路需要通过引出绳子的绳头，接受绳子的绳头无效
+		'''
 }
 
 GreenRelicBrick_Item: {
 	DisplayName: 绿遗迹砖
+	Tooltip: ""
+}
+
+GreenRelicWall_Item: {
+	DisplayName: 绿遗迹砖墙
+	Tooltip: ""
+}
+
+GreenRelicWall_Style2_Item: {
+	DisplayName: Green Relic Wall_ Style2_ Item
 	Tooltip: ""
 }
 
@@ -724,8 +1013,143 @@ GreyTownBrick_Item: {
 	Tooltip: ""
 }
 
+HangingSkyLantern: {
+	DisplayName: 挂式灯笼
+	Tooltip: ""
+}
+
+HeatproofBathtub_item: {
+	DisplayName: 耐热浴缸
+	Tooltip: ""
+}
+
+HeatproofBed_item: {
+	DisplayName: 耐热床
+	Tooltip: ""
+}
+
+HeatproofBookcase_item: {
+	DisplayName: 耐热书架
+	Tooltip: ""
+}
+
+HeatproofCandelabra_item: {
+	DisplayName: 耐热烛台
+	Tooltip: ""
+}
+
+HeatproofCandle_item: {
+	DisplayName: 耐热蜡烛
+	Tooltip: ""
+}
+
+HeatproofChair_item: {
+	DisplayName: 耐热椅
+	Tooltip: ""
+}
+
+HeatproofChandelier_item: {
+	DisplayName: 耐热吊灯
+	Tooltip: ""
+}
+
+HeatproofChest_item: {
+	DisplayName: 耐热箱子
+	Tooltip: ""
+}
+
+HeatproofClock_item: {
+	DisplayName: 耐热钟
+	Tooltip: ""
+}
+
+HeatproofDoor_item: {
+	DisplayName: 耐热门
+	Tooltip: ""
+}
+
+HeatproofDresser_item: {
+	DisplayName: 耐热梳妆台
+	Tooltip: ""
+}
+
+HeatproofLamp_item: {
+	DisplayName: 耐热灯柱
+	Tooltip: ""
+}
+
+HeatproofLantern_item: {
+	DisplayName: 耐热灯笼
+	Tooltip: ""
+}
+
+HeatproofPiano_item: {
+	DisplayName: 耐热钢琴
+	Tooltip: ""
+}
+
 HeatProofPlatingWall_Item: {
 	DisplayName: 炉心隔热镀层墙
+	Tooltip: ""
+}
+
+HeatproofSink_item: {
+	DisplayName: 耐热水盆
+	Tooltip: ""
+}
+
+HeatproofSofa_item: {
+	DisplayName: 耐热沙发
+	Tooltip: ""
+}
+
+HeatproofTable_item: {
+	DisplayName: 耐热桌子
+	Tooltip: ""
+}
+
+HeatproofToilet_item: {
+	DisplayName: 耐热马桶
+	Tooltip: ""
+}
+
+HeatproofWorkbench_item: {
+	DisplayName: 耐热工作台
+	Tooltip: ""
+}
+
+HexagonalCeilingLamp: {
+	DisplayName: 六角宫灯
+	Tooltip: ""
+}
+
+Hob_Silver_Item: {
+	DisplayName: 银色厨柜
+	Tooltip: ""
+}
+
+HolographicPylon_Item: {
+	DisplayName: Holographic Pylon_ Item
+	Tooltip: ""
+}
+
+HoneyElevator_Indicator_Lamp_Item: {
+	DisplayName: Honey Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+HoneyElevator_Item: {
+	DisplayName: Honey Elevator_ Item
+	Tooltip: ""
+}
+
+HumicMud_Item: {
+	DisplayName: 腐殖质泥
+	Tooltip: ""
+}
+
+HydraMud_Item: {
+	DisplayName: Hydra Mud_ Item
 	Tooltip: ""
 }
 
@@ -734,14 +1158,54 @@ IronTrackScaffolding: {
 	Tooltip: ""
 }
 
+IronTrackScaffolding_Item: {
+	DisplayName: Iron Track Scaffolding_ Item
+	Tooltip: ""
+}
+
+IRProbe_Normal_Item: {
+	DisplayName: 红外感应器
+	Tooltip: ""
+}
+
 Ishta_per_The_Venus_painting_Item: {
 	DisplayName: 伊斯塔裴尔的画像
+	Tooltip: ""
+}
+
+IsleBamboo_Wall_Item: {
+	DisplayName: 夭华箭竹墙
+	Tooltip: ""
+}
+
+JadeizedBone_Item: {
+	DisplayName: 玉化龙骨
+	Tooltip: ""
+}
+
+JadeLakeRedAlgae_Item: {
+	DisplayName: 碧湖红藻
+	Tooltip: ""
+}
+
+JadeLakeSargassum_Item: {
+	DisplayName: 碧湖巨马尾藻
 	Tooltip: ""
 }
 
 JellyBallCube: {
 	DisplayName: 球冻方块
 	Tooltip: ""
+}
+
+JellyBallSecretionWall_Item: {
+	DisplayName: 球冻分泌物墙
+	Tooltip: ""
+}
+
+KelpMoss_largeCreate: {
+	DisplayName: 放置大型雨帘苔
+	Tooltip: 开发者物品
 }
 
 Lamorch_Item: {
@@ -754,13 +1218,128 @@ LampGrassSeed: {
 	Tooltip: ""
 }
 
-LampWoodCrate_Item: {
-	DisplayName: 灯木匣
+LampWood_Chest_Item: {
+	DisplayName: 灯木箱子
+	Tooltip: ""
+}
+
+LampWood_Platform: {
+	DisplayName: 灯木平台
 	Tooltip: ""
 }
 
 LampWood_Wood: {
 	DisplayName: 灯木
+	Tooltip: ""
+}
+
+LampWood_workBench: {
+	DisplayName: 灯木工作台
+	Tooltip: ""
+}
+
+LampWoodBathtub: {
+	DisplayName: 灯木浴缸
+	Tooltip: ""
+}
+
+LampWoodBed: {
+	DisplayName: 灯木床
+	Tooltip: ""
+}
+
+LampWoodBookcase: {
+	DisplayName: 灯木书架
+	Tooltip: ""
+}
+
+LampWoodCandelabra_Item: {
+	DisplayName: 灯木烛台
+	Tooltip: ""
+}
+
+LampWoodCandle_Item: {
+	DisplayName: 灯木蜡烛
+	Tooltip: ""
+}
+
+LampWoodChair: {
+	DisplayName: 灯木椅
+	Tooltip: ""
+}
+
+LampWoodChandelier_Item: {
+	DisplayName: 灯木吊灯
+	Tooltip: ""
+}
+
+LampWoodClock: {
+	DisplayName: 灯木钟
+	Tooltip: ""
+}
+
+LampWoodCrate_Item: {
+	DisplayName: 灯木匣
+	Tooltip: ""
+}
+
+LampWoodDoor: {
+	DisplayName: 灯木门
+	Tooltip: ""
+}
+
+LampWoodDresser: {
+	DisplayName: 灯木梳妆台
+	Tooltip: ""
+}
+
+LampWoodLamp_Item: {
+	DisplayName: 灯木灯
+	Tooltip: ""
+}
+
+LampWoodLantern: {
+	DisplayName: 灯木灯笼
+	Tooltip: ""
+}
+
+LampWoodPiano: {
+	DisplayName: 灯木钢琴
+	Tooltip: ""
+}
+
+LampWoodSink: {
+	DisplayName: 灯木水盆
+	Tooltip: ""
+}
+
+LampWoodSofa: {
+	DisplayName: 灯木沙发
+	Tooltip: ""
+}
+
+LampWoodTable: {
+	DisplayName: 灯木桌子
+	Tooltip: ""
+}
+
+LampWoodToilet: {
+	DisplayName: 灯木马桶
+	Tooltip: ""
+}
+
+LampWoodWall_item: {
+	DisplayName: 灯木墙
+	Tooltip: ""
+}
+
+LapisLazuliDome_Item: {
+	DisplayName: 蓝色穹顶
+	Tooltip: ""
+}
+
+LapisLazuliDome_mini_Item: {
+	DisplayName: 小型蓝色穹顶
 	Tooltip: ""
 }
 
@@ -779,13 +1358,136 @@ LargeCrystalShowTable_Red_Item: {
 	Tooltip: ""
 }
 
+LargeFireBulbTestItem: {
+	DisplayName: Large Fire Bulb Test Item
+	Tooltip: ""
+}
+
+LesionElevator_Indicator_Lamp_Item: {
+	DisplayName: Lesion Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+LesionElevator_Item: {
+	DisplayName: Lesion Elevator_ Item
+	Tooltip: ""
+}
+
+LiftLamp: {
+	DisplayName: 电梯灯
+	Tooltip: ""
+}
+
+LiftWinch: {
+	DisplayName: 电梯绞盘
+	Tooltip: ""
+}
+
+LightbulbBand_item: {
+	DisplayName: 灯泡灯带
+	Tooltip:
+		'''
+		放置物为绳头
+		手持此物右键点击绳头引出绳子
+		把绳子牵引到另一处绳头再右键点击即可完成挂绳
+		手持其他物品，右键点击挂好了的绳头取消原绳
+		每个绳头可以引出无数条绳，但是只能接受1条绳
+		控制灯光的电路需要通过引出绳子的绳头，接受绳子的绳头无效
+		'''
+}
+
+LihzahrdElevator_Indicator_Lamp_Item: {
+	DisplayName: Lihzahrd Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+LihzahrdElevator_Item: {
+	DisplayName: Lihzahrd Elevator_ Item
+	Tooltip: ""
+}
+
+LiveFluorescentLeafWall: {
+	DisplayName: 生命萤火叶墙
+	Tooltip: ""
+}
+
+LiveFluorescentWoodWall: {
+	DisplayName: 生命萤火木墙
+	Tooltip: ""
+}
+
+LivingWoodElevator_Indicator_Lamp_Item: {
+	DisplayName: Living Wood Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+LivingWoodElevator_Item: {
+	DisplayName: Living Wood Elevator_ Item
+	Tooltip: ""
+}
+
+MailBox_Item: {
+	DisplayName: Mail Box_ Item
+	Tooltip: ""
+}
+
+MarbleElevator_Indicator_Lamp_Item: {
+	DisplayName: Marble Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+MarbleElevator_Item: {
+	DisplayName: Marble Elevator_ Item
+	Tooltip: ""
+}
+
+MartianElevator_Indicator_Lamp_Item: {
+	DisplayName: Martian Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+MartianElevator_Item: {
+	DisplayName: Martian Elevator_ Item
+	Tooltip: ""
+}
+
 MeltingButton_Item: {
 	DisplayName: 熔炼按钮
-	Tooltip: "按下后把熔料收纳箱的物体销毁，转化为热能并记录贡献点"
+	Tooltip: 按下后把熔料收纳箱的物体销毁，转化为热能并记录贡献点
 }
 
 MeltingInputBox_Item: {
 	DisplayName: 熔料收纳箱
+	Tooltip: ""
+}
+
+MeteoriteElevator_Indicator_Lamp_Item: {
+	DisplayName: Meteorite Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+MeteoriteElevator_Item: {
+	DisplayName: Meteorite Elevator_ Item
+	Tooltip: ""
+}
+
+MetroHelper: {
+	DisplayName: Metro Helper
+	Tooltip: ""
+}
+
+MetroSign_Item: {
+	DisplayName: Metro Sign_ Item
+	Tooltip: ""
+}
+
+MetroStationSign_PylonSquare_Item: {
+	DisplayName: Metro Station Sign_ Pylon Square_ Item
+	Tooltip: ""
+}
+
+MetroStationSign_YggdrasilTown_Item: {
+	DisplayName: Metro Station Sign_ Yggdrasil Town_ Item
 	Tooltip: ""
 }
 
@@ -799,18 +1501,451 @@ MissionCounter_Item: {
 	Tooltip: ""
 }
 
+MorphoFrame_Item: {
+	DisplayName: Morpho Frame_ Item
+	Tooltip: ""
+}
+
+MossProneSandSoil: {
+	DisplayName: 苔基砂土
+	Tooltip: ""
+}
+
+MossProneSandSoil_Item: {
+	DisplayName: 苔底砂土
+	Tooltip: ""
+}
+
+MossProneSandSoilWall_Item: {
+	DisplayName: 苔底砂土墙
+	Tooltip: ""
+}
+
+MossyDockWood_Item: {
+	DisplayName: Mossy Dock Wood_ Item
+	Tooltip: ""
+}
+
+MothRelic: {
+	DisplayName: 腐檀巨蛾圣物
+	Tooltip: ""
+}
+
+MushroomElevator_Indicator_Lamp_Item: {
+	DisplayName: Mushroom Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+MushroomElevator_Item: {
+	DisplayName: Mushroom Elevator_ Item
+	Tooltip: ""
+}
+
+NebulaElevator_Indicator_Lamp_Item: {
+	DisplayName: Nebula Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+NebulaElevator_Item: {
+	DisplayName: Nebula Elevator_ Item
+	Tooltip: ""
+}
+
+NoctilucentFluoriteLump_Item: {
+	DisplayName: 夜萤石块
+	Tooltip: ""
+}
+
+NormalEscalator_Item: {
+	DisplayName: Normal Escalator_ Item
+	Tooltip: ""
+}
+
+ObsidianElevator_Indicator_Lamp_Item: {
+	DisplayName: Obsidian Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+ObsidianElevator_Item: {
+	DisplayName: Obsidian Elevator_ Item
+	Tooltip: ""
+}
+
+OldMoss: {
+	DisplayName: 古苔
+	Tooltip: ""
+}
+
+OldMoss_Item: {
+	DisplayName: 古苔藓
+	Tooltip: ""
+}
+
+OldMossWall_Item: {
+	DisplayName: 古苔藓墙
+	Tooltip: ""
+}
+
+PalmWoodElevator_Indicator_Lamp_Item: {
+	DisplayName: Palm Wood Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+PalmWoodElevator_Item: {
+	DisplayName: Palm Wood Elevator_ Item
+	Tooltip: ""
+}
+
+PearlwoodElevator_Indicator_Lamp_Item: {
+	DisplayName: Pearlwood Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+PearlwoodElevator_Item: {
+	DisplayName: Pearlwood Elevator_ Item
+	Tooltip: ""
+}
+
+PierWithSlabs: {
+	DisplayName: 石板石墩
+	Tooltip: ""
+}
+
+PierWithSlabsTop: {
+	DisplayName: 石板石墩顶
+	Tooltip: ""
+}
+
+PierWithSlabsTop_Item: {
+	DisplayName: Pier With Slabs Top_ Item
+	Tooltip: ""
+}
+
+PineLiftWinch: {
+	DisplayName: 松树电梯
+	Tooltip: ""
+}
+
+PinkDungeonElevator_Indicator_Lamp_Item: {
+	DisplayName: Pink Dungeon Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+PinkDungeonElevator_Item: {
+	DisplayName: Pink Dungeon Elevator_ Item
+	Tooltip: ""
+}
+
+PlantSpecimen_Branch_Item: {
+	DisplayName: Plant Specimen_ Branch_ Item
+	Tooltip: ""
+}
+
+PlantSpecimen_Fern_Item: {
+	DisplayName: Plant Specimen_ Fern_ Item
+	Tooltip: ""
+}
+
+PlumBlossomInABowl: {
+	DisplayName: 一碗梅花
+	Tooltip: ""
+}
+
+PumpkinElevator_Indicator_Lamp_Item: {
+	DisplayName: Pumpkin Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+PumpkinElevator_Item: {
+	DisplayName: Pumpkin Elevator_ Item
+	Tooltip: ""
+}
+
+QuestBoard_Item: {
+	DisplayName: Quest Board_ Item
+	Tooltip: ""
+}
+
+QuestCounter_Item: {
+	DisplayName: Quest Counter_ Item
+	Tooltip: ""
+}
+
+RedGlassbulbBand_item: {
+	DisplayName: 红LED灯带
+	Tooltip:
+		'''
+		放置物为绳头
+		手持此物右键点击绳头引出绳子
+		把绳子牵引到另一处绳头再右键点击即可完成挂绳
+		手持其他物品，右键点击挂好了的绳头取消原绳
+		每个绳头可以引出无数条绳，但是只能接受1条绳
+		控制灯光的电路需要通过引出绳子的绳头，接受绳子的绳头无效
+		'''
+}
+
+ReefElevator_Indicator_Lamp_Item: {
+	DisplayName: Reef Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+ReefElevator_Item: {
+	DisplayName: Reef Elevator_ Item
+	Tooltip: ""
+}
+
+Refrigerator_Silver_Item: {
+	DisplayName: 银色冰箱
+	Tooltip: ""
+}
+
+Relic_LanternGhostKing: {
+	DisplayName: Relic_ Lantern Ghost King
+	Tooltip: ""
+}
+
+RestaurantLogoBoard_Item: {
+	DisplayName: 餐厅标志
+	Tooltip: ""
+}
+
+RichMahoganyElevator_Indicator_Lamp_Item: {
+	DisplayName: Rich Mahogany Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+RichMahoganyElevator_Item: {
+	DisplayName: Rich Mahogany Elevator_ Item
+	Tooltip: ""
+}
+
+RichOxygenSponge_Item: {
+	DisplayName: 富氧海绵
+	Tooltip: ""
+}
+
+RichOxygenSpongeWall_Item: {
+	DisplayName: 富氧海绵墙
+	Tooltip: ""
+}
+
 RoadSignPost_ToArena_Item: {
 	DisplayName: 通往竞技场的路标
 	Tooltip: ""
 }
 
+RoomBlackBox_Item: {
+	DisplayName: 房间世界的黑匣子
+	Tooltip: 开发者物品
+}
+
+RubyDarkGoldChest_BloodyChurch_Item: {
+	DisplayName: Ruby Dark Gold Chest_ Bloody Church_ Item
+	Tooltip: ""
+}
+
 RuinTorch: {
 	DisplayName: 遗迹火把
+	Tooltip: 照亮周围区域
+}
+
+RuinTorch_Item: {
+	DisplayName: Ruin Torch_ Item
+	Tooltip: ""
+}
+
+RustBronzeTreasureChest_Item: {
+	DisplayName: 锈铜宝箱
+	Tooltip: ""
+}
+
+SandgoldLantern_Item: {
+	DisplayName: Sandgold Lantern_ Item
+	Tooltip: ""
+}
+
+SandstoneElevator_Indicator_Lamp_Item: {
+	DisplayName: Sandstone Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+SandstoneElevator_Item: {
+	DisplayName: Sandstone Elevator_ Item
+	Tooltip: ""
+}
+
+ServingCounter_ChineseStyle_Item: {
+	DisplayName: 中式服务台
+	Tooltip: 把符合订单的菜品放上去或从上空丢过去以完成订单
+}
+
+ShabbyPylonItem: {
+	DisplayName: 破旧晶塔
+	Tooltip: ""
+}
+
+ShadewoodElevator_Indicator_Lamp_Item: {
+	DisplayName: Shadewood Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+ShadewoodElevator_Item: {
+	DisplayName: Shadewood Elevator_ Item
+	Tooltip: ""
+}
+
+SharpBarnacleLayer_Item: {
+	DisplayName: 尖锐藤壶层
+	Tooltip: ""
+}
+
+SharpBarnacleWall_Item: {
+	DisplayName: 尖锐藤壶层墙
+	Tooltip: ""
+}
+
+SideHangingLantern_Red: {
+	DisplayName: 侧挂红灯笼
+	Tooltip: ""
+}
+
+SideHangingLantern_White: {
+	DisplayName: 侧挂白灯笼
+	Tooltip: ""
+}
+
+SkywareElevator_Indicator_Lamp_Item: {
+	DisplayName: Skyware Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+SkywareElevator_Item: {
+	DisplayName: Skyware Elevator_ Item
+	Tooltip: ""
+}
+
+SlimeElevator_Indicator_Lamp_Item: {
+	DisplayName: Slime Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+SlimeElevator_Item: {
+	DisplayName: Slime Elevator_ Item
+	Tooltip: ""
+}
+
+SluiceWallLamp_Item: {
+	DisplayName: Sluice Wall Lamp_ Item
+	Tooltip: ""
+}
+
+SnowPineChest: {
+	DisplayName: 雪松宝箱
+	Tooltip: ""
+}
+
+SnowPineChest_fresh: {
+	DisplayName: 雪松宝箱
+	Tooltip: ""
+}
+
+SnowPineChest_gold: {
+	DisplayName: 雪松宝箱
+	Tooltip: ""
+}
+
+SnowPineDoor: {
+	DisplayName: 雪松门
+	Tooltip: ""
+}
+
+SnowPineLeaveStaff: {
+	DisplayName: 雪松针叶法杖
+	Tooltip: ""
+}
+
+SnowPineLeavesWall: {
+	DisplayName: 雪松针叶墙
+	Tooltip: ""
+}
+
+SnowPineWoodStaff: {
+	DisplayName: 雪松原木法杖
+	Tooltip: ""
+}
+
+SnowPineWoodWall: {
+	DisplayName: 雪松木墙
+	Tooltip: ""
+}
+
+SolarElevator_Indicator_Lamp_Item: {
+	DisplayName: Solar Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+SolarElevator_Item: {
+	DisplayName: Solar Elevator_ Item
+	Tooltip: ""
+}
+
+SpiderElevator_Indicator_Lamp_Item: {
+	DisplayName: Spider Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+SpiderElevator_Item: {
+	DisplayName: Spider Elevator_ Item
+	Tooltip: ""
+}
+
+SpookyElevator_Indicator_Lamp_Item: {
+	DisplayName: Spooky Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+SpookyElevator_Item: {
+	DisplayName: Spooky Elevator_ Item
+	Tooltip: ""
+}
+
+SquamousShellRelic: {
+	DisplayName: 龙鳞古壳圣物
+	Tooltip: ""
+}
+
+SquamousShellTrophy: {
+	DisplayName: 龙鳞古壳纪念章
+	Tooltip: ""
+}
+
+StardustElevator_Indicator_Lamp_Item: {
+	DisplayName: Stardust Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+StardustElevator_Item: {
+	DisplayName: Stardust Elevator_ Item
 	Tooltip: ""
 }
 
 SteamBoiler_Item: {
 	DisplayName: 蒸汽锅炉
+	Tooltip: ""
+}
+
+SteamBox_Item: {
+	DisplayName: Steam Box_ Item
+	Tooltip: ""
+}
+
+SteampunkElevator_Indicator_Lamp_Item: {
+	DisplayName: Steampunk Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+SteampunkElevator_Item: {
+	DisplayName: Steampunk Elevator_ Item
 	Tooltip: ""
 }
 
@@ -824,6 +1959,36 @@ StoneDragonScaleWood: {
 	Tooltip: ""
 }
 
+StoneDragonScaleWoodWall_Item: {
+	DisplayName: 石化龙鳞木墙
+	Tooltip: ""
+}
+
+Stove_Item: {
+	DisplayName: 炉灶
+	Tooltip: ""
+}
+
+StreetLantern: {
+	DisplayName: 曲杆中式街灯笼
+	Tooltip: ""
+}
+
+SungloChandelier: {
+	DisplayName: 松萝吊灯
+	Tooltip: ""
+}
+
+Thatched: {
+	DisplayName: 屋用茅草
+	Tooltip: ""
+}
+
+ThatchedWall: {
+	DisplayName: 屋用茅草墙
+	Tooltip: ""
+}
+
 TotalFurnaceScoreBoard_Item: {
 	DisplayName: 炉心热值贡献板
 	Tooltip: ""
@@ -834,163 +1999,13 @@ TownBrick_Gray_Item: {
 	Tooltip: ""
 }
 
-TownBrick_Khaki_Item: {
-	DisplayName: 城镇卡其砖
-	Tooltip: ""
-}
-
-TownSteelBrick_Item: {
-	DisplayName: 城镇贴镀层砖
-	Tooltip: ""
-}
-
-TwilightCrate_Item: {
-	DisplayName: 暮光匣
-	Tooltip: ""
-}
-
-TwilightEucalyptusWood_Item: {
-	DisplayName: 暮光桉木
-	Tooltip: ""
-}
-
-UnionAcanthusWallLace_Item: {
-	DisplayName: 工会茛苕叶金边
-	Tooltip: ""
-}
-
-UnionGiantChandelier_Item: {
-	DisplayName: 工会巨型水晶吊灯
-	Tooltip: ""
-}
-
-UnionGiantChandelier_Style1_Item: {
-	DisplayName: 工会巨型吊灯
-	Tooltip: ""
-}
-
-UnionGoldAcanthusWall_Item: {
-	DisplayName: 工会茛苕叶纹墙
-	Tooltip: ""
-}
-
-UnionLampPost_Style0_Item: {
-	DisplayName: 工会金台灯
-	Tooltip: ""
-}
-
-UnionLampPost_Style1_Item: {
-	DisplayName: 工会琉璃台灯
-	Tooltip: ""
-}
-
-UnionLampPost_Style2_Item: {
-	DisplayName: 工会雕像台灯
-	Tooltip: ""
-}
-
-UnionMarblePost_Body_Khaki_Item: {
-	DisplayName: 工会卡其色大理石立柱柱体
-	Tooltip: ""
-}
-
-UnionMarblePost_Bottom_Khaki_Item: {
-	DisplayName: 工会卡其色大理石立柱底座
-	Tooltip: ""
-}
-
-UnionMarblePost_Top_Corinth_Khaki_Item: {
-	DisplayName: 工会柯林斯式卡其色大理石立柱顶
-	Tooltip: ""
-}
-
-UnionMarblePost_Top_Doric_Khaki_Item: {
-	DisplayName: 工会多立克式卡其色大理石立柱顶
-	Tooltip: ""
-}
-
-UnionMarblePost_Top_Ionic_Khaki_Item: {
-	DisplayName: 工会罗马式卡其色大理石立柱顶
-	Tooltip: ""
-}
-
-UnionMarbleTile_Khaki_Item: {
-	DisplayName: 工会卡其色大理石块
-	Tooltip: ""
-}
-
-UnionMarbleWall_Dark_Item: {
-	DisplayName: 工会暗色大理石墙
-	Tooltip: ""
-}
-
-UnionOfficeDoor_Item: {
-	DisplayName: 工会办公室大门
-	Tooltip: ""
-}
-
-UnionSideLantern_Style0_Item: {
-	DisplayName: 工会金侧灯
-	Tooltip: ""
-}
-
-UnionWallLamp_Style0_Item: {
-	DisplayName: 工会大理石壁灯
-	Tooltip: ""
-}
-
-UnionWindow_Style0_Item: {
-	DisplayName: 工会窗
-	Tooltip: ""
-}
-
-Union_Y_Stairs_Item: {
-	DisplayName: 工会Y形大楼梯
-	Tooltip: ""
-}
-
-UrbanCrate_Item: {
-	DisplayName: 城镇匣
-	Tooltip: ""
-}
-
-YggdrasilCommandBlockItem: {
-	DisplayName: 天穹命令方块
-	Tooltip: ""
-}
-
-YggdrasilPlayerRoomDoor_Item: {
-	DisplayName: 天穹镇住宅门
-	Tooltip: ""
-}
-
-YggdrasilPlayerRoomDoor_Lock_Item: {
-	DisplayName: 上锁天穹镇住宅门
-	Tooltip: ""
-}
-
-GreenRelicWall_Item: {
-	DisplayName: 绿遗迹砖墙
-	Tooltip: ""
-}
-
-JellyBallSecretionWall_Item: {
-	DisplayName: 球冻分泌物墙
-	Tooltip: ""
-}
-
-LampWoodWall_item: {
-	DisplayName: 灯木墙
-	Tooltip: ""
-}
-
-StoneDragonScaleWoodWall_Item: {
-	DisplayName: 石化龙鳞木墙
-	Tooltip: ""
-}
-
 TownBrick_Gray_Wall_Item: {
 	DisplayName: 城镇亮灰砖墙
+	Tooltip: ""
+}
+
+TownBrick_Khaki_Item: {
+	DisplayName: 城镇卡其砖
 	Tooltip: ""
 }
 
@@ -999,18 +2014,53 @@ TownBrick_Khaki_Wall_Item: {
 	Tooltip: ""
 }
 
-TwilightEucalyptusWoodWall_Item: {
-	DisplayName: 暮光桉木墙
+TownGatePylon_Item: {
+	DisplayName: Town Gate Pylon_ Item
 	Tooltip: ""
 }
 
-CyanVineOre: {
-	DisplayName: 青缎矿
+TownSteelBrick_Item: {
+	DisplayName: 城镇贴镀层砖
 	Tooltip: ""
 }
 
-RustBronzeTreasureChest_Item: {
-	DisplayName: 锈铜宝箱
+Travertine_Item: {
+	DisplayName: 钙华石
+	Tooltip: ""
+}
+
+TuskFlesh_Item: {
+	DisplayName: 獠牙龈块
+	Tooltip: ""
+}
+
+TuskRelic: {
+	DisplayName: 鲜血獠牙圣物
+	Tooltip: ""
+}
+
+TuskStatusI: {
+	DisplayName: 獠牙石碑
+	Tooltip: ""
+}
+
+TuskStatusII: {
+	DisplayName: 獠牙石碑
+	Tooltip: ""
+}
+
+TuskStatusIII: {
+	DisplayName: 獠牙石碑
+	Tooltip: ""
+}
+
+TuskStatusIV: {
+	DisplayName: 獠牙石碑
+	Tooltip: ""
+}
+
+TwilightCrate_Item: {
+	DisplayName: 暮光匣
 	Tooltip: ""
 }
 
@@ -1119,308 +2169,343 @@ TwilightEucalyptusToilet: {
 	Tooltip: ""
 }
 
+TwilightEucalyptusWood_Item: {
+	DisplayName: 暮桉木
+	Tooltip: ""
+}
+
+TwilightEucalyptusWoodWall_Item: {
+	DisplayName: 暮光桉木墙
+	Tooltip: ""
+}
+
 TwilightEucalyptusWorkBench: {
 	DisplayName: 暮光桉工作台
 	Tooltip: ""
 }
 
-LampWoodBathtub: {
-	DisplayName: 灯木浴缸
+UnderwaterGuillotine_Item: {
+	DisplayName: 水下断头台
 	Tooltip: ""
 }
 
-LampWoodBed: {
-	DisplayName: 灯木床
+UnderwaterLightningMechanism_Item: {
+	DisplayName: 水下闪电机关
 	Tooltip: ""
 }
 
-LampWoodBookcase: {
-	DisplayName: 灯木书架
+Union_Y_Stairs_Item: {
+	DisplayName: 工会Y形大楼梯
 	Tooltip: ""
 }
 
-LampWoodCandelabra_Item: {
-	DisplayName: 灯木烛台
+UnionAcanthusWallLace_Item: {
+	DisplayName: 工会茛苕叶金边
 	Tooltip: ""
 }
 
-LampWoodCandle_Item: {
-	DisplayName: 灯木蜡烛
+UnionGiantChandelier_Item: {
+	DisplayName: 工会巨型水晶吊灯
 	Tooltip: ""
 }
 
-LampWoodChair: {
-	DisplayName: 灯木椅
+UnionGiantChandelier_Style1_Item: {
+	DisplayName: 工会巨型吊灯
 	Tooltip: ""
 }
 
-LampWoodChandelier_Item: {
-	DisplayName: 灯木吊灯
+UnionGoldAcanthusWall_Item: {
+	DisplayName: 工会茛苕叶纹墙
 	Tooltip: ""
 }
 
-LampWoodClock: {
-	DisplayName: 灯木钟
+UnionLampPost_Style0_Item: {
+	DisplayName: 工会金台灯
 	Tooltip: ""
 }
 
-LampWoodDoor: {
-	DisplayName: 灯木门
+UnionLampPost_Style1_Item: {
+	DisplayName: 工会琉璃台灯
 	Tooltip: ""
 }
 
-LampWoodDresser: {
-	DisplayName: 灯木梳妆台
+UnionLampPost_Style2_Item: {
+	DisplayName: 工会雕像台灯
 	Tooltip: ""
 }
 
-LampWoodLamp_Item: {
-	DisplayName: 灯木灯
+UnionMarblePost_Body_Khaki_Item: {
+	DisplayName: 工会卡其色大理石立柱柱体
 	Tooltip: ""
 }
 
-LampWoodLantern: {
-	DisplayName: 灯木灯笼
+UnionMarblePost_Bottom_Khaki_Item: {
+	DisplayName: 工会卡其色大理石立柱底座
 	Tooltip: ""
 }
 
-LampWoodPiano: {
-	DisplayName: 灯木钢琴
+UnionMarblePost_Top_Corinth_Khaki_Item: {
+	DisplayName: 工会柯林斯式卡其色大理石立柱顶
 	Tooltip: ""
 }
 
-LampWoodSink: {
-	DisplayName: 灯木水槽
+UnionMarblePost_Top_Doric_Khaki_Item: {
+	DisplayName: 工会多立克式卡其色大理石立柱顶
 	Tooltip: ""
 }
 
-LampWoodSofa: {
-	DisplayName: 灯木沙发
+UnionMarblePost_Top_Ionic_Khaki_Item: {
+	DisplayName: 工会罗马式卡其色大理石立柱顶
 	Tooltip: ""
 }
 
-LampWoodTable: {
-	DisplayName: 灯木桌
+UnionMarbleTile_Khaki_Item: {
+	DisplayName: 工会卡其色大理石块
 	Tooltip: ""
 }
 
-LampWoodToilet: {
-	DisplayName: 灯木马桶
+UnionMarbleWall_Dark_Item: {
+	DisplayName: 工会暗色大理石墙
 	Tooltip: ""
 }
 
-LampWood_Chest_Item: {
-	DisplayName: 灯木箱
+UnionOfficeDoor_Item: {
+	DisplayName: 工会办公室大门
 	Tooltip: ""
 }
 
-LampWood_Platform: {
-	DisplayName: 灯木平台
+UnionSideLantern_Style0_Item: {
+	DisplayName: 工会金侧灯
 	Tooltip: ""
 }
 
-LampWood_workBench: {
-	DisplayName: 灯木工作台
+UnionWallLamp_Style0_Item: {
+	DisplayName: 工会大理石壁灯
 	Tooltip: ""
 }
 
-HeatproofBathtub_item: {
-	DisplayName: 隔热浴缸
+UnionWindow_Style0_Item: {
+	DisplayName: 工会窗
 	Tooltip: ""
 }
 
-HeatproofBed_item: {
-	DisplayName: 隔热床
+UnregisteredPylon_Item: {
+	DisplayName: Unregistered Pylon_ Item
 	Tooltip: ""
 }
 
-HeatproofBookcase_item: {
-	DisplayName: 隔热书架
+UrbanCrate_Item: {
+	DisplayName: 城镇匣
 	Tooltip: ""
 }
 
-HeatproofCandelabra_item: {
-	DisplayName: 隔热烛台
+VampireMatCave_BoardSign_Item: {
+	DisplayName: Vampire Mat Cave_ Board Sign_ Item
 	Tooltip: ""
 }
 
-HeatproofCandle_item: {
-	DisplayName: 隔热蜡烛
+VampireMatCave_HangingSign_Item: {
+	DisplayName: Vampire Mat Cave_ Hanging Sign_ Item
 	Tooltip: ""
 }
 
-HeatproofChair_item: {
-	DisplayName: 隔热椅
+VFXPersonItem: {
+	DisplayName: VFXPerson Item
 	Tooltip: ""
 }
 
-HeatproofChandelier_item: {
-	DisplayName: 隔热吊灯
+VortexElevator_Indicator_Lamp_Item: {
+	DisplayName: Vortex Elevator_ Indicator_ Lamp_ Item
 	Tooltip: ""
 }
 
-HeatproofChest_item: {
-	DisplayName: 隔热箱
+VortexElevator_Item: {
+	DisplayName: Vortex Elevator_ Item
 	Tooltip: ""
 }
 
-HeatproofClock_item: {
-	DisplayName: 隔热钟
+WaterDeliveryHole_Item: {
+	DisplayName: 水流穿梭口
 	Tooltip: ""
 }
 
-HeatproofDoor_item: {
-	DisplayName: 隔热门
+WaterErodedChestInlaidWithGold_Item: {
+	DisplayName: 水蚀镶金宝箱
 	Tooltip: ""
 }
 
-HeatproofDresser_item: {
-	DisplayName: 隔热梳妆台
+WaterErodedGreenBrick_Item: {
+	DisplayName: 水蚀青砖
 	Tooltip: ""
 }
 
-HeatproofLamp_item: {
-	DisplayName: 隔热灯
+WaterErodedGreenBrickWall_Item: {
+	DisplayName: 水蚀青砖墙
 	Tooltip: ""
 }
 
-HeatproofLantern_item: {
-	DisplayName: 隔热灯笼
+WaterErodedRustyCopperChest_Item: {
+	DisplayName: 水蚀锈铜宝箱
 	Tooltip: ""
 }
 
-HeatproofPiano_item: {
-	DisplayName: 隔热钢琴
+WhiteCallaLily_Item: {
+	DisplayName: 白色马蹄莲
 	Tooltip: ""
 }
 
-HeatproofSink_item: {
-	DisplayName: 隔热水槽
+WhiteLotusBonsai: {
+	DisplayName: 白莲花盆景
 	Tooltip: ""
 }
 
-HeatproofSofa_item: {
-	DisplayName: 隔热沙发
+WitherWoodBookcase: {
+	DisplayName: Wither Wood Bookcase
 	Tooltip: ""
 }
 
-HeatproofTable_item: {
-	DisplayName: 隔热桌
+WitherWoodBrazier_Item: {
+	DisplayName: Wither Wood Brazier_ Item
 	Tooltip: ""
 }
 
-HeatproofToilet_item: {
-	DisplayName: 隔热马桶
+WitherWoodChair: {
+	DisplayName: Wither Wood Chair
 	Tooltip: ""
 }
 
-HeatproofWorkbench_item: {
-	DisplayName: 隔热工作台
+WitherWoodChandelier: {
+	DisplayName: Wither Wood Chandelier
 	Tooltip: ""
 }
 
-SquamousShellRelic: {
-	DisplayName: 龙鳞古壳圣物
+WitherWoodColdFlameTorch_Item: {
+	DisplayName: Wither Wood Cold Flame Torch_ Item
 	Tooltip: ""
 }
 
-SquamousShellTrophy: {
-	DisplayName: 龙鳞古壳纪念章
+WitherWoodDoor: {
+	DisplayName: Wither Wood Door
 	Tooltip: ""
 }
 
-KelpMoss_largeCreate: {
-	DisplayName: 放置大型雨帘苔
-	Tooltip: "开发者物品"
-}
-
-AlgaeExtractor_Item: {
-	DisplayName: 藻类提取机
+WitherWoodShutterWall_Item: {
+	DisplayName: Wither Wood Shutter Wall_ Item
 	Tooltip: ""
 }
 
-DarklakeBottomMud_Item: {
-	DisplayName: 暗湖底泥
+WitherWoodTable: {
+	DisplayName: Wither Wood Table
 	Tooltip: ""
 }
 
-DecayingWood_Item: {
-	DisplayName: 朽木
+WoodenChest_ForestCastle_Item: {
+	DisplayName: Wooden Chest_ Forest Castle_ Item
 	Tooltip: ""
 }
 
-DevilHeartIronOre_Item: {
-	DisplayName: 魔心铁矿
+WoodenElevator_Indicator_Lamp_Item: {
+	DisplayName: Wooden Elevator_ Indicator_ Lamp_ Item
 	Tooltip: ""
 }
 
-DragonScaleWood: {
-	DisplayName: 龙鳞木
+WoodenElevator_Item: {
+	DisplayName: Wooden Elevator_ Item
 	Tooltip: ""
 }
 
-GeyserAirBudsItem: {
-	DisplayName: 间歇泉气苞
+WoodenRoomDoor_exit_Item: {
+	DisplayName: 离开房间的木门
+	Tooltip: 右键离开房间
+}
+
+WoodenRoomDoor_Item: {
+	DisplayName: 进入房间的木门
+	Tooltip: 右键进入一个木制的房间
+}
+
+WornForestChest_Item: {
+	DisplayName: Worn Forest Chest_ Item
 	Tooltip: ""
 }
 
-GreenCourtBrick_Item: {
-	DisplayName: 绿王庭砖
+YellowDynastyShingles: {
+	DisplayName: 黄王朝瓦
 	Tooltip: ""
 }
 
-JadeizedBone_Item: {
-	DisplayName: 玉化龙骨
+YggdrasilBlackRock_Item: {
+	DisplayName: 天穹黑岩
 	Tooltip: ""
 }
 
-MossProneSandSoil: {
-	DisplayName: 苔基砂土
+YggdrasilBlackRockWall_Item: {
+	DisplayName: 天穹黑岩墙
 	Tooltip: ""
 }
 
-OldMoss: {
-	DisplayName: 古苔
+YggdrasilCommandBlockItem: {
+	DisplayName: 天穹命令方块
 	Tooltip: ""
 }
 
 YggdrasilCyatheaWood: {
-	DisplayName: 天穹桫椤
+	DisplayName: 天穹桫椤木
 	Tooltip: ""
 }
 
-DragonScaleWoodWall_Item: {
-	DisplayName: 龙鳞木墙
+YggdrasilGravelStoreGate_Exit_Item: {
+	DisplayName: Yggdrasil Gravel Store Gate_ Exit_ Item
 	Tooltip: ""
 }
 
-GreenCourtWall_Item: {
-	DisplayName: 绿王庭砖墙
-	Tooltip: ""
-}
-
-CyanWindGranite: {
-	DisplayName: 青风岗岩
-	Tooltip: ""
-}
-
-BloodLightCrystal: {
-	DisplayName: 血解光石
-	Tooltip: ""
-}
-
-LiftLamp: {
-	DisplayName: 电梯灯
-	Tooltip: ""
-}
-
-LiftWinch: {
-	DisplayName: 电梯绞盘
+YggdrasilGravelStoreGate_Item: {
+	DisplayName: Yggdrasil Gravel Store Gate_ Item
 	Tooltip: ""
 }
 
 YggdrasilGrayRock_Item: {
 	DisplayName: 天穹灰岩
+	Tooltip: ""
+}
+
+YggdrasilGrayRockWall_Item: {
+	DisplayName: 天穹灰岩墙
+	Tooltip: ""
+}
+
+YggdrasilPlayerRoomDoor_Item: {
+	DisplayName: 天穹镇住宅门
+	Tooltip: ""
+}
+
+YggdrasilPlayerRoomDoor_Lock_Item: {
+	DisplayName: 上锁天穹镇住宅门
+	Tooltip: ""
+}
+
+YggdrasilTownAccessGate_Item: {
+	DisplayName: Yggdrasil Town Access Gate_ Item
+	Tooltip: ""
+}
+
+YggdrasilTownAccessGateNFCTrigger_Item: {
+	DisplayName: Yggdrasil Town Access GateNFCTrigger_ Item
+	Tooltip: ""
+}
+
+YggdrasilTownElevator_Indicator_Lamp_Item: {
+	DisplayName: Yggdrasil Town Elevator_ Indicator_ Lamp_ Item
+	Tooltip: ""
+}
+
+YggdrasilTownElevator_Item: {
+	DisplayName: Yggdrasil Town Elevator_ Item
+	Tooltip: ""
+}
+
+YggdrasilTownElevatorTunnelLamp_Item: {
+	DisplayName: Yggdrasil Town Elevator Tunnel Lamp_ Item
 	Tooltip: ""
 }
 

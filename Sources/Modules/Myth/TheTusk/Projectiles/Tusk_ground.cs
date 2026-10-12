@@ -9,6 +9,8 @@ namespace Everglow.Myth.TheTusk.Projectiles;
 /// </summary>
 public class Tusk_ground : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.tileCollide = false;

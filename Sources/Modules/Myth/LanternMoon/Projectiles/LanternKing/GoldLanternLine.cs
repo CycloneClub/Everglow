@@ -8,6 +8,8 @@ namespace Everglow.Myth.LanternMoon.Projectiles.LanternKing;
 
 public class GoldLanternLine : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
+
 	public override string Texture => ModAsset.GoldLaser_Mod;
 
 	public float LaserDirection = 0;

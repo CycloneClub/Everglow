@@ -1,11 +1,15 @@
-PineNut: {
-	DisplayName: 巨形松子
-	Tooltip: ""
-}
-
 AntiHeavenSicknessPill: {
 	DisplayName: 抗天穹反应药丸
 	Tooltip: ""
+}
+
+JadeFruit: {
+	DisplayName: 绿琉璃果
+	Tooltip:
+		'''
+		永久增加{1}点生命上限
+		最多使用{0}次
+		'''
 }
 
 LampBorerHoney: {
@@ -13,12 +17,25 @@ LampBorerHoney: {
 	Tooltip: ""
 }
 
-SquamousCore: {
-	DisplayName: 龙鳞古壳核心
+Photophore: {
+	DisplayName: 灵灯
+	Tooltip:
+		'''
+		永久增加{1}点生命上限
+		最多使用{0}次，与绿琉璃果共享使用次数
+		'''
+}
+
+PineNut: {
+	DisplayName: 巨形松子
 	Tooltip: ""
 }
 
-JadeFruit: {
-	DisplayName: 绿琉璃果
-	Tooltip: ""
+SquamousCore: {
+	DisplayName: 龙鳞能核
+	Tooltip:
+		'''
+		永久增加{0}点最大生命值
+		最多使用{1}次
+		'''
 }

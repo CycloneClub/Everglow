@@ -1,10 +1,11 @@
-GreenVineWhip: {
-	DisplayName: 青蔓鞭
-	Tooltip:
-		'''
-		25%造成中毒5秒
-		命中敌人时，给予玩家5秒“苔藓附层”
-		'''
+ActivatedDogStaff: {
+	DisplayName: 活化之犬召唤杖
+	Tooltip: 召唤向敌人冲锋的活化之犬
+}
+
+ActivatedJellyGland: {
+	DisplayName: 活化球冻腺体
+	Tooltip: 召唤球冻作战
 }
 
 AuburnBell: {
@@ -12,91 +13,62 @@ AuburnBell: {
 	Tooltip: 召唤小金棕飞棍为你作战
 }
 
+DarknessFan: {
+	DisplayName: 幻蝶萤火扇
+	Tooltip:
+		'''
+		右键可以远程攻击
+		标记最后一个被击中的敌人
+		'''
+}
+
+DeadBeetleEgg: {
+	DisplayName: 死甲虫卵
+	Tooltip: 召唤小甲虫为你作战
+}
+
+DevilHeartGyroscope: {
+	DisplayName: 魔心陀螺
+	Tooltip:
+		'''
+		召唤一枚可储存自身所造成伤害的陀螺
+		储存120点伤害后，鞭打陀螺会释放一颗生命心并清空储存
+		右键切换陀螺能量条显示
+		'''
+}
+
+EvilChrysalis: {
+	DisplayName: 邪茧孵化杖
+	Tooltip: 召唤小飞蛾作战
+}
+
+EvilMusicRemnant: {
+	DisplayName: 魔律残章
+	Tooltip: “大抵是某些古欧罗巴巫师残留下的乐谱，无需乐器，注入魔力即可引起闷响”
+}
+
+GreenVineWhip: {
+	DisplayName: 青蔓鞭
+	Tooltip:
+		'''
+		命中有25%概率造成5秒中毒
+		命中敌人后获得5秒苔藓附层：增加5点防御并免疫腐蚀
+		'''
+}
+
 GrilledSquidTentacle: {
 	DisplayName: 烤鱿鱼须
 	Tooltip: ""
 }
 
-ToothStaff: {
-	DisplayName: 獠牙召唤杖
-	Tooltip: "召唤獠牙为你而战"
-}
-
-DarknessFan: {
-	DisplayName: 幻蝶萤火扇
-	Tooltip: 
-	'''
-	右键可以远程攻击
-	标记最后一个被击中的敌人
-	'''
-}
-
-EvilChrysalis: {
-	DisplayName: 邪茧孵化杖
-	Tooltip: "召唤小飞蛾作战"
-}
-
-XmasWhip: {
-	DisplayName: 圣诞树鞭
-	Tooltip: ""
-}
-
-ActivatedJellyGland: {
-	DisplayName: 活化球冻腺体
-	Tooltip: "召唤球冻作战"
-}
-
-MeltingSideGyroscope: {
-	DisplayName: 熔边陀螺
-	Tooltip: ""
-}
-
-MidwinterNightmare: {
-	DisplayName: 精灵提灯
-	Tooltip: 
-	'''
-	哨兵，在地上召唤一尾部挂有灯笼的矮树，当敌怪靠近时，本体从地下伸出
-	有100%的近战伤害，20帧间隔；同时本体发射高速但短距弹幕攻击敌怪，造成100%伤害，20帧间隔
-	'''
-}
-
-ThermoprobeStaff: {
-	DisplayName: 热探单元杖
-	Tooltip: 
-	'''
-	召唤1个浮游单元，浮游单元会对敌人发出火球。每个浮游单元装有3发弹药，打完销毁
-	最多拥有两倍召唤上限个浮游单元
-	'''
-}
-
-WiltedForestLamp: {
-	DisplayName: 凋零森灯
-	Tooltip: "召唤能发射追踪法术的森灯，释放一定法术后会自爆造成范围凋亡损伤"
-}
-
-YggdrasilStoneGyroscope: {
-	DisplayName: 天穹岩陀螺
-	Tooltip: ""
-}
-
-DeadBeetleEgg: {
-	DisplayName: 死甲虫卵
-	Tooltip: ""
-}
-
-EvilMusicRemnant: {
-	DisplayName: 魔律残章
-	Tooltip: ""
-}
-
 LegumeGyroscope: {
 	DisplayName: 裂荚陀螺
-	Tooltip: ""
-}
-
-WoodlandWraithStaff: {
-	DisplayName: 森宇幽魂法杖
-	Tooltip: ""
+	Tooltip:
+		'''
+		召唤一枚可用鞭子充能的陀螺
+		鞭打陀螺会弹出1至3颗种子，各造成一半伤害
+		右键切换陀螺能量条显示
+		'''
 }
 
 LichenTentacle: {
@@ -104,7 +76,92 @@ LichenTentacle: {
 	Tooltip: ""
 }
 
-DevilHeartGyroscope: {
-	DisplayName: 魔心陀螺
+MeltingSideGyroscope: {
+	DisplayName: 熔边陀螺
+	Tooltip: 召唤炽热的陀螺为你作战
+}
+
+MidwinterNightmare: {
+	DisplayName: 精灵提灯
+	Tooltip:
+		'''
+		哨兵，在地上召唤一尾部挂有灯笼的矮树，当敌怪靠近时，本体从地下伸出
+		有100%的近战伤害，20帧间隔；同时本体发射高速但短距弹幕攻击敌怪，造成100%伤害，20帧间隔
+		'''
+}
+
+RedAlgaeMagicWhip: {
+	DisplayName: 红月水藻鞭
+	Tooltip:
+		'''
+		施加持续15秒的红藻毒素
+		毒素随时间累积，下次命中时引爆；自然消退不造成伤害
+		'''
+}
+
+RedAlgaeMinionGyroscope: {
+	DisplayName: 红月水藻陀螺
+	Tooltip:
+		'''
+		召唤被鞭子抽击后释放毒环的陀螺
+		施加持续15秒的红藻毒素
+		毒素随时间累积，下次命中时引爆；自然消退不造成伤害
+		'''
+}
+
+RedAlgaeMinionStaff: {
+	DisplayName: 红月水藻灵杖
+	Tooltip:
+		'''
+		召唤水藻精灵，发射6枚孢子后接近敌人并自爆
+		施加持续15秒的红藻毒素
+		毒素随时间累积，下次命中时引爆；自然消退不造成伤害
+		'''
+}
+
+RestrictionDeviceRE01: {
+	DisplayName: Restriction DeviceRE01
+	Tooltip: ""
+}
+
+ThermoprobeStaff: {
+	DisplayName: 热探单元杖
+	Tooltip:
+		'''
+		召唤一个向敌人开火的浮游单元
+		每个单元装有3发弹药，打完后消失
+		最多拥有召唤物上限两倍数量的浮游单元
+		'''
+}
+
+ToothStaff: {
+	DisplayName: 獠牙召唤杖
+	Tooltip: 召唤獠牙为你而战
+}
+
+WiltedForestLamp: {
+	DisplayName: 凋零森灯
+	Tooltip: 召唤能发射追踪法术的森灯，释放一定法术后会自爆造成范围凋亡损伤
+}
+
+WoodlandWraithStaff: {
+	DisplayName: 森宇幽魂法杖
+	Tooltip:
+		'''
+		召唤森宇幽魂，以冲锋造成240%伤害，或喷射血流造成100%伤害
+		右键消耗20点魔力，生成持续15秒的孢子领域
+		领域内的敌人受到的幽魂血流伤害提高70%
+		非战斗时静止2秒，幽魂会生长出治疗菌丝
+		站在菌丝上每秒额外恢复5点生命，在自己的孢子领域内效果翻倍
+		'''
+}
+
+XmasWhip: {
+	DisplayName: 圣诞树鞭
+	Tooltip: ""
+}
+
+YggdrasilStoneGyroscope: {
+	DisplayName: 天穹岩陀螺
 	Tooltip: ""
 }

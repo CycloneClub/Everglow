@@ -7,6 +7,8 @@ namespace Everglow.Minortopography.GiantPinetree.Items;
 // 摇树掉落水果
 public class HarvestingClaw : FruitPickerTool
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Tools;
+
 	public override void SetDefaults()
 	{
 		Item.damage = 6;

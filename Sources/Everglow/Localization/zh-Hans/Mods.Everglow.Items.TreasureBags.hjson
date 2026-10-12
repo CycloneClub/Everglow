@@ -1,8 +1,3 @@
-TuskTreasureBag: {
-	DisplayName: 鲜血獠牙宝藏袋
-	Tooltip: ""
-}
-
 CorruptMothTreasureBag: {
 	DisplayName: 腐檀巨蛾宝藏袋
 	Tooltip: ""
@@ -10,5 +5,20 @@ CorruptMothTreasureBag: {
 
 SquamousShellTreasureBag: {
 	DisplayName: 龙鳞古壳宝藏袋
+	Tooltip: ""
+}
+
+TreasureBag_LanternGhostKing: {
+	DisplayName: Treasure Bag_ Lantern Ghost King
+	Tooltip: ""
+}
+
+TuskTreasureBag: {
+	DisplayName: 鲜血獠牙宝藏袋
+	Tooltip: ""
+}
+
+VampireMatTreasureBag: {
+	DisplayName: Vampire Mat Treasure Bag
 	Tooltip: ""
 }

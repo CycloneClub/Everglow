@@ -4,6 +4,8 @@ namespace Everglow.Food;
 
 public abstract class FoodIngredientItem : ModItem
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Materials;
+
 	public int SlicedItemType = -1;
 	public int SliceDustType = -1;
 

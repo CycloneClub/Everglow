@@ -5,6 +5,8 @@ namespace Everglow.Example.Items;
 
 public class ExampleBackgroundTool : ModItem
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Tools;
+
 	public override void SetDefaults() => base.SetDefaults();
 
 	public override void HoldItem(Player player)

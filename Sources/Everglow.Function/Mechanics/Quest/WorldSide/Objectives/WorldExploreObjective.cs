@@ -12,16 +12,13 @@ public class WorldExploreObjective : WorldObjectiveBase
 	{
 	}
 
-	public WorldExploreObjective(int distance, Func<Player, bool> condition, string objectiveText)
+	public WorldExploreObjective(int distance, Func<Player, bool> condition)
 	{
-		ArgumentException.ThrowIfNullOrWhiteSpace(objectiveText);
 		Distance = distance;
 		Condition = condition;
-		this.objectiveText = objectiveText;
 	}
 
 	private float _localDistance;
-	private string objectiveText = string.Empty;
 
 	public int Distance { get; private set; }
 
@@ -39,7 +36,7 @@ public class WorldExploreObjective : WorldObjectiveBase
 	{
 	}
 
-	public override string GetObjectiveText() => $"{objectiveText} ({Math.Round(CurrentDistance)}/{Distance})";
+	public override string GetObjectiveText() => $"{base.GetObjectiveText()} ({Math.Round(CurrentDistance)}/{Distance})";
 
 	public override void Update()
 	{

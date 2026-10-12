@@ -2,6 +2,8 @@ namespace Everglow.EternalResolve.Bosses.Projectiles
 {
 	public class Rapier_Slash : ModProjectile
 	{
+		public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
+
 		public override void SetDefaults()
 		{
 			Projectile.aiStyle = -1;

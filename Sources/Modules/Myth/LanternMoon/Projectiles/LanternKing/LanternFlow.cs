@@ -7,6 +7,8 @@ namespace Everglow.Myth.LanternMoon.Projectiles.LanternKing;
 
 public class LanternFlow : TrailingProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
+
 	public override void SetCustomDefaults()
 	{
 		Projectile.width = 20;

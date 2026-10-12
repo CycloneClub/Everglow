@@ -9,6 +9,8 @@ namespace Everglow.Commons.Mechanics.ElementalDebuff.Projectiles;
 
 public class Corrosion_Projectile : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.TypelessProjectiles;
+
 	public const int ActiveTimerMax = 120;
 	public const int ExistMax_Player = 4;
 	public const int ExistMax_Server = 20;

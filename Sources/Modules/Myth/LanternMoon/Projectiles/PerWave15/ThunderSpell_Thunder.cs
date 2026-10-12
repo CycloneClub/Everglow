@@ -7,6 +7,8 @@ namespace Everglow.Myth.LanternMoon.Projectiles.PerWave15;
 
 public class ThunderSpell_Thunder : ModProjectile, IBloomProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.EnemyProjectiles;
+
 	public float Timer = 0;
 
 	public List<Vector3> LightingBoltTrail = new List<Vector3>();

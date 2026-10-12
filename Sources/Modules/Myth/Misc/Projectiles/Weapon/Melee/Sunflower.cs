@@ -4,6 +4,8 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee;
 
 public class Sunflower : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 20;

@@ -1,443 +1,6 @@
-DevilHeartBayonet: {
-	DisplayName: 魔心刺剑
-	Tooltip: 体力耗尽时治疗[?]点生命
-}
-
-RodSpear: {
-	DisplayName: 飞棍矛
-	Tooltip: 可以像活着的飞棍一样飞行
-}
-
-BloodGoldBayonet: {
-	DisplayName: 血金刺剑
-	Tooltip: 
-	'''
-	命中敌人后有1/25的概率吸血,吸血量为造成伤害的30%
-	命中的敌人未死之前,你的生命回复+2
-	右键重击：以自身损失15血为代价,对被命中的敌人施加持续3s的嗜血符印,血金刺剑命中有符印的敌人造成回血
-	'据不完全统计，多数吸血鬼并不会吸取史莱姆汁'
-	'''
-}
-
-BlossomThorn: {
-	DisplayName: 红梅落
-	Tooltip: 
-	'''
-	产生方向随机的二级刺锋
-	'兼具美观与锋芒'
-	'''
-}
-
-BlueRibbonBayonet: {
-	DisplayName: 蓝缎带刺剑
+AcroporaSpear: {
+	DisplayName: 藻刃矛
 	Tooltip: ""
-}
-
-CopperBayonet: {
-	DisplayName: 铜刺剑
-	Tooltip: ""
-}
-
-CrutchBayonet: {
-	DisplayName: 拐刺剑
-	Tooltip: 
-	'''
-	第一次命中敌人后如果暴击则造成270%的伤害
-	'特务使用的武器，非常适合暗杀'
-	'''
-}
-
-CurseFlameStabbingSword: {
-	DisplayName: 咒火刺剑
-	Tooltip: "用诅咒火焰点燃敌人！"
-}
-
-DreamStar: {
-	DisplayName: 梦辰星刺
-	Tooltip: 
-	'''
-	每次命中都会给敌人标上1层[角星标]
-	5层[角星标]合成一个[星标]，获得[星标]的敌人不会再获得更多[角星标]
-	对于同一把[梦辰星刺]，场上最多存在两个被[星标]或角[星标]标记的敌人
-	两个[星标]的出现会在两处同时引发220%倍率的星辉爆炸，并摧毁先被标记的敌人的[星标]
-	目标敌人若没有[星标]，且场上已存在被你命中过但是[角星标]不足5个的敌人，也会在目标敌人和被[角星标]标记的角色处引发较小的星辉爆炸，威力取决于[角星标]层数
-	带有[星标]的敌人被击杀会掉落星之种，拾取后下次造成伤害必定暴击且伤害*264%
-	'读懂星空需要复杂深邃的理论知识，观赏星空只需要一只眼睛'
-	'''
-}
-
-EnchantedBayonet: {
-	DisplayName: 附魔刺剑
-	Tooltip: "右键重击会放出不受重力的剑气"
-}
-
-EternalNight: {
-	DisplayName: 永夜刺剑
-	Tooltip: "击中后可以释放追魂影刺剑"
-}
-
-GoldenStabbingSword: {
-	DisplayName: 金刺剑
-	Tooltip: ""
-}
-
-HolyBayonet: {
-	DisplayName: 神圣刺剑
-	Tooltip: ""
-}
-
-IchorBayonet: {
-	DisplayName: 灵液刺剑
-	Tooltip: ""
-}
-
-IronStabbingSword: {
-	DisplayName: 铁刺剑
-	Tooltip: ""
-}
-
-LeadStabbingSword: {
-	DisplayName: 铅刺剑
-	Tooltip: ""
-}
-
-MechanicMosquito: {
-	DisplayName: 械蚊刺
-	Tooltip: "召唤三个会吸血的机械蚊子协助攻击,蚊子每次攻击会获得1点吸血，最多累积10点。使用结束之后，治疗吸血累积的点数"
-}
-
-PlatinumStabbingSword: {
-	DisplayName: 铂金刺剑
-	Tooltip: ""
-}
-
-PrisonFireBayonet: {
-	DisplayName: 狱火刺剑
-	Tooltip: 
-	'''
-	点燃敌人！
-	在水里无法点燃,但是在熔岩里造成两倍伤害
-	'切勿伤敌一万自损八千'
-	'''
-}
-
-RedRibbonBayonet: {
-	DisplayName: 红缎带刺剑
-	Tooltip: ""
-}
-
-RottenGoldBayonet: {
-	DisplayName: 魔金刺剑
-	Tooltip: 
-	'''
-	命中后削弱目标1点防御力
-	延时一秒在命中处生成三道200%倍率的魔金剑光
-	对于同一把[魔金刺剑],上述两种效果1秒最多触发1次,但是总数没有上限
-	'''
-}
-
-SilverStabbingSword: {
-	DisplayName: 银刺剑
-	Tooltip: ""
-}
-
-SwordfishBeak: {
-	DisplayName: 剑鱼长喙
-	Tooltip: "对于水里的敌人造成伤害下降40%,但是潮湿状态下攻击范围扩大50%,且体力消耗降低35%,对于干燥的敌人伤害提高40%"
-}
-
-TinStabbingSword: {
-	DisplayName: 锡刺剑
-	Tooltip: ""
-}
-
-TungstenStabbingSword: {
-	DisplayName: 钨刺剑
-	Tooltip: ""
-}
-
-VegetationBayonet: {
-	DisplayName: 葱茏刺剑
-	Tooltip: 
-	'''
-	会造成中毒
-	使用6秒之后自己也会变得狂野
-	'看到那只蝙蝠了吗，它的蛋白质是牛肉的六倍'
-	'''
-}
-
-VertebralSpur: {
-	DisplayName: 椎刺骨
-	Tooltip: 
-	'''
-	在与目标相对速度较大的情况下提升伤害，最多不超过500%
-	'粗糙的接触面造成的毁坏随速度的增加急剧提高'
-	'''
-}
-
-YoenLeZed: {
-	DisplayName: 陨雷之劫刺剑
-	Tooltip: 
-	'''
-	攻击附带雷电，水中雷电伤害翻三倍且更容易传导
-	比考场忘带身份证还刺激一点
-	'''
-}
-
-CheeseYoyo: {
-	DisplayName: 芝士球
-	Tooltip: ""
-}
-
-FryingPanItem: {
-	DisplayName: 平底锅
-	Tooltip: 
-	'''
-	右键可以重击
-	'''
-}
-
-VortexVanquisherItem: {
-	DisplayName: 贯虹之槊
-	Tooltip: 
-	'''
-	右键可以召唤[地心]，并生成可以吸收伤害的[玉璋护盾]
-	中键召唤[天星]，造成大范围伤害和石化
-	'''
-}
-
-PineStab: {
-	DisplayName: 松针刺
-	Tooltip: 
-	'''
-	只耗费72%的体力，因为松叶很轻
-	所以怪物的防御力3倍有效
-	'''
-}
-
-BloodyBoneYoyo: {
-	DisplayName: 血髓球
-	Tooltip: "会伸出触手攻击附近敌人"
-}
-
-ToothKnife: {
-	DisplayName: 齿刃
-	Tooltip: ""
-}
-
-ToothSpear: {
-	DisplayName: 獠牙矛
-	Tooltip: ""
-}
-
-GlowWoodSword: {
-	DisplayName: 流萤木剑
-	Tooltip: ""
-}
-
-MothYoyo: {
-	DisplayName: 夜蛾球
-	Tooltip: "悠悠球附近会有荧光飞蛾幻方"
-}
-
-ScaleWingBlade: {
-	DisplayName: 鳞翅之刃
-	Tooltip: "右键可以重击"
-}
-
-ComingGhost: {
-	DisplayName: 诡弑
-	Tooltip: "攻击时有概率用鬼爪随机无视距离地攻击一个敌人"
-}
-
-CyanFrost: {
-	DisplayName: 青霜剑
-	Tooltip: "附带霜火"
-}
-
-Glow: {
-	DisplayName: 流光
-	Tooltip: "砍出金色剑气并召唤落下的蓝色星辉"
-}
-
-GoldRoundYoyo: {
-	DisplayName: 金轮球
-	Tooltip: ""
-}
-
-PrimordialJadeWinged_Spear: {
-	DisplayName: 和璞鸢
-	Tooltip: "在一定高度使用时会改为下砸，右键可以朝任意方向突刺"
-}
-
-Sunflower: {
-	DisplayName: 向日飞盘
-	Tooltip: ""
-}
-
-World: {
-	DisplayName: 世界斩裂
-	Tooltip: 
-	'''
-	右键可以切换追随模式和斩切模式
-	追随模式下[世界斩裂]会停留在鼠标位置，沿着鼠标的路线切割敌人
-	斩切模式下[世界斩裂]会反复快速贯穿鼠标
-	'''
-}
-
-AdamantiteClub_Item: {
-	DisplayName: 精金棍棒
-	Tooltip: "一定高度后右键可下砸"
-}
-
-BorealWoodClub_Item: {
-	DisplayName: 珍珠木棍棒
-	Tooltip: "一定高度后右键可下砸"
-}
-
-CactusClub_Item: {
-	DisplayName: 仙人掌棍棒
-	Tooltip: "一定高度后右键可下砸"
-}
-
-ChlorophyteClub_Item: {
-	DisplayName: 叶绿棍棒
-	Tooltip: "一定高度后右键可下砸"
-}
-
-CobaltClub_Item: {
-	DisplayName: 钴棍棒
-	Tooltip: "一定高度后右键可下砸"
-}
-
-CopperClub_Item: {
-	DisplayName: 铜棍棒
-	Tooltip: "一定高度后右键可下砸"
-}
-
-CorruptClub_Item: {
-	DisplayName: 魔金棍棒
-	Tooltip: "一定高度后右键可下砸"
-}
-
-CrimsonClub_Item: {
-	DisplayName: 血金棍棒
-	Tooltip: "一定高度后右键可下砸"
-}
-
-CrystalClub_Item: {
-	DisplayName: 水晶棍棒
-	Tooltip: "一定高度后右键可下砸"
-}
-
-CurseClub_Item: {
-	DisplayName: 咒火棍棒
-	Tooltip: "一定高度后右键可下砸"
-}
-
-EbonwoodClub_Item: {
-	DisplayName: 乌木棍棒
-	Tooltip: "一定高度后右键可下砸"
-}
-
-GoldClub_Item: {
-	DisplayName: 金棍棒
-	Tooltip: "一定高度后右键可下砸"
-}
-
-IchorClub_Item: {
-	DisplayName: 灵液棍棒
-	Tooltip: "一定高度后右键可下砸"
-}
-
-IronClub_Item: {
-	DisplayName: 铁棍棒
-	Tooltip: "一定高度后右键可下砸"
-}
-
-LeadClub_Item: {
-	DisplayName: 铅棍棒
-	Tooltip: "一定高度后右键可下砸"
-}
-
-MeteorClub_Item: {
-	DisplayName: 陨石棍棒
-	Tooltip: "一定高度后右键可下砸"
-}
-
-MythrilClub_Item: {
-	DisplayName: 秘银棍棒
-	Tooltip: "一定高度后右键可下砸"
-}
-
-OrichalcumClub_Item: {
-	DisplayName: 山铜棍棒
-	Tooltip: "一定高度后右键可下砸"
-}
-
-PalladiumClub_Item: {
-	DisplayName: 钯金棍棒
-	Tooltip: "一定高度后右键可下砸"
-}
-
-PalmWoodClub_Item: {
-	DisplayName: 棕榈木棍棒
-	Tooltip: "一定高度后右键可下砸"
-}
-
-PearlwoodClub_Item: {
-	DisplayName: 珍珠木棍棒
-	Tooltip: "一定高度后右键可下砸"
-}
-
-PlatinumClub_Item: {
-	DisplayName: 铂金棍棒
-	Tooltip: "一定高度后右键可下砸"
-}
-
-RichMahoganyClub_Item: {
-	DisplayName: 红木棍棒
-	Tooltip: "一定高度后右键可下砸"
-}
-
-ShadewoodClub_Item: {
-	DisplayName: 暗影木棍棒
-	Tooltip: "一定高度后右键可下砸"
-}
-
-SilverClub_Item: {
-	DisplayName: 银棍棒
-	Tooltip: "一定高度后右键可下砸"
-}
-
-SpikeClub_Item: {
-	DisplayName: 尖刺棍棒
-	Tooltip: "一定高度后右键可下砸"
-}
-
-StarDancer_Item: {
-	DisplayName: 星舞者棍棒
-	Tooltip: "一定高度后右键可下砸"
-}
-
-TinClub_Item: {
-	DisplayName: 锡棍棒
-	Tooltip: "一定高度后右键可下砸"
-}
-
-TitaniumClub_Item: {
-	DisplayName: 钛金棍棒
-	Tooltip: "一定高度后右键可下砸"
-}
-
-TungstenClub_Item: {
-	DisplayName: 钨棍棒
-	Tooltip: "一定高度后右键可下砸"
-}
-
-WoodenClub_Item: {
-	DisplayName: 木棍棒
-	Tooltip: "一定高度后右键可下砸"
 }
 
 Acytaea_sword_Item: {
@@ -445,9 +8,9 @@ Acytaea_sword_Item: {
 	Tooltip: ""
 }
 
-CactusBall: {
-	DisplayName: 仙人掌链球
-	Tooltip: ""
+AdamantiteClub_Item: {
+	DisplayName: 精金棍棒
+	Tooltip: 一定高度后右键可下砸
 }
 
 AmberHeadedSpear: {
@@ -460,9 +23,158 @@ AmethystHeadedSpear: {
 	Tooltip: ""
 }
 
+ArmOfGiantTree: {
+	DisplayName: 巨树之臂
+	Tooltip:
+		'''
+		按住左键蓄力，最多2.5秒，松开后重击，造成75%–200%的伤害
+		满蓄力重击释放造成100%武器伤害的冲击波
+		重击后需恢复0.5秒
+		右键进行普通挥击
+		'''
+}
+
+BladeOfGreenMoss: {
+	DisplayName: 绿苔之刃
+	Tooltip:
+		'''
+		命中敌人后获得3秒苔藓附层，增加5点防御并免疫腐蚀
+		命中有12.5%的概率使敌人中毒7秒
+		'''
+}
+
+BloodGoldBayonet: {
+	DisplayName: 血金刺剑
+	Tooltip:
+		'''
+		命中敌人后有1/25的概率吸血,吸血量为造成伤害的30%
+		命中的敌人未死之前,你的生命回复+2
+		右键重击：以自身损失15血为代价,对被命中的敌人施加持续3s的嗜血符印,血金刺剑命中有符印的敌人造成回血
+		'据不完全统计，多数吸血鬼并不会吸取史莱姆汁'
+		'''
+}
+
+BloodyBoneYoyo: {
+	DisplayName: 血髓球
+	Tooltip: 会伸出触手攻击附近敌人
+}
+
+BlossomThorn: {
+	DisplayName: 红梅落
+	Tooltip:
+		'''
+		产生方向随机的二级刺锋
+		'兼具美观与锋芒'
+		'''
+}
+
+BlueRibbonBayonet: {
+	DisplayName: 蓝缎带刺剑
+	Tooltip: ""
+}
+
+BorealWoodClub_Item: {
+	DisplayName: 珍珠木棍棒
+	Tooltip: 一定高度后右键可下砸
+}
+
+CactusBall: {
+	DisplayName: 仙人掌链球
+	Tooltip: ""
+}
+
+CactusClub_Item: {
+	DisplayName: 仙人掌棍棒
+	Tooltip: 一定高度后右键可下砸
+}
+
 CeremonialBlade: {
 	DisplayName: 仪式佩刀
 	Tooltip: ""
+}
+
+CharonDoubleSickle_Item: {
+	DisplayName: 碧绿双镰
+	Tooltip: ""
+}
+
+CheeseYoyo: {
+	DisplayName: 芝士球
+	Tooltip: ""
+}
+
+ChlorophyteClub_Item: {
+	DisplayName: 叶绿棍棒
+	Tooltip: 一定高度后右键可下砸
+}
+
+CobaltClub_Item: {
+	DisplayName: 钴棍棒
+	Tooltip: 一定高度后右键可下砸
+}
+
+ComingGhost: {
+	DisplayName: 诡弑
+	Tooltip: 攻击时有概率用鬼爪随机无视距离地攻击一个敌人
+}
+
+CopperBayonet: {
+	DisplayName: 铜刺剑
+	Tooltip: ""
+}
+
+CopperClub_Item: {
+	DisplayName: 铜棍棒
+	Tooltip: 一定高度后右键可下砸
+}
+
+CorruptClub_Item: {
+	DisplayName: 魔金棍棒
+	Tooltip: 一定高度后右键可下砸
+}
+
+CrimsonClub_Item: {
+	DisplayName: 血金棍棒
+	Tooltip: 一定高度后右键可下砸
+}
+
+CrutchBayonet: {
+	DisplayName: 拐刺剑
+	Tooltip:
+		'''
+		第一次命中敌人后如果暴击则造成270%的伤害
+		'特务使用的武器，非常适合暗杀'
+		'''
+}
+
+CrystalClub_Item: {
+	DisplayName: 水晶棍棒
+	Tooltip: 一定高度后右键可下砸
+}
+
+CurseClub_Item: {
+	DisplayName: 咒火棍棒
+	Tooltip: 一定高度后右键可下砸
+}
+
+CurseFlameStabbingSword: {
+	DisplayName: 咒火刺剑
+	Tooltip: 用诅咒火焰点燃敌人！
+}
+
+CyanFrost: {
+	DisplayName: 青霜剑
+	Tooltip: 附带霜火
+}
+
+CyanVineShortsword: {
+	DisplayName: 青缎短剑
+	Tooltip: “展现出深沉的青色光泽，散发着浓重的矿石气息”
+}
+
+CyanVineSword: {
+	DisplayName: 青缎阔剑
+	Tooltip: “展现出深沉的青色光泽，散发着浓重的矿石气息”
 }
 
 DarkMassacreDagger: {
@@ -470,19 +182,316 @@ DarkMassacreDagger: {
 	Tooltip: ""
 }
 
+DevilHeartBayonet: {
+	DisplayName: 魔心刺剑
+	Tooltip: 耐力耗尽时恢复5点生命
+}
+
+DivineAscend: {
+	DisplayName: Divine Ascend
+	Tooltip: ""
+}
+
+DreamStar: {
+	DisplayName: 梦辰星刺
+	Tooltip:
+		'''
+		每次命中都会给敌人标上1层[角星标]
+		5层[角星标]合成一个[星标]，获得[星标]的敌人不会再获得更多[角星标]
+		对于同一把[梦辰星刺]，场上最多存在两个被[星标]或角[星标]标记的敌人
+		两个[星标]的出现会在两处同时引发220%倍率的星辉爆炸，并摧毁先被标记的敌人的[星标]
+		目标敌人若没有[星标]，且场上已存在被你命中过但是[角星标]不足5个的敌人，也会在目标敌人和被[角星标]标记的角色处引发较小的星辉爆炸，威力取决于[角星标]层数
+		带有[星标]的敌人被击杀会掉落星之种，拾取后下次造成伤害必定暴击且伤害*264%
+		'读懂星空需要复杂深邃的理论知识，观赏星空只需要一只眼睛'
+		'''
+}
+
+EbonwoodClub_Item: {
+	DisplayName: 乌木棍棒
+	Tooltip: 一定高度后右键可下砸
+}
+
+EnchantedBayonet: {
+	DisplayName: 附魔刺剑
+	Tooltip: 右键重击会放出不受重力的剑气
+}
+
+EternalNight: {
+	DisplayName: 永夜刺剑
+	Tooltip: 击中后可以释放追魂影刺剑
+}
+
+EvilHalbertBarnacle: {
+	DisplayName: 魔戟藤壶
+	Tooltip:
+		'''
+		左键进行近战连击
+		按下并松开右键发射飞锥
+		近战攻击可使飞锥绕身旋转，随后飞锥返回
+		'''
+}
+
+ExampleClub: {
+	DisplayName: Example Club
+	Tooltip: ""
+}
+
+ExampleEverglowYoyo: {
+	DisplayName: Example Everglow Yoyo
+	Tooltip: ""
+}
+
+ExampleMeleeItem: {
+	DisplayName: Example Melee Item
+	Tooltip: ""
+}
+
+ExampleStabbingSword: {
+	DisplayName: Example Stabbing Sword
+	Tooltip: ""
+}
+
+FryingPanItem: {
+	DisplayName: 平底锅
+	Tooltip: 右键可以重击
+}
+
+Glow: {
+	DisplayName: 流光
+	Tooltip: 砍出金色剑气并召唤落下的蓝色星辉
+}
+
+GlowWoodSword: {
+	DisplayName: 流萤木剑
+	Tooltip: ""
+}
+
+GoldClub_Item: {
+	DisplayName: 金棍棒
+	Tooltip: 一定高度后右键可下砸
+}
+
+GoldenStabbingSword: {
+	DisplayName: 金刺剑
+	Tooltip: ""
+}
+
+GoldRoundYoyo: {
+	DisplayName: 金轮球
+	Tooltip: ""
+}
+
+HandheldCircularSaw: {
+	DisplayName: 手持式圆锯
+	Tooltip: ""
+}
+
+HolyBayonet: {
+	DisplayName: 神圣刺剑
+	Tooltip: ""
+}
+
+HyperockSpear: {
+	DisplayName: 天穹岩枪
+	Tooltip: ""
+}
+
+IchorBayonet: {
+	DisplayName: 灵液刺剑
+	Tooltip: ""
+}
+
+IchorClub_Item: {
+	DisplayName: 灵液棍棒
+	Tooltip: 一定高度后右键可下砸
+}
+
+IronClub_Item: {
+	DisplayName: 铁棍棒
+	Tooltip: 一定高度后右键可下砸
+}
+
+IronStabbingSword: {
+	DisplayName: 铁刺剑
+	Tooltip: ""
+}
+
+LampWoodSword: {
+	DisplayName: 灯木剑
+	Tooltip: “在这里，照亮你前路的第一道光”
+}
+
+LampWoodYoyo: {
+	DisplayName: 灯木悠悠球
+	Tooltip: “在这里，照亮你前路的第一道光”
+}
+
+LanternSword: {
+	DisplayName: Lantern Sword
+	Tooltip: ""
+}
+
+LanternYoyo: {
+	DisplayName: Lantern Yoyo
+	Tooltip: ""
+}
+
+LeadClub_Item: {
+	DisplayName: 铅棍棒
+	Tooltip: 一定高度后右键可下砸
+}
+
+LeadStabbingSword: {
+	DisplayName: 铅刺剑
+	Tooltip: ""
+}
+
 MagicalBoomerang: {
 	DisplayName: 魔术回旋镖
-	Tooltip: "发射出去后点击使之分裂为8个子回旋镖"
+	Tooltip: 发射出去后点击使之分裂为8个子回旋镖
+}
+
+MeatLantern: {
+	DisplayName: 肉食性提灯
+	Tooltip:
+		'''
+		使出三段连击，每次命中恢复1点生命
+		生命不高于一半时，追加终结攻击，每次命中恢复15点生命
+		'''
+}
+
+MechanicMosquito: {
+	DisplayName: 械蚊刺
+	Tooltip: 召唤三个会吸血的机械蚊子协助攻击,蚊子每次攻击会获得1点吸血，最多累积10点。使用结束之后，治疗吸血累积的点数
+}
+
+MechanismHalberd: {
+	DisplayName: Mechanism Halberd
+	Tooltip: ""
+}
+
+MeteorClub_Item: {
+	DisplayName: 陨石棍棒
+	Tooltip: 一定高度后右键可下砸
+}
+
+MothYoyo: {
+	DisplayName: 夜蛾球
+	Tooltip: 悠悠球附近会有荧光飞蛾幻方
+}
+
+MythrilClub_Item: {
+	DisplayName: 秘银棍棒
+	Tooltip: 一定高度后右键可下砸
+}
+
+OrichalcumClub_Item: {
+	DisplayName: 山铜棍棒
+	Tooltip: 一定高度后右键可下砸
+}
+
+PalladiumClub_Item: {
+	DisplayName: 钯金棍棒
+	Tooltip: 一定高度后右键可下砸
+}
+
+PalmWoodClub_Item: {
+	DisplayName: 棕榈木棍棒
+	Tooltip: 一定高度后右键可下砸
+}
+
+PearlwoodClub_Item: {
+	DisplayName: 珍珠木棍棒
+	Tooltip: 一定高度后右键可下砸
+}
+
+PineStab: {
+	DisplayName: 松针刺
+	Tooltip:
+		'''
+		只耗费72%的体力，因为松叶很轻
+		所以怪物的防御力3倍有效
+		'''
+}
+
+PlatinumClub_Item: {
+	DisplayName: 铂金棍棒
+	Tooltip: 一定高度后右键可下砸
+}
+
+PlatinumStabbingSword: {
+	DisplayName: 铂金刺剑
+	Tooltip: ""
+}
+
+PrimordialJadeWinged_Spear: {
+	DisplayName: 和璞鸢
+	Tooltip: 在一定高度使用时会改为下砸，右键可以朝任意方向突刺
+}
+
+PrisonFireBayonet: {
+	DisplayName: 狱火刺剑
+	Tooltip:
+		'''
+		点燃敌人！
+		在水里无法点燃,但是在熔岩里造成两倍伤害
+		'切勿伤敌一万自损八千'
+		'''
 }
 
 QuenchingBlade: {
 	DisplayName: 淬火钢片
+	Tooltip: 巨大的钢刃，笨重有力
+}
+
+QuetzalsWish: {
+	DisplayName: 魁札尔的愿望
+	Tooltip:
+		'''
+		左键进行四段连击
+		在第三或第四段中按下右键，向前突进并回旋两周
+		连击外按住右键2秒可投出剑刃，碰撞后爆炸
+		命中施加5秒创伤，使目标移动时每秒受到12点伤害
+		'''
+}
+
+RedRibbonBayonet: {
+	DisplayName: 红缎带刺剑
 	Tooltip: ""
 }
 
 ResistanceWireBayonet: {
 	DisplayName: 电阻刺剑
-	Tooltip: "不使用时逐渐充能并提升威力，击中敌人后失去充能效果"
+	Tooltip:
+		'''
+		逐渐充能并提升威力
+		击中敌人后损耗充能
+		'''
+}
+
+RichMahoganyClub_Item: {
+	DisplayName: 红木棍棒
+	Tooltip: 一定高度后右键可下砸
+}
+
+RodSpear: {
+	DisplayName: 飞棍矛
+	Tooltip: 投掷一支像活着的飞棍一样飞行的矛
+}
+
+RottenGoldBayonet: {
+	DisplayName: 魔金刺剑
+	Tooltip:
+		'''
+		命中后削弱目标1点防御力
+		延时一秒在命中处生成三道200%倍率的魔金剑光
+		对于同一把[魔金刺剑],上述两种效果1秒最多触发1次,但是总数没有上限
+		'''
+}
+
+ScaleWingBlade: {
+	DisplayName: 鳞翅之刃
+	Tooltip: 右键可以重击
 }
 
 ScarpasScissors: {
@@ -490,8 +499,88 @@ ScarpasScissors: {
 	Tooltip: ""
 }
 
+ShadewoodClub_Item: {
+	DisplayName: 暗影木棍棒
+	Tooltip: 一定高度后右键可下砸
+}
+
+ShadowEulogist: {
+	DisplayName: 暗影赞颂者
+	Tooltip: ""
+}
+
+SilverClub_Item: {
+	DisplayName: 银棍棒
+	Tooltip: 一定高度后右键可下砸
+}
+
+SilverStabbingSword: {
+	DisplayName: 银刺剑
+	Tooltip: ""
+}
+
+SpikeClub_Item: {
+	DisplayName: 尖刺棍棒
+	Tooltip: 一定高度后右键可下砸
+}
+
+StarDancer_Item: {
+	DisplayName: 星舞者棍棒
+	Tooltip: 一定高度后右键可下砸
+}
+
+Sunflower: {
+	DisplayName: 向日飞盘
+	Tooltip: ""
+}
+
+SwordfishBeak: {
+	DisplayName: 剑鱼长喙
+	Tooltip: 对于水里的敌人造成伤害下降40%,但是潮湿状态下攻击范围扩大50%,且体力消耗降低35%,对于干燥的敌人伤害提高40%
+}
+
+TinClub_Item: {
+	DisplayName: 锡棍棒
+	Tooltip: 一定高度后右键可下砸
+}
+
+TinStabbingSword: {
+	DisplayName: 锡刺剑
+	Tooltip: ""
+}
+
+TitaniumClub_Item: {
+	DisplayName: 钛金棍棒
+	Tooltip: 一定高度后右键可下砸
+}
+
+ToothKnife: {
+	DisplayName: 齿刃
+	Tooltip: ""
+}
+
+ToothSpear: {
+	DisplayName: 獠牙矛
+	Tooltip: ""
+}
+
 TopaztHeadedSpear: {
 	DisplayName: 黄玉矛
+	Tooltip: ""
+}
+
+TrueDeathSickle: {
+	DisplayName: 真·死神镰刀
+	Tooltip: 用死火点燃敌人
+}
+
+TungstenClub_Item: {
+	DisplayName: 钨棍棒
+	Tooltip: 一定高度后右键可下砸
+}
+
+TungstenStabbingSword: {
+	DisplayName: 钨刺剑
 	Tooltip: ""
 }
 
@@ -510,62 +599,54 @@ TwilightEucalyptusCuffSickle: {
 	Tooltip: ""
 }
 
-HyperockSpear: {
-	DisplayName: 天穹岩枪
-	Tooltip: ""
+VegetationBayonet: {
+	DisplayName: 葱茏刺剑
+	Tooltip:
+		'''
+		会造成中毒
+		使用6秒之后自己也会变得狂野
+		'看到那只蝙蝠了吗，它的蛋白质是牛肉的六倍'
+		'''
 }
 
-LampWoodSword: {
-	DisplayName: 灯木剑
-	Tooltip: ""
+VertebralSpur: {
+	DisplayName: 椎刺骨
+	Tooltip:
+		'''
+		在与目标相对速度较大的情况下提升伤害，最多不超过500%
+		'粗糙的接触面造成的毁坏随速度的增加急剧提高'
+		'''
 }
 
-LampWoodYoyo: {
-	DisplayName: 灯木球
-	Tooltip: ""
+VortexVanquisherItem: {
+	DisplayName: 贯虹之槊
+	Tooltip:
+		'''
+		右键可以召唤[地心]，并生成可以吸收伤害的[玉璋护盾]
+		中键召唤[天星]，造成大范围伤害和石化
+		'''
 }
 
-CyanVineShortsword: {
-	DisplayName: 青缎短剑
-	Tooltip: ""
+WoodenClub_Item: {
+	DisplayName: 木棍棒
+	Tooltip: 一定高度后右键可下砸
 }
 
-CyanVineSword: {
-	DisplayName: 青缎剑
-	Tooltip: ""
+World: {
+	DisplayName: 世界斩裂
+	Tooltip:
+		'''
+		右键可以切换追随模式和斩切模式
+		追随模式下[世界斩裂]会停留在鼠标位置，沿着鼠标的路线切割敌人
+		斩切模式下[世界斩裂]会反复快速贯穿鼠标
+		'''
 }
 
-BladeOfGreenMoss: {
-	DisplayName: 绿苔之刃
-	Tooltip: ""
-}
-
-MeatLantern: {
-	DisplayName: 肉食性提灯
-	Tooltip: ""
-}
-
-HandheldCircularSaw: {
-	DisplayName: 手持式圆锯
-	Tooltip: ""
-}
-
-AcroporaSpear: {
-	DisplayName: 藻刃矛
-	Tooltip: ""
-}
-
-CharonDoubleSickle_Item: {
-	DisplayName: 碧绿双镰
-	Tooltip: ""
-}
-
-ShadowEulogist: {
-	DisplayName: 暗影赞颂者
-	Tooltip: ""
-}
-
-TrueDeathSickle: {
-	DisplayName: 真·死神镰刀
-	Tooltip: "用死火点燃敌人"
+YoenLeZed: {
+	DisplayName: 陨雷之劫刺剑
+	Tooltip:
+		'''
+		攻击附带雷电，水中雷电伤害翻三倍且更容易传导
+		比考场忘带身份证还刺激一点
+		'''
 }

@@ -5,6 +5,8 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 
 public class ScaleWingBladeProj : MeleeProj
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	// TODO 跨Module了，自己找个合适的地方安葬
 	private FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
 

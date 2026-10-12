@@ -9,6 +9,8 @@ namespace Everglow.Myth.TheTusk.Projectiles;
 /// </summary>
 public class BloodFountain : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
+
 	public override string Texture => ModAsset.BloodFountain_Heatmap_Mod;
 
 	public override void SetDefaults()

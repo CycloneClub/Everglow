@@ -9,6 +9,8 @@ namespace Everglow.Myth.LanternMoon.Projectiles.LanternKing;
 /// </summary>
 public class LanternFlameWall : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
+
 	public override string Texture => ModAsset.GoldLaser_Mod;
 
 	public Vector2 StartPos = Vector2.zeroVector;

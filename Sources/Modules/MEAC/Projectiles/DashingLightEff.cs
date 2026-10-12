@@ -6,6 +6,8 @@ namespace Everglow.MEAC.Projectiles;
 
 public class DashingLightEff : ModProjectile, IWarpProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	public override string Texture => "Terraria/Images/Projectile_0";
 
 	public override void SetDefaults()

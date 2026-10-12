@@ -1,7 +1,3 @@
-BadrProj: {
-	DisplayName: Badr Proj
-}
-
-LampWoodSeedProj: {
-	DisplayName: Lamp Wood Seed Proj
-}
+BadrProj.DisplayName: Badr Proj
+LampWoodSeedProj.DisplayName: Lamp Wood Seed Proj
+Photophore_lightPetProj.DisplayName: "{$Mods.Everglow.Items.PermanentBoosters.Photophore.DisplayName}"

@@ -12,6 +12,13 @@ namespace Everglow.Commons.Mechanics.Quest.WorldSide.Structure;
 /// </summary>
 public class WorldObjectiveContainer
 {
+	private readonly WorldQuestBase quest;
+
+	public WorldObjectiveContainer(WorldQuestBase quest = null)
+	{
+		this.quest = quest;
+	}
+
 	/// <summary>
 	/// Fired when the current structural node requires completion.
 	/// </summary>
@@ -42,6 +49,8 @@ public class WorldObjectiveContainer
 	/// </summary>
 	public event Action<WorldObjectiveBase> OnObjectiveTimedOut;
 
+	internal event Action<WorldObjectiveBase> OnObjectiveRewardRequested;
+
 	private readonly List<WorldObjectiveNodeBase> _nodes = [];
 	private readonly List<WorldObjectiveBase> _objectives = [];
 
@@ -69,6 +78,14 @@ public class WorldObjectiveContainer
 	/// </summary>
 	public bool Completed => FindCurrentNode() == null;
 
+	private void RegisterObjective(WorldObjectiveBase objective)
+	{
+		objective.ObjectiveID = _objectives.Count;
+		objective.LocalizationKey = quest is null ? string.Empty : $"{quest.LocalizationKey}.Objectives.{objective.ObjectiveID}";
+		_objectives.Add(objective);
+		objective.OnRewardRequested += rewardObjective => OnObjectiveRewardRequested?.Invoke(rewardObjective);
+	}
+
 	#region DSL
 
 	/// <summary>
@@ -83,8 +100,7 @@ public class WorldObjectiveContainer
 			throw new InvalidDataException("Input must not be null.");
 		}
 
-		objective.ObjectiveID = _objectives.Count;
-		_objectives.Add(objective);
+		RegisterObjective(objective);
 
 		var node = new WorldLeafNode(objective);
 		_nodes.Add(node);
@@ -106,8 +122,7 @@ public class WorldObjectiveContainer
 
 		foreach (var o in objectives)
 		{
-			o.ObjectiveID = _objectives.Count;
-			_objectives.Add(o);
+			RegisterObjective(o);
 		}
 
 		var node = new WorldParallelNode(objectives.ToList());
@@ -130,8 +145,7 @@ public class WorldObjectiveContainer
 
 		foreach (var o in objectives)
 		{
-			o.ObjectiveID = _objectives.Count;
-			_objectives.Add(o);
+			RegisterObjective(o);
 		}
 
 		var node = new WorldOptionalNode(objectives.ToList());
@@ -157,8 +171,7 @@ public class WorldObjectiveContainer
 		{
 			foreach (var o in branch)
 			{
-				o.ObjectiveID = _objectives.Count;
-				_objectives.Add(o);
+				RegisterObjective(o);
 			}
 		}
 

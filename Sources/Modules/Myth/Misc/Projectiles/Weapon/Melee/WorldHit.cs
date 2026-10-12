@@ -5,6 +5,8 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee;
 
 internal class WorldHit : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MiscsProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 68;

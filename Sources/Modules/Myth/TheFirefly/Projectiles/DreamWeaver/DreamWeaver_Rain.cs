@@ -7,6 +7,8 @@ namespace Everglow.Myth.TheFirefly.Projectiles.DreamWeaver;
 
 public class DreamWeaver_Rain : TrailingProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override string Texture => ModAsset.DreamWeaverII_Mod;
 
 	public override void SetCustomDefaults()

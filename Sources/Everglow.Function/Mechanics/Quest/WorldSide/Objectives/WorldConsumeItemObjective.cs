@@ -1,3 +1,4 @@
+using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.Hooks;
 using Everglow.Commons.Mechanics.Quest.Presentation.Icons;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Abstractions;
@@ -36,7 +37,7 @@ public class WorldConsumeItemObjective : WorldObjectiveBase
 	public override void GetObjectivesIcon(QuestIconGroup iconGroup) =>
 		iconGroup.Add(ItemQuestIcon.Create(ItemType, new Item(ItemType).Name));
 
-	public override string GetObjectiveText() => $"消耗{ItemDrawer.Create(ItemType)}{ItemCount}个 ({ConsumedCount}/{ItemCount})";
+	public override string GetObjectiveText() => QuestText.Get("Objectives.Consume", ItemDrawer.Create(ItemType), ItemCount, $"({ConsumedCount}/{ItemCount})");
 
 	public override void ResetProgress()
 	{

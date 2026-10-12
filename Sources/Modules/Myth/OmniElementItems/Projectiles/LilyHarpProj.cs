@@ -6,6 +6,8 @@ namespace Everglow.Myth.OmniElementItems.Projectiles;
 
 internal class LilyHarpProj : ModProjectile// , IWarpProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 70;

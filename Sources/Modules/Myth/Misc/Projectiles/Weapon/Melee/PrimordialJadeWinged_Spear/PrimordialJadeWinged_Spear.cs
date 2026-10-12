@@ -4,6 +4,8 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee.PrimordialJadeWinged_Spear
 
 public class PrimordialJadeWinged_Spear : MeleeProj
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	public override void SetDef()
 	{
 		Projectile.aiStyle = -1;

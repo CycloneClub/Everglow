@@ -1,4 +1,5 @@
 using Everglow.Commons.Coroutines;
+using Everglow.Commons.Mechanics.Quest.Presentation.Icons;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.TownNPCs;
 using SubworldLibrary;
 
@@ -7,13 +8,16 @@ namespace Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs;
 [AutoloadHead]
 
 // Schorl, The Teahouse Lady
-public class TeahouseLady : TownNPC_LiveInYggdrasil
+public class TeahouseLady : TownNPC_LiveInYggdrasil, INPCQuestIconFrameProvider
 {
 	public bool Attacking0 = false;
 	public int Attack0Target = -1;
 	public int Attack1Target = -1;
 
 	public override string HeadTexture => ModAsset.TeahouseLady_Head_Mod;
+
+	// The sheet also contains sitting/attack frames and separate arms; the icon loops only walking frames.
+	public Rectangle GetQuestIconFrame(int animationFrame) => new(0, animationFrame % 10 * 56, 48, 56);
 
 	public override void SetStaticDefaults()
 	{

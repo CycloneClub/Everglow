@@ -12,6 +12,8 @@ namespace Everglow.MEAC.PlanetBeFall.Projectiles.PlanetBefall
 {
 	public class PlanetBeFall_Proj : IIIDProj
 	{
+		public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 		public Vector2 Target;
 		public Vector2 SpawnPosition;
 		public int Array;

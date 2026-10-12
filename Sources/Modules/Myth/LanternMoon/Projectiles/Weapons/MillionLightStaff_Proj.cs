@@ -7,6 +7,8 @@ namespace Everglow.Myth.LanternMoon.Projectiles.Weapons;
 
 public class MillionLightStaff_Proj : TrailingProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public int Style;
 
 	public override void SetCustomDefaults()

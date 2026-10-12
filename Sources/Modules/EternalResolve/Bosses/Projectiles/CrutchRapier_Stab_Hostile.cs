@@ -4,6 +4,8 @@ namespace Everglow.EternalResolve.Bosses.Projectiles
 {
 	public class CrutchRapier_Stab_Hostile : Rapier_Hostile_Stab
 	{
+		public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
+
 		public override void SetDefaults()
 		{
 			Color = new Color(155, 162, 164);

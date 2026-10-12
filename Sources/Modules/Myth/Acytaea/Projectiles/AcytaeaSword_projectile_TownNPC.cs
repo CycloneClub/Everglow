@@ -7,6 +7,8 @@ namespace Everglow.Myth.Acytaea.Projectiles;
 
 public class AcytaeaSword_projectile_TownNPC : MeleeProj
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.TownNPCProjectiles;
+
 	public override string Texture => "Everglow/Myth/Acytaea/Projectiles/AcytaeaSword_projectile";
 
 	public override void SetDef()

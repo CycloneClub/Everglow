@@ -6,6 +6,8 @@ namespace Everglow.SpellAndSkull.Projectiles.CursedFlames;
 
 public class CursedFlameHit : ModProjectile, IWarpProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 120;

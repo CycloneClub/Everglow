@@ -116,13 +116,16 @@ public class WorldQuestManager
 		if (NormalUpdate)
 		{
 			// Check locked
-			foreach (var m in _quests.Where(m => m.State == WorldQuestState.Locked))
+			if (NetUtils.IsSingle || NetUtils.IsMainServer)
 			{
-				if (m.CanUnlock()
-					&& m.State == WorldQuestState.Locked)
+				foreach (var m in _quests.Where(m => m.State == WorldQuestState.Locked))
 				{
-					m.Unlock();
-					OnQuestStatusUpdated(m);
+					if (m.CanUnlock()
+						&& m.State == WorldQuestState.Locked)
+					{
+						m.Unlock();
+						OnQuestStatusUpdated(m);
+					}
 				}
 			}
 
@@ -201,7 +204,7 @@ public class WorldQuestManager
 		}
 
 		WorldQuestBase quest = GetQuest(questName);
-		if (quest is null || QuestHintRules.HasContent(quest.Hint))
+		if (quest is null)
 		{
 			return false;
 		}
@@ -250,7 +253,6 @@ public class WorldQuestManager
 
 		WorldQuestBase quest = GetQuest(questName);
 		if (quest is null
-			|| QuestHintRules.HasContent(quest.Hint)
 			|| !quest.TryRecordRewardClaim(expectedPlayerName))
 		{
 			return false;

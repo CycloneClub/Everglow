@@ -10,6 +10,8 @@ namespace Everglow.Commons.Templates.Weapons.Gyroscopes;
 /// </summary>
 public abstract class GyroscopeProjectile : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.SummonProjectiles;
+
 	public Player Owner => Main.player[Projectile.owner];
 
 	public int EnemyTarget;

@@ -4,6 +4,8 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 
 public class BlackCorruptRain3Friendly : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.SummonProjectiles;
+
 	public override string Texture => "Everglow/Myth/TheFirefly/Projectiles/BlackCorruptRain3";
 
 	public override void SetStaticDefaults()

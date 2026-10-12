@@ -1,52 +1,3 @@
-CyanVineBow: {
-	DisplayName: Cyan Vine Bow
-}
-
-RazorbeakBow: {
-	DisplayName: Razorbeak Bow
-	Tooltip: Shoots 3 arrows at once, and increases attack speed when all arrows hit enemies at once
-}
-
-IcedSpear: {
-	DisplayName: Iced Spear
-	Tooltip: ""
-}
-
-SpineGun: {
-	DisplayName: Spine Gun
-	Tooltip: ""
-}
-
-ToothBow: {
-	DisplayName: Tooth Bow
-	Tooltip: ""
-}
-
-PhosphorescenceGun: {
-	DisplayName: Phosphorescence Gun
-	Tooltip: ""
-}
-
-ShadowWingBow: {
-	DisplayName: Shadow Wing Bow
-	Tooltip: ""
-}
-
-CloudGun: {
-	DisplayName: Cloud Gun
-	Tooltip: ""
-}
-
-SilveralGun: {
-	DisplayName: Silveral Gun
-	Tooltip: ""
-}
-
-SilveralRifle: {
-	DisplayName: Silveral Rifle
-	Tooltip: ""
-}
-
 AmbiguousNight: {
 	DisplayName: Ambiguous Night
 	Tooltip: ""
@@ -57,14 +8,125 @@ AmethystSlingshot: {
 	Tooltip: ""
 }
 
+ArcI: {
+	DisplayName: Arc I
+	Tooltip:
+		'''
+		Every 5 shots stores a charge, up to 3 charges
+		Firing near an enemy consumes a charge to release a 120-damage arc
+		'''
+}
+
+ArmorPiercingBlaster: {
+	DisplayName: Armor Piercing Blaster
+	Tooltip: ""
+}
+
 BorealWoodSlingshot: {
 	DisplayName: Boreal Wood Slingshot
+	Tooltip: ""
+}
+
+BoulderCatapult: {
+	DisplayName: Boulder Catapult
+	Tooltip:
+		'''
+		Requires no ammunition
+		Boulders deal 150% weapon damage on direct hits and shatter into 3–6 rocks, each dealing 15% weapon damage
+		'''
+}
+
+BowOfEnlightment: {
+	DisplayName: Bow of Enlightenment
+	Tooltip:
+		'''
+		Converts wooden arrows into lamp-oil arrows that inflict Photolysis
+		'Even noon in Yggdrasil Town is dimmer than dawn outside. A little light is always needed'
+		'''
+}
+
+BrittleRockSlingshot: {
+	DisplayName: Brittle Rock Slingshot
 	Tooltip: ""
 }
 
 CactusSlingShot: {
 	DisplayName: Cactus Sling Shot
 	Tooltip: ""
+}
+
+Caltrop: {
+	DisplayName: Caltrop
+	Tooltip: "'Oh, that must hurt!'"
+}
+
+CaterpillarJuiceArrow: {
+	DisplayName: Caterpillar Juice Arrow
+	Tooltip: ""
+}
+
+CeremonialRifle: {
+	DisplayName: Ceremonial Rifle
+	Tooltip: ""
+}
+
+ChainGrenade: {
+	DisplayName: Chain Grenade
+	Tooltip: ""
+}
+
+CloudBall: {
+	DisplayName: Cloud Ball
+	Tooltip: ""
+}
+
+CloudGun: {
+	DisplayName: Cloud Gun
+	Tooltip: ""
+}
+
+CyanVineBow: {
+	DisplayName: Cyan Bow
+	Tooltip: "'A deep cyan sheen and the heavy scent of ore'"
+}
+
+CyanVineCrossBow: {
+	DisplayName: Cyan Repeating Crossbow
+	Tooltip: "'A deep cyan sheen and the heavy scent of ore'"
+}
+
+CyanVineFlintlock: {
+	DisplayName: Cyan Lampfruit Gun
+	Tooltip:
+		'''
+		Uses lampfruit as ammo
+		33% chance not to consume ammo
+		'A deep cyan sheen and the heavy scent of ore'
+		'''
+}
+
+CyanVineThrowingSpear: {
+	DisplayName: Cyan Javelin
+	Tooltip: Hold to charge a more powerful throw
+}
+
+CyatheaArrow: {
+	DisplayName: Cyathea Arrow
+	Tooltip:
+		'''
+		25% chance to inflict Poisoned for 3 seconds
+		Hitting an enemy releases two spikes at 45-degree angles, each dealing half damage
+		'''
+}
+
+DevilHeartBow: {
+	DisplayName: Devil Heart Bow
+	Tooltip: Slowly regenerates life while held without firing
+}
+
+DevilHeartGun: {
+	DisplayName: Devil Heart Gun
+	Tooltip: Slowly regenerates life while held without firing
 }
 
 DiamondSlingshot: {
@@ -87,8 +149,80 @@ GelSlingshot: {
 	Tooltip: ""
 }
 
+GildingRevolver: {
+	DisplayName: Gilding Revolver
+	Tooltip: ""
+}
+
+GreenThornBallLauncher: {
+	DisplayName: Green Thorn Launcher
+	Tooltip: Converts bullets into thorn balls that burst into 2–4 spikes, each dealing 40% weapon damage
+}
+
+GunOfAvarice: {
+	DisplayName: Gun Of Avarice
+	Tooltip: ""
+}
+
+HandgunOfEnlightment: {
+	DisplayName: Light-Splitting Handgun
+	Tooltip:
+		'''
+		Converts musket balls into light bullets that inflict Photolysis
+		'Bullets cannot outrun light, but together they can pierce the long night'
+		'''
+}
+
+IcedSpear: {
+	DisplayName: Iced Spear
+	Tooltip: ""
+}
+
 JungleSlingshot: {
 	DisplayName: Jungle Slingshot
+	Tooltip: ""
+}
+
+KeroseneLanternFlameThrower: {
+	DisplayName: Kerosene Lantern Flame Thrower
+	Tooltip: ""
+}
+
+KissOfCthulhu: {
+	DisplayName: Kiss of Cthulhu
+	Tooltip:
+		'''
+		Fires a scattered burst of bullets
+		'An ancient firearm, its surface crawling with black tentacles stirred by an unknown power'
+		'''
+}
+
+LampWoodBow: {
+	DisplayName: Lampwood Bow
+	Tooltip: "'The first light to guide your way here'"
+}
+
+LightArrow: {
+	DisplayName: Lamp-Oil Arrow
+	Tooltip: Inflicts Photolysis for 3 seconds
+}
+
+LightBullet: {
+	DisplayName: Light Bullet
+	Tooltip: Inflicts Photolysis for 3 seconds
+}
+
+MossyCyatheaBow: {
+	DisplayName: Mossy Cyathea Bow
+	Tooltip:
+		'''
+		Rains arrows toward the cursor, with a 1 in 3 chance to fire three arrows
+		Converts Wooden Arrows into Cyathea Arrows
+		'''
+}
+
+Nehemoth: {
+	DisplayName: Nehemoth
 	Tooltip: ""
 }
 
@@ -102,43 +236,8 @@ PearlwoodSlingshot: {
 	Tooltip: ""
 }
 
-RichMahoganySlingshot: {
-	DisplayName: Rich Mahogany Slingshot
-	Tooltip: ""
-}
-
-RubySlingshot: {
-	DisplayName: Ruby Slingshot
-	Tooltip: ""
-}
-
-SapphireSlingshot: {
-	DisplayName: Sapphire Slingshot
-	Tooltip: ""
-}
-
-ShadewoodSlingShot: {
-	DisplayName: Shadewood Sling Shot
-	Tooltip: ""
-}
-
-StarSlingshot: {
-	DisplayName: Star Slingshot
-	Tooltip: ""
-}
-
-TopazSlingshot: {
-	DisplayName: Topaz Slingshot
-	Tooltip: ""
-}
-
-WoodSlingshot: {
-	DisplayName: Wood Slingshot
-	Tooltip: ""
-}
-
-CloudBall: {
-	DisplayName: Cloud Ball
+PhosphorescenceGun: {
+	DisplayName: Phosphorescence Gun
 	Tooltip: ""
 }
 
@@ -147,108 +246,18 @@ RampageShark: {
 	Tooltip: ""
 }
 
-TsunamiShark: {
-	DisplayName: Tsunami Shark
-	Tooltip: ""
+RazorbeakBow: {
+	DisplayName: Razorbeak Bow
+	Tooltip:
+		'''
+		Fires a burst of 3 arrows while consuming only 1
+		Landing all 3 arrows in a burst increases this bow's attack speed by 25%, stacking up to 8 times
+		The bonus is lost after 3 seconds without an arrow hit
+		'''
 }
 
-ArmorPiercingBlaster: {
-	DisplayName: Armor Piercing Blaster
-	Tooltip: ""
-}
-
-Caltrop: {
-	DisplayName: Caltrop
-	Tooltip: ""
-}
-
-CeremonialRifle: {
-	DisplayName: Ceremonial Rifle
-	Tooltip: ""
-}
-
-GunOfAvarice: {
-	DisplayName: Gun Of Avarice
-	Tooltip: ""
-}
-
-Nehemoth: {
-	DisplayName: Nehemoth
-	Tooltip: ""
-}
-
-RustSlingshot: {
-	DisplayName: Rust Slingshot
-	Tooltip: ""
-}
-
-SevenShotGun: {
-	DisplayName: Seven Shot Gun
-	Tooltip: ""
-}
-
-StoneJavelin: {
-	DisplayName: Stone Javelin
-	Tooltip: ""
-}
-
-RockSpikeBallista: {
-	DisplayName: Rock Spike Ballista
-	Tooltip: ""
-}
-
-BrittleRockSlingshot: {
-	DisplayName: Brittle Rock Slingshot
-	Tooltip: ""
-}
-
-KissOfCthulhu: {
-	DisplayName: Kiss Of Cthulhu
-	Tooltip: ""
-}
-
-BowOfEnlightment: {
-	DisplayName: Bow Of Enlightment
-	Tooltip: ""
-}
-
-HandgunOfEnlightment: {
-	DisplayName: Handgun Of Enlightment
-	Tooltip: ""
-}
-
-LampWoodBow: {
-	DisplayName: Lamp Wood Bow
-	Tooltip: ""
-}
-
-CyanVineCrossBow: {
-	DisplayName: Cyan Vine Cross Bow
-	Tooltip: ""
-}
-
-CyanVineFlintlock: {
-	DisplayName: Cyan Vine Flintlock
-	Tooltip: ""
-}
-
-CyanVineThrowingSpear: {
-	DisplayName: Cyan Vine Throwing Spear
-	Tooltip: ""
-}
-
-CaterpillarJuiceArrow: {
-	DisplayName: Caterpillar Juice Arrow
-	Tooltip: ""
-}
-
-LightArrow: {
-	DisplayName: Light Arrow
-	Tooltip: ""
-}
-
-LightBullet: {
-	DisplayName: Light Bullet
+RichMahoganySlingshot: {
+	DisplayName: Rich Mahogany Slingshot
 	Tooltip: ""
 }
 
@@ -257,32 +266,92 @@ RockArrow: {
 	Tooltip: ""
 }
 
-GreenThornBallLauncher: {
-	DisplayName: Green Thorn Ball Launcher
+RockSpikeBallista: {
+	DisplayName: Rock-Shattering Ballista
+	Tooltip: Fires arrows
+}
+
+RubySlingshot: {
+	DisplayName: Ruby Slingshot
 	Tooltip: ""
 }
 
-MossyCyatheaBow: {
-	DisplayName: Mossy Cyathea Bow
+RustSlingshot: {
+	DisplayName: Rusted Slingshot
+	Tooltip: "'Childhood, corroded by the passing years'"
+}
+
+SapphireSlingshot: {
+	DisplayName: Sapphire Slingshot
 	Tooltip: ""
 }
 
-DevilHeartBow: {
-	DisplayName: Devil Heart Bow
+SevenShotGun: {
+	DisplayName: Seven Shot Gun
 	Tooltip: ""
 }
 
-DevilHeartGun: {
-	DisplayName: Devil Heart Gun
+ShadewoodSlingShot: {
+	DisplayName: Shadewood Sling Shot
 	Tooltip: ""
 }
 
-CyatheaArrow: {
-	DisplayName: Cyathea Arrow
+ShadowWingBow: {
+	DisplayName: Shadow Wing Bow
+	Tooltip: ""
+}
+
+SilveralGun: {
+	DisplayName: Silveral Gun
+	Tooltip: ""
+}
+
+SilveralRifle: {
+	DisplayName: Silveral Rifle
+	Tooltip: ""
+}
+
+SpineGun: {
+	DisplayName: Spine Gun
+	Tooltip: ""
+}
+
+StarSlingshot: {
+	DisplayName: Star Slingshot
+	Tooltip: ""
+}
+
+StoneJavelin: {
+	DisplayName: Stone Javelin
+	Tooltip: ""
+}
+
+TendonGreatbow: {
+	DisplayName: Tendon Greatbow
 	Tooltip: ""
 }
 
 TerraViewerHowitzer: {
 	DisplayName: Terra Viewer Howitzer
+	Tooltip: ""
+}
+
+ToothBow: {
+	DisplayName: Tooth Bow
+	Tooltip: ""
+}
+
+TopazSlingshot: {
+	DisplayName: Topaz Slingshot
+	Tooltip: ""
+}
+
+TsunamiShark: {
+	DisplayName: Tsunami Shark
+	Tooltip: ""
+}
+
+WoodSlingshot: {
+	DisplayName: Wood Slingshot
 	Tooltip: ""
 }

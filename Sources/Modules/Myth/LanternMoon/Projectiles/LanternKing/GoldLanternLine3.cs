@@ -7,6 +7,8 @@ namespace Everglow.Myth.LanternMoon.Projectiles.LanternKing;
 // Move linearly, not curve.
 public class GoldLanternLine3 : TrailingProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
+
 	public override string Texture => ModAsset.GoldLaser_Mod;
 
 	public override void SetCustomDefaults()

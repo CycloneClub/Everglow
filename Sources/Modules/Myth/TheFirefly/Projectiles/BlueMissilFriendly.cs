@@ -4,6 +4,8 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 
 public class BlueMissilFriendly : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override string Texture => "Everglow/Myth/TheFirefly/Projectiles/BlueMissil";
 
 	public override void SetDefaults()

@@ -34,6 +34,8 @@ internal class FrozenRingPipeline : Pipeline
 [Pipeline(typeof(FrozenRingPipeline))]
 internal class FreezeFeatherMagicArray : VisualProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public float WingPower = 0;
 	public bool OldControlUp = false;
 	public int timer = 0;

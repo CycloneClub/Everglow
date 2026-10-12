@@ -8,6 +8,8 @@ namespace Everglow.Myth.Misc.Items.Weapons;
 
 public class DarkFlower_Proj : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.Fireball;
 
 	public override void SetStaticDefaults()

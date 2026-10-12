@@ -7,6 +7,8 @@ namespace Everglow.SpellAndSkull.Projectiles.BookofSkulls;
 
 public class BoneSpike : ModProjectile, IWarpProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 14;

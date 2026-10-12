@@ -6,6 +6,8 @@ namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Magic;
 
 public class RedAlgaeMagicStaff_Proj : ModProjectile, IRedAlgaeToxinProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public float Timer = 0;
 
 	public override void SetDefaults()

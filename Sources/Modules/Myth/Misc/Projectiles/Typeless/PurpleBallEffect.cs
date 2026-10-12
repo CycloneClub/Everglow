@@ -4,6 +4,8 @@ namespace Everglow.Myth.Misc.Projectiles.Typeless;
 
 public class PurpleBallEffect : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MiscsProjectiles;
+
 	public override void SetStaticDefaults()
 	{
 		// DisplayName.SetDefault("PurpleBallEffect");

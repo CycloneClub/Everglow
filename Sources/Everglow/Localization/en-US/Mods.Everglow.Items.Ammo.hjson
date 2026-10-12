@@ -1,9 +1,9 @@
 CyanVineBullet: {
-	DisplayName: Cyan Vine Bullet
-	Tooltip: ""
+	DisplayName: Cyan Bullet
+	Tooltip: "'A deep cyan sheen and the heavy scent of ore'"
 }
 
 HuskburstBullet: {
 	DisplayName: Huskburst Bullet
-	Tooltip: ""
+	Tooltip: Releases a fragment in a random direction when it breaks, dealing 30% damage
 }

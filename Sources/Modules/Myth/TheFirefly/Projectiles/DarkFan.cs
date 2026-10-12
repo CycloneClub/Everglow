@@ -6,6 +6,8 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 
 internal class DarkFan : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 58;

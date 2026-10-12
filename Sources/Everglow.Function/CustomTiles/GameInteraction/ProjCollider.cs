@@ -10,6 +10,8 @@ public class ProjCollider : GlobalProjectile, IEntityCollider<Projectile>
 
 	public static readonly HashSet<Projectile> canHook = new();
 
+	private bool collidedWithTile;
+
 	public override bool CloneNewInstances => true;
 
 	public override bool InstancePerEntity => true;
@@ -84,13 +86,51 @@ public class ProjCollider : GlobalProjectile, IEntityCollider<Projectile>
 		}
 
 		ColliderManager.EnableHook = false;
-		IEntityCollider<Projectile> proj = self.GetGlobalProjectile<ProjCollider>();
-
-		// 记录位置，否则会把传送当成位移
+		ProjCollider collider = self.GetGlobalProjectile<ProjCollider>();
+		IEntityCollider<Projectile> proj = collider;
 		proj.Prepare();
 		orig(self, wetVelocity, out overrideWidth, out overrideHeight);
-		proj.Update();
+
+		Vector2 oldVelocity = self.velocity;
+		collider.collidedWithTile = false;
+		if (self.active && self.tileCollide)
+		{
+			proj.Update();
+		}
 		ColliderManager.EnableHook = true;
+
+		// 临时补齐普通弹幕的碰撞响应；保持原有移动和平台承载流程。
+		if (collider.collidedWithTile && self.active && self.tileCollide && self.velocity != oldVelocity
+			&& UsesDefaultTileCollision(self) && ProjectileLoader.OnTileCollide(self, oldVelocity))
+		{
+			self.Kill();
+		}
+	}
+
+	private static bool UsesDefaultTileCollision(Projectile projectile)
+	{
+		if (projectile.minion || projectile.sentry || Main.projPet[projectile.type] || ProjectileID.Sets.Explosive[projectile.type])
+		{
+			return false;
+		}
+		if (projectile.ModProjectile is not null)
+		{
+			// 借用原版 AI 的弹幕可能还依赖原版的特殊碰撞分支。
+			return projectile.aiStyle <= 0;
+		}
+
+		// tML 1.4.4 中这些常用弹药默认撞墙销毁；不包含陨星弹、纳米弹、叶绿箭等反弹弹药。
+		return projectile.aiStyle == ProjAIStyleID.Arrow && projectile.type is
+			ProjectileID.Bullet or ProjectileID.SilverBullet or ProjectileID.BulletHighVelocity
+			or ProjectileID.CrystalBullet or ProjectileID.CursedBullet or ProjectileID.ChlorophyteBullet
+			or ProjectileID.IchorBullet or ProjectileID.VenomBullet or ProjectileID.PartyBullet
+			or ProjectileID.ExplosiveBullet or ProjectileID.GoldenBullet or ProjectileID.MoonlordBullet
+			or ProjectileID.WoodenArrowFriendly or ProjectileID.WoodenArrowHostile
+			or ProjectileID.FireArrow or ProjectileID.UnholyArrow or ProjectileID.JestersArrow
+			or ProjectileID.HellfireArrow or ProjectileID.HolyArrow or ProjectileID.CursedArrow
+			or ProjectileID.FrostburnArrow or ProjectileID.IchorArrow or ProjectileID.VenomArrow
+			or ProjectileID.BeeArrow or ProjectileID.BoneArrowFromMerchant or ProjectileID.ShadowFlameArrow
+			or ProjectileID.MoonlordArrow;
 	}
 
 	private void UpdateHook()
@@ -124,6 +164,7 @@ public class ProjCollider : GlobalProjectile, IEntityCollider<Projectile>
 
 	public void OnCollision(CollisionResult result)
 	{
+		collidedWithTile |= result.Normal != Vector2.Zero;
 	}
 
 	public void OnLeave()

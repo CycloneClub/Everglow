@@ -6,6 +6,8 @@ namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Enemies;
 
 public class VampireMat_Tentacle_FromBackground : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
+
 	public int TargetPlayerIndex => (int)Projectile.ai[0];
 
 	public int ParentNPCIndex => (int)Projectile.ai[1];

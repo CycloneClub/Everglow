@@ -8,6 +8,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Ranged;
 
 public class BrittleRockSlingshotStone : TrailingProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
+
 	public override void SetCustomDefaults()
 	{
 		Projectile.ranged = true;

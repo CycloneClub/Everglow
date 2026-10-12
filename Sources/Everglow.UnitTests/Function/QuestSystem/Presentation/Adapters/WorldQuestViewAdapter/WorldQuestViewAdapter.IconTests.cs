@@ -1,5 +1,4 @@
 using Everglow.Commons.Mechanics.Quest.Presentation.Adapters;
-using Everglow.Commons.Mechanics.Quest.Presentation.Icons;
 using Everglow.Commons.Mechanics.Quest.Presentation.Views;
 
 namespace Everglow.UnitTests.Function.QuestSystem;
@@ -7,30 +6,43 @@ namespace Everglow.UnitTests.Function.QuestSystem;
 public partial class WorldQuestViewAdapterTest
 {
 	[TestMethod]
-	public void Create_IncludesSourceAndObjectiveIcons()
+	public void Create_OnlyIncludesCurrentObjectiveIconsAndKeepsSourceSeparate()
 	{
-		var source = new StubSource("world-source");
-		var objectiveIcon = new StubIcon();
+		var source = new StubSource("source");
+		var currentIcon = new StubIcon();
+		var futureIcon = new StubIcon();
 		var quest = new StubQuest { SourceValue = source };
-		quest.Objectives.Add(new StubObjective { Icon = objectiveIcon });
+		quest.Objectives.Add(new StubObjective() { Icon = currentIcon });
+		quest.Objectives.Add(new StubObjective() { Icon = futureIcon });
 
 		QuestView view = WorldQuestViewAdapter.Create(quest);
 
-		Assert.HasCount(2, view.Icons);
-		var sourceIcon = (QuestSourceIcon)view.Icons[0];
-		Assert.AreSame(source, sourceIcon.Source);
-		Assert.IsNull(sourceIcon.SubSource);
-		Assert.AreSame(objectiveIcon, view.Icons[1]);
+		Assert.AreSame(source, view.Source);
+		Assert.HasCount(1, view.Icons);
+		Assert.AreSame(currentIcon, view.Icons[0]);
 	}
 
 	[TestMethod]
-	public void Create_NoObjectiveIconsProducesSourceIcon()
+	public void Create_ParallelObjectivesBothContributeIcons()
+	{
+		var firstIcon = new StubIcon();
+		var secondIcon = new StubIcon();
+		var quest = new StubQuest();
+		quest.Objectives.AddParallel(new StubObjective() { Icon = firstIcon }, new StubObjective() { Icon = secondIcon });
+
+		QuestView view = WorldQuestViewAdapter.Create(quest);
+
+		CollectionAssert.AreEqual(new[] { firstIcon, secondIcon }, view.Icons.ToArray());
+	}
+
+	[TestMethod]
+	public void Create_NoObjectiveIconsProducesEmptyIcons()
 	{
 		var quest = new StubQuest();
 
 		QuestView view = WorldQuestViewAdapter.Create(quest);
 
-		Assert.HasCount(1, view.Icons);
-		Assert.IsInstanceOfType<QuestSourceIcon>(view.Icons[0]);
+		Assert.IsNotNull(view.Icons);
+		Assert.IsEmpty(view.Icons);
 	}
 }

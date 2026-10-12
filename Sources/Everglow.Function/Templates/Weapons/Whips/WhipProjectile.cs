@@ -7,6 +7,8 @@ namespace Everglow.Commons.Templates.Weapons.Whips;
 
 public abstract class WhipProjectile : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.SummonProjectiles;
+
 	public List<Vector2> WhipPointsForCollision = new List<Vector2>();
 
 	public override void SetDefaults()

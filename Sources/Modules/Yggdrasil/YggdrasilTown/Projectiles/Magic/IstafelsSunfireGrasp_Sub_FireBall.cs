@@ -7,6 +7,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
 
 public class IstafelsSunfireGrasp_Sub_FireBall : TrailingProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public Vector2 SpawnPos;
 
 	public Projectile MotherProj = default;

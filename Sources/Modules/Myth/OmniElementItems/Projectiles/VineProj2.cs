@@ -4,6 +4,8 @@ namespace Everglow.Myth.OmniElementItems.Projectiles;
 
 public class VineProj2 : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MiscsProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.extraUpdates = 1;

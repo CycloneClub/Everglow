@@ -7,6 +7,8 @@ namespace Everglow.Commons.Localization;
 
 public class OutputLocalizationHjsonItem : ModItem
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Tools;
+
 	public override string Texture => Commons.ModAsset.Point_Mod;
 
 	private bool canUse = true;

@@ -61,6 +61,8 @@ public class ScarpasScissors : ModItem
 
 	public abstract class ScarpasScissorsProjBase : ModProjectile
 	{
+		public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 		public override string Texture => ModAsset.ScarpasScissors_Mod;
 
 		public Player Owner => Main.player[Projectile.owner];

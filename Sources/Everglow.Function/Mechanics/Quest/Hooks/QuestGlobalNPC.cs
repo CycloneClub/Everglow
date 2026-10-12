@@ -50,6 +50,7 @@ public class QuestGlobalNPC : GlobalNPC
 
 		var playerSideNPCs = quests
 			.SelectMany(quest => quest.Objectives.ActiveObjectives)
+			.Where(o => !o.IsTimedOut)
 			.Select(o =>
 			{
 				if (o is TalkNPCObjective talkObjective)
@@ -68,6 +69,7 @@ public class QuestGlobalNPC : GlobalNPC
 
 		var worldSideNPCs = WorldQuestManager.Instance.ActiveQuests
 			.SelectMany(m => m.ActiveObjectives)
+			.Where(o => !o.IsTimedOut)
 			.Select(o =>
 			{
 				if (o is WorldTalkObjective talkObjective)
@@ -92,22 +94,15 @@ public class QuestGlobalNPC : GlobalNPC
 
 		var playerSideNPCs = quests
 			.SelectMany(quest => quest.Objectives.ActiveObjectives)
+			.Where(o => !o.IsTimedOut)
 			.OfType<KillNPCObjective>()
 			.SelectMany(killObjective => killObjective.NPCTypes);
 
 		var worldSideNPCs = WorldQuestManager.Instance.ActiveQuests
 			.SelectMany(m => m.ActiveObjectives)
-			.Select(o =>
-			{
-				if (o is WorldKillNPCObjective killObjective)
-				{
-					return killObjective.NPCType;
-				}
-				else
-				{
-					return NPCID.None;
-				}
-			}).Distinct();
+			.Where(o => !o.IsTimedOut)
+			.OfType<WorldKillNPCObjective>()
+			.SelectMany(killObjective => killObjective.NPCTypes);
 
 		return playerSideNPCs.Concat(worldSideNPCs).Distinct();
 	}

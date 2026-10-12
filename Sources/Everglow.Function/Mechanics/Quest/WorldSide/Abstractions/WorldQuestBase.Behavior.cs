@@ -11,7 +11,9 @@ public abstract partial class WorldQuestBase
 {
 	protected WorldQuestBase()
 	{
+		Objectives = new WorldObjectiveContainer(this);
 		Objectives.OnNodeCompleted += Objectives_OnNodeCompleted;
+		Objectives.OnObjectiveRewardRequested += Objectives_BroadcastObjectiveRewards;
 		Objectives.OnObjectiveActivated += Objectives_OnObjectiveActivated;
 		Objectives.OnObjectiveDeactivated += Objectives_OnObjectiveDeactivated;
 		Objectives.OnObjectiveTimedOut += Objectives_OnObjectiveTimedOut;
@@ -29,7 +31,7 @@ public abstract partial class WorldQuestBase
 
 	public virtual float Progress => Objectives.Progress;
 
-	public WorldObjectiveContainer Objectives { get; } = new();
+	public WorldObjectiveContainer Objectives { get; }
 
 	public IReadOnlyList<WorldObjectiveBase> ActiveObjectives => _activatedObjectives;
 
@@ -218,6 +220,7 @@ public abstract partial class WorldQuestBase
 
 		WorldObjectiveBase objective = Objectives.AllObjectives[objectiveId];
 		return !objective.Completed
+			&& objective.IsRetriable
 			&& objective.Timer?.IsExpired == true
 			&& Objectives.Current.FindAllEntrances().Contains(objective);
 	}
@@ -322,6 +325,11 @@ public abstract partial class WorldQuestBase
 
 	public virtual void OnReset()
 	{
+	}
+
+	protected virtual void Objectives_BroadcastObjectiveRewards(WorldObjectiveBase objective)
+	{
+		ModIns.PacketResolver.Send(new ObjectiveGiveRewardPacket(Name, objective.ObjectiveID));
 	}
 
 	private void Objectives_OnNodeCompleted(WorldObjectiveNodeBase current)

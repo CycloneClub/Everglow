@@ -4,6 +4,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Ranged;
 
 public class RockSpikeBallista_Proj : CrossBowProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
+
 	public override void SetDef()
 	{
 		CrossBowTexture = ModAsset.RockSpikeBallista_Proj.Value;

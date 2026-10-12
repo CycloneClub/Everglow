@@ -5,6 +5,8 @@ namespace Everglow.Myth.LanternMoon.Projectiles.Weapons;
 
 public class LanternYoyo_fireYoyo : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	public Projectile MainProjYoyo = null;
 
 	public bool FoundTarget = false;

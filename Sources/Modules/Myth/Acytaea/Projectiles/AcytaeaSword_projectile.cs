@@ -5,6 +5,8 @@ namespace Everglow.Myth.Acytaea.Projectiles;
 
 public class AcytaeaSword_projectile : MeleeProj
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	public override void SetDef()
 	{
 		Projectile.aiStyle = -1;

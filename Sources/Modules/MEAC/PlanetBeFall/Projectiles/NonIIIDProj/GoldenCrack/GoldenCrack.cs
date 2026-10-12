@@ -127,6 +127,8 @@ namespace Everglow.MEAC.PlanetBeFall.Projectiles.NonIIIDProj.GoldenCrack
 
 	public class GoldenCrack : ModProjectile
 	{
+		public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 		public override void SetDefaults()
 		{
 			Projectile.width = 6;

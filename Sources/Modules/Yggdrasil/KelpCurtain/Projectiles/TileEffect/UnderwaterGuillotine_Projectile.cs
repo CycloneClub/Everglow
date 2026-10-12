@@ -6,6 +6,8 @@ namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.TileEffect;
 
 public class UnderwaterGuillotine_Projectile : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MiscsProjectiles;
+
 	public Point TileTopLeft;
 
 	public int Timer = 0;

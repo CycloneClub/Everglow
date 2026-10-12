@@ -4,6 +4,8 @@ namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Melee.EvilHalbertBarnacle;
 
 public class EvilHalbertBarnacle_ShootShuttle : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	public int Timer = 0;
 
 	public int State = 0;

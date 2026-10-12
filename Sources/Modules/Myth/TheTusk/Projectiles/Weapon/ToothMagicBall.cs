@@ -2,6 +2,8 @@ namespace Everglow.Myth.TheTusk.Projectiles.Weapon;
 
 public class ToothMagicBall : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 18;

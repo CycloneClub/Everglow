@@ -1,11 +1,42 @@
-TestCooldown: {
-	DisplayName: 测试冷却
-	Tooltip: 测试用
+AuburnSelfReinforcingCooldown: {
+	DisplayName: Auburn Self Reinforcing Cooldown
+	Description: ""
 }
 
 DevilHeartSetCooldown: {
 	DisplayName: 魔心过载冷却
-	Description: 冷却中...
+	Description: 魔心过载尚未就绪
+}
+
+IstafelsSunfireGraspFireBallCooldown: {
+	DisplayName: Istafels Sunfire Grasp Fire Ball Cooldown
+	Description: ""
+}
+
+IstafelsSunfireGraspSkillCooldown: {
+	DisplayName: Istafels Sunfire Grasp Skill Cooldown
+	Description: ""
+}
+
+MelterGearCooldown: {
+	DisplayName: Melter Gear Cooldown
+	Description: ""
+}
+
+MolluscsSetCooldown: {
+	DisplayName: 水生附体冷却
+	Description: 水生附体尚未就绪
+}
+
+RuinSetCooldown: {
+	DisplayName: 归墟之力冷却
+	Description: 归墟套装技能正在冷却
+}
+
+TestCooldown: {
+	DisplayName: 测试冷却
+	Description: ""
+	Tooltip: 测试用
 }
 
 TestCooldown2: {
@@ -23,37 +54,7 @@ TestCooldown4: {
 	Description: ""
 }
 
-AuburnSelfReinforcingCooldown: {
-	DisplayName: Auburn Self Reinforcing Cooldown
-	Description: ""
-}
-
-MelterGearCooldown: {
-	DisplayName: Melter Gear Cooldown
-	Description: ""
-}
-
-IstafelsSunfireGraspFireBallCooldown: {
-	DisplayName: Istafels Sunfire Grasp Fire Ball Cooldown
-	Description: ""
-}
-
-IstafelsSunfireGraspSkillCooldown: {
-	DisplayName: Istafels Sunfire Grasp Skill Cooldown
-	Description: ""
-}
-
-MolluscsSetCooldown: {
-	DisplayName: Molluscs Set Cooldown
-	Description: ""
-}
-
-RuinSetCooldown: {
-	DisplayName: Ruin Set Cooldown
-	Description: ""
-}
-
 TheGreenSolarCooldown: {
-	DisplayName: The Green Solar Cooldown
-	Description: ""
+	DisplayName: 绿阳涅槃冷却
+	Description: 绿阳之石暂时无法抵挡致命伤害
 }

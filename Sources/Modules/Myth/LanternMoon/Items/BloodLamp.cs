@@ -5,6 +5,8 @@ namespace Everglow.Myth.LanternMoon.Items;
 
 public class BloodLamp : ModItem
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.SummonItems;
+
 	public override void SetDefaults()
 	{
 		Item.width = 38;

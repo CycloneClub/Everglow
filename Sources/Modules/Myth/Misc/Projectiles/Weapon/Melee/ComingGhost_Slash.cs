@@ -6,6 +6,8 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee;
 
 public class ComingGhost_Slash : ModProjectile, IWarpProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	public override string Texture => Commons.ModAsset.StabbingProjectile_Mod;
 
 	private Vector2 startCenter;

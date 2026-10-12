@@ -5,6 +5,8 @@ namespace Everglow.Myth.Misc.Projectiles.Accessory;
 
 public class CursedFlameBall : ModProjectile, IWarpProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 10;

@@ -158,6 +158,25 @@ public class WorldObjectiveRetryTest
 	}
 
 	[TestMethod]
+	public void CanRetryObjective_RejectsNonRetriableTimedOutObjective()
+	{
+		var timed = new TestObjective { ProgressValue = 7 };
+		timed.WithTimeLimit(WorldQuestManager.UpdateInterval, retriable: false);
+		var quest = new TestQuest();
+		quest.Objectives.Add(timed);
+		quest.SetActive();
+		quest.Objectives.UpdateNode();
+
+		Assert.IsFalse(timed.IsRetriable);
+		Assert.IsTrue(timed.IsTimedOut);
+		Assert.IsFalse(quest.CanRetryObjective(timed.ObjectiveID));
+		Assert.IsFalse(quest.TryRetryObjectiveCore(timed.ObjectiveID));
+		Assert.AreEqual(7, timed.ProgressValue);
+		Assert.IsTrue(timed.IsTimedOut);
+		Assert.AreEqual(0, timed.ResetCalls);
+	}
+
+	[TestMethod]
 	public void CanRetryObjective_RejectsUntimedUnexpiredAndCompletedObjectives()
 	{
 		var untimed = new TestObjective { ProgressValue = 1 };

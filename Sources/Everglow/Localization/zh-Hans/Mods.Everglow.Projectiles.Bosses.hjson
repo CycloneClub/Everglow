@@ -1,79 +1,114 @@
-SquamousAirProj: {
-	DisplayName: Squamous Air Proj
-}
-
-SquamousDashEffect: {
-	DisplayName: Squamous Dash Effect
-}
-
-SquamousMoonBladePredict: {
-	DisplayName: Squamous Moon Blade Predict
-}
-
-SquamousRockExplosion: {
-	DisplayName: Squamous Rock Explosion
-}
-
-SquamousRockProj: {
-	DisplayName: Squamous Rock Proj
-}
-
-SquamousRockProj_small: {
-	DisplayName: Squamous Rock Proj_small
-}
-
-SquamousRockSpike: {
-	DisplayName: Squamous Rock Spike
-}
-
-SquamousRockSpike_Falling: {
-	DisplayName: Squamous Rock Spike_ Falling
-}
-
-SquamousRockSpike_Falling_Predict: {
-	DisplayName: Squamous Rock Spike_ Falling_ Predict
-}
-
-SquamousRollingStone: {
-	DisplayName: Squamous Rolling Stone
-}
-
-SquamousRollingStone_fly: {
-	DisplayName: Squamous Rolling Stone_fly
-}
-
-SquamousShell_shade: {
-	DisplayName: Squamous Shell_shade
-}
-
-Squamous_HitTile: {
-	DisplayName: Squamous_ Hit Tile
-}
-
-Squamous_Slash: {
-	DisplayName: Squamous_ Slash
-}
-
-YggdrasilMoonBlade: {
-	DisplayName: Yggdrasil Moon Blade
-}
-
-YggdrasilMoonBladeHit: {
-	DisplayName: Yggdrasil Moon Blade Hit
-}
-
-JellyBallCrystal: {
-	DisplayName: Jelly Ball Crystal
-}
-
-JellyBallElectricKill: {
-	DisplayName: Jelly Ball Electric Kill
-}
-
-JellyBallLifeAbsorb: {
-	DisplayName: Jelly Ball Life Absorb
-}
-
-JellyBall_Electric_Explosion: {
-	DisplayName: Jelly Ball_ Electric_ Explosion
-}
+Acytaea_Lock.DisplayName: Acytaea_ Lock
+Acytaea_ShineStar.DisplayName: Acytaea_ Shine Star
+AcytaeaFlySword_1.DisplayName: Acytaea Fly Sword_1
+AcytaeaFlySword_2.DisplayName: Acytaea Fly Sword_2
+AcytaeaFlySword.DisplayName: Acytaea Fly Sword
+AcytaeaFlySwordExplosion.DisplayName: Acytaea Fly Sword Explosion
+AcytaeaLaserSword.DisplayName: Acytaea Laser Sword
+AcytaeaLaserSword2.DisplayName: Acytaea Laser Sword2
+AcytaeaMagicArray.DisplayName: Acytaea Magic Array
+AcytaeaMagicArraySword.DisplayName: Acytaea Magic Array Sword
+AcytaeaScratch.DisplayName: Acytaea Scratch
+AcytaeaSword_following.DisplayName: Acytaea Sword_following
+AcytaeaSword_projectile_Boss_shoot.DisplayName: Acytaea Sword_projectile_ Boss_shoot
+AcytaeaSword_projectile_Boss.DisplayName: Acytaea Sword_projectile_ Boss
+AcytaeaSword_projectile_Tornado.DisplayName: Acytaea Sword_projectile_ Tornado
+AcytaeaSwordArray_0.DisplayName: Acytaea Sword Array_0
+AcytaeaSwordArray_1.DisplayName: Acytaea Sword Array_1
+AcytaeaSwordRain.DisplayName: Acytaea Sword Rain
+AcytaeaTornado.DisplayName: Acytaea Tornado
+BlackCorruptRain.DisplayName: Black Corrupt Rain
+BlackCorruptRain3.DisplayName: Black Corrupt Rain3
+BloodFountain.DisplayName: Blood Fountain
+BloodTusk_Sleep_Crack.DisplayName: Blood Tusk_ Sleep_ Crack
+BloodTusk_Tentacle.DisplayName: Blood Tusk_ Tentacle
+BloodTuskLongSpice.DisplayName: Blood Tusk Long Spice
+BlueFlame0.DisplayName: Blue Flame0
+BlueFlame0Little.DisplayName: Blue Flame0 Little
+BlueFlame0LittleSoon.DisplayName: Blue Flame0 Little Soon
+BlueFlame1Boom.DisplayName: Blue Flame1 Boom
+BlueMissil.DisplayName: Blue Missil
+BlueStarFlower.DisplayName: Blue Star Flower
+BrownFlame0.DisplayName: Brown Flame0
+BrownFlame0Little.DisplayName: Brown Flame0 Little
+BurningLanternWreck.DisplayName: Burning Lantern Wreck
+ButterflyDream.DisplayName: Butterfly Dream
+CorMoth4DProj.DisplayName: Cor Moth4 D Proj
+CrutchRapier_Hostile.DisplayName: Crutch Rapier_ Hostile
+CrutchRapier_Stab_Hostile.DisplayName: Crutch Rapier_ Stab_ Hostile
+GoldLanternLine_NoTarget.DisplayName: Gold Lantern Line_ No Target
+GoldLanternLine.DisplayName: Gold Lantern Line
+GoldLanternLine3.DisplayName: Gold Lantern Line3
+GreenFlame0.DisplayName: Green Flame0
+GreenFlame0Little.DisplayName: Green Flame0 Little
+GreenFlame0Split.DisplayName: Green Flame0 Split
+GreenFlame1Split.DisplayName: Green Flame1 Split
+ImmuneCircle.DisplayName: Immune Circle
+JellyBall_Electric_Explosion.DisplayName: Jelly Ball_ Electric_ Explosion
+JellyBallCrystal.DisplayName: Jelly Ball Crystal
+JellyBallElectricKill.DisplayName: Jelly Ball Electric Kill
+JellyBallGelStream.DisplayName: Jelly Ball Gel Stream
+JellyBallLifeAbsorb.DisplayName: Jelly Ball Life Absorb
+LanternBomb.DisplayName: Lantern Bomb
+LanternFlameWall.DisplayName: Lantern Flame Wall
+LanternFlow.DisplayName: Lantern Flow
+LanternFlowLine.DisplayName: Lantern Flow Line
+LanternGhostKingExplosion.DisplayName: Lantern Ghost King Explosion
+LanternGhostKingPower.DisplayName: Lantern Ghost King Power
+Living_Jawbone_Huge_ground_Wave.DisplayName: Living_ Jawbone_ Huge_ground_ Wave
+Living_Jawbone_Huge_ground.DisplayName: Living_ Jawbone_ Huge_ground
+Living_Jawbone_Huge.DisplayName: Living_ Jawbone_ Huge
+MissileProjHostile.DisplayName: Missile Proj Hostile
+MothBall.DisplayName: Moth Ball
+MothBallExplosion.DisplayName: Moth Ball Explosion
+MothBulletExplosion.DisplayName: Moth Bullet Explosion
+MothMiddleBullet.DisplayName: Moth Middle Bullet
+MothSummonEffect.DisplayName: Moth Summon Effect
+PinkFlame0.DisplayName: Pink Flame0
+PinkFlame0Little.DisplayName: Pink Flame0 Little
+PurpleFlame0.DisplayName: Purple Flame0
+PurpleFlame0Little.DisplayName: Purple Flame0 Little
+PurpleGreenFlame0.DisplayName: Purple Green Flame0
+PurpleGreenFlame0Little.DisplayName: Purple Green Flame0 Little
+Rapier_Slash.DisplayName: Rapier_ Slash
+RedFlame0.DisplayName: Red Flame0
+RedFlame0Little.DisplayName: Red Flame0 Little
+RedFlame0Split.DisplayName: Red Flame0 Split
+RedFlame1Split.DisplayName: Red Flame1 Split
+RedFlame2Split.DisplayName: Red Flame2 Split
+SmallLanternGroup_LanternRain.DisplayName: Small Lantern Group_ Lantern Rain
+SmallLanternGroup.DisplayName: Small Lantern Group
+SphereLanternProj.DisplayName: Sphere Lantern Proj
+Squamous_HitTile.DisplayName: Squamous_ Hit Tile
+Squamous_Slash.DisplayName: Squamous_ Slash
+SquamousAirProj.DisplayName: Squamous Air Proj
+SquamousDashEffect.DisplayName: Squamous Dash Effect
+SquamousMoonBladePredict.DisplayName: Squamous Moon Blade Predict
+SquamousRockExplosion.DisplayName: Squamous Rock Explosion
+SquamousRockProj_small.DisplayName: Squamous Rock Proj_small
+SquamousRockProj.DisplayName: Squamous Rock Proj
+SquamousRockSpike_Falling_Predict.DisplayName: Squamous Rock Spike_ Falling_ Predict
+SquamousRockSpike_Falling.DisplayName: Squamous Rock Spike_ Falling
+SquamousRockSpike.DisplayName: Squamous Rock Spike
+SquamousRollingStone_fly.DisplayName: Squamous Rolling Stone_fly
+SquamousRollingStone.DisplayName: Squamous Rolling Stone
+SquamousShell_shade.DisplayName: Squamous Shell_shade
+Tusk_ground_little.DisplayName: Tusk_ground_little
+Tusk_ground.DisplayName: Tusk_ground
+TuskBloodPool_close.DisplayName: Tusk Blood Pool_close
+TuskBloodPool_open.DisplayName: Tusk Blood Pool_open
+TuskBloodPool.DisplayName: Tusk Blood Pool
+TuskCurse.DisplayName: Tusk Curse
+TuskSpice_WithGravity.DisplayName: Tusk Spice_ With Gravity
+TuskSpice.DisplayName: Tusk Spice
+TuskWall_Wave.DisplayName: Tusk Wall_ Wave
+VampireMat_Tentacle_FromBackground.DisplayName: Vampire Mat_ Tentacle_ From Background
+VampireMat_Tentacle.DisplayName: Vampire Mat_ Tentacle
+WheelShapeLantern3Layer.DisplayName: Wheel Shape Lantern3 Layer
+YellowFlame0.DisplayName: Yellow Flame0
+YellowFlame0Little.DisplayName: Yellow Flame0 Little
+YellowFlame0LittleShine.DisplayName: Yellow Flame0 Little Shine
+YellowFlame0Shine.DisplayName: Yellow Flame0 Shine
+YellowToRedFlame0Little.DisplayName: Yellow To Red Flame0 Little
+YggdrasilMoonBlade.DisplayName: Yggdrasil Moon Blade
+YggdrasilMoonBladeHit.DisplayName: Yggdrasil Moon Blade Hit

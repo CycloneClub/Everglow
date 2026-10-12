@@ -97,7 +97,7 @@ public class TextDrawer : DrawerItem
 			for (int i = currentSegmentStart; i < initialText.Length; i++)
 			{
 				Vector2 segmentSize = GetTextSize(initialText[currentSegmentStart..(i + 1)]);
-				if (segmentSize.X < width)
+				if (segmentSize.X <= width)
 				{
 					bestEndIndex = i;
 				}
@@ -114,13 +114,13 @@ public class TextDrawer : DrawerItem
 
 			// Part 2: Validate split boundaries.
 			// ==================================
-			if (!TextUtils.IsSplitBoundary(initialText, bestEndIndex))
+			if (!TextUtils.IsSplitBoundary(initialText, bestEndIndex + 1))
 			{
-				var naturalBreakIndex = TextUtils.FindPreviousSplitBoundary(initialText, bestEndIndex);
+				var naturalBreakIndex = TextUtils.FindPreviousSplitBoundary(initialText, bestEndIndex + 1);
 
 				// If the draw length of english word is more than max line width, then line break will be enforced.
-				bestEndIndex = naturalBreakIndex >= currentSegmentStart
-					? naturalBreakIndex // Use natural line break index
+				bestEndIndex = naturalBreakIndex > currentSegmentStart
+					? naturalBreakIndex - 1 // The boundary is before the next character.
 					: bestEndIndex; // Force line break
 			}
 
@@ -143,6 +143,11 @@ public class TextDrawer : DrawerItem
 
 			// Update processing state.
 			currentSegmentStart = bestEndIndex + 1;
+			// Separator whitespace should not become indentation on an automatically wrapped line.
+			while (currentSegmentStart < initialText.Length && char.IsWhiteSpace(initialText[currentSegmentStart]))
+			{
+				currentSegmentStart++;
+			}
 
 			// Completion check
 			// ================

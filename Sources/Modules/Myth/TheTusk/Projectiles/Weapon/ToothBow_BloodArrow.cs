@@ -6,6 +6,8 @@ namespace Everglow.Myth.TheTusk.Projectiles.Weapon;
 
 public class ToothBow_BloodArrow : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 20;

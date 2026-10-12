@@ -6,6 +6,8 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 
 internal class MothArrow : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 36;

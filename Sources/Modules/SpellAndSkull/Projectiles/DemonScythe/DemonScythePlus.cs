@@ -8,6 +8,8 @@ namespace Everglow.SpellAndSkull.Projectiles.DemonScythe;
 
 public class DemonScythePlus : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 60;

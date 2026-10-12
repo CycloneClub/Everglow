@@ -5,6 +5,8 @@ namespace Everglow.MEAC.Projectiles;
 
 public class VortexVanquisher3 : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	public override string Texture => "Everglow/MEAC/Projectiles/VortexVanquisher";
 
 	public override void SetStaticDefaults()

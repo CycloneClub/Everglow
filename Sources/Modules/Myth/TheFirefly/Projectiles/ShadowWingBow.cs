@@ -7,6 +7,8 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 
 internal class ShadowWingBow : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
+
 	private FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
 
 	public override string Texture => "Everglow/Myth/TheFirefly/Projectiles/ShadowWingBowTex/ShadowWingBowMain";

@@ -1,5 +1,8 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Commons.Mechanics.Miscs;
+using Everglow.Commons.Netcode;
+using Everglow.Commons.Utilities;
+using Everglow.Yggdrasil.Netcode;
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
@@ -828,6 +831,17 @@ public class KingJellyBall : ModNPC
 
 	public override void OnKill()
 	{
+		if (YggdrasilWorld.InYggdrasil && !NetUtils.IsClient && !YggdrasilWorldSystem.DownedKingJellyBall)
+		{
+			if (NetUtils.IsSingle)
+			{
+				YggdrasilWorldSystem.DownedKingJellyBall = true;
+			}
+			else
+			{
+				ModIns.PacketResolver.Route(new YggdrasilProgressSyncPacket(downedKingJellyBall: true), RouteDestination.MainServer);
+			}
+		}
 	}
 
 	public override void ModifyNPCLoot(NPCLoot npcLoot)

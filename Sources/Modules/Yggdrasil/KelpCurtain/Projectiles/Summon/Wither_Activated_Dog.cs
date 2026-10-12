@@ -4,6 +4,8 @@ namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Summon;
 
 public class Wither_Activated_Dog : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.SummonProjectiles;
+
 	/// <summary>
 	/// 0: Stand; 1: Walk; 2: Run
 	/// </summary>

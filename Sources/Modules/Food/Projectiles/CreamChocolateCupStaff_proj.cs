@@ -5,6 +5,8 @@ namespace Everglow.Food.Projectiles;
 
 public class CreamChocolateCupStaff_proj : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 36;
@@ -93,6 +95,8 @@ public class CreamChocolateCupStaff_proj : ModProjectile
 
 public class CreamChocolateCupStaff_proj_rightClick : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override string Texture => "Everglow/Food/Projectiles/CreamChocolateCupStaff_proj";
 
 	public override void SetDefaults()
@@ -186,6 +190,8 @@ public class CreamChocolateCupStaff_proj_rightClick : ModProjectile
 
 public class CreamChocolateCupStaff_proj_held : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override string Texture => "Everglow/Food/Projectiles/CreamChocolateCupStaff_proj";
 
 	public override void SetDefaults()

@@ -2,6 +2,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Melee;
 
 public class CyanVineSword_Projectile : MeleeProj
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	public override void SetDef()
 	{
 		Projectile.aiStyle = -1;

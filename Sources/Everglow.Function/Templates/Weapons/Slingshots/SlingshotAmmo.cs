@@ -8,6 +8,8 @@ namespace Everglow.Commons.Templates.Weapons.Slingshots;
 
 public abstract class SlingshotAmmo : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
+
 	public override void SetStaticDefaults()
 	{
 	}

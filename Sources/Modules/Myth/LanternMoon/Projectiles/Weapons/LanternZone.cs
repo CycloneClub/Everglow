@@ -4,6 +4,8 @@ namespace Everglow.Myth.LanternMoon.Projectiles.Weapons;
 
 public class LanternZone : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
+
 	public int Timer = 0;
 
 	public override void SetDefaults()

@@ -9,6 +9,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Summon;
 
 public class WiltedForestLamp_Proj_shoot : TrailingProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.SummonProjectiles;
+
 	public override string Texture => Commons.ModAsset.Empty_Mod;
 
 	public override void SetCustomDefaults()

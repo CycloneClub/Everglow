@@ -2,6 +2,8 @@ namespace Everglow.Myth.TheTusk.Projectiles.Weapon;
 
 internal class SpineGun : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 36;

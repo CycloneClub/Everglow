@@ -1,3 +1,4 @@
+using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.UI;
 using Everglow.Commons.UI.UIContainers.Sidebar.SidebarElements;
 
@@ -7,7 +8,7 @@ internal class OpenQuest : ISidebarElement
 {
 	public Texture2D Icon => ModAsset.OpenQuest.Value;
 
-	public string Tooltip => "打开任务面板";
+	public string Tooltip => QuestText.Get("UI.OpenPanel");
 
 	public bool Visible => true;
 

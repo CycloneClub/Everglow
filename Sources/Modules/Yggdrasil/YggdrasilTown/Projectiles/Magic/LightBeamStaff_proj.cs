@@ -9,6 +9,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
 
 public class LightBeamStaff_proj : HandholdProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override void SetDef()
 	{
 		DepartLength = 60;

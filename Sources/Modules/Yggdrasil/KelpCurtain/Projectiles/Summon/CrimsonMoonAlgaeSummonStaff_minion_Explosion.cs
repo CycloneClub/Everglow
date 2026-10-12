@@ -6,6 +6,8 @@ namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Summon;
 
 public class CrimsonMoonAlgaeSummonStaff_minion_Explosion : ModProjectile, IRedAlgaeToxinProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.SummonProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 60;

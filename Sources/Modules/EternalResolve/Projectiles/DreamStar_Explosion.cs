@@ -6,6 +6,8 @@ namespace Everglow.EternalResolve.Projectiles
 {
 	public class DreamStar_Explosion : ModProjectile
 	{
+		public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 		public override string Texture => Commons.ModAsset.StabbingProjectile_Mod;
 
 		public override void SetDefaults()

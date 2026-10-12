@@ -1,173 +1,5 @@
-CyanAmberStaff: {
-	DisplayName: Cyan Amber Staff
-}
-
-FeatheredStaff: {
-	DisplayName: Feathered Staff
-	Tooltip: Enchanted glimmering feather fins.
-}
-
-MossySpell: {
-	DisplayName: Mossy Spell
-	Tooltip:
-		'''
-		Drop a barrage shaped like moss downward at the mouse position
-		25% chance to inflict Poisoned for 5 seconds
-		'''
-}
-
-HandholdItem: {
-	DisplayName: Handhold Item
-	Tooltip: ""
-}
-
-CreamChocolateCupStaff: {
-	DisplayName: Cream Chocolate Cup Staff
-	Tooltip: ""
-}
-
-FrostBomb: {
-	DisplayName: Frost Bomb
-	Tooltip: ""
-}
-
-ToothMagicBall: {
-	DisplayName: Tooth Magic Ball
-	Tooltip: ""
-}
-
-DreamWeaver: {
-	DisplayName: Dream Weaver
-	Tooltip: ""
-}
-
-DustOfCorrupt: {
-	DisplayName: Dust Of Corrupt
-	Tooltip: ""
-}
-
-FlowLightMissile: {
-	DisplayName: Flow Light Missile
-	Tooltip: ""
-}
-
-GlowBeadGun: {
-	DisplayName: Glow Bead Gun
-	Tooltip: ""
-}
-
-NavyThunder: {
-	DisplayName: Navy Thunder
-	Tooltip: ""
-}
-
-LilyHarp: {
-	DisplayName: Lily Harp
-	Tooltip: ""
-}
-
-BoneFeatherMagic: {
-	DisplayName: Bone Feather Magic
-	Tooltip: ""
-}
-
-DarkFlower: {
-	DisplayName: Dark Flower
-	Tooltip: ""
-}
-
-FeatherMagic: {
-	DisplayName: Feather Magic
-	Tooltip: ""
-}
-
-FireFeatherMagic: {
-	DisplayName: Fire Feather Magic
-	Tooltip: ""
-}
-
-FreezeFeatherMagic: {
-	DisplayName: Freeze Feather Magic
-	Tooltip: ""
-}
-
-ThunderFlower: {
-	DisplayName: Thunder Flower
-	Tooltip: ""
-}
-
-LanternBombRemoteControl: {
-	DisplayName: Lantern Bomb Remote Control
-	Tooltip: ""
-}
-
 AmberMagicOrb: {
 	DisplayName: Amber Magic Orb
-	Tooltip: ""
-}
-
-BloodySwamp: {
-	DisplayName: Bloody Swamp
-	Tooltip: ""
-}
-
-HexaCrystalStaff: {
-	DisplayName: Hexa Crystal Staff
-	Tooltip: ""
-}
-
-MagicOfLightAndShadow: {
-	DisplayName: Magic Of Light And Shadow
-	Tooltip: ""
-}
-
-NightfireStaff: {
-	DisplayName: Nightfire Staff
-	Tooltip: ""
-}
-
-RockQuake: {
-	DisplayName: Rock Quake
-	Tooltip: ""
-}
-
-SmeltingStaff: {
-	DisplayName: Smelting Staff
-	Tooltip: ""
-}
-
-YggdrasilAmberLaser: {
-	DisplayName: Yggdrasil Amber Laser
-	Tooltip: ""
-}
-
-EyeOfAnabiosis: {
-	DisplayName: Eye Of Anabiosis
-	Tooltip: ""
-}
-
-FlurryingBlades: {
-	DisplayName: Flurrying Blades
-	Tooltip: ""
-}
-
-VitalizedRocks: {
-	DisplayName: Vitalized Rocks
-	Tooltip: ""
-}
-
-BronzeLotusLamp: {
-	DisplayName: Bronze Lotus Lamp
-	Tooltip: ""
-}
-
-LightBeamStaff: {
-	DisplayName: Light Beam Staff
-	Tooltip: ""
-}
-
-CyanVineStaff: {
-	DisplayName: Cyan Vine Staff
 	Tooltip: ""
 }
 
@@ -181,12 +13,272 @@ BacterialAgent: {
 	Tooltip: ""
 }
 
+BloodySwamp: {
+	DisplayName: Bloody Swamp
+	Tooltip: ""
+}
+
+BoneFeatherMagic: {
+	DisplayName: Bone Feather Magic
+	Tooltip: ""
+}
+
+BronzeLotusLamp: {
+	DisplayName: Bronze Lotus Lamp
+	Tooltip:
+		'''
+		Sprays blue fire with a chance to release an explosive flower bud
+		'Perhaps a relic of an ancient Indo-Brahmic garden. Rusted, but still usable'
+		'''
+}
+
+CreamChocolateCupStaff: {
+	DisplayName: Cream Chocolate Cup Staff
+	Tooltip: ""
+}
+
+CyanAmberStaff: {
+	DisplayName: Cyan Rectifier Staff
+	Tooltip: ""
+}
+
+CyanVineStaff: {
+	DisplayName: Cyan Staff
+	Tooltip: Fires a cyan clot imbued with simple magic
+}
+
+DarkFlower: {
+	DisplayName: Dark Flower
+	Tooltip: ""
+}
+
 DevilHeartStaff: {
 	DisplayName: Devil Heart Staff
+	Tooltip:
+		'''
+		Every seventh shot bursts over a 110-pixel radius, dealing 250% damage
+		The burst inflicts Confused for 3 seconds and builds up necrosis equal to 300% of its damage
+		'''
+}
+
+DreamWeaver: {
+	DisplayName: Dream Weaver
+	Tooltip: ""
+}
+
+DustOfCorrupt: {
+	DisplayName: Dust Of Corrupt
+	Tooltip: ""
+}
+
+EmptyWaterStaff: {
+	DisplayName: Empty Water Staff
+	Tooltip:
+		'''
+		Fires a bubble that traps most enemies for 3 seconds, or 6 seconds underwater
+		Cannot trap bosses or enemies immune to knockback
+		'''
+}
+
+EyeOfAnabiosis: {
+	DisplayName: Eye of Anabiosis
+	Tooltip:
+		'''
+		Charges while held; ready to fire after 12 seconds
+		Fires cyan homing flames at up to three targets
+		'''
+}
+
+FeatheredStaff: {
+	DisplayName: Featherfin Staff
+	Tooltip: Fires three enchanted rod fins
+}
+
+FeatherMagic: {
+	DisplayName: Feather Magic
+	Tooltip: ""
+}
+
+FireFeatherMagic: {
+	DisplayName: Fire Feather Magic
+	Tooltip: ""
+}
+
+FlowLightMissile: {
+	DisplayName: Flow Light Missile
+	Tooltip: ""
+}
+
+FlurryingBlades: {
+	DisplayName: Flurrying Blades
+	Tooltip: Conjures a growing orb of wind blades that repeatedly strikes nearby enemies
+}
+
+FreezeFeatherMagic: {
+	DisplayName: Freeze Feather Magic
+	Tooltip: ""
+}
+
+FrostBomb: {
+	DisplayName: Frost Bomb
+	Tooltip: ""
+}
+
+GlowBeadGun: {
+	DisplayName: Glow Bead Gun
+	Tooltip: ""
+}
+
+GoldenLotusStaff: {
+	DisplayName: Golden Lotus Staff
+	Tooltip: ""
+}
+
+GreenSungloStaff: {
+	DisplayName: Green Sunglo Staff
+	Tooltip:
+		'''
+		Fires a harmless spore that grows into damaging thorns when it lands
+		Only one patch of thorns can remain at a time, lasting 20 seconds
+		'''
+}
+
+HandholdItem: {
+	DisplayName: Handhold Item
+	Tooltip: ""
+}
+
+HexaCrystalStaff: {
+	DisplayName: Hexa Crystal Staff
+	Tooltip: ""
+}
+
+IntroductiontoThermalElectricity: {
+	DisplayName: Introduction to Thermoelectricity
+	Tooltip: ""
+}
+
+LanternBombRemoteControl: {
+	DisplayName: Lantern Bomb Remote Control
+	Tooltip: ""
+}
+
+LightBeamStaff: {
+	DisplayName: Light Beam Staff
+	Tooltip:
+		'''
+		Fires a beam of light that inflicts Photolysis and leaves a beacon when it strikes terrain
+		'A straight beam, like the hopes of those newly arrived'
+		'''
+}
+
+LilyHarp: {
+	DisplayName: Lily Harp
+	Tooltip: ""
+}
+
+MagicOfLightAndShadow: {
+	DisplayName: Magic Of Light And Shadow
+	Tooltip: ""
+}
+
+MillionLightStaff: {
+	DisplayName: Million Light Staff
+	Tooltip: ""
+}
+
+MossySpell: {
+	DisplayName: Mossy Spell
+	Tooltip: Drops a clump of moss from the cursor
+}
+
+NavyThunder: {
+	DisplayName: Navy Thunder
+	Tooltip: ""
+}
+
+NightfireStaff: {
+	DisplayName: Nightfire Staff
+	Tooltip: ""
+}
+
+PearShapedNeedle: {
+	DisplayName: Pear Shaped Needle
+	Tooltip: ""
+}
+
+RedAlgaeMagicSpellBook: {
+	DisplayName: Crimson Moon Algae Spell Book
+	Tooltip:
+		'''
+		Hold to expand a ring that grows damaging algae on nearby surfaces
+		The ring launches toward the cursor when fully grown
+		Release early to keep the ring around you
+		Inflicts Red Algae Toxin for 15 seconds
+		Toxin builds up over time and detonates on the next hit; it deals no damage if it expires
+		'''
+}
+
+RedAlgaeMagicStaff: {
+	DisplayName: Crimson Moon Algae Magic Staff
+	Tooltip:
+		'''
+		Fires two algae bolts
+		Inflicts Red Algae Toxin for 15 seconds
+		Toxin builds up over time and detonates on the next hit; it deals no damage if it expires
+		'''
+}
+
+RockQuake: {
+	DisplayName: Rock Quake
 	Tooltip: ""
 }
 
 SightOfTile: {
 	DisplayName: Sight Of Tile
+	Tooltip: ""
+}
+
+SmeltingStaff: {
+	DisplayName: Smelting Staff
+	Tooltip:
+		'''
+		Creates a ring of fire while held that ignites enemies
+		Click inside the ring to trigger an explosion
+		'''
+}
+
+SpringOfQuicksand: {
+	DisplayName: Spring Of Quicksand
+	Tooltip: ""
+}
+
+ThunderFlower: {
+	DisplayName: Thunder Flower
+	Tooltip: ""
+}
+
+ToothMagicBall: {
+	DisplayName: Tooth Magic Ball
+	Tooltip: ""
+}
+
+TwilightShamanStaff: {
+	DisplayName: Twilight Shaman Staff
+	Tooltip: ""
+}
+
+VineRepairWand: {
+	DisplayName: Vine Repair Wand
+	Tooltip: ""
+}
+
+VitalizedRocks: {
+	DisplayName: Vitalized Rocks
+	Tooltip: ""
+}
+
+YggdrasilAmberLaser: {
+	DisplayName: Yggdrasil Amber Laser
 	Tooltip: ""
 }

@@ -9,6 +9,8 @@ namespace Everglow.Myth.LanternMoon.Projectiles.Weapons;
 
 public class KeroseneLanternFlameThrower_Hold : HandholdProjectile, IWarpProjectile_warpStyle2
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
+
 	public int Timer = 0;
 
 	public struct SubProj

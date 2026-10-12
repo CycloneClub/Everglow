@@ -6,6 +6,8 @@ namespace Everglow.Myth.TheTusk.Projectiles;
 
 public class TuskWall_Wave : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
+
 	public override string Texture => ModAsset.Empty_Mod;
 
 	public List<(Point TileCoord, float Rotation)> WavedTiles = new List<(Point, float)>();

@@ -5,6 +5,8 @@ namespace Everglow.Myth.LanternMoon.Projectiles.LanternKing;
 
 public class BurningLanternWreck : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
+
 	public override string Texture => "Everglow/" + ModAsset.DarkLanternBombExplosion_Path;
 
 	public override void SetDefaults()

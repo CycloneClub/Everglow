@@ -9,6 +9,8 @@ namespace Everglow.EternalResolve.Projectiles
 {
 	public class DreamStar_FallenStar : ModProjectile
 	{
+		public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 		public override string Texture => "Terraria/Images/Projectile_12";
 
 		public override void SetDefaults()

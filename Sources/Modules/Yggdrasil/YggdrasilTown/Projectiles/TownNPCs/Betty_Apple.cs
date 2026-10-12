@@ -10,6 +10,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.TownNPCs;
 
 public class Betty_Apple : TrailingProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.TownNPCProjectiles;
+
 	public override void SetCustomDefaults()
 	{
 		Projectile.width = 14;

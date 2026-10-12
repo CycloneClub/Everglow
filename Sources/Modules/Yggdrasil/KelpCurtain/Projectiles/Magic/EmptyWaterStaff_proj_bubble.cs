@@ -6,6 +6,8 @@ namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Magic;
 
 public class EmptyWaterStaff_proj_bubble : ModProjectile, IWarpProjectile_warpStyle2
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public NPC Target;
 
 	public int Timer;

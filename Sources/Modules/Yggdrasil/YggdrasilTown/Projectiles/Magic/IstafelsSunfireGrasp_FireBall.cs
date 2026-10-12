@@ -9,6 +9,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
 
 public class IstafelsSunfireGrasp_FireBall : TrailingProjectile, IWarpProjectile_warpStyle2
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override string Texture => Commons.ModAsset.Point_Mod;
 
 	public const int ProjectileVelocity = 4;

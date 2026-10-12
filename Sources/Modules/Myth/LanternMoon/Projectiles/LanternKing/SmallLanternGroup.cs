@@ -2,6 +2,8 @@ namespace Everglow.Myth.LanternMoon.Projectiles.LanternKing;
 
 public class SmallLanternGroup : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
+
 	public struct MovingEntity()
 	{
 		public Vector2 Position;

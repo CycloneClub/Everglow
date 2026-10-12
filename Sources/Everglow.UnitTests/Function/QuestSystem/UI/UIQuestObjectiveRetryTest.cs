@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Reflection;
+using Everglow.Commons.Mechanics.Quest.Presentation;
 using Everglow.Commons.Mechanics.Quest.Presentation.Views;
 using Everglow.Commons.Mechanics.Quest.UI;
 using Everglow.Commons.Mechanics.Quest.UI.UIElements;
@@ -81,7 +82,7 @@ public class UIQuestObjectiveRetryTest
 		timer.Events.MouseHover(timer);
 		timer.Events.LeftClick(timer);
 
-		Assert.AreEqual("重试", _questContainer.MouseText);
+		Assert.AreEqual(TextDefinition.GetObjectiveTimerTooltip(), _questContainer.MouseText);
 		Assert.IsTrue(timer.OnSelect);
 		Assert.AreEqual(7, receivedObjectiveId);
 	}

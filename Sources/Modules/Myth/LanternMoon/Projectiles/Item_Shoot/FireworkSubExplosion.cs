@@ -5,6 +5,8 @@ namespace Everglow.Myth.LanternMoon.Projectiles.Item_Shoot;
 
 public class FireworkSubExplosion : FireworkProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.TypelessProjectiles;
+
 	public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 	{
 		foreach (FlameTrail flameTrail in Stars)

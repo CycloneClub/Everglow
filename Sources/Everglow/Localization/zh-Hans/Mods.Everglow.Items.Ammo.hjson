@@ -1,9 +1,9 @@
 CyanVineBullet: {
-	DisplayName: 青缎弹
-	Tooltip: ""
+	DisplayName: 青缎子弹
+	Tooltip: “展现出深沉的青色光泽，散发着浓重的矿石气息”
 }
 
 HuskburstBullet: {
-	DisplayName: 果壳弹
-	Tooltip: "击中后爆裂出短距离的小型子弹"
+	DisplayName: 碎壳弹
+	Tooltip: 破裂时向随机方向射出一枚碎片，造成30%伤害
 }

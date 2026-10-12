@@ -9,6 +9,8 @@ namespace Everglow.Ocean.Projectiles.Weapons;
 
 public class TsunamiShark_missile : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
+
 	private CoroutineManager _coroutineManager = new CoroutineManager();
 
 	public override string Texture => "Everglow/Ocean/Projectiles/Weapons/TsunamiShark/TsunamiShark_missile";

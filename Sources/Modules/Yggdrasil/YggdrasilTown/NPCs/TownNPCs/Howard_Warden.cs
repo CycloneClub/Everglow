@@ -14,7 +14,7 @@ public class Howard_Warden : TownNPC_LiveInYggdrasil
 
 	public override void SetStaticDefaults()
 	{
-		Main.npcFrameCount[NPC.type] = 12;
+		Main.npcFrameCount[NPC.type] = 13;
 	}
 
 	public override void SetDefaults()

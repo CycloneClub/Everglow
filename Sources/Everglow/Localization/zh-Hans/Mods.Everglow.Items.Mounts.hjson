@@ -1,4 +1,8 @@
 JellyBubbleItem: {
-	DisplayName: 球冻鞍
-	Tooltip: ""
+	DisplayName: 球冻泡
+	Tooltip:
+		'''
+		召唤球冻泡坐骑
+		“现在你可以探索更上面的区域了”
+		'''
 }

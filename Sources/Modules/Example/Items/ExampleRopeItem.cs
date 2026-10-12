@@ -7,6 +7,8 @@ namespace Everglow.Example.Items;
 
 public class ExampleRopeItem : ModItem
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Tools;
+
 	public Rope ItemRope;
 
 	public MassSpringContainer EularSys = new MassSpringContainer();

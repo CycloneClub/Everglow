@@ -1,27 +1,81 @@
-ThermostatBobber: {
-	DisplayName: Thermostat Bobber
-}
-
-TwilightRodBobber: {
-	DisplayName: Twilight Rod Bobber
-}
-
-PlayerDefence: {
-	DisplayName: Player Defence
-}
-
-AmberFlowerHookProjectile: {
-	DisplayName: Amber Flower Hook Projectile
-}
-
-ClimbingPickaxeProjectile: {
-	DisplayName: Climbing Pickaxe Projectile
-}
-
-GeyserAirBuds_Erupt: {
-	DisplayName: Geyser Air Buds_ Erupt
-}
-
-TeleportToYggdrasil: {
-	DisplayName: Teleport To Yggdrasil
-}
+AdamantiteClub_round_slash.DisplayName: Adamantite Club_round_slash
+AdamantiteClub_slash.DisplayName: Adamantite Club_slash
+AmberFlowerHookProjectile.DisplayName: Amber Flower Hook Projectile
+BeadShakeWave.DisplayName: Bead Shake Wave
+BlackAwningBoat_WaterDistort.DisplayName: Black Awning Boat_ Water Distort
+BloodLampProj.DisplayName: Blood Lamp Proj
+BombShakeWave.DisplayName: Bomb Shake Wave
+ChlorophyteClub_VFX_2.DisplayName: Chlorophyte Club_ V F X_2
+ChlorophyteClub_VFX.DisplayName: Chlorophyte Club_ V F X
+ClimbingPickaxeProjectile.DisplayName: Climbing Pickaxe Projectile
+ComingGhost_Shimmer.DisplayName: Coming Ghost_ Shimmer
+CrystalClub_fly_Explosion.DisplayName: Crystal Club_fly_ Explosion
+DemoSpark.DisplayName: Demo Spark
+DreamWeaver_hit.DisplayName: Dream Weaver_hit
+ExampleTrailingProjectile.DisplayName: Example Trailing Projectile
+FallenDropFruit.DisplayName: Fallen Drop Fruit
+FanHit.DisplayName: Fan Hit
+FixCoinCrit1.DisplayName: Fix Coin Crit1
+FixCoinCrit2.DisplayName: Fix Coin Crit2
+FixCoinCrit3.DisplayName: Fix Coin Crit3
+FixCoinCrit4.DisplayName: Fix Coin Crit4
+FixCoinCrit5.DisplayName: Fix Coin Crit5
+FixCoinDamage1.DisplayName: Fix Coin Damage1
+FixCoinDamage2.DisplayName: Fix Coin Damage2
+FixCoinDamage3.DisplayName: Fix Coin Damage3
+FixCoinDamage4.DisplayName: Fix Coin Damage4
+FixCoinDamage5.DisplayName: Fix Coin Damage5
+FixCoinDefense1.DisplayName: Fix Coin Defense1
+FixCoinDefense2.DisplayName: Fix Coin Defense2
+FixCoinDefense3.DisplayName: Fix Coin Defense3
+FixCoinDefense4.DisplayName: Fix Coin Defense4
+FixCoinDefense5.DisplayName: Fix Coin Defense5
+FixCoinMelee1.DisplayName: Fix Coin Melee1
+FixCoinMelee2.DisplayName: Fix Coin Melee2
+FixCoinMelee3.DisplayName: Fix Coin Melee3
+FixCoinSpeed1.DisplayName: Fix Coin Speed1
+FixCoinSpeed2.DisplayName: Fix Coin Speed2
+FixCoinSpeed3.DisplayName: Fix Coin Speed3
+FlameCylinder.DisplayName: Flame Cylinder
+FruitBomb.DisplayName: Fruit Bomb
+GeyserAirBuds_Erupt.DisplayName: Geyser Air Buds_ Erupt
+Glow_Fall_Explosion.DisplayName: Glow_ Fall_ Explosion
+GlowBeadGunShootFlame.DisplayName: Glow Bead Gun Shoot Flame
+GlowStarExplosion.DisplayName: Glow Star Explosion
+HandholdProj.DisplayName: Handhold Proj
+HandholdProj2.DisplayName: Handhold Proj2
+JungleSlingshotHit.DisplayName: Jungle Slingshot Hit
+KillLanternMoonMobs.DisplayName: Kill Lantern Moon Mobs
+KSSlingshotHit.DisplayName: K S Slingshot Hit
+KSSlingshotHitPink.DisplayName: K S Slingshot Hit Pink
+LBloodEffect.DisplayName: L Blood Effect
+LilyHarpNoteKill.DisplayName: Lily Harp Note Kill
+MythrilClub_Shoot.DisplayName: Mythril Club_ Shoot
+MythrilClub_smash_explosion.DisplayName: Mythril Club_smash_explosion
+MythrilClub_smash_explosion2.DisplayName: Mythril Club_smash_explosion2
+PlayerDefence.DisplayName: Player Defence
+PrimordialJadeWinged_SpearShake.DisplayName: Primordial Jade Winged_ Spear Shake
+PurpleBallEffect.DisplayName: Purple Ball Effect
+PylonStonePostProj_corrupt_explosion.DisplayName: Pylon Stone Post Proj_corrupt_explosion
+PylonStonePostProj_corrupt.DisplayName: Pylon Stone Post Proj_corrupt
+PylonStonePostProj_crimson_explosion.DisplayName: Pylon Stone Post Proj_crimson_explosion
+PylonStonePostProj_crimson.DisplayName: Pylon Stone Post Proj_crimson
+RedLanternMeteor.DisplayName: Red Lantern Meteor
+RisingFirework.DisplayName: Rising Firework
+ShadowDragonAttack.DisplayName: Shadow Dragon Attack
+SightOfTileProj.DisplayName: Sight Of Tile Proj
+SightOfTileProjRead.DisplayName: Sight Of Tile Proj Read
+StarProj.DisplayName: Star Proj
+SunFlowerpetal.DisplayName: Sun Flowerpetal
+TeleportToYggdrasil.DisplayName: Teleport To Yggdrasil
+ThermostatBobber.DisplayName: Thermostat Bobber
+TitaniumClub_smash_explosion.DisplayName: Titanium Club_smash_explosion
+TwilightRodBobber.DisplayName: Twilight Rod Bobber
+UnderwaterGuillotine_Projectile.DisplayName: Underwater Guillotine_ Projectile
+VineEnergyBeam.DisplayName: Vine Energy Beam
+VineEnergyOrb.DisplayName: Vine Energy Orb
+VineProj.DisplayName: Vine Proj
+VineProj2.DisplayName: Vine Proj2
+WorldHit.DisplayName: World Hit
+XiaoBlackWave.DisplayName: Xiao Black Wave
+XiaoHit.DisplayName: Xiao Hit

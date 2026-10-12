@@ -4,6 +4,8 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 
 internal class EvilChrysalisRightClick : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.SummonProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 50;

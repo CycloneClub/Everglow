@@ -4,6 +4,8 @@ namespace Everglow.Myth.LanternMoon.Projectiles.Item_Shoot;
 
 public class Firework12Inches : FireworkProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.TypelessProjectiles;
+
 	public override void OnSpawn(IEntitySource source)
 	{
 		Timer = 0;

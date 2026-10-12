@@ -5,6 +5,8 @@ namespace Everglow.Myth.TheTusk.Projectiles;
 
 public class BloodTusk_Sleep_Crack : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
+
 	public override string Texture => ModAsset.Empty_Mod;
 
 	public NPC Tusk;

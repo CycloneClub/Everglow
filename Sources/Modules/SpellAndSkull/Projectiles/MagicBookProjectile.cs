@@ -10,6 +10,8 @@ namespace Everglow.SpellAndSkull.Projectiles;
 /// </summary>
 public abstract class MagicBookProjectile : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 28;

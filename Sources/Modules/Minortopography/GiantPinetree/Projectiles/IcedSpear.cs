@@ -6,6 +6,8 @@ namespace Everglow.Minortopography.GiantPinetree.Projectiles;
 
 public class IcedSpear : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.friendly = true;

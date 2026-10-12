@@ -1,15 +1,15 @@
-DragonScaleHammer: {
-	DisplayName: Dragon Scale Hammer
-	Tooltip: ""
-}
-
-LampWoodHammer: {
-	DisplayName: Lamp Wood Hammer
-	Tooltip: ""
-}
-
 AmberFlowerHook: {
 	DisplayName: Amber Flower Hook
+	Tooltip: ""
+}
+
+BoneAndPlatformCreate: {
+	DisplayName: Bone And Platform Create
+	Tooltip: ""
+}
+
+CheckPylonPoint: {
+	DisplayName: Check Pylon Point
 	Tooltip: ""
 }
 
@@ -18,23 +18,83 @@ ClimbingPickaxe: {
 	Tooltip: ""
 }
 
+CreateRoom: {
+	DisplayName: Create Room
+	Tooltip: ""
+}
+
+CustomMusicTrackItem: {
+	DisplayName: Custom Music Track Item
+	Tooltip: ""
+}
+
 CyanVineAxe: {
-	DisplayName: Cyan Vine Axe
+	DisplayName: Cyan Axe
 	Tooltip: ""
 }
 
 CyanVineHammer: {
-	DisplayName: Cyan Vine Hammer
+	DisplayName: Cyan Hammer
 	Tooltip: ""
 }
 
 CyanVinePickaxe: {
-	DisplayName: Cyan Vine Pickaxe
+	DisplayName: Cyan Pickaxe
+	Tooltip: ""
+}
+
+DarkSludgeBucket: {
+	DisplayName: Dark Sludge Bucket
+	Tooltip: ""
+}
+
+DragonScaleHammer: {
+	DisplayName: Scale Wood Hammer
+	Tooltip: ""
+}
+
+ExampleBackgroundTool: {
+	DisplayName: Example Background Tool
+	Tooltip: ""
+}
+
+ExampleRopeItem: {
+	DisplayName: Example Rope Item
+	Tooltip: ""
+}
+
+ExampleTrailingProjectile_Emit: {
+	DisplayName: Example Trailing Projectile_ Emit
+	Tooltip: ""
+}
+
+ExampleUndergroundBackgroundTool: {
+	DisplayName: Example Underground Background Tool
+	Tooltip: ""
+}
+
+ExampleVirtualWallLightBlocker: {
+	DisplayName: Example Virtual Wall Light Blocker
+	Tooltip: ""
+}
+
+FireflyImpression: {
+	DisplayName: Firefly Impression
 	Tooltip: ""
 }
 
 FlappedHangGlider: {
-	DisplayName: Flapped Hang Glider
+	DisplayName: Damaged Hang Glider
+	Tooltip:
+		'''
+		Hold while airborne to glide briefly; press Down to descend
+		Recovers on the ground
+		'Every great pilot has struggled through a storm'
+		'''
+}
+
+GenerateMazeRoom: {
+	DisplayName: Generate Maze Room
 	Tooltip: ""
 }
 
@@ -48,8 +108,28 @@ HangGlider: {
 	Tooltip: ""
 }
 
+HardmodeItem: {
+	DisplayName: Hardmode Item
+	Tooltip: ""
+}
+
+HarvestingClaw: {
+	DisplayName: Harvesting Claw
+	Tooltip: ""
+}
+
+LampWoodHammer: {
+	DisplayName: Lampwood Hammer
+	Tooltip: "'The first light to guide your way here'"
+}
+
 MiningPowerPickaxe: {
 	DisplayName: Mining Power Pickaxe
+	Tooltip: ""
+}
+
+NormalCableCar_item: {
+	DisplayName: Normal Cable Car_item
 	Tooltip: ""
 }
 
@@ -60,5 +140,99 @@ OldPickaxe: {
 
 OldPortableLamp: {
 	DisplayName: Old Portable Lamp
+	Tooltip:
+		'''
+		Provides light while held
+		'Do not mourn the darkness. Pick up a lamp!'
+		'''
+}
+
+OutputLocalizationHjsonItem: {
+	DisplayName: Output Localization Hjson Item
+	Tooltip: ""
+}
+
+PolygonDrawerItem: {
+	DisplayName: Polygon Drawer Item
+	Tooltip: ""
+}
+
+ResetIsleOfBloom: {
+	DisplayName: Reset Isle Of Bloom
+	Tooltip: ""
+}
+
+ResetKelpCurtain: {
+	DisplayName: Reset Kelp Curtain
+	Tooltip: ""
+}
+
+ResetTheYggdrasilTown: {
+	DisplayName: Reset The Yggdrasil Town
+	Tooltip: ""
+}
+
+ScreenPositionPrintItem: {
+	DisplayName: Screen Position Print Item
+	Tooltip: ""
+}
+
+SoundIDPlayItem: {
+	DisplayName: Sound I D Play Item
+	Tooltip: ""
+}
+
+TestOpenQuestPanelWithSelectQuestItem: {
+	DisplayName: Test Open Quest Panel With Select Quest Item
+	Tooltip: ""
+}
+
+TileDataReader: {
+	DisplayName: Tile Data Reader
+	Tooltip: ""
+}
+
+TileFliper: {
+	DisplayName: Tile Fliper
+	Tooltip: ""
+}
+
+TileToolBox: {
+	DisplayName: Tile Tool Box
+	Tooltip: ""
+}
+
+TreePlacer: {
+	DisplayName: Tree Placer
+	Tooltip: ""
+}
+
+TuskMirror: {
+	DisplayName: Tusk Mirror
+	Tooltip: ""
+}
+
+UnderWaterDungeon: {
+	DisplayName: Under Water Dungeon
+	Tooltip: ""
+}
+
+VFXGenerator: {
+	DisplayName: V F X Generator
+	Tooltip: ""
+}
+
+WorldAnchor: {
+	DisplayName: World Anchor
+	Tooltip: ""
+}
+
+YggdrasilImpression: {
+	DisplayName: Yggdrasil Impression
+	Tooltip: ""
+}
+
+YggdrasilTown_TradeUnionGate: {
+	DisplayName: Yggdrasil Town_ Trade Union Gate
 	Tooltip: ""
 }

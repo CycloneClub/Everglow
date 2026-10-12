@@ -1,0 +1,144 @@
+// 共享本地化条目；游戏内容条目位于各自的分类文件中。
+Bestiary: {
+	Acytaea: ""
+	Centipede.Flavor: ""
+	CorruptMoth.Flavor: ""
+}
+
+Common.Message.HasAwoken: 已苏醒！
+
+Configs: {
+	EverglowClientConfig: {
+		DisplayName: Everglow 客户端设置
+
+		Headers: {
+			AudioReplace: 音效替换
+			TextureReplace: 贴图替换
+		}
+
+		ItemPickSoundReplace: {
+			Label: 替换物品拾取音效
+			Tooltip: ""
+		}
+
+		TextureReplace: {
+			Label: 贴图替换
+			Tooltip: ""
+		}
+
+		TuskAudioReplace: {
+			Label: 替换 Tusk 音乐
+			Tooltip: ""
+		}
+	}
+
+	EverglowConfig: {
+		DisplayName: Everglow 设置
+
+		debugMode: {
+			Label: 调试模式
+			Tooltip: ""
+		}
+	}
+
+	FogConfigs: {
+		DisplayName: 雾效设置
+
+		BloomIntensity: {
+			Label: 光效强度
+			Tooltip: ""
+		}
+
+		EnableLightUpload: {
+			Label: 开启光源数据上传
+			Tooltip: ""
+		}
+
+		EnableScattering: {
+			Label: 开启雾效散射
+			Tooltip: ""
+		}
+
+		EnableTemporalInterp: {
+			Label: 开启帧间插值
+			Tooltip: ""
+		}
+
+		FogAbsorptionB: {
+			Label: 雾吸收率（蓝色通道）
+			Tooltip: ""
+		}
+
+		FogAbsorptionG: {
+			Label: 雾吸收率（绿色通道）
+			Tooltip: ""
+		}
+
+		FogAbsorptionR: {
+			Label: 雾吸收率（红色通道）
+			Tooltip: ""
+		}
+
+		FogBloomAbsorptionFactor: {
+			Label: 雾散射能见度影响系数
+			Tooltip: ""
+		}
+
+		FogBloomRate: {
+			Label: 雾散射扩散率
+			Tooltip: ""
+		}
+
+		FogScatterWithDistance: {
+			Label: 扩散率随距离增大
+			Tooltip: ""
+		}
+
+		GaussianKernel: {
+			Label: 启用高斯卷积核
+			Tooltip: ""
+		}
+
+		LightLuminanceThreashold: {
+			Label: 光源亮度阈值
+			Tooltip: ""
+		}
+
+		MaxBloomRadius: {
+			Label: 最大光晕半径
+			Tooltip: ""
+		}
+
+		OffscreenTiles: {
+			Label: 离屏物块渲染数量
+			Tooltip: ""
+		}
+	}
+
+	TextureReplaceMode: {
+		Tooltip: ""
+		Default.Label: 默认
+		EternalResolve.Label: Eternal Resolve
+		Everglow.Label: Everglow
+		Myth.Label: Myth
+		Terraria.Label: Terraria
+	}
+
+	TuskAudioReplaceMode: {
+		Tooltip: ""
+		OldTuskFighting.Label: 旧版 Tusk 战斗音乐
+		TuskFighting.Label: Tusk 战斗音乐
+	}
+}
+
+InfoDisplays: {
+	FoodSatietyInfoDisplay.DisplayName: 饱食度
+	ThirstystateInfoDisplay.DisplayName: 口渴状态
+}
+
+NPCName.CorruptMoth: "{$Mods.Everglow.NPCs.CorruptMoth.DisplayName}"
+
+Prefixes: {
+	Accurate.DisplayName: 精准的
+	Aimed.DisplayName: 瞄准的
+}

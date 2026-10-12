@@ -5,6 +5,8 @@ namespace Everglow.Commons.DeveloperContent.Items;
 
 public class CustomMusicTrackItem : ModItem
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Tools;
+
 	public VisualizedMusicTrack Visual { get; private set; } = null;
 
 	public override void SetDefaults()

@@ -8,6 +8,8 @@ namespace Everglow.Myth.TheFirefly.Tiles;
 
 internal class LargeFireBulbTestItem : ModItem
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Placeables;
+
 	public override string Texture => "Everglow/" + ModAsset.LargeFireBulb_item_Path;
 
 	public override void SetDefaults()

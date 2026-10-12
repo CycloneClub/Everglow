@@ -5,6 +5,8 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Magic.FreezeFeatherMagic;
 
 public class GiantFreezeFeather : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 40;

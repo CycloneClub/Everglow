@@ -7,6 +7,8 @@ namespace Everglow.Myth.LanternMoon.Projectiles.PerWave15;
 
 public class GreenFlameProj : TrailingProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.EnemyProjectiles;
+
 	public NPC OwnerNPC;
 
 	public override void SetCustomDefaults()

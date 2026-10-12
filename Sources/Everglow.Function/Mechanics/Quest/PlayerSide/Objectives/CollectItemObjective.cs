@@ -1,3 +1,4 @@
+using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.Hooks;
 using Everglow.Commons.Mechanics.Quest.PlayerSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.Presentation.Icons;
@@ -59,14 +60,14 @@ public class CollectItemObjective : PlayerObjectiveBase
 		string progress = EnableIndividualCounter
 			? $"({CollectedCount}/{ItemCount})"
 			: $"({Main.LocalPlayer.inventory.Where(i => ItemTypes.Contains(i.type)).Sum(i => i.stack)}/{ItemCount})";
-		var verbString = EnableIndividualCounter ? "获取" : "拥有";
+		string textKey = EnableIndividualCounter ? "Objectives.Collect" : "Objectives.Have";
 		if (ItemTypes.Count > 1)
 		{
 			var itemString = string.Join(' ', ItemTypes.ConvertAll(i => ItemDrawer.Create(i)));
-			return $"{verbString}{itemString}合计{ItemCount}个 {progress}";
+			return QuestText.Get(textKey + "Any", itemString, ItemCount, progress);
 		}
 
-		return $"{verbString}{ItemDrawer.Create(ItemTypes.First())}{ItemCount}个 {progress}";
+		return QuestText.Get(textKey, ItemDrawer.Create(ItemTypes.First()), ItemCount, progress);
 	}
 
 	/// <summary>

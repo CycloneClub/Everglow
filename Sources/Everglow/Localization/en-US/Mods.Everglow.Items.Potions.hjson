@@ -3,11 +3,6 @@ EnergyDrink: {
 	Tooltip: ""
 }
 
-ShadowPotion: {
-	DisplayName: Shadow Potion
-	Tooltip: ""
-}
-
 GuidePotion: {
 	DisplayName: Guide Potion
 	Tooltip: ""
@@ -15,5 +10,10 @@ GuidePotion: {
 
 RayPotion: {
 	DisplayName: Ray Potion
+	Tooltip: ""
+}
+
+ShadowPotion: {
+	DisplayName: Shadow Potion
 	Tooltip: ""
 }

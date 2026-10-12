@@ -6,6 +6,8 @@ namespace Everglow.MEAC.PlanetBeFall.Projectiles.NonIIIDProj.PlanetBefallArray
 {
 	public class PlanetBefallArray : ModProjectile // ,IBloomProjectile
 	{
+		public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 		public override void SetDefaults()
 		{
 			Projectile.width = 28;

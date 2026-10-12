@@ -32,6 +32,8 @@ internal class BoneRingPipeline : Pipeline
 [Pipeline(typeof(BoneRingPipeline))]
 internal class BoneFeatherMagicArray : VisualProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public float WingPower = 0;
 	public bool OldControlUp = false;
 	public int timer = 0;

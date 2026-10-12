@@ -7,6 +7,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.TwilightForest;
 /// </summary>
 public class MechanismHalberd : ModItem
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeWeapons;
+
 	public override void SetDefaults()
 	{
 		Item.width = 64;

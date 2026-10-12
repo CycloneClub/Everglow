@@ -7,6 +7,8 @@ namespace Everglow.SpellAndSkull.Projectiles.LunarFlare;
 
 public class LunarFlareHit : ModProjectile, IWarpProjectile, IBloomProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override bool CloneNewInstances => false;
 
 	public override bool IsCloneable => false;

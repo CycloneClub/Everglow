@@ -1,54 +1,47 @@
 // Surface biomes
-Forest: Forest
-Snow: Snow Biome
-Desert: Desert
+Cavern: Cavern
 Corruption: The Corruption
 Crimson: The Crimson
-Jungle: Jungle
-Hallow: The Hallow
+Desert: Desert
 Dungeon: Dungeon
-Ocean: Ocean
-Glowshroom: Glowing Mushroom Biome
-
-// Underground biomes
-Underground: Underground
-UndergroundDesert: Underground Desert
-
-// Cavern biomes
-Cavern: Cavern
-UndergroundCrimson: Underground Crimson
-UndergroundCorruption: Underground Corruption
-UndergroundHallow: Underground Hallow
-UndergroundJungle: Underground Jungle
-UndergroundSnow: Ice Biome
-UndergroundGlowshroom: Underground Glowing Mushroom Biome
-
-// Space and Underworld biomes
-Space: Space
-Underworld: The Underworld
-
-// Mini-biomes
-Granite: Granite Cave
-Hive: Bee Hive
-Marble: Marble Cave
-LihzhardTemple: Jungle Temple
-Meteor: Meteorite
-Graveyard: Graveyard
-Shimmer: Aether
-
-// Micro-biomes
+Forest: Forest
 GemCave: Gem Cave
-
 // Candles
-WaterCandle: Water Candle
+Glowshroom: Glowing Mushroom Biome
+// Underground biomes
+Granite: Granite Cave
+Graveyard: Graveyard
+Hallow: The Hallow
+Hive: Bee Hive
+Jungle: Jungle
+LihzhardTemple: Jungle Temple
+Marble: Marble Cave
+Meteor: Meteorite
+Ocean: Ocean
+OldOneArmy: Old One Army
 PeaceCandle: Peace Candle
-ShadowCandle: Shadow Candle
-
-// Weather and event
 Rain: Rain
 Sandstorm: Sandstorm
+ShadowCandle: Shadow Candle
+// Weather and event
+Shimmer: Aether
+// Micro-biomes
+Snow: Snow Biome
+Space: Space
 TowerNebula: Tower Nebula
 TowerSolar: Tower Solar
 TowerStardust: Tower Stardust
 TowerVortex: Tower Vortex
-OldOneArmy: Old One Army
+Underground: Underground
+UndergroundCorruption: Underground Corruption
+UndergroundCrimson: Underground Crimson
+UndergroundDesert: Underground Desert
+// Cavern biomes
+UndergroundGlowshroom: Underground Glowing Mushroom Biome
+// Space and Underworld biomes
+UndergroundHallow: Underground Hallow
+UndergroundJungle: Underground Jungle
+UndergroundSnow: Ice Biome
+Underworld: The Underworld
+// Mini-biomes
+WaterCandle: Water Candle

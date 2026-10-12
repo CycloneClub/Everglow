@@ -7,6 +7,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Melee;
 /// </summary>
 public class MechanismHalberd_Proj : MeleeProj
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	public override void SetDef()
 	{
 		maxAttackType = 2; // 三段攻击

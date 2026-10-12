@@ -2,6 +2,8 @@ namespace Everglow.Myth.Misc.FixCoins;
 
 public abstract class FixCoinItem : ModItem
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Miscs;
+
 	/// <summary>
 	/// 品阶,白色1绿色2蓝色3紫色4黄色5别的自己定
 	/// </summary>

@@ -6,6 +6,8 @@ namespace Everglow.Myth.LanternMoon.Projectiles.LanternKing;
 
 public class DarkLanternBombExplosion : ModProjectile, IWarpProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.EnemyProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 100;

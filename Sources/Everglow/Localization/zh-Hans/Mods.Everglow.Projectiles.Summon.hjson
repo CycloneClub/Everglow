@@ -1,99 +1,61 @@
-ActivatedJellyGlandBeam: {
-	DisplayName: Activated Jelly Gland Beam
-}
-
-ActivatedJellyGlandExplosion: {
-	DisplayName: Activated Jelly Gland Explosion
-}
-
-ActivatedJellyGlandMinion: {
-	DisplayName: Activated Jelly Gland Minion
-}
-
-AuburnBellMinion: {
-	DisplayName: Auburn Bell Minion
-}
-
-DeadBeetleEgg_beetle: {
-	DisplayName: Dead Beetle Egg_beetle
-}
-
-DeadBeetleEgg_beetle_proj: {
-	DisplayName: Dead Beetle Egg_beetle_proj
-}
-
-DeadBeetleEgg_egg: {
-	DisplayName: Dead Beetle Egg_egg
-}
-
-EvilMusicRemnant_Explosion: {
-	DisplayName: Evil Music Remnant_ Explosion
-}
-
-EvilMusicRemnant_Minion: {
-	DisplayName: Evil Music Remnant_ Minion
-}
-
-EvilMusicRemnant_Minion_Flame: {
-	DisplayName: Evil Music Remnant_ Minion_ Flame
-}
-
-EvilMusicRemnant_Note_Mark: {
-	DisplayName: Evil Music Remnant_ Note_ Mark
-}
-
-EvilMusicRemnant_Projectile: {
-	DisplayName: Evil Music Remnant_ Projectile
-}
-
-Thermoprobe: {
-	DisplayName: Thermoprobe
-}
-
-Thermoprobe_Fireball: {
-	DisplayName: Thermoprobe_ Fireball
-}
-
-WiltedForestLamp_Proj: {
-	DisplayName: Wilted Forest Lamp_ Proj
-}
-
-FaeCharmRing: {
-	DisplayName: Fae Charm Ring
-}
-
-Faelanternbranch: {
-	DisplayName: Faelanternbranch
-}
-
-FaelanternProj: {
-	DisplayName: Faelantern Proj
-}
-
-DevilHeartGyroscope_Proj_Hit: {
-	DisplayName: Devil Heart Gyroscope_ Proj_ Hit
-}
-
-WitherbarkMinion: {
-	DisplayName: Witherbark Minion
-}
-
-WitherbarkMinion_Leaf: {
-	DisplayName: Witherbark Minion_ Leaf
-}
-
-WoodlandWraithStaff_FungiBall: {
-	DisplayName: Woodland Wraith Staff_ Fungi Ball
-}
-
-WoodlandWraithStaff_SetAnimation: {
-	DisplayName: Woodland Wraith Staff_ Set Animation
-}
-
-WoodlandWraithStaff_SporeZone: {
-	DisplayName: Woodland Wraith Staff_ Spore Zone
-}
-
-LichenTentacle_proj: {
-	DisplayName: Lichen Tentacle_proj
-}
+ActivatedJellyGlandBeam.DisplayName: Activated Jelly Gland Beam
+ActivatedJellyGlandExplosion.DisplayName: Activated Jelly Gland Explosion
+ActivatedJellyGlandMinion.DisplayName: Activated Jelly Gland Minion
+AuburnBellMinion.DisplayName: Auburn Bell Minion
+BlackCorruptRain3Friendly.DisplayName: Black Corrupt Rain3 Friendly
+BlackCorruptRainFriendly.DisplayName: Black Corrupt Rain Friendly
+CrimsonMoonAlgaeSummonStaff_minion_Explosion.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.RedAlgaeMinionStaff.DisplayName}"
+CrimsonMoonAlgaeSummonStaff_minion_spore.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.RedAlgaeMinionStaff.DisplayName}"
+CrimsonMoonAlgaeSummonStaff_minion.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.RedAlgaeMinionStaff.DisplayName}"
+DarkFanFly.DisplayName: Dark Fan Fly
+DeadBeetleEgg_beetle_proj.DisplayName: Dead Beetle Egg_beetle_proj
+DeadBeetleEgg_beetle.DisplayName: Dead Beetle Egg_beetle
+DeadBeetleEgg_egg.DisplayName: Dead Beetle Egg_egg
+DevilHeartGyroscope_Proj_Hit.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.DevilHeartGyroscope.DisplayName}"
+DevilHeartGyroscope_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.DevilHeartGyroscope.DisplayName}"
+DreamWeaverArray.DisplayName: Dream Weaver Array
+EvilChrysalis.DisplayName: Evil Chrysalis
+EvilChrysalisRightClick.DisplayName: Evil Chrysalis Right Click
+EvilMusicRemnant_Explosion.DisplayName: Evil Music Remnant_ Explosion
+EvilMusicRemnant_Minion_Flame.DisplayName: Evil Music Remnant_ Minion_ Flame
+EvilMusicRemnant_Minion.DisplayName: Evil Music Remnant_ Minion
+EvilMusicRemnant_Note_Mark.DisplayName: Evil Music Remnant_ Note_ Mark
+EvilMusicRemnant_Projectile.DisplayName: Evil Music Remnant_ Projectile
+Fae.DisplayName: Fae
+FaeCharmRing.DisplayName: Fae Charm Ring
+Faelanternbranch.DisplayName: Faelanternbranch
+FaelanternProj.DisplayName: Faelantern Proj
+GlowingButterfly.DisplayName: Glowing Butterfly
+GlowMoth.DisplayName: Glow Moth
+GoldenLotusStaff_proj.DisplayName: Golden Lotus Staff_proj
+GoldenLotusStaff_subproj.DisplayName: Golden Lotus Staff_subproj
+GreenVineWhip_proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.GreenVineWhip.DisplayName}"
+GrilledSquidTentacle_proj.DisplayName: Grilled Squid Tentacle_proj
+Legume_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.LegumeGyroscope.DisplayName}"
+LegumeGyroscope_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.LegumeGyroscope.DisplayName}"
+LichenTentacle_proj.DisplayName: Lichen Tentacle_proj
+MeltingSideGyroscope_Proj.DisplayName: Melting Side Gyroscope_ Proj
+MothMagicArray.DisplayName: Moth Magic Array
+PhantomMoth.DisplayName: Phantom Moth
+PineSprite.DisplayName: Pine Sprite
+RedAlgaeMagicWhip_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.RedAlgaeMagicWhip.DisplayName}"
+RedAlgaeMinionGyroscope_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.RedAlgaeMinionGyroscope.DisplayName}"
+RestrictionDroneRE01.DisplayName: Restriction DroneRE01
+RestrictionDroneRE01Laser.DisplayName: Restriction DroneRE01 Laser
+Thermoprobe_Fireball.DisplayName: Thermoprobe_ Fireball
+Thermoprobe.DisplayName: Thermoprobe
+TuskSummon.DisplayName: Tusk Summon
+WiltedForestLamp_Proj_shoot.DisplayName: Wilted Forest Lamp_ Proj_shoot
+WiltedForestLamp_Proj.DisplayName: Wilted Forest Lamp_ Proj
+Wither_Activated_Dog_Summon_background.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.ActivatedDogStaff.DisplayName}"
+Wither_Activated_Dog_Summon.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.ActivatedDogStaff.DisplayName}"
+Wither_Activated_Dog.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.ActivatedDogStaff.DisplayName}"
+WitherbarkMinion_Leaf.DisplayName: Witherbark Minion_ Leaf
+WitherbarkMinion.DisplayName: Witherbark Minion
+WoodlandWraithStaff_BloodStream.DisplayName: 森宇幽魂血流
+WoodlandWraithStaff_FungiBall.DisplayName: 森宇幽魂
+WoodlandWraithStaff_SetAnimation.DisplayName: 归墟之力
+WoodlandWraithStaff_SporeBeam.DisplayName: 森宇幽魂孢子
+WoodlandWraithStaff_SporeZone.DisplayName: 孢子领域
+XmasWhip.DisplayName: Xmas Whip
+YggdrasilStoneGyroscope_Proj.DisplayName: Yggdrasil Stone Gyroscope_ Proj

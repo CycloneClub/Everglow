@@ -7,6 +7,8 @@ namespace Everglow.Commons.DeveloperContent.Items;
 /// </summary>
 public class TileToolBox : ModItem
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Tools;
+
 	public TileToolBoxInterface Visual { get; private set; } = null;
 
 	public override void SetDefaults()

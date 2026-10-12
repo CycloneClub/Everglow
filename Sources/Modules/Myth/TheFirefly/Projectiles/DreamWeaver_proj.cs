@@ -7,6 +7,8 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 
 public class DreamWeaver_proj : ModProjectile, IWarpProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
 	public override void SetDefaults()
 	{
 		Projectile.width = 10;

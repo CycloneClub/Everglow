@@ -7,6 +7,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Melee;
 /// </summary>
 public class MechanismSpike : ModProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+
 	private int collideCount = 8;
 	private float _rotationSpeed;
 	private bool _initialized;

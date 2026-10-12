@@ -7,6 +7,8 @@ namespace Everglow.Myth.LanternMoon.Projectiles.LanternKing;
 
 public class LanternGhostKingPower : TrailingProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
+
 	public override string Texture => Commons.ModAsset.Empty_Mod;
 
 	public bool ReachedTarget = false;

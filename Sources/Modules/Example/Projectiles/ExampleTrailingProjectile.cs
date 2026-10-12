@@ -5,6 +5,8 @@ namespace Everglow.Example.Projectiles;
 
 public class ExampleTrailingProjectile : TrailingProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MiscsProjectiles;
+
 	public override void SetCustomDefaults()
 	{
 		TrailTexture = Commons.ModAsset.Trail_8.Value;
