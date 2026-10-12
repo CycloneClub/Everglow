@@ -17,6 +17,8 @@ public class ArmoredShrimpTests
 	{
 		Assert.AreEqual(typeof(ModNPC), typeof(ArmoredShrimp).GetMethod(nameof(ModNPC.OnSpawn))!.DeclaringType,
 			"Creating one shrimp must not trigger an automatic shoal or source-specific setup.");
+		Assert.AreEqual(typeof(ModNPC), typeof(ArmoredShrimp).GetMethod(nameof(ModNPC.SpawnNPC))!.DeclaringType,
+			"Group creation belongs to the shared spawn manager, not to the NPC.");
 	}
 
 	[DataTestMethod]
