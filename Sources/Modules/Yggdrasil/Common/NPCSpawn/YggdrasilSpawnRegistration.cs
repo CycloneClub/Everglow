@@ -21,10 +21,10 @@ public sealed class YggdrasilSpawnRegistration : ModSystem
 
 		var town = new List<SubworldSpawnRule>();
 		YggdrasilTownSpawnTable.AddRules(town);
-		SubworldSpawnSystem.RegisterRules(WorldId, nameof(YggdrasilTownSpawnTable), town, InTown);
+		SubworldSpawnSystem.RegisterRules(WorldId, nameof(YggdrasilTownSpawnTable), town, InYggdrasilTown);
 	}
 
-	public static bool InTown(Vector2 position) => YggdrasilTownBiome.IsTownLayer(position) && !InTownArea(position);
+	public static bool InYggdrasilTown(Vector2 position) => YggdrasilTownBiome.IsTownLayer(position) && !InTownArea(position);
 
 	public static bool InKelpCurtain(Vector2 position) => YggdrasilWorld.InYggdrasil && !InTownArea(position) &&
 		KelpCurtainBiome.StratumBoundCurve.Count > 0 &&

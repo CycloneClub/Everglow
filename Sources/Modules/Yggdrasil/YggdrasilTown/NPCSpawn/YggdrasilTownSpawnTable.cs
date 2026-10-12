@@ -14,7 +14,7 @@ public static class YggdrasilTownSpawnTable
 		{
 			Type = ModContent.NPCType<BarkSpicyCaterpillar>(),
 			Weight = 8f,
-			Condition = spawnInfo => InTown(spawnInfo) &&
+			Condition = spawnInfo => InYggdrasilTown(spawnInfo) &&
 				SpawnConditions.IsDry(spawnInfo) && SpawnConditions.OnGround(spawnInfo),
 		});
 
@@ -22,7 +22,7 @@ public static class YggdrasilTownSpawnTable
 		{
 			Type = ModContent.NPCType<CarapaceCaterpillar>(),
 			Weight = 8f,
-			Condition = spawnInfo => InTown(spawnInfo) &&
+			Condition = spawnInfo => InYggdrasilTown(spawnInfo) &&
 				SpawnConditions.IsDry(spawnInfo) && SpawnConditions.OnGround(spawnInfo),
 		});
 
@@ -30,7 +30,7 @@ public static class YggdrasilTownSpawnTable
 		{
 			Type = ModContent.NPCType<CrimsonSpell>(),
 			Weight = 0.05f,
-			Condition = spawnInfo => InTown(spawnInfo) &&
+			Condition = spawnInfo => InYggdrasilTown(spawnInfo) &&
 				SpawnConditions.IsDry(spawnInfo) &&
 				!NPC.AnyNPCs(ModContent.NPCType<CrimsonSpell>()),
 		});
@@ -39,7 +39,7 @@ public static class YggdrasilTownSpawnTable
 		{
 			Type = ModContent.NPCType<CyanOreBeetle>(),
 			Weight = 3f,
-			Condition = spawnInfo => InTown(spawnInfo) &&
+			Condition = spawnInfo => InYggdrasilTown(spawnInfo) &&
 				SpawnConditions.IsDry(spawnInfo) && SpawnConditions.OnGround(spawnInfo),
 		});
 
@@ -47,7 +47,7 @@ public static class YggdrasilTownSpawnTable
 		{
 			Type = ModContent.NPCType<DarkGlimmeringRods>(),
 			Weight = 3f,
-			Condition = spawnInfo => InTown(spawnInfo) &&
+			Condition = spawnInfo => InYggdrasilTown(spawnInfo) &&
 				SpawnConditions.IsDry(spawnInfo),
 		});
 
@@ -55,7 +55,7 @@ public static class YggdrasilTownSpawnTable
 		{
 			Type = ModContent.NPCType<GiantJellyBall>(),
 			Weight = 3f,
-			Condition = spawnInfo => InTown(spawnInfo) &&
+			Condition = spawnInfo => InYggdrasilTown(spawnInfo) &&
 				SpawnConditions.IsDry(spawnInfo),
 		});
 
@@ -63,7 +63,7 @@ public static class YggdrasilTownSpawnTable
 		{
 			Type = ModContent.NPCType<JellyBall>(),
 			Weight = 3f,
-			Condition = spawnInfo => InTown(spawnInfo) &&
+			Condition = spawnInfo => InYggdrasilTown(spawnInfo) &&
 				SpawnConditions.IsDry(spawnInfo),
 		});
 
@@ -71,7 +71,7 @@ public static class YggdrasilTownSpawnTable
 		{
 			Type = ModContent.NPCType<LampFruitBorer>(),
 			Weight = 8f,
-			Condition = spawnInfo => InTown(spawnInfo) &&
+			Condition = spawnInfo => InYggdrasilTown(spawnInfo) &&
 				SpawnConditions.IsDry(spawnInfo) && SpawnConditions.OnGround(spawnInfo),
 		});
 
@@ -79,7 +79,7 @@ public static class YggdrasilTownSpawnTable
 		{
 			Type = ModContent.NPCType<LeafcutterAnt>(),
 			Weight = 3f,
-			Condition = spawnInfo => InTown(spawnInfo) &&
+			Condition = spawnInfo => InYggdrasilTown(spawnInfo) &&
 				SpawnConditions.IsDry(spawnInfo) && SpawnConditions.OnGround(spawnInfo),
 		});
 
@@ -87,7 +87,7 @@ public static class YggdrasilTownSpawnTable
 		{
 			Type = ModContent.NPCType<LightBulb>(),
 			Weight = 3f,
-			Condition = spawnInfo => InTown(spawnInfo) &&
+			Condition = spawnInfo => InYggdrasilTown(spawnInfo) &&
 				SpawnConditions.IsDry(spawnInfo) && SpawnConditions.OnGround(spawnInfo),
 		});
 
@@ -95,7 +95,7 @@ public static class YggdrasilTownSpawnTable
 		{
 			Type = ModContent.NPCType<RockElemental>(),
 			Weight = 0.05f,
-			Condition = spawnInfo => InTown(spawnInfo) &&
+			Condition = spawnInfo => InYggdrasilTown(spawnInfo) &&
 				SpawnConditions.IsDry(spawnInfo) &&
 				!NPC.AnyNPCs(ModContent.NPCType<RockElemental>()),
 		});
@@ -104,7 +104,7 @@ public static class YggdrasilTownSpawnTable
 		{
 			Type = ModContent.NPCType<ShadowstrikeCaterpillar>(),
 			Weight = 8f,
-			Condition = spawnInfo => InTown(spawnInfo) &&
+			Condition = spawnInfo => InYggdrasilTown(spawnInfo) &&
 				SpawnConditions.IsDry(spawnInfo) && SpawnConditions.OnGround(spawnInfo),
 		});
 
@@ -112,7 +112,7 @@ public static class YggdrasilTownSpawnTable
 		{
 			Type = ModContent.NPCType<WhisperingGhost>(),
 			Weight = 3f,
-			Condition = spawnInfo => InTown(spawnInfo) &&
+			Condition = spawnInfo => InYggdrasilTown(spawnInfo) &&
 				SpawnConditions.IsDry(spawnInfo),
 		});
 
@@ -131,7 +131,8 @@ public static class YggdrasilTownSpawnTable
 		});
 	}
 
-	private static bool InTown(NPCSpawnInfo info) =>
-		YggdrasilSpawnRegistration.InTown(info.Player.Center) &&
-		YggdrasilSpawnRegistration.InTown(new Vector2(info.SpawnTileX * 16 + 8, info.SpawnTileY * 16)) && SpawnConditions.OutsideHousing(info);
+	private static bool InYggdrasilTown(NPCSpawnInfo info) =>
+		YggdrasilSpawnRegistration.InYggdrasilTown(info.Player.Center)
+		&& YggdrasilSpawnRegistration.InYggdrasilTown(new Vector2(info.SpawnTileX * 16 + 8, info.SpawnTileY * 16))
+		&& SpawnConditions.OutsideHousing(info);
 }
