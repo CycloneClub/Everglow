@@ -1,7 +1,6 @@
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.KelpCurtain.NPCSpawn;
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
-using SubworldLibrary;
 using Terraria.GameContent.ItemDropRules;
 
 namespace Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake;
@@ -270,31 +269,6 @@ public class WaterStrider : ModNPC
 			return Main.maxNPCs;
 		}
 		return NPC.NewNPC(NPC.GetSpawnSourceForNaturalSpawn(), (int)feet.X, (int)feet.Y, Type);
-	}
-
-	/// <summary>
-	/// 只会在水面上刷新, and only ever inside Yggdrasil (BIO-06). <c>ManagedSpawnGlobalNPC.EditSpawnPool</c>
-	/// returns early outside the subworld, so this per-creature gate is the real isolation, and
-	/// <see cref="KelpCurtainBiome.IsKelpCurtainLayer"/> is the server-safe layer predicate because the
-	/// hook runs in single player or on the server only, where the client camera is zero (D-52/D-55).
-	/// The surface test is the design's own 水面上 condition, kept distinct from an ordinary water spawn
-	/// (Pitfall 6).
-	/// </summary>
-	/// <param name="spawnInfo">The engine's spawn context.</param>
-	/// <returns>The conservative water weight, or <c>0f</c> outside the design's context.</returns>
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
-		{
-			return 0f;
-		}
-
-		if (!KelpCurtainSpawnConditions.IsWaterSurface(spawnInfo))
-		{
-			return 0f;
-		}
-
-		return KelpCurtainSpawnConditions.WaterWeight;
 	}
 
 	/// <summary>

@@ -4,7 +4,6 @@ using Everglow.Yggdrasil.KelpCurtain.Items.Accessories;
 using Everglow.Yggdrasil.KelpCurtain.Items.Weapons;
 using Everglow.Yggdrasil.KelpCurtain.Items.Weapons.UnderwaterTreasury;
 using Everglow.Yggdrasil.KelpCurtain.Projectiles.Enemies;
-using SubworldLibrary;
 using Terraria.GameContent.ItemDropRules;
 
 namespace Everglow.Yggdrasil.KelpCurtain.NPCs;
@@ -639,37 +638,6 @@ public class GiantDandelion : ModNPC
 				}
 			}
 		}
-	}
-
-	/// <summary>
-	/// Subworld-only spawning (BIO-06). <c>ManagedSpawnGlobalNPC.EditSpawnPool</c> returns early outside
-	/// Yggdrasil, so the per-creature gate is the real isolation, and
-	/// <see cref="KelpCurtainBiome.IsKelpCurtainLayer"/> is the server-safe layer predicate because
-	/// this hook runs in single player or on the server only, where the client camera is zero.
-	/// This creature is a land walker, so submerged spawn tiles and water spawns are rejected. The
-	/// design calls it 稀有 and supplies no weight, so a deliberately low 0.25f (band 0.1f-0.5f,
-	/// lower than every other tranche creature) is used (D-34).
-	/// </summary>
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
-		{
-			return 0f;
-		}
-
-		if (spawnInfo.Water)
-		{
-			return 0f;
-		}
-
-		int tileX = spawnInfo.SpawnTileX;
-		int tileY = spawnInfo.SpawnTileY;
-		if (WorldGen.InWorld(tileX, tileY, 1) && Main.tile[tileX, tileY].LiquidAmount > 0)
-		{
-			return 0f;
-		}
-
-		return 0.25f;
 	}
 
 	/// <summary>

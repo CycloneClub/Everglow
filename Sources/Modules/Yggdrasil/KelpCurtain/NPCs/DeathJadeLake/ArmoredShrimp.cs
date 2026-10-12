@@ -1,6 +1,5 @@
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
-using SubworldLibrary;
 using Terraria.GameContent.ItemDropRules;
 
 namespace Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake;
@@ -279,30 +278,5 @@ public class ArmoredShrimp : ModNPC
 		int dust = Dust.NewDust(NPC.Center, 0, 0, ModContent.DustType<KelpWaterDrop>(), 0f, 0f);
 		Main.dust[dust].noGravity = true;
 		Main.dust[dust].scale = Main.rand.NextFloat(0.6f, 1f);
-	}
-
-	/// <summary>
-	/// Natural spawning creates one shrimp; group size is the responsibility of the spawning caller.
-	/// Spawning is restricted to Yggdrasil (BIO-06). <c>ManagedSpawnGlobalNPC.EditSpawnPool</c>
-	/// returns early outside the subworld, so this per-creature gate is the real isolation, and
-	/// <see cref="KelpCurtainBiome.IsKelpCurtainLayer"/> is the server-safe layer predicate because the
-	/// hook runs in single player or on the server only, where the client camera is zero (D-52/D-55).
-	/// The water test is the design's own 在水里 condition (Pitfall 6).
-	/// </summary>
-	/// <param name="spawnInfo">The engine's spawn context.</param>
-	/// <returns>The conservative water weight, or <c>0f</c> outside the design's context.</returns>
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
-		{
-			return 0f;
-		}
-
-		if (!spawnInfo.Water)
-		{
-			return 0f;
-		}
-
-		return KelpCurtainSpawnConditions.WaterWeight;
 	}
 }

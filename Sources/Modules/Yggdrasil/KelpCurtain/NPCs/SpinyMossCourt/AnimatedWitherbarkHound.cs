@@ -1,7 +1,6 @@
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
 using Everglow.Yggdrasil.KelpCurtain.Items.Weapons;
-using SubworldLibrary;
 using Terraria.GameContent.ItemDropRules;
 
 namespace Everglow.Yggdrasil.KelpCurtain.NPCs.SpinyMossCourt;
@@ -438,32 +437,6 @@ public class AnimatedWitherbarkHound : ModNPC
 		State = AnimatedWitherbarkHoundState.Patrolling;
 		StateTimer = 0;
 		NPC.netUpdate = true;
-	}
-
-	/// <summary>
-	/// The courtyard unit's land spawn gate. The design gives no per-variant weight and makes the 近战 variant the
-	/// most common one, so this variant returns the phase's conservative land weight. Only ever inside Yggdrasil
-	/// and inside the Kelp Curtain layer (BIO-06): <c>ManagedSpawnGlobalNPC.EditSpawnPool</c> returns early outside the
-	/// subworld, so this per-creature gate is the real isolation, and
-	/// <see cref="KelpCurtainBiome.IsKelpCurtainLayer"/> is the server-safe layer predicate because the hook runs
-	/// in single player or on the server only, where the client camera is zero (D-52/D-55). The design's 刺苔庭园
-	/// is an above-water courtyard, so the land condition is its own 地表 reading (Pitfall 6).
-	/// </summary>
-	/// <param name="spawnInfo">The engine's spawn context.</param>
-	/// <returns>The conservative land weight, or <c>0f</c> outside the design's context.</returns>
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
-		{
-			return 0f;
-		}
-
-		if (!KelpCurtainSpawnConditions.IsDryLand(spawnInfo))
-		{
-			return 0f;
-		}
-
-		return KelpCurtainSpawnConditions.LandWeight;
 	}
 
 	/// <summary>

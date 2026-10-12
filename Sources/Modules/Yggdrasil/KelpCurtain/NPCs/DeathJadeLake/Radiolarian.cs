@@ -2,7 +2,6 @@ using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
 using Everglow.Yggdrasil.KelpCurtain.Items.Accessories;
 using Everglow.Yggdrasil.KelpCurtain.Projectiles.Enemies;
-using SubworldLibrary;
 using Terraria.GameContent.ItemDropRules;
 
 namespace Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake;
@@ -75,12 +74,6 @@ public class Radiolarian : ModNPC
 
 	/// <summary>Out of water the creature sinks back into the lake (D-54 default).</summary>
 	private const float SinkSpeed = 2.4f;
-
-	/// <summary>
-	/// The bounded window, in tiles, of the shallow-water probe: the liquid column above the spawn tile
-	/// must reach its dry surface inside this many tiles for the spawn to count as 浅水区.
-	/// </summary>
-	private const int MaxShallowScanTiles = 16;
 
 	/// <summary>
 	/// The four states of the design's behaviour (D-31): the drifting range-keeping swim, the sustained
@@ -471,63 +464,6 @@ public class Radiolarian : ModNPC
 		}
 
 		return Main.tile[tileX, tileY].LiquidAmount > 0;
-	}
-
-	/// <summary>
-	/// 在浅水区生成: the shallow test derives the surface the way <c>KelpCurtainSpawnConditions</c> does
-	/// (a dry tile inside a bounded upward probe), because <see cref="NPCSpawnInfo"/> exposes no depth
-	/// flag. The probe is bounded, so the world surface above an ocean is never mistaken for a lake bed.
-	/// </summary>
-	/// <param name="spawnInfo">The engine's spawn context; only its player-independent fields are read.</param>
-	/// <returns>True when the liquid column above the spawn tile ends inside the probe window.</returns>
-	private static bool IsShallowWater(NPCSpawnInfo spawnInfo)
-	{
-		int tileX = spawnInfo.SpawnTileX;
-		for (int offset = 1; offset <= MaxShallowScanTiles; offset++)
-		{
-			int tileY = spawnInfo.SpawnTileY - offset;
-			if (!WorldGen.InWorld(tileX, tileY, 1))
-			{
-				return false;
-			}
-
-			if (Main.tile[tileX, tileY].LiquidAmount <= 0)
-			{
-				// The liquid column reaches its surface inside the probe: this is a shallow-water spawn.
-				return true;
-			}
-		}
-
-		return false;
-	}
-
-	/// <summary>
-	/// 在浅水区生成权重最低, and only ever inside Yggdrasil (BIO-06). <c>ManagedSpawnGlobalNPC.EditSpawnPool</c>
-	/// returns early outside the subworld, so this per-creature gate is the real isolation, and
-	/// <see cref="KelpCurtainBiome.IsKelpCurtainLayer"/> is the server-safe layer predicate because the
-	/// hook runs in single player or on the server only, where the client camera is zero (D-52/D-55).
-	/// <para>
-	/// Region blocker (D-52/D-53): the design also places this row inside 亡碧湖's own sub-region, and the
-	/// region-level sub-biome / tile predicate for it does not exist yet (Phase 5-6 terrain work). It is
-	/// deliberately NOT approximated with a coordinate range: the shallow-water band is the part of the
-	/// habitat this phase can express, and the region gap is recorded in 04-DEVIATIONS.md section 5.
-	/// </para>
-	/// </summary>
-	/// <param name="spawnInfo">The engine's spawn context.</param>
-	/// <returns>The lowest aquatic weight of the phase, or <c>0f</c> outside the design's context.</returns>
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
-		{
-			return 0f;
-		}
-
-		if (!spawnInfo.Water || !IsShallowWater(spawnInfo))
-		{
-			return 0f;
-		}
-
-		return KelpCurtainSpawnConditions.RareWaterBottomWeight;
 	}
 
 	/// <summary>

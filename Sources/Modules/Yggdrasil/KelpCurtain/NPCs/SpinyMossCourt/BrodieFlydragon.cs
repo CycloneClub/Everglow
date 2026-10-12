@@ -1,6 +1,5 @@
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
-using SubworldLibrary;
 
 namespace Everglow.Yggdrasil.KelpCurtain.NPCs.SpinyMossCourt;
 
@@ -23,10 +22,9 @@ namespace Everglow.Yggdrasil.KelpCurtain.NPCs.SpinyMossCourt;
 /// </para>
 /// <para>
 /// D-46 BLOCKER - the 森雨幽谷 Valley egg system does not exist: there is no egg NPC and no egg-breaking spawn path,
-/// so this plan creates neither and neither class relies on one. The small variant above is spawned by this class's
-/// own separate natural weight instead - a recorded deferral, never an approximation. The design's split of its
-/// habitat between 刺苔庭园 and 森雨幽谷 is the separately recorded Phase 5-6 region gap (D-52/D-53): no coordinate
-/// range or other region stand-in is written into <see cref="SpawnChance"/> (04-DEVIATIONS.md sections 5, 7, 13).
+/// so this plan creates neither and neither class relies on one. Natural spawn weights for both variants are
+/// declared in <c>KelpCurtainSpawnTable</c>. The habitat split between 刺苔庭园 and 森雨幽谷 remains a
+/// Phase 5-6 region gap (D-52/D-53, 04-DEVIATIONS.md sections 5, 7, 13).
 /// </para>
 /// <para>
 /// Approved artwork is missing from the repository, so the class requests the shared
@@ -372,34 +370,6 @@ public class BrodieFlydragon : ModNPC
 		HoverTimer = 0;
 		PursueTimer = 0;
 		NPC.netUpdate = true;
-	}
-
-	/// <summary>
-	/// 自然刷新只会刷新标准大小的蝇蜓: this standard class carries the higher of the two flydragon weights, so the
-	/// design's natural spawns are standard-sized. The small variant is reachable through its own lower conservative
-	/// weight instead, because the 森雨幽谷 egg route the design names is an unimplemented D-46 system. Only ever
-	/// inside Yggdrasil and inside the Kelp Curtain layer (BIO-06): <c>ManagedSpawnGlobalNPC.EditSpawnPool</c> returns early
-	/// outside the subworld, so this per-creature gate is the real isolation, and
-	/// <see cref="KelpCurtainBiome.IsKelpCurtainLayer"/> is the server-safe layer predicate because the hook runs in
-	/// single player or on the server only, where the client camera is zero (D-52/D-55). The design's
-	/// 刺苔庭园 / 森雨幽谷 split is a Phase 5-6 region blocker and is never approximated with a coordinate range
-	/// (D-53).
-	/// </summary>
-	/// <param name="spawnInfo">The engine's spawn context.</param>
-	/// <returns>The conservative land weight, or <c>0f</c> outside the design's context.</returns>
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
-		{
-			return 0f;
-		}
-
-		if (!KelpCurtainSpawnConditions.IsDryLand(spawnInfo))
-		{
-			return 0f;
-		}
-
-		return KelpCurtainSpawnConditions.LandWeight;
 	}
 
 	/// <summary>

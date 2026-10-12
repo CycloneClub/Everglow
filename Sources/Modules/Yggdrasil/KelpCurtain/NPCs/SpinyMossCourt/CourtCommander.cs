@@ -1,6 +1,5 @@
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
-using SubworldLibrary;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.KelpCurtain.NPCs.SpinyMossCourt;
@@ -37,12 +36,6 @@ namespace Everglow.Yggdrasil.KelpCurtain.NPCs.SpinyMossCourt;
 /// </summary>
 public class CourtCommander : ModNPC
 {
-	/// <summary>
-	/// 生成权重较低: the low land weight, below the D-54 land band because the design makes the commander rarer than
-	/// the courtyard's soldier units (04-DEVIATIONS.md section 10).
-	/// </summary>
-	private const float CommanderWeight = 0.5f;
-
 	/// <summary>漫无目的地游荡: the slow patrol pace used while the commander has no aggro (D-54 default).</summary>
 	private const float WanderSpeed = 1f;
 
@@ -520,31 +513,6 @@ public class CourtCommander : ModNPC
 		RallyTimer = 0;
 		DistanceTimer = 0;
 		NPC.netUpdate = true;
-	}
-
-	/// <summary>
-	/// 生成权重较低: the commander's low land weight inside the layer. Only ever inside Yggdrasil and inside the Kelp
-	/// Curtain layer (BIO-06): <c>ManagedSpawnGlobalNPC.EditSpawnPool</c> returns early outside the subworld, so this
-	/// per-creature gate is the real isolation, and <see cref="KelpCurtainBiome.IsKelpCurtainLayer"/> is the
-	/// server-safe layer predicate because the hook runs in single player or on the server only, where the client
-	/// camera is zero (D-52/D-55). The design's 刺苔庭园 is an above-water courtyard, so the land condition is its
-	/// own 地表 reading (Pitfall 6).
-	/// </summary>
-	/// <param name="spawnInfo">The engine's spawn context.</param>
-	/// <returns>The low land weight, or <c>0f</c> outside the design's context.</returns>
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
-		{
-			return 0f;
-		}
-
-		if (!KelpCurtainSpawnConditions.IsDryLand(spawnInfo))
-		{
-			return 0f;
-		}
-
-		return CommanderWeight;
 	}
 
 	/// <summary>

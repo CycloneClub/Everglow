@@ -1,6 +1,5 @@
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
-using SubworldLibrary;
 using Terraria.DataStructures;
 using Terraria.GameContent.ItemDropRules;
 
@@ -273,36 +272,6 @@ public class SmallGuppyConch : ModNPC
 				}
 			}
 		}
-	}
-
-	/// <summary>
-	/// Subworld-only spawning (BIO-06). <c>ManagedSpawnGlobalNPC.EditSpawnPool</c> returns early outside
-	/// Yggdrasil, so this per-creature gate is the real isolation, and
-	/// <see cref="KelpCurtainBiome.IsKelpCurtainLayer"/> is the server-safe layer predicate because the
-	/// hook runs in single player or on the server only, where the client camera is zero (D-52/D-55).
-	/// <para>
-	/// The creature is a land crawler, so the water spawn flag is rejected explicitly exactly as 格普螺
-	/// rejects it, and the shared dry-land predicate (which folds in the same rejection plus the
-	/// liquid-tile test) is the second gate. The design supplies no weight, so the conservative D-54 land
-	/// band value is used. The 森雨幽谷 region refinement is a Phases 5-6 predicate gap
-	/// (04-DEVIATIONS.md section 5).
-	/// </para>
-	/// </summary>
-	/// <param name="spawnInfo">The engine's spawn context.</param>
-	/// <returns>The conservative land weight, or <c>0f</c> outside the design's context.</returns>
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
-		{
-			return 0f;
-		}
-
-		if (spawnInfo.Water || !KelpCurtainSpawnConditions.IsDryLand(spawnInfo))
-		{
-			return 0f;
-		}
-
-		return KelpCurtainSpawnConditions.LandWeight;
 	}
 
 	/// <summary>

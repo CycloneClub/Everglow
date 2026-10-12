@@ -1,7 +1,6 @@
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
 using Everglow.Yggdrasil.KelpCurtain.Items.Accessories;
-using SubworldLibrary;
 using Terraria.DataStructures;
 using Terraria.GameContent.ItemDropRules;
 
@@ -164,23 +163,6 @@ public class MossyThornTurtle : ModNPC
 				}
 			}
 		}
-	}
-
-	/// <summary>
-	/// Subworld-only spawning (BIO-06). <c>ManagedSpawnGlobalNPC.EditSpawnPool</c> returns early outside
-	/// Yggdrasil, so the per-creature gate is the real isolation, and
-	/// <see cref="KelpCurtainBiome.IsKelpCurtainLayer"/> is the server-safe layer predicate because
-	/// this hook runs in single player or on the server only, where the client camera is zero.
-	/// The design supplies no weight, so a conservative value in the 1f-3f band is used (D-34).
-	/// </summary>
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
-		{
-			return 0f;
-		}
-
-		return 1.5f;
 	}
 
 	/// <summary>

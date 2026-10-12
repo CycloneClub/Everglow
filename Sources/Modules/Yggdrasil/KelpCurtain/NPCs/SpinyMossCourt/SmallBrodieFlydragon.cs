@@ -1,6 +1,5 @@
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
-using SubworldLibrary;
 
 namespace Everglow.Yggdrasil.KelpCurtain.NPCs.SpinyMossCourt;
 
@@ -59,13 +58,6 @@ public class SmallBrodieFlydragon : ModNPC
 
 	/// <summary>The vertical bob amplitude of the hover, in pixels per tick (D-54 default).</summary>
 	private const float HoverBobSpeed = 0.5f;
-
-	/// <summary>
-	/// 小型的飞行敌怪: the small variant's own lower natural spawn weight. It exists so the design's creature is
-	/// present in the layer while the 森雨幽谷 egg route stays an unimplemented D-46 system (04-DEVIATIONS.md
-	/// section 10).
-	/// </summary>
-	private const float SmallFlydragonWeight = 0.5f;
 
 	/// <summary>
 	/// The three states of the design's flying melee creature: the open-air hover, 主动靠近玩家 and the 近战攻击 press.
@@ -374,33 +366,6 @@ public class SmallBrodieFlydragon : ModNPC
 		HoverTimer = 0;
 		PursueTimer = 0;
 		NPC.netUpdate = true;
-	}
-
-	/// <summary>
-	/// The small variant's own lower conservative land weight. The design's route to this creature is
-	/// 在森雨幽谷打破卵, and that 森雨幽谷 egg system is an unimplemented D-46 blocker, so the small variant carries a
-	/// natural weight below the standard class's instead of an approximated egg path - which also preserves
-	/// 自然刷新只会刷新标准大小的蝇蜓. Only ever inside Yggdrasil and inside the Kelp Curtain layer (BIO-06):
-	/// <c>ManagedSpawnGlobalNPC.EditSpawnPool</c> returns early outside the subworld, so this per-creature gate is the real
-	/// isolation, and <see cref="KelpCurtainBiome.IsKelpCurtainLayer"/> is the server-safe layer predicate because the
-	/// hook runs in single player or on the server only, where the client camera is zero (D-52/D-55). The design's
-	/// 刺苔庭园 / 森雨幽谷 split is a Phase 5-6 region blocker and is never approximated with a coordinate range (D-53).
-	/// </summary>
-	/// <param name="spawnInfo">The engine's spawn context.</param>
-	/// <returns>The lower conservative land weight, or <c>0f</c> outside the design's context.</returns>
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
-		{
-			return 0f;
-		}
-
-		if (!KelpCurtainSpawnConditions.IsDryLand(spawnInfo))
-		{
-			return 0f;
-		}
-
-		return SmallFlydragonWeight;
 	}
 
 	/// <summary>

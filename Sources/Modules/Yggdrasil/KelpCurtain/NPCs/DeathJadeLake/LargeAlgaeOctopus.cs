@@ -1,7 +1,6 @@
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
 using Everglow.Yggdrasil.KelpCurtain.Projectiles.Enemies;
-using SubworldLibrary;
 using Terraria.GameContent.ItemDropRules;
 
 namespace Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake;
@@ -325,36 +324,6 @@ public class LargeAlgaeOctopus : ModNPC
 			Main.dust[dust].noGravity = true;
 			Main.dust[dust].scale = Main.rand.NextFloat(0.9f, 1.5f);
 		}
-	}
-
-	/// <summary>
-	/// 只有在水底才会刷新，权重是全部水生生物最低, and only ever inside Yggdrasil (BIO-06).
-	/// <c>ManagedSpawnGlobalNPC.EditSpawnPool</c> returns early outside the subworld, so this per-creature gate
-	/// is the real isolation, and <see cref="KelpCurtainBiome.IsKelpCurtainLayer"/> is the server-safe
-	/// layer predicate because the hook runs in single player or on the server only, where the client
-	/// camera is zero (D-52/D-55).
-	/// <para>
-	/// The water-bottom test is the design's own 只有在水底 condition, kept distinct from an ordinary water
-	/// spawn (Pitfall 6, the 碧灵鮟鱇 precedent). A region-level 亡碧湖 sub-biome predicate does not exist
-	/// yet (Phase 5-6 terrain work) and is deliberately NOT approximated with a coordinate range; the gap
-	/// is recorded in 04-DEVIATIONS.md section 5 (D-52/D-53).
-	/// </para>
-	/// </summary>
-	/// <param name="spawnInfo">The engine's spawn context.</param>
-	/// <returns>The lowest aquatic weight of the phase, or <c>0f</c> outside the design's context.</returns>
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
-		{
-			return 0f;
-		}
-
-		if (!spawnInfo.Water || !KelpCurtainSpawnConditions.IsWaterBottom(spawnInfo))
-		{
-			return 0f;
-		}
-
-		return KelpCurtainSpawnConditions.RareWaterBottomWeight;
 	}
 
 	/// <summary>

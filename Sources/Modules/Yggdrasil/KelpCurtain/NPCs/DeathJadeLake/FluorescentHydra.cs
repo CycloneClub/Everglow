@@ -1,5 +1,4 @@
 using Everglow.Yggdrasil.Common;
-using SubworldLibrary;
 
 namespace Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake;
 
@@ -70,26 +69,5 @@ public class FluorescentHydra : ModNPC
 		NPC.catchItem = 0;
 
 		SpawnModBiomes = [ModContent.GetInstance<KelpCurtainBiome>().Type];
-	}
-
-	/// <summary>
-	/// 荧光水螅 spawns only inside Yggdrasil's Kelp Curtain layer (BIO-06).
-	/// <c>ManagedSpawnGlobalNPC.EditSpawnPool</c> returns early outside the subworld, so this per-creature gate
-	/// is the real isolation, and <see cref="KelpCurtainBiome.IsKelpCurtainLayer"/> is the server-safe
-	/// layer predicate because the hook runs in single player or on the server only, where the client
-	/// camera is zero (D-52/D-55).
-	/// The design says nothing about land or water for this row, so the shell returns the neutral water
-	/// weight band and invents no positional condition (D-45/D-54).
-	/// </summary>
-	/// <param name="spawnInfo">The engine's spawn context.</param>
-	/// <returns>The conservative water weight, or <c>0f</c> outside the design's context.</returns>
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
-		{
-			return 0f;
-		}
-
-		return KelpCurtainSpawnConditions.WaterWeight;
 	}
 }

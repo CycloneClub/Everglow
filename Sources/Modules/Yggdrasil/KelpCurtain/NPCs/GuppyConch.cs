@@ -1,7 +1,6 @@
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
 using Everglow.Yggdrasil.KelpCurtain.Items.Accessories;
-using SubworldLibrary;
 using Terraria.GameContent.ItemDropRules;
 
 namespace Everglow.Yggdrasil.KelpCurtain.NPCs;
@@ -235,36 +234,6 @@ public class GuppyConch : ModNPC
 		{
 			EnterShell();
 		}
-	}
-
-	/// <summary>
-	/// Subworld-only spawning (BIO-06). <c>ManagedSpawnGlobalNPC.EditSpawnPool</c> returns early outside
-	/// Yggdrasil, so the per-creature gate is the real isolation, and
-	/// <see cref="KelpCurtainBiome.IsKelpCurtainLayer"/> is the server-safe layer predicate because
-	/// this hook runs in single player or on the server only, where the client camera is zero. This
-	/// creature is a land crawler, so submerged spawn tiles and water spawns are rejected. The
-	/// design supplies no weight, so a conservative 0.75f is used (band 0.5f-2f, D-34).
-	/// </summary>
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
-		{
-			return 0f;
-		}
-
-		if (spawnInfo.Water)
-		{
-			return 0f;
-		}
-
-		int tileX = spawnInfo.SpawnTileX;
-		int tileY = spawnInfo.SpawnTileY;
-		if (WorldGen.InWorld(tileX, tileY, 1) && Main.tile[tileX, tileY].LiquidAmount > 0)
-		{
-			return 0f;
-		}
-
-		return 0.75f;
 	}
 
 	/// <summary>
