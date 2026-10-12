@@ -1,4 +1,5 @@
 using Everglow.Yggdrasil.Common;
+using Everglow.Yggdrasil.KelpCurtain.NPCSpawn;
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
 using SubworldLibrary;
 using Terraria.GameContent.ItemDropRules;
@@ -257,8 +258,22 @@ public class WaterStrider : ModNPC
 	{
 	}
 
+	/// <summary>仅自然生成时沿原生落地候选所在水柱移到水面，不影响召唤或 AI 创建。</summary>
+	public override int SpawnNPC(int tileX, int tileY)
+	{
+		if (!YggdrasilWorld.InYggdrasil)
+		{
+			return base.SpawnNPC(tileX, tileY);
+		}
+		if (!NPCSpawn.KelpCurtainSpawnConditions.TryFindWaterSurface(tileX, tileY, NPC.width, NPC.height, out Vector2 feet))
+		{
+			return Main.maxNPCs;
+		}
+		return NPC.NewNPC(NPC.GetSpawnSourceForNaturalSpawn(), (int)feet.X, (int)feet.Y, Type);
+	}
+
 	/// <summary>
-	/// 只会在水面上刷新, and only ever inside Yggdrasil (BIO-06). <c>NPCSpawnManager.EditSpawnPool</c>
+	/// 只会在水面上刷新, and only ever inside Yggdrasil (BIO-06). <c>ManagedSpawnGlobalNPC.EditSpawnPool</c>
 	/// returns early outside the subworld, so this per-creature gate is the real isolation, and
 	/// <see cref="KelpCurtainBiome.IsKelpCurtainLayer"/> is the server-safe layer predicate because the
 	/// hook runs in single player or on the server only, where the client camera is zero (D-52/D-55).

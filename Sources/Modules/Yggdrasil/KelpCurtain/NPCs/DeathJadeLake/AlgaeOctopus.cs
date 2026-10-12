@@ -293,7 +293,7 @@ public class AlgaeOctopus : ModNPC
 
 	/// <summary>
 	/// 水生生物，敌对生物，也会在森雨幽谷刷新, and only ever inside Yggdrasil (BIO-06).
-	/// <c>NPCSpawnManager.EditSpawnPool</c> returns early outside the subworld, so this per-creature gate
+	/// <c>ManagedSpawnGlobalNPC.EditSpawnPool</c> returns early outside the subworld, so this per-creature gate
 	/// is the real isolation, and <see cref="KelpCurtainBiome.IsKelpCurtainLayer"/> is the server-safe
 	/// layer predicate because the hook runs in single player or on the server only, where the client
 	/// camera is zero (D-52/D-55).

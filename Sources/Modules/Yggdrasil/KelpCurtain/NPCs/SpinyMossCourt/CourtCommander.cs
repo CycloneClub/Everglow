@@ -524,7 +524,7 @@ public class CourtCommander : ModNPC
 
 	/// <summary>
 	/// 生成权重较低: the commander's low land weight inside the layer. Only ever inside Yggdrasil and inside the Kelp
-	/// Curtain layer (BIO-06): <c>NPCSpawnManager.EditSpawnPool</c> returns early outside the subworld, so this
+	/// Curtain layer (BIO-06): <c>ManagedSpawnGlobalNPC.EditSpawnPool</c> returns early outside the subworld, so this
 	/// per-creature gate is the real isolation, and <see cref="KelpCurtainBiome.IsKelpCurtainLayer"/> is the
 	/// server-safe layer predicate because the hook runs in single player or on the server only, where the client
 	/// camera is zero (D-52/D-55). The design's 刺苔庭园 is an above-water courtyard, so the land condition is its

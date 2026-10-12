@@ -502,7 +502,7 @@ public class Radiolarian : ModNPC
 	}
 
 	/// <summary>
-	/// 在浅水区生成权重最低, and only ever inside Yggdrasil (BIO-06). <c>NPCSpawnManager.EditSpawnPool</c>
+	/// 在浅水区生成权重最低, and only ever inside Yggdrasil (BIO-06). <c>ManagedSpawnGlobalNPC.EditSpawnPool</c>
 	/// returns early outside the subworld, so this per-creature gate is the real isolation, and
 	/// <see cref="KelpCurtainBiome.IsKelpCurtainLayer"/> is the server-safe layer predicate because the
 	/// hook runs in single player or on the server only, where the client camera is zero (D-52/D-55).

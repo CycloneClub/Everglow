@@ -288,7 +288,7 @@ public class LargeBombJellyfish : ModNPC
 
 	/// <summary>
 	/// 在深水区 ... 还会刷新大一号的版本, and only ever inside Yggdrasil (BIO-06).
-	/// <c>NPCSpawnManager.EditSpawnPool</c> returns early outside the subworld, so this per-creature gate is
+	/// <c>ManagedSpawnGlobalNPC.EditSpawnPool</c> returns early outside the subworld, so this per-creature gate is
 	/// the real isolation, and <see cref="KelpCurtainBiome.IsKelpCurtainLayer"/> is the server-safe layer
 	/// predicate because the hook runs in single player or on the server only, where the client camera is
 	/// zero (D-52/D-55).

@@ -381,7 +381,7 @@ public class SmallBrodieFlydragon : ModNPC
 	/// 在森雨幽谷打破卵, and that 森雨幽谷 egg system is an unimplemented D-46 blocker, so the small variant carries a
 	/// natural weight below the standard class's instead of an approximated egg path - which also preserves
 	/// 自然刷新只会刷新标准大小的蝇蜓. Only ever inside Yggdrasil and inside the Kelp Curtain layer (BIO-06):
-	/// <c>NPCSpawnManager.EditSpawnPool</c> returns early outside the subworld, so this per-creature gate is the real
+	/// <c>ManagedSpawnGlobalNPC.EditSpawnPool</c> returns early outside the subworld, so this per-creature gate is the real
 	/// isolation, and <see cref="KelpCurtainBiome.IsKelpCurtainLayer"/> is the server-safe layer predicate because the
 	/// hook runs in single player or on the server only, where the client camera is zero (D-52/D-55). The design's
 	/// 刺苔庭园 / 森雨幽谷 split is a Phase 5-6 region blocker and is never approximated with a coordinate range (D-53).

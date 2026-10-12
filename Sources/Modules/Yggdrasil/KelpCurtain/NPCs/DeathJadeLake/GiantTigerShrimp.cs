@@ -75,7 +75,7 @@ public class GiantTigerShrimp : ModNPC
 
 	/// <summary>
 	/// 巨型虎虾 spawns only inside Yggdrasil's Kelp Curtain layer (BIO-06).
-	/// <c>NPCSpawnManager.EditSpawnPool</c> returns early outside the subworld, so this per-creature gate
+	/// <c>ManagedSpawnGlobalNPC.EditSpawnPool</c> returns early outside the subworld, so this per-creature gate
 	/// is the real isolation, and <see cref="KelpCurtainBiome.IsKelpCurtainLayer"/> is the server-safe
 	/// layer predicate because the hook runs in single player or on the server only, where the client
 	/// camera is zero (D-52/D-55).

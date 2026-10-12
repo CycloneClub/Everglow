@@ -378,7 +378,7 @@ public class BrodieFlydragon : ModNPC
 	/// 自然刷新只会刷新标准大小的蝇蜓: this standard class carries the higher of the two flydragon weights, so the
 	/// design's natural spawns are standard-sized. The small variant is reachable through its own lower conservative
 	/// weight instead, because the 森雨幽谷 egg route the design names is an unimplemented D-46 system. Only ever
-	/// inside Yggdrasil and inside the Kelp Curtain layer (BIO-06): <c>NPCSpawnManager.EditSpawnPool</c> returns early
+	/// inside Yggdrasil and inside the Kelp Curtain layer (BIO-06): <c>ManagedSpawnGlobalNPC.EditSpawnPool</c> returns early
 	/// outside the subworld, so this per-creature gate is the real isolation, and
 	/// <see cref="KelpCurtainBiome.IsKelpCurtainLayer"/> is the server-safe layer predicate because the hook runs in
 	/// single player or on the server only, where the client camera is zero (D-52/D-55). The design's

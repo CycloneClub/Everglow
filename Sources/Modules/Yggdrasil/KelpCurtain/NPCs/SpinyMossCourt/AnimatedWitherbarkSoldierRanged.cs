@@ -506,7 +506,7 @@ public class AnimatedWitherbarkSoldierRanged : ModNPC
 	/// <summary>
 	/// The courtyard unit's land spawn gate. The design makes the 近战 variant the most common one, so this
 	/// variant returns a lower land weight (D-54 default; the design gives no per-variant weight). Only ever
-	/// inside Yggdrasil and inside the Kelp Curtain layer (BIO-06): <c>NPCSpawnManager.EditSpawnPool</c> returns
+	/// inside Yggdrasil and inside the Kelp Curtain layer (BIO-06): <c>ManagedSpawnGlobalNPC.EditSpawnPool</c> returns
 	/// early outside the subworld, so this per-creature gate is the real isolation, and
 	/// <see cref="KelpCurtainBiome.IsKelpCurtainLayer"/> is the server-safe layer predicate because the hook runs
 	/// in single player or on the server only, where the client camera is zero (D-52/D-55). The design's 刺苔庭园

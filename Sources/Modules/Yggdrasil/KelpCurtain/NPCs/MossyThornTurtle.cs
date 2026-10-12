@@ -167,7 +167,7 @@ public class MossyThornTurtle : ModNPC
 	}
 
 	/// <summary>
-	/// Subworld-only spawning (BIO-06). <c>NPCSpawnManager.EditSpawnPool</c> returns early outside
+	/// Subworld-only spawning (BIO-06). <c>ManagedSpawnGlobalNPC.EditSpawnPool</c> returns early outside
 	/// Yggdrasil, so the per-creature gate is the real isolation, and
 	/// <see cref="KelpCurtainBiome.IsKelpCurtainLayer"/> is the server-safe layer predicate because
 	/// this hook runs in single player or on the server only, where the client camera is zero.
