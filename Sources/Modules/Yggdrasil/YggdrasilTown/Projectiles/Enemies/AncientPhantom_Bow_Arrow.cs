@@ -34,7 +34,7 @@ public class AncientPhantom_Bow_Arrow : ModProjectile
 				Active = true,
 				Visible = true,
 				Position = Projectile.Center,
-				MaxTime = 60,
+				MaxTime = Main.rand.Next(6, 15),
 				Scale = Main.rand.NextFloat(3, 6),
 				Rotation = Projectile.rotation + MathHelper.PiOver4,
 				ai = new float[] { 0, 0, 0 },

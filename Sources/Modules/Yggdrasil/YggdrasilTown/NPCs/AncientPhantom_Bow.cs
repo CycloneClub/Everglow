@@ -102,10 +102,7 @@ public class AncientPhantom_Bow : Fighter
 			NPC.FaceTarget();
 			NPC.velocity.X = 0f;
 			Vector2 shootPos = NPC.Center + new Vector2(NPC.direction * 12, -9) + new Vector2(-10, 0).RotatedBy(AimAngle);
-			// Vector2 shootVel = Main.player[NPC.target].Center - shootPos;
-			// shootVel.Y -= MathF.Pow(SafeShootDistance, 2) / 2000f;
-			// shootVel.Normalize();
-			Vector2 shootVel = FindBestShootAngle(shootPos, Main.MouseWorld);
+			Vector2 shootVel = FindBestShootAngle(shootPos, Main.player[NPC.target].MountedCenter);
 			AimAngle = shootVel.ToRotation() + MathHelper.Pi;
 			if (ShootTimer > 0)
 			{
