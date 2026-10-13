@@ -82,6 +82,8 @@ public class SquamousShell : ModNPC
 	private bool animationLoop = true;
 	private float animationTime;
 	private float animationStep;
+	private uint animationSequence;
+	private uint appliedAnimationSequence;
 	private int syncTimer;
 	private float walkSoundTimer;
 	private int walkSoundType;
@@ -151,6 +153,7 @@ public class SquamousShell : ModNPC
 		writer.Write(animationLoop);
 		writer.Write(animationTime);
 		writer.Write(animationStep);
+		writer.Write(animationSequence);
 	}
 
 	public override void ReceiveExtraAI(BinaryReader reader)
@@ -172,6 +175,7 @@ public class SquamousShell : ModNPC
 		animationLoop = reader.ReadBoolean();
 		animationTime = reader.ReadSingle();
 		animationStep = reader.ReadSingle();
+		animationSequence = reader.ReadUInt32();
 		ApplyAnimationState();
 	}
 
@@ -183,11 +187,12 @@ public class SquamousShell : ModNPC
 		}
 
 		var track = SquamousShellSkeleton.AnimationState.GetCurrent(0);
-		if (track == null || track.Animation.Name != animationName || track.Loop != animationLoop || animationTime < track.TrackTime)
+		if (track == null || track.Animation.Name != animationName || track.Loop != animationLoop || appliedAnimationSequence != animationSequence)
 		{
 			track = SquamousShellSkeleton.AnimationState.SetAnimation(0, animationName, animationLoop);
 		}
 		track.TrackTime = animationTime;
+		appliedAnimationSequence = animationSequence;
 	}
 
 	public override void AI()
@@ -199,9 +204,13 @@ public class SquamousShell : ModNPC
 		{
 			NPC.TargetClosest(false);
 			bool wasHidden = NPC.hide;
+			bool wasFlying = Flying;
+			bool wasSmashing = Smashing;
+			bool wasDashing = Dashing;
+			bool wasPaused = animationStep == 0;
 			animationStep = 0;
 			_coroutineManager.Update();
-			if (++syncTimer >= 6 || wasHidden != NPC.hide)
+			if (++syncTimer >= 6 || wasHidden != NPC.hide || wasFlying != Flying || wasSmashing != Smashing || wasDashing != Dashing || wasPaused != (animationStep == 0))
 			{
 				syncTimer = 0;
 				NPC.netUpdate = true;
@@ -270,10 +279,12 @@ public class SquamousShell : ModNPC
 		animationLoop = loop;
 		animationTime = 0;
 		animationStep = 0;
+		animationSequence++;
 		NPC.netUpdate = true;
 		if (!Main.dedServ && SquamousShellSkeleton != null)
 		{
 			SquamousShellSkeleton.AnimationState.SetAnimation(0, name, loop);
+			appliedAnimationSequence = animationSequence;
 		}
 	}
 
@@ -607,7 +618,7 @@ public class SquamousShell : ModNPC
 					{
 						if (projectile.ai[0] == NPC.whoAmI)
 						{
-							projectile.active = false;
+							projectile.Kill();
 						}
 					}
 				}
@@ -627,7 +638,7 @@ public class SquamousShell : ModNPC
 			{
 				if (projectile.ai[0] == NPC.whoAmI)
 				{
-					projectile.active = false;
+					projectile.Kill();
 				}
 			}
 		}
@@ -732,6 +743,14 @@ public class SquamousShell : ModNPC
 		_coroutineManager.StartCoroutine(new Coroutine(NextAttack()));
 	}
 
+	private static void SyncControlledRock(Projectile rock)
+	{
+		// The boss positions this rock every tick while lifting it. Do not let
+		// the ordinary projectile spam limit defer these snapshots or its release.
+		rock.netSpam = 0;
+		rock.netUpdate = true;
+	}
+
 	/// <summary>
 	/// 滚石
 	/// </summary>
@@ -776,11 +795,11 @@ public class SquamousShell : ModNPC
 		{
 			damage = 133;
 		}
-		Projectile rock = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, new Vector2(direction * 4, 0), ModContent.ProjectileType<SquamousRollingStone>(), damage, 6, Main.myPlayer, direction);
+		Projectile rock = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, new Vector2(direction * 4, 0), ModContent.ProjectileType<SquamousRollingStone>(), damage, 6, Main.myPlayer, direction, 1);
 		rock.scale = 0;
 		rock.width = 0;
 		rock.height = 0;
-		rock.netUpdate = true;
+		SyncControlledRock(rock);
 		NPC.spriteDirection = direction;
 		NPC.rotation = 0;
 		if (NPC.spriteDirection == -1)
@@ -805,7 +824,7 @@ public class SquamousShell : ModNPC
 				rock.width = (int)(rock.scale * 100f);
 				rock.height = (int)(rock.scale * 100f);
 				rock.Center = NPC.Center + Vector2.Lerp(new Vector2(70 * direction, 60), new Vector2(140 * direction, 20), (x - startTime) / (61f - startTime));
-				rock.netUpdate |= x % 6 == 0;
+				SyncControlledRock(rock);
 			}
 			AdvanceAnimation(1f / 30f);
 			yield return new SkipThisFrame();
@@ -818,7 +837,7 @@ public class SquamousShell : ModNPC
 		{
 			AdvanceAnimation(1f / 30f);
 			rock.Center = NPC.Center + Vector2.Lerp(new Vector2(140 * direction, 20), new Vector2(170 * direction, -20), x / 5f);
-			rock.netUpdate |= x == 4;
+			SyncControlledRock(rock);
 			yield return new SkipThisFrame();
 		}
 
@@ -828,6 +847,7 @@ public class SquamousShell : ModNPC
 			if (x < 5)
 			{
 				rock.Center = NPC.Center + new Vector2(170 * direction, -20);
+				SyncControlledRock(rock);
 			}
 
 			// 撞击,球被击飞
@@ -845,7 +865,8 @@ public class SquamousShell : ModNPC
 					speed = 15;
 				}
 				rock.velocity = new Vector2(speed * direction, -3);
-				rock.netUpdate = true;
+				((SquamousRollingStone)rock.ModProjectile).BossControlled = false;
+				SyncControlledRock(rock);
 				EmitEffect(SquamousShellEffect.RockRelease, rock.Center, rock.scale);
 			}
 			yield return new SkipThisFrame();
@@ -900,11 +921,11 @@ public class SquamousShell : ModNPC
 		{
 			damage = 133;
 		}
-		Projectile rock = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, new Vector2(direction * 4, -24), ModContent.ProjectileType<SquamousRollingStone_fly>(), damage, 6, Main.myPlayer, direction);
+		Projectile rock = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, new Vector2(direction * 4, -24), ModContent.ProjectileType<SquamousRollingStone_fly>(), damage, 6, Main.myPlayer, direction, 1);
 		rock.scale = 0;
 		rock.width = 0;
 		rock.height = 0;
-		rock.netUpdate = true;
+		SyncControlledRock(rock);
 		NPC.spriteDirection = direction;
 		NPC.rotation = 0;
 		if (NPC.spriteDirection == -1)
@@ -929,7 +950,7 @@ public class SquamousShell : ModNPC
 				rock.width = (int)(rock.scale * 100f);
 				rock.height = (int)(rock.scale * 100f);
 				rock.Center = NPC.Center + Vector2.Lerp(new Vector2(70 * direction, 60), new Vector2(140 * direction, 20), (x - startTime) / (61f - startTime));
-				rock.netUpdate |= x % 6 == 0;
+				SyncControlledRock(rock);
 			}
 			AdvanceAnimation(1f / 30f);
 			yield return new SkipThisFrame();
@@ -942,7 +963,7 @@ public class SquamousShell : ModNPC
 		{
 			AdvanceAnimation(1f / 30f);
 			rock.Center = NPC.Center + Vector2.Lerp(new Vector2(140 * direction, 20), new Vector2(170 * direction, -20), x / 5f);
-			rock.netUpdate |= x == 4;
+			SyncControlledRock(rock);
 			yield return new SkipThisFrame();
 		}
 
@@ -952,6 +973,7 @@ public class SquamousShell : ModNPC
 			if (x < 5)
 			{
 				rock.Center = NPC.Center + new Vector2(170 * direction, -20);
+				SyncControlledRock(rock);
 			}
 
 			// 撞击,球被击飞
@@ -969,7 +991,8 @@ public class SquamousShell : ModNPC
 					speed = 15;
 				}
 				rock.velocity = new Vector2(speed * direction, -10) * Main.rand.NextFloat(0.65f, 1f);
-				rock.netUpdate = true;
+				((SquamousRollingStone_fly)rock.ModProjectile).BossControlled = false;
+				SyncControlledRock(rock);
 				EmitEffect(SquamousShellEffect.FlyingRockRelease, rock.Center, rock.scale);
 			}
 			yield return new SkipThisFrame();

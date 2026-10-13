@@ -9,6 +9,20 @@ public class SquamousRollingStone : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
 
+	private enum AiSlot
+	{
+		StartDirection,
+		BossControlled,
+	}
+
+	public bool BossControlled
+	{
+		get => Projectile.ai[(int)AiSlot.BossControlled] != 0;
+		set => Projectile.ai[(int)AiSlot.BossControlled] = value ? 1 : 0;
+	}
+
+	public override bool ShouldUpdatePosition() => Main.netMode != NetmodeID.MultiplayerClient || !BossControlled;
+
 	public int StartDirection = 0;
 	public int StopTimer = 0;
 
@@ -18,6 +32,7 @@ public class SquamousRollingStone : ModProjectile
 		writer.Write(StartDirection);
 		writer.Write(StopTimer);
 		writer.Write(Projectile.timeLeft);
+		writer.Write(Projectile.rotation);
 	}
 
 	public override void ReceiveExtraAI(BinaryReader reader)
@@ -26,12 +41,13 @@ public class SquamousRollingStone : ModProjectile
 		StartDirection = reader.ReadInt32();
 		StopTimer = reader.ReadInt32();
 		Projectile.timeLeft = reader.ReadInt32();
+		Projectile.rotation = reader.ReadSingle();
 		Projectile.width = Projectile.height = (int)(Projectile.scale * 100f);
 	}
 
 	public override void OnSpawn(IEntitySource source)
 	{
-		StartDirection = Math.Sign(Projectile.ai[0]);
+		StartDirection = Math.Sign(Projectile.ai[(int)AiSlot.StartDirection]);
 		for (int t = 0; t < 100; t++)
 		{
 			if (Collision.SolidCollision(Projectile.position, Projectile.width, Projectile.height))
@@ -61,6 +77,11 @@ public class SquamousRollingStone : ModProjectile
 
 	public override void AI()
 	{
+		if (Main.netMode == NetmodeID.MultiplayerClient && BossControlled)
+		{
+			return;
+		}
+
 		if (Projectile.scale < 0.5)
 		{
 			return;

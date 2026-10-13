@@ -123,6 +123,70 @@ public class SquamousShellServerTests
 	}
 
 	[TestMethod]
+	public void ExtraAI_TimeCorrection_DoesNotRestartTheCurrentAnimation()
+	{
+		var server = CreateBossDuringTakeoff();
+		var client = (Boss)new Boss().NewInstance(new NPC());
+		client.SquamousShellSkeleton = LoadBossSkeleton();
+		Main.dedServ = false;
+		Main.netMode = Terraria.ID.NetmodeID.MultiplayerClient;
+		TransferBossExtraAI(server, client);
+		var state = client.SquamousShellSkeleton.AnimationState;
+		state.Update(0.1f);
+		state.Apply(client.SquamousShellSkeleton.Skeleton);
+		var track = state.GetCurrent(0);
+		TransferBossExtraAI(server, client);
+		Assert.AreSame(track, state.GetCurrent(0), "A clock correction must not create another animation transition.");
+	}
+
+	[TestMethod]
+	public void ExtraAI_RepeatedAttack_RestartsAnAnimationWithTheSameName()
+	{
+		var server = CreateBossDuringTakeoff();
+		var client = (Boss)new Boss().NewInstance(new NPC());
+		client.SquamousShellSkeleton = LoadBossSkeleton();
+		Main.dedServ = false;
+		Main.netMode = Terraria.ID.NetmodeID.MultiplayerClient;
+		TransferBossExtraAI(server, client);
+		var state = client.SquamousShellSkeleton.AnimationState;
+		state.Apply(client.SquamousShellSkeleton.Skeleton);
+		int starts = 0;
+		state.Start += _ => starts++;
+		using var repeatedAttack = server.JumpAndShake(1);
+		Assert.IsTrue(repeatedAttack.MoveNext());
+		TransferBossExtraAI(server, client);
+		Assert.AreEqual(1, starts);
+		Assert.AreEqual(1f / 30f, state.GetCurrent(0).TrackTime, 0.001f);
+	}
+
+	[TestMethod]
+	[DataRow(typeof(SquamousRollingStone))]
+	[DataRow(typeof(SquamousRollingStone_fly))]
+	public void HeldRollingStone_OnClient_DoesNotSimulateFreeFlight(Type projectileType)
+	{
+		Main.netMode = Terraria.ID.NetmodeID.MultiplayerClient;
+		var template = (Terraria.ModLoader.ModProjectile)Activator.CreateInstance(projectileType)!;
+		var projectile = new Projectile { scale = 1, timeLeft = 1400, velocity = new Vector2(-4, -10) };
+		projectile.ai[1] = 1;
+		var rock = template.NewInstance(projectile);
+		rock.AI();
+		Assert.AreEqual(new Vector2(-4, -10), projectile.velocity);
+		Assert.IsFalse(rock.ShouldUpdatePosition());
+		projectile.ai[1] = 0;
+		Assert.IsTrue(rock.ShouldUpdatePosition());
+	}
+
+	private static void TransferBossExtraAI(Boss source, Boss target)
+	{
+		using var stream = new MemoryStream();
+		using var writer = new BinaryWriter(stream, System.Text.Encoding.UTF8, leaveOpen: true);
+		source.SendExtraAI(writer);
+		stream.Position = 0;
+		using var reader = new BinaryReader(stream);
+		target.ReceiveExtraAI(reader);
+	}
+
+	[TestMethod]
 	public void OnSpawn_OnMultiplayerClient_DoesNotStartAuthoritativeMovement()
 	{
 		Main.netMode = Terraria.ID.NetmodeID.MultiplayerClient;
@@ -166,7 +230,7 @@ public class SquamousShellServerTests
 	public void RollingStoneExtraAI_TransfersGrowingHitbox(Type projectileType)
 	{
 		var template = (Terraria.ModLoader.ModProjectile)Activator.CreateInstance(projectileType)!;
-		var server = template.NewInstance(new Projectile { scale = 0.35f, width = 35, height = 35 });
+		var server = template.NewInstance(new Projectile { scale = 0.35f, width = 35, height = 35, rotation = 1.2f });
 		var client = template.NewInstance(new Projectile { scale = 1, width = 100, height = 100 });
 		using var stream = new MemoryStream();
 		using var writer = new BinaryWriter(stream, System.Text.Encoding.UTF8, leaveOpen: true);
@@ -178,6 +242,7 @@ public class SquamousShellServerTests
 		Assert.AreEqual(0.35f, client.Projectile.scale);
 		Assert.AreEqual(35, client.Projectile.width);
 		Assert.AreEqual(35, client.Projectile.height);
+		Assert.AreEqual(1.2f, client.Projectile.rotation);
 	}
 
 	[TestMethod]
