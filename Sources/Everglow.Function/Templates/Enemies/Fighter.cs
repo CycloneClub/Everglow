@@ -2,6 +2,13 @@ using Everglow.Commons.Utilities;
 
 namespace Everglow.Commons.Templates.Enemies;
 
+/// <summary>
+/// The vanilla fighter AI.<br/>
+/// npc.ai[0] is a timer for change direction.<br/>
+/// npc.ai[2] is the duration of opening a door, >=60 the door will open.<br/>
+/// npc.ai[3] is a value of aggro.<br/>
+/// canOpenTheDoor only valid no tile over the top.<br/>
+/// </summary>
 public abstract class Fighter : ModNPC
 {
 	public bool CanOpenTheDoor = true;

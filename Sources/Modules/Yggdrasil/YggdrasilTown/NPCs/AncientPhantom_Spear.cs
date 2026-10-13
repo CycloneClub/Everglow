@@ -206,25 +206,10 @@ public class AncientPhantom_Spear : Fighter
 		}
 	}
 
-	public override void ModifyHitByItem(Player player, Item item, ref NPC.HitModifiers modifiers)
-	{
-		base.ModifyHitByItem(player, item, ref modifiers);
-	}
-
-	public override void ModifyHitByProjectile(Projectile projectile, ref NPC.HitModifiers modifiers)
-	{
-		base.ModifyHitByProjectile(projectile, ref modifiers);
-	}
-
 	public override void HitEffect(NPC.HitInfo hit)
 	{
 		HurtValue = 60f;
 		base.HitEffect(hit);
-	}
-
-	public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
-	{
-		target.AddBuff(BuffID.Poisoned, 600);
 	}
 
 	public override float SpawnChance(NPCSpawnInfo spawnInfo)

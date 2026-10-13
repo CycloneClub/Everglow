@@ -164,11 +164,6 @@ public class AncientPhantom_Sheild : Fighter
 		base.HitEffect(hit);
 	}
 
-	public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
-	{
-		target.AddBuff(BuffID.Poisoned, 600);
-	}
-
 	public override float SpawnChance(NPCSpawnInfo spawnInfo)
 	{
 		TwilightForsetAndRelic twlightBiome = ModContent.GetInstance<TwilightForsetAndRelic>();
