@@ -6,7 +6,7 @@ namespace Everglow.UnitTests.Modules.Yggdrasil.KelpCurtain.NPCs;
 [TestClass]
 public class KelpCurtainNaturalSpawnTests
 {
-	[DataTestMethod]
+	[TestMethod]
 	[DataRow(2, 2)]
 	[DataRow(6, 6)]
 	[DataRow(7, 7)]

@@ -21,7 +21,7 @@ public class ArmoredShrimpTests
 			"Group creation belongs to the shared spawn manager, not to the NPC.");
 	}
 
-	[DataTestMethod]
+	[TestMethod]
 	[DataRow(0f, true, true, 1)]
 	[DataRow(1f, true, true, 1)]
 	[DataRow(0f, false, true, -1)]

@@ -3,6 +3,7 @@ using Everglow.Commons.Mechanics.Events;
 namespace Everglow.Commons.Mechanics.NPCSpawn;
 
 internal sealed record SpawnGroupRule(SubworldSpawnRule Rule, Func<Vector2, bool> InRegion);
+
 internal sealed record SpawnGroupContext(string WorldId, NPCSpawnInfo Info, SpawnGroupRule Entry);
 
 /// <summary>原生自然生成首只 NPC 后，按表配置追加群体成员；没有独立时钟、预算或实体归属。</summary>
