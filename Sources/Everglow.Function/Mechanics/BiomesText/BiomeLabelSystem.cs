@@ -82,7 +82,7 @@ public class BiomeLabelSystem : ModSystem
 							? ModContent.Request<Texture2D>(modBiome.BestiaryIcon, ReLogic.Content.AssetRequestMode.ImmediateLoad).Value
 							: ModAsset.Cavern.Value;
 
-						DisplayBiomeQueue.Enqueue((modBiome.Name, biomeIcon));
+						DisplayBiomeQueue.Enqueue((modBiome.DisplayName.Value, biomeIcon));
 					}
 				}
 			}
