@@ -28,7 +28,7 @@ public class AncientPhantom_Bow : Fighter
 
 	public override void SetDefaults()
 	{
-		NPC.width = 30;
+		NPC.width = 16;
 		NPC.height = 40;
 		NPC.lifeMax = 110;
 		NPC.damage = 25;
@@ -40,8 +40,8 @@ public class AncientPhantom_Bow : Fighter
 		NPC.DeathSound = SoundID.Shatter;
 		NPC.alpha = 100;
 
-		JumpScale = 0.5f;
-		MaxSpeedX = 1.4f;
+		JumpScale = 1f;
+		MaxSpeedX = 2.8f;
 	}
 
 	public override void OnSpawn(IEntitySource source)
@@ -271,6 +271,8 @@ public class AncientPhantom_Bow : Fighter
 		}
 	}
 
+	public override void Fighters_Jump(int pushTileX, int pushTileY, bool canJump) => base.Fighters_Jump(pushTileX, pushTileY, canJump);
+
 	public override float SpawnChance(NPCSpawnInfo spawnInfo)
 	{
 		TwilightForsetAndRelic twlightBiome = ModContent.GetInstance<TwilightForsetAndRelic>();
@@ -330,7 +332,7 @@ public class AncientPhantom_Bow : Fighter
 		Color hurtColor = Color.Lerp(Color.Blue, Color.White, HurtValue / 60f);
 		hurtColor *= HurtValue / 60f;
 
-		spriteBatch.Draw(body_Shape, NPC.Center + new Vector2(0, NPC.gfxOffY) - screenPos, NPC.frame, hurtColor, 0, NPC.frame.Size() * 0.5f, NPC.scale, flip, 0);
+		spriteBatch.Draw(body_Shape, NPC.Center + new Vector2(0, NPC.gfxOffY - 7) - screenPos, NPC.frame, hurtColor, 0, NPC.frame.Size() * 0.5f, NPC.scale, flip, 0);
 	}
 
 	public override void ModifyNPCLoot(NPCLoot npcLoot)
