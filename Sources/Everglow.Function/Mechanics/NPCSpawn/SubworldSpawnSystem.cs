@@ -12,7 +12,7 @@ public sealed class SubworldSpawnSystem : ModSystem
 	private readonly List<SpawnTable> tables = new();
 	private string groupWorldId;
 	private NPCSpawnInfo groupSpawnInfo;
-	private List<SpawnGroupRule> groupRules;
+	private Dictionary<int, SpawnGroupRule> groupRules;
 
 	private sealed record SpawnTable(string WorldId, string Name, SubworldSpawnRule[] Rules, Func<Vector2, bool> InRegion);
 
@@ -54,10 +54,10 @@ public sealed class SubworldSpawnSystem : ModSystem
 		}
 		foreach (var rule in rules)
 		{
-			if (rule == null || rule.Type == 0 || !float.IsFinite(rule.Weight) || rule.Weight < 0 ||
+			if (rule == null || rule.Type == 0 || rule.SpawnChance == null ||
 				rule.MinGroupSize < 1 || rule.MaxGroupSize < rule.MinGroupSize || rule.MaxGroupSize > Main.maxNPCs)
 			{
-				throw new ArgumentException($"Invalid NPC type, weight or group size in {worldId}/{tableName}.", nameof(rules));
+				throw new ArgumentException($"Invalid NPC type, spawn chance or group size in {worldId}/{tableName}.", nameof(rules));
 			}
 		}
 		tables.Add(new(worldId, tableName, rules.ToArray(), inRegion));
@@ -103,11 +103,16 @@ public sealed class SubworldSpawnSystem : ModSystem
 			}
 			foreach (var rule in table.Rules)
 			{
-				if (rule.Weight > 0 && (rule.Condition?.Invoke(spawnInfo) ?? true))
+				float weight = rule.SpawnChance(spawnInfo);
+				if (!float.IsFinite(weight) || weight < 0)
 				{
-					pool.TryGetValue(rule.Type, out float weight);
-					pool[rule.Type] = weight + rule.Weight;
-					groupRules.Add(new(rule, table.InRegion));
+					throw new InvalidOperationException($"Invalid spawn weight for NPC {rule.Type} in {world.Id}/{table.Name}.");
+				}
+				// 同类型只保留最高权重及其完整规则；同权重时保留先注册的规则。
+				if (weight > 0 && (!pool.TryGetValue(rule.Type, out float existingWeight) || weight > existingWeight))
+				{
+					pool[rule.Type] = weight;
+					groupRules[rule.Type] = new(rule, table.InRegion);
 				}
 			}
 		}
@@ -140,7 +145,7 @@ public sealed class SubworldSpawnSystem : ModSystem
 		groupRules = null;
 	}
 
-	internal SpawnGroupContext TakeSpawnGroup(int type, int tileX, int tileY, Func<double> weightRoll)
+	internal SpawnGroupContext TakeSpawnGroup(int type, int tileX, int tileY)
 	{
 		string worldId = groupWorldId;
 		NPCSpawnInfo info = groupSpawnInfo;
@@ -152,21 +157,10 @@ public sealed class SubworldSpawnSystem : ModSystem
 		{
 			return null;
 		}
-		var matches = candidates.Where(entry => entry.Rule.Type == type).ToArray();
-		if (matches.Length == 0 || matches.All(entry => entry.Rule.MaxGroupSize == 1))
+		if (!candidates.TryGetValue(type, out var entry) || entry.Rule.MaxGroupSize == 1)
 		{
 			return null;
 		}
-		// tML 已按合并权重选定类型；这里只确定同类型多条有效规则对应的群体配置。
-		double choice = matches.Length == 1 ? 0 : weightRoll() * matches.Sum(entry => (double)entry.Rule.Weight);
-		foreach (var entry in matches)
-		{
-			if (choice < entry.Rule.Weight)
-			{
-				return entry.Rule.MaxGroupSize > 1 ? new(worldId, info, entry) : null;
-			}
-			choice -= entry.Rule.Weight;
-		}
-		return null;
+		return new(worldId, info, entry);
 	}
 }

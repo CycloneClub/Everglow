@@ -12,7 +12,7 @@ public sealed class ManagedSpawnGlobalNPC : GlobalNPC
 	public override void SpawnNPC(int npc, int tileX, int tileY)
 	{
 		NPC first = Main.npc[npc];
-		var group = ModContent.GetInstance<SubworldSpawnSystem>().TakeSpawnGroup(first.netID, tileX, tileY, () => Main.rand.NextDouble());
+		var group = ModContent.GetInstance<SubworldSpawnSystem>().TakeSpawnGroup(first.netID, tileX, tileY);
 		if (group != null)
 		{
 			SpawnGroup.SpawnMembers(group, first);

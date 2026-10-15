@@ -5,7 +5,7 @@ using Everglow.Yggdrasil.YggdrasilTown.NPCs;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.NPCSpawn;
 
-/// <summary>内容加载后调用；普通规则只声明类型、权重和条件。</summary>
+/// <summary>内容加载后调用；规则按区域维护，由 SpawnChance 计算本次权重。</summary>
 public static class YggdrasilTownSpawnTable
 {
 	public static void AddRules(List<SubworldSpawnRule> rules)
@@ -13,121 +13,121 @@ public static class YggdrasilTownSpawnTable
 		rules.Add(new SubworldSpawnRule
 		{
 			Type = ModContent.NPCType<BarkSpicyCaterpillar>(),
-			Weight = 8f,
-			Condition = spawnInfo => InYggdrasilTown(spawnInfo) &&
-				SpawnConditions.IsDry(spawnInfo) && SpawnConditions.OnGround(spawnInfo),
+			SpawnChance = spawnInfo => InYggdrasilTown(spawnInfo) &&
+				SpawnConditions.IsDry(spawnInfo) && SpawnConditions.OnGround(spawnInfo)
+				? 8f : 0f,
 		});
 
 		rules.Add(new SubworldSpawnRule
 		{
 			Type = ModContent.NPCType<CarapaceCaterpillar>(),
-			Weight = 8f,
-			Condition = spawnInfo => InYggdrasilTown(spawnInfo) &&
-				SpawnConditions.IsDry(spawnInfo) && SpawnConditions.OnGround(spawnInfo),
+			SpawnChance = spawnInfo => InYggdrasilTown(spawnInfo) &&
+				SpawnConditions.IsDry(spawnInfo) && SpawnConditions.OnGround(spawnInfo)
+				? 8f : 0f,
 		});
 
 		rules.Add(new SubworldSpawnRule
 		{
 			Type = ModContent.NPCType<CrimsonSpell>(),
-			Weight = 0.05f,
-			Condition = spawnInfo => InYggdrasilTown(spawnInfo) &&
+			SpawnChance = spawnInfo => InYggdrasilTown(spawnInfo) &&
 				SpawnConditions.IsDry(spawnInfo) &&
-				!NPC.AnyNPCs(ModContent.NPCType<CrimsonSpell>()),
+				!NPC.AnyNPCs(ModContent.NPCType<CrimsonSpell>())
+				? 0.05f : 0f,
 		});
 
 		rules.Add(new SubworldSpawnRule
 		{
 			Type = ModContent.NPCType<CyanOreBeetle>(),
-			Weight = 3f,
-			Condition = spawnInfo => InYggdrasilTown(spawnInfo) &&
-				SpawnConditions.IsDry(spawnInfo) && SpawnConditions.OnGround(spawnInfo),
+			SpawnChance = spawnInfo => InYggdrasilTown(spawnInfo) &&
+				SpawnConditions.IsDry(spawnInfo) && SpawnConditions.OnGround(spawnInfo)
+				? 3f : 0f,
 		});
 
 		rules.Add(new SubworldSpawnRule
 		{
 			Type = ModContent.NPCType<DarkGlimmeringRods>(),
-			Weight = 3f,
-			Condition = spawnInfo => InYggdrasilTown(spawnInfo) &&
-				SpawnConditions.IsDry(spawnInfo),
+			SpawnChance = spawnInfo => InYggdrasilTown(spawnInfo) &&
+				SpawnConditions.IsDry(spawnInfo)
+				? 3f : 0f,
 		});
 
 		rules.Add(new SubworldSpawnRule
 		{
 			Type = ModContent.NPCType<GiantJellyBall>(),
-			Weight = 3f,
-			Condition = spawnInfo => InYggdrasilTown(spawnInfo) &&
-				SpawnConditions.IsDry(spawnInfo),
+			SpawnChance = spawnInfo => InYggdrasilTown(spawnInfo) &&
+				SpawnConditions.IsDry(spawnInfo)
+				? 3f : 0f,
 		});
 
 		rules.Add(new SubworldSpawnRule
 		{
 			Type = ModContent.NPCType<JellyBall>(),
-			Weight = 3f,
-			Condition = spawnInfo => InYggdrasilTown(spawnInfo) &&
-				SpawnConditions.IsDry(spawnInfo),
+			SpawnChance = spawnInfo => InYggdrasilTown(spawnInfo) &&
+				SpawnConditions.IsDry(spawnInfo)
+				? 3f : 0f,
 		});
 
 		rules.Add(new SubworldSpawnRule
 		{
 			Type = ModContent.NPCType<LampFruitBorer>(),
-			Weight = 8f,
-			Condition = spawnInfo => InYggdrasilTown(spawnInfo) &&
-				SpawnConditions.IsDry(spawnInfo) && SpawnConditions.OnGround(spawnInfo),
+			SpawnChance = spawnInfo => InYggdrasilTown(spawnInfo) &&
+				SpawnConditions.IsDry(spawnInfo) && SpawnConditions.OnGround(spawnInfo)
+				? 8f : 0f,
 		});
 
 		rules.Add(new SubworldSpawnRule
 		{
 			Type = ModContent.NPCType<LeafcutterAnt>(),
-			Weight = 3f,
-			Condition = spawnInfo => InYggdrasilTown(spawnInfo) &&
-				SpawnConditions.IsDry(spawnInfo) && SpawnConditions.OnGround(spawnInfo),
+			SpawnChance = spawnInfo => InYggdrasilTown(spawnInfo) &&
+				SpawnConditions.IsDry(spawnInfo) && SpawnConditions.OnGround(spawnInfo)
+				? 3f : 0f,
 		});
 
 		rules.Add(new SubworldSpawnRule
 		{
 			Type = ModContent.NPCType<LightBulb>(),
-			Weight = 3f,
-			Condition = spawnInfo => InYggdrasilTown(spawnInfo) &&
-				SpawnConditions.IsDry(spawnInfo) && SpawnConditions.OnGround(spawnInfo),
+			SpawnChance = spawnInfo => InYggdrasilTown(spawnInfo) &&
+				SpawnConditions.IsDry(spawnInfo) && SpawnConditions.OnGround(spawnInfo)
+				? 3f : 0f,
 		});
 
 		rules.Add(new SubworldSpawnRule
 		{
 			Type = ModContent.NPCType<RockElemental>(),
-			Weight = 0.05f,
-			Condition = spawnInfo => InYggdrasilTown(spawnInfo) &&
+			SpawnChance = spawnInfo => InYggdrasilTown(spawnInfo) &&
 				SpawnConditions.IsDry(spawnInfo) &&
-				!NPC.AnyNPCs(ModContent.NPCType<RockElemental>()),
+				!NPC.AnyNPCs(ModContent.NPCType<RockElemental>())
+				? 0.05f : 0f,
 		});
 
 		rules.Add(new SubworldSpawnRule
 		{
 			Type = ModContent.NPCType<ShadowstrikeCaterpillar>(),
-			Weight = 8f,
-			Condition = spawnInfo => InYggdrasilTown(spawnInfo) &&
-				SpawnConditions.IsDry(spawnInfo) && SpawnConditions.OnGround(spawnInfo),
+			SpawnChance = spawnInfo => InYggdrasilTown(spawnInfo) &&
+				SpawnConditions.IsDry(spawnInfo) && SpawnConditions.OnGround(spawnInfo)
+				? 8f : 0f,
 		});
 
 		rules.Add(new SubworldSpawnRule
 		{
 			Type = ModContent.NPCType<WhisperingGhost>(),
-			Weight = 3f,
-			Condition = spawnInfo => InYggdrasilTown(spawnInfo) &&
-				SpawnConditions.IsDry(spawnInfo),
+			SpawnChance = spawnInfo => InYggdrasilTown(spawnInfo) &&
+				SpawnConditions.IsDry(spawnInfo)
+				? 3f : 0f,
 		});
 
 		rules.Add(new SubworldSpawnRule
 		{
 			Type = ModContent.NPCType<UmbrellaTailThief>(),
-			Weight = 3f,
-			Condition = spawnInfo => ModContent.GetInstance<LampWoodForest>().IsBiomeActive(spawnInfo.Player),
+			SpawnChance = spawnInfo => ModContent.GetInstance<LampWoodForest>().IsBiomeActive(spawnInfo.Player)
+				? 3f : 0f,
 		});
 
 		rules.Add(new SubworldSpawnRule
 		{
 			Type = ModContent.NPCType<PurpleBombCaterpillar>(),
-			Weight = 3f,
-			Condition = spawnInfo => ModContent.GetInstance<LampWoodForest>().IsBiomeActive(spawnInfo.Player),
+			SpawnChance = spawnInfo => ModContent.GetInstance<LampWoodForest>().IsBiomeActive(spawnInfo.Player)
+				? 3f : 0f,
 		});
 	}
 

@@ -35,15 +35,198 @@ public class SubworldSpawnRuleTests
 	}
 
 	[TestMethod]
-	public void Pool_ReplacesVanillaAndModCandidatesAndAddsMatchingWeights()
+	public void Pool_ComputesWeightFromCurrentWorldAndSpawnContext()
+	{
+		bool previousHardMode = Main.hardMode;
+		try
+		{
+			Main.hardMode = false;
+			int evaluations = 0;
+			SubworldSpawnSystem.RegisterWorld(new("tree", () => true));
+			SubworldSpawnSystem.RegisterRules("tree", "dynamic",
+			[
+				new()
+				{
+					Type = 10,
+					SpawnChance = info =>
+					{
+						evaluations++;
+						return info.Water ? Main.hardMode ? 1.5f : 0.75f : 0f;
+					},
+				},
+			], position => position.X >= 160);
+			Assert.AreEqual(0, evaluations, "Registration must not evaluate runtime state.");
+			var pool = new Dictionary<int, float>();
+			var info = new NPCSpawnInfo { SpawnTileX = 20, SpawnTileY = 30, Water = true };
+			hook.EditSpawnPool(pool, info);
+			Assert.AreEqual(0.75f, pool[10]);
+			Main.hardMode = true;
+			hook.EditSpawnPool(pool, info);
+			Assert.AreEqual(1.5f, pool[10]);
+			info.Water = false;
+			hook.EditSpawnPool(pool, info);
+			Assert.IsFalse(pool.ContainsKey(10));
+			Assert.AreEqual(3, evaluations);
+			info.SpawnTileX = 1;
+			hook.EditSpawnPool(pool, info);
+			Assert.AreEqual(3, evaluations, "An unmatched table must not evaluate its rules.");
+		}
+		finally
+		{
+			Main.hardMode = previousHardMode;
+		}
+	}
+
+	[TestMethod]
+	public void GroupSelection_DoesNotReevaluateTheSelectedPoolWeights()
+	{
+		int evaluations = 0;
+		SubworldSpawnSystem.RegisterWorld(new("tree", () => true));
+		SubworldSpawnSystem.RegisterRules("tree", "groups",
+		[
+			new() { Type = 10, SpawnChance = _ => ++evaluations, MinGroupSize = 2, MaxGroupSize = 2 },
+			new() { Type = 10, SpawnChance = _ => ++evaluations },
+		], _ => true);
+		var info = new NPCSpawnInfo { SpawnTileX = 20, SpawnTileY = 30 };
+		var pool = new Dictionary<int, float>();
+		hook.EditSpawnPool(pool, info);
+		Assert.AreEqual(2f, pool[10]);
+		Assert.AreEqual(2, evaluations);
+
+		NPC previousNpc = Main.npc[0];
+		var previousRandom = Main.rand;
+		try
+		{
+			// 首只在 OnSpawn 中失活：仍执行配置选择，但不创建实际群体或访问地形。
+			var first = (NPC)RuntimeHelpers.GetUninitializedObject(typeof(NPC));
+			first.netID = 10;
+			Main.npc[0] = first;
+			Main.rand = new Terraria.Utilities.UnifiedRandom(1);
+			hook.SpawnNPC(0, 20, 30);
+			Assert.AreEqual(2, evaluations, "Group selection must reuse the weights used to build the pool.");
+			hook.SpawnNPC(0, 20, 30);
+			Assert.AreEqual(2, evaluations);
+		}
+		finally
+		{
+			Main.npc[0] = previousNpc;
+			Main.rand = previousRandom;
+		}
+	}
+
+	[TestMethod]
+	[DataRow(5f, 2f, 2, 4, 2)]
+	[DataRow(2f, 5f, 2, 4, 4)]
+	[DataRow(5f, 5f, 2, 4, 2)]
+	[DataRow(5f, 2f, 1, 4, 1)]
+	[DataRow(2f, 5f, 4, 1, 1)]
+	[DataRow(5f, 5f, 1, 4, 1)]
+	public void OverlappingTables_UseWinningRuleForWeightGroupAndRegion(float firstWeight, float secondWeight,
+		int firstCount, int secondCount, int expectedCount)
+	{
+		bool expanding = false;
+		int firstRegionChecks = 0;
+		int secondRegionChecks = 0;
+		SubworldSpawnSystem.RegisterWorld(new("tree", () => true));
+		SubworldSpawnSystem.RegisterRules("tree", "first",
+			[new() { Type = 10, SpawnChance = _ => firstWeight, MinGroupSize = firstCount, MaxGroupSize = firstCount }],
+			_ =>
+			{
+				if (!expanding)
+				{
+					return true;
+				}
+				firstRegionChecks++;
+				return false;
+			});
+		SubworldSpawnSystem.RegisterRules("tree", "second",
+			[new() { Type = 10, SpawnChance = _ => secondWeight, MinGroupSize = secondCount, MaxGroupSize = secondCount }],
+			_ =>
+			{
+				if (!expanding)
+				{
+					return true;
+				}
+				secondRegionChecks++;
+				return false;
+			});
+		var player = (Player)RuntimeHelpers.GetUninitializedObject(typeof(Player));
+		player.active = true;
+		var pool = new Dictionary<int, float>();
+		hook.EditSpawnPool(pool, new NPCSpawnInfo { Player = player, SpawnTileX = 20, SpawnTileY = 30 });
+		Assert.AreEqual(Math.Max(firstWeight, secondWeight), pool[10]);
+
+		NPC previousNpc = Main.npc[0];
+		var previousRandom = Main.rand;
+		try
+		{
+			var first = (NPC)RuntimeHelpers.GetUninitializedObject(typeof(NPC));
+			first.netID = 10;
+			first.active = true;
+			Main.npc[0] = first;
+			var random = new GroupCountRandom();
+			Main.rand = random;
+			expanding = true;
+			// 新位置由区域函数拒绝，不启动真实 NewNPC 或加载地形。
+			hook.SpawnNPC(0, 20, 30);
+			Assert.AreEqual(expectedCount > 1 ? 1 : 0, random.Calls);
+			if (expectedCount > 1)
+			{
+				Assert.AreEqual(expectedCount, random.Minimum);
+				Assert.AreEqual(expectedCount + 1, random.Maximum);
+			}
+			bool firstWins = firstWeight >= secondWeight;
+			Assert.AreEqual(firstWins ? expectedCount - 1 : 0, firstRegionChecks);
+			Assert.AreEqual(firstWins ? 0 : expectedCount - 1, secondRegionChecks);
+			hook.SpawnNPC(0, 20, 30);
+			Assert.AreEqual(expectedCount > 1 ? 1 : 0, random.Calls, "The winning rule can only be consumed once.");
+		}
+		finally
+		{
+			Main.npc[0] = previousNpc;
+			Main.rand = previousRandom;
+		}
+	}
+
+	private sealed class GroupCountRandom : Terraria.Utilities.UnifiedRandom
+	{
+		public int Calls { get; private set; }
+
+		public int Minimum { get; private set; }
+
+		public int Maximum { get; private set; }
+
+		public override int Next(int minValue, int maxValue)
+		{
+			Calls++;
+			Minimum = minValue;
+			Maximum = maxValue;
+			return minValue;
+		}
+	}
+
+	[TestMethod]
+	[DataRow(float.NaN)]
+	[DataRow(float.PositiveInfinity)]
+	[DataRow(float.NegativeInfinity)]
+	[DataRow(-1f)]
+	public void Pool_RejectsInvalidCalculatedWeights(float weight)
+	{
+		SubworldSpawnSystem.RegisterWorld(new("tree", () => true));
+		SubworldSpawnSystem.RegisterRules("tree", "invalid", [new() { Type = 10, SpawnChance = _ => weight }], _ => true);
+		Assert.ThrowsExactly<InvalidOperationException>(() => hook.EditSpawnPool(new Dictionary<int, float>(), default));
+	}
+
+	[TestMethod]
+	public void Pool_ReplacesCandidatesAndUsesHighestMatchingWeight()
 	{
 		SubworldSpawnSystem.RegisterWorld(new("tree", () => true));
 		bool enabled = true;
 		SubworldSpawnSystem.RegisterRules("tree", "kelp",
 		[
-			new() { Type = 10, Weight = 2, Condition = info => info.Water && enabled },
-			new() { Type = 10, Weight = 3, Condition = info => info.Water },
-			new() { Type = 11, Weight = 7, Condition = info => !info.Water },
+			new() { Type = 10, SpawnChance = info => info.Water && enabled ? 5f : 0f },
+			new() { Type = 10, SpawnChance = info => info.Water ? 3f : 0f },
+			new() { Type = 11, SpawnChance = info => !info.Water ? 7f : 0f },
 		], position => position.X >= 160);
 		var pool = new Dictionary<int, float> { [0] = 1, [999] = 5 };
 		var info = new NPCSpawnInfo { SpawnTileX = 20, SpawnTileY = 30, Water = true };
@@ -124,11 +307,11 @@ public class SubworldSpawnRuleTests
 	}
 
 	[TestMethod]
-	public void Registration_RejectsInvalidWeightsAndDuplicateTables()
+	public void Registration_RejectsMissingCallbacksInvalidTypesAndDuplicateTables()
 	{
 		SubworldSpawnSystem.RegisterWorld(new("tree", () => true));
 		Assert.ThrowsExactly<ArgumentException>(() =>
-			SubworldSpawnSystem.RegisterRules("tree", "bad", [new() { Type = 10, Weight = float.NaN }], _ => true));
+			SubworldSpawnSystem.RegisterRules("tree", "bad", [new() { Type = 10, SpawnChance = null! }], _ => true));
 		Assert.ThrowsExactly<ArgumentException>(() =>
 			SubworldSpawnSystem.RegisterRules("tree", "bad", [new() { Type = 0 }], _ => true));
 		SubworldSpawnSystem.RegisterRules("tree", "test", [new() { Type = 10 }], _ => true);
@@ -285,7 +468,7 @@ public class SubworldSpawnRuleTests
 	{
 		bool active = false;
 		SubworldSpawnSystem.RegisterWorld(new("tree", () => active));
-		SubworldSpawnSystem.RegisterRules("tree", "table", [new() { Type = 1000, Weight = 7 }], _ => true);
+		SubworldSpawnSystem.RegisterRules("tree", "table", [new() { Type = 1000, SpawnChance = _ => 7f }], _ => true);
 		Assert.IsTrue(hook.IsLoadingEnabled(null!), "The shared hook must always load.");
 		var pool = new Dictionary<int, float> { [0] = 1, [1] = 0.1f, [1000] = 2 };
 		hook.EditSpawnPool(pool, default);

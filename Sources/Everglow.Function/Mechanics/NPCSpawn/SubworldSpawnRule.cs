@@ -5,9 +5,8 @@ public sealed class SubworldSpawnRule
 {
 	public int Type { get; init; }
 
-	public float Weight { get; init; } = 1f;
-
-	public Func<NPCSpawnInfo, bool> Condition { get; init; }
+	/// <summary>根据本次上下文返回相对权重；0 表示不参与，默认权重为 1。</summary>
+	public Func<NPCSpawnInfo, float> SpawnChance { get; init; } = _ => 1f;
 
 	public int MinGroupSize { get; init; } = 1;
 

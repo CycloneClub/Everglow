@@ -97,6 +97,7 @@ internal static class SpawnGroup
 		info.SpawnTileY = (int)feet.Y / 16;
 		info.SpawnTileType = Main.tile[info.SpawnTileX, info.SpawnTileY].TileType;
 		// 玩家事实沿用原生上下文；实际液体和区域已在新位置重新验证。
-		return context.Entry.Rule.Condition?.Invoke(info) ?? true;
+		float weight = context.Entry.Rule.SpawnChance(info);
+		return float.IsFinite(weight) && weight > 0;
 	}
 }

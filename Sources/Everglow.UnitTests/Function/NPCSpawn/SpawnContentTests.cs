@@ -22,55 +22,55 @@ public class SpawnContentTests
 	public void Initialize() => Program.SavePath = string.Empty;
 
 	[TestMethod]
-	public void RegionalTables_ResolveAll45ContentIdsAndPreserveWeights()
+	public void RegionalTables_ResolveAll45ContentIdsAndGroupSizes()
 	{
-		(string Name, float Weight)[] expected =
+		string[] expected =
 		[
-			("Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake.AlgaeOctopus", 0.75f),
-			("Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake.ArmoredShrimp", 0.75f),
-			("Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake.BombJellyfish", 0.75f),
-			("Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake.CannonBarnacle", 0.75f),
-			("Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake.FluorescentHydra", 0.75f),
-			("Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake.GiantTigerShrimp", 0.75f),
-			("Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake.GlowSalamander", 0.75f),
-			("Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake.JadeSpiritAnglerfish", 0.35f),
-			("Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake.LargeAlgaeOctopus", 0.35f),
-			("Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake.LargeBombJellyfish", 0.5f),
-			("Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake.Radiolarian", 0.35f),
-			("Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake.SailfinSnakehead", 0.75f),
-			("Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake.ToxicToad", 1f),
-			("Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake.WaterStrider", 0.75f),
-			("Everglow.Yggdrasil.KelpCurtain.NPCs.GiantDandelion", 0.25f),
-			("Everglow.Yggdrasil.KelpCurtain.NPCs.GuppyConch", 0.75f),
-			("Everglow.Yggdrasil.KelpCurtain.NPCs.MossyThornTurtle", 1.5f),
-			("Everglow.Yggdrasil.KelpCurtain.NPCs.SpinyMossCourt.AnimatedWitherbarkHound", 1f),
-			("Everglow.Yggdrasil.KelpCurtain.NPCs.SpinyMossCourt.AnimatedWitherbarkSoldier", 1.5f),
-			("Everglow.Yggdrasil.KelpCurtain.NPCs.SpinyMossCourt.AnimatedWitherbarkSoldierRanged", 1f),
-			("Everglow.Yggdrasil.KelpCurtain.NPCs.SpinyMossCourt.AnimatedWitherbarkSoldierSpell", 0.75f),
-			("Everglow.Yggdrasil.KelpCurtain.NPCs.SpinyMossCourt.BrodieFlydragon", 1f),
-			("Everglow.Yggdrasil.KelpCurtain.NPCs.SpinyMossCourt.CourtCommander", 0.5f),
-			("Everglow.Yggdrasil.KelpCurtain.NPCs.SpinyMossCourt.SmallBrodieFlydragon", 0.5f),
-			("Everglow.Yggdrasil.KelpCurtain.NPCs.ValleyOfLushAndMoist.AssassinRaspberry", 1f),
-			("Everglow.Yggdrasil.KelpCurtain.NPCs.ValleyOfLushAndMoist.LargeMossyThornTurtle", 0.1f),
-			("Everglow.Yggdrasil.KelpCurtain.NPCs.ValleyOfLushAndMoist.RedNeedleCaterpillar", 1f),
-			("Everglow.Yggdrasil.KelpCurtain.NPCs.ValleyOfLushAndMoist.SerpentMoss", 1f),
-			("Everglow.Yggdrasil.KelpCurtain.NPCs.ValleyOfLushAndMoist.SmallGuppyConch", 1f),
-			("Everglow.Yggdrasil.KelpCurtain.NPCs.VerdantRods", 1f),
-			("Everglow.Yggdrasil.YggdrasilTown.NPCs.BarkSpicyCaterpillar", 8f),
-			("Everglow.Yggdrasil.YggdrasilTown.NPCs.CarapaceCaterpillar", 8f),
-			("Everglow.Yggdrasil.YggdrasilTown.NPCs.CrimsonSpell", 0.05f),
-			("Everglow.Yggdrasil.YggdrasilTown.NPCs.CyanOreBeetle", 3f),
-			("Everglow.Yggdrasil.YggdrasilTown.NPCs.DarkGlimmeringRods", 3f),
-			("Everglow.Yggdrasil.YggdrasilTown.NPCs.GiantJellyBall", 3f),
-			("Everglow.Yggdrasil.YggdrasilTown.NPCs.JellyBall", 3f),
-			("Everglow.Yggdrasil.YggdrasilTown.NPCs.LampFruitBorer", 8f),
-			("Everglow.Yggdrasil.YggdrasilTown.NPCs.LeafcutterAnt", 3f),
-			("Everglow.Yggdrasil.YggdrasilTown.NPCs.LightBulb", 3f),
-			("Everglow.Yggdrasil.YggdrasilTown.NPCs.RockElemental", 0.05f),
-			("Everglow.Yggdrasil.YggdrasilTown.NPCs.ShadowstrikeCaterpillar", 8f),
-			("Everglow.Yggdrasil.YggdrasilTown.NPCs.WhisperingGhost", 3f),
-			("Everglow.Yggdrasil.YggdrasilTown.NPCs.UmbrellaTailThief", 3f),
-			("Everglow.Yggdrasil.YggdrasilTown.NPCs.PurpleBombCaterpillar", 3f),
+			"Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake.AlgaeOctopus",
+			"Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake.ArmoredShrimp",
+			"Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake.BombJellyfish",
+			"Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake.CannonBarnacle",
+			"Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake.FluorescentHydra",
+			"Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake.GiantTigerShrimp",
+			"Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake.GlowSalamander",
+			"Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake.JadeSpiritAnglerfish",
+			"Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake.LargeAlgaeOctopus",
+			"Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake.LargeBombJellyfish",
+			"Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake.Radiolarian",
+			"Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake.SailfinSnakehead",
+			"Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake.ToxicToad",
+			"Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake.WaterStrider",
+			"Everglow.Yggdrasil.KelpCurtain.NPCs.GiantDandelion",
+			"Everglow.Yggdrasil.KelpCurtain.NPCs.GuppyConch",
+			"Everglow.Yggdrasil.KelpCurtain.NPCs.MossyThornTurtle",
+			"Everglow.Yggdrasil.KelpCurtain.NPCs.SpinyMossCourt.AnimatedWitherbarkHound",
+			"Everglow.Yggdrasil.KelpCurtain.NPCs.SpinyMossCourt.AnimatedWitherbarkSoldier",
+			"Everglow.Yggdrasil.KelpCurtain.NPCs.SpinyMossCourt.AnimatedWitherbarkSoldierRanged",
+			"Everglow.Yggdrasil.KelpCurtain.NPCs.SpinyMossCourt.AnimatedWitherbarkSoldierSpell",
+			"Everglow.Yggdrasil.KelpCurtain.NPCs.SpinyMossCourt.BrodieFlydragon",
+			"Everglow.Yggdrasil.KelpCurtain.NPCs.SpinyMossCourt.CourtCommander",
+			"Everglow.Yggdrasil.KelpCurtain.NPCs.SpinyMossCourt.SmallBrodieFlydragon",
+			"Everglow.Yggdrasil.KelpCurtain.NPCs.ValleyOfLushAndMoist.AssassinRaspberry",
+			"Everglow.Yggdrasil.KelpCurtain.NPCs.ValleyOfLushAndMoist.LargeMossyThornTurtle",
+			"Everglow.Yggdrasil.KelpCurtain.NPCs.ValleyOfLushAndMoist.RedNeedleCaterpillar",
+			"Everglow.Yggdrasil.KelpCurtain.NPCs.ValleyOfLushAndMoist.SerpentMoss",
+			"Everglow.Yggdrasil.KelpCurtain.NPCs.ValleyOfLushAndMoist.SmallGuppyConch",
+			"Everglow.Yggdrasil.KelpCurtain.NPCs.VerdantRods",
+			"Everglow.Yggdrasil.YggdrasilTown.NPCs.BarkSpicyCaterpillar",
+			"Everglow.Yggdrasil.YggdrasilTown.NPCs.CarapaceCaterpillar",
+			"Everglow.Yggdrasil.YggdrasilTown.NPCs.CrimsonSpell",
+			"Everglow.Yggdrasil.YggdrasilTown.NPCs.CyanOreBeetle",
+			"Everglow.Yggdrasil.YggdrasilTown.NPCs.DarkGlimmeringRods",
+			"Everglow.Yggdrasil.YggdrasilTown.NPCs.GiantJellyBall",
+			"Everglow.Yggdrasil.YggdrasilTown.NPCs.JellyBall",
+			"Everglow.Yggdrasil.YggdrasilTown.NPCs.LampFruitBorer",
+			"Everglow.Yggdrasil.YggdrasilTown.NPCs.LeafcutterAnt",
+			"Everglow.Yggdrasil.YggdrasilTown.NPCs.LightBulb",
+			"Everglow.Yggdrasil.YggdrasilTown.NPCs.RockElemental",
+			"Everglow.Yggdrasil.YggdrasilTown.NPCs.ShadowstrikeCaterpillar",
+			"Everglow.Yggdrasil.YggdrasilTown.NPCs.WhisperingGhost",
+			"Everglow.Yggdrasil.YggdrasilTown.NPCs.UmbrellaTailThief",
+			"Everglow.Yggdrasil.YggdrasilTown.NPCs.PurpleBombCaterpillar",
 		];
 		var restore = new List<(PropertyInfo Property, object? Value)>();
 		try
@@ -78,7 +78,7 @@ public class SpawnContentTests
 			// 仅为 ModContent.NPCType<T>() 提供已分配的类型号，不运行 NPC 构造、SetDefaults 或内容加载。
 			for (int i = 0; i < expected.Length; i++)
 			{
-				Type type = typeof(YggdrasilWorld).Assembly.GetType(expected[i].Name, true)!;
+				Type type = typeof(YggdrasilWorld).Assembly.GetType(expected[i], true)!;
 				var content = (ModNPC)RuntimeHelpers.GetUninitializedObject(type);
 				var npc = (NPC)RuntimeHelpers.GetUninitializedObject(typeof(NPC));
 				npc.type = 1000 + i;
@@ -97,10 +97,9 @@ public class SpawnContentTests
 			Assert.AreEqual(expected.Length, actual.Length);
 			for (int i = 0; i < expected.Length; i++)
 			{
-				Assert.AreEqual(1000 + i, actual[i].Type, expected[i].Name);
-				Assert.AreEqual(expected[i].Weight, actual[i].Weight, expected[i].Name);
-				Assert.IsNotNull(actual[i].Condition);
-				bool shrimp = expected[i].Name.EndsWith(".ArmoredShrimp", StringComparison.Ordinal);
+				Assert.AreEqual(1000 + i, actual[i].Type, expected[i]);
+				Assert.IsNotNull(actual[i].SpawnChance);
+				bool shrimp = expected[i].EndsWith(".ArmoredShrimp", StringComparison.Ordinal);
 				Assert.AreEqual(shrimp ? 2 : 1, actual[i].MinGroupSize);
 				Assert.AreEqual(shrimp ? 5 : 1, actual[i].MaxGroupSize);
 			}
@@ -120,11 +119,11 @@ public class SpawnContentTests
 			{
 				var info = new NPCSpawnInfo { Player = (Player)RuntimeHelpers.GetUninitializedObject(typeof(Player)) };
 				counter.DarkForestGrassCount = 150;
-				Assert.IsFalse(rule.Condition(info));
+				Assert.AreEqual(0f, rule.SpawnChance(info));
 				counter.DarkForestGrassCount = 151;
-				Assert.IsTrue(rule.Condition(info));
+				Assert.AreEqual(3f, rule.SpawnChance(info));
 				counter.DarkForestGrassCount = 0;
-				Assert.IsFalse(rule.Condition(info));
+				Assert.AreEqual(0f, rule.SpawnChance(info));
 			}
 			counter.DarkForestGrassCount = 151;
 			VerifyTownSafeArea();
