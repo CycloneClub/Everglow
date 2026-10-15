@@ -30,7 +30,7 @@ namespace Everglow.EternalResolve.Projectiles
 			AttackLength = 1.05f;
 			AttackEffectWidth = 0.4f;
 			Projectile.usesLocalNPCImmunity = true;
-			Projectile.localNPCHitCooldown = 5;
+			Projectile.localNPCHitCooldown = 10;
 		}
 
 		public override void HitTileEffect(Vector2 hitPosition, float rotation, float power)

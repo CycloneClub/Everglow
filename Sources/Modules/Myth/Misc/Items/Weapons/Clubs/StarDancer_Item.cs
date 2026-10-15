@@ -6,9 +6,13 @@ public class StarDancer_Item : ClubItem
 {
 	public override void SetCustomDefaults()
 	{
-		Item.damage = 12;
-		Item.value = 1114;
-		Item.rare = ItemRarityID.Blue;
+		Item.damage = 14;
+		Item.value = 50000;
+		Item.rare = ItemRarityID.Green;
+		Item.knockBack = 5f;
+		Item.useTime = 12;
+		Item.useAnimation = 12;
+		SmashDamageMultiplier = 25f / 14f;
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.StarDancer>();
 		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.StarDancer_smash>();
 	}

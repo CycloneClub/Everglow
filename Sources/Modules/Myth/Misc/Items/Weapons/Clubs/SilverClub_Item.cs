@@ -6,8 +6,13 @@ public class SilverClub_Item : ClubItem
 {
 	public override void SetCustomDefaults()
 	{
-		Item.damage = 8;
-		Item.value = 108;
+		Item.damage = 21;
+		Item.value = 4500;
+		Item.rare = ItemRarityID.White;
+		Item.knockBack = 6f;
+		Item.useTime = 12;
+		Item.useAnimation = 12;
+		SmashDamageMultiplier = 14f / 21f;
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.SilverClub>();
 		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.SilverClub_smash>();
 	}

@@ -8,10 +8,10 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords
 	{
 		public override void SetDefaults()
 		{
-			Item.damage = 9;
+			Item.damage = 22;
 			Item.knockBack = 1.04f;
-			Item.rare = ItemRarityID.Blue;
-			Item.value = Item.sellPrice(0, 2, 24, 0);
+			Item.rare = ItemRarityID.Green;
+			Item.value = 100000;
 			Item.shoot = ModContent.ProjectileType<CrutchBayonet_Pro>();
 			PowerfulStabDamageFlat = 4f;
 			PowerfulStabProj = ModContent.ProjectileType<CrutchBayonet_Pro_Stab>();

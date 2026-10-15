@@ -6,9 +6,13 @@ public class OrichalcumClub_Item : ClubItem
 {
 	public override void SetCustomDefaults()
 	{
-		Item.damage = 60;
-		Item.value = 2717;
+		Item.damage = 34;
+		Item.value = 126500;
 		Item.rare = ItemRarityID.LightRed;
+		Item.knockBack = 6f;
+		Item.useTime = 12;
+		Item.useAnimation = 12;
+		SmashDamageMultiplier = 59f / 34f;
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.OrichalcumClub>();
 		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.OrichalcumClub_smash>();
 	}

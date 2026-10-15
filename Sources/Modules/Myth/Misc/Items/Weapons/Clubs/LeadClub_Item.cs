@@ -6,8 +6,13 @@ public class LeadClub_Item : ClubItem
 {
 	public override void SetCustomDefaults()
 	{
-		Item.damage = 7;
-		Item.value = 88;
+		Item.damage = 20;
+		Item.value = 2700;
+		Item.rare = ItemRarityID.White;
+		Item.knockBack = 5.5f;
+		Item.useTime = 12;
+		Item.useAnimation = 12;
+		SmashDamageMultiplier = 13f / 20f;
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.LeadClub>();
 		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.LeadClub_smash>();
 	}

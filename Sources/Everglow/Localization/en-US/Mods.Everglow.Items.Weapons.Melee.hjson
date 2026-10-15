@@ -45,7 +45,14 @@ BladeOfGreenMoss: {
 
 BloodGoldBayonet: {
 	DisplayName: Blood Gold Bayonet
-	Tooltip: ""
+	Tooltip:
+		'''
+		Hits have a 1/25 chance to heal 30% of damage dealt, up to 3 life
+		Hits against blood-marked enemies heal at least 1 life; the two heals do not stack
+		Healing shares a 20-tick cooldown
+		Gain 2 life regeneration while the struck enemy lives
+		Right-click: spend 15 life to apply a blood mark for 3 seconds
+		'''
 }
 
 BloodyBoneYoyo: {
@@ -55,7 +62,11 @@ BloodyBoneYoyo: {
 
 BlossomThorn: {
 	DisplayName: Blossom Thorn
-	Tooltip: ""
+	Tooltip:
+		'''
+		While attacking, releases up to 4 secondary spikes per second in random directions
+		Each spike deals 50% weapon damage and hits each target once
+		'''
 }
 
 BlueRibbonBayonet: {
@@ -140,7 +151,7 @@ CrystalClub_Item: {
 
 CurseClub_Item: {
 	DisplayName: Curse Club_ Item
-	Tooltip: ""
+	Tooltip: Right-click while airborne to smash; cursed and ichor homing clubs share a limit of 3 per player
 }
 
 CurseFlameStabbingSword: {
@@ -280,7 +291,7 @@ IchorBayonet: {
 
 IchorClub_Item: {
 	DisplayName: Ichor Club_ Item
-	Tooltip: ""
+	Tooltip: Right-click while airborne to smash; cursed and ichor homing clubs share a limit of 3 per player
 }
 
 IronClub_Item: {
@@ -339,7 +350,12 @@ MeatLantern: {
 
 MechanicMosquito: {
 	DisplayName: Mechanic Mosquito
-	Tooltip: ""
+	Tooltip:
+		'''
+		Summons up to three mechanical mosquitoes that deal 50% weapon damage
+		Each mosquito stores 1 life per eligible hit, up to 3 life
+		Stored life is returned when full or when you stop attacking
+		'''
 }
 
 MechanismHalberd: {
@@ -369,7 +385,7 @@ OrichalcumClub_Item: {
 
 PalladiumClub_Item: {
 	DisplayName: Palladium Club_ Item
-	Tooltip: ""
+	Tooltip: Right-click while airborne to smash; returning clubs heal after hitting enemies, up to 3 life for a normal smash or 5 for a strong smash
 }
 
 PalmWoodClub_Item: {
@@ -449,7 +465,12 @@ RodSpear: {
 
 RottenGoldBayonet: {
 	DisplayName: Rotten Gold Bayonet
-	Tooltip: ""
+	Tooltip:
+		'''
+		Normal stabs ignore 5 defense
+		Hits create three delayed slashes after 1 second, each dealing 100% weapon damage
+		Each slash hits each target once; normal stabs apply at most one mark per second
+		'''
 }
 
 ScaleWingBlade: {
@@ -514,7 +535,11 @@ TinStabbingSword: {
 
 TitaniumClub_Item: {
 	DisplayName: Titanium Club_ Item
-	Tooltip: ""
+	Tooltip:
+		'''
+		Right-click while high above the ground to smash down
+		Smashes release titanium fragments, up to 24 per player, lasting 10 seconds
+		'''
 }
 
 ToothKnife: {
@@ -574,7 +599,11 @@ VegetationBayonet: {
 
 VertebralSpur: {
 	DisplayName: Vertebral Spur
-	Tooltip: ""
+	Tooltip:
+		'''
+		Normal stabs gain damage with relative speed, up to 200% total damage
+		Right-click stabs deal more damage at close range
+		'''
 }
 
 VortexVanquisherItem: {

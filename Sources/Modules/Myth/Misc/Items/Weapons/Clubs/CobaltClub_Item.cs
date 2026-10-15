@@ -6,9 +6,13 @@ public class CobaltClub_Item : ClubItem
 {
 	public override void SetCustomDefaults()
 	{
-		Item.damage = 41;
-		Item.value = 2005;
+		Item.damage = 32;
+		Item.value = 69000;
 		Item.rare = ItemRarityID.LightRed;
+		Item.knockBack = 5f;
+		Item.useTime = 12;
+		Item.useAnimation = 12;
+		SmashDamageMultiplier = 40f / 32f;
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.CobaltClub>();
 		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.CobaltClub_smash>();
 	}

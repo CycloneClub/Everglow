@@ -46,7 +46,19 @@ public class IchorClub : ClubProj
 			if (flyClubCooling <= 0 && Omega > 0.2f)
 			{
 				flyClubCooling = 44;
-				Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<IchorClub_fly>(), (int)(Projectile.damage * 0.3f), Projectile.knockBack * 0.4f, Projectile.owner);
+				int flyingClubs = 0;
+				foreach (Projectile flyingClub in Main.projectile)
+				{
+					if (flyingClub.active && flyingClub.owner == Projectile.owner
+						&& (flyingClub.type == ModContent.ProjectileType<CurseClub_fly>() || flyingClub.type == ModContent.ProjectileType<IchorClub_fly>()))
+					{
+						flyingClubs++;
+					}
+				}
+				if (flyingClubs < 3)
+				{
+					Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<IchorClub_fly>(), (int)(Projectile.damage * 0.3f), Projectile.knockBack * 0.4f, Projectile.owner);
+				}
 			}
 		}
 		vfxTimer += Omega * 4;

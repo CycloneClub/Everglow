@@ -6,9 +6,13 @@ public class CrimsonClub_Item : ClubItem
 {
 	public override void SetCustomDefaults()
 	{
-		Item.damage = 13;
-		Item.value = 174;
+		Item.damage = 32;
+		Item.value = 13500;
 		Item.rare = ItemRarityID.Blue;
+		Item.knockBack = 5f;
+		Item.useTime = 12;
+		Item.useAnimation = 12;
+		SmashDamageMultiplier = 22f / 32f;
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.CrimsonClub>();
 		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.CrimsonClub_smash>();
 	}

@@ -7,24 +7,33 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords
 	{
 		public override void SetDefaults()
 		{
-			Item.damage = 12;
+			Item.damage = 32;
 			Item.knockBack = 2;
 			Item.rare = ItemRarityID.Orange;
-			Item.value = Item.sellPrice(0, 1, 88, 48);
+			Item.value = 200000;
 			Item.shoot = ModContent.ProjectileType<EternalNight_Pro>();
 			PowerfulStabDamageFlat = 4f;
 			PowerfulStabProj = ModContent.ProjectileType<EternalNight_Pro_Stab>();
 			base.SetDefaults();
 		}
-		// TODO: bayonet counterpart of murasama should be added to use in this recipe
-		// public override void AddRecipes()
-		// {
-		// CreateRecipe()
-		// .AddIngredient(ModContent.ItemType<VegetationBayonet>()) // or Blossom Thorn
-		// .AddIngredient(ModContent.ItemType<RottenGoldBayonet>())
-		// .AddIngredient(ModContent.ItemType<PrisonFireBayonet>())
-		// .AddTile(TileID.SkyMill)
-		// .Register();
-		// }
+
+		public override void AddRecipes()
+		{
+			int[] jungleSwords = [ModContent.ItemType<VegetationBayonet>(), ModContent.ItemType<BlossomThorn>()];
+			int[] evilSwords = [ModContent.ItemType<RottenGoldBayonet>(), ModContent.ItemType<BloodGoldBayonet>()];
+			foreach (int jungleSword in jungleSwords)
+			{
+				foreach (int evilSword in evilSwords)
+				{
+					CreateRecipe()
+						.AddIngredient(jungleSword)
+						.AddIngredient(evilSword)
+						.AddIngredient<PrisonFireBayonet>()
+						.AddIngredient<VertebralSpur>()
+						.AddTile(TileID.DemonAltar)
+						.Register();
+				}
+			}
+		}
 	}
 }

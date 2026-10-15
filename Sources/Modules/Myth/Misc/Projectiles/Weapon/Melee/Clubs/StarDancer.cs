@@ -42,7 +42,7 @@ public class StarDancer : ClubProj
 				}
 			}
 			Vector2 v7 = new Vector2(0, -Main.rand.NextFloat(1000f, 1200f)).RotatedBy(Main.rand.NextFloat(-0.4f, 0.4f));
-			Projectile.NewProjectile(Projectile.GetSource_FromAI(), target.Center + v7, -v7 / 40f, ProjectileID.FallingStar, (int)(Projectile.damage * 8.3f), Projectile.knockBack, Projectile.owner);
+			Projectile.NewProjectile(Projectile.GetSource_FromAI(), target.Center + v7, -v7 / 40f, ProjectileID.FallingStar, (int)(Projectile.damage * 1.5f), Projectile.knockBack, Projectile.owner);
 			SoundEngine.PlaySound(SoundID.DD2_CrystalCartImpact, target.Center);
 		}
 	}

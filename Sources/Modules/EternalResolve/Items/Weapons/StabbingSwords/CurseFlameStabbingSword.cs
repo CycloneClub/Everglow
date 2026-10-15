@@ -9,10 +9,10 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords
 		// 用诅咒火焰点燃敌人！
 		public override void SetDefaults()
 		{
-			Item.damage = 40;
+			Item.damage = 36;
 			Item.knockBack = 1.79f;
 			Item.rare = ItemRarityID.LightRed;
-			Item.value = Item.sellPrice(0, 14, 56, 75);
+			Item.value = 200000;
 			Item.shoot = ModContent.ProjectileType<CurseFlameStabbingSword_Pro>();
 			PowerfulStabDamageFlat = 4f;
 			StaminaCost = 0.82f;
@@ -25,7 +25,7 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords
 			CreateRecipe().
 				AddIngredient(ItemID.CursedFlame, 14).
 				AddIngredient(ModContent.ItemType<RottenGoldBayonet>()).
-				AddTile(TileID.Anvils).
+				AddTile(TileID.MythrilAnvil).
 				Register();
 			base.AddRecipes();
 		}

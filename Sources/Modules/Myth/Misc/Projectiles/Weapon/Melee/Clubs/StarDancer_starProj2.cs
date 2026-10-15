@@ -15,6 +15,8 @@ public class StarDancer_starProj2 : ModProjectile
 		Projectile.hostile = false;
 		Projectile.friendly = false;
 		Projectile.penetrate = -1;
+		Projectile.usesIDStaticNPCImmunity = true;
+		Projectile.idStaticNPCHitCooldown = 12;
 		Projectile.width = 30;
 		Projectile.height = 30;
 	}
