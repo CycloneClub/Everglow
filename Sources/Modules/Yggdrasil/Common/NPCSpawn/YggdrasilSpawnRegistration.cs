@@ -24,15 +24,15 @@ public sealed class YggdrasilSpawnRegistration : ModSystem
 		SubworldSpawnSystem.RegisterRules(WorldId, nameof(YggdrasilTownSpawnTable), town, InYggdrasilTown);
 	}
 
-	public static bool InYggdrasilTown(Vector2 position) => YggdrasilTownBiome.IsTownLayer(position) && !InTownArea(position);
+	public static bool InYggdrasilTown(Vector2 position) => YggdrasilTownBiome.IsTownLayer(position) && !InSafeArea(position);
 
-	public static bool InKelpCurtain(Vector2 position) => YggdrasilWorld.InYggdrasil && !InTownArea(position) &&
+	public static bool InKelpCurtain(Vector2 position) => YggdrasilWorld.InYggdrasil && !InSafeArea(position) &&
 		KelpCurtainBiome.StratumBoundCurve.Count > 0 &&
 		position.Y > Main.maxTilesY * 0.72f * 16 && position.Y < Main.maxTilesY * 0.9f * 16 &&
 		position.X >= KelpCurtainBiome.FindClosestStratumBoundPointX(position.Y / 16f) * 16;
 
-	// 在登记规则表的区域检查中排除镇内落点，群体追加成员也会复用该检查。
-	private static bool InTownArea(Vector2 position)
+	// 自然生成落点、群体追加和玩家位置调频共用城镇及交通区域的禁刷范围。
+	private static bool InSafeArea(Vector2 position)
 	{
 		if (YggdrasilTownBiome.BiomeCenter == Vector2.Zero)
 		{
@@ -41,11 +41,18 @@ public sealed class YggdrasilSpawnRegistration : ModSystem
 		Rectangle area = YggdrasilTownCentralSystem.TownArea;
 		Point tile = position.ToTileCoordinates();
 		// 与 InYggdrasilTown 一致，右侧和下侧边界格也属于镇内。
-		return tile.X >= area.Left && tile.X <= area.Right && tile.Y >= area.Top && tile.Y <= area.Bottom;
+		if (tile.X >= area.Left && tile.X <= area.Right && tile.Y >= area.Top && tile.Y <= area.Bottom)
+		{
+			return true;
+		}
+		// 对应 YggdrasilTownGeneration 的 120 段 3×16 轨道，以及末端 230×58 晶塔车站。
+		var railway = new Rectangle(area.Right, area.Top + 189, 360, 16);
+		var pylonStation = new Rectangle(railway.Right, railway.Top - 43, 230, 58);
+		return railway.Contains(tile) || pylonStation.Contains(tile);
 	}
 
 	private static float SpawnDensity(Vector2 tilePosition) =>
-		InTownArea(tilePosition * 16f) ? 0f : EllipseDensity(tilePosition);
+		InSafeArea(tilePosition * 16f) ? 0f : EllipseDensity(tilePosition);
 
 	public static float EllipseDensity(Vector2 tilePosition)
 	{
