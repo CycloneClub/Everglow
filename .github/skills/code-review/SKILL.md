@@ -9,7 +9,7 @@ Review code changes against conventions established by Everglow maintainers and 
 
 **Reviewer mindset:** Be polite but skeptical. Your job is to speed the review process for maintainers, which includes finding problems the PR author may have missed *and* questioning the value of the PR in its entirety. Treat the PR description and linked issues as claims to verify, not facts to accept. Question the stated direction, probe edge cases, and flag concerns even when unsure.
 
-This skill's rules stack on top of `AGENTS.md`; they never override it. If a rule here conflicts with `AGENTS.md` or a more specific module doc (e.g. `Sources/Everglow.Function/Mechanics/Mission/CONTRACTS.md`), the more specific file wins.
+This skill's rules stack on top of `AGENTS.md`; they never override it. If a rule here conflicts with `AGENTS.md` or a more specific module doc (e.g. `Sources/Everglow.Function/Mechanics/Quest/CONTRACTS.md`), the more specific file wins.
 
 ## When to Use This Skill
 
@@ -27,7 +27,7 @@ Use this skill when:
 1. `AGENTS.md` at the repository root — the project guide (architecture, build system, conventions, common pitfalls).
 2. Any module doc whose path matches the diff:
    - `Sources/Modules/<Module>/<Module>Module.md` if it exists (e.g. `Sources/Modules/Food/FoodModule.md`)
-   - `Sources/Everglow.Function/Mechanics/Mission/{README,CONTRACTS}.md` if Mission code is touched
+   - `Sources/Everglow.Function/Mechanics/Quest/{README,CONTRACTS}.md` if Quest code is touched
    - `Sources/Everglow.Function/VFX/VFX.md` if VFX code is touched
    - `Sources/Everglow.Core/Utilities/Utils.md` if Core utils are touched
    - `Documents/源代码编译流程.md` if build pipeline / `Directory.Build.props` is touched
@@ -43,7 +43,7 @@ Collect code context **before** reading the PR description, linked issues, or ex
 
 1. **Diff and file list**: Fetch the full diff and the list of changed files (`git diff --name-status <base> <head>`).
 2. **Full source files**: For every changed file, read the **entire source file** (not just diff hunks). Surrounding code exposes invariants, hook lifecycles, `Ins` service registration, and module conventions. Diff-only review is the #1 cause of false positives in this repo.
-3. **Consumers and callers**: If the change modifies a public/internal API, a `ModItem`/`ModNPC`/`ModProjectile`/`ModTile`/`ModSystem`, a hook handler, a VFX Visual, a packet, or a Mission, search for how it is consumed. Grep for `AddContent`, `Ins.VFXManager.Add`, `ModIns.PacketResolver`, `ModContent.Request<...>`, `Ins.HookManager`, template base-class usage (`Everglow.Commons.Templates.*`), and direct type references.
+3. **Consumers and callers**: If the change modifies a public/internal API, a `ModItem`/`ModNPC`/`ModProjectile`/`ModTile`/`ModSystem`, a hook handler, a VFX Visual, a packet, or a Quest, search for how it is consumed. Grep for `AddContent`, `Ins.VFXManager.Add`, `ModIns.PacketResolver`, `ModContent.Request<...>`, `Ins.HookManager`, template base-class usage (`Everglow.Commons.Templates.*`), and direct type references.
 4. **Sibling types and related code**: If the change fixes a bug or adds a pattern in one module/type, check whether sibling modules/types have the same issue (e.g. all modules sharing a `EverglowModule` base, all weapons inheriting `Clubs`/`Whips`/`Yoyos`). tML auto-loading is reflection-driven: a missing `[Autoload]` or wrong `LocalizationCategory` silently drops content.
 5. **Resource & localization peers**: When `*.hjson` localization files change, cross-check both `en-US/` and `zh-Hans/` copies exist and stay in sync (both are mandatory per AGENTS.md). When `*.png/.ogg/.fx/.atlas/.ttf` assets change, cross-check the resource type is on the Pack whitelist (`Sources/Directory.Build.props` or the module csproj).
 6. **Git history**: `git log --oneline -20 -- <file>` to spot recent churn, prior reverts, or parallel attempts.

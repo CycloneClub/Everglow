@@ -30,9 +30,9 @@ public class CrystalClub_smash : ClubProjSmash
 		}
 		for (float d = 0.1f; d < Omega; d += 0.04f)
 		{
-			var D = Dust.NewDustDirect(target.Center - new Vector2(4)/*Dust的Size=8x8*/, 0, 0, type, 0, 0, 150, default, Main.rand.NextFloat(0.4f, 1.1f));
-			D.noGravity = true;
-			D.velocity = new Vector2(0, Main.rand.NextFloat(Omega * 25f)).RotatedByRandom(6.283);
+			var dust = Dust.NewDustDirect(target.Center - new Vector2(4)/*Dust的Size=8x8*/, 0, 0, type, 0, 0, 150, default, Main.rand.NextFloat(0.4f, 1.1f));
+			dust.noGravity = true;
+			dust.velocity = new Vector2(0, Main.rand.NextFloat(Omega * 25f)).RotatedByRandom(6.283);
 		}
 	}
 
@@ -74,12 +74,12 @@ public class CrystalClub_smash : ClubProjSmash
 				Vector2 vel = new Vector2(0, -Main.rand.NextFloat(7, 21) * Player.gravDir).RotatedBy((t - 2) * 0.75f + Main.rand.NextFloat(-0.24f, 0.24f));
 				var crystal = new HolyCrystal
 				{
-					velocity = vel,
+					Velocity = vel,
 					Active = true,
 					Visible = true,
-					position = Player.Bottom,
-					maxTime = Main.rand.Next(76, 84),
-					scale = Main.rand.Next(8, 15),
+					Position = Player.Bottom,
+					MaxTime = Main.rand.Next(76, 84),
+					Scale = Main.rand.Next(8, 15),
 					ai = new float[] { Main.rand.NextFloat(100f), Main.rand.NextFloat(1f), Projectile.damage * 0.5f },
 				};
 				Ins.VFXManager.Add(crystal);
@@ -92,12 +92,12 @@ public class CrystalClub_smash : ClubProjSmash
 				Vector2 vel = new Vector2(0, -Main.rand.NextFloat(7, 30) * Player.gravDir).RotatedBy((t - 4) * 0.4f + Main.rand.NextFloat(-0.24f, 0.24f));
 				var crystal = new HolyCrystal
 				{
-					velocity = vel,
+					Velocity = vel,
 					Active = true,
 					Visible = true,
-					position = Player.Bottom,
-					maxTime = Main.rand.Next(86, 94),
-					scale = Main.rand.Next(11, 18),
+					Position = Player.Bottom,
+					MaxTime = Main.rand.Next(86, 94),
+					Scale = Main.rand.Next(11, 18),
 					ai = new float[] { Main.rand.NextFloat(100f), Main.rand.NextFloat(1f), Projectile.damage * 0.5f },
 				};
 				Ins.VFXManager.Add(crystal);

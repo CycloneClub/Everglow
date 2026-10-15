@@ -187,4 +187,11 @@ public static partial class TileUtils
 	{
 		return IsAreaEmpty(new Point(x, y), new Point(width, height));
 	}
+
+	public static bool CanPlayerInteractWithTile(int i, int j, Player player)
+	{
+		Item sItem = player.HeldItem.Clone();
+		bool flag = player.position.X / 16f - player.lastTileRangeX - sItem.tileBoost <= i && (player.position.X + player.width) / 16f + player.lastTileRangeX + sItem.tileBoost - 1f >= i && player.position.Y / 16f - player.lastTileRangeY - sItem.tileBoost <= j;
+		return flag && (player.position.Y + player.height) / 16f + player.lastTileRangeY + sItem.tileBoost - 2f >= j;
+	}
 }

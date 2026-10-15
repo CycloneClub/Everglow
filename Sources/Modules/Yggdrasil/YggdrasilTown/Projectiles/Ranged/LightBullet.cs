@@ -36,13 +36,13 @@ internal class LightBullet : ModProjectile
 	{
 		var somg = new LightFruitParticleDust
 		{
-			velocity = Projectile.velocity * 0.3f,
+			Velocity = Projectile.velocity * 0.3f,
 			Active = true,
 			Visible = true,
-			position = Projectile.Center,
-			maxTime = Main.rand.Next(12, 15),
-			scale = Main.rand.NextFloat(12.20f, 32.35f),
-			rotation = Main.rand.NextFloat(6.283f),
+			Position = Projectile.Center,
+			MaxTime = Main.rand.Next(12, 15),
+			Scale = Main.rand.NextFloat(12.20f, 32.35f),
+			Rotation = Main.rand.NextFloat(6.283f),
 			ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 		};
 		Ins.VFXManager.Add(somg);

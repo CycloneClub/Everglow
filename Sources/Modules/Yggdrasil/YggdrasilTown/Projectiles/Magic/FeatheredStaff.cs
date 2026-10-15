@@ -122,13 +122,13 @@ internal class FeatheredStaff : ModProjectile
 			Vector2 newVelocity = Projectile.velocity.NormalizeSafe() * 1.5f;
 			var somg = new DarkGlimmeringParticleDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + Projectile.velocity * i / duplicateTimes,
-				maxTime = Main.rand.Next(27, 66),
-				scale = 1,
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + Projectile.velocity * i / duplicateTimes,
+				MaxTime = Main.rand.Next(27, 66),
+				Scale = 1,
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { 7, (float)(Main.time + i / (float)duplicateTimes) * 1.8f },
 			};
 			Ins.VFXManager.Add(somg);
@@ -143,13 +143,13 @@ internal class FeatheredStaff : ModProjectile
 			Vector2 newVelocity = new Vector2(0, speed).RotatedByRandom(MathHelper.TwoPi);
 			var somg = new DarkGlimmeringParticleDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(27, 36),
-				scale = 1,
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(27, 36),
+				Scale = 1,
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { 5, (float)Main.time * 1.8f - speed * 2.4f },
 			};
 			Ins.VFXManager.Add(somg);

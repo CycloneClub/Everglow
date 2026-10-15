@@ -47,18 +47,18 @@ public class WiltedForestLamp_Proj_shoot : TrailingProjectile
 		if (npc == null || !npc.active)
 		{
 			OldVel = Projectile.velocity;
-			Projectile.velocity = Vector2.Normalize(Projectile.velocity) * 12;
+			Projectile.velocity = Projectile.velocity.NormalizeSafe() * 12;
 			var dustVFX = new Leaf_VFX
 			{
-				velocity = new Vector2(0, 0.5f).RotatedByRandom(Math.PI * 2) + Projectile.velocity,
-				omega = 0,
-				beta = 0,
+				Velocity = new Vector2(0, 0.5f).RotatedByRandom(Math.PI * 2) + Projectile.velocity,
+				Omega = 0,
+				Beta = 0,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(70, 120),
-				scale = Main.rand.Next(8, 10),
-				color = new Color(0.1f, 1f, 0.4f, 1),
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(70, 120),
+				Scale = Main.rand.Next(8, 10),
+				LeafColor = new Color(0.1f, 1f, 0.4f, 1),
 				ai = new float[] { Main.rand.NextFloat(1f, 8f) },
 			};
 			Ins.VFXManager.Add(dustVFX);
@@ -67,7 +67,7 @@ public class WiltedForestLamp_Proj_shoot : TrailingProjectile
 		OldVel = Projectile.velocity;
 		var toTarget = Vector2.Normalize(npc.Center - Projectile.Center - Projectile.velocity);
 		Projectile.velocity = Projectile.velocity * 0.4f + toTarget;
-		Projectile.velocity = Vector2.Normalize(Projectile.velocity) * 12;
+		Projectile.velocity = Projectile.velocity.NormalizeSafe() * 12;
 		float omegaVel = Vector3.Cross(new Vector3(OldVel / 12f, 0), new Vector3(Projectile.velocity / 12f, 0)).Z;
 		omegaVel = MathF.Asin(omegaVel);
 		float betaVel = Vector3.Cross(new Vector3(oldOldVel / 12f, 0), new Vector3(OldVel / 12f, 0)).Z;
@@ -77,15 +77,15 @@ public class WiltedForestLamp_Proj_shoot : TrailingProjectile
 		{
 			var dustVFX = new Leaf_VFX
 			{
-				velocity = new Vector2(0, 0.5f).RotatedByRandom(Math.PI * 2) + Projectile.velocity,
-				omega = omegaVel,
-				beta = betaVel,
+				Velocity = new Vector2(0, 0.5f).RotatedByRandom(Math.PI * 2) + Projectile.velocity,
+				Omega = omegaVel,
+				Beta = betaVel,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(70, 120),
-				scale = Main.rand.Next(8, 10),
-				color = new Color(0.1f, 1f, 0.4f, 1),
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(70, 120),
+				Scale = Main.rand.Next(8, 10),
+				LeafColor = new Color(0.1f, 1f, 0.4f, 1),
 				ai = new float[] { Main.rand.NextFloat(1f, 8f) },
 			};
 			Ins.VFXManager.Add(dustVFX);

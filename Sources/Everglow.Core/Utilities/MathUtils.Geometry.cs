@@ -1,3 +1,5 @@
+using Terraria;
+
 namespace Everglow.Commons.Utilities;
 
 public static partial class MathUtils
@@ -30,6 +32,38 @@ public static partial class MathUtils
 		{
 			return (float)Math.Atan2(vector.Y, vector.X);
 		}
+	}
+
+	/// <summary>
+	/// 判定2D 圆形与 AABB 是否相交（边界算相交）
+	/// </summary>
+	/// <param name="circleCenter"></param>
+	/// <param name="radius"></param>
+	/// <param name="aabbMin"></param>
+	/// <param name="aabbMax"></param>
+	/// <returns></returns>
+	public static bool IntersectsCircleAABB(Vector2 circleCenter, float radius, Vector2 aabbMin, Vector2 aabbMax)
+	{
+		float closestX = Math.Clamp(circleCenter.X, aabbMin.X, aabbMax.X);
+		float closestY = Math.Clamp(circleCenter.Y, aabbMin.Y, aabbMax.Y);
+
+		float dx = circleCenter.X - closestX;
+		float dy = circleCenter.Y - closestY;
+
+		return (dx * dx + dy * dy) <= (radius * radius);
+	}
+
+	/// <summary>
+	/// 判定2D 圆形与 AABB 是否相交（边界算相交）
+	/// </summary>
+	/// <param name="circleCenter"></param>
+	/// <param name="radius"></param>
+	/// <param name="aabbMin"></param>
+	/// <param name="aabbMax"></param>
+	/// <returns></returns>
+	public static bool IntersectsCircleAABB(Vector2 circleCenter, float radius, Rectangle hitBox)
+	{
+		return IntersectsCircleAABB(circleCenter, radius, hitBox.TopLeft(), hitBox.BottomRight());
 	}
 
 	/// <summary>
@@ -177,6 +211,23 @@ public static partial class MathUtils
 		return isInside;
 	}
 
+	// Distance from point pos to line defined by points a and b
+	public static float PointToLineDistance(Vector2 a, Vector2 b, Vector2 pos)
+	{
+		float dx = b.X - a.X;
+		float dy = b.Y - a.Y;
+
+		float numerator = MathF.Abs(dy * pos.X - dx * pos.Y + b.X * a.Y - b.Y * a.X);
+		float denominator = MathF.Sqrt(dx * dx + dy * dy);
+
+		if (denominator < float.Epsilon)
+		{
+			return (pos - a).Length(); // a and b are same point
+		}
+
+		return numerator / denominator;
+	}
+
 	/// <summary>
 	/// 判断点是否在线段上
 	/// </summary>
@@ -301,6 +352,48 @@ public static partial class MathUtils
 		float s = numerator2 / denominator;
 
 		return r >= 0 && r <= 1 && s >= 0 && s <= 1;
+	}
+
+	/// <summary>
+	/// 获取2D多边形包围盒（AABB）
+	/// </summary>
+	/// <param name="polygon"></param>
+	/// <returns></returns>
+	public static Rectangle GetPolygonAABBBound_Rectangle(List<Vector2> polygon)
+	{
+		if (polygon == null || polygon.Count < 3)
+		{
+			return Rectangle.emptyRectangle;
+		}
+
+		Vector4 v4 = GetPolygonAABBBound_Vector4(polygon);
+		return new Rectangle((int)v4.X, (int)v4.Y, (int)(v4.Z - v4.X), (int)(v4.W - v4.Y));
+	}
+
+	/// <summary>
+	/// 获取2D多边形包围盒（AABB）
+	/// </summary>
+	/// <param name="polygon"></param>
+	/// <returns>(minX, minY, maxX, maxY) 的 Vector4 结构</returns>
+	public static Vector4 GetPolygonAABBBound_Vector4(List<Vector2> polygon)
+	{
+		if (polygon == null || polygon.Count < 3)
+		{
+			return Vector4.zero;
+		}
+
+		float minX = float.MaxValue;
+		float minY = float.MaxValue;
+		float maxX = float.MinValue;
+		float maxY = float.MinValue;
+		foreach (Vector2 p in polygon)
+		{
+			minX = MathF.Min(minX, p.X);
+			minY = MathF.Min(minY, p.Y);
+			maxX = MathF.Max(maxX, p.X);
+			maxY = MathF.Max(maxY, p.Y);
+		}
+		return new Vector4(minX, minY, maxX, maxY);
 	}
 
 	/// <summary>

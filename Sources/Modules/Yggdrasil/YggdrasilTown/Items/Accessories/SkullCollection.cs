@@ -1,3 +1,4 @@
+using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
@@ -53,6 +54,12 @@ public class SkullCollection : ModItem
 				{
 					player.AddBuff(BuffID.ManaRegeneration, BuffDuration);
 					BuffCooldown = BuffCooldownMax;
+					for (int k = 0; k < 20; k++)
+					{
+						Dust d = Dust.NewDustDirect(player.position, player.width, player.height, ModContent.DustType<SkullCollectionDust>());
+						d.scale *= 2;
+						d.velocity.Y -= 3;
+					}
 				}
 
 				// 2. +5 mana regeneration rate

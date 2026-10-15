@@ -99,12 +99,12 @@ public class IchorClub : ClubProj
 		Main.spriteBatch.Begin(sBS);
 	}
 
-	public void GenerateVFX(int Frequency)
+	public void GenerateVFX(int frequency)
 	{
 		Player player = Main.player[Projectile.owner];
 		float mulVelocity = Main.rand.NextFloat(0.75f, 1.5f);
 
-		for (int g = 0; g < Frequency * 2; g++)
+		for (int g = 0; g < frequency * 2; g++)
 		{
 			Vector2 afterVelocity = new Vector2(0, Main.rand.NextFloat(10f)).RotatedByRandom(MathHelper.TwoPi);
 			float mulScale = Main.rand.NextFloat(1f, 6f);
@@ -115,18 +115,18 @@ public class IchorClub : ClubProj
 			}
 			var blood = new IchorDrop
 			{
-				velocity = afterVelocity * mulVelocity / mulScale + startPos.RotatedBy(MathHelper.PiOver2) * Omega * 0.4f * HitLength / 32f + player.velocity,
+				Velocity = afterVelocity * mulVelocity / mulScale + startPos.RotatedBy(MathHelper.PiOver2) * Omega * 0.4f * HitLength / 32f + player.velocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + startPos,
-				maxTime = Main.rand.Next(6, 12),
-				scale = mulScale,
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + startPos,
+				MaxTime = Main.rand.Next(6, 12),
+				Scale = mulScale,
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 			};
 			Ins.VFXManager.Add(blood);
 		}
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			Vector2 afterVelocity = new Vector2(0, Main.rand.NextFloat(3f)).RotatedByRandom(MathHelper.TwoPi);
 			Vector2 startPos = new Vector2(MathF.Sqrt(Main.rand.NextFloat(0f, 1f)) * HitLength * 1.9f, 0).RotatedBy(Projectile.rotation + MathHelper.PiOver4 * Projectile.spriteDirection);
@@ -136,12 +136,12 @@ public class IchorClub : ClubProj
 			}
 			var blood = new IchorSplash
 			{
-				velocity = afterVelocity * mulVelocity + startPos.RotatedBy(MathHelper.PiOver2) * Omega * 0.4f * HitLength / 32f + player.velocity,
+				Velocity = afterVelocity * mulVelocity + startPos.RotatedBy(MathHelper.PiOver2) * Omega * 0.4f * HitLength / 32f + player.velocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + startPos,
-				maxTime = Main.rand.Next(6, 12),
-				scale = Main.rand.NextFloat(12f, 24f),
+				Position = Projectile.Center + startPos,
+				MaxTime = Main.rand.Next(6, 12),
+				Scale = Main.rand.NextFloat(12f, 24f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.4f), 0 },
 			};
 			Ins.VFXManager.Add(blood);

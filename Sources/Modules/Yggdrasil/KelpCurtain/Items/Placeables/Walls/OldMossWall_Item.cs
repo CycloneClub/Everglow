@@ -16,7 +16,7 @@ public class OldMossWall_Item : ModItem
 	public override void AddRecipes()
 	{
 		CreateRecipe(4)
-			.AddIngredient(ModContent.ItemType<OldMoss>(), 1)
+			.AddIngredient(ModContent.ItemType<OldMoss_Item>(), 1)
 			.AddTile(TileID.WorkBenches)
 			.Register();
 	}

@@ -24,7 +24,7 @@ public class MagicalBoomerang : ModItem
 		Item.noUseGraphic = true;
 
 		Item.rare = ItemRarityID.Blue;
-		Item.value = 0;
+		Item.value = 4000;
 
 		Item.shoot = ModContent.ProjectileType<MagicalBoomerangProj>();
 		Item.shootSpeed = 13;

@@ -45,7 +45,7 @@ public class GreenRelicBrick_Trap : ModTile, ISceneTile
 					break;
 				}
 			}
-			ColorLasersTrap trap = new ColorLasersTrap { position = new Point(i, j).ToWorldCoordinates(), Active = true, Visible = true, originTile = new Point(i, j), originType = Type, StartRotation = k * MathHelper.PiOver2, Style = Main.rand.Next(2) };
+			ColorLasersTrap trap = new ColorLasersTrap { Position = new Point(i, j).ToWorldCoordinates(), Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = Type, StartRotation = k * MathHelper.PiOver2, Style = Main.rand.Next(2) };
 			Ins.VFXManager.Add(trap);
 		}
 	}

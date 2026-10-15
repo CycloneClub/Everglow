@@ -10,6 +10,7 @@ public class CyanVineCrossBow_Proj : CrossBowProjectile
 		ChordTexture = ModAsset.CyanVineCrossBow_Proj_Chord.Value;
 		HeldProjectileOffset = new Vector2(-6, -6);
 	}
+
 	public override void DrawChord(SpriteBatch spriteBatch, Color lightColor)
 	{
 		if (ChordTexture == null)
@@ -40,7 +41,6 @@ public class CyanVineCrossBow_Proj : CrossBowProjectile
 		downChordTail = downChordTail.RotatedBy(Projectile.rotation);
 		sliderHead = sliderHead.RotatedBy(Projectile.rotation);
 		sliderTail = sliderTail.RotatedBy(Projectile.rotation);
-
 
 		Vector2 upChord = upChordHead - upChordTail;
 		Vector2 slider = sliderHead - sliderTail;

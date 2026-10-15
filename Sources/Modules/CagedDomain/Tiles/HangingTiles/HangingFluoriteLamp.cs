@@ -9,7 +9,7 @@ public class HangingFluoriteLamp : HangingTile
 	public override void PostSetDefaults()
 	{
 		RopeUnitMass = 0.6f;
-		SingleLampMass = 200f;
+		HangingItemMass = 200f;
 		MaxWireStyle = 1;
 		Elasticity = 70f;
 	}

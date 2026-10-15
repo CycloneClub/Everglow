@@ -33,15 +33,15 @@ public class BeetleDashTrace_frontDust : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawProjectiles;
 
-	public Vector2 position;
-	public Vector2 velocity;
+	public Vector2 Position;
+	public Vector2 Velocity;
 	public float[] ai;
-	public float timer;
-	public float maxTime;
-	public float scale;
-	public float rotation;
+	public float Timer;
+	public float MaxTime;
+	public float Scale;
+	public float Rotation;
 	public Projectile projectileOwner;
-	public Queue<Vector2> trails = new Queue<Vector2>();
+	public Queue<Vector2> Trails = new Queue<Vector2>();
 
 	public override void Update()
 	{
@@ -50,25 +50,25 @@ public class BeetleDashTrace_frontDust : Visual
 			Active = false;
 			return;
 		}
-		if (position.X <= 320 || position.X >= Main.maxTilesX * 16 - 320)
+		if (Position.X <= 320 || Position.X >= Main.maxTilesX * 16 - 320)
 		{
 			Active = false;
 			return;
 		}
-		if (position.Y <= 320 || position.Y >= Main.maxTilesY * 16 - 320)
+		if (Position.Y <= 320 || Position.Y >= Main.maxTilesY * 16 - 320)
 		{
 			Active = false;
 			return;
 		}
-		position = projectileOwner.Center + Vector2.Normalize(projectileOwner.velocity) * 40;
-		velocity = projectileOwner.velocity;
-		trails.Enqueue(position);
-		if (trails.Count > 30)
+		Position = projectileOwner.Center + Vector2.Normalize(projectileOwner.velocity) * 40;
+		Velocity = projectileOwner.velocity;
+		Trails.Enqueue(Position);
+		if (Trails.Count > 30)
 		{
-			trails.Dequeue();
+			Trails.Dequeue();
 		}
-		timer++;
-		if (timer > maxTime)
+		Timer++;
+		if (Timer > MaxTime)
 		{
 			Active = false;
 		}
@@ -76,24 +76,24 @@ public class BeetleDashTrace_frontDust : Visual
 
 	public override void Draw()
 	{
-		float timeValue = timer * 0.02f;
+		float timeValue = Timer * 0.02f;
 		float colorValue = 1;
-		if (timer > maxTime - 30)
+		if (Timer > MaxTime - 30)
 		{
-			colorValue = (maxTime - timer) / 30f;
+			colorValue = (MaxTime - Timer) / 30f;
 		}
 		List<Vertex2D> bars = new List<Vertex2D>();
-		if (trails.Count >= 3)
+		if (Trails.Count >= 3)
 		{
-			for (int i = 0; i < trails.Count; i++)
+			for (int i = 0; i < Trails.Count; i++)
 			{
-				Vector2 pos = trails.ToArray()[i];
-				Vector2 posNext = trails.ToArray()[i] + velocity;
-				if (i != trails.Count - 1)
+				Vector2 pos = Trails.ToArray()[i];
+				Vector2 posNext = Trails.ToArray()[i] + Velocity;
+				if (i != Trails.Count - 1)
 				{
-					posNext = trails.ToArray()[i + 1];
+					posNext = Trails.ToArray()[i + 1];
 				}
-				float drawWidth = i / (float)(trails.Count - 1);
+				float drawWidth = i / (float)(Trails.Count - 1);
 				Color drawColor = Lighting.GetColor(pos.ToTileCoordinates());
 				drawColor.A = 0;
 				drawColor *= colorValue * drawWidth;
@@ -106,10 +106,10 @@ public class BeetleDashTrace_frontDust : Visual
 		}
 		else
 		{
-			bars.Add(position, Color.Transparent, new Vector3(0, 0, 0));
-			bars.Add(position, Color.Transparent, new Vector3(0, 0, 0));
-			bars.Add(position, Color.Transparent, new Vector3(0, 0, 0));
-			bars.Add(position, Color.Transparent, new Vector3(0, 0, 0));
+			bars.Add(Position, Color.Transparent, new Vector3(0, 0, 0));
+			bars.Add(Position, Color.Transparent, new Vector3(0, 0, 0));
+			bars.Add(Position, Color.Transparent, new Vector3(0, 0, 0));
+			bars.Add(Position, Color.Transparent, new Vector3(0, 0, 0));
 		}
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);
 	}

@@ -67,12 +67,12 @@ public class FurnaceTrapDoor : ModTile
 			{
 				Active = true,
 				Visible = true,
-				position = new Point(startX, startY).ToWorldCoordinates() + new Vector2(-8),
-				maxTime = 80,
+				Position = new Point(startX, startY).ToWorldCoordinates() + new Vector2(-8),
+				MaxTime = 80,
 				Open = true,
 				ai = new float[] { 300 },
-				tileX = startX,
-				tileY = startY,
+				TileX = startX,
+				TileY = startY,
 			};
 			Ins.VFXManager.Add(trapDoorVFX);
 		}

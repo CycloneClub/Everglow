@@ -49,11 +49,11 @@ public class DarkFlower_Proj : ModProjectile
 			Projectile.timeLeft = 10;
 			Projectile.friendly = false;
 			FogVFX fog = MEACVFX.Create<FogVFX>(Projectile.Center + Main.rand.NextVector2Circular(20, 20), Main.rand.NextVector2Circular(2, 2) + Projectile.velocity * 0.1f, 0);
-			fog.substract = true;
-			fog.drawColor = new Color(0.3f, 0.6f, 0.3f, 1f);
-			fog.SetTimeleft(Main.rand.Next(50, 80));
-			fog.scale = 0.7f * Projectile.scale * Main.rand.NextFloat(1f, 2f);
-			fog.ai0 = 1;
+			fog.Subtract = true;
+			fog.DrawColor = new Color(0.3f, 0.6f, 0.3f, 1f);
+			fog.SetTimeLeft(Main.rand.Next(50, 80));
+			fog.Scale = 0.7f * Projectile.scale * Main.rand.NextFloat(1f, 2f);
+			fog.Ai0 = 1;
 		}
 	}
 

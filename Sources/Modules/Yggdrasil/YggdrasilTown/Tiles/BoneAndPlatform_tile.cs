@@ -45,9 +45,9 @@ public class BoneAndPlatform_tile : ModTile, ISceneTile
 		Tile tile = Main.tile[i, j];
 		if (tile.TileFrameX == 0 && tile.TileFrameY == 0)
 		{
-			BoneAndPlatform_background scene = new BoneAndPlatform_background { position = new Vector2(i, j - 14) * 16, Active = true, originTile = new Point(i, j), originType = ModContent.TileType<BoneAndPlatform_tile>() };
+			BoneAndPlatform_background scene = new BoneAndPlatform_background { Position = new Vector2(i, j - 14) * 16, Active = true, OriginTilePos = new Point(i, j), OriginTileType = ModContent.TileType<BoneAndPlatform_tile>() };
 			Ins.VFXManager.Add(scene);
-			BoneAndPlatform_foreground scene2 = new BoneAndPlatform_foreground { position = new Vector2(i, j - 14) * 16, Active = true, originTile = new Point(i, j), originType = ModContent.TileType<BoneAndPlatform_tile>() };
+			BoneAndPlatform_foreground scene2 = new BoneAndPlatform_foreground { Position = new Vector2(i, j - 14) * 16, Active = true, OriginTilePos = new Point(i, j), OriginTileType = ModContent.TileType<BoneAndPlatform_tile>() };
 			Ins.VFXManager.Add(scene2);
 		}
 	}

@@ -38,8 +38,6 @@ public class PermanentBoostPacket : IPacket
 			mp.ConsumedJadeGlazeFruit = packetData.consumedJadeGlazeFruit;
 			mp.ConsumedLampBorerHoney = packetData.consumedLampBorerHoney;
 			mp.ConsumedSquamousCore = packetData.consumedSquamousCore;
-
-			// Console.WriteLine($"{packetData.consumedAntiHeavenSicknessPill} {packetData.consumedJadeGlazeFruit} {packetData.consumedLampBorerHoney} {packetData.consumedSquamousCore}");
 		}
 	}
 }

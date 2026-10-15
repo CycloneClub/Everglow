@@ -135,7 +135,7 @@ public class RuinTorch : ModTile
 			float xx = Utils.RandomInt(ref randSeed, -10, 11) * 0.15f;
 			float yy = Utils.RandomInt(ref randSeed, -10, 1) * 0.35f;
 
-			spriteBatch.Draw(ModAsset.Tiles_RuinTorch_Flame.Value, new Vector2(i * 16 - (int)Main.screenPosition.X - (width - 16f) / 2f + xx, j * 16 - (int)Main.screenPosition.Y + offsetY + yy) + zero, new Rectangle(frameX, frameY, width, height), color, 0f, default, 1f, SpriteEffects.None, 0f);
+			spriteBatch.Draw(ModAsset.RuinTorch_Item_Flame.Value, new Vector2(i * 16 - (int)Main.screenPosition.X - (width - 16f) / 2f + xx, j * 16 - (int)Main.screenPosition.Y + offsetY + yy) + zero, new Rectangle(frameX, frameY, width, height), color, 0f, default, 1f, SpriteEffects.None, 0f);
 		}
 	}
 }

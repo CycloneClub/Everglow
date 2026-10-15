@@ -47,13 +47,13 @@ public class BrittleRockSlingshotStone_Explosion : ModProjectile, IWarpProjectil
 				Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(14f, 15f)).RotatedByRandom(MathHelper.TwoPi);
 				var somg = new RockSmogDust
 				{
-					velocity = newVelocity,
+					Velocity = newVelocity,
 					Active = true,
 					Visible = true,
-					position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-					maxTime = Main.rand.Next(22, 45),
-					scale = Main.rand.NextFloat(10f, 25f),
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+					MaxTime = Main.rand.Next(22, 45),
+					Scale = Main.rand.NextFloat(10f, 25f),
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 				};
 				Ins.VFXManager.Add(somg);

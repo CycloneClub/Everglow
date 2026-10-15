@@ -76,10 +76,10 @@ public class BluishGiantGentian : ModTile, ITileFluentlyDrawn
 					{
 						Active = true,
 						Visible = true,
-						velocity = new Vector2(Main.rand.NextFloat(0, 6), 0).RotatedByRandom(6.283),
-						noGravity = false,
-						maxTime = Main.rand.Next(60, 180),
-						position = new Point(i, j).ToWorldCoordinates(),
+						Velocity = new Vector2(Main.rand.NextFloat(0, 6), 0).RotatedByRandom(6.283),
+						NoGravity = false,
+						MaxTime = Main.rand.Next(60, 180),
+						Position = new Point(i, j).ToWorldCoordinates(),
 					};
 					Ins.VFXManager.Add(gore0);
 					break;
@@ -88,10 +88,10 @@ public class BluishGiantGentian : ModTile, ITileFluentlyDrawn
 					{
 						Active = true,
 						Visible = true,
-						velocity = new Vector2(Main.rand.NextFloat(0, 6), 0).RotatedByRandom(6.283),
-						noGravity = false,
-						maxTime = Main.rand.Next(60, 180),
-						position = new Point(i, j).ToWorldCoordinates(),
+						Velocity = new Vector2(Main.rand.NextFloat(0, 6), 0).RotatedByRandom(6.283),
+						NoGravity = false,
+						MaxTime = Main.rand.Next(60, 180),
+						Position = new Point(i, j).ToWorldCoordinates(),
 					};
 					Ins.VFXManager.Add(gore1);
 					break;
@@ -100,10 +100,10 @@ public class BluishGiantGentian : ModTile, ITileFluentlyDrawn
 					{
 						Active = true,
 						Visible = true,
-						velocity = new Vector2(Main.rand.NextFloat(0, 6), 0).RotatedByRandom(6.283),
-						noGravity = false,
-						maxTime = Main.rand.Next(60, 180),
-						position = new Point(i, j).ToWorldCoordinates(),
+						Velocity = new Vector2(Main.rand.NextFloat(0, 6), 0).RotatedByRandom(6.283),
+						NoGravity = false,
+						MaxTime = Main.rand.Next(60, 180),
+						Position = new Point(i, j).ToWorldCoordinates(),
 					};
 					Ins.VFXManager.Add(gore2);
 					break;
@@ -112,10 +112,10 @@ public class BluishGiantGentian : ModTile, ITileFluentlyDrawn
 					{
 						Active = true,
 						Visible = true,
-						velocity = new Vector2(Main.rand.NextFloat(0, 6), 0).RotatedByRandom(6.283),
-						noGravity = false,
-						maxTime = Main.rand.Next(60, 180),
-						position = new Point(i, j).ToWorldCoordinates(),
+						Velocity = new Vector2(Main.rand.NextFloat(0, 6), 0).RotatedByRandom(6.283),
+						NoGravity = false,
+						MaxTime = Main.rand.Next(60, 180),
+						Position = new Point(i, j).ToWorldCoordinates(),
 					};
 					Ins.VFXManager.Add(gore3);
 					break;
@@ -124,10 +124,10 @@ public class BluishGiantGentian : ModTile, ITileFluentlyDrawn
 					{
 						Active = true,
 						Visible = true,
-						velocity = new Vector2(Main.rand.NextFloat(0, 6), 0).RotatedByRandom(6.283),
-						noGravity = false,
-						maxTime = Main.rand.Next(60, 180),
-						position = new Point(i, j).ToWorldCoordinates(),
+						Velocity = new Vector2(Main.rand.NextFloat(0, 6), 0).RotatedByRandom(6.283),
+						NoGravity = false,
+						MaxTime = Main.rand.Next(60, 180),
+						Position = new Point(i, j).ToWorldCoordinates(),
 					};
 					Ins.VFXManager.Add(gore4);
 					break;

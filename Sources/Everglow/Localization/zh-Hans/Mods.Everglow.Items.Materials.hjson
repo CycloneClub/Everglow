@@ -1,214 +1,214 @@
 StoneTusk: {
-	DisplayName: Stone Tusk
+	DisplayName: 石化獠牙
 	Tooltip: ""
 }
 
 BlackStarShrub: {
-	DisplayName: Black Star Shrub
+	DisplayName: 黑星灌丛
 	Tooltip: ""
 }
 
 FireflyPigment: {
-	DisplayName: Firefly Pigment
+	DisplayName: 流萤色素
 	Tooltip: ""
 }
 
 GlowingPetal: {
-	DisplayName: Glowing Petal
+	DisplayName: 萤火花瓣
 	Tooltip: ""
 }
 
 MothScaleDust: {
-	DisplayName: Moth Scale Dust
+	DisplayName: 飞蛾鳞片尘
 	Tooltip: ""
 }
 
 BlueFreeze: {
-	DisplayName: Blue Freeze
+	DisplayName: 翠蓝朵
 	Tooltip: ""
 }
 
 BluePedal: {
-	DisplayName: Blue Pedal
+	DisplayName: 琉天苣
 	Tooltip: ""
 }
 
 CyanHyacinth: {
-	DisplayName: Cyan Hyacinth
+	DisplayName: 天青盏
 	Tooltip: ""
 }
 
 DarkPoppy: {
-	DisplayName: Dark Poppy
+	DisplayName: 暗红帽
 	Tooltip: ""
 }
 
 FlowerBrochure: {
-	DisplayName: Flower Brochure
-	Tooltip: ""
+	DisplayName: 野花收集指南
+	Tooltip: "携带后可以收集野花"
 }
 
 GoldCup: {
-	DisplayName: Gold Cup
+	DisplayName: 风摆铃
 	Tooltip: ""
 }
 
 GoldWhip: {
-	DisplayName: Gold Whip
+	DisplayName: 金鞭兰
 	Tooltip: ""
 }
 
 HotPinkTulip: {
-	DisplayName: Hot Pink Tulip
+	DisplayName: 粉酒杯花
 	Tooltip: ""
 }
 
 Lavender: {
-	DisplayName: Lavender
+	DisplayName: 紫笔头
 	Tooltip: ""
 }
 
 LightChrysanthemum: {
-	DisplayName: Light Chrysanthemum
+	DisplayName: 金轮菊
 	Tooltip: ""
 }
 
 LightPurpleBalls: {
-	DisplayName: Light Purple Balls
+	DisplayName: 暮色绒
 	Tooltip: ""
 }
 
 OrangeSausage: {
-	DisplayName: Orange Sausage
+	DisplayName: 狐绒草
 	Tooltip: ""
 }
 
 OrangeTulip: {
-	DisplayName: Orange Tulip
+	DisplayName: 橙酒杯花
 	Tooltip: ""
 }
 
 PinkSun: {
-	DisplayName: Pink Sun
+	DisplayName: 酱粉蓟
 	Tooltip: ""
 }
 
 PurplePhantom: {
-	DisplayName: Purple Phantom
+	DisplayName: 幻蝶兰
 	Tooltip: ""
 }
 
 PurpleTail: {
-	DisplayName: Purple Tail
+	DisplayName: 紫风草
 	Tooltip: ""
 }
 
 RedFlame: {
-	DisplayName: Red Flame
+	DisplayName: 赤锦
 	Tooltip: ""
 }
 
 ShallowNight: {
-	DisplayName: Shallow Night
+	DisplayName: 琼霄花
 	Tooltip: ""
 }
 
 SilverClock: {
-	DisplayName: Silver Clock
+	DisplayName: 九瓣银
 	Tooltip: ""
 }
 
 WhiteStar: {
-	DisplayName: White Star
+	DisplayName: 白锦星
 	Tooltip: ""
 }
 
 WhiteTulip: {
-	DisplayName: White Tulip
+	DisplayName: 白酒杯花
 	Tooltip: ""
 }
 
 WindMoveSeed: {
-	DisplayName: Wind Move Seed
+	DisplayName: 风动之种
 	Tooltip: ""
 }
 
 AuburnRodSkeleton: {
-	DisplayName: Auburn Rod Skeleton
+	DisplayName: 金棕飞棍骨
 	Tooltip: ""
 }
 
 BrokenMiningLamp: {
-	DisplayName: Broken Mining Lamp
+	DisplayName: 损坏矿灯
 	Tooltip: ""
 }
 
 CaterpillarJuice: {
-	DisplayName: Caterpillar Juice
+	DisplayName: 虫汁
 	Tooltip: ""
 }
 
 CelticKeyStone: {
-	DisplayName: Celtic Key Stone
-	Tooltip: ""
+	DisplayName: 凯尔特机关石
+	Tooltip: "放入暮光森林的绿色城堡底部以打开密室"
 }
 
 CrystalNucleusOfJellyKing: {
-	DisplayName: Crystal Nucleus Of Jelly King
+	DisplayName: 球冻王晶核
 	Tooltip: ""
 }
 
 CyanVineBar: {
-	DisplayName: Cyan Vine Bar
+	DisplayName: 青锻锭
 	Tooltip: ""
 }
 
 LampFruit: {
-	DisplayName: Lamp Fruit
+	DisplayName: 灯果
 	Tooltip: ""
 }
 
 LightBulbOvule: {
-	DisplayName: Light Bulb Ovule
+	DisplayName: 灯光胚珠
 	Tooltip: ""
 }
 
 MagicosCrystal: {
-	DisplayName: Magicos Crystal
+	DisplayName: 纯能魔晶
 	Tooltip: ""
 }
 
 NylonRope: {
-	DisplayName: Nylon Rope
+	DisplayName: 尼龙绳
 	Tooltip: ""
 }
 
 RodWing: {
-	DisplayName: Rod Wing
+	DisplayName: 飞棍鳍
 	Tooltip: ""
 }
 
 TwilightCrystal: {
-	DisplayName: Twilight Crystal
+	DisplayName: 暮光水晶
 	Tooltip: ""
 }
 
 TwilightCrystalExteactedLiquid: {
-	DisplayName: Twilight Crystal Exteacted Liquid
+	DisplayName: 暮晶萃取液
 	Tooltip: ""
 }
 
 UnstablePollen: {
-	DisplayName: Unstable Pollen
+	DisplayName: 脱稳花粉
 	Tooltip: ""
 }
 
 YggdrasilAmber: {
-	DisplayName: Yggdrasil Amber
+	DisplayName: 天穹琥珀
 	Tooltip: ""
 }
 
 DevilHeartIronBar_Item: {
-	DisplayName: Devil Heart Iron Bar_ Item
+	DisplayName: 魔心铁锭
 	Tooltip: ""
 }

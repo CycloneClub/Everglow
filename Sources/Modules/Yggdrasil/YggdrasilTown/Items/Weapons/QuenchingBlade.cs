@@ -14,7 +14,7 @@ public class QuenchingBlade : ModItem
 
 		Item.DamageType = DamageClass.Melee;
 		Item.damage = 27;
-		Item.knockBack = 3;
+		Item.knockBack = 35;
 
 		Item.useStyle = ItemUseStyleID.Shoot;
 		Item.UseSound = SoundID.Item1;

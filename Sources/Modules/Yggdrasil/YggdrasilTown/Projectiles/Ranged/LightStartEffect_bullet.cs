@@ -72,13 +72,13 @@ public class LightStartEffect_bullet : ModProjectile
 			Vector2 newVelocity = new Vector2(0, 0.5f).RotatedBy(Main.time * 0.05f + Projectile.whoAmI + (float)i / duplicateTimes * MathHelper.TwoPi);
 			var somg = new LightFruitParticleDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(37, 145) * mulMaxTime,
-				scale = Main.rand.NextFloat(12.20f, 32.35f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(37, 145) * mulMaxTime,
+				Scale = Main.rand.NextFloat(12.20f, 32.35f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { 4, 0 },
 			};
 			Ins.VFXManager.Add(somg);
@@ -88,13 +88,13 @@ public class LightStartEffect_bullet : ModProjectile
 			Vector2 newVelocity = new Vector2(0, 0.5f).RotatedBy(-Main.time * 0.03f + Projectile.whoAmI + (float)i / duplicateTimes * MathHelper.TwoPi);
 			var somg = new LightFruitParticleDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(37, 145) * mulMaxTime,
-				scale = Main.rand.NextFloat(12.20f, 32.35f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(37, 145) * mulMaxTime,
+				Scale = Main.rand.NextFloat(12.20f, 32.35f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { 4, 0 },
 			};
 			Ins.VFXManager.Add(somg);

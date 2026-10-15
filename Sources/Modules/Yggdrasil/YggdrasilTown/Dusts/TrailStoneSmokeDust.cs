@@ -11,13 +11,13 @@ public class TrailStoneSmokeDust : ModDust
 		{
 			var somg = new RockSmogDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = dust.position + new Vector2(4) + dust.velocity * Main.rand.NextFloat(1f),
-				maxTime = Main.rand.Next(37, 145) * dust.scale,
-				scale = Main.rand.NextFloat(7f, 15f) * dust.scale,
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = dust.position + new Vector2(4) + dust.velocity * Main.rand.NextFloat(1f),
+				MaxTime = Main.rand.Next(37, 145) * dust.scale,
+				Scale = Main.rand.NextFloat(7f, 15f) * dust.scale,
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 }
 			};
 			Ins.VFXManager.Add(somg);

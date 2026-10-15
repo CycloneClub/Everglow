@@ -31,6 +31,11 @@ public class FishGlobalItem : GlobalItem
 	/// </summary>
 	public bool Hookable = false;
 
+	/// <summary>
+	/// 生成这个物品的 FishableItem
+	/// </summary>
+	public FishableItem FishableInfo;
+
 	public int HoverTick = 0;
 
 	public override bool InstancePerEntity => true;
@@ -148,6 +153,26 @@ public class FishGlobalItem : GlobalItem
 		}
 	}
 
+	public void UpdateOnVanillaLiquid(Item item, ref float gravity)
+	{
+		Point itemPos = item.Center.ToTileCoordinates();
+		byte liquid = Main.tile[itemPos].LiquidAmount;
+		if (liquid > 0)
+		{
+			float percent = liquid / 255f;
+			float liqY = percent * 16f + itemPos.Y * 16f;
+			float delta = item.Center.Y - liqY;
+			if (delta < 0 || liquid == 255)
+			{
+				float ratio = Main.rand.NextFloat(1) + 0.5f;
+				float buoyancy = Math.Clamp(-delta / item.height * 2, 0, 1);
+				gravity *= -ratio * buoyancy;
+				item.velocity.Y *= 0.9f;
+				item.velocity.X = FloatSpeed;
+			}
+		}
+	}
+
 	public override void Update(Item item, ref float gravity, ref float maxFallSpeed)
 	{
 		if (!IsFishable(item))
@@ -162,26 +187,32 @@ public class FishGlobalItem : GlobalItem
 			Hookable = false;
 			return;
 		}
-		Point itemPos = item.Center.ToTileCoordinates();
-		byte liquid = Main.tile[itemPos].LiquidAmount;
-		if (liquid > 0)
+		else
 		{
-			float percent = liquid / 255f;
-			float liqY = percent * 16f + itemPos.Y * 16f;
-			float delta = item.Center.Y - liqY;
-			if (delta < 0)
-			{
-				float ratio = Main.rand.NextFloat(1) + .5f;
-				float buoyancy = Math.Clamp(-delta / item.height * 2, 0, 1);
-				gravity *= -ratio * buoyancy;
-				item.velocity.Y *= .9f;
-				item.velocity.X = FloatSpeed;
-			}
+			UpdateOnVanillaLiquid(item, ref gravity);
 		}
 		CheckHover(item);
 		CheckHookable(item);
 		CheckRightClick(item);
 		base.Update(item, ref gravity, ref maxFallSpeed);
+	}
+
+	public override void GrabRange(Item item, Player player, ref int grabRange)
+	{
+		if (Fishable && HookedBy == null)
+		{
+			grabRange = 0;
+		}
+		base.GrabRange(item, player, ref grabRange);
+	}
+
+	public override bool CanPickup(Item item, Player player)
+	{
+		if (Fishable && HookedBy == null)
+		{
+			return false;
+		}
+		return base.CanPickup(item, player);
 	}
 
 	public override void PostDrawInWorld(Item item, SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
@@ -194,9 +225,9 @@ public class FishGlobalItem : GlobalItem
 		}
 		if (Hovered && Hookable)
 		{
-			var font = FontAssets.MouseText.Value;
-			string hint = "Right click to hook";
-			Vector2 size = font.MeasureString(hint);
+			// var font = FontAssets.MouseText.Value;
+			// string hint = "Right click to hook";
+			// Vector2 size = font.MeasureString(hint);
 			// spriteBatch.DrawString(font, hint, basePos - size / 2 - new Vector2(0, item.height / 2 + 20), Color.Gold);
 		}
 		base.PostDrawInWorld(item, spriteBatch, lightColor, alphaColor, rotation, scale, whoAmI);

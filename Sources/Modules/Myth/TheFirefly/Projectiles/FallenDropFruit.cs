@@ -88,13 +88,13 @@ public class FallenDropFruit : ModProjectile
 			float mulScale = Main.rand.NextFloat(6f, 14f);
 			var blood = new FireflyBlueLiquidDrop
 			{
-				velocity = afterVelocity / mulScale,
+				Velocity = afterVelocity / mulScale,
 				Active = true,
 				Visible = true,
-				position = spawnPoint + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-				maxTime = Main.rand.Next(82, 164),
-				scale = mulScale,
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = spawnPoint + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+				MaxTime = Main.rand.Next(82, 164),
+				Scale = mulScale,
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 			};
 			Ins.VFXManager.Add(blood);
@@ -104,12 +104,12 @@ public class FallenDropFruit : ModProjectile
 			Vector2 afterVelocity = new Vector2(0, Main.rand.NextFloat(-12f, -3f)).RotatedBy(Main.rand.NextFloat(-1.4f, 1.4f));
 			var blood = new FireflyBlueLiquidSplash
 			{
-				velocity = afterVelocity,
+				Velocity = afterVelocity,
 				Active = true,
 				Visible = true,
-				position = spawnPoint + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) - afterVelocity,
-				maxTime = Main.rand.Next(42, 164),
-				scale = Main.rand.NextFloat(6f, 24f),
+				Position = spawnPoint + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) - afterVelocity,
+				MaxTime = Main.rand.Next(42, 164),
+				Scale = Main.rand.NextFloat(6f, 24f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.4f), 0 },
 			};
 			Ins.VFXManager.Add(blood);
@@ -119,13 +119,13 @@ public class FallenDropFruit : ModProjectile
 			Vector2 afterVelocity = new Vector2(0, Main.rand.NextFloat(-17f, -3f)).RotatedBy(Main.rand.NextFloat(-1.8f, 1.8f));
 			var fire = new MothBlueFireDust
 			{
-				velocity = afterVelocity,
+				Velocity = afterVelocity,
 				Active = true,
 				Visible = true,
-				position = spawnPoint + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-				maxTime = Main.rand.Next(19, 75),
-				scale = Main.rand.NextFloat(8f, 15f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = spawnPoint + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+				MaxTime = Main.rand.Next(19, 75),
+				Scale = Main.rand.NextFloat(8f, 15f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0, 0 },
 			};
 			Ins.VFXManager.Add(fire);

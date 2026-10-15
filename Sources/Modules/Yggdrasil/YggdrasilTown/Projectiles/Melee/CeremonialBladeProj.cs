@@ -311,7 +311,7 @@ public class CeremonialBladeProj : ModProjectile, IWarpProjectile_warpStyle2
 				strength *= 0;
 			}
 			float colorValue = MathF.Cos(Projectile.localAI[1] + MathF.PI);
-			strength *= (1 - Projectile.Opacity) * colorValue * 0.6f;
+			strength *= (1 - Projectile.Opacity) * colorValue * 0.2f;
 			var colorWarp = new Color(dir.X, dir.Y, strength, 1);
 			var colorWarpFade = new Color(dir.X, dir.Y, strength * 0.1f, 1);
 			bladeEffect_Warp.Add(drawPos + edge, colorWarp, new Vector3(0.5f, coordY, 1));

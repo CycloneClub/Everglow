@@ -16,7 +16,7 @@ public class VitalizedRocks : ModItem
 		Item.useTime = 15;
 		Item.knockBack = 3f;
 		Item.damage = 25;
-		Item.rare = ItemRarityID.Blue;
+		Item.rare = ItemRarityID.Green;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 12000;
 		Item.autoReuse = false;

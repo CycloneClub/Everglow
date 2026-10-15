@@ -1,4 +1,4 @@
-using Everglow.Yggdrasil.YggdrasilTown.Tiles;
+using Everglow.Yggdrasil.YggdrasilTown.Tiles.OriginPylon;
 using SubworldLibrary;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Scenes;

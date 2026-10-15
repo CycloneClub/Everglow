@@ -8,73 +8,73 @@ public abstract class VisualGore : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawNPCs;
 
-	public Vector2 position;
-	public Vector2 velocity;
-	public float scale = 1;
-	public float rotation = 0;
-	public float alpha = 1;
-	public bool tileCollide = true;
-	public bool noGravity = false;
+	public Vector2 Position;
+	public Vector2 Velocity;
+	public float Scale = 1;
+	public float Rotation = 0;
+	public float Alpha = 1;
+	public bool TileCollide = true;
+	public bool NoGravity = false;
 	public Texture2D Texture;
-	public int width = -1;
-	public int height = -1;
-	public int timer = 0;
-	public int maxTime = 600;
-	public float weight = 1000f;
+	public int Width = -1;
+	public int Height = -1;
+	public int Timer = 0;
+	public int MaxTime = 600;
+	public float Weight = 1000f;
 
 	/// <summary>
 	/// base.OnSpawn();之前必须填入Texture2D
 	/// </summary>
 	public override void OnSpawn()
 	{
-		timer = 0;
+		Timer = 0;
 	}
 
 	public override void Update()
 	{
-		timer++;
-		if ((width <= 0 || height <= 0) && Texture is not null)
+		Timer++;
+		if ((Width <= 0 || Height <= 0) && Texture is not null)
 		{
-			width = Texture.Width;
-			height = Texture.Height;
-			weight = width * height * Main.rand.NextFloat(0.85f, 1.15f);
+			Width = Texture.Width;
+			Height = Texture.Height;
+			Weight = Width * Height * Main.rand.NextFloat(0.85f, 1.15f);
 		}
-		if (tileCollide)
+		if (TileCollide)
 		{
-			float velocityValue = velocity.Length() / 25f;
+			float velocityValue = Velocity.Length() / 25f;
 			velocityValue = Math.Clamp(velocityValue, 0.0f, 1.0f);
-			if (TileUtils.PlatformCollision(position + new Vector2(velocity.X, 0)))
+			if (TileUtils.PlatformCollision(Position + new Vector2(Velocity.X, 0)))
 			{
-				velocity.X *= -0.75f * velocityValue;
+				Velocity.X *= -0.75f * velocityValue;
 			}
-			if (TileUtils.PlatformCollision(position + new Vector2(0, velocity.Y)))
+			if (TileUtils.PlatformCollision(Position + new Vector2(0, Velocity.Y)))
 			{
-				velocity.Y *= -0.75f * velocityValue;
+				Velocity.Y *= -0.75f * velocityValue;
 			}
 			else
 			{
-				if (!noGravity)
+				if (!NoGravity)
 				{
-					velocity.Y += 0.5f;
-					velocity.X += Main.windSpeedCurrent / width * 20f;
+					Velocity.Y += 0.5f;
+					Velocity.X += Main.windSpeedCurrent / Width * 20f;
 				}
 			}
 		}
 		else
 		{
-			if (!noGravity)
+			if (!NoGravity)
 			{
-				velocity.Y += 0.15f;
-				velocity.X += Main.windSpeedCurrent / width * 20f;
+				Velocity.Y += 0.15f;
+				Velocity.X += Main.windSpeedCurrent / Width * 20f;
 			}
 		}
 
-		rotation += velocity.X / 40f;
-		velocity *= MathF.Pow(0.999f, velocity.Length() / weight * 2500);
+		Rotation += Velocity.X / 40f;
+		Velocity *= MathF.Pow(0.999f, Velocity.Length() / Weight * 2500);
 
-		position += velocity;
+		Position += Velocity;
 
-		if (timer > maxTime)
+		if (Timer > MaxTime)
 		{
 			Active = false;
 		}
@@ -82,18 +82,18 @@ public abstract class VisualGore : Visual
 
 	public override void Draw()
 	{
-		Vector2 v0 = position + new Vector2(-width, -height).RotatedBy(rotation) * 0.5f * scale;
-		Vector2 v1 = position + new Vector2(width, -height).RotatedBy(rotation) * 0.5f * scale;
-		Vector2 v2 = position + new Vector2(-width, height).RotatedBy(rotation) * 0.5f * scale;
-		Vector2 v3 = position + new Vector2(width, height).RotatedBy(rotation) * 0.5f * scale;
+		Vector2 v0 = Position + new Vector2(-Width, -Height).RotatedBy(Rotation) * 0.5f * Scale;
+		Vector2 v1 = Position + new Vector2(Width, -Height).RotatedBy(Rotation) * 0.5f * Scale;
+		Vector2 v2 = Position + new Vector2(-Width, Height).RotatedBy(Rotation) * 0.5f * Scale;
+		Vector2 v3 = Position + new Vector2(Width, Height).RotatedBy(Rotation) * 0.5f * Scale;
 
-		alpha = (maxTime - timer) / 120f;
-		alpha = Math.Clamp(alpha, 0.0f, 1.0f);
+		Alpha = (MaxTime - Timer) / 120f;
+		Alpha = Math.Clamp(Alpha, 0.0f, 1.0f);
 
-		Color c0 = Lighting.GetColor((v0 / 16f).ToPoint()) * alpha;
-		Color c1 = Lighting.GetColor((v1 / 16f).ToPoint()) * alpha;
-		Color c2 = Lighting.GetColor((v2 / 16f).ToPoint()) * alpha;
-		Color c3 = Lighting.GetColor((v3 / 16f).ToPoint()) * alpha;
+		Color c0 = Lighting.GetColor((v0 / 16f).ToPoint()) * Alpha;
+		Color c1 = Lighting.GetColor((v1 / 16f).ToPoint()) * Alpha;
+		Color c2 = Lighting.GetColor((v2 / 16f).ToPoint()) * Alpha;
+		Color c3 = Lighting.GetColor((v3 / 16f).ToPoint()) * Alpha;
 
 		List<Vertex2D> bars = new List<Vertex2D>()
 		{

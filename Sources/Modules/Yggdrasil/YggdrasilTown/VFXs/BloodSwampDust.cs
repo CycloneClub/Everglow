@@ -6,67 +6,67 @@ public class BloodSwampDust : Visual
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
 
 	public Projectile ChasedProjectile;
-	public Vector2 position;
-	public Vector2 velocity;
+	public Vector2 Position;
+	public Vector2 Velocity;
 	public float[] ai;
-	public float timer;
-	public float maxTime;
-	public float scale;
+	public float Timer;
+	public float MaxTime;
+	public float Scale;
 	public float MaxScale;
-	public float rotation;
+	public float Rotation;
 
 	public override void Update()
 	{
-		position += velocity;
-		if (position.X <= 320 || position.X >= Main.maxTilesX * 16 - 320)
+		Position += Velocity;
+		if (Position.X <= 320 || Position.X >= Main.maxTilesX * 16 - 320)
 		{
-			timer = maxTime;
+			Timer = MaxTime;
 			Active = false;
 			return;
 		}
-		if (position.Y <= 320 || position.Y >= Main.maxTilesY * 16 - 320)
+		if (Position.Y <= 320 || Position.Y >= Main.maxTilesY * 16 - 320)
 		{
-			timer = maxTime;
+			Timer = MaxTime;
 			Active = false;
 			return;
 		}
 		var toProj = Vector2.zeroVector;
 		if (ChasedProjectile != null && ChasedProjectile.active)
 		{
-			toProj = (ChasedProjectile.Center - position).NormalizeSafe() * 3f;
+			toProj = (ChasedProjectile.Center - Position).NormalizeSafe() * 3f;
 		}
 		else
 		{
-			timer += 5;
+			Timer += 5;
 		}
-		Vector2 rotatedVel = velocity.NormalizeSafe().RotatedBy(ai[0]) * 0.3f;
+		Vector2 rotatedVel = Velocity.NormalizeSafe().RotatedBy(ai[0]) * 0.3f;
 		Vector2 accleration = Vector2.Lerp(rotatedVel, toProj, MathF.Sin(ai[1] + (float)Main.time * 0.12f) * 0.5f + 0.5f);
-		velocity *= 0.7f;
-		velocity += accleration;
-		scale = MaxScale * (1 - MathF.Sin(timer / maxTime * MathF.PI * 0.5f));
-		timer++;
-		if (timer > maxTime)
+		Velocity *= 0.7f;
+		Velocity += accleration;
+		Scale = MaxScale * (1 - MathF.Sin(Timer / MaxTime * MathF.PI * 0.5f));
+		Timer++;
+		if (Timer > MaxTime)
 		{
 			Active = false;
 			return;
 		}
-		Lighting.AddLight(position, scale * 0.02f, 0, 0);
+		Lighting.AddLight(Position, Scale * 0.02f, 0, 0);
 	}
 
 	public override void Draw()
 	{
-		Vector2 toCorner = new Vector2(0, scale);
+		Vector2 toCorner = new Vector2(0, Scale);
 		Color lightColor = new Color(0.5f, 0, 0, 0.5f);
 
 		List<Vertex2D> bars = new List<Vertex2D>()
 		{
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 1 + rotation), lightColor, new Vector3(1, 0, 0)),
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 0.5 + rotation), lightColor, new Vector3(0, 0, 0)),
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 0 + rotation), lightColor, new Vector3(0, 1, 0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1 + Rotation), lightColor, new Vector3(1, 0, 0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 0.5 + Rotation), lightColor, new Vector3(0, 0, 0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 0 + Rotation), lightColor, new Vector3(0, 1, 0)),
 
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * -0.5 + rotation), lightColor, new Vector3(1, 1, 0)),
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 0 + rotation), lightColor, new Vector3(0, 1, 0)),
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 1 + rotation), lightColor, new Vector3(1, 0, 0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * -0.5 + Rotation), lightColor, new Vector3(1, 1, 0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 0 + Rotation), lightColor, new Vector3(0, 1, 0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1 + Rotation), lightColor, new Vector3(1, 0, 0)),
 		};
 		Ins.Batch.Draw(ModAsset.BloodFlame_noise.Value, bars, PrimitiveType.TriangleList);
 	}

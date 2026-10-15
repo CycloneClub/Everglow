@@ -6,19 +6,23 @@ namespace Everglow.Myth.TheTusk.Projectiles.Weapon;
 public class ToothSpear_proj : ModProjectile
 {
 	public virtual float HoldoutRangeMin => 24f;
+
 	public virtual float HoldoutRangeMax => 150f;
+
 	public Vector2 LockCenter = Vector2.Zero;
 
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		GenerateVFX_hitNPC(target, 8);
 	}
+
 	public override void SetDefaults()
 	{
 		Projectile.CloneDefaults(ProjectileID.Spear);
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
 	}
+
 	public override bool PreAI()
 	{
 		Projectile.rotation = MathF.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + MathF.PI / 4f;
@@ -27,7 +31,9 @@ public class ToothSpear_proj : ModProjectile
 		player.heldProj = Projectile.whoAmI;
 
 		if (Projectile.timeLeft > duration)
+		{
 			Projectile.timeLeft = duration;
+		}
 
 		Projectile.velocity = Vector2.Normalize(Projectile.velocity);
 
@@ -52,6 +58,7 @@ public class ToothSpear_proj : ModProjectile
 
 		return false;
 	}
+
 	public void GenerateVFX(int direction)
 	{
 		Player player = Main.player[Projectile.owner];
@@ -61,14 +68,14 @@ public class ToothSpear_proj : ModProjectile
 			float mulScale = Main.rand.NextFloat(6f, 25f);
 			var blood = new BloodDrop
 			{
-				velocity = afterVelocity,
+				Velocity = afterVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(82, 164),
-				scale = mulScale,
-				rotation = Main.rand.NextFloat(6.283f),
-				ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) }
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(82, 164),
+				Scale = mulScale,
+				Rotation = Main.rand.NextFloat(6.283f),
+				ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 			};
 			Ins.VFXManager.Add(blood);
 		}
@@ -77,17 +84,18 @@ public class ToothSpear_proj : ModProjectile
 			Vector2 afterVelocity = Projectile.velocity * 2f * direction * player.meleeSpeed;
 			var blood = new BloodSplash
 			{
-				velocity = afterVelocity,
+				Velocity = afterVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(42, 78),
-				scale = Main.rand.NextFloat(6f, 18f),
-				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0, Main.rand.NextFloat(20.0f, 40.0f) }
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(42, 78),
+				Scale = Main.rand.NextFloat(6f, 18f),
+				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0, Main.rand.NextFloat(20.0f, 40.0f) },
 			};
 			Ins.VFXManager.Add(blood);
 		}
 	}
+
 	public void GenerateVFX_hitNPC(NPC target, float times = 1)
 	{
 		for (int g = 0; g < times; g++)
@@ -96,14 +104,14 @@ public class ToothSpear_proj : ModProjectile
 			float mulScale = Main.rand.NextFloat(6f, 25f);
 			var blood = new BloodDrop
 			{
-				velocity = afterVelocity,
+				Velocity = afterVelocity,
 				Active = true,
 				Visible = true,
-				position = target.Center,
-				maxTime = Main.rand.Next(82, 164),
-				scale = mulScale,
-				rotation = Main.rand.NextFloat(6.283f),
-				ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) }
+				Position = target.Center,
+				MaxTime = Main.rand.Next(82, 164),
+				Scale = mulScale,
+				Rotation = Main.rand.NextFloat(6.283f),
+				ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 			};
 			Ins.VFXManager.Add(blood);
 		}
@@ -112,17 +120,18 @@ public class ToothSpear_proj : ModProjectile
 			Vector2 afterVelocity = new Vector2(0, Main.rand.NextFloat(8f)).RotatedByRandom(MathHelper.TwoPi);
 			var blood = new BloodSplash
 			{
-				velocity = afterVelocity,
+				Velocity = afterVelocity,
 				Active = true,
 				Visible = true,
-				position = target.Center,
-				maxTime = Main.rand.Next(42, 78),
-				scale = Main.rand.NextFloat(6f, 18f),
-				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0, Main.rand.NextFloat(20.0f, 40.0f) }
+				Position = target.Center,
+				MaxTime = Main.rand.Next(42, 78),
+				Scale = Main.rand.NextFloat(6f, 18f),
+				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0, Main.rand.NextFloat(20.0f, 40.0f) },
 			};
 			Ins.VFXManager.Add(blood);
 		}
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D mainTex = ModAsset.ToothSpear_proj.Value;
@@ -194,7 +203,6 @@ public class ToothSpear_proj : ModProjectile
 			barsHighLight.Add(LockCenter - vel * 6 * x - width * 0.4f, drawColor, new Vector3(x / 30f - timeEffectValue, 0, MathF.Sin(x / 8f)));
 		}
 
-
 		SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone);
@@ -211,7 +219,6 @@ public class ToothSpear_proj : ModProjectile
 		Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_2.Value;
 		Main.graphics.graphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		Main.graphics.graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
-
 
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone);

@@ -42,13 +42,13 @@ public class MossySpell : SpellTomeItem
 			Vector2 phi = new Vector2(0, Main.rand.Next(12, 18)).RotatedBy(t / 15f * MathHelper.TwoPi);
 			var dustVFX4 = new MossBlossomDustSide
 			{
-				velocity = phi.RotatedBy(0.7f) * 0.2f,
+				Velocity = phi.RotatedBy(0.7f) * 0.2f,
 				Active = true,
 				Visible = true,
-				position = Main.MouseWorld + phi * 0.4f,
-				maxTime = Main.rand.Next(15, 40),
-				scale = Main.rand.NextFloat(12, 16),
-				rotation = phi.RotatedBy(0.7f).ToRotationSafe() - MathHelper.PiOver4 * 3,
+				Position = Main.MouseWorld + phi * 0.4f,
+				MaxTime = Main.rand.Next(15, 40),
+				Scale = Main.rand.NextFloat(12, 16),
+				Rotation = phi.RotatedBy(0.7f).ToRotationSafe() - MathHelper.PiOver4 * 3,
 				ai = new float[] { 0, 0, 0 },
 			};
 			Ins.VFXManager.Add(dustVFX4);
@@ -58,13 +58,13 @@ public class MossySpell : SpellTomeItem
 			Vector2 phi = new Vector2(0, Main.rand.Next(0, 18)).RotatedBy(t / 15f * MathHelper.TwoPi);
 			var dustVFX4 = new MossBlossomDustFace
 			{
-				velocity = phi.RotatedBy(0.7f) * 0.2f,
+				Velocity = phi.RotatedBy(0.7f) * 0.2f,
 				Active = true,
 				Visible = true,
-				position = Main.MouseWorld + phi * 0.4f,
-				maxTime = Main.rand.Next(15, 40),
-				scale = Main.rand.NextFloat(12, 16),
-				rotation = Main.rand.NextFloat(MathHelper.TwoPi),
+				Position = Main.MouseWorld + phi * 0.4f,
+				MaxTime = Main.rand.Next(15, 40),
+				Scale = Main.rand.NextFloat(12, 16),
+				Rotation = Main.rand.NextFloat(MathHelper.TwoPi),
 				ai = new float[] { 0, 0, 0 },
 			};
 			Ins.VFXManager.Add(dustVFX4);

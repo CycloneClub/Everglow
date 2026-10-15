@@ -1,5 +1,6 @@
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
 using Terraria.DataStructures;
+using Terraria.WorldBuilding;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Melee;
 
@@ -33,6 +34,22 @@ public class MagicalBoomerangProj : ModProjectile
 		}
 		Projectile.velocity *= -1;
 		Returning = true;
+		for (int i = 0; i < 24; i++)
+		{
+			var dustVFX = new MagicalBoomerangDust
+			{
+				Velocity = new Vector2(0, Main.rand.NextFloat(6)).RotatedByRandom(MathHelper.TwoPi),
+				HasGravity = true,
+				Active = true,
+				Visible = true,
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(20, 90),
+				Scale = Main.rand.NextFloat(6, 12),
+				Rotation = Main.rand.NextFloat(MathHelper.TwoPi),
+				ai = new float[] { 0, 0, 0 },
+			};
+			Ins.VFXManager.Add(dustVFX);
+		}
 		return false;
 	}
 
@@ -75,13 +92,13 @@ public class MagicalBoomerangProj : ModProjectile
 				{
 					var dustVFX = new MagicalBoomerangDust
 					{
-						velocity = Vector2.zeroVector,
+						Velocity = Vector2.zeroVector,
 						Active = true,
 						Visible = true,
-						position = Projectile.Center + vel / 5f * step,
-						maxTime = Main.rand.Next(30, 46),
-						scale = Main.rand.NextFloat(3, 4),
-						rotation = Main.rand.NextFloat(MathHelper.TwoPi),
+						Position = Projectile.Center + vel / 5f * step,
+						MaxTime = Main.rand.Next(30, 46),
+						Scale = Main.rand.NextFloat(30, 40),
+						Rotation = Main.rand.NextFloat(MathHelper.TwoPi),
 						ai = new float[] { 0, 0, 0 },
 					};
 					Ins.VFXManager.Add(dustVFX);
@@ -89,25 +106,25 @@ public class MagicalBoomerangProj : ModProjectile
 					float distanceSide = (20 - step) / 5f;
 					var dustVFXLeft = new MagicalBoomerangDust
 					{
-						velocity = Vector2.zeroVector,
+						Velocity = Vector2.zeroVector,
 						Active = true,
 						Visible = true,
-						position = Projectile.Center + vel / 5f * step + vel.RotatedBy(1.2f) / 6f * distanceSide,
-						maxTime = Main.rand.Next(30, 46),
-						scale = Main.rand.NextFloat(3, 4),
-						rotation = Main.rand.NextFloat(MathHelper.TwoPi),
+						Position = Projectile.Center + vel / 5f * step + vel.RotatedBy(1.2f) / 6f * distanceSide,
+						MaxTime = Main.rand.Next(30, 46),
+						Scale = Main.rand.NextFloat(30, 40),
+						Rotation = Main.rand.NextFloat(MathHelper.TwoPi),
 						ai = new float[] { 0, 0, 0 },
 					};
 					Ins.VFXManager.Add(dustVFXLeft);
 					var dustVFXRight = new MagicalBoomerangDust
 					{
-						velocity = Vector2.zeroVector,
+						Velocity = Vector2.zeroVector,
 						Active = true,
 						Visible = true,
-						position = Projectile.Center + vel / 5f * step + vel.RotatedBy(-1.2f) / 6f * distanceSide,
-						maxTime = Main.rand.Next(30, 46),
-						scale = Main.rand.NextFloat(3, 4),
-						rotation = Main.rand.NextFloat(MathHelper.TwoPi),
+						Position = Projectile.Center + vel / 5f * step + vel.RotatedBy(-1.2f) / 6f * distanceSide,
+						MaxTime = Main.rand.Next(30, 46),
+						Scale = Main.rand.NextFloat(30, 40),
+						Rotation = Main.rand.NextFloat(MathHelper.TwoPi),
 						ai = new float[] { 0, 0, 0 },
 					};
 					Ins.VFXManager.Add(dustVFXRight);
@@ -123,6 +140,22 @@ public class MagicalBoomerangProj : ModProjectile
 		{
 			Returning = true;
 		}
+		for (int i = 0; i < 48; i++)
+		{
+			var dustVFX = new MagicalBoomerangDust
+			{
+				Velocity = new Vector2(0, Main.rand.NextFloat(8)).RotatedByRandom(MathHelper.TwoPi) + Projectile.velocity * 0.5f,
+				HasGravity = true,
+				Active = true,
+				Visible = true,
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(20, 90),
+				Scale = Main.rand.NextFloat(6, 12),
+				Rotation = Main.rand.NextFloat(MathHelper.TwoPi),
+				ai = new float[] { 0, 0, 0 },
+			};
+			Ins.VFXManager.Add(dustVFX);
+		}
 		base.OnHitNPC(target, hit, damageDone);
 	}
 
@@ -132,8 +165,21 @@ public class MagicalBoomerangProj : ModProjectile
 	{
 		Texture2D boomerang = ModAsset.MagicalBoomerangProj.Value;
 		Texture2D boomerangGlow = ModAsset.MagicalBoomerangProj_glow.Value;
+		Texture2D shape = ModAsset.MagicalBoomerangProj_shape.Value;
+		Texture2D bloom = ModAsset.MagicalBoomerangProj_bloom.Value;
 		Main.EntitySpriteDraw(boomerang, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, boomerang.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
 		Main.EntitySpriteDraw(boomerangGlow, Projectile.Center - Main.screenPosition, null, new Color(0.3f, 0.7f, 1f, 0), Projectile.rotation, boomerangGlow.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
+
+		float value = (30 - Timer) / 30f;
+		if (value > 0)
+		{
+			Main.EntitySpriteDraw(shape, Projectile.Center - Main.screenPosition, null, Color.Lerp(Color.White, new Color(0f, 0.2f, 0.8f, 1f), MathF.Pow(1 - value, 0.5f)) * value, Projectile.rotation, shape.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
+		}
+		value = (240 - Timer) / 240f;
+		if (value > 0)
+		{
+			Main.EntitySpriteDraw(bloom, Projectile.Center - Main.screenPosition, null, new Color(1f, 1f, 1f, 0) * value, Projectile.rotation, bloom.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
+		}
 		return false;
 	}
 }

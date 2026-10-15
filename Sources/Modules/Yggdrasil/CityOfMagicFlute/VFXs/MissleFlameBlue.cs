@@ -33,13 +33,13 @@ public class MissleFlameBlueDust : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawNPCs;
 
-	public Vector2 position;
-	public Vector2 velocity;
+	public Vector2 Position;
+	public Vector2 Velocity;
 	public float[] ai;
-	public float timer;
-	public float maxTime;
-	public float scale;
-	public float rotation;
+	public float Timer;
+	public float MaxTime;
+	public float Scale;
+	public float Rotation;
 
 	public MissleFlameBlueDust()
 	{
@@ -47,55 +47,55 @@ public class MissleFlameBlueDust : Visual
 
 	public override void Update()
 	{
-		position += velocity;
-		if (position.X <= 320 || position.X >= Main.maxTilesX * 16 - 320)
+		Position += Velocity;
+		if (Position.X <= 320 || Position.X >= Main.maxTilesX * 16 - 320)
 		{
-			timer = maxTime;
+			Timer = MaxTime;
 		}
-		if (position.Y <= 320 || position.Y >= Main.maxTilesY * 16 - 320)
+		if (Position.Y <= 320 || Position.Y >= Main.maxTilesY * 16 - 320)
 		{
-			timer = maxTime;
+			Timer = MaxTime;
 		}
-		velocity *= 0.9f;
+		Velocity *= 0.9f;
 
-		if (position.X < Main.maxTilesX * 16 - 320 && position.X > 320)
+		if (Position.X < Main.maxTilesX * 16 - 320 && Position.X > 320)
 		{
-			if (position.Y < Main.maxTilesY * 16 - 320 && position.Y > 320)
+			if (Position.Y < Main.maxTilesY * 16 - 320 && Position.Y > 320)
 			{
-				if (Collision.SolidCollision(position, 0, 0))
+				if (Collision.SolidCollision(Position, 0, 0))
 				{
 				}
 			}
 		}
-		if (scale < 160)
+		if (Scale < 160)
 		{
-			scale += 2f;
+			Scale += 2f;
 		}
-		timer++;
-		if (timer > maxTime)
+		Timer++;
+		if (Timer > MaxTime)
 		{
 			Active = false;
 		}
 
-		velocity = velocity.RotatedBy(ai[1]);
-		float value = timer / maxTime;
+		Velocity = Velocity.RotatedBy(ai[1]);
+		float value = Timer / MaxTime;
 		Vector3 color = Vector3.Lerp(new Vector3(0.8f, 0.8f, 2f), new Vector3(0f, 0.3f, 0.5f), value);
-		Lighting.AddLight(position, color * scale * 0.02f * (1 - value));
+		Lighting.AddLight(Position, color * Scale * 0.02f * (1 - value));
 	}
 
 	public override void Draw()
 	{
-		float pocession = timer / maxTime;
+		float pocession = Timer / MaxTime;
 		float timeValue = (float)(Main.time * 0.002);
-		Vector2 toCorner = new Vector2(0, scale).RotatedBy(rotation);
+		Vector2 toCorner = new Vector2(0, Scale).RotatedBy(Rotation);
 		float light = 1f;
 		var bars = new List<Vertex2D>()
 		{
-			new Vertex2D(position + toCorner, new Color(0, 0, pocession), new Vector3(ai[0], timeValue, light)),
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 0.5), new Color(0, 1, pocession), new Vector3(ai[0], timeValue + 0.4f, light)),
+			new Vertex2D(Position + toCorner, new Color(0, 0, pocession), new Vector3(ai[0], timeValue, light)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 0.5), new Color(0, 1, pocession), new Vector3(ai[0], timeValue + 0.4f, light)),
 
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 1.5), new Color(1, 0, pocession), new Vector3(ai[0] + 0.4f, timeValue, light)),
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 1), new Color(1, 1, pocession), new Vector3(ai[0] + 0.4f, timeValue + 0.4f, light)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1.5), new Color(1, 0, pocession), new Vector3(ai[0] + 0.4f, timeValue, light)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1), new Color(1, 1, pocession), new Vector3(ai[0] + 0.4f, timeValue + 0.4f, light)),
 		};
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);
 	}

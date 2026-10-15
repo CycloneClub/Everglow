@@ -170,12 +170,12 @@ public abstract class StabbingProjectile_Stab : ModProjectile, IWarpProjectile
 		yield return new WaitForFrames(40);
 		var v = new StabVFX()
 		{
-			pos = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
-			vel = velocity,
-			color = Color.Lerp(StabColor, Color.Transparent, 0.4f),
-			scale = 26,
-			maxtime = (int)(240 / (float)(Projectile.extraUpdates + 1)),
-			timeleft = (int)(240 / (float)(Projectile.extraUpdates + 1)),
+			Position = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
+			Velocity = velocity,
+			StabEffectColor = Color.Lerp(StabColor, Color.Transparent, 0.4f),
+			Scale = 26,
+			MaxTime = (int)(240 / (float)(Projectile.extraUpdates + 1)),
+			TimeLeft = (int)(240 / (float)(Projectile.extraUpdates + 1)),
 		};
 		if (StabEndPoint_WorldPos == Vector2.Zero)
 		{
@@ -184,12 +184,12 @@ public abstract class StabbingProjectile_Stab : ModProjectile, IWarpProjectile
 		yield return new WaitForFrames(40);
 		v = new StabVFX()
 		{
-			pos = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
-			vel = velocity,
-			color = Color.Lerp(StabColor, Color.Transparent, 0.56f),
-			scale = 15,
-			maxtime = (int)(240 / (float)(Projectile.extraUpdates + 1)),
-			timeleft = (int)(240 / (float)(Projectile.extraUpdates + 1)),
+			Position = Projectile.Center + Projectile.velocity * StabDistance * 80 * (1 - StabTimer / 135f),
+			Velocity = velocity,
+			StabEffectColor = Color.Lerp(StabColor, Color.Transparent, 0.56f),
+			Scale = 15,
+			MaxTime = (int)(240 / (float)(Projectile.extraUpdates + 1)),
+			TimeLeft = (int)(240 / (float)(Projectile.extraUpdates + 1)),
 		};
 		if (StabEndPoint_WorldPos == Vector2.Zero)
 		{
@@ -213,23 +213,23 @@ public abstract class StabbingProjectile_Stab : ModProjectile, IWarpProjectile
 			{
 				Projectile.timeLeft++;
 				float value = (Projectile.timeLeft + StabTimer) / 135f;
-				float BodyRotation = MathF.Sin(value * MathF.PI) * Owner.direction * 0.2f;
-				TestPlayerDrawer Tplayer = Owner.GetModPlayer<TestPlayerDrawer>();
-				Tplayer.HeadRotation = 0;
-				Tplayer.HideLeg = true;
-				Owner.headRotation = -BodyRotation;
-				Tplayer.HeadRotation = Owner.headRotation;
-				Owner.fullRotation = BodyRotation;
+				float bodyRotation = MathF.Sin(value * MathF.PI) * Owner.direction * 0.2f;
+				TestPlayerDrawer playerDrawer = Owner.GetModPlayer<TestPlayerDrawer>();
+				playerDrawer.HeadRotation = 0;
+				playerDrawer.HideLeg = true;
+				Owner.headRotation = -bodyRotation;
+				playerDrawer.HeadRotation = Owner.headRotation;
+				Owner.fullRotation = bodyRotation;
 				Owner.fullRotationOrigin = new Vector2(Owner.Hitbox.Width / 2f, Owner.gravDir == -1 ? 0 : Owner.Hitbox.Height);
 			}
 			else
 			{
-				TestPlayerDrawer Tplayer = Owner.GetModPlayer<TestPlayerDrawer>();
+				TestPlayerDrawer playerDrawer = Owner.GetModPlayer<TestPlayerDrawer>();
 				Owner.legFrame = new Rectangle(0, 0, Owner.legFrame.Width, Owner.legFrame.Height);
 				Owner.fullRotation = 0;
 				Owner.legRotation = 0;
-				Tplayer.HeadRotation = 0;
-				Tplayer.HideLeg = false;
+				playerDrawer.HeadRotation = 0;
+				playerDrawer.HideLeg = false;
 				Owner.legPosition = Vector2.Zero;
 			}
 		}
@@ -288,13 +288,13 @@ public abstract class StabbingProjectile_Stab : ModProjectile, IWarpProjectile
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(2f, 6f)).RotatedByRandom(MathHelper.TwoPi);
 			var spark = new FireSpark_MetalStabDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = StabEndPoint_WorldPos,
-				maxTime = Main.rand.Next(1, 25),
-				scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(10f, 27.0f)),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = StabEndPoint_WorldPos,
+				MaxTime = Main.rand.Next(1, 25),
+				Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(10f, 27.0f)),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Main.rand.NextFloat(-0.13f, 0.13f) },
 			};
 			Ins.VFXManager.Add(spark);

@@ -1,6 +1,6 @@
 namespace Everglow.Commons.UI.UIElements
 {
-	internal class UIContainerPanel : BaseElement
+	public class UIContainerPanel : BaseElement
 	{
 		private class InnerPanel : BaseElement
 		{
@@ -37,9 +37,16 @@ namespace Everglow.Commons.UI.UIElements
 		private Vector2 innerPanelMinLocation;
 		private Vector2 innerPanelMaxLocation;
 		public bool CanMove = false, CanMoveVerticalScrollbar = false, CanMoveHorizontalScrollbar = false;
+
 		public IScrollbar UIVerticalScrollbar => _verticalScrollbar;
+
 		public IScrollbar UIHorizontalScrollbar => _horizontalScrollbar;
+
 		public List<BaseElement> Elements { get => _innerPanel.ChildrenElements; }
+
+		public float VerticalScrollDistance => _innerPanel.Info.Top.Pixel;
+
+		public float HorizontalScrollDistance => _innerPanel.Info.Left.Pixel;
 
 		public UIContainerPanel()
 		{

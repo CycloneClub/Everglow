@@ -29,41 +29,41 @@ public class RockQuakeCone : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
 
-	public Vector2 position;
-	public float timer;
-	public float maxTime;
-	public float scale;
-	public float rotation;
+	public Vector2 Position;
+	public float Timer;
+	public float MaxTime;
+	public float Scale;
+	public float Rotation;
 	public float[] ai;
 
 	public override void Update()
 	{
-		if (position.X <= 320 || position.X >= Main.maxTilesX * 16 - 320)
+		if (Position.X <= 320 || Position.X >= Main.maxTilesX * 16 - 320)
 		{
-			timer = maxTime;
+			Timer = MaxTime;
 			Active = false;
 			return;
 		}
-		if (position.Y <= 320 || position.Y >= Main.maxTilesY * 16 - 320)
+		if (Position.Y <= 320 || Position.Y >= Main.maxTilesY * 16 - 320)
 		{
-			timer = maxTime;
+			Timer = MaxTime;
 			Active = false;
 			return;
 		}
-		float progress = timer / maxTime;
+		float progress = Timer / MaxTime;
 		float progressLength = Math.Min(progress * 2f, 1);
 		progressLength = MathF.Pow(progressLength, 0.3f);
-		Vector2 vel = new Vector2(scale * 0.4f * progressLength, 0).RotatedBy(rotation) * 5;
+		Vector2 vel = new Vector2(Scale * 0.4f * progressLength, 0).RotatedBy(Rotation) * 5;
 		float fade = 1f;
 		if (progress > 0.7f)
 		{
 			fade -= (progress - 0.7f) / 0.3f;
 		}
 		fade = Math.Max(0, fade);
-		float colorFade = scale * 0.02f * fade;
-		Lighting.AddLight(position + vel, colorFade * 0.6f, colorFade * 0.5f, colorFade * 0.5f);
-		timer++;
-		if (timer > maxTime)
+		float colorFade = Scale * 0.02f * fade;
+		Lighting.AddLight(Position + vel, colorFade * 0.6f, colorFade * 0.5f, colorFade * 0.5f);
+		Timer++;
+		if (Timer > MaxTime)
 		{
 			Active = false;
 			return;
@@ -72,14 +72,14 @@ public class RockQuakeCone : Visual
 
 	public override void Draw()
 	{
-		float progress = timer / maxTime;
+		float progress = Timer / MaxTime;
 		float progressLength = Math.Min(progress * 2f, 1);
 		progressLength = MathF.Pow(progressLength, 0.3f);
 		int maxLength = 15;
 		List<Vertex2D> bars = new List<Vertex2D>();
 		for (int y = 0; y < maxLength; y++)
 		{
-			Vector2 vel = new Vector2(scale * 0.4f * progressLength, 0).RotatedBy(rotation) * y;
+			Vector2 vel = new Vector2(Scale * 0.4f * progressLength, 0).RotatedBy(Rotation) * y;
 			Vector2 width = vel.NormalizeSafe().RotatedBy(MathHelper.PiOver2) * 40;
 			float fade = y / (float)(maxLength - 1);
 			float shapeFade = 1 - fade;
@@ -88,8 +88,8 @@ public class RockQuakeCone : Visual
 				fade -= (progress - 0.7f) / 0.3f;
 			}
 			fade = Math.Max(0, fade);
-			bars.Add(position + vel + width, new Color(0.8f, 0.66f, 0.66f, 0) * fade, new Vector3(y * 0.1f, 0, shapeFade));
-			bars.Add(position + vel - width, new Color(0.8f, 0.66f, 0.66f, 0) * fade, new Vector3(y * 0.1f, 1, shapeFade));
+			bars.Add(Position + vel + width, new Color(0.8f, 0.66f, 0.66f, 0) * fade, new Vector3(y * 0.1f, 0, shapeFade));
+			bars.Add(Position + vel - width, new Color(0.8f, 0.66f, 0.66f, 0) * fade, new Vector3(y * 0.1f, 1, shapeFade));
 		}
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);
 	}

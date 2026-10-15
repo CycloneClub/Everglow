@@ -69,13 +69,13 @@ public class HyperockSpearProj : ModProjectile
 							Vector2 vel = Vector2.UnitX.RotatedByRandom(MathF.PI * 2) * 4;
 							var Vortex = new HyperockSpear_VortexLine
 							{
-								velocity = vel * 0.001f,
+								Velocity = vel * 0.001f,
 								Active = true,
 								Visible = true,
-								positiontoProjectile = vel.RotatedBy(MathF.PI * 0.5) * Main.rand.NextFloat(20, 70),
+								PositiontoProjectile = vel.RotatedBy(MathF.PI * 0.5) * Main.rand.NextFloat(20, 70),
 								OnTile = false,
-								maxTime = Main.rand.Next(120, 180),
-								scale = 14,
+								MaxTime = Main.rand.Next(120, 180),
+								Scale = 14,
 								VFXOwner = Projectile,
 								ai = new float[] { 1, 0 },
 							};
@@ -99,13 +99,13 @@ public class HyperockSpearProj : ModProjectile
 							Vector2 vel = Vector2.UnitX.RotatedByRandom(MathF.PI * 2) * 4;
 							var Vortex = new HyperockSpear_VortexLine
 							{
-								velocity = vel * 0.001f,
+								Velocity = vel * 0.001f,
 								Active = true,
 								Visible = true,
-								positiontoProjectile = vel.RotatedBy(MathF.PI * 0.5) * Main.rand.NextFloat(20, 70),
+								PositiontoProjectile = vel.RotatedBy(MathF.PI * 0.5) * Main.rand.NextFloat(20, 70),
 								OnTile = false,
-								maxTime = Main.rand.Next(120, 180),
-								scale = 14,
+								MaxTime = Main.rand.Next(120, 180),
+								Scale = 14,
 								VFXOwner = Projectile,
 								ai = new float[] { 1, 0 },
 							};
@@ -153,13 +153,13 @@ public class HyperockSpearProj : ModProjectile
 					Vector2 aimposition = Projectile.Center;
 					var Vortex = new HyperockSpear_VortexLine
 					{
-						velocity = vel,
+						Velocity = vel,
 						Active = true,
 						Visible = true,
-						positiontoProjectile = Vector2.Zero,
+						PositiontoProjectile = Vector2.Zero,
 						OnTile = false,
-						maxTime = Main.rand.Next(90, 120),
-						scale = 6,
+						MaxTime = Main.rand.Next(90, 120),
+						Scale = 6,
 						VFXOwner = Projectile,
 						ai = new float[] { 0f, Main.rand.NextFloat(-0.05f, 0.05f) },
 					};
@@ -263,13 +263,13 @@ public class HyperockSpearProj : ModProjectile
 				Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(4f, 12f)).RotatedByRandom(MathHelper.TwoPi);
 				var somg = new RockSmogDust
 				{
-					velocity = newVelocity,
+					Velocity = newVelocity,
 					Active = true,
 					Visible = true,
-					position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-					maxTime = Main.rand.Next(37, 45),
-					scale = Main.rand.NextFloat(40f, 55f),
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+					MaxTime = Main.rand.Next(37, 45),
+					Scale = Main.rand.NextFloat(40f, 55f),
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 				};
 				Ins.VFXManager.Add(somg);
@@ -311,13 +311,13 @@ public class HyperockSpearProj : ModProjectile
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 4f)).RotatedByRandom(MathHelper.TwoPi);
 			var somg = new RockSmogDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-				maxTime = Main.rand.Next(37, 45),
-				scale = Main.rand.NextFloat(40f, 55f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+				MaxTime = Main.rand.Next(37, 45),
+				Scale = Main.rand.NextFloat(40f, 55f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
 			Ins.VFXManager.Add(somg);

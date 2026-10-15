@@ -76,13 +76,13 @@ public class RockExplosion_friendly : ModProjectile, IWarpProjectile
 			Vector2 newVelocity = new Vector2(0, MathF.Sqrt(Main.rand.NextFloat(0f, 2f)) * Projectile.ai[0]).RotatedByRandom(MathHelper.TwoPi);
 			var somg = new RockSmogDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + newVelocity * 3,
-				maxTime = Main.rand.Next(37, 45),
-				scale = Main.rand.NextFloat(10f, 15f) * Projectile.ai[0],
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + newVelocity * 3,
+				MaxTime = Main.rand.Next(37, 45),
+				Scale = Main.rand.NextFloat(10f, 15f) * Projectile.ai[0],
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
 			Ins.VFXManager.Add(somg);

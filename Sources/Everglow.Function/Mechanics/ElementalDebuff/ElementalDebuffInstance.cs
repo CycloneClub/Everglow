@@ -190,7 +190,6 @@ public sealed class ElementalDebuffInstance
 			{
 				return;
 			}
-
 			npc.lifeRegen -= Handler.DotDamage;
 			npc.SetLifeRegenExpectedLossPerSecond(Handler.DotDamage);
 		}

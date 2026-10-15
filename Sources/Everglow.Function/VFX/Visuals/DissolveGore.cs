@@ -30,18 +30,18 @@ public abstract class DissolveGore : VisualGore
 		{
 			return;
 		}
-		Vector2 v0 = position + new Vector2(-width, -height).RotatedBy(rotation) * 0.5f * scale;
-		Vector2 v1 = position + new Vector2(width, -height).RotatedBy(rotation) * 0.5f * scale;
-		Vector2 v2 = position + new Vector2(-width, height).RotatedBy(rotation) * 0.5f * scale;
-		Vector2 v3 = position + new Vector2(width, height).RotatedBy(rotation) * 0.5f * scale;
+		Vector2 v0 = Position + new Vector2(-Width, -Height).RotatedBy(Rotation) * 0.5f * Scale;
+		Vector2 v1 = Position + new Vector2(Width, -Height).RotatedBy(Rotation) * 0.5f * Scale;
+		Vector2 v2 = Position + new Vector2(-Width, Height).RotatedBy(Rotation) * 0.5f * Scale;
+		Vector2 v3 = Position + new Vector2(Width, Height).RotatedBy(Rotation) * 0.5f * Scale;
 
-		alpha = (maxTime - timer) / 120f;
-		alpha = Math.Clamp(alpha, 0.0f, 1.0f);
+		Alpha = (MaxTime - Timer) / 120f;
+		Alpha = Math.Clamp(Alpha, 0.0f, 1.0f);
 
-		Color c0 = Lighting.GetColor((v0 / 16f).ToPoint()) * alpha;
-		Color c1 = Lighting.GetColor((v1 / 16f).ToPoint()) * alpha;
-		Color c2 = Lighting.GetColor((v2 / 16f).ToPoint()) * alpha;
-		Color c3 = Lighting.GetColor((v3 / 16f).ToPoint()) * alpha;
+		Color c0 = Lighting.GetColor((v0 / 16f).ToPoint()) * Alpha;
+		Color c1 = Lighting.GetColor((v1 / 16f).ToPoint()) * Alpha;
+		Color c2 = Lighting.GetColor((v2 / 16f).ToPoint()) * Alpha;
+		Color c3 = Lighting.GetColor((v3 / 16f).ToPoint()) * Alpha;
 
 		List<Vertex2D> bars = new List<Vertex2D>()
 		{
@@ -56,20 +56,20 @@ public abstract class DissolveGore : VisualGore
 
 	public virtual void DrawDissolvePart()
 	{
-		Vector2 v0 = position + new Vector2(-width, -height).RotatedBy(rotation) * 0.5f * scale;
-		Vector2 v1 = position + new Vector2(width, -height).RotatedBy(rotation) * 0.5f * scale;
-		Vector2 v2 = position + new Vector2(-width, height).RotatedBy(rotation) * 0.5f * scale;
-		Vector2 v3 = position + new Vector2(width, height).RotatedBy(rotation) * 0.5f * scale;
+		Vector2 v0 = Position + new Vector2(-Width, -Height).RotatedBy(Rotation) * 0.5f * Scale;
+		Vector2 v1 = Position + new Vector2(Width, -Height).RotatedBy(Rotation) * 0.5f * Scale;
+		Vector2 v2 = Position + new Vector2(-Width, Height).RotatedBy(Rotation) * 0.5f * Scale;
+		Vector2 v3 = Position + new Vector2(Width, Height).RotatedBy(Rotation) * 0.5f * Scale;
 
-		alpha = (maxTime - timer) / 120f;
-		alpha = Math.Clamp(alpha, 0.0f, 1.0f);
+		Alpha = (MaxTime - Timer) / 120f;
+		Alpha = Math.Clamp(Alpha, 0.0f, 1.0f);
 
-		Color c0 = Lighting.GetColor((v0 / 16f).ToPoint()) * alpha;
-		Color c1 = Lighting.GetColor((v1 / 16f).ToPoint()) * alpha;
-		Color c2 = Lighting.GetColor((v2 / 16f).ToPoint()) * alpha;
-		Color c3 = Lighting.GetColor((v3 / 16f).ToPoint()) * alpha;
+		Color c0 = Lighting.GetColor((v0 / 16f).ToPoint()) * Alpha;
+		Color c1 = Lighting.GetColor((v1 / 16f).ToPoint()) * Alpha;
+		Color c2 = Lighting.GetColor((v2 / 16f).ToPoint()) * Alpha;
+		Color c3 = Lighting.GetColor((v3 / 16f).ToPoint()) * Alpha;
 
-		float alpha2 = (timer - 100) / (maxTime - 100f);
+		float alpha2 = (Timer - 100) / (MaxTime - 100f);
 		alpha2 = Math.Clamp(alpha2, 0.0f, 1.0f);
 
 		List<Vertex2D> bars = new List<Vertex2D>()

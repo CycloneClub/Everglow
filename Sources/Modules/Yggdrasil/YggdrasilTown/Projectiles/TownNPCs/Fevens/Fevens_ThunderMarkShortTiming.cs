@@ -35,13 +35,13 @@ public class Fevens_ThunderMarkShortTiming : ModProjectile
 			Vector2 vel = new Vector2(0, -Main.rand.NextFloat(5.6f, 8.4f)).RotatedByRandom(0.1f);
 			var dust = new Fevens_LightingBoltDust
 			{
-				velocity = vel,
+				Velocity = vel,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(30, 50),
-				scale = Main.rand.NextFloat(3f, 5f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(30, 50),
+				Scale = Main.rand.NextFloat(3f, 5f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(4.0f, 10.93f) },
 			};
 			Ins.VFXManager.Add(dust);

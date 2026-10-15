@@ -21,7 +21,7 @@ public class DarkGlimmeringParticlePipeline : Pipeline
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 
 		// Model matrix
-		// 1. translate according to the screen position
+		// 1. translate according to the screen Position
 		// 2. transform with the game view matrix
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition, 0)) *
 			Main.GameViewMatrix.TransformationMatrix;
@@ -53,13 +53,13 @@ public class DarkGlimmeringParticleDust : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
 
-	public Vector2 position;
-	public Vector2 velocity;
+	public Vector2 Position;
+	public Vector2 Velocity;
 	public float[] ai;
-	public float timer;
-	public float maxTime;
-	public float scale;
-	public float rotation;
+	public float Timer;
+	public float MaxTime;
+	public float Scale;
+	public float Rotation;
 
 	public DarkGlimmeringParticleDust()
 	{
@@ -67,27 +67,27 @@ public class DarkGlimmeringParticleDust : Visual
 
 	public override void Update()
 	{
-		position += velocity;
-		velocity *= 0.9f;
-		// If the particle is outside a specific range, then set the timer to max (duration to 0)
-		if (position.X <= 320 || position.X >= Main.maxTilesX * 16 - 320)
+		Position += Velocity;
+		Velocity *= 0.9f;
+		// If the particle is outside a specific range, then set the Timer to max (duration to 0)
+		if (Position.X <= 320 || Position.X >= Main.maxTilesX * 16 - 320)
 		{
-			timer = maxTime;
+			Timer = MaxTime;
 		}
-		if (position.Y <= 320 || position.Y >= Main.maxTilesY * 16 - 320)
+		if (Position.Y <= 320 || Position.Y >= Main.maxTilesY * 16 - 320)
 		{
-			timer = maxTime;
+			Timer = MaxTime;
 		}
 
 		// Slow down
-		velocity *= 0.995f;
+		Velocity *= 0.995f;
 
 		// Scale
-		scale = MathF.Sin(timer / maxTime * MathHelper.Pi) * ai[0];
+		Scale = MathF.Sin(Timer / MaxTime * MathHelper.Pi) * ai[0];
 
 		// Loop Instructions
-		timer++;
-		if (timer > maxTime)
+		Timer++;
+		if (Timer > MaxTime)
 		{
 			Active = false;
 		}
@@ -96,10 +96,10 @@ public class DarkGlimmeringParticleDust : Visual
 	public override void Draw()
 	{
 		// Duration progress
-		float progress = timer / maxTime;
+		float progress = Timer / MaxTime;
 
 		// Offset
-		Vector2 toCorner = new Vector2(0, scale).RotatedBy(rotation);
+		Vector2 toCorner = new Vector2(0, Scale).RotatedBy(Rotation);
 		Color lightColor = new Color(1f, 1f, 1f, 0);
 		float aValue = MathF.Sin((float)Main.time * 0.15f + ai[1]) * 0.5f + 0.4f;
 		float addScale = 0f;
@@ -111,11 +111,11 @@ public class DarkGlimmeringParticleDust : Visual
 		toCorner *= 1 + addScale;
 		List<Vertex2D> bars = new List<Vertex2D>()
 		{
-			new Vertex2D(position + toCorner, new Color(0, 0f, progress, aValue), lightColor.ToVector3()),
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 0.5), new Color(0, 1f, progress, aValue), lightColor.ToVector3()),
+			new Vertex2D(Position + toCorner, new Color(0, 0f, progress, aValue), lightColor.ToVector3()),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 0.5), new Color(0, 1f, progress, aValue), lightColor.ToVector3()),
 
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 1.5), new Color(1, 0f, progress, aValue), lightColor.ToVector3()),
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 1), new Color(1, 1f, progress, aValue), lightColor.ToVector3()),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1.5), new Color(1, 0f, progress, aValue), lightColor.ToVector3()),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1), new Color(1, 1f, progress, aValue), lightColor.ToVector3()),
 		};
 
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);

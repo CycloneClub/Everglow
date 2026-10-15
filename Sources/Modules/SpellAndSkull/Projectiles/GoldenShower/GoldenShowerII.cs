@@ -24,41 +24,44 @@ public class GoldenShowerII : ModProjectile
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 15;
 	}
-	public void GenerateVFX(int Frequency)
+
+	public void GenerateVFX(int frequency)
 	{
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			var blood = new IchorDrop
 			{
-				velocity = Projectile.velocity,
+				Velocity = Projectile.velocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(32, 64),
-				scale = Main.rand.NextFloat(6f, 14f),
-				rotation = Main.rand.NextFloat(6.283f),
-				ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) }
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(32, 64),
+				Scale = Main.rand.NextFloat(6f, 14f),
+				Rotation = Main.rand.NextFloat(6.283f),
+				ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 			};
 			Ins.VFXManager.Add(blood);
 		}
 	}
-	public void GenerateVFXII(int Frequency)
+
+	public void GenerateVFXII(int frequency)
 	{
-		for (int g = 0; g < Frequency; g++)
+		for (int g = 0; g < frequency; g++)
 		{
 			var blood = new IchorSplash
 			{
-				velocity = Projectile.velocity,
+				Velocity = Projectile.velocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(12, 36),
-				scale = Main.rand.NextFloat(1f, 5f),
-				ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 0.0f) }
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(12, 36),
+				Scale = Main.rand.NextFloat(1f, 5f),
+				ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 0.0f) },
 			};
 			Ins.VFXManager.Add(blood);
 		}
 	}
+
 	public override void AI()
 	{
 		int vfxFrequency = 200;
@@ -80,27 +83,33 @@ public class GoldenShowerII : ModProjectile
 
 		float kTime = 1f;
 		if (Projectile.timeLeft < 90f)
+		{
 			kTime = Projectile.timeLeft / 90f;
+		}
+
 		Lighting.AddLight((int)(Projectile.Center.X / 16), (int)(Projectile.Center.Y / 16), 0.32f * kTime, 0.23f * kTime, 0);
 		for (int x = 0; x < 8; x++)
 		{
-			Vector2 BasePos = Projectile.Center - new Vector2(4) + Projectile.velocity * Main.rand.NextFloat(1f);
-			var d0 = Dust.NewDustDirect(BasePos, 0, 0, DustID.Ichor, 0, 0, 0, default, 0.6f);
+			Vector2 basePos = Projectile.Center - new Vector2(4) + Projectile.velocity * Main.rand.NextFloat(1f);
+			var d0 = Dust.NewDustDirect(basePos, 0, 0, DustID.Ichor, 0, 0, 0, default, 0.6f);
 			d0.noGravity = true;
 			d0.velocity *= 0;
 		}
 		Projectile.velocity.Y += 0.15f;
 
 		if (Projectile.timeLeft == 210)
+		{
 			Projectile.friendly = true;
+		}
 	}
+
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		SoundEngine.PlaySound(SoundID.Drip, Projectile.Center);
 		for (int x = 0; x < 15; x++)
 		{
-			Vector2 BasePos = Projectile.Center - new Vector2(4) - Projectile.velocity;
-			var d0 = Dust.NewDustDirect(BasePos, 0, 0, DustID.Ichor, 0, 0, 0, default, 0.6f);
+			Vector2 basePos = Projectile.Center - new Vector2(4) - Projectile.velocity;
+			var d0 = Dust.NewDustDirect(basePos, 0, 0, DustID.Ichor, 0, 0, 0, default, 0.6f);
 			d0.noGravity = true;
 		}
 		if (Projectile.ai[0] != 3)
@@ -115,6 +124,7 @@ public class GoldenShowerII : ModProjectile
 		}
 		target.AddBuff(BuffID.Ichor, 600);
 	}
+
 	public override bool PreDraw(ref Color lightColor)
 	{
 		return false;

@@ -67,26 +67,26 @@ public class TwilightWoodLeggings : ModItem
 					}
 					var dustVFXLeft = new MagicalBoomerangDust
 					{
-						velocity = new Vector2(sideSpeed, -j).RotatedBy(totalRot) * scale,
+						Velocity = new Vector2(sideSpeed, -j).RotatedBy(totalRot) * scale,
 						Active = true,
 						Visible = true,
-						position = player.position + new Vector2(player.width / 2, player.height) + offset,
-						maxTime = Main.rand.Next(30, 46),
-						scale = Main.rand.NextFloat(3, 4),
-						rotation = Main.rand.NextFloat(MathHelper.TwoPi),
+						Position = player.position + new Vector2(player.width / 2, player.height) + offset,
+						MaxTime = Main.rand.Next(30, 46),
+						Scale = Main.rand.NextFloat(3, 4),
+						Rotation = Main.rand.NextFloat(MathHelper.TwoPi),
 						ai = new float[] { 0, 0, 0 },
 					};
 					Ins.VFXManager.Add(dustVFXLeft);
 
 					var dustVFXRight = new MagicalBoomerangDust
 					{
-						velocity = new Vector2(-sideSpeed, -j).RotatedBy(totalRot) * scale,
+						Velocity = new Vector2(-sideSpeed, -j).RotatedBy(totalRot) * scale,
 						Active = true,
 						Visible = true,
-						position = player.position + new Vector2(player.width / 2, player.height) + offset,
-						maxTime = Main.rand.Next(30, 46),
-						scale = Main.rand.NextFloat(3, 4),
-						rotation = Main.rand.NextFloat(MathHelper.TwoPi),
+						Position = player.position + new Vector2(player.width / 2, player.height) + offset,
+						MaxTime = Main.rand.Next(30, 46),
+						Scale = Main.rand.NextFloat(3, 4),
+						Rotation = Main.rand.NextFloat(MathHelper.TwoPi),
 						ai = new float[] { 0, 0, 0 },
 					};
 					Ins.VFXManager.Add(dustVFXRight);

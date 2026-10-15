@@ -2,14 +2,14 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.TwilightForest;
 
 public class TwilightShamanStaff : ModItem
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeWeapons;
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicWeapons;
 
 	public override void SetDefaults()
 	{
 		Item.width = 36;
 		Item.height = 34;
 
-		Item.DamageType = DamageClass.Melee;
+		Item.DamageType = DamageClass.Magic;
 		Item.damage = 30;
 		Item.knockBack = 0.4f;
 		Item.crit = 4;

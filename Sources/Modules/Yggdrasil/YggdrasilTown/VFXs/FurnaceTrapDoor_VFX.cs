@@ -8,22 +8,22 @@ public class FurnaceTrapDoor_VFX : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawNPCs;
 
-	public Vector2 position;
+	public Vector2 Position;
 	public float[] ai;
-	public float timer;
-	public float maxTime;
+	public float Timer;
+	public float MaxTime;
 	public bool Open;
-	public int tileX;
-	public int tileY;
+	public int TileX;
+	public int TileY;
 
 	public override void Update()
 	{
-		timer++;
-		if (timer > maxTime)
+		Timer++;
+		if (Timer > MaxTime)
 		{
 			if (!Open)
 			{
-				CloseTrapDoor(tileX, tileY);
+				CloseTrapDoor(TileX, TileY);
 				Active = false;
 			}
 			else
@@ -35,15 +35,15 @@ public class FurnaceTrapDoor_VFX : Visual
 				else
 				{
 					Open = false;
-					timer = 0;
+					Timer = 0;
 				}
 			}
 		}
-		if (timer > maxTime - 50)
+		if (Timer > MaxTime - 50)
 		{
 			if (Open)
 			{
-				OpenTrapDoor(tileX, tileY);
+				OpenTrapDoor(TileX, TileY);
 			}
 		}
 	}
@@ -51,28 +51,28 @@ public class FurnaceTrapDoor_VFX : Visual
 	public override void Draw()
 	{
 		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.FurnaceTrapDoor_VFX.Value;
-		float pocession = timer / maxTime;
+		float pocession = Timer / MaxTime;
 		if (!Open)
 		{
 			pocession = 1 - pocession;
 		}
 		float frameCount = 15;
 		int frameY = (int)(pocession * frameCount);
-		Color drawColor = Lighting.GetColor(position.ToTileCoordinates() + new Point(4, 0));
+		Color drawColor = Lighting.GetColor(Position.ToTileCoordinates() + new Point(4, 0));
 		Color light = new Color(1f, 1f, 1f, 0);
 		List<Vertex2D> bars = new List<Vertex2D>()
 		{
-			new Vertex2D(position + new Vector2(0, 0), drawColor, new Vector3(0, frameY / frameCount, 0)),
-			new Vertex2D(position + new Vector2(128, 0), drawColor, new Vector3(0.5f, frameY / frameCount, 0)),
+			new Vertex2D(Position + new Vector2(0, 0), drawColor, new Vector3(0, frameY / frameCount, 0)),
+			new Vertex2D(Position + new Vector2(128, 0), drawColor, new Vector3(0.5f, frameY / frameCount, 0)),
 
-			new Vertex2D(position + new Vector2(0, 32), drawColor, new Vector3(0, (frameY + 1) / frameCount, 0)),
-			new Vertex2D(position + new Vector2(128, 32), drawColor, new Vector3(0.5f, (frameY + 1) / frameCount, 0)),
+			new Vertex2D(Position + new Vector2(0, 32), drawColor, new Vector3(0, (frameY + 1) / frameCount, 0)),
+			new Vertex2D(Position + new Vector2(128, 32), drawColor, new Vector3(0.5f, (frameY + 1) / frameCount, 0)),
 
-			new Vertex2D(position + new Vector2(0, 32), light, new Vector3(0.5f, (frameY + 1) / frameCount, 0)),
-			new Vertex2D(position + new Vector2(128, 32), light, new Vector3(1f, (frameY + 1) / frameCount, 0)),
+			new Vertex2D(Position + new Vector2(0, 32), light, new Vector3(0.5f, (frameY + 1) / frameCount, 0)),
+			new Vertex2D(Position + new Vector2(128, 32), light, new Vector3(1f, (frameY + 1) / frameCount, 0)),
 
-			new Vertex2D(position + new Vector2(0, 0), light, new Vector3(0.5f, frameY / frameCount, 0)),
-			new Vertex2D(position + new Vector2(128, 0), light, new Vector3(1f, frameY / frameCount, 0)),
+			new Vertex2D(Position + new Vector2(0, 0), light, new Vector3(0.5f, frameY / frameCount, 0)),
+			new Vertex2D(Position + new Vector2(128, 0), light, new Vector3(1f, frameY / frameCount, 0)),
 		};
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);
 	}

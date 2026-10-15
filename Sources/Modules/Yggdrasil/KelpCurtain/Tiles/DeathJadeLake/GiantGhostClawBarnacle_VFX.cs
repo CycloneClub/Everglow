@@ -1,11 +1,12 @@
 using Everglow.Commons.VFX.Scene;
-using SubworldLibrary;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Tiles.DeathJadeLake;
 
 [Pipeline(typeof(WCSPipeline))]
-public class GiantGhostClawBarnacle_VFX : ForegroundVFX
+public class GiantGhostClawBarnacle_VFX : TileVFX
 {
+	public override CodeLayer DrawLayer => CodeLayer.PostDrawPlayers;
+
 	/// <summary>
 	/// Became 0.05f when local player inside the barnacle.
 	/// </summary>
@@ -13,10 +14,6 @@ public class GiantGhostClawBarnacle_VFX : ForegroundVFX
 
 	public override void Update()
 	{
-		if (!SubworldSystem.IsActive<YggdrasilWorld>())
-		{
-			Active = false;
-		}
 		bool inside = false;
 		var collideMap = GiantGhostClawBarnacleCollideTile.PixelHideForeground;
 		for (int i = 0; i < collideMap.GetLength(0); i++)
@@ -25,7 +22,7 @@ public class GiantGhostClawBarnacle_VFX : ForegroundVFX
 			{
 				if (collideMap[i, j] >= 200)
 				{
-					Point topLeft = originTile + new Point(i, j);
+					Point topLeft = OriginTilePos + new Point(i, j);
 					Rectangle collisionFrame = new Rectangle(topLeft.X * 16, topLeft.Y * 16, 16, 16);
 					if (Rectangle.Intersect(collisionFrame, Main.LocalPlayer.Hitbox) != Rectangle.emptyRectangle)
 					{
@@ -52,7 +49,7 @@ public class GiantGhostClawBarnacle_VFX : ForegroundVFX
 
 	public override void OnSpawn()
 	{
-		texture = ModAsset.GiantGhostClawBarnacle_VFX.Value;
+		Texture = ModAsset.GiantGhostClawBarnacle_VFX.Value;
 	}
 
 	public override void Draw()
@@ -77,14 +74,14 @@ public class GiantGhostClawBarnacle_VFX : ForegroundVFX
 		}
 		if (bars.Count > 0)
 		{
-			Ins.Batch.Draw(texture, bars, PrimitiveType.TriangleList);
+			Ins.Batch.Draw(Texture, bars, PrimitiveType.TriangleList);
 		}
 	}
 
 	public void AddBars(int i, int j, List<Vertex2D> bars)
 	{
 		var frameFront = new Rectangle(0, 0, 304, 368);
-		var drawColor = Lighting.GetColor(originTile + new Point(i, j)) * Transparency;
-		bars.Add(position + new Vector2(i, j) * 16, drawColor, new Vector3(i * 16 / (float)frameFront.Width, j * 16 / (float)frameFront.Height, 0));
+		var drawColor = Lighting.GetColor(OriginTilePos + new Point(i, j)) * Transparency;
+		bars.Add(Position + new Vector2(i, j) * 16, drawColor, new Vector3(i * 16 / (float)frameFront.Width, j * 16 / (float)frameFront.Height, 0));
 	}
 }

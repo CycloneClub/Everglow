@@ -28,13 +28,13 @@ public class GiantFurnace_Block : ModTile, ISceneTile
 		Tile tile = Main.tile[i, j];
 		if (tile.TileFrameX == 126 && tile.TileFrameY == 144)
 		{
-			GiantFurnace_TopFence scene = new GiantFurnace_TopFence { position = new Vector2(i, j) * 16 + new Vector2(-18, -26), Active = true, originTile = new Point(i, j), originType = Type };
+			GiantFurnace_TopFence scene = new GiantFurnace_TopFence { Position = new Vector2(i, j) * 16 + new Vector2(-18, -26), Active = true, OriginTilePos = new Point(i, j), OriginTileType = Type };
 			Ins.VFXManager.Add(scene);
 		}
 
 		if (tile.TileFrameX == 360 && tile.TileFrameY == 522)
 		{
-			GiantFurnace_MiddleFence scene = new GiantFurnace_MiddleFence { position = new Vector2(i, j) * 16 + new Vector2(-10, -18), Active = true, originTile = new Point(i, j), originType = Type };
+			GiantFurnace_MiddleFence scene = new GiantFurnace_MiddleFence { Position = new Vector2(i, j) * 16 + new Vector2(-10, -18), Active = true, OriginTilePos = new Point(i, j), OriginTileType = Type };
 			Ins.VFXManager.Add(scene);
 		}
 	}

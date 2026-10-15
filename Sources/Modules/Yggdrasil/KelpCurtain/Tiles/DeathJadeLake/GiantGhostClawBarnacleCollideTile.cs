@@ -28,7 +28,7 @@ public class GiantGhostClawBarnacleCollideTile : ShapeDataTile, ISceneTile
 				for (int x = 0; x < pixelRow.Length; x++)
 				{
 					ref var pixel = ref pixelRow[x];
-					PixelHideForeground[x, y] = pixel.G;
+					PixelHideForeground[x, y] = pixel.B;
 				}
 			}
 		});
@@ -148,9 +148,9 @@ public class GiantGhostClawBarnacleCollideTile : ShapeDataTile, ISceneTile
 		Tile tile = TileUtils.SafeGetTile(i, j);
 		if (tile.TileFrameX == 0 && tile.TileFrameY == 36)
 		{
-			GiantGhostClawBarnacle_VFX gGCBV = new GiantGhostClawBarnacle_VFX { position = new Vector2(i, j - 2) * 16, Active = true, Visible = true, originTile = new Point(i, j), originType = Type };
+			GiantGhostClawBarnacle_VFX gGCBV = new GiantGhostClawBarnacle_VFX { Position = new Vector2(i, j - 2) * 16, Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = Type };
 			Ins.VFXManager.Add(gGCBV);
-			GiantGhostClawBarnacle_Background gGCBB = new GiantGhostClawBarnacle_Background { position = new Vector2(i, j - 2) * 16, Active = true, Visible = true, originTile = new Point(i, j), originType = Type };
+			GiantGhostClawBarnacle_Background gGCBB = new GiantGhostClawBarnacle_Background { Position = new Vector2(i, j - 2) * 16, Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = Type };
 			Ins.VFXManager.Add(gGCBB);
 		}
 	}

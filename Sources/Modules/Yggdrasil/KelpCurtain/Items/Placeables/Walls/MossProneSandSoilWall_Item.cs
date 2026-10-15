@@ -16,7 +16,7 @@ public class MossProneSandSoilWall_Item : ModItem
 	public override void AddRecipes()
 	{
 		CreateRecipe(4)
-			.AddIngredient(ModContent.ItemType<MossProneSandSoil>(), 1)
+			.AddIngredient(ModContent.ItemType<MossProneSandSoil_Item>(), 1)
 			.AddTile(TileID.WorkBenches)
 			.Register();
 	}

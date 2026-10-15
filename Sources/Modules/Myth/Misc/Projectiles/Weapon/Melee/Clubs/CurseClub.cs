@@ -55,16 +55,16 @@ public class CurseClub : ClubProj
 			v0 *= -1;
 		}
 		v0 = v0.RotatedBy(Projectile.rotation + Main.rand.NextFloat(Omega));
-		float Speed = Math.Min(Omega * 0.15f, 0.061f) * Main.rand.NextFloat(1.1f, Main.rand.NextFloat(1.1f, 7f));
-		var v1 = new Vector2(-v0.Y, v0.X) * Speed;
+		float speed = Math.Min(Omega * 0.15f, 0.061f) * Main.rand.NextFloat(1.1f, Main.rand.NextFloat(1.1f, 7f));
+		var v1 = new Vector2(-v0.Y, v0.X) * speed;
 		/*
 		var cf = new CurseFlame_HighQualityDust
 		{
-			velocity = v1 + v2 * 0.9f,
+			Velocity = v1 + v2 * 0.9f,
 			Active = true,
 			Visible = true,
-			position = Projectile.Center + v0,
-			maxTime = Main.rand.Next(17, 35),
+			Position = Projectile.Center + v0,
+			MaxTime = Main.rand.Next(17, 35),
 			ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Omega * 0.5f, Main.rand.NextFloat(3.6f, 30f) * mulVelocity },
 		};
 		Ins.VFXManager.Add(cf);*/
@@ -76,12 +76,12 @@ public class CurseClub : ClubProj
 			int time = Main.rand.Next(15, 35);
 			var fire = new Flare()
 			{
-				position = Vector2.Lerp(Projectile.Center, Projectile.Center + Projectile.rotation.ToRotationVector2() * 30, Main.rand.NextFloat(0.4f, 1.25f)),
-				velocity = Projectile.velocity * 0.5f,
-				color = color,
-				timeleft = time,
-				maxTimeleft = time,
-				scale = Main.rand.NextFloat(0.3f, 0.6f),
+				Position = Vector2.Lerp(Projectile.Center, Projectile.Center + Projectile.rotation.ToRotationVector2() * 30, Main.rand.NextFloat(0.4f, 1.25f)),
+				Velocity = Projectile.velocity * 0.5f,
+				Color = color,
+				TimeLeft = time,
+				MaxTimeLeft = time,
+				Scale = Main.rand.NextFloat(0.3f, 0.6f),
 			};
 			Ins.VFXManager.Add(fire);
 		}
@@ -96,17 +96,17 @@ public class CurseClub : ClubProj
 			}
 
 			v0 = v0.RotatedBy(Projectile.rotation + Main.rand.NextFloat(Omega));
-			Vector2 newVelocity = new Vector2(-v0.Y, v0.X) * Speed;
+			Vector2 newVelocity = new Vector2(-v0.Y, v0.X) * speed;
 			float v0Length = v0.Length();
 			var spark = new CurseFlameSparkDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + v0,
-				maxTime = Main.rand.Next(37, Main.rand.Next(37, 225)),
-				scale = Main.rand.NextFloat(4f, 27.0f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + v0,
+				MaxTime = Main.rand.Next(37, Main.rand.Next(37, 225)),
+				Scale = Main.rand.NextFloat(4f, 27.0f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), Omega * 0.1f * v0Length / 14f, 15f },
 			};
 			Ins.VFXManager.Add(spark);
@@ -124,10 +124,10 @@ public class CurseClub : ClubProj
 		}
 
 		v0 = v0.RotatedBy(Projectile.rotation);
-		float Speed = Math.Min(Omega * 0.5f, 0.221f);
-		var D = Dust.NewDustDirect(Projectile.Center + v0 - new Vector2(4)/*Dust的Size=8x8*/, 0, 0, DustID.CursedTorch, -v0.Y * Speed, v0.X * Speed, 150, default, Main.rand.NextFloat(0.4f, 1.1f));
-		D.noGravity = true;
-		D.velocity = new Vector2(-v0.Y * Speed, v0.X * Speed);
+		float speed = Math.Min(Omega * 0.5f, 0.221f);
+		var d = Dust.NewDustDirect(Projectile.Center + v0 - new Vector2(4)/*Dust的Size=8x8*/, 0, 0, DustID.CursedTorch, -v0.Y * speed, v0.X * speed, 150, default, Main.rand.NextFloat(0.4f, 1.1f));
+		d.noGravity = true;
+		d.velocity = new Vector2(-v0.Y * speed, v0.X * speed);
 	}
 
 	public override void PostPreDraw()

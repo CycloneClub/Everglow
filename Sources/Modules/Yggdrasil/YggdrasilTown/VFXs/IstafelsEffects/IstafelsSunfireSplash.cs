@@ -6,79 +6,79 @@ public class IstafelsSunfireSplash : Visual
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
 
 	public List<Vector2> oldPos = new List<Vector2>();
-	public Vector2 position;
-	public Vector2 velocity;
+	public Vector2 Position;
+	public Vector2 Velocity;
 	public float[] ai;
-	public float timer;
-	public float maxTime;
-	public float scale;
-	public float alpha;
+	public float Timer;
+	public float MaxTime;
+	public float Scale;
+	public float Alpha;
 
 	public override void Update()
 	{
-		if (position.X <= 320 || position.X >= Main.maxTilesX * 16 - 320)
+		if (Position.X <= 320 || Position.X >= Main.maxTilesX * 16 - 320)
 		{
-			timer = maxTime;
+			Timer = MaxTime;
 			Active = false;
 			return;
 		}
-		if (position.Y <= 320 || position.Y >= Main.maxTilesY * 16 - 320)
+		if (Position.Y <= 320 || Position.Y >= Main.maxTilesY * 16 - 320)
 		{
-			timer = maxTime;
+			Timer = MaxTime;
 			Active = false;
 			return;
 		}
-		position += velocity * 0.001f;
-		oldPos.Add(position);
+		Position += Velocity * 0.001f;
+		oldPos.Add(Position);
 		if (oldPos.Count > 15)
 		{
 			oldPos.RemoveAt(0);
 		}
-		velocity = velocity * MathF.Pow(0.99f, Math.Max(1, velocity.Length()) * 0.5f);
+		Velocity = Velocity * MathF.Pow(0.99f, Math.Max(1, Velocity.Length()) * 0.5f);
 
-		velocity.Y += 0.14f;
-		timer++;
-		if (timer > maxTime)
+		Velocity.Y += 0.14f;
+		Timer++;
+		if (Timer > MaxTime)
 		{
 			Active = false;
 		}
 
-		velocity = velocity.RotatedBy(ai[1]);
+		Velocity = Velocity.RotatedBy(ai[1]);
 
-		if (Collision.SolidCollision(position, 0, 0))
+		if (Collision.SolidCollision(Position, 0, 0))
 		{
-			velocity *= 0.2f;
-			if (velocity.Length() < 0.02f)
+			Velocity *= 0.2f;
+			if (Velocity.Length() < 0.02f)
 			{
 				Active = false;
 			}
 		}
-		if (Main.tile[(int)(position.X / 16f), (int)(position.Y / 16f)].LiquidAmount > 0)
+		if (Main.tile[(int)(Position.X / 16f), (int)(Position.Y / 16f)].LiquidAmount > 0)
 		{
-			scale += 0.02f;
-			alpha += 0.004f;
-			velocity *= 0.9f;
-			if (MathF.Abs(velocity.X) > 2)
+			Scale += 0.02f;
+			Alpha += 0.004f;
+			Velocity *= 0.9f;
+			if (MathF.Abs(Velocity.X) > 2)
 			{
-				velocity.X *= 0.8f;
+				Velocity.X *= 0.8f;
 			}
-			velocity += new Vector2(Main.rand.NextFloat(0.5f), 0).RotatedByRandom(6.283) + new Vector2(0, 1.2f - Math.Abs(velocity.X) * alpha * 2f);
-			position += velocity * 0.5f;
-			timer -= 0.4f;
+			Velocity += new Vector2(Main.rand.NextFloat(0.5f), 0).RotatedByRandom(6.283) + new Vector2(0, 1.2f - Math.Abs(Velocity.X) * Alpha * 2f);
+			Position += Velocity * 0.5f;
+			Timer -= 0.4f;
 		}
 		else
 		{
-			position += velocity;
+			Position += Velocity;
 		}
-		float pocession = 1 - timer / maxTime;
+		float pocession = 1 - Timer / MaxTime;
 		float c = pocession;
-		Lighting.AddLight(position, c * 1f * scale * 0.04f, c * c * 1f * scale * 0.04f, c * c * c * 1f * scale * 0.04f);
+		Lighting.AddLight(Position, c * 1f * Scale * 0.04f, c * c * 1f * Scale * 0.04f, c * c * c * 1f * Scale * 0.04f);
 	}
 
 	public override void Draw()
 	{
 		Vector2[] pos = oldPos.Reverse<Vector2>().ToArray();
-		float pocession = timer / maxTime;
+		float pocession = Timer / MaxTime;
 		int len = pos.Length;
 		if (len <= 2)
 		{
@@ -90,14 +90,14 @@ public class IstafelsSunfireSplash : Visual
 		{
 			Vector2 normal = oldPos[i] - oldPos[i - 1];
 			normal = Vector2.Normalize(normal).RotatedBy(Math.PI * 0.5);
-			float width = scale * (float)Math.Sin(i / (double)len * Math.PI);
+			float width = Scale * (float)Math.Sin(i / (double)len * Math.PI);
 			Vector2 pointUp = oldPos[i] + normal * width;
 			Vector2 pointDown = oldPos[i] - normal * width;
 			var widthUp = new Vector2(normal.X * width, 0);
 			Vector2 widthDown = -new Vector2(normal.X * width, 0);
 			if (Main.tile[(int)(pointUp.X / 16f), (int)(pointUp.Y / 16f) - 1].LiquidAmount > 0)
 			{
-				widthUp *= MathF.Sqrt(alpha) * 4f;
+				widthUp *= MathF.Sqrt(Alpha) * 4f;
 			}
 			else
 			{
@@ -105,7 +105,7 @@ public class IstafelsSunfireSplash : Visual
 			}
 			if (Main.tile[(int)(pointDown.X / 16f), (int)(pointDown.Y / 16f) - 1].LiquidAmount > 0)
 			{
-				widthDown *= MathF.Sqrt(alpha) * 4f;
+				widthDown *= MathF.Sqrt(Alpha) * 4f;
 			}
 			else
 			{

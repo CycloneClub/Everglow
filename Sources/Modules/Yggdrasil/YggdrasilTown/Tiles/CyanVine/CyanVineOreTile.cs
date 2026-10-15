@@ -14,6 +14,7 @@ public class CyanVineOreTile : ModTile
 		HitSound = SoundID.NPCHit4;
 		MinPick = 40;
 		DustType = ModContent.DustType<Dusts.CyanVine>();
+		TileID.Sets.Ore[Type] = true;
 
 		var modTranslation = CreateMapEntryName();
 		AddMapEntry(new Color(80, 130, 154), modTranslation);

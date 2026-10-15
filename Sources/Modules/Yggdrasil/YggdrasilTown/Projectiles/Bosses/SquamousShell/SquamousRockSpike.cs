@@ -109,13 +109,13 @@ public class SquamousRockSpike : ModProjectile
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 4f)).RotatedByRandom(MathHelper.TwoPi);
 			var somg = new RockSmogDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-				maxTime = Main.rand.Next(37, 45),
-				scale = Main.rand.NextFloat(40f, 55f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+				MaxTime = Main.rand.Next(37, 45),
+				Scale = Main.rand.NextFloat(40f, 55f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
 			Ins.VFXManager.Add(somg);
@@ -125,13 +125,13 @@ public class SquamousRockSpike : ModProjectile
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(15f, 26f)).RotatedByRandom(MathHelper.TwoPi);
 			var somg = new RockSmog_ConeDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-				maxTime = Main.rand.Next(20, 42),
-				scale = Main.rand.NextFloat(0.6f, 5f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+				MaxTime = Main.rand.Next(20, 42),
+				Scale = Main.rand.NextFloat(0.6f, 5f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
 			Ins.VFXManager.Add(somg);
@@ -145,13 +145,13 @@ public class SquamousRockSpike : ModProjectile
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(1f, 2f)).RotatedByRandom(MathHelper.TwoPi);
 			var somg = new Rock_Concentrating_dust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(0, 160f), 0).RotatedByRandom(6.283),
-				maxTime = Main.rand.Next(120, 142),
-				scale = Main.rand.NextFloat(0.6f, 5f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(0, 160f), 0).RotatedByRandom(6.283),
+				MaxTime = Main.rand.Next(120, 142),
+				Scale = Main.rand.NextFloat(0.6f, 5f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(3f, 15f), Projectile.whoAmI, Projectile.type, Main.rand.NextFloat(10f) },
 			};
 			Ins.VFXManager.Add(somg);

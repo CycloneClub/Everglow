@@ -54,12 +54,12 @@ public class IchorClub_smash : ClubProjSmash
 			{
 				var ichor = new IchorSplash
 				{
-					velocity = vel,
+					Velocity = vel,
 					Active = true,
 					Visible = true,
-					position = pos,
-					maxTime = Main.rand.Next(6, 32),
-					scale = Main.rand.NextFloat(6f, 12f),
+					Position = pos,
+					MaxTime = Main.rand.Next(6, 32),
+					Scale = Main.rand.NextFloat(6f, 12f),
 					ai = new float[] { Main.rand.NextFloat(0.1f, 1f), rot * 0.01f, Main.rand.NextFloat(3.6f, 30f) },
 				};
 
@@ -75,14 +75,13 @@ public class IchorClub_smash : ClubProjSmash
 
 				var splash = new Splash
 				{
-					position = Vector2.Lerp(pos, Projectile.Center, Main.rand.NextFloat(-0.2f, 0.5f)),
-
-					color = color,
-					gravity = 0.2f,
-					velocity = vel * 0.2f - new Vector2(0, 1f),
-					scale = Main.rand.NextFloat(0.1f, 0.4f),
-					maxTimeleft = time,
-					timeleft = time,
+					Position = Vector2.Lerp(pos, Projectile.Center, Main.rand.NextFloat(-0.2f, 0.5f)),
+					Color = color,
+					Gravity = 0.2f,
+					Velocity = vel * 0.2f - new Vector2(0, 1f),
+					Scale = Main.rand.NextFloat(0.1f, 0.4f),
+					MaxTimeLeft = time,
+					TimeLeft = time,
 				};
 				Ins.VFXManager.Add(splash);
 			}
@@ -92,13 +91,13 @@ public class IchorClub_smash : ClubProjSmash
 				{
 					var spark = new IchorDrop
 					{
-						velocity = vel.RotatedBy(Main.rand.NextFloat(-0.4f, 0.4f)) * 0.5f,
+						Velocity = vel.RotatedBy(Main.rand.NextFloat(-0.4f, 0.4f)) * 0.5f,
 						Active = true,
 						Visible = true,
-						position = pos,
-						maxTime = Main.rand.Next(36, 75),
-						scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(1f, 8.0f)),
-						rotation = Main.rand.NextFloat(6.283f),
+						Position = pos,
+						MaxTime = Main.rand.Next(36, 75),
+						Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(1f, 8.0f)),
+						Rotation = Main.rand.NextFloat(6.283f),
 						ai = new float[] { Main.rand.NextFloat(0.1f, 1f), rot * 0.1f },
 					};
 					Ins.VFXManager.Add(spark);
@@ -113,12 +112,12 @@ public class IchorClub_smash : ClubProjSmash
 		{
 			var ichor = new IchorSplash
 			{
-				velocity = new Vector2(Main.rand.NextFloat(-15, 15), Main.rand.NextFloat(-10, -5)) * 1.5f * (1 + level * 0.3f),
+				Velocity = new Vector2(Main.rand.NextFloat(-15, 15), Main.rand.NextFloat(-10, -5)) * 1.5f * (1 + level * 0.3f),
 				Active = true,
 				Visible = true,
-				position = Player.Bottom + new Vector2(0, 20),
-				maxTime = Main.rand.Next(15, 40),
-				scale = Main.rand.NextFloat(6f, 12f),
+				Position = Player.Bottom + new Vector2(0, 20),
+				MaxTime = Main.rand.Next(15, 40),
+				Scale = Main.rand.NextFloat(6f, 12f),
 				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), 0.01f, Main.rand.NextFloat(3.6f, 30f) },
 			};
 
@@ -129,13 +128,13 @@ public class IchorClub_smash : ClubProjSmash
 		{
 			var spark = new IchorDrop
 			{
-				velocity = new Vector2(Main.rand.NextFloat(-15, 15), Main.rand.NextFloat(-10, -5)),
+				Velocity = new Vector2(Main.rand.NextFloat(-15, 15), Main.rand.NextFloat(-10, -5)),
 				Active = true,
 				Visible = true,
-				position = Player.Center,
-				maxTime = Main.rand.Next(36, 75),
-				scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(1f, 8.0f)),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Player.Center,
+				MaxTime = Main.rand.Next(36, 75),
+				Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(1f, 8.0f)),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), 0.2f },
 			};
 			Ins.VFXManager.Add(spark);

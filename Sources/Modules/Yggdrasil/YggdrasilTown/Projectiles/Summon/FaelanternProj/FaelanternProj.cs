@@ -100,13 +100,13 @@ public class FaelanternProj : ModProjectile
 			{
 				var somg = new RockSmogDust
 				{
-					velocity = newVelocity,
+					Velocity = newVelocity,
 					Active = true,
 					Visible = true,
-					position = Projectile.Center + new Vector2(0, 25f).RotatedByRandom(MathHelper.PiOver2),
-					maxTime = Main.rand.Next(25, 32),
-					scale = Main.rand.NextFloat(25f, 50f),
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = Projectile.Center + new Vector2(0, 25f).RotatedByRandom(MathHelper.PiOver2),
+					MaxTime = Main.rand.Next(25, 32),
+					Scale = Main.rand.NextFloat(25f, 50f),
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = [Main.rand.NextFloat(0.0f, 0.93f), 0],
 				};
 				Ins.VFXManager.Add(somg);

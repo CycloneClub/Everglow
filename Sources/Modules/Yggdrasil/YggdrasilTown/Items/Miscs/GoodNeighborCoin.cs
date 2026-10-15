@@ -8,9 +8,7 @@ public class GoodNeighborCoin : ModItem
 	{
 		Item.width = 28;
 		Item.height = 28;
-
-		Item.stack = Item.CommonMaxStack;
-
+		Item.maxStack = Item.CommonMaxStack;
 		Item.rare = ItemRarityID.Green;
 		Item.value = 0;
 	}

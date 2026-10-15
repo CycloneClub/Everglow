@@ -2,7 +2,7 @@ using Everglow.Commons.UI.UIElements;
 
 namespace Everglow.Commons.UI
 {
-	internal class EverglowUISystem
+	public class EverglowUISystem
 	{
 		/// <summary>
 		/// 存放着所有<see cref="UIContainerElement"/>实例的字典
@@ -49,7 +49,7 @@ namespace Everglow.Commons.UI
 		/// </summary>
 		private KeyCooldown mouseRightCooldown;
 
-		private Point ScreenSize;
+		private Point screenSize;
 
 		public EverglowUISystem()
 		{
@@ -73,7 +73,7 @@ namespace Everglow.Commons.UI
 		/// </summary>
 		public void Load()
 		{
-			var containers = from c in GetType().Assembly.GetTypes()
+			var containers = from c in Ins.ModuleManager.Types
 							 where !c.IsAbstract && c.IsSubclassOf(typeof(UIContainerElement))
 							 select c;
 			UIContainerElement element;
@@ -81,7 +81,9 @@ namespace Everglow.Commons.UI
 			{
 				element = (UIContainerElement)Activator.CreateInstance(c);
 				if (element.AutoLoad)
+				{
 					Register(element);
+				}
 			}
 		}
 
@@ -91,14 +93,16 @@ namespace Everglow.Commons.UI
 		/// <param name="gt"></param>
 		public void Update(GameTime gt)
 		{
-			if (ScreenSize != Main.ScreenSize)
+			if (screenSize != Main.ScreenSize)
 			{
-				ScreenSize = Main.ScreenSize;
+				screenSize = Main.ScreenSize;
 				Calculation();
 			}
 
 			if (CallOrder.Count == 0 || Elements.Count == 0)
+			{
 				return;
+			}
 
 			List<BaseElement> interact = new List<BaseElement>();
 			UIContainerElement child;
@@ -110,9 +114,11 @@ namespace Everglow.Commons.UI
 				if (child != null && child.IsVisible)
 				{
 					child.Update(gt);
-					interact = child.GetElementsContainsPoint(mousePos);
-					if (interact.Count > 0)
+					interact.AddRange(child.GetElementsContainsPoint(mousePos));
+					if (interact.Count > 0 && child.Info.InteractiveMask)
+					{
 						break;
+					}
 				}
 			}
 
@@ -123,11 +129,19 @@ namespace Everglow.Commons.UI
 			}
 
 			foreach (var ce in interact)
+			{
 				if (!interactContainerElementsBuffer.Contains(ce))
+				{
 					ce.Events.MouseOver(ce);
+				}
+			}
 			foreach (var ce in interactContainerElementsBuffer)
+			{
 				if (!interact.Contains(ce))
+				{
 					ce.Events.MouseOut(ce);
+				}
+			}
 			interactContainerElementsBuffer = interact;
 
 			if (mouseLeftDown != Main.mouseLeft)
@@ -191,13 +205,18 @@ namespace Everglow.Commons.UI
 		public void Draw(SpriteBatch sb)
 		{
 			if (CallOrder.Count == 0 || Elements.Count == 0)
+			{
 				return;
+			}
+
 			UIContainerElement child;
 			for (int i = CallOrder.Count - 1; i >= 0; i--)
 			{
 				child = Elements[CallOrder[i]];
 				if (child != null && child.IsVisible)
+				{
 					child.Draw(sb);
+				}
 			}
 		}
 
@@ -220,7 +239,10 @@ namespace Everglow.Commons.UI
 		public bool Register(string name, UIContainerElement element)
 		{
 			if (element == null || Elements.ContainsKey(name) || CallOrder.Contains(name))
+			{
 				return false;
+			}
+
 			Elements.Add(name, element);
 			CallOrder.Add(element.Name);
 			element.OnInitialization();
@@ -236,7 +258,10 @@ namespace Everglow.Commons.UI
 		public bool Remove(string name)
 		{
 			if (CallOrder.Count == 0 || Elements.Count == 0 || !(Elements.ContainsKey(name) || CallOrder.Contains(name)))
+			{
 				return false;
+			}
+
 			Elements.Remove(name);
 			CallOrder.Remove(name);
 			return true;
@@ -248,7 +273,9 @@ namespace Everglow.Commons.UI
 		public void Calculation()
 		{
 			foreach (var child in Elements.Values)
+			{
 				child?.Calculation();
+			}
 		}
 
 		/// <summary>
@@ -259,9 +286,15 @@ namespace Everglow.Commons.UI
 		public bool SetContainerTop(string name)
 		{
 			if (CallOrder.Count == 0 || Elements.Count == 0 || !(Elements.ContainsKey(name) || CallOrder.Contains(name)))
+			{
 				return false;
+			}
+
 			if (CallOrder[0] == name)
+			{
 				return true;
+			}
+
 			CallOrder.Remove(name);
 			CallOrder.Insert(0, name);
 			return true;
@@ -277,7 +310,10 @@ namespace Everglow.Commons.UI
 		{
 			if (CallOrder.Count == 0 || Elements.Count == 0 || !(Elements.ContainsKey(name1) || CallOrder.Contains(name1)) ||
 				!(Elements.ContainsKey(name2) || CallOrder.Contains(name2)))
+			{
 				return false;
+			}
+
 			int index1 = CallOrder.FindIndex(x => x == name1);
 			int index2 = CallOrder.FindIndex(x => x == name2);
 			CallOrder.Remove(name1);
@@ -305,6 +341,39 @@ namespace Everglow.Commons.UI
 			{
 				Elements[c].Info.IsVisible = false;
 			}
+		}
+
+		public void DrawInRenderTarget(SpriteBatch sb)
+		{
+			if (CallOrder.Count == 0 || Elements.Count == 0)
+			{
+				return;
+			}
+
+			UIContainerElement child;
+			for (int i = CallOrder.Count - 1; i >= 0; i--)
+			{
+				child = Elements[CallOrder[i]];
+				if (child != null && child.IsVisible)
+				{
+					DrawEachRt2DChildren(child, sb);
+				}
+			}
+		}
+
+		public void DrawEachRt2DChildren(BaseElement parent, SpriteBatch sb)
+		{
+			parent.ChildrenElements.ForEach(child =>
+			{
+				if (child != null && child.IsVisible)
+				{
+					if (child is IDrawable_InRt2D rt_child)
+					{
+						rt_child.Draw_InRt2D(sb);
+					}
+					DrawEachRt2DChildren(child, sb);
+				}
+			});
 		}
 	}
 }

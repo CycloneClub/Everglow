@@ -31,13 +31,13 @@ public class DevilHeartStaff_proj_II : TrailingProjectile
 		Vector2 vel = new Vector2(0, Main.rand.NextFloat(0.6f, 3.4f)).RotatedByRandom(MathHelper.TwoPi) + Projectile.velocity;
 		var dust = new DevilHeart_Spark
 		{
-			velocity = vel,
+			Velocity = vel,
 			Active = true,
 			Visible = true,
-			position = Projectile.Center,
-			maxTime = Main.rand.Next(80, 150),
-			scale = Main.rand.NextFloat(3f, 8f),
-			rotation = Main.rand.NextFloat(6.283f),
+			Position = Projectile.Center,
+			MaxTime = Main.rand.Next(80, 150),
+			Scale = Main.rand.NextFloat(3f, 8f),
+			Rotation = Main.rand.NextFloat(6.283f),
 			ai = new float[] { Main.rand.NextFloat(4.0f, 10.93f) },
 		};
 		Ins.VFXManager.Add(dust);
@@ -57,13 +57,13 @@ public class DevilHeartStaff_proj_II : TrailingProjectile
 			Vector2 vel = new Vector2(0, Main.rand.NextFloat(5.6f, 8.4f)).RotatedByRandom(MathHelper.TwoPi);
 			var dust = new DevilHeart_Spark
 			{
-				velocity = vel,
+				Velocity = vel,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(60, 120),
-				scale = Main.rand.NextFloat(7f, 10f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(60, 120),
+				Scale = Main.rand.NextFloat(7f, 10f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(4.0f, 10.93f) },
 			};
 			Ins.VFXManager.Add(dust);
@@ -78,13 +78,13 @@ public class DevilHeartStaff_proj_II : TrailingProjectile
 			velocity *= MathF.Sin(g / (stepMax / (petals / 2)) * MathHelper.TwoPi);
 			var somg = new DevilHeart_Spark_II
 			{
-				velocity = velocity,
+				Velocity = velocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = 120,
-				scale = 1,
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center,
+				MaxTime = 120,
+				Scale = 1,
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(8.0f, 12f), MathF.Sin(g / (stepMax / petals) * MathHelper.TwoPi), MathF.Sin(g / (stepMax / (petals * 5f)) * MathHelper.TwoPi) * 0.26f },
 			};
 			Ins.VFXManager.Add(somg);
@@ -95,15 +95,15 @@ public class DevilHeartStaff_proj_II : TrailingProjectile
 			Vector2 vel = new Vector2(4 + MathF.Sin(i / (60f / 24f) * MathHelper.TwoPi), 0).RotatedBy(i / 60f * MathHelper.TwoPi);
 			var dustVFX = new BoneHeart_VFX
 			{
-				omega = rotSpeed,
-				beta = -rotSpeed * 0.05f,
+				Omega = rotSpeed,
+				Beta = -rotSpeed * 0.05f,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				velocity = vel,
-				maxTime = vel.Length() * 12,
-				scale = 9f,
-				color = Color.Lerp(Color.Red, Color.White, (vel.Length() - 3) / 2f),
+				Position = Projectile.Center,
+				Velocity = vel,
+				MaxTime = vel.Length() * 12,
+				Scale = 9f,
+				BoneHeartColor = Color.Lerp(Color.Red, Color.White, (vel.Length() - 3) / 2f),
 				ai = new float[] { Main.rand.NextFloat(1f, 8f) },
 			};
 			Ins.VFXManager.Add(dustVFX);

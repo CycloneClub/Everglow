@@ -23,13 +23,13 @@ public class IstafelsSunfireDrop_glimmer : ModDust
 					float mulScale = Main.rand.NextFloat(4f, 8f);
 					var drop = new IstafelsSunfireDrop
 					{
-						velocity = afterVelocity,
+						Velocity = afterVelocity,
 						Active = true,
 						Visible = true,
-						position = dust.position,
-						maxTime = Main.rand.Next(222, 264),
-						scale = mulScale,
-						rotation = Main.rand.NextFloat(6.283f),
+						Position = dust.position,
+						MaxTime = Main.rand.Next(222, 264),
+						Scale = mulScale,
+						Rotation = Main.rand.NextFloat(6.283f),
 						ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 					};
 					Ins.VFXManager.Add(drop);

@@ -10,7 +10,7 @@ public class TelescopicPlatformAlpha : TelescopicPlatform
 		PillarCount = 9;
 		MaxHeight = 240;
 		MoveSpeed = 3;
-		Texture2 = ModAsset.TelescopicPlatformAlpha.Value;
+		Texture2 = ModAsset.TelescopicPlatformAlpha_Platform.Value;
 		BodyDrawOffsetY = 8;
 		BodyRect = new Rectangle(0, 0, 80, 38);
 		PillarFrontRect = new Rectangle(0, 56, 40, 42);

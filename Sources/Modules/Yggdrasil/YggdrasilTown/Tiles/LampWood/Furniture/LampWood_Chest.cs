@@ -21,6 +21,10 @@ public class LampWood_Chest : ModTile
 		TileID.Sets.HasOutlines[Type] = true;
 		TileID.Sets.BasicChest[Type] = true;
 		TileID.Sets.DisableSmartCursor[Type] = true;
+		TileID.Sets.AvoidedByNPCs[Type] = true;
+		TileID.Sets.InteractibleByNPCs[Type] = true;
+		TileID.Sets.IsAContainer[Type] = true;
+		TileID.Sets.FriendlyFairyCanLureTo[Type] = true;
 
 		DustType = ModContent.DustType<LampWood_Dust>();
 		AdjTiles = new int[] { TileID.Containers };
@@ -30,7 +34,14 @@ public class LampWood_Chest : ModTile
 		TileObjectData.newTile.CoordinateHeights = new[] { 16, 18 };
 		TileObjectData.newTile.HookCheckIfCanPlace = new PlacementHook(Chest.FindEmptyChest, -1, 0, true);
 		TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(Chest.AfterPlacement_Hook, -1, 0, false);
-		TileObjectData.newTile.AnchorInvalidTiles = new int[] { TileID.MagicalIceBlock };
+		TileObjectData.newTile.AnchorInvalidTiles = new int[]
+		{
+			TileID.MagicalIceBlock,
+			TileID.Boulder,
+			TileID.BouncyBoulder,
+			TileID.LifeCrystalBoulder,
+			TileID.RollingCactus,
+		};
 		TileObjectData.newTile.StyleHorizontal = true;
 		TileObjectData.newTile.LavaDeath = false;
 		TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
@@ -146,13 +157,18 @@ public class LampWood_Chest : ModTile
 	{
 		Color lightColor = Lighting.GetColor(i, j);
 		Tile tile = Main.tile[i, j];
-		var zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
-
-		if (Main.drawToScreen)
+		int left = i - tile.TileFrameX / 18;
+		int top = j - tile.TileFrameY / 18;
+		int chestIndex = Chest.FindChest(left, top);
+		if (chestIndex >= 0)
 		{
-			zero = Vector2.Zero;
+			Chest chest = Main.chest[chestIndex];
+			var zero = new Vector2(Main.offScreenRange);
+			if (Main.drawToScreen)
+			{
+				zero = Vector2.Zero;
+			}
+			spriteBatch.Draw(ModAsset.LampWood_Chest_crystal.Value, new Vector2(i, j) * 16 - Main.screenPosition + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY + chest.frame * 38, 16, 16), lightColor * 2.5f, 0, Vector2.zeroVector, 1, SpriteEffects.None, 0);
 		}
-
-		spriteBatch.Draw(ModAsset.LampWood_Chest_crystal.Value, new Vector2(i, j) * 16 - Main.screenPosition + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16), lightColor * 2.5f, 0, Vector2.zeroVector, 1, SpriteEffects.None, 0);
 	}
 }

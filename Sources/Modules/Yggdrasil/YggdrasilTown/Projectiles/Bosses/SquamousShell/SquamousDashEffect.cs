@@ -55,13 +55,13 @@ public class SquamousDashEffect : ModProjectile, IWarpProjectile_warpStyle2
 				Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0.0f, 2f)).RotatedByRandom(MathHelper.TwoPi) + new Vector2(owner.velocity.X * 0.5f, 0);
 				var spark = new Spark_MoonBladeDust
 				{
-					velocity = newVelocity,
+					Velocity = newVelocity,
 					Active = true,
 					Visible = true,
-					position = Projectile.position + new Vector2(Main.rand.NextFloat(Projectile.width), Main.rand.NextFloat(Projectile.height)),
-					maxTime = Main.rand.Next(30, 45),
-					scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(9f, 17.0f)),
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = Projectile.position + new Vector2(Main.rand.NextFloat(Projectile.width), Main.rand.NextFloat(Projectile.height)),
+					MaxTime = Main.rand.Next(30, 45),
+					Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(9f, 17.0f)),
+					Rotation = Main.rand.NextFloat(6.283f),
 					noGravity = true,
 					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 				};

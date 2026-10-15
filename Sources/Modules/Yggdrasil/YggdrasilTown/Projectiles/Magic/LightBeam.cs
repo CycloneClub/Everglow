@@ -37,13 +37,13 @@ internal class LightBeam : ModProjectile
 				newVelocity = newVelocity.RotatedBy(-Main.time * 0.05f + Projectile.whoAmI + j * MathHelper.TwoPi / 3f);
 				var somg = new LightFruitParticleDust
 				{
-					velocity = newVelocity * 0.4f,
+					Velocity = newVelocity * 0.4f,
 					Active = true,
 					Visible = true,
-					position = Projectile.Center + newVelocity * 20,
-					maxTime = Main.rand.Next(37, 145),
-					scale = Main.rand.NextFloat(12.20f, 32.35f),
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = Projectile.Center + newVelocity * 20,
+					MaxTime = Main.rand.Next(37, 145),
+					Scale = Main.rand.NextFloat(12.20f, 32.35f),
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { Main.rand.NextFloat(1, 4f), 0 },
 				};
 				Ins.VFXManager.Add(somg);
@@ -76,13 +76,13 @@ internal class LightBeam : ModProjectile
 			Vector2 newVelocity = Vector2.zeroVector;
 			var somg = new LightFruitParticleDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + Projectile.velocity * Main.rand.NextFloat(1f),
-				maxTime = Main.rand.Next(37, 145) * mulMaxTime,
-				scale = Main.rand.NextFloat(12.20f, 32.35f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + Projectile.velocity * Main.rand.NextFloat(1f),
+				MaxTime = Main.rand.Next(37, 145) * mulMaxTime,
+				Scale = Main.rand.NextFloat(12.20f, 32.35f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(1f, 10f), 0 },
 			};
 			Ins.VFXManager.Add(somg);

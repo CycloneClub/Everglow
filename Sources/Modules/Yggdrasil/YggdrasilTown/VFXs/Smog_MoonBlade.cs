@@ -33,8 +33,8 @@ public class Smog_MoonBladeDust : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
 
-	public Vector2 position;
-	public Vector2 velocity;
+	public Vector2 Position;
+	public Vector2 Velocity;
 	public float[] ai;
 
 	/// <summary>
@@ -43,9 +43,9 @@ public class Smog_MoonBladeDust : Visual
 	/// ai[2]宽度
 	/// </summary>
 	public List<Vector2> oldPos = new List<Vector2>();
-	public float timer;
-	public float maxTime;
-	public float scale;
+	public float Timer;
+	public float MaxTime;
+	public float Scale;
 
 	public Smog_MoonBladeDust()
 	{
@@ -53,31 +53,31 @@ public class Smog_MoonBladeDust : Visual
 
 	public override void Update()
 	{
-		position += velocity;
-		velocity *= 0.96f;
+		Position += Velocity;
+		Velocity *= 0.96f;
 
-		oldPos.Add(position);
+		oldPos.Add(Position);
 		if (oldPos.Count > 15)
 		{
 			oldPos.RemoveAt(0);
 		}
 
-		timer++;
-		if (timer > maxTime)
+		Timer++;
+		if (Timer > MaxTime)
 		{
 			Active = false;
 		}
 
-		velocity = velocity.RotatedBy(ai[1]);
-		float pocession = 1 - timer / maxTime;
-		float c = pocession * scale * 0.01f;
-		Lighting.AddLight(position, c * 0.14f, c * 0.47f, c * 0.97f);
+		Velocity = Velocity.RotatedBy(ai[1]);
+		float pocession = 1 - Timer / MaxTime;
+		float c = pocession * Scale * 0.01f;
+		Lighting.AddLight(Position, c * 0.14f, c * 0.47f, c * 0.97f);
 	}
 
 	public override void Draw()
 	{
 		Vector2[] pos = oldPos.Reverse<Vector2>().ToArray();
-		float timeValue = timer / maxTime;
+		float timeValue = Timer / MaxTime;
 		int len = pos.Length;
 		if (len <= 2)
 		{
@@ -90,10 +90,10 @@ public class Smog_MoonBladeDust : Visual
 			Vector2 normal = oldPos[i] - oldPos[i - 1];
 			normal = Vector2.Normalize(normal).RotatedBy(Math.PI * 0.5);
 			var fade = new Color(timeValue * timeValue * timeValue * 2 - 0.1f, 0, 0);
-			float width = scale * (float)Math.Sin(i / (double)len * Math.PI);
-			if (timer < 10)
+			float width = Scale * (float)Math.Sin(i / (double)len * Math.PI);
+			if (Timer < 10)
 			{
-				width *= timer / 10f;
+				width *= Timer / 10f;
 			}
 			bars[2 * i - 1] = new Vertex2D(oldPos[i] + normal * width, fade, new Vector3(0 + ai[0], (i + 15 - len) / 80f, 0.8f - timeValue));
 			bars[2 * i] = new Vertex2D(oldPos[i] - normal * width, fade, new Vector3(0.07f + ai[0], (i + 15 - len) / 80f, 0.8f - timeValue));
@@ -108,8 +108,8 @@ public class Smog_MoonBladeWave : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
 
-	public Vector2 position;
-	public Vector2 velocity;
+	public Vector2 Position;
+	public Vector2 Velocity;
 	public float[] ai;
 
 	/// <summary>
@@ -117,8 +117,8 @@ public class Smog_MoonBladeWave : Visual
 	/// ai[1]角速度
 	/// ai[2]宽度
 	/// </summary>
-	public float timer;
-	public float maxTime;
+	public float Timer;
+	public float MaxTime;
 	public float radius;
 
 	public Smog_MoonBladeWave()
@@ -127,21 +127,21 @@ public class Smog_MoonBladeWave : Visual
 
 	public override void Update()
 	{
-		position += velocity;
-		radius += ai[1] * ((maxTime - timer) / maxTime);
-		timer++;
-		if (timer > maxTime)
+		Position += Velocity;
+		radius += ai[1] * ((MaxTime - Timer) / MaxTime);
+		Timer++;
+		if (Timer > MaxTime)
 		{
 			Active = false;
 		}
 
-		float delC = ai[2] * 0.05f * (float)Math.Sin((maxTime - timer) / maxTime * Math.PI);
-		Lighting.AddLight((int)(position.X / 16), (int)(position.Y / 16), 0.015f * delC, 0, 0.45f * delC);
+		float delC = ai[2] * 0.05f * (float)Math.Sin((MaxTime - Timer) / MaxTime * Math.PI);
+		Lighting.AddLight((int)(Position.X / 16), (int)(Position.Y / 16), 0.015f * delC, 0, 0.45f * delC);
 	}
 
 	public override void Draw()
 	{
-		float timeValue = timer / maxTime;
+		float timeValue = Timer / MaxTime;
 		int len = (int)(radius / 3f);
 		if (len <= 2)
 		{
@@ -163,8 +163,8 @@ public class Smog_MoonBladeWave : Visual
 				width = radiousDraw.Length();
 			}
 
-			bars[2 * i] = new Vertex2D(position + radiousDraw, fade, new Vector3(ai[0] + timer / maxTime, i / (float)len * 2, 0.8f - timeValue));
-			bars[2 * i + 1] = new Vertex2D(position + radiousDraw - normal * width, fade, new Vector3(texCoordWidth + ai[0] + timer / maxTime, i / (float)len * 2, 0.8f - timeValue));
+			bars[2 * i] = new Vertex2D(Position + radiousDraw, fade, new Vector3(ai[0] + Timer / MaxTime, i / (float)len * 2, 0.8f - timeValue));
+			bars[2 * i + 1] = new Vertex2D(Position + radiousDraw - normal * width, fade, new Vector3(texCoordWidth + ai[0] + Timer / MaxTime, i / (float)len * 2, 0.8f - timeValue));
 		}
 
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);

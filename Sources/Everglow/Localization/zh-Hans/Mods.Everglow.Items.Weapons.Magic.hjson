@@ -14,179 +14,214 @@ FeatheredStaff: {
 
 CyanAmberStaff: {
 	DisplayName: 青缎整流杖
+	Tooltip: 发射混合了青缎能量和天穹琥珀的不稳定物质团块
 }
 
 HandholdItem: {
-	DisplayName: Handhold Item
+	DisplayName: 手持式物品
 	Tooltip: ""
 }
 
 CreamChocolateCupStaff: {
-	DisplayName: Cream Chocolate Cup Staff
-	Tooltip: ""
+	DisplayName: 奶油巧克力杯法杖
+	Tooltip:
+	'''
+	发射不同形状的巧克力块
+	右键可以用较大的推力挤出一条奶油
+	'''
 }
 
 FrostBomb: {
-	DisplayName: Frost Bomb
-	Tooltip: ""
+	DisplayName: 寒霜炸弹
+	Tooltip:
+	'''
+	左键发射落地即爆的小炸弹
+	右键发射需要小炸弹触发或接触敌人才爆炸的大炸弹
+	爆炸会给附近敌人附加霜火
+	'''
 }
 
 ToothMagicBall: {
-	DisplayName: Tooth Magic Ball
-	Tooltip: ""
+	DisplayName: 獠牙法球
+	Tooltip: "发射血团"
 }
 
 DreamWeaver: {
-	DisplayName: Dream Weaver
-	Tooltip: ""
+	DisplayName: 织梦丝雨
+	Tooltip: "编造蓝色的雨丝攻击敌人"
 }
 
 DustOfCorrupt: {
-	DisplayName: Dust Of Corrupt
-	Tooltip: ""
+	DisplayName: 腐化粉尘
+	Tooltip: "喷出某种夜光鳞翅目的翅膀上的粉末，据说会导致过敏"
 }
 
 FlowLightMissile: {
-	DisplayName: Flow Light Missile
-	Tooltip: ""
+	DisplayName: 流光导弹
+	Tooltip: "发射直线轨迹的爆裂晶体，蓄力使威力提升"
 }
 
 GlowBeadGun: {
-	DisplayName: Glow Bead Gun
-	Tooltip: ""
+	DisplayName: 荧光连珠炮
+	Tooltip: "蓄力以发射一连串的爆破子"
 }
 
 NavyThunder: {
-	DisplayName: Navy Thunder
-	Tooltip: ""
+	DisplayName: 蓝焰炸雷
+	Tooltip: "从黑色骷髅嘴里喷出蓝色爆弹，需要一定时间才会爆炸"
 }
 
 LilyHarp: {
-	DisplayName: Lily Harp
-	Tooltip: ""
+	DisplayName: 铃兰竖琴
+	Tooltip: "弹奏会追踪的音符"
 }
 
 BoneFeatherMagic: {
-	DisplayName: Bone Feather Magic
-	Tooltip: ""
+	DisplayName: 骨羽魔法书
+    Tooltip: "记载着把骨羽当作飞镖发射的法术"
 }
 
 DarkFlower: {
-	DisplayName: Dark Flower
-	Tooltip: ""
+	DisplayName: 暗之花
+	Tooltip: "射出暗影球"
 }
 
 FeatherMagic: {
-	DisplayName: Feather Magic
-	Tooltip: ""
+	DisplayName: 羽魔法书
+	Tooltip: "记载着把羽毛当作飞镖发射的法术"
 }
 
 FireFeatherMagic: {
-	DisplayName: Fire Feather Magic
-	Tooltip: ""
+	DisplayName: 火羽魔法书
+    Tooltip: "记载着把火羽当作飞镖发射的法术"
 }
 
 FreezeFeatherMagic: {
-	DisplayName: Freeze Feather Magic
-	Tooltip: ""
+	DisplayName: 冰羽魔法书
+    Tooltip: "记载着把冰羽当作飞镖发射的法术"
 }
 
 ThunderFlower: {
-	DisplayName: Thunder Flower
-	Tooltip: ""
+	DisplayName: 雷之花
+	Tooltip: "射出电光球"
 }
 
 LanternBombRemoteControl: {
-	DisplayName: Lantern Bomb Remote Control
-	Tooltip: ""
+	DisplayName: 灯笼遥控器
+	Tooltip: "开发者物品，内含高能炸弹，不恰当使用可能会导致毁图"
 }
 
 AmberMagicOrb: {
-	DisplayName: Amber Magic Orb
-	Tooltip: ""
+	DisplayName: 天琥珀法球
+	Tooltip: "发射若干个琥珀珠，琥珀珠容易与其他琥珀珠粘连"
 }
 
 BloodySwamp: {
-	DisplayName: Bloody Swamp
-	Tooltip: ""
+	DisplayName: 浸血泥沼
+	Tooltip:
+	'''
+	发射法术模拟的血流
+	右键消耗40法力发射一个加速回血的圆形领域
+	'''
 }
 
 HexaCrystalStaff: {
-	DisplayName: Hexa Crystal Staff
-	Tooltip: ""
+	DisplayName: 六棱石花杖
+	Tooltip:
+	'''
+	射出能分裂成6个的蓝色暮光晶体飞弹，附加暮光晶体脆弱
+	'''
 }
 
 MagicOfLightAndShadow: {
-	DisplayName: Magic Of Light And Shadow
-	Tooltip: ""
+	DisplayName: 灯影戏法
+	Tooltip: "发射一束橘黄色光线，且能反射2次，每次反射威力减半"
 }
 
 NightfireStaff: {
-	DisplayName: Nightfire Staff
-	Tooltip: ""
+	DisplayName: 夜火法杖
+	Tooltip: "射出夜火飞弹"
 }
 
 RockQuake: {
-	DisplayName: Rock Quake
-	Tooltip: ""
+	DisplayName: 重岩爆裂
+	Tooltip: "发射一束力场，不会直接造成伤害，但是穿透实体方块时会从方块内部长出尖刺"
 }
 
 SmeltingStaff: {
-	DisplayName: Smelting Staff
-	Tooltip: ""
+	DisplayName: 熔炼法杖
+	Tooltip: "手持时周围立即生成一个能点燃敌人的岩浆法环，在环内点击即可轰炸"
 }
 
 YggdrasilAmberLaser: {
-	DisplayName: Yggdrasil Amber Laser
-	Tooltip: ""
+	DisplayName: 天琥珀光束
+	Tooltip:
+	'''
+	发射一束琥珀色的激光，击中实体方块后会在上面产生琥珀结晶
+	琥珀结晶也能对路过滴人造成伤害
+	'''
 }
 
 EyeOfAnabiosis: {
-	DisplayName: Eye Of Anabiosis
-	Tooltip: ""
+	DisplayName: 隐生之眼
+	Tooltip:
+	'''
+	手持即开始充能，12秒后可以攻击
+	发射青蓝色追踪火焰
+	可以同时攻击3个目标
+	'''
 }
 
 FlurryingBlades: {
-	DisplayName: Flurrying Blades
-	Tooltip: ""
+	DisplayName: 微风之刃
+	Tooltip: "从书页中卷起一个风刃球，对近距离目标造成多段伤害"
 }
 
 VitalizedRocks: {
-	DisplayName: Vitalized Rocks
-	Tooltip: ""
+	DisplayName: 显生岩核
+	Tooltip: "从虚空中构造出大小不一的岩石随后投掷"
 }
 
 BronzeLotusLamp: {
-	DisplayName: Bronze Lotus Lamp
-	Tooltip: ""
+	DisplayName: 青铜莲花灯
+	Tooltip: "喷射青莲地心火，有概率发射会爆炸的青火花蕾"
 }
 
 LightBeamStaff: {
-	DisplayName: Light Beam Staff
-	Tooltip: ""
+	DisplayName: 灯束法杖
+	Tooltip:
+	'''
+	发射一束光，附带光解效果，击中物块后留下照明信标
+	"灯束笔直，像极了初来乍到者的向往"
+	'''
 }
 
 CyanVineStaff: {
-	DisplayName: Cyan Vine Staff
-	Tooltip: ""
+	DisplayName: 青缎法杖
+	Tooltip: "使用青缎凝块进行简单的法术攻击"
 }
 
 AncientSyringe: {
-	DisplayName: Ancient Syringe
-	Tooltip: ""
+	DisplayName: 古旧的注射器
+	Tooltip: "往敌人体内注射感染性孢子"
 }
 
 BacterialAgent: {
-	DisplayName: Bacterial Agent
-	Tooltip: ""
+	DisplayName: 细菌溶液瓶
+	Tooltip: "投掷出去后散步感染性孢子"
 }
 
 DevilHeartStaff: {
-	DisplayName: Devil Heart Staff
-	Tooltip: ""
+	DisplayName: 魔心法杖
+	Tooltip: "攻击8次后下次攻击为特殊攻击，威力加大且附带凋亡损伤"
 }
 
 SightOfTile: {
-	DisplayName: Sight Of Tile
-	Tooltip: ""
+	DisplayName: 物块记录器
+	Tooltip:
+	'''
+	开发者物品，也供建筑家使用，允许编辑物块地图
+	已具有较完善的GUI和引导系统
+	警告：请勿用于切割箱子
+	'''
 }

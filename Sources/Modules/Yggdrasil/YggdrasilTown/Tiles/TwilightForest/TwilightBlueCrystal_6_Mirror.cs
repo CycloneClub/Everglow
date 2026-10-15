@@ -7,6 +7,6 @@ public class TwilightBlueCrystal_6_Mirror : Tile_MirrorFaceVFX
 {
 	public override void OnSpawn()
 	{
-		texture = ModAsset.TwilightBlueCrystal_6_Mirror.Value;
+		Texture = ModAsset.TwilightBlueCrystal_6_Mirror.Value;
 	}
 }

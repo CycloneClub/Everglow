@@ -70,13 +70,13 @@ public class SquamousRockSpike_Falling : ModProjectile
 			newVelocity.X *= 0.01f;
 			var somg = new RockSmog_Cone_FallingSandDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Bottom + new Vector2(newVelocity.X * 600, 8),
-				maxTime = Main.rand.NextFloat(90, Math.Max(newVelocity.Y * 6, 163)),
-				scale = Main.rand.NextFloat(12f, 13f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Bottom + new Vector2(newVelocity.X * 600, 8),
+				MaxTime = Main.rand.NextFloat(90, Math.Max(newVelocity.Y * 6, 163)),
+				Scale = Main.rand.NextFloat(12f, 13f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
 			Ins.VFXManager.Add(somg);
@@ -88,13 +88,13 @@ public class SquamousRockSpike_Falling : ModProjectile
 			newVelocity.X *= 0.01f;
 			var somg = new RockSmog_Cone_FallingSandDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Bottom + new Vector2(newVelocity.X * 600, 8),
-				maxTime = Main.rand.NextFloat(90, Math.Max(newVelocity.Y * 6, 163)),
-				scale = Main.rand.NextFloat(6f, 7f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Bottom + new Vector2(newVelocity.X * 600, 8),
+				MaxTime = Main.rand.NextFloat(90, Math.Max(newVelocity.Y * 6, 163)),
+				Scale = Main.rand.NextFloat(6f, 7f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
 			Ins.VFXManager.Add(somg);

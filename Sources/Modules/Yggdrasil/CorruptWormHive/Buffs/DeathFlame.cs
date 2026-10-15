@@ -19,14 +19,14 @@ public class DeathFlame : ModBuff
 			{
 				var df = new DevilFlame3DSickle_worldCoordDust
 				{
-					velocity3D = new Vector3(new Vector2(0, Main.rand.NextFloat(1, 2f)).RotatedByRandom(MathHelper.TwoPi) + npc.velocity * 0.2f, 0) + new Vector3(0, -1, 0),
+					Velocity3D = new Vector3(new Vector2(0, Main.rand.NextFloat(1, 2f)).RotatedByRandom(MathHelper.TwoPi) + npc.velocity * 0.2f, 0) + new Vector3(0, -1, 0),
 					Active = true,
 					Visible = true,
-					position3D = new Vector3(new Vector2(Main.rand.NextFloat(npc.width), Main.rand.NextFloat(npc.height)) + npc.position, 0),
+					Position3D = new Vector3(new Vector2(Main.rand.NextFloat(npc.width), Main.rand.NextFloat(npc.height)) + npc.position, 0),
 					rotateAxis = new Vector3(0, 0, 1),
-					scale = Main.rand.NextFloat(2, 6),
-					maxTime = Main.rand.Next(36, 40),
-					ownerWhoAmI = Main.LocalPlayer.whoAmI,
+					Scale = Main.rand.NextFloat(2, 6),
+					MaxTime = Main.rand.Next(36, 40),
+					OwnerWhoAmI = Main.LocalPlayer.whoAmI,
 					ai = new float[] { Main.rand.NextFloat(0, 1f), Main.rand.NextFloat(-0.1f, 0.1f), 0f },
 				};
 				Ins.VFXManager.Add(df);
@@ -41,14 +41,14 @@ public class DeathFlame : ModBuff
 			{
 				var df = new DevilFlame3DSickle_worldCoordDust
 				{
-					velocity3D = new Vector3(new Vector2(0, Main.rand.NextFloat(6, 9f)).RotatedByRandom(MathHelper.TwoPi), 0),
+					Velocity3D = new Vector3(new Vector2(0, Main.rand.NextFloat(6, 9f)).RotatedByRandom(MathHelper.TwoPi), 0),
 					Active = true,
 					Visible = true,
-					position3D = new Vector3(npc.Center, 0),
+					Position3D = new Vector3(npc.Center, 0),
 					rotateAxis = new Vector3(0, 0, 1),
-					scale = Main.rand.NextFloat(6, 12),
-					maxTime = Main.rand.Next(36, 40),
-					ownerWhoAmI = Main.LocalPlayer.whoAmI,
+					Scale = Main.rand.NextFloat(6, 12),
+					MaxTime = Main.rand.Next(36, 40),
+					OwnerWhoAmI = Main.LocalPlayer.whoAmI,
 					ai = new float[] { Main.rand.NextFloat(0, 1f), Main.rand.NextFloat(-0.1f, 0.1f), 0f },
 				};
 				Ins.VFXManager.Add(df);

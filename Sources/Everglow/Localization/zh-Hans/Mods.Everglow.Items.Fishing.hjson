@@ -1,34 +1,34 @@
 GlowingFirefly: {
-	DisplayName: Glowing Firefly
+	DisplayName: 流萤萤火虫
 	Tooltip: ""
 }
 
 DimmyFish: {
-	DisplayName: Dimmy Fish
+	DisplayName: 熹光鱼
 	Tooltip: ""
 }
 
 Filefish: {
-	DisplayName: Filefish
+	DisplayName: 马面鱼
 	Tooltip: ""
 }
 
 GrassCarp: {
-	DisplayName: Grass Carp
+	DisplayName: 草鱼
 	Tooltip: ""
 }
 
 GuidyFish: {
-	DisplayName: Guidy Fish
+	DisplayName: 领路鱼
 	Tooltip: ""
 }
 
 ThermostatRod: {
-	DisplayName: Thermostat Rod
+	DisplayName: 热能钓竿
 	Tooltip: ""
 }
 
 TwilightRod: {
-	DisplayName: Twilight Rod
+	DisplayName: 暮光钓竿
 	Tooltip: ""
 }

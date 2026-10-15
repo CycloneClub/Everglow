@@ -1,6 +1,6 @@
 namespace Everglow.Commons.UI.UIElements
 {
-	internal class UIPanel : BaseElement
+	public class UIPanel : BaseElement
 	{
 		public Color PanelColor = new Color(255, 255, 246);
 		public bool CanDrag = false;

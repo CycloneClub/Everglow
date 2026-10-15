@@ -13,86 +13,98 @@ AuburnBell: {
 }
 
 GrilledSquidTentacle: {
-	DisplayName: Grilled Squid Tentacle
+	DisplayName: 烤鱿鱼须
 	Tooltip: ""
 }
 
 ToothStaff: {
-	DisplayName: Tooth Staff
-	Tooltip: ""
+	DisplayName: 獠牙召唤杖
+	Tooltip: "召唤獠牙为你而战"
 }
 
 DarknessFan: {
-	DisplayName: Darkness Fan
-	Tooltip: ""
+	DisplayName: 幻蝶萤火扇
+	Tooltip: 
+	'''
+	右键可以远程攻击
+	标记最后一个被击中的敌人
+	'''
 }
 
 EvilChrysalis: {
-	DisplayName: Evil Chrysalis
-	Tooltip: ""
+	DisplayName: 邪茧孵化杖
+	Tooltip: "召唤小飞蛾作战"
 }
 
 XmasWhip: {
-	DisplayName: Xmas Whip
+	DisplayName: 圣诞树鞭
 	Tooltip: ""
 }
 
 ActivatedJellyGland: {
-	DisplayName: Activated Jelly Gland
-	Tooltip: ""
+	DisplayName: 活化球冻腺体
+	Tooltip: "召唤球冻作战"
 }
 
 MeltingSideGyroscope: {
-	DisplayName: Melting Side Gyroscope
+	DisplayName: 熔边陀螺
 	Tooltip: ""
 }
 
 MidwinterNightmare: {
-	DisplayName: Midwinter Nightmare
-	Tooltip: ""
+	DisplayName: 精灵提灯
+	Tooltip: 
+	'''
+	哨兵，在地上召唤一尾部挂有灯笼的矮树，当敌怪靠近时，本体从地下伸出
+	有100%的近战伤害，20帧间隔；同时本体发射高速但短距弹幕攻击敌怪，造成100%伤害，20帧间隔
+	'''
 }
 
 ThermoprobeStaff: {
-	DisplayName: Thermoprobe Staff
-	Tooltip: ""
+	DisplayName: 热探单元杖
+	Tooltip: 
+	'''
+	召唤1个浮游单元，浮游单元会对敌人发出火球。每个浮游单元装有3发弹药，打完销毁
+	最多拥有两倍召唤上限个浮游单元
+	'''
 }
 
 WiltedForestLamp: {
-	DisplayName: Wilted Forest Lamp
-	Tooltip: ""
+	DisplayName: 凋零森灯
+	Tooltip: "召唤能发射追踪法术的森灯，释放一定法术后会自爆造成范围凋亡损伤"
 }
 
 YggdrasilStoneGyroscope: {
-	DisplayName: Yggdrasil Stone Gyroscope
+	DisplayName: 天穹岩陀螺
 	Tooltip: ""
 }
 
 DeadBeetleEgg: {
-	DisplayName: Dead Beetle Egg
+	DisplayName: 死甲虫卵
 	Tooltip: ""
 }
 
 EvilMusicRemnant: {
-	DisplayName: Evil Music Remnant
+	DisplayName: 魔律残章
 	Tooltip: ""
 }
 
 LegumeGyroscope: {
-	DisplayName: Legume Gyroscope
+	DisplayName: 裂荚陀螺
 	Tooltip: ""
 }
 
 WoodlandWraithStaff: {
-	DisplayName: Woodland Wraith Staff
+	DisplayName: 森宇幽魂法杖
 	Tooltip: ""
 }
 
 LichenTentacle: {
-	DisplayName: Lichen Tentacle
+	DisplayName: 真菌触手
 	Tooltip: ""
 }
 
 DevilHeartGyroscope: {
-	DisplayName: Devil Heart Gyroscope
+	DisplayName: 魔心陀螺
 	Tooltip: ""
 }

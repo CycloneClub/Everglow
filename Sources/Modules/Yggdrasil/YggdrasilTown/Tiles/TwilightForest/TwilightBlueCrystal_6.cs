@@ -28,7 +28,7 @@ public class TwilightBlueCrystal_6 : ShapeDataTile, ISceneTile
 		Tile tile = Main.tile[i, j];
 		if (tile.TileFrameX == 36 && tile.TileFrameY == 36)
 		{
-			TwilightBlueCrystal_6_Mirror mirror = new TwilightBlueCrystal_6_Mirror { position = new Vector2(i, j) * 16 + new Vector2(-18, -28), Active = true, Visible = true, originTile = new Point(i, j), originType = Type };
+			TwilightBlueCrystal_6_Mirror mirror = new TwilightBlueCrystal_6_Mirror { Position = new Vector2(i, j) * 16 + new Vector2(-18, -28), Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = Type };
 			Ins.VFXManager.Add(mirror);
 		}
 	}

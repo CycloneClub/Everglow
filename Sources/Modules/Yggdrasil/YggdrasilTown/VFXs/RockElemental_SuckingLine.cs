@@ -7,14 +7,14 @@ public class RockElemental_SuckingLine : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
 
-	public Queue<Vector2> oldPos = new Queue<Vector2>();
+	public Queue<Vector2> OldPos = new Queue<Vector2>();
 	public Projectile VFXOwner;
-	public Vector2 position;
-	public Vector2 velocity;
+	public Vector2 Position;
+	public Vector2 Velocity;
 	public float[] ai;
-	public float timer;
-	public float maxTime;
-	public float scale;
+	public float Timer;
+	public float MaxTime;
+	public float Scale;
 
 	public override void Update()
 	{
@@ -28,62 +28,62 @@ public class RockElemental_SuckingLine : Visual
 		{
 			if (rockElemental_ThrowingStone.PolymerizationTimer < 0)
 			{
-				timer += 2;
+				Timer += 2;
 			}
 			else
 			{
-				velocity = velocity.RotatedBy(ai[1]);
-				Vector2 pierceAim = VFXOwner.Center - velocity - position;
+				Velocity = Velocity.RotatedBy(ai[1]);
+				Vector2 pierceAim = VFXOwner.Center - Velocity - Position;
 				if (pierceAim.Length() < 30)
 				{
-					timer += 2;
+					Timer += 2;
 				}
-				velocity = Vector2.Lerp(velocity, Utils.SafeNormalize(pierceAim, Vector2.zeroVector) * 9f, 0.1f);
+				Velocity = Vector2.Lerp(Velocity, Utils.SafeNormalize(pierceAim, Vector2.zeroVector) * 9f, 0.1f);
 			}
 		}
-		oldPos.Enqueue(position);
-		if (oldPos.Count > 30)
+		OldPos.Enqueue(Position);
+		if (OldPos.Count > 30)
 		{
-			oldPos.Dequeue();
+			OldPos.Dequeue();
 		}
-		timer++;
-		if (timer > maxTime)
+		Timer++;
+		if (Timer > MaxTime)
 		{
 			Active = false;
 			return;
 		}
-		position += velocity;
-		float pocession = 1 - timer / maxTime;
-		float c = pocession * scale * 0.04f;
-		Lighting.AddLight(position, c * 0.5f, c * 0.1f, c * 0.8f);
+		Position += Velocity;
+		float pocession = 1 - Timer / MaxTime;
+		float c = pocession * Scale * 0.04f;
+		Lighting.AddLight(Position, c * 0.5f, c * 0.1f, c * 0.8f);
 	}
 
 	public override void Draw()
 	{
-		int len = oldPos.Count;
+		int len = OldPos.Count;
 		var bars = new List<Vertex2D>();
 		if (len <= 2)
 		{
 			for (int i = 1; i < 3; i++)
 			{
-				bars.Add(position, new Color(0.3f + ai[0], 0, 0, 0), new Vector3(0 + ai[0], (i + 15 - len) / 17f, 1));
-				bars.Add(position, new Color(0.3f + ai[0], 0, 0, 0), new Vector3(0.6f + ai[0], (i + 15 - len) / 17f, 1));
+				bars.Add(Position, new Color(0.3f + ai[0], 0, 0, 0), new Vector3(0 + ai[0], (i + 15 - len) / 17f, 1));
+				bars.Add(Position, new Color(0.3f + ai[0], 0, 0, 0), new Vector3(0.6f + ai[0], (i + 15 - len) / 17f, 1));
 			}
 		}
 		else
 		{
-			Vector2[] pos = oldPos.Reverse().ToArray();
+			Vector2[] pos = OldPos.Reverse().ToArray();
 			for (int i = 1; i < len; i++)
 			{
-				float pocession = timer / maxTime;
-				if (timer - i < 20)
+				float pocession = Timer / MaxTime;
+				if (Timer - i < 20)
 				{
-					pocession += (20 - timer + i) / 20f;
+					pocession += (20 - Timer + i) / 20f;
 				}
 				pocession = Math.Clamp(pocession, 0, 1);
 				Vector2 normal = pos[i] - pos[i - 1];
 				normal = Vector2.Normalize(normal).RotatedBy(Math.PI * 0.5);
-				float width = scale * (float)Math.Sin(i / (double)len * Math.PI);
+				float width = Scale * (float)Math.Sin(i / (double)len * Math.PI);
 				bars.Add(pos[i] + normal * width, new Color(0.3f + ai[0], 0, 0, 0), new Vector3(0 + ai[0], (i + 15 - len) / 17f, pocession));
 				bars.Add(pos[i] - normal * width, new Color(0.3f + ai[0], 0, 0, 0), new Vector3(0.6f + ai[0], (i + 15 - len) / 17f, pocession));
 			}

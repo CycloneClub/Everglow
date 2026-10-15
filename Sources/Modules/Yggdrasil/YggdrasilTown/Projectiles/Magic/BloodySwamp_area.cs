@@ -32,15 +32,15 @@ public class BloodySwamp_area : ModProjectile, IWarpProjectile_warpStyle2
 			Vector2 vel = new Vector2(4 + MathF.Sin(i / (60f / 24f) * MathHelper.TwoPi), 0).RotatedBy(i / 60f * MathHelper.TwoPi);
 			var dustVFX = new Heart_VFX
 			{
-				omega = rotSpeed,
+				Omega = rotSpeed,
 				beta = -rotSpeed * 0.05f,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				velocity = vel,
-				maxTime = vel.Length() * 12,
-				scale = 9f,
-				color = Color.Red,
+				Position = Projectile.Center,
+				Velocity = vel,
+				MaxTime = vel.Length() * 12,
+				Scale = 9f,
+				DustColor = Color.Red,
 				ai = new float[] { Main.rand.NextFloat(1f, 8f) },
 			};
 			Ins.VFXManager.Add(dustVFX);
@@ -56,17 +56,17 @@ public class BloodySwamp_area : ModProjectile, IWarpProjectile_warpStyle2
 		{
 			var dustVFX = new Heart_VFX_spin
 			{
-				omega = 0.01f + scaleMul * 0.0002f,
+				Omega = 0.01f + scaleMul * 0.0002f,
 				rotatedCenter = Projectile.Center,
-				radius = scaleMul,
-				rotPos = Main.rand.NextFloat(MathHelper.TwoPi),
+				Radius = scaleMul,
+				RotPos = Main.rand.NextFloat(MathHelper.TwoPi),
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(70, 120),
-				maxScale = scaleMul / 12f + Main.rand.NextFloat(-2, 2),
-				scale = Main.rand.Next(4, 5),
-				color = colorLight,
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(70, 120),
+				MaxScale = scaleMul / 12f + Main.rand.NextFloat(-2, 2),
+				Scale = Main.rand.Next(4, 5),
+				DustColor = colorLight,
 				ai = new float[] { Main.rand.NextFloat(1f, 8f) },
 			};
 			Ins.VFXManager.Add(dustVFX);
@@ -249,7 +249,7 @@ public class BloodySwamp_area : ModProjectile, IWarpProjectile_warpStyle2
 			Vector2 dirOuter = dirMiddle.RotatedBy(0.3f);
 
 			var colorInner = new Color(-dirInner.X * 0.5f + 0.5f, -dirInner.Y * 0.5f + 0.5f, 0, 0);
-			var colorMiddle = new Color(-dirMiddle.X * 0.5f + 0.5f, -dirMiddle.Y * 0.5f + 0.5f, fade, 0);
+			var colorMiddle = new Color(-dirMiddle.X * 0.5f + 0.5f, -dirMiddle.Y * 0.5f + 0.5f, fade * 0.1f, 0);
 			var colorOuter = new Color(-dirOuter.X * 0.5f + 0.5f, -dirOuter.Y * 0.5f + 0.5f, 0, 0);
 
 			bars.Add(drawPos + radiusMiddle, colorMiddle, new Vector3(i / 50f - timeValue, timeValue, 0));

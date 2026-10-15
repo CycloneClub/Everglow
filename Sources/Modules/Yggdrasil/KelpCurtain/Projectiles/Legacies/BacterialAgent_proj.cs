@@ -36,12 +36,12 @@ public class BacterialAgent_proj : TrailingProjectile
 				Vector2 afterVelocity = new Vector2(0, Main.rand.NextFloat(0.5f, 1.8f)).RotatedByRandom(6.283f) + Projectile.velocity * 0.75f;
 				var splash = new LichenSlimeSplash
 				{
-					velocity = afterVelocity,
+					Velocity = afterVelocity,
 					Active = true,
 					Visible = true,
-					position = Projectile.Center,
-					maxTime = Main.rand.Next(12, 68),
-					scale = Main.rand.NextFloat(6f, 18f),
+					Position = Projectile.Center,
+					MaxTime = Main.rand.Next(12, 68),
+					Scale = Main.rand.NextFloat(6f, 18f),
 					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0, Main.rand.NextFloat(20.0f, 40.0f) },
 				};
 				Ins.VFXManager.Add(splash);
@@ -55,13 +55,13 @@ public class BacterialAgent_proj : TrailingProjectile
 				float mulScale = Main.rand.NextFloat(6f, 15f);
 				var blood = new LichenSlimeDrop
 				{
-					velocity = afterVelocity,
+					Velocity = afterVelocity,
 					Active = true,
 					Visible = true,
-					position = Projectile.Center,
-					maxTime = Main.rand.Next(32, 164),
-					scale = mulScale,
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = Projectile.Center,
+					MaxTime = Main.rand.Next(32, 164),
+					Scale = mulScale,
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 				};
 				Ins.VFXManager.Add(blood);
@@ -77,12 +77,12 @@ public class BacterialAgent_proj : TrailingProjectile
 			Vector2 afterVelocity = new Vector2(0, Main.rand.NextFloat(5f, 8f)).RotatedByRandom(6.283f);
 			var splash = new LichenSlimeSplash
 			{
-				velocity = afterVelocity,
+				Velocity = afterVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(12, 48),
-				scale = Main.rand.NextFloat(6f, 18f),
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(12, 48),
+				Scale = Main.rand.NextFloat(6f, 18f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0, Main.rand.NextFloat(20.0f, 40.0f) },
 			};
 			Ins.VFXManager.Add(splash);
@@ -93,13 +93,13 @@ public class BacterialAgent_proj : TrailingProjectile
 			float mulScale = Main.rand.NextFloat(6f, 15f);
 			var blood = new LichenSlimeDrop
 			{
-				velocity = afterVelocity / mulScale,
+				Velocity = afterVelocity / mulScale,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = Main.rand.Next(32, 94),
-				scale = mulScale,
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center,
+				MaxTime = Main.rand.Next(32, 94),
+				Scale = mulScale,
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 			};
 			Ins.VFXManager.Add(blood);

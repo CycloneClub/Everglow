@@ -214,11 +214,11 @@ public abstract class ScarpasScissorsCutProj : ScarpasScissorsProjBase
 				{
 					Active = true,
 					Visible = true,
-					position = target.Center,
-					velocity = Main.rand.NextFloat(0, MathHelper.TwoPi).ToRotationVector2() * 2f,
-					maxTime = Main.rand.Next(82, 164),
-					scale = Main.rand.NextFloat(12f, Main.rand.NextFloat(12f, 28.0f)),
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = target.Center,
+					Velocity = Main.rand.NextFloat(0, MathHelper.TwoPi).ToRotationVector2() * 2f,
+					MaxTime = Main.rand.Next(82, 164),
+					Scale = Main.rand.NextFloat(12f, Main.rand.NextFloat(12f, 28.0f)),
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 				});
 			}

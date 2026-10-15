@@ -76,6 +76,7 @@ public class QuenchingBladeProj : MeleeProj
 			modifiers.FinalDamage *= 1.4f;
 			ShakeStrength = 1f;
 		}
+		modifiers.HitDirectionOverride = target.Center.X > Main.player[Projectile.owner].Center.X ? 1 : -1;
 		ShakerManager.AddShaker(Projectile.Center, Vector2.One.RotatedByRandom(MathHelper.Pi), 10 * ShakeStrength, 20f, 120, 0.9f, 0.8f, 30);
 	}
 
@@ -102,7 +103,7 @@ public class QuenchingBladeProj : MeleeProj
 			}
 			if (timer == (int)(8 * timeMul))
 			{
-				AttSound(new SoundStyle(Commons.ModAsset.TrueMeleeSwing_Mod));
+				PlayAttackSound();
 			}
 
 			if (timer > 20 * timeMul && timer < 75 * timeMul)
@@ -129,13 +130,13 @@ public class QuenchingBladeProj : MeleeProj
 					{
 						var dustVFX = new FlameDust0
 						{
-							velocity = Vector2.zeroVector,
+							Velocity = Vector2.zeroVector,
 							Active = true,
 							Visible = true,
-							position = Vector2.Lerp(lineEnd, lineStart, MathF.Sqrt(Main.rand.NextFloat())),
-							maxTime = Main.rand.Next(6, 20),
-							scale = Main.rand.NextFloat(15, 60),
-							rotation = MathHelper.PiOver4 * 3,
+							Position = Vector2.Lerp(lineEnd, lineStart, MathF.Sqrt(Main.rand.NextFloat())),
+							MaxTime = Main.rand.Next(6, 20),
+							Scale = Main.rand.NextFloat(15, 60),
+							Rotation = MathHelper.PiOver4 * 3,
 							MyOwner = player,
 							ai = new float[] { Main.rand.Next(3), 0, 0 },
 						};
@@ -147,13 +148,13 @@ public class QuenchingBladeProj : MeleeProj
 						lineEnd = ProjCenter_WithoutGravDir + Vector2Elipse(250, Projectile.rotation + Main.rand.NextFloat(-0.5f, 0.5f), -1.2f, 0, 1000) * Projectile.scale * 1.2f;
 						var dustVFX = new FlameDust1
 						{
-							velocity = new Vector2(0, -4),
+							Velocity = new Vector2(0, -4),
 							Active = true,
 							Visible = true,
-							position = Vector2.Lerp(lineEnd, lineStart, MathF.Sqrt(Main.rand.NextFloat())),
-							maxTime = Main.rand.Next(6, 20),
-							scale = Main.rand.NextFloat(5, 20),
-							rotation = MathHelper.PiOver4 * 3,
+							Position = Vector2.Lerp(lineEnd, lineStart, MathF.Sqrt(Main.rand.NextFloat())),
+							MaxTime = Main.rand.Next(6, 20),
+							Scale = Main.rand.NextFloat(5, 20),
+							Rotation = MathHelper.PiOver4 * 3,
 							MyOwner = player,
 							ai = new float[] { Main.rand.Next(3), 0, 0 },
 						};
@@ -188,7 +189,7 @@ public class QuenchingBladeProj : MeleeProj
 			}
 			if (timer == (int)(8 * timeMul))
 			{
-				AttSound(new SoundStyle(Commons.ModAsset.TrueMeleeSwing_Mod));
+				PlayAttackSound();
 			}
 
 			if (timer > 20 * timeMul && timer < 75 * timeMul)
@@ -215,13 +216,13 @@ public class QuenchingBladeProj : MeleeProj
 					{
 						var dustVFX = new FlameDust0
 						{
-							velocity = Vector2.zeroVector,
+							Velocity = Vector2.zeroVector,
 							Active = true,
 							Visible = true,
-							position = Vector2.Lerp(lineEnd, lineStart, MathF.Sqrt(Main.rand.NextFloat())),
-							maxTime = Main.rand.Next(6, 20),
-							scale = Main.rand.NextFloat(15, 60),
-							rotation = MathHelper.PiOver4 * 3,
+							Position = Vector2.Lerp(lineEnd, lineStart, MathF.Sqrt(Main.rand.NextFloat())),
+							MaxTime = Main.rand.Next(6, 20),
+							Scale = Main.rand.NextFloat(15, 60),
+							Rotation = MathHelper.PiOver4 * 3,
 							MyOwner = player,
 							ai = new float[] { Main.rand.Next(3), 0, 0 },
 						};
@@ -233,13 +234,13 @@ public class QuenchingBladeProj : MeleeProj
 						lineEnd = ProjCenter_WithoutGravDir + Vector2Elipse(250, Projectile.rotation + Main.rand.NextFloat(-0.5f, 0.5f), -1.2f, 0, 1000) * Projectile.scale * 1.2f;
 						var dustVFX = new FlameDust1
 						{
-							velocity = new Vector2(0, -4),
+							Velocity = new Vector2(0, -4),
 							Active = true,
 							Visible = true,
-							position = Vector2.Lerp(lineEnd, lineStart, MathF.Sqrt(Main.rand.NextFloat())),
-							maxTime = Main.rand.Next(6, 20),
-							scale = Main.rand.NextFloat(5, 20),
-							rotation = MathHelper.PiOver4 * 3,
+							Position = Vector2.Lerp(lineEnd, lineStart, MathF.Sqrt(Main.rand.NextFloat())),
+							MaxTime = Main.rand.Next(6, 20),
+							Scale = Main.rand.NextFloat(5, 20),
+							Rotation = MathHelper.PiOver4 * 3,
 							MyOwner = player,
 							ai = new float[] { Main.rand.Next(3), 0, 0 },
 						};
@@ -274,7 +275,7 @@ public class QuenchingBladeProj : MeleeProj
 			}
 			if (timer == (int)(8 * timeMul))
 			{
-				AttSound(new SoundStyle(Commons.ModAsset.TrueMeleeSwing_Mod));
+				PlayAttackSound();
 			}
 			if (timer == (int)(24 * timeMul))
 			{
@@ -303,13 +304,13 @@ public class QuenchingBladeProj : MeleeProj
 						var lineEnd = ProjCenter_WithoutGravDir + Vector2Elipse(250, Projectile.rotation + Main.rand.NextFloat(-0.5f, 0.5f), 0, 0, 1000) * Projectile.scale * 1.2f;
 						var dustVFX = new FlameDust0
 						{
-							velocity = Vector2.zeroVector,
+							Velocity = Vector2.zeroVector,
 							Active = true,
 							Visible = true,
-							position = Vector2.Lerp(lineEnd, lineStart, MathF.Sqrt(Main.rand.NextFloat())),
-							maxTime = Main.rand.Next(6, 20),
-							scale = Main.rand.NextFloat(15, 80),
-							rotation = MathHelper.PiOver4 * 3,
+							Position = Vector2.Lerp(lineEnd, lineStart, MathF.Sqrt(Main.rand.NextFloat())),
+							MaxTime = Main.rand.Next(6, 20),
+							Scale = Main.rand.NextFloat(15, 80),
+							Rotation = MathHelper.PiOver4 * 3,
 							MyOwner = player,
 							ai = new float[] { Main.rand.Next(3), 0, 0 },
 						};
@@ -321,13 +322,13 @@ public class QuenchingBladeProj : MeleeProj
 						var lineEnd = ProjCenter_WithoutGravDir + Vector2Elipse(250, Projectile.rotation + Main.rand.NextFloat(-0.5f, 0.5f), 0, 0, 1000) * Projectile.scale * 1.2f;
 						var dustVFX = new FlameDust1
 						{
-							velocity = new Vector2(0, -4),
+							Velocity = new Vector2(0, -4),
 							Active = true,
 							Visible = true,
-							position = Vector2.Lerp(lineEnd, lineStart, MathF.Sqrt(Main.rand.NextFloat())),
-							maxTime = Main.rand.Next(6, 20),
-							scale = Main.rand.NextFloat(5, 20),
-							rotation = MathHelper.PiOver4 * 3,
+							Position = Vector2.Lerp(lineEnd, lineStart, MathF.Sqrt(Main.rand.NextFloat())),
+							MaxTime = Main.rand.Next(6, 20),
+							Scale = Main.rand.NextFloat(5, 20),
+							Rotation = MathHelper.PiOver4 * 3,
 							MyOwner = player,
 							ai = new float[] { Main.rand.Next(3), 0, 0 },
 						};
@@ -369,12 +370,31 @@ public class QuenchingBladeProj : MeleeProj
 				{
 					dir = 3.5f;
 				}
-				Projectile.NewProjectile(Projectile.GetSource_FromAI(), player.Center, Vector2.zeroVector, ModContent.ProjectileType<QuenchingBladeProj_Smash>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 1.2f, dir);
+				Projectile.NewProjectile(Projectile.GetSource_FromAI(), player.Center, Vector2.zeroVector, ModContent.ProjectileType<QuenchingBladeProj_Smash>(), Projectile.damage, Projectile.knockBack * 10, Projectile.owner, 1.2f, dir);
 			}
 			if (timer > 110 * timeMul)
 			{
 				NextAttackType();
 			}
+		}
+	}
+
+	public void PlayAttackSound()
+	{
+		switch (Main.rand.Next(4))
+		{
+			case 0:
+				AttSound(new SoundStyle(ModAsset.QuenchingBlade_attack_1_Mod));
+				break;
+			case 1:
+				AttSound(new SoundStyle(ModAsset.QuenchingBlade_attack_2_Mod));
+				break;
+			case 2:
+				AttSound(new SoundStyle(ModAsset.QuenchingBlade_attack_3_Mod));
+				break;
+			case 3:
+				AttSound(new SoundStyle(ModAsset.QuenchingBlade_attack_4_Mod));
+				break;
 		}
 	}
 
@@ -551,6 +571,7 @@ public class QuenchingBladeProj : MeleeProj
 			{
 				w *= (length - i - 1) / 10f;
 			}
+			w *= 0.1f;
 			float d = trail[i].ToRotation() + 3.14f + 1.57f;
 			if (d > 6.28f)
 			{

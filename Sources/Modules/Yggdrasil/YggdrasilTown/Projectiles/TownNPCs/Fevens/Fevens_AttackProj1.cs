@@ -92,18 +92,18 @@ public class Fevens_AttackProj1 : ModProjectile, IWarpProjectile
 				Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(2f, 9.6f)).RotatedByRandom(MathHelper.TwoPi);
 				var smog = new FevensCrystalPieceDust
 				{
-					velocity = newVelocity,
+					Velocity = newVelocity,
 					Active = true,
 					Visible = true,
-					coord0 = new Vector2(Main.rand.NextFloat(0.1f, 0.2f), 0).RotatedByRandom(6.283),
-					coord1 = new Vector2(Main.rand.NextFloat(0.1f, 0.2f), 0).RotatedByRandom(6.283),
-					position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-					maxTime = Main.rand.Next(27, 35),
-					scale = Main.rand.NextFloat(2f, 12f),
-					rotation = Main.rand.NextFloat(6.283f),
+					Coord0 = new Vector2(Main.rand.NextFloat(0.1f, 0.2f), 0).RotatedByRandom(6.283),
+					Coord1 = new Vector2(Main.rand.NextFloat(0.1f, 0.2f), 0).RotatedByRandom(6.283),
+					Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+					MaxTime = Main.rand.Next(27, 35),
+					Scale = Main.rand.NextFloat(2f, 12f),
+					Rotation = Main.rand.NextFloat(6.283f),
 					rotation2 = Main.rand.NextFloat(6.283f),
-					omega = Main.rand.NextFloat(-10f, 10f),
-					phi = Main.rand.NextFloat(6.283f),
+					Omega = Main.rand.NextFloat(-10f, 10f),
+					Phi = Main.rand.NextFloat(6.283f),
 					ai = new float[] { Main.rand.NextFloat(0f, 1f), Main.rand.NextFloat(0f, 1f), Main.rand.NextFloat(-0.005f, 0.005f) },
 				};
 				Ins.VFXManager.Add(smog);

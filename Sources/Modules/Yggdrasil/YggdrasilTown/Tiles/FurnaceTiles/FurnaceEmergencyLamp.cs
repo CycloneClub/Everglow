@@ -14,7 +14,7 @@ public class FurnaceEmergencyLamp : ModTile
 		Main.tileWaterDeath[Type] = false;
 
 		TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3Wall);
-		TileObjectData.newTile.Origin = new(0, 0);
+		TileObjectData.newTile.Origin = new(1, 0);
 		TileObjectData.newTile.Height = 2;
 		TileObjectData.newTile.Width = 3;
 

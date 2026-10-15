@@ -19,209 +19,209 @@ ShadowstrikeCaterpillart.DisplayName: Arboreal Caterpillar
 WhisperingGhost.DisplayName: Whispering Ghost
 
 RapierMaster_Boss: {
-	DisplayName: Rapier Master_ Boss
+	DisplayName: 刺剑大师
 }
 
 InfoRegisteryTestNPC: {
-	DisplayName: Info Registery TestNPC
+	DisplayName: 测试NPC非模组内容
 }
 
 BloodTusk: {
-	DisplayName: Blood Tusk
+	DisplayName: 鲜血獠牙
 }
 
 Living_Jawbone: {
-	DisplayName: Living_ Jawbone
+	DisplayName: 活颌骨
 }
 
 GlowingHeal: {
-	DisplayName: Glowing Heal
+	DisplayName: 治愈性流光
 }
 
 BlackStarFruit: {
-	DisplayName: Black Star Fruit
+	DisplayName: 萤灯果
 }
 
 CentipedeHead: {
-	DisplayName: Centipede Head
+	DisplayName: 流萤蜈蚣
 }
 
 CentipedeBody: {
-	DisplayName: Centipede Body
+	DisplayName: 流萤蜈蚣
 }
 
 CentipedeTail: {
-	DisplayName: Centipede Tail
+	DisplayName: 流萤蜈蚣
 }
 
 Dendroid_normal: {
-	DisplayName: Dendroid_normal
+	DisplayName: 流萤枯木人
 }
 
 FireflyPiranha: {
-	DisplayName: Firefly Piranha
+	DisplayName: 流萤虎鱼
 }
 
 FireflyPiranhaInfected: {
-	DisplayName: Firefly Piranha Infected
+	DisplayName: 感染流萤虎鱼
 }
 
 FireflyPiranhaInfected_small: {
-	DisplayName: Firefly Piranha Infected_small
+	DisplayName: 感染流萤虎鱼
 }
 
 FireflyPiranha_small: {
-	DisplayName: Firefly Piranha_small
+	DisplayName: 流萤虎鱼
 }
 
 GlowingFirefly: {
-	DisplayName: Glowing Firefly
+	DisplayName: 流萤萤火虫
 }
 
 LittleFireBulb: {
-	DisplayName: Little Fire Bulb
+	DisplayName: 小火滴
 }
 
 CorruptMoth: {
-	DisplayName: Corrupt Moth
+	DisplayName: 腐檀巨蛾
 }
 
 EvilPack: {
-	DisplayName: Evil Pack
+	DisplayName: 巨大夜光茧
 }
 
 SummonedButterfly: {
-	DisplayName: Summoned Butterfly
+	DisplayName: 幻影蛾
 }
 
 ExplosiveLantern_growing: {
-	DisplayName: Explosive Lantern_growing
+	DisplayName: 爆破灯笼
 }
 
 BloodLanternGhost: {
-	DisplayName: Blood Lantern Ghost
+	DisplayName: 血色灯笼
 }
 
 BombLantern: {
-	DisplayName: Bomb Lantern
+	DisplayName: 炸弹灯笼
 }
 
 CylindricalLantern: {
-	DisplayName: Cylindrical Lantern
+	DisplayName: 火柱灯笼
 }
 
 FloatLantern: {
-	DisplayName: Float Lantern
+	DisplayName: 鬼灯笼
 }
 
 RedPackBomber: {
-	DisplayName: Red Pack Bomber
+	DisplayName: 红包轰炸机
 }
 
 LanternGhostKing: {
-	DisplayName: Lantern Ghost King
+	DisplayName: 灯笼鬼王
 }
 
 BlueCore: {
-	DisplayName: Blue Core
+	DisplayName: 蓝核心
 }
 
 FlamingDashCore: {
-	DisplayName: Flaming Dash Core
+	DisplayName: 不灭的花火幻魂心
 }
 
 GreenCore: {
-	DisplayName: Green Core
+	DisplayName: 绿核心
 }
 
 RedCore: {
-	DisplayName: Red Core
+	DisplayName: 红核心
 }
 
 YellowCore: {
-	DisplayName: Yellow Core
+	DisplayName: 黄核心
 }
 
 Acytaea: {
-	DisplayName: Acytaea
+	DisplayName: 雅斯塔亚
 }
 
 Acytaea_Boss: {
-	DisplayName: Acytaea_ Boss
+	DisplayName: 雅斯塔亚
 }
 
 BarkSpicyCaterpillar: {
-	DisplayName: Bark Spicy Caterpillar
+	DisplayName: 树皮刺毛虫
 }
 
 BrownCaterpillar: {
-	DisplayName: Brown Caterpillar
+	DisplayName: 棕色毛虫
 }
 
 CarapaceCaterpillar: {
-	DisplayName: Carapace Caterpillar
+	DisplayName: 石甲壳毛虫
 }
 
 CrimsonSpell: {
-	DisplayName: Crimson Spell
+	DisplayName: 血月教徒
 }
 
 CyanOreBeetle: {
-	DisplayName: Cyan Ore Beetle
+	DisplayName: 青缎甲虫
 }
 
 DarkGlimmeringRods: {
-	DisplayName: Dark Glimmering Rods
+	DisplayName: 金棕飞棍
 }
 
 Guard_Slimy: {
-	DisplayName: Guard_ Slimy
+	DisplayName: 小史
 }
 
 JellyBall: {
-	DisplayName: Jelly Ball
+	DisplayName: 球冻
 }
 
 LampFruitBorer: {
-	DisplayName: Lamp Fruit Borer
+	DisplayName: 灯果螟
 }
 
 LeafcutterAnt: {
-	DisplayName: Leafcutter Ant
+	DisplayName: 切叶蚁
 }
 
 LightBulb: {
-	DisplayName: Light Bulb
+	DisplayName: 灯泡花苞
 }
 
 RockElemental: {
-	DisplayName: Rock Elemental
+	DisplayName: 磐石元素
 }
 
 ShadowstrikeCaterpillar: {
-	DisplayName: Shadowstrike Caterpillar
+	DisplayName: 夜行毛虫
 }
 
 WhisperingGhost: {
-	DisplayName: Whispering Ghost
+	DisplayName: 低语幽灵
 }
 
 Acytaea_yggdrasil: {
-	DisplayName: Acytaea_yggdrasil
+	DisplayName: 雅斯塔亚
 }
 
 SquamousShell: {
-	DisplayName: Squamous Shell
+	DisplayName: 龙鳞古壳
 }
 
 KingJellyBall: {
-	DisplayName: King Jelly Ball
+	DisplayName: 球冻王
 }
 
 RiverSlug: {
-	DisplayName: River Slug
+	DisplayName: 水蛞蝓
 }
 
 TestNPC: {
-	DisplayName: TestNPC
+	DisplayName: 测试NPC
 }

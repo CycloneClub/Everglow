@@ -38,13 +38,13 @@ public class HolyCrystal : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
 
-	public Vector2 position;
-	public Vector2 startPosition;
-	public Vector2 velocity;
+	public Vector2 Position;
+	public Vector2 StartPosition;
+	public Vector2 Velocity;
 	public float[] ai;
-	public float timer;
-	public float maxTime;
-	public float scale;
+	public float Timer;
+	public float MaxTime;
+	public float Scale;
 
 	public override void OnSpawn()
 	{
@@ -53,49 +53,49 @@ public class HolyCrystal : Visual
 
 	public override void Update()
 	{
-		float pocession = timer / maxTime;
-		Vector2 direction = position - startPosition;
-		if (startPosition == Vector2.zeroVector)
+		float progress = Timer / MaxTime;
+		Vector2 direction = Position - StartPosition;
+		if (StartPosition == Vector2.zeroVector)
 		{
-			startPosition = position;
+			StartPosition = Position;
 			if (ai[2] != 0)
 			{
-				Projectile projectile = Projectile.NewProjectileDirect(Main.LocalPlayer.GetSource_FromAI(), position, velocity, ModContent.ProjectileType<HolyCrystalProjectile>(), (int)ai[2], 0f, Main.LocalPlayer.whoAmI);
-				projectile.timeLeft = (int)maxTime;
+				Projectile projectile = Projectile.NewProjectileDirect(Main.LocalPlayer.GetSource_FromAI(), Position, Velocity, ModContent.ProjectileType<HolyCrystalProjectile>(), (int)ai[2], 0f, Main.LocalPlayer.whoAmI);
+				projectile.timeLeft = (int)MaxTime;
 			}
 		}
-		position += velocity;
-		if (position.X <= 320 || position.X >= Main.maxTilesX * 16 - 320)
+		Position += Velocity;
+		if (Position.X <= 320 || Position.X >= Main.maxTilesX * 16 - 320)
 		{
 			Active = false;
 			return;
 		}
-		if (position.Y <= 320 || position.Y >= Main.maxTilesY * 16 - 320)
+		if (Position.Y <= 320 || Position.Y >= Main.maxTilesY * 16 - 320)
 		{
 			Active = false;
 			return;
 		}
-		velocity *= 0.93f;
+		Velocity *= 0.93f;
 
-		timer++;
-		if (timer > maxTime)
+		Timer++;
+		if (Timer > MaxTime)
 		{
 			Active = false;
 		}
 		int dustCount = 0;
 		for (int i = 0; i < 50; i++)
 		{
-			Vector2 tryPos = startPosition + direction * Main.rand.NextFloat(1f);
-			float try90 = pocession * 1.5f - GetDissolveDeltaValue(tryPos);
+			Vector2 tryPos = StartPosition + direction * Main.rand.NextFloat(1f);
+			float try90 = progress * 1.5f - GetDissolveDeltaValue(tryPos);
 			if (Math.Abs(try90 - 0.79) < 0.05)
 			{
 				for (int j = 0; j < 3; j++)
 				{
-					if (Main.rand.NextFloat(50) < scale)
+					if (Main.rand.NextFloat(50) < Scale)
 					{
 						Dust dust = Dust.NewDustDirect(tryPos, 0, 0, ModContent.DustType<CrystalScaleFlame_VanillaDust>());
 						dust.velocity = Utils.SafeNormalize(direction, Vector2.One);
-						float width = scale;
+						float width = Scale;
 						if (GetDissolveDeltaValue(tryPos) > 0.2f)
 						{
 							width *= (0.3f - GetDissolveDeltaValue(tryPos)) * 10f;
@@ -109,7 +109,7 @@ public class HolyCrystal : Visual
 			}
 			if (Math.Abs(try90 - 0.84) < 0.05)
 			{
-				if (Main.rand.NextFloat(50) < scale)
+				if (Main.rand.NextFloat(50) < Scale)
 				{
 					Dust dust2 = Dust.NewDustDirect(tryPos, 0, 0, DustID.MushroomSpray);
 					dust2.noGravity = true;
@@ -126,48 +126,48 @@ public class HolyCrystal : Visual
 				break;
 			}
 		}
-		pocession = 1 - pocession;
-		float c = pocession * scale * 0.02f;
-		Lighting.AddLight(position, c, c * 0.4f, c * 0.7f);
+		progress = 1 - progress;
+		float c = progress * Scale * 0.02f;
+		Lighting.AddLight(Position, c, c * 0.4f, c * 0.7f);
 	}
 
 	public override void Draw()
 	{
-		Vector2 direction = position - startPosition;
+		Vector2 direction = Position - StartPosition;
 		Vector2 normalDirLeft = Utils.SafeNormalize(direction, Vector2.zeroVector).RotatedBy(MathHelper.PiOver2);
 
-		Vector2 point1 = startPosition - normalDirLeft * scale * 0.7f + direction * 0.8f;
-		Vector2 point2 = startPosition + normalDirLeft * scale * 0.82f + direction * 0.6f;
-		Vector2 point3 = startPosition + normalDirLeft * scale * 0.75f + direction * 0.88f;
-		Vector2 point4 = startPosition - normalDirLeft * scale * 0.82f + direction * 0.85f;
-		Vector2 point5 = startPosition - normalDirLeft * scale * 0.54f + direction * 0.91f;
-		Vector2 point6 = startPosition - normalDirLeft * scale * 0.84f + direction * 0.71f;
-		Vector2 point7 = startPosition - normalDirLeft * scale * 0.34f + direction * 0.91f;
-		Vector2 point8 = startPosition + normalDirLeft * scale * 0.44f + direction * 0.89f;
-		Vector2 point9 = startPosition + normalDirLeft * scale * 0.84f + direction * 0.07f;
-		Vector2 point10 = startPosition + normalDirLeft * scale * 0.14f + direction * 0.91f;
-		Vector2 point11 = startPosition + normalDirLeft * scale * 0.51f + direction * 0.88f;
-		Vector2 point12 = startPosition + normalDirLeft * scale * 0.71f + direction * 0.87f;
-		Vector2 point13 = startPosition + normalDirLeft * scale * 0.51f + direction * 0.01f;
-		Vector2 point14 = startPosition + normalDirLeft * scale * 0.71f + direction * 0.02f;
+		Vector2 point1 = StartPosition - normalDirLeft * Scale * 0.7f + direction * 0.8f;
+		Vector2 point2 = StartPosition + normalDirLeft * Scale * 0.82f + direction * 0.6f;
+		Vector2 point3 = StartPosition + normalDirLeft * Scale * 0.75f + direction * 0.88f;
+		Vector2 point4 = StartPosition - normalDirLeft * Scale * 0.82f + direction * 0.85f;
+		Vector2 point5 = StartPosition - normalDirLeft * Scale * 0.54f + direction * 0.91f;
+		Vector2 point6 = StartPosition - normalDirLeft * Scale * 0.84f + direction * 0.71f;
+		Vector2 point7 = StartPosition - normalDirLeft * Scale * 0.34f + direction * 0.91f;
+		Vector2 point8 = StartPosition + normalDirLeft * Scale * 0.44f + direction * 0.89f;
+		Vector2 point9 = StartPosition + normalDirLeft * Scale * 0.84f + direction * 0.07f;
+		Vector2 point10 = StartPosition + normalDirLeft * Scale * 0.14f + direction * 0.91f;
+		Vector2 point11 = StartPosition + normalDirLeft * Scale * 0.51f + direction * 0.88f;
+		Vector2 point12 = StartPosition + normalDirLeft * Scale * 0.71f + direction * 0.87f;
+		Vector2 point13 = StartPosition + normalDirLeft * Scale * 0.51f + direction * 0.01f;
+		Vector2 point14 = StartPosition + normalDirLeft * Scale * 0.71f + direction * 0.02f;
 
-		Vector2 point15 = startPosition - normalDirLeft * scale * 0.51f + direction * 0.88f;
-		Vector2 point16 = startPosition - normalDirLeft * scale * 0.71f + direction * 0.87f;
-		Vector2 point17 = startPosition - normalDirLeft * scale * 0.51f + direction * 0.01f;
-		Vector2 point18 = startPosition - normalDirLeft * scale * 0.71f + direction * 0.02f;
+		Vector2 point15 = StartPosition - normalDirLeft * Scale * 0.51f + direction * 0.88f;
+		Vector2 point16 = StartPosition - normalDirLeft * Scale * 0.71f + direction * 0.87f;
+		Vector2 point17 = StartPosition - normalDirLeft * Scale * 0.51f + direction * 0.01f;
+		Vector2 point18 = StartPosition - normalDirLeft * Scale * 0.71f + direction * 0.02f;
 		List<Vertex2D> bars = new List<Vertex2D>();
 
-		AddTriangle(position, startPosition + normalDirLeft * scale, startPosition - normalDirLeft * scale, 0, bars);
-		AddTriangle(position, point1, startPosition - normalDirLeft * scale, 1, bars);
-		AddTriangle(position, point2, startPosition - normalDirLeft * scale, 1.4f, bars);
+		AddTriangle(Position, StartPosition + normalDirLeft * Scale, StartPosition - normalDirLeft * Scale, 0, bars);
+		AddTriangle(Position, point1, StartPosition - normalDirLeft * Scale, 1, bars);
+		AddTriangle(Position, point2, StartPosition - normalDirLeft * Scale, 1.4f, bars);
 
-		AddTriangle(position, point6, startPosition - normalDirLeft * scale, 1.1f, bars);
-		AddTriangle(position, point3, startPosition + normalDirLeft * scale, 1.3f, bars);
+		AddTriangle(Position, point6, StartPosition - normalDirLeft * Scale, 1.1f, bars);
+		AddTriangle(Position, point3, StartPosition + normalDirLeft * Scale, 1.3f, bars);
 
-		AddTriangle(position, point3, point2, 2.5f, bars);
-		AddTriangle(position, point4, point5, 2.6f, bars, 0.005f);
+		AddTriangle(Position, point3, point2, 2.5f, bars);
+		AddTriangle(Position, point4, point5, 2.6f, bars, 0.005f);
 
-		AddTriangle(position, point5, point6, 2.9f, bars, 0.01f);
+		AddTriangle(Position, point5, point6, 2.9f, bars, 0.01f);
 		AddTriangle(point7, point8, point9, 3.5f, bars, 0.02f);
 		if (ai[0] > 30 && ai[0] < 95)
 		{
@@ -182,12 +182,12 @@ public class HolyCrystal : Visual
 
 		if (ai[0] > 20)
 		{
-			AddTriangle(position, point10, point3, 3.7f, bars, 0.3f);
-			AddTriangle(position, point10, point5, 3.2f, bars, 0.72f);
+			AddTriangle(Position, point10, point3, 3.7f, bars, 0.3f);
+			AddTriangle(Position, point10, point5, 3.2f, bars, 0.72f);
 		}
 		else
 		{
-			AddTriangle(position, point3, point5, 3.5f, bars, 0.3f);
+			AddTriangle(Position, point3, point5, 3.5f, bars, 0.3f);
 		}
 
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleList);
@@ -195,31 +195,31 @@ public class HolyCrystal : Visual
 
 	public void AddTriangle(Vector2 pos1, Vector2 pos2, Vector2 pos3, float randSeed, List<Vertex2D> bars, float addLight = 0)
 	{
-		float pocession = timer / maxTime;
-		Vector2 direction = position - startPosition;
+		float progress = Timer / MaxTime;
+		Vector2 direction = Position - StartPosition;
 		Vector2 randomPoint = new Vector2(0, 0.4f).RotatedBy(direction.Length() * 0.0009f + Main.screenPosition.Length() * 0.00002f + ai[0] + randSeed) + new Vector2(ai[1]);
-		Color baseColor = Lighting.GetColor((position / 16f).ToPoint());
+		Color baseColor = Lighting.GetColor((Position / 16f).ToPoint());
 		Color c1 = baseColor * GetTransparencyValue(pos1);
 		Color c2 = baseColor * GetTransparencyValue(pos2);
 		Color c3 = baseColor * GetTransparencyValue(pos3);
 		c1.R = (byte)(addLight * 255f);
 		c2.R = (byte)(addLight * 255f);
 		c3.R = (byte)(addLight * 255f);
-		bars.Add(pos1, c1, new Vector3(randomPoint, pocession * 1.5f - GetDissolveDeltaValue(pos1)));
-		bars.Add(pos2, c2, new Vector3(randomPoint, pocession * 1.5f - GetDissolveDeltaValue(pos2)));
-		bars.Add(pos3, c3, new Vector3(randomPoint, pocession * 1.5f - GetDissolveDeltaValue(pos3)));
+		bars.Add(pos1, c1, new Vector3(randomPoint, progress * 1.5f - GetDissolveDeltaValue(pos1)));
+		bars.Add(pos2, c2, new Vector3(randomPoint, progress * 1.5f - GetDissolveDeltaValue(pos2)));
+		bars.Add(pos3, c3, new Vector3(randomPoint, progress * 1.5f - GetDissolveDeltaValue(pos3)));
 	}
 
 	public float GetDissolveDeltaValue(Vector2 drawPos)
 	{
-		Vector2 direction = position - startPosition;
-		return (drawPos - startPosition).Length() / direction.Length() * 0.3f;
+		Vector2 direction = Position - StartPosition;
+		return (drawPos - StartPosition).Length() / direction.Length() * 0.3f;
 	}
 
 	public float GetTransparencyValue(Vector2 drawPos)
 	{
-		Vector2 direction = position - startPosition;
-		return (drawPos - startPosition).Length() / direction.Length();
+		Vector2 direction = Position - StartPosition;
+		return (drawPos - StartPosition).Length() / direction.Length();
 	}
 }
 

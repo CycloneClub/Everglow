@@ -12,7 +12,6 @@ public class JadeLakeGreenAlgae : ModTile, ITileFluentlyDrawn
 	{
 		Main.tileFrameImportant[Type] = false;
 		Main.tileNoAttach[Type] = true;
-		Main.tileCut[Type] = true;
 		Main.tileLavaDeath[Type] = true;
 		TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
 		TileObjectData.newTile.Height = 1;
@@ -94,7 +93,6 @@ public class JadeLakeGreenAlgae : ModTile, ITileFluentlyDrawn
 
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{
-		var tile = Main.tile[i, j];
 		if (Main.tile[i, j + 1].TileType != Type)
 		{
 			TileFluentDrawManager.AddFluentPoint(this, i, j);
@@ -127,7 +125,7 @@ public class JadeLakeGreenAlgae : ModTile, ITileFluentlyDrawn
 		var lastOffset = new Vector2(0, 12);
 		var lastOffset2 = new Vector2(0, 12);
 		int height = 0;
-		for (int j = 0; j < 30; j++)
+		for (int j = 0; j < 40; j++)
 		{
 			height++;
 			if (tilePos.Y - j < 21)
@@ -140,7 +138,7 @@ public class JadeLakeGreenAlgae : ModTile, ITileFluentlyDrawn
 				break;
 			}
 		}
-		for (int j = 0; j < 30; j++)
+		for (int j = 0; j < 40; j++)
 		{
 			if (tilePos.Y - j < 21)
 			{

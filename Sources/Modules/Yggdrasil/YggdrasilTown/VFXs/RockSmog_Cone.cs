@@ -33,47 +33,47 @@ public class RockSmog_ConeDust : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawNPCs;
 
-	public Vector2 position;
-	public Vector2 velocity;
+	public Vector2 Position;
+	public Vector2 Velocity;
 	public float[] ai;
-	public float timer;
-	public float maxTime;
-	public float scale;
-	public float rotation;
-	public Queue<Vector2> oldPos = new Queue<Vector2>();
+	public float Timer;
+	public float MaxTime;
+	public float Scale;
+	public float Rotation;
+	public Queue<Vector2> OldPos = new Queue<Vector2>();
 
 	public override void Update()
 	{
-		oldPos.Enqueue(position);
-		if (oldPos.Count > 60)
+		OldPos.Enqueue(Position);
+		if (OldPos.Count > 60)
 		{
-			oldPos.Dequeue();
+			OldPos.Dequeue();
 		}
-		position += velocity;
-		if (position.X <= 320 || position.X >= Main.maxTilesX * 16 - 320)
+		Position += Velocity;
+		if (Position.X <= 320 || Position.X >= Main.maxTilesX * 16 - 320)
 		{
-			timer = maxTime;
+			Timer = MaxTime;
 			Active = false;
 			return;
 		}
-		if (position.Y <= 320 || position.Y >= Main.maxTilesY * 16 - 320)
+		if (Position.Y <= 320 || Position.Y >= Main.maxTilesY * 16 - 320)
 		{
-			timer = maxTime;
+			Timer = MaxTime;
 			Active = false;
 			return;
 		}
-		velocity *= 0.97f;
-		velocity.Y += 0.3f;
-		if (scale < 60)
+		Velocity *= 0.97f;
+		Velocity.Y += 0.3f;
+		if (Scale < 60)
 		{
-			scale += 0.4f;
+			Scale += 0.4f;
 		}
-		timer++;
-		if (Collision.SolidCollision(position, 0, 0))
+		Timer++;
+		if (Collision.SolidCollision(Position, 0, 0))
 		{
-			timer += 5;
+			Timer += 5;
 		}
-		if (timer > maxTime)
+		if (Timer > MaxTime)
 		{
 			Active = false;
 		}
@@ -81,29 +81,29 @@ public class RockSmog_ConeDust : Visual
 
 	public override void Draw()
 	{
-		float pocession = timer / maxTime;
+		float pocession = Timer / MaxTime;
 		float timeValue = (float)(Main.time * 0.002);
-		Vector3 lightValue = Lighting.GetColor(position.ToTileCoordinates()).ToVector3();
+		Vector3 lightValue = Lighting.GetColor(Position.ToTileCoordinates()).ToVector3();
 		float light = lightValue.Length();
 		List<Vertex2D> bars = new List<Vertex2D>();
-		Vector2[] oldPoses = oldPos.ToArray();
+		Vector2[] OldPoses = OldPos.ToArray();
 
-		if (oldPoses.Length <= 2)
+		if (OldPoses.Length <= 2)
 		{
-			bars.Add(position, new Color(0, light, pocession), new Vector3(ai[0], timeValue, light));
-			bars.Add(position, new Color(0, light, pocession), new Vector3(ai[0], timeValue, light));
-			bars.Add(position, new Color(0, light, pocession), new Vector3(ai[0], timeValue, light));
-			bars.Add(position, new Color(0, light, pocession), new Vector3(ai[0], timeValue, light));
+			bars.Add(Position, new Color(0, light, pocession), new Vector3(ai[0], timeValue, light));
+			bars.Add(Position, new Color(0, light, pocession), new Vector3(ai[0], timeValue, light));
+			bars.Add(Position, new Color(0, light, pocession), new Vector3(ai[0], timeValue, light));
+			bars.Add(Position, new Color(0, light, pocession), new Vector3(ai[0], timeValue, light));
 		}
 		else
 		{
-			for (int i = 1; i < oldPos.Count; i++)
+			for (int i = 1; i < OldPos.Count; i++)
 			{
-				Vector2 normal = oldPoses[i] - oldPoses[i - 1];
-				normal = Vector2.Normalize(normal).RotatedBy(MathHelper.PiOver2) * scale;
-				float width = 1 - i / (float)(oldPos.Count - 1);
-				bars.Add(oldPoses[i] + normal, new Color(0, light, pocession), new Vector3(ai[0] + i / 10f, 0, width));
-				bars.Add(oldPoses[i] - normal, new Color(0, light, pocession), new Vector3(ai[0] + i / 10f, 0.8f, width));
+				Vector2 normal = OldPoses[i] - OldPoses[i - 1];
+				normal = Vector2.Normalize(normal).RotatedBy(MathHelper.PiOver2) * Scale;
+				float width = 1 - i / (float)(OldPos.Count - 1);
+				bars.Add(OldPoses[i] + normal, new Color(0, light, pocession), new Vector3(ai[0] + i / 10f, 0, width));
+				bars.Add(OldPoses[i] - normal, new Color(0, light, pocession), new Vector3(ai[0] + i / 10f, 0.8f, width));
 			}
 		}
 		if (bars.Count > 0)

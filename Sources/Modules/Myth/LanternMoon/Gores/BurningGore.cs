@@ -1,15 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.GameContent;
-
 namespace Everglow.Myth.LanternMoon.Gores;
 
 public abstract class BurningGore : VisualGore
 {
-	public float rotateSpeed;
+	public float RotateSpeed;
+
 	/// <summary>
 	/// 轻度值,下降速度的减缓程度,0~0.1为佳
 	/// </summary>
@@ -30,16 +24,15 @@ public abstract class BurningGore : VisualGore
 	/// </summary>
 	public bool HasBone = false;
 
-
 	/// <summary>
 	/// 随机值
 	/// </summary>
 	public float[] ai;
 
-
 	public virtual void SetRandomValues()
 	{
 	}
+
 	public override void OnSpawn()
 	{
 		base.OnSpawn();
@@ -48,72 +41,73 @@ public abstract class BurningGore : VisualGore
 
 	public override void Update()
 	{
-		timer++;
-		scale *= 0.999f;
-		if ((width <= 0 || height <= 0) && Texture is not null)
+		Timer++;
+		Scale *= 0.999f;
+		if ((Width <= 0 || Height <= 0) && Texture is not null)
 		{
-			width = Texture.Width;
-			height = Texture.Height;
-			weight = width * height * Main.rand.NextFloat(0.85f, 1.15f);
+			Width = Texture.Width;
+			Height = Texture.Height;
+			Weight = Width * Height * Main.rand.NextFloat(0.85f, 1.15f);
 		}
-		if (tileCollide)
+		if (TileCollide)
 		{
-			float velocityValue = velocity.Length() / 25f;
+			float velocityValue = Velocity.Length() / 25f;
 			velocityValue = Math.Clamp(velocityValue, 0.0f, 1.0f);
-			if (TileUtils.PlatformCollision(position + new Vector2(velocity.X, 0)))
+			if (TileUtils.PlatformCollision(Position + new Vector2(Velocity.X, 0)))
 			{
-				velocity.X = 0;
+				Velocity.X = 0;
 			}
-			if (TileUtils.PlatformCollision(position + new Vector2(0, velocity.Y)))
+			if (TileUtils.PlatformCollision(Position + new Vector2(0, Velocity.Y)))
 			{
-				velocity.Y = 0;
+				Velocity.Y = 0;
 			}
 			else
 			{
-				if (!noGravity)
+				if (!NoGravity)
 				{
-					velocity.Y += LightValue;
-					velocity.X += Main.windSpeedCurrent / width * 15f;
+					Velocity.Y += LightValue;
+					Velocity.X += Main.windSpeedCurrent / Width * 15f;
 				}
 			}
 		}
 		else
 		{
-			if (!noGravity)
+			if (!NoGravity)
 			{
-				velocity.Y += LightValue;
-				velocity.X += Main.windSpeedCurrent / width * 15f;
+				Velocity.Y += LightValue;
+				Velocity.X += Main.windSpeedCurrent / Width * 15f;
 			}
 		}
 
-		rotation += rotateSpeed;
-		velocity *= MathF.Pow(0.999f, velocity.Length() / weight * 2500);
+		Rotation += RotateSpeed;
+		Velocity *= MathF.Pow(0.999f, Velocity.Length() / Weight * 2500);
 
-		position += velocity;
+		Position += Velocity;
 
-		if (timer > maxTime)
+		if (Timer > MaxTime)
 		{
 			Active = false;
 		}
 	}
+
 	public override void Draw()
 	{
 		if (NoDissolvePartTexture == null)
 		{
 			return;
 		}
-		Vector2 v0 = position + new Vector2(-width, -height).RotatedBy(rotation) * 0.5f * scale;
-		Vector2 v1 = position + new Vector2(width, -height).RotatedBy(rotation) * 0.5f * scale;
-		Vector2 v2 = position + new Vector2(-width, height).RotatedBy(rotation) * 0.5f * scale;
-		Vector2 v3 = position + new Vector2(width, height).RotatedBy(rotation) * 0.5f * scale;
+		Vector2 v0 = Position + new Vector2(-Width, -Height).RotatedBy(Rotation) * 0.5f * Scale;
+		Vector2 v1 = Position + new Vector2(Width, -Height).RotatedBy(Rotation) * 0.5f * Scale;
+		Vector2 v2 = Position + new Vector2(-Width, Height).RotatedBy(Rotation) * 0.5f * Scale;
+		Vector2 v3 = Position + new Vector2(Width, Height).RotatedBy(Rotation) * 0.5f * Scale;
 
-		alpha = (maxTime - timer) / 120f;
-		alpha = Math.Clamp(alpha, 0.0f, 1.0f);
+		Alpha = (MaxTime - Timer) / 120f;
+		Alpha = Math.Clamp(Alpha, 0.0f, 1.0f);
 
-		Color c0 = Lighting.GetColor((v0 / 16f).ToPoint()) * alpha;
-		Color c1 = Lighting.GetColor((v1 / 16f).ToPoint()) * alpha;
-		Color c2 = Lighting.GetColor((v2 / 16f).ToPoint()) * alpha;
-		Color c3 = Lighting.GetColor((v3 / 16f).ToPoint()) * alpha;
+		Color c0 = Lighting.GetColor((v0 / 16f).ToPoint()) * Alpha;
+		Color c1 = Lighting.GetColor((v1 / 16f).ToPoint()) * Alpha;
+		Color c2 = Lighting.GetColor((v2 / 16f).ToPoint()) * Alpha;
+		Color c3 = Lighting.GetColor((v3 / 16f).ToPoint()) * Alpha;
 
 		var bars = new List<Vertex2D>()
 		{
@@ -128,20 +122,20 @@ public abstract class BurningGore : VisualGore
 
 	public virtual void DrawDissolvePart()
 	{
-		Vector2 v0 = position + new Vector2(-width, -height).RotatedBy(rotation) * 0.5f * scale;
-		Vector2 v1 = position + new Vector2(width, -height).RotatedBy(rotation) * 0.5f * scale;
-		Vector2 v2 = position + new Vector2(-width, height).RotatedBy(rotation) * 0.5f * scale;
-		Vector2 v3 = position + new Vector2(width, height).RotatedBy(rotation) * 0.5f * scale;
+		Vector2 v0 = Position + new Vector2(-Width, -Height).RotatedBy(Rotation) * 0.5f * Scale;
+		Vector2 v1 = Position + new Vector2(Width, -Height).RotatedBy(Rotation) * 0.5f * Scale;
+		Vector2 v2 = Position + new Vector2(-Width, Height).RotatedBy(Rotation) * 0.5f * Scale;
+		Vector2 v3 = Position + new Vector2(Width, Height).RotatedBy(Rotation) * 0.5f * Scale;
 
-		alpha = (maxTime - timer) / 120f;
-		alpha = Math.Clamp(alpha, 0.0f, 1.0f);
+		Alpha = (MaxTime - Timer) / 120f;
+		Alpha = Math.Clamp(Alpha, 0.0f, 1.0f);
 
-		Color c0 = Lighting.GetColor((v0 / 16f).ToPoint()) * alpha;
-		Color c1 = Lighting.GetColor((v1 / 16f).ToPoint()) * alpha;
-		Color c2 = Lighting.GetColor((v2 / 16f).ToPoint()) * alpha;
-		Color c3 = Lighting.GetColor((v3 / 16f).ToPoint()) * alpha;
+		Color c0 = Lighting.GetColor((v0 / 16f).ToPoint()) * Alpha;
+		Color c1 = Lighting.GetColor((v1 / 16f).ToPoint()) * Alpha;
+		Color c2 = Lighting.GetColor((v2 / 16f).ToPoint()) * Alpha;
+		Color c3 = Lighting.GetColor((v3 / 16f).ToPoint()) * Alpha;
 
-		float alpha2 = (timer - 100) / (maxTime - 100f);
+		float alpha2 = (Timer - 100) / (MaxTime - 100f);
 		alpha2 = Math.Clamp(alpha2, 0.0f, 1.0f);
 
 		var bars = new List<Vertex2D>()
@@ -154,5 +148,4 @@ public abstract class BurningGore : VisualGore
 		};
 		Ins.Batch.Draw(Texture, bars, PrimitiveType.TriangleStrip);
 	}
-
 }

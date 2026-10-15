@@ -47,14 +47,14 @@ public class VitalizedRocksStone : ModProjectile
 		Projectile.rotation = Projectile.velocity.ToRotation();
 		var Portal = new RockPortal
 		{
-			velocity = Vector2.Zero,
+			Velocity = Vector2.Zero,
 			Active = true,
 			Visible = true,
-			position = Projectile.Center,
-			maxTime = Main.rand.Next(12, 30),
-			scale = Main.rand.NextFloat(30, 54),
-			maxScale = 160,
-			rotation = Projectile.rotation,
+			Position = Projectile.Center,
+			MaxTime = Main.rand.Next(12, 30),
+			Scale = Main.rand.NextFloat(30, 54),
+			MaxScale = 160,
+			Rotation = Projectile.rotation,
 			ai = new float[] { 1 },
 		};
 		Ins.VFXManager.Add(Portal);
@@ -78,9 +78,17 @@ public class VitalizedRocksStone : ModProjectile
 			d.velocity = new Vector2(0, Main.rand.NextFloat(2f, 11f)).RotatedByRandom(6.283);
 		}
 		GenerateSmog(12);
-		SoundEngine.PlaySound(SoundID.DD2_ExplosiveTrapExplode.WithVolume(0.5f), Projectile.Center);
 		ShakerManager.AddShaker(Projectile.Center, new Vector2(0, -1), 1, 30, 120);
 		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<VitalizedRocksProj_Explosion>(), (int)(Projectile.damage * 0.4f), Projectile.knockBack, Projectile.owner, 1f);
+		switch (Main.rand.Next(2))
+		{
+			case 0:
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.vitalizedrocks_hit_1_Mod), Projectile.Center);
+				break;
+			case 1:
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.vitalizedrocks_hit_2_Mod), Projectile.Center);
+				break;
+		}
 	}
 
 	public void GenerateSmog(int Frequency)
@@ -90,13 +98,13 @@ public class VitalizedRocksStone : ModProjectile
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 12f)).RotatedByRandom(MathHelper.TwoPi);
 			var somg = new RockSmogDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-				maxTime = Main.rand.Next(37, 75),
-				scale = Main.rand.NextFloat(40f, 55f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+				MaxTime = Main.rand.Next(37, 75),
+				Scale = Main.rand.NextFloat(40f, 55f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
 			Ins.VFXManager.Add(somg);

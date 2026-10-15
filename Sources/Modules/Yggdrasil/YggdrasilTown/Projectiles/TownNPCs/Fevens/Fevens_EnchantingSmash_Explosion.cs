@@ -22,12 +22,12 @@ public class Fevens_EnchantingSmash_Explosion : ModProjectile
 			Vector2 pos = Projectile.Center - newVelocity * 1;
 			var somg = new Fevens_EnchantingSmash_Explosion_Smog
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = pos,
-				maxTime = Main.rand.Next(55, 148),
-				scale = Main.rand.NextFloat(10f, 120f),
+				Position = pos,
+				MaxTime = Main.rand.Next(55, 148),
+				Scale = Main.rand.NextFloat(10f, 120f),
 				ai = new float[] { 0, 0 },
 			};
 			Ins.VFXManager.Add(somg);
@@ -38,12 +38,12 @@ public class Fevens_EnchantingSmash_Explosion : ModProjectile
 			Vector2 pos = Projectile.Center - newVelocity * 1;
 			var somg = new Fevens_PurpleFlameDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = pos,
-				maxTime = Main.rand.Next(55, 188),
-				scale = Main.rand.NextFloat(120f, 240f),
+				Position = pos,
+				MaxTime = Main.rand.Next(55, 188),
+				Scale = Main.rand.NextFloat(120f, 240f),
 				ai = new float[] { Main.rand.NextFloat(1f), Main.rand.NextFloat(-0.15f, 0.15f) },
 			};
 			Ins.VFXManager.Add(somg);
@@ -54,12 +54,12 @@ public class Fevens_EnchantingSmash_Explosion : ModProjectile
 			Vector2 pos = Projectile.Center - newVelocity * 1;
 			var somg = new Fevens_PurpleSparkDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = pos,
-				maxTime = Main.rand.Next(55, 288),
-				scale = Main.rand.NextFloat(10f, 20f),
+				Position = pos,
+				MaxTime = Main.rand.Next(55, 288),
+				Scale = Main.rand.NextFloat(10f, 20f),
 				ai = new float[] { 0, 0 },
 			};
 			Ins.VFXManager.Add(somg);
@@ -70,13 +70,13 @@ public class Fevens_EnchantingSmash_Explosion : ModProjectile
 			Vector2 newVelocity = Vector2.Normalize(Projectile.Center - OriginalPos) * 18f;
 			var smog = new Fevens_ArrowTrail
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Vector2.Lerp(OriginalPos, Projectile.Center, t / maxValue) + new Vector2(Main.rand.NextFloat(-20f, 20f), 0).RotatedByRandom(6.283),
-				maxTime = Main.rand.Next(17, 25),
-				scale = Main.rand.NextFloat(1f, 6f),
-				rotation = newVelocity.ToRotation(),
+				Position = Vector2.Lerp(OriginalPos, Projectile.Center, t / maxValue) + new Vector2(Main.rand.NextFloat(-20f, 20f), 0).RotatedByRandom(6.283),
+				MaxTime = Main.rand.Next(17, 25),
+				Scale = Main.rand.NextFloat(1f, 6f),
+				Rotation = newVelocity.ToRotation(),
 
 				ai = new float[] { Main.rand.NextFloat(0f, 1f), Main.rand.NextFloat(0f, 1f), Main.rand.NextFloat(-0.005f, 0.005f) },
 			};

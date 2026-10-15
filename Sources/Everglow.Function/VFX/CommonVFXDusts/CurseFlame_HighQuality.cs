@@ -19,8 +19,8 @@ public class CurseFlame_HighQualityPipeline : Pipeline
 		effect.Value.Parameters["uTransform"].SetValue(model * projection);
 		effect.Value.Parameters["uNoise"].SetValue(ModAsset.Noise_melting.Value);
 		effect.Value.Parameters["uLight"].SetValue(ModAsset.Trail.Value);
-		Texture2D FlameColor = ModAsset.Cursed_Color2.Value;
-		Ins.Batch.BindTexture<Vertex2D>(FlameColor);
+		Texture2D flameColor = ModAsset.Cursed_Color2.Value;
+		Ins.Batch.BindTexture<Vertex2D>(flameColor);
 		Main.graphics.GraphicsDevice.SamplerStates[1] = SamplerState.AnisotropicClamp;
 		Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.None, SamplerState.AnisotropicWrap, RasterizerState.CullNone);
 		effect.Value.CurrentTechnique.Passes[0].Apply();
@@ -45,35 +45,35 @@ public class CurseFlame_HighQualityDust : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
 
-	public Vector2 position;
-	public Vector2 velocity;
+	public Vector2 Position;
+	public Vector2 Velocity;
 	public float[] ai;
-	public float timer;
-	public float maxTime;
-	public float scale;
-	public List<Vector2> oldPos = new List<Vector2>();
+	public float Timer;
+	public float MaxTime;
+	public float Scale;
+	public List<Vector2> OldPositions = new List<Vector2>();
 
 	public override void Update()
 	{
-		position += velocity;
-		oldPos.Add(position);
-		if (oldPos.Count > 15)
+		Position += Velocity;
+		OldPositions.Add(Position);
+		if (OldPositions.Count > 15)
 		{
-			oldPos.RemoveAt(0);
+			OldPositions.RemoveAt(0);
 		}
 
-		velocity *= 0.96f;
-		timer++;
-		if (timer > maxTime)
+		Velocity *= 0.96f;
+		Timer++;
+		if (Timer > MaxTime)
 		{
 			Active = false;
 		}
 
-		velocity = velocity.RotatedBy(ai[1]);
+		Velocity = Velocity.RotatedBy(ai[1]);
 
-		float delC = ai[2] * 0.05f * (float)Math.Sin((maxTime - timer) / 40d * Math.PI);
-		Lighting.AddLight((int)(position.X / 16), (int)(position.Y / 16), 0.45f * delC, 0.85f * delC, 0f);
-		if (Collision.SolidCollision(position, 0, 0))
+		float delC = ai[2] * 0.05f * (float)Math.Sin((MaxTime - Timer) / 40d * Math.PI);
+		Lighting.AddLight((int)(Position.X / 16), (int)(Position.Y / 16), 0.45f * delC, 0.85f * delC, 0f);
+		if (Collision.SolidCollision(Position, 0, 0))
 		{
 			Active = false;
 		}
@@ -81,44 +81,44 @@ public class CurseFlame_HighQualityDust : Visual
 
 	public override void Draw()
 	{
-		float pocession = 1 - timer / maxTime;
-		if (pocession < 0.2)
+		float progress = 1 - Timer / MaxTime;
+		if (progress < 0.2)
 		{
-			pocession = 0.4f;
+			progress = 0.4f;
 		}
 		if (Main.gamePaused)
 		{
-			pocession = 0.4f;
+			progress = 0.4f;
 		}
 		float timeValue = (float)(Main.time * 0.2);
-		Vector2[] pos = oldPos.Reverse<Vector2>().ToArray();
+		Vector2[] pos = OldPositions.Reverse<Vector2>().ToArray();
 		int len = pos.Length;
 
 		var bars = new List<Vertex2D>();
 		if (len <= 2)
 		{
-			pocession = 0.4f;
+			progress = 0.4f;
 			for (int i = 1; i < 3; i++)
 			{
 				float coordValue = (i - 1) / (float)len;
 				var drawcRopeUp = new Color(0.25f + coordValue * 0.5f, 0, 0, 0);
 				var drawcRopeDown = new Color(0.25f + coordValue * 0.5f, 1, 0, 0);
-				bars.Add(new Vertex2D(position, drawcRopeUp, new Vector3(ai[0] + coordValue * 0.4f, timeValue, pocession)));
-				bars.Add(new Vertex2D(position, drawcRopeDown, new Vector3(ai[0] + coordValue * 0.4f, timeValue + 0.4f, pocession)));
+				bars.Add(new Vertex2D(Position, drawcRopeUp, new Vector3(ai[0] + coordValue * 0.4f, timeValue, progress)));
+				bars.Add(new Vertex2D(Position, drawcRopeDown, new Vector3(ai[0] + coordValue * 0.4f, timeValue + 0.4f, progress)));
 			}
 		}
 		else
 		{
 			for (int i = 1; i < len; i++)
 			{
-				Vector2 normal = oldPos[i] - oldPos[i - 1];
+				Vector2 normal = OldPositions[i] - OldPositions[i - 1];
 				normal = Vector2.Normalize(normal).RotatedBy(Math.PI * 0.5);
 				float coordValue = (i - 1) / (float)len;
 				var drawcRopeUp = new Color(0.25f + coordValue * 0.5f, 0, 0, 0);
 				var drawcRopeDown = new Color(0.25f + coordValue * 0.5f, 1, 0, 0);
 				float width = ai[2] * (float)Math.Sin(coordValue * Math.PI);
-				bars.Add(new Vertex2D(oldPos[i] + normal * width, drawcRopeUp, new Vector3(ai[0] + coordValue * 0.4f, timeValue, pocession)));
-				bars.Add(new Vertex2D(oldPos[i] - normal * width, drawcRopeDown, new Vector3(ai[0] + coordValue * 0.4f, timeValue + 0.4f, pocession)));
+				bars.Add(new Vertex2D(OldPositions[i] + normal * width, drawcRopeUp, new Vector3(ai[0] + coordValue * 0.4f, timeValue, progress)));
+				bars.Add(new Vertex2D(OldPositions[i] - normal * width, drawcRopeDown, new Vector3(ai[0] + coordValue * 0.4f, timeValue + 0.4f, progress)));
 			}
 		}
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);

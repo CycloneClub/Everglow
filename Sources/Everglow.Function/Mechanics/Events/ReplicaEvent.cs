@@ -57,9 +57,6 @@ public abstract class ReplicaEvent : ModEvent
 
 	public override void Draw(SpriteBatch sprite)
 	{
-		SpriteBatchState sBS = GraphicsUtils.GetState(sprite).Value;
-		sprite.End();
-		sprite.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.EffectMatrix);
 		if (innerActive)
 		{
 			UIBarFadeTimer = 160;
@@ -75,6 +72,7 @@ public abstract class ReplicaEvent : ModEvent
 			EventSystem.Deactivate(this);
 			return;
 		}
+		using var scope = (SpriteBatchState.Immediate with { TransformMatrix = Main.UIScaleMatrix }).BeginScope(sprite);
 		float num = 0.5f + ProgressAlpha * 0.5f;
 		string text = string.Empty;
 		Color c = Color.White;
@@ -147,11 +145,9 @@ public abstract class ReplicaEvent : ModEvent
 		Utils.DrawInvBG(Main.spriteBatch, r3, c);
 		Main.spriteBatch.Draw(Icon, r3.Left() + Vector2.UnitX * num * 8f, null, Color.White * ProgressAlpha, 0f, new Vector2(0f, Icon.Height / 2), texturescale, SpriteEffects.None, 0f);
 		Utils.DrawBorderString(Main.spriteBatch, text, r3.Right() + Vector2.UnitX * num * -22f, Color.White * ProgressAlpha, num * 0.9f, 1f, 0.4f, -1);
-		sprite.End();
-		sprite.Begin(sBS);
 	}
 
-	public override void SaveData(TagCompound tag)
+	public override void SaveWorldData(TagCompound tag)
 	{
 		tag[nameof(Progress)] = Progress;
 		tag[nameof(ProgressMax)] = ProgressMax;
@@ -159,7 +155,7 @@ public abstract class ReplicaEvent : ModEvent
 		tag[nameof(innerActive)] = innerActive;
 	}
 
-	public override void LoadData(string defName, TagCompound tag)
+	public override void LoadWorldData(string defName, TagCompound tag)
 	{
 		tag.TryGet(nameof(Progress), out Progress);
 		tag.TryGet(nameof(ProgressMax), out ProgressMax);

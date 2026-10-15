@@ -40,13 +40,13 @@ public class HexaCrystalStaff_SubProj : ModProjectile
 		Projectile.rotation += 0.15f;
 		var dustVFX = new TwilightCrystalVFXDust
 		{
-			velocity = Projectile.velocity * 0.3f,
+			Velocity = Projectile.velocity * 0.3f,
 			Active = true,
 			Visible = true,
-			position = Projectile.Center + Projectile.velocity.NormalizeSafe().RotatedBy(MathHelper.PiOver2) * (0.5f - Projectile.timeLeft % 2) * 6,
-			maxTime = Main.rand.Next(3, 12),
-			scale = Main.rand.NextFloat(3, 12),
-			rotation = Projectile.velocity.ToRotation() - MathHelper.PiOver4,
+			Position = Projectile.Center + Projectile.velocity.NormalizeSafe().RotatedBy(MathHelper.PiOver2) * (0.5f - Projectile.timeLeft % 2) * 6,
+			MaxTime = Main.rand.Next(3, 12),
+			Scale = Main.rand.NextFloat(3, 12),
+			Rotation = Projectile.velocity.ToRotation() - MathHelper.PiOver4,
 			ai = new float[] { 0, 0, 0 },
 		};
 		Ins.VFXManager.Add(dustVFX);
@@ -55,13 +55,13 @@ public class HexaCrystalStaff_SubProj : ModProjectile
 		{
 			var dustVFXRight = new MagicalBoomerangDust
 			{
-				velocity = Projectile.velocity * Main.rand.NextFloat(0.2f, 0.8f),
+				Velocity = Projectile.velocity * Main.rand.NextFloat(0.2f, 0.8f),
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + Projectile.velocity.NormalizeSafe().RotatedBy(MathHelper.PiOver2) * Main.rand.NextFloat(-5, 5),
-				maxTime = Main.rand.Next(4, 16),
-				scale = Main.rand.NextFloat(3, 4),
-				rotation = Main.rand.NextFloat(MathHelper.TwoPi),
+				Position = Projectile.Center + Projectile.velocity.NormalizeSafe().RotatedBy(MathHelper.PiOver2) * Main.rand.NextFloat(-5, 5),
+				MaxTime = Main.rand.Next(4, 16),
+				Scale = Main.rand.NextFloat(3, 4),
+				Rotation = Main.rand.NextFloat(MathHelper.TwoPi),
 				ai = new float[] { 0, 0, 0 },
 			};
 			Ins.VFXManager.Add(dustVFXRight);

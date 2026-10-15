@@ -4,51 +4,51 @@ YggdrasilTownBiome: {
 }
 
 TuskBiome: {
-	DisplayName: Tusk Biome
-	TownNPCDialogueName: ""
+	DisplayName: 颌骨台地
+	TownNPCDialogueName: 颌骨台地
 }
 
 TuskSurfaceBiome: {
-	DisplayName: Tusk Surface Biome
-	TownNPCDialogueName: ""
+	DisplayName: 颌骨台地地面
+	TownNPCDialogueName: 颌骨台地地面
 }
 
 FireflyBiome: {
-	DisplayName: Firefly Biome
-	TownNPCDialogueName: ""
+	DisplayName: 流萤之茧
+	TownNPCDialogueName: 流萤之茧
 }
 
 FurnaceAreaBiome: {
-	DisplayName: Furnace Area Biome
-	TownNPCDialogueName: ""
+	DisplayName: 天穹镇炉心区
+	TownNPCDialogueName: 天穹镇炉心区
 }
 
 JellyBallHotbedBiome: {
-	DisplayName: Jelly Ball Hotbed Biome
-	TownNPCDialogueName: ""
+	DisplayName: 球冻温床
+	TownNPCDialogueName: 球冻温床
 }
 
 LampWoodForest: {
-	DisplayName: Lamp Wood Forest
-	TownNPCDialogueName: ""
+	DisplayName: 灯木森林
+	TownNPCDialogueName: 灯木森林
 }
 
 MidnightBayouBiome: {
-	DisplayName: Midnight Bayou Biome
-	TownNPCDialogueName: ""
+	DisplayName: 午夜沼泽
+	TownNPCDialogueName: 午夜沼泽
 }
 
 TwilightForsetAndRelic: {
-	DisplayName: Twilight Forset And Relic
-	TownNPCDialogueName: ""
+	DisplayName: 暮光森林
+	TownNPCDialogueName: 暮光森林
 }
 
 KelpCurtainBiome: {
-	DisplayName: Kelp Curtain Biome
-	TownNPCDialogueName: ""
+	DisplayName: 苍苔帘幕
+	TownNPCDialogueName: 苍苔帘幕
 }
 
 HurricaneMazeBiome: {
-	DisplayName: Hurricane Maze Biome
-	TownNPCDialogueName: ""
+	DisplayName: 飓风迷宫
+	TownNPCDialogueName: 飓风迷宫
 }

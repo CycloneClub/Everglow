@@ -26,7 +26,7 @@ public class FemaleLampLeaves : ModTile, ISceneTile
 		float mainRot = 0.4f + Main.rand.NextFloat(-0.3f, 0.3f) + YggdrasilWorldGeneration.TerrianSurfaceNormal(i, j).ToRotation() - MathHelper.PiOver2;
 		for (int x = 1; x < 3; x++)
 		{
-			FemaleLampLeaves_leaf_fore leaf = new FemaleLampLeaves_leaf_fore { position = new Vector2(i, j) * 16, Active = true, Visible = true, originTile = new Point(i, j), originType = Type };
+			FemaleLampLeaves_leaf_fore leaf = new FemaleLampLeaves_leaf_fore { Position = new Vector2(i, j) * 16, Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = Type };
 			leaf.rotation = -(x + 0.3f) * 0.7f - Main.rand.NextFloat(.3f) + mainRot;
 			leaf.startRotation = leaf.rotation;
 			leaf.scale = Main.rand.NextFloat(0.75f, 1.25f);
@@ -36,7 +36,7 @@ public class FemaleLampLeaves : ModTile, ISceneTile
 		}
 		for (int x = 1; x < 3; x++)
 		{
-			FemaleLampLeaves_leaf_fore leaf = new FemaleLampLeaves_leaf_fore { position = new Vector2(i, j) * 16, Active = true, Visible = true, originTile = new Point(i, j), originType = Type };
+			FemaleLampLeaves_leaf_fore leaf = new FemaleLampLeaves_leaf_fore { Position = new Vector2(i, j) * 16, Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = Type };
 			leaf.rotation = (x + 0.3f) * 0.7f + Main.rand.NextFloat(.3f) + mainRot;
 			leaf.startRotation = leaf.rotation;
 			leaf.scale = Main.rand.NextFloat(0.75f, 1.25f);
@@ -50,7 +50,7 @@ public class FemaleLampLeaves : ModTile, ISceneTile
 			{
 				continue;
 			}
-			FemaleLampLeaves_leaf_fore leaf = new FemaleLampLeaves_leaf_fore { position = new Vector2(i, j) * 16, Active = true, Visible = true, originTile = new Point(i, j), originType = Type };
+			FemaleLampLeaves_leaf_fore leaf = new FemaleLampLeaves_leaf_fore { Position = new Vector2(i, j) * 16, Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = Type };
 			leaf.rotation = (x + 0.3f) * 0.2f + Main.rand.NextFloat(.3f) + mainRot;
 			leaf.startRotation = leaf.rotation;
 			leaf.scale = Main.rand.NextFloat(0.75f, 1.25f);
@@ -60,7 +60,7 @@ public class FemaleLampLeaves : ModTile, ISceneTile
 		}
 		if (Main.rand.NextBool(3))
 		{
-			FemaleLampLeaves_leaf_fore topLeaf = new FemaleLampLeaves_leaf_fore { position = new Vector2(i, j) * 16, Active = true, Visible = true, originTile = new Point(i, j), originType = Type };
+			FemaleLampLeaves_leaf_fore topLeaf = new FemaleLampLeaves_leaf_fore { Position = new Vector2(i, j) * 16, Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = Type };
 			topLeaf.rotation = mainRot + MathHelper.Pi;
 			topLeaf.startRotation = topLeaf.rotation;
 			topLeaf.scale = Main.rand.NextFloat(0.75f, 1.25f);
@@ -70,7 +70,7 @@ public class FemaleLampLeaves : ModTile, ISceneTile
 		}
 		else
 		{
-			FemaleLampLeaves_leaf_fore topLeaf = new FemaleLampLeaves_leaf_fore { position = new Vector2(i, j) * 16, Active = true, Visible = true, originTile = new Point(i, j), originType = Type };
+			FemaleLampLeaves_leaf_fore topLeaf = new FemaleLampLeaves_leaf_fore { Position = new Vector2(i, j) * 16, Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = Type };
 			topLeaf.rotation = mainRot + MathHelper.Pi;
 			topLeaf.startRotation = topLeaf.rotation;
 			topLeaf.scale = Main.rand.NextFloat(0.75f, 1.25f);
@@ -80,7 +80,7 @@ public class FemaleLampLeaves : ModTile, ISceneTile
 		}
 		for (int x = 0; x < 3; x++)
 		{
-			FemaleLampLeaves_leaf leaf = new FemaleLampLeaves_leaf { position = new Vector2(i, j) * 16, Active = true, Visible = true, originTile = new Point(i, j), originType = Type };
+			FemaleLampLeaves_leaf leaf = new FemaleLampLeaves_leaf { Position = new Vector2(i, j) * 16, Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = Type };
 			leaf.rotation = x * 0.6f + Main.rand.NextFloat(.3f) + mainRot;
 			leaf.startRotation = leaf.rotation;
 			leaf.scale = Main.rand.NextFloat(0.75f, 1.25f);
@@ -90,7 +90,7 @@ public class FemaleLampLeaves : ModTile, ISceneTile
 		}
 		for (int x = 0; x < 3; x++)
 		{
-			FemaleLampLeaves_leaf leaf = new FemaleLampLeaves_leaf { position = new Vector2(i, j) * 16, Active = true, Visible = true, originTile = new Point(i, j), originType = Type };
+			FemaleLampLeaves_leaf leaf = new FemaleLampLeaves_leaf { Position = new Vector2(i, j) * 16, Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = Type };
 			leaf.rotation = -x * 0.6f + Main.rand.NextFloat(.3f) + mainRot;
 			leaf.startRotation = leaf.rotation;
 			leaf.scale = Main.rand.NextFloat(0.75f, 1.25f);

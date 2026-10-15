@@ -1,9 +1,9 @@
 CyanVineBullet: {
-	DisplayName: Cyan Vine Bullet
+	DisplayName: 青缎弹
 	Tooltip: ""
 }
 
 HuskburstBullet: {
-	DisplayName: Huskburst Bullet
-	Tooltip: ""
+	DisplayName: 果壳弹
+	Tooltip: "击中后爆裂出短距离的小型子弹"
 }

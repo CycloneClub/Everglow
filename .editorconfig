@@ -11,7 +11,7 @@ indent_size = 4
 indent_style = tab
 tab_width = 4
 
-# 行尾风格（统一使用 LF 换行符）
+# 行尾风格（默认统一使用 LF 换行符）
 end_of_line = lf
 # 文件末尾加新行
 insert_final_newline = true
@@ -27,6 +27,10 @@ dotnet_style_null_propagation = true:suggestion
 dotnet_style_prefer_is_null_check_over_reference_equality_method = true:suggestion
 dotnet_style_operator_placement_when_wrapping = beginning_of_line
 dotnet_style_prefer_auto_properties = true:silent
+
+# Visual Studio 在 Windows 上通常以 CRLF 保存解决方案和项目文件。
+[*.{sln,csproj}]
+end_of_line = crlf
 
 # c# 文件
 [*.cs]

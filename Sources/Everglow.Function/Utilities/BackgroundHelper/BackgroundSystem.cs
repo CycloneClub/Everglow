@@ -54,7 +54,7 @@ public class BackgroundSystem : ModSystem
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Main.Transform);
 		Effect lastEffect = null;
-		foreach (var bg in backgroundSlides.OrderByDescending(b => b.Distance)) // Adapt to dynamic distance.
+		foreach (var bg in backgroundSlides.OrderBy(b => b.LayerPriority).ThenByDescending(b => b.Distance)) // Adapt to dynamic distance.
 		{
 			bool shouldChangeSpriteBatch = bg.Shader != lastEffect;
 			if (shouldChangeSpriteBatch)
@@ -109,5 +109,4 @@ public class BackgroundSystem : ModSystem
 	{
 		return backgroundSlides.Any(x => x.UniqueName == uniqueName);
 	}
-
 }

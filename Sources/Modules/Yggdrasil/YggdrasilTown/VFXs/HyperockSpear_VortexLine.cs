@@ -34,16 +34,16 @@ public class HyperockSpear_VortexLine : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
 
-	public Queue<Vector2> oldPos = new Queue<Vector2>();
+	public Queue<Vector2> OldPos = new Queue<Vector2>();
 	public Projectile VFXOwner;
-	public Vector2 positiontoProjectile;
-	public Vector2 velocity;
+	public Vector2 PositiontoProjectile;
+	public Vector2 Velocity;
 	public bool OnTile;
 	public float[] ai;
-	public float timer;
-	public float maxTime;
-	public float scale;
-	private Vector2 VFXOwnerCenterOld;
+	public float Timer;
+	public float MaxTime;
+	public float Scale;
+	private Vector2 vFXOwnerCenterOld;
 
 	public override void Update()
 	{
@@ -52,75 +52,76 @@ public class HyperockSpear_VortexLine : Visual
 			Active = false;
 			return;
 		}
-		Vector2 point = VFXOwnerCenterOld + Vector2.One.RotatedBy(VFXOwner.rotation + MathHelper.PiOver2) * 0f;
+		Vector2 point = vFXOwnerCenterOld + Vector2.One.RotatedBy(VFXOwner.rotation + MathHelper.PiOver2) * 0f;
 		HyperockSpearProj HyperockSpearProj = VFXOwner.ModProjectile as HyperockSpearProj;
 		if (HyperockSpearProj != null)
 		{
-			VFXOwnerCenterOld = VFXOwner.Center;
+			vFXOwnerCenterOld = VFXOwner.Center;
 
-			Vector2 pierceAim = -velocity - positiontoProjectile;
+			Vector2 pierceAim = -Velocity - PositiontoProjectile;
 			if (pierceAim.Length() < 30)
 			{
-				timer += 2;
+				Timer += 2;
 			}
-			//if (HyperockSpearProj.Shot)
-			//{
-			//	timer++;
-			//	velocity = velocity.RotatedBy(positiontoProjectile.Length() * 0.3f) * 0.95f;
-			//}
-			//else
-			//{
 
-			//}
-			float dis = positiontoProjectile.Length();
+			// if (HyperockSpearProj.Shot)
+			// {
+			// Timer++;
+			// Velocity = Velocity.RotatedBy(PositiontoProjectile.Length() * 0.3f) * 0.95f;
+			// }
+			// else
+			// {
+
+			// }
+			float dis = PositiontoProjectile.Length();
 			float disValue = HyperockSpearProj.Power / 4500f;
-			velocity = positiontoProjectile.RotatedBy(MathHelper.PiOver2 + dis * disValue) * (10f / (dis + 0.01f));
+			Velocity = PositiontoProjectile.RotatedBy(MathHelper.PiOver2 + dis * disValue) * (10f / (dis + 0.01f));
 		}
-		oldPos.Enqueue(positiontoProjectile);
-		if (oldPos.Count > 30)
+		OldPos.Enqueue(PositiontoProjectile);
+		if (OldPos.Count > 30)
 		{
-			oldPos.Dequeue();
+			OldPos.Dequeue();
 		}
-		timer++;
-		if (timer > maxTime)
+		Timer++;
+		if (Timer > MaxTime)
 		{
 			Active = false;
 			return;
 		}
-		positiontoProjectile += velocity;
-		float pocession = 1 - timer / maxTime;
-		float c = pocession * scale * 0.1f;
-		c /= (positiontoProjectile.Length() + 1f) * 0.1f;
-		Lighting.AddLight(positiontoProjectile + point, c * 0.5f, c * 0.1f, c * 0.8f);
+		PositiontoProjectile += Velocity;
+		float pocession = 1 - Timer / MaxTime;
+		float c = pocession * Scale * 0.1f;
+		c /= (PositiontoProjectile.Length() + 1f) * 0.1f;
+		Lighting.AddLight(PositiontoProjectile + point, c * 0.5f, c * 0.1f, c * 0.8f);
 	}
 
 	public override void Draw()
 	{
-		int len = oldPos.Count;
+		int len = OldPos.Count;
 		var bars = new List<Vertex2D>();
-		Vector2 point = VFXOwnerCenterOld + Vector2.One.RotatedBy(VFXOwner.rotation + MathHelper.PiOver2) * 0f;
+		Vector2 point = vFXOwnerCenterOld + Vector2.One.RotatedBy(VFXOwner.rotation + MathHelper.PiOver2) * 0f;
 		if (len <= 2)
 		{
 			for (int i = 1; i < 3; i++)
 			{
-				bars.Add(positiontoProjectile + point, new Color(0.3f + ai[0], 1, 0, 0), new Vector3(0 + ai[0], (i + 30 + len) / 17f, 1));
-				bars.Add(positiontoProjectile + point, new Color(0.3f + ai[0], 1, 0, 0), new Vector3(0.6f + ai[0], (i + 30 + len) / 17f, 1));
+				bars.Add(PositiontoProjectile + point, new Color(0.3f + ai[0], 1, 0, 0), new Vector3(0 + ai[0], (i + 30 + len) / 17f, 1));
+				bars.Add(PositiontoProjectile + point, new Color(0.3f + ai[0], 1, 0, 0), new Vector3(0.6f + ai[0], (i + 30 + len) / 17f, 1));
 			}
 		}
 		else
 		{
-			Vector2[] pos = oldPos.Reverse().ToArray();
+			Vector2[] pos = OldPos.Reverse().ToArray();
 			for (int i = 1; i < len; i++)
 			{
-				float pocession = timer / maxTime;
-				if (timer - i < 20)
+				float pocession = Timer / MaxTime;
+				if (Timer - i < 20)
 				{
-					pocession += (20 - timer + i) / 20f;
+					pocession += (20 - Timer + i) / 20f;
 				}
 				pocession = Math.Clamp(pocession, 0, 1);
 				Vector2 normal = pos[i] - pos[i - 1];
 				normal = Vector2.Normalize(normal).RotatedBy(Math.PI * 0.5);
-				float width = scale * (float)Math.Sin(i / (double)len * Math.PI);
+				float width = Scale * (float)Math.Sin(i / (double)len * Math.PI);
 				float z1 = (pos[i] + normal * width).Length() * 0.45f - 4;
 				float z2 = (pos[i] - normal * width).Length() * 0.15f - 6;
 				bars.Add(pos[i] + point + normal * width, new Color(0.3f + ai[0], pocession, 0, 0), new Vector3(0 + ai[0], (i + 30 + len) / 17f, z1));

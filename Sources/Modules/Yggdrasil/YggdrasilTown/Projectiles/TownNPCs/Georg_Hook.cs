@@ -487,12 +487,12 @@ public class Georg_Hook : ModProjectile
 						Vector2 afterVelocity = (smoothTrail[i] - smoothTrail[i - 1]).NormalizeSafe() * 15;
 						var electric = new ElectricCurrent
 						{
-							velocity = afterVelocity,
+							Velocity = afterVelocity,
 							Active = true,
 							Visible = true,
-							position = smoothTrail[i] + Projectile.Center - afterVelocity * 3,
-							maxTime = 10,
-							scale = size,
+							Position = smoothTrail[i] + Projectile.Center - afterVelocity * 3,
+							MaxTime = 10,
+							Scale = size,
 							ai = new float[] { Main.rand.NextFloat(0.0f, 0.6f), size, 0 },
 						};
 						Ins.VFXManager.Add(electric);

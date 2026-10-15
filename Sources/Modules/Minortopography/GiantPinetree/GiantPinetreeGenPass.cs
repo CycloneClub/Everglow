@@ -151,7 +151,7 @@ public class GiantPinetree : ModSystem
 		RemoveDestroyedTrees(positonX, positonY);
 
 		// 平滑木头部分
-		SmoothTile(positonX - 60, positonY - 20, 120, 250, ModContent.TileType<PineWood>());
+		SmoothTile_XXYY(positonX - 60, positonY - 20, 120, 250, ModContent.TileType<PineWood>());
 		DistributePineCone(new Point16(positonX, positonY - 10), 40, 40);
 		DistributePineCone(new Point16(positonX, positonY - 60), 20, 20);
 		DistributePineNeedle(new Point16(positonX, positonY), 120, 120);
@@ -1219,7 +1219,7 @@ public class GiantPinetree : ModSystem
 	/// <param name="width"></param>
 	/// <param name="height"></param>
 	/// <param name="tileType"></param>
-	private static void SmoothTile(int x = 0, int y = 0, int width = 0, int height = 0, int tileType = -1)
+	private static void SmoothTile_XXYY(int x = 0, int y = 0, int width = 0, int height = 0, int tileType = -1)
 	{
 		for (int i = 0; i < width; i += 1)
 		{

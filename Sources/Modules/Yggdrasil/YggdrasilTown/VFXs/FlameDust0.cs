@@ -6,15 +6,15 @@ public class FlameDust0 : Visual
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawPlayers;
 
 	public Player MyOwner;
-	public Vector2 position;
-	public Vector2 velocity;
-	public Vector2 startPos = Vector2.zeroVector;
+	public Vector2 Position;
+	public Vector2 Velocity;
+	public Vector2 StartPos = Vector2.zeroVector;
 	public float[] ai;
-	public float timer;
-	public float maxTime;
-	public float scale;
-	public float maxScale;
-	public float rotation;
+	public float Timer;
+	public float MaxTime;
+	public float Scale;
+	public float MaxScale;
+	public float Rotation;
 	public int Frame = 0;
 
 	public override void OnSpawn()
@@ -24,32 +24,32 @@ public class FlameDust0 : Visual
 
 	public override void Update()
 	{
-		timer++;
-		if (position.X <= 320 || position.X >= Main.maxTilesX * 16 - 320)
+		Timer++;
+		if (Position.X <= 320 || Position.X >= Main.maxTilesX * 16 - 320)
 		{
-			timer = maxTime;
+			Timer = MaxTime;
 			Active = false;
 			return;
 		}
-		if (position.Y <= 320 || position.Y >= Main.maxTilesY * 16 - 320)
+		if (Position.Y <= 320 || Position.Y >= Main.maxTilesY * 16 - 320)
 		{
-			timer = maxTime;
+			Timer = MaxTime;
 			Active = false;
 			return;
 		}
-		if (timer > maxTime)
+		if (Timer > MaxTime)
 		{
 			Active = false;
 			return;
 		}
-		if (startPos == Vector2.zeroVector && MyOwner != null)
+		if (StartPos == Vector2.zeroVector && MyOwner != null)
 		{
-			startPos = MyOwner.Center;
+			StartPos = MyOwner.Center;
 		}
-		position += velocity;
-		velocity *= 0.9f;
-		Frame = (int)(timer / maxTime * 5f);
-		Lighting.AddLight(position, new Vector3(0.9f, 0.6f, 0f));
+		Position += Velocity;
+		Velocity *= 0.9f;
+		Frame = (int)(Timer / MaxTime * 5f);
+		Lighting.AddLight(Position, new Vector3(0.9f, 0.6f, 0f));
 	}
 
 	public override void Draw()
@@ -59,12 +59,12 @@ public class FlameDust0 : Visual
 		float xCount = 3;
 		float frameX = ai[0] / xCount;
 		float frameCoordWidth = 1f / xCount;
-		Vector2 toCorner = new Vector2(0, scale).RotatedBy(rotation);
+		Vector2 toCorner = new Vector2(0, Scale).RotatedBy(Rotation);
 		var drawColor = new Color(1f, 1f, 1f, 1f);
-		var postOffsetPos = position + MyOwner.Center - startPos;
+		var postOffsetPos = Position + MyOwner.Center - StartPos;
 		if (ai[1] == 1)
 		{
-			postOffsetPos = position;
+			postOffsetPos = Position;
 		}
 		var bars = new List<Vertex2D>()
 		{

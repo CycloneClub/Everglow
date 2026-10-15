@@ -4,8 +4,9 @@ namespace Everglow.Yggdrasil.KelpCurtain.Tiles.DeathJadeLake.IRProbe;
 
 [Pipeline(typeof(WCSPipeline))]
 
-public class IRProbe_Normal_Laser : ForegroundVFX
+public class IRProbe_Normal_Laser : TileVFX
 {
+	public override CodeLayer DrawLayer => CodeLayer.PostDrawPlayers;
 	public float Rotation;
 	public float Omega;
 	public float StartRotation;
@@ -24,7 +25,7 @@ public class IRProbe_Normal_Laser : ForegroundVFX
 
 	public override void OnSpawn()
 	{
-		texture = ModAsset.IRProbe_Normal.Value;
+		Texture = ModAsset.IRProbe_Normal.Value;
 	}
 
 	public Vector3 GetColor()
@@ -55,10 +56,10 @@ public class IRProbe_Normal_Laser : ForegroundVFX
 	public override void Update()
 	{
 		bool oldPlayerHit = AnyPlayerCollision;
-		position = originTile.ToWorldCoordinates();
+		Position = OriginTilePos.ToWorldCoordinates();
 		if (!NoneRotation)
 		{
-			position += new Vector2(0, -8).RotatedBy(Rotation);
+			Position += new Vector2(0, -8).RotatedBy(Rotation);
 		}
 		Rotation = StartRotation;
 		LaserScan?.Invoke(this);
@@ -69,12 +70,12 @@ public class IRProbe_Normal_Laser : ForegroundVFX
 			for (int step = 1; step < 1000; step++)
 			{
 				count++;
-				if (Collision.SolidCollision(position + step * collisionUnit - new Vector2(4), 8, 8))
+				if (Collision.SolidCollision(Position + step * collisionUnit - new Vector2(4), 8, 8))
 				{
 					AnyPlayerCollision = false;
 					break;
 				}
-				Vector2 pos = position + step * collisionUnit - new Vector2(4);
+				Vector2 pos = Position + step * collisionUnit - new Vector2(4);
 				var collisionRectangle = new Rectangle((int)pos.X, (int)pos.Y, 8, 8);
 				bool playerCollision = false;
 				foreach (var player in Main.player)
@@ -100,7 +101,7 @@ public class IRProbe_Normal_Laser : ForegroundVFX
 		{
 			length = 0;
 			AnyPlayerCollision = false;
-			Vector2 pos = position - new Vector2(4);
+			Vector2 pos = Position - new Vector2(4);
 			var collisionRectangle = new Rectangle((int)pos.X, (int)pos.Y, 8, 8);
 			bool playerCollision = false;
 			foreach (var player in Main.player)
@@ -121,7 +122,7 @@ public class IRProbe_Normal_Laser : ForegroundVFX
 		}
 		if (AnyPlayerCollision && !oldPlayerHit)
 		{
-			Wiring.TripWire(originTile.X, originTile.Y, 1, 1);
+			Wiring.TripWire(OriginTilePos.X, OriginTilePos.Y, 1, 1);
 		}
 		base.Update();
 	}
@@ -143,52 +144,52 @@ public class IRProbe_Normal_Laser : ForegroundVFX
 				Vector2 starX = new Vector2(36, 0).RotatedBy(subRot);
 				Vector2 starY = new Vector2(0, 11).RotatedBy(subRot);
 				var star = new List<Vertex2D>();
-				star.Add(position - starX - starY, laserColor, new Vector3(frame.X / (float)texture.Width, frame.Y / (float)texture.Height, 0));
-				star.Add(position + starX - starY, laserColor, new Vector3((frame.X + frame.Width) / (float)texture.Width, frame.Y / (float)texture.Height, 0));
-				star.Add(position - starX + starY, laserColor, new Vector3(frame.X / (float)texture.Width, (frame.Y + frame.Height) / (float)texture.Height, 0));
+				star.Add(Position - starX - starY, laserColor, new Vector3(frame.X / (float)Texture.Width, frame.Y / (float)Texture.Height, 0));
+				star.Add(Position + starX - starY, laserColor, new Vector3((frame.X + frame.Width) / (float)Texture.Width, frame.Y / (float)Texture.Height, 0));
+				star.Add(Position - starX + starY, laserColor, new Vector3(frame.X / (float)Texture.Width, (frame.Y + frame.Height) / (float)Texture.Height, 0));
 
-				star.Add(position - starX + starY, laserColor, new Vector3(frame.X / (float)texture.Width, (frame.Y + frame.Height) / (float)texture.Height, 0));
-				star.Add(position + starX - starY, laserColor, new Vector3((frame.X + frame.Width) / (float)texture.Width, frame.Y / (float)texture.Height, 0));
-				star.Add(position + starX + starY, laserColor, new Vector3((frame.X + frame.Width) / (float)texture.Width, (frame.Y + frame.Height) / (float)texture.Height, 0));
+				star.Add(Position - starX + starY, laserColor, new Vector3(frame.X / (float)Texture.Width, (frame.Y + frame.Height) / (float)Texture.Height, 0));
+				star.Add(Position + starX - starY, laserColor, new Vector3((frame.X + frame.Width) / (float)Texture.Width, frame.Y / (float)Texture.Height, 0));
+				star.Add(Position + starX + starY, laserColor, new Vector3((frame.X + frame.Width) / (float)Texture.Width, (frame.Y + frame.Height) / (float)Texture.Height, 0));
 
 				subRot = Rotation - MathHelper.PiOver4;
 				starX = new Vector2(36, 0).RotatedBy(subRot);
 				starY = new Vector2(0, 11).RotatedBy(subRot);
-				star.Add(position - starX - starY, laserColor, new Vector3(frame.X / (float)texture.Width, frame.Y / (float)texture.Height, 0));
-				star.Add(position + starX - starY, laserColor, new Vector3((frame.X + frame.Width) / (float)texture.Width, frame.Y / (float)texture.Height, 0));
-				star.Add(position - starX + starY, laserColor, new Vector3(frame.X / (float)texture.Width, (frame.Y + frame.Height) / (float)texture.Height, 0));
+				star.Add(Position - starX - starY, laserColor, new Vector3(frame.X / (float)Texture.Width, frame.Y / (float)Texture.Height, 0));
+				star.Add(Position + starX - starY, laserColor, new Vector3((frame.X + frame.Width) / (float)Texture.Width, frame.Y / (float)Texture.Height, 0));
+				star.Add(Position - starX + starY, laserColor, new Vector3(frame.X / (float)Texture.Width, (frame.Y + frame.Height) / (float)Texture.Height, 0));
 
-				star.Add(position - starX + starY, laserColor, new Vector3(frame.X / (float)texture.Width, (frame.Y + frame.Height) / (float)texture.Height, 0));
-				star.Add(position + starX - starY, laserColor, new Vector3((frame.X + frame.Width) / (float)texture.Width, frame.Y / (float)texture.Height, 0));
-				star.Add(position + starX + starY, laserColor, new Vector3((frame.X + frame.Width) / (float)texture.Width, (frame.Y + frame.Height) / (float)texture.Height, 0));
+				star.Add(Position - starX + starY, laserColor, new Vector3(frame.X / (float)Texture.Width, (frame.Y + frame.Height) / (float)Texture.Height, 0));
+				star.Add(Position + starX - starY, laserColor, new Vector3((frame.X + frame.Width) / (float)Texture.Width, frame.Y / (float)Texture.Height, 0));
+				star.Add(Position + starX + starY, laserColor, new Vector3((frame.X + frame.Width) / (float)Texture.Width, (frame.Y + frame.Height) / (float)Texture.Height, 0));
 
 				subRot = Rotation;
 				starX = new Vector2(6, 0).RotatedBy(subRot);
 				starY = new Vector2(0, 6).RotatedBy(subRot);
 				frame = new Rectangle(0, 94, 24, 24);
 				laserColor = Color.Lerp(laserColor, new Color(1f, 1f, 1f, 0), 0.2f);
-				star.Add(position - starX - starY, laserColor, new Vector3(frame.X / (float)texture.Width, frame.Y / (float)texture.Height, 0));
-				star.Add(position + starX - starY, laserColor, new Vector3((frame.X + frame.Width) / (float)texture.Width, frame.Y / (float)texture.Height, 0));
-				star.Add(position - starX + starY, laserColor, new Vector3(frame.X / (float)texture.Width, (frame.Y + frame.Height) / (float)texture.Height, 0));
+				star.Add(Position - starX - starY, laserColor, new Vector3(frame.X / (float)Texture.Width, frame.Y / (float)Texture.Height, 0));
+				star.Add(Position + starX - starY, laserColor, new Vector3((frame.X + frame.Width) / (float)Texture.Width, frame.Y / (float)Texture.Height, 0));
+				star.Add(Position - starX + starY, laserColor, new Vector3(frame.X / (float)Texture.Width, (frame.Y + frame.Height) / (float)Texture.Height, 0));
 
-				star.Add(position - starX + starY, laserColor, new Vector3(frame.X / (float)texture.Width, (frame.Y + frame.Height) / (float)texture.Height, 0));
-				star.Add(position + starX - starY, laserColor, new Vector3((frame.X + frame.Width) / (float)texture.Width, frame.Y / (float)texture.Height, 0));
-				star.Add(position + starX + starY, laserColor, new Vector3((frame.X + frame.Width) / (float)texture.Width, (frame.Y + frame.Height) / (float)texture.Height, 0));
-				Ins.Batch.Draw(texture, star, PrimitiveType.TriangleList);
+				star.Add(Position - starX + starY, laserColor, new Vector3(frame.X / (float)Texture.Width, (frame.Y + frame.Height) / (float)Texture.Height, 0));
+				star.Add(Position + starX - starY, laserColor, new Vector3((frame.X + frame.Width) / (float)Texture.Width, frame.Y / (float)Texture.Height, 0));
+				star.Add(Position + starX + starY, laserColor, new Vector3((frame.X + frame.Width) / (float)Texture.Width, (frame.Y + frame.Height) / (float)Texture.Height, 0));
+				Ins.Batch.Draw(Texture, star, PrimitiveType.TriangleList);
 			}
 			return;
 		}
-		Vector2 stepPos = position;
+		Vector2 stepPos = Position;
 		Vector2 collisionUnit = new Vector2(0, -8).RotatedBy(Rotation);
 		Vector2 collisionUnit_T = new Vector2(0, -8).RotatedBy(Rotation + MathHelper.PiOver2);
 		var bars = new List<Vertex2D>();
-		bars.Add(stepPos + collisionUnit_T, laserColor, new Vector3(frame.X / (float)texture.Width, frame.Y / (float)texture.Height, 0));
-		bars.Add(stepPos + collisionUnit + collisionUnit_T, laserColor, new Vector3((frame.X + frame.Width) / (float)texture.Width, frame.Y / (float)texture.Height, 0));
-		bars.Add(stepPos - collisionUnit_T, laserColor, new Vector3(frame.X / (float)texture.Width, (frame.Y + frame.Height) / (float)texture.Height, 0));
+		bars.Add(stepPos + collisionUnit_T, laserColor, new Vector3(frame.X / (float)Texture.Width, frame.Y / (float)Texture.Height, 0));
+		bars.Add(stepPos + collisionUnit + collisionUnit_T, laserColor, new Vector3((frame.X + frame.Width) / (float)Texture.Width, frame.Y / (float)Texture.Height, 0));
+		bars.Add(stepPos - collisionUnit_T, laserColor, new Vector3(frame.X / (float)Texture.Width, (frame.Y + frame.Height) / (float)Texture.Height, 0));
 
-		bars.Add(stepPos - collisionUnit_T, laserColor, new Vector3(frame.X / (float)texture.Width, (frame.Y + frame.Height) / (float)texture.Height, 0));
-		bars.Add(stepPos + collisionUnit + collisionUnit_T, laserColor, new Vector3((frame.X + frame.Width) / (float)texture.Width, frame.Y / (float)texture.Height, 0));
-		bars.Add(stepPos + collisionUnit - collisionUnit_T, laserColor, new Vector3((frame.X + frame.Width) / (float)texture.Width, (frame.Y + frame.Height) / (float)texture.Height, 0));
+		bars.Add(stepPos - collisionUnit_T, laserColor, new Vector3(frame.X / (float)Texture.Width, (frame.Y + frame.Height) / (float)Texture.Height, 0));
+		bars.Add(stepPos + collisionUnit + collisionUnit_T, laserColor, new Vector3((frame.X + frame.Width) / (float)Texture.Width, frame.Y / (float)Texture.Height, 0));
+		bars.Add(stepPos + collisionUnit - collisionUnit_T, laserColor, new Vector3((frame.X + frame.Width) / (float)Texture.Width, (frame.Y + frame.Height) / (float)Texture.Height, 0));
 		frame = new Rectangle(28, 74, 16, 16);
 		for (int i = 0; i < length; i++)
 		{
@@ -197,20 +198,20 @@ public class IRProbe_Normal_Laser : ForegroundVFX
 			{
 				frame = new Rectangle(56, 74, 16, 16);
 			}
-			bars.Add(stepPos + collisionUnit_T, laserColor, new Vector3(frame.X / (float)texture.Width, frame.Y / (float)texture.Height, 0));
-			bars.Add(stepPos + collisionUnit + collisionUnit_T, laserColor, new Vector3((frame.X + frame.Width) / (float)texture.Width, frame.Y / (float)texture.Height, 0));
-			bars.Add(stepPos - collisionUnit_T, laserColor, new Vector3(frame.X / (float)texture.Width, (frame.Y + frame.Height) / (float)texture.Height, 0));
+			bars.Add(stepPos + collisionUnit_T, laserColor, new Vector3(frame.X / (float)Texture.Width, frame.Y / (float)Texture.Height, 0));
+			bars.Add(stepPos + collisionUnit + collisionUnit_T, laserColor, new Vector3((frame.X + frame.Width) / (float)Texture.Width, frame.Y / (float)Texture.Height, 0));
+			bars.Add(stepPos - collisionUnit_T, laserColor, new Vector3(frame.X / (float)Texture.Width, (frame.Y + frame.Height) / (float)Texture.Height, 0));
 
-			bars.Add(stepPos - collisionUnit_T, laserColor, new Vector3(frame.X / (float)texture.Width, (frame.Y + frame.Height) / (float)texture.Height, 0));
-			bars.Add(stepPos + collisionUnit + collisionUnit_T, laserColor, new Vector3((frame.X + frame.Width) / (float)texture.Width, frame.Y / (float)texture.Height, 0));
-			bars.Add(stepPos + collisionUnit - collisionUnit_T, laserColor, new Vector3((frame.X + frame.Width) / (float)texture.Width, (frame.Y + frame.Height) / (float)texture.Height, 0));
+			bars.Add(stepPos - collisionUnit_T, laserColor, new Vector3(frame.X / (float)Texture.Width, (frame.Y + frame.Height) / (float)Texture.Height, 0));
+			bars.Add(stepPos + collisionUnit + collisionUnit_T, laserColor, new Vector3((frame.X + frame.Width) / (float)Texture.Width, frame.Y / (float)Texture.Height, 0));
+			bars.Add(stepPos + collisionUnit - collisionUnit_T, laserColor, new Vector3((frame.X + frame.Width) / (float)Texture.Width, (frame.Y + frame.Height) / (float)Texture.Height, 0));
 		}
-		Ins.Batch.Draw(texture, bars, PrimitiveType.TriangleList);
+		Ins.Batch.Draw(Texture, bars, PrimitiveType.TriangleList);
 	}
 
 	public override void Kill()
 	{
-		UnregisterCustomLogic(LaserScan);
+		UnregisterCustomDraw(LaserScan);
 		base.Kill();
 	}
 
@@ -227,7 +228,7 @@ public class IRProbe_Normal_Laser : ForegroundVFX
 	/// Unregister a custom logic.
 	/// </summary>
 	/// <param name="customLogic"></param>
-	public void UnregisterCustomLogic(ScanningLogic customLogic)
+	public void UnregisterCustomDraw(ScanningLogic customLogic)
 	{
 		LaserScan -= customLogic;
 	}

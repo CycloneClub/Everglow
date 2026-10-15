@@ -93,13 +93,13 @@ public class Tusk_ground : ModProjectile
 		{
 			var blood = new BloodDrop
 			{
-				velocity = Projectile.rotation.ToRotationVector2().RotatedBy(Main.rand.NextFloat(-0.1f, 0.1f)) * Main.rand.NextFloat(3.4f, 22.1f),
+				Velocity = Projectile.rotation.ToRotationVector2().RotatedBy(Main.rand.NextFloat(-0.1f, 0.1f)) * Main.rand.NextFloat(3.4f, 22.1f),
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + Projectile.rotation.ToRotationVector2() * 10,
-				maxTime = Main.rand.Next(54, 74),
-				scale = Main.rand.NextFloat(6f, 25f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + Projectile.rotation.ToRotationVector2() * 10,
+				MaxTime = Main.rand.Next(54, 74),
+				Scale = Main.rand.NextFloat(6f, 25f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 			};
 			Ins.VFXManager.Add(blood);

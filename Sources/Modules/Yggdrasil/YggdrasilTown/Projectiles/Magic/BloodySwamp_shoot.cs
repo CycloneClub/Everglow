@@ -35,13 +35,13 @@ public class BloodySwamp_shoot : ModProjectile
 		Vector2 velocity = new Vector2(0, 2).RotatedBy(Main.rand.NextFloat(MathHelper.TwoPi)) + Projectile.velocity * 0.25f;
 		var somg = new BloodSwampDust
 		{
-			velocity = velocity,
+			Velocity = velocity,
 			Active = true,
 			Visible = true,
-			position = Projectile.Center,
-			maxTime = 90,
-			scale = 25,
-			rotation = Main.rand.NextFloat(6.283f),
+			Position = Projectile.Center,
+			MaxTime = 90,
+			Scale = 25,
+			Rotation = Main.rand.NextFloat(6.283f),
 			MaxScale = Main.rand.NextFloat(12.0f, 28.0f),
 			ChasedProjectile = Projectile,
 			ai = new float[] { Main.rand.NextFloat(-0.12f, 0.12f), Main.rand.NextFloat(MathHelper.TwoPi), 0 },

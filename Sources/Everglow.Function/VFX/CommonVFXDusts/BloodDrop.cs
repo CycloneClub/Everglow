@@ -10,6 +10,7 @@ public class BloodDropPipeline : Pipeline
 		effect = ModAsset.BloodDrop;
 		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_bloodDrop.Value);
 	}
+
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
@@ -29,63 +30,70 @@ public class BloodDropPipeline : Pipeline
 		Ins.Batch.End();
 	}
 }
+
 [Pipeline(typeof(BloodDropPipeline))]
 public class BloodDrop : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
-	public Vector2 position;
-	public Vector2 velocity;
+
+	public Vector2 Position;
+	public Vector2 Velocity;
 	public float[] ai;
-	public float timer;
-	public float maxTime;
-	public float scale;
-	public float rotation;
-	public BloodDrop() { }
+	public float Timer;
+	public float MaxTime;
+	public float Scale;
+	public float Rotation;
+
 	public override void Update()
 	{
-		position += velocity;
-		if (position.X <= 320 || position.X >= Main.maxTilesX * 16 - 320)
+		Position += Velocity;
+		if (Position.X <= 320 || Position.X >= Main.maxTilesX * 16 - 320)
 		{
-			timer = maxTime;
-		}
-		if (position.Y <= 320 || position.Y >= Main.maxTilesY * 16 - 320)
-		{
-			timer = maxTime;
-		}
-		velocity *= 0.98f;
-		velocity += new Vector2(Main.windSpeedCurrent * 0.1f, 0.14f * scale * 0.1f);
-		scale *= 0.98f;
-		timer++;
-		if (timer > maxTime)
 			Active = false;
-		if (Collision.SolidCollision(position, 0, 0))
-		{
-			velocity *= -0.2f;
-			timer += 10;
+			return;
 		}
-		var tile = Main.tile[(int)(position.X / 16), (int)(position.Y / 16)];
-		if (position.Y % 1 < tile.LiquidAmount / 256f)
+		if (Position.Y <= 320 || Position.Y >= Main.maxTilesY * 16 - 320)
 		{
-			timer += 120;
+			Active = false;
+			return;
 		}
-		if (scale < 0.5f)
+		Velocity *= 0.98f;
+		Velocity += new Vector2(Main.windSpeedCurrent * 0.1f, 0.14f * Scale * 0.1f);
+		Scale *= 0.98f;
+		Timer++;
+		if (Timer > MaxTime)
 		{
-			timer += 20;
+			Active = false;
+		}
+
+		if (Collision.SolidCollision(Position, 0, 0))
+		{
+			Velocity *= -0.2f;
+			Timer += 10;
+		}
+		var tile = Main.tile[(int)(Position.X / 16), (int)(Position.Y / 16)];
+		if (Position.Y % 1 < tile.LiquidAmount / 256f)
+		{
+			Timer += 120;
+		}
+		if (Scale < 0.5f)
+		{
+			Timer += 20;
 		}
 	}
 
 	public override void Draw()
 	{
-		float pocession = timer / maxTime * 0.6f;
-		Vector2 toCorner = new Vector2(0, scale).RotatedBy(rotation);
-		Color lightColor = Lighting.GetColor((int)(position.X / 16f), (int)(position.Y / 16f));
+		float progress = Timer / MaxTime * 0.6f;
+		Vector2 toCorner = new Vector2(0, Scale).RotatedBy(Rotation);
+		Color lightColor = Lighting.GetColor((int)(Position.X / 16f), (int)(Position.Y / 16f));
 		List<Vertex2D> bars = new List<Vertex2D>()
 		{
-			new Vertex2D(position + velocity + toCorner,lightColor, new Vector3(0, 0,pocession)),
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 0.5),lightColor, new Vector3(0, 1,pocession)),
+			new Vertex2D(Position + Velocity + toCorner, lightColor, new Vector3(0, 0, progress)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 0.5), lightColor, new Vector3(0, 1, progress)),
 
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 1.5),lightColor, new Vector3(1, 0,pocession)),
-			new Vertex2D(position - velocity * ai[1] + toCorner.RotatedBy(Math.PI * 1),lightColor, new Vector3(1, 1,pocession))
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1.5), lightColor, new Vector3(1, 0, progress)),
+			new Vertex2D(Position - Velocity * ai[1] + toCorner.RotatedBy(Math.PI * 1), lightColor, new Vector3(1, 1, progress)),
 		};
 
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);

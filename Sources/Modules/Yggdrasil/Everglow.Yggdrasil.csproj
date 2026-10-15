@@ -11,4 +11,8 @@
   <ItemGroup>
 		<Solaestas-ResourceFile Include="YggdrasilTown\**\*.json" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="SharpDX" Version="4.2.0" />
+    <PackageReference Include="SharpDX.Mathematics" Version="4.2.0" />
+  </ItemGroup>
 </Project>

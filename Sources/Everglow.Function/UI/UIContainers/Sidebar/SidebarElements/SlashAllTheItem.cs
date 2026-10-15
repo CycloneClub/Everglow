@@ -1,13 +1,13 @@
 namespace Everglow.Commons.UI.UIContainers.Sidebar.SidebarElements;
 
-internal class SlashAllTheItem : SidebarElementBase
+public class SlashAllTheItem : ISidebarElement
 {
-	public override Texture2D Icon => ModAsset.SlashAllTheItem.Value;
-	public override string Tooltip => "清理背包";
+	public Texture2D Icon => ModAsset.SlashAllTheItem.Value;
 
-	public override void Invoke()
+	public string Tooltip => "清理背包";
+
+	public void Invoke()
 	{
-		base.Invoke();
 		for (int i = 0; i < 50; i++)
 		{
 			var item = Main.LocalPlayer.inventory[i];

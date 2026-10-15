@@ -41,13 +41,13 @@ public class BloodySwamp_shoot_area : ModProjectile
 		{
 			var somg = new BloodSwampDust
 			{
-				velocity = velocity,
+				Velocity = velocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = 90,
-				scale = 25,
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center,
+				MaxTime = 90,
+				Scale = 25,
+				Rotation = Main.rand.NextFloat(6.283f),
 				MaxScale = Main.rand.NextFloat(12.0f, 28.0f),
 				ChasedProjectile = Projectile,
 				ai = new float[] { Main.rand.NextFloat(-0.12f, 0.12f), Main.rand.NextFloat(MathHelper.TwoPi), 0 },
@@ -74,13 +74,13 @@ public class BloodySwamp_shoot_area : ModProjectile
 			velocity *= size;
 			var somg = new BloodFlame
 			{
-				velocity = velocity,
+				Velocity = velocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center,
-				maxTime = 120,
-				scale = 1,
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center,
+				MaxTime = 120,
+				Scale = 1,
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(8.0f, 12f), g / 125f * MathHelper.TwoPi + rotForTotal, MathF.Sin(g / 100f * MathHelper.TwoPi) },
 			};
 			Ins.VFXManager.Add(somg);

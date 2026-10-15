@@ -1,5 +1,5 @@
 using Everglow.CagedDomain.Tiles;
-using Everglow.Yggdrasil.YggdrasilTown.Tiles;
+using Everglow.Yggdrasil.YggdrasilTown.Tiles.Union;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 

@@ -45,7 +45,7 @@ public class GreenSungloShield_B : ModProjectile
 			timer -= 0.2f;
 		}
 
-		if (timer == 0)
+		if (timer <= 0)
 		{
 			Projectile.Kill();
 		}

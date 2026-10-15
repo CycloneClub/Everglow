@@ -1,6 +1,6 @@
 ---
 description: "Review a pull request's changes for correctness, performance, and consistency with Everglow project conventions described in AGENTS.md. Triggered on PR events (open / push / reopen / ready). Supports incremental re-review by reading the PR's own review history. Submits a customized GitHub pull request review via the safe-outputs API."
-model: deepseek-v4-flash
+model: deepseek-v4-pro
 
 permissions:
   contents: read
@@ -10,7 +10,13 @@ permissions:
 network:
   allowed:
     - github
+    - api.anthropic.com
     - api.deepseek.com
+    - api.moonshot.ai
+    - open.bigmodel.cn
+    - api.minimaxi.com
+    - api.minimax.io
+    - openrouter.ai
 
 tools:
   cli-proxy: true
@@ -259,13 +265,15 @@ on:
 # Engine configuration
 #
 # Default: Copilot CLI in BYOK mode → DeepSeek Anthropic-compatible endpoint.
+#   LLM_BASE_URL and LLM_MODEL repository variables can select another
+#   allowlisted Anthropic-compatible provider without recompiling.
 #   Why not `engine.id: codex`? Codex CLI speaks OpenAI Responses API
 #   (`/v1/responses`). DeepSeek only implements Chat Completions / Anthropic
 #   Messages — Codex therefore hits api.openai.com (401) or DeepSeek `/v1/responses`
 #   (404). Copilot BYOK + anthropic wire avoids that protocol mismatch.
 #
-#   Only secret needed: DEEPSEEK_API_KEY (BYOK skips COPILOT_GITHUB_TOKEN).
-#   Models: deepseek-v4-flash (default) or deepseek-v4-pro.
+#   Only secret needed: LLM_API_KEY (BYOK skips COPILOT_GITHUB_TOKEN).
+#   Defaults: https://api.deepseek.com/anthropic + deepseek-v4-pro.
 #   Alternate OpenAI-compat path (may 400 on multi-turn reasoning):
 #     COPILOT_PROVIDER_TYPE: openai
 #     COPILOT_PROVIDER_BASE_URL: https://api.deepseek.com/v1
@@ -274,10 +282,10 @@ on:
 engine:
   id: copilot
   env:
-    COPILOT_PROVIDER_BASE_URL: https://api.deepseek.com/anthropic
-    COPILOT_PROVIDER_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+    COPILOT_PROVIDER_BASE_URL: ${{ vars.LLM_BASE_URL || 'https://api.deepseek.com/anthropic' }}
+    COPILOT_PROVIDER_API_KEY: ${{ secrets.LLM_API_KEY }}
     COPILOT_PROVIDER_TYPE: anthropic
-    COPILOT_MODEL: deepseek-v4-flash
+    COPILOT_MODEL: ${{ vars.LLM_MODEL || 'deepseek-v4-pro' }}
     EVERGLOW_PR_NUMBER: ${{ github.event.pull_request.number || github.event.inputs.pr_number }}
     EVERGLOW_PR_BASE_REF: ${{ github.event.pull_request.base.ref || github.event.inputs.pr_base_ref }}
     EVERGLOW_PR_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.event.inputs.pr_head_sha }}

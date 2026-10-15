@@ -1,8 +1,11 @@
+using Everglow.Commons.DataStructures;
+using Everglow.Commons.Enums;
+using Everglow.Commons.Utilities;
 using Terraria.UI;
 
 namespace Everglow.Commons.UI
 {
-	internal class UISystem : ModSystem
+	public class UISystem : ModSystem
 	{
 		public static EverglowUISystem EverglowUISystem
 		{
@@ -16,7 +19,18 @@ namespace Everglow.Commons.UI
 
 		private EverglowUISystem system;
 		private static UISystem instance;
-		private Point ScreenSize;
+		private Point screenSize;
+
+		public bool LeftResizing = false;
+		public bool RightResizing = false;
+		public bool TopResizing = false;
+		public bool BottomResizing = false;
+
+		public delegate void ChestUIDraw(UISystem system, SpriteBatch spriteBatch);
+
+		public event ChestUIDraw PostDrawChestUI;
+
+		public RenderTarget2D UI_Screen = null;
 
 		public UISystem()
 		{
@@ -24,22 +38,37 @@ namespace Everglow.Commons.UI
 			instance = this;
 		}
 
+		public Chest CurrentShop = new Chest(false);
+
+		public Chest OldChest = new Chest(false);
+
 		public override void Load()
 		{
 			base.Load();
+			Ins.HookManager.AddHook(CodeLayer.PostDrawNPCs, PrepareUIRenderTarget);
+			On_Main.DrawInterface += HigherInterfaceVisualEffectSupport;
+			On_Main.DrawCursor += ModifyUIBlockResizeCursor;
+			On_Main.DrawThickCursor += ModifyUIBlockResizeThickCursor;
+			On_ChestUI.DrawSlots += On_ChestUI_DrawPanel;
 			if (Main.netMode != NetmodeID.Server)
+			{
 				system.Load();
+			}
 		}
 
 		public override void UpdateUI(GameTime gameTime)
 		{
+			LeftResizing = false;
+			RightResizing = false;
+			TopResizing = false;
+			BottomResizing = false;
 			base.UpdateUI(gameTime);
 
 			if (Main.netMode != NetmodeID.Server)
 			{
-				if (ScreenSize != Main.ScreenSize)
+				if (screenSize != Main.ScreenSize)
 				{
-					ScreenSize = Main.ScreenSize;
+					screenSize = Main.ScreenSize;
 					system.Calculation();
 				}
 				system.Update(gameTime);
@@ -54,15 +83,165 @@ namespace Everglow.Commons.UI
 			{
 				layers.Insert(mouseTextIndex, new LegacyGameInterfaceLayer(
 					"Everglow: Everglow UI System",
-					delegate
+					() =>
 					{
 						if (Main.netMode != NetmodeID.Server)
+						{
 							system.Draw(Main.spriteBatch);
+						}
+
 						return true;
 					},
-					InterfaceScaleType.UI)
-				);
+					InterfaceScaleType.UI));
 			}
 		}
+
+		private void ModifyUIBlockResizeCursor(On_Main.orig_DrawCursor orig, Vector2 bonus, bool smart)
+		{
+			Vector2 resizeDir = GetResizeDirection();
+			if (resizeDir == Vector2.zeroVector)
+			{
+				orig(bonus, smart);
+			}
+			else
+			{
+				Texture2D tex = ModAsset.Cursor_Resize_TL_BR_Slash.Value;
+				int dirValue = (int)(resizeDir.X * resizeDir.Y);
+				if (dirValue == 1)
+				{
+					tex = ModAsset.Cursor_Resize_TL_BR_Slash.Value;
+				}
+				else if (dirValue == -1)
+				{
+					tex = ModAsset.Cursor_Resize_BL_TR_Slash.Value;
+				}
+				else if (dirValue == 0)
+				{
+					if (resizeDir.Y == 0)
+					{
+						tex = ModAsset.Cursor_Resize_H.Value;
+					}
+					if (resizeDir.X == 0)
+					{
+						tex = ModAsset.Cursor_Resize_V.Value;
+					}
+				}
+				Main.spriteBatch.Draw(tex, new Vector2(Main.mouseX, Main.mouseY) + Vector2.One * -11, null, Main.cursorColor, 0f, default(Vector2), Main.cursorScale, SpriteEffects.None, 0f);
+			}
+		}
+
+		private Vector2 ModifyUIBlockResizeThickCursor(On_Main.orig_DrawThickCursor orig, bool smart)
+		{
+			Vector2 resizeDir = GetResizeDirection();
+			if (resizeDir == Vector2.zeroVector)
+			{
+				return orig(smart);
+			}
+			else
+			{
+				int dirValue = (int)(resizeDir.X * resizeDir.Y);
+				Texture2D tex = ModAsset.Cursor_Resize_TL_BR_Slash_Bound.Value;
+				if (dirValue == 1)
+				{
+					tex = ModAsset.Cursor_Resize_TL_BR_Slash_Bound.Value;
+				}
+				else if (dirValue == -1)
+				{
+					tex = ModAsset.Cursor_Resize_BL_TR_Slash_Bound.Value;
+				}
+				else if (dirValue == 0)
+				{
+					if (resizeDir.Y == 0)
+					{
+						tex = ModAsset.Cursor_Resize_H_Bound.Value;
+					}
+					if (resizeDir.X == 0)
+					{
+						tex = ModAsset.Cursor_Resize_V_Bound.Value;
+					}
+				}
+				for (int k = 0; k < 4; k++)
+				{
+					Vector2 offset = new Vector2(1, 0).RotatedBy(MathHelper.PiOver2 * k);
+					Main.spriteBatch.Draw(tex, new Vector2(Main.mouseX, Main.mouseY) + Vector2.One * -11 + offset, null, Main.MouseBorderColor, 0f, default(Vector2), Main.cursorScale, SpriteEffects.None, 0f);
+				}
+				return Vector2.zeroVector;
+			}
+		}
+
+		private Vector2 GetResizeDirection()
+		{
+			Vector2 resizeDir = Vector2.Zero;
+			if (LeftResizing)
+			{
+				resizeDir.X = -1;
+			}
+			if (RightResizing)
+			{
+				resizeDir.X = 1;
+			}
+			if (TopResizing)
+			{
+				resizeDir.Y = -1;
+			}
+			if (BottomResizing)
+			{
+				resizeDir.Y = 1;
+			}
+			return resizeDir;
+		}
+
+		private void PrepareUIRenderTarget()
+		{
+			if (Ins.VisualQuality.High && Main.spriteBatch.beginCalled)
+			{
+				var sb = Main.spriteBatch;
+				var gd = sb.GraphicsDevice;
+				SpriteBatchState sBS = GraphicsUtils.GetState(sb).Value;
+
+				var renderTargets = Ins.RenderTargetPool.GetRenderTarget2DArray(2);
+				UI_Screen = renderTargets.Resource[0];
+				RenderTarget2D screenSwap = renderTargets.Resource[1];
+				sb.End();
+
+				gd.SetRenderTarget(screenSwap);
+				gd.Clear(Color.Transparent);
+				sb.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Matrix.Invert(Main.GameViewMatrix.TransformationMatrix));
+				sb.Draw(Main.screenTarget, Vector2.zeroVector, Color.White);
+				sb.End();
+
+				gd.SetRenderTarget(UI_Screen);
+				gd.Clear(Color.Transparent);
+				sb.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Main.UIScaleMatrix);
+				system.DrawInRenderTarget(sb);
+				sb.End();
+
+				gd.SetRenderTarget(Main.screenTarget);
+				sb.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
+				sb.Draw(screenSwap, Vector2.zeroVector, Color.White);
+				sb.End();
+				sb.Begin(sBS);
+
+				screenSwap = null;
+				renderTargets.Release();
+			}
+		}
+
+		private void HigherInterfaceVisualEffectSupport(On_Main.orig_DrawInterface orig, Main self, GameTime gameTime)
+		{
+			orig(self, gameTime);
+
+			if (UI_Screen is not null)
+			{
+				UI_Screen = null;
+			}
+		}
+
+		private void On_ChestUI_DrawPanel(On_ChestUI.orig_DrawSlots orig, SpriteBatch spriteBatch)
+		{
+			orig(spriteBatch);
+			PostDrawChestUI?.Invoke(this, spriteBatch);
+		}
+
 	}
 }

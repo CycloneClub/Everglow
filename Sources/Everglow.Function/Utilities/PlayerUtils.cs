@@ -58,6 +58,18 @@ public static class PlayerUtils
 	public static EverglowPlayer Everglow(this Player player) =>
 		player.GetModPlayer<EverglowPlayer>();
 
+	public static bool TryGetActivePlayer(int whoAmI, out Player player)
+	{
+		player = null!;
+		if (whoAmI < 0 || whoAmI >= Main.maxPlayers)
+		{
+			return false;
+		}
+
+		player = Main.player[whoAmI];
+		return player is not null && player.active;
+	}
+
 	/// <summary>
 	/// Get mouse position of player.
 	/// <br/>Tips: Call <see cref="ListenMouseWorld"/> or <see cref="ListenMouseRotation"/> on every frame if u wanna use this.

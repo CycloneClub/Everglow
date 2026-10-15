@@ -179,14 +179,14 @@ public class TrueDeathSickle_Blade : ModProjectile, IWarpProjectile_warpStyle2, 
 		{
 			var df = new DevilFlame3DSickle_worldCoordDust
 			{
-				velocity3D = new Vector3(new Vector2(0, Main.rand.NextFloat(6, 9f)).RotatedByRandom(MathHelper.TwoPi), 0),
+				Velocity3D = new Vector3(new Vector2(0, Main.rand.NextFloat(6, 9f)).RotatedByRandom(MathHelper.TwoPi), 0),
 				Active = true,
 				Visible = true,
-				position3D = new Vector3(target.Center, 0),
+				Position3D = new Vector3(target.Center, 0),
 				rotateAxis = new Vector3(0, 0, 1),
-				scale = Main.rand.NextFloat(6, 12),
-				maxTime = Main.rand.Next(36, 40),
-				ownerWhoAmI = Projectile.owner,
+				Scale = Main.rand.NextFloat(6, 12),
+				MaxTime = Main.rand.Next(36, 40),
+				OwnerWhoAmI = Projectile.owner,
 				ai = new float[] { Main.rand.NextFloat(0, 1f), Main.rand.NextFloat(-0.1f, 0.1f), 0f },
 			};
 			Ins.VFXManager.Add(df);
@@ -199,14 +199,14 @@ public class TrueDeathSickle_Blade : ModProjectile, IWarpProjectile_warpStyle2, 
 		{
 			var df = new DevilFlame3DSickleDust
 			{
-				velocity3D = Vector3.Normalize(SpacePos - OldPosSpace[OldPosSpace.Count - 1]) * 15f,
+				Velocity3D = Vector3.Normalize(SpacePos - OldPosSpace[OldPosSpace.Count - 1]) * 15f,
 				Active = true,
 				Visible = true,
-				position3D = Vector3.Lerp(OldPosSpace[OldPosSpace.Count - 1], SpacePos, Main.rand.NextFloat(0, 1f)),
+				Position3D = Vector3.Lerp(OldPosSpace[OldPosSpace.Count - 1], SpacePos, Main.rand.NextFloat(0, 1f)),
 				rotateAxis = RotatedAxis,
-				scale = Main.rand.NextFloat(12, 26),
-				maxTime = Main.rand.Next(36, 40),
-				ownerWhoAmI = Projectile.owner,
+				Scale = Main.rand.NextFloat(12, 26),
+				MaxTime = Main.rand.Next(36, 40),
+				OwnerWhoAmI = Projectile.owner,
 				ai = new float[] { Main.rand.NextFloat(0, 1f), Main.rand.NextFloat(0, 0.1f) * -Projectile.spriteDirection, 0f },
 			};
 			Ins.VFXManager.Add(df);
@@ -219,14 +219,14 @@ public class TrueDeathSickle_Blade : ModProjectile, IWarpProjectile_warpStyle2, 
 		{
 			var df = new DevilSpark3DSickleDust
 			{
-				velocity3D = Vector3.Normalize(SpacePos - OldPosSpace[OldPosSpace.Count - 1]) * Main.rand.NextFloat(5f, 24f),
+				Velocity3D = Vector3.Normalize(SpacePos - OldPosSpace[OldPosSpace.Count - 1]) * Main.rand.NextFloat(5f, 24f),
 				Active = true,
 				Visible = true,
-				position3D = Vector3.Lerp(OldPosSpace[OldPosSpace.Count - 1], SpacePos, Main.rand.NextFloat(0, 1f)),
+				Position3D = Vector3.Lerp(OldPosSpace[OldPosSpace.Count - 1], SpacePos, Main.rand.NextFloat(0, 1f)),
 				rotateAxis = RotatedAxis,
-				scale = Main.rand.NextFloat(1, 6),
-				maxTime = Main.rand.Next(6, 70),
-				ownerWhoAmI = Projectile.owner,
+				Scale = Main.rand.NextFloat(1, 6),
+				MaxTime = Main.rand.Next(6, 70),
+				OwnerWhoAmI = Projectile.owner,
 				ai = new float[] { Main.rand.NextFloat(0, 1f), Main.rand.NextFloat(0.01f, 0.1f) * -Projectile.spriteDirection, Main.rand.NextFloat(4f, 12f) },
 			};
 			Ins.VFXManager.Add(df);

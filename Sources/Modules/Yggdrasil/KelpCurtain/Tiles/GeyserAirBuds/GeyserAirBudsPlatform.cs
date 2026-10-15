@@ -178,9 +178,9 @@ public class GeyserAirBudsPlatform : ModTile, ITileFluentlyDrawn
 				Main.rand.NextFloat(-1.5f, 1.5f));
 
 			Dust.NewDustPerfect(
-				position,
+				Position,
 				DustID.GrassBlades,
-				velocity,
+				Velocity,
 				150, new Color(100, 200, 100), Main.rand.NextFloat(0.8f, 1.2f));
 			fail = true;
 			return;

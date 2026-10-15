@@ -7,52 +7,52 @@ public class AvariceFailureCube : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
 
-	public Vector2 position;
-	public Vector2 velocity;
+	public Vector2 Position;
+	public Vector2 Velocity;
 	public float[] ai;
-	public float timer;
-	public float maxTime;
-	public float scale;
-	public float rotation;
+	public float Timer;
+	public float MaxTime;
+	public float Scale;
+	public float Rotation;
 
 	public override void Update()
 	{
-		if (position.X <= 320 || position.X >= Main.maxTilesX * 16 - 320)
+		if (Position.X <= 320 || Position.X >= Main.maxTilesX * 16 - 320)
 		{
-			timer = maxTime;
+			Timer = MaxTime;
 			Active = false;
 			return;
 		}
-		if (position.Y <= 320 || position.Y >= Main.maxTilesY * 16 - 320)
+		if (Position.Y <= 320 || Position.Y >= Main.maxTilesY * 16 - 320)
 		{
-			timer = maxTime;
+			Timer = MaxTime;
 			Active = false;
 			return;
 		}
-		position += velocity;
-		velocity *= 0.95f;
-		rotation += ai[1];
-		scale = ai[0] * (1 - MathF.Sin(timer / maxTime * MathF.PI * 0.5f));
-		timer++;
-		if (timer > maxTime)
+		Position += Velocity;
+		Velocity *= 0.95f;
+		Rotation += ai[1];
+		Scale = ai[0] * (1 - MathF.Sin(Timer / MaxTime * MathF.PI * 0.5f));
+		Timer++;
+		if (Timer > MaxTime)
 		{
 			Active = false;
 		}
-		Lighting.AddLight(position, scale * 0.1f, 0, 0);
+		Lighting.AddLight(Position, Scale * 0.1f, 0, 0);
 	}
 
 	public override void Draw()
 	{
-		Vector2 toCorner = new Vector2(0, scale);
+		Vector2 toCorner = new Vector2(0, Scale);
 		Color lightColor = new Color(0.5f, 0, 0, 0.5f) * 6;
 		List<Vertex2D> bars = new List<Vertex2D>();
-		bars.Add(position + toCorner.RotatedBy(Math.PI * 1 + rotation), lightColor, new Vector3(1, 0, 0));
-		bars.Add(position + toCorner.RotatedBy(Math.PI * 0.5 + rotation), lightColor, new Vector3(0, 0, 0));
-		bars.Add(position + toCorner.RotatedBy(Math.PI * 0 + rotation), lightColor, new Vector3(0, 1, 0));
+		bars.Add(Position + toCorner.RotatedBy(Math.PI * 1 + Rotation), lightColor, new Vector3(1, 0, 0));
+		bars.Add(Position + toCorner.RotatedBy(Math.PI * 0.5 + Rotation), lightColor, new Vector3(0, 0, 0));
+		bars.Add(Position + toCorner.RotatedBy(Math.PI * 0 + Rotation), lightColor, new Vector3(0, 1, 0));
 
-		bars.Add(position + toCorner.RotatedBy(Math.PI * -0.5 + rotation), lightColor, new Vector3(1, 1, 0));
-		bars.Add(position + toCorner.RotatedBy(Math.PI * 0 + rotation), lightColor, new Vector3(0, 1, 0));
-		bars.Add(position + toCorner.RotatedBy(Math.PI * 1 + rotation), lightColor, new Vector3(1, 0, 0));
+		bars.Add(Position + toCorner.RotatedBy(Math.PI * -0.5 + Rotation), lightColor, new Vector3(1, 1, 0));
+		bars.Add(Position + toCorner.RotatedBy(Math.PI * 0 + Rotation), lightColor, new Vector3(0, 1, 0));
+		bars.Add(Position + toCorner.RotatedBy(Math.PI * 1 + Rotation), lightColor, new Vector3(1, 0, 0));
 		Ins.Batch.Draw(Commons.ModAsset.TileBlock.Value, bars, PrimitiveType.TriangleList);
 	}
 }

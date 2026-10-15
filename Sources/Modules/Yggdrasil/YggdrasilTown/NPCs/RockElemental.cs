@@ -1,6 +1,7 @@
 using Everglow.Commons.CustomTiles;
 using Everglow.Commons.DataStructures;
 using Everglow.Commons.Mechanics.Miscs;
+using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.RockElemental;
@@ -200,13 +201,13 @@ public class RockElemental : ModNPC
 							Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 4f)).RotatedByRandom(MathHelper.TwoPi);
 							var somg = new RockSmogDust
 							{
-								velocity = newVelocity,
+								Velocity = newVelocity,
 								Active = true,
 								Visible = true,
-								position = NPC.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + new Vector2(Main.rand.NextFloat(-72f, 72f), -10),
-								maxTime = Main.rand.Next(37, 45),
-								scale = Main.rand.NextFloat(40f, 55f),
-								rotation = Main.rand.NextFloat(6.283f),
+								Position = NPC.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + new Vector2(Main.rand.NextFloat(-72f, 72f), -10),
+								MaxTime = Main.rand.Next(37, 45),
+								Scale = Main.rand.NextFloat(40f, 55f),
+								Rotation = Main.rand.NextFloat(6.283f),
 								ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 							};
 							Ins.VFXManager.Add(somg);
@@ -447,13 +448,13 @@ public class RockElemental : ModNPC
 							Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 4f)).RotatedByRandom(MathHelper.TwoPi);
 							var somg = new RockSmogDust
 							{
-								velocity = newVelocity,
+								Velocity = newVelocity,
 								Active = true,
 								Visible = true,
-								position = NPC.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + new Vector2(Main.rand.NextFloat(-72f, 72f), -10),
-								maxTime = Main.rand.Next(37, 45),
-								scale = Main.rand.NextFloat(40f, 55f),
-								rotation = Main.rand.NextFloat(6.283f),
+								Position = NPC.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + new Vector2(Main.rand.NextFloat(-72f, 72f), -10),
+								MaxTime = Main.rand.Next(37, 45),
+								Scale = Main.rand.NextFloat(40f, 55f),
+								Rotation = Main.rand.NextFloat(6.283f),
 								ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 							};
 							Ins.VFXManager.Add(somg);
@@ -926,13 +927,13 @@ public class RockElemental : ModNPC
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 16f)).RotatedByRandom(MathHelper.TwoPi);
 			var somg = new RockSmogDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = NPC.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-				maxTime = Main.rand.Next(37, 45),
-				scale = Main.rand.NextFloat(40f, 55f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = NPC.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+				MaxTime = Main.rand.Next(37, 45),
+				Scale = Main.rand.NextFloat(40f, 55f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 			};
 			Ins.VFXManager.Add(somg);

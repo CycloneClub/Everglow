@@ -43,13 +43,13 @@ public class LightArrow : ModProjectile
 			Vector2 newVelocity = new Vector2(0, 1.2f).RotatedBy(Main.time * 0.15f + Projectile.whoAmI + (float)i / duplicateTimes * MathHelper.TwoPi);
 			var somg = new LightFruitParticleDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + Projectile.velocity,
-				maxTime = Main.rand.Next(37, 145) * mulMaxTime,
-				scale = Main.rand.NextFloat(12.20f, 32.35f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + Projectile.velocity,
+				MaxTime = Main.rand.Next(37, 145) * mulMaxTime,
+				Scale = Main.rand.NextFloat(12.20f, 32.35f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(1.0f, 6.3f), 0 },
 			};
 			Ins.VFXManager.Add(somg);
@@ -59,13 +59,13 @@ public class LightArrow : ModProjectile
 			Vector2 newVelocity = new Vector2(0, 1.2f).RotatedBy(-Main.time * 0.12f + Projectile.whoAmI + (float)i / duplicateTimes * MathHelper.TwoPi);
 			var somg = new LightFruitParticleDust
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + Projectile.velocity,
-				maxTime = Main.rand.Next(37, 145) * mulMaxTime,
-				scale = Main.rand.NextFloat(12.20f, 32.35f),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + Projectile.velocity,
+				MaxTime = Main.rand.Next(37, 145) * mulMaxTime,
+				Scale = Main.rand.NextFloat(12.20f, 32.35f),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(1.0f, 6.3f), 0 },
 			};
 			Ins.VFXManager.Add(somg);

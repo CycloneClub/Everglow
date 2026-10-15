@@ -64,13 +64,13 @@ public class UnderwaterGuillotine_Projectile : ModProjectile
 					}
 					var somg = new RockSmog_Cone_FallingSandDust
 					{
-						velocity = newVelocity,
+						Velocity = newVelocity,
 						Active = true,
 						Visible = true,
-						position = posCheck,
-						maxTime = Main.rand.NextFloat(90, Math.Max(newVelocity.Y * 6, 163)),
-						scale = Main.rand.NextFloat(6f, 9f),
-						rotation = Main.rand.NextFloat(6.283f),
+						Position = posCheck,
+						MaxTime = Main.rand.NextFloat(90, Math.Max(newVelocity.Y * 6, 163)),
+						Scale = Main.rand.NextFloat(6f, 9f),
+						Rotation = Main.rand.NextFloat(6.283f),
 						ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 					};
 					Ins.VFXManager.Add(somg);

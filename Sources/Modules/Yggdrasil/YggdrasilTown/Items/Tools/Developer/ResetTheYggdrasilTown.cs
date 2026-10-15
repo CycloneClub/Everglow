@@ -17,19 +17,8 @@ public class ResetTheYggdrasilTown : ModItem
 
 	public override bool CanUseItem(Player player)
 	{
-		for (int i = 50; i < Main.maxTilesX - 50; i++)
-		{
-			for (int j = 10000; j < Main.maxTilesY - 50; j++)
-			{
-				Main.tile[i, j].ClearEverything();
-			}
-		}
-		YggdrasilTownGeneration.BuildMidnightBayou();
+		TileUtils.PlaceRectangleAreaOfBlock(20, Main.maxTilesY - 2100, Main.maxTilesX - 20, Main.maxTilesY, -2);
+		YggdrasilTownGeneration.BuildYggdrasilTown();
 		return false;
-	}
-
-	public override bool? UseItem(Player player)
-	{
-		return base.UseItem(player);
 	}
 }

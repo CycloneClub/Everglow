@@ -13,11 +13,6 @@ public class WhiteCallaLily_Item : ModItem
 		Item.height = 48;
 	}
 
-	public override bool? UseItem(Player player)
-	{
-		return base.UseItem(player);
-	}
-
 	public override void HoldItem(Player player)
 	{
 		Item.placeStyle = Math.Max(player.direction, 0);

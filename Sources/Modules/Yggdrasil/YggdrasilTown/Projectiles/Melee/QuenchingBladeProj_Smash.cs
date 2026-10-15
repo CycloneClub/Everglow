@@ -1,5 +1,7 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Microsoft.Xna.Framework.Media;
+using Terraria.Audio;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Melee;
@@ -149,13 +151,13 @@ public class QuenchingBladeProj_Smash : ModProjectile, IWarpProjectile_warpStyle
 					}
 					var dustVFX = new FlameDust0
 					{
-						velocity = Vector2.zeroVector,
+						Velocity = Vector2.zeroVector,
 						Active = true,
 						Visible = true,
-						position = Vector2.Lerp(lineEnd, lineStart, MathF.Sqrt(Main.rand.NextFloat())),
-						maxTime = Main.rand.Next(6, 20),
-						scale = Main.rand.NextFloat(15, 80),
-						rotation = MathHelper.PiOver4 * 3,
+						Position = Vector2.Lerp(lineEnd, lineStart, MathF.Sqrt(Main.rand.NextFloat())),
+						MaxTime = Main.rand.Next(6, 20),
+						Scale = Main.rand.NextFloat(15, 80),
+						Rotation = MathHelper.PiOver4 * 3,
 						MyOwner = player,
 						ai = new float[] { Main.rand.Next(3), 1, 0 },
 					};
@@ -173,13 +175,13 @@ public class QuenchingBladeProj_Smash : ModProjectile, IWarpProjectile_warpStyle
 					}
 					var dustVFX = new FlameDust1
 					{
-						velocity = new Vector2(0, -4),
+						Velocity = new Vector2(0, -4),
 						Active = true,
 						Visible = true,
-						position = Vector2.Lerp(lineEnd, lineStart, MathF.Sqrt(Main.rand.NextFloat())),
-						maxTime = Main.rand.Next(6, 20),
-						scale = Main.rand.NextFloat(5, 20),
-						rotation = MathHelper.PiOver4 * 3,
+						Position = Vector2.Lerp(lineEnd, lineStart, MathF.Sqrt(Main.rand.NextFloat())),
+						MaxTime = Main.rand.Next(6, 20),
+						Scale = Main.rand.NextFloat(5, 20),
+						Rotation = MathHelper.PiOver4 * 3,
 						MyOwner = player,
 						ai = new float[] { Main.rand.Next(3), 1, 0 },
 					};
@@ -193,18 +195,36 @@ public class QuenchingBladeProj_Smash : ModProjectile, IWarpProjectile_warpStyle
 	{
 		Player player = Main.player[Projectile.owner];
 		ShakerManager.AddShaker(Projectile.Center, Vector2.One.RotatedByRandom(MathHelper.Pi), 120, 30f, 200, 0.9f, 0.8f, 150);
+		switch (Main.rand.Next(2))
+		{
+			case 0:
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.QuenchingBlade_superattack_1_Mod), Projectile.Center);
+				break;
+			case 1:
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.QuenchingBlade_superattack_2_Mod), Projectile.Center);
+				break;
+		}
+		var hitVFX = new QuenchingBlade_SmashVFX
+		{
+			Active = true,
+			Visible = true,
+			Position = Projectile.Center + FallingMove + new Vector2(240 * FirstDirection, 30),
+			Direction = FirstDirection,
+		};
+		Ins.VFXManager.Add(hitVFX);
+
 		for (int g = 0; g < 24; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, -(Main.rand.NextFloat(12f, 25f) + g * 8)).RotatedBy(Main.rand.NextFloat(-0.04f, 0.14f) + g / 24f * FirstDirection);
 			Vector2 pos = Projectile.Center + FallingMove + new Vector2((60 + 12 * g) * FirstDirection, 3) - newVelocity * 1;
 			var somg = new QuenchingBladeSmog
 			{
-				velocity = newVelocity,
+				Velocity = newVelocity,
 				Active = true,
 				Visible = true,
-				position = pos,
-				maxTime = Main.rand.Next(15, 48),
-				scale = Main.rand.NextFloat(50f, 120f),
+				Position = pos,
+				MaxTime = Main.rand.Next(15, 48),
+				Scale = Main.rand.NextFloat(50f, 120f),
 				ai = new float[] { 0, 0 },
 			};
 			Ins.VFXManager.Add(somg);
@@ -214,13 +234,13 @@ public class QuenchingBladeProj_Smash : ModProjectile, IWarpProjectile_warpStyle
 			Vector2 pos = Projectile.Center + FallingMove + new Vector2((60 + 9 * k) * FirstDirection, 3);
 			var dustVFX = new FlameDust0
 			{
-				velocity = Vector2.zeroVector,
+				Velocity = Vector2.zeroVector,
 				Active = true,
 				Visible = true,
-				position = pos,
-				maxTime = Main.rand.Next(16, 34),
-				scale = Main.rand.NextFloat(15, 80),
-				rotation = MathHelper.PiOver4 * 3,
+				Position = pos,
+				MaxTime = Main.rand.Next(16, 34),
+				Scale = Main.rand.NextFloat(15, 80),
+				Rotation = MathHelper.PiOver4 * 3,
 				MyOwner = player,
 				ai = new float[] { Main.rand.Next(3), 1, 0 },
 			};
@@ -231,13 +251,13 @@ public class QuenchingBladeProj_Smash : ModProjectile, IWarpProjectile_warpStyle
 			Vector2 pos = Projectile.Center + FallingMove + new Vector2((60 + 6 * k) * FirstDirection, 3);
 			var dustVFX = new FlameDust1
 			{
-				velocity = Vector2.zeroVector,
+				Velocity = Vector2.zeroVector,
 				Active = true,
 				Visible = true,
-				position = pos,
-				maxTime = Main.rand.Next(16, 34),
-				scale = Main.rand.NextFloat(15, 80),
-				rotation = MathHelper.PiOver4 * 3,
+				Position = pos,
+				MaxTime = Main.rand.Next(16, 34),
+				Scale = Main.rand.NextFloat(15, 80),
+				Rotation = MathHelper.PiOver4 * 3,
 				MyOwner = player,
 				ai = new float[] { Main.rand.Next(3), 1, 0 },
 			};
@@ -250,6 +270,7 @@ public class QuenchingBladeProj_Smash : ModProjectile, IWarpProjectile_warpStyle
 	public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 	{
 		modifiers.FinalDamage *= 1.7f;
+		modifiers.HitDirectionOverride = target.Center.X > Main.player[Projectile.owner].Center.X ? 1 : -1;
 		ShakerManager.AddShaker(Projectile.Center, Vector2.One.RotatedByRandom(MathHelper.Pi), 20, 20f, 120, 0.9f, 0.8f, 30);
 	}
 
@@ -448,7 +469,7 @@ public class QuenchingBladeProj_Smash : ModProjectile, IWarpProjectile_warpStyle
 			{
 				warpValue = i / 10f;
 			}
-			warpValue *= 0.8f;
+			warpValue *= 0.08f;
 			var drawColor0 = new Color(normal.X / 2f + 0.5f, normal.Y / 2f + 0.5f, warpValue, 1);
 			var drawColor1 = new Color(normal.X / 2f + 0.5f, normal.Y / 2f + 0.5f, warpValue * 0.3f, 1);
 

@@ -56,7 +56,6 @@ public class UnderwaterLightningMechanism_H : ModTile
 	public override void PlaceInWorld(int i, int j, Item item)
 	{
 		Tile tile = Main.tile[i, j];
-		Main.NewText((tile.TileFrameX, tile.TileFrameY));
 		if (tile.TileFrameX == 72)
 		{
 			ModTileEntity.PlaceEntityNet(i - 4, j, ModContent.TileEntityType<UnderwaterLightningMechanismEntity>());

@@ -36,14 +36,14 @@ public class RockSmogLine : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts; // 这个绘制层在火焰之之后，被火焰覆盖
 
-	public List<Vector2> oldPos = new List<Vector2>();
-	public Vector2 position;
-	public Vector2 velocity;
+	public List<Vector2> OldPositions = new List<Vector2>();
+	public Vector2 Position;
+	public Vector2 Velocity;
 	public float[] ai;
-	public float timer;
-	public float maxTime;
-	public float scale;
-	public float alpha;
+	public float Timer;
+	public float MaxTime;
+	public float Scale;
+	public float Alpha;
 
 	public RockSmogLine()
 	{
@@ -51,34 +51,34 @@ public class RockSmogLine : Visual
 
 	public override void Update()
 	{
-		oldPos.Add(position);
-		if (oldPos.Count > 200)
+		OldPositions.Add(Position);
+		if (OldPositions.Count > 200)
 		{
-			oldPos.RemoveAt(0);
+			OldPositions.RemoveAt(0);
 		}
 
-		timer++;
-		if (timer > maxTime)
+		Timer++;
+		if (Timer > MaxTime)
 		{
 			Active = false;
 		}
 
-		if (Collision.SolidCollision(position, 0, 0))
+		if (Collision.SolidCollision(Position, 0, 0))
 		{
-			velocity *= 0.2f;
-			if (velocity.Length() < 0.02f)
+			Velocity *= 0.2f;
+			if (Velocity.Length() < 0.02f)
 			{
 				Active = false;
 			}
 		}
-		velocity *= 0.95f;
-		position += velocity;
+		Velocity *= 0.95f;
+		Position += Velocity;
 	}
 
 	public override void Draw()
 	{
-		Vector2[] pos = oldPos.Reverse<Vector2>().ToArray();
-		float fx = timer / maxTime;
+		Vector2[] pos = OldPositions.Reverse<Vector2>().ToArray();
+		float fx = Timer / MaxTime;
 		int len = pos.Length;
 		if (len <= 2)
 		{
@@ -88,13 +88,13 @@ public class RockSmogLine : Visual
 		var bars = new List<Vertex2D>();
 		for (int i = 1; i < len; i++)
 		{
-			Vector2 normal = oldPos[i] - oldPos[i - 1];
+			Vector2 normal = OldPositions[i] - OldPositions[i - 1];
 			normal = Vector2.Normalize(normal).RotatedBy(Math.PI * 0.5);
-			Color light = Lighting.GetColor((int)(oldPos[i].X / 16f), (int)(oldPos[i].Y / 16f));
-			var lightColorWithPos = new Color(fx * fx * fx, light.R / 255f * (1 - alpha), light.G / 255f * (1 - alpha), light.B / 255f * (1 - alpha));
+			Color light = Lighting.GetColor((int)(OldPositions[i].X / 16f), (int)(OldPositions[i].Y / 16f));
+			var lightColorWithPos = new Color(fx * fx * fx, light.R / 255f * (1 - Alpha), light.G / 255f * (1 - Alpha), light.B / 255f * (1 - Alpha));
 			float width = (float)Math.Sin(MathF.Pow((i - 1) / (float)(len - 2), 0.2f) * Math.PI);
-			bars.Add(oldPos[i] + normal * scale, lightColorWithPos, new Vector3(0, (i + 15 - len) / 75f + timer / 15000f, fx - width * 0.3f));
-			bars.Add(oldPos[i] - normal * scale, lightColorWithPos, new Vector3(1, (i + 15 - len) / 75f + timer / 15000f, fx - width * 0.3f));
+			bars.Add(OldPositions[i] + normal * Scale, lightColorWithPos, new Vector3(0, (i + 15 - len) / 75f + Timer / 15000f, fx - width * 0.3f));
+			bars.Add(OldPositions[i] - normal * Scale, lightColorWithPos, new Vector3(1, (i + 15 - len) / 75f + Timer / 15000f, fx - width * 0.3f));
 		}
 		if (bars.Count > 0)
 		{
@@ -108,49 +108,45 @@ public class RockSmogLine_front : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawProjectiles; // 这个绘制层在火焰之前，是原来的版本
 
-	public List<Vector2> oldPos = new List<Vector2>();
-	public Vector2 position;
-	public Vector2 velocity;
+	public List<Vector2> OldPositions = new List<Vector2>();
+	public Vector2 Position;
+	public Vector2 Velocity;
 	public float[] ai;
-	public float timer;
-	public float maxTime;
-	public float scale;
-	public float alpha;
-
-	public RockSmogLine_front()
-	{
-	}
+	public float Timer;
+	public float MaxTime;
+	public float Scale;
+	public float Alpha;
 
 	public override void Update()
 	{
-		oldPos.Add(position);
-		if (oldPos.Count > 200)
+		OldPositions.Add(Position);
+		if (OldPositions.Count > 200)
 		{
-			oldPos.RemoveAt(0);
+			OldPositions.RemoveAt(0);
 		}
 
-		timer++;
-		if (timer > maxTime)
+		Timer++;
+		if (Timer > MaxTime)
 		{
 			Active = false;
 		}
 
-		if (Collision.SolidCollision(position, 0, 0))
+		if (Collision.SolidCollision(Position, 0, 0))
 		{
-			velocity *= 0.2f;
-			if (velocity.Length() < 0.02f)
+			Velocity *= 0.2f;
+			if (Velocity.Length() < 0.02f)
 			{
 				Active = false;
 			}
 		}
-		velocity *= 0.95f;
-		position += velocity;
+		Velocity *= 0.95f;
+		Position += Velocity;
 	}
 
 	public override void Draw()
 	{
-		Vector2[] pos = oldPos.Reverse<Vector2>().ToArray();
-		float fx = timer / maxTime;
+		Vector2[] pos = OldPositions.Reverse<Vector2>().ToArray();
+		float fx = Timer / MaxTime;
 		int len = pos.Length;
 		if (len <= 2)
 		{
@@ -160,13 +156,13 @@ public class RockSmogLine_front : Visual
 		var bars = new List<Vertex2D>();
 		for (int i = 1; i < len; i++)
 		{
-			Vector2 normal = oldPos[i] - oldPos[i - 1];
+			Vector2 normal = OldPositions[i] - OldPositions[i - 1];
 			normal = Vector2.Normalize(normal).RotatedBy(Math.PI * 0.5);
-			Color light = Lighting.GetColor((int)(oldPos[i].X / 16f), (int)(oldPos[i].Y / 16f));
-			var lightColorWithPos = new Color(fx * fx * fx, light.R / 255f * (1 - alpha), light.G / 255f * (1 - alpha), light.B / 255f * (1 - alpha));
+			Color light = Lighting.GetColor((int)(OldPositions[i].X / 16f), (int)(OldPositions[i].Y / 16f));
+			var lightColorWithPos = new Color(fx * fx * fx, light.R / 255f * (1 - Alpha), light.G / 255f * (1 - Alpha), light.B / 255f * (1 - Alpha));
 			float width = (float)Math.Sin(MathF.Pow((i - 1) / (float)(len - 2), 0.2f) * Math.PI);
-			bars.Add(oldPos[i] + normal * scale, lightColorWithPos, new Vector3(0, (i + 15 - len) / 75f + timer / 15000f, fx - width * 0.3f));
-			bars.Add(oldPos[i] - normal * scale, lightColorWithPos, new Vector3(1, (i + 15 - len) / 75f + timer / 15000f, fx - width * 0.3f));
+			bars.Add(OldPositions[i] + normal * Scale, lightColorWithPos, new Vector3(0, (i + 15 - len) / 75f + Timer / 15000f, fx - width * 0.3f));
+			bars.Add(OldPositions[i] - normal * Scale, lightColorWithPos, new Vector3(1, (i + 15 - len) / 75f + Timer / 15000f, fx - width * 0.3f));
 		}
 		if (bars.Count > 0)
 		{

@@ -1,12 +1,17 @@
 using System.Reflection;
+using Everglow.Commons.Mechanics.Quest.PlayerSide;
+using Everglow.Commons.Mechanics.Quest.PlayerSide.Tests;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
+using Everglow.Yggdrasil.YggdrasilTown.Quests.PlayerSides;
 using SubworldLibrary;
 using Terraria.WorldBuilding;
 
 namespace Everglow.Yggdrasil;
 
-internal class YggdrasilWorld : Subworld
+public class YggdrasilWorld : Subworld
 {
+	public static Point KelpCurtain_IsleOfBloom_CaveCenter;
+
 	public static bool InYggdrasil => SubworldSystem.IsActive<YggdrasilWorld>();
 
 	public static float YggdrasilTimer = 0;
@@ -35,6 +40,10 @@ internal class YggdrasilWorld : Subworld
 		SubworldSystem.hideUnderworld = true;
 		YggdrasilTimer = 0;
 		YggdrasilTownBiome.CheckedBiomeCenter = false;
+		if (!PlayerQuestManager.Instance.Quests.Contains(new GetAccessCard()))
+		{
+			PlayerQuestManager.Instance.AddQuest(new GetAccessCard(), PlayerQuestState.Available);
+		}
 	}
 
 	public override void OnLoad()
@@ -76,25 +85,5 @@ internal class YggdrasilWorld : Subworld
 		Main.rightWorld = Main.maxTilesX * 16;
 		Main.maxSectionsX = (Main.maxTilesX - 1) / 200 + 1;
 		Main.maxSectionsY = (Main.maxTilesY - 1) / 150 + 1;
-	}
-}
-
-public class YggdrasilWorldSystem : ModSystem
-{
-	public override void PostUpdateEverything()
-	{
-		if (YggdrasilWorld.InYggdrasil)
-		{
-			YggdrasilWorld.YggdrasilTimer++;
-
-			if (Main.bloodMoon)
-			{
-				Main.bloodMoon = false;
-			}
-			if (Main.slimeRain)
-			{
-				Main.slimeRain = false;
-			}
-		}
 	}
 }

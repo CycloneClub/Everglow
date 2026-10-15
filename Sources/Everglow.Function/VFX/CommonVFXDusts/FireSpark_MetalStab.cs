@@ -36,72 +36,69 @@ public class FireSpark_MetalStabDust : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
 
-	public Vector2 position;
-	public Vector2 velocity;
+	public Vector2 Position;
+	public Vector2 Velocity;
 	public float[] ai;
-	public float timer;
-	public float maxTime;
-	public float scale;
-	public float rotation;
+	public float Timer;
+	public float MaxTime;
+	public float Scale;
+	public float Rotation;
 
-	public FireSpark_MetalStabDust()
-	{
-	}
 
 	public override void Update()
 	{
 		ai[1] *= 0.99f;
-		position += velocity;
-		if (position.X <= 320 || position.X >= Main.maxTilesX * 16 - 320)
+		Position += Velocity;
+		if (Position.X <= 320 || Position.X >= Main.maxTilesX * 16 - 320)
 		{
 			Active = false;
 			return;
 		}
-		if (position.Y <= 320 || position.Y >= Main.maxTilesY * 16 - 320)
+		if (Position.Y <= 320 || Position.Y >= Main.maxTilesY * 16 - 320)
 		{
 			Active = false;
 			return;
 		}
-		velocity *= 0.98f;
-		velocity += new Vector2(Main.windSpeedCurrent * 0.4f, 0.05f * scale);
-		scale *= 0.995f;
-		timer++;
-		if (timer > maxTime)
+		Velocity *= 0.98f;
+		Velocity += new Vector2(Main.windSpeedCurrent * 0.4f, 0.05f * Scale);
+		Scale *= 0.995f;
+		Timer++;
+		if (Timer > MaxTime)
 		{
 			Active = false;
 		}
 
-		velocity = velocity.RotatedBy(ai[1]);
-		if (Collision.SolidCollision(position, 0, 0))
+		Velocity = Velocity.RotatedBy(ai[1]);
+		if (Collision.SolidCollision(Position, 0, 0))
 		{
-			velocity *= -0.2f;
-			timer += 10;
+			Velocity *= -0.2f;
+			Timer += 10;
 		}
-		var tile = Main.tile[(int)(position.X / 16), (int)(position.Y / 16)];
-		if (position.Y % 1 < tile.LiquidAmount / 256f)
+		var tile = Main.tile[(int)(Position.X / 16), (int)(Position.Y / 16)];
+		if (Position.Y % 1 < tile.LiquidAmount / 256f)
 		{
-			timer += 120;
+			Timer += 120;
 		}
-		if (scale < 0.5f)
+		if (Scale < 0.5f)
 		{
-			timer += 20;
+			Timer += 20;
 		}
-		float pocession = 1 - timer / maxTime;
-		float c = pocession * scale * 0.04f;
-		Lighting.AddLight(position, c, c * 0.2f, 0);
+		float progress = 1 - Timer / MaxTime;
+		float c = progress * Scale * 0.04f;
+		Lighting.AddLight(Position, c, c * 0.2f, 0);
 	}
 
 	public override void Draw()
 	{
-		float pocession = MathF.Pow(timer / maxTime, 10f);
-		Vector2 toCorner = new Vector2(0, scale * 0.2f).RotatedBy(rotation);
+		float progress = MathF.Pow(Timer / MaxTime, 10f);
+		Vector2 toCorner = new Vector2(0, Scale * 0.2f).RotatedBy(Rotation);
 		List<Vertex2D> bars = new List<Vertex2D>()
 		{
-			new Vertex2D(position + toCorner + velocity * 3, new Color(0.3f, 0.3f, pocession, 0.0f), new Vector3(0)),
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 0.5), new Color(0, 1, pocession, 0.0f), new Vector3(0)),
+			new Vertex2D(Position + toCorner + Velocity * 3, new Color(0.3f, 0.3f, progress, 0.0f), new Vector3(0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 0.5), new Color(0, 1, progress, 0.0f), new Vector3(0)),
 
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 1.5), new Color(1, 0, pocession, 0.0f), new Vector3(0)),
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 1) - velocity, new Color(1, 1, pocession, 0.0f), new Vector3(0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1.5), new Color(1, 0, progress, 0.0f), new Vector3(0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1) - Velocity, new Color(1, 1, progress, 0.0f), new Vector3(0)),
 		};
 
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);

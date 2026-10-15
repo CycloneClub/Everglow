@@ -3,11 +3,12 @@ using SubworldLibrary;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Tiles;
 
-public class KelpMoss_large_fore : ForegroundVFX
+public class KelpMoss_large_fore : TileVFX
 {
+	public override CodeLayer DrawLayer => CodeLayer.PostDrawPlayers;
 	public override void OnSpawn()
 	{
-		texture = ModAsset.KelpMoss_large.Value;
+		Texture = ModAsset.KelpMoss_large.Value;
 	}
 
 	public override void Update()
@@ -20,13 +21,13 @@ public class KelpMoss_large_fore : ForegroundVFX
 		{
 			if (i >= wigglerOmegas.Count)
 			{
-				wigglerOmegas.Add(MathF.Sin(position.X + position.Y + i * 0.4f + (float)Main.time * 0.05f) * 0.03f);
+				wigglerOmegas.Add(MathF.Sin(Position.X + Position.Y + i * 0.4f + (float)Main.time * 0.05f) * 0.03f);
 			}
 			else
 			{
 				wigglerRotations[i] += wigglerOmegas[i];
 				wigglerOmegas[i] *= 0.9f;
-				wigglerOmegas[i] += MathF.Sin(position.X + position.Y + i * 0.4f + (float)Main.time * 0.05f) * 0.0005f - Main.windSpeedCurrent * 0.001f / wigglerRotations.Count;
+				wigglerOmegas[i] += MathF.Sin(Position.X + Position.Y + i * 0.4f + (float)Main.time * 0.05f) * 0.0005f - Main.windSpeedCurrent * 0.001f / wigglerRotations.Count;
 				wigglerRotations[i] = wigglerRotations[i] * 0.9f + startRotation * MathF.Pow(0.7f, i) * 0.1f;
 			}
 		}
@@ -46,9 +47,9 @@ public class KelpMoss_large_fore : ForegroundVFX
 
 	public override void Draw()
 	{
-		Vector2 pos0 = position + unit.RotatedBy(startRotation + MathHelper.PiOver2) * scale;
-		Vector2 pos1 = position - unit.RotatedBy(startRotation + MathHelper.PiOver2) * scale;
-		Vector2 centerPos = position;
+		Vector2 pos0 = Position + unit.RotatedBy(startRotation + MathHelper.PiOver2) * scale;
+		Vector2 pos1 = Position - unit.RotatedBy(startRotation + MathHelper.PiOver2) * scale;
+		Vector2 centerPos = Position;
 		List<Vertex2D> bars = new List<Vertex2D>()
 		{
 			new Vertex2D(pos0, GetPosLight(pos0), new Vector3(0, 0, 1)),
@@ -68,6 +69,6 @@ public class KelpMoss_large_fore : ForegroundVFX
 		Vector2 pos5 = centerPos - unit.RotatedBy(MathHelper.PiOver2) * scale;
 		bars.Add(pos4, GetPosLight(pos4), new Vector3(0, 1, 0));
 		bars.Add(pos5, GetPosLight(pos5), new Vector3(1, 1, 0));
-		Ins.Batch.Draw(texture, bars, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(Texture, bars, PrimitiveType.TriangleStrip);
 	}
 }

@@ -9,506 +9,563 @@ RodSpear: {
 }
 
 BloodGoldBayonet: {
-	DisplayName: Blood Gold Bayonet
-	Tooltip: ""
+	DisplayName: 血金刺剑
+	Tooltip: 
+	'''
+	命中敌人后有1/25的概率吸血,吸血量为造成伤害的30%
+	命中的敌人未死之前,你的生命回复+2
+	右键重击：以自身损失15血为代价,对被命中的敌人施加持续3s的嗜血符印,血金刺剑命中有符印的敌人造成回血
+	'据不完全统计，多数吸血鬼并不会吸取史莱姆汁'
+	'''
 }
 
 BlossomThorn: {
-	DisplayName: Blossom Thorn
-	Tooltip: ""
+	DisplayName: 红梅落
+	Tooltip: 
+	'''
+	产生方向随机的二级刺锋
+	'兼具美观与锋芒'
+	'''
 }
 
 BlueRibbonBayonet: {
-	DisplayName: Blue Ribbon Bayonet
+	DisplayName: 蓝缎带刺剑
 	Tooltip: ""
 }
 
 CopperBayonet: {
-	DisplayName: Copper Bayonet
+	DisplayName: 铜刺剑
 	Tooltip: ""
 }
 
 CrutchBayonet: {
-	DisplayName: Crutch Bayonet
-	Tooltip: ""
+	DisplayName: 拐刺剑
+	Tooltip: 
+	'''
+	第一次命中敌人后如果暴击则造成270%的伤害
+	'特务使用的武器，非常适合暗杀'
+	'''
 }
 
 CurseFlameStabbingSword: {
-	DisplayName: Curse Flame Stabbing Sword
-	Tooltip: ""
+	DisplayName: 咒火刺剑
+	Tooltip: "用诅咒火焰点燃敌人！"
 }
 
 DreamStar: {
-	DisplayName: Dream Star
-	Tooltip: ""
+	DisplayName: 梦辰星刺
+	Tooltip: 
+	'''
+	每次命中都会给敌人标上1层[角星标]
+	5层[角星标]合成一个[星标]，获得[星标]的敌人不会再获得更多[角星标]
+	对于同一把[梦辰星刺]，场上最多存在两个被[星标]或角[星标]标记的敌人
+	两个[星标]的出现会在两处同时引发220%倍率的星辉爆炸，并摧毁先被标记的敌人的[星标]
+	目标敌人若没有[星标]，且场上已存在被你命中过但是[角星标]不足5个的敌人，也会在目标敌人和被[角星标]标记的角色处引发较小的星辉爆炸，威力取决于[角星标]层数
+	带有[星标]的敌人被击杀会掉落星之种，拾取后下次造成伤害必定暴击且伤害*264%
+	'读懂星空需要复杂深邃的理论知识，观赏星空只需要一只眼睛'
+	'''
 }
 
 EnchantedBayonet: {
-	DisplayName: Enchanted Bayonet
-	Tooltip: ""
+	DisplayName: 附魔刺剑
+	Tooltip: "右键重击会放出不受重力的剑气"
 }
 
 EternalNight: {
-	DisplayName: Eternal Night
-	Tooltip: ""
+	DisplayName: 永夜刺剑
+	Tooltip: "击中后可以释放追魂影刺剑"
 }
 
 GoldenStabbingSword: {
-	DisplayName: Golden Stabbing Sword
+	DisplayName: 金刺剑
 	Tooltip: ""
 }
 
 HolyBayonet: {
-	DisplayName: Holy Bayonet
+	DisplayName: 神圣刺剑
 	Tooltip: ""
 }
 
 IchorBayonet: {
-	DisplayName: Ichor Bayonet
+	DisplayName: 灵液刺剑
 	Tooltip: ""
 }
 
 IronStabbingSword: {
-	DisplayName: Iron Stabbing Sword
+	DisplayName: 铁刺剑
 	Tooltip: ""
 }
 
 LeadStabbingSword: {
-	DisplayName: Lead Stabbing Sword
+	DisplayName: 铅刺剑
 	Tooltip: ""
 }
 
 MechanicMosquito: {
-	DisplayName: Mechanic Mosquito
-	Tooltip: ""
+	DisplayName: 械蚊刺
+	Tooltip: "召唤三个会吸血的机械蚊子协助攻击,蚊子每次攻击会获得1点吸血，最多累积10点。使用结束之后，治疗吸血累积的点数"
 }
 
 PlatinumStabbingSword: {
-	DisplayName: Platinum Stabbing Sword
+	DisplayName: 铂金刺剑
 	Tooltip: ""
 }
 
 PrisonFireBayonet: {
-	DisplayName: Prison Fire Bayonet
-	Tooltip: ""
+	DisplayName: 狱火刺剑
+	Tooltip: 
+	'''
+	点燃敌人！
+	在水里无法点燃,但是在熔岩里造成两倍伤害
+	'切勿伤敌一万自损八千'
+	'''
 }
 
 RedRibbonBayonet: {
-	DisplayName: Red Ribbon Bayonet
+	DisplayName: 红缎带刺剑
 	Tooltip: ""
 }
 
 RottenGoldBayonet: {
-	DisplayName: Rotten Gold Bayonet
-	Tooltip: ""
+	DisplayName: 魔金刺剑
+	Tooltip: 
+	'''
+	命中后削弱目标1点防御力
+	延时一秒在命中处生成三道200%倍率的魔金剑光
+	对于同一把[魔金刺剑],上述两种效果1秒最多触发1次,但是总数没有上限
+	'''
 }
 
 SilverStabbingSword: {
-	DisplayName: Silver Stabbing Sword
+	DisplayName: 银刺剑
 	Tooltip: ""
 }
 
 SwordfishBeak: {
-	DisplayName: Swordfish Beak
-	Tooltip: ""
+	DisplayName: 剑鱼长喙
+	Tooltip: "对于水里的敌人造成伤害下降40%,但是潮湿状态下攻击范围扩大50%,且体力消耗降低35%,对于干燥的敌人伤害提高40%"
 }
 
 TinStabbingSword: {
-	DisplayName: Tin Stabbing Sword
+	DisplayName: 锡刺剑
 	Tooltip: ""
 }
 
 TungstenStabbingSword: {
-	DisplayName: Tungsten Stabbing Sword
+	DisplayName: 钨刺剑
 	Tooltip: ""
 }
 
 VegetationBayonet: {
-	DisplayName: Vegetation Bayonet
-	Tooltip: ""
+	DisplayName: 葱茏刺剑
+	Tooltip: 
+	'''
+	会造成中毒
+	使用6秒之后自己也会变得狂野
+	'看到那只蝙蝠了吗，它的蛋白质是牛肉的六倍'
+	'''
 }
 
 VertebralSpur: {
-	DisplayName: Vertebral Spur
-	Tooltip: ""
+	DisplayName: 椎刺骨
+	Tooltip: 
+	'''
+	在与目标相对速度较大的情况下提升伤害，最多不超过500%
+	'粗糙的接触面造成的毁坏随速度的增加急剧提高'
+	'''
 }
 
 YoenLeZed: {
-	DisplayName: Yoen Le Zed
-	Tooltip: ""
+	DisplayName: 陨雷之劫刺剑
+	Tooltip: 
+	'''
+	攻击附带雷电，水中雷电伤害翻三倍且更容易传导
+	比考场忘带身份证还刺激一点
+	'''
 }
 
 CheeseYoyo: {
-	DisplayName: Cheese Yoyo
+	DisplayName: 芝士球
 	Tooltip: ""
 }
 
 FryingPanItem: {
-	DisplayName: Frying Pan Item
-	Tooltip: ""
+	DisplayName: 平底锅
+	Tooltip: 
+	'''
+	右键可以重击
+	'''
 }
 
 VortexVanquisherItem: {
-	DisplayName: Vortex Vanquisher Item
-	Tooltip: ""
+	DisplayName: 贯虹之槊
+	Tooltip: 
+	'''
+	右键可以召唤[地心]，并生成可以吸收伤害的[玉璋护盾]
+	中键召唤[天星]，造成大范围伤害和石化
+	'''
 }
 
 PineStab: {
-	DisplayName: Pine Stab
-	Tooltip: ""
+	DisplayName: 松针刺
+	Tooltip: 
+	'''
+	只耗费72%的体力，因为松叶很轻
+	所以怪物的防御力3倍有效
+	'''
 }
 
 BloodyBoneYoyo: {
-	DisplayName: Bloody Bone Yoyo
-	Tooltip: ""
+	DisplayName: 血髓球
+	Tooltip: "会伸出触手攻击附近敌人"
 }
 
 ToothKnife: {
-	DisplayName: Tooth Knife
+	DisplayName: 齿刃
 	Tooltip: ""
 }
 
 ToothSpear: {
-	DisplayName: Tooth Spear
+	DisplayName: 獠牙矛
 	Tooltip: ""
 }
 
 GlowWoodSword: {
-	DisplayName: Glow Wood Sword
+	DisplayName: 流萤木剑
 	Tooltip: ""
 }
 
 MothYoyo: {
-	DisplayName: Moth Yoyo
-	Tooltip: ""
+	DisplayName: 夜蛾球
+	Tooltip: "悠悠球附近会有荧光飞蛾幻方"
 }
 
 ScaleWingBlade: {
-	DisplayName: Scale Wing Blade
-	Tooltip: ""
+	DisplayName: 鳞翅之刃
+	Tooltip: "右键可以重击"
 }
 
 ComingGhost: {
-	DisplayName: Coming Ghost
-	Tooltip: ""
+	DisplayName: 诡弑
+	Tooltip: "攻击时有概率用鬼爪随机无视距离地攻击一个敌人"
 }
 
 CyanFrost: {
-	DisplayName: Cyan Frost
-	Tooltip: ""
+	DisplayName: 青霜剑
+	Tooltip: "附带霜火"
 }
 
 Glow: {
-	DisplayName: Glow
-	Tooltip: ""
+	DisplayName: 流光
+	Tooltip: "砍出金色剑气并召唤落下的蓝色星辉"
 }
 
 GoldRoundYoyo: {
-	DisplayName: Gold Round Yoyo
+	DisplayName: 金轮球
 	Tooltip: ""
 }
 
 PrimordialJadeWinged_Spear: {
-	DisplayName: Primordial Jade Winged_ Spear
-	Tooltip: ""
+	DisplayName: 和璞鸢
+	Tooltip: "在一定高度使用时会改为下砸，右键可以朝任意方向突刺"
 }
 
 Sunflower: {
-	DisplayName: Sunflower
+	DisplayName: 向日飞盘
 	Tooltip: ""
 }
 
 World: {
-	DisplayName: World
-	Tooltip: ""
+	DisplayName: 世界斩裂
+	Tooltip: 
+	'''
+	右键可以切换追随模式和斩切模式
+	追随模式下[世界斩裂]会停留在鼠标位置，沿着鼠标的路线切割敌人
+	斩切模式下[世界斩裂]会反复快速贯穿鼠标
+	'''
 }
 
 AdamantiteClub_Item: {
-	DisplayName: Adamantite Club_ Item
-	Tooltip: ""
+	DisplayName: 精金棍棒
+	Tooltip: "一定高度后右键可下砸"
 }
 
 BorealWoodClub_Item: {
-	DisplayName: Boreal Wood Club_ Item
-	Tooltip: ""
+	DisplayName: 珍珠木棍棒
+	Tooltip: "一定高度后右键可下砸"
 }
 
 CactusClub_Item: {
-	DisplayName: Cactus Club_ Item
-	Tooltip: ""
+	DisplayName: 仙人掌棍棒
+	Tooltip: "一定高度后右键可下砸"
 }
 
 ChlorophyteClub_Item: {
-	DisplayName: Chlorophyte Club_ Item
-	Tooltip: ""
+	DisplayName: 叶绿棍棒
+	Tooltip: "一定高度后右键可下砸"
 }
 
 CobaltClub_Item: {
-	DisplayName: Cobalt Club_ Item
-	Tooltip: ""
+	DisplayName: 钴棍棒
+	Tooltip: "一定高度后右键可下砸"
 }
 
 CopperClub_Item: {
-	DisplayName: Copper Club_ Item
-	Tooltip: ""
+	DisplayName: 铜棍棒
+	Tooltip: "一定高度后右键可下砸"
 }
 
 CorruptClub_Item: {
-	DisplayName: Corrupt Club_ Item
-	Tooltip: ""
+	DisplayName: 魔金棍棒
+	Tooltip: "一定高度后右键可下砸"
 }
 
 CrimsonClub_Item: {
-	DisplayName: Crimson Club_ Item
-	Tooltip: ""
+	DisplayName: 血金棍棒
+	Tooltip: "一定高度后右键可下砸"
 }
 
 CrystalClub_Item: {
-	DisplayName: Crystal Club_ Item
-	Tooltip: ""
+	DisplayName: 水晶棍棒
+	Tooltip: "一定高度后右键可下砸"
 }
 
 CurseClub_Item: {
-	DisplayName: Curse Club_ Item
-	Tooltip: ""
+	DisplayName: 咒火棍棒
+	Tooltip: "一定高度后右键可下砸"
 }
 
 EbonwoodClub_Item: {
-	DisplayName: Ebonwood Club_ Item
-	Tooltip: ""
+	DisplayName: 乌木棍棒
+	Tooltip: "一定高度后右键可下砸"
 }
 
 GoldClub_Item: {
-	DisplayName: Gold Club_ Item
-	Tooltip: ""
+	DisplayName: 金棍棒
+	Tooltip: "一定高度后右键可下砸"
 }
 
 IchorClub_Item: {
-	DisplayName: Ichor Club_ Item
-	Tooltip: ""
+	DisplayName: 灵液棍棒
+	Tooltip: "一定高度后右键可下砸"
 }
 
 IronClub_Item: {
-	DisplayName: Iron Club_ Item
-	Tooltip: ""
+	DisplayName: 铁棍棒
+	Tooltip: "一定高度后右键可下砸"
 }
 
 LeadClub_Item: {
-	DisplayName: Lead Club_ Item
-	Tooltip: ""
+	DisplayName: 铅棍棒
+	Tooltip: "一定高度后右键可下砸"
 }
 
 MeteorClub_Item: {
-	DisplayName: Meteor Club_ Item
-	Tooltip: ""
+	DisplayName: 陨石棍棒
+	Tooltip: "一定高度后右键可下砸"
 }
 
 MythrilClub_Item: {
-	DisplayName: Mythril Club_ Item
-	Tooltip: ""
+	DisplayName: 秘银棍棒
+	Tooltip: "一定高度后右键可下砸"
 }
 
 OrichalcumClub_Item: {
-	DisplayName: Orichalcum Club_ Item
-	Tooltip: ""
+	DisplayName: 山铜棍棒
+	Tooltip: "一定高度后右键可下砸"
 }
 
 PalladiumClub_Item: {
-	DisplayName: Palladium Club_ Item
-	Tooltip: ""
+	DisplayName: 钯金棍棒
+	Tooltip: "一定高度后右键可下砸"
 }
 
 PalmWoodClub_Item: {
-	DisplayName: Palm Wood Club_ Item
-	Tooltip: ""
+	DisplayName: 棕榈木棍棒
+	Tooltip: "一定高度后右键可下砸"
 }
 
 PearlwoodClub_Item: {
-	DisplayName: Pearlwood Club_ Item
-	Tooltip: ""
+	DisplayName: 珍珠木棍棒
+	Tooltip: "一定高度后右键可下砸"
 }
 
 PlatinumClub_Item: {
-	DisplayName: Platinum Club_ Item
-	Tooltip: ""
+	DisplayName: 铂金棍棒
+	Tooltip: "一定高度后右键可下砸"
 }
 
 RichMahoganyClub_Item: {
-	DisplayName: Rich Mahogany Club_ Item
-	Tooltip: ""
+	DisplayName: 红木棍棒
+	Tooltip: "一定高度后右键可下砸"
 }
 
 ShadewoodClub_Item: {
-	DisplayName: Shadewood Club_ Item
-	Tooltip: ""
+	DisplayName: 暗影木棍棒
+	Tooltip: "一定高度后右键可下砸"
 }
 
 SilverClub_Item: {
-	DisplayName: Silver Club_ Item
-	Tooltip: ""
+	DisplayName: 银棍棒
+	Tooltip: "一定高度后右键可下砸"
 }
 
 SpikeClub_Item: {
-	DisplayName: Spike Club_ Item
-	Tooltip: ""
+	DisplayName: 尖刺棍棒
+	Tooltip: "一定高度后右键可下砸"
 }
 
 StarDancer_Item: {
-	DisplayName: Star Dancer_ Item
-	Tooltip: ""
+	DisplayName: 星舞者棍棒
+	Tooltip: "一定高度后右键可下砸"
 }
 
 TinClub_Item: {
-	DisplayName: Tin Club_ Item
-	Tooltip: ""
+	DisplayName: 锡棍棒
+	Tooltip: "一定高度后右键可下砸"
 }
 
 TitaniumClub_Item: {
-	DisplayName: Titanium Club_ Item
-	Tooltip: ""
+	DisplayName: 钛金棍棒
+	Tooltip: "一定高度后右键可下砸"
 }
 
 TungstenClub_Item: {
-	DisplayName: Tungsten Club_ Item
-	Tooltip: ""
+	DisplayName: 钨棍棒
+	Tooltip: "一定高度后右键可下砸"
 }
 
 WoodenClub_Item: {
-	DisplayName: Wooden Club_ Item
-	Tooltip: ""
+	DisplayName: 木棍棒
+	Tooltip: "一定高度后右键可下砸"
 }
 
 Acytaea_sword_Item: {
-	DisplayName: Acytaea_sword_ Item
+	DisplayName: 雅斯塔亚的剑
 	Tooltip: ""
 }
 
 CactusBall: {
-	DisplayName: Cactus Ball
+	DisplayName: 仙人掌链球
 	Tooltip: ""
 }
 
 AmberHeadedSpear: {
-	DisplayName: Amber Headed Spear
+	DisplayName: 琥珀矛
 	Tooltip: ""
 }
 
 AmethystHeadedSpear: {
-	DisplayName: Amethyst Headed Spear
+	DisplayName: 紫晶矛
 	Tooltip: ""
 }
 
 CeremonialBlade: {
-	DisplayName: Ceremonial Blade
+	DisplayName: 仪式佩刀
 	Tooltip: ""
 }
 
 DarkMassacreDagger: {
-	DisplayName: Dark Massacre Dagger
+	DisplayName: 暗金屠杀刀
 	Tooltip: ""
 }
 
 MagicalBoomerang: {
-	DisplayName: Magical Boomerang
-	Tooltip: ""
+	DisplayName: 魔术回旋镖
+	Tooltip: "发射出去后点击使之分裂为8个子回旋镖"
 }
 
 QuenchingBlade: {
-	DisplayName: Quenching Blade
+	DisplayName: 淬火钢片
 	Tooltip: ""
 }
 
 ResistanceWireBayonet: {
-	DisplayName: Resistance Wire Bayonet
-	Tooltip: ""
+	DisplayName: 电阻刺剑
+	Tooltip: "不使用时逐渐充能并提升威力，击中敌人后失去充能效果"
 }
 
 ScarpasScissors: {
-	DisplayName: Scarpas Scissors
+	DisplayName: 斯卡帕的剪刀
 	Tooltip: ""
 }
 
 TopaztHeadedSpear: {
-	DisplayName: Topazt Headed Spear
+	DisplayName: 黄玉矛
 	Tooltip: ""
 }
 
 TwilightEucalyptusBlade: {
-	DisplayName: Twilight Eucalyptus Blade
+	DisplayName: 暮桉木刃
 	Tooltip: ""
 }
 
 TwilightEucalyptusBoomerangKnift: {
-	DisplayName: Twilight Eucalyptus Boomerang Knift
+	DisplayName: 暮桉木回旋刀
 	Tooltip: ""
 }
 
 TwilightEucalyptusCuffSickle: {
-	DisplayName: Twilight Eucalyptus Cuff Sickle
-	Tooltip: ""
-}
-
-TwilightShamanStaff: {
-	DisplayName: Twilight Shaman Staff
+	DisplayName: 暮桉木袖刃
 	Tooltip: ""
 }
 
 HyperockSpear: {
-	DisplayName: Hyperock Spear
+	DisplayName: 天穹岩枪
 	Tooltip: ""
 }
 
 LampWoodSword: {
-	DisplayName: Lamp Wood Sword
+	DisplayName: 灯木剑
 	Tooltip: ""
 }
 
 LampWoodYoyo: {
-	DisplayName: Lamp Wood Yoyo
+	DisplayName: 灯木球
 	Tooltip: ""
 }
 
 CyanVineShortsword: {
-	DisplayName: Cyan Vine Shortsword
+	DisplayName: 青缎短剑
 	Tooltip: ""
 }
 
 CyanVineSword: {
-	DisplayName: Cyan Vine Sword
+	DisplayName: 青缎剑
 	Tooltip: ""
 }
 
 BladeOfGreenMoss: {
-	DisplayName: Blade Of Green Moss
+	DisplayName: 绿苔之刃
 	Tooltip: ""
 }
 
 MeatLantern: {
-	DisplayName: Meat Lantern
+	DisplayName: 肉食性提灯
 	Tooltip: ""
 }
 
 HandheldCircularSaw: {
-	DisplayName: Handheld Circular Saw
+	DisplayName: 手持式圆锯
 	Tooltip: ""
 }
 
 AcroporaSpear: {
-	DisplayName: Acropora Spear
+	DisplayName: 藻刃矛
 	Tooltip: ""
 }
 
 CharonDoubleSickle_Item: {
-	DisplayName: Charon Double Sickle_ Item
+	DisplayName: 碧绿双镰
 	Tooltip: ""
 }
 
 ShadowEulogist: {
-	DisplayName: Shadow Eulogist
+	DisplayName: 暗影赞颂者
 	Tooltip: ""
 }
 
 TrueDeathSickle: {
-	DisplayName: True Death Sickle
-	Tooltip: ""
+	DisplayName: 真·死神镰刀
+	Tooltip: "用死火点燃敌人"
 }

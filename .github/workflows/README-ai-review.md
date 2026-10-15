@@ -71,15 +71,22 @@ gh extension upgrade gh-aw        # 已装可升级
 gh auth login --scopes repo,workflow   # 顺便确保有 workflow scope
 ```
 
-### 2. 在仓库 Secrets 里加 `DEEPSEEK_API_KEY`
+### 2. 配置模型 API Key 与可选 Variables
 
 ```powershell
-gh secret set DEEPSEEK_API_KEY --repo <你的用户名>/Everglow
+gh secret set LLM_API_KEY --repo <你的用户名>/Everglow
 ```
 
-粘贴你的 DeepSeek API key(在 https://platform.deepseek.com/api_keys 申请,几块钱够用很久)。
+粘贴所选服务商的 API key。默认使用 DeepSeek Anthropic-compatible 接口与 `deepseek-v4-pro`。如需切换服务商或模型,设置仓库 Variables:
 
-> ⚠️ **不需要 OpenAI / Codex / Copilot 订阅。** 默认引擎是 Copilot CLI 的 **BYOK** 模式,推理全部打到 DeepSeek(`api.deepseek.com/anthropic`)。仓库里只要有 `DEEPSEEK_API_KEY` 即可;不必设 `CODEX_API_KEY` / `OPENAI_API_KEY` / `COPILOT_GITHUB_TOKEN`。
+```powershell
+gh variable set LLM_BASE_URL --body "https://api.moonshot.ai/anthropic" --repo <你的用户名>/Everglow
+gh variable set LLM_MODEL --body "kimi-k3" --repo <你的用户名>/Everglow
+```
+
+允许的服务商域名为 `api.anthropic.com`、`api.deepseek.com`、`api.moonshot.ai`、`open.bigmodel.cn`、`api.minimaxi.com`、`api.minimax.io` 与 `openrouter.ai`;Base URL 必须使用对应服务商的 Anthropic-compatible 路径。
+
+> ⚠️ **不需要 OpenAI / Codex / Copilot 订阅。** 默认引擎是 Copilot CLI 的 **BYOK** 模式。仓库里只要有 `LLM_API_KEY` 即可;`LLM_BASE_URL` 与 `LLM_MODEL` 未设置时分别回退到 `https://api.deepseek.com/anthropic` 与 `deepseek-v4-pro`;不必设 `CODEX_API_KEY` / `OPENAI_API_KEY` / `COPILOT_GITHUB_TOKEN`。
 
 ### 3. 生成 `holistic-review.lock.yml`(gh-aw 编译)
 
@@ -122,9 +129,9 @@ gh workflow run "Everglow Holistic Review" `
 
 | 引擎 | provider | 文档明确支持 | 协议风险 | 配置差异 |
 |---|---|---|---|---|
-| **DeepSeek BYOK**(默认) | `copilot` + `COPILOT_PROVIDER_TYPE=anthropic` + `https://api.deepseek.com/anthropic` | ✅ | ✅ 走 Anthropic Messages,避开 Responses/reasoning_content 坑 | secret `DEEPSEEK_API_KEY` only(BYOK 跳过 `COPILOT_GITHUB_TOKEN`) |
+| **DeepSeek BYOK**(默认) | `copilot` + `COPILOT_PROVIDER_TYPE=anthropic` + `https://api.deepseek.com/anthropic` | ✅ | ✅ 走 Anthropic Messages,避开 Responses/reasoning_content 坑 | secret `LLM_API_KEY` only(BYOK 跳过 `COPILOT_GITHUB_TOKEN`) |
 | **DeepSeek OpenAI 兼容** | `copilot` + `TYPE=openai` + `https://api.deepseek.com/v1` + `WIRE_API=completions` | ✅ | ⚠️ 多轮可能因 `reasoning_content` 回传 400 | 同上 |
-| **Kimi/Moonshot** | `copilot` BYOK,改 `BASE_URL`/`MODEL`,在 `network.allowed` 增 `api.moonshot.cn` | ✅ | ⚠️ 视对方是否支持所选 wire | secret 换成对方 key |
+| **其他白名单服务商** | `copilot` BYOK,设置 `LLM_BASE_URL` / `LLM_MODEL` | ✅ | ✅ 限 Anthropic-compatible 接口 | secret `LLM_API_KEY` 换成对应服务商 key |
 | **OpenAI 官方** | `codex`,设 `OPENAI_API_KEY`,删 BYOK 字段 | ✅ | ✅ 原生 Responses | secret `OPENAI_API_KEY` |
 | **Anthropic** | `claude`,换 model,`network.allowed` 增 `api.anthropic.com` | ✅ | ✅ | secret `ANTHROPIC_API_KEY` |
 | **Gemini** | `gemini`,同上 | ✅ | ✅ | secret `GEMINI_API_KEY` |

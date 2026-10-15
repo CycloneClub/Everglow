@@ -41,13 +41,13 @@ public class CaterpillarJuiceArrow : ModProjectile
 			float mulScale = Main.rand.NextFloat(3f, 12f);
 			var blood = new CaterpillarJuice_Drop
 			{
-				velocity = afterVelocity,
+				Velocity = afterVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-				maxTime = Main.rand.Next(42, 84),
-				scale = mulScale,
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+				MaxTime = Main.rand.Next(42, 84),
+				Scale = mulScale,
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { 0f, Main.rand.NextFloat(0.0f, 4.93f) },
 			};
 			Ins.VFXManager.Add(blood);
@@ -57,12 +57,12 @@ public class CaterpillarJuiceArrow : ModProjectile
 			Vector2 afterVelocity = Projectile.velocity * 0.96f;
 			var blood = new CaterpillarJuice_splash
 			{
-				velocity = afterVelocity,
+				Velocity = afterVelocity,
 				Active = true,
 				Visible = true,
-				position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + afterVelocity,
-				maxTime = Main.rand.Next(32, 94),
-				scale = Main.rand.NextFloat(3f, 10f),
+				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283) + afterVelocity,
+				MaxTime = Main.rand.Next(32, 94),
+				Scale = Main.rand.NextFloat(3f, 10f),
 				ai = new float[] { Main.rand.NextFloat(0.0f, 0.4f), 0 },
 			};
 			Ins.VFXManager.Add(blood);

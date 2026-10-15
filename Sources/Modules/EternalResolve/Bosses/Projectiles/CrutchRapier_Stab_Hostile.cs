@@ -16,7 +16,7 @@ namespace Everglow.EternalResolve.Bosses.Projectiles
 			LightColorValueMultiplicative_Modifier = 0.4f;
 			AttackLength = 1.05f;
 			AttackEffectWidth = 0.4f;
-			itemType = ModContent.ItemType<CrutchBayonet>();
+			ItemType = ModContent.ItemType<CrutchBayonet>();
 
 		}
 		public override void DrawEffect(Color lightColor)

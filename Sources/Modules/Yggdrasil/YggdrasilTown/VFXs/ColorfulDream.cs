@@ -31,58 +31,58 @@ public class ColorfulDreamDust : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawNPCs;
 
-	public Vector2 position;
-	public Vector2 velocity;
+	public Vector2 Position;
+	public Vector2 Velocity;
 	public float[] ai;
-	public float timer;
-	public float maxTime;
-	public float scale;
-	public float rotation;
+	public float Timer;
+	public float MaxTime;
+	public float Scale;
+	public float Rotation;
 
 	public override void Update()
 	{
-		position += velocity;
-		if (position.X <= 320 || position.X >= Main.maxTilesX * 16 - 320)
+		Position += Velocity;
+		if (Position.X <= 320 || Position.X >= Main.maxTilesX * 16 - 320)
 		{
-			timer = maxTime;
+			Timer = MaxTime;
 			Active = false;
 			return;
 		}
-		if (position.Y <= 320 || position.Y >= Main.maxTilesY * 16 - 320)
+		if (Position.Y <= 320 || Position.Y >= Main.maxTilesY * 16 - 320)
 		{
-			timer = maxTime;
+			Timer = MaxTime;
 			Active = false;
 			return;
 		}
-		velocity *= 0.9f;
-		timer++;
-		if (timer > maxTime)
+		Velocity *= 0.9f;
+		Timer++;
+		if (Timer > MaxTime)
 		{
 			Active = false;
 		}
 
-		velocity = velocity.RotatedBy(ai[1]);
+		Velocity = Velocity.RotatedBy(ai[1]);
 	}
 
 	public override void Draw()
 	{
-		Vector2 toCorner = new Vector2(0, scale).RotatedBy(rotation);
+		Vector2 toCorner = new Vector2(0, Scale).RotatedBy(Rotation);
 		Color drawColor = new Color(0.1f, 0.2f, 0.3f, 0f);
 
-		// if (timer > maxTime - 20)
+		// if (Timer > MaxTime - 20)
 		// {
-		// drawColor *= (maxTime - timer) / 20f;
+		// drawColor *= (MaxTime - Timer) / 20f;
 		// }
-		float timeValue = timer * 0.02f;
+		float timeValue = Timer * 0.02f;
 		float max = 1f;
 		float min = 0f;
 		List<Vertex2D> bars = new List<Vertex2D>()
 		{
-			new Vertex2D(position + toCorner, drawColor, new Vector3(min, min, timeValue)),
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 0.5), drawColor, new Vector3(max, min,  timeValue)),
+			new Vertex2D(Position + toCorner, drawColor, new Vector3(min, min, timeValue)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 0.5), drawColor, new Vector3(max, min,  timeValue)),
 
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 1.5), drawColor, new Vector3(min, max, timeValue)),
-			new Vertex2D(position + toCorner.RotatedBy(Math.PI * 1), drawColor, new Vector3(max, max,  timeValue)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1.5), drawColor, new Vector3(min, max, timeValue)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1), drawColor, new Vector3(max, max,  timeValue)),
 		};
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);
 	}

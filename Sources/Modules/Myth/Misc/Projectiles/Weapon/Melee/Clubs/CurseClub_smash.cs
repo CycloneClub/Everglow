@@ -12,7 +12,7 @@ public class CurseClub_smash : ClubProjSmash
 		target.AddBuff(BuffID.CursedInferno, (int)(818 * Omega));
 	}
 
-	public bool smashed = false;
+	public bool Smashed = false;
 
 	public override void AI()
 	{
@@ -51,12 +51,12 @@ public class CurseClub_smash : ClubProjSmash
 				int time = Main.rand.Next(15, 35);
 				var fire = new Flare()
 				{
-					position = Vector2.Lerp(Player.Center, pos, Main.rand.NextFloat(0.4f, 1.25f)),
-					velocity = vel * 0.2f,
-					color = color,
-					timeleft = time,
-					maxTimeleft = time,
-					scale = Main.rand.NextFloat(0.3f, 0.6f) * (smashed ? 1 : 0.5f),
+					Position = Vector2.Lerp(Player.Center, pos, Main.rand.NextFloat(0.4f, 1.25f)),
+					Velocity = vel * 0.2f,
+					Color = color,
+					TimeLeft = time,
+					MaxTimeLeft = time,
+					Scale = Main.rand.NextFloat(0.3f, 0.6f) * (Smashed ? 1 : 0.5f),
 				};
 				Ins.VFXManager.Add(fire);
 			}
@@ -65,11 +65,11 @@ public class CurseClub_smash : ClubProjSmash
 			{
 				var fire = new CurseFlame_HighQualityDust
 				{
-					velocity = vel * 0.3f,
+					Velocity = vel * 0.3f,
 					Active = true,
 					Visible = true,
-					position = pos + vel * g,
-					maxTime = Main.rand.Next(16, 35),
+					Position = pos + vel * g,
+					MaxTime = Main.rand.Next(16, 35),
 
 					ai = new float[] { Main.rand.NextFloat(0.1f, 1f), rot * 0.1f, Main.rand.NextFloat(3.6f, 30f) },
 				};
@@ -80,13 +80,13 @@ public class CurseClub_smash : ClubProjSmash
 			{
 				var spark = new CurseFlameSparkDust
 				{
-					velocity = vel.RotatedBy(Main.rand.NextFloat(-0.4f, 0.4f)),
+					Velocity = vel.RotatedBy(Main.rand.NextFloat(-0.4f, 0.4f)),
 					Active = true,
 					Visible = true,
-					position = pos,
-					maxTime = Main.rand.Next(6, Main.rand.Next(6, 75)),
-					scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(4f, 47.0f)),
-					rotation = Main.rand.NextFloat(6.283f),
+					Position = pos,
+					MaxTime = Main.rand.Next(6, Main.rand.Next(6, 75)),
+					Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(4f, 47.0f)),
+					Rotation = Main.rand.NextFloat(6.283f),
 					ai = new float[] { Main.rand.NextFloat(0.1f, 1f), rot * 0.1f },
 				};
 				Ins.VFXManager.Add(spark);
@@ -96,17 +96,17 @@ public class CurseClub_smash : ClubProjSmash
 
 	public override void Smash(int level)
 	{
-		smashed = true;
+		Smashed = true;
 		for (int t = 0; t < 5; t++)
 		{
 			Vector2 vel = new Vector2(Main.rand.NextFloat(-15, 15), Main.rand.NextFloat(-10, -5)) * 1.5f * (1 + level * 0.3f);
 			var fire = new CurseFlame_HighQualityDust
 			{
-				velocity = vel,
+				Velocity = vel,
 				Active = true,
 				Visible = true,
-				position = Player.Bottom - vel * 3 + Main.rand.NextVector2Circular(30, 30),
-				maxTime = Main.rand.Next(10, 25),
+				Position = Player.Bottom - vel * 3 + Main.rand.NextVector2Circular(30, 30),
+				MaxTime = Main.rand.Next(10, 25),
 
 				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.1f, 0.1f), Main.rand.NextFloat(3.6f, 30f) },
 			};
@@ -117,13 +117,13 @@ public class CurseClub_smash : ClubProjSmash
 			Vector2 vel = new Vector2(0, -20).RotatedBy(Main.rand.NextFloatDirection());
 			var spark = new CurseFlameSparkDust
 			{
-				velocity = vel.RotatedBy(Main.rand.NextFloat(-0.4f, 0.4f)),
+				Velocity = vel.RotatedBy(Main.rand.NextFloat(-0.4f, 0.4f)),
 				Active = true,
 				Visible = true,
-				position = Player.Bottom - vel * 3,
-				maxTime = Main.rand.Next(6, Main.rand.Next(6, 405)),
-				scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(4f, 47.0f)),
-				rotation = Main.rand.NextFloat(6.283f),
+				Position = Player.Bottom - vel * 3,
+				MaxTime = Main.rand.Next(6, Main.rand.Next(6, 405)),
+				Scale = Main.rand.NextFloat(0.1f, Main.rand.NextFloat(4f, 47.0f)),
+				Rotation = Main.rand.NextFloat(6.283f),
 				ai = new float[] { Main.rand.NextFloat(0.1f, 1f), Main.rand.NextFloat(-0.1f, 0.1f) },
 			};
 			Ins.VFXManager.Add(spark);
