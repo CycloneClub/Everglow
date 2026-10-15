@@ -133,7 +133,7 @@ public static partial class TileUtils
 				float length = new Vector2(i, j).Length();
 				if (length <= maxRange && length > 0)
 				{
-					if (Collision.SolidCollision(position + new Vector2(i, j) * 16, 0, 0))
+					if (Collision.IsWorldPointSolid(position + new Vector2(i, j) * 16))
 					{
 						normal -= Utils.SafeNormalize(new Vector2(i, j), Vector2.zeroVector) / (length + 5);
 					}

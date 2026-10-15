@@ -246,4 +246,55 @@ public static class SpriteBatchUtils
 		}
 		bars.Add(worldPos, drawC, coord);
 	}
+
+	/// <summary>
+	/// 在 SpriteBatch 上使用指定纹理和变换将一组二维顶点绘制为基于纹理的图元。
+	/// </summary>
+	/// <remarks>调用前应已使用合适参数调用 SpriteBatch.Begin。提供的顶点应与目标绘制原语兼容；方法不会修改传入的顶点集合。</remarks>
+	/// <param name="bars">要绘制的二维顶点集合，按顺序组成渲染图元。</param>
+	/// <param name="texture">用于采样的纹理。</param>
+	/// <param name="position">应用于所有顶点的平移偏移（像素）。</param>
+	/// <param name="sourceRectangle">要从纹理中采样的区域；为 null 时使用整个纹理。</param>
+	/// <param name="color">顶点颜色和透明度的色调乘法。</param>
+	/// <param name="rotation">以弧度为单位的旋转角度，绕 origin 旋转。</param>
+	/// <param name="origin">旋转和缩放时使用的原点（相对于纹理的坐标）。</param>
+	/// <param name="scale">应用于顶点坐标的统一缩放因子。</param>
+	/// <param name="effects">翻转效果（SpriteEffects），用于水平或垂直翻转纹理。</param>
+	/// <param name="layerDepth">深度排序值，通常在 0（近）到 1（远）之间，用于绘制顺序。</param>
+	public static void SpriteBatch_Draw_To_Vertex_Draw(Texture2D texture, Vector2 position, Rectangle? sourceRectangle, Color color, float rotation, Vector2 origin, float scale, SpriteEffects effects)
+	{
+		List<Vertex2D> bars = new List<Vertex2D>();
+		Rectangle frame = sourceRectangle ?? new Rectangle(0, 0, texture.Width, texture.Height);
+		Vector2 pos0 = position + (new Vector2(0, 0) - origin).RotatedBy(rotation) * scale;
+		Vector2 pos1 = position + (new Vector2(0, frame.Height) - origin).RotatedBy(rotation) * scale;
+		Vector2 pos2 = position + (new Vector2(frame.Width, frame.Height) - origin).RotatedBy(rotation) * scale;
+		Vector2 pos3 = position + (new Vector2(frame.Width, 0) - origin).RotatedBy(rotation) * scale;
+
+		Vector2 coord0 = new Vector2(frame.X, frame.Y) / texture.Size();
+		Vector2 coord1 = new Vector2(frame.X, frame.Y + frame.Height) / texture.Size();
+		Vector2 coord2 = new Vector2(frame.X + frame.Width, frame.Y + frame.Height) / texture.Size();
+		Vector2 coord3 = new Vector2(frame.X + frame.Width, frame.Y) / texture.Size();
+
+		if (effects == SpriteEffects.FlipHorizontally)
+		{
+			(coord0, coord1, coord2, coord3) = (coord3, coord2, coord1, coord0);
+		}
+		if (effects == SpriteEffects.FlipVertically)
+		{
+			(coord0, coord1, coord2, coord3) = (coord1, coord0, coord3, coord2);
+		}
+		bars.Add(pos0, color, new Vector3(coord0, 0));
+		bars.Add(pos1, color, new Vector3(coord1, 0));
+		bars.Add(pos2, color, new Vector3(coord2, 0));
+		bars.Add(pos3, color, new Vector3(coord3, 0));
+
+		if (bars.Count > 0)
+		{
+			RasterizerState rs = Main.graphics.GraphicsDevice.RasterizerState;
+			Main.graphics.GraphicsDevice.RasterizerState = RasterizerState.CullNone;
+			Main.graphics.GraphicsDevice.Textures[0] = texture;
+			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
+			Main.graphics.GraphicsDevice.RasterizerState = rs;
+		}
+	}
 }

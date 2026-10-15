@@ -22,8 +22,8 @@ public class UmbrellaTailThief : ModNPC
 
 	public override void SetDefaults()
 	{
-		NPC.width = 100;
-		NPC.height = 60;
+		NPC.width = 30;
+		NPC.height = 30;
 		NPC.lifeMax = 80;
 		NPC.damage = 25;
 		NPC.defense = 10;
@@ -54,8 +54,8 @@ public class UmbrellaTailThief : ModNPC
 			NPC.frame.Width = 114;
 			NPC.frame.Height = 70;
 			Vector2 oldBottom = NPC.Bottom;
-			NPC.width = 100;
-			NPC.height = 60;
+			NPC.width = 30;
+			NPC.height = 30;
 			NPC.Bottom = oldBottom;
 			NPC.rotation = 0f;
 			if (NPC.velocity.Y == 0f)
@@ -97,8 +97,8 @@ public class UmbrellaTailThief : ModNPC
 		{
 			NPC.frame.Width = 146;
 			NPC.frame.Height = 134;
-			NPC.width = 60;
-			NPC.height = 100;
+			NPC.width = 30;
+			NPC.height = 30;
 			NPC.frame.Y = 134 * (FlyTimer / 5);
 		}
 	}
@@ -109,11 +109,11 @@ public class UmbrellaTailThief : ModNPC
 		int distanceOverTiles = CheckSpaceDown(NPC.Bottom);
 		if (SwitchStateCooling <= 0)
 		{
-			if (Flying != distanceOverTiles >= 64)
+			if (Flying != distanceOverTiles >= 128)
 			{
 				SwitchStateCooling = 60;
 			}
-			Flying = distanceOverTiles >= 64;
+			Flying = distanceOverTiles >= 128;
 		}
 		if (SwitchStateCooling > 0)
 		{
@@ -168,6 +168,40 @@ public class UmbrellaTailThief : ModNPC
 				NPC.velocity.Y -= 0.1f;
 			}
 			Lighting.AddLight(NPC.Top, new Vector3(1f, 0.75f, 0.1f) * 0.5f);
+		}
+	}
+
+	public int CheckSpaceDown_CanBeNeg(Vector2 pos)
+	{
+		if (!Collision.IsWorldPointSolid(pos))
+		{
+			for (int j = 0; j < 32; j++)
+			{
+				if (!Collision.IsWorldPointSolid(pos))
+				{
+					pos += new Vector2(0, 2);
+				}
+				else
+				{
+					return j * 2;
+				}
+			}
+			return 64;
+		}
+		else
+		{
+			for (int j = 0; j < 32; j++)
+			{
+				if (Collision.IsWorldPointSolid(pos))
+				{
+					pos -= new Vector2(0, 2);
+				}
+				else
+				{
+					return -j * 2 + 2;
+				}
+			}
+			return -64;
 		}
 	}
 
@@ -232,16 +266,29 @@ public class UmbrellaTailThief : ModNPC
 
 	public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
-		Vector2 drawPos = NPC.Center + new Vector2(0, NPC.gfxOffY) - screenPos;
+		// Update rotation
+		Vector2 checkFront = NPC.Bottom + new Vector2(40, 0);
+		Vector2 checkBack = NPC.Bottom + new Vector2(-40, 0);
+		int y0 = CheckSpaceDown_CanBeNeg(checkFront);
+		int y1 = CheckSpaceDown_CanBeNeg(checkBack);
+		checkFront.Y += y0;
+		checkBack.Y += y1;
+		if (!Main.gamePaused)
+		{
+			NPC.gfxOffY += (y0 + y1) * 0.25f;
+		}
+		NPC.rotation = (checkFront - checkBack).ToRotationSafe();
+		Vector2 drawPos = NPC.Bottom + new Vector2(0, NPC.gfxOffY) - screenPos;
 		if (FlyTimer <= 0)
 		{
-			spriteBatch.Draw(ModAsset.UmbrellaTailThief.Value, drawPos, NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() * 0.5f, NPC.scale, NPC.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
+			spriteBatch.Draw(ModAsset.UmbrellaTailThief.Value, drawPos, NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() * new Vector2(0.5f, 1f), NPC.scale, NPC.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
 		}
 		else
 		{
-			spriteBatch.Draw(ModAsset.UmbrellaTailThief_Fly.Value, drawPos, NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() * 0.5f, NPC.scale, NPC.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
-			spriteBatch.Draw(ModAsset.UmbrellaTailThief_Fly_glow.Value, drawPos, NPC.frame, new Color(1f, 1f, 1f, 0), NPC.rotation, NPC.frame.Size() * 0.5f, NPC.scale, NPC.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
+			spriteBatch.Draw(ModAsset.UmbrellaTailThief_Fly.Value, drawPos, NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() * new Vector2(0.5f, 1f), NPC.scale, NPC.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
+			spriteBatch.Draw(ModAsset.UmbrellaTailThief_Fly_glow.Value, drawPos, NPC.frame, new Color(1f, 1f, 1f, 0), NPC.rotation, NPC.frame.Size() * new Vector2(0.5f, 1f), NPC.scale, NPC.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
 		}
+
 		return false;
 	}
 
