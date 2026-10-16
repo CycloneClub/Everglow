@@ -92,8 +92,8 @@ public class SpawnContentTests
 			var town = new List<SubworldSpawnRule>();
 			YggdrasilTownSpawnTable.AddRules(town);
 			Assert.AreEqual(30, kelp.Count);
-			Assert.AreEqual(15, town.Count);
-			var actual = kelp.Concat(town).OrderBy(rule => rule.Type).ToArray();
+			Assert.AreEqual(22, town.Count);
+			var actual = kelp.Concat(town).DistinctBy(rule => rule.Type).OrderBy(rule => rule.Type).ToArray();
 			Assert.AreEqual(expected.Length, actual.Length);
 			for (int i = 0; i < expected.Length; i++)
 			{
@@ -104,28 +104,7 @@ public class SpawnContentTests
 				Assert.AreEqual(shrimp ? 5 : 1, actual[i].MaxGroupSize);
 			}
 
-			// 旧灯木森林条件使用已有的场景图块计数；迁移后仍保留 >150 的阈值。
-			var counter = (Everglow.Yggdrasil.Common.YggdrasilBiomeTileCounter)RuntimeHelpers.GetUninitializedObject(
-				typeof(Everglow.Yggdrasil.Common.YggdrasilBiomeTileCounter));
-			var biome = RuntimeHelpers.GetUninitializedObject(typeof(Everglow.Yggdrasil.YggdrasilTown.Biomes.LampWoodForest));
-			foreach (object content in new object[] { counter, biome })
-			{
-				var property = typeof(ContentInstance<>).MakeGenericType(content.GetType()).GetProperty("Instance")!;
-				restore.Add((property, property.GetValue(null)));
-				property.SetValue(null, content);
-			}
-			foreach (var rule in town.Where(rule => rule.Type == ModContent.NPCType<Everglow.Yggdrasil.YggdrasilTown.NPCs.UmbrellaTailThief>() ||
-				rule.Type == ModContent.NPCType<Everglow.Yggdrasil.YggdrasilTown.NPCs.PurpleBombCaterpillar>()))
-			{
-				var info = new NPCSpawnInfo { Player = (Player)RuntimeHelpers.GetUninitializedObject(typeof(Player)) };
-				counter.DarkForestGrassCount = 150;
-				Assert.AreEqual(0f, rule.SpawnChance(info));
-				counter.DarkForestGrassCount = 151;
-				Assert.AreEqual(3f, rule.SpawnChance(info));
-				counter.DarkForestGrassCount = 0;
-				Assert.AreEqual(0f, rule.SpawnChance(info));
-			}
-			counter.DarkForestGrassCount = 151;
+			VerifyTownRegionalRules(expected.Select((name, i) => (Name: name.Split('.').Last(), Type: 1000 + i)).ToDictionary(entry => entry.Name, entry => entry.Type));
 			VerifyTownSafeArea();
 		}
 		finally
@@ -134,6 +113,144 @@ public class SpawnContentTests
 			{
 				property.SetValue(null, value);
 			}
+		}
+	}
+
+	private static void VerifyTownRegionalRules(Dictionary<string, int> npcTypes)
+	{
+		var worldField = typeof(SubworldSystem).GetField("current", BindingFlags.Static | BindingFlags.NonPublic)!;
+		object? previousWorld = worldField.GetValue(null);
+		var previousCenter = YggdrasilTownBiome.BiomeCenter;
+		int previousWidth = Main.maxTilesX;
+		int previousHeight = Main.maxTilesY;
+		int previousNetMode = Main.netMode;
+		bool previousDay = Main.dayTime;
+		var previousNpcs = Main.npc;
+		var instanceProperty = typeof(ContentInstance<SubworldSpawnSystem>).GetProperty("Instance")!;
+		object? previousSystem = instanceProperty.GetValue(null);
+		var system = new SubworldSpawnSystem();
+		var restore = new List<Action>();
+		void RegisterTile(Type type, ushort id)
+		{
+			object content = RuntimeHelpers.GetUninitializedObject(type);
+			type.GetProperty("Type")!.SetValue(content, id);
+			var property = typeof(ContentInstance<>).MakeGenericType(type).GetProperty("Instance")!;
+			object? previous = property.GetValue(null);
+			property.SetValue(null, content);
+			restore.Add(() => property.SetValue(null, previous));
+		}
+		try
+		{
+			RegisterTile(typeof(Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood.DarkForestGrass), 200);
+			RegisterTile(typeof(Everglow.Yggdrasil.YggdrasilTown.Tiles.TwilightForest.TwilightGrassBlock), 201);
+			RegisterTile(typeof(Everglow.Yggdrasil.YggdrasilTown.Tiles.JellyBallSecretion), 202);
+			RegisterTile(typeof(Everglow.Yggdrasil.YggdrasilTown.Walls.JellyBallSecretionWall), 200);
+			foreach (int type in new[] { 1, 200, 201, 202 })
+			{
+				bool previous = Main.tileSolid[type];
+				Main.tileSolid[type] = true;
+				restore.Add(() => Main.tileSolid[type] = previous);
+			}
+			foreach (int wall in new[] { 0, 200 })
+			{
+				bool previous = Main.wallHouse[wall];
+				Main.wallHouse[wall] = false;
+				restore.Add(() => Main.wallHouse[wall] = previous);
+			}
+			worldField.SetValue(null, new YggdrasilWorld());
+			Main.maxTilesX = 2000;
+			Main.maxTilesY = 1600;
+			Main.netMode = Terraria.ID.NetmodeID.Server;
+			YggdrasilTownBiome.BiomeCenter = new Vector2(487, 1300) * 16;
+			Main.npc = Enumerable.Range(0, Main.maxNPCs + 1).Select(_ => (NPC)RuntimeHelpers.GetUninitializedObject(typeof(NPC))).ToArray();
+			instanceProperty.SetValue(null, system);
+			new YggdrasilSpawnRegistration().PostSetupContent();
+			var hook = new ManagedSpawnGlobalNPC();
+			var player = (Player)RuntimeHelpers.GetUninitializedObject(typeof(Player));
+			void Check(int x, int y, int floorType, bool day, (string Name, float Weight)[] expected, ushort wall = 0, byte liquid = 0)
+			{
+				// 只借用两个已有图块槽，结束后逐项恢复，不创建世界或重分配 Tilemap。
+				Tile floor = Main.tile[x, y];
+				Tile above = Main.tile[x, y - 1];
+				var oldFloor = (floor.TileType, floor.HasTile, floor.IsActuated);
+				var oldAbove = (above.WallType, above.LiquidAmount);
+				try
+				{
+					floor.TileType = (ushort)floorType;
+					floor.HasTile = true;
+					floor.IsActuated = false;
+					above.WallType = wall;
+					above.LiquidAmount = liquid;
+					Main.dayTime = day;
+					player.Center = new Vector2(x * 16 + 8, y * 16 - 32);
+					var pool = new Dictionary<int, float> { [0] = 1 };
+					hook.EditSpawnPool(pool, new NPCSpawnInfo { Player = player, SpawnTileX = x, SpawnTileY = y, SpawnTileType = floorType });
+					Assert.AreEqual(expected.Length, pool.Count, $"At ({x}, {y}), tile {floorType}, day={day}.");
+					foreach (var entry in expected)
+					{
+						Assert.IsTrue(pool.TryGetValue(npcTypes[entry.Name], out float weight), entry.Name);
+						Assert.AreEqual(entry.Weight, weight, entry.Name);
+					}
+				}
+				finally
+				{
+					floor.TileType = oldFloor.TileType;
+					floor.HasTile = oldFloor.HasTile;
+					floor.IsActuated = oldFloor.IsActuated;
+					above.WallType = oldAbove.WallType;
+					above.LiquidAmount = oldAbove.LiquidAmount;
+				}
+			}
+			(string, float)[] forestDay = [("BarkSpicyCaterpillar", 2), ("LeafcutterAnt", 1), ("PurpleBombCaterpillar", 6), ("UmbrellaTailThief", 6)];
+			(string, float)[] lampDay = [.. forestDay, ("LightBulb", 3), ("LampFruitBorer", 2)];
+			(string, float)[] forestNight = [("ShadowstrikeCaterpillar", 2), ("DarkGlimmeringRods", 0.75f), ("WhisperingGhost", 1.5f), ("CrimsonSpell", 0.05f)];
+			(string, float)[] shallow = [("CyanOreBeetle", 3), ("JellyBall", 8), ("RockElemental", 0.05f)];
+			(string, float)[] deep = [("CyanOreBeetle", 3), ("JellyBall", 3), ("GiantJellyBall", 8), ("CarapaceCaterpillar", 2), ("RockElemental", 0.05f)];
+			(string, float)[] hotbed = [("JellyBall", 12), ("GiantJellyBall", 6), ("CyanOreBeetle", 1), ("CarapaceCaterpillar", 1)];
+			Check(1500, 800, 200, true, lampDay);
+			Check(1500, 800, 201, true, forestDay);
+			Check(1500, 800, 200, false, forestNight);
+			Check(1500, 800, 201, false, forestNight);
+			foreach (bool day in new[] { true, false })
+			{
+				Check(100, 780, 1, day, shallow);
+				Check(100, 1079, 1, day, shallow);
+				Check(100, 1080, 1, day, deep);
+				Check(100, 1549, 1, day, deep);
+				Check(1800, 1300, 202, day, hotbed);
+				Check(1800, 1300, 1, day, hotbed, wall: 200);
+			}
+			Check(100, 779, 1, true, []);
+			Check(100, 1550, 1, true, []);
+			Check(39, 800, 1, true, []);
+			Check(1050, 800, 1, true, []);
+			Check(100, 800, 200, true, lampDay);
+			Check(100, 800, 202, true, hotbed);
+			Check(1500, 800, 200, true, [], liquid: 255);
+			Main.wallHouse[200] = true;
+			Check(1500, 800, 200, true, [], wall: 200);
+			Main.wallHouse[200] = false;
+			Main.npc[0].active = true;
+			Main.npc[0].type = npcTypes["RockElemental"];
+			Check(100, 800, 1, true, shallow.Where(entry => entry.Item1 != "RockElemental").ToArray());
+			Main.npc[0].type = npcTypes["CrimsonSpell"];
+			Check(1500, 800, 200, false, forestNight.Where(entry => entry.Item1 != "CrimsonSpell").ToArray());
+		}
+		finally
+		{
+			system.Unload();
+			instanceProperty.SetValue(null, previousSystem);
+			foreach (var action in restore)
+			{
+				action();
+			}
+			worldField.SetValue(null, previousWorld);
+			YggdrasilTownBiome.BiomeCenter = previousCenter;
+			Main.maxTilesX = previousWidth;
+			Main.maxTilesY = previousHeight;
+			Main.netMode = previousNetMode;
+			Main.dayTime = previousDay;
+			Main.npc = previousNpcs;
 		}
 	}
 
@@ -160,6 +277,8 @@ public class SpawnContentTests
 			// 不加载地形；下方将玩家放在其他地层，普通规则在读取图块前即被地层条件排除。
 			Main.maxTilesX = 0;
 			new YggdrasilSpawnRegistration().PostSetupContent();
+			SubworldSpawnSystem.RegisterRules(YggdrasilSpawnRegistration.WorldId, "safe-area-check",
+				[new() { Type = 999 }], YggdrasilSpawnRegistration.InYggdrasilTown);
 			var hook = new ManagedSpawnGlobalNPC();
 			var player = (Player)RuntimeHelpers.GetUninitializedObject(typeof(Player));
 			var info = new NPCSpawnInfo { Player = player };
@@ -193,16 +312,16 @@ public class SpawnContentTests
 			];
 			foreach (var (x, y, inside) in samples)
 			{
-				// 玩家位于其他地层，保留不依赖地形的灯木森林候选；镇内空池必须来自候选位置过滤。
+				// 玩家在其他地层，真实名单全部退出；用固定候选验证注册区域的落点过滤。
 				player.Center = Vector2.Zero;
 				info.SpawnTileX = x;
 				info.SpawnTileY = y;
 				var pool = new Dictionary<int, float> { [0] = 1, [999] = 5 };
 				hook.EditSpawnPool(pool, info);
-				Assert.AreEqual(inside ? 0 : 2, pool.Count, $"Town candidate at ({x}, {y}), inside={inside}.");
+				Assert.AreEqual(inside ? 0 : 1, pool.Count, $"Safe area at ({x}, {y}).");
 				if (!inside)
 				{
-					Assert.IsTrue(pool.Values.All(weight => weight == 3f));
+					Assert.AreEqual(1f, pool[999]);
 				}
 
 				player.Center = new Vector2(x * 16 + 8, y * 16 + 8);
