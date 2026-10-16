@@ -217,6 +217,7 @@ namespace Everglow.Commons.UI
 				sb.End();
 
 				gd.SetRenderTarget(Main.screenTarget);
+				gd.Clear(Color.Transparent); // RenderTarget2D 重绑后，内容是不透明黑底，需要清为透明再恢复前景
 				sb.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 				sb.Draw(screenSwap, Vector2.zeroVector, Color.White);
 				sb.End();
