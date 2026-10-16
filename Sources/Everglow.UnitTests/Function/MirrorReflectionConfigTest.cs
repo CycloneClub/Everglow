@@ -45,12 +45,13 @@ public class MirrorReflectionConfigTest
 			Assert.AreEqual(0f, parameters.Yaw);
 			Assert.AreEqual(1f, parameters.ReflectionScale);
 		}
-		Assert.AreEqual(profiles[WallID.Glass], profiles[WallID.Lavafall]);
-		Assert.AreEqual(profiles[WallID.Glass], profiles[WallID.SnowFall]);
+		var materials = MirrorWallRegistryTest.ResolveMaterials(profiles);
+		Assert.AreEqual(materials[WallID.Glass].Definition, materials[WallID.Lavafall].Definition);
+		Assert.AreEqual(materials[WallID.Glass].Definition, materials[WallID.SnowFall].Definition);
 	}
 
 	[TestMethod]
-	public void VanillaMaterials_CoverRequestedWallsWithAtMostThreeSamplingGroups()
+	public void VanillaMaterials_CoverRequestedWallsWithFourSamplingGroups()
 	{
 		var profiles = VanillaMirrorWallProfiles.Create();
 		int[] required =
@@ -62,7 +63,7 @@ public class MirrorReflectionConfigTest
 			WallID.Confetti, WallID.ConfettiBlack, WallID.GoldStarryGlassWall, WallID.BlueStarryGlassWall,
 			WallID.PalladiumColumn, WallID.AdamantiteBeam, WallID.CandyCane, WallID.GreenCandyCane,
 			WallID.Slime, WallID.LunarBrickWall, WallID.SillyBalloonPinkWall, WallID.SillyBalloonGreenWall,
-			WallID.SillyBalloonPurpleWall, WallID.IceBrick, WallID.IceEcho, WallID.ShimmerBlockWall, WallID.ShimmerBrickWall,
+			WallID.SillyBalloonPurpleWall, WallID.IceBrick, WallID.IceEcho, WallID.IceUnsafe, WallID.ShimmerBlockWall, WallID.ShimmerBrickWall,
 			WallID.LunarRustBrickWall, WallID.DarkCelestialBrickWall, WallID.AstraBrickWall,
 			WallID.CosmicEmberBrickWall, WallID.CryocoreBrickWall, WallID.MercuryBrickWall,
 			WallID.StarRoyaleBrickWall, WallID.HeavenforgeBrickWall, WallID.AncientGoldBrickWall,
@@ -73,7 +74,8 @@ public class MirrorReflectionConfigTest
 		{
 			Assert.IsTrue(profiles.ContainsKey(wall), $"Missing WallID {wall}");
 		}
-		Assert.IsTrue(MirrorWallRegistryTest.ResolveMaterials(profiles).Values.Select(material => material.Definition).Distinct().Count() <= 3);
+		// 清晰、轻微模糊、普通模糊、强扰动各共用一次倒影处理。
+		Assert.AreEqual(4, MirrorWallRegistryTest.ResolveMaterials(profiles).Values.Select(material => material.Definition).Distinct().Count());
 		Assert.IsFalse(profiles.ContainsKey(WallID.DirtUnsafe));
 	}
 
@@ -85,9 +87,7 @@ public class MirrorReflectionConfigTest
 		[
 			WallID.Glass, WallID.Waterfall, WallID.Lavafall, WallID.Honeyfall, WallID.SandFall,
 			WallID.SnowFall, WallID.Confetti, WallID.ConfettiBlack, WallID.GoldStarryGlassWall,
-			WallID.BlueStarryGlassWall, WallID.Crystal, WallID.IceBrick, WallID.IceEcho, WallID.MarbleBlock,
-			WallID.CandyCane, WallID.GreenCandyCane, WallID.Slime, WallID.ShimmerBlockWall,
-			WallID.SillyBalloonPinkWall, WallID.SillyBalloonGreenWall, WallID.SillyBalloonPurpleWall,
+			WallID.BlueStarryGlassWall, WallID.Crystal, WallID.IceBrick, WallID.MarbleBlock, WallID.Slime,
 			WallID.AmberGemspark, WallID.AmethystGemspark, WallID.DiamondGemspark,
 			WallID.EmeraldGemspark, WallID.RubyGemspark, WallID.SapphireGemspark, WallID.TopazGemspark,
 			WallID.AmberGemsparkOff, WallID.AmethystGemsparkOff, WallID.DiamondGemsparkOff,
@@ -100,21 +100,56 @@ public class MirrorReflectionConfigTest
 	}
 
 	[TestMethod]
-	public void StainedGlass_UsesDenseStrongDistortionWithSoftenedReflection()
+	public void DistortedMaterials_UseDenseStrongDistortionWithSoftenedReflection()
 	{
 		var profiles = VanillaMirrorWallProfiles.Create();
 		int[] walls =
 		[
 			WallID.PurpleStainedGlass, WallID.YellowStainedGlass, WallID.BlueStainedGlass,
 			WallID.GreenStainedGlass, WallID.RedStainedGlass, WallID.OrangeStainedGlass, WallID.RainbowStainedGlass,
+			WallID.IceEcho, WallID.IceUnsafe, WallID.ShimmerBlockWall, WallID.ShimmerBrickWall,
 		];
 		foreach (int wall in walls)
 		{
 			var parameters = profiles[wall];
+			Assert.AreEqual(0.5f, parameters.Opacity);
 			Assert.AreEqual(12f, parameters.NormalPeriod);
 			Assert.AreEqual(24f, parameters.NormalStrength);
 			Assert.AreEqual(1f, parameters.Blur);
 		}
 		Assert.AreEqual(0f, profiles[WallID.Glass].NormalStrength);
+	}
+
+	[TestMethod]
+	public void Glass_HasStrongerReflectionThanGlassEnclosedWalls()
+	{
+		var profiles = VanillaMirrorWallProfiles.Create();
+		Assert.AreEqual(0.5f, profiles[WallID.Glass].Opacity);
+		int[] walls =
+		[
+			WallID.Waterfall, WallID.Lavafall, WallID.Honeyfall, WallID.SandFall,
+			WallID.SnowFall, WallID.Confetti, WallID.ConfettiBlack,
+			WallID.GoldStarryGlassWall, WallID.BlueStarryGlassWall,
+		];
+		foreach (int wall in walls)
+		{
+			Assert.AreEqual(0.35f, profiles[wall].Opacity, $"Unexpected opacity for WallID {wall}");
+		}
+	}
+
+	[TestMethod]
+	public void CandyAndBalloonWalls_UseLightBlurWithoutDistortion()
+	{
+		var profiles = VanillaMirrorWallProfiles.Create();
+		int[] walls =
+		[
+			WallID.CandyCane, WallID.GreenCandyCane,
+			WallID.SillyBalloonPinkWall, WallID.SillyBalloonGreenWall, WallID.SillyBalloonPurpleWall,
+		];
+		foreach (int wall in walls)
+		{
+			Assert.AreEqual(0.5f, profiles[wall].Blur, $"Unexpected blur for WallID {wall}");
+			Assert.AreEqual(0f, profiles[wall].NormalStrength, $"Unexpected distortion for WallID {wall}");
+		}
 	}
 }

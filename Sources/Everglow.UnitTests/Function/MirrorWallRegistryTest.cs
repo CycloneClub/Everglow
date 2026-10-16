@@ -24,7 +24,8 @@ public class MirrorWallRegistryTest
 	[TestMethod]
 	public void DynamicRegistration_ReadsCurrentPanelValuesWithoutReimportingDefaults()
 	{
-		var system = CreateSystem(VanillaMirrorWallProfiles.Create());
+		var defaults = VanillaMirrorWallProfiles.Create();
+		var system = CreateSystem(defaults);
 		float opacity = 0.85f;
 		int demoType = WallID.Count;
 		system.RegisterWall(demoType, () => new MirrorReflectionDefinition(opacity));
@@ -32,7 +33,7 @@ public class MirrorWallRegistryTest
 		opacity = 0.4f;
 		var profiles = ReadProfiles(system);
 		Assert.AreEqual(0.4f, profiles[demoType].Opacity);
-		Assert.AreEqual(0.35f, profiles[WallID.Glass].Opacity);
+		Assert.AreEqual(defaults[WallID.Glass], profiles[WallID.Glass]);
 	}
 
 	[TestMethod]

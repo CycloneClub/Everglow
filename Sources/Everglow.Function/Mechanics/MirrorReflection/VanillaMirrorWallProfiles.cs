@@ -9,14 +9,14 @@ public static class VanillaMirrorWallProfiles
 	public static Dictionary<int, MirrorReflectionDefinition> Create()
 	{
 		Dictionary<int, MirrorReflectionDefinition> profiles = [];
-		// 普通玻璃使用清晰倒影；花窗玻璃用细密强扰动模拟碎花表面。
+		// 普通玻璃使用清晰倒影；花窗玻璃、冰雪和镒墙使用细密强扰动。
 		Add(0.5f, 1, 0, WallID.Glass);
 		var stainedGlass = profiles[WallID.Glass] with { Blur = 1, NormalPeriod = 12, NormalStrength = 24 };
 		int[] stainedGlassWalls =
 		[
 			WallID.PurpleStainedGlass, WallID.YellowStainedGlass, WallID.BlueStainedGlass,
 			WallID.GreenStainedGlass, WallID.RedStainedGlass, WallID.OrangeStainedGlass, WallID.RainbowStainedGlass,
-			WallID.IceEcho, WallID.IceUnsafe, WallID.ShimmerBlockWall, WallID.ShimmerBrickWall
+			WallID.IceEcho, WallID.IceUnsafe, WallID.ShimmerBlockWall, WallID.ShimmerBrickWall,
 		];
 		foreach (int wall in stainedGlassWalls)
 		{
@@ -43,12 +43,12 @@ public static class VanillaMirrorWallProfiles
 			WallID.IronBrick, WallID.LeadBrick, WallID.CobaltBrick, WallID.MythrilBrick);
 		Add(0.16f, 0.9f, 1, WallID.ObsidianBrick, WallID.IridescentBrick);
 
-		// 糖衣、凝胶与气球表面保留清晰但较弱的倒影。
+		// 糖衣与气球使用轻微模糊，凝胶保留清晰倒影。
 		Add(0.18f, 0.9f, 0.5f, WallID.CandyCane, WallID.GreenCandyCane,
 			WallID.SillyBalloonPinkWall, WallID.SillyBalloonGreenWall, WallID.SillyBalloonPurpleWall);
 		Add(0.22f, 0.9f, 0, WallID.Slime);
 
-		// 柱梁、夜明与镒砖，以及其月相变体。
+		// 柱梁、夜明砖及其月相变体使用普通模糊。
 		Add(0.24f, 0.95f, 1, WallID.PalladiumColumn, WallID.AdamantiteBeam);
 		Add(0.20f, 0.95f, 1, WallID.LunarBrickWall);
 		Add(0.18f, 0.95f, 1, WallID.LunarRustBrickWall, WallID.DarkCelestialBrickWall,
