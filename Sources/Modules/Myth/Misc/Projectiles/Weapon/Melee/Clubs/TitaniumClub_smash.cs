@@ -14,16 +14,22 @@ public class TitaniumClub_smash : ClubProjSmash
 
 	public override void Smash(int level)
 	{
+		int fragmentCount = 0;
+		foreach (Projectile fragment in Main.projectile)
+		{
+			if (fragment != null && fragment.active && fragment.owner == Projectile.owner && fragment.type == ModContent.ProjectileType<Titanium_Fragment>())
+			{
+				fragmentCount++;
+			}
+		}
+
 		if (level == 0)
 		{
-			for (int x = 0; x < 6; x++)
+			for (int x = 0; x < 6 && fragmentCount < 24; x++)
 			{
 				Vector2 v0 = new Vector2(0, -Main.rand.NextFloat(7, 14f) * Player.gravDir).RotatedBy(Main.rand.NextFloat(-1.7f, 1.7f));
-				Projectile p0 = Projectile.NewProjectileDirect(null, Player.Center, v0, ModContent.ProjectileType<Titanium_Fragment>(), Projectile.damage / 18, 0, Player.whoAmI, 72);
-				if (Player.ownedProjectileCounts[ModContent.ProjectileType<Titanium_Fragment>()] > 120)
-				{
-					break;
-				}
+				Projectile p0 = Projectile.NewProjectileDirect(null, Player.Center, v0, ModContent.ProjectileType<Titanium_Fragment>(), (int)(Projectile.damage * 0.5f), 0, Player.whoAmI, 72);
+				fragmentCount++;
 			}
 			foreach (Projectile projectile in Main.projectile)
 			{
@@ -49,23 +55,17 @@ public class TitaniumClub_smash : ClubProjSmash
 		}
 		if (level == 1)
 		{
-			for (int x = 0; x < 12; x++)
+			for (int x = 0; x < 12 && fragmentCount < 24; x++)
 			{
 				Vector2 v0 = new Vector2(0, -Main.rand.NextFloat(7, 24f) * Player.gravDir).RotatedBy(Main.rand.NextFloat(-1.7f, 1.7f));
-				Projectile p0 = Projectile.NewProjectileDirect(null, Player.Center, v0, ModContent.ProjectileType<Titanium_Fragment>(), Projectile.damage / 13, 0, Player.whoAmI, 144);
-				if (Player.ownedProjectileCounts[ModContent.ProjectileType<Titanium_Fragment>()] > 120)
-				{
-					break;
-				}
+				Projectile p0 = Projectile.NewProjectileDirect(null, Player.Center, v0, ModContent.ProjectileType<Titanium_Fragment>(), (int)(Projectile.damage * 0.5f), 0, Player.whoAmI, 144);
+				fragmentCount++;
 			}
-			for (int x = 0; x < 12; x++)
+			for (int x = 0; x < 12 && fragmentCount < 24; x++)
 			{
 				Vector2 v0 = new Vector2(0, -Main.rand.NextFloat(7, 24f) * Player.gravDir).RotatedBy(Main.rand.NextFloat(-1.7f, 1.7f));
-				Projectile p0 = Projectile.NewProjectileDirect(null, Player.Center, v0, ModContent.ProjectileType<Titanium_Fragment>(), Projectile.damage / 13, 0, Player.whoAmI, 72);
-				if (Player.ownedProjectileCounts[ModContent.ProjectileType<Titanium_Fragment>()] > 120)
-				{
-					break;
-				}
+				Projectile p0 = Projectile.NewProjectileDirect(null, Player.Center, v0, ModContent.ProjectileType<Titanium_Fragment>(), (int)(Projectile.damage * 0.5f), 0, Player.whoAmI, 72);
+				fragmentCount++;
 			}
 			foreach (Projectile projectile in Main.projectile)
 			{

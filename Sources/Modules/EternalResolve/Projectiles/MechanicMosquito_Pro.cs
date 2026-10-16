@@ -9,6 +9,7 @@ namespace Everglow.EternalResolve.Projectiles
 
 		public override void SetCustomDefaults()
 		{
+			Projectile.localNPCHitCooldown = 8;
 			AttackColor = new Color(187, 196, 196);
 			MaxDarkAttackUnitCount = 4;
 			OldColorFactor = 0.4f;
@@ -66,7 +67,7 @@ namespace Everglow.EternalResolve.Projectiles
 						if (player.ownedProjectileCounts[mosq] < 3)
 						{
 							Vector2 vel2 = new Vector2(0, -8f).RotatedBy(Main.rand.NextFloat(-0.2f, 0.2f));
-							Projectile.NewProjectile(Projectile.GetSource_FromAI(), player.Center, vel2, mosq, Projectile.damage, 0, Projectile.owner, Main.rand.NextFloat(6.283f));
+							Projectile.NewProjectile(Projectile.GetSource_FromAI(), player.Center, vel2, mosq, Projectile.damage / 2, 0, Projectile.owner, Main.rand.NextFloat(6.283f));
 						}
 					}
 				}

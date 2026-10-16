@@ -7,6 +7,7 @@ namespace Everglow.EternalResolve.Projectiles
 	{
 		public override void SetCustomDefaults()
 		{
+			Projectile.localNPCHitCooldown = 8;
 			AttackColor = new Color(243, 175, 105);
 			MaxDarkAttackUnitCount = 4;
 			OldColorFactor = 0.3f;

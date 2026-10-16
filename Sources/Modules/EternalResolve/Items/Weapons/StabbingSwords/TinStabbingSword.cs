@@ -7,10 +7,10 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords
 	{
 		public override void SetDefaults()
 		{
-			Item.damage = 3;
+			Item.damage = 10;
 			Item.knockBack = 1.24f;
 			Item.rare = ItemRarityID.White;
-			Item.value = Item.sellPrice(0, 0, 16, 0);
+			Item.value = Item.buyPrice(0, 0, 6, 75);
 			Item.shoot = ModContent.ProjectileType<TinStabbingSword_Pro>();
 			PowerfulStabDamageFlat = 4f;
 			PowerfulStabProj = ModContent.ProjectileType<TinStabbingSword_Pro_Stab>();

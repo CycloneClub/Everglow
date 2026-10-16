@@ -7,6 +7,7 @@ namespace Everglow.EternalResolve.Projectiles
 	{
 		public override void SetCustomDefaults()
 		{
+			Projectile.localNPCHitCooldown = 8;
 			AttackColor = new Color(209, 187, 107);
 			MaxDarkAttackUnitCount = 4;
 			OldColorFactor = 0.7f;
@@ -25,10 +26,13 @@ namespace Everglow.EternalResolve.Projectiles
 			base.AI();
 		}
 
+		private ulong nextSpikeTick;
+
 		public override void VisualParticle()
 		{
-			if (Main.rand.NextBool(3))
+			if (Main.GameUpdateCount >= nextSpikeTick)
 			{
+				nextSpikeTick = Main.GameUpdateCount + 15;
 				Vector2 vel = new Vector2(0, 12f).RotatedByRandom(6.283);
 				Vector2 pos = Projectile.Center + Vector2.Normalize(Projectile.velocity) * Main.rand.NextFloat(Main.rand.NextFloat(30f), 120f) - vel * 3f;
 				if (!Collision.SolidCollision(pos + vel * 3, 0, 0) && !Collision.SolidCollision(pos + vel * 6, 0, 0) && !Collision.SolidCollision(pos, 0, 0))

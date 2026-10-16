@@ -15,10 +15,10 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords
 		// 读懂星空需要复杂深邃的理论知识，观赏星空只需要一只眼睛
 		public override void SetDefaults()
 		{
-			Item.damage = 10;
+			Item.damage = 18;
 			Item.knockBack = 1.5f;
-			Item.rare = ItemRarityID.Blue;
-			Item.value = Item.sellPrice(0, 2, 27, 15);
+			Item.rare = ItemRarityID.Green;
+			Item.value = Item.buyPrice(0, 5, 0, 0);
 			Item.shoot = ModContent.ProjectileType<DreamStar_Pro>();
 			PowerfulStabDamageFlat = 2.2f;
 			PowerfulStabProj = ModContent.ProjectileType<DreamStar_Pro_Stab>();
