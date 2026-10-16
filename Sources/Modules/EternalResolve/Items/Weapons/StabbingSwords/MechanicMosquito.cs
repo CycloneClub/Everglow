@@ -11,7 +11,7 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords
 			Item.damage = 16;
 			Item.knockBack = 1.14f;
 			Item.rare = ItemRarityID.Green;
-			Item.value = Item.sellPrice(0, 0, 50, 0);
+			Item.value = Item.buyPrice(0, 2, 50, 0);
 			Item.shoot = ModContent.ProjectileType<MechanicMosquito_Pro>();
 			PowerfulStabDamageFlat = 4f;
 			StaminaCost = 0.65f; // 机械剑省力，很合理（）
