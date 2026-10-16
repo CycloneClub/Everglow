@@ -10,12 +10,13 @@ public static class VanillaMirrorWallProfiles
 	{
 		Dictionary<int, MirrorReflectionDefinition> profiles = [];
 		// 普通玻璃使用清晰倒影；花窗玻璃用细密强扰动模拟碎花表面。
-		Add(0.35f, 1, 0, WallID.Glass);
+		Add(0.5f, 1, 0, WallID.Glass);
 		var stainedGlass = profiles[WallID.Glass] with { Blur = 1, NormalPeriod = 12, NormalStrength = 24 };
 		int[] stainedGlassWalls =
 		[
 			WallID.PurpleStainedGlass, WallID.YellowStainedGlass, WallID.BlueStainedGlass,
 			WallID.GreenStainedGlass, WallID.RedStainedGlass, WallID.OrangeStainedGlass, WallID.RainbowStainedGlass,
+			WallID.IceEcho, WallID.IceUnsafe, WallID.ShimmerBlockWall, WallID.ShimmerBrickWall
 		];
 		foreach (int wall in stainedGlassWalls)
 		{
@@ -25,7 +26,7 @@ public static class VanillaMirrorWallProfiles
 		Add(0.35f, 1, 0, WallID.SandFall, WallID.SnowFall, WallID.Confetti, WallID.ConfettiBlack,
 			WallID.GoldStarryGlassWall, WallID.BlueStarryGlassWall, WallID.Waterfall, WallID.Lavafall, WallID.Honeyfall);
 		Add(0.32f, 1, 0, WallID.Crystal);
-		Add(0.24f, 0.95f, 0, WallID.IceBrick, WallID.IceEcho);
+		Add(0.24f, 0.95f, 0, WallID.IceBrick);
 
 		// 自发光宝石保留较多底色；未通电版本略增强倒影。
 		Add(0.22f, 1, 0, WallID.AmberGemspark, WallID.AmethystGemspark, WallID.DiamondGemspark,
@@ -43,13 +44,12 @@ public static class VanillaMirrorWallProfiles
 		Add(0.16f, 0.9f, 1, WallID.ObsidianBrick, WallID.IridescentBrick);
 
 		// 糖衣、凝胶与气球表面保留清晰但较弱的倒影。
-		Add(0.18f, 0.9f, 0, WallID.CandyCane, WallID.GreenCandyCane,
+		Add(0.18f, 0.9f, 0.5f, WallID.CandyCane, WallID.GreenCandyCane,
 			WallID.SillyBalloonPinkWall, WallID.SillyBalloonGreenWall, WallID.SillyBalloonPurpleWall);
 		Add(0.22f, 0.9f, 0, WallID.Slime);
-		Add(0.30f, 1, 0, WallID.ShimmerBlockWall);
 
 		// 柱梁、夜明与镒砖，以及其月相变体。
-		Add(0.24f, 0.95f, 1, WallID.PalladiumColumn, WallID.AdamantiteBeam, WallID.ShimmerBrickWall);
+		Add(0.24f, 0.95f, 1, WallID.PalladiumColumn, WallID.AdamantiteBeam);
 		Add(0.20f, 0.95f, 1, WallID.LunarBrickWall);
 		Add(0.18f, 0.95f, 1, WallID.LunarRustBrickWall, WallID.DarkCelestialBrickWall,
 			WallID.AstraBrickWall, WallID.CosmicEmberBrickWall, WallID.CryocoreBrickWall,
