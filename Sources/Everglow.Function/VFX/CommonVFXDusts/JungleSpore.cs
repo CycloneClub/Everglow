@@ -9,7 +9,7 @@ public class JungleSporePipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.JungleSpore;
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_JungleSpore.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Jungle_Spore.Value);
 	}
 
 	public override void BeginRender()

@@ -196,7 +196,7 @@ public class AcytaeaLaserSword : ModProjectile
 			dissolveDuration = 1.2f;
 		}
 		dissolve.Parameters["uTransform"].SetValue(model * projection);
-		dissolve.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_spiderNet.Value);
+		dissolve.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Spider_Net.Value);
 		dissolve.Parameters["duration"].SetValue(dissolveDuration);
 		dissolve.Parameters["uDissolveColor"].SetValue(new Vector4(1f, 0f, 0f, 1f));
 		dissolve.Parameters["uNoiseSize"].SetValue(2f);

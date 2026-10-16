@@ -111,7 +111,7 @@ internal class WorldHit : ModProjectile
 			var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 			var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) * Main.GameViewMatrix.ZoomMatrix;
 
-			ef.Parameters["tex0"].SetValue(ModAsset.heatmapLime.Value);
+			ef.Parameters["tex0"].SetValue(ModAsset.HeatMap_Lime.Value);
 			ef.Parameters["uTransform"].SetValue(model * projection);
 			ef.Parameters["alphaValue"].SetValue(0.1f);
 
@@ -146,7 +146,7 @@ internal class WorldHit : ModProjectile
 				var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 				var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) * Main.GameViewMatrix.ZoomMatrix;
 
-				ef.Parameters["tex0"].SetValue(ModAsset.heatmapLime.Value);
+				ef.Parameters["tex0"].SetValue(ModAsset.HeatMap_Lime.Value);
 				ef.Parameters["uTransform"].SetValue(model * projection);
 				ef.Parameters["alphaValue"].SetValue(0.1f);
 				ef.CurrentTechnique.Passes[0].Apply();

@@ -57,7 +57,7 @@ public class MiningPowerPickaxe_Proj_Wave : Visual
 
 	public override void Draw()
 	{
-		Texture2D tex = Commons.ModAsset.Noise_forceField_medium.Value;
+		Texture2D tex = Commons.ModAsset.Noise_Force_Field_Medium.Value;
 		float value = ((float)Main.time * 0.2f) % 8f;
 		foreach (var pos in Tiles)
 		{

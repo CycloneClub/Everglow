@@ -9,8 +9,8 @@ public class FrostFlamePipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.FrostFlame;
-		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_perlin.Value);
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_FrostFlame.Value);
+		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Perlin.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Frost_Flame.Value);
 	}
 
 	public override void BeginRender()

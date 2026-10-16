@@ -30,7 +30,7 @@ public class FrozenNPC : GlobalNPC
 			Effect frozenEff = ModAsset.FrozenNPC.Value;
 			frozenEff.Parameters["uImageSize"].SetValue(Main.npcFrameCount[npc.type]);
 			frozenEff.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Frozen.Value);
-			frozenEff.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_spiderNet.Value);
+			frozenEff.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Spider_Net.Value);
 			frozenEff.Parameters["drawColor"].SetValue(drawColor.ToVector4());
 			frozenEff.CurrentTechnique.Passes[0].Apply();
 		}

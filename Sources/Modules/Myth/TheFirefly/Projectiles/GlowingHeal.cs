@@ -147,7 +147,7 @@ public class GlowingHeal : ModNPC
 			var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) * Main.GameViewMatrix.ZoomMatrix;
 			ef.Parameters["uTransform"].SetValue(model * projection);
 			ef.Parameters["uTime"].SetValue(0);
-			Main.graphics.GraphicsDevice.Textures[0] = ModContent.Request<Texture2D>("Everglow/Myth/TheFirefly/NPCs/Bosses/heatmapBlueD").Value;
+			Main.graphics.GraphicsDevice.Textures[0] = ModContent.Request<Texture2D>("Everglow/Myth/TheFirefly/NPCs/Bosses/HeatMap_Blue_D").Value;
 			Main.graphics.GraphicsDevice.Textures[1] = ModContent.Request<Texture2D>("Everglow/Myth/TheFirefly/NPCs/Bosses/MeteroD").Value;
 			Main.graphics.GraphicsDevice.Textures[2] = ModContent.Request<Texture2D>("Everglow/Myth/TheFirefly/NPCs/Bosses/MeteroD").Value;
 			Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;

@@ -324,7 +324,7 @@ public class GoldShield : ModProjectile, IWarpProjectile
 			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 			Post.Parameters["uTime"].SetValue((float)Main.time * 0.0005f);
 			Post.CurrentTechnique.Passes["Test3"].Apply();
-			DrawPost(new Color(255, 175, 25, 0) * 0.25f, 200, 50, 1, ModAsset.GoldShieldMap.Value, Commons.ModAsset.Noise_flame_0.Value);
+			DrawPost(new Color(255, 175, 25, 0) * 0.25f, 200, 50, 1, ModAsset.GoldShieldMap.Value, Commons.ModAsset.Noise_Flame_0.Value);
 
 			Main.spriteBatch.End();
 			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.NonPremultiplied, SamplerState.PointWrap, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);

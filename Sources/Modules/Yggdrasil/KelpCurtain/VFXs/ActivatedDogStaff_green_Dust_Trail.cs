@@ -68,7 +68,7 @@ public class ActivatedDogStaff_green_Dust_Trail : Visual
 			bars.Add(pos + toCorner.RotatedBy(Math.PI * 0 + Rotation) * size, drawColor, new Vector3(0, 1, 0));
 			bars.Add(pos + toCorner.RotatedBy(Math.PI * 1 + Rotation) * size, drawColor, new Vector3(1, 0, 0));
 		}
-		Ins.Batch.Draw(ModAsset.BloodFlame_noise.Value, bars, PrimitiveType.TriangleList);
+		Ins.Batch.Draw(ModAsset.Blood_Flame_Noise.Value, bars, PrimitiveType.TriangleList);
 		Color lightColor = gradientColor.GetColor(Timer / MaxTime);
 		Lighting.AddLight(Position, new Vector3(lightColor.R, lightColor.G, lightColor.B) / 255f * Scale * 0.1f);
 	}

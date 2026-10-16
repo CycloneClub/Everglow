@@ -5,7 +5,7 @@ public class FireflySporePipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.FireflySpore;
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_FireflySpore.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Firefly_Spore.Value);
 	}
 
 	public override void BeginRender()

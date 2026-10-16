@@ -330,13 +330,13 @@ public class IstafelsSunfireGrasp_FireBall : TrailingProjectile, IWarpProjectile
 		{
 			Main.graphics.graphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 			Main.graphics.graphicsDevice.RasterizerState = RasterizerState.CullNone;
-			spriteBatch.Draw(Commons.ModAsset.Noise_melting_H.Value, bars, PrimitiveType.TriangleStrip);
+			spriteBatch.Draw(Commons.ModAsset.Noise_Melting_H.Value, bars, PrimitiveType.TriangleStrip);
 		}
 		if (bars2.Count > 2)
 		{
 			Main.graphics.graphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 			Main.graphics.graphicsDevice.RasterizerState = RasterizerState.CullNone;
-			spriteBatch.Draw(Commons.ModAsset.Noise_melting_H.Value, bars2, PrimitiveType.TriangleStrip);
+			spriteBatch.Draw(Commons.ModAsset.Noise_Melting_H.Value, bars2, PrimitiveType.TriangleStrip);
 		}
 	}
 }

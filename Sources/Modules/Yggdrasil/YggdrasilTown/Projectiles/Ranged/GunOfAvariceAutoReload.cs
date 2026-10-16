@@ -130,7 +130,7 @@ public class GunOfAvariceAutoReload : ModProjectile
 				nets.Add(drawCenter, drawColor * fade, new Vector3(new Vector2(0.5f), 0));
 				nets.Add(drawCenter + normalWidth * vertexWidth, Color.Transparent, new Vector3(new Vector2(0.5f) + normalWidth * 0.35f, timer * deltaRot));
 			}
-			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Noise_crack_dense_black.Value;
+			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Noise_Crack_Dense_Black.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, nets.ToArray(), 0, nets.Count - 2);
 
 			Main.spriteBatch.End();
@@ -153,7 +153,7 @@ public class GunOfAvariceAutoReload : ModProjectile
 				nets.Add(drawCenter, drawColor * fade, new Vector3(new Vector2(0.5f), 0));
 				nets.Add(drawCenter + normalWidth * vertexWidth, Color.Transparent, new Vector3(new Vector2(0.5f) + normalWidth * 0.35f, timer * deltaRot));
 			}
-			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Noise_melting.Value;
+			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Noise_Melting.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, nets.ToArray(), 0, nets.Count - 2);
 			Main.spriteBatch.End();
 			Main.spriteBatch.Begin(sBS);

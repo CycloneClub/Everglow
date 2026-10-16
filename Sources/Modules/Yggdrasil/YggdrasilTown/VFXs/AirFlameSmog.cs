@@ -5,8 +5,8 @@ public class AirFlameSmogPipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.AirFlameSmog;
-		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_perlin.Value);
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_AirFlameSmog.Value);
+		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Perlin.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Air_Flame_Smog.Value);
 	}
 
 	public override void BeginRender()

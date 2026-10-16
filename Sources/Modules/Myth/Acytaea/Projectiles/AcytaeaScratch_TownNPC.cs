@@ -239,7 +239,7 @@ public class AcytaeaScratch_TownNPC : ModProjectile
 				effect.Parameters["uProcession"].SetValue(0.5f);
 				effect.CurrentTechnique.Passes["Test2"].Apply();
 				Main.graphics.GraphicsDevice.Textures[0] = t;
-				Main.graphics.GraphicsDevice.Textures[1] = ModAsset.Acytaea_meleeColor.Value;
+				Main.graphics.GraphicsDevice.Textures[1] = ModAsset.Acytaea_Melee_Color.Value;
 				Main.graphics.GraphicsDevice.SamplerStates[1] = SamplerState.PointClamp;
 				Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 			}

@@ -317,7 +317,7 @@ public class BloodyMossWheel : ModTile
 
 		Texture2D Tdoor = ModAsset.CosmicFlame.Value;
 		Texture2D Tdoor2 = ModAsset.CosmicVort.Value;
-		Texture2D Tdoor3 = ModAsset.CosmicPerlin.Value;
+		Texture2D Tdoor3 = ModAsset.Cosmic_Perlin.Value;
 		if (CanK)
 		{
 			if (!Main.gamePaused)
@@ -342,7 +342,7 @@ public class BloodyMossWheel : ModTile
 			float dissolveDuration = (60 - Killing) / 60f - 0.2f;
 
 			dissolve.Parameters["uTransform"].SetValue(matrix * projection);
-			dissolve.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_spiderNet.Value);
+			dissolve.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Spider_Net.Value);
 			dissolve.Parameters["duration"].SetValue(dissolveDuration);
 			dissolve.Parameters["uDissolveColor"].SetValue(new Vector4(0.8f, 0, 0.1f, 1f));
 			dissolve.Parameters["uNoiseSize"].SetValue(3f);

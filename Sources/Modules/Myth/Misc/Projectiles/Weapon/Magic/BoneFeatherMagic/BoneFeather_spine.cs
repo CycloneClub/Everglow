@@ -141,7 +141,7 @@ public class BoneFeather_spine : ModProjectile
 			dissolveDuration = 1.2f;
 		}
 		dissolve.Parameters["uTransform"].SetValue(model * projection);
-		dissolve.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_spiderNet.Value);
+		dissolve.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Spider_Net.Value);
 		dissolve.Parameters["duration"].SetValue(dissolveDuration);
 		dissolve.Parameters["uDissolveColor"].SetValue(new Vector4(0.9f, 0.9f, 0.6f, 1f));
 		dissolve.Parameters["uNoiseSize"].SetValue(4f);

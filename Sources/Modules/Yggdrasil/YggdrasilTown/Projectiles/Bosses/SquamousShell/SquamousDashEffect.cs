@@ -154,12 +154,12 @@ public class SquamousDashEffect : ModProjectile, IWarpProjectile_warpStyle2
 
 		if (barsDark.Count > 3)
 		{
-			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_flame_0_black.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_Flame_0_Black.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, barsDark.ToArray(), 0, barsDark.Count - 2);
 		}
 		if (bars.Count > 3)
 		{
-			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_flame_0.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_Flame_0.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 
 			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.EmptyCrystal.Value;
@@ -218,7 +218,7 @@ public class SquamousDashEffect : ModProjectile, IWarpProjectile_warpStyle2
 
 		if (bars.Count > 3)
 		{
-			spriteBatch.Draw(Commons.ModAsset.Noise_rgb.Value, bars, PrimitiveType.TriangleStrip);
+			spriteBatch.Draw(Commons.ModAsset.Noise_RGB.Value, bars, PrimitiveType.TriangleStrip);
 		}
 	}
 }

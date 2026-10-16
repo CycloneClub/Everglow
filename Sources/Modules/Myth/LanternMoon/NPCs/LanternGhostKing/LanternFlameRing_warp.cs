@@ -100,6 +100,6 @@ internal class LanternFlameRing_warpDust : Visual
 			bars.Add(center + pos, color0, new Vector3(i / 100f, 0 + timeValue, 0));
 			bars.Add(center + innerrPos, color1, new Vector3(i / 100f, 0.02f + timeValue, 0));
 		}
-		Ins.Batch.Draw(Commons.ModAsset.Noise_melting.Value, bars, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(Commons.ModAsset.Noise_Melting.Value, bars, PrimitiveType.TriangleStrip);
 	}
 }

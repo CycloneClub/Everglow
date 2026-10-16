@@ -5,7 +5,7 @@ public class ColorDissolvePipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.ColorDissolve;
-		effect.Value.Parameters["uDissolveNoise"].SetValue(ModAsset.Noise_flame_0.Value);
+		effect.Value.Parameters["uDissolveNoise"].SetValue(ModAsset.Noise_Flame_0.Value);
 	}
 
 	public override void BeginRender()

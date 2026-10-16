@@ -5,7 +5,7 @@ public class Fevens_PurpleSparkPipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.Fevens_PurpleSpark;
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Fevens_PurpleSpark.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Fevens_Purple_Spark.Value);
 	}
 
 	public override void BeginRender()

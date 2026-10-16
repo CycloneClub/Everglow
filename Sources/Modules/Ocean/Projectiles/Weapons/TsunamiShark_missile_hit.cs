@@ -108,7 +108,7 @@ public class TsunamiShark_missile_hit : ModProjectile, IWarpProjectile
 		float value = (208 - Projectile.timeLeft) / 208f;
 		value = MathF.Sqrt(value);
 		float colorV = 0.9f * (1 - value);
-		Texture2D t = ModAsset.HiveCyberNoise.Value;
+		Texture2D t = ModAsset.Hive_Cyber_Noise.Value;
 		float width = 120;
 		if (Projectile.timeLeft < 120)
 		{
@@ -127,7 +127,7 @@ public class TsunamiShark_missile_hit : ModProjectile, IWarpProjectile
 		float value = (208 - Projectile.timeLeft) / 208f;
 		value = MathF.Sqrt(value);
 		float colorV = 0.9f * (1 - value);
-		Texture2D t = ModAsset.HiveCyberNoiseThicker.Value;
+		Texture2D t = ModAsset.Hive_Cyber_Noise_Thicker.Value;
 		float width = 120;
 		if (Projectile.timeLeft < 120)
 		{

@@ -43,7 +43,7 @@ public class HeatMapRenderPipeline_cursedFlame : PostPipeline
 
 		gd.SetRenderTarget(heatMapScreen);
 		effect.Parameters["uTransform"].SetValue(Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1));
-		effect.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_curseFlame.Value);
+		effect.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Curse_Flame.Value);
 		effect.CurrentTechnique.Passes["ToHeatMap"].Apply();
 		sb.Draw(rt2D, Vector2.Zero, new Color(255, 255, 255, 255));
 

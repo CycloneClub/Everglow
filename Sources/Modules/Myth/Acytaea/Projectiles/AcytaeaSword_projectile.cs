@@ -40,7 +40,7 @@ public class AcytaeaSword_projectile : MeleeProj
 
 	public override string TrailColorTex()
 	{
-		return "Everglow/Myth/Acytaea/Projectiles/Acytaea_meleeColor";
+		return "Everglow/Myth/Acytaea/Projectiles/Acytaea_Melee_Color";
 	}
 
 	public override float TrailAlpha(float factor)

@@ -7,7 +7,7 @@ internal class FrozenRingPipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.FrozenRing;
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_frozenRing.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Frozen_Ring.Value);
 	}
 
 	public override void BeginRender()
@@ -17,7 +17,7 @@ internal class FrozenRingPipeline : Pipeline
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) * Main.GameViewMatrix.TransformationMatrix;
 		effect.Parameters["uTransform"].SetValue(model * projection);
 		effect.Parameters["uTime"].SetValue((float)(Main.timeForVisualEffects * 0.001f));
-		effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_turtleCrack.Value);
+		effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Turtle_Crack.Value);
 		Texture2D halo = Commons.ModAsset.Trail_1.Value;
 		Ins.Batch.BindTexture<Vertex2D>(halo);
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;

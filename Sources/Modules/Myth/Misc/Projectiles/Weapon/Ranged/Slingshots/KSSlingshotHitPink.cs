@@ -85,7 +85,7 @@ internal class KSSlingshotHitPink : ModProjectile
 			ef.Parameters["uTime"].SetValue(-(float)Main.time * 0.06f);
 			ef.Parameters["maxr"].SetValue(widxM * widxM);
 			ef.Parameters["stre"].SetValue(Projectile.ai[0]);
-			Main.graphics.GraphicsDevice.Textures[0] = ModContent.Request<Texture2D>("Everglow/Myth/UIImages/VisualTextures/heatmapColdPurple").Value;
+			Main.graphics.GraphicsDevice.Textures[0] = ModContent.Request<Texture2D>("Everglow/Myth/UIImages/VisualTextures/HeatMap_Cold_Purple").Value;
 			Main.graphics.GraphicsDevice.Textures[1] = ModContent.Request<Texture2D>("Everglow/Myth/UIImages/VisualTextures/FogTraceGamma").Value;
 			Main.graphics.GraphicsDevice.Textures[2] = ModContent.Request<Texture2D>("Everglow/Myth/UIImages/VisualTextures/FogTraceGamma").Value;
 			Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;

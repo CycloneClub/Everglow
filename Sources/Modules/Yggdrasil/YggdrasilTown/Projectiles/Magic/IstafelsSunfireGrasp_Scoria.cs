@@ -476,7 +476,7 @@ public class IstafelsSunfireGrasp_Scoria : ModProjectile
 			effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Sand.Value);
 			effect.CurrentTechnique.Passes[0].Apply();
 
-			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_lava.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_Lava.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count() - 2);
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, barsReflect.ToArray(), 0, barsReflect.Count() - 2);
 

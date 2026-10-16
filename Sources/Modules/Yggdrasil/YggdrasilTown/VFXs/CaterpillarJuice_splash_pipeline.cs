@@ -12,10 +12,10 @@ public class CaterpillarJuice_splash_pipeline : Pipeline
 		var effect = this.effect.Value;
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition, 0)) * Main.GameViewMatrix.TransformationMatrix;
-		effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_cell.Value);
+		effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Cell.Value);
 		effect.Parameters["uTransform"].SetValue(model * projection);
 		effect.Parameters["uIlluminationThreshold"].SetValue(0.99f);
-		Texture2D FlameColor = ModAsset.HeatMap_CaterpillarJuice_splash.Value;
+		Texture2D FlameColor = ModAsset.HeatMap_Caterpillar_Juice_Splash.Value;
 		Ins.Batch.BindTexture<Vertex2D>(FlameColor);
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointClamp;
 		Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.None, SamplerState.PointClamp, RasterizerState.CullNone);

@@ -9,7 +9,7 @@ public class FireSparkPipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.FireSpark;
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_spark.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Spark.Value);
 	}
 
 	public override void BeginRender()

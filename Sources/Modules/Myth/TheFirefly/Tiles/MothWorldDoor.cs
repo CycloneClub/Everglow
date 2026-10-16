@@ -164,7 +164,7 @@ public class DrawMagicArraySystem : ModSystem
 		Vector2 pos = ArrayPosition * 16 - Main.screenPosition + new Vector2(-24, -27);
 
 		Lighting.AddLight(pos + Main.screenPosition, 0, 1.2f * mulColor, 2.6f * mulColor);
-		Texture2D magicSeal = ModAsset.HiveCyberNoiseThicker.Value;
+		Texture2D magicSeal = ModAsset.Hive_Cyber_Noise_Thicker.Value;
 		DrawTexCircle(26, 12, c0, pos, magicSeal, -timer);
 		DrawTexCircle(22, 12, c0, pos, magicSeal, timer);
 

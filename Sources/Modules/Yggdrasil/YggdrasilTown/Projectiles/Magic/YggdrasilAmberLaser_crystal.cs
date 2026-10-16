@@ -242,8 +242,8 @@ public class YggdrasilAmberLaser_crystal : ModProjectile
 				effect.Parameters["duration"].SetValue(duration);
 				effect.Parameters["uNoiseSize"].SetValue(3);
 				effect.Parameters["uNoiseXY"].SetValue(new Vector2(0.5f, 0.5f));
-				effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_structureHexagon.Value);
-				effect.Parameters["uHeatMap"].SetValue(ModAsset.YggdrasilAmberLaser_crystal_heatMap.Value);
+				effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Structure_Hexagon.Value);
+				effect.Parameters["uHeatMap"].SetValue(ModAsset.Yggdrasil_Amber_Laser_Crystal_HeatMap.Value);
 				effect.CurrentTechnique.Passes[0].Apply();
 
 				Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_11.Value;
@@ -255,8 +255,8 @@ public class YggdrasilAmberLaser_crystal : ModProjectile
 				effect.Parameters["duration"].SetValue(duration);
 				effect.Parameters["uNoiseSize"].SetValue(12);
 				effect.Parameters["uNoiseXY"].SetValue(Main.screenPosition * 0.00006f);
-				effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_lava.Value);
-				effect.Parameters["uHeatMap"].SetValue(ModAsset.YggdrasilAmberLaser_crystal_light_heatMap.Value);
+				effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Lava.Value);
+				effect.Parameters["uHeatMap"].SetValue(ModAsset.Yggdrasil_Amber_Laser_Crystal_Light_HeatMap.Value);
 				effect.CurrentTechnique.Passes[0].Apply();
 				Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_11.Value;
 				Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, barsReflect.ToArray(), 0, barsReflect.Count - 2);

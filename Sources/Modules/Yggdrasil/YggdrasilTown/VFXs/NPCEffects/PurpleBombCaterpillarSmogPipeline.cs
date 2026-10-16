@@ -5,8 +5,8 @@ public class PurpleBombCaterpillarSmogPipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.PurpleBombCaterpillarSmog_Shader;
-		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_perlin.Value);
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_PurpleBombCaterpillarSmog.Value);
+		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Perlin.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Purple_Bomb_Caterpillar_Smog.Value);
 	}
 
 	public override void BeginRender()

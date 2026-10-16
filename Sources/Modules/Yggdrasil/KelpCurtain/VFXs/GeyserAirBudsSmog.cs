@@ -5,8 +5,8 @@ public class GeyserAirBudsPipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.GeyserAirBudsSmog;
-		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_perlin.Value);
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_GeyserAirBudsSmog.Value);
+		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Perlin.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Geyser_Air_Buds_Smog.Value);
 	}
 
 	public override void BeginRender()

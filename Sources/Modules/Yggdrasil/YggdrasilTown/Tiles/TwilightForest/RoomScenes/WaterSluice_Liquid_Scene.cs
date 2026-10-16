@@ -228,7 +228,7 @@ public class WaterSluice_Liquid_Scene : TileVFX
 		// AddVertex(bars_side, drawPos + new Vector2(waterWidth, 0), new Vector3(1, coordY, 0), fade0);
 		// }
 		// Ins.Batch.Draw(liquidTex, bars, PrimitiveType.TriangleStrip);
-		// Ins.Batch.Draw(Commons.ModAsset.Noise_flame_2_pure.Value, bars_wave, PrimitiveType.TriangleStrip);
+		// Ins.Batch.Draw(Commons.ModAsset.Noise_Flame_2_Pure.Value, bars_wave, PrimitiveType.TriangleStrip);
 		// Ins.Batch.Draw(liquidTex_side, bars_side, PrimitiveType.TriangleStrip);
 		Texture2D liquidTex = ModAsset.WaterSluice_Scene_WaterPier_thin.Value;
 		float timeValue = -(float)Main.time / 120f;
@@ -298,7 +298,7 @@ public class WaterSluice_Liquid_Scene : TileVFX
 			AddVertex(bars_side, drawPos + new Vector2(waterWidth, 0), new Vector3(1, coordY, 0));
 		}
 		Ins.Batch.Draw(liquidTex, bars, PrimitiveType.TriangleStrip);
-		Ins.Batch.Draw(Commons.ModAsset.Noise_flame_2_pure.Value, bars_wave, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(Commons.ModAsset.Noise_Flame_2_Pure.Value, bars_wave, PrimitiveType.TriangleStrip);
 		Ins.Batch.Draw(liquidTex_side, bars_side, PrimitiveType.TriangleStrip);
 	}
 
@@ -354,8 +354,8 @@ public class WaterSluice_Liquid_Scene : TileVFX
 		// if (bars.Count > 2)
 		// {
 		// Ins.Batch.Draw(liquidTex, bars, PrimitiveType.TriangleStrip);
-		// Ins.Batch.Draw(Commons.ModAsset.Noise_flame_2_pure.Value, bars_wave, PrimitiveType.TriangleStrip);
-		// Ins.Batch.Draw(Commons.ModAsset.Noise_WaterFallWave.Value, bars_wave2, PrimitiveType.TriangleStrip);
+		// Ins.Batch.Draw(Commons.ModAsset.Noise_Flame_2_Pure.Value, bars_wave, PrimitiveType.TriangleStrip);
+		// Ins.Batch.Draw(Commons.ModAsset.Noise_Water_Fall_Wave.Value, bars_wave2, PrimitiveType.TriangleStrip);
 		// }
 		// if (bars_side.Count > 2)
 		// {
@@ -401,8 +401,8 @@ public class WaterSluice_Liquid_Scene : TileVFX
 		if (bars.Count > 2)
 		{
 			Ins.Batch.Draw(liquidTex, bars, PrimitiveType.TriangleStrip);
-			Ins.Batch.Draw(Commons.ModAsset.Noise_flame_2_pure.Value, bars_wave, PrimitiveType.TriangleStrip);
-			Ins.Batch.Draw(Commons.ModAsset.Noise_WaterFallWave.Value, bars_wave2, PrimitiveType.TriangleStrip);
+			Ins.Batch.Draw(Commons.ModAsset.Noise_Flame_2_Pure.Value, bars_wave, PrimitiveType.TriangleStrip);
+			Ins.Batch.Draw(Commons.ModAsset.Noise_Water_Fall_Wave.Value, bars_wave2, PrimitiveType.TriangleStrip);
 		}
 		if (bars_side.Count > 2)
 		{

@@ -13,8 +13,8 @@ public class RockSmog_ConePipeline : Pipeline
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition, 0)) * Main.GameViewMatrix.TransformationMatrix;
 		effect.Parameters["uTransform"].SetValue(model * projection);
-		effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_perlin.Value);
-		effect.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_rockSmog.Value);
+		effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Perlin.Value);
+		effect.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Rock_Smog.Value);
 		Texture2D halo = Commons.ModAsset.Point.Value;
 		Ins.Batch.BindTexture<Vertex2D>(halo);
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;

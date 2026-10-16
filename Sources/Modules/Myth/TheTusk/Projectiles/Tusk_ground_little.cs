@@ -160,7 +160,7 @@ public class Tusk_ground_little : ModProjectile
 			duration = Math.Clamp(MathHelper.Lerp(1f, 0.3f, Projectile.timeLeft / 25f - 2), 0, 1f);
 		}
 		dissolve.Parameters["uTransform"].SetValue(model * projection);
-		dissolve.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_spiderNet.Value);
+		dissolve.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Spider_Net.Value);
 		dissolve.Parameters["duration"].SetValue(duration);
 		dissolve.Parameters["uDissolveColor"].SetValue(new Vector4(0.4f, 0, 0, 0.8f) * lightColor.ToVector4());
 		dissolve.Parameters["uNoiseSize"].SetValue(0.7f);

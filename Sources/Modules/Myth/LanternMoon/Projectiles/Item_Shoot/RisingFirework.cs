@@ -214,7 +214,7 @@ public class RisingFirework : ModProjectile
 			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_1.Value;
 			Effect effect = ModAsset.FireworkTrailStyle1.Value;
-			effect.Parameters["uPerlin"].SetValue(ModAsset.CorruptDustFadePowderII.Value);
+			effect.Parameters["uPerlin"].SetValue(ModAsset.Corrupt_Dust_Fade_Powder_II.Value);
 			var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 			var model = Matrix.CreateTranslation(new Vector3(0, 0, 0)) * Main.GameViewMatrix.TransformationMatrix;
 			effect.Parameters["uTransform"].SetValue(model * projection);

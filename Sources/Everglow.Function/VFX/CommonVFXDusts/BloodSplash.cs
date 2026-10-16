@@ -18,8 +18,8 @@ public class BloodSplashPipeline : Pipeline
 		effect.Parameters["uTransform"].SetValue(model * projection);
 		effect.Parameters["uIlluminationThreshold"].SetValue(0.99f);
 		effect.Parameters["uIlluminationThresholdII"].SetValue(0.05f);
-		effect.Parameters["uNoise"].SetValue(ModAsset.Noise_cell.Value);
-		Texture2D flameColor = ModAsset.HeatMap_bloodSplash.Value;
+		effect.Parameters["uNoise"].SetValue(ModAsset.Noise_Cell.Value);
+		Texture2D flameColor = ModAsset.HeatMap_Blood_Splash.Value;
 		Ins.Batch.BindTexture<Vertex2D>(flameColor);
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointClamp;
 		Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.None, SamplerState.PointClamp, RasterizerState.CullNone);

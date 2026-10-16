@@ -36,7 +36,7 @@ internal class GrayFlowPipeline : Pipeline
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) * Main.GameViewMatrix.TransformationMatrix;
 		effect.Parameters["uTransform"].SetValue(model * projection);
-		Texture2D FlameColor = ModAsset.GrayFlow_Color.Value;
+		Texture2D FlameColor = ModAsset.Gray_Flow_Color.Value;
 		Ins.Batch.BindTexture<Vertex2D>(FlameColor);
 		Main.graphics.GraphicsDevice.SamplerStates[1] = SamplerState.PointClamp;
 		Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.None, SamplerState.PointWrap, RasterizerState.CullNone);

@@ -19,7 +19,7 @@ public class DragonScaleHammerProj : MeleeProj
 
 	public override string TrailShapeTex() => ModAsset.DragonScaleHammerProj_Melee_Mod;
 
-	public override string TrailColorTex() => ModAsset.DragonScaleHammerProj_heatMap_Mod;
+	public override string TrailColorTex() => ModAsset.Dragon_Scale_Hammer_Proj_HeatMap_Mod;
 
 	public override float TrailAlpha(float factor) => base.TrailAlpha(factor) * 1.15f;
 

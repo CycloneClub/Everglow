@@ -9,7 +9,7 @@ public class IsleOfBloom_CaveRay_VFX : TileVFX
 
 	public override void OnSpawn()
 	{
-		Texture = Commons.ModAsset.Noise_flame_2.Value;
+		Texture = Commons.ModAsset.Noise_Flame_2.Value;
 		MaxDiatanceOutOfScreen = 3000;
 	}
 

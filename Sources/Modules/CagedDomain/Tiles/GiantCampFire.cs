@@ -97,9 +97,9 @@ public class GiantCampFire_flame_fore_Pipeline : Pipeline
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition, 0)) * Main.GameViewMatrix.TransformationMatrix;
 		effect.Parameters["uTransform"].SetValue(model * projection);
-		effect.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_GiantCampFire.Value);
-		effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_flame_1.Value);
-		Texture2D halo = Commons.ModAsset.Noise_flame_1.Value;
+		effect.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Giant_Camp_Fire.Value);
+		effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Flame_1.Value);
+		Texture2D halo = Commons.ModAsset.Noise_Flame_1.Value;
 		Ins.Batch.BindTexture<Vertex2D>(halo);
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointClamp;
 		Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.None, SamplerState.PointWrap, RasterizerState.CullNone);
@@ -117,7 +117,7 @@ public class GiantCampFire_flame_fore : TileVFX
 {
 	public override void OnSpawn()
 	{
-		Texture = Commons.ModAsset.Noise_flame_0.Value;
+		Texture = Commons.ModAsset.Noise_Flame_0.Value;
 	}
 
 	public override void Update()

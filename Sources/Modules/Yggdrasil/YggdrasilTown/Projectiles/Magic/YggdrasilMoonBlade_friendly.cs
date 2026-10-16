@@ -138,7 +138,7 @@ public class YggdrasilMoonBlade_friendly : ModProjectile, IWarpProjectile
 		Main.graphics.GraphicsDevice.BlendState = BlendState.AlphaBlend;
 		Main.graphics.GraphicsDevice.RasterizerState = RasterizerState.CullNone;
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_longitudinalFold.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_Longitudinal_Fold.Value;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 
 		bars = new List<Vertex2D>();
@@ -174,7 +174,7 @@ public class YggdrasilMoonBlade_friendly : ModProjectile, IWarpProjectile
 			bars.Add(pos, new Color(redValue, 0.01f * (Math.Abs(x) + 12), 0, 0), new Vector3(0.2f + timeValue, x / 35f, 0));
 			bars.Add(pos - startVelocity * Math.Min(250f, (300f - Projectile.timeLeft) * 14), new Color(redValue, 0, 0, 0), new Vector3(0 + timeValue, x / 35f, 0));
 		}
-		Texture2D t = Commons.ModAsset.Noise_melting.Value;
+		Texture2D t = Commons.ModAsset.Noise_Melting.Value;
 
 		if (bars.Count > 3)
 		{

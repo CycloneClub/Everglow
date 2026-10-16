@@ -215,7 +215,7 @@ public class WiltedForestLamp_Proj_shoot : TrailingProjectile
 		Effect effect2 = ModAsset.WiltedForestLamp_Proj_shoot_dissolve.Value;
 		effect2.Parameters["uTransform"].SetValue(model * projection);
 		effect2.CurrentTechnique.Passes[0].Apply();
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_flame_2.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_Flame_2.Value;
 		if (bars7.Count > 3)
 		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars7.ToArray(), 0, bars7.Count - 2);

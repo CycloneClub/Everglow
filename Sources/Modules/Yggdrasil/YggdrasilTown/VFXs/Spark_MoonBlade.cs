@@ -5,7 +5,7 @@ public class Spark_MoonBladePipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.Spark_MoonBlade;
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_moonBlade.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Moon_Blade.Value);
 	}
 
 	public override void BeginRender()

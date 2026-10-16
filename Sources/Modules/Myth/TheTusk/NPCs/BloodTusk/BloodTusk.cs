@@ -1369,7 +1369,7 @@ public class BloodTusk : ModNPC
 		result1.Y = 2 - result1.Y;
 		result1 *= new Vector2(Main.screenWidth, Main.screenHeight) / 2f;
 		effect.Parameters["drawOrigin"].SetValue(result1);
-		effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_rgb.Value);
+		effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_RGB.Value);
 		effect.Parameters["noiseCoord"].SetValue(new Vector2(0, (float)Main.time * 0.0005f));
 
 		effect.CurrentTechnique.Passes[0].Apply();
@@ -1466,7 +1466,7 @@ public class BloodTusk : ModNPC
 			var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 			var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition, 0)) * Main.GameViewMatrix.TransformationMatrix;
 			dissolve.Parameters["uTransform"].SetValue(model * projection);
-			dissolve.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_spiderNet.Value);
+			dissolve.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Spider_Net.Value);
 			dissolve.Parameters["duration"].SetValue(1 - dissolveDuration);
 			dissolve.Parameters["uNoiseSize"].SetValue(1f);
 			dissolve.Parameters["uNoiseXY"].SetValue(new Vector2(0.5f, 0.5f));
