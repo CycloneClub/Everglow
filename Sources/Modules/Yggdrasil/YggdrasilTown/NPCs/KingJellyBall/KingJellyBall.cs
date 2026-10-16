@@ -27,7 +27,6 @@ public class KingJellyBall : ModNPC
 	public override void SetStaticDefaults()
 	{
 		Main.npcFrameCount[NPC.type] = 1;
-		NPCSpawnManager.RegisterNPC(Type);
 	}
 
 	public override void SetDefaults()

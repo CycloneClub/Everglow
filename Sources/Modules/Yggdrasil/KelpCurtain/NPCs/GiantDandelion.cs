@@ -4,7 +4,6 @@ using Everglow.Yggdrasil.KelpCurtain.Items.Accessories;
 using Everglow.Yggdrasil.KelpCurtain.Items.Weapons;
 using Everglow.Yggdrasil.KelpCurtain.Items.Weapons.UnderwaterTreasury;
 using Everglow.Yggdrasil.KelpCurtain.Projectiles.Enemies;
-using SubworldLibrary;
 using Terraria.GameContent.ItemDropRules;
 
 namespace Everglow.Yggdrasil.KelpCurtain.NPCs;
@@ -165,7 +164,6 @@ public class GiantDandelion : ModNPC
 		// integer of at least 2, so the whole texture is one frame (the derived value is recorded
 		// in 03-BIOLOGY.json as frame_count).
 		Main.npcFrameCount[NPC.type] = 1;
-		NPCSpawnManager.RegisterNPC(Type);
 
 		// The design row's 免疫 cell is empty, so no specific debuff immunity is declared. The
 		// 击退抗性 免疫击退 cell is expressed as NPC.knockBackResist = 0f in SetDefaults instead.
@@ -640,37 +638,6 @@ public class GiantDandelion : ModNPC
 				}
 			}
 		}
-	}
-
-	/// <summary>
-	/// Subworld-only spawning (BIO-06). <c>NPCSpawnManager.EditSpawnPool</c> returns early outside
-	/// Yggdrasil, so the per-creature gate is the real isolation, and
-	/// <see cref="KelpCurtainBiome.IsKelpCurtainLayer"/> is the server-safe layer predicate because
-	/// this hook runs in single player or on the server only, where the client camera is zero.
-	/// This creature is a land walker, so submerged spawn tiles and water spawns are rejected. The
-	/// design calls it 稀有 and supplies no weight, so a deliberately low 0.25f (band 0.1f-0.5f,
-	/// lower than every other tranche creature) is used (D-34).
-	/// </summary>
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
-		{
-			return 0f;
-		}
-
-		if (spawnInfo.Water)
-		{
-			return 0f;
-		}
-
-		int tileX = spawnInfo.SpawnTileX;
-		int tileY = spawnInfo.SpawnTileY;
-		if (WorldGen.InWorld(tileX, tileY, 1) && Main.tile[tileX, tileY].LiquidAmount > 0)
-		{
-			return 0f;
-		}
-
-		return 0.25f;
 	}
 
 	/// <summary>

@@ -17,6 +17,9 @@ public abstract class ModEvent : ModType
 
 	public virtual bool IsBackground => false;
 
+	/// <summary>是否接管普通自然刷怪；默认事件不影响区域刷怪规则。</summary>
+	public virtual bool OverridesNaturalSpawning => false;
+
 	/// <summary>
 	/// Opts a registered, single-instance event into current-world server authority.
 	/// Legacy events keep their existing update and activation behavior until migrated.

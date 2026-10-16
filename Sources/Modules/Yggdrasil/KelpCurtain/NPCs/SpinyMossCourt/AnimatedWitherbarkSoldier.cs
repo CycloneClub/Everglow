@@ -1,6 +1,5 @@
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
-using SubworldLibrary;
 using Terraria.DataStructures;
 using Terraria.GameContent.ItemDropRules;
 
@@ -123,7 +122,6 @@ public class AnimatedWitherbarkSoldier : ModNPC
 	{
 		// No approved sprite exists, so there is nothing to slice: the whole texture is one frame.
 		Main.npcFrameCount[NPC.type] = 1;
-		NPCSpawnManager.RegisterNPC(Type);
 
 		// 免疫 中毒 (the design row's 免疫 cell): the poisoned debuff is the only immunity of this variant.
 		NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.Poisoned] = true;
@@ -383,33 +381,6 @@ public class AnimatedWitherbarkSoldier : ModNPC
 
 		State = AnimatedWitherbarkSoldierState.Neutral;
 		NPC.netUpdate = true;
-	}
-
-	/// <summary>
-	/// 庭院的基础敌怪单位, 也拥有最高的刷新权重: this variant carries the phase's highest land weight (the top of
-	/// the D-54 land band) because the design makes it the courtyard's most common unit, and the design's other
-	/// three variants return lower land weights. Only ever inside Yggdrasil and inside the Kelp Curtain layer
-	/// (BIO-06): <c>NPCSpawnManager.EditSpawnPool</c> returns early outside the subworld, so this per-creature
-	/// gate is the real isolation, and <see cref="KelpCurtainBiome.IsKelpCurtainLayer"/> is the server-safe layer
-	/// predicate because the hook runs in single player or on the server only, where the client camera is zero
-	/// (D-52/D-55). The design's 刺苔庭园 is an above-water courtyard, so the land condition is its own 地表
-	/// reading (Pitfall 6).
-	/// </summary>
-	/// <param name="spawnInfo">The engine's spawn context.</param>
-	/// <returns>The highest land weight, or <c>0f</c> outside the design's context.</returns>
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
-		{
-			return 0f;
-		}
-
-		if (!KelpCurtainSpawnConditions.IsDryLand(spawnInfo))
-		{
-			return 0f;
-		}
-
-		return 1.5f;
 	}
 
 	/// <summary>

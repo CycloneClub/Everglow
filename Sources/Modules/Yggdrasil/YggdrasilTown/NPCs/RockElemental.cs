@@ -20,7 +20,6 @@ public class RockElemental : ModNPC
 	public override void SetStaticDefaults()
 	{
 		Main.npcFrameCount[NPC.type] = 8;
-		NPCSpawnManager.RegisterNPC(Type);
 		NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.Confused] = true;
 		NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.Poisoned] = true;
 		NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.OnFire] = true;

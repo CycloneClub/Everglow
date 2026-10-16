@@ -1,6 +1,6 @@
 using Everglow.Yggdrasil.Common;
+using Everglow.Yggdrasil.KelpCurtain.NPCSpawn;
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
-using SubworldLibrary;
 using Terraria.GameContent.ItemDropRules;
 
 namespace Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake;
@@ -122,7 +122,6 @@ public class WaterStrider : ModNPC
 	{
 		// No approved sprite exists, so there is nothing to slice: the whole texture is one frame.
 		Main.npcFrameCount[NPC.type] = 1;
-		NPCSpawnManager.RegisterNPC(Type);
 
 		// 免疫 中毒、潮湿 (the design row's 免疫 cell): exactly these two immunities. The design's 潮湿
 		// maps to the vanilla BuffID.Wet, verified present in this tML build (04-DEVIATIONS.md section 10).
@@ -258,29 +257,18 @@ public class WaterStrider : ModNPC
 	{
 	}
 
-	/// <summary>
-	/// 只会在水面上刷新, and only ever inside Yggdrasil (BIO-06). <c>NPCSpawnManager.EditSpawnPool</c>
-	/// returns early outside the subworld, so this per-creature gate is the real isolation, and
-	/// <see cref="KelpCurtainBiome.IsKelpCurtainLayer"/> is the server-safe layer predicate because the
-	/// hook runs in single player or on the server only, where the client camera is zero (D-52/D-55).
-	/// The surface test is the design's own 水面上 condition, kept distinct from an ordinary water spawn
-	/// (Pitfall 6).
-	/// </summary>
-	/// <param name="spawnInfo">The engine's spawn context.</param>
-	/// <returns>The conservative water weight, or <c>0f</c> outside the design's context.</returns>
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
+	/// <summary>仅自然生成时沿原生落地候选所在水柱移到水面，不影响召唤或 AI 创建。</summary>
+	public override int SpawnNPC(int tileX, int tileY)
 	{
-		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
+		if (!YggdrasilWorld.InYggdrasil)
 		{
-			return 0f;
+			return base.SpawnNPC(tileX, tileY);
 		}
-
-		if (!KelpCurtainSpawnConditions.IsWaterSurface(spawnInfo))
+		if (!NPCSpawn.KelpCurtainSpawnConditions.TryFindWaterSurface(tileX, tileY, NPC.width, NPC.height, out Vector2 feet))
 		{
-			return 0f;
+			return Main.maxNPCs;
 		}
-
-		return KelpCurtainSpawnConditions.WaterWeight;
+		return NPC.NewNPC(NPC.GetSpawnSourceForNaturalSpawn(), (int)feet.X, (int)feet.Y, Type);
 	}
 
 	/// <summary>

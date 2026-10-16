@@ -1,6 +1,5 @@
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
-using SubworldLibrary;
 using Terraria.DataStructures;
 using Terraria.GameContent.ItemDropRules;
 
@@ -193,7 +192,6 @@ public class GlowSalamander : ModNPC
 		// so whichever sheet the D-49 migration lands must carry the variant frames the synced
 		// NPC.localAI[1] slot selects (OQ2).
 		Main.npcFrameCount[NPC.type] = 1;
-		NPCSpawnManager.RegisterNPC(Type);
 
 		// 免疫 中毒 (the design row's 免疫 cell): the poisoned debuff is the only immunity.
 		NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.Poisoned] = true;
@@ -401,30 +399,6 @@ public class GlowSalamander : ModNPC
 			Main.dust[dust].noGravity = true;
 			Main.dust[dust].scale = Main.rand.NextFloat(0.6f, 1.1f);
 		}
-	}
-
-	/// <summary>
-	/// 在水下生成, and only ever inside Yggdrasil (BIO-06). <c>NPCSpawnManager.EditSpawnPool</c> returns
-	/// early outside the subworld, so this per-creature gate is the real isolation, and
-	/// <see cref="KelpCurtainBiome.IsKelpCurtainLayer"/> is the server-safe layer predicate because the
-	/// hook runs in single player or on the server only, where the client camera is zero (D-52/D-55).
-	/// The underwater test is the design's own 在水下生成 condition (Pitfall 6).
-	/// </summary>
-	/// <param name="spawnInfo">The engine's spawn context.</param>
-	/// <returns>The conservative water weight, or <c>0f</c> outside the design's context.</returns>
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
-		{
-			return 0f;
-		}
-
-		if (!spawnInfo.Water)
-		{
-			return 0f;
-		}
-
-		return KelpCurtainSpawnConditions.WaterWeight;
 	}
 
 	/// <summary>

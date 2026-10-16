@@ -9,6 +9,8 @@ namespace Everglow.Myth.LanternMoon.LanternCommon;
 
 public class LanternMoonInvasionEvent : ReplicaEvent
 {
+	public override bool OverridesNaturalSpawning => true;
+
 	public bool Boss15Started = false;
 
 	public bool Boss15Ended = false;
