@@ -2,16 +2,20 @@ using Everglow.Commons.DataStructures;
 using Everglow.Commons.Graphics;
 using Everglow.Commons.Templates.Weapons;
 using Everglow.Myth.LanternMoon.Items.Weapons;
+using ReLogic.Utilities;
 using Terraria.Audio;
-using Terraria.DataStructures;
 
 namespace Everglow.Myth.LanternMoon.Projectiles.Weapons;
 
-public class KeroseneLanternFlameThrower_Hold : HandholdProjectile, IWarpProjectile_warpStyle2
+public class KeroseneLanternFlameThrower_Hold : HandheldProjectile, IWarpProjectile_warpStyle2
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
 
 	public int Timer = 0;
+
+	private SlotId beginSoundSlot = SlotId.Invalid;
+	private SlotId cycleSoundSlot = SlotId.Invalid;
+	private bool playedEndSound;
 
 	public struct SubProj
 	{
@@ -33,17 +37,16 @@ public class KeroseneLanternFlameThrower_Hold : HandholdProjectile, IWarpProject
 		DrawOffset = new Vector2(-6, -8);
 	}
 
-	public override void OnSpawn(IEntitySource source)
-	{
-		SoundEngine.PlaySound(new SoundStyle(ModAsset.Flamethrower_begin_Mod), Projectile.Center);
-	}
-
 	public override void AI()
 	{
+		if (Timer == 0)
+		{
+			beginSoundSlot = SoundEngine.PlaySound(new SoundStyle(ModAsset.Flamethrower_begin_Mod), Projectile.Center);
+		}
 		Timer++;
 		float shootSpeed = GetShootSpeed();
 		Vector2 vel = (Projectile.rotation - MathHelper.PiOver4).ToRotationVector2() * shootSpeed;
-		Vector2 pos = Projectile.Center + vel.NormalizeSafe() * (32 - shootSpeed) + DrawOffset;
+		Vector2 pos = Projectile.Center + vel.NormalizeSafe() * (32 - shootSpeed) + GravityDrawOffset;
 		var sub = new SubProj
 		{
 			Pos = pos,
@@ -77,17 +80,18 @@ public class KeroseneLanternFlameThrower_Hold : HandholdProjectile, IWarpProject
 		if (player.wet)
 		{
 			Projectile.Kill();
+			return;
 		}
 
 		player.heldProj = Projectile.whoAmI;
-		ArmRootPos = player.MountedCenter + new Vector2(-4 * player.direction, -2);
+		ArmRootPos = player.MountedCenter + new Vector2(-4 * player.direction, -2 * player.gravDir);
 		player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (Projectile.rotation - MathF.PI * 0.25f) * player.gravDir - MathF.PI * 0.5f);
 		int dir = 1;
-		if (Main.MouseWorld.X < player.MountedCenter.X)
+		if (AimPosition.X < player.MountedCenter.X)
 		{
 			dir = -1;
 		}
-		Vector2 mouseToPlayer = Main.MouseWorld - ArmRootPos;
+		Vector2 mouseToPlayer = AimPosition - ArmRootPos;
 		mouseToPlayer = mouseToPlayer.NormalizeSafe();
 		float powerRate = 1;
 		if (player.HeldItem is not null && player.HeldItem.type == ModContent.ItemType<KeroseneLanternFlameThrower>())
@@ -97,9 +101,10 @@ public class KeroseneLanternFlameThrower_Hold : HandholdProjectile, IWarpProject
 		}
 		if (player.controlUseItem)
 		{
+			playedEndSound = false;
 			if (Timer % (int)(45 * 2.5f / (powerRate + 2)) == (int)(15 * 2.5f / (powerRate + 2)))
 			{
-				SoundEngine.PlaySound(new SoundStyle(ModAsset.Flamethrower_cycle_Mod).WithPitchOffset(powerRate), Projectile.Center);
+				cycleSoundSlot = SoundEngine.PlaySound(new SoundStyle(ModAsset.Flamethrower_cycle_Mod).WithPitchOffset(powerRate), Projectile.Center);
 			}
 			float addRot = -MathF.Asin(Vector3.Cross(new Vector3(mouseToPlayer, 0), new Vector3(new Vector2(0, 1).RotatedBy(Projectile.rotation - Math.PI * 0.75), 0)).Z);
 			addRot *= LerpFactorOfRotation;
@@ -111,16 +116,24 @@ public class KeroseneLanternFlameThrower_Hold : HandholdProjectile, IWarpProject
 			Projectile.Center = ArmRootPos + new Vector2(0, 1).RotatedBy(Projectile.rotation - Math.PI * 0.75) * DepartLength;
 			Projectile.timeLeft = player.itemTimeMax;
 			float shootSpeed = GetShootSpeed();
-			if (Math.Abs(addRot) > 0.02f
-				|| Timer % 2 == 1)
+			if (Projectile.owner == Main.myPlayer && (Math.Abs(addRot) > 0.02f
+				|| Timer % 2 == 1))
 			{
 				Vector2 vel = (Projectile.rotation - MathHelper.PiOver4).ToRotationVector2() * shootSpeed;
-				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + vel.NormalizeSafe() * 60 + DrawOffset, vel, ModContent.ProjectileType<KeroseneLanternFlameThrower_Shoot>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + vel.NormalizeSafe() * 60 + GravityDrawOffset, vel, ModContent.ProjectileType<KeroseneLanternFlameThrower_Shoot>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
 			}
 		}
-		else
+		else if (!playedEndSound)
 		{
-			SoundEngine.StopTrackedSounds();
+			playedEndSound = true;
+			if (SoundEngine.TryGetActiveSound(beginSoundSlot, out var beginSound))
+			{
+				beginSound.Stop();
+			}
+			if (SoundEngine.TryGetActiveSound(cycleSoundSlot, out var cycleSound))
+			{
+				cycleSound.Stop();
+			}
 			SoundEngine.PlaySound(new SoundStyle(ModAsset.Flamethrower_end_Mod).WithPitchOffset(Math.Clamp(powerRate, -1, 0)), Projectile.Center);
 		}
 		player.direction = dir;
@@ -138,25 +151,18 @@ public class KeroseneLanternFlameThrower_Hold : HandholdProjectile, IWarpProject
 		return 12f;
 	}
 
-	public override bool PreDraw(ref Color lightColor)
-	{
-		DrawBaseTexture(lightColor);
-
-		return false;
-	}
-
 	public override void DrawBaseTexture(Color lightColor)
 	{
 		Player player = Main.player[Projectile.owner];
 		var texMain = ModAsset.KeroseneLanternFlameThrower_Hold.Value;
 		SpriteEffects se = SpriteEffects.None;
-		if (player.direction == -1)
+		if (player.direction * player.gravDir == -1)
 		{
 			se = SpriteEffects.FlipVertically;
 		}
 
-		float rot = Projectile.rotation - (float)(Math.PI * 0.25) + TextureRotation * player.direction;
-		Vector2 drawCenter = Projectile.Center - Main.screenPosition + DrawOffset;
+		float rot = Projectile.rotation - (float)(Math.PI * 0.25) + TextureRotation * player.direction * player.gravDir;
+		Vector2 drawCenter = Projectile.Center - Main.screenPosition + GravityDrawOffset;
 
 		var bars0 = new List<Vertex2D>();
 		var bars1 = new List<Vertex2D>();
@@ -235,24 +241,16 @@ public class KeroseneLanternFlameThrower_Hold : HandholdProjectile, IWarpProject
 			}
 			float factor = (i + 1) / (float)ShootProjPos.Count * mulFac;
 
-			float width = 0;
-			if (i >= 0)
+			float width = 1f;
+			if (i >= ShootProjPos.Count - 5)
 			{
-				width = 1f;
-				if (i >= ShootProjPos.Count - 5)
-				{
-					width = 1 - MathF.Cos((ShootProjPos.Count - i) / 5f * MathHelper.Pi);
-					width *= 0.5f;
-				}
+				width = 1 - MathF.Cos((ShootProjPos.Count - i) / 5f * MathHelper.Pi);
+				width *= 0.5f;
 			}
 
 			// timeValue, animate the trail.
 			float timeValue = Timer * 0.05f;
-			Vector2 drawPos = Projectile.Center;
-			if (i >= 0)
-			{
-				drawPos = ShootProjPos[i].Pos;
-			}
+			Vector2 drawPos = ShootProjPos[i].Pos;
 			Color drawColor = GetTrailColor(i, style);
 			drawPos += offset;
 			bars0.Add(drawPos + new Vector2(0, 1).RotatedBy(MathHelper.TwoPi * 2f / 3f) * trailWidth, drawColor, ModifyWarpTexCoordinate(factor, timeValue, 0, width));

@@ -1,11 +1,12 @@
+using Everglow.Commons.Utilities;
 using Terraria.DataStructures;
 
 namespace Everglow.Commons.Templates.Weapons;
 
 /// <summary>
-/// Handhold projectile.
+/// Handheld projectile.
 /// </summary>
-public abstract class HandholdProjectile : ModProjectile
+public abstract class HandheldProjectile : ModProjectile
 {
 	/// <summary>
 	/// The rotation of texture.
@@ -35,10 +36,53 @@ public abstract class HandholdProjectile : ModProjectile
 	public float DepartLength = 50;
 	public Vector2 ArmRootPos = Vector2.zeroVector;
 
+	/// <summary>
+	/// World-space cursor of the owner. Main.MouseWorld already accounts for local gravity.
+	/// </summary>
+	protected Vector2 AimPosition
+	{
+		get
+		{
+			Player player = Main.player[Projectile.owner];
+			player.ListenMouseWorld();
+			return Projectile.owner == Main.myPlayer ? Main.MouseWorld : player.MouseWorld();
+		}
+	}
+
+	protected Vector2 GravityDrawOffset => DrawOffset * new Vector2(1, Main.player[Projectile.owner].gravDir);
+
+	private bool rotationInitialized;
+
 	public override void OnSpawn(IEntitySource source)
 	{
-		base.OnSpawn(source);
+		InitializeRotation();
 	}
+
+	private void InitializeRotation()
+	{
+		rotationInitialized = true;
+		// Spawn velocity is synchronized by Terraria, unlike the observer's cursor.
+		Projectile.rotation = Projectile.velocity.SafeNormalize(Vector2.UnitX * Main.player[Projectile.owner].direction).ToRotation() + MathHelper.PiOver4;
+	}
+
+	public override bool PreAI()
+	{
+		Player player = Main.player[Projectile.owner];
+		if (!player.active || player.dead)
+		{
+			Projectile.Kill();
+			return false;
+		}
+		// Received projectiles do not run OnSpawn.
+		if (!rotationInitialized)
+		{
+			InitializeRotation();
+		}
+		player.ListenMouseWorld();
+		return true;
+	}
+
+	public override bool ShouldUpdatePosition() => false;
 
 	public override void SetDefaults()
 	{
@@ -69,13 +113,13 @@ public abstract class HandholdProjectile : ModProjectile
 	{
 		Player player = Main.player[Projectile.owner];
 		player.heldProj = Projectile.whoAmI;
-		ArmRootPos = player.MountedCenter + new Vector2(-4 * player.direction, -2);
+		ArmRootPos = player.MountedCenter + new Vector2(-4 * player.direction, -2 * player.gravDir);
 		player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (Projectile.rotation - MathF.PI * 0.25f) * player.gravDir - MathF.PI * 0.5f);
-		Vector2 mouseToPlayer = Main.MouseWorld - ArmRootPos;
-		mouseToPlayer = Vector2.Normalize(mouseToPlayer);
+		Vector2 mouseToPlayer = AimPosition - ArmRootPos;
+		mouseToPlayer = mouseToPlayer.SafeNormalize(Vector2.UnitX * player.direction);
 		if (player.controlUseItem)
 		{
-			float addRot = -MathF.Asin(Vector3.Cross(new Vector3(mouseToPlayer, 0), new Vector3(new Vector2(0, 1).RotatedBy(Projectile.rotation - Math.PI * 0.75), 0)).Z);
+			float addRot = MathHelper.WrapAngle(mouseToPlayer.ToRotation() + MathHelper.PiOver4 - Projectile.rotation);
 			addRot *= LerpFactorOfRotation;
 			if (Math.Abs(addRot) > MaxRotationSpeed)
 			{
@@ -102,7 +146,7 @@ public abstract class HandholdProjectile : ModProjectile
 
 	public virtual void RemoveExtraSameProjectiles(Player owner)
 	{
-		if (owner.ownedProjectileCounts[Projectile.type] > 1)
+		if (Projectile.owner == Main.myPlayer && owner.ownedProjectileCounts[Projectile.type] > 1)
 		{
 			int count = owner.ownedProjectileCounts[Projectile.type];
 			for (int a = Main.projectile.Length - 1; a >= 0; a--)
@@ -137,12 +181,12 @@ public abstract class HandholdProjectile : ModProjectile
 		Player player = Main.player[Projectile.owner];
 		var texMain = (Texture2D)ModContent.Request<Texture2D>(Texture);
 		SpriteEffects se = SpriteEffects.None;
-		if (player.direction == -1)
+		if (player.direction * player.gravDir == -1)
 		{
 			se = SpriteEffects.FlipVertically;
 		}
 
-		float rot = Projectile.rotation - (float)(Math.PI * 0.25) + TextureRotation * player.direction;
-		Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition + DrawOffset, null, lightColor, rot, texMain.Size() / 2f, 1f, se, 0);
+		float rot = Projectile.rotation - (float)(Math.PI * 0.25) + TextureRotation * player.direction * player.gravDir;
+		Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition + GravityDrawOffset, null, lightColor, rot, texMain.Size() / 2f, 1f, se, 0);
 	}
 }

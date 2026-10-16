@@ -27,7 +27,7 @@ public class HandgunOfEnlightment : ModItem
 		Item.shootSpeed = 16f;
 		Item.useAmmo = AmmoID.Bullet;
 
-		Item.value = ItemRarityID.Green;
+		Item.rare = ItemRarityID.Green;
 		Item.value = Item.buyPrice(silver: 3);
 	}
 
