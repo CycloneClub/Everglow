@@ -11,7 +11,7 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords
 			Item.damage = 14;
 			Item.knockBack = 1.22f;
 			Item.rare = ItemRarityID.Green;
-			Item.value = 25000;
+			Item.value = Item.sellPrice(0, 0, 50, 0);
 			Item.shoot = ModContent.ProjectileType<SwordfishBeak_Pro>();
 			PowerfulStabDamageFlat = 4f;
 			StaminaCost = 0.75f;

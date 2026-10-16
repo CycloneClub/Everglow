@@ -11,7 +11,7 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords
 			Item.damage = 16;
 			Item.knockBack = 1.37f;
 			Item.rare = ItemRarityID.Green;
-			Item.value = 9000;
+			Item.value = Item.sellPrice(0, 0, 18, 0);
 			Item.shoot = ModContent.ProjectileType<VertebralSpur_Pro>();
 			PowerfulStabDamageFlat = 4f;
 			PowerfulStabProj = ModContent.ProjectileType<VertebralSpur_Pro_Stab>();

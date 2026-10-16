@@ -10,7 +10,7 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords
 			Item.damage = 32;
 			Item.knockBack = 2;
 			Item.rare = ItemRarityID.Orange;
-			Item.value = 200000;
+			Item.value = Item.sellPrice(0, 4, 0, 0);
 			Item.shoot = ModContent.ProjectileType<EternalNight_Pro>();
 			PowerfulStabDamageFlat = 4f;
 			PowerfulStabProj = ModContent.ProjectileType<EternalNight_Pro_Stab>();
