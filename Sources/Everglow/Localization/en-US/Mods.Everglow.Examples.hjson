@@ -1,0 +1,38 @@
+AdvancedMirror: {
+	Name: Advanced Mirror Wall Demo
+	Tooltip: "Tintable translucent mirror reflecting tiles, players, NPCs and dropped items\nHold to tune; ordinary mirrors do not flip by default\nRequires Color/White lighting; settings affect only this client"
+	Panel: {
+		Title: Advanced mirror — drag to move
+		OffsetX: X offset
+		OffsetY: Y offset
+		Scale: Scale
+		Blur: Blur spacing
+		Sigma: Gaussian sigma
+		NormalPattern: Funhouse (click to cycle)
+		PatternWave: Original ripples
+		PatternHorizontalWave: Wide / narrow
+		PatternVerticalWave: Tall / short
+		PatternBulge: Bulge
+		PatternPinch: Pinch
+		PatternTwist: Swirl
+		NormalStrength: Normal strength
+		NormalPeriod: Normal period
+		Pitch: Pitch (degrees)
+		Yaw: Yaw (degrees)
+		Roll: Roll (degrees)
+		Distance: Perspective depth
+		SurfaceRed: Surface R
+		SurfaceGreen: Surface G
+		SurfaceBlue: Surface B
+		SurfaceOpacity: Surface opacity
+		ReflectionRed: Reflection R
+		ReflectionGreen: Reflection G
+		ReflectionBlue: Reflection B
+		ReflectionOpacity: Reflection strength
+		Flip: Flip entire foreground
+		On: On
+		Off: Off
+		Reset: Reset
+		ScrollHint: Scroll here for more parameters
+	}
+}

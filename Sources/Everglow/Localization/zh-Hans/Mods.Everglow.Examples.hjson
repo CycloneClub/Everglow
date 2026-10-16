@@ -1,0 +1,38 @@
+AdvancedMirror: {
+	Name: 扩展镜墙演示
+	Tooltip: "可调色和透明度的镜墙，反射方块、玩家、NPC 和掉落物\n手持时显示独立调参面板；普通镜面默认不翻转\n需要彩色或白色光照；参数仅影响本客户端"
+	Panel: {
+		Title: 扩展镜墙调参 · 拖动标题移动
+		OffsetX: X 偏移
+		OffsetY: Y 偏移
+		Scale: 缩放
+		Blur: 模糊采样间距
+		Sigma: 高斯 Sigma
+		NormalPattern: 哈哈镜（点击切换）
+		PatternWave: 原始双向波纹
+		PatternHorizontalWave: 横向胖瘦
+		PatternVerticalWave: 纵向高矮
+		PatternBulge: 鼓包放大
+		PatternPinch: 凹陷缩小
+		PatternTwist: 旋涡扭曲
+		NormalStrength: 法线扰动强度
+		NormalPeriod: 法线贴图周期
+		Pitch: 俯仰角（度）
+		Yaw: 偏航角（度）
+		Roll: 滚转角（度）
+		Distance: 透视距离
+		SurfaceRed: 底色 R
+		SurfaceGreen: 底色 G
+		SurfaceBlue: 底色 B
+		SurfaceOpacity: 底色不透明度
+		ReflectionRed: 倒影 R
+		ReflectionGreen: 倒影 G
+		ReflectionBlue: 倒影 B
+		ReflectionOpacity: 倒影强度
+		Flip: 前景整体左右翻转
+		On: 开启
+		Off: 关闭
+		Reset: 恢复默认
+		ScrollHint: 在面板内滚轮查看其余参数
+	}
+}
