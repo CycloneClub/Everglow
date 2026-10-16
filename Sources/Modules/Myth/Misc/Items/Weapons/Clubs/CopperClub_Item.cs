@@ -7,7 +7,7 @@ public class CopperClub_Item : ClubItem
 	public override void SetCustomDefaults()
 	{
 		Item.damage = 13;
-		Item.value = 450;
+		Item.value = Item.buyPrice(0, 0, 4, 50);
 		Item.rare = ItemRarityID.White;
 		Item.knockBack = 5.5f;
 		Item.useTime = 12;

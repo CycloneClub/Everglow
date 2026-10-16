@@ -7,7 +7,7 @@ public class ChlorophyteClub_Item : ClubItem
 	public override void SetCustomDefaults()
 	{
 		Item.damage = 60;
-		Item.value = 276000;
+		Item.value = Item.buyPrice(0, 27, 60, 0);
 		Item.rare = ItemRarityID.Lime;
 		Item.knockBack = 6f;
 		Item.useTime = 12;

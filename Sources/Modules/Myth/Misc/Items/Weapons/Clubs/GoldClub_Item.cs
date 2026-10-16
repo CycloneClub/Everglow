@@ -7,7 +7,7 @@ public class GoldClub_Item : ClubItem
 	public override void SetCustomDefaults()
 	{
 		Item.damage = 25;
-		Item.value = 9000;
+		Item.value = Item.buyPrice(0, 0, 90, 0);
 		Item.rare = ItemRarityID.White;
 		Item.knockBack = 6.5f;
 		Item.useTime = 12;

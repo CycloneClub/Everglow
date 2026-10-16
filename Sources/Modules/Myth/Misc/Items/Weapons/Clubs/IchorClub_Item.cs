@@ -7,7 +7,7 @@ public class IchorClub_Item : ClubItem
 	public override void SetCustomDefaults()
 	{
 		Item.damage = 24;
-		Item.value = 200000;
+		Item.value = Item.buyPrice(0, 20, 0, 0);
 		Item.rare = ItemRarityID.LightRed;
 		Item.knockBack = 4f;
 		Item.useTime = 12;

@@ -7,7 +7,7 @@ public class TinClub_Item : ClubItem
 	public override void SetCustomDefaults()
 	{
 		Item.damage = 15;
-		Item.value = 675;
+		Item.value = Item.buyPrice(0, 0, 6, 75);
 		Item.rare = ItemRarityID.White;
 		Item.knockBack = 5.5f;
 		Item.useTime = 12;

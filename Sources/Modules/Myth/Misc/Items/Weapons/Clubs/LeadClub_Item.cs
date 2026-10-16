@@ -7,7 +7,7 @@ public class LeadClub_Item : ClubItem
 	public override void SetCustomDefaults()
 	{
 		Item.damage = 20;
-		Item.value = 2700;
+		Item.value = Item.buyPrice(0, 0, 27, 0);
 		Item.rare = ItemRarityID.White;
 		Item.knockBack = 5.5f;
 		Item.useTime = 12;

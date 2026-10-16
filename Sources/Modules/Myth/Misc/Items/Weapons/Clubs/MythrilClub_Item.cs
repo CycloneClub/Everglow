@@ -7,7 +7,7 @@ public class MythrilClub_Item : ClubItem
 	public override void SetCustomDefaults()
 	{
 		Item.damage = 34;
-		Item.value = 103500;
+		Item.value = Item.buyPrice(0, 10, 35, 0);
 		Item.rare = ItemRarityID.LightRed;
 		Item.knockBack = 6f;
 		Item.useTime = 12;

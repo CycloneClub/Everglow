@@ -7,7 +7,7 @@ public class CobaltClub_Item : ClubItem
 	public override void SetCustomDefaults()
 	{
 		Item.damage = 32;
-		Item.value = 69000;
+		Item.value = Item.buyPrice(0, 6, 90, 0);
 		Item.rare = ItemRarityID.LightRed;
 		Item.knockBack = 5f;
 		Item.useTime = 12;

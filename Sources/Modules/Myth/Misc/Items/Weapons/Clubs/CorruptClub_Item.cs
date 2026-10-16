@@ -7,7 +7,7 @@ public class CorruptClub_Item : ClubItem
 	public override void SetCustomDefaults()
 	{
 		Item.damage = 30;
-		Item.value = 13500;
+		Item.value = Item.buyPrice(0, 1, 35, 0);
 		Item.rare = ItemRarityID.Blue;
 		Item.knockBack = 5f;
 		Item.useTime = 12;

@@ -7,7 +7,7 @@ public class SpikeClub_Item : ClubItem
 	public override void SetCustomDefaults()
 	{
 		Item.damage = 26;
-		Item.value = 15000;
+		Item.value = Item.buyPrice(0, 1, 50, 0);
 		Item.rare = ItemRarityID.Green;
 		Item.knockBack = 6f;
 		Item.useTime = 12;

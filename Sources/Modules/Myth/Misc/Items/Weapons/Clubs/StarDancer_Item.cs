@@ -7,7 +7,7 @@ public class StarDancer_Item : ClubItem
 	public override void SetCustomDefaults()
 	{
 		Item.damage = 14;
-		Item.value = 50000;
+		Item.value = Item.buyPrice(0, 5, 0, 0);
 		Item.rare = ItemRarityID.Green;
 		Item.knockBack = 5f;
 		Item.useTime = 12;

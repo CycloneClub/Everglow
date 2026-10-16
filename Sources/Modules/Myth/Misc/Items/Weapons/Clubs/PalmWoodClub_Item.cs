@@ -7,7 +7,7 @@ public class PalmWoodClub_Item : ClubItem
 	public override void SetCustomDefaults()
 	{
 		Item.damage = 9;
-		Item.value = 100;
+		Item.value = Item.buyPrice(0, 0, 1, 0);
 		Item.rare = ItemRarityID.White;
 		Item.knockBack = 6f;
 		Item.useTime = 12;

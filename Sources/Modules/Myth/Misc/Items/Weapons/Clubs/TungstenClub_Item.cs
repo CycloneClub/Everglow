@@ -7,7 +7,7 @@ public class TungstenClub_Item : ClubItem
 	public override void SetCustomDefaults()
 	{
 		Item.damage = 22;
-		Item.value = 6750;
+		Item.value = Item.buyPrice(0, 0, 67, 50);
 		Item.rare = ItemRarityID.White;
 		Item.knockBack = 6f;
 		Item.useTime = 12;

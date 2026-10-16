@@ -7,7 +7,7 @@ public class CactusClub_Item : ClubItem
 	public override void SetCustomDefaults()
 	{
 		Item.damage = 8;
-		Item.value = 1800;
+		Item.value = Item.buyPrice(0, 0, 18, 0);
 		Item.rare = ItemRarityID.White;
 		Item.knockBack = 4.5f;
 		Item.useTime = 12;

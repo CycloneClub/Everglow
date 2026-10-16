@@ -7,7 +7,7 @@ public class SilverClub_Item : ClubItem
 	public override void SetCustomDefaults()
 	{
 		Item.damage = 21;
-		Item.value = 4500;
+		Item.value = Item.buyPrice(0, 0, 45, 0);
 		Item.rare = ItemRarityID.White;
 		Item.knockBack = 6f;
 		Item.useTime = 12;

@@ -7,7 +7,7 @@ public class AdamantiteClub_Item : ClubItem
 	public override void SetCustomDefaults()
 	{
 		Item.damage = 36;
-		Item.value = 138000;
+		Item.value = Item.buyPrice(0, 13, 80, 0);
 		Item.rare = ItemRarityID.LightRed;
 		Item.knockBack = 6f;
 		Item.useTime = 12;

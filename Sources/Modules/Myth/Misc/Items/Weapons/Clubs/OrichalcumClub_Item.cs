@@ -7,7 +7,7 @@ public class OrichalcumClub_Item : ClubItem
 	public override void SetCustomDefaults()
 	{
 		Item.damage = 34;
-		Item.value = 126500;
+		Item.value = Item.buyPrice(0, 12, 65, 0);
 		Item.rare = ItemRarityID.LightRed;
 		Item.knockBack = 6f;
 		Item.useTime = 12;
