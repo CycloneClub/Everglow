@@ -5,7 +5,7 @@ public class AmberFlamePipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.AmberFlame;
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.Amber_Flame_HeatMap.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(Commons.ModAsset.HeatMap_Ray.Value);
 	}
 
 	public override void BeginRender()

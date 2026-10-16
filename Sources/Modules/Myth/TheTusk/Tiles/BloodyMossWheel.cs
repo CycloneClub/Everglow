@@ -55,7 +55,7 @@ public class BloodyMossWheel : ModTile
 			zero = Vector2.Zero;
 		}
 
-		Texture2D BaseCo1 = ModAsset.ForgeWave.Value;
+		Texture2D BaseCo1 = Commons.ModAsset.Noise_Flame_2.Value;
 		Texture2D Sp1a = ModAsset.StonePanBottomLine.Value;
 		Texture2D Sp1b = ModAsset.StonePanBottomRedLight.Value;
 		Texture2D Sp1c = ModAsset.StonePanBottomFace.Value;

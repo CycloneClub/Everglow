@@ -27,7 +27,7 @@ internal class GrayFlowPipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModContent.Request<Effect>("Everglow/Myth/TheFirefly/VFXs/GrayFlow", AssetRequestMode.ImmediateLoad);
-		effect.Value.Parameters["uNoise"].SetValue(ModContent.Request<Texture2D>("Everglow/Example/VFX/Perlin", AssetRequestMode.ImmediateLoad).Value);
+		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Perlin.Value);
 	}
 
 	public override void BeginRender()

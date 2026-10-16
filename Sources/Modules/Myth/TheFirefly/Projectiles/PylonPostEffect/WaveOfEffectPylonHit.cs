@@ -25,8 +25,8 @@ public class WaveOfEffectPylonHit_CorruptPipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.WaveOfEffectPylonHit_Corrupt;
-		effect.Value.Parameters["uNoise"].SetValue(ModAsset.Hive_Cyber_Noise.Value);
-		effect.Value.Parameters["uPowder"].SetValue(ModAsset.Noise_Sand.Value);
+		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Hive_Cyber.Value);
+		effect.Value.Parameters["uPowder"].SetValue(Commons.ModAsset.Noise_Sand.Value);
 	}
 
 	public override void BeginRender()
@@ -120,8 +120,8 @@ internal class WaveOfEffectPylonHit_CrimsonPipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.WaveOfEffectPylonHit_Crimson;
-		effect.Value.Parameters["uNoise"].SetValue(ModAsset.Hive_Cyber_Noise.Value);
-		effect.Value.Parameters["uPowder"].SetValue(ModAsset.Noise_Sand.Value);
+		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Hive_Cyber.Value);
+		effect.Value.Parameters["uPowder"].SetValue(Commons.ModAsset.Noise_Sand.Value);
 	}
 
 	public override void BeginRender()

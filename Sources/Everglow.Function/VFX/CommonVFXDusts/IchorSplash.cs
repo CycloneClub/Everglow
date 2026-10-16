@@ -18,7 +18,7 @@ public class IchorSplashPipeline : Pipeline
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) * Main.GameViewMatrix.TransformationMatrix;
 		effect.Parameters["uTransform"].SetValue(model * projection);
 		effect.Parameters["uNoise"].SetValue(ModAsset.Noise_Cell.Value);
-		Texture2D flameColor = ModAsset.HeatMap_Ichor_Splash.Value;
+		Texture2D flameColor = ModAsset.HeatMap_Ichor_Drop.Value;
 		Ins.Batch.BindTexture<Vertex2D>(flameColor);
 		Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.None, SamplerState.LinearClamp, RasterizerState.CullNone);
 		effect.CurrentTechnique.Passes[0].Apply();

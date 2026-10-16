@@ -10,7 +10,7 @@ internal class WaveSprayPipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModContent.Request<Effect>("Everglow/Ocean/VFXs/WaveSpray", AssetRequestMode.ImmediateLoad);
-		effect.Value.Parameters["uNoise"].SetValue(ModAsset.Hive_Cyber_Noise.Value);
+		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Hive_Cyber.Value);
 	}
 
 	public override void BeginRender()

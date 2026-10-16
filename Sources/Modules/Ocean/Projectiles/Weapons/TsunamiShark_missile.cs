@@ -405,9 +405,9 @@ public class TsunamiShark_missile : ModProjectile
 			var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 			var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) * Main.GameViewMatrix.TransformationMatrix;
 			e.Parameters["uTransform"].SetValue(model * projection);
-			e.Parameters["tex0"].SetValue(ModAsset.Noise_Sand_Rectangle.Value);
+			e.Parameters["tex0"].SetValue(Commons.ModAsset.Noise_Sand_Rectangle.Value);
 			e.CurrentTechnique.Passes["Test"].Apply();
-			Texture2D t = ModAsset.Hive_Cyber_Noise_Thicker.Value;
+			Texture2D t = Commons.ModAsset.Hive_Cyber_Noise_Thicker.Value;
 			Main.graphics.GraphicsDevice.Textures[0] = t;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 			Main.spriteBatch.End();

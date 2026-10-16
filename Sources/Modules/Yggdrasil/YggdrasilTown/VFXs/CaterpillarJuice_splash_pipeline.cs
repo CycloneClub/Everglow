@@ -15,7 +15,7 @@ public class CaterpillarJuice_splash_pipeline : Pipeline
 		effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Cell.Value);
 		effect.Parameters["uTransform"].SetValue(model * projection);
 		effect.Parameters["uIlluminationThreshold"].SetValue(0.99f);
-		Texture2D FlameColor = ModAsset.HeatMap_Caterpillar_Juice_Splash.Value;
+		Texture2D FlameColor = ModAsset.HeatMap_Caterpillar_Juice_Drop.Value;
 		Ins.Batch.BindTexture<Vertex2D>(FlameColor);
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointClamp;
 		Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.None, SamplerState.PointClamp, RasterizerState.CullNone);

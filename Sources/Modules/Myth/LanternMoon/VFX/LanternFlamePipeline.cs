@@ -6,7 +6,7 @@ public class LanternFlamePipeline : Pipeline
 	{
 		effect = ModAsset.LanternFlame;
 		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Perlin.Value);
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Lantern_Flame.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(Commons.ModAsset.HeatMap_Lantern_Flame.Value);
 	}
 
 	public override void BeginRender()

@@ -112,7 +112,7 @@ public class TsunamiShark_marking : ModProjectile, IWarpProjectile
 		float value = (200 - Projectile.timeLeft) / 200f;
 		value = MathF.Sqrt(value);
 		float colorV = 0.9f * (1 - value);
-		Texture2D t = ModAsset.Hive_Cyber_Noise.Value;
+		Texture2D t = Commons.ModAsset.Noise_Hive_Cyber.Value;
 		float width = 120;
 		if (Projectile.timeLeft < 120)
 		{
@@ -270,7 +270,7 @@ public class TsunamiShark_marking : ModProjectile, IWarpProjectile
 		float value = (200 - Projectile.timeLeft) / 200f;
 		value = MathF.Sqrt(value);
 		float colorV = 0.9f * (1 - value);
-		Texture2D t = ModAsset.Hive_Cyber_Noise_Thicker.Value;
+		Texture2D t = Commons.ModAsset.Hive_Cyber_Noise_Thicker.Value;
 		float width = 120;
 		if (Projectile.timeLeft < 120)
 		{
