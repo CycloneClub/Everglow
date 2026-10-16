@@ -18,7 +18,6 @@ public class AmberMagicOrb : ModItem
 		Item.rare = ItemRarityID.Blue;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 4514;
-		Item.autoReuse = false;
 		Item.DamageType = DamageClass.Magic;
 		Item.mana = 18;
 		Item.noUseGraphic = true;

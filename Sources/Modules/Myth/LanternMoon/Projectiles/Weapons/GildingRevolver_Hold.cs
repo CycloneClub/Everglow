@@ -1,11 +1,10 @@
 using Everglow.Commons.Templates.Weapons;
 using Everglow.Myth.LanternMoon.Items.Weapons;
 using Terraria.Audio;
-using Terraria.DataStructures;
 
 namespace Everglow.Myth.LanternMoon.Projectiles.Weapons;
 
-public class GildingRevolver_Hold : HandholdProjectile
+public class GildingRevolver_Hold : HandheldProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
 
@@ -41,17 +40,13 @@ public class GildingRevolver_Hold : HandholdProjectile
 		ProjectileID.Sets.HeldProjDoesNotUsePlayerGfxOffY[Type] = true;
 	}
 
-	public override void OnSpawn(IEntitySource source)
-	{
-	}
-
 	public override void AI()
 	{
 		if (ReloadCooling <= 0)
 		{
 			if (NormalBulletTimer < 120)
 			{
-				NormalBulletTimer += 6 * (5f / Main.LocalPlayer.itemTimeMax);
+				NormalBulletTimer += 6 * (5f / Math.Max(Main.player[Projectile.owner].itemTimeMax, 1));
 			}
 
 			if (NormalBulletTimer > 120)
@@ -87,7 +82,7 @@ public class GildingRevolver_Hold : HandholdProjectile
 		{
 			if (proj is not null && proj.active && proj.type == ModContent.ProjectileType<LanternZone>() && proj.owner == Projectile.owner)
 			{
-				if ((Main.MouseWorld - proj.Center).Length() < 70)
+				if ((AimPosition - proj.Center).Length() < 70)
 				{
 					MouseInLanternZone = true;
 					break;
@@ -102,14 +97,14 @@ public class GildingRevolver_Hold : HandholdProjectile
 		Player player = Main.player[Projectile.owner];
 		player.heldProj = Projectile.whoAmI;
 		int dir = 1;
-		if (Main.MouseWorld.X < player.MountedCenter.X)
+		if (AimPosition.X < player.MountedCenter.X)
 		{
 			dir = -1;
 		}
 
-		ArmRootPos = player.MountedCenter + new Vector2(-4 * player.direction, -2);
-		Vector2 mouseToPlayer = Main.MouseWorld - ArmRootPos;
-		mouseToPlayer = Vector2.Normalize(mouseToPlayer);
+		ArmRootPos = player.MountedCenter + new Vector2(-4 * player.direction, -2 * player.gravDir);
+		Vector2 mouseToPlayer = AimPosition - ArmRootPos;
+		mouseToPlayer = mouseToPlayer.SafeNormalize(Vector2.UnitX * player.direction);
 		Projectile.rotation = mouseToPlayer.ToRotation() + MathHelper.PiOver4;
 		Projectile.Center = player.MountedCenter + mouseToPlayer * 12;
 		Item item = player.HeldItem;
@@ -158,6 +153,10 @@ public class GildingRevolver_Hold : HandholdProjectile
 
 	private void Shoot()
 	{
+		if (Projectile.owner != Main.myPlayer)
+		{
+			return;
+		}
 		Player player = Main.player[Projectile.owner];
 		var item = player.HeldItem;
 		if (item is not null
@@ -166,46 +165,48 @@ public class GildingRevolver_Hold : HandholdProjectile
 			&& gildingRevolver.ShootType >= 0)
 		{
 			Vector2 vel = (Projectile.rotation - MathHelper.PiOver4).ToRotationVector2().RotatedByRandom(0.02f) * item.shootSpeed;
-			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + vel.NormalizeSafe() * -2 + DrawOffset, vel, gildingRevolver.ShootType, item.damage, item.knockBack, Projectile.owner);
+			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + vel.NormalizeSafe() * -2 + GravityDrawOffset, vel, gildingRevolver.ShootType, item.damage, item.knockBack, Projectile.owner);
 			UsedBulletsCount++;
 			if (NormalBulletsCount == 6 || NormalBulletsCount == 3)
 			{
 				vel = (Projectile.rotation - MathHelper.PiOver4).ToRotationVector2().RotatedByRandom(0.02f) * item.shootSpeed / 4f;
-				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + vel.NormalizeSafe() * -2 + DrawOffset, vel, ModContent.ProjectileType<LanternFlameBullet>(), item.damage, item.knockBack, Projectile.owner);
+				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + vel.NormalizeSafe() * -2 + GravityDrawOffset, vel, ModContent.ProjectileType<LanternFlameBullet>(), item.damage, item.knockBack, Projectile.owner);
 			}
 		}
 	}
 
 	private void ShootPhantom()
 	{
-		SoundEngine.PlaySound(SoundID.Item101);
+		SoundEngine.PlaySound(SoundID.Item101, Projectile.Center);
+		if (Projectile.owner != Main.myPlayer)
+		{
+			return;
+		}
 		Player player = Main.player[Projectile.owner];
 		Item item = player.HeldItem;
 		if (item is null)
 		{
 			return;
 		}
-		Vector2 vel = (Main.MouseWorld - Projectile.Center).NormalizeSafe().RotatedByRandom(0.03f) * item.shootSpeed * 1.5f;
-		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + vel.NormalizeSafe() * -2 + DrawOffset, vel, ModContent.ProjectileType<LanternPhantomBullet>(), (int)(item.damage * 0.7f), item.knockBack, Projectile.owner);
+		Vector2 vel = (AimPosition - Projectile.Center).NormalizeSafe().RotatedByRandom(0.03f) * item.shootSpeed * 1.5f;
+		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + vel.NormalizeSafe() * -2 + GravityDrawOffset, vel, ModContent.ProjectileType<LanternPhantomBullet>(), (int)(item.damage * 0.7f), item.knockBack, Projectile.owner);
 	}
 
 	private void Shoot_RightClick()
 	{
+		if (Projectile.owner != Main.myPlayer)
+		{
+			return;
+		}
 		Player player = Main.player[Projectile.owner];
 		Item item = player.HeldItem;
 		if (item is null)
 		{
 			return;
 		}
-		Vector2 vel = (Main.MouseWorld - Projectile.Center).NormalizeSafe() * item.shootSpeed * 1.5f;
-		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + vel.NormalizeSafe() * -2 + DrawOffset, vel, ModContent.ProjectileType<LanternZoneBullet>(), item.damage, item.knockBack, Projectile.owner);
+		Vector2 vel = (AimPosition - Projectile.Center).NormalizeSafe() * item.shootSpeed * 1.5f;
+		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + vel.NormalizeSafe() * -2 + GravityDrawOffset, vel, ModContent.ProjectileType<LanternZoneBullet>(), item.damage, item.knockBack, Projectile.owner);
 		UsedBulletsCount++;
-	}
-
-	public override bool PreDraw(ref Color lightColor)
-	{
-		DrawBaseTexture(lightColor);
-		return false;
 	}
 
 	public override void DrawBaseTexture(Color lightColor)
@@ -220,12 +221,12 @@ public class GildingRevolver_Hold : HandholdProjectile
 		{
 			var texMain = ModAsset.GildingRevolver_Hold.Value;
 			SpriteEffects se = SpriteEffects.None;
-			if (player.direction == -1)
+			if (player.direction * player.gravDir == -1)
 			{
 				se = SpriteEffects.FlipVertically;
 			}
-			float rot = Projectile.rotation - (float)(Math.PI * 0.25) + TextureRotation * player.direction;
-			Vector2 drawCenter = Projectile.Center - Main.screenPosition + DrawOffset;
+			float rot = Projectile.rotation - (float)(Math.PI * 0.25) + TextureRotation * player.direction * player.gravDir;
+			Vector2 drawCenter = Projectile.Center - Main.screenPosition + GravityDrawOffset;
 			Main.spriteBatch.Draw(texMain, drawCenter, null, lightColor, rot, texMain.Size() * 0.5f, 1f, se, 0);
 		}
 

@@ -6,7 +6,7 @@ using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Legacies;
 
-public class AncientSyringe_proj : HandholdProjectile
+public class AncientSyringe_proj : HandheldProjectile
 {
 	public override string LocalizationCategory => LocalizationUtils.Categories.MagicProjectiles;
 
@@ -15,11 +15,11 @@ public class AncientSyringe_proj : HandholdProjectile
 		DepartLength = 110;
 		Projectile.usesLocalNPCImmunity = true;
 		Projectile.localNPCHitCooldown = 20;
-		base.SetDef();
 	}
 
 	public override void OnSpawn(IEntitySource source)
 	{
+		base.OnSpawn(source);
 		Player player = Main.player[Projectile.owner];
 		int timeMax = (int)(player.itemTimeMax / player.meleeSpeed);
 		player.itemTime = timeMax;
@@ -27,6 +27,11 @@ public class AncientSyringe_proj : HandholdProjectile
 
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
+		target.AddBuff(ModContent.BuffType<LichenInfected>(), 480);
+		if (Main.dedServ)
+		{
+			return;
+		}
 		int times = 10;
 		for (int x = 0; x < times; x++)
 		{
@@ -60,13 +65,6 @@ public class AncientSyringe_proj : HandholdProjectile
 			};
 			Ins.VFXManager.Add(blood);
 		}
-		target.AddBuff(ModContent.BuffType<LichenInfected>(), 480);
-		base.OnHitNPC(target, hit, damageDone);
-	}
-
-	public override void AI()
-	{
-		base.AI();
 	}
 
 	public override void HeldProjectileAI()
@@ -75,12 +73,13 @@ public class AncientSyringe_proj : HandholdProjectile
 		if (player.HeldItem.type != ModContent.ItemType<AncientSyringe>())
 		{
 			Projectile.Kill();
+			return;
 		}
 		player.heldProj = Projectile.whoAmI;
-		ArmRootPos = player.MountedCenter + new Vector2(-4 * player.direction, -2);
+		ArmRootPos = player.MountedCenter + new Vector2(-4 * player.direction, -2 * player.gravDir);
 
-		Vector2 mouseToPlayer = Main.MouseWorld - ArmRootPos;
-		mouseToPlayer = Vector2.Normalize(mouseToPlayer);
+		Vector2 mouseToPlayer = AimPosition - ArmRootPos;
+		mouseToPlayer = mouseToPlayer.SafeNormalize(Vector2.UnitX * player.direction);
 		int timeMax = (int)(player.itemTimeMax / player.meleeSpeed);
 		if (Projectile.localNPCHitCooldown > timeMax - 1)
 		{
@@ -120,6 +119,7 @@ public class AncientSyringe_proj : HandholdProjectile
 		if (!player.controlUseItem)
 		{
 			Projectile.Kill();
+			return;
 		}
 		if (Projectile.Center.X < ArmRootPos.X)
 		{
@@ -136,13 +136,13 @@ public class AncientSyringe_proj : HandholdProjectile
 		Player player = Main.player[Projectile.owner];
 		var texMain = (Texture2D)ModContent.Request<Texture2D>(Texture);
 		SpriteEffects se = SpriteEffects.None;
-		if (player.direction == -1)
+		if (player.direction * player.gravDir == -1)
 		{
 			se = SpriteEffects.FlipVertically;
 		}
 
-		float rot = Projectile.rotation - (float)(Math.PI * 0.25) + TextureRotation * player.direction;
-		Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition + DrawOffset - new Vector2(54, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), null, lightColor, rot, texMain.Size() / 2f, 1f, se, 0);
+		float rot = Projectile.rotation - (float)(Math.PI * 0.25) + TextureRotation * player.direction * player.gravDir;
+		Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition + GravityDrawOffset - new Vector2(54, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), null, lightColor, rot, texMain.Size() / 2f, 1f, se, 0);
 		int timeMax = (int)(player.itemTimeMax / player.meleeSpeed);
 		float duration = player.itemTime / (float)timeMax;
 		duration *= 1.5f;
@@ -154,11 +154,11 @@ public class AncientSyringe_proj : HandholdProjectile
 		duration = MathF.Sin(duration * MathHelper.Pi);
 		Texture2D star = Commons.ModAsset.StarSlash_black.Value;
 		Color drawC = new Color(0.7f * lightColor.R / 255f, 2f * lightColor.G / 255f, 0.2f * lightColor.B / 255f, 0);
-		Main.spriteBatch.Draw(star, Projectile.Center - Main.screenPosition + DrawOffset + new Vector2(24, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), null, Color.White, MathHelper.PiOver2, star.Size() / 2f, 0.5f * duration, se, 0);
-		Main.spriteBatch.Draw(star, Projectile.Center - Main.screenPosition + DrawOffset + new Vector2(24, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), null, Color.White, 0, star.Size() / 2f, 0.5f * duration, se, 0);
+		Main.spriteBatch.Draw(star, Projectile.Center - Main.screenPosition + GravityDrawOffset + new Vector2(24, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), null, Color.White, MathHelper.PiOver2, star.Size() / 2f, 0.5f * duration, se, 0);
+		Main.spriteBatch.Draw(star, Projectile.Center - Main.screenPosition + GravityDrawOffset + new Vector2(24, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), null, Color.White, 0, star.Size() / 2f, 0.5f * duration, se, 0);
 		star = Commons.ModAsset.StarSlash.Value;
-		Main.spriteBatch.Draw(star, Projectile.Center - Main.screenPosition + DrawOffset + new Vector2(24, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), null, drawC, MathHelper.PiOver2, star.Size() / 2f, 0.5f * duration, se, 0);
-		Main.spriteBatch.Draw(star, Projectile.Center - Main.screenPosition + DrawOffset + new Vector2(24, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), null, drawC, 0, star.Size() / 2f, 0.5f * duration, se, 0);
+		Main.spriteBatch.Draw(star, Projectile.Center - Main.screenPosition + GravityDrawOffset + new Vector2(24, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), null, drawC, MathHelper.PiOver2, star.Size() / 2f, 0.5f * duration, se, 0);
+		Main.spriteBatch.Draw(star, Projectile.Center - Main.screenPosition + GravityDrawOffset + new Vector2(24, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), null, drawC, 0, star.Size() / 2f, 0.5f * duration, se, 0);
 		return false;
 	}
 }

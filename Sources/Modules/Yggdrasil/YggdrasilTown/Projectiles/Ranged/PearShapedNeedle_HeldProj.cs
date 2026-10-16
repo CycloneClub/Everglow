@@ -3,7 +3,7 @@ using Terraria.Audio;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Ranged;
 
-public class PearShapedNeedle_HeldProj : HandholdProjectile
+public class PearShapedNeedle_HeldProj : HandheldProjectile
 {
 	public float Timer = 0;
 
@@ -36,12 +36,13 @@ public class PearShapedNeedle_HeldProj : HandholdProjectile
 		if (player.HeldItem.type != ModContent.ItemType<Items.Weapons.PearShapedNeedle>())
 		{
 			Projectile.Kill();
+			return;
 		}
 		player.heldProj = Projectile.whoAmI;
-		ArmRootPos = player.MountedCenter + new Vector2(-4 * player.direction, -2);
+		ArmRootPos = player.MountedCenter + new Vector2(-4 * player.direction, -2 * player.gravDir);
 
-		Vector2 mouseToPlayer = Main.MouseWorld - ArmRootPos;
-		mouseToPlayer = Vector2.Normalize(mouseToPlayer);
+		Vector2 mouseToPlayer = AimPosition - ArmRootPos;
+		mouseToPlayer = mouseToPlayer.SafeNormalize(Vector2.UnitX * player.direction);
 		Projectile.rotation = mouseToPlayer.ToRotation() + MathHelper.PiOver4;
 
 		player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (Projectile.rotation - MathF.PI * 0.25f) * player.gravDir - MathF.PI * 0.5f);
@@ -171,7 +172,6 @@ public class PearShapedNeedle_HeldProj : HandholdProjectile
 	public override void OnKill(int timeLeft)
 	{
 		ReleaseNeedles();
-		base.OnKill(timeLeft);
 	}
 
 	public bool NeedleReady(int k)
@@ -211,6 +211,10 @@ public class PearShapedNeedle_HeldProj : HandholdProjectile
 			if (NeedleReady(k))
 			{
 				succeed = true;
+				if (Projectile.owner != Main.myPlayer)
+				{
+					continue;
+				}
 				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), GetNeedleWorldPos(k), GetReleaseVel(k).NormalizeSafe(), ModContent.ProjectileType<PearShapedNeedle_Needle>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
 				if (k > 0)
 				{

@@ -32,10 +32,7 @@ public class AncientSyringe : ModItem
 		{
 			if (Main.myPlayer == player.whoAmI)
 			{
-				var p0 = Projectile.NewProjectileDirect(player.GetSource_ItemUse(Item), player.Center, Vector2.Zero, type, player.GetWeaponDamage(Item), Item.knockBack, player.whoAmI);
-				Vector2 mouseToPlayer = Main.MouseWorld - player.MountedCenter;
-				mouseToPlayer = Vector2.Normalize(mouseToPlayer);
-				p0.rotation = mouseToPlayer.ToRotation() + MathHelper.PiOver4;
+				Projectile.NewProjectileDirect(source, player.Center, velocity, type, damage, knockback, player.whoAmI);
 			}
 		}
 		return false;

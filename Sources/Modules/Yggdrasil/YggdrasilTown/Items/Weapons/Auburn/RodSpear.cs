@@ -22,7 +22,7 @@ public class RodSpear : ModItem
 		Item.crit = 4;
 		Item.knockBack = 4f;
 
-		Item.value = ItemRarityID.Green;
+		Item.rare = ItemRarityID.Green;
 		Item.value = Item.buyPrice(silver: 20);
 
 		Item.shoot = ModContent.ProjectileType<Projectiles.Melee.RodSpear>();
