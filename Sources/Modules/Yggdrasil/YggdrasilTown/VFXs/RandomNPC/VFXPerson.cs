@@ -46,12 +46,23 @@ public class VFXPerson : Visual
 
 	public Color ShoeColor;
 
+	/// <summary>Optional external simulation; legacy developer people retain their original AI.</summary>
+	public Action<VFXPerson> UpdateController;
+
+	public float Opacity = 1f;
+
 	public override void OnSpawn()
 	{
 	}
 
 	public override void Update()
 	{
+		if (UpdateController != null)
+		{
+			UpdateController(this);
+			Timer++;
+			return;
+		}
 		CheckEliminate();
 		UpdateFrame();
 		AI();
@@ -189,11 +200,11 @@ public class VFXPerson : Visual
 		SpriteEffects flip = Direction == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 		Texture2D head = Terraria.GameContent.TextureAssets.Players[0, 0].Value;
 		Rectangle headFrame = new Rectangle(0, Frame * 56, 40, 56);
-		Ins.Batch.Draw(head, Position + new Vector2(0, 52), headFrame, Lighting.GetColor(Position.ToTileCoordinates(), SkinColor), 0, new Vector2(headFrame.Width * 0.5f, headFrame.Height), 1f, flip);
+		Ins.Batch.Draw(head, Position + new Vector2(0, 52), headFrame, AppearanceColor(SkinColor), 0, new Vector2(headFrame.Width * 0.5f, headFrame.Height), 1f, flip);
 		Texture2D sclera = Terraria.GameContent.TextureAssets.Players[0, 1].Value;
-		Ins.Batch.Draw(sclera, Position + new Vector2(0, 52), headFrame, Lighting.GetColor(Position.ToTileCoordinates(), Color.White), 0, new Vector2(headFrame.Width * 0.5f, headFrame.Height), 1f, flip);
+		Ins.Batch.Draw(sclera, Position + new Vector2(0, 52), headFrame, AppearanceColor(Color.White), 0, new Vector2(headFrame.Width * 0.5f, headFrame.Height), 1f, flip);
 		Texture2D pupil = Terraria.GameContent.TextureAssets.Players[0, 2].Value;
-		Ins.Batch.Draw(pupil, Position + new Vector2(0, 52), headFrame, Lighting.GetColor(Position.ToTileCoordinates(), EyeColor), 0, new Vector2(headFrame.Width * 0.5f, headFrame.Height), 1f, flip);
+		Ins.Batch.Draw(pupil, Position + new Vector2(0, 52), headFrame, AppearanceColor(EyeColor), 0, new Vector2(headFrame.Width * 0.5f, headFrame.Height), 1f, flip);
 
 		float bodyOffset = 0;
 		if (Frame is >= 14 and <= 16 || Frame is >= 7 and <= 9)
@@ -204,7 +215,7 @@ public class VFXPerson : Visual
 		// Chest
 		Texture2D chest = Terraria.GameContent.TextureAssets.Players[0, 3].Value;
 		Rectangle chestFrame = new Rectangle(0, 0, 40, 56);
-		Ins.Batch.Draw(chest, Position + new Vector2(0, 24 + bodyOffset), chestFrame, Lighting.GetColor(Position.ToTileCoordinates(), SkinColor), 0, chestFrame.Size() * 0.5f, 1f, flip);
+		Ins.Batch.Draw(chest, Position + new Vector2(0, 24 + bodyOffset), chestFrame, AppearanceColor(SkinColor), 0, chestFrame.Size() * 0.5f, 1f, flip);
 
 		// Armx and hands
 		Texture2D arm = Terraria.GameContent.TextureAssets.Players[0, 4].Value;
@@ -239,8 +250,8 @@ public class VFXPerson : Visual
 		Rectangle handFrame = armFrame;
 		Rectangle handFrame_back = armFrame;
 		handFrame_back.Y += 112;
-		Ins.Batch.Draw(hand, Position + new Vector2(0, 24 + bodyOffset), handFrame_back, Lighting.GetColor(Position.ToTileCoordinates(), SkinColor), 0, handFrame_back.Size() * 0.5f, 1f, flip);
-		Ins.Batch.Draw(arm, Position + new Vector2(0, 24 + bodyOffset), armFrame_back, Lighting.GetColor(Position.ToTileCoordinates(), SkinColor), 0, armFrame_back.Size() * 0.5f, 1f, flip);
+		Ins.Batch.Draw(hand, Position + new Vector2(0, 24 + bodyOffset), handFrame_back, AppearanceColor(SkinColor), 0, handFrame_back.Size() * 0.5f, 1f, flip);
+		Ins.Batch.Draw(arm, Position + new Vector2(0, 24 + bodyOffset), armFrame_back, AppearanceColor(SkinColor), 0, armFrame_back.Size() * 0.5f, 1f, flip);
 
 		// Clothes
 		Texture2D innerCloth = Terraria.GameContent.TextureAssets.Players[0, 6].Value;
@@ -250,16 +261,16 @@ public class VFXPerson : Visual
 		{
 			innerClothFrame.Y += 112;
 		}
-		Ins.Batch.Draw(innerCloth, Position + new Vector2(0, 24 + bodyOffset), innerClothFrame, Lighting.GetColor(Position.ToTileCoordinates(), ClothColor), 0, innerClothFrame.Size() * 0.5f, 1f, flip);
-		Ins.Batch.Draw(sleeve, Position + new Vector2(0, 24 + bodyOffset), armFrame_back, Lighting.GetColor(Position.ToTileCoordinates(), ClothColor), 0, armFrame_back.Size() * 0.5f, 1f, flip);
-		Ins.Batch.Draw(hand, Position + new Vector2(0, 24 + bodyOffset), handFrame, Lighting.GetColor(Position.ToTileCoordinates(), SkinColor), 0, handFrame.Size() * 0.5f, 1f, flip);
-		Ins.Batch.Draw(arm, Position + new Vector2(0, 24 + bodyOffset), armFrame, Lighting.GetColor(Position.ToTileCoordinates(), SkinColor), 0, armFrame.Size() * 0.5f, 1f, flip);
-		Ins.Batch.Draw(sleeve, Position + new Vector2(0, 24 + bodyOffset), armFrame, Lighting.GetColor(Position.ToTileCoordinates(), ClothColor), 0, armFrame.Size() * 0.5f, 1f, flip);
+		Ins.Batch.Draw(innerCloth, Position + new Vector2(0, 24 + bodyOffset), innerClothFrame, AppearanceColor(ClothColor), 0, innerClothFrame.Size() * 0.5f, 1f, flip);
+		Ins.Batch.Draw(sleeve, Position + new Vector2(0, 24 + bodyOffset), armFrame_back, AppearanceColor(ClothColor), 0, armFrame_back.Size() * 0.5f, 1f, flip);
+		Ins.Batch.Draw(hand, Position + new Vector2(0, 24 + bodyOffset), handFrame, AppearanceColor(SkinColor), 0, handFrame.Size() * 0.5f, 1f, flip);
+		Ins.Batch.Draw(arm, Position + new Vector2(0, 24 + bodyOffset), armFrame, AppearanceColor(SkinColor), 0, armFrame.Size() * 0.5f, 1f, flip);
+		Ins.Batch.Draw(sleeve, Position + new Vector2(0, 24 + bodyOffset), armFrame, AppearanceColor(ClothColor), 0, armFrame.Size() * 0.5f, 1f, flip);
 
 		// Foot
 		Texture2D foot = Terraria.GameContent.TextureAssets.Players[0, 10].Value;
 		Rectangle footFrame = new Rectangle(0, Frame * 56, 40, 56);
-		Ins.Batch.Draw(foot, Position + new Vector2(0, -4), footFrame, Lighting.GetColor(Position.ToTileCoordinates(), ShoeStyle % 2 == 0 ? ShoeColor : SkinColor), 0, new Vector2(footFrame.Width * 0.5f, 0), 1f, flip);
+		Ins.Batch.Draw(foot, Position + new Vector2(0, -4), footFrame, AppearanceColor(ShoeStyle % 2 == 0 ? ShoeColor : SkinColor), 0, new Vector2(footFrame.Width * 0.5f, 0), 1f, flip);
 
 		// Shoes
 		Texture2D shoe = Terraria.GameContent.TextureAssets.Players[0, 11].Value;
@@ -291,7 +302,7 @@ public class VFXPerson : Visual
 				break;
 		}
 
-		Ins.Batch.Draw(shoe, Position + new Vector2(0, -4), footFrame, Lighting.GetColor(Position.ToTileCoordinates(), ShoeColor), 0, new Vector2(footFrame.Width * 0.5f, 0), 1f, flip);
+		Ins.Batch.Draw(shoe, Position + new Vector2(0, -4), footFrame, AppearanceColor(ShoeColor), 0, new Vector2(footFrame.Width * 0.5f, 0), 1f, flip);
 
 		// Hair
 		Main.instance.LoadHair(HairStyle);
@@ -301,6 +312,8 @@ public class VFXPerson : Visual
 		{
 			hairFrame.Y = 0;
 		}
-		Ins.Batch.Draw(hair, Position + new Vector2(0, 24), hairFrame, Lighting.GetColor(Position.ToTileCoordinates(), HairColor), 0, hairFrame.Size() * 0.5f, 1f, flip);
+		Ins.Batch.Draw(hair, Position + new Vector2(0, 24), hairFrame, AppearanceColor(HairColor), 0, hairFrame.Size() * 0.5f, 1f, flip);
 	}
+
+	private Color AppearanceColor(Color color) => Lighting.GetColor(Position.ToTileCoordinates(), color) * Opacity;
 }

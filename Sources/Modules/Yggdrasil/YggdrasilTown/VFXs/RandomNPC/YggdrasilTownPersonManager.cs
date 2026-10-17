@@ -6,11 +6,19 @@ public class YggdrasilTownPersonManager
 
 	public static void AddRandomPerson()
 	{
+		var person = CreatePerson(Main.MouseWorld);
+		Ins.VFXManager.Add(person);
+		People.Add(person);
+	}
+
+	/// <summary>Creates an appearance without registering or simulating a person.</summary>
+	public static VFXPerson CreatePerson(Vector2 position)
+	{
 		VFXPerson person = new VFXPerson()
 		{
 			Active = true,
 			Visible = true,
-			Position = Main.MouseWorld,
+			Position = position,
 			Velocity = Vector2.Zero,
 			Timer = 0,
 			MaxTime = 3000000,
@@ -25,8 +33,7 @@ public class YggdrasilTownPersonManager
 			Sex = Main.rand.NextBool() ? 0 : 1,
 			ShoeStyle = Main.rand.Next(8),
 		};
-		Ins.VFXManager.Add(person);
-		People.Add(person);
+		return person;
 	}
 
 	public static Color ChooseSkinColor()

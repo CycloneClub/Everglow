@@ -2274,8 +2274,14 @@ VampireMatCave_HangingSign_Item: {
 }
 
 VFXPersonItem: {
-	DisplayName: VFXPerson Item
-	Tooltip: ""
+	DisplayName: Town Traveler Controller
+	Tooltip: '''
+		While held, left click toggles NPC travelers; middle click toggles lightweight travelers
+		Hold to show the draggable settings panel; right click outside it to hide or show
+		Adjust population, spawn interval and activities live; settings are saved with your character
+		Switching modes replaces current travelers; use the same button again to disable and clear
+		Single-player Yggdrasil only; debugMode is not required
+		'''
 }
 
 VortexElevator_Indicator_Lamp_Item: {

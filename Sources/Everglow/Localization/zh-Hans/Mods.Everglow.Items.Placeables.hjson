@@ -2310,8 +2310,14 @@ VampireMatCave_HangingSign_Item: {
 }
 
 VFXPersonItem: {
-	DisplayName: VFXPerson Item
-	Tooltip: ""
+	DisplayName: 天穹镇旅客控制器
+	Tooltip: '''
+		手持时左键开关 NPC 旅客，中键开关轻量旅客
+		手持显示可拖动的配置面板；在面板外右键收起或展开
+		实时调节人数、刷新间隔和活动；参数随角色保存
+		开启另一模式会替换当前旅客，再按同一键关闭并清理
+		仅限天穹树单人模式；无需开启 debugMode
+		'''
 }
 
 VortexElevator_Indicator_Lamp_Item: {
