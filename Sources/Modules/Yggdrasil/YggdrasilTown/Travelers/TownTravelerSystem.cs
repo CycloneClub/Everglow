@@ -33,6 +33,17 @@ public class TownTravelerSystem : ModSystem
 
 	public static int Population => Travelers.Count;
 
+	internal static void DrawTrainPassengers(YggdrasilTown_NormalMetro train, SpriteBatch spriteBatch)
+	{
+		foreach (var person in Travelers)
+		{
+			if (ReferenceEquals(person.InteriorTrain, train))
+			{
+				person.DrawInTrain(spriteBatch);
+			}
+		}
+	}
+
 	public static bool Enabled => Mode != TravelerMode.Off && !Main.dedServ
 		&& TravelerRules.CanRun(Main.netMode, YggdrasilWorld.InYggdrasil);
 

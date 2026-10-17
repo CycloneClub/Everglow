@@ -2,6 +2,7 @@ using Everglow.Commons.CustomTiles.Abstracts;
 using Everglow.Commons.CustomTiles.Core;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Tools.Developer;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles;
+using Everglow.Yggdrasil.YggdrasilTown.Travelers;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.CustomTiles;
 
@@ -192,6 +193,9 @@ public class YggdrasilTown_NormalMetro : BoxEntity
 
 	public override void Draw()
 	{
+		// Grid primitives draw immediately. Flush sprites in order too, then restore
+		// the CustomTile manager's batch so passenger sprites cannot escape the shell.
+		using var drawScope = (Main.spriteBatch.GetState().Value with { SortMode = SpriteSortMode.Immediate }).BeginScope(Main.spriteBatch);
 		Texture2D metro = ModAsset.YggdrasilTown_NormalMetro.Value;
 		var frame = new Rectangle(174, 165, 848, 160);
 		var glow_frame = new Rectangle(174, 495, 848, 160);
@@ -200,16 +204,13 @@ public class YggdrasilTown_NormalMetro : BoxEntity
 		var pos0 = new Vector2((Box.Center.X + Box.Left) * 0.5f, Box.Bottom);
 		TileUtils.VertexDraw_Grid(pos0 - Main.screenPosition, frame, new Vector2(frame.Width / 2f, frame.Height), metro, Main.spriteBatch, 0);
 		Main.spriteBatch.Draw(metro, pos0 - Main.screenPosition, glow_frame, new Color(1f, 1f, 1f, 0) * (1 - ShellAlpha), 0, new Vector2(frame.Width / 2f, frame.Height), 1, SpriteEffects.None, 0);
-		if (ShellAlpha > 0)
-		{
-			TileUtils.VertexDraw_Grid(pos0 - Main.screenPosition, outShellFrame, new Vector2(frame.Width / 2f, frame.Height), metro, Main.spriteBatch, 0, ShellAlpha);
-		}
-
 		var pos1 = new Vector2((Box.Center.X + Box.Right) * 0.5f, Box.Bottom);
 		TileUtils.VertexDraw_Grid(pos1 - Main.screenPosition, frame, new Vector2(frame.Width / 2f, frame.Height), metro, Main.spriteBatch, 0);
 		Main.spriteBatch.Draw(metro, pos1 - Main.screenPosition, glow_frame, new Color(1f, 1f, 1f, 0) * (1 - ShellAlpha), 0, new Vector2(frame.Width / 2f, frame.Height), 1, SpriteEffects.None, 0);
+		TownTravelerSystem.DrawTrainPassengers(this, Main.spriteBatch);
 		if (ShellAlpha > 0)
 		{
+			TileUtils.VertexDraw_Grid(pos0 - Main.screenPosition, outShellFrame, new Vector2(frame.Width / 2f, frame.Height), metro, Main.spriteBatch, 0, ShellAlpha);
 			TileUtils.VertexDraw_Grid(pos1 - Main.screenPosition, outShellFrame, new Vector2(frame.Width / 2f, frame.Height), metro, Main.spriteBatch, 0, ShellAlpha);
 		}
 

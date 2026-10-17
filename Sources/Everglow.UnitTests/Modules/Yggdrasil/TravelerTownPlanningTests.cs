@@ -490,6 +490,40 @@ public class TravelerTownPlanningTests
 	}
 
 	[TestMethod]
+	[DataRow("Riding", 1400, 960, true)]
+	[DataRow("Boarding", 1400, 960, true)]
+	[DataRow("Alighting", 1400, 960, true)]
+	[DataRow("Boarding", 1170, 960, false)]
+	[DataRow("Alighting", 1810, 960, false)]
+	[DataRow("Boarding", 1400, 800, false)]
+	[DataRow("Alighting", 1400, 1040, false)]
+	[DataRow("Walking", 1400, 960, false)]
+	public void PassengerUsesTrainInteriorLayerOnlyWhileInsideItsCarriage(string stage, int x, int y, bool inside)
+	{
+		var type = typeof(TownTravelerSystem).Assembly.GetType("Everglow.Yggdrasil.YggdrasilTown.Travelers.TravelerJourney")!;
+		var journey = RuntimeHelpers.GetUninitializedObject(type);
+		var body = new NPC { width = 16, height = 48, position = new Vector2(x, y) };
+		var train = new YggdrasilTown_NormalMetro { Position = new Vector2(1200, 1008), Size = new Vector2(600, 16), Active = true };
+		void Set(string field, object value) => type.GetField(field, BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(journey, value);
+		Set("<Body>k__BackingField", body);
+		Set("<Active>k__BackingField", true);
+		Set("<Stage>k__BackingField", Enum.Parse(type.GetProperty("Stage")!.PropertyType, stage));
+		Set("train", train);
+		var interior = type.GetProperty("InteriorTrain", BindingFlags.Instance | BindingFlags.NonPublic);
+		Assert.IsNotNull(interior, "Passengers need a carriage-owned draw layer instead of the late foreground VFX layer.");
+		foreach (float shellAlpha in new[] { 0f, 0.5f, 1f })
+		{
+			train.ShellAlpha = shellAlpha;
+			Assert.AreEqual(inside ? train : null, interior.GetValue(journey), "The shell must occlude passengers through draw order, not passenger opacity.");
+		}
+		train.Active = false;
+		Assert.IsNull(interior.GetValue(journey));
+		train.Active = true;
+		Set("<Active>k__BackingField", false);
+		Assert.IsNull(interior.GetValue(journey));
+	}
+
+	[TestMethod]
 	public void ExitRequiresTravelerToActuallyReachEndpoint()
 	{
 		var tile = Main.tile[40, 60];

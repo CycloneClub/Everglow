@@ -83,6 +83,7 @@ internal sealed class TravelerJourney
 		view = YggdrasilTownPersonManager.CreatePerson(Body.position);
 		view.Opacity = aboardFeet.HasValue || arrival == TravelerArrival.Street ? 1 : 0;
 		view.UpdateController = UpdateView;
+		view.DrawInForeground = () => InteriorTrain == null;
 		Ins.VFXManager.Add(view);
 	}
 
@@ -97,6 +98,20 @@ internal sealed class TravelerJourney
 	public int Direction { get; private set; } = 1;
 
 	public bool IsAttached => Stage == TravelerStage.Riding;
+
+	// Keep the same owner during boarding/alighting, but only once physically inside.
+	internal YggdrasilTown_NormalMetro InteriorTrain => Active && train?.Active == true
+		&& (IsAttached || WalkingTrain != null)
+		&& Body.Center.X >= train.Position.X && Body.Center.X < train.Position.X + train.Size.X
+		&& Body.Center.Y >= train.Position.Y - 146 && Body.Center.Y < train.Position.Y ? train : null;
+
+	internal void DrawInTrain(SpriteBatch spriteBatch)
+	{
+		if (view.Active && view.Visible)
+		{
+			view.DrawInWorld(spriteBatch);
+		}
+	}
 
 	internal bool CanAlight(YggdrasilTown_NormalMetro candidate) => Active && IsAttached && mayAlight && ReferenceEquals(train, candidate);
 
@@ -141,6 +156,7 @@ internal sealed class TravelerJourney
 		Active = false;
 		view.Active = false;
 		view.UpdateController = null;
+		view.DrawInForeground = null;
 		if (Body is NPC npc)
 		{
 			npc.active = false;
