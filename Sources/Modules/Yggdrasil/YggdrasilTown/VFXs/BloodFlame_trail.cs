@@ -63,6 +63,6 @@ public class BloodFlame_trail : Visual
 			bars.Add(pos + toCorner.RotatedBy(Math.PI * 0 + Rotation) * size, lightColor * size, new Vector3(0, 1, 0));
 			bars.Add(pos + toCorner.RotatedBy(Math.PI * 1 + Rotation) * size, lightColor * size, new Vector3(1, 0, 0));
 		}
-		Ins.Batch.Draw(ModAsset.BloodFlame_noise.Value, bars, PrimitiveType.TriangleList);
+		Ins.Batch.Draw(ModAsset.Blood_Flame_Noise.Value, bars, PrimitiveType.TriangleList);
 	}
 }

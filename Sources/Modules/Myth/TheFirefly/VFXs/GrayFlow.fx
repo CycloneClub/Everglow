@@ -1,15 +1,4 @@
 sampler2D uImage : register(s0);
-texture uNoise;
-sampler uNoiseSampler =
-sampler_state
-{
-    Texture = <uNoise>;
-    MipFilter = LINEAR;
-    MinFilter = LINEAR;
-    MagFilter = LINEAR;
-    AddressU = WRAP;
-    AddressV = WRAP;
-};
 //valueC由Color.r代替
 //float valueC;
 //utime由Color.g代替

@@ -29,8 +29,8 @@ public class PetrificationNPC : GlobalNPC
 			spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 			Effect frozenEff = ModAsset.PetrificationNPC.Value;
 			frozenEff.Parameters["uImageSize"].SetValue(Main.npcFrameCount[npc.type]);
-			frozenEff.Parameters["uHeatMap"].SetValue(ModAsset.PetrificationColor.Value);
-			frozenEff.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_crack_dense.Value);
+			frozenEff.Parameters["uHeatMap"].SetValue(ModAsset.Petrification_Color.Value);
+			frozenEff.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Crack_Dense.Value);
 			frozenEff.Parameters["drawColor"].SetValue(drawColor.ToVector4());
 			frozenEff.CurrentTechnique.Passes[0].Apply();
 		}

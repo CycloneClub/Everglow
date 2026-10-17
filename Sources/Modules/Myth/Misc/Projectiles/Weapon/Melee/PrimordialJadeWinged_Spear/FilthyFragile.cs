@@ -5,7 +5,7 @@ public class FilthyFragilePipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.FilthyFragile;
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.FilthyFragile_Color.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.Filthy_Fragile_Color.Value);
 	}
 
 	public override void BeginRender()

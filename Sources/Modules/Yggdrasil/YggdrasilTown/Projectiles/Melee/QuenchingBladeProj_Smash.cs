@@ -408,7 +408,7 @@ public class QuenchingBladeProj_Smash : ModProjectile, IWarpProjectile_warpStyle
 		Effect MeleeTrail = Commons.ModAsset.MeleeTrail.Value;
 		MeleeTrail.Parameters["uTransform"].SetValue(model * projection);
 		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Melee2.Value;
-		MeleeTrail.Parameters["tex1"].SetValue(ModAsset.HeatMap_QuenchingBladeProj.Value);
+		MeleeTrail.Parameters["tex1"].SetValue(ModAsset.HeatMap_Quenching_Blade_Proj.Value);
 		MeleeTrail.CurrentTechnique.Passes[0].Apply();
 		if (bars.Count > 3)
 		{
@@ -480,7 +480,7 @@ public class QuenchingBladeProj_Smash : ModProjectile, IWarpProjectile_warpStyle
 		if (bars.Count > 3)
 		{
 			Main.graphics.graphicsDevice.RasterizerState = RasterizerState.CullNone;
-			spriteBatch.Draw(Commons.ModAsset.Noise_flame_3.Value, bars, PrimitiveType.TriangleStrip);
+			spriteBatch.Draw(Commons.ModAsset.Noise_Flame_3.Value, bars, PrimitiveType.TriangleStrip);
 		}
 	}
 

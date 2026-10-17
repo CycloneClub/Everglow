@@ -63,7 +63,7 @@ public class OriginalPylon_VFX : TileVFX
 			Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.Default, SamplerState.PointWrap, RasterizerState.CullNone);
 			Effect noise = ModAsset.OriginPylon_PurpleCrack.Value;
 			noise.CurrentTechnique.Passes["Test"].Apply();
-			Ins.Batch.Draw(Commons.ModAsset.Noise_perlin.Value, crack, PrimitiveType.TriangleStrip);
+			Ins.Batch.Draw(Commons.ModAsset.Noise_Perlin.Value, crack, PrimitiveType.TriangleStrip);
 			Ins.Batch.End();
 			Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.Default, SamplerState.PointWrap, RasterizerState.CullNone);
 			Effect effect = VFXManager.DefaultEffect.Value;
@@ -103,7 +103,7 @@ public class OriginalPylon_VFX : TileVFX
 				new Vertex2D(new Vector2(i + 13, j + 9) * 16, color0 * 0.0f, new Vector3(0.5f, timeValue, 0)),
 				new Vertex2D(new Vector2(i + 13, j - 10) * 16, color0 * 0.0f, new Vector3(0.5f, timeValue, 0)),
 			};
-			Ins.Batch.Draw(Commons.ModAsset.Noise_perlin.Value, bars, PrimitiveType.TriangleStrip);
+			Ins.Batch.Draw(Commons.ModAsset.Noise_Perlin.Value, bars, PrimitiveType.TriangleStrip);
 
 			bars = new List<Vertex2D>()
 			{
@@ -116,7 +116,7 @@ public class OriginalPylon_VFX : TileVFX
 				new Vertex2D(new Vector2(i + 13, j + 9) * 16, color0 * 0.0f, new Vector3(0.5f, timeValue, 0)),
 				new Vertex2D(new Vector2(i + 13, j + 10) * 16, color0 * 0.0f, new Vector3(0.5f, timeValue, 0)),
 			};
-			Ins.Batch.Draw(Commons.ModAsset.Noise_perlin.Value, bars, PrimitiveType.TriangleStrip);
+			Ins.Batch.Draw(Commons.ModAsset.Noise_Perlin.Value, bars, PrimitiveType.TriangleStrip);
 
 			bars = new List<Vertex2D>()
 			{

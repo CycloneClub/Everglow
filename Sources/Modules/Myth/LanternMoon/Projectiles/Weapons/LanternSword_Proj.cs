@@ -277,14 +277,14 @@ public class LanternSword_Proj : MeleeProj_3D
 
 				if (bars_b.Count > 0)
 				{
-					Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_perlin.Value;
+					Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_Perlin.Value;
 					Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Star_black.Value;
 					Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars_b.ToArray(), 0, bars_b.Count - 2);
 				}
 
 				if (bars.Count > 0)
 				{
-					Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_perlin.Value;
+					Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_Perlin.Value;
 					Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Textures_Star.Value;
 					Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 					Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);

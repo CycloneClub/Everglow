@@ -84,7 +84,7 @@ public class Grass_FurPipeline : Pipeline
 		currentPush.Add(new Vector2(Main.screenWidth, Main.screenHeight), windPushColor, new Vector3(1f + timeValue, 1f, 0));
 		if (currentPush.Count > 2)
 		{
-			Main.graphics.GraphicsDevice.Textures[0] = ModAsset.Noise_rgb.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = ModAsset.Noise_RGB.Value;
 			Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, currentPush.ToArray(), 0, currentPush.Count - 2);
 		}

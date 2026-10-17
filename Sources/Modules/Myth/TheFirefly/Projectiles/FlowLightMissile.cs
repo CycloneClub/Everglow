@@ -213,7 +213,7 @@ internal class FlowLightMissile : ModProjectile
 			bars2.Add(new Vertex2D(bulbPos - Main.screenPosition, Color.White * energyValue, new Vector3(timeValue * 0.7f, 0.5f, 0)));
 			bars2.Add(new Vertex2D(bulbPos + v0 * 0.7f - Main.screenPosition, c0, new Vector3(timeValue * 0.7f + 0.9f, 0.5f + (t % 2 - 1) * 0.4f, 0)));
 		}
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_cell_black.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_Cell_Black.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		if (bars2.Count > 3)
 		{
@@ -226,7 +226,7 @@ internal class FlowLightMissile : ModProjectile
 			bars.Add(new Vertex2D(bulbPos - Main.screenPosition, c0, new Vector3(timeValue, 0.5f, 0)));
 			bars.Add(new Vertex2D(bulbPos + v0 - Main.screenPosition, Color.Transparent, new Vector3(timeValue + 0.5f, 0.5f + (t % 2 - 1) * 0.1f, 0)));
 		}
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_hiveCyber.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_Hive_Cyber.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		if (bars.Count > 3)
 		{

@@ -55,7 +55,7 @@ public class FryingPan : MeleeProj
 
 	public override string TrailColorTex()
 	{
-		return "Everglow/Food/Images/PanColor";
+		return "Everglow/Food/Images/Pan_Color";
 	}
 
 	// 拖尾的混合模式，通常使用NonPremultiplied（暗）或者Additive（亮）

@@ -103,13 +103,13 @@ public class LanternCrackingRay : Visual
 			bars.Add(innerPos, new Color(0.7f, 0.7f, 0.4f) * mulColor * fluctuation, new Vector3(i / maxCount, timeValue, 0));
 			bars.Add(outerPos, new Color(0f, 0f, 0f, 0), new Vector3(i / maxCount, timeValue, 0));
 		}
-		Ins.Batch.Draw(Commons.ModAsset.Noise_flame_3.Value, bars, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(Commons.ModAsset.Noise_Flame_3.Value, bars, PrimitiveType.TriangleStrip);
 		if (Timer > 65 && Timer <= 70)
 		{
 			float count = Timer - 65;
 			for (int k = 0; k < count; k++)
 			{
-				Ins.Batch.Draw(Commons.ModAsset.Noise_flame_3.Value, bars, PrimitiveType.TriangleStrip);
+				Ins.Batch.Draw(Commons.ModAsset.Noise_Flame_3.Value, bars, PrimitiveType.TriangleStrip);
 			}
 		}
 	}

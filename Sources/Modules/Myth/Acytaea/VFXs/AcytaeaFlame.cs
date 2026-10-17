@@ -32,7 +32,7 @@ internal class AcytaeaFlamePipeline : Pipeline
 	public override void BeginRender()
 	{
 		var effect = this.effect.Value;
-		effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_perlin.Value);
+		effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Perlin.Value);
 		effect.Parameters["uHeatMap"].SetValue(ModAsset.Acytaea_Color.Value);
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) * Main.GameViewMatrix.TransformationMatrix;

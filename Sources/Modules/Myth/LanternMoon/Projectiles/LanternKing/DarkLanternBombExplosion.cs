@@ -268,7 +268,7 @@ public class DarkLanternBombExplosion : ModProjectile, IWarpProjectile
 		float value = (30 - Projectile.timeLeft) / 15f;
 		value = MathF.Sqrt(value);
 
-		Texture2D t = Commons.ModAsset.NoiseWave.Value;
+		Texture2D t = Commons.ModAsset.Noise_Wave.Value;
 		float width = 15;
 		if (Projectile.timeLeft < 15)
 		{

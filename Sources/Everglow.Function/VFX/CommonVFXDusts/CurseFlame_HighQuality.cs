@@ -17,7 +17,7 @@ public class CurseFlame_HighQualityPipeline : Pipeline
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) * Main.GameViewMatrix.TransformationMatrix;
 		effect.Value.Parameters["uTransform"].SetValue(model * projection);
-		effect.Value.Parameters["uNoise"].SetValue(ModAsset.Noise_melting.Value);
+		effect.Value.Parameters["uNoise"].SetValue(ModAsset.Noise_Melting.Value);
 		effect.Value.Parameters["uLight"].SetValue(ModAsset.Trail.Value);
 		Texture2D flameColor = ModAsset.Cursed_Color2.Value;
 		Ins.Batch.BindTexture<Vertex2D>(flameColor);

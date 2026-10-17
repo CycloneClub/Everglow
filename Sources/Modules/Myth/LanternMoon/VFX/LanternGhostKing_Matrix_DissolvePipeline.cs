@@ -7,7 +7,7 @@ public class LanternGhostKing_Matrix_DissolvePipeline : Pipeline
 		Ins.Batch.Begin();
 		Ins.Batch.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		Ins.Batch.GraphicsDevice.SamplerStates[1] = SamplerState.PointWrap;
-		Ins.Batch.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_rgb_large.Value;
+		Ins.Batch.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_RGB_Large.Value;
 		effect.Value.Parameters["uTransform"].SetValue(
 			Matrix.CreateTranslation(new Vector3(-Main.screenPosition, 0)) *
 			Main.GameViewMatrix.TransformationMatrix *

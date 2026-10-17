@@ -39,7 +39,7 @@ public class PrimordialJadeWinged_Spear : MeleeProj
 
 	public override string TrailColorTex()
 	{
-		return "Everglow/Myth/Misc/Projectiles/Weapon/Melee/PrimordialJadeWinged_Spear/PrimordialJadeWinged_Spear_meleeColor";
+		return "Everglow/Myth/Misc/Projectiles/Weapon/Melee/PrimordialJadeWinged_Spear/Primordial_Jade_Winged_Spear_Melee_Color";
 	}
 
 	public override float TrailAlpha(float factor)

@@ -59,7 +59,7 @@ public class AcytaeaSword_projectile_TownNPC : MeleeProj
 
 	public override string TrailColorTex()
 	{
-		return "Everglow/Myth/Acytaea/Projectiles/Acytaea_meleeColor";
+		return "Everglow/Myth/Acytaea/Projectiles/Acytaea_Melee_Color";
 	}
 
 	public override float TrailAlpha(float factor)
@@ -225,7 +225,7 @@ public class AcytaeaSword_projectile_TownNPC : MeleeProj
 			dissolveDuration = 1.2f;
 		}
 		dissolve.Parameters["uTransform"].SetValue(model * projection);
-		dissolve.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_spiderNet.Value);
+		dissolve.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Spider_Net.Value);
 		dissolve.Parameters["duration"].SetValue(dissolveDuration);
 		dissolve.Parameters["uDissolveColor"].SetValue(new Vector4(1f, 0f, 0f, 1f));
 		dissolve.Parameters["uNoiseSize"].SetValue(3f);

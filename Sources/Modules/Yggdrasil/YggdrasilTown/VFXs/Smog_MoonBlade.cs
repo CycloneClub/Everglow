@@ -5,7 +5,7 @@ public class Smog_MoonBladePipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.Smog_MoonBlade;
-		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_perlin.Value);
+		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Perlin.Value);
 		effect.Value.Parameters["uPowder"].SetValue(Commons.ModAsset.Noise_Sand.Value);
 	}
 
@@ -15,7 +15,7 @@ public class Smog_MoonBladePipeline : Pipeline
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition, 0)) * Main.GameViewMatrix.TransformationMatrix;
 		effect.Parameters["uTransform"].SetValue(model * projection);
-		Texture2D halo = ModAsset.HeatMap_moonBlade_smog.Value;
+		Texture2D halo = ModAsset.HeatMap_Moon_Blade_Smog.Value;
 		Ins.Batch.BindTexture<Vertex2D>(halo);
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointClamp;
 		Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.None, SamplerState.PointWrap, RasterizerState.CullNone);

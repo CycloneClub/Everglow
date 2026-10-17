@@ -6,7 +6,7 @@ public class SpringOfQuicksand_SandTrail_Pipeline : Pipeline
 	{
 		effect = ModAsset.SpringOfQuicksand_SandTrail_Shader;
 		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Sand.Value);
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.SpringOfQuicksand_Sandflow_HeatMap.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.Spring_Of_Quicksand_Sandflow_HeatMap.Value);
 	}
 
 	public override void BeginRender()

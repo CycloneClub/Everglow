@@ -227,7 +227,7 @@ public class Wither_Activated_Dog_Summon : ModProjectile
 			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.LightPoint2.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars2.ToArray(), 0, bars2.Count - 2);
 
-			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_hiveCyber.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_Hive_Cyber.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, lightRays.ToArray(), 0, lightRays.Count - 2);
 			Main.spriteBatch.End();
 			Main.spriteBatch.Begin(sBS);

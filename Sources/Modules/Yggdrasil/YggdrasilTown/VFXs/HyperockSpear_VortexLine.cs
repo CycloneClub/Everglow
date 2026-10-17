@@ -14,9 +14,9 @@ public class HyperockSpear_VortexLinePipeline : Pipeline
 		var effect = this.effect.Value;
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition, 0)) * Main.GameViewMatrix.TransformationMatrix;
-		effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_flame_0.Value);
+		effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Flame_0.Value);
 		effect.Parameters["uTransform"].SetValue(model * projection);
-		Texture2D FlameColor = ModAsset.HeatMap_HyperockSpear_VortexLine.Value;
+		Texture2D FlameColor = ModAsset.HeatMap_Hyperock_Spear_Vortex_Line.Value;
 		Ins.Batch.BindTexture<Vertex2D>(FlameColor);
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointClamp;
 		Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.None, SamplerState.PointClamp, RasterizerState.CullNone);

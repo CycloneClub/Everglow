@@ -20,8 +20,8 @@ public class CrystalPipeline : Pipeline
 		effect.Parameters["uTransform"].SetValue(model * projection);
 		effect.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Crystal.Value);
 
-		effect.Parameters["uNoise"].SetValue(ModAsset.Noise_turtleCrack.Value);
-		Ins.Batch.BindTexture<Vertex2D>(ModAsset.Noise_hiveCyber.Value);
+		effect.Parameters["uNoise"].SetValue(ModAsset.Noise_Turtle_Crack.Value);
+		Ins.Batch.BindTexture<Vertex2D>(ModAsset.Noise_Hive_Cyber.Value);
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointClamp;
 		Ins.Batch.Begin(BlendState.NonPremultiplied, DepthStencilState.None, SamplerState.PointWrap, RasterizerState.CullNone);
 		effect.CurrentTechnique.Passes[0].Apply();

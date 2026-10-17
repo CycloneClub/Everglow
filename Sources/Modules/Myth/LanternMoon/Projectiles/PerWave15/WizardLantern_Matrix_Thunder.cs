@@ -205,13 +205,13 @@ public class WizardLantern_Matrix_Thunder : ModProjectile
 		if (bars.Count > 0)
 		{
 			var texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
-			Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_perlin.Value;
+			Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_Perlin.Value;
 			Main.graphics.GraphicsDevice.Textures[0] = texture;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 		if (bars_vortex.Count > 0)
 		{
-			var texture = Commons.ModAsset.Noise_hiveCyber.Value;
+			var texture = Commons.ModAsset.Noise_Hive_Cyber.Value;
 			Main.graphics.GraphicsDevice.Textures[0] = texture;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars_vortex.ToArray(), 0, bars_vortex.Count - 2);
 		}

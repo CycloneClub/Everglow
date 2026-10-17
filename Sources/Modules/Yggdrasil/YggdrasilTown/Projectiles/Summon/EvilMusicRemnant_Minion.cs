@@ -486,7 +486,7 @@ public class EvilMusicRemnant_Minion : ModProjectile
 		Effect dissolve = Commons.ModAsset.DissolveWithLight.Value;
 		float dissolveDuration = SpawnProgress;
 		dissolve.Parameters["uTransform"].SetValue(model * projection);
-		dissolve.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_perlin.Value);
+		dissolve.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Perlin.Value);
 		dissolve.Parameters["duration"].SetValue(dissolveDuration);
 		dissolve.Parameters["uLightColor"].SetValue(drawColor.ToVector4());
 		dissolve.Parameters["uDissolveColor"].SetValue(new Vector4(0f, 0f, 0f, 1f));

@@ -140,7 +140,7 @@ namespace Everglow.MEAC.PlanetBeFall.Projectiles.NonIIIDProj.PlanetBefallArray
 				var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 				var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) * Main.GameViewMatrix.TransformationMatrix;
 				dissolve.Parameters["uTransform"].SetValue(model * projection);
-				dissolve.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_perlin.Value);
+				dissolve.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Perlin.Value);
 				dissolve.Parameters["uTime"].SetValue((1 - timeValue) * 1.5f);
 				dissolve.CurrentTechnique.Passes[0].Apply();
 

@@ -246,7 +246,7 @@ public class YggdrasilModule : EverglowModule
 		MeleeTrail.Parameters["uTransform"].SetValue(model * projection);
 		MeleeTrail.Parameters["uTime"].SetValue((float)Main.timeForVisualEffects * 0.007f);
 		Main.graphics.GraphicsDevice.Textures[0] = ModContent.Request<Texture2D>("Everglow/Yggdrasil/CorruptWormHive/Projectiles/FlameLine", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
-		MeleeTrail.Parameters["tex1"].SetValue(ModContent.Request<Texture2D>(ModAsset.DeathSickle_Color_Mod, ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+		MeleeTrail.Parameters["tex1"].SetValue(ModContent.Request<Texture2D>(ModAsset.Death_Sickle_Color_Mod, ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
 		MeleeTrail.CurrentTechnique.Passes["Trail"].Apply();
 		bool flag = false;
 		foreach (Projectile proj in Main.projectile)

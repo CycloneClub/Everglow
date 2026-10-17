@@ -95,9 +95,9 @@ public class BloodChurch_Scene : ModTile, ISceneTile
 		// Texture2D tex1 = ModAsset.BloodChurch_Scene_Far.Value;
 		Texture2D tex2 = ModAsset.BloodChurch_Scene_Fountain.Value;
 		Texture2D tex2_red = ModAsset.BloodChurch_Scene_Fountain_Red.Value;
-		Texture2D tex3_dark = Commons.ModAsset.Noise_flame_2_pure_black.Value;
-		Texture2D tex3 = Commons.ModAsset.Noise_flame_2_pure.Value;
-		Texture2D tex4 = Commons.ModAsset.Noise_WaterFallWave.Value;
+		Texture2D tex3_dark = Commons.ModAsset.Noise_Flame_2_Pure_Black.Value;
+		Texture2D tex3 = Commons.ModAsset.Noise_Flame_2_Pure.Value;
+		Texture2D tex4 = Commons.ModAsset.Noise_Water_Fall_Wave.Value;
 
 		StaticSceneMesh meshBg = bg.GetOrBuildMesh(tex0, bg.OriginTilePos.X, bg.OriginTilePos.Y);
 		if (meshBg.ColorRefreshTimer++ % 10 == 0)

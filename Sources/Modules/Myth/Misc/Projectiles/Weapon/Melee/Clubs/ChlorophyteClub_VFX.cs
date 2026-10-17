@@ -284,7 +284,7 @@ public class ChlorophyteClub_VFX : ModProjectile
 		}
 		if (circle.Count > 0)
 		{
-			Texture2D t = Commons.ModAsset.Noise_spine.Value;
+			Texture2D t = Commons.ModAsset.Noise_Spine.Value;
 			Main.graphics.GraphicsDevice.Textures[0] = t;
 			Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, circle.ToArray(), 0, circle.Count - 2);
@@ -302,7 +302,7 @@ public class ChlorophyteClub_VFX : ModProjectile
 		}
 		if (circle.Count > 0)
 		{
-			Texture2D t = Commons.ModAsset.Noise_spine_black.Value;
+			Texture2D t = Commons.ModAsset.Noise_Spine_Black.Value;
 			Main.graphics.GraphicsDevice.Textures[0] = t;
 			Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, circle.ToArray(), 0, circle.Count - 2);

@@ -184,7 +184,7 @@ public class BloodySwamp_area : ModProjectile, IWarpProjectile_warpStyle2
 		SpriteBatchState sBS = Main.spriteBatch.GetState().Value;
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_smoke_black.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_Smoke_Black.Value;
 		if (bars_black.Count > 3)
 		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars_black.ToArray(), 0, bars_black.Count - 2);
@@ -195,7 +195,7 @@ public class BloodySwamp_area : ModProjectile, IWarpProjectile_warpStyle2
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars_outside_black.ToArray(), 0, bars_outside_black.Count - 2);
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars_outside_black.ToArray(), 0, bars_outside_black.Count - 2);
 		}
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_smoke.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_Smoke.Value;
 		if (bars.Count > 3)
 		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
@@ -262,13 +262,13 @@ public class BloodySwamp_area : ModProjectile, IWarpProjectile_warpStyle2
 		{
 			Main.graphics.graphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 			Main.graphics.graphicsDevice.RasterizerState = RasterizerState.CullNone;
-			spriteBatch.Draw(Commons.ModAsset.Noise_smoke.Value, bars, PrimitiveType.TriangleStrip);
+			spriteBatch.Draw(Commons.ModAsset.Noise_Smoke.Value, bars, PrimitiveType.TriangleStrip);
 		}
 		if (bars2.Count > 2)
 		{
 			Main.graphics.graphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 			Main.graphics.graphicsDevice.RasterizerState = RasterizerState.CullNone;
-			spriteBatch.Draw(Commons.ModAsset.Noise_smoke.Value, bars2, PrimitiveType.TriangleStrip);
+			spriteBatch.Draw(Commons.ModAsset.Noise_Smoke.Value, bars2, PrimitiveType.TriangleStrip);
 		}
 	}
 }

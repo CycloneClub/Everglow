@@ -251,12 +251,12 @@ public class CeremonialBladeProj : ModProjectile, IWarpProjectile_warpStyle2
 			bladeEffect_Body.Add(drawPos + edge, drawColor * 0.6f * colorValue, new Vector3(2f, coordY, 0));
 			bladeEffect_Body.Add(drawPos + edge * 0.3f, drawColor * 0.0f, new Vector3(0, coordY, 0));
 		}
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_flame_2_black.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_Flame_2_Black.Value;
 		if (bladeEffect_Body_Dark.Count > 0)
 		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bladeEffect_Body_Dark.ToArray(), 0, bladeEffect_Body_Dark.Count - 2);
 		}
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_flame_2.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_Flame_2.Value;
 		if (bladeEffect_Body.Count > 0)
 		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bladeEffect_Body.ToArray(), 0, bladeEffect_Body.Count - 2);
@@ -320,7 +320,7 @@ public class CeremonialBladeProj : ModProjectile, IWarpProjectile_warpStyle2
 		if (bladeEffect_Warp.Count > 3)
 		{
 			Main.graphics.graphicsDevice.RasterizerState = RasterizerState.CullNone;
-			batch.Draw(Commons.ModAsset.Noise_flame_2.Value, bladeEffect_Warp, PrimitiveType.TriangleStrip);
+			batch.Draw(Commons.ModAsset.Noise_Flame_2.Value, bladeEffect_Warp, PrimitiveType.TriangleStrip);
 		}
 	}
 

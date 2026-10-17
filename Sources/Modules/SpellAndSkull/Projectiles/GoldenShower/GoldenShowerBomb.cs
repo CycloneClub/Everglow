@@ -97,7 +97,7 @@ public class GoldenShowerBomb : ModProjectile, IWarpProjectile
 		DrawTexCircle(MathF.Sqrt(timeValue) * 24 * Projectile.ai[0], 20 * (1 - timeValue) * Projectile.ai[0], cDark * dark, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_2_black_thick.Value);
 		DrawTexCircle(MathF.Sqrt(timeValue) * 24 * Projectile.ai[0], 4 * (1 - timeValue) * Projectile.ai[0], new Color(255, 145, 0, 0) * dark, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_10_black.Value);
 		DrawTexCircle(MathF.Sqrt(timeValue) * 24 * Projectile.ai[0], 4 * (1 - timeValue) * Projectile.ai[0], new Color(255, 145, 0, 0) * dark, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_10.Value);
-		DrawTexCircle(MathF.Sqrt(timeValue) * 48 * Projectile.ai[0], 40 * Projectile.ai[0], new Color(255, 145, 0, 0) * dark2, Projectile.Center - Main.screenPosition, Commons.ModAsset.Noise_hiveCyber.Value);
+		DrawTexCircle(MathF.Sqrt(timeValue) * 48 * Projectile.ai[0], 40 * Projectile.ai[0], new Color(255, 145, 0, 0) * dark2, Projectile.Center - Main.screenPosition, Commons.ModAsset.Noise_Hive_Cyber.Value);
 	}
 
 	public override bool PreDraw(ref Color lightColor)

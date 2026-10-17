@@ -9,7 +9,7 @@ public class IceParticlePipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.IceParticle;
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_iceParticle.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Ice_Particle.Value);
 	}
 
 	public override void BeginRender()

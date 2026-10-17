@@ -334,12 +334,12 @@ public abstract partial class MeleeProj_3D : ModProjectile, IWarpProjectile_warp
 				trails_reflection.Add(currentPos + ScreenPositionOffset, drawColor_reflection, new Vector3(value + timeValue, 1f, 0));
 				trails_reflection.Add(currentPos_Inner + ScreenPositionOffset, drawColor_reflection_Inner, new Vector3(value + timeValue, 0f, 0));
 			}
-			DrawSlashVertices(trails_black, ModAsset.Noise_flame_3_black.Value);
-			DrawSlashVertices(trails, ModAsset.Noise_flame_3.Value);
+			DrawSlashVertices(trails_black, ModAsset.Noise_Flame_3_Black.Value);
+			DrawSlashVertices(trails, ModAsset.Noise_Flame_3.Value);
 			DrawSlashVertices(trails_tip, ModAsset.StarSlash.Value);
 			DrawSlashVertices(trails_tip_black, ModAsset.StarSlash_black.Value);
 			DrawSlashVertices(trails_tip, ModAsset.StarSlash.Value);
-			DrawSlashVertices(trails_reflection, ModAsset.Noise_flame_3.Value);
+			DrawSlashVertices(trails_reflection, ModAsset.Noise_Flame_3.Value);
 		}
 	}
 
@@ -593,7 +593,7 @@ public abstract partial class MeleeProj_3D : ModProjectile, IWarpProjectile_warp
 
 			if (trails.Count > 2)
 			{
-				spriteBatch.Draw(ModAsset.Noise_flame_3.Value, trails, PrimitiveType.TriangleStrip);
+				spriteBatch.Draw(ModAsset.Noise_Flame_3.Value, trails, PrimitiveType.TriangleStrip);
 			}
 		}
 	}

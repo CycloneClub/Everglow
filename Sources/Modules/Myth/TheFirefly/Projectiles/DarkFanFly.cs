@@ -162,7 +162,7 @@ internal class DarkFanFly : ModProjectile
 			effect.Add(new Vertex2D(Projectile.Center + v4 * Projectile.scale * 0.5f - Main.screenPosition, new Color(0, 100, 255, 0) * value, new Vector3(x / 50f + coordValue, 0, 0)));
 			effect.Add(new Vertex2D(Projectile.Center - Main.screenPosition, new Color(0, 100, 255, 0) * 0.5f * value, new Vector3(x / 50f + coordValue, 1, 0)));
 		}
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_forceField_sparse.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_Force_Field_Sparse.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, effect.ToArray(), 0, effect.Count - 2);
 

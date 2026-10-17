@@ -6,7 +6,7 @@ public class DevilPipeline : PostPipeline
 	{
 		var sb = Main.spriteBatch;
 		sb.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
-		effect.Value.Parameters["tex1"].SetValue(ModAsset.DeathSickle_Color.Value);
+		effect.Value.Parameters["tex1"].SetValue(ModAsset.Death_Sickle_Color.Value);
 		effect.Value.Parameters["uTransform"].SetValue(
 			Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1));
 		effect.Value.CurrentTechnique.Passes[0].Apply();

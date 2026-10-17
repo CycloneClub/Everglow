@@ -190,7 +190,7 @@ public class GoldRoundYoyo : YoyoProjectile
 			bars.Add(new Vertex2D(drawPos + new Vector2(0, 8).RotatedBy(MathHelper.TwoPi * factor), drawC, new Vector3(factor, timeValue, 0)));
 			bars.Add(new Vertex2D(drawPos + new Vector2(0, 10).RotatedBy(MathHelper.TwoPi * factor), Color.Transparent, new Vector3(factor, timeValue, 0)));
 		}
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_spiderNet.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_Spider_Net.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		if (bars.Count > 3)
 		{
@@ -216,7 +216,7 @@ public class GoldRoundYoyo : YoyoProjectile
 			bars.Add(new Vertex2D(drawPos + new Vector2(0, 120).RotatedBy(MathHelper.TwoPi * factor), drawC, new Vector3(factor, timeValue, 0)));
 			bars.Add(new Vertex2D(drawPos + new Vector2(0, 240 * (MathF.Sin(i / 6f * MathF.PI + timeValue * 250) * 0.3f + 1)).RotatedBy(MathHelper.TwoPi * factor), Color.Transparent, new Vector3(factor, timeValue, 0)));
 		}
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_hiveNet.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_Hive_Net.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.LinearWrap;
 		if (bars.Count > 3)
 		{
@@ -232,7 +232,7 @@ public class GoldRoundYoyo : YoyoProjectile
 			bars.Add(new Vertex2D(drawPos + new Vector2(0, 120).RotatedBy(MathHelper.TwoPi * factor), drawC, new Vector3(factor, timeValue + 0.4f, 0)));
 			bars.Add(new Vertex2D(drawPos + new Vector2(0, 180 * (MathF.Sin(i / 6f * MathF.PI + timeValue * 250 + MathF.PI) * 0.3f + 1)).RotatedBy(MathHelper.TwoPi * factor), Color.Transparent, new Vector3(factor, timeValue + 0.4f, 0)));
 		}
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_hiveNet.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_Hive_Net.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.LinearWrap;
 		if (bars.Count > 3)
 		{
@@ -262,7 +262,7 @@ public class GoldRoundYoyo : YoyoProjectile
 			bars.Add(new Vertex2D(drawPos + new Vector2(0, 150).RotatedBy(MathHelper.TwoPi * factor), drawC, new Vector3(factor, 0f, 0)));
 			bars.Add(new Vertex2D(drawPos + new Vector2(0, 210).RotatedBy(MathHelper.TwoPi * factor), Color.Transparent, new Vector3(factor, 1f, 0)));
 		}
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_SolarSpectrum.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_Solar_Spectrum.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.LinearWrap;
 		if (bars.Count > 3)
 		{

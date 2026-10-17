@@ -18,8 +18,8 @@ public class CurseFlamePipeline : Pipeline
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) * Main.GameViewMatrix.TransformationMatrix;
 		effect.Parameters["uTransform"].SetValue(model * projection);
 		effect.Parameters["uTexcoordY"].SetValue(0.2f);
-		effect.Parameters["uNoise"].SetValue(ModAsset.Noise_perlin.Value);
-		effect.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_curseFlame.Value);
+		effect.Parameters["uNoise"].SetValue(ModAsset.Noise_Perlin.Value);
+		effect.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Curse_Flame.Value);
 		Texture2D halo = ModAsset.Point.Value;
 		Ins.Batch.BindTexture<Vertex2D>(halo);
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointClamp;

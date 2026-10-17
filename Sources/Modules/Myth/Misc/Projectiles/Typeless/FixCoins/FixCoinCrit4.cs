@@ -4,7 +4,7 @@ public class FixCoinCrit4 : FixCoinProjectile
 {
 	public override string HeatMapTexture()
 	{
-		return "heatmapPurple";
+		return "HeatMap_Purple";
 	}
 
 	public override int PrefixID()

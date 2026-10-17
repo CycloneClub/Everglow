@@ -17,7 +17,7 @@ public class MyceliumTilesPipeline : Pipeline
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition, 0)) * Main.GameViewMatrix.TransformationMatrix;
 		effect.Parameters["uTransform"].SetValue(model * projection);
-		effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_spiderNet.Value);
+		effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Spider_Net.Value);
 		Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.None, SamplerState.PointClamp, RasterizerState.CullNone);
 		effect.CurrentTechnique.Passes[0].Apply();
 	}

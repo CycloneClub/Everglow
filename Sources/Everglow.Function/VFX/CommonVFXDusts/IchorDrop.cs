@@ -9,7 +9,7 @@ public class IchorDropPipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.IchorDrop;
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_ichorDrop.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Ichor_Drop.Value);
 	}
 
 	public override void BeginRender()

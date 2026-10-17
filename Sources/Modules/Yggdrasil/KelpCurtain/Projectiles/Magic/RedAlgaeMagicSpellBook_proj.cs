@@ -266,7 +266,7 @@ public class RedAlgaeMagicSpellBook_proj : ModProjectile, IRedAlgaeToxinProjecti
 			algaeEffect.Parameters["uTransform"].SetValue(model * projection);
 			algaeEffect.CurrentTechnique.Passes[0].Apply();
 			Main.graphics.GraphicsDevice.Textures[0] = ModAsset.RedAlgae_EffectTexture.Value;
-			Main.graphics.GraphicsDevice.Textures[1] = ModAsset.RedAlgaeMagicSpellBook_proj_heatmap.Value;
+			Main.graphics.GraphicsDevice.Textures[1] = ModAsset.Red_Algae_Magic_Spell_Book_Proj_HeatMap.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, algae.ToArray(), 0, algae.Count / 3);
 			Main.spriteBatch.End();
 			Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);

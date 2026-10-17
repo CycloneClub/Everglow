@@ -1559,7 +1559,7 @@ public class LanternGhostKing : LanternMoonNPC
 		ef.Parameters["lerpGolden"].SetValue(1 - GoldenShieldLerp);
 		ef.Parameters["uTime"].SetValue((float)Main.timeForVisualEffects * 0.0005f);
 		ef.Parameters["warpScale"].SetValue(0f);
-		ef.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_rgb_large.Value);
+		ef.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_RGB_Large.Value);
 		ef.CurrentTechnique.Passes[ShaderType].Apply();
 
 		DrawVertexTexture(tex, drawPos, BodyFrame, NPC.rotation, BodyFrame.Size() * 0.5f);
@@ -1736,7 +1736,7 @@ public class LanternGhostKing : LanternMoonNPC
 		if (bars.Count > 0)
 		{
 			Main.graphics.GraphicsDevice.Textures[0] = tex;
-			Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_turtleCrack_Inverse.Value;
+			Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_Turtle_Crack_Inverse.Value;
 			Main.graphics.GraphicsDevice.Textures[2] = ModAsset.LanternGhostKing_Atlas_GoldenShield.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}

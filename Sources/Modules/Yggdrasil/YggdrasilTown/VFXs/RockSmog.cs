@@ -5,8 +5,8 @@ public class RockSmogPipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.RockSmog;
-		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_perlin.Value);
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_rockSmog.Value);
+		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Perlin.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Rock_Smog.Value);
 	}
 
 	public override void BeginRender()
