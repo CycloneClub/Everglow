@@ -12,17 +12,6 @@ sampler_state
 	AddressU = WRAP;
 	AddressV = WRAP;
 };
-texture uHeatmap;
-sampler uHeatmapSampler =
-sampler_state
-{
-	Texture = <uHeatmap>;
-	MipFilter = POINT;
-	MinFilter = POINT;
-	MagFilter = POINT;
-	AddressU = CLAMP;
-	AddressV = CLAMP;
-};
 
 struct PSInput
 {
