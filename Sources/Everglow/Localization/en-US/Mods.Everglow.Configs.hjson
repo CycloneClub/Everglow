@@ -1,3 +1,22 @@
+CrowdConfig: {
+	DisplayName: Town Crowds
+	Enabled: {
+		Label: Town travelers
+		Tooltip: "Adds travelers who walk, linger, and converse in Yggdrasil Town. Only active in single-player Yggdrasil. Disabling removes existing travelers."
+	}
+	Density: {
+		Label: Crowd density
+		Tooltip: "Adjusts the number of travelers on streets and trains. Higher density may increase performance cost. Lower density takes effect gradually as travelers leave."
+	}
+}
+
+CrowdDensity: {
+	Tooltip: Controls how busy the town feels.
+	Sparse.Label: Sparse
+	Standard.Label: Standard
+	Busy.Label: Busy
+}
+
 MirrorReflectionConfig: {
 	DisplayName: Mirror Reflections (Client)
 	Enabled: {
