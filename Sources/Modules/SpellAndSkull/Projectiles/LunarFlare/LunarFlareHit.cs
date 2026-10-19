@@ -154,7 +154,7 @@ public class LunarFlareHit : ModProjectile, IWarpProjectile, IBloomProjectile
 			colorV *= Projectile.ai[0] / 10f;
 		}
 
-		Texture2D t = ModAsset.Vague.Value;
+		Texture2D t = Commons.ModAsset.Noise_Wave.Value;
 		float width = 60;
 		if (Projectile.timeLeft < 60)
 		{

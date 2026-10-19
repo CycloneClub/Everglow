@@ -9,7 +9,7 @@ public class CurseFlameSparkPipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.CurseFlameSpark;
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_curseFlameSpark.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Curse_Flame_Spark.Value);
 	}
 
 	public override void BeginRender()

@@ -5,8 +5,8 @@ public class AmberSmogPipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.AmberSmog;
-		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_perlin.Value);
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_AmberSmog.Value);
+		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Perlin.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Amber_Smog.Value);
 	}
 
 	public override void BeginRender()

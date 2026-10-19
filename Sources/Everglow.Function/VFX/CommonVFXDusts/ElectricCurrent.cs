@@ -8,7 +8,7 @@ public class ElectricCurrentPipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.ElectricCurrent;
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_electricCurrent.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Electric_Current.Value);
 	}
 
 	public override void BeginRender()

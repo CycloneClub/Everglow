@@ -128,7 +128,7 @@ public class WoodlandWraithStaff_SporeZone : ModProjectile
 			SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;
 			Main.spriteBatch.End();
 			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_forceField_medium.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_Force_Field_Medium.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 
 			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_17.Value;

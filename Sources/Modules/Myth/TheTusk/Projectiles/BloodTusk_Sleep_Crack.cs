@@ -65,7 +65,7 @@ public class BloodTusk_Sleep_Crack : ModProjectile
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition, 0)) * Main.GameViewMatrix.TransformationMatrix;
 		bloodCrack.Parameters["uTransform"].SetValue(model * projection);
-		bloodCrack.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_flame_2.Value);
+		bloodCrack.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Flame_2.Value);
 		bloodCrack.Parameters["uNoiseSize"].SetValue(1f);
 		bloodCrack.Parameters["uNoiseXY"].SetValue(new Vector2(0.5f, 0.5f));
 		bloodCrack.CurrentTechnique.Passes[0].Apply();
@@ -80,7 +80,7 @@ public class BloodTusk_Sleep_Crack : ModProjectile
 			AddVertex(bars, Projectile.Center + new Vector2(-coordZ * 24 * Projectile.ai[0], (y - 20) * 3f), new Vector3(timeValue, coordY, -1));
 			AddVertex(bars, Projectile.Center + new Vector2(0, (y - 20) * 3f), new Vector3(0.5f + timeValue, coordY, coordZ));
 		}
-		Main.graphics.graphicsDevice.Textures[0] = ModAsset.BloodTusk_Sleep_HeatMap.Value;
+		Main.graphics.graphicsDevice.Textures[0] = ModAsset.Blood_Tusk_Sleep_HeatMap.Value;
 		Main.graphics.graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		bars = new List<Vertex2D>();
 		for (int y = 0; y <= 40; y++)
@@ -92,7 +92,7 @@ public class BloodTusk_Sleep_Crack : ModProjectile
 			AddVertex(bars, Projectile.Center + new Vector2(coordZ * 24 * Projectile.ai[0], (y - 20) * 3f), new Vector3(1 - timeValue, coordY, -1));
 			AddVertex(bars, Projectile.Center + new Vector2(0, (y - 20) * 3f), new Vector3(0.5f - timeValue, coordY, coordZ));
 		}
-		Main.graphics.graphicsDevice.Textures[0] = ModAsset.BloodTusk_Sleep_HeatMap.Value;
+		Main.graphics.graphicsDevice.Textures[0] = ModAsset.Blood_Tusk_Sleep_HeatMap.Value;
 		Main.graphics.graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(sBS);

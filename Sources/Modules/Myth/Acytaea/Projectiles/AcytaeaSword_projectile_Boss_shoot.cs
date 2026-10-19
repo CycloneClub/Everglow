@@ -248,7 +248,7 @@ public class AcytaeaSword_projectile_Boss_shoot : ModProjectile, IWarpProjectile
 
 	public string TrailColorTex()
 	{
-		return "Everglow/Myth/Acytaea/Projectiles/Acytaea_meleeColor";
+		return "Everglow/Myth/Acytaea/Projectiles/Acytaea_Melee_Color";
 	}
 
 	public virtual float TrailAlpha(float factor)

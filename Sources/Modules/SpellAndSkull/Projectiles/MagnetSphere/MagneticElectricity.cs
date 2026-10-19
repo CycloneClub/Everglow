@@ -30,7 +30,7 @@ internal class MagneticElectricityPipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.CursedFlame;
-		effect.Value.Parameters["uNoise"].SetValue(ModAsset.Perlin.Value);
+		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Perlin.Value);
 	}
 
 	public override void BeginRender()

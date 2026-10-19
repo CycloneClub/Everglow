@@ -166,14 +166,14 @@ public class Corrosion_Projectile : ModProjectile
 			vertices_dark.Add(Projectile.Center - Main.screenPosition, Color.White * fade, new Vector3(value, timeValue + 0.25f, 0f));
 		}
 
-		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.Noise_hiveCyber_black.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.Noise_Hive_Cyber_Black.Value;
 		if (vertices_dark.Count > 2)
 		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, vertices_dark.ToArray(), 0, vertices_dark.Count - 2);
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, vertices_dark.ToArray(), 0, vertices_dark.Count - 2);
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, vertices_dark.ToArray(), 0, vertices_dark.Count - 2);
 		}
-		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.Noise_hiveCyber.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.Noise_Hive_Cyber.Value;
 		if (vertices.Count > 2)
 		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, vertices.ToArray(), 0, vertices.Count - 2);

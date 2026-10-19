@@ -5,8 +5,8 @@ public class NanoCloudPipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.NanoCloud;
-		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_hiveCyber.Value);
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_NanoCloud.Value);
+		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Hive_Cyber.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Nano_Cloud.Value);
 	}
 
 	public override void BeginRender()

@@ -19,7 +19,7 @@ public class KingJellyBall_HealPipeline : Pipeline
 		effect.Parameters["uThredshold"].SetValue(0.2f);
 		effect.CurrentTechnique.Passes["Test"].Apply();
 
-		Ins.Batch.BindTexture<Vertex2D>(Commons.ModAsset.Noise_perlin.Value);
+		Ins.Batch.BindTexture<Vertex2D>(Commons.ModAsset.Noise_Perlin.Value);
 		Main.graphics.graphicsDevice.SamplerStates[1] = SamplerState.PointWrap;
 		Main.graphics.graphicsDevice.Textures[1] = Commons.ModAsset.Trail.Value;
 		Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.None, SamplerState.PointWrap, RasterizerState.CullNone);

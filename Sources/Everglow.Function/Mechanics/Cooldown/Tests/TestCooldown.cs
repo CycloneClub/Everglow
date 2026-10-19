@@ -15,7 +15,7 @@ public class TestCooldown2 : CooldownBase
 
 	public override string TypeID => ID;
 
-	public override Texture2D Texture => ModAsset.Noise_cell_rgb.Value;
+	public override Texture2D Texture => ModAsset.Noise_Cell_RGB.Value;
 }
 
 public class TestCooldown3 : CooldownBase
@@ -24,7 +24,7 @@ public class TestCooldown3 : CooldownBase
 
 	public override string TypeID => ID;
 
-	public override Texture2D Texture => ModAsset.Noise_burn.Value;
+	public override Texture2D Texture => ModAsset.Noise_Burn.Value;
 }
 
 public class TestCooldown4 : CooldownBase

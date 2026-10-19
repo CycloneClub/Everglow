@@ -12,7 +12,7 @@ public class ArenaSettlementPipeline : Pipeline
 		var effect = this.effect.Value;
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		var model = Matrix.CreateTranslation(new Vector3(0)) * Main.GameViewMatrix.TransformationMatrix;
-		effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_groundGlass.Value);
+		effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Ground_Glass.Value);
 		effect.Parameters["uTransform"].SetValue(model * projection);
 		effect.Parameters["uScale"].SetValue(2f);
 		Texture2D halo = ModAsset.SettlementIconsAtlas.Value;

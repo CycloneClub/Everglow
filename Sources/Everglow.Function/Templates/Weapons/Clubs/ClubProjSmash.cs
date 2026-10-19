@@ -396,7 +396,7 @@ public abstract class ClubProjSmash : MeleeProj
 
 		Effect MeleeTrail = ModAsset.ClubTrail.Value;
 		MeleeTrail.Parameters["uTransform"].SetValue(Main.GameViewMatrix.TransformationMatrix_WorldToScreen());
-		MeleeTrail.Parameters["tex0"].SetValue(ModAsset.Noise_flame_0.Value);
+		MeleeTrail.Parameters["tex0"].SetValue(ModAsset.Noise_Flame_0.Value);
 		MeleeTrail.Parameters["tex1"].SetValue(ModContent.Request<Texture2D>(TrailColorTex(), ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
 		MeleeTrail.Parameters["Light"].SetValue(vColor);
 		MeleeTrail.CurrentTechnique.Passes["TrailByOrigTex"].Apply();

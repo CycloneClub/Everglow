@@ -73,7 +73,7 @@ public class WarpAndFadePipeline : PostPipeline
 		sb.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullNone);
 		if (!Main.gamePaused)
 		{
-			gd.Textures[1] = ModAsset.Noise_rgb.Value;
+			gd.Textures[1] = ModAsset.Noise_RGB.Value;
 			gd.SamplerStates[1] = SamplerState.AnisotropicWrap;
 			effect.Value.Parameters["strength"].SetValue(0.005f);
 			effect.Value.Parameters["deltaY"].SetValue((float)Main.time * 0.003f);

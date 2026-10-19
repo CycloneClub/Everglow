@@ -233,13 +233,13 @@ public class AcytaeaTornado : ModProjectile
 
 	public override void PostDraw(Color lightColor)
 	{
-		DrawTornado(Commons.ModAsset.Noise_crack_dense_black.Value, new Color(1f, 1f, 1f, 1f), -160, "DarkEffect", 0.1f, 0.13f);
-		DrawTornado(Commons.ModAsset.Noise_burn.Value, new Color(1f, 0, 0.4f, 0), -110, "RedEffect", 0.2f, 0.13f);
-		DrawTornado(Commons.ModAsset.Noise_perlin.Value, new Color(1f, 0, 0.4f, 0.7f), -80, "RedEffect", 0.2f, 0.13f);
+		DrawTornado(Commons.ModAsset.Noise_Crack_Dense_Black.Value, new Color(1f, 1f, 1f, 1f), -160, "DarkEffect", 0.1f, 0.13f);
+		DrawTornado(Commons.ModAsset.Noise_Burn.Value, new Color(1f, 0, 0.4f, 0), -110, "RedEffect", 0.2f, 0.13f);
+		DrawTornado(Commons.ModAsset.Noise_Perlin.Value, new Color(1f, 0, 0.4f, 0.7f), -80, "RedEffect", 0.2f, 0.13f);
 
-		DrawTornado(Commons.ModAsset.Noise_perlin.Value, new Color(1f, 0, 0.4f, 0.7f), 80, "RedEffect", 0.2f);
-		DrawTornado(Commons.ModAsset.Noise_burn.Value, new Color(1f, 0, 0.4f, 0), 110, "RedEffect", 0.2f);
-		DrawTornado(Commons.ModAsset.Noise_crack_dense_black.Value, new Color(1f, 1f, 1f, 1f), 160, "DarkEffect", 0.1f);
+		DrawTornado(Commons.ModAsset.Noise_Perlin.Value, new Color(1f, 0, 0.4f, 0.7f), 80, "RedEffect", 0.2f);
+		DrawTornado(Commons.ModAsset.Noise_Burn.Value, new Color(1f, 0, 0.4f, 0), 110, "RedEffect", 0.2f);
+		DrawTornado(Commons.ModAsset.Noise_Crack_Dense_Black.Value, new Color(1f, 1f, 1f, 1f), 160, "DarkEffect", 0.1f);
 
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);

@@ -225,7 +225,7 @@ public class LichensPycnidium : ModProjectile
 			triangleList.Add(new Vertex2D(center - new Vector2(-radius, -radius).RotatedBy(lichen.rotation), baseColor, new Vector3(1, -1, timeValue)));
 			triangleList.Add(new Vertex2D(center - new Vector2(-radius, radius).RotatedBy(lichen.rotation), baseColor, new Vector3(1, 1, timeValue)));
 
-			batch.Draw(ModAsset.LichenNoise.Value, triangleList, PrimitiveType.TriangleList);
+			batch.Draw(ModAsset.Lichen_Noise.Value, triangleList, PrimitiveType.TriangleList);
 		}
 	}
 }

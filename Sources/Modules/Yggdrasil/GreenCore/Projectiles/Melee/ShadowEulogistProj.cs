@@ -26,7 +26,7 @@ public class ShadowEulogistProj : MeleeProj
 
 	public override string TrailColorTex()
 	{
-		return Texture + "_Color";
+		return ModAsset.Shadow_Eulogist_Color_Mod;
 	}
 
 	public override float TrailAlpha(float factor)

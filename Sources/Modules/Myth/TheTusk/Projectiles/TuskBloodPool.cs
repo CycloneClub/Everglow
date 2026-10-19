@@ -108,7 +108,7 @@ public class TuskBloodPool : ModProjectile
 			dissolveDuration = MathF.Pow(Projectile.timeLeft / 120f, 0.5f) * 1.2f;
 		}
 		dissolve.Parameters["uTransform"].SetValue(model * projection);
-		dissolve.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_melting.Value);
+		dissolve.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Melting.Value);
 		dissolve.Parameters["duration"].SetValue(dissolveDuration);
 		dissolve.Parameters["uDissolveColor"].SetValue(new Vector4(0.1f, 0.0f, 0.2f, 0.7f));
 		dissolve.Parameters["uNoiseSize"].SetValue(2.6f);

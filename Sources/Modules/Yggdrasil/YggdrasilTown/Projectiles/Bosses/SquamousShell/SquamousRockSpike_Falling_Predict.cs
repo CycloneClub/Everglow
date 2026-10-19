@@ -74,7 +74,7 @@ public class SquamousRockSpike_Falling_Predict : ModProjectile
 			dissolveDuration = Projectile.timeLeft / 30f - 0.2f;
 		}
 		dissolve.Parameters["uTransform"].SetValue(model * projection);
-		dissolve.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_flame_1.Value);
+		dissolve.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Flame_1.Value);
 		dissolve.Parameters["duration"].SetValue(dissolveDuration);
 		dissolve.Parameters["uLightColor"].SetValue(Color.White.ToVector4());
 		dissolve.Parameters["uDissolveColor"].SetValue(new Vector4(0.12f, 0.10f, 0.07f, 1f));

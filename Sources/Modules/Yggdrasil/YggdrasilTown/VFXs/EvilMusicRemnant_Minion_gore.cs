@@ -13,7 +13,7 @@ public class EvilMusicRemnant_Minion_gorePipeline : Pipeline
 			Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1));
 		effect.Value.CurrentTechnique.Passes[0].Apply();
 		effect.Value.Parameters["uColorSet"].SetValue(new Vector4(0.15f, 0.05f, 0.3f, 1f));
-		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_cell.Value);
+		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Cell.Value);
 	}
 
 	public override void EndRender()

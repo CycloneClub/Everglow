@@ -55,7 +55,7 @@ public class ActivatedJellyGlandExplosion : ModProjectile
 			bars.Add(drawCenter + new Vector2(0, 20 * outerScale).RotatedBy(rotation), drawColor * 0.2f, new Vector3(i / 90f, 1, 0));
 			bars.Add(drawCenter + new Vector2(0, 0).RotatedBy(rotation), drawColor, new Vector3(i / 90f, 0, 0));
 		}
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_burn.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_Burn.Value;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 
 		bars = [];

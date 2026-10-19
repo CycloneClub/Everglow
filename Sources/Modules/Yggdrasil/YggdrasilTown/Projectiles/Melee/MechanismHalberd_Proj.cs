@@ -19,7 +19,7 @@ public class MechanismHalberd_Proj : MeleeProj
 		canLongLeftClick = false; // 不需要左键蓄力
 	}
 
-	public override string TrailColorTex() => ModAsset.MechanismHalberd_Color_Mod;
+	public override string TrailColorTex() => ModAsset.Mechanism_Halberd_Color_Mod;
 
 	public override BlendState TrailBlendState() => BlendState.Additive;
 

@@ -414,7 +414,7 @@ public class Guard_of_YggdrasilTown : TownNPC_LiveInYggdrasil
 			effect.CurrentTechnique.Passes["HeatMap"].Apply();
 
 			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_1.Value;
-			Main.graphics.graphicsDevice.Textures[1] = ModAsset.Guard_Attack_Spear_heatMap.Value;
+			Main.graphics.graphicsDevice.Textures[1] = ModAsset.Guard_Attack_Spear_HeatMap.Value;
 			Main.graphics.graphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 			Main.graphics.graphicsDevice.SamplerStates[1] = SamplerState.PointClamp;
 			Main.graphics.graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, barsHighLight.ToArray(), 0, barsHighLight.Count - 2);

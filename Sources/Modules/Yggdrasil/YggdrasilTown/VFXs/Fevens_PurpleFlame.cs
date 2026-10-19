@@ -5,8 +5,8 @@ public class Fevens_PurpleFlamePipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.Fevens_PurpleFlame;
-		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_perlin.Value);
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Fevens_PurpleFlame.Value);
+		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Perlin.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Fevens_Purple_Flame.Value);
 	}
 
 	public override void BeginRender()

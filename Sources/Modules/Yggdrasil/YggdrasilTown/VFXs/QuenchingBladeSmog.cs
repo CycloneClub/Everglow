@@ -13,9 +13,9 @@ public class QuenchingBladeSmogPipeline : Pipeline
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition, 0)) * Main.GameViewMatrix.TransformationMatrix;
 		effect.Parameters["uTransform"].SetValue(model * projection);
-		effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_flame_0.Value);
+		effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Flame_0.Value);
 		effect.Parameters["uLine"].SetValue(Commons.ModAsset.TrailV.Value);
-		Ins.Batch.BindTexture<Vertex2D>(ModAsset.QuenchingBladeSmog_heatmap.Value);
+		Ins.Batch.BindTexture<Vertex2D>(ModAsset.Quenching_Blade_Smog_HeatMap.Value);
 		Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.None, SamplerState.LinearClamp, RasterizerState.CullNone);
 		effect.CurrentTechnique.Passes[0].Apply();
 	}

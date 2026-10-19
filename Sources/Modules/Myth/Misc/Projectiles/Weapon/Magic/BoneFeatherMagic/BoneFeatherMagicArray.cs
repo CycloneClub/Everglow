@@ -13,9 +13,9 @@ internal class BoneRingPipeline : Pipeline
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) * Main.GameViewMatrix.TransformationMatrix;
 		effect.Parameters["uTransform"].SetValue(model * projection);
-		effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_spine.Value);
-		effect.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_boneRing.Value);
-		effect.Parameters["uHeatMap2"].SetValue(ModAsset.HeatMap_boneRing_dark.Value);
+		effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Spine.Value);
+		effect.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Bone_Ring.Value);
+		effect.Parameters["uHeatMap2"].SetValue(ModAsset.HeatMap_Bone_Ring_Dark.Value);
 		Texture2D halo = Commons.ModAsset.Trail.Value;
 		Ins.Batch.BindTexture<Vertex2D>(halo);
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;

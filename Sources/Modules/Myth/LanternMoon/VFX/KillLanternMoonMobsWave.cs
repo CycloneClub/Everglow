@@ -71,6 +71,6 @@ public class KillLanternMoonMobsWave : Visual
 			bars.Add(Position + radius * 0.96f, drawColor, new Vector3(r / (float)count * 3, Range * 0.001f * 0.96f, 0));
 			bars.Add(Position + radius * 0.25f, drawColor * 0, new Vector3(r / (float)count * 3, Range * 0.001f * 0.23f, 0));
 		}
-		Ins.Batch.Draw(Commons.ModAsset.Noise_flame_3.Value, bars, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(Commons.ModAsset.Noise_Flame_3.Value, bars, PrimitiveType.TriangleStrip);
 	}
 }

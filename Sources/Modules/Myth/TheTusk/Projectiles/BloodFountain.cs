@@ -11,7 +11,7 @@ public class BloodFountain : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
 
-	public override string Texture => ModAsset.BloodFountain_Heatmap_Mod;
+	public override string Texture => ModAsset.Blood_Fountain_HeatMap_Mod;
 
 	public override void SetDefaults()
 	{
@@ -103,7 +103,7 @@ public class BloodFountain : ModProjectile
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition, 0)) * Main.GameViewMatrix.TransformationMatrix;
 		dissolve.Parameters["uTransform"].SetValue(model * projection);
-		dissolve.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_forceField_medium.Value);
+		dissolve.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Force_Field_Medium.Value);
 		dissolve.Parameters["uNoiseSize"].SetValue(0.7f);
 		dissolve.Parameters["uNoiseXY"].SetValue(new Vector2(Projectile.ai[1], Projectile.ai[2]));
 		dissolve.CurrentTechnique.Passes[0].Apply();
@@ -130,7 +130,7 @@ public class BloodFountain : ModProjectile
 				AddVertex(bars, Projectile.Center + new Vector2(i * 8 * (25 - j) * 0.2f, posY), new Vector3(0 + i * widthCoord, yCoord, zCoord0));
 				AddVertex(bars, Projectile.Center + new Vector2((i + 1) * 8 * (25 - j) * 0.2f, posY), new Vector3(widthCoord + i * widthCoord, yCoord, zCoord1));
 			}
-			Main.graphics.graphicsDevice.Textures[0] = ModAsset.BloodFountain_Heatmap.Value;
+			Main.graphics.graphicsDevice.Textures[0] = ModAsset.Blood_Fountain_HeatMap.Value;
 			Main.graphics.graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 

@@ -54,7 +54,7 @@ public class ToothKnife : MeleeProj, IWarpProjectile
 
 	public override string TrailColorTex()
 	{
-		return "Everglow/Myth/TheTusk/Projectiles/Weapon/TuskKnife_meleeColor";
+		return "Everglow/Myth/TheTusk/Projectiles/Weapon/Tusk_Knife_Melee_Color";
 	}
 
 	public override float TrailAlpha(float factor)

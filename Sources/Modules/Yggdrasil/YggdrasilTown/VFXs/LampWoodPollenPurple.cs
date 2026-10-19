@@ -5,8 +5,8 @@ public class LampWoodPollenPurplePipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.LampWoodPollenPurple;
-		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_perlin.Value);
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_LampWoodPollenPurple.Value);
+		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Perlin.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Lamp_Wood_Pollen_Purple.Value);
 	}
 
 	public override void BeginRender()

@@ -184,7 +184,7 @@ public class GunOfAvarice : ModItem
 		// Draw text when level change.
 		Effect dissolve = Commons.ModAsset.Dissolve.Value;
 		float dissolveDuration = Math.Clamp(LevelChangeTimer / 30f - 0.2f, -0.2f, 1);
-		dissolve.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_spiderNet.Value);
+		dissolve.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Spider_Net.Value);
 		dissolve.Parameters["duration"].SetValue(dissolveDuration);
 		dissolve.Parameters["uDissolveColor"].SetValue(new Vector4(1f, 1f, 1f, 1f));
 		dissolve.Parameters["uNoiseSize"].SetValue(4f);

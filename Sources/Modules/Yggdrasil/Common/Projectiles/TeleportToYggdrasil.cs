@@ -105,7 +105,7 @@ public class TeleportToYggdrasil : ModProjectile, IWarpProjectile
 			nets.Add(drawCenter, drawColor * fade, new Vector3(new Vector2(0.5f), 0));
 			nets.Add(drawCenter + normalWidth * vertexWidth, Color.Transparent, new Vector3(new Vector2(0.5f) + normalWidth * 0.35f, Timer * deltaRot));
 		}
-		Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Noise_crack_dense_black.Value;
+		Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Noise_Crack_Dense_Black.Value;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, nets.ToArray(), 0, nets.Count - 2);
 
 		nets = new List<Vertex2D>();
@@ -142,7 +142,7 @@ public class TeleportToYggdrasil : ModProjectile, IWarpProjectile
 			nets.Add(drawCenter, drawColor * fade, new Vector3(new Vector2(0.5f), 0));
 			nets.Add(drawCenter + normalWidth * vertexWidth, Color.Transparent, new Vector3(new Vector2(0.5f) + normalWidth * 0.35f, Timer * deltaRot));
 		}
-		Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Noise_melting.Value;
+		Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Noise_Melting.Value;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, nets.ToArray(), 0, nets.Count - 2);
 
 		if (Timer < 30)
@@ -158,7 +158,7 @@ public class TeleportToYggdrasil : ModProjectile, IWarpProjectile
 				nets.Add(drawCenter + normalWidth * vertexWidth, drawColor * fade, new Vector3(new Vector2(0.5f), 0));
 				nets.Add(drawCenter + normalWidth * (vertexWidth + 600), Color.Transparent, new Vector3(new Vector2(0.5f) + normalWidth * 0.35f, Timer * deltaRot));
 			}
-			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Noise_melting.Value;
+			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Noise_Melting.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, nets.ToArray(), 0, nets.Count - 2);
 
 			nets = new List<Vertex2D>();
@@ -172,7 +172,7 @@ public class TeleportToYggdrasil : ModProjectile, IWarpProjectile
 				nets.Add(drawCenter + normalWidth * (vertexWidth - 600), Color.Transparent, new Vector3(new Vector2(0.5f), 0));
 				nets.Add(drawCenter + normalWidth * vertexWidth, drawColor * fade, new Vector3(new Vector2(0.5f) + normalWidth * 0.35f, Timer * deltaRot));
 			}
-			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Noise_melting.Value;
+			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Noise_Melting.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, nets.ToArray(), 0, nets.Count - 2);
 		}
 
@@ -358,7 +358,7 @@ public class TeleportToYggdrasil : ModProjectile, IWarpProjectile
 			float value = Timer / 30f;
 			value = MathF.Sqrt(value);
 			float colorV = 3.9f * (1 - value);
-			Texture2D t = Commons.ModAsset.Noise_rgbPerlin.Value;
+			Texture2D t = Commons.ModAsset.Noise_RGB_Perlin.Value;
 			float width = 600;
 
 			DrawWarpTexCircle_VFXBatch(spriteBatch, value * 1600, width, new Color(colorV, colorV * 0.07f, colorV, 0f), Projectile.Center - Main.screenPosition, t);
