@@ -21,9 +21,13 @@ public sealed class CrowdRetirement
 	private float transitionStart = 1;
 
 	public CrowdRetirementReason Reasons { get; private set; }
+
 	public float Opacity { get; private set; } = 1;
+
 	public bool Complete => Opacity <= 0;
+
 	public int DepartureFailures { get; private set; }
+
 	public int MovementTicks => movementTicks;
 
 	public void ObserveThreat(bool alarmed)

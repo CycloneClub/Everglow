@@ -8,6 +8,7 @@ namespace Everglow.Yggdrasil.Mechanics.TownCrowd;
 internal static class CrowdThreats
 {
 	private sealed record CrowdThreat(Vector2 Center, float Radius, bool IgnoresWalls);
+
 	private sealed class CrowdRecovery(long tick)
 	{
 		public long LastDanger = tick;

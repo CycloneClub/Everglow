@@ -207,7 +207,8 @@ internal sealed class CrowdPlaces
 				&& (pylon || Math.Abs(CrowdTerrain.Feet(cell).Y - focus.Y) <= 24)
 				&& (!guild || CrowdLifeRules.InsideGuildOpening(marker.Origin, CrowdTerrain.Feet(cell))))
 			{
-				yield return new CrowdPlace(pylon ? CrowdActivity.LeavePylon : guild ? CrowdActivity.EnterGuild : CrowdActivity.EnterBuilding,
+				yield return new CrowdPlace(
+					pylon ? CrowdActivity.LeavePylon : guild ? CrowdActivity.EnterGuild : CrowdActivity.EnterBuilding,
 					cell, $"tile:{marker.Origin}", focus, marker.Origin, marker.Type);
 			}
 		}
@@ -299,7 +300,8 @@ internal sealed class CrowdPlaces
 					&& Math.Abs(CrowdTerrain.Feet(cell).X - CrowdTerrain.Feet(plaza.Cell).X) <= 640)))
 				&& (!departing || !ViewBounds.Contains(CrowdTerrain.Feet(cell).ToPoint())))
 			{
-				yield return new CrowdPlace(departing ? CrowdActivity.LeaveStreet : CrowdActivity.Scenery,
+				yield return new CrowdPlace(
+					departing ? CrowdActivity.LeaveStreet : CrowdActivity.Scenery,
 					cell, $"street:{cell.X / 8}:{cell.Y / 4}", CrowdTerrain.Feet(cell));
 			}
 		}

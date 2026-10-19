@@ -46,7 +46,8 @@ internal static class CrowdTerrain
 			return false;
 		}
 		// Grid nodes require an exact floor height; half blocks and slopes need a richer surface model.
-		if (CrowdRules.SupportsGridLanding(tile.HasUnactuatedTile,
+		if (CrowdRules.SupportsGridLanding(
+			tile.HasUnactuatedTile,
 			CrowdRules.IsSolidFloor(Main.tileSolid[tile.TileType], Main.tileSolidTop[tile.TileType], tile.TileFrameY), tile.IsHalfBlock, (int)tile.Slope))
 		{
 			return true;

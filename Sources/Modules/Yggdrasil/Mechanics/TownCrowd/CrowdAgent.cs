@@ -636,8 +636,14 @@ internal sealed class CrowdAgent
 			waitingForBudget = TownCrowdSystem.PlanningBudget == budgetBefore;
 			if (!waitingForBudget)
 			{
-				if (movementPending) { retirement.RecordMovementRecovery(); }
-				if (WantsToLeave) { retirement.RecordDepartureFailure(); }
+				if (movementPending)
+				{
+					retirement.RecordMovementRecovery();
+				}
+				if (WantsToLeave)
+				{
+					retirement.RecordDepartureFailure();
+				}
 			}
 			return;
 		}

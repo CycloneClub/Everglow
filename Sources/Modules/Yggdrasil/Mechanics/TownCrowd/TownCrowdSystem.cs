@@ -78,7 +78,8 @@ public class TownCrowdSystem : ModSystem
 		{
 			return;
 		}
-		var mouse = Vector2.Transform(new Vector2(PlayerInput.MouseInfo.X, PlayerInput.MouseInfo.Y),
+		var mouse = Vector2.Transform(
+			new Vector2(PlayerInput.MouseInfo.X, PlayerInput.MouseInfo.Y),
 			Matrix.Invert(Main.GameViewMatrix.TransformationMatrix)) + Main.screenPosition;
 		for (int i = Travelers.Count - 1; i >= 0; i--)
 		{
@@ -96,7 +97,8 @@ public class TownCrowdSystem : ModSystem
 		clock++;
 	}
 
-	private static Rectangle CurrentView => CrowdLifeRules.CameraBounds(Main.screenPosition,
+	private static Rectangle CurrentView => CrowdLifeRules.CameraBounds(
+		Main.screenPosition,
 		new Vector2(Main.screenWidth, Main.screenHeight), Main.GameViewMatrix.TransformationMatrix);
 
 	public override void PostDrawTiles()
@@ -323,7 +325,8 @@ public class TownCrowdSystem : ModSystem
 		{
 			return false;
 		}
-		var intent = CrowdLifeRules.ChooseIntent(arrival == CrowdArrival.Pylon,
+		var intent = CrowdLifeRules.ChooseIntent(
+			arrival == CrowdArrival.Pylon,
 			entrance?.Activity == CrowdActivity.EnterGuild, Main.rand.Next(100),
 			CrowdSettings.ReturnPercent, CrowdSettings.GuildPercent);
 		bool planned = PlanIntent(source, null, intent, out var destination, out var path, entrance?.Key);
