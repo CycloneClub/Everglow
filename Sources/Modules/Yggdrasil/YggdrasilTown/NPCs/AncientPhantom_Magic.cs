@@ -1,9 +1,7 @@
 using Everglow.Commons.Templates.Enemies;
-using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts.TwilightForest;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs.ProjNPC;
-using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Enemies;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
 using Terraria.DataStructures;
 
@@ -24,7 +22,6 @@ public class AncientPhantom_Magic : Fighter
 	public override void SetStaticDefaults()
 	{
 		Main.npcFrameCount[NPC.type] = 12;
-		NPCSpawnManager.RegisterNPC(Type);
 	}
 
 	public override void SetDefaults()

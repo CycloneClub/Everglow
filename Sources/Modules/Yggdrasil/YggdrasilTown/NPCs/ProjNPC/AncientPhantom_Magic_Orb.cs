@@ -11,7 +11,6 @@ public class AncientPhantom_Magic_Orb : ModNPC
 
 	public override void SetStaticDefaults()
 	{
-		NPCSpawnManager.RegisterNPC(Type);
 	}
 
 	public override void SetDefaults()

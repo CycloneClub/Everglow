@@ -1,5 +1,4 @@
 using Everglow.Commons.Templates.Enemies;
-using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts.TwilightForest;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Enemies;
@@ -23,7 +22,6 @@ public class AncientPhantom_Bow : Fighter
 	public override void SetStaticDefaults()
 	{
 		Main.npcFrameCount[NPC.type] = 12;
-		NPCSpawnManager.RegisterNPC(Type);
 	}
 
 	public override void SetDefaults()
@@ -142,14 +140,9 @@ public class AncientPhantom_Bow : Fighter
 				shootVel.Normalize();
 				return shootVel * 13;
 			}
-			if (Math.Abs(oldPredict[1].X - oldPredict[0].X) < 4 && oldPredict[0].Y > 7)
-			{
-				predictY = oldPredict[0].X + Math.Sign(oldPredict[0].X - oldPredict[1].X) * 10;
-			}
-			else
-			{
-				predictY = (oldPredict[0].X + oldPredict[1].X) * 0.5f;
-			}
+			predictY = Math.Abs(oldPredict[1].X - oldPredict[0].X) < 4 && oldPredict[0].Y > 7
+				? oldPredict[0].X + Math.Sign(oldPredict[0].X - oldPredict[1].X) * 10
+				: (oldPredict[0].X + oldPredict[1].X) * 0.5f;
 		}
 		return (targetPos + new Vector2(0, oldPredict[0].X) - shootPos).NormalizeSafe() * 13f;
 	}
