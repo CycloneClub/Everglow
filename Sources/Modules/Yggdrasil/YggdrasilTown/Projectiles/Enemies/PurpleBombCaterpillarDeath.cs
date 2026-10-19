@@ -1,6 +1,5 @@
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs.NPCEffects;
-using static Everglow.Yggdrasil.YggdrasilTown.VFXs.RandomNPC.VFXPerson;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Enemies;
 
