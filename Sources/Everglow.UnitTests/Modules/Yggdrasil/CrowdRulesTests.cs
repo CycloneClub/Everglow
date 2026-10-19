@@ -66,7 +66,8 @@ public class CrowdRulesTests
 			}
 			body.Position += stride;
 		}
-		Assert.IsTrue(CrowdRules.CanBoard(true, true, Vector2.Zero, 100, 600,
+		Assert.IsTrue(
+			CrowdRules.CanBoard(true, true, Vector2.Zero, 100, 600,
 			body.Position + new Vector2(8, 48), door), "The traveler must physically reach the deck, not stop against its side.");
 		Assert.AreEqual(train.Position.Y, body.Position.Y + 48, 0.1f);
 	}

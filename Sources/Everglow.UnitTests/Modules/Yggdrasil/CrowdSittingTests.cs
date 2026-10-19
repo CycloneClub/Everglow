@@ -40,7 +40,8 @@ public class CrowdSittingTests
 			object?[] args = [position, direction, 2 - index, seatOffset, null, null];
 			method.Invoke(null, args);
 			Assert.AreEqual(expected[index].sourceRect, (Rectangle)args[4]!);
-			Assert.AreEqual(expected[index].position - expected[index].origin,
+			Assert.AreEqual(
+				expected[index].position - expected[index].origin,
 				(Vector2)args[5]! - new Vector2(20, 0));
 		}
 	}

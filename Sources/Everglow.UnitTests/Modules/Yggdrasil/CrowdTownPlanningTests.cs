@@ -60,13 +60,20 @@ public class CrowdTownPlanningTests
 		var body = (Entity)type.GetProperty("Body")!.GetValue(traveler)!;
 		type.GetProperty("Intent")!.SetValue(traveler, CrowdIntent.ReturnHome);
 		type.GetProperty("Stage")!.SetValue(traveler, Enum.Parse(type.GetProperty("Stage")!.PropertyType, "Fleeing"));
-		type.GetField("destination", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(traveler,
+		type.GetField("destination", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(
+			traveler,
 			Activator.CreateInstance(PlaceType, CrowdActivity.LeavePylon, new Point(110, 63), "exit", new Vector2(1768, 1024), null, 0)!);
 		type.GetField("movementPending", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(traveler, true);
 		type.GetField("movementTarget", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(traveler, new Vector2(1200, 1024));
 		var retirement = RetirementOf(traveler);
-		for (int i = 0; i < 3; i++) { retirement.RecordDepartureFailure(); }
-		for (int tick = 0; tick < 1800; tick++) { retirement.ObserveDeparture(true, false, false); }
+		for (int i = 0; i < 3; i++)
+		{
+			retirement.RecordDepartureFailure();
+		}
+		for (int tick = 0; tick < 1800; tick++)
+		{
+			retirement.ObserveDeparture(true, false, false);
+		}
 		var observe = type.GetMethod("UpdateRetirement", BindingFlags.Instance | BindingFlags.NonPublic)!;
 		observe.Invoke(traveler, null);
 		body.position.X -= 20;
@@ -114,9 +121,18 @@ public class CrowdTownPlanningTests
 		type.GetField("movementPending", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(traveler, true);
 		type.GetField("movementTarget", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(traveler, new Vector2(1800, 1024));
 		var retirement = RetirementOf(traveler);
-		for (int i = 0; i < 3; i++) { retirement.RecordMovementRecovery(); }
-		for (int tick = 0; tick < 900; tick++) { retirement.ObserveMovement(true, false, false); }
-		for (int tick = 0; tick < 60; tick++) { retirement.Update(); }
+		for (int i = 0; i < 3; i++)
+		{
+			retirement.RecordMovementRecovery();
+		}
+		for (int tick = 0; tick < 900; tick++)
+		{
+			retirement.ObserveMovement(true, false, false);
+		}
+		for (int tick = 0; tick < 60; tick++)
+		{
+			retirement.Update();
+		}
 		var route = type.GetField("route", BindingFlags.Instance | BindingFlags.NonPublic)!.GetValue(traveler);
 		var observe = type.GetMethod("UpdateRetirement", BindingFlags.Instance | BindingFlags.NonPublic)!;
 		observe.Invoke(traveler, null);
@@ -125,7 +141,10 @@ public class CrowdTownPlanningTests
 		observe.Invoke(traveler, null);
 		Assert.AreEqual(CrowdRetirementReason.None, retirement.Reasons);
 		Assert.IsTrue(retirement.Opacity > low && retirement.Opacity < 1);
-		for (int tick = 0; tick < 29; tick++) { observe.Invoke(traveler, null); }
+		for (int tick = 0; tick < 29; tick++)
+		{
+			observe.Invoke(traveler, null);
+		}
 		Assert.AreEqual(1f, retirement.Opacity);
 		Assert.AreSame(route, type.GetField("route", BindingFlags.Instance | BindingFlags.NonPublic)!.GetValue(traveler));
 		Assert.AreEqual("Walking", type.GetProperty("Stage")!.GetValue(traveler)!.ToString());
@@ -198,10 +217,22 @@ public class CrowdTownPlanningTests
 		var bubbles = (Dictionary<int, Terraria.GameContent.UI.EmoteBubble>)typeof(Terraria.GameContent.UI.EmoteBubble)
 			.GetField("byID", BindingFlags.Static | BindingFlags.NonPublic)!.GetValue(null)!;
 		var oldBubbles = bubbles.Keys.ToHashSet();
-		restore.Add(() => { foreach (int id in bubbles.Keys.Where(id => !oldBubbles.Contains(id)).ToArray()) { bubbles.Remove(id); } });
+		restore.Add(() =>
+		{
+			foreach (int id in bubbles.Keys.Where(id => !oldBubbles.Contains(id)).ToArray())
+			{
+				bubbles.Remove(id);
+			}
+		});
 		var retirement = RetirementOf(first);
-		for (int i = 0; i < 3; i++) { retirement.RecordDepartureFailure(); }
-		for (int tick = 0; tick < 1800; tick++) { retirement.ObserveDeparture(true, false, false); }
+		for (int i = 0; i < 3; i++)
+		{
+			retirement.RecordDepartureFailure();
+		}
+		for (int tick = 0; tick < 1800; tick++)
+		{
+			retirement.ObserveDeparture(true, false, false);
+		}
 		type.GetProperty("Intent")!.SetValue(first, CrowdIntent.ReturnHome);
 		var view = (CrowdAppearance)type.GetField("view", BindingFlags.Instance | BindingFlags.NonPublic)!.GetValue(first)!;
 		view.UpdateController = _ => { };
@@ -240,11 +271,17 @@ public class CrowdTownPlanningTests
 		var type = traveler.GetType();
 		var retirement = RetirementOf(traveler);
 		retirement.SetReason(CrowdRetirementReason.Threat, true);
-		for (int tick = 0; tick < 60; tick++) { retirement.Update(); }
+		for (int tick = 0; tick < 60; tick++)
+		{
+			retirement.Update();
+		}
 		bool oldPaused = Main.gamePaused;
 		restore.Add(() => Main.gamePaused = oldPaused);
 		Main.gamePaused = true;
-		for (int tick = 0; tick < 300; tick++) { type.GetMethod("Update")!.Invoke(traveler, null); }
+		for (int tick = 0; tick < 300; tick++)
+		{
+			type.GetMethod("Update")!.Invoke(traveler, null);
+		}
 		Assert.AreEqual(0.5f, retirement.Opacity, 0.0001f);
 		Assert.AreEqual(0, type.GetField("age", BindingFlags.Instance | BindingFlags.NonPublic)!.GetValue(traveler));
 	}
@@ -279,7 +316,14 @@ public class CrowdTownPlanningTests
 		var travelers = (System.Collections.IList)typeof(TownCrowdSystem).GetField("Travelers", BindingFlags.Static | BindingFlags.NonPublic)!.GetValue(null)!;
 		var previous = travelers.Cast<object>().ToArray();
 		travelers.Clear();
-		restore.Add(() => { travelers.Clear(); foreach (var person in previous) { travelers.Add(person); } });
+		restore.Add(() =>
+		{
+			travelers.Clear();
+			foreach (var person in previous)
+			{
+				travelers.Add(person);
+			}
+		});
 		var traveler = CreateWalkingActor(new Vector2(1608, 1024));
 		travelers.Add(traveler);
 		var apply = typeof(TownCrowdSystem).GetMethod("UpdateConfiguration", BindingFlags.Static | BindingFlags.NonPublic)!;
@@ -309,9 +353,13 @@ public class CrowdTownPlanningTests
 		apply.Invoke(null, [new CrowdConfig()]);
 		Assert.IsFalse(TownCrowdSystem.IsRunning);
 	}
+
 	private static Type ConversationType => typeof(TownCrowdSystem).Assembly.GetType("Everglow.Yggdrasil.Mechanics.TownCrowd.CrowdConversation")!;
+
 	private static Type PlacesType => typeof(TownCrowdSystem).Assembly.GetType("Everglow.Yggdrasil.Mechanics.TownCrowd.CrowdPlaces")!;
+
 	private static Type PlaceType => typeof(TownCrowdSystem).Assembly.GetType("Everglow.Yggdrasil.Mechanics.TownCrowd.CrowdPlace")!;
+
 	private static Type ThreatsType => typeof(TownCrowdSystem).Assembly.GetType("Everglow.Yggdrasil.Mechanics.TownCrowd.CrowdThreats")!;
 
 	private void ResetThreats()
@@ -577,7 +625,11 @@ public class CrowdTownPlanningTests
 		if (arrangement == "vertical")
 		{
 			bool solid = Main.tileSolid[TileID.Platforms], top = Main.tileSolidTop[TileID.Platforms];
-			restore.Add(() => { Main.tileSolid[TileID.Platforms] = solid; Main.tileSolidTop[TileID.Platforms] = top; });
+			restore.Add(() =>
+			{
+				Main.tileSolid[TileID.Platforms] = solid;
+				Main.tileSolidTop[TileID.Platforms] = top;
+			});
 			Main.tileSolid[TileID.Platforms] = Main.tileSolidTop[TileID.Platforms] = true;
 			var tile = Main.tile[100, 60];
 			tile.HasTile = true;
@@ -602,7 +654,10 @@ public class CrowdTownPlanningTests
 		Assert.IsNotNull(begin, "Lightweight peers need a shared conversation activity.");
 		bool started = (bool)begin.Invoke(null, [first, second, 600])!;
 		Assert.AreEqual(arrangement is "horizontal" or "vertical", started);
-		if (!started) { return; }
+		if (!started)
+		{
+			return;
+		}
 		var type = first.GetType();
 		Assert.AreEqual("Conversing", type.GetProperty("Stage")!.GetValue(first)!.ToString());
 		Assert.AreEqual("Conversing", type.GetProperty("Stage")!.GetValue(second)!.ToString());
@@ -610,7 +665,13 @@ public class CrowdTownPlanningTests
 		var bubbles = (Dictionary<int, Terraria.GameContent.UI.EmoteBubble>)typeof(Terraria.GameContent.UI.EmoteBubble)
 			.GetField("byID", BindingFlags.Static | BindingFlags.NonPublic)!.GetValue(null)!;
 		var oldBubbles = bubbles.Keys.ToHashSet();
-		restore.Add(() => { foreach (int id in bubbles.Keys.Where(id => !oldBubbles.Contains(id)).ToArray()) { bubbles.Remove(id); } });
+		restore.Add(() =>
+		{
+			foreach (int id in bubbles.Keys.Where(id => !oldBubbles.Contains(id)).ToArray())
+			{
+				bubbles.Remove(id);
+			}
+		});
 		var continueChat = ConversationType.GetMethod("ContinueNearby", BindingFlags.Static | BindingFlags.NonPublic)!;
 		for (int turn = 0; turn < 2; turn++)
 		{
@@ -642,21 +703,37 @@ public class CrowdTownPlanningTests
 		var travelers = (System.Collections.IList)typeof(TownCrowdSystem).GetField("Travelers", BindingFlags.Static | BindingFlags.NonPublic)!.GetValue(null)!;
 		var previous = travelers.Cast<object>().ToArray();
 		travelers.Clear();
-		restore.Add(() => { travelers.Clear(); foreach (var person in previous) { travelers.Add(person); } });
+		restore.Add(() =>
+		{
+			travelers.Clear();
+			foreach (var person in previous)
+			{
+				travelers.Add(person);
+			}
+		});
 		var first = CreateWalkingActor(new Vector2(1608, 1024));
 		var second = CreateWalkingActor(new Vector2(1656, 1024));
 		travelers.Add(first);
 		travelers.Add(second);
 		var bubbles = (Dictionary<int, Terraria.GameContent.UI.EmoteBubble>)typeof(Terraria.GameContent.UI.EmoteBubble).GetField("byID", BindingFlags.Static | BindingFlags.NonPublic)!.GetValue(null)!;
 		var oldBubbles = bubbles.Keys.ToHashSet();
-		restore.Add(() => { foreach (int id in bubbles.Keys.Where(id => !oldBubbles.Contains(id)).ToArray()) { bubbles.Remove(id); } });
+		restore.Add(() =>
+		{
+			foreach (int id in bubbles.Keys.Where(id => !oldBubbles.Contains(id)).ToArray())
+			{
+				bubbles.Remove(id);
+			}
+		});
 		Main.rand = new CrowdChanceRandom(roll);
 		CaptureThreats(77); // PreUpdateNPCs advances to the 120-tick opportunity for seed 42.
 		new TownCrowdSystem().PreUpdateNPCs();
 		var type = first.GetType();
 		type.GetMethod("Update")!.Invoke(first, null);
 		Assert.AreEqual(converses, type.GetProperty("Stage")!.GetValue(first)!.ToString() == "Conversing");
-		if (!converses) { return; }
+		if (!converses)
+		{
+			return;
+		}
 		AddEnemy(new Vector2(1800, 1024));
 		CaptureThreats(84);
 		type.GetMethod("Update")!.Invoke(first, null);
@@ -780,7 +857,7 @@ public class CrowdTownPlanningTests
 	public void Initialize()
 	{
 		Program.SavePath = string.Empty;
-		var oldTiles = Main.tile;
+		originalTileData = Main.tile.GetData<TileTypeData>();
 		int oldWidth = Main.maxTilesX;
 		int oldHeight = Main.maxTilesY;
 		var oldCenter = YggdrasilTownBiome.BiomeCenter;
@@ -793,7 +870,6 @@ public class CrowdTownPlanningTests
 		bool solid = Main.tileSolid[TileID.Stone];
 		restore.Add(() =>
 		{
-			Main.tile = oldTiles;
 			Main.maxTilesX = oldWidth;
 			Main.maxTilesY = oldHeight;
 			Main.npc = oldNpcs;
@@ -807,8 +883,12 @@ public class CrowdTownPlanningTests
 		});
 		Main.maxTilesX = 256;
 		Main.maxTilesY = 128;
-		Main.tile = (Tilemap)typeof(Tilemap).GetConstructor(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic,
-			null, [typeof(ushort), typeof(ushort)], null)!.Invoke([(ushort)256, (ushort)128]);
+		// Tilemap construction resizes global TileData arrays. Borrow and restore only our test area.
+		PreserveTiles<TileTypeData>();
+		PreserveTiles<WallTypeData>();
+		PreserveTiles<LiquidData>();
+		PreserveTiles<TileWallWireStateData>();
+		PreserveTiles<TileWallBrightnessInvisibilityData>();
 		Main.npc = Enumerable.Range(0, Main.maxNPCs).Select(_ => new NPC()).ToArray();
 		Main.projectile = [];
 		var invasionInstance = typeof(ContentInstance<Everglow.Yggdrasil.YggdrasilTown.Events.DrunkenMinerInvasion>).GetProperty("Instance")!;
@@ -837,7 +917,14 @@ public class CrowdTownPlanningTests
 			var list = (System.Collections.IList)PlacesType.GetField(name, BindingFlags.Instance | BindingFlags.NonPublic)!.GetValue(catalog)!;
 			var snapshot = list.Cast<object>().ToArray();
 			list.Clear();
-			restore.Add(() => { list.Clear(); foreach (var entry in snapshot) { list.Add(entry); } });
+			restore.Add(() =>
+			{
+				list.Clear();
+				foreach (var entry in snapshot)
+				{
+					list.Add(entry);
+				}
+			});
 		}
 		foreach (string name in new[] { "clock", "planningBudget" })
 		{
@@ -845,6 +932,36 @@ public class CrowdTownPlanningTests
 			var previous = field.GetValue(null);
 			restore.Add(() => field.SetValue(null, previous));
 		}
+	}
+
+	private TileTypeData[] originalTileData = null!;
+
+	private void PreserveTiles<T>()
+		where T : unmanaged, ITileData
+	{
+		int width = Main.maxTilesX;
+		int height = Main.maxTilesY;
+		int stride = Main.tile.Height;
+		var data = Main.tile.GetData<T>();
+		var snapshot = new T[width * height];
+		for (int x = 0; x < width; x++)
+		{
+			Array.Copy(data, x * stride, snapshot, x * height, height);
+			Array.Clear(data, x * stride, height);
+		}
+		restore.Add(() =>
+		{
+			for (int x = 0; x < width; x++)
+			{
+				Array.Copy(snapshot, x * height, data, x * stride, height);
+			}
+		});
+	}
+
+	[TestMethod]
+	public void FixturePreservesSharedTileStorage()
+	{
+		Assert.AreSame(originalTileData, Main.tile.GetData<TileTypeData>());
 	}
 
 	[TestCleanup]
@@ -876,7 +993,11 @@ public class CrowdTownPlanningTests
 	{
 		bool oldSolid = Main.tileSolid[TileID.Platforms];
 		bool oldTop = Main.tileSolidTop[TileID.Platforms];
-		restore.Add(() => { Main.tileSolid[TileID.Platforms] = oldSolid; Main.tileSolidTop[TileID.Platforms] = oldTop; });
+		restore.Add(() =>
+		{
+			Main.tileSolid[TileID.Platforms] = oldSolid;
+			Main.tileSolidTop[TileID.Platforms] = oldTop;
+		});
 		Main.tileSolid[TileID.Platforms] = Main.tileSolidTop[TileID.Platforms] = true;
 		var slope = Main.tile[100, 62];
 		slope.HasTile = condition != "air";
@@ -1010,14 +1131,16 @@ public class CrowdTownPlanningTests
 		var resident = RuntimeHelpers.GetUninitializedObject(type);
 		type.GetProperty("Active")!.SetValue(resident, true);
 		type.GetProperty("Stage")!.SetValue(resident, Enum.Parse(type.GetProperty("Stage")!.PropertyType, "Activity"));
-		type.GetField("destination", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(resident,
+		type.GetField("destination", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(
+			resident,
 			Activator.CreateInstance(PlaceType, CrowdActivity.Scenery, cell, "different-activity", cell.ToVector2() * 16, null, 0));
 		var travelers = (System.Collections.IList)typeof(TownCrowdSystem).GetField("Travelers", BindingFlags.Static | BindingFlags.NonPublic)!.GetValue(null)!;
 		travelers.Add(resident);
 		restore.Add(() => travelers.Remove(resident));
 		Main.rand = new UnifiedRandom(42);
 		Assert.IsTrue(Plan(out var nextPath));
-		Assert.IsTrue(Math.Abs(nextPath![^1].X - cell.X) >= 2 || Math.Abs(nextPath[^1].Y - cell.Y) >= 3,
+		Assert.IsTrue(
+			Math.Abs(nextPath![^1].X - cell.X) >= 2 || Math.Abs(nextPath[^1].Y - cell.Y) >= 3,
 			"Distinct activity keys must not allow two people to stand on the same ground coordinate.");
 	}
 
@@ -1506,7 +1629,12 @@ public class CrowdTownPlanningTests
 		var oldData = dataField.GetValue(null);
 		bool oldSeating = TileID.Sets.CanBeSatOnForNPCs[TileID.Chairs];
 		var oldPlayers = Main.player;
-		restore.Add(() => { dataField.SetValue(null, oldData); TileID.Sets.CanBeSatOnForNPCs[TileID.Chairs] = oldSeating; Main.player = oldPlayers; });
+		restore.Add(() =>
+		{
+			dataField.SetValue(null, oldData);
+			TileID.Sets.CanBeSatOnForNPCs[TileID.Chairs] = oldSeating;
+			Main.player = oldPlayers;
+		});
 		var data = new Terraria.ObjectData.TileObjectData();
 		typeof(Terraria.ObjectData.TileObjectData).GetMethod("SetupBaseObject", BindingFlags.Instance | BindingFlags.NonPublic)!.Invoke(data, null);
 		data.Width = 1;
@@ -1557,7 +1685,8 @@ public class CrowdTownPlanningTests
 		new TownCrowdSystem().PreUpdateNPCs();
 		var arrivalType = typeof(TownCrowdSystem).Assembly.GetType("Everglow.Yggdrasil.Mechanics.TownCrowd.CrowdArrival")!;
 		var spawn = typeof(TownCrowdSystem).GetMethod("TrySpawnFrom", BindingFlags.Static | BindingFlags.NonPublic)!;
-		Assert.IsFalse((bool)spawn.Invoke(null, [new Point(100, 63), Enum.Parse(arrivalType, "Existing"), null])!,
+		Assert.IsFalse(
+			(bool)spawn.Invoke(null, [new Point(100, 63), Enum.Parse(arrivalType, "Existing"), null])!,
 			"No pylons exist in this fixture: creating a returner must fail before allocating a body or a VFX.");
 	}
 

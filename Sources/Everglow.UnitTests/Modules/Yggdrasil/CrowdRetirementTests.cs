@@ -8,7 +8,10 @@ public class CrowdRetirementTests
 {
 	private static void Fade(CrowdRetirement retirement, int ticks)
 	{
-		for (int tick = 0; tick < ticks; tick++) { retirement.Update(); }
+		for (int tick = 0; tick < ticks; tick++)
+		{
+			retirement.Update();
+		}
 	}
 
 	[TestMethod]
@@ -20,10 +23,16 @@ public class CrowdRetirementTests
 		{
 			avoidance.Update(tick == 0, false, true, 300);
 			retirement.ObserveThreat(avoidance.Alarmed);
-			if (tick < 599) { Assert.AreEqual(CrowdRetirementReason.None, retirement.Reasons); }
+			if (tick < 599)
+			{
+				Assert.AreEqual(CrowdRetirementReason.None, retirement.Reasons);
+			}
 		}
 		Assert.AreEqual(CrowdRetirementReason.Threat, retirement.Reasons);
-		for (int tick = 0; tick < 179; tick++) { avoidance.Update(false, true, true, 300); }
+		for (int tick = 0; tick < 179; tick++)
+		{
+			avoidance.Update(false, true, true, 300);
+		}
 		retirement.ObserveThreat(avoidance.Alarmed);
 		Assert.AreEqual(CrowdRetirementReason.Threat, retirement.Reasons);
 		avoidance.Update(false, true, true, 300);
@@ -76,14 +85,23 @@ public class CrowdRetirementTests
 	public void BlockedMovementNeedsTimeAndActualRecoveriesAndResetsAfterProgress()
 	{
 		var retirement = new CrowdRetirement();
-		for (int tick = 0; tick < 900; tick++) { retirement.ObserveMovement(true, false, false); }
+		for (int tick = 0; tick < 900; tick++)
+		{
+			retirement.ObserveMovement(true, false, false);
+		}
 		Assert.AreEqual(CrowdRetirementReason.None, retirement.Reasons);
-		for (int attempt = 0; attempt < 3; attempt++) { retirement.RecordMovementRecovery(); }
+		for (int attempt = 0; attempt < 3; attempt++)
+		{
+			retirement.RecordMovementRecovery();
+		}
 		retirement.ObserveMovement(true, false, false);
 		Assert.AreEqual(CrowdRetirementReason.Blocked, retirement.Reasons);
 		retirement.ObserveMovement(true, false, true);
 		Assert.AreEqual(CrowdRetirementReason.None, retirement.Reasons);
-		for (int tick = 0; tick < 1800; tick++) { retirement.ObserveMovement(true, false, false); }
+		for (int tick = 0; tick < 1800; tick++)
+		{
+			retirement.ObserveMovement(true, false, false);
+		}
 		Assert.AreEqual(CrowdRetirementReason.None, retirement.Reasons, "Earlier recovery attempts must not carry into a new stall.");
 	}
 
@@ -110,8 +128,14 @@ public class CrowdRetirementTests
 	public void DepartureRequiresFailuresAndActualExitProgressClearsAllHistory()
 	{
 		var retirement = new CrowdRetirement();
-		for (int tick = 0; tick < 1800; tick++) { retirement.ObserveDeparture(true, false, false); }
-		for (int attempt = 0; attempt < 2; attempt++) { retirement.RecordDepartureFailure(); }
+		for (int tick = 0; tick < 1800; tick++)
+		{
+			retirement.ObserveDeparture(true, false, false);
+		}
+		for (int attempt = 0; attempt < 2; attempt++)
+		{
+			retirement.RecordDepartureFailure();
+		}
 		retirement.ObserveDeparture(true, false, false);
 		Assert.AreEqual(CrowdRetirementReason.None, retirement.Reasons);
 		retirement.RecordDepartureFailure();
@@ -120,7 +144,10 @@ public class CrowdRetirementTests
 		retirement.ObserveDeparture(true, false, true);
 		Assert.AreEqual(0, retirement.DepartureFailures);
 		Assert.AreEqual(CrowdRetirementReason.None, retirement.Reasons);
-		for (int tick = 0; tick < 6000; tick++) { retirement.ObserveDeparture(true, false, tick % 30 == 0); }
+		for (int tick = 0; tick < 6000; tick++)
+		{
+			retirement.ObserveDeparture(true, false, tick % 30 == 0);
+		}
 		Assert.AreEqual(CrowdRetirementReason.None, retirement.Reasons);
 	}
 
