@@ -70,6 +70,7 @@ internal sealed class CrowdAgent
 	private CrowdStage interruptedStage;
 	private int interruptedStageTime;
 	private long nextConversation;
+	private bool transitDetourUsed;
 	private Vector2 previousViewPosition;
 	private float animationDistance;
 
@@ -121,12 +122,14 @@ internal sealed class CrowdAgent
 	internal CrowdActivity? CurrentActivity => Stage == CrowdStage.Conversing ? CrowdActivity.Socialize : destination?.Activity;
 
 	internal bool CanConverse => Active && !IsEvacuating && InteriorTrain == null && !jumping && !dropping
+		&& (!HasTransitIntent || TransitDetourAvailable)
 		&& TownCrowdSystem.Clock >= nextConversation && CrowdTerrain.Grounded(Body)
 		&& (Stage is CrowdStage.Planning or CrowdStage.Walking
 			|| (Stage == CrowdStage.Activity && destination?.Activity is CrowdActivity.Scenery or CrowdActivity.Browse));
 
 	internal void PauseForConversation()
 	{
+		transitDetourUsed |= HasTransitIntent;
 		interruptedStage = Stage;
 		interruptedStageTime = stageTime;
 		Stage = CrowdStage.Conversing;
@@ -193,6 +196,7 @@ internal sealed class CrowdAgent
 
 	internal void BeginAlighting(List<Point> path, CrowdPlace landing)
 	{
+		transitDetourUsed = false;
 		Actor.ReleaseSupport();
 		destination = landing;
 		SetRoute(path);
@@ -259,6 +263,10 @@ internal sealed class CrowdAgent
 	}
 
 	private bool WantsToLeave => departureRequested || Intent != CrowdIntent.VisitTown;
+
+	private bool HasTransitIntent => Intent is CrowdIntent.ReturnHome or CrowdIntent.TakeTrain;
+
+	private bool TransitDetourAvailable => !transitDetourUsed && (uint)routeSeed % 100 < CrowdSettings.TransitDetourPercent;
 
 	private bool FollowingExit => Stage is CrowdStage.Walking or CrowdStage.Boarding or CrowdStage.Leaving or CrowdStage.Waiting
 		&& destination != null && CrowdActivityRules.IsExit(destination.Activity);
@@ -657,7 +665,7 @@ internal sealed class CrowdAgent
 			// Finding a route alone cannot erase failures: the exit must actually make progress.
 			retirement.RecordDepartureFailure();
 		}
-		if (!planned && (departing || Intent != CrowdIntent.VisitTown))
+		if (!planned && !HasTransitIntent && (departing || Intent != CrowdIntent.VisitTown))
 		{
 			// An unavailable exit is not a reason to freeze in view. Continue visiting and retry later.
 			int fallbackBudget = TownCrowdSystem.PlanningBudget;
@@ -818,7 +826,12 @@ internal sealed class CrowdAgent
 		}
 		if (Stage == CrowdStage.Walking && grounded && !dropping)
 		{
-			if (stageTime % pauseInterval == 0)
+			if (HasTransitIntent && TransitDetourAvailable && stageTime >= 120)
+			{
+				transitDetourUsed = true;
+				pauseTime = Main.rand.Next(CrowdSettings.TransitPauseMinTicks, CrowdSettings.TransitPauseMaxTicks + 1);
+			}
+			else if (!HasTransitIntent && stageTime % pauseInterval == 0)
 			{
 				pauseTime = Main.rand.Next(20, 65);
 			}

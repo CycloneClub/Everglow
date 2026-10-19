@@ -307,6 +307,21 @@ internal sealed class CrowdPlaces
 		}
 	}
 
+	public static CrowdIntent ArrivalIntent(Vector2 station)
+	{
+		// The train already knows its stop. Do not depend on the background landmark scan reaching it first.
+		var origin = new Point((int)MathF.Round(station.X / 16) - 2, (int)MathF.Round(station.Y / 16) - 5);
+		if (WorldGen.InWorld(origin.X, origin.Y))
+		{
+			var tile = Main.tile[origin];
+			if (tile.HasUnactuatedTile && tile.TileType == ModContent.TileType<MetroStationSign_PylonSquare>())
+			{
+				return CrowdIntent.ReturnHome;
+			}
+		}
+		return CrowdIntent.VisitTown;
+	}
+
 	public static bool TryStation(Vector2 station, float fromX, out Point cell)
 	{
 		float side = fromX < station.X ? -1 : 1;

@@ -5,16 +5,17 @@ public enum CrowdIntent
 	VisitTown,
 	ReturnHome,
 	EnterGuild,
+	TakeTrain,
 }
 
 public static class CrowdLifeRules
 {
-	// Newly teleported arrivals may visit the guild, but never immediately return home.
+	// Pylon arrivals travel to town first; local activities begin after disembarking.
 	public static CrowdIntent ChooseIntent(bool arrivingThroughPylon, bool leavingGuild, int roll, int returnPercent, int guildPercent)
 	{
 		if (arrivingThroughPylon)
 		{
-			return roll < guildPercent ? CrowdIntent.EnterGuild : CrowdIntent.VisitTown;
+			return CrowdIntent.TakeTrain;
 		}
 		if (roll < returnPercent)
 		{

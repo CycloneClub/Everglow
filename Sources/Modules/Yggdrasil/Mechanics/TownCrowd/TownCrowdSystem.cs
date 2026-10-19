@@ -190,13 +190,14 @@ public class TownCrowdSystem : ModSystem
 			{
 				CrowdIntent.ReturnHome => place.Activity == CrowdActivity.LeavePylon,
 				CrowdIntent.EnterGuild => place.Activity == CrowdActivity.EnterGuild,
+				CrowdIntent.TakeTrain => place.Activity == CrowdActivity.BoardTrain,
 				_ => true,
 			})
 			.Where(place => place.Activity != CrowdActivity.EnterGuild || EntranceReady(place.Key))
 			.Select(place => Places.TryStandingPlace(place, Occupied, out var standingPlace) ? standingPlace : null)
 			.Where(place => place != null && place.Key != exclude)
 			.Select(place => (Place: place, Weight: CrowdActivityRules.Weight(place.Activity, departing,
-				traveler?.RecentlyVisited(place.Key) ?? false,
+				intent != CrowdIntent.TakeTrain && (traveler?.RecentlyVisited(place.Key) ?? false),
 				Travelers.Count(other => other != traveler && other.Active && other.DestinationKey == place.Key),
 				place.Capacity, Vector2.Distance(from, CrowdTerrain.Feet(place.Cell)), traveler?.Preference(place.Activity) ?? 1)))
 			.Where(candidate => candidate.Weight > 0 && (departing || candidate.Place.Activity == CrowdActivity.Sit
@@ -444,11 +445,13 @@ public class TownCrowdSystem : ModSystem
 		{
 			return;
 		}
-		if (!TryPlan(landing, null, false, out _, out _))
+		var intent = CrowdPlaces.ArrivalIntent(station);
+		if (!PlanIntent(landing, passenger, intent, out _, out _))
 		{
 			return;
 		}
 		var destination = new CrowdPlace(CrowdActivity.Scenery, landing, $"alight:{landing}", CrowdTerrain.Feet(landing));
+		passenger.Intent = intent;
 		passenger.BeginAlighting(path, destination);
 		CrowdThreats.RecordArrival(CrowdTerrain.Feet(landing));
 		batch.RecordArrival();

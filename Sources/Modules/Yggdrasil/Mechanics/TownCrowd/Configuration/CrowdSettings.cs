@@ -21,6 +21,9 @@ public sealed record CrowdSettings(int PopulationLimit, int SpawnIntervalTicks, 
 	public const float MovementProgressDistance = 16;
 	public const int ChatRangeTiles = 4;
 	public const int ChatChancePercent = 40;
+	public const int TransitDetourPercent = 5;
+	public const int TransitPauseMinTicks = 2 * 60;
+	public const int TransitPauseMaxTicks = 4 * 60;
 	public const int ReturnPercent = 30;
 	public const int GuildPercent = 30;
 	public const int StreetWeight = 8;

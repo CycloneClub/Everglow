@@ -29,7 +29,143 @@ public class CrowdTownPlanningTests
 		.GetField("retirement", BindingFlags.Instance | BindingFlags.NonPublic)!.GetValue(traveler)!;
 
 	[TestMethod]
-	public void SightseeingBudgetWaitPausesRetirementButKeepsActualExitFailures()
+	public void PylonStationPassengersStartACommittedReturn()
+	{
+		EnableJourneys();
+		ResetThreats();
+		AddTransitLandmark<OriginPylon>("pylons", new Point(20, 50), TileID.Rope);
+		AddTransitLandmark<Everglow.Yggdrasil.YggdrasilTown.Tiles.MetroStationSign_PylonSquare>("stations", new Point(101, 59), TileID.Signs);
+		var catalog = typeof(TownCrowdSystem).GetField("Places", BindingFlags.Static | BindingFlags.NonPublic)!.GetValue(null)!;
+		((System.Collections.IList)PlacesType.GetField("stations", BindingFlags.Instance | BindingFlags.NonPublic)!.GetValue(catalog)!).Clear();
+		for (int x = 5; x < 50; x++)
+		{
+			var tile = Main.tile[x, 63];
+			tile.HasTile = true;
+			tile.TileType = TileID.Stone;
+		}
+		var train = new YggdrasilTown_NormalMetro
+		{
+			Active = true,
+			Position = new Vector2(800, 1008),
+			Size = new Vector2(1696, 16),
+			StationX = 1648,
+			State = (int)YggdrasilTown_NormalMetro.BehaviorType.Stop,
+			StopTimer = 30,
+		};
+		((List<RigidEntity>)typeof(ColliderManager).GetField("rigidbodies", BindingFlags.Instance | BindingFlags.NonPublic)!
+			.GetValue(ColliderManager.Instance)!).Add(train);
+		var passenger = CreateWalkingActor(new Vector2(896, 1008));
+		var type = passenger.GetType();
+		type.GetProperty("Stage")!.SetValue(passenger, Enum.Parse(type.GetProperty("Stage")!.PropertyType, "Riding"));
+		type.GetField("train", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(passenger, train);
+		type.GetField("mayAlight", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(passenger, true);
+		var travelers = (System.Collections.IList)typeof(TownCrowdSystem).GetField("Travelers", BindingFlags.Static | BindingFlags.NonPublic)!.GetValue(null)!;
+		travelers.Add(passenger);
+		restore.Add(() => travelers.Remove(passenger));
+		var stops = (System.Collections.IDictionary)typeof(TownCrowdSystem).GetField("Stops", BindingFlags.Static | BindingFlags.NonPublic)!.GetValue(null)!;
+		restore.Add(() => stops.Remove(train));
+		new TownCrowdSystem().PreUpdateNPCs();
+		typeof(TownCrowdSystem).GetMethod("DispatchTrainPassengers", BindingFlags.Static | BindingFlags.NonPublic)!.Invoke(null, [train]);
+		Assert.AreEqual("Alighting", type.GetProperty("Stage")!.GetValue(passenger)!.ToString());
+		Assert.AreEqual(CrowdIntent.ReturnHome, type.GetProperty("Intent")!.GetValue(passenger));
+	}
+
+	[TestMethod]
+	public void PylonArrivalCanPlanTrainAndRetryTheSameStation()
+	{
+		ResetThreats();
+		AddTransitLandmark<Everglow.Yggdrasil.YggdrasilTown.Tiles.MetroStationSign_PylonSquare>("stations", new Point(101, 59), TileID.Signs);
+		for (int x = 5; x < 50; x++)
+		{
+			var tile = Main.tile[x, 63];
+			tile.HasTile = true;
+			tile.TileType = TileID.Stone;
+		}
+		var traveler = CreateWalkingActor(new Vector2(600, 1008));
+		var type = traveler.GetType();
+		var intent = Enum.Parse(typeof(CrowdIntent), "TakeTrain");
+		type.GetProperty("Intent")!.SetValue(traveler, intent);
+		var recent = (Queue<string>)type.GetField("recentPlaces", BindingFlags.Instance | BindingFlags.NonPublic)!.GetValue(traveler)!;
+		recent.Enqueue($"station:{new Point(101, 59)}");
+		new TownCrowdSystem().PreUpdateNPCs();
+		object?[] args = [new Point(37, 62), traveler, intent, null, null, null];
+		Assert.IsTrue((bool)typeof(TownCrowdSystem).GetMethod("PlanIntent", BindingFlags.Static | BindingFlags.NonPublic)!.Invoke(null, args)!);
+		Assert.AreEqual(CrowdActivity.BoardTrain, PlaceType.GetProperty("Activity")!.GetValue(args[3]));
+	}
+
+	[TestMethod]
+	public void TransitPauseIsBriefAndCannotRepeatAfterReplanning()
+	{
+		EnableJourneys();
+		ResetThreats();
+		var traveler = CreateWalkingActor(new Vector2(1608, 1024));
+		var type = traveler.GetType();
+		type.GetProperty("Intent")!.SetValue(traveler, CrowdIntent.TakeTrain);
+		type.GetField("routeSeed", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(traveler, 1);
+		var path = Enumerable.Range(100, 11).Select(x => new Point(x, 63)).ToList();
+		type.GetMethod("SetRoute", BindingFlags.Instance | BindingFlags.NonPublic)!.Invoke(traveler, [path]);
+		type.GetField("stageTime", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(traveler, 120);
+		var move = type.GetMethod("MoveAlongRoute", BindingFlags.Instance | BindingFlags.NonPublic)!;
+		var pause = type.GetField("pauseTime", BindingFlags.Instance | BindingFlags.NonPublic)!;
+		move.Invoke(traveler, [true]);
+		int duration = (int)pause.GetValue(traveler)!;
+		Assert.IsTrue(duration >= 119 && duration <= 239);
+		for (int tick = 0; tick < duration; tick++)
+		{
+			move.Invoke(traveler, [true]);
+		}
+		type.GetMethod("SetRoute", BindingFlags.Instance | BindingFlags.NonPublic)!.Invoke(traveler, [path]);
+		move.Invoke(traveler, [true]);
+		Assert.AreEqual(0, pause.GetValue(traveler));
+		Assert.IsTrue(((Entity)type.GetProperty("Body")!.GetValue(traveler)!).velocity.X > 0);
+	}
+
+	[TestMethod]
+	public void TransitDetoursAreRareAndConversationConsumesTheOneOpportunity()
+	{
+		ResetThreats();
+		var traveler = CreateWalkingActor(new Vector2(1608, 1024));
+		var type = traveler.GetType();
+		type.GetProperty("Intent")!.SetValue(traveler, CrowdIntent.ReturnHome);
+		var canChat = type.GetProperty("CanConverse", BindingFlags.Instance | BindingFlags.NonPublic)!;
+		var seed = type.GetField("routeSeed", BindingFlags.Instance | BindingFlags.NonPublic)!;
+		int eligible = 0;
+		for (int value = 0; value < 100; value++)
+		{
+			seed.SetValue(traveler, value);
+			if ((bool)canChat.GetValue(traveler)!)
+			{
+				eligible++;
+			}
+		}
+		Assert.AreEqual(5, eligible);
+		seed.SetValue(traveler, 1);
+		type.GetMethod("PauseForConversation", BindingFlags.Instance | BindingFlags.NonPublic)!.Invoke(traveler, null);
+		type.GetMethod("ResumeAfterConversation", BindingFlags.Instance | BindingFlags.NonPublic)!.Invoke(traveler, [true]);
+		typeof(TownCrowdSystem).GetField("clock", BindingFlags.Static | BindingFlags.NonPublic)!.SetValue(null, 10000L);
+		Assert.AreEqual(false, canChat.GetValue(traveler));
+		Assert.AreEqual(CrowdIntent.ReturnHome, type.GetProperty("Intent")!.GetValue(traveler));
+	}
+
+	private void AddTransitLandmark<T>(string collection, Point origin, ushort tileType)
+		where T : ModTile, new()
+	{
+		var instance = typeof(ContentInstance<T>).GetProperty("Instance")!;
+		var previous = instance.GetValue(null);
+		restore.Add(() => instance.SetValue(null, previous));
+		var content = new T();
+		typeof(ModTile).GetProperty("Type")!.SetValue(content, tileType);
+		instance.SetValue(null, content);
+		var tile = Main.tile[origin];
+		tile.HasTile = true;
+		tile.TileType = tileType;
+		var catalog = typeof(TownCrowdSystem).GetField("Places", BindingFlags.Static | BindingFlags.NonPublic)!.GetValue(null)!;
+		var markers = (System.Collections.IList)PlacesType.GetField(collection, BindingFlags.Instance | BindingFlags.NonPublic)!.GetValue(catalog)!;
+		markers.Add(Activator.CreateInstance(PlacesType.GetNestedType("CrowdLandmark", BindingFlags.NonPublic)!, origin, (int)tileType, 1, 1)!);
+	}
+
+	[TestMethod]
+	public void ReturningTravelerDoesNotReplaceMissingPylonWithSightseeing()
 	{
 		EnableJourneys();
 		ResetThreats();
@@ -37,12 +173,45 @@ public class CrowdTownPlanningTests
 		var type = traveler.GetType();
 		type.GetProperty("Intent")!.SetValue(traveler, CrowdIntent.ReturnHome);
 		type.GetProperty("Stage")!.SetValue(traveler, Enum.Parse(type.GetProperty("Stage")!.PropertyType, "Planning"));
+		for (int attempt = 0; attempt < 8; attempt++)
+		{
+			new TownCrowdSystem().PreUpdateNPCs();
+			type.GetMethod("ChooseNextActivity", BindingFlags.Instance | BindingFlags.NonPublic)!.Invoke(traveler, null);
+			Assert.AreEqual("Planning", type.GetProperty("Stage")!.GetValue(traveler)!.ToString());
+		}
+		Assert.AreEqual(3, RetirementOf(traveler).DepartureFailures);
+	}
+
+	[TestMethod]
+	public void ReturningTravelerKeepsWalkingInsteadOfPausingOrStartingConversation()
+	{
+		EnableJourneys();
+		ResetThreats();
+		var traveler = CreateWalkingActor(new Vector2(1608, 1024));
+		var type = traveler.GetType();
+		type.GetProperty("Intent")!.SetValue(traveler, CrowdIntent.ReturnHome);
+		type.GetField("stageTime", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(traveler, 400);
+		type.GetField("route", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(traveler, Enumerable.Range(100, 11).Select(x => new Point(x, 63)).ToList());
+		Assert.AreEqual(false, type.GetProperty("CanConverse", BindingFlags.Instance | BindingFlags.NonPublic)!.GetValue(traveler));
+		type.GetMethod("MoveAlongRoute", BindingFlags.Instance | BindingFlags.NonPublic)!.Invoke(traveler, [true]);
+		Assert.IsTrue(((Entity)type.GetProperty("Body")!.GetValue(traveler)!).velocity.X > 0);
+	}
+
+	[TestMethod]
+	public void GuildFallbackBudgetWaitPausesRetirementButKeepsActualExitFailures()
+	{
+		EnableJourneys();
+		ResetThreats();
+		var traveler = CreateWalkingActor(new Vector2(1608, 1024));
+		var type = traveler.GetType();
+		type.GetProperty("Intent")!.SetValue(traveler, CrowdIntent.EnterGuild);
+		type.GetProperty("Stage")!.SetValue(traveler, Enum.Parse(type.GetProperty("Stage")!.PropertyType, "Planning"));
 		typeof(TownCrowdSystem).GetField("planningBudget", BindingFlags.Static | BindingFlags.NonPublic)!.SetValue(null, 0);
 		for (int attempt = 0; attempt < 3; attempt++)
 		{
 			type.GetMethod("ChooseNextActivity", BindingFlags.Instance | BindingFlags.NonPublic)!.Invoke(traveler, null);
 		}
-		Assert.AreEqual(3, RetirementOf(traveler).DepartureFailures, "This plaza has no return pylon; each rejected return is a real failure.");
+		Assert.AreEqual(3, RetirementOf(traveler).DepartureFailures, "This plaza has no guild entrance; each rejected visit is a real failure.");
 		Assert.AreEqual(true, type.GetField("waitingForBudget", BindingFlags.Instance | BindingFlags.NonPublic)!.GetValue(traveler));
 		Assert.IsTrue((int)type.GetField("planDelay", BindingFlags.Instance | BindingFlags.NonPublic)!.GetValue(traveler)! < 5);
 		for (int tick = 0; tick < 3600; tick++)

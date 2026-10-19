@@ -22,8 +22,8 @@ public class CrowdLifeRulesTests
 	{
 		var choose = Rules.GetMethod("ChooseIntent")!;
 		Assert.AreEqual("ReturnHome", choose.Invoke(null, [false, false, 0, 100, 0])!.ToString());
-		Assert.AreEqual("VisitTown", choose.Invoke(null, [true, false, 0, 100, 0])!.ToString());
-		Assert.AreEqual("EnterGuild", choose.Invoke(null, [true, false, 0, 0, 100])!.ToString());
+		Assert.AreEqual("TakeTrain", choose.Invoke(null, [true, false, 0, 100, 0])!.ToString());
+		Assert.AreEqual("TakeTrain", choose.Invoke(null, [true, false, 0, 0, 100])!.ToString());
 		Assert.AreEqual("EnterGuild", choose.Invoke(null, [false, false, 0, 0, 100])!.ToString());
 		Assert.AreEqual("VisitTown", choose.Invoke(null, [false, true, 0, 0, 100])!.ToString());
 	}
