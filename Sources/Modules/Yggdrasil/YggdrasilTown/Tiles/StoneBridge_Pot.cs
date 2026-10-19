@@ -36,16 +36,6 @@ public class StoneBridge_Pot : ModTile
 		yield break;
 	}
 
-	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
-	{
-		var tile = Main.tile[i, j];
-		if (tile.TileFrameY == 0 && tile.TileFrameX % 36 == 0 && tile.TileFrameX < 108)
-		{
-			TileFluentDrawManager.AddFluentPoint(this, i, j);
-		}
-		return true;
-	}
-
 	public override void KillMultiTile(int i, int j, int frameX, int frameY)
 	{
 		var tile = TileUtils.SafeGetTile(i, j);
