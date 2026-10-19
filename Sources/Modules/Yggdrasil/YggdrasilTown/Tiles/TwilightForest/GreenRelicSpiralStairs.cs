@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using Everglow.Commons.VFX.Scene;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Tiles.DeathJadeLake;
@@ -6,6 +7,10 @@ namespace Everglow.Yggdrasil.KelpCurtain.Tiles.DeathJadeLake;
 public class GreenRelicSpiralStairs : TileVFX
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawTiles;
+
+	public Point Origin;
+
+	public Rectangle Frame;
 
 	public override void Update()
 	{
@@ -19,34 +24,39 @@ public class GreenRelicSpiralStairs : TileVFX
 
 	public override void Draw()
 	{
-		var frame = new Rectangle(0, 0, 720, 1200);
+		var frame = Frame;
 		int widthSteps = frame.Width / 16;
 		int heightSteps = frame.Height / 16;
 
-		var bars = new List<Vertex2D>();
+		int vertexCount = widthSteps * heightSteps * 6;
+		var bars = new List<Vertex2D>(vertexCount);
+		CollectionsMarshal.SetCount(bars, vertexCount);
+		Span<Vertex2D> span = CollectionsMarshal.AsSpan(bars);
+		int currentSize = 0;
 		for (int i = 0; i < widthSteps; i++)
 		{
 			for (int j = 0; j < heightSteps; j++)
 			{
-				AddBars(i, j, bars);
-				AddBars(i + 1, j, bars);
-				AddBars(i, j + 1, bars);
+				AddBars(i, j, span, ref currentSize);
+				AddBars(i + 1, j, span, ref currentSize);
+				AddBars(i, j + 1, span, ref currentSize);
 
-				AddBars(i, j + 1, bars);
-				AddBars(i + 1, j, bars);
-				AddBars(i + 1, j + 1, bars);
+				AddBars(i, j + 1, span, ref currentSize);
+				AddBars(i + 1, j, span, ref currentSize);
+				AddBars(i + 1, j + 1, span, ref currentSize);
 			}
 		}
+		CollectionsMarshal.SetCount(bars, currentSize);
 		if (bars.Count > 0)
 		{
 			Ins.Batch.Draw(Texture, bars, PrimitiveType.TriangleList);
 		}
 	}
 
-	public void AddBars(int i, int j, List<Vertex2D> bars)
+	public void AddBars(int i, int j, Span<Vertex2D> bars, ref int currentSize)
 	{
-		var frame = new Rectangle(0, 0, 720, 1200);
-		var drawColor = Lighting.GetColor(Position.ToTileCoordinates() + new Point(i, j));
-		bars.Add(Position + new Vector2(i, j) * 16, drawColor, new Vector3(i * 16 / (float)frame.Width, j * 16 / (float)frame.Height, 0));
+		Vector2 drawPos = Position + new Vector2(i - Origin.X, j - Origin.Y) * 16;
+		var drawColor = Lighting.GetColor(drawPos.ToTileCoordinates());
+		bars[currentSize++] = new Vertex2D(drawPos, drawColor, new Vector3((i * 16 + Frame.X) / (float)Texture.Width, (j * 16 + Frame.Y) / (float)Texture.Height, 0));
 	}
 }

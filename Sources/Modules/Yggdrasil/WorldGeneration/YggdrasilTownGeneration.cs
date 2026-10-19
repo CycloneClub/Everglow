@@ -2190,7 +2190,12 @@ public class YggdrasilTownGeneration
 		}
 
 		// 清理中央垂直通道
-		KillRectangleAreaOfTile(centerX - 18, centerY - 100 + 12 - 9, centerX + 18, centerY + 146);
+		KillRectangleAreaOfTile(centerX - 22, centerY - 100 + 12 - 9, centerX + 22, centerY + 146);
+		QuickBuild(centerX - 22, centerY + 146 - 74, ModAsset.TwilightCastle_SpiralStairs_Bottom45x75_Path);
+		QuickBuild(centerX - 22, centerY + 146 - 74 - 50, ModAsset.TwilightCastle_SpiralStairs_Middle45x50_Path);
+		QuickBuild(centerX - 22, centerY + 146 - 74 - 100, ModAsset.TwilightCastle_SpiralStairs_Middle45x50_Path);
+		QuickBuild(centerX - 22, centerY + 146 - 74 - 150, ModAsset.TwilightCastle_SpiralStairs_Middle45x50_Path);
+		PlaceRectangleAreaOfWall(centerX - 22, centerY - 98, centerX + 22, centerY + 146, ModContent.WallType<GreenRelicWall>());
 		PlaceFrameImportantTiles(centerX - 1, centerY + 144, 3, 3, ModContent.TileType<GreenRelicSlotTable>());
 
 		// 副塔 60 * 120
