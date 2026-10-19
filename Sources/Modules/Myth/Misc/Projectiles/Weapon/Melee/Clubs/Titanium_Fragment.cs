@@ -20,7 +20,7 @@ public class Titanium_Fragment : ModProjectile
 		Projectile.ignoreWater = true;
 		Projectile.penetrate = 6;
 		Projectile.usesIDStaticNPCImmunity = true;
-		Projectile.localNPCHitCooldown = 60;
+		Projectile.idStaticNPCHitCooldown = 20;
 	}
 
 	public Vector2 OribTrack = Vector2.Zero;
@@ -31,7 +31,7 @@ public class Titanium_Fragment : ModProjectile
 	public override void OnSpawn(IEntitySource source)
 	{
 		AITimer = Main.rand.Next(-40, 40);
-		Projectile.timeLeft = 15000;
+		Projectile.timeLeft = 600;
 		Projectile.frame = Main.rand.Next(6);
 		Projectile.rotation = Main.rand.NextFloat(MathHelper.TwoPi);
 		Projectile.ai[1] = Main.rand.NextFloat(-0.4f, 0.4f);

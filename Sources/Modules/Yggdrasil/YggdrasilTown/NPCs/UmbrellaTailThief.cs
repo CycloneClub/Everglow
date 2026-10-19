@@ -17,7 +17,6 @@ public class UmbrellaTailThief : ModNPC
 	public override void SetStaticDefaults()
 	{
 		Main.npcFrameCount[NPC.type] = 6;
-		NPCSpawnManager.RegisterNPC(Type);
 	}
 
 	public override void SetDefaults()

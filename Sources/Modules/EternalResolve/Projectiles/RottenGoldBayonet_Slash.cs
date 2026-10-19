@@ -30,7 +30,7 @@ namespace Everglow.EternalResolve.Projectiles
 			Projectile.DamageType = DamageClass.Melee;
 			Projectile.penetrate = -1;
 			Projectile.usesLocalNPCImmunity = true;
-			Projectile.localNPCHitCooldown = 60;
+			Projectile.localNPCHitCooldown = -1;
 			Projectile.timeLeft = 120;
 			Projectile.extraUpdates = 3;
 		}

@@ -10,7 +10,6 @@ public class CrimsonSpell : ModNPC
 	public override void SetStaticDefaults()
 	{
 		Main.npcFrameCount[NPC.type] = 11;
-		NPCSpawnManager.RegisterNPC(Type);
 	}
 
 	public override void SetDefaults()

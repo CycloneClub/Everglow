@@ -6,6 +6,9 @@ public class EventSystem : ModSystem
 {
 	private static readonly List<ModEvent> actives = [];
 
+	/// <summary>当前是否有明确接管普通自然刷怪的活动事件。</summary>
+	public static bool HasActiveSpawnOverride => actives.Any(e => e.Active && e.OverridesNaturalSpawning);
+
 	private static readonly Dictionary<string, ModEvent> registry = new(StringComparer.Ordinal);
 
 	public override void Load()

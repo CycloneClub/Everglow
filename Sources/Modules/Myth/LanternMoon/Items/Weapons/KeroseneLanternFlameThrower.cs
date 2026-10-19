@@ -40,6 +40,11 @@ public class KeroseneLanternFlameThrower : ModItem
 
 	public override void HoldItem(Player player)
 	{
+		if (player.whoAmI != Main.myPlayer)
+		{
+			return;
+		}
+		player.ListenMouseWorld();
 		if (UIBar is not null && UIBar.Active)
 		{
 			return;

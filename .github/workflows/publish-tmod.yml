@@ -10,7 +10,7 @@ permissions:
   actions: read
   contents: write
 
-# Do not interrupt an asset replacement. The SHA check also rejects late old builds.
+# Do not interrupt release recreation. The SHA check also rejects late old builds.
 concurrency:
   group: publish-development-tmod
   cancel-in-progress: false
@@ -52,7 +52,19 @@ jobs:
         with:
           ref: dev
 
-      - name: Update the development release
+      - name: Delete the previous development release
+        if: steps.source.outputs.commit == github.event.workflow_run.head_sha
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          # Include drafts left by failed uploads; keep the dev Git tag.
+          release_ids=$(gh api "repos/$GH_REPO/releases" --paginate --jq '.[] | select(.tag_name == "dev") | .id')
+          for release_id in $release_ids; do
+            gh api --method DELETE "repos/$GH_REPO/releases/$release_id"
+          done
+
+      - name: Recreate the development release
         if: steps.source.outputs.commit == github.event.workflow_run.head_sha
         uses: softprops/action-gh-release@v3
         with:
@@ -61,11 +73,10 @@ jobs:
           name: Everglow development build
           prerelease: false
           make_latest: "true"
-          overwrite_files: true
           fail_on_unmatched_files: true
           files: ${{ runner.temp }}/tested-build/Everglow.tmod
           body: |
-            Latest development build from `1.4.4`. This development release is updated in place.
+            Latest development build from `1.4.4`. This development release is recreated for each successful build.
 
             Commit: ${{ github.event.workflow_run.head_sha }}
             Build and tests: ${{ github.event.workflow_run.html_url }}

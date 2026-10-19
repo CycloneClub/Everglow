@@ -16,7 +16,6 @@ public class LightBulb : ModNPC
 	public override void SetStaticDefaults()
 	{
 		Main.npcFrameCount[NPC.type] = 12;
-		NPCSpawnManager.RegisterNPC(Type);
 	}
 
 	public override void SetDefaults()

@@ -29,8 +29,8 @@ Development in progress ✿✿ヽ(°▽°)ノ✿
 
 ## 🚀 Get Started
 
-- [Installation guide](https://everglow.cloudea.work/docs/getting-started/installation)
-- [Everglow Docs](https://everglow.cloudea.work/docs/getting-started/introduction)
+- [Installation guide](https://everglowmod.com/docs/getting-started/installation)
+- [Everglow Docs](https://everglowmod.com/docs/getting-started/introduction)
 
 ## 🧩 Compatibility
 

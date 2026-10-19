@@ -15,7 +15,6 @@ public class JellyBall : ModNPC
 	public override void SetStaticDefaults()
 	{
 		Main.npcFrameCount[NPC.type] = 5;
-		NPCSpawnManager.RegisterNPC(Type);
 	}
 
 	public override void SetDefaults()

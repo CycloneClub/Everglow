@@ -1,6 +1,5 @@
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
-using SubworldLibrary;
 using Terraria.GameContent.ItemDropRules;
 
 namespace Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake;
@@ -133,7 +132,6 @@ public class SailfinSnakehead : ModNPC
 	{
 		// No approved sprite exists, so there is nothing to slice: the whole texture is one frame.
 		Main.npcFrameCount[NPC.type] = 1;
-		NPCSpawnManager.RegisterNPC(Type);
 
 		// The design row's 免疫 cell is empty, so no specific debuff immunity is declared.
 	}
@@ -490,29 +488,5 @@ public class SailfinSnakehead : ModNPC
 
 		State = state;
 		NPC.netUpdate = true;
-	}
-
-	/// <summary>
-	/// 在水中刷新, and only ever inside Yggdrasil (BIO-06). <c>NPCSpawnManager.EditSpawnPool</c> returns
-	/// early outside the subworld, so this per-creature gate is the real isolation, and
-	/// <see cref="KelpCurtainBiome.IsKelpCurtainLayer"/> is the server-safe layer predicate because the hook
-	/// runs in single player or on the server only, where the client camera is zero (D-52/D-55). The water
-	/// test is the design's own 水生生物 condition (Pitfall 6).
-	/// </summary>
-	/// <param name="spawnInfo">The engine's spawn context.</param>
-	/// <returns>The conservative open-water weight, or <c>0f</c> outside the design's context.</returns>
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
-		{
-			return 0f;
-		}
-
-		if (!spawnInfo.Water)
-		{
-			return 0f;
-		}
-
-		return KelpCurtainSpawnConditions.WaterWeight;
 	}
 }

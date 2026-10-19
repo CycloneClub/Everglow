@@ -35,6 +35,11 @@ public class GildingRevolver : ModItem
 
 	public override void HoldItem(Player player)
 	{
+		if (player.whoAmI != Main.myPlayer)
+		{
+			return;
+		}
+		player.ListenMouseWorld();
 		if (player.ownedProjectileCounts[ModContent.ProjectileType<GildingRevolver_Hold>()] <= 0)
 		{
 			Projectile.NewProjectile(Item.GetSource_FromAI(), player.Center, Vector2.zeroVector, ModContent.ProjectileType<GildingRevolver_Hold>(), 0, 0, player.whoAmI);

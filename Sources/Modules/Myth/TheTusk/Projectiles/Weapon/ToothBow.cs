@@ -3,7 +3,7 @@ using Terraria.Audio;
 
 namespace Everglow.Myth.TheTusk.Projectiles.Weapon;
 
-public class ToothBow : HandholdProjectile
+public class ToothBow : HandheldProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
 
@@ -16,22 +16,17 @@ public class ToothBow : HandholdProjectile
 		DepartLength = 20;
 	}
 
-	public override void AI()
-	{
-		base.AI();
-	}
-
 	public override void HeldProjectileAI()
 	{
 		Player player = Main.player[Projectile.owner];
 		player.heldProj = Projectile.whoAmI;
 		int dir = 1;
-		if (Main.MouseWorld.X < player.MountedCenter.X)
+		if (AimPosition.X < player.MountedCenter.X)
 		{
 			dir = -1;
 		}
 
-		ArmRootPos = player.MountedCenter + new Vector2(-4 * dir, -2);
+		ArmRootPos = player.MountedCenter + new Vector2(-4 * dir, -2 * player.gravDir);
 		float backValue = (player.itemTimeMax - player.itemTime) / (float)player.itemTimeMax;
 		Player.CompositeArmStretchAmount compositeArmStretchAmount = Player.CompositeArmStretchAmount.Full;
 		if (backValue < 0.5f)
@@ -68,8 +63,8 @@ public class ToothBow : HandholdProjectile
 			player.SetCompositeArmFront(true, compositeArmStretchAmount, (Projectile.rotation - MathF.PI * 0.25f) * player.gravDir + MathF.PI * 0.5f);
 		}
 		player.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.Full, (Projectile.rotation - MathF.PI * 0.25f) * player.gravDir - MathF.PI * 0.5f);
-		Vector2 mouseToPlayer = Main.MouseWorld - ArmRootPos;
-		mouseToPlayer = Vector2.Normalize(mouseToPlayer);
+		Vector2 mouseToPlayer = AimPosition - ArmRootPos;
+		mouseToPlayer = mouseToPlayer.SafeNormalize(Vector2.UnitX * player.direction);
 		if (player.controlUseItem)
 		{
 			float addRot = -MathF.Asin(Vector3.Cross(new Vector3(mouseToPlayer, 0), new Vector3(new Vector2(0, 1).RotatedBy(Projectile.rotation - Math.PI * 0.75), 0)).Z);
@@ -86,17 +81,14 @@ public class ToothBow : HandholdProjectile
 		else
 		{
 			SoundEngine.PlaySound(SoundID.Item5, Projectile.Center);
-			Projectile.NewProjectileDirect(Terraria.Entity.InheritSource(Projectile), Projectile.Center, new Vector2(0, 1).RotatedBy(Projectile.rotation - Math.PI * 0.75) * 30f, ModContent.ProjectileType<ToothBow_BloodArrow>(), Projectile.damage, Projectile.knockBack, player.whoAmI);
+			if (Projectile.owner == Main.myPlayer)
+			{
+				Projectile.NewProjectileDirect(Terraria.Entity.InheritSource(Projectile), Projectile.Center, new Vector2(0, 1).RotatedBy(Projectile.rotation - Math.PI * 0.75) * 30f, ModContent.ProjectileType<ToothBow_BloodArrow>(), Projectile.damage, Projectile.knockBack, player.whoAmI);
+			}
 			Projectile.Kill();
+			return;
 		}
 		player.direction = dir;
-	}
-
-	public override bool PreDraw(ref Color lightColor)
-	{
-		DrawBaseTexture(lightColor);
-
-		return false;
 	}
 
 	public override void DrawBaseTexture(Color lightColor)
@@ -105,18 +97,18 @@ public class ToothBow : HandholdProjectile
 		var texMain = ModAsset.ToothBow_bow.Value;
 		var texArrow = ModAsset.ToothBow_BloodArrow.Value;
 		SpriteEffects se = SpriteEffects.None;
-		if (player.direction == -1)
+		if (player.direction * player.gravDir == -1)
 		{
 			se = SpriteEffects.FlipVertically;
 		}
 
-		float rot = Projectile.rotation - (float)(Math.PI * 0.25) + TextureRotation * player.direction;
+		float rot = Projectile.rotation - (float)(Math.PI * 0.25) + TextureRotation * player.direction * player.gravDir;
 		float backValue = (player.itemTimeMax - player.itemTime) / (float)player.itemTimeMax * 20;
 
-		Vector2 drawCenter = Projectile.Center - Main.screenPosition + DrawOffset;
+		Vector2 drawCenter = Projectile.Center - Main.screenPosition + GravityDrawOffset;
 		Main.spriteBatch.Draw(texArrow, drawCenter + new Vector2(5 - backValue, 0).RotatedBy(rot), null, lightColor, rot, texArrow.Size() / 2f, 0.75f, se, 0);
 		Main.spriteBatch.Draw(texMain, drawCenter, null, lightColor, rot, texMain.Size() / 2f, 1f, se, 0);
-		if (Main.MouseWorld.X < player.MountedCenter.X)
+		if (AimPosition.X < player.MountedCenter.X)
 		{
 			player.direction = -1;
 		}

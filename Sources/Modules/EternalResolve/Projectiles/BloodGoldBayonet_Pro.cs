@@ -10,8 +10,11 @@ namespace Everglow.EternalResolve.Projectiles
 	{
 		public NPC ProjTarget;
 
+		private ulong nextHealTick;
+
 		public override void SetCustomDefaults()
 		{
+			Projectile.localNPCHitCooldown = 8;
 			AttackColor = Color.Red;
 			MaxDarkAttackUnitCount = 8;
 			OldColorFactor = 0.7f;
@@ -59,18 +62,17 @@ namespace Everglow.EternalResolve.Projectiles
 
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
-			if (Main.rand.NextBool(25))
+			if (Main.GameUpdateCount >= nextHealTick && target.type != NPCID.TargetDummy)
 			{
-				if (target.type != NPCID.TargetDummy)
+				int healing = Main.rand.NextBool(25) ? Math.Min(3, (int)(damageDone * 0.3f)) : 0;
+				if (target.HasBuff(ModContent.BuffType<BloodDrinking>()))
 				{
-					Projectile.NewProjectile(Projectile.GetItemSource_OnHit(target, ModContent.ItemType<BloodGoldBayonet>()), target.Center, Vector2.Zero, ProjectileID.VampireHeal, 5, 0, Projectile.owner, Projectile.owner, damageDone * 0.3f);
+					healing = Math.Max(healing, 1);
 				}
-			}
-			if (target.HasBuff(ModContent.BuffType<BloodDrinking>()))
-			{
-				if (target.type != NPCID.TargetDummy)
+				if (healing > 0)
 				{
-					Projectile.NewProjectile(Projectile.GetItemSource_OnHit(target, ModContent.ItemType<BloodGoldBayonet>()), target.Center, Vector2.Zero, ProjectileID.VampireHeal, 5, 0, Projectile.owner, Projectile.owner, 1);
+					nextHealTick = Main.GameUpdateCount + 20;
+					Projectile.NewProjectile(Projectile.GetItemSource_OnHit(target, ModContent.ItemType<BloodGoldBayonet>()), target.Center, Vector2.Zero, ProjectileID.VampireHeal, 5, 0, Projectile.owner, Projectile.owner, healing);
 				}
 			}
 			ProjTarget = target;

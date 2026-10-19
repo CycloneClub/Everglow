@@ -7,16 +7,16 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords
 	public class BloodGoldBayonet : StabbingSwordItem
 	{
 		// TODO:翻译
-		// 命中敌人后有1/25的概率吸血,吸血量为造成伤害的30%
+		// 命中敌人后有1/25概率吸血,吸血量为伤害的30%,最多3点;治疗共享20帧冷却
 		// 命中的敌人未死之前,你的生命回复+2
 		// 据不完全统计，多数吸血鬼并不会吸取史莱姆汁
 		// 重击：以自身损失15血为代价,对被命中的敌人施加持续3s的嗜血符印,血金刺剑命中有符印的敌人造成回血
 		public override void SetDefaults()
 		{
-			Item.damage = 11;
+			Item.damage = 18;
 			Item.knockBack = 1.61f;
 			Item.rare = ItemRarityID.Blue;
-			Item.value = Item.sellPrice(0, 1, 2, 0);
+			Item.value = Item.buyPrice(0, 1, 35, 0);
 			Item.shoot = ModContent.ProjectileType<BloodGoldBayonet_Pro>();
 			PowerfulStabDamageFlat = 4f;
 			PowerfulStabProj = ModContent.ProjectileType<BloodGoldBayonet_Pro_Stab>();

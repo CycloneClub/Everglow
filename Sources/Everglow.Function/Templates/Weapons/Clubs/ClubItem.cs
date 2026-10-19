@@ -21,6 +21,11 @@ public abstract class ClubItem : ModItem
 	/// </summary>
 	public int ProjSmashType { get; protected set; }
 
+	/// <summary>
+	/// Damage multiplier applied when creating a smash down attack.
+	/// </summary>
+	public float SmashDamageMultiplier { get; protected set; } = 1.62f;
+
 	public override void SetStaticDefaults()
 	{
 		ItemSets.SwordsHammersAxesPicks[Type] = true;
@@ -109,7 +114,7 @@ public abstract class ClubItem : ModItem
 			if (player.ownedProjectileCounts[ProjSmashType] < 1 && Main.mouseLeftRelease)
 			{
 				player.mount.Dismount(player);
-				var p = Projectile.NewProjectileDirect(source, position + velocity * 2f, Vector2.Zero, ProjSmashType, (int)(damage * 1.62f), knockback, player.whoAmI, 0f, 0f);
+				var p = Projectile.NewProjectileDirect(source, position + velocity * 2f, Vector2.Zero, ProjSmashType, (int)(damage * SmashDamageMultiplier), knockback, player.whoAmI, 0f, 0f);
 				p.scale = Item.scale;
 
 				// Kill duplicate.
