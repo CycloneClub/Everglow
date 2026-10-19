@@ -12,11 +12,6 @@ namespace Everglow.Yggdrasil.YggdrasilTown.NPCs;
 [NoGameModeScale]
 public class ShadowstrikeCaterpillar : Caterpillar
 {
-	public override void SetStaticDefaults()
-	{
-		NPCSpawnManager.RegisterNPC(Type);
-	}
-
 	public override void SetDefaults()
 	{
 		base.SetDefaults();

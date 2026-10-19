@@ -1,7 +1,6 @@
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
 using Everglow.Yggdrasil.KelpCurtain.Projectiles.Enemies;
-using SubworldLibrary;
 using Terraria.DataStructures;
 using Terraria.GameContent.ItemDropRules;
 
@@ -51,20 +50,6 @@ public class BombJellyfish : ModNPC
 	private const int BobLegFrames = 120;
 
 	/// <summary>
-	/// The bounded window, in tiles, of the downward liquid-column scan. It mirrors the probe window
-	/// <see cref="KelpCurtainSpawnConditions"/> uses for its water-bottom predicate, so the two seams
-	/// cannot disagree about how far a column is measured (D-53).
-	/// </summary>
-	private const int MaxColumnScanTiles = 24;
-
-	/// <summary>
-	/// 在浅水区: the depth, in liquid tiles, at or below which the column below the spawn tile reads as
-	/// 浅水 rather than 深水. The design gives no number, so a six-tile threshold is used and recorded as
-	/// a D-54 conservative default (04-DEVIATIONS.md section 10).
-	/// </summary>
-	private const int ShallowColumnTiles = 6;
-
-	/// <summary>
 	/// The two legs of the design's 些许的上下摆动 (D-31). No vanilla <c>aiStyle</c> provides a hover that
 	/// neither moves nor drifts, so the class owns its <c>AI()</c>.
 	/// </summary>
@@ -110,7 +95,6 @@ public class BombJellyfish : ModNPC
 	{
 		// No approved sprite exists, so there is nothing to slice: the whole texture is one frame.
 		Main.npcFrameCount[NPC.type] = 1;
-		NPCSpawnManager.RegisterNPC(Type);
 
 		// The design row's 免疫 cell is empty, so no specific debuff immunity is declared.
 	}
@@ -279,79 +263,5 @@ public class BombJellyfish : ModNPC
 		int dust = Dust.NewDust(NPC.Center, 0, 0, ModContent.DustType<KelpWaterDrop>(), 0f, 0f);
 		Main.dust[dust].noGravity = true;
 		Main.dust[dust].scale = Main.rand.NextFloat(0.6f, 1f);
-	}
-
-	/// <summary>
-	/// 在浅水区 ... 只会刷新小号的, and only ever inside Yggdrasil (BIO-06). <c>NPCSpawnManager.EditSpawnPool</c>
-	/// returns early outside the subworld, so this per-creature gate is the real isolation, and
-	/// <see cref="KelpCurtainBiome.IsKelpCurtainLayer"/> is the server-safe layer predicate because the
-	/// hook runs in single player or on the server only, where the client camera is zero (D-52/D-55).
-	/// <para>
-	/// <b>Depth approximation (D-54).</b> The 浅水区/深水区 split is approximated with the same bounded
-	/// downward liquid-column scan <see cref="KelpCurtainSpawnConditions"/> uses for its water-bottom
-	/// predicate: this class takes the shallow end of it, i.e. a column whose floor is reached within
-	/// <see cref="ShallowColumnTiles"/> tiles. The design's 森雨幽谷 half of the same condition has no
-	/// predicate yet, so it is recorded as a Phases 5-6 region-predicate blocker (D-52, 04-DEVIATIONS.md
-	/// section 5) rather than being approximated by terrain the phase has not built.
-	/// </para>
-	/// </summary>
-	/// <param name="spawnInfo">The engine's spawn context.</param>
-	/// <returns>The conservative water weight, or <c>0f</c> outside the design's context.</returns>
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
-		{
-			return 0f;
-		}
-
-		if (!spawnInfo.Water)
-		{
-			return 0f;
-		}
-
-		if (MeasureLiquidColumn(spawnInfo) > ShallowColumnTiles)
-		{
-			// Too deep for the 小 variant: 深水区 additionally spawns the 大 one, its sibling class.
-			return 0f;
-		}
-
-		return KelpCurtainSpawnConditions.WaterWeight;
-	}
-
-	/// <summary>
-	/// The depth, in liquid tiles, of the column directly below the spawn tile, bounded by
-	/// <see cref="MaxColumnScanTiles"/>. This is the same bounded downward scan
-	/// <see cref="KelpCurtainSpawnConditions"/> derives for its water-bottom predicate, read here to
-	/// separate the design's 浅水区 from its 深水区 (D-53).
-	/// </summary>
-	/// <param name="spawnInfo">The engine's spawn context.</param>
-	/// <returns>The number of consecutive liquid tiles below the spawn tile.</returns>
-	private static int MeasureLiquidColumn(NPCSpawnInfo spawnInfo)
-	{
-		if (!spawnInfo.Water)
-		{
-			return 0;
-		}
-
-		int tileX = spawnInfo.SpawnTileX;
-		int depth = 0;
-		for (int offset = 1; offset <= MaxColumnScanTiles; offset++)
-		{
-			int tileY = spawnInfo.SpawnTileY + offset;
-			if (!WorldGen.InWorld(tileX, tileY, 1))
-			{
-				return depth;
-			}
-
-			if (Main.tile[tileX, tileY].LiquidAmount <= 0)
-			{
-				// The column ends here, either on a solid floor or at a dry gap.
-				return depth;
-			}
-
-			depth++;
-		}
-
-		return depth;
 	}
 }

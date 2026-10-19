@@ -84,11 +84,6 @@ public class CarapaceCaterpillar : Caterpillar
 		return base.GetDrawFrame(Style);
 	}
 
-	public override void SetStaticDefaults()
-	{
-		NPCSpawnManager.RegisterNPC(Type);
-	}
-
 	public override float SpawnChance(NPCSpawnInfo spawnInfo)
 	{
 		YggdrasilTownBiome YggdrasilTownBiome = ModContent.GetInstance<YggdrasilTownBiome>();

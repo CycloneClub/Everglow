@@ -51,58 +51,6 @@ public class YggdrasilTownBiome : ModBiome
 
 	public override bool IsBiomeActive(Player player)
 	{
-		return BiomeActive();
-	}
-
-	public static bool CheckedBiomeCenter = false;
-
-	public static Vector2 BiomeCenter = Vector2.zeroVector;
-
-	/// <summary>
-	/// 地形中心
-	/// </summary>
-	public static Vector2 GetBiomeCenter()
-	{
-		if (!SubworldSystem.IsActive<YggdrasilWorld>())
-		{
-			CheckedBiomeCenter = false;
-			return Vector2.zeroVector;
-		}
-		if (!CheckedBiomeCenter)
-		{
-			for (int x = 20; x < Main.maxTilesX - 20; x++)
-			{
-				for (int y = Main.maxTilesY - 2000; y < Main.maxTilesY - 20; y++)
-				{
-					Tile tile = TileUtils.SafeGetTile(x, y);
-					if (tile.TileType == ModContent.TileType<YggdrasilCommandBlock>())
-					{
-						if (tile.TileFrameX == 0)
-						{
-							if (tile.TileFrameY == 0)
-							{
-								CheckedBiomeCenter = true;
-								return new Point(x, y).ToWorldCoordinates();
-							}
-						}
-					}
-				}
-			}
-			CheckedBiomeCenter = true;
-		}
-		else if (BiomeCenter == Vector2.zeroVector)
-		{
-			return new Vector2(487, 20711).ToWorldCoordinates();
-		}
-		return new Vector2(487, 20711).ToWorldCoordinates();
-	}
-
-	/// <summary>
-	/// 判定是否开启地形
-	/// </summary>
-	/// <returns></returns>
-	public static bool BiomeActive()
-	{
 		if (YggdrasilTownCentralSystem.InCanteen_YggdrasilTown())
 		{
 			return true;
@@ -119,18 +67,65 @@ public class YggdrasilTownBiome : ModBiome
 		{
 			return true;
 		}
-		if (BiomeCenter == Vector2.zeroVector)
+		return IsTownLayer(player.Center);
+	}
+
+	public static bool CheckedBiomeCenter = false;
+
+	public static Vector2 BiomeCenter = Vector2.zeroVector;
+
+	/// <summary>
+	/// 地形中心
+	/// </summary>
+	public static Vector2 GetBiomeCenter()
+	{
+		if (!SubworldSystem.IsActive<YggdrasilWorld>())
+		{
+			CheckedBiomeCenter = false;
+			return Vector2.Zero;
+		}
+		if (CheckedBiomeCenter)
+		{
+			return BiomeCenter;
+		}
+
+		CheckedBiomeCenter = true;
+		int marker = ModContent.TileType<YggdrasilCommandBlock>();
+		for (int x = 20; x < Main.maxTilesX - 20; x++)
+		{
+			for (int y = Math.Max(20, Main.maxTilesY - 2000); y < Main.maxTilesY - 20; y++)
+			{
+				Tile tile = TileUtils.SafeGetTile(x, y);
+				if (tile.HasTile && tile.TileType == marker && tile.TileFrameX == 0 && tile.TileFrameY == 0)
+				{
+					BiomeCenter = new Point(x, y).ToWorldCoordinates();
+					return BiomeCenter;
+				}
+			}
+		}
+		// 沿用现有地图在缺少命令方块时使用的默认中心。
+		BiomeCenter = new Vector2(487, 20711).ToWorldCoordinates();
+		return BiomeCenter;
+	}
+
+	public override void Unload()
+	{
+		CheckedBiomeCenter = false;
+		BiomeCenter = Vector2.Zero;
+	}
+
+	/// <summary>按世界坐标判定天穹镇地层，供玩家群落和自然刷怪共用。</summary>
+	public static bool IsTownLayer(Vector2 position)
+	{
+		if (!YggdrasilWorld.InYggdrasil)
+		{
+			return false;
+		}
+		if (BiomeCenter == Vector2.Zero)
 		{
 			BiomeCenter = GetBiomeCenter();
 		}
-		if (Main.screenPosition.Y > BiomeCenter.Y - 18000)
-		{
-			if (SubworldSystem.IsActive<YggdrasilWorld>())
-			{
-				return true;
-			}
-		}
-		return false;
+		return BiomeCenter != Vector2.Zero && position.Y > BiomeCenter.Y - 18000;
 	}
 
 	public override void OnInBiome(Player player)

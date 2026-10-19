@@ -8,6 +8,7 @@ namespace Everglow.EternalResolve.Projectiles
 	{
 		public override void SetCustomDefaults()
 		{
+			Projectile.localNPCHitCooldown = 8;
 			AttackColor = new Color(105, 92, 76);
 			MaxDarkAttackUnitCount = 4;
 			OldColorFactor = 0.7f;
@@ -55,7 +56,7 @@ namespace Everglow.EternalResolve.Projectiles
 
 		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
-			modifiers.FinalDamage.Multiplicative *= MathF.Log2(2 + (target.velocity - Main.player[Projectile.owner].velocity).Length());
+			modifiers.FinalDamage.Multiplicative *= MathF.Min(2f, MathF.Log2(2 + (target.velocity - Main.player[Projectile.owner].velocity).Length()));
 		}
 
 		public override void HitTileSound(float scale)

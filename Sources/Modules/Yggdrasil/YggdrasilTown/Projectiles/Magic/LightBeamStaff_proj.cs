@@ -1,15 +1,15 @@
-using Everglow.Commons.DataStructures;
 using Everglow.Commons.Templates.Weapons;
-using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.LightSeeker;
 using Terraria.Audio;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
 
-public class LightBeamStaff_proj : HandholdProjectile
+public class LightBeamStaff_proj : HandheldProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+
+	private bool playedSpawnSound;
 
 	public override void SetDef()
 	{
@@ -19,28 +19,25 @@ public class LightBeamStaff_proj : HandholdProjectile
 		Projectile.localNPCHitCooldown = 5;
 		Projectile.ArmorPenetration = 45;
 		Projectile.friendly = false;
-		base.SetDef();
 	}
 
 	public override void OnSpawn(IEntitySource source)
 	{
-		SoundEngine.PlaySound(SoundID.Shimmer1.WithPitchOffset(1), Projectile.Center);
-		Player player = Main.player[Projectile.owner];
-		Vector2 mouseToPlayer = Main.MouseWorld - player.Center;
-		mouseToPlayer = Vector2.Normalize(mouseToPlayer);
-		Projectile.rotation = mouseToPlayer.ToRotation() + MathHelper.PiOver4;
-		Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center + Projectile.velocity * 2, Projectile.velocity, ModContent.ProjectileType<LightBeam>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
-	}
-
-	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
-	{
-		base.OnHitNPC(target, hit, damageDone);
+		base.OnSpawn(source);
+		if (Projectile.owner == Main.myPlayer)
+		{
+			Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center + Projectile.velocity * 2, Projectile.velocity, ModContent.ProjectileType<LightBeam>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+		}
 	}
 
 	public override void AI()
 	{
+		if (!playedSpawnSound)
+		{
+			playedSpawnSound = true;
+			SoundEngine.PlaySound(SoundID.Shimmer1.WithPitchOffset(1), Projectile.Center);
+		}
 		HeldProjectileAI();
-		Player player = Main.player[Projectile.owner];
 	}
 
 	public override void HeldProjectileAI()
@@ -49,9 +46,10 @@ public class LightBeamStaff_proj : HandholdProjectile
 		if (player.HeldItem.type != ModContent.ItemType<LightBeamStaff>())
 		{
 			Projectile.Kill();
+			return;
 		}
 		player.heldProj = Projectile.whoAmI;
-		ArmRootPos = player.MountedCenter + new Vector2(-4 * player.direction, -2);
+		ArmRootPos = player.MountedCenter + new Vector2(-4 * player.direction, -2 * player.gravDir);
 
 		int timeMax = (int)(player.itemTimeMax / player.meleeSpeed);
 		if (Projectile.localNPCHitCooldown > timeMax - 1)
@@ -61,6 +59,7 @@ public class LightBeamStaff_proj : HandholdProjectile
 		if (player.itemTime == 1)
 		{
 			Projectile.Kill();
+			return;
 		}
 		player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (Projectile.rotation - MathF.PI * 0.25f) * player.gravDir - MathF.PI * 0.5f);
 		DepartLength = 60;
@@ -82,12 +81,12 @@ public class LightBeamStaff_proj : HandholdProjectile
 		Player player = Main.player[Projectile.owner];
 		var texMain = (Texture2D)ModContent.Request<Texture2D>(Texture);
 		SpriteEffects se = SpriteEffects.None;
-		if (player.direction == -1)
+		if (player.direction * player.gravDir == -1)
 		{
 			se = SpriteEffects.FlipVertically;
 		}
 		lightColor = Lighting.GetColor(Projectile.Center.ToTileCoordinates());
-		float rot = Projectile.rotation - (float)(Math.PI * 0.25) + TextureRotation * player.direction;
+		float rot = Projectile.rotation - (float)(Math.PI * 0.25) + TextureRotation * player.direction * player.gravDir;
 		var texMain_glow = ModAsset.LightBeamStaff_glow.Value;
 		float duration = player.itemTime / (float)player.itemTimeMax;
 		duration *= 1.5f;
@@ -98,9 +97,9 @@ public class LightBeamStaff_proj : HandholdProjectile
 		}
 		duration = MathF.Sin(duration * MathHelper.Pi);
 
-		Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition + DrawOffset - new Vector2(54, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), null, lightColor, rot, texMain.Size() / 2f, 1f, se, 0);
+		Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition + GravityDrawOffset - new Vector2(54, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), null, lightColor, rot, texMain.Size() / 2f, 1f, se, 0);
 		var powerColor = new Color(duration + 0.3f, duration * duration, duration * duration, 0);
-		Main.spriteBatch.Draw(texMain_glow, Projectile.Center - Main.screenPosition + DrawOffset - new Vector2(54, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), null, powerColor, rot, texMain_glow.Size() / 2f, 1f, se, 0);
+		Main.spriteBatch.Draw(texMain_glow, Projectile.Center - Main.screenPosition + GravityDrawOffset - new Vector2(54, 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4), null, powerColor, rot, texMain_glow.Size() / 2f, 1f, se, 0);
 		return false;
 	}
 }

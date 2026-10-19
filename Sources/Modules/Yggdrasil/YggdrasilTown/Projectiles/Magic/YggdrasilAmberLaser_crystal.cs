@@ -1,3 +1,4 @@
+using System.IO;
 using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.YggdrasilTown.Buffs;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
@@ -19,10 +20,25 @@ public class YggdrasilAmberLaser_crystal : ModProjectile
 		Projectile.width = 10;
 		Projectile.height = 10;
 		Projectile.aiStyle = -1;
+		Projectile.hide = true;
 		CrystalTrack = new Vector2[50];
 	}
 
 	public Projectile LaserOwner;
+
+	private int laserOwnerIdentity = -1;
+	private bool trackInitialized;
+
+	public override void SendExtraAI(BinaryWriter writer)
+	{
+		writer.Write(LaserOwner?.identity ?? laserOwnerIdentity);
+	}
+
+	public override void ReceiveExtraAI(BinaryReader reader)
+	{
+		laserOwnerIdentity = reader.ReadInt32();
+		LaserOwner = null;
+	}
 
 	public Vector2[] CrystalTrack = new Vector2[50];
 
@@ -31,18 +47,23 @@ public class YggdrasilAmberLaser_crystal : ModProjectile
 	public override void OnSpawn(IEntitySource source)
 	{
 		CrystalTrack[0] = Projectile.Center;
+		trackInitialized = true;
 		Projectile.ai[0] = 0;
-		Projectile.hide = true;
 	}
 
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		target.AddBuff(ModContent.BuffType<AmberStick>(), 6);
-		base.OnHitNPC(target, hit, damageDone);
 	}
 
 	public override void AI()
 	{
+		// Network-created projectiles skip OnSpawn.
+		if (!trackInitialized)
+		{
+			CrystalTrack[0] = Projectile.Center;
+			trackInitialized = true;
+		}
 		if (Projectile.timeLeft < 60)
 		{
 			int length = 0;
@@ -66,6 +87,26 @@ public class YggdrasilAmberLaser_crystal : ModProjectile
 			}
 		}
 		++Projectile.ai[0];
+		if (LaserOwner == null)
+		{
+			if (laserOwnerIdentity < 0)
+			{
+				return;
+			}
+			foreach (var candidate in Main.ActiveProjectiles)
+			{
+				if (candidate.owner == Projectile.owner && candidate.identity == laserOwnerIdentity
+					&& candidate.ModProjectile is YggdrasilAmberLaser_proj)
+				{
+					LaserOwner = candidate;
+					break;
+				}
+			}
+			if (LaserOwner == null)
+			{
+				return;
+			}
+		}
 		if (!LaserOwner.active)
 		{
 			EndAI = true;
@@ -134,16 +175,12 @@ public class YggdrasilAmberLaser_crystal : ModProjectile
 				return false;
 			}
 			float value = 0;
-			if (Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), CrystalTrack.ToArray()[i], CrystalTrack.ToArray()[i + 1], 20, ref value))
+			if (Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), CrystalTrack[i], CrystalTrack[i + 1], 20, ref value))
 			{
 				return true;
 			}
 		}
 		return false;
-	}
-
-	public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
-	{
 	}
 
 	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
@@ -179,12 +216,12 @@ public class YggdrasilAmberLaser_crystal : ModProjectile
 				}
 				if (CrystalTrack[i + 1] != Vector2.zeroVector)
 				{
-					Vector2 normal = (CrystalTrack.ToArray()[i + 1] - CrystalTrack.ToArray()[i]).SafeNormalize(Vector2.zeroVector).RotatedBy(MathHelper.PiOver2);
-					AddVertex(bars, CrystalTrack.ToArray()[i] + normal * width, new Vector3(i * 0.3f, 1, 0));
-					AddVertex(bars, CrystalTrack.ToArray()[i] - normal * width, new Vector3(i * 0.3f, 0f, 0));
+					Vector2 normal = (CrystalTrack[i + 1] - CrystalTrack[i]).SafeNormalize(Vector2.zeroVector).RotatedBy(MathHelper.PiOver2);
+					AddVertex(bars, CrystalTrack[i] + normal * width, new Vector3(i * 0.3f, 1, 0));
+					AddVertex(bars, CrystalTrack[i] - normal * width, new Vector3(i * 0.3f, 0f, 0));
 
-					AddVertex2(barsReflect, CrystalTrack.ToArray()[i] + normal * width, new Vector3(i * 0.3f, 1, 0));
-					AddVertex2(barsReflect, CrystalTrack.ToArray()[i] - normal * width, new Vector3(i * 0.3f, 0f, 0));
+					AddVertex2(barsReflect, CrystalTrack[i] + normal * width, new Vector3(i * 0.3f, 1, 0));
+					AddVertex2(barsReflect, CrystalTrack[i] - normal * width, new Vector3(i * 0.3f, 0f, 0));
 				}
 			}
 

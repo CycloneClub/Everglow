@@ -1,6 +1,5 @@
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
-using SubworldLibrary;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.KelpCurtain.NPCs;
@@ -51,7 +50,6 @@ public class VerdantRods : ModNPC
 		// The approved sprite is 54x432; 432 / 54 = 8, so it is an eight-frame vertical strip,
 		// matching the existing DarkGlimmeringRods eight-frame precedent.
 		Main.npcFrameCount[NPC.type] = 8;
-		NPCSpawnManager.RegisterNPC(Type);
 
 		// 免疫 中毒 (the design row's 免疫 cell): the poisoned debuff is the only immunity.
 		NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.Poisoned] = true;
@@ -258,30 +256,6 @@ public class VerdantRods : ModNPC
 				}
 			}
 		}
-	}
-
-	/// <summary>
-	/// Subworld-only spawning (BIO-06). <c>NPCSpawnManager.EditSpawnPool</c> returns early outside
-	/// Yggdrasil, so the per-creature gate is the real isolation, and
-	/// <see cref="KelpCurtainBiome.IsKelpCurtainLayer"/> is the server-safe layer predicate because
-	/// this hook runs in single player or on the server only, where the client camera is zero. The
-	/// design supplies no weight, so a conservative 1f is used (band 0.5f-2f, D-34). A submerged
-	/// spawn tile is rejected: this is an open-air flying creature. The per-region refinement
-	/// (亡碧湖 vs 森雨幽谷) is a recorded blocker because no regional biome predicate exists yet.
-	/// </summary>
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
-		{
-			return 0f;
-		}
-
-		if (spawnInfo.Water)
-		{
-			return 0f;
-		}
-
-		return 1f;
 	}
 
 	/// <summary>

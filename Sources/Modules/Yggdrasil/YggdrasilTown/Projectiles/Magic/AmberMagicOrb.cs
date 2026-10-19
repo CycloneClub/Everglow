@@ -1,35 +1,18 @@
 using Everglow.Commons.Templates.Weapons;
-using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
 
-public class AmberMagicOrb : HandholdProjectile
+public class AmberMagicOrb : HandheldProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
 
 	public override void SetDef()
 	{
 		DepartLength = 60;
-		Projectile.usesLocalNPCImmunity = true;
-		Projectile.localNPCHitCooldown = 20;
 		TextureRotation = 5 / 18f * MathHelper.Pi;
 		Projectile.usesLocalNPCImmunity = true;
 		Projectile.localNPCHitCooldown = 5;
 		Projectile.ArmorPenetration = 45;
-		base.SetDef();
-	}
-
-	public override void OnSpawn(IEntitySource source)
-	{
-		Player player = Main.player[Projectile.owner];
-		Vector2 mouseToPlayer = Main.MouseWorld - player.Center;
-		mouseToPlayer = Vector2.Normalize(mouseToPlayer);
-		Projectile.rotation = mouseToPlayer.ToRotation() + MathHelper.PiOver4;
-	}
-
-	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
-	{
-		base.OnHitNPC(target, hit, damageDone);
 	}
 
 	public override void AI()
@@ -45,12 +28,13 @@ public class AmberMagicOrb : HandholdProjectile
 		if (player.HeldItem.type != ModContent.ItemType<Items.Weapons.AmberMagicOrb>())
 		{
 			Projectile.Kill();
+			return;
 		}
 		player.heldProj = Projectile.whoAmI;
-		ArmRootPos = player.MountedCenter + new Vector2(-4 * player.direction, -2);
+		ArmRootPos = player.MountedCenter + new Vector2(-4 * player.direction, -2 * player.gravDir);
 
-		Vector2 mouseToPlayer = Main.MouseWorld - ArmRootPos;
-		mouseToPlayer = Vector2.Normalize(mouseToPlayer);
+		Vector2 mouseToPlayer = AimPosition - ArmRootPos;
+		mouseToPlayer = mouseToPlayer.SafeNormalize(Vector2.UnitX * player.direction);
 		Projectile.rotation = mouseToPlayer.ToRotation() + MathHelper.PiOver4;
 
 		player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (Projectile.rotation - MathF.PI * 0.25f) * player.gravDir - MathF.PI * 0.5f);
@@ -91,14 +75,14 @@ public class AmberMagicOrb : HandholdProjectile
 		var texMain = (Texture2D)ModContent.Request<Texture2D>(Texture);
 		var texGlow = ModAsset.AmberMagicOrb_glow.Value;
 		SpriteEffects se = SpriteEffects.None;
-		if (player.direction == -1)
+		if (player.direction * player.gravDir == -1)
 		{
 			se = SpriteEffects.FlipVertically;
 		}
 
-		float rot = Projectile.rotation - (float)(Math.PI * 0.25) + TextureRotation * player.direction;
-		Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition + DrawOffset, null, lightColor, rot + (float)Main.time * 0.25f, texMain.Size() / 2f, 1f, se, 0);
-		Main.spriteBatch.Draw(texGlow, Projectile.Center - Main.screenPosition + DrawOffset, null, new Color(1f, 1f, 1f, 0), rot + (float)Main.time * 0.25f, texGlow.Size() / 2f, 1f, se, 0);
+		float rot = Projectile.rotation - (float)(Math.PI * 0.25) + TextureRotation * player.direction * player.gravDir;
+		Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition + GravityDrawOffset, null, lightColor, rot + (float)Main.time * 0.25f, texMain.Size() / 2f, 1f, se, 0);
+		Main.spriteBatch.Draw(texGlow, Projectile.Center - Main.screenPosition + GravityDrawOffset, null, new Color(1f, 1f, 1f, 0), rot + (float)Main.time * 0.25f, texGlow.Size() / 2f, 1f, se, 0);
 
 		var bars = new List<Vertex2D>();
 		for (int t = 0; t < 3; t++)

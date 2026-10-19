@@ -6,10 +6,24 @@ public class IchorClub_Item : ClubItem
 {
 	public override void SetCustomDefaults()
 	{
-		Item.damage = 47;
-		Item.value = 5000;
+		Item.damage = 24;
+		Item.value = Item.buyPrice(0, 20, 0, 0);
 		Item.rare = ItemRarityID.LightRed;
+		Item.knockBack = 4f;
+		Item.useTime = 12;
+		Item.useAnimation = 12;
+		SmashDamageMultiplier = 30f / 24f;
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.IchorClub>();
 		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.IchorClub_smash>();
+	}
+
+	public override void AddRecipes()
+	{
+		CreateRecipe()
+			.AddIngredient<CrimsonClub_Item>()
+			.AddIngredient(ItemID.Ichor, 20)
+			.AddIngredient(ItemID.SoulofNight, 10)
+			.AddTile(TileID.MythrilAnvil)
+			.Register();
 	}
 }

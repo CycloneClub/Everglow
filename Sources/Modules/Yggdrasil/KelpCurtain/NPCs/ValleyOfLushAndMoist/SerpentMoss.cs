@@ -1,6 +1,5 @@
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
-using SubworldLibrary;
 using Terraria.DataStructures;
 using Terraria.GameContent.ItemDropRules;
 
@@ -118,7 +117,6 @@ public class SerpentMoss : ModNPC
 	{
 		// No approved sprite exists, so there is nothing to slice: the whole texture is one frame.
 		Main.npcFrameCount[NPC.type] = 1;
-		NPCSpawnManager.RegisterNPC(Type);
 
 		// 免疫 中毒、困惑 (the design row's 免疫 cell): exactly these two immunities.
 		NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.Poisoned] = true;
@@ -333,32 +331,6 @@ public class SerpentMoss : ModNPC
 			Main.dust[dust].noGravity = true;
 			Main.dust[dust].scale = Main.rand.NextFloat(0.7f, 1.2f);
 		}
-	}
-
-	/// <summary>
-	/// Subworld-only spawning (BIO-06). <c>NPCSpawnManager.EditSpawnPool</c> returns early outside
-	/// Yggdrasil, so this per-creature gate is the real isolation, and
-	/// <see cref="KelpCurtainBiome.IsKelpCurtainLayer"/> is the server-safe layer predicate because the
-	/// hook runs in single player or on the server only, where the client camera is zero (D-52/D-55).
-	/// The hazard is a ground plant, so the shared dry-land condition is used and the design supplies no
-	/// weight (the conservative land band, D-54). The 森雨幽谷 region refinement is a Phases 5-6 predicate
-	/// gap (04-DEVIATIONS.md section 5).
-	/// </summary>
-	/// <param name="spawnInfo">The engine's spawn context.</param>
-	/// <returns>The conservative land weight, or <c>0f</c> outside the design's context.</returns>
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
-		{
-			return 0f;
-		}
-
-		if (!KelpCurtainSpawnConditions.IsDryLand(spawnInfo))
-		{
-			return 0f;
-		}
-
-		return KelpCurtainSpawnConditions.LandWeight;
 	}
 
 	/// <summary>

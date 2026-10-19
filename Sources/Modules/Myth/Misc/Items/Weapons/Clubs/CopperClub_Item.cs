@@ -6,8 +6,13 @@ public class CopperClub_Item : ClubItem
 {
 	public override void SetCustomDefaults()
 	{
-		Item.damage = 6;
-		Item.value = 65;
+		Item.damage = 13;
+		Item.value = Item.buyPrice(0, 0, 4, 50);
+		Item.rare = ItemRarityID.White;
+		Item.knockBack = 5.5f;
+		Item.useTime = 12;
+		Item.useAnimation = 12;
+		SmashDamageMultiplier = 9f / 13f;
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.CopperClub>();
 		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.CopperClub_smash>();
 	}

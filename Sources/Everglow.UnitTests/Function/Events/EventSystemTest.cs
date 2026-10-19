@@ -285,6 +285,25 @@ public class EventSystemTest
 		Assert.IsTrue(added.Active);
 	}
 
+	[TestMethod]
+	public void SpawnOverrideRequiresActiveEventWithExplicitOptIn()
+	{
+		var localEvent = new TestReplicaEvent();
+		var overridingEvent = new TestEvent { OverrideSpawns = true };
+		Assert.IsFalse(localEvent.OverridesNaturalSpawning);
+		Assert.IsFalse(EventSystem.HasActiveSpawnOverride);
+		EventSystem.Activate(localEvent);
+		Assert.IsFalse(EventSystem.HasActiveSpawnOverride);
+		EventSystem.Activate(overridingEvent);
+		Assert.IsTrue(EventSystem.HasActiveSpawnOverride);
+		EventSystem.Deactivate(overridingEvent);
+		Assert.IsTrue(localEvent.Active);
+		Assert.IsFalse(EventSystem.HasActiveSpawnOverride);
+		EventSystem.Activate(overridingEvent);
+		new EventSystem().ClearWorld();
+		Assert.IsFalse(EventSystem.HasActiveSpawnOverride);
+	}
+
 	private static TestEvent CreateNetworkedEvent()
 	{
 		var e = new TestEvent { Synchronize = true };
@@ -305,6 +324,9 @@ public class EventSystemTest
 	private sealed class TestEvent : ModEvent
 	{
 		public bool Background;
+		public bool OverrideSpawns;
+
+		public override bool OverridesNaturalSpawning => OverrideSpawns;
 
 		public override bool IsBackground => Background;
 

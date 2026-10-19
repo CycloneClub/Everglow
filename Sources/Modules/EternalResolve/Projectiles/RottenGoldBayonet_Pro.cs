@@ -9,6 +9,7 @@ namespace Everglow.EternalResolve.Projectiles
 	{
 		public override void SetCustomDefaults()
 		{
+			Projectile.localNPCHitCooldown = 8;
 			AttackColor = new Color(105, 105, 255);
 			MaxDarkAttackUnitCount = 8;
 			OldColorFactor = 0.7f;
@@ -46,12 +47,16 @@ namespace Everglow.EternalResolve.Projectiles
 			}
 		}
 
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+		{
+			modifiers.ArmorPenetration += 5;
+		}
+
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (sourceItem.specialDelay == 0)
 			{
 				sourceItem.specialDelay = 60;
-				target.defense -= 1;
 				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), target.Center, Vector2.zeroVector, ModContent.ProjectileType<RottenGoldBayonet_Mark>(), (int)(Projectile.damage * 1f), Projectile.knockBack * 2.97f, Projectile.owner, 0, target.whoAmI);
 			}
 		}

@@ -1,8 +1,9 @@
-using System.IO;
+using Everglow.Commons.Mechanics.MirrorReflection;
+using Everglow.Commons.Mechanics.MirrorReflection.Core;
 using Everglow.Commons.Netcode;
-using Everglow.Commons.Utilities;
-using Everglow.Yggdrasil.Netcode;
 using Everglow.Yggdrasil.KelpCurtain;
+using Everglow.Yggdrasil.Netcode;
+using Everglow.Yggdrasil.YggdrasilTown.Walls;
 using SubworldLibrary;
 using Terraria.ModLoader.IO;
 
@@ -16,6 +17,15 @@ public class YggdrasilWorldSystem : ModSystem, ICopyWorldData
 	public static bool DownedSquamousShell;
 	public static bool DownedKingJellyBall;
 	public static bool EnteredKelpCurtain;
+
+	public override void PostSetupContent()
+	{
+		var reflections = ModContent.GetInstance<MirrorReflectionSystem>();
+		reflections.RegisterWall(ModContent.WallType<JellyBallSecretionWall>(), new MirrorReflectionDefinition(0.22f, 0.9f) { Blur = 0 });
+		reflections.RegisterWall(ModContent.WallType<HeatProofPlatingWall>(), new MirrorReflectionDefinition(0.26f) { Blur = 1 });
+		reflections.RegisterWall(ModContent.WallType<FurnaceHeatProofPlatingWall>(), new MirrorReflectionDefinition(0.30f) { Blur = 1 });
+		reflections.RegisterWall(ModContent.WallType<UnionMarbleWall_Dark>(), new MirrorReflectionDefinition(0.20f, 0.9f) { Blur = 0 });
+	}
 
 	public override void OnWorldLoad()
 	{

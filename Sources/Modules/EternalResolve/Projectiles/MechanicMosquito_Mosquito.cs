@@ -141,11 +141,11 @@ namespace Everglow.EternalResolve.Projectiles
 
 		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
-			if (Blood < 10)
+			if (Blood < 3)
 			{
 				Blood++;
 			}
-			if (Blood == 10)
+			if (Blood == 3)
 			{
 				Projectile.Kill();
 			}

@@ -1,7 +1,5 @@
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.KelpCurtain.Dusts;
-using SubworldLibrary;
-using Terraria.DataStructures;
 using Terraria.GameContent.ItemDropRules;
 
 namespace Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake;
@@ -13,10 +11,8 @@ namespace Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake;
 /// The design's 伤害, 击退抗性, 减伤, 免疫 and 钱币 cells are all empty, so the creature is a pure
 /// passive critter: no contact damage, no target and no loot.
 /// <para>
-/// <b>Group spawn (assumption, D-54).</b> 在水里成群（2~5只）刷新，然后成群移动 - tML has no group-spawn
-/// primitive, so the leader creates the rest of its shoal in <see cref="OnSpawn(IEntitySource)"/> on the
-/// authoritative side and every created member carries a follower marker in <c>NPC.ai[1]</c>, which is
-/// exactly what stops the group from growing without bound (T-04-17).
+/// 群体数量由生成入口负责；创建单只 NPC 不会自动扩群。
+/// 群居移动根据场上存活同类决定，不区分领队、从属或生成来源。
 /// </para>
 /// <para>
 /// <b>Capture blocker (D-58).</b> The design says 可被捕捉, but no catch item for this creature exists
@@ -33,22 +29,6 @@ namespace Everglow.Yggdrasil.KelpCurtain.NPCs.DeathJadeLake;
 /// </summary>
 public class ArmoredShrimp : ModNPC
 {
-	/// <summary>在水里成群（2~5只）: the design's lower group bound.</summary>
-	private const int MinGroupSize = 2;
-
-	/// <summary>在水里成群（2~5只）: the design's upper group bound.</summary>
-	private const int MaxGroupSize = 5;
-
-	/// <summary>
-	/// The follower marker written into <c>NPC.ai[1]</c>. It is passed through the <c>ai1</c> parameter of
-	/// <c>NPC.NewNPC</c>, so the member already reads it during its own <see cref="OnSpawn(IEntitySource)"/>
-	/// and never starts a second group (T-04-17).
-	/// </summary>
-	private const float FollowerMarker = 1f;
-
-	/// <summary>How far, at most, a created member is placed from its leader, in pixels (D-54 default).</summary>
-	private const float GroupSpreadPixels = 48f;
-
 	/// <summary>成群移动: the shoal's drift speed, in pixels per tick (D-54 default).</summary>
 	private const float ShoalSpeed = 0.55f;
 
@@ -64,7 +44,7 @@ public class ArmoredShrimp : ModNPC
 	/// <summary>How often the server re-rolls the shoal state and the wander heading, in frames (D-54 default).</summary>
 	private const int WanderInterval = 150;
 
-	/// <summary>成群移动: the greatest gap a follower tolerates before steering back toward a shoal mate (D-54 default).</summary>
+	/// <summary>成群移动: the greatest gap a shrimp tolerates before steering back toward a shoal mate (D-54 default).</summary>
 	private const float ShoalCohesionRange = 6f * 16f;
 
 	/// <summary>
@@ -76,17 +56,6 @@ public class ArmoredShrimp : ModNPC
 	{
 		Shoaling = 0,
 		Drifting = 1,
-	}
-
-	/// <summary>
-	/// <c>true</c> on every creature a leader created. A follower never rolls a group of its own - the
-	/// marker is the design's answer to tML having no group-spawn primitive, and it is what keeps
-	/// 成群（2~5只） from cascading (T-04-17).
-	/// </summary>
-	private bool IsGroupFollower
-	{
-		get => NPC.ai[1] >= FollowerMarker;
-		set => NPC.ai[1] = value ? FollowerMarker : 0f;
 	}
 
 	/// <summary>Named wrapper over <c>NPC.ai[0]</c> so no bare numeric index is scattered through the class.</summary>
@@ -106,23 +75,13 @@ public class ArmoredShrimp : ModNPC
 	/// <summary>
 	/// Named wrapper over the synced <c>NPC.ai[2]</c>: the heading (<c>1</c> or <c>-1</c>) the shoal drifts
 	/// along. It must ride the synced array: <see cref="AI"/> steers <c>NPC.velocity.X</c> from it on every
-	/// side, and <c>NPC.localAI[]</c> never reaches a client (D-55). The <c>ai[1]</c> slot is already the
-	/// follower marker.
+	/// side, and <c>NPC.localAI[]</c> never reaches a client (D-55).
 	/// </summary>
 	private int Heading
 	{
 		get => (int)NPC.ai[2];
 		set => NPC.ai[2] = value;
 	}
-
-	/// <summary>
-	/// How many leaders are currently creating their shoal. The <c>ai1</c> marker is the primary mechanism
-	/// and is what reaches the member's own <see cref="OnSpawn(IEntitySource)"/> through
-	/// <c>NPC.NewNPC</c>'s <c>ai1</c> parameter; this counter is the belt-and-braces guard, so a member can
-	/// never roll a group even if the engine assigned the <c>ai[]</c> values in a different order
-	/// (T-04-17).
-	/// </summary>
-	private static int groupCreationDepth;
 
 	// No HJSON key is created for this class; localization stays deferred (D-20).
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.NPCs;
@@ -135,7 +94,6 @@ public class ArmoredShrimp : ModNPC
 	{
 		// No approved sprite exists, so there is nothing to slice: the whole texture is one frame.
 		Main.npcFrameCount[NPC.type] = 1;
-		NPCSpawnManager.RegisterNPC(Type);
 
 		// The design row's 免疫 cell is empty, so no specific debuff immunity is declared.
 	}
@@ -184,11 +142,8 @@ public class ArmoredShrimp : ModNPC
 		// flag and no critter-count set entry are written here.
 		NPC.catchItem = 0;
 
-		// Deterministic starting values, because SetDefaults runs on every side: the follower marker the
-		// engine passes through NPC.NewNPC's ai1 parameter is applied after this method, so nothing here
-		// can clobber a member's marker.
+		// Deterministic starting values, because SetDefaults runs on every side.
 		State = ArmoredShrimpState.Shoaling;
-		IsGroupFollower = false;
 		WanderTimer = WanderInterval;
 		Heading = 1;
 
@@ -196,63 +151,7 @@ public class ArmoredShrimp : ModNPC
 	}
 
 	/// <summary>
-	/// 在水里成群（2~5只）刷新: the leader rolls the design's group size and creates the remaining members
-	/// around itself, and every created member is marked as a follower so it never starts a group of its
-	/// own. The whole body runs on the authoritative side, because <c>NPC.NewNPC</c> must never be called
-	/// on a multiplayer client (D-55).
-	/// </summary>
-	/// <param name="source">The engine's spawn source.</param>
-	public override void OnSpawn(IEntitySource source)
-	{
-		if (Main.netMode != NetmodeID.MultiplayerClient)
-		{
-			CreateShoal();
-		}
-	}
-
-	/// <summary>
-	/// The leader's share of 在水里成群（2~5只）: it rolls the design's group size and creates the remaining
-	/// members around itself. Only ever reached on the authoritative side, because <c>NPC.NewNPC</c> must
-	/// never be called on a multiplayer client (D-55).
-	/// </summary>
-	private void CreateShoal()
-	{
-		if (IsGroupFollower || groupCreationDepth > 0)
-		{
-			// A member created by a leader never starts a further group: that is the whole point of the
-			// 2~5 bound (2 is the lower bound, 5 the upper one) and it is re-asserted here so the synced
-			// marker is correct no matter which side the engine applied the ai[] values from.
-			IsGroupFollower = true;
-			NPC.netUpdate = true;
-			return;
-		}
-
-		int groupSize = Main.rand.Next(MinGroupSize, MaxGroupSize + 1);
-		int memberCount = groupSize - 1;
-		groupCreationDepth++;
-		try
-		{
-			for (int i = 0; i < memberCount; i++)
-			{
-				Vector2 offset = new(
-					Main.rand.NextFloat(-GroupSpreadPixels, GroupSpreadPixels),
-					Main.rand.NextFloat(-GroupSpreadPixels, GroupSpreadPixels));
-
-				// ai1 carries the follower marker, so the member reads it during its own OnSpawn.
-				// The X/Y pair is the engine's centred spawn position, exactly as its own summons pass it.
-				NPC.NewNPC(NPC.GetSource_FromAI(), (int)(NPC.Center.X + offset.X), (int)(NPC.Center.Y + offset.Y), Type, 0, 0f, FollowerMarker);
-			}
-		}
-		finally
-		{
-			groupCreationDepth--;
-		}
-
-		NPC.netUpdate = true;
-	}
-
-	/// <summary>
-	/// 成群移动: the shoal drifts along a shared heading, a follower steers loosely back toward a shoal
+	/// 成群移动: the shoal drifts along a shared heading, each shrimp steers loosely back toward a shoal
 	/// mate so the group holds together, and the creature 不会逃离捕食者 - it never flees and never
 	/// acquires a target, so this is the whole of its behaviour. The heading re-roll is authoritative and
 	/// rides the synced <c>NPC.ai[]</c> array (D-55).
@@ -261,9 +160,9 @@ public class ArmoredShrimp : ModNPC
 	{
 		UpdateWander();
 
-		if (IsGroupFollower && TryGetNearestShoalMate(out Vector2 mateCenter))
+		if (TryGetNearestShoalMate(out Vector2 mateCenter))
 		{
-			// Loose cohesion only: a follower far enough from its nearest shoal mate turns back toward it,
+			// Loose cohesion only: a shrimp far enough from its nearest shoal mate turns back toward it,
 			// and otherwise keeps drifting, so the group reads as a loosely coupled shoal rather than a
 			// rigid formation.
 			float deltaX = mateCenter.X - NPC.Center.X;
@@ -379,29 +278,5 @@ public class ArmoredShrimp : ModNPC
 		int dust = Dust.NewDust(NPC.Center, 0, 0, ModContent.DustType<KelpWaterDrop>(), 0f, 0f);
 		Main.dust[dust].noGravity = true;
 		Main.dust[dust].scale = Main.rand.NextFloat(0.6f, 1f);
-	}
-
-	/// <summary>
-	/// 在水里成群 ... 刷新, and only ever inside Yggdrasil (BIO-06). <c>NPCSpawnManager.EditSpawnPool</c>
-	/// returns early outside the subworld, so this per-creature gate is the real isolation, and
-	/// <see cref="KelpCurtainBiome.IsKelpCurtainLayer"/> is the server-safe layer predicate because the
-	/// hook runs in single player or on the server only, where the client camera is zero (D-52/D-55).
-	/// The water test is the design's own 在水里 condition (Pitfall 6).
-	/// </summary>
-	/// <param name="spawnInfo">The engine's spawn context.</param>
-	/// <returns>The conservative water weight, or <c>0f</c> outside the design's context.</returns>
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		if (!SubworldSystem.IsActive<YggdrasilWorld>() || !KelpCurtainBiome.IsKelpCurtainLayer(spawnInfo.Player))
-		{
-			return 0f;
-		}
-
-		if (!spawnInfo.Water)
-		{
-			return 0f;
-		}
-
-		return KelpCurtainSpawnConditions.WaterWeight;
 	}
 }

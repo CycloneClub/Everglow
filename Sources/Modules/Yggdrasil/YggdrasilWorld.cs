@@ -38,7 +38,6 @@ public class YggdrasilWorld : Subworld
 	{
 		SubworldSystem.hideUnderworld = true;
 		YggdrasilTimer = 0;
-		YggdrasilTownBiome.CheckedBiomeCenter = false;
 		if (!PlayerQuestManager.Instance.Quests.Contains(new GetAccessCard()))
 		{
 			PlayerQuestManager.Instance.AddQuest(new GetAccessCard(), PlayerQuestState.Available);
@@ -49,6 +48,8 @@ public class YggdrasilWorld : Subworld
 	{
 		Main.worldSurface = Main.maxTilesY - 100;
 		Main.rockLayer = Main.maxTilesY - 50;
+		YggdrasilTownBiome.CheckedBiomeCenter = false;
+		YggdrasilTownBiome.BiomeCenter = YggdrasilTownBiome.GetBiomeCenter();
 	}
 
 	public override void Load()

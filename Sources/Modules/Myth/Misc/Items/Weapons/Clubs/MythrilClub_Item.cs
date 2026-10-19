@@ -6,9 +6,13 @@ public class MythrilClub_Item : ClubItem
 {
 	public override void SetCustomDefaults()
 	{
-		Item.damage = 56;
-		Item.value = 2682;
+		Item.damage = 34;
+		Item.value = Item.buyPrice(0, 10, 35, 0);
 		Item.rare = ItemRarityID.LightRed;
+		Item.knockBack = 6f;
+		Item.useTime = 12;
+		Item.useAnimation = 12;
+		SmashDamageMultiplier = 50f / 34f;
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.MythrilClub>();
 		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.MythrilClub_smash>();
 	}

@@ -6,8 +6,13 @@ public class GoldClub_Item : ClubItem
 {
 	public override void SetCustomDefaults()
 	{
-		Item.damage = 10;
-		Item.value = 142;
+		Item.damage = 25;
+		Item.value = Item.buyPrice(0, 0, 90, 0);
+		Item.rare = ItemRarityID.White;
+		Item.knockBack = 6.5f;
+		Item.useTime = 12;
+		Item.useAnimation = 12;
+		SmashDamageMultiplier = 15f / 25f;
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.GoldClub>();
 		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.GoldClub_smash>();
 	}
