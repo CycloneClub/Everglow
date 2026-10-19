@@ -329,14 +329,14 @@ public abstract class CableTile : ModTile, ITileFluentlyDrawn
 	/// <returns></returns>
 	public virtual Rope ConnectRope(int i, int j, int i2, int j2)
 	{
-		Tile tile = Main.tile[i2, j2];
-
-		// 挂在自己身上报错
+		// An unconnected or not-yet-synchronized entity has a zero endpoint offset.
+		// NearbyEffects can retry every frame, so this must not emit combat text.
 		if (i == i2 && j == j2)
 		{
-			CombatText.NewText(new Rectangle(i * 16, j * 16, 8, 8), Color.Red, "You can't connect rope in a same tile!");
 			return null;
 		}
+
+		Tile tile = Main.tile[i2, j2];
 
 		// 只有同一种块之间才能连绳
 		if (tile.TileType == Type)
@@ -509,6 +509,17 @@ public abstract class CableTile : ModTile, ITileFluentlyDrawn
 public class CableEneity : ModTileEntity
 {
 	public Point ToTail;
+
+	public override void NetSend(BinaryWriter writer)
+	{
+		writer.Write(ToTail.X);
+		writer.Write(ToTail.Y);
+	}
+
+	public override void NetReceive(BinaryReader reader)
+	{
+		ToTail = new Point(reader.ReadInt32(), reader.ReadInt32());
+	}
 
 	public override bool IsTileValidForEntity(int x, int y)
 	{
