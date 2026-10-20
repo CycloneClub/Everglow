@@ -5,36 +5,49 @@ public static class CrowdNames
 {
 	private static readonly string[] Pool =
 	[
-		"Alden", "Mira", "Rowan", "Lyra", "Orin", "Elara", "Finn", "Nia",
-		"Silas", "Iris", "Theo", "Luna", "Arlo", "Cora", "Jasper", "Vera",
-		"Emil", "Faye", "Noel", "Sora", "Ren", "Yuna", "Lian", "Mei",
-		"Kai", "Asha", "Tarin", "Selene", "Bram", "Tessa", "Eira", "Ravi",
-		"ChenAn", "LinYue", "ZhouNing", "XuQing", "ShenXing", "SuHe",
-		"LinAn", "ChenMo", "ShenQinghe", "XuXingyao", "OuyangMingyue", "SituQingfeng",
-		"Aaron", "Adam", "Adrian", "Aiden", "Alan", "Albert", "Alex", "Alfred",
-		"Arthur", "Asher", "August", "Austin", "Benjamin", "Blake", "Caleb", "Cedric",
-		"Charles", "Colin", "Daniel", "David", "Dean", "Dorian", "Edgar", "Edmund",
-		"Edward", "Elias", "Elliot", "Eric", "Ethan", "Felix", "Gabriel", "Gareth",
-		"George", "Graham", "Hector", "Henry", "Hugo", "Isaac", "Julian", "Leo",
-		"Leon", "Levi", "Liam", "Lucas", "Marcus", "Milo", "Nathan", "Oliver",
-		"Oscar", "Owen", "Ada", "Alice", "Amelia", "Anna", "Aurora", "Ava",
-		"Beatrice", "Bella", "Camille", "Celia", "Clara", "Daisy", "Daphne", "Diana",
-		"Eden", "Elise", "Ella", "Elsie", "Emma", "Estelle", "Eva", "Evelyn",
-		"Flora", "Freya", "Grace", "Hazel", "Helena", "Holly", "Isabel", "Ivy",
-		"Julia", "Lena", "Lily", "Lucia", "Lucy", "Maeve", "Margot", "Maya",
-		"Nora", "Olive", "Opal", "Pearl", "Phoebe", "Rose", "Ruby", "Sadie",
-		"Sophie", "Stella", "Violet", "Willow", "ZhaoYu", "QianSong", "SunZhu", "LiQuan",
+		// Chinese: 58 names (25% of the pool).
+		"ChenAn", "LinYue", "ZhouNing", "XuQing", "ShenXing", "SuHe", "LinAn", "ChenMo",
+		"ShenQinghe", "XuXingyao", "OuyangMingyue", "SituQingfeng", "ZhaoYu", "QianSong", "SunZhu", "LiQuan",
 		"ZhouLan", "WuTong", "ZhengChuan", "WangXi", "FengNing", "WeiLan", "JiangFeng", "HanLu",
 		"YangFan", "ZhuChen", "QinLang", "YouXia", "HeQiu", "LyuYan", "ShiYu", "ZhangHe",
 		"KongYue", "CaoXue", "YanShuang", "HuaXing", "JinHe", "TaoRan", "JiangLi", "GuZhou",
 		"BaiRuoxi", "JiangYunshu", "YeTingyu", "FangZhiyuan", "SongWanqing", "TangShuning", "WenYian", "XieChangfeng",
-		"ChengJingming", "ShaoQinghe", "XiaChuxue", "FuXinghe", "XuWangshan", "LinJianlu", "ChenYingyue", "ShenGuizhou",
-		"LuHuaijin", "SuJinnian", "ZhouTinglan", "QinMobai", "LiuRuyan", "YunZhixia", "GuNanzhi", "MengXingyuan",
-		"ShangguanYunshu", "ZhugeQinghe", "SimaXinghe", "XiahouMingxuan",
+		"ChengJingming", "ShaoQinghe", "XiaChuxue", "FuXinghe", "GuNanzhi", "MengXingyuan", "ShangguanYunshu", "ZhugeQinghe",
+		"SimaXinghe", "XiahouMingxuan",
+
+		// English: 58 names (25% of the pool).
+		"Alden", "Mira", "Rowan", "Lyra", "Orin", "Elara", "Finn", "Nia",
+		"Silas", "Iris", "Theo", "Luna", "Arlo", "Cora", "Jasper", "Faye",
+		"Kai", "Asha", "Tarin", "Selene", "Bram", "Tessa", "Eira", "Ravi",
+		"Adam", "Alex", "Arthur", "Asher", "Blake", "Caleb", "Colin", "Daniel",
+		"David", "Dean", "Edgar", "Elliot", "Eric", "Ethan", "Henry", "Isaac",
+		"Owen", "Ada", "Alice", "Ava", "Bella", "Daisy", "Eden", "Ella",
+		"Emma", "Flora", "Grace", "Hazel", "Holly", "Ivy", "Lily", "Lucy",
+		"Nora", "Ruby",
+
+		// French: 29 names (12.5% of the pool).
 		"Jules", "Luc", "Louis", "Remy", "Manon", "Ines", "Lise", "Chloe",
+		"Noel", "Camille", "Elise", "Margot", "Sophie", "Jean", "Paul", "Marc",
+		"Yves", "Guy", "Rene", "Lucie", "Adele", "Amelie", "Aline", "Celine",
+		"Fanny", "Odile", "Ninon", "Sylvie", "Benoit",
+
+		// German: 29 names (12.5% of the pool).
 		"Hans", "Fritz", "Klaus", "Kurt", "Otto", "Greta", "Lotte", "Frieda",
+		"Emil", "Felix", "Clara", "Lena", "Hugo", "Karl", "Max", "Franz",
+		"Rolf", "Uwe", "Jens", "Jorg", "Gerd", "Ernst", "Heinz", "Inga",
+		"Elke", "Anke", "Ute", "Rudi", "Hilda",
+
+		// Japanese: 29 names (12.5% of the pool).
 		"Haru", "Yuki", "Aki", "Rin", "Nao", "Mio", "Yui", "Riku",
+		"Sora", "Ren", "Yuna", "Aoi", "Hana", "Hina", "Kiko", "Miki",
+		"Nami", "Nana", "Rina", "Risa", "Ryo", "Rei", "Ken", "Shin",
+		"Jun", "Taro", "Yuto", "Yuma", "Saki",
+
+		// Russian: 29 names (12.5% of the pool).
 		"Sasha", "Misha", "Dima", "Vanya", "Kolya", "Katya", "Nadya", "Zoya",
+		"Vera", "Anna", "Anya", "Dasha", "Masha", "Tanya", "Sonya", "Olya",
+		"Ira", "Liza", "Nina", "Rita", "Vika", "Yura", "Borya", "Petya",
+		"Pasha", "Vova", "Kostya", "Tolya", "Grisha",
 	];
 
 	public static string KeyFor(int seed) => $"Mods.Everglow.TownCrowds.Names.{Pool[(uint)seed % Pool.Length]}";
