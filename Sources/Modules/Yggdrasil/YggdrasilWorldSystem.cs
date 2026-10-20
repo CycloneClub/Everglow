@@ -4,6 +4,7 @@ using Everglow.Commons.Netcode;
 using Everglow.Yggdrasil.KelpCurtain;
 using Everglow.Yggdrasil.Netcode;
 using Everglow.Yggdrasil.YggdrasilTown.Walls;
+using MonoMod.Cil;
 using SubworldLibrary;
 using Terraria.ModLoader.IO;
 
@@ -91,34 +92,33 @@ public class YggdrasilWorldSystem : ModSystem, ICopyWorldData
 
 	public override void Load()
 	{
-		On_NPC.AI_007_FindGoodRestingSpot += On_hook_AI_007_FindGoodRestingSpot;
-		On_NPC.AI_007_TryForcingSitting += On_hook_AI_007_TryForcingSitting;
+		IL_Main.UpdateTime_SpawnTownNPCs += PreventOldManSpawningInYggdrasil;
 		base.Load();
 	}
 
-	public void On_hook_AI_007_FindGoodRestingSpot(On_NPC.orig_AI_007_FindGoodRestingSpot orig, NPC self, int myTileX, int myTileY, out int floorX, out int floorY)
+	public override void Unload()
 	{
-		if (SubworldSystem.Current is YggdrasilWorld)
-		{
-			floorX = -1;
-			floorY = -1;
-			orig(self, myTileX, myTileY, out floorX, out floorY);
-			return;
-		}
-		orig(self, myTileX, myTileY, out floorX, out floorY);
+		IL_Main.UpdateTime_SpawnTownNPCs -= PreventOldManSpawningInYggdrasil;
 	}
 
-	public void On_hook_AI_007_TryForcingSitting(On_NPC.orig_AI_007_TryForcingSitting orig, NPC self, int floorX, int floorY)
+	private static void PreventOldManSpawningInYggdrasil(ILContext il)
 	{
-		if (SubworldSystem.Current is YggdrasilWorld)
+		ILCursor cursor = new(il);
+		if (!cursor.TryGotoNext(
+			MoveType.Before,
+			i => i.MatchLdsfld<NPC>(nameof(NPC.downedBoss3)),
+			i => i.MatchBrtrue(out _),
+			i => i.MatchLdloc(out _),
+			i => i.MatchBrtrue(out _),
+			i => i.MatchCall<NPC>(nameof(NPC.GetSpawnSourceForTownSpawn)),
+			i => i.MatchLdsfld<Main>(nameof(Main.dungeonX))))
 		{
-			if (floorX > 0 && floorX < Main.tile.Width && floorY > 0 && floorY < Main.tile.Height)
-			{
-				orig(self, floorX, floorY);
-			}
-			return;
+			throw new InvalidOperationException("Failed to locate the Old Man spawn condition in Main.UpdateTime_SpawnTownNPCs.");
 		}
-		orig(self, floorX, floorY);
+
+		// 天穹树没有原版地牢：仅让老人补生条件跳过，不修改骷髅王进度或后续城镇刷新。
+		cursor.Index++;
+		cursor.EmitDelegate<Func<bool, bool>>(downedSkeletron => downedSkeletron || YggdrasilWorld.InYggdrasil);
 	}
 
 	public override void PostUpdateEverything()
