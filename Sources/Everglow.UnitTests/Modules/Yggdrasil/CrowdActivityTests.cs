@@ -76,7 +76,7 @@ public class CrowdActivityTests
 		string Key(int seed) => (string)key.Invoke(null, [seed])!;
 		var keys = Enumerable.Range(0, 256).Select(Key).ToArray();
 		Assert.IsTrue(keys.Distinct().Count() >= 24);
-		Assert.IsTrue(keys.All(value => value.StartsWith("Mods.Everglow.Travelers.Names.")));
+		Assert.IsTrue(keys.All(value => value.StartsWith("Mods.Everglow.TownCrowds.Names.")));
 		Assert.AreEqual(Key(931), Key(931));
 		Assert.IsFalse(string.IsNullOrWhiteSpace(Key(int.MinValue)));
 	}

@@ -9,7 +9,9 @@ public static class CrowdNames
 		"Silas", "Iris", "Theo", "Luna", "Arlo", "Cora", "Jasper", "Vera",
 		"Emil", "Faye", "Noel", "Sora", "Ren", "Yuna", "Lian", "Mei",
 		"Kai", "Asha", "Tarin", "Selene", "Bram", "Tessa", "Eira", "Ravi",
+		"ChenAn", "LinYue", "ZhouNing", "XuQing", "ShenXing", "SuHe",
+		"LinAn", "ChenMo", "ShenQinghe", "XuXingyao", "OuyangMingyue", "SituQingfeng",
 	];
 
-	public static string KeyFor(int seed) => $"Mods.Everglow.Travelers.Names.{Pool[(uint)seed % Pool.Length]}";
+	public static string KeyFor(int seed) => $"Mods.Everglow.TownCrowds.Names.{Pool[(uint)seed % Pool.Length]}";
 }
