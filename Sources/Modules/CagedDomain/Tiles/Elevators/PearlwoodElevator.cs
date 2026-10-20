@@ -7,6 +7,6 @@ public class PearlwoodElevator : ElevatorBase
 	public override void SetDefaults()
 	{
 		base.SetDefaults();
-		LightSourceColor = new Vector3(0.5f, 0.7f, 1f);
+		LightSourceColor = new Vector3(0.2f, 0.7f, 0.4f);
 	}
 }
