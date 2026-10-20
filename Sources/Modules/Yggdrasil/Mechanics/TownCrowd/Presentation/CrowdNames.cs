@@ -31,6 +31,10 @@ public static class CrowdNames
 		"ChengJingming", "ShaoQinghe", "XiaChuxue", "FuXinghe", "XuWangshan", "LinJianlu", "ChenYingyue", "ShenGuizhou",
 		"LuHuaijin", "SuJinnian", "ZhouTinglan", "QinMobai", "LiuRuyan", "YunZhixia", "GuNanzhi", "MengXingyuan",
 		"ShangguanYunshu", "ZhugeQinghe", "SimaXinghe", "XiahouMingxuan",
+		"Jules", "Luc", "Louis", "Remy", "Manon", "Ines", "Lise", "Chloe",
+		"Hans", "Fritz", "Klaus", "Kurt", "Otto", "Greta", "Lotte", "Frieda",
+		"Haru", "Yuki", "Aki", "Rin", "Nao", "Mio", "Yui", "Riku",
+		"Sasha", "Misha", "Dima", "Vanya", "Kolya", "Katya", "Nadya", "Zoya",
 	];
 
 	public static string KeyFor(int seed) => $"Mods.Everglow.TownCrowds.Names.{Pool[(uint)seed % Pool.Length]}";
