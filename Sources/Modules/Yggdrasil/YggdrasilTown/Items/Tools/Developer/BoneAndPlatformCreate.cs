@@ -12,12 +12,12 @@ public class BoneAndPlatformCreate : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.DefaultToPlaceableTile(ModContent.TileType<GreenRelicSpiralStairs_Tile_Middle>());
+		Item.DefaultToPlaceableTile(ModContent.TileType<GreenRelicSpiralStairs_Tile_Top>());
 	}
 
 	public override void HoldItem(Player player)
 	{
-		Item.DefaultToPlaceableTile(ModContent.TileType<GreenRelicSpiralStairs_Tile>());
+		Item.DefaultToPlaceableTile(ModContent.TileType<GreenRelicSpiralStairs_Tile_Top>());
 	}
 
 	public override bool CanUseItem(Player player)

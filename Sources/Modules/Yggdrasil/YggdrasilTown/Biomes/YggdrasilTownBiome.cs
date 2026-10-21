@@ -4,6 +4,8 @@ using Everglow.Yggdrasil.KelpCurtain.Background;
 using Everglow.Yggdrasil.YggdrasilTown.Background;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles.FurnaceTiles;
+using Everglow.Yggdrasil.YggdrasilTown.Tiles.TwilightForest;
+using Everglow.Yggdrasil.WorldGeneration;
 using SubworldLibrary;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Biomes;
@@ -210,5 +212,10 @@ public class YggdrasilTownBiome : ModBiome
 		fSS.BgTiles = TileUtils.GetAABBAreaOfTile((int)centerPosWorld.X / 16 + 102, (int)centerPosWorld.Y / 16 + 78, 20, 14);
 		fSS.TileAnchor = centerPosWorld.ToTileCoordinates() + new Point(-14, 29);
 		bgSystem.AddBackgroundSlide(fSS);
+
+		GreenRelicCentralWall centralWall = new GreenRelicCentralWall();
+		centralWall.WorldAnchor = YggdrasilTownGeneration.TwilightRelicCenter.ToWorldCoordinates();
+		centralWall.BgTiles = TileUtils.GetAABBAreaOfTile((int)YggdrasilTownGeneration.TwilightRelicCenter.X - 24, (int)YggdrasilTownGeneration.TwilightRelicCenter.Y - 98, 47, 245);
+		bgSystem.AddBackgroundSlide(centralWall);
 	}
 }

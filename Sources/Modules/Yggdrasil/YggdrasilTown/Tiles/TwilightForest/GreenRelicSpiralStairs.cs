@@ -12,6 +12,8 @@ public class GreenRelicSpiralStairs : TileVFX
 
 	public Rectangle Frame;
 
+	public int SampleDistance = 40;
+
 	public override void Update()
 	{
 		base.Update();
@@ -25,8 +27,8 @@ public class GreenRelicSpiralStairs : TileVFX
 	public override void Draw()
 	{
 		var frame = Frame;
-		int widthSteps = frame.Width / 16;
-		int heightSteps = frame.Height / 16;
+		int widthSteps = frame.Width / SampleDistance;
+		int heightSteps = frame.Height / SampleDistance;
 
 		int vertexCount = widthSteps * heightSteps * 6;
 		var bars = new List<Vertex2D>(vertexCount);
@@ -55,8 +57,8 @@ public class GreenRelicSpiralStairs : TileVFX
 
 	public void AddBars(int i, int j, Span<Vertex2D> bars, ref int currentSize)
 	{
-		Vector2 drawPos = Position + new Vector2(i - Origin.X, j - Origin.Y) * 16;
+		Vector2 drawPos = Position + new Vector2(i, j) * SampleDistance - Origin.ToVector2() * 16;
 		var drawColor = Lighting.GetColor(drawPos.ToTileCoordinates());
-		bars[currentSize++] = new Vertex2D(drawPos, drawColor, new Vector3((i * 16 + Frame.X) / (float)Texture.Width, (j * 16 + Frame.Y) / (float)Texture.Height, 0));
+		bars[currentSize++] = new Vertex2D(drawPos, drawColor, new Vector3((i * SampleDistance + Frame.X) / (float)Texture.Width, (j * SampleDistance + Frame.Y) / (float)Texture.Height, 0));
 	}
 }

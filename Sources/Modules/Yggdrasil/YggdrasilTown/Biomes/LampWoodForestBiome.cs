@@ -1,4 +1,6 @@
 using Everglow.Yggdrasil.Common;
+using Everglow.Commons.Utilities.BackgroundHelper;
+using Everglow.Yggdrasil.YggdrasilTown.Background;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Biomes;
 
@@ -43,6 +45,28 @@ public class LampWoodForest : ModBiome
 			Main.StopSlimeRain();
 		}
 		Main.bloodMoon = false;
+
+		BackgroundSystem bgSystem = ModContent.GetInstance<BackgroundSystem>();
+		if (!bgSystem.HasBgSlide("Everglow.Yggdrasil.YggdrasilTown.Background.LampWoodSky"))
+		{
+			Vector2 lampWoodAnchor = YggdrasilTownBiome.GetBiomeCenter() + new Vector2(0, -4000);
+
+			LampWoodSky sky = new LampWoodSky { WorldAnchor = lampWoodAnchor };
+			bgSystem.AddBackgroundSlide(sky);
+
+			LampWoodFar far = new LampWoodFar { WorldAnchor = lampWoodAnchor + new Vector2(6000, -16000) };
+			bgSystem.AddBackgroundSlide(far);
+
+			LampWoodMiddle middle = new LampWoodMiddle { WorldAnchor = lampWoodAnchor + new Vector2(0, -3000) };
+			bgSystem.AddBackgroundSlide(middle);
+
+			LampWoodClose_Middle closeMiddle = new LampWoodClose_Middle { WorldAnchor = lampWoodAnchor + new Vector2(4100, -1500) };
+			bgSystem.AddBackgroundSlide(closeMiddle);
+
+			LampWoodClose close = new LampWoodClose { WorldAnchor = lampWoodAnchor + new Vector2(0, -4000) };
+			bgSystem.AddBackgroundSlide(close);
+		}
+
 		base.OnInBiome(player);
 	}
 }

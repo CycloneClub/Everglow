@@ -37,7 +37,7 @@ public class BarrierBlock : ModTile
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		MinPick = int.MaxValue;
-		if (PlayerHeldBarrierItem(Main.LocalPlayer) && Commons.Utilities.AdministratorMode.Enabled)
+		if (Commons.Utilities.AdministratorMode.Enabled)
 		{
 			MinPick = 0;
 			var tile = Main.tile[i, j];

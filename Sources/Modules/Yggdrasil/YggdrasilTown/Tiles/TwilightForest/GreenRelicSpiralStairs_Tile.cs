@@ -39,6 +39,19 @@ public class GreenRelicSpiralStairs_Tile : ModTile, ISceneTile
 		AddMapEntry(new Color(69, 36, 78), name);
 	}
 
+	public override bool CanKillTile(int i, int j, ref bool blockDamaged) => Commons.Utilities.AdministratorMode.Enabled;
+
+	public override bool CanExplode(int i, int j) => Commons.Utilities.AdministratorMode.Enabled;
+
+	public override bool TileFrame(int i, int j, ref bool resetFrame, ref bool noBreak)
+	{
+		if (!Commons.Utilities.AdministratorMode.Enabled)
+		{
+			noBreak = true;
+		}
+		return base.TileFrame(i, j, ref resetFrame, ref noBreak);
+	}
+
 	public void AddScene(int i, int j)
 	{
 		Tile tile = TileUtils.SafeGetTile(i, j);
