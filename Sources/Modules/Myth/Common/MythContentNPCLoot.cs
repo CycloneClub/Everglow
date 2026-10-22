@@ -28,84 +28,12 @@ public class MythContentNPCLoot : GlobalNPC
 			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<FeatherMagic>(), 120, 1, 1, 1));
 		}
 
-		// 待恢复：当前未找到这些旧物品的实现：BloodLightCyanFlame。
-		// if (npc.type == NPCID.Retinazer || npc.type == NPCID.Spazmatism)
-		// {
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<BloodLightCyanFlame>(), 16, 1, 1, 1));
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<BloodLightCyanFlame>(), 50, 1, 1, 1));
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<BloodLightCyanFlame>(), 200, 1, 1, 1));
-		// }
-
 		if (npc.type == NPCID.KingSlime)
 		{
 			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<GelSlingshot>(), 8, 1, 1, 1));
 			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<GelSlingshot>(), 25, 1, 1, 1));
 			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<GelSlingshot>(), 100, 1, 1, 1));
 		}
-
-		// 待恢复：当前未找到这些旧物品的实现：ThornBomb。
-		// if (npc.type == NPCID.Plantera)
-		// {
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<ThornBomb>(), 8, 1, 1, 1));
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<ThornBomb>(), 25, 1, 1, 1));
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<ThornBomb>(), 100, 1, 1, 1));
-		// }
-
-		// 待恢复：当前未找到这些旧物品的实现：TrapYoyo。
-		// if (npc.type == NPCID.Golem)
-		// {
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<TrapYoyo>(), 8, 1, 1, 1));
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<TrapYoyo>(), 25, 1, 1, 1));
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<TrapYoyo>(), 100, 1, 1, 1));
-		// }
-
-		// 待恢复：当前未找到这些旧物品的实现：MachineFit。
-		// if (npc.type == NPCID.SkeletronPrime)
-		// {
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<MachineFit>(), 8, 1, 1, 1));
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<MachineFit>(), 25, 1, 1, 1));
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<MachineFit>(), 100, 1, 1, 1));
-		// }
-
-		// 待恢复：当前未找到这些旧物品的实现：MachineSkeGun。
-		// if (npc.type == NPCID.SkeletronPrime)
-		// {
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<MachineSkeGun>(), 40, 1, 1, 1));
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<MachineSkeGun>(), 125, 1, 1, 1));
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<MachineSkeGun>(), 500, 1, 1, 1));
-		// }
-
-		// 待恢复：当前未找到这些旧物品的实现：BloodGoldBlade。
-		// if (npc.type == NPCID.WallofFlesh)
-		// {
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<BloodGoldBlade>(), 40, 1, 1, 1));
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<BloodGoldBlade>(), 125, 1, 1, 1));
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<BloodGoldBlade>(), 500, 1, 1, 1));
-		// }
-
-		// 待恢复：当前未找到这些旧物品的实现：LaserWhip。
-		// if (npc.type == NPCID.TheDestroyer)
-		// {
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<LaserWhip>(), 8, 1, 1, 1));
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<LaserWhip>(), 25, 1, 1, 1));
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<LaserWhip>(), 100, 1, 1, 1));
-		// }
-
-		// 待恢复：当前未找到这些旧物品的实现：ChaosCurrent。
-		// if (npc.type == NPCID.BrainofCthulhu)
-		// {
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<ChaosCurrent>(), 8, 1, 1, 1));
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<ChaosCurrent>(), 25, 1, 1, 1));
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<ChaosCurrent>(), 100, 1, 1, 1));
-		// }
-
-		// 待恢复：当前未找到这些旧物品的实现：RainbowLight。
-		// if (npc.type == NPCID.HallowBoss)
-		// {
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<RainbowLight>(), 8, 1, 1, 1));
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<RainbowLight>(), 25, 1, 1, 1));
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<RainbowLight>(), 100, 1, 1, 1));
-		// }
 
 		if (npc.type == ModContent.NPCType<BloodTusk>())
 		{
@@ -120,38 +48,6 @@ public class MythContentNPCLoot : GlobalNPC
 			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<ToothBow>(), 25, 1, 1, 1));
 			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<ToothBow>(), 100, 1, 1, 1));
 		}
-
-		// 待恢复：当前未找到这些旧物品的实现：GelPowerGun。
-		// if (npc.type == NPCID.QueenSlimeBoss)
-		// {
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<GelPowerGun>(), 8, 1, 1, 1));
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<GelPowerGun>(), 25, 1, 1, 1));
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<GelPowerGun>(), 100, 1, 1, 1));
-		// }
-
-		// 待恢复：当前未找到这些旧物品的实现：AshBone。
-		// if (npc.type == NPCID.BoneSerpentHead)
-		// {
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<AshBone>(), 60, 1, 1, 1));
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<AshBone>(), 90, 1, 1, 1));
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<AshBone>(), 120, 1, 1, 1));
-		// }
-
-		// 待恢复：当前未找到这些旧物品的实现：SilenceMirror。
-		// if (npc.type == NPCID.MoonLordCore)
-		// {
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<SilenceMirror>(), 40, 1, 1, 1));
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<SilenceMirror>(), 125, 1, 1, 1));
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<SilenceMirror>(), 500, 1, 1, 1));
-		// }
-
-		// 待恢复：当前未找到这些旧物品的实现：BlueRain。
-		// if (npc.type == NPCID.DukeFishron)
-		// {
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<BlueRain>(), 8, 1, 1, 1));
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<BlueRain>(), 25, 1, 1, 1));
-			// npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<BlueRain>(), 100, 1, 1, 1));
-		// }
 
 		if (npc.type == NPCID.PossessedArmor)
 		{
@@ -179,7 +75,7 @@ public class MythContentNPCLoot : GlobalNPC
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DukeTooth>(), 3));
 		}
 
-		// 待恢复：已迁移至 PlantAndFarm；此处未新增跨模块依赖。
+		// WindMoveSeed 已迁移至 PlantAndFarm，获取规则由该模块另行处理。
 		// if (npc.type == NPCID.Dandelion)
 		// {
 			// npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<WindMoveSeed>(), 1, 3, 5));
@@ -246,8 +142,6 @@ public class MythContentNPCLoot : GlobalNPC
 
 		if (npc.type == NPCID.Everscream)
 		{
-			// 待恢复：当前未找到 FrozenStormPine 的实现。
-			// npcLoot.Add(ItemDropRule.ByCondition(new InFrostMoonFinal(), ModContent.ItemType<FrozenStormPine>(), 50, 1, 1, 1));
 			npcLoot.Add(ItemDropRule.ByCondition(new InFrostMoonFinal(), ModContent.ItemType<XmasWhip>(), 50, 1, 1, 1));
 		}
 	}
