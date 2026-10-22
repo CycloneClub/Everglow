@@ -1,3 +1,4 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Everglow.Yggdrasil.Common;
 using Terraria.GameContent.Creative;
 
@@ -40,6 +41,15 @@ public class ExplorationHelmet : ModItem
 		Lighting.AddLight(player.Center, Vector3.one * 0.5f);
 
 		player.GetCritChance(DamageClass.Ranged) += 4f;
+	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<LightBulbOvule>(1);
+		recipe.AddIngredient(ItemID.Leather, 4);
+		recipe.AddTile(TileID.WorkBenches);
+		recipe.Register();
 	}
 }
 

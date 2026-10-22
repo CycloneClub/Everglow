@@ -1,3 +1,4 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Ammos;
 
 public class RockArrow : ModItem
@@ -25,5 +26,14 @@ public class RockArrow : ModItem
 		Item.shoot = ModContent.ProjectileType<Projectiles.Ranged.RockArrow>();
 
 		Item.ammo = AmmoID.Arrow;
+	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = CreateRecipe(100);
+		recipe.AddIngredient<TwilightCrystal>(1);
+		recipe.AddIngredient<GiantBeetleAntennae>(1);
+		recipe.AddTile(TileID.Anvils);
+		recipe.Register();
 	}
 }

@@ -1,3 +1,4 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Ammos;
 
 public class LightBullet : ModItem
@@ -21,5 +22,14 @@ public class LightBullet : ModItem
 		Item.consumable = true;
 
 		Item.shoot = ModContent.ProjectileType<Projectiles.Ranged.LightBullet>();
+	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = CreateRecipe(30);
+		recipe.AddIngredient(ItemID.MusketBall, 30);
+		recipe.AddIngredient<LampFruit>(1);
+		recipe.AddTile(TileID.WorkBenches);
+		recipe.Register();
 	}
 }

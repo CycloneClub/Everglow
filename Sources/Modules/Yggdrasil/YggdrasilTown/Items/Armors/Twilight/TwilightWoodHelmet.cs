@@ -1,3 +1,5 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Twilight;
 
 [AutoloadEquip(EquipType.Head)]
@@ -38,5 +40,14 @@ public class TwilightWoodHelmet : ModItem
 		player.GetDamage(DamageClass.Ranged) += ArmorSetDamageBonus / 100f;
 		player.GetCritChance(DamageClass.Ranged) += ArmorSetCritChanceBonus;
 		player.GetModPlayer<EverglowPlayer>().ammoCost *= 1 - ArmorSetSaveAmmoChance / 100f;
+	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<TwilightEucalyptusWood_Item>(20);
+		recipe.AddIngredient<TwilightCrystal>(8);
+		recipe.AddTile(TileID.WorkBenches);
+		recipe.Register();
 	}
 }

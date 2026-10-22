@@ -1,3 +1,4 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Terraria.GameContent.Creative;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.LightSeeker;
@@ -50,5 +51,10 @@ public class OvineHairpin : ModItem
 
 	public override void AddRecipes()
 	{
+		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<LightBulbOvule>(1);
+		recipe.AddIngredient(ItemID.Leather, 4);
+		recipe.AddTile(TileID.WorkBenches);
+		recipe.Register();
 	}
 }

@@ -1,3 +1,4 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.YggdrasilTown.Buffs;
 using Everglow.Yggdrasil.YggdrasilTown.Cooldowns;
@@ -48,7 +49,8 @@ public class AuburnHoodie : ModItem
 	public override void AddRecipes()
 	{
 		Recipe recipe = CreateRecipe();
-		recipe.AddIngredient<LampWood_Wood>(30);
+		recipe.AddIngredient<RodWing>(10);
+		recipe.AddIngredient(ItemID.Leather, 4);
 		recipe.AddTile(TileID.WorkBenches);
 		recipe.Register();
 	}

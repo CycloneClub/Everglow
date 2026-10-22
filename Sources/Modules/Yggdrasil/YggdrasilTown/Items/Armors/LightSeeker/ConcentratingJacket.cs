@@ -1,3 +1,4 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Terraria.GameContent.Creative;
 using Terraria.Localization;
 
@@ -31,5 +32,10 @@ public class ConcentratingJacket : ModItem
 
 	public override void AddRecipes()
 	{
+		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<LightBulbOvule>(1);
+		recipe.AddIngredient(ItemID.Leather, 8);
+		recipe.AddTile(TileID.WorkBenches);
+		recipe.Register();
 	}
 }

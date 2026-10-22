@@ -32,7 +32,7 @@ public class LampWoodBreastplate : ModItem
 	public override void AddRecipes()
 	{
 		Recipe recipe = CreateRecipe();
-		recipe.AddIngredient<LampWood_Wood>(50);
+		recipe.AddIngredient<LampWood_Wood>(30);
 		recipe.AddTile(TileID.WorkBenches);
 		recipe.Register();
 	}

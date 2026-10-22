@@ -1,3 +1,4 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Terraria.GameContent.Creative;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.CyanVine;
@@ -41,8 +42,8 @@ public class CyanHeavylet : ModItem
 	public override void AddRecipes()
 	{
 		Recipe recipe = CreateRecipe();
-
-		recipe.AddTile(TileID.WorkBenches);
+		recipe.AddIngredient<CyanVineBar>(15);
+		recipe.AddTile(TileID.Anvils);
 		recipe.Register();
 	}
 }

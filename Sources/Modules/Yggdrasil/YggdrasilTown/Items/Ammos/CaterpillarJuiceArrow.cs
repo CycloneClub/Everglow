@@ -1,3 +1,4 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Ammos;
 
 public class CaterpillarJuiceArrow : ModItem
@@ -22,5 +23,14 @@ public class CaterpillarJuiceArrow : ModItem
 
 		Item.shoot = ModContent.ProjectileType<Projectiles.Ranged.CaterpillarJuiceArrow>();
 		Item.shootSpeed = 6f;
+	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = CreateRecipe(30);
+		recipe.AddIngredient(ItemID.WoodenArrow, 30);
+		recipe.AddIngredient<CaterpillarJuice>(1);
+		recipe.AddTile(TileID.WorkBenches);
+		recipe.Register();
 	}
 }

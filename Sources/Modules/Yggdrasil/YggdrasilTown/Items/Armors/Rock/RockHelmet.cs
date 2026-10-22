@@ -1,3 +1,4 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 
@@ -45,6 +46,15 @@ public class RockHelmet : ModItem
 	public override void UpdateArmorSet(Player player)
 	{
 		player.GetModPlayer<RockArmorSetPlayer>().RockArmorSetEnable = true;
+	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<TwilightCrystal>(12);
+		recipe.AddIngredient<GiantBeetleAntennae>(6);
+		recipe.AddTile(TileID.Anvils);
+		recipe.Register();
 	}
 }
 
