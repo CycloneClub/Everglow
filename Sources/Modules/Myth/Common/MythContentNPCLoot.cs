@@ -1,9 +1,9 @@
+using Everglow.Myth.TheFirefly.Items.SummonItems;
+using Everglow.Myth.TheFirefly.WorldGeneration;
+using SubworldLibrary;
 using Everglow.Myth.Misc.Items.Accessories;
 using Everglow.Myth.Misc.Items.Weapons;
-using Everglow.Myth.Misc.Items.Weapons.Clubs;
 using Everglow.Myth.Misc.Items.Weapons.Slingshots;
-using Everglow.Myth.TheTusk.Items.Weapons;
-using Everglow.Myth.TheTusk.NPCs.BloodTusk;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.Localization;
 
@@ -11,68 +11,62 @@ namespace Everglow.Myth.Common;
 
 public class MythContentNPCLoot : GlobalNPC
 {
+	// SimpleItemDropRuleCondition 的谓词无法接收本次掉落的玩家。
+	private sealed class JungleDropCondition : IItemDropRuleCondition
+	{
+		public bool CanDrop(DropAttemptInfo info) => info.player.ZoneJungle;
+
+		public bool CanShowItemDropInUI() => true;
+
+		public string GetConditionDescription() => Condition.InJungle.Description.Value;
+	}
+
 	public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
 	{
 		if (npc.type == NPCID.Nutcracker || npc.type == NPCID.NutcrackerSpinning)
 		{
-			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<WalnutClip>(), 180, 1, 1, 1));
-			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<WalnutClip>(), 270, 1, 1, 1));
-			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<WalnutClip>(), 360, 1, 1, 1));
+			npcLoot.Add(new DropBasedOnMasterMode(
+				ItemDropRule.NormalvsExpert(ModContent.ItemType<WalnutClip>(), 360, 270),
+				ItemDropRule.Common(ModContent.ItemType<WalnutClip>(), 180)));
 		}
 
 		if (npc.type == NPCID.Harpy)
 		{
-			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FeatherMagic>(), 70));
-			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<FeatherMagic>(), 60, 1, 1, 1));
-			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<FeatherMagic>(), 90, 1, 1, 1));
-			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<FeatherMagic>(), 120, 1, 1, 1));
+			npcLoot.Add(new DropBasedOnMasterMode(
+				ItemDropRule.NormalvsExpert(ModContent.ItemType<FeatherMagic>(), 120, 90),
+				ItemDropRule.Common(ModContent.ItemType<FeatherMagic>(), 60)));
 		}
 
 		if (npc.type == NPCID.KingSlime)
 		{
-			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<GelSlingshot>(), 8, 1, 1, 1));
-			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<GelSlingshot>(), 25, 1, 1, 1));
-			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<GelSlingshot>(), 100, 1, 1, 1));
+			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<GelSlingshot>(), 4));
 		}
 
-		if (npc.type == ModContent.NPCType<BloodTusk>())
-		{
-			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<ToothSpear>(), 40, 1, 1, 1));
-			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<ToothSpear>(), 125, 1, 1, 1));
-			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<ToothSpear>(), 500, 1, 1, 1));
-		}
-
-		if (npc.type == ModContent.NPCType<BloodTusk>())
-		{
-			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<ToothBow>(), 8, 1, 1, 1));
-			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<ToothBow>(), 25, 1, 1, 1));
-			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<ToothBow>(), 100, 1, 1, 1));
-		}
 
 		if (npc.type == NPCID.PossessedArmor)
 		{
-			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<AmbiguousNight>(), 100, 1, 1, 1));
-			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<AmbiguousNight>(), 150, 1, 1, 1));
-			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<AmbiguousNight>(), 200, 1, 1, 1));
+			npcLoot.Add(new DropBasedOnMasterMode(
+				ItemDropRule.NormalvsExpert(ModContent.ItemType<AmbiguousNight>(), 200, 150),
+				ItemDropRule.Common(ModContent.ItemType<AmbiguousNight>(), 100)));
 		}
 
 		if (npc.type == NPCID.WyvernHead)
 		{
-			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<ThunderFlower>(), 50, 1, 1, 1));
-			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<ThunderFlower>(), 100, 1, 1, 1));
-			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<ThunderFlower>(), 140, 1, 1, 1));
+			npcLoot.Add(new DropBasedOnMasterMode(
+				ItemDropRule.NormalvsExpert(ModContent.ItemType<ThunderFlower>(), 140, 100),
+				ItemDropRule.Common(ModContent.ItemType<ThunderFlower>(), 50)));
 		}
 
 		if (npc.type == NPCID.Wraith)
 		{
-			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<ComingGhost>(), 100, 1, 1, 1));
-			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<ComingGhost>(), 150, 1, 1, 1));
-			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<ComingGhost>(), 200, 1, 1, 1));
+			npcLoot.Add(new DropBasedOnMasterMode(
+				ItemDropRule.NormalvsExpert(ModContent.ItemType<ComingGhost>(), 200, 150),
+				ItemDropRule.Common(ModContent.ItemType<ComingGhost>(), 100)));
 		}
 
 		if (npc.type == NPCID.DukeFishron)
 		{
-			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DukeTooth>(), 3));
+			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<DukeTooth>(), 3));
 		}
 
 		// WindMoveSeed 已迁移至 PlantAndFarm，获取规则由该模块另行处理。
@@ -81,68 +75,65 @@ public class MythContentNPCLoot : GlobalNPC
 			// npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<WindMoveSeed>(), 1, 3, 5));
 		// }
 
-		if (npc.type == NPCID.BlueSlime)
+		if (npc.netID == NPCID.BlueSlime)
 		{
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BlueGel>(), 800));
 		}
 
-		// 旧表的负数编号属于 netID，暂保留原有物品对应关系。
-		if (npc.netID == NPCID.GreenSlime)
+		if (npc.netID == NPCID.RedSlime)
 		{
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<RedGel>(), 800));
 		}
 
-		// 旧表的负数编号属于 netID，暂保留原有物品对应关系。
-		if (npc.netID == NPCID.Slimeling)
+		if (npc.netID == NPCID.GreenSlime)
 		{
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GreenGel>(), 800));
 		}
 
-		if (!npc.friendly && npc.lifeMax > 100)
-		{
-			npcLoot.Add(ItemDropRule.ByCondition(new EclipseMasterPostPlant(), ModContent.ItemType<GoldRoundYoyo>(), 40, 1, 1, 1));
-			npcLoot.Add(ItemDropRule.ByCondition(new EclipseExpertPostPlant(), ModContent.ItemType<GoldRoundYoyo>(), 60, 1, 1, 1));
-			npcLoot.Add(ItemDropRule.ByCondition(new EclipseNormalPostPlant(), ModContent.ItemType<GoldRoundYoyo>(), 80, 1, 1, 1));
-		}
-
-		if (!npc.friendly && npc.lifeMax > 100)
-		{
-			npcLoot.Add(ItemDropRule.ByCondition(new CorruptionMasterHardmode(), ModContent.ItemType<CurseClub_Item>(), 100, 1, 1, 1));
-			npcLoot.Add(ItemDropRule.ByCondition(new CorruptionExpertHardmode(), ModContent.ItemType<CurseClub_Item>(), 150, 1, 1, 1));
-			npcLoot.Add(ItemDropRule.ByCondition(new CorruptionNormalHardmode(), ModContent.ItemType<CurseClub_Item>(), 200, 1, 1, 1));
-		}
-
-		if (!npc.friendly && npc.lifeMax > 100)
-		{
-			npcLoot.Add(ItemDropRule.ByCondition(new CorruptionMasterHardmode(), ModContent.ItemType<CorruptEye>(), 160, 1, 1, 1));
-			npcLoot.Add(ItemDropRule.ByCondition(new CorruptionExpertHardmode(), ModContent.ItemType<CorruptEye>(), 275, 1, 1, 1));
-			npcLoot.Add(ItemDropRule.ByCondition(new CorruptionNormalHardmode(), ModContent.ItemType<CorruptEye>(), 450, 1, 1, 1));
-		}
-
-		if (!npc.friendly && npc.lifeMax > 100)
-		{
-			npcLoot.Add(ItemDropRule.ByCondition(new CrimsonExpertHardmode(), ModContent.ItemType<GoldLiquidPupil>(), 160, 1, 1, 1));
-			npcLoot.Add(ItemDropRule.ByCondition(new CrimsonExpertHardmode(), ModContent.ItemType<GoldLiquidPupil>(), 275, 1, 1, 1));
-			npcLoot.Add(ItemDropRule.ByCondition(new CrimsonNormalHardmode(), ModContent.ItemType<GoldLiquidPupil>(), 450, 1, 1, 1));
-		}
-
-		if (!npc.friendly && npc.lifeMax > 100)
-		{
-			npcLoot.Add(ItemDropRule.ByCondition(new CrimsonMasterHardmode(), ModContent.ItemType<IchorClub_Item>(), 100, 1, 1, 1));
-			npcLoot.Add(ItemDropRule.ByCondition(new CrimsonExpertHardmode(), ModContent.ItemType<IchorClub_Item>(), 150, 1, 1, 1));
-			npcLoot.Add(ItemDropRule.ByCondition(new CrimsonNormalHardmode(), ModContent.ItemType<IchorClub_Item>(), 200, 1, 1, 1));
-		}
-
-		if (!npc.friendly && npc.lifeMax > 100)
-		{
-			npcLoot.Add(ItemDropRule.ByCondition(new HallowMasterHardmode(), ModContent.ItemType<CrystalClub_Item>(), 100, 1, 1, 1));
-			npcLoot.Add(ItemDropRule.ByCondition(new HallowExpertHardmode(), ModContent.ItemType<CrystalClub_Item>(), 150, 1, 1, 1));
-			npcLoot.Add(ItemDropRule.ByCondition(new HallowNormalHardmode(), ModContent.ItemType<CrystalClub_Item>(), 200, 1, 1, 1));
-		}
-
 		if (npc.type == NPCID.Everscream)
 		{
-			npcLoot.Add(ItemDropRule.ByCondition(new InFrostMoonFinal(), ModContent.ItemType<XmasWhip>(), 50, 1, 1, 1));
+			foreach (var rule in npcLoot.Get().OfType<LeadingConditionRule>())
+			{
+				if (rule.condition is not Conditions.FrostMoonDropGatingChance)
+				{
+					continue;
+				}
+				foreach (var pool in rule.ChainedRules.SelectMany(chain => chain.RuleToChain.ChainedRules)
+					.Select(chain => chain.RuleToChain).OfType<OneFromOptionsDropRule>())
+				{
+					if (pool.dropIds.Contains(ItemID.ChristmasTreeSword))
+					{
+						pool.dropIds = [.. pool.dropIds, ModContent.ItemType<XmasWhip>()];
+					}
+				}
+			}
+		}
+
+		if (!npc.boss)
+		{
+			if (!npc.friendly && npc.lifeMax > 5 && !npc.CountsAsACritter)
+			{
+				npcLoot.Add(ItemDropRule.ByCondition(new JungleDropCondition(), ModContent.ItemType<JungleVitamin>(), 100));
+				var mothWorld = new SimpleItemDropRuleCondition(
+					Language.GetText("Mods.Everglow.Biomes.FireflyBiome.DisplayName"),
+					() => SubworldSystem.IsActive<MothWorld>(), ShowItemDropInUI.Always);
+				npcLoot.Add(ItemDropRule.ByCondition(mothWorld, ModContent.ItemType<EvilCocoon>(), 2500));
+			}
+
+			if (!npc.friendly && npc.lifeMax > 100)
+			{
+				npcLoot.Add(ItemDropRule.ByCondition(new EclipseMasterPostPlant(), ModContent.ItemType<GoldRoundYoyo>(), 40, 1, 1, 1));
+				npcLoot.Add(ItemDropRule.ByCondition(new EclipseExpertPostPlant(), ModContent.ItemType<GoldRoundYoyo>(), 60, 1, 1, 1));
+				npcLoot.Add(ItemDropRule.ByCondition(new EclipseNormalPostPlant(), ModContent.ItemType<GoldRoundYoyo>(), 80, 1, 1, 1));
+
+				npcLoot.Add(ItemDropRule.ByCondition(new CorruptionMasterHardmode(), ModContent.ItemType<CorruptEye>(), 160, 1, 1, 1));
+				npcLoot.Add(ItemDropRule.ByCondition(new CorruptionExpertHardmode(), ModContent.ItemType<CorruptEye>(), 275, 1, 1, 1));
+				npcLoot.Add(ItemDropRule.ByCondition(new CorruptionNormalHardmode(), ModContent.ItemType<CorruptEye>(), 450, 1, 1, 1));
+
+				npcLoot.Add(ItemDropRule.ByCondition(new CrimsonMasterHardmode(), ModContent.ItemType<GoldLiquidPupil>(), 160, 1, 1, 1));
+				npcLoot.Add(ItemDropRule.ByCondition(new CrimsonExpertHardmode(), ModContent.ItemType<GoldLiquidPupil>(), 275, 1, 1, 1));
+				npcLoot.Add(ItemDropRule.ByCondition(new CrimsonNormalHardmode(), ModContent.ItemType<GoldLiquidPupil>(), 450, 1, 1, 1));
+			}
 		}
 	}
 }
@@ -454,32 +445,6 @@ internal class EclipseNormalPostPlant : IItemDropRuleCondition
 		if (Language.ActiveCulture.Name == "zh-Hans")
 		{
 			desc = "½öÔÚÊÀ¼ÍÖ®»¨ºóÈÕÊ³";
-		}
-
-		return desc;
-	}
-}
-
-internal class InFrostMoonFinal : IItemDropRuleCondition
-{
-	private bool CanD => Main.snowMoon && Main.invasionProgressWave >= 20;
-
-	public bool CanDrop(DropAttemptInfo info)
-	{
-		return CanD;
-	}
-
-	public bool CanShowItemDropInUI()
-	{
-		return CanD;
-	}
-
-	public string GetConditionDescription()
-	{
-		string desc = "Only Frost Moon during Chrismas";
-		if (Language.ActiveCulture.Name == "zh-Hans")
-		{
-			desc = "½öÔÚÊ¥µ®½ÚÆÚ¼äËªÔÂ";
 		}
 
 		return desc;

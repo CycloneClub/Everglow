@@ -29,6 +29,11 @@ public class BlackStarShrubSmall : ModTile, ITileFluentlyDrawn
 		HitSound = SoundID.Grass;
 	}
 
+	public override IEnumerable<Item> GetItemDrops(int i, int j)
+	{
+		yield return new Item(ModContent.ItemType<Items.Materials.BlackStarShrub>(), Main.rand.Next(1, 3));
+	}
+
 	public override void NumDust(int i, int j, bool fail, ref int num)
 	{
 		num = fail ? 1 : 3;

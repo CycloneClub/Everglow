@@ -45,7 +45,10 @@ public class GlowingReed : ModTile
 
 	public override IEnumerable<Item> GetItemDrops(int i, int j)
 	{
-		yield break;
+		if (Main.tile[i, j].TileFrameX >= 180)
+		{
+			yield return new Item(ModContent.ItemType<Items.GlowingReedSeed>(), Main.rand.Next(1, 4));
+		}
 	}
 
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)

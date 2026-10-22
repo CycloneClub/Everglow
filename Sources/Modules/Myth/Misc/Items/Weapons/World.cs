@@ -35,4 +35,17 @@ public class World : ModItem
 
 		return false;
 	}
+
+	public override void AddRecipes()
+	{
+		CreateRecipe()
+			.AddIngredient(ItemID.TerraBlade)
+			.AddIngredient(ItemID.LunarBar, 60)
+			.AddIngredient(ItemID.FragmentSolar, 30)
+			.AddIngredient(ItemID.FragmentVortex, 30)
+			.AddIngredient(ItemID.FragmentNebula, 30)
+			.AddIngredient(ItemID.FragmentStardust, 30)
+			.AddTile(TileID.LunarCraftingStation)
+			.Register();
+	}
 }

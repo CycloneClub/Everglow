@@ -28,7 +28,7 @@ public class BlackVine : ModTile
 
 	public override IEnumerable<Item> GetItemDrops(int i, int j)
 	{
-		yield break;
+		yield return new Item(ModContent.ItemType<Items.BlackVine>());
 	}
 
 	public override void RandomUpdate(int i, int j)

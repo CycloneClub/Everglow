@@ -50,5 +50,15 @@ namespace Everglow.Myth.Misc.Items.Weapons
 			}
 			return base.Shoot(player, source, position, velocity, type, damage, knockback);
 		}
+
+		public override void AddRecipes()
+		{
+			CreateRecipe()
+				.AddIngredient(ItemID.BeamSword)
+				.AddIngredient(ItemID.Ectoplasm, 30)
+				.AddIngredient(ItemID.SunplateBlock, 60)
+				.AddTile(TileID.MythrilAnvil)
+				.Register();
+		}
 	}
 }
