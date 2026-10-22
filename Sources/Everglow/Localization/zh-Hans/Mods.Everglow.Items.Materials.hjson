@@ -402,3 +402,8 @@ YggdrasilAmber: {
 	DisplayName: 天穹琥珀
 	Tooltip: ""
 }
+
+GiantBeetleAntennae: {
+	DisplayName: 巨型甲虫的触角
+	Tooltip: ""
+}

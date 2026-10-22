@@ -246,3 +246,8 @@ EldamberHammer: {
 	DisplayName: 古珀锤
 	Tooltip: ""
 }
+
+EldamberPickaxe: {
+	DisplayName: 古珀镐
+	Tooltip: ""
+}

@@ -1,7 +1,9 @@
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Tools;
 
-public class AmberJellyballCrystalPickaxe : ModItem
+public class EldamberPickaxe : ModItem
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Tools;
+
 	public override void SetDefaults()
 	{
 		Item.height = 46;

@@ -246,3 +246,8 @@ EldamberHammer: {
 	DisplayName: Eldamber Hammer
 	Tooltip: ""
 }
+
+EldamberPickaxe: {
+	DisplayName: Eldamber Pickaxe
+	Tooltip: ""
+}
