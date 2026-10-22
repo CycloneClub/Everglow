@@ -71,3 +71,28 @@ WaterloggedMenu: {
 	DisplayName: Waterlogged Menu
 	Tooltip: ""
 }
+
+Duskfin: {
+	DisplayName: Twilight Featherfish
+	Tooltip: ""
+}
+
+WormEatenLampfruitHusk: {
+	DisplayName: Hollow Lamp Fruit Shell
+	Tooltip: ""
+}
+
+TangledOldRope: {
+	DisplayName: Knotted Old Rope
+	Tooltip: ""
+}
+
+LeakyCrystalHusk: {
+	DisplayName: Leaking Crystal Shell
+	Tooltip: ""
+}
+
+SoggyMenu: {
+	DisplayName: Waterlogged Menu
+	Tooltip: ""
+}

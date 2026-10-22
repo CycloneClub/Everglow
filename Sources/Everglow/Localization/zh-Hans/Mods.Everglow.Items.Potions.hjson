@@ -20,5 +20,5 @@ ShadowPotion: {
 
 JumpPotion: {
 	DisplayName: 跳跃药水
-	Tooltip: 提高跳跃高度
+	Tooltip: 跳跃高度提高15%，摔落伤害降低30%
 }

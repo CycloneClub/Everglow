@@ -40,4 +40,12 @@ public class PlannedItemDefaultsTests
 			Assert.IsTrue(item.defense > 0 && item.width > 0 && item.height > 0);
 		}
 	}
+
+	[TestMethod]
+	public void JumpPotionCanBeConsumedForAFourMinuteBuff()
+	{
+		var potion = Defaults<JumpPotion>();
+		Assert.AreEqual(4 * 60 * 60, potion.buffTime);
+		Assert.IsTrue(potion.useTime > 0 && potion.useAnimation > 0 && potion.buffTime > 0 && potion.consumable);
+	}
 }
