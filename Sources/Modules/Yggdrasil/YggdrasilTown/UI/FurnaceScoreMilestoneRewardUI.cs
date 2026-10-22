@@ -26,58 +26,7 @@ public class FurnaceScoreMilestoneRewardUI : UIBlock
 		FurnaceScoreMilestoneRewardSlots = new FurnaceScoreMilestoneRewardUI_Itemslot[14];
 		for (int i = 0; i < FurnaceScoreMilestoneRewardSlots.Length; i++)
 		{
-			int rewardType = 1;
-			int rewardStack = 1;
-			switch (i)
-			{
-				case 0:
-					rewardType = ModContent.ItemType<ThermostatRod>();
-					break;
-				case 1:
-					rewardType = ModContent.ItemType<HeatEmblem>();
-					break;
-				case 2:
-					rewardType = ModContent.ItemType<MelterGear>();
-					break;
-				case 3:
-					rewardType = ModContent.ItemType<ThermalConductor>();
-					break;
-				case 4:
-					rewardType = ModContent.ItemType<HotAirBalloon>();
-					break;
-				case 5:
-					rewardType = ModContent.ItemType<SmeltingStaff>();
-					break;
-				case 6:
-					rewardType = ModContent.ItemType<ThermoprobeStaff>();
-					break;
-				case 7:
-					rewardType = ModContent.ItemType<MoltenCore>();
-					break;
-				case 8:
-					rewardType = ItemID.PlatinumCoin;
-					break;
-				case 9:
-					rewardType = ItemID.PlatinumCoin;
-					rewardStack = 2;
-					break;
-				case 10:
-					rewardType = ItemID.PlatinumCoin;
-					rewardStack = 3;
-					break;
-				case 11:
-					rewardType = ItemID.PlatinumCoin;
-					rewardStack = 5;
-					break;
-				case 12:
-					rewardType = ItemID.PlatinumCoin;
-					rewardStack = 10;
-					break;
-				case 13:
-					rewardType = ItemID.PlatinumCoin;
-					rewardStack = 15;
-					break;
-			}
+			var (rewardType, rewardStack) = GetRewardEntry(i);
 
 			Item item = new Item();
 			item.SetDefaults(rewardType);
@@ -136,58 +85,7 @@ public class FurnaceScoreMilestoneRewardUI : UIBlock
 	{
 		for (int i = 0; i < FurnaceScoreMilestoneRewardSlots.Length; i++)
 		{
-			int rewardType = 1;
-			int rewardStack = 1;
-			switch (i)
-			{
-				case 0:
-					rewardType = ModContent.ItemType<ThermostatRod>();
-					break;
-				case 1:
-					rewardType = ModContent.ItemType<HeatEmblem>();
-					break;
-				case 2:
-					rewardType = ModContent.ItemType<MelterGear>();
-					break;
-				case 3:
-					rewardType = ModContent.ItemType<ThermalConductor>();
-					break;
-				case 4:
-					rewardType = ModContent.ItemType<HotAirBalloon>();
-					break;
-				case 5:
-					rewardType = ModContent.ItemType<SmeltingStaff>();
-					break;
-				case 6:
-					rewardType = ModContent.ItemType<ThermoprobeStaff>();
-					break;
-				case 7:
-					rewardType = ModContent.ItemType<MoltenCore>();
-					break;
-				case 8:
-					rewardType = ItemID.PlatinumCoin;
-					break;
-				case 9:
-					rewardType = ItemID.PlatinumCoin;
-					rewardStack = 2;
-					break;
-				case 10:
-					rewardType = ItemID.PlatinumCoin;
-					rewardStack = 3;
-					break;
-				case 11:
-					rewardType = ItemID.PlatinumCoin;
-					rewardStack = 5;
-					break;
-				case 12:
-					rewardType = ItemID.PlatinumCoin;
-					rewardStack = 10;
-					break;
-				case 13:
-					rewardType = ItemID.PlatinumCoin;
-					rewardStack = 15;
-					break;
-			}
+			var (rewardType, rewardStack) = GetRewardEntry(i);
 			if (Main.LocalPlayer.GetModPlayer<FurnacePlayer>().ReceivedReward[i])
 			{
 				rewardType = 0;
@@ -241,4 +139,23 @@ public class FurnaceScoreMilestoneRewardUI : UIBlock
 		spriteBatch.Draw(tex, new Rectangle(destinationBox.X + margin, destinationBox.Y + destinationBox.Height - margin, destinationBox.Width - margin * 2, margin), new Rectangle(margin, tex.Height - margin, 2, margin), drawColor);
 		spriteBatch.Draw(tex, new Rectangle(destinationBox.X + destinationBox.Width - margin, destinationBox.Y + destinationBox.Height - margin, margin, margin), new Rectangle(tex.Width - margin, tex.Height - margin, margin, margin), drawColor);
 	}
+
+	private static (int ItemType, int Stack) GetRewardEntry(int index) => index switch
+	{
+		0 => (ModContent.ItemType<ThermostatRod>(), 1),
+		1 => (ModContent.ItemType<HeatEmblem>(), 1),
+		2 => (ModContent.ItemType<MelterGear>(), 1),
+		3 => (ModContent.ItemType<ThermalConductor>(), 1),
+		4 => (ModContent.ItemType<HotAirBalloon>(), 1),
+		5 => (ModContent.ItemType<SmeltingStaff>(), 1),
+		6 => (ModContent.ItemType<ThermoprobeStaff>(), 1),
+		7 => (ModContent.ItemType<MoltenCore>(), 1),
+		8 => (ItemID.PlatinumCoin, 1),
+		9 => (ItemID.PlatinumCoin, 2),
+		10 => (ItemID.PlatinumCoin, 3),
+		11 => (ItemID.PlatinumCoin, 5),
+		12 => (ItemID.PlatinumCoin, 10),
+		13 => (ItemID.PlatinumCoin, 15),
+		_ => (ItemID.None, 0),
+	};
 }

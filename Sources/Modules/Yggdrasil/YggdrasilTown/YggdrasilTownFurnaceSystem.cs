@@ -49,11 +49,8 @@ public class YggdrasilTownFurnaceSystem : ModSystem
 					Item item = chest.item[k];
 					if (item != null)
 					{
-						float itemValue = 1 + item.value / (100 + MathF.Sqrt(item.value * 10));
-						int rare = Math.Min(10, item.rare);
-						float rareValue = 6f - (rare - 10) * (rare - 10) / 20f;
-						int value = (int)(rareValue * itemValue * item.stack);
-						totalValue += value;
+						int value = CalculateContribution(item.value, item.rare, item.stack);
+						totalValue = AddContribution(totalValue, value);
 					}
 				}
 				if (EnquiryMeltingDown)
@@ -226,4 +223,18 @@ public class YggdrasilTownFurnaceSystem : ModSystem
 		}
 		base.PostUpdateEverything();
 	}
+
+	internal static int CalculateContribution(int value, int rarity, int stack)
+	{
+		if (value < 0 || rarity < 0 || stack <= 0)
+		{
+			return 0;
+		}
+		double itemValue = 1 + value / (100 + Math.Sqrt((double)value * 10));
+		int rare = Math.Min(10, rarity);
+		double rareValue = 6 - (rare - 10) * (rare - 10) / 20.0;
+		return (int)Math.Min(int.MaxValue, rareValue * itemValue * stack);
+	}
+
+	internal static int AddContribution(int balance, int amount) => (int)Math.Clamp((long)balance + amount, 0, int.MaxValue);
 }

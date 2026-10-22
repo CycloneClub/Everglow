@@ -96,22 +96,19 @@ public class MeltingButton : ModTile
 							Item item = chest.item[k];
 							if (item != null)
 							{
-								float itemValue = 1 + item.value / (100 + MathF.Sqrt(item.value * 10));
-								int rare = Math.Min(10, item.rare);
-								float rareValue = 6f - (rare - 10) * (rare - 10) / 20f;
-								int value = (int)(rareValue * itemValue * item.stack);
+								int value = YggdrasilTownFurnaceSystem.CalculateContribution(item.value, item.rare, item.stack);
 								item.TurnToAir();
-								totalValue += value;
+								totalValue = YggdrasilTownFurnaceSystem.AddContribution(totalValue, value);
 							}
 						}
 						if (YggdrasilTownFurnaceSystem.CurrentPlayer != null)
 						{
 							Player player = YggdrasilTownFurnaceSystem.CurrentPlayer;
 							FurnacePlayer fPlayer = player.GetModPlayer<FurnacePlayer>();
-							fPlayer.TotalFurnaceScore += totalValue;
-							fPlayer.CurrentFurnaceScore += totalValue;
+							fPlayer.TotalFurnaceScore = YggdrasilTownFurnaceSystem.AddContribution(fPlayer.TotalFurnaceScore, totalValue);
+							fPlayer.CurrentFurnaceScore = YggdrasilTownFurnaceSystem.AddContribution(fPlayer.CurrentFurnaceScore, totalValue);
 						}
-						YggdrasilTownFurnaceSystem.CurrentEnergy += totalValue;
+						YggdrasilTownFurnaceSystem.CurrentEnergy = YggdrasilTownFurnaceSystem.AddContribution(YggdrasilTownFurnaceSystem.CurrentEnergy, totalValue);
 						YggdrasilTownFurnaceSystem.MeltingAnimationTimer.Add(120);
 						CombatText.NewText(Main.LocalPlayer.Hitbox, new Color(1f, 0.45f, 0.02f, 1f), "Furnace Energy + " + totalValue);
 					}
