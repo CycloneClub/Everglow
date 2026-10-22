@@ -942,6 +942,6 @@ public class RockElemental : ModNPC
 
 	public override void ModifyNPCLoot(NPCLoot npcLoot)
 	{
-		npcLoot.Add(ItemDropRule.OneFromOptions(1, ModContent.ItemType<BrittleRockSlingshot>(), ModContent.ItemType<HyperockSpear>(), ModContent.ItemType<VitalizedRocks>()));
+		npcLoot.Add(ItemDropRule.OneFromOptions(10, ModContent.ItemType<BrittleRockSlingshot>(), ModContent.ItemType<HyperockSpear>(), ModContent.ItemType<VitalizedRocks>()));
 	}
 }

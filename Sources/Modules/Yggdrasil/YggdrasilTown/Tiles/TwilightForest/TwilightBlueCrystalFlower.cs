@@ -13,6 +13,8 @@ public class TwilightBlueCrystalFlower : ModTile
 
 		Main.tileWaterDeath[Type] = false;
 		TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
+		// Ore must not bypass its pickaxe requirement when the supporting block is removed.
+		TileObjectData.newTile.AnchorBottom = default;
 		TileObjectData.newTile.Height = 3;
 		TileObjectData.newTile.Width = 4;
 		TileObjectData.newTile.CoordinateHeights = new int[]
@@ -26,6 +28,8 @@ public class TwilightBlueCrystalFlower : ModTile
 		TileObjectData.addTile(Type);
 		AddMapEntry(new Color(40, 80, 148));
 		DustType = ModContent.DustType<TwilightCrystalDust>();
+		MinPick = 75;
+		RegisterItemDrop(ModContent.ItemType<Items.Materials.TwilightCrystal>());
 	}
 
 	public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
@@ -49,4 +53,6 @@ public class TwilightBlueCrystalFlower : ModTile
 
 		spriteBatch.Draw(ModContent.Request<Texture2D>(Texture).Value, new Vector2(i, j) * 16 - Main.screenPosition + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16), lightColor * 3.1f, 0, Vector2.zeroVector, 1, SpriteEffects.None, 0);
 	}
+
+	public override bool CanExplode(int i, int j) => false;
 }

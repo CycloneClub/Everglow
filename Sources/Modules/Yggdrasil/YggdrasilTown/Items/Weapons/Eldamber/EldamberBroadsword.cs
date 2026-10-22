@@ -1,0 +1,41 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
+using Terraria.ModLoader;
+
+namespace Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.Eldamber;
+
+/// <summary>
+/// 古珀阔剑：挥砍型近战武器。
+/// 已确定配方：古珀×12；在铁砧处制作。
+/// </summary>
+public class EldamberBroadsword : ModItem
+{
+	// 临时使用已有白色纹理，待正式素材补齐后替换。
+	public override string Texture => Commons.ModAsset.White_Mod;
+
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeWeapons;
+
+	public override void SetDefaults()
+	{
+		Item.width = 32;
+		Item.height = 32;
+		Item.damage = 20;
+		Item.DamageType = DamageClass.Melee;
+		Item.useTime = Item.useAnimation = 24;
+		Item.useStyle = ItemUseStyleID.Swing;
+		Item.UseSound = SoundID.Item1;
+		Item.autoReuse = true;
+		Item.useTurn = true;
+		Item.maxStack = 1;
+		Item.knockBack = 4f;
+		Item.rare = ItemRarityID.Blue;
+		Item.value = Item.sellPrice(silver: 20);
+	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<YggdrasilAmber>(12);
+		recipe.AddTile(TileID.Anvils);
+		recipe.Register();
+	}
+}

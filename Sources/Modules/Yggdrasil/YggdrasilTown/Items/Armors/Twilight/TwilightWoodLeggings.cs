@@ -1,3 +1,5 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 using Everglow.Yggdrasil.WorldGeneration;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
 
@@ -93,5 +95,14 @@ public class TwilightWoodLeggings : ModItem
 				}
 			}
 		}
+	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<TwilightEucalyptusWood_Item>(25);
+		recipe.AddIngredient<TwilightCrystal>(10);
+		recipe.AddTile(TileID.WorkBenches);
+		recipe.Register();
 	}
 }

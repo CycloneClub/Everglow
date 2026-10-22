@@ -1,3 +1,4 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Ranged;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.LightSeeker;
@@ -37,5 +38,14 @@ public class HandgunOfEnlightment : ModItem
 		{
 			type = ModContent.ProjectileType<LightBullet>();
 		}
+	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<LightBulbOvule>(4);
+		recipe.AddIngredient<CyanVineBar>(12);
+		recipe.AddTile(TileID.Anvils);
+		recipe.Register();
 	}
 }

@@ -28,10 +28,10 @@ public class CyanVineAxe : ModItem
 
 	public override void AddRecipes()
 	{
-		CreateRecipe()
-			.AddIngredient(ModContent.ItemType<CyanVineBar>(), 10)
-			.AddIngredient(ModContent.ItemType<StoneDragonScaleWood>(), 8)
-			.AddTile(TileID.WorkBenches)
-			.Register();
+		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<CyanVineBar>(8);
+		recipe.AddIngredient<StoneDragonScaleWood>(3);
+		recipe.AddTile(TileID.Anvils);
+		recipe.Register();
 	}
 }

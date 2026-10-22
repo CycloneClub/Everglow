@@ -1,3 +1,5 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Melee;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.TwilightForest;
@@ -28,4 +30,13 @@ public class TwilightEucalyptusBoomerangKnift : ModItem
 	}
 
 	public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] < 3;
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<TwilightEucalyptusWood_Item>(15);
+		recipe.AddIngredient<TwilightCrystal>(8);
+		recipe.AddTile(TileID.WorkBenches);
+		recipe.Register();
+	}
 }

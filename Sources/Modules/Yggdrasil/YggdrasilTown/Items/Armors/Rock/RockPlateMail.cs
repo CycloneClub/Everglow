@@ -1,3 +1,5 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
+
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Rock;
 
 [AutoloadEquip(EquipType.Body)]
@@ -19,5 +21,14 @@ public class RockPlateMail : ModItem
 	public override void UpdateEquip(Player player)
 	{
 		player.GetDamage(DamageClass.Melee) += MeleeDamageBonus / 100f;
+	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<TwilightCrystal>(24);
+		recipe.AddIngredient<GiantBeetleAntennae>(12);
+		recipe.AddTile(TileID.Anvils);
+		recipe.Register();
 	}
 }

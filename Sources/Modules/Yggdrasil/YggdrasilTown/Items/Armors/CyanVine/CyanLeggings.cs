@@ -1,3 +1,4 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Terraria.GameContent.Creative;
 using Terraria.Localization;
 
@@ -31,5 +32,9 @@ public class CyanLeggings : ModItem
 
 	public override void AddRecipes()
 	{
+		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<CyanVineBar>(20);
+		recipe.AddTile(TileID.Anvils);
+		recipe.Register();
 	}
 }

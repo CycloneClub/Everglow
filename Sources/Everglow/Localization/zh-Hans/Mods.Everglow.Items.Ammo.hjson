@@ -7,3 +7,8 @@ HuskburstBullet: {
 	DisplayName: 碎壳弹
 	Tooltip: 破裂时向随机方向射出一枚碎片，造成30%伤害
 }
+
+EldamberBullet: {
+	DisplayName: 古珀子弹
+	Tooltip: ""
+}

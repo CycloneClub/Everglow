@@ -1,3 +1,5 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
+
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Tools;
 
 public class HangGlider : ModItem
@@ -58,5 +60,14 @@ public class HangGlider : ModItem
 			player.itemLocation.Y = player.Center.Y + 0f;
 			player.fallStart = (int)(player.position.Y / 16f);
 		}
+	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<FlappedHangGlider>(1);
+		recipe.AddIngredient<NylonRope>(30);
+		recipe.AddTile(TileID.WorkBenches);
+		recipe.Register();
 	}
 }

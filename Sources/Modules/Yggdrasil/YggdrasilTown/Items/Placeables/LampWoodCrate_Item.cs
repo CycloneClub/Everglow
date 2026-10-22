@@ -1,3 +1,5 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood.Furniture;
 using Terraria.GameContent.ItemDropRules;
 
@@ -10,6 +12,7 @@ public class LampWoodCrate_Item : ModItem
 	public override void SetStaticDefaults()
 	{
 		Item.ResearchUnlockCount = 10;
+		ItemID.Sets.IsFishingCrate[Type] = true;
 	}
 
 	public override void SetDefaults()
@@ -33,8 +36,15 @@ public class LampWoodCrate_Item : ModItem
 
 	public override void ModifyItemLoot(ItemLoot itemLoot)
 	{
-		int[] themedDrops = new int[]
+		int[] themedDrops =
 		{
+			ModContent.ItemType<CelticSeal>(),
+			ModContent.ItemType<AmberMagicOrb>(),
+			ModContent.ItemType<SevenShotGun>(),
+			ModContent.ItemType<YggdrasilAmberLaser>(),
+			ModContent.ItemType<ConcealSpell>(),
+			ModContent.ItemType<YggdrasilStoneGyroscope>(),
+			ModContent.ItemType<LampWoodPollenBottle>(),
 		};
 		itemLoot.Add(ItemDropRule.OneFromOptionsNotScalingWithLuck(1, themedDrops));
 		itemLoot.Add(ItemDropRule.Common(ItemID.GoldCoin, 4, 5, 13));

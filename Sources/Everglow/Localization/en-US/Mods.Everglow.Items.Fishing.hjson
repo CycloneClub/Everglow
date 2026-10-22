@@ -36,3 +36,63 @@ TwilightRod: {
 	DisplayName: Twilight Rod
 	Tooltip: ""
 }
+
+CloggedPressureGauge: {
+	DisplayName: Clogged Pressure Gauge
+	Tooltip: ""
+}
+
+FadedRitualCloth: {
+	DisplayName: Faded Ritual Cloth
+	Tooltip: ""
+}
+
+HollowLampFruitShell: {
+	DisplayName: Hollow Lamp Fruit Shell
+	Tooltip: ""
+}
+
+KnottedOldRope: {
+	DisplayName: Knotted Old Rope
+	Tooltip: ""
+}
+
+LeakingCrystalShell: {
+	DisplayName: Leaking Crystal Shell
+	Tooltip: ""
+}
+
+TwilightFeatherfish: {
+	DisplayName: Twilight Featherfish
+	Tooltip: ""
+}
+
+WaterloggedMenu: {
+	DisplayName: Waterlogged Menu
+	Tooltip: ""
+}
+
+Duskfin: {
+	DisplayName: Twilight Featherfish
+	Tooltip: ""
+}
+
+WormEatenLampfruitHusk: {
+	DisplayName: Hollow Lamp Fruit Shell
+	Tooltip: ""
+}
+
+TangledOldRope: {
+	DisplayName: Knotted Old Rope
+	Tooltip: ""
+}
+
+LeakyCrystalHusk: {
+	DisplayName: Leaking Crystal Shell
+	Tooltip: ""
+}
+
+SoggyMenu: {
+	DisplayName: Waterlogged Menu
+	Tooltip: ""
+}

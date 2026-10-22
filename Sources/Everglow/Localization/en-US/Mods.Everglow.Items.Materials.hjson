@@ -402,3 +402,8 @@ YggdrasilAmber: {
 	DisplayName: Yggdrasil Amber
 	Tooltip: ""
 }
+
+GiantBeetleAntennae: {
+	DisplayName: Giant Beetle Antennae
+	Tooltip: ""
+}

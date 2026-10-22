@@ -1,4 +1,3 @@
-using Everglow.Yggdrasil.Common.Items;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Melee;
 using Terraria.Audio;
 
@@ -55,12 +54,12 @@ public class TopaztHeadedSpear : ModItem
 	{
 		CreateRecipe()
 			.AddIngredient(ItemID.Topaz, 10)
-			.AddIngredient(ModContent.ItemType<YggdrasilGrayRock_Item>(), 30)
+			.AddIngredient(ItemID.StoneBlock, 30)
 			.AddIngredient(ItemID.IronBar, 15)
 			.Register();
 		CreateRecipe()
 			.AddIngredient(ItemID.Topaz, 10)
-			.AddIngredient(ModContent.ItemType<YggdrasilGrayRock_Item>(), 30)
+			.AddIngredient(ItemID.StoneBlock, 30)
 			.AddIngredient(ItemID.LeadBar, 15)
 			.Register();
 	}

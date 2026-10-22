@@ -8,4 +8,12 @@ public class LampWoodTable : ModItem
 	{
 		Item.DefaultToPlaceableTile(ModContent.TileType<Tiles.LampWood.Furniture.LampWoodTable>());
 	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<LampWood_Wood>(8);
+		recipe.AddTile(TileID.WorkBenches);
+		recipe.Register();
+	}
 }

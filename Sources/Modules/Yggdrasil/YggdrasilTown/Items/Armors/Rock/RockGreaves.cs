@@ -1,3 +1,5 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
+
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Rock;
 
 [AutoloadEquip(EquipType.Legs)]
@@ -19,5 +21,14 @@ public class RockGreaves : ModItem
 	public override void UpdateEquip(Player player)
 	{
 		player.moveSpeed += MoveSpeedBonus / 100f;
+	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<TwilightCrystal>(18);
+		recipe.AddIngredient<GiantBeetleAntennae>(9);
+		recipe.AddTile(TileID.Anvils);
+		recipe.Register();
 	}
 }

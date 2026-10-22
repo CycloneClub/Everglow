@@ -13,7 +13,10 @@ public class TwilightEucalyptusPiano : PianoItem
 	public override void AddRecipes()
 	{
 		Recipe recipe = CreateRecipe();
-		// Add recipe.
+		recipe.AddIngredient<TwilightEucalyptusWood_Item>(15);
+		recipe.AddIngredient(ItemID.Bone, 4);
+		recipe.AddIngredient(ItemID.Book, 1);
+		recipe.AddTile(TileID.Sawmill);
 		recipe.Register();
 	}
 }

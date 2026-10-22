@@ -32,10 +32,9 @@ public class CyanVineShortsword : ModItem
 
 	public override void AddRecipes()
 	{
-		CreateRecipe()
-			.AddIngredient(ModContent.ItemType<CyanVineBar>(), 6)
-			.AddIngredient(ModContent.ItemType<StoneDragonScaleWood>(), 4)
-			.AddTile(TileID.WorkBenches)
-			.Register();
+		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<CyanVineBar>(6);
+		recipe.AddTile(TileID.Anvils);
+		recipe.Register();
 	}
 }

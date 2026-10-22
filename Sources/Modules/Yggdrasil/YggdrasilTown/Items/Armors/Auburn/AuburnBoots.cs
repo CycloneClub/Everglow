@@ -1,3 +1,4 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 using Terraria.GameContent.Creative;
 
@@ -30,7 +31,8 @@ public class AuburnBoots : ModItem
 	public override void AddRecipes()
 	{
 		Recipe recipe = CreateRecipe();
-		recipe.AddIngredient<LampWood_Wood>(40);
+		recipe.AddIngredient<RodWing>(8);
+		recipe.AddIngredient(ItemID.Leather, 6);
 		recipe.AddTile(TileID.WorkBenches);
 		recipe.Register();
 	}

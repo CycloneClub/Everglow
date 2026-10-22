@@ -36,3 +36,63 @@ TwilightRod: {
 	DisplayName: 暮光钓竿
 	Tooltip: ""
 }
+
+CloggedPressureGauge: {
+	DisplayName: 堵死的压力表
+	Tooltip: ""
+}
+
+FadedRitualCloth: {
+	DisplayName: 褪色的祭礼布条
+	Tooltip: ""
+}
+
+HollowLampFruitShell: {
+	DisplayName: 蛀空的灯果壳
+	Tooltip: ""
+}
+
+KnottedOldRope: {
+	DisplayName: 打死结的旧绳团
+	Tooltip: ""
+}
+
+LeakingCrystalShell: {
+	DisplayName: 漏光的空晶壳
+	Tooltip: ""
+}
+
+TwilightFeatherfish: {
+	DisplayName: 暮翎鱼
+	Tooltip: ""
+}
+
+WaterloggedMenu: {
+	DisplayName: 泡烂的点菜单
+	Tooltip: ""
+}
+
+Duskfin: {
+	DisplayName: 暮翎鱼
+	Tooltip: ""
+}
+
+WormEatenLampfruitHusk: {
+	DisplayName: 蛀空的灯果壳
+	Tooltip: ""
+}
+
+TangledOldRope: {
+	DisplayName: 打死结的旧绳团
+	Tooltip: ""
+}
+
+LeakyCrystalHusk: {
+	DisplayName: 漏光的空晶壳
+	Tooltip: ""
+}
+
+SoggyMenu: {
+	DisplayName: 泡烂的点菜单
+	Tooltip: ""
+}

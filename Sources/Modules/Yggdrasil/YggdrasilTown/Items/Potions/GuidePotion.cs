@@ -1,3 +1,5 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Fishing;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Everglow.Yggdrasil.YggdrasilTown.Buffs;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Potions;
@@ -25,5 +27,15 @@ public class GuidePotion : ModItem
 		Item.value = Item.buyPrice(gold: 1);
 		Item.buffType = ModContent.BuffType<GuideBuff>();
 		Item.buffTime = 5400;
+	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<GuidyFish>(1);
+		recipe.AddIngredient<LampFruit>(2);
+		recipe.AddIngredient(ItemID.BottledWater, 2);
+		recipe.AddTile(TileID.Bottles);
+		recipe.Register();
 	}
 }

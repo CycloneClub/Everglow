@@ -5,6 +5,7 @@ using Everglow.Yggdrasil.YggdrasilTown;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Fishing;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Fishing.Trash;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 using Microsoft.Xna.Framework;
 using SubworldLibrary;
 using Terraria;
@@ -43,6 +44,9 @@ public class YggdrasilTownFishingTests
 		SetBiome<LampWoodForest>(1);
 		SetBiome<TwilightForsetAndRelic>(2);
 		nextItemType = ItemID.Count;
+		SetItem<LampWoodCrate_Item>();
+		SetItem<TwilightCrate_Item>();
+		SetItem<UrbanCrate_Item>();
 		SetItem<GrassCarp>();
 		SetItem<Filefish>();
 		SetItem<Duskfin>();
@@ -104,7 +108,7 @@ public class YggdrasilTownFishingTests
 			1 => [ModContent.ItemType<WormEatenLampfruitHusk>(), ModContent.ItemType<TangledOldRope>()],
 			_ => [ModContent.ItemType<FadedRitualCloth>(), ModContent.ItemType<LeakyCrystalHusk>()],
 		};
-		foreach (int junk in new[] { ItemID.OldShoe, ItemID.TinCan, ItemID.Seaweed })
+		foreach (int junk in new[] { ItemID.OldShoe, ItemID.TinCan, ItemID.FishingSeaweed })
 		{
 			CollectionAssert.Contains(allowed, Catch(new FishingAttempt { common = true }, junk));
 		}
@@ -114,9 +118,11 @@ public class YggdrasilTownFishingTests
 	public void ProtectedCatches_AreNotReplaced()
 	{
 		biomeFlags[2] = true;
+		Assert.AreEqual(ItemID.JojaCola, Catch(new FishingAttempt { common = true }, ItemID.JojaCola));
+		Assert.AreEqual(ItemID.Seaweed, Catch(new FishingAttempt { veryrare = true }, ItemID.Seaweed));
 		Assert.AreEqual(ItemID.Bass, Catch(new FishingAttempt { common = true, inLava = true }));
 		Assert.AreEqual(ItemID.Bass, Catch(new FishingAttempt { common = true, inHoney = true }));
-		Assert.AreEqual(ItemID.WoodenCrate, Catch(new FishingAttempt { crate = true, rare = true }, ItemID.WoodenCrate));
+		Assert.AreEqual(ItemID.WoodenCrate, Catch(new FishingAttempt { crate = true }, ItemID.WoodenCrate));
 		Assert.AreEqual(ItemID.Bass, Catch(new FishingAttempt { rare = true, questFish = ItemID.Bass }));
 		Assert.AreEqual(ItemID.ZephyrFish, Catch(new FishingAttempt { uncommon = true, veryrare = true }, ItemID.ZephyrFish));
 		Assert.AreEqual(ItemID.GoldenCarp, Catch(new FishingAttempt { rare = true, legendary = true }, ItemID.GoldenCarp));
@@ -132,6 +138,25 @@ public class YggdrasilTownFishingTests
 		biomeFlags[2] = true;
 		CurrentSubworld.SetValue(null, null);
 		Assert.AreEqual(ItemID.Bass, Catch(new FishingAttempt { rare = true }));
+	}
+
+	[TestMethod]
+	[DataRow(0)]
+	[DataRow(1)]
+	[DataRow(2)]
+	public void RareCrates_UseRegionalCratesAndPreserveLowerTiers(int biome)
+	{
+		biomeFlags[biome] = true;
+		int expected = biome switch
+		{
+			1 => ModContent.ItemType<LampWoodCrate_Item>(),
+			2 => ModContent.ItemType<TwilightCrate_Item>(),
+			_ => ModContent.ItemType<UrbanCrate_Item>(),
+		};
+		Assert.AreEqual(expected, Catch(new FishingAttempt { crate = true, rare = true }, ItemID.JungleFishingCrate));
+		Assert.AreEqual(ItemID.WoodenCrate, Catch(new FishingAttempt { crate = true }, ItemID.WoodenCrate));
+		Assert.AreEqual(ItemID.IronCrate, Catch(new FishingAttempt { crate = true, uncommon = true }, ItemID.IronCrate));
+		Assert.AreEqual(ItemID.JungleFishingCrate, Catch(new FishingAttempt { crate = true, rare = true, inLava = true }, ItemID.JungleFishingCrate));
 	}
 
 	private int Catch(FishingAttempt attempt, int item = ItemID.Bass, int npc = -1)

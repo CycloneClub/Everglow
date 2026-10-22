@@ -1,6 +1,9 @@
 using Everglow.Commons.TileHelper;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons;
 using Terraria.ObjectData;
+using Terraria.Utilities;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Tiles;
 
@@ -38,7 +41,38 @@ public class StoneBridge_Pot : ModTile
 
 	public override void KillMultiTile(int i, int j, int frameX, int frameY)
 	{
-		var tile = TileUtils.SafeGetTile(i, j);
+		DropVanillaSupplies(i, j);
+		if (RollSpecialSupplies(Main.rand) is { } reward)
+		{
+			int type = reward.RewardIndex switch
+			{
+				0 => ModContent.ItemType<RuinTorch_Item>(),
+				1 => ModContent.ItemType<Caltrop>(),
+				_ => ModContent.ItemType<StoneJavelin>(),
+			};
+			Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, type, reward.Stack);
+		}
+		if (!Main.dedServ)
+		{
+			for (int h = 0; h < 4; h++)
+			{
+				Gore.NewGore(WorldGen.GetItemSource_FromTileBreak(i, j), new Vector2(i * 16, j * 16), new Vector2(0, Main.rand.NextFloat(0f, 3f)).RotatedByRandom(MathHelper.TwoPi), ModContent.Find<ModGore>("Everglow/StoneBridge_Pot_Gore_" + Main.rand.Next(13)).Type, 1);
+			}
+		}
+		base.KillMultiTile(i, j, frameX, frameY);
+	}
+
+	private static (int RewardIndex, int Stack)? RollSpecialSupplies(UnifiedRandom random)
+	{
+		if (!random.NextBool(7))
+		{
+			return null;
+		}
+		return (random.Next(3), random.Next(16, 33));
+	}
+
+	private static void DropVanillaSupplies(int i, int j)
+	{
 		switch (Main.rand.Next(7))
 		{
 			case 0:
@@ -218,11 +252,6 @@ public class StoneBridge_Pot : ModTile
 				Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.Glowstick, Main.rand.Next(2, 25)));
 				break;
 		}
-		for (int h = 0; h < 4; h++)
-		{
-			Gore.NewGore(WorldGen.GetItemSource_FromTileBreak(i, j), new Vector2(i * 16, j * 16), new Vector2(0, Main.rand.NextFloat(0f, 3f)).RotatedByRandom(MathHelper.TwoPi), ModContent.Find<ModGore>("Everglow/StoneBridge_Pot_Gore_" + Main.rand.Next(13)).Type, 1);
-		}
-		base.KillMultiTile(i, j, frameX, frameY);
 	}
 
 	public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)

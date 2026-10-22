@@ -1,3 +1,5 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
+
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.LampWood;
 
 public class LampWoodBow : ModItem
@@ -28,5 +30,13 @@ public class LampWoodBow : ModItem
 
 		Item.rare = ItemRarityID.White;
 		Item.value = Item.buyPrice(silver: 1);
+	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<LampWood_Wood>(10);
+		recipe.AddTile(TileID.WorkBenches);
+		recipe.Register();
 	}
 }

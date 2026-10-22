@@ -48,7 +48,7 @@ public class LampWoodHelmet : ModItem
 	public override void AddRecipes()
 	{
 		Recipe recipe = CreateRecipe();
-		recipe.AddIngredient<LampWood_Wood>(30);
+		recipe.AddIngredient<LampWood_Wood>(25);
 		recipe.AddTile(TileID.WorkBenches);
 		recipe.Register();
 	}

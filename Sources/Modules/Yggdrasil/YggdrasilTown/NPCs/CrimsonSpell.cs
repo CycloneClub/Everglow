@@ -1,7 +1,9 @@
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Armors.BloodCultist;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Enemies;
 using Terraria.DataStructures;
+using Terraria.GameContent.ItemDropRules;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.NPCs;
 
@@ -204,6 +206,7 @@ public class CrimsonSpell : ModNPC
 
 	public override void ModifyNPCLoot(NPCLoot npcLoot)
 	{
-		// TODO 掉落物
+		npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BloodDrenchedRobe>()));
+		npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BloodStainedVeil>()));
 	}
 }

@@ -13,15 +13,6 @@ public class CyanVinePickaxe : ModItem
 
 	private delegate int Hook_GetPickaxeDamage(GetPickaxeDamageDelegate orig, int x, int y, int pickPower, int hitBufferIndex, Tile tileTarget);
 
-	public override void AddRecipes()
-	{
-		CreateRecipe()
-			.AddIngredient(ModContent.ItemType<Materials.CyanVineBar>(), 20)
-			.AddIngredient(ModContent.ItemType<StoneDragonScaleWood>(), 20)
-			.AddTile(TileID.WorkBenches)
-			.Register();
-	}
-
 	public override void Load()
 	{
 		Ins.HookManager.AddHook(typeof(Player).GetMethod(nameof(Player.GetPickaxeDamage), BindingFlags.NonPublic | BindingFlags.Instance), Hook_Player_GetPickaxeDamage);
@@ -92,5 +83,14 @@ public class CyanVinePickaxe : ModItem
 			}
 		}
 		return orig(self, x, y, pickPower, hitBufferIndex, tileTarget);
+	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<Materials.CyanVineBar>(10);
+		recipe.AddIngredient<StoneDragonScaleWood>(3);
+		recipe.AddTile(TileID.Anvils);
+		recipe.Register();
 	}
 }

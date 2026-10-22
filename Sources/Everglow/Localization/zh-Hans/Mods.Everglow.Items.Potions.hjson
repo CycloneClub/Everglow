@@ -17,3 +17,8 @@ ShadowPotion: {
 	DisplayName: 暗影药剂
 	Tooltip: ""
 }
+
+JumpPotion: {
+	DisplayName: 跳跃药水
+	Tooltip: 跳跃高度提高15%，摔落伤害降低30%
+}

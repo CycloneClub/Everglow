@@ -26,7 +26,8 @@ public class StoneScaleWood : ModTile
 		Main.tileShine2[Type] = false;
 
 		DustType = ModContent.DustType<StoneDragonScaleWoodDust>();
-		MinPick = 150;
+		MinPick = 0;
+		MineResist = 3f;
 		HitSound = SoundID.Dig;
 
 		AddMapEntry(new Color(77, 66, 63));

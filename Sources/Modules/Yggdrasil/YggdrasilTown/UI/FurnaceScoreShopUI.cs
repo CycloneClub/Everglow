@@ -1,7 +1,9 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Miscs;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables.Furniture.Furnace;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons;
 using Everglow.Commons.UI;
 using Everglow.Commons.UI.UIElements;
-using Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
-using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles.FurnaceTiles;
 using Terraria.GameContent;
 
@@ -21,7 +23,7 @@ public class FurnaceScoreShopUI : SpecialShopUI
 	public override void OnInitialization()
 	{
 		base.OnInitialization();
-		FurnaceScoreShopItemSlots = new FurnaceScoreShop_Itemslot[28];
+		FurnaceScoreShopItemSlots = new FurnaceScoreShop_Itemslot[GetShopEntries().Count];
 		for (int i = 0; i < FurnaceScoreShopItemSlots.Length; i++)
 		{
 			FurnaceScoreShopItemSlots[i] = new FurnaceScoreShop_Itemslot()
@@ -49,7 +51,7 @@ public class FurnaceScoreShopUI : SpecialShopUI
 		Info.Left.SetValue(0, 0f);
 		Info.Top.SetValue(240, 0f);
 		Info.Width.SetValue(480, 0f);
-		Info.Height.SetValue(300, 0f);
+		Info.Height.SetValue(Math.Max(300, 130 + (FurnaceScoreShopItemSlots.Length + 6) / 7 * 42), 0f);
 		for (int i = 0; i < FurnaceScoreShopItemSlots.Length; i++)
 		{
 			FurnaceScoreShopItemSlots[i].Info.Left.SetValue(20 + i % 7 * 42, 0f);
@@ -75,55 +77,14 @@ public class FurnaceScoreShopUI : SpecialShopUI
 
 	public void SetupShopItems()
 	{
+		var entries = GetShopEntries();
 		FurnaceScoreShop.SellPricesInFurnaceScore.Clear();
-		for (int i = 0; i < FurnaceScoreShopItemSlots.Length; i++)
+		for (int i = 0; i < entries.Count; i++)
 		{
-			int rewardType = 0;
-			switch (i)
-			{
-				case 0:
-					rewardType = ModContent.ItemType<MagicalBoomerang>();
-					FurnaceScoreShop.SellPricesInFurnaceScore[rewardType] = 14500;
-					FurnaceScoreShopItemSlots[i].ShopSlot = true;
-					break;
-				case 1:
-					rewardType = ModContent.ItemType<PearShapedNeedle>();
-					FurnaceScoreShop.SellPricesInFurnaceScore[rewardType] = 15500;
-					FurnaceScoreShopItemSlots[i].ShopSlot = true;
-					break;
-				case 2:
-					rewardType = ModContent.ItemType<ChainGrenade>();
-					FurnaceScoreShop.SellPricesInFurnaceScore[rewardType] = 17000;
-					FurnaceScoreShopItemSlots[i].ShopSlot = true;
-					break;
-				case 3:
-					rewardType = ModContent.ItemType<ArmorPiercingBlaster>();
-					FurnaceScoreShop.SellPricesInFurnaceScore[rewardType] = 14000;
-					FurnaceScoreShopItemSlots[i].ShopSlot = true;
-					break;
-				case 4:
-					rewardType = ModContent.ItemType<Caltrop>();
-					FurnaceScoreShop.SellPricesInFurnaceScore[rewardType] = 12800;
-					FurnaceScoreShopItemSlots[i].ShopSlot = true;
-					break;
-				case 5:
-					rewardType = ModContent.ItemType<AnemoShell>();
-					FurnaceScoreShop.SellPricesInFurnaceScore[rewardType] = 26200;
-					FurnaceScoreShopItemSlots[i].ShopSlot = true;
-					break;
-				case 6:
-					rewardType = ModContent.ItemType<TelescopicPlatformAlpha>();
-					FurnaceScoreShop.SellPricesInFurnaceScore[rewardType] = 75000;
-					FurnaceScoreShopItemSlots[i].ShopSlot = true;
-					break;
-				case 7:
-					rewardType = ModContent.ItemType<TelescopicPlatformBeta>();
-					FurnaceScoreShop.SellPricesInFurnaceScore[rewardType] = 900000;
-					FurnaceScoreShopItemSlots[i].ShopSlot = true;
-					break;
-			}
-			Item item = new Item();
-			item.SetDefaults(rewardType);
+			var entry = entries[i];
+			FurnaceScoreShop.SellPricesInFurnaceScore.Add(entry.ItemType, entry.Price);
+			FurnaceScoreShopItemSlots[i].ShopSlot = true;
+			Item item = new Item(entry.ItemType);
 
 			// TODO: Need a modded itemTooltip allocating feature. Now use 36 for Furnace Score Shop Itemslot.
 			item.tooltipContext = 36;
@@ -141,4 +102,42 @@ public class FurnaceScoreShopUI : SpecialShopUI
 		Utils.DrawBorderStringFourWay(Main.spriteBatch, FontAssets.MouseText.Value, "   : " + score, 20f, Info.TotalHitBox.Bottom - 110, Color.White * (Main.mouseTextColor / 255f), Color.Black, Vector2.Zero, 1f);
 		base.Draw(sb);
 	}
+
+	private static IReadOnlyList<(int ItemType, int Price)> GetShopEntries() =>
+	[
+		(ModContent.ItemType<MagicalBoomerang>(), 14500),
+		(ModContent.ItemType<PearShapedNeedle>(), 15500),
+		(ModContent.ItemType<ChainGrenade>(), 17000),
+		(ModContent.ItemType<ArmorPiercingBlaster>(), 14000),
+		(ModContent.ItemType<Caltrop>(), 12800),
+		(ModContent.ItemType<AnemoShell>(), 26200),
+		(ModContent.ItemType<TelescopicPlatformAlpha>(), 75000),
+		(ModContent.ItemType<TelescopicPlatformBeta>(), 900000),
+		// Furniture prices are provisional; each purchase delivers one piece.
+		(ModContent.ItemType<HeatproofBathtub_item>(), 800),
+		(ModContent.ItemType<HeatproofBed_item>(), 800),
+		(ModContent.ItemType<HeatproofBookcase_item>(), 800),
+		(ModContent.ItemType<HeatproofCandelabra_item>(), 300),
+		(ModContent.ItemType<HeatproofCandle_item>(), 100),
+		(ModContent.ItemType<HeatproofChair_item>(), 200),
+		(ModContent.ItemType<HeatproofChandelier_item>(), 500),
+		(ModContent.ItemType<HeatproofChest_item>(), 500),
+		(ModContent.ItemType<HeatproofClock_item>(), 1000),
+		(ModContent.ItemType<HeatproofDoor_item>(), 300),
+		(ModContent.ItemType<HeatproofDresser_item>(), 800),
+		(ModContent.ItemType<HeatproofLamp_item>(), 300),
+		(ModContent.ItemType<HeatproofLantern_item>(), 300),
+		(ModContent.ItemType<HeatproofPiano_item>(), 1000),
+		(ModContent.ItemType<HeatproofSink_item>(), 500),
+		(ModContent.ItemType<HeatproofSofa_item>(), 500),
+		(ModContent.ItemType<HeatproofTable_item>(), 500),
+		(ModContent.ItemType<HeatproofToilet_item>(), 300),
+		(ModContent.ItemType<HeatproofWorkbench_item>(), 200),
+		(ModContent.ItemType<ElectroProbe>(), 5000),
+		// Match the existing furnace weapon price band until balance testing.
+		(ModContent.ItemType<IntroductiontoThermalElectricity>(), 14000),
+		(ModContent.ItemType<MeltingSideGyroscope>(), 17000),
+		(ModContent.ItemType<QuenchingBlade>(), 15000),
+		(ModContent.ItemType<ResistanceWireBayonet>(), 15500),
+	];
 }

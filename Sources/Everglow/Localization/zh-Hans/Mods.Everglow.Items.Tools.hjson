@@ -236,3 +236,18 @@ YggdrasilTown_TradeUnionGate: {
 	DisplayName: Yggdrasil Town_ Trade Union Gate
 	Tooltip: ""
 }
+
+EldamberAxe: {
+	DisplayName: 古珀斧
+	Tooltip: ""
+}
+
+EldamberHammer: {
+	DisplayName: 古珀锤
+	Tooltip: ""
+}
+
+EldamberPickaxe: {
+	DisplayName: 古珀镐
+	Tooltip: ""
+}

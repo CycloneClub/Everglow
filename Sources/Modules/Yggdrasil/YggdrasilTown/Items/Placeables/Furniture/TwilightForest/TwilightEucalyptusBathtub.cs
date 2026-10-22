@@ -13,7 +13,8 @@ public class TwilightEucalyptusBathtub : BathtubItem
 	public override void AddRecipes()
 	{
 		Recipe recipe = CreateRecipe();
-		// Add recipe.
+		recipe.AddIngredient<TwilightEucalyptusWood_Item>(14);
+		recipe.AddTile(TileID.Sawmill);
 		recipe.Register();
 	}
 }

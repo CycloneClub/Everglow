@@ -1,3 +1,5 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.Auburn;
@@ -37,4 +39,13 @@ public class FeatheredStaff : ModItem
 	public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] == 0;
 
 	public override void HoldItem(Player player) => player.ListenMouseWorld();
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<RodWing>(12);
+		recipe.AddIngredient<LampWood_Wood>(10);
+		recipe.AddTile(TileID.WorkBenches);
+		recipe.Register();
+	}
 }

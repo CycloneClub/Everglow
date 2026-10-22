@@ -32,7 +32,7 @@ public class LampWoodLeggings : ModItem
 	public override void AddRecipes()
 	{
 		Recipe recipe = CreateRecipe();
-		recipe.AddIngredient<LampWood_Wood>(40);
+		recipe.AddIngredient<LampWood_Wood>(20);
 		recipe.AddTile(TileID.WorkBenches);
 		recipe.Register();
 	}

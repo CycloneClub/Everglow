@@ -5,8 +5,12 @@ using Everglow.Commons.Utilities;
 using Everglow.Yggdrasil.Netcode;
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Armors.JellyBall;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Mounts;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Bosses.KingJellyBall;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
 using Terraria.DataStructures;
@@ -27,6 +31,7 @@ public class KingJellyBall : ModNPC
 	public override void SetStaticDefaults()
 	{
 		Main.npcFrameCount[NPC.type] = 1;
+		NPCID.Sets.MPAllowedEnemies[Type] = true;
 	}
 
 	public override void SetDefaults()
@@ -847,5 +852,7 @@ public class KingJellyBall : ModNPC
 	{
 		npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<CrystalNucleusOfJellyKing>(), 1, 4, 6));
 		npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<JellyBallCube>(), 1, 24, 40));
+		npcLoot.Add(ItemDropRule.OneFromOptionsNotScalingWithLuck(1, ModContent.ItemType<JellyBallInhibitor>(), ModContent.ItemType<MysteriousTablet>(), ModContent.ItemType<JellyBallBathingCap>()));
+		npcLoot.Add(ItemDropRule.NormalvsExpertNotScalingWithLuck(ModContent.ItemType<JellyBubbleItem>(), 4, 2));
 	}
 }

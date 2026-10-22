@@ -3,6 +3,7 @@ using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
 using Terraria.DataStructures;
 using Terraria.GameContent.ItemDropRules;
@@ -325,6 +326,7 @@ public class JellyBall : ModNPC
 	public override void ModifyNPCLoot(NPCLoot npcLoot)
 	{
 		npcLoot.Add(ItemDropRule.ByCondition(new JellyBallNoneDerivativeCondition(), ModContent.ItemType<JellyBallCube>(), 1, 1, 2));
+		npcLoot.Add(ItemDropRule.ByCondition(new JellyBallNoneDerivativeCondition(), ModContent.ItemType<ActivatedJellyGland>(), 100));
 	}
 }
 

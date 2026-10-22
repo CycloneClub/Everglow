@@ -13,6 +13,7 @@ public class YggdrasilAmber : ModTile
 		Main.tileShine2[Type] = false;
 		DustType = ModContent.DustType<YggdrasilAmberDust>();
 		MinPick = 0;
+		RegisterItemDrop(ModContent.ItemType<Items.Materials.YggdrasilAmber>());
 		HitSound = SoundID.Shimmer1;
 		AddMapEntry(new Color(198, 124, 19, 163));
 	}

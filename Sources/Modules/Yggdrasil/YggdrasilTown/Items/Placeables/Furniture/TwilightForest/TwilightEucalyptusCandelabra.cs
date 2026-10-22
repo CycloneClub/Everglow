@@ -13,7 +13,9 @@ public class TwilightEucalyptusCandelabra : CandelabraItem
 	public override void AddRecipes()
 	{
 		Recipe recipe = CreateRecipe();
-		// Add recipe.
+		recipe.AddIngredient<TwilightEucalyptusWood_Item>(5);
+		recipe.AddIngredient(ItemID.Torch, 3);
+		recipe.AddTile(TileID.WorkBenches);
 		recipe.Register();
 	}
 }

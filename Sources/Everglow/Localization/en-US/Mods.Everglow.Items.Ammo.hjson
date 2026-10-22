@@ -7,3 +7,8 @@ HuskburstBullet: {
 	DisplayName: Huskburst Bullet
 	Tooltip: Releases a fragment in a random direction when it breaks, dealing 30% damage
 }
+
+EldamberBullet: {
+	DisplayName: Eldamber Bullet
+	Tooltip: ""
+}

@@ -279,6 +279,6 @@ public class LampFruitBorer : Caterpillar
 
 	public override void ModifyNPCLoot(NPCLoot npcLoot)
 	{
-		npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<LampBorerHoney>(), 1, 1, 1));
+		npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<LampBorerHoney>(), 10));
 	}
 }

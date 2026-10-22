@@ -1,3 +1,4 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Everglow.Commons.Coroutines;
 using Everglow.Commons.CustomTiles;
 using Everglow.Commons.DataStructures;
@@ -11,7 +12,6 @@ using Everglow.Commons.Utilities;
 using Everglow.Yggdrasil.Netcode;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Accessories.SquamousShell;
-using Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Rock;
 using Everglow.Yggdrasil.YggdrasilTown.Items.BossDrops;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.SquamousShell;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Bosses.SquamousShell;
@@ -87,6 +87,7 @@ public class SquamousShell : ModNPC
 	public override void SetStaticDefaults()
 	{
 		Main.npcFrameCount[NPC.type] = 1;
+		NPCID.Sets.MPAllowedEnemies[Type] = true;
 	}
 
 	public override float SpawnChance(NPCSpawnInfo spawnInfo)
@@ -2068,11 +2069,11 @@ public class SquamousShell : ModNPC
 	{
 		npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<SquamousShellTreasureBag>()));
 		npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<Items.BossDrops.SquamousShellRelic>()));
-		npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.BossDrops.SquamousShellRelic>(), 10));
+		npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.BossDrops.SquamousShellTrophy>(), 10));
 
 		var rule = new LeadingConditionRule(new Conditions.NotExpert());
 		rule.OnSuccess(ItemDropRule.OneFromOptions(1, ModContent.ItemType<DragonScaleHammer>(), ModContent.ItemType<EyeOfAnabiosis>(), ModContent.ItemType<FlurryingBlades>(), ModContent.ItemType<RockSpikeBallista>(), ModContent.ItemType<DeadBeetleEgg>(), ModContent.ItemType<BlueyWings>()));
-		rule.OnSuccess(ItemDropRule.OneFromOptions(1, ModContent.ItemType<RockGreaves>(), ModContent.ItemType<RockHelmet>(), ModContent.ItemType<RockPlateMail>()));
+		rule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<GiantBeetleAntennae>(), 1, 12, 18));
 		npcLoot.Add(rule);
 		base.ModifyNPCLoot(npcLoot);
 	}

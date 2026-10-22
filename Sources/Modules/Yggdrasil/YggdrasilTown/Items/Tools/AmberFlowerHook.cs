@@ -1,3 +1,4 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using ReLogic.Content;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Tools
@@ -18,6 +19,14 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Tools
 			// Item.useStyle = ItemUseStyleID.None;
 			// Item.useTime = 0;
 			// Item.useAnimation = 0;
+		}
+
+		public override void AddRecipes()
+		{
+			Recipe recipe = CreateRecipe();
+			recipe.AddIngredient<YggdrasilAmber>(15);
+			recipe.AddTile(TileID.Anvils);
+			recipe.Register();
 		}
 	}
 

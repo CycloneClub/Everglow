@@ -1045,3 +1045,13 @@ YggdrasilStoneGyroscopeBuff: {
 	DisplayName: Yggdrasil Stone Gyroscope Buff
 	Description: ""
 }
+
+JumpBuff: {
+	DisplayName: Jump Buff
+	Description: Increased jump height
+}
+
+JumpPotionBuff: {
+	DisplayName: Jump
+	Description: Increases jump height by 15% and reduces fall damage by 30%
+}

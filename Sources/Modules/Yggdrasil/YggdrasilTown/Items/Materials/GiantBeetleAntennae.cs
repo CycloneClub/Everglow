@@ -2,6 +2,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 
 public class GiantBeetleAntennae : ModItem
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Materials;
+
 	public override void SetDefaults()
 	{
 		Item.height = 22;

@@ -1,4 +1,5 @@
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 using Terraria.ObjectData;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood;
@@ -45,7 +46,10 @@ public class LampWood_Grass : ModTile
 
 	public override IEnumerable<Item> GetItemDrops(int i, int j)
 	{
-		yield break;
+		if (Main.rand.NextBool(100))
+		{
+			yield return new Item(ModContent.ItemType<LampGrassSeed>());
+		}
 	}
 
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)

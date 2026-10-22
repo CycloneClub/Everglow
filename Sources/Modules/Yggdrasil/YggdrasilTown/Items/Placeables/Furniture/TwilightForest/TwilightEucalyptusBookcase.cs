@@ -13,7 +13,9 @@ public class TwilightEucalyptusBookcase : BookcaseItem
 	public override void AddRecipes()
 	{
 		Recipe recipe = CreateRecipe();
-		// Add recipe.
+		recipe.AddIngredient<TwilightEucalyptusWood_Item>(20);
+		recipe.AddIngredient(ItemID.Book, 10);
+		recipe.AddTile(TileID.Sawmill);
 		recipe.Register();
 	}
 }

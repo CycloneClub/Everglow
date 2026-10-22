@@ -12,6 +12,8 @@ public class TwilightBlueCrystal_1 : ShapeDataTile, ISceneTile
 		Main.tileLighted[Type] = true;
 		AddMapEntry(new Color(40, 80, 148));
 		DustType = ModContent.DustType<TwilightCrystalDust>();
+		MinPick = 75;
+		CustomItemType = ModContent.ItemType<Items.Materials.TwilightCrystal>();
 	}
 
 	public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
@@ -35,4 +37,6 @@ public class TwilightBlueCrystal_1 : ShapeDataTile, ISceneTile
 			Ins.VFXManager.Add(mirror);
 		}
 	}
+
+	public override bool CanExplode(int i, int j) => false;
 }

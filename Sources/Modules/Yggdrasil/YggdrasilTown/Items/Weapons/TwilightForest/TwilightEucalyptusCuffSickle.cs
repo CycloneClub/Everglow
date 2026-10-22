@@ -1,3 +1,6 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
+
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.TwilightForest;
 
 public class TwilightEucalyptusCuffSickle : ModItem
@@ -18,5 +21,14 @@ public class TwilightEucalyptusCuffSickle : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.UseSound = SoundID.Item1;
 		Item.autoReuse = true;
+	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<TwilightEucalyptusWood_Item>(15);
+		recipe.AddIngredient<TwilightCrystal>(12);
+		recipe.AddTile(TileID.WorkBenches);
+		recipe.Register();
 	}
 }
