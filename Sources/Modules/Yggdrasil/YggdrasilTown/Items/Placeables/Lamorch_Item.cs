@@ -65,7 +65,7 @@ public class Lamorch_Item : ModItem
 	{
 		CreateRecipe(4)
 			.AddIngredient(ModContent.ItemType<LampFruit>(), 1)
-			.AddIngredient(RecipeGroupID.Wood, 1)
+			.AddRecipeGroup(RecipeGroupID.Wood, 1)
 			.Register();
 	}
 }

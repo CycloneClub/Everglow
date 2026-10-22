@@ -10,6 +10,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Placeables
 		public override void SetStaticDefaults()
 		{
 			Item.ResearchUnlockCount = 10;
+			ItemID.Sets.IsFishingCrate[Type] = true;
 		}
 
 		public override void SetDefaults()
@@ -33,10 +34,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Placeables
 
 		public override void ModifyItemLoot(ItemLoot itemLoot)
 		{
-			int[] themedDrops = new int[]
-			{
-			};
-			itemLoot.Add(ItemDropRule.OneFromOptionsNotScalingWithLuck(1, themedDrops));
+			// Town-exclusive rewards are not assigned yet; keep the vanilla-style supply pools.
 			itemLoot.Add(ItemDropRule.Common(ItemID.GoldCoin, 4, 5, 13));
 			IItemDropRule[] oreTypes = new IItemDropRule[]
 			{

@@ -1,3 +1,10 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Fishing.FishingRods;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Pets;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables.Furniture.TwilightForest;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Tools;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.TwilightForest;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood.Furniture;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
@@ -14,6 +21,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Placeables
 		public override void SetStaticDefaults()
 		{
 			Item.ResearchUnlockCount = 10;
+			ItemID.Sets.IsFishingCrate[Type] = true;
 		}
 
 		public override void SetDefaults()
@@ -37,8 +45,16 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Placeables
 
 		public override void ModifyItemLoot(ItemLoot itemLoot)
 		{
-			int[] themedDrops = new int[]
+			int[] themedDrops =
 			{
+				ModContent.ItemType<RecoveryBand>(),
+				ModContent.ItemType<LampWoodSeed>(),
+				ModContent.ItemType<TwilightCrystalMill_Item>(),
+				ModContent.ItemType<GlowstickLauncher>(),
+				ModContent.ItemType<HexaCrystalStaff>(),
+				ModContent.ItemType<MidwinterNightmare>(),
+				ModContent.ItemType<NightfireStaff>(),
+				ModContent.ItemType<TwilightRod>(),
 			};
 			itemLoot.Add(ItemDropRule.OneFromOptionsNotScalingWithLuck(1, themedDrops));
 			itemLoot.Add(ItemDropRule.Common(ItemID.GoldCoin, 4, 5, 13));
