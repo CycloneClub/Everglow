@@ -51,7 +51,7 @@ public static class NPCUtils
 		int touchDoorX = (int)((npc.position.X + npc.width / 2 + 15 * npc.direction) / 16f);
 		int touchDoorY = (int)((npc.position.Y + npc.height - 16f) / 16f);
 		Tile tileSafely5 = Framing.GetTileSafely(touchDoorX, touchDoorY - 2);
-		if ((npc.townNPC || NPCID.Sets.AllowDoorInteraction[npc.type]) && tileSafely5.nactive() && (TileLoader.IsClosedDoor(tileSafely5) || tileSafely5.type == 388))
+		if ((npc.townNPC || NPCID.Sets.AllowDoorInteraction[npc.type]) && tileSafely5.HasUnactuatedTile && (TileLoader.IsClosedDoor(tileSafely5) || tileSafely5.type == 388))
 		{
 			if (Main.netMode != NetmodeID.MultiplayerClient)
 			{
@@ -93,15 +93,9 @@ public static class NPCUtils
 
 	public static int ChooseDirection(NPC npc)
 	{
-		if (Collision.SolidCollision(npc.Right + new Vector2(8, 0), 2, 2))
-		{
-			return -1;
-		}
-		if (Collision.SolidCollision(npc.Left + new Vector2(-10, 0), 2, 2))
-		{
-			return 1;
-		}
-		return Main.rand.NextBool() ? -1 : 1;
+		return Collision.SolidCollision(npc.Right + new Vector2(8, 0), 2, 2)
+			? -1
+			: Collision.SolidCollision(npc.Left + new Vector2(-10, 0), 2, 2) ? 1 : Main.rand.NextBool() ? -1 : 1;
 	}
 
 	public static bool CheckSit(NPC npc)
@@ -204,11 +198,7 @@ public static class NPCUtils
 		{
 			npc.velocity.Y = -0.5f;
 		}
-		if (obstructionHeight >= 5)
-		{
-			return false;
-		}
-		return true;
+		return obstructionHeight < 5;
 	}
 
 	#endregion

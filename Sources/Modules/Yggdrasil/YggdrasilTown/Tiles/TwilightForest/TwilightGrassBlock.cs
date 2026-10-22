@@ -136,7 +136,7 @@ public class TwilightGrassBlock : ModTile, ISceneTile
 						}
 						break;
 					case 1:
-						if (TileUtils.CanPlaceMultiAtTopTowardsUpRight(i, j, 8, 7))
+						if (TileUtils.CanPlaceMultiAtTopTowardsUpRight(i, j, 9, 7))
 						{
 							var tBC = TileLoader.GetTile(ModContent.TileType<TwilightBlueCrystal_1>()) as TwilightBlueCrystal_1;
 							tBC.PlaceOriginAtBottomLeft(i, j - 1);

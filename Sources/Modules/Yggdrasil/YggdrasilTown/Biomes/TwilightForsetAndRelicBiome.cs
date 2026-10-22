@@ -1,4 +1,6 @@
 using Everglow.Yggdrasil.Common;
+using Everglow.Commons.Utilities.BackgroundHelper;
+using Everglow.Yggdrasil.YggdrasilTown.Background;
 using SubworldLibrary;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Biomes;
@@ -48,6 +50,29 @@ public class TwilightForsetAndRelic : ModBiome
 			Main.StopSlimeRain();
 		}
 		Main.bloodMoon = false;
+
+		BackgroundSystem bgSystem = ModContent.GetInstance<BackgroundSystem>();
+		if (!bgSystem.HasBgSlide("Everglow.Yggdrasil.YggdrasilTown.Background.TwilightSky"))
+		{
+			TwilightSky sky = new TwilightSky { WorldAnchor = YggdrasilTownBackground.Stratum1Center };
+			bgSystem.AddBackgroundSlide(sky);
+
+			TwilightFar far = new TwilightFar { WorldAnchor = YggdrasilTownBackground.Stratum1Center };
+			bgSystem.AddBackgroundSlide(far);
+
+			TwilightMiddleFar middleFar = new TwilightMiddleFar { WorldAnchor = YggdrasilTownBackground.Stratum1Center };
+			bgSystem.AddBackgroundSlide(middleFar);
+
+			TwilightMiddle middle = new TwilightMiddle { WorldAnchor = YggdrasilTownBackground.Stratum1Center };
+			bgSystem.AddBackgroundSlide(middle);
+
+			TwilightMiddleClose middleClose = new TwilightMiddleClose { WorldAnchor = YggdrasilTownBackground.Stratum1Center };
+			bgSystem.AddBackgroundSlide(middleClose);
+
+			TwilightClose close = new TwilightClose { WorldAnchor = YggdrasilTownBackground.Stratum1Center };
+			bgSystem.AddBackgroundSlide(close);
+		}
+
 		base.OnInBiome(player);
 	}
 }

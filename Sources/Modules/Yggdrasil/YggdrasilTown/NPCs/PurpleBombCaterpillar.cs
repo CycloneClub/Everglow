@@ -1,7 +1,6 @@
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Enemies;
-using Everglow.Yggdrasil.YggdrasilTown.VFXs;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs.NPCEffects;
 using Terraria.DataStructures;
 
@@ -18,6 +17,12 @@ public class PurpleBombCaterpillar : ModNPC
 	public bool Angry = false;
 
 	public bool Sleep = false;
+
+	public int TiltBlockTimer = 0;
+
+	public List<Vector2> BottomPoints_Current = new List<Vector2>();
+
+	public List<Vector2> BottomPoints_Trend = new List<Vector2>();
 
 	public override void SetStaticDefaults()
 	{
@@ -84,6 +89,7 @@ public class PurpleBombCaterpillar : ModNPC
 
 	public override void AI()
 	{
+		UpdateRotation();
 		if (!Angry)
 		{
 			IdleAI();
@@ -157,6 +163,27 @@ public class PurpleBombCaterpillar : ModNPC
 
 	public void UpdateMoveAndLight()
 	{
+		if (!NPC.collideX && !NPC.collideY)
+		{
+			if (NPC.velocity.Length() <= 0)
+			{
+				TiltBlockTimer++;
+			}
+			else
+			{
+				TiltBlockTimer = 0;
+			}
+		}
+		else
+		{
+			TiltBlockTimer = 0;
+		}
+		if (TiltBlockTimer > 5)
+		{
+			NPC.velocity.Y -= 10 * NPC.scale;
+			NPC.position.Y -= 16;
+			NPC.velocity.X = NPC.direction * 2f;
+		}
 		if (Sleep)
 		{
 			Lighting.AddLight(NPC.Center, new Vector3(1f, 0.05f, 0.6f) * GlowValue);
@@ -165,11 +192,11 @@ public class PurpleBombCaterpillar : ModNPC
 		if (MoveTimer > 60)
 		{
 			MoveTimer = Main.rand.Next(15);
-			if (!Angry && Main.rand.NextBool(12))
-			{
-				Sleep = true;
-				MoveTimer = 0;
-			}
+			// if (!Angry && Main.rand.NextBool(12))
+			// {
+			// Sleep = true;
+			// MoveTimer = 0;
+			// }
 		}
 		if (MoveTimer % 60 == 15)
 		{
@@ -208,9 +235,19 @@ public class PurpleBombCaterpillar : ModNPC
 			{
 				if (NPC.target >= 0)
 				{
-					NPC.velocity.Y -= MathF.Abs(NPC.oldVelocity.X) * 0.5f;
-					NPC.position.Y -= 16;
-					NPC.velocity.X = NPC.oldVelocity.X * 0.5f;
+					Player player = Main.player[NPC.target];
+					if (Collision.CanHit(NPC, player))
+					{
+						NPC.velocity.Y -= MathF.Abs(NPC.oldVelocity.X) * 0.5f;
+						NPC.position.Y -= 16;
+						NPC.velocity.X = NPC.oldVelocity.X * 0.5f;
+					}
+					else
+					{
+						NPC.velocity.X = -NPC.oldVelocity.X * 0.5f;
+						NPC.direction *= -1;
+						NPC.spriteDirection = NPC.direction;
+					}
 				}
 				else
 				{
@@ -221,6 +258,81 @@ public class PurpleBombCaterpillar : ModNPC
 			}
 		}
 		Lighting.AddLight(NPC.Center, new Vector3(1f, 0.05f, 0.6f) * GlowValue);
+	}
+
+	public void UpdateRotation()
+	{
+		float squzzeValue = 1f;
+		float originX = 0.5f;
+		if (MoveTimer % 60 is >= 15 and < 30)
+		{
+			squzzeValue = (MoveTimer % 60 - 15f) / 15f * 0.3f * MoveScale;
+			originX -= squzzeValue * 0.5f * NPC.spriteDirection;
+			squzzeValue = 1 - squzzeValue;
+		}
+		if (MoveTimer % 60 is >= 30 and <= 45)
+		{
+			float value = MoveTimer % 60 - 30f;
+			squzzeValue = MathF.Sin(value * 0.5f - MathHelper.PiOver2) / (value + 3f) * 1f * MoveScale;
+			originX -= squzzeValue * 0.5f * NPC.spriteDirection;
+			squzzeValue = 1 - squzzeValue;
+		}
+		BottomPoints_Trend = new List<Vector2>();
+		for (int i = 0; i <= 10; i++)
+		{
+			Vector2 foot = NPC.Bottom + new Vector2(squzzeValue * 98 * NPC.scale * (i / 10f - originX), 0).RotatedBy(NPC.rotation);
+			if (!Collision.IsWorldPointSolid(foot))
+			{
+				for (int j = 0; j < 8; j++)
+				{
+					if (!Collision.IsWorldPointSolid(foot))
+					{
+						foot += new Vector2(0, 2).RotatedBy(NPC.rotation);
+					}
+					else
+					{
+						break;
+					}
+				}
+			}
+			else
+			{
+				for (int j = 0; j < 8; j++)
+				{
+					if (Collision.IsWorldPointSolid(foot))
+					{
+						foot -= new Vector2(0, 2).RotatedBy(NPC.rotation);
+					}
+					else
+					{
+						foot += new Vector2(0, 2).RotatedBy(NPC.rotation);
+						break;
+					}
+				}
+			}
+			BottomPoints_Trend.Add(foot);
+			if (BottomPoints_Current.Count <= i)
+			{
+				BottomPoints_Current.Add(foot);
+			}
+		}
+		NPC.rotation = (BottomPoints_Trend[0] - BottomPoints_Trend[^1]).ToRotationSafe() - MathHelper.Pi;
+		for (int i = 0; i < BottomPoints_Trend.Count; i++)
+		{
+			BottomPoints_Current[i] = new Vector2(BottomPoints_Trend[i].X, BottomPoints_Current[i].Y * 0.75f + BottomPoints_Trend[i].Y * 0.25f);
+		}
+		if (MathF.Abs(NPC.rotation) > 0.3f)
+		{
+			var oldBottom = NPC.Bottom;
+			NPC.width = 36;
+			NPC.Bottom = oldBottom;
+		}
+		if (MathF.Abs(NPC.rotation) < 0.1f)
+		{
+			var oldBottom = NPC.Bottom;
+			NPC.width = 88;
+			NPC.Bottom = oldBottom;
+		}
 	}
 
 	public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
@@ -262,6 +374,11 @@ public class PurpleBombCaterpillar : ModNPC
 		p0.scale = NPC.scale;
 		p0.direction = NPC.direction;
 		p0.spriteDirection = NPC.spriteDirection;
+		PurpleBombCaterpillarDeath pBCD = p0.ModProjectile as PurpleBombCaterpillarDeath;
+		if (pBCD is not null)
+		{
+			pBCD.Deadbody_BottomPoints_Current = BottomPoints_Current;
+		}
 	}
 
 	public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
@@ -287,11 +404,49 @@ public class PurpleBombCaterpillar : ModNPC
 			originX -= squzzeValue * 0.5f * NPC.spriteDirection;
 			squzzeValue = 1 - squzzeValue;
 		}
-		spriteBatch.Draw(eyeStalks, NPC.Bottom - Main.screenPosition, NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() * new Vector2(0.5f, 0.95f), NPC.scale, flip, 0);
-		spriteBatch.Draw(eyeStalks_glow, NPC.Bottom - Main.screenPosition, NPC.frame, new Color(1f, 0.65f, 0.25f, 0) * GlowValue, NPC.rotation, NPC.frame.Size() * new Vector2(0.5f, 0.95f), NPC.scale, flip, 0);
+		if (BottomPoints_Current.Count > 0)
+		{
+			List<Vertex2D> body_bars = new List<Vertex2D>();
+			List<Vertex2D> body_glow_bars = new List<Vertex2D>();
+			for (int i = 0; i < BottomPoints_Current.Count; i++)
+			{
+				Vector2 foot = BottomPoints_Current[i];
+				Vector2 top = NPC.Bottom + new Vector2(squzzeValue * 98 * NPC.scale * (i / 10f - 0.5f), -36 * (2 - squzzeValue) * NPC.scale).RotatedBy(NPC.rotation);
+				float value = i / (float)(BottomPoints_Current.Count - 1);
+				if (NPC.spriteDirection == -1)
+				{
+					value = 1 - value;
+				}
+				body_bars.Add(foot - Main.screenPosition, drawColor, new Vector3(value, 1f, 0f));
+				body_bars.Add(top - Main.screenPosition, drawColor, new Vector3(value, 0f, 0f));
 
-		spriteBatch.Draw(body, NPC.Bottom - Main.screenPosition, null, drawColor, NPC.rotation, body.Size() * new Vector2(originX, 0.95f), new Vector2(squzzeValue, 2 - squzzeValue) * NPC.scale, flip, 0);
-		spriteBatch.Draw(body_glow, NPC.Bottom - Main.screenPosition, null, new Color(1f, 0.65f, 0.25f, 0) * GlowValue, NPC.rotation, body.Size() * new Vector2(originX, 0.95f), new Vector2(squzzeValue, 2 - squzzeValue) * NPC.scale, flip, 0);
+				body_glow_bars.Add(foot - Main.screenPosition, new Color(1f, 0.65f, 0.25f, 0) * GlowValue, new Vector3(value, 1f, 0f));
+				body_glow_bars.Add(top - Main.screenPosition, new Color(1f, 0.65f, 0.25f, 0) * GlowValue, new Vector3(value, 0f, 0f));
+			}
+			if (body_bars.Count > 0)
+			{
+				Main.graphics.GraphicsDevice.Textures[0] = body;
+				Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, body_bars.ToArray(), 0, body_bars.Count - 2);
+			}
+			if (body_glow_bars.Count > 0)
+			{
+				Main.graphics.GraphicsDevice.Textures[0] = body_glow;
+				Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, body_glow_bars.ToArray(), 0, body_glow_bars.Count - 2);
+			}
+
+			SpriteBatchUtils.SpriteBatch_Draw_To_Vertex_Draw(eyeStalks, NPC.Bottom - Main.screenPosition, NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() * new Vector2(0.5f, 0.95f), NPC.scale, flip);
+			SpriteBatchUtils.SpriteBatch_Draw_To_Vertex_Draw(eyeStalks_glow, NPC.Bottom - Main.screenPosition, NPC.frame, new Color(1f, 0.65f, 0.25f, 0) * GlowValue, NPC.rotation, NPC.frame.Size() * new Vector2(0.5f, 0.95f), NPC.scale, flip);
+		}
+
+		// spriteBatch.Draw(body, NPC.Bottom - Main.screenPosition, null, drawColor, NPC.rotation, body.Size() * new Vector2(originX, 0.95f), new Vector2(squzzeValue, 2 - squzzeValue) * NPC.scale, flip, 0);
+		// spriteBatch.Draw(body_glow, NPC.Bottom - Main.screenPosition, null, new Color(1f, 0.65f, 0.25f, 0) * GlowValue, NPC.rotation, body.Size() * new Vector2(originX, 0.95f), new Vector2(squzzeValue, 2 - squzzeValue) * NPC.scale, flip, 0);
+
+		// Texture2D star = Commons.ModAsset.LightPoint2.Value;
+		// for (int i = 0; i < BottomPoints_Current.Count; i++)
+		// {
+		// 	Vector2 foot = BottomPoints_Current[i];
+		// 	spriteBatch.Draw(star, foot - Main.screenPosition, null, new Color(1f, 1f, 0f, 0f), NPC.rotation, star.Size() * 0.5f, 0.5f, flip, 0);
+		// }
 		return false;
 	}
 

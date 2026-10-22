@@ -2039,7 +2039,8 @@ public class YggdrasilTownGeneration
 		}
 		PlaceRectangleAreaOfBlock(centerX - 75, centerY - 100, centerX + 75, centerY + 230, ModContent.TileType<GreenRelicBrick>());
 		PlaceRectangleAreaOfBlock(centerX - 105, centerY + 160, centerX + 105, centerY + 250, ModContent.TileType<GreenRelicBrick>());
-		PlaceRectangleAreaOfWall(centerX - 78, centerY - 98, centerX + 78, centerY + 244, ModContent.WallType<GreenRelicWall>());
+		PlaceRectangleAreaOfWall(centerX - 78, centerY - 98, centerX - 24, centerY + 244, ModContent.WallType<GreenRelicWall>());
+		PlaceRectangleAreaOfWall(centerX + 24, centerY - 98, centerX + 78, centerY + 244, ModContent.WallType<GreenRelicWall>());
 
 		// 顶部方波
 		for (int x = -75; x < 75; x += 20)
@@ -2065,7 +2066,7 @@ public class YggdrasilTownGeneration
 		}
 
 		// 房间布设
-		int directionGate = GenRand.NextBool() ? 1 : -1;
+		int directionGate = 1;
 		Queue<string> roomNames = new Queue<string>();
 		roomNames.Enqueue("Wood");
 		roomNames.Enqueue("Water");
@@ -2074,20 +2075,13 @@ public class YggdrasilTownGeneration
 		roomNames.Enqueue("Rock");
 		roomNames.Enqueue("Sand");
 
-		List<Point> roomIndex = new List<Point>();
 		Dictionary<Point, string> rooms = new Dictionary<Point, string>();
 		while (roomNames.Count > 0)
 		{
 			Point pos = new Point(GenRand.Next(2), GenRand.Next(10));
-			int count = 0;
-			while (rooms.Keys.Contains(pos))
+			while (rooms.Keys.Contains(pos) || pos.X != (pos.Y % 2 == 0 ? 1 : 0))
 			{
 				pos = new Point(GenRand.Next(2), GenRand.Next(10));
-				count++;
-				if (count > 1000)
-				{
-					break;
-				}
 			}
 			rooms[pos] = roomNames.Dequeue();
 		}
@@ -2102,6 +2096,25 @@ public class YggdrasilTownGeneration
 			{
 				int roomOriginX = centerX - 75 + x * 50 + 25;
 				int roomOriginY = centerY - 100 + y * 25 + 12;
+				bool stairReachable = x == (y % 2 == 0 ? 2 : 0);
+				if (!stairReachable)
+				{
+					PlaceRectangleAreaOfBlock(roomOriginX - 19, roomOriginY - 10, roomOriginX + 18, roomOriginY + 9, ModContent.TileType<GreenRelicBrick>());
+					int outsideDirection = x == 0 ? 1 : -1;
+					int outsideEdge = x == 0 ? centerX - 80 : centerX + 80;
+					int insideEdge = outsideEdge + outsideDirection * 19;
+					KillRectangleAreaOfTile(Math.Min(outsideEdge, insideEdge), roomOriginY - 10, Math.Max(outsideEdge, insideEdge), roomOriginY + 9);
+					KillRectangleAreaOfWall(Math.Min(outsideEdge, insideEdge), roomOriginY - 10, Math.Max(outsideEdge, insideEdge), roomOriginY + 9);
+					int[] pillarOffsets = { 2, 7, 13 };
+					int[] pillarWidths = { 2, 3, 3 };
+					for (int pillar = 0; pillar < pillarOffsets.Length; pillar++)
+					{
+						int pillarStart = outsideEdge + outsideDirection * pillarOffsets[pillar];
+						int pillarEnd = outsideEdge + outsideDirection * (pillarOffsets[pillar] + pillarWidths[pillar] - 1);
+						PlaceRectangleAreaOfWall(Math.Min(pillarStart, pillarEnd), roomOriginY - 10, Math.Max(pillarStart, pillarEnd), roomOriginY + 9, ModContent.WallType<GreenRelicWall>());
+					}
+					continue;
+				}
 				KillRectangleAreaOfTile(roomOriginX - 19, roomOriginY - 10, roomOriginX + 18, roomOriginY + 9);
 
 				// 房间通道
@@ -2189,12 +2202,53 @@ public class YggdrasilTownGeneration
 			}
 		}
 
+		// 一层入口，穿过右侧不可达房间向外部开挖缓坡通道
+		int entranceInnerX = centerX + 18;
+		int entranceOuterX = centerX + 81;
+		int entranceFloorY = centerY + 146;
+		ushort greenRelicBrick = (ushort)ModContent.TileType<GreenRelicBrick>();
+		for (int x = entranceInnerX; x <= entranceOuterX; x++)
+		{
+			for (int y = entranceFloorY - 11; y <= entranceFloorY; y++)
+			{
+				Tile tile = SafeGetTile(x, y);
+				if (tile.HasTile && tile.TileType == greenRelicBrick)
+				{
+					tile.HasTile = false;
+				}
+			}
+		}
+		var point0 = new Point(entranceOuterX + 1, entranceFloorY);
+		int gap_height = CheckSpaceDown(point0) - 1;
+		var point1 = point0;
+		var point2 = point0;
+		point1.Y += gap_height;
+		point2.X -= gap_height;
+		PlacePolygonAreaOfBlock([point0, point1, point2], -1, 0);
+
 		// 清理中央垂直通道
-		KillRectangleAreaOfTile(centerX - 18, centerY - 100 + 12 - 9, centerX + 18, centerY + 146);
+		KillRectangleAreaOfTile(centerX - 22, centerY - 100 + 12 - 9, centerX + 22, centerY + 146);
+		QuickBuild(centerX - 22, centerY + 146 - 74, ModAsset.TwilightCastle_SpiralStairs_Bottom45x75_Path);
+		QuickBuild(centerX - 22, centerY + 146 - 74 - 50, ModAsset.TwilightCastle_SpiralStairs_Middle45x50_Path);
+		QuickBuild(centerX - 22, centerY + 146 - 74 - 100, ModAsset.TwilightCastle_SpiralStairs_Middle45x50_Path);
+		QuickBuild(centerX - 22, centerY + 146 - 74 - 150, ModAsset.TwilightCastle_SpiralStairs_Middle45x50_Path);
+		QuickBuild(centerX - 22, centerY + 146 - 74 - 151, ModAsset.TwilightCastle_SpiralStairs_Top45x1_Path);
+		// PlaceRectangleAreaOfWall(centerX - 22, centerY - 98, centerX + 22, centerY + 146, ModContent.WallType<GreenRelicWall>());
 		PlaceFrameImportantTiles(centerX - 1, centerY + 144, 3, 3, ModContent.TileType<GreenRelicSlotTable>());
 
 		// 副塔 60 * 120
 		int directionSubTower = GenRand.NextBool() ? 1 : -1;
+		List<Point> connectedRoomCandidates = new List<Point>();
+		foreach (Point roomPosition in rooms.Keys)
+		{
+			if ((roomPosition.Y == 6 || roomPosition.Y == 7) && ((directionSubTower > 0 && roomPosition.X > 0) || (directionSubTower < 0 && roomPosition.X == 0)))
+			{
+				connectedRoomCandidates.Add(roomPosition);
+			}
+		}
+		Point connectedRoom = connectedRoomCandidates.Count > 0
+			? connectedRoomCandidates[GenRand.Next(connectedRoomCandidates.Count)]
+			: new Point(directionSubTower > 0 ? 1 : 0, directionSubTower > 0 ? 6 : 7);
 		int subTowerCenterX = centerX + directionSubTower * 150;
 		int subTowerCenterY = centerY + GenRand.Next(-30, 10);
 
@@ -2228,27 +2282,20 @@ public class YggdrasilTownGeneration
 		{
 			subTowerHeadX -= 1;
 		}
-		for (int y = 0; y < 10; y++)
+		int connectedRoomOriginY = centerY - 100 + connectedRoom.Y * 25 + 12;
+		int minX = Math.Min(roomTailX, subTowerHeadX);
+		int maxX = Math.Max(roomTailX, subTowerHeadX);
+		for (int x = minX; x <= maxX; x++)
 		{
-			int roomOriginY = centerY - 100 + y * 25 + 12;
-			if (roomOriginY > subTowerFloor)
+			float lerpValue = (x - minX) / (float)(maxX - minX);
+			if (directionSubTower > 0)
 			{
-				int minX = Math.Min(roomTailX, subTowerHeadX);
-				int maxX = Math.Max(roomTailX, subTowerHeadX);
-				for (int x = minX; x <= maxX; x++)
-				{
-					float lerpValue = (x - minX) / (float)(maxX - minX);
-					if (directionSubTower > 0)
-					{
-						lerpValue = 1 - lerpValue;
-					}
-					float value = (float)Utils.Lerp(subTowerFloor, roomOriginY + 8, lerpValue);
-					PlaceRectangleAreaOfBlock(x, (int)value - 12, x + 1, (int)value + 4, ModContent.TileType<GreenRelicBrick>());
-					PlaceRectangleAreaOfWall(x, (int)value - 11, x + 1, (int)value + 3, ModContent.WallType<GreenRelicWall>());
-					KillRectangleAreaOfTile(x, (int)value - 8, x + 1, (int)value + 1);
-				}
-				break;
+			lerpValue = 1 - lerpValue;
 			}
+			float value = (float)Utils.Lerp(subTowerFloor, connectedRoomOriginY + 8, lerpValue);
+			PlaceRectangleAreaOfBlock(x, (int)value - 12, x + 1, (int)value + 4, ModContent.TileType<GreenRelicBrick>());
+			PlaceRectangleAreaOfWall(x, (int)value - 11, x + 1, (int)value + 3, ModContent.WallType<GreenRelicWall>());
+			KillRectangleAreaOfTile(x, (int)value - 8, x + 1, (int)value + 1);
 		}
 
 		// 铺设激光网

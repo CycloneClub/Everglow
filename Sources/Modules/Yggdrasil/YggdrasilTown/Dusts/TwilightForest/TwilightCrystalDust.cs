@@ -10,10 +10,10 @@ public class TwilightCrystalDust : ModDust
 	{
 		dust.rotation += (dust.dustIndex - 127.5f) / 6000f * dust.velocity.Length();
 		dust.position += dust.velocity;
-		int hitboxSize = (int)(4 * dust.scale);
+		float hitboxSize = (4 * dust.scale) * 0.5f;
 		if (dust.velocity.Length() < 0.2f)
 		{
-			if (Collision.SolidCollision(dust.position, hitboxSize, hitboxSize))
+			if (Collision.IsWorldPointSolid(dust.position + new Vector2(hitboxSize)))
 			{
 				dust.velocity *= 0.4f;
 				dust.alpha += 5;
@@ -29,7 +29,7 @@ public class TwilightCrystalDust : ModDust
 			dust.velocity.Y += 0.2f * dust.scale;
 		}
 
-		if (Collision.SolidCollision(dust.position + new Vector2(dust.velocity.X, 0), hitboxSize, hitboxSize))
+		if (Collision.IsWorldPointSolid(dust.position + new Vector2(hitboxSize) + new Vector2(dust.velocity.X, 0)))
 		{
 			dust.velocity.X *= -1;
 			dust.velocity *= 0.4f;
@@ -39,7 +39,7 @@ public class TwilightCrystalDust : ModDust
 				dust.active = false;
 			}
 		}
-		if (Collision.SolidCollision(dust.position + new Vector2(0, dust.velocity.Y), hitboxSize, hitboxSize))
+		if (Collision.IsWorldPointSolid(dust.position + new Vector2(hitboxSize) + new Vector2(0, dust.velocity.Y)))
 		{
 			dust.velocity.Y *= -1;
 			dust.velocity *= 0.4f;
