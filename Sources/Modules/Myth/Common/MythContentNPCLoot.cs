@@ -42,7 +42,6 @@ public class MythContentNPCLoot : GlobalNPC
 			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<GelSlingshot>(), 4));
 		}
 
-
 		if (npc.type == NPCID.PossessedArmor)
 		{
 			npcLoot.Add(new DropBasedOnMasterMode(

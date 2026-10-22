@@ -73,7 +73,8 @@ public class TwilightRelicChestLootTests
 		}
 	}
 
-	private void SetItem<T>(int type) where T : ModItem, new()
+	private void SetItem<T>(int type)
+		where T : ModItem, new()
 	{
 		var property = typeof(ContentInstance<T>).GetProperty(nameof(ContentInstance<T>.Instance))!;
 		object? previous = property.GetValue(null);
