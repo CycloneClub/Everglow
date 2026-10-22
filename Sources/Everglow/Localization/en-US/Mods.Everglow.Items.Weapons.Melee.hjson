@@ -625,3 +625,13 @@ YoenLeZed: {
 	DisplayName: Yoen Le Zed
 	Tooltip: ""
 }
+
+EldamberBroadsword: {
+	DisplayName: Eldamber Broadsword
+	Tooltip: ""
+}
+
+EldamberShortsword: {
+	DisplayName: Eldamber Shortsword
+	Tooltip: ""
+}

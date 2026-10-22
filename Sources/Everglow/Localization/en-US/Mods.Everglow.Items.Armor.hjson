@@ -422,3 +422,18 @@ WitherbarkLeggings: {
 	DisplayName: Witherbark Leggings
 	Tooltip: 6% increased movement speed
 }
+
+EldamberBoots: {
+	DisplayName: Eldamber Boots
+	Tooltip: ""
+}
+
+EldamberBreastplate: {
+	DisplayName: Eldamber Breastplate
+	Tooltip: ""
+}
+
+EldamberHelmet: {
+	DisplayName: Eldamber Helmet
+	Tooltip: ""
+}

@@ -1513,3 +1513,8 @@ YggdrasilStoneGyroscopeBuff: {
 	DisplayName: 天穹岩陀螺
 	Description: 用鞭子抽打陀螺可以充能
 }
+
+JumpBuff: {
+	DisplayName: 跳跃
+	Description: 提高跳跃高度
+}

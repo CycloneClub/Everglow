@@ -422,3 +422,18 @@ WitherbarkLeggings: {
 	DisplayName: 枯木护腿
 	Tooltip: 增加6%移动速度
 }
+
+EldamberBoots: {
+	DisplayName: 古珀靴子
+	Tooltip: ""
+}
+
+EldamberBreastplate: {
+	DisplayName: 古珀护甲
+	Tooltip: ""
+}
+
+EldamberHelmet: {
+	DisplayName: 古珀头盔
+	Tooltip: ""
+}

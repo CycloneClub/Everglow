@@ -374,3 +374,8 @@ WoodSlingshot: {
 	DisplayName: 木弹弓
 	Tooltip: 不消耗弹药，蓄力提升威力
 }
+
+EldamberBow: {
+	DisplayName: 古珀弓
+	Tooltip: ""
+}

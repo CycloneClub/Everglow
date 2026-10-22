@@ -355,3 +355,8 @@ WoodSlingshot: {
 	DisplayName: Wood Slingshot
 	Tooltip: ""
 }
+
+EldamberBow: {
+	DisplayName: Eldamber Bow
+	Tooltip: ""
+}

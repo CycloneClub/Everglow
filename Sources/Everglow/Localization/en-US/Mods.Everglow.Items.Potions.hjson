@@ -17,3 +17,8 @@ ShadowPotion: {
 	DisplayName: Shadow Potion
 	Tooltip: ""
 }
+
+JumpPotion: {
+	DisplayName: Jump Potion
+	Tooltip: Increases jump height
+}

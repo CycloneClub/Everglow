@@ -662,3 +662,13 @@ YoenLeZed: {
 		比考场忘带身份证还刺激一点
 		'''
 }
+
+EldamberBroadsword: {
+	DisplayName: 古珀阔剑
+	Tooltip: ""
+}
+
+EldamberShortsword: {
+	DisplayName: 古珀短剑
+	Tooltip: ""
+}
