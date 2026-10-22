@@ -1,5 +1,8 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
+using Everglow.Yggdrasil.Common;
+using Everglow.Yggdrasil.YggdrasilTown.Items.PermanentBoosters;
+using Terraria.GameContent.ItemDropRules;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Accessories.SquamousShell;
-using Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Rock;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.SquamousShell;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.BossDrops;
@@ -23,43 +26,21 @@ public class SquamousShellTreasureBag : ModItem
 		return true;
 	}
 
-	public override void RightClick(Player player)
+	public override void ModifyItemLoot(ItemLoot itemLoot)
 	{
-		switch (Main.rand.Next(6))
-		{
-			case 0:
-				player.QuickSpawnItem(null, ModContent.ItemType<EyeOfAnabiosis>(), 1);
-				break;
-			case 1:
-				player.QuickSpawnItem(null, ModContent.ItemType<FlurryingBlades>(), 1);
-				break;
-			case 2:
-				player.QuickSpawnItem(null, ModContent.ItemType<RockSpikeBallista>(), 1);
-				break;
-			case 3:
-				player.QuickSpawnItem(null, ModContent.ItemType<DeadBeetleEgg>(), 1);
-				break;
-			case 4:
-				player.QuickSpawnItem(null, ModContent.ItemType<DragonScaleHammer>(), 1);
-				break;
-			case 5:
-				player.QuickSpawnItem(null, ModContent.ItemType<BlueyWings>(), 1);
-				break;
-		}
-		switch (Main.rand.Next(3))
-		{
-			case 0:
-				player.QuickSpawnItem(null, ModContent.ItemType<RockGreaves>(), 1);
-				break;
-			case 1:
-				player.QuickSpawnItem(null, ModContent.ItemType<RockHelmet>(), 1);
-				break;
-			case 2:
-				player.QuickSpawnItem(null, ModContent.ItemType<RockPlateMail>(), 1);
-				break;
-		}
-		player.QuickSpawnItem(null, ItemID.GoldCoin, 15);
-		base.RightClick(player);
+		itemLoot.Add(ItemDropRule.OneFromOptionsNotScalingWithLuck(1, ModContent.ItemType<EyeOfAnabiosis>(), ModContent.ItemType<FlurryingBlades>(), ModContent.ItemType<RockSpikeBallista>(), ModContent.ItemType<DeadBeetleEgg>(), ModContent.ItemType<DragonScaleHammer>(), ModContent.ItemType<BlueyWings>()));
+		itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<GiantBeetleAntennae>(), 1, 18, 24));
+		itemLoot.Add(ItemDropRule.Common(ItemID.GoldCoin, 1, 15, 15));
+		itemLoot.Add(ItemDropRule.ByCondition(new NeedsSquamousCoreCondition(), ModContent.ItemType<SquamousCore>()));
+	}
+
+	private sealed class NeedsSquamousCoreCondition : IItemDropRuleCondition
+	{
+		public bool CanDrop(DropAttemptInfo info) => info.player.GetModPlayer<YggdrasilPlayer>().ConsumedSquamousCore < SquamousCore.SquamousCoreMax;
+
+		public bool CanShowItemDropInUI() => true;
+
+		public string GetConditionDescription() => null;
 	}
 
 	private int myLightTimer = 0;
