@@ -388,6 +388,7 @@ public class YggdrasilTownGeneration
 	public static void BuildTangledSubmine()
 	{
 		Minerization(40, Main.maxTilesY - 820, Main.maxTilesX / 2 + 50, Main.maxTilesY - 50);
+		GenerateTownAmberDeposits();
 		for (int i = 0; i < 200; i++)
 		{
 			Point pos = new Point(Main.rand.Next(40, Main.maxTilesX / 2 + 50), Main.rand.Next(Main.maxTilesY - 700, Main.maxTilesY - 20));
@@ -3597,7 +3598,7 @@ public class YggdrasilTownGeneration
 	}
 
 	/// <summary>Seed the planned lower-left mine source without replacing built structures.</summary>
-	internal static void GenerateTownAmberDeposits()
+	private static void GenerateTownAmberDeposits()
 	{
 		int host = ModContent.TileType<StoneScaleWood>();
 		ushort amber = (ushort)ModContent.TileType<YggdrasilTown.Tiles.YggdrasilAmber>();

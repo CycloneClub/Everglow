@@ -36,7 +36,6 @@ public class YggdrasilWorldGeneration : ModSystem
 
 			BuildKelpCurtain();
 			EndGenPass();
-			GenerateTownAmberDeposits();
 			Main.statusText = string.Empty;
 		}
 	}
