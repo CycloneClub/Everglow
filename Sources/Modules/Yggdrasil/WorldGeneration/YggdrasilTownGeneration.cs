@@ -2235,6 +2235,7 @@ public class YggdrasilTownGeneration
 		QuickBuild(centerX - 22, centerY + 146 - 74 - 151, ModAsset.TwilightCastle_SpiralStairs_Top45x1_Path);
 		// PlaceRectangleAreaOfWall(centerX - 22, centerY - 98, centerX + 22, centerY + 146, ModContent.WallType<GreenRelicWall>());
 		PlaceFrameImportantTiles(centerX - 1, centerY + 144, 3, 3, ModContent.TileType<GreenRelicSlotTable>());
+		FillTwilightRelicRewards(centerX, centerY, rooms);
 
 		// 副塔 60 * 120
 		int directionSubTower = GenRand.NextBool() ? 1 : -1;
@@ -2349,7 +2350,11 @@ public class YggdrasilTownGeneration
 			lengthX = Math.Clamp(lengthX, 0, 1);
 			KillRectangleAreaOfTile(centerX - (int)(60 * lengthX), y, centerX + (int)(60 * lengthX), y);
 		}
-		WorldGenMisc.PlaceChest(centerX, centerY + 229, 21, new List<Item>() { new Item(setDefaultsToType: ModContent.ItemType<RingOfMatter>()) }, 1);
+		WorldGenMisc.PlaceChest(centerX, centerY + 229, 21, new List<Item>()
+		{
+			new Item(ModContent.ItemType<RingOfMatter>()),
+			new Item(ModContent.ItemType<GunOfAvarice>()),
+		}, 1);
 		for (int x0 = -60; x0 < 61; x0++)
 		{
 			int y = centerY + 180;
@@ -2365,6 +2370,61 @@ public class YggdrasilTownGeneration
 						tile.TileType = TileID.GoldCoinPile;
 						tile.HasTile = true;
 					}
+				}
+			}
+		}
+	}
+
+	/// <summary>
+	/// Fill only the existing themed rooms; other listed relic rewards remain unassigned.
+	/// </summary>
+	private static void FillTwilightRelicRewards(int centerX, int centerY, Dictionary<Point, string> rooms)
+	{
+		var themedRewards = new Dictionary<string, int>
+		{
+			["Wood"] = ModContent.ItemType<WiltedForestLamp>(),
+			["Water"] = ModContent.ItemType<DivineAscend>(),
+			["Shadow"] = ModContent.ItemType<MagicOfLightAndShadow>(),
+			["Blood"] = ModContent.ItemType<BloodySwamp>(),
+			["Rock"] = ModContent.ItemType<RockQuake>(),
+			["Sand"] = ModContent.ItemType<SpringOfQuicksand>(),
+		};
+		// 待分配清单：保留物品记录，尚未分配宝箱，不参与地图投放。
+		int[] unassignedRewards = new[]
+		{
+			ModContent.ItemType<MechanismHalberd>(),
+			ModContent.ItemType<BloodTearCrystalCrown>(),
+			ModContent.ItemType<CelesteStoneWaistPendant>(),
+			ModContent.ItemType<SpikedParma>(),
+			ModContent.ItemType<DarkMassacreDagger>(),
+		};
+		for (int side = 0; side < 2; side++)
+		{
+			for (int floor = 0; floor < 10; floor++)
+			{
+				bool themed = rooms.TryGetValue(new Point(side, floor), out string room);
+				if (!themed)
+				{
+					continue;
+				}
+				int reward = themedRewards[room];
+				int roomX = centerX - 50 + side * 100;
+				int roomY = centerY - 88 + floor * 25;
+				Chest target = Main.chest.FirstOrDefault(chest => chest != null
+					&& chest.x >= roomX - 20 && chest.x < roomX + 20
+					&& chest.y >= roomY - 10 && chest.y < roomY + 10
+					&& Main.tile[chest.x, chest.y].HasTile
+					&& TileID.Sets.BasicChest[Main.tile[chest.x, chest.y].TileType]);
+				if (target == null || target.item.Any(item => item != null && !item.IsAir))
+				{
+					Ins.Logger.Warn($"Relic reward not placed in room {side},{floor}: {ItemLoader.GetItem(reward)?.Name}");
+					continue;
+				}
+				List<Item> contents = new() { new Item(reward) };
+				contents.AddRange(NormalChestContents());
+				for (int slot = 0; slot < contents.Count; slot++)
+				{
+					target.item[slot] = contents[slot];
 				}
 			}
 		}
@@ -3307,65 +3367,47 @@ public class YggdrasilTownGeneration
 	/// <returns></returns>
 	public static List<Item> BridgeChestContents()
 	{
-		List<Item> chestContents = new List<Item>();
-		int mainItem = WorldGen.genRand.Next(7);
-		int mainItem2 = WorldGen.genRand.Next(6);
-		if (mainItem2 == mainItem)
+		int[] primaryItems =
+		[
+			ModContent.ItemType<ForsakenBoots>(),
+			ModContent.ItemType<FlappedHangGlider>(),
+			ModContent.ItemType<OldPortableLamp>(),
+			ModContent.ItemType<RustSlingshot>(),
+		];
+		int[] secondaryItems =
+		[
+			ModContent.ItemType<RuinTorch_Item>(),
+			ModContent.ItemType<Caltrop>(),
+			ModContent.ItemType<StoneJavelin>(),
+		];
+		var random = WorldGen.genRand;
+		List<Item> chestContents = [new Item(primaryItems[random.Next(primaryItems.Length)])];
+		int secondaryCount = random.Next(1, 3);
+		for (int i = 0; i < secondaryCount; i++)
 		{
-			mainItem2 = 6;
+			int selected = random.Next(i, secondaryItems.Length);
+			(secondaryItems[i], secondaryItems[selected]) = (secondaryItems[selected], secondaryItems[i]);
+			chestContents.Add(new Item(secondaryItems[i], random.Next(16, 33)));
 		}
 
-		// 2 different main items
-		switch (mainItem)
+		if (random.Next(2) == 0)
 		{
-			case 0:
-				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<FlappedHangGlider>(), 1));
-				break;
-			case 1:
-				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<OldPortableLamp>(), 1));
-				break;
-			case 2:
-				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<RustSlingshot>(), 1));
-				break;
-			case 3:
-				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<ForsakenBoots>(), 1));
-				break;
-			case 4:
-				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<Caltrop>(), GenRand.Next(16, 32)));
-				break;
-			case 5:
-				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<StoneJavelin>(), GenRand.Next(16, 32)));
-				break;
-			case 6:
-				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<RuinTorch_Item>(), GenRand.Next(16, 32)));
-				break;
+			chestContents.Add(new Item(ItemID.SilverCoin, random.Next(10, 30)));
 		}
-		chestContents.AddRange(NormalChestContents());
-		switch (mainItem2)
+		if (random.Next(2) == 0)
 		{
-			case 0:
-				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<FlappedHangGlider>(), 1));
-				break;
-			case 1:
-				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<OldPortableLamp>(), 1));
-				break;
-			case 2:
-				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<RustSlingshot>(), 1));
-				break;
-			case 3:
-				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<ForsakenBoots>(), 1));
-				break;
-			case 4:
-				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<Caltrop>(), GenRand.Next(16, 32)));
-				break;
-			case 5:
-				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<StoneJavelin>(), GenRand.Next(16, 32)));
-				break;
-			case 6:
-				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<RuinTorch_Item>(), GenRand.Next(16, 32)));
-				break;
+			chestContents.Add(new Item(ItemID.LesserHealingPotion, random.Next(3, 6)));
 		}
-		chestContents.AddRange(NormalChestContents());
+		if (random.Next(3) < 2)
+		{
+			chestContents.Add(new Item(ItemID.RecallPotion, random.Next(3, 6)));
+		}
+		if (random.Next(3) < 2)
+		{
+			int[] potions = [ItemID.IronskinPotion, ItemID.ShinePotion, ItemID.NightOwlPotion, ItemID.SwiftnessPotion, ItemID.MiningPotion, ItemID.BuilderPotion];
+			chestContents.Add(new Item(potions[random.Next(potions.Length)], random.Next(1, 3)));
+		}
+		chestContents.Add(new Item(ModContent.ItemType<NylonRope>(), random.Next(70, 151)));
 		return chestContents;
 	}
 
@@ -3551,6 +3593,48 @@ public class YggdrasilTownGeneration
 		for (int i = 0; i < times; i++)
 		{
 			bonus.Add(potentialList[GenRand.Next(potentialList.Count)]);
+		}
+	}
+
+	/// <summary>Seed the planned lower-left mine source without replacing built structures.</summary>
+	internal static void GenerateTownAmberDeposits()
+	{
+		int host = ModContent.TileType<StoneScaleWood>();
+		ushort amber = (ushort)ModContent.TileType<YggdrasilTown.Tiles.YggdrasilAmber>();
+		var town = new Rectangle(218, Main.maxTilesY - 612, 730, 299);
+		int veins = 0;
+		for (int attempt = 0; attempt < 1200 && veins < 60; attempt++)
+		{
+			int x = WorldGen.genRand.Next(60, Main.maxTilesX / 2);
+			int y = WorldGen.genRand.Next(Main.maxTilesY - 820, Main.maxTilesY - 100);
+			if (town.Contains(x, y))
+			{
+				continue;
+			}
+			int radius = WorldGen.genRand.Next(2, 4);
+			int placed = 0;
+			for (int dx = -radius; dx <= radius; dx++)
+			{
+				for (int dy = -radius; dy <= radius; dy++)
+				{
+					Tile tile = Main.tile[x + dx, y + dy];
+					if (dx * dx + dy * dy <= radius * radius && tile.HasTile && tile.TileType == host)
+					{
+						tile.TileType = amber;
+						tile.TileFrameX = 0;
+						tile.TileFrameY = 0;
+						placed++;
+					}
+				}
+			}
+			if (placed > 0)
+			{
+				veins++;
+			}
+		}
+		if (veins == 0)
+		{
+			Ins.Logger.Warn("No amber deposits could be placed in the lower-left town mine.");
 		}
 	}
 }
