@@ -9,9 +9,6 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.Eldamber;
 /// </summary>
 public class EldamberBow : ModItem
 {
-	// 临时使用已有白色纹理，待正式素材补齐后替换。
-	public override string Texture => Commons.ModAsset.White_Mod;
-
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedWeapons;
 
 	public override void SetDefaults()

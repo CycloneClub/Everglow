@@ -11,8 +11,6 @@ public class EldamberBullet : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Ammo;
 
-	public override string Texture => Commons.ModAsset.White_Mod;
-
 	public override void SetDefaults()
 	{
 		Item.width = 10;

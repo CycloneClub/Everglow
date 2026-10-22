@@ -4,8 +4,6 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Fishing;
 
 public class Duskfin : FishBase
 {
-	public override string Texture => Commons.ModAsset.White_Mod;
-
 	public override void SetDefaults()
 	{
 		base.SetDefaults();
