@@ -20,6 +20,8 @@ public class BlackStarShrubSmall : ModTile, ITileFluentlyDrawn
 			18,
 		};
 		TileObjectData.newTile.CoordinateWidth = 48;
+		// Existing world frames use 16-pixel rows and 48-pixel styles without padding.
+		TileObjectData.newTile.CoordinatePadding = 0;
 		TileObjectData.addTile(Type);
 		DustType = DustID.SpookyWood;
 		var modTranslation = CreateMapEntryName();
