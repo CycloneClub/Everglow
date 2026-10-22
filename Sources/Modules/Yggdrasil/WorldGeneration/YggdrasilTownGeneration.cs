@@ -2377,7 +2377,7 @@ public class YggdrasilTownGeneration
 	}
 
 	/// <summary>
-	/// Fill only the existing themed rooms; other listed relic rewards remain unassigned.
+	/// Fill each themed chest with its primary and one unique, randomly assigned secondary reward.
 	/// </summary>
 	private static void FillTwilightRelicRewards(int centerX, int centerY, Dictionary<Point, string> rooms)
 	{
@@ -2390,15 +2390,17 @@ public class YggdrasilTownGeneration
 			["Rock"] = ModContent.ItemType<RockQuake>(),
 			["Sand"] = ModContent.ItemType<SpringOfQuicksand>(),
 		};
-		// 待分配清单：保留物品记录，尚未分配宝箱，不参与地图投放。
-		int[] unassignedRewards = new[]
+		// 六件副奖励无放回分配，每个主题房间一件，每个世界各一件。
+		var secondaryRewards = new List<int>
 		{
 			ModContent.ItemType<MechanismHalberd>(),
 			ModContent.ItemType<BloodTearCrystalCrown>(),
 			ModContent.ItemType<CelesteStoneWaistPendant>(),
 			ModContent.ItemType<SpikedParma>(),
 			ModContent.ItemType<DarkMassacreDagger>(),
+			ModContent.ItemType<CyanVineRing>(),
 		};
+		var targets = new List<(Chest Chest, int Primary)>();
 		for (int side = 0; side < 2; side++)
 		{
 			for (int floor = 0; floor < 10; floor++)
@@ -2418,15 +2420,24 @@ public class YggdrasilTownGeneration
 					&& TileID.Sets.BasicChest[Main.tile[chest.x, chest.y].TileType]);
 				if (target == null || target.item.Any(item => item != null && !item.IsAir))
 				{
-					Ins.Logger.Warn($"Relic reward not placed in room {side},{floor}: {ItemLoader.GetItem(reward)?.Name}");
-					continue;
+					throw new InvalidOperationException($"Missing or occupied relic reward chest in themed room {room} at {side},{floor}.");
 				}
-				List<Item> contents = new() { new Item(reward) };
-				contents.AddRange(NormalChestContents());
-				for (int slot = 0; slot < contents.Count; slot++)
-				{
-					target.item[slot] = contents[slot];
-				}
+				targets.Add((target, reward));
+			}
+		}
+		if (targets.Count != secondaryRewards.Count)
+		{
+			throw new InvalidOperationException($"Expected {secondaryRewards.Count} themed relic chests, found {targets.Count}.");
+		}
+		foreach (var (target, reward) in targets)
+		{
+			int secondaryIndex = WorldGen.genRand.Next(secondaryRewards.Count);
+			List<Item> contents = new() { new Item(reward), new Item(secondaryRewards[secondaryIndex]) };
+			secondaryRewards.RemoveAt(secondaryIndex);
+			contents.AddRange(NormalChestContents());
+			for (int slot = 0; slot < contents.Count; slot++)
+			{
+				target.item[slot] = contents[slot];
 			}
 		}
 	}
