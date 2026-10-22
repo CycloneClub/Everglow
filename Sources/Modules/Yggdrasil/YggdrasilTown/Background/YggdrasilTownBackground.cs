@@ -19,13 +19,13 @@ public class YggdrasilTownBackground : ModSystem
 
 	public float BackgroundAlphaJellyBallHotbed;
 
-	//public override void OnModLoad()
-	//{
-	//	if (Main.netMode != NetmodeID.Server)
-	//	{
-	//		Ins.HookManager.AddHook(CodeLayer.PostDrawBG, DrawBackground);
-	//	}
-	//}
+	// public override void OnModLoad()
+	// {
+	// 	if (Main.netMode != NetmodeID.Server)
+	// 	{
+	// 		Ins.HookManager.AddHook(CodeLayer.PostDrawBG, DrawBackground);
+	// 	}
+	// }
 
 	public static bool BackgroundStratum1Active()
 	{
@@ -109,22 +109,22 @@ public class YggdrasilTownBackground : ModSystem
 		}
 	}
 
-	//private void DrawBackground()
-	//{
-	//	SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;
-	//	SpriteBatchState sBS2 = sBS;
-	//	sBS2.BlendState = BlendState.NonPremultiplied;
-	//	Main.spriteBatch.End();
-	//	Main.spriteBatch.Begin(sBS2);
-	//	if (BackgroundAlpha <= 0)
-	//	{
-	//		Main.spriteBatch.End();
-	//		Main.spriteBatch.Begin(sBS);
-	//		return;
-	//	}
+	// private void DrawBackground()
+	// {
+	// 	SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;
+	// 	SpriteBatchState sBS2 = sBS;
+	// 	sBS2.BlendState = BlendState.NonPremultiplied;
+	// 	Main.spriteBatch.End();
+	// 	Main.spriteBatch.Begin(sBS2);
+	// 	if (BackgroundAlpha <= 0)
+	// 	{
+	// 		Main.spriteBatch.End();
+	// 		Main.spriteBatch.Begin(sBS);
+	// 		return;
+	// 	}
 
-	//	DrawYggdrasilTownBackground(Color.White * BackgroundAlpha);
-	//	Main.spriteBatch.End();
-	//	Main.spriteBatch.Begin(sBS);
-	//}
+	// 	DrawYggdrasilTownBackground(Color.White * BackgroundAlpha);
+	// 	Main.spriteBatch.End();
+	// 	Main.spriteBatch.Begin(sBS);
+	// }
 }
