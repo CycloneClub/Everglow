@@ -12,22 +12,22 @@ public class StoneBridgePotLootTests
 		.CreateDelegate<Func<UnifiedRandom, (int RewardIndex, int Stack)?>>();
 
 	[TestMethod]
-	public void OneInSevenPotsHasOneOfThreeUniformSpecialSupplies()
+	public void OneInSevenPotsHasOneOfTwoUniformSpecialSupplies()
 	{
 		var random = new UnifiedRandom(831);
-		int[] counts = new int[3];
+		int[] counts = new int[2];
 		for (int i = 0; i < 70000; i++)
 		{
 			var reward = Roll(random);
 			if (reward is { } drop)
 			{
-				Assert.IsTrue(drop.RewardIndex is >= 0 and < 3);
+				Assert.IsTrue(drop.RewardIndex is >= 0 and < 2);
 				counts[drop.RewardIndex]++;
 			}
 		}
 		foreach (int count in counts)
 		{
-			Assert.IsTrue(count is > 3000 and < 3700, $"Expected about 1/21, observed {count}/70000");
+			Assert.IsTrue(count is > 4600 and < 5400, $"Expected about 1/14, observed {count}/70000");
 		}
 	}
 

@@ -82,7 +82,6 @@ public class CorruptMothTreasureBag : ModItem
 	public override void ModifyItemLoot(ItemLoot itemLoot)
 	{
 		itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<MothEye>(), 3));
-		itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.FireflyImpression>(), 5));
 		var blueflowerSet = ItemDropRule.Common(ModContent.ItemType<BlueflowerCap>(), 20);
 		blueflowerSet.OnSuccess(ItemDropRule.Common(ModContent.ItemType<BlueflowerBra>()));
 		blueflowerSet.OnSuccess(ItemDropRule.Common(ModContent.ItemType<BlueflowerDress>()));

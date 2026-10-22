@@ -1,3 +1,5 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Ammos;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Potions;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Tools;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons;
@@ -17,7 +19,7 @@ public class StoneBridgeChestLootTests
 {
 	// Vanilla IDs stand in for mod content while exercising the real Item creation path.
 	private static readonly int[] Primary = [ItemID.CopperShortsword, ItemID.CopperBroadsword, ItemID.CopperAxe, ItemID.CopperHammer];
-	private static readonly int[] Secondary = [ItemID.Torch, ItemID.Shuriken, ItemID.ThrowingKnife];
+	private static readonly int[] Secondary = [ItemID.Torch, ItemID.ThrowingKnife];
 	private const int Rope = ItemID.Rope;
 	private readonly List<Action> restoreContent = [];
 	private UnifiedRandom? originalRandom;
@@ -32,8 +34,14 @@ public class StoneBridgeChestLootTests
 		SetItem<OldPortableLamp>(Primary[2]);
 		SetItem<RustSlingshot>(Primary[3]);
 		SetItem<RuinTorch_Item>(Secondary[0]);
-		SetItem<Caltrop>(Secondary[1]);
-		SetItem<StoneJavelin>(Secondary[2]);
+		SetItem<Caltrop>(ItemID.Shuriken);
+		SetItem<StoneJavelin>(Secondary[1]);
+		SetItem<LightArrow>(ItemID.FlamingArrow);
+		SetItem<LightBullet>(ItemID.SilverBullet);
+		SetItem<GuidePotion>(ItemID.ShinePotion);
+		SetItem<RayPotion>(ItemID.NightOwlPotion);
+		SetItem<JumpPotion>(ItemID.SwiftnessPotion);
+		SetItem<ScalePotion>(ItemID.IronskinPotion);
 		SetItem<NylonRope>(Rope);
 	}
 
@@ -66,6 +74,7 @@ public class StoneBridgeChestLootTests
 		for (int i = 0; i < 10000; i++)
 		{
 			var loot = YggdrasilTownGeneration.BridgeChestContents();
+			Assert.IsFalse(loot.Any(item => item.type == ItemID.Shuriken), "Caltrop is sold only for furnace contribution.");
 			var equipment = loot.Where(x => Primary.Contains(x.type)).ToArray();
 			Assert.AreEqual(1, equipment.Length);
 			Assert.AreEqual(1, equipment[0].stack);
@@ -80,7 +89,7 @@ public class StoneBridgeChestLootTests
 	public void SupplementsNeverDuplicateAndIncludeInclusiveQuantityEndpoints()
 	{
 		WorldGen._genRand = new UnifiedRandom(123);
-		var ranges = new Dictionary<int, (int Min, int Max)> { [Rope] = (70, 150), [ItemID.SilverCoin] = (10, 29), [ItemID.LesserHealingPotion] = (3, 5), [ItemID.RecallPotion] = (3, 5) };
+		var ranges = new Dictionary<int, (int Min, int Max)> { [Rope] = (70, 150), [ItemID.SilverCoin] = (10, 29), [ItemID.LesserHealingPotion] = (3, 5), [ItemID.RecallPotion] = (3, 5), [ItemID.FlamingArrow] = (25, 50), [ItemID.SilverBullet] = (25, 50) };
 		foreach (int type in Primary)
 		{
 			ranges[type] = (1, 1);
@@ -140,7 +149,7 @@ public class StoneBridgeChestLootTests
 		}
 		foreach (int type in Secondary)
 		{
-			Rate(type, 0.5);
+			Rate(type, 0.75);
 		}
 		foreach (int type in Potions)
 		{
@@ -149,6 +158,8 @@ public class StoneBridgeChestLootTests
 		Rate(ItemID.SilverCoin, 0.5);
 		Rate(ItemID.LesserHealingPotion, 0.5);
 		Rate(ItemID.RecallPotion, 2.0 / 3);
+		Rate(ItemID.FlamingArrow, 0.25);
+		Rate(ItemID.SilverBullet, 0.25);
 		Rate(Rope, 1);
 		Assert.AreEqual(0.5, twoSecondary / (double)samples, 0.015);
 	}

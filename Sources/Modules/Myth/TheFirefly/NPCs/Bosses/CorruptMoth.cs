@@ -1420,7 +1420,6 @@ public class CorruptMoth : ModNPC
 		npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<MothRelic>()));
 
 		var rule = new LeadingConditionRule(new Conditions.NotExpert());
-		rule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.FireflyImpression>(), 5));
 		var blueflowerSet = ItemDropRule.Common(ModContent.ItemType<BlueflowerCap>(), 20);
 		blueflowerSet.OnSuccess(ItemDropRule.Common(ModContent.ItemType<BlueflowerBra>()));
 		blueflowerSet.OnSuccess(ItemDropRule.Common(ModContent.ItemType<BlueflowerDress>()));

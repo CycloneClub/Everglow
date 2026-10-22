@@ -1,3 +1,6 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Ammos;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Potions;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 using System.Reflection;
 using Everglow.Yggdrasil.WorldGeneration;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
@@ -19,7 +22,7 @@ public class TwilightRelicChestLootTests
 {
 	private static readonly string[] Themes = ["Wood", "Water", "Shadow", "Blood", "Rock", "Sand"];
 	private static readonly int[] Primary = [1, 2, 3, 4, 5, 6];
-	private static readonly int[] Secondary = [40, 41, 42, 43, 44, 45];
+	private static readonly int[] Secondary = [ItemID.CopperHelmet, ItemID.CopperChainmail, ItemID.CopperGreaves, ItemID.IronHelmet, ItemID.IronChainmail, ItemID.IronGreaves];
 	private readonly List<Action> restore = [];
 	private readonly Dictionary<Point, string> rooms = [];
 
@@ -45,6 +48,14 @@ public class TwilightRelicChestLootTests
 		SetItem<SpikedParma>(Secondary[3]);
 		SetItem<DarkMassacreDagger>(Secondary[4]);
 		SetItem<CyanVineRing>(Secondary[5]);
+		SetItem<LightArrow>(ItemID.FlamingArrow);
+		SetItem<LightBullet>(ItemID.SilverBullet);
+		SetItem<GuidePotion>(ItemID.ShinePotion);
+		SetItem<RayPotion>(ItemID.NightOwlPotion);
+		SetItem<JumpPotion>(ItemID.SwiftnessPotion);
+		SetItem<ScalePotion>(ItemID.IronskinPotion);
+		SetItem<RuinTorch_Item>(ItemID.Torch);
+		SetItem<StoneJavelin>(ItemID.Javelin);
 		SetItem<NylonRope>(ItemID.Rope);
 		SetItem<YggdrasilAmber>(ItemID.Amber);
 		SetItem<CyanVineOre>(ItemID.CopperOre);

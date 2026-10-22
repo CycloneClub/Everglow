@@ -2,6 +2,8 @@ using Everglow.Commons.TileHelper;
 using Everglow.Yggdrasil.Common.Tiles;
 using Everglow.Yggdrasil.KelpCurtain.Walls;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Ammos;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Potions;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Fishing.FishingRods;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Pets;
@@ -2338,7 +2340,9 @@ public class YggdrasilTownGeneration
 				tile.TileFrameX = tile.TileType == (ushort)ModContent.TileType<GreenRelicBrick_plating>() ? (short)(18 * GenRand.Next(2)) : (short)0;
 				if (x == 2 && y == 10)
 				{
-					WorldGenMisc.PlaceChest(checkX, checkY + 6, ModContent.TileType<RustBronzeTreasureChest_Lock>(), new List<Item>() { new Item(setDefaultsToType: ModContent.ItemType<CelticKeyStone>()) }, 0);
+					List<Item> contents = [new Item(ModContent.ItemType<CelticKeyStone>())];
+					contents.AddRange(NormalChestContents());
+					WorldGenMisc.PlaceChest(checkX, checkY + 6, ModContent.TileType<RustBronzeTreasureChest_Lock>(), contents, 0);
 				}
 			}
 		}
@@ -2351,11 +2355,13 @@ public class YggdrasilTownGeneration
 			lengthX = Math.Clamp(lengthX, 0, 1);
 			KillRectangleAreaOfTile(centerX - (int)(60 * lengthX), y, centerX + (int)(60 * lengthX), y);
 		}
-		WorldGenMisc.PlaceChest(centerX, centerY + 229, 21, new List<Item>()
+		var vaultContents = new List<Item>()
 		{
 			new Item(ModContent.ItemType<RingOfMatter>()),
 			new Item(ModContent.ItemType<GunOfAvarice>()),
-		}, 1);
+		};
+		vaultContents.AddRange(NormalChestContents());
+		WorldGenMisc.PlaceChest(centerX, centerY + 229, 21, vaultContents, 1);
 		for (int x0 = -60; x0 < 61; x0++)
 		{
 			int y = centerY + 180;
@@ -3254,49 +3260,7 @@ public class YggdrasilTownGeneration
 				break;
 		}
 
-		// 金币
-		if (WorldGen.genRand.NextBool(5))
-		{
-			chestContents.Add(new Item(setDefaultsToType: ItemID.GoldCoin, WorldGen.genRand.Next(1, 3)));
-		}
-
-		// 绳子
-		chestContents.Add(new Item(setDefaultsToType: ItemID.Rope, WorldGen.genRand.Next(70, 151)));
-
-		// 药水
-		int potionType = 1;
-		switch (WorldGen.genRand.Next(5))
-		{
-			case 0:
-				potionType = ItemID.WarmthPotion;
-				break;
-			case 1:
-				potionType = ItemID.GillsPotion;
-				break;
-			case 2:
-				potionType = ItemID.WaterWalkingPotion;
-				break;
-			case 3:
-				potionType = ItemID.SpelunkerPotion;
-				break;
-			case 4:
-				potionType = ItemID.MiningPotion;
-				break;
-		}
-		chestContents.Add(new Item(setDefaultsToType: potionType, WorldGen.genRand.Next(1, 4)));
-
-		// 荧光棒
-		if (WorldGen.genRand.NextBool(2))
-		{
-			if (WorldGen.genRand.NextBool(5))
-			{
-				chestContents.Add(new Item(setDefaultsToType: ItemID.StickyGlowstick, WorldGen.genRand.Next(20, 61)));
-			}
-			else
-			{
-				chestContents.Add(new Item(setDefaultsToType: ItemID.Glowstick, WorldGen.genRand.Next(20, 61)));
-			}
-		}
+		chestContents.AddRange(NormalChestContents(includeMaterials: false));
 		return chestContents;
 	}
 
@@ -3307,7 +3271,7 @@ public class YggdrasilTownGeneration
 	public static List<Item> TwilightNormalChestContents()
 	{
 		List<Item> chestContents = new List<Item>();
-		int mainItem = WorldGen.genRand.Next(8);
+		int mainItem = WorldGen.genRand.Next(7);
 
 		// 尽可能出现不同奖励
 		switch (mainItem)
@@ -3331,11 +3295,12 @@ public class YggdrasilTownGeneration
 				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<HexaCrystalStaff>(), 1));
 				break;
 			case 6:
-				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<TwilightCrystalMill_Item>(), 1));
-				break;
-			case 7:
 				chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<TwilightRod>(), 1));
 				break;
+		}
+		if (WorldGen.genRand.NextBool(5))
+		{
+			chestContents.Add(new Item(setDefaultsToType: ModContent.ItemType<TwilightCrystalMill_Item>(), 1));
 		}
 		chestContents.AddRange(NormalChestContents());
 		return chestContents;
@@ -3389,7 +3354,6 @@ public class YggdrasilTownGeneration
 		int[] secondaryItems =
 		[
 			ModContent.ItemType<RuinTorch_Item>(),
-			ModContent.ItemType<Caltrop>(),
 			ModContent.ItemType<StoneJavelin>(),
 		];
 		var random = WorldGen.genRand;
@@ -3416,74 +3380,67 @@ public class YggdrasilTownGeneration
 		}
 		if (random.Next(3) < 2)
 		{
-			int[] potions = [ItemID.IronskinPotion, ItemID.ShinePotion, ItemID.NightOwlPotion, ItemID.SwiftnessPotion, ItemID.MiningPotion, ItemID.BuilderPotion];
+			int[] potions = [ModContent.ItemType<ScalePotion>(), ModContent.ItemType<GuidePotion>(), ModContent.ItemType<RayPotion>(), ModContent.ItemType<JumpPotion>(), ItemID.MiningPotion, ItemID.BuilderPotion];
 			chestContents.Add(new Item(potions[random.Next(potions.Length)], random.Next(1, 3)));
+		}
+		if (random.NextBool(2))
+		{
+			int ammo = random.NextBool(2) ? ModContent.ItemType<LightArrow>() : ModContent.ItemType<LightBullet>();
+			chestContents.Add(new Item(ammo, random.Next(25, 51)));
 		}
 		chestContents.Add(new Item(ModContent.ItemType<NylonRope>(), random.Next(70, 151)));
 		return chestContents;
 	}
 
-	public static List<Item> NormalChestContents()
+	public static List<Item> NormalChestContents(bool includeMaterials = true)
 	{
-		List<Item> contents = new List<Item>();
-
-		// Gold coin
-		if (WorldGen.genRand.NextBool(5))
+		var random = WorldGen.genRand;
+		List<Item> contents = [new Item(ModContent.ItemType<NylonRope>(), random.Next(70, 151))];
+		if (random.NextBool(5))
 		{
-			contents.Add(new Item(setDefaultsToType: ItemID.GoldCoin, WorldGen.genRand.Next(1, 3)));
+			contents.Add(new Item(ItemID.GoldCoin, random.Next(1, 3)));
 		}
 
-		// Rope
-		contents.Add(new Item(setDefaultsToType: ModContent.ItemType<NylonRope>(), WorldGen.genRand.Next(70, 151)));
-
-		// Potion
-		int potionType = 1;
-		switch (WorldGen.genRand.Next(6))
+		// 各补给池独立判定；同池等概率选一种。数量上限包含在内。
+		if (random.NextBool(2))
 		{
-			case 0:
-				potionType = ItemID.WarmthPotion;
-				break;
-			case 1:
-				potionType = ItemID.GillsPotion;
-				break;
-			case 2:
-				potionType = ItemID.WaterWalkingPotion;
-				break;
-			case 3:
-				potionType = ItemID.SpelunkerPotion;
-				break;
-			case 4:
-				potionType = ItemID.MiningPotion;
-				break;
-			case 5:
-				potionType = ItemID.RecallPotion;
-				break;
+			int[] ranged = [ModContent.ItemType<LightArrow>(), ModContent.ItemType<LightBullet>(), ModContent.ItemType<StoneJavelin>()];
+			int selected = random.Next(ranged.Length);
+			int stack = selected == 2 ? random.Next(16, 33) : random.Next(25, 51);
+			contents.Add(new Item(ranged[selected], stack));
 		}
-		contents.Add(new Item(setDefaultsToType: potionType, WorldGen.genRand.Next(1, 4)));
-
-		// glow stick
-		if (WorldGen.genRand.NextBool(2))
+		if (random.NextBool(2))
 		{
-			if (WorldGen.genRand.NextBool(5))
+			contents.Add(new Item(ModContent.ItemType<RuinTorch_Item>(), random.Next(10, 21)));
+		}
+		if (random.NextBool(2))
+		{
+			contents.Add(new Item(ItemID.LesserHealingPotion, random.Next(3, 6)));
+		}
+		if (random.Next(3) < 2)
+		{
+			contents.Add(new Item(ItemID.RecallPotion, random.Next(2, 5)));
+		}
+		if (random.Next(3) < 2)
+		{
+			int[] potions = [ModContent.ItemType<GuidePotion>(), ModContent.ItemType<RayPotion>(), ModContent.ItemType<JumpPotion>(), ModContent.ItemType<ScalePotion>(), ItemID.MiningPotion, ItemID.SpelunkerPotion, ItemID.HunterPotion, ItemID.WaterWalkingPotion];
+			contents.Add(new Item(potions[random.Next(potions.Length)], random.Next(1, 3)));
+		}
+		if (random.NextBool(2))
+		{
+			int glowstick = random.NextBool(5) ? ItemID.StickyGlowstick : ItemID.Glowstick;
+			contents.Add(new Item(glowstick, random.Next(20, 61)));
+		}
+		if (includeMaterials)
+		{
+			if (random.NextBool(5))
 			{
-				contents.Add(new Item(setDefaultsToType: ItemID.StickyGlowstick, WorldGen.genRand.Next(20, 61)));
+				contents.Add(new Item(ModContent.ItemType<YggdrasilTown.Items.Materials.YggdrasilAmber>(), random.Next(5, 15)));
 			}
-			else
+			if (random.NextBool(5))
 			{
-				contents.Add(new Item(setDefaultsToType: ItemID.Glowstick, WorldGen.genRand.Next(20, 61)));
+				contents.Add(new Item(ModContent.ItemType<CyanVineOre>(), random.Next(15, 75)));
 			}
-		}
-
-		// yggdrasil Amber
-		if (WorldGen.genRand.NextBool(5))
-		{
-			contents.Add(new Item(setDefaultsToType: ModContent.ItemType<YggdrasilTown.Items.Materials.YggdrasilAmber>(), WorldGen.genRand.Next(5, 15)));
-		}
-
-		// cyan ore
-		if (WorldGen.genRand.NextBool(5))
-		{
-			contents.Add(new Item(setDefaultsToType: ModContent.ItemType<CyanVineOre>(), WorldGen.genRand.Next(15, 75)));
 		}
 		return contents;
 	}
