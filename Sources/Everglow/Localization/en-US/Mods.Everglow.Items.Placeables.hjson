@@ -559,7 +559,12 @@ ExitUnionTile_Item: {
 }
 
 FemaleLampLeaves_Item: {
-	DisplayName: Female Lamp Leaves_ Item
+	DisplayName: Mother Lampwood Leaves
+	Tooltip: ""
+}
+
+FemaleLampWood_Item: {
+	DisplayName: Mother Lampwood Log
 	Tooltip: ""
 }
 

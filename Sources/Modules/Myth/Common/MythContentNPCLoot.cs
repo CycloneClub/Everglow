@@ -1,3 +1,9 @@
+using Everglow.Myth.TheFirefly.Items.SummonItems;
+using Everglow.Myth.TheFirefly.WorldGeneration;
+using SubworldLibrary;
+using Everglow.Myth.Misc.Items.Accessories;
+using Everglow.Myth.Misc.Items.Weapons;
+using Everglow.Myth.Misc.Items.Weapons.Slingshots;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.Localization;
 
@@ -5,283 +11,130 @@ namespace Everglow.Myth.Common;
 
 public class MythContentNPCLoot : GlobalNPC
 {
-	// ModifyNPCLoot uses a unique system called the ItemDropDatabase, which has many different rules for many different drop use cases.
-	// Here we go through all of them, and how they can be used.
-	// There are tons of other examples in vanilla! In a decompiled vanilla build, GameContent/ItemDropRules/ItemDropDatabase adds item drops to every single vanilla NPC, which can be a good resource.
-	// TODO: Finish Weapon Ports first
-	// public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
-	// {
-	//    Player player = Main.LocalPlayer;
-	//    if (npc.type == NPCID.Nutcracker || npc.type == 349)
-	//    {
-	//        /*´óÊ¦*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<Items.Accessories.WalnutClip>(), 180/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*×¨¼Ò*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<Items.Accessories.WalnutClip>(), 270/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*ÆÕÍ¨*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<Items.Accessories.WalnutClip>(), 360/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//    }
-	//    if (npc.type == 48)
-	//    {
-	//        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FeatherMagic>(), 70));
-	//        /*´óÊ¦*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<FeatherMagic>(), 60/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*×¨¼Ò*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<FeatherMagic>(), 90/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*ÆÕÍ¨*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<FeatherMagic>(), 120/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//    }
-	//    if (npc.type == 125 || npc.type == 126)
-	//    {
-	//        /*´óÊ¦*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<BloodLightCyanFlame>(), 16/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*×¨¼Ò*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<BloodLightCyanFlame>(), 50/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*ÆÕÍ¨*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<BloodLightCyanFlame>(), 200/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//    }
-	//    if (npc.type == 50)
-	//    {
-	//        /*´óÊ¦*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<JellySlingshot>(), 8/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*×¨¼Ò*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<JellySlingshot>(), 25/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*ÆÕÍ¨*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<JellySlingshot>(), 100/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//    }
-	//    if (npc.type == 262)
-	//    {
-	//        /*´óÊ¦*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<ThornBomb>(), 8/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*×¨¼Ò*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<ThornBomb>(), 25/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*ÆÕÍ¨*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<ThornBomb>(), 100/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//    }
-	//    if (npc.type == 245)
-	//    {
-	//        /*´óÊ¦*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<TrapYoyo>(), 8/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*×¨¼Ò*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<TrapYoyo>(), 25/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*ÆÕÍ¨*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<TrapYoyo>(), 100/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//    }
-	//    if (npc.type == 127)
-	//    {
-	//        /*´óÊ¦*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<MachineFit>(), 8/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*×¨¼Ò*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<MachineFit>(), 25/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*ÆÕÍ¨*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<MachineFit>(), 100/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//    }
-	//    if (npc.type == 127)
-	//    {
-	//        /*´óÊ¦*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<MachineSkeGun>(), 40/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*×¨¼Ò*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<MachineSkeGun>(), 125/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*ÆÕÍ¨*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<MachineSkeGun>(), 500/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//    }
-	//    if (npc.type == 113)
-	//    {
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<BloodGoldBlade>(), 40/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*×¨¼Ò*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<BloodGoldBlade>(), 125/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*ÆÕÍ¨*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<BloodGoldBlade>(), 500/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
+	// SimpleItemDropRuleCondition 的谓词无法接收本次掉落的玩家。
+	private sealed class JungleDropCondition : IItemDropRuleCondition
+	{
+		public bool CanDrop(DropAttemptInfo info) => info.player.ZoneJungle;
 
-	// }
-	//    if (npc.type == 134)
-	//    {
-	//        /*´óÊ¦*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<LaserWhip>(), 8/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*×¨¼Ò*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<LaserWhip>(), 25/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*ÆÕÍ¨*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<LaserWhip>(), 100/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//    }
-	//    if (npc.type == 266)
-	//    {
-	//        /*´óÊ¦*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<ChaosCurrent>(), 8/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*×¨¼Ò*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<ChaosCurrent>(), 25/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*ÆÕÍ¨*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<ChaosCurrent>(), 100/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//    }
-	//    if (npc.type == 636)
-	//    {
-	//        /*´óÊ¦*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<RainbowLight>(), 8/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*×¨¼Ò*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<RainbowLight>(), 25/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*ÆÕÍ¨*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<RainbowLight>(), 100/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//    }
-	//    if (npc.type == ModContent.NPCType<NPCs.BloodTusk.BloodTusk>())
-	//    {
-	//        /*´óÊ¦*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<ToothSpear>(), 40/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*×¨¼Ò*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<ToothSpear>(), 125/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*ÆÕÍ¨*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<ToothSpear>(), 500/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//    }
-	//    if (npc.type == ModContent.NPCType<NPCs.BloodTusk.BloodTusk>())
-	//    {
-	//        /*´óÊ¦*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<ToothBow>(), 8/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*×¨¼Ò*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<ToothBow>(), 25/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*ÆÕÍ¨*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<ToothBow>(), 100/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//    }
-	//    if (npc.type == 657)
-	//    {
-	//        /*´óÊ¦*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<GelPowerGun>(), 8/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*×¨¼Ò*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<GelPowerGun>(), 25/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*ÆÕÍ¨*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<GelPowerGun>(), 100/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//    }
-	//    if (npc.type == 39)
-	//    {
-	//        /*´óÊ¦*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<AshBone>(), 60/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*×¨¼Ò*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<AshBone>(), 90/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*ÆÕÍ¨*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<AshBone>(), 120/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//    }
-	//    if (npc.type == 398)
-	//    {
-	//        /*´óÊ¦*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<SilenceMirror>(), 40/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*×¨¼Ò*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<SilenceMirror>(), 125/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*ÆÕÍ¨*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<SilenceMirror>(), 500/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//    }
-	//    if (npc.type == 370)
-	//    {
-	//        /*´óÊ¦*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<BlueRain>(), 8/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*×¨¼Ò*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<BlueRain>(), 25/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*ÆÕÍ¨*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<BlueRain>(), 100/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//    }
-	//    if (npc.type == 140)
-	//    {
-	//        /*´óÊ¦*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<AmbiguousNight>(), 100/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*×¨¼Ò*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<AmbiguousNight>(), 150/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*ÆÕÍ¨*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<AmbiguousNight>(), 200/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//    }
-	//    if (npc.type == NPCID.WyvernHead)
-	//    {
-	//        /*´óÊ¦*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<ThunderFlower>(), 50/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*×¨¼Ò*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<ThunderFlower>(), 100/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*ÆÕÍ¨*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<ThunderFlower>(), 140/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//    }
-	//    if (npc.type == 82)
-	//    {
-	//        /*´óÊ¦*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<ComingGhost>(), 100/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*×¨¼Ò*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<ComingGhost>(), 150/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*ÆÕÍ¨*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<ComingGhost>(), 200/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//    }
-	//    if (npc.type == 370)
-	//    {
-	//        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DukeTooth>(), 3));
-	//    }
-	//    if (npc.type == 628)
-	//    {
-	//        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<WindMoveSeed>(), 1, 3, 5));
-	//    }
-	//    if (npc.type == 1)
-	//    {
-	//        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BlueGel>(), 800));
-	//    }
-	//    if (npc.type == -3)
-	//    {
-	//        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<RedGel>(), 800));
-	//    }
-	//    if (npc.type == -1)
-	//    {
-	//        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GreenGel>(), 800));
-	//    }
-	//    if (!npc.friendly && npc.lifeMax > 100)
-	//    {
-	//        /*´óÊ¦*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new EclipseMasterPostPlant(), ModContent.ItemType<GoldRoundYoyo>(), 40/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*×¨¼Ò*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new EclipseExpertPostPlant(), ModContent.ItemType<GoldRoundYoyo>(), 60/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*ÆÕÍ¨*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new EclipseNormalPostPlant(), ModContent.ItemType<GoldRoundYoyo>(), 80/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//    }
-	//    if (!npc.friendly && npc.lifeMax > 100)
-	//    {
-	//        /*´óÊ¦*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new CorruptionMasterHardmode(), ModContent.ItemType<CurseClub>(), 100/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*×¨¼Ò*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new CorruptionExpertHardmode(), ModContent.ItemType<CurseClub>(), 150/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*ÆÕÍ¨*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new CorruptionNormalHardmode(), ModContent.ItemType<CurseClub>(), 200/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//    }
-	//    if (!npc.friendly && npc.lifeMax > 100)
-	//    {
-	//        /*´óÊ¦*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new CorruptionMasterHardmode(), ModContent.ItemType<CorruptEye>(), 160/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*×¨¼Ò*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new CorruptionExpertHardmode(), ModContent.ItemType<CorruptEye>(), 275/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*ÆÕÍ¨*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new CorruptionNormalHardmode(), ModContent.ItemType<CorruptEye>(), 450/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//    }
-	//    if (!npc.friendly && npc.lifeMax > 100)
-	//    {
-	//        /*´óÊ¦*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new CrimsonExpertHardmode(), ModContent.ItemType<GoldLiquidPupil>(), 160/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*×¨¼Ò*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new CrimsonExpertHardmode(), ModContent.ItemType<GoldLiquidPupil>(), 275/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*ÆÕÍ¨*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new CrimsonNormalHardmode(), ModContent.ItemType<GoldLiquidPupil>(), 450/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//    }
-	//    if (!npc.friendly && npc.lifeMax > 100)
-	//    {
-	//        /*´óÊ¦*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new CrimsonMasterHardmode(), ModContent.ItemType<BloodLiquidClub>(), 100/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*×¨¼Ò*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new CrimsonExpertHardmode(), ModContent.ItemType<BloodLiquidClub>(), 150/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*ÆÕÍ¨*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new CrimsonNormalHardmode(), ModContent.ItemType<BloodLiquidClub>(), 200/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//    }
-	//    if (!npc.friendly && npc.lifeMax > 100)
-	//    {
-	//        /*´óÊ¦*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new HallowMasterHardmode(), ModContent.ItemType<CrystalClub>(), 100/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*×¨¼Ò*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new HallowExpertHardmode(), ModContent.ItemType<CrystalClub>(), 150/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        /*ÆÕÍ¨*/
-	//        npcLoot.Add(ItemDropRule.ByCondition(new HallowNormalHardmode(), ModContent.ItemType<CrystalClub>(), 200/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//    }
-	//    if (npc.type == 344)
-	//    {
-	//        npcLoot.Add(ItemDropRule.ByCondition(new InFrostMoonFinal(), ModContent.ItemType<FrozenStormPine>(), 50/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//        npcLoot.Add(ItemDropRule.ByCondition(new InFrostMoonFinal(), ModContent.ItemType<XmasWhip>(), 50/*¸ÅÂÊ·ÖÄ¸*/, 1/*×îÐ¡*/, 1/*×î´ó*/, 1/*¸ÅÂÊ·Ö×Ó*/));
-	//    }
-	// }
+		public bool CanShowItemDropInUI() => true;
+
+		public string GetConditionDescription() => Condition.InJungle.Description.Value;
+	}
+
+	public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
+	{
+		if (npc.type == NPCID.Nutcracker || npc.type == NPCID.NutcrackerSpinning)
+		{
+			npcLoot.Add(new DropBasedOnMasterMode(
+				ItemDropRule.NormalvsExpert(ModContent.ItemType<WalnutClip>(), 360, 270),
+				ItemDropRule.Common(ModContent.ItemType<WalnutClip>(), 180)));
+		}
+
+		if (npc.type == NPCID.Harpy)
+		{
+			npcLoot.Add(new DropBasedOnMasterMode(
+				ItemDropRule.NormalvsExpert(ModContent.ItemType<FeatherMagic>(), 120, 90),
+				ItemDropRule.Common(ModContent.ItemType<FeatherMagic>(), 60)));
+		}
+
+		if (npc.type == NPCID.KingSlime)
+		{
+			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<GelSlingshot>(), 4));
+		}
+
+		if (npc.type == NPCID.PossessedArmor)
+		{
+			npcLoot.Add(new DropBasedOnMasterMode(
+				ItemDropRule.NormalvsExpert(ModContent.ItemType<AmbiguousNight>(), 200, 150),
+				ItemDropRule.Common(ModContent.ItemType<AmbiguousNight>(), 100)));
+		}
+
+		if (npc.type == NPCID.WyvernHead)
+		{
+			npcLoot.Add(new DropBasedOnMasterMode(
+				ItemDropRule.NormalvsExpert(ModContent.ItemType<ThunderFlower>(), 140, 100),
+				ItemDropRule.Common(ModContent.ItemType<ThunderFlower>(), 50)));
+		}
+
+		if (npc.type == NPCID.Wraith)
+		{
+			npcLoot.Add(new DropBasedOnMasterMode(
+				ItemDropRule.NormalvsExpert(ModContent.ItemType<ComingGhost>(), 200, 150),
+				ItemDropRule.Common(ModContent.ItemType<ComingGhost>(), 100)));
+		}
+
+		if (npc.type == NPCID.DukeFishron)
+		{
+			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<DukeTooth>(), 3));
+		}
+
+		// WindMoveSeed 已迁移至 PlantAndFarm，获取规则由该模块另行处理。
+		// if (npc.type == NPCID.Dandelion)
+		// {
+			// npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<WindMoveSeed>(), 1, 3, 5));
+		// }
+
+		if (npc.netID == NPCID.BlueSlime)
+		{
+			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BlueGel>(), 800));
+		}
+
+		if (npc.netID == NPCID.RedSlime)
+		{
+			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<RedGel>(), 800));
+		}
+
+		if (npc.netID == NPCID.GreenSlime)
+		{
+			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GreenGel>(), 800));
+		}
+
+		if (npc.type == NPCID.Everscream)
+		{
+			foreach (var rule in npcLoot.Get().OfType<LeadingConditionRule>())
+			{
+				if (rule.condition is not Conditions.FrostMoonDropGatingChance)
+				{
+					continue;
+				}
+				foreach (var pool in rule.ChainedRules.SelectMany(chain => chain.RuleToChain.ChainedRules)
+					.Select(chain => chain.RuleToChain).OfType<OneFromOptionsDropRule>())
+				{
+					if (pool.dropIds.Contains(ItemID.ChristmasTreeSword))
+					{
+						pool.dropIds = [.. pool.dropIds, ModContent.ItemType<XmasWhip>()];
+					}
+				}
+			}
+		}
+
+		if (!npc.boss)
+		{
+			if (!npc.friendly && npc.lifeMax > 5 && !npc.CountsAsACritter)
+			{
+				npcLoot.Add(ItemDropRule.ByCondition(new JungleDropCondition(), ModContent.ItemType<JungleVitamin>(), 100));
+				var mothWorld = new SimpleItemDropRuleCondition(
+					Language.GetText("Mods.Everglow.Biomes.FireflyBiome.DisplayName"),
+					() => SubworldSystem.IsActive<MothWorld>(), ShowItemDropInUI.Always);
+				npcLoot.Add(ItemDropRule.ByCondition(mothWorld, ModContent.ItemType<EvilCocoon>(), 2500));
+			}
+
+			if (!npc.friendly && npc.lifeMax > 100)
+			{
+				npcLoot.Add(ItemDropRule.ByCondition(new EclipseMasterPostPlant(), ModContent.ItemType<GoldRoundYoyo>(), 40, 1, 1, 1));
+				npcLoot.Add(ItemDropRule.ByCondition(new EclipseExpertPostPlant(), ModContent.ItemType<GoldRoundYoyo>(), 60, 1, 1, 1));
+				npcLoot.Add(ItemDropRule.ByCondition(new EclipseNormalPostPlant(), ModContent.ItemType<GoldRoundYoyo>(), 80, 1, 1, 1));
+
+				npcLoot.Add(ItemDropRule.ByCondition(new CorruptionMasterHardmode(), ModContent.ItemType<CorruptEye>(), 160, 1, 1, 1));
+				npcLoot.Add(ItemDropRule.ByCondition(new CorruptionExpertHardmode(), ModContent.ItemType<CorruptEye>(), 275, 1, 1, 1));
+				npcLoot.Add(ItemDropRule.ByCondition(new CorruptionNormalHardmode(), ModContent.ItemType<CorruptEye>(), 450, 1, 1, 1));
+
+				npcLoot.Add(ItemDropRule.ByCondition(new CrimsonMasterHardmode(), ModContent.ItemType<GoldLiquidPupil>(), 160, 1, 1, 1));
+				npcLoot.Add(ItemDropRule.ByCondition(new CrimsonExpertHardmode(), ModContent.ItemType<GoldLiquidPupil>(), 275, 1, 1, 1));
+				npcLoot.Add(ItemDropRule.ByCondition(new CrimsonNormalHardmode(), ModContent.ItemType<GoldLiquidPupil>(), 450, 1, 1, 1));
+			}
+		}
+	}
 }
 
 internal class CrimsonExpertHardmode : IItemDropRuleCondition
@@ -591,32 +444,6 @@ internal class EclipseNormalPostPlant : IItemDropRuleCondition
 		if (Language.ActiveCulture.Name == "zh-Hans")
 		{
 			desc = "½öÔÚÊÀ¼ÍÖ®»¨ºóÈÕÊ³";
-		}
-
-		return desc;
-	}
-}
-
-internal class InFrostMoonFinal : IItemDropRuleCondition
-{
-	private bool CanD => Main.snowMoon && Main.invasionProgressWave >= 20;
-
-	public bool CanDrop(DropAttemptInfo info)
-	{
-		return CanD;
-	}
-
-	public bool CanShowItemDropInUI()
-	{
-		return CanD;
-	}
-
-	public string GetConditionDescription()
-	{
-		string desc = "Only Frost Moon during Chrismas";
-		if (Language.ActiveCulture.Name == "zh-Hans")
-		{
-			desc = "½öÔÚÊ¥µ®½ÚÆÚ¼äËªÔÂ";
 		}
 
 		return desc;

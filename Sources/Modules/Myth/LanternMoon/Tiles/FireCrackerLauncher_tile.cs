@@ -127,8 +127,13 @@ public class FireCrackerLauncher_tile : ModTile
 
 	public override bool RightClick(int i, int j)
 	{
+		if (!Main.LocalPlayer.ConsumeItem(ModContent.ItemType<Items.FireCracker>()))
+		{
+			return false;
+		}
+
 		Activate(i, j);
-		return base.RightClick(i, j);
+		return true;
 	}
 
 	public override bool CanExplode(int i, int j)

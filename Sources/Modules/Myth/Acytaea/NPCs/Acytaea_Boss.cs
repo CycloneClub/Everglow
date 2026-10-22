@@ -1,6 +1,8 @@
 using Everglow.Commons.Coroutines;
 using Everglow.Commons.CustomTiles;
 using Everglow.Myth.Acytaea.Projectiles;
+using Everglow.Myth.Acytaea.Vanities;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.Audio;
 using Terraria.DataStructures;
 
@@ -14,6 +16,12 @@ public class Acytaea_Boss : ModNPC
 	public override string Texture => "Everglow/Myth/Acytaea/NPCs/Acytaea";
 
 	public override string HeadTexture => "Everglow/Myth/Acytaea/NPCs/Acytaea_Head_Boss";
+
+	public override void ModifyNPCLoot(NPCLoot npcLoot)
+	{
+		npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Acytaea_sword_Item>()));
+		npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Acytaea_horn>(), 7));
+	}
 
 	public override void SetDefaults()
 	{

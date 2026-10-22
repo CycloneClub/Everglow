@@ -571,6 +571,11 @@ ExitUnionTile_Item: {
 }
 
 FemaleLampLeaves_Item: {
+	DisplayName: 灯木母树树叶
+	Tooltip: ""
+}
+
+FemaleLampWood_Item: {
 	DisplayName: 灯木母树原木
 	Tooltip: ""
 }

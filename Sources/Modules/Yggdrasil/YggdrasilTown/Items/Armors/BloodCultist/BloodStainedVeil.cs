@@ -37,14 +37,6 @@ public class BloodStainedVeil : ModItem
 		player.GetDamage(DamageClass.Magic) += 0.06f;
 	}
 
-	public override void AddRecipes()
-	{
-		Recipe recipe = CreateRecipe();
-
-		recipe.AddTile(TileID.WorkBenches);
-		recipe.Register();
-	}
-
 	public class BloodCultistPlayer : ModPlayer
 	{
 		public bool hasBloodCultistSet;

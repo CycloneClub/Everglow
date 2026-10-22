@@ -2,7 +2,6 @@ using Everglow.Commons.TileHelper;
 using Everglow.Myth.TheFirefly.Dusts;
 using Everglow.Myth.TheFirefly.Gores;
 using Everglow.Myth.TheFirefly.Items.Materials;
-using Terraria.Audio;
 using Terraria.GameContent.Drawing;
 using Terraria.ObjectData;
 
@@ -24,45 +23,28 @@ public class BluishGiantGentian : ModTile, ITileFluentlyDrawn
 			16,
 			18,
 		};
-		TileObjectData.newTile.CoordinateWidth = 60;
+		// Include the inherited 2-pixel padding in the existing 120-pixel style stride.
+		TileObjectData.newTile.CoordinateWidth = 118;
 		TileObjectData.addTile(Type);
 		DustType = ModContent.DustType<BluishGiantGentian_dust>();
 		AddMapEntry(new Color(8, 110, 255));
 		HitSound = SoundID.Grass;
 	}
 
-	public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
+	public override IEnumerable<Item> GetItemDrops(int i, int j)
 	{
-		if (fail)
-		{
-			return;
-		}
-
-		var thisTile = Main.tile[i, j];
-		int x0 = i;
-		int y0 = j - thisTile.TileFrameY / 18;
-		int times = 1;
-		for (int y = 0; y < 3; y++)
-		{
-			var tile = Main.tile[x0, y0 + y];
-			if (tile.TileFrameY == y * 18)
-			{
-				if (tile.TileType == Type)
-				{
-					times++;
-					tile.HasTile = false;
-				}
-			}
-			if (y == 0)
-			{
-				GenerateGores(i, j);
-			}
-		}
 		if (Main.rand.NextBool(4))
 		{
-			Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, new Item(ModContent.ItemType<GlowingPetal>(), 1));
+			yield return new Item(ModContent.ItemType<GlowingPetal>(), 1);
 		}
-		SoundEngine.PlaySound(HitSound, new Vector2(i * 16, j * 16));
+	}
+
+	public override void KillMultiTile(int i, int j, int frameX, int frameY)
+	{
+		if (!Main.dedServ)
+		{
+			GenerateGores(i, j);
+		}
 	}
 
 	public void GenerateGores(int i, int j)
@@ -138,8 +120,10 @@ public class BluishGiantGentian : ModTile, ITileFluentlyDrawn
 	public override void PlaceInWorld(int i, int j, Item item)
 	{
 		short num = (short)Main.rand.Next(0, 12);
-		Main.tile[i, j].TileFrameX = (short)(num * 120);
-		Main.tile[i, j + 1].TileFrameX = (short)(num * 120);
+		for (int y = 0; y < 3; y++)
+		{
+			Main.tile[i, j + y].TileFrameX = (short)(num * 120);
+		}
 	}
 
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
@@ -154,12 +138,6 @@ public class BluishGiantGentian : ModTile, ITileFluentlyDrawn
 			Lighting.AddLight(new Vector2(i, j) * 16 + new Vector2(8), new Vector3(0.8f, 1.2f, 1.9f));
 		}
 		return false;
-	}
-
-	public override bool TileFrame(int i, int j, ref bool resetFrame, ref bool noBreak)
-	{
-		noBreak = true;
-		return base.TileFrame(i, j, ref resetFrame, ref noBreak);
 	}
 
 	private static double _oldWindCounter = 0;

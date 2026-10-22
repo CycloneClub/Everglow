@@ -1,3 +1,4 @@
+using Everglow.Myth.OmniElementItems.Vanities;
 using Everglow.Myth.TheFirefly.Items.Accessories;
 using Everglow.Myth.TheFirefly.Items.Weapons;
 using Everglow.Myth.TheFirefly.NPCs.Bosses;
@@ -5,6 +6,7 @@ using Everglow.Myth.TheTusk.Items.Accessories;
 using Everglow.Myth.TheTusk.Items.Weapons;
 using Terraria.GameContent;
 using Terraria.GameContent.Creative;
+using Terraria.GameContent.ItemDropRules;
 
 namespace Everglow.Myth.TheFirefly.Items.BossDrops;
 
@@ -40,7 +42,7 @@ public class CorruptMothTreasureBag : ModItem
 
 	public override void RightClick(Player player)
 	{
-		switch (Main.rand.Next(9))
+		switch (Main.rand.Next(10))
 		{
 			case 0:
 				player.QuickSpawnItem(null, ModContent.ItemType<ShadowWingBow>(), 1);
@@ -69,9 +71,24 @@ public class CorruptMothTreasureBag : ModItem
 			case 8:
 				player.QuickSpawnItem(null, ModContent.ItemType<FlowLightMissile>(), 1);
 				break;
+			case 9:
+				player.QuickSpawnItem(null, ModContent.ItemType<NavyThunder>(), 1);
+				break;
 		}
 		player.QuickSpawnItem(null, ItemID.GoldCoin, 7);
 		base.RightClick(player);
+	}
+
+	public override void ModifyItemLoot(ItemLoot itemLoot)
+	{
+		itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<MothEye>(), 3));
+		var blueflowerSet = ItemDropRule.Common(ModContent.ItemType<BlueflowerCap>(), 20);
+		blueflowerSet.OnSuccess(ItemDropRule.Common(ModContent.ItemType<BlueflowerBra>()));
+		blueflowerSet.OnSuccess(ItemDropRule.Common(ModContent.ItemType<BlueflowerDress>()));
+		itemLoot.Add(blueflowerSet);
+		itemLoot.Add(new DropBasedOnMasterMode(
+			ItemDropRule.Common(ModContent.ItemType<DarknessFan>(), 25),
+			ItemDropRule.Common(ModContent.ItemType<DarknessFan>(), 10)));
 	}
 
 	// Below is code for the visuals

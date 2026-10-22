@@ -9,9 +9,6 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Tools;
 /// </summary>
 public class EldamberAxe : ModItem
 {
-	// 临时使用已有白色纹理，待正式素材补齐后替换。
-	public override string Texture => Commons.ModAsset.White_Mod;
-
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Tools;
 
 	public override void SetDefaults()

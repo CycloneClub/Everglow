@@ -282,6 +282,32 @@ public class MothLand : ModSystem
 				RandomUpdate(x, y, ModContent.TileType<DarkCocoon>());
 			}
 		}
+		PlaceDarkFlowers();
+	}
+
+	private static void PlaceDarkFlowers()
+	{
+		int groundType = ModContent.TileType<DarkCocoon>();
+		ushort flowerType = (ushort)ModContent.TileType<DarkFlowerPlant>();
+		for (int x = 20; x < Main.maxTilesX - 20; x++)
+		{
+			for (int y = 20; y < Main.maxTilesY - 20; y++)
+			{
+				Tile ground = Main.tile[x, y];
+				Tile flower = Main.tile[x, y - 1];
+				if (!ground.HasTile || ground.TileType != groundType || ground.IsActuated || ground.IsHalfBlock || ground.Slope != SlopeType.Solid || flower.HasTile || flower.LiquidAmount > 0)
+				{
+					continue;
+				}
+				// 参照自然的恩赐的稀有植物分支；此处是每个合适空位的暂定生成率。
+				if (WorldGen.genRand.NextBool(230))
+				{
+					flower.ClearTile();
+					flower.HasTile = true;
+					flower.TileType = flowerType;
+				}
+			}
+		}
 	}
 
 	public static void BuildWorldMothCave()
