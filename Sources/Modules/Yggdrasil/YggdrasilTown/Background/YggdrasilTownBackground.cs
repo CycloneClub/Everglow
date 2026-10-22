@@ -1,5 +1,4 @@
 using Everglow.Commons.DataStructures;
-using Everglow.Commons.Utilities.BackgroundHelper;
 using Everglow.Yggdrasil.Common.BackgroundManager;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using SubworldLibrary;
@@ -20,22 +19,19 @@ public class YggdrasilTownBackground : ModSystem
 
 	public float BackgroundAlphaJellyBallHotbed;
 
-	public override void OnModLoad()
-	{
-		if (Main.netMode != NetmodeID.Server)
-		{
-			Ins.HookManager.AddHook(CodeLayer.PostDrawBG, DrawBackground);
-		}
-	}
+	//public override void OnModLoad()
+	//{
+	//	if (Main.netMode != NetmodeID.Server)
+	//	{
+	//		Ins.HookManager.AddHook(CodeLayer.PostDrawBG, DrawBackground);
+	//	}
+	//}
 
 	public static bool BackgroundStratum1Active()
 	{
-		if (Main.screenPosition.Y > Stratum1Center.Y - 18000 && SubworldSystem.IsActive<YggdrasilWorld>())
-		{
-			return true;
-		}
-
-		return YggdrasilTownCentralSystem.InYggdrasilTown(Main.screenPosition + new Vector2(Main.screenWidth, Main.screenHeight) * 0.5f);
+		return Main.screenPosition.Y > Stratum1Center.Y - 18000 && SubworldSystem.IsActive<YggdrasilWorld>()
+			? true
+			: YggdrasilTownCentralSystem.InYggdrasilTown(Main.screenPosition + new Vector2(Main.screenWidth, Main.screenHeight) * 0.5f);
 	}
 
 	public override void PostUpdateEverything()
@@ -113,22 +109,22 @@ public class YggdrasilTownBackground : ModSystem
 		}
 	}
 
-	private void DrawBackground()
-	{
-		SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;
-		SpriteBatchState sBS2 = sBS;
-		sBS2.BlendState = BlendState.NonPremultiplied;
-		Main.spriteBatch.End();
-		Main.spriteBatch.Begin(sBS2);
-		if (BackgroundAlpha <= 0)
-		{
-			Main.spriteBatch.End();
-			Main.spriteBatch.Begin(sBS);
-			return;
-		}
+	//private void DrawBackground()
+	//{
+	//	SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;
+	//	SpriteBatchState sBS2 = sBS;
+	//	sBS2.BlendState = BlendState.NonPremultiplied;
+	//	Main.spriteBatch.End();
+	//	Main.spriteBatch.Begin(sBS2);
+	//	if (BackgroundAlpha <= 0)
+	//	{
+	//		Main.spriteBatch.End();
+	//		Main.spriteBatch.Begin(sBS);
+	//		return;
+	//	}
 
-		DrawYggdrasilTownBackground(Color.White * BackgroundAlpha);
-		Main.spriteBatch.End();
-		Main.spriteBatch.Begin(sBS);
-	}
+	//	DrawYggdrasilTownBackground(Color.White * BackgroundAlpha);
+	//	Main.spriteBatch.End();
+	//	Main.spriteBatch.Begin(sBS);
+	//}
 }
