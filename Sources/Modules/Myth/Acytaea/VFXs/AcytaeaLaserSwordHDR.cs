@@ -16,7 +16,7 @@ public class AcytaeaLaserSwordHDRPipeline : Pipeline
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		var model = Matrix.CreateTranslation(new Vector3(0, 0, 0)) * Main.GameViewMatrix.TransformationMatrix;
 		effect.Parameters["uTransform"].SetValue(model * projection);
-		Texture2D dark = Commons.ModAsset.Noise_perlin.Value;
+		Texture2D dark = Commons.ModAsset.Noise_Perlin.Value;
 		Ins.Batch.BindTexture<Vertex2D>(dark);
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointClamp;
 		Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.None, SamplerState.PointWrap, RasterizerState.CullNone);

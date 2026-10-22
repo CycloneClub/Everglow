@@ -11,6 +11,10 @@ public class ScreenReflectionPipeline : Pipeline
 {
 	private RenderTarget2D screenReflectionScreen; // 反射区域
 
+	protected virtual bool IncludeLocalPlayer => true;
+
+	protected virtual Matrix CaptureTransform => Matrix.Invert(Main.GameViewMatrix.TransformationMatrix);
+
 	public override void Load()
 	{
 		Ins.MainThread.AddTask(() =>
@@ -43,16 +47,17 @@ public class ScreenReflectionPipeline : Pipeline
 			RasterizerState.CullNone);
 		spriteBatch.Draw(Main.screenTarget, Vector2.Zero, Color.White);
 		spriteBatch.End();
-		List<Player> players = new List<Player>() { Main.LocalPlayer };
-
-		// 外加玩家
-		Main.PlayerRenderer.DrawPlayers(Main.Camera, players);
+		if (IncludeLocalPlayer)
+		{
+			List<Player> players = new List<Player>() { Main.LocalPlayer };
+			Main.PlayerRenderer.DrawPlayers(Main.Camera, players);
+		}
 
 		graphicsDevice.SetRenderTarget(screenReflectionScreen);
 
 		// 以另一种方法绘制保存下来的屏幕
 		spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque, SamplerState.PointClamp, DepthStencilState.Default,
-			RasterizerState.CullNone, null, Matrix.Invert(Main.GameViewMatrix.TransformationMatrix));
+			RasterizerState.CullNone, null, CaptureTransform);
 		spriteBatch.Draw(Main.screenTargetSwap, Vector2.Zero, Color.White);
 		spriteBatch.End();
 
@@ -67,6 +72,14 @@ public class ScreenReflectionPipeline : Pipeline
 		spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, SamplerState.PointClamp, DepthStencilState.None,
 			RasterizerState.CullNone);
 
+		ApplyReflectionEffect();
+		Main.graphics.GraphicsDevice.Textures[0] = screenReflectionScreen;
+		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
+		Main.graphics.GraphicsDevice.SamplerStates[1] = SamplerState.PointClamp;
+	}
+
+	protected virtual void ApplyReflectionEffect()
+	{
 		Effect ef = Commons.ModAsset.ScreenReflection_NormalColor.Value;
 		var viewport = Main.graphics.GraphicsDevice.Viewport;
 
@@ -85,9 +98,6 @@ public class ScreenReflectionPipeline : Pipeline
 		ef.Parameters["uViewProj"].SetValue(Main.GameViewMatrix.TransformationMatrix * projection);
 
 		ef.CurrentTechnique.Passes["Test"].Apply();
-		Main.graphics.GraphicsDevice.Textures[0] = screenReflectionScreen;
-		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
-		Main.graphics.GraphicsDevice.SamplerStates[1] = SamplerState.PointClamp;
 	}
 
 	public override void Render(IEnumerable<IVisual> visuals)

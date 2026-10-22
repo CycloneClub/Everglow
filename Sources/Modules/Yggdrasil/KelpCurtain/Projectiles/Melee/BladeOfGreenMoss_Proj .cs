@@ -25,7 +25,7 @@ public class BladeOfGreenMoss_Proj : MeleeProj
 
 	public override string TrailColorTex()
 	{
-		return ModAsset.BladeOfGreenMoss_Color_Mod;
+		return ModAsset.Blade_Of_Green_Moss_Color_Mod;
 	}
 
 	public override float TrailAlpha(float factor)

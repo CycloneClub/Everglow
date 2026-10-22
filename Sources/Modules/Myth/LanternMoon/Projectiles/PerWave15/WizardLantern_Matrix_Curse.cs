@@ -167,7 +167,7 @@ public class WizardLantern_Matrix_Curse : ModProjectile
 		if (bars.Count > 0)
 		{
 			var texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
-			Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_perlin.Value;
+			Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_Perlin.Value;
 			Main.graphics.GraphicsDevice.Textures[0] = texture;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
@@ -183,8 +183,8 @@ public class WizardLantern_Matrix_Curse : ModProjectile
 		effect1.Parameters["uTime"].SetValue((float)Main.timeForVisualEffects * 0.003f);
 		effect1.CurrentTechnique.Passes[0].Apply();
 
-		Main.graphics.GraphicsDevice.Textures[2] = Commons.ModAsset.Noise_Sand_shallow.Value;
-		Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_rgb_large.Value;
+		Main.graphics.GraphicsDevice.Textures[2] = Commons.ModAsset.Noise_Sand_Shallow.Value;
+		Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_RGB_Large.Value;
 		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Wave_full_black.Value;
 		if (bars_shadowRing_dark.Count > 0)
 		{

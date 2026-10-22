@@ -232,7 +232,7 @@ public class BloodLanternGhost_PowerBall_Explosion : ModProjectile
 
 		if (bars.Count > 0 && bars_dark.Count > 0 && bars_side.Count > 0)
 		{
-			Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_rgb_large.Value;
+			Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_RGB_Large.Value;
 			Main.graphics.GraphicsDevice.Textures[0] = ModAsset.LanternGhostKing_Matrix_black.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars_dark.ToArray(), 0, bars_dark.Count - 2);
 			Main.graphics.GraphicsDevice.Textures[0] = ModAsset.LanternGhostKing_Matrix.Value;

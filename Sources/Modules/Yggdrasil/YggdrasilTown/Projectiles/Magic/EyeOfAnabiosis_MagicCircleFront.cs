@@ -89,7 +89,7 @@ public class EyeOfAnabiosis_MagicCircleFront : ModProjectile
 
 		Effect shineEffect = ModAsset.EyeOfAnabiosis_Shine.Value;
 		shineEffect.Parameters["uTime"].SetValue((float)Main.timeForVisualEffects);
-		shineEffect.Parameters["uNoise"].SetValue(Commons.ModAsset.NoiseWave.Value);
+		shineEffect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Wave.Value);
 		shineEffect.CurrentTechnique.Passes["MagicCircle_Pixel"].Apply();
 
 		// Beam of magic circle

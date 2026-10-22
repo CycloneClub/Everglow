@@ -65,7 +65,7 @@ public class MothBuffTarget : GlobalNPC
 			var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 			var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) * Main.GameViewMatrix.TransformationMatrix;
 			mothMarkEff.Parameters["uTransform"].SetValue(model * projection);
-			mothMarkEff.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_spiderNet.Value);
+			mothMarkEff.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Spider_Net.Value);
 			mothMarkEff.Parameters["duration"].SetValue(colorValue);
 			mothMarkEff.CurrentTechnique.Passes[0].Apply();
 

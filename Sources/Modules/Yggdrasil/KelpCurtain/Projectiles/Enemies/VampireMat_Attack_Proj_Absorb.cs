@@ -140,9 +140,9 @@ public class VampireMat_Attack_Proj_Absorb : ModProjectile
 
 		if (bars.Count > 2)
 		{
-			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_hiveNet_black.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_Hive_Net_Black.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars_dark.ToArray(), 0, bars_dark.Count - 2);
-			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_hiveNet.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_Hive_Net.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 		bars = [];
@@ -160,9 +160,9 @@ public class VampireMat_Attack_Proj_Absorb : ModProjectile
 
 		if (bars.Count > 2)
 		{
-			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_hiveNet_black.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_Hive_Net_Black.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars_dark.ToArray(), 0, bars_dark.Count - 2);
-			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_hiveNet.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_Hive_Net.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 

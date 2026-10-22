@@ -88,6 +88,6 @@ public class SpringOfQuicksand_SandTrail : Visual
 			bars.Add(pos + dir, envLight, new Vector3(i / 40f - timeValue, 0, zCoord));
 			bars.Add(pos - dir, envLight, new Vector3(i / 40f - timeValue, 1, zCoord));
 		}
-		Ins.Batch.Draw(Commons.ModAsset.Noise_flame_3.Value, bars, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(Commons.ModAsset.Noise_Flame_3.Value, bars, PrimitiveType.TriangleStrip);
 	}
 }

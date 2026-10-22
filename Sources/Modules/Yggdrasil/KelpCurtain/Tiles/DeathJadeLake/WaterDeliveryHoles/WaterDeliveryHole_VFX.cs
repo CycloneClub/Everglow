@@ -47,10 +47,10 @@ public class WaterDeliveryHole_VFX : TileVFX
 			bars_side_right_dark.Add(Position + pos + new Vector2(0, 0), drawColor_dark, new Vector3(coordX + timeValue, 0.5f, 0));
 		}
 
-		Ins.Batch.Draw(Commons.ModAsset.Noise_flame_3_black.Value, bars_side_left_dark, PrimitiveType.TriangleStrip);
-		Ins.Batch.Draw(Commons.ModAsset.Noise_flame_3_black.Value, bars_side_right_dark, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(Commons.ModAsset.Noise_Flame_3_Black.Value, bars_side_left_dark, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(Commons.ModAsset.Noise_Flame_3_Black.Value, bars_side_right_dark, PrimitiveType.TriangleStrip);
 
-		Ins.Batch.Draw(Commons.ModAsset.Noise_flame_3.Value, bars_side_left, PrimitiveType.TriangleStrip);
-		Ins.Batch.Draw(Commons.ModAsset.Noise_flame_3.Value, bars_side_right, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(Commons.ModAsset.Noise_Flame_3.Value, bars_side_left, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(Commons.ModAsset.Noise_Flame_3.Value, bars_side_right, PrimitiveType.TriangleStrip);
 	}
 }

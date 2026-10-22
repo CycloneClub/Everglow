@@ -43,7 +43,7 @@ public class LampWoodSword_Projectile : MeleeProj
 
 	public override string TrailColorTex()
 	{
-		return ModAsset.LampWood_meleeColor_Mod;
+		return ModAsset.Lamp_Wood_Melee_Color_Mod;
 	}
 
 	public override float TrailAlpha(float factor)

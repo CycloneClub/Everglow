@@ -79,7 +79,7 @@ public class GreenSungloShield_A : ModProjectile
 
 		Effect shineEffect = ModAsset.GreenSungloShield_VFX.Value;
 		shineEffect.Parameters["uTime"].SetValue((float)Main.timeForVisualEffects);
-		shineEffect.Parameters["uNoise"].SetValue(Commons.ModAsset.NoiseWave.Value);
+		shineEffect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Wave.Value);
 		shineEffect.CurrentTechnique.Passes["MagicCircle_Pixel"].Apply();
 
 		Player Owner = Main.player[Projectile.owner];

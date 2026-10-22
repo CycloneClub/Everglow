@@ -127,7 +127,7 @@ public class MagnetSphereArray : ModProjectile, IWarpProjectile
 			bars.Add(new Vertex2D(center + radius * rad, baseColor, new Vector3(x / 30f, 0 + timeValue, 0)));
 			bars.Add(new Vertex2D(center + radius * (rad - 15 * timer / 30f), Color.Transparent, new Vector3(x / 30f, 0.1f + timeValue, 0)));
 		}
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_phantom.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_Phantom.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		bars = new List<Vertex2D>();
@@ -138,7 +138,7 @@ public class MagnetSphereArray : ModProjectile, IWarpProjectile
 			bars.Add(new Vertex2D(center + radius * rad, baseColor, new Vector3(x / 30f, 0 + timeValue, 0)));
 			bars.Add(new Vertex2D(center + radius * (rad - 15 * timer / 30f), Color.Transparent, new Vector3(x / 30f, 0.1f + timeValue, 0)));
 		}
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_phantom.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_Phantom.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		bars = new List<Vertex2D>();
@@ -154,7 +154,7 @@ public class MagnetSphereArray : ModProjectile, IWarpProjectile
 			bars.Add(new Vertex2D(center + radius * 80 - cut * width * 0.4f, baseColor, new Vector3(x / 3f - 0.4f, 0.4f + timeValue * 0.2f, 0)));
 			bars.Add(new Vertex2D(center + radius * 100, baseColor, new Vector3(x / 3f, 0.8f + timeValue * 0.2f, 0)));
 		}
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_crack_dense.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_Crack_Dense.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, bars.ToArray(), 0, bars.Count / 3);
 	}

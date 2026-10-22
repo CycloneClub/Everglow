@@ -8,7 +8,7 @@ public class BloodDropPipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.BloodDrop;
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_bloodDrop.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Blood_Drop.Value);
 	}
 
 	public override void BeginRender()

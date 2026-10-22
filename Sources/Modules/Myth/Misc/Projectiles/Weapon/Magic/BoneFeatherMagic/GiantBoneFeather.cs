@@ -88,13 +88,13 @@ public class GiantBoneFeather : ModProjectile
 		{
 			float timeValue = (80 - timeTokill) / 80f;
 			DrawTrail(Commons.ModAsset.Trail_2_black_thick.Value, Color.White, 36);
-			DrawTrail(Commons.ModAsset.Noise_spine.Value, new Color(0.9f * (1 - timeValue), 0.9f * (1 - timeValue), 0.6f * (1 - timeValue), 0f), Math.Max(timeTokill - 44, 0));
+			DrawTrail(Commons.ModAsset.Noise_Spine.Value, new Color(0.9f * (1 - timeValue), 0.9f * (1 - timeValue), 0.6f * (1 - timeValue), 0f), Math.Max(timeTokill - 44, 0));
 			return;
 		}
 		else
 		{
 			DrawTrail(Commons.ModAsset.Trail_2_black_thick.Value, Color.White);
-			DrawTrail(Commons.ModAsset.Noise_spine.Value, new Color(0.9f, 0.9f, 0.5f, 0f));
+			DrawTrail(Commons.ModAsset.Noise_Spine.Value, new Color(0.9f, 0.9f, 0.5f, 0f));
 		}
 		SpriteEffects spriteEffects = SpriteEffects.None;
 		if (Projectile.spriteDirection == -1)

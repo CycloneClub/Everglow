@@ -9,7 +9,7 @@ public class RayDustPipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.RayDust;
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_ray.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Ray.Value);
 	}
 
 	public override void BeginRender()

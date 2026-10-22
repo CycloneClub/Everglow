@@ -198,7 +198,7 @@ public class Schorl_Laser : ModProjectile
 		bars.Add(EndPos - width, drawColor * 0, new Vector3(timeValue + distance, 1f, 1));
 		if (bars.Count > 2)
 		{
-			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_perlin.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_Perlin.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 		bars = new List<Vertex2D>();
@@ -211,7 +211,7 @@ public class Schorl_Laser : ModProjectile
 		}
 		if (bars.Count > 2)
 		{
-			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_perlin.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_Perlin.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 

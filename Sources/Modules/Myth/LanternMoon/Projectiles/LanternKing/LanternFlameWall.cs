@@ -193,12 +193,12 @@ public class LanternFlameWall : ModProjectile
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition, 0)) * Main.GameViewMatrix.TransformationMatrix;
 		effect.Parameters["uTransform"].SetValue(model * projection);
-		effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_rgb.Value);
+		effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_RGB.Value);
 		effect.Parameters["uDuration"].SetValue(0);
 		effect.CurrentTechnique.Passes[0].Apply();
-		Main.graphics.GraphicsDevice.Textures[1] = ModAsset.HeatMap_flameRing_lantern.Value;
+		Main.graphics.GraphicsDevice.Textures[1] = ModAsset.HeatMap_Flame_Ring_Lantern.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[1] = SamplerState.AnisotropicClamp;
-		Main.graphics.GraphicsDevice.Textures[2] = Commons.ModAsset.Noise_cell.Value;
+		Main.graphics.GraphicsDevice.Textures[2] = Commons.ModAsset.Noise_Cell.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[2] = SamplerState.AnisotropicClamp;
 		if (bars.Count > 0)
 		{
@@ -248,6 +248,6 @@ public class LanternFlameWall : ModProjectile
 			bars.Add(pos - dir * 256, new Color(1f, 1f, 0.9f, 0f), new Vector3(coordX, timeValue + 0.12f, 1));
 		}
 
-		// spriteBatch.Draw(Commons.ModAsset.Noise_rgb_large.Value, bars, PrimitiveType.TriangleStrip);
+		// spriteBatch.Draw(Commons.ModAsset.Noise_RGB_Large.Value, bars, PrimitiveType.TriangleStrip);
 	}
 }

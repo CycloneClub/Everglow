@@ -69,7 +69,7 @@ public class BombShakeWave : ModProjectile, IWarpProjectile
 	{
 		float value = (200 - Projectile.timeLeft) / 100f;
 		value = MathF.Sqrt(value);
-		Texture2D t = ModAsset.HiveCyberNoiseThicker.Value;
+		Texture2D t = Commons.ModAsset.Hive_Cyber_Noise_Thicker.Value;
 		float width = 60;
 		if (Projectile.timeLeft < 60)
 		{

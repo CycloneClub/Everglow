@@ -9,7 +9,7 @@ public class DeathJadeLakeWater_TyndallLight : BackgroundSlideBase
 	public override void SetDefaults()
 	{
 		base.SetDefaults();
-		Texture = Commons.ModAsset.Noise_perlin.Value;
+		Texture = Commons.ModAsset.Noise_Perlin.Value;
 		Distance = 2.4f;
 		LayerPriority = 1;
 		Shader = Effects.XWrap_YWrap_Shader;

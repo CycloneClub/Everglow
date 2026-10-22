@@ -17,8 +17,8 @@ internal class BloodLiquidPipeline : Pipeline
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) * Main.GameViewMatrix.TransformationMatrix;
 		effect.Parameters["uTransform"].SetValue(model * projection);
-		effect.Parameters["uNoise"].SetValue(ModAsset.HiveCyberNoise.Value);
-		Texture2D FlameColor = ModAsset.BloodLiquid_Color.Value;
+		effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Hive_Cyber.Value);
+		Texture2D FlameColor = ModAsset.Blood_Liquid_Color.Value;
 		Ins.Batch.BindTexture<Vertex2D>(FlameColor);
 		Main.graphics.GraphicsDevice.SamplerStates[1] = SamplerState.PointClamp;
 		Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.None, SamplerState.PointWrap, RasterizerState.CullNone);
@@ -44,8 +44,8 @@ internal class ThickBloodLiquidPipeline : Pipeline
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) * Main.GameViewMatrix.TransformationMatrix;
 		effect.Parameters["uTransform"].SetValue(model * projection);
-		effect.Parameters["uNoise"].SetValue(ModAsset.HiveCyberNoiseThicker.Value);
-		Texture2D FlameColor = ModAsset.BloodLiquid_Color_Thicker.Value;
+		effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Hive_Cyber_Noise_Thicker.Value);
+		Texture2D FlameColor = ModAsset.Blood_Liquid_Color_Thicker.Value;
 		Ins.Batch.BindTexture<Vertex2D>(FlameColor);
 		Main.graphics.GraphicsDevice.SamplerStates[1] = SamplerState.PointClamp;
 		Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.None, SamplerState.PointWrap, RasterizerState.CullNone);

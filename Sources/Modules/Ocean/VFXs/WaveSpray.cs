@@ -10,7 +10,7 @@ internal class WaveSprayPipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModContent.Request<Effect>("Everglow/Ocean/VFXs/WaveSpray", AssetRequestMode.ImmediateLoad);
-		effect.Value.Parameters["uNoise"].SetValue(ModAsset.HiveCyberNoise.Value);
+		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Hive_Cyber.Value);
 	}
 
 	public override void BeginRender()
@@ -19,7 +19,7 @@ internal class WaveSprayPipeline : Pipeline
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) * Main.GameViewMatrix.TransformationMatrix;
 		effect.Parameters["uTransform"].SetValue(model * projection);
-		Texture2D FlameColor = ModAsset.WaveSpray_Color.Value;
+		Texture2D FlameColor = ModAsset.Wave_Spray_Color.Value;
 		Ins.Batch.BindTexture<Vertex2D>(FlameColor);
 		Main.graphics.GraphicsDevice.SamplerStates[1] = SamplerState.PointClamp;
 		Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.None, SamplerState.PointWrap, RasterizerState.CullNone);

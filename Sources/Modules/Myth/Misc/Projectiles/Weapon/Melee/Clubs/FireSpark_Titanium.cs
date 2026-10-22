@@ -5,7 +5,7 @@ public class FireSpark_TitaniumPipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.FireSpark_Titanium;
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_TitaniumSpark.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Titanium_Spark.Value);
 	}
 
 	public override void BeginRender()

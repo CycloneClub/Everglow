@@ -10,8 +10,8 @@ public class PlanetBeFallFirePipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.PlanetBeFallFire;
-		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_perlin.Value);
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.PlanetBeFallColor.Value);
+		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Perlin.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.Planet_Be_Fall_Color.Value);
 	}
 
 	public override void BeginRender()

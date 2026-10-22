@@ -131,7 +131,7 @@ public class LightStartEffect_beam : ModProjectile
 			bars.Add(drawPos + new Vector2(0, -70 * radiusScale).RotatedBy(i / 40f * MathHelper.TwoPi), drawColor * scale, new Vector3(i / 40f, Projectile.whoAmI - timeValue * 0.1f + 0.1f, 0));
 			bars.Add(drawPos + new Vector2(0, -120 * radiusScale).RotatedBy(i / 40f * MathHelper.TwoPi), Color.Transparent, new Vector3(i / 40f, Projectile.whoAmI - timeValue * 0.1f + 0.3f, 0));
 		}
-		Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Noise_longitudinalFold.Value;
+		Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Noise_Longitudinal_Fold.Value;
 		Main.graphics.graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 
 		drawColor = new Color(0.2f, 0.2f, 0.2f, 0f);
@@ -148,7 +148,7 @@ public class LightStartEffect_beam : ModProjectile
 			bars.Add(drawPos + new Vector2(0, -70 * radiusScale).RotatedBy(i / 40f * MathHelper.TwoPi), drawColor * scale * colorScale, new Vector3(i / 40f, Projectile.whoAmI - timeValue * 0.1f + 0.6f, 0));
 			bars.Add(drawPos + new Vector2(0, -120 * radiusScale).RotatedBy(i / 40f * MathHelper.TwoPi), Color.Transparent, new Vector3(i / 40f, Projectile.whoAmI - timeValue * 0.1f + 1.2f, 0));
 		}
-		Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Noise_SolarSpectrum.Value;
+		Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Noise_Solar_Spectrum.Value;
 		Main.graphics.graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(sBS);

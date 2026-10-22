@@ -5,8 +5,8 @@ public class GreenLanternFlamePipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.GreenLanternFlame;
-		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_perlin.Value);
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_GreenLanternFlame.Value);
+		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Perlin.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Green_Lantern_Flame.Value);
 	}
 
 	public override void BeginRender()

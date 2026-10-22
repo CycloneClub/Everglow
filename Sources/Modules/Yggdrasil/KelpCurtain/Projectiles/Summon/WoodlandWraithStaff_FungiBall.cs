@@ -650,9 +650,9 @@ public class WoodlandWraithStaff_FungiBall : ModProjectile
 			SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;
 			Main.spriteBatch.End();
 			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_forceField_medium.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_Force_Field_Medium.Value;
 
-			// Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_cell.Value;
+			// Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_Cell.Value;
 			var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 			var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition, 0)) * Main.GameViewMatrix.TransformationMatrix;
 

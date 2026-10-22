@@ -229,7 +229,7 @@ public class ToothSpear_proj : ModProjectile
 		effect.CurrentTechnique.Passes["HeatMap"].Apply();
 
 		Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_1.Value;
-		Main.graphics.graphicsDevice.Textures[1] = ModAsset.TuskKnife_meleeColor.Value;
+		Main.graphics.graphicsDevice.Textures[1] = ModAsset.Tusk_Knife_Melee_Color.Value;
 		Main.graphics.graphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		Main.graphics.graphicsDevice.SamplerStates[1] = SamplerState.PointClamp;
 		Main.graphics.graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, barsHighLight.ToArray(), 0, barsHighLight.Count - 2);

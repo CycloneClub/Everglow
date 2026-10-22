@@ -17,6 +17,11 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <!-- Tests run outside tML, so its existing references must be available to the test host. -->
+    <Reference Update="$(tMLLibraryPath)/**/*.dll;$(tMLSteamPath)$(tMLPath)" Private="true" />
+  </ItemGroup>
+
   <Target Name="CopyTModLoaderFiles" AfterTargets="Build">
     <ItemGroup>
       <TModLoaderDlls Include="$(tMLSteamPath)\**\tModLoader.dll" />

@@ -286,7 +286,7 @@ namespace Everglow.EternalResolve.Projectiles
 				dissolveDuration = (255 - Projectile.alpha) / 255f * 1.2f - 0.2f;
 			}
 			dissolve.Parameters["uTransform"].SetValue(model * projection);
-			dissolve.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_spiderNet.Value);
+			dissolve.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Spider_Net.Value);
 			dissolve.Parameters["duration"].SetValue(dissolveDuration);
 			dissolve.Parameters["uDissolveColor"].SetValue(new Vector4(0.3f, 0, 0.5f, 1f));
 			dissolve.Parameters["uNoiseSize"].SetValue(4f);

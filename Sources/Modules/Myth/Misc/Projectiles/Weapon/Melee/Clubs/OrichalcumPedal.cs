@@ -86,7 +86,7 @@ public class OrichalcumPedal : ModProjectile
 			dissolveDuration = 1 - Projectile.alpha / 255f - 0.2f;
 		}
 		dissolve.Parameters["uTransform"].SetValue(model * projection);
-		dissolve.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_spiderNet.Value);
+		dissolve.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Spider_Net.Value);
 		dissolve.Parameters["duration"].SetValue(dissolveDuration);
 		dissolve.Parameters["uDissolveColor"].SetValue(new Vector4(1f, 0, 0.7f, 1f));
 		dissolve.Parameters["uNoiseSize"].SetValue(2f);

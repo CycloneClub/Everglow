@@ -37,7 +37,7 @@ public class CyanVineSword_Projectile : MeleeProj
 
 	public override string TrailColorTex()
 	{
-		return ModAsset.CyanVineSword_meleeColor_Mod;
+		return ModAsset.Cyan_Vine_Sword_Melee_Color_Mod;
 	}
 
 	public override float TrailAlpha(float factor)
@@ -150,7 +150,7 @@ public class CyanVineSword_Projectile : MeleeProj
 		MeleeTrail.Parameters["uTransform"].SetValue(model * projection);
 
 		MeleeTrail.Parameters["tex0"].SetValue(Commons.ModAsset.Melee.Value);
-		MeleeTrail.Parameters["tex1"].SetValue(ModAsset.CyanVineSword_meleeColor.Value);
+		MeleeTrail.Parameters["tex1"].SetValue(ModAsset.Cyan_Vine_Sword_Melee_Color.Value);
 		MeleeTrail.CurrentTechnique.Passes["TrailWithLight"].Apply();
 
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);

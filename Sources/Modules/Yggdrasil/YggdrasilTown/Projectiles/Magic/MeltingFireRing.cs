@@ -103,7 +103,7 @@ public class MeltingFireRing : ModProjectile
 	{
 		Effect shader = Commons.ModAsset.Dissolve0.Value;
 		Texture2D tex1 = Commons.ModAsset.Trail_5.Value;
-		Texture2D noise = Commons.ModAsset.Noise_cell.Value;
+		Texture2D noise = Commons.ModAsset.Noise_Cell.Value;
 
 		var drawColor = new Color(1f, 0.4f, 0.2f, 1f);
 

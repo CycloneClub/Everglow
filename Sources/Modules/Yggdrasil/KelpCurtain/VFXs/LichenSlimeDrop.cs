@@ -5,7 +5,7 @@ public class LichenSlimeDropPipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.LichenSlimeDrop;
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_LichenSlimeDrop.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Lichen_Slime_Drop.Value);
 	}
 
 	public override void BeginRender()

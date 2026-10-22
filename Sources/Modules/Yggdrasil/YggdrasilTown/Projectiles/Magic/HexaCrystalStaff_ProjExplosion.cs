@@ -70,7 +70,7 @@ public class HexaCrystalStaff_ProjExplosion : ModProjectile, IWarpProjectile_war
 
 	public override bool PreDraw(ref Color lightColor)
 	{
-		Texture2D drawTex = Commons.ModAsset.Noise_turtleCrack.Value;
+		Texture2D drawTex = Commons.ModAsset.Noise_Turtle_Crack.Value;
 		var drawPos = Projectile.Center - Main.screenPosition;
 		float value = MathF.Pow(Timer, 0.5f) * 10 + 30;
 		var gradientColor = new GradientColor();
@@ -116,7 +116,7 @@ public class HexaCrystalStaff_ProjExplosion : ModProjectile, IWarpProjectile_war
 
 		if (hexagonSideRainbow.Count > 0)
 		{
-			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_SolarSpectrum.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_Solar_Spectrum.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, hexagonSideRainbow.ToArray(), 0, hexagonSideRainbow.Count - 2);
 		}
 

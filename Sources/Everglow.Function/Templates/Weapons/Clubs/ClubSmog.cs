@@ -17,9 +17,9 @@ public class ClubSmogPipeline : Pipeline
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) * Main.GameViewMatrix.TransformationMatrix;
 		effect.Parameters["uTransform"].SetValue(model * projection);
-		effect.Parameters["uNoise"].SetValue(ModAsset.Noise_flame_0.Value);
+		effect.Parameters["uNoise"].SetValue(ModAsset.Noise_Flame_0.Value);
 		effect.Parameters["uLine"].SetValue(ModAsset.TrailV.Value);
-		Ins.Batch.BindTexture<Vertex2D>(ModAsset.ClubSmog_Heatmap.Value);
+		Ins.Batch.BindTexture<Vertex2D>(ModAsset.Club_Smog_HeatMap.Value);
 		Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.None, SamplerState.LinearClamp, RasterizerState.CullNone);
 		effect.CurrentTechnique.Passes[0].Apply();
 	}

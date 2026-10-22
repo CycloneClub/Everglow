@@ -241,7 +241,7 @@ public class IntroductiontoThermalElectricity_Ball : ModProjectile
 
 		if (bars.Count > 2)
 		{
-			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Noise_hiveNet.Value;
+			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Noise_Hive_Net.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 		if (bars_outerRing.Count > 2)

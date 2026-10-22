@@ -120,7 +120,7 @@ public class DreamWeaverBall : ModProjectile
 
 		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_black_thick.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.LinearWrap;
-		Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_rgb.Value;
+		Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_RGB.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[1] = SamplerState.LinearWrap;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, triangleList.ToArray(), 0, triangleList.Count / 3);
 
@@ -175,9 +175,9 @@ public class DreamWeaverBall : ModProjectile
 
 		antiSphere.CurrentTechnique.Passes[0].Apply();
 
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_hiveCyber.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_Hive_Cyber.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.LinearWrap;
-		Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_SolarSpectrum.Value;
+		Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_Solar_Spectrum.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[1] = SamplerState.LinearWrap;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, triangleList.ToArray(), 0, triangleList.Count / 3);
 
@@ -199,9 +199,9 @@ public class DreamWeaverBall : ModProjectile
 
 		sphere.CurrentTechnique.Passes[0].Apply();
 
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_hiveCyber.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_Hive_Cyber.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.LinearWrap;
-		Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_SolarSpectrum.Value;
+		Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_Solar_Spectrum.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[1] = SamplerState.LinearWrap;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, triangleList.ToArray(), 0, triangleList.Count / 3);
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, triangleList.ToArray(), 0, triangleList.Count / 3);
@@ -232,7 +232,7 @@ public class DreamWeaverBall : ModProjectile
 
 		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_black_thick.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.LinearWrap;
-		Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_rgb.Value;
+		Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_RGB.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[1] = SamplerState.LinearWrap;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, triangleList.ToArray(), 0, triangleList.Count / 3);
 

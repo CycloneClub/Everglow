@@ -5,7 +5,7 @@ public class LichenSlimeSplashPipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.LichenSlimeSplash;
-		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_cell.Value);
+		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Cell.Value);
 	}
 
 	public override void BeginRender()
@@ -16,7 +16,7 @@ public class LichenSlimeSplashPipeline : Pipeline
 		effect.Parameters["uTransform"].SetValue(model * projection);
 		effect.Parameters["uIlluminationThreshold"].SetValue(0.99f);
 		effect.Parameters["uIlluminationThresholdII"].SetValue(0.05f);
-		Texture2D FlameColor = ModAsset.HeatMap_LichenSlimeSplash.Value;
+		Texture2D FlameColor = ModAsset.HeatMap_Lichen_Slime_Drop.Value;
 		Ins.Batch.BindTexture<Vertex2D>(FlameColor);
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointClamp;
 		Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.None, SamplerState.PointClamp, RasterizerState.CullNone);

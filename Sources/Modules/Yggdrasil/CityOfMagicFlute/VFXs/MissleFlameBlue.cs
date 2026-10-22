@@ -5,8 +5,8 @@ public class MissleFlameBluePipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.MissleFlameBlue;
-		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_perlin.Value);
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_MissleFlameBlue.Value);
+		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Perlin.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Missle_Flame_Blue.Value);
 	}
 
 	public override void BeginRender()
