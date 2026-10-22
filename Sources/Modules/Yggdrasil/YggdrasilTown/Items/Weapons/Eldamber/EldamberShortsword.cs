@@ -1,10 +1,11 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Terraria.ModLoader;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.Eldamber;
 
 /// <summary>
 /// 古珀短剑：刺击型近战武器。
-/// 已确定配方：古珀×8；制作站待定。
+/// 已确定配方：古珀×8；在铁砧处制作。
 /// </summary>
 public class EldamberShortsword : ModItem
 {
@@ -15,8 +16,30 @@ public class EldamberShortsword : ModItem
 
 	public override void SetDefaults()
 	{
+		Item.width = 32;
+		Item.height = 32;
+		Item.damage = 14;
 		Item.DamageType = DamageClass.Melee;
+		Item.useTime = Item.useAnimation = 12;
+		Item.UseSound = SoundID.Item1;
+		Item.autoReuse = true;
+		Item.useTurn = true;
+		Item.maxStack = 1;
+		Item.knockBack = 4f;
+		Item.rare = ItemRarityID.Blue;
+		Item.value = Item.sellPrice(silver: 20);
 		Item.useStyle = ItemUseStyleID.Rapier;
-		// TODO：刺击投射物及配套使用设置，伤害、攻速、击退和物品尺寸。
+		Item.noMelee = true;
+		Item.noUseGraphic = true;
+		Item.shoot = ProjectileID.GoldShortswordStab;
+		Item.shootSpeed = 2.1f;
+	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<YggdrasilAmber>(8);
+		recipe.AddTile(TileID.Anvils);
+		recipe.Register();
 	}
 }

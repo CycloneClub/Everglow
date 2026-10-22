@@ -1,3 +1,5 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.TwilightForest;
 
 public class TwilightShamanStaff : ModItem
@@ -22,5 +24,14 @@ public class TwilightShamanStaff : ModItem
 
 		Item.shoot = ProjectileID.BallofFrost;
 		Item.shootSpeed = 10;
+	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<TwilightEucalyptusWood_Item>(10);
+		recipe.AddIngredient<TwilightCrystal>(12);
+		recipe.AddTile(TileID.WorkBenches);
+		recipe.Register();
 	}
 }

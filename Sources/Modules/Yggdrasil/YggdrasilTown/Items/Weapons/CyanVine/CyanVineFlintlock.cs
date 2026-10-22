@@ -51,11 +51,11 @@ public class CyanVineFlintlock : ModItem
 
 	public override void AddRecipes()
 	{
-		CreateRecipe()
-			.AddIngredient(ModContent.ItemType<CyanVineBar>(), 12)
-			.AddIngredient(ModContent.ItemType<LampWood_Wood>(), 20)
-			.AddIngredient(ModContent.ItemType<LampFruit>(), 25)
-			.AddTile(TileID.WorkBenches)
-			.Register();
+		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<CyanVineBar>(12);
+		recipe.AddIngredient<LampWood_Wood>(20);
+		recipe.AddIngredient<LampFruit>(25);
+		recipe.AddTile(TileID.Anvils);
+		recipe.Register();
 	}
 }

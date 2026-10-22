@@ -1,3 +1,5 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Summon;
 using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
@@ -71,5 +73,14 @@ public class AuburnBell : ModItem
 			}
 		}
 		return false;
+	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<RodWing>(8);
+		recipe.AddIngredient<LampWood_Wood>(10);
+		recipe.AddTile(TileID.WorkBenches);
+		recipe.Register();
 	}
 }

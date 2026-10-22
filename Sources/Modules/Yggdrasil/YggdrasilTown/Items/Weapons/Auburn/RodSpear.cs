@@ -1,3 +1,5 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.Auburn;
 
 public class RodSpear : ModItem
@@ -27,5 +29,14 @@ public class RodSpear : ModItem
 
 		Item.shoot = ModContent.ProjectileType<Projectiles.Melee.RodSpear>();
 		Item.shootSpeed = 12;
+	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<RodWing>(10);
+		recipe.AddIngredient<LampWood_Wood>(15);
+		recipe.AddTile(TileID.WorkBenches);
+		recipe.Register();
 	}
 }

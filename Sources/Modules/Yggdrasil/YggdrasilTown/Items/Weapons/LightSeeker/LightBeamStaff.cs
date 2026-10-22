@@ -1,3 +1,4 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
 using Terraria.DataStructures;
 
@@ -37,5 +38,14 @@ public class LightBeamStaff : ModItem
 	{
 		Projectile.NewProjectile(Item.GetSource_FromAI(), position, velocity, type, damage, knockback, player.whoAmI);
 		return false;
+	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<LightBulbOvule>(4);
+		recipe.AddIngredient<CyanVineBar>(12);
+		recipe.AddTile(TileID.Anvils);
+		recipe.Register();
 	}
 }

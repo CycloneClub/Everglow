@@ -48,4 +48,18 @@ public class PlannedItemDefaultsTests
 		Assert.AreEqual(4 * 60 * 60, potion.buffTime);
 		Assert.IsTrue(potion.useTime > 0 && potion.useAnimation > 0 && potion.buffTime > 0 && potion.consumable);
 	}
+
+	[TestMethod]
+	public void CraftableEquipmentHasUsableCombatAndToolDefaults()
+	{
+		foreach (var item in new[] { Defaults<EldamberBroadsword>(), Defaults<EldamberShortsword>(), Defaults<EldamberBow>(), Defaults<EldamberAxe>(), Defaults<EldamberHammer>(), Defaults<EldamberPickaxe>() })
+		{
+			Assert.IsTrue(item.damage > 0 && item.useTime > 0 && item.useAnimation > 0 && item.width > 0 && item.height > 0);
+		}
+		Assert.IsTrue(Defaults<EldamberAxe>().axe > 0);
+		Assert.IsTrue(Defaults<EldamberHammer>().hammer > 0);
+		Assert.AreEqual(75, Defaults<EldamberPickaxe>().pick);
+		Assert.IsTrue(Defaults<EldamberShortsword>().shoot > 0 && Defaults<EldamberShortsword>().noMelee);
+		Assert.IsTrue(Defaults<EldamberBow>().shootSpeed > 0);
+	}
 }
