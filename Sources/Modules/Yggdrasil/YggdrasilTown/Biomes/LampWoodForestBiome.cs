@@ -73,7 +73,7 @@ public class LampWoodForest : ModBiome
 			LampWoodMiddle middle = new LampWoodMiddle { WorldAnchor = lampWoodAnchor + new Vector2(0, -3000) };
 			bgSystem.AddBackgroundSlide(middle);
 
-			LampWoodClose_Middle closeMiddle = new LampWoodClose_Middle { WorldAnchor = lampWoodAnchor + new Vector2(4100, 3000) };
+			LampWoodClose_Middle closeMiddle = new LampWoodClose_Middle { WorldAnchor = lampWoodAnchor + new Vector2(4100, 2000) };
 			bgSystem.AddBackgroundSlide(closeMiddle);
 
 			LampWoodClose close = new LampWoodClose { WorldAnchor = lampWoodAnchor + new Vector2(0, 1000) };
