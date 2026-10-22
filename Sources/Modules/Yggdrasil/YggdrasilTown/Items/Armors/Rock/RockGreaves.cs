@@ -1,4 +1,5 @@
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
+
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Rock;
 
 [AutoloadEquip(EquipType.Legs)]

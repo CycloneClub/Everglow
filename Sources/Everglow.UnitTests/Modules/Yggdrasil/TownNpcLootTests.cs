@@ -217,7 +217,8 @@ public class TownNpcLootTests
 		}
 	}
 
-	private void BindNpc<T>(int type) where T : ModNPC
+	private void BindNpc<T>(int type)
+		where T : ModNPC
 	{
 		var content = (T)RuntimeHelpers.GetUninitializedObject(typeof(T));
 		var npc = (NPC)RuntimeHelpers.GetUninitializedObject(typeof(NPC));
@@ -229,7 +230,8 @@ public class TownNpcLootTests
 		restoreContent.Add(() => instance.SetValue(null, previous));
 	}
 
-	private void BindItem<T>() where T : ModItem
+	private void BindItem<T>()
+		where T : ModItem
 	{
 		// Only substitute the content registry IDs. Execute the real NPC hook and tML drop rules.
 		var content = (T)RuntimeHelpers.GetUninitializedObject(typeof(T));
@@ -242,7 +244,8 @@ public class TownNpcLootTests
 		restoreContent.Add(() => instance.SetValue(null, previous));
 	}
 
-	private static List<DropRateInfo> Rates<T>() where T : ModNPC
+	private static List<DropRateInfo> Rates<T>()
+		where T : ModNPC
 	{
 		var npc = (T)RuntimeHelpers.GetUninitializedObject(typeof(T));
 		var loot = new NPCLoot(1, new ItemDropDatabase());
@@ -255,7 +258,8 @@ public class TownNpcLootTests
 		return rates;
 	}
 
-	private static void AssertRate<T>(List<DropRateInfo> rates, float chance, int min = 1, int max = 1) where T : ModItem
+	private static void AssertRate<T>(List<DropRateInfo> rates, float chance, int min = 1, int max = 1)
+		where T : ModItem
 	{
 		var matches = rates.Where(x => x.itemId == ModContent.ItemType<T>()).ToArray();
 		Assert.AreEqual(1, matches.Length, typeof(T).Name);

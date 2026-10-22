@@ -37,6 +37,6 @@ public class TwilightBlueCrystal_0 : ShapeDataTile, ISceneTile
 			Ins.VFXManager.Add(mirror);
 		}
 	}
-	public override bool CanExplode(int i, int j) => false;
 
+	public override bool CanExplode(int i, int j) => false;
 }

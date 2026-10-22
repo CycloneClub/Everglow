@@ -1,5 +1,6 @@
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
+
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.TwilightForest;
 
 public class TwilightShamanStaff : ModItem

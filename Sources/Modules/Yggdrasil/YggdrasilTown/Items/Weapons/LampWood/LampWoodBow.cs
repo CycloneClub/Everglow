@@ -1,4 +1,5 @@
 using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
+
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.LampWood;
 
 public class LampWoodBow : ModItem

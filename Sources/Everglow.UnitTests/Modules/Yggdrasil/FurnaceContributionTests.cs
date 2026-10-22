@@ -9,6 +9,7 @@ public class FurnaceContributionTests
 	private static readonly Func<int, int, int, int> Calculate = typeof(YggdrasilTownFurnaceSystem)
 		.GetMethod("CalculateContribution", BindingFlags.Static | BindingFlags.NonPublic)!
 		.CreateDelegate<Func<int, int, int, int>>();
+
 	private static readonly Func<int, int, int> Add = typeof(YggdrasilTownFurnaceSystem)
 		.GetMethod("AddContribution", BindingFlags.Static | BindingFlags.NonPublic)!
 		.CreateDelegate<Func<int, int, int>>();

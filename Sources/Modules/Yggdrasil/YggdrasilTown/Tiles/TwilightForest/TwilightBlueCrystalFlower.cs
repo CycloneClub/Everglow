@@ -53,6 +53,6 @@ public class TwilightBlueCrystalFlower : ModTile
 
 		spriteBatch.Draw(ModContent.Request<Texture2D>(Texture).Value, new Vector2(i, j) * 16 - Main.screenPosition + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16), lightColor * 3.1f, 0, Vector2.zeroVector, 1, SpriteEffects.None, 0);
 	}
-	public override bool CanExplode(int i, int j) => false;
 
+	public override bool CanExplode(int i, int j) => false;
 }

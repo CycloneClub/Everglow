@@ -6,6 +6,7 @@ using Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Eldamber;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Potions;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.Eldamber;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Everglow.UnitTests.Modules.Yggdrasil;
@@ -17,7 +18,8 @@ public class PlannedItemDefaultsTests
 	[TestInitialize]
 	public void Initialize() => Program.SavePath = string.Empty;
 
-	private static Item Defaults<T>() where T : ModItem
+	private static Item Defaults<T>()
+		where T : ModItem
 	{
 		var modItem = (T)RuntimeHelpers.GetUninitializedObject(typeof(T));
 		var item = (Item)RuntimeHelpers.GetUninitializedObject(typeof(Item));
@@ -29,7 +31,7 @@ public class PlannedItemDefaultsTests
 	[TestMethod]
 	public void EldamberBulletHasAProjectileAndLaunchSpeed()
 	{
-		Assert.IsTrue(Defaults<EldamberBullet>().shoot > 0 && Defaults<EldamberBullet>().shootSpeed > 0);
+		Assert.IsTrue(Defaults<EldamberBullet>().shoot > ProjectileID.None && Defaults<EldamberBullet>().shootSpeed > 0);
 	}
 
 	[TestMethod]
@@ -59,7 +61,7 @@ public class PlannedItemDefaultsTests
 		Assert.IsTrue(Defaults<EldamberAxe>().axe > 0);
 		Assert.IsTrue(Defaults<EldamberHammer>().hammer > 0);
 		Assert.AreEqual(75, Defaults<EldamberPickaxe>().pick);
-		Assert.IsTrue(Defaults<EldamberShortsword>().shoot > 0 && Defaults<EldamberShortsword>().noMelee);
+		Assert.IsTrue(Defaults<EldamberShortsword>().shoot > ProjectileID.None && Defaults<EldamberShortsword>().noMelee);
 		Assert.IsTrue(Defaults<EldamberBow>().shootSpeed > 0);
 	}
 }
