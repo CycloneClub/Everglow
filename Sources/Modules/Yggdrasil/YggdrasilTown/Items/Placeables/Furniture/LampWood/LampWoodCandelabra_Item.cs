@@ -10,4 +10,13 @@ public class LampWoodCandelabra_Item : ModItem
 	{
 		Item.DefaultToPlaceableTile(ModContent.TileType<LampWoodCandelabra>());
 	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<LampWood_Wood>(5);
+		recipe.AddIngredient(ItemID.Torch, 3);
+		recipe.AddTile(TileID.WorkBenches);
+		recipe.Register();
+	}
 }

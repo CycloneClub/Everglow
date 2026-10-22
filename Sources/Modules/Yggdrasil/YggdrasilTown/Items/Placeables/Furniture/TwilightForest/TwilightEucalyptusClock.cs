@@ -13,7 +13,10 @@ public class TwilightEucalyptusClock : ClockItem
 	public override void AddRecipes()
 	{
 		Recipe recipe = CreateRecipe();
-		// Add recipe.
+		recipe.AddIngredient<TwilightEucalyptusWood_Item>(10);
+		recipe.AddRecipeGroup(RecipeGroupID.IronBar, 3);
+		recipe.AddIngredient(ItemID.Glass, 6);
+		recipe.AddTile(TileID.Sawmill);
 		recipe.Register();
 	}
 }

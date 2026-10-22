@@ -13,7 +13,8 @@ public class TwilightEucalyptusDresser : DresserItem
 	public override void AddRecipes()
 	{
 		Recipe recipe = CreateRecipe();
-		// Add recipe.
+		recipe.AddIngredient<TwilightEucalyptusWood_Item>(16);
+		recipe.AddTile(TileID.Sawmill);
 		recipe.Register();
 	}
 }

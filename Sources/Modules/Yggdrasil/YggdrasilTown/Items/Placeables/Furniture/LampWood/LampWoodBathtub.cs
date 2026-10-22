@@ -8,4 +8,12 @@ public class LampWoodBathtub : ModItem
 	{
 		Item.DefaultToPlaceableTile(ModContent.TileType<Tiles.LampWood.Furniture.LampWoodBathtub>());
 	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<LampWood_Wood>(14);
+		recipe.AddTile(TileID.Sawmill);
+		recipe.Register();
+	}
 }

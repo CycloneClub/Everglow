@@ -8,4 +8,13 @@ public class LampWoodLantern : ModItem
 	{
 		Item.DefaultToPlaceableTile(ModContent.TileType<Tiles.LampWood.Furniture.LampWoodLantern>());
 	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<LampWood_Wood>(6);
+		recipe.AddIngredient(ItemID.Torch, 1);
+		recipe.AddTile(TileID.WorkBenches);
+		recipe.Register();
+	}
 }

@@ -13,7 +13,9 @@ public class TwilightEucalyptusChest : ChestItem
 	public override void AddRecipes()
 	{
 		Recipe recipe = CreateRecipe();
-		// Add recipe.
+		recipe.AddIngredient<TwilightEucalyptusWood_Item>(8);
+		recipe.AddRecipeGroup(RecipeGroupID.IronBar, 2);
+		recipe.AddTile(TileID.WorkBenches);
 		recipe.Register();
 	}
 }

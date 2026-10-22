@@ -13,7 +13,8 @@ public class TwilightEucalyptusChair : ChairItem
 	public override void AddRecipes()
 	{
 		Recipe recipe = CreateRecipe();
-		// Add recipe.
+		recipe.AddIngredient<TwilightEucalyptusWood_Item>(4);
+		recipe.AddTile(TileID.WorkBenches);
 		recipe.Register();
 	}
 }

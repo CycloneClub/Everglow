@@ -13,7 +13,10 @@ public class TwilightEucalyptusChandelier : ChandelierItem
 	public override void AddRecipes()
 	{
 		Recipe recipe = CreateRecipe();
-		// Add recipe.
+		recipe.AddIngredient<TwilightEucalyptusWood_Item>(4);
+		recipe.AddIngredient(ItemID.Torch, 4);
+		recipe.AddIngredient(ItemID.Chain, 1);
+		recipe.AddTile(TileID.Anvils);
 		recipe.Register();
 	}
 }

@@ -8,4 +8,12 @@ public class LampWoodDresser : ModItem
 	{
 		Item.DefaultToPlaceableTile(ModContent.TileType<Tiles.LampWood.Furniture.LampWoodDresser>());
 	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<LampWood_Wood>(16);
+		recipe.AddTile(TileID.Sawmill);
+		recipe.Register();
+	}
 }

@@ -13,7 +13,8 @@ public class TwilightEucalyptusTable : TableItem
 	public override void AddRecipes()
 	{
 		Recipe recipe = CreateRecipe();
-		// Add recipe.
+		recipe.AddIngredient<TwilightEucalyptusWood_Item>(8);
+		recipe.AddTile(TileID.WorkBenches);
 		recipe.Register();
 	}
 }

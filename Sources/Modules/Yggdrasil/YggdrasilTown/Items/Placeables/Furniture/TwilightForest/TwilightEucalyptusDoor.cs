@@ -14,7 +14,8 @@ public class TwilightEucalyptusDoor : DoorItem
 	public override void AddRecipes()
 	{
 		Recipe recipe = CreateRecipe();
-		// Add recipe.
+		recipe.AddIngredient<TwilightEucalyptusWood_Item>(6);
+		recipe.AddTile(TileID.WorkBenches);
 		recipe.Register();
 	}
 }

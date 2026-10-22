@@ -12,8 +12,8 @@ public class TwilightEucalyptusPlatform : PlatformItem
 
 	public override void AddRecipes()
 	{
-		Recipe recipe = CreateRecipe();
-		// Add recipe.
+		Recipe recipe = CreateRecipe(2);
+		recipe.AddIngredient<TwilightEucalyptusWood_Item>(1);
 		recipe.Register();
 	}
 }

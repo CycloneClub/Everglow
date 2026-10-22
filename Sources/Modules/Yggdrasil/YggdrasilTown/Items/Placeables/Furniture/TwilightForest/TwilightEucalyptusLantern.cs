@@ -13,7 +13,9 @@ public class TwilightEucalyptusLantern : LanternItem
 	public override void AddRecipes()
 	{
 		Recipe recipe = CreateRecipe();
-		// Add recipe.
+		recipe.AddIngredient<TwilightEucalyptusWood_Item>(6);
+		recipe.AddIngredient(ItemID.Torch, 1);
+		recipe.AddTile(TileID.WorkBenches);
 		recipe.Register();
 	}
 }

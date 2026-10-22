@@ -13,7 +13,9 @@ public class TwilightEucalyptusSofa_Type2 : SofaItem
 	public override void AddRecipes()
 	{
 		Recipe recipe = CreateRecipe();
-		// Add recipe.
+		recipe.AddIngredient<TwilightEucalyptusWood_Item>(5);
+		recipe.AddIngredient(ItemID.Silk, 2);
+		recipe.AddTile(TileID.Sawmill);
 		recipe.Register();
 	}
 }

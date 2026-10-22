@@ -8,4 +8,13 @@ public class LampWoodBookcase : ModItem
 	{
 		Item.DefaultToPlaceableTile(ModContent.TileType<Tiles.LampWood.Furniture.LampWoodBookcase>());
 	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<LampWood_Wood>(20);
+		recipe.AddIngredient(ItemID.Book, 10);
+		recipe.AddTile(TileID.Sawmill);
+		recipe.Register();
+	}
 }

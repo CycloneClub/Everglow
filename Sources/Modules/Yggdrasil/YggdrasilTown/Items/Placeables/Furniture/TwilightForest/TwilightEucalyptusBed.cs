@@ -13,7 +13,9 @@ public class TwilightEucalyptusBed : BedItem
 	public override void AddRecipes()
 	{
 		Recipe recipe = CreateRecipe();
-		// Add recipe.
+		recipe.AddIngredient<TwilightEucalyptusWood_Item>(15);
+		recipe.AddIngredient(ItemID.Silk, 5);
+		recipe.AddTile(TileID.Sawmill);
 		recipe.Register();
 	}
 }

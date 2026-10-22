@@ -8,4 +8,13 @@ public class LampWoodSofa : ModItem
 	{
 		Item.DefaultToPlaceableTile(ModContent.TileType<Tiles.LampWood.Furniture.LampWoodSofa>());
 	}
+
+	public override void AddRecipes()
+	{
+		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<LampWood_Wood>(5);
+		recipe.AddIngredient(ItemID.Silk, 2);
+		recipe.AddTile(TileID.Sawmill);
+		recipe.Register();
+	}
 }
