@@ -52,6 +52,14 @@ public class AmethystHeadedSpear : ModItem
 	public override void AddRecipes()
 	{
 		CreateRecipe()
+			.AddIngredient(ItemID.Amethyst, 10)
+			.AddIngredient(ItemID.StoneBlock, 30)
+			.AddIngredient(ItemID.IronBar, 15)
+			.Register();
+		CreateRecipe()
+			.AddIngredient(ItemID.Amethyst, 10)
+			.AddIngredient(ItemID.StoneBlock, 30)
+			.AddIngredient(ItemID.LeadBar, 15)
 			.Register();
 	}
 }
