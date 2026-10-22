@@ -1,6 +1,7 @@
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Fishing;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Fishing.Trash;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown;
@@ -9,8 +10,8 @@ public class YggdrasilTownFishingPlayer : ModPlayer
 {
 	public override void CatchFish(FishingAttempt attempt, ref int itemDrop, ref int npcSpawn, ref AdvancedPopupRequest sonar, ref Vector2 sonarPosition)
 	{
-		if (!YggdrasilWorld.InYggdrasil || attempt.inLava || attempt.inHoney || attempt.crate || npcSpawn > 0
-			|| itemDrop <= ItemID.None || itemDrop >= ItemID.Count || itemDrop == attempt.questFish
+		if (!YggdrasilWorld.InYggdrasil || attempt.inLava || attempt.inHoney || npcSpawn > 0
+			|| itemDrop <= ItemID.None || itemDrop >= ItemID.Count || itemDrop == attempt.questFish || itemDrop == ItemID.JojaCola
 			|| attempt.veryrare || attempt.legendary)
 		{
 			return;
@@ -24,7 +25,17 @@ public class YggdrasilTownFishingPlayer : ModPlayer
 		}
 
 		// 森林可能与城镇背景群系重叠，优先采用森林渔获。
-		if (itemDrop is ItemID.OldShoe or ItemID.TinCan or ItemID.Seaweed)
+		if (attempt.crate)
+		{
+			if (!attempt.rare)
+			{
+				return;
+			}
+			itemDrop = inLampWood ? ModContent.ItemType<LampWoodCrate_Item>()
+				: inTwilight ? ModContent.ItemType<TwilightCrate_Item>()
+				: ModContent.ItemType<UrbanCrate_Item>();
+		}
+		else if (itemDrop is ItemID.OldShoe or ItemID.TinCan or ItemID.FishingSeaweed)
 		{
 			if (inLampWood)
 			{
