@@ -860,7 +860,7 @@ public class FlamingDashCore : ModNPC
 			// 把变换和所需信息丢给shader
 			ef2.Parameters["uTransform"].SetValue(model * projection);
 			ef2.Parameters["uTime"].SetValue(-(float)Main.time * 0.012f);
-			Main.graphics.GraphicsDevice.Textures[0] = ModContent.Request<Texture2D>("Everglow/Myth/UIImages/VisualTextures/heatmapRainbow").Value;
+			Main.graphics.GraphicsDevice.Textures[0] = ModContent.Request<Texture2D>("Everglow/Myth/UIImages/VisualTextures/HeatMap_Rainbow").Value;
 			Main.graphics.GraphicsDevice.Textures[1] = ModContent.Request<Texture2D>("Everglow/Myth/UIImages/VisualTextures/FogTraceGamma2").Value;
 			Main.graphics.GraphicsDevice.Textures[2] = ModContent.Request<Texture2D>("Everglow/Myth/UIImages/VisualTextures/FogTraceBeta3").Value;
 			Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;

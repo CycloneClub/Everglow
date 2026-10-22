@@ -101,7 +101,7 @@ public class TrueDeathSickle_RightClick : ModProjectile
 		var model = Matrix.CreateTranslation(new Vector3(0)) * Main.GameViewMatrix.TransformationMatrix;
 		float dissolveDuration = Projectile.timeLeft / 40f - 0.2f;
 		dissolve.Parameters["uTransform"].SetValue(model * projection);
-		dissolve.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_spiderNet.Value);
+		dissolve.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Spider_Net.Value);
 		dissolve.Parameters["duration"].SetValue(dissolveDuration);
 		dissolve.Parameters["uDissolveColor"].SetValue(new Vector4(0.2f, 0.1f, 0.4f, 1f));
 		dissolve.Parameters["uNoiseSize"].SetValue(4f);

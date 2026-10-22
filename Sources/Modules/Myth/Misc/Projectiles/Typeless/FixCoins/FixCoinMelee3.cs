@@ -4,7 +4,7 @@ public class FixCoinMelee3 : FixCoinProjectile
 {
 	public override string HeatMapTexture()
 	{
-		return "heatmapBlue";
+		return "HeatMap_Blue";
 	}
 
 	public override int PrefixID()

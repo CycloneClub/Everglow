@@ -8,8 +8,8 @@ public class IceSmogPipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.IceSmog;
-		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_spiderNet.Value);
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_ice.Value);
+		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Spider_Net.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Ice.Value);
 		Ins.Batch.RegisterVertex<Vertex2DSmog>(2048, 3072);
 	}
 

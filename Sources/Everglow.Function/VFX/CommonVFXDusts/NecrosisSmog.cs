@@ -8,8 +8,8 @@ public class NecrosisSmogPipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.NecrosisSmog;
-		effect.Value.Parameters["uNoise"].SetValue(ModAsset.Noise_perlin.Value);
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_NecrosisSmog.Value);
+		effect.Value.Parameters["uNoise"].SetValue(ModAsset.Noise_Perlin.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Necrosis_Smog.Value);
 	}
 
 	public override void BeginRender()

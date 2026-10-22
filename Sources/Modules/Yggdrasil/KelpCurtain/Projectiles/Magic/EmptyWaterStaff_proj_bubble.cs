@@ -192,7 +192,7 @@ public class EmptyWaterStaff_proj_bubble : ModProjectile, IWarpProjectile_warpSt
 			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Wave_full.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 
-			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_forceField_sparse.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_Force_Field_Sparse.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, innerBound.ToArray(), 0, innerBound.Count - 2);
 
 			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Textures_Star.Value;
@@ -320,7 +320,7 @@ public class EmptyWaterStaff_proj_bubble : ModProjectile, IWarpProjectile_warpSt
 			bars_inner.Add(drawPos - radDir, drawColorInner, new Vector3(k / 40f + timeValue, 1, 0));
 			bars_inner.Add(drawPos - radDir * 2, drawColor, new Vector3(k / 40f + timeValue, 0, 0));
 		}
-		spriteBatch.Draw(Commons.ModAsset.Noise_flame_2.Value, bars_outer, PrimitiveType.TriangleStrip);
-		spriteBatch.Draw(Commons.ModAsset.Noise_flame_2.Value, bars_inner, PrimitiveType.TriangleStrip);
+		spriteBatch.Draw(Commons.ModAsset.Noise_Flame_2.Value, bars_outer, PrimitiveType.TriangleStrip);
+		spriteBatch.Draw(Commons.ModAsset.Noise_Flame_2.Value, bars_inner, PrimitiveType.TriangleStrip);
 	}
 }

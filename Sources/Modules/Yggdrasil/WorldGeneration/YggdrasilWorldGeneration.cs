@@ -111,7 +111,7 @@ public class YggdrasilWorldGeneration : ModSystem
 	/// </summary>
 	public static void FillPerlinPixel()
 	{
-		var imageData = ImageReader.Read<SixLabors.ImageSharp.PixelFormats.Rgb24>("Everglow/Yggdrasil/WorldGeneration/Noise_perlin.bmp");
+		var imageData = ImageReader.Read<SixLabors.ImageSharp.PixelFormats.Rgb24>("Everglow/Yggdrasil/WorldGeneration/Noise_Perlin.bmp");
 		var perlinCoordCenter = new Vector2(GenRand.NextFloat(0f, 1f), GenRand.NextFloat(0f, 1f));
 		imageData.ProcessPixelRows(accessor =>
 		{
@@ -128,7 +128,7 @@ public class YggdrasilWorldGeneration : ModSystem
 			}
 		});
 
-		imageData = ImageReader.Read<SixLabors.ImageSharp.PixelFormats.Rgb24>("Everglow/Yggdrasil/WorldGeneration/Noise_cell.bmp");
+		imageData = ImageReader.Read<SixLabors.ImageSharp.PixelFormats.Rgb24>("Everglow/Yggdrasil/WorldGeneration/Noise_Cell.bmp");
 		perlinCoordCenter = new Vector2(GenRand.NextFloat(0f, 1f), GenRand.NextFloat(0f, 1f));
 		imageData.ProcessPixelRows(accessor =>
 		{
@@ -145,7 +145,7 @@ public class YggdrasilWorldGeneration : ModSystem
 			}
 		});
 
-		imageData = ImageReader.Read<SixLabors.ImageSharp.PixelFormats.Rgb24>("Everglow/Yggdrasil/WorldGeneration/Noise_melting.bmp");
+		imageData = ImageReader.Read<SixLabors.ImageSharp.PixelFormats.Rgb24>("Everglow/Yggdrasil/WorldGeneration/Noise_Melting.bmp");
 		perlinCoordCenter = new Vector2(GenRand.NextFloat(0f, 1f), GenRand.NextFloat(0f, 1f));
 		imageData.ProcessPixelRows(accessor =>
 		{

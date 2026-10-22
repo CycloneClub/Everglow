@@ -26,7 +26,7 @@ public class SplashPipeline : Pipeline
 		{
 			var effect = this.effect.Value;
 			Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.None, SamplerState.AnisotropicClamp, RasterizerState.CullNone);
-			Main.graphics.graphicsDevice.Textures[1] = ModAsset.Noise_cell.Value;
+			Main.graphics.graphicsDevice.Textures[1] = ModAsset.Noise_Cell.Value;
 
 			effect.Parameters["uvMulti"].SetValue(0.2f);
 

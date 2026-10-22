@@ -55,7 +55,7 @@ internal class ComingGhost : MeleeProj
 
 	public override string TrailColorTex()
 	{
-		return "Everglow/Myth/Misc/Projectiles/Weapon/Melee/ComingGhost_meleeColor";
+		return "Everglow/Myth/Misc/Projectiles/Weapon/Melee/Coming_Ghost_Melee_Color";
 	}
 
 	public override float TrailAlpha(float factor)

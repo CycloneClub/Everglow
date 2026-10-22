@@ -90,7 +90,7 @@ public class GoldenShowerArray : ModProjectile, IWarpProjectile
 			bars.Add(new Vertex2D(player.Center + ringPos + radius * 0.5f, Color.Transparent, new Vector3(t / 30f, 1, 0)));
 		}
 		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Wave_full_black.Value;
-		Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_flame_0.Value;
+		Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_Flame_0.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		Main.graphics.GraphicsDevice.SamplerStates[1] = SamplerState.PointWrap;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
@@ -105,7 +105,7 @@ public class GoldenShowerArray : ModProjectile, IWarpProjectile
 			bars.Add(new Vertex2D(player.Center + ringPos + radius * 0.5f, Color.Transparent, new Vector3(t / 30f, 1, 0)));
 		}
 		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Wave_full.Value;
-		Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_flame_0.Value;
+		Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_Flame_0.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		Main.graphics.GraphicsDevice.SamplerStates[1] = SamplerState.PointWrap;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);

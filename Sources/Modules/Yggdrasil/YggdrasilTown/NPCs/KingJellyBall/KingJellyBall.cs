@@ -773,10 +773,10 @@ public class KingJellyBall : ModNPC
 			{
 				Main.graphics.graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, jellyBallBodyInner_healGlow.ToArray(), 0, jellyBallBodyInner_healGlow.Count - 2);
 			}
-			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Noise_cell_rgb.Value;
+			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Noise_Cell_RGB.Value;
 			Main.graphics.graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, jellyBallBodyBound_highLight.ToArray(), 0, jellyBallBodyBound_highLight.Count - 2);
 
-			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Noise_flame_1.Value;
+			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Noise_Flame_1.Value;
 			Main.graphics.graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, jellyBallBodyBound_highLight_side.ToArray(), 0, jellyBallBodyBound_highLight_side.Count - 2);
 		}
 		Main.spriteBatch.End();
@@ -792,7 +792,7 @@ public class KingJellyBall : ModNPC
 		effect.CurrentTechnique.Passes["Test"].Apply();
 		if (jellyBallBodyInner_shallowReflect.Count >= 2)
 		{
-			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Noise_flame_2.Value;
+			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Noise_Flame_2.Value;
 			Main.graphics.graphicsDevice.Textures[1] = Commons.ModAsset.Trail.Value;
 			Main.graphics.graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, jellyBallBodyInner_shallowReflect.ToArray(), 0, jellyBallBodyInner_shallowReflect.Count - 2);
 		}
@@ -803,7 +803,7 @@ public class KingJellyBall : ModNPC
 
 		Effect crystalOverBody = ModAsset.KingJellyBall_CoreCrystalOverSurface.Value;
 		crystalOverBody.Parameters["uTransform"].SetValue(model * projection);
-		crystalOverBody.Parameters["uHeatMap"].SetValue(ModAsset.KingJellyBall_Zaxis.Value);
+		crystalOverBody.Parameters["uHeatMap"].SetValue(ModAsset.King_Jelly_Ball_Zaxis.Value);
 		crystalOverBody.CurrentTechnique.Passes["Test"].Apply();
 		float sizeX = texture.Size().X * 0.5f;
 		float sizeY = texture.Size().Y * 0.5f;

@@ -888,7 +888,7 @@ public class RockElemental : ModNPC
 			float dissolveDuration = NPC.ai[1] / 15f * 1.2f - 0.2f;
 
 			dissolve.Parameters["uTransform"].SetValue(model * projection);
-			dissolve.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_smoothIce.Value);
+			dissolve.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Smooth_Ice.Value);
 			dissolve.Parameters["duration"].SetValue(dissolveDuration);
 			dissolve.Parameters["uLightColor"].SetValue(new Vector4(0.3f, 0.1f, 0.4f, 0f));
 			dissolve.Parameters["uDissolveColor"].SetValue(Vector4.Lerp(new Vector4(0.4f, 0.8f, 0.9f, 0.5f), new Vector4(0.7f, 0.2f, 0.9f, 0.5f), dissolveDuration));

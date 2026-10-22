@@ -5,7 +5,7 @@ public class FevensCrystalPiecePipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.FevensCrystalPiece;
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_FevensCrystal.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Fevens_Crystal.Value);
 	}
 
 	public override void BeginRender()
@@ -14,7 +14,7 @@ public class FevensCrystalPiecePipeline : Pipeline
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition, 0)) * Main.GameViewMatrix.TransformationMatrix;
 		effect.Parameters["uTransform"].SetValue(model * projection);
-		Texture2D halo = Commons.ModAsset.Noise_cell.Value;
+		Texture2D halo = Commons.ModAsset.Noise_Cell.Value;
 		Ins.Batch.BindTexture<Vertex2D>(halo);
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.None, SamplerState.PointWrap, RasterizerState.CullNone);

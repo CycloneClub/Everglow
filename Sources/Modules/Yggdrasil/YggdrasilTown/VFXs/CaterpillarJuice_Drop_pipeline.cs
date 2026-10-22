@@ -13,7 +13,7 @@ public class CaterpillarJuicePipeline : Pipeline
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition, 0)) * Main.GameViewMatrix.TransformationMatrix;
 		effect.Parameters["uTransform"].SetValue(model * projection);
-		effect.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_CaterpillarJuice_Drop.Value);
+		effect.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Caterpillar_Juice_Drop.Value);
 		effect.Parameters["uIlluminationThreshold"].SetValue(0.99f);
 		Texture2D lightness = Commons.ModAsset.Point_lowContrast.Value;
 		Ins.Batch.BindTexture<Vertex2D>(lightness);

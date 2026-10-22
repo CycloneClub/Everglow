@@ -26,7 +26,7 @@ public class QuenchingBladeProj : MeleeProj
 
 	public override string TrailColorTex()
 	{
-		return ModAsset.HeatMap_QuenchingBladeProj_Mod;
+		return ModAsset.HeatMap_Quenching_Blade_Proj_Mod;
 	}
 
 	public override float TrailAlpha(float factor)
@@ -623,6 +623,6 @@ public class QuenchingBladeProj : MeleeProj
 			bars.Add(new Vertex2D(center - Main.screenPosition + trail[i] * Projectile.scale * outer, new Color(dir, w, 0, 1), new Vector3(factor, 0, w)));
 		}
 
-		spriteBatch.Draw(Commons.ModAsset.Noise_melting_H.Value, bars, PrimitiveType.TriangleStrip);
+		spriteBatch.Draw(Commons.ModAsset.Noise_Melting_H.Value, bars, PrimitiveType.TriangleStrip);
 	}
 }

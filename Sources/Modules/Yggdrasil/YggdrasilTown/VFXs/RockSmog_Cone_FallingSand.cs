@@ -13,11 +13,11 @@ public class RockSmog_Cone_FallingSandPipeline : Pipeline
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition, 0)) * Main.GameViewMatrix.TransformationMatrix;
 		effect.Parameters["uTransform"].SetValue(model * projection);
-		effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_flame_0.Value);
-		effect.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_rockSmog.Value);
+		effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Flame_0.Value);
+		effect.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Rock_Smog.Value);
 		effect.Parameters["uFallingSize"].SetValue(12f);
 		effect.Parameters["uFallingDirection"].SetValue(0f);
-		Texture2D halo = Commons.ModAsset.Noise_perlin.Value;
+		Texture2D halo = Commons.ModAsset.Noise_Perlin.Value;
 		Ins.Batch.BindTexture<Vertex2D>(halo);
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.None, SamplerState.PointWrap, RasterizerState.CullNone);

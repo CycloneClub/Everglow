@@ -236,7 +236,7 @@ public class YggdrasilSlashBall : ModProjectile
 		// 	bars.Add(pos, new Color(redValue, 0.02f * (Math.Abs(x)+12), 0, 0), new Vector3(0.2f + timeValue, x / 35f, 0));
 		// 	bars.Add(pos - NormalDistance * 50f, new Color(redValue, 0, 0, 0), new Vector3(0 + timeValue, x / 35f, 0));
 		// }
-		// Texture2D t = Commons.ModAsset.Noise_melting.Value;
+		// Texture2D t = Commons.ModAsset.Noise_Melting.Value;
 
 		// if (bars.Count > 3)
 		// 	spriteBatch.Draw(t, bars, PrimitiveType.TriangleStrip);

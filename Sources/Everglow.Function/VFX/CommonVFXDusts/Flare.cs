@@ -14,7 +14,7 @@ public class FlarePipeline : Pipeline
 	{
 		var effect = this.effect.Value;
 		Ins.Batch.Begin(BlendState.Additive, DepthStencilState.None, SamplerState.AnisotropicClamp, RasterizerState.CullNone);
-		Main.graphics.graphicsDevice.Textures[1] = ModAsset.Noise_perlin.Value;
+		Main.graphics.graphicsDevice.Textures[1] = ModAsset.Noise_Perlin.Value;
 		effect.Parameters["uTransform"].SetValue(
 			Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) *
 			Main.GameViewMatrix.TransformationMatrix *

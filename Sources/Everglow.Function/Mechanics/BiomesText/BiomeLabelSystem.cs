@@ -178,7 +178,7 @@ public class BiomeLabelSystem : ModSystem
 			float alpha = (i - time / 9f) / (time / 18f);
 			alpha = Math.Clamp(alpha, 0, 1);
 			dissolve.Parameters["uTransform"].SetValue(model * projection);
-			dissolve.Parameters["uNoise"].SetValue(ModAsset.Noise_spiderNet.Value);
+			dissolve.Parameters["uNoise"].SetValue(ModAsset.Noise_Spider_Net.Value);
 			dissolve.Parameters["duration"].SetValue(dissolveDuration);
 			dissolve.Parameters["uDissolveColor"].SetValue(new Vector4(1f, 1f, 1f, 1f));
 			dissolve.Parameters["uNoiseSize"].SetValue(16f);

@@ -226,7 +226,7 @@ internal class CreamChocolateCup_CreamFlow : ModProjectile
 				var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 				var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) * Main.GameViewMatrix.TransformationMatrix;
 				effect.Parameters["uTransform"].SetValue(model * projection);
-				effect.Parameters["uNoise"].SetValue(ModAsset.CreamChocolateCup_CreamFlow_dissolve.Value);
+				effect.Parameters["uNoise"].SetValue(ModAsset.Cream_Chocolate_Cup_Cream_Flow_Dissolve.Value);
 				effect.CurrentTechnique.Passes["Test"].Apply();
 				Main.graphics.graphicsDevice.RasterizerState = RasterizerState.CullNone;
 				Main.graphics.graphicsDevice.Textures[0] = ModAsset.CreamChocolateCup_CreamFlow.Value;

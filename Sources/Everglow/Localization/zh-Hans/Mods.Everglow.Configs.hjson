@@ -1,3 +1,22 @@
+CrowdConfig: {
+	DisplayName: 城镇人群
+	Enabled: {
+		Label: 城镇路人
+		Tooltip: "在天穹镇中添加往来、停留和交谈的路人。仅在单人模式的天穹树中生效。关闭后清理现有路人。"
+	}
+	Density: {
+		Label: 人群密度
+		Tooltip: "调整街道和列车中的路人数量。较高密度可能增加性能开销。降低密度后，人数会随路人离开而逐渐减少。"
+	}
+}
+
+CrowdDensity: {
+	Tooltip: 调整城镇的热闹程度。
+	Sparse.Label: 稀疏
+	Standard.Label: 标准
+	Busy.Label: 繁忙
+}
+
 MirrorReflectionConfig: {
 	DisplayName: 镜面反射（客户端）
 	Enabled: {

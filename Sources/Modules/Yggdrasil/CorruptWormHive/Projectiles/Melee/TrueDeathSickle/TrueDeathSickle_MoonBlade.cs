@@ -100,7 +100,7 @@ public class TrueDeathSickle_MoonBlade : ModProjectile, IWarpProjectile
 		}
 		Main.graphics.GraphicsDevice.RasterizerState = RasterizerState.CullNone;
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_longitudinalFold.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Noise_Longitudinal_Fold.Value;
 		if (bars.Count > 2)
 		{
 			Main.graphics.graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
@@ -141,7 +141,7 @@ public class TrueDeathSickle_MoonBlade : ModProjectile, IWarpProjectile
 			bars.Add(pos, new Color(redValue, 0.002f * (Math.Abs(x) + 12), 0, 0), new Vector3(0.2f + timeValue, x / 35f, 0));
 			bars.Add(pos - startVelocity * 50f, new Color(redValue, 0, 0, 0), new Vector3(0 + timeValue, x / 35f, 0));
 		}
-		Texture2D t = Commons.ModAsset.Noise_melting.Value;
+		Texture2D t = Commons.ModAsset.Noise_Melting.Value;
 
 		if (bars.Count > 3)
 		{

@@ -166,7 +166,7 @@ public class AcroporaThumpEff : ModProjectile
 		MeleeTrail.Parameters["uTransform"].SetValue(model * projection);
 		float k0 = (40 - Projectile.timeLeft) / 40f;
 		MeleeTrail.Parameters["FadeValue"].SetValue((k0 * 1.2f).Sqrt());
-		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.Acropora_TexBlood.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.Acropora_Tex_Blood.Value;
 		MeleeTrail.Parameters["tex1"].SetValue(ModAsset.Acropora_Color.Value);
 		MeleeTrail.CurrentTechnique.Passes[0].Apply();
 		if (bars.Count >= 3)

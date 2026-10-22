@@ -364,7 +364,7 @@ public abstract class ClubProj : ModProjectile, IWarpProjectile
 
 		Effect clubTrailEffect = ModAsset.ClubTrail.Value;
 		clubTrailEffect.Parameters["uTransform"].SetValue(model * projection);
-		clubTrailEffect.Parameters["tex0"].SetValue(ModAsset.Noise_flame_0.Value);
+		clubTrailEffect.Parameters["tex0"].SetValue(ModAsset.Noise_Flame_0.Value);
 		clubTrailEffect.Parameters["tex1"].SetValue((Texture2D)ModContent.Request<Texture2D>(Texture));
 		clubTrailEffect.Parameters["Light"].SetValue(lightColor);
 		clubTrailEffect.CurrentTechnique.Passes["TrailByOrigTex"].Apply();

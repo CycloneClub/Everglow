@@ -103,9 +103,9 @@ public class BloodyMossWheelFinished : ModTile
 			zero = Vector2.Zero;
 		}
 
-		Texture2D Tdoor = Commons.ModAsset.Noise_flame_2.Value;
+		Texture2D Tdoor = Commons.ModAsset.Noise_Flame_2.Value;
 		Texture2D Tdoor2 = ModAsset.CosmicVort.Value;
-		Texture2D Tdoor3 = ModAsset.CosmicPerlin.Value;
+		Texture2D Tdoor3 = ModAsset.Cosmic_Perlin.Value;
 
 		sb.Draw(Tdoor, new Vector2(TileI * 16 + 8, TileJ * 16 - 68) - Main.screenPosition + zero, null, new Color(255, 255, 255, 0), (float)Main.time / 300f, new Vector2(56), 65f / 45f, SpriteEffects.None, 0f);
 		sb.Draw(Tdoor, new Vector2(TileI * 16 + 8, TileJ * 16 - 68) - Main.screenPosition + zero, null, new Color(100, 100, 100, 0), -(float)Main.time / 200f, new Vector2(56), 65f / 45f, SpriteEffects.None, 0f);
@@ -125,7 +125,7 @@ public class BloodyMossWheelFinished : ModTile
 		float dissolveDuration = 1 - 0.2f;
 
 		dissolve.Parameters["uTransform"].SetValue(matrix * projection);
-		dissolve.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_spiderNet.Value);
+		dissolve.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Spider_Net.Value);
 		dissolve.Parameters["duration"].SetValue(dissolveDuration);
 		dissolve.Parameters["uDissolveColor"].SetValue(new Vector4(0.8f, 0, 0.1f, 1f));
 		dissolve.Parameters["uNoiseSize"].SetValue(3f);

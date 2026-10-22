@@ -44,7 +44,7 @@ public class HaloPipeline : PostPipeline
 		effect.Parameters["uSunMoonLight"].SetValue(Color.White.ToVector4());
 		effect.Parameters["uSunMoonPos"].SetValue(GetSunPos() / new Vector2(Main.screenWidth, Main.screenHeight));
 		effect.Parameters["uScreenYDevideByX"].SetValue(Main.screenWidth / (float)Main.screenHeight);
-		effect.Parameters["uRainbow"].SetValue(ModAsset.Noise_SolarSpectrum.Value);
+		effect.Parameters["uRainbow"].SetValue(ModAsset.Noise_Solar_Spectrum.Value);
 		effect.CurrentTechnique.Passes["HaloRing"].Apply();
 		sb.Draw(rt2D, Vector2.Zero, Color.White);
 

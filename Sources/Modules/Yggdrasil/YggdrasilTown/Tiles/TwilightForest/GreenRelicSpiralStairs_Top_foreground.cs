@@ -21,36 +21,36 @@ public class GreenRelicSpiralStairs_Top_foreground : TileVFX
 
 	public override void Update()
 	{
-		//bool inside = false;
-		//var collideMap = GiantGhostClawBarnacleCollideTile.PixelHideForeground;
-		//for (int i = 0; i < collideMap.GetLength(0); i++)
-		//{
-		//	for (int j = 0; j < collideMap.GetLength(1); j++)
-		//	{
-		//		if (collideMap[i, j] >= 200)
-		//		{
-		//			Point topLeft = OriginTilePos + new Point(i, j);
-		//			Rectangle collisionFrame = new Rectangle(topLeft.X * 16, topLeft.Y * 16, 16, 16);
-		//			if (Rectangle.Intersect(collisionFrame, Main.LocalPlayer.Hitbox) != Rectangle.emptyRectangle)
-		//			{
-		//				inside = true;
-		//				break;
-		//			}
-		//		}
-		//	}
-		//	if (inside)
-		//	{
-		//		break;
-		//	}
-		//}
-		//if (inside)
-		//{
-		//	Transparency = Transparency * 0.9f + 0.05f * 0.1f;
-		//}
-		//else
-		//{
-		//	Transparency = Transparency * 0.9f + 1f * 0.1f;
-		//}
+		// bool inside = false;
+		// var collideMap = GiantGhostClawBarnacleCollideTile.PixelHideForeground;
+		// for (int i = 0; i < collideMap.GetLength(0); i++)
+		// {
+		// 	for (int j = 0; j < collideMap.GetLength(1); j++)
+		// 	{
+		// 		if (collideMap[i, j] >= 200)
+		// 		{
+		// 			Point topLeft = OriginTilePos + new Point(i, j);
+		// 			Rectangle collisionFrame = new Rectangle(topLeft.X * 16, topLeft.Y * 16, 16, 16);
+		// 			if (Rectangle.Intersect(collisionFrame, Main.LocalPlayer.Hitbox) != Rectangle.emptyRectangle)
+		// 			{
+		// 				inside = true;
+		// 				break;
+		// 			}
+		// 		}
+		// 	}
+		// 	if (inside)
+		// 	{
+		// 		break;
+		// 	}
+		// }
+		// if (inside)
+		// {
+		// 	Transparency = Transparency * 0.9f + 0.05f * 0.1f;
+		// }
+		// else
+		// {
+		// 	Transparency = Transparency * 0.9f + 1f * 0.1f;
+		// }
 		base.Update();
 	}
 

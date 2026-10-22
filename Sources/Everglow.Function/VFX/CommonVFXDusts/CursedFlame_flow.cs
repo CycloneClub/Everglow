@@ -36,7 +36,7 @@ public class CursedFlame_flowPipeline : Pipeline
 		var effect = this.effect.Value;
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) * Main.GameViewMatrix.TransformationMatrix;
-		effect.Parameters["uNoise"].SetValue(ModAsset.Noise_melting.Value);
+		effect.Parameters["uNoise"].SetValue(ModAsset.Noise_Melting.Value);
 		effect.Parameters["uTransform"].SetValue(model * projection);
 		Ins.Batch.BindTexture<Vertex2D>(ModAsset.Trail_6.Value);
 		Main.graphics.GraphicsDevice.SamplerStates[1] = SamplerState.PointClamp;

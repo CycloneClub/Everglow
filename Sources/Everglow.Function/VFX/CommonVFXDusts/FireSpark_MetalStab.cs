@@ -9,7 +9,7 @@ public class FireSpark_MetalStabPipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.FireSpark_MetalStab;
-		effect.Value.Parameters["uHeatMap"].SetValue(Commons.ModAsset.HeatMap_spark.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(Commons.ModAsset.HeatMap_Spark.Value);
 	}
 
 	public override void BeginRender()

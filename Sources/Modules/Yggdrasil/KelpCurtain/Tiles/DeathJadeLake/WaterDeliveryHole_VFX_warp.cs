@@ -41,7 +41,7 @@ public class WaterDeliveryHole_VFX_warp : TileVFX
 			bars_side_right.Add(Position + pos + new Vector2(0, 0), drawColor, new Vector3(coordX + timeValue, 0.5f, 0));
 		}
 
-		Ins.Batch.Draw(Commons.ModAsset.Noise_flame_2.Value, bars_side_left, PrimitiveType.TriangleStrip);
-		Ins.Batch.Draw(Commons.ModAsset.Noise_flame_2.Value, bars_side_right, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(Commons.ModAsset.Noise_Flame_2.Value, bars_side_left, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(Commons.ModAsset.Noise_Flame_2.Value, bars_side_right, PrimitiveType.TriangleStrip);
 	}
 }

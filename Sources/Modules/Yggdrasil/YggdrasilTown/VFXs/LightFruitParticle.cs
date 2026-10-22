@@ -8,7 +8,7 @@ public class LightFruitParticlePipeline : Pipeline
 		effect = ModAsset.LightFruitParticle;
 
 		// Set the parameter of the effect instance (same to what we did in LearningOpenGL)
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.AmberFlame_heatMap.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(Commons.ModAsset.HeatMap_Ray.Value);
 	}
 
 	public override void BeginRender()

@@ -308,7 +308,7 @@ internal class StarrySkySystem : ModSystem
 		// 在StarryTarget用Shader实现星空
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		Starry.Parameters["uTransform"].SetValue(projection);
-		Starry.Parameters["tex2"].SetValue(ModAsset.Perlin.Value);
+		Starry.Parameters["tex2"].SetValue(Commons.ModAsset.Perlin.Value);
 		Starry.Parameters["uTime"].SetValue((float)(Main.timeForVisualEffects * 0.005f));
 		Starry.Parameters["tex1"].SetValue(StarrySkyTarget);
 		Starry.CurrentTechnique.Passes[0].Apply();

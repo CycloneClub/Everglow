@@ -29,7 +29,7 @@ public class DarkGlimmeringParticlePipeline : Pipeline
 		// Get the transform matrix
 		// Set the parameter of the effect instance as transform matrix
 		effect.Parameters["uTransform"].SetValue(model * projection);
-		effect.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_DarkGlimmering.Value);
+		effect.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Dark_Glimmering.Value);
 
 		// Bind texture
 		Texture2D halo = Commons.ModAsset.Point.Value;

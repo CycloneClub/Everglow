@@ -20,7 +20,7 @@ public class MeatLantern_Proj : MeleeProj
 
 	public override string TrailColorTex()
 	{
-		return ModAsset.MeatLantern_Color_Mod;
+		return ModAsset.Meat_Lantern_Color_Mod;
 	}
 
 	public override float TrailAlpha(float factor)

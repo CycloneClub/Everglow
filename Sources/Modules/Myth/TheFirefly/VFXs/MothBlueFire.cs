@@ -5,8 +5,8 @@ public class MothBlueFirePipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.MothBlueFire;
-		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_perlin.Value);
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.MothBlueFireColor.Value);
+		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Perlin.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.Moth_Blue_Fire_Color.Value);
 	}
 
 	public override void BeginRender()

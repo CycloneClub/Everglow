@@ -14,7 +14,7 @@ public class DissolveAndNoDissolvePipeline : Pipeline
 			Matrix.CreateTranslation(new Vector3(-Main.screenPosition, 0)) *
 			Main.GameViewMatrix.TransformationMatrix *
 			Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1));
-		ef.Parameters["uDissolveNoise"].SetValue(ModAsset.Noise_flame_3.Value);
+		ef.Parameters["uDissolveNoise"].SetValue(ModAsset.Noise_Flame_3.Value);
 		ef.CurrentTechnique.Passes["Test"].Apply();
 	}
 

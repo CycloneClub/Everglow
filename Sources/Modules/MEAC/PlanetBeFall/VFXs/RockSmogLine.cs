@@ -9,7 +9,7 @@ public class RockSmogLinePipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.RockSmogLine;
-		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_flame_0.Value);
+		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Flame_0.Value);
 		effect.Value.Parameters["uLine"].SetValue(Commons.ModAsset.TrailV.Value);
 	}
 
@@ -19,7 +19,7 @@ public class RockSmogLinePipeline : Pipeline
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) * Main.GameViewMatrix.TransformationMatrix;
 		effect.Parameters["uTransform"].SetValue(model * projection);
-		Ins.Batch.BindTexture<Vertex2D>(ModAsset.RockSmogLine_Heatmap.Value);
+		Ins.Batch.BindTexture<Vertex2D>(ModAsset.Rock_Smog_Line_HeatMap.Value);
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointClamp;
 		Ins.Batch.Begin(BlendState.AlphaBlend, DepthStencilState.None, SamplerState.PointClamp, RasterizerState.CullNone);
 		effect.CurrentTechnique.Passes[0].Apply();

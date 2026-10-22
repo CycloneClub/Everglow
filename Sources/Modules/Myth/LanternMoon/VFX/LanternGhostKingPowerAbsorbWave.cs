@@ -79,6 +79,6 @@ public class LanternGhostKingPowerAbsorbWave : Visual
 			bars.Add(Position + radius * 0.96f, drawColor * 0, new Vector3(xCoord, range * 0.005f * 0.96f, 0));
 			bars.Add(Position + radius * 0.5f, drawColor, new Vector3(xCoord, range * 0.005f * 0.5f, 0));
 		}
-		Ins.Batch.Draw(Commons.ModAsset.Noise_flame_3.Value, bars, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(Commons.ModAsset.Noise_Flame_3.Value, bars, PrimitiveType.TriangleStrip);
 	}
 }

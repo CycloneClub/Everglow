@@ -31,8 +31,8 @@ public class RedAlgae_GasRing : Visual
 	public override void Draw()
 	{
 		float radius = Scale * 10 * MathF.Pow(Timer / MaxTime, 0.5f);
-		Texture2D tex = Commons.ModAsset.Noise_spiderNet.Value;
-		Texture2D tex_dark = Commons.ModAsset.Noise_spiderNet_dark.Value;
+		Texture2D tex = Commons.ModAsset.Noise_Spider_Net.Value;
+		Texture2D tex_dark = Commons.ModAsset.Noise_Spider_Net_Dark.Value;
 		List<Vertex2D> bars = new List<Vertex2D>();
 		List<Vertex2D> bars_out = new List<Vertex2D>();
 		List<Vertex2D> bars_dark = new List<Vertex2D>();

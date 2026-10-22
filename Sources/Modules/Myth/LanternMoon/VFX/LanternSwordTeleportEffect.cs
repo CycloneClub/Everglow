@@ -56,10 +56,10 @@ public class LanternSwordTeleportEffect : Visual
 			barsL.Add(pos - normal, normalColor * 0, new Vector3(value + timeValue, 1, 0));
 			barsL.Add(pos, normalColor * colorFade, new Vector3(value + timeValue, 0.5f, 0));
 		}
-		Ins.Batch.Draw(Commons.ModAsset.Noise_flame_3_black.Value, barsR_dark, PrimitiveType.TriangleStrip);
-		Ins.Batch.Draw(Commons.ModAsset.Noise_flame_3_black.Value, barsL_dark, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(Commons.ModAsset.Noise_Flame_3_Black.Value, barsR_dark, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(Commons.ModAsset.Noise_Flame_3_Black.Value, barsL_dark, PrimitiveType.TriangleStrip);
 
-		Ins.Batch.Draw(Commons.ModAsset.Noise_flame_3.Value, barsR, PrimitiveType.TriangleStrip);
-		Ins.Batch.Draw(Commons.ModAsset.Noise_flame_3.Value, barsL, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(Commons.ModAsset.Noise_Flame_3.Value, barsR, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(Commons.ModAsset.Noise_Flame_3.Value, barsL, PrimitiveType.TriangleStrip);
 	}
 }

@@ -10,7 +10,7 @@ public class ExampleUnderGroundBg : UnderBackgroundBackgroundSlideBase
 	public override void SetDefaults()
 	{
 		base.SetDefaults();
-		Texture = Commons.ModAsset.NoiseWave.Value;
+		Texture = Commons.ModAsset.Noise_Wave.Value;
 		Distance = 5f;
 		UseColorStyle = 0;
 		Shader = Effects.XWrap_YWrap_Shader;

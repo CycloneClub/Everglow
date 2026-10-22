@@ -68,6 +68,6 @@ public class BloodSwampDust : Visual
 			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 0 + Rotation), lightColor, new Vector3(0, 1, 0)),
 			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1 + Rotation), lightColor, new Vector3(1, 0, 0)),
 		};
-		Ins.Batch.Draw(ModAsset.BloodFlame_noise.Value, bars, PrimitiveType.TriangleList);
+		Ins.Batch.Draw(ModAsset.Blood_Flame_Noise.Value, bars, PrimitiveType.TriangleList);
 	}
 }

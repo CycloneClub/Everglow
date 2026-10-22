@@ -10,7 +10,7 @@ public class Spark_RockCrackPipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.Spark_RockCrack;
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.Spark_RockCrack_Heatmap.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.Spark_Rock_Crack_HeatMap.Value);
 	}
 
 	public override void BeginRender()

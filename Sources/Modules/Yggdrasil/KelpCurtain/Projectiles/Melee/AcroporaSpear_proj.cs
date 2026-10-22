@@ -372,10 +372,10 @@ public class AcroporaSpear_proj : MeleeProj
 
 		Effect MeleeTrail = Commons.ModAsset.MeleeTrailFade.Value; // MeleeTrailFade should be moved to Everglow.Function -> MEAC -> Effects, instead of Modules -> MEAC -> Effects, or find another way. ~Setnour6
 		MeleeTrail.Parameters["uTransform"].SetValue(model * projection);
-		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.Acropora_RedColor.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.Acropora_Red_Color.Value;
 		float k0 = timer / 80f + 0.3f;
 		MeleeTrail.Parameters["FadeValue"].SetValue(MathF.Sqrt(k0 * 1.2f));
-		MeleeTrail.Parameters["tex1"].SetValue(ModAsset.Acropora_TexBlood.Value);
+		MeleeTrail.Parameters["tex1"].SetValue(ModAsset.Acropora_Tex_Blood.Value);
 		MeleeTrail.CurrentTechnique.Passes[ShaderTypeName].Apply();
 
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);

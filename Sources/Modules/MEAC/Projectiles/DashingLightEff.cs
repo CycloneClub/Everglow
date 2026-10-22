@@ -101,7 +101,7 @@ public class DashingLightEff : ModProjectile, IWarpProjectile
 			new Vertex2D(end + normalized - Main.screenPosition, alphaColor2, new Vector3(0f + time, 0, 1)),
 			new Vertex2D(end - normalized - Main.screenPosition, alphaColor2, new Vector3(0f + time, 1, 1)),
 		};
-		spriteBatch.Draw(Commons.ModAsset.Noise_spiderNet.Value, bars, PrimitiveType.TriangleStrip);
+		spriteBatch.Draw(Commons.ModAsset.Noise_Spider_Net.Value, bars, PrimitiveType.TriangleStrip);
 	}
 
 	public int collisionTimer = 0;

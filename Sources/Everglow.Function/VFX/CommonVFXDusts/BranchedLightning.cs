@@ -11,7 +11,7 @@ public class BranchedLightningPipeline : Pipeline
 	{
 		effect = ModAsset.BranchedLightning;
 		effect.Value.Parameters["uDotLight"].SetValue(ModAsset.Point.Value);
-		effect.Value.Parameters["uDisplacement"].SetValue(ModAsset.Noise_perlin.Value);
+		effect.Value.Parameters["uDisplacement"].SetValue(ModAsset.Noise_Perlin.Value);
 		effect.Value.Parameters["uDisplaceIntensity"].SetValue(BranchedLightning.DISPLACE_INTENSITY);
 		effect.Value.Parameters["uNoiseSize"].SetValue(BranchedLightning.NOISE_SIZE);
 		effect.Value.Parameters["uLineProportion"].SetValue(BranchedLightning.LINE_PROPORTION);

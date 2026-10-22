@@ -54,8 +54,8 @@ public class PlayerDefence : ModProjectile, IWarpProjectile_warpStyle2
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition, 0)) * Main.GameViewMatrix.TransformationMatrix;
 		effect.Parameters["uTransform"].SetValue(model * projection);
 		effect.Parameters["uTime"].SetValue((float)Main.timeForVisualEffects * 0.01f);
-		effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_perlin.Value);
-		effect.Parameters["uFade"].SetValue(Commons.ModAsset.Noise_turtleCrack.Value);
+		effect.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Perlin.Value);
+		effect.Parameters["uFade"].SetValue(Commons.ModAsset.Noise_Turtle_Crack.Value);
 		effect.Parameters["uSize"].SetValue(2f);
 		effect.Parameters["uLight"].SetValue(new Vector4(0.3f, 0.3f, 0.3f, 0.3f));
 		effect.CurrentTechnique.Passes[0].Apply();

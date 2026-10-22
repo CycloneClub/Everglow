@@ -217,7 +217,7 @@ public class IstafelsSunfireGrasp_Explosion : ModProjectile, IWarpProjectile_war
 		SpriteBatchState sBS = Main.spriteBatch.GetState().Value;
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-		Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Noise_melting_black.Value;
+		Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Noise_Melting_Black.Value;
 		if (bars_dark.Count > 3)
 		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars_dark.ToArray(), 0, bars_dark.Count - 2);
@@ -229,7 +229,7 @@ public class IstafelsSunfireGrasp_Explosion : ModProjectile, IWarpProjectile_war
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars2_dark.ToArray(), 0, bars2_dark.Count - 2);
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars2_dark.ToArray(), 0, bars2_dark.Count - 2);
 		}
-		Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Noise_melting.Value;
+		Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Noise_Melting.Value;
 		if (bars.Count > 3)
 		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
@@ -283,13 +283,13 @@ public class IstafelsSunfireGrasp_Explosion : ModProjectile, IWarpProjectile_war
 		{
 			Main.graphics.graphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 			Main.graphics.graphicsDevice.RasterizerState = RasterizerState.CullNone;
-			spriteBatch.Draw(Commons.ModAsset.Noise_melting_H.Value, bars, PrimitiveType.TriangleStrip);
+			spriteBatch.Draw(Commons.ModAsset.Noise_Melting_H.Value, bars, PrimitiveType.TriangleStrip);
 		}
 		if (bars2.Count > 2)
 		{
 			Main.graphics.graphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 			Main.graphics.graphicsDevice.RasterizerState = RasterizerState.CullNone;
-			spriteBatch.Draw(Commons.ModAsset.Noise_melting_H.Value, bars2, PrimitiveType.TriangleStrip);
+			spriteBatch.Draw(Commons.ModAsset.Noise_Melting_H.Value, bars2, PrimitiveType.TriangleStrip);
 		}
 	}
 }

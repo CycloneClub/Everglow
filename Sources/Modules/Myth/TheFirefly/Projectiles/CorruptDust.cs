@@ -75,7 +75,7 @@ public class CorruptDust : ModProjectile
 
 	private void DrawTrail(Color c0, Texture2D tex, Texture fadeTexture = null)
 	{
-		fadeTexture ??= ModAsset.CorruptDustFadePowder.Value;
+		fadeTexture ??= Commons.ModAsset.Noise_Sand_Rectangle.Value;
 		float k0 = Projectile.timeLeft / 60f;
 		var bars = new List<Vertex2D>();
 

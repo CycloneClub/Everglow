@@ -8,8 +8,8 @@ public class VaporPipeline : Pipeline
 	public override void Load()
 	{
 		effect = ModAsset.Vapor;
-		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_perlin.Value);
-		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_vapor.Value);
+		effect.Value.Parameters["uNoise"].SetValue(Commons.ModAsset.Noise_Perlin.Value);
+		effect.Value.Parameters["uHeatMap"].SetValue(ModAsset.HeatMap_Vapor.Value);
 	}
 
 	public override void BeginRender()
