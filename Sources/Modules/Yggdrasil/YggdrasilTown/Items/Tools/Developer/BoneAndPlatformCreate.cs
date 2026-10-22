@@ -22,13 +22,13 @@ public class BoneAndPlatformCreate : ModItem
 
 	public override bool CanUseItem(Player player)
 	{
-		//int x0 = (int)(Main.MouseWorld.X / 16);
-		//int y0 = (int)(Main.MouseWorld.Y / 16);
-		//if (player.direction == -1)
-		//{
-		//	x0 -= 60;
-		//}
-		//TileUtils.PlaceFrameImportantTiles(x0, y0, 60, 1, ModContent.TileType<BoneAndPlatform_tile>(), 0, 0);
+		// int x0 = (int)(Main.MouseWorld.X / 16);
+		// int y0 = (int)(Main.MouseWorld.Y / 16);
+		// if (player.direction == -1)
+		// {
+		// 	x0 -= 60;
+		// }
+		// TileUtils.PlaceFrameImportantTiles(x0, y0, 60, 1, ModContent.TileType<BoneAndPlatform_tile>(), 0, 0);
 		return true;
 	}
 

@@ -123,7 +123,7 @@ public class PurpleBombCaterpillarDeath : ModProjectile
 		// Texture2D eyeStalks_glow = ModAsset.PurpleBombCaterpillar_glow.Value;
 		// Texture2D body = ModAsset.PurpleBombCaterpillar_Body.Value;
 		// Texture2D body_glow = ModAsset.PurpleBombCaterpillar_Body_glow.Value;
-		// 
+		//
 		// SpriteEffects flip = Projectile.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
 		float squzzeValue = 1f;

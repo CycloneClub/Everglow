@@ -438,15 +438,15 @@ public class PurpleBombCaterpillar : ModNPC
 			SpriteBatchUtils.SpriteBatch_Draw_To_Vertex_Draw(eyeStalks_glow, NPC.Bottom - Main.screenPosition, NPC.frame, new Color(1f, 0.65f, 0.25f, 0) * GlowValue, NPC.rotation, NPC.frame.Size() * new Vector2(0.5f, 0.95f), NPC.scale, flip);
 		}
 
-		//spriteBatch.Draw(body, NPC.Bottom - Main.screenPosition, null, drawColor, NPC.rotation, body.Size() * new Vector2(originX, 0.95f), new Vector2(squzzeValue, 2 - squzzeValue) * NPC.scale, flip, 0);
-		//spriteBatch.Draw(body_glow, NPC.Bottom - Main.screenPosition, null, new Color(1f, 0.65f, 0.25f, 0) * GlowValue, NPC.rotation, body.Size() * new Vector2(originX, 0.95f), new Vector2(squzzeValue, 2 - squzzeValue) * NPC.scale, flip, 0);
+		// spriteBatch.Draw(body, NPC.Bottom - Main.screenPosition, null, drawColor, NPC.rotation, body.Size() * new Vector2(originX, 0.95f), new Vector2(squzzeValue, 2 - squzzeValue) * NPC.scale, flip, 0);
+		// spriteBatch.Draw(body_glow, NPC.Bottom - Main.screenPosition, null, new Color(1f, 0.65f, 0.25f, 0) * GlowValue, NPC.rotation, body.Size() * new Vector2(originX, 0.95f), new Vector2(squzzeValue, 2 - squzzeValue) * NPC.scale, flip, 0);
 
-		//Texture2D star = Commons.ModAsset.LightPoint2.Value;
-		//for (int i = 0; i < BottomPoints_Current.Count; i++)
-		//{
-		//	Vector2 foot = BottomPoints_Current[i];
-		//	spriteBatch.Draw(star, foot - Main.screenPosition, null, new Color(1f, 1f, 0f, 0f), NPC.rotation, star.Size() * 0.5f, 0.5f, flip, 0);
-		//}
+		// Texture2D star = Commons.ModAsset.LightPoint2.Value;
+		// for (int i = 0; i < BottomPoints_Current.Count; i++)
+		// {
+		// 	Vector2 foot = BottomPoints_Current[i];
+		// 	spriteBatch.Draw(star, foot - Main.screenPosition, null, new Color(1f, 1f, 0f, 0f), NPC.rotation, star.Size() * 0.5f, 0.5f, flip, 0);
+		// }
 		return false;
 	}
 
