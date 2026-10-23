@@ -164,11 +164,11 @@ public class SquamousRollingStone_fly : ModProjectile
 		int scaleDamage = 2;
 		if (Main.expertMode)
 		{
-			scaleDamage = 3;
+			scaleDamage = 2;
 		}
 		if (Main.masterMode)
 		{
-			scaleDamage = 3;
+			scaleDamage = 2;
 		}
 		Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<SquamousRockExplosion>(), Projectile.damage * scaleDamage, Projectile.knockBack, Projectile.owner, 42 * Projectile.scale);
 		ShakerManager.AddShaker(Projectile.Center, Vector2.One.RotatedByRandom(MathHelper.Pi), 120 * Projectile.scale, 20f, 120, 0.9f, 0.8f, 150);

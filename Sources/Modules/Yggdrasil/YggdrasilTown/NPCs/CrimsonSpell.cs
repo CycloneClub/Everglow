@@ -19,9 +19,9 @@ public class CrimsonSpell : ModNPC
 		NPC.width = 32;
 		NPC.height = 54;
 		NPC.aiStyle = -1;
-		NPC.damage = 30;
+		NPC.damage = 24;
 		NPC.defense = 0;
-		NPC.lifeMax = 450;
+		NPC.lifeMax = 300;
 		NPC.HitSound = SoundID.NPCHit3;
 		NPC.DeathSound = SoundID.NPCDeath3;
 		NPC.noGravity = true;
