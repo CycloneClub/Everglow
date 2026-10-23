@@ -178,7 +178,7 @@ jobs:
 
   load-test:
     name: Server load (${{ matrix.platform }})
-    needs: build-and-test
+    needs: asset-test
     runs-on: ${{ matrix.runner }}
     container: ${{ matrix.container || '' }}
     strategy:

@@ -1,9 +1,9 @@
 # tModLoader load checks
 
-`build-and-test.yml` tests the same packaged `Everglow.tmod`, tML archive and Workshop dependencies in two ways:
+`build-and-test.yml` runs in order: build and unit tests, packaged texture audit, then the server-load matrix. Both load stages use the same packaged `Everglow.tmod`, tML archive and Workshop dependencies produced by the build. If the audit fails, the server-load matrix is skipped.
 
-- The existing server matrix checks loading on each supported environment.
 - `Packaged content and equipment textures` runs on Ubuntu with `Test-TModLoaderLoad.ps1 -AuditAssets`. It builds the small `../asset-audit/` helper into a fresh temporary save directory and loads it alongside Everglow. The helper is never added to the shared inputs or the published mod.
+- After the audit succeeds, the existing server matrix checks loading on each supported environment in parallel.
 
 The audit reads `Texture` from loaded items, NPCs, projectiles and `ModTexturedType` instances. It also checks every entry in Everglow's equipment registry, including `AutoloadEquip` and explicit `EquipLoader.AddEquipTexture` registrations. Thus an armor inventory icon does not substitute for its `_Head`, `_Body` or `_Legs` sprite.
 
