@@ -27,7 +27,7 @@ public class ToothStaff : ModItem
 		Item.knockBack = 1;
 		Item.shootSpeed = 1;
 		Item.crit = 8;
-		Item.mana = 13;
+		Item.mana = 10;
 
 		Item.staff[Item.type] = true;
 		Item.noMelee = true;

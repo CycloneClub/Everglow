@@ -26,7 +26,7 @@ namespace Everglow.Myth.TheFirefly.Items.Armors
 
 		public override void UpdateEquip(Player player)
 		{
-			player.moveSpeed += 0.05f;
+			player.moveSpeed += 0.07f;
 		}
 
 		public override void AddRecipes()

@@ -18,13 +18,13 @@ public class MagicOfLightAndShadow : ModItem
 		Item.height = 48;
 
 		Item.DamageType = DamageClass.Magic;
-		Item.damage = 33;
+		Item.damage = 40;
 		Item.knockBack = 0.5f;
-		Item.mana = 9;
+		Item.mana = 8;
 
 		Item.useStyle = ItemUseStyleID.Shoot;
 		Item.UseSound = SoundID.Item20;
-		Item.useTime = Item.useAnimation = 17;
+		Item.useTime = Item.useAnimation = 24;
 		Item.noMelee = true;
 		Item.autoReuse = false;
 		Item.rare = ItemRarityID.Green;

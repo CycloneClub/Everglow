@@ -13,11 +13,11 @@ public class TwilightEucalyptusBlade : ModItem
 		Item.height = 64;
 
 		Item.DamageType = DamageClass.Melee;
-		Item.damage = 60;
+		Item.damage = 40;
 		Item.knockBack = 0.4f;
 		Item.crit = 4;
 
-		Item.useTime = Item.useAnimation = 15;
+		Item.useTime = Item.useAnimation = 24;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.UseSound = SoundID.Item1;
 		Item.autoReuse = true;

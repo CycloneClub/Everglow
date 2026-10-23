@@ -16,14 +16,14 @@ public class AmberHeadedSpear : ModItem
 	public override void SetDefaults()
 	{
 		Item.DamageType = DamageClass.Melee;
-		Item.damage = 18;
+		Item.damage = 20;
 		Item.knockBack = 6f;
 		Item.noUseGraphic = true;
 		Item.noMelee = true;
 
 		Item.useStyle = ItemUseStyleID.Shoot;
-		Item.useTime = 31;
-		Item.useAnimation = 31;
+		Item.useTime = 32;
+		Item.useAnimation = 32;
 		Item.UseSound = SoundID.Item71;
 		Item.autoReuse = true;
 

@@ -2,7 +2,7 @@ AuburnBoots: {
 	DisplayName: 金棕靴
 	Tooltip:
 		'''
-		移动速度提高8%
+		移动速度提高6%
 		“飞棍死后，唯剩一支空管，甚至找不到它的魔脏……不过这具外壳还挺好看的”
 		'''
 }
@@ -11,7 +11,7 @@ AuburnBreastplate: {
 	DisplayName: 金棕战甲
 	Tooltip:
 		'''
-		鞭子范围提高10%，鞭子攻击速度提高5%
+		鞭子范围提高12%，鞭子攻击速度提高6%
 		“飞棍死后，唯剩一支空管，甚至找不到它的魔脏……不过这具外壳还挺好看的”
 		'''
 }
@@ -20,9 +20,9 @@ AuburnHoodie: {
 	DisplayName: 金棕兜帽
 	Tooltip:
 		'''
-		召唤伤害提高8%
+		召唤伤害提高10%
 		整套装备使召唤物上限增加1个
-		穿戴整套装备时，按下套装效果快捷键，以降低生命再生为代价额外增加1个召唤栏，持续45秒
+		穿戴整套装备时，按下套装效果快捷键，以降低生命再生为代价额外增加1个召唤栏，持续30秒
 		该能力有60秒冷却时间
 		“飞棍死后，唯剩一支空管，甚至找不到它的魔脏……不过这具外壳还挺好看的”
 		'''
@@ -32,7 +32,7 @@ BloodDrenchedRobe: {
 	DisplayName: 沐血长袍
 	Tooltip:
 		'''
-		魔法暴击率提高6%
+		魔法暴击率提高5%
 		“他们用宿主鲜活的魔脏温养织兽，再用织兽编织鲜红的锦缎”
 		'''
 }
@@ -41,8 +41,8 @@ BloodStainedVeil: {
 	DisplayName: 染血纱帽
 	Tooltip:
 		'''
-		魔法伤害提高6%
-		同时穿戴长袍时，魔法弹幕命中可短暂提高生命再生，并有5%概率恢复10点魔力
+		魔法伤害提高8%
+		同时穿戴长袍时，魔法弹幕命中可短暂提高生命再生，并有3%概率恢复6点魔力
 		“传说虽是如此，眼前的衣装除了比较破旧，和法师长袍并无二致”
 		'''
 }
@@ -54,7 +54,7 @@ BlueflowerDress: {
 
 ConcentratingJacket: {
 	DisplayName: 充能夹克
-	Tooltip: 暴击率提高5%
+	Tooltip: 暴击率提高3%
 }
 
 ConventionalEquipment: {
@@ -112,22 +112,22 @@ CyanHeavylet: {
 	DisplayName: 青缎头盔
 	Tooltip:
 		'''
-		受到的伤害降低4%
+		受到的伤害降低3%
 		整套装备提供3点防御，并提高生命再生和加速度
 		'''
 }
 
 CyanLeggings: {
 	DisplayName: 青缎鞋
-	Tooltip: 近战攻击速度提高5%
+	Tooltip: 近战攻击速度提高4%
 }
 
 CyanWarhelm: {
 	DisplayName: 青缎战盔
 	Tooltip:
 		'''
-		近战伤害和近战暴击率提高4%
-		整套装备额外提供1%近战伤害和5点近战护甲穿透
+		近战伤害提高5%，近战暴击率提高4%
+		整套装备额外提供1%近战伤害和3点近战护甲穿透
 		'''
 }
 
@@ -180,9 +180,9 @@ ExplorationHelmet: {
 	DisplayName: 探照头盔
 	Tooltip:
 		'''
-		远程暴击率提高4%
+		远程暴击率提高5%
 		发出光亮
-		整套装备提供10%概率不消耗弹药，并使远程伤害提高5%
+		整套装备提供10%概率不消耗弹药，并使远程伤害提高8%
 		穿戴整套装备时，高亮显示鼠标方向上未被遮挡的敌人
 		'''
 }
@@ -206,8 +206,8 @@ JellyBallBathingCap: {
 	DisplayName: 球冻帽
 	Tooltip:
 		'''
-		提供2点防御，召唤物上限增加1个
-		受到弹幕攻击时，有5%概率使本次伤害减半并反弹弹幕
+		提供3点防御，召唤物上限增加1个
+		受到弹幕攻击时，有10%概率使本次伤害降低35%并反弹弹幕
 		“黏糊糊，且富有弹性的浴帽”
 		'''
 }
@@ -221,15 +221,15 @@ LampWoodHelmet: {
 	DisplayName: 灯木头盔
 	Tooltip:
 		'''
-		挖掘速度提高10%
-		整套装备提供2点防御、略微提高生命再生，并额外提高10%挖掘速度
+		挖掘速度提高8%
+		整套装备提供2点防御、略微提高生命再生，并额外提高8%挖掘速度
 		穿戴整套装备时发光
 		'''
 }
 
 LampWoodLeggings: {
 	DisplayName: 灯木护腿
-	Tooltip: 移动速度提高5%
+	Tooltip: 移动速度提高6%
 }
 
 MolluscsLeggings: {
@@ -254,10 +254,10 @@ OvineHairpin: {
 	DisplayName: 灯珠头饰
 	Tooltip:
 		'''
-		魔法暴击率提高4%
+		魔法暴击率提高5%
 		发出光亮
-		整套装备使魔力消耗降低10%、魔法伤害提高5%
-		穿戴整套装备且自身处于明亮区域时，魔法伤害额外提高10%
+		整套装备使魔力消耗降低12%、魔法伤害提高8%
+		穿戴整套装备且自身处于明亮区域时，魔法伤害额外提高7%
 		'''
 }
 
@@ -272,21 +272,21 @@ PearlMolluscsHelmet: {
 
 RockGreaves: {
 	DisplayName: 岩甲护腿
-	Tooltip: 移动速度提高5%
+	Tooltip: 移动速度提高6%
 }
 
 RockHelmet: {
 	DisplayName: 岩甲头盔
 	Tooltip:
 		'''
-		近战暴击率提高5%
-		穿戴整套装备时，移动可逐渐增加防御，最多增加12点；受伤后加成清零
+		近战暴击率提高6%
+		穿戴整套装备时，移动可逐渐增加防御，最多增加8点；受伤后加成清零
 		'''
 }
 
 RockPlateMail: {
 	DisplayName: 岩甲板甲
-	Tooltip: 近战伤害提高5%
+	Tooltip: 近战伤害提高7%
 }
 
 RuinLeggings: {
@@ -331,7 +331,7 @@ SafetyHelmets: {
 
 ShadowlessBoots: {
 	DisplayName: 无影靴子
-	Tooltip: 移动速度提高10%
+	Tooltip: 移动速度提高7%
 }
 
 ShellMolluscsBreastPlate: {
@@ -356,15 +356,15 @@ StandardLeggings: {
 
 TwilightWoodBreastplate: {
 	DisplayName: 暮桉木甲
-	Tooltip: 最大生命值增加15点
+	Tooltip: 最大生命值增加20点
 }
 
 TwilightWoodHelmet: {
 	DisplayName: 暮桉木头盔
 	Tooltip:
 		'''
-		远程伤害提高7%，远程暴击率提高4%
-		整套装备额外提供3%远程伤害和远程暴击率，以及15%概率不消耗弹药
+		远程伤害提高9%，远程暴击率提高4%
+		整套装备额外提供3%远程伤害和远程暴击率，以及20%概率不消耗弹药
 		'''
 }
 
@@ -372,7 +372,7 @@ TwilightWoodLeggings: {
 	DisplayName: 暮桉木鞋
 	Tooltip:
 		'''
-		移动速度提高5%，略微提高跳跃速度
+		移动速度提高6%，略微提高跳跃速度
 		行走时留下青蓝色光迹
 		'''
 }

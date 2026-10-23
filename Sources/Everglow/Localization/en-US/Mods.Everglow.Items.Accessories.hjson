@@ -135,7 +135,7 @@ ForsakenBoots: {
 	DisplayName: Forsaken Boots
 	Tooltip:
 		'''
-		8% increased movement speed
+		5% increased movement speed
 		Allows the wearer to run fast
 		'Race against time'
 		'''
@@ -195,7 +195,7 @@ HeatEmblem: {
 	Tooltip:
 		'''
 		Increases life regeneration
-		Taking damage has a 33% chance to set you on fire for 5 seconds
+		Taking damage has a 20% chance to set you on fire for 4 seconds
 		'''
 }
 
@@ -253,10 +253,10 @@ MelterGear: {
 	DisplayName: Melter Gear
 	Tooltip:
 		'''
-		9% increased ranged attack speed and 2 defense
-		Hits have a 33% chance to set enemies on fire for 5 seconds
-		Hitting a burning enemy has a 33% chance to set you on fire for 5 seconds
-		The effect on the wearer has a 15-second cooldown
+		6% increased ranged attack speed and 3 defense
+		Hits have a 25% chance to set enemies on fire for 4 seconds
+		Hitting a burning enemy has a 20% chance to set you on fire for 4 seconds
+		The effect on the wearer has a 12-second cooldown
 		'''
 }
 
@@ -265,7 +265,7 @@ MoltenCore: {
 	Tooltip:
 		'''
 		While afflicted with On Fire!, Hellfire, or Cursed Inferno:
-		Reduces damage taken and grants 5 defense
+		Reduces remaining damage taken by 5% and grants 5 defense
 		Increases damage, critical strike chance, and movement speed by 5%, and slightly increases jump speed
 		'''
 }
@@ -419,8 +419,8 @@ ThermalConductor: {
 	DisplayName: Thermal Conductor
 	Tooltip:
 		'''
-		Increases maximum mana by 60 and mana cost by 10%
-		While below 20% mana, each second has a 33% chance to restore 100 mana and inflict Cursed Inferno for 3 seconds
+		Increases maximum mana by 40 and mana cost by 8%
+		While below 20% mana, each second has a 25% chance to restore 36 mana and inflict Cursed Inferno for 2 seconds
 		'''
 }
 

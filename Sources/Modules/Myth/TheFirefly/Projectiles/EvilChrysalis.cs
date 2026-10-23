@@ -59,7 +59,7 @@ internal class EvilChrysalis : ModProjectile
 				if ((target.Center - Projectile.Center).Length() < 60 && !target.dontTakeDamage && !target.friendly)
 				{
 					NPC.HitModifiers npcHitM = new NPC.HitModifiers();
-					NPC.HitInfo hit = npcHitM.ToHitInfo(Projectile.damage * Main.rand.NextFloat(0.85f, 1.15f) * 4, Main.rand.NextFloat(100f) < player.GetTotalCritChance(Projectile.DamageType), 2);
+					NPC.HitInfo hit = npcHitM.ToHitInfo(Projectile.damage * Main.rand.NextFloat(0.85f, 1.15f) * 2.5f, Main.rand.NextFloat(100f) < player.GetTotalCritChance(Projectile.DamageType), 2);
 					target.StrikeNPC(hit, true, true);
 					NetMessage.SendStrikeNPC(target, hit);
 				}

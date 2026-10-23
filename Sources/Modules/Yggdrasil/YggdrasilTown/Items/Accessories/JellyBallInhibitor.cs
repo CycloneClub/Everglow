@@ -7,8 +7,8 @@ public class JellyBallInhibitor : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
-	public const float JellyBallDamageReduction = 0.25f;
-	public const float JellyBallDamageBonus = 0.6f;
+	public const float JellyBallDamageReduction = 0.15f;
+	public const float JellyBallDamageBonus = 0.3f;
 
 	public override void SetDefaults()
 	{
@@ -19,9 +19,9 @@ public class JellyBallInhibitor : ModItem
 
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
-		// 1. Increase damage to Jelly Ball by 60%
+		// 1. Increase damage to Jelly Ball by 30%
 		// =======================================
-		// 2. Decrease damage from Jelly Ball by 25%
+		// 2. Decrease damage from Jelly Ball by 15%
 		// =========================================
 		player.GetModPlayer<JellyBallInhibitorPlayer>().JellyBallInhibitorEnable = true;
 	}

@@ -25,7 +25,7 @@ namespace Everglow.Myth.TheFirefly.Items.Armors
 		public override void UpdateEquip(Player player)
 		{
 			player.buffImmune[BuffID.ManaSickness] = true; // Was BuffID.OnFire
-			player.statManaMax2 += 20;
+			player.statManaMax2 += 16;
 			player.maxMinions++;
 		}
 

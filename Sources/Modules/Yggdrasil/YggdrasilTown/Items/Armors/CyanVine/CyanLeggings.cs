@@ -27,7 +27,7 @@ public class CyanLeggings : ModItem
 
 	public override void UpdateEquip(Player player)
 	{
-		player.GetAttackSpeed(DamageClass.Melee) += 0.05f;
+		player.GetAttackSpeed(DamageClass.Melee) += 0.04f;
 	}
 
 	public override void AddRecipes()

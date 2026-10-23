@@ -27,7 +27,7 @@ public class ActivatedJellyGland : ModItem
 		Item.DamageType = DamageClass.Summon;
 		Item.damage = 12;
 		Item.knockBack = 2.4f;
-		Item.mana = 24;
+		Item.mana = 12;
 		Item.crit = 0;
 
 		Item.useTime = 27;

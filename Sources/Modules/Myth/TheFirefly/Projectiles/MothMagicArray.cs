@@ -34,7 +34,7 @@ public class MothMagicArray : ModProjectile
 			{
 				for (int f = 0; f < player.ownedProjectileCounts[ModContent.ProjectileType<GlowMoth>()]; f++)
 				{
-					var proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Main.rand.NextVector2Unit() * Main.rand.Next(6, 13), ModContent.ProjectileType<PhantomMoth>(), (int)(Projectile.damage * 0.7), 0, Projectile.owner, Main.MouseWorld.X, Main.MouseWorld.Y);
+					var proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Main.rand.NextVector2Unit() * Main.rand.Next(6, 13), ModContent.ProjectileType<PhantomMoth>(), (int)(Projectile.damage * 0.9), 0, Projectile.owner, Main.MouseWorld.X, Main.MouseWorld.Y);
 					proj.netUpdate2 = true;
 					proj.CritChance = Projectile.CritChance;
 				}

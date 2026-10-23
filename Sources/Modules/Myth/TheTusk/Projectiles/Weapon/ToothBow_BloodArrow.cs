@@ -145,7 +145,7 @@ public class ToothBow_BloodArrow : ModProjectile
 							proj.friendly = true;
 							tBBA.HitCount++;
 							tBBA.Power += 40;
-							if (tBBA.HitCount > 6)
+							if (tBBA.HitCount > 3)
 							{
 								proj.Kill();
 							}

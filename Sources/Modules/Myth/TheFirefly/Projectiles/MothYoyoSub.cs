@@ -29,7 +29,7 @@ public class MothYoyoSub : ModProjectile
 		Projectile.penetrate = -1;
 		Projectile.scale = 1f;
 		Projectile.usesLocalNPCImmunity = true;
-		Projectile.localNPCHitCooldown = 15;
+		Projectile.localNPCHitCooldown = 24;
 	}
 
 	public Vector3 targetPos;

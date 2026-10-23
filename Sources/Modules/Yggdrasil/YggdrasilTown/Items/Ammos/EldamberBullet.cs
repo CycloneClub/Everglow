@@ -16,7 +16,7 @@ public class EldamberBullet : ModItem
 		Item.width = 10;
 		Item.height = 10;
 		Item.ammo = AmmoID.Bullet;
-		Item.damage = 8;
+		Item.damage = 10;
 		Item.DamageType = DamageClass.Ranged;
 		Item.consumable = true;
 		Item.maxStack = Item.CommonMaxStack;

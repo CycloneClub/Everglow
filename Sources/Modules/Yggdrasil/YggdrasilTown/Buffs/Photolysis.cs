@@ -19,7 +19,7 @@ public class Photolysis : ModBuff
 		}
 		Vector3 lightValue = Lighting.GetSubLight(npc.Center);
 		float lightStrength = (lightValue.Length() / MathF.Sqrt(3) * 255 - 150) / 105f;
-		int loseValue = (int)Utils.Lerp(1, 11, lightStrength);
+		int loseValue = (int)Utils.Lerp(1, 6, lightStrength);
 		npc.lifeRegen -= loseValue * 2;
 		npc.SetLifeRegenExpectedLossPerSecond(loseValue);
 	}

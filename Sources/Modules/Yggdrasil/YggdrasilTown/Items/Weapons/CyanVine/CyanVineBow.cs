@@ -20,7 +20,7 @@ public class CyanVineBow : ModItem
 		Item.value = 1200;
 		Item.useTime = 26;
 		Item.useAnimation = 26;
-		Item.damage = 10;
+		Item.damage = 11;
 		Item.useStyle = ItemUseStyleID.Shoot;
 		Item.shoot = ProjectileID.WoodenArrowFriendly;
 		Item.shootSpeed = 12f;

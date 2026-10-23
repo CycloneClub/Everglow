@@ -12,10 +12,10 @@ public class HyperockSpear : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.width = 64;
 		Item.height = 64;
-		Item.useAnimation = 20;
-		Item.useTime = 20;
+		Item.useAnimation = 18;
+		Item.useTime = 18;
 		Item.knockBack = 8f;
-		Item.damage = 18;
+		Item.damage = 22;
 		Item.crit = 6;
 		Item.rare = ItemRarityID.Green;
 		Item.UseSound = SoundID.Item1;

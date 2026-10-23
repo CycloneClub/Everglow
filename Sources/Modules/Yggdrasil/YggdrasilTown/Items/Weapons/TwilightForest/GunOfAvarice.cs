@@ -19,13 +19,13 @@ public class GunOfAvarice : ModItem
 		Item.scale = 0.75f;
 
 		Item.DamageType = DamageClass.Ranged;
-		Item.damage = 16;
+		Item.damage = 20;
 		Item.knockBack = 1.5f;
 		Item.crit = 2;
 		Item.noMelee = true;
 
-		Item.useTime = 27;
-		Item.useAnimation = 27;
+		Item.useTime = 24;
+		Item.useAnimation = 24;
 		Item.useStyle = ItemUseStyleID.Shoot;
 		Item.autoReuse = false;
 
@@ -41,11 +41,11 @@ public class GunOfAvarice : ModItem
 
 	public const int AutoReloadDuration = 90;
 	public const float AutoReloadSuccessChance = 0.8f;
-	public const float AutoReloadFailureDamageRatio = 2.8f;
+	public const float AutoReloadFailureDamageRatio = 1.5f;
 
 	public const int ManualReloadDuration = 30;
 
-	public const float DamageBonusPerLevel = 0.25f;
+	public const float DamageBonusPerLevel = 0.18f;
 	public const int MaxLevel = 10;
 
 	public const int TargetValueBonusInCopper = 75;
@@ -93,7 +93,7 @@ public class GunOfAvarice : ModItem
 				}
 
 				// save damage value for hurting player while fail.
-				Projectile.NewProjectile(source, position, Vector2.Zero, ModContent.ProjectileType<GunOfAvariceAutoReload>(), (int)(Item.damage * (1 + DamageBonusPerLevel * OldLevel) * 2.8f), 0, player.whoAmI, ai0: result, ai1: Level);
+				Projectile.NewProjectile(source, position, Vector2.Zero, ModContent.ProjectileType<GunOfAvariceAutoReload>(), (int)(Item.damage * (1 + DamageBonusPerLevel * OldLevel) * 1.5f), 0, player.whoAmI, ai0: result, ai1: Level);
 				AmmoAmount = MagazineCapacity;
 			}
 		}

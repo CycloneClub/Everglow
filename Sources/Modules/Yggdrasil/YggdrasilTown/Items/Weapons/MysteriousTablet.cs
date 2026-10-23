@@ -10,12 +10,12 @@ public class MysteriousTablet : ModItem
 		Item.height = 32;
 
 		Item.DamageType = DamageClass.Default;
-		Item.damage = 18;
+		Item.damage = 20;
 		Item.knockBack = 1.0f;
 		Item.crit = 50;
 
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useAnimation = Item.useTime = 36;
+		Item.useAnimation = Item.useTime = 40;
 		Item.UseSound = SoundID.Item1;
 		Item.autoReuse = false;
 		Item.noMelee = true;

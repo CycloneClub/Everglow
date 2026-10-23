@@ -44,8 +44,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories
 			// Each successive jump has weaker power
 			return player.GetModPlayer<LampWoodPollenBottleJumpPlayer>().jumpsRemaining switch
 			{
-				1 => 1.3f,
-				2 => 0.8f,
+				1 => 1.1f,
+				2 => 0.7f,
 				_ => 0f,
 			};
 		}

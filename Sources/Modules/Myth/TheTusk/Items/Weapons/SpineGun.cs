@@ -17,8 +17,8 @@ public class SpineGun : ModItem
 		Item.value = 2000;
 
 		// Use Properties
-		Item.useTime = 30;
-		Item.useAnimation = 30;
+		Item.useTime = 36;
+		Item.useAnimation = 36;
 		Item.useStyle = ItemUseStyleID.Shoot;
 		Item.autoReuse = true;
 		Item.UseSound = SoundID.Item36;

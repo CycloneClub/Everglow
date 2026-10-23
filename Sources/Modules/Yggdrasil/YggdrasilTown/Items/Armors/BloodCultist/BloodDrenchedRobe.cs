@@ -21,12 +21,12 @@ public class BloodDrenchedRobe : ModItem
 		Item.height = 26;
 		Item.value = 2500;
 		Item.rare = ItemRarityID.Green;
-		Item.defense = 2;
+		Item.defense = 3;
 	}
 
 	public override void UpdateEquip(Player player)
 	{
-		player.GetCritChance(DamageClass.Magic) += 6f;
+		player.GetCritChance(DamageClass.Magic) += 5f;
 	}
 
 	public override void AddRecipes()

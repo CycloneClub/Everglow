@@ -16,7 +16,7 @@ public class DarkMassacreDagger : ModItem
 		Item.useAnimation = 12;
 		Item.useTime = 12;
 		Item.knockBack = 1.1f;
-		Item.damage = 18;
+		Item.damage = 24;
 		Item.rare = ItemRarityID.White;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee;

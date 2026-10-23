@@ -1053,5 +1053,5 @@ JumpBuff: {
 
 JumpPotionBuff: {
 	DisplayName: Jump
-	Description: Increases jump height by 15% and reduces fall damage by 30%
+	Description: Increases jump height by 20% and reduces fall damage by 25%
 }

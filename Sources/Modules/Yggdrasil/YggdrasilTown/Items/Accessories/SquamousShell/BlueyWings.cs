@@ -10,7 +10,7 @@ public class BlueyWings : ModItem
 
 	public override void SetStaticDefaults()
 	{
-		ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(120, 6.25f, 1.5f);
+		ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(90, 5.5f, 1.35f);
 	}
 
 	public override void SetDefaults()

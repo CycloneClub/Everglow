@@ -18,8 +18,8 @@ public class ShadowPotionBuff : ModBuff
 		Color playerLight = Lighting.GetColor((int)(player.Center.X / 16), (int)(player.Center.Y / 16));
 		if (Math.Max(Math.Max(playerLight.R, playerLight.G), playerLight.B) <= 190)
 		{
-			player.statDefense += 15;
-			player.allDamage += 0.2f;
+			player.statDefense += 8;
+			player.allDamage += 0.08f;
 			LightTime++;
 
 			if (Main.rand.NextBool(30))

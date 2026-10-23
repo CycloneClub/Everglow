@@ -90,7 +90,7 @@ public class WiltedForestLamp_Proj : ModProjectile
 				}
 				if (npc != null)
 				{
-					AmmoCooling = 20;
+					AmmoCooling = 30;
 					AmmoCount--;
 					if (Collision.CanHit(Projectile, npc))
 					{
@@ -199,7 +199,7 @@ public class WiltedForestLamp_Proj : ModProjectile
 				{
 					if ((npc.Center - Projectile.Center).Length() < 220)
 					{
-						npc.AddElementalDebuffBuildUp(Main.player[Projectile.owner], BurnDebuff.ID, 5000);
+						npc.AddElementalDebuffBuildUp(Main.player[Projectile.owner], BurnDebuff.ID, 500);
 					}
 				}
 			}

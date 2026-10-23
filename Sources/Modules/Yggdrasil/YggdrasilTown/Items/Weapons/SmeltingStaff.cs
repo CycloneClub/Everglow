@@ -12,11 +12,11 @@ public class SmeltingStaff : ModItem
 		Item.width = 45;
 		Item.height = 45;
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useTime = 22;
-		Item.useAnimation = 22;
-		Item.damage = 24;
+		Item.useTime = 30;
+		Item.useAnimation = 30;
+		Item.damage = 32;
 		Item.knockBack = 2.4f;
-		Item.mana = 14;
+		Item.mana = 10;
 		Item.noMelee = true;
 		Item.DamageType = DamageClass.Magic;
 		Item.holdStyle = ItemHoldStyleID.HoldGuitar;

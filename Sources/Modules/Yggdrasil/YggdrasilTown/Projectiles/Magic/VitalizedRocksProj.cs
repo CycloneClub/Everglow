@@ -61,9 +61,9 @@ public class VitalizedRocksProj : ModProjectile
 		Projectile.Center = Vector2.Lerp(Projectile.Center, player.Center + new Vector2(player.direction * 2, MathF.Sin((float)Main.timeForVisualEffects / 20)) * 20, 0.2f);
 		if (timer <= 0 && player.controlUseItem && player.HeldItem.type == ModContent.ItemType<Items.Weapons.RockElemental.VitalizedRocks>() && player.CheckMana(player.HeldItem.mana, true))
 		{
-			timer = 30;
-			player.itemTime = 33;
-			player.itemAnimation = 33;
+			timer = 36;
+			player.itemTime = 39;
+			player.itemAnimation = 39;
 			if (Main.MouseWorld.X > player.Center.X)
 			{
 				player.direction = 1;
