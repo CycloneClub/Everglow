@@ -5,7 +5,8 @@ param(
 	[Parameter(Mandatory)][string]$ModFile,
 	[Parameter(Mandatory)][string]$WorkshopDirectory,
 	[Parameter(Mandatory)][string]$RunDirectory,
-	[ValidateRange(1, 1800)][int]$TimeoutSeconds = 300
+	[ValidateRange(1, 1800)][int]$TimeoutSeconds = 300,
+	[switch]$AuditAssets
 )
 $ErrorActionPreference = 'Stop'
 . "$PSScriptRoot/ModLoadResult.ps1"
@@ -33,14 +34,35 @@ foreach ($id in $dependencies.Keys) {
 	}
 }
 
-$runtime = New-Item -ItemType Directory -Path "$RunDirectory/runtime"
+$runtime = New-Item -ItemType Directory -Path "$RunDirectory/game"
 # A private runtime also isolates logs, config and console creation from the installed game.
+# Avoid a directory named 'runtime': tML's compiler excludes references under '/runtime*'.
 Get-ChildItem -LiteralPath $TmlDirectory | Where-Object {
 	$_.Name -in @('Content', 'Libraries') -or $_.Name -like 'tModLoader.*'
 } | Copy-Item -Destination $runtime.FullName -Recurse
 $mods = New-Item -ItemType Directory -Path "$RunDirectory/save/Mods"
 Copy-Item -LiteralPath $ModFile -Destination "$($mods.FullName)/Everglow.tmod"
-@('Everglow', 'SubworldLibrary', 'ModLiquidLib') | ConvertTo-Json |
+$enabledMods = @('Everglow', 'SubworldLibrary', 'ModLiquidLib')
+if ($AuditAssets) {
+	# Compile the CI-only helper with this run's tML, outside the repository and release artifact.
+	$source = New-Item -ItemType Directory -Path "$RunDirectory/save/ModSources/CiAssetAudit"
+	Copy-Item -Path "$PSScriptRoot/../asset-audit/*" -Destination $source.FullName
+	Push-Location $runtime.FullName
+	try {
+		& dotnet tModLoader.dll -server -nosteam -tmlsavedirectory "$RunDirectory/save" -build $source.FullName 2>&1 |
+			Tee-Object -FilePath "$RunDirectory/asset-audit-build.log" | Write-Host
+		if ($LASTEXITCODE -ne 0 -or -not (Test-Path -LiteralPath "$($mods.FullName)/CiAssetAudit.tmod")) {
+			throw 'Failed to build the CI asset audit mod.'
+		}
+	}
+	finally { Pop-Location }
+	# Build logs must not serve as load evidence.
+	if (Test-Path -LiteralPath "$($runtime.FullName)/tModLoader-Logs/server.log") {
+		Move-Item -LiteralPath "$($runtime.FullName)/tModLoader-Logs/server.log" -Destination "$RunDirectory/asset-audit-build-server.log"
+	}
+	$enabledMods += 'CiAssetAudit'
+}
+$enabledMods | ConvertTo-Json |
 	Set-Content -LiteralPath "$($mods.FullName)/enabled.json" -Encoding utf8NoBOM
 $workshop = New-Item -ItemType Directory -Path "$RunDirectory/workshop/content/1281930"
 foreach ($id in $dependencies.Keys) {
@@ -88,11 +110,11 @@ finally {
 	$process.Dispose()
 }
 $log = ''
-$serverLog = "$RunDirectory/runtime/tModLoader-Logs/server.log"
+$serverLog = "$($runtime.FullName)/tModLoader-Logs/server.log"
 if (Test-Path -LiteralPath $serverLog) {
 	Copy-Item -LiteralPath $serverLog -Destination "$RunDirectory/server.log"
 	$log = Get-Content -LiteralPath $serverLog -Raw
 	Get-Content -LiteralPath $serverLog -Tail 60 | Write-Host
 }
-Assert-ModLoadResult -LogText $log -ExitCode $exitCode -TimedOut $timedOut
+Assert-ModLoadResult -LogText $log -ExitCode $exitCode -TimedOut $timedOut -RequireAssetAudit:$AuditAssets
 Write-Host 'PASS: Everglow and its dependencies completed actual tModLoader server loading.'

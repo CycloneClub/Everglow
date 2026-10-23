@@ -12,46 +12,45 @@ on:
 
 permissions:
   contents: read
-  actions: read
 
 jobs:
-  # Draft-PR probe: test the exact current 1.4.4 artifact before choosing a client harness.
-  client-probe:
-    name: Client graphics and startup probe
+  asset-test:
+    name: Packaged content and equipment textures
+    needs: build-and-test
     runs-on: ubuntu-24.04
-    timeout-minutes: 8
+    timeout-minutes: 10
     steps:
-    - uses: actions/download-artifact@v4
+    - name: Checkout
+      uses: actions/checkout@v6
+    - name: Setup .NET 8.0
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+    - name: Download shared load test inputs
+      uses: actions/download-artifact@v4
       with:
         name: tmodloader-load-inputs
-        run-id: 39818149279
-        github-token: ${{ github.token }}
-        path: ${{ runner.temp }}/client-inputs
-    - name: Install software graphics
+        path: ${{ runner.temp }}/tml-load-inputs
+    - name: Check packaged texture references
+      shell: pwsh
       run: |
-        sudo apt-get update
-        sudo apt-get install -y xvfb mesa-utils libgl1-mesa-dri libopenal1
-    - name: Probe client startup
-      shell: bash
-      run: |
-        mkdir -p "$RUNNER_TEMP/client-probe/runtime" "$RUNNER_TEMP/client-probe/save/Mods"
-        unzip -q "$RUNNER_TEMP/client-inputs/tModLoader.zip" -d "$RUNNER_TEMP/client-probe/runtime"
-        cp "$RUNNER_TEMP/client-inputs/Everglow.tmod" "$RUNNER_TEMP/client-probe/save/Mods/"
-        printf '%s\n' '["Everglow","SubworldLibrary","ModLiquidLib"]' > "$RUNNER_TEMP/client-probe/save/Mods/enabled.json"
-        cd "$RUNNER_TEMP/client-probe/runtime"
-        xvfb-run -a env LIBGL_ALWAYS_SOFTWARE=1 glxinfo -B | tee ../graphics.log
-        timeout -k 10s 90s xvfb-run -a env LIBGL_ALWAYS_SOFTWARE=1 FNA3D_FORCE_DRIVER=OpenGL SDL_AUDIODRIVER=dummy ALSOFT_DRIVERS=null \
-          dotnet tModLoader.dll -nosteam -tmlsavedirectory "$RUNNER_TEMP/client-probe/save" \
-          -modpath "$RUNNER_TEMP/client-probe/save/Mods" \
-          -steamworkshopfolder "$RUNNER_TEMP/client-inputs/workshop" > ../stdout.log 2> ../stderr.log
-    - name: Upload client probe evidence
+        Expand-Archive -LiteralPath "$env:RUNNER_TEMP/tml-load-inputs/tModLoader.zip" -DestinationPath "$env:RUNNER_TEMP/tmod"
+        ./.github/workflows/scripts/Test-TModLoaderLoad.ps1 `
+          -TmlDirectory "$env:RUNNER_TEMP/tmod" `
+          -ModFile "$env:RUNNER_TEMP/tml-load-inputs/Everglow.tmod" `
+          -WorkshopDirectory "$env:RUNNER_TEMP/tml-load-inputs/workshop" `
+          -RunDirectory "$env:RUNNER_TEMP/tml-asset-test" `
+          -AuditAssets -TimeoutSeconds 300
+    - name: Upload asset audit logs
       if: always()
       uses: actions/upload-artifact@v4
       with:
-        name: client-probe-logs
+        name: tmodloader-asset-audit-logs
+        if-no-files-found: warn
         path: |
-          ${{ runner.temp }}/client-probe/*.log
-          ${{ runner.temp }}/client-probe/runtime/tModLoader-Logs/
+          ${{ runner.temp }}/tml-asset-test/*.log
+          ${{ runner.temp }}/tml-asset-test/game/tModLoader-Logs/server*.log
+          ${{ runner.temp }}/tml-asset-test/mod-sha256.txt
 
   build-and-test:
 
@@ -122,7 +121,9 @@ jobs:
 
     - name: Test load result checks
       shell: pwsh
-      run: ./.github/workflows/scripts/Test-ModLoadResult.Tests.ps1
+      run: |
+        ./.github/workflows/scripts/Test-ModLoadResult.Tests.ps1
+        ./.github/workflows/scripts/Test-TexturePathCheck.Tests.ps1
 
     - name: Download runtime mod dependencies
       shell: pwsh
@@ -272,7 +273,7 @@ jobs:
         if-no-files-found: warn
         path: |
           ${{ runner.temp }}/tml-load-test/server.log
-          ${{ runner.temp }}/tml-load-test/runtime/tModLoader-Logs/server*.log
+          ${{ runner.temp }}/tml-load-test/game/tModLoader-Logs/server*.log
           ${{ runner.temp }}/tml-load-test/stdout.log
           ${{ runner.temp }}/tml-load-test/stderr.log
           ${{ runner.temp }}/tml-load-test/mod-sha256.txt
