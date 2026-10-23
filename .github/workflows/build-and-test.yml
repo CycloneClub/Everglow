@@ -12,8 +12,47 @@ on:
 
 permissions:
   contents: read
+  actions: read
 
 jobs:
+  # Draft-PR probe: test the exact current 1.4.4 artifact before choosing a client harness.
+  client-probe:
+    name: Client graphics and startup probe
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+    - uses: actions/download-artifact@v4
+      with:
+        name: tmodloader-load-inputs
+        run-id: 39818149279
+        github-token: ${{ github.token }}
+        path: ${{ runner.temp }}/client-inputs
+    - name: Install software graphics
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y xvfb mesa-utils libgl1-mesa-dri libopenal1
+    - name: Probe client startup
+      shell: bash
+      run: |
+        mkdir -p "$RUNNER_TEMP/client-probe/runtime" "$RUNNER_TEMP/client-probe/save/Mods"
+        unzip -q "$RUNNER_TEMP/client-inputs/tModLoader.zip" -d "$RUNNER_TEMP/client-probe/runtime"
+        cp "$RUNNER_TEMP/client-inputs/Everglow.tmod" "$RUNNER_TEMP/client-probe/save/Mods/"
+        printf '%s\n' '["Everglow","SubworldLibrary","ModLiquidLib"]' > "$RUNNER_TEMP/client-probe/save/Mods/enabled.json"
+        cd "$RUNNER_TEMP/client-probe/runtime"
+        xvfb-run -a env LIBGL_ALWAYS_SOFTWARE=1 glxinfo -B | tee ../graphics.log
+        timeout -k 10s 90s xvfb-run -a env LIBGL_ALWAYS_SOFTWARE=1 FNA3D_FORCE_DRIVER=OpenGL SDL_AUDIODRIVER=dummy ALSOFT_DRIVERS=null \
+          dotnet tModLoader.dll -nosteam -tmlsavedirectory "$RUNNER_TEMP/client-probe/save" \
+          -modpath "$RUNNER_TEMP/client-probe/save/Mods" \
+          -steamworkshopfolder "$RUNNER_TEMP/client-inputs/workshop" > ../stdout.log 2> ../stderr.log
+    - name: Upload client probe evidence
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: client-probe-logs
+        path: |
+          ${{ runner.temp }}/client-probe/*.log
+          ${{ runner.temp }}/client-probe/runtime/tModLoader-Logs/
+
   build-and-test:
 
     runs-on: windows-latest
