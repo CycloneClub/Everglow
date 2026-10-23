@@ -1,3 +1,5 @@
+using Everglow.Commons.Mechanics.Cooldown;
+using Everglow.Commons.Utilities;
 using Everglow.SpellAndSkull.Items;
 using Everglow.SpellAndSkull.Projectiles.BookofSkulls;
 using Everglow.SpellAndSkull.Projectiles.CrystalStorm;
@@ -353,12 +355,11 @@ public class MagicBooksReplace : GlobalItem
 
 	public override void HoldItem(Item item, Player player)
 	{
-		MagicBookPlayer mplayer = player.GetModPlayer<MagicBookPlayer>();
 		if (item.type == ItemID.BookofSkulls)
 		{
 			if (player.GetModPlayer<MagicBookPlayer>().MagicBookLevel == 1)
 			{
-				if (Main.mouseRight && Main.mouseRightRelease && mplayer.HandCooling <= 0 && player.statMana > player.HeldItem.mana * 2)
+				if (Main.mouseRight && Main.mouseRightRelease && !player.HasCooldown(SkullHandCooldown.ID) && player.statMana > player.HeldItem.mana * 2)
 				{
 					for (int g = -5; g < 150; g++)
 					{
@@ -368,7 +369,7 @@ public class MagicBooksReplace : GlobalItem
 							var p = Projectile.NewProjectileDirect(item.GetSource_FromAI(), ReleasePoint, Vector2.Zero, ModContent.ProjectileType<SkullHand>(), player.HeldItem.damage * 3, player.HeldItem.knockBack * 6, player.whoAmI);
 							p.CritChance = player.GetWeaponCrit(player.HeldItem);
 
-							mplayer.HandCooling = 18;
+							player.AddCooldown(SkullHandCooldown.ID, 18);
 							player.statMana -= player.HeldItem.mana * 4;
 							break;
 						}
@@ -383,15 +384,11 @@ public class MagicBookPlayer : ModPlayer
 {
 	public int MagicBookLevel = 0;
 	public int WaterBoltHasHit = 0;
-	public int HandCooling = 0;
 
 	public override void PreUpdate()
 	{
 		MagicBookLevel = 0;
-		if (HandCooling > 0)
-		{
-			HandCooling--;
-		}
+		Player.TickCooldown(SkullHandCooldown.ID);
 
 		base.PreUpdate();
 	}
@@ -408,4 +405,23 @@ public class MagicBookPlayer : ModPlayer
 		}
 		return base.PreItemCheck();
 	}
+}
+
+internal sealed class SkullHandCooldown : CooldownBase
+{
+	public new static string ID => "Everglow_SkullHand";
+
+	public override string TypeID => ID;
+
+	public override bool AutomaticTick => false;
+
+	public override bool CanTickDown => true;
+
+	public override bool PersistentCooldown => true;
+
+	public override bool CooldownNoSave => true;
+
+	public override bool IsVisible => false;
+
+	public override Texture2D Texture => ModAsset.SkullHand.Value;
 }

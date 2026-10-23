@@ -15,6 +15,13 @@ public abstract class CooldownBase
 	public CooldownInstance Instance { get; set; }
 
 	#region Ingame Behavior
+
+	/// <summary>
+	/// Advance in PostUpdateMiscEffects. Disable when an existing gameplay hook
+	/// calls PlayerUtils.TickCooldown to preserve its update order and pause conditions.
+	/// </summary>
+	public virtual bool AutomaticTick => true;
+
 	public virtual bool CanTickDown => true;
 
 	/// <summary>
