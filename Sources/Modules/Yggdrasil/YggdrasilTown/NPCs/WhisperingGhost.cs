@@ -18,8 +18,8 @@ public class WhisperingGhost : ModNPC
 	{
 		NPC.width = 40;
 		NPC.height = 40;
-		NPC.lifeMax = 40;
-		NPC.damage = 12;
+		NPC.lifeMax = 45;
+		NPC.damage = 14;
 		NPC.defense = 4;
 		NPC.friendly = false;
 		NPC.aiStyle = -1;

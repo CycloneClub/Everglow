@@ -18,8 +18,8 @@ public class DarkGlimmeringRods : ModNPC
 	{
 		NPC.width = 40;
 		NPC.height = 40;
-		NPC.lifeMax = 188;
-		NPC.damage = 22;
+		NPC.lifeMax = 120;
+		NPC.damage = 18;
 		NPC.defense = 8;
 		NPC.friendly = false;
 		NPC.aiStyle = -1;

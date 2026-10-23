@@ -55,8 +55,8 @@ public class JellyBallLifeAbsorb : ModProjectile
 		{
 			if (Absorbee.type == ModContent.NPCType<JellyBall>())
 			{
-				OwnerBoss.HealEffect(100);
-				OwnerBoss.life += 100;
+				OwnerBoss.HealEffect(60);
+				OwnerBoss.life += 60;
 				if (OwnerBoss.life > OwnerBoss.lifeMax)
 				{
 					OwnerBoss.life = OwnerBoss.lifeMax;
@@ -64,8 +64,8 @@ public class JellyBallLifeAbsorb : ModProjectile
 			}
 			if (Absorbee.type == ModContent.NPCType<GiantJellyBall>())
 			{
-				OwnerBoss.HealEffect(240);
-				OwnerBoss.life += 240;
+				OwnerBoss.HealEffect(160);
+				OwnerBoss.life += 160;
 				if (OwnerBoss.life > OwnerBoss.lifeMax)
 				{
 					OwnerBoss.life = OwnerBoss.lifeMax;
