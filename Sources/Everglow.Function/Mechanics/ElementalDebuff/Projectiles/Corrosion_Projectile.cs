@@ -31,7 +31,7 @@ public class Corrosion_Projectile : ModProjectile
 	{
 		Projectile.width = 24;
 		Projectile.height = 24;
-		Projectile.timeLeft = 300;
+		Projectile.timeLeft = 240;
 
 		Projectile.friendly = true;
 		Projectile.hostile = false;
@@ -40,7 +40,7 @@ public class Corrosion_Projectile : ModProjectile
 		Projectile.penetrate = -1;
 
 		Projectile.usesLocalNPCImmunity = true;
-		Projectile.localNPCHitCooldown = 10;
+		Projectile.localNPCHitCooldown = 20;
 	}
 
 	public override bool OnTileCollide(Vector2 oldVelocity)
@@ -136,7 +136,7 @@ public class Corrosion_Projectile : ModProjectile
 	{
 		DrawTentacles(lightColor);
 
-		float timer = 300 - Projectile.timeLeft;
+		float timer = 240 - Projectile.timeLeft;
 		var drawColor = new Color(0.4f, 0f, 1f, 0);
 		float fade = 1f;
 		if (timer < 10)

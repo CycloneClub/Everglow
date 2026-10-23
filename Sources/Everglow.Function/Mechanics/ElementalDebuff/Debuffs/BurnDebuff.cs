@@ -14,6 +14,6 @@ public class BurnDebuff : ElementalDebuffHandler
 
 	public override void PostProc(NPC npc)
 	{
-		npc.AddBuff(BuffID.OnFire3, 1200);
+		npc.AddBuff(BuffID.OnFire3, 360);
 	}
 }

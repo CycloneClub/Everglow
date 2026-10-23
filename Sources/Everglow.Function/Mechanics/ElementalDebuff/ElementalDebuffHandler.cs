@@ -20,24 +20,24 @@ public abstract class ElementalDebuffHandler
 	public virtual float ElementalResistance { get; protected set; } = 0f;
 
 	/// <summary>
-	/// The element debuff build-up limitation. Once the build-up is more than this max value, the element debuff will proc.
+	/// The element debuff build-up limitation. Once the build-up reaches this value, the element debuff will proc on its next update.
 	/// </summary>
 	public virtual int BuildUpMax { get; protected set; } = 1000;
 
 	/// <summary>
 	/// The duration of element debuff proc state.
 	/// </summary>
-	public virtual int Duration { get; protected set; } = 720;
+	public virtual int Duration { get; protected set; } = 600;
 
 	/// <summary>
-	/// Damage per second when element debuff is proc.
+	/// Negative life-regeneration units during proc; two units correspond to one HP per second at 60 updates per second.
 	/// </summary>
 	public virtual int DotDamage { get; protected set; } = 0;
 
 	/// <summary>
 	/// Damage on element debuff proc.
 	/// </summary>
-	public virtual int ProcDamage { get; protected set; } = 200;
+	public virtual int ProcDamage { get; protected set; } = 60;
 
 	public ElementalDebuffHandler SetOverride(ElementalDebuffOverride overrideInfo)
 	{
