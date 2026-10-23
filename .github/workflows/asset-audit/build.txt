@@ -1,0 +1,6 @@
+displayName = CI Asset Audit
+author = Everglow CI
+version = 0.1
+side = Server
+sortAfter = Everglow
+includeSource = true
