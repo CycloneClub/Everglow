@@ -17,7 +17,7 @@ public class EldamberBoots : ModItem
 		Item.width = 28;
 		Item.height = 24;
 		Item.maxStack = 1;
-		Item.defense = 6;
+		Item.defense = 7;
 		Item.rare = ItemRarityID.Blue;
 		Item.value = Item.sellPrice(silver: 30);
 	}

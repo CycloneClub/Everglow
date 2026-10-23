@@ -22,12 +22,12 @@ public class ShadowlessBoots : ModItem
 		Item.height = 26;
 		Item.value = 2500;
 		Item.rare = ItemRarityID.Green;
-		Item.defense = 2;
+		Item.defense = 3;
 	}
 
 	public override void UpdateEquip(Player player)
 	{
-		player.moveSpeed += 0.1f;
+		player.moveSpeed += 0.07f;
 	}
 
 	public override void AddRecipes()

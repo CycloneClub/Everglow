@@ -28,7 +28,7 @@ public class MothEye : ModItem
 		player.GetModPlayer<MothEyePlayer>().MothEyeEquipped = true;
 		player.maxMinions += 1;
 		player.maxTurrets += 1;
-		player.GetDamage(DamageClass.Summon) *= 1.06f;
+		player.GetDamage(DamageClass.Summon) *= 1.08f;
 		if (fireflyBiome.IsBiomeActive(Main.LocalPlayer) && Main.hardMode)
 		{
 			player.manaSickReduction += 4;

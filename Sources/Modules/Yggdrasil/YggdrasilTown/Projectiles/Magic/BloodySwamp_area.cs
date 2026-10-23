@@ -77,7 +77,7 @@ public class BloodySwamp_area : ModProjectile, IWarpProjectile_warpStyle2
 			{
 				if ((player.Center - Projectile.Center).Length() < 110)
 				{
-					player.Heal(5);
+					player.Heal(3);
 				}
 			}
 		}

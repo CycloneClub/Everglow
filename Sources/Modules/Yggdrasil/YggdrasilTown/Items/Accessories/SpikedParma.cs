@@ -4,7 +4,7 @@ public class SpikedParma : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
-	public const int ThornBuffDuration = 1800;
+	public const int ThornBuffDuration = 1200;
 
 	public override void SetDefaults()
 	{
@@ -18,12 +18,12 @@ public class SpikedParma : ModItem
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
 		// 1. + 3 Defense
-		player.statDefense += 4;
+		player.statDefense += 3;
 
 		// 2. + 3% All damage
-		player.allDamage += 0.04f;
+		player.allDamage += 0.03f;
 
-		// 3. Add a 30s thorn buff after hurt
+		// 3. Add a 20s thorn buff after hurt
 		player.GetModPlayer<SpikedParmaPlayer>().HasSpikedParma = true;
 	}
 }

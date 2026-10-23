@@ -17,7 +17,7 @@ public class EldamberBreastplate : ModItem
 		Item.width = 28;
 		Item.height = 24;
 		Item.maxStack = 1;
-		Item.defense = 7;
+		Item.defense = 8;
 		Item.rare = ItemRarityID.Blue;
 		Item.value = Item.sellPrice(silver: 30);
 	}

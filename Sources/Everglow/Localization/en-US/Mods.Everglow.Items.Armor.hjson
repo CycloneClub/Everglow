@@ -2,7 +2,7 @@ AuburnBoots: {
 	DisplayName: Auburn Boots
 	Tooltip:
 		'''
-		8% increased movement speed
+		6% increased movement speed
 		'A dead rod leaves only a hollow tube; even its arcane organs are gone... Still, the shell is rather pretty'
 		'''
 }
@@ -11,7 +11,7 @@ AuburnBreastplate: {
 	DisplayName: Auburn Breastplate
 	Tooltip:
 		'''
-		10% increased whip range and 5% increased whip attack speed
+		12% increased whip range and 6% increased whip attack speed
 		'A dead rod leaves only a hollow tube; even its arcane organs are gone... Still, the shell is rather pretty'
 		'''
 }
@@ -20,9 +20,9 @@ AuburnHoodie: {
 	DisplayName: Auburn Hood
 	Tooltip:
 		'''
-		8% increased summon damage
+		10% increased summon damage
 		Full set increases your max number of minions by 1
-		With the full set, press the armor ability hotkey to gain another minion slot at the cost of life regeneration for 45 seconds
+		With the full set, press the armor ability hotkey to gain another minion slot at the cost of life regeneration for 30 seconds
 		This ability has a 60-second cooldown
 		'A dead rod leaves only a hollow tube; even its arcane organs are gone... Still, the shell is rather pretty'
 		'''
@@ -32,7 +32,7 @@ BloodDrenchedRobe: {
 	DisplayName: Blood-Drenched Robe
 	Tooltip:
 		'''
-		6% increased magic critical strike chance
+		5% increased magic critical strike chance
 		'They nurture weaving beasts with the living arcane organs of their hosts, then use the beasts to weave scarlet brocade'
 		'''
 }
@@ -41,8 +41,8 @@ BloodStainedVeil: {
 	DisplayName: Bloodstained Veil
 	Tooltip:
 		'''
-		6% increased magic damage
-		With the robe equipped, magic projectile hits briefly increase life regeneration and have a 5% chance to restore 10 mana
+		8% increased magic damage
+		With the robe equipped, magic projectile hits briefly increase life regeneration and have a 3% chance to restore 6 mana
 		'Despite the stories, it looks like an ordinary mage robe, only more threadbare'
 		'''
 }
@@ -54,7 +54,7 @@ BlueflowerDress: {
 
 ConcentratingJacket: {
 	DisplayName: Concentrating Jacket
-	Tooltip: 5% increased critical strike chance
+	Tooltip: 3% increased critical strike chance
 }
 
 ConventionalEquipment: {
@@ -112,22 +112,22 @@ CyanHeavylet: {
 	DisplayName: Cyan Helmet
 	Tooltip:
 		'''
-		4% reduced damage taken
+		3% reduced damage taken
 		Full set grants 3 defense, increased life regeneration, and increased acceleration
 		'''
 }
 
 CyanLeggings: {
 	DisplayName: Cyan Boots
-	Tooltip: 5% increased melee attack speed
+	Tooltip: 4% increased melee attack speed
 }
 
 CyanWarhelm: {
 	DisplayName: Cyan Warhelm
 	Tooltip:
 		'''
-		4% increased melee damage and critical strike chance
-		Full set grants an additional 1% melee damage and 5 melee armor penetration
+		5% increased melee damage and 4% increased melee critical strike chance
+		Full set grants an additional 1% melee damage and 3 melee armor penetration
 		'''
 }
 
@@ -180,9 +180,9 @@ ExplorationHelmet: {
 	DisplayName: Exploration Helmet
 	Tooltip:
 		'''
-		4% increased ranged critical strike chance
+		5% increased ranged critical strike chance
 		Emits light
-		Full set grants a 10% chance not to consume ammo and 5% increased ranged damage
+		Full set grants a 10% chance not to consume ammo and 8% increased ranged damage
 		Full set highlights visible enemies in the direction of the cursor
 		'''
 }
@@ -206,8 +206,8 @@ JellyBallBathingCap: {
 	DisplayName: Jelly Ball Bathing Cap
 	Tooltip:
 		'''
-		Grants 2 defense and increases your max number of minions by 1
-		5% chance to halve incoming projectile damage and reflect the projectile
+		Grants 3 defense and increases your max number of minions by 1
+		10% chance to reduce incoming projectile damage by 35% and reflect the projectile
 		'A sticky, springy bathing cap'
 		'''
 }
@@ -221,15 +221,15 @@ LampWoodHelmet: {
 	DisplayName: Lampwood Helmet
 	Tooltip:
 		'''
-		10% increased mining speed
-		Full set grants 2 defense, slightly increased life regeneration, and an additional 10% mining speed
+		8% increased mining speed
+		Full set grants 2 defense, slightly increased life regeneration, and an additional 8% mining speed
 		Full set emits light
 		'''
 }
 
 LampWoodLeggings: {
 	DisplayName: Lampwood Greaves
-	Tooltip: 5% increased movement speed
+	Tooltip: 6% increased movement speed
 }
 
 MolluscsLeggings: {
@@ -254,10 +254,10 @@ OvineHairpin: {
 	DisplayName: Ovine Hairpin
 	Tooltip:
 		'''
-		4% increased magic critical strike chance
+		5% increased magic critical strike chance
 		Emits light
-		Full set reduces mana cost by 10% and increases magic damage by 5%
-		Full set grants an additional 10% magic damage while you stand in bright light
+		Full set reduces mana cost by 12% and increases magic damage by 8%
+		Full set grants an additional 7% magic damage while you stand in bright light
 		'''
 }
 
@@ -272,21 +272,21 @@ PearlMolluscsHelmet: {
 
 RockGreaves: {
 	DisplayName: Rock Greaves
-	Tooltip: 5% increased movement speed
+	Tooltip: 6% increased movement speed
 }
 
 RockHelmet: {
 	DisplayName: Rock Helmet
 	Tooltip:
 		'''
-		5% increased melee critical strike chance
-		Full set builds up to 12 bonus defense as you move; taking damage resets the bonus
+		6% increased melee critical strike chance
+		Full set builds up to 8 bonus defense as you move; taking damage resets the bonus
 		'''
 }
 
 RockPlateMail: {
 	DisplayName: Rock Plate Mail
-	Tooltip: 5% increased melee damage
+	Tooltip: 7% increased melee damage
 }
 
 RuinLeggings: {
@@ -331,7 +331,7 @@ SafetyHelmets: {
 
 ShadowlessBoots: {
 	DisplayName: Shadowless Boots
-	Tooltip: 10% increased movement speed
+	Tooltip: 7% increased movement speed
 }
 
 ShellMolluscsBreastPlate: {
@@ -356,15 +356,15 @@ StandardLeggings: {
 
 TwilightWoodBreastplate: {
 	DisplayName: Twilight Eucalyptus Breastplate
-	Tooltip: Increases maximum life by 15
+	Tooltip: Increases maximum life by 20
 }
 
 TwilightWoodHelmet: {
 	DisplayName: Twilight Eucalyptus Helmet
 	Tooltip:
 		'''
-		7% increased ranged damage and 4% increased ranged critical strike chance
-		Full set grants an additional 3% ranged damage and critical strike chance, and a 15% chance not to consume ammo
+		9% increased ranged damage and 4% increased ranged critical strike chance
+		Full set grants an additional 3% ranged damage and critical strike chance, and a 20% chance not to consume ammo
 		'''
 }
 
@@ -372,7 +372,7 @@ TwilightWoodLeggings: {
 	DisplayName: Twilight Eucalyptus Boots
 	Tooltip:
 		'''
-		5% increased movement speed and slightly increased jump speed
+		6% increased movement speed and slightly increased jump speed
 		Leaves a trail of cyan light as you walk
 		'''
 }

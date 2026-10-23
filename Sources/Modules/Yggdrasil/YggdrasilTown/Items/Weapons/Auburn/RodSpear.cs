@@ -13,14 +13,14 @@ public class RodSpear : ModItem
 		Item.height = 54;
 
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useAnimation = 45;
-		Item.useTime = 45;
+		Item.useAnimation = 40;
+		Item.useTime = 40;
 		Item.UseSound = SoundID.Item1;
 		Item.autoReuse = true;
 		Item.noUseGraphic = true;
 		Item.noMelee = true;
 
-		Item.damage = 18;
+		Item.damage = 28;
 		Item.DamageType = DamageClass.Melee;
 		Item.crit = 4;
 		Item.knockBack = 4f;

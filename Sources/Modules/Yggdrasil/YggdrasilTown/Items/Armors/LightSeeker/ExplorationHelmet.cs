@@ -21,7 +21,7 @@ public class ExplorationHelmet : ModItem
 		Item.height = 26;
 		Item.value = 2500;
 		Item.rare = ItemRarityID.Green;
-		Item.defense = 1;
+		Item.defense = 3;
 	}
 
 	public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -33,14 +33,14 @@ public class ExplorationHelmet : ModItem
 	{
 		player.GetModPlayer<YggdrasilPlayer>().lightSeekerRangedSet = true;
 		player.GetModPlayer<EverglowPlayer>().ammoCost *= 1 - 0.1f; // +10% chancce not consume ammo
-		player.GetDamage(DamageClass.Ranged) += 0.05f;
+		player.GetDamage(DamageClass.Ranged) += 0.08f;
 	}
 
 	public override void UpdateEquip(Player player)
 	{
 		Lighting.AddLight(player.Center, Vector3.one * 0.5f);
 
-		player.GetCritChance(DamageClass.Ranged) += 4f;
+		player.GetCritChance(DamageClass.Ranged) += 5f;
 	}
 
 	public override void AddRecipes()

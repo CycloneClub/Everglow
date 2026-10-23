@@ -19,21 +19,21 @@ public class FireflyBorageBadge : ModItem
 
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
-		player.GetDamage(DamageClass.Magic) *= 1.06f;
-		player.moveSpeed *= 1.15f;
+		player.GetDamage(DamageClass.Magic) *= 1.05f;
+		player.moveSpeed *= 1.1f;
 		if (CorruptMoth.CorruptMothNPC != null && CorruptMoth.CorruptMothNPC.active)
 		{
-			if (player.statDefense <= 48)
+			if (player.statDefense <= 50)
 			{
-				player.statDefense -= player.statDefense / 4; // 48 / 4, would be player.statDefense / 4, up to a value change of -12.
+				player.statDefense -= player.statDefense / 5; // Defense penalty is capped at 10.
 			}
 			else
 			{
-				player.statDefense -= 12;
+				player.statDefense -= 10;
 			}
-			player.GetDamage(DamageClass.Generic) *= 1.18f;
-			player.GetAttackSpeed(DamageClass.SummonMeleeSpeed) *= 1.1f;
-			player.GetAttackSpeed(DamageClass.Melee) *= 1.1f;
+			player.GetDamage(DamageClass.Generic) *= 1.12f;
+			player.GetAttackSpeed(DamageClass.SummonMeleeSpeed) *= 1.08f;
+			player.GetAttackSpeed(DamageClass.Melee) *= 1.08f;
 			if (player.GetCritChance(DamageClass.Melee) > 0)
 			{
 				player.GetTotalCritChance(DamageClass.Melee);

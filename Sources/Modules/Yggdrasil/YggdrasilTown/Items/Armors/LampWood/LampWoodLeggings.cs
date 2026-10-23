@@ -8,7 +8,7 @@ public class LampWoodLeggings : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	private const int MoveSpeedBonus = 5;
+	private const int MoveSpeedBonus = 6;
 
 	public override void SetStaticDefaults()
 	{

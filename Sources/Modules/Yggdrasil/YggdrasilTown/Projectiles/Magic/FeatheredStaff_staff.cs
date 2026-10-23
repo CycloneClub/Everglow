@@ -62,7 +62,7 @@ public class FeatheredStaff_staff : ModProjectile
 
 	private void Shoot()
 	{
-		int projectileNumber = 3;
+		int projectileNumber = 2;
 		Item item = Owner.HeldItem;
 		for (int i = 0; i < projectileNumber; i++)
 		{

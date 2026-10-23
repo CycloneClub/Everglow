@@ -13,15 +13,15 @@ public class BowOfEnlightment : ModItem
 		Item.height = 78;
 
 		Item.useStyle = ItemUseStyleID.Shoot;
-		Item.useAnimation = 29;
-		Item.useTime = 29;
+		Item.useAnimation = 26;
+		Item.useTime = 26;
 		Item.UseSound = SoundID.Item1;
 		Item.autoReuse = false;
 		Item.noUseGraphic = false;
 		Item.noMelee = true;
 		Item.channel = true;
 
-		Item.damage = 10;
+		Item.damage = 20;
 		Item.DamageType = DamageClass.Ranged;
 		Item.crit = 4;
 		Item.knockBack = 0f;

@@ -12,16 +12,16 @@ public class YggdrasilAmberLaser : ModItem
 		Item.height = 44;
 
 		Item.DamageType = DamageClass.Magic;
-		Item.damage = 13;
+		Item.damage = 16;
 		Item.knockBack = 4f;
-		Item.mana = 21;
+		Item.mana = 12;
 
 		Item.rare = ItemRarityID.Blue;
 		Item.value = Item.buyPrice(silver: 31, copper: 6);
 
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useAnimation = 36;
-		Item.useTime = 36;
+		Item.useAnimation = 42;
+		Item.useTime = 42;
 		Item.UseSound = SoundID.Item1;
 		Item.autoReuse = false;
 		Item.channel = true;

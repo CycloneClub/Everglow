@@ -16,11 +16,11 @@ public class MysteriousTablet : ModProjectile
 		Projectile.width = 32;
 		Projectile.height = 32;
 		Projectile.tileCollide = true;
-		Projectile.timeLeft = 600;
+		Projectile.timeLeft = 300;
 		Projectile.aiStyle = -1;
 		Projectile.penetrate = -1;
 		Projectile.usesLocalNPCImmunity = true;
-		Projectile.localNPCHitCooldown = 15;
+		Projectile.localNPCHitCooldown = 20;
 	}
 
 	public override void AI()
@@ -67,7 +67,7 @@ public class MysteriousTablet : ModProjectile
 
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
-		target.value *= 2;
+		target.value *= 1.1f;
 	}
 
 	public override bool PreDraw(ref Color lightColor)

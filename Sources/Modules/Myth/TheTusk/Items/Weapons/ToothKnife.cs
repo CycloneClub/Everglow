@@ -24,7 +24,7 @@ public class ToothKnife : ModItem
 		Item.autoReuse = true;
 
 		Item.DamageType = DamageClass.Melee;
-		Item.damage = 25;
+		Item.damage = 24;
 		Item.knockBack = 3.4f;
 		Item.crit = 2;
 

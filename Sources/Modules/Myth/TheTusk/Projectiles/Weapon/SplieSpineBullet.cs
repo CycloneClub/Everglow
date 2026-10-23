@@ -74,7 +74,7 @@ public class SplieSpineBullet : ModProjectile
 		{
 			Vector2 newVelocity = Projectile.velocity.RotatedByRandom(MathHelper.ToRadians(35));
 			newVelocity *= 0.6f - Main.rand.NextFloat(0.2f);
-			Projectile.NewProjectileDirect(Terraria.Entity.InheritSource(Projectile), Projectile.Center - Vector2.Normalize(newVelocity) * 60, newVelocity, (int)Projectile.ai[1], Projectile.damage, Projectile.knockBack, Projectile.owner);
+			Projectile.NewProjectileDirect(Terraria.Entity.InheritSource(Projectile), Projectile.Center - Vector2.Normalize(newVelocity) * 60, newVelocity, (int)Projectile.ai[1], (int)(Projectile.damage * 0.5f), Projectile.knockBack, Projectile.owner);
 		}
 		for (int i = 0; i < 26; i++)
 		{

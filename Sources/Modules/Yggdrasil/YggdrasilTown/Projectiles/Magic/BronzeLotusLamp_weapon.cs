@@ -100,7 +100,7 @@ public class BronzeLotusLamp_weapon : ModProjectile
 		Player player = Main.player[Projectile.owner];
 		if (OldRotationShoot != Vector2.zeroVector)
 		{
-			float maxPrecise = 0.15f;
+			float maxPrecise = 0.25f;
 			float deltaSinValue = Vector3.Cross(new Vector3(v0, 0), new Vector3(OldRotationShoot, 0)).Z;
 			if (MathF.Abs(deltaSinValue) > maxPrecise)
 			{

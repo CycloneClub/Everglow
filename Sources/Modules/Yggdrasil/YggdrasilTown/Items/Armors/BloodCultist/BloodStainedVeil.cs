@@ -19,7 +19,7 @@ public class BloodStainedVeil : ModItem
 		Item.height = 26;
 		Item.value = 2500;
 		Item.rare = ItemRarityID.Green;
-		Item.defense = 1;
+		Item.defense = 2;
 	}
 
 	public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -34,7 +34,7 @@ public class BloodStainedVeil : ModItem
 
 	public override void UpdateEquip(Player player)
 	{
-		player.GetDamage(DamageClass.Magic) += 0.06f;
+		player.GetDamage(DamageClass.Magic) += 0.08f;
 	}
 
 	public class BloodCultistPlayer : ModPlayer
@@ -50,10 +50,10 @@ public class BloodStainedVeil : ModItem
 		{
 			if (hasBloodCultistSet && hit.DamageType == DamageClass.Magic)
 			{
-				Player.AddBuff(ModContent.BuffType<BloodCultistBuff>(), 3 * 60);
-				if (Main.rand.NextFloat() < 0.05f)
+				Player.AddBuff(ModContent.BuffType<BloodCultistBuff>(), 4 * 60);
+				if (Main.rand.NextFloat() < 0.03f)
 				{
-					Player.HealMana(10);
+					Player.HealMana(6);
 				}
 			}
 		}

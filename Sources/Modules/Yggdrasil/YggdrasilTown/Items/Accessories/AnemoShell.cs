@@ -74,7 +74,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories
 		public int ProtectionDuration = 12;
 		public int ProtectionEndDuration = 32;
 		public int ProtectionEaseoutDuration = 16;
-		public int ProtectionCooldown = 3600;
+		public int ProtectionCooldown = 1800;
 		public int Radius = 24;
 
 		public Vector2 CollidePosition = new(0, 0);

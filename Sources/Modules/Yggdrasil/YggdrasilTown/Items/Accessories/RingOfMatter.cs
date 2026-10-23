@@ -4,7 +4,7 @@ public class RingOfMatter : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
-	private const int MaxBonus = 10;
+	private const int MaxBonus = 8;
 
 	private float Bonus { get; set; }
 
@@ -23,7 +23,7 @@ public class RingOfMatter : ModItem
 		{
 			int goldCoinNum = player.CountItem(ItemID.GoldCoin);
 			int platinumCoinNum = player.CountItem(ItemID.PlatinumCoin);
-			Bonus = (goldCoinNum + platinumCoinNum * 100) / 50;
+			Bonus = (goldCoinNum + platinumCoinNum * 100) / 25;
 			if (Bonus > MaxBonus)
 			{
 				Bonus = MaxBonus;
@@ -32,7 +32,7 @@ public class RingOfMatter : ModItem
 
 		player.GetDamage(DamageClass.Generic) += Bonus / 100;
 		player.statDefense *= 1 + Bonus / 100;
-		player.statLifeMax2 -= (int)(player.statLifeMax2 * (2 * Bonus / 100));
+		player.statLifeMax2 -= (int)(player.statLifeMax2 * (1.5f * Bonus / 100));
 
 		player.GetModPlayer<RingOfMatterPlayer>().HasRingOfMatter = true;
 	}

@@ -166,7 +166,7 @@ internal class ShadowWingBow : ModProjectile
 			{
 				if (arrowcol[s] > 0)
 				{
-					Projectile.NewProjectile(Terraria.Entity.InheritSource(Projectile), Projectile.Center, Vector2.Normalize(v0).RotatedBy(arrowRot[s]) * arrowVel[s] * 1f, ModContent.ProjectileType<MothArrow>(), (int)((Projectile.damage + energy / 5) * 0.47), Projectile.knockBack, player.whoAmI, 0, player.HeldItem.crit + player.GetCritChance(DamageClass.Ranged) + player.GetCritChance(DamageClass.Generic));
+					Projectile.NewProjectile(Terraria.Entity.InheritSource(Projectile), Projectile.Center, Vector2.Normalize(v0).RotatedBy(arrowRot[s]) * arrowVel[s] * 1f, ModContent.ProjectileType<MothArrow>(), (int)((Projectile.damage + energy / 5) * 0.6), Projectile.knockBack, player.whoAmI, 0, player.HeldItem.crit + player.GetCritChance(DamageClass.Ranged) + player.GetCritChance(DamageClass.Generic));
 				}
 			}
 			energy = 0;

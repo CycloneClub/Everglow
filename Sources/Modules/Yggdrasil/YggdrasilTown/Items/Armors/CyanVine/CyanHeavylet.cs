@@ -36,7 +36,7 @@ public class CyanHeavylet : ModItem
 
 	public override void UpdateEquip(Player player)
 	{
-		player.endurance += 0.04f;
+		player.endurance += 0.03f;
 	}
 
 	public override void AddRecipes()

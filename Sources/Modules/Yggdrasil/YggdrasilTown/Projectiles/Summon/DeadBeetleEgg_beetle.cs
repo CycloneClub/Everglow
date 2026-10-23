@@ -309,7 +309,7 @@ public class DeadBeetleEgg_beetle : ModProjectile
 	/// </summary>
 	public void AttackWithMagic()
 	{
-		if (ManaValue <= 7)
+		if (ManaValue <= 5)
 		{
 			ManaValue = 0;
 			ManaAttack = false;
@@ -355,7 +355,7 @@ public class DeadBeetleEgg_beetle : ModProjectile
 			Ins.VFXManager.Add(spark);
 		}
 		Projectile.ai[2]++;
-		if (Projectile.ai[2] >= 120)
+		if (Projectile.ai[2] >= 90)
 		{
 			Vector2 vel = Vector2.Normalize(-relativePos) * 8f;
 			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, vel, ModContent.ProjectileType<DeadBeetleEgg_beetle_proj>(), (int)(Projectile.damage * 2.8), Projectile.knockBack, Projectile.owner, EnemyTarget);
@@ -428,9 +428,9 @@ public class DeadBeetleEgg_beetle : ModProjectile
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		ManaValue++;
-		if (ManaValue >= 24)
+		if (ManaValue >= 18)
 		{
-			ManaValue = 24;
+			ManaValue = 18;
 			ManaAttack = true;
 		}
 	}
@@ -538,9 +538,9 @@ public class DeadBeetleEgg_beetle : ModProjectile
 		}
 		Texture2D point = Commons.ModAsset.LightPoint2.Value;
 		Texture2D point2 = Commons.ModAsset.LightPoint2_black.Value;
-		for (int i = 0; i < 24; i++)
+		for (int i = 0; i < 18; i++)
 		{
-			Vector2 offest = new Vector2(0, -24).RotatedBy((i - 12) * 0.2f);
+			Vector2 offest = new Vector2(0, -24).RotatedBy((i - 9) * 0.2f);
 			offest.X *= Projectile.spriteDirection;
 			float scale = 0.2f + MathF.Sin((float)Main.time * 0.03f + Projectile.whoAmI + i) * 0.06f;
 			if (ManaValue > i)

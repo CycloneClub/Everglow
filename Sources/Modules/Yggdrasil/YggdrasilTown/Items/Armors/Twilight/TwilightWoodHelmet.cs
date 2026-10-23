@@ -8,12 +8,12 @@ public class TwilightWoodHelmet : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	public const int DamageBonus = 7;
+	public const int DamageBonus = 9;
 	public const int CritChanceBonus = 4;
 
 	public const int ArmorSetDamageBonus = 3;
 	public const int ArmorSetCritChanceBonus = 3;
-	public const int ArmorSetSaveAmmoChance = 15;
+	public const int ArmorSetSaveAmmoChance = 20;
 
 	public override void SetDefaults()
 	{
@@ -21,7 +21,7 @@ public class TwilightWoodHelmet : ModItem
 		Item.height = 26;
 		Item.value = Item.buyPrice(silver: 37, copper: 50);
 		Item.rare = ItemRarityID.White;
-		Item.defense = 2;
+		Item.defense = 4;
 	}
 
 	public override void UpdateEquip(Player player)

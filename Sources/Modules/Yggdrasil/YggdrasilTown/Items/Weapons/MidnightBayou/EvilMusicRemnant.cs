@@ -27,14 +27,15 @@ public class EvilMusicRemnant : ModItem
 		Item.scale = 0.8f;
 
 		Item.DamageType = DamageClass.Summon;
-		Item.damage = 13;
+		Item.damage = 24;
+		Item.mana = 9;
 		Item.knockBack = 1.1f;
 
 		Item.rare = ItemRarityID.Green;
 		Item.value = 14000;
 
 		Item.useStyle = ItemUseStyleID.Shoot;
-		Item.useAnimation = Item.useTime = 21;
+		Item.useAnimation = Item.useTime = 30;
 		Item.autoReuse = true;
 		Item.noMelee = true;
 
