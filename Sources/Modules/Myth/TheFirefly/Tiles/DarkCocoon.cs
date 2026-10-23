@@ -25,6 +25,12 @@ public class DarkCocoon : ModTile
 			return;
 		}
 
+		// 先尝试在空位补生暗之花，避免后续植被占位或提前返回。
+		if (DarkFlowerPlant.TryGrow(i, j))
+		{
+			return;
+		}
+
 		// 种树
 		if (Main.rand.NextBool(6))
 		{
