@@ -18,7 +18,7 @@ public class TwilightEucalyptusBoomerangKnift : ModItem
 		Item.knockBack = 0.4f;
 		Item.crit = 4;
 
-		Item.useTime = Item.useAnimation = 10;
+		Item.useTime = Item.useAnimation = 14;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.UseSound = SoundID.Item1;
 		Item.autoReuse = true;

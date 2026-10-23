@@ -12,7 +12,7 @@ public class ChainGrenade : ModItem
 		Item.height = 30;
 
 		Item.DamageType = DamageClass.Ranged;
-		Item.damage = 40;
+		Item.damage = 32;
 		Item.knockBack = 1.0f;
 		Item.crit = 4;
 

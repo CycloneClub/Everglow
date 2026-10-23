@@ -132,7 +132,7 @@ public class BlueStarFlower : ModProjectile
 				for (int j = -3; j <= 3; j++)
 				{
 					Vector2 v = new Vector2(0.1f + j * 0.11f, 0).RotatedBy(j * 0.15f + i * MathHelper.TwoPi / c + r);
-					Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, v, ModContent.ProjectileType<BlackCorruptRain3>(), Projectile.damage / 6, 0f, Main.myPlayer, Main.rand.NextFloat(MathF.PI * 2)); // Originally: NPC.damage / 5
+					Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, v, ModContent.ProjectileType<BlackCorruptRain3>(), Projectile.damage / 2, 0f, Main.myPlayer, Main.rand.NextFloat(MathF.PI * 2)); // Originally: NPC.damage / 5
 				}
 			}
 		}
@@ -143,7 +143,7 @@ public class BlueStarFlower : ModProjectile
 				for (int i = 0; i < 40; i++)
 				{
 					Vector2 v = new Vector2(0.1f + i % 5 / 16f, 0).RotatedBy(i * MathHelper.TwoPi / 40 + r);
-					Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, v, ModContent.ProjectileType<BlackCorruptRain3>(), Projectile.damage / 6, 0f, Main.myPlayer, Main.rand.NextFloat(MathF.PI * 2));
+					Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, v, ModContent.ProjectileType<BlackCorruptRain3>(), Projectile.damage / 2, 0f, Main.myPlayer, Main.rand.NextFloat(MathF.PI * 2));
 				}
 			}
 			else
@@ -151,7 +151,7 @@ public class BlueStarFlower : ModProjectile
 				for (int i = 0; i < 30; i++)
 				{
 					Vector2 v = new Vector2(0.1f + i % 5 / 16f, 0).RotatedBy(i * MathHelper.TwoPi / 30 + r);
-					Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, v, ModContent.ProjectileType<BlackCorruptRain3>(), Projectile.damage / 6, 0f, Main.myPlayer, Main.rand.NextFloat(MathF.PI * 2));
+					Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, v, ModContent.ProjectileType<BlackCorruptRain3>(), Projectile.damage / 2, 0f, Main.myPlayer, Main.rand.NextFloat(MathF.PI * 2));
 				}
 			}
 		}
@@ -161,7 +161,7 @@ public class BlueStarFlower : ModProjectile
 			for (int i = 0; i < c; i++)
 			{
 				Vector2 v = new Vector2(0.18f + (float)Math.Sin(i * MathHelper.TwoPi / 10) * 0.17f, 0).RotatedBy(i * MathHelper.TwoPi / c + r);
-				Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, v, ModContent.ProjectileType<BlackCorruptRain3>(), Projectile.damage / 6, 0f, Main.myPlayer, Main.rand.NextFloat(MathF.PI * 2));
+				Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, v, ModContent.ProjectileType<BlackCorruptRain3>(), Projectile.damage / 2, 0f, Main.myPlayer, Main.rand.NextFloat(MathF.PI * 2));
 			}
 		}
 		if (Main.masterMode)

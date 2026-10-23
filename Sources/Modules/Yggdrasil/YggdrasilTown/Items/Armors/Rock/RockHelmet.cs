@@ -9,9 +9,9 @@ public class RockHelmet : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	public const int MeleeCritChanceBonus = 5;
+	public const int MeleeCritChanceBonus = 6;
 
-	public const int DistanceRequirementPerDefense = 333;
+	public const int DistanceRequirementPerDefense = 240;
 
 	public override void SetDefaults()
 	{
@@ -66,9 +66,9 @@ public class RockArmorSetPlayer : ModPlayer
 
 	private int MoveDistance { get; set; } = 0;
 
-	public int DefenseBonus => MoveDistance / RockHelmet.DistanceRequirementPerDefense <= 12
+	public int DefenseBonus => MoveDistance / RockHelmet.DistanceRequirementPerDefense <= 8
 			? MoveDistance / RockHelmet.DistanceRequirementPerDefense
-			: 12;
+			: 8;
 
 	public override void ResetEffects()
 	{

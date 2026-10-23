@@ -8,7 +8,7 @@ public class TelescopicPlatformAlpha : TelescopicPlatform
 	{
 		Item.DefaultToAccessory(80, 98);
 		PillarCount = 9;
-		MaxHeight = 240;
+		MaxHeight = 192;
 		MoveSpeed = 3;
 		Texture2 = ModAsset.TelescopicPlatformAlpha_Platform.Value;
 		BodyDrawOffsetY = 8;

@@ -8,7 +8,7 @@ public class LampWoodBreastplate : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	private const int LifeRegenBonus = 1;
+	private const int LifeRegenBonus = 2;
 
 	public override void SetStaticDefaults()
 	{

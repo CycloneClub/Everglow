@@ -20,12 +20,12 @@ public class AuburnBoots : ModItem
 		Item.height = 12;
 		Item.value = 2500;
 		Item.rare = ItemRarityID.White;
-		Item.defense = 1;
+		Item.defense = 3;
 	}
 
 	public override void UpdateEquip(Player player)
 	{
-		player.moveSpeed += 0.08f;
+		player.moveSpeed += 0.06f;
 	}
 
 	public override void AddRecipes()

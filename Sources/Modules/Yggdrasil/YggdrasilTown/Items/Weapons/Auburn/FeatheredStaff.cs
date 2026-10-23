@@ -23,11 +23,11 @@ public class FeatheredStaff : ModItem
 		Item.noMelee = true;
 		Item.noUseGraphic = true;
 
-		Item.damage = 12;
+		Item.damage = 16;
 		Item.DamageType = DamageClass.Magic;
 		Item.crit = 4;
 		Item.knockBack = 3.25f;
-		Item.mana = 6;
+		Item.mana = 7;
 
 		Item.shoot = ModContent.ProjectileType<FeatheredStaff_staff>();
 		Item.shootSpeed = 10;

@@ -62,7 +62,7 @@ public class SpringOfQuicksand_Sandflow : TrailingProjectile
 		{
 			if (Timer % 15 == 0)
 			{
-				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, new Vector2(0, 1), ModContent.ProjectileType<SpringOfQuicksand_Sandflow_subproj>(), (int)(Projectile.damage * 0.6f), Projectile.knockBack * 0.6f, Projectile.owner);
+				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, new Vector2(0, 1), ModContent.ProjectileType<SpringOfQuicksand_Sandflow_subproj>(), (int)(Projectile.damage * 0.45f), Projectile.knockBack * 0.6f, Projectile.owner);
 			}
 		}
 		Projectile.velocity.Y += 0.15f;

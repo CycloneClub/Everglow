@@ -30,12 +30,12 @@ public class CyanWarhelm : ModItem
 	public override void UpdateArmorSet(Player player)
 	{
 		player.GetDamage(DamageClass.Melee) += 0.01f;
-		player.GetArmorPenetration(DamageClass.Melee) += 5;
+		player.GetArmorPenetration(DamageClass.Melee) += 3;
 	}
 
 	public override void UpdateEquip(Player player)
 	{
-		player.GetDamage(DamageClass.Melee) += 0.04f;
+		player.GetDamage(DamageClass.Melee) += 0.05f;
 		player.GetCritChance(DamageClass.Melee) += 4;
 	}
 

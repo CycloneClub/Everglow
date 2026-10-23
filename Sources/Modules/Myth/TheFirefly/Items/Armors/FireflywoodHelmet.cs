@@ -36,13 +36,13 @@ namespace Everglow.Myth.TheFirefly.Items.Armors
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Increases dealt damage by 20%"; // TODO: Use Localization Keys Instead
-			player.GetDamage(DamageClass.Generic) += 0.2f;
+			player.setBonus = "Increases dealt damage by 10%"; // TODO: Use Localization Keys Instead
+			player.GetDamage(DamageClass.Generic) += 0.1f;
 		}
 
 		public override void UpdateEquip(Player player)
 		{
-			player.magicCrit += 2;
+			player.magicCrit += 4;
 		}
 
 		public override void AddRecipes()

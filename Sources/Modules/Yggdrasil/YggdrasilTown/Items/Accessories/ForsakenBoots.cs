@@ -5,7 +5,7 @@ public class ForsakenBoots : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
-	public const int MoveSpeedBonus = 8;
+	public const int MoveSpeedBonus = 5;
 
 	public override void SetDefaults()
 	{
@@ -22,6 +22,6 @@ public class ForsakenBoots : ModItem
 		player.moveSpeed += MoveSpeedBonus / 100f;
 
 		// Enable running ability
-		player.accRunSpeed = 6.75f;
+		player.accRunSpeed = 6.25f;
 	}
 }

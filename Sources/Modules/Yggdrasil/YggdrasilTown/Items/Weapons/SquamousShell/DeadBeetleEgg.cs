@@ -13,7 +13,7 @@ public class DeadBeetleEgg : ModItem
 		Item.height = 40;
 
 		Item.DamageType = DamageClass.Summon;
-		Item.damage = 21;
+		Item.damage = 28;
 		Item.knockBack = 0.2f;
 		Item.mana = 11;
 

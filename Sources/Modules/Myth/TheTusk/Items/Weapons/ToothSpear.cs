@@ -13,12 +13,12 @@ public class ToothSpear : ModItem
 		Item.value = 5381;
 
 		Item.useStyle = ItemUseStyleID.Shoot;
-		Item.useAnimation = 24;
-		Item.useTime = 24;
+		Item.useAnimation = 28;
+		Item.useTime = 28;
 		Item.UseSound = SoundID.Item71;
 		Item.autoReuse = true;
 
-		Item.damage = 38;
+		Item.damage = 28;
 		Item.crit = 12;
 		Item.knockBack = 6.5f;
 		Item.noUseGraphic = true;

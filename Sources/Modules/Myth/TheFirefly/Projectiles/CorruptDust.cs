@@ -17,9 +17,9 @@ public class CorruptDust : ModProjectile
 		Projectile.DamageType = DamageClass.Magic;
 		Projectile.tileCollide = false;
 		Projectile.timeLeft = 60;
-		Projectile.penetrate = -1;
+		Projectile.penetrate = 3;
 		Projectile.usesLocalNPCImmunity = true;
-		Projectile.localNPCHitCooldown = 6;
+		Projectile.localNPCHitCooldown = 15;
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 90;
 	}

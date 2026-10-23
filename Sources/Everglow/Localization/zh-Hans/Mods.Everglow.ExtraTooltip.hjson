@@ -1,8 +1,8 @@
 FireflyItems: {
 	FFBBadge0: 腐檀巨蛾存在时：
-	FFBBadge1: 防御降低 25%，最多降低 12 点
-	FFBBadge2: 伤害提高 18%
-	FFBBadge3: 近战与鞭子攻击速度提高 10%
+	FFBBadge1: 防御降低 20%，最多降低 10 点
+	FFBBadge2: 伤害提高 12%
+	FFBBadge3: 近战与鞭子攻击速度提高 8%
 	FFBBadge4: 近战与鞭子的正基础暴击率归零
 	MEyeBonusTextGlowSword0: 增大发光弹幕的尺寸
 	MEyeBonusTextGlowSword1: 武器伤害提高 5%

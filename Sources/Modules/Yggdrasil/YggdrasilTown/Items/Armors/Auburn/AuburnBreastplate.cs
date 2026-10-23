@@ -20,13 +20,13 @@ public class AuburnBreastplate : ModItem
 		Item.height = 18;
 		Item.value = 2500;
 		Item.rare = ItemRarityID.White;
-		Item.defense = 1;
+		Item.defense = 4;
 	}
 
 	public override void UpdateEquip(Player player)
 	{
-		player.whipRangeMultiplier += 0.10f;
-		player.summonerWeaponSpeedBonus += 0.05f;
+		player.whipRangeMultiplier += 0.12f;
+		player.summonerWeaponSpeedBonus += 0.06f;
 	}
 
 	public override void AddRecipes()

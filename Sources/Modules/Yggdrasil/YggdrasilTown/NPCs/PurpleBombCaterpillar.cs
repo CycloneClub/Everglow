@@ -39,9 +39,9 @@ public class PurpleBombCaterpillar : ModNPC
 	{
 		NPC.width = 88;
 		NPC.height = 36;
-		NPC.lifeMax = 80;
-		NPC.damage = 25;
-		NPC.defense = 10;
+		NPC.lifeMax = 70;
+		NPC.damage = 18;
+		NPC.defense = 6;
 		NPC.friendly = false;
 		NPC.aiStyle = -1;
 		NPC.knockBackResist = 0.5f;
@@ -369,7 +369,7 @@ public class PurpleBombCaterpillar : ModNPC
 
 	public void KillEffect()
 	{
-		Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<PurpleBombCaterpillarDeath>(), NPC.damage, 3.5f);
+		Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<PurpleBombCaterpillarDeath>(), 10, 3.5f);
 		p0.Bottom = NPC.Bottom;
 		p0.scale = NPC.scale;
 		p0.direction = NPC.direction;

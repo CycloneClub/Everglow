@@ -1,3 +1,6 @@
+using Everglow.Commons.Utilities;
+using Everglow.Commons.Mechanics.Cooldown;
+
 namespace Everglow.Food.Buffs.VanillaFoodBuffs;
 
 public class ElderberryBuff : ModBuff
@@ -32,7 +35,6 @@ public class ElderberryBuffDash : ModPlayer
 	public int DashDir = -1;
 
 	public bool ElderberryBuff;
-	public int DashDelay = 0;
 	public int DashTimer = 0;
 
 	public override void ResetEffects()
@@ -63,7 +65,7 @@ public class ElderberryBuffDash : ModPlayer
 
 	public override void PreUpdateMovement()
 	{
-		if (CanUseDash() && DashDir != -1 && DashDelay == 0)
+		if (CanUseDash() && DashDir != -1 && !Player.HasCooldown<ElderberryDashCooldown>())
 		{
 			Vector2 newVelocity = Player.velocity;
 
@@ -87,15 +89,12 @@ public class ElderberryBuffDash : ModPlayer
 					return;
 			}
 
-			DashDelay = DashCooldown;
+			Player.AddCooldown(ElderberryDashCooldown.ID, DashCooldown);
 			DashTimer = DashDuration;
 			Player.velocity = newVelocity;
 		}
 
-		if (DashDelay > 0)
-		{
-			DashDelay--;
-		}
+		Player.TickCooldown(ElderberryDashCooldown.ID);
 
 		if (DashTimer > 0)
 		{
@@ -113,4 +112,23 @@ public class ElderberryBuffDash : ModPlayer
 			&& !Player.setSolar
 			&& !Player.mount.Active;
 	}
+}
+
+public class ElderberryDashCooldown : CooldownBase
+{
+	public static new string ID => nameof(ElderberryDashCooldown);
+
+	public override string TypeID => ID;
+
+	public override bool AutomaticTick => false;
+
+	public override bool CanTickDown => true;
+
+	public override bool PersistentCooldown => true;
+
+	public override bool CooldownNoSave => true;
+
+	public override bool IsVisible => false;
+
+	public override Texture2D Texture => ModAsset.ElderberryBuff.Value;
 }

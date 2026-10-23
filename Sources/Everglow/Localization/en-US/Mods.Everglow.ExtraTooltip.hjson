@@ -1,8 +1,8 @@
 FireflyItems: {
 	FFBBadge0: While the Corrupt Moth is present:
-	FFBBadge1: Defense reduced by 25%, up to 12
-	FFBBadge2: 18% increased damage
-	FFBBadge3: 10% increased melee and whip attack speed
+	FFBBadge1: Defense reduced by 20%, up to 10
+	FFBBadge2: 12% increased damage
+	FFBBadge3: 8% increased melee and whip attack speed
 	FFBBadge4: Positive base melee and whip critical strike chances are reduced to zero
 	MEyeBonusTextGlowSword0: Increases the size of the glowing projectiles
 	MEyeBonusTextGlowSword1: 5% increased weapon damage

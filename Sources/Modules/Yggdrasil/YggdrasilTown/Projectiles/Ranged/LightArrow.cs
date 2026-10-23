@@ -113,7 +113,7 @@ public class LightArrow : ModProjectile
 
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
-		target.AddBuff(ModContent.BuffType<Photolysis>(), 180);
+		target.AddBuff(ModContent.BuffType<Photolysis>(), 240);
 	}
 
 	public override void OnKill(int timeLeft)

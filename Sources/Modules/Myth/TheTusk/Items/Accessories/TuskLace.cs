@@ -25,7 +25,7 @@ public class TuskLace : ModItem
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
 		player.GetArmorPenetration(DamageClass.Generic) += 5;
-		player.GetCritChance(DamageClass.Generic) += 5;
-		player.GetDamage(DamageClass.Generic) *= 1.05f;
+		player.GetCritChance(DamageClass.Generic) += 3;
+		player.GetDamage(DamageClass.Generic) *= 1.03f;
 	}
 }

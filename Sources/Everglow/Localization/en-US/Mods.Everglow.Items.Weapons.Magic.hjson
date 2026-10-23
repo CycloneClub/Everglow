@@ -84,7 +84,7 @@ EyeOfAnabiosis: {
 	DisplayName: Eye of Anabiosis
 	Tooltip:
 		'''
-		Charges while held; ready to fire after 12 seconds
+		Charges while held; ready to fire after 4 seconds
 		Fires cyan homing flames at up to three targets
 		'''
 }

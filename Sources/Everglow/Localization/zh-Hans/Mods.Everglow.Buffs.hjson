@@ -386,7 +386,7 @@ CrossHair: {
 
 CyanVineRingCrit: {
 	DisplayName: 青缎指环的祝福
-	Description: 暴击+4%
+	Description: 暴击+5%
 }
 
 DeadBeetleEggBuff: {
@@ -1521,5 +1521,5 @@ JumpBuff: {
 
 JumpPotionBuff: {
 	DisplayName: 跳跃
-	Description: 跳跃高度提高15%，摔落伤害降低30%
+	Description: 跳跃高度提高20%，摔落伤害降低25%
 }

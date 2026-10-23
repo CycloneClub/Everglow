@@ -26,7 +26,7 @@ public class RayPotion : ModItem
 		Item.rare = ItemRarityID.Blue;
 		Item.value = Item.buyPrice(gold: 1);
 		Item.buffType = ModContent.BuffType<RayBuff>();
-		Item.buffTime = 5400;
+		Item.buffTime = 21600;
 	}
 
 	public override void AddRecipes()

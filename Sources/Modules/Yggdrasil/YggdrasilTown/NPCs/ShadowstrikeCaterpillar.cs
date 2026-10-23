@@ -15,26 +15,27 @@ public class ShadowstrikeCaterpillar : Caterpillar
 	public override void SetDefaults()
 	{
 		base.SetDefaults();
+		NPC.defense = 6;
 		SegmentBehavioralSize = 18;
 		SegmentHitBoxSize = 40;
 		SegmentCount = 10;
 		AnimationSpeed = 3;
 		NPC.knockBackResist = -0.12f;
-		NPC.lifeMax = 20;
-		NPC.damage = 8;
+		NPC.lifeMax = 40;
+		NPC.damage = 12;
 		NPC.value = 6;
 		if (Main.expertMode)
 		{
 			NPC.knockBackResist = -0.08f;
-			NPC.lifeMax = 40;
-			NPC.damage = 16;
+			NPC.lifeMax = 70;
+			NPC.damage = 20;
 			NPC.value = 12;
 		}
 		if (Main.masterMode)
 		{
 			NPC.knockBackResist = -0.04f;
-			NPC.lifeMax = 55;
-			NPC.damage = 24;
+			NPC.lifeMax = 100;
+			NPC.damage = 28;
 			NPC.value = 15;
 		}
 		DustType = ModContent.DustType<VerdantBlood>();

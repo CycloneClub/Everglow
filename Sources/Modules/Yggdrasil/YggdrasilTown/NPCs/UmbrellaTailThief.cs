@@ -23,9 +23,9 @@ public class UmbrellaTailThief : ModNPC
 	{
 		NPC.width = 30;
 		NPC.height = 30;
-		NPC.lifeMax = 80;
-		NPC.damage = 25;
-		NPC.defense = 10;
+		NPC.lifeMax = 75;
+		NPC.damage = 18;
+		NPC.defense = 8;
 		NPC.friendly = false;
 		NPC.aiStyle = -1;
 		NPC.knockBackResist = 0.5f;

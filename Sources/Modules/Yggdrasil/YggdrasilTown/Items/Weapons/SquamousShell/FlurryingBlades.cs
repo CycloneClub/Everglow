@@ -16,12 +16,12 @@ public class FlurryingBlades : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.damage = 21;
+		Item.damage = 32;
 		Item.DamageType = DamageClass.Magic;
 		Item.width = 40;
 		Item.height = 46;
-		Item.useTime = 11;
-		Item.useAnimation = 11;
+		Item.useTime = 18;
+		Item.useAnimation = 18;
 		Item.useStyle = ItemUseStyleID.Shoot;
 		Item.noMelee = true;
 		Item.knockBack = 0.8f;
@@ -31,7 +31,7 @@ public class FlurryingBlades : ModItem
 		Item.shoot = ModContent.ProjectileType<YggdrasilSlashBall>();
 		Item.shootSpeed = 7;
 		Item.crit = 16;
-		Item.mana = 12;
+		Item.mana = 6;
 	}
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

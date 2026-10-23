@@ -204,12 +204,12 @@ LampWoodBow: {
 
 LightArrow: {
 	DisplayName: Lamp-Oil Arrow
-	Tooltip: Inflicts Photolysis for 3 seconds
+	Tooltip: Inflicts Photolysis for 4 seconds
 }
 
 LightBullet: {
 	DisplayName: Light Bullet
-	Tooltip: Inflicts Photolysis for 3 seconds
+	Tooltip: Inflicts Photolysis for 4 seconds
 }
 
 MossyCyatheaBow: {

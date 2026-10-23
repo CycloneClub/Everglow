@@ -6,7 +6,7 @@ public class HotAirBalloon : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
-	public const int JumpSpeedBoost = 2;
+	public const int JumpSpeedBoost = 1;
 
 	public override void SetStaticDefaults()
 	{

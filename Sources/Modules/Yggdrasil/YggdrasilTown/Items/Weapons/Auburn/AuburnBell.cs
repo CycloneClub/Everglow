@@ -24,9 +24,9 @@ public class AuburnBell : ModItem
 		Item.value = Item.buyPrice(silver: 10);
 
 		Item.DamageType = DamageClass.Summon;
-		Item.damage = 14;
+		Item.damage = 18;
 		Item.knockBack = 0.5f;
-		Item.mana = 18;
+		Item.mana = 12;
 		Item.crit = 0;
 
 		Item.useTime = Item.useAnimation = 15;

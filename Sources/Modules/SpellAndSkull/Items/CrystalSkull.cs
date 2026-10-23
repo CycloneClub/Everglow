@@ -25,4 +25,14 @@ public class CrystalSkull : ModItem
 		player.GetModPlayer<GlobalItems.MagicBookPlayer>().MagicBookLevel = 1;
 		base.UpdateAccessory(player, hideVisual);
 	}
+
+	public override void AddRecipes()
+	{
+		CreateRecipe()
+			.AddIngredient(ItemID.Bone, 30)
+			.AddIngredient(ItemID.Diamond, 3)
+			.AddIngredient(ItemID.FallenStar, 5)
+			.AddTile(TileID.Anvils)
+			.Register();
+	}
 }

@@ -17,7 +17,7 @@ public class EldamberHelmet : ModItem
 		Item.width = 28;
 		Item.height = 24;
 		Item.maxStack = 1;
-		Item.defense = 5;
+		Item.defense = 6;
 		Item.rare = ItemRarityID.Blue;
 		Item.value = Item.sellPrice(silver: 30);
 	}

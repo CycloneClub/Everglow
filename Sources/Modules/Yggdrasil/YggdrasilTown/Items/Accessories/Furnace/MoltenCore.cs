@@ -35,10 +35,10 @@ public class MoltenCore : ModItem
 		// 1. Increase abilities when player has some debuffs
 		// ==================================================
 		// Including: OnFire, OnFire3, CursedInferno
-		// Increasing 5% damage receive, 5 def, 5% crit, 5% damage, 5% speed, 5% jump speed
+		// Reduce remaining damage by 5%; add 5 defense, 5% crit, 5% damage, 5% move speed and 0.05 jump speed.
 		if (player.HasBuff(BuffID.OnFire) || player.HasBuff(BuffID.OnFire3) || player.HasBuff(BuffID.CursedInferno))
 		{
-			player.endurance = OnePercent - ((OnePercent - player.endurance) * DamageReduction / 100f);
+			player.endurance = OnePercent - ((OnePercent - player.endurance) * (OnePercent - DamageReduction / 100f));
 			player.statDefense += DefenseBonus;
 			player.GetCritChance(DamageClass.Generic) += CritBonus;
 			player.GetDamage(DamageClass.Generic) += DamageBonus / 100f;
