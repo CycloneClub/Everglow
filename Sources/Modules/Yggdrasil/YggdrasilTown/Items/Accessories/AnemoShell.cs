@@ -1,6 +1,7 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Commons.Graphics;
 using Everglow.Commons.Interfaces;
+using Everglow.Commons.Mechanics.Cooldown;
 using Terraria.DataStructures;
 using Terraria.Enums;
 
@@ -31,12 +32,32 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories
 				return;
 			}
 			AnemoPlayer p = player.GetModPlayer<AnemoPlayer>();
-			if (p.Cooldown != 0)
+			int cooldown = player.GetCooldown(AnemoShellCooldown.ID)?.timeLeft ?? 0;
+			if (cooldown != 0)
 			{
-				ValueBarHelper.DrawValueBar(spriteBatch, position + new Vector2(0, 16), 1 - p.Cooldown / (float)p.ProtectionCooldown, new Color(122, 226, 204), new Color(122, 226, 204));
+				ValueBarHelper.DrawValueBar(spriteBatch, position + new Vector2(0, 16), 1 - cooldown / (float)p.ProtectionCooldown, new Color(122, 226, 204), new Color(122, 226, 204));
 			}
 			base.PostDrawInInventory(spriteBatch, position, frame, drawColor, itemColor, origin, scale);
 		}
+	}
+
+	public class AnemoShellCooldown : CooldownBase
+	{
+		public static new string ID => nameof(AnemoShellCooldown);
+
+		public override string TypeID => ID;
+
+		public override bool AutomaticTick => false;
+
+		public override bool CanTickDown => true;
+
+		public override bool PersistentCooldown => true;
+
+		public override bool CooldownNoSave => true;
+
+		public override bool IsVisible => false;
+
+		public override Texture2D Texture => ModAsset.AnemoShell.Value;
 	}
 
 	public class AnemoPlayer : ModPlayer
@@ -44,7 +65,6 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories
 		public bool AnemoEquipped = false;
 		public Item Shell = null;
 
-		public int Cooldown = 0;
 		public bool InEffect = false;
 		public bool InProtection = false;
 
@@ -115,10 +135,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories
 		{
 			AnemoEquipped = false;
 			Shell = null;
-			if (Cooldown > 0)
-			{
-				Cooldown--;
-			}
+			Player.TickCooldown(AnemoShellCooldown.ID);
 		}
 
 		public int CheckGroundDistance()
@@ -172,7 +189,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories
 				return;
 			}
 
-			if (Cooldown > 0)
+			if (Player.HasCooldown<AnemoShellCooldown>())
 			{
 				return;
 			}
@@ -211,7 +228,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories
 			if (InEffect && distance < Player.maxFallSpeed / 8f)
 			{
 				InProtection = true;
-				Cooldown = ProtectionCooldown;
+				Player.AddCooldown(AnemoShellCooldown.ID, ProtectionCooldown);
 				Player.fallStart = (int)(Player.position.Y / 16);
 				Player.fallStart2 = (int)(Player.position.Y / 16);
 				Player.velocity.Y = -6;
