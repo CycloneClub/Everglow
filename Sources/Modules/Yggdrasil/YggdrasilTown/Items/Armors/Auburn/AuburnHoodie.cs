@@ -49,6 +49,7 @@ public class AuburnHoodie : ModItem
 	public override void AddRecipes()
 	{
 		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<AuburnRodSkeleton>();
 		recipe.AddIngredient<RodWing>(10);
 		recipe.AddIngredient(ItemID.Leather, 4);
 		recipe.AddTile(TileID.WorkBenches);

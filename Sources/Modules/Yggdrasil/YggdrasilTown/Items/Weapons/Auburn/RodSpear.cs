@@ -35,6 +35,7 @@ public class RodSpear : ModItem
 	public override void AddRecipes()
 	{
 		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<AuburnRodSkeleton>();
 		recipe.AddIngredient<RodWing>(10);
 		recipe.AddIngredient<LampWood_Wood>(15);
 		recipe.AddTile(TileID.WorkBenches);

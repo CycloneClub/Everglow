@@ -31,6 +31,7 @@ public class AuburnBoots : ModItem
 	public override void AddRecipes()
 	{
 		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<AuburnRodSkeleton>();
 		recipe.AddIngredient<RodWing>(8);
 		recipe.AddIngredient(ItemID.Leather, 6);
 		recipe.AddTile(TileID.WorkBenches);
