@@ -29,8 +29,13 @@ using static Everglow.Yggdrasil.WorldGeneration.YggdrasilWorldGeneration;
 
 namespace Everglow.Yggdrasil.WorldGeneration;
 
-public class YggdrasilTownGeneration
+public partial class YggdrasilTownGeneration
 {
+	private const int MineRoofStartX = 20;
+	private const int MineRoofBottomOffset = 800;
+	private const int MineRoofWidth = 1100;
+	private const int MineRoofHeight = 490;
+
 	public static void BuildYggdrasilTown()
 	{
 		Initialize();
@@ -76,6 +81,9 @@ public class YggdrasilTownGeneration
 
 		Main.statusText = "Growing Jelly Ball Hotbed...";
 		BuildJellyBallHotbed();
+
+		// Scatter ore after structures have registered their protected footprints.
+		GenerateAmberVeins();
 
 		Main.statusText = "Smoothing Yggdrasil Town...";
 
@@ -414,13 +422,23 @@ public class YggdrasilTownGeneration
 			}
 		}
 
-		Minerization(40, Main.maxTilesY - 820, Main.maxTilesX / 2 + 50, Main.maxTilesY - 50);
-		GenerateTownAmberDeposits();
+		Rectangle mineBounds = GetMineBounds(Main.maxTilesX, Main.maxTilesY);
+		Minerization(mineBounds.Left, mineBounds.Top, mineBounds.Right, mineBounds.Bottom);
 		for (int i = 0; i < 200; i++)
 		{
 			Point pos = new Point(Main.rand.Next(40, Main.maxTilesX / 2 + 50), Main.rand.Next(Main.maxTilesY - 700, Main.maxTilesY - 20));
 			FillLiquid(pos);
 		}
+	}
+
+	private static Rectangle GetMineBounds(int worldWidth, int worldHeight)
+	{
+		return new Rectangle(40, worldHeight - 820, worldWidth / 2 + 10, 770);
+	}
+
+	private static float GetMineRoofOffset(int localX)
+	{
+		return MineRoofHeight - MathF.Pow(1 - localX / (float)MineRoofWidth, 0.4f) * MineRoofHeight;
 	}
 
 	/// <summary>
@@ -840,35 +858,28 @@ public class YggdrasilTownGeneration
 	public static void BuildMainTown()
 	{
 		// 圆壳罩住天穹镇
-		Point topLeft = new Point(20, Main.maxTilesY - 800);
-		int length = 1100;
-		int height = 490;
+		Point topLeft = new Point(MineRoofStartX, Main.maxTilesY - MineRoofBottomOffset);
+		int length = MineRoofWidth;
+		int height = MineRoofHeight;
 		int x0CoordPerlin = GenRand.Next(1024);
 		int y0CoordPerlin = GenRand.Next(1024);
-		float thick = 30;
 		for (int i = 0; i < length; i++)
 		{
-			float value = 1 - i / (float)length;
-			value = MathF.Pow(value, 0.4f) * height;
-			if (i > 300)
-			{
-				thick += (i - 300) / 800f * 0.25f;
-			}
+			float roofOffset = GetMineRoofOffset(i);
 			for (int j = 0; j < height; j++)
 			{
 				Point pos = new Point(i, j) + topLeft;
 				Tile tile = SafeGetTile(pos);
 				float noiseValueUp = GetLargeSmokeTexturePixelG(i + x0CoordPerlin, j + y0CoordPerlin) * 0.5f;
 
-				// float noiseValueDown = PerlinPixelG[(i + x0CoordPerlin) % 1024, (j + 50 + y0CoordPerlin) % 1024] / 255f * 0.5f;
 				if (ChestSafe(pos.X, pos.Y))
 				{
-					if (j > height - value + noiseValueUp * 15)
+					if (j > roofOffset + noiseValueUp * 15)
 					{
 						tile.TileType = (ushort)ModContent.TileType<StoneScaleWood>();
 						tile.HasTile = true;
 					}
-					if (j > height - value + noiseValueUp * 15 + 3/* && j < height - value + thick + noiseValueDown * 25 - 3*/)
+					if (j > roofOffset + noiseValueUp * 15 + 3)
 					{
 						tile.WallType = (ushort)ModContent.WallType<StoneDragonScaleWoodWall>();
 					}
@@ -3621,48 +3632,6 @@ public class YggdrasilTownGeneration
 		for (int i = 0; i < times; i++)
 		{
 			bonus.Add(potentialList[GenRand.Next(potentialList.Count)]);
-		}
-	}
-
-	/// <summary>Seed the planned lower-left mine source without replacing built structures.</summary>
-	private static void GenerateTownAmberDeposits()
-	{
-		int host = ModContent.TileType<StoneScaleWood>();
-		ushort amber = (ushort)ModContent.TileType<YggdrasilTown.Tiles.YggdrasilAmber>();
-		var town = new Rectangle(218, Main.maxTilesY - 612, 730, 299);
-		int veins = 0;
-		for (int attempt = 0; attempt < 1200 && veins < 60; attempt++)
-		{
-			int x = WorldGen.genRand.Next(60, Main.maxTilesX / 2);
-			int y = WorldGen.genRand.Next(Main.maxTilesY - 820, Main.maxTilesY - 100);
-			if (town.Contains(x, y))
-			{
-				continue;
-			}
-			int radius = WorldGen.genRand.Next(2, 4);
-			int placed = 0;
-			for (int dx = -radius; dx <= radius; dx++)
-			{
-				for (int dy = -radius; dy <= radius; dy++)
-				{
-					Tile tile = Main.tile[x + dx, y + dy];
-					if (dx * dx + dy * dy <= radius * radius && tile.HasTile && tile.TileType == host)
-					{
-						tile.TileType = amber;
-						tile.TileFrameX = 0;
-						tile.TileFrameY = 0;
-						placed++;
-					}
-				}
-			}
-			if (placed > 0)
-			{
-				veins++;
-			}
-		}
-		if (veins == 0)
-		{
-			Ins.Logger.Warn("No amber deposits could be placed in the lower-left town mine.");
 		}
 	}
 }
