@@ -1605,7 +1605,7 @@ public class YggdrasilWorldGeneration : ModSystem
 	}
 
 	/// <summary>
-	/// Return true when no chest in given aren(include one row above).
+	/// Return true when the area contains no chest or dresser, including one row above to protect their supports.
 	/// </summary>
 	/// <param name="x"></param>
 	/// <param name="y"></param>
@@ -1618,9 +1618,11 @@ public class YggdrasilWorldGeneration : ModSystem
 		{
 			for (int y0 = y; y0 <= y + height; y0++)
 			{
-				Tile tile = SafeGetTile(x, y);
-				Tile tileUp = SafeGetTile(x, y - 1);
-				if (TileID.Sets.BasicChest[tile.TileType] || TileID.Sets.BasicChest[tileUp.TileType])
+				Tile tile = SafeGetTile(x0, y0);
+				Tile tileUp = SafeGetTile(x0, y0 - 1);
+				// Partially overwriting a filled dresser can make CheckModTile recurse indefinitely.
+				if ((tile.HasTile && (TileID.Sets.BasicChest[tile.TileType] || TileID.Sets.BasicDresser[tile.TileType]))
+					|| (tileUp.HasTile && (TileID.Sets.BasicChest[tileUp.TileType] || TileID.Sets.BasicDresser[tileUp.TileType])))
 				{
 					return false;
 				}
@@ -1630,7 +1632,7 @@ public class YggdrasilWorldGeneration : ModSystem
 	}
 
 	/// <summary>
-	/// Return true when no chest in given aren(include one row above).
+	/// Return true when the area contains no chest or dresser, including one row above to protect their supports.
 	/// </summary>
 	/// <param name="center"></param>
 	/// <param name="size"></param>
