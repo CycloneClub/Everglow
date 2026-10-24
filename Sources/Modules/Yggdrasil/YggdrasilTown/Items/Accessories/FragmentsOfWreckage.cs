@@ -4,7 +4,7 @@ public class FragmentsOfWreckage : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
-	public const float LifeLossForBonusMax = 200f;
+	public const float LifeLossForBonusMax = 120f;
 	public const float DamageBonus = 0.06f;
 	public const float MeleeSpeedBonus = 0.06f;
 	public const float PickSpeedBonus = 0.1f;
@@ -26,7 +26,7 @@ public class FragmentsOfWreckage : ModItem
 		// ==============================================
 		var lifeLoss = player.statLifeMax2 - player.statLife;
 
-		// A maximum of 200 life loss will be counted
+		// A maximum of 120 life loss will be counted
 		var bonusScaler = lifeLoss / LifeLossForBonusMax;
 		if (bonusScaler > 1)
 		{
