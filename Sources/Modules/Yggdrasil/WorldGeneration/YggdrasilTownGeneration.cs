@@ -387,6 +387,33 @@ public class YggdrasilTownGeneration
 	/// </summary>
 	public static void BuildTangledSubmine()
 	{
+		ushort wall = (ushort)ModContent.WallType<StoneDragonScaleWoodWall>();
+		for (int x = YggdrasilTownTopLeft.X + 517; x < YggdrasilTownTopLeft.X + 706; x++)
+		{
+			for (int y = YggdrasilTownTopLeft.Y + 205; y < Main.maxTilesY - 300; y++)
+			{
+				var tile = SafeGetTile(x, y);
+				if (!tile.HasTile || tile.TileType != ModContent.TileType<StoneScaleWood>() || (tile.WallType != WallID.None && tile.WallType != wall))
+				{
+					continue;
+				}
+				bool exposed = false;
+				for (int dx = -1; dx <= 1 && !exposed; dx++)
+				{
+					for (int dy = -1; dy <= 1; dy++)
+					{
+						var neighbor = SafeGetTile(x + dx, y + dy);
+						if (!neighbor.HasTile && neighbor.WallType == WallID.None)
+						{
+							exposed = true;
+							break;
+						}
+					}
+				}
+				tile.WallType = exposed ? WallID.None : wall;
+			}
+		}
+
 		Minerization(40, Main.maxTilesY - 820, Main.maxTilesX / 2 + 50, Main.maxTilesY - 50);
 		GenerateTownAmberDeposits();
 		for (int i = 0; i < 200; i++)
