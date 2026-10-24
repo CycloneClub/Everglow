@@ -4,6 +4,11 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.CyanVine;
 
 public class CyanVineOreTile : ModTile
 {
+	public override void SetStaticDefaults()
+	{
+		TileID.Sets.DrawsWalls[Type] = true;
+	}
+
 	public override void PostSetDefaults()
 	{
 		Main.tileSolid[Type] = true;

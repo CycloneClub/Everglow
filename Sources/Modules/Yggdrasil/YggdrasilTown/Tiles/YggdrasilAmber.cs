@@ -7,6 +7,7 @@ public class YggdrasilAmber : ModTile
 	public override void SetStaticDefaults()
 	{
 		Main.tileSolid[Type] = true;
+		TileID.Sets.DrawsWalls[Type] = true;
 		Main.tileMergeDirt[Type] = false;
 		Main.tileBlendAll[Type] = false;
 		Main.tileBlockLight[Type] = false;
