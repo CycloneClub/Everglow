@@ -30,6 +30,8 @@ public class FeatheredStaff_staff : ModProjectile
 		MouseToPlayer = Vector2.Normalize(MouseToPlayer);
 		if (Owner.controlUseItem)
 		{
+			// Keep regeneration delayed throughout channeling, even after the item animation ends.
+			Owner.ItemCheck_ApplyManaRegenDelay(Owner.HeldItem);
 			Projectile.rotation = (float)(Math.Atan2(MouseToPlayer.Y, MouseToPlayer.X) + Math.PI * 0.25);
 			Projectile.Center = Owner.MountedCenter + Vector2.Normalize(MouseToPlayer) * 28f + new Vector2(0, 0);
 			Projectile.velocity *= 0;
@@ -41,7 +43,6 @@ public class FeatheredStaff_staff : ModProjectile
 			{
 				if (Owner.ItemCheck_PayMana(Owner.HeldItem, true))
 				{
-					Owner.ItemCheck_ApplyManaRegenDelay(Owner.HeldItem);
 					Owner.itemTime = Owner.itemTimeMax;
 				}
 				else

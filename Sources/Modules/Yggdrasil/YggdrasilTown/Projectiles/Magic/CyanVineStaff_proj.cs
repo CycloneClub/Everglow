@@ -31,6 +31,8 @@ public class CyanVineStaff_proj : ModProjectile
 		mouseToPlayer = Vector2.Normalize(mouseToPlayer);
 		if (player.controlUseItem)
 		{
+			// Keep regeneration delayed throughout channeling, even after the item animation ends.
+			player.ItemCheck_ApplyManaRegenDelay(player.HeldItem);
 			Projectile.ai[0] *= 0.9f;
 			Projectile.ai[1] -= 1f;
 			float useDuration = (player.itemTime - 5) / (float)player.itemTimeMax;
@@ -46,7 +48,6 @@ public class CyanVineStaff_proj : ModProjectile
 			{
 				if (player.ItemCheck_PayMana(player.HeldItem, true))
 				{
-					player.ItemCheck_ApplyManaRegenDelay(player.HeldItem);
 					player.itemTime = player.itemTimeMax;
 				}
 				else
