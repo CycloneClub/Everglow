@@ -43,6 +43,10 @@ public class YggdrasilPlayer : ModPlayer
 	/// </summary>
 	public int ConsumedSquamousCore { get; set; }
 
+	public int ConsumedInsectManaEssence { get; set; }
+
+	public int ConsumedManaSpringElixir { get; set; }
+
 	public bool UseAntiHeavenSicknessPill()
 	{
 		if (ConsumedAntiHeavenSicknessPill < AntiHeavenSicknessPill.AntiHeavenSicknessPillMax)
@@ -83,6 +87,26 @@ public class YggdrasilPlayer : ModPlayer
 		return false;
 	}
 
+	public bool UseInsectManaEssence()
+	{
+		if (ConsumedInsectManaEssence < InsectManaEssence.MaxUse)
+		{
+			ConsumedInsectManaEssence++;
+			return true;
+		}
+		return false;
+	}
+
+	public bool UseManaSpringElixir()
+	{
+		if (ConsumedManaSpringElixir < ManaSpringElixir.MaxUse)
+		{
+			ConsumedManaSpringElixir++;
+			return true;
+		}
+		return false;
+	}
+
 	#endregion
 
 	#region Armors
@@ -112,11 +136,16 @@ public class YggdrasilPlayer : ModPlayer
 		health.Base += ConsumedSquamousCore * SquamousCore.SquamousCoreLife;
 		health.Base += ConsumedLampBorerHoney * LampBorerHoney.LifePerHoney;
 
+		mana.Base += ConsumedInsectManaEssence * InsectManaEssence.ManaPerUse;
+		mana.Base += ConsumedManaSpringElixir * ManaSpringElixir.ManaPerUse;
+
 		if (SubworldSystem.IsActive<YggdrasilWorld>())
 		{
 			health.Base -= Player.ConsumedLifeCrystals * 16;
 			health.Base -= Player.ConsumedLifeFruit * 4;
-			mana.Base -= Player.ConsumedManaCrystals * 16;
+			// Nine vanilla mana crystals add 30 mana here, keeping each step integral.
+			int crystalMana = Player.ConsumedManaCrystals * 30 / 9;
+			mana.Base += crystalMana - Player.ConsumedManaCrystals * 20;
 		}
 	}
 
@@ -200,10 +229,14 @@ public class YggdrasilPlayer : ModPlayer
 		tag[nameof(ConsumedJadeGlazeFruit)] = ConsumedJadeGlazeFruit;
 		tag[nameof(ConsumedSquamousCore)] = ConsumedSquamousCore;
 		tag[nameof(ConsumedLampBorerHoney)] = ConsumedLampBorerHoney;
+		tag[nameof(ConsumedInsectManaEssence)] = ConsumedInsectManaEssence;
+		tag[nameof(ConsumedManaSpringElixir)] = ConsumedManaSpringElixir;
 	}
 
 	public override void LoadData(TagCompound tag)
 	{
+		ConsumedInsectManaEssence = Math.Clamp(tag.GetInt(nameof(ConsumedInsectManaEssence)), 0, InsectManaEssence.MaxUse);
+		ConsumedManaSpringElixir = Math.Clamp(tag.GetInt(nameof(ConsumedManaSpringElixir)), 0, ManaSpringElixir.MaxUse);
 		if (tag.TryGet(nameof(ConsumedAntiHeavenSicknessPill), out int life1))
 		{
 			ConsumedAntiHeavenSicknessPill = life1;
@@ -227,10 +260,13 @@ public class YggdrasilPlayer : ModPlayer
 		ModIns.PacketResolver.Send(
 			new PermanentBoostPacket()
 			{
+				playerId = Player.whoAmI,
 				consumedAntiHeavenSicknessPill = ConsumedAntiHeavenSicknessPill,
 				consumedJadeGlazeFruit = ConsumedJadeGlazeFruit,
 				consumedSquamousCore = ConsumedSquamousCore,
 				consumedLampBorerHoney = ConsumedLampBorerHoney,
+				consumedInsectManaEssence = ConsumedInsectManaEssence,
+				consumedManaSpringElixir = ConsumedManaSpringElixir,
 			}, toWho, fromWho);
 	}
 
@@ -241,12 +277,16 @@ public class YggdrasilPlayer : ModPlayer
 		clone.ConsumedAntiHeavenSicknessPill = ConsumedAntiHeavenSicknessPill;
 		clone.ConsumedJadeGlazeFruit = ConsumedJadeGlazeFruit;
 		clone.ConsumedSquamousCore = ConsumedSquamousCore;
+		clone.ConsumedInsectManaEssence = ConsumedInsectManaEssence;
+		clone.ConsumedManaSpringElixir = ConsumedManaSpringElixir;
 	}
 
 	public override void SendClientChanges(ModPlayer clientPlayer)
 	{
 		var clone = (YggdrasilPlayer)clientPlayer;
-		if (ConsumedLampBorerHoney != clone.ConsumedLampBorerHoney)
+		if (ConsumedLampBorerHoney != clone.ConsumedLampBorerHoney
+			|| ConsumedInsectManaEssence != clone.ConsumedInsectManaEssence
+			|| ConsumedManaSpringElixir != clone.ConsumedManaSpringElixir)
 		{
 			SyncPlayer(toWho: -1, fromWho: Main.myPlayer, newPlayer: false);
 		}
