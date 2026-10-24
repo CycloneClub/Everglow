@@ -124,7 +124,7 @@ LampWoodHammer: {
 }
 
 MiningPowerPickaxe: {
-	DisplayName: Mining Power Pickaxe
+	DisplayName: Mining Power Pickaxe Mk I
 	Tooltip: ""
 }
 
@@ -250,4 +250,14 @@ EldamberHammer: {
 EldamberPickaxe: {
 	DisplayName: Eldamber Pickaxe
 	Tooltip: ""
+}
+
+MiningPowerPickaxe_2: {
+	DisplayName: Mining Power Pickaxe Mk II
+	Tooltip: Hold right-click to charge; mining consumes charge to mine connected ore
+}
+
+MiningPowerPickaxe_3: {
+	DisplayName: Mining Power Pickaxe Mk III
+	Tooltip: Hold right-click to charge; mining consumes charge to mine connected ore
 }

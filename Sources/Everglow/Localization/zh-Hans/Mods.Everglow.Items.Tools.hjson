@@ -124,7 +124,7 @@ LampWoodHammer: {
 }
 
 MiningPowerPickaxe: {
-	DisplayName: 矿用动力镐
+	DisplayName: 矿用动力镐 I型
 	Tooltip: ""
 }
 
@@ -250,4 +250,14 @@ EldamberHammer: {
 EldamberPickaxe: {
 	DisplayName: 古珀镐
 	Tooltip: ""
+}
+
+MiningPowerPickaxe_2: {
+	DisplayName: 矿用动力镐 II型
+	Tooltip: 按住右键充能，采矿时消耗能量连锁开采相连矿物
+}
+
+MiningPowerPickaxe_3: {
+	DisplayName: 矿用动力镐 III型
+	Tooltip: 按住右键充能，采矿时消耗能量连锁开采相连矿物
 }
