@@ -143,7 +143,7 @@ ForsakenBoots: {
 
 FragmentsOfWreckage: {
 	DisplayName: Fragments Of Wreckage
-	Tooltip: ""
+	Tooltip: "Gain bonuses as life is lost, reaching the maximum at 120 missing life: 6% melee speed, 6% damage, 8 defense and 10% mining speed"
 }
 
 FuneraryGoods: {
@@ -194,8 +194,8 @@ HeatEmblem: {
 	DisplayName: Heat Emblem
 	Tooltip:
 		'''
-		Increases life regeneration
-		Taking damage has a 20% chance to set you on fire for 4 seconds
+		Increases life regeneration by 2 life per second
+		Taking damage has a 20% chance to set you on fire for 3 seconds
 		'''
 }
 

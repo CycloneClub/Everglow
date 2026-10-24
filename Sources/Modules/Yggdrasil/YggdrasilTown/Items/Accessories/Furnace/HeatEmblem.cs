@@ -5,7 +5,7 @@ public class HeatEmblem : ModItem
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
 	public const float BuffTriggerRate = 0.2f;
-	public const int BuffDuration = 240;
+	public const int BuffDuration = 180;
 
 	public override void SetDefaults()
 	{
@@ -18,9 +18,9 @@ public class HeatEmblem : ModItem
 
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
-		// 1. + 3 Life Regeneration
+		// 1. + 4 Life Regeneration
 		// ========================
-		player.lifeRegen += 3;
+		player.lifeRegen += 4;
 
 		// 2. Gain "On Fire" debuff when get hurt
 		// ======================================
