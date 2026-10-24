@@ -721,7 +721,7 @@ public class YggdrasilTownGeneration
 								embedTownDepth++;
 								Vector2 distanceOval = townArea.Center.ToVector2() - new Vector2(j, k);
 								distanceOval.Y *= townArea.Width / (float)townArea.Height;
-								if (distanceOval.Length() < 300)
+								if (distanceOval.Length() < 350)
 								{
 									return new Vector2D(startX, startY);
 								}
@@ -751,7 +751,7 @@ public class YggdrasilTownGeneration
 							{
 								return new Vector2D(startX, startY);
 							}
-							if (embedTownDepth > 30)
+							if (embedTownDepth > 10)
 							{
 								return new Vector2D(startX, startY);
 							}
