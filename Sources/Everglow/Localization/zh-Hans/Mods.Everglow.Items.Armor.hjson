@@ -226,17 +226,32 @@ ExplorationHelmet: {
 
 FireflywoodBreastplate: {
 	DisplayName: 流萤板甲
-	Tooltip: ""
+	Tooltip:
+		'''
+		最大魔力值增加{0}点，召唤物上限增加{1}个
+		免疫魔力病
+		'''
 }
 
 FireflywoodHelmet: {
 	DisplayName: 流萤头盔
-	Tooltip: ""
+	Tooltip:
+		'''
+		魔法暴击率提高{0}%
+		套装效果：所有伤害提高{1}%
+		'''
+	SetBonus:
+		'''
+		所有伤害提高{1}%
+		'''
 }
 
 FireflywoodLeggings: {
 	DisplayName: 流萤护胫
-	Tooltip: ""
+	Tooltip:
+		'''
+		移动速度提高{0}%
+		'''
 }
 
 JellyBallBathingCap: {

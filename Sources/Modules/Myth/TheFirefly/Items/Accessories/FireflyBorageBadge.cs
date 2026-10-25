@@ -8,6 +8,8 @@ public class FireflyBorageBadge : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(5, 10, 20, 10, 12, 8);
+
 	public override void SetDefaults()
 	{
 		Item.width = 26;
@@ -55,21 +57,7 @@ public class FireflyBorageBadge : ModItem
 
 	public override void ModifyTooltips(List<TooltipLine> tooltips)
 	{
-		{
-			if (CorruptMoth.CorruptMothNPC != null && CorruptMoth.CorruptMothNPC.active)
-			{
-				tooltips.AddRange(new TooltipLine[]
-				{
-				   new(ModIns.Mod, "FFBBadge0", Language.GetTextValue("Mods.Everglow.ExtraTooltip.FireflyItems.FFBBadge0")),
-				   new(ModIns.Mod, "FFBBadge1", Language.GetTextValue("Mods.Everglow.ExtraTooltip.FireflyItems.FFBBadge1")),
-				   new(ModIns.Mod, "FFBBadge2", Language.GetTextValue("Mods.Everglow.ExtraTooltip.FireflyItems.FFBBadge2")),
-				   new(ModIns.Mod, "FFBBadge3", Language.GetTextValue("Mods.Everglow.ExtraTooltip.FireflyItems.FFBBadge3")),
-				   new(ModIns.Mod, "FFBBadge4", Language.GetTextValue("Mods.Everglow.ExtraTooltip.FireflyItems.FFBBadge4")),
-				});
-			}
-			tooltips.Add(new TooltipLine(ModIns.Mod, "UnfinishedItem", Language.GetTextValue("Mods.Everglow.ExtraTooltip.Misc.UnfinishedItem")));
-		}
-		base.ModifyTooltips(tooltips);
+		tooltips.Add(new TooltipLine(ModIns.Mod, "UnfinishedItem", Language.GetTextValue("Mods.Everglow.ExtraTooltip.Misc.UnfinishedItem")));
 	}
 
 	public override void AddRecipes()

@@ -42,7 +42,11 @@ BlueflowerCap: {
 
 BlueGel: {
 	DisplayName: Blue Gel
-	Tooltip: ""
+	Tooltip:
+		'''
+		+{0} maximum mana
+		Adds {1} mana regeneration points; vanilla regeneration updates overwrite this parameter, so it currently provides no regeneration benefit
+		'''
 }
 
 BlueTorchFlower: {
@@ -95,7 +99,13 @@ CorrodedPearl: {
 
 CorruptEye: {
 	DisplayName: Corrupt Eye
-	Tooltip: ""
+	Tooltip:
+		'''
+		+{0} defense, {1}% increased critical strike chance and immunity to Cursed Inferno
+		Being hurt releases {2} cursed fireballs, each starting at {3} damage with up to {4} hits
+		Fireball hits inflict Cursed Inferno for {5} seconds, then increase the fireball damage by {6}% (rounded down)
+		Hits, tile collisions and expiration create an explosion using the current fireball damage
+		'''
 }
 
 CrystalSkull: {
@@ -129,7 +139,10 @@ DarkHat: {
 
 DukeTooth: {
 	DisplayName: Duke Tooth
-	Tooltip: ""
+	Tooltip:
+		'''
+		+{0} armor penetration for all damage types
+		'''
 }
 
 EmptyFowlbeast: {
@@ -148,7 +161,13 @@ EnergyBand: {
 
 FireflyBorageBadge: {
 	DisplayName: Firefly Borage Badge
-	Tooltip: ""
+	Tooltip:
+		'''
+		{0}% multiplicative magic damage and {1}% multiplicative movement speed modifier
+		While the Corrupt Moth is present: lose {2}% defense (rounded down, capped at {3})
+		Gain another {4}% multiplicative damage and {5}% multiplicative melee and whip attack speed
+		Positive base crit chances for Melee, MeleeNoSpeed and whips become zero; weapon and inherited crit bonuses still apply
+		'''
 }
 
 ForestMino: {
@@ -195,7 +214,13 @@ FurnaceIronGloves: {
 
 GoldLiquidPupil: {
 	DisplayName: Gold Liquid Pupil
-	Tooltip: ""
+	Tooltip:
+		'''
+		Being hurt creates an Ichor ring that follows you; only one may exist at a time
+		Starts at {0} damage and lasts {1} seconds, dealing no damage during the final second
+		Deals {3} times final damage during the first {2} seconds; hits inflict Ichor for {4} seconds
+		PvP: each point of target defense adds {5} percentage points to the final damage modifier (current implementation)
+		'''
 }
 
 GoldRound: {
@@ -205,7 +230,10 @@ GoldRound: {
 
 GreenGel: {
 	DisplayName: Green Gel
-	Tooltip: ""
+	Tooltip:
+		'''
+		+{0} maximum life and +{1} life regeneration per second
+		'''
 }
 
 GuppyShell: {
@@ -279,7 +307,10 @@ JellyBallInhibitor: {
 
 JungleVitamin: {
 	DisplayName: Jungle Vitamin
-	Tooltip: ""
+	Tooltip:
+		'''
+		+{0} maximum life
+		'''
 }
 
 LampWoodPollenBottle: {
@@ -337,7 +368,24 @@ MoltenCore: {
 
 MothEye: {
 	DisplayName: Moth Eye
-	Tooltip: ""
+	Tooltip:
+		'''
+		{0}% multiplicative summon damage, +{1} maximum minions and +{2} maximum sentries
+		In the Firefly biome during Hardmode: {3}% multiplicative damage for the listed Firefly weapons and -{4} percentage points to the mana cost modifier
+		Adds {5} to the Mana Sickness penalty parameter (current implementation)
+		Damage bonus applies to:
+		Darkness Fan, Dream Weaver, Dust Of Corrupt, Evil Chrysalis
+		Flow Light Missile, Glow Bead Gun, Glow Wood Sword, Moth Yoyo
+		Navy Thunder, Phosphorescence Gun, Scale Wing Blade, Shadow Wing Bow
+		While equipped in the Firefly biome during Hardmode, also modifies:
+		Glow Wood Sword: projectile scale factor increases from 2 to 3, with +3 projectile damage on spawn
+		Scale Wing Blade: butterflies gain an extra homing acceleration step (also works before Hardmode)
+		Shadow Wing Bow: charge gain increases from 3 to 4 per two updates
+		Evil Chrysalis: minion rain passes through tiles, with a 10% chance per shot to fire additional empowered rain
+		Darkness Fan: initial butterfly lifetime changes from 85–134 to 135–184 ticks; scale range changes from 0.6–1 to 0.4–0.7
+		Phosphorescence Gun: bonus bullet damage factor increases from 25% to 35%; equipping prevents recoil movement
+		Moth Yoyo: creates 8 additional outer projectiles, each dealing one-quarter of yoyo projectile damage at twice the inner orbit size
+		'''
 }
 
 Odd8Ring: {
@@ -414,7 +462,10 @@ RecoveryBand: {
 
 RedGel: {
 	DisplayName: Red Gel
-	Tooltip: ""
+	Tooltip:
+		'''
+		{0}% increased critical strike chance and {1}% increased critical strike damage against NPCs
+		'''
 }
 
 RedTriangle: {
@@ -449,7 +500,12 @@ SilverCupFlower: {
 
 SilverWing: {
 	DisplayName: Silver Wing
-	Tooltip: ""
+	Tooltip:
+		'''
+		{0}% increased critical strike damage against NPCs
+		After {1} seconds without holding Use Item while equipped, gain {2}% multiplicative damage
+		Pressing Use Item ends the damage bonus and resets the timer
+		'''
 }
 
 SkullCollection: {
@@ -537,12 +593,21 @@ ThreeColorCrown: {
 
 TuskLace: {
 	DisplayName: Tusk Lace
-	Tooltip: ""
+	Tooltip:
+		'''
+		+{0} armor penetration and {1}% increased critical strike chance
+		{2}% multiplicative damage increase
+		A tusk was knocked from a beast's mouth, and you chipped off a small piece
+		'''
 }
 
 WalnutClip: {
 	DisplayName: Walnut Clip
-	Tooltip: ""
+	Tooltip:
+		'''
+		{0}% increased critical strike damage against NPCs
+		Below {1}% maximum life, gain 1% multiplicative damage per {2} life missing below that threshold
+		'''
 }
 
 WhiteCrown: {

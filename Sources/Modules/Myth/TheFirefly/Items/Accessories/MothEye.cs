@@ -9,6 +9,8 @@ public class MothEye : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(8, 1, 1, 5, 5, 4);
+
 	private FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
 
 	public static Player LocalOwner => Main.LocalPlayer;
@@ -33,25 +35,6 @@ public class MothEye : ModItem
 		{
 			player.manaSickReduction += 4;
 			player.manaCost -= 0.05f;
-		}
-	}
-
-	public override void ModifyTooltips(List<TooltipLine> tooltips)
-	{
-		if (fireflyBiome.IsBiomeActive(Main.LocalPlayer) && Main.hardMode)
-		{
-			tooltips.AddRange(new TooltipLine[]
-			{
-				new(ModIns.Mod, "MothEyeText0", Language.GetTextValue("Mods.Everglow.ExtraTooltip.FireflyItems.MothEyeText0")),
-				new(ModIns.Mod, "MothEyeText1", Language.GetTextValue("Mods.Everglow.ExtraTooltip.FireflyItems.MothEyeText1")),
-				new(ModIns.Mod, "MothEyeText2", Language.GetTextValue("Mods.Everglow.ExtraTooltip.FireflyItems.MothEyeText2")),
-				new(ModIns.Mod, "MothEyeText3", Language.GetTextValue("Mods.Everglow.ExtraTooltip.FireflyItems.MothEyeText3")),
-				new(ModIns.Mod, "MothEyeText4", Language.GetTextValue("Mods.Everglow.ExtraTooltip.FireflyItems.MothEyeText4")),
-			}); // Using \n would cause spacing problems in the tooltip section (blank space underneath all tooltips). ~Setnour6
-		}
-		else if (fireflyBiome.IsBiomeActive(Main.LocalPlayer))
-		{
-			tooltips.Add(new TooltipLine(ModIns.Mod, "MothEyeCriteriaText", Language.GetTextValue("Mods.Everglow.ExtraTooltip.FireflyItems.MothEyeCriteriaText")));
 		}
 	}
 

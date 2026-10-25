@@ -226,17 +226,32 @@ ExplorationHelmet: {
 
 FireflywoodBreastplate: {
 	DisplayName: Fireflywood Breastplate
-	Tooltip: ""
+	Tooltip:
+		'''
+		+{0} maximum mana and +{1} maximum minions
+		Immune to Mana Sickness
+		'''
 }
 
 FireflywoodHelmet: {
 	DisplayName: Fireflywood Helmet
-	Tooltip: ""
+	Tooltip:
+		'''
+		{0}% increased magic critical strike chance
+		Set bonus: {1}% increased damage
+		'''
+	SetBonus:
+		'''
+		{1}% increased damage
+		'''
 }
 
 FireflywoodLeggings: {
 	DisplayName: Fireflywood Leggings
-	Tooltip: ""
+	Tooltip:
+		'''
+		{0}% increased movement speed
+		'''
 }
 
 JellyBallBathingCap: {
