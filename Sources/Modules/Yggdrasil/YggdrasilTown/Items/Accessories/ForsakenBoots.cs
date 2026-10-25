@@ -1,9 +1,13 @@
+using Terraria.Localization;
+
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
 
 [AutoloadEquip(EquipType.Shoes)]
 public class ForsakenBoots : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(MoveSpeedBonus, 6.25f);
 
 	public const int MoveSpeedBonus = 5;
 

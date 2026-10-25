@@ -9,7 +9,7 @@ public class ConcentratingJacket : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(20, 20);
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(3);
 
 	public override void SetStaticDefaults()
 	{

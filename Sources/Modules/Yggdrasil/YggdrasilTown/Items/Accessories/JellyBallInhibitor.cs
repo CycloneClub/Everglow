@@ -1,11 +1,14 @@
 using Everglow.Yggdrasil.YggdrasilTown.NPCs;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs.KingJellyBall;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
 
 public class JellyBallInhibitor : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(JellyBallDamageBonus * 100f, JellyBallDamageReduction * 100f);
 
 	public const float JellyBallDamageReduction = 0.15f;
 	public const float JellyBallDamageBonus = 0.3f;

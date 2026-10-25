@@ -1,8 +1,12 @@
+using Terraria.Localization;
+
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
 
 public class FragmentsOfWreckage : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(LifeLossForBonusMax, DamageBonus * 100f, MeleeSpeedBonus * 100f, DefenseBonus, PickSpeedBonus * 100f);
 
 	public const float LifeLossForBonusMax = 120f;
 	public const float DamageBonus = 0.06f;

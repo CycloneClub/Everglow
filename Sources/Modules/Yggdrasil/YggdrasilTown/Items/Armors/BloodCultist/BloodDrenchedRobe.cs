@@ -8,7 +8,7 @@ public class BloodDrenchedRobe : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(20, 20);
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(5);
 
 	public override void SetStaticDefaults()
 	{

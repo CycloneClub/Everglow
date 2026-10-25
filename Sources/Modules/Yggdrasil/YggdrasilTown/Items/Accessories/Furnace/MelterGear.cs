@@ -1,10 +1,13 @@
 using Everglow.Yggdrasil.YggdrasilTown.Cooldowns;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories.Furnace;
 
 public class MelterGear : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(RangedAttackSpeedBonus, DefenseBonus, EnemyBuffTriggerRate * 100f, BuffDuration / 60f, PlayerBuffTriggerRate * 100f, EffectCooldown / 60f);
 
 	public const int RangedAttackSpeedBonus = 6;
 	public const int DefenseBonus = 3;

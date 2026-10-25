@@ -1,6 +1,7 @@
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Terraria.DataStructures;
 using Terraria.GameContent;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Rock;
 
@@ -8,6 +9,10 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Rock;
 public class RockHelmet : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(MeleeCritChanceBonus, DistanceRequirementPerDefense / 16f, 8);
+
+	public LocalizedText SetBonusText => this.GetLocalization("SetBonus").WithFormatArgs(MeleeCritChanceBonus, DistanceRequirementPerDefense / 16f, 8);
 
 	public const int MeleeCritChanceBonus = 6;
 
@@ -45,6 +50,7 @@ public class RockHelmet : ModItem
 
 	public override void UpdateArmorSet(Player player)
 	{
+		player.setBonus = SetBonusText.Value;
 		player.GetModPlayer<RockArmorSetPlayer>().RockArmorSetEnable = true;
 	}
 

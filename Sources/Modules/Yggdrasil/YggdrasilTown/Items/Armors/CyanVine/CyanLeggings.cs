@@ -9,7 +9,7 @@ public class CyanLeggings : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(3);
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(4);
 
 	public override void SetStaticDefaults()
 	{

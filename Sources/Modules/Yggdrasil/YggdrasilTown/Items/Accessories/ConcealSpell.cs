@@ -1,4 +1,5 @@
 using Terraria.DataStructures;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
 
@@ -10,6 +11,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
 public class ConcealSpell : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(480, 60, 6, 0.4f);
 
 	public override void SetDefaults()
 	{

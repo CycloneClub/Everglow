@@ -1,5 +1,6 @@
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Terraria.GameContent.Creative;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.LightSeeker;
 
@@ -7,6 +8,10 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.LightSeeker;
 public class OvineHairpin : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(5, 12, 8, 7, 220);
+
+	public LocalizedText SetBonusText => this.GetLocalization("SetBonus").WithFormatArgs(5, 12, 8, 7, 220);
 
 	public override void SetStaticDefaults()
 	{
@@ -30,6 +35,7 @@ public class OvineHairpin : ModItem
 
 	public override void UpdateArmorSet(Player player)
 	{
+		player.setBonus = SetBonusText.Value;
 		Color lightColor = Lighting.GetColor(player.Center.ToTileCoordinates());
 
 		float lightIntensity = MathHelper.Max(MathHelper.Max(lightColor.R, lightColor.G), lightColor.B);

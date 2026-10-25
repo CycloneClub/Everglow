@@ -1,5 +1,6 @@
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Terraria.GameContent.Creative;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.CyanVine;
 
@@ -7,6 +8,10 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.CyanVine;
 public class CyanHeavylet : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(3, 3, 1, 0.008f);
+
+	public LocalizedText SetBonusText => this.GetLocalization("SetBonus").WithFormatArgs(3, 3, 1, 0.008f);
 
 	public override void SetStaticDefaults()
 	{
@@ -29,6 +34,7 @@ public class CyanHeavylet : ModItem
 
 	public override void UpdateArmorSet(Player player)
 	{
+		player.setBonus = SetBonusText.Value;
 		player.statDefense += 3;
 		player.lifeRegen += 2;
 		player.runAcceleration += 0.008f; // 通过命中断点获得玩家的基础跑步加速度为0.08，提升10%也就是0.008

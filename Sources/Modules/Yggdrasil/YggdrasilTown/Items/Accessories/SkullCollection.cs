@@ -1,11 +1,14 @@
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 using Terraria.DataStructures;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
 
 public class SkullCollection : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(DetectRange / 16f, FinalManaRegenBonus, BuffDuration / 60f, BuffCooldownMax / 60f);
 
 	public const int ItemFrames = 7;
 
