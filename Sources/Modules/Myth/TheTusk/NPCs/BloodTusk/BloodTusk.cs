@@ -20,6 +20,9 @@ namespace Everglow.Myth.TheTusk.NPCs.BloodTusk;
 [NoGameModeScale]
 public class BloodTusk : ModNPC
 {
+	// Full body height when the boss is standing.
+	private const int StandingHeight = 184;
+
 	/// <summary>
 	/// MapIcon Slot.
 	/// </summary>
@@ -29,6 +32,11 @@ public class BloodTusk : ModNPC
 	/// NPC State.
 	/// </summary>
 	public int State = -1;
+
+	/// <summary>
+	/// Height above the bottom used for skill selection, independent of the cower animation.
+	/// </summary>
+	public float DetectionHeight => StandingHeight;
 
 	/// <summary>
 	/// Draw offset added when being hit.
@@ -271,7 +279,7 @@ public class BloodTusk : ModNPC
 			AIPool.Add(new AIAction(new List<IEnumerator<ICoroutineInstruction>> { Cower(), Rise(), Wait(GetWatingTime(60)) }, 1f));
 			AIPool.Add(new AIAction(new List<IEnumerator<ICoroutineInstruction>> { Cower(), SlowWaveGroundSpike(), Rise(), Wait(GetWatingTime(150)) }, 1f));
 			AIPool.Add(new AIAction(new List<IEnumerator<ICoroutineInstruction>> { Cower(), FastWaveGroundSpike(), Rise(), Wait(GetWatingTime(150)) }, 1f));
-			AIPool.Add(new AIAction(new List<IEnumerator<ICoroutineInstruction>> { SprayTuskSpice(300), Wait(GetWatingTime(60)), Cower(), Rise() }, player.Center.Y > NPC.Top.Y ? 0.2f : 10f));
+			AIPool.Add(new AIAction(new List<IEnumerator<ICoroutineInstruction>> { SprayTuskSpice(300), Wait(GetWatingTime(60)), Cower(), Rise() }, player.Center.Y > NPC.Bottom.Y - DetectionHeight ? 0.2f : 10f));
 		}
 		if (State == (int)States.Phase2)
 		{
@@ -289,8 +297,8 @@ public class BloodTusk : ModNPC
 				spiceAroundWeight = 20;
 			}
 			AIPool.Add(new AIAction(new List<IEnumerator<ICoroutineInstruction>> { SpikeAround(), Wait(GetWatingTime(30)) }, spiceAroundWeight));
-			AIPool.Add(new AIAction(new List<IEnumerator<ICoroutineInstruction>> { CowerToCenter(), Rise(), SprayTuskSpice_Style2(300), Wait(GetWatingTime(60)) }, player.Center.Y > NPC.Top.Y ? 0.2f : 4f));
-			AIPool.Add(new AIAction(new List<IEnumerator<ICoroutineInstruction>> { CowerToCenter(), Rise(), SprayTuskSpice_Style3(300), Wait(GetWatingTime(60)) }, player.Center.Y > NPC.Top.Y ? 0.2f : 4f));
+			AIPool.Add(new AIAction(new List<IEnumerator<ICoroutineInstruction>> { CowerToCenter(), Rise(), SprayTuskSpice_Style2(300), Wait(GetWatingTime(60)) }, player.Center.Y > NPC.Bottom.Y - DetectionHeight ? 0.2f : 4f));
+			AIPool.Add(new AIAction(new List<IEnumerator<ICoroutineInstruction>> { CowerToCenter(), Rise(), SprayTuskSpice_Style3(300), Wait(GetWatingTime(60)) }, player.Center.Y > NPC.Bottom.Y - DetectionHeight ? 0.2f : 4f));
 			AIPool.Add(new AIAction(new List<IEnumerator<ICoroutineInstruction>> { CowerToCenter(), Rise(), ShootBloodCursed(), Wait(GetWatingTime(600)) }, 0.5f));
 
 			AIPool.Add(new AIAction(new List<IEnumerator<ICoroutineInstruction>> { SpicyBloodTentacle(), Wait(GetWatingTime(30)) }, 1f));
@@ -359,7 +367,7 @@ public class BloodTusk : ModNPC
 			{
 				CowerValue = 0;
 			}
-			NPC.height = (int)MathHelper.Lerp(184, 10, CowerValue);
+			NPC.height = (int)MathHelper.Lerp(StandingHeight, 10, CowerValue);
 			NPC.Bottom = vector;
 			if (NPC.alpha > 25)
 			{
@@ -372,7 +380,7 @@ public class BloodTusk : ModNPC
 			yield return new SkipThisFrame();
 		}
 		NPC.damage = GetDamage(40);
-		NPC.height = 184;
+		NPC.height = StandingHeight;
 		NPC.Bottom = vector;
 	}
 
@@ -386,7 +394,7 @@ public class BloodTusk : ModNPC
 			{
 				CowerValue = 1;
 			}
-			NPC.height = (int)MathHelper.Lerp(184, 10, CowerValue);
+			NPC.height = (int)MathHelper.Lerp(StandingHeight, 10, CowerValue);
 			NPC.Bottom = vector;
 			if (i > 13)
 			{
@@ -412,7 +420,7 @@ public class BloodTusk : ModNPC
 			{
 				CowerValue = 1;
 			}
-			NPC.height = (int)MathHelper.Lerp(184, 10, CowerValue);
+			NPC.height = (int)MathHelper.Lerp(StandingHeight, 10, CowerValue);
 			NPC.Bottom = vector;
 			if (i > 13)
 			{
@@ -825,7 +833,7 @@ public class BloodTusk : ModNPC
 		for (int i = 0; i <= cowerTime; i++)
 		{
 			CowerValue = MathHelper.Lerp(CowerValue, 1f, 0.2f / MathF.Log10(cowerTime));
-			NPC.height = (int)MathHelper.Lerp(184, 10, CowerValue);
+			NPC.height = (int)MathHelper.Lerp(StandingHeight, 10, CowerValue);
 			NPC.Bottom = vector;
 			yield return new SkipThisFrame();
 		}
@@ -863,18 +871,18 @@ public class BloodTusk : ModNPC
 		for (int i = 0; i <= riseTime; i++)
 		{
 			CowerValue = MathHelper.Lerp(CowerValue, 0f, 0.4f);
-			NPC.height = (int)MathHelper.Lerp(184, 10, CowerValue / MathF.Log10(riseTime));
+			NPC.height = (int)MathHelper.Lerp(StandingHeight, 10, CowerValue / MathF.Log10(riseTime));
 			NPC.Bottom = vector;
 			yield return new SkipThisFrame();
 		}
 		CowerValue = 0;
-		NPC.height = 184;
+		NPC.height = StandingHeight;
 		NPC.Bottom = vector;
 		yield return new WaitForFrames(60);
 		for (int i = 0; i < 180; i++)
 		{
 			CowerValue = MathHelper.Lerp(CowerValue, 1f, MathF.Pow(i / 10000f, 2) * 200);
-			NPC.height = (int)MathHelper.Lerp(184, 10, CowerValue);
+			NPC.height = (int)MathHelper.Lerp(StandingHeight, 10, CowerValue);
 			NPC.Bottom = vector;
 			yield return new SkipThisFrame();
 		}
@@ -890,11 +898,11 @@ public class BloodTusk : ModNPC
 		for (int i = 0; i <= 30; i++)
 		{
 			CowerValue = MathHelper.Lerp(CowerValue, 0f, 0.14f);
-			NPC.height = (int)MathHelper.Lerp(184, 10, CowerValue);
+			NPC.height = (int)MathHelper.Lerp(StandingHeight, 10, CowerValue);
 			NPC.Bottom = vector;
 			yield return new SkipThisFrame();
 		}
-		NPC.height = 184;
+		NPC.height = StandingHeight;
 		NPC.Bottom = vector;
 		CowerValue = 0;
 	}
