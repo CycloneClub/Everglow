@@ -256,8 +256,8 @@ public class TuskGen : ModSystem
 		TuskGen tuskGen = ModContent.GetInstance<TuskGen>();
 		tuskGen.tuskCenterX = a + 80;
 		tuskGen.tuskCenterY = b + 10;
-		// Add test platforms while leaving the natural terrain below the arena untouched.
-		TileUtils.PrepareCombatTestArena(new Rectangle(a - 40, b - 44, 240, 66));
+		// Use the natural ground at b + 20 as the first level; add platforms 20, 40 and 60 tiles above it.
+		TileUtils.PrepareCombatTestArena(new Rectangle(a - 40, b - 44, 240, 45));
 	}
 
 	public static Point GetFlattenPoint()
