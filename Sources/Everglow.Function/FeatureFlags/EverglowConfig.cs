@@ -20,6 +20,14 @@ public class EverglowConfig : ModConfig
 	// [Tooltip("[For developers] Enable debug mode to allow debug functions to run")]
 	public bool debugMode;
 
+	/// <summary>
+	/// Prepare boss arenas only when generating new test subworlds.
+	/// </summary>
+	[DefaultValue(false)]
+	public bool combatTestArenas;
+
+	public static bool CombatTestArenas => ModContent.GetInstance<EverglowConfig>().combatTestArenas;
+
 	public static bool DebugMode
 	{
 		get

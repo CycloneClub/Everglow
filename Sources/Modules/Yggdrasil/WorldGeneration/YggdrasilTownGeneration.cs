@@ -82,6 +82,15 @@ public class YggdrasilTownGeneration
 		Main.statusText = "Smoothing Yggdrasil Town...";
 
 		SmoothYggdrasilTown();
+
+		// Test-only preparation preserves the observatory, seal and their supporting tiles.
+		PrepareCombatTestArena(new Rectangle(Main.maxTilesX - 295, Main.maxTilesY - 406, 240, 136),
+			new Rectangle(Main.maxTilesX - 103, Main.maxTilesY - 393, 72, 50));
+		int cageX = Main.maxTilesX / 2 - 260;
+		int cageY = Main.maxTilesY - 1957;
+		// The stone floor starts at cageY + 7; the lowest platform is 20 tiles above it.
+		PrepareCombatTestArena(new Rectangle(cageX + 120, cageY - 64, 240, 52),
+			new Rectangle(cageX + 236, cageY - 3, 20, 12));
 	}
 
 	// public static int AzureGrottoCenterX;

@@ -282,6 +282,7 @@ public class MothLand : ModSystem
 			}
 		}
 		PlaceDarkFlowers();
+		TileUtils.PrepareCombatTestArena(new Rectangle(a + 20, b + 120, 240, 66));
 	}
 
 	private static void PlaceDarkFlowers()
