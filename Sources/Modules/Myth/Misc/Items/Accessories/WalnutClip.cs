@@ -1,4 +1,5 @@
 using Everglow.Myth.Common;
+using Terraria.Localization;
 
 namespace Everglow.Myth.Misc.Items.Accessories;
 
@@ -6,6 +7,8 @@ namespace Everglow.Myth.Misc.Items.Accessories;
 public class WalnutClip : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(16, 50, 4);
 
 	public override void SetDefaults()
 	{

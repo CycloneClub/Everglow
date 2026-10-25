@@ -1,5 +1,6 @@
 using Everglow.Myth.TheFirefly.Items.Materials;
 using Terraria.GameContent.Creative;
+using Terraria.Localization;
 
 namespace Everglow.Myth.TheFirefly.Items.Armors
 {
@@ -7,6 +8,10 @@ namespace Everglow.Myth.TheFirefly.Items.Armors
 	public class FireflywoodHelmet : ModItem
 	{
 		public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
+
+		public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(4, 10);
+
+		public LocalizedText SetBonusText => this.GetLocalization("SetBonus").WithFormatArgs(4, 10);
 
 		public override void SetStaticDefaults()
 		{
@@ -36,7 +41,7 @@ namespace Everglow.Myth.TheFirefly.Items.Armors
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Increases dealt damage by 10%"; // TODO: Use Localization Keys Instead
+			player.setBonus = SetBonusText.Value;
 			player.GetDamage(DamageClass.Generic) += 0.1f;
 		}
 

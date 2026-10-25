@@ -1,9 +1,13 @@
+using Terraria.Localization;
+
 namespace Everglow.Myth.TheTusk.Items.Accessories;
 
 [AutoloadEquip(EquipType.Neck)]
 public class TuskLace : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(5, 3, 3);
 
 	public override void SetStaticDefaults()
 	{
