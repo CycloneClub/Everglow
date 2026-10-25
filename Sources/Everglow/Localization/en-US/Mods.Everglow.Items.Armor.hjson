@@ -2,7 +2,7 @@ AuburnBoots: {
 	DisplayName: Auburn Boots
 	Tooltip:
 		'''
-		6% increased movement speed
+		{0}% increased movement speed
 		'A dead rod leaves only a hollow tube; even its arcane organs are gone... Still, the shell is rather pretty'
 		'''
 }
@@ -11,7 +11,7 @@ AuburnBreastplate: {
 	DisplayName: Auburn Breastplate
 	Tooltip:
 		'''
-		12% increased whip range and 6% increased whip attack speed
+		{0}% increased whip range and {1}% increased whip attack speed
 		'A dead rod leaves only a hollow tube; even its arcane organs are gone... Still, the shell is rather pretty'
 		'''
 }
@@ -20,11 +20,16 @@ AuburnHoodie: {
 	DisplayName: Auburn Hood
 	Tooltip:
 		'''
-		10% increased summon damage
-		Full set increases your max number of minions by 1
-		With the full set, press the armor ability hotkey to gain another minion slot at the cost of life regeneration for 30 seconds
-		This ability has a 60-second cooldown
+		{0}% increased summon damage
+		Set bonus:
+		Increases your max number of minions by {1}
+		Press the armor ability key to gain another {1} minion slot and lose {4} life regeneration per second for {2} seconds; {3}-second cooldown
 		'A dead rod leaves only a hollow tube; even its arcane organs are gone... Still, the shell is rather pretty'
+		'''
+	SetBonus:
+		'''
+		Increases your max number of minions by {1}
+		Press the armor ability key to gain another {1} minion slot and lose {4} life regeneration per second for {2} seconds; {3}-second cooldown
 		'''
 }
 
@@ -32,7 +37,7 @@ BloodDrenchedRobe: {
 	DisplayName: Blood-Drenched Robe
 	Tooltip:
 		'''
-		5% increased magic critical strike chance
+		{0}% increased magic critical strike chance
 		'They nurture weaving beasts with the living arcane organs of their hosts, then use the beasts to weave scarlet brocade'
 		'''
 }
@@ -41,9 +46,16 @@ BloodStainedVeil: {
 	DisplayName: Bloodstained Veil
 	Tooltip:
 		'''
-		8% increased magic damage
-		With the robe equipped, magic projectile hits briefly increase life regeneration and have a 3% chance to restore 6 mana
+		{0}% increased magic damage
+		Set bonus:
+		With the Blood-Drenched Robe, magic projectile hits grant {2} life regeneration per second for {1} seconds
+		Each qualifying hit has a {3}% chance to restore {4} mana
 		'Despite the stories, it looks like an ordinary mage robe, only more threadbare'
+		'''
+	SetBonus:
+		'''
+		With the Blood-Drenched Robe, magic projectile hits grant {2} life regeneration per second for {1} seconds
+		Each qualifying hit has a {3}% chance to restore {4} mana
 		'''
 }
 
@@ -54,14 +66,17 @@ BlueflowerDress: {
 
 ConcentratingJacket: {
 	DisplayName: Concentrating Jacket
-	Tooltip: 3% increased critical strike chance
+	Tooltip:
+		'''
+		{0}% increased critical strike chance
+		'''
 }
 
 ConventionalEquipment: {
 	DisplayName: Standard Armor
 	Tooltip:
 		'''
-		2% increased critical strike chance
+		{0}% increased critical strike chance
 		'Offers some protection, but no comfort whatsoever'
 		'''
 }
@@ -105,29 +120,45 @@ CrimsonMoonAlgaeMask: {
 
 CyanBreastplate: {
 	DisplayName: Cyan Breastplate
-	Tooltip: 5% increased movement speed and slightly increased jump speed
+	Tooltip:
+		'''
+		{0}% increased movement speed and +{1} pixels/tick jump speed
+		'''
 }
 
 CyanHeavylet: {
 	DisplayName: Cyan Helmet
 	Tooltip:
 		'''
-		3% reduced damage taken
-		Full set grants 3 defense, increased life regeneration, and increased acceleration
+		+{0} percentage points of damage reduction
+		Set bonus:
+		+{1} defense, +{2} life regeneration per second and +{3} pixels/tick² running acceleration
+		'''
+	SetBonus:
+		'''
+		+{1} defense, +{2} life regeneration per second and +{3} pixels/tick² running acceleration
 		'''
 }
 
 CyanLeggings: {
 	DisplayName: Cyan Boots
-	Tooltip: 4% increased melee attack speed
+	Tooltip:
+		'''
+		{0}% increased melee attack speed
+		'''
 }
 
 CyanWarhelm: {
 	DisplayName: Cyan Warhelm
 	Tooltip:
 		'''
-		5% increased melee damage and 4% increased melee critical strike chance
-		Full set grants an additional 1% melee damage and 3 melee armor penetration
+		{0}% increased melee damage and {1}% increased melee critical strike chance
+		Set bonus:
+		{2}% additional melee damage and +{3} melee armor penetration
+		'''
+	SetBonus:
+		'''
+		{2}% additional melee damage and +{3} melee armor penetration
 		'''
 }
 
@@ -180,10 +211,16 @@ ExplorationHelmet: {
 	DisplayName: Exploration Helmet
 	Tooltip:
 		'''
-		5% increased ranged critical strike chance
+		{0}% increased ranged critical strike chance
 		Emits light
-		Full set grants a 10% chance not to consume ammo and 8% increased ranged damage
-		Full set highlights visible enemies in the direction of the cursor
+		Set bonus:
+		{1}% chance not to consume ammo and {2}% increased ranged damage
+		Highlights attackable enemies toward the cursor with line of sight, or enemies that can pass through tiles
+		'''
+	SetBonus:
+		'''
+		{1}% chance not to consume ammo and {2}% increased ranged damage
+		Highlights attackable enemies toward the cursor with line of sight, or enemies that can pass through tiles
 		'''
 }
 
@@ -206,30 +243,42 @@ JellyBallBathingCap: {
 	DisplayName: Jelly Ball Bathing Cap
 	Tooltip:
 		'''
-		Grants 3 defense and increases your max number of minions by 1
-		10% chance to reduce incoming projectile damage by 35% and reflect the projectile
+		+{0} defense and +{1} maximum minions
+		When hit by a projectile, a {2}% chance to reduce that hit by {3}% and reflect the projectile
 		'A sticky, springy bathing cap'
 		'''
 }
 
 LampWoodBreastplate: {
 	DisplayName: Lampwood Breastplate
-	Tooltip: Slightly increases life regeneration
+	Tooltip:
+		'''
+		+{0} life regeneration per second
+		'''
 }
 
 LampWoodHelmet: {
 	DisplayName: Lampwood Helmet
 	Tooltip:
 		'''
-		8% increased mining speed
-		Full set grants 2 defense, slightly increased life regeneration, and an additional 8% mining speed
-		Full set emits light
+		Mining interval modifier reduced by {0} percentage points
+		Set bonus:
+		+{1} defense, +{2} life regeneration per second and a further {3} percentage-point reduction to the mining interval modifier
+		Emits light
+		'''
+	SetBonus:
+		'''
+		+{1} defense, +{2} life regeneration per second and a further {3} percentage-point reduction to the mining interval modifier
+		Emits light
 		'''
 }
 
 LampWoodLeggings: {
 	DisplayName: Lampwood Greaves
-	Tooltip: 6% increased movement speed
+	Tooltip:
+		'''
+		{0}% increased movement speed
+		'''
 }
 
 MolluscsLeggings: {
@@ -254,10 +303,16 @@ OvineHairpin: {
 	DisplayName: Ovine Hairpin
 	Tooltip:
 		'''
-		5% increased magic critical strike chance
+		{0}% increased magic critical strike chance
 		Emits light
-		Full set reduces mana cost by 12% and increases magic damage by 8%
-		Full set grants an additional 7% magic damage while you stand in bright light
+		Set bonus:
+		Multiplies mana cost by a factor reduced by {1}% and increases magic damage by {2}%
+		Grants another {3}% magic damage when the brightest local lighting channel exceeds {4}/255
+		'''
+	SetBonus:
+		'''
+		Multiplies mana cost by a factor reduced by {1}% and increases magic damage by {2}%
+		Grants another {3}% magic damage when the brightest local lighting channel exceeds {4}/255
 		'''
 }
 
@@ -272,21 +327,32 @@ PearlMolluscsHelmet: {
 
 RockGreaves: {
 	DisplayName: Rock Greaves
-	Tooltip: 6% increased movement speed
+	Tooltip:
+		'''
+		{0}% increased movement speed
+		'''
 }
 
 RockHelmet: {
 	DisplayName: Rock Helmet
 	Tooltip:
 		'''
-		6% increased melee critical strike chance
-		Full set builds up to 8 bonus defense as you move; taking damage resets the bonus
+		{0}% increased melee critical strike chance
+		Set bonus:
+		Gain 1 defense per {1} tiles of accumulated movement, up to {2}; resets when hurt
+		'''
+	SetBonus:
+		'''
+		Gain 1 defense per {1} tiles of accumulated movement, up to {2}; resets when hurt
 		'''
 }
 
 RockPlateMail: {
 	DisplayName: Rock Plate Mail
-	Tooltip: 7% increased melee damage
+	Tooltip:
+		'''
+		{0}% increased melee damage
+		'''
 }
 
 RuinLeggings: {
@@ -323,15 +389,23 @@ SafetyHelmets: {
 	DisplayName: Safety Helmet
 	Tooltip:
 		'''
-		2% increased damage
-		Full set grants 2 defense and slightly increased life regeneration
+		{0}% increased damage
+		Set bonus:
+		+{1} defense and +{2} life regeneration per second
 		'A mass-produced helmet, its materials aged by years in storage'
+		'''
+	SetBonus:
+		'''
+		+{1} defense and +{2} life regeneration per second
 		'''
 }
 
 ShadowlessBoots: {
 	DisplayName: Shadowless Boots
-	Tooltip: 7% increased movement speed
+	Tooltip:
+		'''
+		{0}% increased movement speed
+		'''
 }
 
 ShellMolluscsBreastPlate: {
@@ -349,22 +423,30 @@ StandardLeggings: {
 	DisplayName: Standard-Issue Boots
 	Tooltip:
 		'''
-		5% increased movement speed and slightly increased jump speed
+		{0}% increased movement speed and +{1} pixels/tick jump speed
 		'Only two sizes available; neither seems to fit everyone'
 		'''
 }
 
 TwilightWoodBreastplate: {
 	DisplayName: Twilight Eucalyptus Breastplate
-	Tooltip: Increases maximum life by 20
+	Tooltip:
+		'''
+		+{0} maximum life
+		'''
 }
 
 TwilightWoodHelmet: {
 	DisplayName: Twilight Eucalyptus Helmet
 	Tooltip:
 		'''
-		9% increased ranged damage and 4% increased ranged critical strike chance
-		Full set grants an additional 3% ranged damage and critical strike chance, and a 20% chance not to consume ammo
+		{0}% increased ranged damage and {1}% increased ranged critical strike chance
+		Set bonus:
+		{2}% additional ranged damage, {3}% additional ranged critical strike chance and a {4}% chance not to consume ammo
+		'''
+	SetBonus:
+		'''
+		{2}% additional ranged damage, {3}% additional ranged critical strike chance and a {4}% chance not to consume ammo
 		'''
 }
 
@@ -372,8 +454,8 @@ TwilightWoodLeggings: {
 	DisplayName: Twilight Eucalyptus Boots
 	Tooltip:
 		'''
-		6% increased movement speed and slightly increased jump speed
-		Leaves a trail of cyan light as you walk
+		{0}% increased movement speed and +{1} pixels/tick jump speed
+		Leaves cyan trails while walking
 		'''
 }
 
@@ -381,7 +463,7 @@ ValiantBreastplate: {
 	DisplayName: Braver's Breastplate
 	Tooltip:
 		'''
-		4% increased melee critical strike chance
+		{0}% increased melee critical strike chance
 		'Often the first reward earned by newcomers to Yggdrasil Town'
 		'''
 }
@@ -390,8 +472,17 @@ ValiantHelmet: {
 	DisplayName: Braver's Helmet
 	Tooltip:
 		'''
-		5% increased true melee damage
+		{0}% increased damage from direct item hits
+		{0}% increased projectile hit damage while using a held melee projectile
+		Set bonus:
+		-{1} aggro and +{2} defense
+		Current implementation adds {3} percentage points to damage reduction
 		'Often the first reward earned by newcomers to Yggdrasil Town'
+		'''
+	SetBonus:
+		'''
+		-{1} aggro and +{2} defense
+		Current implementation adds {3} percentage points to damage reduction
 		'''
 }
 
@@ -399,7 +490,7 @@ ValiantLeggings: {
 	DisplayName: Braver's Greaves
 	Tooltip:
 		'''
-		5% increased melee attack speed
+		{0}% increased melee attack speed
 		'Often the first reward earned by newcomers to Yggdrasil Town'
 		'''
 }

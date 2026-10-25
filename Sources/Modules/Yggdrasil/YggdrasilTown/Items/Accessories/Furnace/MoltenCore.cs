@@ -1,10 +1,13 @@
 using Terraria.DataStructures;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories.Furnace;
 
 public class MoltenCore : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(DamageReduction, DefenseBonus, CritBonus, DamageBonus, MoveSpeedBonus, JumpSpeedBonus / 100f);
 
 	private const float OnePercent = 1f;
 	private const int DamageReduction = 5;

@@ -1,8 +1,12 @@
+using Terraria.Localization;
+
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
 
 public class BloodTearCrystalCrown : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(30, 75, 0.5f);
 
 	public override void SetDefaults()
 	{

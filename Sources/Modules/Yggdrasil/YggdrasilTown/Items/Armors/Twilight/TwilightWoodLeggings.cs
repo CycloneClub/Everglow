@@ -2,6 +2,7 @@ using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 using Everglow.Yggdrasil.WorldGeneration;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Twilight;
 
@@ -9,6 +10,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Twilight;
 public class TwilightWoodLeggings : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(MoveSpeedBonus, JumpSpeedBonus / 100f);
 
 	public const int MoveSpeedBonus = 6;
 	public const int JumpSpeedBonus = 5;

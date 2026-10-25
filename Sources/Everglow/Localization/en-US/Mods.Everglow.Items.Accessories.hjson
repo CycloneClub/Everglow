@@ -1,6 +1,10 @@
 AnemoShell: {
 	DisplayName: Anemo Shell
-	Tooltip: ""
+	Tooltip:
+		'''
+		Bounces you upward before a damaging fall to prevent the fall damage
+		{0}-second cooldown
+		'''
 }
 
 AntiCorrosiveSole: {
@@ -19,7 +23,11 @@ BloodGlucoseMonitor: {
 
 BloodTearCrystalCrown: {
 	DisplayName: Blood Tear Crystal Crown
-	Tooltip: ""
+	Tooltip:
+		'''
+		+{0} maximum life
+		+{2} life regeneration per second while life is above {1}% of base maximum life
+		'''
 }
 
 BlueflowerBra: {
@@ -49,17 +57,30 @@ BurningFrozenHeart: {
 
 CelesteStoneWaistPendant: {
 	DisplayName: Celeste Stone Waist Pendant
-	Tooltip: ""
+	Tooltip:
+		'''
+		+{0} maximum mana
+		Adds {3} mana regeneration points while mana is above {1}% and below {2}% of base maximum mana
+		Vanilla regeneration updates overwrite this parameter; it currently provides no regeneration benefit
+		'''
 }
 
 CelticSeal: {
 	DisplayName: Celtic Seal
-	Tooltip: ""
+	Tooltip:
+		'''
+		Restore {2} life after every {1} enemy contact or projectile hits dealing at least {0} damage each
+		'''
 }
 
 ConcealSpell: {
 	DisplayName: Conceal Spell
-	Tooltip: ""
+	Tooltip:
+		'''
+		Charges {1} energy per second while stationary or {2} while moving
+		At {0} energy, dodge the next hit, consume all energy and gain {3} seconds of immunity
+		Gradually becomes invisible near full energy
+		'''
 }
 
 CorrodedPearl: {
@@ -94,7 +115,11 @@ CyanPedal: {
 
 CyanVineRing: {
 	DisplayName: Cyan Vine Ring
-	Tooltip: ""
+	Tooltip:
+		'''
+		{0}% increased critical strike chance
+		Hitting a target within {1} seconds of being hurt grants another {2}% critical strike chance for {3} seconds
+		'''
 }
 
 DarkHat: {
@@ -135,25 +160,37 @@ ForsakenBoots: {
 	DisplayName: Forsaken Boots
 	Tooltip:
 		'''
-		5% increased movement speed
-		Allows the wearer to run fast
+		{0}% increased movement speed
+		Allows sprinting with a base sprint speed cap of {1} pixels/tick
 		'Race against time'
 		'''
 }
 
 FragmentsOfWreckage: {
 	DisplayName: Fragments Of Wreckage
-	Tooltip: "Gain bonuses as life is lost, reaching the maximum at 120 missing life: 6% melee speed, 6% damage, 8 defense and 10% mining speed"
+	Tooltip:
+		'''
+		Bonuses scale linearly with missing life, reaching their cap at {0} missing life
+		Up to {1}% increased damage, {2}% increased melee attack speed and +{3} defense
+		Reduces the mining interval modifier by up to {4} percentage points
+		'''
 }
 
 FuneraryGoods: {
 	DisplayName: Funerary Goods
-	Tooltip: ""
+	Tooltip:
+		'''
+		Killing an enemy has a {0}% chance to restore {1} mana immediately
+		'''
 }
 
 FurnaceIronGloves: {
 	DisplayName: Furnace Iron Gloves
-	Tooltip: ""
+	Tooltip:
+		'''
+		Configured effect: magic hits build up Burn equal to {0}% of damage dealt
+		This effect is currently not enabled by equipping the item; it provides no bonus
+		'''
 }
 
 GoldLiquidPupil: {
@@ -194,14 +231,18 @@ HeatEmblem: {
 	DisplayName: Heat Emblem
 	Tooltip:
 		'''
-		Increases life regeneration by 2 life per second
-		Taking damage has a 20% chance to set you on fire for 3 seconds
+		+{0} life regeneration per second
+		Being hurt has a {1}% chance to inflict On Fire! on you for {2} seconds
 		'''
 }
 
 HotAirBalloon: {
 	DisplayName: Hot Air Balloon
-	Tooltip: Increases jump height and leaves a trail of fire
+	Tooltip:
+		'''
+		Grants the vanilla balloon jump-height boost and another {0} pixels/tick of jump speed
+		Emits light and leaves a fiery trail
+		'''
 }
 
 HotPinkCrown: {
@@ -210,13 +251,30 @@ HotPinkCrown: {
 }
 
 IstafelsSunfireGrasp: {
+	RarityLabel: Legendary
 	DisplayName: Istafels Sunfire Grasp
-	Tooltip: ""
+	Tooltip:
+		'''
+		{0}% increased magic damage and {1}% increased magic critical strike chance
+		Magic hits build up Burn equal to {2}% of damage dealt
+		With no fireball cooldown, magic hits create floating slag and add one-third of damage dealt as charge, rounded down per hit
+		Every 2 seconds, floating slag fires a 50-base-damage homing fireball at a visible target within 125 tiles
+		Charge above {3} launches the slag and starts a {4}-second fireball cooldown
+		Slag and scoria contact hits add {5} flat final damage and inflict Charred for {6} seconds
+		Slag hits create a 200-base-damage explosion and 8–9 pieces of scoria
+		Charred: {7} life lost per second and {8}% reduced defense
+		Press the accessory skill key to apply the remaining damage of flame debuffs and Charred on enemies within {9} tiles
+		For {10} seconds afterward, deal {11}% increased final damage to enemies with those flame debuffs; {12}-second skill cooldown
+		'''
 }
 
 JellyBallInhibitor: {
 	DisplayName: Jelly Ball Inhibitor
-	Tooltip: ""
+	Tooltip:
+		'''
+		{0}% increased final damage against Jelly Balls, Giant Jelly Balls and King Jelly Ball
+		{1}% reduced contact damage from those enemies
+		'''
 }
 
 JungleVitamin: {
@@ -226,7 +284,10 @@ JungleVitamin: {
 
 LampWoodPollenBottle: {
 	DisplayName: Lamp Wood Pollen Bottle
-	Tooltip: ""
+	Tooltip:
+		'''
+		Grants {0} additional midair jumps; stacks with other types of extra jump
+		'''
 }
 
 LightPurplePen: {
@@ -241,7 +302,11 @@ LivingWoodplate: {
 
 ManaThermalPipeline: {
 	DisplayName: Mana Thermal Pipeline
-	Tooltip: ""
+	Tooltip:
+		'''
+		{0}% increased magic damage
+		Adds {1} mana regeneration points; vanilla regeneration updates overwrite this parameter, so it currently provides no regeneration benefit
+		'''
 }
 
 ManyWhiteFlower: {
@@ -253,10 +318,9 @@ MelterGear: {
 	DisplayName: Melter Gear
 	Tooltip:
 		'''
-		6% increased ranged attack speed and 3 defense
-		Hits have a 25% chance to set enemies on fire for 4 seconds
-		Hitting a burning enemy has a 20% chance to set you on fire for 4 seconds
-		The effect on the wearer has a 12-second cooldown
+		{0}% increased ranged attack speed and +{1} defense
+		Hits have a {2}% chance to inflict On Fire! for {3} seconds
+		Hitting an already burning enemy has a {4}% chance to set you on fire for {3} seconds; self-ignition has a {5}-second cooldown
 		'''
 }
 
@@ -264,9 +328,10 @@ MoltenCore: {
 	DisplayName: Molten Core
 	Tooltip:
 		'''
-		While afflicted with On Fire!, Hellfire, or Cursed Inferno:
-		Reduces remaining damage taken by 5% and grants 5 defense
-		Increases damage, critical strike chance, and movement speed by 5%, and slightly increases jump speed
+		While affected by On Fire!, Hellfire or Cursed Inferno:
+		Reduces remaining damage by {0}% and grants +{1} defense
+		{2}% increased critical strike chance, {3}% increased damage and {4}% increased movement speed
+		+{5} pixels/tick jump speed
 		'''
 }
 
@@ -341,7 +406,10 @@ RadialCarapace: {
 
 RecoveryBand: {
 	DisplayName: Recovery Band
-	Tooltip: ""
+	Tooltip:
+		'''
+		Taking at least {0} damage in one hit restores {1} life and {2} mana
+		'''
 }
 
 RedGel: {
@@ -356,12 +424,22 @@ RedTriangle: {
 
 RingOfMatter: {
 	DisplayName: Ring Of Matter
-	Tooltip: ""
+	Tooltip:
+		'''
+		Uses gold and platinum coins in your inventory when equipped, gaining one tier per {0} gold
+		Each tier grants 1% damage and 1% defense but reduces maximum life by 1.5%
+		Up to {1} tiers: +{1}% damage and defense, -{2}% maximum life
+		'''
 }
 
 ShacklesBall: {
 	DisplayName: Shackles Ball
-	Tooltip: ""
+	Tooltip:
+		'''
+		+{0} percentage points of damage reduction, {1}% reduced movement speed
+		Jump speed reduced by {2}% of its base value; remaining jump duration reduced by {3}%
+		Immune to Slow
+		'''
 }
 
 SilverCupFlower: {
@@ -376,7 +454,11 @@ SilverWing: {
 
 SkullCollection: {
 	DisplayName: Skull Collection
-	Tooltip: ""
+	Tooltip:
+		'''
+		While a non-friendly NPC is within {0} tiles, gain {1} mana regeneration points
+		Also grants the Mana Regeneration buff for {2} seconds; {3}-second trigger cooldown, ticking only while equipped
+		'''
 }
 
 SnowPineLockBox: {
@@ -386,7 +468,11 @@ SnowPineLockBox: {
 
 SpikedParma: {
 	DisplayName: Spicy Shield
-	Tooltip: ""
+	Tooltip:
+		'''
+		+{0} defense and {1}% increased damage
+		Grants the Thorns buff for {2} seconds after being hurt
+		'''
 }
 
 StaminaItem: {
@@ -396,12 +482,22 @@ StaminaItem: {
 
 TelescopicPlatformAlpha: {
 	DisplayName: Telescopic Platform Alpha
-	Tooltip: ""
+	Tooltip:
+		'''
+		On flat ground, press Up to rise, Down to descend, and release to hover
+		Maximum height: {0} tiles; vertical speed: {1} tiles/second; prevents fall damage while active
+		Jump or Quick Mount retracts it; cannot deploy while mounted or under Gravitation
+		'''
 }
 
 TelescopicPlatformBeta: {
 	DisplayName: Telescopic Platform Beta
-	Tooltip: ""
+	Tooltip:
+		'''
+		On flat ground, press Up to rise, Down to descend, and release to hover
+		Maximum height: {0} tiles; vertical speed: {1} tiles/second; prevents fall damage while active
+		Jump or Quick Mount retracts it; cannot deploy while mounted or under Gravitation
+		'''
 }
 
 TheGreenSolar: {
@@ -419,8 +515,8 @@ ThermalConductor: {
 	DisplayName: Thermal Conductor
 	Tooltip:
 		'''
-		Increases maximum mana by 40 and mana cost by 8%
-		While below 20% mana, each second has a 25% chance to restore 36 mana and inflict Cursed Inferno for 2 seconds
+		+{0} maximum mana and +{1} percentage points to the mana cost modifier
+		While below {2}% maximum mana, checks every {3} seconds for a {4}% chance to restore {5} mana and inflict Cursed Inferno on you for {6} seconds
 		'''
 }
 

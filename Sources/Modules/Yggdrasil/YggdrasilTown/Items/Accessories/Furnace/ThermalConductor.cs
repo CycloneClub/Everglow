@@ -1,8 +1,12 @@
+using Terraria.Localization;
+
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories.Furnace;
 
 public class ThermalConductor : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(40, 8, StatusTriggerCondition * 100f, EffectCheckFrameCount / 60f, StatusTriggerRate * 100f, ManaHeal, DebuffDuration / 60f);
 
 	public const int EffectCheckFrameCount = 60;
 	public const float StatusTriggerCondition = 0.2f;

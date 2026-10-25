@@ -1,10 +1,13 @@
 using Everglow.Yggdrasil.YggdrasilTown.Buffs;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
 
 public class CyanVineRing : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(3, 1.5f, 5, BuffDuration / 60f);
 
 	public const int BuffDuration = 600;
 

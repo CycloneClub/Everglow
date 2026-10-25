@@ -1,8 +1,12 @@
+using Terraria.Localization;
+
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
 
 public class RecoveryBand : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(EffectTriggerDamageMin, LifeRecovery, ManaRecovery);
 
 	public const int EffectTriggerDamageMin = 12;
 	public const int LifeRecovery = 5;

@@ -1,6 +1,7 @@
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 using Terraria.GameContent.Creative;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Auburn;
 
@@ -8,6 +9,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Auburn;
 public class AuburnBoots : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(6);
 
 	public override void SetStaticDefaults()
 	{

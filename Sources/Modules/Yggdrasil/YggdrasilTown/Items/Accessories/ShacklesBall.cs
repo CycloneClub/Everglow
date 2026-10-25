@@ -1,8 +1,12 @@
+using Terraria.Localization;
+
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
 
 public class ShacklesBall : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(EnduranceBonus * 100f, MoveSpeedReduction * 100f, JumpSpeedReduction * 100f, JumpHeightReduction * 100f);
 
 	public const float EnduranceBonus = 0.08f;
 	public const float MoveSpeedReduction = 0.1f;

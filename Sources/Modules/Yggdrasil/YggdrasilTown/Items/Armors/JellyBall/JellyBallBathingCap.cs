@@ -1,4 +1,5 @@
 using Terraria.GameContent.Creative;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.JellyBall;
 
@@ -6,6 +7,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.JellyBall;
 public class JellyBallBathingCap : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(3, 1, EffectTriggerChance * 100f, DamageReduction * 100f);
 
 	public const float EffectTriggerChance = 0.1f;
 	public const float DamageReduction = 0.35f;

@@ -1,3 +1,5 @@
+using Terraria.Localization;
+
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
 
 /// <summary>
@@ -6,6 +8,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
 public class CelticSeal : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(10, 3, 15);
 
 	public override void SetDefaults()
 	{

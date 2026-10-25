@@ -1,4 +1,5 @@
 using Terraria.GameContent.Creative;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Valiant;
 
@@ -6,6 +7,10 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Valiant;
 public class ValiantHelmet : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(5, 400, 2, 400);
+
+	public LocalizedText SetBonusText => this.GetLocalization("SetBonus").WithFormatArgs(5, 400, 2, 400);
 
 	public override void SetStaticDefaults()
 	{
@@ -28,6 +33,7 @@ public class ValiantHelmet : ModItem
 
 	public override void UpdateArmorSet(Player player)
 	{
+		player.setBonus = SetBonusText.Value;
 		player.aggro -= 400;
 		player.statDefense += 2;
 		player.endurance += 4f;

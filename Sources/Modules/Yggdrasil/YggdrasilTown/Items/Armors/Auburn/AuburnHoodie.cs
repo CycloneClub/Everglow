@@ -5,6 +5,7 @@ using Everglow.Yggdrasil.YggdrasilTown.Cooldowns;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 using Terraria.GameContent.Creative;
 using Terraria.GameInput;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Auburn;
 
@@ -12,6 +13,10 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Auburn;
 public class AuburnHoodie : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(10, 1, BuffDuration / 60f, BuffCooldown / 60f, 1);
+
+	public LocalizedText SetBonusText => this.GetLocalization("SetBonus").WithFormatArgs(10, 1, BuffDuration / 60f, BuffCooldown / 60f, 1);
 
 	public const int BuffDuration = 30 * 60;
 	public const int BuffCooldown = 60 * 60;
@@ -42,6 +47,7 @@ public class AuburnHoodie : ModItem
 
 	public override void UpdateArmorSet(Player player)
 	{
+		player.setBonus = SetBonusText.Value;
 		player.maxMinions += 1;
 		player.GetModPlayer<YggdrasilPlayer>().auburnSet = true;
 	}

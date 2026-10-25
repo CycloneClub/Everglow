@@ -8,7 +8,7 @@ public class StandardLeggings : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(3);
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(5, 0.05f);
 
 	public override void SetStaticDefaults()
 	{

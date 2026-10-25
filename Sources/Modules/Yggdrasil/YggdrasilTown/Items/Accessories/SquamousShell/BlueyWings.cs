@@ -1,5 +1,6 @@
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Terraria.DataStructures;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories.SquamousShell;
 
@@ -7,6 +8,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories.SquamousShell;
 public class BlueyWings : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Wings;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(90 / 60f, 5.5f, 1.35f);
 
 	public override void SetStaticDefaults()
 	{
