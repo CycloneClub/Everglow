@@ -14,7 +14,7 @@ public class TwilightShamanStaff : ModItem
 
 		Item.DamageType = DamageClass.Magic;
 		Item.damage = 30;
-		Item.mana = 10;
+		Item.mana = 8;
 		Item.knockBack = 0.4f;
 		Item.crit = 4;
 
