@@ -328,8 +328,19 @@ public class SpawnContentTests
 				int rate = 600;
 				int capacity = 8;
 				hook.EditSpawnRate(player, ref rate, ref capacity);
-				Assert.AreEqual(inside ? 0 : 8, capacity, $"Town player at ({x}, {y}).");
-				Assert.AreEqual(inside ? int.MaxValue : 600, rate);
+				Assert.AreEqual(inside ? 0 : 9, capacity, $"Town player at ({x}, {y}).");
+				Assert.AreEqual(inside ? int.MaxValue : 120, rate);
+			}
+
+			// 旧椭圆区域以及不同深度的野外都采用相同节奏，不读取原版地表判定。
+			foreach (var tilePosition in new[] { new Vector2(600, 11630), new Vector2(750, 11630), new Vector2(900, 11630), new Vector2(1500, 17000) })
+			{
+				player.Center = tilePosition * 16f;
+				int rate = 1800;
+				int capacity = 3;
+				hook.EditSpawnRate(player, ref rate, ref capacity);
+				Assert.AreEqual(120, rate, $"Wilderness at {tilePosition}.");
+				Assert.AreEqual(9, capacity);
 			}
 
 			// 更换唯一中心后，边界和刷怪规则都应立即跟随，不读取另一份私有缓存。
@@ -346,7 +357,7 @@ public class SpawnContentTests
 			relocatedRate = 600;
 			relocatedCapacity = 8;
 			hook.EditSpawnRate(player, ref relocatedRate, ref relocatedCapacity);
-			Assert.AreEqual(8, relocatedCapacity, "The old center must no longer remain a safe area.");
+			Assert.AreEqual(9, relocatedCapacity, "The old center must no longer remain a safe area.");
 
 			// 专服不经过客户端 OnEnter/群落绘制；OnLoad 自身必须刷新旧的城镇中心缓存。
 			Main.netMode = Terraria.ID.NetmodeID.Server;
