@@ -6,9 +6,9 @@ name: .NET Build and Test
 on:
   workflow_dispatch:
   push:
-    branches: [ "1.4.4", "Yggdrasil/newContent0"]
+    branches: [ "1.4.4"]
   pull_request:
-    branches: [ "1.4.4", "Yggdrasil/newContent0"]
+    branches: [ "1.4.4"]
 
 permissions:
   contents: read
