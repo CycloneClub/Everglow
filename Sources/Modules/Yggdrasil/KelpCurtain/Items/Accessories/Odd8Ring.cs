@@ -1,6 +1,6 @@
 using static Terraria.NPC;
 
-namespace Everglow.Myth.Misc.Items.Accessories;
+namespace Everglow.Yggdrasil.KelpCurtain.Items.Accessories;
 
 public class Odd8Ring : ModItem
 {

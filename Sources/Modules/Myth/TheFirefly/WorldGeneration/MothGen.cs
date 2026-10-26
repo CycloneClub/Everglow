@@ -282,6 +282,18 @@ public class MothLand : ModSystem
 				RandomUpdate(x, y, ModContent.TileType<DarkCocoon>());
 			}
 		}
+		PlaceDarkFlowers();
+	}
+
+	private static void PlaceDarkFlowers()
+	{
+		for (int x = 20; x < Main.maxTilesX - 20; x++)
+		{
+			for (int y = 20; y < Main.maxTilesY - 20; y++)
+			{
+				DarkFlowerPlant.TryGrow(x, y);
+			}
+		}
 	}
 
 	public static void BuildWorldMothCave()

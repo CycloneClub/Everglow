@@ -53,6 +53,10 @@ public class TuskTreasureBag : ModItem
 				player.QuickSpawnItem(null, ModContent.ItemType<ToothBow>(), 1);
 				break;
 		}
+		if (player.RollLuck(5) == 0)
+		{
+			player.QuickSpawnItem(null, ModContent.ItemType<TuskMirror>(), 1);
+		}
 		player.QuickSpawnItem(null, ItemID.GoldCoin, 15);
 		base.RightClick(player);
 	}

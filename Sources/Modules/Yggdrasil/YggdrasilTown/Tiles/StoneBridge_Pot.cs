@@ -47,7 +47,6 @@ public class StoneBridge_Pot : ModTile
 			int type = reward.RewardIndex switch
 			{
 				0 => ModContent.ItemType<RuinTorch_Item>(),
-				1 => ModContent.ItemType<Caltrop>(),
 				_ => ModContent.ItemType<StoneJavelin>(),
 			};
 			Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, type, reward.Stack);
@@ -68,7 +67,7 @@ public class StoneBridge_Pot : ModTile
 		{
 			return null;
 		}
-		return (random.Next(3), random.Next(16, 33));
+		return (random.Next(2), random.Next(16, 33));
 	}
 
 	private static void DropVanillaSupplies(int i, int j)

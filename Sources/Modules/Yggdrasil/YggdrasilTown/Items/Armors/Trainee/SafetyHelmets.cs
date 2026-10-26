@@ -37,12 +37,4 @@ public class SafetyHelmets : ModItem
 	{
 		player.GetDamage(DamageClass.Generic) += 0.02f;
 	}
-
-	public override void AddRecipes()
-	{
-		Recipe recipe = CreateRecipe();
-
-		recipe.AddTile(TileID.WorkBenches);
-		recipe.Register();
-	}
 }

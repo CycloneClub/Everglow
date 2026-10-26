@@ -3,7 +3,8 @@ function Assert-ModLoadResult {
 	param(
 		[AllowEmptyString()][string]$LogText,
 		[int]$ExitCode,
-		[bool]$TimedOut
+		[bool]$TimedOut,
+		[switch]$RequireAssetAudit
 	)
 	if ($TimedOut) { throw 'tModLoader load timed out.' }
 	if ($ExitCode -ne 0) { throw "tModLoader exited with code $ExitCode." }
@@ -17,5 +18,8 @@ function Assert-ModLoadResult {
 	}
 	if ($LogText -notmatch '\[tML\]: Mod Load Completed in \d+ms') {
 		throw 'tModLoader did not complete mod loading.'
+	}
+	if ($RequireAssetAudit -and $LogText -notmatch '\[CiAssetAudit\]: Asset audit passed: Everglow; content=[1-9]\d*; equipment=[1-9]\d*\.') {
+		throw 'Missing evidence that the content and equipment texture audit completed.'
 	}
 }

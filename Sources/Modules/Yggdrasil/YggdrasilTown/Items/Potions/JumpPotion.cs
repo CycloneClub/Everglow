@@ -9,8 +9,6 @@ public class JumpPotion : ModItem
 {
 	public override string LocalizationCategory => LocalizationUtils.Categories.Potions;
 
-	public override string Texture => Commons.ModAsset.White_Mod;
-
 	public override void SetStaticDefaults()
 	{
 		Item.ResearchUnlockCount = 20;

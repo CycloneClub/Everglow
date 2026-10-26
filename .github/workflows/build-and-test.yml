@@ -83,7 +83,9 @@ jobs:
 
     - name: Test load result checks
       shell: pwsh
-      run: ./.github/workflows/scripts/Test-ModLoadResult.Tests.ps1
+      run: |
+        ./.github/workflows/scripts/Test-ModLoadResult.Tests.ps1
+        ./.github/workflows/scripts/Test-TexturePathCheck.Tests.ps1
 
     - name: Download runtime mod dependencies
       shell: pwsh
@@ -136,9 +138,47 @@ jobs:
           ${{ runner.temp }}/steamcmd/download*.log
           ${{ runner.temp }}/steamcmd/bootstrap*.log
 
+  asset-test:
+    name: Packaged content and equipment textures
+    needs: build-and-test
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v6
+    - name: Setup .NET 8.0
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+    - name: Download shared load test inputs
+      uses: actions/download-artifact@v4
+      with:
+        name: tmodloader-load-inputs
+        path: ${{ runner.temp }}/tml-load-inputs
+    - name: Check packaged texture references
+      shell: pwsh
+      run: |
+        Expand-Archive -LiteralPath "$env:RUNNER_TEMP/tml-load-inputs/tModLoader.zip" -DestinationPath "$env:RUNNER_TEMP/tmod"
+        ./.github/workflows/scripts/Test-TModLoaderLoad.ps1 `
+          -TmlDirectory "$env:RUNNER_TEMP/tmod" `
+          -ModFile "$env:RUNNER_TEMP/tml-load-inputs/Everglow.tmod" `
+          -WorkshopDirectory "$env:RUNNER_TEMP/tml-load-inputs/workshop" `
+          -RunDirectory "$env:RUNNER_TEMP/tml-asset-test" `
+          -AuditAssets -TimeoutSeconds 300
+    - name: Upload asset audit logs
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: tmodloader-asset-audit-logs
+        if-no-files-found: warn
+        path: |
+          ${{ runner.temp }}/tml-asset-test/*.log
+          ${{ runner.temp }}/tml-asset-test/game/tModLoader-Logs/server*.log
+          ${{ runner.temp }}/tml-asset-test/mod-sha256.txt
+
   load-test:
     name: Server load (${{ matrix.platform }})
-    needs: build-and-test
+    needs: asset-test
     runs-on: ${{ matrix.runner }}
     container: ${{ matrix.container || '' }}
     strategy:
@@ -233,7 +273,7 @@ jobs:
         if-no-files-found: warn
         path: |
           ${{ runner.temp }}/tml-load-test/server.log
-          ${{ runner.temp }}/tml-load-test/runtime/tModLoader-Logs/server*.log
+          ${{ runner.temp }}/tml-load-test/game/tModLoader-Logs/server*.log
           ${{ runner.temp }}/tml-load-test/stdout.log
           ${{ runner.temp }}/tml-load-test/stderr.log
           ${{ runner.temp }}/tml-load-test/mod-sha256.txt

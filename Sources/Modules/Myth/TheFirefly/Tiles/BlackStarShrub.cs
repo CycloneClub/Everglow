@@ -30,11 +30,18 @@ public class BlackStarShrub : ModTile, ITileFluentlyDrawn
 			20,
 		};
 		TileObjectData.newTile.CoordinateWidth = 72;
+		// Existing world frames use 16-pixel rows and 72-pixel styles without padding.
+		TileObjectData.newTile.CoordinatePadding = 0;
 		TileObjectData.addTile(Type);
 		DustType = DustID.SpookyWood;
 		var modTranslation = CreateMapEntryName();
 		AddMapEntry(new Color(84, 172, 255), modTranslation);
 		HitSound = SoundID.Grass;
+	}
+
+	public override IEnumerable<Item> GetItemDrops(int i, int j)
+	{
+		yield return new Item(ModContent.ItemType<Items.Materials.BlackStarShrub>(), Main.rand.Next(2, 4));
 	}
 
 	public override void NumDust(int i, int j, bool fail, ref int num)

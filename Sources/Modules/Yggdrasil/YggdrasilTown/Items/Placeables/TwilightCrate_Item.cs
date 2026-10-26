@@ -49,7 +49,6 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Placeables
 			{
 				ModContent.ItemType<RecoveryBand>(),
 				ModContent.ItemType<LampWoodSeed>(),
-				ModContent.ItemType<TwilightCrystalMill_Item>(),
 				ModContent.ItemType<GlowstickLauncher>(),
 				ModContent.ItemType<HexaCrystalStaff>(),
 				ModContent.ItemType<MidwinterNightmare>(),
@@ -57,6 +56,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Placeables
 				ModContent.ItemType<TwilightRod>(),
 			};
 			itemLoot.Add(ItemDropRule.OneFromOptionsNotScalingWithLuck(1, themedDrops));
+			itemLoot.Add(ItemDropRule.NotScalingWithLuck(ModContent.ItemType<TwilightCrystalMill_Item>(), 5));
 			itemLoot.Add(ItemDropRule.Common(ItemID.GoldCoin, 4, 5, 13));
 			IItemDropRule[] oreTypes = new IItemDropRule[]
 			{

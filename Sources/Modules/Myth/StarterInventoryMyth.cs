@@ -14,7 +14,7 @@ public class StarterInventoryMyth : ModPlayer
 		//        new Item(ItemID.HealingPotion)
 		//    };
 		// }
-		if (Main.LocalPlayer.name.Equals("Omnielement", StringComparison.OrdinalIgnoreCase) || Main.LocalPlayer.name.Equals("万象元素", StringComparison.OrdinalIgnoreCase))
+		if (Player.whoAmI == Main.myPlayer && (Player.name.Equals("Omnielement", StringComparison.OrdinalIgnoreCase) || Player.name.Equals("万象元素", StringComparison.OrdinalIgnoreCase)))
 		{
 			return new[]
 			{

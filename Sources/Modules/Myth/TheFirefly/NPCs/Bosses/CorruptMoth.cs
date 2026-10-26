@@ -1,5 +1,6 @@
 using Everglow.Commons.FeatureFlags;
 using Everglow.Myth.Common;
+using Everglow.Myth.OmniElementItems.Vanities;
 using Everglow.Myth.TheFirefly.Dusts;
 using Everglow.Myth.TheFirefly.Items.BossDrops;
 using Everglow.Myth.TheFirefly.Items.Weapons;
@@ -1417,28 +1418,14 @@ public class CorruptMoth : ModNPC
 	{
 		npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<CorruptMothTreasureBag>()));
 		npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<MothRelic>()));
-		npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<DarknessFan>(), 100, 1, 1, 1)); // Classic Darkness Fan
-		if (Main.expertMode && !Main.masterMode)
-		{
-			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<DarknessFan>(), 25, 1, 1, 1)); // Expert Darkness Fan
-		}
-		else if (Main.masterMode)
-		{
-			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<DarknessFan>(), 10, 1, 1, 1)); // Master Darkness Fan
-		}
-
-		npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<Items.Weapons.GlowBeadGun>(), 80, 1, 1, 1)); // Classic Bead Gun
-		if (Main.expertMode)
-		{
-			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<Items.Weapons.GlowBeadGun>(), 20, 1, 1, 1)); // Expert Bead Gun
-		}
-		else if (Main.masterMode)
-		{
-			npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsMasterMode(), ModContent.ItemType<Items.Weapons.GlowBeadGun>(), 8, 1, 1, 1)); // Master Bead Gun
-		}
 
 		var rule = new LeadingConditionRule(new Conditions.NotExpert());
-		rule.OnSuccess(ItemDropRule.OneFromOptions(1, ModContent.ItemType<Items.Weapons.ShadowWingBow>(), ModContent.ItemType<ScaleWingBlade>(), ModContent.ItemType<Items.Weapons.PhosphorescenceGun>(), ModContent.ItemType<Items.Weapons.EvilChrysalis>(), ModContent.ItemType<DustOfCorrupt>(), ModContent.ItemType<MothYoyo>(), ModContent.ItemType<Items.Weapons.DreamWeaver>(), ModContent.ItemType<Items.Weapons.GlowBeadGun>(), ModContent.ItemType<Items.Weapons.FlowLightMissile>()));
+		var blueflowerSet = ItemDropRule.Common(ModContent.ItemType<BlueflowerCap>(), 20);
+		blueflowerSet.OnSuccess(ItemDropRule.Common(ModContent.ItemType<BlueflowerBra>()));
+		blueflowerSet.OnSuccess(ItemDropRule.Common(ModContent.ItemType<BlueflowerDress>()));
+		rule.OnSuccess(blueflowerSet);
+		rule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<DarknessFan>(), 100));
+		rule.OnSuccess(ItemDropRule.OneFromOptions(1, ModContent.ItemType<Items.Weapons.ShadowWingBow>(), ModContent.ItemType<ScaleWingBlade>(), ModContent.ItemType<Items.Weapons.PhosphorescenceGun>(), ModContent.ItemType<Items.Weapons.EvilChrysalis>(), ModContent.ItemType<DustOfCorrupt>(), ModContent.ItemType<MothYoyo>(), ModContent.ItemType<Items.Weapons.DreamWeaver>(), ModContent.ItemType<Items.Weapons.GlowBeadGun>(), ModContent.ItemType<Items.Weapons.FlowLightMissile>(), ModContent.ItemType<Items.Weapons.NavyThunder>()));
 
 		npcLoot.Add(rule);
 
