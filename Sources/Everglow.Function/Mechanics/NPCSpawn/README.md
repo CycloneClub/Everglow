@@ -16,12 +16,12 @@
 
 ## 2. 现有规则表
 
-目前只注册了天穹树世界，共 52 条规则，覆盖 45 种 NPC：
+目前只注册了天穹树世界，共 57 条规则，覆盖 50 种 NPC：
 
 | 规则表 | 数量 | 内容 |
 | --- | ---: | --- |
 | [KelpCurtainSpawnTable](../../../Modules/Yggdrasil/KelpCurtain/NPCSpawn/KelpCurtainSpawnTable.cs) | 30 | 苍苔帘幕陆地、水中、水底、浅水和深水候选；包含装甲虾 2～5 只群体及水黾水面条件 |
-| [YggdrasilTownSpawnTable](../../../Modules/Yggdrasil/YggdrasilTown/NPCSpawn/YggdrasilTownSpawnTable.cs) | 22 | 15 种 NPC，按森林白昼/夜晚、灯木特有、浅层/深层矿洞及球冻温床分组；缺失生物留注释占位 |
+| [YggdrasilTownSpawnTable](../../../Modules/Yggdrasil/YggdrasilTown/NPCSpawn/YggdrasilTownSpawnTable.cs) | 27 | 20 种 NPC，按灯木白昼/夜晚、暮光林地、森林稀有、浅层/深层矿洞及球冻温床分组 |
 
 两张表由 [YggdrasilSpawnRegistration](../../../Modules/Yggdrasil/Common/NPCSpawn/YggdrasilSpawnRegistration.cs) 在 `PostSetupContent` 注册。建筑范围 `TownArea`、晶塔车站和连接轨道内禁止普通自然刷怪；镇外候选和群体成员也不能生成到该范围内；其余位置统一使用野外节奏。
 

@@ -9,36 +9,35 @@ public static class YggdrasilTownSpawnTable
 {
 	public static void AddRules(List<SubworldSpawnRule> rules)
 	{
-		// 森林白昼：两片森林共享普通生物。紫色炮弹虫和伞尾贼按策划所在的白昼章节配置。
+		// 灯木白昼
 		rules.Add(new SubworldSpawnRule
 		{
 			Type = ModContent.NPCType<BarkSpicyCaterpillar>(),
-			SpawnChance = spawnInfo => Main.dayTime && InForest(spawnInfo) && SpawnConditions.OnGround(spawnInfo)
+			SpawnChance = spawnInfo => Main.dayTime && InLampWoodForest(spawnInfo) && SpawnConditions.OnGround(spawnInfo)
 				? 2f : 0f,
 		});
 
 		rules.Add(new SubworldSpawnRule
 		{
 			Type = ModContent.NPCType<LeafcutterAnt>(),
-			SpawnChance = spawnInfo => Main.dayTime && InForest(spawnInfo) && SpawnConditions.OnGround(spawnInfo)
+			SpawnChance = spawnInfo => Main.dayTime && InLampWoodForest(spawnInfo) && SpawnConditions.OnGround(spawnInfo)
 				? 1f : 0f,
 		});
 
 		rules.Add(new SubworldSpawnRule
 		{
 			Type = ModContent.NPCType<PurpleBombCaterpillar>(),
-			SpawnChance = spawnInfo => Main.dayTime && InForest(spawnInfo) && SpawnConditions.OnGround(spawnInfo)
+			SpawnChance = spawnInfo => Main.dayTime && InLampWoodForest(spawnInfo) && SpawnConditions.OnGround(spawnInfo)
 				? 6f : 0f,
 		});
 
 		rules.Add(new SubworldSpawnRule
 		{
 			Type = ModContent.NPCType<UmbrellaTailThief>(),
-			SpawnChance = spawnInfo => Main.dayTime && InForest(spawnInfo) && SpawnConditions.OnGround(spawnInfo)
+			SpawnChance = spawnInfo => Main.dayTime && InLampWoodForest(spawnInfo) && SpawnConditions.OnGround(spawnInfo)
 				? 6f : 0f,
 		});
 
-		// 灯木白昼：暮光以拟桉叶虫替代灯泡花苞。
 		rules.Add(new SubworldSpawnRule
 		{
 			Type = ModContent.NPCType<LightBulb>(),
@@ -46,7 +45,7 @@ public static class YggdrasilTownSpawnTable
 				? 3f : 0f,
 		});
 
-		// 灯果螟为现有内容，策划未单列；暂保留在灯木白昼，不扩散到矿洞。
+		// 灯木夜晚：夜行毛虫最常见，幽灵比飞棍常见，血月教徒稀有。
 		rules.Add(new SubworldSpawnRule
 		{
 			Type = ModContent.NPCType<LampFruitBorer>(),
@@ -54,37 +53,74 @@ public static class YggdrasilTownSpawnTable
 				? 2f : 0f,
 		});
 
-		// TODO：暮光白昼的拟桉叶虫 Euca Leafy，替代灯泡花苞，初始权重 3；当前分支尚无实现。
-		// TODO：旧时幻影（盾、矛、弓、铳、法师），待内容及晶体显化条件接入后添加暮光规则。
-		// TODO：晶胞虫与粉色史莱姆，待内容和生成条件明确；不以 NPCID 0 作为占位。
-
-		// 森林夜晚：夜行毛虫最常见，幽灵比飞棍常见，血月教徒无需血月事件。
 		rules.Add(new SubworldSpawnRule
 		{
 			Type = ModContent.NPCType<ShadowstrikeCaterpillar>(),
-			SpawnChance = spawnInfo => !Main.dayTime && InForest(spawnInfo) && SpawnConditions.OnGround(spawnInfo)
+			SpawnChance = spawnInfo => !Main.dayTime && InLampWoodForest(spawnInfo) && SpawnConditions.OnGround(spawnInfo)
 				? 2f : 0f,
 		});
 
 		rules.Add(new SubworldSpawnRule
 		{
 			Type = ModContent.NPCType<WhisperingGhost>(),
-			SpawnChance = spawnInfo => !Main.dayTime && InForest(spawnInfo)
+			SpawnChance = spawnInfo => !Main.dayTime && InLampWoodForest(spawnInfo)
 				? 1.5f : 0f,
 		});
 
 		rules.Add(new SubworldSpawnRule
 		{
 			Type = ModContent.NPCType<DarkGlimmeringRods>(),
-			SpawnChance = spawnInfo => !Main.dayTime && InForest(spawnInfo)
+			SpawnChance = spawnInfo => !Main.dayTime && InLampWoodForest(spawnInfo)
 				? 0.75f : 0f,
 		});
 
 		rules.Add(new SubworldSpawnRule
 		{
 			Type = ModContent.NPCType<CrimsonSpell>(),
-			SpawnChance = spawnInfo => !Main.dayTime && InForest(spawnInfo) && !NPC.AnyNPCs(ModContent.NPCType<CrimsonSpell>())
+			SpawnChance = spawnInfo => !Main.dayTime && InLampWoodForest(spawnInfo) && !NPC.AnyNPCs(ModContent.NPCType<CrimsonSpell>())
 				? 0.05f : 0f,
+		});
+
+		// 暮光林地：现有四种旧时幻影昼夜均可生成，暂用相同权重。
+		rules.Add(new SubworldSpawnRule
+		{
+			Type = ModContent.NPCType<AncientPhantom_Sheild>(),
+			SpawnChance = spawnInfo => InTwilightForest(spawnInfo) && SpawnConditions.OnGround(spawnInfo)
+				? 3f : 0f,
+		});
+
+		rules.Add(new SubworldSpawnRule
+		{
+			Type = ModContent.NPCType<AncientPhantom_Spear>(),
+			SpawnChance = spawnInfo => InTwilightForest(spawnInfo) && SpawnConditions.OnGround(spawnInfo)
+				? 3f : 0f,
+		});
+
+		rules.Add(new SubworldSpawnRule
+		{
+			Type = ModContent.NPCType<AncientPhantom_Bow>(),
+			SpawnChance = spawnInfo => InTwilightForest(spawnInfo) && SpawnConditions.OnGround(spawnInfo)
+				? 3f : 0f,
+		});
+
+		rules.Add(new SubworldSpawnRule
+		{
+			Type = ModContent.NPCType<AncientPhantom_Magic>(),
+			SpawnChance = spawnInfo => InTwilightForest(spawnInfo) && SpawnConditions.OnGround(spawnInfo)
+				? 3f : 0f,
+		});
+
+		// TODO：晶胞虫
+
+		// 原版无幸运修正时，普通史莱姆有 1/180 的机会变为粉史莱姆。
+		// 此处没有普通史莱姆候选，将同一基础比例用于灯木、暮光森林的白昼地面生成；不额外抽取随机数。
+		// W / 179 与其余候选 W 一起加权，最终占比为 1/180。
+		var forestRules = rules.ToArray();
+		rules.Add(new SubworldSpawnRule
+		{
+			Type = NPCID.Pinky,
+			SpawnChance = spawnInfo => Main.dayTime && InForest(spawnInfo) && SpawnConditions.OnGround(spawnInfo)
+				? forestRules.Sum(rule => rule.SpawnChance(spawnInfo)) / 179f : 0f,
 		});
 
 		// 浅层矿洞：不分昼夜，球冻最常见。
