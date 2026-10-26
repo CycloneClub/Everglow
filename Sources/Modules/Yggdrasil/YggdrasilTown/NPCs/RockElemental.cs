@@ -2,7 +2,6 @@ using Everglow.Commons.CustomTiles;
 using Everglow.Commons.DataStructures;
 using Everglow.Commons.Mechanics.Miscs;
 using Everglow.Yggdrasil.Common;
-using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.RockElemental;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Enemies;
@@ -81,17 +80,6 @@ public class RockElemental : ModNPC
 		{
 			NPC.frame.Y = (int)(NPC.frameCounter / 5 % 5) * frameHeight;
 		}
-	}
-
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		YggdrasilTownBiome YggdrasilTownBiome = ModContent.GetInstance<YggdrasilTownBiome>();
-		if (!YggdrasilTownBiome.IsBiomeActive(Main.LocalPlayer))
-		{
-			return 0f;
-		}
-
-		return 0.05f;
 	}
 
 	public override void OnSpawn(IEntitySource source)
