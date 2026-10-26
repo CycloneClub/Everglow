@@ -78,17 +78,29 @@ public class TownOreFramingTests
 					}
 					bool reset = false;
 					bool noBreak = false;
-					Assert.IsFalse(content.TileFrame(x, y, ref reset, ref noBreak));
-					var expected = layout switch
+					Assert.IsTrue(content.TileFrame(x, y, ref reset, ref noBreak));
+					int up = GetNeighborType(0, -1);
+					// Vanilla culls the lower neighbor's top slope before calling ModifyFrameMerge.
+					int down = Main.tile[x, y + 1].TopSlope ? -1 : GetNeighborType(0, 1);
+					int leftType = GetNeighborType(-1, 0);
+					int rightType = GetNeighborType(1, 0);
+					int upLeft = GetNeighborType(-1, -1);
+					int upRight = GetNeighborType(1, -1);
+					int downLeft = GetNeighborType(-1, 1);
+					int downRight = GetNeighborType(1, 1);
+					content.ModifyFrameMerge(x, y, ref up, ref down, ref leftType, ref rightType, ref upLeft, ref upRight, ref downLeft, ref downRight);
+					int[] expected = layout switch
 					{
-						0 => (108 + variant * 18, 198),
-						2 => (144, 126 + variant * 18),
-						3 => (234 + variant * 18, 0),
-						4 => (0, 90 + variant * 36),
-						_ => (162 + variant * 18, 54),
+						0 => [-2, -2, -2, -2, -2, -2, -2, -2],
+						2 => [oreType, oreType, oreType, -2, oreType, oreType, oreType, oreType],
+						3 => [-1, -2, oreType, oreType, -1, -1, -1, -1],
+						4 => [oreType, oreType, oreType, oreType, oreType, oreType, oreType, -2],
+						_ => [-1, -1, -1, -1, -1, -1, -1, -1],
 					};
-					Assert.AreEqual(expected.Item1, (int)tile.TileFrameX, $"{contentType.Name}, layout {layout}, variant {variant}");
-					Assert.AreEqual(expected.Item2, (int)tile.TileFrameY, $"{contentType.Name}, layout {layout}, variant {variant}");
+					int[] actual = [up, down, leftType, rightType, upLeft, upRight, downLeft, downRight];
+					CollectionAssert.AreEqual(expected, actual, $"{contentType.Name}, layout {layout}, variant {variant}");
+					Assert.AreEqual(0, (int)tile.TileFrameX, "Frame selection is left to vanilla.");
+					Assert.AreEqual(0, (int)tile.TileFrameY, "Frame selection is left to vanilla.");
 					Assert.AreEqual(variant, tile.TileFrameNumber);
 				}
 			}
@@ -102,6 +114,12 @@ public class TownOreFramingTests
 				types[indices[i]] = oldTypes[i];
 				states[indices[i]] = oldStates[i];
 			}
+		}
+
+		int GetNeighborType(int dx, int dy)
+		{
+			var neighbor = Main.tile[x + dx, y + dy];
+			return neighbor.HasTile ? neighbor.TileType : -1;
 		}
 	}
 }
