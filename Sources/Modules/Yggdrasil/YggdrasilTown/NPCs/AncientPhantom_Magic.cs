@@ -1,5 +1,4 @@
 using Everglow.Commons.Templates.Enemies;
-using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts.TwilightForest;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs.ProjNPC;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
@@ -273,12 +272,6 @@ public class AncientPhantom_Magic : Fighter
 	}
 
 	public override void Fighters_Jump(int pushTileX, int pushTileY, bool canJump) => base.Fighters_Jump(pushTileX, pushTileY, canJump);
-
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		TwilightForsetAndRelic twlightBiome = ModContent.GetInstance<TwilightForsetAndRelic>();
-		return !twlightBiome.IsBiomeActive(Main.LocalPlayer) ? 0f : 3f;
-	}
 
 	public override void OnKill()
 	{

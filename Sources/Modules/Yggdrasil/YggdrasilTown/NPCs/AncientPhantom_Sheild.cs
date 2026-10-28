@@ -1,6 +1,5 @@
 using Everglow.Commons.Templates.Enemies;
 using Everglow.Yggdrasil.Common;
-using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts.TwilightForest;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
 using Terraria.DataStructures;
@@ -161,12 +160,6 @@ public class AncientPhantom_Sheild : Fighter
 			HurtValue = 60f;
 		}
 		base.HitEffect(hit);
-	}
-
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		TwilightForsetAndRelic twlightBiome = ModContent.GetInstance<TwilightForsetAndRelic>();
-		return !twlightBiome.IsBiomeActive(Main.LocalPlayer) ? 0f : 3f;
 	}
 
 	public override void OnKill()

@@ -2,12 +2,17 @@ using Everglow.Commons.Mechanics.Events;
 
 namespace Everglow.Commons.Mechanics.NPCSpawn;
 
-/// <summary>世界公共策略；Density 接收格坐标，只调整原生生成频率和容量。</summary>
-public sealed record SpawnWorldPolicy(string Id, Func<bool> IsActive, Func<Vector2, float> Density = null);
+/// <summary>世界公共策略；CanSpawn 接收玩家中心的格坐标，仅区分禁刷与野外。</summary>
+public sealed record SpawnWorldPolicy(string Id, Func<bool> IsActive, Func<Vector2, bool> CanSpawn = null);
 
 /// <summary>向 tML 自然生成钩子提供区域规则和公共策略；不独立调度，群体在原生自然生成成功后集中追加。</summary>
 public sealed class SubworldSpawnSystem : ModSystem
 {
+	// 参考肉前洞穴的补怪节奏：平均 2 秒一次机会，9 个 NPC 槽位。
+	// 固定覆盖原版输入，不随昼夜、深度、城镇 NPC、蜡烛或药水改变。
+	private const int WildernessSpawnRate = 120;
+	private const int WildernessMaxSpawns = 9;
+
 	private readonly Dictionary<string, SpawnWorldPolicy> worlds = new(StringComparer.Ordinal);
 	private readonly List<SpawnTable> tables = new();
 	private string groupWorldId;
@@ -125,16 +130,14 @@ public sealed class SubworldSpawnSystem : ModSystem
 		{
 			return;
 		}
-		float density = world.Density?.Invoke(player.Center / 16f) ?? 1f;
-		if (!float.IsFinite(density) || density <= 0)
+		if (!(world.CanSpawn?.Invoke(player.Center / 16f) ?? true))
 		{
 			spawnRate = int.MaxValue;
 			maxSpawns = 0;
 			return;
 		}
-		density = Math.Min(density, 1f);
-		spawnRate = (int)Math.Clamp(Math.Ceiling(spawnRate / (double)density), 1, int.MaxValue);
-		maxSpawns = Math.Max(0, (int)(maxSpawns * (double)density));
+		spawnRate = WildernessSpawnRate;
+		maxSpawns = WildernessMaxSpawns;
 	}
 
 	// 只保存同一次原生选怪所需的信息，不跨帧排队，也不附加到 NPC 或网络包。

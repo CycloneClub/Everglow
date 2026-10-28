@@ -2,7 +2,6 @@ using Everglow.Commons.Coroutines;
 using Everglow.Commons.Mechanics.Miscs;
 using Everglow.Commons.Templates.Enemies;
 using Everglow.Yggdrasil.Common;
-using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Terraria.GameContent.ItemDropRules;
@@ -57,17 +56,6 @@ public class ShadowstrikeCaterpillar : Caterpillar
 			return new Rectangle(66, 0, 26, height);
 		}
 		return base.GetDrawFrame(Style);
-	}
-
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		YggdrasilTownBiome YggdrasilTownBiome = ModContent.GetInstance<YggdrasilTownBiome>();
-		if (!YggdrasilTownBiome.IsBiomeActive(Main.LocalPlayer))
-		{
-			return 0f;
-		}
-
-		return 8f;
 	}
 
 	/// <summary>

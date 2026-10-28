@@ -1,5 +1,4 @@
 using Everglow.Yggdrasil.Common;
-using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.NPCs;
@@ -237,12 +236,6 @@ public class UmbrellaTailThief : ModNPC
 	public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 	{
 		target.AddBuff(BuffID.Poisoned, 600);
-	}
-
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		LampWoodForest lampBiome = ModContent.GetInstance<LampWoodForest>();
-		return !lampBiome.IsBiomeActive(Main.LocalPlayer) ? 0f : 3f;
 	}
 
 	public override void OnKill()

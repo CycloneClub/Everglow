@@ -15,6 +15,9 @@ public static class YggdrasilTownSpawnConditions
 	public static bool InLampWoodForest(NPCSpawnInfo info) => CanSpawn(info) &&
 		info.SpawnTileType == ModContent.TileType<DarkForestGrass>() && !IsJellyBallHotbed(info);
 
+	public static bool InTwilightForest(NPCSpawnInfo info) => CanSpawn(info) &&
+		info.SpawnTileType == ModContent.TileType<TwilightGrassBlock>() && !IsJellyBallHotbed(info);
+
 	public static bool InShallowMine(NPCSpawnInfo info) => CanSpawn(info) && IsMine(info) && info.SpawnTileY < Main.maxTilesY - 520;
 
 	public static bool InDeepMine(NPCSpawnInfo info) => CanSpawn(info) && IsMine(info) && info.SpawnTileY >= Main.maxTilesY - 520;

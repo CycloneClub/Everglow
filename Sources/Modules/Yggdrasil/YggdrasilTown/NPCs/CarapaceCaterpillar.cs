@@ -1,7 +1,6 @@
 using Everglow.Commons.Coroutines;
 using Everglow.Commons.Templates.Enemies;
 using Everglow.Yggdrasil.Common;
-using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Terraria.DataStructures;
@@ -82,17 +81,6 @@ public class CarapaceCaterpillar : Caterpillar
 			return new Rectangle(96, 0, 30, height);
 		}
 		return base.GetDrawFrame(Style);
-	}
-
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		YggdrasilTownBiome YggdrasilTownBiome = ModContent.GetInstance<YggdrasilTownBiome>();
-		if (!YggdrasilTownBiome.IsBiomeActive(Main.LocalPlayer))
-		{
-			return 0f;
-		}
-
-		return 8f;
 	}
 
 	public override void HitEffect(NPC.HitInfo hit)
