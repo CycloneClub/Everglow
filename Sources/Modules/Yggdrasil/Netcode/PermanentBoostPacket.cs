@@ -11,8 +11,8 @@ public class PermanentBoostPacket : IPacket
 	public int consumedJadeGlazeFruit = 0;
 	public int consumedLampBorerHoney = 0;
 	public int consumedSquamousCore = 0;
-	public int consumedInsectManaEssence = 0;
-	public int consumedManaSpringElixir = 0;
+	public int consumedMagicOrganExtract = 0;
+	public int consumedActiveMagicSpringPowder = 0;
 
 	public void Receive(BinaryReader reader, int whoAmI)
 	{
@@ -21,8 +21,8 @@ public class PermanentBoostPacket : IPacket
 		consumedJadeGlazeFruit = reader.ReadInt32();
 		consumedLampBorerHoney = reader.ReadInt32();
 		consumedSquamousCore = reader.ReadInt32();
-		consumedInsectManaEssence = reader.ReadInt32();
-		consumedManaSpringElixir = reader.ReadInt32();
+		consumedMagicOrganExtract = reader.ReadInt32();
+		consumedActiveMagicSpringPowder = reader.ReadInt32();
 	}
 
 	public void Send(BinaryWriter writer)
@@ -32,8 +32,8 @@ public class PermanentBoostPacket : IPacket
 		writer.Write(consumedJadeGlazeFruit);
 		writer.Write(consumedLampBorerHoney);
 		writer.Write(consumedSquamousCore);
-		writer.Write(consumedInsectManaEssence);
-		writer.Write(consumedManaSpringElixir);
+		writer.Write(consumedMagicOrganExtract);
+		writer.Write(consumedActiveMagicSpringPowder);
 	}
 
 	[HandlePacket(typeof(PermanentBoostPacket))]
@@ -53,8 +53,8 @@ public class PermanentBoostPacket : IPacket
 			mp.ConsumedJadeGlazeFruit = packetData.consumedJadeGlazeFruit;
 			mp.ConsumedLampBorerHoney = packetData.consumedLampBorerHoney;
 			mp.ConsumedSquamousCore = packetData.consumedSquamousCore;
-			mp.ConsumedInsectManaEssence = Math.Clamp(packetData.consumedInsectManaEssence, 0, InsectManaEssence.MaxUse);
-			mp.ConsumedManaSpringElixir = Math.Clamp(packetData.consumedManaSpringElixir, 0, ManaSpringElixir.MaxUse);
+			mp.ConsumedMagicOrganExtract = Math.Clamp(packetData.consumedMagicOrganExtract, 0, MagicOrganExtract.MaxUse);
+			mp.ConsumedActiveMagicSpringPowder = Math.Clamp(packetData.consumedActiveMagicSpringPowder, 0, ActiveMagicSpringPowder.MaxUse);
 
 			if (Main.netMode == NetmodeID.Server)
 			{

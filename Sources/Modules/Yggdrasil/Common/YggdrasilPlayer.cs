@@ -43,9 +43,9 @@ public class YggdrasilPlayer : ModPlayer
 	/// </summary>
 	public int ConsumedSquamousCore { get; set; }
 
-	public int ConsumedInsectManaEssence { get; set; }
+	public int ConsumedMagicOrganExtract { get; set; }
 
-	public int ConsumedManaSpringElixir { get; set; }
+	public int ConsumedActiveMagicSpringPowder { get; set; }
 
 	public bool UseAntiHeavenSicknessPill()
 	{
@@ -87,21 +87,21 @@ public class YggdrasilPlayer : ModPlayer
 		return false;
 	}
 
-	public bool UseInsectManaEssence()
+	public bool UseMagicOrganExtract()
 	{
-		if (ConsumedInsectManaEssence < InsectManaEssence.MaxUse)
+		if (ConsumedMagicOrganExtract < MagicOrganExtract.MaxUse)
 		{
-			ConsumedInsectManaEssence++;
+			ConsumedMagicOrganExtract++;
 			return true;
 		}
 		return false;
 	}
 
-	public bool UseManaSpringElixir()
+	public bool UseActiveMagicSpringPowder()
 	{
-		if (ConsumedManaSpringElixir < ManaSpringElixir.MaxUse)
+		if (ConsumedActiveMagicSpringPowder < ActiveMagicSpringPowder.MaxUse)
 		{
-			ConsumedManaSpringElixir++;
+			ConsumedActiveMagicSpringPowder++;
 			return true;
 		}
 		return false;
@@ -136,8 +136,8 @@ public class YggdrasilPlayer : ModPlayer
 		health.Base += ConsumedSquamousCore * SquamousCore.SquamousCoreLife;
 		health.Base += ConsumedLampBorerHoney * LampBorerHoney.LifePerHoney;
 
-		mana.Base += ConsumedInsectManaEssence * InsectManaEssence.ManaPerUse;
-		mana.Base += ConsumedManaSpringElixir * ManaSpringElixir.ManaPerUse;
+		mana.Base += ConsumedMagicOrganExtract * MagicOrganExtract.ManaPerUse;
+		mana.Base += ConsumedActiveMagicSpringPowder * ActiveMagicSpringPowder.ManaPerUse;
 
 		if (SubworldSystem.IsActive<YggdrasilWorld>())
 		{
@@ -229,14 +229,14 @@ public class YggdrasilPlayer : ModPlayer
 		tag[nameof(ConsumedJadeGlazeFruit)] = ConsumedJadeGlazeFruit;
 		tag[nameof(ConsumedSquamousCore)] = ConsumedSquamousCore;
 		tag[nameof(ConsumedLampBorerHoney)] = ConsumedLampBorerHoney;
-		tag[nameof(ConsumedInsectManaEssence)] = ConsumedInsectManaEssence;
-		tag[nameof(ConsumedManaSpringElixir)] = ConsumedManaSpringElixir;
+		tag[nameof(ConsumedMagicOrganExtract)] = ConsumedMagicOrganExtract;
+		tag[nameof(ConsumedActiveMagicSpringPowder)] = ConsumedActiveMagicSpringPowder;
 	}
 
 	public override void LoadData(TagCompound tag)
 	{
-		ConsumedInsectManaEssence = Math.Clamp(tag.GetInt(nameof(ConsumedInsectManaEssence)), 0, InsectManaEssence.MaxUse);
-		ConsumedManaSpringElixir = Math.Clamp(tag.GetInt(nameof(ConsumedManaSpringElixir)), 0, ManaSpringElixir.MaxUse);
+		ConsumedMagicOrganExtract = Math.Clamp(tag.GetInt(nameof(ConsumedMagicOrganExtract)), 0, MagicOrganExtract.MaxUse);
+		ConsumedActiveMagicSpringPowder = Math.Clamp(tag.GetInt(nameof(ConsumedActiveMagicSpringPowder)), 0, ActiveMagicSpringPowder.MaxUse);
 		if (tag.TryGet(nameof(ConsumedAntiHeavenSicknessPill), out int life1))
 		{
 			ConsumedAntiHeavenSicknessPill = life1;
@@ -265,8 +265,8 @@ public class YggdrasilPlayer : ModPlayer
 				consumedJadeGlazeFruit = ConsumedJadeGlazeFruit,
 				consumedSquamousCore = ConsumedSquamousCore,
 				consumedLampBorerHoney = ConsumedLampBorerHoney,
-				consumedInsectManaEssence = ConsumedInsectManaEssence,
-				consumedManaSpringElixir = ConsumedManaSpringElixir,
+				consumedMagicOrganExtract = ConsumedMagicOrganExtract,
+				consumedActiveMagicSpringPowder = ConsumedActiveMagicSpringPowder,
 			}, toWho, fromWho);
 	}
 
@@ -277,16 +277,16 @@ public class YggdrasilPlayer : ModPlayer
 		clone.ConsumedAntiHeavenSicknessPill = ConsumedAntiHeavenSicknessPill;
 		clone.ConsumedJadeGlazeFruit = ConsumedJadeGlazeFruit;
 		clone.ConsumedSquamousCore = ConsumedSquamousCore;
-		clone.ConsumedInsectManaEssence = ConsumedInsectManaEssence;
-		clone.ConsumedManaSpringElixir = ConsumedManaSpringElixir;
+		clone.ConsumedMagicOrganExtract = ConsumedMagicOrganExtract;
+		clone.ConsumedActiveMagicSpringPowder = ConsumedActiveMagicSpringPowder;
 	}
 
 	public override void SendClientChanges(ModPlayer clientPlayer)
 	{
 		var clone = (YggdrasilPlayer)clientPlayer;
 		if (ConsumedLampBorerHoney != clone.ConsumedLampBorerHoney
-			|| ConsumedInsectManaEssence != clone.ConsumedInsectManaEssence
-			|| ConsumedManaSpringElixir != clone.ConsumedManaSpringElixir)
+			|| ConsumedMagicOrganExtract != clone.ConsumedMagicOrganExtract
+			|| ConsumedActiveMagicSpringPowder != clone.ConsumedActiveMagicSpringPowder)
 		{
 			SyncPlayer(toWho: -1, fromWho: Main.myPlayer, newPlayer: false);
 		}
