@@ -39,7 +39,6 @@ public class MagicOrganExtract : ModItem
 	public override void Update(ref float gravity, ref float maxFallSpeed)
 	{
 		Lighting.AddLight(Item.Center, new Vector3(0.43f, 0.06f, 0.13f));
-		base.Update(ref gravity, ref maxFallSpeed);
 	}
 
 	public override void AddRecipes()

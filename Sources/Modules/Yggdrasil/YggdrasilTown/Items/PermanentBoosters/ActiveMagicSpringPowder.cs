@@ -30,7 +30,6 @@ public class ActiveMagicSpringPowder : ModItem
 	public override void Update(ref float gravity, ref float maxFallSpeed)
 	{
 		Lighting.AddLight(Item.Center, new Vector3(0f, 0.45f, 0.6f));
-		base.Update(ref gravity, ref maxFallSpeed);
 	}
 
 	public override bool? UseItem(Player player)
