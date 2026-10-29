@@ -1,3 +1,4 @@
+using Everglow.Yggdrasil.YggdrasilTown.NPCs;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs.NPCEffects;
 using Terraria.Audio;
@@ -8,7 +9,18 @@ public class PurpleBombCaterpillarDeath : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.EnemyProjectiles;
 
-	public List<Vector2> Deadbody_BottomPoints_Current = new List<Vector2>();
+	private Vector2[] bodyFeet = Array.Empty<Vector2>();
+	private Vector2[] bodyTops = Array.Empty<Vector2>();
+	private float bodyScale = 1;
+	private Vector2 bodyOrigin;
+
+	internal void SetBodyShape(IReadOnlyList<Vector2> feet, IReadOnlyList<Vector2> tops)
+	{
+		bodyFeet = feet.ToArray();
+		bodyTops = tops.ToArray();
+		bodyScale = Projectile.scale;
+		bodyOrigin = Projectile.Center;
+	}
 
 	public override void SetDefaults()
 	{
@@ -27,13 +39,13 @@ public class PurpleBombCaterpillarDeath : ModProjectile
 		if (Projectile.timeLeft == 5)
 		{
 			Projectile.hostile = true;
-			KillEffect();
+			SpawnExplosionEffects();
 		}
-		if (Projectile.timeLeft == 6)
+		if (!Main.dedServ && Projectile.timeLeft == 6)
 		{
 			SoundEngine.PlaySound(SoundID.DD2_BetsyFireballImpact, Projectile.Center);
 		}
-		if (Projectile.timeLeft == 36)
+		if (!Main.dedServ && Projectile.timeLeft == 36)
 		{
 			var explosion = new PurpleBombCaterpillarExplosionDust
 			{
@@ -48,12 +60,19 @@ public class PurpleBombCaterpillarDeath : ModProjectile
 			Ins.VFXManager.Add(explosion);
 		}
 		float value = (90 - Projectile.timeLeft) * 0.02f;
-		Lighting.AddLight(Projectile.Center, new Vector3(1f, 0.05f, 0.6f) * value);
+		if (!Main.dedServ)
+		{
+			Lighting.AddLight(Projectile.Center, new Vector3(1f, 0.05f, 0.6f) * value);
+		}
 		Projectile.scale += value * 0.004f;
 	}
 
-	public void KillEffect()
+	private void SpawnExplosionEffects()
 	{
+		if (Main.dedServ)
+		{
+			return;
+		}
 		for (int g = 0; g < 48; g++)
 		{
 			Vector2 vel = new Vector2(0, Main.rand.NextFloat(12, 48)).RotatedByRandom(MathHelper.TwoPi);
@@ -115,80 +134,29 @@ public class PurpleBombCaterpillarDeath : ModProjectile
 
 	public override bool PreDraw(ref Color lightColor)
 	{
-		if (Projectile.timeLeft < 5)
+		if (Main.dedServ || Projectile.timeLeft < 5 || bodyFeet.Length < 2)
 		{
 			return false;
 		}
-		// Texture2D eyeStalks = ModAsset.PurpleBombCaterpillar.Value;
-		// Texture2D eyeStalks_glow = ModAsset.PurpleBombCaterpillar_glow.Value;
-		// Texture2D body = ModAsset.PurpleBombCaterpillar_Body.Value;
-		// Texture2D body_glow = ModAsset.PurpleBombCaterpillar_Body_glow.Value;
-		//
-		// SpriteEffects flip = Projectile.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
-
-		float squzzeValue = 1f;
-
-		float value = (90 - Projectile.timeLeft) * 0.002f;
-		float explosionValue = Projectile.timeLeft;
-		explosionValue = MathF.Pow(explosionValue, -0.25f) * 150f;
+		float explosionValue = MathF.Pow(Projectile.timeLeft, -0.25f) * 150f;
 		explosionValue = MathF.Sin(explosionValue * 0.6f) + 0.5f;
-		float explosionValue2 = (90 - Projectile.timeLeft) / 90f;
+		float explosionProgress = (90 - Projectile.timeLeft) / 90f;
 		lightColor = Lighting.GetColor(Projectile.Center.ToTileCoordinates());
-		// Main.EntitySpriteDraw(eyeStalks, Projectile.Bottom - Main.screenPosition, new Rectangle(0, 0, 126, 54), lightColor, Projectile.rotation, new Vector2(126, 54) * new Vector2(0.5f, 0.95f), Projectile.scale, flip, 0);
-		// Main.EntitySpriteDraw(eyeStalks_glow, Projectile.Bottom - Main.screenPosition, new Rectangle(0, 0, 126, 54), new Color(1f, 0.65f, 0.25f, 0), Projectile.rotation, new Vector2(126, 54) * new Vector2(0.5f, 0.95f), Projectile.scale, flip, 0);
+		Color glowColor = new Color(1f, 0.65f, 0.25f, 0);
 
-		// Main.EntitySpriteDraw(body, Projectile.Bottom - Main.screenPosition, null, lightColor, Projectile.rotation, body.Size() * new Vector2(originX, 0.95f), new Vector2(squzzeValue, 2 - squzzeValue + value) * Projectile.scale, flip, 0);
-		// Main.EntitySpriteDraw(body_glow, Projectile.Bottom - Main.screenPosition, null, new Color(1f, 0.65f, 0.25f, 0), Projectile.rotation, body.Size() * new Vector2(originX, 0.95f), new Vector2(squzzeValue, 2 - squzzeValue + value) * Projectile.scale, flip, 0);
-		// Main.EntitySpriteDraw(body_shape, Projectile.Bottom - Main.screenPosition, null, Color.White * explosionValue * explosionValue2, Projectile.rotation, body.Size() * new Vector2(originX, 0.95f), new Vector2(squzzeValue, 2 - squzzeValue + value) * Projectile.scale, flip, 0);
+		float scale = Projectile.scale / bodyScale;
+		Vector2[] feet = bodyFeet.Select(point => Projectile.Center + (point - bodyOrigin) * scale).ToArray();
+		Vector2[] tops = bodyTops.Select(point => Projectile.Center + (point - bodyOrigin) * scale).ToArray();
+		PurpleBombCaterpillar.DrawBodyLayer(ModAsset.PurpleBombCaterpillar_Body.Value, feet, tops, lightColor, Projectile.spriteDirection);
+		PurpleBombCaterpillar.DrawBodyLayer(ModAsset.PurpleBombCaterpillar_Body_glow.Value, feet, tops, glowColor, Projectile.spriteDirection);
+		PurpleBombCaterpillar.DrawBodyLayer(ModAsset.PurpleBombCaterpillar_Body_Shape.Value, feet, tops, Color.White * explosionValue * explosionProgress, Projectile.spriteDirection);
 
-		Texture2D eyeStalks = ModAsset.PurpleBombCaterpillar.Value;
-		Texture2D eyeStalks_glow = ModAsset.PurpleBombCaterpillar_glow.Value;
-		Texture2D body = ModAsset.PurpleBombCaterpillar_Body.Value;
-		Texture2D body_glow = ModAsset.PurpleBombCaterpillar_Body_glow.Value;
-		Texture2D body_shape = ModAsset.PurpleBombCaterpillar_Body_Shape.Value;
+		Texture2D eyeStalks = ModAsset.PurpleBombCaterpillar_Eye.Value;
+		Rectangle frame = new Rectangle(0, 0, eyeStalks.Width, eyeStalks.Height / 10);
 		SpriteEffects flip = Projectile.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
-
-		if (Deadbody_BottomPoints_Current is not null && Deadbody_BottomPoints_Current.Count > 0)
-		{
-			List<Vertex2D> body_bars = new List<Vertex2D>();
-			List<Vertex2D> body_glow_bars = new List<Vertex2D>();
-			List<Vertex2D> body_white_bars = new List<Vertex2D>();
-			for (int i = 0; i < Deadbody_BottomPoints_Current.Count; i++)
-			{
-				Vector2 foot = Deadbody_BottomPoints_Current[i];
-				Vector2 top = Projectile.Bottom + new Vector2(squzzeValue * 98 * Projectile.scale * (i / 10f - 0.5f), -36 * (2 - squzzeValue) * Projectile.scale).RotatedBy(Projectile.rotation);
-				float coordX = i / (float)(Deadbody_BottomPoints_Current.Count - 1);
-				if (Projectile.spriteDirection == -1)
-				{
-					coordX = 1 - coordX;
-				}
-				body_bars.Add(foot - Main.screenPosition, lightColor, new Vector3(coordX, 1f, 0f));
-				body_bars.Add(top - Main.screenPosition, lightColor, new Vector3(coordX, 0f, 0f));
-
-				body_glow_bars.Add(foot - Main.screenPosition, new Color(1f, 0.65f, 0.25f, 0), new Vector3(coordX, 1f, 0f));
-				body_glow_bars.Add(top - Main.screenPosition, new Color(1f, 0.65f, 0.25f, 0), new Vector3(coordX, 0f, 0f));
-
-				body_white_bars.Add(foot - Main.screenPosition, Color.White * explosionValue * explosionValue2, new Vector3(coordX, 1f, 0f));
-				body_white_bars.Add(top - Main.screenPosition, Color.White * explosionValue * explosionValue2, new Vector3(coordX, 0f, 0f));
-			}
-			if (body_bars.Count > 0)
-			{
-				Main.graphics.GraphicsDevice.Textures[0] = body;
-				Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, body_bars.ToArray(), 0, body_bars.Count - 2);
-			}
-			if (body_glow_bars.Count > 0)
-			{
-				Main.graphics.GraphicsDevice.Textures[0] = body_glow;
-				Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, body_glow_bars.ToArray(), 0, body_glow_bars.Count - 2);
-			}
-			if (body_white_bars.Count > 0)
-			{
-				Main.graphics.GraphicsDevice.Textures[0] = body_shape;
-				Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, body_white_bars.ToArray(), 0, body_white_bars.Count - 2);
-			}
-			SpriteBatchUtils.SpriteBatch_Draw_To_Vertex_Draw(eyeStalks, Projectile.Bottom - Main.screenPosition, new Rectangle(0, 0, 126, 54), lightColor, Projectile.rotation, new Vector2(126, 54) * new Vector2(0.5f, 0.95f), Projectile.scale, flip);
-			SpriteBatchUtils.SpriteBatch_Draw_To_Vertex_Draw(eyeStalks_glow, Projectile.Bottom - Main.screenPosition, new Rectangle(0, 0, 126, 54), new Color(1f, 0.65f, 0.25f, 0), Projectile.rotation, new Vector2(126, 54) * new Vector2(0.5f, 0.95f), Projectile.scale, flip);
-		}
+		var eyes = PurpleBombCaterpillar.GetEyePose(feet, tops, Projectile.spriteDirection, frame.Width);
+		SpriteBatchUtils.SpriteBatch_Draw_To_Vertex_Draw(eyeStalks, eyes.Position - Main.screenPosition, frame, lightColor, eyes.Rotation, eyes.Origin, Projectile.scale, flip);
+		SpriteBatchUtils.SpriteBatch_Draw_To_Vertex_Draw(ModAsset.PurpleBombCaterpillar_Eye_glow.Value, eyes.Position - Main.screenPosition, frame, glowColor, eyes.Rotation, eyes.Origin, Projectile.scale, flip);
 		return false;
 	}
 
