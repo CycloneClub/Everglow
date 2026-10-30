@@ -95,6 +95,21 @@ public class TownEquipmentLocalizationTests
 				Assert.AreEqual(0.68f, player.manaCost, 0.00001f);
 				Assert.IsFalse(string.IsNullOrWhiteSpace(player.setBonus));
 			}
+			if (item is EldamberWarhelm)
+			{
+				var player = new Player { statManaMax2 = 80, manaCost = 0.8f };
+				player.GetAttackSpeed(DamageClass.Melee) = 1.2f;
+				item.UpdateEquip(player);
+				new EldamberBreastplate().UpdateEquip(player);
+				new EldamberBoots().UpdateEquip(player);
+				item.UpdateArmorSet(player);
+				Assert.AreEqual(108f, player.GetTotalDamage(DamageClass.Melee).ApplyTo(100f), 0.00001f);
+				Assert.AreEqual(104f, player.GetTotalDamage(DamageClass.Magic).ApplyTo(100f), 0.00001f);
+				Assert.AreEqual(1.35f, player.GetAttackSpeed(DamageClass.Melee), 0.00001f);
+				Assert.AreEqual(80, player.statManaMax2);
+				Assert.AreEqual(0.8f, player.manaCost);
+				Assert.IsFalse(string.IsNullOrWhiteSpace(player.setBonus));
+			}
 		}
 	}
 

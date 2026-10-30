@@ -44,28 +44,29 @@ public class PlannedItemDefaultsTests
 	}
 
 	[TestMethod]
-	public void EldamberPiecesApplyMagicBonusesWithoutRequiringAFullSet()
+	public void EldamberSharedPiecesGiveGenericOffenseAndOnlyMageHelmetGrantsMana()
 	{
 		var player = new Player { statManaMax2 = 80, manaCost = 1f };
-		float magicDamage = player.GetDamage(DamageClass.Magic).ApplyTo(100f);
-		float meleeDamage = player.GetDamage(DamageClass.Melee).ApplyTo(100f);
-		float magicCrit = player.GetCritChance(DamageClass.Magic);
-		float rangedCrit = player.GetCritChance(DamageClass.Ranged);
+		float genericDamage = player.GetDamage(DamageClass.Generic).ApplyTo(100f);
+		float genericCrit = player.GetCritChance(DamageClass.Generic);
 
 		new EldamberBreastplate().UpdateEquip(player);
-		Assert.AreEqual(120, player.statManaMax2, "The chest must also grant mana in mixed sets.");
+		Assert.AreEqual(80, player.statManaMax2, "The shared chest must not grant the mage helmet's mana.");
+		Assert.AreEqual(genericDamage + 4f, player.GetDamage(DamageClass.Generic).ApplyTo(100f), 0.00001f);
 		Assert.AreEqual(1f, player.manaCost, "A chest alone must not grant the set bonus.");
 		new EldamberHelmet().UpdateEquip(player);
 		new EldamberBoots().UpdateEquip(player);
-		Assert.AreEqual(magicDamage + 8f, player.GetDamage(DamageClass.Magic).ApplyTo(100f), 0.00001f);
-		Assert.AreEqual(magicCrit + 4f, player.GetCritChance(DamageClass.Magic));
-		Assert.AreEqual(meleeDamage, player.GetDamage(DamageClass.Melee).ApplyTo(100f));
-		Assert.AreEqual(rangedCrit, player.GetCritChance(DamageClass.Ranged));
+		Assert.AreEqual(120, player.statManaMax2);
+		Assert.AreEqual(108f, player.GetTotalDamage(DamageClass.Magic).ApplyTo(100f), 0.00001f);
+		Assert.AreEqual(104f, player.GetTotalDamage(DamageClass.Melee).ApplyTo(100f), 0.00001f);
+		Assert.AreEqual(genericCrit + 4f, player.GetCritChance(DamageClass.Generic));
 		Assert.AreEqual(1f, player.manaCost, "Only the complete-set hook applies mana reduction.");
 	}
 
 	[TestMethod]
-	public void EldamberSetRequiresBothMatchingBodyAndLegs()
+	[DataRow("EldamberHelmet")]
+	[DataRow("EldamberWarhelm")]
+	public void EldamberSetRequiresBothMatchingBodyAndLegs(string helmetName)
 	{
 		var bodyInstance = typeof(ContentInstance<EldamberBreastplate>).GetProperty("Instance")!;
 		var legsInstance = typeof(ContentInstance<EldamberBoots>).GetProperty("Instance")!;
@@ -79,7 +80,9 @@ public class PlannedItemDefaultsTests
 			typeof(ModType<Item>).GetProperty("Entity")!.SetValue(legs, new Item { type = 6002 });
 			bodyInstance.SetValue(null, body);
 			legsInstance.SetValue(null, legs);
-			var helmet = new EldamberHelmet();
+			var helmetType = typeof(EldamberHelmet).Assembly.GetType(typeof(EldamberHelmet).Namespace + "." + helmetName);
+			Assert.IsNotNull(helmetType);
+			var helmet = (ModItem)Activator.CreateInstance(helmetType)!;
 			var other = new Item { type = ItemID.WoodBreastplate };
 			Assert.IsTrue(helmet.IsArmorSet(new Item(), body.Item, legs.Item));
 			Assert.IsFalse(helmet.IsArmorSet(new Item(), other, legs.Item));

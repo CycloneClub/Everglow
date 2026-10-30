@@ -13,7 +13,7 @@ public class EldamberBreastplate : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(40);
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(4);
 
 	public override void SetDefaults()
 	{
@@ -27,7 +27,7 @@ public class EldamberBreastplate : ModItem
 
 	public override void UpdateEquip(Player player)
 	{
-		player.statManaMax2 += 40;
+		player.GetDamage(DamageClass.Generic) += 0.04f;
 	}
 
 	public override void AddRecipes()

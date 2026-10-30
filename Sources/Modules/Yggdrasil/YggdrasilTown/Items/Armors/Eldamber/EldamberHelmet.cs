@@ -13,7 +13,7 @@ public class EldamberHelmet : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(8);
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(4, 40);
 
 	public LocalizedText SetBonusText => this.GetLocalization("SetBonus").WithFormatArgs(15);
 
@@ -29,7 +29,8 @@ public class EldamberHelmet : ModItem
 
 	public override void UpdateEquip(Player player)
 	{
-		player.GetDamage(DamageClass.Magic) += 0.08f;
+		player.GetDamage(DamageClass.Magic) += 0.04f;
+		player.statManaMax2 += 40;
 	}
 
 	public override bool IsArmorSet(Item head, Item body, Item legs)

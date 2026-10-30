@@ -27,7 +27,7 @@ public class EldamberBoots : ModItem
 
 	public override void UpdateEquip(Player player)
 	{
-		player.GetCritChance(DamageClass.Magic) += 4f;
+		player.GetCritChance(DamageClass.Generic) += 4f;
 	}
 
 	public override void AddRecipes()
