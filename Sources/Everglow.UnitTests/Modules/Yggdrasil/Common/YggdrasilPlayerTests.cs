@@ -114,37 +114,37 @@ public class YggdrasilPlayerTests
 		{
 			for (int i = 0; i < 4; i++)
 			{
-				Assert.IsTrue(modPlayer.UseManaSpringElixir());
+				Assert.IsTrue(modPlayer.UseActiveMagicSpringPowder());
 			}
-			Assert.IsFalse(modPlayer.UseManaSpringElixir());
+			Assert.IsFalse(modPlayer.UseActiveMagicSpringPowder());
 		}
 		for (int i = 0; i < 6; i++)
 		{
-			Assert.IsTrue(modPlayer.UseInsectManaEssence());
+			Assert.IsTrue(modPlayer.UseMagicOrganExtract());
 		}
-		Assert.IsFalse(modPlayer.UseInsectManaEssence());
+		Assert.IsFalse(modPlayer.UseMagicOrganExtract());
 		modPlayer.ModifyMaxStats(out _, out var firstStage);
 		Assert.AreEqual(springFirst ? 100 : 80, (int)firstStage.ApplyTo(200));
 		if (!springFirst)
 		{
 			for (int i = 0; i < 4; i++)
 			{
-				Assert.IsTrue(modPlayer.UseManaSpringElixir());
+				Assert.IsTrue(modPlayer.UseActiveMagicSpringPowder());
 			}
 		}
-		Assert.IsFalse(modPlayer.UseManaSpringElixir());
+		Assert.IsFalse(modPlayer.UseActiveMagicSpringPowder());
 		var tag = new TagCompound();
 		modPlayer.SaveData(tag);
 		var restored = (YggdrasilPlayer)new YggdrasilPlayer().NewInstance(player);
 		restored.LoadData(tag);
-		Assert.IsFalse(restored.UseInsectManaEssence());
-		Assert.IsFalse(restored.UseManaSpringElixir());
+		Assert.IsFalse(restored.UseMagicOrganExtract());
+		Assert.IsFalse(restored.UseActiveMagicSpringPowder());
 		restored.ModifyMaxStats(out _, out var complete);
 		Assert.AreEqual(100, (int)complete.ApplyTo(200));
 		var clone = (YggdrasilPlayer)new YggdrasilPlayer().NewInstance(player);
 		restored.CopyClientState(clone);
-		Assert.AreEqual(6, clone.ConsumedInsectManaEssence);
-		Assert.AreEqual(4, clone.ConsumedManaSpringElixir);
+		Assert.AreEqual(6, clone.ConsumedMagicOrganExtract);
+		Assert.AreEqual(4, clone.ConsumedActiveMagicSpringPowder);
 		CurrentSubworldField.SetValue(null, null);
 		restored.ModifyMaxStats(out _, out var outside);
 		Assert.AreEqual(250, (int)outside.ApplyTo(200));
@@ -153,18 +153,18 @@ public class YggdrasilPlayerTests
 	[TestMethod]
 	public void OldSaveDoesNotGrantManaBoostsAndInvalidCountsAreClamped()
 	{
-		modPlayer.ConsumedInsectManaEssence = 6;
-		modPlayer.ConsumedManaSpringElixir = 4;
+		modPlayer.ConsumedMagicOrganExtract = 6;
+		modPlayer.ConsumedActiveMagicSpringPowder = 4;
 		modPlayer.LoadData(new TagCompound());
-		Assert.AreEqual(0, modPlayer.ConsumedInsectManaEssence);
-		Assert.AreEqual(0, modPlayer.ConsumedManaSpringElixir);
+		Assert.AreEqual(0, modPlayer.ConsumedMagicOrganExtract);
+		Assert.AreEqual(0, modPlayer.ConsumedActiveMagicSpringPowder);
 		modPlayer.LoadData(new TagCompound
 		{
-			[nameof(YggdrasilPlayer.ConsumedInsectManaEssence)] = -1,
-			[nameof(YggdrasilPlayer.ConsumedManaSpringElixir)] = 99,
+			[nameof(YggdrasilPlayer.ConsumedMagicOrganExtract)] = -1,
+			[nameof(YggdrasilPlayer.ConsumedActiveMagicSpringPowder)] = 99,
 		});
-		Assert.AreEqual(0, modPlayer.ConsumedInsectManaEssence);
-		Assert.AreEqual(4, modPlayer.ConsumedManaSpringElixir);
+		Assert.AreEqual(0, modPlayer.ConsumedMagicOrganExtract);
+		Assert.AreEqual(4, modPlayer.ConsumedActiveMagicSpringPowder);
 	}
 
 	[TestMethod]
@@ -177,8 +177,8 @@ public class YggdrasilPlayerTests
 			consumedJadeGlazeFruit = 2,
 			consumedLampBorerHoney = 3,
 			consumedSquamousCore = 4,
-			consumedInsectManaEssence = 5,
-			consumedManaSpringElixir = 2,
+			consumedMagicOrganExtract = 5,
+			consumedActiveMagicSpringPowder = 2,
 		};
 		using var stream = new MemoryStream();
 		using (var writer = new BinaryWriter(stream, System.Text.Encoding.UTF8, leaveOpen: true))
@@ -195,8 +195,8 @@ public class YggdrasilPlayerTests
 		Assert.AreEqual(2, received.consumedJadeGlazeFruit);
 		Assert.AreEqual(3, received.consumedLampBorerHoney);
 		Assert.AreEqual(4, received.consumedSquamousCore);
-		Assert.AreEqual(5, received.consumedInsectManaEssence);
-		Assert.AreEqual(2, received.consumedManaSpringElixir);
+		Assert.AreEqual(5, received.consumedMagicOrganExtract);
+		Assert.AreEqual(2, received.consumedActiveMagicSpringPowder);
 	}
 
 	[TestMethod]
@@ -206,13 +206,13 @@ public class YggdrasilPlayerTests
 		var copy = new YggdrasilPlayer();
 		tracked.SendClientChanges(copy);
 		Assert.AreEqual(0, tracked.SyncCalls);
-		Assert.IsTrue(tracked.UseInsectManaEssence());
+		Assert.IsTrue(tracked.UseMagicOrganExtract());
 		tracked.SendClientChanges(copy);
 		Assert.AreEqual(1, tracked.SyncCalls);
 		tracked.CopyClientState(copy);
 		tracked.SendClientChanges(copy);
 		Assert.AreEqual(1, tracked.SyncCalls);
-		Assert.IsTrue(tracked.UseManaSpringElixir());
+		Assert.IsTrue(tracked.UseActiveMagicSpringPowder());
 		tracked.SendClientChanges(copy);
 		Assert.AreEqual(2, tracked.SyncCalls);
 	}
@@ -240,11 +240,11 @@ public class YggdrasilPlayerTests
 				new PermanentBoostPacket
 				{
 					playerId = server ? PlayerIndex + 1 : PlayerIndex,
-					consumedInsectManaEssence = 99,
-					consumedManaSpringElixir = 99,
+					consumedMagicOrganExtract = 99,
+					consumedActiveMagicSpringPowder = 99,
 				}, server ? PlayerIndex : 255);
-			Assert.AreEqual(6, tracked.ConsumedInsectManaEssence);
-			Assert.AreEqual(4, tracked.ConsumedManaSpringElixir);
+			Assert.AreEqual(6, tracked.ConsumedMagicOrganExtract);
+			Assert.AreEqual(4, tracked.ConsumedActiveMagicSpringPowder);
 			Assert.AreEqual(server ? 1 : 0, tracked.SyncCalls);
 			if (server)
 			{
