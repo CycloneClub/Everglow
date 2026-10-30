@@ -81,20 +81,19 @@ public class TownEquipmentLocalizationTests
 			typeof(ModType<Item>).GetProperty("Entity")!.SetValue(item, RuntimeHelpers.GetUninitializedObject(typeof(Item)));
 			string key = item.GetLocalizationKey("Tooltip");
 			Assert.IsTrue(texts.ContainsKey(key), $"Missing {culture}: {key}");
-			if (item is EldamberBoots or EldamberBreastplate or EldamberHelmet)
-			{
-				// Eldamber bonuses have not been designed yet; keep their descriptions empty.
-				Assert.AreEqual(string.Empty, item.Tooltip.Value, $"Unexpected Eldamber tooltip: {culture}: {key}");
-			}
-			else
-			{
-				AssertFormatted(item.Tooltip, culture);
-			}
+			AssertFormatted(item.Tooltip, culture);
 			if (type.GetMethod(nameof(ModItem.UpdateArmorSet))!.DeclaringType == type)
 			{
 				var property = type.GetProperty("SetBonusText");
 				Assert.IsNotNull(property, $"Missing set bonus localization: {type.Name}");
 				AssertFormatted((LocalizedText)property.GetValue(item)!, culture);
+			}
+			if (item is EldamberHelmet)
+			{
+				var player = new Player { manaCost = 0.8f };
+				item.UpdateArmorSet(player);
+				Assert.AreEqual(0.68f, player.manaCost, 0.00001f);
+				Assert.IsFalse(string.IsNullOrWhiteSpace(player.setBonus));
 			}
 		}
 	}

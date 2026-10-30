@@ -531,15 +531,16 @@ WitherbarkLeggings: {
 
 EldamberBoots: {
 	DisplayName: Eldamber Boots
-	Tooltip: ""
+	Tooltip: "{0}% increased magic critical strike chance"
 }
 
 EldamberBreastplate: {
 	DisplayName: Eldamber Breastplate
-	Tooltip: ""
+	Tooltip: Increases maximum mana by {0}
 }
 
 EldamberHelmet: {
 	DisplayName: Eldamber Helmet
-	Tooltip: ""
+	Tooltip: "{0}% increased magic damage"
+	SetBonus: "{0}% reduced mana usage"
 }

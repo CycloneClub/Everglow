@@ -44,6 +44,55 @@ public class PlannedItemDefaultsTests
 	}
 
 	[TestMethod]
+	public void EldamberPiecesApplyMagicBonusesWithoutRequiringAFullSet()
+	{
+		var player = new Player { statManaMax2 = 80, manaCost = 1f };
+		float magicDamage = player.GetDamage(DamageClass.Magic).ApplyTo(100f);
+		float meleeDamage = player.GetDamage(DamageClass.Melee).ApplyTo(100f);
+		float magicCrit = player.GetCritChance(DamageClass.Magic);
+		float rangedCrit = player.GetCritChance(DamageClass.Ranged);
+
+		new EldamberBreastplate().UpdateEquip(player);
+		Assert.AreEqual(120, player.statManaMax2, "The chest must also grant mana in mixed sets.");
+		Assert.AreEqual(1f, player.manaCost, "A chest alone must not grant the set bonus.");
+		new EldamberHelmet().UpdateEquip(player);
+		new EldamberBoots().UpdateEquip(player);
+		Assert.AreEqual(magicDamage + 8f, player.GetDamage(DamageClass.Magic).ApplyTo(100f), 0.00001f);
+		Assert.AreEqual(magicCrit + 4f, player.GetCritChance(DamageClass.Magic));
+		Assert.AreEqual(meleeDamage, player.GetDamage(DamageClass.Melee).ApplyTo(100f));
+		Assert.AreEqual(rangedCrit, player.GetCritChance(DamageClass.Ranged));
+		Assert.AreEqual(1f, player.manaCost, "Only the complete-set hook applies mana reduction.");
+	}
+
+	[TestMethod]
+	public void EldamberSetRequiresBothMatchingBodyAndLegs()
+	{
+		var bodyInstance = typeof(ContentInstance<EldamberBreastplate>).GetProperty("Instance")!;
+		var legsInstance = typeof(ContentInstance<EldamberBoots>).GetProperty("Instance")!;
+		object? originalBody = bodyInstance.GetValue(null);
+		object? originalLegs = legsInstance.GetValue(null);
+		try
+		{
+			var body = new EldamberBreastplate();
+			var legs = new EldamberBoots();
+			typeof(ModType<Item>).GetProperty("Entity")!.SetValue(body, new Item { type = 6001 });
+			typeof(ModType<Item>).GetProperty("Entity")!.SetValue(legs, new Item { type = 6002 });
+			bodyInstance.SetValue(null, body);
+			legsInstance.SetValue(null, legs);
+			var helmet = new EldamberHelmet();
+			var other = new Item { type = ItemID.WoodBreastplate };
+			Assert.IsTrue(helmet.IsArmorSet(new Item(), body.Item, legs.Item));
+			Assert.IsFalse(helmet.IsArmorSet(new Item(), other, legs.Item));
+			Assert.IsFalse(helmet.IsArmorSet(new Item(), body.Item, other));
+		}
+		finally
+		{
+			bodyInstance.SetValue(null, originalBody);
+			legsInstance.SetValue(null, originalLegs);
+		}
+	}
+
+	[TestMethod]
 	public void JumpPotionCanBeConsumedForAFiveMinuteBuff()
 	{
 		var potion = Defaults<JumpPotion>();

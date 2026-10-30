@@ -531,15 +531,16 @@ WitherbarkLeggings: {
 
 EldamberBoots: {
 	DisplayName: 古珀靴子
-	Tooltip: ""
+	Tooltip: 魔法暴击率提高{0}%
 }
 
 EldamberBreastplate: {
 	DisplayName: 古珀护甲
-	Tooltip: ""
+	Tooltip: 魔力上限增加{0}
 }
 
 EldamberHelmet: {
 	DisplayName: 古珀头盔
-	Tooltip: ""
+	Tooltip: 魔法伤害提高{0}%
+	SetBonus: 魔力消耗降低{0}%
 }
