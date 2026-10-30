@@ -37,7 +37,7 @@ public class PlannedItemDefaultsTests
 	[TestMethod]
 	public void EldamberArmorHasDefenseAndDimensions()
 	{
-		foreach (var item in new[] { Defaults<EldamberHelmet>(), Defaults<EldamberBreastplate>(), Defaults<EldamberBoots>() })
+		foreach (var item in new[] { Defaults<EldamberHairpin>(), Defaults<EldamberBreastplate>(), Defaults<EldamberBoots>() })
 		{
 			Assert.IsTrue(item.defense > 0 && item.width > 0 && item.height > 0);
 		}
@@ -54,7 +54,7 @@ public class PlannedItemDefaultsTests
 		Assert.AreEqual(80, player.statManaMax2, "The shared chest must not grant the mage helmet's mana.");
 		Assert.AreEqual(genericDamage + 4f, player.GetDamage(DamageClass.Generic).ApplyTo(100f), 0.00001f);
 		Assert.AreEqual(1f, player.manaCost, "A chest alone must not grant the set bonus.");
-		new EldamberHelmet().UpdateEquip(player);
+		new EldamberHairpin().UpdateEquip(player);
 		new EldamberBoots().UpdateEquip(player);
 		Assert.AreEqual(120, player.statManaMax2);
 		Assert.AreEqual(108f, player.GetTotalDamage(DamageClass.Magic).ApplyTo(100f), 0.00001f);
@@ -64,7 +64,7 @@ public class PlannedItemDefaultsTests
 	}
 
 	[TestMethod]
-	[DataRow("EldamberHelmet")]
+	[DataRow("EldamberHairpin")]
 	[DataRow("EldamberWarhelm")]
 	public void EldamberSetRequiresBothMatchingBodyAndLegs(string helmetName)
 	{
@@ -80,7 +80,7 @@ public class PlannedItemDefaultsTests
 			typeof(ModType<Item>).GetProperty("Entity")!.SetValue(legs, new Item { type = 6002 });
 			bodyInstance.SetValue(null, body);
 			legsInstance.SetValue(null, legs);
-			var helmetType = typeof(EldamberHelmet).Assembly.GetType(typeof(EldamberHelmet).Namespace + "." + helmetName);
+			var helmetType = typeof(EldamberHairpin).Assembly.GetType(typeof(EldamberHairpin).Namespace + "." + helmetName);
 			Assert.IsNotNull(helmetType);
 			var helmet = (ModItem)Activator.CreateInstance(helmetType)!;
 			var other = new Item { type = ItemID.WoodBreastplate };

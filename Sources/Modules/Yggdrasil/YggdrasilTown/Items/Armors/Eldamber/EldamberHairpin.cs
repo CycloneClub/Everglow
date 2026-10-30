@@ -5,11 +5,12 @@ using Terraria.ModLoader;
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Eldamber;
 
 /// <summary>
-/// 古珀头盔：头部护甲。
+/// 古珀发簪：法师头部护甲。
 /// 已确定配方：古珀×12＋球冻王晶体×3；在铁砧处制作。
 /// </summary>
 [AutoloadEquip(EquipType.Head)]
-public class EldamberHelmet : ModItem
+[LegacyName("EldamberHelmet")]
+public class EldamberHairpin : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 

@@ -88,7 +88,7 @@ public class TownEquipmentLocalizationTests
 				Assert.IsNotNull(property, $"Missing set bonus localization: {type.Name}");
 				AssertFormatted((LocalizedText)property.GetValue(item)!, culture);
 			}
-			if (item is EldamberHelmet)
+			if (item is EldamberHairpin)
 			{
 				var player = new Player { manaCost = 0.8f };
 				item.UpdateArmorSet(player);

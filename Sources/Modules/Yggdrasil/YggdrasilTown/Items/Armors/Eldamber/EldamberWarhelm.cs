@@ -8,9 +8,6 @@ public class EldamberWarhelm : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	// Reuse the mage helmet's item and head textures until dedicated artwork is available.
-	public override string Texture => ModAsset.EldamberHelmet_Mod;
-
 	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(4);
 
 	public LocalizedText SetBonusText => this.GetLocalization("SetBonus").WithFormatArgs(15);

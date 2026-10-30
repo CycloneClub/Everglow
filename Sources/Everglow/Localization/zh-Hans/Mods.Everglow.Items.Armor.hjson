@@ -554,3 +554,13 @@ EldamberWarhelm: {
 	Tooltip: 近战伤害提高{0}%
 	SetBonus: 近战攻击速度提高{0}%
 }
+
+EldamberHairpin: {
+	DisplayName: 古珀发簪
+	Tooltip:
+		'''
+		魔法伤害提高{0}%
+		魔力上限增加{1}
+		'''
+	SetBonus: 魔力消耗降低{0}%
+}

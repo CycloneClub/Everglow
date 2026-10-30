@@ -554,3 +554,13 @@ EldamberWarhelm: {
 	Tooltip: "{0}% increased melee damage"
 	SetBonus: "{0}% increased melee attack speed"
 }
+
+EldamberHairpin: {
+	DisplayName: Eldamber Hairpin
+	Tooltip:
+		'''
+		{0}% increased magic damage
+		Increases maximum mana by {1}
+		'''
+	SetBonus: "{0}% reduced mana usage"
+}
