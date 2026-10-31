@@ -18,7 +18,7 @@ public class YggdrasilAmberLaser_proj : HandheldProjectile
 		DepartLength = 60;
 		TextureRotation = 5 / 18f * MathHelper.Pi;
 		Projectile.usesLocalNPCImmunity = true;
-		Projectile.localNPCHitCooldown = 5;
+		Projectile.localNPCHitCooldown = 8;
 		Projectile.ArmorPenetration = 45;
 	}
 

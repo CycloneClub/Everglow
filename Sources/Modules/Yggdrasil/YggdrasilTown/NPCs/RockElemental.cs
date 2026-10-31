@@ -34,8 +34,8 @@ public class RockElemental : ModNPC
 	{
 		NPC.width = 64;
 		NPC.height = 64;
-		NPC.lifeMax = 400;
-		NPC.damage = 30;
+		NPC.lifeMax = 360;
+		NPC.damage = 24;
 		NPC.defense = 6;
 		NPC.friendly = false;
 		NPC.aiStyle = -1;
@@ -50,15 +50,15 @@ public class RockElemental : ModNPC
 		NPC.scale = 1.2f;
 		if (Main.expertMode)
 		{
-			NPC.damage = 50;
+			NPC.damage = 40;
 			NPC.defense = 8;
-			NPC.lifeMax = 800;
+			NPC.lifeMax = 650;
 		}
 		if (Main.masterMode)
 		{
-			NPC.damage = 75;
+			NPC.damage = 56;
 			NPC.defense = 10;
-			NPC.lifeMax = 1080;
+			NPC.lifeMax = 900;
 		}
 	}
 

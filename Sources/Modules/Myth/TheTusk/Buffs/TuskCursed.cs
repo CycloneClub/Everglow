@@ -18,7 +18,7 @@ public class TuskCursed : ModBuff
 	{
 		if (player.active && !player.dead)
 		{
-			Projectile p0 = Projectile.NewProjectileDirect(player.GetSource_FromAI(), player.Center + new Vector2(0, Main.rand.NextFloat(30)).RotatedByRandom(MathHelper.TwoPi), Vector2.zeroVector, GetTusk_groundType(), GetDamage(30), 1, player.whoAmI);
+			Projectile p0 = Projectile.NewProjectileDirect(player.GetSource_FromAI(), player.Center + new Vector2(0, Main.rand.NextFloat(30)).RotatedByRandom(MathHelper.TwoPi), Vector2.zeroVector, GetTusk_groundType(), GetDamage(18), 1, player.whoAmI);
 			p0.timeLeft = Main.rand.Next(101, 110);
 		}
 	}

@@ -144,7 +144,7 @@ public class MiningPowerPickaxe_Proj : ModProjectile
 						if (Owner.IsTargetTileInItemRange(Owner.HeldItem)
 							&& !(Main.tileHammer[MouseTileTarget.type] || Main.tileAxe[MouseTileTarget.type]))
 						{
-							Owner.PickTile(Player.tileTargetX, Player.tileTargetY, Pick);
+							Owner.PickTile(Player.tileTargetX, Player.tileTargetY, Owner.HeldItem.pick);
 						}
 
 						SoundEngine.PlaySound(SoundID.Item22);
@@ -217,7 +217,7 @@ public class MiningPowerPickaxe_Proj : ModProjectile
 
 				foreach (var tile in TargetTiles.Take(PickTileMax))
 				{
-					player.PickTile(tile.X, tile.Y, Pick);
+					player.PickTile(tile.X, tile.Y, pickaxeItem.Item.pick);
 				}
 
 				// Remove picked tiles from target tiles.
@@ -231,7 +231,7 @@ public class MiningPowerPickaxe_Proj : ModProjectile
 
 	public override bool PreDraw(ref Color lightColor)
 	{
-		var texture = ModContent.Request<Texture2D>(Texture).Value;
+		var texture = ModContent.Request<Texture2D>(Owner.HeldItem.ModItem is MiningPowerPickaxe heldPickaxe ? heldPickaxe.Texture : Texture).Value;
 		var textureGlow = ModAsset.MiningPowerPickaxe_glow.Value;
 		var textureDrillGlow = ModAsset.MiningPowerPickaxe_DrillGlow.Value;
 		var rotation = Projectile.rotation;
@@ -336,5 +336,5 @@ public class MiningPowerPickaxe_Proj : ModProjectile
 		&& TileID.Sets.Ore[tile.type];
 
 	private static bool CheckPickPower(Player player, Tile tile, Point16 clickPos) =>
-		player.GetPickaxeDamage(clickPos.X, clickPos.Y, Pick, 0, tile) > 0;
+		player.GetPickaxeDamage(clickPos.X, clickPos.Y, player.HeldItem.pick, 0, tile) > 0;
 }

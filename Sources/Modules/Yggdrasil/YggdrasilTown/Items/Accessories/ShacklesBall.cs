@@ -1,13 +1,17 @@
+using Terraria.Localization;
+
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
 
 public class ShacklesBall : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
-	public const float EnduranceBonus = 0.1f;
-	public const float MoveSpeedReduction = 0.15f;
-	public const float JumpSpeedReduction = 0.15f;
-	public const float JumpHeightReduction = 0.07f;
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(EnduranceBonus * 100f, MoveSpeedReduction * 100f, JumpSpeedReduction * 100f, JumpHeightReduction * 100f);
+
+	public const float EnduranceBonus = 0.08f;
+	public const float MoveSpeedReduction = 0.1f;
+	public const float JumpSpeedReduction = 0.1f;
+	public const float JumpHeightReduction = 0.05f;
 
 	public override void SetDefaults()
 	{
@@ -21,16 +25,16 @@ public class ShacklesBall : ModItem
 
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
-		// 1. +10% damage reduction
+		// 1. +8% damage reduction
 		player.endurance += EnduranceBonus;
 
-		// 2. -15% move speed
+		// 2. -10% move speed
 		player.moveSpeed -= MoveSpeedReduction;
 
-		// 3. -15% jump speed
+		// 3. -10% jump speed
 		player.jumpSpeedBoost -= Player.jumpSpeed * JumpSpeedReduction;
 
-		// 4. -7% jump height
+		// 4. -5% jump height
 		player.jump = (int)(player.jump * (1 - JumpHeightReduction));
 
 		// 5. Immune to 'Slow' debuff

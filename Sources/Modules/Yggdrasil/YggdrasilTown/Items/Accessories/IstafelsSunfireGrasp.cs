@@ -4,12 +4,28 @@ using Everglow.Yggdrasil.YggdrasilTown.Buffs;
 using Everglow.Yggdrasil.YggdrasilTown.Cooldowns;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
 using Terraria.Audio;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
 
 public class IstafelsSunfireGrasp : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(
+		MagicDamageBonus * 100f,
+		MagicCritBonus,
+		IstafelsSunfireGraspPlayer.ElementDebuffBuildUpRate * 100f,
+		IstafelsSunfireGrasp_FireBall.BuildUpMax,
+		IstafelsSunfireGraspPlayer.FireBallCooldown / 60f,
+		IstafelsSunfireGrasp_FireBall.ContactDamage - 1,
+		IstafelsSunfireGrasp_FireBall.BuffDuration / 60f,
+		Charred.LifeRegenReductionFromDot / 2f,
+		Charred.DefenseReduction * 100f,
+		IstafelsSunfireGraspPlayer.SkillDistance / 16f,
+		IstafelsSunfireGraspPlayer.SkillDuration / 60f,
+		IstafelsSunfireGraspPlayer.SkillDamageBonus * 100f,
+		IstafelsSunfireGraspPlayer.SkillCooldown / 60f);
 
 	public const float MagicDamageBonus = 0.11f;
 	public const float MagicCritBonus = 5f;
@@ -32,7 +48,7 @@ public class IstafelsSunfireGrasp : ModItem
 
 	public override void ModifyTooltips(List<TooltipLine> tooltips)
 	{
-		tooltips.Add(new TooltipLine(Mod, "Expert", $"Legendary"));
+		tooltips.Add(new TooltipLine(Mod, "Expert", this.GetLocalization("RarityLabel").Value));
 	}
 
 	public override void UpdateAccessory(Player player, bool hideVisual)

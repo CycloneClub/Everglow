@@ -16,7 +16,7 @@ public class RockArrow : ModItem
 		Item.width = 18;
 		Item.height = 52;
 
-		Item.damage = 8;
+		Item.damage = 11;
 		Item.DamageType = DamageClass.Ranged;
 
 		Item.maxStack = Item.CommonMaxStack;

@@ -6,7 +6,7 @@ public class EyeOfAnabiosis : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicWeapons;
 
-	public const int UseTime = 22;
+	public const int UseTime = 30;
 
 	private int WeaponProjectileIndex { get; set; } = 0;
 
@@ -18,10 +18,10 @@ public class EyeOfAnabiosis : ModItem
 		Item.height = 66;
 
 		Item.DamageType = DamageClass.Magic;
-		Item.damage = 27;
+		Item.damage = 30;
 		Item.knockBack = 3f;
 		Item.crit = 14;
-		Item.mana = 8;
+		Item.mana = 9;
 
 		Item.useTime = Item.useAnimation = UseTime;
 		Item.useStyle = ItemUseStyleID.Shoot;

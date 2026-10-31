@@ -15,7 +15,7 @@ public class GlowWoodSword : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.damage = 13;
+		Item.damage = 12;
 		Item.DamageType = DamageClass.Melee;
 		Item.width = 56;
 		Item.height = 56;
@@ -34,7 +34,7 @@ public class GlowWoodSword : ModItem
 		if (player.itemAnimation % 4 == 2)
 		{
 			Vector2 v0 = new Vector2(-3 * player.direction, -7 * player.gravDir).RotatedBy((player.itemAnimationMax - player.itemAnimation) * 0.13 * player.direction * player.gravDir + Math.Sin(Main.timeForVisualEffects / 16) * 0.3);
-			Projectile.NewProjectile(player.GetSource_ItemUse(Item), player.Center + v0 * 3, v0, ModContent.ProjectileType<Projectiles.GlowWoodSword>(), (int)(Item.damage * 0.3f), Item.knockBack, player.whoAmI);
+			Projectile.NewProjectile(player.GetSource_ItemUse(Item), player.Center + v0 * 3, v0, ModContent.ProjectileType<Projectiles.GlowWoodSword>(), (int)(Item.damage * 0.2f), Item.knockBack, player.whoAmI);
 		}
 		base.MeleeEffects(player, hitbox);
 	}

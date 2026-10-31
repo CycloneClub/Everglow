@@ -213,12 +213,12 @@ LampWoodBow: {
 
 LightArrow: {
 	DisplayName: 灯油箭
-	Tooltip: 造成3秒光解效果
+	Tooltip: 造成4秒光解效果
 }
 
 LightBullet: {
 	DisplayName: 灯火弹
-	Tooltip: 造成3秒光解效果
+	Tooltip: 造成4秒光解效果
 }
 
 MossyCyatheaBow: {

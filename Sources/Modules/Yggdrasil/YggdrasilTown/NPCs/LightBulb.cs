@@ -21,8 +21,8 @@ public class LightBulb : ModNPC
 	{
 		NPC.width = 42;
 		NPC.height = 42;
-		NPC.lifeMax = 30;
-		NPC.damage = 8;
+		NPC.lifeMax = Main.masterMode ? 90 : Main.expertMode ? 65 : 40;
+		NPC.damage = Main.masterMode ? 16 : Main.expertMode ? 12 : 8;
 		NPC.defense = 2;
 		NPC.friendly = false;
 		NPC.aiStyle = -1;
@@ -126,7 +126,7 @@ public class LightBulb : ModNPC
 							{
 								v.Y = -v.Y;
 							}
-							Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center - new Vector2(0, 40), v, ModContent.ProjectileType<LightSeed>(), 6, 0);
+							Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center - new Vector2(0, 40), v, ModContent.ProjectileType<LightSeed>(), 4, 0);
 						}
 						for (int x = 0; x < 12; x++)
 						{

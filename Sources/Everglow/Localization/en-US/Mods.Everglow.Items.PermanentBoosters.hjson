@@ -39,3 +39,13 @@ SquamousCore: {
 		Can only be used {1} time
 		'''
 }
+
+InsectManaEssence: {
+	DisplayName: Insect Mana Essence
+	Tooltip: "Permanently increases maximum mana by {0}\nCan be used up to {1} times"
+}
+
+ManaSpringElixir: {
+	DisplayName: Mana Spring Elixir
+	Tooltip: "Permanently increases maximum mana by {0}\nCan be used up to {1} times"
+}

@@ -1,8 +1,12 @@
+using Terraria.Localization;
+
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
 
 public class CelesteStoneWaistPendant : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(20, 30, 70, 3);
 
 	public override void SetDefaults()
 	{
@@ -15,13 +19,13 @@ public class CelesteStoneWaistPendant : ModItem
 
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
-		// 1. + 30 Mana
-		player.statManaMax2 += 30;
+		// 1. + 20 Mana
+		player.statManaMax2 += 20;
 
-		// 2. + 2 mana regen (if mana is between 40% and 60%)
-		if (player.statMana > player.statManaMax * 0.4f && player.statMana < player.statManaMax * 0.6f)
+		// 2. + 3 mana regen (if mana is between 30% and 70%)
+		if (player.statMana > player.statManaMax * 0.3f && player.statMana < player.statManaMax * 0.7f)
 		{
-			player.manaRegen += 2;
+			player.manaRegen += 3;
 		}
 	}
 }

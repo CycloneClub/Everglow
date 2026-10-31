@@ -13,7 +13,7 @@ public class NavyThunder : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.damage = 78;
+		Item.damage = 42;
 		Item.DamageType = DamageClass.Magic;
 		Item.mana = 10;
 		Item.width = 104;

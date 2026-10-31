@@ -9,7 +9,7 @@ public class CyanLeggings : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(3);
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(4);
 
 	public override void SetStaticDefaults()
 	{
@@ -27,7 +27,7 @@ public class CyanLeggings : ModItem
 
 	public override void UpdateEquip(Player player)
 	{
-		player.GetAttackSpeed(DamageClass.Melee) += 0.05f;
+		player.GetAttackSpeed(DamageClass.Melee) += 0.04f;
 	}
 
 	public override void AddRecipes()

@@ -407,3 +407,8 @@ GiantBeetleAntennae: {
 	DisplayName: 巨型甲虫的触角
 	Tooltip: ""
 }
+
+ManaSpringOre: {
+	DisplayName: 魔泉矿
+	Tooltip: 蕴含魔力的极稀有矿石
+}

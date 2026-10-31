@@ -18,13 +18,13 @@ public class SpringOfQuicksand : ModItem
 		Item.height = 48;
 
 		Item.DamageType = DamageClass.Magic;
-		Item.damage = 16;
+		Item.damage = 20;
 		Item.knockBack = 0.5f;
-		Item.mana = 7;
+		Item.mana = 9;
 
 		Item.useStyle = ItemUseStyleID.Shoot;
 		Item.UseSound = SoundID.Item20;
-		Item.useTime = Item.useAnimation = 32;
+		Item.useTime = Item.useAnimation = 36;
 		Item.noMelee = true;
 		Item.autoReuse = false;
 		Item.rare = ItemRarityID.Green;

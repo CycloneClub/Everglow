@@ -299,6 +299,23 @@ public static class PlayerUtils
 	public static bool HasCooldown<TCooldownBase>(this Player player) =>
 		player.HasCooldown(cd => cd is TCooldownBase);
 
+	/// <summary>Reads the registered cooldown; null means ready.</summary>
+	public static CooldownInstance GetCooldown(this Player player, string id) =>
+		player.GetModPlayer<EverglowPlayer>().cooldowns.GetValueOrDefault(id);
+
+	/// <summary>
+	/// Advances a cooldown from its gameplay update hook. Such cooldowns must
+	/// disable AutomaticTick to avoid a second update in PostUpdateMiscEffects.
+	/// </summary>
+	public static void TickCooldown(this Player player, string id)
+	{
+		var instance = player.GetCooldown(id);
+		if (instance != null && instance.Tick())
+		{
+			player.ClearCooldown(id);
+		}
+	}
+
 	public static void ClearCooldown(this Player player, string id)
 	{
 		var mp = player.GetModPlayer<EverglowPlayer>();

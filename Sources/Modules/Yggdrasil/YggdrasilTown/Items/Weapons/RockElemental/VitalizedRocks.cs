@@ -15,13 +15,13 @@ public class VitalizedRocks : ModItem
 		Item.useAnimation = 15;
 		Item.useTime = 15;
 		Item.knockBack = 3f;
-		Item.damage = 25;
+		Item.damage = 14;
 		Item.rare = ItemRarityID.Green;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 12000;
 		Item.autoReuse = false;
 		Item.DamageType = DamageClass.Magic;
-		Item.mana = 9;
+		Item.mana = 7;
 		Item.noUseGraphic = true;
 		Item.autoReuse = true;
 		Item.noMelee = true;

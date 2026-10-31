@@ -10,9 +10,9 @@ public class RustSlingshot : SlingshotItem
 		Item.width = 30;
 		Item.height = 30;
 
-		Item.damage = 15;
+		Item.damage = 12;
 		Item.knockBack = 1f;
-		Item.crit = 42;
+		Item.crit = 18;
 
 		Item.useTime = Item.useAnimation = 22;
 

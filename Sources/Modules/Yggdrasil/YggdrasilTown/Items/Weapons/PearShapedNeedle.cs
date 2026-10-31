@@ -18,7 +18,7 @@ public class PearShapedNeedle : ModItem
 		Item.height = 28;
 
 		Item.DamageType = DamageClass.Ranged;
-		Item.damage = 17;
+		Item.damage = 14;
 		Item.knockBack = 2.5f;
 
 		Item.useStyle = ItemUseStyleID.Shoot;

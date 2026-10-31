@@ -22,9 +22,9 @@ public class JellyBall : ModNPC
 		NPC.width = 40;
 		NPC.height = 40;
 		NPC.aiStyle = -1;
-		NPC.damage = 13;
+		NPC.damage = 12;
 		NPC.defense = 2;
-		NPC.lifeMax = 24;
+		NPC.lifeMax = 30;
 		NPC.HitSound = SoundID.NPCHit3;
 		NPC.DeathSound = SoundID.NPCDeath3;
 		NPC.noGravity = true;

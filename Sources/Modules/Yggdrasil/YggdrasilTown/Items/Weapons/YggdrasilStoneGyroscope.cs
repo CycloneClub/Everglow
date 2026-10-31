@@ -15,7 +15,8 @@ public class YggdrasilStoneGyroscope : ModItem
 		Item.height = 32;
 
 		Item.DamageType = DamageClass.Summon;
-		Item.damage = 17;
+		Item.damage = 12;
+		Item.mana = 10;
 		Item.knockBack = 0.2f;
 
 		Item.useTime = Item.useAnimation = 16;

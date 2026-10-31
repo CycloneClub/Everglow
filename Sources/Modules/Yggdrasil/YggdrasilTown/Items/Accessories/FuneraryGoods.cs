@@ -1,11 +1,15 @@
+using Terraria.Localization;
+
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
 
 public class FuneraryGoods : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
-	public const float EffectChance = 0.125f;
-	public const int ManaRecovery = 100;
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(EffectChance * 100f, ManaRecovery);
+
+	public const float EffectChance = 0.2f;
+	public const int ManaRecovery = 30;
 
 	public override void SetDefaults()
 	{
@@ -19,7 +23,7 @@ public class FuneraryGoods : ModItem
 
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
-		// 1. On kill enemy, has a 12.5% chance to recover 100 mana immediately
+		// 1. On kill enemy, has a 20% chance to recover 30 mana immediately
 		// ====================================================================
 		player.GetModPlayer<FuneraryGoodsPlayer>().FuneraryGoodsEnable = true;
 	}

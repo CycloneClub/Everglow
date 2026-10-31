@@ -1,5 +1,6 @@
 using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 using Terraria.GameContent.Creative;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.LampWood;
 
@@ -8,8 +9,12 @@ public class LampWoodHelmet : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	private const int PickSpeedBonus = 10;
-	private const int ArmorSetPickSpeedBonus = 10;
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(PickSpeedBonus, ArmorSetDefenseBonus, ArmorSetLifeRegenBonus / 2f, ArmorSetPickSpeedBonus);
+
+	public LocalizedText SetBonusText => this.GetLocalization("SetBonus").WithFormatArgs(PickSpeedBonus, ArmorSetDefenseBonus, ArmorSetLifeRegenBonus / 2f, ArmorSetPickSpeedBonus);
+
+	private const int PickSpeedBonus = 8;
+	private const int ArmorSetPickSpeedBonus = 8;
 	private const int ArmorSetLifeRegenBonus = 1;
 	private const int ArmorSetDefenseBonus = 2;
 
@@ -24,7 +29,7 @@ public class LampWoodHelmet : ModItem
 		Item.height = 24;
 		Item.value = Item.buyPrice(silver: 20);
 		Item.rare = ItemRarityID.Green;
-		Item.defense = 2;
+		Item.defense = 3;
 	}
 
 	public override void UpdateEquip(Player player)
@@ -39,6 +44,7 @@ public class LampWoodHelmet : ModItem
 
 	public override void UpdateArmorSet(Player player)
 	{
+		player.setBonus = SetBonusText.Value;
 		player.statDefense += ArmorSetDefenseBonus;
 		player.lifeRegen += ArmorSetLifeRegenBonus;
 		player.pickSpeed -= ArmorSetPickSpeedBonus / 100f;

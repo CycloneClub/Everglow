@@ -47,7 +47,7 @@ internal class DreamWeaverBook : MagicBookProjectile
 			{
 				UseCount = 0;
 			}
-			var p = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + velocity * -2 + new Vector2(0, -10), velocity, ModContent.ProjectileType<DreamWeaverII>(), player.HeldItem.damage * 2, player.HeldItem.knockBack, player.whoAmI);
+			var p = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + velocity * -2 + new Vector2(0, -10), velocity, ModContent.ProjectileType<DreamWeaverII>(), player.HeldItem.damage * 3 / 2, player.HeldItem.knockBack, player.whoAmI);
 			p.CritChance = player.GetWeaponCrit(player.HeldItem);
 		}
 	}

@@ -46,7 +46,7 @@ internal class FeatheredStaff : ModProjectile
 		Projectile.aiStyle = 0;
 		Projectile.friendly = true;
 		Projectile.DamageType = DamageClass.Magic;
-		Projectile.penetrate = 3;
+		Projectile.penetrate = 2;
 		Projectile.timeLeft = 300;
 		Projectile.tileCollide = true;
 

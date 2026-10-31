@@ -13,6 +13,7 @@ public class BrownCaterpillar : Caterpillar
 {
 	public override void SetDefaults()
 	{
+		NPC.lifeMax = Main.masterMode ? 180 : Main.expertMode ? 120 : 60;
 		DustType = ModContent.DustType<VerdantBlood>();
 	}
 

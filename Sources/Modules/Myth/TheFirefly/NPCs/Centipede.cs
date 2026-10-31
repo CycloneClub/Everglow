@@ -41,11 +41,11 @@ internal class CentipedeHead : FireWormHead
 		NPC.scale = 0.9f;
 		NPC.dontCountMe = true;
 
-		NPC.damage = 26;
+		NPC.damage = 24;
 		NPC.width = 22;
 		NPC.height = 22;
-		NPC.defense = 36;
-		NPC.lifeMax = 1200;
+		NPC.defense = 16;
+		NPC.lifeMax = 600;
 		NPC.knockBackResist = 0f;
 		NPC.value = 300f;
 		NPC.aiStyle = -1;
@@ -533,11 +533,11 @@ internal class CentipedeBody : FireWormBody
 		NPC.scale = 0.9f;
 		NPC.dontCountMe = true;
 
-		NPC.damage = 26;
+		NPC.damage = 24;
 		NPC.width = 24;
 		NPC.height = 24;
-		NPC.defense = 30;
-		NPC.lifeMax = 1200;
+		NPC.defense = 12;
+		NPC.lifeMax = 600;
 		NPC.knockBackResist = 0f;
 		NPC.value = 300f;
 		NPC.aiStyle = -1;
@@ -677,11 +677,11 @@ internal class CentipedeTail : FireWormTail
 		NPC.scale = 0.9f;
 		NPC.dontCountMe = true;
 
-		NPC.damage = 26;
+		NPC.damage = 24;
 		NPC.width = 24;
 		NPC.height = 24;
-		NPC.defense = 24;
-		NPC.lifeMax = 1200;
+		NPC.defense = 8;
+		NPC.lifeMax = 600;
 		NPC.knockBackResist = 0f;
 		NPC.value = 300f;
 		NPC.aiStyle = -1;

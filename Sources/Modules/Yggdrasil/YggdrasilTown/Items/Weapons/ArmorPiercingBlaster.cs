@@ -12,12 +12,12 @@ public class ArmorPiercingBlaster : ModItem
 		Item.height = 30;
 
 		Item.DamageType = DamageClass.Ranged;
-		Item.damage = 26;
+		Item.damage = 30;
 		Item.knockBack = 1.0f;
 		Item.crit = 4;
 
 		Item.useStyle = ItemUseStyleID.Swing;
-		Item.useAnimation = Item.useTime = 36;
+		Item.useAnimation = Item.useTime = 32;
 		Item.UseSound = SoundID.Item1;
 		Item.autoReuse = false;
 		Item.noMelee = true;

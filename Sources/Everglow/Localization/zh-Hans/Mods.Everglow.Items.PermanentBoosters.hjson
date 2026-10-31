@@ -39,3 +39,13 @@ SquamousCore: {
 		最多使用{1}次
 		'''
 }
+
+InsectManaEssence: {
+	DisplayName: 虫汁灵露
+	Tooltip: "永久增加{0}点魔力上限\n最多使用{1}次"
+}
+
+ManaSpringElixir: {
+	DisplayName: 魔泉精华
+	Tooltip: "永久增加{0}点魔力上限\n最多使用{1}次"
+}

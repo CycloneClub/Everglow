@@ -21,9 +21,9 @@ public class GiantJellyBall : ModNPC
 		NPC.width = 80;
 		NPC.height = 80;
 		NPC.aiStyle = -1;
-		NPC.damage = 45;
-		NPC.defense = 16;
-		NPC.lifeMax = 120;
+		NPC.damage = 24;
+		NPC.defense = 10;
+		NPC.lifeMax = 140;
 		NPC.HitSound = SoundID.NPCHit3;
 		NPC.DeathSound = SoundID.NPCDeath3;
 		NPC.noGravity = true;

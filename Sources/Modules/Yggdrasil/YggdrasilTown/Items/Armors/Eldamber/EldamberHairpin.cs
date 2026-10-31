@@ -1,25 +1,48 @@
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Eldamber;
 
 /// <summary>
-/// 古珀头盔：头部护甲。
+/// 古珀发簪：法师头部护甲。
 /// 已确定配方：古珀×12＋球冻王晶体×3；在铁砧处制作。
 /// </summary>
 [AutoloadEquip(EquipType.Head)]
-public class EldamberHelmet : ModItem
+[LegacyName("EldamberHelmet")]
+public class EldamberHairpin : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(4, 40);
+
+	public LocalizedText SetBonusText => this.GetLocalization("SetBonus").WithFormatArgs(15);
 
 	public override void SetDefaults()
 	{
 		Item.width = 28;
 		Item.height = 24;
 		Item.maxStack = 1;
-		Item.defense = 5;
+		Item.defense = 4;
 		Item.rare = ItemRarityID.Blue;
 		Item.value = Item.sellPrice(silver: 30);
+	}
+
+	public override void UpdateEquip(Player player)
+	{
+		player.GetDamage(DamageClass.Magic) += 0.04f;
+		player.statManaMax2 += 40;
+	}
+
+	public override bool IsArmorSet(Item head, Item body, Item legs)
+	{
+		return body.type == ModContent.ItemType<EldamberBreastplate>() && legs.type == ModContent.ItemType<EldamberBoots>();
+	}
+
+	public override void UpdateArmorSet(Player player)
+	{
+		player.setBonus = SetBonusText.Value;
+		player.manaCost *= 0.85f;
 	}
 
 	public override void AddRecipes()
