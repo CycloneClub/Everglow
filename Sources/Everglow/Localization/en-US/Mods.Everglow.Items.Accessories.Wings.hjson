@@ -1,4 +1,8 @@
 BlueyWings: {
 	DisplayName: Bluey Wings
-	Tooltip: Allows flight and slow fall
+	Tooltip:
+		'''
+		Allows flight and slow fall, and prevents fall damage
+		Base flight time: {0} seconds; horizontal flight speed: {1} pixels/tick; horizontal acceleration multiplier: {2}
+		'''
 }

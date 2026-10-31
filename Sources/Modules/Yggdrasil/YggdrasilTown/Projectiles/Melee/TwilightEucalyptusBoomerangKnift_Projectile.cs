@@ -24,7 +24,7 @@ public class TwilightEucalyptusBoomerangKnift_Projectile : ModProjectile
 		Projectile.friendly = true;
 
 		Projectile.usesLocalNPCImmunity = true;
-		Projectile.localNPCHitCooldown = 6;
+		Projectile.localNPCHitCooldown = 12;
 		Projectile.penetrate = -1;
 		Projectile.timeLeft = Lifetime;
 		Projectile.DamageType = DamageClass.Melee;

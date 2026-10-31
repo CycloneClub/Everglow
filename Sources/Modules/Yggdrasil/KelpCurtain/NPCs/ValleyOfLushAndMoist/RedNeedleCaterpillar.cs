@@ -122,10 +122,9 @@ public class RedNeedleCaterpillar : Caterpillar
 		// and this class emits the same dust from its own guarded HitEffect instead (D-35/T-04-46).
 		DustType = -1;
 
-		// 生命 60 / 伤害 20 / 防御 4 / 钱币（铜） 80铜. [NoGameModeScale] keeps the design's own values from
-		// being scaled a second time, so no mode branch touches them.
-		NPC.lifeMax = 60;
-		NPC.life = 60;
+		// 普通 / 专家 / 大师生命为 60 / 120 / 180；伤害 20、防御 4、钱币（铜）80。
+		NPC.lifeMax = Main.masterMode ? 180 : Main.expertMode ? 120 : 60;
+		NPC.life = NPC.lifeMax;
 		NPC.damage = 20;
 		NPC.defDamage = 20;
 		NPC.defense = 4;

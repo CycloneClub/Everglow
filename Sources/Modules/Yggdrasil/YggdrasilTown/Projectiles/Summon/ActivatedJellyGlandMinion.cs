@@ -24,7 +24,7 @@ public class ActivatedJellyGlandMinion : ModProjectile
 	private const int NoTarget = -1;
 	private const int SearchDistance = 1200;
 	private const float ExplodeStateDistance = 200f;
-	private const int ExplosionDuration = 50;
+	private const int ExplosionDuration = 70;
 	private const float ExplosionScaleFrequencyLimit = 0.4f;
 
 	private int TargetWhoAmI { get; set; }

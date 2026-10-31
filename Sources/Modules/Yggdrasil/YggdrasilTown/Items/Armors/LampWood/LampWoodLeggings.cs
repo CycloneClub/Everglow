@@ -1,5 +1,6 @@
 using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 using Terraria.GameContent.Creative;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.LampWood;
 
@@ -8,7 +9,9 @@ public class LampWoodLeggings : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	private const int MoveSpeedBonus = 5;
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(MoveSpeedBonus);
+
+	private const int MoveSpeedBonus = 6;
 
 	public override void SetStaticDefaults()
 	{

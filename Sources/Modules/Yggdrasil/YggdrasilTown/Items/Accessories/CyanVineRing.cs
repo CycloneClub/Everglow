@@ -1,4 +1,5 @@
 using Everglow.Yggdrasil.YggdrasilTown.Buffs;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
 
@@ -6,7 +7,9 @@ public class CyanVineRing : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
-	public const int BuffDuration = 900;
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(3, 1.5f, 5, BuffDuration / 60f);
+
+	public const int BuffDuration = 600;
 
 	public override void SetDefaults()
 	{
@@ -19,8 +22,8 @@ public class CyanVineRing : ModItem
 
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
-		// 1. 4% Crit chance.
-		player.GetCritChance(DamageClass.Generic) += 4;
+		// 1. 3% Crit chance.
+		player.GetCritChance(DamageClass.Generic) += 3;
 		player.GetModPlayer<CyanVineRingPlayer>().HasCyanVineRing = true;
 	}
 }
@@ -47,7 +50,7 @@ public class CyanVineRingPlayer : ModPlayer
 	{
 		if (HasCyanVineRing)
 		{
-			HurtTimer = 60;
+			HurtTimer = 90;
 		}
 	}
 

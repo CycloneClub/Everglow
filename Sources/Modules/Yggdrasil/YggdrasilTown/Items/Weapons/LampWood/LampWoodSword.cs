@@ -17,7 +17,7 @@ public class LampWoodSword : ModItem
 		Item.useAnimation = 17;
 		Item.useTime = 17;
 		Item.knockBack = 4.5f;
-		Item.damage = 11;
+		Item.damage = 16;
 		Item.rare = ItemRarityID.White;
 		Item.UseSound = SoundID.Item1;
 		Item.autoReuse = true;

@@ -72,7 +72,7 @@ public class HexaCrystalStaff_SubProj : ModProjectile
 	{
 		if (target.HasBuff(ModContent.BuffType<HexaCrystalWeak>()))
 		{
-			modifiers.FinalDamage *= 2.5f;
+			modifiers.FinalDamage *= 1.75f;
 		}
 		base.ModifyHitNPC(target, ref modifiers);
 	}

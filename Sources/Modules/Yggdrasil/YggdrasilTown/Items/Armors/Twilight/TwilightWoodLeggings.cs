@@ -2,6 +2,7 @@ using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 using Everglow.Yggdrasil.WorldGeneration;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Twilight;
 
@@ -10,7 +11,9 @@ public class TwilightWoodLeggings : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	public const int MoveSpeedBonus = 5;
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(MoveSpeedBonus, JumpSpeedBonus / 100f);
+
+	public const int MoveSpeedBonus = 6;
 	public const int JumpSpeedBonus = 5;
 	public int WalkStep = 0;
 
@@ -20,7 +23,7 @@ public class TwilightWoodLeggings : ModItem
 		Item.height = 26;
 		Item.value = Item.buyPrice(silver: 37, copper: 50);
 		Item.rare = ItemRarityID.White;
-		Item.defense = 2;
+		Item.defense = 4;
 		WalkStep = 0;
 	}
 

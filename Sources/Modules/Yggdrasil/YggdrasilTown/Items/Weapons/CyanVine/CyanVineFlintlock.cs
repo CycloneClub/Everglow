@@ -15,9 +15,9 @@ public class CyanVineFlintlock : ModItem
 		Item.height = 26;
 		Item.rare = ItemRarityID.Blue;
 		Item.value = 2500;
-		Item.useTime = 30;
-		Item.useAnimation = 30;
-		Item.damage = 35;
+		Item.useTime = 28;
+		Item.useAnimation = 28;
+		Item.damage = 30;
 		Item.DamageType = DamageClass.Ranged;
 		Item.useStyle = ItemUseStyleID.Shoot;
 		Item.UseSound = SoundID.Item11;

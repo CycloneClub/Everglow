@@ -1,11 +1,15 @@
+using Terraria.Localization;
+
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories.Furnace;
 
 public class HeatEmblem : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
-	public const float BuffTriggerRate = 0.33f;
-	public const int BuffDuration = 300;
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(2, BuffTriggerRate * 100f, BuffDuration / 60f);
+
+	public const float BuffTriggerRate = 0.2f;
+	public const int BuffDuration = 180;
 
 	public override void SetDefaults()
 	{
@@ -18,9 +22,9 @@ public class HeatEmblem : ModItem
 
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
-		// 1. + 2 Life Regeneration
+		// 1. + 4 Life Regeneration
 		// ========================
-		player.lifeRegen += 2;
+		player.lifeRegen += 4;
 
 		// 2. Gain "On Fire" debuff when get hurt
 		// ======================================
@@ -40,7 +44,7 @@ internal class HeatEmblemPlayer : ModPlayer
 	// 2. Gain "On Fire" debuff when get hurt
 	// ======================================
 	// When the wearer get hurt,
-	// has 33% chance to inflict an "On Fire!" debuff on wearer.
+	// has 20% chance to inflict an "On Fire!" debuff on wearer.
 	public override void OnHurt(Player.HurtInfo info)
 	{
 		if (HeatEmblemEnable)

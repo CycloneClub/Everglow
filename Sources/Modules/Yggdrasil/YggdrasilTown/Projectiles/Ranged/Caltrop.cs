@@ -4,7 +4,7 @@ public class Caltrop : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
 
-	private int Durability { get; set; } = 15;
+	private int Durability { get; set; } = 8;
 
 	public override void SetDefaults()
 	{
@@ -20,7 +20,7 @@ public class Caltrop : ModProjectile
 		Projectile.usesLocalNPCImmunity = true;
 		Projectile.localNPCHitCooldown = 30;
 
-		Projectile.timeLeft = 2000;
+		Projectile.timeLeft = 900;
 
 		Projectile.netImportant = true;
 	}

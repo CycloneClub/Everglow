@@ -1,4 +1,5 @@
 using Terraria.GameContent.Creative;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Trainee;
 
@@ -6,6 +7,10 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Trainee;
 public class SafetyHelmets : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(2, 2, 0.5f);
+
+	public LocalizedText SetBonusText => this.GetLocalization("SetBonus").WithFormatArgs(2, 2, 0.5f);
 
 	public override void SetStaticDefaults()
 	{
@@ -29,6 +34,7 @@ public class SafetyHelmets : ModItem
 
 	public override void UpdateArmorSet(Player player)
 	{
+		player.setBonus = SetBonusText.Value;
 		player.statDefense += 2;
 		player.lifeRegen += 1;
 	}

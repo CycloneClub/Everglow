@@ -16,14 +16,14 @@ public class AmethystHeadedSpear : ModItem
 	public override void SetDefaults()
 	{
 		Item.DamageType = DamageClass.Melee;
-		Item.damage = 18;
+		Item.damage = 16;
 		Item.knockBack = 6f;
 		Item.noUseGraphic = true;
 		Item.noMelee = true;
 
 		Item.useStyle = ItemUseStyleID.Shoot;
-		Item.useTime = 31;
-		Item.useAnimation = 31;
+		Item.useTime = 24;
+		Item.useAnimation = 24;
 		Item.UseSound = SoundID.Item71;
 		Item.autoReuse = true;
 

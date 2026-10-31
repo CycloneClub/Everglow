@@ -407,3 +407,8 @@ GiantBeetleAntennae: {
 	DisplayName: Giant Beetle Antennae
 	Tooltip: ""
 }
+
+ManaSpringOre: {
+	DisplayName: Mana Spring Ore
+	Tooltip: An exceptionally rare ore imbued with mana
+}

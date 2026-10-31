@@ -66,7 +66,7 @@ public class DreamWeaverBall : ModProjectile
 			}
 		}
 		Projectile.ai[0] += 1;
-		if (Projectile.ai[0] > 9 - BallPower * 5)
+		if (Projectile.ai[0] > 12 - BallPower * 5)
 		{
 			Projectile.ai[0] = 0;
 

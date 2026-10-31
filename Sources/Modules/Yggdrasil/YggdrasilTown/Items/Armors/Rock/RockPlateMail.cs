@@ -1,4 +1,5 @@
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Rock;
 
@@ -7,7 +8,9 @@ public class RockPlateMail : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	public const int MeleeDamageBonus = 5;
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(MeleeDamageBonus);
+
+	public const int MeleeDamageBonus = 7;
 
 	public override void SetDefaults()
 	{

@@ -18,7 +18,7 @@ public class CyanVineSword : ModItem
 		Item.useAnimation = 16;
 		Item.useTime = 16;
 		Item.knockBack = 3f;
-		Item.damage = 15;
+		Item.damage = 17;
 		Item.rare = ItemRarityID.White;
 		Item.autoReuse = true;
 		Item.UseSound = SoundID.Item1;

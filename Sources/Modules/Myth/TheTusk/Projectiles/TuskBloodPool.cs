@@ -75,14 +75,14 @@ public class TuskBloodPool : ModProjectile
 				NPC jaw = NPC.NewNPCDirect(Projectile.GetSource_FromAI(), Projectile.Center + new Vector2(Main.rand.NextFloat(-90, 90f), 50), ModContent.NPCType<Living_Jawbone>());
 				jaw.scale = Main.rand.NextFloat(0.5f, 1f);
 				jaw.velocity = new Vector2(0, -Main.rand.NextFloat(7f, 12f)).RotatedBy(Main.rand.NextFloat(-0.3f, 0.3f));
-				jaw.damage = 33;
+				jaw.damage = 24;
 				if (Main.expertMode)
 				{
-					jaw.damage = 44;
+					jaw.damage = 36;
 				}
 				if (Main.masterMode)
 				{
-					jaw.damage = 57;
+					jaw.damage = 48;
 				}
 			}
 		}

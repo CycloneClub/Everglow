@@ -28,7 +28,7 @@ public class JumpPotion : ModItem
 		Item.rare = ItemRarityID.Blue;
 		Item.value = Item.buyPrice(gold: 1, silver: 23, copper: 36);
 		Item.buffType = ModContent.BuffType<JumpPotionBuff>();
-		Item.buffTime = 4 * 60 * 60;
+		Item.buffTime = 5 * 60 * 60;
 	}
 
 	public override void AddRecipes()

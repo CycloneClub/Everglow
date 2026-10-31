@@ -12,11 +12,11 @@ public class DustOfCorrupt : ModItem
 	{
 		Item.damage = 13;
 		Item.DamageType = DamageClass.Magic;
-		Item.mana = 4;
+		Item.mana = 3;
 		Item.width = 60;
 		Item.height = 60;
-		Item.useTime = 3;
-		Item.useAnimation = 3;
+		Item.useTime = 6;
+		Item.useAnimation = 6;
 		Item.useStyle = ItemUseStyleID.Shoot;
 		Item.noUseGraphic = true;
 		Item.noMelee = true;

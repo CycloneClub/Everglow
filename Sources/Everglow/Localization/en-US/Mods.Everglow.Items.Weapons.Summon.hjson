@@ -79,7 +79,7 @@ MeltingSideGyroscope: {
 
 MidwinterNightmare: {
 	DisplayName: Midwinter Nightmare
-	Tooltip: ""
+	Tooltip: Summons a faelantern sentry that strikes with three branches from the ground and sends a fae to confuse nearby enemies.
 }
 
 RedAlgaeMagicWhip: {
@@ -121,7 +121,7 @@ ThermoprobeStaff: {
 	Tooltip:
 		'''
 		Summons a floating unit that fires at enemies
-		Each unit carries three shots and disappears when empty
+		Each unit carries four shots and disappears when empty
 		You can have up to twice your maximum number of minions in units
 		'''
 }
@@ -133,7 +133,7 @@ ToothStaff: {
 
 WiltedForestLamp: {
 	DisplayName: Wilted Forest Lamp
-	Tooltip: ""
+	Tooltip: Summons a lamp that fires homing spells and then explodes, applying 500 Burn buildup to nearby enemies
 }
 
 WoodlandWraithStaff: {

@@ -67,6 +67,11 @@ EverglowConfig: {
 		Label: debug Mode
 		Tooltip: ""
 	}
+
+	combatTestArenas: {
+		Label: Generate test combat arenas
+		Tooltip: "Testing only. Newly generated King Jelly Ball, Squamous Shell, Firefly and Tusk areas receive clear combat space with full-width wooden platforms every 20 tiles and no added solid floor. Off by default. Existing maps are unchanged; regenerate with this disabled to restore natural terrain."
+	}
 }
 
 FogConfigs: {

@@ -153,16 +153,16 @@ public class SquamousRollingStone : ModProjectile
 			d0.scale *= Main.rand.NextFloat(1.3f);
 		}
 		GenerateSmog(8);
-		int scaleDamage = 2;
+		float scaleDamage = 1.5f;
 		if (Main.expertMode)
 		{
-			scaleDamage = 3;
+			scaleDamage = 1.5f;
 		}
 		if (Main.masterMode)
 		{
-			scaleDamage = 3;
+			scaleDamage = 1.5f;
 		}
-		Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<SquamousRockExplosion>(), Projectile.damage * scaleDamage, Projectile.knockBack, Projectile.owner, 40);
+		Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<SquamousRockExplosion>(), (int)(Projectile.damage * scaleDamage), Projectile.knockBack, Projectile.owner, 40);
 		ShakerManager.AddShaker(Projectile.Center, Vector2.One.RotatedByRandom(MathHelper.Pi), 120, 20f, 120, 0.9f, 0.8f, 150);
 	}
 

@@ -14,27 +14,28 @@ public class BarkSpicyCaterpillar : Caterpillar
 	public override void SetDefaults()
 	{
 		base.SetDefaults();
+		NPC.defense = 4;
 
 		SegmentBehavioralSize = 10;
 		SegmentHitBoxSize = 30;
 		SegmentCount = 10;
 		AnimationSpeed = 2;
 		NPC.knockBackResist = -0.12f;
-		NPC.lifeMax = 16;
-		NPC.damage = 6;
+		NPC.lifeMax = 24;
+		NPC.damage = 8;
 		NPC.value = 3;
 		if (Main.expertMode)
 		{
 			NPC.knockBackResist = -0.08f;
-			NPC.lifeMax = 30;
-			NPC.damage = 8;
+			NPC.lifeMax = 42;
+			NPC.damage = 12;
 			NPC.value = 7;
 		}
 		if (Main.masterMode)
 		{
 			NPC.knockBackResist = -0.04f;
-			NPC.lifeMax = 42;
-			NPC.damage = 11;
+			NPC.lifeMax = 60;
+			NPC.damage = 16;
 			NPC.value = 10;
 		}
 		DustType = ModContent.DustType<VerdantBlood>();

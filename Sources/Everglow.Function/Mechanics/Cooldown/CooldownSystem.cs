@@ -43,6 +43,11 @@ public class CooldownSystem : ModSystem
 		Point drawPos = baseDrawPosition.ToPoint();
 		foreach (var (cKey, cooldown) in mp.cooldowns)
 		{
+			if (!cooldown.cooldown.IsVisible)
+			{
+				continue;
+			}
+
 			coolDownTextKey = DrawCooldownIcon(spriteBatch, p, coolDownTextKey, cKey, drawPos, new Point(Main.mouseX, Main.mouseY));
 			drawPos += spacing.ToPoint();
 		}
@@ -80,6 +85,10 @@ public class CooldownSystem : ModSystem
 
 		var cooldownInstance = mp.cooldowns[cooldownSlotOnPlayer];
 		var cooldownBase = cooldownInstance.cooldown;
+		if (!cooldownBase.IsVisible)
+		{
+			return hoveredCooldownIndex;
+		}
 
 		int width = 32, height = 32;
 		(int drawPosX, int drawPosY) = (position.X, position.Y);

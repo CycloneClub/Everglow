@@ -394,11 +394,11 @@ public abstract class HangingTile : ModTile, ITileFluentlyDrawn
 		{
 			return;
 		}
-		if (hTP.SwitchVineCoolTimer > 0)
+		if (player.HasCooldown<HangingTileSwitchCooldown>())
 		{
 			return;
 		}
-		hTP.SwitchVineCoolTimer = 30;
+		player.AddCooldown(HangingTileSwitchCooldown.ID, 30);
 		if (RopeGraspingPlayer.TryAdd(tilePos, player))
 		{
 			hTP.Grasping = true;
@@ -414,7 +414,7 @@ public abstract class HangingTile : ModTile, ITileFluentlyDrawn
 		{
 			return;
 		}
-		if (hTP.SwitchVineCoolTimer > 0)
+		if (player.HasCooldown<HangingTileSwitchCooldown>())
 		{
 			return;
 		}

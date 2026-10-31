@@ -67,6 +67,11 @@ EverglowConfig: {
 		Label: 调试模式
 		Tooltip: ""
 	}
+
+	combatTestArenas: {
+		Label: 生成测试战斗场地
+		Tooltip: "仅供测试。新生成的球冻温床、龙鳞古壳石牢、萤火及獠牙子世界会清理战斗空间，并以20格间距铺满贯穿场地宽度的多层木平台，不新增实心地面。默认关闭；不修改已生成地图，关闭后需重新生成才能恢复自然地形。"
+	}
 }
 
 FogConfigs: {

@@ -5,6 +5,7 @@ using Everglow.Yggdrasil.YggdrasilTown.Cooldowns;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 using Terraria.GameContent.Creative;
 using Terraria.GameInput;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Auburn;
 
@@ -13,7 +14,11 @@ public class AuburnHoodie : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	public const int BuffDuration = 45 * 60;
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(10, 1, BuffDuration / 60f, BuffCooldown / 60f, 1);
+
+	public LocalizedText SetBonusText => this.GetLocalization("SetBonus").WithFormatArgs(10, 1, BuffDuration / 60f, BuffCooldown / 60f, 1);
+
+	public const int BuffDuration = 30 * 60;
 	public const int BuffCooldown = 60 * 60;
 
 	public override void SetStaticDefaults()
@@ -27,12 +32,12 @@ public class AuburnHoodie : ModItem
 		Item.height = 22;
 		Item.value = 2500;
 		Item.rare = ItemRarityID.White;
-		Item.defense = 1;
+		Item.defense = 2;
 	}
 
 	public override void UpdateEquip(Player player)
 	{
-		player.minionDamage += 0.08f;
+		player.minionDamage += 0.1f;
 	}
 
 	public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -42,6 +47,7 @@ public class AuburnHoodie : ModItem
 
 	public override void UpdateArmorSet(Player player)
 	{
+		player.setBonus = SetBonusText.Value;
 		player.maxMinions += 1;
 		player.GetModPlayer<YggdrasilPlayer>().auburnSet = true;
 	}
@@ -49,6 +55,7 @@ public class AuburnHoodie : ModItem
 	public override void AddRecipes()
 	{
 		Recipe recipe = CreateRecipe();
+		recipe.AddIngredient<AuburnRodSkeleton>();
 		recipe.AddIngredient<RodWing>(10);
 		recipe.AddIngredient(ItemID.Leather, 4);
 		recipe.AddTile(TileID.WorkBenches);

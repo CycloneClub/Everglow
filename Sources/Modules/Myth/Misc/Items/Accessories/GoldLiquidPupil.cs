@@ -1,6 +1,7 @@
 using Everglow.Myth.Misc.Projectiles.Accessory;
 using Terraria;
 using Terraria.Audio;
+using Terraria.Localization;
 
 namespace Everglow.Myth.Misc.Items.Accessories;
 
@@ -8,6 +9,8 @@ namespace Everglow.Myth.Misc.Items.Accessories;
 public class GoldLiquidPupil : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(6, 13, 1.5f, 5, 10, 17.5f);
 
 	public override void SetDefaults()
 	{

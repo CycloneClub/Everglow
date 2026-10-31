@@ -72,7 +72,7 @@ public class CaterpillarJuiceArrow : ModProjectile
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		Main.rand.Next(MinDuration, MaxDuration);
-		target.AddBuff(BuffID.Oiled, 180);
+		target.AddBuff(BuffID.Oiled, 240);
 	}
 
 	public override bool PreDraw(ref Color lightColor)

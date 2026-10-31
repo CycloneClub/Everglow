@@ -13,6 +13,7 @@ public class LampFruitBorer : Caterpillar
 	public override void SetDefaults()
 	{
 		base.SetDefaults();
+		NPC.defense = 4;
 
 		SegmentBehavioralSize = 10;
 		SegmentHitBoxSize = 14;
