@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using Hjson;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Eldamber;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Valiant;
 using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -87,6 +88,14 @@ public class TownEquipmentLocalizationTests
 				var property = type.GetProperty("SetBonusText");
 				Assert.IsNotNull(property, $"Missing set bonus localization: {type.Name}");
 				AssertFormatted((LocalizedText)property.GetValue(item)!, culture);
+			}
+			if (item is ValiantHelmet)
+			{
+				var player = new Player { endurance = 0.2f, aggro = 500 };
+				item.UpdateArmorSet(player);
+				Assert.AreEqual(0.24f, player.endurance, 0.00001f);
+				Assert.AreEqual(100, player.aggro);
+				StringAssert.Contains(player.setBonus, culture == "zh-Hans" ? "4个百分点" : "4 percentage points");
 			}
 			if (item is EldamberHairpin)
 			{

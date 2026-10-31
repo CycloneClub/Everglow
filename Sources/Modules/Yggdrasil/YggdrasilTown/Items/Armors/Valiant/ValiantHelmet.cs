@@ -8,9 +8,9 @@ public class ValiantHelmet : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(5, 400, 2, 400);
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(5, 400, 2, 4);
 
-	public LocalizedText SetBonusText => this.GetLocalization("SetBonus").WithFormatArgs(5, 400, 2, 400);
+	public LocalizedText SetBonusText => this.GetLocalization("SetBonus").WithFormatArgs(5, 400, 2, 4);
 
 	public override void SetStaticDefaults()
 	{
@@ -36,21 +36,13 @@ public class ValiantHelmet : ModItem
 		player.setBonus = SetBonusText.Value;
 		player.aggro -= 400;
 		player.statDefense += 2;
-		player.endurance += 4f;
+		player.endurance += 0.04f;
 	}
 
 	public override void UpdateEquip(Player player)
 	{
 		ValiantHelmetPlayer ValiantHelmetPlayer = player.GetModPlayer<ValiantHelmetPlayer>();
 		ValiantHelmetPlayer.hasValiantHelmet = true;
-	}
-
-	public override void AddRecipes()
-	{
-		Recipe recipe = CreateRecipe();
-
-		recipe.AddTile(TileID.WorkBenches);
-		recipe.Register();
 	}
 }
 

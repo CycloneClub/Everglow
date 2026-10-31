@@ -8,6 +8,7 @@ using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.Eldamber;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using ManaSpringOreTile = Everglow.Yggdrasil.YggdrasilTown.Tiles.ManaSpringOre;
 
 namespace Everglow.UnitTests.Modules.Yggdrasil;
 
@@ -101,6 +102,32 @@ public class PlannedItemDefaultsTests
 		var potion = Defaults<JumpPotion>();
 		Assert.AreEqual(5 * 60 * 60, potion.buffTime);
 		Assert.IsTrue(potion.useTime > 0 && potion.useAnimation > 0 && potion.buffTime > 0 && potion.consumable);
+	}
+
+	[TestMethod]
+	public void ManaSpringOreRequiresTheTwilightCrystalPickaxeTier()
+	{
+		var tile = new ManaSpringOreTile();
+		bool oldServer = Main.dedServ;
+		bool oldSolid = Main.tileSolid[tile.Type];
+		bool oldBlockLight = Main.tileBlockLight[tile.Type];
+		bool oldOre = TileID.Sets.Ore[tile.Type];
+		try
+		{
+			Main.dedServ = true;
+			tile.SetStaticDefaults();
+			Assert.AreEqual(Defaults<MiningPowerPickaxe_3>().pick, tile.MinPick);
+			Assert.IsTrue(Defaults<MiningPowerPickaxe_2>().pick < tile.MinPick);
+			Assert.IsTrue(Defaults<EldamberPickaxe>().pick < tile.MinPick);
+			Assert.IsFalse(tile.CanExplode(0, 0), "Explosives must not bypass the ore's progression gate.");
+		}
+		finally
+		{
+			Main.dedServ = oldServer;
+			Main.tileSolid[tile.Type] = oldSolid;
+			Main.tileBlockLight[tile.Type] = oldBlockLight;
+			TileID.Sets.Ore[tile.Type] = oldOre;
+		}
 	}
 
 	[TestMethod]

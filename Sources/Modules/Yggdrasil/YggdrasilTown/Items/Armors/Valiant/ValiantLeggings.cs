@@ -28,8 +28,4 @@ public class ValiantLeggings : ModItem
 	{
 		player.GetAttackSpeed(DamageClass.Melee) += 0.05f;
 	}
-
-	public override void AddRecipes()
-	{
-	}
 }

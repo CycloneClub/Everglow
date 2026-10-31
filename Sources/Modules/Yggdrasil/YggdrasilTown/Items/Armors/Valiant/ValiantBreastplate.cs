@@ -28,8 +28,4 @@ public class ValiantBreastplate : ModItem
 	{
 		player.GetCritChance(DamageClass.Melee) += 4f;
 	}
-
-	public override void AddRecipes()
-	{
-	}
 }
