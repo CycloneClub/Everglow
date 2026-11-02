@@ -86,6 +86,7 @@ public partial class YggdrasilTownGeneration
 
 		// Scatter ore after structures have registered their protected footprints.
 		GenerateAmberVeins();
+		GenerateTownMagicSpringDeposits();
 
 		Main.statusText = "Smoothing Yggdrasil Town...";
 
@@ -3600,6 +3601,200 @@ public partial class YggdrasilTownGeneration
 		for (int i = 0; i < times; i++)
 		{
 			bonus.Add(potentialList[GenRand.Next(potentialList.Count)]);
+		}
+	}
+
+	/// <summary>Scatter small ore deposits during the first-stratum mineralization stage.</summary>
+	private static void GenerateTownMagicSpringDeposits()
+	{
+		const int TargetOreCount = 480;
+		var random = WorldGen.genRand;
+		Point[] neighbors = [new(-1, 0), new(1, 0), new(0, -1), new(0, 1)];
+		Main.statusText = "Scattering Magic Spring Ore...";
+		var bounds = new Rectangle(20, (int)(Main.maxTilesY * 0.9f), Main.maxTilesX - 40, Main.maxTilesY - (int)(Main.maxTilesY * 0.9f) - 20);
+		var protectedAreas = new List<Rectangle>();
+		foreach (Rectangle area in ShouldNotSmoothAreas)
+		{
+			var padded = area;
+			padded.Inflate(2, 2);
+			protectedAreas.Add(padded);
+		}
+		var town = new Rectangle(YggdrasilTownTopLeft.X, YggdrasilTownTopLeft.Y, 706, 275);
+		town.Inflate(12, 12);
+		protectedAreas.Add(town);
+		HashSet<ushort> hosts =
+		[
+			(ushort)ModContent.TileType<StoneScaleWood>(),
+			(ushort)ModContent.TileType<DarkForestSoil>(),
+			(ushort)ModContent.TileType<DarkForestGrass>(),
+			(ushort)ModContent.TileType<TwilightGrassBlock>(),
+			(ushort)ModContent.TileType<YggdrasilGrayRock>(),
+		];
+
+		// These natural walls also count as housing walls; the flag alone cannot identify buildings.
+		HashSet<ushort> naturalWalls =
+		[
+			(ushort)ModContent.WallType<StoneDragonScaleWoodWall>(),
+			(ushort)ModContent.WallType<DarkForestSoilWall>(),
+			(ushort)ModContent.WallType<FemaleLampWoodWall>(),
+		];
+
+		bool CanReplace(Point point)
+		{
+			Tile tile = Main.tile[point.X, point.Y];
+			Tile above = Main.tile[point.X, point.Y - 1];
+			return tile.HasTile && !tile.IsActuated && hosts.Contains(tile.TileType)
+				&& (!Main.wallHouse[tile.WallType] || naturalWalls.Contains(tile.WallType))
+				&& !(above.HasTile && TileID.Sets.BasicChest[above.TileType]);
+		}
+
+		bool IsExposed(Point point)
+		{
+			foreach (Point offset in neighbors)
+			{
+				if (!Main.tile[point.X + offset.X, point.Y + offset.Y].HasTile)
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+		var deposits = CreateDeposits();
+		ushort oreType = (ushort)ModContent.TileType<YggdrasilTown.Tiles.MagicSpringOre_Tile>();
+		foreach (Point point in deposits.SelectMany(cluster => cluster))
+		{
+			Tile tile = Main.tile[point.X, point.Y];
+			tile.TileType = oreType;
+			tile.TileFrameX = 0;
+			tile.TileFrameY = 0;
+			tile.Slope = SlopeType.Solid;
+			tile.IsHalfBlock = false;
+		}
+		foreach (Point point in deposits.SelectMany(cluster => cluster))
+		{
+			WorldGen.SquareTileFrame(point.X, point.Y);
+		}
+		int placed = deposits.Sum(cluster => cluster.Length);
+		Ins.Logger.Info($"Generated {placed} magic spring ore tiles in {deposits.Count} deposits.");
+		if (placed < TargetOreCount)
+		{
+			Ins.Logger.Warn($"Magic spring ore generation found insufficient suitable terrain ({placed}/{TargetOreCount} tiles).");
+		}
+
+		/// <summary>
+		/// Plan connected deposits without modifying terrain. Shuffled sectors spread the budget;
+		/// bounded retries redistribute it when sectors contain only air or protected structures.
+		/// </summary>
+		List<Point[]> CreateDeposits()
+		{
+			const int SectorCount = 8;
+			const int MinimumClusterSize = 3;
+			const int MaximumClusterSize = 6;
+			const int MinimumCenterDistance = 32;
+			var deposits = new List<Point[]>();
+			if (bounds.Width < SectorCount || bounds.Height < SectorCount)
+			{
+				return deposits;
+			}
+
+			var sectors = Enumerable.Range(0, SectorCount * SectorCount).ToArray();
+			for (int i = sectors.Length - 1; i > 0; i--)
+			{
+				int other = random.Next(i + 1);
+				(sectors[i], sectors[other]) = (sectors[other], sectors[i]);
+			}
+
+			bool IsEligible(Point point) => bounds.Contains(point) && CanReplace(point)
+				&& !protectedAreas.Any(area => area.Contains(point));
+
+			int remaining = TargetOreCount;
+			for (int round = 0; round < 12 && remaining >= MinimumClusterSize; round++)
+			{
+				foreach (int sector in sectors)
+				{
+					if (remaining < MinimumClusterSize)
+					{
+						break;
+					}
+					int column = sector % SectorCount;
+					int row = sector / SectorCount;
+					int left = bounds.Left + bounds.Width * column / SectorCount;
+					int right = bounds.Left + bounds.Width * (column + 1) / SectorCount;
+					int top = bounds.Top + bounds.Height * row / SectorCount;
+					int bottom = bounds.Top + bounds.Height * (row + 1) / SectorCount;
+					int size = remaining <= MaximumClusterSize ? remaining : random.Next(MinimumClusterSize, MaximumClusterSize + 1);
+					// Do not leave an unusable final budget of one or two tiles.
+					if (remaining > size && remaining - size < MinimumClusterSize)
+					{
+						size = remaining - MinimumClusterSize;
+					}
+
+					for (int attempt = 0; attempt < 256; attempt++)
+					{
+						var center = new Point(random.Next(left, right), random.Next(top, bottom));
+						if (!IsEligible(center))
+						{
+							continue;
+						}
+						// Prefer an exposed seed for half the deposits, but still allow buried ore.
+						if (deposits.Count % 2 == 0 && attempt < 128 && !IsExposed(center))
+						{
+							continue;
+						}
+						if (deposits.Any(cluster => DistanceSquared(center, cluster[0]) < MinimumCenterDistance * MinimumCenterDistance))
+						{
+							continue;
+						}
+						var cluster = GrowCluster(center, size, IsEligible);
+						if (cluster.Length != size)
+						{
+							continue;
+						}
+						deposits.Add(cluster);
+						remaining -= cluster.Length;
+						break;
+					}
+				}
+			}
+			return deposits;
+		}
+
+		Point[] GrowCluster(Point center, int size, Func<Point, bool> isEligible)
+		{
+			const int ClusterRadius = 2;
+			var cluster = new List<Point> { center };
+			var frontier = new List<Point>();
+			var visited = new HashSet<Point> { center };
+			Point last = center;
+			while (cluster.Count < size)
+			{
+				foreach (Point offset in neighbors)
+				{
+					Point next = last + offset;
+					if (Math.Abs(next.X - center.X) <= ClusterRadius && Math.Abs(next.Y - center.Y) <= ClusterRadius
+						&& visited.Add(next) && isEligible(next))
+					{
+						frontier.Add(next);
+					}
+				}
+				if (frontier.Count == 0)
+				{
+					break;
+				}
+				int index = random.Next(frontier.Count);
+				last = frontier[index];
+				frontier.RemoveAt(index);
+				cluster.Add(last);
+			}
+			return cluster.ToArray();
+		}
+
+		static int DistanceSquared(Point first, Point second)
+		{
+			int dx = first.X - second.X;
+			int dy = first.Y - second.Y;
+			return dx * dx + dy * dy;
 		}
 	}
 }
