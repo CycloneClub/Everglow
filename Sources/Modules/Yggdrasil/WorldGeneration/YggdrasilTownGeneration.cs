@@ -344,9 +344,9 @@ public partial class YggdrasilTownGeneration
 					}
 				}
 			}
+			GeneratePillarCyanVineOre(oldPoints, radious);
 			for (int a = 0; a < oldPoints.Count; a++)
 			{
-				GenerateCyanVineOreCircle(oldPoints[a], radious);
 				if (a % 10 == 0)
 				{
 					int leftX = (int)(oldPoints[a].X - radious);

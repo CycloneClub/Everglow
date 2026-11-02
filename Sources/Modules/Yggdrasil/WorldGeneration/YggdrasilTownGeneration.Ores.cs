@@ -307,7 +307,7 @@ public partial class YggdrasilTownGeneration
 				{
 					if (tileLeft1.TileType == ModContent.TileType<StoneScaleWood>() && tileLeft2.TileType == ModContent.TileType<StoneScaleWood>() && tileLeft3.TileType == ModContent.TileType<StoneScaleWood>() && tileLeft4.TileType == ModContent.TileType<StoneScaleWood>() && tile.TileType == ModContent.TileType<StoneScaleWood>())
 					{
-						if (GenRand.NextBool(3))
+						if (GenRand.NextBool(12))
 						{
 							PlaceLargeCyanVineOre(x - 4, y - 3);
 						}
@@ -347,7 +347,7 @@ public partial class YggdrasilTownGeneration
 				{
 					if (tileUp1.TileType == ModContent.TileType<StoneScaleWood>() && tileUp2.TileType == ModContent.TileType<StoneScaleWood>() && tileUp.TileType == ModContent.TileType<StoneScaleWood>())
 					{
-						if (GenRand.NextBool(3))
+						if (GenRand.NextBool(12))
 						{
 							PlaceLargeUpCyanVineOre(x - 4, y);
 						}
@@ -378,125 +378,126 @@ public partial class YggdrasilTownGeneration
 		}
 	}
 
-	/// <summary>
-	/// 青缎矿化圆
-	/// </summary>
-	/// <param name="center"></param>
-	/// <param name="range"></param>
-	public static void GenerateCyanVineOreCircle(Vector2 center, float range)
+	/// <summary>Mineralize the union of a pillar's circles once, regardless of its radius or path overlap.</summary>
+	private static void GeneratePillarCyanVineOre(IReadOnlyList<Vector2> centers, float range)
 	{
-		int leftX = (int)(center.X - range);
-		int rightX = (int)(center.X + range);
-		int upY = (int)(center.Y - range);
-		int downY = (int)(center.Y + range);
-		for (int x = leftX; x < rightX; x++)
+		var positions = new List<Point>();
+		var visited = new HashSet<Point>();
+		foreach (Vector2 center in centers)
 		{
-			for (int y = upY; y < downY; y++)
+			for (int x = (int)(center.X - range); x < (int)(center.X + range); x++)
 			{
-				if ((center - new Vector2(x, y)).Length() <= range)
+				for (int y = (int)(center.Y - range); y < (int)(center.Y + range); y++)
 				{
-					Tile tile = SafeGetTile(x, y);
-					Tile tileUp = SafeGetTile(x, y - 1);
-					Tile tileUp1 = SafeGetTile(x - 1, y - 1);
-					Tile tileUp2 = SafeGetTile(x - 2, y - 1);
-					Tile tileUp3 = SafeGetTile(x - 3, y - 1);
-					Tile tileUp4 = SafeGetTile(x - 4, y - 1);
-					Tile tileLeft1 = SafeGetTile(x - 1, y);
-					Tile tileLeft2 = SafeGetTile(x - 2, y);
-					Tile tileLeft3 = SafeGetTile(x - 3, y);
-					Tile tileLeft4 = SafeGetTile(x - 4, y);
-					if (tile.LiquidAmount > 0 || tileUp.LiquidAmount > 0 || tileUp1.LiquidAmount > 0 || tileUp2.LiquidAmount > 0 || tileUp3.LiquidAmount > 0 || tileUp4.LiquidAmount > 0 || tileLeft1.LiquidAmount > 0 || tileLeft1.LiquidAmount > 0 || tileLeft2.LiquidAmount > 0 || tileLeft3.LiquidAmount > 0 || tileLeft4.LiquidAmount > 0)
+					var position = new Point(x, y);
+					if (Vector2.DistanceSquared(center, new Vector2(x, y)) <= range * range && visited.Add(position))
 					{
-						continue;
+						positions.Add(position);
 					}
-					if (tileLeft1.HasTile && tileLeft2.HasTile && tileLeft3.HasTile && tileLeft4.HasTile && tile.HasTile && !tileUp.HasTile && !tileUp4.HasTile)
+				}
+			}
+		}
+
+		foreach (Point position in positions)
+		{
+			int x = position.X;
+			int y = position.Y;
+			Tile tile = SafeGetTile(x, y);
+			Tile tileUp = SafeGetTile(x, y - 1);
+			Tile tileUp1 = SafeGetTile(x - 1, y - 1);
+			Tile tileUp2 = SafeGetTile(x - 2, y - 1);
+			Tile tileUp3 = SafeGetTile(x - 3, y - 1);
+			Tile tileUp4 = SafeGetTile(x - 4, y - 1);
+			Tile tileLeft1 = SafeGetTile(x - 1, y);
+			Tile tileLeft2 = SafeGetTile(x - 2, y);
+			Tile tileLeft3 = SafeGetTile(x - 3, y);
+			Tile tileLeft4 = SafeGetTile(x - 4, y);
+			if (tile.LiquidAmount > 0 || tileUp.LiquidAmount > 0 || tileUp1.LiquidAmount > 0 || tileUp2.LiquidAmount > 0 || tileUp3.LiquidAmount > 0 || tileUp4.LiquidAmount > 0 || tileLeft1.LiquidAmount > 0 || tileLeft1.LiquidAmount > 0 || tileLeft2.LiquidAmount > 0 || tileLeft3.LiquidAmount > 0 || tileLeft4.LiquidAmount > 0)
+			{
+				continue;
+			}
+			if (tileLeft1.HasTile && tileLeft2.HasTile && tileLeft3.HasTile && tileLeft4.HasTile && tile.HasTile && !tileUp.HasTile && !tileUp4.HasTile)
+			{
+				if (tileLeft1.TileType == ModContent.TileType<StoneScaleWood>() && tileLeft2.TileType == ModContent.TileType<StoneScaleWood>() && tileLeft3.TileType == ModContent.TileType<StoneScaleWood>() && tileLeft4.TileType == ModContent.TileType<StoneScaleWood>() && tile.TileType == ModContent.TileType<StoneScaleWood>())
+				{
+					if (GenRand.NextBool(12))
 					{
-						if (tileLeft1.TileType == ModContent.TileType<StoneScaleWood>() && tileLeft2.TileType == ModContent.TileType<StoneScaleWood>() && tileLeft3.TileType == ModContent.TileType<StoneScaleWood>() && tileLeft4.TileType == ModContent.TileType<StoneScaleWood>() && tile.TileType == ModContent.TileType<StoneScaleWood>())
+						if (CanPlaceMultiAtTopTowardsUpRight(x - 4, y, 5, 3))
 						{
-							if (GenRand.NextBool(3))
-							{
-								if (CanPlaceMultiAtTopTowardsUpRight(x - 4, y, 5, 3))
-								{
-									PlaceLargeCyanVineOre(x - 4, y - 3);
-								}
-							}
+							PlaceLargeCyanVineOre(x - 4, y - 3);
 						}
 					}
-					if (tileLeft1.HasTile && tileLeft2.HasTile && tile.HasTile && !tileUp2.HasTile)
+				}
+			}
+			if (tileLeft1.HasTile && tileLeft2.HasTile && tile.HasTile && !tileUp2.HasTile)
+			{
+				if (tileLeft1.TileType == ModContent.TileType<StoneScaleWood>() && tileLeft2.TileType == ModContent.TileType<StoneScaleWood>() && tile.TileType == ModContent.TileType<StoneScaleWood>())
+				{
+					if (GenRand.NextBool(12))
 					{
-						if (tileLeft1.TileType == ModContent.TileType<StoneScaleWood>() && tileLeft2.TileType == ModContent.TileType<StoneScaleWood>() && tile.TileType == ModContent.TileType<StoneScaleWood>())
+						if (CanPlaceMultiAtTopTowardsUpRight(x - 2, y + 1, 4, 3))
 						{
-							if (GenRand.NextBool(12))
-							{
-								if (CanPlaceMultiAtTopTowardsUpRight(x - 2, y + 1, 4, 3))
-								{
-									PlaceMiddleCyanVineOre(x - 2, y - 2);
-								}
-							}
+							PlaceMiddleCyanVineOre(x - 2, y - 2);
 						}
 					}
-					if (tileLeft1.HasTile && tileLeft2.HasTile && tile.HasTile && !tileUp1.HasTile)
+				}
+			}
+			if (tileLeft1.HasTile && tileLeft2.HasTile && tile.HasTile && !tileUp1.HasTile)
+			{
+				if (tileLeft1.TileType == ModContent.TileType<StoneScaleWood>() && tileLeft2.TileType == ModContent.TileType<StoneScaleWood>() && tile.TileType == ModContent.TileType<StoneScaleWood>())
+				{
+					if (GenRand.NextBool(12))
 					{
-						if (tileLeft1.TileType == ModContent.TileType<StoneScaleWood>() && tileLeft2.TileType == ModContent.TileType<StoneScaleWood>() && tile.TileType == ModContent.TileType<StoneScaleWood>())
+						if (CanPlaceMultiAtTopTowardsUpRight(x - 2, y, 3, 2))
 						{
-							if (GenRand.NextBool(12))
-							{
-								if (CanPlaceMultiAtTopTowardsUpRight(x - 2, y, 3, 2))
-								{
-									PlaceSmallCyanVineOre(x - 2, y - 2);
-								}
-							}
+							PlaceSmallCyanVineOre(x - 2, y - 2);
 						}
 					}
-					if (!tileLeft1.HasTile && tileUp.HasTile && tileUp1.HasTile && tileUp2.HasTile)
+				}
+			}
+			if (!tileLeft1.HasTile && tileUp.HasTile && tileUp1.HasTile && tileUp2.HasTile)
+			{
+				if (tileUp1.TileType == ModContent.TileType<StoneScaleWood>() && tileUp2.TileType == ModContent.TileType<StoneScaleWood>() && tileUp.TileType == ModContent.TileType<StoneScaleWood>())
+				{
+					if (GenRand.NextBool(6))
 					{
-						if (tileUp1.TileType == ModContent.TileType<StoneScaleWood>() && tileUp2.TileType == ModContent.TileType<StoneScaleWood>() && tileUp.TileType == ModContent.TileType<StoneScaleWood>())
+						if (CanPlaceMultiBenethTowardsDownRight(x - 2, y - 1, 3, 2))
 						{
-							if (GenRand.NextBool(6))
-							{
-								if (CanPlaceMultiBenethTowardsDownRight(x - 2, y - 1, 3, 2))
-								{
-									PlaceSmallUpCyanVineOre(x - 2, y);
-								}
-							}
+							PlaceSmallUpCyanVineOre(x - 2, y);
 						}
 					}
-					if (!tile.HasTile && !tileLeft4.HasTile && tileUp.HasTile && tileUp1.HasTile && tileUp2.HasTile && tileUp3.HasTile && tileUp4.HasTile)
+				}
+			}
+			if (!tile.HasTile && !tileLeft4.HasTile && tileUp.HasTile && tileUp1.HasTile && tileUp2.HasTile && tileUp3.HasTile && tileUp4.HasTile)
+			{
+				if (tileUp1.TileType == ModContent.TileType<StoneScaleWood>() && tileUp2.TileType == ModContent.TileType<StoneScaleWood>() && tileUp.TileType == ModContent.TileType<StoneScaleWood>())
+				{
+					if (GenRand.NextBool(12))
 					{
-						if (tileUp1.TileType == ModContent.TileType<StoneScaleWood>() && tileUp2.TileType == ModContent.TileType<StoneScaleWood>() && tileUp.TileType == ModContent.TileType<StoneScaleWood>())
+						if (CanPlaceMultiBenethTowardsDownRight(x - 4, y - 1, 5, 3))
 						{
-							if (GenRand.NextBool(3))
-							{
-								if (CanPlaceMultiBenethTowardsDownRight(x - 4, y - 1, 5, 3))
-								{
-									PlaceLargeUpCyanVineOre(x - 4, y);
-								}
-							}
+							PlaceLargeUpCyanVineOre(x - 4, y);
 						}
 					}
 				}
 			}
 		}
-		for (int x = leftX; x < rightX; x++)
+		foreach (Point position in positions)
 		{
-			for (int y = upY; y < downY; y++)
+			int x = position.X;
+			int y = position.Y;
+			if (GenRand.NextBool(3000))
 			{
-				if ((center - new Vector2(x, y)).Length() <= range)
+				Tile tile = SafeGetTile(x, y);
+				Tile tileUp = SafeGetTile(x, y - 1);
+				Tile tileDown = SafeGetTile(x, y + 1);
+				Tile tileLeft = SafeGetTile(x - 1, y);
+				Tile tileRight = SafeGetTile(x + 1, y);
+				if (tile.HasTile && tile.TileType == ModContent.TileType<StoneScaleWood>())
 				{
-					if (GenRand.NextBool(3000))
+					if (tileUp.LiquidAmount <= 0 && tileDown.LiquidAmount <= 0 && tileLeft.LiquidAmount <= 0 && tileRight.LiquidAmount <= 0)
 					{
-						Tile tile = SafeGetTile(x, y);
-						Tile tileUp = SafeGetTile(x, y - 1);
-						Tile tileDown = SafeGetTile(x, y + 1);
-						Tile tileLeft = SafeGetTile(x - 1, y);
-						Tile tileRight = SafeGetTile(x + 1, y);
-						if (tile.HasTile && tile.TileType == ModContent.TileType<StoneScaleWood>())
-						{
-							if (tileUp.LiquidAmount <= 0 && tileDown.LiquidAmount <= 0 && tileLeft.LiquidAmount <= 0 && tileRight.LiquidAmount <= 0)
-							{
-								WorldGen.TileRunner(x, y, GenRand.NextFloat(2f, 6f), GenRand.Next(4, 18), ModContent.TileType<CyanVineStone>());
-							}
-						}
+						WorldGen.TileRunner(x, y, GenRand.NextFloat(2f, 6f), GenRand.Next(4, 18), ModContent.TileType<CyanVineStone>());
 					}
 				}
 			}
