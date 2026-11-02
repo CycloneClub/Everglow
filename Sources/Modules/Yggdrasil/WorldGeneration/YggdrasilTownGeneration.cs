@@ -1539,20 +1539,25 @@ public partial class YggdrasilTownGeneration
 		// 下半部分石壁
 		for (int x = step2X; x <= step2X + 480; x += 1)
 		{
+			float progress = (x - step2X) / 480f;
+			float edgeBlend = MathHelper.SmoothStep(0f, 1f, MathF.Min(progress, 1f - progress) * 8f);
+			float broadNoise = (GetLargeSmokeTexturePixelG(x * 1.1f + x0CoordPerlin, y0CoordPerlin) - 0.5f) * 120f;
+			float detailNoise = (GetLargeSmokeTexturePixelB(x * 4.3f + x0CoordPerlin, y0CoordPerlin) - 0.5f) * 32f;
+			float thickness = MathF.Max(0f, MathF.Pow(progress, 1.4f) * 300f + (broadNoise + detailNoise) * edgeBlend);
+			float edgeDepth = Math.Clamp(thickness * 0.2f, 1f, 30f);
+
 			for (int y = step2Y + 7; y <= step2Y + 500; y += 1)
 			{
 				float bValue = GetLargeSmokeTexturePixelR(Math.Abs(x * 4.3f + x0CoordPerlin), Math.Abs(y * 4.3f + y0CoordPerlin));
 				int thick = y - step2Y - 7;
-				float value = (x - step2X) / 480f;
-				value *= value;
-				value = MathF.Pow(value, 0.7f);
-				if (thick > value * 300)
+				if (thick > thickness)
 				{
 					break;
 				}
-				if (thick > value * 240)
+				// 让边缘随噪声逐渐变薄，避免沿厚度上限截出整齐的斜面。
+				if (thick > thickness - edgeDepth)
 				{
-					bValue += (thick - value * 240) / 60f;
+					bValue += (thick - thickness + edgeDepth) / edgeDepth;
 				}
 				Tile tile = SafeGetTile(x, y);
 				if (tile.HasTile)
