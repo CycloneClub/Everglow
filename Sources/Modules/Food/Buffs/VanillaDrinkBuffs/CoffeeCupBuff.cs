@@ -14,7 +14,8 @@ public class CoffeeCupBuff : ModBuff
 	{
 		player.tileSpeed *= 10f;
 		player.wallSpeed *= 10f;
-		player.pickSpeed *= 0.1f;
+		// -90% mining time
+		player.pickSpeed -= 0.9f;
 		player.nightVision = true;
 		player.findTreasure = true;
 		player.detectCreature = true;
