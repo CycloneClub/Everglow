@@ -1319,7 +1319,7 @@ SteakBuff: {
 	DisplayName: 牛排
 	Description:
 		'''
-		减少20%魔力消耗!!!
+		-20%魔力消耗
 		上流
 		'''
 }

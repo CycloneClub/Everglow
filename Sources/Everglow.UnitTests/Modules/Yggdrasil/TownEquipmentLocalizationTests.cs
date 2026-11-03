@@ -87,7 +87,7 @@ public class TownEquipmentLocalizationTests
 			{
 				var player = new Player { manaCost = 0.8f };
 				item.UpdateArmorSet(player);
-				Assert.AreEqual(0.68f, player.manaCost, 0.00001f);
+				Assert.AreEqual(0.65f, player.manaCost, 0.00001f);
 				Assert.IsFalse(string.IsNullOrWhiteSpace(player.setBonus));
 			}
 			if (item is EldamberWarhelm)

@@ -321,12 +321,12 @@ OvineHairpin: {
 		{0}% increased magic critical strike chance
 		Emits light
 		Set bonus:
-		Multiplies mana cost by a factor reduced by {1}% and increases magic damage by {2}%
+		-{1}% mana cost, +{2}% magic damage
 		Grants another {3}% magic damage when the brightest local lighting channel exceeds {4}/255
 		'''
 	SetBonus:
 		'''
-		Multiplies mana cost by a factor reduced by {1}% and increases magic damage by {2}%
+		-{1}% mana cost, +{2}% magic damage
 		Grants another {3}% magic damage when the brightest local lighting channel exceeds {4}/255
 		'''
 }
@@ -560,7 +560,7 @@ EldamberHairpin: {
 	Tooltip:
 		'''
 		{0}% increased magic damage
-		Increases maximum mana by {1}
+		+{1} mana
 		'''
 	SetBonus: "{0}% reduced mana usage"
 }

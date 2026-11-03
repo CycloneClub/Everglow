@@ -909,7 +909,7 @@ StarfruitBuff: {
 
 SteakBuff: {
 	DisplayName: Steak Buff
-	Description: ""
+	Description: "-20% mana cost"
 }
 
 StinkyTofuBuff: {

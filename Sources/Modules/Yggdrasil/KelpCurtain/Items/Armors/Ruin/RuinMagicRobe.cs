@@ -25,7 +25,9 @@ public class RuinMagicRobe : ModItem
 
 	public override void UpdateEquip(Player player)
 	{
+		// +6% increased summon damage
 		player.GetDamage<SummonDamageClass>() += 0.06f;
-		player.manaCost *= 1 - 0.1f;
+		// -10% mana cost
+		player.manaCost -= 0.1f;
 	}
 }
