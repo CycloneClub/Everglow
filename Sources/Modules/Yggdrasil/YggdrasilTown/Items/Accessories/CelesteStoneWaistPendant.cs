@@ -25,7 +25,7 @@ public class CelesteStoneWaistPendant : ModItem
 		// 2. + 3 mana regen (if mana is between 30% and 70%)
 		if (player.statMana > player.statManaMax * 0.3f && player.statMana < player.statManaMax * 0.7f)
 		{
-			player.manaRegen += 3;
+			player.manaRegenBonus += 3;
 		}
 	}
 }

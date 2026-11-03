@@ -25,8 +25,8 @@ public class PaperObstructed : ModBuff
 		{
 			player.headcovered = true;
 			player.bleed = true;
-			player.allCrit *= 0.9f;
-			player.allDamage *= 0.9f;
+			player.GetCritChance(DamageClass.Generic) *= 0.9f;
+			player.GetDamage(DamageClass.Generic) *= 0.9f;
 		}
 	}
 }

@@ -48,7 +48,7 @@ ApricotBuff: {
 	DisplayName: 杏
 	Description:
 		'''
-		增加4魔力再生!!!
+		+4魔力再生
 		止渴润肺
 		'''
 }
@@ -292,7 +292,7 @@ ChocolateChipCookieBuff: {
 	DisplayName: 巧克力曲奇饼干
 	Description:
 		'''
-		增加2点生命回复和魔力回复
+		+2生命再生，+2魔力再生
 		补充能量
 		'''
 }
@@ -1438,7 +1438,7 @@ WakameWarshipBuff: {
 	DisplayName: 裙带菜寿司
 	Description:
 		'''
-		提升魔力回复
+		+2魔力再生
 		美味的裙带菜寿司
 		'''
 }

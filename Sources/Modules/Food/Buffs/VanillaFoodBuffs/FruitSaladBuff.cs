@@ -17,7 +17,8 @@ public class FruitSaladBuff : ModBuff
 		player.GetDamage(DamageClass.Generic) *= 1.03f; // 加3%伤害
 		player.GetAttackSpeed(DamageClass.Generic) += 0.03f; // 加3%攻速
 		player.lifeRegen += 2; // 加2生命回复
-		player.manaRegen += 3; // 魔力再生加3
+		// +3 mana regen
+		player.manaRegenBonus += 3;
 		player.maxRunSpeed *= 1.2f; // 加速
 		player.runAcceleration *= 1.2f;
 		player.jumpSpeedBoost += 1.5f;

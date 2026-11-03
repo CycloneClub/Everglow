@@ -44,8 +44,8 @@ BlueGel: {
 	DisplayName: Blue Gel
 	Tooltip:
 		'''
-		+{0} maximum mana
-		Adds {1} mana regeneration points; vanilla regeneration updates overwrite this parameter, so it currently provides no regeneration benefit
+		+{0} mana
+		+{1} mana regen
 		'''
 }
 
@@ -65,7 +65,6 @@ CelesteStoneWaistPendant: {
 		'''
 		+{0} maximum mana
 		Adds {3} mana regeneration points while mana is above {1}% and below {2}% of base maximum mana
-		Vanilla regeneration updates overwrite this parameter; it currently provides no regeneration benefit
 		'''
 }
 
@@ -149,6 +148,7 @@ EmptyFowlbeast: {
 	DisplayName: Empty Fowlbeast
 	Tooltip:
 		'''
+		Increases your max number of minions by 1
 		Your minions' direct hits deal extra magic damage equal to 7% of your maximum mana
 		You take 20% more contact damage from enemies
 		'''
@@ -336,7 +336,7 @@ ManaThermalPipeline: {
 	Tooltip:
 		'''
 		{0}% increased magic damage
-		Adds {1} mana regeneration points; vanilla regeneration updates overwrite this parameter, so it currently provides no regeneration benefit
+		+{1} mana regen
 		'''
 }
 
@@ -373,7 +373,7 @@ MothEye: {
 		{0}% multiplicative summon damage, +{1} maximum minions and +{2} maximum sentries
 		During Hardmode, while the local player is in the Firefly biome:
 		While equipped: -{4}% mana cost and +{5} to the Mana Sickness penalty parameter
-		Placing it in an equipment or vanity slot grants {3}% multiplicative damage to the listed Firefly weapons
+		While equipped: +{3}% multiplicative damage to the listed Firefly weapons
 		Damage bonus applies to:
 		Darkness Fan, Dream Weaver, Dust Of Corrupt, Evil Chrysalis
 		Flow Light Missile, Glow Bead Gun, Glow Wood Sword, Moth Yoyo

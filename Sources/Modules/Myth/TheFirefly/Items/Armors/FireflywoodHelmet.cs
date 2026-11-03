@@ -42,12 +42,14 @@ namespace Everglow.Myth.TheFirefly.Items.Armors
 		public override void UpdateArmorSet(Player player)
 		{
 			player.setBonus = SetBonusText.Value;
+			// +10% damage
 			player.GetDamage(DamageClass.Generic) += 0.1f;
 		}
 
 		public override void UpdateEquip(Player player)
 		{
-			player.magicCrit += 4;
+			// +4% magic critical strike chance
+			player.GetCritChance(DamageClass.Magic) += 4;
 		}
 
 		public override void AddRecipes()

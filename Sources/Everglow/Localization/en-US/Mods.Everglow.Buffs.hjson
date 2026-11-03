@@ -30,7 +30,7 @@ ApplePieBuff: {
 
 ApricotBuff: {
 	DisplayName: Apricot Buff
-	Description: ""
+	Description: "+4 mana regen"
 }
 
 ArcticshellfishWarshipBuff: {
@@ -190,7 +190,7 @@ ChickenNuggetBuff: {
 
 ChocolateChipCookieBuff: {
 	DisplayName: Chocolate Chip Cookie Buff
-	Description: ""
+	Description: "+2 life regen and +2 mana regen"
 }
 
 ChristmasPuddingBuff: {
@@ -984,7 +984,7 @@ UnfortuneCurse: {
 
 WakameWarshipBuff: {
 	DisplayName: Wakame Warship Buff
-	Description: ""
+	Description: "+2 mana regen"
 }
 
 WaterBoltII: {

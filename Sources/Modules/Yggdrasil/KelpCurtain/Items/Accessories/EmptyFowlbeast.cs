@@ -17,7 +17,8 @@ public class EmptyFowlbeast : ModItem
 
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
-		player.slotsMinions += 1; // Increase the number of minions by 1.
+		// +1 max minion
+		player.maxMinions += 1;
 		player.GetModPlayer<EmptyFowlbeastPlayer>().Enable = true; // Increase damage taken by 20%.
 	}
 

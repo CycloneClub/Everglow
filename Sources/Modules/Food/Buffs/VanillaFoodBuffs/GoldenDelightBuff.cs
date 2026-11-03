@@ -19,7 +19,8 @@ public class GoldenDelightBuff : ModBuff
 		player.GetDamage(DamageClass.Generic) *= 1.04f; // 加4%伤害
 		player.GetAttackSpeed(DamageClass.Generic) += 0.04f; // 加4%攻速
 		player.lifeRegen += 2; // 加2生命回复
-		player.manaRegen += 4; // 魔力再生加4
+		// +4 mana regen
+		player.manaRegenBonus += 4;
 		player.maxRunSpeed *= 1.2f; // 加速
 		player.runAcceleration *= 1.2f;
 		player.jumpSpeedBoost += 2;

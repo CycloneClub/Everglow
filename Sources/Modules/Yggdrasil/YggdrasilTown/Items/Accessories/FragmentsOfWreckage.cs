@@ -45,7 +45,7 @@ public class FragmentsOfWreckage : ModItem
 		player.GetDamage(DamageClass.Generic) += DamageBonus * bonusScaler;
 
 		// +6% melee speed
-		player.meleeSpeed += MeleeSpeedBonus * bonusScaler;
+		player.GetAttackSpeed(DamageClass.Melee) += MeleeSpeedBonus * bonusScaler;
 
 		// +8 defense
 		player.statDefense += (int)(DefenseBonus * bonusScaler);

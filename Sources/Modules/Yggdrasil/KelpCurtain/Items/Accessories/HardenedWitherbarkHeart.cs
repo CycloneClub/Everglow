@@ -59,7 +59,7 @@ public class HardenedWitherbarkHeart : ModItem
 				else
 				{
 					Player.AddBuff(ModContent.BuffType<FractureDebuff>(), CooldownDuration);
-					modifiers.FinalDamage.Additive -= 0.9f; // Decrease damage taken by 90% when player does not have Fracture debuff.
+					modifiers.FinalDamage *= 1f - DamageTakenReduction; // Decrease damage taken by 90% when player does not have Fracture debuff.
 				}
 			}
 		}

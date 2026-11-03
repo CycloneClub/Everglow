@@ -19,7 +19,7 @@ public class ShadowPotionBuff : ModBuff
 		if (Math.Max(Math.Max(playerLight.R, playerLight.G), playerLight.B) <= 190)
 		{
 			player.statDefense += 8;
-			player.allDamage += 0.08f;
+			player.GetDamage(DamageClass.Generic) += 0.08f;
 			LightTime++;
 
 			if (Main.rand.NextBool(30))
