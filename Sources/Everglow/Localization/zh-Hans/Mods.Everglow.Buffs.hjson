@@ -81,7 +81,7 @@ B_52Buff: {
 	DisplayName: B_52
 	Description:
 		'''
-		短时间内大幅提升发射器速度、暴击、伤害
+		+100%远程攻速，+25%远程暴击率，+50%远程伤害（手持发射器时）
 		轰炸机
 		'''
 }
@@ -131,7 +131,7 @@ BananaDaiquiriBuff: {
 	DisplayName: 冰冻香蕉代基里
 	Description:
 		'''
-		短时间内不消耗子弹，大幅增加远程伤害与暴击
+		+50%远程伤害和远程暴击率，不消耗弹药
 		低体温血压
 		'''
 }
@@ -214,7 +214,7 @@ BowlofSoupBuff: {
 	DisplayName: 鱼菇汤
 	Description:
 		'''
-		增加40最大魔力值,5%魔法伤害
+		+20魔力，+5%魔法伤害
 		补脑
 		'''
 }
@@ -369,7 +369,7 @@ CreamSodaBuff: {
 	DisplayName: 奶油苏打水
 	Description:
 		'''
-		短时间内大幅增加近战能力，但极其吸引仇恨
+		+40%近战伤害和近战暴击率，+40%攻速，-2400仇恨值
 		喷射！
 		'''
 }
@@ -441,7 +441,7 @@ DryMartiniBuff: {
 	DisplayName: 干马天尼
 	Description:
 		'''
-		短时间大幅提升攻击
+		+100%伤害
 		经典之作
 		'''
 }
@@ -529,7 +529,7 @@ FroggleBunwichBuff: {
 	DisplayName: 蛙腿三明治
 	Description:
 		'''
-		自动跳跃，增加伤害，提升跳跃能力!!!
+		+4%伤害，自动跳跃并提升跳跃能力
 		你能真正尝到沼泽的味道
 		'''
 }
@@ -710,7 +710,7 @@ KiwiIceCreamBuff: {
 	DisplayName: 猕猴桃冰激凌
 	Description:
 		'''
-		增大10%武器大小，加快武器攻速
+		+10%武器大小，+5%召唤攻速
 		奇异的力量
 		'''
 }
@@ -961,7 +961,7 @@ PhoBuff: {
 	DisplayName: 越南河粉
 	Description:
 		'''
-		增加8%召唤物伤害!!!
+		+8%召唤伤害
 		异域风情
 		'''
 }
@@ -1035,7 +1035,7 @@ PotatoChipsBuff: {
 	DisplayName: 薯片
 	Description:
 		'''
-		增加4防御，8%伤害!!!
+		+4防御，+4%近战伤害
 		高油高盐
 		'''
 }
@@ -1044,7 +1044,7 @@ PrismaticPunchBuff: {
 	DisplayName: 七彩潘趣酒
 	Description:
 		'''
-		短时间内增加5召唤栏，5哨兵栏，增加50%召唤伤害，击退!!!
+		+5召唤栏，+5哨兵栏，+50%召唤伤害和击退
 		高雅兴致
 		'''
 }
@@ -1176,7 +1176,7 @@ SakeBuff: {
 	DisplayName: 清酒
 	Description:
 		'''
-		短时间内减少18防御，大幅增加近战能力!!!
+		-18防御，+40%近战伤害和近战暴击率，+40%攻速
 		纯度，太高了
 		'''
 }
@@ -1221,7 +1221,7 @@ SeafoodDinnerBuff: {
 	DisplayName: 海鲜大餐
 	Description:
 		'''
-		增加8%暴击，伤害，攻速，爆伤!!!
+		+6%暴击率、伤害、攻速和爆伤
 		够生猛！
 		'''
 }
@@ -1355,7 +1355,7 @@ SugarCookieBuff: {
 	DisplayName: 蜜糖饼干
 	Description:
 		'''
-		增加5%远程伤害!!!
+		+5%远程伤害
 		养胃滋润
 		'''
 }
@@ -1373,7 +1373,7 @@ SweetshrimpSushiBuff: {
 	DisplayName: 甜虾寿司
 	Description:
 		'''
-		提升攻击
+		+4%伤害
 		美味的甜虾寿司
 		'''
 }
@@ -1391,7 +1391,7 @@ TeacupBuff: {
 	DisplayName: 一杯茶
 	Description:
 		'''
-		短时间内大幅增加魔力回复，魔法伤害，暴击!!!
+		+60%魔法伤害和魔法暴击率，+100魔力再生
 		醇香四溢
 		'''
 }

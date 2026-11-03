@@ -55,7 +55,7 @@ AuburnSelfReinforcing: {
 
 B_52Buff: {
 	DisplayName: B_52 Buff
-	Description: ""
+	Description: "While holding a launcher: +100% ranged attack speed, +25% ranged critical strike chance and +50% ranged damage"
 }
 
 BaconBuff: {
@@ -85,7 +85,7 @@ BananaBuff: {
 
 BananaDaiquiriBuff: {
 	DisplayName: Banana Daiquiri Buff
-	Description: ""
+	Description: "Consumes no ammo; +50% ranged damage and ranged critical strike chance"
 }
 
 BananaSplitBuff: {
@@ -140,7 +140,7 @@ BlueImmune: {
 
 BowlofSoupBuff: {
 	DisplayName: Bowlof Soup Buff
-	Description: ""
+	Description: "+20 mana and +5% magic damage"
 }
 
 BrownImmune: {
@@ -235,7 +235,7 @@ CrabseedWarshipBuff: {
 
 CreamSodaBuff: {
 	DisplayName: Cream Soda Buff
-	Description: ""
+	Description: "+40% melee damage and melee critical strike chance; +40% attack speed; -2400 aggro"
 }
 
 CrimsonMoonAlgaeSummonStaff_Buff: {
@@ -295,7 +295,7 @@ DreamYearningBuff: {
 
 DryMartiniBuff: {
 	DisplayName: Dry Martini Buff
-	Description: ""
+	Description: "+100% damage"
 }
 
 DurianBuff: {
@@ -355,7 +355,7 @@ FriesBuff: {
 
 FroggleBunwichBuff: {
 	DisplayName: Froggle Bunwich Buff
-	Description: ""
+	Description: "+4% damage; grants auto-jump and improves jumping"
 }
 
 FruitJuiceBuff: {
@@ -480,7 +480,7 @@ KiwiFruitBuff: {
 
 KiwiIceCreamBuff: {
 	DisplayName: Kiwi Ice Cream Buff
-	Description: ""
+	Description: "+10% weapon size; +5% summon attack speed"
 }
 
 KiwiJuiceBuff: {
@@ -545,7 +545,11 @@ MangoBuff: {
 
 MangosteenBuff: {
 	DisplayName: Mangosteen Buff
-	Description: ""
+	Description:
+		'''
+		Increases boomerang, yoyo and flail range
+		Nourishing goodness
+		'''
 }
 
 MapoTofuBuff: {
@@ -659,7 +663,7 @@ Petrification: {
 
 PhoBuff: {
 	DisplayName: Pho Buff
-	Description: ""
+	Description: "+8% summon damage"
 }
 
 Photolysis: {
@@ -709,12 +713,12 @@ PlumBuff: {
 
 PotatoChipsBuff: {
 	DisplayName: Potato Chips Buff
-	Description: ""
+	Description: "+4 defense and +4% melee damage"
 }
 
 PrismaticPunchBuff: {
 	DisplayName: Prismatic Punch Buff
-	Description: ""
+	Description: "+5 minion slots, +5 sentry slots; +50% summon damage and knockback"
 }
 
 PumpkinPieBuff: {
@@ -814,7 +818,7 @@ RustSlingshotBuffTwo: {
 
 SakeBuff: {
 	DisplayName: Sake Buff
-	Description: ""
+	Description: "-18 defense; +40% melee damage and melee critical strike chance; +40% attack speed"
 }
 
 SalmonInPepperBuff: {
@@ -839,12 +843,17 @@ SauteedFrogLegsBuff: {
 
 SeafoodDinnerBuff: {
 	DisplayName: Seafood Dinner Buff
-	Description: ""
+	Description: "+6% critical strike chance, damage, attack speed and critical damage"
 }
 
 SeafoodPizzaBuff: {
 	DisplayName: Seafood Pizza Buff
-	Description: ""
+	Description:
+		'''
+		+8% critical strike chance, damage, attack speed and critical damage
+		+2 defense, +1 life regen, +1 mana regen
+		Finishing this alone is no small feat
+		'''
 }
 
 ShadowPotionBuff: {
@@ -929,7 +938,7 @@ StrawberryIcecreamBuff: {
 
 SugarCookieBuff: {
 	DisplayName: Sugar Cookie Buff
-	Description: ""
+	Description: "+5% ranged damage"
 }
 
 SunriseBuff: {
@@ -939,7 +948,7 @@ SunriseBuff: {
 
 SweetshrimpSushiBuff: {
 	DisplayName: Sweetshrimp Sushi Buff
-	Description: ""
+	Description: "+4% damage"
 }
 
 TamakoSushiBuff: {
@@ -949,7 +958,7 @@ TamakoSushiBuff: {
 
 TeacupBuff: {
 	DisplayName: Teacup Buff
-	Description: ""
+	Description: "+60% magic damage and magic critical strike chance; +100 mana regen"
 }
 
 TheGreenSolarBuff: {

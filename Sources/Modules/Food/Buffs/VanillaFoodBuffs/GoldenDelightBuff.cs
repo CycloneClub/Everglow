@@ -16,7 +16,8 @@ public class GoldenDelightBuff : ModBuff
 		FoodBuffModPlayer.GoldenDelightBuff = true;
 		player.statDefense += 4; // 加3防御
 		player.GetCritChance(DamageClass.Generic) += 4; // 加4%暴击
-		player.GetDamage(DamageClass.Generic) *= 1.04f; // 加4%伤害
+		// +4% damage
+		player.GetDamage(DamageClass.Generic) += 0.04f;
 		player.GetAttackSpeed(DamageClass.Generic) += 0.04f; // 加4%攻速
 		player.lifeRegen += 2; // 加2生命回复
 		// +4 mana regen

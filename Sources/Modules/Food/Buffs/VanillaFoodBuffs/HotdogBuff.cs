@@ -15,6 +15,7 @@ public class HotdogBuff : ModBuff
 		player.maxRunSpeed *= 0.8f;
 		player.runAcceleration *= 0.8f;
 		player.GetCritChance(DamageClass.Melee) += 8; // 加8%暴击
-		player.GetDamage(DamageClass.Melee) *= 1.08f; // 加8%伤害
+		// +8% melee damage
+		player.GetDamage(DamageClass.Melee) += 0.08f;
 	}
 }

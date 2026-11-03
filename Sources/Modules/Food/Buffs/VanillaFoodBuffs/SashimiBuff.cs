@@ -18,6 +18,7 @@ public class SashimiBuff : ModBuff
 		player.ignoreWater = true;
 		player.accFlipper = true;
 		player.maxRunSpeed *= 1.2f;
-		player.GetDamage(DamageClass.Generic) *= 1.15f;
+		// +15% damage
+		player.GetDamage(DamageClass.Generic) += 0.15f;
 	}
 }

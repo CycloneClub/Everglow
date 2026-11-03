@@ -11,8 +11,8 @@ public class TropicalSmoothieBuff : ModBuff
 	public override void Update(Player player, ref int buffIndex)
 	{
 		player.GetModPlayer<TropicalSmoothiePlayer>().Enabled = true;
-		// +50% increased magic damage
-		player.GetDamage(DamageClass.Magic) *= 1.5f;
+		// +50% magic damage
+		player.GetDamage(DamageClass.Magic) += 0.5f;
 		// +50% increased magic critical strike chance
 		player.GetCritChance(DamageClass.Magic) += 50;
 	}

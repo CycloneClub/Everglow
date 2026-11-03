@@ -14,7 +14,8 @@ public class FruitSaladBuff : ModBuff
 	{
 		player.statDefense += 3; // 加3防御
 		player.GetCritChance(DamageClass.Generic) += 3; // 加3%暴击
-		player.GetDamage(DamageClass.Generic) *= 1.03f; // 加3%伤害
+		// +3% damage
+		player.GetDamage(DamageClass.Generic) += 0.03f;
 		player.GetAttackSpeed(DamageClass.Generic) += 0.03f; // 加3%攻速
 		player.lifeRegen += 2; // 加2生命回复
 		// +3 mana regen
