@@ -22,7 +22,8 @@ public class FireflyBorageBadge : ModItem
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
 		player.GetDamage(DamageClass.Magic) *= 1.05f;
-		player.moveSpeed *= 1.1f;
+		// +10% movement speed
+		player.moveSpeed += 0.1f;
 		if (CorruptMoth.CorruptMothNPC != null && CorruptMoth.CorruptMothNPC.active)
 		{
 			if (player.statDefense <= 50)

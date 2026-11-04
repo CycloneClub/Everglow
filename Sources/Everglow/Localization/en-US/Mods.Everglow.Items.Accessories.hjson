@@ -163,7 +163,7 @@ FireflyBorageBadge: {
 	DisplayName: Firefly Borage Badge
 	Tooltip:
 		'''
-		{0}% multiplicative magic damage and {1}% multiplicative movement speed modifier
+		{0}% multiplicative magic damage and {1}% increased movement speed
 		While the Corrupt Moth is present: lose {2}% defense (rounded down, capped at {3})
 		Gain another {4}% multiplicative damage and {5}% multiplicative melee and whip attack speed
 		Positive base crit chances for Melee, MeleeNoSpeed and whips become zero; weapon and inherited crit bonuses still apply
@@ -249,7 +249,7 @@ HardenedWitherbarkHeart: {
 	DisplayName: Hardened Witherbark Heart
 	Tooltip:
 		'''
-		10% reduced movement speed and 40% reduced sprint speed
+		50% reduced movement speed
 		Reduces the next enemy contact hit by 90%, then leaves you vulnerable for 10 seconds
 		While vulnerable, enemy contact hits deal 50% more damage
 		'''
@@ -583,7 +583,7 @@ ThornTurtleShell: {
 		'''
 		Reflects damage back at attackers
 		5% increased damage reduction
-		7% reduced movement speed and 5% reduced maximum running speed
+		12% reduced movement speed
 		'''
 }
 
@@ -613,7 +613,7 @@ WalnutClip: {
 
 WhiteCrown: {
 	DisplayName: White Crown
-	Tooltip: ""
+	Tooltip: "10% increased movement speed per 50 maximum life"
 }
 
 WhitePedal: {

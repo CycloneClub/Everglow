@@ -4,8 +4,6 @@ public class FruitJuiceBuff : ModBuff
 {
 	public override void SetStaticDefaults()
 	{
-		// DisplayName.SetDefault("FruitJuiceBuff");
-		// Description.SetDefault("短时间内幅大大提升大部分属性\n“维生素！”");
 		Main.buffNoTimeDisplay[Type] = false;
 		Main.debuff[Type] = false; // 添加这个，这样护士在治疗时就不会去除buff
 	}
@@ -18,11 +16,11 @@ public class FruitJuiceBuff : ModBuff
 		// +20% damage
 		player.GetDamage(DamageClass.Generic) += 0.2f;
 		player.GetAttackSpeed(DamageClass.Generic) += 0.2f; // 加20%攻速
-		player.lifeRegen += 10; // 加1生命回复
+		player.lifeRegen += 10; // +10 life regen
 		// +20 mana regen
 		player.manaRegenBonus += 20;
-		player.maxRunSpeed *= 2f; // 加速
-		player.runAcceleration *= 2f;
+		// +100% movement speed
+		player.moveSpeed += 1f;
 		player.jumpSpeedBoost += 2;
 	}
 }

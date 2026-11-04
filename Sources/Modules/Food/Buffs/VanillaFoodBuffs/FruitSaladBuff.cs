@@ -4,8 +4,6 @@ public class FruitSaladBuff : ModBuff
 {
 	public override void SetStaticDefaults()
 	{
-		// DisplayName.SetDefault("FruitSaladBuff");
-		// Description.SetDefault("提升大部分属性\n“长久的维生素！”");
 		Main.buffNoTimeDisplay[Type] = false;
 		Main.debuff[Type] = false; // 添加这个，这样护士在治疗时就不会去除buff
 	}
@@ -20,8 +18,8 @@ public class FruitSaladBuff : ModBuff
 		player.lifeRegen += 2; // 加2生命回复
 		// +3 mana regen
 		player.manaRegenBonus += 3;
-		player.maxRunSpeed *= 1.2f; // 加速
-		player.runAcceleration *= 1.2f;
+		// +20% movement speed
+		player.moveSpeed += 0.2f;
 		player.jumpSpeedBoost += 1.5f;
 	}
 }

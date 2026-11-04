@@ -26,8 +26,8 @@ public class HardenedWitherbarkHeart : ModItem
 
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
-		player.moveSpeed -= 0.1f; // Decrease movement speed by 10%.
-		player.accRunSpeed *= 1 - 0.4f; // Decrease run speed by 40%.
+		// -50% movement speed
+		player.moveSpeed -= 0.5f;
 		player.GetModPlayer<HardenedWitherbarkHeartPlayer>().Enable = true;
 	}
 

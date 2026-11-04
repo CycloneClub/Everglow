@@ -25,7 +25,24 @@ public class WhiteCrown : ModItem
 
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
-		player.maxRunSpeed += (int)(player.statLifeMax2 * 0.02f) / 10f;
+		player.GetModPlayer<WhiteCrownPlayer>().Enable = true;
+	}
+
+	public class WhiteCrownPlayer : ModPlayer
+	{
+		public bool Enable { get; set; }
+
+		public override void ResetEffects() => Enable = false;
+
+		public override void PostUpdateMiscEffects()
+		{
+			if (Enable)
+			{
+				// After life capacity bonuses:
+				// +10% movement speed per 50 max life
+				Player.moveSpeed += (int)(Player.statLifeMax2 * 0.02f) / 10f;
+			}
+		}
 	}
 
 	public override void AddRecipes()

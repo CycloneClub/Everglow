@@ -51,16 +51,23 @@ public class KelpCurtainPlayer : ModPlayer
 
 	public override void UpdateEquips()
 	{
-		if (Player.wet)
+		if (!Player.wet)
 		{
-			float multiplier = 1f
-				+ (MolluscsSetBuff ? 0.3f : 0f)
-				+ (MolluscsLeggings ? 0.35f : 0f)
-				+ (CorrodedPearl ? 0.2f : 0f)
-				+ (CrimsonMoonAlgaeGreaves ? 0.24f : 0f);
+			return;
+		}
 
-			Player.runAcceleration *= multiplier;
-			Player.maxRunSpeed *= multiplier;
+		// While wet:
+		// +30% movement speed with the Molluscs set
+		// +35% movement speed with Molluscs Leggings
+		// +20% movement speed with Corroded Pearl
+		// +24% movement speed with Crimson Moon Algae Greaves
+		float waterMovementBonus = (MolluscsSetBuff ? 0.3f : 0f)
+			+ (MolluscsLeggings ? 0.35f : 0f)
+			+ (CorrodedPearl ? 0.2f : 0f)
+			+ (CrimsonMoonAlgaeGreaves ? 0.24f : 0f);
+		if (waterMovementBonus != 0)
+		{
+			Player.moveSpeed += waterMovementBonus;
 		}
 	}
 

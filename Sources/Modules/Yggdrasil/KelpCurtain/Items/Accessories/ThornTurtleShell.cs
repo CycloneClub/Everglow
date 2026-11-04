@@ -21,7 +21,7 @@ public class ThornTurtleShell : ModItem
 	{
 		player.AddBuff(BuffID.Thorns, 2);
 		player.endurance += 0.05f; // Increase damage reduction by 5%.
-		player.moveSpeed -= 0.07f; // Decrease movement speed by 7%.
-		player.maxRunSpeed *= 1 - 0.05f; // Decrease run speed by 5%.
+		// -12% movement speed
+		player.moveSpeed -= 0.12f;
 	}
 }

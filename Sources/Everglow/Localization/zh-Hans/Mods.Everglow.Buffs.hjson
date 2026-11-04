@@ -237,7 +237,7 @@ BurgerBuff: {
 	DisplayName: 汉堡
 	Description:
 		'''
-		减少移速，增加防御
+		-40%移速，+10防御
 		热量炸弹
 		'''
 }
@@ -538,7 +538,7 @@ FruitJuiceBuff: {
 	DisplayName: 果汁
 	Description:
 		'''
-		短时间内幅大大提升大部分属性
+		+20防御，+20%暴击率、伤害和攻速，+25%减伤，+10生命再生，+20魔力再生，+100%移速，提升跳跃能力
 		维生素！
 		'''
 }
@@ -547,7 +547,7 @@ FruitSaladBuff: {
 	DisplayName: 水果沙拉
 	Description:
 		'''
-		提升大部分属性
+		+3防御，+3%暴击率、伤害和攻速，+2生命再生，+3魔力再生，+20%移速，提升跳跃能力
 		长久的维生素！
 		'''
 }
@@ -570,7 +570,7 @@ GoldenDelightBuff: {
 	DisplayName: 金美味
 	Description:
 		'''
-		攻击造迈达斯，提升大部分属性!!!
+		+4防御，+4%暴击率、伤害和攻速，+2生命再生，+4魔力再生，+20%移速，提升跳跃能力
 		金灿灿!
 		'''
 }
@@ -663,7 +663,7 @@ HotdogBuff: {
 	DisplayName: 热狗
 	Description:
 		'''
-		增强短剑与长矛类武器!!!
+		+8%近战伤害和近战暴击率，-20%移速
 		吔~~
 		'''
 }
@@ -840,7 +840,7 @@ MilkshakeBuff: {
 	DisplayName: 奶昔
 	Description:
 		'''
-		短时间内大幅加移速
+		+400%移速
 		节食减肥
 		'''
 }
@@ -1185,7 +1185,7 @@ SalmonInPepperBuff: {
 	DisplayName: 椒盐三文鱼
 	Description:
 		'''
-		提升速度,尤其是在水中
+		+7%移速，额外+15%移速（下雨时），可以游泳
 		冰海之皇
 		'''
 }
@@ -1194,7 +1194,7 @@ SalmonWarshipBuff: {
 	DisplayName: 三文鱼军舰
 	Description:
 		'''
-		提升速度
+		+10%移速
 		美味的三文鱼军舰
 		'''
 }

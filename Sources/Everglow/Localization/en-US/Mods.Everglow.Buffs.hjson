@@ -155,7 +155,7 @@ BunnyStewBuff: {
 
 BurgerBuff: {
 	DisplayName: Burger Buff
-	Description: ""
+	Description: "-40% movement speed and +10 defense"
 }
 
 CactusBallBuff: {
@@ -360,12 +360,20 @@ FroggleBunwichBuff: {
 
 FruitJuiceBuff: {
 	DisplayName: Fruit Juice Buff
-	Description: ""
+	Description:
+		'''
+		+20 defense, +20% critical strike chance, damage and attack speed, +25% damage reduction
+		+10 life regen, +20 mana regen, +100% movement speed; improves jumping
+		'''
 }
 
 FruitSaladBuff: {
 	DisplayName: Fruit Salad Buff
-	Description: ""
+	Description:
+		'''
+		+3 defense, +3% critical strike chance, damage and attack speed
+		+2 life regen, +3 mana regen, +20% movement speed; improves jumping
+		'''
 }
 
 GingerbreadCookieBuff: {
@@ -380,7 +388,11 @@ GlowMothBuff: {
 
 GoldenDelightBuff: {
 	DisplayName: Golden Delight Buff
-	Description: ""
+	Description:
+		'''
+		+4 defense, +4% critical strike chance, damage and attack speed
+		+2 life regen, +4 mana regen, +20% movement speed; improves jumping
+		'''
 }
 
 GoldenLotusStaff_Buff: {
@@ -445,7 +457,7 @@ HexaCrystalWeak: {
 
 HotdogBuff: {
 	DisplayName: Hotdog Buff
-	Description: ""
+	Description: "+8% melee damage and melee critical strike chance; -20% movement speed"
 }
 
 IceCreamBuff: {
@@ -574,7 +586,7 @@ MilkCartonBuff: {
 
 MilkshakeBuff: {
 	DisplayName: Milkshake Buff
-	Description: ""
+	Description: "+400% movement speed"
 }
 
 MolluscsSetBuff: {
@@ -823,12 +835,12 @@ SakeBuff: {
 
 SalmonInPepperBuff: {
 	DisplayName: Salmon In Pepper Buff
-	Description: ""
+	Description: "+7% movement speed, an extra +15% while raining; grants swimming"
 }
 
 SalmonWarshipBuff: {
 	DisplayName: Salmon Warship Buff
-	Description: ""
+	Description: "+10% movement speed"
 }
 
 SashimiBuff: {
