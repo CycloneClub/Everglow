@@ -20,6 +20,7 @@ public class FoodBuffModPlayer : ModPlayer
 	public bool SashimiBuff;
 	public bool ShuckedOysterBuff;
 	public bool MangoBuff;
+	public bool EscargotBuff;
 	public bool StarfruitBuff;
 	public bool NachosBuff;
 	public bool RoastedBirdBuff;
@@ -66,6 +67,7 @@ public class FoodBuffModPlayer : ModPlayer
 		SashimiBuff = false;
 		ShuckedOysterBuff = false;
 		MangoBuff = false;
+		EscargotBuff = false;
 		StarfruitBuff = false;
 		NachosBuff = false;
 		RoastedBirdBuff = false;
@@ -113,6 +115,7 @@ public class FoodBuffModPlayer : ModPlayer
 		SashimiBuff = false;
 		ShuckedOysterBuff = false;
 		MangoBuff = false;
+		EscargotBuff = false;
 		StarfruitBuff = false;
 		NachosBuff = false;
 		RoastedBirdBuff = false;
@@ -143,6 +146,15 @@ public class FoodBuffModPlayer : ModPlayer
 
 		CriticalDamage = 1f;
 		AddCritDamage = 0;
+	}
+
+	public override void PostUpdateRunSpeeds()
+	{
+		if (EscargotBuff && Player.active && !Player.dead && !Player.outOfRange && !Player.mount.Active)
+		{
+			// -75% final jump speed, after native balloon and accessory bonuses.
+			Player.jumpSpeed *= 1f - 0.75f;
+		}
 	}
 
 	public override void PostUpdateBuffs()
