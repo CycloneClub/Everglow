@@ -22,14 +22,13 @@ internal class CrystalStormBook : MagicBookProjectile
 			for (int f = 0; f < Main.rand.Next(2, 4); f++)
 			{
 				velocity = (Main.MouseWorld - Projectile.Center).SafeNormalize(Vector2.Zero).RotatedBy(Main.rand.NextFloat(-0.3f, 0.3f)) * player.HeldItem.shootSpeed;
-				var p0 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + velocity * -1, velocity * 1.9f, ModContent.ProjectileType<CrystalStormII>(), player.HeldItem.damage, player.HeldItem.knockBack, player.whoAmI);
-				p0.CritChance = player.GetWeaponCrit(player.HeldItem);
+				Projectile.NewProjectileDirect(player.GetSource_ItemUse(player.HeldItem), Projectile.Center + velocity * -1, velocity * 1.9f, ModContent.ProjectileType<CrystalStormII>(), player.GetWeaponDamage(player.HeldItem), player.HeldItem.knockBack, player.whoAmI);
 			}
 			if (times % 33 == 12)
 			{
 				velocity = (Main.MouseWorld - Projectile.Center).SafeNormalize(Vector2.Zero) * player.HeldItem.shootSpeed;
-				var p1 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + velocity * -1, velocity * 0.6f, ModContent.ProjectileType<LargeCrystal>(), (int)(player.HeldItem.damage * 2.8), player.HeldItem.knockBack, player.whoAmI);
-				p1.CritChance = player.GetWeaponCrit(player.HeldItem) * 3;
+				var p1 = Projectile.NewProjectileDirect(player.GetSource_ItemUse(player.HeldItem), Projectile.Center + velocity * -1, velocity * 0.6f, ModContent.ProjectileType<LargeCrystal>(), (int)(player.GetWeaponDamage(player.HeldItem) * 2.8), player.HeldItem.knockBack, player.whoAmI);
+				p1.CritChance += player.GetWeaponCrit(player.HeldItem) * 2;
 			}
 			times++;
 			if (times > 33)

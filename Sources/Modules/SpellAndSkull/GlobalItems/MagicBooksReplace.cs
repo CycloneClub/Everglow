@@ -155,7 +155,7 @@ public class MagicBooksReplace : GlobalItem
 				{
 					if (player.ownedProjectileCounts[type] < 1)
 					{
-						Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, type, 0, 0, player.whoAmI);
+						Projectile.NewProjectile(player.GetSource_ItemUse(item), player.Center, Vector2.Zero, type, 0, 0, player.whoAmI);
 					}
 				}
 			}
@@ -172,13 +172,13 @@ public class MagicBooksReplace : GlobalItem
 				int aimType = ModContent.ProjectileType<WaterBoltBook>();
 				if (player.ownedProjectileCounts[aimType] < 1)
 				{
-					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
+					Projectile.NewProjectile(player.GetSource_ItemUse(item), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
 				}
 
 				aimType = ModContent.ProjectileType<WaterBoltArray>();
 				if (player.ownedProjectileCounts[aimType] < 1)
 				{
-					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
+					Projectile.NewProjectile(player.GetSource_ItemUse(item), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
 				}
 			}
 			if (item.type == ItemID.DemonScythe)
@@ -186,13 +186,13 @@ public class MagicBooksReplace : GlobalItem
 				int aimType = ModContent.ProjectileType<Projectiles.DemonScythe.DemonScytheBook>();
 				if (player.ownedProjectileCounts[aimType] < 1)
 				{
-					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
+					Projectile.NewProjectile(player.GetSource_ItemUse(item), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
 				}
 
 				aimType = ModContent.ProjectileType<Projectiles.DemonScythe.DemonScytheArray>();
 				if (player.ownedProjectileCounts[aimType] < 1)
 				{
-					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
+					Projectile.NewProjectile(player.GetSource_ItemUse(item), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
 				}
 			}
 			if (item.type == ItemID.MagnetSphere)
@@ -200,13 +200,13 @@ public class MagicBooksReplace : GlobalItem
 				int aimType = ModContent.ProjectileType<MagnetSphereBook>();
 				if (player.ownedProjectileCounts[aimType] < 1)
 				{
-					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
+					Projectile.NewProjectile(player.GetSource_ItemUse(item), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
 				}
 
 				aimType = ModContent.ProjectileType<MagnetSphereArray>();
 				if (player.ownedProjectileCounts[aimType] < 1)
 				{
-					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
+					Projectile.NewProjectile(player.GetSource_ItemUse(item), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
 				}
 			}
 			if (item.type == ItemID.RazorbladeTyphoon)
@@ -214,13 +214,13 @@ public class MagicBooksReplace : GlobalItem
 				int aimType = ModContent.ProjectileType<RazorbladeTyphoonBook>();
 				if (player.ownedProjectileCounts[aimType] < 1)
 				{
-					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, player.HeldItem.damage, 0, player.whoAmI);
+					Projectile.NewProjectile(player.GetSource_ItemUse(item), player.Center, Vector2.Zero, aimType, player.GetWeaponDamage(item), 0, player.whoAmI);
 				}
 
 				aimType = ModContent.ProjectileType<RazorbladeTyphoonArray>();
 				if (player.ownedProjectileCounts[aimType] < 1)
 				{
-					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
+					Projectile.NewProjectile(player.GetSource_ItemUse(item), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
 				}
 			}
 			if (item.type == ItemID.CursedFlames)
@@ -228,13 +228,13 @@ public class MagicBooksReplace : GlobalItem
 				int aimType = ModContent.ProjectileType<CursedFlamesBook>();
 				if (player.ownedProjectileCounts[aimType] < 1)
 				{
-					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
+					Projectile.NewProjectile(player.GetSource_ItemUse(item), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
 				}
 
 				aimType = ModContent.ProjectileType<CursedFlamesArray>();
 				if (player.ownedProjectileCounts[aimType] < 1)
 				{
-					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
+					Projectile.NewProjectile(player.GetSource_ItemUse(item), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
 				}
 			}
 			if (item.type == ItemID.CrystalStorm)
@@ -242,13 +242,13 @@ public class MagicBooksReplace : GlobalItem
 				int aimType = ModContent.ProjectileType<CrystalStormBook>();
 				if (player.ownedProjectileCounts[aimType] < 1)
 				{
-					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
+					Projectile.NewProjectile(player.GetSource_ItemUse(item), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
 				}
 
 				aimType = ModContent.ProjectileType<CrystalStormArray>();
 				if (player.ownedProjectileCounts[aimType] < 1)
 				{
-					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
+					Projectile.NewProjectile(player.GetSource_ItemUse(item), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
 				}
 			}
 			if (item.type == ItemID.BookofSkulls)
@@ -256,13 +256,13 @@ public class MagicBooksReplace : GlobalItem
 				int aimType = ModContent.ProjectileType<BookofSkullsBook>();
 				if (player.ownedProjectileCounts[aimType] < 1)
 				{
-					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
+					Projectile.NewProjectile(player.GetSource_ItemUse(item), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
 				}
 
 				aimType = ModContent.ProjectileType<BookofSkullsArray>();
 				if (player.ownedProjectileCounts[aimType] < 1)
 				{
-					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
+					Projectile.NewProjectile(player.GetSource_ItemUse(item), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
 				}
 			}
 			if (item.type == ItemID.GoldenShower)
@@ -270,13 +270,13 @@ public class MagicBooksReplace : GlobalItem
 				int aimType = ModContent.ProjectileType<GoldenShowerBook>();
 				if (player.ownedProjectileCounts[aimType] < 1)
 				{
-					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
+					Projectile.NewProjectile(player.GetSource_ItemUse(item), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
 				}
 
 				aimType = ModContent.ProjectileType<GoldenShowerArray>();
 				if (player.ownedProjectileCounts[aimType] < 1)
 				{
-					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
+					Projectile.NewProjectile(player.GetSource_ItemUse(item), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
 				}
 			}
 			if (item.type == ItemID.LunarFlareBook)
@@ -284,13 +284,13 @@ public class MagicBooksReplace : GlobalItem
 				int aimType = ModContent.ProjectileType<LunarFlareBook>();
 				if (player.ownedProjectileCounts[aimType] < 1)
 				{
-					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
+					Projectile.NewProjectile(player.GetSource_ItemUse(item), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
 				}
 
 				aimType = ModContent.ProjectileType<LunarFlareArray>();
 				if (player.ownedProjectileCounts[aimType] < 1)
 				{
-					Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
+					Projectile.NewProjectile(player.GetSource_ItemUse(item), player.Center, Vector2.Zero, aimType, 0, 0, player.whoAmI);
 				}
 			}
 			CheckItemIsModSpell(item, player);
@@ -366,8 +366,7 @@ public class MagicBooksReplace : GlobalItem
 						if (Collision.SolidCollision(Main.MouseWorld + new Vector2(0, g * 5 * player.gravDir), 1, 1))
 						{
 							Vector2 ReleasePoint = Main.MouseWorld + new Vector2(0, g * 5 * player.gravDir);
-							var p = Projectile.NewProjectileDirect(item.GetSource_FromAI(), ReleasePoint, Vector2.Zero, ModContent.ProjectileType<SkullHand>(), player.HeldItem.damage * 3, player.HeldItem.knockBack * 6, player.whoAmI);
-							p.CritChance = player.GetWeaponCrit(player.HeldItem);
+							Projectile.NewProjectileDirect(player.GetSource_ItemUse(item), ReleasePoint, Vector2.Zero, ModContent.ProjectileType<SkullHand>(), player.GetWeaponDamage(item) * 3, player.HeldItem.knockBack * 6, player.whoAmI);
 
 							player.AddCooldown(SkullHandCooldown.ID, 18);
 							player.statMana -= player.HeldItem.mana * 4;

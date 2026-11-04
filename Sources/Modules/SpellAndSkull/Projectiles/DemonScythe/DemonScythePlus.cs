@@ -66,7 +66,8 @@ public class DemonScythePlus : ModProjectile
 		for (int x = 0; x < Projectile.velocity.Length() / 4 - 2; x++)
 		{
 			var p = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center - Projectile.velocity * 2, Projectile.velocity.RotatedByRandom(6.283) * 0.4f, ModContent.ProjectileType<DemonScythePlusCrack>(), (int)(Projectile.damage * k * 0.1), (int)(Projectile.knockBack * k * 0.3), Projectile.owner, Projectile.velocity.Length() / 60f, Main.rand.NextFloat(8f, 24f));
-			p.CritChance = (int)(Projectile.CritChance * k / 10);
+			// Scale only the inherited crit, preserving the fragment's own bonuses.
+			p.CritChance += (int)(Projectile.CritChance * k / 10) - Projectile.CritChance;
 			p.timeLeft = Main.rand.Next(45) + (int)Projectile.velocity.Length();
 		}
 	}
