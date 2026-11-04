@@ -35,8 +35,8 @@ public class FireflyBorageBadge : ModItem
 				player.statDefense -= 10;
 			}
 			player.GetDamage(DamageClass.Generic) *= 1.12f;
-			player.GetAttackSpeed(DamageClass.SummonMeleeSpeed) *= 1.08f;
-			player.GetAttackSpeed(DamageClass.Melee) *= 1.08f;
+			// +8% melee and whip attack speed (whips inherit melee speed).
+			player.GetAttackSpeed(DamageClass.Melee) += 0.08f;
 			if (player.GetCritChance(DamageClass.Melee) > 0)
 			{
 				player.GetTotalCritChance(DamageClass.Melee);

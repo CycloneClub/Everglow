@@ -301,7 +301,7 @@ public class YggdrasilPlayer : ModPlayer
 		Collision.HurtTile hurtTile = Player.GetHurtTile();
 		if (hurtTile.type == ModContent.TileType<KelpCurtain.Tiles.DeathJadeLake.JadeLakeBloodVineAlgea>() && Player.HasBuff(ModContent.BuffType<RedAlgaeDebuff>()))
 		{
-			modifiers.FinalDamage *= 2.5f;
+			modifiers.FinalDamage.Additive += 1.5f;
 		}
 		base.ModifyHurt(ref modifiers);
 	}

@@ -324,7 +324,7 @@ ElementalResistanceReductionDebuffTest: {
 
 EscargotBuff: {
 	DisplayName: Escargot Buff
-	Description: ""
+	Description: "-75% movement speed, -75% jump speed while unmounted, -90% wing flight time; +25% damage reduction"
 }
 
 EvilMusicRemnant: {

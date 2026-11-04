@@ -51,7 +51,9 @@ public class RockHelmet : ModItem
 	public override void UpdateArmorSet(Player player)
 	{
 		player.setBonus = SetBonusText.Value;
-		player.GetModPlayer<RockArmorSetPlayer>().RockArmorSetEnable = true;
+		var armorSet = player.GetModPlayer<RockArmorSetPlayer>();
+		armorSet.RockArmorSetEnable = true;
+		player.statDefense += armorSet.DefenseBonus;
 	}
 
 	public override void AddRecipes()
@@ -83,10 +85,10 @@ public class RockArmorSetPlayer : ModPlayer
 
 	public override void PostUpdate()
 	{
+		// Armor-set flags and this frame's movement are available here, after UpdateEquips.
 		if (RockArmorSetEnable)
 		{
 			MoveDistance += (int)(Player.position - Player.oldPosition).Length();
-			Player.statDefense += DefenseBonus;
 		}
 	}
 

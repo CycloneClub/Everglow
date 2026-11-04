@@ -361,12 +361,6 @@ public class FoodModPlayer : ModPlayer
 				Player.GetKnockback(DamageClass.Summon) -= 0.9f;
 				Player.moveSpeed -= 0.08f;
 				Player.pickSpeed += 0.2f;
-				if (Player.lifeRegen > 0)
-				{
-					Player.lifeRegen = 0;
-				}
-
-				Player.lifeRegen -= (int)(Player.statLifeMax2 * 0.02f);
 				Player.starving = true;
 			}
 		}

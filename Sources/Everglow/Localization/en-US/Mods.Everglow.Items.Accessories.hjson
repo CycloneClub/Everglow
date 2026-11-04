@@ -165,7 +165,7 @@ FireflyBorageBadge: {
 		'''
 		{0}% multiplicative magic damage and {1}% increased movement speed
 		While the Corrupt Moth is present: lose {2}% defense (rounded down, capped at {3})
-		Gain another {4}% multiplicative damage and {5}% multiplicative melee and whip attack speed
+		Gain another {4}% multiplicative damage and {5}% increased melee and whip attack speed
 		Positive base crit chances for Melee, MeleeNoSpeed and whips become zero; weapon and inherited crit bonuses still apply
 		'''
 }
