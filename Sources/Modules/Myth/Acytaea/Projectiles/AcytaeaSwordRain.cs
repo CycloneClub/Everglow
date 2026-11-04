@@ -29,7 +29,7 @@ public class AcytaeaSwordRain : ModProjectile
 	{
 		if (Projectile.timeLeft % 4 == 1 && Projectile.timeLeft > 120)
 		{
-			Projectile p0 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center - new Vector2(Main.rand.NextFloat(-100f, 100f), 2000), new Vector2(0, 40), ModContent.ProjectileType<AcytaeaFlySword_2>(), Projectile.damage * 2 / 3, 4);
+			Projectile p0 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center - new Vector2(Main.rand.NextFloat(-100f, 100f), 2000), new Vector2(0, 40), ModContent.ProjectileType<AcytaeaFlySword_2>(), Projectile.damage * 2 / 3, 4, owner: Projectile.owner);
 			p0.timeLeft = 600;
 		}
 		if (Projectile.timeLeft < 15)

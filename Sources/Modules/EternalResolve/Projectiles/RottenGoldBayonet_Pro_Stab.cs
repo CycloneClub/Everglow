@@ -20,7 +20,7 @@ namespace Everglow.EternalResolve.Projectiles
 		{
 			if (spAttCounts > 0)
 			{
-				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), target.Center, Vector2.zeroVector, ModContent.ProjectileType<RottenGoldBayonet_Mark>(), (int)(Projectile.damage * 0.5f), Projectile.knockBack * 2.97f, Projectile.owner, 1, target.whoAmI);
+				Projectile.NewProjectileDirect(Projectile.GetSource_OnHit(target), target.Center, Vector2.zeroVector, ModContent.ProjectileType<RottenGoldBayonet_Mark>(), (int)(Projectile.damage * 0.5f), Projectile.knockBack * 2.97f, Projectile.owner, 1, target.whoAmI);
 			}
 
 			spAttCounts--;

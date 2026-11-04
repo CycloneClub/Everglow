@@ -74,6 +74,8 @@ public class CrystalClub_smash : ClubProjSmash
 				Vector2 vel = new Vector2(0, -Main.rand.NextFloat(7, 21) * Player.gravDir).RotatedBy((t - 2) * 0.75f + Main.rand.NextFloat(-0.24f, 0.24f));
 				var crystal = new HolyCrystal
 				{
+					Source = Projectile.GetSource_FromAI(),
+					Owner = Projectile.owner,
 					Velocity = vel,
 					Active = true,
 					Visible = true,
@@ -92,6 +94,8 @@ public class CrystalClub_smash : ClubProjSmash
 				Vector2 vel = new Vector2(0, -Main.rand.NextFloat(7, 30) * Player.gravDir).RotatedBy((t - 4) * 0.4f + Main.rand.NextFloat(-0.24f, 0.24f));
 				var crystal = new HolyCrystal
 				{
+					Source = Projectile.GetSource_FromAI(),
+					Owner = Projectile.owner,
 					Velocity = vel,
 					Active = true,
 					Visible = true,

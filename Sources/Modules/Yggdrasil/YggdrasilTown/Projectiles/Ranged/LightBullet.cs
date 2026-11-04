@@ -76,7 +76,7 @@ internal class LightBullet : ModProjectile
 	{
 		SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
 		Collision.HitTiles(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
-		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<LightStartEffect_bullet>(), 0, 0, Projectile.owner);
+		Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<LightStartEffect_bullet>(), 0, 0, Projectile.owner);
 
 		var lightStartEffectProjectiles = new List<Projectile>();
 

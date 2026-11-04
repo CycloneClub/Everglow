@@ -32,7 +32,7 @@ internal class DarkFanFly : ModProjectile
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		Player player = Main.player[Projectile.owner];
-		Projectile.NewProjectile(Projectile.GetSource_FromAI(), target.Center, Vector2.Zero, ModContent.ProjectileType<FanHit>(), 0, 0, player.whoAmI, 15, Main.rand.NextFloat(6.283f));
+		Projectile.NewProjectile(Projectile.GetSource_OnHit(target), target.Center, Vector2.Zero, ModContent.ProjectileType<FanHit>(), 0, 0, player.whoAmI, 15, Main.rand.NextFloat(6.283f));
 		int[] array = Projectile.localNPCImmunity;
 		bool flag = (!Projectile.usesLocalNPCImmunity && !Projectile.usesIDStaticNPCImmunity) || (Projectile.usesLocalNPCImmunity && array[target.whoAmI] == 0) || (Projectile.usesIDStaticNPCImmunity && Projectile.IsNPCIndexImmuneToProjectileType(Projectile.type, target.whoAmI));
 		if (target.active && !target.dontTakeDamage && flag && (target.aiStyle != NPCAIStyleID.Fairy || target.ai[2] <= 1f))

@@ -125,7 +125,7 @@ public class LanternYoyo_fireYoyo : ModProjectile
 	{
 		if (timeLeft > 15)
 		{
-			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<Lantern_ExplosionEffect>(), Projectile.damage, 2, Projectile.owner, 3);
+			Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<Lantern_ExplosionEffect>(), Projectile.damage, 2, Projectile.owner, 3);
 		}
 		base.OnKill(timeLeft);
 	}

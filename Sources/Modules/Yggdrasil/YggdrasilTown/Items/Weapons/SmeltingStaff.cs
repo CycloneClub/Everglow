@@ -30,7 +30,7 @@ public class SmeltingStaff : ModItem
 	{
 		if (player.ownedProjectileCounts[ModContent.ProjectileType<MeltingFireRing>()] == 0)
 		{
-			Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.zeroVector, ModContent.ProjectileType<MeltingFireRing>(), 0, 0, player.whoAmI);
+			Projectile.NewProjectile(player.GetSource_ItemUse(Item), player.Center, Vector2.zeroVector, ModContent.ProjectileType<MeltingFireRing>(), 0, 0, player.whoAmI);
 		}
 		base.HoldItem(player);
 	}
@@ -38,7 +38,7 @@ public class SmeltingStaff : ModItem
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		Vector2 pos = player.Center + player.DirectionTo(Main.MouseWorld) * (float)Math.Min(200, (Main.MouseWorld - player.Center).Length());
-		Projectile.NewProjectile(player.GetSource_ItemUse(Item), pos, Vector2.Zero, type, damage, knockback, player.whoAmI);
+		Projectile.NewProjectile(source, pos, Vector2.Zero, type, damage, knockback, player.whoAmI);
 		return false;
 	}
 }

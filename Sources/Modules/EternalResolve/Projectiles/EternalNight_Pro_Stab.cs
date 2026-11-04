@@ -218,7 +218,7 @@ namespace Everglow.EternalResolve.Projectiles
 			for (int k = 0; k < 3; k++)
 			{
 				var p0 = Projectile.NewProjectileDirect(
-					Projectile.GetSource_FromAI(),
+					Projectile.GetSource_OnHit(target),
 					target.Center - new Vector2(0, Main.rand.NextFloat(115, 180) * Main.player[Projectile.owner].gravDir).RotatedBy(Main.rand.NextFloat(-0.4f, 0.4f)),
 					Vector2.zeroVector, ModContent.ProjectileType<EternalNight_shadow>(),
 					Projectile.damage / 7, Projectile.knockBack * 0.6f, Projectile.owner, target.whoAmI);

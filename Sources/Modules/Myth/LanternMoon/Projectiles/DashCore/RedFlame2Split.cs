@@ -71,9 +71,9 @@ internal class RedFlame2Split : ModProjectile
 			if (Projectile.timeLeft % 12 == 0)
 			{
 				Vector2 vm = Projectile.velocity.RotatedBy(1.57) * 0.35f;
-				Projectile.NewProjectile(null, Projectile.Center, vm, ModContent.ProjectileType<RedFlame0Little>(), Projectile.damage, 0, Main.myPlayer, 0, 0);
+				Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, vm, ModContent.ProjectileType<RedFlame0Little>(), Projectile.damage, 0, Projectile.owner, 0, 0);
 				vm = Projectile.velocity.RotatedBy(-1.57) * 0.35f;
-				Projectile.NewProjectile(null, Projectile.Center, vm, ModContent.ProjectileType<RedFlame0Little>(), Projectile.damage, 0, Main.myPlayer, 0, 0);
+				Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, vm, ModContent.ProjectileType<RedFlame0Little>(), Projectile.damage, 0, Projectile.owner, 0, 0);
 			}
 		}
 		kb *= 0.97f;

@@ -102,7 +102,7 @@ public class Fevens_Wing_Fly : ModProjectile
 			{
 				vel = new Vector2(-speed, speed);
 			}
-			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, vel, ModContent.ProjectileType<Fevens_Wing_Slash>(), 54, 2, default, 2);
+			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, vel, ModContent.ProjectileType<Fevens_Wing_Slash>(), 54, 2, Projectile.owner, 2);
 			Projectile.hide = true;
 		}
 
@@ -148,7 +148,7 @@ public class Fevens_Wing_Fly : ModProjectile
 			}
 			if (Projectile.ai[0] == 0)
 			{
-				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), TargetPos, Vector2.zeroVector, ModContent.ProjectileType<Fevens_Slash_Target>(), 0, 2, default, 2);
+				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), TargetPos, Vector2.zeroVector, ModContent.ProjectileType<Fevens_Slash_Target>(), 0, 2, Projectile.owner, 2);
 			}
 		}
 
@@ -163,7 +163,7 @@ public class Fevens_Wing_Fly : ModProjectile
 			Projectile.rotation = Projectile.rotation * 0.05f + targetRot * 0.95f;
 			if (Projectile.timeLeft == MaxTime - 100)
 			{
-				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Normalize(toTarget) * 210, ModContent.ProjectileType<Fevens_Wing_Slash>(), 54, 2, default, 2);
+				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Normalize(toTarget) * 210, ModContent.ProjectileType<Fevens_Wing_Slash>(), 54, 2, Projectile.owner, 2);
 				Projectile.hide = true;
 			}
 		}
@@ -177,7 +177,7 @@ public class Fevens_Wing_Fly : ModProjectile
 				Projectile.Center = TargetPos + new Vector2(400, 0).RotatedBy(Projectile.ai[0] / 8f * MathHelper.TwoPi);
 				if (Projectile.ai[0] == 0)
 				{
-					Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), TargetPos, Vector2.zeroVector, ModContent.ProjectileType<Fevens_Slash_Target>(), 0, 2, default, 2);
+					Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), TargetPos, Vector2.zeroVector, ModContent.ProjectileType<Fevens_Slash_Target>(), 0, 2, Projectile.owner, 2);
 				}
 			}
 			Projectile.hide = false;
@@ -195,7 +195,7 @@ public class Fevens_Wing_Fly : ModProjectile
 			Projectile.rotation = Projectile.rotation * 0.05f + targetRot * 0.95f;
 			if (Projectile.timeLeft == MaxTime - 130)
 			{
-				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Normalize(toTarget) * 240, ModContent.ProjectileType<Fevens_Wing_Slash>(), 54, 2, default, 2);
+				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Normalize(toTarget) * 240, ModContent.ProjectileType<Fevens_Wing_Slash>(), 54, 2, Projectile.owner, 2);
 				Projectile.hide = true;
 			}
 		}
@@ -215,7 +215,7 @@ public class Fevens_Wing_Fly : ModProjectile
 							TargetPos = npc.Center;
 							if (Projectile.ai[0] == 0)
 							{
-								Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), TargetPos, Vector2.zeroVector, ModContent.ProjectileType<Fevens_Slash_Target>(), 0, 2, default, 2);
+								Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), TargetPos, Vector2.zeroVector, ModContent.ProjectileType<Fevens_Slash_Target>(), 0, 2, Projectile.owner, 2);
 							}
 						}
 					}
@@ -236,7 +236,7 @@ public class Fevens_Wing_Fly : ModProjectile
 			Projectile.rotation = Projectile.rotation * 0.05f + targetRot * 0.95f;
 			if (Projectile.timeLeft == MaxTime - 150)
 			{
-				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Normalize(toTarget) * 240, ModContent.ProjectileType<Fevens_Wing_Slash>(), 54, 2, default, 2);
+				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Normalize(toTarget) * 240, ModContent.ProjectileType<Fevens_Wing_Slash>(), 54, 2, Projectile.owner, 2);
 				Projectile.hide = true;
 			}
 		}

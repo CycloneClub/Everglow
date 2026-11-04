@@ -134,7 +134,7 @@ public class MagnetSphereII : ModProjectile
 			d0.velocity = new Vector2(0, Main.rand.NextFloat(1.65f, 5.5f)).RotatedByRandom(6.283) * 3;
 		}
 		int HitType = ModContent.ProjectileType<MagnetSphereHit>();
-		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.One, HitType, (int)(Projectile.damage * 3f), Projectile.knockBack, Projectile.owner, 24, Projectile.rotation + Main.rand.NextFloat(6.283f));
+		Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, Vector2.One, HitType, (int)(Projectile.damage * 3f), Projectile.knockBack, Projectile.owner, 24, Projectile.rotation + Main.rand.NextFloat(6.283f));
 	}
 
 	public override void ModifyHitPlayer(Player target, ref Player.HurtModifiers modifiers)

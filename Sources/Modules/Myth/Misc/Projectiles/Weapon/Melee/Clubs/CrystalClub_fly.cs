@@ -540,6 +540,8 @@ public class CrystalClub_fly : ModProjectile, IWarpProjectile
 			Vector2 vel = new Vector2(0, -Main.rand.NextFloat(5, 12)).RotatedBy(t / 5f * MathHelper.TwoPi + Main.rand.NextFloat(-0.24f, 0.24f) + ranRot);
 			var crystal = new HolyCrystal
 			{
+				Source = Projectile.GetSource_Death(),
+				Owner = Projectile.owner,
 				Velocity = vel,
 				Active = true,
 				Visible = true,
@@ -554,13 +556,13 @@ public class CrystalClub_fly : ModProjectile, IWarpProjectile
 		for (int d = 0; d < 9; d++)
 		{
 			Vector2 v0 = new Vector2(0, 0.7f).RotatedBy(d / 4.5 * Math.PI + rnd) * 5;
-			var p = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, v0, ProjectileID.CrystalShard, Projectile.damage / 2, Projectile.knockBack * 0.1f, Projectile.owner);
+			var p = Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, v0, ProjectileID.CrystalShard, Projectile.damage / 2, Projectile.knockBack * 0.1f, Projectile.owner);
 			p.scale = 1.6f;
 		}
 		for (int d = 0; d < 9; d++)
 		{
 			Vector2 v0 = new Vector2(0, 1.2f).RotatedBy((d + 0.5) / 4.5 * Math.PI + rnd) * 5;
-			var p = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, v0, ProjectileID.CrystalShard, Projectile.damage / 2, Projectile.knockBack * 0.1f, Projectile.owner);
+			var p = Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, v0, ProjectileID.CrystalShard, Projectile.damage / 2, Projectile.knockBack * 0.1f, Projectile.owner);
 			p.scale = 2.4f;
 		}
 		SoundEngine.PlaySound(SoundID.Shatter.WithPitchOffset(Main.rand.NextFloat(0.2f, 0.9f)), Projectile.Center);
@@ -607,6 +609,6 @@ public class CrystalClub_fly : ModProjectile, IWarpProjectile
 			dust.noGravity = true;
 			dust.velocity = new Vector2(0, Main.rand.NextFloat(20f)).RotatedByRandom(6.283) * scale;
 		}
-		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<CrystalClub_fly_Explosion>(), Projectile.damage / 2, Projectile.knockBack * 0.1f, Projectile.owner, 8);
+		Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<CrystalClub_fly_Explosion>(), Projectile.damage / 2, Projectile.knockBack * 0.1f, Projectile.owner, 8);
 	}
 }

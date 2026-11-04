@@ -214,7 +214,7 @@ public class Georg_Hook : ModProjectile
 		{
 			if (Timer == 40)
 			{
-				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Owner.Center, Vector2.Zero, ModContent.ProjectileType<Georg_Hook_Thunder_Release>(), Projectile.damage, Projectile.knockBack, Main.myPlayer, 0.6f);
+				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Owner.Center, Vector2.Zero, ModContent.ProjectileType<Georg_Hook_Thunder_Release>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0.6f);
 			}
 		}
 	}

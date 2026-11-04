@@ -37,7 +37,7 @@ public class Georg_Hook_Thunder_Mark : ModProjectile
 
 	public override void OnKill(int timeLeft)
 	{
-		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<Georg_Hook_Thunder>(), Projectile.damage, Projectile.knockBack, Main.myPlayer, Projectile.ai[0]);
+		Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<Georg_Hook_Thunder>(), Projectile.damage, Projectile.knockBack, Projectile.owner, Projectile.ai[0]);
 	}
 
 	public override bool PreDraw(ref Color lightColor)

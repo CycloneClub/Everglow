@@ -304,7 +304,7 @@ public class ToxicToad : ModNPC
 			if (Main.netMode != NetmodeID.MultiplayerClient)
 			{
 				// 持续3秒: the cloud carries its own 180-frame lifetime and its own damage.
-				Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<ToxicToad_PoisonCloud>(), PoisonCloudDamage, 0f);
+				Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<ToxicToad_PoisonCloud>(), PoisonCloudDamage, 0f, Owner: Main.maxPlayers);
 				NPC.netUpdate = true;
 			}
 
@@ -485,7 +485,7 @@ public class ToxicToad : ModNPC
 
 		FireTimer = FireInterval;
 		Vector2 direction = (targetCenter - NPC.Center).SafeNormalize(Vector2.UnitX * NPC.direction);
-		Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, direction * BubbleSpeed, ModContent.ProjectileType<ToxicToad_PoisonBubble>(), NPC.damage, 0f);
+		Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, direction * BubbleSpeed, ModContent.ProjectileType<ToxicToad_PoisonBubble>(), NPC.damage, 0f, Owner: Main.maxPlayers);
 		NPC.netUpdate = true;
 	}
 

@@ -140,7 +140,7 @@ public class Fevens_Wing_Slash_Down : ModProjectile, IWarpProjectile
 			if (backPos != Vector2.zeroVector)
 			{
 				Vector2 vel = (backPos - Projectile.Center) * 0.2f;
-				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, vel, ModContent.ProjectileType<Fevens_Wing_Slash>(), 30, 2, default, 2);
+				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, vel, ModContent.ProjectileType<Fevens_Wing_Slash>(), 30, 2, Projectile.owner, 2);
 			}
 		}
 	}

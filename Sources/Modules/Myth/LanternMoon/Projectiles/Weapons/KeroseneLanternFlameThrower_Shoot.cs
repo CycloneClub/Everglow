@@ -109,7 +109,7 @@ public class KeroseneLanternFlameThrower_Shoot : ModProjectile
 			}
 			if (timeLeft > 5 && h < 2 && player.ownedProjectileCounts[Type] < 16)
 			{
-				Projectile p0 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), emitDustPos, newVelocity * 0.8f, Type, Projectile.damage, Projectile.knockBack, Projectile.owner);
+				Projectile p0 = Projectile.NewProjectileDirect(Projectile.GetSource_Death(), emitDustPos, newVelocity * 0.8f, Type, Projectile.damage, Projectile.knockBack, Projectile.owner);
 				p0.timeLeft = timeLeft - 2;
 			}
 			newVelocity *= sqrtSpeed;

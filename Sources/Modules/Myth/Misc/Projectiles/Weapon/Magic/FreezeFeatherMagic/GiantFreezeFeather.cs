@@ -260,7 +260,7 @@ public class GiantFreezeFeather : ModProjectile
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
 		AmmoHit();
-		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<GiantFreezeFeatherExplosion>(), Projectile.damage, 10, Projectile.owner);
+		Projectile.NewProjectileDirect(Projectile.GetSource_FromThis("OnTileCollide"), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<GiantFreezeFeatherExplosion>(), Projectile.damage, 10, Projectile.owner);
 		return false;
 	}
 

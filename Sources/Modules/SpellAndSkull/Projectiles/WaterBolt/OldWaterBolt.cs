@@ -20,7 +20,7 @@ public class OldWaterBolt : GlobalProjectile
 					if (player.ownedProjectileCounts[type] < 6)
 					{
 						player.GetModPlayer<MagicBookPlayer>().WaterBoltHasHit = 0;
-						Projectile.NewProjectileDirect(projectile.GetSource_FromAI(), player.Center + new Vector2(0, -30 * player.gravDir), new Vector2(0, -18 * player.gravDir), type, 0, 0, projectile.owner, player.ownedProjectileCounts[type] + 1);
+						Projectile.NewProjectileDirect(projectile.GetSource_OnHit(target), player.Center + new Vector2(0, -30 * player.gravDir), new Vector2(0, -18 * player.gravDir), type, 0, 0, projectile.owner, player.ownedProjectileCounts[type] + 1);
 					}
 				}
 			}

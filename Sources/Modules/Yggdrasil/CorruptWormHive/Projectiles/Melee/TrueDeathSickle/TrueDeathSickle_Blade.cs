@@ -121,7 +121,7 @@ public class TrueDeathSickle_Blade : ModProjectile, IWarpProjectile_warpStyle2, 
 		if (player.ownedProjectileCounts[HitType] < 5)
 		{
 			float s;
-			Projectile.NewProjectile(Projectile.GetSource_FromAI(), target.Center, Vector2.One, HitType, 0, 0, Projectile.owner, 15, Projection2D(SpacePos, Vector2.Zero, 500, out s).ToRotation() + Main.rand.NextFloat(-0.4f, 0.4f));
+			Projectile.NewProjectile(Projectile.GetSource_OnHit(target), target.Center, Vector2.One, HitType, 0, 0, Projectile.owner, 15, Projection2D(SpacePos, Vector2.Zero, 500, out s).ToRotation() + Main.rand.NextFloat(-0.4f, 0.4f));
 		}
 	}
 
@@ -166,7 +166,7 @@ public class TrueDeathSickle_Blade : ModProjectile, IWarpProjectile_warpStyle2, 
 				}
 			}
 		}
-		var proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<TrueDeathSickle_SickleBack>(), 0, 0, Projectile.owner, Projectile.ai[0], Projectile.ai[1]);
+		var proj = Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<TrueDeathSickle_SickleBack>(), 0, 0, Projectile.owner, Projectile.ai[0], Projectile.ai[1]);
 		proj.spriteDirection = Projectile.spriteDirection;
 		var tDSSB = proj.ModProjectile as TrueDeathSickle_SickleBack;
 		tDSSB.SpacePos = SpacePos;

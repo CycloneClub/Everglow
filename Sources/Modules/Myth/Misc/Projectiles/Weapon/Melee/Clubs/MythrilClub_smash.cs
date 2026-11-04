@@ -17,10 +17,10 @@ public class MythrilClub_smash : ClubProjSmash
 	{
 		if (level == 0)
 		{
-			Projectile.NewProjectileDirect(null, Player.gravDir == 1 ? Player.Bottom : Player.Top, Vector2.zeroVector, ModContent.ProjectileType<MythrilClub_smash_explosion>(), 0, 0, Player.whoAmI, 1 * Projectile.scale, Main.rand.NextFloat(MathHelper.TwoPi));
+			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Player.gravDir == 1 ? Player.Bottom : Player.Top, Vector2.zeroVector, ModContent.ProjectileType<MythrilClub_smash_explosion>(), 0, 0, Player.whoAmI, 1 * Projectile.scale, Main.rand.NextFloat(MathHelper.TwoPi));
 			for (int i = 0; i <= 5; i++)
 			{
-				Projectile p1 = Projectile.NewProjectileDirect(null, Player.gravDir == 1 ? Player.Bottom : Player.Top, Vector2.zeroVector, ModContent.ProjectileType<MythrilClub_smash_explosion2>(), 0, 0, Player.whoAmI, 1 * Projectile.scale, i / 5f);
+				Projectile p1 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Player.gravDir == 1 ? Player.Bottom : Player.Top, Vector2.zeroVector, ModContent.ProjectileType<MythrilClub_smash_explosion2>(), 0, 0, Player.whoAmI, 1 * Projectile.scale, i / 5f);
 				p1.timeLeft = 65 + i * 3;
 			}
 			for (int i = -3; i <= 3; i++)
@@ -61,10 +61,10 @@ public class MythrilClub_smash : ClubProjSmash
 		}
 		if (level == 1)
 		{
-			Projectile.NewProjectileDirect(null, Player.gravDir == 1 ? Player.Bottom : Player.Top, Vector2.zeroVector, ModContent.ProjectileType<MythrilClub_smash_explosion>(), 0, 0, Player.whoAmI, 1.4f * Projectile.scale, Main.rand.NextFloat(MathHelper.TwoPi));
+			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Player.gravDir == 1 ? Player.Bottom : Player.Top, Vector2.zeroVector, ModContent.ProjectileType<MythrilClub_smash_explosion>(), 0, 0, Player.whoAmI, 1.4f * Projectile.scale, Main.rand.NextFloat(MathHelper.TwoPi));
 			for (int i = 0; i <= 5; i++)
 			{
-				Projectile p1 = Projectile.NewProjectileDirect(null, Player.gravDir == 1 ? Player.Bottom : Player.Top, Vector2.zeroVector, ModContent.ProjectileType<MythrilClub_smash_explosion2>(), 0, 0, Player.whoAmI, 1.4f * Projectile.scale, i / 5f);
+				Projectile p1 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Player.gravDir == 1 ? Player.Bottom : Player.Top, Vector2.zeroVector, ModContent.ProjectileType<MythrilClub_smash_explosion2>(), 0, 0, Player.whoAmI, 1.4f * Projectile.scale, i / 5f);
 				p1.timeLeft = 65 + i * 3;
 			}
 			for (int i = -6; i <= 6; i++)

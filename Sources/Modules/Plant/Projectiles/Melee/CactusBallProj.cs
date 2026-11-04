@@ -218,7 +218,7 @@ public class CactusBallProj : ModProjectile, IWarpProjectile
 					for (int i = 0; i < Main.rand.Next(6, 9); i++)
 					{
 						Vector2 vector = Utils.ToRotationVector2(Main.rand.NextFloat(MathHelper.Pi));
-						Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center + vector * 5f, vector * 3f,
+						Projectile.NewProjectile(Projectile.GetSource_FromThis("OnTileCollide"), Projectile.Center + vector * 5f, vector * 3f,
 							ModContent.ProjectileType<CactusBallSpike>(), Projectile.damage / 3, 0f, Projectile.owner, 0f, 0f);
 					}
 				}
@@ -250,7 +250,7 @@ public class CactusBallProj : ModProjectile, IWarpProjectile
 		for (int i = 0; i < 2 * k0; i++)
 		{
 			Vector2 vector = new Vector2(Main.rand.NextFloat(0.06f, 0.24f), 0).RotatedByRandom(6.283) * Projectile.scale * k0;
-			Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center + vector * 5f, vector * 3f,
+			Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center + vector * 5f, vector * 3f,
 				ModContent.ProjectileType<CactusBallSpike>(), Projectile.damage / 3, 0f, Projectile.owner, 0f, 0f);
 		}
 

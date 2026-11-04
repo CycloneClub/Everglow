@@ -73,7 +73,7 @@ public class CreamChocolateCupStaff : ModItem
 	{
 		if (player.ownedProjectileCounts[ModContent.ProjectileType<CreamChocolateCupStaff_proj_rightClick>()] + player.ownedProjectileCounts[ModContent.ProjectileType<CreamChocolateCupStaff_proj>()] + player.ownedProjectileCounts[ModContent.ProjectileType<CreamChocolateCupStaff_proj_held>()] == 0)
 		{
-			Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.zeroVector, ModContent.ProjectileType<CreamChocolateCupStaff_proj_held>(), 0, 0, player.whoAmI, 0, 0);
+			Projectile.NewProjectile(player.GetSource_ItemUse(Item), player.Center, Vector2.zeroVector, ModContent.ProjectileType<CreamChocolateCupStaff_proj_held>(), 0, 0, player.whoAmI, 0, 0);
 		}
 		base.HoldItem(player);
 	}

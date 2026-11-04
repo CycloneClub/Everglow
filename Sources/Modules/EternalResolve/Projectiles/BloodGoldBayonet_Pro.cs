@@ -72,7 +72,7 @@ namespace Everglow.EternalResolve.Projectiles
 				if (healing > 0)
 				{
 					nextHealTick = Main.GameUpdateCount + 20;
-					Projectile.NewProjectile(Projectile.GetItemSource_OnHit(target, ModContent.ItemType<BloodGoldBayonet>()), target.Center, Vector2.Zero, ProjectileID.VampireHeal, 5, 0, Projectile.owner, Projectile.owner, healing);
+					Projectile.NewProjectile(Projectile.GetSource_OnHit(target), target.Center, Vector2.Zero, ProjectileID.VampireHeal, 5, 0, Projectile.owner, Projectile.owner, healing);
 				}
 			}
 			ProjTarget = target;

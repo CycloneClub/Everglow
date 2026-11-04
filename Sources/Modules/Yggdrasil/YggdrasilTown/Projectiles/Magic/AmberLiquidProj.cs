@@ -121,7 +121,7 @@ public class AmberLiquidProj : ModProjectile
 	public override void OnKill(int timeLeft)
 	{
 		SoundEngine.PlaySound(SoundID.DD2_BetsyFireballImpact.WithVolumeScale(0.8f).WithPitchOffset(1f), Projectile.Center);
-		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<AmberLiquidProj_Explosion>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 1);
+		Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<AmberLiquidProj_Explosion>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 1);
 		base.OnKill(timeLeft);
 	}
 }

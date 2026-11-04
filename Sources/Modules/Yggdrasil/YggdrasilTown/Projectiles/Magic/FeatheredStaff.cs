@@ -253,18 +253,18 @@ internal class FeatheredStaff : ModProjectile
 		{
 			Projectile.Kill();
 			GenerateParticlesExposion(20);
-			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<FeatheredStaff_break>(), (int)(Projectile.damage * 0.4f), Projectile.knockBack * 0.15f, Projectile.owner, 0.8f);
+			Projectile.NewProjectileDirect(Projectile.GetSource_FromThis("OnTileCollide"), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<FeatheredStaff_break>(), (int)(Projectile.damage * 0.4f), Projectile.knockBack * 0.15f, Projectile.owner, 0.8f);
 			return true;
 		}
 		if (CollisionCounter >= MaxCollisionCount)
 		{
 			Projectile.Kill();
 			GenerateParticlesExposion(20);
-			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<FeatheredStaff_break>(), (int)(Projectile.damage * 0.4f), Projectile.knockBack * 0.15f, Projectile.owner, 0.35f);
+			Projectile.NewProjectileDirect(Projectile.GetSource_FromThis("OnTileCollide"), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<FeatheredStaff_break>(), (int)(Projectile.damage * 0.4f), Projectile.knockBack * 0.15f, Projectile.owner, 0.35f);
 			return true;
 		}
 		GenerateParticlesExposion(13);
-		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<FeatheredStaff_break>(), (int)(Projectile.damage * 0.4f), Projectile.knockBack * 0.1f, Projectile.owner, 0.27f);
+		Projectile.NewProjectileDirect(Projectile.GetSource_FromThis("OnTileCollide"), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<FeatheredStaff_break>(), (int)(Projectile.damage * 0.4f), Projectile.knockBack * 0.1f, Projectile.owner, 0.27f);
 		if (Projectile.velocity.X != oldVelocity.X)
 		{
 			Projectile.velocity.X = -oldVelocity.X * 0.8f;
@@ -386,6 +386,6 @@ internal class FeatheredStaff : ModProjectile
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		GenerateParticlesExposion(20);
-		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<FeatheredStaff_break>(), (int)(Projectile.damage * 0.4f), Projectile.knockBack * 0.15f, Projectile.owner, 0.35f);
+		Projectile.NewProjectileDirect(Projectile.GetSource_OnHit(target), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<FeatheredStaff_break>(), (int)(Projectile.damage * 0.4f), Projectile.knockBack * 0.15f, Projectile.owner, 0.35f);
 	}
 }

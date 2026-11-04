@@ -66,7 +66,7 @@ public class CrimsonSpell : ModNPC
 		{
 			if (NPC.ai[0] == 30)
 			{
-				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(-5 * NPC.spriteDirection, 0), Vector2.zeroVector, ModContent.ProjectileType<BloodSpell>(), 10, 1, NPC.target);
+				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(-5 * NPC.spriteDirection, 0), Vector2.zeroVector, ModContent.ProjectileType<BloodSpell>(), 10, 1, Main.maxPlayers);
 			}
 			if (NPC.ai[0] < 80)
 			{

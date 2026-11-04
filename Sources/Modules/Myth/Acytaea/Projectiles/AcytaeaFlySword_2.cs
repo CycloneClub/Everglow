@@ -45,7 +45,6 @@ public class AcytaeaFlySword_2 : TrailingProjectile
 		{
 			return;
 		}
-		Player player = Main.player[Projectile.owner];
 		TimeAfterEntityDestroy = 60;
 		Projectile.tileCollide = false;
 		Projectile.friendly = false;
@@ -84,7 +83,7 @@ public class AcytaeaFlySword_2 : TrailingProjectile
 			};
 			Ins.VFXManager.Add(acytaeaFlame);
 		}
-		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), hitCenter, Vector2.Zero, ModContent.ProjectileType<AcytaeaFlySwordExplosion>(), Projectile.damage, Projectile.knockBack, player.whoAmI, 14);
+		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), hitCenter, Vector2.Zero, ModContent.ProjectileType<AcytaeaFlySwordExplosion>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 14);
 		Projectile.position -= Projectile.velocity;
 	}
 

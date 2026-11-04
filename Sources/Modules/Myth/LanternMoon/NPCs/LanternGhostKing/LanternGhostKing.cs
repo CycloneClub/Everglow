@@ -105,7 +105,7 @@ public class LanternGhostKing : LanternMoonNPC
 		{
 			float value = t - 0.5f;
 			value *= 2;
-			Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(-200 * value, 0), Vector2.zeroVector, ModContent.ProjectileType<LanternGhostKingPower>(), 0, 0, Main.myPlayer, value);
+			Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(-200 * value, 0), Vector2.zeroVector, ModContent.ProjectileType<LanternGhostKingPower>(), 0, 0, Main.maxPlayers, value);
 			LanternGhostKingPower l0 = p0.ModProjectile as LanternGhostKingPower;
 			if (l0 is not null)
 			{
@@ -185,7 +185,7 @@ public class LanternGhostKing : LanternMoonNPC
 		LanternMoonMusicManager musicSystem = ModContent.GetInstance<LanternMoonMusicManager>();
 		if (musicSystem.Wave15StartTimer == 14 * 60 + 10)
 		{
-			Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, 150), Vector2.zeroVector, ModContent.ProjectileType<KillLanternMoonMobs>(), 75000, 0, Main.myPlayer);
+			Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, 150), Vector2.zeroVector, ModContent.ProjectileType<KillLanternMoonMobs>(), 75000, 0, Main.maxPlayers);
 			NPC.alpha = 180;
 		}
 		if (musicSystem.Wave15StartTimer == 15 * 60)
@@ -485,7 +485,7 @@ public class LanternGhostKing : LanternMoonNPC
 			if (duration % 2 == 1 && Main.netMode != NetmodeID.MultiplayerClient)
 			{
 				Vector2 v0 = new Vector2(0, 24 * MathF.Abs(NPC.ai[1]) + 12).RotatedBy(Main.rand.NextFloat(-0.4f, 0.4f));
-				Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, 20) + v0 * 6, v0, ModContent.ProjectileType<GoldLanternLine>(), 40, 0f, target.whoAmI, 0, 0);
+				Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, 20) + v0 * 6, v0, ModContent.ProjectileType<GoldLanternLine>(), 40, 0f, Main.maxPlayers, 0, 0);
 				float myDamage = 40;
 				if (Main.expertMode)
 				{
@@ -550,7 +550,7 @@ public class LanternGhostKing : LanternMoonNPC
 			{
 				myDamage = 100;
 			}
-			Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<WheelShapeLantern3Layer>(), myDamage, 0f, target.whoAmI, 0, 0);
+			Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<WheelShapeLantern3Layer>(), myDamage, 0f, Main.maxPlayers, 0, 0);
 		}
 		if (Timer % 250 > 120)
 		{
@@ -623,7 +623,7 @@ public class LanternGhostKing : LanternMoonNPC
 			{
 				myDamage = 40;
 			}
-			Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, 150), Vector2.zeroVector, ModContent.ProjectileType<SmallLanternGroup>(), myDamage, 0f, target.whoAmI, Main.rand.Next(4), 0);
+			Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, 150), Vector2.zeroVector, ModContent.ProjectileType<SmallLanternGroup>(), myDamage, 0f, Main.maxPlayers, Main.rand.Next(4), 0);
 		}
 		RingCenterTrend = NPC.Center + new Vector2(0, 150);
 		RingRadiusTrend = 1000;
@@ -828,7 +828,7 @@ public class LanternGhostKing : LanternMoonNPC
 				float addValue = Main.rand.NextFloat(6.283f);
 				for (int x = 0; x < count; x++)
 				{
-					Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, 50) + new Vector2(2000, 0).RotatedBy(x / (float)count * MathHelper.TwoPi + addValue), new Vector2(-11, 0).RotatedBy(x / (float)count * MathHelper.TwoPi + addValue), ModContent.ProjectileType<LanternFlow>(), damage, 0f, target.whoAmI, 0.02f, 0);
+					Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, 50) + new Vector2(2000, 0).RotatedBy(x / (float)count * MathHelper.TwoPi + addValue), new Vector2(-11, 0).RotatedBy(x / (float)count * MathHelper.TwoPi + addValue), ModContent.ProjectileType<LanternFlow>(), damage, 0f, Main.maxPlayers, 0.02f, 0);
 					LanternFlow lanternF = p0.ModProjectile as LanternFlow;
 					lanternF.OwnerNPC = NPC;
 					lanternF.MinDisToNPC = 500;
@@ -881,7 +881,7 @@ public class LanternGhostKing : LanternMoonNPC
 			TeleportTo(testPos);
 			if (Main.netMode != NetmodeID.MultiplayerClient)
 			{
-				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<SmallLanternGroup_LanternRain>(), 50, 0f, target.whoAmI, Main.rand.Next(4), 0);
+				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<SmallLanternGroup_LanternRain>(), 50, 0f, Main.maxPlayers, Main.rand.Next(4), 0);
 			}
 		}
 		if (Timer > 1230 && Timer < 1250)
@@ -991,7 +991,7 @@ public class LanternGhostKing : LanternMoonNPC
 			if (Timer % 2 == 0 && Main.netMode != NetmodeID.MultiplayerClient)
 			{
 				Vector2 v0 = -Vector2.Normalize(addValue) * 10f;
-				Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + v0 * 6, v0, ModContent.ProjectileType<GoldLanternLine3>(), 40, 0f, target.whoAmI, 0, 0);
+				Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + v0 * 6, v0, ModContent.ProjectileType<GoldLanternLine3>(), 40, 0f, Main.maxPlayers, 0, 0);
 				float myDamage = 40;
 				if (Main.expertMode)
 				{
@@ -1050,7 +1050,7 @@ public class LanternGhostKing : LanternMoonNPC
 			Vector2 v0 = new Vector2(0, 24 * MathF.Abs(NPC.ai[1]) + 12).RotatedBy(Main.rand.NextFloat(-0.4f, 0.4f));
 			if (Main.netMode != NetmodeID.MultiplayerClient)
 			{
-				Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, 20) + v0 * 6, v0, ModContent.ProjectileType<GoldLanternLine>(), 40, 0f, target.whoAmI, 0, 0);
+				Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, 20) + v0 * 6, v0, ModContent.ProjectileType<GoldLanternLine>(), 40, 0f, Main.maxPlayers, 0, 0);
 				float myDamage = 40;
 				if (Main.expertMode)
 				{
@@ -1121,20 +1121,20 @@ public class LanternGhostKing : LanternMoonNPC
 				{
 					myDamage = 100;
 				}
-				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<WheelShapeLantern3Layer>(), myDamage, 0f, target.whoAmI, 0, 0);
+				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<WheelShapeLantern3Layer>(), myDamage, 0f, Main.maxPlayers, 0, 0);
 				if (Main.expertMode)
 				{
 					for (int i = 0; i < 8; i++)
 					{
 						Vector2 vel = new Vector2(0, 12).RotatedBy(i / 8f * MathHelper.TwoPi);
-						Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, vel, ModContent.ProjectileType<GoldLanternLine_NoTarget>(), myDamage, 0f, target.whoAmI, (i + 0.22f) / 8f * MathHelper.TwoPi + MathHelper.PiOver2, 0);
+						Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, vel, ModContent.ProjectileType<GoldLanternLine_NoTarget>(), myDamage, 0f, Main.maxPlayers, (i + 0.22f) / 8f * MathHelper.TwoPi + MathHelper.PiOver2, 0);
 						GoldLanternLine_NoTarget gLLNT0 = p0.ModProjectile as GoldLanternLine_NoTarget;
 						if (gLLNT0 is not null)
 						{
 							gLLNT0.Timer = Main.rand.Next(-5, 5);
 						}
 
-						Projectile p1 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, vel, ModContent.ProjectileType<GoldLanternLine_NoTarget>(), myDamage, 0f, target.whoAmI, (i - 0.22f) / 8f * MathHelper.TwoPi + MathHelper.PiOver2, 0);
+						Projectile p1 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, vel, ModContent.ProjectileType<GoldLanternLine_NoTarget>(), myDamage, 0f, Main.maxPlayers, (i - 0.22f) / 8f * MathHelper.TwoPi + MathHelper.PiOver2, 0);
 						GoldLanternLine_NoTarget gLLNT1 = p1.ModProjectile as GoldLanternLine_NoTarget;
 						if (gLLNT1 is not null)
 						{
@@ -1186,7 +1186,7 @@ public class LanternGhostKing : LanternMoonNPC
 			{
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2((i - 3.5f) * distance, -600), Vector2.Zero, ModContent.ProjectileType<LanternFlowLine>(), 40, 0f, target.whoAmI, 0, 0);
+					Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2((i - 3.5f) * distance, -600), Vector2.Zero, ModContent.ProjectileType<LanternFlowLine>(), 40, 0f, Main.maxPlayers, 0, 0);
 					p0.timeLeft = Main.rand.Next(580, 620);
 				}
 			}
@@ -1242,7 +1242,7 @@ public class LanternGhostKing : LanternMoonNPC
 				for (int i = 0; i < count; i++)
 				{
 					Vector2 v0 = new Vector2(0, count).RotatedBy(i / (float)count * MathHelper.TwoPi);
-					Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, 20) + v0, v0, ModContent.ProjectileType<GoldLanternLine>(), 40, 0f, target.whoAmI, 0, 0);
+					Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, 20) + v0, v0, ModContent.ProjectileType<GoldLanternLine>(), 40, 0f, Main.maxPlayers, 0, 0);
 					float myDamage = 40;
 					if (Main.expertMode)
 					{
@@ -1265,7 +1265,7 @@ public class LanternGhostKing : LanternMoonNPC
 				for (int i = 0; i < 15; i++)
 				{
 					Vector2 v0 = new Vector2(0, 8).RotatedBy((i + 0.5f) / 15f * MathHelper.TwoPi);
-					Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, 20) + v0, v0, ModContent.ProjectileType<GoldLanternLine>(), 40, 0f, target.whoAmI, 0, 0);
+					Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, 20) + v0, v0, ModContent.ProjectileType<GoldLanternLine>(), 40, 0f, Main.maxPlayers, 0, 0);
 					float myDamage = 40;
 					if (Main.expertMode)
 					{
@@ -1318,7 +1318,7 @@ public class LanternGhostKing : LanternMoonNPC
 				speed = 10f;
 				myDamage = 70;
 			}
-			Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), RingCenter + dir, -dir.NormalizeSafe() * speed, ModContent.ProjectileType<LanternFlameWall>(), (int)myDamage, 1, target.whoAmI);
+			Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), RingCenter + dir, -dir.NormalizeSafe() * speed, ModContent.ProjectileType<LanternFlameWall>(), (int)myDamage, 1, Main.maxPlayers);
 		}
 		if (dashTimer == 40 && Timer < 4140)
 		{
@@ -1440,7 +1440,7 @@ public class LanternGhostKing : LanternMoonNPC
 
 		if (Main.netMode != NetmodeID.MultiplayerClient)
 		{
-			Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<LanternGhostKingExplosion>(), 150, 0f, Main.myPlayer);
+			Projectile.NewProjectileDirect(NPC.GetSource_Death(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<LanternGhostKingExplosion>(), 150, 0f, Main.maxPlayers);
 		}
 		SoundStyle sound;
 		switch (Main.rand.Next(3))

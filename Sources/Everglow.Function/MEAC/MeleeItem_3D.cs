@@ -35,7 +35,7 @@ public abstract class MeleeItem_3D : ModItem
 	{
 		if (player.ownedProjectileCounts[Item.shoot] <= 0)
 		{
-			Projectile proj = Projectile.NewProjectileDirect(player.GetSource_FromAI(), player.Center, Vector2.zeroVector, Item.shoot, Item.damage, Item.knockBack, player.whoAmI);
+			Projectile proj = Projectile.NewProjectileDirect(player.GetSource_ItemUse(Item), player.Center, Vector2.zeroVector, Item.shoot, Item.damage, Item.knockBack, player.whoAmI);
 			MeleeProj_3D m3 = proj.ModProjectile as MeleeProj_3D;
 			if (m3 != null)
 			{

@@ -27,7 +27,7 @@ public class ChlorophyteClub : ClubProj
 		if (flyClubCooling <= 0 && Omega > 0.3f)
 		{
 			flyClubCooling = (int)(170 - Omega * 150);
-			Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<ChlorophyteClub_fly>(), (int)(Projectile.damage * 0.3f), Projectile.knockBack * 0.4f, Projectile.owner, 0);
+			Projectile.NewProjectile(Projectile.GetSource_OnHit(target), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<ChlorophyteClub_fly>(), (int)(Projectile.damage * 0.3f), Projectile.knockBack * 0.4f, Projectile.owner, 0);
 		}
 	}
 }

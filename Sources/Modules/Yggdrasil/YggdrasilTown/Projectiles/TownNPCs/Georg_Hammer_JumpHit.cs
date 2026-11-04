@@ -145,11 +145,11 @@ public class Georg_Hammer_JumpHit : ModProjectile
 			}
 			if (FireEnchanted)
 			{
-				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), HitPos, Vector2.Zero, ModContent.ProjectileType<Georg_Hammer_JumpHitExplosion_Fire>(), Projectile.damage, Projectile.knockBack, Main.myPlayer, 10);
+				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), HitPos, Vector2.Zero, ModContent.ProjectileType<Georg_Hammer_JumpHitExplosion_Fire>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 10);
 			}
 			else
 			{
-				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), HitPos, Vector2.Zero, ModContent.ProjectileType<Georg_Hammer_JumpHitExplosion>(), Projectile.damage, Projectile.knockBack, Main.myPlayer, 10);
+				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), HitPos, Vector2.Zero, ModContent.ProjectileType<Georg_Hammer_JumpHitExplosion>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 10);
 			}
 			ShakerManager.AddShaker(Projectile.Center, Vector2.One.RotatedByRandom(MathHelper.Pi), 80, 20f, 120, 0.9f, 0.8f, 150);
 			SoundEngine.PlaySound(SoundID.DD2_GoblinBomb, Projectile.Center);
@@ -159,8 +159,8 @@ public class Georg_Hammer_JumpHit : ModProjectile
 			if (Timer >= 40 && Timer % 4 == 0)
 			{
 				float value = Timer - 40;
-				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), HitPos + new Vector2(value * 80, 20), Vector2.Zero, ModContent.ProjectileType<Georg_Hammer_Flame>(), Projectile.damage, Projectile.knockBack, Main.myPlayer, 0.6f);
-				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), HitPos + new Vector2(value * -80, 20), Vector2.Zero, ModContent.ProjectileType<Georg_Hammer_Flame>(), Projectile.damage, Projectile.knockBack, Main.myPlayer, 0.6f);
+				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), HitPos + new Vector2(value * 80, 20), Vector2.Zero, ModContent.ProjectileType<Georg_Hammer_Flame>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0.6f);
+				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), HitPos + new Vector2(value * -80, 20), Vector2.Zero, ModContent.ProjectileType<Georg_Hammer_Flame>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0.6f);
 			}
 		}
 	}

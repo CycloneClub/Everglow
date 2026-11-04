@@ -1,4 +1,5 @@
 using Everglow.Yggdrasil.KelpCurtain.Projectiles.Magic;
+using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Buffs;
 
@@ -35,7 +36,7 @@ public class LichenInfectedNPC : GlobalNPC
 	{
 		if (npc.HasBuff(ModContent.BuffType<LichenInfected>()))
 		{
-			AddProjectile(npc, player);
+			AddProjectile(npc, player.GetSource_OnHit(npc), player.whoAmI);
 		}
 		base.OnHitByItem(npc, player, item, hit, damageDone);
 	}
@@ -44,12 +45,12 @@ public class LichenInfectedNPC : GlobalNPC
 	{
 		if (npc.HasBuff(ModContent.BuffType<LichenInfected>()))
 		{
-			AddProjectile(npc, Main.player[projectile.owner]);
+			AddProjectile(npc, projectile.GetSource_OnHit(npc), projectile.owner);
 		}
 		base.OnHitByProjectile(npc, projectile, hit, damageDone);
 	}
 
-	public void AddProjectile(NPC npc, Player player)
+	public void AddProjectile(NPC npc, IEntitySource source, int owner)
 	{
 		bool hasProj = false;
 		if (npc.HasBuff(ModContent.BuffType<LichenInfected>()))
@@ -58,7 +59,7 @@ public class LichenInfectedNPC : GlobalNPC
 			{
 				if (p.active && p.type == ModContent.ProjectileType<LichensPycnidium>())
 				{
-					if (p.owner == player.whoAmI)
+					if (p.owner == owner)
 					{
 						LichensPycnidium lP = p.ModProjectile as LichensPycnidium;
 						if (lP != null)
@@ -72,7 +73,7 @@ public class LichenInfectedNPC : GlobalNPC
 			}
 			if (!hasProj)
 			{
-				Projectile p0 = Projectile.NewProjectileDirect(player.GetSource_FromAI(), npc.Center, Vector2.zeroVector, ModContent.ProjectileType<LichensPycnidium>(), 150, 0, player.whoAmI, Main.rand.NextFloat(MathHelper.TwoPi));
+				Projectile p0 = Projectile.NewProjectileDirect(source, npc.Center, Vector2.zeroVector, ModContent.ProjectileType<LichensPycnidium>(), 150, 0, owner, Main.rand.NextFloat(MathHelper.TwoPi));
 				LichensPycnidium lp = p0.ModProjectile as LichensPycnidium;
 				if (lp != null)
 				{

@@ -134,7 +134,7 @@ public class LightArrow : ModProjectile
 		// -----------------------------
 		// Create new LightStartEffect_arrow projectile at the locaiton where this projectile is killed
 		Projectile.NewProjectileDirect(
-			Projectile.GetSource_FromAI(),
+			Projectile.GetSource_Death(),
 			Projectile.Center,
 			Vector2.Zero,
 			ModContent.ProjectileType<LightStartEffect_arrow>(),

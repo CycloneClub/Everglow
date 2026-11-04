@@ -68,7 +68,7 @@ public class FryingPanItem : ModItem
 	{
 		if (player.altFunctionUse != 2)// 左键
 		{
-			Projectile proj = Projectile.NewProjectileDirect(source, player.Center, velocity * 1.5f, type, damage, knockback * 2, Main.LocalPlayer.whoAmI, 0f, 0f);
+			Projectile proj = Projectile.NewProjectileDirect(source, player.Center, velocity * 1.5f, type, damage, knockback * 2, player.whoAmI, 0f, 0f);
 			proj.scale *= Item.scale;
 		}
 

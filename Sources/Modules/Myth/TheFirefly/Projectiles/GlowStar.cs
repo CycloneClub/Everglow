@@ -157,7 +157,7 @@ public class GlowStar : ModProjectile
 	public override void OnKill(int timeLeft)
 	{
 		float value = Math.Min(Projectile.damage / 30f, 1f);
-		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<GlowStarExplosion>(), 0, 0, Projectile.owner, 2.2f / (Projectile.ai[0] + 2) * 0.6f * value, 0.3f);
+		Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<GlowStarExplosion>(), 0, 0, Projectile.owner, 2.2f / (Projectile.ai[0] + 2) * 0.6f * value, 0.3f);
 		SoundEngine.PlaySound(SoundID.Item38, Projectile.Center);
 		float k1 = Math.Clamp(Projectile.velocity.Length(), 1, 3);
 		float k2 = Math.Clamp(Projectile.velocity.Length(), 6, 10);

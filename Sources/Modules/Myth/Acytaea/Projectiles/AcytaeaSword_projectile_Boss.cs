@@ -373,7 +373,7 @@ public class AcytaeaSword_projectile_Boss : ModProjectile, IWarpProjectile, IBlo
 		{
 			return;
 		}
-		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<AcytaeaSword_following>(), 0, 0f, -1, OwnerNPC);
+		Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<AcytaeaSword_following>(), 0, 0f, Projectile.owner, OwnerNPC);
 	}
 
 	private void GenerateVFX()

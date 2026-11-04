@@ -93,7 +93,7 @@ public class ArmorPiercingBlasterProj : ModProjectile
 
 	public override void OnKill(int timeLeft)
 	{
-		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<ArmorPiercingBlasterProjExplosion>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+		Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<ArmorPiercingBlasterProjExplosion>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
 		base.OnKill(timeLeft);
 	}
 

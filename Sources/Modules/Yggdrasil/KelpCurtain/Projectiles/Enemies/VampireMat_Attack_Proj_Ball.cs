@@ -60,11 +60,11 @@ public class VampireMat_Attack_Proj_Ball : ModProjectile
 
 		if (Main.rand.NextBool())
 		{
-			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<VampireMat_Attack_Proj_Ball_Small_Group>(), 36, 2.5f, Main.myPlayer, TargetPlayerIndex, ParentNPCIndex);
+			Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<VampireMat_Attack_Proj_Ball_Small_Group>(), 36, 2.5f, Projectile.owner, TargetPlayerIndex, ParentNPCIndex);
 		}
 		else
 		{
-			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<VampireMat_Attack_Proj_Ball_Small_Group_1>(), 36, 2.5f, Main.myPlayer, TargetPlayerIndex, ParentNPCIndex);
+			Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<VampireMat_Attack_Proj_Ball_Small_Group_1>(), 36, 2.5f, Projectile.owner, TargetPlayerIndex, ParentNPCIndex);
 		}
 	}
 

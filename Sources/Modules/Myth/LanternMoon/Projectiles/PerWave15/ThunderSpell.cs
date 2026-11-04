@@ -98,7 +98,7 @@ public class ThunderSpell : ModProjectile
 
 	public override void OnHitPlayer(Player target, Player.HurtInfo info)
 	{
-		Projectile p0 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<ThunderSpell_AttachPlayer>(), 0, 1.5f, target.whoAmI);
+		Projectile p0 = Projectile.NewProjectileDirect(Projectile.GetSource_OnHit(target), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<ThunderSpell_AttachPlayer>(), 0, 1.5f, Main.maxPlayers);
 		ThunderSpell_AttachPlayer tSAP = p0.ModProjectile as ThunderSpell_AttachPlayer;
 		tSAP.AttachedPlayer = target;
 		tSAP.OwnerNPC = OwnerNPC;
