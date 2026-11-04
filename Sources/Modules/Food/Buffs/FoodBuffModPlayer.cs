@@ -203,12 +203,15 @@ public class FoodBuffModPlayer : ModPlayer
 		base.PostUpdate();
 	}
 
-	public override void ModifyHurt(ref Player.HurtModifiers modifiers)
+	public override bool FreeDodge(Player.HurtInfo info)
 	{
-		if (Player.whoAmI == Main.myPlayer && SmoothieofDarknessBuff && Main.rand.NextBool(2))
+		// 50% chance to cancel a dodgeable hit and apply native dodge immunity.
+		if (SmoothieofDarknessBuff && Main.rand.NextBool(2))
 		{
 			Player.NinjaDodge();
+			return true;
 		}
+		return false;
 	}
 
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

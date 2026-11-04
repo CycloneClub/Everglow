@@ -214,7 +214,7 @@ CoffeeCupBuff: {
 
 CookedFishBuff: {
 	DisplayName: Cooked Fish Buff
-	Description: ""
+	Description: "+40 mana and +4% magic critical strike chance"
 }
 
 CookedMarshmallowBuff: {
@@ -916,7 +916,7 @@ ShuckedOysterBuff: {
 
 SmoothieofDarknessBuff: {
 	DisplayName: Smoothieof Darkness Buff
-	Description: ""
+	Description: "Grants a 50% chance to dodge attacks while active"
 }
 
 SpaghettiBuff: {

@@ -7,6 +7,7 @@ public class ThreeColorCrown : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
+	// Positive: effect ID * 1000 + remaining ticks; negative: remaining cooldown.
 	private int timer;
 
 	public override void SetStaticDefaults()
@@ -14,7 +15,7 @@ public class ThreeColorCrown : ModItem
 		// DisplayName.SetDefault("Three-colored Wreath");
 		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "三色花环");
 		// Tooltip.SetDefault("Hitting enemies randomly grants you one of the three effects below for 7s\nRed:Inceasing damage by 22%, increasing crit chance by 11%\nViolet:Immunity to most debuffs\nBlue:Increasing max mana by 300\nIt has a 30s CD\n'Pray for not being so lucky'");
-		// Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "击中敌人后随机获得以下三种效果之一,持续7秒\n红:伤害增加22%，暴击率增加11%\n紫:免疫绝大多数减益效果\n蓝:魔力上限增加300\n有30秒CD\n'求别太幸运'");
+		// Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "击中敌人后随机获得以下三种效果之一,持续7秒\n红:伤害增加22%，暴击率增加11%\n紫:免疫绝大多数减益效果\n蓝:+300魔力\n有30秒CD\n'求别太幸运'");
 	}
 
 	public override void SetDefaults()
@@ -30,6 +31,7 @@ public class ThreeColorCrown : ModItem
 	{
 		if (timer == 0)
 		{
+			// Random effect for 7 seconds; the timer decrements before applying it.
 			timer = Main.rand.Next(1, 4) * 1000 + 421;
 		}
 	}
@@ -41,18 +43,22 @@ public class ThreeColorCrown : ModItem
 		{
 			timer++;
 		}
-		else
+		else if (timer > 0)
 		{
+			timer--;
 			switch (timer / 1000)
 			{
 				case 1:
 					{
+						// +22% damage
 						player.GetDamage(DamageClass.Generic) += 0.22f;
+						// +11% critical strike chance
 						player.GetCritChance(DamageClass.Generic) += 11;
 						break;
 					}
 				case 2:
 					{
+						// Immunity to buffs marked as debuffs
 						int l = player.buffImmune.Length;
 						for (int i = 0; i < l; i++)
 						{
@@ -65,12 +71,14 @@ public class ThreeColorCrown : ModItem
 					}
 				case 3:
 					{
+						// +300 mana
 						player.statManaMax2 += 300;
 						break;
 					}
 			}
 			if (timer % 1000 == 1)
 			{
+				// 23 seconds after the effect ends: 30 seconds between triggers.
 				timer = -1380;
 			}
 		}

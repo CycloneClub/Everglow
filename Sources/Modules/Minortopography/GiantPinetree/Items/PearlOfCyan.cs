@@ -1,7 +1,7 @@
 namespace Everglow.Minortopography.GiantPinetree.Items;
 
 // TODO:翻译
-// 任何攻击的暴击会召唤若干基础伤害为4的松针，算作魔法伤害
+// Critical hits against NPCs attempt to spawn 3-5 pine needles, each with 4 base damage.
 public class PearlOfCyan : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
@@ -52,7 +52,8 @@ public class PearlOfCyanPlayer : ModPlayer
 						Vector2 randomDirection = new Vector2(0, Main.rand.NextFloat(75f, 160f)).RotatedByRandom(6.283);
 						if (!Collision.SolidCollision(target.Center + randomDirection, 0, 0))
 						{
-							Projectile.NewProjectile(Player.GetSource_Accessory(pearlOfCyan), target.Center + randomDirection, -randomDirection * 0.1f, ProjectileID.PineNeedleFriendly, (int)Player.GetDamage(DamageClass.Magic).ApplyTo(4), 0.1f, Player.whoAmI);
+							// Apply total magic damage bonuses, including inherited generic bonuses.
+							Projectile.NewProjectile(Player.GetSource_Accessory(pearlOfCyan), target.Center + randomDirection, -randomDirection * 0.1f, ProjectileID.PineNeedleFriendly, (int)Player.GetTotalDamage(DamageClass.Magic).ApplyTo(4), 0.1f, Player.whoAmI);
 						}
 					}
 				}

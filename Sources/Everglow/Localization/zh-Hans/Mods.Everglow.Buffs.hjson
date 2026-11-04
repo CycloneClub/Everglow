@@ -328,7 +328,7 @@ CookedFishBuff: {
 	DisplayName: 熟鱼
 	Description:
 		'''
-		增加40魔力上限,4%魔法暴击率!!!
+		+40魔力，+4%魔法暴击率
 		益气健脾
 		'''
 }
@@ -1277,7 +1277,7 @@ SmoothieofDarknessBuff: {
 	DisplayName: 暗黑奶昔
 	Description:
 		'''
-		短时间内有60%的概率闪避攻击!!!
+		短时间内有50%的概率闪避攻击!!!
 		腹黑（字面意义上）
 		'''
 }
