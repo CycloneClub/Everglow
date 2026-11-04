@@ -71,7 +71,7 @@ public class BlackStarFruit : ModNPC
 
 	public override void HitEffect(NPC.HitInfo hit)
 	{
-		Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<FruitBomb>(), 50, 3, Owner: Main.maxPlayers);
+		Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<FruitBomb>(), 50, 3, owner: Main.netMode == NetmodeID.SinglePlayer ? Main.myPlayer : Main.maxPlayers).npcProj = true;
 	}
 
 	public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
