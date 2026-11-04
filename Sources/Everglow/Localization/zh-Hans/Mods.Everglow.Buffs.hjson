@@ -1138,7 +1138,7 @@ RoastedBirdBuff: {
 	DisplayName: 烤鸟
 	Description:
 		'''
-		提升飞行能力!!!
+		+25%翅膀飞行时间，+15%翅膀水平速度，提高安全坠落距离
 		我是一只小小小鸟
 		'''
 }

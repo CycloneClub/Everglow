@@ -7,8 +7,6 @@ public class RoastedDuckBuff : ModBuff
 {
 	public override void SetStaticDefaults()
 	{
-		// DisplayName.SetDefault("RoastedDuckBuff");
-		// Description.SetDefault("可以在水上行走，提升飞行能力\n“这是烤鸭”");
 		Main.buffNoTimeDisplay[Type] = false;
 		Main.debuff[Type] = false; // 添加这个，这样护士在治疗时就不会去除buff
 	}
@@ -17,7 +15,6 @@ public class RoastedDuckBuff : ModBuff
 	{
 		FoodBuffModPlayer FoodBuffModPlayer = player.GetModPlayer<FoodBuffModPlayer>();
 		FoodBuffModPlayer.RoastedDuckBuff = true;
-		FoodBuffModPlayer.WingTimeModifier += 0.1f;
 		// Cap maximum fall speed at 50% of the normal baseline (5 px/tick).
 		player.AddStat(StatBonus.MaxFallSpeedCap, 5f);
 		player.extraFall += 30;

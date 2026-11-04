@@ -816,7 +816,7 @@ RestrictionDroneRE01Buff: {
 
 RoastedBirdBuff: {
 	DisplayName: Roasted Bird Buff
-	Description: ""
+	Description: "+25% wing flight time, +15% horizontal wing speed; improves fall tolerance"
 }
 
 RoastedDuckBuff: {

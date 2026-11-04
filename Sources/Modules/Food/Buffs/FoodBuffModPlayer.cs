@@ -7,8 +7,6 @@ namespace Everglow.Food.Buffs;
 
 public class FoodBuffModPlayer : ModPlayer
 {
-	public float WingTimeModifier;
-
 	public bool BananaBuff;
 	public bool BananaDaiquiriBuff;
 	public bool BananaSplitBuff;
@@ -54,8 +52,6 @@ public class FoodBuffModPlayer : ModPlayer
 
 	public override void UpdateDead()
 	{
-		WingTimeModifier = 1f;
-
 		BananaBuff = false;
 		BananaDaiquiriBuff = false;
 		BananaSplitBuff = false;
@@ -102,8 +98,6 @@ public class FoodBuffModPlayer : ModPlayer
 
 	public override void ResetEffects()
 	{
-		WingTimeModifier = 1f;
-
 		BananaBuff = false;
 		BananaDaiquiriBuff = false;
 		BananaSplitBuff = false;
@@ -148,9 +142,28 @@ public class FoodBuffModPlayer : ModPlayer
 		AddCritDamage = 0;
 	}
 
+	public override void PostUpdateEquips()
+	{
+		// Native equipment has established wingTimeMax. Combine food percentages once.
+		float flightTime = 1f;
+		if (RoastedBirdBuff)
+		{
+			flightTime += 0.25f;
+		}
+		if (RoastedDuckBuff)
+		{
+			flightTime += 0.1f;
+		}
+		if (EscargotBuff)
+		{
+			flightTime -= 0.9f;
+		}
+		Player.wingTimeMax = (int)(Player.wingTimeMax * flightTime);
+	}
+
 	public override void PostUpdateRunSpeeds()
 	{
-		if (EscargotBuff && Player.active && !Player.dead && !Player.outOfRange && !Player.mount.Active)
+		if (EscargotBuff && !Player.mount.Active)
 		{
 			// -75% final jump speed, after native balloon and accessory bonuses.
 			Player.jumpSpeed *= 1f - 0.75f;
@@ -169,16 +182,6 @@ public class FoodBuffModPlayer : ModPlayer
 				}
 			}
 		}
-		if (RoastedBirdBuff)
-		{
-			Player.wingTimeMax = (int)(Player.wingTimeMax * WingTimeModifier);
-		}
-
-		if (RoastedDuckBuff)
-		{
-			Player.wingTimeMax = (int)(Player.wingTimeMax * WingTimeModifier);
-		}
-
 		var mp = Player.GetModPlayer<EverglowPlayer>();
 		if (BananaBuff)
 		{

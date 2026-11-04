@@ -15,8 +15,6 @@ public class EscargotBuff : ModBuff
 		// -75% movement speed
 		player.moveSpeed -= 0.75f;
 		player.desertBoots = false;
-		player.wingTime /= 10;
-		player.wingTimeMax /= 10;
 		player.rocketTime /= 10;
 		// -75% final jump speed
 		player.GetModPlayer<FoodBuffModPlayer>().EscargotBuff = true;

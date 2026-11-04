@@ -9,6 +9,15 @@ public class FoodBuffGlobalItem : GlobalItem
 
 	private int l = 0;
 
+	public override void HorizontalWingSpeeds(Item item, Player player, ref float speed, ref float acceleration)
+	{
+		if (player.GetModPlayer<FoodBuffModPlayer>().RoastedBirdBuff)
+		{
+			// Vanilla has already selected the normal or hovering speed for the equipped wing.
+			speed *= 1.15f;
+		}
+	}
+
 	public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		if (player.GetModPlayer<FoodBuffModPlayer>().GreenStormBuff)

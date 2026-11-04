@@ -85,30 +85,12 @@ public class EscargotJumpTests
 	}
 
 	[TestMethod]
-	[DataRow(0)]
-	[DataRow(1)]
-	[DataRow(2)]
-	[DataRow(3)]
-	public void EscargotDoesNotChangeMountedOrUnavailablePlayerJumpSpeed(int state)
+	public void EscargotDoesNotChangeMountedPlayerJumpSpeed()
 	{
 		int index = 0;
 		new EscargotBuff().Update(context.Player, ref index);
-		switch (state)
-		{
-			case 0:
-				context.Player.active = false;
-				break;
-			case 1:
-				context.Player.dead = true;
-				break;
-			case 2:
-				context.Player.outOfRange = true;
-				break;
-			case 3:
-				typeof(Mount).GetField("_active", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)!
-					.SetValue(context.Player.mount, true);
-				break;
-		}
+		typeof(Mount).GetField("_active", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)!
+			.SetValue(context.Player.mount, true);
 		Player.jumpSpeed = 8f;
 		foodBuffs.PostUpdateRunSpeeds();
 		Assert.AreEqual(8f, Player.jumpSpeed);
