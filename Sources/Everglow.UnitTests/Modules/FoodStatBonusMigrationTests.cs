@@ -1,4 +1,3 @@
-using Everglow.Commons.Mechanics;
 using Everglow.Commons.Mechanics.PlayerBonuses;
 using Everglow.Food;
 using Everglow.Food.Buffs;
@@ -35,7 +34,6 @@ public class FoodStatBonusMigrationTests
 		addCritDamage = FoodBuffModPlayer.AddCritDamage;
 		context = new CooldownTestContext();
 		bonuses = context.Attach<StatBonusPlayer>();
-		context.Attach<BadLifeRegenPlayer>();
 		foodBuffs = context.Attach<FoodBuffModPlayer>();
 		bonuses.ResetEffects();
 		foodBuffs.ResetEffects();

@@ -1,11 +1,12 @@
+using Everglow.Commons.Mechanics.PlayerBonuses;
+using Everglow.Commons.Utilities;
+
 namespace Everglow.Food.Buffs.VanillaFoodBuffs;
 
 public class GrilledSquirrelBuff : ModBuff
 {
 	public override void SetStaticDefaults()
 	{
-		// DisplayName.SetDefault("GrilledSquirrelBuff");
-		// Description.SetDefault("增加跳跃能力\n“欢跃”");
 		Main.buffNoTimeDisplay[Type] = false;
 		Main.debuff[Type] = false; // 添加这个，这样护士在治疗时就不会去除buff
 	}
@@ -14,7 +15,8 @@ public class GrilledSquirrelBuff : ModBuff
 	{
 		player.jumpSpeedBoost += 2;
 		player.jumpBoost = true;
-		player.maxFallSpeed *= 0.75f;
+		// Cap maximum fall speed at 75% of the normal baseline (7.5 px/tick).
+		player.AddStat(StatBonus.MaxFallSpeedCap, 7.5f);
 		player.extraFall += 30;
 	}
 }

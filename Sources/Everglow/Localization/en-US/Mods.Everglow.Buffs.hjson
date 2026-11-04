@@ -219,7 +219,7 @@ CookedFishBuff: {
 
 CookedMarshmallowBuff: {
 	DisplayName: Cooked Marshmallow Buff
-	Description: ""
+	Description: "Grants fall damage immunity and caps fall speed at 25% of the normal baseline."
 }
 
 CookedShrimpBuff: {
@@ -435,7 +435,7 @@ GreenStormBuff: {
 
 GrilledSquirrelBuff: {
 	DisplayName: Grilled Squirrel Buff
-	Description: ""
+	Description: "Improves jumping and caps fall speed at 75% of the normal baseline."
 }
 
 GrubSoupBuff: {
@@ -821,7 +821,7 @@ RoastedBirdBuff: {
 
 RoastedDuckBuff: {
 	DisplayName: Roasted Duck Buff
-	Description: ""
+	Description: "Allows water walking, improves flight and caps fall speed at 50% of the normal baseline."
 }
 
 RuinSetBuff: {

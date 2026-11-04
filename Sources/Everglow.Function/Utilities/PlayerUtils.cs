@@ -1,6 +1,7 @@
 using Everglow.Commons.Mechanics.BiomesText;
 using Everglow.Commons.Mechanics.Cooldown;
 using Everglow.Commons.Mechanics.ElementalDebuff;
+using Everglow.Commons.Mechanics.PlayerBonuses;
 using Terraria.GameContent.Events;
 
 namespace Everglow.Commons.Utilities;
@@ -57,6 +58,9 @@ public static class PlayerUtils
 
 	public static EverglowPlayer Everglow(this Player player) =>
 		player.GetModPlayer<EverglowPlayer>();
+
+	public static void AddStat(this Player player, StatBonus target, float value) =>
+		player.GetModPlayer<StatBonusPlayer>().Register(target, value);
 
 	public static bool TryGetActivePlayer(int whoAmI, out Player player)
 	{

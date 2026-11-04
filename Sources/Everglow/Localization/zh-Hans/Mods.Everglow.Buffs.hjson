@@ -337,7 +337,7 @@ CookedMarshmallowBuff: {
 	DisplayName: 熟棉花糖
 	Description:
 		'''
-		减少75%最大掉落速度,但无法操控下落速度!!!
+		免疫摔落伤害，最大下落速度限制为普通基准的25%
 		轻飘飘的
 		'''
 }
@@ -625,7 +625,7 @@ GrilledSquirrelBuff: {
 	DisplayName: 烤松鼠
 	Description:
 		'''
-		提升跳跃能力
+		提升跳跃能力，最大下落速度限制为普通基准的75%
 		欢跃
 		'''
 }
@@ -1147,7 +1147,7 @@ RoastedDuckBuff: {
 	DisplayName: 烤鸭
 	Description:
 		'''
-		可以在水上行走，提升飞行能力!!!
+		可以在水上行走，提升飞行能力，最大下落速度限制为普通基准的50%
 		这是烤鸭
 		'''
 }

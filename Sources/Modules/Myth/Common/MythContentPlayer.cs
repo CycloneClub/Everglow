@@ -1,3 +1,5 @@
+using Everglow.Commons.Mechanics.PlayerBonuses;
+using Everglow.Commons.Utilities;
 using Everglow.Myth.Misc.Projectiles.Weapon.Melee.PrimordialJadeWinged_Spear;
 
 namespace Everglow.Myth.Common;
@@ -99,6 +101,26 @@ public class MythContentPlayer : ModPlayer
 		}
 	}
 
+	public override void UpdateEquips()
+	{
+		if (SilverBuff > 0)
+		{
+			// +0.05 maximum run speed
+			Player.maxRunSpeed += 0.05f;
+			// +1.5 maximum fall speed
+			Player.maxFallSpeed += 1.5f;
+			// +0.05 wing run speed
+			Player.wingAccRunSpeed += 0.05f;
+			// +5% damage
+			Player.GetDamage(DamageClass.Generic) += 0.05f;
+		}
+		if (Player.ownedProjectileCounts[ModContent.ProjectileType<PrimordialJadeWinged_Spear>()] + Player.ownedProjectileCounts[ModContent.ProjectileType<PrimordialJadeWinged_SpearDown>()] > 0)
+		{
+			// 10000 px/tick maximum fall speed while a spear projectile is owned.
+			Player.AddStat(StatBonus.MaxFallSpeedForSpecialBehavior, 10000f);
+		}
+	}
+
 	public override void PostUpdateMiscEffects()
 	{
 		if (CyanPedal > 0)
@@ -114,18 +136,6 @@ public class MythContentPlayer : ModPlayer
 		if (CyanBranchCool > 0)
 		{
 			Miss += 8;
-		}
-
-		if (SilverBuff > 0)
-		{
-			Player.maxRunSpeed += 0.05f;
-			Player.maxFallSpeed += 1.5f;
-			Player.wingAccRunSpeed += 0.05f;
-			Player.GetDamage(DamageClass.Generic) *= 1.05f;
-		}
-		if (Player.ownedProjectileCounts[ModContent.ProjectileType<PrimordialJadeWinged_Spear>()] + Player.ownedProjectileCounts[ModContent.ProjectileType<PrimordialJadeWinged_SpearDown>()] > 0)
-		{
-			Player.maxFallSpeed += 10000f;
 		}
 	}
 
