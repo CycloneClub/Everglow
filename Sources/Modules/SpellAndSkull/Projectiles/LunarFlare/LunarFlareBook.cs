@@ -21,8 +21,7 @@ public class LunarFlareBook : MagicBookProjectile
 				Vector2 StartPos = Projectile.Center + new Vector2(Main.rand.NextFloat(-600, 600), -1000);
 				Vector2 vToMouse = Main.MouseWorld - StartPos;
 				Vector2 velocity = vToMouse.SafeNormalize(Vector2.Zero) * player.HeldItem.shootSpeed * Main.rand.NextFloat(0.85f, 1.15f);
-				var p = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), StartPos + velocity * MulStartPosByVelocity, velocity * MulVelocity * 8, ModContent.ProjectileType<LunarFlareII>(), (int)(player.HeldItem.damage * MulDamage), player.HeldItem.knockBack, player.whoAmI);
-				p.CritChance = player.GetWeaponCrit(player.HeldItem);
+				Projectile.NewProjectileDirect(player.GetSource_ItemUse(player.HeldItem), StartPos + velocity * MulStartPosByVelocity, velocity * MulVelocity * 8, ModContent.ProjectileType<LunarFlareII>(), (int)(player.GetWeaponDamage(player.HeldItem) * MulDamage), player.HeldItem.knockBack, player.whoAmI);
 			}
 		}
 	}

@@ -314,8 +314,7 @@ public class SkullII : ModProjectile, IWarpProjectile
 			for (int x = 0; x < 3; x++)
 			{
 				player.GetModPlayer<MagicBookPlayer>().WaterBoltHasHit = 0;
-				var p = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), player.Center + new Vector2(0, -30 * player.gravDir), new Vector2(0, 18 * player.gravDir), type, player.HeldItem.damage / 2, player.HeldItem.knockBack, Projectile.owner, Main.rand.NextFloat(-1.5f, 7f), Main.rand.NextFloat(0.65f, 0.95f));
-				p.CritChance = player.GetWeaponCrit(player.HeldItem);
+				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), player.Center + new Vector2(0, -30 * player.gravDir), new Vector2(0, 18 * player.gravDir), type, Projectile.damage / 2, Projectile.knockBack, Projectile.owner, Main.rand.NextFloat(-1.5f, 7f), Main.rand.NextFloat(0.65f, 0.95f));
 			}
 		}
 		if (Projectile.penetrate == 1)
@@ -357,8 +356,7 @@ public class SkullII : ModProjectile, IWarpProjectile
 			for (int x = 0; x < 3; x++)
 			{
 				player.GetModPlayer<MagicBookPlayer>().WaterBoltHasHit = 0;
-				var p = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), player.Center + new Vector2(0, -30 * player.gravDir), new Vector2(0, 18 * player.gravDir), type, player.HeldItem.damage / 2, player.HeldItem.knockBack, Projectile.owner, Main.rand.NextFloat(-1.5f, 7f), Main.rand.NextFloat(0.65f, 0.95f));
-				p.CritChance = player.GetWeaponCrit(player.HeldItem);
+				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), player.Center + new Vector2(0, -30 * player.gravDir), new Vector2(0, 18 * player.gravDir), type, Projectile.damage / 2, Projectile.knockBack, Projectile.owner, Main.rand.NextFloat(-1.5f, 7f), Main.rand.NextFloat(0.65f, 0.95f));
 			}
 		}
 		if (Projectile.penetrate == 1)

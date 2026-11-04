@@ -32,7 +32,6 @@ public class HurricaneMask : ModProjectile, IWarpProjectile
 		if (Projectile.timeLeft == 1)
 		{
 			var p = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<BlackHole.BlackHole>(), Projectile.damage * 12, 0, Projectile.owner, Projectile.ai[0] * 2);
-			p.CritChance = Projectile.CritChance;
 			p.timeLeft = 100 + (int)(Projectile.ai[0] * 240);
 			if (Projectile.ai[0] < 0.5f)
 			{

@@ -31,7 +31,7 @@ public class GoldenShowerBook : MagicBookProjectile, IWarpProjectile
 		for (int d = 0; d < 16; d++)
 		{
 			Vector2 velocity = new Vector2(0, Main.rand.NextFloat(-16f, -12f)).RotatedBy(Main.rand.NextFloat(-0.6f, 0.6f));
-			Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center + velocity * -2 + new Vector2(0, -20), velocity, ModContent.ProjectileType<GoldenShowerII>(), player.HeldItem.damage * 2, player.HeldItem.knockBack, player.whoAmI);
+			Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), Projectile.Center + velocity * -2 + new Vector2(0, -20), velocity, ModContent.ProjectileType<GoldenShowerII>(), player.GetWeaponDamage(player.HeldItem) * 2, player.HeldItem.knockBack, player.whoAmI);
 		}
 		base.OnSpawn(source);
 	}
@@ -62,15 +62,13 @@ public class GoldenShowerBook : MagicBookProjectile, IWarpProjectile
 				for (int d = 0; d < 2; d++)
 				{
 					Vector2 velocity = (Main.MouseWorld - Projectile.Center).SafeNormalize(Vector2.Zero).RotatedBy(Main.rand.NextFloat(-0.1f, 0.1f)) * player.HeldItem.shootSpeed * 1.3f;
-					var p = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + velocity * -2 + new Vector2(0, -10), velocity, ModContent.ProjectileType<GoldenShowerII>(), player.HeldItem.damage * 2, player.HeldItem.knockBack, player.whoAmI);
-					p.CritChance = player.GetWeaponCrit(player.HeldItem);
+					Projectile.NewProjectileDirect(player.GetSource_ItemUse(player.HeldItem), Projectile.Center + velocity * -2 + new Vector2(0, -10), velocity, ModContent.ProjectileType<GoldenShowerII>(), player.GetWeaponDamage(player.HeldItem) * 2, player.HeldItem.knockBack, player.whoAmI);
 				}
 			}
 			else
 			{
 				Vector2 velocity = (Main.MouseWorld - Projectile.Center).SafeNormalize(Vector2.Zero) * player.HeldItem.shootSpeed * 1.3f;
-				var p = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + velocity * -2 + new Vector2(0, -10), velocity, ModContent.ProjectileType<GoldenShowerII>(), player.HeldItem.damage * 2, player.HeldItem.knockBack, player.whoAmI);
-				p.CritChance = player.GetWeaponCrit(player.HeldItem);
+				Projectile.NewProjectileDirect(player.GetSource_ItemUse(player.HeldItem), Projectile.Center + velocity * -2 + new Vector2(0, -10), velocity, ModContent.ProjectileType<GoldenShowerII>(), player.GetWeaponDamage(player.HeldItem) * 2, player.HeldItem.knockBack, player.whoAmI);
 			}
 		}
 	}

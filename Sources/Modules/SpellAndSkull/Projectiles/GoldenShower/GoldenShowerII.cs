@@ -121,7 +121,6 @@ public class GoldenShowerII : ModProjectile
 				Vector2 velocity = new Vector2(0, Main.rand.NextFloat(2f, 6f)).RotatedByRandom(6.283) - Projectile.velocity * 0.2f;
 				var p = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + velocity * -2, velocity, ModContent.ProjectileType<GoldenShowerII>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 3f/*If ai[0] equal to 3, another ai will be execute*/);
 				p.friendly = false;
-				p.CritChance = Projectile.CritChance;
 			}
 		}
 		target.AddBuff(BuffID.Ichor, 600);
