@@ -211,7 +211,7 @@ public class BloodTusk : ModNPC
 			 SubTusk6, SubTusk7, Gum_Bottom, Gum_Surface, SubTusk2, SubTusk4, Gum_Surface_Center,
 		};
 		State = (int)States.Sleep;
-		Projectile proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<BloodTusk_Sleep_Crack>(), 0, 0);
+		Projectile proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<BloodTusk_Sleep_Crack>(), 0, 0, owner: Main.maxPlayers);
 		BloodTusk_Sleep_Crack crack = proj.ModProjectile as BloodTusk_Sleep_Crack;
 		crack.Tusk = NPC;
 		BottomDissolvePoint = NPC.Bottom;
@@ -255,11 +255,11 @@ public class BloodTusk : ModNPC
 					{
 						if (Main.rand.NextBool(135))
 						{
-							Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), new Vector2((Main.maxTilesX * 0.94f) * 16, (Main.maxTilesY * 0.9f) * 16), new Vector2(-21, -Main.rand.NextFloat(25, 30)), ModContent.ProjectileType<Living_Jawbone_Huge>(), 70, 10, NPC.target);
+							Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), new Vector2((Main.maxTilesX * 0.94f) * 16, (Main.maxTilesY * 0.9f) * 16), new Vector2(-21, -Main.rand.NextFloat(25, 30)), ModContent.ProjectileType<Living_Jawbone_Huge>(), 70, 10, Main.maxPlayers);
 						}
 						if (Main.rand.NextBool(135))
 						{
-							Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), new Vector2((Main.maxTilesX * 0.1f) * 16, (Main.maxTilesY * 0.9f) * 16), new Vector2(21, -Main.rand.NextFloat(25, 30)), ModContent.ProjectileType<Living_Jawbone_Huge>(), 70, 10, NPC.target);
+							Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), new Vector2((Main.maxTilesX * 0.1f) * 16, (Main.maxTilesY * 0.9f) * 16), new Vector2(21, -Main.rand.NextFloat(25, 30)), ModContent.ProjectileType<Living_Jawbone_Huge>(), 70, 10, Main.maxPlayers);
 						}
 						break;
 					}
@@ -474,7 +474,7 @@ public class BloodTusk : ModNPC
 						break;
 					}
 				}
-				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), leftSpikePos, Vector2.zeroVector, GetTusk_groundType(), GetDamage(18), 1, NPC.target);
+				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), leftSpikePos, Vector2.zeroVector, GetTusk_groundType(), GetDamage(18), 1, Main.maxPlayers);
 				leftSpikePos += TileUtils.GetTopographicGradient(leftSpikePos, 8).RotatedBy(-MathHelper.PiOver2) * distance * 4;
 
 				Vector2 rightNormal = -TileUtils.GetTopographicGradient(rightSpikePos, 8);
@@ -493,7 +493,7 @@ public class BloodTusk : ModNPC
 						break;
 					}
 				}
-				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), rightSpikePos, Vector2.zeroVector, GetTusk_groundType(), GetDamage(18), 1, NPC.target);
+				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), rightSpikePos, Vector2.zeroVector, GetTusk_groundType(), GetDamage(18), 1, Main.maxPlayers);
 				rightSpikePos += TileUtils.GetTopographicGradient(rightSpikePos, 8).RotatedBy(MathHelper.PiOver2) * distance * 4;
 			}
 			uint waitTime = 110;
@@ -544,7 +544,7 @@ public class BloodTusk : ModNPC
 					break;
 				}
 			}
-			Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), leftSpikePos, Vector2.zeroVector, GetTusk_groundType(), GetDamage(18), 1, NPC.target);
+			Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), leftSpikePos, Vector2.zeroVector, GetTusk_groundType(), GetDamage(18), 1, Main.maxPlayers);
 			p0.timeLeft = Main.rand.Next(101, 110);
 			leftSpikePos += TileUtils.GetTopographicGradient(leftSpikePos, 8).RotatedBy(-MathHelper.PiOver2) * 30;
 
@@ -564,7 +564,7 @@ public class BloodTusk : ModNPC
 					break;
 				}
 			}
-			Projectile p1 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), rightSpikePos, Vector2.zeroVector, GetTusk_groundType(), GetDamage(18), 1, NPC.target);
+			Projectile p1 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), rightSpikePos, Vector2.zeroVector, GetTusk_groundType(), GetDamage(18), 1, Main.maxPlayers);
 			p1.timeLeft = Main.rand.Next(101, 110);
 			rightSpikePos += TileUtils.GetTopographicGradient(rightSpikePos, 8).RotatedBy(MathHelper.PiOver2) * 30;
 			yield return new WaitForFrames(waitTime);
@@ -606,7 +606,7 @@ public class BloodTusk : ModNPC
 					break;
 				}
 			}
-			Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), leftSpikePos, Vector2.zeroVector, GetTusk_groundType(), GetDamage(18), 1, NPC.target);
+			Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), leftSpikePos, Vector2.zeroVector, GetTusk_groundType(), GetDamage(18), 1, Main.maxPlayers);
 			p0.timeLeft = Main.rand.Next(101, 110);
 			leftSpikePos += TileUtils.GetTopographicGradient(leftSpikePos, 8).RotatedBy(-MathHelper.PiOver2) * distance;
 
@@ -626,7 +626,7 @@ public class BloodTusk : ModNPC
 					break;
 				}
 			}
-			Projectile p1 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), rightSpikePos, Vector2.zeroVector, GetTusk_groundType(), GetDamage(18), 1, NPC.target);
+			Projectile p1 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), rightSpikePos, Vector2.zeroVector, GetTusk_groundType(), GetDamage(18), 1, Main.maxPlayers);
 			p1.timeLeft = Main.rand.Next(101, 110);
 			rightSpikePos += TileUtils.GetTopographicGradient(rightSpikePos, 8).RotatedBy(MathHelper.PiOver2) * distance;
 			yield return new WaitForFrames(2);
@@ -653,7 +653,7 @@ public class BloodTusk : ModNPC
 			}
 			if (i == 40)
 			{
-				Projectile fountain = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom + new Vector2(4, -34), Vector2.zeroVector, ModContent.ProjectileType<BloodFountain>(), GetDamage(10), 1, NPC.target, maxTime + 60);
+				Projectile fountain = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom + new Vector2(4, -34), Vector2.zeroVector, ModContent.ProjectileType<BloodFountain>(), GetDamage(10), 1, Main.maxPlayers, maxTime + 60);
 				fountain.scale = 1.5f;
 			}
 			yield return new SkipThisFrame();
@@ -709,7 +709,7 @@ public class BloodTusk : ModNPC
 			speed *= mulSpeed;
 			if (i % timeInterval == 0 && speed > 0.5f)
 			{
-				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom + new Vector2(4, -34), new Vector2(0, -speed * 35).RotatedBy(Main.rand.NextFloat(-0.3f, 0.3f)) * Main.rand.NextFloat(0.8f, 1.2f), ModContent.ProjectileType<TuskSpice_WithGravity>(), GetDamage(16), 1, NPC.target);
+				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom + new Vector2(4, -34), new Vector2(0, -speed * 35).RotatedBy(Main.rand.NextFloat(-0.3f, 0.3f)) * Main.rand.NextFloat(0.8f, 1.2f), ModContent.ProjectileType<TuskSpice_WithGravity>(), GetDamage(16), 1, Main.maxPlayers);
 			}
 			yield return new SkipThisFrame();
 		}
@@ -747,8 +747,8 @@ public class BloodTusk : ModNPC
 				{
 					speed = 0.4f;
 				}
-				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom, new Vector2(speed, 0), ModContent.ProjectileType<BloodTusk_Tentacle>(), GetDamage(28), 2, NPC.target, 0, 1);
-				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom, new Vector2(-speed, 0), ModContent.ProjectileType<BloodTusk_Tentacle>(), GetDamage(28), 2, NPC.target, 0, -1);
+				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom, new Vector2(speed, 0), ModContent.ProjectileType<BloodTusk_Tentacle>(), GetDamage(28), 2, Main.maxPlayers, 0, 1);
+				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom, new Vector2(-speed, 0), ModContent.ProjectileType<BloodTusk_Tentacle>(), GetDamage(28), 2, Main.maxPlayers, 0, -1);
 			}
 			StandBottomOffset = startBottom - NPC.Bottom;
 			yield return new SkipThisFrame();
@@ -921,7 +921,7 @@ public class BloodTusk : ModNPC
 				{
 					if ((player.Center - NPC.Center).Length() < 1500)
 					{
-						Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), player.Center, Vector2.zeroVector, GetTusk_groundType(), GetDamage(18), 1, NPC.target);
+						Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), player.Center, Vector2.zeroVector, GetTusk_groundType(), GetDamage(18), 1, Main.maxPlayers);
 						p0.timeLeft = Main.rand.Next(101, 110);
 					}
 				}
@@ -950,7 +950,7 @@ public class BloodTusk : ModNPC
 			}
 			if (i == 40)
 			{
-				Projectile fountain = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom + new Vector2(4, -34), Vector2.zeroVector, ModContent.ProjectileType<BloodFountain>(), GetDamage(10), 1, NPC.target, maxTime + 60);
+				Projectile fountain = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom + new Vector2(4, -34), Vector2.zeroVector, ModContent.ProjectileType<BloodFountain>(), GetDamage(10), 1, Main.maxPlayers, maxTime + 60);
 				fountain.scale = 1.5f;
 			}
 			yield return new SkipThisFrame();
@@ -1018,7 +1018,7 @@ public class BloodTusk : ModNPC
 				float rotation = Main.rand.NextFloat(-0.6f, 0.6f);
 				for (int t = -maxCount; t < maxCount + 1; t++)
 				{
-					Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom + new Vector2(4, -34), new Vector2(0, -speed * 24).RotatedBy(rotation + t / (float)maxCount * 0.6f), ModContent.ProjectileType<TuskSpice_WithGravity>(), GetDamage(16), 1, NPC.target);
+					Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom + new Vector2(4, -34), new Vector2(0, -speed * 24).RotatedBy(rotation + t / (float)maxCount * 0.6f), ModContent.ProjectileType<TuskSpice_WithGravity>(), GetDamage(16), 1, Main.maxPlayers);
 				}
 			}
 			yield return new SkipThisFrame();
@@ -1055,7 +1055,7 @@ public class BloodTusk : ModNPC
 			}
 			if (i == 40)
 			{
-				Projectile fountain = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom + new Vector2(4, -34), Vector2.zeroVector, ModContent.ProjectileType<BloodFountain>(), GetDamage(10), 1, NPC.target, maxTime + 60);
+				Projectile fountain = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom + new Vector2(4, -34), Vector2.zeroVector, ModContent.ProjectileType<BloodFountain>(), GetDamage(10), 1, Main.maxPlayers, maxTime + 60);
 				fountain.scale = 1.5f;
 			}
 			yield return new SkipThisFrame();
@@ -1111,7 +1111,7 @@ public class BloodTusk : ModNPC
 			speed *= mulSpeed;
 			if (i % timeInterval == 0 && speed >= 0.6f)
 			{
-				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom + new Vector2(4, -34), new Vector2(0, -speed * 28).RotatedBy(MathF.Sin((float)Main.time * 0.1f) * 0.7f), ModContent.ProjectileType<TuskSpice_WithGravity>(), GetDamage(16), 1, NPC.target);
+				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom + new Vector2(4, -34), new Vector2(0, -speed * 28).RotatedBy(MathF.Sin((float)Main.time * 0.1f) * 0.7f), ModContent.ProjectileType<TuskSpice_WithGravity>(), GetDamage(16), 1, Main.maxPlayers);
 			}
 			yield return new SkipThisFrame();
 		}
@@ -1178,19 +1178,19 @@ public class BloodTusk : ModNPC
 			Ins.VFXManager.Add(bloodSplash);
 			if (i == 15)
 			{
-				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom + new Vector2(4, -34), new Vector2(0, -speed * 65).RotatedBy(-0.8f), ModContent.ProjectileType<TuskCurse>(), GetDamage(10), 1, NPC.target);
+				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom + new Vector2(4, -34), new Vector2(0, -speed * 65).RotatedBy(-0.8f), ModContent.ProjectileType<TuskCurse>(), GetDamage(10), 1, Main.maxPlayers);
 			}
 			if (i == 35)
 			{
-				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom + new Vector2(4, -34), new Vector2(0, -speed * 44).RotatedBy(0.7f), ModContent.ProjectileType<TuskCurse>(), GetDamage(10), 1, NPC.target);
+				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom + new Vector2(4, -34), new Vector2(0, -speed * 44).RotatedBy(0.7f), ModContent.ProjectileType<TuskCurse>(), GetDamage(10), 1, Main.maxPlayers);
 			}
 			if (i == 50 && Main.expertMode)
 			{
-				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom + new Vector2(4, -34), new Vector2(0, -speed * 40).RotatedBy(-0.3f), ModContent.ProjectileType<TuskCurse>(), GetDamage(10), 1, NPC.target);
+				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom + new Vector2(4, -34), new Vector2(0, -speed * 40).RotatedBy(-0.3f), ModContent.ProjectileType<TuskCurse>(), GetDamage(10), 1, Main.maxPlayers);
 			}
 			if (i == 65 && Main.masterMode)
 			{
-				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom + new Vector2(4, -34), new Vector2(0, -speed * 72).RotatedBy(0.2f), ModContent.ProjectileType<TuskCurse>(), GetDamage(10), 1, NPC.target);
+				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom + new Vector2(4, -34), new Vector2(0, -speed * 72).RotatedBy(0.2f), ModContent.ProjectileType<TuskCurse>(), GetDamage(10), 1, Main.maxPlayers);
 			}
 			yield return new SkipThisFrame();
 		}
@@ -1213,14 +1213,14 @@ public class BloodTusk : ModNPC
 	public IEnumerator<ICoroutineInstruction> GiantJaw()
 	{
 		Player player = Main.player[NPC.target];
-		Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom - TileUtils.GetTopographicGradient(NPC.Bottom, 6) * 10, Vector2.zeroVector, ModContent.ProjectileType<Living_Jawbone_Huge_ground_Wave>(), GetDamage(40), 1, NPC.target);
+		Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom - TileUtils.GetTopographicGradient(NPC.Bottom, 6) * 10, Vector2.zeroVector, ModContent.ProjectileType<Living_Jawbone_Huge_ground_Wave>(), GetDamage(40), 1, Main.maxPlayers);
 		yield return new WaitForFrames(30);
 	}
 
 	public void GenerateLongSpice(DrawPiece drawPiece)
 	{
 		Vector2 offset = drawPiece.Offset1 - drawPiece.Offset0;
-		Projectile projectile = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + drawPiece.Offset0 + new Vector2(0, -50) - offset * 0.5f, Vector2.zeroVector, ModContent.ProjectileType<BloodTuskLongSpice>(), GetDamage(32), 0.2f, NPC.target, offset.X, offset.Y);
+		Projectile projectile = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + drawPiece.Offset0 + new Vector2(0, -50) - offset * 0.5f, Vector2.zeroVector, ModContent.ProjectileType<BloodTuskLongSpice>(), GetDamage(32), 0.2f, Main.maxPlayers, offset.X, offset.Y);
 		BloodTuskLongSpice bTLS = projectile.ModProjectile as BloodTuskLongSpice;
 		bTLS.Tusk = NPC;
 	}

@@ -33,7 +33,7 @@ public class ThermoprobeStaff : ModItem
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		Vector2 pos = player.Center + player.DirectionTo(Main.MouseWorld) * (float)Math.Min(200, (Main.MouseWorld - player.Center).Length());
-		Projectile.NewProjectile(player.GetSource_ItemUse(Item), pos, Vector2.Zero, type, damage, knockback, player.whoAmI, 4);
+		Projectile.NewProjectile(source, pos, Vector2.Zero, type, damage, knockback, player.whoAmI, 4);
 		return false;
 	}
 }

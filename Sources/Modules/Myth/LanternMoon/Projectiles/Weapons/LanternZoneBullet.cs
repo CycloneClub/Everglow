@@ -40,7 +40,7 @@ public class LanternZoneBullet : ModProjectile
 
 	public override void OnKill(int timeLeft)
 	{
-		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<LanternZone>(), 0, 0, Projectile.owner);
+		Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<LanternZone>(), 0, 0, Projectile.owner);
 	}
 
 	public override bool PreDraw(ref Color lightColor)

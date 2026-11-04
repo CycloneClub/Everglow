@@ -119,7 +119,7 @@ public class YggdrasilSlashBall : ModProjectile
 
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
-		Projectile.NewProjectile(Projectile.GetSource_FromAI(), target.Center, Vector2.zeroVector, ModContent.ProjectileType<WindBladeBallHit>(), 0, 0, -1, 6 * Projectile.scale, (target.Center - Projectile.Center).ToRotation() + Main.rand.NextFloat(-1, 1));
+		Projectile.NewProjectile(Projectile.GetSource_OnHit(target), target.Center, Vector2.zeroVector, ModContent.ProjectileType<WindBladeBallHit>(), 0, 0, Projectile.owner, 6 * Projectile.scale, (target.Center - Projectile.Center).ToRotation() + Main.rand.NextFloat(-1, 1));
 		SoundEngine.PlaySound(new SoundStyle(ModAsset.Knife_Mod).WithPitchOffset(Main.rand.NextFloat(0.4f, 0.8f)).WithVolume(0.3f) with { MaxInstances = 5 }, Projectile.Center);
 	}
 
@@ -262,6 +262,6 @@ public class YggdrasilSlashBall : ModProjectile
 		{
 			GenerateSpark();
 		}
-		Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<WindBladeBallHit>(), 0, 0, -1, 12 * Projectile.scale, Main.rand.NextFloat(6.283f));
+		Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<WindBladeBallHit>(), 0, 0, Projectile.owner, 12 * Projectile.scale, Main.rand.NextFloat(6.283f));
 	}
 }

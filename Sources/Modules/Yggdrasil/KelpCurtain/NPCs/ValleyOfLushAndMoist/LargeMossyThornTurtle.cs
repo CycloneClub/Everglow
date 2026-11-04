@@ -528,7 +528,7 @@ public class LargeMossyThornTurtle : ModNPC
 	{
 		if (Main.netMode != NetmodeID.MultiplayerClient)
 		{
-			Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Bottom, Vector2.Zero, ModContent.ProjectileType<LargeMossyThornTurtle_Shockwave>(), ShockwaveDamage, 0f);
+			Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Bottom, Vector2.Zero, ModContent.ProjectileType<LargeMossyThornTurtle_Shockwave>(), ShockwaveDamage, 0f, Owner: Main.maxPlayers);
 		}
 	}
 
@@ -572,7 +572,7 @@ public class LargeMossyThornTurtle : ModNPC
 		{
 			float offsetTiles = (i - middleIndex) * BoulderSpreadTiles;
 			Vector2 position = new Vector2(centerX + offsetTiles * PixelsPerTile, spawnY);
-			Projectile.NewProjectile(NPC.GetSource_FromAI(), position, new Vector2(0f, BoulderFallSpeed), ModContent.ProjectileType<LargeMossyThornTurtle_Boulder>(), BoulderDamage, 0f);
+			Projectile.NewProjectile(NPC.GetSource_FromAI(), position, new Vector2(0f, BoulderFallSpeed), ModContent.ProjectileType<LargeMossyThornTurtle_Boulder>(), BoulderDamage, 0f, Owner: Main.maxPlayers);
 		}
 	}
 

@@ -36,11 +36,11 @@ public class FireCrackerLauncher_tile : ModTile
 		int frameY = tile.TileFrameY;
 		if (frameX == 18 && frameY == 54)
 		{
-			Activate(i, j);
+			Activate(i, j, Wiring.GetProjectileSource(i, j), Main.netMode == NetmodeID.SinglePlayer ? Main.myPlayer : Main.maxPlayers);
 		}
 	}
 
-	private void Activate(int i, int j)
+	private void Activate(int i, int j, IEntitySource source, int owner)
 	{
 		Tile tile = Main.tile[i, j];
 		int frameX = tile.TileFrameX;
@@ -49,7 +49,7 @@ public class FireCrackerLauncher_tile : ModTile
 		GenerateFire(60, aimPos);
 		GenerateSmog(30, aimPos);
 		GenerateSpark(60, aimPos);
-		Projectile p = Projectile.NewProjectileDirect(null, aimPos, new Vector2(Main.rand.NextFloat(-1f, 1f), -45) * Main.rand.NextFloat(0.95f, 1.05f), ModContent.ProjectileType<RisingFirework>(), 50, 0f, Main.LocalPlayer.whoAmI, 0.2f, 0);
+		Projectile p = Projectile.NewProjectileDirect(source, aimPos, new Vector2(Main.rand.NextFloat(-1f, 1f), -45) * Main.rand.NextFloat(0.95f, 1.05f), ModContent.ProjectileType<RisingFirework>(), 50, 0f, owner, 0.2f, 0);
 		if (p != null)
 		{
 			RisingFirework risingFirework = p.ModProjectile as RisingFirework;
@@ -127,12 +127,13 @@ public class FireCrackerLauncher_tile : ModTile
 
 	public override bool RightClick(int i, int j)
 	{
-		if (!Main.LocalPlayer.ConsumeItem(ModContent.ItemType<Items.FireCracker>()))
+		Player player = Main.LocalPlayer;
+		if (!player.ConsumeItem(ModContent.ItemType<Items.FireCracker>()))
 		{
 			return false;
 		}
 
-		Activate(i, j);
+		Activate(i, j, player.GetSource_TileInteraction(i, j), player.whoAmI);
 		return true;
 	}
 

@@ -92,7 +92,7 @@ public class Fevens_ThunderMark : ModProjectile
 
 	public override void OnKill(int timeLeft)
 	{
-		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<Fevens_LightingBolt>(), Projectile.damage, 2);
+		Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<Fevens_LightingBolt>(), Projectile.damage, 2, owner: Projectile.owner);
 		base.OnKill(timeLeft);
 	}
 }

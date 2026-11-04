@@ -129,7 +129,7 @@ public class VortexVanquisher : MeleeProj, IBloomProjectile
 					SoundEngine.PlaySound(SoundID.Item1);
 					if (Main.myPlayer == Projectile.owner)
 					{
-						Projectile.NewProjectile(Player.GetSource_FromAI(), Projectile.Center, Vector2.Normalize(mainAxisDirection) * 20, ModContent.ProjectileType<DashingLightEff>(), 1, 0, Projectile.owner);
+						Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Normalize(mainAxisDirection) * 20, ModContent.ProjectileType<DashingLightEff>(), 1, 0, Projectile.owner);
 					}
 				}
 				if (t < 14 * timeMul)

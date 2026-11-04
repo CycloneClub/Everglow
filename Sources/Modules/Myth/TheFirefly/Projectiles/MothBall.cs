@@ -101,15 +101,15 @@ public class MothBall : ModProjectile
 
 	public override void OnKill(int timeLeft)
 	{
-		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<MothBallExplosion>(), 22, 3, Projectile.owner, 60f);
+		Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<MothBallExplosion>(), 22, 3, Projectile.owner, 60f);
 		if (Main.masterMode)
 		{
 			for (int h = 0; h < 6; h++)
 			{
 				Vector2 v0 = new Vector2(0, 8f).RotatedBy(Main.timeForVisualEffects + h / 3d * Math.PI);
 				Vector2 v1 = new Vector2(0, 8f).RotatedBy(Main.timeForVisualEffects + h / 3d * Math.PI + 0.2);
-				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, v0, ModContent.ProjectileType<MissileProjHostile>(), Projectile.damage, 3, Projectile.owner, 4f);
-				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, v1, ModContent.ProjectileType<MissileProjHostile>(), Projectile.damage, 3, Projectile.owner, 4f);
+				Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, v0, ModContent.ProjectileType<MissileProjHostile>(), Projectile.damage, 3, Projectile.owner, 4f);
+				Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, v1, ModContent.ProjectileType<MissileProjHostile>(), Projectile.damage, 3, Projectile.owner, 4f);
 			}
 		}
 		if (Main.netMode != NetmodeID.MultiplayerClient)
@@ -142,7 +142,7 @@ public class MothBall : ModProjectile
 				if (h % 6 < 3)
 				{
 					Vector2 v = new Vector2(0, 12f).RotatedBy(h * MathHelper.TwoPi / 36f + addRot);
-					Projectile.NewProjectile(Terraria.Entity.InheritSource(Projectile), Projectile.Center + v, v, ModContent.ProjectileType<BlueMissil>(), Projectile.damage, 0f, Main.myPlayer, 2);
+					Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center + v, v, ModContent.ProjectileType<BlueMissil>(), Projectile.damage, 0f, Projectile.owner, 2);
 				}
 			}
 		}

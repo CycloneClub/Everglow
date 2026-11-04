@@ -54,10 +54,10 @@ public class Fevens_MagicLaserArray : ModProjectile
 			if (Projectile.timeLeft % 30 < 20 && Projectile.timeLeft % 3 == 1)
 			{
 				Vector2 toPlayer0 = Vector2.Normalize(player.Center - arrow0) * 12;
-				var arrowP0 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), arrow0, toPlayer0, ModContent.ProjectileType<Fevens_Arrow>(), 30, 20, default);
+				var arrowP0 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), arrow0, toPlayer0, ModContent.ProjectileType<Fevens_Arrow>(), 30, 20, Projectile.owner);
 
 				Vector2 toPlayer1 = Vector2.Normalize(player.Center - arrow1) * 12;
-				var arrowP1 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), arrow1, toPlayer1, ModContent.ProjectileType<Fevens_Arrow>(), 30, 20, default);
+				var arrowP1 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), arrow1, toPlayer1, ModContent.ProjectileType<Fevens_Arrow>(), 30, 20, Projectile.owner);
 			}
 		}
 	}

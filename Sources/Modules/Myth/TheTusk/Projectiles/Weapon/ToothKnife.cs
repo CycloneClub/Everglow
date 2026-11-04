@@ -44,7 +44,7 @@ public class ToothKnife : MeleeProj, IWarpProjectile
 
 		Player player = Main.player[Projectile.owner];
 		Vector2 v = new Vector2(0, 6).RotatedByRandom(Math.PI * 2) * 5f;
-		Projectile.NewProjectile(null, target.Center - v * 3, v, ModContent.ProjectileType<TuskSlash>(), Projectile.damage / 4, Projectile.knockBack, player.whoAmI, Main.rand.NextFloat(-0.05f, 0.05f));
+		Projectile.NewProjectile(Projectile.GetSource_OnHit(target), target.Center - v * 3, v, ModContent.ProjectileType<TuskSlash>(), Projectile.damage / 4, Projectile.knockBack, player.whoAmI, Main.rand.NextFloat(-0.05f, 0.05f));
 	}
 
 	public override string TrailShapeTex()

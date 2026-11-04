@@ -63,7 +63,7 @@ internal class BlueFlame1Boom : ModProjectile
 			for (int d = 0; d < 6f; d++)
 			{
 				Vector2 vm = new Vector2(0, 2f).RotatedBy(Projectile.ai[0] + d / 3d * Math.PI);
-				Projectile.NewProjectile(null, Projectile.Center, vm, ModContent.ProjectileType<BlueFlame0LittleSoon>(), Projectile.damage, 0f, Main.LocalPlayer.whoAmI, 0, 0);
+				Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, vm, ModContent.ProjectileType<BlueFlame0LittleSoon>(), Projectile.damage, 0f, Projectile.owner, 0, 0);
 			}
 			Projectile.Kill();
 		}

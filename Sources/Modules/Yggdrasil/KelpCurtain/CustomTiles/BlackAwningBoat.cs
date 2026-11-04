@@ -3,6 +3,7 @@ using Everglow.Commons.CustomTiles.Abstracts;
 using Everglow.Commons.CustomTiles.Core;
 using Everglow.Commons.Templates.Furniture.Elevator;
 using Everglow.Yggdrasil.KelpCurtain.Projectiles.Miscs;
+using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.KelpCurtain.CustomTiles;
 
@@ -73,7 +74,7 @@ public class BlackAwningBoat : BoxEntity
 			}
 			if (shouldReleaseProj)
 			{
-				Projectile p0 = Projectile.NewProjectileDirect(Main.LocalPlayer.GetSource_FromAI(), Box.Center, Velocity, ModContent.ProjectileType<BlackAwningBoat_WaterDistort>(), 0, 0, Main.myPlayer);
+				Projectile p0 = Projectile.NewProjectileDirect(new EntitySource_Misc(nameof(BlackAwningBoat)), Box.Center, Velocity, ModContent.ProjectileType<BlackAwningBoat_WaterDistort>(), 0, 0, Main.maxPlayers);
 				BlackAwningBoat_WaterDistort bABWD = p0.ModProjectile as BlackAwningBoat_WaterDistort;
 				if (bABWD is not null)
 				{

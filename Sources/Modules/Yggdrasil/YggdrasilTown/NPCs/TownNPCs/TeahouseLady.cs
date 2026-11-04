@@ -233,7 +233,7 @@ public class TeahouseLady : TownNPC_LiveInYggdrasil, INPCQuestIconFrameProvider
 			}
 			if (t == 0)
 			{
-				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, (target.Center - NPC.Center).NormalizeSafe() * 6, ModContent.ProjectileType<Schorl_Laser>(), 150, 1.2f, Main.myPlayer, target.whoAmI);
+				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, (target.Center - NPC.Center).NormalizeSafe() * 6, ModContent.ProjectileType<Schorl_Laser>(), 150, 1.2f, Main.maxPlayers, target.whoAmI);
 			}
 			NPC.spriteDirection = NPC.direction;
 			NPC.velocity *= 0;
@@ -266,7 +266,7 @@ public class TeahouseLady : TownNPC_LiveInYggdrasil, INPCQuestIconFrameProvider
 			EndAIPiece();
 			yield break;
 		}
-		Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), target.Center, Vector2.zeroVector, ModContent.ProjectileType<Schorl_Mark>(), 0, 0, Main.myPlayer, target.whoAmI);
+		Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), target.Center, Vector2.zeroVector, ModContent.ProjectileType<Schorl_Mark>(), 0, 0, Main.maxPlayers, target.whoAmI);
 		for (int t = 0; t < 141; t++)
 		{
 			Vector2 toTarget = target.Center - NPC.Center;
@@ -280,7 +280,7 @@ public class TeahouseLady : TownNPC_LiveInYggdrasil, INPCQuestIconFrameProvider
 			}
 			if (t >= 20 && t % 20 == 0)
 			{
-				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), target.Center, Vector2.zeroVector, ModContent.ProjectileType<Schorl_Explosion>(), 30, 0.15f, Main.myPlayer, target.whoAmI);
+				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), target.Center, Vector2.zeroVector, ModContent.ProjectileType<Schorl_Explosion>(), 30, 0.15f, Main.maxPlayers, target.whoAmI);
 			}
 			NPC.spriteDirection = NPC.direction;
 			NPC.velocity *= 0;

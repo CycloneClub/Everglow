@@ -53,7 +53,7 @@ public class ActivatedJellyGland : ModItem
 		int summonAmount = Math.Min(MaxMinionAmount, (int)(player.maxMinions - player.GetSlotsMinions()));
 		if (summonAmount == 1)
 		{
-			Projectile.NewProjectile(player.GetSource_ItemUse(Item), position, velocity, type, damage, knockback, Owner: player.whoAmI, ai0: player.ownedProjectileCounts[type] + 1);
+			Projectile.NewProjectile(source, position, velocity, type, damage, knockback, Owner: player.whoAmI, ai0: player.ownedProjectileCounts[type] + 1);
 		}
 		else
 		{
@@ -61,7 +61,7 @@ public class ActivatedJellyGland : ModItem
 			for (int i = 0; i < summonAmount; i++)
 			{
 				var positionOffset = new Vector2(summonRadiusOffset * MathF.Cos(MathF.PI * 2 * i / summonAmount), summonRadiusOffset * MathF.Sin(MathF.PI * 2 * i / summonAmount));
-				Projectile.NewProjectile(player.GetSource_ItemUse(Item), position + positionOffset, velocity.Length() * positionOffset.NormalizeSafe(), type, damage, knockback, Owner: player.whoAmI, ai0: player.ownedProjectileCounts[type] + 1);
+				Projectile.NewProjectile(source, position + positionOffset, velocity.Length() * positionOffset.NormalizeSafe(), type, damage, knockback, Owner: player.whoAmI, ai0: player.ownedProjectileCounts[type] + 1);
 			}
 		}
 		return false;

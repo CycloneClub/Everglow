@@ -170,18 +170,18 @@ public class FlamingDashCore : ModNPC
 				for (int h = 0; h < 6; h++)
 				{
 					Vector2 vm = vn.RotatedBy(h / 3d * Math.PI);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<RedFlame0>(), dam, 0f, player.whoAmI, 0, 0);
+					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<RedFlame0>(), dam, 0f, Main.maxPlayers, 0, 0);
 				}
 				for (int h = 0; h < 6; h++)
 				{
 					Vector2 vm = vn.RotatedBy(h / 3d * Math.PI + 0.15);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm * 0.7f, ModContent.ProjectileType<GreenFlame0Little>(), dam, 0f, player.whoAmI, 0, 0);
+					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm * 0.7f, ModContent.ProjectileType<GreenFlame0Little>(), dam, 0f, Main.maxPlayers, 0, 0);
 					vm = vn.RotatedBy(h / 3d * Math.PI - 0.15);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm * 0.7f, ModContent.ProjectileType<GreenFlame0Little>(), dam, 0f, player.whoAmI, 0, 0);
+					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm * 0.7f, ModContent.ProjectileType<GreenFlame0Little>(), dam, 0f, Main.maxPlayers, 0, 0);
 					vm = vn.RotatedBy(h / 3d * Math.PI + 0.25);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm * 0.6f, ModContent.ProjectileType<GreenFlame0Little>(), dam, 0f, player.whoAmI, 0, 0);
+					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm * 0.6f, ModContent.ProjectileType<GreenFlame0Little>(), dam, 0f, Main.maxPlayers, 0, 0);
 					vm = vn.RotatedBy(h / 3d * Math.PI - 0.25);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm * 0.6f, ModContent.ProjectileType<GreenFlame0Little>(), dam, 0f, player.whoAmI, 0, 0);
+					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm * 0.6f, ModContent.ProjectileType<GreenFlame0Little>(), dam, 0f, Main.maxPlayers, 0, 0);
 				}
 			}
 			if (NPC.localAI[0] == 760)
@@ -204,18 +204,18 @@ public class FlamingDashCore : ModNPC
 				for (int h = 0; h < 6; h++)
 				{
 					Vector2 vm = vn.RotatedBy(h / 3d * Math.PI);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<RedFlame0Split>(), dam, 0f, player.whoAmI, 0, 0);
+					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<RedFlame0Split>(), dam, 0f, Main.maxPlayers, 0, 0);
 				}
 				for (int h = 0; h < 6; h++)
 				{
 					Vector2 vm = vn.RotatedBy(h / 3d * Math.PI + 0.15);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm * 0.7f, ModContent.ProjectileType<RedFlame0Little>(), dam, 0f, player.whoAmI, 0, 0);
+					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm * 0.7f, ModContent.ProjectileType<RedFlame0Little>(), dam, 0f, Main.maxPlayers, 0, 0);
 					vm = vn.RotatedBy(h / 3d * Math.PI - 0.15);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm * 0.7f, ModContent.ProjectileType<GreenFlame0Little>(), dam, 0f, player.whoAmI, 0, 0);
+					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm * 0.7f, ModContent.ProjectileType<GreenFlame0Little>(), dam, 0f, Main.maxPlayers, 0, 0);
 					vm = vn.RotatedBy(h / 3d * Math.PI + 0.25);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm * 0.6f, ModContent.ProjectileType<RedFlame0Little>(), dam, 0f, player.whoAmI, 0, 0);
+					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm * 0.6f, ModContent.ProjectileType<RedFlame0Little>(), dam, 0f, Main.maxPlayers, 0, 0);
 					vm = vn.RotatedBy(h / 3d * Math.PI - 0.25);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm * 0.6f, ModContent.ProjectileType<GreenFlame0Little>(), dam, 0f, player.whoAmI, 0, 0);
+					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm * 0.6f, ModContent.ProjectileType<GreenFlame0Little>(), dam, 0f, Main.maxPlayers, 0, 0);
 				}
 			}
 			if (NPC.localAI[0] == 820)
@@ -238,12 +238,12 @@ public class FlamingDashCore : ModNPC
 				for (int h = 0; h < 3; h++)
 				{
 					Vector2 vm = vn.RotatedBy(h / 1.5d * Math.PI);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<RedFlame1Split>(), dam, 0f, player.whoAmI, 0, 0);
+					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<RedFlame1Split>(), dam, 0f, Main.maxPlayers, 0, 0);
 				}
 				for (int h = 0; h < 3; h++)
 				{
 					Vector2 vm = vn.RotatedBy((h + 0.5) / 1.5d * Math.PI);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<GreenFlame1Split>(), dam, 0f, player.whoAmI, 0, 0);
+					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<GreenFlame1Split>(), dam, 0f, Main.maxPlayers, 0, 0);
 				}
 			}
 			if (NPC.localAI[0] == 880)
@@ -266,12 +266,12 @@ public class FlamingDashCore : ModNPC
 				for (int h = 0; h < 12; h++)
 				{
 					Vector2 vm = vn.RotatedBy(h / 12d * Math.PI);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<GreenFlame0Little>(), dam, 0f, player.whoAmI, 0, 0);
+					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<GreenFlame0Little>(), dam, 0f, Main.maxPlayers, 0, 0);
 				}
 				for (int h = 12; h < 24; h++)
 				{
 					Vector2 vm = vn.RotatedBy(h / 12d * Math.PI);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<RedFlame0Little>(), dam, 0f, player.whoAmI, 0, 0);
+					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<RedFlame0Little>(), dam, 0f, Main.maxPlayers, 0, 0);
 				}
 			}
 			if (NPC.localAI[0] == 894)
@@ -293,9 +293,9 @@ public class FlamingDashCore : ModNPC
 				for (int h = 0; h < 36; h++)
 				{
 					Vector2 vm = new Vector2(0, Main.rand.NextFloat(Main.rand.NextFloat(0f, 14f), 24f)).RotatedByRandom(6.283);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<YellowFlame0>(), dam, 0f, player.whoAmI, 0, 0);
+					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<YellowFlame0>(), dam, 0f, Main.maxPlayers, 0, 0);
 					vm = new Vector2(0, Main.rand.NextFloat(Main.rand.NextFloat(0f, 14f), 24f)).RotatedByRandom(6.283);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<BrownFlame0>(), dam, 0f, player.whoAmI, 0, 0);
+					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<BrownFlame0>(), dam, 0f, Main.maxPlayers, 0, 0);
 				}
 			}
 
@@ -365,7 +365,7 @@ public class FlamingDashCore : ModNPC
 					for (int h = 0; h < 6; h++)
 					{
 						Vector2 vm = vn.RotatedBy(h / 3d * Math.PI);
-						Projectile.NewProjectile(NPC.GetSource_FromAI(), pos960 + vm, Vector2.Zero, ModContent.ProjectileType<BlueFlame1Boom>(), dam, 0f, player.whoAmI, (float)(h / 3d * Math.PI + NPC.localAI[0] / 35d), 0);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), pos960 + vm, Vector2.Zero, ModContent.ProjectileType<BlueFlame1Boom>(), dam, 0f, Main.maxPlayers, (float)(h / 3d * Math.PI + NPC.localAI[0] / 35d), 0);
 					}
 				}
 				if (NPC.localAI[0] == 934)
@@ -373,7 +373,7 @@ public class FlamingDashCore : ModNPC
 					for (int h = 0; h < 4; h++)
 					{
 						Vector2 vm = vn.RotatedBy(h / 2d * Math.PI);
-						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<RedFlame2Split>(), dam, 0f, player.whoAmI, 0, 0);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<RedFlame2Split>(), dam, 0f, Main.maxPlayers, 0, 0);
 					}
 				}
 				if (NPC.localAI[0] == 934)
@@ -443,12 +443,12 @@ public class FlamingDashCore : ModNPC
 				for (int h = 0; h < 6; h++)
 				{
 					Vector2 vm = vn.RotatedBy(h / 3d * Math.PI);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), player.Center + new Vector2(-100, 0), vm, ModContent.ProjectileType<YellowFlame0Little>(), dam, 0f, player.whoAmI, 0, 0);
+					Projectile.NewProjectile(NPC.GetSource_FromAI(), player.Center + new Vector2(-100, 0), vm, ModContent.ProjectileType<YellowFlame0Little>(), dam, 0f, Main.maxPlayers, 0, 0);
 				}
 				for (int h = 0; h < 6; h++)
 				{
 					Vector2 vm = vn.RotatedBy(h / 3d * Math.PI);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), player.Center + new Vector2(100, 0), vm, ModContent.ProjectileType<BlueFlame0Little>(), dam, 0f, player.whoAmI, 0, 0);
+					Projectile.NewProjectile(NPC.GetSource_FromAI(), player.Center + new Vector2(100, 0), vm, ModContent.ProjectileType<BlueFlame0Little>(), dam, 0f, Main.maxPlayers, 0, 0);
 				}
 				NPC.NewNPC(null, (int)(player.Center.X + 100), (int)player.Center.Y, ModContent.NPCType<BlueCore>());
 				NPC.NewNPC(null, (int)(player.Center.X - 100), (int)player.Center.Y, ModContent.NPCType<YellowCore>());
@@ -464,13 +464,13 @@ public class FlamingDashCore : ModNPC
 					for (int h = 0; h < 5; h++)
 					{
 						Vector2 vm = vn.RotatedBy(h / 2.5d * Math.PI);
-						int f = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<YellowFlame0Little>(), dam, 0f, player.whoAmI, 15, 0);
+						int f = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<YellowFlame0Little>(), dam, 0f, Main.maxPlayers, 15, 0);
 						Main.projectile[f].timeLeft = 100;
 					}
 					for (int h = 0; h < 5; h++)
 					{
 						Vector2 vm = vn2.RotatedBy(h / 2.5d * Math.PI);
-						int f = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<BlueFlame0Little>(), dam, 0f, player.whoAmI, 15, 0);
+						int f = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<BlueFlame0Little>(), dam, 0f, Main.maxPlayers, 15, 0);
 						Main.projectile[f].timeLeft = 100;
 					}
 				}
@@ -485,12 +485,12 @@ public class FlamingDashCore : ModNPC
 						for (int h = 0; h < 5; h++)
 						{
 							Vector2 vm = vn.RotatedBy(h / 2.5d * Math.PI);
-							Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<YellowFlame0>(), dam, 0f, player.whoAmI, 15, 0);
+							Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<YellowFlame0>(), dam, 0f, Main.maxPlayers, 15, 0);
 						}
 						for (int h = 0; h < 5; h++)
 						{
 							Vector2 vm = vn2.RotatedBy(h / 2.5d * Math.PI);
-							Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<BlueFlame0>(), dam, 0f, player.whoAmI, 15, 0);
+							Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<BlueFlame0>(), dam, 0f, Main.maxPlayers, 15, 0);
 						}
 					}
 				}
@@ -569,12 +569,12 @@ public class FlamingDashCore : ModNPC
 					for (int h = 0; h < 72; h++)
 					{
 						Vector2 vm = new Vector2(0, Main.rand.NextFloat(Main.rand.NextFloat(0f, 14f), 24f)).RotatedByRandom(6.283);
-						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<BrownFlame0>(), dam, 0f, player.whoAmI, 0, 0);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<BrownFlame0>(), dam, 0f, Main.maxPlayers, 0, 0);
 					}
 					for (int h = 0; h < 24; h++)
 					{
 						Vector2 vm = new Vector2(0, Main.rand.NextFloat(Main.rand.NextFloat(0f, 7f), 12f)).RotatedByRandom(6.283);
-						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<RedFlame0Little>(), dam, 0f, player.whoAmI, 0, 0);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<RedFlame0Little>(), dam, 0f, Main.maxPlayers, 0, 0);
 					}
 				}
 				if (NPC.localAI[0] >= 2610 && NPC.localAI[0] <= 2670)
@@ -582,7 +582,7 @@ public class FlamingDashCore : ModNPC
 					for (int h = 0; h < 72; h++)
 					{
 						Vector2 vm = new Vector2(0, Main.rand.NextFloat(Main.rand.NextFloat(0f, 14f), 24f)).RotatedByRandom(6.283);
-						int d = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<PurpleGreenFlame0>(), dam, 0f, player.whoAmI, 0, 0);
+						int d = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<PurpleGreenFlame0>(), dam, 0f, Main.maxPlayers, 0, 0);
 						Main.projectile[d].timeLeft = Main.rand.Next(170, 190);
 					}
 				}
@@ -595,13 +595,13 @@ public class FlamingDashCore : ModNPC
 						float Fx = (float)(Math.Sin(h / 30d * Math.PI) * (1 - SqY) + 0.5f);
 						Vector2 vm = new Vector2(0, 30).RotatedBy(h / 15d * Math.PI);
 						Vector2 vn = (vm * SqY).RotatedBy(RandomA);
-						int f = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vn, ModContent.ProjectileType<GreenFlame0>(), dam, 0f, player.whoAmI, 0, 0);
+						int f = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vn, ModContent.ProjectileType<GreenFlame0>(), dam, 0f, Main.maxPlayers, 0, 0);
 						Main.projectile[f].scale = Fx;
 					}
 					for (int h = 0; h < 24; h++)
 					{
 						Vector2 vm = new Vector2(0, Main.rand.NextFloat(Main.rand.NextFloat(0f, 7f), 12f)).RotatedByRandom(6.283);
-						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<PinkFlame0>(), dam, 0f, player.whoAmI, 0, 0);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<PinkFlame0>(), dam, 0f, Main.maxPlayers, 0, 0);
 					}
 				}
 				if (NPC.localAI[0] >= 2730 && NPC.localAI[0] <= 2790)
@@ -609,7 +609,7 @@ public class FlamingDashCore : ModNPC
 					for (int h = 0; h < 72; h++)
 					{
 						Vector2 vm = new Vector2(0, Main.rand.NextFloat(Main.rand.NextFloat(0f, 14f), 24f)).RotatedByRandom(6.283);
-						int d = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<YellowFlame0Shine>(), dam, 0f, player.whoAmI, 0, 0);
+						int d = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<YellowFlame0Shine>(), dam, 0f, Main.maxPlayers, 0, 0);
 						Main.projectile[d].timeLeft = Main.rand.Next(170, 190);
 					}
 				}
@@ -618,13 +618,13 @@ public class FlamingDashCore : ModNPC
 					for (int h = 0; h < 8; h++)
 					{
 						Vector2 vm = new Vector2(0, Main.rand.NextFloat(Main.rand.NextFloat(0f, 14f), 24f)).RotatedByRandom(6.283);
-						int d = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<GreenFlame0Split>(), dam, 0f, player.whoAmI, 0, 0);
+						int d = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<GreenFlame0Split>(), dam, 0f, Main.maxPlayers, 0, 0);
 						Main.projectile[d].timeLeft = Main.rand.Next(170, 190);
 					}
 					for (int h = 0; h < 8; h++)
 					{
 						Vector2 vm = new Vector2(0, Main.rand.NextFloat(Main.rand.NextFloat(0f, 14f), 24f)).RotatedByRandom(6.283);
-						int d = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<RedFlame0Split>(), dam, 0f, player.whoAmI, 0, 0);
+						int d = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<RedFlame0Split>(), dam, 0f, Main.maxPlayers, 0, 0);
 						Main.projectile[d].timeLeft = Main.rand.Next(170, 190);
 					}
 				}

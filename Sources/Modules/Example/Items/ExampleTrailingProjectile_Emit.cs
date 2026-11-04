@@ -17,7 +17,7 @@ public class ExampleTrailingProjectile_Emit : ModItem
 			{
 				Vector2 vel = Main.MouseWorld - player.Center;
 				vel = vel.NormalizeSafe() * 15f;
-				Projectile.NewProjectileDirect(player.GetSource_FromAI(), player.Center, vel, ModContent.ProjectileType<ExampleTrailingProjectile>(), 1000, 10, player.whoAmI);
+				Projectile.NewProjectileDirect(player.GetSource_ItemUse(Item), player.Center, vel, ModContent.ProjectileType<ExampleTrailingProjectile>(), 1000, 10, player.whoAmI);
 			}
 		}
 		base.HoldItem(player);

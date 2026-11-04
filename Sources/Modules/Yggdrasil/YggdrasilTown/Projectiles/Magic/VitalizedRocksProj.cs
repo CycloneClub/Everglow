@@ -122,7 +122,7 @@ public class VitalizedRocksProj : ModProjectile
 						}
 					}
 				}
-				Projectile.NewProjectileDirect(player.GetSource_FromAI(), Pos, toMouse * speed, type, (int)(Projectile.damage * damageScale), Projectile.knockBack, player.whoAmI);
+				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Pos, toMouse * speed, type, (int)(Projectile.damage * damageScale), Projectile.knockBack, player.whoAmI);
 				switch (Main.rand.Next(4))
 				{
 					case 0:

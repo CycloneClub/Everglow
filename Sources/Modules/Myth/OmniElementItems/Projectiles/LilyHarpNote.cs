@@ -110,7 +110,7 @@ public class LilyHarpNote : ModProjectile
 
 	public override void OnKill(int timeLeft)
 	{
-		Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<LilyHarpNoteKill>(), 0, 0);
+		Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<LilyHarpNoteKill>(), 0, 0, Owner: Projectile.owner);
 		for (int i = 0; i < 18; i++)
 		{
 			int index = Dust.NewDust(Projectile.position - new Vector2(8), Projectile.width, Projectile.height, ModContent.DustType<GreenParticle>(), 0f, 0f, 0, default, Main.rand.NextFloat(1.7f, 3.1f));

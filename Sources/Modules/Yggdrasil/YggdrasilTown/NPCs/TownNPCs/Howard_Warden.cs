@@ -128,7 +128,7 @@ public class Howard_Warden : TownNPC_LiveInYggdrasil
 		}
 		NPC.spriteDirection = NPC.direction;
 		var vel = (target.Center - NPC.Center).NormalizeSafe();
-		Projectile myGun = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, vel, ModContent.ProjectileType<Howard_Shoot>(), 48, 4, Main.myPlayer, NPC.whoAmI);
+		Projectile myGun = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, vel, ModContent.ProjectileType<Howard_Shoot>(), 48, 4, Main.maxPlayers, NPC.whoAmI);
 		for (int t = 0; t < 180; t++)
 		{
 			if (myGun == null || !myGun.active || myGun.type != ModContent.ProjectileType<Howard_Shoot>())

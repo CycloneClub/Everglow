@@ -38,8 +38,8 @@ public class CyatheaArrow_proj : ModProjectile
 		{
 			target.AddBuff(BuffID.Poisoned, 180);
 		}
-		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Projectile.velocity.RotatedBy(MathHelper.PiOver4), ModContent.ProjectileType<CyatheaArrow_spike>(), Projectile.damage / 2, Projectile.knockBack * 0.5f, Projectile.owner);
-		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Projectile.velocity.RotatedBy(-MathHelper.PiOver4), ModContent.ProjectileType<CyatheaArrow_spike>(), Projectile.damage / 2, Projectile.knockBack * 0.5f, Projectile.owner);
+		Projectile.NewProjectileDirect(Projectile.GetSource_OnHit(target), Projectile.Center, Projectile.velocity.RotatedBy(MathHelper.PiOver4), ModContent.ProjectileType<CyatheaArrow_spike>(), Projectile.damage / 2, Projectile.knockBack * 0.5f, Projectile.owner);
+		Projectile.NewProjectileDirect(Projectile.GetSource_OnHit(target), Projectile.Center, Projectile.velocity.RotatedBy(-MathHelper.PiOver4), ModContent.ProjectileType<CyatheaArrow_spike>(), Projectile.damage / 2, Projectile.knockBack * 0.5f, Projectile.owner);
 	}
 
 	public override bool PreDraw(ref Color lightColor)

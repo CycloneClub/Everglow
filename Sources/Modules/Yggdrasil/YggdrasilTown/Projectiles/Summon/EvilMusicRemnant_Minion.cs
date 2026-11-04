@@ -245,7 +245,7 @@ public class EvilMusicRemnant_Minion : ModProjectile
 
 	public override void OnKill(int timeLeft)
 	{
-		Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<EvilMusicRemnant_Explosion>(), Projectile.damage * 4, Projectile.knockBack, Projectile.owner);
+		Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<EvilMusicRemnant_Explosion>(), Projectile.damage * 4, Projectile.knockBack, Projectile.owner);
 		for (int i = 0; i < 30; i++)
 		{
 			Dust.NewDust(Projectile.Center, 1, 1, DustID.Shadowflame, 0, 0);

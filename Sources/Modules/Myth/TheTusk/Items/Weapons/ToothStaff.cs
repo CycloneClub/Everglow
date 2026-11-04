@@ -50,7 +50,7 @@ public class ToothStaff : ModItem
 		}
 
 		player.AddBuff(ModContent.BuffType<Buffs.TuskStaff>(), 18000);
-		Projectile.NewProjectile(player.GetSource_ItemUse(Item), position, velocity, type, damage, knockback, player.whoAmI, player.ownedProjectileCounts[type] + 1);
+		Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, player.ownedProjectileCounts[type] + 1);
 		int ai0 = 1;
 		foreach (Projectile proj in Main.projectile)
 		{

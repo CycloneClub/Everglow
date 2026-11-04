@@ -79,7 +79,7 @@ public class VitalizedRocksStone : ModProjectile
 		}
 		GenerateSmog(12);
 		ShakerManager.AddShaker(Projectile.Center, new Vector2(0, -1), 1, 30, 120);
-		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<VitalizedRocksProj_Explosion>(), (int)(Projectile.damage * 0.4f), Projectile.knockBack, Projectile.owner, 1f);
+		Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<VitalizedRocksProj_Explosion>(), (int)(Projectile.damage * 0.4f), Projectile.knockBack, Projectile.owner, 1f);
 		switch (Main.rand.Next(2))
 		{
 			case 0:

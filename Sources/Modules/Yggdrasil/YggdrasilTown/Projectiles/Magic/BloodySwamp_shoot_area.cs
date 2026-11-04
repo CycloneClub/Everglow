@@ -64,7 +64,7 @@ public class BloodySwamp_shoot_area : ModProjectile
 
 	public override void OnKill(int timeLeft)
 	{
-		Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<BloodySwamp_area>(), Projectile.damage, 0, Projectile.owner);
+		Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<BloodySwamp_area>(), Projectile.damage, 0, Projectile.owner);
 		float rotForTotal = Main.rand.NextFloat(6.283f);
 		float size = 2.5f;
 		for (int g = 0; g < 500; g++)

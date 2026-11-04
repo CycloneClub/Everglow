@@ -71,7 +71,7 @@ public class AcytaeaSwordArray_0 : ModProjectile
 	public override void OnKill(int timeLeft)
 	{
 		Vector2 toNPC = Owner.Center - Projectile.Center;
-		Projectile p = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, -toNPC * 0.2f, ModContent.ProjectileType<AcytaeaFlySword>(), Projectile.damage, Projectile.knockBack);
+		Projectile p = Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, -toNPC * 0.2f, ModContent.ProjectileType<AcytaeaFlySword>(), Projectile.damage, Projectile.knockBack, owner: Projectile.owner);
 		p.frame = Main.rand.Next(4);
 		p.frameCounter = Main.rand.Next(6);
 	}

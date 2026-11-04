@@ -119,7 +119,7 @@ public class WizardLantern_Matrix_Thunder : ModProjectile
 					{
 						addRot = 0;
 					}
-					Projectile p0 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + new Vector2(0, Timer * 1.4f + 80).RotatedBy(i / 4f * MathHelper.TwoPi + addRot), Vector2.zeroVector, ModContent.ProjectileType<ThunderSpell>(), 1, 0f, Main.myPlayer, i);
+					Projectile p0 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + new Vector2(0, Timer * 1.4f + 80).RotatedBy(i / 4f * MathHelper.TwoPi + addRot), Vector2.zeroVector, ModContent.ProjectileType<ThunderSpell>(), 1, 0f, Projectile.owner, i);
 					p0.spriteDirection = -1;
 					if (Timer == 10)
 					{

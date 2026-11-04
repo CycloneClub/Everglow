@@ -130,7 +130,7 @@ public class GlowMoonBlade : ModProjectile
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		target.AddBuff(BuffID.OnFire, 120);
-		Projectile p0 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), target.Center, Vector2.zeroVector, ModContent.ProjectileType<GlowMoonBlade_ash>(), Projectile.damage / 2, Projectile.knockBack / 4f, Projectile.owner);
+		Projectile p0 = Projectile.NewProjectileDirect(Projectile.GetSource_OnHit(target), target.Center, Vector2.zeroVector, ModContent.ProjectileType<GlowMoonBlade_ash>(), Projectile.damage / 2, Projectile.knockBack / 4f, Projectile.owner);
 		p0.rotation = Projectile.rotation + Main.rand.NextFloat(-0.8f, 0.8f);
 		p0.scale = 0.6f;
 		if (Energy < 50)

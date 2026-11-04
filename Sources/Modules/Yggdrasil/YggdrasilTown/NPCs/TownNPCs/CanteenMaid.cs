@@ -223,16 +223,16 @@ public class CanteenMaid : TownNPC_LiveInYggdrasil
 				switch (type)
 				{
 					case 0:
-						Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), shootPos, AttackVelocity, ModContent.ProjectileType<Betty_Watermelon>(), 15, 4f);
+						Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), shootPos, AttackVelocity, ModContent.ProjectileType<Betty_Watermelon>(), 15, 4f, owner: Main.maxPlayers);
 						break;
 					case 1:
-						Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), shootPos, AttackVelocity, ModContent.ProjectileType<Betty_Plate>(), 6, 1f);
+						Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), shootPos, AttackVelocity, ModContent.ProjectileType<Betty_Plate>(), 6, 1f, owner: Main.maxPlayers);
 						break;
 					case 2:
-						Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), shootPos, AttackVelocity, ModContent.ProjectileType<Betty_Fork>(), 42, 0.05f);
+						Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), shootPos, AttackVelocity, ModContent.ProjectileType<Betty_Fork>(), 42, 0.05f, owner: Main.maxPlayers);
 						break;
 					case 3:
-						Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), shootPos, AttackVelocity, ModContent.ProjectileType<Betty_Apple>(), 4, 0.4f);
+						Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), shootPos, AttackVelocity, ModContent.ProjectileType<Betty_Apple>(), 4, 0.4f, owner: Main.maxPlayers);
 						break;
 					default:
 						break;

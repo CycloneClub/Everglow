@@ -66,7 +66,7 @@ internal class RedFlame0Split : ModProjectile
 			for (int h = 0; h < 7; h++)
 			{
 				Vector2 vm = new Vector2(0, Main.rand.NextFloat(Main.rand.NextFloat(0f, 4f), 8f)).RotatedByRandom(6.283);
-				Projectile.NewProjectile(null, Projectile.Center, vm + Projectile.velocity, ModContent.ProjectileType<RedFlame0Little>(), Projectile.damage, 0, Main.myPlayer, 0, 0);
+				Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, vm + Projectile.velocity, ModContent.ProjectileType<RedFlame0Little>(), Projectile.damage, 0, Projectile.owner, 0, 0);
 			}
 			Projectile.Kill();
 		}

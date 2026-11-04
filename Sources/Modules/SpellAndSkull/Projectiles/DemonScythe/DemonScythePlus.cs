@@ -61,11 +61,11 @@ public class DemonScythePlus : ModProjectile
 	public override void OnKill(int timeLeft)
 	{
 		SoundEngine.PlaySound(SoundID.NPCHit4.WithVolumeScale(Math.Min(0.8f, Projectile.velocity.Length() / 40f)), Projectile.Center);
-		Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center - Projectile.velocity * 2, Vector2.One, ModContent.ProjectileType<DemoHit>(), 0, 0, Projectile.owner, Projectile.velocity.Length() / 3f, Projectile.rotation + Main.rand.NextFloat(6.283f));
+		Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center - Projectile.velocity * 2, Vector2.One, ModContent.ProjectileType<DemoHit>(), 0, 0, Projectile.owner, Projectile.velocity.Length() / 3f, Projectile.rotation + Main.rand.NextFloat(6.283f));
 		float k = Math.Clamp(Projectile.velocity.Length() / 20f, 1f, 5f) / 1.3f;
 		for (int x = 0; x < Projectile.velocity.Length() / 4 - 2; x++)
 		{
-			var p = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center - Projectile.velocity * 2, Projectile.velocity.RotatedByRandom(6.283) * 0.4f, ModContent.ProjectileType<DemonScythePlusCrack>(), (int)(Projectile.damage * k * 0.1), (int)(Projectile.knockBack * k * 0.3), Projectile.owner, Projectile.velocity.Length() / 60f, Main.rand.NextFloat(8f, 24f));
+			var p = Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center - Projectile.velocity * 2, Projectile.velocity.RotatedByRandom(6.283) * 0.4f, ModContent.ProjectileType<DemonScythePlusCrack>(), (int)(Projectile.damage * k * 0.1), (int)(Projectile.knockBack * k * 0.3), Projectile.owner, Projectile.velocity.Length() / 60f, Main.rand.NextFloat(8f, 24f));
 			// Scale only the inherited crit, preserving the fragment's own bonuses.
 			p.CritChance += (int)(Projectile.CritChance * k / 10) - Projectile.CritChance;
 			p.timeLeft = Main.rand.Next(45) + (int)Projectile.velocity.Length();
@@ -77,11 +77,11 @@ public class DemonScythePlus : ModProjectile
 		float k = Math.Clamp(Projectile.velocity.Length() / 30f, 1f, 5f) / 1.3f;
 		for (int x = 0; x < Projectile.velocity.Length() / 12 - 2; x++)
 		{
-			var p = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center - Projectile.velocity * 2, Projectile.velocity.RotatedByRandom(6.283) * 0.4f, ModContent.ProjectileType<DemonScythePlusCrack>(), (int)(Projectile.damage * k * 0.1), (int)(Projectile.knockBack * k * 0.3), Projectile.owner, Projectile.velocity.Length() / 120f, Main.rand.NextFloat(8f, 24f));
+			var p = Projectile.NewProjectileDirect(Projectile.GetSource_OnHit(target), Projectile.Center - Projectile.velocity * 2, Projectile.velocity.RotatedByRandom(6.283) * 0.4f, ModContent.ProjectileType<DemonScythePlusCrack>(), (int)(Projectile.damage * k * 0.1), (int)(Projectile.knockBack * k * 0.3), Projectile.owner, Projectile.velocity.Length() / 120f, Main.rand.NextFloat(8f, 24f));
 			p.timeLeft = Main.rand.Next(30) + (int)Projectile.velocity.Length();
 		}
 		modifiers.Knockback *= Projectile.velocity.Length() * 0.12f;
-		Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center - Projectile.velocity * 2, Vector2.One, ModContent.ProjectileType<DemoHit>(), 0, 0, Projectile.owner, Projectile.velocity.Length() / 3f, Projectile.rotation + Main.rand.NextFloat(6.283f));
+		Projectile.NewProjectile(Projectile.GetSource_OnHit(target), Projectile.Center - Projectile.velocity * 2, Vector2.One, ModContent.ProjectileType<DemoHit>(), 0, 0, Projectile.owner, Projectile.velocity.Length() / 3f, Projectile.rotation + Main.rand.NextFloat(6.283f));
 
 		modifiers.FinalDamage *= k;
 		target.AddBuff(BuffID.ShadowFlame, 60);

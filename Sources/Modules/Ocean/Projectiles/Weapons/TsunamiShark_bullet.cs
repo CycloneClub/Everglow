@@ -89,7 +89,7 @@ public class TsunamiShark_bullet : ModProjectile
 				dust.velocity = new Vector2(0, Main.rand.NextFloat(4f)).RotatedByRandom(6.283);
 			}
 		}
-		Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<TsunamiShark_bullet_hit>(), Projectile.damage, Projectile.knockBack);
+		Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<TsunamiShark_bullet_hit>(), Projectile.damage, Projectile.knockBack, Owner: Projectile.owner);
 	}
 
 	public void GenerateVFXKill(int Frequency)

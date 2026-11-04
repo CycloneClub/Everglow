@@ -254,7 +254,7 @@ public class AcytaeaLaserSword : ModProjectile
 		{
 			if (npc.type == ModContent.NPCType<Acytaea_Boss>())
 			{
-				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<AcytaeaSword_following>(), 0, 0f, -1, npc.whoAmI);
+				Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<AcytaeaSword_following>(), 0, 0f, Projectile.owner, npc.whoAmI);
 				break;
 			}
 		}

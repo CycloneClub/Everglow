@@ -1,4 +1,5 @@
 using Everglow.Myth.Misc.Projectiles.Weapon.Ranged.Slingshots;
+using Terraria.ModLoader.IO;
 
 namespace Everglow.Myth.Misc.Buffs;
 
@@ -34,8 +35,9 @@ public class ShadowSupervisor : ModBuff
 						if ((target.Center - npc.position).Length() < 600)
 						{
 							int x = (int)Main.timeForVisualEffects;
-							Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center, Vector2.Zero, ModContent.ProjectileType<AmbiguousLine>(), 40, 0, Main.myPlayer, x, 0);
-							Projectile.NewProjectile(npc.GetSource_FromAI(), target.Center, Vector2.Zero, ModContent.ProjectileType<AmbiguousLine>(), 40, 0, Main.myPlayer, x, 1/*ai1 = 1才绘制*/);
+							int owner = npc.GetGlobalNPC<ShadowSupervisorNPC>().Owner;
+							Projectile.NewProjectile(npc.GetSource_Buff(buffIndex), npc.Center, Vector2.Zero, ModContent.ProjectileType<AmbiguousLine>(), 40, 0, owner, x, 0);
+							Projectile.NewProjectile(npc.GetSource_Buff(buffIndex), target.Center, Vector2.Zero, ModContent.ProjectileType<AmbiguousLine>(), 40, 0, owner, x, 1/*ai1 = 1才绘制*/);
 							ScreenShaker Gsplayer = Main.player[Main.myPlayer].GetModPlayer<ScreenShaker>();
 							Gsplayer.FlyCamPosition = new Vector2(0, 2).RotatedByRandom(6.283);
 							npc.buffTime[buffIndex] -= 120;
@@ -44,5 +46,23 @@ public class ShadowSupervisor : ModBuff
 				}
 			}
 		}
+	}
+}
+
+public class ShadowSupervisorNPC : GlobalNPC
+{
+	public override bool InstancePerEntity => true;
+
+	// Reapplying the debuff transfers its subsequent damage to the latest applier.
+	public int Owner = Main.maxPlayers;
+
+	public override void SendExtraAI(NPC npc, BitWriter bitWriter, BinaryWriter binaryWriter)
+	{
+		binaryWriter.Write((byte)Owner);
+	}
+
+	public override void ReceiveExtraAI(NPC npc, BitReader bitReader, BinaryReader binaryReader)
+	{
+		Owner = binaryReader.ReadByte();
 	}
 }

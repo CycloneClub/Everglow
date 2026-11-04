@@ -50,7 +50,7 @@ public class ThunderBall : ModProjectile
 		for (int y = 0; y < 3; y++)
 		{
 			Vector2 v = Projectile.velocity.RotatedBy(Math.PI * y / 1.5 + a) / Projectile.velocity.Length() * 15f;
-			int h = Projectile.NewProjectile(null, Projectile.Center - v, v, ModContent.ProjectileType<ThunderBall2>(), Projectile.damage / 3, Projectile.knockBack, player.whoAmI, player.GetCritChance(DamageClass.Magic) * 100 + 16);
+			int h = Projectile.NewProjectile(Projectile.GetSource_FromThis("OnTileCollide"), Projectile.Center - v, v, ModContent.ProjectileType<ThunderBall2>(), Projectile.damage / 3, Projectile.knockBack, player.whoAmI, player.GetCritChance(DamageClass.Magic) * 100 + 16);
 			Main.projectile[h].timeLeft = Main.rand.Next(4, 16);
 		}
 		for (int θ = 0; θ < 40; θ++)
@@ -69,7 +69,7 @@ public class ThunderBall : ModProjectile
 		for (int y = 0; y < 3; y++)
 		{
 			Vector2 v = Projectile.velocity.RotatedBy(Math.PI * y / 1.5 + a) / Projectile.velocity.Length() * 15f;
-			int h = Projectile.NewProjectile(null, Projectile.Center, v, ModContent.ProjectileType<ThunderBall2>(), Projectile.damage / 3, Projectile.knockBack, player.whoAmI);
+			int h = Projectile.NewProjectile(Projectile.GetSource_OnHit(target), Projectile.Center, v, ModContent.ProjectileType<ThunderBall2>(), Projectile.damage / 3, Projectile.knockBack, player.whoAmI);
 			Main.projectile[h].timeLeft = Main.rand.Next(4, 16);
 		}
 		for (int θ = 0; θ < 40; θ++)

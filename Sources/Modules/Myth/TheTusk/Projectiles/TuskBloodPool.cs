@@ -207,7 +207,7 @@ public class TuskBloodPool : ModProjectile
 
 	public override void OnKill(int timeLeft)
 	{
-		Projectile projectile = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<TuskBloodPool_close>(), 0, 0, Projectile.owner, Main.rand.NextFloat(1), Main.rand.NextFloat(1));
+		Projectile projectile = Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<TuskBloodPool_close>(), 0, 0, Projectile.owner, Main.rand.NextFloat(1), Main.rand.NextFloat(1));
 		TuskBloodPool_close tbpc = projectile.ModProjectile as TuskBloodPool_close;
 		tbpc.DissolvingTile = DissolvingTile;
 	}

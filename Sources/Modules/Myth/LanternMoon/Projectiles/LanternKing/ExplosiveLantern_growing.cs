@@ -118,7 +118,7 @@ public class ExplosiveLantern_growing : ModNPC
 	public void Explosion()
 	{
 		ShakerManager.AddShaker(NPC.Center, new Vector2(0, -1), 40, 30f, 160, 0.9f, 0.8f, 120);
-		var p = Projectile.NewProjectileDirect(NPC.GetSource_Death(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<DarkLanternBombExplosion>(), 40, 5, NPC.target, 1);
+		var p = Projectile.NewProjectileDirect(NPC.GetSource_Death(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<DarkLanternBombExplosion>(), 40, 5, Main.maxPlayers, 1);
 		p.friendly = false;
 		p.hostile = true;
 		NPC.active = false;

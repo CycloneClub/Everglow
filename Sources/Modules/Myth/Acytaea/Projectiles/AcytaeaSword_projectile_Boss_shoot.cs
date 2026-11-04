@@ -123,7 +123,7 @@ public class AcytaeaSword_projectile_Boss_shoot : ModProjectile, IWarpProjectile
 					for (int x = 0; x < 5; x++)
 					{
 						Vector2 v = new Vector2(340, 0).RotatedBy(-Owner.direction * 1.9f + MathF.PI * 0.5f + (x - 2f) / 10d * MathHelper.TwoPi);
-						Projectile p0 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, v, ModContent.ProjectileType<AcytaeaFlySword_1>(), Projectile.damage * 2 / 3, 4);
+						Projectile p0 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, v, ModContent.ProjectileType<AcytaeaFlySword_1>(), Projectile.damage * 2 / 3, 4, owner: Projectile.owner);
 						p0.timeLeft = (int)(Projectile.ai[1] * 70 + Main.rand.NextFloat(-20f, 20) + 600);
 					}
 				}
@@ -381,7 +381,7 @@ public class AcytaeaSword_projectile_Boss_shoot : ModProjectile, IWarpProjectile
 		{
 			return;
 		}
-		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<AcytaeaSword_following>(), 0, 0f, -1, OwnerNPC);
+		Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<AcytaeaSword_following>(), 0, 0f, Projectile.owner, OwnerNPC);
 	}
 
 	private void GenerateVFX()

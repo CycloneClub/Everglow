@@ -73,7 +73,7 @@ public class BloodLanternGhost_PowerBall : ModProjectile
 	{
 		if (Projectile.timeLeft > 20)
 		{
-			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<BloodLanternGhost_PowerBall_Explosion>(), 30, 0f, Main.myPlayer, 1);
+			Projectile.NewProjectileDirect(Projectile.GetSource_FromThis("OnTileCollide"), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<BloodLanternGhost_PowerBall_Explosion>(), 30, 0f, Projectile.owner, 1);
 			Projectile.timeLeft = 20;
 		}
 		Projectile.velocity *= 0;
@@ -84,7 +84,7 @@ public class BloodLanternGhost_PowerBall : ModProjectile
 	{
 		if (Projectile.timeLeft > 20)
 		{
-			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<BloodLanternGhost_PowerBall_Explosion>(), 30, 0f, Main.myPlayer, 1);
+			Projectile.NewProjectileDirect(Projectile.GetSource_OnHit(target), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<BloodLanternGhost_PowerBall_Explosion>(), 30, 0f, Projectile.owner, 1);
 			Projectile.timeLeft = 20;
 		}
 		Projectile.velocity *= 0;

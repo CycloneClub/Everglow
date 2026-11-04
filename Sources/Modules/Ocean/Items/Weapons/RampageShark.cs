@@ -94,7 +94,7 @@ public class RampageShark : ModItem
 		ShootType = type;
 		if (player.ownedProjectileCounts[ModContent.ProjectileType<Projectiles.Weapons.RampageShark>()] <= 0 && CrazyValue == 0)
 		{
-			Projectile.NewProjectile(Item.GetSource_FromAI(), position, velocity, ModContent.ProjectileType<Projectiles.Weapons.RampageShark>(), damage, knockback, player.whoAmI);
+			Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<Projectiles.Weapons.RampageShark>(), damage, knockback, player.whoAmI);
 		}
 
 		if (player.ownedProjectileCounts[ModContent.ProjectileType<Projectiles.Weapons.RampageShark>()] <= 0 && CrazyValue > 0)

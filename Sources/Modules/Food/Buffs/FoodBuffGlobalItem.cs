@@ -13,7 +13,7 @@ public class FoodBuffGlobalItem : GlobalItem
 	{
 		if (player.GetModPlayer<FoodBuffModPlayer>().GreenStormBuff)
 		{
-			Projectile.NewProjectile(source, position + new Vector2(0, -24), l % 2 == 0 ? velocity : velocity / 10, l % 2 == 0 ? ProjectileID.CrystalLeafShot : ProjectileID.SporeCloud, damage, knockback, Main.LocalPlayer.whoAmI, 0f, 0f);
+			Projectile.NewProjectile(source, position + new Vector2(0, -24), l % 2 == 0 ? velocity : velocity / 10, l % 2 == 0 ? ProjectileID.CrystalLeafShot : ProjectileID.SporeCloud, damage, knockback, player.whoAmI, 0f, 0f);
 			l++;
 			return base.Shoot(item, player, source, position, velocity, type, damage, knockback);
 		}
