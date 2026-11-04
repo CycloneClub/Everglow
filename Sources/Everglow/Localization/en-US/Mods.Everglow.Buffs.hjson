@@ -5,7 +5,7 @@ AcytaeaInferno: {
 
 AleBuff: {
 	DisplayName: Ale Buff
-	Description: ""
+	Description: "50% increased whip range and speed"
 }
 
 AmberStick: {
@@ -205,7 +205,11 @@ CoconutBuff: {
 
 CoffeeCupBuff: {
 	DisplayName: Coffee Cup Buff
-	Description: ""
+	Description:
+		'''
+		+900% tile and wall placement speed; -90% mining time
+		Grants night vision, highlights enemies, traps and treasure, and emits light
+		'''
 }
 
 CookedFishBuff: {
@@ -491,7 +495,11 @@ JellyBubbleMount: {
 
 KiwiFruitBuff: {
 	DisplayName: Kiwi Fruit Buff
-	Description: ""
+	Description:
+		'''
+		+20% weapon size
+		Also known as kiwifruit
+		'''
 }
 
 KiwiIceCreamBuff: {
@@ -501,7 +509,11 @@ KiwiIceCreamBuff: {
 
 KiwiJuiceBuff: {
 	DisplayName: Kiwi Juice Buff
-	Description: ""
+	Description:
+		'''
+		+150% weapon size
+		Concentrated kiwi power
+		'''
 }
 
 LampWoodSeedBuff: {
@@ -521,7 +533,7 @@ LegumeGyroscopeBuff: {
 
 LemonadeBuff: {
 	DisplayName: Lemonade Buff
-	Description: ""
+	Description: "100% increased ranged knockback and 2400 reduced aggro"
 }
 
 LemonBuff: {
@@ -629,7 +641,7 @@ MossCover: {
 
 NachosBuff: {
 	DisplayName: Nachos Buff
-	Description: ""
+	Description: "+4% launcher damage and knockback"
 }
 
 OnElectric: {
@@ -1019,12 +1031,12 @@ WaterBoltII: {
 
 WatermelonBuff: {
 	DisplayName: Watermelon Buff
-	Description: ""
+	Description: "+8% knockback"
 }
 
 WaterMelonJuiceBuff: {
 	DisplayName: Water Melon Juice Buff
-	Description: ""
+	Description: "+50% critical strike chance and +100% knockback"
 }
 
 WatermelonPlateBuff: {

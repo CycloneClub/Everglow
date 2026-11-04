@@ -7,7 +7,7 @@ AleBuff: {
 	DisplayName: 麦芽酒
 	Description:
 		'''
-		短时间内鞭子的范围和速度提升至1.5倍!!!
+		+50%鞭子范围和攻速
 		耍酒疯
 		'''
 }
@@ -319,7 +319,7 @@ CoffeeCupBuff: {
 	DisplayName: 咖啡
 	Description:
 		'''
-		短时间内大幅增加铺墙铺砖速度，高亮标记敌人、陷阱和宝藏，并散发光芒!!!
+		+900%铺墙铺砖速度，-90%采掘间隔；获得夜视，高亮敌人、陷阱和宝藏，并散发光芒
 		社畜的宝物
 		'''
 }
@@ -743,7 +743,7 @@ LemonadeBuff: {
 	DisplayName: 柠檬水
 	Description:
 		'''
-		短时间内远程击退加倍,仇恨值减2400
+		+100%远程击退，-2400仇恨值
 		消炎美容
 		'''
 }
@@ -887,7 +887,7 @@ NachosBuff: {
 	DisplayName: 玉米片
 	Description:
 		'''
-		爆炸类射弹爆炸范围增加！！
+		+4%发射器伤害和击退
 		爆米花
 		'''
 }
@@ -1452,7 +1452,7 @@ WatermelonBuff: {
 	DisplayName: 西瓜
 	Description:
 		'''
-		增强8%击退能力
+		+8%击退
 		最大的打击力度
 		'''
 }
@@ -1461,7 +1461,7 @@ WaterMelonJuiceBuff: {
 	DisplayName: 西瓜汁
 	Description:
 		'''
-		短时间大幅增加击退与暴击
+		+50%暴击率，+100%击退
 		浓缩的打击力度
 		'''
 }
