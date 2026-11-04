@@ -931,7 +931,7 @@ PadThaiBuff: {
 
 PaperObstructed: {
 	DisplayName: Paper Obstructed
-	Description: ""
+	Description: "-10%伤害，-10%暴击率"
 }
 
 PeachBuff: {
@@ -1414,7 +1414,7 @@ TropicalSmoothieBuff: {
 	DisplayName: 热带奶昔
 	Description:
 		'''
-		短时间内魔法攻击仅消耗一点魔力，大幅增加魔法伤害，暴击!!!
+		-50%魔力消耗，+50%魔法伤害和魔法暴击率
 		热带风暴
 		'''
 }

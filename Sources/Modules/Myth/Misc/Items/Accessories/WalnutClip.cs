@@ -25,7 +25,8 @@ public class WalnutClip : ModItem
 		mplayer.CriticalDamage += 0.16f;
 		if (player.statLifeMax2 / 2f > player.statLife)
 		{
-			player.GetDamage(DamageClass.Generic) *= (player.statLifeMax2 / 2f - player.statLife) / 400f + 1;
+			// +1% damage per 4 life missing below 50% maximum life.
+			player.GetDamage(DamageClass.Generic) += (player.statLifeMax2 / 2f - player.statLife) / 400f;
 		}
 	}
 }

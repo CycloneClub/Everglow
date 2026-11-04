@@ -6,7 +6,7 @@ public class RingOfMatter : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
-	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(25, MaxBonus, MaxBonus * 1.5f);
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(25, MaxBonus, MaxBonus * 3);
 
 	private const int MaxBonus = 8;
 
@@ -34,9 +34,12 @@ public class RingOfMatter : ModItem
 			}
 		}
 
+		// +1% damage per tier, up to +8%.
 		player.GetDamage(DamageClass.Generic) += Bonus / 100;
+		// +1% defense per tier, up to +8%.
 		player.statDefense *= 1 + Bonus / 100;
-		player.statLifeMax2 -= (int)(player.statLifeMax2 * (1.5f * Bonus / 100));
+		// -3 life per tier, up to -24.
+		player.statLifeMax2 -= (int)(3 * Bonus);
 
 		player.GetModPlayer<RingOfMatterPlayer>().HasRingOfMatter = true;
 	}

@@ -17,14 +17,12 @@ namespace Everglow.UnitTests.Modules;
 public class ManaCostTests
 {
 	private CooldownTestContext context = null!;
-	private TropicalSmoothieBuff.TropicalSmoothiePlayer smoothie = null!;
 
 	[TestInitialize]
 	public void Initialize()
 	{
 		Program.SavePath = string.Empty;
 		context = new CooldownTestContext();
-		smoothie = context.Attach<TropicalSmoothieBuff.TropicalSmoothiePlayer>();
 	}
 
 	[TestCleanup]
@@ -82,13 +80,13 @@ public class ManaCostTests
 	}
 
 	[TestMethod]
-	[DataRow(1f, 0.1f, false)]
-	[DataRow(1f, 0.1f, true)]
-	[DataRow(0.25f, 0.05f, false)]
-	[DataRow(0.25f, 0.05f, true)]
-	[DataRow(0.05f, -0.15f, false)]
-	[DataRow(0.05f, -0.15f, true)]
-	public void SmoothieCapsAfterAdditiveReductionsWithoutRaisingLowerCosts(float initial, float expected, bool reverse)
+	[DataRow(1f, 0.3f, false)]
+	[DataRow(1f, 0.3f, true)]
+	[DataRow(0.25f, -0.45f, false)]
+	[DataRow(0.25f, -0.45f, true)]
+	[DataRow(0.05f, -0.65f, false)]
+	[DataRow(0.05f, -0.65f, true)]
+	public void SmoothieAddsFiftyPercentagePointsOfReductionInEitherOrder(float initial, float expected, bool reverse)
 	{
 		context.Player.manaCost = initial;
 		int index = 0;
@@ -97,8 +95,7 @@ public class ManaCostTests
 		{
 			buff.Update(context.Player, ref index);
 		}
-		Assert.AreEqual(initial - 0.2f, context.Player.manaCost, 0.000001f);
-		smoothie.PostUpdateEquips();
+		Assert.AreEqual(initial - 0.7f, context.Player.manaCost, 0.000001f);
 		Assert.AreEqual(expected, context.Player.manaCost, 0.000001f);
 		if (expected <= 0)
 		{
@@ -106,31 +103,4 @@ public class ManaCostTests
 		}
 	}
 
-	[TestMethod]
-	public void SmoothieClearsOnReset()
-	{
-		int index = 0;
-		new TropicalSmoothieBuff().Update(context.Player, ref index);
-		smoothie.ResetEffects();
-		context.Player.manaCost = 0.7f;
-		smoothie.PostUpdateEquips();
-		Assert.AreEqual(0.7f, context.Player.manaCost);
-	}
-
-	[TestMethod]
-	public void SmoothieDoesNotShareActiveStateWithCloneAndSkipsUnloadedPlayer()
-	{
-		int index = 0;
-		new TropicalSmoothieBuff().Update(context.Player, ref index);
-		var other = new Player { active = true, manaCost = 0.7f };
-		var clone = (TropicalSmoothieBuff.TropicalSmoothiePlayer)smoothie.Clone(other);
-		clone.PostUpdateEquips();
-		Assert.AreEqual(0.7f, other.manaCost);
-		context.Player.manaCost = 0.7f;
-		context.Player.outOfRange = true;
-		smoothie.PostUpdateEquips();
-		context.Player.outOfRange = false;
-		smoothie.PostUpdateEquips();
-		Assert.AreEqual(0.7f, context.Player.manaCost);
-	}
 }

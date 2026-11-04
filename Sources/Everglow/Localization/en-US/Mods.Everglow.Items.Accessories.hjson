@@ -166,7 +166,7 @@ FireflyBorageBadge: {
 		{0}% multiplicative magic damage and {1}% increased movement speed
 		While the Corrupt Moth is present: lose {2}% defense (rounded down, capped at {3})
 		Gain another {4}% multiplicative damage and {5}% increased melee and whip attack speed
-		Positive base crit chances for Melee, MeleeNoSpeed and whips become zero; weapon and inherited crit bonuses still apply
+		{6}% reduced melee critical strike chance
 		'''
 }
 
@@ -360,7 +360,7 @@ MoltenCore: {
 	Tooltip:
 		'''
 		While affected by On Fire!, Hellfire or Cursed Inferno:
-		Reduces remaining damage by {0}% and grants +{1} defense
+		{0}% damage reduction and +{1} defense
 		{2}% increased critical strike chance, {3}% increased damage and {4}% increased movement speed
 		+{5} pixels/tick jump speed
 		'''
@@ -479,8 +479,8 @@ RingOfMatter: {
 	Tooltip:
 		'''
 		Uses gold and platinum coins in your inventory when equipped, gaining one tier per {0} gold
-		Each tier grants 1% damage and 1% defense but reduces maximum life by 1.5%
-		Up to {1} tiers: +{1}% damage and defense, -{2}% maximum life
+		Each tier: +1% damage and defense, -3 life
+		Up to {1} tiers: +{1}% damage and defense, -{2} life
 		'''
 }
 
@@ -607,7 +607,7 @@ WalnutClip: {
 	Tooltip:
 		'''
 		{0}% increased critical strike damage against NPCs
-		Below {1}% maximum life, gain 1% multiplicative damage per {2} life missing below that threshold
+		Below {1}% maximum life, gain 1% increased damage per {2} life missing below that threshold
 		'''
 }
 
@@ -628,5 +628,5 @@ WhiteWoodFlower: {
 
 YellowBellFlower: {
 	DisplayName: Yellow Bell Flower
-	Tooltip: ""
+	Tooltip: "Increases damage by 0.2% per defense"
 }

@@ -8,7 +8,7 @@ public class FireflyBorageBadge : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
-	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(5, 10, 20, 10, 12, 8);
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(5, 10, 20, 10, 12, 8, 10);
 
 	public override void SetDefaults()
 	{
@@ -21,6 +21,7 @@ public class FireflyBorageBadge : ModItem
 
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
+		// +5% multiplicative magic damage
 		player.GetDamage(DamageClass.Magic) *= 1.05f;
 		// +10% movement speed
 		player.moveSpeed += 0.1f;
@@ -34,26 +35,13 @@ public class FireflyBorageBadge : ModItem
 			{
 				player.statDefense -= 10;
 			}
+			// +12% multiplicative damage
 			player.GetDamage(DamageClass.Generic) *= 1.12f;
 			// +8% melee and whip attack speed (whips inherit melee speed).
 			player.GetAttackSpeed(DamageClass.Melee) += 0.08f;
-			if (player.GetCritChance(DamageClass.Melee) > 0)
-			{
-				player.GetTotalCritChance(DamageClass.Melee);
-				player.GetCritChance(DamageClass.Melee) = 0;
-			}
-			if (player.GetCritChance(DamageClass.MeleeNoSpeed) > 0)
-			{
-				player.GetTotalCritChance(DamageClass.MeleeNoSpeed);
-				player.GetCritChance(DamageClass.MeleeNoSpeed) = 0;
-			}
-			if (player.GetCritChance(DamageClass.SummonMeleeSpeed) > 0)
-			{
-				player.GetTotalCritChance(DamageClass.SummonMeleeSpeed);
-				player.GetCritChance(DamageClass.SummonMeleeSpeed) = 0;
-				player.GetCritChance(DamageClass.SummonMeleeSpeed) *= 0;
-			}
-		} // Does anyone know how to set all melee weapon crit chances to 0? I can set them to negatives but it would look weird. ~Setnour6
+			// -10% melee critical strike chance (MeleeNoSpeed inherits melee crit).
+			player.GetCritChance(DamageClass.Melee) -= 10;
+		}
 	}
 
 	public override void ModifyTooltips(List<TooltipLine> tooltips)

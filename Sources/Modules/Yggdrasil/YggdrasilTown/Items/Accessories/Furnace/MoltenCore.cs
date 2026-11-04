@@ -7,17 +7,19 @@ public class MoltenCore : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
-	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(DamageReduction, DefenseBonus, CritBonus, DamageBonus, MoveSpeedBonus, JumpSpeedBonus / 100f);
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(
+		5,
+		DefenseBonus,
+		CritBonus,
+		DamageBonus,
+		MoveSpeedBonus,
+		JumpSpeedBonus / 100f);
 
-	private const float OnePercent = 1f;
-	private const int DamageReduction = 5;
 	private const int DefenseBonus = 5;
 	private const int CritBonus = 5;
 	private const int DamageBonus = 5;
 	private const int MoveSpeedBonus = 5;
 	private const int JumpSpeedBonus = 5;
-
-	private const int ItemFrames = 4;
 
 	public override void SetStaticDefaults()
 	{
@@ -35,26 +37,31 @@ public class MoltenCore : ModItem
 
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
-		// 1. Increase abilities when player has some debuffs
-		// ==================================================
-		// Including: OnFire, OnFire3, CursedInferno
-		// Reduce remaining damage by 5%; add 5 defense, 5% crit, 5% damage, 5% move speed and 0.05 jump speed.
-		if (player.HasBuff(BuffID.OnFire) || player.HasBuff(BuffID.OnFire3) || player.HasBuff(BuffID.CursedInferno))
+		// Bonuses while affected by OnFire, OnFire3 or CursedInferno.
+		if (HasFireDebuff(player))
 		{
-			player.endurance = OnePercent - ((OnePercent - player.endurance) * (OnePercent - DamageReduction / 100f));
+			// +5% damage reduction
+			player.endurance += 0.05f;
+			// +5 defense
 			player.statDefense += DefenseBonus;
+			// +5% critical strike chance
 			player.GetCritChance(DamageClass.Generic) += CritBonus;
+			// +5% damage
 			player.GetDamage(DamageClass.Generic) += DamageBonus / 100f;
+			// +5% movement speed
 			player.moveSpeed += MoveSpeedBonus / 100f;
+			// +0.05 pixels/tick jump speed
 			player.jumpSpeedBoost += JumpSpeedBonus / 100f;
 		}
 	}
+
+	private static bool HasFireDebuff(Player player) => player.HasBuff(BuffID.OnFire) || player.HasBuff(BuffID.OnFire3) || player.HasBuff(BuffID.CursedInferno);
 
 	public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
 	{
 		Texture2D texture = ModAsset.MoltenCore.Value;
 		int frameWidth = texture.Width;
-		int frameHeight = texture.Height / ItemFrames;
+		int frameHeight = texture.Height / 4;
 		int frameOffsetY = frameHeight * (((int)Main.time / 5) % 4);
 
 		spriteBatch.Draw(texture, Item.Center - Main.screenPosition, new Rectangle(0, frameOffsetY, frameWidth, frameHeight), lightColor, 0, new Vector2(frameWidth, frameHeight / 2) / 2, 1, SpriteEffects.None, 0);

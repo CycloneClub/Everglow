@@ -25,7 +25,8 @@ public class YellowBellFlower : ModItem
 
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
-		player.GetDamage(DamageClass.Generic) *= player.statDefense * 0.2f / 100f + 1;
+		// +0.2% damage per defense.
+		player.GetDamage(DamageClass.Generic) += (int)player.statDefense * 0.002f;
 	}
 
 	public override void AddRecipes()

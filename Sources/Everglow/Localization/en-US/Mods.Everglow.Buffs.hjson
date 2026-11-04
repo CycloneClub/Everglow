@@ -671,7 +671,7 @@ PadThaiBuff: {
 
 PaperObstructed: {
 	DisplayName: Paper Obstructed
-	Description: ""
+	Description: "10% decreased damage and 10% reduced critical strike chance"
 }
 
 PeachBuff: {
@@ -1001,7 +1001,7 @@ TricolourBuff: {
 
 TropicalSmoothieBuff: {
 	DisplayName: Tropical Smoothie Buff
-	Description: ""
+	Description: "50% reduced mana cost, 50% increased magic damage and 50% increased magic critical strike chance"
 }
 
 TuskCursed: {

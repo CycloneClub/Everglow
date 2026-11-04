@@ -15,13 +15,13 @@ public class CombatAccessoryBalanceTests
 	[DataRow(0f)]
 	[DataRow(0.2f)]
 	[DataRow(0.5f)]
-	public void MoltenCorePreservesExistingReductionAndReducesRemainingDamageByFivePercent(float existingReduction)
+	public void MoltenCoreAddsFivePercentagePointsToExistingEndurance(float existingReduction)
 	{
 		var player = new Player { endurance = existingReduction };
 		player.buffType[0] = BuffID.OnFire;
 		player.buffTime[0] = 60;
 		new MoltenCore().UpdateAccessory(player, false);
-		Assert.AreEqual((1f - existingReduction) * 0.95f, 1f - player.endurance, 0.00001f);
+		Assert.AreEqual(1f - existingReduction - 0.05f, 1f - player.endurance, 0.00001f);
 	}
 
 	[TestMethod]

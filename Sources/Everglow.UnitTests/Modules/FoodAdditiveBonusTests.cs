@@ -30,7 +30,6 @@ public class FoodAdditiveBonusTests
 		context = new CooldownTestContext();
 		bonuses = context.Attach<StatBonusPlayer>();
 		context.Attach<FoodBuffModPlayer>();
-		context.Attach<TropicalSmoothieBuff.TropicalSmoothiePlayer>();
 	}
 
 	[TestCleanup]
