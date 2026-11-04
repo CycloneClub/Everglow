@@ -153,6 +153,72 @@ public class ProjectileSourceOwnerTests
 		Assert.AreEqual(1, npc.target);
 	}
 
+	[TestMethod]
+	[DataRow(NetmodeID.SinglePlayer, 0)]
+	[DataRow(NetmodeID.Server, 255)]
+	public void TownGuardAttackKeepsNpcOwnership(int netMode, int playerIndex)
+	{
+		RegisterProjectile(typeof(Everglow.Yggdrasil.YggdrasilTown.Projectiles.TownNPCs.Guard_Attack_Spear));
+		var previousNpcs = Main.npc;
+		restore.Add(() => Main.npc = previousNpcs);
+		Main.npc = [];
+		Main.netMode = netMode;
+		Main.myPlayer = playerIndex;
+		var npc = new NPC { active = true, friendly = true, damage = 30 };
+		var guard = (Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs.Guard_of_YggdrasilTown)new Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs.Guard_of_YggdrasilTown().NewInstance(npc);
+
+		using var attack = guard.Attack0();
+		Assert.IsTrue(attack.MoveNext());
+
+		Assert.IsNotNull(capturedProjectile);
+		Assert.AreEqual(playerIndex, capturedProjectile.owner, "The spawning side must also own NPC damage calculation.");
+		Assert.IsTrue(capturedProjectile.npcProj);
+		Assert.IsFalse(capturedProjectile.TryGetOwner(out _), "Town attacks must not acquire a player owner through TryGetOwner.");
+		Assert.AreSame(npc, ((EntitySource_Parent)capturedSource!).Entity);
+		Assert.AreSame(capturedProjectile, guard.SpearProjectile);
+	}
+
+	[TestMethod]
+	[DataRow(NetmodeID.SinglePlayer, 0)]
+	[DataRow(NetmodeID.Server, 255)]
+	public void AcytaeaSwordKeepsNpcOwnership(int netMode, int playerIndex)
+	{
+		var module = LoadModule("Myth");
+		RegisterProjectile(module.GetType("Everglow.Myth.Acytaea.Projectiles.AcytaeaSword_projectile_TownNPC", true)!);
+		Main.netMode = netMode;
+		Main.myPlayer = playerIndex;
+		var npc = new NPC { active = true, friendly = true };
+		var acytaeaType = module.GetType("Everglow.Myth.Acytaea.NPCs.Acytaea", true)!;
+		var acytaea = ((ModNPC)Activator.CreateInstance(acytaeaType)!).NewInstance(npc);
+		using var attack = (IEnumerator<Everglow.Commons.Coroutines.ICoroutineInstruction>)acytaeaType.GetMethod("Attack1")!.Invoke(acytaea, null)!;
+		for (int i = 0; i <= 6; i++)
+		{
+			Assert.IsTrue(attack.MoveNext());
+		}
+		Assert.IsNotNull(capturedProjectile);
+		Assert.AreEqual(playerIndex, capturedProjectile.owner);
+		Assert.IsTrue(capturedProjectile.npcProj);
+		Assert.AreSame(npc, ((EntitySource_Parent)capturedSource!).Entity);
+	}
+
+	[TestMethod]
+	[DataRow(NetmodeID.SinglePlayer, 0)]
+	[DataRow(NetmodeID.Server, 255)]
+	public void AcytaeaFlameChildrenKeepNpcOwnership(int netMode, int owner)
+	{
+		var module = LoadModule("Myth");
+		RegisterProjectile(module.GetType("Everglow.Myth.Acytaea.Projectiles.Acytaea_FlamePost", true)!);
+		Main.netMode = netMode;
+		Main.myPlayer = owner;
+		var parent = new Projectile { owner = owner, npcProj = true, timeLeft = 30 };
+		var ground = ((ModProjectile)Activator.CreateInstance(module.GetType("Everglow.Myth.Acytaea.Projectiles.Acytaea_SmashGround", true)!)!).NewInstance(parent);
+		ground.AI();
+		Assert.IsNotNull(capturedProjectile);
+		Assert.AreEqual(owner, capturedProjectile.owner);
+		Assert.IsTrue(capturedProjectile.npcProj);
+		Assert.AreSame(parent, ((EntitySource_Parent)capturedSource!).Entity);
+	}
+
 	private void RegisterProjectile(Type type)
 	{
 		var instance = ((ModProjectile)Activator.CreateInstance(type)!).NewInstance(new Projectile { type = ProjectileID.WoodenArrowFriendly });

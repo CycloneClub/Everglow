@@ -53,7 +53,7 @@ public class AcytaeaScratch_TownNPC : ModProjectile
 			}
 			if (Projectile.timeLeft == 50)
 			{
-				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<Acytaea_SmashGround>(), 0, 3, Projectile.owner, Projectile.ai[0]);
+				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<Acytaea_SmashGround>(), 0, 3, Projectile.owner, Projectile.ai[0]).npcProj = Projectile.npcProj;
 			}
 			Projectile.Center = Owner.Center + new Vector2(0, -48).RotatedBy(-Owner.spriteDirection * rotValue);
 			Projectile.spriteDirection = Owner.spriteDirection;

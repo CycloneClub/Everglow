@@ -185,7 +185,7 @@ public class LanternGhostKing : LanternMoonNPC
 		LanternMoonMusicManager musicSystem = ModContent.GetInstance<LanternMoonMusicManager>();
 		if (musicSystem.Wave15StartTimer == 14 * 60 + 10)
 		{
-			Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, 150), Vector2.zeroVector, ModContent.ProjectileType<KillLanternMoonMobs>(), 75000, 0, Main.maxPlayers);
+			Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, 150), Vector2.zeroVector, ModContent.ProjectileType<KillLanternMoonMobs>(), 75000, 0, Main.netMode == NetmodeID.SinglePlayer ? Main.myPlayer : Main.maxPlayers).npcProj = true;
 			NPC.alpha = 180;
 		}
 		if (musicSystem.Wave15StartTimer == 15 * 60)
@@ -1440,7 +1440,7 @@ public class LanternGhostKing : LanternMoonNPC
 
 		if (Main.netMode != NetmodeID.MultiplayerClient)
 		{
-			Projectile.NewProjectileDirect(NPC.GetSource_Death(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<LanternGhostKingExplosion>(), 150, 0f, Main.maxPlayers);
+			Projectile.NewProjectileDirect(NPC.GetSource_Death(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<LanternGhostKingExplosion>(), 150, 0f, Main.netMode == NetmodeID.SinglePlayer ? Main.myPlayer : Main.maxPlayers).npcProj = true;
 		}
 		SoundStyle sound;
 		switch (Main.rand.Next(3))
