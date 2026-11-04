@@ -407,12 +407,16 @@ GrapefruitBuff: {
 
 GrapeJuiceBuff: {
 	DisplayName: Grape Juice Buff
-	Description: ""
+	Description: "+10000 luck"
 }
 
 GrapesBuff: {
 	DisplayName: Grapes Buff
-	Description: ""
+	Description:
+		'''
+		+1 minion slot, +0.1 luck, -12 defense
+		Many seeds, many blessings
+		'''
 }
 
 GreenImmune: {

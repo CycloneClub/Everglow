@@ -10,7 +10,8 @@ public class UnfortuneCurse : ModBuff
 
 	public override void Update(Player player, ref int buffIndex)
 	{
-		player.luck -= 100;
+		// -100 luck
+		player.equipmentBasedLuckBonus -= 100f;
 		player.GetCritChance(DamageClass.Generic) -= 1f;
 		base.Update(player, ref buffIndex);
 	}

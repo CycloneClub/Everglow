@@ -593,7 +593,7 @@ GrapeJuiceBuff: {
 	DisplayName: 葡萄汁
 	Description:
 		'''
-		短时间你变得极其幸运
+		+10000幸运
 		浓缩的幸福
 		'''
 }
@@ -602,7 +602,7 @@ GrapesBuff: {
 	DisplayName: 葡萄
 	Description:
 		'''
-		增加1召唤栏，幸运值加10%，减12防御!!!
+		+1召唤栏，+0.1幸运，-12防御
 		多子多福
 		'''
 }
