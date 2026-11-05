@@ -158,12 +158,15 @@ public class TownEquipmentLocalizationTests
 			typeof(GunOfAvarice).GetProperty("Level", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(gun, level);
 			var lines = new List<TooltipLine>();
 			gun.ModifyTooltips(lines);
-			Assert.AreEqual(culture == "zh-Hans" ? $"当前弹药：{ammo}/14" : $"Current ammo: {ammo}/14",
+			Assert.AreEqual(
+				culture == "zh-Hans" ? $"当前弹药：{ammo}/14" : $"Current ammo: {ammo}/14",
 				lines.Single(line => line.Name == "GunOfAvariceAmmo").Text);
-			Assert.AreEqual(culture == "zh-Hans" ? $"等级：{level}" : $"Level: {level}",
+			Assert.AreEqual(
+				culture == "zh-Hans" ? $"等级：{level}" : $"Level: {level}",
 				lines.Single(line => line.Name == "GunOfAvariceLevel").Text);
 		}
-		Assert.AreEqual(culture == "zh-Hans" ? "最高等级" : "Max level",
+		Assert.AreEqual(
+			culture == "zh-Hans" ? "最高等级" : "Max level",
 			Language.GetTextValue("Mods.Everglow.ExtraTooltip.GunOfAvarice.MaxLevel"));
 	}
 
