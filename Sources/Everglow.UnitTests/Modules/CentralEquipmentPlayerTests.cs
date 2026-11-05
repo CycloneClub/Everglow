@@ -111,9 +111,10 @@ public class CentralEquipmentPlayerTests
 	}
 
 	[TestMethod]
-	[DataRow(11, 198, 198, 198, 198)]
-	[DataRow(12, 190, 180, 195, 190)]
-	[DataRow(100, 198, 198, 200, 200)]
+	[DataRow(11, 200, 198, 189, 198)]
+	[DataRow(12, 200, 180, 193, 190)]
+	[DataRow(12, 190, 180, 183, 190)]
+	[DataRow(100, 198, 198, 103, 200)]
 	public void RecoveryBandKeepsDamageThresholdAndCapacityLimits(int damage, int life, int mana, int expectedLife, int expectedMana)
 	{
 		using var context = new CooldownTestContext();
@@ -124,9 +125,34 @@ public class CentralEquipmentPlayerTests
 		player.statLife = life;
 		player.statMana = mana;
 		new RecoveryBand().UpdateAccessory(player, false);
-		bonuses.OnHurt(new Player.HurtInfo { Damage = damage });
+		var info = new Player.HurtInfo { Damage = damage };
+		bonuses.OnHurt(info);
+		Assert.AreEqual(life, player.statLife, "OnHurt runs before native damage subtraction.");
+		Assert.AreEqual(mana, player.statMana);
+		player.statLife -= damage;
+		bonuses.PostHurt(info);
 		Assert.AreEqual(expectedLife, player.statLife);
 		Assert.AreEqual(expectedMana, player.statMana);
+	}
+
+	[TestMethod]
+	[DataRow(true, 200)]
+	[DataRow(false, 198)]
+	public void RecoveryBandPostHurtRespectsCapacityAndUnequipping(bool equipped, int expectedLife)
+	{
+		using var context = new CooldownTestContext();
+		var bonuses = context.Attach<RecoveryBandPlayer>();
+		Main.netMode = NetmodeID.Server;
+		context.Player.statLifeMax2 = context.Player.statManaMax2 = 200;
+		context.Player.statLife = context.Player.statMana = 198;
+		new RecoveryBand().UpdateAccessory(context.Player, false);
+		if (!equipped)
+		{
+			bonuses.ResetEffects();
+		}
+		bonuses.PostHurt(new Player.HurtInfo { Damage = 12 });
+		Assert.AreEqual(expectedLife, context.Player.statLife);
+		Assert.AreEqual(expectedLife, context.Player.statMana);
 	}
 
 	[TestMethod]
