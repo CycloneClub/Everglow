@@ -6,7 +6,7 @@ public class VortexVanquisher2 : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
 
-	public override string Texture => "Everglow/MEAC/Projectiles/VortexVanquisher";
+	public override string Texture => ModAsset.VortexVanquisher_Mod;
 
 	public override void SetStaticDefaults()
 	{
@@ -49,7 +49,7 @@ public class VortexVanquisher2 : ModProjectile
 	{
 		Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
 		Main.spriteBatch.Draw(tex, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.velocity.ToRotation() + 0.7854f, tex.Size() / 2, Projectile.scale, 0, 0);
-		Main.spriteBatch.Draw(ModContent.Request<Texture2D>("Everglow/MEAC/Projectiles/VortexVanquisherGlow").Value, Projectile.Center - Main.screenPosition, null, new Color(255, 255, 255, 0), Projectile.velocity.ToRotation() + 0.7854f, tex.Size() / 2, Projectile.scale, 0, 0);
+		Main.spriteBatch.Draw(ModAsset.VortexVanquisherGlow.Value, Projectile.Center - Main.screenPosition, null, new Color(255, 255, 255, 0), Projectile.velocity.ToRotation() + 0.7854f, tex.Size() / 2, Projectile.scale, 0, 0);
 		return false;
 	}
 }

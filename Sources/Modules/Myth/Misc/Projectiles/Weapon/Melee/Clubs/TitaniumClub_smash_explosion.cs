@@ -7,7 +7,7 @@ public class TitaniumClub_smash_explosion : ModProjectile, IWarpProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MiscsProjectiles;
 
-	public override string Texture => "Everglow/" + ModAsset.Empty_Path;
+	public override string Texture => ModAsset.Empty_Mod;
 
 	public override void SetDefaults()
 	{

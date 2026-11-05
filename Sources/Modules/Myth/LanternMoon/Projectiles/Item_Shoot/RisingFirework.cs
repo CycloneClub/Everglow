@@ -7,7 +7,7 @@ public class RisingFirework : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MiscsProjectiles;
 
-	public override string Texture => "Everglow/Myth/UIImages/VisualTextures/DarkGrey";
+	public override string Texture => ModAsset.DarkGrey_Mod;
 
 	public override void SetDefaults()
 	{
@@ -53,7 +53,7 @@ public class RisingFirework : ModProjectile
 			Projectile.velocity *= 0.8f;
 			if (TimeToKill == 80)
 			{
-				SoundEngine.PlaySound(new SoundStyle("Everglow/Myth/Sounds/FireworkExplosion"), Projectile.Center);
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.FireworkExplosion_Mod), Projectile.Center);
 				var p = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<Firework6Inches>(), 50, 0f, Projectile.owner, 0, 0);
 				if (p != null)
 				{

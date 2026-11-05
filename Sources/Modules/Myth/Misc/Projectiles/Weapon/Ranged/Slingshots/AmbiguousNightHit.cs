@@ -7,7 +7,7 @@ public class AmbiguousNightHit : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
 
-	public override string Texture => "Everglow/Myth/Misc/Projectiles/Weapon/Ranged/Slingshots/AmbiguousNight";
+	public override string Texture => ModAsset.Ranged_AmbiguousNight_Mod;
 
 	public override void SetDefaults()
 	{

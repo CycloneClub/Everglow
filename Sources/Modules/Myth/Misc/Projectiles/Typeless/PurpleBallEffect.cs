@@ -66,7 +66,7 @@ public class PurpleBallEffect : ModProjectile
 			float f = 1.2f - (180 - Projectile.timeLeft) / 190f;
 			Col = f * f * f;
 		}
-		Texture2D tex2 = ModContent.Request<Texture2D>("Everglow/Myth/Acytaea/Dusts/CosmicCrack3").Value;
+		Texture2D tex2 = ModAsset.CosmicCrack3.Value;
 		for (float r = 0; r < Col + 0.1; r += 0.1f)
 		{
 			Main.spriteBatch.Draw(tex2, v0 - Main.screenPosition, new Rectangle(0, 0, pro, 50), new Color(0.1f, 0.1f, 0.1f, 0), aI0, tex2.Size() / 2f, scale, SpriteEffects.None, 0);

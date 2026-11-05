@@ -26,8 +26,8 @@ public class Acytaea : VisualNPC
 	public int Attack0Cooling = 0;
 
 	public override string HeadTexture => NPC.boss ?
-		"Everglow/Myth/Acytaea/NPCs/Acytaea_Head_Boss" :
-		"Everglow/Myth/Acytaea/NPCs/Acytaea_Head";
+		ModAsset.Acytaea_Head_Boss_Mod :
+		ModAsset.Acytaea_Head_Mod;
 
 	public override void SetStaticDefaults()
 	{

@@ -18,6 +18,6 @@ internal class RedPipeline : PostPipeline
 
 	public override void Load()
 	{
-		effect = ModContent.Request<Effect>("Everglow/Example/VFX/PureColor");
+		effect = ModAsset.PureColor;
 	}
 }

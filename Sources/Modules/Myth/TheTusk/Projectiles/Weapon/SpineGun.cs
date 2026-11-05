@@ -81,7 +81,7 @@ internal class SpineGun : ModProjectile
 			player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (float)(Math.Atan2(v0.Y, v0.X) - Math.PI / 2d));
 		}
 
-		Texture2D TexMain = ModContent.Request<Texture2D>("Everglow/Myth/TheTusk/Items/Weapons/SpineGun").Value;
+		Texture2D TexMain = ModAsset.Weapons_SpineGun.Value;
 		Color drawColor = Lighting.GetColor((int)Projectile.Center.X / 16, (int)(Projectile.Center.Y / 16.0));
 		SpriteEffects se = SpriteEffects.None;
 		if (Projectile.Center.X < player.Center.X)

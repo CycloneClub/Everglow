@@ -78,7 +78,7 @@ internal class RedFlame0 : ModProjectile
 	{
 		var texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
 		Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, new Color(color0.R, color0.G, color0.B, 0), Projectile.rotation, new Vector2(17, 17), Projectile.scale * 2.2f, SpriteEffects.None, 0);
-		Main.spriteBatch.Draw(ModContent.Request<Texture2D>("Everglow/Myth/LanternMoon/Projectiles/DashCore/DashCoreLight").Value, Projectile.Center - Main.screenPosition, null, new Color(color0.R / 155f * kb, color0.G / 155f * kb, color0.B / 155f * kb, 0), Projectile.rotation, new Vector2(56, 56), Projectile.scale * 2f, SpriteEffects.None, 0);
+		Main.spriteBatch.Draw(ModAsset.DashCoreLight.Value, Projectile.Center - Main.screenPosition, null, new Color(color0.R / 155f * kb, color0.G / 155f * kb, color0.B / 155f * kb, 0), Projectile.rotation, new Vector2(56, 56), Projectile.scale * 2f, SpriteEffects.None, 0);
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 		var bars = new List<Vertex2D>();

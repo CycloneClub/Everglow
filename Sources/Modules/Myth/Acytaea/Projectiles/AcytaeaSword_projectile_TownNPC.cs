@@ -9,7 +9,7 @@ public class AcytaeaSword_projectile_TownNPC : MeleeProj
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.TownNPCProjectiles;
 
-	public override string Texture => "Everglow/Myth/Acytaea/Projectiles/AcytaeaSword_projectile";
+	public override string Texture => ModAsset.AcytaeaSword_projectile_Mod;
 
 	public override void SetDef()
 	{
@@ -59,7 +59,7 @@ public class AcytaeaSword_projectile_TownNPC : MeleeProj
 
 	public override string TrailColorTex()
 	{
-		return "Everglow/Myth/Acytaea/Projectiles/Acytaea_Melee_Color";
+		return ModAsset.Acytaea_Melee_Color_Mod;
 	}
 
 	public override float TrailAlpha(float factor)

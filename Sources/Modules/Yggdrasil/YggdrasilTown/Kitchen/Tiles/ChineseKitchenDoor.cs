@@ -10,7 +10,7 @@ public class ChineseKitchenDoor : RoomDoorTile
 	{
 		var mapIO = new MapIO(5, 5);
 
-		mapIO.Read(ModIns.Mod.GetFileStream("Yggdrasil/YggdrasilTown/Kitchen/MapIOs/ChineseStyleKitchen_Whole.mapio"));
+		mapIO.Read(ModIns.Mod.GetFileStream(ModAsset.ChineseStyleKitchen_Whole_Path));
 
 		var it = mapIO.GetEnumerator();
 		while (it.MoveNext())

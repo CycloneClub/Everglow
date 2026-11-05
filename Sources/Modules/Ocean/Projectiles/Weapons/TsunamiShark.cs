@@ -8,7 +8,7 @@ public class TsunamiShark : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
 
-	public override string Texture => "Everglow/Ocean/Projectiles/Weapons/TsunamiShark/TsunamiShark_proj";
+	public override string Texture => ModAsset.TsunamiShark_proj_Mod;
 
 	public override void SetDefaults()
 	{
@@ -55,7 +55,7 @@ public class TsunamiShark : ModProjectile
 			Vector2 random = new Vector2(0, Main.rand.NextFloat(1f)).RotatedByRandom(6.283);
 			ScreenShaker Gsplayer = player.GetModPlayer<ScreenShaker>();
 			Gsplayer.FlyCamPosition = new Vector2(0, 2).RotatedByRandom(6.283);
-			SoundEngine.PlaySound(new SoundStyle("Everglow/Ocean/Sounds/WaterGun").WithVolumeScale(0.8f), Projectile.Center);
+			SoundEngine.PlaySound(new SoundStyle(ModAsset.WaterGun_Mod).WithVolumeScale(0.8f), Projectile.Center);
 
 			Projectile p = Projectile.NewProjectileDirect(
 				shootSource,

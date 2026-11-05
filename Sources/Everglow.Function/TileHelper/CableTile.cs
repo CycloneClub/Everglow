@@ -16,7 +16,7 @@ namespace Everglow.Commons.TileHelper;
 /// </summary>
 public abstract class CableTile : ModTile, ITileFluentlyDrawn
 {
-	public override string Texture => "Everglow/Commons/TileHelper/CableKnot";
+	public override string Texture => ModAsset.CableKnot_Mod;
 
 	/// <summary>
 	/// 最大绳长,默认900

@@ -40,7 +40,7 @@ internal class FireFeatherMagicArray : VisualProjectile
 	public int timer = 0;
 	public Vector2 ringPos = Vector2.Zero;
 
-	public override string Texture => "Everglow/" + ModAsset.FireFeatherMagic_Path;
+	public override string Texture => ModAsset.FireFeatherMagic_Mod;
 
 	public override void SetDefaults()
 	{

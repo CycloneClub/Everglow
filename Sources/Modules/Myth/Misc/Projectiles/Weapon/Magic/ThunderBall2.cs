@@ -136,7 +136,7 @@ public class ThunderBall2 : ModProjectile
 				triangleList.Add(bars[i + 2]);
 				triangleList.Add(bars[i + 3]);
 			}
-			Texture2D t = ModContent.Request<Texture2D>("Everglow/Myth/UIImages/VisualTextures/FogTraceTheta2").Value;
+			Texture2D t = ModAsset.FogTraceTheta2.Value;
 			Main.graphics.GraphicsDevice.Textures[0] = t; // GlodenBloodScaleMirror
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, triangleList.ToArray(), 0, triangleList.Count / 3);
 			Main.spriteBatch.End();

@@ -53,9 +53,9 @@ internal class WaterDustRenderer
 
 	public WaterDustRenderer()
 	{
-		dustLogicEffect = ModContent.Request<Effect>("Everglow/Myth/Effects/DustLogic");
-		dustDrawEffect = ModContent.Request<Effect>("Everglow/Myth/Effects/DustDraw");
-		dustSpawnEffect = ModContent.Request<Effect>("Everglow/Myth/Effects/DustSpawn");
+		dustLogicEffect = ModAsset.DustLogic;
+		dustDrawEffect = ModAsset.DustDraw;
+		dustSpawnEffect = ModAsset.DustSpawn;
 		dustTargetSwap = new RenderTarget2D[2];
 		Ins.MainThread.AddTask(() =>
 		{

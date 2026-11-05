@@ -30,7 +30,7 @@ internal class DemonScytheBook : MagicBookProjectile
 		{
 			Vector2 velocity = (Main.MouseWorld - Projectile.Center).SafeNormalize(Vector2.Zero) * player.HeldItem.shootSpeed;
 			Projectile.NewProjectileDirect(player.GetSource_ItemUse(player.HeldItem), Projectile.Center + velocity.SafeNormalize(Vector2.Zero) * 25, velocity * 16, ModContent.ProjectileType<DemonScythePlus>()/*ProjectileID.DemonScythe*/, player.GetWeaponDamage(player.HeldItem), player.HeldItem.knockBack, player.whoAmI);
-			SoundEngine.PlaySound(new SoundStyle("Everglow/SpellAndSkull/Sounds/DemonScyth"), Projectile.Center);
+			SoundEngine.PlaySound(new SoundStyle(ModAsset.DemonScyth_Mod), Projectile.Center);
 		}
 	}
 }

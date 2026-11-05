@@ -8,7 +8,7 @@ public class AdamantiteClub_round : ModProjectile, IWarpProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
 
-	public override string Texture => "Everglow/" + ModAsset.AdamantiteClub_Path;
+	public override string Texture => ModAsset.AdamantiteClub_Mod;
 
 	/// <summary>
 	/// 角速度

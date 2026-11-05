@@ -85,7 +85,7 @@ public class ThunderBall : ModProjectile
 		addi += 1;
 		if (addi % 60 == 1)
 		{
-			SoundEngine.PlaySound(new SoundStyle("Everglow/Myth/Sounds/ElectricCurrency"), Projectile.Center);
+			SoundEngine.PlaySound(new SoundStyle(ModAsset.ElectricCurrency_Mod), Projectile.Center);
 		}
 
 		Projectile.velocity.Y += 0.15f;
@@ -102,7 +102,7 @@ public class ThunderBall : ModProjectile
 			{
 				if (!HasBeenHit[j] && (Main.npc[j].Center - (Projectile.Center + Projectile.velocity * 10f)).Length() < 100 && !Main.npc[j].dontTakeDamage && !Main.npc[j].friendly && Main.npc[j].active)
 				{
-					SoundEngine.PlaySound(new SoundStyle("Everglow/Myth/Sounds/ElectricCurrency"), Projectile.Center);
+					SoundEngine.PlaySound(new SoundStyle(ModAsset.ElectricCurrency_Mod), Projectile.Center);
 					coolingHit[j] = 8;
 					HasBeenHit[j] = true;
 					TotalPower--;
@@ -282,7 +282,7 @@ public class ThunderBall : ModProjectile
 				triangleList.Add(bars[i + 3]);
 			}
 			RasterizerState originalState = Main.graphics.GraphicsDevice.RasterizerState;
-			Main.graphics.GraphicsDevice.Textures[0] = ModContent.Request<Texture2D>("Everglow/Myth/UIImages/VisualTextures/ElecLine").Value;
+			Main.graphics.GraphicsDevice.Textures[0] = ModAsset.ElecLine.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, triangleList.ToArray(), 0, triangleList.Count / 3);
 			Main.graphics.GraphicsDevice.RasterizerState = originalState;
 		}

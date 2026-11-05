@@ -8,7 +8,7 @@ public abstract class GemDust : ModDust
 	{
 	}
 
-	public override string Texture => "Everglow/Myth/Misc/Dusts/Slingshots/GemDust";
+	public override string Texture => ModAsset.GemDust_Mod;
 
 	public override void OnSpawn(Dust dust)
 	{

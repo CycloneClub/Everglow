@@ -23,7 +23,7 @@ internal class CentipedeHead : FireWormHead
 	{
 		var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers()
 		{
-			CustomTexturePath = "Everglow/Myth/TheFirefly/NPCs/FireflyCentipede_Bestiary",
+			CustomTexturePath = ModAsset.FireflyCentipede_Bestiary_Mod,
 			Position = new Vector2(40f, 24f),
 			PortraitPositionXOverride = 0f,
 			PortraitPositionYOverride = 12f,

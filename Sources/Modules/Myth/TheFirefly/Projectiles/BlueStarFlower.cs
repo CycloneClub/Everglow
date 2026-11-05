@@ -9,7 +9,7 @@ public class BlueStarFlower : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
 
-	public override string Texture => "Everglow/Myth/TheFirefly/Projectiles/CorruptLight";
+	public override string Texture => ModAsset.CorruptLight_Mod;
 
 	public override void SetDefaults()
 	{
@@ -118,7 +118,7 @@ public class BlueStarFlower : ModProjectile
 
 	public override void OnKill(int timeLeft)
 	{
-		SoundEngine.PlaySound(new SoundStyle("Everglow/Myth/Sounds/Crystal_Burst_Normal").WithVolumeScale(Projectile.ai[0] / 20f + 0.2f), Projectile.Center);
+		SoundEngine.PlaySound(new SoundStyle(ModAsset.Crystal_Burst_Normal_Mod).WithVolumeScale(Projectile.ai[0] / 20f + 0.2f), Projectile.Center);
 		GenerateSmog(12);
 		GenerateFire(20);
 		GenerateSpark(12);

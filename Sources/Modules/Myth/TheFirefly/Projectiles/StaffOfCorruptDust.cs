@@ -22,7 +22,7 @@ internal class StaffOfCorruptDust : ModProjectile
 	public override void OnSpawn(IEntitySource source)
 	{
 		Projectile.localAI[0] = 0;
-		SoundEngine.PlaySound(new SoundStyle("Everglow/Myth/Sounds/CorruptDust_start"), Projectile.Center);
+		SoundEngine.PlaySound(new SoundStyle(ModAsset.CorruptDust_start_Mod), Projectile.Center);
 	}
 
 	public override void AI()
@@ -60,7 +60,7 @@ internal class StaffOfCorruptDust : ModProjectile
 		Projectile.localAI[0] += 1;
 		if (Projectile.localAI[0] % 12 == 2)
 		{
-			SoundEngine.PlaySound(new SoundStyle("Everglow/Myth/Sounds/CorruptDust_medium").WithPitchOffset(Main.rand.NextFloat(-0.1f, 0.1f)), Projectile.Center);
+			SoundEngine.PlaySound(new SoundStyle(ModAsset.CorruptDust_medium_Mod).WithPitchOffset(Main.rand.NextFloat(-0.1f, 0.1f)), Projectile.Center);
 		}
 	}
 
@@ -87,7 +87,7 @@ internal class StaffOfCorruptDust : ModProjectile
 
 	public override void OnKill(int timeLeft)
 	{
-		SoundEngine.PlaySound(new SoundStyle("Everglow/Myth/Sounds/CorruptDust_end"), Projectile.Center);
+		SoundEngine.PlaySound(new SoundStyle(ModAsset.CorruptDust_end_Mod), Projectile.Center);
 		base.OnKill(timeLeft);
 	}
 }

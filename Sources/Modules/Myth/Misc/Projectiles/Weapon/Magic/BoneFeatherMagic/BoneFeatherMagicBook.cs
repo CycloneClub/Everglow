@@ -4,7 +4,7 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Magic.BoneFeatherMagic;
 
 internal class BoneFeatherMagicBook : MagicBookProjectile
 {
-	public override string Texture => "Everglow/" + ModAsset.BoneFeatherMagic_Path;
+	public override string Texture => ModAsset.BoneFeatherMagic_Mod;
 
 	public override void SetDef()
 	{

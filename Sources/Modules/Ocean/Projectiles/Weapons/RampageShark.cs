@@ -11,7 +11,7 @@ public class RampageShark : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
 
-	public override string Texture => "Everglow/Ocean/Projectiles/Weapons/RampageShark/RampageShark_gun";
+	public override string Texture => ModAsset.RampageShark_gun_Mod;
 
 	public override void SetDefaults()
 	{
@@ -54,11 +54,11 @@ public class RampageShark : ModProjectile
 				Gsplayer.FlyCamPosition = new Vector2(0, 2).RotatedByRandom(6.283);
 				if (Power == 16)
 				{
-					SoundEngine.PlaySound(new SoundStyle("Everglow/Ocean/Sounds/SharkGun0").WithVolumeScale(0.6f).WithPitchOffset(0.2f), Projectile.Center);
+					SoundEngine.PlaySound(new SoundStyle(ModAsset.SharkGun0_Mod).WithVolumeScale(0.6f).WithPitchOffset(0.2f), Projectile.Center);
 				}
 				else
 				{
-					SoundEngine.PlaySound(new SoundStyle("Everglow/Ocean/Sounds/SharkGun0").WithVolumeScale(0.4f), Projectile.Center);
+					SoundEngine.PlaySound(new SoundStyle(ModAsset.SharkGun0_Mod).WithVolumeScale(0.4f), Projectile.Center);
 				}
 				Vector2 newvelocity = velocity.RotatedBy(Main.rand.NextFloat(-Power / 244f, Power / 244f));
 				Projectile p = Projectile.NewProjectileDirect(shootSource, Projectile.Center + offset + velocity * 0.0f + random, newvelocity, rampage.ShootType, item.damage, item.knockBack, player.whoAmI);
@@ -76,7 +76,7 @@ public class RampageShark : ModProjectile
 			{
 				ScreenShaker Gsplayer = player.GetModPlayer<ScreenShaker>();
 				Gsplayer.FlyCamPosition = new Vector2(0, 75).RotatedByRandom(6.283);
-				SoundEngine.PlaySound(new SoundStyle("Everglow/Ocean/Sounds/SharkGun1").WithPitchOffset(-0.8f), Projectile.Center);
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.SharkGun1_Mod).WithPitchOffset(-0.8f), Projectile.Center);
 				int Times = Main.rand.Next(4, 7);
 
 				for (int i = 0; i < Times; i++)
@@ -155,10 +155,10 @@ public class RampageShark : ModProjectile
 			player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (float)(Math.Atan2(toMouse.Y, toMouse.X) - Math.PI / 2d));
 		}
 
-		Texture2D texMain = OceanContent.QuickTexture("Projectiles/Weapons/RampageShark/RampageShark_gun");
-		Texture2D texMainG = OceanContent.QuickTexture("Projectiles/Weapons/RampageShark/RampageShark_glow");
-		Texture2D TexEye = OceanContent.QuickTexture("Projectiles/Weapons/RampageShark/RampageShark_redEye");
-		Texture2D TexStar = OceanContent.QuickTexture("Projectiles/Weapons/RampageShark/HitStar");
+		Texture2D texMain = ModAsset.RampageShark_gun.Value;
+		Texture2D texMainG = ModAsset.RampageShark_glow.Value;
+		Texture2D TexEye = ModAsset.RampageShark_redEye.Value;
+		Texture2D TexStar = ModAsset.HitStar.Value;
 		var gunTexRectangle = new Rectangle(0, 0, 72, 34);
 		if (Main.timeForVisualEffects % 6 >= 3)
 		{

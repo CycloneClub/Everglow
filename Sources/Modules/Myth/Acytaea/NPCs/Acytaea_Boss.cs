@@ -13,9 +13,9 @@ public class Acytaea_Boss : ModNPC
 {
 	private bool canDespawn = false;
 
-	public override string Texture => "Everglow/Myth/Acytaea/NPCs/Acytaea";
+	public override string Texture => ModAsset.Acytaea_Mod;
 
-	public override string HeadTexture => "Everglow/Myth/Acytaea/NPCs/Acytaea_Head_Boss";
+	public override string HeadTexture => ModAsset.Acytaea_Head_Boss_Mod;
 
 	public override void ModifyNPCLoot(NPCLoot npcLoot)
 	{
@@ -37,7 +37,7 @@ public class Acytaea_Boss : ModNPC
 		NPC.boss = true;
 		NPC.knockBackResist = 0;
 		NPC.noTileCollide = true;
-		Music = Common.MythContent.QuickMusic("AcytaeaFighting");
+		Music = MusicLoader.GetMusicSlot(ModIns.Mod, ModAsset.AcytaeaFighting_Path);
 	}
 
 	public override void OnSpawn(IEntitySource source)

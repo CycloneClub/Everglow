@@ -187,7 +187,7 @@ public class BloodTusk : ModNPC
 		NPC.HitSound = SoundID.DD2_SkeletonHurt;
 		NPC.DeathSound = SoundID.DD2_SkeletonDeath;
 		NPC.dontTakeDamage = false;
-		Music = Common.MythContent.QuickMusic("TuskBiome");
+		Music = MusicLoader.GetMusicSlot(ModIns.Mod, ModAsset.TuskBiome_Path);
 	}
 
 	public override void OnSpawn(IEntitySource source)

@@ -95,7 +95,7 @@ public class MothBall : ModProjectile
 		}
 		if (Projectile.timeLeft == 185)
 		{
-			SoundEngine.PlaySound(new SoundStyle("Everglow/Myth/Sounds/PowerAccumulate"), Projectile.Center);
+			SoundEngine.PlaySound(new SoundStyle(ModAsset.PowerAccumulate_Mod), Projectile.Center);
 		}
 	}
 

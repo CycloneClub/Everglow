@@ -28,7 +28,7 @@ public class PylonStonePostProj_crimson_explosion : NoTextureProjectile, IWarpPr
 
 	public override void OnSpawn(IEntitySource source)
 	{
-		SoundEngine.PlaySound(new SoundStyle("Everglow/Myth/Sounds/Crystal_Burst_Normal").WithVolumeScale(Projectile.ai[0] / 20f + 0.2f), Projectile.Center);
+		SoundEngine.PlaySound(new SoundStyle(ModAsset.Crystal_Burst_Normal_Mod).WithVolumeScale(Projectile.ai[0] / 20f + 0.2f), Projectile.Center);
 		for (int g = 0; g < 2; g++)
 		{
 			var darknessWave = new WaveOfEffectPylonHit_CrimsonWave(60, Projectile.Center, Vector2.Zero)

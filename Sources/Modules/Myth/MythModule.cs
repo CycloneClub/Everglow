@@ -27,7 +27,7 @@ public class MythModule : EverglowModule
 		if (Main.netMode != NetmodeID.Server)
 		{
 			// 水波扰动Shader
-			waveDisortionScreen = ModContent.Request<Effect>("Everglow/Myth/Effects/WaterDisortion", AssetRequestMode.ImmediateLoad);
+			waveDisortionScreen = ModAsset.WaterDisortion;
 			ReplaceEffectPass = waveDisortionScreen.Value.CurrentTechnique.Passes[0];
 
 			On_WaterShaderData.Update += WaterShaderData_Update;

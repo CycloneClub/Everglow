@@ -287,11 +287,11 @@ public class CactusBallProj : ModProjectile, IWarpProjectile
 		Player player = Main.player[Projectile.owner];
 		if (Projectile.ai[1] < 25f && (Projectile.Center - player.Center).Length() <= 120)
 		{
-			Texture2D chain = PlantUtils.GetTexture("Everglow/Plant/Projectiles/Melee/CactusBallChain");
+			Texture2D chain = ModAsset.CactusBallChain.Value;
 			Main.spriteBatch.Draw(chain, (Projectile.Center + player.Center) / 2f - Main.screenPosition, null, alpha, Projectile.AngleToSafe(player.Center),
 				chain.Size() / 2f, new Vector2((Projectile.Center - player.Center).Length() / 62f, Projectile.scale), 0, 0f);
 		}
-		Texture2D flower = PlantUtils.GetTexture("Everglow/Plant/Projectiles/Melee/CactusBallFlower");
+		Texture2D flower = ModAsset.CactusBallFlower.Value;
 		float dir = Projectile.ai[1] < 15f ? Projectile.AngleFromSafe(player.Center) : Projectile.velocity.ToRotation();
 		Main.spriteBatch.Draw(flower, Projectile.Center - dir.ToRotationVector2() * 25f * Projectile.scale - Main.screenPosition, null,
 			alpha, dir, flower.Size() / 2f, 1f, 0, 0f);
@@ -373,7 +373,7 @@ public class CactusBallProj : ModProjectile, IWarpProjectile
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 
-		Main.graphics.GraphicsDevice.Textures[1] = ModContent.Request<Texture2D>("Everglow/Plant/Projectiles/Melee/CactusBallTrail", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+		Main.graphics.GraphicsDevice.Textures[1] = ModAsset.CactusBallTrail.Value;
 
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		Main.spriteBatch.End();
@@ -417,6 +417,6 @@ public class CactusBallProj : ModProjectile, IWarpProjectile
 			bars.Add(new Vertex2D(trailUp[i] - Radial * 15f - Main.screenPosition, new Color(dir * SpinAcc / 15f, w * SpinAcc / 150f, 0, 1), new Vector3(factor, 0, w)));
 		}
 
-		sb.Draw(ModContent.Request<Texture2D>("Everglow/Plant/Projectiles/Melee/CactusBallTrail").Value, bars, PrimitiveType.TriangleStrip);
+		sb.Draw(ModAsset.CactusBallTrail.Value, bars, PrimitiveType.TriangleStrip);
 	}
 }

@@ -42,7 +42,7 @@ public class Sunflower : ModProjectile
         }*/
 	public override bool PreDraw(ref Color lightColor)
 	{
-		Texture2D texture = ModContent.Request<Texture2D>("Everglow/Myth/Misc/Projectiles/Weapon/Melee/Sunflower").Value;
+		Texture2D texture = ModAsset.Melee_Sunflower.Value;
 		Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, new Rectangle(0, 46 * Projectile.frame, 46, 46), lightColor, Projectile.rotation, new Vector2(23), 1f, SpriteEffects.None, 0f);
 		return false;
 	}

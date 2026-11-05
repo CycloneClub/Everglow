@@ -86,7 +86,7 @@ internal class YellowFlame0Shine : ModProjectile
 		float dx = 120 - Projectile.timeLeft;
 		float F0 = (float)(Math.Sin(dx * dx / 192d) + 1);
 		Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, new Color(color0.R, color0.G, color0.B, 0), Projectile.rotation, new Vector2(17, 17), Projectile.scale * 1.1f * F0, SpriteEffects.None, 0);
-		Main.spriteBatch.Draw(ModContent.Request<Texture2D>("Everglow/Myth/LanternMoon/Projectiles/DashCore/DashCoreLight").Value, Projectile.Center - Main.screenPosition, null, new Color(color0.R / 155f * kb, color0.G / 155f * kb, color0.B / 155f * kb, 0), Projectile.rotation, new Vector2(56, 56), Projectile.scale * 1f * F0, SpriteEffects.None, 0);
+		Main.spriteBatch.Draw(ModAsset.DashCoreLight.Value, Projectile.Center - Main.screenPosition, null, new Color(color0.R / 155f * kb, color0.G / 155f * kb, color0.B / 155f * kb, 0), Projectile.rotation, new Vector2(56, 56), Projectile.scale * 1f * F0, SpriteEffects.None, 0);
 		/* x += 0.01f;
              float K = (float)(Math.Sin(x + Math.Sin(x) * 6) * (0.95 + Math.Sin(x + 0.24 + Math.Sin(x))) + 3) / 30f;
              float M = (float)(Math.Sin(x + Math.Tan(x) * 6) * (0.95 + Math.Cos(x + 0.24 + Math.Sin(x))) + 3) / 30f;
