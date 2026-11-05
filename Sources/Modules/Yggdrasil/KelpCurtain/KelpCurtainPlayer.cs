@@ -1,7 +1,6 @@
 using Everglow.Yggdrasil.KelpCurtain.Items.Armors.Molluscs;
 using Everglow.Yggdrasil.KelpCurtain.Items.Weapons.UnderwaterTreasury;
 
-using static Terraria.Player;
 
 namespace Everglow.Yggdrasil.KelpCurtain;
 

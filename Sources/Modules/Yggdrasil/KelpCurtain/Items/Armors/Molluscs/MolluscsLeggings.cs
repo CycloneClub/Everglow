@@ -23,9 +23,9 @@ public class MolluscsLeggings : ModItem
 
 	override public void UpdateEquip(Player player)
 	{
-		player.moveSpeed += 0.08f; // Increases movement speed by 5%.
+		player.moveSpeed += 0.08f; // +8% movement speed
 
-		// Increases max speed and acceleration by 35% when the player is currently in water.
+		// +35% movement speed while wet
 		player.GetModPlayer<KelpCurtainPlayer>().MolluscsLeggings = true;
 	}
 }

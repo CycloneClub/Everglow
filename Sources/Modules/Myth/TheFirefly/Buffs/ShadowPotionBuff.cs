@@ -1,5 +1,6 @@
+using Everglow.Commons.Mechanics.PlayerBonuses;
+using Everglow.Commons.Mechanics;
 using Everglow.Myth.TheFirefly.Dusts;
-using Terraria.ID;
 
 namespace Everglow.Myth.TheFirefly.Buffs;
 
@@ -32,7 +33,7 @@ public class ShadowPotionBuff : ModBuff
 		}
 		if (Math.Max(Math.Max(playerLight.R, playerLight.G), playerLight.B) >= 230)
 		{
-			player.lifeRegen -= (int)(player.statLifeMax2 * 0.01f);
+			player.GetModPlayer<StatBonusPlayer>().ShadowPotionInBrightLight = true;
 			player.lifeRegenTime = 0;
 			LightTime--;
 

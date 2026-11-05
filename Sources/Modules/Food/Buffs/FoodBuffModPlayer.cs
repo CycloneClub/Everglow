@@ -13,11 +13,6 @@ public class FoodBuffModPlayer : ModPlayer
 	public bool DragonfruitBuff;
 	public bool GoldenDelightBuff;
 	public bool SmoothieofDarknessBuff;
-	public bool GrubSoupBuff;
-	public bool MonsterLasagnaBuff;
-	public bool SashimiBuff;
-	public bool ShuckedOysterBuff;
-	public bool MangoBuff;
 	public bool EscargotBuff;
 	public bool StarfruitBuff;
 	public bool NachosBuff;
@@ -58,11 +53,6 @@ public class FoodBuffModPlayer : ModPlayer
 		DragonfruitBuff = false;
 		GoldenDelightBuff = false;
 		SmoothieofDarknessBuff = false;
-		GrubSoupBuff = false;
-		MonsterLasagnaBuff = false;
-		SashimiBuff = false;
-		ShuckedOysterBuff = false;
-		MangoBuff = false;
 		EscargotBuff = false;
 		StarfruitBuff = false;
 		NachosBuff = false;
@@ -104,11 +94,6 @@ public class FoodBuffModPlayer : ModPlayer
 		DragonfruitBuff = false;
 		GoldenDelightBuff = false;
 		SmoothieofDarknessBuff = false;
-		GrubSoupBuff = false;
-		MonsterLasagnaBuff = false;
-		SashimiBuff = false;
-		ShuckedOysterBuff = false;
-		MangoBuff = false;
 		EscargotBuff = false;
 		StarfruitBuff = false;
 		NachosBuff = false;
@@ -182,6 +167,7 @@ public class FoodBuffModPlayer : ModPlayer
 				}
 			}
 		}
+
 		var mp = Player.GetModPlayer<EverglowPlayer>();
 		if (BananaBuff)
 		{
@@ -257,50 +243,6 @@ public class FoodBuffModPlayer : ModPlayer
 			}
 			CombatText.NewText(Player.Hitbox, Color.HotPink, Language.GetTextValue("Mods.Everglow.Common.FoodSystem.Khan"));
 			Player.ClearBuff(ModContent.BuffType<CherryBuff>());
-		}
-	}
-
-	public override void UpdateBadLifeRegen()
-	{
-		if (GrubSoupBuff)
-		{
-			if (Player.lifeRegen > 0)
-			{
-				Player.lifeRegen = 0;
-			}
-
-			Player.lifeRegenTime = 0;
-			Player.lifeRegen -= MangoBuff ? 2 : 4;
-		}
-		if (MonsterLasagnaBuff)
-		{
-			if (Player.lifeRegen > 0)
-			{
-				Player.lifeRegen = 0;
-			}
-
-			Player.lifeRegenTime = 0;
-			Player.lifeRegen -= MangoBuff ? 3 : 6;
-		}
-		if (SashimiBuff)
-		{
-			if (Player.lifeRegen > 0)
-			{
-				Player.lifeRegen = 0;
-			}
-
-			Player.lifeRegenTime = 0;
-			Player.lifeRegen -= MangoBuff ? 2 : 4;
-		}
-		if (ShuckedOysterBuff)
-		{
-			if (Player.lifeRegen > 0)
-			{
-				Player.lifeRegen = 0;
-			}
-
-			Player.lifeRegenTime = 0;
-			Player.lifeRegen -= MangoBuff ? 2 : 4;
 		}
 	}
 }

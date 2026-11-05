@@ -1,4 +1,5 @@
 using System.Reflection;
+using Everglow.Commons.Mechanics.PlayerBonuses;
 using Everglow.Food.Buffs;
 using Everglow.Food.Buffs.VanillaFoodBuffs;
 using Everglow.UnitTests.Function;
@@ -11,6 +12,7 @@ namespace Everglow.UnitTests.Modules;
 public class EscargotJumpTests
 {
 	private CooldownTestContext context = null!;
+	private StatBonusPlayer bonuses = null!;
 	private FoodBuffModPlayer foodBuffs = null!;
 	private float originalJumpSpeed;
 	private int originalJumpHeight;
@@ -26,6 +28,7 @@ public class EscargotJumpTests
 		originalCriticalDamage = FoodBuffModPlayer.CriticalDamage;
 		originalAddCritDamage = FoodBuffModPlayer.AddCritDamage;
 		context = new CooldownTestContext();
+		bonuses = context.Attach<StatBonusPlayer>();
 		foodBuffs = context.Attach<FoodBuffModPlayer>();
 		Player.jumpSpeed = 5.01f;
 		Player.jumpHeight = 15;
@@ -54,6 +57,7 @@ public class EscargotJumpTests
 		context.Player.empressBrooch = insignia;
 		int index = 0;
 		new EscargotBuff().Update(context.Player, ref index);
+		bonuses.PostUpdateEquips();
 		Assert.AreEqual(bonus, context.Player.jumpSpeedBoost, "Ordinary jump additions must not be scaled.");
 
 		typeof(Player).GetMethod("UpdateJumpHeight", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)!
@@ -124,6 +128,7 @@ public class EscargotJumpTests
 			new BunnyStewBuff().Update(context.Player, ref index);
 			new EscargotBuff().Update(context.Player, ref index);
 		}
+		bonuses.PostUpdateEquips();
 		Assert.AreEqual(3.5f, context.Player.jumpSpeedBoost);
 		typeof(Player).GetMethod("UpdateJumpHeight", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)!
 			.Invoke(context.Player, null);
@@ -131,5 +136,4 @@ public class EscargotJumpTests
 		Assert.AreEqual(2.5025f, Player.jumpSpeed, 0.00001f);
 		Assert.AreEqual(20, Player.jumpHeight);
 	}
-
 }

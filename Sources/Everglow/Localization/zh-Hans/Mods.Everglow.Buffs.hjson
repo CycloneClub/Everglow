@@ -408,9 +408,9 @@ DevilHeartSetBuff: {
 	DisplayName: 魔心过载
 	Description:
 		'''
-		停止自然魔力再生并降低15%防御
-		增加6%魔法伤害和魔法暴击率
-		增加1个仆从上限
+		-15%防御，停止自然魔力再生
+		+6%魔法伤害和魔法暴击率
+		+1召唤栏
 		'''
 }
 
@@ -634,7 +634,7 @@ GrubSoupBuff: {
 	DisplayName: 蛆虫汤
 	Description:
 		'''
-		增加30渔力，每秒减2点生命!!!
+		+30渔力，-4生命再生
 		吃啥补啥，就是有点恶心
 		'''
 }
@@ -794,7 +794,7 @@ MangoBuff: {
 	DisplayName: 芒果
 	Description:
 		'''
-		减缓因食物中毒而产生的持续减血效果
+		-50%食物中毒造成的生命流失
 		清胃解毒
 		'''
 }
@@ -858,7 +858,7 @@ MonsterLasagnaBuff: {
 	DisplayName: 怪物千层面
 	Description:
 		'''
-		增加25%暴击率，但每秒减3生命!!!
+		+25%暴击率，-6生命再生
 		弄熟的恶魔还是恶魔，在千层饼中也不会改变
 		'''
 }
@@ -906,7 +906,7 @@ OrangeIcecreamBuff: {
 	DisplayName: 香橙冰激凌
 	Description:
 		'''
-		延长无敌帧时间
+		+30帧普通受击无敌时间
 		真实存于心中
 		'''
 }
@@ -915,7 +915,7 @@ OrangeJuiceBuff: {
 	DisplayName: 橙汁
 	Description:
 		'''
-		短时间内获得超长无敌帧
+		普通受击无敌时间翻倍
 		嗯，有点像LCL
 		'''
 }
@@ -1203,7 +1203,7 @@ SashimiBuff: {
 	DisplayName: 生鱼片
 	Description:
 		'''
-		可以游泳，水下呼吸，增加15%伤害，但每秒减少2点生命!!!
+		+20%移速，+15%伤害，-4生命再生，可游泳、水下呼吸并在水中自由行动
 		寄生虫！
 		'''
 }
@@ -1268,8 +1268,9 @@ ShuckedOysterBuff: {
 	DisplayName: 去壳牡蛎
 	Description:
 		'''
-		减少5防御，加10点盔甲穿透，每秒减少3点生命!!!
+		-5防御，+10护甲穿透，-4生命再生
 		寄生虫！
+		小心寄生虫！
 		'''
 }
 

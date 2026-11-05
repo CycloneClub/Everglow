@@ -1,3 +1,4 @@
+using Everglow.Commons.Mechanics.PlayerBonuses;
 using Everglow.Myth.TheFirefly.Items.Materials;
 using Everglow.Myth.TheFirefly.NPCs.Bosses;
 using Terraria.Localization;
@@ -27,14 +28,7 @@ public class FireflyBorageBadge : ModItem
 		player.moveSpeed += 0.1f;
 		if (CorruptMoth.CorruptMothNPC != null && CorruptMoth.CorruptMothNPC.active)
 		{
-			if (player.statDefense <= 50)
-			{
-				player.statDefense -= player.statDefense / 5; // Defense penalty is capped at 10.
-			}
-			else
-			{
-				player.statDefense -= 10;
-			}
+			player.GetModPlayer<StatBonusPlayer>().FireflyBorageBadgeAgainstMoth = true;
 			// +12% multiplicative damage
 			player.GetDamage(DamageClass.Generic) *= 1.12f;
 			// +8% melee and whip attack speed (whips inherit melee speed).

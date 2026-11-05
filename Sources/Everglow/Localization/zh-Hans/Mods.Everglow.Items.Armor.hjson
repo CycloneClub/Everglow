@@ -300,8 +300,8 @@ MolluscsLeggings: {
 	DisplayName: 软体足部
 	Tooltip:
 		'''
-		增加8%移动速度
-		增加35%水下速度和加速度
+		+8%移速
+		+35%水下速度和加速度
 		'''
 }
 

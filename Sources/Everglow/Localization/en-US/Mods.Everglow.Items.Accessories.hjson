@@ -25,8 +25,8 @@ BloodTearCrystalCrown: {
 	DisplayName: Blood Tear Crystal Crown
 	Tooltip:
 		'''
-		+{0} maximum life
-		+{2} life regeneration while life is above {1}% of base maximum life
+		+{0} life
+		+{2} life regen above {1}% life
 		'''
 }
 
@@ -63,8 +63,8 @@ CelesteStoneWaistPendant: {
 	DisplayName: Celeste Stone Waist Pendant
 	Tooltip:
 		'''
-		+{0} maximum mana
-		Adds {3} mana regeneration points while mana is above {1}% and below {2}% of base maximum mana
+		+{0} mana
+		+{3} mana regen above {1}% and below {2}% mana
 		'''
 }
 
@@ -164,7 +164,7 @@ FireflyBorageBadge: {
 	Tooltip:
 		'''
 		{0}% multiplicative magic damage and {1}% increased movement speed
-		While the Corrupt Moth is present: lose {2}% defense (rounded down, capped at {3})
+		While the Corrupt Moth is present: subtract base defense equal to {2}% of defense, capped at {3} points
 		Gain another {4}% multiplicative damage and {5}% increased melee and whip attack speed
 		{6}% reduced melee critical strike chance
 		'''
@@ -396,7 +396,7 @@ Odd8Ring: {
 
 OrangeCrown: {
 	DisplayName: Orange Crown
-	Tooltip: ""
+	Tooltip: "+3% of life capacity as defense (rounded down)"
 }
 
 OrangeStick: {
@@ -572,8 +572,8 @@ ThermalConductor: {
 	DisplayName: Thermal Conductor
 	Tooltip:
 		'''
-		+{0} maximum mana, +{1}% mana cost
-		While below {2}% maximum mana, checks every {3} seconds for a {4}% chance to restore {5} mana and inflict Cursed Inferno on you for {6} seconds
+		+{0} mana, +{1}% mana cost
+		While below {2}% mana, checks every {3} seconds for a {4}% chance to restore {5} mana and inflict Cursed Inferno on you for {6} seconds
 		'''
 }
 
@@ -607,7 +607,7 @@ WalnutClip: {
 	Tooltip:
 		'''
 		{0}% increased critical strike damage against NPCs
-		Below {1}% maximum life, gain 1% increased damage per {2} life missing below that threshold
+		Below {1}% life: +1% damage per {2} life missing below that threshold
 		'''
 }
 

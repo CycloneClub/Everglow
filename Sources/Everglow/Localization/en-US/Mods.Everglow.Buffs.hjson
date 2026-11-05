@@ -440,7 +440,7 @@ GrilledSquirrelBuff: {
 
 GrubSoupBuff: {
 	DisplayName: Grub Soup Buff
-	Description: ""
+	Description: "+30 fishing power; -4 life regen"
 }
 
 GuideBuff: {
@@ -568,7 +568,7 @@ LonelyJellyfishBuff: {
 
 MangoBuff: {
 	DisplayName: Mango Buff
-	Description: ""
+	Description: "-50% life loss from food poisoning"
 }
 
 MangosteenBuff: {
@@ -616,7 +616,7 @@ MolluscsSetBuff: {
 
 MonsterLasagnaBuff: {
 	DisplayName: Monster Lasagna Buff
-	Description: ""
+	Description: "+25% critical strike chance; -6 life regen"
 }
 
 MoonAndFragrans: {
@@ -656,12 +656,12 @@ OnMoth: {
 
 OrangeIcecreamBuff: {
 	DisplayName: Orange Icecream Buff
-	Description: ""
+	Description: "+30 frames of immunity after normal hits"
 }
 
 OrangeJuiceBuff: {
 	DisplayName: Orange Juice Buff
-	Description: ""
+	Description: "Doubles immunity duration after normal hits"
 }
 
 PadThaiBuff: {
@@ -861,7 +861,11 @@ SalmonWarshipBuff: {
 
 SashimiBuff: {
 	DisplayName: Sashimi Buff
-	Description: ""
+	Description:
+		'''
+		Grants swimming, underwater breathing and unhindered movement in water
+		+20% movement speed, +15% damage; -4 life regen
+		'''
 }
 
 SauteedFrogLegsBuff: {
@@ -911,7 +915,7 @@ ShrimpPoBoyBuff: {
 
 ShuckedOysterBuff: {
 	DisplayName: Shucked Oyster Buff
-	Description: ""
+	Description: "-5 defense, +10 armor penetration; -4 life regen"
 }
 
 SmoothieofDarknessBuff: {

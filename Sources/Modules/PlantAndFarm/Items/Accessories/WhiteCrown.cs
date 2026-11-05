@@ -1,3 +1,4 @@
+using Everglow.Commons.Mechanics.PlayerBonuses;
 using Everglow.PlantAndFarm.Items.Materials;
 
 namespace Everglow.PlantAndFarm.Items.Accessories;
@@ -11,7 +12,7 @@ public class WhiteCrown : ModItem
 		// DisplayName.SetDefault("Flower of Hope");
 		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "希望之花");
 		// Tooltip.SetDefault("Increases running speed by (max Hp * 0.2%)\n'A plain white flower, seems to mourn for someone'");
-		// Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "奔跑速度增加(生命上限*0.2%)\n'一枝素白的郁金香，像是在悼念某人'");
+		// Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "每50生命上限+10%移速\n'一枝素白的郁金香，像是在悼念某人'");
 	}
 
 	public override void SetDefaults()
@@ -25,24 +26,7 @@ public class WhiteCrown : ModItem
 
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
-		player.GetModPlayer<WhiteCrownPlayer>().Enable = true;
-	}
-
-	public class WhiteCrownPlayer : ModPlayer
-	{
-		public bool Enable { get; set; }
-
-		public override void ResetEffects() => Enable = false;
-
-		public override void PostUpdateMiscEffects()
-		{
-			if (Enable)
-			{
-				// After life capacity bonuses:
-				// +10% movement speed per 50 max life
-				Player.moveSpeed += (int)(Player.statLifeMax2 * 0.02f) / 10f;
-			}
-		}
+		player.GetModPlayer<StatBonusPlayer>().WhiteCrown = true;
 	}
 
 	public override void AddRecipes()

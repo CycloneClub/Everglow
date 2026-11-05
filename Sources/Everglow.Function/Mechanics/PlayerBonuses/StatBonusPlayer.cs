@@ -1,31 +1,44 @@
 namespace Everglow.Commons.Mechanics.PlayerBonuses;
 
-public class StatBonusPlayer : ModPlayer
+/// <summary>统一管理玩家加成状态与生命周期；具体计算按 tML 钩子拆分到 partial 文件。</summary>
+public partial class StatBonusPlayer : ModPlayer
 {
-	private float maxFallSpeedCap = float.PositiveInfinity;
-	private float? maxFallSpeedForSpecialBehavior;
-
 	public override void ResetEffects()
 	{
+		// ==================== PostUpdateEquips ====================
+		OrangeCrown = false;
+		FragmentsOfWreckage = false;
+		WalnutClip = false;
+		FireflyBorageBadgeAgainstMoth = false;
+		YellowBellFlower = false;
 		maxFallSpeedCap = float.PositiveInfinity;
 		maxFallSpeedForSpecialBehavior = null;
-	}
 
-	public void Register(StatBonus target, float value)
-	{
-		switch (target)
-		{
-			case StatBonus.MaxFallSpeedCap:
-				maxFallSpeedCap = Math.Min(maxFallSpeedCap, value);
-				break;
-			case StatBonus.MaxFallSpeedForSpecialBehavior:
-				maxFallSpeedForSpecialBehavior = Math.Max(maxFallSpeedForSpecialBehavior ?? value, value);
-				break;
-		}
-	}
+		// ==================== PostUpdateMiscEffects ====================
+		BloodTearCrystalCrown = false;
+		WhiteCrown = false;
+		CelesteStoneWaistPendant = false;
+		DevilHeartSet = false;
+		ThermalConductor = false;
 
-	public override void PostUpdateEquips()
-	{
-		Player.maxFallSpeed = maxFallSpeedForSpecialBehavior ?? Math.Min(Player.maxFallSpeed, maxFallSpeedCap);
+		// ==================== PostHurt ====================
+		OrangeIcecream = false;
+		OrangeJuice = false;
+
+		// ==================== UpdateBadLifeRegen ====================
+		CactusBall = false;
+		GrubSoup = false;
+		MonsterLasagna = false;
+		Sashimi = false;
+		ShuckedOyster = false;
+		Mango = false;
+		HungerSatietyLevel = 0;
+		PlagueLifeRegenLoss = 0;
+		CharredLifeRegenLoss = 0;
+		RedAlgaeLifeRegenLoss = 0;
+		AuburnSelfReinforcing = false;
+		ShadowPotionInBrightLight = false;
+		FireflyInferno = false;
+		AcytaeaInferno = false;
 	}
 }
