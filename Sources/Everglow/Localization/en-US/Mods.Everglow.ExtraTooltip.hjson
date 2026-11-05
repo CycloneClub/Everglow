@@ -24,3 +24,9 @@ FireflyItems: {
 }
 
 Misc.UnfinishedItem: This item is still under development
+
+GunOfAvarice: {
+	Ammo: "Current ammo: {0}/{1}"
+	Level: "Level: {0}"
+	MaxLevel: Max level
+}

@@ -472,7 +472,7 @@ ResistanceWireBayonet: {
 	Tooltip:
 		'''
 		逐渐充能并提升威力
-		击中敌人后损耗充能
+		普通刺击命中敌人后损耗充能
 		'''
 }
 
@@ -498,7 +498,11 @@ RottenGoldBayonet: {
 
 ScaleWingBlade: {
 	DisplayName: 鳞翅之刃
-	Tooltip: 右键可以重击
+	Tooltip:
+		'''
+		右键可以重击
+		装备蛾眼且处于流萤群系时，蝴蝶弹幕加速追踪目标，困难模式前也可生效
+		'''
 }
 
 ScarpasScissors: {

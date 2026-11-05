@@ -5,7 +5,7 @@ ActivatedDogStaff: {
 
 ActivatedJellyGland: {
 	DisplayName: Activated Jelly Gland
-	Tooltip: ""
+	Tooltip: Summons jellies to fight for you
 }
 
 AuburnBell: {
@@ -15,7 +15,11 @@ AuburnBell: {
 
 DarknessFan: {
 	DisplayName: Darkness Fan
-	Tooltip: ""
+	Tooltip:
+		'''
+		Right-click to attack at range
+		Marks the last enemy hit as a minion target
+		'''
 }
 
 DeadBeetleEgg: {
@@ -35,7 +39,7 @@ DevilHeartGyroscope: {
 
 EvilChrysalis: {
 	DisplayName: Evil Chrysalis
-	Tooltip: ""
+	Tooltip: Summons small moths to fight for you
 }
 
 EvilMusicRemnant: {
@@ -128,7 +132,7 @@ ThermoprobeStaff: {
 
 ToothStaff: {
 	DisplayName: Tooth Staff
-	Tooltip: ""
+	Tooltip: Summons a tusk to fight for you
 }
 
 WiltedForestLamp: {
@@ -144,7 +148,7 @@ WoodlandWraithStaff: {
 		Right-click to spend 20 mana and create a spore zone lasting 15 seconds
 		Enemies inside take 70% more damage from the wraith's bloodstreams
 		Stand still out of combat for 2 seconds to let the wraith grow healing mycelium
-		Standing on its mycelium grants 5 life regeneration per second, doubled inside your spore zone
+		Standing on its mycelium grants +10 life regeneration, doubled inside your spore zone
 		'''
 }
 
@@ -155,5 +159,9 @@ XmasWhip: {
 
 YggdrasilStoneGyroscope: {
 	DisplayName: Yggdrasil Stone Gyroscope
-	Tooltip: ""
+	Tooltip:
+		'''
+		Summons a stone gyroscope that can be powered with whips
+		Right-click to toggle the gyroscope power display
+		'''
 }

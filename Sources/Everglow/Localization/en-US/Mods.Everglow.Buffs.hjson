@@ -425,7 +425,7 @@ GrubSoupBuff: {
 
 GuideBuff: {
 	DisplayName: Guide Buff
-	Description: ""
+	Description: "Illuminates the area around your cursor"
 }
 
 HardenedSkinBuff: {
@@ -525,7 +525,7 @@ LifeRotten: {
 
 LivingWoodplateBuff: {
 	DisplayName: Living Wood's Blessing
-	Description: Maximum life increased by 40; regenerating 4 extra life per second
+	Description: Maximum life increased by 40; +8 life regeneration
 }
 
 LobsterTailBuff: {
@@ -749,7 +749,7 @@ RambutanBuff: {
 
 RayBuff: {
 	DisplayName: Ray Buff
-	Description: ""
+	Description: "Increases the brightness of your surroundings"
 }
 
 RedAlgae_FriendlyDebuff: {
@@ -849,7 +849,7 @@ SeafoodPizzaBuff: {
 
 ShadowPotionBuff: {
 	DisplayName: Shadow Potion Buff
-	Description: ""
+	Description: "In darkness, grants 8 defense and 8% increased damage, and gradually grants night vision\nBright light reduces life regeneration"
 }
 
 ShadowSupervisor: {
@@ -1033,7 +1033,7 @@ WoodlandWraithStaffBuff: {
 
 WoodlandWraithStaffMyceliumBuff: {
 	DisplayName: Healing Mycelium
-	Description: Regenerating 5 extra life per second, doubled inside your spore zone
+	Description: +10 life regeneration, doubled inside your spore zone
 }
 
 YellowImmune: {
@@ -1054,4 +1054,9 @@ JumpBuff: {
 JumpPotionBuff: {
 	DisplayName: Jump
 	Description: Increases jump height by 20% and reduces fall damage by 25%
+}
+
+ScalePotionBuff: {
+	DisplayName: "Scales"
+	Description: "Reduces contact damage from enemies by 5%"
 }

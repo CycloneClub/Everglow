@@ -9,9 +9,9 @@ public class BloodStainedVeil : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(8, 4, 0.5f, 3, 6);
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(8, 4, 1, 3, 6);
 
-	public LocalizedText SetBonusText => this.GetLocalization("SetBonus").WithFormatArgs(8, 4, 0.5f, 3, 6);
+	public LocalizedText SetBonusText => this.GetLocalization("SetBonus").WithFormatArgs(8, 4, 1, 3, 6);
 
 	public override void SetStaticDefaults()
 	{

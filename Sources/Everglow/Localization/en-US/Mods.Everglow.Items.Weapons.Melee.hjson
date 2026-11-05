@@ -57,7 +57,7 @@ BloodGoldBayonet: {
 
 BloodyBoneYoyo: {
 	DisplayName: Bloody Bone Yoyo
-	Tooltip: ""
+	Tooltip: Extends tentacles to attack nearby enemies
 }
 
 BlossomThorn: {
@@ -336,7 +336,7 @@ LeadStabbingSword: {
 
 MagicalBoomerang: {
 	DisplayName: Magical Boomerang
-	Tooltip: ""
+	Tooltip: Click again after throwing to split it into 8 smaller boomerangs
 }
 
 MeatLantern: {
@@ -370,7 +370,7 @@ MeteorClub_Item: {
 
 MothYoyo: {
 	DisplayName: Moth Yoyo
-	Tooltip: ""
+	Tooltip: Creates a formation of glowing moth projectiles around the yoyo
 }
 
 MythrilClub_Item: {
@@ -449,7 +449,7 @@ ResistanceWireBayonet: {
 	Tooltip:
 		'''
 		Gradually charges and grows stronger
-		Hitting an enemy expends its charge
+		Normal thrusts expend charge when they hit an enemy
 		'''
 }
 
@@ -475,7 +475,11 @@ RottenGoldBayonet: {
 
 ScaleWingBlade: {
 	DisplayName: Scale Wing Blade
-	Tooltip: ""
+	Tooltip:
+		'''
+		Right-click for a heavy attack
+		With Moth Eye equipped in the Firefly biome, butterfly projectiles accelerate toward targets, even before Hardmode
+		'''
 }
 
 ScarpasScissors: {
@@ -553,7 +557,7 @@ ToothSpear: {
 }
 
 TopaztHeadedSpear: {
-	DisplayName: Topazt Headed Spear
+	DisplayName: Topaz Headed Spear
 	Tooltip: ""
 }
 

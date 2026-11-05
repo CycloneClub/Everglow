@@ -30,11 +30,6 @@ public class IstafelsSunfireGrasp : ModItem
 	public const float MagicDamageBonus = 0.11f;
 	public const float MagicCritBonus = 5f;
 
-	public override void SetStaticDefaults()
-	{
-		Item.SetNameOverride("Istafel's Sunfire Grasp");
-	}
-
 	public override void SetDefaults()
 	{
 		Item.width = 34;

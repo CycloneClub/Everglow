@@ -26,7 +26,7 @@ BloodTearCrystalCrown: {
 	Tooltip:
 		'''
 		+{0} maximum life
-		+{2} life regeneration per second while life is above {1}% of base maximum life
+		+{2} life regeneration while life is above {1}% of base maximum life
 		'''
 }
 
@@ -191,7 +191,7 @@ FragmentsOfWreckage: {
 		'''
 		Bonuses scale linearly with missing life, reaching their cap at {0} missing life
 		Up to {1}% increased damage, {2}% increased melee attack speed and +{3} defense
-		Reduces the mining interval modifier by up to {4} percentage points
+		Up to -{4}% mining interval
 		'''
 }
 
@@ -219,7 +219,7 @@ GoldLiquidPupil: {
 		Being hurt creates an Ichor ring that follows you; only one may exist at a time
 		Starts at {0} damage and lasts {1} seconds, dealing no damage during the final second
 		Deals {3} times final damage during the first {2} seconds; hits inflict Ichor for {4} seconds
-		PvP: each point of target defense adds {5} percentage points to the final damage modifier (current implementation)
+		PvP: +{5}% final damage per point of target defense
 		'''
 }
 
@@ -232,7 +232,7 @@ GreenGel: {
 	DisplayName: Green Gel
 	Tooltip:
 		'''
-		+{0} maximum life and +{1} life regeneration per second
+		+{0} maximum life and +{1} life regeneration
 		'''
 }
 
@@ -259,7 +259,7 @@ HeatEmblem: {
 	DisplayName: Heat Emblem
 	Tooltip:
 		'''
-		+{0} life regeneration per second
+		+{0} life regeneration
 		Being hurt has a {1}% chance to inflict On Fire! on you for {2} seconds
 		'''
 }
@@ -328,7 +328,7 @@ LightPurplePen: {
 
 LivingWoodplate: {
 	DisplayName: Living Woodplate
-	Tooltip: Entering water grants 40 maximum life and 4 life regeneration per second for 30 seconds
+	Tooltip: Entering water grants 40 maximum life and +8 life regeneration for 30 seconds
 }
 
 ManaThermalPipeline: {
@@ -371,8 +371,9 @@ MothEye: {
 	Tooltip:
 		'''
 		{0}% multiplicative summon damage, +{1} maximum minions and +{2} maximum sentries
-		In the Firefly biome during Hardmode: {3}% multiplicative damage for the listed Firefly weapons and -{4} percentage points to the mana cost modifier
-		Adds {5} to the Mana Sickness penalty parameter (current implementation)
+		During Hardmode, while the local player is in the Firefly biome:
+		While equipped: -{4}% mana cost and +{5} to the Mana Sickness penalty parameter
+		Placing it in an equipment or vanity slot grants {3}% multiplicative damage to the listed Firefly weapons
 		Damage bonus applies to:
 		Darkness Fan, Dream Weaver, Dust Of Corrupt, Evil Chrysalis
 		Flow Light Missile, Glow Bead Gun, Glow Wood Sword, Moth Yoyo
@@ -487,7 +488,7 @@ ShacklesBall: {
 	DisplayName: Shackles Ball
 	Tooltip:
 		'''
-		+{0} percentage points of damage reduction, {1}% reduced movement speed
+		+{0}% damage reduction, -{1}% movement speed
 		Jump speed reduced by {2}% of its base value; remaining jump duration reduced by {3}%
 		Immune to Slow
 		'''
@@ -571,7 +572,7 @@ ThermalConductor: {
 	DisplayName: Thermal Conductor
 	Tooltip:
 		'''
-		+{0} maximum mana and +{1} percentage points to the mana cost modifier
+		+{0} maximum mana, +{1}% mana cost
 		While below {2}% maximum mana, checks every {3} seconds for a {4}% chance to restore {5} mana and inflict Cursed Inferno on you for {6} seconds
 		'''
 }

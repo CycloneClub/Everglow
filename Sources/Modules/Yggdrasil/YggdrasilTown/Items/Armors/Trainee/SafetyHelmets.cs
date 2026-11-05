@@ -8,9 +8,9 @@ public class SafetyHelmets : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(2, 2, 0.5f);
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(2, 2, 1);
 
-	public LocalizedText SetBonusText => this.GetLocalization("SetBonus").WithFormatArgs(2, 2, 0.5f);
+	public LocalizedText SetBonusText => this.GetLocalization("SetBonus").WithFormatArgs(2, 2, 1);
 
 	public override void SetStaticDefaults()
 	{

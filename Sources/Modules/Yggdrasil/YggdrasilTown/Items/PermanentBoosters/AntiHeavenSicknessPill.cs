@@ -1,4 +1,5 @@
 using Everglow.Yggdrasil.Common;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.PermanentBoosters;
 
@@ -16,10 +17,12 @@ public class AntiHeavenSicknessPill : ModItem
 		{ 5, 2 },
 	};
 
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(
+		AntiHeavenSicknessPillMax,
+		LifeBonusTable[1], LifeBonusTable[2], LifeBonusTable[3], LifeBonusTable[4], LifeBonusTable[5]);
+
 	public override void SetDefaults()
 	{
-		Item.SetNameOverride("Anti-heaven Sickness Pill");
-
 		Item.width = 18;
 		Item.height = 18;
 

@@ -1,6 +1,6 @@
 AmberFlowerHook: {
 	DisplayName: Amber Flower Hook
-	Tooltip: ""
+	Tooltip: A grappling hook that can keep two hooks attached at once
 }
 
 BoneAndPlatformCreate: {
@@ -15,7 +15,7 @@ CheckPylonPoint: {
 
 ClimbingPickaxe: {
 	DisplayName: Climbing Pickaxe
-	Tooltip: ""
+	Tooltip: A grappling hook that can also latch onto tree trunks
 }
 
 CreateRoom: {
@@ -100,12 +100,16 @@ GenerateMazeRoom: {
 
 GlowstickLauncher: {
 	DisplayName: Glowstick Launcher
-	Tooltip: ""
+	Tooltip:
+		'''
+		Consumes regular, sticky, bouncy, fairy, or spelunker glowsticks from your inventory
+		Regular glowsticks become sticky when fired
+		'''
 }
 
 HangGlider: {
 	DisplayName: Hang Glider
-	Tooltip: ""
+	Tooltip: Hold while airborne to glide; press Down to descend
 }
 
 HardmodeItem: {

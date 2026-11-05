@@ -4,6 +4,7 @@ using ReLogic.Graphics;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent;
+using Terraria.Localization;
 using Terraria.UI.Chat;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.TwilightForest;
@@ -116,8 +117,8 @@ public class GunOfAvarice : ModItem
 
 	public override void ModifyTooltips(List<TooltipLine> tooltips)
 	{
-		tooltips.Add(new TooltipLine(Mod, "GunOfAvariceAmmo", $"Current Ammo: {AmmoAmount}/{MagazineCapacity}"));
-		tooltips.Add(new TooltipLine(Mod, "GunOfAvariceLevel", $"Current Ammo: {Level}"));
+		tooltips.Add(new TooltipLine(Mod, "GunOfAvariceAmmo", Language.GetTextValue("Mods.Everglow.ExtraTooltip.GunOfAvarice.Ammo", AmmoAmount, MagazineCapacity)));
+		tooltips.Add(new TooltipLine(Mod, "GunOfAvariceLevel", Language.GetTextValue("Mods.Everglow.ExtraTooltip.GunOfAvarice.Level", Level)));
 	}
 
 	public override void UpdateInventory(Player player)
@@ -193,13 +194,13 @@ public class GunOfAvarice : ModItem
 
 		// shift the matrix to world position.
 		Color textColor = Color.White;
-		string text = "Level: " + Level;
+		string text = Language.GetTextValue("Mods.Everglow.ExtraTooltip.GunOfAvarice.Level", Level);
 		if (LevelChangeTimer > 80)
 		{
-			text = "Level: " + OldLevel;
+			text = Language.GetTextValue("Mods.Everglow.ExtraTooltip.GunOfAvarice.Level", OldLevel);
 			if (OldLevel == Level && Level == 10)
 			{
-				text = "Max Level";
+				text = Language.GetTextValue("Mods.Everglow.ExtraTooltip.GunOfAvarice.MaxLevel");
 			}
 		}
 		float drawScale = 1f;

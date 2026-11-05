@@ -14,9 +14,9 @@ public class AuburnHoodie : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(10, 1, BuffDuration / 60f, BuffCooldown / 60f, 1);
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(10, 1, BuffDuration / 60f, BuffCooldown / 60f, 2);
 
-	public LocalizedText SetBonusText => this.GetLocalization("SetBonus").WithFormatArgs(10, 1, BuffDuration / 60f, BuffCooldown / 60f, 1);
+	public LocalizedText SetBonusText => this.GetLocalization("SetBonus").WithFormatArgs(10, 1, BuffDuration / 60f, BuffCooldown / 60f, 2);
 
 	public const int BuffDuration = 30 * 60;
 	public const int BuffCooldown = 60 * 60;

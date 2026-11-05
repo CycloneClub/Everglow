@@ -6,7 +6,7 @@ public class GreenGel : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
-	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(30, 2);
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(30, 4);
 
 	public override void SetDefaults()
 	{
