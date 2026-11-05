@@ -16,8 +16,9 @@ public class FoodGlobalItem : GlobalItem
 		VanillaFoodInfos = null;
 	}
 
-	public FoodGlobalItem()
+	public override void SetStaticDefaults()
 	{
+		// 内容注册完成后再读取 Buff ID，避免在构造时缓存未注册的 0。
 		VanillaFoodInfos = new Dictionary<int, FoodInfo>
 		{
 			// 苹果
@@ -708,13 +709,13 @@ public class FoodGlobalItem : GlobalItem
 			if (firstIndex >= 0)
 			{
 				tooltips.RemoveAll((tp) => tp.Name.Contains("Tooltip"));
-				tooltips.Insert(firstIndex, new TooltipLine(Mod, item.Name, Language.GetTextValue("Mods.Everglow.BuffDescription." + FoodInfo.Name)));
+				tooltips.Insert(firstIndex, new TooltipLine(Mod, item.Name, Lang.GetBuffDescription(FoodInfo.BuffType)));
 				tooltips.Insert(firstIndex, new TooltipLine(Mod, item.Name, FoodInfo.Satiety + Language.GetTextValue("Mods.Everglow.Common.FoodSystem.Satiety")));
 			}
 			else
 			{
 				// 否则加到最后面
-				tooltips.Add(new TooltipLine(Mod, item.Name, Language.GetTextValue("Mods.Everglow.BuffDescription." + FoodInfo.Name)));
+				tooltips.Add(new TooltipLine(Mod, item.Name, Lang.GetBuffDescription(FoodInfo.BuffType)));
 				tooltips.Add(new TooltipLine(Mod, item.Name, FoodInfo.Satiety + Language.GetTextValue("Mods.Everglow.Common.FoodSystem.Satiety")));
 			}
 
@@ -737,13 +738,13 @@ public class FoodGlobalItem : GlobalItem
 			if (firstIndex >= 0)
 			{
 				tooltips.RemoveAll((tp) => tp.Name.Contains("Tooltip"));
-				tooltips.Insert(firstIndex, new TooltipLine(Mod, item.Name, Language.GetTextValue("Mods.Everglow.BuffDescription." + FoodInfo.Name)));
+				tooltips.Insert(firstIndex, new TooltipLine(Mod, item.Name, Lang.GetBuffDescription(FoodInfo.BuffType)));
 				tooltips.Insert(firstIndex, new TooltipLine(Mod, item.Name, FoodInfo.Satiety + Language.GetTextValue("Mods.Everglow.Common.FoodSystem.Satiety")));
 			}
 			else
 			{
 				// 否则加到最后面
-				tooltips.Add(new TooltipLine(Mod, item.Name, Language.GetTextValue("Mods.Everglow.BuffDescription." + FoodInfo.Name)));
+				tooltips.Add(new TooltipLine(Mod, item.Name, Lang.GetBuffDescription(FoodInfo.BuffType)));
 				tooltips.Add(new TooltipLine(Mod, item.Name, FoodInfo.Satiety + Language.GetTextValue("Mods.Everglow.Common.FoodSystem.Satiety")));
 			}
 
@@ -753,20 +754,6 @@ public class FoodGlobalItem : GlobalItem
 				tooltips[buffTimeIndex].Text = FoodInfo.BuffTime.ToBuffTimeString();
 			}
 		}
-	}
-
-	public override void SetStaticDefaults()
-	{
-	}
-
-	public override void SetDefaults(Item item)
-	{
-		// 如果是原版的食物，那么就手动处理
-		if (VanillaFoodInfos.ContainsKey(item.type))
-		{
-			var FoodInfo = VanillaFoodInfos[item.type];
-		}
-		base.SetDefaults(item);
 	}
 
 	public override void OnConsumeItem(Item item, Player player)
