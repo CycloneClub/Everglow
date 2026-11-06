@@ -7,8 +7,6 @@ public class CrystalCell : ModNPC
 {
 	private const float IdleSpeed = 1.4f;
 	private const float AngrySpeed = 2.5f;
-	private static readonly float LaunchRange = 360f;
-	private static readonly float LaunchSpeed = 10f;
 	private const float Gravity = 0.35f;
 
 	private Vector2 surfaceNormal = -Vector2.UnitY;
@@ -23,9 +21,11 @@ public class CrystalCell : ModNPC
 	private int jumpCooldown;
 	private int routeTimer;
 	private int routeDirection;
+	private int hitTimer;
 	private Vector2 routeTarget;
+	private Vector2 bestPointInRoute;
 
-	private const float RouteStep = 16f;
+	private float routeStep = 8f;
 	private const float RouteSearchDistance = 720f;
 
 	public override void SetStaticDefaults()
@@ -88,7 +88,13 @@ public class CrystalCell : ModNPC
 
 	public override void AI()
 	{
-		Lighting.AddLight(NPC.Center, new Vector3(0.05f, 0.35f, 0.85f));
+		Vector3 lightColor = new Vector3(0.05f, 0.35f, 0.85f);
+		if (hitTimer > 0)
+		{
+			hitTimer--;
+			lightColor = Vector3.Lerp(lightColor, new Vector3(1f, 1f, 1f), hitTimer / 30f);
+		}
+		Lighting.AddLight(NPC.Center, lightColor);
 		if (jumpCooldown > 0)
 		{
 			jumpCooldown--;
@@ -129,6 +135,7 @@ public class CrystalCell : ModNPC
 		stateTimer = 0;
 		stateDuration = 0;
 		routeTimer = 0;
+		hitTimer = 30;
 	}
 
 	private void UpdateNeutralMovement()
@@ -173,35 +180,45 @@ public class CrystalCell : ModNPC
 
 		Player target = Main.player[NPC.target];
 		Vector2 toTarget = target.Center - NPC.Center;
-		//if (toTarget.Length() <= LaunchRange)
-		//{
-		//	LaunchAtTarget(toTarget);
-		//	return;
-		//}
+		if (toTarget.Length() <= 240 && Collision.CanHit(NPC, target) && CanLaunch(NPC.Center, toTarget.NormalizeSafe() * 8))
+		{
+			LaunchAtTarget(toTarget);
+			return;
+		}
 
-		if (routeTimer <= 0 || Vector2.DistanceSquared(routeTarget, target.Center) > 64f * 64f)
+		if (routeTimer <= 0 || Vector2.Distance(routeTarget, target.Center) > 128f)
 		{
 			SurfaceRoute forwardRoute = EvaluateSurfaceRoute(target.Center, 1);
 			SurfaceRoute backwardRoute = EvaluateSurfaceRoute(target.Center, -1);
 			SurfaceRoute selectedRoute = SelectSurfaceRoute(forwardRoute, backwardRoute);
-			//if (!selectedRoute.CanContinue)
-			//{
-			//	LaunchAtTarget(toTarget);
-			//	return;
-			//}
+			if (Math.Abs(forwardRoute.BestDistance - backwardRoute.BestDistance) < 3 && CanLaunch(NPC.Center, surfaceNormal * 8))
+			{
+				LaunchTowardNormal();
+				return;
+			}
+			// if (!selectedRoute.CanContinue)
+			// {
+			// LaunchAtTarget(toTarget);
+			// return;
+			// }
 
 			routeDirection = selectedRoute.Direction;
 			routeTarget = target.Center;
-			routeTimer = 15;
+			routeTimer = 60;
+			bestPointInRoute = selectedRoute.BestDistancePoint;
 		}
 		routeTimer--;
 		NPC.direction = routeDirection;
 		NPC.spriteDirection = NPC.direction;
-
 		Vector2 desiredVelocity = surfaceTangent * NPC.direction * AngrySpeed;
 		if (isInTheAir)
 		{
 			NPC.velocity.Y = Math.Min(NPC.velocity.Y + Gravity, 12f);
+		}
+		else if((NPC.Center - bestPointInRoute).Length() < 15f && CanLaunch(NPC.Center, surfaceNormal * 8))
+		{
+			LaunchTowardNormal();
+			isInTheAir = true;
 		}
 		else
 		{
@@ -215,29 +232,27 @@ public class CrystalCell : ModNPC
 		{
 			Direction = direction,
 			BestDistance = Vector2.Distance(NPC.Center, target),
-			CanContinue = true,
 		};
 		List<Vector2> visited = new List<Vector2>();
 		Vector2 position = NPC.Center;
 		Vector2 normal = surfaceNormal;
 		Vector2 travelTangent = normal.RotatedBy(MathHelper.PiOver2) * direction;
 
-		for (float distance = 0f; distance < RouteSearchDistance; distance += RouteStep)
+		for (float distance = 0f; distance < RouteSearchDistance; distance += routeStep)
 		{
-			Vector2 nextPosition = position + travelTangent * RouteStep;
+			Vector2 nextPosition = position + travelTangent * routeStep;
+			nextPosition = MovePositionToSurface(nextPosition);
 			Vector2 nextNormal = ProbeSurfaceNormal(nextPosition, normal.ToRotation() + MathHelper.PiOver2, out bool inAir);
 			if (inAir)
 			{
-				route.CanContinue = false;
-				route.Ended = true;
 				break;
 			}
 
-			Vector2 nextTangent = nextNormal.RotatedBy(MathHelper.PiOver2);
-			if (Vector2.Dot(nextTangent, travelTangent) < 0f)
-			{
-				nextTangent *= -1f;
-			}
+			Vector2 nextTangent = nextNormal.RotatedBy(MathHelper.PiOver2) * direction;
+			//if (Vector2.Dot(nextTangent, travelTangent) < 0f)
+			//{
+			//	nextTangent *= -1f;
+			//}
 
 			position = nextPosition;
 			normal = nextNormal;
@@ -248,41 +263,37 @@ public class CrystalCell : ModNPC
 			if (targetDistance < route.BestDistance)
 			{
 				route.BestDistance = targetDistance;
+				route.BestDistancePoint = position;
 			}
 
-			for (int i = 0; i < visited.Count - 1; i++)
-			{
-				if (Vector2.DistanceSquared(position, visited[i]) < RouteStep * RouteStep * 0.75f)
-				{
-					route.IsLoop = true;
-					route.CanContinue = false;
-					return route;
-				}
-			}
+			//if (direction == -1)
+			//{
+			//	Dust d0 = Dust.NewDustDirect(position, 0, 0, DustID.RedTorch);
+			//	d0.noGravity = true;
+			//	d0.scale = 3f;
+			//	d0.velocity *= 0;
+			//}
+			//else
+			//{
+			//	Dust d0 = Dust.NewDustDirect(position, 0, 0, DustID.BlueTorch);
+			//	d0.noGravity = true;
+			//	d0.scale = 3f;
+			//	d0.velocity *= 0;
+			//}
 		}
-
-		route.SearchExhausted = route.CanContinue;
-		if (route.SearchExhausted && route.BestDistance > LaunchRange)
-		{
-			route.CanContinue = false;
-		}
+		//if (direction == -1)
+		//{
+		//	Main.NewText(route.BestDistance, Color.Red);
+		//}
+		//else
+		//{
+		//	Main.NewText(route.BestDistance, Color.Blue);
+		//}
 		return route;
 	}
 
 	private SurfaceRoute SelectSurfaceRoute(SurfaceRoute first, SurfaceRoute second)
 	{
-		if (first.CanContinue && !second.CanContinue)
-		{
-			return first;
-		}
-		if (second.CanContinue && !first.CanContinue)
-		{
-			return second;
-		}
-		if (!first.CanContinue && !second.CanContinue)
-		{
-			return first;
-		}
 		return first.BestDistance <= second.BestDistance ? first : second;
 	}
 
@@ -290,10 +301,8 @@ public class CrystalCell : ModNPC
 	{
 		public int Direction;
 		public float BestDistance;
-		public bool CanContinue;
-		public bool Ended;
-		public bool IsLoop;
-		public bool SearchExhausted;
+
+		public Vector2 BestDistancePoint;
 	}
 
 	private void UpdateProjectile()
@@ -303,21 +312,23 @@ public class CrystalCell : ModNPC
 		Vector2 nextCenter = NPC.Center + NPC.velocity;
 		if (ProjectileHitsSolid(NPC.Center, nextCenter))
 		{
-			NPC.Center = nextCenter;
 			NPC.velocity = Vector2.Zero;
 			NPC.noGravity = true;
 			isLaunched = false;
 			isImpactResting = true;
 			stateTimer = 0;
 			stateDuration = Main.rand.Next(35, 75);
-			TryAttachToSurface(true);
+			TryAttachToSurfaceFar();
 		}
 	}
 
 	private void UpdateImpactRest()
 	{
 		NPC.velocity *= 0.8f;
-		NPC.rotation = NPC.rotation.AngleTowards(0f, 0.08f);
+		if (stateTimer < 5)
+		{
+			TryAttachToSurface(true);
+		}
 		if (++stateTimer < stateDuration)
 		{
 			return;
@@ -334,12 +345,27 @@ public class CrystalCell : ModNPC
 		isResting = false;
 		NPC.noGravity = false;
 		Vector2 surfaceNormal = FindSurfaceNormal(NPC.Center);
+		toTarget += new Vector2(0, Main.rand.NextFloat(-40, -10));
 		Vector2 launchDirection = toTarget.SafeNormalize(-Vector2.UnitY);
 		if (Vector2.Dot(surfaceNormal, launchDirection) <= MathF.Sqrt(2))
 		{
 			launchDirection = launchDirection * 0.5f + surfaceNormal * 0.5f;
 		}
-		NPC.velocity = launchDirection * LaunchSpeed;
+		NPC.velocity = launchDirection * 15;
+	}
+
+	private void LaunchTowardNormal()
+	{
+		isLaunched = true;
+		isResting = false;
+		NPC.noGravity = false;
+		Vector2 surfaceNormal = FindSurfaceNormal(NPC.Center);
+		Vector2 launchDirection = surfaceNormal.SafeNormalize(-Vector2.UnitY);
+		if (Vector2.Dot(surfaceNormal, launchDirection) <= MathF.Sqrt(2))
+		{
+			launchDirection = launchDirection * 0.5f + surfaceNormal * 0.5f;
+		}
+		NPC.velocity = launchDirection * 9;
 	}
 
 	private void DetachAndFall()
@@ -372,6 +398,25 @@ public class CrystalCell : ModNPC
 		return true;
 	}
 
+	private bool TryAttachToSurfaceFar()
+	{
+		Vector2 detectedNormal = ProbeSurfaceNormalRough(NPC.Center);
+		if (detectedNormal == Vector2.Zero)
+		{
+			return false;
+		}
+
+		surfaceNormal = detectedNormal.SafeNormalize(detectedNormal);
+		surfaceTangent = surfaceNormal.RotatedBy(MathHelper.PiOver2);
+		NPC.noGravity = true;
+
+		NPC.rotation = surfaceNormal.ToRotation() + MathHelper.PiOver2;
+		NPC.spriteDirection = NPC.direction;
+
+		MoveCollisionBoxToSurface();
+		return true;
+	}
+
 	private void MoveCollisionBoxToSurface()
 	{
 		Vector2 center = NPC.Center;
@@ -391,7 +436,7 @@ public class CrystalCell : ModNPC
 		}
 		else
 		{
-			for (int i = 0; i < 4 && !IsSupportLineSolid(solidPoint, surfaceNormal); i++)
+			for (int i = 0; i < 8 && !IsSupportLineSolid(solidPoint, surfaceNormal); i++)
 			{
 				freePoint = solidPoint;
 				solidPoint += towardSurface;
@@ -416,6 +461,53 @@ public class CrystalCell : ModNPC
 			}
 		}
 		NPC.Center = freePoint;
+	}
+
+	private Vector2 MovePositionToSurface(Vector2 position)
+	{
+		Vector2 center = position;
+		Vector2 normal = ProbeSurfaceNormalRough(center);
+		Vector2 towardSurface = -normal;
+		bool startsInside = IsSupportLineSolid(center, normal);
+		Vector2 freePoint = center;
+		Vector2 solidPoint = center;
+
+		if (startsInside)
+		{
+			for (int i = 0; i < 4 && IsSupportLineSolid(solidPoint, normal); i++)
+			{
+				solidPoint += normal;
+			}
+			freePoint = solidPoint;
+			solidPoint -= normal;
+		}
+		else
+		{
+			for (int i = 0; i < 4 && !IsSupportLineSolid(solidPoint, normal); i++)
+			{
+				freePoint = solidPoint;
+				solidPoint += towardSurface;
+			}
+		}
+
+		if (!IsSupportLineSolid(solidPoint, normal))
+		{
+			return position;
+		}
+
+		for (int i = 0; i < 6; i++)
+		{
+			Vector2 middle = (freePoint + solidPoint) * 0.5f;
+			if (IsSupportLineSolid(middle, normal))
+			{
+				solidPoint = middle;
+			}
+			else
+			{
+				freePoint = middle;
+			}
+		}
+		return freePoint;
 	}
 
 	private bool IsSupportLineSolid(Vector2 center, Vector2 normal)
@@ -445,7 +537,7 @@ public class CrystalCell : ModNPC
 		for (int i = 0; i < normalCount; i++)
 		{
 			Vector2 point = center + new Vector2(0, 16).RotatedBy(rotation);
-			Vector2 arrow = new Vector2(0, 16).RotatedBy(i / (float)normalCount * MathHelper.TwoPi);
+			Vector2 arrow = new Vector2(0, 16).RotatedBy((i + 0.5f) / (float)normalCount * MathHelper.TwoPi);
 			if (Collision.IsWorldPointSolid(point + arrow))
 			{
 				bestNormal -= arrow;
@@ -455,52 +547,49 @@ public class CrystalCell : ModNPC
 				bestNormal += arrow;
 				airCount++;
 			}
-			// Vector2 normal = Vector2.UnitX.RotatedBy(MathHelper.TwoPi * i / normalCount);
-			// Vector2 tangent = normal.RotatedBy(MathHelper.PiOver2);
-			// int score = 0;
-			// for (int j = 0; j <= 8; j++)
-			// {
-			// Vector2 point = center - normal * 16f + tangent * (j / 8f * 32f - 16f);
-			// if (Collision.IsWorldPointSolid(point))
-			// {
-			// score++;
-			// }
-			// }
-			// if (score > bestScore)
-			// {
-			// bestScore = score;
-			// bestNormal = normal;
-			// }
 		}
-		// Main.NewText(bestNormal);
 		inAir = airCount >= normalCount;
 		return bestNormal.Length() < 0.001f ? new Vector2(0, -1) : bestNormal.NormalizeSafe();
 	}
 
-	private bool IsBlocked(Vector2 center)
+	private Vector2 ProbeSurfaceNormalRough(Vector2 center)
 	{
-		return !IsSupportLineSolid(center, surfaceNormal);
+		Vector2 bestNormal = Vector2.zeroVector;
+		const int normalCount = 16;
+		int airCount = 0;
+		for (int i = 0; i < normalCount; i++)
+		{
+			Vector2 point = center;
+			Vector2 arrow = new Vector2(0, 24).RotatedBy((i + 0.5f) / (float)normalCount * MathHelper.TwoPi);
+			if (Collision.IsWorldPointSolid(point + arrow))
+			{
+				bestNormal -= arrow;
+			}
+			else
+			{
+				bestNormal += arrow;
+				airCount++;
+			}
+		}
+		return bestNormal.Length() < 0.001f ? new Vector2(0, -1) : bestNormal.NormalizeSafe();
+	}
+
+	private bool CanLaunch(Vector2 pos, Vector2 vel)
+	{
+		return !ProjectileHitsSolid(pos + vel, pos + vel * 2);
 	}
 
 	private bool ProjectileHitsSolid(Vector2 start, Vector2 end)
 	{
 		Vector2 velocity = end - start;
 		Vector2 forward = velocity.SafeNormalize(Vector2.UnitY);
-		Vector2 side = forward.RotatedBy(MathHelper.PiOver2);
 		int steps = Math.Max(1, (int)(velocity.Length() / 2f));
 		for (int i = 1; i <= steps; i++)
 		{
 			Vector2 center = Vector2.Lerp(start, end, i / (float)steps);
-			for (int axis = -1; axis <= 1; axis++)
+			if (Collision.SolidCollision(center - new Vector2(8), 16, 16))
 			{
-				for (int sideOffset = -1; sideOffset <= 1; sideOffset++)
-				{
-					Vector2 point = center + forward * (axis * 16f) + side * (sideOffset * 16f);
-					if (Collision.IsWorldPointSolid(point))
-					{
-						return true;
-					}
-				}
+				return true;
 			}
 		}
 		return false;
@@ -508,15 +597,13 @@ public class CrystalCell : ModNPC
 
 	public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
-		// Texture2D tex = Commons.ModAsset.SparkLight.Value;
-		// Vector2 mousePos = Vector2.Transform(Main.MouseWorld, Matrix.Invert(spriteBatch.transformMatrix) * Main.GameViewMatrix.TransformationMatrix);
-		// float rotation = FindSurfaceNormal(mousePos).ToRotationSafe();
-		// spriteBatch.Draw(tex, mousePos - Main.screenPosition, null, new Color(1f, 1f, 1f, 0), rotation, tex.Size() * 0.5f, 1f, SpriteEffects.None, 0);
 		return true;
 	}
 
 	public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
+		Texture2D glow = ModAsset.CrystalCell_glow.Value;
+		spriteBatch.Draw(glow, NPC.Center + new Vector2(0, NPC.gfxOffY) - screenPos, NPC.frame, new Color(1f, 1f, 1f, 0) * (hitTimer / 30f), NPC.rotation, NPC.frame.Size() * 0.5f, NPC.scale, NPC.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
 		base.PostDraw(spriteBatch, screenPos, drawColor);
 	}
 }
