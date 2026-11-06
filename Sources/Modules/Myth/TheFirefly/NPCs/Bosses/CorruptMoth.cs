@@ -106,7 +106,7 @@ public class CorruptMoth : ModNPC
 		NPCID.Sets.TrailCacheLength[NPC.type] = 4;
 		if (!Main.dedServ)
 		{
-			Music = MythContent.QuickMusic("MothFighting");
+			Music = MusicLoader.GetMusicSlot(ModIns.Mod, ModAsset.MothFighting_Path);
 		}
 	}
 
@@ -231,10 +231,10 @@ public class CorruptMoth : ModNPC
 			startLoading = true;
 			Task.Factory.StartNew(() =>
 			{
-				bBowColors = ImageReader.ReadImageKeyPoints("Everglow/Myth/TheFirefly/Projectiles/BBow", identifierValue);
-				bArrowColors = ImageReader.ReadImageKeyPoints("Everglow/Myth/TheFirefly/Projectiles/BArrow", identifierValue);
-				bSwordColors = ImageReader.ReadImageKeyPoints("Everglow/Myth/TheFirefly/Projectiles/BSword", identifierValue);
-				bFistColors = ImageReader.ReadImageKeyPoints("Everglow/Myth/TheFirefly/Projectiles/BFist", identifierValue);
+				bBowColors = ImageReader.ReadImageKeyPoints(ModAsset.BBow_Mod, identifierValue);
+				bArrowColors = ImageReader.ReadImageKeyPoints(ModAsset.BArrow_Mod, identifierValue);
+				bSwordColors = ImageReader.ReadImageKeyPoints(ModAsset.BSword_Mod, identifierValue);
+				bFistColors = ImageReader.ReadImageKeyPoints(ModAsset.BFist_Mod, identifierValue);
 			});
 		}
 		bool phase2 = NPC.life < NPC.lifeMax * 0.6f;

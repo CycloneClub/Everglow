@@ -11,7 +11,7 @@ public class AcytaeaSword_projectile_Boss_shoot : ModProjectile, IWarpProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
 
-	public override string Texture => "Everglow/Myth/Acytaea/Projectiles/AcytaeaSword_projectile";
+	public override string Texture => ModAsset.AcytaeaSword_projectile_Mod;
 
 	public override void SetDefaults()
 	{
@@ -248,7 +248,7 @@ public class AcytaeaSword_projectile_Boss_shoot : ModProjectile, IWarpProjectile
 
 	public string TrailColorTex()
 	{
-		return "Everglow/Myth/Acytaea/Projectiles/Acytaea_Melee_Color";
+		return ModAsset.Acytaea_Melee_Color_Mod;
 	}
 
 	public virtual float TrailAlpha(float factor)

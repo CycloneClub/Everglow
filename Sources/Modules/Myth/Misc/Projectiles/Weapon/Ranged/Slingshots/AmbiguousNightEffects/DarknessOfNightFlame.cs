@@ -26,7 +26,7 @@ internal class DarknessOfNightPipeline : Pipeline
 {
 	public override void Load()
 	{
-		effect = ModContent.Request<Effect>("Everglow/Myth/Misc/Projectiles/Weapon/Ranged/Slingshots/AmbiguousNightEffects/DarknessOfNightFlame", AssetRequestMode.ImmediateLoad);
+		effect = ModAsset.DarknessOfNightFlame;
 	}
 
 	public override void BeginRender()

@@ -38,19 +38,19 @@ public class LilyHarp : ModItem
 		switch (soundStyle)
 		{
 			case 0:
-				SoundEngine.PlaySound(new SoundStyle("Everglow/Myth/Sounds/LilyHarpCmaj7"), player.Center);
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.LilyHarpCmaj7_Mod), player.Center);
 				break;
 
 			case 1:
-				SoundEngine.PlaySound(new SoundStyle("Everglow/Myth/Sounds/LilyHarpFmaj7"), player.Center);
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.LilyHarpFmaj7_Mod), player.Center);
 				break;
 
 			case 2:
-				SoundEngine.PlaySound(new SoundStyle("Everglow/Myth/Sounds/LilyHarpDmaj7"), player.Center);
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.LilyHarpDmaj7_Mod), player.Center);
 				break;
 
 			case 3:
-				SoundEngine.PlaySound(new SoundStyle("Everglow/Myth/Sounds/LilyHarpGmaj7"), player.Center);
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.LilyHarpGmaj7_Mod), player.Center);
 				break;
 		}
 

@@ -535,7 +535,7 @@ public class RapierMaster_Boss : ModNPC
 
 	public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
-		Texture2D tex = ModContent.Request<Texture2D>("Everglow/EternalResolve/Bosses/RapierMaster_Boss").Value;
+		Texture2D tex = ModAsset.RapierMaster_Boss.Value;
 		Main.spriteBatch.Draw(tex, NPC.Center - Main.screenPosition, null, drawColor, NPC.rotation, tex.Size() / 2, NPC.scale, NPC.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
 
 		if (noAI > 0)

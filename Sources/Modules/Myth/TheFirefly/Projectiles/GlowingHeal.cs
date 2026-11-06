@@ -102,7 +102,7 @@ public class GlowingHeal : ModNPC
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.ZoomMatrix);
 		var bars = new List<Vertex2D>();
-		ef = MythContent.QuickEffect("Effects/Trail");
+		ef = ModAsset.Trail.Value;
 		Vector2 v = cent - NPC.Center;
 		int width = (int)(kx / 2);
 		for (int i = 1; i < NPC.oldPos.Length - 1; ++i)
@@ -148,8 +148,8 @@ public class GlowingHeal : ModNPC
 			ef.Parameters["uTransform"].SetValue(model * projection);
 			ef.Parameters["uTime"].SetValue(0);
 			Main.graphics.GraphicsDevice.Textures[0] = ModAsset.HeatMap_Blue_D.Value;
-			Main.graphics.GraphicsDevice.Textures[1] = ModContent.Request<Texture2D>("Everglow/Myth/TheFirefly/NPCs/Bosses/MeteroD").Value;
-			Main.graphics.GraphicsDevice.Textures[2] = ModContent.Request<Texture2D>("Everglow/Myth/TheFirefly/NPCs/Bosses/MeteroD").Value;
+			Main.graphics.GraphicsDevice.Textures[1] = ModAsset.MeteroD.Value;
+			Main.graphics.GraphicsDevice.Textures[2] = ModAsset.MeteroD.Value;
 			Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 			Main.graphics.GraphicsDevice.SamplerStates[1] = SamplerState.PointWrap;
 			Main.graphics.GraphicsDevice.SamplerStates[2] = SamplerState.PointWrap;

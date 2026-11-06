@@ -232,7 +232,7 @@ public class HolyCrystalProjectile : ModProjectile
 
 	public Vector2 StartPos = Vector2.zeroVector;
 
-	public override string Texture => "Everglow/" + ModAsset.Empty_Path;
+	public override string Texture => ModAsset.Empty_Mod;
 
 	public override void OnSpawn(IEntitySource source)
 	{

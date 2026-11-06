@@ -21,7 +21,7 @@ public class GiantBell_Tile : ModTile, ITileFluentlyDrawn
 		DustType = DustID.Gold;
 
 		// Placement
-		HitSound = new SoundStyle("Everglow/CagedDomain/Sounds/GiantBell");
+		HitSound = new SoundStyle(ModAsset.Sounds_GiantBell_Mod);
 		TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3);
 		TileObjectData.newTile.AnchorTop = new AnchorData(AnchorType.SolidTile, TileObjectData.newTile.Width, 0);
 		TileObjectData.newTile.AnchorBottom = default;

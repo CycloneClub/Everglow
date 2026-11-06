@@ -7,7 +7,7 @@ public class MythrilClub_smashMagicBall : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
 
-	public override string Texture => "Everglow/" + ModAsset.MythrilClub_Path;
+	public override string Texture => ModAsset.MythrilClub_Mod;
 
 	public override void SetDefaults()
 	{

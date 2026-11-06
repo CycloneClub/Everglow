@@ -30,11 +30,11 @@ public class MissileExplosion : ModProjectile, IWarpProjectile
 	{
 		if (Projectile.ai[0] <= 20)
 		{
-			SoundEngine.PlaySound(new SoundStyle("Everglow/Myth/Sounds/Crystal_Burst_Normal").WithVolumeScale(Projectile.ai[0] / 20f + 0.2f), Projectile.Center);
+			SoundEngine.PlaySound(new SoundStyle(ModAsset.Crystal_Burst_Normal_Mod).WithVolumeScale(Projectile.ai[0] / 20f + 0.2f), Projectile.Center);
 		}
 		else
 		{
-			SoundEngine.PlaySound(new SoundStyle("Everglow/Myth/Sounds/Crystal_Burst_Strong"), Projectile.Center);
+			SoundEngine.PlaySound(new SoundStyle(ModAsset.Crystal_Burst_Strong_Mod), Projectile.Center);
 		}
 		GenerateSmog((int)(1.3 * Projectile.ai[0]));
 		GenerateFire((int)(2.3 * Projectile.ai[0]));

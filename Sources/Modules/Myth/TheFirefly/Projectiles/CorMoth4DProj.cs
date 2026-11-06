@@ -6,7 +6,7 @@ public class CorMoth4DProj : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
 
-	public override string Texture => "Everglow/Myth/TheFirefly/Projectiles/ButterflyDream";
+	public override string Texture => ModAsset.ButterflyDream_Mod;
 
 	public override void SetStaticDefaults()
 	{

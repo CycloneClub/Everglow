@@ -260,7 +260,7 @@ public class TuskBiomeSky : CustomSky
 		var matrix = Matrix.CreateLookAt(camPos, new Vector3(camPos.X, camPos.Y - lookup, 1), Vector3.Down * Main.LocalPlayer.gravDir);
 		matrix *= Matrix.CreatePerspectiveFieldOfView(MathHelper.Pi / 5, Main.graphics.GraphicsDevice.Viewport.AspectRatio, 1, 12500);
 
-		Effect eff = MythContent.QuickEffect("Effects/DrawPrim3D");
+		Effect eff = ModAsset.DrawPrim3D.Value;
 		eff.Parameters["uTransform"].SetValue(matrix);
 		eff.CurrentTechnique.Passes[0].Apply();
 
@@ -271,15 +271,15 @@ public class TuskBiomeSky : CustomSky
 		double OneDevideRotaSpeed = 2500d;
 
 		var CloudLine = new Texture2D[10];
-		CloudLine[1] = ModContent.Request<Texture2D>("Everglow/Myth/TheTusk/Backgrounds/DarkBlueGreenCloud").Value;
-		CloudLine[2] = ModContent.Request<Texture2D>("Everglow/Myth/TheTusk/Backgrounds/DarkBlueGreenCloud").Value;
-		CloudLine[3] = ModContent.Request<Texture2D>("Everglow/Myth/TheTusk/Backgrounds/DarkGreyCloud").Value;
-		CloudLine[4] = ModContent.Request<Texture2D>("Everglow/Myth/TheTusk/Backgrounds/DarkGreyCloud").Value;
-		CloudLine[5] = ModContent.Request<Texture2D>("Everglow/Myth/TheTusk/Backgrounds/DarkGreyCloud2").Value;
-		CloudLine[6] = ModContent.Request<Texture2D>("Everglow/Myth/TheTusk/Backgrounds/LightGreyCloud3").Value;
-		CloudLine[7] = ModContent.Request<Texture2D>("Everglow/Myth/TheTusk/Backgrounds/LightGreyCloud4").Value;
-		CloudLine[8] = ModContent.Request<Texture2D>("Everglow/Myth/TheTusk/Backgrounds/LightGreyCloud2").Value;
-		CloudLine[9] = ModContent.Request<Texture2D>("Everglow/Myth/TheTusk/Backgrounds/LightGreyCloud").Value;
+		CloudLine[1] = ModAsset.DarkBlueGreenCloud.Value;
+		CloudLine[2] = ModAsset.DarkBlueGreenCloud.Value;
+		CloudLine[3] = ModAsset.DarkGreyCloud.Value;
+		CloudLine[4] = ModAsset.DarkGreyCloud.Value;
+		CloudLine[5] = ModAsset.DarkGreyCloud2.Value;
+		CloudLine[6] = ModAsset.LightGreyCloud3.Value;
+		CloudLine[7] = ModAsset.LightGreyCloud4.Value;
+		CloudLine[8] = ModAsset.LightGreyCloud2.Value;
+		CloudLine[9] = ModAsset.LightGreyCloud.Value;
 
 		for (int i = 3; i < 10; i++)
 		{

@@ -12,7 +12,7 @@ public class GlowWoodMusicBox : ModItem
 		CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		ItemID.Sets.CanGetPrefixes[Type] = false;
 		ItemID.Sets.ShimmerTransformToItem[Type] = ItemID.MusicBox;
-		MusicLoader.AddMusicBox(Mod, MythContent.QuickMusic("MothBiome"), ModContent.ItemType<GlowWoodMusicBox>(), ModContent.TileType<Tiles.Furnitures.GlowWoodMusicBox>());
+		MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(ModIns.Mod, ModAsset.MothBiome_Path), ModContent.ItemType<GlowWoodMusicBox>(), ModContent.TileType<Tiles.Furnitures.GlowWoodMusicBox>());
 	}
 
 	public override void SetDefaults()

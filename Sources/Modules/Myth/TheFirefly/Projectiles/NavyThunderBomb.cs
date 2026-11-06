@@ -10,7 +10,7 @@ public class NavyThunderBomb : ModProjectile, IWarpProjectile
 
 	private float sparkleStrength = 20;
 
-	public override string Texture => "Everglow/Myth/TheFirefly/Projectiles/MothBall";
+	public override string Texture => ModAsset.MothBall_Mod;
 
 	public override bool CloneNewInstances => false;
 

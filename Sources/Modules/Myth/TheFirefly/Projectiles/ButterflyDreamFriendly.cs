@@ -8,7 +8,7 @@ public class ButterflyDreamFriendly : ModProjectile
 
 	public Player owner;
 
-	public override string Texture => "Everglow/Myth/TheFirefly/Projectiles/ButterflyDream";
+	public override string Texture => ModAsset.ButterflyDream_Mod;
 
 	public override void SetStaticDefaults()
 	{

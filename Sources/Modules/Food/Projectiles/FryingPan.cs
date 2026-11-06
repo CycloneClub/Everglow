@@ -55,7 +55,7 @@ public class FryingPan : MeleeProj
 
 	public override string TrailColorTex()
 	{
-		return "Everglow/Food/Images/Pan_Color";
+		return ModAsset.Pan_Color_Mod;
 	}
 
 	// 拖尾的混合模式，通常使用NonPremultiplied（暗）或者Additive（亮）
@@ -490,7 +490,7 @@ public class FryingPan : MeleeProj
 	{
 		if (currantAttackType == 0)
 		{
-			SoundEngine.PlaySound(new SoundStyle("Everglow/Food/Sounds/Pan1").WithVolumeScale(0.3f).WithPitchOffset(1f), Projectile.Center);
+			SoundEngine.PlaySound(new SoundStyle(ModAsset.Pan1_Mod).WithVolumeScale(0.3f).WithPitchOffset(1f), Projectile.Center);
 			if (Projectile.timeLeft > 2960)
 			{
 				Projectile.velocity.X = Projectile.velocity.X * -1f;
@@ -502,7 +502,7 @@ public class FryingPan : MeleeProj
 		else
 		{
 			GenerateDust(target.Center, 50);
-			SoundEngine.PlaySound(new SoundStyle("Everglow/Food/Sounds/Pan1").WithVolumeScale(1), Projectile.Center);
+			SoundEngine.PlaySound(new SoundStyle(ModAsset.Pan1_Mod).WithVolumeScale(1), Projectile.Center);
 		}
 
 		return;
@@ -512,7 +512,7 @@ public class FryingPan : MeleeProj
 	{
 		if (currantAttackType == 0)
 		{
-			SoundEngine.PlaySound(new SoundStyle("Everglow/Food/Sounds/Pan1").WithVolumeScale(0.3f).WithPitchOffset(1f), Projectile.Center);
+			SoundEngine.PlaySound(new SoundStyle(ModAsset.Pan1_Mod).WithVolumeScale(0.3f).WithPitchOffset(1f), Projectile.Center);
 			if (Projectile.timeLeft > 2960)
 			{
 				Projectile.velocity.X = Projectile.velocity.X * -1f;
@@ -524,7 +524,7 @@ public class FryingPan : MeleeProj
 		}
 		else
 		{
-			SoundEngine.PlaySound(new SoundStyle("Everglow/Food/Sounds/Pan1").WithVolumeScale(1), Projectile.Center);
+			SoundEngine.PlaySound(new SoundStyle(ModAsset.Pan1_Mod).WithVolumeScale(1), Projectile.Center);
 			GenerateDust(target.Center, 50);
 		}
 
@@ -533,7 +533,7 @@ public class FryingPan : MeleeProj
 
 	public override bool OnTileCollide(Vector2 oldVelocity)
 	{
-		SoundEngine.PlaySound(new SoundStyle("Everglow/Food/Sounds/Pan1").WithVolumeScale(0.3f).WithPitchOffset(1f), Projectile.Center);
+		SoundEngine.PlaySound(new SoundStyle(ModAsset.Pan1_Mod).WithVolumeScale(0.3f).WithPitchOffset(1f), Projectile.Center);
 		if (currantAttackType == 0)
 		{
 			if (Projectile.timeLeft > 2960)

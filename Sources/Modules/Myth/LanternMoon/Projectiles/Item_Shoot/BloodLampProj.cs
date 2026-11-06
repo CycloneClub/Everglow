@@ -130,7 +130,7 @@ public class BloodLampProj : ModProjectile
 	{
 		SoundEngine.PlaySound(
 			new SoundStyle(
-			"Everglow/Myth/LanternMoon/Sounds/PowerBomb"), Projectile.Center);
+			ModAsset.PowerBomb_Mod), Projectile.Center);
 		_coroutineManager.StartCoroutine(new Coroutine(ControlVolume()));
 		_coroutineManager.StartCoroutine(new Coroutine(JitterFlash()));
 		yield return new WaitForFrames(170);

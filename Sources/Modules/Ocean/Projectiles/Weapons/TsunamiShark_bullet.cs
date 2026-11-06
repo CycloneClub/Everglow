@@ -7,7 +7,7 @@ public class TsunamiShark_bullet : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
 
-	public override string Texture => "Everglow/Ocean/Projectiles/Weapons/TsunamiShark/TsunamiShark_proj";
+	public override string Texture => ModAsset.TsunamiShark_proj_Mod;
 
 	public override void SetDefaults()
 	{

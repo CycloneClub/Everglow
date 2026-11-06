@@ -13,7 +13,7 @@ public class TsunamiShark_missile : ModProjectile
 
 	private CoroutineManager _coroutineManager = new CoroutineManager();
 
-	public override string Texture => "Everglow/Ocean/Projectiles/Weapons/TsunamiShark/TsunamiShark_missile";
+	public override string Texture => ModAsset.TsunamiShark_missile_Mod;
 
 	public override void SetDefaults()
 	{

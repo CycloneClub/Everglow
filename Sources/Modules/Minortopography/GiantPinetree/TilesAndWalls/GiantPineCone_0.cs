@@ -25,7 +25,7 @@ public class GiantPineCone_0 : ModTile
 		TileObjectData.newTile.CoordinateWidth = 16;
 		TileObjectData.newTile.StyleHorizontal = true;
 		TileObjectData.addTile(Type);
-		HitSound = new SoundStyle("Everglow/Minortopography/GiantPinetree/Sounds/PineconeCollapse");
+		HitSound = new SoundStyle(ModAsset.PineconeCollapse_Mod);
 		AddMapEntry(new Color(119, 77, 63));
 	}
 

@@ -7,7 +7,7 @@ public class LanternGhostKingExplosion : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
 
-	public override string Texture => "Everglow/" + ModAsset.DarkLanternBombExplosion_Path;
+	public override string Texture => ModAsset.DarkLanternBombExplosion_Mod;
 
 	public int Timer = 0;
 

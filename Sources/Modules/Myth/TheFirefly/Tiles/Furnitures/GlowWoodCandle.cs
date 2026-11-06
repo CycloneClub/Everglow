@@ -32,7 +32,7 @@ public class GlowWoodCandle : ModTile
 		{
 			if (!Main.dedServ)
 			{
-				flameTexture = ModContent.Request<Texture2D>("Everglow/Myth/TheFirefly/Tiles/Furnitures/GlowWoodCandle_Flame");
+				flameTexture = ModAsset.GlowWoodCandle_Flame;
 			}
 		}
 

@@ -130,7 +130,7 @@ namespace Everglow.EternalResolve.Projectiles
 						}
 						if (SuddenCooling == 1)
 						{
-							SoundEngine.PlaySound(new SoundStyle("Everglow/EternalResolve/Sounds/CoolingSword"), Projectile.Center);
+							SoundEngine.PlaySound(new SoundStyle(ModAsset.CoolingSword_Mod), Projectile.Center);
 						}
 					}
 					else

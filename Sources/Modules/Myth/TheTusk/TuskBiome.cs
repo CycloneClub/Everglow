@@ -15,15 +15,15 @@ public class TuskBiomeBG : ModSurfaceBackgroundStyle
 
 public class TuskBiome : ModBiome
 {
-	public override int Music => MythContent.QuickMusic("TuskBiome");
+	public override int Music => MusicLoader.GetMusicSlot(ModIns.Mod, ModAsset.TuskBiome_Path);
 
 	public override SceneEffectPriority Priority => SceneEffectPriority.Environment;
 
-	public override string BestiaryIcon => "Everglow/Myth/TheTusk/TuskIcon";
+	public override string BestiaryIcon => ModAsset.TuskIcon_Mod;
 
 	public override string BackgroundPath => base.BackgroundPath;
 
-	public override string MapBackground => "Everglow/Myth/TheTusk/Backgrounds/TuskBackground_Inside";
+	public override string MapBackground => ModAsset.TuskBackground_Inside_Mod;
 
 	public override ModWaterStyle WaterStyle => ModContent.GetInstance<TuskWaterStyle>();
 

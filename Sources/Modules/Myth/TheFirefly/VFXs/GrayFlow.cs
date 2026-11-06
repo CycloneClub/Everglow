@@ -26,7 +26,7 @@ internal class GrayFlowPipeline : Pipeline
 {
 	public override void Load()
 	{
-		effect = ModContent.Request<Effect>("Everglow/Myth/TheFirefly/VFXs/GrayFlow", AssetRequestMode.ImmediateLoad);
+		effect = ModAsset.GrayFlow;
 	}
 
 	public override void BeginRender()

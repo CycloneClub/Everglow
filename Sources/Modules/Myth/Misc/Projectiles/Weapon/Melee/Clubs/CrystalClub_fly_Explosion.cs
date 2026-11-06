@@ -22,7 +22,7 @@ public class CrystalClub_fly_Explosion : ModProjectile, IWarpProjectile
 		Projectile.DamageType = DamageClass.Melee;
 	}
 
-	public override string Texture => "Everglow/" + ModAsset.Empty_Path;
+	public override string Texture => ModAsset.Empty_Mod;
 
 	public override void AI()
 	{

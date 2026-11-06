@@ -80,7 +80,7 @@ internal class WorldHit : ModProjectile
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.ZoomMatrix);
 		var bars = new List<Vertex2D>();
-		ef = MythContent.QuickEffect("Effects/FadeCurseGreen");
+		ef = ModAsset.FadeCurseGreen.Value;
 		float widx = Projectile.timeLeft / 120f;
 		float widxM = 1f - widx;
 		radius = (float)(Math.Sqrt(5 * widxM) * 60) * Projectile.ai[0];

@@ -43,14 +43,14 @@ namespace Everglow.EternalResolve.Projectiles
 			{
 				if (Main.timeForVisualEffects % 10 == 0)
 				{
-					SoundEngine.PlaySound(new SoundStyle("Everglow/EternalResolve/Sounds/ElectricCurrency").WithVolume(0.6f), Projectile.Center);
+					SoundEngine.PlaySound(new SoundStyle(ModAsset.ElectricCurrency_Mod).WithVolume(0.6f), Projectile.Center);
 				}
 			}
 		}
 
 		public override void OnKill(int timeLeft)
 		{
-			ActiveSound sound = SoundEngine.FindActiveSound(new SoundStyle("Everglow/EternalResolve/Sounds/ElectricCurrency").WithVolume(0.6f));
+			ActiveSound sound = SoundEngine.FindActiveSound(new SoundStyle(ModAsset.ElectricCurrency_Mod).WithVolume(0.6f));
 			if (sound != null)
 			{
 				sound.Stop();

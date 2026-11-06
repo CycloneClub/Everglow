@@ -8,7 +8,7 @@ public class PrimordialJadeWinged_SpearDown : ModProjectile, IWarpProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
 
-	public override string Texture => "Everglow/Myth/Misc/Projectiles/Weapon/Melee/PrimordialJadeWinged_Spear/PrimordialJadeWinged_Spear";
+	public override string Texture => ModAsset.PrimordialJadeWinged_Spear_PrimordialJadeWinged_Spear_Mod;
 
 	public override void SetDefaults()
 	{
@@ -220,7 +220,7 @@ public class PrimordialJadeWinged_SpearDown : ModProjectile, IWarpProjectile
 					Ins.VFXManager.Add(smog);
 				}
 				ShakerManager.AddShaker(Projectile.Center + new Vector2(0, 50), Projectile.velocity, 120, 120f, 65, 0.9f, 0.8f, 5);
-				SoundEngine.PlaySound(new SoundStyle("Everglow/Myth/Sounds/Xiao"), Projectile.Center);
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.Xiao_Mod), Projectile.Center);
 
 				Crash = true;
 			}

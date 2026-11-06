@@ -28,7 +28,7 @@ public class YggdrasilModule : EverglowModule
 		{
 			On_FilterManager.EndCapture += FilterManager_EndCapture;
 			On_WorldGen.oceanDepths += WorldGen_oceanDepths;
-			screenOcclusion = ModContent.Request<Effect>("Everglow/Yggdrasil/Effects/Occlusion", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+			screenOcclusion = ModAsset.Occlusion.Value;
 			IL_Main.DrawToMap += IL_Main_DrawToMap;
 			IL_Main.DrawToMap_Section += IL_Main_DrawToMap_Section;
 			On_Main.UpdateTime_StartDay += On_Main_UpdateTime_StartDay;

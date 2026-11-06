@@ -43,7 +43,7 @@ public class IceScale : ModDust
 
 public class IceScale2 : ModDust
 {
-	public override string Texture => "Everglow/Myth/Misc/Dusts/IceScale";
+	public override string Texture => ModAsset.IceScale_Mod;
 
 	public override void OnSpawn(Dust dust)
 	{
@@ -86,7 +86,7 @@ public class IceScale2 : ModDust
 
 public class IceScale3 : ModDust
 {
-	public override string Texture => "Everglow/Myth/Misc/Dusts/IceScale";
+	public override string Texture => ModAsset.IceScale_Mod;
 
 	public override void OnSpawn(Dust dust)
 	{

@@ -4,7 +4,7 @@ namespace Everglow.Myth.TheFirefly.Tiles;
 
 public class FireflyTree_Leaf : ModGore
 {
-	public override string Texture => "Everglow/Myth/TheFirefly/Tiles/FireflyTree_Leaf";
+	public override string Texture => ModAsset.FireflyTree_Leaf_Mod;
 
 	public override bool Update(Gore gore)
 	{

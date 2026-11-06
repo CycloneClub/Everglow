@@ -129,10 +129,10 @@ public class FogPass
 		screenWidth = 0;
 		screenHeight = 0;
 
-		boxKernelEffect = ModContent.Request<Effect>("Everglow/Myth/Effects/BoxFilter"); // QuickEffect does not work, conversion failed.
-		gaussianKernelEffect = ModContent.Request<Effect>("Everglow/Myth/Effects/GBlur"); // Same as above
-		fogScreenEffect = ModContent.Request<Effect>("Everglow/Myth/Effects/Fog"); // Same as above
-		temporalInterpEffect = ModContent.Request<Effect>("Everglow/Myth/Effects/Temporal"); // Same as above
+		boxKernelEffect = ModAsset.BoxFilter; // QuickEffect does not work, conversion failed.
+		gaussianKernelEffect = ModAsset.GBlur; // Same as above
+		fogScreenEffect = ModAsset.Fog; // Same as above
+		temporalInterpEffect = ModAsset.Temporal; // Same as above
 
 		blurRenderTargets = new RenderTarget2D[maxBlurLevels];
 		shouldResetRenderTargets = true;

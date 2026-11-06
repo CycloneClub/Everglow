@@ -86,7 +86,7 @@ public class World : ModProjectile, IWarpProjectile
 			CrackPoint = Main.MouseWorld + Vector2.Normalize(Main.MouseWorld - CrackPoint).RotatedBy(Main.rand.NextFloat(Main.rand.NextFloat(Main.rand.NextFloat(-0.5f, -0.2f), 0.2f), 0.5f)) * range;
 			if (Projectile.ai[0] <= 0)
 			{
-				SoundEngine.PlaySound(new SoundStyle("Everglow/Myth/Sounds/Knife").WithPitchOffset(Main.rand.NextFloat(0.7f, 1f) - MathF.Min(timer / 15f, 1f)).WithVolumeScale(range / 600f), Projectile.Center);
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.Knife_Mod).WithPitchOffset(Main.rand.NextFloat(0.7f, 1f) - MathF.Min(timer / 15f, 1f)).WithVolumeScale(range / 600f), Projectile.Center);
 			}
 
 			timer = 0;
