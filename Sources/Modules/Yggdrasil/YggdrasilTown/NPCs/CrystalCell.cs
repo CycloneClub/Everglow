@@ -1,4 +1,6 @@
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
+using Everglow.Yggdrasil.YggdrasilTown.Dusts.TwilightForest;
+using Everglow.Yggdrasil.YggdrasilTown.VFXs;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.NPCs;
@@ -130,10 +132,18 @@ public class CrystalCell : ModNPC
 
 	public override void HitEffect(NPC.HitInfo hit)
 	{
+		if (!isAngry)
+		{
+			isImpactResting = true;
+			stateDuration = 60;
+		}
+		else
+		{
+			stateDuration = 0;
+		}
 		isAngry = true;
 		isResting = false;
 		stateTimer = 0;
-		stateDuration = 0;
 		routeTimer = 0;
 		hitTimer = 30;
 	}
@@ -215,7 +225,7 @@ public class CrystalCell : ModNPC
 		{
 			NPC.velocity.Y = Math.Min(NPC.velocity.Y + Gravity, 12f);
 		}
-		else if((NPC.Center - bestPointInRoute).Length() < 15f && CanLaunch(NPC.Center, surfaceNormal * 8))
+		else if ((NPC.Center - bestPointInRoute).Length() < 15f && CanLaunch(NPC.Center, surfaceNormal * 8))
 		{
 			LaunchTowardNormal();
 			isInTheAir = true;
@@ -249,10 +259,10 @@ public class CrystalCell : ModNPC
 			}
 
 			Vector2 nextTangent = nextNormal.RotatedBy(MathHelper.PiOver2) * direction;
-			//if (Vector2.Dot(nextTangent, travelTangent) < 0f)
-			//{
-			//	nextTangent *= -1f;
-			//}
+			// if (Vector2.Dot(nextTangent, travelTangent) < 0f)
+			// {
+			// nextTangent *= -1f;
+			// }
 
 			position = nextPosition;
 			normal = nextNormal;
@@ -266,29 +276,29 @@ public class CrystalCell : ModNPC
 				route.BestDistancePoint = position;
 			}
 
-			//if (direction == -1)
-			//{
-			//	Dust d0 = Dust.NewDustDirect(position, 0, 0, DustID.RedTorch);
-			//	d0.noGravity = true;
-			//	d0.scale = 3f;
-			//	d0.velocity *= 0;
-			//}
-			//else
-			//{
-			//	Dust d0 = Dust.NewDustDirect(position, 0, 0, DustID.BlueTorch);
-			//	d0.noGravity = true;
-			//	d0.scale = 3f;
-			//	d0.velocity *= 0;
-			//}
+			// if (direction == -1)
+			// {
+			// Dust d0 = Dust.NewDustDirect(position, 0, 0, DustID.RedTorch);
+			// d0.noGravity = true;
+			// d0.scale = 3f;
+			// d0.velocity *= 0;
+			// }
+			// else
+			// {
+			// Dust d0 = Dust.NewDustDirect(position, 0, 0, DustID.BlueTorch);
+			// d0.noGravity = true;
+			// d0.scale = 3f;
+			// d0.velocity *= 0;
+			// }
 		}
-		//if (direction == -1)
-		//{
-		//	Main.NewText(route.BestDistance, Color.Red);
-		//}
-		//else
-		//{
-		//	Main.NewText(route.BestDistance, Color.Blue);
-		//}
+		// if (direction == -1)
+		// {
+		// Main.NewText(route.BestDistance, Color.Red);
+		// }
+		// else
+		// {
+		// Main.NewText(route.BestDistance, Color.Blue);
+		// }
 		return route;
 	}
 
@@ -537,7 +547,7 @@ public class CrystalCell : ModNPC
 		for (int i = 0; i < normalCount; i++)
 		{
 			Vector2 point = center + new Vector2(0, 16).RotatedBy(rotation);
-			Vector2 arrow = new Vector2(0, 16).RotatedBy((i + 0.5f) / (float)normalCount * MathHelper.TwoPi);
+			Vector2 arrow = new Vector2(0, 16).RotatedBy((i + 0.5f) / normalCount * MathHelper.TwoPi);
 			if (Collision.IsWorldPointSolid(point + arrow))
 			{
 				bestNormal -= arrow;
@@ -560,7 +570,7 @@ public class CrystalCell : ModNPC
 		for (int i = 0; i < normalCount; i++)
 		{
 			Vector2 point = center;
-			Vector2 arrow = new Vector2(0, 24).RotatedBy((i + 0.5f) / (float)normalCount * MathHelper.TwoPi);
+			Vector2 arrow = new Vector2(0, 24).RotatedBy((i + 0.5f) / normalCount * MathHelper.TwoPi);
 			if (Collision.IsWorldPointSolid(point + arrow))
 			{
 				bestNormal -= arrow;
@@ -593,6 +603,40 @@ public class CrystalCell : ModNPC
 			}
 		}
 		return false;
+	}
+
+	public override void OnKill()
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			int type = ModContent.Find<ModGore>("Everglow/CrystalCell_Gore_" + j).Type;
+			Gore.NewGore(NPC.GetSource_Death(), NPC.Center, new Vector2(0, 3).RotatedByRandom(MathHelper.TwoPi), type, NPC.scale);
+		}
+		for (int j = 0; j < 3; j++)
+		{
+			NPC.NewNPCDirect(NPC.GetSource_Death(), NPC.Center, ModContent.NPCType<CrystalCell_small>());
+		}
+		for (int h = 0; h < 30; h++)
+		{
+			Dust dust = Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, ModContent.DustType<TwilightCrystalDust>());
+			dust.velocity = new Vector2(0, MathF.Sqrt(Main.rand.NextFloat()) * 6).RotatedByRandom(MathHelper.TwoPi);
+		}
+		for (int h = 0; h < 12; h++)
+		{
+			Vector2 velocity = new Vector2(0, MathF.Sqrt(Main.rand.NextFloat()) * 6).RotatedByRandom(MathHelper.TwoPi);
+			var dustVFX = new TwilightCrystalVFXDust
+			{
+				Velocity = velocity,
+				Active = true,
+				Visible = true,
+				Position = NPC.Center + velocity * 6,
+				MaxTime = Main.rand.Next(24, 42),
+				Scale = Main.rand.NextFloat(3, 12),
+				Rotation = velocity.ToRotation() - MathHelper.PiOver4,
+				ai = new float[] { 0, 0, 0 },
+			};
+			Ins.VFXManager.Add(dustVFX);
+		}
 	}
 
 	public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
