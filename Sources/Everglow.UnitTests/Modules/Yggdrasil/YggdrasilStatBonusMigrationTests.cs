@@ -43,7 +43,8 @@ public class YggdrasilStatBonusMigrationTests
 		player.statDefense += 10;
 		player.pickSpeed = 1f;
 		player.GetDamage(DamageClass.Generic) = StatModifier.Default;
-		RegisterInOrder(reverse,
+		RegisterInOrder(
+			reverse,
 			() => new BloodTearCrystalCrown().UpdateAccessory(player, false),
 			() => new FragmentsOfWreckage().UpdateAccessory(player, false));
 
@@ -66,7 +67,8 @@ public class YggdrasilStatBonusMigrationTests
 		player.endurance = 0.2f;
 		player.buffType[0] = BuffID.OnFire;
 		player.buffTime[0] = 60;
-		RegisterInOrder(reverse,
+		RegisterInOrder(
+			reverse,
 			() => new MoltenCore().UpdateAccessory(player, false),
 			() => new ShacklesBall().UpdateAccessory(player, false));
 
@@ -87,7 +89,8 @@ public class YggdrasilStatBonusMigrationTests
 		var player = context.Player;
 		context.Attach<HardenedWitherbarkHeart.HardenedWitherbarkHeartPlayer>();
 		player.accRunSpeed = 3f;
-		RegisterInOrder(reverse,
+		RegisterInOrder(
+			reverse,
 			() => new ForsakenBoots().UpdateAccessory(player, false),
 			() => new HardenedWitherbarkHeart().UpdateAccessory(player, false));
 
@@ -107,7 +110,8 @@ public class YggdrasilStatBonusMigrationTests
 		player.statManaMax = player.statManaMax2 = 100;
 		player.statMana = 90;
 		player.manaRegenBonus = 2;
-		RegisterInOrder(reverse,
+		RegisterInOrder(
+			reverse,
 			() => new CelesteStoneWaistPendant().UpdateAccessory(player, false),
 			() => new EldamberHairpin().UpdateEquip(player),
 			() => new ManaThermalPipeline().UpdateAccessory(player, false));
@@ -119,7 +123,6 @@ public class YggdrasilStatBonusMigrationTests
 
 		Assert.AreEqual(9, player.manaRegenBonus, "Ninety mana is within the pendant interval only after all capacity bonuses settle.");
 	}
-
 
 	[TestMethod]
 	[DataRow(2f)]

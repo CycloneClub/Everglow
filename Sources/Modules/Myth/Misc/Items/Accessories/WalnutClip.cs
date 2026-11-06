@@ -25,5 +25,4 @@ public class WalnutClip : ModItem
 		player.GetModPlayer<MythContentPlayer>().CriticalDamage += 0.16f;
 		player.GetModPlayer<StatBonusPlayer>().WalnutClip = true;
 	}
-
 }

@@ -1,7 +1,6 @@
 using Everglow.Yggdrasil.KelpCurtain.Items.Armors.Molluscs;
 using Everglow.Yggdrasil.KelpCurtain.Items.Weapons.UnderwaterTreasury;
 
-
 namespace Everglow.Yggdrasil.KelpCurtain;
 
 public class KelpCurtainPlayer : ModPlayer
@@ -56,7 +55,7 @@ public class KelpCurtainPlayer : ModPlayer
 		}
 
 		// While wet:
-		// +30% movement speed with the Molluscs set
+		// +30% movement speed while Aquatic Possession is active
 		// +35% movement speed with Molluscs Leggings
 		// +20% movement speed with Corroded Pearl
 		// +24% movement speed with Crimson Moon Algae Greaves

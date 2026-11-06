@@ -145,7 +145,6 @@ public class CrossModuleStatBonusMigrationTests
 		Assert.AreEqual(0.92f, player.pickSpeed, 0.00001f);
 	}
 
-
 	[TestMethod]
 	[DataRow(false, false)]
 	[DataRow(false, true)]
@@ -154,7 +153,8 @@ public class CrossModuleStatBonusMigrationTests
 	public void BadgeAddsMeleeSpeedAndWhipsInheritItOnce(bool mothActive, bool reverse)
 	{
 		string configuration = new DirectoryInfo(AppContext.BaseDirectory).Parent!.Name;
-		string path = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory,
+		string path = Path.GetFullPath(Path.Combine(
+			AppContext.BaseDirectory,
 			"..", "..", "..", "..", "Modules", "Myth", "bin", configuration, "net8.0", "Everglow.Myth.dll"));
 		var assembly = Assembly.LoadFrom(path);
 		var moth = assembly.GetType("Everglow.Myth.TheFirefly.NPCs.Bosses.CorruptMoth")!
@@ -204,7 +204,8 @@ public class CrossModuleStatBonusMigrationTests
 	public void PaperAddsFixedPenaltiesAndRespectsGodMode(bool godMode, bool reverse)
 	{
 		string configuration = new DirectoryInfo(AppContext.BaseDirectory).Parent!.Name;
-		string path = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory,
+		string path = Path.GetFullPath(Path.Combine(
+			AppContext.BaseDirectory,
 			"..", "..", "..", "..", "Modules", "Myth", "bin", configuration, "net8.0", "Everglow.Myth.dll"));
 		var buff = (ModBuff)Activator.CreateInstance(Assembly.LoadFrom(path).GetType("Everglow.Myth.LanternMoon.Buffs.PaperObstructed")!)!;
 		var player = context.Player;
@@ -236,7 +237,8 @@ public class CrossModuleStatBonusMigrationTests
 	private static ModItem LoadPlantAccessory(string name)
 	{
 		string configuration = new DirectoryInfo(AppContext.BaseDirectory).Parent!.Name;
-		string path = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory,
+		string path = Path.GetFullPath(Path.Combine(
+			AppContext.BaseDirectory,
 			"..", "..", "..", "..", "Modules", "PlantAndFarm", "bin", configuration, "net8.0", "Everglow.PlantAndFarm.dll"));
 		var type = Assembly.LoadFrom(path).GetType("Everglow.PlantAndFarm.Items.Accessories." + name, true)!;
 		return (ModItem)Activator.CreateInstance(type)!;

@@ -56,6 +56,7 @@ public class CombatAccessoryBalanceTests
 		Assert.AreEqual(0.2f, player.endurance);
 		Assert.AreEqual(1f, player.moveSpeed);
 	}
+
 	[TestMethod]
 	[DataRow(BuffID.OnFire)]
 	[DataRow(BuffID.OnFire3)]
@@ -209,5 +210,4 @@ public class CombatAccessoryBalanceTests
 			tileInstance.SetValue(null, previousTile);
 		}
 	}
-
 }

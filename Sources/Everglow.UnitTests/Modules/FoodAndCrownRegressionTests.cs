@@ -114,7 +114,8 @@ public class FoodAndCrownRegressionTests
 		player.GetDamage(DamageClass.Magic) = StatModifier.Default + 0.5f;
 		var damages = new List<int>();
 		string configuration = new DirectoryInfo(AppContext.BaseDirectory).Parent!.Name;
-		string path = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory,
+		string path = Path.GetFullPath(Path.Combine(
+			AppContext.BaseDirectory,
 			"..", "..", "..", "..", "Modules", "Minortopography", "bin", configuration, "net8.0", "Everglow.Minortopography.dll"));
 		var assembly = Assembly.LoadFrom(path);
 		var itemType = assembly.GetType("Everglow.Minortopography.GiantPinetree.Items.PearlOfCyan", true)!;
@@ -149,13 +150,13 @@ public class FoodAndCrownRegressionTests
 			damages.Add(damage);
 			return 0;
 		}
-
 	}
 
 	private static Assembly LoadPlantAndFarm()
 	{
 		string configuration = new DirectoryInfo(AppContext.BaseDirectory).Parent!.Name;
-		string path = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory,
+		string path = Path.GetFullPath(Path.Combine(
+			AppContext.BaseDirectory,
 			"..", "..", "..", "..", "Modules", "PlantAndFarm", "bin", configuration, "net8.0", "Everglow.PlantAndFarm.dll"));
 		return Assembly.LoadFrom(path);
 	}

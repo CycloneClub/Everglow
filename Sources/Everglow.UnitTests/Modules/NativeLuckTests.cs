@@ -56,7 +56,8 @@ public class NativeLuckTests
 		RecalculateLuck(player);
 		float originalLuck = player.luck;
 		string configuration = new DirectoryInfo(AppContext.BaseDirectory).Parent!.Name;
-		string path = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory,
+		string path = Path.GetFullPath(Path.Combine(
+			AppContext.BaseDirectory,
 			"..", "..", "..", "..", "Modules", "Myth", "bin", configuration, "net8.0", "Everglow.Myth.dll"));
 		var curseType = Assembly.LoadFrom(path).GetType("Everglow.Myth.LanternMoon.Buffs.UnfortuneCurse", throwOnError: true)!;
 		ModBuff[] buffs = [new GrapesBuff(), new GrapeJuiceBuff(), (ModBuff)Activator.CreateInstance(curseType)!];

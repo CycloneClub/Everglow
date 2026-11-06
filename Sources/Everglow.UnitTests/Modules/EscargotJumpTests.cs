@@ -111,6 +111,7 @@ public class EscargotJumpTests
 		foodBuffs.PostUpdateRunSpeeds();
 		Assert.AreEqual(2f, Player.jumpSpeed);
 	}
+
 	[TestMethod]
 	[DataRow(false)]
 	[DataRow(true)]

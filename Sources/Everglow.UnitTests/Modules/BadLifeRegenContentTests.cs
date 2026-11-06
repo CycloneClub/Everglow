@@ -185,7 +185,6 @@ public class BadLifeRegenContentTests
 		Assert.AreEqual(-4, context.Player.lifeRegen, "Mango must also expire.");
 	}
 
-
 	[TestMethod]
 	[DataRow(100, -4)]
 	[DataRow(200, -8)]
@@ -247,7 +246,8 @@ public class BadLifeRegenContentTests
 	private static ModBuff LoadPlantBuff()
 	{
 		string configuration = new DirectoryInfo(AppContext.BaseDirectory).Parent!.Name;
-		string path = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory,
+		string path = Path.GetFullPath(Path.Combine(
+			AppContext.BaseDirectory,
 			"..", "..", "..", "..", "Modules", "Plant", "bin", configuration, "net8.0", "Everglow.Plant.dll"));
 		return (ModBuff)Activator.CreateInstance(Assembly.LoadFrom(path).GetType("Everglow.Plant.Buffs.CactusBallBuff", true)!)!;
 	}

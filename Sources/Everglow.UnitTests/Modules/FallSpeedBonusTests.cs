@@ -267,7 +267,7 @@ public class FallSpeedBonusTests
 		string spearName = "Everglow.Myth.Misc.Projectiles.Weapon.Melee.PrimordialJadeWinged_Spear.PrimordialJadeWinged_Spear";
 		for (int i = 0; i < 2; i++)
 		{
-			var type = assembly.GetType(spearName + (i == 0 ? "" : "Down"), true)!;
+			var type = assembly.GetType(spearName + (i == 0 ? string.Empty : "Down"), true)!;
 			var content = typeof(ContentInstance<>).MakeGenericType(type).GetProperty("Instance")!;
 			object? previous = content.GetValue(null);
 			restoreContent.Add(() => content.SetValue(null, previous));
@@ -282,7 +282,8 @@ public class FallSpeedBonusTests
 	private static Assembly MythAssembly()
 	{
 		string configuration = new DirectoryInfo(AppContext.BaseDirectory).Parent!.Name;
-		string path = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory,
+		string path = Path.GetFullPath(Path.Combine(
+			AppContext.BaseDirectory,
 			"..", "..", "..", "..", "Modules", "Myth", "bin", configuration, "net8.0", "Everglow.Myth.dll"));
 		return Assembly.LoadFrom(path);
 	}

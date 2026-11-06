@@ -102,5 +102,4 @@ public class ManaCostTests
 			Assert.AreEqual(0, context.Player.GetManaCost(new Item { mana = 20 }));
 		}
 	}
-
 }

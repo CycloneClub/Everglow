@@ -165,7 +165,8 @@ public class OrdinaryMovementBonusTests
 	private static ModItem LoadAccessory(string module, string typeName)
 	{
 		string configuration = new DirectoryInfo(AppContext.BaseDirectory).Parent!.Name;
-		string path = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory,
+		string path = Path.GetFullPath(Path.Combine(
+			AppContext.BaseDirectory,
 			"..", "..", "..", "..", "Modules", module, "bin", configuration, "net8.0", $"Everglow.{module}.dll"));
 		return (ModItem)Activator.CreateInstance(Assembly.LoadFrom(path).GetType(typeName, true)!)!;
 	}
