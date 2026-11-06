@@ -9,7 +9,7 @@ public class LampWoodBreastplate : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(LifeRegenBonus / 2f);
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(LifeRegenBonus);
 
 	private const int LifeRegenBonus = 2;
 

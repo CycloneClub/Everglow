@@ -9,9 +9,9 @@ public class CyanHeavylet : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(3, 3, 1, 0.008f);
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(3, 3, 2, 0.008f);
 
-	public LocalizedText SetBonusText => this.GetLocalization("SetBonus").WithFormatArgs(3, 3, 1, 0.008f);
+	public LocalizedText SetBonusText => this.GetLocalization("SetBonus").WithFormatArgs(3, 3, 2, 0.008f);
 
 	public override void SetStaticDefaults()
 	{

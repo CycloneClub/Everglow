@@ -23,13 +23,13 @@ AuburnHoodie: {
 		{0}% increased summon damage
 		Set bonus:
 		Increases your max number of minions by {1}
-		Press the armor ability key to gain another {1} minion slot and lose {4} life regeneration per second for {2} seconds; {3}-second cooldown
+		Press the armor ability key to gain another {1} minion slot and receive -{4} life regeneration for {2} seconds; {3}-second cooldown
 		'A dead rod leaves only a hollow tube; even its arcane organs are gone... Still, the shell is rather pretty'
 		'''
 	SetBonus:
 		'''
 		Increases your max number of minions by {1}
-		Press the armor ability key to gain another {1} minion slot and lose {4} life regeneration per second for {2} seconds; {3}-second cooldown
+		Press the armor ability key to gain another {1} minion slot and receive -{4} life regeneration for {2} seconds; {3}-second cooldown
 		'''
 }
 
@@ -48,13 +48,13 @@ BloodStainedVeil: {
 		'''
 		{0}% increased magic damage
 		Set bonus:
-		With the Blood-Drenched Robe, magic projectile hits grant {2} life regeneration per second for {1} seconds
+		With the Blood-Drenched Robe, magic projectile hits grant +{2} life regeneration for {1} seconds
 		Each qualifying hit has a {3}% chance to restore {4} mana
 		'Despite the stories, it looks like an ordinary mage robe, only more threadbare'
 		'''
 	SetBonus:
 		'''
-		With the Blood-Drenched Robe, magic projectile hits grant {2} life regeneration per second for {1} seconds
+		With the Blood-Drenched Robe, magic projectile hits grant +{2} life regeneration for {1} seconds
 		Each qualifying hit has a {3}% chance to restore {4} mana
 		'''
 }
@@ -130,13 +130,13 @@ CyanHeavylet: {
 	DisplayName: Cyan Helmet
 	Tooltip:
 		'''
-		+{0} percentage points of damage reduction
+		+{0}% damage reduction
 		Set bonus:
-		+{1} defense, +{2} life regeneration per second and +{3} pixels/tick² running acceleration
+		+{1} defense, +{2} life regeneration and +{3} pixels/tick² running acceleration
 		'''
 	SetBonus:
 		'''
-		+{1} defense, +{2} life regeneration per second and +{3} pixels/tick² running acceleration
+		+{1} defense, +{2} life regeneration and +{3} pixels/tick² running acceleration
 		'''
 }
 
@@ -268,7 +268,7 @@ LampWoodBreastplate: {
 	DisplayName: Lampwood Breastplate
 	Tooltip:
 		'''
-		+{0} life regeneration per second
+		+{0} life regeneration
 		'''
 }
 
@@ -276,14 +276,14 @@ LampWoodHelmet: {
 	DisplayName: Lampwood Helmet
 	Tooltip:
 		'''
-		Mining interval modifier reduced by {0} percentage points
+		-{0}% mining interval
 		Set bonus:
-		+{1} defense, +{2} life regeneration per second and a further {3} percentage-point reduction to the mining interval modifier
+		+{1} defense, +{2} life regeneration and an additional -{3}% mining interval
 		Emits light
 		'''
 	SetBonus:
 		'''
-		+{1} defense, +{2} life regeneration per second and a further {3} percentage-point reduction to the mining interval modifier
+		+{1} defense, +{2} life regeneration and an additional -{3}% mining interval
 		Emits light
 		'''
 }
@@ -406,12 +406,12 @@ SafetyHelmets: {
 		'''
 		{0}% increased damage
 		Set bonus:
-		+{1} defense and +{2} life regeneration per second
+		+{1} defense and +{2} life regeneration
 		'A mass-produced helmet, its materials aged by years in storage'
 		'''
 	SetBonus:
 		'''
-		+{1} defense and +{2} life regeneration per second
+		+{1} defense and +{2} life regeneration
 		'''
 }
 
@@ -491,13 +491,13 @@ ValiantHelmet: {
 		{0}% increased projectile hit damage while using a held melee projectile
 		Set bonus:
 		-{1} aggro and +{2} defense
-		Current implementation adds {3} percentage points to damage reduction
+		+{3}% damage reduction
 		'Often the first reward earned by newcomers to Yggdrasil Town'
 		'''
 	SetBonus:
 		'''
 		-{1} aggro and +{2} defense
-		Current implementation adds {3} percentage points to damage reduction
+		+{3}% damage reduction
 		'''
 }
 

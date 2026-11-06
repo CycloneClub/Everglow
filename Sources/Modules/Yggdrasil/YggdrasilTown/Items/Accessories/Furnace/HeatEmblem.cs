@@ -6,7 +6,7 @@ public class HeatEmblem : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
-	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(2, BuffTriggerRate * 100f, BuffDuration / 60f);
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(4, BuffTriggerRate * 100f, BuffDuration / 60f);
 
 	public const float BuffTriggerRate = 0.2f;
 	public const int BuffDuration = 180;

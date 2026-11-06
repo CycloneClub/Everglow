@@ -10,7 +10,6 @@ public class AmethystHeadedSpear : ModItem
 	{
 		ItemID.Sets.SkipsInitialUseSound[Item.type] = true;
 		ItemID.Sets.Spears[Item.type] = true;
-		Item.SetNameOverride("Amethyst-headed Spear");
 	}
 
 	public override void SetDefaults()

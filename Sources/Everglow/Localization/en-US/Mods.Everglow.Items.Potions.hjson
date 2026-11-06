@@ -5,20 +5,25 @@ EnergyDrink: {
 
 GuidePotion: {
 	DisplayName: Guide Potion
-	Tooltip: ""
+	Tooltip: "Illuminates the area around your cursor"
 }
 
 RayPotion: {
 	DisplayName: Ray Potion
-	Tooltip: ""
+	Tooltip: "Increases the brightness of your surroundings"
 }
 
 ShadowPotion: {
 	DisplayName: Shadow Potion
-	Tooltip: ""
+	Tooltip: "In darkness, grants 8 defense and 8% increased damage, and gradually grants night vision\nBright light reduces life regeneration"
 }
 
 JumpPotion: {
 	DisplayName: Jump Potion
 	Tooltip: Increases jump height by 20% and reduces fall damage by 25%
+}
+
+ScalePotion: {
+	DisplayName: "Scale Potion"
+	Tooltip: "Reduces contact damage from enemies by 5%"
 }

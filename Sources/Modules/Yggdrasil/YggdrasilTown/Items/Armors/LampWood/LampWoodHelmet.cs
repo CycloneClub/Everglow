@@ -9,9 +9,9 @@ public class LampWoodHelmet : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(PickSpeedBonus, ArmorSetDefenseBonus, ArmorSetLifeRegenBonus / 2f, ArmorSetPickSpeedBonus);
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(PickSpeedBonus, ArmorSetDefenseBonus, ArmorSetLifeRegenBonus, ArmorSetPickSpeedBonus);
 
-	public LocalizedText SetBonusText => this.GetLocalization("SetBonus").WithFormatArgs(PickSpeedBonus, ArmorSetDefenseBonus, ArmorSetLifeRegenBonus / 2f, ArmorSetPickSpeedBonus);
+	public LocalizedText SetBonusText => this.GetLocalization("SetBonus").WithFormatArgs(PickSpeedBonus, ArmorSetDefenseBonus, ArmorSetLifeRegenBonus, ArmorSetPickSpeedBonus);
 
 	private const int PickSpeedBonus = 8;
 	private const int ArmorSetPickSpeedBonus = 8;
