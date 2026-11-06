@@ -19,7 +19,7 @@ internal class MothYoyoProjectile : YoyoProjectile
 
 	public override void SetStaticDefaults()
 	{
-		ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = 40f;
+		ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = 22f;
 		ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 300f;
 		ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 16f;
 	}
@@ -30,7 +30,7 @@ internal class MothYoyoProjectile : YoyoProjectile
 		{
 			for (int i = 0; i < cubeVec.Length; i++)
 			{
-				var proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<MothYoyoSub>(), Projectile.damage / 2, 0, Projectile.owner, Projectile.whoAmI);
+				var proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<MothYoyoSub>(), Projectile.damage / 4, 0, Projectile.owner, Projectile.whoAmI);
 				(proj.ModProjectile as MothYoyoSub).targetPos = cubeVec[i] * 30;
 				proj.CritChance = Projectile.CritChance;
 				proj.netUpdate2 = true;
@@ -41,7 +41,7 @@ internal class MothYoyoProjectile : YoyoProjectile
 				{
 					for (int i = 0; i < cubeVec.Length; i++)
 					{
-						var proj2 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<MothYoyoSub>(), Projectile.damage / 2, 0, Projectile.owner, Projectile.whoAmI);
+						var proj2 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<MothYoyoSub>(), Projectile.damage / 4, 0, Projectile.owner, Projectile.whoAmI);
 						(proj2.ModProjectile as MothYoyoSub).targetPos = cubeVec[i] * 60;
 						proj2.CritChance = Projectile.CritChance;
 						proj2.netUpdate2 = true;

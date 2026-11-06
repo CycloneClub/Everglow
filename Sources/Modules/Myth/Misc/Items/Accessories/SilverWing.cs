@@ -1,5 +1,6 @@
 using Everglow.Myth.Common;
 using Terraria;
+using Terraria.Localization;
 
 namespace Everglow.Myth.Misc.Items.Accessories;
 
@@ -7,6 +8,8 @@ namespace Everglow.Myth.Misc.Items.Accessories;
 public class SilverWing : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(8, 3, 40);
 
 	public override void SetDefaults()
 	{

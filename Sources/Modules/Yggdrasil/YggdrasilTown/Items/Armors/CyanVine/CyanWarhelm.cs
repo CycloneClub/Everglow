@@ -1,5 +1,6 @@
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Terraria.GameContent.Creative;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.CyanVine;
 
@@ -7,6 +8,10 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.CyanVine;
 public class CyanWarhelm : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(5, 4, 1, 3);
+
+	public LocalizedText SetBonusText => this.GetLocalization("SetBonus").WithFormatArgs(5, 4, 1, 3);
 
 	public override void SetStaticDefaults()
 	{
@@ -29,13 +34,14 @@ public class CyanWarhelm : ModItem
 
 	public override void UpdateArmorSet(Player player)
 	{
+		player.setBonus = SetBonusText.Value;
 		player.GetDamage(DamageClass.Melee) += 0.01f;
-		player.GetArmorPenetration(DamageClass.Melee) += 5;
+		player.GetArmorPenetration(DamageClass.Melee) += 3;
 	}
 
 	public override void UpdateEquip(Player player)
 	{
-		player.GetDamage(DamageClass.Melee) += 0.04f;
+		player.GetDamage(DamageClass.Melee) += 0.05f;
 		player.GetCritChance(DamageClass.Melee) += 4;
 	}
 

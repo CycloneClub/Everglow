@@ -46,7 +46,7 @@ public class GlowWoodTorch : ModTile
 
 		if (!Main.dedServ)
 		{
-			flameTexture = ModContent.Request<Texture2D>("Everglow/Myth/TheFirefly/Tiles/Furnitures/GlowWoodTorch_Flame");
+			flameTexture = ModAsset.Tiles_GlowWoodTorch_Flame;
 		}
 
 		LocalizedText name = CreateMapEntryName();

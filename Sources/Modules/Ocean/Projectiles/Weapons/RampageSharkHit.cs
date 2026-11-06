@@ -8,7 +8,7 @@ public class RampageSharkHit : ModProjectile, IWarpProjectile, IBloomProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
 
-	public override string Texture => "Everglow/Ocean/Projectiles/Weapons/RampageShark/RampageShark_gun";
+	public override string Texture => ModAsset.RampageShark_gun_Mod;
 
 	public override void SetDefaults()
 	{

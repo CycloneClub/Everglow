@@ -63,7 +63,7 @@ internal class BlueFlame1Boom : ModProjectile
 			for (int d = 0; d < 6f; d++)
 			{
 				Vector2 vm = new Vector2(0, 2f).RotatedBy(Projectile.ai[0] + d / 3d * Math.PI);
-				Projectile.NewProjectile(null, Projectile.Center, vm, ModContent.ProjectileType<BlueFlame0LittleSoon>(), Projectile.damage, 0f, Main.LocalPlayer.whoAmI, 0, 0);
+				Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, vm, ModContent.ProjectileType<BlueFlame0LittleSoon>(), Projectile.damage, 0f, Projectile.owner, 0, 0);
 			}
 			Projectile.Kill();
 		}
@@ -95,7 +95,7 @@ internal class BlueFlame1Boom : ModProjectile
 	{
 		var texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
 		Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, new Color(color0.R, color0.G, color0.B, 0), Projectile.rotation, new Vector2(17, 17), Projectile.scale * 2.2f, SpriteEffects.None, 0);
-		Main.spriteBatch.Draw(ModContent.Request<Texture2D>("Everglow/Myth/LanternMoon/Projectiles/DashCore/DashCoreLight").Value, Projectile.Center - Main.screenPosition, null, new Color(color0.R / 155f * kb, color0.G / 155f * kb, color0.B / 155f * kb, 0), Projectile.rotation, new Vector2(56, 56), Projectile.scale * 2f, SpriteEffects.None, 0);
+		Main.spriteBatch.Draw(ModAsset.DashCoreLight.Value, Projectile.Center - Main.screenPosition, null, new Color(color0.R / 155f * kb, color0.G / 155f * kb, color0.B / 155f * kb, 0), Projectile.rotation, new Vector2(56, 56), Projectile.scale * 2f, SpriteEffects.None, 0);
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 		var bars = new List<Vertex2D>();

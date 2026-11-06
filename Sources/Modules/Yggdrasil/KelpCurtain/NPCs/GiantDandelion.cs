@@ -411,7 +411,7 @@ public class GiantDandelion : ModNPC
 		{
 			// The wave is spawned on the authoritative side and synced, never duplicated per client.
 			int direction = NPC.direction == 0 ? 1 : NPC.direction;
-			Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Bottom, new Vector2(ShockwaveSpeed * direction, 0f), ModContent.ProjectileType<GiantDandelion_Shockwave>(), ShockwaveDamage, 0f);
+			Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Bottom, new Vector2(ShockwaveSpeed * direction, 0f), ModContent.ProjectileType<GiantDandelion_Shockwave>(), ShockwaveDamage, 0f, Owner: Main.maxPlayers);
 		}
 
 		EnterState(GiantDandelionState.SmashRecovery);
@@ -462,7 +462,7 @@ public class GiantDandelion : ModNPC
 			int direction = NPC.direction == 0 ? 1 : NPC.direction;
 			Vector2 armPosition = NPC.Center + new Vector2(NPC.width * 0.35f * direction, -NPC.height * 0.25f);
 			Vector2 velocity = (target.Center - armPosition).SafeNormalize(new Vector2(direction, 0f)) * BoulderSpeed;
-			Projectile.NewProjectile(NPC.GetSource_FromAI(), armPosition, velocity, ModContent.ProjectileType<GiantDandelion_Boulder>(), BoulderDamage, 0f);
+			Projectile.NewProjectile(NPC.GetSource_FromAI(), armPosition, velocity, ModContent.ProjectileType<GiantDandelion_Boulder>(), BoulderDamage, 0f, Owner: Main.maxPlayers);
 		}
 	}
 

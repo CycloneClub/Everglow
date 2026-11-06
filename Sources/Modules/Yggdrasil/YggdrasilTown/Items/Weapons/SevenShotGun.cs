@@ -11,13 +11,13 @@ public class SevenShotGun : ModItem
 		Item.width = 48;
 		Item.height = 28;
 
-		Item.damage = 8;
+		Item.damage = 11;
 		Item.DamageType = DamageClass.Ranged;
 		Item.knockBack = 5f;
-		Item.crit = 15;
+		Item.crit = 8;
 		Item.noMelee = true;
 
-		Item.useTime = Item.useAnimation = 48;
+		Item.useTime = Item.useAnimation = 54;
 		Item.useStyle = ItemUseStyleID.Shoot;
 		Item.UseSound = SoundID.Item41;
 		Item.autoReuse = false;

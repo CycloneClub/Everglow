@@ -7,7 +7,7 @@ internal class NavyThunder : ModProjectile, IWarpProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
 
-	public override string Texture => "Everglow/Myth/TheFirefly/Projectiles/NavyThunderTex/FlameSkull";
+	public override string Texture => ModAsset.FlameSkull_Mod;
 
 	public override void SetDefaults()
 	{

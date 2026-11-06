@@ -12,10 +12,10 @@ public class LampWoodHammer : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.width = 64;
 		Item.height = 62;
-		Item.useAnimation = 30;
-		Item.useTime = 30;
+		Item.useAnimation = 32;
+		Item.useTime = 32;
 		Item.knockBack = 5.5f;
-		Item.damage = 13;
+		Item.damage = 18;
 		Item.rare = ItemRarityID.White;
 		Item.UseSound = SoundID.Item1;
 		Item.autoReuse = true;

@@ -111,7 +111,7 @@ public class GoldRoundYoyo : YoyoProjectile
 			for (int x = 0; x < 15; x++)
 			{
 				Vector2 v0 = new Vector2(Main.rand.NextFloat(3f, 12f), 0).RotatedByRandom(MathHelper.TwoPi);
-				Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, v0, ModContent.ProjectileType<GoldRound>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner);
+				Projectile.NewProjectile(Projectile.GetSource_OnHit(target), Projectile.Center, v0, ModContent.ProjectileType<GoldRound>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner);
 			}
 			for (int x = 0; x < 75; x++)
 			{

@@ -1,5 +1,4 @@
 using Everglow.Commons.Templates.Enemies;
-using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts.TwilightForest;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Enemies;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
@@ -109,7 +108,7 @@ public class AncientPhantom_Bow : Fighter
 			else
 			{
 				ShootTimer = 60;
-				Projectile.NewProjectile(NPC.GetSource_FromAI(), shootPos, shootVel, ModContent.ProjectileType<AncientPhantom_Bow_Arrow>(), 20, 0f, Main.myPlayer);
+				Projectile.NewProjectile(NPC.GetSource_FromAI(), shootPos, shootVel, ModContent.ProjectileType<AncientPhantom_Bow_Arrow>(), 20, 0f, Main.maxPlayers);
 
 				float dis_X = Math.Abs(NPC.Center.X - Main.player[NPC.target].Center.X);
 				if (dis_X <= SafeShootDistance || dis_X >= SafeShootDistance + 160)
@@ -265,12 +264,6 @@ public class AncientPhantom_Bow : Fighter
 	}
 
 	public override void Fighters_Jump(int pushTileX, int pushTileY, bool canJump) => base.Fighters_Jump(pushTileX, pushTileY, canJump);
-
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		TwilightForsetAndRelic twlightBiome = ModContent.GetInstance<TwilightForsetAndRelic>();
-		return !twlightBiome.IsBiomeActive(Main.LocalPlayer) ? 0f : 3f;
-	}
 
 	public override void OnKill()
 	{

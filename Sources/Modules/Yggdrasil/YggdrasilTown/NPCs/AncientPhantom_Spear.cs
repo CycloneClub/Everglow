@@ -1,6 +1,5 @@
 using Everglow.Commons.Templates.Enemies;
 using Everglow.Yggdrasil.Common;
-using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts.TwilightForest;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Enemies;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
@@ -87,7 +86,7 @@ public class AncientPhantom_Spear : Fighter
 			{
 				var target = Main.player[NPC.target];
 				Vector2 distance = (target.Center - NPC.Center).NormalizeSafe().RotatedBy(Main.rand.NextFloat(-0.3f, 0.3f));
-				var proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, 8), distance, ModContent.ProjectileType<AncientPhantom_Spear_Spear>(), NPC.damage, 2, Main.myPlayer, NPC.whoAmI);
+				var proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, 8), distance, ModContent.ProjectileType<AncientPhantom_Spear_Spear>(), NPC.damage, 2, Main.maxPlayers, NPC.whoAmI);
 				AncientPhantom_Spear_Spear aPSS = proj.ModProjectile as AncientPhantom_Spear_Spear;
 				if (aPSS is not null)
 				{
@@ -209,12 +208,6 @@ public class AncientPhantom_Spear : Fighter
 	{
 		HurtValue = 60f;
 		base.HitEffect(hit);
-	}
-
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		TwilightForsetAndRelic twlightBiome = ModContent.GetInstance<TwilightForsetAndRelic>();
-		return !twlightBiome.IsBiomeActive(Main.LocalPlayer) ? 0f : 3f;
 	}
 
 	public override void OnKill()

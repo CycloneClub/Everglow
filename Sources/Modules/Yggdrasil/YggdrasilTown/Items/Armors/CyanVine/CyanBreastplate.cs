@@ -9,7 +9,7 @@ public class CyanBreastplate : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(20, 20);
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(5, 0.05f);
 
 	public override void SetStaticDefaults()
 	{

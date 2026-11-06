@@ -18,7 +18,7 @@ public class ToothKnife : MeleeProj, IWarpProjectile
 		Projectile.ignoreWater = true;
 		Projectile.penetrate = -1;
 		Projectile.usesLocalNPCImmunity = true;
-		Projectile.localNPCHitCooldown = 15;
+		Projectile.localNPCHitCooldown = 24;
 		Projectile.DamageType = DamageClass.Melee;
 
 		Projectile.width = 80;
@@ -44,7 +44,7 @@ public class ToothKnife : MeleeProj, IWarpProjectile
 
 		Player player = Main.player[Projectile.owner];
 		Vector2 v = new Vector2(0, 6).RotatedByRandom(Math.PI * 2) * 5f;
-		Projectile.NewProjectile(null, target.Center - v * 3, v, ModContent.ProjectileType<TuskSlash>(), Projectile.damage / 3, Projectile.knockBack, player.whoAmI, Main.rand.NextFloat(-0.05f, 0.05f));
+		Projectile.NewProjectile(Projectile.GetSource_OnHit(target), target.Center - v * 3, v, ModContent.ProjectileType<TuskSlash>(), Projectile.damage / 4, Projectile.knockBack, player.whoAmI, Main.rand.NextFloat(-0.05f, 0.05f));
 	}
 
 	public override string TrailShapeTex()
@@ -54,7 +54,7 @@ public class ToothKnife : MeleeProj, IWarpProjectile
 
 	public override string TrailColorTex()
 	{
-		return "Everglow/Myth/TheTusk/Projectiles/Weapon/Tusk_Knife_Melee_Color";
+		return ModAsset.Tusk_Knife_Melee_Color_Mod;
 	}
 
 	public override float TrailAlpha(float factor)
@@ -280,7 +280,7 @@ public class ToothKnife : MeleeProj, IWarpProjectile
 
 				if (timer == (int)(1 * timeMul))
 				{
-					for (int i = 0; i < 5; i++)
+					for (int i = 0; i < 3; i++)
 					{
 						if (player.gravDir == 1)
 						{

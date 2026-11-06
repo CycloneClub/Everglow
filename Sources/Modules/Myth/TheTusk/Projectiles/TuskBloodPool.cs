@@ -75,14 +75,14 @@ public class TuskBloodPool : ModProjectile
 				NPC jaw = NPC.NewNPCDirect(Projectile.GetSource_FromAI(), Projectile.Center + new Vector2(Main.rand.NextFloat(-90, 90f), 50), ModContent.NPCType<Living_Jawbone>());
 				jaw.scale = Main.rand.NextFloat(0.5f, 1f);
 				jaw.velocity = new Vector2(0, -Main.rand.NextFloat(7f, 12f)).RotatedBy(Main.rand.NextFloat(-0.3f, 0.3f));
-				jaw.damage = 33;
+				jaw.damage = 24;
 				if (Main.expertMode)
 				{
-					jaw.damage = 44;
+					jaw.damage = 36;
 				}
 				if (Main.masterMode)
 				{
-					jaw.damage = 57;
+					jaw.damage = 48;
 				}
 			}
 		}
@@ -207,7 +207,7 @@ public class TuskBloodPool : ModProjectile
 
 	public override void OnKill(int timeLeft)
 	{
-		Projectile projectile = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<TuskBloodPool_close>(), 0, 0, Projectile.owner, Main.rand.NextFloat(1), Main.rand.NextFloat(1));
+		Projectile projectile = Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<TuskBloodPool_close>(), 0, 0, Projectile.owner, Main.rand.NextFloat(1), Main.rand.NextFloat(1));
 		TuskBloodPool_close tbpc = projectile.ModProjectile as TuskBloodPool_close;
 		tbpc.DissolvingTile = DissolvingTile;
 	}

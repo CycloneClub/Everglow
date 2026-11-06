@@ -42,7 +42,7 @@ public class Sunflower : ModProjectile
         }*/
 	public override bool PreDraw(ref Color lightColor)
 	{
-		Texture2D texture = ModContent.Request<Texture2D>("Everglow/Myth/Misc/Projectiles/Weapon/Melee/Sunflower").Value;
+		Texture2D texture = ModAsset.Melee_Sunflower.Value;
 		Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, new Rectangle(0, 46 * Projectile.frame, 46, 46), lightColor, Projectile.rotation, new Vector2(23), 1f, SpriteEffects.None, 0f);
 		return false;
 	}
@@ -97,7 +97,7 @@ public class Sunflower : ModProjectile
 			for (int t = 0; t < 4; t++)
 			{
 				Vector2 v2 = new Vector2(0, Main.rand.NextFloat(0, 4f)).RotatedByRandom(Math.PI * 2d);
-				int y = Projectile.NewProjectile(Terraria.Entity.InheritSource(Projectile), v1.X, v1.Y, v2.X, v2.Y, ModContent.ProjectileType<SunFlowerpetal>(), Projectile.damage / 2, 0.5f, Main.myPlayer);
+				int y = Projectile.NewProjectile(Projectile.GetSource_OnHit(target), v1.X, v1.Y, v2.X, v2.Y, ModContent.ProjectileType<SunFlowerpetal>(), Projectile.damage / 2, 0.5f, Projectile.owner);
 				Main.projectile[y].scale = Main.rand.NextFloat(0.9f, 1.1f);
 				Main.projectile[y].damage = (int)(Projectile.damage * Main.projectile[y].scale);
 				Main.projectile[y].frame = Main.rand.Next(0, 8);

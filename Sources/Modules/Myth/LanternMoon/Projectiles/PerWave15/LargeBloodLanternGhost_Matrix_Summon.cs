@@ -37,7 +37,7 @@ public class LargeBloodLanternGhost_Matrix_Summon : ModProjectile
 			{
 				for (int i = 0; i < 5; i++)
 				{
-					Projectile p0 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + new Vector2(0, -116).RotatedBy(i / 5f * MathHelper.TwoPi), Vector2.zeroVector, ModContent.ProjectileType<LargeBloodLanternGhost_Minion>(), 20, 0f, Main.myPlayer, i);
+					Projectile p0 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + new Vector2(0, -116).RotatedBy(i / 5f * MathHelper.TwoPi), Vector2.zeroVector, ModContent.ProjectileType<LargeBloodLanternGhost_Minion>(), 20, 0f, Projectile.owner, i);
 					LargeBloodLanternGhost_Minion lBLGM = p0.ModProjectile as LargeBloodLanternGhost_Minion;
 					if (lBLGM is not null)
 					{

@@ -156,8 +156,7 @@ public abstract class MagicBookProjectile : ModProjectile
 		if (player.itemTime == player.itemTimeMax - 2 && player.HeldItem.type == ItemType)
 		{
 			Vector2 velocity = vTOMouse.SafeNormalize(Vector2.Zero) * player.HeldItem.shootSpeed;
-			var p = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + velocity * MulStartPosByVelocity, velocity * MulVelocity, ProjType, (int)(player.HeldItem.damage * MulDamage), player.HeldItem.knockBack, player.whoAmI);
-			p.CritChance = player.GetWeaponCrit(player.HeldItem);
+			Projectile.NewProjectileDirect(player.GetSource_ItemUse(player.HeldItem), Projectile.Center + velocity * MulStartPosByVelocity, velocity * MulVelocity, ProjType, (int)(player.GetWeaponDamage(player.HeldItem) * MulDamage), player.HeldItem.knockBack, player.whoAmI);
 		}
 	}
 

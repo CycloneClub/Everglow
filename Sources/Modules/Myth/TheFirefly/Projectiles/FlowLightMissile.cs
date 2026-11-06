@@ -59,9 +59,9 @@ internal class FlowLightMissile : ModProjectile
 				Shoot();
 			}
 		}
-		if (energy > 450)
+		if (energy > 360)
 		{
-			energy = 450;
+			energy = 360;
 		}
 
 		if (player.statMana <= 0)

@@ -46,7 +46,7 @@ public class CyanVineThrowingSpear_Proj : ModProjectile
 			Projectile.velocity = (OwnerMouseWorld - player.MountedCenter).SafeNormalize(new Vector2(0, -1 * player.gravDir));
 			Projectile.Center = player.MountedCenter + Projectile.velocity.RotatedBy(Math.PI * -0.5) * 20 * PlayerDir - Projectile.velocity * (Power / 3f - 54) + new Vector2(0, 6 * player.gravDir);
 			Projectile.rotation = (float)(Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + Math.PI * 0.25);
-			if (Power < 100)
+			if (Power < 60)
 			{
 				Power += 1;
 			}

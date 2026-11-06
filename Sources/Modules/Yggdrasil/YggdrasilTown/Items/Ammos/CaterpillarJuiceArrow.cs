@@ -11,7 +11,7 @@ public class CaterpillarJuiceArrow : ModItem
 		Item.width = 18;
 		Item.height = 52;
 
-		Item.damage = 6;
+		Item.damage = 5;
 		Item.DamageType = DamageClass.Ranged;
 		Item.knockBack = 2f;
 

@@ -11,13 +11,13 @@ public class LampWoodBow : ModItem
 		Item.width = 64;
 		Item.height = 78;
 
-		Item.damage = 8;
+		Item.damage = 14;
 		Item.DamageType = DamageClass.Ranged;
 		Item.knockBack = 0;
 
 		Item.useStyle = ItemUseStyleID.Shoot;
-		Item.useTime = 29;
-		Item.useAnimation = 25;
+		Item.useTime = 28;
+		Item.useAnimation = 28;
 		Item.UseSound = SoundID.Item1;
 		Item.autoReuse = false;
 		Item.noUseGraphic = false;

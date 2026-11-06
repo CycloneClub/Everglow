@@ -22,7 +22,7 @@ public class StoneJavelin : ModItem
 
 		// Weapon Properties
 		Item.DamageType = DamageClass.Ranged;
-		Item.damage = 10;
+		Item.damage = 12;
 		Item.knockBack = 5f;
 		Item.crit = 4;
 		Item.noUseGraphic = true;

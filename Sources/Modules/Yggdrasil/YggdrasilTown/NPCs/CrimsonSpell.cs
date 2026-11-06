@@ -1,5 +1,4 @@
 using Everglow.Yggdrasil.Common;
-using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Armors.BloodCultist;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Enemies;
 using Terraria.DataStructures;
@@ -19,9 +18,9 @@ public class CrimsonSpell : ModNPC
 		NPC.width = 32;
 		NPC.height = 54;
 		NPC.aiStyle = -1;
-		NPC.damage = 30;
+		NPC.damage = 24;
 		NPC.defense = 0;
-		NPC.lifeMax = 450;
+		NPC.lifeMax = 300;
 		NPC.HitSound = SoundID.NPCHit3;
 		NPC.DeathSound = SoundID.NPCDeath3;
 		NPC.noGravity = true;
@@ -32,16 +31,6 @@ public class CrimsonSpell : ModNPC
 
 	public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 	{
-	}
-
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		YggdrasilTownBiome YggdrasilTownBiome = ModContent.GetInstance<YggdrasilTownBiome>();
-		if (!YggdrasilTownBiome.IsBiomeActive(Main.LocalPlayer))
-		{
-			return 0f;
-		}
-		return 0.05f;
 	}
 
 	public override void OnSpawn(IEntitySource source)
@@ -77,7 +66,7 @@ public class CrimsonSpell : ModNPC
 		{
 			if (NPC.ai[0] == 30)
 			{
-				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(-5 * NPC.spriteDirection, 0), Vector2.zeroVector, ModContent.ProjectileType<BloodSpell>(), 10, 1, NPC.target);
+				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(-5 * NPC.spriteDirection, 0), Vector2.zeroVector, ModContent.ProjectileType<BloodSpell>(), 10, 1, Main.maxPlayers);
 			}
 			if (NPC.ai[0] < 80)
 			{

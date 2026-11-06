@@ -1,3 +1,4 @@
+using Everglow.Commons.Mechanics.Cooldown;
 using Everglow.SubSpace;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.Kitchen.Tiles;
@@ -271,8 +272,6 @@ public class ArenaPlayer : ModPlayer
 
 	public bool MouseInTagUIPanel = false;
 
-	public int ShieldCooling = 0;
-
 	public override void OnRespawn()
 	{
 		if (YggdrasilTownCentralSystem.InArena_YggdrasilTown())
@@ -373,21 +372,20 @@ public class ArenaPlayer : ModPlayer
 				}
 				Player.GetDamage(DamageClass.Generic) *= DamageReduce;
 			}
-			if (ShieldCooling <= 0 && Player.ownedProjectileCounts[ModContent.ProjectileType<PlayerDefence>()] <= 0)
+			if (!Player.HasCooldown<ArenaShieldCooldown>() && Player.ownedProjectileCounts[ModContent.ProjectileType<PlayerDefence>()] <= 0)
 			{
-				ShieldCooling = 0;
 				var tile = TileUtils.SafeGetTile((Player.Bottom + new Vector2(0, 16)).ToTileCoordinates());
 				if (Player.controlDown && Player.velocity.Y <= 0.05f && Collision.SolidCollision(Player.BottomLeft, Player.width, 16) && tile.TileType == ModContent.TileType<ShieldTile>() && tile.TileFrameX == 0 && tile.TileFrameY == 0)
 				{
 					tile.TileFrameX = 342;
 					tile.TileFrameY = 36;
-					ShieldCooling = 60;
+					Player.AddCooldown(ArenaShieldCooldown.ID, 60);
 					Projectile.NewProjectileDirect(Player.GetSource_FromAI(), Player.Center, Vector2.zeroVector, ModContent.ProjectileType<PlayerDefence>(), 0, 0, Player.whoAmI);
 				}
 			}
 			else
 			{
-				ShieldCooling--;
+				Player.TickCooldown(ArenaShieldCooldown.ID);
 			}
 		}
 		base.PostUpdateEquips();
@@ -524,4 +522,23 @@ public class ArenaPlayer : ModPlayer
 		}
 		base.ModifyHurt(ref modifiers);
 	}
+}
+
+public class ArenaShieldCooldown : CooldownBase
+{
+	public static new string ID => nameof(ArenaShieldCooldown);
+
+	public override string TypeID => ID;
+
+	public override bool AutomaticTick => false;
+
+	public override bool CanTickDown => true;
+
+	public override bool PersistentCooldown => true;
+
+	public override bool CooldownNoSave => true;
+
+	public override bool IsVisible => false;
+
+	public override Texture2D Texture => ModAsset.ShieldTile.Value;
 }

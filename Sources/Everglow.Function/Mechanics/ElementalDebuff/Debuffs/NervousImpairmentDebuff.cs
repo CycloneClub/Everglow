@@ -14,6 +14,6 @@ public class NervousImpairmentDebuff : ElementalDebuffHandler
 
 	public override void PostProc(NPC npc)
 	{
-		npc.AddBuff(BuffID.Confused, 720);
+		npc.AddBuff(BuffID.Confused, 180);
 	}
 }

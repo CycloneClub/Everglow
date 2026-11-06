@@ -1,11 +1,15 @@
+using Terraria.Localization;
+
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
 
 /// <summary>
-/// While player taked damage over 6 for 3 times, heal by 15.
+/// After taking at least 10 damage three times, heal by 15.
 /// </summary>
 public class CelticSeal : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(10, 3, 15);
 
 	public override void SetDefaults()
 	{
@@ -36,10 +40,10 @@ public class CelticSealPlayer : ModPlayer
 	{
 		if (CelticSealEnable)
 		{
-			if (hurtInfo.Damage >= 6)
+			if (hurtInfo.Damage >= 10)
 			{
 				HitCount++;
-				if (HitCount >= 2)
+				if (HitCount >= 3)
 				{
 					Player.Heal(15);
 					HitCount = 0;
@@ -56,10 +60,10 @@ public class CelticSealPlayer : ModPlayer
 	{
 		if (CelticSealEnable)
 		{
-			if (hurtInfo.Damage >= 6)
+			if (hurtInfo.Damage >= 10)
 			{
 				HitCount++;
-				if (HitCount >= 2)
+				if (HitCount >= 3)
 				{
 					Player.Heal(15);
 					HitCount = 0;

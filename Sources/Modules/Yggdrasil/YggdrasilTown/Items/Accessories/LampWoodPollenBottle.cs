@@ -3,6 +3,7 @@ using Everglow.Yggdrasil.YggdrasilTown.VFXs;
 using Terraria;
 using Terraria.Audio;
 using Terraria.Enums;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories
 {
@@ -10,6 +11,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories
 	public class LampWoodPollenBottle : ModItem
 	{
 		public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
+
+		public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(2);
 
 		public override void SetDefaults()
 		{
@@ -44,8 +47,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories
 			// Each successive jump has weaker power
 			return player.GetModPlayer<LampWoodPollenBottleJumpPlayer>().jumpsRemaining switch
 			{
-				1 => 1.3f,
-				2 => 0.8f,
+				1 => 1.1f,
+				2 => 0.7f,
 				_ => 0f,
 			};
 		}

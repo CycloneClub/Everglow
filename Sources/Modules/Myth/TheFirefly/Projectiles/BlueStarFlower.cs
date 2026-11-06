@@ -9,7 +9,7 @@ public class BlueStarFlower : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
 
-	public override string Texture => "Everglow/Myth/TheFirefly/Projectiles/CorruptLight";
+	public override string Texture => ModAsset.CorruptLight_Mod;
 
 	public override void SetDefaults()
 	{
@@ -118,7 +118,7 @@ public class BlueStarFlower : ModProjectile
 
 	public override void OnKill(int timeLeft)
 	{
-		SoundEngine.PlaySound(new SoundStyle("Everglow/Myth/Sounds/Crystal_Burst_Normal").WithVolumeScale(Projectile.ai[0] / 20f + 0.2f), Projectile.Center);
+		SoundEngine.PlaySound(new SoundStyle(ModAsset.Crystal_Burst_Normal_Mod).WithVolumeScale(Projectile.ai[0] / 20f + 0.2f), Projectile.Center);
 		GenerateSmog(12);
 		GenerateFire(20);
 		GenerateSpark(12);
@@ -132,7 +132,7 @@ public class BlueStarFlower : ModProjectile
 				for (int j = -3; j <= 3; j++)
 				{
 					Vector2 v = new Vector2(0.1f + j * 0.11f, 0).RotatedBy(j * 0.15f + i * MathHelper.TwoPi / c + r);
-					Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, v, ModContent.ProjectileType<BlackCorruptRain3>(), Projectile.damage / 6, 0f, Main.myPlayer, Main.rand.NextFloat(MathF.PI * 2)); // Originally: NPC.damage / 5
+					Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center, v, ModContent.ProjectileType<BlackCorruptRain3>(), Projectile.damage / 2, 0f, Projectile.owner, Main.rand.NextFloat(MathF.PI * 2)); // Originally: NPC.damage / 5
 				}
 			}
 		}
@@ -143,7 +143,7 @@ public class BlueStarFlower : ModProjectile
 				for (int i = 0; i < 40; i++)
 				{
 					Vector2 v = new Vector2(0.1f + i % 5 / 16f, 0).RotatedBy(i * MathHelper.TwoPi / 40 + r);
-					Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, v, ModContent.ProjectileType<BlackCorruptRain3>(), Projectile.damage / 6, 0f, Main.myPlayer, Main.rand.NextFloat(MathF.PI * 2));
+					Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center, v, ModContent.ProjectileType<BlackCorruptRain3>(), Projectile.damage / 2, 0f, Projectile.owner, Main.rand.NextFloat(MathF.PI * 2));
 				}
 			}
 			else
@@ -151,7 +151,7 @@ public class BlueStarFlower : ModProjectile
 				for (int i = 0; i < 30; i++)
 				{
 					Vector2 v = new Vector2(0.1f + i % 5 / 16f, 0).RotatedBy(i * MathHelper.TwoPi / 30 + r);
-					Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, v, ModContent.ProjectileType<BlackCorruptRain3>(), Projectile.damage / 6, 0f, Main.myPlayer, Main.rand.NextFloat(MathF.PI * 2));
+					Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center, v, ModContent.ProjectileType<BlackCorruptRain3>(), Projectile.damage / 2, 0f, Projectile.owner, Main.rand.NextFloat(MathF.PI * 2));
 				}
 			}
 		}
@@ -161,7 +161,7 @@ public class BlueStarFlower : ModProjectile
 			for (int i = 0; i < c; i++)
 			{
 				Vector2 v = new Vector2(0.18f + (float)Math.Sin(i * MathHelper.TwoPi / 10) * 0.17f, 0).RotatedBy(i * MathHelper.TwoPi / c + r);
-				Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, v, ModContent.ProjectileType<BlackCorruptRain3>(), Projectile.damage / 6, 0f, Main.myPlayer, Main.rand.NextFloat(MathF.PI * 2));
+				Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center, v, ModContent.ProjectileType<BlackCorruptRain3>(), Projectile.damage / 2, 0f, Projectile.owner, Main.rand.NextFloat(MathF.PI * 2));
 			}
 		}
 		if (Main.masterMode)

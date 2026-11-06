@@ -90,7 +90,7 @@ public class LanternBombRemoteControl : ModItem
 		}
 	}
 
-	public void KillGreenLanternEffect(Vector2 pos)
+	public void KillGreenLanternEffect(Player player, Vector2 pos)
 	{
 		for (int g = 0; g < 12; g++)
 		{
@@ -220,15 +220,15 @@ public class LanternBombRemoteControl : ModItem
 			{
 				vel *= 0.65f;
 			}
-			Projectile.NewProjectileDirect(Item.GetSource_FromAI(), pos, vel, ModContent.ProjectileType<GreenFlameSharpCrystal>(), 20, 1, Main.myPlayer);
+			Projectile.NewProjectileDirect(player.GetSource_ItemUse(Item), pos, vel, ModContent.ProjectileType<GreenFlameSharpCrystal>(), 20, 1, player.whoAmI);
 		}
 		Main.slimeRain = false;
 	}
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-		Projectile.NewProjectileDirect(Item.GetSource_FromAI(), Main.MouseWorld, Vector2.zeroVector, ModContent.ProjectileType<KillLanternMoonMobs>(), 20, 1, Main.myPlayer);
-		// KillGreenLanternEffect(Main.MouseWorld);
+		Projectile.NewProjectileDirect(source, Main.MouseWorld, Vector2.zeroVector, ModContent.ProjectileType<KillLanternMoonMobs>(), 20, 1, player.whoAmI);
+		// KillGreenLanternEffect(player, Main.MouseWorld);
 		return false;
 	}
 }

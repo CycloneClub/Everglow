@@ -5,11 +5,13 @@ namespace Everglow.Commons.Mechanics.ElementalDebuff.Debuffs;
 
 public class CorrosionDebuff : ElementalDebuffHandler
 {
-	public const int CorrosionProjectileDamage = 20;
+	public const int CorrosionProjectileDamage = 8;
 
 	public static new string ID => nameof(CorrosionDebuff);
 
 	public override string TypeID => ID;
+
+	public override int ProcDamage { get; protected set; } = 40;
 
 	public override int DotDamage { get; protected set; } = 2;
 

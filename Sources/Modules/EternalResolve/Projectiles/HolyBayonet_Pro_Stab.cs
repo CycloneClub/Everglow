@@ -41,9 +41,9 @@ namespace Everglow.EternalResolve.Projectiles
 			}
 			Vector2 addPos = new Vector2(0, 120f).RotatedByRandom(6.283);
 			Vector2 newAddPos = addPos.RotatedBy(Math.PI / 2f);
-			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), target.Center + newAddPos * 0.9f, -newAddPos * 0.14f, ModContent.ProjectileType<HolyBayonet_Slash>(), Projectile.damage / 6, Projectile.knockBack, Projectile.owner);
+			Projectile.NewProjectileDirect(Projectile.GetSource_OnHit(target), target.Center + newAddPos * 0.9f, -newAddPos * 0.14f, ModContent.ProjectileType<HolyBayonet_Slash>(), Projectile.damage / 6, Projectile.knockBack, Projectile.owner);
 			newAddPos = addPos;
-			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), target.Center + newAddPos * 1.2f, -newAddPos * 0.3f, ModContent.ProjectileType<HolyBayonet_Slash>(), Projectile.damage / 6, Projectile.knockBack, Projectile.owner);
+			Projectile.NewProjectileDirect(Projectile.GetSource_OnHit(target), target.Center + newAddPos * 1.2f, -newAddPos * 0.3f, ModContent.ProjectileType<HolyBayonet_Slash>(), Projectile.damage / 6, Projectile.knockBack, Projectile.owner);
 			base.OnHitNPC(target, hit, damageDone);
 		}
 	}

@@ -30,7 +30,7 @@ public class MothBallExplosion : ModProjectile, IWarpProjectile
 	{
 		ScreenShaker mplayer = Main.player[Main.myPlayer].GetModPlayer<ScreenShaker>();
 		mplayer.FlyCamPosition = new Vector2(0, 48).RotatedByRandom(6.283);
-		SoundEngine.PlaySound(new SoundStyle("Everglow/Myth/Sounds/MothBallExplosion"), Projectile.Center);
+		SoundEngine.PlaySound(new SoundStyle(ModAsset.MothBallExplosion_mp3_Mod), Projectile.Center);
 		GenerateSmog((int)(1.3 * Projectile.ai[0]));
 		GenerateFire((int)(2.3 * Projectile.ai[0]));
 		GenerateSmog((int)(1.3 * Projectile.ai[0]));

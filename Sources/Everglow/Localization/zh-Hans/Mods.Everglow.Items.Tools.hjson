@@ -1,6 +1,6 @@
 AmberFlowerHook: {
 	DisplayName: 琥珀花钩
-	Tooltip: ""
+	Tooltip: 可同时保持两个附着点的抓钩
 }
 
 BoneAndPlatformCreate: {
@@ -15,7 +15,7 @@ CheckPylonPoint: {
 
 ClimbingPickaxe: {
 	DisplayName: 攀爬镐
-	Tooltip: ""
+	Tooltip: 可附着在树干上的抓钩
 }
 
 CreateRoom: {
@@ -100,12 +100,16 @@ GenerateMazeRoom: {
 
 GlowstickLauncher: {
 	DisplayName: 荧光棒发射器
-	Tooltip: ""
+	Tooltip:
+		'''
+		消耗背包中的普通、黏性、弹性、仙灵或探矿荧光棒发射
+		普通荧光棒发射后会变为黏性荧光棒
+		'''
 }
 
 HangGlider: {
 	DisplayName: 滑翔翼
-	Tooltip: ""
+	Tooltip: 在空中手持时滑翔，按下键下降
 }
 
 HardmodeItem: {
@@ -124,7 +128,7 @@ LampWoodHammer: {
 }
 
 MiningPowerPickaxe: {
-	DisplayName: 矿用动力镐
+	DisplayName: 矿用动力镐 I型
 	Tooltip: ""
 }
 
@@ -250,4 +254,14 @@ EldamberHammer: {
 EldamberPickaxe: {
 	DisplayName: 古珀镐
 	Tooltip: ""
+}
+
+MiningPowerPickaxe_2: {
+	DisplayName: 矿用动力镐 II型
+	Tooltip: 按住右键充能，采矿时消耗能量连锁开采相连矿物
+}
+
+MiningPowerPickaxe_3: {
+	DisplayName: 矿用动力镐 III型
+	Tooltip: 按住右键充能，采矿时消耗能量连锁开采相连矿物
 }

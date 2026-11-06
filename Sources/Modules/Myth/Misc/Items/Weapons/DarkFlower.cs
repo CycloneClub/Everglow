@@ -10,10 +10,11 @@ public class DarkFlower : ModItem
 	{
 		Item.CloneDefaults(ItemID.FlowerofFrost);
 		Item.magic = true;
-		Item.damage = 150;
+		Item.damage = 24;
+		Item.mana = 7;
 		Item.shootSpeed = 11;
-		Item.useTime = 1;
-		Item.useAnimation = 20;
+		Item.useTime = 28;
+		Item.useAnimation = 28;
 		Item.useLimitPerAnimation = 1;
 		Item.shoot = ModContent.ProjectileType<DarkFlower_Proj>();
 	}

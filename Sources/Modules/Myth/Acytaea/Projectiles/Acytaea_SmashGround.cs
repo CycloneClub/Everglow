@@ -9,7 +9,7 @@ public class Acytaea_SmashGround : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.TownNPCProjectiles;
 
-	public override string Texture => "Everglow/Myth/Acytaea/Projectiles/AcytaeaSword_projectile";
+	public override string Texture => ModAsset.AcytaeaSword_projectile_Mod;
 
 	public override void SetDefaults()
 	{
@@ -54,20 +54,25 @@ public class Acytaea_SmashGround : ModProjectile
 
 			SoundEngine.PlaySound(SoundID.DD2_BetsyFireballImpact, Projectile.Center);
 			Projectile p0 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<Acytaea_FlamePost>(), 110, 3, Projectile.owner, 1);
+			p0.npcProj = Projectile.npcProj;
 			p0.Bottom = Projectile.Center;
 		}
 
 		if (Projectile.timeLeft == 30)
 		{
 			Projectile p0 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + new Vector2(120, 0), Vector2.zeroVector, ModContent.ProjectileType<Acytaea_FlamePost>(), 110, 3, Projectile.owner, 0.8f);
+			p0.npcProj = Projectile.npcProj;
 			Projectile p1 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + new Vector2(-120, 0), Vector2.zeroVector, ModContent.ProjectileType<Acytaea_FlamePost>(), 110, 3, Projectile.owner, 0.8f);
+			p1.npcProj = Projectile.npcProj;
 			p0.Bottom = Projectile.Center + new Vector2(120, 0);
 			p1.Bottom = Projectile.Center + new Vector2(-120, 0);
 		}
 		if (Projectile.timeLeft == 10)
 		{
 			Projectile p0 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + new Vector2(240, 0), Vector2.zeroVector, ModContent.ProjectileType<Acytaea_FlamePost>(), 110, 3, Projectile.owner, 0.5f);
+			p0.npcProj = Projectile.npcProj;
 			Projectile p1 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + new Vector2(-240, 0), Vector2.zeroVector, ModContent.ProjectileType<Acytaea_FlamePost>(), 110, 3, Projectile.owner, 0.5f);
+			p1.npcProj = Projectile.npcProj;
 			p0.Bottom = Projectile.Center + new Vector2(240, 0);
 			p1.Bottom = Projectile.Center + new Vector2(-240, 0);
 		}

@@ -78,7 +78,7 @@ public class IceCrystal : ModDust
 /// </summary>
 public class IceCrystal2 : ModDust
 {
-	public override string Texture => "Everglow/" + ModAsset.IceCrystal_Path;
+	public override string Texture => ModAsset.IceCrystal_Mod;
 
 	public override void OnSpawn(Dust dust)
 	{

@@ -6,7 +6,7 @@ public class VortexVanquisherThump : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
 
-	public override string Texture => "Everglow/MEAC/Projectiles/VortexVanquisher";
+	public override string Texture => ModAsset.VortexVanquisher_Mod;
 
 	public override void SetStaticDefaults()
 	{

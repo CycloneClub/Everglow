@@ -80,7 +80,7 @@ namespace Everglow.MEAC.PlanetBeFall.Projectiles.PlanetBefall
 			for (int i = 0; i < 16; i++)
 			{
 				var v = new Vector2(0.001f, 0);
-				Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, v.RotatedBy(Math.PI * i / 8).RotatedByRandom(Math.PI * i / 100), ModContent.ProjectileType<GoldenCrack>(), 10, 0);
+				Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, v.RotatedBy(Math.PI * i / 8).RotatedByRandom(Math.PI * i / 100), ModContent.ProjectileType<GoldenCrack>(), 10, 0, Owner: Projectile.owner);
 			}
 
 			PlanetBeFallScreenMovePlayer planetBeFallScreenMovePlayer = player.GetModPlayer<PlanetBeFallScreenMovePlayer>();
@@ -135,7 +135,7 @@ namespace Everglow.MEAC.PlanetBeFall.Projectiles.PlanetBefall
 			planetBeFallScreenMovePlayer.Proj = null;
 			planetBeFallScreenMovePlayer.AnimationTimer = 0;
 
-			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center - new Vector2(0, 100), Vector2.zeroVector, ModContent.ProjectileType<PlanetBefallExplosion>(), (int)(Projectile.damage * 100 / 100f), Projectile.knockBack * 0.4f, Projectile.owner, 60);
+			Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center - new Vector2(0, 100), Vector2.zeroVector, ModContent.ProjectileType<PlanetBefallExplosion>(), (int)(Projectile.damage * 100 / 100f), Projectile.knockBack * 0.4f, Projectile.owner, 60);
 			SoundEngine.PlaySound(SoundID.DD2_ExplosiveTrapExplode, player.Center);
 			ScreenShaker gsPlayer = player.GetModPlayer<ScreenShaker>();
 			gsPlayer.FlyCamPosition = new Vector2(0, 150).RotatedByRandom(6.283);

@@ -13,16 +13,16 @@ public class CyanVineStaff : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.width = 60;
 		Item.height = 68;
-		Item.useAnimation = 26;
-		Item.useTime = 26;
+		Item.useAnimation = 28;
+		Item.useTime = 28;
 		Item.knockBack = 4f;
-		Item.damage = 13;
+		Item.damage = 15;
 		Item.rare = ItemRarityID.White;
 
 		Item.value = 4000;
 		Item.autoReuse = false;
 		Item.DamageType = DamageClass.Magic;
-		Item.mana = 7;
+		Item.mana = 6;
 		Item.channel = true;
 
 		Item.noMelee = true;

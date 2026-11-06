@@ -30,9 +30,9 @@ internal class WaterBoltBook : MagicBookProjectile
 	public override void SpecialAI()
 	{
 		Player player = Main.player[Projectile.owner];
-		int damage = player.HeldItem.damage;
 		if (player.itemTime == 2)
 		{
+			int damage = player.GetWeaponDamage(player.HeldItem);
 			Vector2 velocity = (Main.MouseWorld - Projectile.Center).SafeNormalize(Vector2.Zero) * player.HeldItem.shootSpeed;
 			int T = ProjectileID.WaterBolt;
 			if (player.HasBuff(ModContent.BuffType<WaterBoltII>()))
@@ -40,9 +40,8 @@ internal class WaterBoltBook : MagicBookProjectile
 				damage = (int)(damage * 1.85);
 				T = ModContent.ProjectileType<NewWaterBolt>();
 			}
-			var p = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + velocity * 6, velocity, T, damage, player.HeldItem.knockBack, player.whoAmI);
+			var p = Projectile.NewProjectileDirect(player.GetSource_ItemUse(player.HeldItem), Projectile.Center + velocity * 6, velocity, T, damage, player.HeldItem.knockBack, player.whoAmI);
 			p.penetrate = 2;
-			p.CritChance = player.GetWeaponCrit(player.HeldItem);
 		}
 	}
 }

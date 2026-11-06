@@ -1,5 +1,6 @@
 using Everglow.Myth.TheFirefly.Items.Materials;
 using Terraria.GameContent.Creative;
+using Terraria.Localization;
 
 namespace Everglow.Myth.TheFirefly.Items.Armors
 {
@@ -7,6 +8,8 @@ namespace Everglow.Myth.TheFirefly.Items.Armors
 	public class FireflywoodBreastplate : ModItem
 	{
 		public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
+
+		public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(16, 1);
 
 		public override void SetStaticDefaults()
 		{
@@ -25,7 +28,7 @@ namespace Everglow.Myth.TheFirefly.Items.Armors
 		public override void UpdateEquip(Player player)
 		{
 			player.buffImmune[BuffID.ManaSickness] = true; // Was BuffID.OnFire
-			player.statManaMax2 += 20;
+			player.statManaMax2 += 16;
 			player.maxMinions++;
 		}
 

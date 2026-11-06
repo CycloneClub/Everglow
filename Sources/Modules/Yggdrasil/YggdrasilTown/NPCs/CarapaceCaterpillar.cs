@@ -1,7 +1,6 @@
 using Everglow.Commons.Coroutines;
 using Everglow.Commons.Templates.Enemies;
 using Everglow.Yggdrasil.Common;
-using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Terraria.DataStructures;
@@ -19,9 +18,9 @@ public class CarapaceCaterpillar : Caterpillar
 		SegmentCount = 10;
 		AnimationSpeed = 3;
 		NPC.knockBackResist = 0.05f;
-		NPC.lifeMax = 55;
-		NPC.damage = 10;
-		NPC.defense = 15;
+		NPC.lifeMax = 75;
+		NPC.damage = 12;
+		NPC.defense = 12;
 		NPC.value = 20;
 		NPC.HitSound = SoundID.NPCHit2;
 		NPC.DeathSound = SoundID.NPCDeath1;
@@ -82,17 +81,6 @@ public class CarapaceCaterpillar : Caterpillar
 			return new Rectangle(96, 0, 30, height);
 		}
 		return base.GetDrawFrame(Style);
-	}
-
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		YggdrasilTownBiome YggdrasilTownBiome = ModContent.GetInstance<YggdrasilTownBiome>();
-		if (!YggdrasilTownBiome.IsBiomeActive(Main.LocalPlayer))
-		{
-			return 0f;
-		}
-
-		return 8f;
 	}
 
 	public override void HitEffect(NPC.HitInfo hit)

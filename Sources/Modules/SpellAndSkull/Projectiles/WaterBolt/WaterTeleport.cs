@@ -108,7 +108,7 @@ public class WaterTeleport : ModProjectile, IWarpProjectile
 							if (p0.owner == player.whoAmI && p0.type == Projectile.type && p0.active)
 							{
 								p0.Kill();
-								Projectile.NewProjectile(p0.GetSource_FromAI(), p0.Center, Vector2.Zero, ModContent.ProjectileType<RipplingWave>(), 0, 0, 255, 1);
+								Projectile.NewProjectile(p0.GetSource_Death(), p0.Center, Vector2.Zero, ModContent.ProjectileType<RipplingWave>(), 0, 0, p0.owner, 1);
 								p0.active = false;
 							}
 						}

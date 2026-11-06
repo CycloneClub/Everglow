@@ -161,7 +161,7 @@ namespace Everglow.EternalResolve.Projectiles
 						dust.velocity = new Vector2(0, Main.rand.NextFloat(2f, 3f)).RotateRandom(6.283);
 						dust.noGravity = true;
 					}
-					SoundEngine.PlaySound(new SoundStyle("Everglow/EternalResolve/Sounds/Slash").WithVolumeScale(0.33f).WithPitchOffset(1f), Projectile.Center);
+					SoundEngine.PlaySound(new SoundStyle(ModAsset.Slash_Mod).WithVolumeScale(0.33f).WithPitchOffset(1f), Projectile.Center);
 				}
 				if (Projectile.timeLeft < 180)
 				{

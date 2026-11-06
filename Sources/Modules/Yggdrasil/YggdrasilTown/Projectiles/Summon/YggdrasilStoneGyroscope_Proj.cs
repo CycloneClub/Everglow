@@ -22,7 +22,7 @@ public class YggdrasilStoneGyroscope_Proj : GyroscopeProjectile
 		Projectile.penetrate = -1;
 		Projectile.DamageType = DamageClass.Summon;
 		Projectile.usesLocalNPCImmunity = true;
-		Projectile.localNPCHitCooldown = 12;
+		Projectile.localNPCHitCooldown = 18;
 		Projectile.minionSlots = 1;
 		Projectile.minion = true;
 		SummonBuffType = ModContent.BuffType<YggdrasilStoneGyroscopeBuff>();

@@ -271,7 +271,7 @@ public class LunarFlareII : ModProjectile, IWarpProjectile// 将接口改为使�
 		Projectile.position += Projectile.velocity;
 		if (Projectile.velocity.Length() > 3)
 		{
-			Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<LunarFlareHit>(), Projectile.damage, Projectile.knockBack * 1.5f, Projectile.owner, 10f, Main.rand.NextFloat(6.283f));
+			Projectile.NewProjectile(Projectile.GetSource_FromThis("OnTileCollide"), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<LunarFlareHit>(), Projectile.damage, Projectile.knockBack * 1.5f, Projectile.owner, 10f, Main.rand.NextFloat(6.283f));
 		}
 
 		Projectile.velocity *= 0;
@@ -295,6 +295,6 @@ public class LunarFlareII : ModProjectile, IWarpProjectile// 将接口改为使�
 		}
 
 		Projectile.friendly = false;
-		Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<LunarFlareHit>(), Projectile.damage, Projectile.knockBack * 1.5f, Projectile.owner, 10f, Main.rand.NextFloat(6.283f));
+		Projectile.NewProjectile(Projectile.GetSource_OnHit(target), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<LunarFlareHit>(), Projectile.damage, Projectile.knockBack * 1.5f, Projectile.owner, 10f, Main.rand.NextFloat(6.283f));
 	}
 }

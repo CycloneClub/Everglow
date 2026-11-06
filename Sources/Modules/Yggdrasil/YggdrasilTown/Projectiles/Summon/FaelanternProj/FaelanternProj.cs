@@ -130,11 +130,11 @@ public class FaelanternProj : ModProjectile
 	public IEnumerator<ICoroutineInstruction> Attack(int target)
 	{
 		FaelanternSkeleton.AnimationState.SetAnimation(0, "attack", true);
-		for (int i = 0; i < 120; i++)
+		for (int i = 0; i < 150; i++)
 		{
 			FaelanternSkeleton.AnimationState.Update(1 / 60f);
 
-			if (i == 40 || i == 50 || i == 60)
+			if (i == 45 || i == 60 || i == 75)
 			{
 				NPC Target = Main.npc[target];
 

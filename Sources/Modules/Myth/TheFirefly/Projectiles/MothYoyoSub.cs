@@ -7,7 +7,7 @@ public class MothYoyoSub : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
 
-	public override string Texture => "Everglow/Myth/TheFirefly/Projectiles/ButterflyDream";
+	public override string Texture => ModAsset.ButterflyDream_Mod;
 
 	public override void SetStaticDefaults()
 	{
@@ -29,7 +29,7 @@ public class MothYoyoSub : ModProjectile
 		Projectile.penetrate = -1;
 		Projectile.scale = 1f;
 		Projectile.usesLocalNPCImmunity = true;
-		Projectile.localNPCHitCooldown = 15;
+		Projectile.localNPCHitCooldown = 24;
 	}
 
 	public Vector3 targetPos;

@@ -2,7 +2,6 @@ using Everglow.Commons.CustomTiles;
 using Everglow.Commons.DataStructures;
 using Everglow.Commons.Mechanics.Miscs;
 using Everglow.Yggdrasil.Common;
-using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.RockElemental;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Enemies;
@@ -35,8 +34,8 @@ public class RockElemental : ModNPC
 	{
 		NPC.width = 64;
 		NPC.height = 64;
-		NPC.lifeMax = 400;
-		NPC.damage = 30;
+		NPC.lifeMax = 360;
+		NPC.damage = 24;
 		NPC.defense = 6;
 		NPC.friendly = false;
 		NPC.aiStyle = -1;
@@ -51,15 +50,15 @@ public class RockElemental : ModNPC
 		NPC.scale = 1.2f;
 		if (Main.expertMode)
 		{
-			NPC.damage = 50;
+			NPC.damage = 40;
 			NPC.defense = 8;
-			NPC.lifeMax = 800;
+			NPC.lifeMax = 650;
 		}
 		if (Main.masterMode)
 		{
-			NPC.damage = 75;
+			NPC.damage = 56;
 			NPC.defense = 10;
-			NPC.lifeMax = 1080;
+			NPC.lifeMax = 900;
 		}
 	}
 
@@ -81,17 +80,6 @@ public class RockElemental : ModNPC
 		{
 			NPC.frame.Y = (int)(NPC.frameCounter / 5 % 5) * frameHeight;
 		}
-	}
-
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		YggdrasilTownBiome YggdrasilTownBiome = ModContent.GetInstance<YggdrasilTownBiome>();
-		if (!YggdrasilTownBiome.IsBiomeActive(Main.LocalPlayer))
-		{
-			return 0f;
-		}
-
-		return 0.05f;
 	}
 
 	public override void OnSpawn(IEntitySource source)
@@ -315,7 +303,7 @@ public class RockElemental : ModNPC
 					// 吸起一个石块
 					if (NPC.ai[0] == 380)
 					{
-						Projectile projectile = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<RockElemental_ThrowingStone>(), 6, 10, -1, NPC.target, NPC.whoAmI);
+						Projectile projectile = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<RockElemental_ThrowingStone>(), 6, 10, Main.maxPlayers, NPC.target, NPC.whoAmI);
 						RockElemental_ThrowingStone RockElemental_ThrowingStone = projectile.ModProjectile as RockElemental_ThrowingStone;
 						if (RockElemental_ThrowingStone != null)
 						{
@@ -429,7 +417,7 @@ public class RockElemental : ModNPC
 						for (int i = 0; i <= num; i++)
 						{
 							Vector2 v = new Vector2(0, Main.rand.NextFloat(-12, -7)).RotatedBy((float)(i - num * 0.5f) * 0.1f);
-							Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Top + new Vector2((i - num * 0.5f) * 4, 20), v, ModContent.ProjectileType<RockElemental_Stonefragment>(), 6, 0);
+							Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Top + new Vector2((i - num * 0.5f) * 4, 20), v, ModContent.ProjectileType<RockElemental_Stonefragment>(), 6, 0, Owner: Main.maxPlayers);
 						}
 						for (int i = 0; i < 2; i++)
 						{

@@ -1,15 +1,18 @@
 using Terraria.Enums;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
 
 public class TelescopicPlatformBeta : TelescopicPlatform
 {
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(MaxHeight / 16f, MoveSpeed * 60f / 16f);
+
 	public override void SetDefaults()
 	{
 		Item.DefaultToAccessory(80, 98);
 		PillarCount = 21;
-		MaxHeight = 720;
-		MoveSpeed = 6;
+		MaxHeight = 640;
+		MoveSpeed = 5;
 		Texture2 = ModAsset.TelescopicPlatformBeta_Platform.Value;
 		BodyDrawOffsetY = 8;
 		BodyRect = new Rectangle(0, 0, 80, 40);

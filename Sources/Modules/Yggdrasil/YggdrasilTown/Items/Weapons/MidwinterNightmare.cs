@@ -13,7 +13,8 @@ public class MidwinterNightmare : ModItem
 		Item.height = 16;
 
 		Item.DamageType = DamageClass.Summon;
-		Item.damage = 15;
+		Item.damage = 22;
+		Item.mana = 14;
 		Item.knockBack = 0.5f;
 
 		Item.useTime = Item.useAnimation = 34;

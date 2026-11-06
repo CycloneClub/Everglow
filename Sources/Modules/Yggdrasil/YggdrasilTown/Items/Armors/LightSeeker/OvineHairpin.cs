@@ -1,5 +1,6 @@
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Terraria.GameContent.Creative;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.LightSeeker;
 
@@ -7,6 +8,10 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.LightSeeker;
 public class OvineHairpin : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(5, 12, 8, 7, 220);
+
+	public LocalizedText SetBonusText => this.GetLocalization("SetBonus").WithFormatArgs(5, 12, 8, 7, 220);
 
 	public override void SetStaticDefaults()
 	{
@@ -20,7 +25,7 @@ public class OvineHairpin : ModItem
 		Item.height = 26;
 		Item.value = 2500;
 		Item.rare = ItemRarityID.Green;
-		Item.defense = 1;
+		Item.defense = 3;
 	}
 
 	public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -30,23 +35,24 @@ public class OvineHairpin : ModItem
 
 	public override void UpdateArmorSet(Player player)
 	{
+		player.setBonus = SetBonusText.Value;
 		Color lightColor = Lighting.GetColor(player.Center.ToTileCoordinates());
 
 		float lightIntensity = MathHelper.Max(MathHelper.Max(lightColor.R, lightColor.G), lightColor.B);
 		if (lightIntensity > 220)
 		{
-			player.GetDamage(DamageClass.Magic) += 0.1f;
+			player.GetDamage(DamageClass.Magic) += 0.07f;
 		}
 
-		player.manaCost *= 0.9f;
-		player.GetDamage(DamageClass.Magic) += 0.05f;
+		player.manaCost *= 0.88f;
+		player.GetDamage(DamageClass.Magic) += 0.08f;
 	}
 
 	public override void UpdateEquip(Player player)
 	{
 		Lighting.AddLight(player.Center, Vector3.one * 0.5f);
 
-		player.GetCritChance(DamageClass.Magic) += 4f;
+		player.GetCritChance(DamageClass.Magic) += 5f;
 	}
 
 	public override void AddRecipes()

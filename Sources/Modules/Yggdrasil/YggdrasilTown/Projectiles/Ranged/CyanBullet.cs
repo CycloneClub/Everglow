@@ -17,7 +17,7 @@ public class CyanBullet : TrailingProjectile
 		Projectile.friendly = true;
 		Projectile.hostile = false;
 		Projectile.aiStyle = -1;
-		Projectile.penetrate = 6;
+		Projectile.penetrate = 3;
 		Projectile.timeLeft = 3600;
 
 		SelfLuminous = true;
@@ -32,7 +32,7 @@ public class CyanBullet : TrailingProjectile
 
 	public override void OnSpawn(IEntitySource source)
 	{
-		Projectile.damage += 2;
+		Projectile.damage += 1;
 		base.OnSpawn(source);
 	}
 
@@ -53,7 +53,7 @@ public class CyanBullet : TrailingProjectile
 		}
 		if (Projectile.timeLeft == 3540)
 		{
-			Projectile.damage -= 2;
+			Projectile.damage -= 1;
 		}
 	}
 

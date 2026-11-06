@@ -74,8 +74,8 @@ namespace Everglow.EternalResolve.Projectiles
 						{
 							if (starNPC != null)
 							{
-								Projectile.NewProjectile(Projectile.GetSource_FromAI(), starNPC.Center, Vector2.zeroVector, ModContent.ProjectileType<DreamStar_Explosion>(), (int)(Projectile.damage * 4.26), Projectile.knockBack * 4.26f, Projectile.owner, 1.2f);
-								Projectile.NewProjectile(Projectile.GetSource_FromAI(), target.Center, Vector2.zeroVector, ModContent.ProjectileType<DreamStar_Explosion>(), (int)(Projectile.damage * 4.26), Projectile.knockBack * 4.26f, Projectile.owner, 1.2f);
+								Projectile.NewProjectile(Projectile.GetSource_OnHit(target), starNPC.Center, Vector2.zeroVector, ModContent.ProjectileType<DreamStar_Explosion>(), (int)(Projectile.damage * 4.26), Projectile.knockBack * 4.26f, Projectile.owner, 1.2f);
+								Projectile.NewProjectile(Projectile.GetSource_OnHit(target), target.Center, Vector2.zeroVector, ModContent.ProjectileType<DreamStar_Explosion>(), (int)(Projectile.damage * 4.26), Projectile.knockBack * 4.26f, Projectile.owner, 1.2f);
 							}
 							starNPC = target;
 							ContinuousHit = 0;
@@ -84,8 +84,8 @@ namespace Everglow.EternalResolve.Projectiles
 				}
 				else
 				{
-					Projectile.NewProjectile(Projectile.GetSource_FromAI(), lastHitTarget.Center, Vector2.zeroVector, ModContent.ProjectileType<DreamStar_Explosion>(), (int)(Projectile.damage * 2.20 * (ContinuousHit / 5f + 0.00f)), Projectile.knockBack * 2.20f * (ContinuousHit / 5f + 0.05f), Projectile.owner, ContinuousHit / 5f + 0.05f);
-					Projectile.NewProjectile(Projectile.GetSource_FromAI(), target.Center, Vector2.zeroVector, ModContent.ProjectileType<DreamStar_Explosion>(), (int)(Projectile.damage * 2.20 * (ContinuousHit / 5f + 0.00f)), Projectile.knockBack * 2.20f * (ContinuousHit / 5f + 0.05f), Projectile.owner, ContinuousHit / 5f + 0.05f);
+					Projectile.NewProjectile(Projectile.GetSource_OnHit(target), lastHitTarget.Center, Vector2.zeroVector, ModContent.ProjectileType<DreamStar_Explosion>(), (int)(Projectile.damage * 2.20 * (ContinuousHit / 5f + 0.00f)), Projectile.knockBack * 2.20f * (ContinuousHit / 5f + 0.05f), Projectile.owner, ContinuousHit / 5f + 0.05f);
+					Projectile.NewProjectile(Projectile.GetSource_OnHit(target), target.Center, Vector2.zeroVector, ModContent.ProjectileType<DreamStar_Explosion>(), (int)(Projectile.damage * 2.20 * (ContinuousHit / 5f + 0.00f)), Projectile.knockBack * 2.20f * (ContinuousHit / 5f + 0.05f), Projectile.owner, ContinuousHit / 5f + 0.05f);
 					lastHitTarget = target;
 					ContinuousHit = 0;
 				}
@@ -114,7 +114,7 @@ namespace Everglow.EternalResolve.Projectiles
 			{
 				if (!starNPC.active)
 				{
-					Projectile.NewProjectile(Projectile.GetSource_FromAI(), starNPC.Center, Vector2.zeroVector, ModContent.ProjectileType<DreamStar_Explosion>(), (int)(Projectile.damage * 4.26), Projectile.knockBack * 4.26f);
+					Projectile.NewProjectile(Projectile.GetSource_FromAI(), starNPC.Center, Vector2.zeroVector, ModContent.ProjectileType<DreamStar_Explosion>(), (int)(Projectile.damage * 4.26), Projectile.knockBack * 4.26f, Owner: Projectile.owner);
 					Item.NewItem(starNPC.GetSource_Death(), starNPC.Hitbox, ModContent.ItemType<StarSeed>());
 					starNPC = null;
 				}

@@ -1,3 +1,5 @@
+using Everglow.Commons.Utilities;
+
 namespace Everglow.Commons.Templates.Weapons.StabbingSwords;
 
 public class StabbingSwordStaminaPlayer : ModPlayer
@@ -10,9 +12,9 @@ public class StabbingSwordStaminaPlayer : ModPlayer
 	private int drawAlphaCD = 0;
 
 	/// <summary>
-	/// The time interval between recovery process and the (end of) last attack.
+	/// Initialize the original recovery delay after cooldown registration is ready.
 	/// </summary>
-	private int recoveryCooldown = RecoveryCooldownDefault;
+	private bool recoveryCooldownInitialized;
 
 	private int MaxStamina => MaxStaminaDefault + ExtraStamina;
 
@@ -81,13 +83,19 @@ public class StabbingSwordStaminaPlayer : ModPlayer
 
 	public override void PostUpdate()
 	{
+		if (!recoveryCooldownInitialized)
+		{
+			Player.AddCooldown(StabbingSwordRecoveryCooldown.ID, RecoveryCooldownDefault, overwrite: false);
+			recoveryCooldownInitialized = true;
+		}
+
 		// Start Recovery Process
 		if (stamina <= 0 && !StaminaRecovering)
 		{
 			stamina = 0;
 			StaminaRecovering = true;
 		}
-		if (StaminaRecovering && recoveryCooldown <= 0)
+		if (StaminaRecovering && !Player.HasCooldown<StabbingSwordRecoveryCooldown>())
 		{
 			stamina += StaminaRecoverySpeed;
 			if (stamina > MaxStamina)
@@ -100,14 +108,13 @@ public class StabbingSwordStaminaPlayer : ModPlayer
 		{
 			if (stamina < MaxStamina)
 			{
-				if (recoveryCooldown <= 0)
+				if (!Player.HasCooldown<StabbingSwordRecoveryCooldown>())
 				{
-					recoveryCooldown = 0;
 					stamina += StaminaRecoverySpeed / 2f;
 				}
 				else
 				{
-					recoveryCooldown--;
+					Player.TickCooldown(StabbingSwordRecoveryCooldown.ID);
 				}
 			}
 			else
@@ -117,7 +124,10 @@ public class StabbingSwordStaminaPlayer : ModPlayer
 		}
 		else
 		{
-			recoveryCooldown = RecoveryCooldownDefault;
+			if (Player.GetCooldown(StabbingSwordRecoveryCooldown.ID)?.timeLeft != RecoveryCooldownDefault)
+			{
+				Player.AddCooldown(StabbingSwordRecoveryCooldown.ID, RecoveryCooldownDefault);
+			}
 		}
 
 		if (stamina != MaxStamina)

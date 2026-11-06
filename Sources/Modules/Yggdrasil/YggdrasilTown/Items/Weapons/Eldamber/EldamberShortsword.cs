@@ -15,9 +15,9 @@ public class EldamberShortsword : ModItem
 	{
 		Item.width = 32;
 		Item.height = 32;
-		Item.damage = 14;
+		Item.damage = 18;
 		Item.DamageType = DamageClass.Melee;
-		Item.useTime = Item.useAnimation = 12;
+		Item.useTime = Item.useAnimation = 14;
 		Item.UseSound = SoundID.Item1;
 		Item.autoReuse = true;
 		Item.useTurn = true;

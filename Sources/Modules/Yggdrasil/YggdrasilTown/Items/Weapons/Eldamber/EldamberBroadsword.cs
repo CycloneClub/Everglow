@@ -15,9 +15,9 @@ public class EldamberBroadsword : ModItem
 	{
 		Item.width = 32;
 		Item.height = 32;
-		Item.damage = 20;
+		Item.damage = 24;
 		Item.DamageType = DamageClass.Melee;
-		Item.useTime = Item.useAnimation = 24;
+		Item.useTime = Item.useAnimation = 26;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.UseSound = SoundID.Item1;
 		Item.autoReuse = true;

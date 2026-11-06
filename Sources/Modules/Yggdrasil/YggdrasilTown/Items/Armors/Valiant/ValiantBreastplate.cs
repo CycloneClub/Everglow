@@ -8,7 +8,7 @@ public class ValiantBreastplate : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(20, 20);
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(4);
 
 	public override void SetStaticDefaults()
 	{
@@ -27,9 +27,5 @@ public class ValiantBreastplate : ModItem
 	public override void UpdateEquip(Player player)
 	{
 		player.GetCritChance(DamageClass.Melee) += 4f;
-	}
-
-	public override void AddRecipes()
-	{
 	}
 }

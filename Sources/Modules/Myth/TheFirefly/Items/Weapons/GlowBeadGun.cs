@@ -8,13 +8,13 @@ public class GlowBeadGun : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.damage = 34;
+		Item.damage = 24;
 		Item.DamageType = DamageClass.Magic;
-		Item.mana = 4;
+		Item.mana = 3;
 		Item.width = 104;
 		Item.height = 38;
-		Item.useTime = 20;
-		Item.useAnimation = 20;
+		Item.useTime = 30;
+		Item.useAnimation = 30;
 		Item.useStyle = ItemUseStyleID.Shoot;
 		Item.noMelee = true;
 		Item.noUseGraphic = true;

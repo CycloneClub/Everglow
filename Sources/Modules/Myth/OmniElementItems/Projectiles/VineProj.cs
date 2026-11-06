@@ -64,7 +64,7 @@ public class VineProj : ModProjectile
 			Lighting.AddLight(Projectile.Center, 0, colorLight * 0.9f, 0);
 			if (Main.rand.NextBool(40))
 			{
-				int VineP = Projectile.NewProjectile(null, Projectile.Center + player.Center - StartPos, Projectile.velocity, ModContent.ProjectileType<VineProj2>(), 50, 2f, Main.myPlayer, Main.rand.Next(100), Main.rand.NextFloat(0, 2f));
+				int VineP = Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center + player.Center - StartPos, Projectile.velocity, ModContent.ProjectileType<VineProj2>(), 50, 2f, Projectile.owner, Main.rand.Next(100), Main.rand.NextFloat(0, 2f));
 				Main.projectile[VineP].timeLeft = Main.rand.Next(70, 140);
 			}
 		}

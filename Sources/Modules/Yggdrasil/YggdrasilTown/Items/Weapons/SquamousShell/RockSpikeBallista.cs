@@ -12,10 +12,10 @@ public class RockSpikeBallista : CrossBowItem
 		Item.rare = ItemRarityID.White;
 		Item.value = 8200;
 
-		Item.useTime = 24;
-		Item.useAnimation = 24;
+		Item.useTime = 22;
+		Item.useAnimation = 22;
 		Item.shootSpeed = 21f;
-		Item.damage = 18;
+		Item.damage = 42;
 		Item.knockBack = 8f;
 		CrossBowProjType = ModContent.ProjectileType<RockSpikeBallista_Proj>();
 	}

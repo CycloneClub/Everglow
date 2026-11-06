@@ -124,7 +124,7 @@ internal class LunarFlareArray : ModProjectile
 			// 在非服务器上请求图片
 			if (Main.netMode != NetmodeID.Server)
 			{
-				texture ??= ModContent.Request<Texture2D>("Everglow/SpellAndSkull/Projectiles/LunarFlare/Star", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+				texture ??= ModAsset.Star.Value;
 			}
 		}
 

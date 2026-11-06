@@ -136,7 +136,7 @@ public class GreenThornLauncher_Proj : ModProjectile
 			for (int i = 0; i < projNum; i++)
 			{
 				var projVelo = new Vector2(0, 10f).RotatedByRandom(MathHelper.TwoPi);
-				Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, projVelo, ModContent.ProjectileType<GreenThornLauncher_SubProj>(), (int)(Projectile.damage * 0.4f), knockback, Projectile.owner);
+				Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center, projVelo, ModContent.ProjectileType<GreenThornLauncher_SubProj>(), (int)(Projectile.damage * 0.4f), knockback, Projectile.owner);
 			}
 		}
 	}

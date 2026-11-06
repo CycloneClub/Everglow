@@ -9,7 +9,7 @@ public class CyanVineBullet : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.damage = 10;
+		Item.damage = 8;
 		Item.ammo = AmmoID.Bullet;
 		Item.consumable = true;
 		Item.DamageType = DamageClass.Ranged;

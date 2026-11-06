@@ -7,7 +7,7 @@ public class LanternGhostKingExplosion : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
 
-	public override string Texture => "Everglow/" + ModAsset.DarkLanternBombExplosion_Path;
+	public override string Texture => ModAsset.DarkLanternBombExplosion_Mod;
 
 	public int Timer = 0;
 
@@ -32,6 +32,7 @@ public class LanternGhostKingExplosion : ModProjectile
 		for (int i = 0; i < 14; i++)
 		{
 			Projectile p0 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, new Vector2(0, Main.rand.NextFloat(10, 80)).RotatedByRandom(MathHelper.TwoPi), ModContent.ProjectileType<BurningLanternWreck>(), 30, 1, Projectile.owner);
+			p0.npcProj = true;
 			p0.timeLeft = Main.rand.Next(100, 240);
 		}
 	}

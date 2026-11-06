@@ -9,7 +9,7 @@ public class AcytaeaTornado : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
 
-	public override string Texture => "Everglow/Myth/Acytaea/Projectiles/AcytaeaSword_projectile";
+	public override string Texture => ModAsset.AcytaeaSword_projectile_Mod;
 
 	public override void SetDefaults()
 	{
@@ -63,7 +63,7 @@ public class AcytaeaTornado : ModProjectile
 		}
 		if (Projectile.timeLeft % 200 == 0)
 		{
-			SoundEngine.PlaySound(new SoundStyle("Everglow/Myth/Sounds/TyphoonBlackHoleStrong").WithVolumeScale(100f / ((player.Center - Projectile.Center).Length() + 100)), Projectile.Center);
+			SoundEngine.PlaySound(new SoundStyle(ModAsset.TyphoonBlackHoleStrong_Mod).WithVolumeScale(100f / ((player.Center - Projectile.Center).Length() + 100)), Projectile.Center);
 		}
 	}
 

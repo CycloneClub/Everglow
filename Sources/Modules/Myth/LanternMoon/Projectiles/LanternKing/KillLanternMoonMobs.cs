@@ -177,7 +177,7 @@ public class KillLanternMoonMobs : ModProjectile, IWarpProjectile
 		{
 			target.active = false;
 		}
-		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), target.Center, Vector2.zeroVector, ModContent.ProjectileType<SphereLanternProj>(), 20, 1, Projectile.owner);
+		Projectile.NewProjectileDirect(Projectile.GetSource_OnHit(target), target.Center, Vector2.zeroVector, ModContent.ProjectileType<SphereLanternProj>(), 20, 1, Projectile.owner);
 		base.OnHitNPC(target, hit, damageDone);
 	}
 

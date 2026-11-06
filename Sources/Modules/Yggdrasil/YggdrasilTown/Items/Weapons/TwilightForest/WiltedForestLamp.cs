@@ -5,10 +5,10 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.TwilightForest;
 
 public class WiltedForestLamp : ModItem
 {
-	// Wilted Forest Lamp will not occupy minion slots, but can only exist 8 per player.
+	// Wilted Forest Lamp will not occupy minion slots, but can only exist 4 per player.
 	public override string LocalizationCategory => LocalizationUtils.Categories.SummonWeapons;
 
-	// Wilted Forest Lamp will not occupy minion slots, but can only exist 8 per player.
+	// Wilted Forest Lamp will not occupy minion slots, but can only exist 4 per player.
 	public override void SetDefaults()
 	{
 		Item.width = 48;
@@ -17,7 +17,7 @@ public class WiltedForestLamp : ModItem
 		Item.DamageType = DamageClass.Summon;
 		Item.damage = 14;
 		Item.knockBack = 0.5f;
-		Item.mana = 14;
+		Item.mana = 18;
 
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.UseSound = SoundID.Item20;
@@ -33,7 +33,7 @@ public class WiltedForestLamp : ModItem
 
 	public override bool CanUseItem(Player player)
 	{
-		if (player.ownedProjectileCounts[Item.shoot] >= 8)
+		if (player.ownedProjectileCounts[Item.shoot] >= 4)
 		{
 			return false;
 		}

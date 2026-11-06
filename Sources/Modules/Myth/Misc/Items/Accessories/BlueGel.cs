@@ -1,9 +1,13 @@
+using Terraria.Localization;
+
 namespace Everglow.Myth.Misc.Items.Accessories;
 
 [AutoloadEquip(EquipType.Neck)]
 public class BlueGel : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(30, 4);
 
 	public override void SetDefaults()
 	{

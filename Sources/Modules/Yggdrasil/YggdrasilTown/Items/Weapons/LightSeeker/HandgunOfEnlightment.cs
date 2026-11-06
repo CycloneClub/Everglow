@@ -13,14 +13,14 @@ public class HandgunOfEnlightment : ModItem
 		Item.height = 32;
 		Item.scale = 0.75f;
 
-		Item.useTime = 25;
-		Item.useAnimation = 25;
+		Item.useTime = 22;
+		Item.useAnimation = 22;
 		Item.useStyle = ItemUseStyleID.Shoot;
 		Item.autoReuse = false;
 		Item.UseSound = SoundID.Item41;
 
 		Item.DamageType = DamageClass.Ranged;
-		Item.damage = 15;
+		Item.damage = 22;
 		Item.knockBack = 1f;
 		Item.noMelee = true;
 

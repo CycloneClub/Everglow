@@ -18,7 +18,7 @@ BloodySwamp: {
 	Tooltip:
 		'''
 		发射法术模拟的血流
-		右键消耗40法力发射一个加速回血的圆形领域
+		右键消耗24法力发射一个加速回血的圆形领域
 		'''
 }
 
@@ -92,14 +92,14 @@ EyeOfAnabiosis: {
 	DisplayName: 隐生之眼
 	Tooltip:
 		'''
-		手持即开始充能，12秒后可以攻击
+		手持即开始充能，4秒后可以攻击
 		发射青蓝色追踪火焰，最多同时攻击3个目标
 		'''
 }
 
 FeatheredStaff: {
 	DisplayName: 羽鳍杖
-	Tooltip: 发射三只附魔飞棍鳍
+	Tooltip: 发射两只附魔飞棍鳍
 }
 
 FeatherMagic: {
@@ -168,7 +168,7 @@ HexaCrystalStaff: {
 
 IntroductiontoThermalElectricity: {
 	DisplayName: 热电法术绪论
-	Tooltip: ""
+	Tooltip: 发射等离子球，接触敌人、地形或水后膨胀爆发，对周围造成伤害
 }
 
 LanternBombRemoteControl: {
@@ -244,7 +244,7 @@ RedAlgaeMagicStaff: {
 
 RockQuake: {
 	DisplayName: 重岩爆裂
-	Tooltip: 发射一束力场，不会直接造成伤害，但是穿透实体方块时会从方块内部长出尖刺
+	Tooltip: 发射能直接造成伤害的力场，穿透实体方块时会从方块内部长出尖刺
 }
 
 SightOfTile: {
@@ -267,8 +267,12 @@ SmeltingStaff: {
 }
 
 SpringOfQuicksand: {
-	DisplayName: Spring Of Quicksand
-	Tooltip: ""
+	DisplayName: 流沙之泉
+	Tooltip:
+		'''
+		发射一道流沙，在飞行途中最多分出五道小型沙流
+		每道小型沙流造成45%伤害
+		'''
 }
 
 ThunderFlower: {
@@ -282,8 +286,8 @@ ToothMagicBall: {
 }
 
 TwilightShamanStaff: {
-	DisplayName: Twilight Shaman Staff
-	Tooltip: ""
+	DisplayName: 暮光萨满法杖
+	Tooltip: 发射冰霜球
 }
 
 VineRepairWand: {
@@ -301,6 +305,6 @@ YggdrasilAmberLaser: {
 	Tooltip:
 		'''
 		发射一束琥珀色的激光，击中实体方块后会在上面产生琥珀结晶
-		琥珀结晶也能对路过滴人造成伤害
+		琥珀结晶也能对路过的敌人造成伤害
 		'''
 }

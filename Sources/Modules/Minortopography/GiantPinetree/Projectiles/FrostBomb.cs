@@ -168,7 +168,7 @@ public class FrostBomb : ModProjectile
 		for (int g = 0; g < 9; g++)
 		{
 			Vector2 velo = new Vector2(Main.rand.NextFloat(7f, 12f), 0).RotatedByRandom(6.283);
-			Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center + velo, velo, ModContent.ProjectileType<FrostSpice>(), (int)(Projectile.damage * 0.375f), Projectile.knockBack * 0.2f, Projectile.owner);
+			Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center + velo, velo, ModContent.ProjectileType<FrostSpice>(), (int)(Projectile.damage * 0.375f), Projectile.knockBack * 0.2f, Projectile.owner);
 		}
 		GenerateFrostFlame(25);
 		GenerateIceDust(30);

@@ -54,7 +54,7 @@ public class Fevens_EnchantingSmash : ModProjectile
 		}
 		if (Projectile.timeLeft == 1)
 		{
-			var p0 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), EndPosition, Vector2.zeroVector, ModContent.ProjectileType<Fevens_EnchantingSmash_Explosion>(), 260, 2, default, Projectile.Center.X, Projectile.Center.Y);
+			var p0 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), EndPosition, Vector2.zeroVector, ModContent.ProjectileType<Fevens_EnchantingSmash_Explosion>(), 260, 2, Projectile.owner, Projectile.Center.X, Projectile.Center.Y);
 		}
 	}
 

@@ -47,7 +47,7 @@ namespace Everglow.EternalResolve.Projectiles
 			}
 			if (Projectile.timeLeft == 114)
 			{
-				SoundEngine.PlaySound(new SoundStyle("Everglow/EternalResolve/Sounds/Slash").WithVolumeScale(0.33f), Projectile.Center);
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.Slash_Mod).WithVolumeScale(0.33f), Projectile.Center);
 			}
 		}
 

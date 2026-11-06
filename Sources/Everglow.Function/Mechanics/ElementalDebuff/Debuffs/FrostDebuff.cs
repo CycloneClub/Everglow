@@ -8,12 +8,14 @@ public class FrostDebuff : ElementalDebuffHandler
 
 	public override string TypeID => ID;
 
+	public override int ProcDamage { get; protected set; } = 40;
+
 	public override Asset<Texture2D> Texture => ModAsset.Frost;
 
 	public override Color Color => Color.LightSkyBlue;
 
 	public override void PostProc(NPC npc)
 	{
-		npc.AddBuff(BuffID.Frozen, 120);
+		npc.AddBuff(BuffID.Frozen, 90);
 	}
 }

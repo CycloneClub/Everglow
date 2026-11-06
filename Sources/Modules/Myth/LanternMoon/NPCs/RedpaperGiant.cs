@@ -141,7 +141,7 @@ public class RedpaperGiant : LanternMoonNPC
 					{
 						State = (int)BehaviorState.Attack;
 						AttackTimer = MaxAttackTime;
-						Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<RedpaperGiantAttackProj>(), 27, 0f, Main.myPlayer);
+						Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<RedpaperGiantAttackProj>(), 27, 0f, Main.maxPlayers);
 						RedpaperGiantAttackProj rGAP = p0.ModProjectile as RedpaperGiantAttackProj;
 						if (rGAP is not null)
 						{

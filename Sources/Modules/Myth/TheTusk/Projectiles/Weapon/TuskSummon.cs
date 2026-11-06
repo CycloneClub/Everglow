@@ -12,7 +12,7 @@ internal class TuskSummon : ModProjectile
 		Projectile.friendly = true;
 		Projectile.hostile = false;
 		Projectile.usesLocalNPCImmunity = true;
-		Projectile.localNPCHitCooldown = 6;
+		Projectile.localNPCHitCooldown = 12;
 		Projectile.timeLeft = 720;
 		Projectile.minionSlots = 1;
 		Projectile.penetrate = -1;
@@ -137,7 +137,7 @@ internal class TuskSummon : ModProjectile
 			if ((Projectile.Center - target.Center).Length() < 170 + target.height)
 			{
 				Projectile.velocity = (target.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * 25f;
-				AttackCooling = 40;
+				AttackCooling = 45;
 			}
 			else
 			{
@@ -145,7 +145,7 @@ internal class TuskSummon : ModProjectile
 				Projectile.rotation = Projectile.rotation * 0.95f + Projectile.velocity.X * 0.002f;
 			}
 		}
-		else if (AttackCooling > 30)
+		else if (AttackCooling > 35)
 		{
 			Projectile.rotation = MathF.Atan2(Projectile.velocity.Y, Projectile.velocity.X) - MathF.PI / 2f;
 			if (Collision.SolidCollision(Projectile.Center + Projectile.velocity, 0, 0))

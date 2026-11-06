@@ -332,7 +332,7 @@ public class CursedFlameBall : ModProjectile, IWarpProjectile
 			d0.velocity = new Vector2(0, Main.rand.NextFloat(3.65f, 7.5f)).RotatedByRandom(6.283);
 		}
 		int hitType = ModContent.ProjectileType<CursedFlameBrust>();
-		Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.One, hitType, Projectile.damage, Projectile.knockBack * 6, Projectile.owner, 18, Projectile.rotation + Main.rand.NextFloat(6.283f));
+		Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center, Vector2.One, hitType, Projectile.damage, Projectile.knockBack * 6, Projectile.owner, 18, Projectile.rotation + Main.rand.NextFloat(6.283f));
 
 		SoundEngine.PlaySound(SoundID.DD2_BetsyFireballImpact.WithVolumeScale(0.4f), Projectile.Center);
 	}
@@ -350,7 +350,7 @@ public class CursedFlameBall : ModProjectile, IWarpProjectile
 		}
 
 		int hitType = ModContent.ProjectileType<CursedFlameBrust>();
-		Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.One, hitType, Projectile.damage, Projectile.knockBack * 2, Projectile.owner, 10, Projectile.rotation + Main.rand.NextFloat(6.283f));
+		Projectile.NewProjectile(Projectile.GetSource_OnHit(target), Projectile.Center, Vector2.One, hitType, Projectile.damage, Projectile.knockBack * 2, Projectile.owner, 10, Projectile.rotation + Main.rand.NextFloat(6.283f));
 		target.AddBuff(BuffID.CursedInferno, 900);
 		Projectile.damage = (int)(Projectile.damage * 1.2);
 
@@ -369,7 +369,7 @@ public class CursedFlameBall : ModProjectile, IWarpProjectile
 			d0.velocity = new Vector2(0, Main.rand.NextFloat(1.65f, 5.5f)).RotatedByRandom(6.283);
 		}
 		int hitType = ModContent.ProjectileType<CursedFlameBrust>();
-		Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.One, hitType, Projectile.damage, Projectile.knockBack * 2, Projectile.owner, 10, Projectile.rotation + Main.rand.NextFloat(6.283f));
+		Projectile.NewProjectile(Projectile.GetSource_OnHit(target), Projectile.Center, Vector2.One, hitType, Projectile.damage, Projectile.knockBack * 2, Projectile.owner, 10, Projectile.rotation + Main.rand.NextFloat(6.283f));
 		target.AddBuff(BuffID.CursedInferno, 900);
 		Projectile.damage = (int)(Projectile.damage * 1.2);
 
@@ -389,7 +389,7 @@ public class CursedFlameBall : ModProjectile, IWarpProjectile
 			d0.velocity = new Vector2(0, Main.rand.NextFloat(1.65f, 5.5f)).RotatedByRandom(6.283);
 		}
 		int hitType = ModContent.ProjectileType<CursedFlameBrust>();
-		Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.One, hitType, Projectile.damage, Projectile.knockBack * 2, Projectile.owner, 10, Projectile.rotation + Main.rand.NextFloat(6.283f));
+		Projectile.NewProjectile(Projectile.GetSource_FromThis("OnTileCollide"), Projectile.Center, Vector2.One, hitType, Projectile.damage, Projectile.knockBack * 2, Projectile.owner, 10, Projectile.rotation + Main.rand.NextFloat(6.283f));
 		if (Projectile.velocity.X != oldVelocity.X)
 		{
 			Projectile.velocity.X = -oldVelocity.X;

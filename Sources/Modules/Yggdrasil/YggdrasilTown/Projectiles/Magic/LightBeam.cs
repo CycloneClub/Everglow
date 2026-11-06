@@ -141,7 +141,7 @@ internal class LightBeam : ModProjectile
 			dust.rotation = Main.rand.NextFloat(0.3f, 0.7f);
 			dust.scale *= 2f;
 		}
-		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.oldPosition + new Vector2(4), Vector2.zeroVector, ModContent.ProjectileType<LightStartEffect_beam>(), 0, 0, Projectile.owner);
+		Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.oldPosition + new Vector2(4), Vector2.zeroVector, ModContent.ProjectileType<LightStartEffect_beam>(), 0, 0, Projectile.owner);
 
 		var lightStartEffectProjectiles = new List<Projectile>();
 

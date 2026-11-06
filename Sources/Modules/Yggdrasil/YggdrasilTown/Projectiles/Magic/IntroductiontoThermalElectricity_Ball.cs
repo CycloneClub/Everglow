@@ -13,7 +13,7 @@ public class IntroductiontoThermalElectricity_Ball : ModProjectile
 
 	public float HitRange = 25;
 
-	public int TimeToKillMax = 45;
+	public int TimeToKillMax = 36;
 
 	public override string LocalizationCategory => LocalizationUtils.Categories.MagicProjectiles;
 

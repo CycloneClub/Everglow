@@ -1,14 +1,18 @@
+using Terraria.Localization;
+
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
 
 public class FragmentsOfWreckage : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
-	public const float LifeLossForBonusMax = 400f;
-	public const float DamageBonus = 0.1f;
-	public const float MeleeSpeedBonus = 0.1f;
-	public const float PickSpeedBonus = 0.15f;
-	public const int DefenseBonus = 12;
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(LifeLossForBonusMax, DamageBonus * 100f, MeleeSpeedBonus * 100f, DefenseBonus, PickSpeedBonus * 100f);
+
+	public const float LifeLossForBonusMax = 120f;
+	public const float DamageBonus = 0.06f;
+	public const float MeleeSpeedBonus = 0.06f;
+	public const float PickSpeedBonus = 0.1f;
+	public const int DefenseBonus = 8;
 
 	public override void SetDefaults()
 	{
@@ -26,7 +30,7 @@ public class FragmentsOfWreckage : ModItem
 		// ==============================================
 		var lifeLoss = player.statLifeMax2 - player.statLife;
 
-		// A maximum of 400 life loss will be counted
+		// A maximum of 120 life loss will be counted
 		var bonusScaler = lifeLoss / LifeLossForBonusMax;
 		if (bonusScaler > 1)
 		{
@@ -37,16 +41,16 @@ public class FragmentsOfWreckage : ModItem
 			bonusScaler = 0;
 		}
 
-		// +10% damage
+		// +6% damage
 		player.GetDamage(DamageClass.Generic) += DamageBonus * bonusScaler;
 
-		// +10% melee speed
+		// +6% melee speed
 		player.meleeSpeed += MeleeSpeedBonus * bonusScaler;
 
-		// +12 defense
+		// +8 defense
 		player.statDefense += (int)(DefenseBonus * bonusScaler);
 
-		// +15% pick speed
+		// +10% pick speed
 		player.pickSpeed -= PickSpeedBonus * bonusScaler;
 	}
 }

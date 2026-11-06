@@ -32,15 +32,14 @@ public class HurricaneMask : ModProjectile, IWarpProjectile
 		if (Projectile.timeLeft == 1)
 		{
 			var p = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<BlackHole.BlackHole>(), Projectile.damage * 12, 0, Projectile.owner, Projectile.ai[0] * 2);
-			p.CritChance = Projectile.CritChance;
 			p.timeLeft = 100 + (int)(Projectile.ai[0] * 240);
 			if (Projectile.ai[0] < 0.5f)
 			{
-				SoundEngine.PlaySound(new SoundStyle("Everglow/SpellAndSkull/Sounds/TyphoonBlackHoleWeak").WithVolumeScale(Projectile.ai[0] * 2), Projectile.Center);
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.TyphoonBlackHoleWeak_Mod).WithVolumeScale(Projectile.ai[0] * 2), Projectile.Center);
 			}
 			else
 			{
-				SoundEngine.PlaySound(new SoundStyle("Everglow/SpellAndSkull/Sounds/TyphoonBlackHoleStrong").WithVolumeScale(Projectile.ai[0]), Projectile.Center);
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.TyphoonBlackHoleStrong_Mod).WithVolumeScale(Projectile.ai[0]), Projectile.Center);
 			}
 			Projectile.Kill();
 		}
@@ -56,7 +55,7 @@ public class HurricaneMask : ModProjectile, IWarpProjectile
 
 		if (Projectile.timeLeft == 100)
 		{
-			SoundEngine.PlaySound(new SoundStyle("Everglow/SpellAndSkull/Sounds/TyphoonBlackHoleSummon").WithVolumeScale(Projectile.ai[0]).WithPitchOffset(0f), Projectile.Center);
+			SoundEngine.PlaySound(new SoundStyle(ModAsset.TyphoonBlackHoleSummon_Mod).WithVolumeScale(Projectile.ai[0]).WithPitchOffset(0f), Projectile.Center);
 		}
 	}
 

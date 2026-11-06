@@ -1,5 +1,4 @@
 using Everglow.Yggdrasil.Common;
-using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 using Terraria.DataStructures;
 using Terraria.GameContent.ItemDropRules;
@@ -18,8 +17,8 @@ public class WhisperingGhost : ModNPC
 	{
 		NPC.width = 40;
 		NPC.height = 40;
-		NPC.lifeMax = 40;
-		NPC.damage = 12;
+		NPC.lifeMax = 45;
+		NPC.damage = 14;
 		NPC.defense = 4;
 		NPC.friendly = false;
 		NPC.aiStyle = -1;
@@ -29,17 +28,6 @@ public class WhisperingGhost : ModNPC
 		NPC.DeathSound = SoundID.NPCDeath5;
 		NPC.noGravity = true;
 		NPC.noTileCollide = false;
-	}
-
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		YggdrasilTownBiome YggdrasilTownBiome = ModContent.GetInstance<YggdrasilTownBiome>();
-		if (!YggdrasilTownBiome.IsBiomeActive(Main.LocalPlayer))
-		{
-			return 0f;
-		}
-
-		return 3f;
 	}
 
 	public override void AI()

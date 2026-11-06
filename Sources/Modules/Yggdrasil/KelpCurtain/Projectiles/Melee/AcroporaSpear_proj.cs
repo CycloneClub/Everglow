@@ -127,7 +127,7 @@ public class AcroporaSpear_proj : MeleeProj
 					SoundEngine.PlaySound(SoundID.Item1, Projectile.Center);
 					if (Main.myPlayer == Projectile.owner)
 					{
-						Projectile.NewProjectile(Player.GetSource_FromAI(), Projectile.Center, Vector2.Normalize(mainAxisDirection) * 20, ModContent.ProjectileType<AcroporaThumpEff>(), Projectile.damage, 0, Projectile.owner);
+						Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Normalize(mainAxisDirection) * 20, ModContent.ProjectileType<AcroporaThumpEff>(), Projectile.damage, 0, Projectile.owner);
 					}
 				}
 				if (t == 26)
@@ -135,7 +135,7 @@ public class AcroporaSpear_proj : MeleeProj
 					SoundEngine.PlaySound(SoundID.Item1, Projectile.Center);
 					if (Main.myPlayer == Projectile.owner)
 					{
-						Projectile.NewProjectile(Player.GetSource_FromAI(), Projectile.Center, Vector2.Normalize(mainAxisDirection).RotatedBy(0.3) * 20, ModContent.ProjectileType<AcroporaThumpEff>(), Projectile.damage, 0, Projectile.owner);
+						Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Normalize(mainAxisDirection).RotatedBy(0.3) * 20, ModContent.ProjectileType<AcroporaThumpEff>(), Projectile.damage, 0, Projectile.owner);
 					}
 				}
 				if (t == 32)
@@ -143,7 +143,7 @@ public class AcroporaSpear_proj : MeleeProj
 					SoundEngine.PlaySound(SoundID.Item1, Projectile.Center);
 					if (Main.myPlayer == Projectile.owner)
 					{
-						Projectile.NewProjectile(Player.GetSource_FromAI(), Projectile.Center, Vector2.Normalize(mainAxisDirection).RotatedBy(-0.3) * 20, ModContent.ProjectileType<AcroporaThumpEff>(), Projectile.damage, 0, Projectile.owner);
+						Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Normalize(mainAxisDirection).RotatedBy(-0.3) * 20, ModContent.ProjectileType<AcroporaThumpEff>(), Projectile.damage, 0, Projectile.owner);
 					}
 				}
 				if (t < 24)

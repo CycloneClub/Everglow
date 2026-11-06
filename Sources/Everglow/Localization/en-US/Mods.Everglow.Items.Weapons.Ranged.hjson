@@ -19,7 +19,7 @@ ArcI: {
 
 ArmorPiercingBlaster: {
 	DisplayName: Armor Piercing Blaster
-	Tooltip: ""
+	Tooltip: Explodes when an enemy approaches after being thrown, reducing its defense for 10 seconds
 }
 
 BorealWoodSlingshot: {
@@ -107,7 +107,7 @@ CyanVineFlintlock: {
 
 CyanVineThrowingSpear: {
 	DisplayName: Cyan Javelin
-	Tooltip: Hold to charge a more powerful throw
+	Tooltip: Charges automatically while held without attacking; click to throw
 }
 
 CyatheaArrow: {
@@ -161,7 +161,15 @@ GreenThornBallLauncher: {
 
 GunOfAvarice: {
 	DisplayName: Gun Of Avarice
-	Tooltip: ""
+	Tooltip:
+		'''
+		Automatically reloads after 14 shots, preventing attacks for 1.5 seconds
+		Reloading has an 80% chance to raise the level by 1, up to level 10
+		Shot damage is multiplied by (1 + 0.18 × current level)
+		A failed reload resets the level to 1 and causes an explosion that hurts you
+		Explosion base damage is 1.5 times the weapon base damage with the previous level bonus
+		Right-click with a partially empty magazine to reload in 0.5 seconds and reset to level 1
+		'''
 }
 
 HandgunOfEnlightment: {
@@ -204,12 +212,12 @@ LampWoodBow: {
 
 LightArrow: {
 	DisplayName: Lamp-Oil Arrow
-	Tooltip: Inflicts Photolysis for 3 seconds
+	Tooltip: Inflicts Photolysis for 4 seconds
 }
 
 LightBullet: {
 	DisplayName: Light Bullet
-	Tooltip: Inflicts Photolysis for 3 seconds
+	Tooltip: Inflicts Photolysis for 4 seconds
 }
 
 MossyCyatheaBow: {
@@ -223,7 +231,12 @@ MossyCyatheaBow: {
 
 Nehemoth: {
 	DisplayName: Nehemoth
-	Tooltip: ""
+	Tooltip:
+		'''
+		Converts musket balls into fast bullets that pierce any number of enemies
+		These special bullets have a 66% chance to inflict Plague for 4 seconds on hit
+		Plague drains life and spreads to nearby enemies when it expires
+		'''
 }
 
 PalmWoodSlingshot: {
@@ -238,7 +251,12 @@ PearlwoodSlingshot: {
 
 PhosphorescenceGun: {
 	DisplayName: Phosphorescence Gun
-	Tooltip: ""
+	Tooltip:
+		'''
+		Fires a spread of bullets and phosphorescent projectiles
+		Firing does not push you backward while Moth Eye is equipped, in the Firefly biome, or during Hardmode
+		With Moth Eye equipped in the Firefly biome during Hardmode, phosphorescent projectile damage increases from 25% to 35% of shot damage
+		'''
 }
 
 RampageShark: {
@@ -298,7 +316,7 @@ ShadewoodSlingShot: {
 
 ShadowWingBow: {
 	DisplayName: Shadow Wing Bow
-	Tooltip: ""
+	Tooltip: Hold to charge and release more phantom arrows
 }
 
 SilveralGun: {
@@ -338,7 +356,7 @@ TerraViewerHowitzer: {
 
 ToothBow: {
 	DisplayName: Tooth Bow
-	Tooltip: ""
+	Tooltip: Fires giant fang arrows
 }
 
 TopazSlingshot: {

@@ -14,12 +14,12 @@ public class IntroductiontoThermalElectricity : ModItem
 		Item.height = 30;
 
 		Item.DamageType = DamageClass.Magic;
-		Item.damage = 12;
+		Item.damage = 18;
 		Item.knockBack = 2;
-		Item.mana = 20;
+		Item.mana = 12;
 
 		Item.useStyle = ItemUseStyleID.Shoot;
-		Item.useTime = Item.useAnimation = 36;
+		Item.useTime = Item.useAnimation = 40;
 		Item.noMelee = true;
 		Item.autoReuse = false;
 

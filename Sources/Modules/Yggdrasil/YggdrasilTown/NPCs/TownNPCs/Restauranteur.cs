@@ -138,7 +138,7 @@ public class Restauranteur : TownNPC_LiveInYggdrasil
 		}
 		NPC.spriteDirection = NPC.direction;
 		var vel = (target.Center - NPC.Center).NormalizeSafe();
-		Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, vel, ModContent.ProjectileType<Rolle_Thrust>(), 20, 4, Main.myPlayer, NPC.whoAmI);
+		Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, vel, ModContent.ProjectileType<Rolle_Thrust>(), 20, 4, Main.netMode == NetmodeID.SinglePlayer ? Main.myPlayer : Main.maxPlayers, NPC.whoAmI).npcProj = true;
 		for (int t = 0; t < 54; t++)
 		{
 			Attacking = true;
@@ -171,7 +171,7 @@ public class Restauranteur : TownNPC_LiveInYggdrasil
 			NPC.direction = -1;
 		}
 		NPC.spriteDirection = NPC.direction;
-		Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, new Vector2(-NPC.spriteDirection, 0), ModContent.ProjectileType<Rolle_Swing>(), 20, 4, Main.myPlayer, NPC.whoAmI);
+		Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, new Vector2(-NPC.spriteDirection, 0), ModContent.ProjectileType<Rolle_Swing>(), 20, 4, Main.netMode == NetmodeID.SinglePlayer ? Main.myPlayer : Main.maxPlayers, NPC.whoAmI).npcProj = true;
 		for (int t = 0; t < 42; t++)
 		{
 			NPC.velocity.X *= 0;

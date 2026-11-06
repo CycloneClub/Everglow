@@ -22,7 +22,7 @@ public class PearShapedNeedle_HeldProj : HandheldProjectile
 	public override void AI()
 	{
 		Timer++;
-		float preparedTime = 13 * PrepareChargeAnimationPerNeedle;
+		float preparedTime = 11 * PrepareChargeAnimationPerNeedle;
 		if (Timer % 3 == 0 && Timer >= 3 && Timer <= preparedTime)
 		{
 			SoundEngine.PlaySound(22, Projectile.Center);
@@ -70,7 +70,7 @@ public class PearShapedNeedle_HeldProj : HandheldProjectile
 
 	public void DrawNeedles()
 	{
-		for (int k = 0; k < 13; k++)
+		for (int k = 0; k < 11; k++)
 		{
 			float distance = GetDistance(k);
 			if (distance < 0)
@@ -114,10 +114,10 @@ public class PearShapedNeedle_HeldProj : HandheldProjectile
 	{
 		k = Math.Abs(k);
 		float shineValue = 0;
-		float preparedTime = 13 * PrepareChargeAnimationPerNeedle;
+		float preparedTime = 11 * PrepareChargeAnimationPerNeedle;
 		if (Timer > preparedTime)
 		{
-			shineValue = (Timer - preparedTime) / (MinChargeTime - preparedTime) * 13f;
+			shineValue = (Timer - preparedTime) / (MinChargeTime - preparedTime) * 11f;
 			shineValue = 3 - (k - shineValue);
 			shineValue = Math.Max(shineValue, 0) / 3f;
 		}
@@ -178,10 +178,10 @@ public class PearShapedNeedle_HeldProj : HandheldProjectile
 	{
 		k = Math.Abs(k);
 		float shineValue = 0;
-		float preparedTime = 13 * PrepareChargeAnimationPerNeedle;
+		float preparedTime = 11 * PrepareChargeAnimationPerNeedle;
 		if (Timer > preparedTime)
 		{
-			shineValue = (Timer - preparedTime) / (MinChargeTime - preparedTime) * 13f;
+			shineValue = (Timer - preparedTime) / (MinChargeTime - preparedTime) * 11f;
 			shineValue = 3 - (k - shineValue);
 			shineValue = Math.Max(shineValue, 0) / 3f;
 		}
@@ -206,7 +206,7 @@ public class PearShapedNeedle_HeldProj : HandheldProjectile
 	public void ReleaseNeedles()
 	{
 		bool succeed = false;
-		for (int k = 0; k < 13; k++)
+		for (int k = 0; k < 11; k++)
 		{
 			if (NeedleReady(k))
 			{

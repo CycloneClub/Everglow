@@ -9,6 +9,6 @@ public class CyanVineRingCrit : ModBuff
 
 	public override void Update(Player player, ref int buffIndex)
 	{
-		player.GetCritChance(DamageClass.Generic) += 4;
+		player.GetCritChance(DamageClass.Generic) += 5;
 	}
 }

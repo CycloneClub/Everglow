@@ -85,7 +85,7 @@ public class ThunderSpell_AttachPlayer : ModProjectile
 						proj.Kill();
 					}
 				}
-				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), AttachedPlayer.Bottom, Vector2.zeroVector, ModContent.ProjectileType<ThunderSpell_Thunder>(), 100, 1.5f, AttachedPlayer.whoAmI);
+				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), AttachedPlayer.Bottom, Vector2.zeroVector, ModContent.ProjectileType<ThunderSpell_Thunder>(), 100, 1.5f, Projectile.owner);
 			}
 		}
 		else

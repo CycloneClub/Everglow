@@ -4,7 +4,7 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Magic.BoneFeatherMagic;
 
 internal class BoneFeatherMagicBook : MagicBookProjectile
 {
-	public override string Texture => "Everglow/" + ModAsset.BoneFeatherMagic_Path;
+	public override string Texture => ModAsset.BoneFeatherMagic_Mod;
 
 	public override void SetDef()
 	{
@@ -63,7 +63,7 @@ internal class BoneFeatherMagicBook : MagicBookProjectile
 		{
 			for (int x = 0; x < 4; x++)
 			{
-				var p2 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + new Vector2(0, -4) + new Vector2(0, Main.rand.NextFloat(50f)).RotateRandom(6.283) + Vector2.Normalize(vTOMouse) * 12, Vector2.Zero, ModContent.ProjectileType<BoneShoot>(), (int)(player.HeldItem.damage * MulDamage), player.HeldItem.knockBack, player.whoAmI, Main.rand.NextFloat(0.5f, 2.5f), 0, player.HeldItem.shootSpeed);
+				var p2 = Projectile.NewProjectileDirect(player.GetSource_ItemUse(player.HeldItem), Projectile.Center + new Vector2(0, -4) + new Vector2(0, Main.rand.NextFloat(50f)).RotateRandom(6.283) + Vector2.Normalize(vTOMouse) * 12, Vector2.Zero, ModContent.ProjectileType<BoneShoot>(), (int)(player.GetWeaponDamage(player.HeldItem) * MulDamage), player.HeldItem.knockBack, player.whoAmI, Main.rand.NextFloat(0.5f, 2.5f), 0, player.HeldItem.shootSpeed);
 				p2.timeLeft = Main.rand.Next(200, 300);
 			}
 		}

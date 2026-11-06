@@ -15,13 +15,13 @@ public class NightfireStaff : ModItem
 		Item.height = 22;
 
 		Item.DamageType = DamageClass.Magic;
-		Item.damage = 12;
+		Item.damage = 20;
 		Item.knockBack = 0.5f;
-		Item.mana = 8;
+		Item.mana = 7;
 
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.UseSound = SoundID.Item20;
-		Item.useTime = Item.useAnimation = 32;
+		Item.useTime = Item.useAnimation = 30;
 		Item.noMelee = true;
 		Item.autoReuse = false;
 

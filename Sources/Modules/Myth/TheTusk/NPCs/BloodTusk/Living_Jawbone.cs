@@ -16,7 +16,7 @@ public class Living_Jawbone : ModNPC
 		NPC.height = 30;
 		NPC.friendly = false;
 		NPC.noTileCollide = false;
-		NPC.lifeMax = 120;
+		NPC.lifeMax = Main.masterMode ? 240 : Main.expertMode ? 160 : 80;
 		NPC.behindTiles = true;
 		NPC.HitSound = SoundID.DD2_SkeletonHurt;
 		NPC.DeathSound = SoundID.DD2_SkeletonDeath;

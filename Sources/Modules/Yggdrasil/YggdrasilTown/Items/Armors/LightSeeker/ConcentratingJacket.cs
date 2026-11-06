@@ -9,7 +9,7 @@ public class ConcentratingJacket : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(20, 20);
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(3);
 
 	public override void SetStaticDefaults()
 	{
@@ -22,12 +22,12 @@ public class ConcentratingJacket : ModItem
 		Item.height = 26;
 		Item.value = 2500;
 		Item.rare = ItemRarityID.Green;
-		Item.defense = 2;
+		Item.defense = 5;
 	}
 
 	public override void UpdateEquip(Player player)
 	{
-		player.GetCritChance(DamageClass.Generic) += 5f;
+		player.GetCritChance(DamageClass.Generic) += 3f;
 	}
 
 	public override void AddRecipes()

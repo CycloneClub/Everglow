@@ -6,8 +6,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Weapons;
 public class ResistanceWireBayonet : StabbingSwordItem
 {
 	// TODO:翻译
-	// 持续通过电流充能，并且逐渐红热，过程中伤害逐渐提高到180%。但是击中敌人损耗能量。
-	// 对敌人造成点燃，对同一个目标初次造成260%伤害。
+	// 持续通过电流充能，并且逐渐红热，过程中伤害逐渐提高到160%。但是击中敌人损耗能量。
+	// 对敌人造成点燃，对同一个目标初次造成220%伤害。
 	// 对于开放性伤口，烧红的铁棍可以充当应急抗生素
 
 	/// <summary>
@@ -17,12 +17,13 @@ public class ResistanceWireBayonet : StabbingSwordItem
 
 	public override void SetDefaults()
 	{
-		Item.damage = 22;
+		Item.damage = 20;
 		Item.knockBack = 1.5f;
 		Item.rare = ItemRarityID.Green;
 		Item.value = Item.sellPrice(0, 2, 0, 0);
 		Item.shoot = ModContent.ProjectileType<ResistanceWireBayonet_proj>();
-		PowerfulStabDamageFlat = 4f;
+		PowerfulStabDamageFlat = 2f;
+		PowerfulStabCDMax = 42;
 		PowerfulStabProj = ModContent.ProjectileType<ResistanceWireBayonet_proj_stab>();
 		base.SetDefaults();
 	}

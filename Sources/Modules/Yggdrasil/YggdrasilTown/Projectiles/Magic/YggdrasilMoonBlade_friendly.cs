@@ -194,7 +194,7 @@ public class YggdrasilMoonBlade_friendly : ModProjectile, IWarpProjectile
 
 	public override void OnKill(int timeLeft)
 	{
-		var p = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + Projectile.velocity, Vector2.zeroVector, ModContent.ProjectileType<YggdrasilMoonBladeHit>(), Projectile.damage / 2, 0, Projectile.owner, 9, startVelocity.ToRotation());
+		var p = Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center + Projectile.velocity, Vector2.zeroVector, ModContent.ProjectileType<YggdrasilMoonBladeHit>(), Projectile.damage / 2, 0, Projectile.owner, 9, startVelocity.ToRotation());
 		p.friendly = true;
 		p.hostile = false;
 	}

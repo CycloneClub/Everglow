@@ -1,6 +1,5 @@
 using Everglow.Commons.CustomTiles;
 using Everglow.Yggdrasil.Common;
-using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons;
@@ -23,9 +22,9 @@ public class JellyBall : ModNPC
 		NPC.width = 40;
 		NPC.height = 40;
 		NPC.aiStyle = -1;
-		NPC.damage = 13;
+		NPC.damage = 12;
 		NPC.defense = 2;
-		NPC.lifeMax = 24;
+		NPC.lifeMax = 30;
 		NPC.HitSound = SoundID.NPCHit3;
 		NPC.DeathSound = SoundID.NPCDeath3;
 		NPC.noGravity = true;
@@ -55,17 +54,6 @@ public class JellyBall : ModNPC
 
 	public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 	{
-	}
-
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		YggdrasilTownBiome YggdrasilTownBiome = ModContent.GetInstance<YggdrasilTownBiome>();
-		if (!YggdrasilTownBiome.IsBiomeActive(Main.LocalPlayer))
-		{
-			return 0f;
-		}
-
-		return 3f;
 	}
 
 	public override void FindFrame(int frameHeight)

@@ -14,7 +14,7 @@ public class YggdrasilAmberLaser_crystal : ModProjectile
 	{
 		Projectile.magic = true;
 		Projectile.friendly = true;
-		Projectile.timeLeft = 900;
+		Projectile.timeLeft = 360;
 		Projectile.tileCollide = false;
 		Projectile.penetrate = -1;
 		Projectile.width = 10;

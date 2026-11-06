@@ -130,6 +130,6 @@ public class MothMiddleBullet : TrailingProjectile
 
 	public override void DestroyEntityEffect()
 	{
-		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<MothBulletExplosion>(), 50, 3, Projectile.owner, 10f);
+		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<MothBulletExplosion>(), 18, 3, Projectile.owner, 10f);
 	}
 }

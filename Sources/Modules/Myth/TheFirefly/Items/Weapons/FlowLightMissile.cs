@@ -13,13 +13,13 @@ public class FlowLightMissile : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.damage = 33;
+		Item.damage = 36;
 		Item.DamageType = DamageClass.Magic;
-		Item.mana = 4;
+		Item.mana = 8;
 		Item.width = 60;
 		Item.height = 60;
-		Item.useTime = 21;
-		Item.useAnimation = 21;
+		Item.useTime = 24;
+		Item.useAnimation = 24;
 		Item.useStyle = ItemUseStyleID.Shoot;
 		Item.noMelee = true;
 		Item.noUseGraphic = true;

@@ -73,7 +73,7 @@ public class Howard_Shoot : ModProjectile, IWarpProjectile_warpStyle2
 				var toTarget = Target.Center - Projectile.Center;
 				float hitTime = toTarget.Length() / speed;
 				var vel = (Target.Center + Target.velocity * hitTime - Projectile.Center).NormalizeSafe() * speed;
-				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + new Vector2(-4, 0).RotatedBy(Projectile.rotation), vel, ProjectileID.Bullet, Projectile.damage, 0.4f, Main.myPlayer, 0);
+				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + new Vector2(-4, 0).RotatedBy(Projectile.rotation), vel, ProjectileID.Bullet, Projectile.damage, 0.4f, Projectile.owner, 0).npcProj = Projectile.npcProj;
 				SoundEngine.PlaySound(SoundID.DD2_BallistaTowerShot, Projectile.Center);
 			}
 		}

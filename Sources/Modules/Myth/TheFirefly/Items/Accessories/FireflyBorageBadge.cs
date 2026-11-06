@@ -8,6 +8,8 @@ public class FireflyBorageBadge : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(5, 10, 20, 10, 12, 8);
+
 	public override void SetDefaults()
 	{
 		Item.width = 26;
@@ -19,21 +21,21 @@ public class FireflyBorageBadge : ModItem
 
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
-		player.GetDamage(DamageClass.Magic) *= 1.06f;
-		player.moveSpeed *= 1.15f;
+		player.GetDamage(DamageClass.Magic) *= 1.05f;
+		player.moveSpeed *= 1.1f;
 		if (CorruptMoth.CorruptMothNPC != null && CorruptMoth.CorruptMothNPC.active)
 		{
-			if (player.statDefense <= 48)
+			if (player.statDefense <= 50)
 			{
-				player.statDefense -= player.statDefense / 4; // 48 / 4, would be player.statDefense / 4, up to a value change of -12.
+				player.statDefense -= player.statDefense / 5; // Defense penalty is capped at 10.
 			}
 			else
 			{
-				player.statDefense -= 12;
+				player.statDefense -= 10;
 			}
-			player.GetDamage(DamageClass.Generic) *= 1.18f;
-			player.GetAttackSpeed(DamageClass.SummonMeleeSpeed) *= 1.1f;
-			player.GetAttackSpeed(DamageClass.Melee) *= 1.1f;
+			player.GetDamage(DamageClass.Generic) *= 1.12f;
+			player.GetAttackSpeed(DamageClass.SummonMeleeSpeed) *= 1.08f;
+			player.GetAttackSpeed(DamageClass.Melee) *= 1.08f;
 			if (player.GetCritChance(DamageClass.Melee) > 0)
 			{
 				player.GetTotalCritChance(DamageClass.Melee);
@@ -55,21 +57,7 @@ public class FireflyBorageBadge : ModItem
 
 	public override void ModifyTooltips(List<TooltipLine> tooltips)
 	{
-		{
-			if (CorruptMoth.CorruptMothNPC != null && CorruptMoth.CorruptMothNPC.active)
-			{
-				tooltips.AddRange(new TooltipLine[]
-				{
-				   new(ModIns.Mod, "FFBBadge0", Language.GetTextValue("Mods.Everglow.ExtraTooltip.FireflyItems.FFBBadge0")),
-				   new(ModIns.Mod, "FFBBadge1", Language.GetTextValue("Mods.Everglow.ExtraTooltip.FireflyItems.FFBBadge1")),
-				   new(ModIns.Mod, "FFBBadge2", Language.GetTextValue("Mods.Everglow.ExtraTooltip.FireflyItems.FFBBadge2")),
-				   new(ModIns.Mod, "FFBBadge3", Language.GetTextValue("Mods.Everglow.ExtraTooltip.FireflyItems.FFBBadge3")),
-				   new(ModIns.Mod, "FFBBadge4", Language.GetTextValue("Mods.Everglow.ExtraTooltip.FireflyItems.FFBBadge4")),
-				});
-			}
-			tooltips.Add(new TooltipLine(ModIns.Mod, "UnfinishedItem", Language.GetTextValue("Mods.Everglow.ExtraTooltip.Misc.UnfinishedItem")));
-		}
-		base.ModifyTooltips(tooltips);
+		tooltips.Add(new TooltipLine(ModIns.Mod, "UnfinishedItem", Language.GetTextValue("Mods.Everglow.ExtraTooltip.Misc.UnfinishedItem")));
 	}
 
 	public override void AddRecipes()

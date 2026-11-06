@@ -1,5 +1,6 @@
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 using Terraria.DataStructures;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
 
@@ -7,12 +8,14 @@ public class SkullCollection : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(DetectRange / 16f, FinalManaRegenBonus, BuffDuration / 60f, BuffCooldownMax / 60f);
+
 	public const int ItemFrames = 7;
 
-	public const int DetectRange = 96;
+	public const int DetectRange = 144;
 	public const int BuffDuration = 180;
-	public const int BuffCooldownMax = 120;
-	public const int FinalManaRegenBonus = 5;
+	public const int BuffCooldownMax = 240;
+	public const int FinalManaRegenBonus = 3;
 
 	public int BuffCooldown { get; set; }
 
@@ -45,10 +48,10 @@ public class SkullCollection : ModItem
 				continue;
 			}
 
-			// If there's any enemy within 6 blocks / 96 pixels around the player
+			// If there's any enemy within 9 blocks / 144 pixels around the player
 			if (Vector2.Distance(npc.Center, player.Center) <= DetectRange)
 			{
-				// 1. Add a 3s Mana Regeneration buff to the caster, then this effect goes to a 2s cooldown
+				// 1. Add a 3s Mana Regeneration buff to the caster, then this effect goes to a 4s cooldown
 				// ========================================================================================
 				if (BuffCooldown <= 0)
 				{
@@ -62,9 +65,9 @@ public class SkullCollection : ModItem
 					}
 				}
 
-				// 2. +5 mana regeneration rate
+				// 2. +3 mana regeneration rate
 				// ============================
-				player.manaRegenBonus += 5;
+				player.manaRegenBonus += FinalManaRegenBonus;
 				break;
 			}
 		}

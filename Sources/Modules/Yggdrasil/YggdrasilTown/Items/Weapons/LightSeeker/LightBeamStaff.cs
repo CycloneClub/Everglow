@@ -13,19 +13,19 @@ public class LightBeamStaff : ModItem
 		Item.width = 34;
 		Item.height = 40;
 
-		Item.damage = 12;
+		Item.damage = 18;
 		Item.DamageType = DamageClass.Magic;
 		Item.crit = 4;
 		Item.knockBack = 3.5f;
 
 		Item.useStyle = ItemUseStyleID.Shoot;
-		Item.useTime = 36;
-		Item.useAnimation = 36;
+		Item.useTime = 30;
+		Item.useAnimation = 30;
 		Item.UseSound = SoundID.Item12;
 		Item.autoReuse = true;
 		Item.noUseGraphic = true;
 		Item.noMelee = true;
-		Item.mana = 5;
+		Item.mana = 6;
 
 		Item.rare = ItemRarityID.Green;
 		Item.value = Item.buyPrice(silver: 8);
@@ -36,7 +36,7 @@ public class LightBeamStaff : ModItem
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
-		Projectile.NewProjectile(Item.GetSource_FromAI(), position, velocity, type, damage, knockback, player.whoAmI);
+		Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
 		return false;
 	}
 

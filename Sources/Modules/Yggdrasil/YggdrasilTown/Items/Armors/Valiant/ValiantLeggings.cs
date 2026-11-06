@@ -8,7 +8,7 @@ public class ValiantLeggings : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(3);
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(5);
 
 	public override void SetStaticDefaults()
 	{
@@ -27,9 +27,5 @@ public class ValiantLeggings : ModItem
 	public override void UpdateEquip(Player player)
 	{
 		player.GetAttackSpeed(DamageClass.Melee) += 0.05f;
-	}
-
-	public override void AddRecipes()
-	{
 	}
 }

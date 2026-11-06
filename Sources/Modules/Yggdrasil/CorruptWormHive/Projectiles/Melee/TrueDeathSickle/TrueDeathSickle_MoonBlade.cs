@@ -156,7 +156,7 @@ public class TrueDeathSickle_MoonBlade : ModProjectile, IWarpProjectile
 
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
-		Projectile.NewProjectile(Projectile.GetSource_FromAI(), target.Center, Vector2.zeroVector, ModContent.ProjectileType<TrueDeathSickleHit>(), 0, 0, -1, 10, startVelocity.ToRotation() + Main.rand.NextFloat(-0.1f, 0.1f));
+		Projectile.NewProjectile(Projectile.GetSource_OnHit(target), target.Center, Vector2.zeroVector, ModContent.ProjectileType<TrueDeathSickleHit>(), 0, 0, Projectile.owner, 10, startVelocity.ToRotation() + Main.rand.NextFloat(-0.1f, 0.1f));
 	}
 
 	public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
@@ -181,6 +181,6 @@ public class TrueDeathSickle_MoonBlade : ModProjectile, IWarpProjectile
 
 	public override void OnKill(int timeLeft)
 	{
-		Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<TrueDeathSickleHit>(), 0, 0, -1, 20, startVelocity.ToRotation());
+		Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<TrueDeathSickleHit>(), 0, 0, Projectile.owner, 20, startVelocity.ToRotation());
 	}
 }

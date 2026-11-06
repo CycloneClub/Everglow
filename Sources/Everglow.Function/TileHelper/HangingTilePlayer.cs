@@ -1,23 +1,16 @@
+using Everglow.Commons.Utilities;
+
 namespace Everglow.Commons.TileHelper;
 
 public class HangingTile_Player : ModPlayer
 {
-	public int SwitchVineCoolTimer = 0;
-
 	public bool Grasping = false;
 
 	public Vector2 OldGraspPos = default;
 
 	public override void PostUpdate()
 	{
-		if (SwitchVineCoolTimer > 0)
-		{
-			SwitchVineCoolTimer--;
-		}
-		else
-		{
-			SwitchVineCoolTimer = 0;
-		}
+		Player.TickCooldown(HangingTileSwitchCooldown.ID);
 		GraspHangingTile();
 		PreventMapFalling();
 		if (Grasping)

@@ -1,5 +1,4 @@
 using Everglow.Yggdrasil.Common;
-using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Enemies;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs.NPCEffects;
 using Terraria.DataStructures;
@@ -29,19 +28,13 @@ public class PurpleBombCaterpillar : ModNPC
 		Main.npcFrameCount[NPC.type] = 10;
 	}
 
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		LampWoodForest lampBiome = ModContent.GetInstance<LampWoodForest>();
-		return !lampBiome.IsBiomeActive(Main.LocalPlayer) ? 0f : 3f;
-	}
-
 	public override void SetDefaults()
 	{
 		NPC.width = 88;
 		NPC.height = 36;
-		NPC.lifeMax = 80;
-		NPC.damage = 25;
-		NPC.defense = 10;
+		NPC.lifeMax = 70;
+		NPC.damage = 18;
+		NPC.defense = 6;
 		NPC.friendly = false;
 		NPC.aiStyle = -1;
 		NPC.knockBackResist = 0.5f;
@@ -369,7 +362,7 @@ public class PurpleBombCaterpillar : ModNPC
 
 	public void KillEffect()
 	{
-		Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<PurpleBombCaterpillarDeath>(), NPC.damage, 3.5f);
+		Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<PurpleBombCaterpillarDeath>(), 10, 3.5f, owner: Main.maxPlayers);
 		p0.Bottom = NPC.Bottom;
 		p0.scale = NPC.scale;
 		p0.direction = NPC.direction;

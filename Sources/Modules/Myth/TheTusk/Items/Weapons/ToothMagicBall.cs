@@ -16,7 +16,7 @@ public class ToothMagicBall : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.damage = 24;
+		Item.damage = 28;
 		Item.DamageType = DamageClass.Magic;
 		Item.width = 18;
 		Item.height = 18;
@@ -33,7 +33,7 @@ public class ToothMagicBall : ModItem
 		Item.shoot = ModContent.ProjectileType<Projectiles.Weapon.ToothMagicBall>();
 		Item.shootSpeed = 3;
 		Item.crit = 1;
-		Item.mana = 16;
+		Item.mana = 8;
 	}
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

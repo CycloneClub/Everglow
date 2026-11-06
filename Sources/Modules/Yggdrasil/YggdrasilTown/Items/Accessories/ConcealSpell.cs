@@ -1,15 +1,18 @@
 using Terraria.DataStructures;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
 
 /// <summary>
-/// 静止时每帧充能1点，移动时0.05.
+/// 静止时每帧充能1点，移动时0.1.
 /// 能量达到MaxPower时获得"隐匿"，隐形且免疫下一次攻击（钛金）。
 /// 受击后能量清零。
 /// </summary>
 public class ConcealSpell : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(480, 60, 6, 0.4f);
 
 	public override void SetDefaults()
 	{
@@ -30,7 +33,7 @@ public class ConcealSpellPlayer : ModPlayer
 {
 	public bool ConcealSpellEnable = false;
 	public float Power = 0;
-	public float MaxPower = 600;
+	public float MaxPower = 480;
 
 	public override void ResetEffects()
 	{
@@ -47,7 +50,7 @@ public class ConcealSpellPlayer : ModPlayer
 			}
 			else
 			{
-				Power += 0.05f;
+				Power += 0.1f;
 			}
 			if (Power > MaxPower)
 			{
@@ -65,7 +68,7 @@ public class ConcealSpellPlayer : ModPlayer
 			{
 				CombatText.NewText(Player.Hitbox, new Color(0.7f, 0.7f, 0.7f, 1f), "Miss");
 				Player.immune = true;
-				Player.immuneTime = 30;
+				Player.immuneTime = 24;
 				Player.noKnockback = true;
 				Power = 0;
 				return true;

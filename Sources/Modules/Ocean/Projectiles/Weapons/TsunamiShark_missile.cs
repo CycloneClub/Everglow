@@ -13,7 +13,7 @@ public class TsunamiShark_missile : ModProjectile
 
 	private CoroutineManager _coroutineManager = new CoroutineManager();
 
-	public override string Texture => "Everglow/Ocean/Projectiles/Weapons/TsunamiShark/TsunamiShark_missile";
+	public override string Texture => ModAsset.TsunamiShark_missile_Mod;
 
 	public override void SetDefaults()
 	{
@@ -202,7 +202,7 @@ public class TsunamiShark_missile : ModProjectile
 		Projectile.velocity = Projectile.oldVelocity;
 		GenerateVFXKill(24);
 		SoundEngine.PlaySound(SoundID.Splash, Projectile.Center);
-		Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<TsunamiShark_missile_hit>(), Projectile.damage / 7, Projectile.knockBack);
+		Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<TsunamiShark_missile_hit>(), Projectile.damage / 7, Projectile.knockBack, Owner: Projectile.owner);
 		SoundEngine.PlaySound(new SoundStyle("Everglow/Ocean/Sounds/WaterMissile" + Main.rand.Next(2)).WithVolumeScale(0.8f), Projectile.Center);
 	}
 

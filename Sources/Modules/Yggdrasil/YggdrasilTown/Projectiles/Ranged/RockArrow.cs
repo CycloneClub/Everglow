@@ -17,7 +17,7 @@ public class RockArrow : ModProjectile
 		Projectile.friendly = true;
 		Projectile.hostile = false;
 		Projectile.aiStyle = -1;
-		Projectile.penetrate = 6;
+		Projectile.penetrate = 4;
 		Projectile.timeLeft = 3600;
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
@@ -28,7 +28,7 @@ public class RockArrow : ModProjectile
 
 	public override void OnSpawn(IEntitySource source)
 	{
-		Projectile.knockBack *= 3;
+		Projectile.knockBack *= 2.5f;
 		Target = (int)Projectile.ai[0];
 	}
 

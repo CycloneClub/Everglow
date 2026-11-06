@@ -10,7 +10,7 @@ public class NavyThunderBomb : ModProjectile, IWarpProjectile
 
 	private float sparkleStrength = 20;
 
-	public override string Texture => "Everglow/Myth/TheFirefly/Projectiles/MothBall";
+	public override string Texture => ModAsset.MothBall_Mod;
 
 	public override bool CloneNewInstances => false;
 
@@ -77,18 +77,18 @@ public class NavyThunderBomb : ModProjectile, IWarpProjectile
 		Player player = Main.player[Projectile.owner];
 		ScreenShaker Gsplayer = player.GetModPlayer<ScreenShaker>();
 		Gsplayer.FlyCamPosition = new Vector2(0, Math.Max(0, 200 - (Projectile.Center - player.Center).Length() * 0.5f)).RotatedByRandom(6.283);
-		Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<BombShakeWave>(), 0, 0, Projectile.owner);
+		Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<BombShakeWave>(), 0, 0, Projectile.owner);
 		float X = Main.rand.NextFloat(6.283f);
 		for (int h = 0; h < 6; h++)
 		{
 			Vector2 v = new Vector2(0, 12f).RotatedBy(h * MathHelper.TwoPi / 6f + X);
 			if (!Main.hardMode)
 			{
-				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + v, v, ModContent.ProjectileType<BlueMissilFriendly>(), (int)(Projectile.damage * 0.35f), 0f, Projectile.owner);
+				Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center + v, v, ModContent.ProjectileType<BlueMissilFriendly>(), (int)(Projectile.damage * 0.3f), 0f, Projectile.owner);
 			}
 			else
 			{
-				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + v, v, ModContent.ProjectileType<BlueMissilFriendly>(), (int)(Projectile.damage * 0.55f), 0f, Projectile.owner);
+				Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center + v, v, ModContent.ProjectileType<BlueMissilFriendly>(), (int)(Projectile.damage * 0.45f), 0f, Projectile.owner);
 			}
 		}
 

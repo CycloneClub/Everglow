@@ -1,4 +1,5 @@
 using Terraria.GameContent.Creative;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.JellyBall;
 
@@ -7,8 +8,10 @@ public class JellyBallBathingCap : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	public const float EffectTriggerChance = 0.05f;
-	public const float DamageReduction = 0.5f;
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(3, 1, EffectTriggerChance * 100f, DamageReduction * 100f);
+
+	public const float EffectTriggerChance = 0.1f;
+	public const float DamageReduction = 0.35f;
 
 	public override void SetStaticDefaults()
 	{
@@ -26,9 +29,9 @@ public class JellyBallBathingCap : ModItem
 
 	public override void UpdateEquip(Player player)
 	{
-		// 1. + 2 defense
+		// 1. + 3 defense
 		// ==============
-		player.statDefense += 2;
+		player.statDefense += 3;
 
 		// 2. + 1 minion slot
 		// ==================
@@ -53,10 +56,10 @@ public class JellyBallBathingCapPlayer : ModPlayer
 	{
 		if (JellyBallBathingCapEnable)
 		{
-			// 3. Has 5% chance to reduce 50% damage and reflect projectile
+			// 3. Has 10% chance to reduce 35% damage and reflect projectile
 			if (Main.rand.NextFloat() < JellyBallBathingCap.EffectTriggerChance)
 			{
-				// 3.1 Reduce 50% final damage
+				// 3.1 Reduce 35% final damage
 				modifiers.FinalDamage *= 1.0f - JellyBallBathingCap.DamageReduction;
 
 				// 3.2 Reflect projectile

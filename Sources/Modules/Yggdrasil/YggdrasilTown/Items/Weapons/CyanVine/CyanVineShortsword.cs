@@ -10,7 +10,7 @@ public class CyanVineShortsword : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.damage = 10;
+		Item.damage = 12;
 		Item.knockBack = 4f;
 		Item.useStyle = ItemUseStyleID.Rapier;
 		Item.useAnimation = 12;

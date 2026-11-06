@@ -16,7 +16,7 @@ public class MechanismHalberd : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 22;
 		Item.useAnimation = 22;
-		Item.damage = 26;
+		Item.damage = 32;
 		Item.knockBack = 1.3f;
 		Item.crit = 4;
 		Item.DamageType = DamageClass.Melee;

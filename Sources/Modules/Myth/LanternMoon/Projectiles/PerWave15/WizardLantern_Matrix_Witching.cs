@@ -38,7 +38,7 @@ public class WizardLantern_Matrix_Witching : ModProjectile
 				for (int i = 0; i < 8; i++)
 				{
 					float addRot = 0;
-					Projectile p0 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center - new Vector2(0, Timer * 1.4f + 80).RotatedBy(i / 8f * MathHelper.TwoPi + addRot), Vector2.zeroVector, ModContent.ProjectileType<WitchingSpell>(), 20, 0f, Main.myPlayer, i);
+					Projectile p0 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center - new Vector2(0, Timer * 1.4f + 80).RotatedBy(i / 8f * MathHelper.TwoPi + addRot), Vector2.zeroVector, ModContent.ProjectileType<WitchingSpell>(), 20, 0f, Projectile.owner, i);
 					p0.spriteDirection = -1;
 					if (Timer == 10)
 					{

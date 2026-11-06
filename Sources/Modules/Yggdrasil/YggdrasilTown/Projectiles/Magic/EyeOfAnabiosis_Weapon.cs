@@ -9,7 +9,7 @@ public class EyeOfAnabiosis_Weapon : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
 
-	public const int MaxChargeTime = 720;
+	public const int MaxChargeTime = 480;
 	private const int MaxTargetCount = 3;
 	private const float ProjectileRandomRotation = 0.5f;
 	public Vector2 HangingItemPos;

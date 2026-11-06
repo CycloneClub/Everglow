@@ -28,7 +28,6 @@ public class BoneShoot : ModProjectile, IWarpProjectile
 			Vector2 velocity = vTOMouse.SafeNormalize(Vector2.Zero) * Projectile.ai[2];
 			velocity = velocity.RotatedBy(Main.rand.NextFloat(-0.1f, 0.1f));
 			var p = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, velocity, ModContent.ProjectileType<BoneFeather>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0, Main.rand.Next(12));
-			p.CritChance = Projectile.CritChance;
 			p.extraUpdates = 2;
 		}
 		Projectile.velocity *= 0;

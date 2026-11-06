@@ -108,7 +108,7 @@ internal class SkullHand : ModProjectile
 				dir = -1;
 			}
 
-			SoundEngine.PlaySound(new SoundStyle("Everglow/SpellAndSkull/Sounds/MothHitCocoon"), Projectile.Center);
+			SoundEngine.PlaySound(new SoundStyle(ModAsset.MothHitCocoon_Mod), Projectile.Center);
 		}
 		if (Projectile.timeLeft > 300)
 		{

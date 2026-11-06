@@ -53,6 +53,24 @@ public sealed class CooldownInstance
 
 	public CooldownBase cooldown;
 
+	/// <summary>Advances once and reports natural completion.</summary>
+	internal bool Tick()
+	{
+		if (cooldown.CanTickDown)
+		{
+			timeLeft--;
+		}
+
+		cooldown.Update();
+		if (timeLeft > 0)
+		{
+			return false;
+		}
+
+		cooldown.OnCompleted();
+		return true;
+	}
+
 	internal TagCompound Save()
 	{
 		return new TagCompound

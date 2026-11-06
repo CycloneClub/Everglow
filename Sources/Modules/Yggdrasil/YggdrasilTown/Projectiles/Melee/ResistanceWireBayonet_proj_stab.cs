@@ -32,11 +32,11 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Melee
 
 			bool hasHit = target.HasBuff(ModContent.BuffType<HasHitByResistenceWireBayonet>());
 			float mulDamage = 1f;
-			mulDamage += Power * 0.8f / 100f;
+			mulDamage += Power * 0.6f / 100f;
 			if (!hasHit)
 			{
 				target.AddBuff(ModContent.BuffType<HasHitByResistenceWireBayonet>(), 360000000);
-				mulDamage *= 2.6f;
+				mulDamage *= 2.2f;
 			}
 			modifiers.FinalDamage += Math.Max(0, 180 - distanceValue) / 180f;
 			modifiers.FinalDamage *= mulDamage;

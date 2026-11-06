@@ -5,11 +5,11 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Mounts;
 
 public class JellyBubble : ModMount
 {
-	public const int Distance = 16;
-	public const int MaxMountStamina = 180;
+	public const int Distance = 12;
+	public const int MaxMountStamina = 120;
 	public const float GravityAcceleration = 5f;
 	public const float BuoyancyAcceleration = 8f;
-	public int Stamina = 180;
+	public int Stamina = 120;
 	public float FlyGlowValue = 0f;
 
 	public override void SetStaticDefaults()

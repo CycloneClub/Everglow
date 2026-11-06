@@ -12,7 +12,7 @@ public class MagicalBoomerang : ModItem
 		Item.height = 30;
 
 		Item.DamageType = DamageClass.Melee;
-		Item.damage = 26;
+		Item.damage = 30;
 		Item.knockBack = 1.0f;
 		Item.crit = 4;
 

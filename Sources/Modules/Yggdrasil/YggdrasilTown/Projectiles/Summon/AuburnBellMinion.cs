@@ -311,7 +311,7 @@ public class AuburnBellMinion : ModProjectile
 		}
 
 		Timer++;
-		if (Timer >= 60
+		if (Timer >= 45
 			&& MathF.Abs(sinOfAngleToTarget) <= MathF.Sqrt(2f) / 2f
 			&& distance.Length() >= DashPhaseDistanceMin
 			&& distance.Length() <= DashPhaseDistanceMax)

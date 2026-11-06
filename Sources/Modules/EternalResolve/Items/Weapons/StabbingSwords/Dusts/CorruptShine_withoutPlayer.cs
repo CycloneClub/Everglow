@@ -2,7 +2,7 @@ namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords.Dusts
 {
 	public class CorruptShine_withoutPlayer : ModDust
 	{
-		public override string Texture => "Everglow/EternalResolve/Items/Weapons/StabbingSwords/Dusts/CorruptShine";
+		public override string Texture => ModAsset.CorruptShine_Mod;
 
 		public override bool Update(Dust dust)
 		{

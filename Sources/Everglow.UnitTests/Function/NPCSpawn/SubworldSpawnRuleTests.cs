@@ -265,32 +265,44 @@ public class SubworldSpawnRuleTests
 	}
 
 	[TestMethod]
-	public void Rate_UsesNativeInputsAndOnlyAppliesWorldDensityOnce()
+	[DataRow(600, 5)]
+	[DataRow(360, 6)]
+	[DataRow(1800, 3)]
+	[DataRow(int.MaxValue, 0)]
+	[DataRow(1, 60)]
+	public void Rate_OverridesVanillaInputsWithUniformWildernessPacing(int rate, int capacity)
 	{
-		float density = 0.25f;
-		SubworldSpawnSystem.RegisterWorld(new("tree", () => true, _ => density));
+		SubworldSpawnSystem.RegisterWorld(new("tree", () => true));
 		var player = (Player)RuntimeHelpers.GetUninitializedObject(typeof(Player));
-		int rate = 600;
-		int capacity = 8;
-		hook.EditSpawnRate(player, ref rate, ref capacity);
-		Assert.AreEqual(2400, rate);
-		Assert.AreEqual(2, capacity);
-
-		density = 0;
-		hook.EditSpawnRate(player, ref rate, ref capacity);
-		Assert.AreEqual(0, capacity);
-		Assert.IsTrue(rate > 0);
-
-		density = 1;
-		rate = 120;
-		capacity = 12;
 		hook.EditSpawnRate(player, ref rate, ref capacity);
 		Assert.AreEqual(120, rate);
-		Assert.AreEqual(12, capacity);
+		Assert.AreEqual(9, capacity);
+		// 重复调用不能叠乘，也不能读取上一次的原版输入。
+		hook.EditSpawnRate(player, ref rate, ref capacity);
+		Assert.AreEqual(120, rate);
+		Assert.AreEqual(9, capacity);
 	}
 
 	[TestMethod]
-	public void Rate_LeavesUnregisteredWorldAloneAndUsesDefaultDensityForActiveWorld()
+	public void Rate_OnlyDistinguishesBlockedAndEnabledAtPlayerTilePosition()
+	{
+		SubworldSpawnSystem.RegisterWorld(new("tree", () => true, position => position.X >= 100));
+		var player = (Player)RuntimeHelpers.GetUninitializedObject(typeof(Player));
+		int rate = 600;
+		int capacity = 8;
+		player.Center = new Vector2(99 * 16, 200 * 16);
+		hook.EditSpawnRate(player, ref rate, ref capacity);
+		Assert.AreEqual(int.MaxValue, rate);
+		Assert.AreEqual(0, capacity);
+
+		player.Center = new Vector2(100 * 16, 200 * 16);
+		hook.EditSpawnRate(player, ref rate, ref capacity);
+		Assert.AreEqual(120, rate, "Leaving a safe area must immediately restore full wilderness pacing.");
+		Assert.AreEqual(9, capacity);
+	}
+
+	[TestMethod]
+	public void Rate_LeavesUnregisteredWorldAloneAndRestoresItsInputsAfterExit()
 	{
 		bool active = false;
 		SubworldSpawnSystem.RegisterWorld(new("tree", () => active));
@@ -302,8 +314,14 @@ public class SubworldSpawnRuleTests
 		Assert.AreEqual(9, capacity);
 		active = true;
 		hook.EditSpawnRate(player, ref rate, ref capacity);
-		Assert.AreEqual(77, rate);
+		Assert.AreEqual(120, rate);
 		Assert.AreEqual(9, capacity);
+		active = false;
+		rate = 600;
+		capacity = 5;
+		hook.EditSpawnRate(player, ref rate, ref capacity);
+		Assert.AreEqual(600, rate);
+		Assert.AreEqual(5, capacity);
 	}
 
 	[TestMethod]
@@ -329,19 +347,11 @@ public class SubworldSpawnRuleTests
 	}
 
 	[TestMethod]
-	public void Ellipse_CenterAxesAndBoundaryRemainFinite()
-	{
-		Assert.AreEqual(0f, Everglow.Yggdrasil.Common.NPCSpawn.YggdrasilSpawnRegistration.EllipseDensity(new Vector2(600, 11630)));
-		Assert.AreEqual(0.25f, Everglow.Yggdrasil.Common.NPCSpawn.YggdrasilSpawnRegistration.EllipseDensity(new Vector2(750, 11630)));
-		Assert.AreEqual(1f, Everglow.Yggdrasil.Common.NPCSpawn.YggdrasilSpawnRegistration.EllipseDensity(new Vector2(900, 11630)));
-	}
-
-	[TestMethod]
 	[DataRow(true)]
 	[DataRow(false)]
 	public void CustomEvent_OwnsPoolAndRateRegardlessOfHookOrder(bool eventHookFirst)
 	{
-		SubworldSpawnSystem.RegisterWorld(new("tree", () => true, _ => 0f));
+		SubworldSpawnSystem.RegisterWorld(new("tree", () => true, _ => false));
 		SubworldSpawnSystem.RegisterRules("tree", "table", [new() { Type = 10 }], _ => true);
 		var player = (Player)RuntimeHelpers.GetUninitializedObject(typeof(Player));
 		var pool = new Dictionary<int, float> { [0] = 1 };
@@ -372,7 +382,7 @@ public class SubworldSpawnRuleTests
 			Assert.AreEqual(1, pool.Count);
 			Assert.AreEqual(7f, pool[999]);
 			Assert.AreEqual(40, rate);
-			Assert.AreEqual(60, capacity, "The ordinary zero-density area must not suppress event spawns.");
+			Assert.AreEqual(60, capacity, "The ordinary safe area must not suppress event spawns.");
 
 			Assert.IsTrue(EventSystem.Deactivate(customEvent));
 			hook.EditSpawnPool(pool, new NPCSpawnInfo { Player = player });
@@ -394,7 +404,7 @@ public class SubworldSpawnRuleTests
 		try
 		{
 			Main.bloodMoon = true;
-			SubworldSpawnSystem.RegisterWorld(new("tree", () => true, _ => 0.5f));
+			SubworldSpawnSystem.RegisterWorld(new("tree", () => true, _ => true));
 			SubworldSpawnSystem.RegisterRules("tree", "table", [new() { Type = 10 }], _ => true);
 			var pool = new Dictionary<int, float> { [0] = 1 };
 			hook.EditSpawnPool(pool, default);
@@ -403,8 +413,8 @@ public class SubworldSpawnRuleTests
 			int rate = 600;
 			int capacity = 8;
 			hook.EditSpawnRate((Player)RuntimeHelpers.GetUninitializedObject(typeof(Player)), ref rate, ref capacity);
-			Assert.AreEqual(1200, rate);
-			Assert.AreEqual(4, capacity);
+			Assert.AreEqual(120, rate);
+			Assert.AreEqual(9, capacity);
 		}
 		finally
 		{
@@ -415,7 +425,7 @@ public class SubworldSpawnRuleTests
 	[TestMethod]
 	public void LocalEvent_LeavesOrdinarySpawningEnabled()
 	{
-		SubworldSpawnSystem.RegisterWorld(new("tree", () => true, _ => 0.5f));
+		SubworldSpawnSystem.RegisterWorld(new("tree", () => true, _ => true));
 		SubworldSpawnSystem.RegisterRules("tree", "table", [new() { Type = 10, MinGroupSize = 2, MaxGroupSize = 2 }], _ => true);
 		var player = (Player)RuntimeHelpers.GetUninitializedObject(typeof(Player));
 		var info = new NPCSpawnInfo { Player = player, SpawnTileX = 20, SpawnTileY = 30 };
@@ -432,8 +442,8 @@ public class SubworldSpawnRuleTests
 			int rate = 600;
 			int capacity = 8;
 			hook.EditSpawnRate(player, ref rate, ref capacity);
-			Assert.AreEqual(1200, rate);
-			Assert.AreEqual(4, capacity);
+			Assert.AreEqual(120, rate);
+			Assert.AreEqual(9, capacity);
 
 			EventSystem.Activate(overridingEvent);
 			pool.Clear();

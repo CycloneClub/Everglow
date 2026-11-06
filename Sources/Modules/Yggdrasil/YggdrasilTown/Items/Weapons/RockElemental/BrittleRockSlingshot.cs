@@ -7,7 +7,8 @@ public class BrittleRockSlingshot : SlingshotItem
 {
 	public override void SetDef()
 	{
-		Item.damage = 24;
+		Item.damage = 18;
+		Item.useTime = Item.useAnimation = 24;
 		Item.knockBack = 10;
 		projType = ModContent.ProjectileType<BrittleRockSlingshotProj>();
 		Item.rare = ItemRarityID.Green;

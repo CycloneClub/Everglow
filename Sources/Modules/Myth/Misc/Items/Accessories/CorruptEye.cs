@@ -1,12 +1,15 @@
 using Everglow.Commons.VFX.CommonVFXDusts;
 using Everglow.Myth.Misc.Projectiles.Accessory;
 using Terraria.Audio;
+using Terraria.Localization;
 
 namespace Everglow.Myth.Misc.Items.Accessories;
 
 public class CorruptEye : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(5, 4, 5, 60, 3, 15, 20);
 
 	public override void SetDefaults()
 	{

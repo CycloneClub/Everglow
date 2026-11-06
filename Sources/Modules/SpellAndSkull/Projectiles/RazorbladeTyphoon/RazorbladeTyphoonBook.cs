@@ -40,8 +40,7 @@ internal class RazorbladeTyphoonBook : MagicBookProjectile
 
 		if (WindHole > 0)
 		{
-			var p = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, HitType, Projectile.damage, Projectile.knockBack * 6, Projectile.owner, WindHole/*ai[0]代表强度*/, 0);
-			p.CritChance = (int)Main.player[Projectile.owner].GetTotalCritChance(DamageClass.Magic);
+			Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, HitType, Projectile.damage, Projectile.knockBack * 6, Projectile.owner, WindHole/*ai[0]代表强度*/, 0);
 		}
 		ConstantUsingTime = 0;
 		base.OnKill(timeLeft);

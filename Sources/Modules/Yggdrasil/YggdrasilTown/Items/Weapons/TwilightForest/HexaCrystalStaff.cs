@@ -20,11 +20,11 @@ public class HexaCrystalStaff : ModItem
 		Item.DamageType = DamageClass.Magic;
 		Item.damage = 10;
 		Item.knockBack = 1f;
-		Item.mana = 6;
+		Item.mana = 7;
 
 		Item.useStyle = ItemUseStyleID.Shoot;
 		Item.UseSound = SoundID.Item20;
-		Item.useTime = Item.useAnimation = 14;
+		Item.useTime = Item.useAnimation = 24;
 		Item.noMelee = true;
 		Item.autoReuse = true;
 

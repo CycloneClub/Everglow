@@ -26,8 +26,8 @@ public class Acytaea : VisualNPC
 	public int Attack0Cooling = 0;
 
 	public override string HeadTexture => NPC.boss ?
-		"Everglow/Myth/Acytaea/NPCs/Acytaea_Head_Boss" :
-		"Everglow/Myth/Acytaea/NPCs/Acytaea_Head";
+		ModAsset.Acytaea_Head_Boss_Mod :
+		ModAsset.Acytaea_Head_Mod;
 
 	public override void SetStaticDefaults()
 	{
@@ -400,11 +400,13 @@ public class Acytaea : VisualNPC
 			NPC.velocity *= 0;
 			if (t == 6)
 			{
-				Projectile proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(-NPC.direction * 25, -40), Vector2.zeroVector, ModContent.ProjectileType<Acytaea_ShineStar_Town>(), 0, 3, Main.myPlayer, NPC.whoAmI);
+				Projectile proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(-NPC.direction * 25, -40), Vector2.zeroVector, ModContent.ProjectileType<Acytaea_ShineStar_Town>(), 0, 3, Main.netMode == NetmodeID.SinglePlayer ? Main.myPlayer : Main.maxPlayers, NPC.whoAmI);
+				proj.npcProj = true;
 			}
 			if (t == 12)
 			{
-				Projectile proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<AcytaeaScratch_TownNPC>(), 150, 3, Main.myPlayer, NPC.whoAmI);
+				Projectile proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<AcytaeaScratch_TownNPC>(), 150, 3, Main.netMode == NetmodeID.SinglePlayer ? Main.myPlayer : Main.maxPlayers, NPC.whoAmI);
+				proj.npcProj = true;
 			}
 			Idle = false;
 			NPC.frameCounter += 1;
@@ -437,7 +439,8 @@ public class Acytaea : VisualNPC
 			NPC.frameCounter += 1;
 			if (t == 6)
 			{
-				Projectile proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<AcytaeaSword_projectile_TownNPC>(), 150, 3, Main.myPlayer, NPC.whoAmI);
+				Projectile proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<AcytaeaSword_projectile_TownNPC>(), 150, 3, Main.netMode == NetmodeID.SinglePlayer ? Main.myPlayer : Main.maxPlayers, NPC.whoAmI);
+				proj.npcProj = true;
 			}
 			if (NPC.frameCounter > 6)
 			{

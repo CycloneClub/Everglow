@@ -176,7 +176,7 @@ public class InnKeeper : TownNPC_LiveInYggdrasil
 			NPC.direction = -1;
 		}
 		NPC.spriteDirection = NPC.direction;
-		Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, new Vector2(-NPC.direction, 0), ModContent.ProjectileType<Georg_Hammer>(), 150, 4, Main.myPlayer, NPC.whoAmI);
+		Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, new Vector2(-NPC.direction, 0), ModContent.ProjectileType<Georg_Hammer>(), 150, 4, Main.netMode == NetmodeID.SinglePlayer ? Main.myPlayer : Main.maxPlayers, NPC.whoAmI).npcProj = true;
 		for (int t = 0; t < 60; t++)
 		{
 			NPC.velocity.X *= 0;
@@ -209,7 +209,7 @@ public class InnKeeper : TownNPC_LiveInYggdrasil
 			NPC.direction = -1;
 		}
 		NPC.spriteDirection = NPC.direction;
-		Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, (target.Center - NPC.Center).NormalizeSafe(), ModContent.ProjectileType<Georg_Hook>(), 100, 4, Main.myPlayer, NPC.whoAmI);
+		Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, (target.Center - NPC.Center).NormalizeSafe(), ModContent.ProjectileType<Georg_Hook>(), 100, 4, Main.netMode == NetmodeID.SinglePlayer ? Main.myPlayer : Main.maxPlayers, NPC.whoAmI).npcProj = true;
 		for (int t = 0; t < 100; t++)
 		{
 			NPC.velocity.X *= 0;
@@ -335,7 +335,7 @@ public class InnKeeper : TownNPC_LiveInYggdrasil
 			NPC.direction = -1;
 		}
 		NPC.spriteDirection = NPC.direction;
-		Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, (target.Center - NPC.Center).NormalizeSafe(), ModContent.ProjectileType<Georg_Hook>(), (int)(NPC.damage * 1.5f), 4, Main.myPlayer, NPC.whoAmI);
+		Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, (target.Center - NPC.Center).NormalizeSafe(), ModContent.ProjectileType<Georg_Hook>(), (int)(NPC.damage * 1.5f), 4, Main.maxPlayers, NPC.whoAmI);
 		p0.friendly = false;
 		p0.hostile = true;
 		for (int t = 0; t < 100 / AttackSpeed; t++)
@@ -380,14 +380,14 @@ public class InnKeeper : TownNPC_LiveInYggdrasil
 		{
 			fire = 1;
 		}
-		Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), targetPos, Vector2.zeroVector, ModContent.ProjectileType<Georg_Hammer_Target>(), 0, 0, target.whoAmI, fire);
+		Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), targetPos, Vector2.zeroVector, ModContent.ProjectileType<Georg_Hammer_Target>(), 0, 0, Main.maxPlayers, fire);
 		NPC.velocity *= 0;
 		yield return new WaitForFrames(12);
 		NPC.spriteDirection = NPC.direction;
 		NPC.velocity.Y = -20 * AttackSpeed;
 
 		// Ascend
-		Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, (targetPos - NPC.Center).NormalizeSafe(), ModContent.ProjectileType<Georg_Hammer_JumpHit>(), NPC.damage, 4, Main.myPlayer, NPC.whoAmI);
+		Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, (targetPos - NPC.Center).NormalizeSafe(), ModContent.ProjectileType<Georg_Hammer_JumpHit>(), NPC.damage, 4, Main.maxPlayers, NPC.whoAmI);
 		float maxTimeAttack = (int)(30f / AttackSpeed);
 		for (int t = 0; t < maxTimeAttack; t++)
 		{
@@ -480,7 +480,7 @@ public class InnKeeper : TownNPC_LiveInYggdrasil
 			}
 			if (t % (20 / AttackSpeed) == 0)
 			{
-				Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, (target.Center - NPC.Center).NormalizeSafe(), ModContent.ProjectileType<Georg_Fly_Hammer>(), NPC.damage, 4, Main.myPlayer, NPC.whoAmI);
+				Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, (target.Center - NPC.Center).NormalizeSafe(), ModContent.ProjectileType<Georg_Fly_Hammer>(), NPC.damage, 4, Main.maxPlayers, NPC.whoAmI);
 			}
 			if (BossToPlayerDistanceLowerThan(100))
 			{

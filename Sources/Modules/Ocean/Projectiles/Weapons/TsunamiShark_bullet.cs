@@ -7,7 +7,7 @@ public class TsunamiShark_bullet : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
 
-	public override string Texture => "Everglow/Ocean/Projectiles/Weapons/TsunamiShark/TsunamiShark_proj";
+	public override string Texture => ModAsset.TsunamiShark_proj_Mod;
 
 	public override void SetDefaults()
 	{
@@ -89,7 +89,7 @@ public class TsunamiShark_bullet : ModProjectile
 				dust.velocity = new Vector2(0, Main.rand.NextFloat(4f)).RotatedByRandom(6.283);
 			}
 		}
-		Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<TsunamiShark_bullet_hit>(), Projectile.damage, Projectile.knockBack);
+		Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<TsunamiShark_bullet_hit>(), Projectile.damage, Projectile.knockBack, Owner: Projectile.owner);
 	}
 
 	public void GenerateVFXKill(int Frequency)

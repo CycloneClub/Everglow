@@ -160,7 +160,7 @@ namespace Everglow.EternalResolve.Projectiles
 			}
 			if (Blood > 0)
 			{
-				Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ProjectileID.VampireHeal, 5, 0, Projectile.owner, Projectile.owner, Blood);
+				Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, ProjectileID.VampireHeal, 5, 0, Projectile.owner, Projectile.owner, Blood);
 			}
 		}
 	}

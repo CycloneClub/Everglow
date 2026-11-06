@@ -34,7 +34,7 @@ public class ThunderBall2 : ModProjectile
 		if (Main.rand.NextBool(8))
 		{
 			Vector2 v = Projectile.velocity.RotatedBy(Main.rand.NextFloat(-1.5f, 1.5f));
-			int h = Projectile.NewProjectile(null, Projectile.Center - v, v, ModContent.ProjectileType<ThunderBall2>(), Projectile.damage / 2, Projectile.knockBack, player.whoAmI, player.GetCritChance(DamageClass.Magic) * 100 + 16);
+			int h = Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center - v, v, ModContent.ProjectileType<ThunderBall2>(), Projectile.damage / 2, Projectile.knockBack, player.whoAmI, player.GetCritChance(DamageClass.Magic) * 100 + 16);
 			Main.projectile[h].timeLeft = Projectile.timeLeft;
 		}
 		for (int j = 0; j < 200; j++)
@@ -136,7 +136,7 @@ public class ThunderBall2 : ModProjectile
 				triangleList.Add(bars[i + 2]);
 				triangleList.Add(bars[i + 3]);
 			}
-			Texture2D t = ModContent.Request<Texture2D>("Everglow/Myth/UIImages/VisualTextures/FogTraceTheta2").Value;
+			Texture2D t = ModAsset.FogTraceTheta2.Value;
 			Main.graphics.GraphicsDevice.Textures[0] = t; // GlodenBloodScaleMirror
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, triangleList.ToArray(), 0, triangleList.Count / 3);
 			Main.spriteBatch.End();

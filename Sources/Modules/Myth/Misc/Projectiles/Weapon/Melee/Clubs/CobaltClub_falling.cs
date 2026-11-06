@@ -8,7 +8,7 @@ public class CobaltClub_falling : TrailingProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
 
-	public override string Texture => "Everglow/" + ModAsset.CobaltClub_Path;
+	public override string Texture => ModAsset.CobaltClub_Mod;
 
 	public override void SetCustomDefaults()
 	{

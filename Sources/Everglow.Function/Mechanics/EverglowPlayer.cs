@@ -95,16 +95,8 @@ public partial class EverglowPlayer : ModPlayer
 		var expiredCooldowns = new List<string>();
 		foreach (var (key, cdInstance) in cooldowns)
 		{
-			var cdBase = cdInstance.cooldown;
-			if (cdBase.CanTickDown)
+			if (cdInstance.cooldown.AutomaticTick && cdInstance.Tick())
 			{
-				cdInstance.timeLeft--;
-			}
-
-			cdBase.Update();
-			if (cdInstance.timeLeft <= 0)
-			{
-				cdBase.OnCompleted();
 				expiredCooldowns.Add(key);
 			}
 		}

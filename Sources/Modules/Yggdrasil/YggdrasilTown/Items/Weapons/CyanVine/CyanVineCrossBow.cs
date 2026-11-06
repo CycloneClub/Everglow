@@ -13,9 +13,9 @@ public class CyanVineCrossBow : CrossBowItem
 		Item.height = 34;
 		Item.rare = ItemRarityID.White;
 		Item.value = 3800;
-		Item.useTime = 20;
-		Item.useAnimation = 20;
-		Item.damage = 15;
+		Item.useTime = 24;
+		Item.useAnimation = 24;
+		Item.damage = 20;
 		Item.knockBack = 4f;
 		CrossBowProjType = ModContent.ProjectileType<CyanVineCrossBow_Proj>();
 	}

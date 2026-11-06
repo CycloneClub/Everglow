@@ -57,7 +57,7 @@ namespace Everglow.EternalResolve.Projectiles
 			if (sourceItem.specialDelay == 0)
 			{
 				sourceItem.specialDelay = 60;
-				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), target.Center, Vector2.zeroVector, ModContent.ProjectileType<RottenGoldBayonet_Mark>(), (int)(Projectile.damage * 1f), Projectile.knockBack * 2.97f, Projectile.owner, 0, target.whoAmI);
+				Projectile.NewProjectileDirect(Projectile.GetSource_OnHit(target), target.Center, Vector2.zeroVector, ModContent.ProjectileType<RottenGoldBayonet_Mark>(), (int)(Projectile.damage * 1f), Projectile.knockBack * 2.97f, Projectile.owner, 0, target.whoAmI);
 			}
 		}
 

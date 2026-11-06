@@ -24,12 +24,12 @@ public class KissOfCthulhu : ModItem
 		Item.height = 32;
 
 		Item.DamageType = DamageClass.Ranged;
-		Item.damage = 21;
+		Item.damage = 18;
 		Item.knockBack = 1.8f;
 		Item.crit = 4;
 
 		Item.useStyle = ItemUseStyleID.Shoot;
-		Item.useTime = Item.useAnimation = 22;
+		Item.useTime = Item.useAnimation = 32;
 		Item.autoReuse = true;
 		Item.noMelee = true;
 

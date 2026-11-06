@@ -33,7 +33,7 @@ public class PearShapedNeedle_Needle : ModProjectile
 		Vector2 endPos = Projectile.position;
 		Vector2 vel = Projectile.velocity.NormalizeSafe() * 5;
 		bool hit = false;
-		for (int i = 0; i < 30; i++)
+		for (int i = 0; i < 44; i++)
 		{
 			endPos += vel;
 			if (Collision.SolidCollision(endPos, Projectile.width, Projectile.height))

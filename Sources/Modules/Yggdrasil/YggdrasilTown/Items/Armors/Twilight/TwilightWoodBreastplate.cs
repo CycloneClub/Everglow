@@ -1,5 +1,6 @@
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Twilight;
 
@@ -8,7 +9,9 @@ public class TwilightWoodBreastplate : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
-	public const int MaxLifeBonus = 15;
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(MaxLifeBonus);
+
+	public const int MaxLifeBonus = 20;
 
 	public override void SetDefaults()
 	{
@@ -16,7 +19,7 @@ public class TwilightWoodBreastplate : ModItem
 		Item.height = 26;
 		Item.value = Item.buyPrice(silver: 37, copper: 50);
 		Item.rare = ItemRarityID.White;
-		Item.defense = 4;
+		Item.defense = 6;
 	}
 
 	public override void UpdateEquip(Player player)

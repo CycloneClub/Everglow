@@ -5,20 +5,25 @@ EnergyDrink: {
 
 GuidePotion: {
 	DisplayName: 引路药水
-	Tooltip: ""
+	Tooltip: "照亮鼠标指针周围的区域"
 }
 
 RayPotion: {
 	DisplayName: 霞光药水
-	Tooltip: ""
+	Tooltip: "提高周围环境的亮度"
 }
 
 ShadowPotion: {
 	DisplayName: 暗影药剂
-	Tooltip: ""
+	Tooltip: "在暗处增加8点防御和8%伤害，并逐渐获得夜视\n强光下会降低生命再生"
 }
 
 JumpPotion: {
 	DisplayName: 跳跃药水
-	Tooltip: 跳跃高度提高15%，摔落伤害降低30%
+	Tooltip: 跳跃高度提高20%，摔落伤害降低25%
+}
+
+ScalePotion: {
+	DisplayName: "鳞片药水"
+	Tooltip: "受到敌人的接触伤害降低5%"
 }

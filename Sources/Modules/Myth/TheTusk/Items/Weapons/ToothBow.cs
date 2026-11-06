@@ -12,15 +12,15 @@ public class ToothBow : ModItem
 		Item.height = 78;
 		Item.rare = ItemRarityID.Green;
 
-		Item.useTime = 20;
-		Item.useAnimation = 20;
+		Item.useTime = 28;
+		Item.useAnimation = 28;
 		Item.useStyle = ItemUseStyleID.Shoot;
 		Item.autoReuse = false;
 		Item.UseSound = SoundID.Item1;
 		Item.channel = true;
 
 		Item.DamageType = DamageClass.Ranged;
-		Item.damage = 46;
+		Item.damage = 28;
 		Item.knockBack = 5f;
 		Item.noMelee = true;
 		Item.noUseGraphic = true;

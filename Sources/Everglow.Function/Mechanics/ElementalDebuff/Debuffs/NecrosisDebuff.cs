@@ -9,7 +9,7 @@ public class NecrosisDebuff : ElementalDebuffHandler
 
 	public override string TypeID => ID;
 
-	public override int Duration { get; protected set; } = 1200;
+	public override int ProcDamage { get; protected set; } = 180;
 
 	public override Asset<Texture2D> Texture => ModAsset.Necrosis;
 

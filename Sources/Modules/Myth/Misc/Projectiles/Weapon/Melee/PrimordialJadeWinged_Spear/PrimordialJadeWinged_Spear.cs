@@ -39,7 +39,7 @@ public class PrimordialJadeWinged_Spear : MeleeProj
 
 	public override string TrailColorTex()
 	{
-		return "Everglow/Myth/Misc/Projectiles/Weapon/Melee/PrimordialJadeWinged_Spear/Primordial_Jade_Winged_Spear_Melee_Color";
+		return ModAsset.Primordial_Jade_Winged_Spear_Melee_Color_Mod;
 	}
 
 	public override float TrailAlpha(float factor)
@@ -395,7 +395,7 @@ public class PrimordialJadeWinged_Spear : MeleeProj
 	public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 	{
 		CyanStrike = 1;
-		Projectile.NewProjectile(Terraria.Entity.InheritSource(Projectile), target.Center, Vector2.Zero, ModContent.ProjectileType<XiaoHit>(), 0, 0, Projectile.owner, 0.45f);
+		Projectile.NewProjectile(Projectile.GetSource_OnHit(target), target.Center, Vector2.Zero, ModContent.ProjectileType<XiaoHit>(), 0, 0, Projectile.owner, 0.45f);
 	}
 
 	public override void Load()

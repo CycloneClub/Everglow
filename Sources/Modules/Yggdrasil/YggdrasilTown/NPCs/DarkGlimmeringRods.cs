@@ -1,6 +1,5 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.Common;
-using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Terraria.DataStructures;
 using Terraria.GameContent.ItemDropRules;
@@ -18,8 +17,8 @@ public class DarkGlimmeringRods : ModNPC
 	{
 		NPC.width = 40;
 		NPC.height = 40;
-		NPC.lifeMax = 188;
-		NPC.damage = 22;
+		NPC.lifeMax = 120;
+		NPC.damage = 18;
 		NPC.defense = 8;
 		NPC.friendly = false;
 		NPC.aiStyle = -1;
@@ -27,17 +26,6 @@ public class DarkGlimmeringRods : ModNPC
 		NPC.HitSound = SoundID.NPCHit1;
 		NPC.DeathSound = SoundID.NPCDeath1;
 		NPC.noGravity = true;
-	}
-
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		YggdrasilTownBiome YggdrasilTownBiome = ModContent.GetInstance<YggdrasilTownBiome>();
-		if (!YggdrasilTownBiome.IsBiomeActive(Main.LocalPlayer))
-		{
-			return 0f;
-		}
-
-		return 3f;
 	}
 
 	public int BodyLength = 20;

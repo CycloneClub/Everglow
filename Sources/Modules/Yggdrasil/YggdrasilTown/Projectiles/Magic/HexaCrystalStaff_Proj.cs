@@ -87,7 +87,7 @@ public class HexaCrystalStaff_Proj : ModProjectile
 	{
 		if (target.HasBuff(ModContent.BuffType<HexaCrystalWeak>()))
 		{
-			modifiers.FinalDamage *= 2.5f;
+			modifiers.FinalDamage *= 1.75f;
 		}
 		base.ModifyHitNPC(target, ref modifiers);
 	}
@@ -95,12 +95,12 @@ public class HexaCrystalStaff_Proj : ModProjectile
 	public override void OnKill(int timeLeft)
 	{
 		float rot = Main.rand.NextFloat(MathHelper.TwoPi);
-		var proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<HexaCrystalStaff_ProjExplosion>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+		var proj = Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<HexaCrystalStaff_ProjExplosion>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
 		proj.rotation = rot;
 		for (int i = 0; i < 6; i++)
 		{
 			Vector2 vel = new Vector2(6, 0).RotatedBy(i / 6f * MathHelper.TwoPi + rot);
-			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, vel, ModContent.ProjectileType<HexaCrystalStaff_SubProj>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner);
+			Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, vel, ModContent.ProjectileType<HexaCrystalStaff_SubProj>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner);
 			for (int j = 0; j < 6; j++)
 			{
 				Vector2 velNew = vel.RotatedBy(0.5f / 6f * MathHelper.TwoPi) * 3 + vel.RotatedBy(0.5f / 6f * MathHelper.TwoPi + MathHelper.PiOver2) * MathF.Sqrt(3) * (j - 3) / 3f;

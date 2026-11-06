@@ -26,7 +26,7 @@ public class CobaltClub_smash : ClubProjSmash
 		{
 			Projectile.ai[1] = 0;
 			Vector2 addPos = new Vector2(0, -54).RotatedByRandom(6.283) + new Vector2(0, -60 * Player.gravDir);
-			Projectile p0 = Projectile.NewProjectileDirect(null, Projectile.Center + addPos + new Vector2(0, -60 * Player.gravDir), -addPos * 0.1f + new Vector2(0, 12 * Player.gravDir), ModContent.ProjectileType<CobaltClub_falling_Shoot>(), Projectile.damage / 4, 0, Player.whoAmI, 1.85f);
+			Projectile p0 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + addPos + new Vector2(0, -60 * Player.gravDir), -addPos * 0.1f + new Vector2(0, 12 * Player.gravDir), ModContent.ProjectileType<CobaltClub_falling_Shoot>(), Projectile.damage / 4, 0, Player.whoAmI, 1.85f);
 		}
 		base.AI();
 	}

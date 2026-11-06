@@ -165,6 +165,6 @@ public class YggdrasilMoonBlade : ModProjectile, IWarpProjectile
 
 	public override void OnKill(int timeLeft)
 	{
-		Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<YggdrasilMoonBladeHit>(), 0, 0, -1, 20, startVelocity.ToRotation());
+		Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<YggdrasilMoonBladeHit>(), 0, 0, Projectile.owner, 20, startVelocity.ToRotation());
 	}
 }

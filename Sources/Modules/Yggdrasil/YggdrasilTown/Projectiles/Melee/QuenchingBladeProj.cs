@@ -12,6 +12,7 @@ public class QuenchingBladeProj : MeleeProj
 	public override void SetDef()
 	{
 		maxAttackType = 4;
+		Projectile.localNPCHitCooldown = 20;
 		maxSlashTrailLength = 20;
 		longHandle = true;
 		autoEnd = true;

@@ -7,7 +7,7 @@ public class BloodyBoneYoyo : YoyoProjectile
 {
 	public override void SetStaticDefaults()
 	{
-		ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = 60;
+		ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = 18;
 		ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 7;
 		ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 320;
 	}
@@ -192,7 +192,7 @@ public class BloodyBoneYoyo : YoyoProjectile
 				dust.velocity = new Vector2(0, Main.rand.NextFloat(0.4f, 2.5f)).RotatedByRandom(Math.PI * 2d) * 0.5f;
 			}
 		}
-		if (Main.rand.NextBool(15) && tentacles.Count < 8)
+		if (Main.rand.NextBool(20) && tentacles.Count < 5)
 		{
 			Tentacle tentacle = default(Tentacle);
 			tentacle.oldPos = new List<Vector2>();

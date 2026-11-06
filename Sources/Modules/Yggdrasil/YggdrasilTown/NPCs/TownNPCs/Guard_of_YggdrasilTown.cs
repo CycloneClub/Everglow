@@ -239,7 +239,8 @@ public class Guard_of_YggdrasilTown : TownNPC_LiveInYggdrasil
 		NPC.spriteDirection = NPC.direction;
 		NPC.frame = new Rectangle(0, 0, 76, 62);
 		NPC.frameCounter = 0;
-		var proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, 8), distance, ModContent.ProjectileType<Guard_Attack_Spear>(), NPC.damage, 2, Main.myPlayer, NPC.whoAmI);
+		var proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, 8), distance, ModContent.ProjectileType<Guard_Attack_Spear>(), NPC.damage, 2, Main.netMode == NetmodeID.SinglePlayer ? Main.myPlayer : Main.maxPlayers, NPC.whoAmI);
+		proj.npcProj = true;
 		SpearProjectile = proj;
 		for (int t = 0; t < 22; t++)
 		{
@@ -298,7 +299,8 @@ public class Guard_of_YggdrasilTown : TownNPC_LiveInYggdrasil
 		{
 			if (t == 4)
 			{
-				var proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, new Vector2(direction, 0), ModContent.ProjectileType<Guard_Attack_Fist>(), NPC.damage, 2, Main.myPlayer, NPC.whoAmI);
+				var proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, new Vector2(direction, 0), ModContent.ProjectileType<Guard_Attack_Fist>(), NPC.damage, 2, Main.netMode == NetmodeID.SinglePlayer ? Main.myPlayer : Main.maxPlayers, NPC.whoAmI);
+				proj.npcProj = true;
 				NPC.frame = new Rectangle(0, 46, 46, 46);
 			}
 			if (t == 8)

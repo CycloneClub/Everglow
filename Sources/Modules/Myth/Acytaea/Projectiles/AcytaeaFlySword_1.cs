@@ -8,7 +8,7 @@ public class AcytaeaFlySword_1 : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
 
-	public override string Texture => "Everglow/Myth/Acytaea/Projectiles/AcytaeaSword_projectile";
+	public override string Texture => ModAsset.AcytaeaSword_projectile_Mod;
 
 	public override void SetDefaults()
 	{
@@ -107,7 +107,6 @@ public class AcytaeaFlySword_1 : ModProjectile
 		{
 			return;
 		}
-		Player player = Main.player[Projectile.owner];
 		TimeTokill = 60;
 		Projectile.tileCollide = false;
 		Projectile.friendly = false;
@@ -146,7 +145,7 @@ public class AcytaeaFlySword_1 : ModProjectile
 			};
 			Ins.VFXManager.Add(acytaeaFlame);
 		}
-		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<AcytaeaFlySwordExplosion>(), Projectile.damage, Projectile.knockBack, player.whoAmI, 14);
+		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<AcytaeaFlySwordExplosion>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 14);
 		Projectile.position -= Projectile.velocity;
 	}
 

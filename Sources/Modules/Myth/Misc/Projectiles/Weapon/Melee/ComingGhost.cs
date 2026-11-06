@@ -45,7 +45,7 @@ internal class ComingGhost : MeleeProj
 
 		Player player = Main.player[Projectile.owner];
 		Vector2 v = new Vector2(0, 6).RotatedByRandom(Math.PI * 2) * 5f;
-		Projectile.NewProjectile(null, target.Center - v * 3, v, ModContent.ProjectileType<GhostHit>(), Projectile.damage, Projectile.knockBack, player.whoAmI, Main.rand.NextFloat(-0.05f, 0.05f));
+		Projectile.NewProjectile(Projectile.GetSource_OnHit(target), target.Center - v * 3, v, ModContent.ProjectileType<GhostHit>(), Projectile.damage, Projectile.knockBack, player.whoAmI, Main.rand.NextFloat(-0.05f, 0.05f));
 	}
 
 	public override string TrailShapeTex()
@@ -55,7 +55,7 @@ internal class ComingGhost : MeleeProj
 
 	public override string TrailColorTex()
 	{
-		return "Everglow/Myth/Misc/Projectiles/Weapon/Melee/Coming_Ghost_Melee_Color";
+		return ModAsset.Coming_Ghost_Melee_Color_Mod;
 	}
 
 	public override float TrailAlpha(float factor)
@@ -242,7 +242,7 @@ internal class ComingGhost : MeleeProj
 					}
 
 					Vector2 v0 = new Vector2(0, 14 * Main.rand.NextFloat(0.65f, 1.8f)).RotatedByRandom(MathHelper.TwoPi);
-					Projectile.NewProjectile(Projectile.GetSource_FromAI(), Style3StartPoint + new Vector2((60 + duration * 2.5f) * Projectile.ai[1], 0) - v0 * 8, v0, ModContent.ProjectileType<ComingGhost_Slash>(), Projectile.damage, Projectile.knockBack);
+					Projectile.NewProjectile(Projectile.GetSource_FromAI(), Style3StartPoint + new Vector2((60 + duration * 2.5f) * Projectile.ai[1], 0) - v0 * 8, v0, ModContent.ProjectileType<ComingGhost_Slash>(), Projectile.damage, Projectile.knockBack, Owner: Projectile.owner);
 				}
 			}
 			if (timer > 44 * timeMul)

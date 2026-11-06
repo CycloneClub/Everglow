@@ -15,7 +15,7 @@ public class OrichalcumClub_smash : ClubProjSmash
 		{
 			for (int x = 0; x < 7; x++)
 			{
-				Projectile p0 = Projectile.NewProjectileDirect(null, Player.Center + new Vector2(Player.direction * 80 * x, -4), Vector2.zeroVector, ModContent.ProjectileType<OrichalcumPedal_slash>(), Projectile.damage / 2, 0, Player.whoAmI, 1.4f);
+				Projectile p0 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Player.Center + new Vector2(Player.direction * 80 * x, -4), Vector2.zeroVector, ModContent.ProjectileType<OrichalcumPedal_slash>(), Projectile.damage / 2, 0, Player.whoAmI, 1.4f);
 				p0.timeLeft = Main.rand.Next(120, 136) + x * 16;
 			}
 		}
@@ -23,7 +23,7 @@ public class OrichalcumClub_smash : ClubProjSmash
 		{
 			for (int x = 0; x < 12; x++)
 			{
-				Projectile p0 = Projectile.NewProjectileDirect(null, Player.Center + new Vector2(Player.direction * 80 * x, -14), Vector2.zeroVector, ModContent.ProjectileType<OrichalcumPedal_slash>(), (int)(Projectile.damage * 0.85f), 0, Player.whoAmI, 1.85f);
+				Projectile p0 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Player.Center + new Vector2(Player.direction * 80 * x, -14), Vector2.zeroVector, ModContent.ProjectileType<OrichalcumPedal_slash>(), (int)(Projectile.damage * 0.85f), 0, Player.whoAmI, 1.85f);
 				p0.timeLeft = Main.rand.Next(118, 126) + x * 13;
 			}
 		}

@@ -94,7 +94,7 @@ public class VortexVanquisherItem : ModItem
 					{
 						coolTimeForQ = 10;
 					}
-					Projectile PlanetBeFall = Projectile.NewProjectileDirect(Item.GetSource_FromAI(), /*Main.MouseWorld*/new Vector2(player.Center.X, Main.MouseWorld.Y - 1500), Vector2.Zero, ModContent.ProjectileType<PlanetBeFall_Proj>(), Item.damage * 27, Item.knockBack * 10, player.whoAmI);
+					Projectile PlanetBeFall = Projectile.NewProjectileDirect(player.GetSource_ItemUse(Item), /*Main.MouseWorld*/new Vector2(player.Center.X, Main.MouseWorld.Y - 1500), Vector2.Zero, ModContent.ProjectileType<PlanetBeFall_Proj>(), Item.damage * 27, Item.knockBack * 10, player.whoAmI);
 				}
 				if (player.altFunctionUse != 2)
 				{

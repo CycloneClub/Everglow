@@ -27,7 +27,7 @@ public abstract class RoomDoorTile : ModTile
 	public void WoodenRoomGen()
 	{
 		var mapIO = new MapIO(5, 5);
-		mapIO.Read(ModIns.Mod.GetFileStream("SubSpace/RoomMapIO/WoodenRoomMapIO_0.mapio"));
+		mapIO.Read(ModIns.Mod.GetFileStream(ModAsset.WoodenRoomMapIO_0_Path));
 		var it = mapIO.GetEnumerator();
 		while (it.MoveNext())
 		{

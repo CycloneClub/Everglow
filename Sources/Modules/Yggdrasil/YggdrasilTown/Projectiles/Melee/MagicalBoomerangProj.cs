@@ -86,7 +86,7 @@ public class MagicalBoomerangProj : ModProjectile
 			for (int i = 0; i < 8; i++)
 			{
 				Vector2 vel = startVel.RotatedBy(i / 8f * MathHelper.TwoPi);
-				var proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, vel, ModContent.ProjectileType<MagicalBoomerangSubProj>(), (int)(Projectile.damage * 0.7), Projectile.knockBack * 0.7f, Projectile.owner);
+				var proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, vel, ModContent.ProjectileType<MagicalBoomerangSubProj>(), (int)(Projectile.damage * 0.5), Projectile.knockBack * 0.7f, Projectile.owner);
 				proj.rotation = vel.ToRotation();
 				for (int step = 0; step < 20; step++)
 				{

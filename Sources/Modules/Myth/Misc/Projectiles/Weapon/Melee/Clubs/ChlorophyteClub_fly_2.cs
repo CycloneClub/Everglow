@@ -6,7 +6,7 @@ public class ChlorophyteClub_fly_2 : ModProjectile, IWarpProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
 
-	public override string Texture => "Everglow/" + ModAsset.ChlorophyteClub_fly_Path;
+	public override string Texture => ModAsset.ChlorophyteClub_fly_Mod;
 
 	/// <summary>
 	/// 角速度

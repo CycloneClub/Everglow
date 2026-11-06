@@ -1,8 +1,12 @@
+using Terraria.Localization;
+
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
 
 public class ManaThermalPipeline : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(MagicDamageBonus * 100f, ManaRegenIncrease);
 
 	public const float MagicDamageBonus = 0.05f;
 	public const int ManaRegenIncrease = 4;

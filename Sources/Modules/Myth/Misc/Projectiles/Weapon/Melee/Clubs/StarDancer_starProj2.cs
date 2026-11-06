@@ -7,7 +7,7 @@ public class StarDancer_starProj2 : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
 
-	public override string Texture => "Everglow/" + ModAsset.StarDancer_Path;
+	public override string Texture => ModAsset.StarDancer_Mod;
 
 	public override void SetDefaults()
 	{

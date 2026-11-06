@@ -1,6 +1,7 @@
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Everglow.Yggdrasil.Common;
 using Terraria.GameContent.Creative;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.LightSeeker;
 
@@ -8,6 +9,10 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.LightSeeker;
 public class ExplorationHelmet : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(5, 10, 8);
+
+	public LocalizedText SetBonusText => this.GetLocalization("SetBonus").WithFormatArgs(5, 10, 8);
 
 	public override void SetStaticDefaults()
 	{
@@ -21,7 +26,7 @@ public class ExplorationHelmet : ModItem
 		Item.height = 26;
 		Item.value = 2500;
 		Item.rare = ItemRarityID.Green;
-		Item.defense = 1;
+		Item.defense = 3;
 	}
 
 	public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -31,16 +36,17 @@ public class ExplorationHelmet : ModItem
 
 	public override void UpdateArmorSet(Player player)
 	{
+		player.setBonus = SetBonusText.Value;
 		player.GetModPlayer<YggdrasilPlayer>().lightSeekerRangedSet = true;
 		player.GetModPlayer<EverglowPlayer>().ammoCost *= 1 - 0.1f; // +10% chancce not consume ammo
-		player.GetDamage(DamageClass.Ranged) += 0.05f;
+		player.GetDamage(DamageClass.Ranged) += 0.08f;
 	}
 
 	public override void UpdateEquip(Player player)
 	{
 		Lighting.AddLight(player.Center, Vector3.one * 0.5f);
 
-		player.GetCritChance(DamageClass.Ranged) += 4f;
+		player.GetCritChance(DamageClass.Ranged) += 5f;
 	}
 
 	public override void AddRecipes()

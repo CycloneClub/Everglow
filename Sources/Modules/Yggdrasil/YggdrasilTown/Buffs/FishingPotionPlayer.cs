@@ -21,18 +21,18 @@ public class FishingPotionPlayer : ModPlayer
 
 		// 原版此时已为当前玩家重算 jumpSpeed/jumpHeight，随后才执行 JumpMovement。
 		// 跳跃由按住跳跃的匀速段和松开后的减速段组成，不能把速度直接乘 1.15。
-		// H ≈ t*v + v²/(2*g)；求增加 15% 高度所需的速度，保持跳跃持续帧数不变。
+		// H ≈ t*v + v²/(2*g)；求增加 20% 高度所需的速度，保持跳跃持续帧数不变。
 		float gravity = Player.gravity;
 		float speed = Player.jumpSpeed - gravity;
 		float hold = gravity * (Player.jumpHeight + 0.5f);
-		Player.jumpSpeed = MathF.Sqrt(hold * hold + 1.15f * speed * (speed + 2f * hold)) - hold + gravity;
+		Player.jumpSpeed = MathF.Sqrt(hold * hold + 1.2f * speed * (speed + 2f * hold)) - hold + gravity;
 	}
 
 	public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers)
 	{
 		if (ScalePotionActive)
 		{
-			modifiers.FinalDamage *= 0.94f;
+			modifiers.FinalDamage *= 0.95f;
 		}
 	}
 
@@ -41,7 +41,7 @@ public class FishingPotionPlayer : ModPlayer
 		// 原版以 ByOther(0) 标记普通摔落，ByOther(5) 标记石化摔落。
 		if (JumpPotionActive && modifiers.DamageSource.SourceOtherIndex is 0 or 5)
 		{
-			modifiers.FinalDamage *= 0.7f;
+			modifiers.FinalDamage *= 0.75f;
 		}
 	}
 }

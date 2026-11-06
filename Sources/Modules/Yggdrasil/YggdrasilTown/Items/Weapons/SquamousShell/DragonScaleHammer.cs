@@ -17,7 +17,7 @@ public class DragonScaleHammer : ModItem
 		Item.shoot = ModContent.ProjectileType<DragonScaleHammerProj>();
 		Item.shootSpeed = 5f;
 		Item.knockBack = 3.3f;
-		Item.damage = 30;
+		Item.damage = 42;
 
 		Item.DamageType = DamageClass.Melee;
 		Item.noMelee = true;

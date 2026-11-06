@@ -34,7 +34,7 @@ public class GlowWoodCandelabra : ModTile
 		TileObjectData.addTile(Type);
 		if (!Main.dedServ)
 		{
-			flameTexture = ModContent.Request<Texture2D>("Everglow/Myth/TheFirefly/Tiles/Furnitures/GlowWoodCandelabra_Flame");
+			flameTexture = ModAsset.GlowWoodCandelabra_Flame;
 		}
 
 		LocalizedText name = CreateMapEntryName();

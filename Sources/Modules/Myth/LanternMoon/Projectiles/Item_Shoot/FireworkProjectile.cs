@@ -5,7 +5,7 @@ namespace Everglow.Myth.LanternMoon.Projectiles.Item_Shoot;
 
 public abstract class FireworkProjectile : ModProjectile
 {
-	public override string Texture => "Everglow/Myth/UIImages/VisualTextures/DarkGrey";
+	public override string Texture => ModAsset.DarkGrey_Mod;
 
 	public struct FlameTrail
 	{

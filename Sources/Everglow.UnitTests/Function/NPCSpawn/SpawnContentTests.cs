@@ -10,6 +10,7 @@ using Everglow.Yggdrasil.YggdrasilTown;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.NPCSpawn;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Everglow.UnitTests.Function.NPCSpawn;
@@ -22,7 +23,7 @@ public class SpawnContentTests
 	public void Initialize() => Program.SavePath = string.Empty;
 
 	[TestMethod]
-	public void RegionalTables_ResolveAll45ContentIdsAndGroupSizes()
+	public void RegionalTables_ResolveAllContentIdsAndGroupSizes()
 	{
 		string[] expected =
 		[
@@ -56,6 +57,10 @@ public class SpawnContentTests
 			"Everglow.Yggdrasil.KelpCurtain.NPCs.ValleyOfLushAndMoist.SerpentMoss",
 			"Everglow.Yggdrasil.KelpCurtain.NPCs.ValleyOfLushAndMoist.SmallGuppyConch",
 			"Everglow.Yggdrasil.KelpCurtain.NPCs.VerdantRods",
+			"Everglow.Yggdrasil.YggdrasilTown.NPCs.AncientPhantom_Sheild",
+			"Everglow.Yggdrasil.YggdrasilTown.NPCs.AncientPhantom_Spear",
+			"Everglow.Yggdrasil.YggdrasilTown.NPCs.AncientPhantom_Bow",
+			"Everglow.Yggdrasil.YggdrasilTown.NPCs.AncientPhantom_Magic",
 			"Everglow.Yggdrasil.YggdrasilTown.NPCs.BarkSpicyCaterpillar",
 			"Everglow.Yggdrasil.YggdrasilTown.NPCs.CarapaceCaterpillar",
 			"Everglow.Yggdrasil.YggdrasilTown.NPCs.CrimsonSpell",
@@ -92,8 +97,9 @@ public class SpawnContentTests
 			var town = new List<SubworldSpawnRule>();
 			YggdrasilTownSpawnTable.AddRules(town);
 			Assert.AreEqual(30, kelp.Count);
-			Assert.AreEqual(22, town.Count);
-			var actual = kelp.Concat(town).DistinctBy(rule => rule.Type).OrderBy(rule => rule.Type).ToArray();
+			Assert.AreEqual(27, town.Count);
+			Assert.AreEqual(1, town.Count(rule => rule.Type == NPCID.Pinky));
+			var actual = kelp.Concat(town).Where(rule => rule.Type != NPCID.Pinky).DistinctBy(rule => rule.Type).OrderBy(rule => rule.Type).ToArray();
 			Assert.AreEqual(expected.Length, actual.Length);
 			for (int i = 0; i < expected.Length; i++)
 			{
@@ -167,7 +173,7 @@ public class SpawnContentTests
 			new YggdrasilSpawnRegistration().PostSetupContent();
 			var hook = new ManagedSpawnGlobalNPC();
 			var player = (Player)RuntimeHelpers.GetUninitializedObject(typeof(Player));
-			void Check(int x, int y, int floorType, bool day, (string Name, float Weight)[] expected, ushort wall = 0, byte liquid = 0)
+			void Check(int x, int y, int floorType, bool day, (string Name, float Weight)[] expected, ushort wall = 0, byte liquid = 0, bool pinky = false, bool hasGround = true)
 			{
 				// 只借用两个已有图块槽，结束后逐项恢复，不创建世界或重分配 Tilemap。
 				Tile floor = Main.tile[x, y];
@@ -177,7 +183,7 @@ public class SpawnContentTests
 				try
 				{
 					floor.TileType = (ushort)floorType;
-					floor.HasTile = true;
+					floor.HasTile = hasGround;
 					floor.IsActuated = false;
 					above.WallType = wall;
 					above.LiquidAmount = liquid;
@@ -185,7 +191,12 @@ public class SpawnContentTests
 					player.Center = new Vector2(x * 16 + 8, y * 16 - 32);
 					var pool = new Dictionary<int, float> { [0] = 1 };
 					hook.EditSpawnPool(pool, new NPCSpawnInfo { Player = player, SpawnTileX = x, SpawnTileY = y, SpawnTileType = floorType });
-					Assert.AreEqual(expected.Length, pool.Count, $"At ({x}, {y}), tile {floorType}, day={day}.");
+					Assert.AreEqual(expected.Length + (pinky ? 1 : 0), pool.Count, $"At ({x}, {y}), tile {floorType}, day={day}.");
+					if (pinky)
+					{
+						Assert.IsTrue(pool.TryGetValue(NPCID.Pinky, out float pinkyWeight));
+						Assert.AreEqual(1f / 180f, pinkyWeight / pool.Values.Sum(), 0.0000001f, "Pinky remains rare regardless of the other forest weights.");
+					}
 					foreach (var entry in expected)
 					{
 						Assert.IsTrue(pool.TryGetValue(npcTypes[entry.Name], out float weight), entry.Name);
@@ -201,16 +212,17 @@ public class SpawnContentTests
 					above.LiquidAmount = oldAbove.LiquidAmount;
 				}
 			}
+			(string, float)[] twilight = [("AncientPhantom_Sheild", 3), ("AncientPhantom_Spear", 3), ("AncientPhantom_Bow", 3), ("AncientPhantom_Magic", 3)];
 			(string, float)[] forestDay = [("BarkSpicyCaterpillar", 2), ("LeafcutterAnt", 1), ("PurpleBombCaterpillar", 6), ("UmbrellaTailThief", 6)];
 			(string, float)[] lampDay = [.. forestDay, ("LightBulb", 3), ("LampFruitBorer", 2)];
 			(string, float)[] forestNight = [("ShadowstrikeCaterpillar", 2), ("DarkGlimmeringRods", 0.75f), ("WhisperingGhost", 1.5f), ("CrimsonSpell", 0.05f)];
 			(string, float)[] shallow = [("CyanOreBeetle", 3), ("JellyBall", 8), ("RockElemental", 0.05f)];
 			(string, float)[] deep = [("CyanOreBeetle", 3), ("JellyBall", 3), ("GiantJellyBall", 8), ("CarapaceCaterpillar", 2), ("RockElemental", 0.05f)];
 			(string, float)[] hotbed = [("JellyBall", 12), ("GiantJellyBall", 6), ("CyanOreBeetle", 1), ("CarapaceCaterpillar", 1)];
-			Check(1500, 800, 200, true, lampDay);
-			Check(1500, 800, 201, true, forestDay);
+			Check(1500, 800, 200, true, lampDay, pinky: true);
+			Check(1500, 800, 201, true, twilight, pinky: true);
 			Check(1500, 800, 200, false, forestNight);
-			Check(1500, 800, 201, false, forestNight);
+			Check(1500, 800, 201, false, twilight);
 			foreach (bool day in new[] { true, false })
 			{
 				Check(100, 780, 1, day, shallow);
@@ -224,9 +236,11 @@ public class SpawnContentTests
 			Check(100, 1550, 1, true, []);
 			Check(39, 800, 1, true, []);
 			Check(1050, 800, 1, true, []);
-			Check(100, 800, 200, true, lampDay);
+			Check(100, 800, 200, true, lampDay, pinky: true);
 			Check(100, 800, 202, true, hotbed);
 			Check(1500, 800, 200, true, [], liquid: 255);
+			Check(1500, 800, 201, true, [], liquid: 255);
+			Check(1500, 800, 201, true, [], hasGround: false);
 			Main.wallHouse[200] = true;
 			Check(1500, 800, 200, true, [], wall: 200);
 			Main.wallHouse[200] = false;
@@ -328,8 +342,19 @@ public class SpawnContentTests
 				int rate = 600;
 				int capacity = 8;
 				hook.EditSpawnRate(player, ref rate, ref capacity);
-				Assert.AreEqual(inside ? 0 : 8, capacity, $"Town player at ({x}, {y}).");
-				Assert.AreEqual(inside ? int.MaxValue : 600, rate);
+				Assert.AreEqual(inside ? 0 : 9, capacity, $"Town player at ({x}, {y}).");
+				Assert.AreEqual(inside ? int.MaxValue : 120, rate);
+			}
+
+			// 旧椭圆区域以及不同深度的野外都采用相同节奏，不读取原版地表判定。
+			foreach (var tilePosition in new[] { new Vector2(600, 11630), new Vector2(750, 11630), new Vector2(900, 11630), new Vector2(1500, 17000) })
+			{
+				player.Center = tilePosition * 16f;
+				int rate = 1800;
+				int capacity = 3;
+				hook.EditSpawnRate(player, ref rate, ref capacity);
+				Assert.AreEqual(120, rate, $"Wilderness at {tilePosition}.");
+				Assert.AreEqual(9, capacity);
 			}
 
 			// 更换唯一中心后，边界和刷怪规则都应立即跟随，不读取另一份私有缓存。
@@ -346,7 +371,7 @@ public class SpawnContentTests
 			relocatedRate = 600;
 			relocatedCapacity = 8;
 			hook.EditSpawnRate(player, ref relocatedRate, ref relocatedCapacity);
-			Assert.AreEqual(8, relocatedCapacity, "The old center must no longer remain a safe area.");
+			Assert.AreEqual(9, relocatedCapacity, "The old center must no longer remain a safe area.");
 
 			// 专服不经过客户端 OnEnter/群落绘制；OnLoad 自身必须刷新旧的城镇中心缓存。
 			Main.netMode = Terraria.ID.NetmodeID.Server;

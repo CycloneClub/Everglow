@@ -13,7 +13,7 @@ public class QuenchingBlade : ModItem
 		Item.height = 58;
 
 		Item.DamageType = DamageClass.Melee;
-		Item.damage = 27;
+		Item.damage = 32;
 		Item.knockBack = 35;
 
 		Item.useStyle = ItemUseStyleID.Shoot;

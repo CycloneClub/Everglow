@@ -1,10 +1,14 @@
+using Terraria.Localization;
+
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
 
 public class RecoveryBand : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
-	public const int EffectTriggerDamageMin = 5;
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(EffectTriggerDamageMin, LifeRecovery, ManaRecovery);
+
+	public const int EffectTriggerDamageMin = 12;
 	public const int LifeRecovery = 5;
 	public const int ManaRecovery = 10;
 
@@ -22,7 +26,7 @@ public class RecoveryBand : ModItem
 	{
 		// 1. Recover a bit life and mana on hurt
 		// ======================================
-		// On player hurt by anything, if damage is more than 5, then recover 5 life and 10 mana
+		// On player hurt by anything, if damage is at least 12, then recover 5 life and 10 mana
 		player.GetModPlayer<RecoveryBandPlayer>().RecoveryBandEnable = true;
 	}
 }

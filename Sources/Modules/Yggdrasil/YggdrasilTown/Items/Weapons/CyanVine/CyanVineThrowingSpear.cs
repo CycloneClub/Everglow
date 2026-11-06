@@ -14,10 +14,10 @@ public class CyanVineThrowingSpear : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.width = 54;
 		Item.height = 108;
-		Item.useAnimation = 26;
-		Item.useTime = 26;
+		Item.useAnimation = 24;
+		Item.useTime = 24;
 		Item.knockBack = 4f;
-		Item.damage = 13;
+		Item.damage = 17;
 		Item.rare = ItemRarityID.White;
 		Item.UseSound = SoundID.Item1;
 		Item.value = 3600;

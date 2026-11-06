@@ -14,11 +14,11 @@ public class Dendroid_normal : ModNPC
 
 	public override void SetDefaults()
 	{
-		NPC.damage = 24;
+		NPC.damage = 22;
 		NPC.width = 40;
 		NPC.height = 56;
-		NPC.defense = 18;
-		NPC.lifeMax = 140;
+		NPC.defense = 8;
+		NPC.lifeMax = 120;
 		NPC.knockBackResist = 0.4f;
 		NPC.value = Item.buyPrice(0, 0, 12, 0);
 		NPC.aiStyle = NPCAIStyleID.Fighter;

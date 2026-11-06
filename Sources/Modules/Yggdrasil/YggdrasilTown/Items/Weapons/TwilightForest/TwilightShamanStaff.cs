@@ -14,10 +14,11 @@ public class TwilightShamanStaff : ModItem
 
 		Item.DamageType = DamageClass.Magic;
 		Item.damage = 30;
+		Item.mana = 8;
 		Item.knockBack = 0.4f;
 		Item.crit = 4;
 
-		Item.useTime = Item.useAnimation = 15;
+		Item.useTime = Item.useAnimation = 22;
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.UseSound = SoundID.Item20;
 		Item.autoReuse = true;

@@ -1,4 +1,5 @@
 using Everglow.Yggdrasil.YggdrasilTown.Items.Miscs;
+using Everglow.Yggdrasil.YggdrasilTown.Items.PermanentBoosters;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Tools;
 using Terraria.Localization;
 
@@ -84,6 +85,7 @@ public class QuestCounter_Consultant : ModNPC
 	public override void AddShops()
 	{
 		NPCShop shop = new NPCShop(Type, "Yggdrasil Town Union Shop");
+		shop.Add<AntiHeavenSicknessPill>();
 		shop.Add<YggdrasilTownAccessCard>();
 		shop.Add<YggdrasilPlayerRoomDoorKey>();
 		shop.Add(new Item(ModContent.ItemType<ClimbingPickaxe>()) { shopCustomPrice = Item.buyPrice(gold: 2) });

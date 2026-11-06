@@ -28,7 +28,7 @@ public class SpikeClub : ClubProj
 	{
 		Player player = Main.player[Projectile.owner];
 		Vector2 v = new Vector2(0, 6).RotatedByRandom(Math.PI * 2) * 5f;
-		Projectile.NewProjectile(null, target.Center - v * 3, v, ModContent.ProjectileType<SpikeClubSlash>(), Projectile.damage / 2, 0, player.whoAmI, Main.rand.NextFloat(-0.05f, 0.05f));
+		Projectile.NewProjectile(Projectile.GetSource_OnHit(target), target.Center - v * 3, v, ModContent.ProjectileType<SpikeClubSlash>(), Projectile.damage / 2, 0, player.whoAmI, Main.rand.NextFloat(-0.05f, 0.05f));
 		target.AddBuff(BuffID.Bleeding, 600);
 	}
 

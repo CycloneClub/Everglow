@@ -69,7 +69,7 @@ public class EmptyWaterStaff_proj : TrailingProjectile
 		}
 		if (safe)
 		{
-			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), target.Center, Vector2.zeroVector, ModContent.ProjectileType<EmptyWaterStaff_proj_bubble>(), Projectile.damage, 0, Projectile.owner, target.whoAmI);
+			Projectile.NewProjectileDirect(Projectile.GetSource_OnHit(target), target.Center, Vector2.zeroVector, ModContent.ProjectileType<EmptyWaterStaff_proj_bubble>(), Projectile.damage, 0, Projectile.owner, target.whoAmI);
 		}
 	}
 

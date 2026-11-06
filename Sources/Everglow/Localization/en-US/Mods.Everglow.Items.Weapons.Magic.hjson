@@ -1,6 +1,6 @@
 AmberMagicOrb: {
 	DisplayName: Amber Magic Orb
-	Tooltip: ""
+	Tooltip: Fires amber beads that tend to stick together
 }
 
 AncientSyringe: {
@@ -15,7 +15,11 @@ BacterialAgent: {
 
 BloodySwamp: {
 	DisplayName: Bloody Swamp
-	Tooltip: ""
+	Tooltip:
+		'''
+		Fires streams of magical blood
+		Right-click to spend 24 mana and launch a projectile that creates a circular healing zone
+		'''
 }
 
 BoneFeatherMagic: {
@@ -39,7 +43,7 @@ CreamChocolateCupStaff: {
 
 CyanAmberStaff: {
 	DisplayName: Cyan Rectifier Staff
-	Tooltip: ""
+	Tooltip: Fires an unstable mass of cyan vine energy and sky amber
 }
 
 CyanVineStaff: {
@@ -49,7 +53,7 @@ CyanVineStaff: {
 
 DarkFlower: {
 	DisplayName: Dark Flower
-	Tooltip: ""
+	Tooltip: Fires shadow orbs
 }
 
 DevilHeartStaff: {
@@ -63,12 +67,12 @@ DevilHeartStaff: {
 
 DreamWeaver: {
 	DisplayName: Dream Weaver
-	Tooltip: ""
+	Tooltip: Weaves blue strands of rain to attack enemies
 }
 
 DustOfCorrupt: {
 	DisplayName: Dust Of Corrupt
-	Tooltip: ""
+	Tooltip: Sprays dust from the wings of a glowing moth, said to cause allergies
 }
 
 EmptyWaterStaff: {
@@ -84,14 +88,14 @@ EyeOfAnabiosis: {
 	DisplayName: Eye of Anabiosis
 	Tooltip:
 		'''
-		Charges while held; ready to fire after 12 seconds
+		Charges while held; ready to fire after 4 seconds
 		Fires cyan homing flames at up to three targets
 		'''
 }
 
 FeatheredStaff: {
 	DisplayName: Featherfin Staff
-	Tooltip: Fires three enchanted rod fins
+	Tooltip: Fires two enchanted rod fins
 }
 
 FeatherMagic: {
@@ -106,7 +110,7 @@ FireFeatherMagic: {
 
 FlowLightMissile: {
 	DisplayName: Flow Light Missile
-	Tooltip: ""
+	Tooltip: Fires an explosive crystal in a straight line; charge to increase its power
 }
 
 FlurryingBlades: {
@@ -126,7 +130,7 @@ FrostBomb: {
 
 GlowBeadGun: {
 	DisplayName: Glow Bead Gun
-	Tooltip: ""
+	Tooltip: Charge to fire a chain of explosive shots
 }
 
 GoldenLotusStaff: {
@@ -150,12 +154,12 @@ HandholdItem: {
 
 HexaCrystalStaff: {
 	DisplayName: Hexa Crystal Staff
-	Tooltip: ""
+	Tooltip: Fires a blue twilight crystal that splits into six fragments and inflicts Hexa Crystal Weak
 }
 
 IntroductiontoThermalElectricity: {
 	DisplayName: Introduction to Thermoelectricity
-	Tooltip: ""
+	Tooltip: Fires a plasma orb that expands into a damaging burst on contact with enemies, terrain or water
 }
 
 LanternBombRemoteControl: {
@@ -179,7 +183,7 @@ LilyHarp: {
 
 MagicOfLightAndShadow: {
 	DisplayName: Magic Of Light And Shadow
-	Tooltip: ""
+	Tooltip: Fires an orange beam that can reflect twice, halving its damage with each reflection
 }
 
 MillionLightStaff: {
@@ -194,12 +198,12 @@ MossySpell: {
 
 NavyThunder: {
 	DisplayName: Navy Thunder
-	Tooltip: ""
+	Tooltip: Fires a blue bomb from a black skull that explodes after a delay
 }
 
 NightfireStaff: {
 	DisplayName: Nightfire Staff
-	Tooltip: ""
+	Tooltip: Fires nightfire missiles
 }
 
 PearShapedNeedle: {
@@ -231,7 +235,7 @@ RedAlgaeMagicStaff: {
 
 RockQuake: {
 	DisplayName: Rock Quake
-	Tooltip: ""
+	Tooltip: Fires a damaging force beam that raises spikes inside solid blocks it passes through
 }
 
 SightOfTile: {
@@ -250,7 +254,11 @@ SmeltingStaff: {
 
 SpringOfQuicksand: {
 	DisplayName: Spring Of Quicksand
-	Tooltip: ""
+	Tooltip:
+		'''
+		Fires a stream of sand that sheds up to five smaller streams while in flight
+		Each smaller stream deals 45% damage
+		'''
 }
 
 ThunderFlower: {
@@ -260,12 +268,12 @@ ThunderFlower: {
 
 ToothMagicBall: {
 	DisplayName: Tooth Magic Ball
-	Tooltip: ""
+	Tooltip: Fires clots of blood
 }
 
 TwilightShamanStaff: {
 	DisplayName: Twilight Shaman Staff
-	Tooltip: ""
+	Tooltip: Fires a ball of frost
 }
 
 VineRepairWand: {
@@ -275,10 +283,14 @@ VineRepairWand: {
 
 VitalizedRocks: {
 	DisplayName: Vitalized Rocks
-	Tooltip: ""
+	Tooltip: Conjures rocks of different sizes from the void and hurls them
 }
 
 YggdrasilAmberLaser: {
 	DisplayName: Yggdrasil Amber Laser
-	Tooltip: ""
+	Tooltip:
+		'''
+		Fires an amber laser that forms crystals on solid blocks it hits
+		The crystals also damage passing enemies
+		'''
 }

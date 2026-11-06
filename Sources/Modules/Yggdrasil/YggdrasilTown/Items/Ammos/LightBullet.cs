@@ -12,7 +12,7 @@ public class LightBullet : ModItem
 		Item.height = 16;
 
 		Item.DamageType = DamageClass.Ranged;
-		Item.damage = 7;
+		Item.damage = 6;
 		Item.knockBack = 4;
 
 		Item.rare = ItemRarityID.White;

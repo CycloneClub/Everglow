@@ -8,7 +8,7 @@ internal class BloodLiquidPipeline : Pipeline
 {
 	public override void Load()
 	{
-		effect = ModContent.Request<Effect>("Everglow/Myth/TheTusk/VFXs/BloodLiquidVFX", AssetRequestMode.ImmediateLoad);
+		effect = ModAsset.BloodLiquidVFX;
 	}
 
 	public override void BeginRender()
@@ -35,7 +35,7 @@ internal class ThickBloodLiquidPipeline : Pipeline
 {
 	public override void Load()
 	{
-		effect = ModContent.Request<Effect>("Everglow/Myth/TheTusk/VFXs/BloodLiquidVFX", AssetRequestMode.ImmediateLoad);
+		effect = ModAsset.BloodLiquidVFX;
 	}
 
 	public override void BeginRender()

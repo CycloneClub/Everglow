@@ -30,7 +30,7 @@ public class PhosphorescenceGun : ModItem
 		Item.UseSound = SoundID.Item36;
 
 		Item.DamageType = DamageClass.Ranged;
-		Item.damage = 10;
+		Item.damage = 14;
 		Item.knockBack = 6f;
 		Item.noMelee = true;
 		Item.noUseGraphic = true;
@@ -79,7 +79,7 @@ public class PhosphorescenceGun : ModItem
 			newVelocity *= 1f - Main.rand.NextFloat(0.3f);
 			Projectile.NewProjectileDirect(source, position + velocity * 2.0f - new Vector2(0, 4), newVelocity, type, damage, knockback, player.whoAmI);
 		}
-		for (int i = 0; i < NumProjectiles * 3; i++)
+		for (int i = 0; i < NumProjectiles * 2; i++)
 		{
 			Vector2 newVelocity = velocity.RotatedByRandom(MathHelper.ToRadians(15));
 			newVelocity *= 1f - Main.rand.NextFloat(0.3f);
@@ -87,11 +87,11 @@ public class PhosphorescenceGun : ModItem
 			{
 				if (mothEyePlayer.MothEyeEquipped && fireflyBiome.IsBiomeActive(Main.LocalPlayer) && Main.hardMode)
 				{
-					Projectile.NewProjectileDirect(source, position + velocity * 2.0f - new Vector2(0, 4), newVelocity, ModContent.ProjectileType<PhosphorescenceBullet>(), (int)(damage * 0.39f), knockback, player.whoAmI);
+					Projectile.NewProjectileDirect(source, position + velocity * 2.0f - new Vector2(0, 4), newVelocity, ModContent.ProjectileType<PhosphorescenceBullet>(), (int)(damage * 0.35f), knockback, player.whoAmI);
 				}
 				else
 				{
-					Projectile.NewProjectileDirect(source, position + velocity * 2.0f - new Vector2(0, 4), newVelocity, ModContent.ProjectileType<PhosphorescenceBullet>(), (int)(damage * 0.26f), knockback, player.whoAmI);
+					Projectile.NewProjectileDirect(source, position + velocity * 2.0f - new Vector2(0, 4), newVelocity, ModContent.ProjectileType<PhosphorescenceBullet>(), (int)(damage * 0.25f), knockback, player.whoAmI);
 				}
 			}
 
@@ -125,13 +125,16 @@ public class PhosphorescenceGun : ModItem
 	{
 		if (MothEye.LocalOwner != null && MothEye.LocalOwner.TryGetModPlayer(out MothEyePlayer mothEyePlayer))
 		{
+			if (mothEyePlayer.MothEyeEquipped || fireflyBiome.IsBiomeActive(Main.LocalPlayer) || Main.hardMode)
+			{
+				tooltips.Add(new TooltipLine(ModIns.Mod, "MothEyeGunBonus1", Language.GetTextValue("Mods.Everglow.ExtraTooltip.FireflyItems.MEyeBonusTextMothGun1")));
+			}
 			if (mothEyePlayer.MothEyeEquipped && fireflyBiome.IsBiomeActive(Main.LocalPlayer) && Main.hardMode)
 			{
 				tooltips.AddRange(new TooltipLine[]
 				{
 					new(ModIns.Mod, "MothEyeBonusText", Language.GetTextValue("Mods.Everglow.ExtraTooltip.FireflyItems.MothEyeBonusText")),
 					new(ModIns.Mod, "MothEyeGunBonus0", Language.GetTextValue("Mods.Everglow.ExtraTooltip.FireflyItems.MEyeBonusTextMothGun0")),
-					new(ModIns.Mod, "MothEyeGunBonus1", Language.GetTextValue("Mods.Everglow.ExtraTooltip.FireflyItems.MEyeBonusTextMothGun1")),
 				});
 			}
 		}

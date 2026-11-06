@@ -36,6 +36,9 @@ public class CrystalPipeline : Pipeline
 [Pipeline(typeof(CrystalPipeline))]
 public class HolyCrystal : Visual
 {
+	public IEntitySource Source;
+	public int Owner;
+
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
 
 	public Vector2 Position;
@@ -60,7 +63,7 @@ public class HolyCrystal : Visual
 			StartPosition = Position;
 			if (ai[2] != 0)
 			{
-				Projectile projectile = Projectile.NewProjectileDirect(Main.LocalPlayer.GetSource_FromAI(), Position, Velocity, ModContent.ProjectileType<HolyCrystalProjectile>(), (int)ai[2], 0f, Main.LocalPlayer.whoAmI);
+				Projectile projectile = Projectile.NewProjectileDirect(Source, Position, Velocity, ModContent.ProjectileType<HolyCrystalProjectile>(), (int)ai[2], 0f, Owner);
 				projectile.timeLeft = (int)MaxTime;
 			}
 		}
@@ -229,7 +232,7 @@ public class HolyCrystalProjectile : ModProjectile
 
 	public Vector2 StartPos = Vector2.zeroVector;
 
-	public override string Texture => "Everglow/" + ModAsset.Empty_Path;
+	public override string Texture => ModAsset.Empty_Mod;
 
 	public override void OnSpawn(IEntitySource source)
 	{

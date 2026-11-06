@@ -24,7 +24,7 @@ public class SnowPineLockBox : ModItem
 	{
 		if (player.ownedProjectileCounts[ModContent.ProjectileType<PineSprite>()] < 1)
 		{
-			Projectile.NewProjectile(player.GetSource_Accessory(Item), player.MountedCenter + new Vector2(-player.direction * 40, 0), player.velocity, ModContent.ProjectileType<PineSprite>(), 0, 0);
+			Projectile.NewProjectile(player.GetSource_Accessory(Item), player.MountedCenter + new Vector2(-player.direction * 40, 0), player.velocity, ModContent.ProjectileType<PineSprite>(), 0, 0, Owner: player.whoAmI);
 		}
 	}
 }

@@ -48,7 +48,7 @@ public class FishingPotionPlayerTests
 		var contact = new Player.HurtModifiers { DamageSource = PlayerDeathReason.ByNPC(0) };
 		potionPlayer.ModifyHitByNPC(new NPC(), ref contact);
 		potionPlayer.ModifyHurt(ref contact);
-		Assert.AreEqual(94f, contact.FinalDamage.ApplyTo(100f), 0.001f);
+		Assert.AreEqual(95f, contact.FinalDamage.ApplyTo(100f), 0.001f);
 
 		var projectileSource = new PlayerDeathReason();
 		projectileSource.SourceProjectileType = Terraria.ID.ProjectileID.WoodenArrowFriendly;
@@ -66,7 +66,7 @@ public class FishingPotionPlayerTests
 		potionPlayer.JumpPotionActive = true;
 		var fall = new Player.HurtModifiers { DamageSource = PlayerDeathReason.ByOther(fallReason) };
 		potionPlayer.ModifyHurt(ref fall);
-		Assert.AreEqual(70f, fall.FinalDamage.ApplyTo(100f), 0.001f);
+		Assert.AreEqual(75f, fall.FinalDamage.ApplyTo(100f), 0.001f);
 
 		var drowning = new Player.HurtModifiers { DamageSource = PlayerDeathReason.ByOther(1) };
 		potionPlayer.ModifyHurt(ref drowning);
@@ -91,7 +91,7 @@ public class FishingPotionPlayerTests
 	[DataRow(5.01f, 15, 0.4f)]
 	[DataRow(7.41f, 15, 0.4f)]
 	[DataRow(6.51f, 20, 0.4f)]
-	public void JumpPotion_IncreasesFullJumpApexByFifteenPercent(float speed, int holdFrames, float gravity)
+	public void JumpPotion_IncreasesFullJumpApexByTwentyPercent(float speed, int holdFrames, float gravity)
 	{
 		Player.jumpSpeed = speed;
 		Player.jumpHeight = holdFrames;
@@ -100,7 +100,7 @@ public class FishingPotionPlayerTests
 		float originalApex = SimulateJumpApex(speed, holdFrames, gravity);
 		potionPlayer.PostUpdateRunSpeeds();
 		float boostedApex = SimulateJumpApex(Player.jumpSpeed, Player.jumpHeight, gravity);
-		Assert.AreEqual(1.15f, boostedApex / originalApex, 0.005f);
+		Assert.AreEqual(1.2f, boostedApex / originalApex, 0.005f);
 		Assert.AreEqual(holdFrames, Player.jumpHeight, "The potion must not add extra jumps or alter jump hold time.");
 	}
 

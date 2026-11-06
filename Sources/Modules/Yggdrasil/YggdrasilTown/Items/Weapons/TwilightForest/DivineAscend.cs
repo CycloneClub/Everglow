@@ -6,7 +6,8 @@ public class DivineAscend : MeleeItem_3D
 {
 	public override void SetCustomDefaults()
 	{
-		Item.damage = 27;
+		Item.damage = 24;
+		Item.useTime = Item.useAnimation = 26;
 		Item.knockBack = 3;
 		Item.width = 84;
 		Item.height = 84;

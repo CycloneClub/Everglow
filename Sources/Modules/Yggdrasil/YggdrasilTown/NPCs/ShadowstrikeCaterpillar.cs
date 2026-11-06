@@ -2,7 +2,6 @@ using Everglow.Commons.Coroutines;
 using Everglow.Commons.Mechanics.Miscs;
 using Everglow.Commons.Templates.Enemies;
 using Everglow.Yggdrasil.Common;
-using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Terraria.GameContent.ItemDropRules;
@@ -15,26 +14,27 @@ public class ShadowstrikeCaterpillar : Caterpillar
 	public override void SetDefaults()
 	{
 		base.SetDefaults();
+		NPC.defense = 6;
 		SegmentBehavioralSize = 18;
 		SegmentHitBoxSize = 40;
 		SegmentCount = 10;
 		AnimationSpeed = 3;
 		NPC.knockBackResist = -0.12f;
-		NPC.lifeMax = 20;
-		NPC.damage = 8;
+		NPC.lifeMax = 40;
+		NPC.damage = 12;
 		NPC.value = 6;
 		if (Main.expertMode)
 		{
 			NPC.knockBackResist = -0.08f;
-			NPC.lifeMax = 40;
-			NPC.damage = 16;
+			NPC.lifeMax = 70;
+			NPC.damage = 20;
 			NPC.value = 12;
 		}
 		if (Main.masterMode)
 		{
 			NPC.knockBackResist = -0.04f;
-			NPC.lifeMax = 55;
-			NPC.damage = 24;
+			NPC.lifeMax = 100;
+			NPC.damage = 28;
 			NPC.value = 15;
 		}
 		DustType = ModContent.DustType<VerdantBlood>();
@@ -57,17 +57,6 @@ public class ShadowstrikeCaterpillar : Caterpillar
 			return new Rectangle(66, 0, 26, height);
 		}
 		return base.GetDrawFrame(Style);
-	}
-
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		YggdrasilTownBiome YggdrasilTownBiome = ModContent.GetInstance<YggdrasilTownBiome>();
-		if (!YggdrasilTownBiome.IsBiomeActive(Main.LocalPlayer))
-		{
-			return 0f;
-		}
-
-		return 8f;
 	}
 
 	/// <summary>

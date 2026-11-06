@@ -1,4 +1,5 @@
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Eldamber;
@@ -12,6 +13,8 @@ public class EldamberBreastplate : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
 
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(4);
+
 	public override void SetDefaults()
 	{
 		Item.width = 28;
@@ -20,6 +23,11 @@ public class EldamberBreastplate : ModItem
 		Item.defense = 7;
 		Item.rare = ItemRarityID.Blue;
 		Item.value = Item.sellPrice(silver: 30);
+	}
+
+	public override void UpdateEquip(Player player)
+	{
+		player.GetDamage(DamageClass.Generic) += 0.04f;
 	}
 
 	public override void AddRecipes()

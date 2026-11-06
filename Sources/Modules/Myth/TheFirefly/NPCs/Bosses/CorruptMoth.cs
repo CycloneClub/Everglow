@@ -68,11 +68,11 @@ public class CorruptMoth : ModNPC
 	public override void SetDefaults()
 	{
 		NPC.behindTiles = true;
-		NPC.damage = 40;
+		NPC.damage = 36;
 		NPC.width = 120;
 		NPC.height = 120;
 		NPC.defense = 5;
-		NPC.lifeMax = 9000;
+		NPC.lifeMax = 6000;
 		NPC.npcSlots = 80;
 		NPC.scale = 0.8f;
 		if (Main.getGoodWorld)
@@ -82,13 +82,13 @@ public class CorruptMoth : ModNPC
 		}
 		if (Main.expertMode)
 		{
-			NPC.lifeMax = 6000;
-			NPC.damage = 42;
+			NPC.lifeMax = 4250;
+			NPC.damage = 34;
 		}
 		if (Main.masterMode)
 		{
-			NPC.lifeMax = 5000;
-			NPC.damage = 44;
+			NPC.lifeMax = 3600;
+			NPC.damage = 32;
 		}
 		NPC.knockBackResist = 0f;
 		NPC.value = Item.buyPrice(0, 5, 0, 0);
@@ -106,7 +106,7 @@ public class CorruptMoth : ModNPC
 		NPCID.Sets.TrailCacheLength[NPC.type] = 4;
 		if (!Main.dedServ)
 		{
-			Music = MythContent.QuickMusic("MothFighting");
+			Music = MusicLoader.GetMusicSlot(ModIns.Mod, ModAsset.MothFighting_Path);
 		}
 	}
 
@@ -169,7 +169,7 @@ public class CorruptMoth : ModNPC
 					Vector3 v2 = cubeVec[(ii + 1) % 4 + a] * scale;
 					for (int i = 0; i < counts - 1; i++)
 					{
-						var proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<CorMoth4DProj>(), NPC.damage / 7, 0, Main.myPlayer, NPC.whoAmI);
+						var proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<CorMoth4DProj>(), NPC.damage / 7, 0, Main.maxPlayers, NPC.whoAmI);
 						(proj.ModProjectile as CorMoth4DProj).targetPos = new Vector4(Vector3.Lerp(v1, v2, (float)i / (counts - 1)), w);
 						proj.netUpdate2 = true;
 					}
@@ -178,7 +178,7 @@ public class CorruptMoth : ModNPC
 				Vector3 v4 = cubeVec[ii + 4] * scale;
 				for (int i = 1; i < counts - 1; i++)
 				{
-					var proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<CorMoth4DProj>(), NPC.damage / 7, 0, Main.myPlayer, NPC.whoAmI);
+					var proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<CorMoth4DProj>(), NPC.damage / 7, 0, Main.maxPlayers, NPC.whoAmI);
 					(proj.ModProjectile as CorMoth4DProj).targetPos = new Vector4(Vector3.Lerp(v3, v4, (float)i / (counts - 1)), w);
 					proj.netUpdate2 = true;
 				}
@@ -191,7 +191,7 @@ public class CorruptMoth : ModNPC
 			for (int i = 1; i < counts - 1; i++)
 			{
 				float c = (counts - 1) / 2;
-				var proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<CorMoth4DProj>(), NPC.damage / 7, 0, Main.myPlayer, NPC.whoAmI);
+				var proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<CorMoth4DProj>(), NPC.damage / 7, 0, Main.maxPlayers, NPC.whoAmI);
 				(proj.ModProjectile as CorMoth4DProj).targetPos = new Vector4(v * scale, (float)(i - c) * scale / c);
 				proj.netUpdate2 = true;
 			}
@@ -217,7 +217,7 @@ public class CorruptMoth : ModNPC
 
 			if ((ShieldHealthValue % 200 - damage < 0) && Main.netMode != NetmodeID.MultiplayerClient)
 			{
-				Projectile.NewProjectile(NPC.GetSource_OnHurt(projectile), projectile.Center, (projectile.Center - NPC.Center).SafeNormalize(Vector2.One) * 12, ModContent.ProjectileType<MothMiddleBullet>(), NPC.damage / 6, 0, Main.myPlayer); // Higher number on NPC.damage / int = less damage
+				Projectile.NewProjectile(NPC.GetSource_OnHurt(projectile), projectile.Center, (projectile.Center - NPC.Center).SafeNormalize(Vector2.One) * 12, ModContent.ProjectileType<MothMiddleBullet>(), NPC.damage / 6, 0, Main.maxPlayers); // Higher number on NPC.damage / int = less damage
 			}
 		}
 	}
@@ -231,10 +231,10 @@ public class CorruptMoth : ModNPC
 			startLoading = true;
 			Task.Factory.StartNew(() =>
 			{
-				bBowColors = ImageReader.ReadImageKeyPoints("Everglow/Myth/TheFirefly/Projectiles/BBow", identifierValue);
-				bArrowColors = ImageReader.ReadImageKeyPoints("Everglow/Myth/TheFirefly/Projectiles/BArrow", identifierValue);
-				bSwordColors = ImageReader.ReadImageKeyPoints("Everglow/Myth/TheFirefly/Projectiles/BSword", identifierValue);
-				bFistColors = ImageReader.ReadImageKeyPoints("Everglow/Myth/TheFirefly/Projectiles/BFist", identifierValue);
+				bBowColors = ImageReader.ReadImageKeyPoints(ModAsset.BBow_Mod, identifierValue);
+				bArrowColors = ImageReader.ReadImageKeyPoints(ModAsset.BArrow_Mod, identifierValue);
+				bSwordColors = ImageReader.ReadImageKeyPoints(ModAsset.BSword_Mod, identifierValue);
+				bFistColors = ImageReader.ReadImageKeyPoints(ModAsset.BFist_Mod, identifierValue);
 			});
 		}
 		bool phase2 = NPC.life < NPC.lifeMax * 0.6f;
@@ -368,11 +368,11 @@ public class CorruptMoth : ModNPC
 						GenerateGrayVFX(1);
 						if (Timer > 500 && Timer % 10 == 0)
 						{
-							Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(0, -2), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 8, 0f, Main.myPlayer);
+							Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(0, -2), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 6, 0f, Main.maxPlayers);
 							if (Main.getGoodWorld)
 							{
-								Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(-1.4f, -3), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 8, 0f, Main.myPlayer, 1);
-								Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(1.4f, -3), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 8, 0f, Main.myPlayer, 1);
+								Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(-1.4f, -3), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 6, 0f, Main.maxPlayers, 1);
+								Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(1.4f, -3), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 6, 0f, Main.maxPlayers, 1);
 							}
 						}
 					}
@@ -439,11 +439,11 @@ public class CorruptMoth : ModNPC
 						GenerateGrayVFX(1);
 						if (Timer > 400 && Timer % 6 == 0)
 						{
-							Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(0, -2), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 8, 0f, Main.myPlayer);
+							Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(0, -2), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 6, 0f, Main.maxPlayers);
 							if (Main.getGoodWorld)
 							{
-								Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(-1.4f, -3), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 8, 0f, Main.myPlayer, 1);
-								Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(1.4f, -3), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 8, 0f, Main.myPlayer, 1);
+								Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(-1.4f, -3), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 6, 0f, Main.maxPlayers, 1);
+								Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(1.4f, -3), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 6, 0f, Main.maxPlayers, 1);
 							}
 						}
 					}
@@ -532,21 +532,21 @@ public class CorruptMoth : ModNPC
 					Dust.NewDust(NPC.position, NPC.width, NPC.height, ModContent.DustType<MothBlue2>(), NPC.velocity.X, NPC.velocity.Y, 0, default, Main.rand.NextFloat(0.8f, 1.7f));
 					if (Timer % Freq == 0 && Main.netMode != NetmodeID.MultiplayerClient)
 					{
-						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(0, 1), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 8, 0f, Main.myPlayer, 1);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(0, 1), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 6, 0f, Main.maxPlayers, 1);
 						if (Main.expertMode && !Main.masterMode)
 						{
-							Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(0, -2), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 8, 0f, Main.myPlayer, 1);
+							Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(0, -2), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 6, 0f, Main.maxPlayers, 1);
 						}
 
 						if (Main.masterMode)
 						{
-							Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(-1.4f, -2), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 8, 0f, Main.myPlayer, 1);
-							Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(1.4f, -2), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 8, 0f, Main.myPlayer, 1);
+							Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(-1.4f, -2), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 6, 0f, Main.maxPlayers, 1);
+							Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(1.4f, -2), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 6, 0f, Main.maxPlayers, 1);
 						}
 						if (Main.getGoodWorld)
 						{
-							Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(-1.8f, -3), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 8, 0f, Main.myPlayer, 1); // Originally: NPC.damage / 4
-							Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(1.8f, -3), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 8, 0f, Main.myPlayer, 1);
+							Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(-1.8f, -3), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 6, 0f, Main.maxPlayers, 1); // Originally: NPC.damage / 4
+							Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(1.8f, -3), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 6, 0f, Main.maxPlayers, 1);
 						}
 					}
 				}
@@ -624,11 +624,11 @@ public class CorruptMoth : ModNPC
 				}
 				if (Timer % 8 == 0 && (NPC.ai[2] == 2 || phase2) && Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(0, -2), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 8, 0f, Main.myPlayer);
+					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(0, -2), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 6, 0f, Main.maxPlayers);
 					if (Main.getGoodWorld)
 					{
-						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(-1.4f, -3), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 8, 0f, Main.myPlayer, 1);
-						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(1.4f, -3), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 8, 0f, Main.myPlayer, 1);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(-1.4f, -3), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 6, 0f, Main.maxPlayers, 1);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(1.4f, -3), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 6, 0f, Main.maxPlayers, 1);
 					}
 				}
 
@@ -651,7 +651,7 @@ public class CorruptMoth : ModNPC
 					{
 						Vector2 v = Vector2.Normalize(player.Center - NPC.Center) * 8f;
 						v = v.RotatedBy(i - 0.5f);
-						Projectile p = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center - v, v, ModContent.ProjectileType<MothMiddleBullet>(), NPC.damage / 2, 0f, Main.myPlayer);
+						Projectile p = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center - v, v, ModContent.ProjectileType<MothMiddleBullet>(), NPC.damage / 6, 0f, Main.maxPlayers);
 						p.timeLeft = 1200;
 					}
 				}
@@ -694,7 +694,7 @@ public class CorruptMoth : ModNPC
 					{
 						lightVisual = 1.5f;
 						PhamtomDis = 80;
-						Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, new Vector2(0, -1), ModContent.ProjectileType<BlueStarFlower>(), NPC.damage, 1);
+						Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, new Vector2(0, -1), ModContent.ProjectileType<BlueStarFlower>(), NPC.damage / 4, 1, owner: Main.maxPlayers);
 						if (p0 != null)
 						{
 							BlueStarFlower bsf = p0.ModProjectile as BlueStarFlower;
@@ -762,11 +762,11 @@ public class CorruptMoth : ModNPC
 				Main.dust[index].velocity = new Vector2(Main.rand.NextFloat(0.0f, 2.5f), Main.rand.NextFloat(1.8f, 5.5f)).RotatedByRandom(Math.PI * 2d);
 				if (Timer % 2 == 0 && Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.05f + new Vector2(0, -2), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 8, 0f, Main.myPlayer, 1);
+					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.05f + new Vector2(0, -2), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 6, 0f, Main.maxPlayers, 1);
 					if (Main.getGoodWorld)
 					{
-						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.15f + new Vector2(-1.4f, -3), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 8, 0f, Main.myPlayer, 1);
-						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.15f + new Vector2(1.4f, -3), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 8, 0f, Main.myPlayer, 1);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.15f + new Vector2(-1.4f, -3), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 6, 0f, Main.maxPlayers, 1);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.15f + new Vector2(1.4f, -3), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 6, 0f, Main.maxPlayers, 1);
 					}
 				}
 
@@ -789,7 +789,7 @@ public class CorruptMoth : ModNPC
 			}
 			if (Timer == 60)
 			{
-				ShieldHealthValue = 25000;
+				ShieldHealthValue = 1800;
 				lightVisual += 1;
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
@@ -811,7 +811,7 @@ public class CorruptMoth : ModNPC
 				for (int i = 0; i < 30; i++)
 				{
 					Vector2 vel = (i * MathHelper.TwoPi / 30).ToRotationVector2();
-					var proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, vel, ModContent.ProjectileType<ButterflyDream>(), NPC.damage / 10, 0, Main.myPlayer, NPC.whoAmI, 1); // This circles around the 4D Cube
+					var proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, vel, ModContent.ProjectileType<ButterflyDream>(), NPC.damage / 8, 0, Main.maxPlayers, NPC.whoAmI, 1); // This circles around the 4D Cube
 					proj.timeLeft = 800;
 					proj.netUpdate2 = true;
 				}
@@ -877,7 +877,7 @@ public class CorruptMoth : ModNPC
 						for (int i = 0; i < NPC.ai[2]; i++)
 						{
 							Vector2 vel = (r + i * MathHelper.TwoPi / NPC.ai[2]).ToRotationVector2();
-							Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vel * NPC.ai[2] / 2, ModContent.ProjectileType<ButterflyDream>(), NPC.damage / 10, 0, Main.myPlayer, -vel.Y);
+							Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vel * NPC.ai[2] / 2, ModContent.ProjectileType<ButterflyDream>(), NPC.damage / 8, 0, Main.maxPlayers, -vel.Y);
 
 							for (int z = 0; z < 3; z++)
 							{
@@ -924,7 +924,7 @@ public class CorruptMoth : ModNPC
 			}
 			if (Timer == 60 && Main.netMode != NetmodeID.MultiplayerClient)
 			{
-				Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<MothBall>(), NPC.damage / 4, 0, Main.myPlayer);
+				Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<MothBall>(), NPC.damage / 5, 0, Main.maxPlayers);
 			}
 
 			if (Timer is > 60 and < 700)
@@ -1138,7 +1138,7 @@ public class CorruptMoth : ModNPC
 			{
 				for (int i = -10; i < 10; i++)
 				{
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, new Vector2(Main.rand.NextFloat(-0.3f, 0.3f), i * 10), ModContent.ProjectileType<ButterflyDream>(), NPC.damage / 10, 0, Main.myPlayer, -i * 0.1f);
+					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, new Vector2(Main.rand.NextFloat(-0.3f, 0.3f), i * 10), ModContent.ProjectileType<ButterflyDream>(), NPC.damage / 8, 0, Main.maxPlayers, -i * 0.1f);
 				}
 			}
 			Timer++;
@@ -1243,21 +1243,21 @@ public class CorruptMoth : ModNPC
 			{
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(0, 1), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 8, 0f, Main.myPlayer, 1);
+					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(0, 1), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 6, 0f, Main.maxPlayers, 1);
 					if (Main.expertMode && !Main.masterMode)
 					{
-						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(0, -2), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 8, 0f, Main.myPlayer, 1);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(0, -2), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 6, 0f, Main.maxPlayers, 1);
 					}
 
 					if (Main.masterMode)
 					{
-						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(-1.4f, -2), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 8, 0f, Main.myPlayer, 1);
-						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(1.4f, -2), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 8, 0f, Main.myPlayer, 1);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(-1.4f, -2), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 6, 0f, Main.maxPlayers, 1);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(1.4f, -2), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 6, 0f, Main.maxPlayers, 1);
 					}
 					if (Main.getGoodWorld)
 					{
-						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(-1.8f, -3), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 8, 0f, Main.myPlayer, 1);
-						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(1.8f, -3), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 8, 0f, Main.myPlayer, 1);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(-1.8f, -3), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 6, 0f, Main.maxPlayers, 1);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity * 0.2f + new Vector2(1.8f, -3), ModContent.ProjectileType<BlackCorruptRain>(), NPC.damage / 6, 0f, Main.maxPlayers, 1);
 					}
 				}
 			}

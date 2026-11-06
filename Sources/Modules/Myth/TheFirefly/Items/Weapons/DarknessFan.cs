@@ -18,9 +18,9 @@ public class DarknessFan : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.damage = 9;
+		Item.damage = 12;
 		Item.DamageType = DamageClass.Summon;
-		Item.mana = 12;
+		Item.mana = 8;
 		Item.width = 74;
 		Item.height = 90;
 		Item.useTime = 36;
@@ -41,7 +41,7 @@ public class DarknessFan : ModItem
 	{
 		if (player.altFunctionUse == 2 && colling == 0)
 		{
-			colling = 120;
+			colling = 180;
 			Projectile.NewProjectile(source, position + new Vector2(0, -24), velocity * 3.4f, ModContent.ProjectileType<DarkFanFly>(), (int)(damage * 1.4), knockback, player.whoAmI, 6 + player.maxMinions * 1.5f, 0f);
 			Item.useTime = 6;
 			Item.useAnimation = 6;

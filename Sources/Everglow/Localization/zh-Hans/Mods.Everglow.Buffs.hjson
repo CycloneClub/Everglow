@@ -386,7 +386,7 @@ CrossHair: {
 
 CyanVineRingCrit: {
 	DisplayName: 青缎指环的祝福
-	Description: 暴击+4%
+	Description: 暴击+5%
 }
 
 DeadBeetleEggBuff: {
@@ -641,7 +641,7 @@ GrubSoupBuff: {
 
 GuideBuff: {
 	DisplayName: 引领
-	Description: 发出光芒
+	Description: "照亮鼠标指针周围的区域"
 }
 
 HardenedSkinBuff: {
@@ -769,7 +769,7 @@ LifeRotten: {
 
 LivingWoodplateBuff: {
 	DisplayName: 活木滋养
-	Description: 生命上限增加40点，每秒额外恢复4点生命
+	Description: 生命上限增加40点，+8生命再生
 }
 
 LobsterTailBuff: {
@@ -1097,7 +1097,7 @@ RambutanBuff: {
 
 RayBuff: {
 	DisplayName: 射线
-	Description: ""
+	Description: "提高周围环境的亮度"
 }
 
 RedAlgae_FriendlyDebuff: {
@@ -1237,7 +1237,7 @@ SeafoodPizzaBuff: {
 
 ShadowPotionBuff: {
 	DisplayName: 暗影药水
-	Description: 在暗处提升基础属性
+	Description: "在暗处增加8点防御和8%伤害，并逐渐获得夜视\n强光下会降低生命再生"
 }
 
 ShadowSupervisor: {
@@ -1501,7 +1501,7 @@ WoodlandWraithStaffBuff: {
 
 WoodlandWraithStaffMyceliumBuff: {
 	DisplayName: 治疗菌丝
-	Description: 每秒额外恢复5点生命，在自己的孢子领域内效果翻倍
+	Description: +10生命再生，在自己的孢子领域内效果翻倍
 }
 
 YellowImmune: {
@@ -1521,5 +1521,10 @@ JumpBuff: {
 
 JumpPotionBuff: {
 	DisplayName: 跳跃
-	Description: 跳跃高度提高15%，摔落伤害降低30%
+	Description: 跳跃高度提高20%，摔落伤害降低25%
+}
+
+ScalePotionBuff: {
+	DisplayName: "鳞片"
+	Description: "受到敌人的接触伤害降低5%"
 }

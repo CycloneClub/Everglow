@@ -8,7 +8,7 @@ public class BloodyBoneYoyo : YoyoItem
 	{
 		Item.shoot = ModContent.ProjectileType<Projectiles.Weapon.BloodyBoneYoyo>();
 		Item.knockBack = 0.2f;
-		Item.damage = 24;
+		Item.damage = 21;
 		Item.value = Item.sellPrice(0, 0, 2, 0);
 		Item.rare = ItemRarityID.Green;
 	}

@@ -18,13 +18,13 @@ public class BloodySwamp : ModItem
 		Item.height = 48;
 
 		Item.DamageType = DamageClass.Magic;
-		Item.damage = 12;
+		Item.damage = 24;
 		Item.knockBack = 0.5f;
-		Item.mana = 6;
+		Item.mana = 7;
 
 		Item.useStyle = ItemUseStyleID.Shoot;
 		Item.UseSound = SoundID.Item20;
-		Item.useTime = Item.useAnimation = 21;
+		Item.useTime = Item.useAnimation = 24;
 		Item.noMelee = true;
 		Item.autoReuse = false;
 		Item.rare = ItemRarityID.Green;
@@ -42,11 +42,11 @@ public class BloodySwamp : ModItem
 	{
 		if (player.altFunctionUse == 2)
 		{
-			Item.mana = 40;
+			Item.mana = 24;
 		}
 		else
 		{
-			Item.mana = 6;
+			Item.mana = 7;
 		}
 		return base.CanUseItem(player);
 	}

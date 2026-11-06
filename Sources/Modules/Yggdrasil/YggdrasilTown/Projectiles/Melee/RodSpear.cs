@@ -16,7 +16,7 @@ public class RodSpear : ModProjectile
 		Projectile.width = 20;
 		Projectile.height = 20;
 		Projectile.tileCollide = false;
-		Projectile.timeLeft = 600;
+		Projectile.timeLeft = 360;
 		Projectile.aiStyle = -1;
 		Projectile.penetrate = -1;
 		Projectile.usesLocalNPCImmunity = true;
@@ -111,7 +111,7 @@ public class RodSpear : ModProjectile
 
 	private void StickNPC(NPC npc)
 	{
-		Projectile.damage = (int)(Projectile.damage * 0.1f);
+		Projectile.damage = (int)(Projectile.damage * 0.15f);
 		if (Projectile.damage == 0)
 		{
 			Projectile.damage = 1;

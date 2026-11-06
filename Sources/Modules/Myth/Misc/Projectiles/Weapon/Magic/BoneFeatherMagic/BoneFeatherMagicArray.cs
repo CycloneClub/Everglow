@@ -39,7 +39,7 @@ internal class BoneFeatherMagicArray : VisualProjectile
 	public int timer = 0;
 	public Vector2 ringPos = Vector2.Zero;
 
-	public override string Texture => "Everglow/" + ModAsset.BoneFeatherMagic_Path;
+	public override string Texture => ModAsset.BoneFeatherMagic_Mod;
 
 	public override void SetDefaults()
 	{

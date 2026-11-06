@@ -46,6 +46,88 @@ public partial class TileUtils
 		NoneSolidTile,
 	}
 
+	/// <summary>
+	/// Prepare an opt-in test arena without replacing background walls or protected objects.
+	/// Full-width wooden platforms repeat every 20 tiles upwards from the bottom row; no solid floor is added.
+	/// </summary>
+	public static bool PrepareCombatTestArena(Rectangle area, Rectangle protectedArea = default)
+	{
+		if (!FeatureFlags.EverglowConfig.CombatTestArenas)
+		{
+			return false;
+		}
+		if (area.Width <= 0 || area.Height <= 0 || area.Left < 20 || area.Top < 20
+			|| area.Right > Main.maxTilesX - 20 || area.Bottom > Main.maxTilesY - 20)
+		{
+			return false;
+		}
+
+		var protectedAreas = new List<Rectangle> { protectedArea };
+		foreach (var chest in Main.chest)
+		{
+			if (chest is not null)
+			{
+				protectedAreas.Add(new Rectangle(chest.x, chest.y, 2, 3));
+			}
+		}
+		foreach (var position in Terraria.DataStructures.TileEntity.ByPosition.Keys)
+		{
+			protectedAreas.Add(new Rectangle(position.X, position.Y, 1, 2));
+		}
+		// Preserve whole non-cuttable objects and their anchors, including objects crossing the rectangle edge.
+		for (int x = area.Left; x < area.Right; x++)
+		{
+			for (int y = area.Top; y < area.Bottom; y++)
+			{
+				var tile = Main.tile[x, y];
+				if (!tile.HasTile || protectedArea.Contains(x, y) || tile.TileType == TileID.Platforms
+					|| !Main.tileFrameImportant[tile.TileType] || Main.tileCut[tile.TileType])
+				{
+					continue;
+				}
+				var data = TileObjectData.GetTileData(tile);
+				int width = data?.Width ?? 1;
+				int height = data?.Height ?? 1;
+				protectedAreas.Add(new Rectangle(x - width + 1, y - height, width * 2 - 1, height * 2 + 1));
+			}
+		}
+
+		for (int x = area.Left; x < area.Right; x++)
+		{
+			for (int y = area.Top; y < area.Bottom; y++)
+			{
+				if (protectedAreas.Any(bounds => bounds.Contains(x, y)))
+				{
+					continue;
+				}
+				var tile = Main.tile[x, y];
+				tile.ClearTile();
+				tile.LiquidAmount = 0;
+				tile.HasActuator = false;
+				tile.IsActuated = false;
+				tile.RedWire = tile.BlueWire = tile.GreenWire = tile.YellowWire = false;
+				if ((area.Bottom - 1 - y) % 20 == 0)
+				{
+					tile.HasTile = true;
+					tile.TileType = TileID.Platforms;
+					tile.Slope = SlopeType.Solid;
+					tile.IsHalfBlock = false;
+				}
+			}
+		}
+		for (int x = area.Left; x < area.Right; x++)
+		{
+			for (int y = area.Top; y < area.Bottom; y++)
+			{
+				if (!protectedAreas.Any(bounds => bounds.Contains(x, y)))
+				{
+					WorldGen.TileFrame(x, y, resetFrame: true);
+				}
+			}
+		}
+		return true;
+	}
+
 	public static bool CanChangeTile(Tile tile, int state)
 	{
 		switch (state)

@@ -10,7 +10,7 @@ public class Caltrop : ModItem
 		Item.height = 16;
 
 		Item.DamageType = DamageClass.Ranged;
-		Item.damage = 8;
+		Item.damage = 18;
 		Item.knockBack = 0.2f;
 		Item.crit = 14;
 

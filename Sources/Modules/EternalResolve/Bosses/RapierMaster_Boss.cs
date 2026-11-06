@@ -252,7 +252,7 @@ public class RapierMaster_Boss : ModNPC
 					NPC.ai[3] = NPC.DirectionTo(Player.Center).ToRotation();
 					if (Main.netMode != NetmodeID.MultiplayerClient)
 					{
-						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity, ModContent.ProjectileType<CrutchRapier_Hostile>(), NPC.damage / 8, 0f, Main.myPlayer, NPC.whoAmI);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.velocity, ModContent.ProjectileType<CrutchRapier_Hostile>(), NPC.damage / 8, 0f, Main.maxPlayers, NPC.whoAmI);
 					}
 				}
 				if (T == 30 || T == 50)
@@ -298,7 +298,7 @@ public class RapierMaster_Boss : ModNPC
 					Dash(velocity * 15, 15);
 					if (Main.netMode != NetmodeID.MultiplayerClient)
 					{
-						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity, ModContent.ProjectileType<CrutchRapier_Stab_Hostile>(), NPC.damage / 6, 0f, Main.myPlayer, NPC.whoAmI);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity, ModContent.ProjectileType<CrutchRapier_Stab_Hostile>(), NPC.damage / 6, 0f, Main.maxPlayers, NPC.whoAmI);
 					}
 				}
 				if (T > 25 && T < 40)
@@ -327,7 +327,7 @@ public class RapierMaster_Boss : ModNPC
 				{
 					if (Main.netMode != NetmodeID.MultiplayerClient)
 					{
-						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.DirectionTo(Player.Center - Player.velocity * 5), ModContent.ProjectileType<CrutchRapier_Stab_Hostile>(), NPC.damage / 6, 0f, Main.myPlayer, NPC.whoAmI, 1f);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, NPC.DirectionTo(Player.Center - Player.velocity * 5), ModContent.ProjectileType<CrutchRapier_Stab_Hostile>(), NPC.damage / 6, 0f, Main.maxPlayers, NPC.whoAmI, 1f);
 					}
 				}
 				if (T > 40)
@@ -348,14 +348,14 @@ public class RapierMaster_Boss : ModNPC
 					tPos = Player.Center + vec;
 					if (Main.netMode != NetmodeID.MultiplayerClient)
 					{
-						Projectile.NewProjectile(NPC.GetSource_FromAI(), Player.Center + vec, Vector2.zeroVector, ModContent.ProjectileType<Rapier_Slash>(), NPC.damage / 6, 0f, Main.myPlayer, NPC.whoAmI, 1f);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), Player.Center + vec, Vector2.zeroVector, ModContent.ProjectileType<Rapier_Slash>(), NPC.damage / 6, 0f, Main.maxPlayers, NPC.whoAmI, 1f);
 					}
 				}
 				if (T == 80)
 				{
 					if (Main.netMode != NetmodeID.MultiplayerClient)
 					{
-						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, (tPos - NPC.Center) * 0.002f, ModContent.ProjectileType<CrutchRapier_Stab_Hostile>(), NPC.damage / 6, 0f, Main.myPlayer, NPC.whoAmI, 1f);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, (tPos - NPC.Center) * 0.002f, ModContent.ProjectileType<CrutchRapier_Stab_Hostile>(), NPC.damage / 6, 0f, Main.maxPlayers, NPC.whoAmI, 1f);
 					}
 					NPC.noGravity = true;
 				}
@@ -535,7 +535,7 @@ public class RapierMaster_Boss : ModNPC
 
 	public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
-		Texture2D tex = ModContent.Request<Texture2D>("Everglow/EternalResolve/Bosses/RapierMaster_Boss").Value;
+		Texture2D tex = ModAsset.RapierMaster_Boss.Value;
 		Main.spriteBatch.Draw(tex, NPC.Center - Main.screenPosition, null, drawColor, NPC.rotation, tex.Size() / 2, NPC.scale, NPC.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
 
 		if (noAI > 0)

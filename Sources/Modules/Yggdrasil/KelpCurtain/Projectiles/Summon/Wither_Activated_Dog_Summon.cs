@@ -111,7 +111,7 @@ public class Wither_Activated_Dog_Summon : ModProjectile
 	{
 		base.OnKill(timeLeft);
 		Player player = Main.player[Projectile.owner];
-		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<Wither_Activated_Dog>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+		Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<Wither_Activated_Dog>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
 		player.AddBuff(ModContent.BuffType<Wither_Activated_Dog_Buff>(), 1800000);
 
 		float minRange = 10f;

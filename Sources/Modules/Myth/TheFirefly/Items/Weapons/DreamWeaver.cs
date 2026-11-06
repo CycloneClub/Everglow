@@ -10,11 +10,11 @@ public class DreamWeaver : SpellTomeItem// TODO:织梦丝雨
 	{
 		Item.damage = 13;
 		Item.DamageType = DamageClass.Magic;
-		Item.mana = 4;
+		Item.mana = 5;
 		Item.width = 34;
 		Item.height = 46;
-		Item.useTime = 16;
-		Item.useAnimation = 16;
+		Item.useTime = 24;
+		Item.useAnimation = 24;
 		Item.useStyle = ItemUseStyleID.Shoot;
 		Item.noMelee = true;
 		Item.knockBack = 2.5f;
@@ -41,7 +41,7 @@ public class DreamWeaver : SpellTomeItem// TODO:织梦丝雨
 	{
 		if (player.ownedProjectileCounts[ModContent.ProjectileType<DreamWeaverBall>()] < 1 && player.GetModPlayer<SpellAndSkull.GlobalItems.MagicBookPlayer>().MagicBookLevel > 0)
 		{
-			var p0 = Projectile.NewProjectileDirect(player.GetSource_ItemUse(Item), player.Center + new Vector2(0, 300), Vector2.zeroVector, ModContent.ProjectileType<DreamWeaverBall>(), player.HeldItem.damage * 2, player.HeldItem.knockBack, player.whoAmI);
+			var p0 = Projectile.NewProjectileDirect(player.GetSource_ItemUse(Item), player.Center + new Vector2(0, 300), Vector2.zeroVector, ModContent.ProjectileType<DreamWeaverBall>(), player.HeldItem.damage * 3 / 2, player.HeldItem.knockBack, player.whoAmI);
 			p0.CritChance = player.GetWeaponCrit(player.HeldItem);
 			p0.scale = 0;
 		}

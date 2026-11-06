@@ -4,6 +4,7 @@ using ReLogic.Graphics;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent;
+using Terraria.Localization;
 using Terraria.UI.Chat;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.TwilightForest;
@@ -19,13 +20,13 @@ public class GunOfAvarice : ModItem
 		Item.scale = 0.75f;
 
 		Item.DamageType = DamageClass.Ranged;
-		Item.damage = 16;
+		Item.damage = 20;
 		Item.knockBack = 1.5f;
 		Item.crit = 2;
 		Item.noMelee = true;
 
-		Item.useTime = 27;
-		Item.useAnimation = 27;
+		Item.useTime = 24;
+		Item.useAnimation = 24;
 		Item.useStyle = ItemUseStyleID.Shoot;
 		Item.autoReuse = false;
 
@@ -41,11 +42,11 @@ public class GunOfAvarice : ModItem
 
 	public const int AutoReloadDuration = 90;
 	public const float AutoReloadSuccessChance = 0.8f;
-	public const float AutoReloadFailureDamageRatio = 2.8f;
+	public const float AutoReloadFailureDamageRatio = 1.5f;
 
 	public const int ManualReloadDuration = 30;
 
-	public const float DamageBonusPerLevel = 0.25f;
+	public const float DamageBonusPerLevel = 0.18f;
 	public const int MaxLevel = 10;
 
 	public const int TargetValueBonusInCopper = 75;
@@ -93,7 +94,7 @@ public class GunOfAvarice : ModItem
 				}
 
 				// save damage value for hurting player while fail.
-				Projectile.NewProjectile(source, position, Vector2.Zero, ModContent.ProjectileType<GunOfAvariceAutoReload>(), (int)(Item.damage * (1 + DamageBonusPerLevel * OldLevel) * 2.8f), 0, player.whoAmI, ai0: result, ai1: Level);
+				Projectile.NewProjectile(source, position, Vector2.Zero, ModContent.ProjectileType<GunOfAvariceAutoReload>(), (int)(Item.damage * (1 + DamageBonusPerLevel * OldLevel) * 1.5f), 0, player.whoAmI, ai0: result, ai1: Level);
 				AmmoAmount = MagazineCapacity;
 			}
 		}
@@ -116,8 +117,8 @@ public class GunOfAvarice : ModItem
 
 	public override void ModifyTooltips(List<TooltipLine> tooltips)
 	{
-		tooltips.Add(new TooltipLine(Mod, "GunOfAvariceAmmo", $"Current Ammo: {AmmoAmount}/{MagazineCapacity}"));
-		tooltips.Add(new TooltipLine(Mod, "GunOfAvariceLevel", $"Current Ammo: {Level}"));
+		tooltips.Add(new TooltipLine(Mod, "GunOfAvariceAmmo", Language.GetTextValue("Mods.Everglow.ExtraTooltip.GunOfAvarice.Ammo", AmmoAmount, MagazineCapacity)));
+		tooltips.Add(new TooltipLine(Mod, "GunOfAvariceLevel", Language.GetTextValue("Mods.Everglow.ExtraTooltip.GunOfAvarice.Level", Level)));
 	}
 
 	public override void UpdateInventory(Player player)
@@ -193,13 +194,13 @@ public class GunOfAvarice : ModItem
 
 		// shift the matrix to world position.
 		Color textColor = Color.White;
-		string text = "Level: " + Level;
+		string text = Language.GetTextValue("Mods.Everglow.ExtraTooltip.GunOfAvarice.Level", Level);
 		if (LevelChangeTimer > 80)
 		{
-			text = "Level: " + OldLevel;
+			text = Language.GetTextValue("Mods.Everglow.ExtraTooltip.GunOfAvarice.Level", OldLevel);
 			if (OldLevel == Level && Level == 10)
 			{
-				text = "Max Level";
+				text = Language.GetTextValue("Mods.Everglow.ExtraTooltip.GunOfAvarice.MaxLevel");
 			}
 		}
 		float drawScale = 1f;

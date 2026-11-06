@@ -90,7 +90,7 @@ public class Thermoprobe : ModProjectile
 			Projectile.rotation = Projectile.rotation.AngleLerp(Projectile.DirectionTo(target.Center).ToRotation(), 0.2f);
 			if (Vector2.Distance(Projectile.Center, targetPos) < 360)
 			{
-				if (++Projectile.ai[1] > 40 && Projectile.ai[0] > 0)
+				if (++Projectile.ai[1] > 47 && Projectile.ai[0] > 0)
 				{
 					SoundEngine.PlaySound(SoundID.Item11, Projectile.Center);
 
