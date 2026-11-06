@@ -6,7 +6,6 @@ public class GuideBuff : ModBuff
 
 	public override void SetStaticDefaults()
 	{
-		Main.debuff[Type] = false;
 		Main.pvpBuff[Type] = true;
 		Main.buffNoSave[Type] = false;
 	}

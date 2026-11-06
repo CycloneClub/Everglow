@@ -1,5 +1,6 @@
+using Everglow.Commons.Mechanics.PlayerBonuses;
+using Everglow.Commons.Mechanics;
 using Terraria.ModLoader.IO;
-using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent.UI;
 using Everglow.Food.Buffs;
@@ -325,10 +326,6 @@ public class FoodModPlayer : ModPlayer
 				Player.GetKnockback(DamageClass.Summon) -= 0.3f;
 				Player.moveSpeed -= 0.02f;
 				Player.pickSpeed += 0.05f;
-				if (Player.lifeRegen > 0)
-				{
-					Player.lifeRegen = 0;
-				}
 			}
 		}
 		else if (SatietyLevel == -2) // hungry
@@ -342,12 +339,6 @@ public class FoodModPlayer : ModPlayer
 				Player.GetKnockback(DamageClass.Summon) -= 0.6f;
 				Player.moveSpeed -= 0.04f;
 				Player.pickSpeed += 0.1f;
-				if (Player.lifeRegen > 0)
-				{
-					Player.lifeRegen = 0;
-				}
-
-				Player.lifeRegen -= (int)(Player.statLifeMax2 * 0.01f);
 			}
 		}
 		else if (SatietyLevel == -3) // starving
@@ -361,16 +352,18 @@ public class FoodModPlayer : ModPlayer
 				Player.GetKnockback(DamageClass.Summon) -= 0.9f;
 				Player.moveSpeed -= 0.08f;
 				Player.pickSpeed += 0.2f;
-				if (Player.lifeRegen > 0)
-				{
-					Player.lifeRegen = 0;
-				}
-
-				Player.lifeRegen -= (int)(Player.statLifeMax2 * 0.02f);
 				Player.starving = true;
 			}
 		}
+
+		Player.GetModPlayer<StatBonusPlayer>().HungerSatietyLevel = EffectiveSatietyLevel(Player);
 		base.PostUpdateBuffs();
+	}
+
+	private static int EffectiveSatietyLevel(Player player)
+	{
+		int level = player.GetModPlayer<FoodModPlayer>().SatietyLevel;
+		return level < 0 && !Main.dontStarveWorld ? 0 : level;
 	}
 
 	public void UpdateHungerEmote()

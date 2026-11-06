@@ -9,6 +9,15 @@ public class FoodBuffGlobalItem : GlobalItem
 
 	private int l = 0;
 
+	public override void HorizontalWingSpeeds(Item item, Player player, ref float speed, ref float acceleration)
+	{
+		if (player.GetModPlayer<FoodBuffModPlayer>().RoastedBirdBuff)
+		{
+			// Vanilla has already selected the normal or hovering speed for the equipped wing.
+			speed *= 1.15f;
+		}
+	}
+
 	public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		if (player.GetModPlayer<FoodBuffModPlayer>().GreenStormBuff)
@@ -44,16 +53,25 @@ public class FoodBuffGlobalItem : GlobalItem
 				return false;
 			}
 		}
-		if (player.GetModPlayer<FoodBuffModPlayer>().NachosBuff)
-		{
-			if (ItemUtils.Ranged.Launchers.Contains(item.type))
-			{
-				Projectile.NewProjectile(source, position, velocity, type, (int)1.04f * damage, 1.04f * knockback, player.whoAmI, 0);
-				return false;
-			}
-		}
-
 		return true;
+	}
+
+	public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
+	{
+		if (player.GetModPlayer<FoodBuffModPlayer>().NachosBuff && ItemUtils.Ranged.Launchers.Contains(item.type))
+		{
+			// +4% launcher damage
+			damage += 0.04f;
+		}
+	}
+
+	public override void ModifyWeaponKnockback(Item item, Player player, ref StatModifier knockback)
+	{
+		if (player.GetModPlayer<FoodBuffModPlayer>().NachosBuff && ItemUtils.Ranged.Launchers.Contains(item.type))
+		{
+			// +4% launcher knockback
+			knockback += 0.04f;
+		}
 	}
 
 	public override void ModifyItemScale(Item item, Player player, ref float scale)
@@ -62,17 +80,20 @@ public class FoodBuffGlobalItem : GlobalItem
 		{
 			if (player.GetModPlayer<FoodBuffModPlayer>().KiwiJuiceBuff)
 			{
-				scale *= 2.5f;
+				// +150% weapon size
+				scale += 1.5f;
 			}
 
 			if (player.GetModPlayer<FoodBuffModPlayer>().KiwiFruitBuff)
 			{
-				scale *= 1.2f;
+				// +20% weapon size
+				scale += 0.2f;
 			}
 
 			if (player.GetModPlayer<FoodBuffModPlayer>().KiwiIceCreamBuff)
 			{
-				scale *= 1.1f;
+				// +10% weapon size
+				scale += 0.1f;
 			}
 		}
 	}

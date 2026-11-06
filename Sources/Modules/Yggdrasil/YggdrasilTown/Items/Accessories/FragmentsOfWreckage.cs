@@ -1,3 +1,4 @@
+using Everglow.Commons.Mechanics.PlayerBonuses;
 using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
@@ -28,29 +29,11 @@ public class FragmentsOfWreckage : ModItem
 	{
 		// 1. Slightly increases stats based on life loss
 		// ==============================================
-		var lifeLoss = player.statLifeMax2 - player.statLife;
-
 		// A maximum of 120 life loss will be counted
-		var bonusScaler = lifeLoss / LifeLossForBonusMax;
-		if (bonusScaler > 1)
-		{
-			bonusScaler = 1;
-		}
-		else if (bonusScaler < 0)
-		{
-			bonusScaler = 0;
-		}
-
 		// +6% damage
-		player.GetDamage(DamageClass.Generic) += DamageBonus * bonusScaler;
-
 		// +6% melee speed
-		player.meleeSpeed += MeleeSpeedBonus * bonusScaler;
-
 		// +8 defense
-		player.statDefense += (int)(DefenseBonus * bonusScaler);
-
 		// +10% pick speed
-		player.pickSpeed -= PickSpeedBonus * bonusScaler;
+		player.GetModPlayer<StatBonusPlayer>().FragmentsOfWreckage = true;
 	}
 }

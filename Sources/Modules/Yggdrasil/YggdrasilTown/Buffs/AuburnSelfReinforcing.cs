@@ -1,3 +1,6 @@
+using Everglow.Commons.Mechanics.PlayerBonuses;
+using Everglow.Commons.Mechanics;
+
 namespace Everglow.Yggdrasil.YggdrasilTown.Buffs;
 
 public class AuburnSelfReinforcing : ModBuff
@@ -6,7 +9,7 @@ public class AuburnSelfReinforcing : ModBuff
 
 	public override void Update(Player player, ref int buffIndex)
 	{
-		player.lifeRegen -= 2;
+		player.GetModPlayer<StatBonusPlayer>().AuburnSelfReinforcing = true;
 		player.maxMinions += 1;
 	}
 }

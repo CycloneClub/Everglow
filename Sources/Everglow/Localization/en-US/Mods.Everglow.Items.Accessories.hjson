@@ -25,8 +25,8 @@ BloodTearCrystalCrown: {
 	DisplayName: Blood Tear Crystal Crown
 	Tooltip:
 		'''
-		+{0} maximum life
-		+{2} life regeneration while life is above {1}% of base maximum life
+		+{0} life
+		+{2} life regen above {1}% life
 		'''
 }
 
@@ -44,8 +44,8 @@ BlueGel: {
 	DisplayName: Blue Gel
 	Tooltip:
 		'''
-		+{0} maximum mana
-		Adds {1} mana regeneration points; vanilla regeneration updates overwrite this parameter, so it currently provides no regeneration benefit
+		+{0} mana
+		+{1} mana regen
 		'''
 }
 
@@ -63,9 +63,8 @@ CelesteStoneWaistPendant: {
 	DisplayName: Celeste Stone Waist Pendant
 	Tooltip:
 		'''
-		+{0} maximum mana
-		Adds {3} mana regeneration points while mana is above {1}% and below {2}% of base maximum mana
-		Vanilla regeneration updates overwrite this parameter; it currently provides no regeneration benefit
+		+{0} mana
+		+{3} mana regen above {1}% and below {2}% mana
 		'''
 }
 
@@ -149,6 +148,7 @@ EmptyFowlbeast: {
 	DisplayName: Empty Fowlbeast
 	Tooltip:
 		'''
+		Increases your max number of minions by 1
 		Your minions' direct hits deal extra magic damage equal to 7% of your maximum mana
 		You take 20% more contact damage from enemies
 		'''
@@ -163,10 +163,10 @@ FireflyBorageBadge: {
 	DisplayName: Firefly Borage Badge
 	Tooltip:
 		'''
-		{0}% multiplicative magic damage and {1}% multiplicative movement speed modifier
-		While the Corrupt Moth is present: lose {2}% defense (rounded down, capped at {3})
-		Gain another {4}% multiplicative damage and {5}% multiplicative melee and whip attack speed
-		Positive base crit chances for Melee, MeleeNoSpeed and whips become zero; weapon and inherited crit bonuses still apply
+		{0}% multiplicative magic damage and {1}% increased movement speed
+		While the Corrupt Moth is present: subtract base defense equal to {2}% of defense, capped at {3} points
+		Gain another {4}% multiplicative damage and {5}% increased melee and whip attack speed
+		{6}% reduced melee critical strike chance
 		'''
 }
 
@@ -249,7 +249,7 @@ HardenedWitherbarkHeart: {
 	DisplayName: Hardened Witherbark Heart
 	Tooltip:
 		'''
-		10% reduced movement speed and 40% reduced sprint speed
+		50% reduced movement speed
 		Reduces the next enemy contact hit by 90%, then leaves you vulnerable for 10 seconds
 		While vulnerable, enemy contact hits deal 50% more damage
 		'''
@@ -336,7 +336,7 @@ ManaThermalPipeline: {
 	Tooltip:
 		'''
 		{0}% increased magic damage
-		Adds {1} mana regeneration points; vanilla regeneration updates overwrite this parameter, so it currently provides no regeneration benefit
+		+{1} mana regen
 		'''
 }
 
@@ -360,7 +360,7 @@ MoltenCore: {
 	Tooltip:
 		'''
 		While affected by On Fire!, Hellfire or Cursed Inferno:
-		Reduces remaining damage by {0}% and grants +{1} defense
+		{0}% damage reduction and +{1} defense
 		{2}% increased critical strike chance, {3}% increased damage and {4}% increased movement speed
 		+{5} pixels/tick jump speed
 		'''
@@ -373,7 +373,7 @@ MothEye: {
 		{0}% multiplicative summon damage, +{1} maximum minions and +{2} maximum sentries
 		During Hardmode, while the local player is in the Firefly biome:
 		While equipped: -{4}% mana cost and +{5} to the Mana Sickness penalty parameter
-		Placing it in an equipment or vanity slot grants {3}% multiplicative damage to the listed Firefly weapons
+		While equipped: +{3}% multiplicative damage to the listed Firefly weapons
 		Damage bonus applies to:
 		Darkness Fan, Dream Weaver, Dust Of Corrupt, Evil Chrysalis
 		Flow Light Missile, Glow Bead Gun, Glow Wood Sword, Moth Yoyo
@@ -396,7 +396,7 @@ Odd8Ring: {
 
 OrangeCrown: {
 	DisplayName: Orange Crown
-	Tooltip: ""
+	Tooltip: "+3% of life capacity as defense (rounded down)"
 }
 
 OrangeStick: {
@@ -479,8 +479,8 @@ RingOfMatter: {
 	Tooltip:
 		'''
 		Uses gold and platinum coins in your inventory when equipped, gaining one tier per {0} gold
-		Each tier grants 1% damage and 1% defense but reduces maximum life by 1.5%
-		Up to {1} tiers: +{1}% damage and defense, -{2}% maximum life
+		Each tier: +1% damage and defense, -3 life
+		Up to {1} tiers: +{1}% damage and defense, -{2} life
 		'''
 }
 
@@ -572,8 +572,8 @@ ThermalConductor: {
 	DisplayName: Thermal Conductor
 	Tooltip:
 		'''
-		+{0} maximum mana, +{1}% mana cost
-		While below {2}% maximum mana, checks every {3} seconds for a {4}% chance to restore {5} mana and inflict Cursed Inferno on you for {6} seconds
+		+{0} mana, +{1}% mana cost
+		While below {2}% mana, checks every {3} seconds for a {4}% chance to restore {5} mana and inflict Cursed Inferno on you for {6} seconds
 		'''
 }
 
@@ -583,7 +583,7 @@ ThornTurtleShell: {
 		'''
 		Reflects damage back at attackers
 		5% increased damage reduction
-		7% reduced movement speed and 5% reduced maximum running speed
+		12% reduced movement speed
 		'''
 }
 
@@ -607,13 +607,13 @@ WalnutClip: {
 	Tooltip:
 		'''
 		{0}% increased critical strike damage against NPCs
-		Below {1}% maximum life, gain 1% multiplicative damage per {2} life missing below that threshold
+		Below {1}% life: +1% damage per {2} life missing below that threshold
 		'''
 }
 
 WhiteCrown: {
 	DisplayName: White Crown
-	Tooltip: ""
+	Tooltip: "10% increased movement speed per 50 maximum life"
 }
 
 WhitePedal: {
@@ -628,5 +628,5 @@ WhiteWoodFlower: {
 
 YellowBellFlower: {
 	DisplayName: Yellow Bell Flower
-	Tooltip: ""
+	Tooltip: "Increases damage by 0.2% per defense"
 }

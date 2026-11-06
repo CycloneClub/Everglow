@@ -1,12 +1,4 @@
-using Everglow.Myth.TheFirefly.Projectiles;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria.DataStructures;
-using Everglow.Commons.Skeleton2D;
-using Everglow.Commons.Skeleton2D.Reader;
-using Everglow.Commons.Skeleton2D.Renderer.DrawCommands;
-using ReLogic.Content;
-using Spine;
-using static ReLogic.Peripherals.RGB.Corsair.CorsairDeviceGroup;
 
 namespace Everglow.Myth.LanternMoon.Buffs;
 
@@ -14,7 +6,6 @@ public class PaperObstructed : ModBuff
 {
 	public override void SetStaticDefaults()
 	{
-		// DisplayName.SetDefault("Paper Obstructed");
 		Main.buffNoSave[Type] = true;
 		Main.buffNoTimeDisplay[Type] = true;
 	}
@@ -25,8 +16,10 @@ public class PaperObstructed : ModBuff
 		{
 			player.headcovered = true;
 			player.bleed = true;
-			player.allCrit *= 0.9f;
-			player.allDamage *= 0.9f;
+			// -10% critical strike chance
+			player.GetCritChance(DamageClass.Generic) -= 10;
+			// -10% damage
+			player.GetDamage(DamageClass.Generic) -= 0.1f;
 		}
 	}
 }

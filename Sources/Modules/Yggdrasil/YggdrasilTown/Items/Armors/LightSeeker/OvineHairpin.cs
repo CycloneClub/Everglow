@@ -39,12 +39,16 @@ public class OvineHairpin : ModItem
 		Color lightColor = Lighting.GetColor(player.Center.ToTileCoordinates());
 
 		float lightIntensity = MathHelper.Max(MathHelper.Max(lightColor.R, lightColor.G), lightColor.B);
+		// In bright light:
 		if (lightIntensity > 220)
 		{
+			// +7% increased magic damage
 			player.GetDamage(DamageClass.Magic) += 0.07f;
 		}
 
-		player.manaCost *= 0.88f;
+		// -12% mana cost
+		player.manaCost -= 0.12f;
+		// +8% increased magic damage
 		player.GetDamage(DamageClass.Magic) += 0.08f;
 	}
 
@@ -52,6 +56,7 @@ public class OvineHairpin : ModItem
 	{
 		Lighting.AddLight(player.Center, Vector3.one * 0.5f);
 
+		// +5% increased magic critical strike chance
 		player.GetCritChance(DamageClass.Magic) += 5f;
 	}
 

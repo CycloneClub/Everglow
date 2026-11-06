@@ -30,7 +30,9 @@ public class EldamberHairpin : ModItem
 
 	public override void UpdateEquip(Player player)
 	{
+		// +4% increased magic damage
 		player.GetDamage(DamageClass.Magic) += 0.04f;
+		// +40 mana
 		player.statManaMax2 += 40;
 	}
 
@@ -42,7 +44,8 @@ public class EldamberHairpin : ModItem
 	public override void UpdateArmorSet(Player player)
 	{
 		player.setBonus = SetBonusText.Value;
-		player.manaCost *= 0.85f;
+		// -15% mana cost
+		player.manaCost -= 0.15f;
 	}
 
 	public override void AddRecipes()

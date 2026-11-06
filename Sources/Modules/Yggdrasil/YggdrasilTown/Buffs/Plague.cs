@@ -1,3 +1,5 @@
+using Everglow.Commons.Mechanics.PlayerBonuses;
+
 namespace Everglow.Yggdrasil.YggdrasilTown.Buffs;
 
 public class Plague : ModBuff
@@ -49,7 +51,7 @@ public class Plague : ModBuff
 
 	public override void Update(Player player, ref int buffIndex)
 	{
-		player.GetModPlayer<PlagueDebuffPlayer>().EnablePlagueDebuff = true;
+		player.GetModPlayer<StatBonusPlayer>().PlagueLifeRegenLoss = PlayerLifeDecreasePerSecond * 2;
 
 		if (player.buffTime[buffIndex] == 1)
 		{
@@ -78,30 +80,6 @@ public class Plague : ModBuff
 
 				playerTarget.AddBuff(Type, SpreadedBuffDuration);
 			}
-		}
-	}
-}
-
-public class PlagueDebuffPlayer : ModPlayer
-{
-	public bool EnablePlagueDebuff;
-
-	public override void ResetEffects()
-	{
-		EnablePlagueDebuff = false;
-	}
-
-	public override void UpdateBadLifeRegen()
-	{
-		if (EnablePlagueDebuff)
-		{
-			if (Player.lifeRegen > 0)
-			{
-				Player.lifeRegen = 0;
-			}
-
-			Player.lifeRegenTime = 0;
-			Player.lifeRegen -= Plague.PlayerLifeDecreasePerSecond * 2;
 		}
 	}
 }

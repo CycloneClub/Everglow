@@ -1,4 +1,5 @@
-using System.Reflection;
+using Everglow.Commons.Mechanics.PlayerBonuses;
+using Everglow.UnitTests.Function;
 using System.Runtime.CompilerServices;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Tools;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Ammos;
@@ -48,16 +49,30 @@ public class PlannedItemDefaultsTests
 	[TestMethod]
 	public void EldamberSharedPiecesGiveGenericOffenseAndOnlyMageHelmetGrantsMana()
 	{
-		var player = new Player { statManaMax2 = 80, manaCost = 1f };
+		using var context = new CooldownTestContext();
+		var bonuses = context.Attach<StatBonusPlayer>();
+		bonuses.ResetEffects();
+		var player = context.Player;
+		player.statManaMax2 = 80;
+		player.manaCost = 1f;
+		var originalGenericDamage = player.GetDamage(DamageClass.Generic);
 		float genericDamage = player.GetDamage(DamageClass.Generic).ApplyTo(100f);
 		float genericCrit = player.GetCritChance(DamageClass.Generic);
 
 		new EldamberBreastplate().UpdateEquip(player);
+		bonuses.PostUpdateEquips();
 		Assert.AreEqual(80, player.statManaMax2, "The shared chest must not grant the mage helmet's mana.");
 		Assert.AreEqual(genericDamage + 4f, player.GetDamage(DamageClass.Generic).ApplyTo(100f), 0.00001f);
 		Assert.AreEqual(1f, player.manaCost, "A chest alone must not grant the set bonus.");
+		// Start a separate complete-outfit frame from the original base attributes.
+		bonuses.ResetEffects();
+		player.statManaMax2 = 80;
+		player.manaCost = 1f;
+		player.GetDamage(DamageClass.Generic) = originalGenericDamage;
+		new EldamberBreastplate().UpdateEquip(player);
 		new EldamberHairpin().UpdateEquip(player);
 		new EldamberBoots().UpdateEquip(player);
+		bonuses.PostUpdateEquips();
 		Assert.AreEqual(120, player.statManaMax2);
 		Assert.AreEqual(108f, player.GetTotalDamage(DamageClass.Magic).ApplyTo(100f), 0.00001f);
 		Assert.AreEqual(104f, player.GetTotalDamage(DamageClass.Melee).ApplyTo(100f), 0.00001f);
