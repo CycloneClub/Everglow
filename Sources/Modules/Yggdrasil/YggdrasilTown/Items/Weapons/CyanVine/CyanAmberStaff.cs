@@ -1,5 +1,6 @@
 using Everglow.Yggdrasil.Common.Items;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
 using Terraria.DataStructures;
 
@@ -35,7 +36,7 @@ public class CyanAmberStaff : ModItem
 		CreateRecipe()
 			.AddIngredient(ModContent.ItemType<CyanVineStaff>())
 			.AddIngredient(ModContent.ItemType<YggdrasilAmber>(), 3)
-			.AddIngredient(ModContent.ItemType<YggdrasilGrayRock_Item>(), 20)
+			.AddIngredient(ModContent.ItemType<StoneDragonScaleWood>(), 20)
 			.AddTile(TileID.Anvils)
 			.Register();
 	}

@@ -1,3 +1,6 @@
+using Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Tools;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles.FurnaceTiles;
 using Terraria.GameContent.ItemDropRules;
 
@@ -34,7 +37,19 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Placeables
 
 		public override void ModifyItemLoot(ItemLoot itemLoot)
 		{
-			// Town-exclusive rewards are not assigned yet; keep the vanilla-style supply pools.
+			int[] themedDrops =
+			{
+				ModContent.ItemType<OldPickaxe>(),
+				ModContent.ItemType<ShacklesBall>(),
+				ModContent.ItemType<SkullCollection>(),
+				ModContent.ItemType<FragmentsOfWreckage>(),
+				ModContent.ItemType<FuneraryGoods>(),
+				ModContent.ItemType<ForsakenBoots>(),
+				ModContent.ItemType<FlappedHangGlider>(),
+				ModContent.ItemType<OldPortableLamp>(),
+				ModContent.ItemType<RustSlingshot>(),
+			};
+			itemLoot.Add(ItemDropRule.OneFromOptionsNotScalingWithLuck(1, themedDrops));
 			itemLoot.Add(ItemDropRule.Common(ItemID.GoldCoin, 4, 5, 13));
 			IItemDropRule[] oreTypes = new IItemDropRule[]
 			{
