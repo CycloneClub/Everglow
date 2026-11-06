@@ -5,14 +5,6 @@ namespace Everglow.Food.Buffs.VanillaFoodBuffs;
 
 public class ElderberryBuff : ModBuff
 {
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("ElderberryBuff");
-		// Description.SetDefault("你可以短距离冲刺\n“抗氧化”");
-		Main.buffNoTimeDisplay[Type] = false;
-		Main.debuff[Type] = false; // 添加这个，这样护士在治疗时就不会去除buff
-	}
-
 	public override void Update(Player player, ref int buffIndex)
 	{
 		ElderberryBuffDash ElderberryBuffDash = player.GetModPlayer<ElderberryBuffDash>();

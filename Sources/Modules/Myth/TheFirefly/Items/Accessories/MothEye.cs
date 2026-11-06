@@ -28,14 +28,50 @@ public class MothEye : ModItem
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
 		player.GetModPlayer<MothEyePlayer>().MothEyeEquipped = true;
+		// +1 max minion
 		player.maxMinions += 1;
+		// +1 max sentry
 		player.maxTurrets += 1;
+		// +8% summon damage
 		player.GetDamage(DamageClass.Summon) *= 1.08f;
-		if (fireflyBiome.IsBiomeActive(Main.LocalPlayer) && Main.hardMode)
+		// In the Firefly biome during Hardmode:
+		if (HasBiomeBonus(player))
 		{
+			// +4 Mana Sickness penalty
+			// TODO: Confirm intended effect
 			player.manaSickReduction += 4;
+			// -5% mana cost
 			player.manaCost -= 0.05f;
 		}
+	}
+
+	private static bool HasBiomeBonus(Player player) => Main.hardMode && ModContent.GetInstance<FireflyBiome>().IsBiomeActive(player);
+
+	// In the Firefly biome during Hardmode:
+	// +5% damage with Firefly weapons
+	internal static float CalculateWeaponDamage(Player player, Item item)
+	{
+		if (!HasBiomeBonus(player))
+		{
+			return 1;
+		}
+
+		int[] fireflyWeapons =
+		{
+			ModContent.ItemType<DarknessFan>(),
+			ModContent.ItemType<DreamWeaver>(),
+			ModContent.ItemType<DustOfCorrupt>(),
+			ModContent.ItemType<EvilChrysalis>(),
+			ModContent.ItemType<FlowLightMissile>(),
+			ModContent.ItemType<GlowBeadGun>(),
+			ModContent.ItemType<GlowWoodSword>(),
+			ModContent.ItemType<MothYoyo>(),
+			ModContent.ItemType<NavyThunder>(),
+			ModContent.ItemType<PhosphorescenceGun>(),
+			ModContent.ItemType<ScaleWingBlade>(),
+			ModContent.ItemType<ShadowWingBow>(),
+		};
+		return Array.IndexOf(fireflyWeapons, item.type) != -1 ? 1.05f : 1;
 	}
 
 	public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
@@ -66,7 +102,6 @@ public class MothEye : ModItem
 
 internal class MothEyePlayer : ModPlayer
 {
-	private FireflyBiome fireflyBiome = ModContent.GetInstance<FireflyBiome>();
 	public bool MothEyeEquipped;
 
 	public override void ResetEffects()
@@ -76,37 +111,10 @@ internal class MothEyePlayer : ModPlayer
 
 	public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
 	{
-		if (fireflyBiome.IsBiomeActive(Main.LocalPlayer) && Main.hardMode)
+		// While Moth Eye is equipped:
+		if (MothEyeEquipped)
 		{
-			for (int f = 0; f < Player.armor.Length; f++)
-			{
-				if (Player.armor[f].type != ModContent.ItemType<MothEye>())
-				{
-					continue;
-				}
-
-				int[] FireflyWeapon =
-				{
-					ModContent.ItemType<DarknessFan>(),
-					ModContent.ItemType<DreamWeaver>(), // no MothEye effect
-					ModContent.ItemType<DustOfCorrupt>(), // no MothEye effect
-					ModContent.ItemType<EvilChrysalis>(),
-					ModContent.ItemType<FlowLightMissile>(), // no MothEye effect
-					ModContent.ItemType<GlowBeadGun>(), // no MothEye effect
-					ModContent.ItemType<GlowWoodSword>(),
-					ModContent.ItemType<MothYoyo>(),
-					ModContent.ItemType<NavyThunder>(), // no MothEye effect
-					ModContent.ItemType<PhosphorescenceGun>(),
-					ModContent.ItemType<ScaleWingBlade>(),
-					ModContent.ItemType<ShadowWingBow>(),
-				};
-				if (Array.IndexOf(FireflyWeapon, item.type) != -1)
-				{
-					damage *= 1.05f;
-				}
-
-				break;
-			}
+			damage *= MothEye.CalculateWeaponDamage(Player, item);
 		}
 	}
 }

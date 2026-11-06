@@ -1,3 +1,5 @@
+using Everglow.Commons.Mechanics.PlayerBonuses;
+using Everglow.UnitTests.Function;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
@@ -77,27 +79,44 @@ public class TownEquipmentLocalizationTests
 			}
 			if (item is ValiantHelmet)
 			{
-				var player = new Player { endurance = 0.2f, aggro = 500 };
+				using var context = new CooldownTestContext();
+				var bonuses = context.Attach<StatBonusPlayer>();
+				bonuses.ResetEffects();
+				var player = context.Player;
+				player.endurance = 0.2f;
+				player.aggro = 500;
 				item.UpdateArmorSet(player);
+				bonuses.PostUpdateEquips();
 				Assert.AreEqual(0.24f, player.endurance, 0.00001f);
 				Assert.AreEqual(100, player.aggro);
 				StringAssert.Contains(player.setBonus, "+4%");
 			}
 			if (item is EldamberHairpin)
 			{
-				var player = new Player { manaCost = 0.8f };
+				using var context = new CooldownTestContext();
+				var bonuses = context.Attach<StatBonusPlayer>();
+				bonuses.ResetEffects();
+				var player = context.Player;
+				player.manaCost = 0.8f;
 				item.UpdateArmorSet(player);
-				Assert.AreEqual(0.68f, player.manaCost, 0.00001f);
+				bonuses.PostUpdateEquips();
+				Assert.AreEqual(0.65f, player.manaCost, 0.00001f);
 				Assert.IsFalse(string.IsNullOrWhiteSpace(player.setBonus));
 			}
 			if (item is EldamberWarhelm)
 			{
-				var player = new Player { statManaMax2 = 80, manaCost = 0.8f };
+				using var context = new CooldownTestContext();
+				var bonuses = context.Attach<StatBonusPlayer>();
+				bonuses.ResetEffects();
+				var player = context.Player;
+				player.statManaMax2 = 80;
+				player.manaCost = 0.8f;
 				player.GetAttackSpeed(DamageClass.Melee) = 1.2f;
 				item.UpdateEquip(player);
 				new EldamberBreastplate().UpdateEquip(player);
 				new EldamberBoots().UpdateEquip(player);
 				item.UpdateArmorSet(player);
+				bonuses.PostUpdateEquips();
 				Assert.AreEqual(108f, player.GetTotalDamage(DamageClass.Melee).ApplyTo(100f), 0.00001f);
 				Assert.AreEqual(104f, player.GetTotalDamage(DamageClass.Magic).ApplyTo(100f), 0.00001f);
 				Assert.AreEqual(1.35f, player.GetAttackSpeed(DamageClass.Melee), 0.00001f);

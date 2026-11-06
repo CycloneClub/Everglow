@@ -7,19 +7,13 @@ namespace Everglow.Food.Buffs;
 
 public class FoodBuffModPlayer : ModPlayer
 {
-	public float WingTimeModifier;
-
 	public bool BananaBuff;
 	public bool BananaDaiquiriBuff;
 	public bool BananaSplitBuff;
 	public bool DragonfruitBuff;
 	public bool GoldenDelightBuff;
 	public bool SmoothieofDarknessBuff;
-	public bool GrubSoupBuff;
-	public bool MonsterLasagnaBuff;
-	public bool SashimiBuff;
-	public bool ShuckedOysterBuff;
-	public bool MangoBuff;
+	public bool EscargotBuff;
 	public bool StarfruitBuff;
 	public bool NachosBuff;
 	public bool RoastedBirdBuff;
@@ -53,19 +47,13 @@ public class FoodBuffModPlayer : ModPlayer
 
 	public override void UpdateDead()
 	{
-		WingTimeModifier = 1f;
-
 		BananaBuff = false;
 		BananaDaiquiriBuff = false;
 		BananaSplitBuff = false;
 		DragonfruitBuff = false;
 		GoldenDelightBuff = false;
 		SmoothieofDarknessBuff = false;
-		GrubSoupBuff = false;
-		MonsterLasagnaBuff = false;
-		SashimiBuff = false;
-		ShuckedOysterBuff = false;
-		MangoBuff = false;
+		EscargotBuff = false;
 		StarfruitBuff = false;
 		NachosBuff = false;
 		RoastedBirdBuff = false;
@@ -100,19 +88,13 @@ public class FoodBuffModPlayer : ModPlayer
 
 	public override void ResetEffects()
 	{
-		WingTimeModifier = 1f;
-
 		BananaBuff = false;
 		BananaDaiquiriBuff = false;
 		BananaSplitBuff = false;
 		DragonfruitBuff = false;
 		GoldenDelightBuff = false;
 		SmoothieofDarknessBuff = false;
-		GrubSoupBuff = false;
-		MonsterLasagnaBuff = false;
-		SashimiBuff = false;
-		ShuckedOysterBuff = false;
-		MangoBuff = false;
+		EscargotBuff = false;
 		StarfruitBuff = false;
 		NachosBuff = false;
 		RoastedBirdBuff = false;
@@ -145,6 +127,34 @@ public class FoodBuffModPlayer : ModPlayer
 		AddCritDamage = 0;
 	}
 
+	public override void PostUpdateEquips()
+	{
+		// Native equipment has established wingTimeMax. Combine food percentages once.
+		float flightTime = 1f;
+		if (RoastedBirdBuff)
+		{
+			flightTime += 0.25f;
+		}
+		if (RoastedDuckBuff)
+		{
+			flightTime += 0.1f;
+		}
+		if (EscargotBuff)
+		{
+			flightTime -= 0.9f;
+		}
+		Player.wingTimeMax = (int)(Player.wingTimeMax * flightTime);
+	}
+
+	public override void PostUpdateRunSpeeds()
+	{
+		if (EscargotBuff && !Player.mount.Active)
+		{
+			// -75% final jump speed, after native balloon and accessory bonuses.
+			Player.jumpSpeed *= 1f - 0.75f;
+		}
+	}
+
 	public override void PostUpdateBuffs()
 	{
 		if (StinkyTofuBuff)
@@ -156,15 +166,6 @@ public class FoodBuffModPlayer : ModPlayer
 					target.AddBuff(BuffID.Confused, 600);
 				}
 			}
-		}
-		if (RoastedBirdBuff)
-		{
-			Player.wingTimeMax = (int)(Player.wingTimeMax * WingTimeModifier);
-		}
-
-		if (RoastedDuckBuff)
-		{
-			Player.wingTimeMax = (int)(Player.wingTimeMax * WingTimeModifier);
 		}
 
 		var mp = Player.GetModPlayer<EverglowPlayer>();
@@ -188,12 +189,15 @@ public class FoodBuffModPlayer : ModPlayer
 		base.PostUpdate();
 	}
 
-	public override void ModifyHurt(ref Player.HurtModifiers modifiers)
+	public override bool FreeDodge(Player.HurtInfo info)
 	{
-		if (Player.whoAmI == Main.myPlayer && SmoothieofDarknessBuff && Main.rand.NextBool(2))
+		// 50% chance to cancel a dodgeable hit and apply native dodge immunity.
+		if (SmoothieofDarknessBuff && Main.rand.NextBool(2))
 		{
 			Player.NinjaDodge();
+			return true;
 		}
+		return false;
 	}
 
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
@@ -239,50 +243,6 @@ public class FoodBuffModPlayer : ModPlayer
 			}
 			CombatText.NewText(Player.Hitbox, Color.HotPink, Language.GetTextValue("Mods.Everglow.Common.FoodSystem.Khan"));
 			Player.ClearBuff(ModContent.BuffType<CherryBuff>());
-		}
-	}
-
-	public override void UpdateBadLifeRegen()
-	{
-		if (GrubSoupBuff)
-		{
-			if (Player.lifeRegen > 0)
-			{
-				Player.lifeRegen = 0;
-			}
-
-			Player.lifeRegenTime = 0;
-			Player.lifeRegen -= MangoBuff ? 2 : 4;
-		}
-		if (MonsterLasagnaBuff)
-		{
-			if (Player.lifeRegen > 0)
-			{
-				Player.lifeRegen = 0;
-			}
-
-			Player.lifeRegenTime = 0;
-			Player.lifeRegen -= MangoBuff ? 3 : 6;
-		}
-		if (SashimiBuff)
-		{
-			if (Player.lifeRegen > 0)
-			{
-				Player.lifeRegen = 0;
-			}
-
-			Player.lifeRegenTime = 0;
-			Player.lifeRegen -= MangoBuff ? 2 : 4;
-		}
-		if (ShuckedOysterBuff)
-		{
-			if (Player.lifeRegen > 0)
-			{
-				Player.lifeRegen = 0;
-			}
-
-			Player.lifeRegenTime = 0;
-			Player.lifeRegen -= MangoBuff ? 2 : 4;
 		}
 	}
 }

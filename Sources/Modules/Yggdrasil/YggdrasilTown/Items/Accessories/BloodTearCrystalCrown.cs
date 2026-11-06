@@ -1,3 +1,4 @@
+using Everglow.Commons.Mechanics.PlayerBonuses;
 using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
@@ -21,11 +22,7 @@ public class BloodTearCrystalCrown : ModItem
 	{
 		// 1. + 30 Life
 		player.statLifeMax2 += 30;
-
 		// 2. + 1 life regen (if life is more than 75%)
-		if (player.statLife > player.statLifeMax * 0.75f)
-		{
-			player.lifeRegen += 1;
-		}
+		player.GetModPlayer<StatBonusPlayer>().BloodTearCrystalCrown = true;
 	}
 }

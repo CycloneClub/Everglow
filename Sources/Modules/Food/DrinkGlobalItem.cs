@@ -16,8 +16,9 @@ public class DrinkGlobalItem : GlobalItem
 		VanillaDrinkInfos = null;
 	}
 
-	public DrinkGlobalItem()
+	public override void SetStaticDefaults()
 	{
+		// 内容注册完成后再读取 Buff ID，避免在构造时缓存未注册的 0。
 		VanillaDrinkInfos = new Dictionary<int, DrinkInfo>
 		{
 			// 麦芽酒
@@ -236,12 +237,12 @@ public class DrinkGlobalItem : GlobalItem
 			if (firstIndex >= 0)
 			{
 				tooltips.RemoveAll((tp) => tp.Name.Contains("Tooltip"));
-				tooltips.Insert(firstIndex, new TooltipLine(Mod, item.Name, Language.GetTextValue("Mods.Everglow.BuffDescription." + DrinkInfo.Name)));
+				tooltips.Insert(firstIndex, new TooltipLine(Mod, item.Name, Lang.GetBuffDescription(DrinkInfo.BuffType)));
 			}
 			else
 			{
 				// 否则加到最后面
-				tooltips.Add(new TooltipLine(Mod, item.Name, Language.GetTextValue("Mods.Everglow.BuffDescription." + DrinkInfo.Name)));
+				tooltips.Add(new TooltipLine(Mod, item.Name, Lang.GetBuffDescription(DrinkInfo.BuffType)));
 			}
 
 			int buffTimeIndex = tooltips.FindIndex((tp) => tp.Name.Contains("BuffTime"));
@@ -263,12 +264,12 @@ public class DrinkGlobalItem : GlobalItem
 			if (firstIndex >= 0)
 			{
 				tooltips.RemoveAll((tp) => tp.Name.Contains("Tooltip"));
-				tooltips.Insert(firstIndex, new TooltipLine(Mod, item.Name, Language.GetTextValue("Mods.Everglow.BuffDescription." + drinkInfo.Name)));
+				tooltips.Insert(firstIndex, new TooltipLine(Mod, item.Name, Lang.GetBuffDescription(drinkInfo.BuffType)));
 			}
 			else
 			{
 				// 否则加到最后面
-				tooltips.Add(new TooltipLine(Mod, item.Name, Language.GetTextValue("Mods.Everglow.BuffDescription." + drinkInfo.Name)));
+				tooltips.Add(new TooltipLine(Mod, item.Name, Lang.GetBuffDescription(drinkInfo.BuffType)));
 			}
 
 			int buffTimeIndex = tooltips.FindIndex((tp) => tp.Name.Contains("BuffTime"));
@@ -277,20 +278,6 @@ public class DrinkGlobalItem : GlobalItem
 				tooltips[buffTimeIndex].Text = drinkInfo.BuffTime.ToBuffTimeString();
 			}
 		}
-	}
-
-	public override void SetStaticDefaults()
-	{
-	}
-
-	public override void SetDefaults(Item item)
-	{
-		// 如果是原版的饮料，那么就手动处理
-		if (VanillaDrinkInfos.ContainsKey(item.type))
-		{
-			var drinkInfo = VanillaDrinkInfos[item.type];
-		}
-		base.SetDefaults(item);
 	}
 
 	public override void OnConsumeItem(Item item, Player player)

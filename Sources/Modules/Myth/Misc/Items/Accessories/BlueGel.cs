@@ -20,7 +20,9 @@ public class BlueGel : ModItem
 
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
+		// +30 mana
 		player.statManaMax2 += 30;
-		player.manaRegen += 4;
+		// +4 mana regen
+		player.manaRegenBonus += 4;
 	}
 }

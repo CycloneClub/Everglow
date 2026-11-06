@@ -129,7 +129,6 @@ public class StarAmmo : SlingshotAmmo
 		float DrawC = Projectile.ai[0] + 0.5f;
 		Projectile.velocity = Projectile.oldVelocity;
 		int StepLength;
-		Player player = Main.player[Projectile.owner];
 		for (int x = 0; x < (DrawC + 0.25f) * 2 * 7; x = StepLength + 1)
 		{
 			Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Enchanted_Pink, Projectile.velocity.X * 0.1f * DrawC, Projectile.velocity.Y * 0.1f * DrawC * 2, 150, default, 0.8f);
@@ -167,8 +166,10 @@ public class StarAmmo : SlingshotAmmo
 		{
 			if ((target.Center - Projectile.Center).Length() < 25 * (1 + DrawC * 3) && !target.dontTakeDamage && !target.friendly)
 			{
-				var npcHitM = new NPC.HitModifiers();
-				var hit = npcHitM.ToHitInfo(Projectile.damage * Main.rand.NextFloat(0.85f, 1.15f), Main.rand.NextFloat(100f) < player.GetTotalCritChance(Projectile.DamageType), 0);
+				// Use target defenses and the projectile's inherited combat stats for the extra hit.
+				var npcHitM = target.GetIncomingStrikeModifiers(Projectile.DamageType, 0);
+				npcHitM.ArmorPenetration += Projectile.ArmorPenetration;
+				var hit = npcHitM.ToHitInfo(Projectile.damage * Main.rand.NextFloat(0.85f, 1.15f), Main.rand.NextFloat(100f) < Projectile.CritChance, 0);
 				target.StrikeNPC(hit, true, true);
 				NetMessage.SendStrikeNPC(target, hit);
 			}

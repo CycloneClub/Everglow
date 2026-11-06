@@ -1,3 +1,5 @@
+using Everglow.Commons.Mechanics.PlayerBonuses;
+using Everglow.Commons.Mechanics;
 using Everglow.Yggdrasil.Common;
 using Terraria.DataStructures;
 
@@ -35,7 +37,7 @@ public class Charred : ModBuff
 	public override void Update(Player player, ref int buffIndex)
 	{
 		player.statDefense *= 1 - DefenseReduction;
-		player.lifeRegen -= LifeRegenReductionFromDot;
+		player.GetModPlayer<StatBonusPlayer>().CharredLifeRegenLoss = LifeRegenReductionFromDot;
 
 		if (Main.rand.NextBool(4))
 		{

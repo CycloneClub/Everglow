@@ -1,4 +1,5 @@
-using Everglow.Plant.Common;
+using Everglow.Commons.Mechanics.PlayerBonuses;
+using Everglow.Commons.Mechanics;
 
 namespace Everglow.Plant.Buffs;
 
@@ -23,11 +24,6 @@ public class CactusBallBuff : ModBuff
 	public override void Update(Player player, ref int buffIndex)
 	{
 		player.statDefense -= 12;
-		if (player.lifeRegen > 0)
-		{
-			player.lifeRegen = 0;
-		}
-
-		player.lifeRegen -= 5;
+		player.GetModPlayer<StatBonusPlayer>().CactusBall = true;
 	}
 }

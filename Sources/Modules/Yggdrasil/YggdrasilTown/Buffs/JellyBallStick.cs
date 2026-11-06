@@ -10,8 +10,8 @@ public class JellyBallStick : ModBuff
 
 	public override void Update(Player player, ref int buffIndex)
 	{
-		player.maxRunSpeed *= 0.5f;
-		player.accRunSpeed *= 0.5f;
+		// -50% movement speed
+		player.moveSpeed -= 0.5f;
 		base.Update(player, ref buffIndex);
 	}
 }

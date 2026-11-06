@@ -1,3 +1,5 @@
+using Everglow.Commons.Mechanics.PlayerBonuses;
+using Everglow.Commons.Mechanics;
 using Everglow.Myth.Acytaea.VFXs;
 
 namespace Everglow.Myth.Acytaea.Buffs;
@@ -24,9 +26,7 @@ public class AcytaeaInferno : ModBuff
 
 	public override void Update(Player player, ref int buffIndex)
 	{
-		int buffDamage = (int)(5 + player.velocity.Length() * 8);
-
-		player.lifeRegen = -buffDamage;
+		player.GetModPlayer<StatBonusPlayer>().AcytaeaInferno = true;
 
 		GenerateFire(1, player.Center);
 		base.Update(player, ref buffIndex);

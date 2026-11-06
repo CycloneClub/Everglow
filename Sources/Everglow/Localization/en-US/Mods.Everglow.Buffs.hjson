@@ -5,7 +5,7 @@ AcytaeaInferno: {
 
 AleBuff: {
 	DisplayName: Ale Buff
-	Description: ""
+	Description: "50% increased whip range and speed"
 }
 
 AmberStick: {
@@ -15,27 +15,35 @@ AmberStick: {
 
 AppleBuff: {
 	DisplayName: Apple Buff
-	Description: ""
+	Description: "+5% damage reduction"
 }
 
 AppleJuiceBuff: {
 	DisplayName: Apple Juice Buff
-	Description: ""
+	Description:
+		'''
+		+60% damage reduction
+		An apple a day keeps the doctor away
+		'''
 }
 
 ApplePieBuff: {
 	DisplayName: Apple Pie Buff
-	Description: ""
+	Description: "+5% damage reduction and +1 life regen"
 }
 
 ApricotBuff: {
 	DisplayName: Apricot Buff
-	Description: ""
+	Description: "+4 mana regen"
 }
 
 ArcticshellfishWarshipBuff: {
 	DisplayName: Arcticshellfish Warship Buff
-	Description: ""
+	Description:
+		'''
+		+4 defense
+		Delicious Arctic surf clam gunkan sushi
+		'''
 }
 
 Armor15Cracked: {
@@ -55,12 +63,12 @@ AuburnSelfReinforcing: {
 
 B_52Buff: {
 	DisplayName: B_52 Buff
-	Description: ""
+	Description: "While holding a launcher: +100% ranged attack speed, +25% ranged critical strike chance and +50% ranged damage"
 }
 
 BaconBuff: {
 	DisplayName: Bacon Buff
-	Description: ""
+	Description: "+2 life regen; reduces cold damage"
 }
 
 BadrBuff: {
@@ -70,37 +78,45 @@ BadrBuff: {
 
 BakedMusselBuff: {
 	DisplayName: Baked Mussel Buff
-	Description: ""
+	Description:
+		'''
+		+6% critical damage, +4 defense
+		It seems a little less lively now
+		'''
 }
 
 BakedOysterBuff: {
 	DisplayName: Baked Oyster Buff
-	Description: ""
+	Description:
+		'''
+		+4 armor penetration, +4 defense
+		A drunken frenzy
+		'''
 }
 
 BananaBuff: {
 	DisplayName: Banana Buff
-	Description: ""
+	Description: "+5% chance to save ammo; +5% ranged attack speed while holding a shotgun"
 }
 
 BananaDaiquiriBuff: {
 	DisplayName: Banana Daiquiri Buff
-	Description: ""
+	Description: "Consumes no ammo; +50% ranged damage and ranged critical strike chance"
 }
 
 BananaSplitBuff: {
 	DisplayName: Banana Split Buff
-	Description: ""
+	Description: "+5% chance to save ammo; +6% ranged critical strike chance while holding a shotgun"
 }
 
 BBQRibsBuff: {
 	DisplayName: BBQRibs Buff
-	Description: ""
+	Description: "+50 life"
 }
 
 BlackCurrantBuff: {
 	DisplayName: Black Currant Buff
-	Description: ""
+	Description: "Grants night vision and danger sense"
 }
 
 BloodCultistBuff: {
@@ -115,7 +131,7 @@ BloodDrinking: {
 
 BloodOrangeBuff: {
 	DisplayName: Blood Orange Buff
-	Description: ""
+	Description: "+25 life"
 }
 
 BloodSwordStrikeBuff: {
@@ -125,37 +141,45 @@ BloodSwordStrikeBuff: {
 
 BloodyMoscatoBuff: {
 	DisplayName: Bloody Moscato Buff
-	Description: ""
+	Description:
+		'''
+		+2 life on enemy hits, subject to a healing limit
+		Blood red
+		'''
 }
 
 BlueHawaiiBuff: {
 	DisplayName: Blue Hawaii Buff
-	Description: ""
+	Description:
+		'''
+		+67% projectile speed
+		A sea breeze brushes past
+		'''
 }
 
 BlueImmune: {
-	DisplayName: Blue Immune
-	Description: ""
+	DisplayName: "Blue Flame Immunity"
+	Description: "Spiritual Fiery Core's blue flame cannot hurt you"
 }
 
 BowlofSoupBuff: {
 	DisplayName: Bowlof Soup Buff
-	Description: ""
+	Description: "+20 mana and +5% magic damage"
 }
 
 BrownImmune: {
-	DisplayName: Brown Immune
-	Description: ""
+	DisplayName: "Brown Flame Immunity"
+	Description: "Spiritual Fiery Core's brown flame cannot hurt you"
 }
 
 BunnyStewBuff: {
 	DisplayName: Bunny Stew Buff
-	Description: ""
+	Description: "Grants auto-jump and improves jumping"
 }
 
 BurgerBuff: {
 	DisplayName: Burger Buff
-	Description: ""
+	Description: "-40% movement speed and +10 defense"
 }
 
 CactusBallBuff: {
@@ -165,12 +189,20 @@ CactusBallBuff: {
 
 CantaloupeJellyBuff: {
 	DisplayName: Cantaloupe Jelly Buff
-	Description: ""
+	Description:
+		'''
+		+1 projectile penetration
+		duang~duang~duang~
+		'''
 }
 
 CaramelPuddingBuff: {
 	DisplayName: Caramel Pudding Buff
-	Description: ""
+	Description:
+		'''
+		+1 projectile bounce
+		duang~duang~duang~
+		'''
 }
 
 Charred: {
@@ -180,47 +212,51 @@ Charred: {
 
 CherryBuff: {
 	DisplayName: Cherry Buff
-	Description: ""
+	Description: "Explodes on death"
 }
 
 ChickenNuggetBuff: {
 	DisplayName: Chicken Nugget Buff
-	Description: ""
+	Description: "+1 life regen and +4% attack speed"
 }
 
 ChocolateChipCookieBuff: {
 	DisplayName: Chocolate Chip Cookie Buff
-	Description: ""
+	Description: "+2 life regen and +2 mana regen"
 }
 
 ChristmasPuddingBuff: {
 	DisplayName: Christmas Pudding Buff
-	Description: ""
+	Description: "+1 bounce for bouncing projectiles; -800 aggro"
 }
 
 CoconutBuff: {
 	DisplayName: Coconut Buff
-	Description: ""
+	Description: "+4 defense and +3% damage reduction"
 }
 
 CoffeeCupBuff: {
 	DisplayName: Coffee Cup Buff
-	Description: ""
+	Description:
+		'''
+		+900% tile and wall placement speed; -90% mining time
+		Grants night vision, highlights enemies, traps and treasure, and emits light
+		'''
 }
 
 CookedFishBuff: {
 	DisplayName: Cooked Fish Buff
-	Description: ""
+	Description: "+40 mana and +4% magic critical strike chance"
 }
 
 CookedMarshmallowBuff: {
 	DisplayName: Cooked Marshmallow Buff
-	Description: ""
+	Description: "Grants fall damage immunity and caps fall speed at 25% of the normal baseline."
 }
 
 CookedShrimpBuff: {
 	DisplayName: Cooked Shrimp Buff
-	Description: ""
+	Description: "+10 defense and +4 armor penetration"
 }
 
 CorrosiveDebuff: {
@@ -230,12 +266,16 @@ CorrosiveDebuff: {
 
 CrabseedWarshipBuff: {
 	DisplayName: Crabseed Warship Buff
-	Description: ""
+	Description:
+		'''
+		+4% critical strike chance
+		Delicious crab roe gunkan sushi
+		'''
 }
 
 CreamSodaBuff: {
 	DisplayName: Cream Soda Buff
-	Description: ""
+	Description: "+40% melee damage and melee critical strike chance; +40% attack speed; -2400 aggro"
 }
 
 CrimsonMoonAlgaeSummonStaff_Buff: {
@@ -285,32 +325,44 @@ DevilHeartWeaponBuff: {
 
 DragonfruitBuff: {
 	DisplayName: Dragonfruit Buff
-	Description: ""
+	Description: "Attacks inflict On Fire! and Oiled"
 }
 
 DreamYearningBuff: {
 	DisplayName: Dream Yearning Buff
-	Description: ""
+	Description:
+		'''
+		Projectiles home in on nearby enemies
+		Longing for you, dreaming of you, lost in your memory; jade fades and fragrance warms the cloud-painted screen—how can I bear to wake sober?
+		'''
 }
 
 DryMartiniBuff: {
 	DisplayName: Dry Martini Buff
-	Description: ""
+	Description: "+100% damage"
 }
 
 DurianBuff: {
 	DisplayName: Durian Buff
-	Description: ""
+	Description:
+		'''
+		Doubles digestion speed
+		Aids digestion
+		'''
 }
 
 EggTartBuff: {
 	DisplayName: Egg Tart Buff
-	Description: ""
+	Description:
+		'''
+		+5% critical damage
+		That's a fine flaky crust
+		'''
 }
 
 ElderberryBuff: {
 	DisplayName: Elderberry Buff
-	Description: ""
+	Description: "Grants a short dash"
 }
 
 ElementalResistanceReductionDebuffTest: {
@@ -320,7 +372,7 @@ ElementalResistanceReductionDebuffTest: {
 
 EscargotBuff: {
 	DisplayName: Escargot Buff
-	Description: ""
+	Description: "-75% movement speed, -75% jump speed while unmounted, -90% wing flight time; +25% damage reduction"
 }
 
 EvilMusicRemnant: {
@@ -345,32 +397,40 @@ Freeze: {
 
 FriedEggBuff: {
 	DisplayName: Fried Egg Buff
-	Description: ""
+	Description: "+6% damage; +50% projectile speed for consumable throwing weapons"
 }
 
 FriesBuff: {
 	DisplayName: Fries Buff
-	Description: ""
+	Description: "+4 defense and +6% critical strike chance"
 }
 
 FroggleBunwichBuff: {
 	DisplayName: Froggle Bunwich Buff
-	Description: ""
+	Description: "+4% damage; grants auto-jump and improves jumping"
 }
 
 FruitJuiceBuff: {
 	DisplayName: Fruit Juice Buff
-	Description: ""
+	Description:
+		'''
+		+20 defense, +20% critical strike chance, damage and attack speed, +25% damage reduction
+		+10 life regen, +20 mana regen, +100% movement speed; improves jumping
+		'''
 }
 
 FruitSaladBuff: {
 	DisplayName: Fruit Salad Buff
-	Description: ""
+	Description:
+		'''
+		+3 defense, +3% critical strike chance, damage and attack speed
+		+2 life regen, +3 mana regen, +20% movement speed; improves jumping
+		'''
 }
 
 GingerbreadCookieBuff: {
 	DisplayName: Gingerbread Cookie Buff
-	Description: ""
+	Description: "+2 life regen; reduces cold damage"
 }
 
 GlowMothBuff: {
@@ -380,7 +440,11 @@ GlowMothBuff: {
 
 GoldenDelightBuff: {
 	DisplayName: Golden Delight Buff
-	Description: ""
+	Description:
+		'''
+		+4 defense, +4% critical strike chance, damage and attack speed
+		+2 life regen, +4 mana regen, +20% movement speed; improves jumping
+		'''
 }
 
 GoldenLotusStaff_Buff: {
@@ -390,37 +454,45 @@ GoldenLotusStaff_Buff: {
 
 GrapefruitBuff: {
 	DisplayName: Grapefruit Buff
-	Description: ""
+	Description: "+25% summon knockback"
 }
 
 GrapeJuiceBuff: {
 	DisplayName: Grape Juice Buff
-	Description: ""
+	Description: "+10000 luck"
 }
 
 GrapesBuff: {
 	DisplayName: Grapes Buff
-	Description: ""
+	Description:
+		'''
+		+1 minion slot, +0.1 luck, -12 defense
+		Many seeds, many blessings
+		'''
 }
 
 GreenImmune: {
-	DisplayName: Green Immune
-	Description: ""
+	DisplayName: "Green Flame Immunity"
+	Description: "Spiritual Fiery Core's green flame cannot hurt you"
 }
 
 GreenStormBuff: {
 	DisplayName: Green Storm Buff
-	Description: ""
+	Description:
+		'''
+		Alternates extra leaf crystals and spore clouds when firing
+		Don't assume grass is cheap; before you grow it at scale, it costs more than apples or walnuts
+		'''
 }
 
 GrilledSquirrelBuff: {
 	DisplayName: Grilled Squirrel Buff
-	Description: ""
+	Description: "Improves jumping and caps fall speed at 75% of the normal baseline."
 }
 
 GrubSoupBuff: {
 	DisplayName: Grub Soup Buff
-	Description: ""
+	Description: "+30 fishing power; -4 life regen"
 }
 
 GuideBuff: {
@@ -445,12 +517,12 @@ HexaCrystalWeak: {
 
 HotdogBuff: {
 	DisplayName: Hotdog Buff
-	Description: ""
+	Description: "+8% melee damage and melee critical strike chance; -20% movement speed"
 }
 
 IceCreamBuff: {
 	DisplayName: Ice Cream Buff
-	Description: ""
+	Description: "Grants immunity to On Fire! and burning blocks"
 }
 
 IstafelsSunfireGraspFireBallBuff: {
@@ -475,17 +547,25 @@ JellyBubbleMount: {
 
 KiwiFruitBuff: {
 	DisplayName: Kiwi Fruit Buff
-	Description: ""
+	Description:
+		'''
+		+20% weapon size
+		Also known as kiwifruit
+		'''
 }
 
 KiwiIceCreamBuff: {
 	DisplayName: Kiwi Ice Cream Buff
-	Description: ""
+	Description: "+10% weapon size; +5% summon attack speed"
 }
 
 KiwiJuiceBuff: {
 	DisplayName: Kiwi Juice Buff
-	Description: ""
+	Description:
+		'''
+		+150% weapon size
+		Concentrated kiwi power
+		'''
 }
 
 LampWoodSeedBuff: {
@@ -505,12 +585,12 @@ LegumeGyroscopeBuff: {
 
 LemonadeBuff: {
 	DisplayName: Lemonade Buff
-	Description: ""
+	Description: "100% increased ranged knockback and 2400 reduced aggro"
 }
 
 LemonBuff: {
 	DisplayName: Lemon Buff
-	Description: ""
+	Description: "+4% ranged critical strike chance; -300 aggro"
 }
 
 LichenInfected: {
@@ -530,22 +610,30 @@ LivingWoodplateBuff: {
 
 LobsterTailBuff: {
 	DisplayName: Lobster Tail Buff
-	Description: ""
+	Description: "+6 defense; -33% mining time"
 }
 
 LonelyJellyfishBuff: {
 	DisplayName: Lonely Jellyfish Buff
-	Description: ""
+	Description:
+		'''
+		Repeatedly creates electrospheres at the cursor and grants invisibility
+		Admire it, then drink it down
+		'''
 }
 
 MangoBuff: {
 	DisplayName: Mango Buff
-	Description: ""
+	Description: "-50% life loss from food poisoning"
 }
 
 MangosteenBuff: {
 	DisplayName: Mangosteen Buff
-	Description: ""
+	Description:
+		'''
+		Increases boomerang, yoyo and flail range
+		Nourishing goodness
+		'''
 }
 
 MapoTofuBuff: {
@@ -555,7 +643,7 @@ MapoTofuBuff: {
 
 MarshmallowBuff: {
 	DisplayName: Marshmallow Buff
-	Description: ""
+	Description: "Grants a double jump"
 }
 
 MeltingSideGyroscopeBuff: {
@@ -565,12 +653,16 @@ MeltingSideGyroscopeBuff: {
 
 MilkCartonBuff: {
 	DisplayName: Milk Carton Buff
-	Description: ""
+	Description:
+		'''
+		Grants immunity to many debuffs
+		Milk cures all ills
+		'''
 }
 
 MilkshakeBuff: {
 	DisplayName: Milkshake Buff
-	Description: ""
+	Description: "+400% movement speed"
 }
 
 MolluscsSetBuff: {
@@ -584,7 +676,7 @@ MolluscsSetBuff: {
 
 MonsterLasagnaBuff: {
 	DisplayName: Monster Lasagna Buff
-	Description: ""
+	Description: "+25% critical strike chance; -6 life regen"
 }
 
 MoonAndFragrans: {
@@ -609,7 +701,7 @@ MossCover: {
 
 NachosBuff: {
 	DisplayName: Nachos Buff
-	Description: ""
+	Description: "+4% launcher damage and knockback"
 }
 
 OnElectric: {
@@ -624,32 +716,36 @@ OnMoth: {
 
 OrangeIcecreamBuff: {
 	DisplayName: Orange Icecream Buff
-	Description: ""
+	Description: "+30 frames of immunity after normal hits"
 }
 
 OrangeJuiceBuff: {
 	DisplayName: Orange Juice Buff
-	Description: ""
+	Description: "Doubles immunity duration after normal hits"
 }
 
 PadThaiBuff: {
 	DisplayName: Pad Thai Buff
-	Description: ""
+	Description: "+50% knockback"
 }
 
 PaperObstructed: {
 	DisplayName: Paper Obstructed
-	Description: ""
+	Description: "10% decreased damage and 10% reduced critical strike chance"
 }
 
 PeachBuff: {
 	DisplayName: Peach Buff
-	Description: ""
+	Description: "+1 life regen; increases heart pickup range"
 }
 
 PeachSangriaBuff: {
 	DisplayName: Peach Sangria Buff
-	Description: ""
+	Description:
+		'''
+		+50 life regen; increases heart pickup range
+		Living the peachy dream
+		'''
 }
 
 Petrification: {
@@ -659,7 +755,7 @@ Petrification: {
 
 PhoBuff: {
 	DisplayName: Pho Buff
-	Description: ""
+	Description: "+8% summon damage"
 }
 
 Photolysis: {
@@ -674,27 +770,35 @@ Photophore_lightPetBuff: {
 
 PiercoldWindBuff: {
 	DisplayName: Piercold Wind Buff
-	Description: ""
+	Description:
+		'''
+		Increased damage against Lantern Moon enemies
+		A long cry rises from the wilds, and a bitter wind follows
+		'''
 }
 
 PinaColadaBuff: {
 	DisplayName: Pina Colada Buff
-	Description: ""
+	Description:
+		'''
+		Reflects 10 times incoming contact damage, capped at 1000 reflected damage
+		Freshly squeezed, never artificially flavored
+		'''
 }
 
 PineappleBuff: {
 	DisplayName: Pineapple Buff
-	Description: ""
+	Description: "+4 defense; reflects half of contact damage to attackers"
 }
 
 PinkImmune: {
-	DisplayName: Pink Immune
-	Description: ""
+	DisplayName: "Pink Flame Immunity"
+	Description: "Spiritual Fiery Core's pink flame cannot hurt you"
 }
 
 PizzaBuff: {
 	DisplayName: Pizza Buff
-	Description: ""
+	Description: "+10 armor penetration"
 }
 
 Plague: {
@@ -704,32 +808,36 @@ Plague: {
 
 PlumBuff: {
 	DisplayName: Plum Buff
-	Description: ""
+	Description: "+600 aggro and +8% attack speed"
 }
 
 PotatoChipsBuff: {
 	DisplayName: Potato Chips Buff
-	Description: ""
+	Description: "+4 defense and +4% melee damage"
 }
 
 PrismaticPunchBuff: {
 	DisplayName: Prismatic Punch Buff
-	Description: ""
+	Description: "+5 minion slots, +5 sentry slots; +50% summon damage and knockback"
 }
 
 PumpkinPieBuff: {
 	DisplayName: Pumpkin Pie Buff
-	Description: ""
+	Description: "+50 life"
 }
 
 PurpleHooterBuff: {
 	DisplayName: Purple Hooter Buff
-	Description: ""
+	Description:
+		'''
+		Increased damage against Blood Moon enemies
+		Noble and profound
+		'''
 }
 
 PurpleImmune: {
-	DisplayName: Purple Immune
-	Description: ""
+	DisplayName: "Violet Flame Immunity"
+	Description: "Spiritual Fiery Core's violet flame cannot hurt you"
 }
 
 QuetzalsWishWound: {
@@ -739,12 +847,16 @@ QuetzalsWishWound: {
 
 QuinceMarryBuff: {
 	DisplayName: Quince Marry Buff
-	Description: ""
+	Description:
+		'''
+		Increased damage against Pumpkin Moon enemies
+		Fiery and tender
+		'''
 }
 
 RambutanBuff: {
 	DisplayName: Rambutan Buff
-	Description: ""
+	Description: "Grants immunity to many debuffs"
 }
 
 RayBuff: {
@@ -768,13 +880,17 @@ RedAlgaeMinionGyroscopeBuff: {
 }
 
 RedImmune: {
-	DisplayName: Red Immune
-	Description: ""
+	DisplayName: "Red Flame Immunity"
+	Description: "Spiritual Fiery Core's red flame cannot hurt you"
 }
 
 RedWineBuff: {
 	DisplayName: Red Wine Buff
-	Description: ""
+	Description:
+		'''
+		Increased damage against Frost Moon enemies
+		Refined and elegant
+		'''
 }
 
 RestrictionDroneRE01Buff: {
@@ -784,12 +900,12 @@ RestrictionDroneRE01Buff: {
 
 RoastedBirdBuff: {
 	DisplayName: Roasted Bird Buff
-	Description: ""
+	Description: "+25% wing flight time, +15% horizontal wing speed; improves fall tolerance"
 }
 
 RoastedDuckBuff: {
 	DisplayName: Roasted Duck Buff
-	Description: ""
+	Description: "Allows water walking, improves flight and caps fall speed at 50% of the normal baseline."
 }
 
 RuinSetBuff: {
@@ -814,42 +930,55 @@ RustSlingshotBuffTwo: {
 
 SakeBuff: {
 	DisplayName: Sake Buff
-	Description: ""
+	Description: "-18 defense; +40% melee damage and melee critical strike chance; +40% attack speed"
 }
 
 SalmonInPepperBuff: {
 	DisplayName: Salmon In Pepper Buff
-	Description: ""
+	Description: "+7% movement speed, an extra +15% while raining; grants swimming"
 }
 
 SalmonWarshipBuff: {
 	DisplayName: Salmon Warship Buff
-	Description: ""
+	Description: "+10% movement speed"
 }
 
 SashimiBuff: {
 	DisplayName: Sashimi Buff
-	Description: ""
+	Description:
+		'''
+		Grants swimming, underwater breathing and unhindered movement in water
+		+20% movement speed, +15% damage; -4 life regen
+		'''
 }
 
 SauteedFrogLegsBuff: {
 	DisplayName: Sauteed Frog Legs Buff
-	Description: ""
+	Description: "Grants auto-jump and improves jumping"
 }
 
 SeafoodDinnerBuff: {
 	DisplayName: Seafood Dinner Buff
-	Description: ""
+	Description: "+6% critical strike chance, damage, attack speed and critical damage"
 }
 
 SeafoodPizzaBuff: {
 	DisplayName: Seafood Pizza Buff
-	Description: ""
+	Description:
+		'''
+		+8% critical strike chance, damage, attack speed and critical damage
+		+2 defense, +1 life regen, +1 mana regen
+		Finishing this alone is no small feat
+		'''
 }
 
 ShadowPotionBuff: {
 	DisplayName: Shadow Potion Buff
-	Description: "In darkness, grants 8 defense and 8% increased damage, and gradually grants night vision\nBright light reduces life regeneration"
+	Description:
+		'''
+		In darkness, grants 8 defense and 8% increased damage, and gradually grants night vision
+		Bright light reduces life regeneration
+		'''
 }
 
 ShadowSupervisor: {
@@ -869,22 +998,22 @@ ShortImmune3: {
 
 ShrimpPoBoyBuff: {
 	DisplayName: Shrimp Po Boy Buff
-	Description: ""
+	Description: "+6 defense; -25% mining time"
 }
 
 ShuckedOysterBuff: {
 	DisplayName: Shucked Oyster Buff
-	Description: ""
+	Description: "-5 defense, +10 armor penetration; -4 life regen"
 }
 
 SmoothieofDarknessBuff: {
 	DisplayName: Smoothieof Darkness Buff
-	Description: ""
+	Description: "Grants a 50% chance to dodge attacks while active"
 }
 
 SpaghettiBuff: {
 	DisplayName: Spaghetti Buff
-	Description: ""
+	Description: "+1 sentry slot"
 }
 
 SpritialDamage: {
@@ -904,52 +1033,72 @@ StarCrack: {
 
 StarfruitBuff: {
 	DisplayName: Starfruit Buff
-	Description: ""
+	Description: "+1 projectile per shotgun shot"
 }
 
 SteakBuff: {
 	DisplayName: Steak Buff
-	Description: ""
+	Description: "-20% mana cost"
 }
 
 StinkyTofuBuff: {
 	DisplayName: Stinky Tofu Buff
-	Description: ""
+	Description:
+		'''
+		Confuses nearby enemies
+		Fragrant and foul
+		'''
 }
 
 StrawberryBuff: {
 	DisplayName: Strawberry Buff
-	Description: ""
+	Description:
+		'''
+		Deals more damage to closer enemies
+		A well-loved fruit
+		'''
 }
 
 StrawberryIcecreamBuff: {
 	DisplayName: Strawberry Icecream Buff
-	Description: ""
+	Description:
+		'''
+		Deals more damage to closer enemies
+		Cold as you are, you're still irresistible
+		'''
 }
 
 SugarCookieBuff: {
 	DisplayName: Sugar Cookie Buff
-	Description: ""
+	Description: "+5% ranged damage"
 }
 
 SunriseBuff: {
 	DisplayName: Sunrise Buff
-	Description: ""
+	Description:
+		'''
+		Increased damage against Solar Eclipse enemies
+		Bright and sunny
+		'''
 }
 
 SweetshrimpSushiBuff: {
 	DisplayName: Sweetshrimp Sushi Buff
-	Description: ""
+	Description: "+4% damage"
 }
 
 TamakoSushiBuff: {
 	DisplayName: Tamako Sushi Buff
-	Description: ""
+	Description:
+		'''
+		+2 life regen
+		Delicious tamago sushi
+		'''
 }
 
 TeacupBuff: {
 	DisplayName: Teacup Buff
-	Description: ""
+	Description: "+60% magic damage and magic critical strike chance; +100 mana regen"
 }
 
 TheGreenSolarBuff: {
@@ -959,12 +1108,16 @@ TheGreenSolarBuff: {
 
 TricolourBuff: {
 	DisplayName: Tricolour Buff
-	Description: ""
+	Description:
+		'''
+		Increased damage against boss minions
+		Complex and devoted
+		'''
 }
 
 TropicalSmoothieBuff: {
 	DisplayName: Tropical Smoothie Buff
-	Description: ""
+	Description: "50% reduced mana cost, 50% increased magic damage and 50% increased magic critical strike chance"
 }
 
 TuskCursed: {
@@ -984,7 +1137,7 @@ UnfortuneCurse: {
 
 WakameWarshipBuff: {
 	DisplayName: Wakame Warship Buff
-	Description: ""
+	Description: "+2 mana regen"
 }
 
 WaterBoltII: {
@@ -994,22 +1147,26 @@ WaterBoltII: {
 
 WatermelonBuff: {
 	DisplayName: Watermelon Buff
-	Description: ""
+	Description: "+8% knockback"
 }
 
 WaterMelonJuiceBuff: {
 	DisplayName: Water Melon Juice Buff
-	Description: ""
+	Description: "+50% critical strike chance and +100% knockback"
 }
 
 WatermelonPlateBuff: {
 	DisplayName: Watermelon Plate Buff
-	Description: ""
+	Description:
+		'''
+		+6% critical strike chance and critical damage
+		A simple, unpretentious presentation
+		'''
 }
 
 WhiteImmune: {
-	DisplayName: White Immune
-	Description: ""
+	DisplayName: "White Flame Immunity"
+	Description: "Spiritual Fiery Core's white flame cannot hurt you"
 }
 
 Wither_Activated_Dog_Buff: {
@@ -1037,8 +1194,8 @@ WoodlandWraithStaffMyceliumBuff: {
 }
 
 YellowImmune: {
-	DisplayName: Yellow Immune
-	Description: ""
+	DisplayName: "Yellow Flame Immunity"
+	Description: "Spiritual Fiery Core's yellow flame cannot hurt you"
 }
 
 YggdrasilStoneGyroscopeBuff: {

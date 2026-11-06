@@ -1,3 +1,6 @@
+using Everglow.Commons.Mechanics.PlayerBonuses;
+using Everglow.Commons.Utilities;
+
 namespace Everglow.PlantAndFarm.Items.Accessories;
 
 public class OrangeCrown : ModItem
@@ -23,7 +26,7 @@ public class OrangeCrown : ModItem
 
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
-		player.statDefense += (int)(player.statLifeMax2 * 0.03f);
+		player.GetModPlayer<StatBonusPlayer>().OrangeCrown = true;
 	}
 
 	public override void AddRecipes()

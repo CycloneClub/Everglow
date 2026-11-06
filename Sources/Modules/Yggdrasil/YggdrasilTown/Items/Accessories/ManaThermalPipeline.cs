@@ -24,7 +24,9 @@ public class ManaThermalPipeline : ModItem
 
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
+		// +5% magic damage
 		player.GetDamage<MagicDamageClass>() += MagicDamageBonus;
-		player.manaRegen += ManaRegenIncrease;
+		// +4 mana regen
+		player.manaRegenBonus += ManaRegenIncrease;
 	}
 }

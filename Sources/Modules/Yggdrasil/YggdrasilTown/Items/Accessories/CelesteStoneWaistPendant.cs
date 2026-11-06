@@ -1,3 +1,4 @@
+using Everglow.Commons.Mechanics.PlayerBonuses;
 using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
@@ -21,11 +22,7 @@ public class CelesteStoneWaistPendant : ModItem
 	{
 		// 1. + 20 Mana
 		player.statManaMax2 += 20;
-
 		// 2. + 3 mana regen (if mana is between 30% and 70%)
-		if (player.statMana > player.statManaMax * 0.3f && player.statMana < player.statManaMax * 0.7f)
-		{
-			player.manaRegen += 3;
-		}
+		player.GetModPlayer<StatBonusPlayer>().CelesteStoneWaistPendant = true;
 	}
 }

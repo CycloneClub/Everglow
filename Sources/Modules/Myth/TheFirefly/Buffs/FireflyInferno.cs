@@ -1,6 +1,7 @@
+using Everglow.Commons.Mechanics.PlayerBonuses;
+using Everglow.Commons.Mechanics;
 using Everglow.Commons.VFX.CommonVFXDusts;
 using Everglow.Myth.TheFirefly.VFXs;
-using static Terraria.ModLoader.PlayerDrawLayer;
 
 namespace Everglow.Myth.TheFirefly.Buffs;
 
@@ -37,9 +38,7 @@ public class FireflyInferno : ModBuff
 
 	public override void Update(Player player, ref int buffIndex)
 	{
-		int buffDamage = (int)(5 + player.velocity.Length() * 8);
-
-		player.lifeRegen = -buffDamage;
+		player.GetModPlayer<StatBonusPlayer>().FireflyInferno = true;
 
 		if (Main.rand.NextBool(4))
 		{

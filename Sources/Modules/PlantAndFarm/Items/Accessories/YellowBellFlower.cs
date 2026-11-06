@@ -1,3 +1,5 @@
+using Everglow.Commons.Mechanics.PlayerBonuses;
+using Everglow.Commons.Utilities;
 using Everglow.PlantAndFarm.Items.Materials;
 
 namespace Everglow.PlantAndFarm.Items.Accessories;
@@ -25,7 +27,7 @@ public class YellowBellFlower : ModItem
 
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
-		player.GetDamage(DamageClass.Generic) *= player.statDefense * 0.2f / 100f + 1;
+		player.GetModPlayer<StatBonusPlayer>().YellowBellFlower = true;
 	}
 
 	public override void AddRecipes()

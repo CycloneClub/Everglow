@@ -40,7 +40,7 @@ public class RecoveryBandPlayer : ModPlayer
 		RecoveryBandEnable = false;
 	}
 
-	public override void OnHurt(Player.HurtInfo info)
+	public override void PostHurt(Player.HurtInfo info)
 	{
 		if (RecoveryBandEnable && info.Damage >= RecoveryBand.EffectTriggerDamageMin)
 		{
