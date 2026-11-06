@@ -4,7 +4,7 @@ using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.PermanentBoosters;
 
-public class ActiveMagicSpringPowder : ModItem
+public class ActivatedManaSpringPowder : ModItem
 {
 	public override string LocalizationCategory => LocalizationUtils.Categories.PermanentBoosters;
 
@@ -25,7 +25,7 @@ public class ActiveMagicSpringPowder : ModItem
 		Item.rare = ItemRarityID.Green;
 	}
 
-	public override bool CanUseItem(Player player) => player.GetModPlayer<YggdrasilPlayer>().ConsumedActiveMagicSpringPowder < MaxUse;
+	public override bool CanUseItem(Player player) => player.GetModPlayer<YggdrasilPlayer>().ConsumedActivatedManaSpringPowder < MaxUse;
 
 	public override void Update(ref float gravity, ref float maxFallSpeed)
 	{
@@ -36,7 +36,7 @@ public class ActiveMagicSpringPowder : ModItem
 	{
 		if (player.whoAmI == Main.myPlayer)
 		{
-			return player.GetModPlayer<YggdrasilPlayer>().UseActiveMagicSpringPowder();
+			return player.GetModPlayer<YggdrasilPlayer>().UseActivatedManaSpringPowder();
 		}
 		return true;
 	}

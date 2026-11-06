@@ -114,9 +114,9 @@ public class YggdrasilPlayerTests
 		{
 			for (int i = 0; i < 4; i++)
 			{
-				Assert.IsTrue(modPlayer.UseActiveMagicSpringPowder());
+				Assert.IsTrue(modPlayer.UseActivatedManaSpringPowder());
 			}
-			Assert.IsFalse(modPlayer.UseActiveMagicSpringPowder());
+			Assert.IsFalse(modPlayer.UseActivatedManaSpringPowder());
 		}
 		for (int i = 0; i < 6; i++)
 		{
@@ -129,22 +129,22 @@ public class YggdrasilPlayerTests
 		{
 			for (int i = 0; i < 4; i++)
 			{
-				Assert.IsTrue(modPlayer.UseActiveMagicSpringPowder());
+				Assert.IsTrue(modPlayer.UseActivatedManaSpringPowder());
 			}
 		}
-		Assert.IsFalse(modPlayer.UseActiveMagicSpringPowder());
+		Assert.IsFalse(modPlayer.UseActivatedManaSpringPowder());
 		var tag = new TagCompound();
 		modPlayer.SaveData(tag);
 		var restored = (YggdrasilPlayer)new YggdrasilPlayer().NewInstance(player);
 		restored.LoadData(tag);
 		Assert.IsFalse(restored.UseMagicOrganExtract());
-		Assert.IsFalse(restored.UseActiveMagicSpringPowder());
+		Assert.IsFalse(restored.UseActivatedManaSpringPowder());
 		restored.ModifyMaxStats(out _, out var complete);
 		Assert.AreEqual(100, (int)complete.ApplyTo(200));
 		var clone = (YggdrasilPlayer)new YggdrasilPlayer().NewInstance(player);
 		restored.CopyClientState(clone);
 		Assert.AreEqual(6, clone.ConsumedMagicOrganExtract);
-		Assert.AreEqual(4, clone.ConsumedActiveMagicSpringPowder);
+		Assert.AreEqual(4, clone.ConsumedActivatedManaSpringPowder);
 		CurrentSubworldField.SetValue(null, null);
 		restored.ModifyMaxStats(out _, out var outside);
 		Assert.AreEqual(250, (int)outside.ApplyTo(200));
@@ -154,17 +154,17 @@ public class YggdrasilPlayerTests
 	public void OldSaveDoesNotGrantManaBoostsAndInvalidCountsAreClamped()
 	{
 		modPlayer.ConsumedMagicOrganExtract = 6;
-		modPlayer.ConsumedActiveMagicSpringPowder = 4;
+		modPlayer.ConsumedActivatedManaSpringPowder = 4;
 		modPlayer.LoadData(new TagCompound());
 		Assert.AreEqual(0, modPlayer.ConsumedMagicOrganExtract);
-		Assert.AreEqual(0, modPlayer.ConsumedActiveMagicSpringPowder);
+		Assert.AreEqual(0, modPlayer.ConsumedActivatedManaSpringPowder);
 		modPlayer.LoadData(new TagCompound
 		{
 			[nameof(YggdrasilPlayer.ConsumedMagicOrganExtract)] = -1,
-			[nameof(YggdrasilPlayer.ConsumedActiveMagicSpringPowder)] = 99,
+			[nameof(YggdrasilPlayer.ConsumedActivatedManaSpringPowder)] = 99,
 		});
 		Assert.AreEqual(0, modPlayer.ConsumedMagicOrganExtract);
-		Assert.AreEqual(4, modPlayer.ConsumedActiveMagicSpringPowder);
+		Assert.AreEqual(4, modPlayer.ConsumedActivatedManaSpringPowder);
 	}
 
 	[TestMethod]
@@ -178,7 +178,7 @@ public class YggdrasilPlayerTests
 			consumedLampBorerHoney = 3,
 			consumedSquamousCore = 4,
 			consumedMagicOrganExtract = 5,
-			consumedActiveMagicSpringPowder = 2,
+			consumedActivatedManaSpringPowder = 2,
 		};
 		using var stream = new MemoryStream();
 		using (var writer = new BinaryWriter(stream, System.Text.Encoding.UTF8, leaveOpen: true))
@@ -196,7 +196,7 @@ public class YggdrasilPlayerTests
 		Assert.AreEqual(3, received.consumedLampBorerHoney);
 		Assert.AreEqual(4, received.consumedSquamousCore);
 		Assert.AreEqual(5, received.consumedMagicOrganExtract);
-		Assert.AreEqual(2, received.consumedActiveMagicSpringPowder);
+		Assert.AreEqual(2, received.consumedActivatedManaSpringPowder);
 	}
 
 	[TestMethod]
@@ -212,7 +212,7 @@ public class YggdrasilPlayerTests
 		tracked.CopyClientState(copy);
 		tracked.SendClientChanges(copy);
 		Assert.AreEqual(1, tracked.SyncCalls);
-		Assert.IsTrue(tracked.UseActiveMagicSpringPowder());
+		Assert.IsTrue(tracked.UseActivatedManaSpringPowder());
 		tracked.SendClientChanges(copy);
 		Assert.AreEqual(2, tracked.SyncCalls);
 	}
@@ -241,10 +241,10 @@ public class YggdrasilPlayerTests
 				{
 					playerId = server ? PlayerIndex + 1 : PlayerIndex,
 					consumedMagicOrganExtract = 99,
-					consumedActiveMagicSpringPowder = 99,
+					consumedActivatedManaSpringPowder = 99,
 				}, server ? PlayerIndex : 255);
 			Assert.AreEqual(6, tracked.ConsumedMagicOrganExtract);
-			Assert.AreEqual(4, tracked.ConsumedActiveMagicSpringPowder);
+			Assert.AreEqual(4, tracked.ConsumedActivatedManaSpringPowder);
 			Assert.AreEqual(server ? 1 : 0, tracked.SyncCalls);
 			if (server)
 			{

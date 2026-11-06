@@ -40,22 +40,12 @@ SquamousCore: {
 		'''
 }
 
-InsectManaEssence: {
-	DisplayName: 虫汁灵露
-	Tooltip: "永久增加{0}点魔力上限\n最多使用{1}次"
-}
-
-ManaSpringElixir: {
-	DisplayName: 魔泉精华
-	Tooltip: "永久增加{0}点魔力上限\n最多使用{1}次"
-}
-
 MagicOrganExtract: {
-	DisplayName: "魔力器官提取物"
+	DisplayName: "魔脏提取物"
 	Tooltip: "永久增加{0}点魔力上限\n最多使用{1}次"
 }
 
-ActiveMagicSpringPowder: {
-	DisplayName: "活性魔泉粉"
+ActivatedManaSpringPowder: {
+	DisplayName: "活化魔泉晶粉"
 	Tooltip: "永久增加{0}点魔力上限\n最多使用{1}次"
 }

@@ -133,7 +133,7 @@ public class TownEquipmentLocalizationTests
 	public void ManaBoostersAndScalePotionHaveRuntimeLocalization(string culture)
 	{
 		var texts = LoadLocalization(culture, "Items.PermanentBoosters", "Items.Potions", "Buffs");
-		foreach (var type in new[] { typeof(ActiveMagicSpringPowder), typeof(MagicOrganExtract), typeof(ScalePotion) })
+		foreach (var type in new[] { typeof(ActivatedManaSpringPowder), typeof(MagicOrganExtract), typeof(ScalePotion) })
 		{
 			var item = CreateItem(type);
 			foreach (string field in new[] { "DisplayName", "Tooltip" })
@@ -143,10 +143,10 @@ public class TownEquipmentLocalizationTests
 			}
 			AssertFormatted(item.DisplayName, culture);
 			AssertFormatted(item.Tooltip, culture);
-			if (item is ActiveMagicSpringPowder)
+			if (item is ActivatedManaSpringPowder)
 			{
-				StringAssert.Contains(item.Tooltip.Value, ActiveMagicSpringPowder.ManaPerUse.ToString());
-				StringAssert.Contains(item.Tooltip.Value, ActiveMagicSpringPowder.MaxUse.ToString());
+				StringAssert.Contains(item.Tooltip.Value, ActivatedManaSpringPowder.ManaPerUse.ToString());
+				StringAssert.Contains(item.Tooltip.Value, ActivatedManaSpringPowder.MaxUse.ToString());
 			}
 			if (item is MagicOrganExtract)
 			{

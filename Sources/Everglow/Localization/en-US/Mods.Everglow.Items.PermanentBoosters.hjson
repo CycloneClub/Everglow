@@ -40,22 +40,12 @@ SquamousCore: {
 		'''
 }
 
-InsectManaEssence: {
-	DisplayName: Insect Mana Essence
-	Tooltip: "Permanently increases maximum mana by {0}\nCan be used up to {1} times"
-}
-
-ManaSpringElixir: {
-	DisplayName: Mana Spring Elixir
-	Tooltip: "Permanently increases maximum mana by {0}\nCan be used up to {1} times"
-}
-
 MagicOrganExtract: {
 	DisplayName: "Magic Organ Extract"
 	Tooltip: "Permanently increases maximum mana by {0}\nCan be used up to {1} times"
 }
 
-ActiveMagicSpringPowder: {
-	DisplayName: "Active Magic Spring Powder"
+ActivatedManaSpringPowder: {
+	DisplayName: "Activated Mana Spring Powder"
 	Tooltip: "Permanently increases maximum mana by {0}\nCan be used up to {1} times"
 }
