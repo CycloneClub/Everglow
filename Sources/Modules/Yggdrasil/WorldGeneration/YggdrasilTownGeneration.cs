@@ -86,7 +86,7 @@ public partial class YggdrasilTownGeneration
 
 		// Scatter ore after structures have registered their protected footprints.
 		GenerateAmberVeins();
-		GenerateTownMagicSpringDeposits();
+		GenerateTownManaSpringDeposits();
 
 		Main.statusText = "Smoothing Yggdrasil Town...";
 

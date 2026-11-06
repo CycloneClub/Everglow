@@ -8,7 +8,8 @@ using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.Eldamber;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using ManaSpringOreTile = Everglow.Yggdrasil.YggdrasilTown.Tiles.ManaSpringOre;
+using Everglow.Yggdrasil.YggdrasilTown.Tiles;
+using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 
 namespace Everglow.UnitTests.Modules.Yggdrasil;
 
@@ -107,14 +108,23 @@ public class PlannedItemDefaultsTests
 	[TestMethod]
 	public void ManaSpringOreRequiresTheTwilightCrystalPickaxeTier()
 	{
-		var tile = new ManaSpringOreTile();
+		var tile = new ManaSpringOre_Tile();
 		bool oldServer = Main.dedServ;
-		bool oldSolid = Main.tileSolid[tile.Type];
-		bool oldBlockLight = Main.tileBlockLight[tile.Type];
-		bool oldOre = TileID.Sets.Ore[tile.Type];
+		bool[][] flags = [Main.tileSolid, Main.tileMergeDirt, Main.tileBlendAll, Main.tileBlockLight, Main.tileShine2, TileID.Sets.ChecksForMerge, TileID.Sets.DrawsWalls];
+		bool[] oldFlags = flags.Select(flag => flag[tile.Type]).ToArray();
+		var host = new StoneScaleWood();
+		var hostInstance = typeof(ContentInstance<StoneScaleWood>).GetProperty(nameof(ContentInstance<StoneScaleWood>.Instance))!;
+		var dustInstance = typeof(ContentInstance<ManaSpringOreDust>).GetProperty(nameof(ContentInstance<ManaSpringOreDust>.Instance))!;
+		object? oldHost = hostInstance.GetValue(null);
+		object? oldDust = dustInstance.GetValue(null);
+		bool[]? oldMergeRow = Main.tileMerge[host.Type];
+		bool oldMerge = oldMergeRow?[tile.Type] ?? false;
 		try
 		{
 			Main.dedServ = true;
+			hostInstance.SetValue(null, host);
+			dustInstance.SetValue(null, new ManaSpringOreDust());
+			Main.tileMerge[host.Type] ??= new bool[Main.tileSolid.Length];
 			tile.SetStaticDefaults();
 			Assert.AreEqual(Defaults<MiningPowerPickaxe_3>().pick, tile.MinPick);
 			Assert.IsTrue(Defaults<MiningPowerPickaxe_2>().pick < tile.MinPick);
@@ -124,9 +134,17 @@ public class PlannedItemDefaultsTests
 		finally
 		{
 			Main.dedServ = oldServer;
-			Main.tileSolid[tile.Type] = oldSolid;
-			Main.tileBlockLight[tile.Type] = oldBlockLight;
-			TileID.Sets.Ore[tile.Type] = oldOre;
+			for (int i = 0; i < flags.Length; i++)
+			{
+				flags[i][tile.Type] = oldFlags[i];
+			}
+			if (oldMergeRow is not null)
+			{
+				oldMergeRow[tile.Type] = oldMerge;
+			}
+			Main.tileMerge[host.Type] = oldMergeRow!;
+			hostInstance.SetValue(null, oldHost);
+			dustInstance.SetValue(null, oldDust);
 		}
 	}
 

@@ -1060,12 +1060,12 @@ public partial class YggdrasilTownGeneration
 	}
 
 	/// <summary>Scatter small ore deposits during the first-stratum mineralization stage.</summary>
-	private static void GenerateTownMagicSpringDeposits()
+	private static void GenerateTownManaSpringDeposits()
 	{
 		const int TargetOreCount = 480;
 		var random = WorldGen.genRand;
 		Point[] neighbors = [new(-1, 0), new(1, 0), new(0, -1), new(0, 1)];
-		Main.statusText = "Scattering Magic Spring Ore...";
+		Main.statusText = "Scattering Mana Spring Ore...";
 		var bounds = new Rectangle(20, (int)(Main.maxTilesY * 0.9f), Main.maxTilesX - 40, Main.maxTilesY - (int)(Main.maxTilesY * 0.9f) - 20);
 		var protectedAreas = new List<Rectangle>();
 		foreach (Rectangle area in ShouldNotSmoothAreas)
@@ -1116,7 +1116,7 @@ public partial class YggdrasilTownGeneration
 		}
 
 		var deposits = CreateDeposits();
-		ushort oreType = (ushort)ModContent.TileType<YggdrasilTown.Tiles.MagicSpringOre_Tile>();
+		ushort oreType = (ushort)ModContent.TileType<YggdrasilTown.Tiles.ManaSpringOre_Tile>();
 		foreach (Point point in deposits.SelectMany(cluster => cluster))
 		{
 			Tile tile = Main.tile[point.X, point.Y];
@@ -1131,10 +1131,10 @@ public partial class YggdrasilTownGeneration
 			WorldGen.SquareTileFrame(point.X, point.Y);
 		}
 		int placed = deposits.Sum(cluster => cluster.Length);
-		Ins.Logger.Info($"Generated {placed} magic spring ore tiles in {deposits.Count} deposits.");
+		Ins.Logger.Info($"Generated {placed} mana spring ore tiles in {deposits.Count} deposits.");
 		if (placed < TargetOreCount)
 		{
-			Ins.Logger.Warn($"Magic spring ore generation found insufficient suitable terrain ({placed}/{TargetOreCount} tiles).");
+			Ins.Logger.Warn($"Mana spring ore generation found insufficient suitable terrain ({placed}/{TargetOreCount} tiles).");
 		}
 
 		/// <summary>
