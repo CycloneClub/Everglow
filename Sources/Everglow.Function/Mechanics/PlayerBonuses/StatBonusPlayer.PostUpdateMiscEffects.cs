@@ -23,7 +23,7 @@ public partial class StatBonusPlayer
 		// ====================================================================
 		if (BloodTearCrystalCrown && Player.statLife > Player.statLifeMax2 * 0.75f)
 		{
-			// +1 life regeneration above 75% maximum life.
+			// +1 life regen above 75% maximum life.
 			Player.lifeRegen += 1;
 		}
 		if (WhiteCrown)
@@ -33,7 +33,7 @@ public partial class StatBonusPlayer
 		}
 
 		// ====================================================================
-		// Mana capacity: collect natural-regeneration bonuses.
+		// Mana capacity: collect natural-regen bonuses.
 		// ====================================================================
 		if (CelesteStoneWaistPendant && Player.statMana > Player.statManaMax2 * 0.3f && Player.statMana < Player.statManaMax2 * 0.7f)
 		{
@@ -41,21 +41,21 @@ public partial class StatBonusPlayer
 		}
 
 		// ====================================================================
-		// Natural regeneration: apply suppression after collecting bonuses.
+		// Natural regen: apply suppression after collecting bonuses.
 		// ====================================================================
 		if (DevilHeartSet)
 		{
-			// Native regeneration consumes at most 2.05 + manaRegenDelayBonus this tick.
-			// Preserve additive bonuses and longer delays while suppressing native regeneration.
+			// Native regen consumes at most 2.05 + manaRegenDelayBonus this tick.
+			// Preserve additive bonuses and longer delays while suppressing native regen.
 			Player.manaRegenDelay = Math.Max(Player.manaRegenDelay, Player.manaRegenDelayBonus + 3f);
 			Player.manaRegen = 0;
 			Player.manaRegenCount = 0;
 		}
 
 		// ====================================================================
-		// Direct recovery: restore mana independently of natural regeneration.
+		// Direct recovery: restore mana independently of natural regen.
 		// ====================================================================
-		if (ThermalConductor && Main.time % ThermalConductorCheckFrames == 0
+		if (ThermalConductor && Main.GameUpdateCount % ThermalConductorCheckFrames == 0
 			&& Player.statMana < ThermalConductorManaThreshold * Player.statManaMax2
 			&& Main.rand.NextFloat() < ThermalConductorTriggerRate)
 		{

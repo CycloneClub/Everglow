@@ -18,7 +18,9 @@ namespace Everglow.UnitTests.Modules;
 public class CentralEquipmentPlayerTests
 {
 	private static readonly FieldInfo ReapplyHooks = typeof(BuffLoader).GetField("HookReApplyPlayer", BindingFlags.Static | BindingFlags.NonPublic)!;
+	private static readonly FieldInfo GameUpdateCounter = typeof(Main).GetField("_gameUpdateCount", BindingFlags.Static | BindingFlags.NonPublic)!;
 	private object? originalReapplyHooks;
+	private uint originalGameUpdateCount;
 	private UnifiedRandom originalRandom = null!;
 	private double originalTime;
 
@@ -30,6 +32,7 @@ public class CentralEquipmentPlayerTests
 		ReapplyHooks.SetValue(null, Array.Empty<Func<int, Player, int, int, bool>>());
 		originalRandom = Main.rand;
 		originalTime = Main.time;
+		originalGameUpdateCount = Main.GameUpdateCount;
 	}
 
 	[TestCleanup]
@@ -38,6 +41,7 @@ public class CentralEquipmentPlayerTests
 		ReapplyHooks.SetValue(null, originalReapplyHooks);
 		Main.rand = originalRandom;
 		Main.time = originalTime;
+		GameUpdateCounter.SetValue(null, originalGameUpdateCount);
 	}
 
 	[TestMethod]
@@ -196,12 +200,13 @@ public class CentralEquipmentPlayerTests
 	[DataRow(60, 40, 0.1, 40)]
 	[DataRow(61, 39, 0.1, 39)]
 	[DataRow(60, 39, 0.8, 39)]
-	public void ThermalConductorKeepsTimeThresholdAndChanceAlongsideSuppression(int time, int mana, double roll, int expectedMana)
+	public void ThermalConductorKeepsFrameThresholdAndChanceAlongsideSuppression(int updateCount, int mana, double roll, int expectedMana)
 	{
 		using var context = new CooldownTestContext();
 		var bonuses = context.Attach<StatBonusPlayer>();
 		Main.netMode = NetmodeID.Server;
-		Main.time = time;
+		Main.time = 13500;
+		GameUpdateCounter.SetValue(null, (uint)updateCount);
 		Main.rand = new FixedRandom(roll);
 		context.Player.statManaMax2 = 160;
 		context.Player.statMana = mana;
@@ -214,8 +219,52 @@ public class CentralEquipmentPlayerTests
 		Assert.AreEqual(0, context.Player.manaRegen);
 	}
 
+	[TestMethod]
+	[DataRow(13500d, 0d, 0.1d)]
+	[DataRow(13501d, 0d, 0.1d)]
+	[DataRow(0d, 1d, 0.1d)]
+	[DataRow(13500d, 5d, 0.1d)]
+	[DataRow(13500d, 60d, 0.1d)]
+	[DataRow(13500.5d, 1d, 0.1d)]
+	[DataRow(53990d, 1d, 0.1d)]
+	[DataRow(13500d, 0d, 0.8d)]
+	public void ThermalConductorChecksEverySixtyUpdatesRegardlessOfWorldClock(double initialTime, double timeRate, double roll)
+	{
+		using var context = new CooldownTestContext();
+		var bonuses = context.Attach<StatBonusPlayer>();
+		var accessory = new ThermalConductor();
+		var random = new FixedRandom(roll);
+		Main.netMode = NetmodeID.Server;
+		Main.rand = random;
+		int recoveries = 0;
+		for (uint update = 1; update <= 240; update++)
+		{
+			Main.time = (initialTime + update * timeRate) % 54000;
+			GameUpdateCounter.SetValue(null, update);
+			bonuses.ResetEffects();
+			context.Player.statManaMax2 = 160;
+			// Spend recovered mana so the threshold cannot mask repeated checks.
+			context.Player.statMana = 0;
+			accessory.UpdateAccessory(context.Player, false);
+			bonuses.PostUpdateMiscEffects();
+			if (context.Player.statMana > 0)
+			{
+				Assert.AreEqual(36, context.Player.statMana);
+				recoveries++;
+			}
+		}
+		Assert.AreEqual(4, random.Calls, "The world clock must not change the number of probability checks.");
+		Assert.AreEqual(roll < 0.25 ? 4 : 0, recoveries);
+	}
+
 	private sealed class FixedRandom(double roll) : UnifiedRandom
 	{
-		public override double NextDouble() => roll;
+		public int Calls { get; private set; }
+
+		public override double NextDouble()
+		{
+			Calls++;
+			return roll;
+		}
 	}
 }
