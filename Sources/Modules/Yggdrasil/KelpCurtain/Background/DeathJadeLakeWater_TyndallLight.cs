@@ -41,6 +41,8 @@ public class DeathJadeLakeWater_TyndallLight : BackgroundSlideBase
 		Vector2 totalOffset = (Main.screenPosition - WorldAnchor) * 1f / Distance / 300f;
 		float timeValue = (float)(Main.time * 0.0005);
 
+		Vector4 hidden = VampireMatCaveSky.GetLakeOcclusionBounds();
+		Span<Vector4> visible = stackalloc Vector4[2];
 		var bars = new List<Vertex2D>();
 		int yLayers = (int)((drawBottom - drawTop) / 16f);
 
@@ -70,15 +72,27 @@ public class DeathJadeLakeWater_TyndallLight : BackgroundSlideBase
 				break;
 			}
 			Color drawColor = baseColor * fade;
-			float leftXcoord = totalOffset.X;
-			float rightXcoord = totalOffset.X + (rightClamp + Main.offScreenRange) / Texture.Width;
-			bars.Add(new Vector2(-Main.offScreenRange, drawTop + offsetY * 16 - Main.screenPosition.Y), drawColor, new Vector3(leftXcoord + tiltX0, timeValue, 0));
-			bars.Add(new Vector2(rightClamp, drawTop + offsetY * 16 - Main.screenPosition.Y), drawColor, new Vector3(rightXcoord + tiltX0, timeValue, 0));
-			bars.Add(new Vector2(-Main.offScreenRange, drawTop + (offsetY + 1) * 16 - Main.screenPosition.Y), drawColor, new Vector3(leftXcoord + tileX1, timeValue, 0));
+			float worldLeft = Main.screenPosition.X - Main.offScreenRange;
+			float worldTop = drawTop + offsetY * 16;
+			int count = VampireMatCaveSky.ClipBackgroundRow(
+				new Vector4(worldLeft, worldTop, Main.screenPosition.X + rightClamp, worldTop + 16), hidden, visible);
+			for (int segment = 0; segment < count; segment++)
+			{
+				Vector4 row = visible[segment];
+				float leftXcoord = totalOffset.X + (row.X - worldLeft) / Texture.Width;
+				float rightXcoord = totalOffset.X + (row.Z - worldLeft) / Texture.Width;
+				float left = row.X - Main.screenPosition.X;
+				float right = row.Z - Main.screenPosition.X;
+				float top = row.Y - Main.screenPosition.Y;
+				float bottom = row.W - Main.screenPosition.Y;
+				bars.Add(new Vector2(left, top), drawColor, new Vector3(leftXcoord + tiltX0, timeValue, 0));
+				bars.Add(new Vector2(right, top), drawColor, new Vector3(rightXcoord + tiltX0, timeValue, 0));
+				bars.Add(new Vector2(left, bottom), drawColor, new Vector3(leftXcoord + tileX1, timeValue, 0));
 
-			bars.Add(new Vector2(-Main.offScreenRange, drawTop + (offsetY + 1) * 16 - Main.screenPosition.Y), drawColor, new Vector3(leftXcoord + tileX1, timeValue, 0));
-			bars.Add(new Vector2(rightClamp, drawTop + offsetY * 16 - Main.screenPosition.Y), drawColor, new Vector3(rightXcoord + tiltX0, timeValue, 0));
-			bars.Add(new Vector2(rightClamp, drawTop + (offsetY + 1) * 16 - Main.screenPosition.Y), drawColor, new Vector3(rightXcoord + tileX1, timeValue, 0));
+				bars.Add(new Vector2(left, bottom), drawColor, new Vector3(leftXcoord + tileX1, timeValue, 0));
+				bars.Add(new Vector2(right, top), drawColor, new Vector3(rightXcoord + tiltX0, timeValue, 0));
+				bars.Add(new Vector2(right, bottom), drawColor, new Vector3(rightXcoord + tileX1, timeValue, 0));
+			}
 		}
 		if (bars.Count > 2)
 		{

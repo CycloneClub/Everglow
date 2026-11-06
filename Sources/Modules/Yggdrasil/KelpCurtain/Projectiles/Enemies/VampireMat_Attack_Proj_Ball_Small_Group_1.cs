@@ -123,7 +123,7 @@ public class VampireMat_Attack_Proj_Ball_Small_Group_1 : ModProjectile
 	{
 		SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;
 		Main.spriteBatch.End();
-		Main.spriteBatch.Begin(SpriteSortMode.Immediate, CustomBlendStates.Reverse, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
+		Main.spriteBatch.Begin(SpriteSortMode.Deferred, CustomBlendStates.Reverse, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 		foreach (var sp in SubProjs)
 		{
 			DrawSubProj(sp);
@@ -136,6 +136,11 @@ public class VampireMat_Attack_Proj_Ball_Small_Group_1 : ModProjectile
 	public void DrawSubProj(SubProj sp)
 	{
 		Texture2D star = Commons.ModAsset.CrossStar.Value;
+		Viewport viewport = Main.graphics.GraphicsDevice.Viewport;
+		if (!VampireMatBallRendering.IsVisible(sp.Position - Main.screenPosition, sp.Scale, star.Size(), 1f, Main.GameViewMatrix.TransformationMatrix, viewport.Width, viewport.Height))
+		{
+			return;
+		}
 		Main.EntitySpriteDraw(star, sp.Position - Main.screenPosition, null, new Color(1f, 0.2f, 0.3f, 0f) * MathF.Min(sp.Scale, 0.5f), 0, star.Size() * 0.5f, sp.Scale, SpriteEffects.None, 0);
 		Texture2D tex = ModAsset.VampireMat_Attack_Proj_Ball.Value;
 		int frameNumber = (int)(TileUtils.GetFixedRandomNumber_SingleSeed(sp.GetHashCode(), 10) + Projectile.timeLeft / 12f) % 10;
