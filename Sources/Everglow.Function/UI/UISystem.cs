@@ -1,5 +1,6 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Commons.Enums;
+using Everglow.Commons.ObjectPool;
 using Everglow.Commons.Utilities;
 using Terraria.UI;
 
@@ -31,6 +32,8 @@ namespace Everglow.Commons.UI
 		public event ChestUIDraw PostDrawChestUI;
 
 		public RenderTarget2D UI_Screen = null;
+
+		private ResourceLocker<RenderTarget2D> uiRenderTarget;
 
 		public UISystem()
 		{
@@ -199,9 +202,10 @@ namespace Everglow.Commons.UI
 				var gd = sb.GraphicsDevice;
 				SpriteBatchState sBS = GraphicsUtils.GetState(sb).Value;
 
-				var renderTargets = Ins.RenderTargetPool.GetRenderTarget2DArray(2);
-				UI_Screen = renderTargets.Resource[0];
-				RenderTarget2D screenSwap = renderTargets.Resource[1];
+				uiRenderTarget = Ins.RenderTargetPool.GetRenderTarget2D();
+				var screenSwapTarget = Ins.RenderTargetPool.GetRenderTarget2D();
+				UI_Screen = uiRenderTarget.Resource;
+				RenderTarget2D screenSwap = screenSwapTarget.Resource;
 				sb.End();
 
 				gd.SetRenderTarget(screenSwap);
@@ -223,8 +227,7 @@ namespace Everglow.Commons.UI
 				sb.End();
 				sb.Begin(sBS);
 
-				screenSwap = null;
-				renderTargets.Release();
+				screenSwapTarget.Release();
 			}
 		}
 
@@ -232,9 +235,12 @@ namespace Everglow.Commons.UI
 		{
 			orig(self, gameTime);
 
-			if (UI_Screen is not null)
+			if (uiRenderTarget is not null)
 			{
+				// Keep the UI texture out of the shared pool until interface drawing finishes.
 				UI_Screen = null;
+				uiRenderTarget.Release();
+				uiRenderTarget = null;
 			}
 		}
 
