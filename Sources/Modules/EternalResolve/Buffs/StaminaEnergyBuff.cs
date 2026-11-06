@@ -7,7 +7,6 @@ public class StaminaEnergyBuff : ModBuff
 	public override void SetStaticDefaults()
 	{
 		Main.buffNoSave[Type] = false;
-		Main.buffNoTimeDisplay[Type] = false;
 	}
 
 	public override void Update(Player player, ref int buffIndex)
