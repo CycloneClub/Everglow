@@ -4,8 +4,6 @@ public class LemonBuff : ModBuff
 {
 	public override void SetStaticDefaults()
 	{
-		// DisplayName.SetDefault("LemonBuff");
-		// Description.SetDefault("加4%远程暴击,仇恨值减300\n“消炎美容”");
 		Main.buffNoTimeDisplay[Type] = false;
 		Main.debuff[Type] = false; // 添加这个，这样护士在治疗时就不会去除buff
 	}

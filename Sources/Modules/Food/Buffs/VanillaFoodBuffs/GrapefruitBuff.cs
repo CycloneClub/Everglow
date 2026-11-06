@@ -4,8 +4,6 @@ public class GrapefruitBuff : ModBuff
 {
 	public override void SetStaticDefaults()
 	{
-		// DisplayName.SetDefault("GrapefruitBuff");
-		// Description.SetDefault("加50%召唤物击退\n “拒绝肾透支”");
 		Main.buffNoTimeDisplay[Type] = false;
 		Main.debuff[Type] = false; // 添加这个，这样护士在治疗时就不会去除buff
 	}

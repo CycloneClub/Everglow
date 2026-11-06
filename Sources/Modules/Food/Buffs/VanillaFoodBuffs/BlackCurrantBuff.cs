@@ -4,8 +4,6 @@ public class BlackCurrantBuff : ModBuff
 {
 	public override void SetStaticDefaults()
 	{
-		// DisplayName.SetDefault("BlackCurrantBuff");
-		// Description.SetDefault("获得夜视、危险感知能力\n“改善視力” ");
 		Main.buffNoTimeDisplay[Type] = false;
 		Main.debuff[Type] = false; // 添加这个，这样护士在治疗时就不会去除buff
 	}

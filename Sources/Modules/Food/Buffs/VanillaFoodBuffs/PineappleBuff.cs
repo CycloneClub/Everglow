@@ -4,8 +4,6 @@ public class PineappleBuff : ModBuff
 {
 	public override void SetStaticDefaults()
 	{
-		// DisplayName.SetDefault("PineappleBuff");
-		// Description.SetDefault("增加4防御，近战攻击者伤害玩家时会承受一半伤害\n“菠萝碱”");
 		Main.buffNoTimeDisplay[Type] = false;
 		Main.debuff[Type] = false; // 添加这个，这样护士在治疗时就不会去除buff
 	}
