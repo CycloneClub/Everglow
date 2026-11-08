@@ -158,7 +158,7 @@ public class UnderWaterDungeon : ModItem
 			int checkX = checkXRoom2 + k * 15;
 			int checkY = checkYRoom2 + (k % 2 == 0 ? 3 : 0);
 			Tile lamp = SafeGetTile(checkX, checkY);
-			if ((!lamp.HasTile || lamp.TileType != ModContent.TileType<WaterErodedGreenBrick>()) && lamp.wall == ModContent.WallType<WaterErodedGreenBrickWall_Fixed>())
+			if ((!lamp.HasTile || lamp.TileType != ModContent.TileType<WaterErodedGreenBrick>()) && lamp.wall == ModContent.WallType<WaterErodedGreenBrickWall_Fixed_Unsafe>())
 			{
 				lamp.TileType = (ushort)ModContent.TileType<NoctilucentFluoriteLump>();
 				lamp.HasTile = true;
@@ -230,7 +230,7 @@ public class UnderWaterDungeon : ModItem
 					tile.HasTile = false;
 					if (boundValue > 1)
 					{
-						tile.WallType = (ushort)ModContent.WallType<WaterErodedGreenBrickWall_Fixed>();
+						tile.WallType = (ushort)ModContent.WallType<WaterErodedGreenBrickWall_Fixed_Unsafe>();
 						tile.liquid = (byte)LiquidID.Water;
 						tile.LiquidAmount = 255;
 					}
@@ -323,7 +323,7 @@ public class UnderWaterDungeon : ModItem
 						if (distance < halfWidth - (sideThick - 1))
 						{
 							tile.HasTile = false;
-							tile.WallType = (ushort)ModContent.WallType<WaterErodedGreenBrickWall_Fixed>();
+							tile.WallType = (ushort)ModContent.WallType<WaterErodedGreenBrickWall_Fixed_Unsafe>();
 							tile.liquid = (byte)LiquidID.Water;
 							tile.LiquidAmount = 255;
 						}
@@ -333,7 +333,7 @@ public class UnderWaterDungeon : ModItem
 							tile.TileType = (ushort)ModContent.TileType<WaterErodedGreenBrick>();
 							if (distance < halfWidth)
 							{
-								tile.WallType = (ushort)ModContent.WallType<WaterErodedGreenBrickWall_Fixed>();
+								tile.WallType = (ushort)ModContent.WallType<WaterErodedGreenBrickWall_Fixed_Unsafe>();
 							}
 						}
 					}
@@ -422,7 +422,7 @@ public class UnderWaterDungeon : ModItem
 		for (int s = 0; s < trailPos.Count; s++)
 		{
 			PlaceSquareAreaOfBlock(trailPos[s], (int)width, ModContent.TileType<WaterErodedGreenBrick>());
-			PlaceSquareAreaOfWall(trailPos[s], (int)width - 1, ModContent.WallType<WaterErodedGreenBrickWall_Fixed>());
+			PlaceSquareAreaOfWall(trailPos[s], (int)width - 1, ModContent.WallType<WaterErodedGreenBrickWall_Fixed_Unsafe>());
 		}
 
 		// Build the inner Tunnel
@@ -551,17 +551,17 @@ public class UnderWaterDungeon : ModItem
 		if (dirX < 0)
 		{
 			KillRectangleAreaOfTile(trailPos[^1].X - (int)width - overLength, trailPos[^1].Y - (int)centerThick, trailPos[^1].X, trailPos[^1].Y + (int)centerThick);
-			PlaceRectangleAreaOfWall(trailPos[^1].X - (int)width - overLength, trailPos[^1].Y - (int)centerThick, trailPos[^1].X, trailPos[^1].Y + (int)centerThick, ModContent.WallType<WaterErodedGreenBrickWall_Fixed>());
+			PlaceRectangleAreaOfWall(trailPos[^1].X - (int)width - overLength, trailPos[^1].Y - (int)centerThick, trailPos[^1].X, trailPos[^1].Y + (int)centerThick, ModContent.WallType<WaterErodedGreenBrickWall_Fixed_Unsafe>());
 			PlaceRectangleAreaOfLiquid(trailPos[^1].X - (int)width - overLength, trailPos[^1].Y - (int)centerThick, trailPos[^1].X, trailPos[^1].Y + (int)centerThick, LiquidID.Water);
 		}
 		else
 		{
 			KillRectangleAreaOfTile(trailPos[^1].X, trailPos[^1].Y - (int)centerThick, trailPos[^1].X + (int)width + overLength, trailPos[^1].Y + (int)centerThick);
-			PlaceRectangleAreaOfWall(trailPos[^1].X, trailPos[^1].Y - (int)centerThick, trailPos[^1].X + (int)width + overLength, trailPos[^1].Y + (int)centerThick, ModContent.WallType<WaterErodedGreenBrickWall_Fixed>());
+			PlaceRectangleAreaOfWall(trailPos[^1].X, trailPos[^1].Y - (int)centerThick, trailPos[^1].X + (int)width + overLength, trailPos[^1].Y + (int)centerThick, ModContent.WallType<WaterErodedGreenBrickWall_Fixed_Unsafe>());
 			PlaceRectangleAreaOfLiquid(trailPos[^1].X, trailPos[^1].Y - (int)centerThick, trailPos[^1].X + (int)width + overLength, trailPos[^1].Y + (int)centerThick, LiquidID.Water);
 		}
 		KillRectangleAreaOfTile(trailPos[0].X - (int)centerThick, trailPos[0].Y - (int)width, trailPos[0].X + (int)centerThick, trailPos[0].Y);
-		PlaceRectangleAreaOfWall(trailPos[0].X - (int)centerThick, trailPos[0].Y - (int)width, trailPos[0].X + (int)centerThick, trailPos[0].Y, ModContent.WallType<WaterErodedGreenBrickWall_Fixed>());
+		PlaceRectangleAreaOfWall(trailPos[0].X - (int)centerThick, trailPos[0].Y - (int)width, trailPos[0].X + (int)centerThick, trailPos[0].Y, ModContent.WallType<WaterErodedGreenBrickWall_Fixed_Unsafe>());
 		PlaceRectangleAreaOfLiquid(trailPos[0].X - (int)centerThick, trailPos[0].Y - (int)width, trailPos[0].X + (int)centerThick, trailPos[0].Y, LiquidID.Water);
 	}
 

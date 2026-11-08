@@ -68,11 +68,11 @@ public class ResetIsleOfBloom : ModItem
 			{
 				if (pos.Y - tilePos.Y > value2 * 4 + value0 * 1.2f + 3)
 				{
-					tile.WallType = (ushort)ModContent.WallType<MossProneSandSoilWall>();
+					tile.WallType = (ushort)ModContent.WallType<MossProneSandSoilWall_Unsafe>();
 				}
 				else
 				{
-					tile.WallType = (ushort)ModContent.WallType<OldMossWall>();
+					tile.WallType = (ushort)ModContent.WallType<OldMossWall_Unsafe>();
 				}
 			}
 		}
@@ -84,7 +84,7 @@ public class ResetIsleOfBloom : ModItem
 			radius = MathF.Max(radius, 10) * 1.4f;
 			PlaceCircleAreaOfBlockWithRandomNoise(tilePos + new Point(0, y), radius, ModContent.TileType<Tiles.OldMoss>(), 3, (int)TileChangeState.HasTile);
 			PlaceCircleAreaOfBlockWithRandomNoise(tilePos + new Point(0, y), radius - 3, -1, 3, (int)TileChangeState.Forceful);
-			PlaceCircleAreaOfWallWithRandomNoise(tilePos + new Point(0, y), radius - 1, ModContent.WallType<OldMossWall>(), 3, (int)TileChangeState.HasWall);
+			PlaceCircleAreaOfWallWithRandomNoise(tilePos + new Point(0, y), radius - 1, ModContent.WallType<OldMossWall_Unsafe>(), 3, (int)TileChangeState.HasWall);
 		}
 
 		// SubFloor Cave

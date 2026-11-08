@@ -104,7 +104,7 @@ public class GenerateMazeRoom : ModItem
 					if (!tile.HasTile)
 					{
 						tile.TileType = (ushort)ModContent.TileType<YggdrasilBlackRock>();
-						tile.WallType = (ushort)ModContent.WallType<YggdrasilBlackRockWall>();
+						tile.WallType = (ushort)ModContent.WallType<YggdrasilBlackRockWall_Unsafe>();
 						tile.HasTile = true;
 					}
 				}
