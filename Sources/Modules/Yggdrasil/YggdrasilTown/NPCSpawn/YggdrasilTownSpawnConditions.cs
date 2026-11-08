@@ -27,7 +27,7 @@ public static class YggdrasilTownSpawnConditions
 	private static bool CanSpawn(NPCSpawnInfo info) =>
 		YggdrasilSpawnRegistration.InYggdrasilTown(info.Player.Center) &&
 		YggdrasilSpawnRegistration.InYggdrasilTown(new Vector2(info.SpawnTileX * 16 + 8, info.SpawnTileY * 16)) &&
-		SpawnConditions.OutsideHousing(info) && SpawnConditions.IsDry(info);
+		!Main.wallHouse[Main.tile[info.SpawnTileX, info.SpawnTileY - 1].WallType] && SpawnConditions.IsDry(info);
 
 	// 两种森林的底土相同，使用候选地面的草块区分，不把共享底土直接认作灯木森林。
 	private static bool IsForestGround(NPCSpawnInfo info) =>
@@ -36,7 +36,23 @@ public static class YggdrasilTownSpawnConditions
 
 	private static bool IsJellyBallHotbed(NPCSpawnInfo info) =>
 		info.SpawnTileType == ModContent.TileType<JellyBallSecretion>() ||
-		Main.tile[info.SpawnTileX, info.SpawnTileY - 1].WallType == ModContent.WallType<JellyBallSecretionWall>();
+		Main.tile[info.SpawnTileX, info.SpawnTileY - 1].WallType == ModContent.WallType<JellyBallSecretionWall>() ||
+		(info.SpawnTileType == ModContent.TileType<StoneScaleWood>() && InHotbedContour(info.SpawnTileX, info.SpawnTileY));
+
+	private static bool InHotbedContour(int x, int y)
+	{
+		// 与 BuildJellyBallHotbed 的填土/墙体外轮廓一致。温床内也有无分泌物的石鳞木地面，
+		// 不能仅凭落点的单个地面/墙类型识别群系；轮廓外仍需实际分泌块或分泌墙。
+		if (x < Main.maxTilesX - 350 || x >= Main.maxTilesX ||
+			y < Main.maxTilesY - 500 || y > Main.maxTilesY - 40)
+		{
+			return false;
+		}
+		var offset = new Vector2(Main.maxTilesX - 175 - x, Main.maxTilesY - 390 - y);
+		float radius = 150 - 83 * MathF.Sin(offset.ToRotation());
+		offset.Y /= 1.2f;
+		return offset.LengthSquared() <= radius * radius;
+	}
 
 	private static bool IsMine(NPCSpawnInfo info)
 	{

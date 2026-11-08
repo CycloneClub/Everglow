@@ -3,7 +3,6 @@ using Everglow.Yggdrasil.KelpCurtain;
 using Everglow.Yggdrasil.KelpCurtain.NPCSpawn;
 using Everglow.Yggdrasil.YggdrasilTown;
 using Everglow.Yggdrasil.YggdrasilTown.NPCSpawn;
-using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 
 namespace Everglow.Yggdrasil.Common.NPCSpawn;
 
@@ -24,7 +23,15 @@ public sealed class YggdrasilSpawnRegistration : ModSystem
 		SubworldSpawnSystem.RegisterRules(WorldId, nameof(YggdrasilTownSpawnTable), town, InYggdrasilTown);
 	}
 
-	public static bool InYggdrasilTown(Vector2 position) => YggdrasilTownBiome.IsTownLayer(position) && !InSafeArea(position);
+	public static bool InYggdrasilTown(Vector2 position)
+	{
+		// 第一层衔接苍苔帘幕下边界；城镇的视觉群系范围不包含上方灯木台地。
+		if (!YggdrasilWorld.InYggdrasil || position.Y < Main.maxTilesY * 0.9f * 16)
+		{
+			return false;
+		}
+		return !InSafeArea(position);
+	}
 
 	public static bool InKelpCurtain(Vector2 position) => YggdrasilWorld.InYggdrasil && !InSafeArea(position) &&
 		KelpCurtainBiome.StratumBoundCurve.Count > 0 &&
@@ -34,10 +41,6 @@ public sealed class YggdrasilSpawnRegistration : ModSystem
 	// 自然生成落点、群体追加和玩家位置禁刷共用城镇及交通区域的禁刷范围。
 	private static bool InSafeArea(Vector2 position)
 	{
-		if (YggdrasilTownBiome.BiomeCenter == Vector2.Zero)
-		{
-			return false;
-		}
 		Rectangle area = YggdrasilTownCentralSystem.TownArea;
 		Point tile = position.ToTileCoordinates();
 		// 与 InYggdrasilTown 一致，右侧和下侧边界格也属于镇内。
