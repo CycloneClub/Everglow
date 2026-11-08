@@ -157,14 +157,14 @@ public static class YggdrasilTownSpawnTable
 		{
 			Type = ModContent.NPCType<JellyBall>(),
 			SpawnChance = spawnInfo => InDeepMine(spawnInfo)
-				? 3f : 0f,
+				? 7f : 0f,
 		});
 
 		rules.Add(new SubworldSpawnRule
 		{
 			Type = ModContent.NPCType<GiantJellyBall>(),
 			SpawnChance = spawnInfo => InDeepMine(spawnInfo)
-				? 8f : 0f,
+				? 4f : 0f,
 		});
 
 		rules.Add(new SubworldSpawnRule
@@ -178,7 +178,7 @@ public static class YggdrasilTownSpawnTable
 		{
 			Type = ModContent.NPCType<RockElemental>(),
 			SpawnChance = spawnInfo => InDeepMine(spawnInfo) && !NPC.AnyNPCs(ModContent.NPCType<RockElemental>())
-				? 0.05f : 0f,
+				? 0.2f : 0f,
 		});
 
 		// 球冻温床：不混入森林和矿洞的其他候选，以大小球冻为主。
