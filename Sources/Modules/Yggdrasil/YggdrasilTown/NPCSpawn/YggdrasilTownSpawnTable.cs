@@ -110,7 +110,12 @@ public static class YggdrasilTownSpawnTable
 				? 3f : 0f,
 		});
 
-		// TODO：晶胞虫
+		rules.Add(new SubworldSpawnRule
+		{
+			Type = ModContent.NPCType<CrystalCell>(),
+			SpawnChance = spawnInfo => InTwilightForest(spawnInfo) && SpawnConditions.OnGround(spawnInfo)
+				? 1f : 0f,
+		});
 
 		// 原版无幸运修正时，普通史莱姆有 1/180 的机会变为粉史莱姆。
 		// 此处没有普通史莱姆候选，将同一基础比例用于灯木、暮光森林的白昼地面生成；不额外抽取随机数。

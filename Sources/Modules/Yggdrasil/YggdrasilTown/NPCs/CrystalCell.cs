@@ -1,4 +1,3 @@
-using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts.TwilightForest;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
 using Terraria.DataStructures;
@@ -34,12 +33,6 @@ public class CrystalCell : ModNPC
 	{
 		Main.npcFrameCount[NPC.type] = 8;
 		NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.Confused] = true;
-	}
-
-	public override float SpawnChance(NPCSpawnInfo spawnInfo)
-	{
-		TwilightForsetAndRelic twilightBiome = ModContent.GetInstance<TwilightForsetAndRelic>();
-		return twilightBiome.IsBiomeActive(spawnInfo.Player) ? 3f : 0f;
 	}
 
 	public override void SetDefaults()
