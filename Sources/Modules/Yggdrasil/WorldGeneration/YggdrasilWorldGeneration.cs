@@ -1259,14 +1259,14 @@ public class YggdrasilWorldGeneration : ModSystem
 							{
 								if (tile.TileType != TileID.Containers && SafeGetTile(x + a, y + b - 1).TileType != TileID.Containers)
 								{
-									tile.WallType = (ushort)ModContent.WallType<StoneDragonScaleWoodWall>();
+									tile.WallType = (ushort)ModContent.WallType<StoneDragonScaleWoodWall_Unsafe>();
 								}
 							}
 							if (pixel.R == 40 && pixel.G == 32 && pixel.B == 31)// 龙鳞木
 							{
 								if (tile.TileType != TileID.Containers && SafeGetTile(x + a, y + b - 1).TileType != TileID.Containers)
 								{
-									tile.WallType = (ushort)ModContent.WallType<DragonScaleWoodWall>();
+									tile.WallType = (ushort)ModContent.WallType<DragonScaleWoodWall_Unsafe>();
 								}
 							}
 							if (pixel.R == 56 && pixel.G == 56 && pixel.B == 56)// 石墙
@@ -1280,7 +1280,7 @@ public class YggdrasilWorldGeneration : ModSystem
 							{
 								if (tile.TileType != TileID.Containers && SafeGetTile(x + a, y + b - 1).TileType != TileID.Containers)
 								{
-									tile.WallType = (ushort)ModContent.WallType<MossProneSandSoilWall>();
+									tile.WallType = (ushort)ModContent.WallType<MossProneSandSoilWall_Unsafe>();
 								}
 							}
 							break;
