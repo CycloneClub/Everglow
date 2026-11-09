@@ -3,10 +3,11 @@ using Everglow.Commons.Mechanics.BiomesText;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Objectives;
 using Everglow.Commons.Utilities;
+using Everglow.Example.Quest;
 
 namespace Everglow.Commons.Mechanics.Quest.WorldSide.Tests;
 
-public class TestCollectItem : WorldQuestBase
+public class TestCollectItem : ExampleWorldQuest
 {
 	public override void Initialize()
 	{
@@ -15,7 +16,7 @@ public class TestCollectItem : WorldQuestBase
 	}
 }
 
-public class TestConsumeItem : WorldQuestBase
+public class TestConsumeItem : ExampleWorldQuest
 {
 	public override void Initialize()
 	{
@@ -24,7 +25,7 @@ public class TestConsumeItem : WorldQuestBase
 	}
 }
 
-public class TestExplore : WorldQuestBase
+public class TestExplore : ExampleWorldQuest
 {
 	public override void Initialize()
 	{
@@ -32,7 +33,7 @@ public class TestExplore : WorldQuestBase
 	}
 }
 
-public class TestGive : WorldQuestBase
+public class TestGive : ExampleWorldQuest
 {
 	public override void Initialize()
 	{
@@ -40,7 +41,7 @@ public class TestGive : WorldQuestBase
 	}
 }
 
-public class TestKillNPC : WorldQuestBase
+public class TestKillNPC : ExampleWorldQuest
 {
 	public override void Initialize()
 	{
@@ -50,7 +51,7 @@ public class TestKillNPC : WorldQuestBase
 	}
 }
 
-public class TestReach : WorldQuestBase
+public class TestReach : ExampleWorldQuest
 {
 	public override void Initialize()
 	{
@@ -58,7 +59,7 @@ public class TestReach : WorldQuestBase
 	}
 }
 
-public class TestTalkNPC : WorldQuestBase
+public class TestTalkNPC : ExampleWorldQuest
 {
 	public override void Initialize()
 	{

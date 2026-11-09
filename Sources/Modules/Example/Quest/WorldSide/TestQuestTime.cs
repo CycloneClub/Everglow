@@ -1,9 +1,10 @@
 using Everglow.Commons.Mechanics.Quest.WorldSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.Presentation.Icons;
+using Everglow.Example.Quest;
 
 namespace Everglow.Commons.Mechanics.Quest.WorldSide.Tests;
 
-public class TestQuestTime : WorldQuestBase
+public class TestQuestTime : ExampleWorldQuest
 {
 	public override void Initialize()
 	{

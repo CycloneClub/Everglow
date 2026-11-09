@@ -42,7 +42,7 @@ public class TextDefinitionTest
 			root = root.Parent;
 		}
 		Assert.IsNotNull(root);
-		foreach (string section in new[] { "QuestSystem", "TownQuests", "Quests" })
+		foreach (string section in new[] { "QuestSystem", "Quests", "Examples" })
 		{
 			using var document = JsonDocument.Parse(File.ReadAllText(Path.Combine(
 				root.FullName, "Sources", "Everglow", "Localization", culture, $"Mods.Everglow.{section}.hjson")));
@@ -589,14 +589,14 @@ public class TextDefinitionTest
 
 	private sealed class LocalizedWorldQuest : WorldQuestBase
 	{
-		public string Key { get; init; } = "Mods.Everglow.TownQuests.SmuggledAleQuest";
+		public string Key { get; init; } = "Mods.Everglow.Quests.SmuggledAleQuest";
 
 		public override string LocalizationKey => Key;
 	}
 
 	private sealed class LocalizedPlayerQuest : PlayerQuestBase
 	{
-		public string Key { get; init; } = "Mods.Everglow.TownQuests.SmuggledAleQuest";
+		public string Key { get; init; } = "Mods.Everglow.Quests.SmuggledAleQuest";
 
 		public override string LocalizationKey => Key;
 
@@ -606,7 +606,7 @@ public class TextDefinitionTest
 	[TestMethod]
 	public void ObjectiveArrayDescriptionsFollowFlattenedParallelAndBranchOrder()
 	{
-		const string key = "Mods.Everglow.TownQuests.SprainedBackQuest";
+		const string key = "Mods.Everglow.Quests.SprainedBackQuest";
 		var world = new LocalizedWorldQuest { Key = key };
 		var player = new LocalizedPlayerQuest { Key = key };
 		var worldObjectives = Enumerable.Range(0, 4).Select(_ => new WorldConsumeItemObjective(ItemID.WoodenArrow, 2)).ToArray();
@@ -627,7 +627,7 @@ public class TextDefinitionTest
 	[TestMethod]
 	public void MissingObjectiveDescriptionsStayEmptyWithoutShiftingLaterEntries()
 	{
-		const string key = "Mods.Everglow.TownQuests.ProstheticMaintenanceQuest";
+		const string key = "Mods.Everglow.Quests.ProstheticMaintenanceQuest";
 		var world = new LocalizedWorldQuest { Key = key };
 		var player = new LocalizedPlayerQuest { Key = key };
 		for (int i = 0; i < 5; i++)
@@ -648,15 +648,15 @@ public class TextDefinitionTest
 	[TestMethod]
 	public void ObjectiveDialogueAndCustomTextFollowCurrentLanguage()
 	{
-		const string questKey = "Mods.Everglow.TownQuests.SmuggledAleQuest";
+		const string questKey = "Mods.Everglow.Quests.SmuggledAleQuest";
 		var worldTalk = new WorldTalkObjective(NPCID.Guide).WithDialogue(d => d.WithText("Dialogue.Objective0"));
 		var playerTalk = new TalkNPCObjective(NPCID.Guide).WithDialogue(d => d.WithText("Dialogue.Objective0"));
 		var worldGive = new WorldGiveObjective(NPCID.Guide, ItemID.Ale, 5)
 			.WithDialogue(d => d.WithText("Dialogue.Objective1Request").WithCompletionText("Dialogue.Objective1Success"));
 		var playerGive = new GiveItemObjective([ItemID.Ale], 5, NPCID.Guide)
 			.WithDialogue(d => d.WithText("Dialogue.Objective1Request").WithCompletionText("Dialogue.Objective1Success"));
-		var reach = new WorldReachObjective(_ => false) { LocalizationKey = "Mods.Everglow.Quests.TestReach.Objectives.0" };
-		var explore = new WorldExploreObjective(500, _ => false) { LocalizationKey = "Mods.Everglow.Quests.TestExplore.Objectives.0" };
+		var reach = new WorldReachObjective(_ => false) { LocalizationKey = "Mods.Everglow.Examples.TestReach.Objectives.0" };
+		var explore = new WorldExploreObjective(500, _ => false) { LocalizationKey = "Mods.Everglow.Examples.TestExplore.Objectives.0" };
 		string Text(string key) => Language.GetTextValue(questKey + "." + key);
 		StringAssert.Contains(Text(worldTalk.Dialogue.TextKeys[0]), "麦芽酒");
 		Assert.AreEqual(Text(worldTalk.Dialogue.TextKeys[0]), Text(playerTalk.Dialogue.TextKeys[0]));
@@ -680,20 +680,20 @@ public class TextDefinitionTest
 	[TestMethod]
 	public void DefaultDisplayNameReadsDisplayNameKeyAndStaysEmptyWhenMissing()
 	{
-		var world = new LocalizedWorldQuest { Key = "Mods.Everglow.TownQuests.LostMinerQuest" };
-		var player = new DefaultNamedPlayerQuest { Key = "Mods.Everglow.TownQuests.LostMinerQuest" };
+		var world = new LocalizedWorldQuest { Key = "Mods.Everglow.Quests.LostMinerQuest" };
+		var player = new DefaultNamedPlayerQuest { Key = "Mods.Everglow.Quests.LostMinerQuest" };
 		Assert.AreEqual("迷失的矿工", world.DisplayName);
 		Assert.AreEqual("迷失的矿工", player.DisplayName);
 
 		LoadQuestLanguage("en-US");
 		Assert.AreEqual("The Lost Miner", world.DisplayName);
 		Assert.AreEqual("The Lost Miner", player.DisplayName);
-		Assert.AreEqual(string.Empty, new LocalizedWorldQuest { Key = "Mods.Everglow.TownQuests.MissingQuest" }.DisplayName);
+		Assert.AreEqual(string.Empty, new LocalizedWorldQuest { Key = "Mods.Everglow.Quests.MissingQuest" }.DisplayName);
 	}
 
 	private sealed class DefaultNamedPlayerQuest : PlayerQuestBase
 	{
-		public string Key { get; init; } = "Mods.Everglow.TownQuests.LostMinerQuest";
+		public string Key { get; init; } = "Mods.Everglow.Quests.LostMinerQuest";
 
 		public override string LocalizationKey => Key;
 	}

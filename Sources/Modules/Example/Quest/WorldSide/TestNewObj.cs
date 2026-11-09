@@ -3,10 +3,11 @@ using Everglow.Commons.Mechanics.BiomesText;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Objectives;
 using Everglow.Commons.Utilities;
+using Everglow.Example.Quest;
 
 namespace Everglow.Commons.Mechanics.Quest.WorldSide.Tests;
 
-public class TestNewObj : WorldQuestBase
+public class TestNewObj : ExampleWorldQuest
 {
 	public override void Initialize()
 	{

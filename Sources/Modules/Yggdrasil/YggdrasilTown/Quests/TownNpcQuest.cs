@@ -16,11 +16,9 @@ public abstract class TownNpcQuest : WorldQuestBase
 	public static readonly QuestSourceBase Georg = new GeorgSource();
 
 	public static string Text(string key, params object[] args) =>
-		Language.GetTextValue("Mods.Everglow.TownQuests." + key, args);
+		Language.GetTextValue("Mods.Everglow.Quests." + key, args);
 
 	public abstract int GiverNpcType { get; }
-
-	public override string LocalizationKey => "Mods.Everglow.TownQuests." + Name;
 
 	public override string Description => Text(Name + ".Description");
 

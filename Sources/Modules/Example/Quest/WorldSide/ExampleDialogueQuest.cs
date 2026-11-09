@@ -3,10 +3,11 @@ using Everglow.Commons.Mechanics.Quest.Core.Dialogue;
 using Everglow.Commons.Mechanics.Quest.PlayerSide.Tests.ExampleNPC;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Objectives;
+using Everglow.Example.Quest;
 
 namespace Everglow.Example.Quest.WorldSide;
 
-public sealed class ExampleDialogueQuest : WorldQuestBase
+public sealed class ExampleDialogueQuest : ExampleWorldQuest
 {
 	public override void Initialize()
 	{
