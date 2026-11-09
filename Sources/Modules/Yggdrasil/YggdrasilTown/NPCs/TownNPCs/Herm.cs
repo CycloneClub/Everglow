@@ -128,7 +128,7 @@ public sealed class Herm : ModNPC
 		bool inMine = quest.Stage < HermStage.Searching
 			? YggdrasilTownSpawnConditions.InShallowMine(spawnInfo)
 			: YggdrasilTownSpawnConditions.InDeepMine(spawnInfo);
-		return inMine ? 0.05f : 0;
+		return inMine ? 0.5f : 0;
 	}
 
 	public override int SpawnNPC(int tileX, int tileY)
