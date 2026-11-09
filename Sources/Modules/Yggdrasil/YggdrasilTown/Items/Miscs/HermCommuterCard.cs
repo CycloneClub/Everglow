@@ -12,6 +12,6 @@ public sealed class HermCommuterCard : ModItem
 		Item.height = 20;
 		Item.maxStack = 1;
 		Item.rare = ItemRarityID.Quest;
-		Item.consumable = false;
+		Item.questItem = true;
 	}
 }

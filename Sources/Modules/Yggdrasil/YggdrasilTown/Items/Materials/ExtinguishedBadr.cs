@@ -16,6 +16,7 @@ public sealed class ExtinguishedBadr : ModItem
 		Item.height = 32;
 		Item.maxStack = 1;
 		Item.rare = ItemRarityID.Quest;
+		Item.questItem = true;
 	}
 
 	public override void AddRecipes()

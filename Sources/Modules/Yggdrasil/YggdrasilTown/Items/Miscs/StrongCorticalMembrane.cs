@@ -13,5 +13,7 @@ public class StrongCorticalMembrane : ModItem
 
 		Item.rare = ItemRarityID.Green;
 		Item.value = Item.buyPrice(silver: 10);
+
+		Item.questItem = true;
 	}
 }
