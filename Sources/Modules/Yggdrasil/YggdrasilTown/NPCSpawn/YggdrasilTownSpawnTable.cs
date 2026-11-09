@@ -1,5 +1,6 @@
 using Everglow.Commons.Mechanics.NPCSpawn;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs;
+using Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs;
 using static Everglow.Yggdrasil.YggdrasilTown.NPCSpawn.YggdrasilTownSpawnConditions;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.NPCSpawn;
@@ -213,6 +214,13 @@ public static class YggdrasilTownSpawnTable
 			Type = ModContent.NPCType<CarapaceCaterpillar>(),
 			SpawnChance = spawnInfo => InJellyBallHotbed(spawnInfo) && SpawnConditions.OnGround(spawnInfo)
 				? 1f : 0f,
+		});
+
+		// 任务 NPC 刷新规则
+		rules.Add(new SubworldSpawnRule
+		{
+			Type = ModContent.NPCType<Herm>(),
+			SpawnChance = spawnInfo => ModContent.GetInstance<Herm>().SpawnChance(spawnInfo),
 		});
 	}
 }

@@ -85,6 +85,7 @@ MossyThornTurtle.DisplayName: 荆棘苔龟
 OverrideRegistryTestNPC.DisplayName: Override Registry TestNPC
 PurpleBombCaterpillar.DisplayName: Purple Bomb Caterpillar
 QuestCounter_Consultant.DisplayName: Quest Counter_ Consultant
+QuestCounter_Consultant.Greeting: "欢迎来到攀登者工会。"
 Radiolarian.DisplayName: 放射虫
 RapierMaster_Boss.DisplayName: 刺剑大师
 RedCore.DisplayName: 红核心

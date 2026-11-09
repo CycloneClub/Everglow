@@ -40,6 +40,13 @@ Guard_of_YggdrasilTown: {
 	}
 }
 
+Herm: {
+	DisplayName: "赫姆"
+	Greeting: "你好，朋友。"
+	Waiting: "麻烦你把通勤卡带给工会。巴德尔会陪着我的。"
+	Silence: "……"
+}
+
 Howard_Warden.DisplayName: 警长霍华德
 InnKeeper.DisplayName: 酒馆老板格尔格
 Restauranteur.DisplayName: 餐厅老板罗尔

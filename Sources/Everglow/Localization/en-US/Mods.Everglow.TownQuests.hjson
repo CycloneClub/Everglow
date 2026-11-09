@@ -297,15 +297,56 @@
 	"LostMinerQuest": {
 		"Name": "The Lost Miner",
 		"Description": "Herm is stranded far from his fellow miners and needs you to take word back to the guild.",
-		"Hint": "Meet the miner Herm.",
+		"Hint": "Meet the miner Herm in the shallow Tangled Submine.",
 		"Objectives": [
 			{
-				"ObjectiveText": "Find the lost miner Herm"
+				"Description": "Hear Herm's request and accept his commuter card"
 			},
 			{
-				"ObjectiveText": "Balder's Light: help the guild find Herm"
+				"Description": "Deliver the commuter card to the climbing guild's front desk"
+			},
+			{
+				"Description": "Balder's Light: You reached the climbing guild, but Herm is still lost in the mine. The search can continue after seven days.",
+				"ObjectiveText": "Find Herm in the deep Tangled Submine within seven days; after the deadline, search for his remains"
+			},
+			{
+				"Description": "Balder's Light: Say farewell to Herm and recover the lamp that stayed by his side."
+			},
+			{
+				"Description": "You reached the climbing guild, but the miner you met is still lost somewhere in the caves.",
+				"ObjectiveText": "Find Herm's remains in the deep Tangled Submine"
+			},
+			{
+				"Description": "Pick up the extinguished lamp beside Herm"
+			},
+			{
+				"Description": "Herm's Legacy: Herm will remain in the mine forever. Return to the guild and report his fate."
 			}
-		]
+		],
+		"Dialogue": {
+			"Intro0": "Ah, a new face.",
+			"Intro1": "You can call me Herm. As you can see, I seem to have lost my way.",
+			"Intro2": "I'm running low on supplies. Could you take word of me back to the guild?",
+			"Intro3": "Take my commuter card and follow the tunnels back to town. Give it to the lady at the guild's front desk. My fellow miners will come find me.",
+			"Intro4": "Worried about me? (He brings out a mining lamp.) This one will keep me company. Wherever I go, it stays with me.",
+			"Waiting": "{$Mods.Everglow.NPCs.TownNPCs.Herm.Waiting}",
+			"Farewell0": "Ahahaha, it's you.",
+			"Farewell1": "As you can see, Balder has been right here beside me all along.",
+			"Farewell2": "Through its light, I can almost see the furnace glowing...",
+			"Farewell3": "My friend...",
+			"Corpse": "Herm is no longer breathing. A shattered stalactite pins his leg. An extinguished mining lamp lies quietly beside him.",
+			"Silence": "{$Mods.Everglow.NPCs.TownNPCs.Herm.Silence}",
+			"TakeLamp": "Pick up the lamp",
+			"DeliverCard": "Deliver commuter card",
+
+			"CounterCard": "Is that Herm's commuter card? Please tell me where he is.",
+			"MissingCard": "Please bring Herm's commuter card.",
+			"CounterSearch": "Thank you for bringing word. Please search the deep Tangled Submine for Herm. I hope there's still time.",
+			"Report": "Report Herm's fate",
+			"Report0": "Herm... oh...",
+			"Report1": "He was a devoted worker and a kind friend. This was his power pickaxe. Please, keep it...",
+			"CounterThanks": "Thank you for bringing word of Herm. Please look after Balder for him."
+		}
 	},
 	"JellyDressQuest": {
 		"Name": "A Novel Cut: Jelly Ripple Dress",

@@ -85,6 +85,7 @@ MossyThornTurtle.DisplayName: Thorn Mossy Tortoise
 OverrideRegistryTestNPC.DisplayName: Override Registry TestNPC
 PurpleBombCaterpillar.DisplayName: Purple Bomb Caterpillar
 QuestCounter_Consultant.DisplayName: Quest Counter_ Consultant
+QuestCounter_Consultant.Greeting: "Welcome to the climbing guild."
 Radiolarian.DisplayName: Radiolarian
 RapierMaster_Boss.DisplayName: Rapier Master_ Boss
 RedCore.DisplayName: Red Core

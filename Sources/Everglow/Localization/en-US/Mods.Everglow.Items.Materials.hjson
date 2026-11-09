@@ -412,3 +412,8 @@ ManaSpringOre: {
 	DisplayName: Mana Spring Ore
 	Tooltip: An exceptionally rare ore imbued with mana
 }
+
+ExtinguishedBadr: {
+	DisplayName: "Extinguished Balder"
+	Tooltip: "The mining lamp Herm left behind\nCraft beside the grand furnace to rekindle its light"
+}

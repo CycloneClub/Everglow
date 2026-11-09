@@ -34,6 +34,13 @@ Guard_of_YggdrasilTown: {
 	}
 }
 
+Herm: {
+	DisplayName: "Herm"
+	Greeting: "Hello, friend."
+	Waiting: "Please take my card to the guild. Balder will keep me company."
+	Silence: "..."
+}
+
 Howard_Warden.DisplayName: Howard_ Warden
 InnKeeper.DisplayName: Inn Keeper
 Restauranteur.DisplayName: Restauranteur

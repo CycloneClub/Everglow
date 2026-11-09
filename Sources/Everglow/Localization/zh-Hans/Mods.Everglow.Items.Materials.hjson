@@ -412,3 +412,8 @@ ManaSpringOre: {
 	DisplayName: 魔泉矿
 	Tooltip: 蕴含魔力的极稀有矿石
 }
+
+ExtinguishedBadr: {
+	DisplayName: "熄灭的巴德尔"
+	Tooltip: "赫姆遗留下的矿灯\n在宏伟熔炉旁制作，将它重新点亮"
+}

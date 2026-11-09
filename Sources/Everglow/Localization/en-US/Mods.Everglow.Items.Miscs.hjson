@@ -372,3 +372,8 @@ YuxiangEggplant: {
 	DisplayName: Yuxiang Eggplant
 	Tooltip: ""
 }
+
+HermCommuterCard: {
+	DisplayName: "Herm's Commuter Card"
+	Tooltip: "Consumed when delivered to the guild"
+}

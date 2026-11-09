@@ -297,15 +297,56 @@
 	"LostMinerQuest": {
 		"Name": "迷失的矿工",
 		"Description": "矿工赫姆被困在远离同伴的地方，他希望你把消息带回公会。",
-		"Hint": "遇见矿工赫姆后解锁。",
+		"Hint": "在浅层千回矿道遇见矿工赫姆后解锁。",
 		"Objectives": [
 			{
-				"ObjectiveText": "找到迷路的矿工赫姆"
+				"Description": "听完赫姆的委托，收下他的通勤卡"
 			},
 			{
-				"ObjectiveText": "巴德尔之光：帮助公会寻找赫姆"
+				"Description": "将通勤卡交给攀登者工会前台"
+			},
+			{
+				"Description": "巴德尔之光：你到达了攀登者工会，但赫姆还迷失在矿洞中。七天后仍可继续寻找。",
+				"ObjectiveText": "在七天内找到深层千回矿道里的赫姆；超时仍可寻找他的遗体"
+			},
+			{
+				"Description": "巴德尔之光：与赫姆道别，带走陪伴他的矿灯。"
+			},
+			{
+				"Description": "你成功到达了攀登者工会，但那位与你有过一面之缘的矿工先生还迷失在洞穴之中。",
+				"ObjectiveText": "在深层千回矿道中寻找赫姆的遗体"
+			},
+			{
+				"Description": "拾起赫姆身边熄灭的矿灯"
+			},
+			{
+				"Description": "赫姆的遗物：赫姆永远留在了矿区。回到工会报告他的情况。"
 			}
-		]
+		],
+		"Dialogue": {
+			"Intro0": "啊，一张陌生面孔。",
+			"Intro1": "你可以叫我赫姆，但如你所见，我好像迷路了。",
+			"Intro2": "我的补给所剩不多了，如果可以的话，可以请你将我的消息传达给工会吗？",
+			"Intro3": "带上我的通勤卡，沿矿道返回城镇。之后将通勤卡交给工会前台的大姐，我的工友兄弟们会找到我的。",
+			"Intro4": "担心我吗？（掏出矿灯）它会陪我一会，无论我到了哪它都会与我同在。",
+			"Waiting": "{$Mods.Everglow.NPCs.TownNPCs.Herm.Waiting}",
+			"Farewell0": "啊哈哈哈，是你啊。",
+			"Farewell1": "如你所见，巴德尔（矿灯）一直都在我的身边。",
+			"Farewell2": "透过它，我几乎能看到熔炉的光了…",
+			"Farewell3": "朋友啊……",
+			"Corpse": "赫姆已经没有了呼吸。破碎的钟乳石压在他的腿上，一盏熄灭的矿灯静静地躺在他身边。",
+			"Silence": "{$Mods.Everglow.NPCs.TownNPCs.Herm.Silence}",
+			"TakeLamp": "拾起矿灯",
+			"DeliverCard": "交付通勤卡",
+
+			"CounterCard": "这是赫姆的通勤卡？请告诉我他在哪里。",
+			"MissingCard": "请把赫姆的通勤卡带来。",
+			"CounterSearch": "谢谢你带来消息。请你去深层千回矿道找找赫姆，希望一切还来得及。",
+			"Report": "汇报赫姆的情况",
+			"Report0": "赫姆……呜",
+			"Report1": "他是一位敬业的工人，一个和善的友人。这是他的动力镐，你就收着吧…",
+			"CounterThanks": "谢谢你把赫姆的消息带回来。请替他好好照顾巴德尔。"
+		}
 	},
 	"JellyDressQuest": {
 		"Name": "别出心裁-球冻水波裙",
