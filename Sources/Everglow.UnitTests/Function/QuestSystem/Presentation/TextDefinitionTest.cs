@@ -416,13 +416,13 @@ public class TextDefinitionTest
 			[new QuestAction(identity, QuestActionType.Submit)]);
 
 		Assert.AreEqual(
-			"[TextDrawer,Text='提交',Color='45,38,33']",
+			"[TextDrawer,Text='完成',Color='45,38,33']",
 			TextDefinition.GetQuestActionText(entry, "45,38,33"));
 	}
 
 	[TestMethod]
 	[DataRow(QuestActionType.Retry, QuestViewState.Failed, "重试")]
-	[DataRow(QuestActionType.ClaimReward, QuestViewState.Completed, "领取奖励")]
+	[DataRow(QuestActionType.ClaimReward, QuestViewState.Completed, "领取")]
 	public void GetQuestActionText_UsesExportedActionBeforeState(
 		QuestActionType actionType,
 		QuestViewState state,
@@ -452,7 +452,7 @@ public class TextDefinitionTest
 	}
 
 	[TestMethod]
-	public void GetQuestActionText_CompletedWithoutActionUsesPassiveStateLabel()
+	public void GetQuestActionText_CompletedWithoutActionUsesCompletedButtonLabel()
 	{
 		var identity = new QuestIdentity(QuestSide.World, "TestQuest", "TestQuest");
 		var entry = new QuestPresentationEntry(
@@ -460,7 +460,7 @@ public class TextDefinitionTest
 			[]);
 
 		Assert.AreEqual(
-			"[TextDrawer,Text='完成',Color='45,38,33']",
+			"[TextDrawer,Text='已完成',Color='45,38,33']",
 			TextDefinition.GetQuestActionText(entry, "45,38,33"));
 	}
 

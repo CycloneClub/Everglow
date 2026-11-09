@@ -336,13 +336,13 @@
 			"Farewell3": "朋友啊……",
 			"Corpse": "赫姆已经没有了呼吸。破碎的钟乳石压在他的腿上，一盏熄灭的矿灯静静地躺在他身边。",
 			"Silence": "{$Mods.Everglow.NPCs.TownNPCs.Herm.Silence}",
-			"TakeLamp": "拾起矿灯",
-			"DeliverCard": "交付通勤卡",
+			"TakeLamp": "拾取",
+			"DeliverCard": "交付",
 
 			"CounterCard": "这是赫姆的通勤卡？请告诉我他在哪里。",
 			"MissingCard": "请把赫姆的通勤卡带来。",
 			"CounterSearch": "谢谢你带来消息。请你去深层千回矿道找找赫姆，希望一切还来得及。",
-			"Report": "汇报赫姆的情况",
+			"Report": "汇报",
 			"Report0": "赫姆……呜",
 			"Report1": "他是一位敬业的工人，一个和善的友人。这是他的动力镐，你就收着吧…",
 			"CounterThanks": "谢谢你把赫姆的消息带回来。请替他好好照顾巴德尔。"

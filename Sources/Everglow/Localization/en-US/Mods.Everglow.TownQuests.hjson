@@ -336,13 +336,13 @@
 			"Farewell3": "My friend...",
 			"Corpse": "Herm is no longer breathing. A shattered stalactite pins his leg. An extinguished mining lamp lies quietly beside him.",
 			"Silence": "{$Mods.Everglow.NPCs.TownNPCs.Herm.Silence}",
-			"TakeLamp": "Pick up the lamp",
-			"DeliverCard": "Deliver commuter card",
+			"TakeLamp": "Take",
+			"DeliverCard": "Deliver",
 
 			"CounterCard": "Is that Herm's commuter card? Please tell me where he is.",
 			"MissingCard": "Please bring Herm's commuter card.",
 			"CounterSearch": "Thank you for bringing word. Please search the deep Tangled Submine for Herm. I hope there's still time.",
-			"Report": "Report Herm's fate",
+			"Report": "Report",
 			"Report0": "Herm... oh...",
 			"Report1": "He was a devoted worker and a kind friend. This was his power pickaxe. Please, keep it...",
 			"CounterThanks": "Thank you for bringing word of Herm. Please look after Balder for him."

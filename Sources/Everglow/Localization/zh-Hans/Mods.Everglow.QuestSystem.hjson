@@ -1,9 +1,9 @@
 {
 	"Dialogue": {
-		"Open": "任务对话",
+		"Open": "任务",
 		"Continue": "继续",
 		"Confirm": "确认",
-		"Waiting": "等待确认…",
+		"Waiting": "等待",
 		"Unavailable": "尚未满足条件。"
 	},
 	"Common": {
@@ -30,23 +30,24 @@
 		"Failed": "失败"
 	},
 	"Actions": {
-		"Accept": "接取",
+		"Accept": "接受",
 		"Cancel": "放弃",
 		"Retry": "重试",
-		"ClaimReward": "领取奖励",
-		"Submit": "提交"
+		"ClaimReward": "领取",
+		"Submit": "完成"
 	},
 	"UI": {
-		"OpenPanel": "打开任务面板",
+		"OpenPanel": "任务",
 		"Close": "关闭",
 		"QuestDetail": "任务详情",
 		"Description": "描述：",
 		"Objectives": "目标：",
 		"RemainingTime": "剩余时间：{0}",
-		"ConfirmCancel": "是否放弃任务？",
+		"ConfirmCancel": "要放弃这个任务吗？",
 		"Yes": "是",
 		"No": "否",
-		"OK": "确认",
+		"OK": "确定",
+		"Completed": "已完成",
 		"Information": "提示",
 		"OperationFailed": "任务失败",
 		"Duration": "时长：{0}/{1}",

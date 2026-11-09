@@ -1,9 +1,9 @@
 {
 	"Dialogue": {
-		"Open": "Quest dialogue",
+		"Open": "Quest",
 		"Continue": "Continue",
 		"Confirm": "Confirm",
-		"Waiting": "Waiting…",
+		"Waiting": "Wait",
 		"Unavailable": "The requirements are not met yet."
 	},
 	"Common": {
@@ -33,11 +33,11 @@
 		"Accept": "Accept",
 		"Cancel": "Abandon",
 		"Retry": "Retry",
-		"ClaimReward": "Claim Reward",
-		"Submit": "Submit"
+		"ClaimReward": "Collect",
+		"Submit": "Complete"
 	},
 	"UI": {
-		"OpenPanel": "Open Quest Panel",
+		"OpenPanel": "Quests",
 		"Close": "Close",
 		"QuestDetail": "Quest Details",
 		"Description": "Description:",
@@ -47,6 +47,7 @@
 		"Yes": "Yes",
 		"No": "No",
 		"OK": "OK",
+		"Completed": "Completed",
 		"Information": "Information",
 		"OperationFailed": "Quest failed",
 		"Duration": "Duration: {0}/{1}",
