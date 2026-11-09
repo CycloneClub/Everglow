@@ -80,7 +80,9 @@ public sealed class LostMinerQuest : TownNpcQuest
 			.AddBranch(
 				[Search, farewell.WithRewards(new Item(ModContent.ItemType<Badr>()))],
 				[lateSearch, takeExtinguishedLamp.WithRewards(new Item(ModContent.ItemType<ExtinguishedBadr>()))])
-			.Add(report.WithRewards(new Item(ModContent.ItemType<MiningPowerPickaxe>())));
+			.Add(report);
+
+		RewardItems.Add(new Item(ModContent.ItemType<MiningPowerPickaxe>()));
 	}
 
 	public static void ApplyValidatedMeeting()

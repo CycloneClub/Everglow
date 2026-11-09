@@ -306,8 +306,8 @@
 				"Description": "Deliver the commuter card to the climbing guild's front desk"
 			},
 			{
-				"Description": "Balder's Light: You reached the climbing guild, but Herm is still lost in the mine. The search can continue after seven days.",
-				"ObjectiveText": "Find Herm in the deep Tangled Submine within seven days; after the deadline, search for his remains"
+				"Description": "Balder's Light: You reached the climbing guild, but Herm is still lost in the mine",
+				"ObjectiveText": "Find Herm in the deep Tangled Submine"
 			},
 			{
 				"Description": "Balder's Light: Say farewell to Herm and recover the lamp that stayed by his side."
@@ -320,7 +320,7 @@
 				"Description": "Pick up the extinguished lamp beside Herm"
 			},
 			{
-				"Description": "Herm's Legacy: Herm will remain in the mine forever. Return to the guild and report his fate."
+				"Description": "Herm will remain in the mine forever, return to the guild and report his fate."
 			}
 		],
 		"Dialogue": {
@@ -344,7 +344,7 @@
 			"CounterSearch": "Thank you for bringing word. Please search the deep Tangled Submine for Herm. I hope there's still time.",
 			"Report": "Report",
 			"Report0": "Herm... oh...",
-			"Report1": "He was a devoted worker and a kind friend. This was his power pickaxe. Please, keep it...",
+			"Report1": "He was a devoted worker and a kind friend.",
 			"CounterThanks": "Thank you for bringing word of Herm. Please look after Balder for him."
 		}
 	},
