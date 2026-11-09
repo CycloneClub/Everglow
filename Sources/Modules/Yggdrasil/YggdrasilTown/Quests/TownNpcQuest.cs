@@ -22,8 +22,6 @@ public abstract class TownNpcQuest : WorldQuestBase
 
 	public override string LocalizationKey => "Mods.Everglow.TownQuests." + Name;
 
-	public override string DisplayName => Text(Name + ".Name");
-
 	public override string Description => Text(Name + ".Description");
 
 	public override string Hint => Text(Name + ".Hint");

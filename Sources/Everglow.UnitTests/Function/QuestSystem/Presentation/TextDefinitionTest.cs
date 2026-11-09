@@ -676,4 +676,25 @@ public class TextDefinitionTest
 		Assert.AreEqual("Reach the Desert", reach.GetObjectiveText());
 		Assert.AreEqual("Explore the Jungle (0/500)", explore.GetObjectiveText());
 	}
+
+	[TestMethod]
+	public void DefaultDisplayNameReadsDisplayNameKeyAndStaysEmptyWhenMissing()
+	{
+		var world = new LocalizedWorldQuest { Key = "Mods.Everglow.TownQuests.LostMinerQuest" };
+		var player = new DefaultNamedPlayerQuest { Key = "Mods.Everglow.TownQuests.LostMinerQuest" };
+		Assert.AreEqual("迷失的矿工", world.DisplayName);
+		Assert.AreEqual("迷失的矿工", player.DisplayName);
+
+		LoadQuestLanguage("en-US");
+		Assert.AreEqual("The Lost Miner", world.DisplayName);
+		Assert.AreEqual("The Lost Miner", player.DisplayName);
+		Assert.AreEqual(string.Empty, new LocalizedWorldQuest { Key = "Mods.Everglow.TownQuests.MissingQuest" }.DisplayName);
+	}
+
+	private sealed class DefaultNamedPlayerQuest : PlayerQuestBase
+	{
+		public string Key { get; init; } = "Mods.Everglow.TownQuests.LostMinerQuest";
+
+		public override string LocalizationKey => Key;
+	}
 }

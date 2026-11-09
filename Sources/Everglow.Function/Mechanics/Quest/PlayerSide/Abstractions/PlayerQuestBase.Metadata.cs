@@ -1,4 +1,5 @@
 using Everglow.Commons.Mechanics.Quest.Core;
+using Terraria.Localization;
 
 namespace Everglow.Commons.Mechanics.Quest.PlayerSide.Abstractions;
 
@@ -17,9 +18,16 @@ public abstract partial class PlayerQuestBase : ITagCompoundEntity
 	public string InstanceId { get; private set; } = Guid.NewGuid().ToString("N");
 
 	/// <summary>
-	/// 用于外部显示的名字
+	/// 用于外部显示的名字。默认读取 <see cref="LocalizationKey"/> 下的 DisplayName。
 	/// </summary>
-	public abstract string DisplayName { get; }
+	public virtual string DisplayName
+	{
+		get
+		{
+			string key = LocalizationKey + ".DisplayName";
+			return Language.Exists(key) ? Language.GetTextValue(key) : string.Empty;
+		}
+	}
 
 	/// <summary>
 	/// 任务介绍

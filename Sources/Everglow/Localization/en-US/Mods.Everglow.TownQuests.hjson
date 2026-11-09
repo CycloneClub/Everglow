@@ -7,7 +7,7 @@
 			"Objective1Request": "Hey, you. Since you're asking, have you got any ale? Bring me a little, just a little. Make sure the higher-ups don't see.",
 			"Objective1Success": "Shh, keep it down. Don't let the higher-ups see. Thanks! Take these coins and gel for your trouble."
 		},
-		"Name": "Smuggled Ale",
+		"DisplayName": "Smuggled Ale",
 		"Description": "Anna has a small request she would rather keep from her superiors.",
 		"Hint": "Unlocks upon entering Yggdrasil.",
 		"Objectives": [
@@ -24,7 +24,7 @@
 			"Objective0": "Have you heard of the monster they call the Blood Moon Cultist? He's real trouble. If you run into him, be careful.",
 			"Objective2": "I didn't expect you to deal with that monster yourself. You've solved a problem for us. Dinner is on me tonight."
 		},
-		"Name": "She Worries About You",
+		"DisplayName": "She Worries About You",
 		"Description": "Rumors of the Blood Moon Cultist have Anna worried.",
 		"Hint": "Unlocks after completing Smuggled Ale.",
 		"Objectives": [
@@ -43,7 +43,7 @@
 		"Dialogue": {
 			"Objective0": "This little one got hurt, but I can't leave my post. Could you get me some gel? It might help."
 		},
-		"Name": "Slime Doctor",
+		"DisplayName": "Slime Doctor",
 		"Description": "A little creature is hurt, and Anna needs help looking after it.",
 		"Hint": "Unlocks after stopping the Drunken Miners' Parade.",
 		"Objectives": [
@@ -65,7 +65,7 @@
 			"Objective8": "You stopped that sacrifice just in time and kept the townsfolk safe. On behalf of everyone in Yggdrasil Town, thank you."
 		},
 		"Hint": "Unlocks after defeating the Squamous Shell.",
-		"Name": "Defend Yggdrasil Town",
+		"DisplayName": "Defend Yggdrasil Town",
 		"Description": "Repeated disturbances trouble Yggdrasil Town. Howard needs help keeping the peace.",
 		"Objectives": [
 			{
@@ -111,7 +111,7 @@
 			"Objective1Request": "Ah, you're new here. Since you asked, business has been so good these past few days that we haven't had time to restock. Bring me some grass carp and dinner is on me.",
 			"Objective1Success": "These fish are nice and plump. As promised, dinner is on me."
 		},
-		"Name": "Restocking Ingredients I",
+		"DisplayName": "Restocking Ingredients I",
 		"Description": "Business has been so good that Rolle has run short of fish.",
 		"Hint": "Available upon entering Yggdrasil.",
 		"Objectives": [
@@ -128,7 +128,7 @@
 			"Objective0": "Still looking for work at this hour? I don't want to see you too hungry to lift your sword. You seem willing to learn, so I'll teach you to make grass carp marinated in lampfruit juice. Then you can feed yourself.",
 			"Objective2": "Got the lampfruits? Preparing your own ingredients is the first step. They'll come in handy for marinated grass carp."
 		},
-		"Name": "Self-Reliance",
+		"DisplayName": "Self-Reliance",
 		"Description": "Rolle wants to teach you how to prepare a filling meal.",
 		"Hint": "Defeat King Jelly Ball or Squamous Shell.",
 		"Objectives": [
@@ -148,7 +148,7 @@
 			"Objective0": "I heard you've encountered Mossy Thorn Turtles. Get me one. Perhaps we can come up with a new dish.",
 			"Objective2": "Very fresh! You have a good eye. That wasn't so hard, was it? I have to go. The ideas are pouring in!"
 		},
-		"Name": "Restocking Ingredients II",
+		"DisplayName": "Restocking Ingredients II",
 		"Description": "Rolle hopes the Mossy Thorn Turtle will inspire a new dish.",
 		"Hint": "Someone must enter Kelp Curtain.",
 		"Objectives": [
@@ -168,7 +168,7 @@
 			"Objective0": "The boss hurt his back while trying out a new dish. You two seem to be old friends now. Could you bring me the ingredients for his medicinal oil so he can recover sooner?",
 			"Objective3": "That's everything. Thank you! I hope he recovers soon. We'll have to make sure he rests."
 		},
-		"Name": "An Aching Back",
+		"DisplayName": "An Aching Back",
 		"Description": "Rolle hurt his back while experimenting with a new dish. Betty needs ingredients for his medicine.",
 		"Hint": "Complete Self-Reliance.",
 		"Objectives": [
@@ -191,7 +191,7 @@
 			"Objective0": "You know those pirates? They haven't paid their bills for three months. Collect the debt for me and you'll get a share.",
 			"Objective2": "Thank you. I hope that works. The fewer troublesome customers, the better."
 		},
-		"Name": "Troublesome Guests",
+		"DisplayName": "Troublesome Guests",
 		"Description": "Some pirates have left their restaurant bills unpaid. Betty wants someone to deal with them.",
 		"Hint": "Wait for Betty's request concerning the pirates' debts.",
 		"Objectives": [
@@ -212,7 +212,7 @@
 			"Objective0": "You're an adventurer, aren't you? I've heard of a monster that looks almost human. Would you investigate this ownerless flesh puppet for me, then take care of it?",
 			"Objective2": "What an interesting story! Well done. How about a little pat of my tail as your reward?"
 		},
-		"Name": "Teahouse Tales I",
+		"DisplayName": "Teahouse Tales I",
 		"Description": "Schorl is curious about rumors of an ownerless flesh puppet.",
 		"Hint": "Available upon entering Yggdrasil.",
 		"Objectives": [
@@ -233,7 +233,7 @@
 			"Objective0": "Do you remember that monster? I'm sure you noticed the marks on its body. Investigate the second layer. A cult's creation is hidden there, and it may hold the answers you seek.",
 			"Objective2": "It's been a long time since I've heard such good news. Shall we celebrate tonight?"
 		},
-		"Name": "Teahouse Tales II",
+		"DisplayName": "Teahouse Tales II",
 		"Description": "The marks on the monster seem connected to a cult in Kelp Curtain.",
 		"Hint": "Someone must enter Kelp Curtain.",
 		"Objectives": [
@@ -254,7 +254,7 @@
 			"Objective1": "You seem to have something I need. My prosthetic limb needs maintenance, but I'm short of Cyan Vine Ore. Could you bring me some? There will be a reward.",
 			"Objective3": "Well done! I knew you could help me."
 		},
-		"Name": "Prosthetic Maintenance",
+		"DisplayName": "Prosthetic Maintenance",
 		"Description": "Georg needs materials to maintain his prosthetic limb.",
 		"Hint": "Talk to Georg while carrying Cyan Vine Ore or Bars, or wearing Cyan Vine armor.",
 		"Objectives": [
@@ -278,7 +278,7 @@
 			"Objective0": "To be honest, many guests say the inn feels too stern. I'd like to brighten it up with some plants, but they only grow in Kelp Curtain. You're always helpful. Could you bring me some?",
 			"Objective2": "Thank you so much. I'll put these plants to good use."
 		},
-		"Name": "Changing the Inn I",
+		"DisplayName": "Changing the Inn I",
 		"Description": "Georg wants plants from Kelp Curtain to make his inn more welcoming.",
 		"Hint": "Someone must enter Kelp Curtain.",
 		"Objectives": [
@@ -295,7 +295,7 @@
 		]
 	},
 	"LostMinerQuest": {
-		"Name": "The Lost Miner",
+		"DisplayName": "The Lost Miner",
 		"Description": "Herm is stranded far from his fellow miners and needs you to take word back to the guild.",
 		"Hint": "Meet the miner Herm in the shallow Tangled Submine.",
 		"Objectives": [
@@ -349,7 +349,7 @@
 		}
 	},
 	"JellyDressQuest": {
-		"Name": "A Novel Cut: Jelly Ripple Dress",
+		"DisplayName": "A Novel Cut: Jelly Ripple Dress",
 		"Description": "Scarpa wants unusual materials to create a new outfit.",
 		"Hint": "Visit the tailor Scarpa.",
 		"Objectives": [
@@ -359,7 +359,7 @@
 		]
 	},
 	"SageAlbionQuest": {
-		"Name": "Sage Albion",
+		"DisplayName": "Sage Albion",
 		"Description": "Guild master Albion has a trial for a newcomer.",
 		"Hint": "Get an introduction from the guild receptionist.",
 		"Objectives": [
@@ -369,7 +369,7 @@
 		]
 	},
 	"NamelessPersonQuest": {
-		"Name": "The Nameless One",
+		"DisplayName": "The Nameless One",
 		"Description": "A mysterious figure vanished before your eyes.",
 		"Hint": "Encounter the realm walker for the first time.",
 		"Objectives": [
