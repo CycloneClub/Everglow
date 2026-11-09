@@ -1,3 +1,4 @@
+using Everglow.Commons.Mechanics.Quest.Core.Dialogue;
 using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.PlayerSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.PlayerSide.Tests;
@@ -274,10 +275,15 @@ public class ExamplePerson : ModNPC
 		{
 			button = "Upgrade " + Lang.GetItemNameValue(ItemID.HiveBackpack);
 		}
+		QuestChat.SetChatButton(NPC, ref button2);
 	}
 
 	public override void OnChatButtonClicked(bool firstButton, ref string shop)
 	{
+		if (QuestChat.OnChatButtonClicked(NPC, firstButton))
+		{
+			return;
+		}
 		if (firstButton)
 		{
 			// We want 3 different functionalities for chat buttons, so we use HasItem to change button 1 between a shop and upgrade action.

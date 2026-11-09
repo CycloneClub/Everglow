@@ -1,10 +1,12 @@
+using Everglow.Commons.Mechanics.Quest.Core.Dialogue;
+using Terraria.ModLoader.IO;
 using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.PlayerSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.Presentation.Icons;
 
 namespace Everglow.Commons.Mechanics.Quest.PlayerSide.Objectives;
 
-public class TalkNPCObjective : PlayerObjectiveBase
+public class TalkNPCObjective : PlayerObjectiveBase, IQuestDialogueObjective
 {
 	public TalkNPCObjective()
 	{
@@ -17,22 +19,44 @@ public class TalkNPCObjective : PlayerObjectiveBase
 			: throw new InvalidDataException($"NPC type should more than 1.");
 	}
 
+	private bool dialogueSubmitted;
+
+	public ObjectiveDialogue Dialogue { get; set; }
+
 	public int NPCType { get; set; }
 
-	public string NPCText => GetText("NPCText");
+	public override float Progress => CheckCompletion() ? 1f : 0f;
 
-	public override float Progress => Main.LocalPlayer.talkNPC >= NPCID.None && Main.npc[Main.LocalPlayer.talkNPC].type == NPCType ? 1f : 0f;
+	public override bool CheckCompletion() => dialogueSubmitted;
 
-	public override bool CheckCompletion() => Main.LocalPlayer.talkNPC >= NPCID.None && Main.npc[Main.LocalPlayer.talkNPC].type == NPCType;
+	public virtual string GetChat() => QuestText.Get("Objectives.Talk", Lang.GetNPCNameValue(NPCType));
 
-	public override void Complete()
+	public bool TrySubmitObjective(Player player)
 	{
-		base.Complete();
-
-		if (!string.IsNullOrEmpty(NPCText))
+		if (!CanProgress || !QuestChat.CanSubmitObjective(player, NPCType))
 		{
-			Main.npcChatText = NPCText;
+			return false;
 		}
+		dialogueSubmitted = true;
+		return true;
+	}
+
+	public override void ResetProgress()
+	{
+		base.ResetProgress();
+		dialogueSubmitted = false;
+	}
+
+	public override void SaveData(TagCompound tag)
+	{
+		base.SaveData(tag);
+		tag["DialogueSubmitted"] = dialogueSubmitted;
+	}
+
+	public override void LoadData(TagCompound tag)
+	{
+		base.LoadData(tag);
+		dialogueSubmitted = tag.GetBool("DialogueSubmitted");
 	}
 
 	public override void GetObjectivesIcon(QuestIconGroup iconGroup)

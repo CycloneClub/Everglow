@@ -1,4 +1,11 @@
 {
+	"Dialogue": {
+		"Open": "Quest dialogue",
+		"Continue": "Continue",
+		"Confirm": "Confirm",
+		"Waiting": "Waiting…",
+		"Unavailable": "The requirements are not met yet."
+	},
 	"Common": {
 		"All": "All",
 		"Unknown": "Unknown",

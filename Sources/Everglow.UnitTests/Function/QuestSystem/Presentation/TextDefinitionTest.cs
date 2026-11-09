@@ -1,4 +1,5 @@
 using System.Reflection;
+using Everglow.Commons.Mechanics.Quest.Core.Dialogue;
 using System.Text.Json;
 using Terraria.Localization;
 using Terraria.ID;
@@ -647,49 +648,32 @@ public class TextDefinitionTest
 	[TestMethod]
 	public void ObjectiveDialogueAndCustomTextFollowCurrentLanguage()
 	{
-		const string prefix = "Mods.Everglow.TownQuests.SmuggledAleQuest.Objectives.";
-		var worldTalk = new WorldTalkObjective(NPCID.Guide) { LocalizationKey = prefix + "0" };
-		var playerTalk = new TalkNPCObjective(NPCID.Guide) { LocalizationKey = prefix + "0" };
-		var worldGive = new WorldGiveObjective(NPCID.Guide, ItemID.Ale, 5) { LocalizationKey = prefix + "1" };
-		var playerGive = new GiveItemObjective([ItemID.Ale], 5, NPCID.Guide) { LocalizationKey = prefix + "1" };
+		const string questKey = "Mods.Everglow.TownQuests.SmuggledAleQuest";
+		var worldTalk = new WorldTalkObjective(NPCID.Guide).WithDialogue(d => d.WithText("Dialogue.Objective0"));
+		var playerTalk = new TalkNPCObjective(NPCID.Guide).WithDialogue(d => d.WithText("Dialogue.Objective0"));
+		var worldGive = new WorldGiveObjective(NPCID.Guide, ItemID.Ale, 5)
+			.WithDialogue(d => d.WithText("Dialogue.Objective1Request").WithCompletionText("Dialogue.Objective1Success"));
+		var playerGive = new GiveItemObjective([ItemID.Ale], 5, NPCID.Guide)
+			.WithDialogue(d => d.WithText("Dialogue.Objective1Request").WithCompletionText("Dialogue.Objective1Success"));
 		var reach = new WorldReachObjective(_ => false) { LocalizationKey = "Mods.Everglow.Quests.TestReach.Objectives.0" };
 		var explore = new WorldExploreObjective(500, _ => false) { LocalizationKey = "Mods.Everglow.Quests.TestExplore.Objectives.0" };
-		StringAssert.Contains(worldTalk.NPCText, "麦芽酒");
-		Assert.AreEqual(worldTalk.NPCText, playerTalk.NPCText);
-		StringAssert.Contains(worldGive.StartText, "麦芽酒");
-		StringAssert.Contains(worldGive.EndText, "谢啦");
-		Assert.AreEqual(worldGive.StartText, playerGive.StartText);
-		Assert.AreEqual(worldGive.EndText, playerGive.EndText);
+		string Text(string key) => Language.GetTextValue(questKey + "." + key);
+		StringAssert.Contains(Text(worldTalk.Dialogue.TextKeys[0]), "麦芽酒");
+		Assert.AreEqual(Text(worldTalk.Dialogue.TextKeys[0]), Text(playerTalk.Dialogue.TextKeys[0]));
+		StringAssert.Contains(Text(worldGive.Dialogue.TextKeys[0]), "麦芽酒");
+		StringAssert.Contains(Text(worldGive.Dialogue.CompletionTextKeys[0]), "谢啦");
+		Assert.AreEqual(Text(worldGive.Dialogue.TextKeys[0]), Text(playerGive.Dialogue.TextKeys[0]));
+		Assert.AreEqual(Text(worldGive.Dialogue.CompletionTextKeys[0]), Text(playerGive.Dialogue.CompletionTextKeys[0]));
 		Assert.AreEqual("到达沙漠", reach.GetObjectiveText());
 		Assert.AreEqual("在丛林中探索 (0/500)", explore.GetObjectiveText());
 
 		LoadQuestLanguage("en-US");
-		StringAssert.Contains(worldTalk.NPCText, "have you got any ale?");
-		Assert.AreEqual(worldTalk.NPCText, playerTalk.NPCText);
-		StringAssert.Contains(worldGive.StartText, "have you got any ale?");
-		StringAssert.Contains(worldGive.EndText, "Thanks!");
-		Assert.AreEqual(worldGive.StartText, playerGive.StartText);
-		Assert.AreEqual(worldGive.EndText, playerGive.EndText);
+		StringAssert.Contains(Text(worldTalk.Dialogue.TextKeys[0]), "have you got any ale?");
+		StringAssert.Contains(Text(worldGive.Dialogue.TextKeys[0]), "have you got any ale?");
+		StringAssert.Contains(Text(worldGive.Dialogue.CompletionTextKeys[0]), "Thanks!");
+		Assert.AreEqual(Text(worldTalk.Dialogue.TextKeys[0]), Text(playerTalk.Dialogue.TextKeys[0]));
+		Assert.AreEqual(Text(worldGive.Dialogue.CompletionTextKeys[0]), Text(playerGive.Dialogue.CompletionTextKeys[0]));
 		Assert.AreEqual("Reach the Desert", reach.GetObjectiveText());
 		Assert.AreEqual("Explore the Jungle (0/500)", explore.GetObjectiveText());
-	}
-
-	[TestMethod]
-	public void MissingAndExplicitEmptyDialogueStayEmptyAcrossLanguages()
-	{
-		var defaults = new GiveItemObjective([ItemID.WoodenArrow], 2, NPCID.Guide);
-		Assert.AreEqual(string.Empty, defaults.StartText);
-		Assert.AreEqual(string.Empty, defaults.EndText);
-		LoadQuestLanguage("en-US");
-		Assert.AreEqual(string.Empty, defaults.StartText);
-		Assert.AreEqual(string.Empty, defaults.EndText);
-		Assert.AreEqual(string.Empty, new WorldGiveObjective(NPCID.Guide, ItemID.Ale, 5).StartText);
-		Assert.AreEqual(string.Empty, new WorldTalkObjective(NPCID.Guide).NPCText);
-		Assert.AreEqual(string.Empty, new TalkNPCObjective(NPCID.Guide).NPCText);
-		Language.GetOrRegister("Tests.Empty.StartText", () => string.Empty);
-		Language.GetOrRegister("Tests.Empty.EndText", () => string.Empty);
-		defaults.LocalizationKey = "Tests.Empty";
-		Assert.AreEqual(string.Empty, defaults.StartText);
-		Assert.AreEqual(string.Empty, defaults.EndText);
 	}
 }

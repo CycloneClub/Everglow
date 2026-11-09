@@ -1,4 +1,5 @@
 using Everglow.Commons.Mechanics.Quest.Core;
+using Everglow.Commons.Mechanics.Quest.Core.Dialogue;
 using Everglow.Commons.Mechanics.Quest.WorldSide;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Objectives;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs;
@@ -14,10 +15,12 @@ public sealed class ProstheticMaintenanceQuest : TownNpcQuest
 	{
 		Objectives
 			.Add(new WorldReachObjective(player => player.TalkNPC?.netID == GiverNpcType && HasCyanVineMaterialOrArmor(player)))
-			.Add(new WorldTalkObjective(GiverNpcType))
+			.Add(new WorldTalkObjective(GiverNpcType)
+				.WithDialogue(d => d.WithText("Dialogue.Objective1")))
 			// TODO: 矿石交付数量、报酬未确定。数量明确后改为 WorldGiveObjective。
 			.Add(new WorldReachObjective(_ => false))
-			.Add(new WorldTalkObjective(GiverNpcType));
+			.Add(new WorldTalkObjective(GiverNpcType)
+				.WithDialogue(d => d.WithText("Dialogue.Objective3")));
 	}
 
 	public override int GiverNpcType => ModContent.NPCType<InnKeeper>();

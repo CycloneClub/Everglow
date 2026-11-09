@@ -1,4 +1,16 @@
 {
+	"ExampleDialogueQuest": {
+		"Dialogue": {
+			"Intro": "This conversation is defined directly in the quest objective chain.",
+			"Request": "Please bring ten Dirt Blocks, then press Deliver when ready.",
+			"Accept": "I'll help",
+			"Accepted": "Thank you. Open Quest dialogue again when you are ready to deliver.",
+			"Deliver": "Deliver ten Dirt Blocks",
+			"Missing": "You need more Dirt Blocks. Confirm again when you are ready.",
+			"Thanks": "Received! Here is a Silver Coin for your help.",
+			"Goodbye": "The objective has completed, but this reply stays until you finish reading."
+		}
+	},
 	"TestExplore": {
 		"Objectives": [
 			{
@@ -42,11 +54,13 @@
 		]
 	},
 	"GiveItemQuestTest": {
+		"Dialogue": {
+			"Missing": "You need more Dirt Blocks. Confirm again when you are ready.",
+			"Request": "Please bring me ten Dirt Blocks.",
+			"Success": "Thank you."
+		},
 		"Objectives": [
-			{
-				"StartText": "Please bring me ten Dirt Blocks.",
-				"EndText": "Thank you."
-			}
+			{}
 		]
 	}
 }

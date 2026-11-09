@@ -1,3 +1,4 @@
+using Everglow.Commons.Mechanics.Quest.PlayerSide.Tests.ExampleNPC;
 using Everglow.Commons.Mechanics.BiomesText;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Objectives;
@@ -14,11 +15,11 @@ public class TestStructure : WorldQuestBase
 				new WorldReachObjective(p => p.InVanillaBiome(VanillaBiomes.Dungeon)),
 				new WorldKillNPCObjective(NPCID.BlueSlime, 5))
 			.AddParallel(
-				new WorldGiveObjective(NPCID.Merchant, ItemID.DirtBlock, 100),
+				new WorldGiveObjective(ModContent.NPCType<ExamplePerson>(), ItemID.DirtBlock, 100),
 				new WorldKillNPCObjective(NPCID.ZombieDoctor, 5))
 			.AddBranch(
 				[new WorldKillNPCObjective(NPCID.BloodZombie, 10)],
-				[new WorldTalkObjective(NPCID.Angler), new WorldReachObjective(p => p.InVanillaBiome(VanillaBiomes.Jungle))],
+				[new WorldTalkObjective(ModContent.NPCType<ExamplePerson>()), new WorldReachObjective(p => p.InVanillaBiome(VanillaBiomes.Jungle))],
 				[new WorldReachObjective(p => p.InVanillaBiome(VanillaBiomes.Cavern))]);
 	}
 }

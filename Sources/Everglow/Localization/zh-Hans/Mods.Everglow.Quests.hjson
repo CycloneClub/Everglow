@@ -1,4 +1,16 @@
 {
+	"ExampleDialogueQuest": {
+		"Dialogue": {
+			"Intro": "这段对话直接定义在任务的目标链中。",
+			"Request": "请带来十块土块，准备好后点击交付。",
+			"Accept": "我来帮忙",
+			"Accepted": "谢谢你。接下来可以继续点击任务对话来交付。",
+			"Deliver": "交付十块土块",
+			"Missing": "土块还不够，准备好后可以再次确认。",
+			"Thanks": "收到了！这枚银币是你的报酬。",
+			"Goodbye": "目标已经完成，但这句回应会保留到你读完。"
+		}
+	},
 	"TestExplore": {
 		"Objectives": [
 			{
@@ -42,11 +54,13 @@
 		]
 	},
 	"GiveItemQuestTest": {
+		"Dialogue": {
+			"Missing": "土块还不够，准备好后可以再次确认。",
+			"Request": "请给我十个土块。",
+			"Success": "谢谢你。"
+		},
 		"Objectives": [
-			{
-				"StartText": "请给我十个土块。",
-				"EndText": "谢谢你。"
-			}
+			{}
 		]
 	}
 }

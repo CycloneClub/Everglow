@@ -1,4 +1,5 @@
 using Everglow.Commons.Mechanics.Quest.Core;
+using Everglow.Commons.Mechanics.Quest.Core.Dialogue;
 using Everglow.Commons.Mechanics.Quest.WorldSide;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Objectives;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs;
@@ -10,7 +11,8 @@ public sealed class SlimeDoctorQuest : TownNpcQuest
 	public override void Initialize()
 	{
 		Objectives
-			.Add(new WorldTalkObjective(GiverNpcType))
+			.Add(new WorldTalkObjective(GiverNpcType)
+				.WithDialogue(d => d.WithText("Dialogue.Objective0")))
 			// TODO: 策划尚未明确凝胶数量，确认后替换为 WorldGiveObjective。
 			.Add(new WorldReachObjective(_ => false));
 	}

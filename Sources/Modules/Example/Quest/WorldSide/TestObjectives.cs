@@ -1,3 +1,4 @@
+using Everglow.Commons.Mechanics.Quest.PlayerSide.Tests.ExampleNPC;
 using Everglow.Commons.Mechanics.BiomesText;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Objectives;
@@ -35,7 +36,7 @@ public class TestGive : WorldQuestBase
 {
 	public override void Initialize()
 	{
-		Objectives.Add(new WorldGiveObjective(NPCID.DyeTrader, ItemID.DirtBlock, 10));
+		Objectives.Add(new WorldGiveObjective(ModContent.NPCType<ExamplePerson>(), ItemID.DirtBlock, 10));
 	}
 }
 
@@ -61,7 +62,7 @@ public class TestTalkNPC : WorldQuestBase
 {
 	public override void Initialize()
 	{
-		Objectives.Add(new WorldTalkObjective(NPCID.Guide));
-		Objectives.Add(new WorldTalkObjective(NPCID.Nurse));
+		Objectives.Add(new WorldTalkObjective(ModContent.NPCType<ExamplePerson>()));
+		Objectives.Add(new WorldTalkObjective(ModContent.NPCType<ExamplePerson>()));
 	}
 }

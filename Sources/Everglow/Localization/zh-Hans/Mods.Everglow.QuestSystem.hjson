@@ -1,4 +1,11 @@
 {
+	"Dialogue": {
+		"Open": "任务对话",
+		"Continue": "继续",
+		"Confirm": "确认",
+		"Waiting": "等待确认…",
+		"Unavailable": "尚未满足条件。"
+	},
 	"Common": {
 		"All": "全部",
 		"Unknown": "未知",

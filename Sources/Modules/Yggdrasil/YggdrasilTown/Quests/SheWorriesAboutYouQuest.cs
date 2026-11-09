@@ -1,4 +1,5 @@
 using Everglow.Commons.Mechanics.Quest.Core;
+using Everglow.Commons.Mechanics.Quest.Core.Dialogue;
 using Everglow.Commons.Mechanics.Quest.WorldSide;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Objectives;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs;
@@ -11,9 +12,11 @@ public sealed class SheWorriesAboutYouQuest : TownNpcQuest
 	public override void Initialize()
 	{
 		Objectives
-			.Add(new WorldTalkObjective(GiverNpcType))
+			.Add(new WorldTalkObjective(GiverNpcType)
+				.WithDialogue(d => d.WithText("Dialogue.Objective0")))
 			.Add(new WorldKillNPCObjective(ModContent.NPCType<CrimsonSpell>(), 1))
-			.Add(new WorldTalkObjective(GiverNpcType));
+			.Add(new WorldTalkObjective(GiverNpcType)
+				.WithDialogue(d => d.WithText("Dialogue.Objective2")));
 	}
 
 	public override int GiverNpcType => ModContent.NPCType<Guard_of_YggdrasilTown>();
@@ -24,5 +27,5 @@ public sealed class SheWorriesAboutYouQuest : TownNpcQuest
 		manager.GetQuest<SmuggledAleQuest>()?.State == WorldQuestState.Completed;
 
 	public override string Description => State == WorldQuestState.Completed
-		? Text(Name + ".Objectives.2.NPCText") : base.Description;
+		? Text(Name + ".Dialogue.Objective2") : base.Description;
 }

@@ -1,4 +1,5 @@
 using Everglow.Commons.Mechanics.Quest.Core;
+using Everglow.Commons.Mechanics.Quest.Core.Dialogue;
 using Everglow.Commons.Mechanics.Quest.WorldSide;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Objectives;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs;
@@ -10,10 +11,12 @@ public sealed class TeahouseTalesOneQuest : TownNpcQuest
 	public override void Initialize()
 	{
 		Objectives
-			.Add(new WorldTalkObjective(GiverNpcType))
+			.Add(new WorldTalkObjective(GiverNpcType)
+				.WithDialogue(d => d.WithText("Dialogue.Objective0")))
 			// TODO: 无主肉傀尚无 NPC 实现，不能用无关怪物完成这个目标。
 			.Add(new WorldReachObjective(_ => false))
-			.Add(new WorldTalkObjective(GiverNpcType));
+			.Add(new WorldTalkObjective(GiverNpcType)
+				.WithDialogue(d => d.WithText("Dialogue.Objective2")));
 	}
 
 	public override int GiverNpcType => ModContent.NPCType<TeahouseLady>();

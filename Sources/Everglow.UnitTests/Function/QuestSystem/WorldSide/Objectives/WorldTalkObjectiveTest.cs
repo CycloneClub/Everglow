@@ -57,13 +57,15 @@ public class WorldTalkObjectiveTest
 	[TestMethod]
 	[DataRow(NetmodeID.SinglePlayer)]
 	[DataRow(NetmodeID.MultiplayerClient)]
-	public void MatchingLocalConversationShowsTextWithoutClientCompletingWorld(int mode)
+	public void MatchingLocalConversationRequiresExplicitConfirmation(int mode)
 	{
 		Main.netMode = mode;
 		var objective = new WorldTalkObjective(NPCID.Guide) { LocalizationKey = "Tests.WorldTalk" };
 		TalkTo(0);
 		objective.Update();
-		Assert.AreEqual("A quest for you.", Main.npcChatText);
+		Assert.AreEqual("Original dialogue", Main.npcChatText);
+		Assert.IsFalse(objective.Talked);
+		Assert.IsTrue(objective.TrySubmitObjective(Main.LocalPlayer));
 		Assert.AreEqual(mode == NetmodeID.SinglePlayer, objective.Talked);
 	}
 
@@ -77,7 +79,7 @@ public class WorldTalkObjectiveTest
 		typeof(Player).GetProperty(nameof(Player.talkNPC))!.SetValue(Main.player[1], 0);
 		var objective = new WorldTalkObjective(NPCID.Guide) { LocalizationKey = "Tests.WorldTalk" };
 		objective.Update();
-		Assert.IsTrue(objective.Talked);
+		Assert.IsFalse(objective.Talked);
 		Assert.AreEqual("Original dialogue", Main.npcChatText);
 	}
 
@@ -98,6 +100,7 @@ public class WorldTalkObjectiveTest
 		var sender = new WorldTalkObjective(NPCID.Guide) { LocalizationKey = "Tests.WorldTalk" };
 		TalkTo(0);
 		sender.Update();
+		Assert.IsTrue(sender.TrySubmitObjective(Main.LocalPlayer));
 		sender.Complete();
 		var receiver = new WorldTalkObjective(NPCID.Guide) { LocalizationKey = "Tests.WorldTalk" };
 		Main.netMode = NetmodeID.MultiplayerClient;

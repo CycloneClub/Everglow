@@ -1,4 +1,5 @@
 using Everglow.Commons.Mechanics.Quest.Core;
+using Everglow.Commons.Mechanics.Quest.Core.Dialogue;
 using Everglow.Commons.Mechanics.Quest.WorldSide;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Objectives;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs;
@@ -11,9 +12,11 @@ public sealed class IngredientSupplyOneQuest : TownNpcQuest
 	public override void Initialize()
 	{
 		Objectives
-			.Add(new WorldTalkObjective(GiverNpcType))
+			.Add(new WorldTalkObjective(GiverNpcType)
+				.WithDialogue(d => d.WithText("Dialogue.Objective0")))
 			// TODO: 策划中的晚饭尚未指定物品；交付流程先独立完成。
-			.Add(new WorldGiveObjective(GiverNpcType, ModContent.ItemType<GrassCarp>(), 5));
+			.Add(new WorldGiveObjective(GiverNpcType, ModContent.ItemType<GrassCarp>(), 5)
+				.WithDialogue(d => d.WithText("Dialogue.Objective1Request").WithCompletionText("Dialogue.Objective1Success")));
 	}
 
 	public override int GiverNpcType => ModContent.NPCType<Restauranteur>();

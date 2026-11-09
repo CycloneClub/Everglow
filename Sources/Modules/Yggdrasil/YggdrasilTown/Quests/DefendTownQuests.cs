@@ -1,4 +1,5 @@
 using Everglow.Commons.Mechanics.Events;
+using Everglow.Commons.Mechanics.Quest.Core.Dialogue;
 using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.Presentation.Icons;
 using Everglow.Commons.Mechanics.Quest.WorldSide;
@@ -17,15 +18,20 @@ public sealed class DefendTownQuest : TownNpcQuest
 	public override void Initialize()
 	{
 		Objectives
-			.Add(new WorldTalkObjective(GiverNpcType))
+			.Add(new WorldTalkObjective(GiverNpcType)
+				.WithDialogue(d => d.WithText("Dialogue.Objective0")))
 			.Add(new DrunkenMinerInvasionObjective())
-			.Add(new WorldTalkObjective(GiverNpcType))
+			.Add(new WorldTalkObjective(GiverNpcType)
+				.WithDialogue(d => d.WithText("Dialogue.Objective2")))
 			.Add(new WorldReachObjective(_ => false))
-			.Add(new WorldTalkObjective(GiverNpcType))
+			.Add(new WorldTalkObjective(GiverNpcType)
+				.WithDialogue(d => d.WithText("Dialogue.Objective4")))
 			.Add(new WorldReachObjective(_ => false))
-			.Add(new WorldTalkObjective(GiverNpcType))
+			.Add(new WorldTalkObjective(GiverNpcType)
+				.WithDialogue(d => d.WithText("Dialogue.Objective6")))
 			.Add(new WorldReachObjective(_ => false))
-			.Add(new WorldTalkObjective(GiverNpcType));
+			.Add(new WorldTalkObjective(GiverNpcType)
+				.WithDialogue(d => d.WithText("Dialogue.Objective8")));
 	}
 
 	public override int GiverNpcType => ModContent.NPCType<Howard_Warden>();

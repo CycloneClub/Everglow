@@ -1,3 +1,5 @@
+using Everglow.Commons.Mechanics.Quest.Core.Dialogue;
+using Terraria.ModLoader.IO;
 using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.PlayerSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.Presentation.Icons;
@@ -5,7 +7,7 @@ using Everglow.Commons.UI.StringDrawerSystem.DrawerItems.ImageDrawers;
 
 namespace Everglow.Commons.Mechanics.Quest.PlayerSide.Objectives;
 
-public class GiveItemObjective : PlayerObjectiveBase
+public class GiveItemObjective : PlayerObjectiveBase, IQuestDialogueObjective
 {
 	public GiveItemObjective()
 	{
@@ -19,31 +21,19 @@ public class GiveItemObjective : PlayerObjectiveBase
 			: throw new InvalidDataException($"NPC type should more than 0.");
 	}
 
+	private bool dialogueSubmitted;
+
+	public ObjectiveDialogue Dialogue { get; set; }
+
 	public int NPCType { get; set; }
-
-	public string StartText => GetText("StartText");
-
-	public string EndText => GetText("EndText");
 
 	public List<int> ItemTypes { get; private set; } = [];
 
 	public int ItemCount { get; private set; }
 
-	public override float Progress => GetInventoryProgress(Main.LocalPlayer.inventory);
+	public override float Progress => dialogueSubmitted ? 1f : GetInventoryProgress(Main.LocalPlayer.inventory);
 
-	public bool IsTalkingToNPC => NPCType == NPCID.None || (NPCType > NPCID.None && Main.LocalPlayer.talkNPC >= NPCID.None && Main.npc[Main.LocalPlayer.talkNPC].type == NPCType);
-
-	public override bool CheckCompletion() => IsTalkingToNPC && GetInventoryProgress(Main.LocalPlayer.inventory) >= 1f;
-
-	public override void Update()
-	{
-		base.Update();
-
-		if (IsTalkingToNPC && !string.IsNullOrEmpty(StartText))
-		{
-			Main.npcChatText = StartText;
-		}
-	}
+	public override bool CheckCompletion() => dialogueSubmitted;
 
 	/// <summary>
 	/// Remove required items from player inventory.
@@ -71,20 +61,49 @@ public class GiveItemObjective : PlayerObjectiveBase
 		}
 	}
 
-	public override void Complete()
+	public virtual string GetChat()
 	{
-		// Make sure the items can only be removed once.
-		if (!Completed)
-		{
-			RemoveItem(Main.LocalPlayer.inventory);
-		}
+		string items = string.Join(QuestText.Get("Common.ListSeparator"), ItemTypes.Select(Lang.GetItemNameValue));
+		string progress = $"({Main.LocalPlayer.inventory.Where(i => ItemTypes.Contains(i.type)).Sum(i => i.stack)}/{ItemCount})";
+		return QuestText.Get(
+			ItemTypes.Count > 1 ? "Objectives.GiveAny" : "Objectives.Give",
+			Lang.GetNPCNameValue(NPCType), items, ItemCount, progress);
+	}
 
-		if (IsTalkingToNPC && !string.IsNullOrEmpty(EndText))
+	public bool TrySubmitObjective(Player player)
+	{
+		if (!CanProgress || !QuestChat.CanSubmitObjective(player, NPCType))
 		{
-			Main.npcChatText = EndText;
+			return false;
 		}
+		if (!dialogueSubmitted)
+		{
+			if (GetInventoryProgress(player.inventory) < 1f)
+			{
+				return false;
+			}
+			RemoveItem(player.inventory);
+			dialogueSubmitted = true;
+		}
+		return true;
+	}
 
-		base.Complete();
+	public override void ResetProgress()
+	{
+		base.ResetProgress();
+		dialogueSubmitted = false;
+	}
+
+	public override void SaveData(TagCompound tag)
+	{
+		base.SaveData(tag);
+		tag["DialogueSubmitted"] = dialogueSubmitted;
+	}
+
+	public override void LoadData(TagCompound tag)
+	{
+		base.LoadData(tag);
+		dialogueSubmitted = tag.GetBool("DialogueSubmitted");
 	}
 
 	public override void GetObjectivesIcon(QuestIconGroup iconGroup)

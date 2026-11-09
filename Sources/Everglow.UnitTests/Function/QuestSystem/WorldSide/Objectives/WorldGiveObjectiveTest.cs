@@ -66,23 +66,28 @@ public class WorldGiveObjectiveTest
 	[TestMethod]
 	[DataRow(NetmodeID.SinglePlayer)]
 	[DataRow(NetmodeID.MultiplayerClient)]
-	public void DeliveryShowsRequestThenThanksAndConsumesOnlyOnce(int mode)
+	public void DeliveryRequiresConfirmationAndConsumesOnlyOnce(int mode)
 	{
 		Main.netMode = mode;
 		var objective = new WorldGiveObjective(NPCID.Guide, ItemID.Ale, 5) { LocalizationKey = "Tests.WorldGive" };
 		TalkTo(0);
 		Main.LocalPlayer.inventory[0] = new Item { type = ItemID.Ale, stack = 4 };
 		objective.Update();
-		Assert.AreEqual("Bring five ales.", Main.npcChatText);
+		Assert.AreEqual("Original dialogue", Main.npcChatText);
+		Assert.IsFalse(objective.TrySubmitObjective(Main.LocalPlayer));
 		Assert.AreEqual(4, Main.LocalPlayer.inventory[0].stack);
 
 		Main.LocalPlayer.inventory[0].stack = 10;
 		objective.Update();
-		Assert.AreEqual("Thank you.", Main.npcChatText);
+		Assert.AreEqual(10, Main.LocalPlayer.inventory[0].stack);
+		Assert.IsFalse(objective.Given);
+		Assert.IsTrue(objective.TrySubmitObjective(Main.LocalPlayer));
+		Assert.AreEqual("Original dialogue", Main.npcChatText);
 		Assert.AreEqual(5, Main.LocalPlayer.inventory[0].stack);
 		Assert.AreEqual(mode == NetmodeID.SinglePlayer, objective.Given);
 		objective.Update();
-		Assert.AreEqual("Thank you.", Main.npcChatText);
+		Assert.AreEqual("Original dialogue", Main.npcChatText);
+		Assert.IsTrue(objective.TrySubmitObjective(Main.LocalPlayer));
 		Assert.AreEqual(5, Main.LocalPlayer.inventory[0].stack);
 	}
 

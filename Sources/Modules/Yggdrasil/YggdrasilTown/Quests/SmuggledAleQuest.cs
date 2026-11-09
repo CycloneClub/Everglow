@@ -1,4 +1,5 @@
 using Everglow.Commons.Mechanics.Quest.Core;
+using Everglow.Commons.Mechanics.Quest.Core.Dialogue;
 using Everglow.Commons.Mechanics.Quest.WorldSide;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Objectives;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs;
@@ -10,8 +11,10 @@ public sealed class SmuggledAleQuest : TownNpcQuest
 	public override void Initialize()
 	{
 		Objectives
-			.Add(new WorldTalkObjective(GiverNpcType))
+			.Add(new WorldTalkObjective(GiverNpcType)
+				.WithDialogue(d => d.WithText("Dialogue.Objective0")))
 			.Add(new WorldGiveObjective(GiverNpcType, ItemID.Ale, 5)
+				.WithDialogue(d => d.WithText("Dialogue.Objective1Request").WithCompletionText("Dialogue.Objective1Success"))
 				.WithRewards(new Item(ItemID.GoldCoin, 3), new Item(ItemID.Gel, 25)));
 	}
 
