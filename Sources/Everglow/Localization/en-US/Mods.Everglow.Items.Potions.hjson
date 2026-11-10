@@ -15,7 +15,11 @@ RayPotion: {
 
 ShadowPotion: {
 	DisplayName: Shadow Potion
-	Tooltip: "In darkness, grants 8 defense and 8% increased damage, and gradually grants night vision\nBright light reduces life regeneration"
+	Tooltip:
+		'''
+		In darkness, grants 8 defense and 8% increased damage, and gradually grants night vision
+		Bright light reduces life regeneration
+		'''
 }
 
 JumpPotion: {

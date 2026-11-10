@@ -15,7 +15,11 @@ RayPotion: {
 
 ShadowPotion: {
 	DisplayName: 暗影药剂
-	Tooltip: "在暗处增加8点防御和8%伤害，并逐渐获得夜视\n强光下会降低生命再生"
+	Tooltip:
+		'''
+		在暗处增加8点防御和8%伤害，并逐渐获得夜视
+		强光下会降低生命再生
+		'''
 }
 
 JumpPotion: {

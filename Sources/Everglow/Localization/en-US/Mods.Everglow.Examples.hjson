@@ -1,6 +1,11 @@
 AdvancedMirror: {
 	Name: "Advanced Mirror Wall Demo"
-	Tooltip: "Tintable translucent mirror reflecting tiles, players, NPCs and dropped items\nHold to tune; ordinary mirrors do not flip by default\nRequires Color/White lighting; settings affect only this client"
+	Tooltip:
+		'''
+		Tintable translucent mirror reflecting tiles, players, NPCs and dropped items
+		Hold to tune; ordinary mirrors do not flip by default
+		Requires Color/White lighting; settings affect only this client
+		'''
 	Panel: {
 		Title: "Advanced mirror — drag to move"
 		OffsetX: "X offset"

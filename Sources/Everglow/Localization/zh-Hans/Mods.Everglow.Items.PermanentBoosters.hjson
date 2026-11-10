@@ -1,6 +1,10 @@
 AntiHeavenSicknessPill: {
 	DisplayName: 抗天穹反应药丸
-	Tooltip: "依次永久增加{1}、{2}、{3}、{4}、{5}点生命上限\n最多使用{0}次"
+	Tooltip:
+		'''
+		依次永久增加{1}、{2}、{3}、{4}、{5}点生命上限
+		最多使用{0}次
+		'''
 }
 
 JadeFruit: {
@@ -14,7 +18,11 @@ JadeFruit: {
 
 LampBorerHoney: {
 	DisplayName: 甘金蜜
-	Tooltip: "永久增加{1}点生命上限\n最多使用{0}次"
+	Tooltip:
+		'''
+		永久增加{1}点生命上限
+		最多使用{0}次
+		'''
 }
 
 Photophore: {
@@ -42,10 +50,18 @@ SquamousCore: {
 
 MagicOrganExtract: {
 	DisplayName: "魔脏提取物"
-	Tooltip: "永久增加{0}点魔力上限\n最多使用{1}次"
+	Tooltip:
+		'''
+		永久增加{0}点魔力上限
+		最多使用{1}次
+		'''
 }
 
 ActivatedManaSpringPowder: {
 	DisplayName: "活化魔泉晶粉"
-	Tooltip: "永久增加{0}点魔力上限\n最多使用{1}次"
+	Tooltip:
+		'''
+		永久增加{0}点魔力上限
+		最多使用{1}次
+		'''
 }
