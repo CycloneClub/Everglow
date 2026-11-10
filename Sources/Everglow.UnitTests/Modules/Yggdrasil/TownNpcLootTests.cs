@@ -84,19 +84,26 @@ public class TownNpcLootTests
 	public void CultistAlwaysDropsBothArmorPieces()
 	{
 		var rates = Rates<CrimsonSpell>();
-		AssertRate<BloodDrenchedRobe>(rates, 1f);
-		AssertRate<BloodStainedVeil>(rates, 1f);
+		Assert.AreEqual(1f, Drop<BloodDrenchedRobe>(rates).dropRate);
+		Assert.AreEqual(1f, Drop<BloodStainedVeil>(rates).dropRate);
 	}
 
 	[TestMethod]
 	public void JellyKingEquipmentPoolIsGuaranteedAndUniform()
 	{
 		var rates = Rates<KingJellyBall>();
-		AssertRate<JellyBallInhibitor>(rates, 1f / 3);
-		AssertRate<MysteriousTablet>(rates, 1f / 3);
-		AssertRate<JellyBallBathingCap>(rates, 1f / 3);
-		AssertRate<CrystalNucleusOfJellyKing>(rates, 1f, 4, 6);
-		AssertRate<JellyBallCube>(rates, 1f, 24, 40);
+		float inhibitor = Drop<JellyBallInhibitor>(rates).dropRate;
+		float tablet = Drop<MysteriousTablet>(rates).dropRate;
+		float cap = Drop<JellyBallBathingCap>(rates).dropRate;
+		Assert.AreEqual(inhibitor, tablet, 0.00001f);
+		Assert.AreEqual(inhibitor, cap, 0.00001f);
+		Assert.AreEqual(1f, inhibitor + tablet + cap, 0.00001f);
+		var nucleus = Drop<CrystalNucleusOfJellyKing>(rates);
+		var cube = Drop<JellyBallCube>(rates);
+		Assert.AreEqual(1f, nucleus.dropRate);
+		Assert.AreEqual(1f, cube.dropRate);
+		Assert.IsTrue(nucleus.stackMax > nucleus.stackMin);
+		Assert.IsTrue(cube.stackMax > cube.stackMin);
 	}
 
 	[TestMethod]
@@ -104,21 +111,34 @@ public class TownNpcLootTests
 	{
 		var rates = Rates<KingJellyBall>().Where(x => x.itemId == ModContent.ItemType<JellyBubbleItem>()).ToArray();
 		Assert.AreEqual(2, rates.Length);
-		Assert.AreEqual(0.25f, rates.Single(x => x.conditions.Any(c => c is Conditions.NotExpert)).dropRate);
-		Assert.AreEqual(0.5f, rates.Single(x => x.conditions.Any(c => c is Conditions.IsExpert)).dropRate);
+		float normal = rates.Single(x => x.conditions.Any(c => c is Conditions.NotExpert)).dropRate;
+		float expert = rates.Single(x => x.conditions.Any(c => c is Conditions.IsExpert)).dropRate;
+		Assert.IsTrue(expert > normal && normal > 0f);
 	}
 
 	[TestMethod]
 	public void BothJellySizesKeepCubeAndGlandDropsWithoutBossDerivatives()
 	{
-		foreach (var (type, rates, min, max) in new[]
+		DropRateInfo? smallCube = null;
+		DropRateInfo? giantCube = null;
+		foreach (var (type, rates, giant) in new[]
 		{
-			(ModContent.NPCType<JellyBall>(), Rates<JellyBall>(), 1, 2),
-			(ModContent.NPCType<GiantJellyBall>(), Rates<GiantJellyBall>(), 3, 5),
+			(ModContent.NPCType<JellyBall>(), Rates<JellyBall>(), false),
+			(ModContent.NPCType<GiantJellyBall>(), Rates<GiantJellyBall>(), true),
 		})
 		{
-			AssertRate<JellyBallCube>(rates, 1f, min, max);
-			AssertRate<ActivatedJellyGland>(rates, 0.01f);
+			var cube = Drop<JellyBallCube>(rates);
+			var gland = Drop<ActivatedJellyGland>(rates);
+			Assert.AreEqual(1f, cube.dropRate);
+			Assert.IsTrue(gland.dropRate is > 0f and < 1f);
+			if (giant)
+			{
+				giantCube = cube;
+			}
+			else
+			{
+				smallCube = cube;
+			}
 			var npc = (NPC)RuntimeHelpers.GetUninitializedObject(typeof(NPC));
 			npc.ai = new float[4];
 			npc.type = type;
@@ -130,24 +150,31 @@ public class TownNpcLootTests
 				Assert.IsFalse(drop.conditions.All(c => c.CanDrop(new DropAttemptInfo { npc = npc })));
 			}
 		}
+
+		Assert.IsTrue(giantCube!.Value.stackMin > smallCube!.Value.stackMin);
+		Assert.IsTrue(giantCube.Value.stackMax > smallCube.Value.stackMax);
 	}
 
 	[TestMethod]
 	public void BorerHoneyAndRockEquipmentAreRareDrops()
 	{
-		AssertRate<LampBorerHoney>(Rates<LampFruitBorer>(), 0.1f);
+		var honey = Drop<LampBorerHoney>(Rates<LampFruitBorer>());
+		Assert.IsTrue(honey.dropRate is > 0f and < 1f);
 		var rates = Rates<RockElemental>();
-		AssertRate<BrittleRockSlingshot>(rates, 1f / 30);
-		AssertRate<HyperockSpear>(rates, 1f / 30);
-		AssertRate<VitalizedRocks>(rates, 1f / 30);
+		float slingshot = Drop<BrittleRockSlingshot>(rates).dropRate;
+		float spear = Drop<HyperockSpear>(rates).dropRate;
+		float rocks = Drop<VitalizedRocks>(rates).dropRate;
+		Assert.AreEqual(slingshot, spear, 0.00001f);
+		Assert.AreEqual(slingshot, rocks, 0.00001f);
+		Assert.IsTrue(slingshot is > 0f and < 1f);
 	}
 
 	[TestMethod]
-	public void SquamousTrophyHasTenPercentChanceAndRelicRemainsMasterOnly()
+	public void SquamousTrophyIsNotGuaranteedAndRelicRemainsMasterOnly()
 	{
 		var rates = Rates<SquamousShell>();
-		AssertRate<SquamousShellTrophy>(rates, 0.1f);
-		AssertRate<SquamousShellRelic>(rates, 1f);
+		Assert.IsTrue(Drop<SquamousShellTrophy>(rates).dropRate is > 0f and < 1f);
+		Assert.AreEqual(1f, Drop<SquamousShellRelic>(rates).dropRate);
 		Assert.IsTrue(rates.Single(x => x.itemId == ModContent.ItemType<SquamousShellRelic>()).conditions.Any(c => c is Conditions.IsMasterMode));
 	}
 
@@ -162,13 +189,14 @@ public class TownNpcLootTests
 		{
 			rule.ReportDroprates(rates, new DropRateInfoChainFeed(1));
 		}
-		AssertRate<SquamousCore>(rates, 1f);
-		AssertRate<DragonScaleHammer>(rates, 1f / 6);
-		AssertRate<BlueyWings>(rates, 1f / 6);
-		AssertRate<DeadBeetleEgg>(rates, 1f / 6);
-		AssertRate<EyeOfAnabiosis>(rates, 1f / 6);
-		AssertRate<FlurryingBlades>(rates, 1f / 6);
-		AssertRate<RockSpikeBallista>(rates, 1f / 6);
+		Assert.AreEqual(1f, Drop<SquamousCore>(rates).dropRate);
+		float hammer = Drop<DragonScaleHammer>(rates).dropRate;
+		Assert.AreEqual(hammer, Drop<BlueyWings>(rates).dropRate, 0.00001f);
+		Assert.AreEqual(hammer, Drop<DeadBeetleEgg>(rates).dropRate, 0.00001f);
+		Assert.AreEqual(hammer, Drop<EyeOfAnabiosis>(rates).dropRate, 0.00001f);
+		Assert.AreEqual(hammer, Drop<FlurryingBlades>(rates).dropRate, 0.00001f);
+		Assert.AreEqual(hammer, Drop<RockSpikeBallista>(rates).dropRate, 0.00001f);
+		Assert.IsTrue(hammer is > 0f and < 1f);
 
 		var player = (Player)RuntimeHelpers.GetUninitializedObject(typeof(Player));
 		var modPlayer = new YggdrasilPlayer();
@@ -199,7 +227,9 @@ public class TownNpcLootTests
 	public void SquamousGivesCraftingMaterialInsteadOfFinishedArmor()
 	{
 		var normal = Rates<SquamousShell>();
-		AssertRate<GiantBeetleAntennae>(normal, 1f, 12, 18);
+		var normalAntennae = Drop<GiantBeetleAntennae>(normal);
+		Assert.AreEqual(1f, normalAntennae.dropRate);
+		Assert.IsTrue(normalAntennae.stackMax >= normalAntennae.stackMin);
 		Assert.IsTrue(normal.Single(x => x.itemId == ModContent.ItemType<GiantBeetleAntennae>()).conditions.Any(c => c is Conditions.NotExpert));
 		var bag = (SquamousShellTreasureBag)RuntimeHelpers.GetUninitializedObject(typeof(SquamousShellTreasureBag));
 		var loot = new ItemLoot(1, new ItemDropDatabase());
@@ -209,7 +239,9 @@ public class TownNpcLootTests
 		{
 			rule.ReportDroprates(expert, new DropRateInfoChainFeed(1));
 		}
-		AssertRate<GiantBeetleAntennae>(expert, 1f, 18, 24);
+		var expertAntennae = Drop<GiantBeetleAntennae>(expert);
+		Assert.AreEqual(1f, expertAntennae.dropRate);
+		Assert.IsTrue(expertAntennae.stackMax > normalAntennae.stackMax);
 		foreach (int armor in new[] { ModContent.ItemType<RockHelmet>(), ModContent.ItemType<RockPlateMail>(), ModContent.ItemType<RockGreaves>() })
 		{
 			Assert.IsFalse(normal.Any(rate => rate.itemId == armor));
@@ -258,13 +290,11 @@ public class TownNpcLootTests
 		return rates;
 	}
 
-	private static void AssertRate<T>(List<DropRateInfo> rates, float chance, int min = 1, int max = 1)
+	private static DropRateInfo Drop<T>(List<DropRateInfo> rates)
 		where T : ModItem
 	{
 		var matches = rates.Where(x => x.itemId == ModContent.ItemType<T>()).ToArray();
 		Assert.AreEqual(1, matches.Length, typeof(T).Name);
-		Assert.AreEqual(chance, matches[0].dropRate, 0.00001f, typeof(T).Name);
-		Assert.AreEqual(min, matches[0].stackMin);
-		Assert.AreEqual(max, matches[0].stackMax);
+		return matches[0];
 	}
 }

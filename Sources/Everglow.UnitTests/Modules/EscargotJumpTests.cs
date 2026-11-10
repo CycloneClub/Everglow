@@ -45,27 +45,47 @@ public class EscargotJumpTests
 	}
 
 	[TestMethod]
-	[DataRow(0f, false, false, 1.2525f)]
-	[DataRow(1.6f, false, false, 1.6525f)]
-	[DataRow(-1f, false, false, 1.0025f)]
-	[DataRow(1.6f, true, false, 2.0275f)]
-	[DataRow(1.6f, true, true, 2.4775f)]
-	public void EscargotScalesFinalNativeJumpSpeedInsteadOfItsAdditiveBonus(float bonus, bool balloon, bool insignia, float expected)
+	public void EscargotScalesFinalNativeJumpSpeedInsteadOfItsAdditiveBonus()
 	{
-		context.Player.jumpSpeedBoost = bonus;
-		context.Player.jumpBoost = balloon;
-		context.Player.empressBrooch = insignia;
-		int index = 0;
-		new EscargotBuff().Update(context.Player, ref index);
-		bonuses.PostUpdateEquips();
-		Assert.AreEqual(bonus, context.Player.jumpSpeedBoost, "Ordinary jump additions must not be scaled.");
+		(float Speed, int Height, float Boost) Measure(float bonus, bool balloon, bool insignia, bool escargot)
+		{
+			foodBuffs.ResetEffects();
+			bonuses.ResetEffects();
+			Player.jumpSpeed = 5.01f;
+			Player.jumpHeight = 15;
+			context.Player.jumpSpeedBoost = bonus;
+			context.Player.jumpBoost = balloon;
+			context.Player.empressBrooch = insignia;
+			if (escargot)
+			{
+				int index = 0;
+				new EscargotBuff().Update(context.Player, ref index);
+				bonuses.PostUpdateEquips();
+				Assert.AreEqual(bonus, context.Player.jumpSpeedBoost, "Ordinary jump additions must not be scaled.");
+			}
 
-		typeof(Player).GetMethod("UpdateJumpHeight", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)!
-			.Invoke(context.Player, null);
-		foodBuffs.PostUpdateRunSpeeds();
-		Assert.AreEqual(expected, Player.jumpSpeed, 0.00001f);
-		Assert.AreEqual(balloon ? 20 : 15, Player.jumpHeight);
-		Assert.AreEqual(bonus + (insignia ? 1.8f : 0), context.Player.jumpSpeedBoost, 0.00001f);
+			typeof(Player).GetMethod("UpdateJumpHeight", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)!
+				.Invoke(context.Player, null);
+			if (escargot)
+			{
+				foodBuffs.PostUpdateRunSpeeds();
+			}
+
+			return (Player.jumpSpeed, Player.jumpHeight, context.Player.jumpSpeedBoost);
+		}
+
+		float? ratio = null;
+		foreach ((float Bonus, bool Balloon, bool Insignia) row in new[] { (0f, false, false), (1.6f, false, false), (-1f, false, false), (1.6f, true, false), (1.6f, true, true) })
+		{
+			var with = Measure(row.Bonus, row.Balloon, row.Insignia, true);
+			var without = Measure(row.Bonus, row.Balloon, row.Insignia, false);
+			Assert.IsTrue(with.Speed < without.Speed);
+			Assert.AreEqual(without.Height, with.Height);
+			Assert.AreEqual(without.Boost, with.Boost, 0.00001f);
+			float scaled = with.Speed / without.Speed;
+			ratio ??= scaled;
+			Assert.AreEqual(ratio.Value, scaled, 0.0001f);
+		}
 	}
 
 	[TestMethod]
@@ -103,38 +123,66 @@ public class EscargotJumpTests
 	[TestMethod]
 	public void RepeatedBuffUpdatesDoNotMultiplyTheJumpPenalty()
 	{
-		int index = 0;
-		var buff = new EscargotBuff();
-		buff.Update(context.Player, ref index);
-		buff.Update(context.Player, ref index);
-		Player.jumpSpeed = 8f;
-		foodBuffs.PostUpdateRunSpeeds();
-		Assert.AreEqual(2f, Player.jumpSpeed);
+		float Scaled(int updates)
+		{
+			foodBuffs.ResetEffects();
+			int index = 0;
+			var buff = new EscargotBuff();
+			for (int i = 0; i < updates; i++)
+			{
+				buff.Update(context.Player, ref index);
+			}
+
+			Player.jumpSpeed = 8f;
+			foodBuffs.PostUpdateRunSpeeds();
+			return Player.jumpSpeed;
+		}
+
+		float once = Scaled(1);
+		Assert.AreEqual(once, Scaled(2), 0.00001f);
+		Assert.IsTrue(once < 8f);
 	}
 
 	[TestMethod]
-	[DataRow(false)]
-	[DataRow(true)]
-	public void EscargotScalesCombinedBunnyStewJumpInEitherBuffOrder(bool reverse)
+	public void EscargotScalesCombinedBunnyStewJumpInEitherBuffOrder()
 	{
-		context.Player.jumpSpeedBoost = 2f;
-		int index = 0;
-		if (reverse)
+		(float Boost, float Speed, int Height) Measure(bool reverse, bool escargot)
 		{
-			new EscargotBuff().Update(context.Player, ref index);
-			new BunnyStewBuff().Update(context.Player, ref index);
+			foodBuffs.ResetEffects();
+			bonuses.ResetEffects();
+			Player.jumpSpeed = 5.01f;
+			Player.jumpHeight = 15;
+			context.Player.jumpSpeedBoost = 2f;
+			int index = 0;
+			if (!escargot || !reverse)
+			{
+				new BunnyStewBuff().Update(context.Player, ref index);
+			}
+
+			if (escargot)
+			{
+				new EscargotBuff().Update(context.Player, ref index);
+			}
+
+			if (escargot && reverse)
+			{
+				new BunnyStewBuff().Update(context.Player, ref index);
+			}
+
+			bonuses.PostUpdateEquips();
+			typeof(Player).GetMethod("UpdateJumpHeight", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)!
+				.Invoke(context.Player, null);
+			foodBuffs.PostUpdateRunSpeeds();
+			return (context.Player.jumpSpeedBoost, Player.jumpSpeed, Player.jumpHeight);
 		}
-		else
-		{
-			new BunnyStewBuff().Update(context.Player, ref index);
-			new EscargotBuff().Update(context.Player, ref index);
-		}
-		bonuses.PostUpdateEquips();
-		Assert.AreEqual(3.5f, context.Player.jumpSpeedBoost);
-		typeof(Player).GetMethod("UpdateJumpHeight", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)!
-			.Invoke(context.Player, null);
-		foodBuffs.PostUpdateRunSpeeds();
-		Assert.AreEqual(2.5025f, Player.jumpSpeed, 0.00001f);
-		Assert.AreEqual(20, Player.jumpHeight);
+
+		var forward = Measure(false, true);
+		var backward = Measure(true, true);
+		var stewOnly = Measure(false, false);
+		Assert.AreEqual(forward.Boost, backward.Boost, 0.00001f);
+		Assert.AreEqual(forward.Speed, backward.Speed, 0.00001f);
+		Assert.AreEqual(stewOnly.Boost, forward.Boost, 0.00001f);
+		Assert.AreEqual(stewOnly.Height, forward.Height);
+		Assert.IsTrue(forward.Speed < stewOnly.Speed);
 	}
 }

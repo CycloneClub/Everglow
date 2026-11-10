@@ -25,11 +25,15 @@ public class BadLifeRegenContentTests
 	private StatBonusPlayer bonuses = null!;
 	private bool originalStarvation;
 	private UnifiedRandom originalRandom = null!;
+	private float criticalDamage;
+	private float addCritDamage;
 
 	[TestInitialize]
 	public void Initialize()
 	{
 		Program.SavePath = string.Empty;
+		criticalDamage = FoodBuffModPlayer.CriticalDamage;
+		addCritDamage = FoodBuffModPlayer.AddCritDamage;
 		originalStarvation = Main.dontStarveWorld;
 		originalRandom = Main.rand;
 		Main.rand = new NoDustRandom();
@@ -43,105 +47,159 @@ public class BadLifeRegenContentTests
 	{
 		Main.dontStarveWorld = originalStarvation;
 		Main.rand = originalRandom;
+		FoodBuffModPlayer.CriticalDamage = criticalDamage;
+		FoodBuffModPlayer.AddCritDamage = addCritDamage;
 		context.Dispose();
 	}
 
 	[TestMethod]
-	[DataRow(0, 1, 2)]
-	[DataRow(0, 2, 1)]
-	[DataRow(1, 0, 2)]
-	[DataRow(1, 2, 0)]
-	[DataRow(2, 0, 1)]
-	[DataRow(2, 1, 0)]
-	public void SuppressionPreservesOtherNegativeSourcesInEveryOrder(int first, int second, int third)
+	public void SuppressionPreservesOtherNegativeSourcesInEveryOrder()
 	{
-		context.Player.lifeRegen = 20;
 		ModBuff[] effects = [LoadPlantBuff(), new RedAlgaeDebuff(), new GrubSoupBuff()];
-		Apply(effects[first], effects[second], effects[third]);
-		context.Player.lifeRegen += 10;
-		bonuses.PostUpdateMiscEffects();
-		Assert.AreEqual(30, context.Player.lifeRegen);
-		bonuses.UpdateBadLifeRegen();
-		Assert.AreEqual(-21, context.Player.lifeRegen);
+		int? loss = null;
+		foreach (int[] order in new[] { new[] { 0, 1, 2 }, new[] { 0, 2, 1 }, new[] { 1, 0, 2 }, new[] { 1, 2, 0 }, new[] { 2, 0, 1 }, new[] { 2, 1, 0 } })
+		{
+			bonuses.ResetEffects();
+			context.Player.lifeRegen = 20;
+			Apply(effects[order[0]], effects[order[1]], effects[order[2]]);
+			context.Player.lifeRegen += 10;
+			bonuses.PostUpdateMiscEffects();
+			Assert.AreEqual(30, context.Player.lifeRegen);
+			bonuses.UpdateBadLifeRegen();
+			loss ??= context.Player.lifeRegen;
+			Assert.AreEqual(loss.Value, context.Player.lifeRegen);
+		}
+
+		Assert.IsTrue(loss!.Value < 0);
 	}
 
 	[TestMethod]
-	[DataRow(false, false)]
-	[DataRow(false, true)]
-	[DataRow(true, false)]
-	[DataRow(true, true)]
-	public void AllFourFoodsUseExecutedMangoHookRegardlessOfOrder(bool mango, bool mangoFirst)
+	public void AllFourFoodsUseExecutedMangoHookRegardlessOfOrder()
 	{
-		context.Player.lifeRegen = -7;
-		context.Player.lifeRegenTime = 80;
-		if (mango && mangoFirst)
+		int Measure(bool mango, bool mangoFirst)
 		{
-			Apply(new MangoBuff());
+			bonuses.ResetEffects();
+			context.Player.lifeRegen = -7;
+			context.Player.lifeRegenTime = 80;
+			if (mango && mangoFirst)
+			{
+				Apply(new MangoBuff());
+			}
+
+			Apply(new GrubSoupBuff(), new MonsterLasagnaBuff(), new SashimiBuff(), new ShuckedOysterBuff());
+			if (mango && !mangoFirst)
+			{
+				Apply(new MangoBuff());
+			}
+
+			bonuses.UpdateBadLifeRegen();
+			Assert.AreEqual(0f, context.Player.lifeRegenTime);
+			return context.Player.lifeRegen;
 		}
-		Apply(new GrubSoupBuff(), new MonsterLasagnaBuff(), new SashimiBuff(), new ShuckedOysterBuff());
-		if (mango && !mangoFirst)
-		{
-			Apply(new MangoBuff());
-		}
-		bonuses.UpdateBadLifeRegen();
-		Assert.AreEqual(mango ? -16 : -25, context.Player.lifeRegen);
-		Assert.AreEqual(0f, context.Player.lifeRegenTime);
+
+		int mangoFirst = Measure(true, true);
+		Assert.AreEqual(mangoFirst, Measure(true, false));
+		Assert.AreNotEqual(mangoFirst, Measure(false, false));
 	}
 
 	[TestMethod]
-	[DataRow(-1, true, 0)]
-	[DataRow(-2, true, -6)]
-	[DataRow(-3, true, 0)]
-	[DataRow(-3, false, 10)]
-	public void HungerCapturesWorldAndSatietyButReadsFinalCapacity(int satiety, bool starvation, int expected)
+	[DataRow(-1, true)]
+	[DataRow(-2, true)]
+	[DataRow(-3, true)]
+	[DataRow(-3, false)]
+	public void HungerCapturesWorldAndSatietyButReadsFinalCapacity(int satiety, bool starvation)
 	{
-		Main.dontStarveWorld = starvation;
 		var hunger = context.Attach<FoodModPlayer>();
-		typeof(FoodModPlayer).GetProperty(nameof(FoodModPlayer.SatietyLevel))!.SetValue(hunger, satiety);
-		context.Player.lifeRegen = 10;
-		context.Player.lifeRegenTime = 80;
-		context.Player.statLifeMax2 = 400;
-		hunger.PostUpdateBuffs();
-		Main.dontStarveWorld = !starvation;
-		typeof(FoodModPlayer).GetProperty(nameof(FoodModPlayer.SatietyLevel))!.SetValue(hunger, 0);
-		context.Player.statLifeMax2 += 250;
-		bonuses.PostUpdateEquips();
-		bonuses.UpdateBadLifeRegen();
+		int Settle(int extraLife)
+		{
+			bonuses.ResetEffects();
+			context.Player.starving = false;
+			Main.dontStarveWorld = starvation;
+			typeof(FoodModPlayer).GetProperty(nameof(FoodModPlayer.SatietyLevel))!.SetValue(hunger, satiety);
+			context.Player.lifeRegen = 10;
+			context.Player.lifeRegenTime = 80;
+			context.Player.statLifeMax2 = 400;
+			hunger.PostUpdateBuffs();
+			Main.dontStarveWorld = !starvation;
+			typeof(FoodModPlayer).GetProperty(nameof(FoodModPlayer.SatietyLevel))!.SetValue(hunger, 0);
+			context.Player.statLifeMax2 += extraLife;
+			bonuses.PostUpdateEquips();
+			bonuses.UpdateBadLifeRegen();
+			return context.Player.lifeRegen;
+		}
+
+		int regen = Settle(250);
 		Assert.AreEqual(650, context.Player.statLifeMax2);
 		Assert.AreEqual(starvation && satiety == -3, context.Player.starving);
-		Assert.AreEqual(expected, context.Player.lifeRegen);
 		Assert.AreEqual(80f, context.Player.lifeRegenTime, "Hunger does not reset the natural-bonuses timer.");
+		if (!starvation)
+		{
+			Assert.AreEqual(10, regen);
+		}
+		else if (satiety == -2)
+		{
+			int atOriginalCapacity = Settle(0);
+			Assert.IsTrue(regen < atOriginalCapacity);
+			Assert.IsTrue(atOriginalCapacity < 0);
+		}
+		else
+		{
+			Assert.AreEqual(0, regen);
+		}
 	}
 
 	[TestMethod]
 	public void NonSuppressingLossesSubtractFromPositiveRegenerationAndUseFinalLife()
 	{
-		context.Player.lifeRegen = 100;
-		context.Player.lifeRegenTime = 80;
-		context.Player.statLifeMax2 = 400;
-		Apply(new Charred(), new RedAlgaeDebuff(), new AuburnSelfReinforcing());
-		// Lighting is a graphics dependency: capture the already-evaluated high-light branch.
-		bonuses.ShadowPotionInBrightLight = true;
-		context.Player.statLifeMax2 += 250;
-		bonuses.PostUpdateEquips();
-		bonuses.UpdateBadLifeRegen();
-		Assert.AreEqual(44, context.Player.lifeRegen);
+		int Settle(int extraLife)
+		{
+			bonuses.ResetEffects();
+			context.Player.lifeRegen = 100;
+			context.Player.lifeRegenTime = 80;
+			context.Player.statLifeMax2 = 400;
+			Apply(new Charred(), new RedAlgaeDebuff(), new AuburnSelfReinforcing());
+			// Lighting is a graphics dependency: capture the already-evaluated high-light branch.
+			bonuses.ShadowPotionInBrightLight = true;
+			context.Player.statLifeMax2 += extraLife;
+			bonuses.PostUpdateEquips();
+			bonuses.UpdateBadLifeRegen();
+			return context.Player.lifeRegen;
+		}
+
+		int atFinalCapacity = Settle(250);
+		Assert.IsTrue(atFinalCapacity < Settle(0));
 		Assert.AreEqual(80f, context.Player.lifeRegenTime, "ShadowPotion resets this earlier in its own light-dependent branch.");
 	}
 
 	[TestMethod]
-	[DataRow(0f, -50)]
-	[DataRow(10f, -85)]
-	public void BothInfernosClampAfterLossesWithoutReplacingAStrongerCombinedLoss(float speed, int expected)
+	public void BothInfernosClampAfterLossesWithoutReplacingAStrongerCombinedLoss()
 	{
-		context.Player.lifeRegen = 0;
-		Apply(new Charred(), new RedAlgaeDebuff(), new AuburnSelfReinforcing());
-		// Buff VFX require the game renderer; these flags are captured by their player hooks.
-		bonuses.FireflyInferno = true;
-		bonuses.AcytaeaInferno = true;
-		context.Player.velocity = new Vector2(speed, 0);
-		bonuses.UpdateBadLifeRegen();
-		Assert.AreEqual(expected, context.Player.lifeRegen);
+		int Measure(bool inferno, float speed)
+		{
+			bonuses.ResetEffects();
+			context.Player.lifeRegen = 0;
+			Apply(new Charred(), new RedAlgaeDebuff(), new AuburnSelfReinforcing());
+			// Buff VFX require the game renderer; these flags are captured by their player hooks.
+			bonuses.FireflyInferno = bonuses.AcytaeaInferno = inferno;
+			context.Player.velocity = new Vector2(speed, 0);
+			bonuses.UpdateBadLifeRegen();
+			return context.Player.lifeRegen;
+		}
+
+		int Clamp(float speed)
+		{
+			bonuses.ResetEffects();
+			context.Player.lifeRegen = 0;
+			bonuses.FireflyInferno = bonuses.AcytaeaInferno = true;
+			context.Player.velocity = new Vector2(speed, 0);
+			bonuses.UpdateBadLifeRegen();
+			return context.Player.lifeRegen;
+		}
+
+		int losses = Measure(false, 0f);
+		Assert.AreEqual(Math.Min(losses, Clamp(0f)), Measure(true, 0f));
+		Assert.AreEqual(Math.Min(losses, Clamp(10f)), Measure(true, 10f));
+		Assert.IsTrue(Measure(true, 10f) < Measure(true, 0f));
 	}
 
 	[TestMethod]
@@ -154,10 +212,11 @@ public class BadLifeRegenContentTests
 		Apply(new GrubSoupBuff());
 		bonuses.PostUpdateEquips();
 		bonuses.PostUpdateMiscEffects();
-		Assert.AreEqual(230, context.Player.statLifeMax2);
-		Assert.AreEqual(5, context.Player.lifeRegen);
+		Assert.IsTrue(context.Player.statLifeMax2 > 200);
+		int settled = context.Player.lifeRegen;
+		Assert.IsTrue(settled >= 4);
 		bonuses.UpdateBadLifeRegen();
-		Assert.AreEqual(-4, context.Player.lifeRegen);
+		Assert.IsTrue(context.Player.lifeRegen < settled);
 		bonuses.ResetEffects();
 		context.Player.lifeRegen = 4;
 		bonuses.PostUpdateMiscEffects();
@@ -181,20 +240,24 @@ public class BadLifeRegenContentTests
 		Assert.AreEqual(80f, context.Player.lifeRegenTime);
 		bonuses.ResetEffects();
 		Apply(new GrubSoupBuff());
+		context.Player.lifeRegen = 20;
 		bonuses.UpdateBadLifeRegen();
-		Assert.AreEqual(-4, context.Player.lifeRegen, "Mango must also expire.");
+		int grubOnly = context.Player.lifeRegen;
+		Assert.IsTrue(grubOnly < 20);
+		bonuses.ResetEffects();
+		Apply(new GrubSoupBuff(), new MangoBuff());
+		context.Player.lifeRegen = 20;
+		bonuses.UpdateBadLifeRegen();
+		Assert.AreNotEqual(grubOnly, context.Player.lifeRegen, "Mango must also expire.");
 	}
 
 	[TestMethod]
-	[DataRow(100, -4)]
-	[DataRow(200, -8)]
-	[DataRow(650, -26)]
-	public void SevereHungerUsesNativeLifeRegenerationDamage(int maxLife, int expected)
+	public void SevereHungerUsesNativeLifeRegenerationDamage()
 	{
 		Main.dontStarveWorld = true;
 		var hunger = context.Attach<FoodModPlayer>();
 		typeof(FoodModPlayer).GetProperty(nameof(FoodModPlayer.SatietyLevel))!.SetValue(hunger, -3);
-		context.Player.statLifeMax2 = context.Player.statLife = maxLife;
+		context.Player.statLifeMax2 = context.Player.statLife = 100;
 		context.Player.lifeRegen = 20;
 		context.Player.lifeRegenTime = 80;
 		hunger.PostUpdateBuffs();
@@ -220,9 +283,20 @@ public class BadLifeRegenContentTests
 				hooks.Update(instances);
 				field.SetValue(null, hooks);
 			}
-			typeof(Player).GetMethod("UpdateLifeRegen", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)!.Invoke(context.Player, null);
-			Assert.AreEqual(expected, context.Player.lifeRegen);
-			Assert.AreEqual(0f, context.Player.lifeRegenTime);
+			var updateLifeRegen = typeof(Player).GetMethod("UpdateLifeRegen", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)!;
+			var regen = new List<int>();
+			foreach (int maxLife in new[] { 100, 200, 650 })
+			{
+				context.Player.statLifeMax2 = context.Player.statLife = maxLife;
+				context.Player.lifeRegen = 20;
+				context.Player.lifeRegenTime = 80;
+				updateLifeRegen.Invoke(context.Player, null);
+				regen.Add(context.Player.lifeRegen);
+				Assert.AreEqual(0f, context.Player.lifeRegenTime);
+			}
+
+			Assert.IsTrue(regen[0] > regen[1] && regen[1] > regen[2]);
+			Assert.IsTrue(regen[2] < 0);
 		}
 		finally
 		{

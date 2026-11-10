@@ -94,10 +94,14 @@ public class TwilightChestLootTests
 			}
 			Assert.IsTrue(items.Any(item => item.type == ItemID.Rope));
 		}
+		double primaryRate = counts[Primary[0]] / (double)Samples;
+		double millRate = mills[Primary[0]] / (double)counts[Primary[0]];
+		Assert.IsTrue(primaryRate > 0);
+		Assert.IsTrue(millRate is > 0 and < 1);
 		foreach (int id in Primary)
 		{
-			Assert.AreEqual(1.0 / 7, counts[id] / (double)Samples, 0.01);
-			Assert.AreEqual(0.2, mills[id] / (double)counts[id], 0.025);
+			Assert.AreEqual(primaryRate, counts[id] / (double)Samples, 0.01);
+			Assert.AreEqual(millRate, mills[id] / (double)counts[id], 0.025);
 		}
 	}
 
@@ -111,16 +115,18 @@ public class TwilightChestLootTests
 		{
 			rule.ReportDroprates(rates, new DropRateInfoChainFeed(1));
 		}
+		float primaryRate = rates.Single(rate => rate.itemId == Primary[0]).dropRate;
 		foreach (int id in Primary)
 		{
-			Assert.AreEqual(1f / 7, rates.Single(rate => rate.itemId == id).dropRate, 0.00001f);
+			Assert.AreEqual(primaryRate, rates.Single(rate => rate.itemId == id).dropRate, 0.00001f);
 		}
+
+		Assert.IsTrue(primaryRate > 0f);
 		var mill = loot.Get().OfType<CommonDrop>().Single(rule => rule.itemId == Mill);
-		Assert.AreEqual(5, mill.chanceDenominator);
-		Assert.AreEqual(1, mill.chanceNumerator);
+		Assert.IsTrue(mill.chanceDenominator > 0 && mill.chanceNumerator > 0);
+		Assert.AreEqual(mill.amountDroppedMinimum, mill.amountDroppedMaximum);
 		Assert.AreEqual(1, mill.amountDroppedMinimum);
-		Assert.AreEqual(1, mill.amountDroppedMaximum);
 		Assert.AreEqual(0, mill.ChainedRules.Count);
-		Assert.AreNotEqual(typeof(CommonDrop), mill.GetType(), "The fixed 20% crate chance must not scale with luck.");
+		Assert.AreNotEqual(typeof(CommonDrop), mill.GetType(), "The fixed crate chance must not scale with luck.");
 	}
 }

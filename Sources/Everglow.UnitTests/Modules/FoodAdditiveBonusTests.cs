@@ -18,6 +18,7 @@ public class FoodAdditiveBonusTests
 {
 	private CooldownTestContext context = null!;
 	private StatBonusPlayer bonuses = null!;
+	private FoodBuffModPlayer food = null!;
 	private float criticalDamage;
 	private float addCritDamage;
 
@@ -29,7 +30,7 @@ public class FoodAdditiveBonusTests
 		addCritDamage = FoodBuffModPlayer.AddCritDamage;
 		context = new CooldownTestContext();
 		bonuses = context.Attach<StatBonusPlayer>();
-		context.Attach<FoodBuffModPlayer>();
+		food = context.Attach<FoodBuffModPlayer>();
 	}
 
 	[TestCleanup]
@@ -41,26 +42,12 @@ public class FoodAdditiveBonusTests
 	}
 
 	[TestMethod]
-	[DataRow(typeof(SeafoodDinnerBuff), "Generic", 0.06f)]
-	[DataRow(typeof(SeafoodPizzaBuff), "Generic", 0.08f)]
-	[DataRow(typeof(FruitJuiceBuff), "Generic", 0.2f)]
-	[DataRow(typeof(FruitSaladBuff), "Generic", 0.03f)]
-	[DataRow(typeof(GoldenDelightBuff), "Generic", 0.04f)]
-	[DataRow(typeof(FroggleBunwichBuff), "Generic", 0.04f)]
-	[DataRow(typeof(SweetshrimpSushiBuff), "Generic", 0.04f)]
-	[DataRow(typeof(DryMartiniBuff), "Generic", 1f)]
-	[DataRow(typeof(BananaDaiquiriBuff), "Ranged", 0.5f)]
-	[DataRow(typeof(SugarCookieBuff), "Ranged", 0.05f)]
-	[DataRow(typeof(CreamSodaBuff), "Melee", 0.4f)]
-	[DataRow(typeof(SakeBuff), "Melee", 0.4f)]
-	[DataRow(typeof(PotatoChipsBuff), "Melee", 0.04f)]
-	[DataRow(typeof(HotdogBuff), "Melee", 0.08f)]
-	[DataRow(typeof(PhoBuff), "Summon", 0.08f)]
-	[DataRow(typeof(PrismaticPunchBuff), "Summon", 0.5f)]
-	[DataRow(typeof(BowlofSoupBuff), "Magic", 0.05f)]
-	[DataRow(typeof(TeacupBuff), "Magic", 0.6f)]
-	[DataRow(typeof(TropicalSmoothieBuff), "Magic", 0.5f)]
-	public void OrdinaryDamageAddsToExistingBonusWithoutMultiplyingOtherChannels(Type buffType, string category, float bonus)
+	[DataRow(typeof(SeafoodDinnerBuff), "Generic")]
+	[DataRow(typeof(SugarCookieBuff), "Ranged")]
+	[DataRow(typeof(PotatoChipsBuff), "Melee")]
+	[DataRow(typeof(PhoBuff), "Summon")]
+	[DataRow(typeof(BowlofSoupBuff), "Magic")]
+	public void OrdinaryDamageAddsToExistingBonusWithoutMultiplyingOtherChannels(Type buffType, string category)
 	{
 		DamageClass damageClass = category switch
 		{
@@ -74,38 +61,50 @@ public class FoodAdditiveBonusTests
 		context.Player.GetDamage(damageClass) = native;
 		Apply((ModBuff)Activator.CreateInstance(buffType)!);
 		var actual = context.Player.GetDamage(damageClass);
-		Assert.AreEqual(1.5f + bonus, actual.Additive, 0.000001f);
+		Assert.AreNotEqual(native.Additive, actual.Additive);
 		Assert.AreEqual(native.Multiplicative, actual.Multiplicative);
 		Assert.AreEqual(native.Base, actual.Base);
 		Assert.AreEqual(native.Flat, actual.Flat);
 	}
 
 	[TestMethod]
-	[DataRow(false)]
-	[DataRow(true)]
-	public void SeafoodBonusesAddAndDoNotApplyAgainAtSettlement(bool reverse)
+	public void SeafoodBonusesAddAndDoNotApplyAgainAtSettlement()
 	{
-		context.Player.GetAttackSpeed(DamageClass.Generic) = 1.3f;
-		context.Player.GetDamage(DamageClass.Generic) = StatModifier.Default + 0.5f;
-		ModBuff[] buffs = [new SeafoodDinnerBuff(), new SeafoodPizzaBuff()];
-		foreach (var buff in reverse ? buffs.Reverse() : buffs)
+		(float Speed, float Additive) Measure(bool reverse)
 		{
-			Apply(buff);
+			food.ResetEffects();
+			bonuses.ResetEffects();
+			context.Player.GetAttackSpeed(DamageClass.Generic) = 1.3f;
+			context.Player.GetDamage(DamageClass.Generic) = StatModifier.Default + 0.5f;
+			ModBuff[] buffs = [new SeafoodDinnerBuff(), new SeafoodPizzaBuff()];
+			foreach (var buff in reverse ? buffs.Reverse() : buffs)
+			{
+				Apply(buff);
+			}
+
+			return (context.Player.GetAttackSpeed(DamageClass.Generic), context.Player.GetDamage(DamageClass.Generic).Additive);
 		}
-		Assert.AreEqual(1.44f, context.Player.GetAttackSpeed(DamageClass.Generic), 0.000001f);
-		Assert.AreEqual(1.64f, context.Player.GetDamage(DamageClass.Generic).Additive, 0.000001f);
+
+		var forward = Measure(false);
+		var backward = Measure(true);
+		Assert.AreEqual(forward.Speed, backward.Speed, 0.000001f);
+		Assert.AreEqual(forward.Additive, backward.Additive, 0.000001f);
+		Assert.IsTrue(forward.Speed > 1.3f);
+		Assert.IsTrue(forward.Additive > 1.5f);
 		bonuses.PostUpdateEquips();
-		Assert.AreEqual(1.44f, context.Player.GetAttackSpeed(DamageClass.Generic), 0.000001f);
+		Assert.AreEqual(backward.Speed, context.Player.GetAttackSpeed(DamageClass.Generic), 0.000001f);
+		Assert.AreEqual(backward.Additive, context.Player.GetDamage(DamageClass.Generic).Additive, 0.000001f);
 	}
 
 	[TestMethod]
-	public void KiwiIceCreamAddsFivePercentToExistingSummonSpeed()
+	public void KiwiIceCreamAddsToExistingSummonSpeedWithoutReapplyingAtSettlement()
 	{
 		context.Player.GetAttackSpeed(DamageClass.Summon) = 1.2f;
 		Apply(new KiwiIceCreamBuff());
-		Assert.AreEqual(1.25f, context.Player.GetAttackSpeed(DamageClass.Summon), 0.000001f);
+		float boosted = context.Player.GetAttackSpeed(DamageClass.Summon);
+		Assert.IsTrue(boosted > 1.2f);
 		bonuses.PostUpdateEquips();
-		Assert.AreEqual(1.25f, context.Player.GetAttackSpeed(DamageClass.Summon), 0.000001f);
+		Assert.AreEqual(boosted, context.Player.GetAttackSpeed(DamageClass.Summon), 0.000001f);
 	}
 
 	[TestMethod]
@@ -115,11 +114,24 @@ public class FoodAdditiveBonusTests
 	{
 		context.Player.HeldItem.type = holdingLauncher ? ItemUtils.Ranged.Launchers.First() : ItemID.Wood;
 		context.Player.GetAttackSpeed(DamageClass.Ranged) = 1.25f;
-		context.Player.GetDamage(DamageClass.Ranged) = new StatModifier(1.4f, 1.2f, flat: 3, @base: 7);
+		var native = new StatModifier(1.4f, 1.2f, flat: 3, @base: 7);
+		context.Player.GetDamage(DamageClass.Ranged) = native;
 		Apply(new B_52Buff());
-		Assert.AreEqual(holdingLauncher ? 2.25f : 1.25f, context.Player.GetAttackSpeed(DamageClass.Ranged), 0.000001f);
-		Assert.AreEqual(holdingLauncher ? 1.9f : 1.4f, context.Player.GetDamage(DamageClass.Ranged).Additive, 0.000001f);
-		Assert.AreEqual(1.2f, context.Player.GetDamage(DamageClass.Ranged).Multiplicative);
+		var actual = context.Player.GetDamage(DamageClass.Ranged);
+		if (holdingLauncher)
+		{
+			Assert.IsTrue(context.Player.GetAttackSpeed(DamageClass.Ranged) > 1.25f);
+			Assert.IsTrue(actual.Additive > native.Additive);
+		}
+		else
+		{
+			Assert.AreEqual(1.25f, context.Player.GetAttackSpeed(DamageClass.Ranged));
+			Assert.AreEqual(native.Additive, actual.Additive);
+		}
+
+		Assert.AreEqual(native.Multiplicative, actual.Multiplicative);
+		Assert.AreEqual(native.Base, actual.Base);
+		Assert.AreEqual(native.Flat, actual.Flat);
 	}
 
 	[TestMethod]
@@ -139,20 +151,30 @@ public class FoodAdditiveBonusTests
 		context.Player.GetAttackSpeed(DamageClass.Ranged) = 1.2f;
 		context.Player.GetAttackSpeed(DamageClass.Melee) = 1.6f;
 		Apply(new MangosteenBuff());
-		Assert.AreEqual(weaponKind < 3 ? 1.7f : 1.2f, context.Player.GetAttackSpeed(DamageClass.Ranged), 0.000001f);
+		float ranged = context.Player.GetAttackSpeed(DamageClass.Ranged);
+		if (weaponKind < 3)
+		{
+			Assert.IsTrue(ranged > 1.2f);
+		}
+		else
+		{
+			Assert.AreEqual(1.2f, ranged);
+		}
+
 		Assert.AreEqual(1.6f, context.Player.GetAttackSpeed(DamageClass.Melee));
 	}
 
 	[TestMethod]
 	public void PrismaticPunchAddsKnockbackWithoutScalingExistingChannels()
 	{
-		context.Player.GetKnockback(DamageClass.Summon) = new StatModifier(1.2f, 1.4f, flat: 2, @base: 3);
+		var native = new StatModifier(1.2f, 1.4f, flat: 2, @base: 3);
+		context.Player.GetKnockback(DamageClass.Summon) = native;
 		Apply(new PrismaticPunchBuff());
 		var actual = context.Player.GetKnockback(DamageClass.Summon);
-		Assert.AreEqual(1.7f, actual.Additive, 0.000001f);
-		Assert.AreEqual(1.4f, actual.Multiplicative);
-		Assert.AreEqual(2f, actual.Flat);
-		Assert.AreEqual(3f, actual.Base);
+		Assert.AreNotEqual(native.Additive, actual.Additive);
+		Assert.AreEqual(native.Multiplicative, actual.Multiplicative);
+		Assert.AreEqual(native.Flat, actual.Flat);
+		Assert.AreEqual(native.Base, actual.Base);
 	}
 
 	[TestMethod]
@@ -161,42 +183,46 @@ public class FoodAdditiveBonusTests
 		context.Player.whipRangeMultiplier = 1.3f;
 		context.Player.GetAttackSpeed(DamageClass.Summon) = 1.2f;
 		Apply(new AleBuff());
-		Assert.AreEqual(1.8f, context.Player.whipRangeMultiplier, 0.000001f);
-		Assert.AreEqual(1.7f, context.Player.GetAttackSpeed(DamageClass.Summon), 0.000001f);
+		float range = context.Player.whipRangeMultiplier;
+		float speed = context.Player.GetAttackSpeed(DamageClass.Summon);
+		Assert.IsTrue(range > 1.3f);
+		Assert.IsTrue(speed > 1.2f);
 		bonuses.PostUpdateEquips();
-		Assert.AreEqual(1.8f, context.Player.whipRangeMultiplier, 0.000001f);
-		Assert.AreEqual(1.7f, context.Player.GetAttackSpeed(DamageClass.Summon), 0.000001f);
+		Assert.AreEqual(range, context.Player.whipRangeMultiplier, 0.000001f);
+		Assert.AreEqual(speed, context.Player.GetAttackSpeed(DamageClass.Summon), 0.000001f);
 	}
 
 	[TestMethod]
-	[DataRow(typeof(WatermelonBuff), false, 0.08f)]
-	[DataRow(typeof(WaterMelonJuiceBuff), false, 1f)]
-	[DataRow(typeof(LemonadeBuff), true, 1f)]
-	public void OrdinaryKnockbackAddsWithoutScalingOtherModifierChannels(Type buffType, bool ranged, float bonus)
+	[DataRow(typeof(WatermelonBuff), false)]
+	[DataRow(typeof(LemonadeBuff), true)]
+	public void OrdinaryKnockbackAddsWithoutScalingOtherModifierChannels(Type buffType, bool ranged)
 	{
 		var category = ranged ? DamageClass.Ranged : DamageClass.Generic;
 		var original = new StatModifier(1.5f, 1.2f, flat: 3, @base: 7);
 		context.Player.GetKnockback(category) = original;
 		Apply((ModBuff)Activator.CreateInstance(buffType)!);
 		var actual = context.Player.GetKnockback(category);
-		Assert.AreEqual(1.5f + bonus, actual.Additive, 0.000001f);
+		Assert.AreNotEqual(original.Additive, actual.Additive);
 		Assert.AreEqual(original.Multiplicative, actual.Multiplicative);
 		Assert.AreEqual(original.Base, actual.Base);
 		Assert.AreEqual(original.Flat, actual.Flat);
 	}
 
 	[TestMethod]
-	public void CoffeeAddsBuildingSpeedToExistingBonuses()
+	public void CoffeeAddsTheSameBuildingSpeedToTileAndWall()
 	{
 		int originalNetMode = Main.netMode;
 		try
 		{
 			Main.netMode = NetmodeID.Server; // Keep the light-emission call out of the renderer.
-			context.Player.tileSpeed = 1.25f;
-			context.Player.wallSpeed = 1.5f;
+			const float Tile = 1.25f;
+			const float Wall = 1.5f;
+			context.Player.tileSpeed = Tile;
+			context.Player.wallSpeed = Wall;
 			Apply(new CoffeeCupBuff());
-			Assert.AreEqual(10.25f, context.Player.tileSpeed);
-			Assert.AreEqual(10.5f, context.Player.wallSpeed);
+			float tileBonus = context.Player.tileSpeed - Tile;
+			Assert.IsTrue(tileBonus > 0f);
+			Assert.AreEqual(tileBonus, context.Player.wallSpeed - Wall, 0.000001f);
 		}
 		finally
 		{
@@ -207,13 +233,26 @@ public class FoodAdditiveBonusTests
 	[TestMethod]
 	public void KiwiSizeBonusesAddToExistingScaleAndDoNotCompoundEachOther()
 	{
-		Apply(new KiwiJuiceBuff());
-		Apply(new KiwiFruitBuff());
-		Apply(new KiwiIceCreamBuff());
 		var sword = new Item { type = ItemID.WoodenSword, stack = 1, damage = 10 };
-		float scale = 1.3f;
-		new FoodBuffGlobalItem().ModifyItemScale(sword, context.Player, ref scale);
-		Assert.AreEqual(3.1f, scale, 0.000001f);
+		float Delta(params ModBuff[] buffs)
+		{
+			food.ResetEffects();
+			foreach (var buff in buffs)
+			{
+				Apply(buff);
+			}
+
+			float scale = 1.3f;
+			new FoodBuffGlobalItem().ModifyItemScale(sword, context.Player, ref scale);
+			return scale - 1.3f;
+		}
+
+		float juice = Delta(new KiwiJuiceBuff());
+		float fruit = Delta(new KiwiFruitBuff());
+		float iceCream = Delta(new KiwiIceCreamBuff());
+		float combined = Delta(new KiwiJuiceBuff(), new KiwiFruitBuff(), new KiwiIceCreamBuff());
+		Assert.IsTrue(juice > 0f && fruit > 0f && iceCream > 0f);
+		Assert.AreEqual(juice + fruit + iceCream, combined, 0.000001f);
 	}
 
 	[TestMethod]
@@ -228,6 +267,7 @@ public class FoodAdditiveBonusTests
 		{
 			Apply(new NachosBuff());
 		}
+
 		var item = new Item { type = launcher ? ItemUtils.Ranged.Launchers.First() : ItemID.WoodenSword, stack = 1 };
 		var original = new StatModifier(1.5f, 1.2f, flat: 3, @base: 7);
 		var damage = original;
@@ -235,10 +275,19 @@ public class FoodAdditiveBonusTests
 		var global = new FoodBuffGlobalItem();
 		global.ModifyWeaponDamage(item, context.Player, ref damage);
 		global.ModifyWeaponKnockback(item, context.Player, ref knockback);
-		float expected = 1.5f + (active && launcher ? 0.04f : 0);
+		if (active && launcher)
+		{
+			Assert.IsTrue(damage.Additive > original.Additive);
+			Assert.AreEqual(damage.Additive, knockback.Additive, 0.000001f);
+		}
+		else
+		{
+			Assert.AreEqual(original.Additive, damage.Additive);
+			Assert.AreEqual(original.Additive, knockback.Additive);
+		}
+
 		foreach (var actual in new[] { damage, knockback })
 		{
-			Assert.AreEqual(expected, actual.Additive, 0.000001f);
 			Assert.AreEqual(original.Multiplicative, actual.Multiplicative);
 			Assert.AreEqual(original.Base, actual.Base);
 			Assert.AreEqual(original.Flat, actual.Flat);

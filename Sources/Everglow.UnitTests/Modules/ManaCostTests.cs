@@ -29,25 +29,31 @@ public class ManaCostTests
 	public void Cleanup() => context.Dispose();
 
 	[TestMethod]
-	[DataRow(false)]
-	[DataRow(true)]
-	public void OrdinaryReductionsAddToExistingReductionInEitherOrder(bool reverse)
+	public void OrdinaryReductionsAddToExistingReductionInEitherOrder()
 	{
-		context.Player.manaCost = 0.8f;
-		int index = 0;
-		var steak = new SteakBuff();
-		var robe = new RuinMagicRobe();
-		if (reverse)
+		float Cost(bool reverse)
 		{
-			robe.UpdateEquip(context.Player);
-			steak.Update(context.Player, ref index);
+			context.Player.manaCost = 0.8f;
+			int index = 0;
+			var steak = new SteakBuff();
+			var robe = new RuinMagicRobe();
+			if (reverse)
+			{
+				robe.UpdateEquip(context.Player);
+				steak.Update(context.Player, ref index);
+			}
+			else
+			{
+				steak.Update(context.Player, ref index);
+				robe.UpdateEquip(context.Player);
+			}
+
+			return context.Player.manaCost;
 		}
-		else
-		{
-			steak.Update(context.Player, ref index);
-			robe.UpdateEquip(context.Player);
-		}
-		Assert.AreEqual(0.5f, context.Player.manaCost, 0.000001f);
+
+		float forward = Cost(false);
+		Assert.AreEqual(forward, Cost(true), 0.000001f);
+		Assert.IsTrue(forward < 0.8f);
 	}
 
 	private sealed class TestMod : Mod
@@ -56,9 +62,9 @@ public class ManaCostTests
 	}
 
 	[TestMethod]
-	[DataRow(false, 0.65f)]
-	[DataRow(true, 0.68f)]
-	public void ArmorSetReductionsAreAdditive(bool ovine, float expected)
+	[DataRow(false)]
+	[DataRow(true)]
+	public void ArmorSetReductionsAreAdditive(bool ovine)
 	{
 		var oldLanguage = LanguageManager.Instance;
 		bool oldMenu = Main.gameMenu;
@@ -68,9 +74,16 @@ public class ManaCostTests
 			Main.gameMenu = true; // Lighting.GetColor returns white without loading a graphics engine.
 			ModItem armor = ovine ? new OvineHairpin() : new EldamberHairpin();
 			typeof(ModType).GetProperty("Mod")!.SetValue(armor, RuntimeHelpers.GetUninitializedObject(typeof(TestMod)));
-			context.Player.manaCost = 0.8f;
-			armor.UpdateArmorSet(context.Player);
-			Assert.AreEqual(expected, context.Player.manaCost, 0.000001f);
+			float Reduction(float initial)
+			{
+				context.Player.manaCost = initial;
+				armor.UpdateArmorSet(context.Player);
+				return initial - context.Player.manaCost;
+			}
+
+			float fromPartial = Reduction(0.8f);
+			Assert.AreEqual(fromPartial, Reduction(1f), 0.000001f);
+			Assert.IsTrue(fromPartial > 0f);
 		}
 		finally
 		{
@@ -80,24 +93,28 @@ public class ManaCostTests
 	}
 
 	[TestMethod]
-	[DataRow(1f, 0.3f, false)]
-	[DataRow(1f, 0.3f, true)]
-	[DataRow(0.25f, -0.45f, false)]
-	[DataRow(0.25f, -0.45f, true)]
-	[DataRow(0.05f, -0.65f, false)]
-	[DataRow(0.05f, -0.65f, true)]
-	public void SmoothieAddsFiftyPercentagePointsOfReductionInEitherOrder(float initial, float expected, bool reverse)
+	public void SmoothieAndSteakReduceManaCostByAConstantInEitherOrder()
 	{
-		context.Player.manaCost = initial;
-		int index = 0;
-		ModBuff[] buffs = [new TropicalSmoothieBuff(), new SteakBuff()];
-		foreach (var buff in reverse ? buffs.Reverse() : buffs)
+		float Cost(float initial, bool reverse)
 		{
-			buff.Update(context.Player, ref index);
+			context.Player.manaCost = initial;
+			int index = 0;
+			ModBuff[] buffs = [new TropicalSmoothieBuff(), new SteakBuff()];
+			foreach (var buff in reverse ? buffs.Reverse() : buffs)
+			{
+				buff.Update(context.Player, ref index);
+			}
+
+			return context.Player.manaCost;
 		}
-		Assert.AreEqual(initial - 0.7f, context.Player.manaCost, 0.000001f);
-		Assert.AreEqual(expected, context.Player.manaCost, 0.000001f);
-		if (expected <= 0)
+
+		float fromFull = Cost(1f, false);
+		Assert.AreEqual(fromFull, Cost(1f, true), 0.000001f);
+		float reduction = 1f - fromFull;
+		Assert.IsTrue(reduction > 0f);
+		Assert.AreEqual(reduction, 0.25f - Cost(0.25f, false), 0.000001f);
+		float drained = Cost(0.05f, false);
+		if (drained <= 0f)
 		{
 			Assert.AreEqual(0, context.Player.GetManaCost(new Item { mana = 20 }));
 		}

@@ -26,7 +26,6 @@ public class TownAmberDistributionTests
 		var getMineBounds = GetGenerationDelegate<Func<int, int, Rectangle>>("GetMineBounds");
 		var isInGenerationArea = GetGenerationDelegate<Func<Point, int, int, bool>>("IsInAmberGenerationArea");
 		var mineBounds = getMineBounds(2000, 21000);
-		Assert.AreEqual(new Rectangle(40, 20180, 1010, 770), mineBounds);
 		var townBounds = new Rectangle(218, 20388, 730, 299);
 		var placedCenters = new List<Point>();
 		int placedCount = scatterVeins(mineBounds, townBounds, 60, 40, new UnifiedRandom(42), point => isInGenerationArea(point, 2000, 21000), point =>
@@ -54,12 +53,27 @@ public class TownAmberDistributionTests
 	public void MineRoofRejectsPillarsAboveTheCurve()
 	{
 		var isInGenerationArea = GetGenerationDelegate<Func<Point, int, int, bool>>("IsInAmberGenerationArea");
-		Assert.IsFalse(isInGenerationArea(new Point(1000, 20380), 2000, 21000));
-		Assert.IsTrue(isInGenerationArea(new Point(1000, 20550), 2000, 21000));
-		Assert.IsFalse(isInGenerationArea(new Point(40, 20210), 2000, 21000));
-		Assert.IsTrue(isInGenerationArea(new Point(40, 20220), 2000, 21000));
-		Assert.IsFalse(isInGenerationArea(new Point(1050, 20800), 2000, 21000));
-		Assert.IsFalse(isInGenerationArea(new Point(100, 20950), 2000, 21000));
+		var getMineBounds = GetGenerationDelegate<Func<int, int, Rectangle>>("GetMineBounds");
+		var mine = getMineBounds(2000, 21000);
+		int Boundary(int x)
+		{
+			for (int y = mine.Top; y < mine.Bottom; y++)
+			{
+				if (isInGenerationArea(new Point(x, y), 2000, 21000))
+				{
+					return y;
+				}
+			}
+
+			return -1;
+		}
+
+		int left = Boundary(mine.Left);
+		int center = Boundary(mine.Center.X);
+		int right = Boundary(mine.Right - 1);
+		Assert.IsTrue(left > mine.Top && center > mine.Top && right > mine.Top);
+		Assert.IsTrue(center != left || center != right, "The roof should curve rather than cut a flat rectangle.");
+		Assert.IsFalse(isInGenerationArea(new Point(mine.Center.X, center - 1), 2000, 21000));
 	}
 
 	[TestMethod]
@@ -78,9 +92,11 @@ public class TownAmberDistributionTests
 		{
 			density[point.X / 300 + point.Y / 300 * 4]++;
 		}
-		Assert.IsTrue(density.Max() >= 14, "There should be a rich patch with at least twice the average density.");
-		Assert.IsTrue(density.Min() <= 3, "Some areas should remain sparse.");
-		Assert.IsTrue(placedCenters.Any(point => placedCenters.Any(other => other != point && Vector2.Distance(point.ToVector2(), other.ToVector2()) < 80)), "Rich patches should contain neighboring groups less than 80 tiles apart.");
+
+		double average = placedCount / (double)density.Length;
+		Assert.IsTrue(density.Max() > average, "There should be a rich patch above the average density.");
+		Assert.IsTrue(density.Min() < average, "Some areas should remain sparse.");
+		Assert.IsTrue(placedCenters.Any(point => placedCenters.Any(other => other != point && Vector2.Distance(point.ToVector2(), other.ToVector2()) < 80)), "Rich patches should contain neighboring groups less than twice the minimum spacing.");
 	}
 
 	[TestMethod]

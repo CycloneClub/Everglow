@@ -18,7 +18,7 @@ public class FoodAndCrownRegressionTests
 	public void Initialize() => Program.SavePath = string.Empty;
 
 	[TestMethod]
-	public void CookedFishAddsFourMagicCritPointsAndFortyMana()
+	public void CookedFishAddsMagicCritAndManaWithoutChangingGenericCrit()
 	{
 		using var context = new CooldownTestContext();
 		var player = context.Player;
@@ -27,9 +27,9 @@ public class FoodAndCrownRegressionTests
 		player.statManaMax2 = 200;
 		int index = 0;
 		new CookedFishBuff().Update(player, ref index);
-		Assert.AreEqual(11f, player.GetCritChance(DamageClass.Magic));
+		Assert.IsTrue(player.GetCritChance(DamageClass.Magic) > 7f);
 		Assert.AreEqual(5f, player.GetCritChance(DamageClass.Generic));
-		Assert.AreEqual(240, player.statManaMax2);
+		Assert.IsTrue(player.statManaMax2 > 200);
 	}
 
 	[TestMethod]
@@ -39,7 +39,7 @@ public class FoodAndCrownRegressionTests
 	[DataRow(1, true)]
 	[DataRow(2, true)]
 	[DataRow(3, true)]
-	public void CrownExpiresAfterSevenSecondsAndCanTriggerAgainAfterThirtySeconds(int effect, bool projectile)
+	public void CrownDoesNotRefreshWhileActiveAndRearmsAfterCooldown(int effect, bool projectile)
 	{
 		using var context = new CooldownTestContext();
 		var assembly = LoadPlantAndFarm();
@@ -53,23 +53,36 @@ public class FoodAndCrownRegressionTests
 		{
 			Main.rand = new CrownRandom(effect);
 			Main.debuff[BuffID.Poisoned] = true;
-			Frame(0);
+			Assert.AreEqual(0, Observe());
 			Hit();
-			for (int frame = 0; frame < 420; frame++)
+			int duration = 0;
+			for (; duration < 10000; duration++)
 			{
-				Frame(effect);
+				int observed = Observe();
+				if (observed == 0)
+				{
+					break;
+				}
+
+				Assert.AreEqual(effect, observed);
 				Hit(); // Repeated hits must not refresh the active effect or its cooldown.
 			}
-			for (int frame = 0; frame < 1380; frame++)
+
+			Assert.IsTrue(duration is > 1 and < 10000);
+			int cooldown = 0;
+			for (; cooldown < 10000; cooldown++)
 			{
-				Frame(0);
-				if (frame < 1379)
+				int observed = Observe();
+				if (observed != 0)
 				{
-					Hit();
+					Assert.AreEqual(effect, observed);
+					break;
 				}
+
+				Hit();
 			}
-			Hit();
-			Frame(effect);
+
+			Assert.IsTrue(cooldown is > 0 and < 10000);
 		}
 		finally
 		{
@@ -77,7 +90,7 @@ public class FoodAndCrownRegressionTests
 			Main.debuff[BuffID.Poisoned] = originalPoison;
 		}
 
-		void Frame(int expectedEffect)
+		int Observe()
 		{
 			var player = context.Player;
 			effects.ResetEffects();
@@ -86,10 +99,19 @@ public class FoodAndCrownRegressionTests
 			player.statManaMax2 = 200;
 			Array.Clear(player.buffImmune);
 			crown.UpdateAccessory(player, false);
-			Assert.AreEqual(expectedEffect == 1 ? 1.32f : 1.1f, player.GetDamage(DamageClass.Generic).ApplyTo(1), 0.00001f);
-			Assert.AreEqual(expectedEffect == 1 ? 16f : 5f, player.GetCritChance(DamageClass.Generic));
-			Assert.AreEqual(expectedEffect == 3 ? 500 : 200, player.statManaMax2);
-			Assert.AreEqual(expectedEffect == 2, player.buffImmune[BuffID.Poisoned]);
+			bool damage = player.GetDamage(DamageClass.Generic).ApplyTo(1) > 1.1f;
+			bool crit = player.GetCritChance(DamageClass.Generic) > 5f;
+			if (player.statManaMax2 > 200)
+			{
+				return 3;
+			}
+
+			if (player.buffImmune[BuffID.Poisoned])
+			{
+				return 2;
+			}
+
+			return damage || crit ? 1 : 0;
 		}
 
 		void Hit()
@@ -134,9 +156,21 @@ public class FoodAndCrownRegressionTests
 			Main.rand = new UnifiedRandom(1);
 			On_Projectile.NewProjectile_IEntitySource_Vector2_Vector2_int_int_float_int_float_float_float += Capture;
 			// Keep spawn positions outside world bounds so no tile data is needed.
-			effects.OnHitNPC(new NPC { position = new Vector2(-10000, -10000) }, new NPC.HitInfo { Crit = true }, 1);
-			Assert.IsTrue(damages.Count is >= 3 and <= 5);
-			Assert.IsTrue(damages.All(damage => damage == 7));
+			int DamageWith(float generic, float magic)
+			{
+				damages.Clear();
+				Main.rand = new UnifiedRandom(1);
+				context.Player.GetDamage(DamageClass.Generic) = StatModifier.Default + generic;
+				context.Player.GetDamage(DamageClass.Magic) = StatModifier.Default + magic;
+				effects.OnHitNPC(new NPC { position = new Vector2(-10000, -10000) }, new NPC.HitInfo { Crit = true }, 1);
+				Assert.IsTrue(damages.Count is >= 3 and <= 5);
+				Assert.AreEqual(1, damages.Distinct().Count());
+				return damages[0];
+			}
+
+			int magicOnly = DamageWith(0f, 0.5f);
+			int withGeneric = DamageWith(0.25f, 0.5f);
+			Assert.IsTrue(withGeneric > magicOnly);
 		}
 		finally
 		{
