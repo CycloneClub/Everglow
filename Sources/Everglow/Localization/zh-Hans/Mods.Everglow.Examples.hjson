@@ -1,104 +1,108 @@
-{
-	"AdvancedMirror": {
-		"Name": "扩展镜墙演示",
-		"Tooltip": "可调色和透明度的镜墙，反射方块、玩家、NPC 和掉落物\n手持时显示独立调参面板；普通镜面默认不翻转\n需要彩色或白色光照；参数仅影响本客户端",
-		"Panel": {
-			"Title": "扩展镜墙调参 · 拖动标题移动",
-			"OffsetX": "X 偏移",
-			"OffsetY": "Y 偏移",
-			"Scale": "缩放",
-			"Blur": "模糊采样间距",
-			"Sigma": "高斯 Sigma",
-			"NormalPattern": "哈哈镜（点击切换）",
-			"PatternWave": "原始双向波纹",
-			"PatternHorizontalWave": "横向胖瘦",
-			"PatternVerticalWave": "纵向高矮",
-			"PatternBulge": "鼓包放大",
-			"PatternPinch": "凹陷缩小",
-			"PatternTwist": "旋涡扭曲",
-			"NormalStrength": "法线扰动强度",
-			"NormalPeriod": "法线贴图周期",
-			"Pitch": "俯仰角（度）",
-			"Yaw": "偏航角（度）",
-			"Roll": "滚转角（度）",
-			"Distance": "透视距离",
-			"SurfaceRed": "底色 R",
-			"SurfaceGreen": "底色 G",
-			"SurfaceBlue": "底色 B",
-			"SurfaceOpacity": "底色不透明度",
-			"ReflectionRed": "倒影 R",
-			"ReflectionGreen": "倒影 G",
-			"ReflectionBlue": "倒影 B",
-			"ReflectionOpacity": "倒影强度",
-			"Flip": "前景整体左右翻转",
-			"On": "开启",
-			"Off": "关闭",
-			"Reset": "恢复默认",
-			"ScrollHint": "在面板内滚轮查看其余参数"
-		}
-	},
-	"ExampleDialogueQuest": {
-		"Dialogue": {
-			"Intro": "这段对话直接定义在任务的目标链中。",
-			"Request": "请带来十块土块，准备好后点击交付。",
-			"Accept": "接受",
-			"Accepted": "谢谢你。接下来可以继续点击任务来交付。",
-			"Deliver": "交付",
-			"Missing": "土块还不够，准备好后可以再次确认。",
-			"Thanks": "收到了！这枚银币是你的报酬。",
-			"Goodbye": "目标已经完成，但这句回应会保留到你读完。"
-		}
-	},
-	"TestExplore": {
-		"Objectives": [
-			{
-				"ObjectiveText": "在丛林中探索"
-			}
-		]
-	},
-	"TestReach": {
-		"Objectives": [
-			{
-				"ObjectiveText": "到达沙漠"
-			}
-		]
-	},
-	"TestNewObj": {
-		"Objectives": [
-			{},
-			{},
-			{
-				"ObjectiveText": "到达沙漠"
-			},
-			{}
-		]
-	},
-	"TestStructure": {
-		"Objectives": [
-			{
-				"ObjectiveText": "到达地牢"
-			},
-			{},
-			{},
-			{},
-			{},
-			{},
-			{
-				"ObjectiveText": "到达丛林"
-			},
-			{
-				"ObjectiveText": "到达洞穴层"
-			}
-		]
-	},
-	"GiveItemQuestTest": {
-		"Dialogue": {
-			"Missing": "土块还不够，准备好后可以再次确认。",
-			"Request": "请给我十个土块。",
-			"Success": "谢谢你。"
-		},
-		"Objectives": [
-			{}
-		]
+AdvancedMirror: {
+	Name: "扩展镜墙演示"
+	Tooltip: "可调色和透明度的镜墙，反射方块、玩家、NPC 和掉落物\n手持时显示独立调参面板；普通镜面默认不翻转\n需要彩色或白色光照；参数仅影响本客户端"
+	Panel: {
+		Title: "扩展镜墙调参 · 拖动标题移动"
+		OffsetX: "X 偏移"
+		OffsetY: "Y 偏移"
+		Scale: "缩放"
+		Blur: "模糊采样间距"
+		Sigma: "高斯 Sigma"
+		NormalPattern: "哈哈镜（点击切换）"
+		PatternWave: "原始双向波纹"
+		PatternHorizontalWave: "横向胖瘦"
+		PatternVerticalWave: "纵向高矮"
+		PatternBulge: "鼓包放大"
+		PatternPinch: "凹陷缩小"
+		PatternTwist: "旋涡扭曲"
+		NormalStrength: "法线扰动强度"
+		NormalPeriod: "法线贴图周期"
+		Pitch: "俯仰角（度）"
+		Yaw: "偏航角（度）"
+		Roll: "滚转角（度）"
+		Distance: "透视距离"
+		SurfaceRed: "底色 R"
+		SurfaceGreen: "底色 G"
+		SurfaceBlue: "底色 B"
+		SurfaceOpacity: "底色不透明度"
+		ReflectionRed: "倒影 R"
+		ReflectionGreen: "倒影 G"
+		ReflectionBlue: "倒影 B"
+		ReflectionOpacity: "倒影强度"
+		Flip: "前景整体左右翻转"
+		On: "开启"
+		Off: "关闭"
+		Reset: "恢复默认"
+		ScrollHint: "在面板内滚轮查看其余参数"
 	}
+}
+
+ExampleDialogueQuest: {
+	Dialogue: {
+		Intro: "这段对话直接定义在任务的目标链中。"
+		Request: "请带来十块土块，准备好后点击交付。"
+		Accept: "接受"
+		Accepted: "谢谢你。接下来可以继续点击任务来交付。"
+		Deliver: "交付"
+		Missing: "土块还不够，准备好后可以再次确认。"
+		Thanks: "收到了！这枚银币是你的报酬。"
+		Goodbye: "目标已经完成，但这句回应会保留到你读完。"
+	}
+}
+
+TestExplore: {
+	Objectives: [
+		{
+			ObjectiveText: "在丛林中探索"
+		}
+	]
+}
+
+TestReach: {
+	Objectives: [
+		{
+			ObjectiveText: "到达沙漠"
+		}
+	]
+}
+
+TestNewObj: {
+	Objectives: [
+		{}
+		{}
+		{
+			ObjectiveText: "到达沙漠"
+		}
+		{}
+	]
+}
+
+TestStructure: {
+	Objectives: [
+		{
+			ObjectiveText: "到达地牢"
+		}
+		{}
+		{}
+		{}
+		{}
+		{}
+		{
+			ObjectiveText: "到达丛林"
+		}
+		{
+			ObjectiveText: "到达洞穴层"
+		}
+	]
+}
+
+GiveItemQuestTest: {
+	Dialogue: {
+		Missing: "土块还不够，准备好后可以再次确认。"
+		Request: "请给我十个土块。"
+		Success: "谢谢你。"
+	}
+	Objectives: [
+		{}
+	]
 }
