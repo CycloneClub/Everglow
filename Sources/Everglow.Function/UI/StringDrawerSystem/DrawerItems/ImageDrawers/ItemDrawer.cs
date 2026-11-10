@@ -1,6 +1,5 @@
 using System.Text;
 using FontStashSharp;
-using Terraria.GameContent;
 
 namespace Everglow.Commons.UI.StringDrawerSystem.DrawerItems.ImageDrawers;
 
@@ -26,9 +25,10 @@ public class ItemDrawer : DrawerItem
 		// new Rectangle((int)Position.X, (int)Position.Y,
 		// (int)ItemBlockSize.X, (int)ItemBlockSize.Y), Color.White);
 
-		var tex = TextureAssets.Item[ItemType].Value;
-		float scale = Math.Min(ItemBlockSize.X / tex.Width, ItemBlockSize.Y / tex.Height);
-		sb.Draw(tex, Position + ItemBlockSize / 2f - tex.Size() * scale / 2f, null,
+		Main.GetItemDrawFrame(ItemType, out var tex, out var frame);
+		var frameSize = new Vector2(frame.Width, frame.Height);
+		float scale = Math.Min(ItemBlockSize.X / frameSize.X, ItemBlockSize.Y / frameSize.Y);
+		sb.Draw(tex, Position + ItemBlockSize / 2f - frameSize * scale / 2f, frame,
 			Color.White, 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
 
 		var font = FontManager.FusionPixel12.GetFont(ItemStackFontSize);
