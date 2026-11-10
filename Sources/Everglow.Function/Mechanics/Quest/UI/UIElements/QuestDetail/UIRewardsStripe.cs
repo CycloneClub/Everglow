@@ -23,6 +23,7 @@ public class UIRewardsStripe : UIBlock
 		set
 		{
 			rewards = value ?? [];
+			Info.IsVisible = rewards.Count > 0;
 
 			ChildrenElements.Clear();
 			rewardUIElements = rewards.Select(reward => new UIRewardsStripeItem(reward)).ToList();
@@ -52,6 +53,7 @@ public class UIRewardsStripe : UIBlock
 		Info.SetMargin(0);
 		Info.IsSensitive = true;
 		Info.HiddenOverflow = true;
+		Info.IsVisible = false;
 		_scrollBar = new UIQuestRewardHorizontalScrollbar();
 		Register(_scrollBar);
 	}
@@ -112,11 +114,6 @@ public class UIRewardsStripe : UIBlock
 		}
 	}
 
-	public override void Draw(SpriteBatch sb)
-	{
-		base.Draw(sb);
-	}
-
 	protected override void DrawChildren(SpriteBatch sb)
 	{
 		if (rewardUIElements == null || rewardUIElements.Count == 0)
@@ -144,6 +141,8 @@ public class UIRewardsStripeItem : UIBlock
 
 	public float Scale { get; set; } = 1f;
 
+	public string MouseText => Icon.Tooltip;
+
 	public UIRewardsStripeItem(RewardView reward)
 	{
 		ArgumentNullException.ThrowIfNull(reward);
@@ -157,14 +156,11 @@ public class UIRewardsStripeItem : UIBlock
 
 	private void Events_OnMouseHover(BaseElement baseElement)
 	{
+		QuestContainer.Instance.MouseText = MouseText;
 		if (Reward.Item is not null)
 		{
 			Main.hoverItemName = Reward.Item.Name;
 			Main.HoverItem = Reward.Item.Clone();
-		}
-		else
-		{
-			QuestContainer.Instance.MouseText = Reward.Description;
 		}
 	}
 
