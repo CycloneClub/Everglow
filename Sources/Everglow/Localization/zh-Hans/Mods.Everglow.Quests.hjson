@@ -4,8 +4,8 @@ Howard: "霍华德"
 
 SmuggledAleQuest: {
 	Dialogue: {
-		Objective0: "喂，那边的，既然你都问了，你身上有麦芽酒吗？帮我搞一点来，一点就好，小心别被上头看见。"
-		Objective1Request: "喂，那边的，既然你都问了，你身上有麦芽酒吗？帮我搞一点来，一点就好，小心别被上头看见。"
+		Objective0: "喂，那边的，既然你都问了，你身上有[i/s5:Ale]吗？帮我搞一点来，一点就好，小心别被上头看见。"
+		Objective1Request: "喂，那边的，既然你都问了，你身上有[i/s5:Ale]吗？帮我搞一点来，一点就好，小心别被上头看见。"
 		Objective1Success: "嘘，小声点，别让上头看见。谢啦，这些钱和凝胶你拿着，就当是跑腿的谢礼。"
 	}
 	DisplayName: "私酒"
@@ -116,8 +116,8 @@ Georg: "格尔格"
 
 IngredientSupplyOneQuest: {
 	Dialogue: {
-		Objective0: "啊，原来你是新来的啊。既然你都问了，那正好这两天的生意太好了，餐厅甚至来不及进货。你帮我弄些草鱼来，你的晚饭我就包了。"
-		Objective1Request: "啊，原来你是新来的啊。既然你都问了，那正好这两天的生意太好了，餐厅甚至来不及进货。你帮我弄些草鱼来，你的晚饭我就包了。"
+		Objective0: "啊，原来你是新来的啊。既然你都问了，那正好这两天的生意太好了，餐厅甚至来不及进货。你帮我弄些[i/s5:Everglow/GrassCarp]来，你的晚饭我就包了。"
+		Objective1Request: "啊，原来你是新来的啊。既然你都问了，那正好这两天的生意太好了，餐厅甚至来不及进货。你帮我弄些[i/s5:Everglow/GrassCarp]来，你的晚饭我就包了。"
 		Objective1Success: "这些鱼还真是肥美。就像我之前说的，你的晚饭我包了。"
 	}
 	DisplayName: "食材补充·其一"
@@ -136,7 +136,7 @@ IngredientSupplyOneQuest: {
 SelfRelianceQuest: {
 	Dialogue: {
 		Objective0: "都啥时候了还来找事做呢？这样，我也不想看见你饿得挥不动剑。我看你也挺有诚意的，我来教你做一份灯果汁腌草鱼，后面你也能自己喂饱自己。"
-		Objective2: "灯果准备好了？做菜首先要学会自己备料，灯果汁腌草鱼会用得上这些。"
+		Objective2: "[i/s12:Everglow/LampFruit]准备好了？做菜首先要学会自己备料，灯果汁腌草鱼会用得上这些。"
 	}
 	DisplayName: "自力更生"
 	Description: "罗尔想教你准备一道能填饱肚子的菜。"
@@ -345,7 +345,7 @@ LostMinerQuest: {
 		Intro0: "啊，一张陌生面孔。"
 		Intro1: "你可以叫我赫姆，但如你所见，我好像迷路了。"
 		Intro2: "我的补给所剩不多了，如果可以的话，可以请你将我的消息传达给工会吗？"
-		Intro3: "带上我的通勤卡，沿矿道返回城镇。之后将通勤卡交给工会前台的大姐，我的工友兄弟们会找到我的。"
+		Intro3: "带上我的[i:Everglow/HermCommuterCard]，沿矿道返回城镇。之后将[i:Everglow/HermCommuterCard]交给工会前台的大姐，我的工友兄弟们会找到我的。"
 		Intro4: "担心我吗？这盏矿灯会陪我一会儿。无论我到了哪，它都与我同在。"
 		Waiting: "{$Mods.Everglow.NPCs.TownNPCs.Herm.Waiting}"
 		Farewell0: "啊哈哈哈，是你啊。"
@@ -356,8 +356,8 @@ LostMinerQuest: {
 		Silence: "{$Mods.Everglow.NPCs.TownNPCs.Herm.Silence}"
 		TakeLamp: "拾取"
 		DeliverCard: "交付"
-		CounterCard: "这是赫姆的通勤卡？请告诉我他在哪里。"
-		MissingCard: "请把赫姆的通勤卡带来。"
+		CounterCard: "这是赫姆的[i:Everglow/HermCommuterCard]？请告诉我他在哪里。"
+		MissingCard: "请把赫姆的[i:Everglow/HermCommuterCard]带来。"
 		CounterSearch: "谢谢你带来消息。请你去深层千回矿道找找赫姆，希望一切还来得及。"
 		Report: "汇报"
 		Report0: "赫姆……"

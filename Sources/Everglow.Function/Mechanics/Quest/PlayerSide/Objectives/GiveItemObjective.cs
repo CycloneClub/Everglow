@@ -63,7 +63,9 @@ public class GiveItemObjective : PlayerObjectiveBase, IQuestDialogueObjective
 
 	public virtual string GetChat()
 	{
-		string items = string.Join(QuestText.Get("Common.ListSeparator"), ItemTypes.Select(Lang.GetItemNameValue));
+		string items = ItemTypes.Count > 1
+			? string.Join(QuestText.Get("Common.ListSeparator"), ItemTypes.Select(type => QuestText.ItemTag(type)))
+			: QuestText.ItemTag(ItemTypes[0], ItemCount);
 		string progress = $"({Main.LocalPlayer.inventory.Where(i => ItemTypes.Contains(i.type)).Sum(i => i.stack)}/{ItemCount})";
 		return QuestText.Get(
 			ItemTypes.Count > 1 ? "Objectives.GiveAny" : "Objectives.Give",
@@ -130,7 +132,7 @@ public class GiveItemObjective : PlayerObjectiveBase, IQuestDialogueObjective
 			return QuestText.Get("Objectives.GiveAny", npc.TypeName, itemString, ItemCount, progress);
 		}
 
-		return QuestText.Get("Objectives.Give", npc.TypeName, ItemDrawer.Create(ItemTypes.First()), ItemCount, progress);
+		return QuestText.Get("Objectives.GiveItem", npc.TypeName, ItemDrawer.Create(ItemTypes.First(), ItemCount), progress);
 	}
 
 	private float GetInventoryProgress(IEnumerable<Item> inventory) => Math.Clamp(inventory.Where(x => ItemTypes.Contains(x.type)).Sum(x => x.stack) / (float)ItemCount, 0f, 1f);

@@ -362,17 +362,14 @@ public class QuestChatTest
 	[TestMethod]
 	[DataRow(false)]
 	[DataRow(true)]
-	public void DefaultGivePromptUsesItemNamesInTheNativeChatBox(bool worldSide)
+	public void DefaultGivePromptUsesItemTagsInTheNativeChatBox(bool worldSide)
 	{
-		var itemNames = (LocalizedText[])typeof(Lang).GetField("_itemNameCache", BindingFlags.NonPublic | BindingFlags.Static)!.GetValue(null)!;
 		var npcNames = (LocalizedText[])typeof(Lang).GetField("_npcNameCache", BindingFlags.NonPublic | BindingFlags.Static)!.GetValue(null)!;
-		var oldItemName = itemNames[ItemID.Wood];
 		var oldNpcName = npcNames[NPCID.Guide];
 		try
 		{
-			itemNames[ItemID.Wood] = Language.GetOrRegister("Tests.Wood", () => "Wood");
 			npcNames[NPCID.Guide] = Language.GetOrRegister("Tests.Guide", () => "Guide");
-			Language.GetOrRegister("Mods.Everglow.QuestSystem.Objectives.Give", () => "Give {0} {1} ×{2} {3}");
+			Language.GetOrRegister("Mods.Everglow.QuestSystem.Objectives.Give", () => "Give {0} {1} {3}");
 			if (worldSide)
 			{
 				AddWorld(new WorldGiveObjective(NPCID.Guide, ItemID.Wood, 2));
@@ -384,13 +381,12 @@ public class QuestChatTest
 				player.AddQuest(quest, PlayerQuestState.Accepted, showText: false);
 			}
 			Click();
-			StringAssert.Contains(Main.npcChatText, "Wood ×2");
+			StringAssert.Contains(Main.npcChatText, $"[i/s2:{ItemID.Wood}]");
 			Assert.IsFalse(Main.npcChatText.Contains("ItemDrawer", StringComparison.Ordinal));
 			Assert.IsTrue(QuestChat.IsChattingWith(Main.npc[0]));
 		}
 		finally
 		{
-			itemNames[ItemID.Wood] = oldItemName;
 			npcNames[NPCID.Guide] = oldNpcName;
 		}
 	}

@@ -4,8 +4,8 @@ Howard: "Howard"
 
 SmuggledAleQuest: {
 	Dialogue: {
-		Objective0: "Hey, you. Since you're asking, have you got any ale? Bring me a little, just a little. Make sure the higher-ups don't see."
-		Objective1Request: "Hey, you. Since you're asking, have you got any ale? Bring me a little, just a little. Make sure the higher-ups don't see."
+		Objective0: "Hey, you. Since you're asking, have you got any [i/s5:Ale]? Bring me a little, just a little. Make sure the higher-ups don't see."
+		Objective1Request: "Hey, you. Since you're asking, have you got any [i/s5:Ale]? Bring me a little, just a little. Make sure the higher-ups don't see."
 		Objective1Success: "Shh, keep it down. Don't let the higher-ups see. Thanks! Take these coins and gel for your trouble."
 	}
 	DisplayName: "Smuggled Ale"
@@ -116,8 +116,8 @@ Georg: "Georg"
 
 IngredientSupplyOneQuest: {
 	Dialogue: {
-		Objective0: "Ah, you're new here. Since you asked, business has been so good these past few days that we haven't had time to restock. Bring me some grass carp and dinner is on me."
-		Objective1Request: "Ah, you're new here. Since you asked, business has been so good these past few days that we haven't had time to restock. Bring me some grass carp and dinner is on me."
+		Objective0: "Ah, you're new here. Since you asked, business has been so good these past few days that we haven't had time to restock. Bring me some [i/s5:Everglow/GrassCarp] and dinner is on me."
+		Objective1Request: "Ah, you're new here. Since you asked, business has been so good these past few days that we haven't had time to restock. Bring me some [i/s5:Everglow/GrassCarp] and dinner is on me."
 		Objective1Success: "These fish are nice and plump. As promised, dinner is on me."
 	}
 	DisplayName: "Restocking Ingredients I"
@@ -136,7 +136,7 @@ IngredientSupplyOneQuest: {
 SelfRelianceQuest: {
 	Dialogue: {
 		Objective0: "Still looking for work at this hour? I don't want to see you too hungry to lift your sword. You seem willing to learn, so I'll teach you to make grass carp marinated in lampfruit juice. Then you can feed yourself."
-		Objective2: "Got the lampfruits? Preparing your own ingredients is the first step. They'll come in handy for marinated grass carp."
+		Objective2: "Got the [i/s12:Everglow/LampFruit]? Preparing your own ingredients is the first step. They'll come in handy for marinated grass carp."
 	}
 	DisplayName: "Self-Reliance"
 	Description: "Rolle wants to teach you how to prepare a filling meal."
@@ -345,7 +345,7 @@ LostMinerQuest: {
 		Intro0: "Ah, a new face."
 		Intro1: "You can call me Herm. As you can see, I seem to have lost my way."
 		Intro2: "I'm running low on supplies. Could you take word of me back to the guild?"
-		Intro3: "Take my commuter card and follow the tunnels back to town. Give it to the lady at the guild's front desk. My fellow miners will come find me."
+		Intro3: "Take my [i:Everglow/HermCommuterCard] and follow the tunnels back to town. Give it to the lady at the guild's front desk. My fellow miners will come find me."
 		Intro4: "Worried about me? This lamp will keep me company. Wherever I go, it stays with me."
 		Waiting: "{$Mods.Everglow.NPCs.TownNPCs.Herm.Waiting}"
 		Farewell0: "Ahahaha, it's you."
@@ -356,8 +356,8 @@ LostMinerQuest: {
 		Silence: "{$Mods.Everglow.NPCs.TownNPCs.Herm.Silence}"
 		TakeLamp: "Take"
 		DeliverCard: "Deliver"
-		CounterCard: "Is that Herm's commuter card? Please tell me where he is."
-		MissingCard: "Please bring Herm's commuter card."
+		CounterCard: "Is that Herm's [i:Everglow/HermCommuterCard]? Please tell me where he is."
+		MissingCard: "Please bring Herm's [i:Everglow/HermCommuterCard]."
 		CounterSearch: "Thank you for bringing word. Please search the deep Tangled Submine for Herm. I hope there's still time."
 		Report: "Report"
 		Report0: "Herm..."

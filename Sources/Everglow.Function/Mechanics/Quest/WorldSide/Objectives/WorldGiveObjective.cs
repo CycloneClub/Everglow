@@ -52,7 +52,7 @@ public class WorldGiveObjective : WorldObjectiveBase, IQuestDialogueObjective
 	{
 		var npc = new NPC();
 		npc.SetDefaults(NPCType);
-		return QuestText.Get("Objectives.Give", npc.TypeName, ItemDrawer.Create(ItemType), ItemCount, string.Empty).TrimEnd();
+		return QuestText.Get("Objectives.GiveItem", npc.TypeName, ItemDrawer.Create(ItemType, ItemCount), string.Empty).TrimEnd();
 	}
 
 	public override void Update()
@@ -66,7 +66,7 @@ public class WorldGiveObjective : WorldObjectiveBase, IQuestDialogueObjective
 
 	public virtual string GetChat() => QuestText.Get(
 		"Objectives.Give",
-		Lang.GetNPCNameValue(NPCType), Lang.GetItemNameValue(ItemType), ItemCount, string.Empty).TrimEnd();
+		Lang.GetNPCNameValue(NPCType), QuestText.ItemTag(ItemType, ItemCount), ItemCount, string.Empty).TrimEnd();
 
 	public bool TrySubmitObjective(Player player)
 	{
