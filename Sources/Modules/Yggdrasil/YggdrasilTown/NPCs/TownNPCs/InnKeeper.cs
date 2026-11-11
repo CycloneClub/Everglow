@@ -11,7 +11,7 @@ public class InnKeeper : TownNPC_LiveInYggdrasil
 
 	public override void SetStaticDefaults()
 	{
-		Main.npcFrameCount[NPC.type] = 9;
+		Main.npcFrameCount[NPC.type] = 10;
 	}
 
 	public override void SetDefaults()

@@ -2,10 +2,10 @@ using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.Core.Dialogue;
 using Everglow.Commons.Mechanics.Quest.WorldSide;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Objectives;
-using Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs;
-using Everglow.Yggdrasil.YggdrasilTown.Items.Armors.CyanVine;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Miscs;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables.Ores;
+using Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Quests;
 
@@ -14,26 +14,29 @@ public sealed class ProstheticMaintenanceQuest : TownNpcQuest
 	public override void Initialize()
 	{
 		Objectives
-			.Add(new WorldReachObjective(player => player.TalkNPC?.netID == GiverNpcType && HasCyanVineMaterialOrArmor(player)))
-			.Add(new WorldTalkObjective(GiverNpcType)
-				.WithDialogue(d => d.WithText("Dialogue.Objective1")))
-			// TODO: 矿石交付数量、报酬未确定。数量明确后改为 WorldGiveObjective。
-			.Add(new WorldReachObjective(_ => false))
-			.Add(new WorldTalkObjective(GiverNpcType)
-				.WithDialogue(d => d.WithText("Dialogue.Objective3")));
+			.Add(new WorldGiveObjective(GiverNpcType, ModContent.ItemType<CyanVineOre>(), 5)
+				.WithDialogue(d => d
+					.WithText("Dialogue.Intro")
+					.WithCompletionText("Dialogue.Complete")));
+
+		RewardItems.Add(new Item(ModContent.ItemType<GoodNeighborCoin>(), 10));
 	}
 
 	public override int GiverNpcType => ModContent.NPCType<InnKeeper>();
 
 	public override QuestSourceBase Source => Georg;
 
-	public override bool CanOffer(WorldQuestManager manager) => true;
+	public override bool CanOffer(WorldQuestManager manager)
+	{
+		foreach (var player in Main.ActivePlayers)
+		{
+			if (player.HasItemInInventoryOrOpenVoidBag(ModContent.ItemType<CyanVineOre>())
+				|| player.HasItemInInventoryOrOpenVoidBag(ModContent.ItemType<CyanVineBar>()))
+			{
+				return true;
+			}
+		}
 
-	private static bool HasCyanVineMaterialOrArmor(Player player) =>
-		player.HasItem(ModContent.ItemType<CyanVineOre>())
-		|| player.HasItem(ModContent.ItemType<CyanVineBar>())
-		|| player.armor.Take(3).Any(item => item.type == ModContent.ItemType<CyanWarhelm>()
-			|| item.type == ModContent.ItemType<CyanHeavylet>()
-			|| item.type == ModContent.ItemType<CyanBreastplate>()
-			|| item.type == ModContent.ItemType<CyanLeggings>());
+		return false;
+	}
 }

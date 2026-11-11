@@ -267,8 +267,8 @@ TeahouseTalesTwoQuest: {
 
 ProstheticMaintenanceQuest: {
 	Dialogue: {
-		Objective1: "You seem to have something I need. My prosthetic limb needs maintenance, but I'm short of Cyan Vine Ore. Could you bring me some? There will be a reward."
-		Objective3: "Well done! I knew you could help me."
+		Intro: "You seem to have something I need. My prosthetic limb needs maintenance, but I'm short of Cyan Vine Ore. Could you bring me some? There will be a reward."
+		Complete: "Well done! I knew you could help me."
 	}
 	DisplayName: "Prosthetic Maintenance"
 	Description: "Georg needs materials to maintain his prosthetic limb."

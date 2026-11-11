@@ -267,8 +267,8 @@ TeahouseTalesTwoQuest: {
 
 ProstheticMaintenanceQuest: {
 	Dialogue: {
-		Objective1: "小伙子，我看你好像身上有我需要的东西。你看我这义肢需要保养了，但是缺少了青缎矿。你能帮我整点过来吗？自然是有报酬的。"
-		Objective3: "小伙子好样的，我就知道你能帮我这个忙。"
+		Intro: "小伙子，我看你好像身上有我需要的东西。你看我这义肢需要保养了，但是缺少了青缎矿。你能帮我整点过来吗？自然是有报酬的。"
+		Complete: "小伙子好样的，我就知道你能帮我这个忙。"
 	}
 	DisplayName: "义肢保养"
 	Description: "格尔格的义肢需要保养，他正在寻找合适的材料。"
