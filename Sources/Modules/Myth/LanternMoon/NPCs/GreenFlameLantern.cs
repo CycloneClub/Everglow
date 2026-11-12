@@ -85,7 +85,7 @@ public class GreenFlameLantern : LanternMoonNPC
 			Vector2 v0 = new Vector2(0, 3).RotatedBy(Timer + NPC.whoAmI);
 			for (int i = 0; i < 4; i++)
 			{
-				Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Top, v0.RotatedBy(i / 4f * MathHelper.TwoPi), ModContent.ProjectileType<GreenFlameProj>(), 20, 0f, Main.maxPlayers);
+				Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Top, v0.RotatedBy(i / 4f * MathHelper.TwoPi), ModContent.ProjectileType<GreenFlameProj>(), 20, 0f, -1);
 				GreenFlameProj gFP = p0.ModProjectile as GreenFlameProj;
 				if (gFP is not null)
 				{
@@ -255,7 +255,7 @@ public class GreenFlameLantern : LanternMoonNPC
 			{
 				vel *= 0.65f;
 			}
-			Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), pos, vel, ModContent.ProjectileType<GreenFlameSharpCrystal>(), 20, 1, Main.maxPlayers);
+			Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), pos, vel, ModContent.ProjectileType<GreenFlameSharpCrystal>(), 20, 1, -1);
 		}
 	}
 

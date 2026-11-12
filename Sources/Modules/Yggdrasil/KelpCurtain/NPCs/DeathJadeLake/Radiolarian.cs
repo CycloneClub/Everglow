@@ -419,7 +419,7 @@ public class Radiolarian : ModNPC
 
 		FireTimer = FireInterval;
 		Vector2 direction = (targetCenter - NPC.Center).SafeNormalize(Vector2.UnitX * NPC.direction);
-		Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, direction * WaterBoltSpeed, ModContent.ProjectileType<Radiolarian_WaterBolt>(), RangedDamage, 0f, Owner: Main.maxPlayers);
+		Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, direction * WaterBoltSpeed, ModContent.ProjectileType<Radiolarian_WaterBolt>(), RangedDamage, 0f, Owner: -1);
 		NPC.netUpdate = true;
 	}
 

@@ -649,7 +649,7 @@ public class Acytaea_yggdrasil : ModNPC
 		NPC.velocity *= 0;
 		NPC.Center = player.Center + new Vector2(Main.rand.NextFloat(-200, 200), -300);
 
-		Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<Fevens_EnchantingSmash>(), 130, 2, Main.maxPlayers);
+		Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<Fevens_EnchantingSmash>(), 130, 2, -1);
 
 		NPC.rotation = 0;
 		for (int t = 0; t < 150; t++)

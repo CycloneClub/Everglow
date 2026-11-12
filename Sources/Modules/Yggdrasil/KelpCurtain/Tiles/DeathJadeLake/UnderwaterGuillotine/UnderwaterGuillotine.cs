@@ -54,7 +54,7 @@ public class UnderwaterGuillotine : ShapeDataTile
 				}
 			}
 		}
-		var projectile = Projectile.NewProjectileDirect(WorldGen.GetProjectileSource_PlayerOrWires(i, j, true, Main.LocalPlayer), (topLeft + new Point(4, 0)).ToWorldCoordinates(), Vector2.zeroVector, ModContent.ProjectileType<UnderwaterGuillotine_Projectile>(), 1000, 5, Main.maxPlayers);
+		var projectile = Projectile.NewProjectileDirect(WorldGen.GetProjectileSource_PlayerOrWires(i, j, true, Main.LocalPlayer), (topLeft + new Point(4, 0)).ToWorldCoordinates(), Vector2.zeroVector, ModContent.ProjectileType<UnderwaterGuillotine_Projectile>(), 1000, 5, -1);
 		UnderwaterGuillotine_Projectile uGP0 = projectile.ModProjectile as UnderwaterGuillotine_Projectile;
 		if (uGP0 != null)
 		{

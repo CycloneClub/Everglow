@@ -132,8 +132,12 @@ public class ProjectileSourceOwnerTests
 	}
 
 	[TestMethod]
-	public void EnemyAttackDoesNotBelongToItsPlayerTarget()
+	[DataRow(NetmodeID.SinglePlayer, 0)]
+	[DataRow(NetmodeID.Server, 255)]
+	public void EnemyAttackBelongsToSpawningSideInsteadOfItsPlayerTarget(int netMode, int owner)
 	{
+		Main.netMode = netMode;
+		Main.myPlayer = owner;
 		RegisterProjectile(typeof(Everglow.Yggdrasil.YggdrasilTown.Projectiles.Enemies.BloodSpell));
 		var npc = new NPC { target = 1 };
 		npc.ai[0] = 29;
@@ -149,7 +153,7 @@ public class ProjectileSourceOwnerTests
 			On_NPC.TargetClosest -= keepTarget;
 		}
 		Assert.AreSame(npc, ((EntitySource_Parent)capturedSource!).Entity);
-		Assert.AreEqual(Main.maxPlayers, capturedProjectile!.owner);
+		Assert.AreEqual(owner, capturedProjectile!.owner);
 		Assert.AreEqual(1, npc.target);
 	}
 
@@ -246,7 +250,8 @@ public class ProjectileSourceOwnerTests
 	private Projectile Record(IEntitySource source, int type, int damage, int owner)
 	{
 		capturedSource = source;
-		capturedProjectile = new Projectile { type = type, damage = damage, owner = owner, DamageType = DamageClass.Magic };
+		// Match NewProjectile's default-owner handling before applying source stats.
+		capturedProjectile = new Projectile { type = type, damage = damage, owner = owner == -1 ? Main.myPlayer : owner, DamageType = DamageClass.Magic };
 		typeof(Projectile).GetMethod("ApplyStatsFromSource", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)!
 			.Invoke(capturedProjectile, [source]);
 		return capturedProjectile;

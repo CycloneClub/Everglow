@@ -55,7 +55,7 @@ public class CylindricalLantern : LanternMoonNPC
 		NPC.velocity *= 0;
 		if (TeleportTimer == 30)
 		{
-			Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<CylindricalLantern_flame>(), 9, 1f, Main.maxPlayers);
+			Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<CylindricalLantern_flame>(), 9, 1f, -1);
 		}
 		if (TeleportTimer > 100)
 		{
@@ -119,7 +119,7 @@ public class CylindricalLantern : LanternMoonNPC
 			ExplosionTimer = 30;
 			NPC.life = 1;
 			NPC.dontTakeDamage = true;
-			Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<CylindricalLantern_explosion>(), 23, 1f, Main.maxPlayers);
+			Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<CylindricalLantern_explosion>(), 23, 1f, -1);
 		}
 	}
 

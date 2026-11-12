@@ -263,7 +263,7 @@ public class KingJellyBall : ModNPC
 		{
 			if (NPC.localAI[0] % 10 == 0)
 			{
-				Projectile projectile = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<JellyBallElectricKill>(), (int)(NPC.damage * 0.5f * 1.1f), 0, Main.maxPlayers);
+				Projectile projectile = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<JellyBallElectricKill>(), (int)(NPC.damage * 0.5f * 1.1f), 0, -1);
 				JellyBallElectricKill jellyBallElectricKill = projectile.ModProjectile as JellyBallElectricKill;
 				if (jellyBallElectricKill != null)
 				{
@@ -313,7 +313,7 @@ public class KingJellyBall : ModNPC
 		{
 			if (NPC.localAI[0] % 10 == 0)
 			{
-				Projectile projectile = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<JellyBallLifeAbsorb>(), 0, 0, Main.maxPlayers);
+				Projectile projectile = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<JellyBallLifeAbsorb>(), 0, 0, -1);
 				JellyBallLifeAbsorb jellyBallLifeAbsorb = projectile.ModProjectile as JellyBallLifeAbsorb;
 				if (jellyBallLifeAbsorb != null)
 				{
@@ -421,7 +421,7 @@ public class KingJellyBall : ModNPC
 					}
 					if ((checkPos - player.Center).Length() < 24)
 					{
-						Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), startPos, origVel, ModContent.ProjectileType<JellyBallGelStream>(), (int)(NPC.damage * 0.375), 2, Main.maxPlayers);
+						Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), startPos, origVel, ModContent.ProjectileType<JellyBallGelStream>(), (int)(NPC.damage * 0.375), 2, -1);
 						return;
 					}
 				}
@@ -528,7 +528,7 @@ public class KingJellyBall : ModNPC
 		}
 		while (TotalDamageTakeIn > thresholdDamage)
 		{
-			Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, MathF.Sqrt(Main.rand.NextFloat(1f)) * 60f).RotatedByRandom(MathHelper.TwoPi), new Vector2(0, -Main.rand.NextFloat(4f, 8f)).RotatedBy(Main.rand.NextFloat(-1.2f, 1.2f)), ModContent.ProjectileType<JellyBallGelStream>(), (int)(NPC.damage * 0.375), 2, Main.maxPlayers);
+			Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, MathF.Sqrt(Main.rand.NextFloat(1f)) * 60f).RotatedByRandom(MathHelper.TwoPi), new Vector2(0, -Main.rand.NextFloat(4f, 8f)).RotatedBy(Main.rand.NextFloat(-1.2f, 1.2f)), ModContent.ProjectileType<JellyBallGelStream>(), (int)(NPC.damage * 0.375), 2, -1);
 			TotalDamageTakeIn -= thresholdDamage;
 		}
 		if (NPC.life < NPC.lifeMax * 0.5 && NPC.life + hit.Damage >= NPC.lifeMax * 0.5)

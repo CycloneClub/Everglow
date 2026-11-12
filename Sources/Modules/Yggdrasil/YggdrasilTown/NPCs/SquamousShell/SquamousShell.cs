@@ -409,7 +409,7 @@ public class SquamousShell : ModNPC
 			Vector2 vel2 = vel.RotatedBy(Main.rand.NextFloat(-0.1f, 0.1f));
 			Vector2 pos = NPC.Center + new Vector2(0, -MathF.Sqrt(Main.rand.NextFloat(1f)) * 40).RotatedBy(Main.rand.NextFloat(-1.5f, 1.5f));
 			SoundEngine.PlaySound(SoundID.Item152, NPC.Center);
-			Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), pos, vel2, ModContent.ProjectileType<SquamousRockProj_small>(), (int)(NPC.damage * 0.35f), 3, Main.maxPlayers);
+			Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), pos, vel2, ModContent.ProjectileType<SquamousRockProj_small>(), (int)(NPC.damage * 0.35f), 3, -1);
 			yield return new SkipThisFrame();
 		}
 		for (int k = 0; k < 30; k++)
@@ -458,7 +458,7 @@ public class SquamousShell : ModNPC
 			Vector2 vel2 = vel.RotatedBy(Main.rand.NextFloat(-0.1f, 0.1f));
 			Vector2 pos = NPC.Center + new Vector2(0, -MathF.Sqrt(Main.rand.NextFloat(1f)) * 40).RotatedBy(Main.rand.NextFloat(-1.5f, 1.5f));
 			SoundEngine.PlaySound(SoundID.DD2_JavelinThrowersAttack, NPC.Center);
-			Projectile.NewProjectile(NPC.GetSource_FromAI(), pos, vel2, ModContent.ProjectileType<SquamousRockProj>(), (int)(NPC.damage * 0.54f), 3, Main.maxPlayers);
+			Projectile.NewProjectile(NPC.GetSource_FromAI(), pos, vel2, ModContent.ProjectileType<SquamousRockProj>(), (int)(NPC.damage * 0.54f), 3, -1);
 			yield return new WaitForFrames(5);
 		}
 		_coroutineManager.StartCoroutine(new Coroutine(NextAttack()));
@@ -907,14 +907,14 @@ public class SquamousShell : ModNPC
 		{
 			for (int x = 0; x < 10; x++)
 			{
-				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2((x - 4.5f) * 400f + Main.rand.NextFloat(-100, 100), -100), new Vector2(0, 1), ModContent.ProjectileType<SquamousRockSpike_Falling_Predict>(), 35, 3f, Main.maxPlayers);
+				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2((x - 4.5f) * 400f + Main.rand.NextFloat(-100, 100), -100), new Vector2(0, 1), ModContent.ProjectileType<SquamousRockSpike_Falling_Predict>(), 35, 3f, -1);
 			}
 		}
 		if (Main.masterMode)
 		{
 			for (int x = 0; x < 3; x++)
 			{
-				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2((x - 1.5f) * 700f + Main.rand.NextFloat(-100, 100), -100), new Vector2(0, 1), ModContent.ProjectileType<SquamousRockSpike_Falling_Predict>(), 35, 3f, Main.maxPlayers);
+				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2((x - 1.5f) * 700f + Main.rand.NextFloat(-100, 100), -100), new Vector2(0, 1), ModContent.ProjectileType<SquamousRockSpike_Falling_Predict>(), 35, 3f, -1);
 			}
 		}
 		for (int x = 0; x <= 150; x++)
@@ -1026,7 +1026,7 @@ public class SquamousShell : ModNPC
 			}
 			Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<Squamous_Slash>(), damage, 2, -1, 2.5f);
 			Vector2 shadeVel = new Vector2(0, Main.rand.NextFloat(4, 7)).RotateRandom(MathHelper.TwoPi);
-			Projectile shade = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center - shadeVel * 60, shadeVel, ModContent.ProjectileType<SquamousShell_shade>(), 0, 2, Main.maxPlayers);
+			Projectile shade = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center - shadeVel * 60, shadeVel, ModContent.ProjectileType<SquamousShell_shade>(), 0, 2, -1);
 			shade.rotation = shadeVel.ToRotation();
 			NPC.Center = attackPos + new Vector2(Main.rand.NextFloat(-140, 140), Main.rand.NextFloat(-50, 50));
 			NPC.spriteDirection *= -1;
@@ -1068,19 +1068,19 @@ public class SquamousShell : ModNPC
 			NPC.velocity = NPC.velocity * 0.995f + toTarget * 0.005f * 0.1f;
 			if (x == 0)
 			{
-				Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.Normalize(toPlayer).RotatedBy(-0.05f) * 4f, ModContent.ProjectileType<SquamousMoonBladePredict>(), (int)(NPC.damage * 0.75f), 2, Main.maxPlayers);
+				Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.Normalize(toPlayer).RotatedBy(-0.05f) * 4f, ModContent.ProjectileType<SquamousMoonBladePredict>(), (int)(NPC.damage * 0.75f), 2, -1);
 			}
 			if (x == 1)
 			{
 				for (int i = 0; i < 4; i++)
 				{
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.Normalize(toPlayer).RotatedBy(MathHelper.TwoPi * (i + 0.5f) / 4f + 0.05f) * 4f, ModContent.ProjectileType<SquamousMoonBladePredict>(), (int)(NPC.damage * 0.75f), 2, Main.maxPlayers);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.Normalize(toPlayer).RotatedBy(MathHelper.TwoPi * (i + 0.5f) / 4f - 0.05f) * 4f, ModContent.ProjectileType<SquamousMoonBladePredict>(), (int)(NPC.damage * 0.75f), 2, Main.maxPlayers);
+					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.Normalize(toPlayer).RotatedBy(MathHelper.TwoPi * (i + 0.5f) / 4f + 0.05f) * 4f, ModContent.ProjectileType<SquamousMoonBladePredict>(), (int)(NPC.damage * 0.75f), 2, -1);
+					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.Normalize(toPlayer).RotatedBy(MathHelper.TwoPi * (i + 0.5f) / 4f - 0.05f) * 4f, ModContent.ProjectileType<SquamousMoonBladePredict>(), (int)(NPC.damage * 0.75f), 2, -1);
 				}
 			}
 			if (x == 2)
 			{
-				Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.Normalize(toPlayer).RotatedBy(0.03f) * 4.1f, ModContent.ProjectileType<SquamousMoonBladePredict>(), (int)(NPC.damage * 0.75f), 2f, Main.maxPlayers);
+				Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.Normalize(toPlayer).RotatedBy(0.03f) * 4.1f, ModContent.ProjectileType<SquamousMoonBladePredict>(), (int)(NPC.damage * 0.75f), 2f, -1);
 			}
 			if (x == 16)
 			{
@@ -1264,11 +1264,11 @@ public class SquamousShell : ModNPC
 			NPC.velocity = NPC.velocity * 0.995f + toTarget * 0.005f * 0.1f;
 			if (x == 0)
 			{
-				Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.Normalize(toPlayer).RotatedBy(-0.05f) * 4f, ModContent.ProjectileType<SquamousMoonBladePredict>(), (int)(NPC.damage * 0.75f), 2, Main.maxPlayers);
+				Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.Normalize(toPlayer).RotatedBy(-0.05f) * 4f, ModContent.ProjectileType<SquamousMoonBladePredict>(), (int)(NPC.damage * 0.75f), 2, -1);
 			}
 			if (x == 2)
 			{
-				Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.Normalize(toPlayer).RotatedBy(0.03f) * 4.1f, ModContent.ProjectileType<SquamousMoonBladePredict>(), (int)(NPC.damage * 0.75f), 2f, Main.maxPlayers);
+				Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.Normalize(toPlayer).RotatedBy(0.03f) * 4.1f, ModContent.ProjectileType<SquamousMoonBladePredict>(), (int)(NPC.damage * 0.75f), 2f, -1);
 			}
 			if (x == 16)
 			{

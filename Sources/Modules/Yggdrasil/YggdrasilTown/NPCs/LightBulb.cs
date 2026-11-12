@@ -126,7 +126,7 @@ public class LightBulb : ModNPC
 							{
 								v.Y = -v.Y;
 							}
-							Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center - new Vector2(0, 40), v, ModContent.ProjectileType<LightSeed>(), 4, 0, Owner: Main.maxPlayers);
+							Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center - new Vector2(0, 40), v, ModContent.ProjectileType<LightSeed>(), 4, 0, Owner: -1);
 						}
 						for (int x = 0; x < 12; x++)
 						{

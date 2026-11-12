@@ -84,7 +84,7 @@ public class WizardLantern : LanternMoonNPC
 			switch (Main.rand.Next(3))
 			{
 				case 0:
-					Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<WizardLantern_Matrix_Thunder>(), 0, 0f, Main.maxPlayers);
+					Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<WizardLantern_Matrix_Thunder>(), 0, 0f, -1);
 					WizardLantern_Matrix_Thunder wLMT = p0.ModProjectile as WizardLantern_Matrix_Thunder;
 					if (wLMT is not null)
 					{
@@ -92,7 +92,7 @@ public class WizardLantern : LanternMoonNPC
 					}
 					break;
 				case 1:
-					Projectile p1 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<WizardLantern_Matrix_Curse>(), 0, 0f, Main.maxPlayers);
+					Projectile p1 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<WizardLantern_Matrix_Curse>(), 0, 0f, -1);
 					WizardLantern_Matrix_Curse wLMC = p1.ModProjectile as WizardLantern_Matrix_Curse;
 					if (wLMC is not null)
 					{
@@ -100,7 +100,7 @@ public class WizardLantern : LanternMoonNPC
 					}
 					break;
 				case 2:
-					Projectile p2 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<WizardLantern_Matrix_Witching>(), 0, 0f, Main.maxPlayers);
+					Projectile p2 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<WizardLantern_Matrix_Witching>(), 0, 0f, -1);
 					WizardLantern_Matrix_Witching wLMW = p2.ModProjectile as WizardLantern_Matrix_Witching;
 					if (wLMW is not null)
 					{

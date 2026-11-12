@@ -137,7 +137,7 @@ public class AncientPhantom_Magic_Orb : ModNPC
 				Ins.VFXManager.Add(dustVFX);
 			}
 		}
-		Projectile proj = Projectile.NewProjectileDirect(NPC.GetSource_Death(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<AncientPhantom_Magic_Explosion>(), 24, 1, Main.maxPlayers);
+		Projectile proj = Projectile.NewProjectileDirect(NPC.GetSource_Death(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<AncientPhantom_Magic_Explosion>(), 24, 1, -1);
 		proj.rotation = Main.rand.NextFloat(MathHelper.TwoPi);
 	}
 

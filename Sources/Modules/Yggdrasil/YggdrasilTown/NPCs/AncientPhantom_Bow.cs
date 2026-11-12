@@ -108,7 +108,7 @@ public class AncientPhantom_Bow : Fighter
 			else
 			{
 				ShootTimer = 60;
-				Projectile.NewProjectile(NPC.GetSource_FromAI(), shootPos, shootVel, ModContent.ProjectileType<AncientPhantom_Bow_Arrow>(), 20, 0f, Main.maxPlayers);
+				Projectile.NewProjectile(NPC.GetSource_FromAI(), shootPos, shootVel, ModContent.ProjectileType<AncientPhantom_Bow_Arrow>(), 20, 0f, -1);
 
 				float dis_X = Math.Abs(NPC.Center.X - Main.player[NPC.target].Center.X);
 				if (dis_X <= SafeShootDistance || dis_X >= SafeShootDistance + 160)

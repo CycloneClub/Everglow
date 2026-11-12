@@ -417,7 +417,7 @@ public class RockElemental : ModNPC
 						for (int i = 0; i <= num; i++)
 						{
 							Vector2 v = new Vector2(0, Main.rand.NextFloat(-12, -7)).RotatedBy((float)(i - num * 0.5f) * 0.1f);
-							Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Top + new Vector2((i - num * 0.5f) * 4, 20), v, ModContent.ProjectileType<RockElemental_Stonefragment>(), 6, 0, Owner: Main.maxPlayers);
+							Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Top + new Vector2((i - num * 0.5f) * 4, 20), v, ModContent.ProjectileType<RockElemental_Stonefragment>(), 6, 0, Owner: -1);
 						}
 						for (int i = 0; i < 2; i++)
 						{

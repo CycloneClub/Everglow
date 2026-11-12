@@ -438,7 +438,7 @@ public class AlgaeOctopus : ModNPC
 		}
 
 		Vector2 velocity = Main.rand.NextVector2Circular(1.2f, 1.2f);
-		Projectile.NewProjectile(NPC.GetSource_FromAI(), position, velocity, ModContent.ProjectileType<AlgaeOctopus_InkCloud>(), InkDamage, 0f, ai0: InkDamage, Owner: Main.maxPlayers);
+		Projectile.NewProjectile(NPC.GetSource_FromAI(), position, velocity, ModContent.ProjectileType<AlgaeOctopus_InkCloud>(), InkDamage, 0f, ai0: InkDamage, Owner: -1);
 		NPC.netUpdate = true;
 	}
 

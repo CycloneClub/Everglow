@@ -362,7 +362,7 @@ public class PurpleBombCaterpillar : ModNPC
 
 	public void KillEffect()
 	{
-		Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<PurpleBombCaterpillarDeath>(), 10, 3.5f, owner: Main.maxPlayers);
+		Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<PurpleBombCaterpillarDeath>(), 10, 3.5f, owner: -1);
 		p0.Bottom = NPC.Bottom;
 		p0.scale = NPC.scale;
 		p0.direction = NPC.direction;

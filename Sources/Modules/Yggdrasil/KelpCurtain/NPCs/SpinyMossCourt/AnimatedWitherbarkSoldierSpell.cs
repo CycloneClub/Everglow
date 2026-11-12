@@ -357,7 +357,7 @@ public class AnimatedWitherbarkSoldierSpell : ModNPC
 				// Three evenly spread rays of the forward cone: -spread, 0, +spread.
 				float offset = SpellSpreadRadians * (i - (SpellBeamCount - 1) / 2f);
 				Vector2 velocity = Vector2.UnitX.RotatedBy(baseRotation + offset) * SpellBeamSpeed;
-				Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity, ModContent.ProjectileType<AnimatedWitherbarkSoldier_SpellBeam>(), NPC.damage, 0f, Owner: Main.maxPlayers);
+				Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity, ModContent.ProjectileType<AnimatedWitherbarkSoldier_SpellBeam>(), NPC.damage, 0f, Owner: -1);
 			}
 
 			State = AnimatedWitherbarkSoldierSpellState.Teleporting;

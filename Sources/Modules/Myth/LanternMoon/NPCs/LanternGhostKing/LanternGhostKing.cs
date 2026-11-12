@@ -1318,7 +1318,7 @@ public class LanternGhostKing : LanternMoonNPC
 				speed = 10f;
 				myDamage = 70;
 			}
-			Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), RingCenter + dir, -dir.NormalizeSafe() * speed, ModContent.ProjectileType<LanternFlameWall>(), (int)myDamage, 1, Main.maxPlayers);
+			Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), RingCenter + dir, -dir.NormalizeSafe() * speed, ModContent.ProjectileType<LanternFlameWall>(), (int)myDamage, 1, -1);
 		}
 		if (dashTimer == 40 && Timer < 4140)
 		{

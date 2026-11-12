@@ -221,7 +221,7 @@ public class RedNeedleCaterpillar : Caterpillar
 		for (int i = 0; i < spikeCount; i++)
 		{
 			float spread = spikeCount <= 1 ? 0f : MathHelper.Lerp(-MaxSpreadRadians, MaxSpreadRadians, i / (float)(spikeCount - 1));
-			Projectile.NewProjectile(NPC.GetSource_FromAI(), origin, aim.RotatedBy(spread) * SpikeSpeed, ModContent.ProjectileType<RedNeedleCaterpillar_Spike>(), SpikeDamage, 0f, Owner: Main.maxPlayers);
+			Projectile.NewProjectile(NPC.GetSource_FromAI(), origin, aim.RotatedBy(spread) * SpikeSpeed, ModContent.ProjectileType<RedNeedleCaterpillar_Spike>(), SpikeDamage, 0f, Owner: -1);
 		}
 	}
 
