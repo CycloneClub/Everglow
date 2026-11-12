@@ -79,7 +79,7 @@ public class FlamingDashCore : ModNPC
 		if (NPC.localAI[0] <= 150)
 		{
 			aimcolor = Color.Red;
-			if (NPC.localAI[0] == 100)
+			if (Main.netMode != NetmodeID.MultiplayerClient && NPC.localAI[0] == 100)
 			{
 				NPC.NewNPC(null, (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<RedCore>());
 			}
@@ -87,7 +87,7 @@ public class FlamingDashCore : ModNPC
 		if (NPC.localAI[0] > 180 && NPC.localAI[0] <= 360)
 		{
 			aimcolor = new Color(0, 255, 17);
-			if (NPC.localAI[0] == 250)
+			if (Main.netMode != NetmodeID.MultiplayerClient && NPC.localAI[0] == 250)
 			{
 				NPC.NewNPC(null, (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<GreenCore>());
 			}
@@ -166,22 +166,25 @@ public class FlamingDashCore : ModNPC
 				// mplayer.DirFlyCamPosStrength = Str; //Using Direct FlyCamPosition because FlyCamPosition itself being used causes errors (see ScreenShaker ModPlayer) ~Setnour6
 				ShakerManager.AddShaker(UndirectedShakerInfo.Create(Main.LocalPlayer.Center, Str));
 				SoundEngine.PlaySound(SoundID.Item36, NPC.Center); // 特效
-				Vector2 vn = new Vector2(0, -20).RotatedBy(NPC.localAI[0] / 90d);
-				for (int h = 0; h < 6; h++)
+				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					Vector2 vm = vn.RotatedBy(h / 3d * Math.PI);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<RedFlame0>(), dam, 0f, -1, 0, 0);
-				}
-				for (int h = 0; h < 6; h++)
-				{
-					Vector2 vm = vn.RotatedBy(h / 3d * Math.PI + 0.15);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm * 0.7f, ModContent.ProjectileType<GreenFlame0Little>(), dam, 0f, -1, 0, 0);
-					vm = vn.RotatedBy(h / 3d * Math.PI - 0.15);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm * 0.7f, ModContent.ProjectileType<GreenFlame0Little>(), dam, 0f, -1, 0, 0);
-					vm = vn.RotatedBy(h / 3d * Math.PI + 0.25);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm * 0.6f, ModContent.ProjectileType<GreenFlame0Little>(), dam, 0f, -1, 0, 0);
-					vm = vn.RotatedBy(h / 3d * Math.PI - 0.25);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm * 0.6f, ModContent.ProjectileType<GreenFlame0Little>(), dam, 0f, -1, 0, 0);
+					Vector2 vn = new Vector2(0, -20).RotatedBy(NPC.localAI[0] / 90d);
+					for (int h = 0; h < 6; h++)
+					{
+						Vector2 vm = vn.RotatedBy(h / 3d * Math.PI);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<RedFlame0>(), dam, 0f, -1, 0, 0);
+					}
+					for (int h = 0; h < 6; h++)
+					{
+						Vector2 vm = vn.RotatedBy(h / 3d * Math.PI + 0.15);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm * 0.7f, ModContent.ProjectileType<GreenFlame0Little>(), dam, 0f, -1, 0, 0);
+						vm = vn.RotatedBy(h / 3d * Math.PI - 0.15);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm * 0.7f, ModContent.ProjectileType<GreenFlame0Little>(), dam, 0f, -1, 0, 0);
+						vm = vn.RotatedBy(h / 3d * Math.PI + 0.25);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm * 0.6f, ModContent.ProjectileType<GreenFlame0Little>(), dam, 0f, -1, 0, 0);
+						vm = vn.RotatedBy(h / 3d * Math.PI - 0.25);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm * 0.6f, ModContent.ProjectileType<GreenFlame0Little>(), dam, 0f, -1, 0, 0);
+					}
 				}
 			}
 			if (NPC.localAI[0] == 760)
@@ -200,22 +203,25 @@ public class FlamingDashCore : ModNPC
 
 				mplayer.DirFlyCamPosStrength = Str;
 				SoundEngine.PlaySound(SoundID.Item36, NPC.Center); // 特效
-				Vector2 vn = new Vector2(0, -20).RotatedBy(NPC.localAI[0] / 90d);
-				for (int h = 0; h < 6; h++)
+				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					Vector2 vm = vn.RotatedBy(h / 3d * Math.PI);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<RedFlame0Split>(), dam, 0f, -1, 0, 0);
-				}
-				for (int h = 0; h < 6; h++)
-				{
-					Vector2 vm = vn.RotatedBy(h / 3d * Math.PI + 0.15);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm * 0.7f, ModContent.ProjectileType<RedFlame0Little>(), dam, 0f, -1, 0, 0);
-					vm = vn.RotatedBy(h / 3d * Math.PI - 0.15);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm * 0.7f, ModContent.ProjectileType<GreenFlame0Little>(), dam, 0f, -1, 0, 0);
-					vm = vn.RotatedBy(h / 3d * Math.PI + 0.25);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm * 0.6f, ModContent.ProjectileType<RedFlame0Little>(), dam, 0f, -1, 0, 0);
-					vm = vn.RotatedBy(h / 3d * Math.PI - 0.25);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm * 0.6f, ModContent.ProjectileType<GreenFlame0Little>(), dam, 0f, -1, 0, 0);
+					Vector2 vn = new Vector2(0, -20).RotatedBy(NPC.localAI[0] / 90d);
+					for (int h = 0; h < 6; h++)
+					{
+						Vector2 vm = vn.RotatedBy(h / 3d * Math.PI);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<RedFlame0Split>(), dam, 0f, -1, 0, 0);
+					}
+					for (int h = 0; h < 6; h++)
+					{
+						Vector2 vm = vn.RotatedBy(h / 3d * Math.PI + 0.15);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm * 0.7f, ModContent.ProjectileType<RedFlame0Little>(), dam, 0f, -1, 0, 0);
+						vm = vn.RotatedBy(h / 3d * Math.PI - 0.15);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm * 0.7f, ModContent.ProjectileType<GreenFlame0Little>(), dam, 0f, -1, 0, 0);
+						vm = vn.RotatedBy(h / 3d * Math.PI + 0.25);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm * 0.6f, ModContent.ProjectileType<RedFlame0Little>(), dam, 0f, -1, 0, 0);
+						vm = vn.RotatedBy(h / 3d * Math.PI - 0.25);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm * 0.6f, ModContent.ProjectileType<GreenFlame0Little>(), dam, 0f, -1, 0, 0);
+					}
 				}
 			}
 			if (NPC.localAI[0] == 820)
@@ -234,16 +240,19 @@ public class FlamingDashCore : ModNPC
 
 				mplayer.DirFlyCamPosStrength = Str;
 				SoundEngine.PlaySound(SoundID.Item36, NPC.Center); // 特效
-				Vector2 vn = new Vector2(0, -14).RotatedBy(NPC.localAI[0] / 90d);
-				for (int h = 0; h < 3; h++)
+				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					Vector2 vm = vn.RotatedBy(h / 1.5d * Math.PI);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<RedFlame1Split>(), dam, 0f, -1, 0, 0);
-				}
-				for (int h = 0; h < 3; h++)
-				{
-					Vector2 vm = vn.RotatedBy((h + 0.5) / 1.5d * Math.PI);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<GreenFlame1Split>(), dam, 0f, -1, 0, 0);
+					Vector2 vn = new Vector2(0, -14).RotatedBy(NPC.localAI[0] / 90d);
+					for (int h = 0; h < 3; h++)
+					{
+						Vector2 vm = vn.RotatedBy(h / 1.5d * Math.PI);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<RedFlame1Split>(), dam, 0f, -1, 0, 0);
+					}
+					for (int h = 0; h < 3; h++)
+					{
+						Vector2 vm = vn.RotatedBy((h + 0.5) / 1.5d * Math.PI);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<GreenFlame1Split>(), dam, 0f, -1, 0, 0);
+					}
 				}
 			}
 			if (NPC.localAI[0] == 880)
@@ -262,16 +271,19 @@ public class FlamingDashCore : ModNPC
 
 				mplayer.DirFlyCamPosStrength = Str;
 				SoundEngine.PlaySound(SoundID.Item36, NPC.Center); // 特效
-				Vector2 vn = new Vector2(0, -17).RotatedBy(NPC.localAI[0] / 90d);
-				for (int h = 0; h < 12; h++)
+				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					Vector2 vm = vn.RotatedBy(h / 12d * Math.PI);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<GreenFlame0Little>(), dam, 0f, -1, 0, 0);
-				}
-				for (int h = 12; h < 24; h++)
-				{
-					Vector2 vm = vn.RotatedBy(h / 12d * Math.PI);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<RedFlame0Little>(), dam, 0f, -1, 0, 0);
+					Vector2 vn = new Vector2(0, -17).RotatedBy(NPC.localAI[0] / 90d);
+					for (int h = 0; h < 12; h++)
+					{
+						Vector2 vm = vn.RotatedBy(h / 12d * Math.PI);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<GreenFlame0Little>(), dam, 0f, -1, 0, 0);
+					}
+					for (int h = 12; h < 24; h++)
+					{
+						Vector2 vm = vn.RotatedBy(h / 12d * Math.PI);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<RedFlame0Little>(), dam, 0f, -1, 0, 0);
+					}
 				}
 			}
 			if (NPC.localAI[0] == 894)
@@ -290,12 +302,15 @@ public class FlamingDashCore : ModNPC
 
 				mplayer.DirFlyCamPosStrength = Str; // 特效
 				SoundEngine.PlaySound(SoundID.Item36, NPC.Center);
-				for (int h = 0; h < 36; h++)
+				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					Vector2 vm = new Vector2(0, Main.rand.NextFloat(Main.rand.NextFloat(0f, 14f), 24f)).RotatedByRandom(6.283);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<YellowFlame0>(), dam, 0f, -1, 0, 0);
-					vm = new Vector2(0, Main.rand.NextFloat(Main.rand.NextFloat(0f, 14f), 24f)).RotatedByRandom(6.283);
-					Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<BrownFlame0>(), dam, 0f, -1, 0, 0);
+					for (int h = 0; h < 36; h++)
+					{
+						Vector2 vm = new Vector2(0, Main.rand.NextFloat(Main.rand.NextFloat(0f, 14f), 24f)).RotatedByRandom(6.283);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<YellowFlame0>(), dam, 0f, -1, 0, 0);
+						vm = new Vector2(0, Main.rand.NextFloat(Main.rand.NextFloat(0f, 14f), 24f)).RotatedByRandom(6.283);
+						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<BrownFlame0>(), dam, 0f, -1, 0, 0);
+					}
 				}
 			}
 
@@ -360,7 +375,7 @@ public class FlamingDashCore : ModNPC
 					pos960 = NPC.Center;
 				}
 
-				if (NPC.localAI[0] % 8 == 2 && NPC.localAI[0] > 960 && NPC.localAI[0] < 1400)
+				if (Main.netMode != NetmodeID.MultiplayerClient && NPC.localAI[0] % 8 == 2 && NPC.localAI[0] > 960 && NPC.localAI[0] < 1400)
 				{
 					for (int h = 0; h < 6; h++)
 					{
@@ -368,7 +383,7 @@ public class FlamingDashCore : ModNPC
 						Projectile.NewProjectile(NPC.GetSource_FromAI(), pos960 + vm, Vector2.Zero, ModContent.ProjectileType<BlueFlame1Boom>(), dam, 0f, -1, (float)(h / 3d * Math.PI + NPC.localAI[0] / 35d), 0);
 					}
 				}
-				if (NPC.localAI[0] == 934)
+				if (Main.netMode != NetmodeID.MultiplayerClient && NPC.localAI[0] == 934)
 				{
 					for (int h = 0; h < 4; h++)
 					{
@@ -437,7 +452,7 @@ public class FlamingDashCore : ModNPC
 			}
 
 			// 动作
-			if (NPC.localAI[0] == 1940)
+			if (Main.netMode != NetmodeID.MultiplayerClient && NPC.localAI[0] == 1940)
 			{
 				Vector2 vn = new Vector2(0, -6).RotatedBy(NPC.localAI[0] / 90d);
 				for (int h = 0; h < 6; h++)
@@ -453,7 +468,7 @@ public class FlamingDashCore : ModNPC
 				NPC.NewNPC(null, (int)(player.Center.X + 100), (int)player.Center.Y, ModContent.NPCType<BlueCore>());
 				NPC.NewNPC(null, (int)(player.Center.X - 100), (int)player.Center.Y, ModContent.NPCType<YellowCore>());
 			}
-			if (NPC.localAI[0] > 1990)
+			if (Main.netMode != NetmodeID.MultiplayerClient && NPC.localAI[0] > 1990)
 			{
 				if (NPC.localAI[0] % 5 == 0)
 				{
@@ -564,68 +579,71 @@ public class FlamingDashCore : ModNPC
 
 				mplayer.DirFlyCamPosStrength = Str;
 				SoundEngine.PlaySound(SoundID.Item36, NPC.Center); // 特效
-				if (NPC.localAI[0] >= 2550 && NPC.localAI[0] <= 2610)
+				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					for (int h = 0; h < 72; h++)
+					if (NPC.localAI[0] >= 2550 && NPC.localAI[0] <= 2610)
 					{
-						Vector2 vm = new Vector2(0, Main.rand.NextFloat(Main.rand.NextFloat(0f, 14f), 24f)).RotatedByRandom(6.283);
-						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<BrownFlame0>(), dam, 0f, -1, 0, 0);
+						for (int h = 0; h < 72; h++)
+						{
+							Vector2 vm = new Vector2(0, Main.rand.NextFloat(Main.rand.NextFloat(0f, 14f), 24f)).RotatedByRandom(6.283);
+							Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<BrownFlame0>(), dam, 0f, -1, 0, 0);
+						}
+						for (int h = 0; h < 24; h++)
+						{
+							Vector2 vm = new Vector2(0, Main.rand.NextFloat(Main.rand.NextFloat(0f, 7f), 12f)).RotatedByRandom(6.283);
+							Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<RedFlame0Little>(), dam, 0f, -1, 0, 0);
+						}
 					}
-					for (int h = 0; h < 24; h++)
+					if (NPC.localAI[0] >= 2610 && NPC.localAI[0] <= 2670)
 					{
-						Vector2 vm = new Vector2(0, Main.rand.NextFloat(Main.rand.NextFloat(0f, 7f), 12f)).RotatedByRandom(6.283);
-						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<RedFlame0Little>(), dam, 0f, -1, 0, 0);
+						for (int h = 0; h < 72; h++)
+						{
+							Vector2 vm = new Vector2(0, Main.rand.NextFloat(Main.rand.NextFloat(0f, 14f), 24f)).RotatedByRandom(6.283);
+							int d = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<PurpleGreenFlame0>(), dam, 0f, -1, 0, 0);
+							Main.projectile[d].timeLeft = Main.rand.Next(170, 190);
+						}
 					}
-				}
-				if (NPC.localAI[0] >= 2610 && NPC.localAI[0] <= 2670)
-				{
-					for (int h = 0; h < 72; h++)
+					if (NPC.localAI[0] >= 2670 && NPC.localAI[0] <= 2730)
 					{
-						Vector2 vm = new Vector2(0, Main.rand.NextFloat(Main.rand.NextFloat(0f, 14f), 24f)).RotatedByRandom(6.283);
-						int d = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<PurpleGreenFlame0>(), dam, 0f, -1, 0, 0);
-						Main.projectile[d].timeLeft = Main.rand.Next(170, 190);
+						float SqY = Main.rand.NextFloat(0.3f, 1f);
+						float RandomA = Main.rand.NextFloat(0, 6.283f);
+						for (int h = 0; h < 30; h++)
+						{
+							float Fx = (float)(Math.Sin(h / 30d * Math.PI) * (1 - SqY) + 0.5f);
+							Vector2 vm = new Vector2(0, 30).RotatedBy(h / 15d * Math.PI);
+							Vector2 vn = (vm * SqY).RotatedBy(RandomA);
+							int f = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vn, ModContent.ProjectileType<GreenFlame0>(), dam, 0f, -1, 0, 0);
+							Main.projectile[f].scale = Fx;
+						}
+						for (int h = 0; h < 24; h++)
+						{
+							Vector2 vm = new Vector2(0, Main.rand.NextFloat(Main.rand.NextFloat(0f, 7f), 12f)).RotatedByRandom(6.283);
+							Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<PinkFlame0>(), dam, 0f, -1, 0, 0);
+						}
 					}
-				}
-				if (NPC.localAI[0] >= 2670 && NPC.localAI[0] <= 2730)
-				{
-					float SqY = Main.rand.NextFloat(0.3f, 1f);
-					float RandomA = Main.rand.NextFloat(0, 6.283f);
-					for (int h = 0; h < 30; h++)
+					if (NPC.localAI[0] >= 2730 && NPC.localAI[0] <= 2790)
 					{
-						float Fx = (float)(Math.Sin(h / 30d * Math.PI) * (1 - SqY) + 0.5f);
-						Vector2 vm = new Vector2(0, 30).RotatedBy(h / 15d * Math.PI);
-						Vector2 vn = (vm * SqY).RotatedBy(RandomA);
-						int f = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vn, ModContent.ProjectileType<GreenFlame0>(), dam, 0f, -1, 0, 0);
-						Main.projectile[f].scale = Fx;
+						for (int h = 0; h < 72; h++)
+						{
+							Vector2 vm = new Vector2(0, Main.rand.NextFloat(Main.rand.NextFloat(0f, 14f), 24f)).RotatedByRandom(6.283);
+							int d = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<YellowFlame0Shine>(), dam, 0f, -1, 0, 0);
+							Main.projectile[d].timeLeft = Main.rand.Next(170, 190);
+						}
 					}
-					for (int h = 0; h < 24; h++)
+					if (NPC.localAI[0] >= 2790 && NPC.localAI[0] <= 2850)
 					{
-						Vector2 vm = new Vector2(0, Main.rand.NextFloat(Main.rand.NextFloat(0f, 7f), 12f)).RotatedByRandom(6.283);
-						Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<PinkFlame0>(), dam, 0f, -1, 0, 0);
-					}
-				}
-				if (NPC.localAI[0] >= 2730 && NPC.localAI[0] <= 2790)
-				{
-					for (int h = 0; h < 72; h++)
-					{
-						Vector2 vm = new Vector2(0, Main.rand.NextFloat(Main.rand.NextFloat(0f, 14f), 24f)).RotatedByRandom(6.283);
-						int d = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<YellowFlame0Shine>(), dam, 0f, -1, 0, 0);
-						Main.projectile[d].timeLeft = Main.rand.Next(170, 190);
-					}
-				}
-				if (NPC.localAI[0] >= 2790 && NPC.localAI[0] <= 2850)
-				{
-					for (int h = 0; h < 8; h++)
-					{
-						Vector2 vm = new Vector2(0, Main.rand.NextFloat(Main.rand.NextFloat(0f, 14f), 24f)).RotatedByRandom(6.283);
-						int d = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<GreenFlame0Split>(), dam, 0f, -1, 0, 0);
-						Main.projectile[d].timeLeft = Main.rand.Next(170, 190);
-					}
-					for (int h = 0; h < 8; h++)
-					{
-						Vector2 vm = new Vector2(0, Main.rand.NextFloat(Main.rand.NextFloat(0f, 14f), 24f)).RotatedByRandom(6.283);
-						int d = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<RedFlame0Split>(), dam, 0f, -1, 0, 0);
-						Main.projectile[d].timeLeft = Main.rand.Next(170, 190);
+						for (int h = 0; h < 8; h++)
+						{
+							Vector2 vm = new Vector2(0, Main.rand.NextFloat(Main.rand.NextFloat(0f, 14f), 24f)).RotatedByRandom(6.283);
+							int d = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<GreenFlame0Split>(), dam, 0f, -1, 0, 0);
+							Main.projectile[d].timeLeft = Main.rand.Next(170, 190);
+						}
+						for (int h = 0; h < 8; h++)
+						{
+							Vector2 vm = new Vector2(0, Main.rand.NextFloat(Main.rand.NextFloat(0f, 14f), 24f)).RotatedByRandom(6.283);
+							int d = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, vm, ModContent.ProjectileType<RedFlame0Split>(), dam, 0f, -1, 0, 0);
+							Main.projectile[d].timeLeft = Main.rand.Next(170, 190);
+						}
 					}
 				}
 			}

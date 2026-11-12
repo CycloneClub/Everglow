@@ -10,6 +10,8 @@ public class TuskCurse : TrailingProjectile
 
 	public override void SetCustomDefaults()
 	{
+		Projectile.friendly = false;
+		Projectile.hostile = true;
 		TrailColor = new Color(1, 0, 0, 0f);
 		TrailTexture = Commons.ModAsset.Trail_2_thick.Value;
 		TrailTextureBlack = Commons.ModAsset.Trail_2_black_thick.Value;

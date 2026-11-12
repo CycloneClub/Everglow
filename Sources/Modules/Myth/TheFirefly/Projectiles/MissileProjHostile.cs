@@ -73,14 +73,7 @@ public class MissileProjHostile : ModProjectile, IWarpProjectile
 		}
 
 		timeTokill--;
-		if (timeTokill < 0)
-		{
-			if (Projectile.timeLeft == 2310)
-			{
-				Projectile.friendly = true;
-			}
-		}
-		else
+		if (timeTokill >= 0)
 		{
 			if (timeTokill < 10)
 			{
@@ -109,9 +102,6 @@ public class MissileProjHostile : ModProjectile, IWarpProjectile
 
 	private void HitToAnything()
 	{
-		Player player = Main.player[Projectile.owner];
-		ScreenShaker Gsplayer = player.GetModPlayer<ScreenShaker>();
-
 		Projectile.velocity = Projectile.oldVelocity;
 		Projectile.friendly = false;
 		if (timeTokill < 0)

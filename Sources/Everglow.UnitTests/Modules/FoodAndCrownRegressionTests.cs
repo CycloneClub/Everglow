@@ -1,4 +1,5 @@
 using System.Reflection;
+using Everglow.Food.Buffs;
 using Everglow.Food.Buffs.VanillaFoodBuffs;
 using Everglow.UnitTests.Function;
 using Terraria;
@@ -30,6 +31,59 @@ public class FoodAndCrownRegressionTests
 		Assert.IsTrue(player.GetCritChance(DamageClass.Magic) > 7f);
 		Assert.AreEqual(5f, player.GetCritChance(DamageClass.Generic));
 		Assert.IsTrue(player.statManaMax2 > 200);
+	}
+
+	[TestMethod]
+	[DataRow(true, false, false, false, true)]
+	[DataRow(false, true, false, false, false)]
+	[DataRow(true, true, false, false, true)]
+	[DataRow(true, false, true, false, false)]
+	[DataRow(true, false, false, true, false)]
+	public void FoodEffectsOnlyChangePlayerAttacks(bool friendly, bool hostile, bool npcProjectile, bool trap, bool affected)
+	{
+		using var context = new CooldownTestContext();
+		var food = context.Attach<FoodBuffModPlayer>();
+		food.BlueHawaiiBuff = true;
+		food.CantaloupeJellyBuff = true;
+		food.CaramelPuddingBuff = true;
+		food.DreamYearningBuff = true;
+		var previousPlayers = Main.player;
+		var previousNpcs = Main.npc;
+		try
+		{
+			context.Player.whoAmI = 0;
+			Main.player = [context.Player];
+			Main.npc = Enumerable.Range(0, Main.maxNPCs).Select(_ => new NPC()).ToArray();
+			Main.npc[0] = new NPC { active = true, life = 100, lifeMax = 100, position = new Vector2(100, 0), width = 20, height = 20 };
+			var projectile = new Projectile
+			{
+				owner = 0,
+				friendly = friendly,
+				hostile = hostile,
+				npcProj = npcProjectile,
+				trap = trap,
+				penetrate = 1,
+				tileCollide = true,
+				velocity = new Vector2(0, 8),
+			};
+			var effects = new FoodBuffGlobalPojectile();
+			effects.OnSpawn(projectile, context.Player.GetSource_Misc("FoodProjectileTest"));
+			Assert.AreEqual(affected ? 13.36f : 8f, projectile.velocity.Y, 0.0001f);
+			Assert.AreEqual(affected ? 2 : 1, projectile.penetrate);
+
+			projectile.velocity = new Vector2(0, 8);
+			effects.AI(projectile);
+			Assert.AreEqual(affected, projectile.velocity.X > 0, "Only player attacks should home toward enemies.");
+
+			projectile.velocity = Vector2.Zero;
+			Assert.AreEqual(!affected, effects.OnTileCollide(projectile, new Vector2(8, 4)));
+			Assert.AreEqual(affected ? new Vector2(-7.2f, -3.6f) : Vector2.Zero, projectile.velocity);
+		}
+		finally
+		{
+			Main.player = previousPlayers;
+			Main.npc = previousNpcs;
+		}
 	}
 
 	[TestMethod]
@@ -118,7 +172,7 @@ public class FoodAndCrownRegressionTests
 		{
 			if (projectile)
 			{
-				effects.OnHitNPCWithProj(new Projectile(), new NPC(), new NPC.HitInfo(), 1);
+				effects.OnHitNPCWithProj(new Projectile { friendly = true }, new NPC(), new NPC.HitInfo(), 1);
 			}
 			else
 			{

@@ -20,7 +20,8 @@ public class AcytaeaFlySword_2 : TrailingProjectile
 		Projectile.timeLeft = 360000;
 		Projectile.tileCollide = true;
 		Projectile.ignoreWater = true;
-		Projectile.friendly = true;
+		Projectile.friendly = false;
+		Projectile.hostile = true;
 		Projectile.penetrate = -1;
 
 		TrailLength = 20;

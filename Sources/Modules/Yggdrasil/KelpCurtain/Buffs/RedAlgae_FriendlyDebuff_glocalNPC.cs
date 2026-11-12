@@ -32,7 +32,7 @@ public class RedAlgae_FriendlyDebuff_glocalNPC : GlobalNPC
 
 	public static void HandleProjectileHit(NPC npc, Projectile projectile, bool applyOnly = false)
 	{
-		if (projectile.owner != Main.myPlayer)
+		if (!projectile.friendly || projectile.owner != Main.myPlayer || !projectile.TryGetOwner(out Player attacker))
 		{
 			return;
 		}
@@ -42,7 +42,6 @@ public class RedAlgae_FriendlyDebuff_glocalNPC : GlobalNPC
 			ModIns.PacketResolver.Send(new RedAlgaeToxinPacket(npc, projectile.identity, projectile.type, true, applyOnly));
 			return;
 		}
-		Player attacker = projectile.owner < Main.maxPlayers ? Main.player[projectile.owner] : null;
 		ResolveContact(npc, attacker, appliesToxin, applyOnly);
 	}
 

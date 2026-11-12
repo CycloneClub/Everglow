@@ -24,6 +24,7 @@ public class UnderwaterLightningMechanism_Lightning : ModProjectile
 		Projectile.height = 16;
 		Projectile.friendly = true;
 		Projectile.hostile = true;
+		Projectile.trap = true;
 		Projectile.penetrate = -1;
 		Projectile.timeLeft = 60;
 		Projectile.tileCollide = false;

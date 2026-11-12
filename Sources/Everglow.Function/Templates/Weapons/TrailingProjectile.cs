@@ -195,6 +195,7 @@ public abstract class TrailingProjectile : ModProjectile, IWarpProjectile_warpSt
 	{
 		Projectile.velocity = Projectile.oldVelocity;
 		Projectile.friendly = false;
+		Projectile.hostile = false;
 		if (TimeAfterEntityDestroy < 0)
 		{
 			DestroyEntityEffect();

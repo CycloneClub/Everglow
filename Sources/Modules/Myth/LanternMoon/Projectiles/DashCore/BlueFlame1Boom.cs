@@ -60,10 +60,13 @@ internal class BlueFlame1Boom : ModProjectile
 
 		if (Projectile.timeLeft <= 120)
 		{
-			for (int d = 0; d < 6f; d++)
+			if (Main.netMode != NetmodeID.MultiplayerClient)
 			{
-				Vector2 vm = new Vector2(0, 2f).RotatedBy(Projectile.ai[0] + d / 3d * Math.PI);
-				Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, vm, ModContent.ProjectileType<BlueFlame0LittleSoon>(), Projectile.damage, 0f, Projectile.owner, 0, 0);
+				for (int d = 0; d < 6f; d++)
+				{
+					Vector2 vm = new Vector2(0, 2f).RotatedBy(Projectile.ai[0] + d / 3d * Math.PI);
+					Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, vm, ModContent.ProjectileType<BlueFlame0LittleSoon>(), Projectile.damage, 0f, Projectile.owner, 0, 0);
+				}
 			}
 			Projectile.Kill();
 		}

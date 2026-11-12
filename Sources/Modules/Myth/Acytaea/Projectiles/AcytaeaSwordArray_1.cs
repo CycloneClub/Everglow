@@ -202,7 +202,6 @@ public class AcytaeaSwordArray_1 : ModProjectile
 		Vector2 deltaVector = new Vector2(0, Range).RotatedBy(whoAmI / (float)subProjActive.Count * MathHelper.TwoPi + AddRot);
 		Vector2 test = Projectile.Center + deltaVector;
 		SoundEngine.PlaySound(SoundID.DD2_GoblinBomb.WithPitchOffset(-1), Projectile.Center);
-		Player player = Main.player[Projectile.owner];
 		Projectile.tileCollide = false;
 		Projectile.friendly = false;
 		Projectile.ignoreWater = true;

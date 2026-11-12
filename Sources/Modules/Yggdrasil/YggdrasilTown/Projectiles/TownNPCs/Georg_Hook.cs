@@ -44,6 +44,7 @@ public class Georg_Hook : ModProjectile
 		Projectile.localNPCHitCooldown = 20;
 		Projectile.ArmorPenetration = 0;
 		Projectile.friendly = true;
+		Projectile.npcProj = true;
 		Projectile.timeLeft = 100;
 		Projectile.tileCollide = false;
 		Projectile.penetrate = -1;

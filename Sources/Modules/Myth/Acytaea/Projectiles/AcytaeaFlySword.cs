@@ -95,7 +95,6 @@ public class AcytaeaFlySword : ModProjectile
 		{
 			return;
 		}
-		Player player = Main.player[Projectile.owner];
 		TimeTokill = 60;
 		Projectile.tileCollide = false;
 		Projectile.friendly = false;
