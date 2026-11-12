@@ -2,6 +2,7 @@ using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.Core.Dialogue;
 using Everglow.Commons.Mechanics.Quest.WorldSide;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Objectives;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Miscs;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs;
 
@@ -17,6 +18,8 @@ public sealed class SheWorriesAboutYouQuest : TownNpcQuest
 			.Add(new WorldKillNPCObjective(ModContent.NPCType<CrimsonSpell>(), 1))
 			.Add(new WorldTalkObjective(GiverNpcType)
 				.WithDialogue(d => d.WithText("Dialogue.Objective2")));
+
+		RewardItems.Add(new Item(ModContent.ItemType<GoodNeighborCoin>(), 10));
 	}
 
 	public override int GiverNpcType => ModContent.NPCType<Guard_of_YggdrasilTown>();

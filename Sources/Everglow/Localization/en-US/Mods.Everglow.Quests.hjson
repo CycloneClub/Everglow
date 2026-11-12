@@ -4,9 +4,8 @@ Howard: "Howard"
 
 SmuggledAleQuest: {
 	Dialogue: {
-		Objective0: "Hey, you. Since you're asking, have you got any [i/s5:Ale]? Bring me a little, just a little. Make sure the higher-ups don't see."
-		Objective1Request: "Hey, you. Since you're asking, have you got any [i/s5:Ale]? Bring me a little, just a little. Make sure the higher-ups don't see."
-		Objective1Success: "Shh, keep it down. Don't let the higher-ups see. Thanks! Take these coins and gel for your trouble."
+		Request: "Hey, you. Since you're asking, have you got any [i/s5:Ale]? Bring me a little, just a little. Make sure the higher-ups don't see."
+		Success: "Shh, keep it down. Don't let the higher-ups see. Thanks! Take these coins and gel for your trouble."
 	}
 	DisplayName: "Smuggled Ale"
 	Description: "Anna has a small request she would rather keep from her superiors."

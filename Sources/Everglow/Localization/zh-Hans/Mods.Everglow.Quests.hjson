@@ -4,9 +4,8 @@ Howard: "霍华德"
 
 SmuggledAleQuest: {
 	Dialogue: {
-		Objective0: "喂，那边的，既然你都问了，你身上有[i/s5:Ale]吗？帮我搞一点来，一点就好，小心别被上头看见。"
-		Objective1Request: "喂，那边的，既然你都问了，你身上有[i/s5:Ale]吗？帮我搞一点来，一点就好，小心别被上头看见。"
-		Objective1Success: "嘘，小声点，别让上头看见。谢啦，这些钱和凝胶你拿着，就当是跑腿的谢礼。"
+		Request: "喂，那边的，既然你都问了，你身上有[i/s5:Ale]吗？帮我搞一点来，一点就好，小心别被上头看见。"
+		Success: "嘘，小声点，别让上头看见。谢啦，这些钱和凝胶你拿着，就当是跑腿的谢礼。"
 	}
 	DisplayName: "私酒"
 	Description: "安娜有一桩不想让上司知道的小委托。"
