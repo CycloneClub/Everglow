@@ -101,7 +101,7 @@ public class UnderwaterLightningMechanism : ModTile
 			if (!Main.dedServ)
 			{
 				Point point = BFSFindOtherMechanism(entityPos.X, entityPos.Y);
-				Projectile proj = Projectile.NewProjectileDirect(WorldGen.GetProjectileSource_PlayerOrWires(i, j, true, Main.LocalPlayer), point.ToWorldCoordinates(), Vector2.zeroVector, ModContent.ProjectileType<UnderwaterLightningMechanism_Lightning>(), 250, 1.5f, Main.maxPlayers, Main.rand.NextFloat(30f));
+				Projectile proj = Projectile.NewProjectileDirect(WorldGen.GetProjectileSource_PlayerOrWires(i, j, true, Main.LocalPlayer), point.ToWorldCoordinates(), Vector2.zeroVector, ModContent.ProjectileType<UnderwaterLightningMechanism_Lightning>(), 250, 1.5f, -1, Main.rand.NextFloat(30f));
 				UnderwaterLightningMechanism_Lightning uLLML = proj.ModProjectile as UnderwaterLightningMechanism_Lightning;
 				if (uLLML is not null)
 				{
@@ -120,7 +120,7 @@ public class UnderwaterLightningMechanism : ModTile
 			if (!Main.dedServ)
 			{
 				Point point = BFSFindOtherMechanism(entityPos.X, entityPos.Y);
-				Projectile proj = Projectile.NewProjectileDirect(WorldGen.GetProjectileSource_PlayerOrWires(i, j, true, Main.LocalPlayer), point.ToWorldCoordinates(), Vector2.zeroVector, ModContent.ProjectileType<UnderwaterLightningMechanism_Lightning>(), 250, 1.5f, Main.maxPlayers, Main.rand.NextFloat(30f));
+				Projectile proj = Projectile.NewProjectileDirect(WorldGen.GetProjectileSource_PlayerOrWires(i, j, true, Main.LocalPlayer), point.ToWorldCoordinates(), Vector2.zeroVector, ModContent.ProjectileType<UnderwaterLightningMechanism_Lightning>(), 250, 1.5f, -1, Main.rand.NextFloat(30f));
 				UnderwaterLightningMechanism_Lightning uLLML = proj.ModProjectile as UnderwaterLightningMechanism_Lightning;
 				if (uLLML is not null)
 				{

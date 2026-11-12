@@ -201,7 +201,7 @@ public class BombJellyfish : ModNPC
 
 			// ai0 carries the design's blast damage so the explosion's own radius reads a named ai[] value
 			// instead of a per-class constant (04-DEVIATIONS.md section 7 item 9).
-			Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<BombJellyfish_Explosion>(), DeathBlastDamage, 0f, Main.maxPlayers, DeathBlastDamage);
+			Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<BombJellyfish_Explosion>(), DeathBlastDamage, 0f, -1, DeathBlastDamage);
 			NPC.netUpdate = true;
 		}
 

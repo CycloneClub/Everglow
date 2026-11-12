@@ -653,7 +653,7 @@ public class BloodTusk : ModNPC
 			}
 			if (i == 40)
 			{
-				Projectile fountain = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom + new Vector2(4, -34), Vector2.zeroVector, ModContent.ProjectileType<BloodFountain>(), GetDamage(10), 1, Main.maxPlayers, maxTime + 60);
+				Projectile fountain = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom + new Vector2(4, -34), Vector2.zeroVector, ModContent.ProjectileType<BloodFountain>(), GetDamage(10), 1, -1, maxTime + 60);
 				fountain.scale = 1.5f;
 			}
 			yield return new SkipThisFrame();
@@ -747,8 +747,8 @@ public class BloodTusk : ModNPC
 				{
 					speed = 0.4f;
 				}
-				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom, new Vector2(speed, 0), ModContent.ProjectileType<BloodTusk_Tentacle>(), GetDamage(28), 2, Main.maxPlayers, 0, 1);
-				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom, new Vector2(-speed, 0), ModContent.ProjectileType<BloodTusk_Tentacle>(), GetDamage(28), 2, Main.maxPlayers, 0, -1);
+				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom, new Vector2(speed, 0), ModContent.ProjectileType<BloodTusk_Tentacle>(), GetDamage(28), 2, -1, 0, 1);
+				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom, new Vector2(-speed, 0), ModContent.ProjectileType<BloodTusk_Tentacle>(), GetDamage(28), 2, -1, 0, -1);
 			}
 			StandBottomOffset = startBottom - NPC.Bottom;
 			yield return new SkipThisFrame();
@@ -950,7 +950,7 @@ public class BloodTusk : ModNPC
 			}
 			if (i == 40)
 			{
-				Projectile fountain = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom + new Vector2(4, -34), Vector2.zeroVector, ModContent.ProjectileType<BloodFountain>(), GetDamage(10), 1, Main.maxPlayers, maxTime + 60);
+				Projectile fountain = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom + new Vector2(4, -34), Vector2.zeroVector, ModContent.ProjectileType<BloodFountain>(), GetDamage(10), 1, -1, maxTime + 60);
 				fountain.scale = 1.5f;
 			}
 			yield return new SkipThisFrame();
@@ -1055,7 +1055,7 @@ public class BloodTusk : ModNPC
 			}
 			if (i == 40)
 			{
-				Projectile fountain = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom + new Vector2(4, -34), Vector2.zeroVector, ModContent.ProjectileType<BloodFountain>(), GetDamage(10), 1, Main.maxPlayers, maxTime + 60);
+				Projectile fountain = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom + new Vector2(4, -34), Vector2.zeroVector, ModContent.ProjectileType<BloodFountain>(), GetDamage(10), 1, -1, maxTime + 60);
 				fountain.scale = 1.5f;
 			}
 			yield return new SkipThisFrame();
@@ -1220,7 +1220,7 @@ public class BloodTusk : ModNPC
 	public void GenerateLongSpice(DrawPiece drawPiece)
 	{
 		Vector2 offset = drawPiece.Offset1 - drawPiece.Offset0;
-		Projectile projectile = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + drawPiece.Offset0 + new Vector2(0, -50) - offset * 0.5f, Vector2.zeroVector, ModContent.ProjectileType<BloodTuskLongSpice>(), GetDamage(32), 0.2f, Main.maxPlayers, offset.X, offset.Y);
+		Projectile projectile = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + drawPiece.Offset0 + new Vector2(0, -50) - offset * 0.5f, Vector2.zeroVector, ModContent.ProjectileType<BloodTuskLongSpice>(), GetDamage(32), 0.2f, -1, offset.X, offset.Y);
 		BloodTuskLongSpice bTLS = projectile.ModProjectile as BloodTuskLongSpice;
 		bTLS.Tusk = NPC;
 	}

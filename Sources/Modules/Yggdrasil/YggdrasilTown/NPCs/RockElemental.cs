@@ -303,7 +303,7 @@ public class RockElemental : ModNPC
 					// 吸起一个石块
 					if (NPC.ai[0] == 380)
 					{
-						Projectile projectile = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<RockElemental_ThrowingStone>(), 6, 10, Main.maxPlayers, NPC.target, NPC.whoAmI);
+						Projectile projectile = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<RockElemental_ThrowingStone>(), 6, 10, -1, NPC.target, NPC.whoAmI);
 						RockElemental_ThrowingStone RockElemental_ThrowingStone = projectile.ModProjectile as RockElemental_ThrowingStone;
 						if (RockElemental_ThrowingStone != null)
 						{

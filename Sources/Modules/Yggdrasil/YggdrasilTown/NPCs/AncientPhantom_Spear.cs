@@ -86,7 +86,7 @@ public class AncientPhantom_Spear : Fighter
 			{
 				var target = Main.player[NPC.target];
 				Vector2 distance = (target.Center - NPC.Center).NormalizeSafe().RotatedBy(Main.rand.NextFloat(-0.3f, 0.3f));
-				var proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, 8), distance, ModContent.ProjectileType<AncientPhantom_Spear_Spear>(), NPC.damage, 2, Main.maxPlayers, NPC.whoAmI);
+				var proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, 8), distance, ModContent.ProjectileType<AncientPhantom_Spear_Spear>(), NPC.damage, 2, -1, NPC.whoAmI);
 				AncientPhantom_Spear_Spear aPSS = proj.ModProjectile as AncientPhantom_Spear_Spear;
 				if (aPSS is not null)
 				{
