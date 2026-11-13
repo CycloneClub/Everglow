@@ -16,9 +16,11 @@ public sealed class CiAssetAudit : Mod
 			mod => new HashSet<string>(mod.GetFileNames() ?? new List<string>(), StringComparer.Ordinal),
 			StringComparer.Ordinal);
 		var failures = new List<string>();
-		int contentCount = 0;
+		int textureCount = 0;
 		int equipmentCount = 0;
 		int vanillaCount = 0;
+		int templateCount = 0;
+		int nameCount = 0;
 
 		void Check(string owner, string path)
 		{
@@ -39,6 +41,14 @@ public sealed class CiAssetAudit : Mod
 		// Use loaded instances: respects IsLoadingEnabled, Texture overrides and module discovery.
 		foreach (var content in target.GetContent())
 		{
+			if (content is IModType namedContent)
+			{
+				nameCount++;
+				if (!ContentNameCheck.IsCanonical(namedContent.Name))
+				{
+					failures.Add($"{content.GetType().FullName}: noncanonical registered content name '{namedContent.Name}'");
+				}
+			}
 			if (content is not (ModItem or ModNPC or ModProjectile or ModTexturedType))
 			{
 				continue;
@@ -51,7 +61,7 @@ public sealed class CiAssetAudit : Mod
 				ModTexturedType textured => textured.Texture,
 				_ => null,
 			};
-			contentCount++;
+			textureCount++;
 			Check(content.GetType().FullName, texture);
 		}
 
@@ -67,15 +77,28 @@ public sealed class CiAssetAudit : Mod
 			equipmentCount++;
 			Check($"{target.Name}/{entry.Name} ({entry.Type})", entry.Texture);
 		}
-		Logger.Info($"Asset audit checked {contentCount} content textures and {equipmentCount} equipment textures; skipped {vanillaCount} vanilla references.");
+		foreach (string file in inventories[target.Name].Where(file => file.EndsWith(".mapio", StringComparison.Ordinal)))
+		{
+			templateCount++;
+			using var stream = target.GetFileStream(file);
+			failures.AddRange(MapTemplateCheck.Check(stream, (name, kind) => kind switch
+			{
+				't' => ModContent.TryFind<ModTile>(name, out _),
+				'w' => ModContent.TryFind<ModWall>(name, out _),
+				'e' => ModContent.TryFind<ModTileEntity>(name, out _),
+				_ => false,
+			}).Select(failure => $"{file}: {failure}"));
+		}
+		string summary = $"names={nameCount}; textures={textureCount}; equipment={equipmentCount}; templates={templateCount}.";
 		foreach (string failure in failures)
 		{
 			Logger.Error(failure);
 		}
-		if (failures.Count != 0 || contentCount == 0 || equipmentCount == 0)
+		if (failures.Count != 0 || nameCount == 0 || textureCount == 0 || equipmentCount == 0 || templateCount == 0)
 		{
-			throw new InvalidOperationException($"Asset audit failed: {failures.Count} missing/invalid textures; content={contentCount}; equipment={equipmentCount}.");
+			throw new InvalidOperationException($"Asset audit failed: {failures.Count} failures; {summary}");
 		}
-		Logger.Info($"Asset audit passed: Everglow; content={contentCount}; equipment={equipmentCount}.");
+		Logger.Info($"Asset audit passed: {target.Name}; {summary}");
+		Logger.Info($"Skipped {vanillaCount} vanilla texture references.");
 	}
 }

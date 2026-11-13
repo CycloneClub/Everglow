@@ -40,7 +40,25 @@ jobs:
         }
 
         Write-Host "✅ Branch is up to date with origin/1.4.4"
+
+    - name: Check UTF-8 BOM
+      shell: pwsh
+      run: |
+        # Scan the checkout, including pushes where origin/1.4.4 already equals HEAD.
+        $files = @(git -c core.quotepath=false ls-files)
+        if ($LASTEXITCODE -ne 0) { throw 'Cannot enumerate tracked files for the BOM check.' }
+        $bom = @($files | Where-Object {
+          if (-not (Test-Path -LiteralPath $_ -PathType Leaf)) { return $false }
+          $b = [IO.File]::ReadAllBytes($_)
+          $b.Length -ge 3 -and $b[0] -eq 0xEF -and $b[1] -eq 0xBB -and $b[2] -eq 0xBF
+        })
+        if ($bom) { $bom | ForEach-Object { "UTF-8 BOM: $_" }; exit 1 }
+        "UTF-8 BOM check passed ($($files.Count) files)."
   
+    - name: Check code and resource filenames
+      shell: pwsh
+      run: ./.github/workflows/scripts/Test-FileNames.ps1
+
     - name: Setup .NET 8.0
       uses: actions/setup-dotnet@v4
       with:
@@ -81,11 +99,9 @@ jobs:
     - name: Test
       run: dotnet test --configuration Release --no-build --no-restore --verbosity normal
 
-    - name: Test load result checks
+    - name: Test CI checks
       shell: pwsh
-      run: |
-        ./.github/workflows/scripts/Test-ModLoadResult.Tests.ps1
-        ./.github/workflows/scripts/Test-TexturePathCheck.Tests.ps1
+      run: ./.github/workflows/scripts/Test-CiChecks.ps1
 
     - name: Download runtime mod dependencies
       shell: pwsh
@@ -139,7 +155,7 @@ jobs:
           ${{ runner.temp }}/steamcmd/bootstrap*.log
 
   asset-test:
-    name: Packaged content and equipment textures
+    name: Content names, textures and map templates
     needs: build-and-test
     runs-on: ubuntu-24.04
     timeout-minutes: 10
@@ -155,7 +171,7 @@ jobs:
       with:
         name: tmodloader-load-inputs
         path: ${{ runner.temp }}/tml-load-inputs
-    - name: Check packaged texture references
+    - name: Check registered names and packaged references
       shell: pwsh
       run: |
         Expand-Archive -LiteralPath "$env:RUNNER_TEMP/tml-load-inputs/tModLoader.zip" -DestinationPath "$env:RUNNER_TEMP/tmod"
@@ -251,9 +267,6 @@ jobs:
     - name: Extract tModLoader
       run: |
         Expand-Archive -LiteralPath "$env:RUNNER_TEMP/tml-load-inputs/tModLoader.zip" -DestinationPath "$env:RUNNER_TEMP/tmod"
-
-    - name: Test load result checks
-      run: ./.github/workflows/scripts/Test-ModLoadResult.Tests.ps1
 
     - name: Load Everglow in tModLoader
       timeout-minutes: 10
