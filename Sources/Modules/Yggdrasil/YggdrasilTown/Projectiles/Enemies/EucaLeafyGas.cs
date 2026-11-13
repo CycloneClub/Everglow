@@ -42,7 +42,6 @@ public class EucaLeafyGas : ModProjectile
 
 	public void KillEffect()
 	{
-
 	}
 
 	public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)

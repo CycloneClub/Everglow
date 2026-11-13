@@ -2842,5 +2842,4 @@ public partial class YggdrasilTownGeneration
 			bonus.Add(potentialList[GenRand.Next(potentialList.Count)]);
 		}
 	}
-
 }
