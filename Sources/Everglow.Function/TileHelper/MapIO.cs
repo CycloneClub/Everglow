@@ -28,7 +28,7 @@ public class ModEntry
 
 	public ushort GetOrAddEntry(IModType block)
 	{
-		var key = $"{block.FullName}{GetPostFix(block)}";
+		var key = CanonicalizeName($"{block.FullName}{GetPostFix(block)}");
 		if (entries.ContainsKey(key))
 		{
 			return entries[key];
@@ -43,7 +43,7 @@ public class ModEntry
 		writer.Write(entries.Count);
 		foreach (var (name, type) in entries)
 		{
-			writer.Write(name);
+			writer.Write(CanonicalizeName(name));
 			writer.Write(type);
 		}
 	}
@@ -53,7 +53,7 @@ public class ModEntry
 		int count = reader.ReadInt32();
 		for (int i = 0; i < count; i++)
 		{
-			var name = reader.ReadString();
+			var name = CanonicalizeName(reader.ReadString());
 			var type = reader.ReadUInt16();
 			entries.Add(name, type);
 			if (name[^1] == 'w' && ModContent.TryFind<ModWall>(name[..^1], out var wall))
@@ -70,14 +70,60 @@ public class ModEntry
 			}
 			else
 			{
-				Debug.Fail("Fail to find a modblock");
+				throw new InvalidDataException($"MapIO content '{name}' could not be resolved.");
 			}
 		}
+	}
+
+	internal static string CanonicalizeName(string name, bool hasTypeSuffix = true)
+	{
+		const string prefix = "Everglow/";
+		if (!name.StartsWith(prefix, StringComparison.Ordinal))
+		{
+			return name;
+		}
+
+		var characters = name.ToCharArray();
+		// Index entries end with a tile/wall/entity discriminator; item names do not.
+		int length = characters.Length - (hasTypeSuffix ? 1 : 0);
+		for (int i = prefix.Length + 1; i < length; i++)
+		{
+			if (characters[i - 1] == '_' && characters[i] is >= 'a' and <= 'z')
+			{
+				characters[i] = char.ToUpperInvariant(characters[i]);
+			}
+		}
+		return new string(characters);
 	}
 }
 
 public class MapIO
 {
+	/// <summary>
+	/// Re-exports a template's content index with canonical names, preserving its IDs and world data.
+	/// Both caller-owned streams remain open. No world or loaded content is required.
+	/// </summary>
+	public static void RewriteContentNames(Stream source, Stream destination)
+	{
+		using var input = new GZipStream(source, CompressionMode.Decompress, leaveOpen: true);
+		using var reader = new BinaryReader(input, System.Text.Encoding.UTF8, leaveOpen: true);
+		using var output = new GZipStream(destination, CompressionLevel.Optimal, leaveOpen: true);
+		using var writer = new BinaryWriter(output, System.Text.Encoding.UTF8, leaveOpen: true);
+		int count = reader.ReadInt32();
+		if (count < 0)
+		{
+			throw new InvalidDataException("MapIO content count cannot be negative.");
+		}
+		writer.Write(count);
+		for (int i = 0; i < count; i++)
+		{
+			writer.Write(ModEntry.CanonicalizeName(reader.ReadString()));
+			writer.Write(reader.ReadUInt16());
+		}
+		writer.Flush();
+		input.CopyTo(output);
+	}
+
 	public static int AirTileType => ModContent.TileType<AirTile>();
 
 	public static int AirWallType => ModContent.WallType<AirWall>();
@@ -648,8 +694,19 @@ public class MapIO
 
 			for (int j = 0; j < Chest.maxItems; j++)
 			{
-				Main.chest[index].item[j] = ItemIO.Load(TagIO.Read(reader));
+				var item = TagIO.Read(reader);
+				NormalizeChestItemName(item);
+				Main.chest[index].item[j] = ItemIO.Load(item);
 			}
+		}
+	}
+
+	private static void NormalizeChestItemName(TagCompound item)
+	{
+		// ItemIO stores its identity in these top-level fields; custom data belongs to the item.
+		if (item.GetString("mod") == "Everglow")
+		{
+			item["name"] = ModEntry.CanonicalizeName("Everglow/" + item.GetString("name"), hasTypeSuffix: false)[9..];
 		}
 	}
 
