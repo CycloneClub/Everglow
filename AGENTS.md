@@ -77,11 +77,13 @@ Everglow -> composition, content discovery, resource merge, .tmod output
 - Resource packing is allowlisted. `.hjson`, `.txt`, and `.png` are automatic; other extensions need an appropriate packed `AdditionalFiles` entry. Read the build document before changing packing configuration.
 - Never modify existing binary or art assets: `Resources/`, `Libraries/`, any module `.png/.obj/.ttf/.atlas/.xnb`, root `icon*.png`, or `Tools/*.exe|dll`. Do not create placeholder art; tell the user when a new asset is required.
 - New content follows `Everglow.<Module>[.<Area>[.<Type>]]`. Keep matching assets beside their `.cs` file. Prefer the templates in `Everglow.Function/Templates` and the Example module over new bespoke base patterns.
+- Preserve filenames required by external tools and data formats, including Skeleton exports and their associated assets, art source files, map templates, and publishing metadata.
 
 ## Code, Gameplay, and Networking
 
 - Follow `.editorconfig`: tab indentation (width 4), LF and UTF-8 without BOM for text, Allman braces, file-scoped namespaces, and a trailing newline. Keep `.sln` and `.csproj` as CRLF.
 - Match local naming, comment language, and existing style. Do not perform unrelated reformatting. Module projects already provide common global usings.
+- In content type names, internal names, and code/resource filenames, capitalize the first letter of each alphabetic segment after an underscore. Multiple underscores and numeric segments are allowed: `Foo_Proj_Glow`, `Foo_2`. Matching localization key segments use the same spelling.
 - For `NPC.ai[]` and `Projectile.ai[]`, define a private enum and descriptive wrapper properties instead of scattered numeric indexes.
 - Guard client-only graphics, VFX, render targets, and texture work with `!Main.dedServ`. Graphics services are not registered on a dedicated server.
 - Use `ModIns.PacketResolver` for custom packets. Synchronize gameplay state with `netUpdate` when needed and use `SendExtraAI`/`ReceiveExtraAI` for additional projectile or NPC state.
