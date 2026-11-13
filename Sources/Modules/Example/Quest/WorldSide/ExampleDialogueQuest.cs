@@ -1,4 +1,3 @@
-#if DEBUG
 using Everglow.Commons.Mechanics.Quest.Core.Dialogue;
 using Everglow.Commons.Mechanics.Quest.PlayerSide.Tests.ExampleNPC;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Abstractions;
@@ -27,4 +26,3 @@ public sealed class ExampleDialogueQuest : ExampleWorldQuest
 				.WithRewards(new Item(ItemID.SilverCoin)));
 	}
 }
-#endif
