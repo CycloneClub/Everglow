@@ -1,3 +1,4 @@
+using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Utilities;
 using Everglow.Commons.Mechanics.Quest.Core.Dialogue;
 using Everglow.Commons.Mechanics.Quest.WorldSide;
@@ -9,9 +10,9 @@ using Everglow.Yggdrasil.YggdrasilTown.Items.Pets;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Tools;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs;
 
-namespace Everglow.Yggdrasil.YggdrasilTown.Quests;
+namespace Everglow.Yggdrasil.YggdrasilTown.Quests.SideStory;
 
-public sealed class LostMinerQuest : TownNpcQuest
+public sealed class Herm_Quest : WorldQuestBase
 {
 	public enum HermStage : byte
 	{
@@ -23,9 +24,11 @@ public sealed class LostMinerQuest : TownNpcQuest
 		Reported,
 	}
 
-	public static LostMinerQuest Instance => WorldQuestManager.Instance?.GetQuest<LostMinerQuest>() as LostMinerQuest;
+	public static Herm_Quest Instance => WorldQuestManager.Instance?.GetQuest<Herm_Quest>() as Herm_Quest;
 
 	public const int SearchDuration = 7 * 24 * 60 * 60;
+
+	public override QuestType Type => QuestType.SideStory;
 
 	private WorldTalkObjective introduction;
 	private WorldTalkObjective farewell;
@@ -96,7 +99,5 @@ public sealed class LostMinerQuest : TownNpcQuest
 		WorldQuestManager.Instance.OnQuestStatusUpdated(quest);
 	}
 
-	public override int GiverNpcType => ModContent.NPCType<Herm>();
-
-	public override bool CanOffer(WorldQuestManager manager) => false;
+	public override bool CanUnlock() => false;
 }

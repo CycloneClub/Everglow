@@ -10,11 +10,13 @@ using Everglow.Yggdrasil.YggdrasilTown.Events;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs;
 using Terraria.ModLoader.IO;
 
-namespace Everglow.Yggdrasil.YggdrasilTown.Quests;
+namespace Everglow.Yggdrasil.YggdrasilTown.Quests.Request;
 
 // 四阶段属于同一任务；首阶段接入入侵，后续阶段继续等待内容实现。
-public sealed class DefendTownQuest : TownNpcQuest
+public sealed class Warden_Quest1 : WorldQuestBase
 {
+	public override QuestType Type => QuestType.Request;
+
 	public override void Initialize()
 	{
 		Objectives
@@ -34,11 +36,11 @@ public sealed class DefendTownQuest : TownNpcQuest
 				.WithDialogue(d => d.WithText("Dialogue.Objective8")));
 	}
 
-	public override int GiverNpcType => ModContent.NPCType<Howard_Warden>();
+	private int GiverNpcType => ModContent.NPCType<Howard_Warden>();
 
-	public override QuestSourceBase Source => Howard;
+	public override QuestSourceBase Source => YggdrasilQuestSources.Warden;
 
-	public override bool CanOffer(WorldQuestManager manager) => YggdrasilWorldSystem.DownedSquamousShell;
+	public override bool CanUnlock() => YggdrasilWorldSystem.DownedSquamousShell;
 
 	public bool IsFirstInvasionCompleted() => Objectives.AllNodes[1].Completed;
 

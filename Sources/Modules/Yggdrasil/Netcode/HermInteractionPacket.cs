@@ -1,6 +1,6 @@
 using Everglow.Commons.Netcode.Abstracts;
 using Everglow.Commons.Utilities;
-using Everglow.Yggdrasil.YggdrasilTown.Quests;
+using Everglow.Yggdrasil.YggdrasilTown.Quests.SideStory;
 
 namespace Everglow.Yggdrasil.Netcode;
 
@@ -22,7 +22,7 @@ public sealed class HermValidatedInteractionPacket : IPacket
 		{
 			if (whoAmI == -1 && NetUtils.IsMainServer && packet is HermValidatedInteractionPacket)
 			{
-				LostMinerQuest.ApplyValidatedMeeting();
+				Herm_Quest.ApplyValidatedMeeting();
 			}
 		}
 	}

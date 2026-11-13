@@ -20,6 +20,7 @@ Types: {
 	SideStory: "支线任务"
 	Legend: "传说任务"
 	Achievement: "成就任务"
+	Request: "委托任务"
 	Daily: "日常任务"
 	Challenge: "挑战任务"
 }

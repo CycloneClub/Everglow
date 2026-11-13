@@ -4,10 +4,10 @@ using Everglow.Commons.Netcode;
 using Everglow.Commons.Utilities;
 using Everglow.Yggdrasil.Netcode;
 using Everglow.Yggdrasil.YggdrasilTown.NPCSpawn;
-using Everglow.Yggdrasil.YggdrasilTown.Quests;
+using Everglow.Yggdrasil.YggdrasilTown.Quests.SideStory;
 using Terraria.GameContent.UI;
 using Terraria.Localization;
-using static Everglow.Yggdrasil.YggdrasilTown.Quests.LostMinerQuest;
+using static Everglow.Yggdrasil.YggdrasilTown.Quests.SideStory.Herm_Quest;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs;
 
@@ -51,7 +51,7 @@ public sealed class Herm : ModNPC
 
 	public override void AI()
 	{
-		var progress = LostMinerQuest.Instance;
+		var progress = Herm_Quest.Instance;
 		if (Main.netMode != NetmodeID.MultiplayerClient && (!YggdrasilWorld.InYggdrasil || progress is null
 			|| (!IsInMine && progress.Stage >= HermStage.Searching)))
 		{
@@ -84,7 +84,7 @@ public sealed class Herm : ModNPC
 			// 原生交谈消息已同步到当前服务端；等待主服快照期间最多每秒通知一次。
 			if (NetUtils.IsSingle)
 			{
-				LostMinerQuest.ApplyValidatedMeeting();
+				Herm_Quest.ApplyValidatedMeeting();
 			}
 			else
 			{
@@ -120,7 +120,7 @@ public sealed class Herm : ModNPC
 
 	public override float SpawnChance(NPCSpawnInfo spawnInfo)
 	{
-		if (!YggdrasilWorld.InYggdrasil || LostMinerQuest.Instance is not { } quest || NPC.AnyNPCs(Type)
+		if (!YggdrasilWorld.InYggdrasil || Herm_Quest.Instance is not { } quest || NPC.AnyNPCs(Type)
 			|| !SpawnConditions.OnGround(spawnInfo))
 		{
 			return 0;
@@ -133,18 +133,18 @@ public sealed class Herm : ModNPC
 
 	public override int SpawnNPC(int tileX, int tileY)
 	{
-		bool injured = LostMinerQuest.Instance?.Stage >= HermStage.Searching;
+		bool injured = Herm_Quest.Instance?.Stage >= HermStage.Searching;
 		return NPC.NewNPC(new Terraria.DataStructures.EntitySource_SpawnNPC(), tileX * 16 + 8, tileY * 16, Type,
 			ai0: injured ? 1 : 0, ai1: tileX * 16 + 8);
 	}
 
 	public override string GetChat()
 	{
-		var progress = LostMinerQuest.Instance;
+		var progress = Herm_Quest.Instance;
 		// 单机 Auto Pause 会暂停 NPC AI，首次交谈必须在这里直接解锁。
 		if (NetUtils.IsSingle && !IsInMine && progress is { HasMet: false })
 		{
-			LostMinerQuest.ApplyValidatedMeeting();
+			Herm_Quest.ApplyValidatedMeeting();
 		}
 		return this.GetLocalizedValue(IsInMine ? "Silence"
 			: progress?.Stage == HermStage.CardIssued ? "Waiting" : "Greeting");
@@ -162,7 +162,7 @@ public sealed class Herm : ModNPC
 
 	public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
-		var progress = LostMinerQuest.Instance;
+		var progress = Herm_Quest.Instance;
 		var stage = progress?.Stage;
 		bool foundAlive = progress?.FoundAlive == true;
 		bool dead = stage >= HermStage.LampRecovered || (stage == HermStage.Found && !foundAlive)

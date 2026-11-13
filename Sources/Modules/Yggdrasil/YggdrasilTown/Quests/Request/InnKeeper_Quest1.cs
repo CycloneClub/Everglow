@@ -1,3 +1,4 @@
+using Everglow.Commons.Mechanics.Quest.WorldSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.Core.Dialogue;
 using Everglow.Commons.Mechanics.Quest.WorldSide;
@@ -7,10 +8,12 @@ using Everglow.Yggdrasil.YggdrasilTown.Items.Miscs;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables.Ores;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs;
 
-namespace Everglow.Yggdrasil.YggdrasilTown.Quests;
+namespace Everglow.Yggdrasil.YggdrasilTown.Quests.Request;
 
-public sealed class ProstheticMaintenanceQuest : TownNpcQuest
+public sealed class InnKeeper_Quest1 : WorldQuestBase
 {
+	public override QuestType Type => QuestType.Request;
+
 	public override void Initialize()
 	{
 		Objectives
@@ -22,11 +25,11 @@ public sealed class ProstheticMaintenanceQuest : TownNpcQuest
 		RewardItems.Add(new Item(ModContent.ItemType<GoodNeighborCoin>(), 10));
 	}
 
-	public override int GiverNpcType => ModContent.NPCType<InnKeeper>();
+	private int GiverNpcType => ModContent.NPCType<InnKeeper>();
 
-	public override QuestSourceBase Source => Georg;
+	public override QuestSourceBase Source => YggdrasilQuestSources.InnKeeper;
 
-	public override bool CanOffer(WorldQuestManager manager)
+	public override bool CanUnlock()
 	{
 		foreach (var player in Main.ActivePlayers)
 		{

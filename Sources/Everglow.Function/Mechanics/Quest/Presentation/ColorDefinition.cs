@@ -19,7 +19,7 @@ public static class ColorDefinition
 		QuestType.None => new Rectangle(231, 0, 33, 33),
 		QuestType.MainStory => new Rectangle(198, 0, 33, 33),
 		QuestType.SideStory => new Rectangle(165, 0, 33, 33),
-		QuestType.Achievement => new Rectangle(99, 0, 33, 33),
+		QuestType.Request => new Rectangle(99, 0, 33, 33),
 		QuestType.Challenge => new Rectangle(33, 0, 33, 33),
 		QuestType.Daily => new Rectangle(66, 0, 33, 33),
 		QuestType.Legend => new Rectangle(132, 0, 33, 33),

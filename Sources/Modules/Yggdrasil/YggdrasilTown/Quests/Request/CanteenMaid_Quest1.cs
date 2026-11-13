@@ -1,3 +1,4 @@
+using Everglow.Commons.Mechanics.Quest.WorldSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.Core.Dialogue;
 using Everglow.Commons.Mechanics.Quest.WorldSide;
@@ -5,11 +6,13 @@ using Everglow.Commons.Mechanics.Quest.WorldSide.Objectives;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 
-namespace Everglow.Yggdrasil.YggdrasilTown.Quests;
+namespace Everglow.Yggdrasil.YggdrasilTown.Quests.Request;
 
 // TODO: 万花油的物品及配方未实现，当前任务只处理原料交付。
-public sealed class SprainedBackQuest : TownNpcQuest
+public sealed class CanteenMaid_Quest1 : WorldQuestBase
 {
+	public override QuestType Type => QuestType.Request;
+
 	public override void Initialize()
 	{
 		Objectives
@@ -23,9 +26,9 @@ public sealed class SprainedBackQuest : TownNpcQuest
 				.WithDialogue(d => d.WithText("Dialogue.Objective3")));
 	}
 
-	public override int GiverNpcType => ModContent.NPCType<CanteenMaid>();
+	private int GiverNpcType => ModContent.NPCType<CanteenMaid>();
 
-	public override QuestSourceBase Source => Betty;
+	public override QuestSourceBase Source => YggdrasilQuestSources.CanteenMaid;
 
-	public override bool CanOffer(WorldQuestManager manager) => manager.GetQuest<SelfRelianceQuest>()?.State == WorldQuestState.Completed;
+	public override bool CanUnlock() => WorldQuestManager.Instance.GetQuest<Restauranteur_Quest2>()?.State == WorldQuestState.Completed;
 }

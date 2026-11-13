@@ -7,14 +7,14 @@ using Everglow.Commons.Mechanics.Quest.WorldSide.Objectives;
 using Everglow.Yggdrasil.Netcode;
 using Everglow.Yggdrasil;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs;
-using Everglow.Yggdrasil.YggdrasilTown.Quests;
+using Everglow.Yggdrasil.YggdrasilTown.Quests.SideStory;
 using SubworldLibrary;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
-using static Everglow.Yggdrasil.YggdrasilTown.Quests.LostMinerQuest;
+using static Everglow.Yggdrasil.YggdrasilTown.Quests.SideStory.Herm_Quest;
 
 namespace Everglow.UnitTests.Modules.Yggdrasil;
 
@@ -31,7 +31,7 @@ public class HermQuestIntegrationTest
 	private WorldQuestSystem oldSystem = null!;
 	private IReadOnlyList<WorldQuestSystem> oldSystems = null!;
 	private WorldQuestManager manager = null!;
-	private LostMinerQuest lost = null!;
+	private Herm_Quest lost = null!;
 	private bool registeredBoolSerializer;
 
 	[TestInitialize]
@@ -60,7 +60,7 @@ public class HermQuestIntegrationTest
 		var system = new WorldQuestSystem();
 		typeof(WorldQuestSystem).GetProperty(nameof(WorldQuestSystem.Manager))!.SetValue(system, manager);
 		SetSystems(system, [system]);
-		lost = new LostMinerQuest();
+		lost = new Herm_Quest();
 		manager.AddQuest(lost);
 		manager.Initialize();
 		foreach (var objective in lost.Objectives.AllObjectives)
@@ -189,7 +189,7 @@ public class HermQuestIntegrationTest
 		Assert.AreEqual(WorldQuestState.Active, lost.State);
 		Assert.IsFalse(lost.Objectives.AllObjectives[0].Completed);
 		Assert.AreEqual(HermStage.Unmet, lost.Stage);
-		LostMinerQuest.ApplyValidatedMeeting();
+		Herm_Quest.ApplyValidatedMeeting();
 		Assert.AreEqual(1, statusChanges, "Repeated meetings must not unlock or notify twice.");
 		Assert.HasCount(1, manager.Quests);
 	}
@@ -204,7 +204,7 @@ public class HermQuestIntegrationTest
 		Assert.AreEqual(WorldQuestState.Active, lost.State);
 		Assert.IsTrue(lost.Objectives.AllObjectives[1].Completed);
 		Assert.IsFalse(lost.Objectives.AllObjectives[2].Completed);
-		SetSearchTime(LostMinerQuest.SearchDuration);
+		SetSearchTime(Herm_Quest.SearchDuration);
 		manager.Update();
 		Assert.AreEqual(WorldQuestState.Active, lost.State);
 		FindMiner();
@@ -224,12 +224,12 @@ public class HermQuestIntegrationTest
 	{
 		AcceptCard();
 		Submit(lost.Delivery);
-		SetSearchTime(LostMinerQuest.SearchDuration);
+		SetSearchTime(Herm_Quest.SearchDuration);
 		var tag = new TagCompound();
 		manager.SaveData(tag);
 		manager.LoadData(tag);
 		Assert.AreEqual(WorldQuestState.Active, lost.State);
-		Assert.AreEqual(LostMinerQuest.SearchDuration, lost.Search.Timer.ElapsedTime);
+		Assert.AreEqual(Herm_Quest.SearchDuration, lost.Search.Timer.ElapsedTime);
 		FindMiner();
 		var found = new TagCompound();
 		manager.SaveData(found);
@@ -243,18 +243,18 @@ public class HermQuestIntegrationTest
 	{
 		AcceptCard();
 		Submit(lost.Delivery);
-		SetSearchTime(LostMinerQuest.SearchDuration - 1);
+		SetSearchTime(Herm_Quest.SearchDuration - 1);
 		FindMiner();
 		using var stream = new MemoryStream();
 		using var writer = new BinaryWriter(stream, System.Text.Encoding.UTF8, true);
 		lost.NetSend(writer);
 		stream.Position = 0;
-		var copy = new LostMinerQuest();
+		var copy = new Herm_Quest();
 		copy.Initialize();
 		copy.NetReceive(new BinaryReader(stream));
 		Assert.AreEqual(HermStage.Found, copy.Stage);
 		Assert.IsTrue(copy.FoundAlive);
-		Assert.AreEqual(LostMinerQuest.SearchDuration - 1, copy.Search.Timer.ElapsedTime);
+		Assert.AreEqual(Herm_Quest.SearchDuration - 1, copy.Search.Timer.ElapsedTime);
 		Assert.AreEqual(WorldQuestState.Active, copy.State);
 	}
 
@@ -294,7 +294,7 @@ public class HermQuestIntegrationTest
 
 	private void MeetMiner()
 	{
-		LostMinerQuest.ApplyValidatedMeeting();
+		Herm_Quest.ApplyValidatedMeeting();
 		Assert.AreEqual(WorldQuestState.Active, lost.State);
 		Tick();
 	}
@@ -346,7 +346,7 @@ public class HermQuestIntegrationTest
 		lateSearch.Update();
 		Assert.IsFalse(lateSearch.CheckCompletion());
 		Assert.AreEqual(HermStage.Searching, lost.Stage);
-		SetSearchTime(LostMinerQuest.SearchDuration);
+		SetSearchTime(Herm_Quest.SearchDuration);
 		lateSearch.Update();
 		Assert.IsTrue(lateSearch.CheckCompletion());
 		Tick();

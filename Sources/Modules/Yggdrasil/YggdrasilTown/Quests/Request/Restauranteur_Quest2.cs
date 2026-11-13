@@ -1,3 +1,4 @@
+using Everglow.Commons.Mechanics.Quest.WorldSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.Core.Dialogue;
 using Everglow.Commons.Mechanics.Quest.WorldSide;
@@ -5,10 +6,12 @@ using Everglow.Commons.Mechanics.Quest.WorldSide.Objectives;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 
-namespace Everglow.Yggdrasil.YggdrasilTown.Quests;
+namespace Everglow.Yggdrasil.YggdrasilTown.Quests.Request;
 
-public sealed class SelfRelianceQuest : TownNpcQuest
+public sealed class Restauranteur_Quest2 : WorldQuestBase
 {
+	public override QuestType Type => QuestType.Request;
+
 	public override void Initialize()
 	{
 		Objectives
@@ -20,9 +23,9 @@ public sealed class SelfRelianceQuest : TownNpcQuest
 				.WithDialogue(d => d.WithText("Dialogue.Objective2")));
 	}
 
-	public override int GiverNpcType => ModContent.NPCType<Restauranteur>();
+	private int GiverNpcType => ModContent.NPCType<Restauranteur>();
 
-	public override QuestSourceBase Source => Rolle;
+	public override QuestSourceBase Source => YggdrasilQuestSources.Restauranteur;
 
-	public override bool CanOffer(WorldQuestManager manager) => YggdrasilWorldSystem.DownedKingJellyBall || YggdrasilWorldSystem.DownedSquamousShell;
+	public override bool CanUnlock() => YggdrasilWorldSystem.DownedKingJellyBall || YggdrasilWorldSystem.DownedSquamousShell;
 }

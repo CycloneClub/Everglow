@@ -1,3 +1,4 @@
+using Everglow.Commons.Mechanics.Quest.WorldSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.Core.Dialogue;
 using Everglow.Commons.Mechanics.Quest.WorldSide;
@@ -6,10 +7,12 @@ using Everglow.Yggdrasil.YggdrasilTown.Items.Miscs;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs;
 
-namespace Everglow.Yggdrasil.YggdrasilTown.Quests;
+namespace Everglow.Yggdrasil.YggdrasilTown.Quests.Request;
 
-public sealed class SheWorriesAboutYouQuest : TownNpcQuest
+public sealed class Guard_Quest2 : WorldQuestBase
 {
+	public override QuestType Type => QuestType.Request;
+
 	public override void Initialize()
 	{
 		Objectives
@@ -22,13 +25,13 @@ public sealed class SheWorriesAboutYouQuest : TownNpcQuest
 		RewardItems.Add(new Item(ModContent.ItemType<GoodNeighborCoin>(), 10));
 	}
 
-	public override int GiverNpcType => ModContent.NPCType<Guard_Of_YggdrasilTown>();
+	private int GiverNpcType => ModContent.NPCType<Guard_Of_YggdrasilTown>();
 
-	public override QuestSourceBase Source => Anna;
+	public override QuestSourceBase Source => YggdrasilQuestSources.Guard;
 
-	public override bool CanOffer(WorldQuestManager manager) =>
-		manager.GetQuest<SmuggledAleQuest>()?.State == WorldQuestState.Completed;
+	public override bool CanUnlock() =>
+		WorldQuestManager.Instance.GetQuest<Guard_Quest1>()?.State == WorldQuestState.Completed;
 
 	public override string Description => State == WorldQuestState.Completed
-		? Text(Name + ".Dialogue.Objective2") : base.Description;
+		? Text("Dialogue.Objective2") : base.Description;
 }
