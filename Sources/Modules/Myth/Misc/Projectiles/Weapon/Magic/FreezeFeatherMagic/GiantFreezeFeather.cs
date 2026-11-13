@@ -144,13 +144,13 @@ public class GiantFreezeFeather : ModProjectile
 		if (TimeToKill >= 0)
 		{
 			float timeValue = (80 - TimeToKill) / 80f;
-			DrawTrail(Commons.ModAsset.Trail_2_black_thick.Value, Color.White * 0.3f, 36);
+			DrawTrail(Commons.ModAsset.Trail_2_Black_Thick.Value, Color.White * 0.3f, 36);
 			DrawTrail(Commons.ModAsset.Trail_6.Value, new Color(0.55f * (1 - timeValue) * (1 - timeValue), 0.9f * (1 - timeValue), 1f, 0f), Math.Max(TimeToKill - 44, 0));
 			return;
 		}
 		else
 		{
-			DrawTrail(Commons.ModAsset.Trail_2_black_thick.Value, Color.White * 0.3f);
+			DrawTrail(Commons.ModAsset.Trail_2_Black_Thick.Value, Color.White * 0.3f);
 			DrawTrail(Commons.ModAsset.Trail_6.Value, new Color(0.55f, 0.9f, 1f, 0f));
 		}
 		SpriteEffects spriteEffects = SpriteEffects.None;

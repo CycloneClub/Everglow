@@ -132,9 +132,9 @@ public class PearShapedNeedle_HeldProj : HandheldProjectile
 	public void DrawNeedlePiece(int k)
 	{
 		Texture2D needle = ModAsset.PearShapedNeedle_Needle.Value;
-		Texture2D needle_bloom = ModAsset.PearShapedNeedle_shine.Value;
-		Texture2D needleReflect = ModAsset.PearShapedNeedle_Needle_reflection.Value;
-		Texture2D needleReflectStar = ModAsset.PearShapedNeedle_shine_star.Value;
+		Texture2D needle_bloom = ModAsset.PearShapedNeedle_Shine.Value;
+		Texture2D needleReflect = ModAsset.PearShapedNeedle_Needle_Reflection.Value;
+		Texture2D needleReflectStar = ModAsset.PearShapedNeedle_Shine_Star.Value;
 		float kAngle = 0.14f;
 		Vector2 drawPos = GetNeedleWorldPos(k);
 		Color lightColor = Lighting.GetColor(drawPos.ToTileCoordinates());

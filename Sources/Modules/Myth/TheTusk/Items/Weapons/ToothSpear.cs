@@ -26,7 +26,7 @@ public class ToothSpear : ModItem
 		Item.noMelee = true;
 
 		Item.shootSpeed = 3.7f;
-		Item.shoot = ModContent.ProjectileType<Projectiles.Weapon.ToothSpear_proj>();
+		Item.shoot = ModContent.ProjectileType<Projectiles.Weapon.ToothSpear_Proj>();
 	}
 
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

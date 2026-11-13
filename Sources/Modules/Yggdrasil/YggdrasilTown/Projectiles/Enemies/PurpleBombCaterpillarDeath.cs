@@ -120,9 +120,9 @@ public class PurpleBombCaterpillarDeath : ModProjectile
 			return false;
 		}
 		// Texture2D eyeStalks = ModAsset.PurpleBombCaterpillar.Value;
-		// Texture2D eyeStalks_glow = ModAsset.PurpleBombCaterpillar_glow.Value;
+		// Texture2D eyeStalks_glow = ModAsset.PurpleBombCaterpillar_Glow.Value;
 		// Texture2D body = ModAsset.PurpleBombCaterpillar_Body.Value;
-		// Texture2D body_glow = ModAsset.PurpleBombCaterpillar_Body_glow.Value;
+		// Texture2D body_glow = ModAsset.PurpleBombCaterpillar_Body_Glow.Value;
 		//
 		// SpriteEffects flip = Projectile.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
@@ -142,9 +142,9 @@ public class PurpleBombCaterpillarDeath : ModProjectile
 		// Main.EntitySpriteDraw(body_shape, Projectile.Bottom - Main.screenPosition, null, Color.White * explosionValue * explosionValue2, Projectile.rotation, body.Size() * new Vector2(originX, 0.95f), new Vector2(squzzeValue, 2 - squzzeValue + value) * Projectile.scale, flip, 0);
 
 		Texture2D eyeStalks = ModAsset.PurpleBombCaterpillar.Value;
-		Texture2D eyeStalks_glow = ModAsset.PurpleBombCaterpillar_glow.Value;
+		Texture2D eyeStalks_glow = ModAsset.PurpleBombCaterpillar_Glow.Value;
 		Texture2D body = ModAsset.PurpleBombCaterpillar_Body.Value;
-		Texture2D body_glow = ModAsset.PurpleBombCaterpillar_Body_glow.Value;
+		Texture2D body_glow = ModAsset.PurpleBombCaterpillar_Body_Glow.Value;
 		Texture2D body_shape = ModAsset.PurpleBombCaterpillar_Body_Shape.Value;
 		SpriteEffects flip = Projectile.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 

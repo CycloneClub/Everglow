@@ -341,7 +341,7 @@ public class FireflyPiranhaInfected : ModNPC
 	{
 		Texture2D tex = ModAsset.FireflyPiranhaInfected.Value;
 		spriteBatch.Draw(tex, NPC.Center - screenPos, NPC.frame, drawColor, NPC.rotation, new Vector2(NPC.frame.Width, NPC.frame.Height) * 0.5f, NPC.scale, NPC.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);
-		tex = ModAsset.FireflyPiranhaInfected_glow.Value;
+		tex = ModAsset.FireflyPiranhaInfected_Glow.Value;
 		float colorValue = 0.1f;
 		if (nPCFrameAnimationType == 1)
 		{

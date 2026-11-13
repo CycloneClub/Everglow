@@ -1398,7 +1398,7 @@ public class Fevens : TownNPC_LiveInYggdrasil
 			if (State == 6 || State == 7)
 			{
 				Texture2D knifeFevens = ModAsset.Fevens_Attack4.Value;
-				Texture2D knifeFevensGlow = ModAsset.Fevens_Attack4_glow.Value;
+				Texture2D knifeFevensGlow = ModAsset.Fevens_Attack4_Glow.Value;
 				Rectangle frame = new Rectangle(0, 0, knifeFevens.Width, knifeFevens.Height);
 				spriteBatch.Draw(knifeFevens, NPC.Center - Main.screenPosition + new Vector2(30 * NPC.spriteDirection, -4), frame, drawColor, NPC.rotation, frame.Size() * 0.5f, NPC.scale, NPC.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
 				spriteBatch.Draw(knifeFevensGlow, NPC.Center - Main.screenPosition + new Vector2(30 * NPC.spriteDirection, -4), frame, new Color(0.4f, 0, 0.6f, 0), NPC.rotation, frame.Size() * 0.5f, NPC.scale, NPC.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
@@ -1414,7 +1414,7 @@ public class Fevens : TownNPC_LiveInYggdrasil
 			if (State == 9 || State == 10)
 			{
 				Texture2D knifeFevens = ModAsset.Fevens_Attack3.Value;
-				Texture2D knifeFevensGlow = ModAsset.Fevens_Attack3_glow.Value;
+				Texture2D knifeFevensGlow = ModAsset.Fevens_Attack3_Glow.Value;
 				Rectangle frame = new Rectangle(0, 0, knifeFevens.Width, knifeFevens.Height);
 				spriteBatch.Draw(knifeFevens, NPC.Center - Main.screenPosition + new Vector2(30 * NPC.spriteDirection, -4), frame, drawColor, NPC.rotation, frame.Size() * 0.5f, NPC.scale, NPC.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
 				spriteBatch.Draw(knifeFevensGlow, NPC.Center - Main.screenPosition + new Vector2(30 * NPC.spriteDirection, -4), frame, new Color(255, 255, 255, 0), NPC.rotation, frame.Size() * 0.5f, NPC.scale, NPC.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);

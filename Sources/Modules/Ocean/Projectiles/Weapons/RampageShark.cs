@@ -11,7 +11,7 @@ public class RampageShark : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
 
-	public override string Texture => ModAsset.RampageShark_gun_Mod;
+	public override string Texture => ModAsset.RampageShark_Gun_Mod;
 
 	public override void SetDefaults()
 	{
@@ -155,9 +155,9 @@ public class RampageShark : ModProjectile
 			player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (float)(Math.Atan2(toMouse.Y, toMouse.X) - Math.PI / 2d));
 		}
 
-		Texture2D texMain = ModAsset.RampageShark_gun.Value;
-		Texture2D texMainG = ModAsset.RampageShark_glow.Value;
-		Texture2D TexEye = ModAsset.RampageShark_redEye.Value;
+		Texture2D texMain = ModAsset.RampageShark_Gun.Value;
+		Texture2D texMainG = ModAsset.RampageShark_Glow.Value;
+		Texture2D TexEye = ModAsset.RampageShark_RedEye.Value;
 		Texture2D TexStar = ModAsset.HitStar.Value;
 		var gunTexRectangle = new Rectangle(0, 0, 72, 34);
 		if (Main.timeForVisualEffects % 6 >= 3)

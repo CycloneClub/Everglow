@@ -244,7 +244,7 @@ public class AncientPhantom_Spear : Fighter
 	{
 		SpriteEffects flip = NPC.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 		float fade = (255 - NPC.alpha) / 255f;
-		Texture2D body_glow = ModAsset.AncientPhantom_Spear_glow.Value;
+		Texture2D body_glow = ModAsset.AncientPhantom_Spear_Glow.Value;
 		spriteBatch.Draw(body_glow, NPC.Center + new Vector2(0, NPC.gfxOffY - 7) - screenPos, NPC.frame, Color.White, 0, NPC.frame.Size() * 0.5f, NPC.scale, flip, 0);
 
 		Texture2D body_Shape = ModAsset.AncientPhantom_Spear_Shape.Value;

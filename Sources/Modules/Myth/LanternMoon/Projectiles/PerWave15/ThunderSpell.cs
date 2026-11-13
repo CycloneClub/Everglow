@@ -180,9 +180,9 @@ public class ThunderSpell : ModProjectile
 			effects = SpriteEffects.FlipHorizontally;
 		}
 		Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
-		Texture2D tex_shape = ModAsset.Spell_shape.Value;
-		Texture2D tex_glow = ModAsset.ThunderSpell_glow.Value;
-		Texture2D bloom = ModAsset.Spell_bloom.Value;
+		Texture2D tex_shape = ModAsset.Spell_Shape.Value;
+		Texture2D tex_glow = ModAsset.ThunderSpell_Glow.Value;
+		Texture2D bloom = ModAsset.Spell_Bloom.Value;
 		float fade = 1f;
 		if (Projectile.timeLeft < 60f)
 		{

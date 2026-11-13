@@ -132,7 +132,7 @@ MiningPowerPickaxe: {
 	Tooltip: ""
 }
 
-NormalCableCar_item: {
+NormalCableCar_Item: {
 	DisplayName: Normal Cable Car_item
 	Tooltip: ""
 }

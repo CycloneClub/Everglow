@@ -151,7 +151,7 @@ public class NavyThunderBomb : ModProjectile, IWarpProjectile
 	{
 		float lightValue = (Projectile.timeLeft - 100f) / 200f;
 		Texture2D Water = ModAsset.ElecLine.Value;
-		Texture2D WaterS = Commons.ModAsset.Trail_5_black.Value;
+		Texture2D WaterS = Commons.ModAsset.Trail_5_Black.Value;
 		float value0 = (float)(Math.Sin(800d / (Projectile.timeLeft + 35)) * 0.75f + 0.25f) * (300 - Projectile.timeLeft) / 300f;
 		value0 = Math.Max(0, value0);
 		DrawTexCircle(122, 42, new Color(0.33f * value0, 0.33f * value0, 0.33f * value0, 0.33f * value0), Projectile.Center - Main.screenPosition, WaterS, Main.time / 17);

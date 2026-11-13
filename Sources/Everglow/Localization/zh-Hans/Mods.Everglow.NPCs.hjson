@@ -16,7 +16,7 @@ Acytaea: {
 }
 
 Acytaea_Boss.DisplayName: 雅斯塔亚
-Acytaea_yggdrasil.DisplayName: 雅斯塔亚
+Acytaea_Yggdrasil.DisplayName: 雅斯塔亚
 AlgaeOctopus.DisplayName: 覆藻章鱼
 AnimatedWitherbarkHound.DisplayName: Animated Witherbark Hound
 AnimatedWitherbarkSoldier.DisplayName: 枯木活化士兵
@@ -44,14 +44,14 @@ CrimsonSpell.DisplayName: 血月教徒
 CyanOreBeetle.DisplayName: 青缎甲虫
 CylindricalLantern.DisplayName: 火柱灯笼
 DarkGlimmeringRods.DisplayName: 金棕飞棍
-Dendroid_normal.DisplayName: 流萤枯木人
+Dendroid_Normal.DisplayName: 流萤枯木人
 EvilLantern.DisplayName: Evil Lantern
 EvilPack.DisplayName: 巨大夜光茧
 ExamplePerson.DisplayName: Example Person
-ExplosiveLantern_growing.DisplayName: 爆破灯笼
-FireflyPiranha_small.DisplayName: 流萤虎鱼
+ExplosiveLantern_Growing.DisplayName: 爆破灯笼
+FireflyPiranha_Small.DisplayName: 流萤虎鱼
 FireflyPiranha.DisplayName: 流萤虎鱼
-FireflyPiranhaInfected_small.DisplayName: 感染流萤虎鱼
+FireflyPiranhaInfected_Small.DisplayName: 感染流萤虎鱼
 FireflyPiranhaInfected.DisplayName: 感染流萤虎鱼
 FlamingDashCore.DisplayName: 不灭的花火幻魂心
 FloatLantern.DisplayName: 鬼灯笼

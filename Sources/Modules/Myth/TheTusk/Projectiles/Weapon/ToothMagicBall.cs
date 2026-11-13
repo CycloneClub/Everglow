@@ -166,7 +166,7 @@ public class ToothMagicBall : ModProjectile
 		effect.Parameters["uTransform"].SetValue(model * projection);
 		effect.CurrentTechnique.Passes[0].Apply();
 		Main.graphics.GraphicsDevice.RasterizerState = RasterizerState.CullNone;
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_black.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_Black.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		if (bars2.Count > 3)
 		{
@@ -187,7 +187,7 @@ public class ToothMagicBall : ModProjectile
 		{
 			if (energyValue < 0.3f)
 			{
-				Texture2D dark = Commons.ModAsset.StarSlash_black.Value;
+				Texture2D dark = Commons.ModAsset.StarSlash_Black.Value;
 				Main.spriteBatch.Draw(dark, bulbPos - Main.screenPosition, null, Color.White * 0.3f, 0 + Projectile.ai[1], dark.Size() / 2f, new Vector2(1f, energyValue * energyValue * 12), SpriteEffects.None, 0);
 				Main.spriteBatch.Draw(dark, bulbPos - Main.screenPosition, null, Color.White * 0.3f, MathHelper.PiOver2 + Projectile.ai[1], dark.Size() / 2f, new Vector2(0.5f, energyValue * energyValue * 48), SpriteEffects.None, 0);
 

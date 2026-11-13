@@ -36,7 +36,7 @@ public class VitalizedRocksStone : ModProjectile
 			Projectile.rotation += Projectile.ai[1];
 		}
 		float value = (Projectile.timeLeft - 540) / 30f;
-		var d = Dust.NewDustDirect(Projectile.position - Projectile.velocity * 2, Projectile.width, Projectile.height, ModContent.DustType<RockElemental_Energy_normal>());
+		var d = Dust.NewDustDirect(Projectile.position - Projectile.velocity * 2, Projectile.width, Projectile.height, ModContent.DustType<RockElemental_Energy_Normal>());
 		d.velocity = Projectile.velocity * 0.5f;
 		d.scale = Main.rand.NextFloat(0.75f, 1f) * Math.Min(value, 1);
 		d.noGravity = true;
@@ -69,7 +69,7 @@ public class VitalizedRocksStone : ModProjectile
 	{
 		for (int x = 0; x < 8; x++)
 		{
-			var d = Dust.NewDustDirect(Projectile.position - new Vector2(4), Projectile.width, Projectile.height, ModContent.DustType<RockElemental_fragments>(), 0f, 0f, 0, default, 0.7f);
+			var d = Dust.NewDustDirect(Projectile.position - new Vector2(4), Projectile.width, Projectile.height, ModContent.DustType<RockElemental_Fragments>(), 0f, 0f, 0, default, 0.7f);
 			d.velocity = new Vector2(0, Main.rand.NextFloat(7f, 16f)).RotatedByRandom(6.283);
 		}
 		for (int x = 0; x < 16; x++)
@@ -83,10 +83,10 @@ public class VitalizedRocksStone : ModProjectile
 		switch (Main.rand.Next(2))
 		{
 			case 0:
-				SoundEngine.PlaySound(new SoundStyle(ModAsset.vitalizedrocks_hit_1_Mod), Projectile.Center);
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.vitalizedrocks_Hit_1_Mod), Projectile.Center);
 				break;
 			case 1:
-				SoundEngine.PlaySound(new SoundStyle(ModAsset.vitalizedrocks_hit_2_Mod), Projectile.Center);
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.vitalizedrocks_Hit_2_Mod), Projectile.Center);
 				break;
 		}
 	}

@@ -131,7 +131,7 @@ public class LightBulb : ModNPC
 						for (int x = 0; x < 12; x++)
 						{
 							Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 4f)).RotatedByRandom(MathHelper.TwoPi) + new Vector2(0, -3f);
-							Dust dust = Dust.NewDustDirect(NPC.Center - new Vector2(0, 20), 0, 0, ModContent.DustType<LampWood_Dust_fluorescent_appear>());
+							Dust dust = Dust.NewDustDirect(NPC.Center - new Vector2(0, 20), 0, 0, ModContent.DustType<LampWood_Dust_Fluorescent_Appear>());
 							dust.velocity = newVelocity;
 							dust.scale = Main.rand.NextFloat(1.2f, 2f);
 							dust.rotation = Main.rand.NextFloat(0.4f, 0.8f);
@@ -169,13 +169,13 @@ public class LightBulb : ModNPC
 		for (int i = 0; i < 5; i++)
 		{
 			Vector2 v0 = new Vector2(0, Main.rand.NextFloat(0, 6f)).RotatedByRandom(MathHelper.TwoPi);
-			int type = ModContent.Find<ModGore>("Everglow/GlowingBlossom_gore" + Main.rand.Next(4)).Type;
+			int type = ModContent.Find<ModGore>("Everglow/GlowingBlossom_Gore" + Main.rand.Next(4)).Type;
 			Gore.NewGore(NPC.GetSource_Death(), NPC.Center, v0, type, NPC.scale);
 		}
 		for (int i = 0; i < 8; i++)
 		{
 			Vector2 v0 = new Vector2(0, Main.rand.NextFloat(0, 6f)).RotatedByRandom(MathHelper.TwoPi);
-			int type = ModContent.Find<ModGore>("Everglow/GlowingBlossom_gore" + Main.rand.Next(4, 7)).Type;
+			int type = ModContent.Find<ModGore>("Everglow/GlowingBlossom_Gore" + Main.rand.Next(4, 7)).Type;
 			Gore.NewGore(NPC.GetSource_Death(), NPC.Center, v0, type, NPC.scale);
 		}
 	}
@@ -188,7 +188,7 @@ public class LightBulb : ModNPC
 
 	public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
-		Texture2D glow = ModAsset.LightBulb_glow.Value;
+		Texture2D glow = ModAsset.LightBulb_Glow.Value;
 		spriteBatch.Draw(glow, NPC.Center - Main.screenPosition + new Vector2(0, -20), new Rectangle(0, NPC.frame.Y, 160, 90), new Color(1f, 1f, 1f, 0), NPC.rotation, new Vector2(80, 45), NPC.scale, SpriteEffects.None, 0);
 		base.PostDraw(spriteBatch, screenPos, drawColor);
 	}

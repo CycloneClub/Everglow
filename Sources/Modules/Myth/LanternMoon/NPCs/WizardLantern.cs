@@ -171,7 +171,7 @@ public class WizardLantern : LanternMoonNPC
 		for (int k = 0; k < 8; k++)
 		{
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(1f, 9f)).RotatedByRandom(MathHelper.TwoPi);
-			var CurseSpark = new CurseSpellDust_blue_normal
+			var CurseSpark = new CurseSpellDust_Blue_Normal
 			{
 				Velocity = newVelocity,
 				Active = true,
@@ -187,7 +187,7 @@ public class WizardLantern : LanternMoonNPC
 		for (int k = 0; k < 16; k++)
 		{
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(1f, 6f)).RotatedByRandom(MathHelper.TwoPi);
-			var CurseSpark = new CurseSpellSmoke_normal
+			var CurseSpark = new CurseSpellSmoke_Normal
 			{
 				Velocity = newVelocity,
 				Active = true,
@@ -246,7 +246,7 @@ public class WizardLantern : LanternMoonNPC
 
 	public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
-		var texture = ModAsset.WizardLantern_body.Value;
+		var texture = ModAsset.WizardLantern_Body.Value;
 		float mulColor = (255 - NPC.alpha) / 255f;
 		SpriteEffects effects = SpriteEffects.None;
 		NPC.spriteDirection = NPC.direction;

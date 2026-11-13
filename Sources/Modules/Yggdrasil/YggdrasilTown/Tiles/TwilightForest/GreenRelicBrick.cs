@@ -11,7 +11,7 @@ public class GreenRelicBrick : ModTile
 		Main.tileMerge[Type][ModContent.TileType<DarkForestSoil>()] = true;
 		Main.tileMerge[Type][ModContent.TileType<StoneScaleWood>()] = true;
 		Main.tileBlockLight[Type] = true;
-		DustType = ModContent.DustType<GreenRelicBrick_dust>();
+		DustType = ModContent.DustType<GreenRelicBrick_Dust>();
 		HitSound = SoundID.Dig;
 		MinPick = 160;
 		AddMapEntry(new Color(35, 58, 58));

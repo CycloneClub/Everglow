@@ -65,7 +65,7 @@ public class WaterBoltArray : ModProjectile, IWarpProjectile
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Projectile.hide = false;
-		DrawMagicArray(Commons.ModAsset.Trail_5_black.Value, new Color(1f, 1f, 1f, 1f));
+		DrawMagicArray(Commons.ModAsset.Trail_5_Black.Value, new Color(1f, 1f, 1f, 1f));
 		DrawMagicArray(Commons.ModAsset.Trail_5.Value, new Color(0, 0.45f, 1f, 0));
 		return false;
 	}

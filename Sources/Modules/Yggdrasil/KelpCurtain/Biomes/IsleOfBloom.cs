@@ -48,7 +48,7 @@ public class IsleOfBloomBiome : ModBiome
 	public override void OnInBiome(Player player)
 	{
 		BackgroundSystem bgSystem = ModContent.GetInstance<BackgroundSystem>();
-		if (!bgSystem.HasBgSlide("Everglow.Yggdrasil.KelpCurtain.Background.IsleOfBloom_Underground_sky"))
+		if (!bgSystem.HasBgSlide("Everglow.Yggdrasil.KelpCurtain.Background.IsleOfBloom_Underground_Sky"))
 		{
 			AddBackground(bgSystem);
 		}
@@ -67,22 +67,22 @@ public class IsleOfBloomBiome : ModBiome
 		polygon.Add(centerPosWorld + new Vector2(-130, 4) * 16);
 		List<Point> bgArea = TileUtils.GetPolygonAreaOfTilePos(polygon);
 
-		IsleOfBloom_Underground_close iob_bg_close = new IsleOfBloom_Underground_close();
+		IsleOfBloom_Underground_Close iob_bg_close = new IsleOfBloom_Underground_Close();
 		iob_bg_close.WorldAnchor = centerPosWorld;
 		iob_bg_close.BgTiles = bgArea;
 		bgSystem.AddBackgroundSlide(iob_bg_close);
 
-		IsleOfBloom_Underground_middle iob_bg_middle = new IsleOfBloom_Underground_middle();
+		IsleOfBloom_Underground_Middle iob_bg_middle = new IsleOfBloom_Underground_Middle();
 		iob_bg_middle.WorldAnchor = centerPosWorld;
 		iob_bg_middle.BgTiles = bgArea;
 		bgSystem.AddBackgroundSlide(iob_bg_middle);
 
-		IsleOfBloom_Underground_far iob_bg_far = new IsleOfBloom_Underground_far();
+		IsleOfBloom_Underground_Far iob_bg_far = new IsleOfBloom_Underground_Far();
 		iob_bg_far.WorldAnchor = centerPosWorld;
 		iob_bg_far.BgTiles = bgArea;
 		bgSystem.AddBackgroundSlide(iob_bg_far);
 
-		IsleOfBloom_Underground_sky iob_bg_sky = new IsleOfBloom_Underground_sky();
+		IsleOfBloom_Underground_Sky iob_bg_sky = new IsleOfBloom_Underground_Sky();
 		iob_bg_sky.WorldAnchor = centerPosWorld;
 		bgSystem.AddBackgroundSlide(iob_bg_sky);
 	}

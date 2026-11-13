@@ -413,7 +413,7 @@ public class World : ModProjectile, IWarpProjectile
 						VxII.Add(barsII[i + 3]);
 					}
 				}
-				Texture2D t0 = Commons.ModAsset.Trail_black.Value;
+				Texture2D t0 = Commons.ModAsset.Trail_Black.Value;
 				Main.graphics.GraphicsDevice.Textures[0] = t0;
 				Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, VxII.ToArray(), 0, VxII.Count / 3);
 			}
@@ -424,7 +424,7 @@ public class World : ModProjectile, IWarpProjectile
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 
-		// Texture2D glow = MythContent.QuickTexture("Misc/Projectiles/Weapon/Melee/World_glow");
+		// Texture2D glow = MythContent.QuickTexture("Misc/Projectiles/Weapon/Melee/World_Glow");
 		// Main.spriteBatch.Draw(glow, Projectile.Center - Main.screenPosition, null, new Color(255, 255, 255, 0), Projectile.rotation, glow.Size() / 2f, Projectile.scale, Projectile.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
 	}
 
@@ -508,6 +508,6 @@ public class World : ModProjectile, IWarpProjectile
 				Vx.Add(bars[i + 3]);
 			}
 		}
-		spriteBatch.Draw(ModAsset.CrystalClub_trail.Value, Vx, PrimitiveType.TriangleList);
+		spriteBatch.Draw(ModAsset.CrystalClub_Trail.Value, Vx, PrimitiveType.TriangleList);
 	}
 }

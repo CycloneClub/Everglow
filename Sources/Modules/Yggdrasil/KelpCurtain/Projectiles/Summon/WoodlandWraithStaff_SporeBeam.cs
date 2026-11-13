@@ -13,7 +13,7 @@ public class WoodlandWraithStaff_SporeBeam : TrailingProjectile
 		TrailColor = new Color(0.9f, 0.9f, 0.95f, 0f);
 		TrailWidth = 12f;
 		TrailTexture = Commons.ModAsset.Trail_8.Value;
-		TrailTextureBlack = Commons.ModAsset.Trail_8_black.Value;
+		TrailTextureBlack = Commons.ModAsset.Trail_8_Black.Value;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 20;
 		Projectile.width = 6;
 		Projectile.height = 6;

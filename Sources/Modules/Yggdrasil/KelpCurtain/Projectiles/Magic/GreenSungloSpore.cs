@@ -34,7 +34,7 @@ public class GreenSungloSpore : TrailingProjectile
 		TrailColor = new Color(0.475f, 1f, 0.475f, 0f);
 		TrailWidth = 25f;
 		TrailTexture = Commons.ModAsset.Trail_2.Value;
-		TrailTextureBlack = Commons.ModAsset.Trail_2_black.Value;
+		TrailTextureBlack = Commons.ModAsset.Trail_2_Black.Value;
 		TrailLength = 25;
 
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 25;

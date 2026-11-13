@@ -707,7 +707,7 @@ public class KelpCurtainGeneration
 					{
 						if (CheckSpaceRight(tilePos.X + checkX, tilePos.Y + y) > 11)
 						{
-							PlaceFrameImportantTiles(tilePos.X + checkX, tilePos.Y + y, 10, 1, ModContent.TileType<IslePeachTree_side>(), 180);
+							PlaceFrameImportantTiles(tilePos.X + checkX, tilePos.Y + y, 10, 1, ModContent.TileType<IslePeachTree_Side>(), 180);
 							IsleOfBloom_FillBlockHorizontally(tilePos + new Point(checkX - 1, y), true);
 						}
 					}
@@ -715,7 +715,7 @@ public class KelpCurtainGeneration
 					{
 						if (CheckSpaceLeft(tilePos.X + checkX, tilePos.Y + y) > 11)
 						{
-							PlaceFrameImportantTiles(tilePos.X + checkX - 10, tilePos.Y + y, 10, 1, ModContent.TileType<IslePeachTree_side>(), 0);
+							PlaceFrameImportantTiles(tilePos.X + checkX - 10, tilePos.Y + y, 10, 1, ModContent.TileType<IslePeachTree_Side>(), 0);
 							IsleOfBloom_FillBlockHorizontally(tilePos + new Point(checkX, y), false);
 						}
 					}
@@ -789,14 +789,14 @@ public class KelpCurtainGeneration
 			{
 				var checkPoint = tilePos + new Point(x, y);
 				var tile = SafeGetTile(checkPoint);
-				float toSidePeach = ToNearestTypeOfTile(tilePos.X + x, tilePos.Y + y, ModContent.TileType<IslePeachTree_side>(), 5).Length();
+				float toSidePeach = ToNearestTypeOfTile(tilePos.X + x, tilePos.Y + y, ModContent.TileType<IslePeachTree_Side>(), 5).Length();
 				if (tile.WallType == ModContent.WallType<OldMossWall_Unsafe>() && !tile.HasTile && toSidePeach > 80)
 				{
 					if (toSidePeach < 130)
 					{
 						Main.NewText(toSidePeach);
 					}
-					tile.TileType = (ushort)ModContent.TileType<IslePeachTree_wall_large>();
+					tile.TileType = (ushort)ModContent.TileType<IslePeachTree_Wall_Large>();
 					tile.HasTile = true;
 					peachPos.Add(new Vector2(x, y));
 					if (peachPos.Count > 10)
@@ -824,14 +824,14 @@ public class KelpCurtainGeneration
 			{
 				var checkPoint = tilePos + new Point(x, y);
 				var tile = SafeGetTile(checkPoint);
-				float toSidePeach = ToNearestTypeOfTile(tilePos.X + x, tilePos.Y + y, ModContent.TileType<IslePeachTree_side>(), 5).Length();
+				float toSidePeach = ToNearestTypeOfTile(tilePos.X + x, tilePos.Y + y, ModContent.TileType<IslePeachTree_Side>(), 5).Length();
 				if (tile.WallType == ModContent.WallType<OldMossWall_Unsafe>() && !tile.HasTile && toSidePeach > 80)
 				{
 					if (toSidePeach < 130)
 					{
 						Main.NewText(toSidePeach);
 					}
-					tile.TileType = (ushort)ModContent.TileType<IslePeachTree_wall_medium>();
+					tile.TileType = (ushort)ModContent.TileType<IslePeachTree_Wall_Medium>();
 					tile.HasTile = true;
 					peachPos.Add(new Vector2(x, y));
 					if (peachPos.Count > 22)
@@ -859,14 +859,14 @@ public class KelpCurtainGeneration
 			{
 				var checkPoint = tilePos + new Point(x, y);
 				var tile = SafeGetTile(checkPoint);
-				float toSidePeach = ToNearestTypeOfTile(tilePos.X + x, tilePos.Y + y, ModContent.TileType<IslePeachTree_side>(), 5).Length();
+				float toSidePeach = ToNearestTypeOfTile(tilePos.X + x, tilePos.Y + y, ModContent.TileType<IslePeachTree_Side>(), 5).Length();
 				if (tile.WallType == ModContent.WallType<OldMossWall_Unsafe>() && !tile.HasTile && toSidePeach > 80)
 				{
 					if (toSidePeach < 130)
 					{
 						Main.NewText(toSidePeach);
 					}
-					tile.TileType = (ushort)ModContent.TileType<IslePeachTree_wall_small>();
+					tile.TileType = (ushort)ModContent.TileType<IslePeachTree_Wall_Small>();
 					tile.HasTile = true;
 					peachPos.Add(new Vector2(x, y));
 					if (peachPos.Count > 40)
@@ -921,7 +921,7 @@ public class KelpCurtainGeneration
 						var tile = SafeGetTile(checkPoint);
 						if (j >= 0)
 						{
-							tile.TileType = (ushort)ModContent.TileType<IslePeachTree_medium>();
+							tile.TileType = (ushort)ModContent.TileType<IslePeachTree_Medium>();
 							tile.HasTile = true;
 						}
 						else
@@ -968,7 +968,7 @@ public class KelpCurtainGeneration
 					var checkPoint = tilePos + new Point(x, y);
 					var tile = SafeGetTile(checkPoint);
 					surfaceY = y;
-					float toSidePeach = ToNearestTypeOfTile(tilePos.X + x, tilePos.Y + y, ModContent.TileType<IslePeachTree_medium>(), 3).Length();
+					float toSidePeach = ToNearestTypeOfTile(tilePos.X + x, tilePos.Y + y, ModContent.TileType<IslePeachTree_Medium>(), 3).Length();
 					if (tile.HasTile && tile.TileType == ModContent.TileType<OldMoss>() && toSidePeach > 48)
 					{
 						safe = true;
@@ -977,7 +977,7 @@ public class KelpCurtainGeneration
 				}
 				if (safe)
 				{
-					PlaceFrameImportantTilesAbove(tilePos.X + x, tilePos.Y + surfaceY, 1, 2, ModContent.TileType<IslePeachTree_small>());
+					PlaceFrameImportantTilesAbove(tilePos.X + x, tilePos.Y + surfaceY, 1, 2, ModContent.TileType<IslePeachTree_Small>());
 					IsleOfBloom_FillBlockBelow(tilePos + new Point(x, surfaceY));
 					peachPosX.Add(x);
 					if (peachPosX.Count > 5)
@@ -1862,7 +1862,7 @@ public class KelpCurtainGeneration
 			}
 			List<int> noSolidMazeTile = new List<int>(WaterDeliveryHoleTiles);
 			noSolidMazeTile.Add(ModContent.TileType<CrimsonMoonAlgea>());
-			noSolidMazeTile.Add(ModContent.TileType<CrimsonMoonAlgea_fruit>());
+			noSolidMazeTile.Add(ModContent.TileType<CrimsonMoonAlgea_Fruit>());
 			noSolidMazeTile.Add(ModContent.TileType<JadeLakeBloodVineAlgea>());
 			noSolidMazeTile.Add(ModContent.TileType<JadeLakeRedAlgae>());
 			noSolidMazeTile.Add(ModContent.TileType<AgedOxygenTank>());
@@ -2301,7 +2301,7 @@ public class KelpCurtainGeneration
 				algeeTile.TileType = (ushort)ModContent.TileType<CrimsonMoonAlgea>();
 				if (j == height)
 				{
-					algeeTile.TileType = (ushort)ModContent.TileType<CrimsonMoonAlgea_fruit>();
+					algeeTile.TileType = (ushort)ModContent.TileType<CrimsonMoonAlgea_Fruit>();
 				}
 				algeeTile.HasTile = true;
 			}

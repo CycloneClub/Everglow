@@ -65,9 +65,9 @@ public class RazorbladeTyphoonArray : ModProjectile, IWarpProjectile
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Projectile.hide = false;
-		DrawMagicArray(Commons.ModAsset.Trail_5_black.Value, new Color(0.6f, 0.6f, 0.6f, 0.6f));
+		DrawMagicArray(Commons.ModAsset.Trail_5_Black.Value, new Color(0.6f, 0.6f, 0.6f, 0.6f));
 
-		// DrawMagicArray(Commons.ModAsset.Trail_5_black.Value, new Color(1f, 1f, 1f, 1f));
+		// DrawMagicArray(Commons.ModAsset.Trail_5_Black.Value, new Color(1f, 1f, 1f, 1f));
 		DrawMagicArray(Commons.ModAsset.Trail_5.Value, new Color(36, 180, 255, 0));
 		return false;
 	}

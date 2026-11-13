@@ -12,7 +12,7 @@ public class Photolysis : ModBuff
 	{
 		if (Main.rand.NextBool(3))
 		{
-			Dust dust = Dust.NewDustDirect(npc.TopLeft - new Vector2(4), npc.width, npc.height, ModContent.DustType<Dusts.LampWood_Dust_fluorescent_appear>());
+			Dust dust = Dust.NewDustDirect(npc.TopLeft - new Vector2(4), npc.width, npc.height, ModContent.DustType<Dusts.LampWood_Dust_Fluorescent_Appear>());
 			dust.alpha = 0;
 			dust.rotation = Main.rand.NextFloat(0.3f, 0.7f);
 			dust.velocity = npc.velocity * 0.1f;

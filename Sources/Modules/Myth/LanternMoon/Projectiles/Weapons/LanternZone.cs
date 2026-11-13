@@ -93,7 +93,7 @@ public class LanternZone : ModProjectile
 		if (bars_dark.Count > 0)
 		{
 			Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_Perlin.Value;
-			Main.graphics.GraphicsDevice.Textures[0] = ModAsset.LanternZone_black.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = ModAsset.LanternZone_Black.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars_dark.ToArray(), 0, bars_dark.Count - 2);
 		}
 
@@ -109,7 +109,7 @@ public class LanternZone : ModProjectile
 		if (bars_bloom.Count > 0)
 		{
 			Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_Perlin.Value;
-			Main.graphics.GraphicsDevice.Textures[0] = ModAsset.LanternZone_bloom.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = ModAsset.LanternZone_Bloom.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars_bloom.ToArray(), 0, bars_bloom.Count - 2);
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars_bloom.ToArray(), 0, bars_bloom.Count - 2);
 		}

@@ -40,7 +40,7 @@ public class ComingGhost_Shimmer : ModProjectile
 		Color c0 = new Color(1f, 0, 0, 0);
 		float energyValue = Projectile.timeLeft / 300f;
 		energyValue *= energyValue;
-		Texture2D dark = Commons.ModAsset.StarSlash_black.Value;
+		Texture2D dark = Commons.ModAsset.StarSlash_Black.Value;
 		Main.spriteBatch.Draw(dark, Projectile.Center - Main.screenPosition, null, Color.White * 0.8f, 0 + Projectile.ai[0], dark.Size() / 2f, new Vector2(6f * energyValue, 2), SpriteEffects.None, 0);
 		Main.spriteBatch.Draw(dark, Projectile.Center - Main.screenPosition, null, Color.White * 0.8f, MathHelper.PiOver2 + Projectile.ai[0], dark.Size() / 2f, new Vector2(5f * energyValue, 3), SpriteEffects.None, 0);
 

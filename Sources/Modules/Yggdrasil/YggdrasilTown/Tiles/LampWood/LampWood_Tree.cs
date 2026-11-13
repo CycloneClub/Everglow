@@ -39,7 +39,7 @@ public class LampWood_Tree : ModTile
 			}
 			for (int x = 0; x < 32; x++)
 			{
-				Dust.NewDust(new Vector2(i * 16 - 40, j * 16 - 100), 96, 96, ModContent.DustType<LampWood_Dust_fluorescent>(), 0, 0, 0, default, Main.rand.NextFloat(0.5f, 1f));
+				Dust.NewDust(new Vector2(i * 16 - 40, j * 16 - 100), 96, 96, ModContent.DustType<LampWood_Dust_Fluorescent>(), 0, 0, 0, default, Main.rand.NextFloat(0.5f, 1f));
 			}
 		}
 		else
@@ -58,15 +58,15 @@ public class LampWood_Tree : ModTile
 		{
 			for (int x = 0; x < 18; x++)
 			{
-				Gore.NewGore(null, new Vector2(i * 16, j * 16) + new Vector2(Main.rand.NextFloat(16f), 0).RotatedByRandom(6.283), new Vector2(0, Main.rand.NextFloat(1f)).RotatedByRandom(6.283), ModContent.GoreType<CyatheaLeaf_tiny>(), Main.rand.NextFloat(0.65f, 1.45f));
+				Gore.NewGore(null, new Vector2(i * 16, j * 16) + new Vector2(Main.rand.NextFloat(16f), 0).RotatedByRandom(6.283), new Vector2(0, Main.rand.NextFloat(1f)).RotatedByRandom(6.283), ModContent.GoreType<CyatheaLeaf_Tiny>(), Main.rand.NextFloat(0.65f, 1.45f));
 			}
 			for (int x = 0; x < 6; x++)
 			{
-				Gore.NewGore(null, new Vector2(i * 16, j * 16) + new Vector2(Main.rand.NextFloat(16f), 0).RotatedByRandom(6.283), new Vector2(0, Main.rand.NextFloat(1f)).RotatedByRandom(6.283), ModContent.GoreType<CyatheaLeaf_small>(), Main.rand.NextFloat(0.65f, 1.45f));
+				Gore.NewGore(null, new Vector2(i * 16, j * 16) + new Vector2(Main.rand.NextFloat(16f), 0).RotatedByRandom(6.283), new Vector2(0, Main.rand.NextFloat(1f)).RotatedByRandom(6.283), ModContent.GoreType<CyatheaLeaf_Small>(), Main.rand.NextFloat(0.65f, 1.45f));
 			}
 			for (int x = 0; x < 3; x++)
 			{
-				Gore.NewGore(null, new Vector2(i * 16, j * 16) + new Vector2(Main.rand.NextFloat(16f), 0).RotatedByRandom(6.283), new Vector2(0, Main.rand.NextFloat(1f)).RotatedByRandom(6.283), ModContent.GoreType<CyatheaLeaf_large>(), Main.rand.NextFloat(0.65f, 1.45f));
+				Gore.NewGore(null, new Vector2(i * 16, j * 16) + new Vector2(Main.rand.NextFloat(16f), 0).RotatedByRandom(6.283), new Vector2(0, Main.rand.NextFloat(1f)).RotatedByRandom(6.283), ModContent.GoreType<CyatheaLeaf_Large>(), Main.rand.NextFloat(0.65f, 1.45f));
 			}
 		}
 	}
@@ -81,7 +81,7 @@ public class LampWood_Tree : ModTile
 				float wind = Main.windSpeedCurrent / 15f;
 				float rot = wind + (float)Math.Sin(j + Main.timeForVisualEffects / 30f) * wind * 0.3f;
 				Vector2 v0 = new Vector2(0, MathF.Sqrt(Main.rand.NextFloat(1f)) * 40f).RotatedByRandom(6.283);
-				Dust dust = Dust.NewDustDirect(new Vector2(i * 16, j * 16) + v0 + new Vector2(0, -180).RotatedBy(rot), 16, 16, ModContent.DustType<LampWood_Dust_fluorescent_appear>());
+				Dust dust = Dust.NewDustDirect(new Vector2(i * 16, j * 16) + v0 + new Vector2(0, -180).RotatedBy(rot), 16, 16, ModContent.DustType<LampWood_Dust_Fluorescent_Appear>());
 				dust.alpha = 0;
 				dust.rotation = Main.rand.NextFloat(0.7f, 1.4f);
 				dust.velocity = v0 * 0.03f + new Vector2(wind * 4, 0);

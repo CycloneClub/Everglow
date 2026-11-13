@@ -226,7 +226,7 @@ public class YggdrasilStoneGyroscope_Proj : GyroscopeProjectile
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D texture = ModAsset.YggdrasilStoneGyroscope_Proj.Value;
-		Texture2D textureGlow = ModAsset.YggdrasilStoneGyroscope_Proj_glow.Value;
+		Texture2D textureGlow = ModAsset.YggdrasilStoneGyroscope_Proj_Glow.Value;
 		var frame = new Rectangle(32 * Projectile.frame, 0, 32, 32);
 		if (Projectile.frame >= 4)
 		{

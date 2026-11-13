@@ -43,7 +43,7 @@ public class FurnaceCopperGear_Large : ModTile
 		{
 			return true;
 		}
-		var texture = ModAsset.FurnaceCopperGear_Large_gear.Value;
+		var texture = ModAsset.FurnaceCopperGear_Large_Gear.Value;
 		var offsetScreen = new Vector2(Main.offScreenRange);
 		if (Main.drawToScreen)
 		{

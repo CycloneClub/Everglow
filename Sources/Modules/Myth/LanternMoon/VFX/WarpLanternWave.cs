@@ -38,6 +38,6 @@ public class WarpLanternWave : Visual
 			bars.Add(Position + radius, outColor, new Vector3(r / (float)count, 0, 0));
 			bars.Add(Position + radius * 0.6f, inColor, new Vector3(r / (float)count, 1, 0));
 		}
-		Ins.Batch.Draw(Commons.ModAsset.Wave_full.Value, bars, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(Commons.ModAsset.Wave_Full.Value, bars, PrimitiveType.TriangleStrip);
 	}
 }

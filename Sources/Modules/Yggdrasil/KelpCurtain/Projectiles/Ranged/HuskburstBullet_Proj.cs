@@ -19,7 +19,7 @@ public class HuskburstBullet_Proj : TrailingProjectile
 		Projectile.penetrate = 6;
 		Projectile.timeLeft = 3600;
 		TrailTexture = Commons.ModAsset.Trail.Value;
-		TrailTextureBlack = Commons.ModAsset.Trail_black.Value;
+		TrailTextureBlack = Commons.ModAsset.Trail_Black.Value;
 		TrailBackgroundDarkness = 0.5f;
 		TrailLength = 7;
 		TrailColor = new Color(0.5f, 0.35f, 0.3f, 0f);
@@ -45,7 +45,7 @@ public class HuskburstBullet_Proj : TrailingProjectile
 		Color lightColor = Lighting.GetColor(Projectile.Center.ToTileCoordinates());
 		Vector4 drawRed = TrailColor.ToVector4() * lightColor.ToVector4();
 		var drawColor = new Color(drawRed.X, drawRed.Y, drawRed.Z, drawRed.W);
-		Texture2D light_dark = Commons.ModAsset.StarSlash_black.Value;
+		Texture2D light_dark = Commons.ModAsset.StarSlash_Black.Value;
 		Main.spriteBatch.Draw(light_dark, Projectile.Center - Main.screenPosition, new Rectangle(0, 0, light_dark.Width, light_dark.Height / 2), new Color(0.6f, 0.6f, 0.6f, 0.6f), Projectile.velocity.ToRotationSafe() - MathHelper.PiOver2, light_dark.Size() * 0.5f, 0.7f, SpriteEffects.None, 0);
 		Texture2D light = Commons.ModAsset.StarSlash.Value;
 		Main.spriteBatch.Draw(light, Projectile.Center - Main.screenPosition, new Rectangle(0, 0, light.Width, light.Height / 2), drawColor, Projectile.velocity.ToRotationSafe() - MathHelper.PiOver2, light.Size() * 0.5f, 0.7f, SpriteEffects.None, 0);

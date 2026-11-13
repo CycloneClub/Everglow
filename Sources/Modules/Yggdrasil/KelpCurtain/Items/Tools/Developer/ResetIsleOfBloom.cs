@@ -151,7 +151,7 @@ public class ResetIsleOfBloom : ModItem
 					{
 						if (CheckSpaceRight(tilePos.X + checkX, tilePos.Y + y) > 11)
 						{
-							PlaceFrameImportantTiles(tilePos.X + checkX, tilePos.Y + y, 10, 1, ModContent.TileType<IslePeachTree_side>(), 180);
+							PlaceFrameImportantTiles(tilePos.X + checkX, tilePos.Y + y, 10, 1, ModContent.TileType<IslePeachTree_Side>(), 180);
 							IsleOfBloom_FillBlockHorizontally(tilePos + new Point(checkX - 1, y), true);
 						}
 					}
@@ -159,7 +159,7 @@ public class ResetIsleOfBloom : ModItem
 					{
 						if (CheckSpaceLeft(tilePos.X + checkX, tilePos.Y + y) > 11)
 						{
-							PlaceFrameImportantTiles(tilePos.X + checkX - 10, tilePos.Y + y, 10, 1, ModContent.TileType<IslePeachTree_side>(), 0);
+							PlaceFrameImportantTiles(tilePos.X + checkX - 10, tilePos.Y + y, 10, 1, ModContent.TileType<IslePeachTree_Side>(), 0);
 							IsleOfBloom_FillBlockHorizontally(tilePos + new Point(checkX, y), false);
 						}
 					}

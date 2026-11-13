@@ -226,7 +226,7 @@ public class UnderwaterLightningMechanism_H : ModTile
 		{
 			zero = Vector2.zeroVector;
 		}
-		Texture2D glowTex = ModAsset.UnderwaterLightningMechanism_H_glow.Value;
+		Texture2D glowTex = ModAsset.UnderwaterLightningMechanism_H_Glow.Value;
 		Point16 entityPoint = new Point16(i - tile.TileFrameX % 90 / 18, j - tile.TileFrameY / 18 + 1);
 		Tile entityTile = Main.tile[entityPoint];
 		if (entityTile.TileFrameX == 90)

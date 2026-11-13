@@ -7,7 +7,7 @@ using Terraria.Audio;
 
 namespace Everglow.Myth.LanternMoon.Projectiles.Weapons;
 
-public class KeroseneLanternFlameThrower_Hold : HandheldProjectile, IWarpProjectile_warpStyle2
+public class KeroseneLanternFlameThrower_Hold : HandheldProjectile, IWarpProjectile_WarpStyle2
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
 
@@ -41,7 +41,7 @@ public class KeroseneLanternFlameThrower_Hold : HandheldProjectile, IWarpProject
 	{
 		if (Timer == 0)
 		{
-			beginSoundSlot = SoundEngine.PlaySound(new SoundStyle(ModAsset.Flamethrower_begin_Mod), Projectile.Center);
+			beginSoundSlot = SoundEngine.PlaySound(new SoundStyle(ModAsset.Flamethrower_Begin_Mod), Projectile.Center);
 		}
 		Timer++;
 		float shootSpeed = GetShootSpeed();
@@ -104,7 +104,7 @@ public class KeroseneLanternFlameThrower_Hold : HandheldProjectile, IWarpProject
 			playedEndSound = false;
 			if (Timer % (int)(45 * 2.5f / (powerRate + 2)) == (int)(15 * 2.5f / (powerRate + 2)))
 			{
-				cycleSoundSlot = SoundEngine.PlaySound(new SoundStyle(ModAsset.Flamethrower_cycle_Mod).WithPitchOffset(powerRate), Projectile.Center);
+				cycleSoundSlot = SoundEngine.PlaySound(new SoundStyle(ModAsset.Flamethrower_Cycle_Mod).WithPitchOffset(powerRate), Projectile.Center);
 			}
 			float addRot = -MathF.Asin(Vector3.Cross(new Vector3(mouseToPlayer, 0), new Vector3(new Vector2(0, 1).RotatedBy(Projectile.rotation - Math.PI * 0.75), 0)).Z);
 			addRot *= LerpFactorOfRotation;
@@ -134,7 +134,7 @@ public class KeroseneLanternFlameThrower_Hold : HandheldProjectile, IWarpProject
 			{
 				cycleSound.Stop();
 			}
-			SoundEngine.PlaySound(new SoundStyle(ModAsset.Flamethrower_end_Mod).WithPitchOffset(Math.Clamp(powerRate, -1, 0)), Projectile.Center);
+			SoundEngine.PlaySound(new SoundStyle(ModAsset.Flamethrower_End_Mod).WithPitchOffset(Math.Clamp(powerRate, -1, 0)), Projectile.Center);
 		}
 		player.direction = dir;
 	}

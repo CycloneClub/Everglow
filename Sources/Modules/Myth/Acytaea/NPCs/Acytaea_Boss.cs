@@ -19,8 +19,8 @@ public class Acytaea_Boss : ModNPC
 
 	public override void ModifyNPCLoot(NPCLoot npcLoot)
 	{
-		npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Acytaea_sword_Item>()));
-		npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Acytaea_horn>(), 7));
+		npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Acytaea_Sword_Item>()));
+		npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Acytaea_Horn>(), 7));
 	}
 
 	public override void SetDefaults()
@@ -105,7 +105,7 @@ public class Acytaea_Boss : ModNPC
 	{
 		NPC.TargetClosest(true);
 		_acytaeaCoroutine.StartCoroutine(new Coroutine(StartFighting()));
-		Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<AcytaeaSword_following>(), 0, 0f, -1, NPC.whoAmI);
+		Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<AcytaeaSword_Following>(), 0, 0f, -1, NPC.whoAmI);
 	}
 
 	public void UpdateWings()
@@ -164,7 +164,7 @@ public class Acytaea_Boss : ModNPC
 			yield return new SkipThisFrame();
 		}
 		ClearFollowingSword();
-		Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, -5), Vector2.zeroVector, ModContent.ProjectileType<AcytaeaSword_projectile_Boss>(), 60, 4f, -1, NPC.whoAmI);
+		Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, -5), Vector2.zeroVector, ModContent.ProjectileType<AcytaeaSword_Projectile_Boss>(), 60, 4f, -1, NPC.whoAmI);
 
 		for (int t = 0; t < 10; t++)
 		{
@@ -197,7 +197,7 @@ public class Acytaea_Boss : ModNPC
 		Player player = Main.player[NPC.target];
 		NPC.rotation = 0;
 		ClearFollowingSword();
-		Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, -5), Vector2.zeroVector, ModContent.ProjectileType<AcytaeaSword_projectile_Boss>(), 60, 4f, -1, NPC.whoAmI);
+		Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, -5), Vector2.zeroVector, ModContent.ProjectileType<AcytaeaSword_Projectile_Boss>(), 60, 4f, -1, NPC.whoAmI);
 
 		for (int t = 0; t < 2; t++)
 		{
@@ -635,7 +635,7 @@ public class Acytaea_Boss : ModNPC
 			yield return new SkipThisFrame();
 		}
 		ClearFollowingSword();
-		Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, -5), Vector2.zeroVector, ModContent.ProjectileType<AcytaeaSword_projectile_Tornado>(), 60, 4f, -1, NPC.whoAmI);
+		Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, -5), Vector2.zeroVector, ModContent.ProjectileType<AcytaeaSword_Projectile_Tornado>(), 60, 4f, -1, NPC.whoAmI);
 
 		for (int t = 0; t < 330; t++)
 		{
@@ -645,9 +645,9 @@ public class Acytaea_Boss : ModNPC
 			{
 				if (proj != null && proj.active)
 				{
-					if (proj.type == ModContent.ProjectileType<AcytaeaSword_projectile_Tornado>())
+					if (proj.type == ModContent.ProjectileType<AcytaeaSword_Projectile_Tornado>())
 					{
-						AcytaeaSword_projectile_Tornado aSPT = proj.ModProjectile as AcytaeaSword_projectile_Tornado;
+						AcytaeaSword_Projectile_Tornado aSPT = proj.ModProjectile as AcytaeaSword_Projectile_Tornado;
 						if (aSPT.mainVec.X > 0)
 						{
 							NPC.spriteDirection = 1;
@@ -713,7 +713,7 @@ public class Acytaea_Boss : ModNPC
 			yield return new SkipThisFrame();
 		}
 		ClearFollowingSword();
-		Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, -5), Vector2.zeroVector, ModContent.ProjectileType<AcytaeaSword_projectile_Boss_shoot>(), 60, 4f, -1, NPC.whoAmI);
+		Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, -5), Vector2.zeroVector, ModContent.ProjectileType<AcytaeaSword_Projectile_Boss_Shoot>(), 60, 4f, -1, NPC.whoAmI);
 		for (int t = 0; t < 50; t++)
 		{
 			if (t < 10)
@@ -813,7 +813,7 @@ public class Acytaea_Boss : ModNPC
 				yield return new SkipThisFrame();
 			}
 			ClearFollowingSword();
-			Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, -5), Vector2.zeroVector, ModContent.ProjectileType<AcytaeaSword_projectile_Boss_shoot>(), 60, 4f, -1, NPC.whoAmI, 2 - a);
+			Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center + new Vector2(0, -5), Vector2.zeroVector, ModContent.ProjectileType<AcytaeaSword_Projectile_Boss_Shoot>(), 60, 4f, -1, NPC.whoAmI, 2 - a);
 			for (int t = 0; t < 50; t++)
 			{
 				if (t < 10)
@@ -1018,7 +1018,7 @@ public class Acytaea_Boss : ModNPC
 		{
 			if (proj != null && proj.active)
 			{
-				if (proj.type == ModContent.ProjectileType<AcytaeaSword_following>())
+				if (proj.type == ModContent.ProjectileType<AcytaeaSword_Following>())
 				{
 					proj.Kill();
 				}
@@ -1065,7 +1065,7 @@ public class Acytaea_Boss : ModNPC
 		Texture2D body = ModAsset.AcytaeaBody.Value;
 		Texture2D legs = ModAsset.AcytaeaLeg.Value;
 		Texture2D frontArm = ModAsset.AcytaeaFrontArm.Value;
-		Texture2D head = ModAsset.AcytaeaHead_frame.Value;
+		Texture2D head = ModAsset.AcytaeaHead_Frame.Value;
 		if (!NPC.collideY)
 		{
 			spriteBatch.Draw(backWing, drawPos, new Rectangle(0, 56 * wingFrame, 86, 56), drawColor, NPC.rotation, wingorigin, 1f, drawEffect, 0);

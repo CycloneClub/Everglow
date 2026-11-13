@@ -377,9 +377,9 @@ public class PurpleBombCaterpillar : ModNPC
 	public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
 		Texture2D eyeStalks = ModAsset.PurpleBombCaterpillar.Value;
-		Texture2D eyeStalks_glow = ModAsset.PurpleBombCaterpillar_glow.Value;
+		Texture2D eyeStalks_glow = ModAsset.PurpleBombCaterpillar_Glow.Value;
 		Texture2D body = ModAsset.PurpleBombCaterpillar_Body.Value;
-		Texture2D body_glow = ModAsset.PurpleBombCaterpillar_Body_glow.Value;
+		Texture2D body_glow = ModAsset.PurpleBombCaterpillar_Body_Glow.Value;
 		SpriteEffects flip = NPC.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
 		float squzzeValue = 1f;

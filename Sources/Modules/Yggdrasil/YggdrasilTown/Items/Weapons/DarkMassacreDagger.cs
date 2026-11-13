@@ -38,7 +38,7 @@ public class DarkMassacreDagger : ModItem
 	{
 		if (player.altFunctionUse == 2)
 		{
-			Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<DarkMassacreDagger_Projectile_thrust>(), damage, knockback, player.whoAmI, 0f, 0f);
+			Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<DarkMassacreDagger_Projectile_Thrust>(), damage, knockback, player.whoAmI, 0f, 0f);
 		}
 		else if (player.ownedProjectileCounts[Item.shoot] < 1)
 		{

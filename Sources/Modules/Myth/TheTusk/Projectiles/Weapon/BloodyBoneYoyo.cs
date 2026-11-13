@@ -240,7 +240,7 @@ public class BloodyBoneYoyo : YoyoProjectile
 
 	public override void DrawYoyo_String_Attachments(Vector2 drawPos, float rotation, Color color, float length, float index, float stringUnitCount)
 	{
-		Texture2D tex = ModAsset.BloodyBoneYoyo_line.Value;
+		Texture2D tex = ModAsset.BloodyBoneYoyo_Line.Value;
 		color = Lighting.GetColor((drawPos + Main.screenPosition).ToTileCoordinates());
 		if (index % 4 == 0)
 		{
@@ -315,7 +315,7 @@ public class BloodyBoneYoyo : YoyoProjectile
 		effect.Parameters["uTransform"].SetValue(model * projection);
 		effect.CurrentTechnique.Passes[0].Apply();
 		Main.graphics.GraphicsDevice.RasterizerState = RasterizerState.CullNone;
-		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.BloodyBoneYoyo_tentacle.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.BloodyBoneYoyo_Tentacle.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		if (bars.Count > 3)
 		{

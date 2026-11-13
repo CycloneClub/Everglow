@@ -18,7 +18,7 @@ public class DreamWeaverII : TrailingProjectile
 		Projectile.extraUpdates = 0;
 		TrailLength = 12;
 		TrailTexture = Commons.ModAsset.Trail_1.Value;
-		TrailTextureBlack = Commons.ModAsset.Trail_black.Value;
+		TrailTextureBlack = Commons.ModAsset.Trail_Black.Value;
 		ProjectileID.Sets.DrawScreenCheckFluff[Type] = 10800;
 	}
 
@@ -94,7 +94,7 @@ public class DreamWeaverII : TrailingProjectile
 		{
 			power = 1f;
 		}
-		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<DreamWeaver_hit>(), Projectile.damage, Projectile.knockBack, Projectile.owner, power);
+		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<DreamWeaver_Hit>(), Projectile.damage, Projectile.knockBack, Projectile.owner, power);
 	}
 
 	public override Color GetTrailColor(int style, Vector2 worldPos, int index, ref float factor, float extraValue0 = 0, float extraValue1 = 0) => base.GetTrailColor(style, worldPos, index, ref factor, extraValue0, extraValue1);

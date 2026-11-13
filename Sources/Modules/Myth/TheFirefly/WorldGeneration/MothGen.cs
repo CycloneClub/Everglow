@@ -180,7 +180,7 @@ public class MothLand : ModSystem
 							{
 								if (tile.TileType != TileID.Containers && Main.tile[x + a, y + b - 1].TileType != TileID.Containers)
 								{
-									tile.TileType = (ushort)ModContent.TileType<DarkCocoon_petal>();
+									tile.TileType = (ushort)ModContent.TileType<DarkCocoon_Petal>();
 									tile.HasTile = true;
 								}
 							}

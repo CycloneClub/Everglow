@@ -132,7 +132,7 @@ public class Schorl_Mark : ModProjectile
 				flows.Add(drawCenter + thisJoint - normalWidth, drawColor * fade, new Vector3(i * 0.07f + timeValue + r * 0.2f + addTimeValue, 0, drawWidth));
 				flows.Add(drawCenter + thisJoint + normalWidth, drawColor * fade, new Vector3(i * 0.07f + timeValue + r * 0.2f + addTimeValue, 1, drawWidth));
 			}
-			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_black_thick.Value;
+			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_Black_Thick.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, flows.ToArray(), 0, flows.Count - 2);
 		}
 		for (int r = 0; r < 6; r++)
@@ -156,7 +156,7 @@ public class Schorl_Mark : ModProjectile
 				flows.Add(drawCenter + thisJoint - normalWidth, drawColor * fade, new Vector3(i * 0.035f + timeValue + r * 0.2f + addTimeValue, 0, drawWidth));
 				flows.Add(drawCenter + thisJoint + normalWidth, drawColor * fade, new Vector3(i * 0.035f + timeValue + r * 0.2f + addTimeValue, 1, drawWidth));
 			}
-			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_3_black.Value;
+			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_3_Black.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, flows.ToArray(), 0, flows.Count - 2);
 		}
 
@@ -181,7 +181,7 @@ public class Schorl_Mark : ModProjectile
 				flows.Add(drawCenter + thisJoint - normalWidth, drawColor * fade, new Vector3(i * 0.07f + timeValue + r * 0.2f + addTimeValue, 0, drawWidth));
 				flows.Add(drawCenter + thisJoint + normalWidth, drawColor * fade, new Vector3(i * 0.07f + timeValue + r * 0.2f + addTimeValue, 1, drawWidth));
 			}
-			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_thick.Value;
+			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_Thick.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, flows.ToArray(), 0, flows.Count - 2);
 		}
 		for (int r = 0; r < 6; r++)

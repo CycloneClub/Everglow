@@ -171,7 +171,7 @@ public class UIRewardsStripeItem : UIBlock
 		int y = Info.TotalHitBox.Y;
 		int w = Info.TotalHitBox.Width;
 		int h = Info.TotalHitBox.Height;
-		Texture2D tex_side = ModAsset.QuestTopicFrame_bottom_side.Value;
+		Texture2D tex_side = ModAsset.QuestTopicFrame_Bottom_Side.Value;
 		sb.Draw(tex_side, new Rectangle(x + (w - 51) / 2, y + h - 7, 51, 7), null, Color.White * (PanelColor.A / 255f));
 	}
 

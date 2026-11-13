@@ -12,7 +12,7 @@ public class TwilightEucalyptusWood : ModTile
 		Main.tileMerge[Type][ModContent.TileType<DarkForestSoil>()] = true;
 		Main.tileMerge[Type][ModContent.TileType<StoneScaleWood>()] = true;
 		Main.tileBlockLight[Type] = true;
-		DustType = ModContent.DustType<GreenRelicBrick_dust>();
+		DustType = ModContent.DustType<GreenRelicBrick_Dust>();
 		HitSound = default;
 		AddMapEntry(new Color(58, 53, 50));
 	}

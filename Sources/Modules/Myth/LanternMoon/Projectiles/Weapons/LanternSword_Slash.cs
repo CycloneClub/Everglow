@@ -142,7 +142,7 @@ public class LanternSword_Slash : ModProjectile
 			if (slash.Active)
 			{
 				Texture2D star = Commons.ModAsset.StarSlash.Value;
-				Texture2D star_dark = Commons.ModAsset.StarSlash_black.Value;
+				Texture2D star_dark = Commons.ModAsset.StarSlash_Black.Value;
 				var drawPos = slash.Position - Main.screenPosition;
 				float timeLeft = (slash.MaxTime - slash.Timer) / (float)slash.MaxTime;
 				float sizeMul = 2f;

@@ -561,7 +561,7 @@ public class WoodlandWraithStaff_FungiBall : ModProjectile
 		// Draw self when not mycelume.
 		if (MyceliumAmount <= 0 || State != States.Mycelume)
 		{
-			var texBloom = ModAsset.WoodlandWraithStaff_FungiBall_bloom.Value;
+			var texBloom = ModAsset.WoodlandWraithStaff_FungiBall_Bloom.Value;
 			if (ZoneSporeFade(Projectile.Center) > 0)
 			{
 				float cValue = 0.75f + 0.15f * MathF.Sin((float)Main.time * 0.05f + Projectile.whoAmI);
@@ -602,7 +602,7 @@ public class WoodlandWraithStaff_FungiBall : ModProjectile
 			Main.spriteBatch.Draw(texGlow, Projectile.Center - Main.screenPosition, null, glowColor, Projectile.rotation, texGlow.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
 			if (ZoneSporeFade(Projectile.Center) > 0)
 			{
-				var texGlow_bloom = ModAsset.WoodlandWraithStaff_FungiBall_BloodGlow_bloom.Value;
+				var texGlow_bloom = ModAsset.WoodlandWraithStaff_FungiBall_BloodGlow_Bloom.Value;
 				Main.spriteBatch.Draw(texGlow_bloom, Projectile.Center - Main.screenPosition, null, new Color(1f, 1f, 1f, 0f), Projectile.rotation, texGlow_bloom.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
 			}
 		}

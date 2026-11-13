@@ -55,7 +55,7 @@ public class Betty_Fork : ModProjectile
 	public override void OnKill(int timeLeft)
 	{
 		Vector2 v0 = new Vector2(0, Main.rand.NextFloat(0, 6f)).RotatedByRandom(MathHelper.TwoPi);
-		int type = ModContent.Find<ModGore>("Everglow/Betty_Fork_invaild").Type;
+		int type = ModContent.Find<ModGore>("Everglow/Betty_Fork_Invaild").Type;
 		var gore = Gore.NewGoreDirect(Projectile.GetSource_Death(), Projectile.Center, v0, type, Projectile.scale);
 		gore.velocity *= 0.3f;
 		gore.velocity -= Projectile.velocity.RotatedByRandom(MathHelper.PiOver2) * Main.rand.NextFloat() * 0.1f;

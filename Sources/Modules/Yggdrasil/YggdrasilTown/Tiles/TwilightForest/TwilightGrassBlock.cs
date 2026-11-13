@@ -251,7 +251,7 @@ public class TwilightGrassBlock : ModTile, ISceneTile
 
 	public void AddScene(int i, int j)
 	{
-		var leaf = new TwilightGrass_grass_fore { Position = new Vector2(i, j) * 16, Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = Type };
+		var leaf = new TwilightGrass_Grass_Fore { Position = new Vector2(i, j) * 16, Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = Type };
 		leaf.scale = 1f;
 		leaf.style = i % 3;
 		Ins.VFXManager.Add(leaf);

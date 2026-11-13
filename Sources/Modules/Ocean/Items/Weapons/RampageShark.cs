@@ -108,8 +108,8 @@ public class RampageShark : ModItem
 
 	public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
 	{
-		Texture2D texMainG = ModAsset.RampageShark_glow.Value;
-		Texture2D TexEye = ModAsset.RampageShark_redEye.Value;
+		Texture2D texMainG = ModAsset.RampageShark_Glow.Value;
+		Texture2D TexEye = ModAsset.RampageShark_RedEye.Value;
 		float glow = CrazyValue / 16f;
 		spriteBatch.Draw(texMainG, position, frame, new Color(glow, glow * 0.2f, glow * 0.2f, 0), 0, origin, scale, SpriteEffects.None, 0);
 		if (CrazyValue >= 15 && CrazyValue < 16)
@@ -125,8 +125,8 @@ public class RampageShark : ModItem
 
 	public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
 	{
-		Texture2D texMainG = ModAsset.RampageShark_glow.Value;
-		Texture2D TexEye = ModAsset.RampageShark_redEye.Value;
+		Texture2D texMainG = ModAsset.RampageShark_Glow.Value;
+		Texture2D TexEye = ModAsset.RampageShark_RedEye.Value;
 		float glow = CrazyValue / 16f;
 		spriteBatch.Draw(texMainG, Item.Center - Main.screenPosition, null, new Color(glow, glow * 0.2f, glow * 0.2f, 0), rotation, texMainG.Size() / 2f, scale, SpriteEffects.None, rotation);
 		if (CrazyValue >= 15 && CrazyValue < 16)

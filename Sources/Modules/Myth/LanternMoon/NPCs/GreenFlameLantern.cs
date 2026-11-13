@@ -262,7 +262,7 @@ public class GreenFlameLantern : LanternMoonNPC
 	public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
 		var texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
-		var glow = ModAsset.GreenFlameLantern_glow.Value;
+		var glow = ModAsset.GreenFlameLantern_Glow.Value;
 		SpriteEffects effects = SpriteEffects.None;
 		NPC.spriteDirection = NPC.direction;
 		if (NPC.spriteDirection == 1)

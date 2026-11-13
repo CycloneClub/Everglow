@@ -84,7 +84,7 @@ public class PrimordialJadeWinged_SpearSpice : ModProjectile
 		bars.Add(new Vertex2D(drawRoot + v0 * 2 * (1 - fadeG), cHeat, new Vector3(1 - fadeG, fadeG, 0)));
 		bars.Add(new Vertex2D(drawRoot + (v0 - v0T) * fadeG + v0 * 2 * (1 - fadeG), cHeat, new Vector3(1 - fadeG, 0, 0)));
 
-		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.PrimordialJadeWinged_SpearSpice_highlight.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.PrimordialJadeWinged_SpearSpice_Highlight.Value;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, bars.ToArray(), 0, bars.Count / 3);
 
 		Main.spriteBatch.End();

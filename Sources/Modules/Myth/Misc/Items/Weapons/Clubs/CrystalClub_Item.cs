@@ -14,7 +14,7 @@ public class CrystalClub_Item : ClubItem
 		Item.useAnimation = 12;
 		SmashDamageMultiplier = 35f / 28f;
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.CrystalClub>();
-		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.CrystalClub_smash>();
+		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.CrystalClub_Smash>();
 	}
 
 	public override void AddRecipes()

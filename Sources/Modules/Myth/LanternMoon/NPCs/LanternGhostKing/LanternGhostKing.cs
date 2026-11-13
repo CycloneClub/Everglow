@@ -92,7 +92,7 @@ public class LanternGhostKing : LanternMoonNPC
 			MaxFade = 240,
 		};
 		Ins.VFXManager.Add(spark);
-		var warp = new LanternFlameRing_warpDust
+		var warp = new LanternFlameRing_WarpDust
 		{
 			OwnerLanternKing = NPC,
 			Active = true,
@@ -909,7 +909,7 @@ public class LanternGhostKing : LanternMoonNPC
 			{
 				float deltaY = MathF.Sin(x + (float)Main.time * 0.2f) * 60;
 				float deltaY2 = MathF.Cos(x + (float)Main.time * 0.2f) * 60;
-				NPC npc0 = NPC.NewNPCDirect(NPC.GetSource_FromAI(), target.Center - new Vector2(0, 1000), ModContent.NPCType<ExplosiveLantern_growing>(), 0, 0f, 0, 0, 0);
+				NPC npc0 = NPC.NewNPCDirect(NPC.GetSource_FromAI(), target.Center - new Vector2(0, 1000), ModContent.NPCType<ExplosiveLantern_Growing>(), 0, 0f, 0, 0, 0);
 
 				npc0.Center = target.Center + new Vector2(x * 600 + Timer % 135 - 70, -700 + deltaY);
 				npc0.velocity = new Vector2(0, -deltaY2 * 0.005f);

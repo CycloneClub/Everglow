@@ -120,13 +120,13 @@ public class YggdrasilMoonBladeHit : ModProjectile, IWarpProjectile
 
 	public override bool PreDraw(ref Color lightColor)
 	{
-		Texture2D shadow = Commons.ModAsset.Point_black.Value;
+		Texture2D shadow = Commons.ModAsset.Point_Black.Value;
 		float dark = Math.Max((Projectile.timeLeft - 150) / 50f, 0);
 		var c = new Color(0f, 1f, 0.7f, 0f);
 
 		// Main.spriteBatch.Draw(shadow, Projectile.Center - Main.screenPosition, null, Color.White * dark, 0, shadow.Size() / 2f, 0.2f * Projectile.ai[0], SpriteEffects.None, 0);
 		Texture2D light = Commons.ModAsset.StarSlash.Value;
-		Texture2D light_black = Commons.ModAsset.StarSlash_black.Value;
+		Texture2D light_black = Commons.ModAsset.StarSlash_Black.Value;
 		if (Projectile.hostile)
 		{
 			Main.spriteBatch.Draw(light, Projectile.Center - Main.screenPosition, null, c, 0, light.Size() / 2f, new Vector2(dark * dark * 0.4f, 1f) * Projectile.ai[0] * 0.04f, SpriteEffects.None, 0);

@@ -365,15 +365,15 @@ public class BombLantern : LanternMoonNPC
 		}
 
 		spriteBatch.Draw(texture, NPC.Center - Main.screenPosition, NPC.frame, drawColor, NPC.rotation, new Vector2(72), NPC.scale, effects, 0);
-		Texture2D tail = ModAsset.BombLantern_tail.Value;
+		Texture2D tail = ModAsset.BombLantern_Tail.Value;
 		spriteBatch.Draw(tail, Tail1 - Main.screenPosition, new Rectangle(0, 0, 16, 24), drawColor, (Tail1 - Tail0).ToRotation() - MathHelper.PiOver2, new Vector2(8, 12), NPC.scale, effects, 0);
 		spriteBatch.Draw(tail, Tail2 - Main.screenPosition, new Rectangle(0, 26, 16, 22), drawColor, (Tail2 - Tail1).ToRotation() - MathHelper.PiOver2, new Vector2(8, 11), NPC.scale, effects, 0);
 		spriteBatch.Draw(tail, Tail3 - Main.screenPosition, new Rectangle(0, 46, 18, 20), drawColor, (Tail3 - Tail2).ToRotation() - MathHelper.PiOver2, new Vector2(9, 10), NPC.scale, effects, 0);
 
-		Texture2D glow0 = ModAsset.BombLantern_glow.Value;
+		Texture2D glow0 = ModAsset.BombLantern_Glow.Value;
 
 		spriteBatch.Draw(glow0, NPC.Center - Main.screenPosition, NPC.frame, new Color(1f, 0.6f, 0.2f, 0), NPC.rotation, new Vector2(72), NPC.scale, effects, 0);
-		Texture2D glow1 = ModAsset.BombLantern_glow2.Value;
+		Texture2D glow1 = ModAsset.BombLantern_Glow2.Value;
 		if (ExplosionTimer > 0)
 		{
 			float deathValue = 1 - ExplosionTimer / 30f;

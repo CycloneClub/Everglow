@@ -170,7 +170,7 @@ public class ProjectileSourceOwnerTests
 		Main.netMode = netMode;
 		Main.myPlayer = playerIndex;
 		var npc = new NPC { active = true, friendly = true, damage = 30 };
-		var guard = (Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs.Guard_of_YggdrasilTown)new Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs.Guard_of_YggdrasilTown().NewInstance(npc);
+		var guard = (Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs.Guard_Of_YggdrasilTown)new Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs.Guard_Of_YggdrasilTown().NewInstance(npc);
 
 		using var attack = guard.Attack0();
 		Assert.IsTrue(attack.MoveNext());
@@ -189,7 +189,7 @@ public class ProjectileSourceOwnerTests
 	public void AcytaeaSwordKeepsNpcOwnership(int netMode, int playerIndex)
 	{
 		var module = LoadModule("Myth");
-		RegisterProjectile(module.GetType("Everglow.Myth.Acytaea.Projectiles.AcytaeaSword_projectile_TownNPC", true)!);
+		RegisterProjectile(module.GetType("Everglow.Myth.Acytaea.Projectiles.AcytaeaSword_Projectile_TownNPC", true)!);
 		Main.netMode = netMode;
 		Main.myPlayer = playerIndex;
 		var npc = new NPC { active = true, friendly = true };

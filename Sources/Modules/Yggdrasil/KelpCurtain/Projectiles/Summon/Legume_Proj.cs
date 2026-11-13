@@ -21,7 +21,7 @@ public class Legume_Proj : TrailingProjectile
 		Projectile.timeLeft = 3600;
 		Projectile.DamageType = DamageClass.Summon;
 		TrailTexture = Commons.ModAsset.Trail_8.Value;
-		TrailTextureBlack = Commons.ModAsset.Trail_8_black.Value;
+		TrailTextureBlack = Commons.ModAsset.Trail_8_Black.Value;
 		TrailLength = 12;
 		TrailColor = new Color(0.25f, 0.175f, 0.15f, 0f);
 		TrailBackgroundDarkness = 0.5f;

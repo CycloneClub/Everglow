@@ -24,7 +24,7 @@ namespace Everglow.EternalResolve.Projectiles
 
 		public override void DrawItem(Color lightColor)
 		{
-			Texture2D itemTexture = ModAsset.PlatinumStabbingSword_withouFlag.Value;
+			Texture2D itemTexture = ModAsset.PlatinumStabbingSword_WithouFlag.Value;
 			Main.spriteBatch.Draw(itemTexture, ItemDraw.Postion - Main.screenPosition, null, lightColor, ItemDraw.Rotation, itemTexture.Size() / 2f, ItemDraw.Size, ItemDraw.SpriteEffect, 0f);
 
 			if (!Main.gamePaused)
@@ -38,7 +38,7 @@ namespace Everglow.EternalResolve.Projectiles
 				bottomPos2 = bottomPos2 * 0.9f;
 			}
 			float scale = MathF.Sin((float)Main.timeForVisualEffects);
-			DrawFlags(lightColor, -7, 5, ModAsset.PlatinumStabbingSword_flag.Value, bottomPos1 * scale, bottomPos2 * scale);
+			DrawFlags(lightColor, -7, 5, ModAsset.PlatinumStabbingSword_Flag.Value, bottomPos1 * scale, bottomPos2 * scale);
 		}
 	}
 }

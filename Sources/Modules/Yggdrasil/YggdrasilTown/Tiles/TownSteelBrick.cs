@@ -28,7 +28,7 @@ public class TownSteelBrick : ModTile
 		{
 			offsetScreen = Vector2.Zero;
 		}
-		Texture2D tex = ModAsset.TownSteelBrick_glow.Value;
+		Texture2D tex = ModAsset.TownSteelBrick_Glow.Value;
 		spriteBatch.Draw(tex, new Point(i, j).ToWorldCoordinates() - Main.screenPosition + offsetScreen, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16), new Color(155, 155, 155, 0), 0, new Vector2(0), 1, SpriteEffects.None, 0);
 		base.PostDraw(i, j, spriteBatch);
 	}

@@ -14,7 +14,7 @@ public class AdamantiteClub_Item : ClubItem
 		Item.useAnimation = 12;
 		SmashDamageMultiplier = 61f / 36f;
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.AdamantiteClub>();
-		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.AdamantiteClub_smash>();
+		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.AdamantiteClub_Smash>();
 	}
 
 	public override void AddRecipes()

@@ -21,7 +21,7 @@ public sealed class SmuggledAleQuest : TownNpcQuest
 		RewardItems.Add(new Item(ModContent.ItemType<GoodNeighborCoin>(), 10));
 	}
 
-	public override int GiverNpcType => ModContent.NPCType<Guard_of_YggdrasilTown>();
+	public override int GiverNpcType => ModContent.NPCType<Guard_Of_YggdrasilTown>();
 
 	public override QuestSourceBase Source => Anna;
 

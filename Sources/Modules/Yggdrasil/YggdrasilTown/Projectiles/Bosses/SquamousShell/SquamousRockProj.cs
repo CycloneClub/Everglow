@@ -127,10 +127,10 @@ public class SquamousRockProj : ModProjectile
 		else
 		{
 			var texMain = (Texture2D)ModContent.Request<Texture2D>(Texture);
-			var bloom = ModAsset.SquamousRockProj_bloom.Value;
+			var bloom = ModAsset.SquamousRockProj_Bloom.Value;
 			Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, texMain.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
 			Main.spriteBatch.Draw(bloom, Projectile.Center - Main.screenPosition, null, new Color(1f, 1f, 1f, 0), Projectile.rotation, bloom.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
-			var textureGlow = ModAsset.SquamousRockProj_glow.Value;
+			var textureGlow = ModAsset.SquamousRockProj_Glow.Value;
 			float breathValue = 0.5f + 0.5f * MathF.Sin((float)Main.timeForVisualEffects * 0.24f + Projectile.whoAmI);
 			Main.spriteBatch.Draw(textureGlow, Projectile.Center - Main.screenPosition, null, new Color(1f, 1f, 1f, breathValue) * breathValue, Projectile.rotation, textureGlow.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
 			return false;
@@ -238,7 +238,7 @@ public class SquamousRockProj : ModProjectile
 		}
 		if (bars.Count > 2)
 		{
-			Texture2D t = Commons.ModAsset.Trail_4_black.Value;
+			Texture2D t = Commons.ModAsset.Trail_4_Black.Value;
 			Main.graphics.GraphicsDevice.Textures[0] = t;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}

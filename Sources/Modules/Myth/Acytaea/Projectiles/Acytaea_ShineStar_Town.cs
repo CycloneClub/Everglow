@@ -6,7 +6,7 @@ public class Acytaea_ShineStar_Town : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.TownNPCProjectiles;
 
-	public override string Texture => ModAsset.AcytaeaSword_projectile_Mod;
+	public override string Texture => ModAsset.AcytaeaSword_Projectile_Mod;
 
 	public override void SetDefaults()
 	{
@@ -40,7 +40,7 @@ public class Acytaea_ShineStar_Town : ModProjectile
 		float value = Projectile.timeLeft / 60f;
 		Vector2 newScale = new Vector2(1f, value * 2) * MathF.Sin(value * MathF.PI) * 1f;
 		Texture2D star = Commons.ModAsset.StarSlash.Value;
-		Texture2D dark = Commons.ModAsset.Point_black.Value;
+		Texture2D dark = Commons.ModAsset.Point_Black.Value;
 		Main.spriteBatch.Draw(dark, Projectile.Center - Main.screenPosition, null, Color.White * value, 0, dark.Size() / 2f, 1f, SpriteEffects.None, 0);
 		Main.spriteBatch.Draw(star, Projectile.Center - Main.screenPosition, null, new Color(255, 0, 0, 0), Projectile.timeLeft * 0.02f, star.Size() / 2f, newScale, SpriteEffects.None, 0);
 		Main.spriteBatch.Draw(star, Projectile.Center - Main.screenPosition, null, new Color(255, 0, 0, 0), Projectile.timeLeft * 0.02f + MathHelper.PiOver2, star.Size() / 2f, newScale, SpriteEffects.None, 0);

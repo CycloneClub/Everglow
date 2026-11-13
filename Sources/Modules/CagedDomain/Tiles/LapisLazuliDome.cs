@@ -13,7 +13,7 @@ namespace Everglow.CagedDomain.Tiles
 		public override void SetStaticDefaults()
 		{
 			CustomItemType = ModContent.ItemType<LapisLazuliDome_Item>();
-			DustType = ModContent.DustType<LapisLazuliDome_dust>();
+			DustType = ModContent.DustType<LapisLazuliDome_Dust>();
 			Main.tileFrameImportant[Type] = true;
 			Main.tileNoAttach[Type] = true;
 

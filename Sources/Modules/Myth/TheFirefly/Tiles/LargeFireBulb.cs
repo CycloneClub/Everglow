@@ -10,7 +10,7 @@ internal class LargeFireBulbTestItem : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Placeables;
 
-	public override string Texture => ModAsset.LargeFireBulb_item_Mod;
+	public override string Texture => ModAsset.LargeFireBulb_Item_Mod;
 
 	public override void SetDefaults()
 	{

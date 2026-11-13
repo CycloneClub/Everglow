@@ -102,7 +102,7 @@ public class HeatproofDresser : ModTile
 			}
 			if (player.cursorItemIconText == defaultName)
 			{
-				player.cursorItemIconID = ModContent.ItemType<HeatproofDresser_item>();
+				player.cursorItemIconID = ModContent.ItemType<HeatproofDresser_Item>();
 				player.cursorItemIconText = string.Empty;
 			}
 		}

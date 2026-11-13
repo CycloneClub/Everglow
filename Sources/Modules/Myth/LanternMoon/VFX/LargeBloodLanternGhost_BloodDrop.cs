@@ -79,6 +79,6 @@ public class LargeBloodLanternGhost_BloodDrop : Visual
 			new Vertex2D(position - velocity * ai[1] + toCorner.RotatedBy(Math.PI * 1), lightColor, new Vector3(1, 1, pocession)),
 		};
 
-		Ins.Batch.Draw(Commons.ModAsset.Point_lowContrast.Value, bars, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(Commons.ModAsset.Point_LowContrast.Value, bars, PrimitiveType.TriangleStrip);
 	}
 }

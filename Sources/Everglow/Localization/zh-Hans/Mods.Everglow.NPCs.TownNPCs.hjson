@@ -23,7 +23,7 @@ CanteenMaid: {
 
 Fevens.DisplayName: 霏文士
 
-Guard_of_YggdrasilTown: {
+Guard_Of_YggdrasilTown: {
 	DisplayName: 天穹引路人
 
 	TownNPCMood: {

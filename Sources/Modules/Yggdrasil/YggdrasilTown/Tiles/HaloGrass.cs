@@ -21,7 +21,7 @@ public class HaloGrass : ModTile
 		TileObjectData.newTile.DrawYOffset = -16;
 		TileObjectData.addTile(Type);
 		TileID.Sets.SwaysInWindBasic[Type] = true;
-		DustType = ModContent.DustType<HaloGrass_dust>();
+		DustType = ModContent.DustType<HaloGrass_Dust>();
 		AddMapEntry(new Color(73, 182, 255));
 		HitSound = SoundID.Grass;
 	}

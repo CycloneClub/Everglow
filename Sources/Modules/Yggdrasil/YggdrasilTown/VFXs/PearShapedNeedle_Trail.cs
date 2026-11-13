@@ -44,7 +44,7 @@ public class PearShapedNeedle_Trail : Visual
 			bars.Add(currentPos - width, drawColor, new Vector3(1, valueLerp * 0.8f, 0));
 		}
 
-		Ins.Batch.Draw(Commons.ModAsset.StarSlash_black.Value, bars_dark, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(Commons.ModAsset.StarSlash_Black.Value, bars_dark, PrimitiveType.TriangleStrip);
 		Ins.Batch.Draw(Commons.ModAsset.StarSlash.Value, bars, PrimitiveType.TriangleStrip);
 	}
 }

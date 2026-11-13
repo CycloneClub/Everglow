@@ -204,7 +204,7 @@ public abstract class PotUI
 				{
 					Draw9Pieces(drawPos + IngredientsSlotPos[i], 16, 16, new Color(120, 60, 50, 90), 0);
 				}
-				Draw9Pieces(drawPos + IngredientsSlotPos[i], 16, 16, new Color(210, 210, 185), 0, ModAsset.StoveUIPanel_outline_thin.Value);
+				Draw9Pieces(drawPos + IngredientsSlotPos[i], 16, 16, new Color(210, 210, 185), 0, ModAsset.StoveUIPanel_Outline_Thin.Value);
 				if (Ingredients[i] >= 0)
 				{
 					var item = new Item(Ingredients[i]);
@@ -296,13 +296,13 @@ public abstract class PotUI
 		if (MouseOverIndex == index)
 		{
 			Draw9Pieces(CloseButtonPos, sizeX * 1.2f, sizeY * 1.2f, colorHit, 0.2f);
-			Draw9Pieces(CloseButtonPos, sizeX * 1f, sizeY * 1f, colorHit * 2, 0, ModAsset.StoveUIPanel_outline_thin.Value);
+			Draw9Pieces(CloseButtonPos, sizeX * 1f, sizeY * 1f, colorHit * 2, 0, ModAsset.StoveUIPanel_Outline_Thin.Value);
 			Main.spriteBatch.Draw(iconAtlas, CloseButtonPos, frame, darkerColor, 0f, frame.Size() * 0.5f, iconSize * 1.33f, SpriteEffects.None, 0f);
 		}
 		else
 		{
 			Draw9Pieces(CloseButtonPos, sizeX, sizeY, color, 0.2f);
-			Draw9Pieces(CloseButtonPos, sizeX * 1f, sizeY * 1f, color * 2, 0, ModAsset.StoveUIPanel_outline_thin.Value);
+			Draw9Pieces(CloseButtonPos, sizeX * 1f, sizeY * 1f, color * 2, 0, ModAsset.StoveUIPanel_Outline_Thin.Value);
 			Main.spriteBatch.Draw(iconAtlas, CloseButtonPos, frame, darkerColor, 0f, frame.Size() * 0.5f, iconSize, SpriteEffects.None, 0f);
 		}
 	}
@@ -331,13 +331,13 @@ public abstract class PotUI
 		if (MouseOverIndex == 104)
 		{
 			Draw9Pieces(CloseButtonPos, sizeX * 1.2f, sizeY * 1.2f, colorHit, 0.2f);
-			Draw9Pieces(CloseButtonPos, sizeX * 1f, sizeY * 1f, colorHit * 2, 0, ModAsset.StoveUIPanel_outline_thin.Value);
+			Draw9Pieces(CloseButtonPos, sizeX * 1f, sizeY * 1f, colorHit * 2, 0, ModAsset.StoveUIPanel_Outline_Thin.Value);
 			Main.spriteBatch.Draw(iconAtlas, CloseButtonPos, frame, darkerColor, 0f, frame.Size() * 0.5f, iconSize * 1.33f, SpriteEffects.None, 0f);
 		}
 		else
 		{
 			Draw9Pieces(CloseButtonPos, sizeX, sizeY, color, 0.2f);
-			Draw9Pieces(CloseButtonPos, sizeX * 1f, sizeY * 1f, color * 2, 0, ModAsset.StoveUIPanel_outline_thin.Value);
+			Draw9Pieces(CloseButtonPos, sizeX * 1f, sizeY * 1f, color * 2, 0, ModAsset.StoveUIPanel_Outline_Thin.Value);
 			Main.spriteBatch.Draw(iconAtlas, CloseButtonPos, frame, darkerColor, 0f, frame.Size() * 0.5f, iconSize, SpriteEffects.None, 0f);
 		}
 	}

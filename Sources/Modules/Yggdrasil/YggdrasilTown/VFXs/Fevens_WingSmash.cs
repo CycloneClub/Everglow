@@ -4,7 +4,7 @@ public class Fevens_WingSmashPipeline : Pipeline
 {
 	public override void Load()
 	{
-		effect = ModAsset.Fevens_WingSmash_fog;
+		effect = ModAsset.Fevens_WingSmash_Fog;
 	}
 
 	public override void BeginRender()

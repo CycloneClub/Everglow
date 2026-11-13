@@ -44,7 +44,7 @@ public class MythrilClub_Shoot : ModProjectile, IWarpProjectile
 		float dark = Math.Max((Projectile.timeLeft - 150) / 50f, 0);
 		Main.spriteBatch.Draw(Shadow, Projectile.Center - Main.screenPosition, null, new Color(0f, 0.5f, 1f, 0) * dark * (lightColor.B / 255f), 0, Shadow.Size() / 2f, 2.2f * Projectile.ai[0] / 10f * dark, SpriteEffects.None, 0);
 		float timeValue = (200 - Projectile.timeLeft) / 200f;
-		DrawTexCircle(timeValue * 24 * Projectile.ai[0], 8 * (1 - timeValue) * Projectile.ai[0], new Color(0.1f * (1 - timeValue) * (1 - timeValue), 0.9f * (1 - timeValue) * (1 - timeValue), 0.2f * (1 - timeValue), 0f) * (lightColor.G / 75f), Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_2_thick.Value);
+		DrawTexCircle(timeValue * 24 * Projectile.ai[0], 8 * (1 - timeValue) * Projectile.ai[0], new Color(0.1f * (1 - timeValue) * (1 - timeValue), 0.9f * (1 - timeValue) * (1 - timeValue), 0.2f * (1 - timeValue), 0f) * (lightColor.G / 75f), Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_2_Thick.Value);
 
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(sBS);

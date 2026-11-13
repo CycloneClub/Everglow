@@ -29,7 +29,7 @@ public class RedAlgaeMinionStaff : ModItem
 		Item.rare = ItemRarityID.Orange;
 		Item.value = 35000;
 
-		Item.shoot = ModContent.ProjectileType<CrimsonMoonAlgaeSummonStaff_minion>();
+		Item.shoot = ModContent.ProjectileType<CrimsonMoonAlgaeSummonStaff_Minion>();
 		Item.shootSpeed = 12f;
 	}
 

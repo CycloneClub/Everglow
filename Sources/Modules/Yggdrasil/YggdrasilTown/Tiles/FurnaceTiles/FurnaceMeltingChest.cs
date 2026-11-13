@@ -174,10 +174,10 @@ public class FurnaceMeltingChest : ModTile
 				{
 					zero = Vector2.Zero;
 				}
-				var glow = ModAsset.FurnaceMeltingChest_meltingGlow.Value;
+				var glow = ModAsset.FurnaceMeltingChest_MeltingGlow.Value;
 				spriteBatch.Draw(glow, new Vector2(i, j) * 16 - Main.screenPosition + zero + new Vector2(-28, -14), null, new Color(1f, 1f, 1f, 0) * value, 0, Vector2.zeroVector, 1, SpriteEffects.None, 0);
 
-				var bloom = ModAsset.FurnaceMeltingChest_meltingBloom.Value;
+				var bloom = ModAsset.FurnaceMeltingChest_MeltingBloom.Value;
 				spriteBatch.Draw(bloom, new Vector2(i, j) * 16 - Main.screenPosition + zero + new Vector2(-28 - 28, -14 - 32), null, new Color(1f, 1f, 1f, 0) * value, 0, Vector2.zeroVector, 1, SpriteEffects.None, 0);
 			}
 			Lighting.AddLight(new Vector2(i, j) * 16 + new Vector2(8), new Vector3(2f, 1.1f, 0.3f) * value);

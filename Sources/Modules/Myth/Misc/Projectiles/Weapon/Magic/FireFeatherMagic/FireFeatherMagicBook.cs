@@ -14,7 +14,7 @@ internal class FireFeatherMagicBook : MagicBookProjectile
 		MulStartPosByVelocity = 2f;
 		UseGlow = false;
 		FrontTexture = ModAsset.FireFeatherMagic.Value;
-		PaperTexture = ModAsset.FireFeatherMagic_paper.Value;
+		PaperTexture = ModAsset.FireFeatherMagic_Paper.Value;
 		GlowTexture = ModAsset.FireFeatherMagic.Value;
 
 		effectColor = new Color(105, 75, 45, 100);
@@ -154,7 +154,7 @@ internal class FireFeatherMagicBook : MagicBookProjectile
 
 		if (bars.Count > 0)
 		{
-			Main.graphics.GraphicsDevice.Textures[0] = ModAsset.FireFeatherMagic_feather.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = ModAsset.FireFeatherMagic_Feather.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 
@@ -174,7 +174,7 @@ internal class FireFeatherMagicBook : MagicBookProjectile
 		};
 		if (bars.Count > 0)
 		{
-			Main.graphics.GraphicsDevice.Textures[0] = ModAsset.FireFeatherMagic_rope.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = ModAsset.FireFeatherMagic_Rope.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 	}

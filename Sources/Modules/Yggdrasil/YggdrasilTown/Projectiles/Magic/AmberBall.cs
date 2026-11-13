@@ -103,7 +103,7 @@ public class AmberBall : ModProjectile
 			Main.spriteBatch.End();
 			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 
-			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.EmptyCrystal_black.Value;
+			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.EmptyCrystal_Black.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.EmptyCrystal.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
@@ -148,7 +148,7 @@ public class AmberBall : ModProjectile
 		}
 		for (int x = 0; x < 8; x++)
 		{
-			var d = Dust.NewDustDirect(Projectile.Center - new Vector2(4), 0, 0, ModContent.DustType<YggdrasilAmber_crack>());
+			var d = Dust.NewDustDirect(Projectile.Center - new Vector2(4), 0, 0, ModContent.DustType<YggdrasilAmber_Crack>());
 			d.velocity = new Vector2(0, Main.rand.NextFloat(0, 5.5f)).RotatedByRandom(MathHelper.TwoPi);
 			d.position += new Vector2(0, Main.rand.NextFloat(0f, 20f)).RotatedByRandom(MathHelper.TwoPi);
 			d.scale *= 3f;

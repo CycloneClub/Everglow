@@ -630,24 +630,24 @@ public class KingJellyBall : ModNPC
 			for (int i = 0; i < 4; i++)
 			{
 				Vector2 v0 = new Vector2(0, Main.rand.NextFloat(6, 12f)).RotatedByRandom(MathHelper.TwoPi);
-				int type = ModContent.Find<ModGore>("Everglow/KingJellyBall_gore" + i).Type;
+				int type = ModContent.Find<ModGore>("Everglow/KingJellyBall_Gore" + i).Type;
 				Gore.NewGore(NPC.GetSource_Death(), NPC.Center, v0, type, scaleGore);
 			}
 			for (int i = 0; i < 4; i++)
 			{
 				Vector2 v0 = new Vector2(0, Main.rand.NextFloat(6, 18f)).RotatedByRandom(MathHelper.TwoPi);
-				int type = ModContent.Find<ModGore>("Everglow/KingJellyBall_gore4").Type;
+				int type = ModContent.Find<ModGore>("Everglow/KingJellyBall_Gore4").Type;
 				Gore.NewGore(NPC.GetSource_Death(), NPC.Center, v0, type, scaleGore);
 				for (int j = 0; j < 3; j++)
 				{
 					v0 = new Vector2(0, Main.rand.NextFloat(2, 7f + j * 3)).RotatedByRandom(MathHelper.TwoPi);
-					type = ModContent.Find<ModGore>("Everglow/KingJellyBall_gore5").Type;
+					type = ModContent.Find<ModGore>("Everglow/KingJellyBall_Gore5").Type;
 					Gore.NewGore(NPC.GetSource_Death(), NPC.Center, v0, type, scaleGore);
 					v0 = new Vector2(0, Main.rand.NextFloat(2, 7f + j * 3)).RotatedByRandom(MathHelper.TwoPi);
-					type = ModContent.Find<ModGore>("Everglow/KingJellyBall_gore6").Type;
+					type = ModContent.Find<ModGore>("Everglow/KingJellyBall_Gore6").Type;
 					Gore.NewGore(NPC.GetSource_Death(), NPC.Center, v0, type, scaleGore);
 					v0 = new Vector2(0, Main.rand.NextFloat(2, 7f + j * 3)).RotatedByRandom(MathHelper.TwoPi);
-					type = ModContent.Find<ModGore>("Everglow/KingJellyBall_gore7").Type;
+					type = ModContent.Find<ModGore>("Everglow/KingJellyBall_Gore7").Type;
 					Gore.NewGore(NPC.GetSource_Death(), NPC.Center, v0, type, scaleGore);
 				}
 			}

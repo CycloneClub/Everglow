@@ -30,7 +30,7 @@ public class CreamChocolateCupStaff : ModItem
 		Item.knockBack = 2.5f;
 		Item.value = Item.sellPrice(0, 0, 20, 0);
 		Item.rare = ItemRarityID.Green;
-		Item.shoot = ModContent.ProjectileType<CreamChocolateCupStaff_proj>();
+		Item.shoot = ModContent.ProjectileType<CreamChocolateCupStaff_Proj>();
 		Item.shootSpeed = 12f;
 	}
 
@@ -43,7 +43,7 @@ public class CreamChocolateCupStaff : ModItem
 	{
 		if (player.altFunctionUse == 2)
 		{
-			Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<CreamChocolateCupStaff_proj_rightClick>(), damage, knockback, player.whoAmI, 0, 0);
+			Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<CreamChocolateCupStaff_Proj_RightClick>(), damage, knockback, player.whoAmI, 0, 0);
 			return false;
 		}
 		if (player.ownedProjectileCounts[Item.shoot] < 1)
@@ -71,9 +71,9 @@ public class CreamChocolateCupStaff : ModItem
 
 	public override void HoldItem(Player player)
 	{
-		if (player.ownedProjectileCounts[ModContent.ProjectileType<CreamChocolateCupStaff_proj_rightClick>()] + player.ownedProjectileCounts[ModContent.ProjectileType<CreamChocolateCupStaff_proj>()] + player.ownedProjectileCounts[ModContent.ProjectileType<CreamChocolateCupStaff_proj_held>()] == 0)
+		if (player.ownedProjectileCounts[ModContent.ProjectileType<CreamChocolateCupStaff_Proj_RightClick>()] + player.ownedProjectileCounts[ModContent.ProjectileType<CreamChocolateCupStaff_Proj>()] + player.ownedProjectileCounts[ModContent.ProjectileType<CreamChocolateCupStaff_Proj_Held>()] == 0)
 		{
-			Projectile.NewProjectile(player.GetSource_ItemUse(Item), player.Center, Vector2.zeroVector, ModContent.ProjectileType<CreamChocolateCupStaff_proj_held>(), 0, 0, player.whoAmI, 0, 0);
+			Projectile.NewProjectile(player.GetSource_ItemUse(Item), player.Center, Vector2.zeroVector, ModContent.ProjectileType<CreamChocolateCupStaff_Proj_Held>(), 0, 0, player.whoAmI, 0, 0);
 		}
 		base.HoldItem(player);
 	}

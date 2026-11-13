@@ -74,7 +74,7 @@ public class TsunamiShark : ModItem
 	{
 		if (player.altFunctionUse == 2)
 		{
-			Projectile.NewProjectile(player.GetSource_ItemUse(Item), Main.MouseWorld, Vector2.Zero, ModContent.ProjectileType<TsunamiShark_marking>(), 0, Item.knockBack, player.whoAmI);
+			Projectile.NewProjectile(player.GetSource_ItemUse(Item), Main.MouseWorld, Vector2.Zero, ModContent.ProjectileType<TsunamiShark_Marking>(), 0, Item.knockBack, player.whoAmI);
 			return false;
 		}
 		return true;
@@ -93,7 +93,7 @@ public class TsunamiShark : ModItem
 
 	public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
 	{
-		Texture2D texMark = ModAsset.TsunamiShark_mark.Value;
+		Texture2D texMark = ModAsset.TsunamiShark_Mark.Value;
 		if (MarkedTarget != null)
 		{
 			if (MarkedTarget.active)

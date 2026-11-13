@@ -73,7 +73,7 @@ public class GoldenShowerArray : ModProjectile, IWarpProjectile
 		float power = projPower / 30f;
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-		Effect fade = ModAsset.GoldenShowerArray_shader.Value;
+		Effect fade = ModAsset.GoldenShowerArray_Shader.Value;
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition.X, -Main.screenPosition.Y, 0)) * Main.GameViewMatrix.TransformationMatrix;
 		fade.Parameters["uTransform"].SetValue(model * projection);
@@ -89,7 +89,7 @@ public class GoldenShowerArray : ModProjectile, IWarpProjectile
 			bars.Add(new Vertex2D(player.Center + ringPos + radius, c0, new Vector3(t / 30f, 0, 0)));
 			bars.Add(new Vertex2D(player.Center + ringPos + radius * 0.5f, Color.Transparent, new Vector3(t / 30f, 1, 0)));
 		}
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Wave_full_black.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Wave_Full_Black.Value;
 		Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_Flame_0.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		Main.graphics.GraphicsDevice.SamplerStates[1] = SamplerState.PointWrap;
@@ -104,7 +104,7 @@ public class GoldenShowerArray : ModProjectile, IWarpProjectile
 			bars.Add(new Vertex2D(player.Center + ringPos + radius, c0, new Vector3(t / 30f, 0, 0)));
 			bars.Add(new Vertex2D(player.Center + ringPos + radius * 0.5f, Color.Transparent, new Vector3(t / 30f, 1, 0)));
 		}
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Wave_full.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Wave_Full.Value;
 		Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_Flame_0.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		Main.graphics.GraphicsDevice.SamplerStates[1] = SamplerState.PointWrap;
@@ -135,7 +135,7 @@ public class GoldenShowerArray : ModProjectile, IWarpProjectile
 		// 黑底瞳孔
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-		Effect eye = ModAsset.GoldenEye_shader.Value;
+		Effect eye = ModAsset.GoldenEye_Shader.Value;
 		eye.Parameters["uTransform"].SetValue(model * projection);
 		eye.Parameters["uTime"].SetValue((float)(Main.timeForVisualEffects * 0.01f));
 		eye.CurrentTechnique.Passes[0].Apply();
@@ -152,7 +152,7 @@ public class GoldenShowerArray : ModProjectile, IWarpProjectile
 			bars.Add(new Vertex2D(player.Center + ringPos + radius * value + radiousT, c0, new Vector3(t / 7f, 0, zValue)));
 			bars.Add(new Vertex2D(player.Center + ringPos + radius * value - radiousT, c0, new Vector3(t / 7f, 1, zValue)));
 		}
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_0_black.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_0_Black.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 
@@ -188,7 +188,7 @@ public class GoldenShowerArray : ModProjectile, IWarpProjectile
 			bars.Add(new Vertex2D(player.Center + ringPos + radius * value + radiousT, c0, new Vector3(t / 7f, 0, zValue)));
 			bars.Add(new Vertex2D(player.Center + ringPos + radius * value - radiousT, c0, new Vector3(t / 7f, 1, zValue)));
 		}
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_0_black.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_0_Black.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		Main.spriteBatch.End();
@@ -203,7 +203,7 @@ public class GoldenShowerArray : ModProjectile, IWarpProjectile
 
 		spriteBatch.End();
 		spriteBatch.Begin(BlendState.AlphaBlend);
-		Effect eye = ModAsset.GoldenEye_shader.Value;
+		Effect eye = ModAsset.GoldenEye_Shader.Value;
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition, 0)) * Main.GameViewMatrix.TransformationMatrix;
 		eye.Parameters["uTransform"].SetValue(model * projection);
@@ -223,6 +223,6 @@ public class GoldenShowerArray : ModProjectile, IWarpProjectile
 			bars.Add(new Vertex2D(player.Center + ringPos + radius * value - radiousT, c0, new Vector3(t / 7f, 1, zValue)));
 		}
 
-		spriteBatch.Draw(Commons.ModAsset.Trail_7_black.Value, bars, PrimitiveType.TriangleStrip);
+		spriteBatch.Draw(Commons.ModAsset.Trail_7_Black.Value, bars, PrimitiveType.TriangleStrip);
 	}
 }

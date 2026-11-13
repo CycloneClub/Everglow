@@ -21,7 +21,7 @@ public class AncientSyringe : ModItem
 		Item.DamageType = DamageClass.Magic;
 		Item.noMelee = true;
 		Item.noUseGraphic = true;
-		Item.shoot = ModContent.ProjectileType<AncientSyringe_proj>();
+		Item.shoot = ModContent.ProjectileType<AncientSyringe_Proj>();
 		Item.shootSpeed = 5f;
 		Item.value = Item.sellPrice(gold: 1);
 	}

@@ -172,7 +172,7 @@ public class EyeOfAnabiosis_Matrix : ModProjectile
 			bars.Add(drawCenter + new Vector2(0, 100).RotatedBy(rotValue), drawColor, new Vector3(i / 50f, frameHeightOut, 0));
 			bars.Add(drawCenter + new Vector2(0, 80).RotatedBy(rotValue), drawColor, new Vector3(i / 50f, frameHeightIn, 0));
 		}
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.AlienWriting_black.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.AlienWriting_Black.Value;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 
 		// colorful peripheral ring
@@ -197,7 +197,7 @@ public class EyeOfAnabiosis_Matrix : ModProjectile
 			bars.Add(drawCenter + new Vector2(0, 74).RotatedBy(rotValue), drawColor, new Vector3(i / 50f, frameHeightOut, 0));
 			bars.Add(drawCenter + new Vector2(0, 62).RotatedBy(rotValue), drawColor, new Vector3(i / 50f, frameHeightIn, 0));
 		}
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.AlienWriting_black.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.AlienWriting_Black.Value;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 
 		// colorful inner ring0
@@ -222,7 +222,7 @@ public class EyeOfAnabiosis_Matrix : ModProjectile
 			bars.Add(drawCenter + new Vector2(0, 88).RotatedBy(rotValue), drawColor, new Vector3(i / 25f, 0.2f, 0));
 			bars.Add(drawCenter + new Vector2(0, 76).RotatedBy(rotValue), drawColor, new Vector3(i / 25f, 0.5f, 0));
 		}
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_1_black.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_1_Black.Value;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 
 		// colorful inner ring1
@@ -247,7 +247,7 @@ public class EyeOfAnabiosis_Matrix : ModProjectile
 			bars.Add(drawCenter + new Vector2(0, 80).RotatedBy(rotValue), drawColor, new Vector3(i / 25f, 0.2f, 0));
 			bars.Add(drawCenter + new Vector2(0, 68).RotatedBy(rotValue), drawColor, new Vector3(i / 25f, 0.5f, 0));
 		}
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Star_black.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Star_Black.Value;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 
 		// colorful inner ring2
@@ -299,7 +299,7 @@ public class EyeOfAnabiosis_Matrix : ModProjectile
 				eyelash.Add(drawCenter + eyelashStart + eyelashWidth * 2, drawColor, new Vector3(i / 25f, 0f + timeValue * 0.1f, 0));
 			}
 		}
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_1_black.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_1_Black.Value;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, barsBlack.ToArray(), 0, barsBlack.Count - 2);
 
 		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_1.Value;

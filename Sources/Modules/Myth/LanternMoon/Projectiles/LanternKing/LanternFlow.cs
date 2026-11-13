@@ -29,8 +29,8 @@ public class LanternFlow : TrailingProjectile
 		TrailBackgroundDarkness = 0.3f;
 		TrailWidth = 240f;
 		SelfLuminous = true;
-		TrailTexture = Commons.ModAsset.Trail_2_thick.Value;
-		TrailTextureBlack = Commons.ModAsset.Trail_2_black.Value;
+		TrailTexture = Commons.ModAsset.Trail_2_Thick.Value;
+		TrailTextureBlack = Commons.ModAsset.Trail_2_Black.Value;
 		WarpStrength = 1f;
 	}
 
@@ -123,7 +123,7 @@ public class LanternFlow : TrailingProjectile
 						mulScale *= Projectile.timeLeft / 120f;
 					}
 					Vector2 addPos = new Vector2(Main.rand.NextFloat(0f, 90f), 0).RotateRandom(MathHelper.TwoPi);
-					var gore2 = new LanternFlow_lantern
+					var gore2 = new LanternFlow_Lantern
 					{
 						Active = true,
 						Visible = true,
@@ -192,7 +192,7 @@ public class LanternFlow : TrailingProjectile
 		CreateNormalVertex(bars3, 0);
 		if (bars3.Count > 0)
 		{
-			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_19_black.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_19_Black.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars3.ToArray(), 0, bars3.Count - 2);
 		}
 

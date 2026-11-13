@@ -94,7 +94,7 @@ public class PrimordialJadeWinged_Spear : MeleeProj
 			if (timer == (int)(30 * timeMul))
 			{
 				Vector2 v0 = new Vector2(Projectile.spriteDirection * 6, -0.5f);
-				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), player.Center - v0 * 30, v0, ModContent.ProjectileType<PrimordialJadeWinged_Spear_thrust2>(), Projectile.damage, 0, Projectile.owner);
+				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), player.Center - v0 * 30, v0, ModContent.ProjectileType<PrimordialJadeWinged_Spear_Thrust2>(), Projectile.damage, 0, Projectile.owner);
 			}
 			if (timer > 3 * timeMul && timer < 30 * timeMul)
 			{
@@ -215,7 +215,7 @@ public class PrimordialJadeWinged_Spear : MeleeProj
 			if (timer == (int)(69 * timeMul))
 			{
 				Vector2 v0 = new Vector2(Projectile.spriteDirection * 6, 0.5f);
-				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), player.Center - v0 * 30, v0, ModContent.ProjectileType<PrimordialJadeWinged_Spear_thrust2>(), Projectile.damage, 0, Projectile.owner);
+				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), player.Center - v0 * 30, v0, ModContent.ProjectileType<PrimordialJadeWinged_Spear_Thrust2>(), Projectile.damage, 0, Projectile.owner);
 			}
 			if (timer > 83 * timeMul)
 			{
@@ -334,7 +334,7 @@ public class PrimordialJadeWinged_Spear : MeleeProj
 			Vector2 mainVecLeft = Vector2.Normalize(newVec).RotatedBy(-MathHelper.PiOver2 * player.gravDir);
 			var positionVFX = Projectile.Center + mainVecLeft * Main.rand.NextFloat(-30f, 30f) + newVec * Main.rand.NextFloat(0.7f, 1f);
 
-			var filthy = new FilthyLucreFlame_darkDust
+			var filthy = new FilthyLucreFlame_DarkDust
 			{
 				velocity = mainVecLeft * 6 * Projectile.spriteDirection,
 				Active = true,

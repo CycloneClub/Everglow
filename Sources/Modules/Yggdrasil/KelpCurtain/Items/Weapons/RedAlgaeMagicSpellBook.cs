@@ -26,7 +26,7 @@ public class RedAlgaeMagicSpellBook : SpellTomeItem
 		Item.rare = ItemRarityID.Orange;
 		Item.UseSound = SoundID.Item42;
 		Item.autoReuse = true;
-		Item.shoot = ModContent.ProjectileType<RedAlgaeMagicSpellBook_proj>();
+		Item.shoot = ModContent.ProjectileType<RedAlgaeMagicSpellBook_Proj>();
 		Item.shootSpeed = 0.5f;
 
 		// DecorativeProjectileTypes.Add(ModContent.ProjectileType<MossySpellBook>());
@@ -45,7 +45,7 @@ public class RedAlgaeMagicSpellBook : SpellTomeItem
 			{
 				if (proj is not null && proj.active && proj.type == type && proj.owner == player.whoAmI)
 				{
-					RedAlgaeMagicSpellBook_proj rAMSBp = proj.ModProjectile as RedAlgaeMagicSpellBook_proj;
+					RedAlgaeMagicSpellBook_Proj rAMSBp = proj.ModProjectile as RedAlgaeMagicSpellBook_Proj;
 					if (rAMSBp is not null)
 					{
 						if (!rAMSBp.Released)

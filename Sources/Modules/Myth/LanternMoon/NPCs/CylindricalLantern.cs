@@ -55,7 +55,7 @@ public class CylindricalLantern : LanternMoonNPC
 		NPC.velocity *= 0;
 		if (TeleportTimer == 30)
 		{
-			Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<CylindricalLantern_flame>(), 9, 1f, -1);
+			Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<CylindricalLantern_Flame>(), 9, 1f, -1);
 		}
 		if (TeleportTimer > 100)
 		{
@@ -119,7 +119,7 @@ public class CylindricalLantern : LanternMoonNPC
 			ExplosionTimer = 30;
 			NPC.life = 1;
 			NPC.dontTakeDamage = true;
-			Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<CylindricalLantern_explosion>(), 23, 1f, -1);
+			Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<CylindricalLantern_Explosion>(), 23, 1f, -1);
 		}
 	}
 
@@ -167,7 +167,7 @@ public class CylindricalLantern : LanternMoonNPC
 			effects = SpriteEffects.FlipHorizontally;
 		}
 		spriteBatch.Draw(texture, NPC.Center - Main.screenPosition, null, drawColor * mulColor, NPC.rotation, texture.Size() * 0.5f, NPC.scale, effects, 0);
-		Texture2D flame = ModAsset.CylindricalLantern_flame.Value;
+		Texture2D flame = ModAsset.CylindricalLantern_Flame.Value;
 		Rectangle flameFrame = new Rectangle(0, NPC.frame.Y, 14, 28);
 		spriteBatch.Draw(flame, NPC.Center - Main.screenPosition, flameFrame, new Color(0.7f, 0.6f, 0.6f, 0) * mulColor, NPC.rotation, flameFrame.Size() * 0.5f, NPC.scale, effects, 0);
 		Lighting.AddLight(NPC.Center, new Vector3(1f, 0.6f, 0.4f) * mulColor);

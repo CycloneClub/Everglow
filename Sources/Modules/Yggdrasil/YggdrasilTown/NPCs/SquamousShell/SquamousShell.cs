@@ -409,7 +409,7 @@ public class SquamousShell : ModNPC
 			Vector2 vel2 = vel.RotatedBy(Main.rand.NextFloat(-0.1f, 0.1f));
 			Vector2 pos = NPC.Center + new Vector2(0, -MathF.Sqrt(Main.rand.NextFloat(1f)) * 40).RotatedBy(Main.rand.NextFloat(-1.5f, 1.5f));
 			SoundEngine.PlaySound(SoundID.Item152, NPC.Center);
-			Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), pos, vel2, ModContent.ProjectileType<SquamousRockProj_small>(), (int)(NPC.damage * 0.35f), 3, -1);
+			Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), pos, vel2, ModContent.ProjectileType<SquamousRockProj_Small>(), (int)(NPC.damage * 0.35f), 3, -1);
 			yield return new SkipThisFrame();
 		}
 		for (int k = 0; k < 30; k++)
@@ -639,7 +639,7 @@ public class SquamousShell : ModNPC
 		{
 			damage = 36;
 		}
-		Projectile rock = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, new Vector2(direction * 4, -24), ModContent.ProjectileType<SquamousRollingStone_fly>(), damage, 6, -1, direction);
+		Projectile rock = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, new Vector2(direction * 4, -24), ModContent.ProjectileType<SquamousRollingStone_Fly>(), damage, 6, -1, direction);
 		rock.scale = 0;
 		rock.width = 0;
 		rock.height = 0;
@@ -900,7 +900,7 @@ public class SquamousShell : ModNPC
 		}
 		for (int x = 0; x < 20; x++)
 		{
-			Dust dust = Dust.NewDustDirect(NPC.Center + new Vector2(-4 + (x - 10) * 10, -4), 0, 0, ModContent.DustType<SquamousShellStone_dark>(), 0f, 0f, 0, default, Main.rand.NextFloat(0.5f, 1.3f));
+			Dust dust = Dust.NewDustDirect(NPC.Center + new Vector2(-4 + (x - 10) * 10, -4), 0, 0, ModContent.DustType<SquamousShellStone_Dark>(), 0f, 0f, 0, default, Main.rand.NextFloat(0.5f, 1.3f));
 			dust.velocity = new Vector2((x - 10) * 0.15f, -Main.rand.NextFloat(0f, 5f) * (MathF.Sin(x / 20f * MathF.PI) + 1.5f));
 		}
 		if (Main.expertMode)
@@ -1026,7 +1026,7 @@ public class SquamousShell : ModNPC
 			}
 			Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<Squamous_Slash>(), damage, 2, -1, 2.5f);
 			Vector2 shadeVel = new Vector2(0, Main.rand.NextFloat(4, 7)).RotateRandom(MathHelper.TwoPi);
-			Projectile shade = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center - shadeVel * 60, shadeVel, ModContent.ProjectileType<SquamousShell_shade>(), 0, 2, -1);
+			Projectile shade = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center - shadeVel * 60, shadeVel, ModContent.ProjectileType<SquamousShell_Shade>(), 0, 2, -1);
 			shade.rotation = shadeVel.ToRotation();
 			NPC.Center = attackPos + new Vector2(Main.rand.NextFloat(-140, 140), Main.rand.NextFloat(-50, 50));
 			NPC.spriteDirection *= -1;
@@ -1740,7 +1740,7 @@ public class SquamousShell : ModNPC
 			Main.spriteBatch.End();
 			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 			SpriteEffects spriteEffects = SpriteEffects.FlipVertically;
-			Texture2D phantom = ModAsset.SquamousShell_light.Value;
+			Texture2D phantom = ModAsset.SquamousShell_Light.Value;
 			if (NPC.spriteDirection == 1)
 			{
 				spriteEffects = SpriteEffects.None;
@@ -1788,9 +1788,9 @@ public class SquamousShell : ModNPC
 			Main.spriteBatch.End();
 			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 			SpriteEffects spriteEffects = SpriteEffects.FlipVertically;
-			Texture2D smashTex = ModAsset.SquamousShell_smashing.Value;
-			Texture2D smashGlow = ModAsset.SquamousShell_smashing_glow.Value;
-			Texture2D smashShade = ModAsset.SquamousShell_smashing_shadow.Value;
+			Texture2D smashTex = ModAsset.SquamousShell_Smashing.Value;
+			Texture2D smashGlow = ModAsset.SquamousShell_Smashing_Glow.Value;
+			Texture2D smashShade = ModAsset.SquamousShell_Smashing_Shadow.Value;
 			var offset = new Vector2(0, -520);
 			if (NPC.spriteDirection == 1)
 			{
@@ -1813,7 +1813,7 @@ public class SquamousShell : ModNPC
 			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 			SpriteEffects spriteEffects = SpriteEffects.FlipVertically;
 			Texture2D dashTex = ModAsset.SquamousShell_Dash.Value;
-			Texture2D dashGlow = ModAsset.SquamousShell_Dash_glow.Value;
+			Texture2D dashGlow = ModAsset.SquamousShell_Dash_Glow.Value;
 			Texture2D dashShade = ModAsset.SquamousShell_Dash_Shadow.Value;
 			var offset = new Vector2(0, 0);
 			if (NPC.spriteDirection == 1)
@@ -1838,7 +1838,7 @@ public class SquamousShell : ModNPC
 			Main.spriteBatch.End();
 			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 
-			Texture2D spawnGlow = ModAsset.SquamousShell_spawnGlow.Value;
+			Texture2D spawnGlow = ModAsset.SquamousShell_SpawnGlow.Value;
 			var drawPos = SpawnPos - Main.screenPosition;
 			float timeValue = MathF.Sin((float)Main.timeForVisualEffects * 0.09f) * 0.6f + 0.4f;
 			spriteBatch.Draw(spawnGlow, drawPos, null, new Color(1f, 1f, 1f, 0) * timeValue, 0, spawnGlow.Size() * 0.5f, NPC.scale, SpriteEffects.None, 0);
@@ -1847,10 +1847,10 @@ public class SquamousShell : ModNPC
 		}
 		if (Flying)
 		{
-			Texture2D wing0 = ModAsset.SquamousShell_wing_front_0.Value;
-			Texture2D wing1 = ModAsset.SquamousShell_wing_front_1.Value;
-			Texture2D wing2 = ModAsset.SquamousShell_wing_front_2.Value;
-			Texture2D wing3 = ModAsset.SquamousShell_wing_front_3.Value;
+			Texture2D wing0 = ModAsset.SquamousShell_Wing_Front_0.Value;
+			Texture2D wing1 = ModAsset.SquamousShell_Wing_Front_1.Value;
+			Texture2D wing2 = ModAsset.SquamousShell_Wing_Front_2.Value;
+			Texture2D wing3 = ModAsset.SquamousShell_Wing_Front_3.Value;
 			SpriteEffects spriteEffects = SpriteEffects.FlipHorizontally;
 			Vector2 offset = new Vector2(0);
 			Vector2 orig0 = new Vector2(wing0.Width - 5, 170);
@@ -1913,19 +1913,19 @@ public class SquamousShell : ModNPC
 		for (int i = 0; i < 14; i++)
 		{
 			Vector2 v0 = new Vector2(0, Main.rand.NextFloat(0, 6f)).RotatedByRandom(MathHelper.TwoPi);
-			int type = ModContent.Find<ModGore>("Everglow/SquamousShell_gore" + i).Type;
+			int type = ModContent.Find<ModGore>("Everglow/SquamousShell_Gore" + i).Type;
 			Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(Main.rand.Next(NPC.width), Main.rand.Next(NPC.height)), v0, type, NPC.scale);
 		}
 		for (int i = 5; i < 14; i++)
 		{
 			Vector2 v0 = new Vector2(0, Main.rand.NextFloat(0, 6f)).RotatedByRandom(MathHelper.TwoPi);
-			int type = ModContent.Find<ModGore>("Everglow/SquamousShell_gore" + i).Type;
+			int type = ModContent.Find<ModGore>("Everglow/SquamousShell_Gore" + i).Type;
 			Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(Main.rand.Next(NPC.width), Main.rand.Next(NPC.height)), v0, type, NPC.scale);
 		}
 		for (int i = 5; i < 14; i++)
 		{
 			Vector2 v0 = new Vector2(0, Main.rand.NextFloat(0, 6f)).RotatedByRandom(MathHelper.TwoPi);
-			int type = ModContent.Find<ModGore>("Everglow/SquamousShell_gore" + i).Type;
+			int type = ModContent.Find<ModGore>("Everglow/SquamousShell_Gore" + i).Type;
 			Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(Main.rand.Next(NPC.width), Main.rand.Next(NPC.height)), v0, type, NPC.scale);
 		}
 		for (int g = 0; g < 20; g++)

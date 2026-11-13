@@ -1672,9 +1672,9 @@ public class CorruptMoth : ModNPC
 		}
 		if (NPC.ai[0] == 0 && hasCocoon && cocoon != null && cocoon.active)
 		{
-			tx = ModAsset.CorruptMoth_Awake_front.Value;
-			Texture2D bloom = ModAsset.CorruptMoth_Awake_bloom.Value;
-			Texture2D glow = ModAsset.CorruptMoth_Awake_front_glow.Value;
+			tx = ModAsset.CorruptMoth_Awake_Front.Value;
+			Texture2D bloom = ModAsset.CorruptMoth_Awake_Bloom.Value;
+			Texture2D glow = ModAsset.CorruptMoth_Awake_Front_Glow.Value;
 			NPC.rotation = -1.7f;
 			NPC.Center = cocoon.Top + new Vector2(-25, -95) + new Vector2(0, 200).RotatedBy(cocoon.rotation);
 

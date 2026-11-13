@@ -5,7 +5,7 @@ using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.TownNPCs.Fevens;
 
-public class Fevens_TaijutsuSlash_Down : ModProjectile, IWarpProjectile_warpStyle2
+public class Fevens_TaijutsuSlash_Down : ModProjectile, IWarpProjectile_WarpStyle2
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.TownNPCProjectiles;
 
@@ -280,7 +280,7 @@ public class Fevens_TaijutsuSlash_Down : ModProjectile, IWarpProjectile_warpStyl
 		{
 			Vector2 drawPos = Projectile.Center + FallingMove + new Vector2(260 * FirstDirection, 0) - Main.screenPosition;
 			Texture2D crackTexture = Commons.ModAsset.StarSlash.Value;
-			Texture2D crackTextureBlack = Commons.ModAsset.StarSlash_black.Value;
+			Texture2D crackTextureBlack = Commons.ModAsset.StarSlash_Black.Value;
 			var slashColor = new Color(0.4f, 0.15f, 0.6f, 0f) * (MathF.Pow(Projectile.timeLeft / 20f, 4) * 0.15f);
 			Main.EntitySpriteDraw(crackTextureBlack, drawPos, null, Color.White, MathHelper.PiOver2, crackTextureBlack.Size() * 0.5f, new Vector2(Projectile.timeLeft / 20f, 3), SpriteEffects.None, 0);
 			Main.EntitySpriteDraw(crackTexture, drawPos, null, slashColor, MathHelper.PiOver2, crackTexture.Size() * 0.5f, new Vector2(Projectile.timeLeft / 20f, 3), SpriteEffects.None, 0);

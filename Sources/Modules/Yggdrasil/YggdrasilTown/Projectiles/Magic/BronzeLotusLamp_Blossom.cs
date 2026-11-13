@@ -41,7 +41,7 @@ public class BronzeLotusLamp_Blossom : TrailingProjectile
 		TrailWidth = 20f;
 		SelfLuminous = true;
 		TrailTexture = Commons.ModAsset.Trail_10.Value;
-		TrailTextureBlack = Commons.ModAsset.Trail_10_black.Value;
+		TrailTextureBlack = Commons.ModAsset.Trail_10_Black.Value;
 		TrailShader = Commons.ModAsset.Trailing.Value;
 	}
 

@@ -14,7 +14,7 @@ public class EbonwoodClub_Item : ClubItem
 		Item.useAnimation = 12;
 		SmashDamageMultiplier = 11f / 12f;
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.EbonwoodClub>();
-		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.EbonwoodClub_smash>();
+		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.EbonwoodClub_Smash>();
 	}
 
 	public override void AddRecipes()

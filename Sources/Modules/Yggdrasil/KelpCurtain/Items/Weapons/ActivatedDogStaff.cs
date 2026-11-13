@@ -37,7 +37,7 @@ public class ActivatedDogStaff : ModItem
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		Projectile proj = Projectile.NewProjectileDirect(source, Main.MouseWorld, Vector2.zeroVector, type, damage, knockback, player.whoAmI);
-		Projectile proj2 = Projectile.NewProjectileDirect(source, Main.MouseWorld, Vector2.zeroVector, ModContent.ProjectileType<Wither_Activated_Dog_Summon_background>(), damage, knockback, player.whoAmI);
+		Projectile proj2 = Projectile.NewProjectileDirect(source, Main.MouseWorld, Vector2.zeroVector, ModContent.ProjectileType<Wither_Activated_Dog_Summon_Background>(), damage, knockback, player.whoAmI);
 		proj.spriteDirection = -1;
 		proj2.spriteDirection = -1;
 		if (Main.MouseWorld.X < player.Center.X)

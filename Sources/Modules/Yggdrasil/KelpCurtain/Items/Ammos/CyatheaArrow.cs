@@ -22,7 +22,7 @@ public class CyatheaArrow : ModItem
 		Item.rare = ItemRarityID.Blue;
 		Item.value = 20;
 
-		Item.shoot = ModContent.ProjectileType<CyatheaArrow_proj>();
+		Item.shoot = ModContent.ProjectileType<CyatheaArrow_Proj>();
 		Item.shootSpeed = 7f;
 	}
 }

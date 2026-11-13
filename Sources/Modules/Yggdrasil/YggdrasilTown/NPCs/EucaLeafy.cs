@@ -325,7 +325,7 @@ public class EucaLeafy : ModNPC
 			spriteBatch.Draw(tex, NPC.Center + new Vector2(0, NPC.gfxOffY) - screenPos, frame, drawColor, NPC.rotation, frame.Size() * 0.5f, NPC.scale, spEffect, 0);
 			if (EmitCharge > 0)
 			{
-				Texture2D glow = ModAsset.EucaLeafy_glow.Value;
+				Texture2D glow = ModAsset.EucaLeafy_Glow.Value;
 				spriteBatch.Draw(glow, NPC.Center + new Vector2(0, NPC.gfxOffY) - screenPos, frame, new Color(1f, 1f, 1f, 0), NPC.rotation, frame.Size() * 0.5f, NPC.scale, spEffect, 0);
 			}
 		}

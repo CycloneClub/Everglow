@@ -3,17 +3,17 @@ AuburnRodSkeleton: {
 	Tooltip: ""
 }
 
-BellPepper_green: {
+BellPepper_Green: {
 	DisplayName: Bell Pepper_green
 	Tooltip: ""
 }
 
-BellPepper_red: {
+BellPepper_Red: {
 	DisplayName: Bell Pepper_red
 	Tooltip: ""
 }
 
-BellPepper_yellow: {
+BellPepper_Yellow: {
 	DisplayName: Bell Pepper_yellow
 	Tooltip: ""
 }

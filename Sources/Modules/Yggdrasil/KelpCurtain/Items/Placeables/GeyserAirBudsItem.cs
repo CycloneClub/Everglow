@@ -8,7 +8,7 @@ public class GeyserAirBudsItem : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.DefaultToPlaceableTile(ModContent.TileType<GeyserAirBuds_placePreview>());
+		Item.DefaultToPlaceableTile(ModContent.TileType<GeyserAirBuds_PlacePreview>());
 		Item.value = Item.sellPrice(0, 0, 1, 0);
 		Item.rare = ItemRarityID.White;
 		Item.width = 16;
@@ -32,7 +32,7 @@ public class GeyserAirBudsItem : ModItem
 		}
 		else
 		{
-			Item.createTile = ModContent.TileType<GeyserAirBuds_placePreview>();
+			Item.createTile = ModContent.TileType<GeyserAirBuds_PlacePreview>();
 		}
 		Main.placementPreview = true;
 	}

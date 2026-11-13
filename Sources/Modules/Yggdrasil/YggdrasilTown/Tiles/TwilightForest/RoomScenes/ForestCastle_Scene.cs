@@ -17,7 +17,7 @@ public class ForestCastle_Scene : ModTile, ISceneTile
 		Main.tileMerge[Type][ModContent.TileType<GreenRelicBrick>()] = true;
 		Main.tileMerge[ModContent.TileType<GreenRelicBrick>()][Type] = true;
 		Main.tileBlockLight[Type] = true;
-		DustType = ModContent.DustType<GreenRelicBrick_dust>();
+		DustType = ModContent.DustType<GreenRelicBrick_Dust>();
 		HitSound = SoundID.Dig;
 		MinPick = int.MaxValue;
 		AddMapEntry(new Color(35, 58, 58));

@@ -36,7 +36,7 @@ public class RedLanternWave : Visual
 			bars.Add(Position + radius, drawColor, new Vector3(r / (float)count * 3, 0, 0));
 			bars.Add(Position + radius * 0.5f, drawColor, new Vector3(r / (float)count * 3, 1, 0));
 		}
-		Ins.Batch.Draw(Commons.ModAsset.Wave_full_black.Value, bars, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(Commons.ModAsset.Wave_Full_Black.Value, bars, PrimitiveType.TriangleStrip);
 
 		bars = new List<Vertex2D>();
 		drawColor = Color.Lerp(new Color(1f, 0f, 0f, 0f), new Color(1f, 0.9f, 0.6f, 0), MathF.Pow(Fade, 2)) * Fade;
@@ -46,6 +46,6 @@ public class RedLanternWave : Visual
 			bars.Add(Position + radius, drawColor, new Vector3(r / (float)count * 3, 0, 0));
 			bars.Add(Position + radius * 0.5f, drawColor, new Vector3(r / (float)count * 3, 1, 0));
 		}
-		Ins.Batch.Draw(Commons.ModAsset.Wave_full.Value, bars, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(Commons.ModAsset.Wave_Full.Value, bars, PrimitiveType.TriangleStrip);
 	}
 }

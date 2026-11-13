@@ -233,7 +233,7 @@ public class BloodLanternGhost_PowerBall_Explosion : ModProjectile
 		if (bars.Count > 0 && bars_dark.Count > 0 && bars_side.Count > 0)
 		{
 			Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_RGB_Large.Value;
-			Main.graphics.GraphicsDevice.Textures[0] = ModAsset.LanternGhostKing_Matrix_black.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = ModAsset.LanternGhostKing_Matrix_Black.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars_dark.ToArray(), 0, bars_dark.Count - 2);
 			Main.graphics.GraphicsDevice.Textures[0] = ModAsset.LanternGhostKing_Matrix.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
@@ -243,7 +243,7 @@ public class BloodLanternGhost_PowerBall_Explosion : ModProjectile
 
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-		Effect effect1 = ModAsset.CylindricalLantern_explosion_lightningbolt.Value;
+		Effect effect1 = ModAsset.CylindricalLantern_Explosion_Lightningbolt.Value;
 		effect1.Parameters["uTransform"].SetValue(model * projection);
 		effect1.CurrentTechnique.Passes[0].Apply();
 		if (bars_bolt.Count > 0)

@@ -8,7 +8,7 @@ public class TsunamiShark : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
 
-	public override string Texture => ModAsset.TsunamiShark_proj_Mod;
+	public override string Texture => ModAsset.TsunamiShark_Proj_Mod;
 
 	public override void SetDefaults()
 	{
@@ -61,7 +61,7 @@ public class TsunamiShark : ModProjectile
 				shootSource,
 				Projectile.Center + toMuzzle + random,
 				velocity,
-				ModContent.ProjectileType<TsunamiShark_bullet>(),
+				ModContent.ProjectileType<TsunamiShark_Bullet>(),
 				overridedamage == -1 ? item.damage : overridedamage,
 				item.knockBack,
 				player.whoAmI);
@@ -73,7 +73,7 @@ public class TsunamiShark : ModProjectile
 				shootSource,
 				Projectile.Center + toMuzzle * 1.5f + velocity * 2.2f + random,
 				Vector2.Zero,
-				ModContent.ProjectileType<TsunamiShark_flame>(),
+				ModContent.ProjectileType<TsunamiShark_Flame>(),
 				overridedamage == -1 ? item.damage : overridedamage,
 				item.knockBack,
 				player.whoAmI,
@@ -83,9 +83,9 @@ public class TsunamiShark : ModProjectile
 		useCount++;
 		if (useCount == 12)
 		{
-			if (player.ownedProjectileCounts[ModContent.ProjectileType<TsunamiShark_missile>()] < 20)
+			if (player.ownedProjectileCounts[ModContent.ProjectileType<TsunamiShark_Missile>()] < 20)
 			{
-				Projectile.NewProjectileDirect(shootSource, Projectile.Center + toMuzzle, velocity.RotatedBy(-Main.rand.NextFloat(-0.2f, 0.4f) * player.direction) * 2.4f, ModContent.ProjectileType<TsunamiShark_missile>(), (int)((overridedamage == -1 ? item.damage : overridedamage) * 3.64f), item.knockBack, player.whoAmI, Main.rand.NextFloat(0.6f, 1.4f));
+				Projectile.NewProjectileDirect(shootSource, Projectile.Center + toMuzzle, velocity.RotatedBy(-Main.rand.NextFloat(-0.2f, 0.4f) * player.direction) * 2.4f, ModContent.ProjectileType<TsunamiShark_Missile>(), (int)((overridedamage == -1 ? item.damage : overridedamage) * 3.64f), item.knockBack, player.whoAmI, Main.rand.NextFloat(0.6f, 1.4f));
 			}
 			useCount = 0;
 		}
@@ -180,8 +180,8 @@ public class TsunamiShark : ModProjectile
 			player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (float)(Math.Atan2(toMouse.Y, toMouse.X) - Math.PI / 2d));
 		}
 
-		Texture2D texMain = ModAsset.TsunamiShark_proj.Value;
-		Texture2D texMainGlow = ModAsset.TsunamiShark_proj_glow.Value;
+		Texture2D texMain = ModAsset.TsunamiShark_Proj.Value;
+		Texture2D texMainGlow = ModAsset.TsunamiShark_Proj_Glow.Value;
 		SpriteEffects se = SpriteEffects.None;
 		Vector2 origin = new Vector2(texMain.Size().X * 0.3f, texMain.Size().Y * 0.6f);
 		if (Projectile.Center.X < player.Center.X)
@@ -199,7 +199,7 @@ public class TsunamiShark : ModProjectile
 		Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition + offset - random, null, lightColor, Projectile.rotation - (float)(Math.PI * 0.25), origin, 1f, se, 0);
 		Main.spriteBatch.Draw(texMainGlow, Projectile.Center - Main.screenPosition + offset - random, null, new Color(1f, 1f, 1f, 0), Projectile.rotation - (float)(Math.PI * 0.25), origin, 1f, se, 0);
 
-		Texture2D texMark = ModAsset.TsunamiShark_mark.Value;
+		Texture2D texMark = ModAsset.TsunamiShark_Mark.Value;
 		var tsunamiS = player.HeldItem.ModItem as Items.Weapons.TsunamiShark;
 		if (tsunamiS != null)
 		{

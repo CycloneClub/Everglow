@@ -21,8 +21,8 @@ public class LightbulbBand : CableTile
 		var tile = Main.tile[pos];
 		ushort type = tile.TileType;
 		int paint = Main.tile[pos].TileColor;
-		Texture2D tex = PaintedTextureSystem.TryGetPaintedTexture(ModAsset.LightbulbBand_bulb_Path, type, 1, paint, tileDrawing);
-		tex ??= ModAsset.LightbulbBand_bulb.Value;
+		Texture2D tex = PaintedTextureSystem.TryGetPaintedTexture(ModAsset.LightbulbBand_Bulb_Path, type, 1, paint, tileDrawing);
+		tex ??= ModAsset.LightbulbBand_Bulb.Value;
 		var tileSpriteEffect = SpriteEffects.None;
 
 		var masses = rope.Masses;

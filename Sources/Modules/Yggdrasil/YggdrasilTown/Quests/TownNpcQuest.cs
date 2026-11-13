@@ -32,7 +32,7 @@ public abstract class TownNpcQuest : WorldQuestBase
 
 	private sealed class AnnaSource : QuestSourceBase
 	{
-		public override Texture2D Texture => ModContent.Request<Texture2D>(ModAsset.Guard_of_YggdrasilTown_Head_Mod).Value;
+		public override Texture2D Texture => ModContent.Request<Texture2D>(ModAsset.Guard_Of_YggdrasilTown_Head_Mod).Value;
 
 		public override string Name => Text("Anna");
 	}

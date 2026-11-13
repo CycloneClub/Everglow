@@ -47,7 +47,7 @@ public class NoctilucentFluoriteLump : ModTile
 			zero = Vector2.zeroVector;
 		}
 		Texture2D tex = ModAsset.NoctilucentFluoriteLump.Value;
-		Texture2D glowTex = ModAsset.NoctilucentFluoriteLump_glow.Value;
+		Texture2D glowTex = ModAsset.NoctilucentFluoriteLump_Glow.Value;
 		spriteBatch.Draw(tex, new Point(i, j).ToWorldCoordinates() - Main.screenPosition + zero, new Rectangle(0, 0, 20, 20), new Color(1f, 1f, 1f, 1f), 0, new Vector2(10), 1f, SpriteEffects.None, 0);
 		spriteBatch.Draw(glowTex, new Point(i, j).ToWorldCoordinates() - Main.screenPosition + zero, new Rectangle(0, 0, 80, 80), new Color(1f, 1f, 1f, 0), 0, new Vector2(40), 1f, SpriteEffects.None, 0);
 		return false;

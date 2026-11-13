@@ -246,7 +246,7 @@ public class UnderwaterLightningMechanism : ModTile
 		{
 			zero = Vector2.zeroVector;
 		}
-		Texture2D glowTex = ModAsset.UnderwaterLightningMechanism_glow.Value;
+		Texture2D glowTex = ModAsset.UnderwaterLightningMechanism_Glow.Value;
 		Point16 entityPoint = new Point16(i - tile.TileFrameX % 54 / 18 + 1, j - tile.TileFrameY / 18);
 		Tile entityTile = Main.tile[entityPoint];
 		if (entityTile.TileFrameX == 72)

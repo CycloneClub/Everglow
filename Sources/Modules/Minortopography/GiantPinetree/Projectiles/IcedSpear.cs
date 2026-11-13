@@ -206,8 +206,8 @@ public class IcedSpear : ModProjectile
 
 	public override bool PreDraw(ref Color lightColor)
 	{
-		Texture2D texStick = ModAsset.IcedSpear_stick.Value;
-		Texture2D texIce = ModAsset.IcedSpear_ice.Value;
+		Texture2D texStick = ModAsset.IcedSpear_Stick.Value;
+		Texture2D texIce = ModAsset.IcedSpear_Ice.Value;
 		Main.spriteBatch.Draw(texStick, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, texStick.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
 		Color iceColor = lightColor;
 		if (Projectile.timeLeft < 180)
@@ -231,7 +231,7 @@ public class IcedSpear : ModProjectile
 		}
 
 		Vector2 v = new Vector2(0, Main.rand.NextFloat(0, 3f)).RotatedByRandom(6.283d) * Projectile.velocity.Length() / 10f;
-		Gore gore = Gore.NewGoreDirect(null, Projectile.Center + v, v, ModContent.Find<ModGore>("Everglow/IcedSpear_gore").Type, 1f);
+		Gore gore = Gore.NewGoreDirect(null, Projectile.Center + v, v, ModContent.Find<ModGore>("Everglow/IcedSpear_Gore").Type, 1f);
 		gore.velocity = Projectile.velocity;
 		gore.rotation = Projectile.rotation - MathF.PI / 4f;
 	}

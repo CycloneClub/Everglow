@@ -62,7 +62,7 @@ public class VortexVanquisher3 : ModProjectile
 				for (int g = 0; g < 12; g++)
 				{
 					Vector2 newVelocity = new Vector2(-Main.rand.NextFloat(35f, 44f), 0).RotatedBy(Projectile.rotation - MathHelper.PiOver4 + Main.rand.NextFloat(-1.4f, 1.4f));
-					var somg = new VortexVanquisherGlowingSmogLine_front
+					var somg = new VortexVanquisherGlowingSmogLine_Front
 					{
 						velocity = newVelocity,
 						Active = true,

@@ -88,7 +88,7 @@ public class RedAlgaeMinionGyroscope_Proj : GyroscopeProjectile, IRedAlgaeToxinP
 
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
-		RedAlgae_FriendlyDebuff_glocalNPC.HandleProjectileHit(target, Projectile);
+		RedAlgae_FriendlyDebuff_GlocalNPC.HandleProjectileHit(target, Projectile);
 	}
 
 	/// <summary>
@@ -128,7 +128,7 @@ public class RedAlgaeMinionGyroscope_Proj : GyroscopeProjectile, IRedAlgaeToxinP
 			{
 				if (!npc.friendly && !npc.dontTakeDamage && MathUtils.IntersectsCircleAABB(Projectile.Center, 180, npc.position, npc.position + npc.Size))
 				{
-					RedAlgae_FriendlyDebuff_glocalNPC.HandleProjectileHit(npc, Projectile, applyOnly: true);
+					RedAlgae_FriendlyDebuff_GlocalNPC.HandleProjectileHit(npc, Projectile, applyOnly: true);
 				}
 			}
 		}
@@ -189,8 +189,8 @@ public class RedAlgaeMinionGyroscope_Proj : GyroscopeProjectile, IRedAlgaeToxinP
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D texture = ModAsset.RedAlgaeMinionGyroscope_Proj.Value;
-		Texture2D textureBloom = ModAsset.RedAlgaeMinionGyroscope_bloom.Value;
-		Texture2D textureGlow = ModAsset.RedAlgaeMinionGyroscope_Proj_glow.Value;
+		Texture2D textureBloom = ModAsset.RedAlgaeMinionGyroscope_Bloom.Value;
+		Texture2D textureGlow = ModAsset.RedAlgaeMinionGyroscope_Proj_Glow.Value;
 		var frame = new Rectangle(0, 32 * Projectile.frame, 32, 32);
 		if (Projectile.frame >= 4)
 		{

@@ -219,7 +219,7 @@ public class BlueStarFlower : ModProjectile
 		}
 		Main.graphics.graphicsDevice.RasterizerState = RasterizerState.CullNone;
 		Main.graphics.graphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
-		Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_0_black.Value;
+		Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_0_Black.Value;
 		if (circle.Count > 2)
 		{
 			Main.graphics.graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, circle.ToArray(), 0, circle.Count - 2);

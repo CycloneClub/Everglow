@@ -11,7 +11,7 @@ public class GreenVineWhip : WhipItem
 	{
 		Item.width = 40;
 		Item.height = 32;
-		Item.shoot = ModContent.ProjectileType<GreenVineWhip_proj>();
+		Item.shoot = ModContent.ProjectileType<GreenVineWhip_Proj>();
 		Item.shootSpeed = 5.04f;
 		Item.value = Item.sellPrice(0, 1, 0, 0);
 		Item.rare = ItemRarityID.Blue;

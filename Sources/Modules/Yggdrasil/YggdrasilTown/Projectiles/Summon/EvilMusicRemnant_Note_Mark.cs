@@ -98,7 +98,7 @@ public class EvilMusicRemnant_Note_Mark : ModProjectile
 	public override bool PreDraw(ref Color lightColor)
 	{
 		var texture = Commons.ModAsset.StarSlash.Value;
-		var textureBlack = Commons.ModAsset.StarSlash_black.Value;
+		var textureBlack = Commons.ModAsset.StarSlash_Black.Value;
 		float timeValue = (float)Main.time * 0.02f;
 		var drawPos = Projectile.Center - Main.screenPosition;
 		float fade = 1f;
@@ -234,7 +234,7 @@ public class EvilMusicRemnant_Note_Mark : ModProjectile
 		SpriteBatchState sBS = Main.spriteBatch.GetState().Value;
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.EvilMusicRemnant_Stave_black.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.EvilMusicRemnant_Stave_Black.Value;
 		if (bars_back_dark.Count > 3)
 		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars_back_dark.ToArray(), 0, bars_back_dark.Count - 2);
@@ -262,7 +262,7 @@ public class EvilMusicRemnant_Note_Mark : ModProjectile
 
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.EvilMusicRemnant_Stave_black.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.EvilMusicRemnant_Stave_Black.Value;
 		if (bars_front_dark.Count > 3)
 		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars_front_dark.ToArray(), 0, bars_front_dark.Count - 2);

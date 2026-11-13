@@ -1,5 +1,5 @@
-AdamantiteClub_round_slash.DisplayName: Adamantite Club_round_slash
-AdamantiteClub_slash.DisplayName: Adamantite Club_slash
+AdamantiteClub_Round_Slash.DisplayName: Adamantite Club_round_slash
+AdamantiteClub_Slash.DisplayName: Adamantite Club_slash
 AmberFlowerHookProjectile.DisplayName: Amber Flower Hook Projectile
 BeadShakeWave.DisplayName: Bead Shake Wave
 BlackAwningBoat_WaterDistort.DisplayName: Black Awning Boat_ Water Distort
@@ -9,9 +9,9 @@ ChlorophyteClub_VFX_2.DisplayName: Chlorophyte Club_ V F X_2
 ChlorophyteClub_VFX.DisplayName: Chlorophyte Club_ V F X
 ClimbingPickaxeProjectile.DisplayName: Climbing Pickaxe Projectile
 ComingGhost_Shimmer.DisplayName: Coming Ghost_ Shimmer
-CrystalClub_fly_Explosion.DisplayName: Crystal Club_fly_ Explosion
+CrystalClub_Fly_Explosion.DisplayName: Crystal Club_fly_ Explosion
 DemoSpark.DisplayName: Demo Spark
-DreamWeaver_hit.DisplayName: Dream Weaver_hit
+DreamWeaver_Hit.DisplayName: Dream Weaver_hit
 ExampleTrailingProjectile.DisplayName: Example Trailing Projectile
 FallenDropFruit.DisplayName: Fallen Drop Fruit
 FanHit.DisplayName: Fan Hit
@@ -51,15 +51,15 @@ KSSlingshotHitPink.DisplayName: K S Slingshot Hit Pink
 LBloodEffect.DisplayName: L Blood Effect
 LilyHarpNoteKill.DisplayName: Lily Harp Note Kill
 MythrilClub_Shoot.DisplayName: Mythril Club_ Shoot
-MythrilClub_smash_explosion.DisplayName: Mythril Club_smash_explosion
-MythrilClub_smash_explosion2.DisplayName: Mythril Club_smash_explosion2
+MythrilClub_Smash_Explosion.DisplayName: Mythril Club_smash_explosion
+MythrilClub_Smash_Explosion2.DisplayName: Mythril Club_smash_explosion2
 PlayerDefence.DisplayName: Player Defence
 PrimordialJadeWinged_SpearShake.DisplayName: Primordial Jade Winged_ Spear Shake
 PurpleBallEffect.DisplayName: Purple Ball Effect
-PylonStonePostProj_corrupt_explosion.DisplayName: Pylon Stone Post Proj_corrupt_explosion
-PylonStonePostProj_corrupt.DisplayName: Pylon Stone Post Proj_corrupt
-PylonStonePostProj_crimson_explosion.DisplayName: Pylon Stone Post Proj_crimson_explosion
-PylonStonePostProj_crimson.DisplayName: Pylon Stone Post Proj_crimson
+PylonStonePostProj_Corrupt_Explosion.DisplayName: Pylon Stone Post Proj_corrupt_explosion
+PylonStonePostProj_Corrupt.DisplayName: Pylon Stone Post Proj_corrupt
+PylonStonePostProj_Crimson_Explosion.DisplayName: Pylon Stone Post Proj_crimson_explosion
+PylonStonePostProj_Crimson.DisplayName: Pylon Stone Post Proj_crimson
 RedLanternMeteor.DisplayName: Red Lantern Meteor
 RisingFirework.DisplayName: Rising Firework
 ShadowDragonAttack.DisplayName: Shadow Dragon Attack
@@ -69,7 +69,7 @@ StarProj.DisplayName: Star Proj
 SunFlowerpetal.DisplayName: Sun Flowerpetal
 TeleportToYggdrasil.DisplayName: Teleport To Yggdrasil
 ThermostatBobber.DisplayName: Thermostat Bobber
-TitaniumClub_smash_explosion.DisplayName: Titanium Club_smash_explosion
+TitaniumClub_Smash_Explosion.DisplayName: Titanium Club_smash_explosion
 TwilightRodBobber.DisplayName: Twilight Rod Bobber
 UnderwaterGuillotine_Projectile.DisplayName: Underwater Guillotine_ Projectile
 VineEnergyBeam.DisplayName: Vine Energy Beam

@@ -14,7 +14,7 @@ public class PalmWoodClub_Item : ClubItem
 		Item.useAnimation = 12;
 		SmashDamageMultiplier = 8f / 9f;
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.PalmWoodClub>();
-		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.PalmWoodClub_smash>();
+		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.PalmWoodClub_Smash>();
 	}
 
 	public override void AddRecipes()

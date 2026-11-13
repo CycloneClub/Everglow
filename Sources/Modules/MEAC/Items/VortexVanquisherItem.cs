@@ -124,7 +124,7 @@ public class VortexVanquisherItem : ModItem
 							proj.ai[1] = player.statLifeMax * 0.6f; // 盾量
 							HasProj = true;
 						}
-						if (proj.owner == player.whoAmI && proj.type == ModContent.ProjectileType<GoldShield_backTextureSubProj>() && proj.active)
+						if (proj.owner == player.whoAmI && proj.type == ModContent.ProjectileType<GoldShield_BackTextureSubProj>() && proj.active)
 						{
 							proj.timeLeft = 1200;
 						}
@@ -133,10 +133,10 @@ public class VortexVanquisherItem : ModItem
 					{
 						Projectile proj2 = Projectile.NewProjectileDirect(player.GetSource_ItemUse(Item), player.Center, Vector2.Zero, ModContent.ProjectileType<GoldShield>(), player.GetWeaponDamage(Item), Item.knockBack, player.whoAmI);
 						proj2.ai[1] = player.statLifeMax * 0.6f; // 盾量
-						Projectile subProj = Projectile.NewProjectileDirect(player.GetSource_ItemUse(Item), player.Center, Vector2.zeroVector, ModContent.ProjectileType<GoldShield_backTextureSubProj>(), 0, 0, player.whoAmI);
+						Projectile subProj = Projectile.NewProjectileDirect(player.GetSource_ItemUse(Item), player.Center, Vector2.zeroVector, ModContent.ProjectileType<GoldShield_BackTextureSubProj>(), 0, 0, player.whoAmI);
 						if (subProj != null)
 						{
-							GoldShield_backTextureSubProj gSBTSP = subProj.ModProjectile as GoldShield_backTextureSubProj;
+							GoldShield_BackTextureSubProj gSBTSP = subProj.ModProjectile as GoldShield_BackTextureSubProj;
 							gSBTSP.MainProj = proj2;
 						}
 					}

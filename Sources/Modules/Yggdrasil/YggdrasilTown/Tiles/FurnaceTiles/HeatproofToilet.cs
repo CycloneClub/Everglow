@@ -117,7 +117,7 @@ public class HeatproofToilet : ModTile
 
 		player.noThrow = 2;
 		player.cursorItemIconEnabled = true;
-		player.cursorItemIconID = ModContent.ItemType<HeatproofToilet_item>();
+		player.cursorItemIconID = ModContent.ItemType<HeatproofToilet_Item>();
 
 		if (Main.tile[i, j].TileFrameX / 18 < 1)
 		{

@@ -342,7 +342,7 @@ namespace Everglow.EternalResolve.Bosses.Projectiles
 
 		public virtual void DrawEffect(Color lightColor)
 		{
-			Texture2D Shadow = Commons.ModAsset.Star2_black.Value;
+			Texture2D Shadow = Commons.ModAsset.Star2_Black.Value;
 			Texture2D light = Commons.ModAsset.StabbingProjectile.Value;
 			Vector2 drawOrigin = light.Size() / 2f;
 			Vector2 drawShadowOrigin = Shadow.Size() / 2f;

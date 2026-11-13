@@ -1213,7 +1213,7 @@ public class BloodTusk : ModNPC
 	public IEnumerator<ICoroutineInstruction> GiantJaw()
 	{
 		Player player = Main.player[NPC.target];
-		Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom - TileUtils.GetTopographicGradient(NPC.Bottom, 6) * 10, Vector2.zeroVector, ModContent.ProjectileType<Living_Jawbone_Huge_ground_Wave>(), GetDamage(40), 1, -1);
+		Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom - TileUtils.GetTopographicGradient(NPC.Bottom, 6) * 10, Vector2.zeroVector, ModContent.ProjectileType<Living_Jawbone_Huge_Ground_Wave>(), GetDamage(40), 1, -1);
 		yield return new WaitForFrames(30);
 	}
 
@@ -1299,10 +1299,10 @@ public class BloodTusk : ModNPC
 
 	public int GetTusk_groundType()
 	{
-		int type = ModContent.ProjectileType<Tusk_ground_little>();
+		int type = ModContent.ProjectileType<Tusk_Ground_Little>();
 		if (Main.rand.NextBool(3))
 		{
-			type = ModContent.ProjectileType<Tusk_ground>();
+			type = ModContent.ProjectileType<Tusk_Ground>();
 		}
 		return type;
 	}
@@ -1469,7 +1469,7 @@ public class BloodTusk : ModNPC
 		{
 			spriteBatch.End();
 			spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, default, RasterizerState.CullNone, null);
-			Effect dissolve = ModAsset.BloodTusk_dissolve.Value;
+			Effect dissolve = ModAsset.BloodTusk_Dissolve.Value;
 			float dissolveDuration = FadeValue_ToPhase2;
 			var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 			var model = Matrix.CreateTranslation(new Vector3(-Main.screenPosition, 0)) * Main.GameViewMatrix.TransformationMatrix;
@@ -1515,7 +1515,7 @@ public class BloodTusk : ModNPC
 		}
 		for (int i = 0; i < 20; i++)
 		{
-			Gore.NewGore(NPC.GetSource_FromAI(), NPC.position + new Vector2(Main.rand.NextFloat(NPC.width), Main.rand.NextFloat(NPC.height)), new Vector2(0, -Main.rand.NextFloat(3, 16)).RotatedBy(Main.rand.NextFloat(-1.2f, 1.2f)), ModContent.Find<ModGore>("Everglow/BloodTusk_gore" + i).Type);
+			Gore.NewGore(NPC.GetSource_FromAI(), NPC.position + new Vector2(Main.rand.NextFloat(NPC.width), Main.rand.NextFloat(NPC.height)), new Vector2(0, -Main.rand.NextFloat(3, 16)).RotatedBy(Main.rand.NextFloat(-1.2f, 1.2f)), ModContent.Find<ModGore>("Everglow/BloodTusk_Gore" + i).Type);
 		}
 	}
 

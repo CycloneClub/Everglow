@@ -219,7 +219,7 @@ public class MossySpellArray : NoTextureProjectile
 		effect.CurrentTechnique.Passes[0].Apply();
 		Main.graphics.GraphicsDevice.RasterizerState = RasterizerState.CullNone;
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_8_black.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_8_Black.Value;
 		if (stems_black.Count > 3)
 		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, stems_black.ToArray(), 0, stems_black.Count - 2);

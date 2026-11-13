@@ -39,7 +39,7 @@ public class GiantCampFire : ModTile, ISceneTile
 
 		if (tile.TileFrameX == 36 && tile.TileFrameY == 18)
 		{
-			GiantCampFire_flame_fore flame = new GiantCampFire_flame_fore { Position = new Vector2(i, j) * 16 + new Vector2(8), Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = Type };
+			GiantCampFire_Flame_Fore flame = new GiantCampFire_Flame_Fore { Position = new Vector2(i, j) * 16 + new Vector2(8), Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = Type };
 			Ins.VFXManager.Add(flame);
 		}
 	}
@@ -84,11 +84,11 @@ public class GiantCampFire : ModTile, ISceneTile
 	}
 }
 
-public class GiantCampFire_flame_fore_Pipeline : Pipeline
+public class GiantCampFire_Flame_Fore_Pipeline : Pipeline
 {
 	public override void Load()
 	{
-		effect = ModAsset.GiantCampFire_shader;
+		effect = ModAsset.GiantCampFire_Shader;
 	}
 
 	public override void BeginRender()
@@ -112,8 +112,8 @@ public class GiantCampFire_flame_fore_Pipeline : Pipeline
 	}
 }
 
-[Pipeline(typeof(GiantCampFire_flame_fore_Pipeline), typeof(BloomPipeline))]
-public class GiantCampFire_flame_fore : TileVFX
+[Pipeline(typeof(GiantCampFire_Flame_Fore_Pipeline), typeof(BloomPipeline))]
+public class GiantCampFire_Flame_Fore : TileVFX
 {
 	public override void OnSpawn()
 	{

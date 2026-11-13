@@ -14,7 +14,7 @@ public class EvilHalbertBarnacle_ShootShuttle : ModProjectile
 
 	public Vector2 OffsetVel = Vector2.zeroVector;
 
-	public override string Texture => ModAsset.EvilHalbertBarnacle_proj_Mod;
+	public override string Texture => ModAsset.EvilHalbertBarnacle_Proj_Mod;
 
 	public override void SetDefaults()
 	{
@@ -29,7 +29,7 @@ public class EvilHalbertBarnacle_ShootShuttle : ModProjectile
 	public override void AI()
 	{
 		Player player = Main.player[Projectile.owner];
-		if (player.ownedProjectileCounts[ModContent.ProjectileType<EvilHalbertBarnacle_proj_shuttle>()] <= 0)
+		if (player.ownedProjectileCounts[ModContent.ProjectileType<EvilHalbertBarnacle_Proj_Shuttle>()] <= 0)
 		{
 			State = 0;
 		}
@@ -58,7 +58,7 @@ public class EvilHalbertBarnacle_ShootShuttle : ModProjectile
 			Projectile.Center = player.MountedCenter + Projectile.velocity * 120;
 			if (Timer > 3 && Main.mouseRightRelease)
 			{
-				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center - Projectile.velocity * 85f, Projectile.velocity * 75, ModContent.ProjectileType<EvilHalbertBarnacle_proj_shuttle>(), Projectile.damage, 2.4f, Projectile.owner);
+				Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center - Projectile.velocity * 85f, Projectile.velocity * 75, ModContent.ProjectileType<EvilHalbertBarnacle_Proj_Shuttle>(), Projectile.damage, 2.4f, Projectile.owner);
 				Projectile.timeLeft = 20;
 				OffsetVel = -Projectile.velocity.RotatedByRandom(0.3f) * 35;
 				for (int i = 0; i < 18; ++i)
@@ -130,7 +130,7 @@ public class EvilHalbertBarnacle_ShootShuttle : ModProjectile
 		Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
 		if (State == 1)
 		{
-			tex = ModAsset.EvilHalbertBarnacle_proj_released.Value;
+			tex = ModAsset.EvilHalbertBarnacle_Proj_Released.Value;
 		}
 		Vector2 velNor2 = Projectile.velocity.NormalizeSafe() * tex.Width / MathF.Sqrt(2f);
 		Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition - velNor2, null, lightColor, Projectile.rotation, tex.Size() * 0.5f, Projectile.scale, Projectile.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0);

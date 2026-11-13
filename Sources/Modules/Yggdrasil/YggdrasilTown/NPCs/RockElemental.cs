@@ -793,10 +793,10 @@ public class RockElemental : ModNPC
 
 	public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
-		Texture2D glow = ModAsset.RockElemental_glow.Value;
+		Texture2D glow = ModAsset.RockElemental_Glow.Value;
 		Texture2D texture = ModAsset.RockElemental.Value;
-		Texture2D eyes = ModAsset.RockElemental_eye.Value;
-		Texture2D hiteffect = ModAsset.RockElemental_defense.Value;
+		Texture2D eyes = ModAsset.RockElemental_Eye.Value;
+		Texture2D hiteffect = ModAsset.RockElemental_Defense.Value;
 		Vector2 size = glow.Size();
 		size.Y /= 8;
 		SpriteEffects spriteEffect = SpriteEffects.None;
@@ -896,7 +896,7 @@ public class RockElemental : ModNPC
 		for (int i = 0; i < 6; i++)
 		{
 			Vector2 v0 = new Vector2(0, Main.rand.NextFloat(0, 6f)).RotatedByRandom(MathHelper.TwoPi);
-			int type = ModContent.Find<ModGore>("Everglow/RockElemental_gore" + i).Type;
+			int type = ModContent.Find<ModGore>("Everglow/RockElemental_Gore" + i).Type;
 			Gore.NewGore(NPC.GetSource_Death(), NPC.Center, v0, type, NPC.scale);
 		}
 		for (int x = 0; x < 45; x++)
@@ -906,7 +906,7 @@ public class RockElemental : ModNPC
 		}
 		for (int x = 0; x < 64; x++)
 		{
-			Dust d = Dust.NewDustDirect(NPC.position - new Vector2(4), NPC.width, NPC.height, ModContent.DustType<RockElemental_fragments>(), 0f, 0f, 0, default, 0.7f);
+			Dust d = Dust.NewDustDirect(NPC.position - new Vector2(4), NPC.width, NPC.height, ModContent.DustType<RockElemental_Fragments>(), 0f, 0f, 0, default, 0.7f);
 			d.scale = Main.rand.NextFloat(0.7f, 2.1f);
 			d.velocity = new Vector2(0, Main.rand.NextFloat(7f, 16f)).RotatedByRandom(6.283);
 		}

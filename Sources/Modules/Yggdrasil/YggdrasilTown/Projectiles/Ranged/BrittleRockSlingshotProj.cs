@@ -108,7 +108,7 @@ public class BrittleRockSlingshotProj : SlingshotProjectile
 		DrawTexLine(Head1, SlingshotStringTail, 1, drawColor, Commons.ModAsset.String.Value);
 		Texture2D stone = ModAsset.BrittleRockSlingshotStone.Value;
 		Main.spriteBatch.Draw(stone, SlingshotStringTail, null, lightColor, 0, stone.Size() * 0.5f, MathF.Pow(Power / 130f, 0.3f), SpriteEffects.None, 0);
-		Texture2D stoneGlow = ModAsset.BrittleRockSlingshotStone_glow.Value;
+		Texture2D stoneGlow = ModAsset.BrittleRockSlingshotStone_Glow.Value;
 		for (int i = 0; i < Power; i += 10)
 		{
 			float wave = Power / 130f;

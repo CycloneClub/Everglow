@@ -14,7 +14,7 @@ public class CactusClub_Item : ClubItem
 		Item.useAnimation = 12;
 		SmashDamageMultiplier = 10f / 8f;
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.CactusClub>();
-		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.CactusClub_smash>();
+		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.CactusClub_Smash>();
 	}
 
 	public override void AddRecipes()

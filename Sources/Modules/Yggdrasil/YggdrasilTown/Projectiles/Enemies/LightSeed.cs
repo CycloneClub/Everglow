@@ -69,8 +69,8 @@ public class LightSeed : ModProjectile
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D texture = ModAsset.LightSeed.Value;
-		Texture2D textureD = ModAsset.LightSeed_dark.Value;
-		Texture2D textureB = ModAsset.LightSeed_bloom.Value;
+		Texture2D textureD = ModAsset.LightSeed_Dark.Value;
+		Texture2D textureB = ModAsset.LightSeed_Bloom.Value;
 		Main.EntitySpriteDraw(textureD, Projectile.Center - Main.screenPosition, null, new Color(1f, 1f, 1f, 1f), 0, textureD.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
 		float oxideValue = (150 - Projectile.timeLeft) / 150f;
 		oxideValue = MathF.Pow(oxideValue, 0.3f);

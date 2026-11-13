@@ -203,7 +203,7 @@ public class TeleportToYggdrasil : ModProjectile, IWarpProjectile
 				flows.Add(drawCenter + thisJoint - normalWidth, drawColor * fade, new Vector3(i * 0.03f + timeValue + r * 0.2f, 0, drawWidth));
 				flows.Add(drawCenter + thisJoint + normalWidth, drawColor * fade, new Vector3(i * 0.03f + timeValue + r * 0.2f, 1, drawWidth));
 			}
-			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_4_black.Value;
+			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_4_Black.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, flows.ToArray(), 0, flows.Count - 2);
 		}
 
