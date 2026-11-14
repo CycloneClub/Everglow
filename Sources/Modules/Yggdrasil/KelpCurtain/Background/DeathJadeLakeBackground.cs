@@ -85,11 +85,13 @@ public class DeathJadeLakeBackground : ModSystem
 		{
 			return;
 		}
+		Vector4 hidden = VampireMatCaveSky.GetLakeOcclusionBounds();
+		Span<Vector4> visible = stackalloc Vector4[2];
 		var bars = new List<Vertex2D>();
 		int yLayers = (int)((drawBottom - drawTop) / 16f);
 
 		int currentSize = bars.Count;
-		int estimatedCapacity = bars.Count + yLayers * 6 + 256;
+		int estimatedCapacity = bars.Count + yLayers * 12 + 256;
 		if (bars.Capacity < estimatedCapacity)
 		{
 			bars.Capacity = estimatedCapacity;
@@ -114,8 +116,13 @@ public class DeathJadeLakeBackground : ModSystem
 			}
 			float left = Main.screenPosition.X - Main.offScreenRange;
 			float top = tileY * 16;
-			BackgroundHigherPerformanceHelper.Add_WorldTriangle(bg, new Vector2(left, top), new Vector2(rightClamp, top), new Vector2(rightClamp, top + 16), span, ref currentSize);
-			BackgroundHigherPerformanceHelper.Add_WorldTriangle(bg, new Vector2(left, top), new Vector2(left, top + 16), new Vector2(rightClamp, top + 16), span, ref currentSize);
+			int count = VampireMatCaveSky.ClipBackgroundRow(new Vector4(left, top, rightClamp, top + 16), hidden, visible);
+			for (int segment = 0; segment < count; segment++)
+			{
+				Vector4 row = visible[segment];
+				BackgroundHigherPerformanceHelper.Add_WorldTriangle(bg, new Vector2(row.X, row.Y), new Vector2(row.Z, row.Y), new Vector2(row.Z, row.W), span, ref currentSize);
+				BackgroundHigherPerformanceHelper.Add_WorldTriangle(bg, new Vector2(row.X, row.Y), new Vector2(row.X, row.W), new Vector2(row.Z, row.W), span, ref currentSize);
+			}
 		}
 		CollectionsMarshal.SetCount(bars, currentSize);
 		BackgroundSlideBase.DrawVertexBackground(bg, PrimitiveType.TriangleList, bars);

@@ -28,7 +28,8 @@ PSInput VertexShaderFunction(VSInput input)
 float4 PixelShaderFunction(PSInput input) : COLOR0
 {
 	float disToCenter = length(float2(0.5, 0.5) - input.Texcoord.xy);
-	return tex2D(uImage, input.Texcoord.xy) * input.Color * disToCenter;
+	// Red and green each used to be drawn five times with additive (zero-alpha) colors.
+	return tex2D(uImage, input.Texcoord.xy) * input.Color * disToCenter * input.Texcoord.z;
 }
 
 technique Technique1
