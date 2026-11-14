@@ -1004,6 +1004,8 @@ public partial class YggdrasilTownGeneration
 				}
 			}
 		}
+
+		ExtendJellyBallHotbed();
 	}
 
 	/// <summary>
