@@ -7,7 +7,7 @@ public class AmberLiquidProj_Explosion : ModProjectile, IWarpProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
 
-	public override string Texture => ModAsset.CyanVineStaff_proj_Mod;
+	public override string Texture => ModAsset.CyanVineStaff_Proj_Mod;
 
 	public override void SetDefaults()
 	{

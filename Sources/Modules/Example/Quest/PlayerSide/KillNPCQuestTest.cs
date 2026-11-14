@@ -1,10 +1,11 @@
 using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.PlayerSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.PlayerSide.Objectives;
+using Everglow.Example.Quest;
 
 namespace Everglow.Commons.Mechanics.Quest.PlayerSide.Tests;
 
-public class KillNPCQuestTest : PlayerQuestBase
+public class KillNPCQuestTest : ExamplePlayerQuest
 {
 	public KillNPCQuestTest()
 	{

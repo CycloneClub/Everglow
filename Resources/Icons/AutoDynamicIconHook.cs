@@ -65,9 +65,9 @@ namespace Everglow.Sources.Icons
                 //移除原版的模组图标,实际上应该对反射进行一次判空,但是我懒
                 self.RemoveChild((UIElement)self.GetType().GetField("_modIcon", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(self));
                 //把图标做成动态UI放进去
-                self.Append(new DynamicIconUI(ModContent.Request<Texture2D>("Everglow/Sources/Icons/Icon_content", AssetRequestMode.ImmediateLoad).Value, new Rectangle(0, 0, 80, 80), 3));
+                self.Append(new DynamicIconUI(ModContent.Request<Texture2D>("Everglow/Sources/Icons/Icon_Content", AssetRequestMode.ImmediateLoad).Value, new Rectangle(0, 0, 80, 80), 3));
                 //把边框做成动态UI放进去
-                var border = new DynamicIconUI(ModContent.Request<Texture2D>("Everglow/Sources/Icons/Icon_framework", AssetRequestMode.ImmediateLoad).Value, new Rectangle(0, 0, 96, 96), 3);
+                var border = new DynamicIconUI(ModContent.Request<Texture2D>("Everglow/Sources/Icons/Icon_Framework", AssetRequestMode.ImmediateLoad).Value, new Rectangle(0, 0, 96, 96), 3);
                 //边框比图标大16,所以需要向左上偏移(8,8)
                 border.Left.Set(-8, 0);
                 border.Top.Set(-8, 0);

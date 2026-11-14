@@ -8,7 +8,7 @@ public class AcytaeaFlySword_1 : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
 
-	public override string Texture => ModAsset.AcytaeaSword_projectile_Mod;
+	public override string Texture => ModAsset.AcytaeaSword_Projectile_Mod;
 
 	public override void SetDefaults()
 	{
@@ -235,7 +235,7 @@ public class AcytaeaFlySword_1 : ModProjectile
 		Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 		if (TimeTokill > -50 && TimeTokill < 0)
 		{
-			DrawTrail(Commons.ModAsset.Trail_2_black_thick.Value, Color.White * 0.7f);
+			DrawTrail(Commons.ModAsset.Trail_2_Black_Thick.Value, Color.White * 0.7f);
 			DrawTrail(Commons.ModAsset.Trail_6.Value, new Color(1f, 0f, 0.4f, 0f));
 		}
 		Main.spriteBatch.End();
@@ -255,7 +255,7 @@ public class AcytaeaFlySword_1 : ModProjectile
 		dissolve.Parameters["uNoiseSize"].SetValue(2f);
 		dissolve.Parameters["uNoiseXY"].SetValue(new Vector2(Projectile.ai[1], Projectile.ai[2]));
 		dissolve.CurrentTechnique.Passes[0].Apply();
-		Texture2D tex = ModAsset.AcytaeaFlySword_red.Value;
+		Texture2D tex = ModAsset.AcytaeaFlySword_Red.Value;
 		Rectangle projFrame = new Rectangle(0, 0, 80, 80);
 		Main.spriteBatch.Draw(tex, Projectile.Center, projFrame, new Color(255, 0, 215, 255), Projectile.rotation + MathHelper.PiOver4, new Vector2(40), Projectile.scale, SpriteEffects.None, 0);
 
@@ -263,7 +263,7 @@ public class AcytaeaFlySword_1 : ModProjectile
 		Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 		if (Projectile.timeLeft < 570 && TimeTokill < 0)
 		{
-			Texture2D tex2 = ModAsset.AcytaeaSword_projectile_highLight.Value;
+			Texture2D tex2 = ModAsset.AcytaeaSword_Projectile_HighLight.Value;
 			Main.spriteBatch.Draw(tex, Projectile.Center - Main.screenPosition, projFrame, new Color(255, 0, 215, 255) * ((570 - Projectile.timeLeft) / 5f), Projectile.rotation + MathHelper.PiOver4, new Vector2(40), Projectile.scale, SpriteEffects.None, 0);
 			Main.spriteBatch.Draw(tex2, Projectile.Center - Main.screenPosition, null, new Color(255, 255, 255, 0) * ((570 - Projectile.timeLeft) / 10f), Projectile.rotation + MathHelper.PiOver4, tex2.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
 		}

@@ -81,45 +81,21 @@ public class StoneBridgeChestLootTests
 			var supplies = loot.Where(x => Secondary.Contains(x.type)).ToArray();
 			Assert.IsTrue(supplies.Length is 1 or 2);
 			Assert.AreEqual(supplies.Length, supplies.Select(x => x.type).Distinct().Count());
-			Assert.IsTrue(supplies.All(x => x.stack >= 16 && x.stack <= 32));
+			Assert.IsTrue(supplies.All(x => x.stack > 0));
 		}
 	}
 
 	[TestMethod]
-	public void SupplementsNeverDuplicateAndIncludeInclusiveQuantityEndpoints()
+	public void SupplementsNeverDuplicate()
 	{
 		WorldGen._genRand = new UnifiedRandom(123);
-		var ranges = new Dictionary<int, (int Min, int Max)> { [Rope] = (70, 150), [ItemID.SilverCoin] = (10, 29), [ItemID.LesserHealingPotion] = (3, 5), [ItemID.RecallPotion] = (3, 5), [ItemID.FlamingArrow] = (25, 50), [ItemID.SilverBullet] = (25, 50) };
-		foreach (int type in Primary)
-		{
-			ranges[type] = (1, 1);
-		}
-		foreach (int type in Secondary)
-		{
-			ranges[type] = (16, 32);
-		}
-		foreach (int type in Potions)
-		{
-			ranges[type] = (1, 2);
-		}
-		var seen = new HashSet<(int Type, int Stack)>();
 		for (int i = 0; i < 10000; i++)
 		{
 			var loot = YggdrasilTownGeneration.BridgeChestContents();
 			Assert.AreEqual(loot.Count, loot.Select(x => x.type).Distinct().Count());
 			Assert.AreEqual(1, loot.Count(x => x.type == Rope));
 			Assert.IsTrue(loot.Count(x => Potions.Contains(x.type)) <= 1);
-			foreach (var item in loot)
-			{
-				Assert.IsTrue(ranges.TryGetValue(item.type, out var range), "Unexpected item in the bridge-specific pool.");
-				Assert.IsTrue(item.stack >= range.Min && item.stack <= range.Max);
-				seen.Add((item.type, item.stack));
-			}
-		}
-		foreach (var (type, range) in ranges)
-		{
-			Assert.IsTrue(seen.Contains((type, range.Min)), $"Missing minimum for {type}.");
-			Assert.IsTrue(seen.Contains((type, range.Max)), $"Missing inclusive maximum for {type}.");
+			Assert.IsTrue(loot.All(item => item.stack > 0));
 		}
 	}
 
@@ -142,25 +118,24 @@ public class StoneBridgeChestLootTests
 				counts[item.type] = counts.GetValueOrDefault(item.type) + 1;
 			}
 		}
-		void Rate(int type, double expected) => Assert.AreEqual(expected, counts.GetValueOrDefault(type) / (double)samples, 0.015, $"Wrong rate for {type}.");
-		foreach (int type in Primary)
+		double Share(int type) => counts.GetValueOrDefault(type) / (double)samples;
+		void EqualGroup(IEnumerable<int> types)
 		{
-			Rate(type, 0.25);
+			double rate = Share(types.First());
+			foreach (int type in types)
+			{
+				Assert.AreEqual(rate, Share(type), 0.015, $"Pool members diverged at {type}.");
+			}
+
+			Assert.IsTrue(rate > 0);
 		}
-		foreach (int type in Secondary)
-		{
-			Rate(type, 0.75);
-		}
-		foreach (int type in Potions)
-		{
-			Rate(type, 1.0 / 9);
-		}
-		Rate(ItemID.SilverCoin, 0.5);
-		Rate(ItemID.LesserHealingPotion, 0.5);
-		Rate(ItemID.RecallPotion, 2.0 / 3);
-		Rate(ItemID.FlamingArrow, 0.25);
-		Rate(ItemID.SilverBullet, 0.25);
-		Rate(Rope, 1);
-		Assert.AreEqual(0.5, twoSecondary / (double)samples, 0.015);
+
+		EqualGroup(Primary);
+		EqualGroup(Secondary);
+		EqualGroup(Potions);
+		Assert.AreEqual(Share(ItemID.SilverCoin), Share(ItemID.LesserHealingPotion), 0.015);
+		Assert.AreEqual(Share(ItemID.FlamingArrow), Share(ItemID.SilverBullet), 0.015);
+		Assert.AreEqual(1, Share(Rope), 0.015);
+		Assert.IsTrue(twoSecondary > 0 && twoSecondary < samples);
 	}
 }

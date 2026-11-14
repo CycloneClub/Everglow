@@ -32,7 +32,7 @@ public class VortexVanquisherGlowingSmogLinePipeline : Pipeline// 这个绘制�
 }
 
 [Pipeline(typeof(VortexVanquisherGlowingSmogLinePipeline))]
-public class VortexVanquisherGlowingSmogLine_front : Visual
+public class VortexVanquisherGlowingSmogLine_Front : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawDusts;
 
@@ -45,7 +45,7 @@ public class VortexVanquisherGlowingSmogLine_front : Visual
 	public float scale;
 	public float alpha;
 
-	public VortexVanquisherGlowingSmogLine_front()
+	public VortexVanquisherGlowingSmogLine_Front()
 	{
 	}
 

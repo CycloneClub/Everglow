@@ -160,7 +160,7 @@ public class CurseSpell : ModProjectile
 		for (int k = 0; k < 8; k++)
 		{
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(1f, 6f)).RotatedByRandom(MathHelper.TwoPi);
-			var CurseSpark = new CurseSpellDust_blue_normal
+			var CurseSpark = new CurseSpellDust_Blue_Normal
 			{
 				Velocity = newVelocity,
 				Active = true,
@@ -176,7 +176,7 @@ public class CurseSpell : ModProjectile
 		for (int k = 0; k < 16; k++)
 		{
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(1f, 4f)).RotatedByRandom(MathHelper.TwoPi);
-			var CurseSpark = new CurseSpellSmoke_normal
+			var CurseSpark = new CurseSpellSmoke_Normal
 			{
 				Velocity = newVelocity,
 				Active = true,
@@ -214,9 +214,9 @@ public class CurseSpell : ModProjectile
 			effects = SpriteEffects.FlipHorizontally;
 		}
 		Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
-		Texture2D tex_shape = ModAsset.Spell_shape.Value;
-		Texture2D tex_glow = ModAsset.CurseSpell_glow.Value;
-		Texture2D bloom = ModAsset.Spell_bloom.Value;
+		Texture2D tex_shape = ModAsset.Spell_Shape.Value;
+		Texture2D tex_glow = ModAsset.CurseSpell_Glow.Value;
+		Texture2D bloom = ModAsset.Spell_Bloom.Value;
 		float fade = 1f;
 		if (Projectile.timeLeft < 60f)
 		{

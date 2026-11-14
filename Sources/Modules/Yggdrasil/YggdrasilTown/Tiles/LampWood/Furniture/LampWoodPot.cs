@@ -87,8 +87,8 @@ public class LampWoodPot : ModTile, ITileFluentlyDrawn
 
 		int paint = Main.tile[paintPos].TileColor;
 		int textureStyle = 255;
-		Texture2D tex = PaintedTextureSystem.TryGetPaintedTexture(ModAsset.LampWoodPot_bead_Path, type, textureStyle, paint, tileDrawing);
-		tex ??= ModAsset.LampWoodPot_bead.Value;
+		Texture2D tex = PaintedTextureSystem.TryGetPaintedTexture(ModAsset.LampWoodPot_Bead_Path, type, textureStyle, paint, tileDrawing);
+		tex ??= ModAsset.LampWoodPot_Bead.Value;
 
 		float windCycle = 0;
 		if (tileDrawing.InAPlaceWithWind(tilePos.X, tilePos.Y, 1, 1))
@@ -294,9 +294,9 @@ public class LampWoodPot : ModTile, ITileFluentlyDrawn
 				Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, new Item(ItemID.Glowstick, Main.rand.Next(2, 25)));
 				break;
 		}
-		Gore.NewGore(WorldGen.GetItemSource_FromTileBreak(i, j), new Vector2(i * 16, j * 16), new Vector2(0, Main.rand.NextFloat(0f, 3f)).RotatedByRandom(MathHelper.TwoPi), ModContent.Find<ModGore>("Everglow/LampWoodPot_gore0").Type, 1);
-		Gore.NewGore(WorldGen.GetItemSource_FromTileBreak(i, j), new Vector2(i * 16, j * 16), new Vector2(0, Main.rand.NextFloat(0f, 3f)).RotatedByRandom(MathHelper.TwoPi), ModContent.Find<ModGore>("Everglow/LampWoodPot_gore1").Type, 1);
-		Gore.NewGore(WorldGen.GetItemSource_FromTileBreak(i, j), new Vector2(i * 16, j * 16), new Vector2(0, Main.rand.NextFloat(0f, 3f)).RotatedByRandom(MathHelper.TwoPi), ModContent.Find<ModGore>("Everglow/LampWoodPot_gore2").Type, 1);
+		Gore.NewGore(WorldGen.GetItemSource_FromTileBreak(i, j), new Vector2(i * 16, j * 16), new Vector2(0, Main.rand.NextFloat(0f, 3f)).RotatedByRandom(MathHelper.TwoPi), ModContent.Find<ModGore>("Everglow/LampWoodPot_Gore0").Type, 1);
+		Gore.NewGore(WorldGen.GetItemSource_FromTileBreak(i, j), new Vector2(i * 16, j * 16), new Vector2(0, Main.rand.NextFloat(0f, 3f)).RotatedByRandom(MathHelper.TwoPi), ModContent.Find<ModGore>("Everglow/LampWoodPot_Gore1").Type, 1);
+		Gore.NewGore(WorldGen.GetItemSource_FromTileBreak(i, j), new Vector2(i * 16, j * 16), new Vector2(0, Main.rand.NextFloat(0f, 3f)).RotatedByRandom(MathHelper.TwoPi), ModContent.Find<ModGore>("Everglow/LampWoodPot_Gore2").Type, 1);
 		base.KillMultiTile(i, j, frameX, frameY);
 	}
 

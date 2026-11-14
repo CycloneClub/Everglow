@@ -1,12 +1,12 @@
+using Everglow.Commons.Mechanics.Quest.Core.Dialogue;
 using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.Presentation.Icons;
-using Everglow.Commons.Utilities;
 using Terraria.ModLoader.IO;
 
 namespace Everglow.Commons.Mechanics.Quest.WorldSide.Objectives;
 
-public class WorldTalkObjective : WorldObjectiveBase
+public class WorldTalkObjective : WorldObjectiveBase, IQuestDialogueObjective
 {
 	public WorldTalkObjective()
 	{
@@ -17,15 +17,13 @@ public class WorldTalkObjective : WorldObjectiveBase
 		NPCType = npcType;
 	}
 
-	private bool talking;
+	private bool localSubmitted;
 
-	private bool oldTalking;
+	public ObjectiveDialogue Dialogue { get; set; }
 
 	public bool Talked { get; private set; }
 
 	public int NPCType { get; private set; }
-
-	public string NPCText => GetText("NPCText");
 
 	public override float Progress => Talked ? 1f : 0f;
 
@@ -47,55 +45,41 @@ public class WorldTalkObjective : WorldObjectiveBase
 		return QuestText.Get("Objectives.Talk", npc.TypeName);
 	}
 
+	public virtual string GetChat() => QuestText.Get("Objectives.Talk", Lang.GetNPCNameValue(NPCType));
+
+	public bool TrySubmitObjective(Player player)
+	{
+		if (!CanProgress || !QuestChat.CanSubmitObjective(player, NPCType))
+		{
+			return false;
+		}
+		if (Main.netMode == NetmodeID.SinglePlayer)
+		{
+			Talked = true;
+		}
+		else
+		{
+			localSubmitted = true;
+			NeedDeltaSync = true;
+		}
+		return true;
+	}
+
 	public override void Update()
 	{
-		if (!CanProgress || Talked)
+		if (CanProgress && !Talked && Main.netMode == NetmodeID.MultiplayerClient
+			&& localSubmitted && WorldQuestManager.NetUpdate)
 		{
-			return;
-		}
-		// Dialogue is local presentation; world completion remains server-authoritative.
-		if (NetUtils.NotServer && Main.LocalPlayer.TalkNPC?.netID == NPCType && !string.IsNullOrEmpty(NPCText))
-		{
-			Main.npcChatText = NPCText;
-		}
-		if (NetUtils.IsSingle || NetUtils.IsMainServer)
-		{
-			foreach (var player in Main.ActivePlayers)
-			{
-				if (player.TalkNPC?.netID == NPCType)
-				{
-					Talked = true;
-				}
-			}
-		}
-		else if (NetUtils.IsSubServer)
-		{
-			oldTalking = talking;
-			talking = false;
-			foreach (var player in Main.ActivePlayers)
-			{
-				if (player.TalkNPC?.netID == NPCType)
-				{
-					talking = true;
-
-					if (!oldTalking // First frame sending
-						|| Main.timeForVisualEffects % 60 == 0) // Cyclical sending
-					{
-						NeedDeltaSync = true;
-					}
-
-					return;
-				}
-			}
+			NeedDeltaSync = true;
 		}
 	}
 
 	public override void ResetProgress()
 	{
 		base.ResetProgress();
+		NeedDeltaSync = false;
 		Talked = false;
-		talking = false;
-		oldTalking = false;
+		localSubmitted = false;
 	}
 
 	public override void SaveData(TagCompound tag)
@@ -107,6 +91,8 @@ public class WorldTalkObjective : WorldObjectiveBase
 	public override void LoadData(TagCompound tag)
 	{
 		base.LoadData(tag);
+		localSubmitted = false;
+		NeedDeltaSync = false;
 		if (tag.TryGet(nameof(Talked), out bool talked))
 		{
 			Talked = talked;
@@ -123,12 +109,12 @@ public class WorldTalkObjective : WorldObjectiveBase
 	{
 		base.NetReceive(reader);
 		Talked = reader.ReadBoolean();
+		ClearResolvedSubmission();
 	}
 
 	public override void SendDelta(BinaryWriter bw)
 	{
-		Console.WriteLine("Synced talk npc to main");
-		bw.Write(talking);
+		bw.Write(localSubmitted);
 		NeedDeltaSync = false;
 	}
 
@@ -145,5 +131,15 @@ public class WorldTalkObjective : WorldObjectiveBase
 	public override void ReceiveMain(BinaryReader br)
 	{
 		Talked = br.ReadBoolean();
+		ClearResolvedSubmission();
+	}
+
+	private void ClearResolvedSubmission()
+	{
+		if (Talked || Completed || IsTimedOut)
+		{
+			localSubmitted = false;
+			NeedDeltaSync = false;
+		}
 	}
 }

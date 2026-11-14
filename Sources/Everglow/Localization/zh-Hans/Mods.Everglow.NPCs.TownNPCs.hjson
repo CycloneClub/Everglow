@@ -23,7 +23,7 @@ CanteenMaid: {
 
 Fevens.DisplayName: 霏文士
 
-Guard_of_YggdrasilTown: {
+Guard_Of_YggdrasilTown: {
 	DisplayName: 天穹引路人
 
 	TownNPCMood: {
@@ -38,6 +38,13 @@ Guard_of_YggdrasilTown: {
 		NoHome: I hate not having a home.
 		Princess_LovesNPC: I like {NPCName}.
 	}
+}
+
+Herm: {
+	DisplayName: "赫姆"
+	Greeting: "你好，朋友。"
+	Waiting: "麻烦你把通勤卡带给工会。巴德尔会陪着我的。"
+	Silence: "……"
 }
 
 Howard_Warden.DisplayName: 警长霍华德

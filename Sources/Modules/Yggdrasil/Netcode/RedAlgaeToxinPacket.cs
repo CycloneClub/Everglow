@@ -97,7 +97,7 @@ public class RedAlgaeToxinPacket : IPacket
 				{
 					// Allow a small positional margin for the owner's hit arriving after a movement update.
 					var hitbox = source.Hitbox;
-					int margin = source.ModProjectile is RedAlgaeMagicSpellBook_proj book ? (int)book.MaxRange + 64
+					int margin = source.ModProjectile is RedAlgaeMagicSpellBook_Proj book ? (int)book.MaxRange + 64
 						: ProjectileID.Sets.IsAWhip[source.type] ? 480 : 96;
 					hitbox.Inflate(margin, margin);
 					if (!source.Colliding(source.Hitbox, npc.Hitbox) && !hitbox.Intersects(npc.Hitbox))
@@ -111,7 +111,7 @@ public class RedAlgaeToxinPacket : IPacket
 			{
 				return;
 			}
-			RedAlgae_FriendlyDebuff_glocalNPC.ResolveContact(npc, player, appliesToxin, data.applyOnly);
+			RedAlgae_FriendlyDebuff_GlocalNPC.ResolveContact(npc, player, appliesToxin, data.applyOnly);
 		}
 	}
 }

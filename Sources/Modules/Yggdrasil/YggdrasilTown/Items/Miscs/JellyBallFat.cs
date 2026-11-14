@@ -13,5 +13,7 @@ public class JellyBallFat : ModItem
 
 		Item.rare = ItemRarityID.Green;
 		Item.value = Item.buyPrice(silver: 1);
+
+		Item.questItem = true;
 	}
 }

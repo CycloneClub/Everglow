@@ -51,7 +51,7 @@ public class ConsumeItemObjective : PlayerObjectiveBase
 			return QuestText.Get("Objectives.ConsumeAny", itemString, ItemCount, progress);
 		}
 
-		return QuestText.Get("Objectives.Consume", ItemDrawer.Create(ItemTypes.First()), ItemCount, progress);
+		return QuestText.Get("Objectives.Consume", ItemDrawer.Create(ItemTypes.First(), ItemCount), progress);
 	}
 
 	public override void Activate(PlayerQuestBase sourceQuest)

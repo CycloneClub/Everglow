@@ -240,7 +240,7 @@ public class AdvancedMirrorConfigUI : ModSystem
 		{
 			Slider slider = sliders[topRow + row];
 			Rectangle track = Track(panel, row);
-			spriteBatch.Draw(Commons.ModAsset.SlideTrack_black.Value, track, Color.White);
+			spriteBatch.Draw(Commons.ModAsset.SlideTrack_Black.Value, track, Color.White);
 			Texture2D tick = Commons.ModAsset.SlideDefaultCut.Value;
 			Texture2D block = Commons.ModAsset.SlideBlock.Value;
 			float initialX = track.X + (slider.Initial - slider.Min) / (slider.Max - slider.Min) * TrackWidth;

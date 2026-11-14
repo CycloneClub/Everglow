@@ -9,7 +9,7 @@ Review code changes against conventions established by Everglow maintainers and 
 
 **Reviewer mindset:** Be polite but skeptical. Your job is to speed the review process for maintainers, which includes finding problems the PR author may have missed *and* questioning the value of the PR in its entirety. Treat the PR description and linked issues as claims to verify, not facts to accept. Question the stated direction, probe edge cases, and flag concerns even when unsure.
 
-This skill's rules stack on top of `AGENTS.md`; they never override it. If a rule here conflicts with `AGENTS.md` or a more specific module doc (e.g. `Sources/Everglow.Function/Mechanics/Quest/CONTRACTS.md`), the more specific file wins.
+This skill's rules stack on top of `AGENTS.md`; they never override it. If a rule here conflicts with `AGENTS.md` or a nearer guide (e.g. `Sources/Everglow.Function/Mechanics/Quest/AGENTS.md`), the nearer file wins.
 
 ## When to Use This Skill
 
@@ -25,14 +25,14 @@ Use this skill when:
 
 **Before analyzing anything**, read:
 1. `AGENTS.md` at the repository root — the project guide (architecture, build system, conventions, common pitfalls).
-2. Any module doc whose path matches the diff:
+2. Any module doc whose path matches the diff. A nearer `AGENTS.md` wins over the root guide:
    - `Sources/Modules/<Module>/<Module>Module.md` if it exists (e.g. `Sources/Modules/Food/FoodModule.md`)
-   - `Sources/Everglow.Function/Mechanics/Quest/{README,CONTRACTS}.md` if Quest code is touched
+   - `Sources/Everglow.Function/Mechanics/Quest/AGENTS.md` and `README.md` if Quest code is touched
    - `Sources/Everglow.Function/VFX/VFX.md` if VFX code is touched
    - `Sources/Everglow.Core/Utilities/Utils.md` if Core utils are touched
    - `Documents/源代码编译流程.md` if build pipeline / `Directory.Build.props` is touched
-   - `.cursor/rules/unit-testing-terraria-main.mdc` if tests touching `Terraria.Main` are touched
-3. Any `CONTRACTS.md` / `TODO.md` / `README.md` under `Sources/` whose path overlaps the diff.
+   - The root `AGENTS.md` section “Tests and Verification”, plus neighboring tests, if tests touch `Terraria.Main`
+3. Any `TODO.md` / `README.md` / `AGENTS.md` under `Sources/` whose path overlaps the diff.
 4. The neighboring files (same directory as the changed file) — to learn the local naming/layout convention.
 
 Treat all of these as the rule set for the review. If a required doc cannot be loaded, note it in the review and fall back to a careful first-principles review.
@@ -47,7 +47,7 @@ Collect code context **before** reading the PR description, linked issues, or ex
 4. **Sibling types and related code**: If the change fixes a bug or adds a pattern in one module/type, check whether sibling modules/types have the same issue (e.g. all modules sharing a `EverglowModule` base, all weapons inheriting `Clubs`/`Whips`/`Yoyos`). tML auto-loading is reflection-driven: a missing `[Autoload]` or wrong `LocalizationCategory` silently drops content.
 5. **Resource & localization peers**: When `*.hjson` localization files change, cross-check both `en-US/` and `zh-Hans/` copies exist and stay in sync (both are mandatory per AGENTS.md). When `*.png/.ogg/.fx/.atlas/.ttf` assets change, cross-check the resource type is on the Pack whitelist (`Sources/Directory.Build.props` or the module csproj).
 6. **Git history**: `git log --oneline -20 -- <file>` to spot recent churn, prior reverts, or parallel attempts.
-7. **Detect build-pipeline-affecting changes**: If the diff touches `Sources/Directory.Build.props`, any `*.csproj`, `Everglow.sln`, `.github/workflows/build-and-test.yml`, or `Sources/Directory.Build.targets`, treat it as a high-risk structural change and verify it stays in sync with the workflow's regeneration step (per AGENTS.md "CI 覆盖 Directory.Build.props").
+7. **Detect build-pipeline-affecting changes**: If the diff touches `Sources/Directory.Build.props`, `.github/workflows/Directory.Build.props`, any `*.csproj`, `Everglow.sln`, `.github/workflows/build-and-test.yml`, or `Sources/Directory.Build.targets`, treat it as a high-risk structural change. CI copies the workflow props file over `Sources/Directory.Build.props` before restore (AGENTS.md “Build and Test”).
 
 ### Step 2: Form an Independent Assessment
 
@@ -219,8 +219,8 @@ The summary verdict **must** be consistent with the findings in the body. Follow
 Apply these checks on every PR (in addition to the general process above). For each, the linked `AGENTS.md` section is the authoritative source.
 
 ### Build & Module System
-- [ ] New modules added to `Sources/Directory.Build.props` `<Modules>`? (AGENTS.md "构建系统关键点") If yes, was `.github/workflows/build-and-test.yml` regenerated to match (CI overwrites this file)?
-- [ ] New module `Everglow.<Name>.csproj` is an empty shell (no manual refs/using re-added)? (AGENTS.md "模块目录约定")
+- [ ] New modules added to `Sources/Directory.Build.props` `<Modules>`? (AGENTS.md “Build and Test”) If yes, was `.github/workflows/Directory.Build.props` kept in sync (CI copies that file over the Sources file)?
+- [ ] New module `Everglow.<Name>.csproj` is an empty shell (no manual refs/using re-added)? (AGENTS.md “Architecture and Placement”)
 - [ ] Cross-module type reference: did the author add a `<ProjectReference>` in the consuming module's csproj? (Don't rely on transitive refs from the main project.)
 - [ ] New resource type (not `.hjson/.txt/.png/.ogg/.wav/.mp3/.json/.atlas/.obj/.bmp/.mapio/.ttf`): is it added to the Pack whitelist?
 - [ ] Resource path: does code use `ModAsset.*` source-generated constants instead of hardcoded string paths? `Commons.ModAsset.*` for shared-library resources.
@@ -244,13 +244,12 @@ Apply these checks on every PR (in addition to the general process above). For e
 - [ ] Both `en-US/` and `zh-Hans/` entries created for every new content key.
 - [ ] No edits to `Localization/templates/` (templates must not be filled with real content).
 - [ ] No key added to the legacy root `Localization/en-US_Mods.Everglow.hjson` (new content goes under `Sources/Everglow/Localization/`).
-- [ ] When code reads text, uses `Language.GetTextValue("Mods.Everglow.Common.*")`; tile map names use `this.GetLocalization("MapEntry" + option)`.
+- [ ] Text lookups use the existing `Mods.Everglow.*` prefix for that feature (`Common`, `QuestSystem`, `Quests`, `ExtraTooltip`, and other prefixes already in localization). Tile map names use `this.GetLocalization("MapEntry" + option)`.
 
 ### Conventions
 - [ ] C# files use file-scoped namespace (`namespace Everglow.<Module>.<Area>.<Type>;`).
 - [ ] Tab indentation (width 4), LF, trailing newline, UTF-8 without BOM, Allman braces, braces mandatory on control statements.
-- [ ] No new `?` nullable annotations in `Sources/Everglow` or `Sources/Everglow.Function` (only `Everglow.UnitTests` enables `<Nullable>`).
-- [ ] Don't mass-reformat historical files — style is mixed deliberately (AGENTS.md "最小改动").
+- [ ] Don't mass-reformat historical files — style is mixed deliberately (AGENTS.md “Agent Boundaries”).
 - [ ] No binary/art assets committed (`.png/.obj/.ttf/.atlas/.xnb` under `Resources/`, `Libraries/`, module assets, `Tools/*.exe|dll`, `icon*.png` are read-only — do not modify).
 
 ### Tests

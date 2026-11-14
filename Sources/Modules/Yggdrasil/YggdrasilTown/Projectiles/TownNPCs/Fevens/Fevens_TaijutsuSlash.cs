@@ -4,7 +4,7 @@ using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.TownNPCs.Fevens;
 
-public class Fevens_TaijutsuSlash : ModProjectile, IWarpProjectile_warpStyle2
+public class Fevens_TaijutsuSlash : ModProjectile, IWarpProjectile_WarpStyle2
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.TownNPCProjectiles;
 

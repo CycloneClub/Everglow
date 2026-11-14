@@ -96,8 +96,8 @@ public class Living_Jawbone : ModNPC
 
 	public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
-		Texture2D upJaw = ModAsset.Living_Jawbone_up.Value;
-		Texture2D downJaw = ModAsset.Living_Jawbone_down.Value;
+		Texture2D upJaw = ModAsset.Living_Jawbone_Up.Value;
+		Texture2D downJaw = ModAsset.Living_Jawbone_Down.Value;
 		SpriteEffects spriteEffects = SpriteEffects.None;
 		if (NPC.spriteDirection == -1)
 		{
@@ -110,12 +110,12 @@ public class Living_Jawbone : ModNPC
 
 	public override void OnKill()
 	{
-		Gore.NewGore(NPC.GetSource_FromAI(), NPC.position + new Vector2(Main.rand.NextFloat(NPC.width), Main.rand.NextFloat(NPC.height)), new Vector2(0, -Main.rand.NextFloat(2, 4)).RotatedByRandom(MathHelper.TwoPi) + NPC.velocity, ModContent.Find<ModGore>("Everglow/Living_Jawbone_gore0").Type);
-		Gore.NewGore(NPC.GetSource_FromAI(), NPC.position + new Vector2(Main.rand.NextFloat(NPC.width), Main.rand.NextFloat(NPC.height)), new Vector2(0, -Main.rand.NextFloat(2, 4)).RotatedByRandom(MathHelper.TwoPi) + NPC.velocity, ModContent.Find<ModGore>("Everglow/Living_Jawbone_gore1").Type);
+		Gore.NewGore(NPC.GetSource_FromAI(), NPC.position + new Vector2(Main.rand.NextFloat(NPC.width), Main.rand.NextFloat(NPC.height)), new Vector2(0, -Main.rand.NextFloat(2, 4)).RotatedByRandom(MathHelper.TwoPi) + NPC.velocity, ModContent.Find<ModGore>("Everglow/Living_Jawbone_Gore0").Type);
+		Gore.NewGore(NPC.GetSource_FromAI(), NPC.position + new Vector2(Main.rand.NextFloat(NPC.width), Main.rand.NextFloat(NPC.height)), new Vector2(0, -Main.rand.NextFloat(2, 4)).RotatedByRandom(MathHelper.TwoPi) + NPC.velocity, ModContent.Find<ModGore>("Everglow/Living_Jawbone_Gore1").Type);
 		for (int i = 0; i < 16; i++)
 		{
 			Vector2 pos = NPC.position + new Vector2(Main.rand.NextFloat(NPC.width), Main.rand.NextFloat(NPC.height));
-			Dust dust = Dust.NewDustDirect(pos, 0, 0, ModContent.DustType<Dusts.TuskBreak_small>());
+			Dust dust = Dust.NewDustDirect(pos, 0, 0, ModContent.DustType<Dusts.TuskBreak_Small>());
 			dust.velocity = NPC.velocity + new Vector2(0, -Main.rand.NextFloat(0.7f, 1.2f)).RotatedByRandom(MathHelper.TwoPi);
 		}
 	}

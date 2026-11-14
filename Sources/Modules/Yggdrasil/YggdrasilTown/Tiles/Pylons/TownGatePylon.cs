@@ -83,7 +83,7 @@ public class TownGatePylon : EverglowPylonBase<TownGatePylonTileEntity>
 		color = Color.Lerp(color, Color.White, 0.2f);
 		spriteBatch.Draw(CrystalTexture.Value, drawingPosition - Main.screenPosition, crystalFrame, color * 0.7f, 0f, origin, 1f, SpriteEffects.None, 0f);
 
-		Texture2D glow = ModAsset.TownGatePylon_Crystal_glow.Value;
+		Texture2D glow = ModAsset.TownGatePylon_Crystal_Glow.Value;
 		spriteBatch.Draw(glow, drawingPosition - Main.screenPosition, crystalFrame, new Color(1f, 1f, 1f, 0), 0f, origin, 1f, SpriteEffects.None, 0f);
 
 		// Draw the shadow effect for the crystal
@@ -129,7 +129,7 @@ public class TownGatePylon : EverglowPylonBase<TownGatePylonTileEntity>
 		{
 			zero = Vector2.Zero;
 		}
-		Texture2D tex = ModAsset.HolographicPylon_glow.Value;
+		Texture2D tex = ModAsset.HolographicPylon_Glow.Value;
 		spriteBatch.Draw(tex, new Vector2(i * 16, j * 16) - Main.screenPosition + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16), new Color(1f, 1f, 1f, 0), 0, new Vector2(0), 1, SpriteEffects.None, 0);
 	}
 }

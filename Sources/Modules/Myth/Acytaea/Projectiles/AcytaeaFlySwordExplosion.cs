@@ -68,7 +68,7 @@ public class AcytaeaFlySwordExplosion : ModProjectile, IWarpProjectile
 		Main.spriteBatch.Draw(Shadow, Projectile.Center - Main.screenPosition, null, new Color(1f * (1 - timeValue), 0, 0.6f * (1 - timeValue) * (1 - timeValue), 0f) * dark, 0, Shadow.Size() / 2f, 2.2f * Projectile.ai[0] / 15f * dark, SpriteEffects.None, 0);
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-		DrawTexCircle(MathF.Sqrt(timeValue) * 24 * Projectile.ai[0], 8 * (1 - timeValue) * Projectile.ai[0], Color.White * (1 - timeValue), Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_black.Value);
+		DrawTexCircle(MathF.Sqrt(timeValue) * 24 * Projectile.ai[0], 8 * (1 - timeValue) * Projectile.ai[0], Color.White * (1 - timeValue), Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_Black.Value);
 		DrawTexCircle(MathF.Sqrt(timeValue) * 24 * Projectile.ai[0], 8 * (1 - timeValue) * Projectile.ai[0], new Color(1f * (1 - timeValue), 0, 0.6f * (1 - timeValue) * (1 - timeValue), 0f), Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_6.Value);
 	}
 

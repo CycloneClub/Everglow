@@ -120,7 +120,7 @@ public class SquamousRockSpike_Falling : ModProjectile
 		}
 		for (int x = 0; x < 8; x++)
 		{
-			Dust.NewDust(Projectile.Center - Projectile.velocity * 2 - new Vector2(4), Projectile.width, Projectile.height, ModContent.DustType<SquamousShellStone_dark>(), 0f, 0f, 0, default, 0.7f);
+			Dust.NewDust(Projectile.Center - Projectile.velocity * 2 - new Vector2(4), Projectile.width, Projectile.height, ModContent.DustType<SquamousShellStone_Dark>(), 0f, 0f, 0, default, 0.7f);
 		}
 		for (int x = 0; x <= 30; x++)
 		{
@@ -140,11 +140,11 @@ public class SquamousRockSpike_Falling : ModProjectile
 		{
 			return false;
 		}
-		var textureBloom = ModAsset.SquamousRockSpike_Falling_bloom.Value;
+		var textureBloom = ModAsset.SquamousRockSpike_Falling_Bloom.Value;
 		Main.spriteBatch.Draw(textureBloom, Projectile.Center - Main.screenPosition, null, new Color(1f, 1f, 1f, 0), Projectile.rotation, textureBloom.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
 		var texMain = (Texture2D)ModContent.Request<Texture2D>(Texture);
 		Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, texMain.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
-		var textureGlow = ModAsset.SquamousRockSpike_Falling_glow.Value;
+		var textureGlow = ModAsset.SquamousRockSpike_Falling_Glow.Value;
 		float breathValue = 0.5f + 0.5f * MathF.Sin((float)Main.timeForVisualEffects * 0.24f + Projectile.whoAmI);
 		Main.spriteBatch.Draw(textureGlow, Projectile.Center - Main.screenPosition, null, new Color(1f, 1f, 1f, breathValue) * breathValue, Projectile.rotation, textureGlow.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
 		return false;
@@ -261,7 +261,7 @@ public class SquamousRockSpike_Falling : ModProjectile
 		}
 		if (bars.Count > 2)
 		{
-			Texture2D t = Commons.ModAsset.Trail_4_black.Value;
+			Texture2D t = Commons.ModAsset.Trail_4_Black.Value;
 			Main.graphics.GraphicsDevice.Textures[0] = t;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}

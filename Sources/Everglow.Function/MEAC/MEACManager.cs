@@ -210,7 +210,7 @@ internal class MEACManager : ILoadable
 						break;
 					}
 				}
-				if (proj.ModProjectile is IWarpProjectile_warpStyle2)
+				if (proj.ModProjectile is IWarpProjectile_WarpStyle2)
 				{
 					if (result == WarpStyle.None)
 					{
@@ -256,7 +256,7 @@ internal class MEACManager : ILoadable
 		{
 			if (proj.active)
 			{
-				if (proj.ModProjectile is IWarpProjectile_warpStyle2 modProj2)
+				if (proj.ModProjectile is IWarpProjectile_WarpStyle2 modProj2)
 				{
 					modProj2.DrawWarp(Ins.Batch);
 				}

@@ -95,7 +95,7 @@ public class LightArrow : ModProjectile
 		Lighting.AddLight(Projectile.Center + Projectile.velocity.SafeNormalize(Vector2.zeroVector) * 20, new Vector3(0.8f, 0.6f, 0));
 		if (Main.rand.NextBool(5))
 		{
-			var dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<LampWood_Dust_fluorescent_appear>());
+			var dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<LampWood_Dust_Fluorescent_Appear>());
 			dust.alpha = 0;
 			dust.rotation = Main.rand.NextFloat(0.3f, 0.7f);
 			dust.scale *= 2f;
@@ -106,7 +106,7 @@ public class LightArrow : ModProjectile
 	{
 		var texMain = (Texture2D)ModContent.Request<Texture2D>(Texture);
 		Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation + MathF.PI, texMain.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
-		var texGlow = ModAsset.LightArrow_glow.Value;
+		var texGlow = ModAsset.LightArrow_Glow.Value;
 		Main.spriteBatch.Draw(texGlow, Projectile.Center - Main.screenPosition, null, new Color(1f, 1f, 1f, 0), Projectile.rotation + MathF.PI, texGlow.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
 		return false;
 	}
@@ -124,7 +124,7 @@ public class LightArrow : ModProjectile
 		Collision.HitTiles(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
 		for (int i = 0; i < 20; i++)
 		{
-			var dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<LampWood_Dust_fluorescent_appear>());
+			var dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<LampWood_Dust_Fluorescent_Appear>());
 			dust.alpha = 0;
 			dust.rotation = Main.rand.NextFloat(0.3f, 0.7f);
 			dust.scale *= 2f;
@@ -132,21 +132,21 @@ public class LightArrow : ModProjectile
 
 		// Generate Post-destruction VFX
 		// -----------------------------
-		// Create new LightStartEffect_arrow projectile at the locaiton where this projectile is killed
+		// Create new LightStartEffect_Arrow projectile at the locaiton where this projectile is killed
 		Projectile.NewProjectileDirect(
 			Projectile.GetSource_Death(),
 			Projectile.Center,
 			Vector2.Zero,
-			ModContent.ProjectileType<LightStartEffect_arrow>(),
+			ModContent.ProjectileType<LightStartEffect_Arrow>(),
 			0,
 			0,
 			Projectile.owner);
 
-		// Collect all active LightStartEffect_arrow projectiles
+		// Collect all active LightStartEffect_Arrow projectiles
 		// Sort the collected projectiles by timeLeft in descending order
 		// Get the top 5 projectiles (if they exist)
 		var topFiveActiveProjectiles = Main.projectile
-			.Where(proj => proj.active && proj.type == ModContent.ProjectileType<LightStartEffect_arrow>())
+			.Where(proj => proj.active && proj.type == ModContent.ProjectileType<LightStartEffect_Arrow>())
 			.OrderByDescending(l => l.timeLeft)
 			.Take(5)
 			.ToHashSet();
@@ -155,7 +155,7 @@ public class LightArrow : ModProjectile
 		foreach (var item in Main.projectile
 			.Where(proj =>
 				proj.active &&
-				proj.type == ModContent.ProjectileType<LightStartEffect_arrow>() &&
+				proj.type == ModContent.ProjectileType<LightStartEffect_Arrow>() &&
 				proj.timeLeft > 150 &&
 				!topFiveActiveProjectiles.Contains(proj)))
 		{

@@ -49,7 +49,7 @@ public class FocusRay : ModProjectile
 		Color c0 = new Color(energyValue, energyValue * energyValue, energyValue * energyValue * 0.5f, 0);
 		energyValue *= energyValue;
 		Vector2 size = new Vector2(2f, 2 * energyValue) * 0.7f * Projectile.scale;
-		Texture2D dark = Commons.ModAsset.StarSlash_black.Value;
+		Texture2D dark = Commons.ModAsset.StarSlash_Black.Value;
 		Main.spriteBatch.Draw(dark, Projectile.Center - Main.screenPosition, null, Color.White * 0.8f, Projectile.rotation, dark.Size() / 2f, size, SpriteEffects.None, 0);
 		Main.spriteBatch.Draw(dark, Projectile.Center - Main.screenPosition, null, Color.White * 0.8f, Projectile.rotation + MathHelper.Pi / 3f, dark.Size() / 2f, size, SpriteEffects.None, 0);
 		Main.spriteBatch.Draw(dark, Projectile.Center - Main.screenPosition, null, Color.White * 0.8f, Projectile.rotation + MathHelper.Pi / 3f * 2f, dark.Size() / 2f, size, SpriteEffects.None, 0);

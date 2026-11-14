@@ -27,7 +27,7 @@ public class SluiceWallLamp : ModTile
 		TileObjectData.newTile.Origin = new(1, 0);
 
 		TileObjectData.addTile(Type);
-		DustType = ModContent.DustType<SluiceWallLamp_dust>();
+		DustType = ModContent.DustType<SluiceWallLamp_Dust>();
 		AddMapEntry(new Color(255, 217, 142));
 	}
 

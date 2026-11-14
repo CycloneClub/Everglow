@@ -1,10 +1,11 @@
 using Everglow.Commons.Mechanics.Quest.PlayerSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.PlayerSide.Objectives;
 using Terraria.GameContent.Personalities;
+using Everglow.Example.Quest;
 
 namespace Everglow.Commons.Mechanics.Quest.PlayerSide.Tests;
 
-public class ExploreQuestTest : PlayerQuestBase
+public class ExploreQuestTest : ExamplePlayerQuest
 {
 	public override string DisplayName => nameof(ExploreQuestTest);
 

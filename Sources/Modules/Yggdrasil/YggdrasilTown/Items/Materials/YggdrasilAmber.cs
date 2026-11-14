@@ -6,9 +6,8 @@ public class YggdrasilAmber : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.maxStack = Item.CommonMaxStack;
-		Item.width = 24;
-		Item.height = 22;
-		Item.rare = ItemRarityID.White;
+		Item.DefaultToPlaceableTile(ModContent.TileType<Tiles.YggdrasilAmber>());
+		Item.width = 26;
+		Item.height = 30;
 	}
 }

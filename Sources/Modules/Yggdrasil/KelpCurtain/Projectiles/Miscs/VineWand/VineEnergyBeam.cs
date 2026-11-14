@@ -154,7 +154,7 @@ public class VineEnergyBeam : ModProjectile
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 
-		Texture2D flow_dark = Commons.ModAsset.Trail_9_black.Value;
+		Texture2D flow_dark = Commons.ModAsset.Trail_9_Black.Value;
 		Main.graphics.graphicsDevice.Textures[0] = flow_dark;
 		Main.graphics.graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars_dark.ToArray(), 0, bars_dark.Count - 2);
 

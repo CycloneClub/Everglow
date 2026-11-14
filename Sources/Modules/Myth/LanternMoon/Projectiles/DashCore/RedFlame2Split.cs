@@ -68,7 +68,7 @@ internal class RedFlame2Split : ModProjectile
 		}
 		if (Projectile.timeLeft > 100)
 		{
-			if (Projectile.timeLeft % 12 == 0)
+			if (Main.netMode != NetmodeID.MultiplayerClient && Projectile.timeLeft % 12 == 0)
 			{
 				Vector2 vm = Projectile.velocity.RotatedBy(1.57) * 0.35f;
 				Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, vm, ModContent.ProjectileType<RedFlame0Little>(), Projectile.damage, 0, Projectile.owner, 0, 0);

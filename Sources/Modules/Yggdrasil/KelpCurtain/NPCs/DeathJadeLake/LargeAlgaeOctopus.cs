@@ -590,7 +590,7 @@ public class LargeAlgaeOctopus : ModNPC
 	/// <param name="direction">The direction the cloud is launched in.</param>
 	private void SpawnInkCloud(Vector2 direction)
 	{
-		Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, direction * InkCloudSpeed, ModContent.ProjectileType<AlgaeOctopus_InkCloud>(), InkDamage, 0f, ai0: InkDamage, Owner: Main.maxPlayers);
+		Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, direction * InkCloudSpeed, ModContent.ProjectileType<AlgaeOctopus_InkCloud>(), InkDamage, 0f, ai0: InkDamage, Owner: -1);
 	}
 
 	/// <summary>

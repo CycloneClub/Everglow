@@ -85,7 +85,7 @@ namespace Everglow.EternalResolve.Projectiles
 				Projectile.NewProjectileDirect(
 					Projectile.GetSource_FromAI(),
 					Projectile.Center + Projectile.velocity * 150f,
-					Projectile.velocity * 27, ModContent.ProjectileType<EnchantedBayonet_beam>(),
+					Projectile.velocity * 27, ModContent.ProjectileType<EnchantedBayonet_Beam>(),
 					Projectile.damage, Projectile.knockBack * 0.6f, Projectile.owner, -1);
 			}
 			base.AI();

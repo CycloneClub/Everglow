@@ -205,14 +205,14 @@ public class LampFruitBorer : Caterpillar
 		for (int j = 0; j < Segments.Count; j++)
 		{
 			Vector2 v0 = new Vector2(0, Main.rand.NextFloat(0, 6f)).RotatedByRandom(MathHelper.TwoPi);
-			int type = ModContent.Find<ModGore>("Everglow/LampFruitBorer_gore1").Type;
+			int type = ModContent.Find<ModGore>("Everglow/LampFruitBorer_Gore1").Type;
 			if (j == 0)
 			{
-				type = ModContent.Find<ModGore>("Everglow/LampFruitBorer_gore0").Type;
+				type = ModContent.Find<ModGore>("Everglow/LampFruitBorer_Gore0").Type;
 			}
 			if (j == Segments.Count - 1)
 			{
-				type = ModContent.Find<ModGore>("Everglow/LampFruitBorer_gore2").Type;
+				type = ModContent.Find<ModGore>("Everglow/LampFruitBorer_Gore2").Type;
 			}
 			Gore.NewGore(NPC.GetSource_Death(), NPC.Center + Segments[j].SelfPosition, v0, type, NPC.scale);
 		}

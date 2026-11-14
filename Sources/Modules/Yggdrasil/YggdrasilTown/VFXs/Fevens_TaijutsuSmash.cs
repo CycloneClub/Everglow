@@ -4,7 +4,7 @@ public class Fevens_TaijutsuSmashPipeline : Pipeline
 {
 	public override void Load()
 	{
-		effect = ModAsset.Fevens_TaijutsuSmash_fog;
+		effect = ModAsset.Fevens_TaijutsuSmash_Fog;
 	}
 
 	public override void BeginRender()

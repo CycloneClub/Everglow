@@ -46,9 +46,9 @@ public class KelpCurtainGeneration
 		// UnforcablePlaceAreaOfTile(20, 9600, 155, 10650, ModContent.TileType<DragonScaleWood>());
 		//
 
-		// PlaceRectangleAreaOfWall(20, 9600, 155, 10650, ModContent.WallType<DragonScaleWoodWall>());
+		// PlaceRectangleAreaOfWall(20, 9600, 155, 10650, ModContent.WallType<DragonScaleWoodWall_Unsafe>());
 		UnforcablePlaceAreaOfTile(Main.maxTilesX - 125, (int)(Main.maxTilesY * 0.72f), Main.maxTilesX - 20, (int)(Main.maxTilesY * 0.9f), ModContent.TileType<DragonScaleWood>());
-		PlaceRectangleAreaOfWall(Main.maxTilesX - 125, (int)(Main.maxTilesY * 0.72f), Main.maxTilesX - 20, (int)(Main.maxTilesY * 0.9f), ModContent.WallType<DragonScaleWoodWall>());
+		PlaceRectangleAreaOfWall(Main.maxTilesX - 125, (int)(Main.maxTilesY * 0.72f), Main.maxTilesX - 20, (int)(Main.maxTilesY * 0.9f), ModContent.WallType<DragonScaleWoodWall_Unsafe>());
 		BuildBoundOf23Stratum();
 		BuildDeathJadeLake();
 		BuildTunnelTo2ndStratum();
@@ -142,7 +142,7 @@ public class KelpCurtainGeneration
 				countY++;
 				int x = step;
 				int type = ModContent.TileType<OldMoss>();
-				int wallType = ModContent.WallType<OldMossWall>();
+				int wallType = ModContent.WallType<OldMossWall_Unsafe>();
 				float stoneValue = 0;
 				if (countY <= 0)
 				{
@@ -166,12 +166,12 @@ public class KelpCurtainGeneration
 				if (stoneValue > 1)
 				{
 					type = ModContent.TileType<MossProneSandSoil>();
-					wallType = ModContent.WallType<MossProneSandSoilWall>();
+					wallType = ModContent.WallType<MossProneSandSoilWall_Unsafe>();
 				}
 				if (stoneValue > 2)
 				{
 					type = ModContent.TileType<YggdrasilGrayRock>();
-					wallType = ModContent.WallType<MossProneSandSoilWall>();
+					wallType = ModContent.WallType<MossProneSandSoilWall_Unsafe>();
 				}
 				if (!SafeGetTile(x, y).HasTile && stoneValue >= 0)
 				{
@@ -299,7 +299,7 @@ public class KelpCurtainGeneration
 			{
 				var tile = SafeGetTile(x, (int)(topPos.Y + 2));
 				tile.ClearEverything();
-				tile.WallType = (ushort)ModContent.WallType<OldMossWall>();
+				tile.WallType = (ushort)ModContent.WallType<OldMossWall_Unsafe>();
 				tile.TileType = (ushort)ModContent.TileType<OldMoss>();
 				tile.HasTile = true;
 				tile.Slope = SlopeType.Solid;
@@ -379,13 +379,13 @@ public class KelpCurtainGeneration
 					if (decayValue is > 0.2f and < 1f)
 					{
 						tile.HasTile = false;
-						tile.WallType = (ushort)ModContent.WallType<OldMossWall>();
+						tile.WallType = (ushort)ModContent.WallType<OldMossWall_Unsafe>();
 					}
 					if (decayValue is > 0.5f and < 0.7f)
 					{
 						tile.HasTile = true;
 						tile.TileType = (ushort)ModContent.TileType<OldMoss>();
-						tile.WallType = (ushort)ModContent.WallType<OldMossWall>();
+						tile.WallType = (ushort)ModContent.WallType<OldMossWall_Unsafe>();
 					}
 				}
 			}
@@ -422,13 +422,13 @@ public class KelpCurtainGeneration
 					if (decayValue is > 0.2f and < 1f)
 					{
 						tile.HasTile = false;
-						tile.WallType = (ushort)ModContent.WallType<OldMossWall>();
+						tile.WallType = (ushort)ModContent.WallType<OldMossWall_Unsafe>();
 					}
 					if (decayValue is > 0.5f and < 0.7f)
 					{
 						tile.HasTile = true;
 						tile.TileType = (ushort)ModContent.TileType<OldMoss>();
-						tile.WallType = (ushort)ModContent.WallType<OldMossWall>();
+						tile.WallType = (ushort)ModContent.WallType<OldMossWall_Unsafe>();
 					}
 				}
 			}
@@ -447,7 +447,7 @@ public class KelpCurtainGeneration
 		for (int t = 0; t < maxStep; t++)
 		{
 			CircleTile(checkPos, radius, ModContent.TileType<OldMoss>());
-			CircleWall(checkPos, radius - 1, ModContent.WallType<OldMossWall>());
+			CircleWall(checkPos, radius - 1, ModContent.WallType<OldMossWall_Unsafe>());
 			vel = vel * 0.98f + new Vector2(4, 0) * 0.02f;
 			checkPos += vel;
 			radius = radius * 0.99f + 34 * 0.01f;
@@ -598,11 +598,11 @@ public class KelpCurtainGeneration
 			{
 				if (pos.Y - tilePos.Y > value2 * 4 + value0 * 1.2f + 24)
 				{
-					tile.WallType = (ushort)ModContent.WallType<MossProneSandSoilWall>();
+					tile.WallType = (ushort)ModContent.WallType<MossProneSandSoilWall_Unsafe>();
 				}
 				else
 				{
-					tile.WallType = (ushort)ModContent.WallType<OldMossWall>();
+					tile.WallType = (ushort)ModContent.WallType<OldMossWall_Unsafe>();
 				}
 			}
 		}
@@ -614,7 +614,7 @@ public class KelpCurtainGeneration
 			radius = MathF.Max(radius, 10) * 1.4f;
 			PlaceCircleAreaOfBlockWithRandomNoise(tilePos + new Point(0, y), radius, ModContent.TileType<OldMoss>(), 3, (int)TileChangeState.HasTile);
 			PlaceCircleAreaOfBlockWithRandomNoise(tilePos + new Point(0, y), radius - 3, -1, 3, (int)TileChangeState.Forceful);
-			PlaceCircleAreaOfWallWithRandomNoise(tilePos + new Point(0, y), radius - 1, ModContent.WallType<OldMossWall>(), 3, (int)TileChangeState.HasWall);
+			PlaceCircleAreaOfWallWithRandomNoise(tilePos + new Point(0, y), radius - 1, ModContent.WallType<OldMossWall_Unsafe>(), 3, (int)TileChangeState.HasWall);
 		}
 
 		// Cave Visual Effects
@@ -629,7 +629,7 @@ public class KelpCurtainGeneration
 			}
 		}
 		var rayTile = SafeGetTile(tilePos + new Point(0, wallStart + 5));
-		rayTile.WallType = (ushort)ModContent.WallType<OldMossWall>();
+		rayTile.WallType = (ushort)ModContent.WallType<OldMossWall_Unsafe>();
 		rayTile.TileType = (ushort)ModContent.TileType<IsleOfBloom_CaveRay>();
 		rayTile.HasTile = true;
 
@@ -707,7 +707,7 @@ public class KelpCurtainGeneration
 					{
 						if (CheckSpaceRight(tilePos.X + checkX, tilePos.Y + y) > 11)
 						{
-							PlaceFrameImportantTiles(tilePos.X + checkX, tilePos.Y + y, 10, 1, ModContent.TileType<IslePeachTree_side>(), 180);
+							PlaceFrameImportantTiles(tilePos.X + checkX, tilePos.Y + y, 10, 1, ModContent.TileType<IslePeachTree_Side>(), 180);
 							IsleOfBloom_FillBlockHorizontally(tilePos + new Point(checkX - 1, y), true);
 						}
 					}
@@ -715,7 +715,7 @@ public class KelpCurtainGeneration
 					{
 						if (CheckSpaceLeft(tilePos.X + checkX, tilePos.Y + y) > 11)
 						{
-							PlaceFrameImportantTiles(tilePos.X + checkX - 10, tilePos.Y + y, 10, 1, ModContent.TileType<IslePeachTree_side>(), 0);
+							PlaceFrameImportantTiles(tilePos.X + checkX - 10, tilePos.Y + y, 10, 1, ModContent.TileType<IslePeachTree_Side>(), 0);
 							IsleOfBloom_FillBlockHorizontally(tilePos + new Point(checkX, y), false);
 						}
 					}
@@ -762,7 +762,7 @@ public class KelpCurtainGeneration
 				tile.TileType = (ushort)ModContent.TileType<DarkLakeBottomMud>();
 				if (y < height - 5)
 				{
-					tile.wall = (ushort)ModContent.WallType<DarkLakeBottomMudWall>();
+					tile.wall = (ushort)ModContent.WallType<DarkLakeBottomMudWall_Unsafe>();
 				}
 				tile.HasTile = true;
 			}
@@ -789,14 +789,14 @@ public class KelpCurtainGeneration
 			{
 				var checkPoint = tilePos + new Point(x, y);
 				var tile = SafeGetTile(checkPoint);
-				float toSidePeach = ToNearestTypeOfTile(tilePos.X + x, tilePos.Y + y, ModContent.TileType<IslePeachTree_side>(), 5).Length();
-				if (tile.WallType == ModContent.WallType<OldMossWall>() && !tile.HasTile && toSidePeach > 80)
+				float toSidePeach = ToNearestTypeOfTile(tilePos.X + x, tilePos.Y + y, ModContent.TileType<IslePeachTree_Side>(), 5).Length();
+				if (tile.WallType == ModContent.WallType<OldMossWall_Unsafe>() && !tile.HasTile && toSidePeach > 80)
 				{
 					if (toSidePeach < 130)
 					{
 						Main.NewText(toSidePeach);
 					}
-					tile.TileType = (ushort)ModContent.TileType<IslePeachTree_wall_large>();
+					tile.TileType = (ushort)ModContent.TileType<IslePeachTree_Wall_Large>();
 					tile.HasTile = true;
 					peachPos.Add(new Vector2(x, y));
 					if (peachPos.Count > 10)
@@ -824,14 +824,14 @@ public class KelpCurtainGeneration
 			{
 				var checkPoint = tilePos + new Point(x, y);
 				var tile = SafeGetTile(checkPoint);
-				float toSidePeach = ToNearestTypeOfTile(tilePos.X + x, tilePos.Y + y, ModContent.TileType<IslePeachTree_side>(), 5).Length();
-				if (tile.WallType == ModContent.WallType<OldMossWall>() && !tile.HasTile && toSidePeach > 80)
+				float toSidePeach = ToNearestTypeOfTile(tilePos.X + x, tilePos.Y + y, ModContent.TileType<IslePeachTree_Side>(), 5).Length();
+				if (tile.WallType == ModContent.WallType<OldMossWall_Unsafe>() && !tile.HasTile && toSidePeach > 80)
 				{
 					if (toSidePeach < 130)
 					{
 						Main.NewText(toSidePeach);
 					}
-					tile.TileType = (ushort)ModContent.TileType<IslePeachTree_wall_medium>();
+					tile.TileType = (ushort)ModContent.TileType<IslePeachTree_Wall_Medium>();
 					tile.HasTile = true;
 					peachPos.Add(new Vector2(x, y));
 					if (peachPos.Count > 22)
@@ -859,14 +859,14 @@ public class KelpCurtainGeneration
 			{
 				var checkPoint = tilePos + new Point(x, y);
 				var tile = SafeGetTile(checkPoint);
-				float toSidePeach = ToNearestTypeOfTile(tilePos.X + x, tilePos.Y + y, ModContent.TileType<IslePeachTree_side>(), 5).Length();
-				if (tile.WallType == ModContent.WallType<OldMossWall>() && !tile.HasTile && toSidePeach > 80)
+				float toSidePeach = ToNearestTypeOfTile(tilePos.X + x, tilePos.Y + y, ModContent.TileType<IslePeachTree_Side>(), 5).Length();
+				if (tile.WallType == ModContent.WallType<OldMossWall_Unsafe>() && !tile.HasTile && toSidePeach > 80)
 				{
 					if (toSidePeach < 130)
 					{
 						Main.NewText(toSidePeach);
 					}
-					tile.TileType = (ushort)ModContent.TileType<IslePeachTree_wall_small>();
+					tile.TileType = (ushort)ModContent.TileType<IslePeachTree_Wall_Small>();
 					tile.HasTile = true;
 					peachPos.Add(new Vector2(x, y));
 					if (peachPos.Count > 40)
@@ -921,7 +921,7 @@ public class KelpCurtainGeneration
 						var tile = SafeGetTile(checkPoint);
 						if (j >= 0)
 						{
-							tile.TileType = (ushort)ModContent.TileType<IslePeachTree_medium>();
+							tile.TileType = (ushort)ModContent.TileType<IslePeachTree_Medium>();
 							tile.HasTile = true;
 						}
 						else
@@ -968,7 +968,7 @@ public class KelpCurtainGeneration
 					var checkPoint = tilePos + new Point(x, y);
 					var tile = SafeGetTile(checkPoint);
 					surfaceY = y;
-					float toSidePeach = ToNearestTypeOfTile(tilePos.X + x, tilePos.Y + y, ModContent.TileType<IslePeachTree_medium>(), 3).Length();
+					float toSidePeach = ToNearestTypeOfTile(tilePos.X + x, tilePos.Y + y, ModContent.TileType<IslePeachTree_Medium>(), 3).Length();
 					if (tile.HasTile && tile.TileType == ModContent.TileType<OldMoss>() && toSidePeach > 48)
 					{
 						safe = true;
@@ -977,7 +977,7 @@ public class KelpCurtainGeneration
 				}
 				if (safe)
 				{
-					PlaceFrameImportantTilesAbove(tilePos.X + x, tilePos.Y + surfaceY, 1, 2, ModContent.TileType<IslePeachTree_small>());
+					PlaceFrameImportantTilesAbove(tilePos.X + x, tilePos.Y + surfaceY, 1, 2, ModContent.TileType<IslePeachTree_Small>());
 					IsleOfBloom_FillBlockBelow(tilePos + new Point(x, surfaceY));
 					peachPosX.Add(x);
 					if (peachPosX.Count > 5)
@@ -1067,7 +1067,7 @@ public class KelpCurtainGeneration
 				if (tile.HasTile && tile.TileType == ModContent.TileType<YggdrasilGrayRock>())
 				{
 					tile.TileType = (ushort)ModContent.TileType<OldMoss>();
-					tile.WallType = (ushort)ModContent.WallType<OldMossWall>();
+					tile.WallType = (ushort)ModContent.WallType<OldMossWall_Unsafe>();
 				}
 			}
 		}
@@ -1095,7 +1095,7 @@ public class KelpCurtainGeneration
 		}
 		wall_p0 -= new Point(65, 65);
 		leftWing_Wall.Add(wall_p0);
-		PlacePolygonAreaOfWall(leftWing_Wall, ModContent.WallType<YggdrasilGrayRockWall>(), (int)TileChangeState.NoWall);
+		PlacePolygonAreaOfWall(leftWing_Wall, ModContent.WallType<YggdrasilGrayRockWall_Unsafe>(), (int)TileChangeState.NoWall);
 		for (int t = 0; t < 5; t++)
 		{
 			IsleOfBloom_SoilPlatform(new Point(leftTail.X + t * 20, leftTail.Y - 20 - t * 20), 55);
@@ -1141,11 +1141,11 @@ public class KelpCurtainGeneration
 						{
 							if (dy > GetPerlinPixelB(pos.X, dy + 5) * 5 + 13)
 							{
-								tile.WallType = (ushort)ModContent.WallType<MossProneSandSoilWall>();
+								tile.WallType = (ushort)ModContent.WallType<MossProneSandSoilWall_Unsafe>();
 							}
 							else
 							{
-								tile.WallType = (ushort)ModContent.WallType<OldMossWall>();
+								tile.WallType = (ushort)ModContent.WallType<OldMossWall_Unsafe>();
 							}
 							tile.HasTile = true;
 						}
@@ -1163,9 +1163,9 @@ public class KelpCurtainGeneration
 			}
 		}
 		PlaceCircleAreaOfBlockWithRandomNoise(tilePos + new Point(0, 18), 12, ModContent.TileType<MossProneSandSoil>(), 10, (int)TileChangeState.NoTile);
-		PlaceCircleAreaOfWallWithRandomNoise(tilePos + new Point(0, 18), 9, (ushort)ModContent.WallType<MossProneSandSoilWall>(), 10, (int)TileChangeState.NoTile);
+		PlaceCircleAreaOfWallWithRandomNoise(tilePos + new Point(0, 18), 9, (ushort)ModContent.WallType<MossProneSandSoilWall_Unsafe>(), 10, (int)TileChangeState.NoTile);
 		PlaceCircleAreaOfBlockWithRandomNoise(tilePos + new Point(0, 18), 18, ModContent.TileType<OldMoss>(), 10, (int)TileChangeState.NoTile);
-		PlaceCircleAreaOfWallWithRandomNoise(tilePos + new Point(0, 18), 15, (ushort)ModContent.WallType<OldMossWall>(), 10, (int)TileChangeState.NoTile);
+		PlaceCircleAreaOfWallWithRandomNoise(tilePos + new Point(0, 18), 15, (ushort)ModContent.WallType<OldMossWall_Unsafe>(), 10, (int)TileChangeState.NoTile);
 	}
 
 	public static void IsleOfBloom_PlantBamboo(Point tilePos)
@@ -1435,11 +1435,11 @@ public class KelpCurtainGeneration
 				var tile = SafeGetTile(pos);
 				if (tile.TileType == ModContent.TileType<OldMoss>())
 				{
-					tile.WallType = (ushort)ModContent.WallType<OldMossWall>();
+					tile.WallType = (ushort)ModContent.WallType<OldMossWall_Unsafe>();
 				}
 				if (tile.TileType == ModContent.TileType<YggdrasilGrayRock>())
 				{
-					tile.WallType = (ushort)ModContent.WallType<YggdrasilGrayRockWall>();
+					tile.WallType = (ushort)ModContent.WallType<YggdrasilGrayRockWall_Unsafe>();
 				}
 			}
 			count++;
@@ -1472,11 +1472,11 @@ public class KelpCurtainGeneration
 					}
 				}
 			}
-			if (tile.WallType != ModContent.WallType<OldMossWall>())
+			if (tile.WallType != ModContent.WallType<OldMossWall_Unsafe>())
 			{
 				if (GetPerlinPixelR(pos.X, pos.Y) > 0.8f)
 				{
-					tile.WallType = (ushort)ModContent.WallType<OldMossWall>();
+					tile.WallType = (ushort)ModContent.WallType<OldMossWall_Unsafe>();
 				}
 				else
 				{
@@ -1521,7 +1521,7 @@ public class KelpCurtainGeneration
 		}
 		MazeBoundPolygon.Add(new Vector2(lakeCenterX + distance_Center_Right, yBoundTop) * 16);
 		PlacePolygonBoundOfBlock(MazeBoundPolygon, ModContent.TileType<YggdrasilBlackRock>(), 40, (int)TileChangeState.Forceful);
-		PlacePolygonBoundOfWall(MazeBoundPolygon, ModContent.WallType<YggdrasilBlackRockWall>(), 40, (int)TileChangeState.Forceful);
+		PlacePolygonBoundOfWall(MazeBoundPolygon, ModContent.WallType<YggdrasilBlackRockWall_Unsafe>(), 40, (int)TileChangeState.Forceful);
 
 		// Random seed Points
 		List<Point> seeds = GenerateRandomSeeds(xBoundLeft - 30, xBoundRight + 30, yBoundTop - 30, yBoundBottom + 30, 180, 25);
@@ -1540,7 +1540,7 @@ public class KelpCurtainGeneration
 					}
 					if (MazeUnderLake_IsEdgePoint(x, y, seeds, 1.8f))
 					{
-						tile.WallType = (ushort)ModContent.WallType<YggdrasilBlackRockWall>();
+						tile.WallType = (ushort)ModContent.WallType<YggdrasilBlackRockWall_Unsafe>();
 					}
 				}
 			}
@@ -1560,7 +1560,7 @@ public class KelpCurtainGeneration
 						tile.HasTile = true;
 						if (value > -GetPerlinPixelG(x, y) * 4f - 3f && value < GetPerlinPixelR(x, y) * 4f + 3f)
 						{
-							tile.WallType = (ushort)ModContent.WallType<YggdrasilBlackRockWall>();
+							tile.WallType = (ushort)ModContent.WallType<YggdrasilBlackRockWall_Unsafe>();
 						}
 					}
 				}
@@ -1785,7 +1785,7 @@ public class KelpCurtainGeneration
 						pos.Y = pos.Y * 0.9f + entranceCenter.Y * 0.1f;
 						curve_polygon[m] = pos;
 					}
-					PlacePolygonAreaOfWall(curve_polygon, ModContent.WallType<YggdrasilBlackRockWall>(), (int)TileChangeState.Forceful);
+					PlacePolygonAreaOfWall(curve_polygon, ModContent.WallType<YggdrasilBlackRockWall_Unsafe>(), (int)TileChangeState.Forceful);
 					Vector2 des = Vector2.Lerp(top_Vertex, entranceCenter, 1.7f);
 					PlaceLineBlock(des, Vector2.Lerp(top_Vertex, entranceCenter, -0.2f), 48, -1, (int)TileChangeState.Forceful);
 
@@ -1854,7 +1854,7 @@ public class KelpCurtainGeneration
 						{
 							var checkTile = SafeGetTile(pos);
 							checkTile.TileType = (ushort)ModContent.TileType<YggdrasilBlackRock>();
-							checkTile.wall = (ushort)ModContent.WallType<YggdrasilBlackRockWall>();
+							checkTile.wall = (ushort)ModContent.WallType<YggdrasilBlackRockWall_Unsafe>();
 							checkTile.HasTile = true;
 						}
 					}
@@ -1862,7 +1862,7 @@ public class KelpCurtainGeneration
 			}
 			List<int> noSolidMazeTile = new List<int>(WaterDeliveryHoleTiles);
 			noSolidMazeTile.Add(ModContent.TileType<CrimsonMoonAlgea>());
-			noSolidMazeTile.Add(ModContent.TileType<CrimsonMoonAlgea_fruit>());
+			noSolidMazeTile.Add(ModContent.TileType<CrimsonMoonAlgea_Fruit>());
 			noSolidMazeTile.Add(ModContent.TileType<JadeLakeBloodVineAlgea>());
 			noSolidMazeTile.Add(ModContent.TileType<JadeLakeRedAlgae>());
 			noSolidMazeTile.Add(ModContent.TileType<AgedOxygenTank>());
@@ -1888,7 +1888,7 @@ public class KelpCurtainGeneration
 						var checkTile = SafeGetTile(pos);
 						if (checkTile.wall == 0 && pos.Y > avg_seeds_Y + GetPerlinPixelG(pos.X, pos.Y) * 30)
 						{
-							checkTile.wall = (ushort)ModContent.WallType<YggdrasilBlackRockWall>();
+							checkTile.wall = (ushort)ModContent.WallType<YggdrasilBlackRockWall_Unsafe>();
 						}
 					}
 				}
@@ -1936,7 +1936,7 @@ public class KelpCurtainGeneration
 							sandTile.HasTile = true;
 							if (y > topSandY + 1)
 							{
-								sandTile.wall = (ushort)ModContent.WallType<DecaySandSoilWall>();
+								sandTile.wall = (ushort)ModContent.WallType<DecaySandSoilWall_Unsafe>();
 							}
 						}
 					}
@@ -1980,7 +1980,7 @@ public class KelpCurtainGeneration
 			{
 				tile.TileType = (ushort)ModContent.TileType<HumicMud>();
 				tile.HasTile = true;
-				PlaceWallAround(pos, (ushort)ModContent.WallType<DarkLakeBottomMudWall>(), true, false);
+				PlaceWallAround(pos, (ushort)ModContent.WallType<DarkLakeBottomMudWall_Unsafe>(), true, false);
 			}
 		}
 		foreach (var pos in tiles)
@@ -2014,7 +2014,7 @@ public class KelpCurtainGeneration
 			Tile tile = SafeGetTile(pos);
 			if (GetPerlinPixelR(pos.X, pos.Y * 4) > 0.2f && tile.WallType == WallID.None)
 			{
-				tile.WallType = (ushort)ModContent.WallType<YggdrasilBlackRockWall>();
+				tile.WallType = (ushort)ModContent.WallType<YggdrasilBlackRockWall_Unsafe>();
 			}
 		}
 		SmoothTile_List(tiles);
@@ -2034,7 +2034,7 @@ public class KelpCurtainGeneration
 			{
 				tile.TileType = (ushort)ModContent.TileType<HydraMud>();
 				tile.HasTile = true;
-				PlaceWallAround(pos, (ushort)ModContent.WallType<DarkLakeBottomMudWall>(), true, false);
+				PlaceWallAround(pos, (ushort)ModContent.WallType<DarkLakeBottomMudWall_Unsafe>(), true, false);
 			}
 		}
 		MazeUnderLake_ClearChannel(tiles);
@@ -2087,7 +2087,7 @@ public class KelpCurtainGeneration
 			Tile tile = SafeGetTile(pos);
 			if (tile.WallType == WallID.None)
 			{
-				tile.WallType = (ushort)ModContent.WallType<YggdrasilBlackRockWall>();
+				tile.WallType = (ushort)ModContent.WallType<YggdrasilBlackRockWall_Unsafe>();
 			}
 			if (GenRand.NextBool(12) && !tile.HasTile)
 			{
@@ -2133,7 +2133,7 @@ public class KelpCurtainGeneration
 			{
 				tile.TileType = (ushort)ModContent.TileType<HumicMud>();
 				tile.HasTile = true;
-				PlaceWallAround(pos, (ushort)ModContent.WallType<DarkLakeBottomMudWall>(), true, false);
+				PlaceWallAround(pos, (ushort)ModContent.WallType<DarkLakeBottomMudWall_Unsafe>(), true, false);
 			}
 		}
 		center *= 1f / tiles.Count;
@@ -2256,7 +2256,7 @@ public class KelpCurtainGeneration
 			{
 				tile.TileType = (ushort)ModContent.TileType<DarkLakeBottomMud>();
 				tile.HasTile = true;
-				PlaceWallAround(pos, (ushort)ModContent.WallType<DarkLakeBottomMudWall>(), true, false);
+				PlaceWallAround(pos, (ushort)ModContent.WallType<DarkLakeBottomMudWall_Unsafe>(), true, false);
 			}
 		}
 		MazeUnderLake_ClearChannel(tiles);
@@ -2301,7 +2301,7 @@ public class KelpCurtainGeneration
 				algeeTile.TileType = (ushort)ModContent.TileType<CrimsonMoonAlgea>();
 				if (j == height)
 				{
-					algeeTile.TileType = (ushort)ModContent.TileType<CrimsonMoonAlgea_fruit>();
+					algeeTile.TileType = (ushort)ModContent.TileType<CrimsonMoonAlgea_Fruit>();
 				}
 				algeeTile.HasTile = true;
 			}
@@ -2389,7 +2389,7 @@ public class KelpCurtainGeneration
 			if (GetPerlinPixelR(pos.X * 3, pos.Y * 3) > 0.3f)
 			{
 				var tile = SafeGetTile(pos);
-				tile.WallType = (ushort)ModContent.WallType<DarkLakeBottomMudWall>();
+				tile.WallType = (ushort)ModContent.WallType<DarkLakeBottomMudWall_Unsafe>();
 				if (GenRand.NextBool(5) && !tile.HasTile)
 				{
 					tile.TileType = (ushort)ModContent.TileType<JadeLakeRedAlgae>();
@@ -3018,7 +3018,7 @@ public class KelpCurtainGeneration
 			{
 				break;
 			}
-			checkTile.wall = (ushort)ModContent.WallType<YggdrasilBlackRockWall>();
+			checkTile.wall = (ushort)ModContent.WallType<YggdrasilBlackRockWall_Unsafe>();
 		}
 	}
 
@@ -3125,7 +3125,7 @@ public class KelpCurtainGeneration
 				}
 				if (y > sandLayerTopY + 3)
 				{
-					tile.WallType = (ushort)ModContent.WallType<DecaySandSoilWall>();
+					tile.WallType = (ushort)ModContent.WallType<DecaySandSoilWall_Unsafe>();
 				}
 			}
 		}
@@ -3300,7 +3300,7 @@ public class KelpCurtainGeneration
 			int checkX = checkXRoom2 + k * 15;
 			int checkY = checkYRoom2 + (k % 2 == 0 ? 3 : 0);
 			Tile lamp = SafeGetTile(checkX, checkY);
-			if ((!lamp.HasTile || lamp.TileType != ModContent.TileType<WaterErodedGreenBrick>()) && lamp.wall == ModContent.WallType<WaterErodedGreenBrickWall_Fixed>())
+			if ((!lamp.HasTile || lamp.TileType != ModContent.TileType<WaterErodedGreenBrick>()) && lamp.wall == ModContent.WallType<WaterErodedGreenBrickWall_Fixed_Unsafe>())
 			{
 				lamp.TileType = (ushort)ModContent.TileType<NoctilucentFluoriteLump>();
 				lamp.HasTile = true;
@@ -3337,7 +3337,7 @@ public class KelpCurtainGeneration
 					tile.HasTile = false;
 					if (boundValue > 1)
 					{
-						tile.WallType = (ushort)ModContent.WallType<WaterErodedGreenBrickWall_Fixed>();
+						tile.WallType = (ushort)ModContent.WallType<WaterErodedGreenBrickWall_Fixed_Unsafe>();
 						tile.liquid = (byte)LiquidID.Water;
 						tile.LiquidAmount = 255;
 					}
@@ -3430,7 +3430,7 @@ public class KelpCurtainGeneration
 						if (distance < halfWidth - (sideThick - 1))
 						{
 							tile.HasTile = false;
-							tile.WallType = (ushort)ModContent.WallType<WaterErodedGreenBrickWall_Fixed>();
+							tile.WallType = (ushort)ModContent.WallType<WaterErodedGreenBrickWall_Fixed_Unsafe>();
 							tile.liquid = (byte)LiquidID.Water;
 							tile.LiquidAmount = 255;
 						}
@@ -3440,7 +3440,7 @@ public class KelpCurtainGeneration
 							tile.TileType = (ushort)ModContent.TileType<WaterErodedGreenBrick>();
 							if (distance < halfWidth)
 							{
-								tile.WallType = (ushort)ModContent.WallType<WaterErodedGreenBrickWall_Fixed>();
+								tile.WallType = (ushort)ModContent.WallType<WaterErodedGreenBrickWall_Fixed_Unsafe>();
 							}
 						}
 					}
@@ -3529,7 +3529,7 @@ public class KelpCurtainGeneration
 		for (int s = 0; s < trailPos.Count; s++)
 		{
 			PlaceSquareAreaOfBlock(trailPos[s], (int)width, ModContent.TileType<WaterErodedGreenBrick>());
-			PlaceSquareAreaOfWall(trailPos[s], (int)width - 1, ModContent.WallType<WaterErodedGreenBrickWall_Fixed>());
+			PlaceSquareAreaOfWall(trailPos[s], (int)width - 1, ModContent.WallType<WaterErodedGreenBrickWall_Fixed_Unsafe>());
 		}
 
 		// Build the inner Tunnel
@@ -3658,17 +3658,17 @@ public class KelpCurtainGeneration
 		if (dirX < 0)
 		{
 			KillRectangleAreaOfTile(trailPos[^1].X - (int)width - overLength, trailPos[^1].Y - (int)centerThick, trailPos[^1].X, trailPos[^1].Y + (int)centerThick);
-			PlaceRectangleAreaOfWall(trailPos[^1].X - (int)width - overLength, trailPos[^1].Y - (int)centerThick, trailPos[^1].X, trailPos[^1].Y + (int)centerThick, ModContent.WallType<WaterErodedGreenBrickWall_Fixed>());
+			PlaceRectangleAreaOfWall(trailPos[^1].X - (int)width - overLength, trailPos[^1].Y - (int)centerThick, trailPos[^1].X, trailPos[^1].Y + (int)centerThick, ModContent.WallType<WaterErodedGreenBrickWall_Fixed_Unsafe>());
 			PlaceRectangleAreaOfLiquid(trailPos[^1].X - (int)width - overLength, trailPos[^1].Y - (int)centerThick, trailPos[^1].X, trailPos[^1].Y + (int)centerThick, LiquidID.Water);
 		}
 		else
 		{
 			KillRectangleAreaOfTile(trailPos[^1].X, trailPos[^1].Y - (int)centerThick, trailPos[^1].X + (int)width + overLength, trailPos[^1].Y + (int)centerThick);
-			PlaceRectangleAreaOfWall(trailPos[^1].X, trailPos[^1].Y - (int)centerThick, trailPos[^1].X + (int)width + overLength, trailPos[^1].Y + (int)centerThick, ModContent.WallType<WaterErodedGreenBrickWall_Fixed>());
+			PlaceRectangleAreaOfWall(trailPos[^1].X, trailPos[^1].Y - (int)centerThick, trailPos[^1].X + (int)width + overLength, trailPos[^1].Y + (int)centerThick, ModContent.WallType<WaterErodedGreenBrickWall_Fixed_Unsafe>());
 			PlaceRectangleAreaOfLiquid(trailPos[^1].X, trailPos[^1].Y - (int)centerThick, trailPos[^1].X + (int)width + overLength, trailPos[^1].Y + (int)centerThick, LiquidID.Water);
 		}
 		KillRectangleAreaOfTile(trailPos[0].X - (int)centerThick, trailPos[0].Y - (int)width, trailPos[0].X + (int)centerThick, trailPos[0].Y);
-		PlaceRectangleAreaOfWall(trailPos[0].X - (int)centerThick, trailPos[0].Y - (int)width, trailPos[0].X + (int)centerThick, trailPos[0].Y, ModContent.WallType<WaterErodedGreenBrickWall_Fixed>());
+		PlaceRectangleAreaOfWall(trailPos[0].X - (int)centerThick, trailPos[0].Y - (int)width, trailPos[0].X + (int)centerThick, trailPos[0].Y, ModContent.WallType<WaterErodedGreenBrickWall_Fixed_Unsafe>());
 		PlaceRectangleAreaOfLiquid(trailPos[0].X - (int)centerThick, trailPos[0].Y - (int)width, trailPos[0].X + (int)centerThick, trailPos[0].Y, LiquidID.Water);
 	}
 
@@ -3732,13 +3732,13 @@ public class KelpCurtainGeneration
 					}
 					else
 					{
-						tile.WallType = (ushort)ModContent.WallType<YggdrasilBlackRockWall>();
+						tile.WallType = (ushort)ModContent.WallType<YggdrasilBlackRockWall_Unsafe>();
 					}
 				}
 				else
 				{
 					ChangeTile(tile, ModContent.TileType<YggdrasilBlackRock>(), (int)TileChangeState.Forceful);
-					tile.WallType = (ushort)ModContent.WallType<YggdrasilBlackRockWall>();
+					tile.WallType = (ushort)ModContent.WallType<YggdrasilBlackRockWall_Unsafe>();
 				}
 			}
 			tile.LiquidType = LiquidID.Water;
@@ -3746,7 +3746,7 @@ public class KelpCurtainGeneration
 		}
 
 		PlaceLineBlock(caveCenter, room_centroid, 12 * 16, ModContent.TileType<YggdrasilBlackRock>(), (int)TileChangeState.SolidBlock);
-		PlaceLineWall(caveCenter, room_centroid, 12 * 16, ModContent.WallType<YggdrasilBlackRockWall>(), (int)TileChangeState.SolidBlock);
+		PlaceLineWall(caveCenter, room_centroid, 12 * 16, ModContent.WallType<YggdrasilBlackRockWall_Unsafe>(), (int)TileChangeState.SolidBlock);
 		PlaceLineBlock(caveCenter, room_centroid, 8 * 16, -1, (int)TileChangeState.SolidBlock);
 
 		// Board Sign
@@ -3800,7 +3800,7 @@ public class KelpCurtainGeneration
 		}
 		PlacePolygonAreaOfBlock(barnaclePolygonRoom, -1, (int)TileChangeState.Forceful);
 		PlacePolygonBoundOfBlock(barnaclePolygonRoom, ModContent.TileType<SharpBarnacleLayer>(), 48, (int)TileChangeState.NoTile);
-		PlacePolygonAreaOfWall(barnaclePolygonRoom, ModContent.WallType<SharpBarnacleWall>(), (int)TileChangeState.Forceful);
+		PlacePolygonAreaOfWall(barnaclePolygonRoom, ModContent.WallType<SharpBarnacleWall_Unsafe>(), (int)TileChangeState.Forceful);
 		List<Point> barnacleRoom = GetPolygonAreaOfTilePos(barnaclePolygonRoom);
 		foreach (var pos in barnacleRoom)
 		{
@@ -3831,7 +3831,7 @@ public class KelpCurtainGeneration
 			checkVel = checkVel * 0.92f + toTarget * 128 * 0.08f;
 		}
 		PlaceCurveBlock(path_to_vampire_cave, 16 * 16, ModContent.TileType<YggdrasilBlackRock>(), (int)TileChangeState.HasTile);
-		PlaceCurveWall(path_to_vampire_cave, 16 * 16, ModContent.WallType<YggdrasilBlackRockWall>(), (int)TileChangeState.HasTile);
+		PlaceCurveWall(path_to_vampire_cave, 16 * 16, ModContent.WallType<YggdrasilBlackRockWall_Unsafe>(), (int)TileChangeState.HasTile);
 		PlaceCurveBlock(path_to_vampire_cave, 12 * 16, -1, (int)TileChangeState.HasTile);
 		PlaceCurveLiquid(path_to_vampire_cave, 16 * 16, LiquidID.Water, (int)TileChangeState.HasTile);
 
@@ -3922,14 +3922,14 @@ public class KelpCurtainGeneration
 				Tile tile = SafeGetTile(x, y);
 				if (MathF.Abs(h) < height * hValue)
 				{
-					tile.WallType = (ushort)ModContent.WallType<OldMossWall>();
+					tile.WallType = (ushort)ModContent.WallType<OldMossWall_Unsafe>();
 					tile.HasTile = false;
 				}
 				else
 				{
 					tile.HasTile = true;
 					tile.TileType = (ushort)ModContent.TileType<OldMoss>();
-					tile.WallType = (ushort)ModContent.WallType<OldMossWall>();
+					tile.WallType = (ushort)ModContent.WallType<OldMossWall_Unsafe>();
 				}
 			}
 		}
@@ -3969,14 +3969,14 @@ public class KelpCurtainGeneration
 				Tile tile = SafeGetTile(x, y);
 				if (MathF.Abs(h) < height * hValue)
 				{
-					tile.WallType = (ushort)ModContent.WallType<OldMossWall>();
+					tile.WallType = (ushort)ModContent.WallType<OldMossWall_Unsafe>();
 					tile.HasTile = false;
 				}
 				else
 				{
 					tile.HasTile = true;
 					tile.TileType = (ushort)ModContent.TileType<OldMoss>();
-					tile.WallType = (ushort)ModContent.WallType<OldMossWall>();
+					tile.WallType = (ushort)ModContent.WallType<OldMossWall_Unsafe>();
 				}
 			}
 		}
@@ -4025,13 +4025,13 @@ public class KelpCurtainGeneration
 							if (checkDir.Length() < halfWidth - 1)
 							{
 								tile.HasTile = false;
-								tile.WallType = (ushort)ModContent.WallType<OldMossWall>();
+								tile.WallType = (ushort)ModContent.WallType<OldMossWall_Unsafe>();
 							}
 							else
 							{
 								tile.HasTile = true;
 								tile.TileType = (ushort)ModContent.TileType<OldMoss>();
-								tile.WallType = (ushort)ModContent.WallType<OldMossWall>();
+								tile.WallType = (ushort)ModContent.WallType<OldMossWall_Unsafe>();
 							}
 						}
 					}
@@ -4094,7 +4094,7 @@ public class KelpCurtainGeneration
 			if (checkPos.Y <= Main.maxTilesY * 0.91)
 			{
 				CircleTile(checkPos, 30, ModContent.TileType<DragonScaleWood>());
-				CircleWall(checkPos, 28, ModContent.WallType<DragonScaleWoodWall>());
+				CircleWall(checkPos, 28, ModContent.WallType<DragonScaleWoodWall_Unsafe>());
 			}
 			KelpCurtainBiome.StratumBoundCurve.Add(checkPos.ToPoint());
 			checkPos += checkVel;

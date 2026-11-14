@@ -53,7 +53,7 @@ public class GlowMoonBlade : ModProjectile
 			if (!HasHitTile && Energy > 50f)
 			{
 				HasHitTile = true;
-				Projectile p0 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<GlowMoonBlade_ash>(), Projectile.damage * 3 / 2, Projectile.knockBack, player.whoAmI, player.direction);
+				Projectile p0 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<GlowMoonBlade_Ash>(), Projectile.damage * 3 / 2, Projectile.knockBack, player.whoAmI, player.direction);
 				p0.rotation = Projectile.rotation + MathF.PI / 2f;
 				for (int x = 0; x < 60; x++)
 				{
@@ -74,7 +74,7 @@ public class GlowMoonBlade : ModProjectile
 			if (!HasHitTile && Energy <= 50f)
 			{
 				HasHitTile = true;
-				Projectile p0 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<GlowMoonBlade_ash>(), 0, Projectile.knockBack, player.whoAmI, player.direction);
+				Projectile p0 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<GlowMoonBlade_Ash>(), 0, Projectile.knockBack, player.whoAmI, player.direction);
 				p0.rotation = Projectile.rotation + MathF.PI / 2f;
 				p0.scale = Energy / 50f;
 			}
@@ -130,7 +130,7 @@ public class GlowMoonBlade : ModProjectile
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		target.AddBuff(BuffID.OnFire, 120);
-		Projectile p0 = Projectile.NewProjectileDirect(Projectile.GetSource_OnHit(target), target.Center, Vector2.zeroVector, ModContent.ProjectileType<GlowMoonBlade_ash>(), Projectile.damage / 2, Projectile.knockBack / 4f, Projectile.owner);
+		Projectile p0 = Projectile.NewProjectileDirect(Projectile.GetSource_OnHit(target), target.Center, Vector2.zeroVector, ModContent.ProjectileType<GlowMoonBlade_Ash>(), Projectile.damage / 2, Projectile.knockBack / 4f, Projectile.owner);
 		p0.rotation = Projectile.rotation + Main.rand.NextFloat(-0.8f, 0.8f);
 		p0.scale = 0.6f;
 		if (Energy < 50)

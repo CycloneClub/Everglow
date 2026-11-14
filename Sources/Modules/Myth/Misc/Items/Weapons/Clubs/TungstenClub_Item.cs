@@ -14,7 +14,7 @@ public class TungstenClub_Item : ClubItem
 		Item.useAnimation = 12;
 		SmashDamageMultiplier = 14f / 22f;
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.TungstenClub>();
-		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.TungstenClub_smash>();
+		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.TungstenClub_Smash>();
 	}
 
 	public override void AddRecipes()

@@ -82,7 +82,7 @@ internal class StarSlingshot : SlingshotProjectile
 	public override void PostDraw(Color lightColor)
 	{
 		Player player = Main.player[Projectile.owner];
-		Texture2D TexMain = ModAsset.StarSlingsh_glow.Value;
+		Texture2D TexMain = ModAsset.StarSlingsh_Glow.Value;
 		var drawColor = new Color(255, 255, 255, 0);
 		SpriteEffects spriteEffect = SpriteEffects.None;
 		float DrawRot = Projectile.rotation - MathF.PI / 4f;

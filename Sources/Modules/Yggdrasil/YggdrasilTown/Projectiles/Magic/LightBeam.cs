@@ -136,19 +136,19 @@ internal class LightBeam : ModProjectile
 	{
 		for (int i = 0; i < 20; i++)
 		{
-			var dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<LampWood_Dust_fluorescent_appear>());
+			var dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<LampWood_Dust_Fluorescent_Appear>());
 			dust.alpha = 0;
 			dust.rotation = Main.rand.NextFloat(0.3f, 0.7f);
 			dust.scale *= 2f;
 		}
-		Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.oldPosition + new Vector2(4), Vector2.zeroVector, ModContent.ProjectileType<LightStartEffect_beam>(), 0, 0, Projectile.owner);
+		Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.oldPosition + new Vector2(4), Vector2.zeroVector, ModContent.ProjectileType<LightStartEffect_Beam>(), 0, 0, Projectile.owner);
 
 		var lightStartEffectProjectiles = new List<Projectile>();
 
-		// Collect all active LightStartEffect_beam projectiles
+		// Collect all active LightStartEffect_Beam projectiles
 		foreach (Projectile proj in Main.projectile)
 		{
-			if (proj.active && proj.type == ModContent.ProjectileType<LightStartEffect_beam>())
+			if (proj.active && proj.type == ModContent.ProjectileType<LightStartEffect_Beam>())
 			{
 				lightStartEffectProjectiles.Add(proj);
 			}
@@ -167,7 +167,7 @@ internal class LightBeam : ModProjectile
 		// Set timeLeft to 150 for other projectiles with timeLeft > 150
 		foreach (Projectile proj in Main.projectile)
 		{
-			if (proj.active && proj.type == ModContent.ProjectileType<LightStartEffect_beam>() && proj.timeLeft > 150 && !topFiveProjectiles.Contains(proj))
+			if (proj.active && proj.type == ModContent.ProjectileType<LightStartEffect_Beam>() && proj.timeLeft > 150 && !topFiveProjectiles.Contains(proj))
 			{
 				proj.timeLeft = 150;
 			}

@@ -201,7 +201,7 @@ public class FluorescentHydraTree : ModTile, ITileFluentlyDrawn
 		if (frame != Rectangle.Empty)
 		{
 			VertexDrawTree(drawCenterPos, frame, origin, tex, spriteBatch, rotation);
-			VertexDrawTree_glow(drawCenterPos, frame, origin, ModAsset.FluorescentHydraTree_glow.Value, spriteBatch, rotation);
+			VertexDrawTree_glow(drawCenterPos, frame, origin, ModAsset.FluorescentHydraTree_Glow.Value, spriteBatch, rotation);
 		}
 	}
 

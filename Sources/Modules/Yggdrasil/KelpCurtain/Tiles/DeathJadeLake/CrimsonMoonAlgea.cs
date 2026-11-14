@@ -48,7 +48,7 @@ public class CrimsonMoonAlgea : ModTile, ITileFluentlyDrawn
 
 		if (tile2.TileType != tile.TileType && !tile2.HasTile && tile2.LiquidAmount > 0)
 		{
-			tile2.TileType = (ushort)ModContent.TileType<CrimsonMoonAlgea_fruit>();
+			tile2.TileType = (ushort)ModContent.TileType<CrimsonMoonAlgea_Fruit>();
 			tile2.HasTile = true;
 		}
 	}
@@ -154,7 +154,7 @@ public class CrimsonMoonAlgea : ModTile, ITileFluentlyDrawn
 			if (!(tileUp.TileType == Type && tileUp.HasTile))
 			{
 				lastTile = true;
-				if (tileUp.TileType == ModContent.TileType<CrimsonMoonAlgea_fruit>())
+				if (tileUp.TileType == ModContent.TileType<CrimsonMoonAlgea_Fruit>())
 				{
 					lastTileHasFruit = true;
 				}

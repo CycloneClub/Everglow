@@ -30,7 +30,7 @@ public class BloodySwamp : ModItem
 		Item.rare = ItemRarityID.Green;
 		Item.value = 14400;
 
-		Item.shoot = ModContent.ProjectileType<BloodySwamp_shoot>();
+		Item.shoot = ModContent.ProjectileType<BloodySwamp_Shoot>();
 		Item.shootSpeed = 8;
 	}
 
@@ -59,7 +59,7 @@ public class BloodySwamp : ModItem
 		}
 		else
 		{
-			Projectile.NewProjectile(source, position + velocity * 6, velocity * 2f, ModContent.ProjectileType<BloodySwamp_shoot_area>(), damage, knockback, player.whoAmI);
+			Projectile.NewProjectile(source, position + velocity * 6, velocity * 2f, ModContent.ProjectileType<BloodySwamp_Shoot_Area>(), damage, knockback, player.whoAmI);
 		}
 		return false;
 	}

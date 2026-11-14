@@ -86,6 +86,15 @@ public class VampireMat : ModNPC
 
 		NPC.noTileCollide = true;
 		NPC.aiStyle = -1;
+
+		if (!Main.dedServ)
+		{
+			Mod everglow = ModLoader.GetMod("Everglow");
+			if (everglow != null)
+			{
+				Music = MusicLoader.GetMusicSlot(everglow, ModAsset.RedThingUnderwater_Path);
+			}
+		}
 	}
 
 	private void SpawnAttackProjectile(Vector2 position, Vector2 velocity, int type, int damage, float knockback, float initialRotation = 0)
@@ -95,7 +104,7 @@ public class VampireMat : ModNPC
 			return;
 		}
 		Projectile.NewProjectile(NPC.GetSource_FromAI(), position, velocity, type, damage, knockback,
-			Owner: Main.maxPlayers, ai0: NPC.target, ai1: NPC.whoAmI, ai2: initialRotation);
+			Owner: -1, ai0: NPC.target, ai1: NPC.whoAmI, ai2: initialRotation);
 	}
 
 	public override void OnSpawn(IEntitySource source)

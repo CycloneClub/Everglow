@@ -13,7 +13,7 @@ public class OriginalPylon_VFX : TileVFX
 
 	public override void OnSpawn()
 	{
-		Texture = ModAsset.StoneBridge_fence.Value;
+		Texture = ModAsset.StoneBridge_Fence.Value;
 	}
 
 	public override void Update()
@@ -41,7 +41,7 @@ public class OriginalPylon_VFX : TileVFX
 				new Vertex2D(new Vector2(i - 11, j + 17) * 16, color0, new Vector3(0, 1, 0)),
 				new Vertex2D(new Vector2(i + 21, j + 17) * 16, color0, new Vector3(1, 1, 0)),
 			};
-			Ins.Batch.Draw(ModAsset.OriginPylon_glow.Value, bars, PrimitiveType.TriangleStrip);
+			Ins.Batch.Draw(ModAsset.OriginPylon_Glow.Value, bars, PrimitiveType.TriangleStrip);
 
 			float timeValue = (float)(Main.time * 0.0004f);
 			var crack = new List<Vertex2D>();
@@ -90,7 +90,7 @@ public class OriginalPylon_VFX : TileVFX
 				chain.Add(pylonCenter + v0Left + v0Normal * 24, Color.Transparent, new Vector3(12, 0, 0));
 				chain.Add(pylonCenter - v0Left + v0Normal * 24, Color.Transparent, new Vector3(12, 1, 0));
 			}
-			Ins.Batch.Draw(ModAsset.OriginPylon_chain.Value, chain, PrimitiveType.TriangleStrip);
+			Ins.Batch.Draw(ModAsset.OriginPylon_Chain.Value, chain, PrimitiveType.TriangleStrip);
 
 			bars = new List<Vertex2D>()
 			{

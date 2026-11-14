@@ -102,7 +102,7 @@ public class AncientPhantom_Magic_Orb : ModNPC
 		for (int i = 0; i < 20; i++)
 		{
 			Vector2 vel = new Vector2(10 + (i % 2) * 2, 0).RotatedBy(MathHelper.TwoPi / 20f * i) * 0.25f;
-			var dustVFX = new TwilightCrystalVFXDust_slow
+			var dustVFX = new TwilightCrystalVFXDust_Slow
 			{
 				Velocity = vel,
 				Active = true,
@@ -123,7 +123,7 @@ public class AncientPhantom_Magic_Orb : ModNPC
 				Vector2 vel = new Vector2(i - 6, 6 * MathF.Sqrt(3)).RotatedBy(j * MathHelper.TwoPi / 6f) * 0.2f;
 				vel = vel.RotatedBy(MathF.Sin(i * MathHelper.PiOver2) * 0.15f);
 				vel *= 1f + MathF.Sin(i * MathHelper.PiOver4) * 0.5f;
-				var dustVFX = new TwilightCrystalVFXDust_slow
+				var dustVFX = new TwilightCrystalVFXDust_Slow
 				{
 					Velocity = vel,
 					Active = true,
@@ -137,7 +137,7 @@ public class AncientPhantom_Magic_Orb : ModNPC
 				Ins.VFXManager.Add(dustVFX);
 			}
 		}
-		Projectile proj = Projectile.NewProjectileDirect(NPC.GetSource_Death(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<AncientPhantom_Magic_Explosion>(), 24, 1, Main.maxPlayers);
+		Projectile proj = Projectile.NewProjectileDirect(NPC.GetSource_Death(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<AncientPhantom_Magic_Explosion>(), 24, 1, -1);
 		proj.rotation = Main.rand.NextFloat(MathHelper.TwoPi);
 	}
 

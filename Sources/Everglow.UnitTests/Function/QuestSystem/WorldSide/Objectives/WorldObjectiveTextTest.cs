@@ -1,4 +1,6 @@
 using Everglow.Commons.Mechanics.Quest.WorldSide.Objectives;
+using Everglow.Commons.UI.StringDrawerSystem.DrawerItems.ImageDrawers;
+using Terraria.ID;
 using Terraria.Localization;
 
 namespace Everglow.UnitTests.Function.QuestSystem;
@@ -36,6 +38,17 @@ public class WorldObjectiveTextTest
 		var objective = new WorldExploreObjective(500, _ => true) { LocalizationKey = "Tests.Explore" };
 
 		Assert.AreEqual("在丛林中探索 (0/500)", objective.GetObjectiveText());
+	}
+
+	[TestMethod]
+	public void SingleItemObjectivesPutTheRequiredCountOnTheIconAndKeepProgress()
+	{
+		Language.GetOrRegister("Mods.Everglow.QuestSystem.Objectives.Have", () => "拥有{0} {1}");
+		Language.GetOrRegister("Mods.Everglow.QuestSystem.Objectives.Consume", () => "消耗{0} {1}");
+		string icon = ItemDrawer.Create(ItemID.Ale, 5);
+
+		Assert.AreEqual($"拥有{icon} (0/5)", new WorldCollectItemObjective(ItemID.Ale, 5).GetObjectiveText());
+		Assert.AreEqual($"消耗{icon} (0/5)", new WorldConsumeItemObjective(ItemID.Ale, 5).GetObjectiveText());
 	}
 
 	[TestMethod]

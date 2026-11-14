@@ -33,7 +33,7 @@ public class DevilHeartStaff : ModItem
 		Item.rare = ItemRarityID.Green;
 		Item.value = Item.sellPrice(0, 2, 0, 0);
 
-		Item.shoot = ModContent.ProjectileType<DevilHeartStaff_proj>();
+		Item.shoot = ModContent.ProjectileType<DevilHeartStaff_Proj>();
 		Item.shootSpeed = 8;
 	}
 
@@ -42,7 +42,7 @@ public class DevilHeartStaff : ModItem
 		UseItemCount++;
 		if (UseItemCount >= 7)
 		{
-			Projectile.NewProjectileDirect(source, position, velocity * 2.2f, ModContent.ProjectileType<DevilHeartStaff_proj_II>(), (int)(damage * 2.5), knockback, player.whoAmI);
+			Projectile.NewProjectileDirect(source, position, velocity * 2.2f, ModContent.ProjectileType<DevilHeartStaff_Proj_II>(), (int)(damage * 2.5), knockback, player.whoAmI);
 			UseItemCount = 0;
 			return false;
 		}

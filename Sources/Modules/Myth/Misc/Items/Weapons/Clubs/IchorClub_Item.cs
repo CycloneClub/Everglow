@@ -14,7 +14,7 @@ public class IchorClub_Item : ClubItem
 		Item.useAnimation = 12;
 		SmashDamageMultiplier = 30f / 24f;
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.IchorClub>();
-		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.IchorClub_smash>();
+		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.IchorClub_Smash>();
 	}
 
 	public override void AddRecipes()

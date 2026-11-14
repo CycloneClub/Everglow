@@ -1,9 +1,10 @@
 using Everglow.Commons.Mechanics.Quest.PlayerSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.PlayerSide.Objectives;
+using Everglow.Example.Quest;
 
 namespace Everglow.Commons.Mechanics.Quest.PlayerSide.Tests;
 
-public class QuestTimerTest : PlayerQuestBase
+public class QuestTimerTest : ExamplePlayerQuest
 {
 	public QuestTimerTest()
 	{

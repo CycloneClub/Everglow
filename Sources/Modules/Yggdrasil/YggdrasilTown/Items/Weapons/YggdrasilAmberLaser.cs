@@ -28,7 +28,7 @@ public class YggdrasilAmberLaser : ModItem
 		Item.noMelee = true;
 		Item.noUseGraphic = true;
 
-		Item.shoot = ModContent.ProjectileType<YggdrasilAmberLaser_proj>();
+		Item.shoot = ModContent.ProjectileType<YggdrasilAmberLaser_Proj>();
 		Item.shootSpeed = 12;
 	}
 }

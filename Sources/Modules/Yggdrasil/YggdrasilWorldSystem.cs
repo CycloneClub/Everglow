@@ -4,8 +4,11 @@ using Everglow.Commons.Netcode;
 using Everglow.Yggdrasil.KelpCurtain;
 using Everglow.Yggdrasil.Netcode;
 using Everglow.Yggdrasil.YggdrasilTown.Walls;
+using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using SubworldLibrary;
+using Terraria.GameContent.Events;
+using Terraria.Graphics.Effects;
 using Terraria.ModLoader.IO;
 
 namespace Everglow.Yggdrasil;
@@ -30,6 +33,7 @@ public class YggdrasilWorldSystem : ModSystem, ICopyWorldData
 
 	public override void OnWorldLoad()
 	{
+		ClearVanillaEvents();
 		if (NetUtils.IsSubServer)
 		{
 			// 新启动的子服向主服获取最新进度，同时兼容旧子世界存档中的记录。
@@ -92,12 +96,60 @@ public class YggdrasilWorldSystem : ModSystem, ICopyWorldData
 
 	public override void Load()
 	{
+		On_Main.ShouldNormalEventsBeAbleToStart += StopNaturalEvents;
+		On_Main.CanStartInvasion += CanStartInvasion;
+		IL_Main.StartInvasion += SkipEventInYggdrasil;
+		IL_Main.StartRain += SkipEventInYggdrasil;
+		IL_Main.StartSlimeRain += SkipEventInYggdrasil;
+		IL_Main.startPumpkinMoon += SkipEventInYggdrasil;
+		IL_Main.startSnowMoon += SkipEventInYggdrasil;
+		IL_Main.checkHalloween += SkipEventInYggdrasil;
+		IL_Main.checkXMas += SkipEventInYggdrasil;
+		IL_BirthdayParty.NaturalAttempt += SkipEventInYggdrasil;
+		IL_BirthdayParty.ToggleManualParty += SkipEventInYggdrasil;
+		IL_LanternNight.NaturalAttempt += SkipEventInYggdrasil;
+		IL_LanternNight.ToggleManualLanterns += SkipEventInYggdrasil;
+		IL_Sandstorm.StartSandstorm += SkipEventInYggdrasil;
+		IL_DD2Event.StartInvasion += SkipEventInYggdrasil;
+		IL_DD2Event.UpdateTime += SkipEventInYggdrasil;
+		IL_DD2Event.SummonCrystal += SkipEventInYggdrasil;
+		IL_DD2Event.SummonCrystalDirect += SkipEventInYggdrasil;
+		IL_CultistRitual.TrySpawning += SkipEventInYggdrasil;
+		IL_WorldGen.TriggerLunarApocalypse += SkipEventInYggdrasil;
+		IL_WorldGen.StartImpendingDoom += SkipEventInYggdrasil;
+		IL_WorldGen.dropMeteor += SkipEventInYggdrasil;
+		IL_MysticLogFairiesEvent.StartNight += SkipEventInYggdrasil;
+		IL_MysticLogFairiesEvent.UpdateTime += SkipEventInYggdrasil;
 		IL_Main.UpdateTime_SpawnTownNPCs += PreventOldManSpawningInYggdrasil;
 		base.Load();
 	}
 
 	public override void Unload()
 	{
+		On_Main.ShouldNormalEventsBeAbleToStart -= StopNaturalEvents;
+		On_Main.CanStartInvasion -= CanStartInvasion;
+		IL_Main.StartInvasion -= SkipEventInYggdrasil;
+		IL_Main.StartRain -= SkipEventInYggdrasil;
+		IL_Main.StartSlimeRain -= SkipEventInYggdrasil;
+		IL_Main.startPumpkinMoon -= SkipEventInYggdrasil;
+		IL_Main.startSnowMoon -= SkipEventInYggdrasil;
+		IL_Main.checkHalloween -= SkipEventInYggdrasil;
+		IL_Main.checkXMas -= SkipEventInYggdrasil;
+		IL_BirthdayParty.NaturalAttempt -= SkipEventInYggdrasil;
+		IL_BirthdayParty.ToggleManualParty -= SkipEventInYggdrasil;
+		IL_LanternNight.NaturalAttempt -= SkipEventInYggdrasil;
+		IL_LanternNight.ToggleManualLanterns -= SkipEventInYggdrasil;
+		IL_Sandstorm.StartSandstorm -= SkipEventInYggdrasil;
+		IL_DD2Event.StartInvasion -= SkipEventInYggdrasil;
+		IL_DD2Event.UpdateTime -= SkipEventInYggdrasil;
+		IL_DD2Event.SummonCrystal -= SkipEventInYggdrasil;
+		IL_DD2Event.SummonCrystalDirect -= SkipEventInYggdrasil;
+		IL_CultistRitual.TrySpawning -= SkipEventInYggdrasil;
+		IL_WorldGen.TriggerLunarApocalypse -= SkipEventInYggdrasil;
+		IL_WorldGen.StartImpendingDoom -= SkipEventInYggdrasil;
+		IL_WorldGen.dropMeteor -= SkipEventInYggdrasil;
+		IL_MysticLogFairiesEvent.StartNight -= SkipEventInYggdrasil;
+		IL_MysticLogFairiesEvent.UpdateTime -= SkipEventInYggdrasil;
 		IL_Main.UpdateTime_SpawnTownNPCs -= PreventOldManSpawningInYggdrasil;
 	}
 
@@ -147,16 +199,134 @@ public class YggdrasilWorldSystem : ModSystem, ICopyWorldData
 					break;
 				}
 			}
-
-			if (Main.bloodMoon)
-			{
-				Main.bloodMoon = false;
-			}
-			if (Main.slimeRain)
-			{
-				Main.slimeRain = false;
-			}
 		}
 		base.PostUpdateEverything();
+	}
+
+	public override bool HijackGetData(ref byte messageType, ref BinaryReader reader, int playerNumber)
+	{
+		if (!YggdrasilWorld.InYggdrasil || Main.netMode != NetmodeID.Server
+			|| messageType != MessageID.SpawnBossUseLicenseStartEvent)
+		{
+			return false;
+		}
+
+		long position = reader.BaseStream.Position;
+		try
+		{
+			if (reader.BaseStream.Length - position < sizeof(short) * 2)
+			{
+				return false;
+			}
+			reader.ReadInt16(); // Player index; vanilla validates it after this hook.
+			int summon = reader.ReadInt16();
+			// -11..-18 are books, licenses and the mechanical boss combination. Other negative
+			// values start events; even unknown negatives fall back to a goblin invasion.
+			return summon < 0 && summon is not (>= -18 and <= -11);
+		}
+		finally
+		{
+			reader.BaseStream.Position = position;
+		}
+	}
+
+	public override void PreUpdateEntities() => ClearVanillaEvents();
+
+	public override void PreUpdateTime() => ClearVanillaEvents();
+
+	public override void PostUpdateTime() => ClearVanillaEvents();
+
+	private static bool StopNaturalEvents(On_Main.orig_ShouldNormalEventsBeAbleToStart orig)
+	{
+		// Despite its name, true is the stopEvents flag consumed by vanilla time updates.
+		return YggdrasilWorld.InYggdrasil || orig();
+	}
+
+	private static bool CanStartInvasion(On_Main.orig_CanStartInvasion orig, int type, bool ignoreDelay)
+	{
+		return !YggdrasilWorld.InYggdrasil && orig(type, ignoreDelay);
+	}
+
+	private static void SkipEventInYggdrasil(ILContext il)
+	{
+		// An entry guard does not depend on vanilla local-variable layouts or instruction patterns.
+		ILCursor cursor = new(il);
+		var originalEntry = cursor.DefineLabel();
+		cursor.EmitDelegate<Func<bool>>(() => YggdrasilWorld.InYggdrasil);
+		cursor.Emit(OpCodes.Brfalse, originalEntry);
+		cursor.Emit(OpCodes.Ret);
+		cursor.MarkLabel(originalEntry);
+	}
+
+	private static void ClearVanillaEvents()
+	{
+		if (!YggdrasilWorld.InYggdrasil)
+		{
+			return;
+		}
+
+		Main.bloodMoon = false;
+		Main.eclipse = false;
+		Main.pumpkinMoon = false;
+		Main.snowMoon = false;
+		Main.slimeRain = false;
+		Main.slimeRainTime = 0;
+		Main.slimeRainKillCount = 0;
+		Main.slimeWarningTime = 0;
+		Main.raining = false;
+		Main.rainTime = 0;
+		Main.maxRaining = 0;
+		Main.windSpeedCurrent = 0;
+		Main.windSpeedTarget = 0;
+		Main.windCounter = 0;
+		Star.starfallBoost = 1f;
+		Main.invasionType = InvasionID.None;
+		Main.invasionSize = 0;
+		Main.invasionSizeStart = 0;
+		Main.invasionDelay = 0;
+		Main.invasionWarn = 0;
+		Main.invasionProgress = 0;
+		Main.invasionProgressMax = 0;
+		Main.invasionProgressWave = 0;
+		Main.invasionProgressDisplayLeft = 0;
+		Main.invasionProgressAlpha = 0;
+		Main.invasionProgressIcon = 0;
+		Main.halloween = false;
+		Main.xMas = false;
+		Main.forceHalloweenForToday = false;
+		Main.forceXMasForToday = false;
+		BirthdayParty.ManualParty = false;
+		BirthdayParty.GenuineParty = false;
+		BirthdayParty.CelebratingNPCs.Clear();
+		LanternNight.ManualLanterns = false;
+		LanternNight.GenuineLanterns = false;
+		LanternNight.NextNightIsLanternNight = false;
+		Sandstorm.Happening = false;
+		Sandstorm.TimeLeft = 0;
+		Sandstorm.Severity = 0;
+		Sandstorm.IntendedSeverity = 0;
+		DD2Event.Ongoing = false;
+		NPC.LunarApocalypseIsUp = false;
+		NPC.TowerActiveSolar = false;
+		NPC.TowerActiveVortex = false;
+		NPC.TowerActiveNebula = false;
+		NPC.TowerActiveStardust = false;
+		NPC.MoonLordCountdown = 0;
+		WorldGen.spawnEye = false;
+		WorldGen.spawnHardBoss = 0;
+		// Vanilla queues a meteor before checking stopEvents at dusk.
+		WorldGen.spawnMeteor = false;
+
+		if (!Main.dedServ)
+		{
+			// Subworld transitions can leave a sky active after its event flag has been cleared.
+			SkyManager.Instance["Party"]?.Reset();
+			SkyManager.Instance["Lantern"]?.Reset();
+			SkyManager.Instance["Sandstorm"]?.Reset();
+			SkyManager.Instance["Slime"]?.Reset();
+			Filters.Scene["Sandstorm"]?.Deactivate();
+			Overlays.Scene["Sandstorm"]?.Deactivate();
+			Filters.Scene["MoonLordShake"]?.Deactivate();
+		}
 	}
 }

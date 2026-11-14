@@ -13,7 +13,7 @@ public class GlobalWeaponReplace : GlobalItem
 	{
 		if (entity.type == ItemID.PiercingStarlight)
 		{
-			entity.shoot = ModContent.ProjectileType<PiercingStarlight_new>();
+			entity.shoot = ModContent.ProjectileType<PiercingStarlight_New>();
 		}
 		base.SetDefaults(entity);
 	}
@@ -52,7 +52,7 @@ public class GlobalWeaponReplace : GlobalItem
 
 			foreach (Projectile proj in Main.projectile)
 			{
-				if (proj.owner == player.whoAmI && proj.timeLeft > 1 && proj.type == ModContent.ProjectileType<PiercingStarlight_new_Stab>())
+				if (proj.owner == player.whoAmI && proj.timeLeft > 1 && proj.type == ModContent.ProjectileType<PiercingStarlight_New_Stab>())
 				{
 					return false;
 				}
@@ -69,7 +69,7 @@ public class GlobalWeaponReplace : GlobalItem
 			if (player.altFunctionUse == 2)
 			{
 				CurrentPowerfulStabCD_Starlight = 30;
-				Projectile.NewProjectile(source, position, Vector2.Zero, ModContent.ProjectileType<PiercingStarlight_new_Stab>(), (int)(damage * 4.0f), knockback * 2, player.whoAmI, 0f, 0f);
+				Projectile.NewProjectile(source, position, Vector2.Zero, ModContent.ProjectileType<PiercingStarlight_New_Stab>(), (int)(damage * 4.0f), knockback * 2, player.whoAmI, 0f, 0f);
 				player.itemTime = item.useAnimation / 4;
 				player.itemAnimation = item.useAnimation / 4;
 
@@ -97,7 +97,7 @@ public class GlobalWeaponReplace : GlobalItem
 		{
 			foreach (Projectile proj in Main.projectile)
 			{
-				if (proj.owner == player.whoAmI && proj.timeLeft > 1 && proj.type == ModContent.ProjectileType<PiercingStarlight_new_Stab>())
+				if (proj.owner == player.whoAmI && proj.timeLeft > 1 && proj.type == ModContent.ProjectileType<PiercingStarlight_New_Stab>())
 				{
 					return false;
 				}

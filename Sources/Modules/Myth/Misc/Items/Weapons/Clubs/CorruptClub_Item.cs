@@ -14,7 +14,7 @@ public class CorruptClub_Item : ClubItem
 		Item.useAnimation = 12;
 		SmashDamageMultiplier = 16f / 30f;
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.CorruptClub>();
-		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.CorruptClub_smash>();
+		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.CorruptClub_Smash>();
 	}
 
 	public override void AddRecipes()

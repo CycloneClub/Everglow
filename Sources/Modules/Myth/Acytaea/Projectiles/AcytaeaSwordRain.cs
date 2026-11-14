@@ -6,7 +6,7 @@ public class AcytaeaSwordRain : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
 
-	public override string Texture => ModAsset.AcytaeaSword_projectile_Mod;
+	public override string Texture => ModAsset.AcytaeaSword_Projectile_Mod;
 
 	public override void SetDefaults()
 	{
@@ -54,7 +54,7 @@ public class AcytaeaSwordRain : ModProjectile
 		float timeValue = (float)Main.time * 0.2f;
 		float sizeH = 1f + 0.3f * MathF.Cos(timeValue);
 		float sizeV = 1f + 0.1f * MathF.Sin(timeValue * 0.2f);
-		Texture2D texBlack = Commons.ModAsset.StarSlash_black.Value;
+		Texture2D texBlack = Commons.ModAsset.StarSlash_Black.Value;
 		Main.spriteBatch.Draw(texBlack, Projectile.Center - Main.screenPosition, null, Color.White * 0.5f, 0, texBlack.Size() * 0.5f, new Vector2(sizeH, 0.5f) * Projectile.scale, SpriteEffects.None, 0);
 		Main.spriteBatch.Draw(texBlack, Projectile.Center - Main.screenPosition, null, Color.White * 0.5f, MathHelper.PiOver2, texBlack.Size() * 0.5f, new Vector2(sizeH, 1.5f * sizeV) * Projectile.scale, SpriteEffects.None, 0);
 		Texture2D tex = Commons.ModAsset.StarSlash.Value;

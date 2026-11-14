@@ -155,9 +155,9 @@ public class StabbingSwordStaminaPlayer : ModPlayer
 			return;
 		}
 
-		Texture2D tex_dark = ModAsset.StabbingSwordStamina_black.Value;
+		Texture2D tex_dark = ModAsset.StabbingSwordStamina_Black.Value;
 		Texture2D tex = ModAsset.StabbingSwordStamina.Value;
-		Texture2D tex_bloom = ModAsset.StabbingSwordStamina_bloom.Value;
+		Texture2D tex_bloom = ModAsset.StabbingSwordStamina_Bloom.Value;
 		SpriteEffects spriteEffects = SpriteEffects.None;
 		if (Player.gravDir == -1)
 		{

@@ -1,3 +1,4 @@
+using Everglow.Commons.Mechanics.Quest.Core.Dialogue;
 using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.WorldSide;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Abstractions;
@@ -8,7 +9,7 @@ using Terraria.ModLoader.IO;
 
 namespace Everglow.Commons.Mechanics.Quest.WorldSide.Objectives;
 
-public class WorldGiveObjective : WorldObjectiveBase
+public class WorldGiveObjective : WorldObjectiveBase, IQuestDialogueObjective
 {
 	public WorldGiveObjective()
 	{
@@ -23,6 +24,8 @@ public class WorldGiveObjective : WorldObjectiveBase
 
 	private bool localSubmitted;
 
+	public ObjectiveDialogue Dialogue { get; set; }
+
 	public int NPCType { get; private set; }
 
 	public int ItemType { get; private set; }
@@ -30,10 +33,6 @@ public class WorldGiveObjective : WorldObjectiveBase
 	public int ItemCount { get; private set; }
 
 	public bool Given { get; private set; }
-
-	public string StartText => GetText("StartText");
-
-	public string EndText => GetText("EndText");
 
 	public override float Progress => Given ? 1f : 0f;
 
@@ -53,42 +52,44 @@ public class WorldGiveObjective : WorldObjectiveBase
 	{
 		var npc = new NPC();
 		npc.SetDefaults(NPCType);
-		return QuestText.Get("Objectives.Give", npc.TypeName, ItemDrawer.Create(ItemType), ItemCount, string.Empty).TrimEnd();
+		return QuestText.Get("Objectives.GiveItem", npc.TypeName, ItemDrawer.Create(ItemType, ItemCount), string.Empty).TrimEnd();
 	}
 
 	public override void Update()
 	{
-		if (!CanProgress || Given || NetUtils.IsServer)
+		if (CanProgress && !Given && Main.netMode == NetmodeID.MultiplayerClient
+			&& localSubmitted && WorldQuestManager.NetUpdate)
 		{
-			return;
+			NeedDeltaSync = true;
 		}
-		if (localSubmitted)
-		{
-			if (WorldQuestManager.NetUpdate)
-			{
-				NeedDeltaSync = true;
-			}
-			return;
-		}
+	}
 
-		var player = Main.LocalPlayer;
+	public virtual string GetChat() => QuestText.Get(
+		"Objectives.Give",
+		Lang.GetNPCNameValue(NPCType), QuestText.ItemTag(ItemType, ItemCount), ItemCount, string.Empty).TrimEnd();
+
+	public bool TrySubmitObjective(Player player)
+	{
+		if (!CanProgress || !QuestChat.CanSubmitObjective(player, NPCType))
+		{
+			return false;
+		}
+		if (Given || localSubmitted)
+		{
+			return true;
+		}
 		if (player.TalkNPC?.netID != NPCType)
 		{
-			return;
-		}
-		if (!string.IsNullOrEmpty(StartText))
-		{
-			Main.npcChatText = StartText;
+			return false;
 		}
 		if (player.CountItem(ItemType, ItemCount) < ItemCount)
 		{
-			return;
+			return false;
 		}
 		for (int i = 0; i < ItemCount; i++)
 		{
 			player.ConsumeItem(ItemType);
 		}
-
 		if (NetUtils.IsSingle)
 		{
 			Given = true;
@@ -98,15 +99,13 @@ public class WorldGiveObjective : WorldObjectiveBase
 			localSubmitted = true;
 			NeedDeltaSync = true;
 		}
-		if (!string.IsNullOrEmpty(EndText))
-		{
-			Main.npcChatText = EndText;
-		}
+		return true;
 	}
 
 	public override void ResetProgress()
 	{
 		base.ResetProgress();
+		NeedDeltaSync = false;
 		Given = false;
 		localSubmitted = false;
 	}
@@ -120,6 +119,8 @@ public class WorldGiveObjective : WorldObjectiveBase
 	public override void LoadData(TagCompound tag)
 	{
 		base.LoadData(tag);
+		localSubmitted = false;
+		NeedDeltaSync = false;
 		if (tag.TryGet(nameof(Given), out bool g))
 		{
 			Given = g;
@@ -136,6 +137,7 @@ public class WorldGiveObjective : WorldObjectiveBase
 	{
 		base.NetReceive(reader);
 		Given = reader.ReadBoolean();
+		ClearResolvedSubmission();
 	}
 
 	public override void SendDelta(BinaryWriter bw)
@@ -157,5 +159,15 @@ public class WorldGiveObjective : WorldObjectiveBase
 	public override void ReceiveMain(BinaryReader br)
 	{
 		Given = br.ReadBoolean();
+		ClearResolvedSubmission();
+	}
+
+	private void ClearResolvedSubmission()
+	{
+		if (Given || Completed || IsTimedOut)
+		{
+			localSubmitted = false;
+			NeedDeltaSync = false;
+		}
 	}
 }

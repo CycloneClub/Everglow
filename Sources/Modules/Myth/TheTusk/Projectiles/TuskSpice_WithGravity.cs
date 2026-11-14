@@ -69,7 +69,7 @@ public class TuskSpice_WithGravity : ModProjectile
 							break;
 						}
 						colorValue = Math.Clamp(MathF.Pow(colorValue, 1.6f), 0, 1);
-						Texture2D shadow = ModAsset.TuskSpice_WithGravity_shadow.Value;
+						Texture2D shadow = ModAsset.TuskSpice_WithGravity_Shadow.Value;
 						if (Math.Abs(StartPos.X - Projectile.Center.X) < 150)
 						{
 							colorValue *= Math.Abs(StartPos.X - Projectile.Center.X) / 150f;
@@ -88,7 +88,7 @@ public class TuskSpice_WithGravity : ModProjectile
 		for (int i = -5; i < 5; i++)
 		{
 			Vector2 pos = Projectile.Center + new Vector2(i * 6, 0).RotatedBy(Projectile.rotation + MathHelper.PiOver2) - new Vector2(0, 4);
-			Dust dust = Dust.NewDustDirect(pos, 0, 0, ModContent.DustType<Dusts.TuskBreak_small>());
+			Dust dust = Dust.NewDustDirect(pos, 0, 0, ModContent.DustType<Dusts.TuskBreak_Small>());
 			dust.velocity = Projectile.velocity;
 		}
 	}

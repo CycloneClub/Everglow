@@ -28,7 +28,7 @@ public class CyanVineStaff : ModItem
 		Item.noMelee = true;
 		Item.noUseGraphic = true;
 
-		Item.shoot = ModContent.ProjectileType<CyanVineStaff_proj>();
+		Item.shoot = ModContent.ProjectileType<CyanVineStaff_Proj>();
 		Item.shootSpeed = 12;
 	}
 
@@ -43,7 +43,7 @@ public class CyanVineStaff : ModItem
 
 	public override bool CanUseItem(Player player)
 	{
-		return player.ownedProjectileCounts[ModContent.ProjectileType<CyanVineStaff_proj>()] == 0;
+		return player.ownedProjectileCounts[ModContent.ProjectileType<CyanVineStaff_Proj>()] == 0;
 	}
 
 	public override bool? UseItem(Player player)

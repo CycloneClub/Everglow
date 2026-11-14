@@ -6,7 +6,7 @@ using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Miscs.PlayerArena;
 
-public class PlayerDefence : ModProjectile, IWarpProjectile_warpStyle2
+public class PlayerDefence : ModProjectile, IWarpProjectile_WarpStyle2
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MiscsProjectiles;
 

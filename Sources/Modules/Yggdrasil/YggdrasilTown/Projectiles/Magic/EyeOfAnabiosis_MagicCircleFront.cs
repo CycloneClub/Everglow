@@ -116,7 +116,7 @@ public class EyeOfAnabiosis_MagicCircleFront : ModProjectile
 		shineEffect.Parameters["uMul"].SetValue(1.3f);
 		shineEffect.CurrentTechnique.Passes["MagicCircleCore_Pixel"].Apply();
 
-		Texture2D coreTextureDark = Commons.ModAsset.Star_black.Value;
+		Texture2D coreTextureDark = Commons.ModAsset.Star_Black.Value;
 		Texture2D coreTexture = Commons.ModAsset.Textures_Star.Value;
 		Texture2D bloom = Commons.ModAsset.Point.Value;
 

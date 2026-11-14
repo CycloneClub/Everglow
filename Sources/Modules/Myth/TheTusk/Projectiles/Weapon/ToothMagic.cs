@@ -384,7 +384,7 @@ public class ToothMagic : ModProjectile, IWarpProjectile
 		Texture2D t = ModAsset.FogTrace.Value;
 		if (Shade)
 		{
-			t = Commons.ModAsset.Trail_2_black_thick.Value;
+			t = Commons.ModAsset.Trail_2_Black_Thick.Value;
 		}
 
 		Main.graphics.GraphicsDevice.Textures[0] = t;

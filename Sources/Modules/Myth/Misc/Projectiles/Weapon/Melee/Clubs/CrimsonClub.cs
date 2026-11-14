@@ -6,7 +6,7 @@ public class CrimsonClub : ClubProj
 	{
 		EnableReflection = true;
 		ReflectionStrength = 3f;
-		ReflectionTexture = ModAsset.CobaltClub_light_Mod;
+		ReflectionTexture = ModAsset.CobaltClub_Light_Mod;
 	}
 
 	public override void AI()

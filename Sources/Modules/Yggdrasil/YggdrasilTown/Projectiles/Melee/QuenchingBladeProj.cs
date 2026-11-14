@@ -56,7 +56,7 @@ public class QuenchingBladeProj : MeleeProj
 			drawScale *= drawScaleFactor;
 		}
 		Texture2D tex = Terraria.GameContent.TextureAssets.Projectile[Projectile.type].Value;
-		Texture2D texGlow = ModAsset.QuenchingBladeProj_glow.Value;
+		Texture2D texGlow = ModAsset.QuenchingBladeProj_Glow.Value;
 		Vector2 drawCenter = Projectile.Center - Main.screenPosition;
 
 		SpriteBatchState sBS = spriteBatch.GetState().Value;
@@ -387,16 +387,16 @@ public class QuenchingBladeProj : MeleeProj
 		switch (Main.rand.Next(4))
 		{
 			case 0:
-				AttSound(new SoundStyle(ModAsset.QuenchingBlade_attack_1_Mod));
+				AttSound(new SoundStyle(ModAsset.QuenchingBlade_Attack_1_Mod));
 				break;
 			case 1:
-				AttSound(new SoundStyle(ModAsset.QuenchingBlade_attack_2_Mod));
+				AttSound(new SoundStyle(ModAsset.QuenchingBlade_Attack_2_Mod));
 				break;
 			case 2:
-				AttSound(new SoundStyle(ModAsset.QuenchingBlade_attack_3_Mod));
+				AttSound(new SoundStyle(ModAsset.QuenchingBlade_Attack_3_Mod));
 				break;
 			case 3:
-				AttSound(new SoundStyle(ModAsset.QuenchingBlade_attack_4_Mod));
+				AttSound(new SoundStyle(ModAsset.QuenchingBlade_Attack_4_Mod));
 				break;
 		}
 	}

@@ -33,29 +33,7 @@ public class YggdrasilModule : EverglowModule
 			IL_Main.DrawToMap_Section += IL_Main_DrawToMap_Section;
 			On_Main.UpdateTime_StartDay += On_Main_UpdateTime_StartDay;
 			On_Main.UpdateTime_StartNight += On_Main_UpdateTime_StartNight;
-			On_Main.CanStartInvasion += On_Main_CanStartInvasion;
-			On_Main.StartInvasion += On_Main_StartInvasion;
 		}
-	}
-
-	private void On_Main_StartInvasion(On_Main.orig_StartInvasion orig, int type)
-	{
-		if (YggdrasilWorld.InYggdrasil)
-		{
-			return;
-		}
-
-		orig(type);
-	}
-
-	private bool On_Main_CanStartInvasion(On_Main.orig_CanStartInvasion orig, int type, bool ignoreDelay)
-	{
-		if (YggdrasilWorld.InYggdrasil)
-		{
-			return false;
-		}
-
-		return orig(type, ignoreDelay);
 	}
 
 	private void On_Main_UpdateTime_StartNight(On_Main.orig_UpdateTime_StartNight orig, ref bool stopEvents)

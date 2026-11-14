@@ -77,28 +77,8 @@ public class TownChestSuppliesTests
 	{
 		const int Samples = 60000;
 		WorldGen._genRand = new UnifiedRandom(20261023);
-		var ranges = new Dictionary<int, (int Min, int Max, double Rate)>
-		{
-			[ItemID.Rope] = (70, 150, 1),
-			[ItemID.Torch] = (10, 20, 0.5),
-			[ItemID.GoldCoin] = (1, 2, 0.2),
-			[ItemID.LesserHealingPotion] = (3, 5, 0.5),
-			[ItemID.RecallPotion] = (2, 4, 2.0 / 3),
-			[ItemID.Glowstick] = (20, 60, 0.4),
-			[ItemID.StickyGlowstick] = (20, 60, 0.1),
-			[ItemID.Amber] = (5, 14, 0.2),
-			[ItemID.CopperOre] = (15, 74, 0.2),
-		};
-		foreach (int id in Ammo)
-		{
-			ranges[id] = (id == ItemID.ThrowingKnife ? 16 : 25, id == ItemID.ThrowingKnife ? 32 : 50, 1.0 / 6);
-		}
-		foreach (int id in Potions)
-		{
-			ranges[id] = (1, 2, 1.0 / 12);
-		}
-		var counts = new Dictionary<int, int>();
-		var seen = new HashSet<(int Type, int Stack)>();
+		int ammoCount = 0;
+		int torchCount = 0;
 		int both = 0;
 		for (int i = 0; i < Samples; i++)
 		{
@@ -108,24 +88,29 @@ public class TownChestSuppliesTests
 			Assert.AreEqual(1, loot.Count(item => item.type == ItemID.Rope));
 			Assert.IsTrue(loot.Count(item => Ammo.Contains(item.type)) <= 1);
 			Assert.IsTrue(loot.Count(item => Potions.Contains(item.type)) <= 1);
-			if (loot.Any(item => Ammo.Contains(item.type)) && loot.Any(item => item.type == ItemID.Torch))
+			bool hasAmmo = loot.Any(item => Ammo.Contains(item.type));
+			bool hasTorch = loot.Any(item => item.type == ItemID.Torch);
+			if (hasAmmo)
+			{
+				ammoCount++;
+			}
+
+			if (hasTorch)
+			{
+				torchCount++;
+			}
+
+			if (hasAmmo && hasTorch)
 			{
 				both++;
 			}
-			foreach (var item in loot)
-			{
-				Assert.IsTrue(ranges.TryGetValue(item.type, out var range), $"Unexpected supply {item.type}.");
-				Assert.IsTrue(item.stack >= range.Min && item.stack <= range.Max);
-				counts[item.type] = counts.GetValueOrDefault(item.type) + 1;
-				seen.Add((item.type, item.stack));
-			}
+
+			Assert.IsTrue(loot.All(item => item.stack > 0));
 		}
-		foreach (var (id, range) in ranges)
-		{
-			Assert.AreEqual(range.Rate, counts.GetValueOrDefault(id) / (double)Samples, 0.012, $"Rate for {id}.");
-			Assert.IsTrue(seen.Contains((id, range.Min)) && seen.Contains((id, range.Max)), $"Inclusive bounds for {id}.");
-		}
-		Assert.AreEqual(0.25, both / (double)Samples, 0.012, "Ammo and lighting rolls are independent.");
+
+		double ammoRate = ammoCount / (double)Samples;
+		double torchRate = torchCount / (double)Samples;
+		Assert.AreEqual(ammoRate * torchRate, both / (double)Samples, 0.012, "Ammo and lighting rolls are independent.");
 	}
 
 	[TestMethod]

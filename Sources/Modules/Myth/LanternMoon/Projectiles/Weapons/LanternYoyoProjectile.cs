@@ -40,8 +40,8 @@ public class LanternYoyoProjectile : YoyoProjectile
 			}
 
 			SoundEngine.PlaySound(sound.WithVolume(Main.rand.NextFloat(0.4f, 0.6f)), GapCenter);
-			Projectile p0 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), GapCenter, Vector2.zeroVector, ModContent.ProjectileType<LanternYoyo_fireYoyo>(), (int)(Projectile.damage * 1.6f), 2f, Projectile.owner);
-			LanternYoyo_fireYoyo lYfY = p0.ModProjectile as LanternYoyo_fireYoyo;
+			Projectile p0 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), GapCenter, Vector2.zeroVector, ModContent.ProjectileType<LanternYoyo_FireYoyo>(), (int)(Projectile.damage * 1.6f), 2f, Projectile.owner);
+			LanternYoyo_FireYoyo lYfY = p0.ModProjectile as LanternYoyo_FireYoyo;
 			if (lYfY is not null)
 			{
 				lYfY.MainProjYoyo = Projectile;
@@ -55,9 +55,9 @@ public class LanternYoyoProjectile : YoyoProjectile
 		int count = 0;
 		foreach (var proj in Main.projectile)
 		{
-			if (proj is not null && proj.active && proj.type == ModContent.ProjectileType<LanternYoyo_fireYoyo>())
+			if (proj is not null && proj.active && proj.type == ModContent.ProjectileType<LanternYoyo_FireYoyo>())
 			{
-				LanternYoyo_fireYoyo lYfY = proj.ModProjectile as LanternYoyo_fireYoyo;
+				LanternYoyo_FireYoyo lYfY = proj.ModProjectile as LanternYoyo_FireYoyo;
 				if (lYfY is not null && lYfY.MainProjYoyo == Projectile)
 				{
 					count++;
@@ -130,7 +130,7 @@ public class LanternYoyoProjectile : YoyoProjectile
 			float releaseScale = releaseTimer / 13f;
 			Color drawColor = Color.Lerp(new Color(1f, 0.48f, 0.1f, 0), new Color(1f, 1f, 0.7f, 0), MathF.Sin((float)Main.time * 0.08f + Projectile.whoAmI) * 0.5f + 0.5f);
 			Lighting.AddLight(gapCenter, new Vector3(drawColor.R, drawColor.G * 0.7f, drawColor.B * 0.5f) / 300f);
-			Texture2D fireYoyo = ModAsset.LanternYoyo_fireYoyo.Value;
+			Texture2D fireYoyo = ModAsset.LanternYoyo_FireYoyo.Value;
 			Main.EntitySpriteDraw(spot, gapCenter - Main.screenPosition, null, drawColor, MathHelper.PiOver2, spot.Size() * 0.5f, releaseScale * 2f, SpriteEffects.None, 0f);
 			Main.EntitySpriteDraw(fireYoyo, gapCenter - Main.screenPosition, null, drawColor, Projectile.rotation, tex.Size() * 0.5f, releaseScale, SpriteEffects.None, 0);
 		}

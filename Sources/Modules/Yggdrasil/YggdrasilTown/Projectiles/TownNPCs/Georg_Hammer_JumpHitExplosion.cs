@@ -72,7 +72,7 @@ public class Georg_Hammer_JumpHitExplosion : ModProjectile, IWarpProjectile
 
 	public override bool PreDraw(ref Color lightColor)
 	{
-		Texture2D shadow = Commons.ModAsset.StarSlash_black.Value;
+		Texture2D shadow = Commons.ModAsset.StarSlash_Black.Value;
 		float timeValue = (200 - Projectile.timeLeft) / 200f;
 		float dark = Math.Max((Projectile.timeLeft - 150) / 50f, 0);
 		var drawColor = lightColor * (1 - timeValue);

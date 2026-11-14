@@ -89,14 +89,14 @@ public class VitalizedRocksProj : ModProjectile
 				float damageScale = 1;
 				if (i >= 1)
 				{
-					type = ModContent.ProjectileType<VitalizedRocksStone_small>();
+					type = ModContent.ProjectileType<VitalizedRocksStone_Small>();
 					speed = 8;
 					damageScale = 0.6f;
 					Vector2 dustPos = Projectile.Center;
 					for (int t = 0; t < 200; t++)
 					{
 						dustPos += (Pos - dustPos).SafeNormalize(Vector2.zeroVector) * 2;
-						var dust = Dust.NewDustDirect(dustPos - new Vector2(4), 0, 0, ModContent.DustType<RockElemental_Energy_normal>());
+						var dust = Dust.NewDustDirect(dustPos - new Vector2(4), 0, 0, ModContent.DustType<RockElemental_Energy_Normal>());
 						dust.velocity *= 0;
 						dust.noGravity = true;
 						dust.scale = 0.6f;
@@ -112,7 +112,7 @@ public class VitalizedRocksProj : ModProjectile
 					for (int t = 0; t < 200; t++)
 					{
 						dustPos += (Pos - dustPos).SafeNormalize(Vector2.zeroVector) * 2;
-						var dust = Dust.NewDustDirect(dustPos - new Vector2(4), 0, 0, ModContent.DustType<RockElemental_Energy_normal>());
+						var dust = Dust.NewDustDirect(dustPos - new Vector2(4), 0, 0, ModContent.DustType<RockElemental_Energy_Normal>());
 						dust.velocity *= 0;
 						dust.noGravity = true;
 						dust.scale = 1f;
@@ -126,16 +126,16 @@ public class VitalizedRocksProj : ModProjectile
 				switch (Main.rand.Next(4))
 				{
 					case 0:
-						SoundEngine.PlaySound(new SoundStyle(ModAsset.vitalizedrocks_attack_1_Mod), Projectile.Center);
+						SoundEngine.PlaySound(new SoundStyle(ModAsset.vitalizedrocks_Attack_1_Mod), Projectile.Center);
 						break;
 					case 1:
-						SoundEngine.PlaySound(new SoundStyle(ModAsset.vitalizedrocks_attack_2_Mod), Projectile.Center);
+						SoundEngine.PlaySound(new SoundStyle(ModAsset.vitalizedrocks_Attack_2_Mod), Projectile.Center);
 						break;
 					case 2:
-						SoundEngine.PlaySound(new SoundStyle(ModAsset.vitalizedrocks_attack_3_Mod), Projectile.Center);
+						SoundEngine.PlaySound(new SoundStyle(ModAsset.vitalizedrocks_Attack_3_Mod), Projectile.Center);
 						break;
 					case 3:
-						SoundEngine.PlaySound(new SoundStyle(ModAsset.vitalizedrocks_attack_4_Mod), Projectile.Center);
+						SoundEngine.PlaySound(new SoundStyle(ModAsset.vitalizedrocks_Attack_4_Mod), Projectile.Center);
 						break;
 				}
 			}
@@ -168,7 +168,7 @@ public class VitalizedRocksProj : ModProjectile
 		dissolve.CurrentTechnique.Passes[0].Apply();
 		Texture2D texture = ModAsset.VitalizedRocksProj.Value;
 		Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, new Rectangle(0, Projectile.frame * 50, 50, 50), lightColor, Projectile.rotation, new Vector2(25), Projectile.scale, SpriteEffects.None, 0);
-		texture = ModAsset.VitalizedRocksProj_glow.Value;
+		texture = ModAsset.VitalizedRocksProj_Glow.Value;
 		Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, new Rectangle(0, Projectile.frame * 50, 50, 50), new Color(0.7f, 0.1f, 1f, 0), Projectile.rotation, new Vector2(25), Projectile.scale, SpriteEffects.None, 0);
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(sBS);

@@ -40,7 +40,7 @@ public class WorldCollectItemObjective : WorldObjectiveBase
 	public override void GetObjectivesIcon(QuestIconGroup iconGroup) =>
 		iconGroup.Add(ItemQuestIcon.Create(ItemType, new Item(ItemType).Name));
 
-	public override string GetObjectiveText() => QuestText.Get("Objectives.Have", ItemDrawer.Create(ItemType), ItemCount, $"({globalMax}/{ItemCount})");
+	public override string GetObjectiveText() => QuestText.Get("Objectives.Have", ItemDrawer.Create(ItemType, ItemCount), $"({globalMax}/{ItemCount})");
 
 	public override void Update()
 	{

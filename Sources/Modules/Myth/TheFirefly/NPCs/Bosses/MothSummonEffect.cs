@@ -17,7 +17,7 @@ public class MothSummonEffect : TrailingProjectile
 		Projectile.tileCollide = false;
 		TrailLength = 40;
 		TrailTexture = Commons.ModAsset.Trail_10.Value;
-		TrailTextureBlack = Commons.ModAsset.Trail_10_black.Value;
+		TrailTextureBlack = Commons.ModAsset.Trail_10_Black.Value;
 	}
 
 	public override void OnSpawn(IEntitySource source)

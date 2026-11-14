@@ -29,7 +29,7 @@ public class GreenRelicSlotTable : ModTile
 		TileObjectData.newTile.LavaDeath = false;
 		TileObjectData.addTile(Type);
 		AddMapEntry(new Color(70, 99, 99));
-		DustType = ModContent.DustType<GreenRelicBrick_dust>();
+		DustType = ModContent.DustType<GreenRelicBrick_Dust>();
 		MinPick = 9999;
 	}
 

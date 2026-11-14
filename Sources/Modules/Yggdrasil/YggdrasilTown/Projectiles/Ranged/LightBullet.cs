@@ -76,14 +76,14 @@ internal class LightBullet : ModProjectile
 	{
 		SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
 		Collision.HitTiles(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
-		Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<LightStartEffect_bullet>(), 0, 0, Projectile.owner);
+		Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<LightStartEffect_Bullet>(), 0, 0, Projectile.owner);
 
 		var lightStartEffectProjectiles = new List<Projectile>();
 
-		// Collect all active LightStartEffect_bullet projectiles
+		// Collect all active LightStartEffect_Bullet projectiles
 		foreach (Projectile proj in Main.projectile)
 		{
-			if (proj.active && proj.type == ModContent.ProjectileType<LightStartEffect_bullet>())
+			if (proj.active && proj.type == ModContent.ProjectileType<LightStartEffect_Bullet>())
 			{
 				lightStartEffectProjectiles.Add(proj);
 			}
@@ -102,7 +102,7 @@ internal class LightBullet : ModProjectile
 		// Set timeLeft to 150 for other projectiles with timeLeft > 150
 		foreach (Projectile proj in Main.projectile)
 		{
-			if (proj.active && proj.type == ModContent.ProjectileType<LightStartEffect_bullet>() && proj.timeLeft > 150 && !topFiveProjectiles.Contains(proj))
+			if (proj.active && proj.type == ModContent.ProjectileType<LightStartEffect_Bullet>() && proj.timeLeft > 150 && !topFiveProjectiles.Contains(proj))
 			{
 				proj.timeLeft = 150;
 			}

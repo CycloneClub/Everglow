@@ -101,7 +101,7 @@ public class UnderwaterLightningMechanism_H : ModTile
 		if (!Main.dedServ)
 		{
 			Point point = BFSFindOtherMechanism(entityPos.X, entityPos.Y);
-			Projectile proj = Projectile.NewProjectileDirect(WorldGen.GetProjectileSource_PlayerOrWires(i, j, true, Main.LocalPlayer), point.ToWorldCoordinates(), Vector2.zeroVector, ModContent.ProjectileType<UnderwaterLightningMechanism_Lightning>(), 250, 1.5f, Main.maxPlayers, Main.rand.NextFloat(30f));
+			Projectile proj = Projectile.NewProjectileDirect(WorldGen.GetProjectileSource_PlayerOrWires(i, j, true, Main.LocalPlayer), point.ToWorldCoordinates(), Vector2.zeroVector, ModContent.ProjectileType<UnderwaterLightningMechanism_Lightning>(), 250, 1.5f, -1, Main.rand.NextFloat(30f));
 			UnderwaterLightningMechanism_Lightning uLLML = proj.ModProjectile as UnderwaterLightningMechanism_Lightning;
 			if (uLLML is not null)
 			{
@@ -226,7 +226,7 @@ public class UnderwaterLightningMechanism_H : ModTile
 		{
 			zero = Vector2.zeroVector;
 		}
-		Texture2D glowTex = ModAsset.UnderwaterLightningMechanism_H_glow.Value;
+		Texture2D glowTex = ModAsset.UnderwaterLightningMechanism_H_Glow.Value;
 		Point16 entityPoint = new Point16(i - tile.TileFrameX % 90 / 18, j - tile.TileFrameY / 18 + 1);
 		Tile entityTile = Main.tile[entityPoint];
 		if (entityTile.TileFrameX == 90)

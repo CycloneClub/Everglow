@@ -1,7 +1,7 @@
 using System.Reflection;
 using Everglow.Commons.Mechanics.Quest.PlayerSide;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
-using Everglow.Yggdrasil.YggdrasilTown.Quests.PlayerSides;
+using Everglow.Yggdrasil.YggdrasilTown.Quests.MainStory;
 using SubworldLibrary;
 using Terraria.WorldBuilding;
 
@@ -38,9 +38,9 @@ public class YggdrasilWorld : Subworld
 	{
 		SubworldSystem.hideUnderworld = true;
 		YggdrasilTimer = 0;
-		if (!PlayerQuestManager.Instance.Quests.Contains(new GetAccessCard()))
+		if (!PlayerQuestManager.Instance.Quests.Contains(new TownAccessCard_Quest()))
 		{
-			PlayerQuestManager.Instance.AddQuest(new GetAccessCard(), PlayerQuestState.Available);
+			PlayerQuestManager.Instance.AddQuest(new TownAccessCard_Quest(), PlayerQuestState.Available);
 		}
 	}
 

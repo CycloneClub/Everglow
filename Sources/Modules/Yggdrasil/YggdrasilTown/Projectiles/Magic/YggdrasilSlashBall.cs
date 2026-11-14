@@ -131,7 +131,7 @@ public class YggdrasilSlashBall : ModProjectile
 
 	public override bool PreDraw(ref Color lightColor)
 	{
-		Texture2D dark = Commons.ModAsset.Point_black.Value;
+		Texture2D dark = Commons.ModAsset.Point_Black.Value;
 		Vector2 pos = Projectile.Center - Main.screenPosition;
 
 		float timeValue = (float)Main.time * 0.02f + Projectile.whoAmI;
@@ -168,7 +168,7 @@ public class YggdrasilSlashBall : ModProjectile
 		Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 		Main.graphics.GraphicsDevice.RasterizerState = RasterizerState.CullNone;
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.StarSlash_black.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.StarSlash_Black.Value;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		float range = 60;
 		bars = new List<Vertex2D>();

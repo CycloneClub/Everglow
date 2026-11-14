@@ -388,7 +388,7 @@ public class ExampleStabbingSword_Config : ModPlayer
 
 	public void DrawSlideBar(float minVallue, float maxValue, ref float currentValue, float defaultValue, string valueName, int order)
 	{
-		Texture2D track = Commons.ModAsset.SlideTrack_black.Value;
+		Texture2D track = Commons.ModAsset.SlideTrack_Black.Value;
 		Texture2D block = Commons.ModAsset.SlideBlock.Value;
 		Texture2D defaultCut = Commons.ModAsset.SlideDefaultCut.Value;
 		Vector2 pos = Player.Center + new Vector2(-360, -120 + order * 16) + PanelPos;

@@ -13,6 +13,8 @@ public class YggdrasilPlayerRoomDoorKey : ModItem
 
 		Item.rare = ItemRarityID.White;
 		Item.value = 60000;
+
+		Item.questItem = true;
 	}
 
 	public override bool CanStackInWorld(Item source) => true;

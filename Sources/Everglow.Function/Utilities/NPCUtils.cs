@@ -3,7 +3,7 @@ using Everglow.Commons.Netcode.Packets;
 
 namespace Everglow.Commons.Utilities;
 
-public static class NPCUtils
+public static partial class NPCUtils
 {
 	#region Town NPC Behavior
 

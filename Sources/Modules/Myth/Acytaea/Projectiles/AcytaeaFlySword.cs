@@ -9,7 +9,7 @@ public class AcytaeaFlySword : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
 
-	public override string Texture => ModAsset.AcytaeaSword_projectile_Mod;
+	public override string Texture => ModAsset.AcytaeaSword_Projectile_Mod;
 
 	public override void SetDefaults()
 	{
@@ -95,7 +95,6 @@ public class AcytaeaFlySword : ModProjectile
 		{
 			return;
 		}
-		Player player = Main.player[Projectile.owner];
 		TimeTokill = 60;
 		Projectile.tileCollide = false;
 		Projectile.friendly = false;
@@ -219,7 +218,7 @@ public class AcytaeaFlySword : ModProjectile
 	{
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-		DrawTrail(Commons.ModAsset.Trail_2_black_thick.Value, Color.White * 0.7f);
+		DrawTrail(Commons.ModAsset.Trail_2_Black_Thick.Value, Color.White * 0.7f);
 		DrawTrail(Commons.ModAsset.Trail_6.Value, new Color(1f, 0f, 0.4f, 0f));
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
@@ -238,7 +237,7 @@ public class AcytaeaFlySword : ModProjectile
 		dissolve.Parameters["uNoiseSize"].SetValue(2f);
 		dissolve.Parameters["uNoiseXY"].SetValue(new Vector2(Projectile.ai[1], Projectile.ai[2]));
 		dissolve.CurrentTechnique.Passes[0].Apply();
-		Texture2D tex = ModAsset.AcytaeaFlySword_red.Value;
+		Texture2D tex = ModAsset.AcytaeaFlySword_Red.Value;
 		Rectangle projFrame = new Rectangle(0, Projectile.frame * Projectile.height, Projectile.width, Projectile.height);
 		Main.spriteBatch.Draw(tex, Projectile.Center, projFrame, new Color(255, 0, 215, 155), Projectile.rotation + MathHelper.PiOver4, new Vector2(40), Projectile.scale, SpriteEffects.None, 0);
 		Main.spriteBatch.End();

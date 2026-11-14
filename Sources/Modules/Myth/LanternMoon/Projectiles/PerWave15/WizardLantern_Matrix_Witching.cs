@@ -210,7 +210,7 @@ public class WizardLantern_Matrix_Witching : ModProjectile
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(sBS);
 
-		Texture2D blackSpot = Commons.ModAsset.LightPoint2_black.Value;
+		Texture2D blackSpot = Commons.ModAsset.LightPoint2_Black.Value;
 		Texture2D redSpot = Commons.ModAsset.LightPoint2.Value;
 		for (int i = 0; i < 8; i++)
 		{

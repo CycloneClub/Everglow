@@ -35,7 +35,7 @@ public class LifeFluorescentTreeLeaf : ModTile
 			zero = Vector2.Zero;
 		}
 
-		Texture2D tex = ModAsset.LifeFluorescentTreeLeaf_glow.Value;
+		Texture2D tex = ModAsset.LifeFluorescentTreeLeaf_Glow.Value;
 		spriteBatch.Draw(tex, new Vector2(i * 16, j * 16) - Main.screenPosition + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16), new Color(55, 55, 55, 0), 0, new Vector2(0), 1, SpriteEffects.None, 0);
 		base.PostDraw(i, j, spriteBatch);
 	}

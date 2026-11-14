@@ -1,6 +1,10 @@
 AntiHeavenSicknessPill: {
 	DisplayName: Anti Heaven Sickness Pill
-	Tooltip: "Permanently increases maximum life by {1}, {2}, {3}, {4} and {5} on successive uses\nCan be used up to {0} times"
+	Tooltip:
+		'''
+		Permanently increases maximum life by {1}, {2}, {3}, {4} and {5} on successive uses
+		Can be used up to {0} times
+		'''
 }
 
 JadeFruit: {
@@ -14,7 +18,11 @@ JadeFruit: {
 
 LampBorerHoney: {
 	DisplayName: Lamp Borer Honey
-	Tooltip: "Permanently increases maximum life by {1}\nCan be used up to {0} times"
+	Tooltip:
+		'''
+		Permanently increases maximum life by {1}
+		Can be used up to {0} times
+		'''
 }
 
 Photophore: {
@@ -40,22 +48,20 @@ SquamousCore: {
 		'''
 }
 
-InsectManaEssence: {
-	DisplayName: Insect Mana Essence
-	Tooltip: "Permanently increases maximum mana by {0}\nCan be used up to {1} times"
-}
-
-ManaSpringElixir: {
-	DisplayName: Mana Spring Elixir
-	Tooltip: "Permanently increases maximum mana by {0}\nCan be used up to {1} times"
-}
-
 MagicOrganExtract: {
 	DisplayName: "Magic Organ Extract"
-	Tooltip: "Permanently increases maximum mana by {0}\nCan be used up to {1} times"
+	Tooltip:
+		'''
+		Permanently increases maximum mana by {0}
+		Can be used up to {1} times
+		'''
 }
 
-ActiveMagicSpringPowder: {
-	DisplayName: "Active Magic Spring Powder"
-	Tooltip: "Permanently increases maximum mana by {0}\nCan be used up to {1} times"
+ActivatedManaSpringPowder: {
+	DisplayName: "Activated Mana Spring Powder"
+	Tooltip:
+		'''
+		Permanently increases maximum mana by {0}
+		Can be used up to {1} times
+		'''
 }

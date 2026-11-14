@@ -87,7 +87,7 @@ public class GoldShield : ModProjectile, IWarpProjectile
 		effect.CurrentTechnique.Passes[0].Apply();
 		// 花纹
 		float timeValue = (float)Main.time * 0.006f;
-		Texture2D texPiece = ModAsset.GoldShieldScale_dark.Value;
+		Texture2D texPiece = ModAsset.GoldShieldScale_Dark.Value;
 		Vector2 drawPos = DrawSize / 2f;
 		float count = 16;
 		for (int i = -(int)count; i < count; i++)
@@ -310,7 +310,7 @@ public class GoldShield : ModProjectile, IWarpProjectile
 				float X = (float)Math.Sqrt(Main.rand.NextFloat(0, 0.5f));
 				float Y = (float)Math.Sqrt(Main.rand.NextFloat(0, 0.5f));
 				var v0 = new Vector2(X * Math.Sign(Main.rand.NextFloat(-1, 1)) * 38, Y * Math.Sign(Main.rand.NextFloat(-1, 1)) * 38);
-				Dust dust = Dust.NewDustDirect(Projectile.Center + v0 - new Vector2(4) + new Vector2(0, -12), 0, 0, ModContent.DustType<GoldShieldScale_dust>(), 0, 0, 0, default, Main.rand.NextFloat(0.8f, 1.3f));
+				Dust dust = Dust.NewDustDirect(Projectile.Center + v0 - new Vector2(4) + new Vector2(0, -12), 0, 0, ModContent.DustType<GoldShieldScale_Dust>(), 0, 0, 0, default, Main.rand.NextFloat(0.8f, 1.3f));
 				dust.noGravity = true;
 				dust.velocity += new Vector2(v0.X * 0.1f, 0);
 			}

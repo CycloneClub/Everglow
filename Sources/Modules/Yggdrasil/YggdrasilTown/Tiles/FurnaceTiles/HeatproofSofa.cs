@@ -62,6 +62,6 @@ public class HeatproofSofa : ModTile
 
 	public override void MouseOver(int i, int j)
 	{
-		FurnitureUtils.SofaMouseOver<HeatproofSofa_item>(i, j);
+		FurnitureUtils.SofaMouseOver<HeatproofSofa_Item>(i, j);
 	}
 }

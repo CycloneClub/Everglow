@@ -439,7 +439,7 @@ public class Acytaea : VisualNPC
 			NPC.frameCounter += 1;
 			if (t == 6)
 			{
-				Projectile proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<AcytaeaSword_projectile_TownNPC>(), 150, 3, Main.netMode == NetmodeID.SinglePlayer ? Main.myPlayer : Main.maxPlayers, NPC.whoAmI);
+				Projectile proj = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<AcytaeaSword_Projectile_TownNPC>(), 150, 3, Main.netMode == NetmodeID.SinglePlayer ? Main.myPlayer : Main.maxPlayers, NPC.whoAmI);
 				proj.npcProj = true;
 			}
 			if (NPC.frameCounter > 6)

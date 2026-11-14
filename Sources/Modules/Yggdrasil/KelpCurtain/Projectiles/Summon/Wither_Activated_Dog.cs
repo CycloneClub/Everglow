@@ -489,9 +489,9 @@ public class Wither_Activated_Dog : ModProjectile
 	{
 		Rectangle drawFrame = new Rectangle(0, Projectile.frame * 64, 94, 64);
 		Texture2D mainTex = ModAsset.Wither_Activated_Dog.Value;
-		Texture2D glowTex = ModAsset.Wither_Activated_Dog_glow.Value;
-		Texture2D glowTex_c = ModAsset.Wither_Activated_Dog_glow_collar.Value;
-		Texture2D bloomTex = ModAsset.Wither_Activated_Dog_bloom.Value;
+		Texture2D glowTex = ModAsset.Wither_Activated_Dog_Glow.Value;
+		Texture2D glowTex_c = ModAsset.Wither_Activated_Dog_Glow_Collar.Value;
+		Texture2D bloomTex = ModAsset.Wither_Activated_Dog_Bloom.Value;
 		SpriteEffects spriteEffects = SpriteEffects.None;
 		if (Projectile.spriteDirection == -1)
 		{

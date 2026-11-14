@@ -2,7 +2,7 @@ namespace Everglow.Commons.Mechanics.Quest.Core;
 
 /// <summary>
 /// 任务类型
-/// <para/>排序：主线＞支线＞成就＞挑战＞日常＞传说
+/// <para/>排序：主线＞支线＞委托＞挑战＞日常＞传说
 /// </summary>
 public enum QuestType
 {
@@ -27,9 +27,9 @@ public enum QuestType
 	Legend,
 
 	/// <summary>
-	/// 成就任务 - 绿
+	/// 委托任务 - 绿
 	/// </summary>
-	Achievement,
+	Request,
 
 	/// <summary>
 	/// 日常任务 - 蓝

@@ -45,7 +45,7 @@ public class YggdrasilPlayer : ModPlayer
 
 	public int ConsumedMagicOrganExtract { get; set; }
 
-	public int ConsumedActiveMagicSpringPowder { get; set; }
+	public int ConsumedActivatedManaSpringPowder { get; set; }
 
 	public bool UseAntiHeavenSicknessPill()
 	{
@@ -97,11 +97,11 @@ public class YggdrasilPlayer : ModPlayer
 		return false;
 	}
 
-	public bool UseActiveMagicSpringPowder()
+	public bool UseActivatedManaSpringPowder()
 	{
-		if (ConsumedActiveMagicSpringPowder < ActiveMagicSpringPowder.MaxUse)
+		if (ConsumedActivatedManaSpringPowder < ActivatedManaSpringPowder.MaxUse)
 		{
-			ConsumedActiveMagicSpringPowder++;
+			ConsumedActivatedManaSpringPowder++;
 			return true;
 		}
 		return false;
@@ -137,7 +137,7 @@ public class YggdrasilPlayer : ModPlayer
 		health.Base += ConsumedLampBorerHoney * LampBorerHoney.LifePerHoney;
 
 		mana.Base += ConsumedMagicOrganExtract * MagicOrganExtract.ManaPerUse;
-		mana.Base += ConsumedActiveMagicSpringPowder * ActiveMagicSpringPowder.ManaPerUse;
+		mana.Base += ConsumedActivatedManaSpringPowder * ActivatedManaSpringPowder.ManaPerUse;
 
 		if (SubworldSystem.IsActive<YggdrasilWorld>())
 		{
@@ -230,13 +230,13 @@ public class YggdrasilPlayer : ModPlayer
 		tag[nameof(ConsumedSquamousCore)] = ConsumedSquamousCore;
 		tag[nameof(ConsumedLampBorerHoney)] = ConsumedLampBorerHoney;
 		tag[nameof(ConsumedMagicOrganExtract)] = ConsumedMagicOrganExtract;
-		tag[nameof(ConsumedActiveMagicSpringPowder)] = ConsumedActiveMagicSpringPowder;
+		tag[nameof(ConsumedActivatedManaSpringPowder)] = ConsumedActivatedManaSpringPowder;
 	}
 
 	public override void LoadData(TagCompound tag)
 	{
 		ConsumedMagicOrganExtract = Math.Clamp(tag.GetInt(nameof(ConsumedMagicOrganExtract)), 0, MagicOrganExtract.MaxUse);
-		ConsumedActiveMagicSpringPowder = Math.Clamp(tag.GetInt(nameof(ConsumedActiveMagicSpringPowder)), 0, ActiveMagicSpringPowder.MaxUse);
+		ConsumedActivatedManaSpringPowder = Math.Clamp(tag.GetInt(nameof(ConsumedActivatedManaSpringPowder)), 0, ActivatedManaSpringPowder.MaxUse);
 		if (tag.TryGet(nameof(ConsumedAntiHeavenSicknessPill), out int life1))
 		{
 			ConsumedAntiHeavenSicknessPill = life1;
@@ -266,7 +266,7 @@ public class YggdrasilPlayer : ModPlayer
 				consumedSquamousCore = ConsumedSquamousCore,
 				consumedLampBorerHoney = ConsumedLampBorerHoney,
 				consumedMagicOrganExtract = ConsumedMagicOrganExtract,
-				consumedActiveMagicSpringPowder = ConsumedActiveMagicSpringPowder,
+				consumedActivatedManaSpringPowder = ConsumedActivatedManaSpringPowder,
 			}, toWho, fromWho);
 	}
 
@@ -278,7 +278,7 @@ public class YggdrasilPlayer : ModPlayer
 		clone.ConsumedJadeGlazeFruit = ConsumedJadeGlazeFruit;
 		clone.ConsumedSquamousCore = ConsumedSquamousCore;
 		clone.ConsumedMagicOrganExtract = ConsumedMagicOrganExtract;
-		clone.ConsumedActiveMagicSpringPowder = ConsumedActiveMagicSpringPowder;
+		clone.ConsumedActivatedManaSpringPowder = ConsumedActivatedManaSpringPowder;
 	}
 
 	public override void SendClientChanges(ModPlayer clientPlayer)
@@ -286,7 +286,7 @@ public class YggdrasilPlayer : ModPlayer
 		var clone = (YggdrasilPlayer)clientPlayer;
 		if (ConsumedLampBorerHoney != clone.ConsumedLampBorerHoney
 			|| ConsumedMagicOrganExtract != clone.ConsumedMagicOrganExtract
-			|| ConsumedActiveMagicSpringPowder != clone.ConsumedActiveMagicSpringPowder)
+			|| ConsumedActivatedManaSpringPowder != clone.ConsumedActivatedManaSpringPowder)
 		{
 			SyncPlayer(toWho: -1, fromWho: Main.myPlayer, newPlayer: false);
 		}

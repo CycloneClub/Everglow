@@ -14,6 +14,7 @@ public class FallingSand_DecaySandSoil : ModProjectile
 		Projectile.height = 16;
 		Projectile.friendly = true;
 		Projectile.hostile = true;
+		Projectile.trap = true;
 		Projectile.DamageType = DamageClass.Ranged;
 		Projectile.penetrate = -1;
 		Projectile.timeLeft = 120000;

@@ -1,5 +1,6 @@
 using Everglow.Commons.Mechanics.NPCSpawn;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs;
+using Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs;
 using static Everglow.Yggdrasil.YggdrasilTown.NPCSpawn.YggdrasilTownSpawnConditions;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.NPCSpawn;
@@ -110,7 +111,12 @@ public static class YggdrasilTownSpawnTable
 				? 3f : 0f,
 		});
 
-		// TODO：晶胞虫
+		rules.Add(new SubworldSpawnRule
+		{
+			Type = ModContent.NPCType<CrystalCell>(),
+			SpawnChance = spawnInfo => InTwilightForest(spawnInfo) && SpawnConditions.OnGround(spawnInfo)
+				? 1f : 0f,
+		});
 
 		// 原版无幸运修正时，普通史莱姆有 1/180 的机会变为粉史莱姆。
 		// 此处没有普通史莱姆候选，将同一基础比例用于灯木、暮光森林的白昼地面生成；不额外抽取随机数。
@@ -157,14 +163,14 @@ public static class YggdrasilTownSpawnTable
 		{
 			Type = ModContent.NPCType<JellyBall>(),
 			SpawnChance = spawnInfo => InDeepMine(spawnInfo)
-				? 3f : 0f,
+				? 7f : 0f,
 		});
 
 		rules.Add(new SubworldSpawnRule
 		{
 			Type = ModContent.NPCType<GiantJellyBall>(),
 			SpawnChance = spawnInfo => InDeepMine(spawnInfo)
-				? 8f : 0f,
+				? 4f : 0f,
 		});
 
 		rules.Add(new SubworldSpawnRule
@@ -178,7 +184,7 @@ public static class YggdrasilTownSpawnTable
 		{
 			Type = ModContent.NPCType<RockElemental>(),
 			SpawnChance = spawnInfo => InDeepMine(spawnInfo) && !NPC.AnyNPCs(ModContent.NPCType<RockElemental>())
-				? 0.05f : 0f,
+				? 0.2f : 0f,
 		});
 
 		// 球冻温床：不混入森林和矿洞的其他候选，以大小球冻为主。
@@ -208,6 +214,13 @@ public static class YggdrasilTownSpawnTable
 			Type = ModContent.NPCType<CarapaceCaterpillar>(),
 			SpawnChance = spawnInfo => InJellyBallHotbed(spawnInfo) && SpawnConditions.OnGround(spawnInfo)
 				? 1f : 0f,
+		});
+
+		// 任务 NPC 刷新规则
+		rules.Add(new SubworldSpawnRule
+		{
+			Type = ModContent.NPCType<Herm>(),
+			SpawnChance = spawnInfo => ModContent.GetInstance<Herm>().SpawnChance(spawnInfo),
 		});
 	}
 }

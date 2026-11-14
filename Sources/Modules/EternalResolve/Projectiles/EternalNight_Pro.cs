@@ -28,7 +28,7 @@ namespace Everglow.EternalResolve.Projectiles
 				var p0 = Projectile.NewProjectileDirect(
 					Projectile.GetSource_OnHit(target),
 					Projectile.Center - new Vector2(0, Main.rand.NextFloat(115, 180) * Main.player[Projectile.owner].gravDir).RotatedBy(Main.rand.NextFloat(-0.4f, 0.4f)),
-					Vector2.zeroVector, ModContent.ProjectileType<EternalNight_shadow>(),
+					Vector2.zeroVector, ModContent.ProjectileType<EternalNight_Shadow>(),
 					Projectile.damage, Projectile.knockBack * 0.6f, Projectile.owner, target.whoAmI);
 				p0.timeLeft = 240;
 			}
@@ -49,7 +49,7 @@ namespace Everglow.EternalResolve.Projectiles
 
 		public override void DrawEffect(Color lightColor)
 		{
-			Texture2D Shadow = Commons.ModAsset.Star2_black.Value;
+			Texture2D Shadow = Commons.ModAsset.Star2_Black.Value;
 			Texture2D light = Commons.ModAsset.StabbingProjectile.Value;
 			Vector2 drawOrigin = light.Size() / 2f;
 			Vector2 drawShadowOrigin = Shadow.Size() / 2f;

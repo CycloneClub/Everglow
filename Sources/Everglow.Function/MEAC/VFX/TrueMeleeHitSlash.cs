@@ -35,7 +35,7 @@ public class TrueMeleeHitSlash : Visual
 
 	public override void Draw()
 	{
-		Texture2D slash_black = ModAsset.StarSlash_black.Value;
+		Texture2D slash_black = ModAsset.StarSlash_Black.Value;
 		Texture2D slash = ModAsset.StarSlash.Value;
 		Color drawColor = SlashColor;
 		if (!SelfLuminous)

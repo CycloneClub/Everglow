@@ -12,7 +12,7 @@ public class PermanentBoostPacket : IPacket
 	public int consumedLampBorerHoney = 0;
 	public int consumedSquamousCore = 0;
 	public int consumedMagicOrganExtract = 0;
-	public int consumedActiveMagicSpringPowder = 0;
+	public int consumedActivatedManaSpringPowder = 0;
 
 	public void Receive(BinaryReader reader, int whoAmI)
 	{
@@ -22,7 +22,7 @@ public class PermanentBoostPacket : IPacket
 		consumedLampBorerHoney = reader.ReadInt32();
 		consumedSquamousCore = reader.ReadInt32();
 		consumedMagicOrganExtract = reader.ReadInt32();
-		consumedActiveMagicSpringPowder = reader.ReadInt32();
+		consumedActivatedManaSpringPowder = reader.ReadInt32();
 	}
 
 	public void Send(BinaryWriter writer)
@@ -33,7 +33,7 @@ public class PermanentBoostPacket : IPacket
 		writer.Write(consumedLampBorerHoney);
 		writer.Write(consumedSquamousCore);
 		writer.Write(consumedMagicOrganExtract);
-		writer.Write(consumedActiveMagicSpringPowder);
+		writer.Write(consumedActivatedManaSpringPowder);
 	}
 
 	[HandlePacket(typeof(PermanentBoostPacket))]
@@ -54,7 +54,7 @@ public class PermanentBoostPacket : IPacket
 			mp.ConsumedLampBorerHoney = packetData.consumedLampBorerHoney;
 			mp.ConsumedSquamousCore = packetData.consumedSquamousCore;
 			mp.ConsumedMagicOrganExtract = Math.Clamp(packetData.consumedMagicOrganExtract, 0, MagicOrganExtract.MaxUse);
-			mp.ConsumedActiveMagicSpringPowder = Math.Clamp(packetData.consumedActiveMagicSpringPowder, 0, ActiveMagicSpringPowder.MaxUse);
+			mp.ConsumedActivatedManaSpringPowder = Math.Clamp(packetData.consumedActivatedManaSpringPowder, 0, ActivatedManaSpringPowder.MaxUse);
 
 			if (Main.netMode == NetmodeID.Server)
 			{

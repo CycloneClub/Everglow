@@ -3,17 +3,17 @@ AuburnRodSkeleton: {
 	Tooltip: ""
 }
 
-BellPepper_green: {
+BellPepper_Green: {
 	DisplayName: Bell Pepper_green
 	Tooltip: ""
 }
 
-BellPepper_red: {
+BellPepper_Red: {
 	DisplayName: Bell Pepper_red
 	Tooltip: ""
 }
 
-BellPepper_yellow: {
+BellPepper_Yellow: {
 	DisplayName: Bell Pepper_yellow
 	Tooltip: ""
 }
@@ -411,4 +411,13 @@ GiantBeetleAntennae: {
 ManaSpringOre: {
 	DisplayName: Mana Spring Ore
 	Tooltip: An exceptionally rare ore imbued with mana
+}
+
+ExtinguishedBadr: {
+	DisplayName: "Extinguished Balder"
+	Tooltip:
+		'''
+		The mining lamp Herm left behind
+		Craft beside the grand furnace to rekindle its light
+		'''
 }

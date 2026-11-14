@@ -25,10 +25,10 @@ public class TuskCursed : ModBuff
 
 	public int GetTusk_groundType()
 	{
-		int type = ModContent.ProjectileType<Tusk_ground_little>();
+		int type = ModContent.ProjectileType<Tusk_Ground_Little>();
 		if (Main.rand.NextBool(3))
 		{
-			type = ModContent.ProjectileType<Tusk_ground>();
+			type = ModContent.ProjectileType<Tusk_Ground>();
 		}
 		return type;
 	}

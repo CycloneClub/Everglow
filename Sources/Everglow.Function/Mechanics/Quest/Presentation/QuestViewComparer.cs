@@ -39,7 +39,7 @@ public class QuestViewComparer : IComparer<QuestView>
 	{
 		QuestType.MainStory => 0,
 		QuestType.SideStory => 1,
-		QuestType.Achievement => 2,
+		QuestType.Request => 2,
 		QuestType.Challenge => 3,
 		QuestType.Daily => 4,
 		QuestType.Legend => 5,

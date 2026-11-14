@@ -1,3 +1,4 @@
+using Everglow.Commons.Mechanics.Quest.Core.Dialogue;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Miscs;
 using Everglow.Yggdrasil.YggdrasilTown.Items.PermanentBoosters;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Tools;
@@ -20,8 +21,6 @@ public class QuestCounter_Consultant : ModNPC
 		NPC.aiStyle = NPCAIStyleID.Passive;
 		NPC.noTileCollide = true;
 	}
-
-	public override bool PreAI() => base.PreAI();
 
 	public override void AI()
 	{
@@ -49,11 +48,7 @@ public class QuestCounter_Consultant : ModNPC
 		base.AI();
 	}
 
-	public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor) => base.PreDraw(spriteBatch, screenPos, drawColor);
-
 	public override bool CanTownNPCSpawn(int numTownNPCs) => false;
-
-	public override bool CanChat() => base.CanChat();
 
 	public override void ChatBubblePosition(ref Vector2 position, ref SpriteEffects spriteEffects)
 	{
@@ -67,10 +62,14 @@ public class QuestCounter_Consultant : ModNPC
 		base.EmoteBubblePosition(ref position, ref spriteEffects);
 	}
 
-	public override string GetChat() => base.GetChat();
+	public override string GetChat() => this.GetLocalizedValue("Greeting");
 
 	public override void OnChatButtonClicked(bool firstButton, ref string shopName)
 	{
+		if (QuestChat.OnChatButtonClicked(NPC, firstButton))
+		{
+			return;
+		}
 		if (firstButton)
 		{
 			shopName = "Yggdrasil Town Union Shop";
@@ -80,6 +79,7 @@ public class QuestCounter_Consultant : ModNPC
 	public override void SetChatButtons(ref string button, ref string button2)
 	{
 		button = Language.GetTextValue("LegacyInterface.28");
+		QuestChat.SetChatButton(NPC, ref button2);
 	}
 
 	public override void AddShops()

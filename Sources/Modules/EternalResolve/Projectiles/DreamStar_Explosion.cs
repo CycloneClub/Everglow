@@ -37,7 +37,7 @@ namespace Everglow.EternalResolve.Projectiles
 			Projectile.height += (int)(Projectile.ai[0] * 10);
 			for (int x = 0; x < 80 * Projectile.ai[0]; x++)
 			{
-				var dust = Dust.NewDustDirect(Projectile.Center, 0, 0, ModContent.DustType<StarShine_purple_withoutPlayer>());
+				var dust = Dust.NewDustDirect(Projectile.Center, 0, 0, ModContent.DustType<StarShine_Purple_WithoutPlayer>());
 				dust.scale = Main.rand.NextFloat(0.65f, 1.35f) * Projectile.ai[0];
 				dust.color.R = (byte)(dust.scale * 100f);
 				if (dust.color.R < 25)
@@ -48,7 +48,7 @@ namespace Everglow.EternalResolve.Projectiles
 			}
 			for (int x = 0; x < 30 * Projectile.ai[0]; x++)
 			{
-				var dust = Dust.NewDustDirect(Projectile.Center, 0, 0, ModContent.DustType<StarShine_yellow_withoutPlayer>());
+				var dust = Dust.NewDustDirect(Projectile.Center, 0, 0, ModContent.DustType<StarShine_Yellow_WithoutPlayer>());
 				dust.scale = Main.rand.NextFloat(1f, 1.75f) * Projectile.ai[0];
 				dust.color.R = (byte)(dust.scale * 100f);
 				if (dust.color.R < 25)

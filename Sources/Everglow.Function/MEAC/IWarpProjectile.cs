@@ -19,7 +19,7 @@ public interface IWarpProjectile
 /// [G] for Y , from 0 to 255, corresponds UP to DOWN. 127 to prevent distortion.<br></br><br></br>
 /// [B]  for the magnitude of distortion.
 /// </summary>
-public interface IWarpProjectile_warpStyle2
+public interface IWarpProjectile_WarpStyle2
 {
 	void DrawWarp(VFXBatch spriteBatch);
 }

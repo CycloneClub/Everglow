@@ -44,6 +44,6 @@ public class LampWood_Bone_8x6 : ModTile
 			zero = Vector2.Zero;
 		}
 
-		spriteBatch.Draw(ModAsset.LampWood_Bone_8x6_glow.Value, new Vector2(i, j) * 16 - Main.screenPosition + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16), new Color(1f, 1f, 1f, 0), 0, Vector2.zeroVector, 1, SpriteEffects.None, 0);
+		spriteBatch.Draw(ModAsset.LampWood_Bone_8x6_Glow.Value, new Vector2(i, j) * 16 - Main.screenPosition + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16), new Color(1f, 1f, 1f, 0), 0, Vector2.zeroVector, 1, SpriteEffects.None, 0);
 	}
 }

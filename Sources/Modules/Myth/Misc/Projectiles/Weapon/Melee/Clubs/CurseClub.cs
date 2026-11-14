@@ -39,14 +39,14 @@ public class CurseClub : ClubProj
 				foreach (Projectile flyingClub in Main.projectile)
 				{
 					if (flyingClub.active && flyingClub.owner == Projectile.owner
-						&& (flyingClub.type == ModContent.ProjectileType<CurseClub_fly>() || flyingClub.type == ModContent.ProjectileType<IchorClub_fly>()))
+						&& (flyingClub.type == ModContent.ProjectileType<CurseClub_Fly>() || flyingClub.type == ModContent.ProjectileType<IchorClub_Fly>()))
 					{
 						flyingClubs++;
 					}
 				}
 				if (flyingClubs < 3)
 				{
-					Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<CurseClub_fly>(), (int)(Projectile.damage * 0.3f), Projectile.knockBack * 0.4f, Projectile.owner);
+					Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<CurseClub_Fly>(), (int)(Projectile.damage * 0.3f), Projectile.knockBack * 0.4f, Projectile.owner);
 				}
 			}
 		}
@@ -158,7 +158,7 @@ public class CurseClub : ClubProj
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, TrailBlendState(), SamplerState.AnisotropicWrap, DepthStencilState.None, RasterizerState.CullNone, null, model);
 
-		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.CurseClub_trail.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.CurseClub_Trail.Value;
 
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		Main.spriteBatch.End();

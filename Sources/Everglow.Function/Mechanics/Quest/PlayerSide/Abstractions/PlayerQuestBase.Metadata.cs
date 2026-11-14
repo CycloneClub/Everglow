@@ -1,4 +1,5 @@
 using Everglow.Commons.Mechanics.Quest.Core;
+using Terraria.Localization;
 
 namespace Everglow.Commons.Mechanics.Quest.PlayerSide.Abstractions;
 
@@ -17,19 +18,19 @@ public abstract partial class PlayerQuestBase : ITagCompoundEntity
 	public string InstanceId { get; private set; } = Guid.NewGuid().ToString("N");
 
 	/// <summary>
-	/// 用于外部显示的名字
+	/// 用于外部显示的名字。默认读取 <see cref="LocalizationKey"/> 下的 DisplayName。
 	/// </summary>
-	public abstract string DisplayName { get; }
+	public virtual string DisplayName => Text("DisplayName");
 
 	/// <summary>
 	/// 任务介绍
 	/// </summary>
-	public virtual string Description { get; } = string.Empty;
+	public virtual string Description => Text("Description");
 
 	/// <summary>
 	/// 任务详情提示
 	/// </summary>
-	public virtual string Hint => string.Empty;
+	public virtual string Hint => Text("Hint");
 
 	/// <summary>
 	/// 任务可接取时的提示遮蔽方式
@@ -65,4 +66,11 @@ public abstract partial class PlayerQuestBase : ITagCompoundEntity
 	/// 是否可放弃任务
 	/// </summary>
 	public virtual bool Cancellable => false;
+
+	/// <summary>读取相对于任务本地化路径的文本，缺失时返回空字符串。</summary>
+	protected string Text(string key, params object[] args)
+	{
+		string fullKey = LocalizationKey + "." + key;
+		return Language.Exists(fullKey) ? Language.GetTextValue(fullKey, args) : string.Empty;
+	}
 }

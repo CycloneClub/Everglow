@@ -17,7 +17,7 @@ CanteenMaid: {
 
 Fevens.DisplayName: Fevens
 
-Guard_of_YggdrasilTown: {
+Guard_Of_YggdrasilTown: {
 	DisplayName: Guard_of_ Yggdrasil Town
 
 	TownNPCMood: {
@@ -32,6 +32,13 @@ Guard_of_YggdrasilTown: {
 		NoHome: I hate not having a home.
 		Princess_LovesNPC: I like {NPCName}.
 	}
+}
+
+Herm: {
+	DisplayName: "Herm"
+	Greeting: "Hello, friend."
+	Waiting: "Please take my card to the guild. Balder will keep me company."
+	Silence: "..."
 }
 
 Howard_Warden.DisplayName: Howard_ Warden

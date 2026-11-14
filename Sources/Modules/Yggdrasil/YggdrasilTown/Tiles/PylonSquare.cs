@@ -59,7 +59,7 @@ public class PylonSquare : BackgroundSlideBase
 		Lighting.AddLight(drawPos1 + new Vector2(0, -150), new Vector3(3f, 2f, 6f));
 		Main.spriteBatch.Draw(torch, drawPos1 - Main.screenPosition, frame, Color.White, 0, new Vector2(100, 350), 1f, SpriteEffects.FlipHorizontally, 0);
 
-		Texture2D bloom = ModAsset.PylonSquare_bloom.Value;
+		Texture2D bloom = ModAsset.PylonSquare_Bloom.Value;
 		Main.spriteBatch.Draw(bloom, center + new Vector2(0, 318) - Main.screenPosition, null, new Color(1f, 1f, 1f, 0), 0, bloom.Size() * 0.5f, 1f, SpriteEffects.None, 0);
 	}
 

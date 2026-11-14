@@ -5,11 +5,13 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <LangVersion>preview</LangVersion>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
     <NoWarn>$(NoWarn);CS0436</NoWarn>
     <!-- Add a rule here only after its existing violations have been fixed. -->
     <WarningsAsErrors>
       $(WarningsAsErrors);
+      IDE1006;
       SA1001;
       SA1002;
       SA1003;

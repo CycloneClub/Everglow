@@ -103,6 +103,6 @@ public class TwilightCrystalMill : ModTile
 		Rectangle drawRectangle = new Rectangle(tile.TileFrameX, tile.TileFrameY + addFrY, 16, 16);
 
 		// The flame is manually drawn separate from the tile texture so that it can be drawn at full brightness.
-		Main.spriteBatch.Draw(ModAsset.TwilightCrystalMill_glow.Value, new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y + offsetY) + zero, drawRectangle, color, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+		Main.spriteBatch.Draw(ModAsset.TwilightCrystalMill_Glow.Value, new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y + offsetY) + zero, drawRectangle, color, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
 	}
 }

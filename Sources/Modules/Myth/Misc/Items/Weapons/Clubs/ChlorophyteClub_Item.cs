@@ -14,7 +14,7 @@ public class ChlorophyteClub_Item : ClubItem
 		Item.useAnimation = 12;
 		SmashDamageMultiplier = 80f / 60f;
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.ChlorophyteClub>();
-		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.ChlorophyteClub_smash>();
+		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.ChlorophyteClub_Smash>();
 	}
 
 	public override void AddRecipes()

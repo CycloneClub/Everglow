@@ -298,7 +298,7 @@ internal class BlackHole : ModProjectile
 				v2 = Projection(new Vector3(Projectile.Center.X + v3.X - Main.screenPosition.X, Projectile.Center.Y + v3.Y - Main.screenPosition.Y, v3.Z), new Vector2(Main.screenWidth, Main.screenHeight) / 2);
 				vertices.Add(new Vertex2D(v2, c, new Vector3(time, 1, 0)));
 			}
-			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_thick.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_Thick.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, vertices.ToArray(), 0, vertices.Count - 2);
 		}
 
@@ -349,7 +349,7 @@ public class TemporarySys : ModSystem// 暂时用一个ModSystem上滤镜
 			gd.SetRenderTarget(Main.screenTarget);
 			gd.Clear(Color.Black);
 			sb.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
-			Effect eff = ModAsset.BlackHole_shader.Value;
+			Effect eff = ModAsset.BlackHole_Shader.Value;
 			var scRes = new Vector2(Main.screenWidth, Main.screenHeight);
 			var pos = Vector2.Transform(proj.Center - Main.screenPosition, Main.Transform);
 			eff.Parameters["uPosition"].SetValue(pos / scRes);

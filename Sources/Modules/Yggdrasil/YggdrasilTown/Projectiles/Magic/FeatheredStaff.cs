@@ -164,9 +164,9 @@ internal class FeatheredStaff : ModProjectile
 		{
 			GenerateParticlesExposion(50);
 
-			Gore.NewGore(Projectile.Center, Projectile.velocity, ModContent.Find<ModGore>("Everglow/FeatheredStaff_gore0").Type, Projectile.scale);
-			Gore.NewGore(Projectile.Center, Projectile.velocity, ModContent.Find<ModGore>("Everglow/FeatheredStaff_gore1").Type, Projectile.scale);
-			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<FeatheredStaff_break>(), (int)(Projectile.damage * 0.4f), Projectile.knockBack * 0.2f, Projectile.owner, 0.57f);
+			Gore.NewGore(Projectile.Center, Projectile.velocity, ModContent.Find<ModGore>("Everglow/FeatheredStaff_Gore0").Type, Projectile.scale);
+			Gore.NewGore(Projectile.Center, Projectile.velocity, ModContent.Find<ModGore>("Everglow/FeatheredStaff_Gore1").Type, Projectile.scale);
+			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<FeatheredStaff_Break>(), (int)(Projectile.damage * 0.4f), Projectile.knockBack * 0.2f, Projectile.owner, 0.57f);
 			HasNotBursted = false;
 		}
 		GenerateParticles(5);
@@ -253,18 +253,18 @@ internal class FeatheredStaff : ModProjectile
 		{
 			Projectile.Kill();
 			GenerateParticlesExposion(20);
-			Projectile.NewProjectileDirect(Projectile.GetSource_FromThis("OnTileCollide"), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<FeatheredStaff_break>(), (int)(Projectile.damage * 0.4f), Projectile.knockBack * 0.15f, Projectile.owner, 0.8f);
+			Projectile.NewProjectileDirect(Projectile.GetSource_FromThis("OnTileCollide"), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<FeatheredStaff_Break>(), (int)(Projectile.damage * 0.4f), Projectile.knockBack * 0.15f, Projectile.owner, 0.8f);
 			return true;
 		}
 		if (CollisionCounter >= MaxCollisionCount)
 		{
 			Projectile.Kill();
 			GenerateParticlesExposion(20);
-			Projectile.NewProjectileDirect(Projectile.GetSource_FromThis("OnTileCollide"), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<FeatheredStaff_break>(), (int)(Projectile.damage * 0.4f), Projectile.knockBack * 0.15f, Projectile.owner, 0.35f);
+			Projectile.NewProjectileDirect(Projectile.GetSource_FromThis("OnTileCollide"), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<FeatheredStaff_Break>(), (int)(Projectile.damage * 0.4f), Projectile.knockBack * 0.15f, Projectile.owner, 0.35f);
 			return true;
 		}
 		GenerateParticlesExposion(13);
-		Projectile.NewProjectileDirect(Projectile.GetSource_FromThis("OnTileCollide"), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<FeatheredStaff_break>(), (int)(Projectile.damage * 0.4f), Projectile.knockBack * 0.1f, Projectile.owner, 0.27f);
+		Projectile.NewProjectileDirect(Projectile.GetSource_FromThis("OnTileCollide"), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<FeatheredStaff_Break>(), (int)(Projectile.damage * 0.4f), Projectile.knockBack * 0.1f, Projectile.owner, 0.27f);
 		if (Projectile.velocity.X != oldVelocity.X)
 		{
 			Projectile.velocity.X = -oldVelocity.X * 0.8f;
@@ -377,7 +377,7 @@ internal class FeatheredStaff : ModProjectile
 		return false;
 	}
 
-	private static string BrokenTexture() => ModAsset.FeatheredStaff_broken_Mod;
+	private static string BrokenTexture() => ModAsset.FeatheredStaff_Broken_Mod;
 
 	public override void OnKill(int timeLeft)
 	{
@@ -386,6 +386,6 @@ internal class FeatheredStaff : ModProjectile
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
 		GenerateParticlesExposion(20);
-		Projectile.NewProjectileDirect(Projectile.GetSource_OnHit(target), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<FeatheredStaff_break>(), (int)(Projectile.damage * 0.4f), Projectile.knockBack * 0.15f, Projectile.owner, 0.35f);
+		Projectile.NewProjectileDirect(Projectile.GetSource_OnHit(target), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<FeatheredStaff_Break>(), (int)(Projectile.damage * 0.4f), Projectile.knockBack * 0.15f, Projectile.owner, 0.35f);
 	}
 }

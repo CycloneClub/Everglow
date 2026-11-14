@@ -11,6 +11,6 @@ public class FemaleLampWood : ModTile
 		DustType = ModContent.DustType<LampWood_Dust>();
 		HitSound = SoundID.Dig;
 
-		AddMapEntry(new Color(79, 73, 86));
+		AddMapEntry(new Color(69, 71, 71));
 	}
 }

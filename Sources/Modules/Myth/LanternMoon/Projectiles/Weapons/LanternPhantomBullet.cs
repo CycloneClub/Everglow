@@ -25,9 +25,9 @@ public class LanternPhantomBullet : ModProjectile
 
 	public override bool PreDraw(ref Color lightColor)
 	{
-		Texture2D black = ModAsset.LanternBullet_black.Value;
+		Texture2D black = ModAsset.LanternBullet_Black.Value;
 		Texture2D bullet = ModContent.Request<Texture2D>(Texture).Value;
-		Texture2D bloom = ModAsset.LanternPhantomBullet_bloom.Value;
+		Texture2D bloom = ModAsset.LanternPhantomBullet_Bloom.Value;
 
 		Main.EntitySpriteDraw(black, Projectile.Center - Main.screenPosition, null, Color.White * 0.5f, Projectile.rotation, black.Size() * 0.5f, 1f, SpriteEffects.None, 0);
 		Main.EntitySpriteDraw(bullet, Projectile.Center - Main.screenPosition, null, Color.White * 0.75f, Projectile.rotation, bullet.Size() * 0.5f, 1f, SpriteEffects.None, 0);

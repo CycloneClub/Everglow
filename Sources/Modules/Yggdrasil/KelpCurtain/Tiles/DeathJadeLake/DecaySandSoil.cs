@@ -50,7 +50,7 @@ public class DecaySandSoil : ModTile
 		{
 			if (!fail && noItem)
 			{
-				Projectile.NewProjectileDirect(WorldGen.GetProjectileSource_TileBreak(i, j), new Point(i, j + 1).ToWorldCoordinates(), new Vector2(0, 4), ModContent.ProjectileType<FallingSand_DecaySandSoil>(), 20, 0.5f, owner: Main.maxPlayers);
+				Projectile.NewProjectileDirect(WorldGen.GetProjectileSource_TileBreak(i, j), new Point(i, j + 1).ToWorldCoordinates(), new Vector2(0, 4), ModContent.ProjectileType<FallingSand_DecaySandSoil>(), 20, 0.5f, owner: -1);
 			}
 		}
 		base.KillTile(i, j, ref fail, ref effectOnly, ref noItem);

@@ -41,7 +41,7 @@ namespace Everglow.EternalResolve.Projectiles
 			if (Main.rand.NextBool(7) && Projectile.timeLeft < 90)
 			{
 				Vector2 vel = Projectile.velocity.RotatedBy(Main.rand.NextFloat(-0.01f, 0.01f)) * Main.rand.NextFloat(14f, 28f);
-				var dust = Dust.NewDustDirect(Projectile.position - Vector2.Normalize(Projectile.velocity) * Main.rand.NextFloat(0f, (120 - Projectile.timeLeft) * 3f), Projectile.width, Projectile.height, ModContent.DustType<CorruptShine_withoutPlayer>(), 0, 0, 0, default, Main.rand.NextFloat(0.95f, 1.7f));
+				var dust = Dust.NewDustDirect(Projectile.position - Vector2.Normalize(Projectile.velocity) * Main.rand.NextFloat(0f, (120 - Projectile.timeLeft) * 3f), Projectile.width, Projectile.height, ModContent.DustType<CorruptShine_WithoutPlayer>(), 0, 0, 0, default, Main.rand.NextFloat(0.95f, 1.7f));
 				dust.velocity = vel;
 			}
 			if (Projectile.timeLeft == 114)
@@ -67,7 +67,7 @@ namespace Everglow.EternalResolve.Projectiles
 				new Vertex2D(Projectile.Center + normalize - Main.screenPosition, shadow, new Vector3(1, 0, 0)),
 				new Vertex2D(Projectile.Center - normalize - Main.screenPosition, shadow, new Vector3(1, 1, 0)),
 			};
-			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Star2_black.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Star2_Black.Value;
 			if (bars.Count > 3)
 			{
 				Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);

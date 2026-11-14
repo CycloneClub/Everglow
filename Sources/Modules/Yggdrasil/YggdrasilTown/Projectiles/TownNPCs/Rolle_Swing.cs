@@ -194,7 +194,7 @@ public class Rolle_Swing : ModProjectile
 			}
 			if (bars_dark.Count >= 3)
 			{
-				Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_1_black.Value;
+				Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_1_Black.Value;
 				Main.graphics.graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars_dark.ToArray(), 0, bars_dark.Count - 2);
 			}
 			if (bars.Count >= 3)

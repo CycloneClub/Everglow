@@ -38,7 +38,7 @@ namespace Everglow.EternalResolve.Projectiles
 			float rot = Main.rand.NextFloat(-0.4f, 0.4f);
 			Vector2 velocity = playerVel + projVel.RotatedBy(Main.rand.NextFloat(-0.3f, 0.3f)) * Main.rand.NextFloat(0.75f, 3.25f);
 			Vector2 position = Projectile.Center + projVel.RotatedBy(rot) * Main.rand.NextFloat(1f, 2.5f);
-			var cf = new CursedFlame_flowDust
+			var cf = new CursedFlame_FlowDust
 			{
 				Velocity = velocity * 0.15f,
 				Active = true,
@@ -77,7 +77,7 @@ namespace Everglow.EternalResolve.Projectiles
 			Lighting.AddLight(Projectile.Center + Projectile.velocity, 0.2f * value, 0.24f * value, 0.3f * value);
 			Player player = Main.player[Projectile.owner];
 			Texture2D itemTexture = TextureAssets.Item[Main.player[Projectile.owner].HeldItem.type].Value;
-			Texture2D shadow = Commons.ModAsset.Star2_black.Value;
+			Texture2D shadow = Commons.ModAsset.Star2_Black.Value;
 			Texture2D light = Commons.ModAsset.StabbingProjectile.Value;
 			Vector2 drawOrigin = light.Size() / 2f;
 			Vector2 drawShadowOrigin = shadow.Size() / 2f;

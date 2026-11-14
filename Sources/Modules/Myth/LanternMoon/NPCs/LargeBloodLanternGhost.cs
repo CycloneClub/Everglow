@@ -140,7 +140,7 @@ public class LargeBloodLanternGhost : LanternMoonNPC
 						NPC.velocity *= 0;
 						if (Timer == 40)
 						{
-							Projectile p1 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<LargeBloodLanternGhost_Matrix_Summon>(), 0, 0f, Main.maxPlayers);
+							Projectile p1 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<LargeBloodLanternGhost_Matrix_Summon>(), 0, 0f, -1);
 							LargeBloodLanternGhost_Matrix_Summon lBLGMS = p1.ModProjectile as LargeBloodLanternGhost_Matrix_Summon;
 							if (lBLGMS is not null)
 							{
@@ -172,7 +172,7 @@ public class LargeBloodLanternGhost : LanternMoonNPC
 					}
 					if (Timer == 60)
 					{
-						Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<LargeBloodLanternGhost_Tentacles>(), 60, 0f, Main.maxPlayers);
+						Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<LargeBloodLanternGhost_Tentacles>(), 60, 0f, -1);
 						LargeBloodLanternGhost_Tentacles lBLGT = p0.ModProjectile as LargeBloodLanternGhost_Tentacles;
 						if (lBLGT is not null)
 						{

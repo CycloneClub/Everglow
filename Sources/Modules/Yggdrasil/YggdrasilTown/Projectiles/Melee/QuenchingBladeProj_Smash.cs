@@ -6,7 +6,7 @@ using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Melee;
 
-public class QuenchingBladeProj_Smash : ModProjectile, IWarpProjectile_warpStyle2, IBloomProjectile
+public class QuenchingBladeProj_Smash : ModProjectile, IWarpProjectile_WarpStyle2, IBloomProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
 
@@ -198,10 +198,10 @@ public class QuenchingBladeProj_Smash : ModProjectile, IWarpProjectile_warpStyle
 		switch (Main.rand.Next(2))
 		{
 			case 0:
-				SoundEngine.PlaySound(new SoundStyle(ModAsset.QuenchingBlade_superattack_1_Mod), Projectile.Center);
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.QuenchingBlade_Superattack_1_Mod), Projectile.Center);
 				break;
 			case 1:
-				SoundEngine.PlaySound(new SoundStyle(ModAsset.QuenchingBlade_superattack_2_Mod), Projectile.Center);
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.QuenchingBlade_Superattack_2_Mod), Projectile.Center);
 				break;
 		}
 		var hitVFX = new QuenchingBlade_SmashVFX
@@ -359,7 +359,7 @@ public class QuenchingBladeProj_Smash : ModProjectile, IWarpProjectile_warpStyle
 			bars.Add(SmoothTrail[i] + SmoothFallings[Math.Clamp(i, 0, SmoothFallings.Count - 1)] + drawPos, drawColor, new Vector3(i / (float)(SmoothTrail.Count - 1), 0, 0));
 			bars.Add(SmoothTrail[i] * (1f - width / 100f) + SmoothFallings[Math.Clamp(i, 0, SmoothFallings.Count - 1)] + drawPos, drawColor, new Vector3(i / (float)(SmoothTrail.Count - 1), 1, 0));
 		}
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Melee2_black.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Melee2_Black.Value;
 		if (bars.Count > 3)
 		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
@@ -375,7 +375,7 @@ public class QuenchingBladeProj_Smash : ModProjectile, IWarpProjectile_warpStyle
 		{
 			Vector2 drawPos = Projectile.Center + FallingMove + new Vector2(260 * FirstDirection, 0) - Main.screenPosition;
 			Texture2D crackTexture = Commons.ModAsset.StarSlash.Value;
-			Texture2D crackTextureBlack = Commons.ModAsset.StarSlash_black.Value;
+			Texture2D crackTextureBlack = Commons.ModAsset.StarSlash_Black.Value;
 			var slashColor = new Color(0.9f, 0.75f, 0.2f, 0f) * (MathF.Pow(Projectile.timeLeft / 20f, 4) * 0.15f);
 			Main.EntitySpriteDraw(crackTextureBlack, drawPos, null, Color.White, MathHelper.PiOver2, crackTextureBlack.Size() * 0.5f, new Vector2(Projectile.timeLeft / 20f, 3), SpriteEffects.None, 0);
 			Main.EntitySpriteDraw(crackTexture, drawPos, null, slashColor, MathHelper.PiOver2, crackTexture.Size() * 0.5f, new Vector2(Projectile.timeLeft / 20f, 3), SpriteEffects.None, 0);

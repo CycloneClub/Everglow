@@ -168,7 +168,7 @@ public class LampWood_Chest : ModTile
 			{
 				zero = Vector2.Zero;
 			}
-			spriteBatch.Draw(ModAsset.LampWood_Chest_crystal.Value, new Vector2(i, j) * 16 - Main.screenPosition + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY + chest.frame * 38, 16, 16), lightColor * 2.5f, 0, Vector2.zeroVector, 1, SpriteEffects.None, 0);
+			spriteBatch.Draw(ModAsset.LampWood_Chest_Crystal.Value, new Vector2(i, j) * 16 - Main.screenPosition + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY + chest.frame * 38, 16, 16), lightColor * 2.5f, 0, Vector2.zeroVector, 1, SpriteEffects.None, 0);
 		}
 	}
 }

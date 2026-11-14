@@ -39,7 +39,7 @@ public class LampFruitCurrent : TrailingProjectile
 		Lighting.AddLight(Projectile.Center, new Vector3(1, 0.7f, 0.1f));
 		if (Main.rand.NextBool(5))
 		{
-			var dust = Dust.NewDustDirect(Projectile.Center - new Vector2(4), 0, 0, ModContent.DustType<Dusts.LampWood_Dust_fluorescent_appear>());
+			var dust = Dust.NewDustDirect(Projectile.Center - new Vector2(4), 0, 0, ModContent.DustType<Dusts.LampWood_Dust_Fluorescent_Appear>());
 			dust.alpha = 0;
 			dust.rotation = Main.rand.NextFloat(0.3f, 0.7f);
 			dust.velocity = Projectile.velocity * 0.1f;
@@ -98,7 +98,7 @@ public class LampFruitCurrent : TrailingProjectile
 		Vector2 unitVel = Projectile.velocity.NormalizeSafe();
 		for (int i = 0; i < 30; i++)
 		{
-			var dust = Dust.NewDustDirect(Projectile.Center - new Vector2(4) + unitVel * i * 2, 0, 0, ModContent.DustType<Dusts.LampWood_Dust_fluorescent_appear>());
+			var dust = Dust.NewDustDirect(Projectile.Center - new Vector2(4) + unitVel * i * 2, 0, 0, ModContent.DustType<Dusts.LampWood_Dust_Fluorescent_Appear>());
 			dust.alpha = 100;
 			dust.rotation = Main.rand.NextFloat(0.3f, 0.9f);
 			dust.velocity = unitVel * (i + 15) / 6f;

@@ -2,7 +2,7 @@ using Everglow.Commons.Enums;
 
 namespace Everglow.Commons.VFX.Pipelines;
 
-public class HeatMapRenderPipeline_cursedFlame : PostPipeline
+public class HeatMapRenderPipeline_CursedFlame : PostPipeline
 {
 	private RenderTarget2D heatMapScreen;
 	private RenderTarget2D heatMapScreenSwap;

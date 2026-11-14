@@ -30,7 +30,7 @@ public class ItemGlowManager : GlobalItem
 		foreach (var item in ModIns.Mod.GetContent<ModItem>())
 		{
 			var itemLocation = item.Texture.AsSpan(9);
-			var path = string.Concat(itemLocation, "_glow");
+			var path = string.Concat(itemLocation, "_Glow");
 			if (source.HasAsset(path))
 			{
 				glowMasks.Add(asset.Request<Texture2D>(path, AssetRequestMode.ImmediateLoad));
@@ -40,7 +40,7 @@ public class ItemGlowManager : GlobalItem
 			}
 
 			var moduleName = itemLocation[..(itemLocation.IndexOf('/') + 1)];
-			path = string.Concat(moduleName, "Glows/", item.Name, "_glow");
+			path = string.Concat(moduleName, "Glows/", item.Name, "_Glow");
 			if (source.HasAsset(path))
 			{
 				glowMasks.Add(asset.Request<Texture2D>(path, AssetRequestMode.ImmediateLoad));

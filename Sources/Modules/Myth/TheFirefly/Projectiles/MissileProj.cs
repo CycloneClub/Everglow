@@ -263,7 +263,7 @@ public class MissileProj : ModProjectile, IWarpProjectile
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 
-		t = Commons.ModAsset.Trail_2_black_thick.Value;
+		t = Commons.ModAsset.Trail_2_Black_Thick.Value;
 		Main.graphics.GraphicsDevice.Textures[0] = t;
 		if (barsDark.Count > 3)
 		{
@@ -278,7 +278,7 @@ public class MissileProj : ModProjectile, IWarpProjectile
 	{
 		DrawTrail();
 		Texture2D star = ModAsset.MissileProj.Value;
-		Texture2D star2 = ModAsset.MissileProj_glow.Value;
+		Texture2D star2 = ModAsset.MissileProj_Glow.Value;
 		if (timeTokill < 0)
 		{
 			float light = Projectile.ai[0] * Projectile.ai[0] / 30000f;

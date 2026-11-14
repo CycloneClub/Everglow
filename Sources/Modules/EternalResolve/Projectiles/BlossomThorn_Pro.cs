@@ -67,7 +67,7 @@ namespace Everglow.EternalResolve.Projectiles
 
 		public override void DrawEffect(Color lightColor)
 		{
-			Texture2D Shadow = Commons.ModAsset.Star2_black.Value;
+			Texture2D Shadow = Commons.ModAsset.Star2_Black.Value;
 			Texture2D light = ModAsset.BlossomThorn_Pro.Value;
 			Vector2 drawOrigin = light.Size() / 2f;
 			Vector2 drawShadowOrigin = Shadow.Size() / 2f;

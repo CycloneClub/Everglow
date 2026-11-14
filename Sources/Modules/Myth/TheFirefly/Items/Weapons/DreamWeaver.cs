@@ -22,7 +22,7 @@ public class DreamWeaver : SpellTomeItem// TODO:织梦丝雨
 		Item.rare = ItemRarityID.Green;
 		Item.UseSound = SoundID.Item42;
 		Item.autoReuse = true;
-		Item.shoot = ModContent.ProjectileType<Projectiles.DreamWeaver_proj>();
+		Item.shoot = ModContent.ProjectileType<Projectiles.DreamWeaver_Proj>();
 		Item.shootSpeed = 12f;
 		DecorativeProjectileTypes.Add(ModContent.ProjectileType<TheFirefly.Projectiles.DreamWeaver.DreamWeaverBook>());
 		DecorativeProjectileTypes.Add(ModContent.ProjectileType<TheFirefly.Projectiles.DreamWeaver.DreamWeaverArray>());

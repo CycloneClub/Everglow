@@ -1,4 +1,4 @@
-#if DEBUG
+using Everglow.Commons.FeatureFlags;
 using Everglow.Commons.Mechanics.Quest.PlayerSide;
 using Everglow.Commons.Mechanics.Quest.PlayerSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.PlayerSide.Tests;
@@ -23,7 +23,7 @@ public class ExampleQuestPlayer : ModPlayer
 		registerSamples = false;
 
 		// All OnEnterWorld hooks have finished restoring the player's quest data.
-		if (!Main.dedServ && Player.whoAmI == Main.myPlayer && PlayerQuestManager.Instance.Quests.Count == 0)
+		if (!Main.dedServ && Player.whoAmI == Main.myPlayer && EverglowConfig.DebugMode)
 		{
 			PlayerQuestManager.Instance.AddQuest(new KillNPCQuestTest(), PlayerQuestState.Available);
 			PlayerQuestManager.Instance.AddQuest(new ParallelQuestTest(), PlayerQuestState.Available);
@@ -41,8 +41,6 @@ public class ExampleQuestPlayer : ModPlayer
 			PlayerQuestManager.Instance.AddQuest(new QuestIconTest(), PlayerQuestState.Available);
 			PlayerQuestManager.Instance.AddQuest(new GiveItemQuestTest(), PlayerQuestState.Available);
 			PlayerQuestManager.Instance.AddQuest(new ExploreQuestTest(), PlayerQuestState.Available);
-			PlayerQuestManager.Instance.AddQuest(new CancellableKillNPCQuestTest(), PlayerQuestState.Available);
 		}
 	}
 }
-#endif

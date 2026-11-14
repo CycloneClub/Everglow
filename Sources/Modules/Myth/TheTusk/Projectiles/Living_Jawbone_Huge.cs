@@ -103,8 +103,8 @@ public class Living_Jawbone_Huge : ModProjectile
 
 	public override bool PreDraw(ref Color lightColor)
 	{
-		Texture2D upJaw = ModAsset.Living_Jawbone_Huge_up.Value;
-		Texture2D downJaw = ModAsset.Living_Jawbone_Huge_down.Value;
+		Texture2D upJaw = ModAsset.Living_Jawbone_Huge_Up.Value;
+		Texture2D downJaw = ModAsset.Living_Jawbone_Huge_Down.Value;
 		SpriteEffects spriteEffects = SpriteEffects.None;
 		if (Projectile.spriteDirection == -1)
 		{

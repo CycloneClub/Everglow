@@ -182,7 +182,7 @@ public class CursedFlamesII : ModProjectile, IWarpProjectile
 			bars0.Add(new Vertex2D(Projectile.oldPos[i] + normalDir * -width * (1 - factor) + new Vector2(5f, 5f) - Main.screenPosition, c1, new Vector3(x0, 1, w)));
 			bars0.Add(new Vertex2D(Projectile.oldPos[i] + normalDir * width * (1 - factor) + new Vector2(5f, 5f) - Main.screenPosition, c1, new Vector3(x0, 0, w)));
 		}
-		Texture2D t = Commons.ModAsset.Trail_2_black_thick.Value;
+		Texture2D t = Commons.ModAsset.Trail_2_Black_Thick.Value;
 		Main.graphics.GraphicsDevice.Textures[0] = t;
 		if (bars0.Count > 3)
 		{
@@ -213,7 +213,7 @@ public class CursedFlamesII : ModProjectile, IWarpProjectile
 			bars.Add(new Vertex2D(Projectile.oldPos[i] + normalDir * -width * (1 - factor) + new Vector2(5f, 5f) - Main.screenPosition, c1, new Vector3(x0, 1, w)));
 			bars.Add(new Vertex2D(Projectile.oldPos[i] + normalDir * width * (1 - factor) + new Vector2(5f, 5f) - Main.screenPosition, c1, new Vector3(x0, 0, w)));
 		}
-		t = Commons.ModAsset.Trail_2_thick.Value;
+		t = Commons.ModAsset.Trail_2_Thick.Value;
 		Main.graphics.GraphicsDevice.Textures[0] = t;
 		if (bars.Count > 3)
 		{
@@ -313,7 +313,7 @@ public class CursedFlamesII : ModProjectile, IWarpProjectile
 				bars.Add(new Vertex2D(Projectile.oldPos[i] + normalDir * width * (1 - factorIII) + new Vector2(5f) - Main.screenPosition, c0, new Vector3(0, 0, 0)));
 			}
 		}
-		Texture2D t = Commons.ModAsset.Trail_2_thick.Value;
+		Texture2D t = Commons.ModAsset.Trail_2_Thick.Value;
 
 		if (bars.Count > 3)
 		{

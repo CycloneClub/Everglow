@@ -46,7 +46,7 @@ public class DevilHeartGyroscope_Proj : GyroscopeProjectile
 		for (int i = 0; i < count; ++i)
 		{
 			Vector2 vel = new Vector2(0, Main.rand.NextFloat(0.6f, 1.4f)).RotatedByRandom(MathHelper.TwoPi) + Projectile.velocity - new Vector2(0, 2);
-			var dust = new DevilHeart_Spark_gyroscope
+			var dust = new DevilHeart_Spark_Gyroscope
 			{
 				Velocity = vel,
 				Active = true,
@@ -236,7 +236,7 @@ public class DevilHeartGyroscope_Proj : GyroscopeProjectile
 			{
 				vel *= 2.4f;
 			}
-			var dust = new DevilHeart_Spark_gyroscope
+			var dust = new DevilHeart_Spark_Gyroscope
 			{
 				Velocity = vel,
 				Active = true,
@@ -277,8 +277,8 @@ public class DevilHeartGyroscope_Proj : GyroscopeProjectile
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D texture = ModAsset.DevilHeartGyroscope_Proj.Value;
-		Texture2D textureBloom = ModAsset.DevilHeartGyroscope_bloom.Value;
-		Texture2D textureGlow = ModAsset.DevilHeartGyroscope_Proj_glow.Value;
+		Texture2D textureBloom = ModAsset.DevilHeartGyroscope_Bloom.Value;
+		Texture2D textureGlow = ModAsset.DevilHeartGyroscope_Proj_Glow.Value;
 		var frame = new Rectangle(0, 32 * Projectile.frame, 32, 32);
 		if (Projectile.frame >= 4)
 		{

@@ -221,7 +221,7 @@ public class RedNeedleCaterpillar : Caterpillar
 		for (int i = 0; i < spikeCount; i++)
 		{
 			float spread = spikeCount <= 1 ? 0f : MathHelper.Lerp(-MaxSpreadRadians, MaxSpreadRadians, i / (float)(spikeCount - 1));
-			Projectile.NewProjectile(NPC.GetSource_FromAI(), origin, aim.RotatedBy(spread) * SpikeSpeed, ModContent.ProjectileType<RedNeedleCaterpillar_Spike>(), SpikeDamage, 0f, Owner: Main.maxPlayers);
+			Projectile.NewProjectile(NPC.GetSource_FromAI(), origin, aim.RotatedBy(spread) * SpikeSpeed, ModContent.ProjectileType<RedNeedleCaterpillar_Spike>(), SpikeDamage, 0f, Owner: -1);
 		}
 	}
 
@@ -263,7 +263,7 @@ public class RedNeedleCaterpillar : Caterpillar
 		int dustCount = NPC.life <= 0 ? 6 : 2;
 		for (int i = 0; i < dustCount; i++)
 		{
-			int dust = Dust.NewDust(NPC.position, NPC.width, NPC.height, ModContent.DustType<KelpMoss_dust>(), 2 * hit.HitDirection, -2f);
+			int dust = Dust.NewDust(NPC.position, NPC.width, NPC.height, ModContent.DustType<KelpMoss_Dust>(), 2 * hit.HitDirection, -2f);
 			Main.dust[dust].noGravity = true;
 			Main.dust[dust].scale = Main.rand.NextFloat(0.7f, 1.2f);
 		}

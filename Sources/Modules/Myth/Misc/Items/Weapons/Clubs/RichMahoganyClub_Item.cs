@@ -14,7 +14,7 @@ public class RichMahoganyClub_Item : ClubItem
 		Item.useAnimation = 12;
 		SmashDamageMultiplier = 8f / 9f;
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.RichMahoganyClub>();
-		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.RichMahoganyClub_smash>();
+		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.RichMahoganyClub_Smash>();
 	}
 
 	public override void AddRecipes()

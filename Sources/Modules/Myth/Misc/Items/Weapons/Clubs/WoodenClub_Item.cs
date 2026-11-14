@@ -22,6 +22,6 @@ public class WoodenClub_Item : ClubItem
 		Item.useAnimation = 12;
 		SmashDamageMultiplier = 7f / 8f;
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.WoodenClub>();
-		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.WoodenClub_smash>();
+		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.WoodenClub_Smash>();
 	}
 }

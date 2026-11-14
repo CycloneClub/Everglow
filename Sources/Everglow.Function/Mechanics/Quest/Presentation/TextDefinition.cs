@@ -102,7 +102,7 @@ public static class TextDefinition
 			{
 				QuestViewState.Available => QuestText.Get("Actions.Accept"),
 				QuestViewState.Active => QuestText.Get("States.Active"),
-				QuestViewState.Completed => QuestText.Get("States.Completed"),
+				QuestViewState.Completed => QuestText.Get("UI.Completed"),
 				QuestViewState.Failed => QuestText.Get("States.Failed"),
 				QuestViewState.Locked => QuestText.Get("States.Locked"),
 				_ => QuestText.Get("Common.Unknown"),

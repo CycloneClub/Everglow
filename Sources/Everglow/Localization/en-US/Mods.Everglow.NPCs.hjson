@@ -16,7 +16,7 @@ Acytaea: {
 }
 
 Acytaea_Boss.DisplayName: Acytaea_ Boss
-Acytaea_yggdrasil.DisplayName: Acytaea_yggdrasil
+Acytaea_Yggdrasil.DisplayName: Acytaea_Yggdrasil
 AlgaeOctopus.DisplayName: Algae-Covered Octopus
 AnimatedWitherbarkHound.DisplayName: Animated Witherbark Hound
 AnimatedWitherbarkSoldier.DisplayName: Animated Witherbark Soldier
@@ -44,14 +44,14 @@ CrimsonSpell.DisplayName: Crimson Spell
 CyanOreBeetle.DisplayName: Cyan Ore Beetle
 CylindricalLantern.DisplayName: Cylindrical Lantern
 DarkGlimmeringRods.DisplayName: Dark Glimmering Rods
-Dendroid_normal.DisplayName: Dendroid_normal
+Dendroid_Normal.DisplayName: Dendroid_Normal
 EvilLantern.DisplayName: Evil Lantern
 EvilPack.DisplayName: Evil Pack
 ExamplePerson.DisplayName: Example Person
-ExplosiveLantern_growing.DisplayName: Explosive Lantern_growing
-FireflyPiranha_small.DisplayName: Firefly Piranha_small
+ExplosiveLantern_Growing.DisplayName: Explosive Lantern_growing
+FireflyPiranha_Small.DisplayName: Firefly Piranha_small
 FireflyPiranha.DisplayName: Firefly Piranha
-FireflyPiranhaInfected_small.DisplayName: Firefly Piranha Infected_small
+FireflyPiranhaInfected_Small.DisplayName: Firefly Piranha Infected_small
 FireflyPiranhaInfected.DisplayName: Firefly Piranha Infected
 FlamingDashCore.DisplayName: Flaming Dash Core
 FloatLantern.DisplayName: Float Lantern
@@ -85,6 +85,7 @@ MossyThornTurtle.DisplayName: Thorn Mossy Tortoise
 OverrideRegistryTestNPC.DisplayName: Override Registry TestNPC
 PurpleBombCaterpillar.DisplayName: Purple Bomb Caterpillar
 QuestCounter_Consultant.DisplayName: Quest Counter_ Consultant
+QuestCounter_Consultant.Greeting: "Welcome to the climbing guild."
 Radiolarian.DisplayName: Radiolarian
 RapierMaster_Boss.DisplayName: Rapier Master_ Boss
 RedCore.DisplayName: Red Core

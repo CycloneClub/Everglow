@@ -195,13 +195,13 @@ public class YggdrasilTownBiome : ModBiome
 		gfc.TileAnchor = centerPosWorld.ToTileCoordinates() + new Point(-14, 29);
 		bgSystem.AddBackgroundSlide(gfc);
 
-		GiantFurnace_Construct_far gfcf = new GiantFurnace_Construct_far();
+		GiantFurnace_Construct_Far gfcf = new GiantFurnace_Construct_Far();
 		gfcf.WorldAnchor = centerPosWorld + new Vector2(183, 63) * 16 + new Vector2(-264, -164);
 		gfcf.BgTiles = TileUtils.GetAABBAreaOfTile((int)centerPosWorld.X / 16 + 106, (int)centerPosWorld.Y / 16 + 34, 112, 60);
 		gfcf.TileAnchor = centerPosWorld.ToTileCoordinates() + new Point(-14, 29);
 		bgSystem.AddBackgroundSlide(gfcf);
 
-		GiantFurnace_Construct_sky gfcs = new GiantFurnace_Construct_sky();
+		GiantFurnace_Construct_Sky gfcs = new GiantFurnace_Construct_Sky();
 		gfcs.WorldAnchor = centerPosWorld + new Vector2(0, -240);
 		gfcs.BgTiles = TileUtils.GetAABBAreaOfTile((int)centerPosWorld.X / 16 + 106, (int)centerPosWorld.Y / 16 + 4, 112, 90);
 		gfcs.TileAnchor = centerPosWorld.ToTileCoordinates() + new Point(-14, 29);

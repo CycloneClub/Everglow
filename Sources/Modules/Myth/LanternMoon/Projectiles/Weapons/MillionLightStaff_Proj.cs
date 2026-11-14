@@ -35,19 +35,19 @@ public class MillionLightStaff_Proj : TrailingProjectile
 			{
 				case 0:
 					TrailTexture = Commons.ModAsset.Trail_12.Value;
-					TrailTextureBlack = Commons.ModAsset.Trail_12_black.Value;
+					TrailTextureBlack = Commons.ModAsset.Trail_12_Black.Value;
 					break;
 				case 1:
 					TrailTexture = Commons.ModAsset.Trail_16.Value;
-					TrailTextureBlack = Commons.ModAsset.Trail_16_black.Value;
+					TrailTextureBlack = Commons.ModAsset.Trail_16_Black.Value;
 					break;
 				case 2:
 					TrailTexture = Commons.ModAsset.Trail_9.Value;
-					TrailTextureBlack = Commons.ModAsset.Trail_9_black.Value;
+					TrailTextureBlack = Commons.ModAsset.Trail_9_Black.Value;
 					break;
 				case 3:
 					TrailTexture = Commons.ModAsset.Trail_13.Value;
-					TrailTextureBlack = Commons.ModAsset.Trail_13_black.Value;
+					TrailTextureBlack = Commons.ModAsset.Trail_13_Black.Value;
 					break;
 			}
 
@@ -58,7 +58,7 @@ public class MillionLightStaff_Proj : TrailingProjectile
 		{
 			Projectile.extraUpdates = 3;
 			TrailTexture = Commons.ModAsset.Trail_10.Value;
-			TrailTextureBlack = Commons.ModAsset.Trail_10_black.Value;
+			TrailTextureBlack = Commons.ModAsset.Trail_10_Black.Value;
 			TrailLength = 32;
 			TrailWidth = 15;
 			Projectile.damage = (int)(Projectile.damage * 1.5f);

@@ -97,8 +97,8 @@ public class WaveLeafFlower4x6 : ModTile, ITileFluentlyDrawn
 
 		int paint = Main.tile[paintPos].TileColor;
 		int textureStyle = 1;
-		Texture2D tex = PaintedTextureSystem.TryGetPaintedTexture(ModAsset.WaveLeafFlower4x6_preview_Path, type, textureStyle, paint, tileDrawing);
-		tex ??= ModAsset.WaveLeafFlower4x6_preview.Value;
+		Texture2D tex = PaintedTextureSystem.TryGetPaintedTexture(ModAsset.WaveLeafFlower4x6_Preview_Path, type, textureStyle, paint, tileDrawing);
+		tex ??= ModAsset.WaveLeafFlower4x6_Preview.Value;
 
 		float windCycle = 0;
 		if (tileDrawing.InAPlaceWithWind(tilePos.X, tilePos.Y, pushWidth, pushHeight))

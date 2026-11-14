@@ -59,7 +59,7 @@ public class AncientPhantom_Magic_ExplosionWave : Visual
 			bars.Add(drawPos + star, drawC, new Vector3(i / 4f, 0.75f, 0));
 			bars.Add(drawPos + innerStar, drawC, new Vector3(i / 4f, 0.5f, 0));
 		}
-		Ins.Batch.Draw(Commons.ModAsset.Trail_0_blackWhite.Value, bars, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(Commons.ModAsset.Trail_0_BlackWhite.Value, bars, PrimitiveType.TriangleStrip);
 		bars = new List<Vertex2D>();
 		for (int i = 0; i <= sideCount; ++i)
 		{
@@ -76,6 +76,6 @@ public class AncientPhantom_Magic_ExplosionWave : Visual
 			bars.Add(drawPos + star, drawC, new Vector3(i / 4f, 0.25f, 0));
 			bars.Add(drawPos + innerStar, drawC, new Vector3(i / 4f, 0, 0));
 		}
-		Ins.Batch.Draw(Commons.ModAsset.Trail_0_blackWhite.Value, bars, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(Commons.ModAsset.Trail_0_BlackWhite.Value, bars, PrimitiveType.TriangleStrip);
 	}
 }

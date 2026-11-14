@@ -32,7 +32,7 @@ public class GlowStarExplosion : ModProjectile, IWarpProjectile
 		float colorV = 0.9f * (1 - value);
 		colorV *= 10;
 		Texture2D t = Commons.ModAsset.Trail_1.Value;
-		Texture2D shade = Commons.ModAsset.Trail_2_black_thick.Value;
+		Texture2D shade = Commons.ModAsset.Trail_2_Black_Thick.Value;
 		float width = 120;
 		if (Projectile.timeLeft < 120)
 		{

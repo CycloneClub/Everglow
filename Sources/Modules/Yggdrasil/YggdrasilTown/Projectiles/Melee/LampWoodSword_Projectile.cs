@@ -134,7 +134,7 @@ public class LampWoodSword_Projectile : MeleeProj
 			newVec *= player.gravDir;
 			Vector2 mainVecLeft = Vector2.Normalize(newVec).RotatedBy(-MathHelper.PiOver2 * player.gravDir);
 			var positionVFX = Projectile.Center + mainVecLeft * Main.rand.NextFloat(-3f, 3f) + newVec * Main.rand.NextFloat(0.5f, 0.8f);
-			var d = Dust.NewDustDirect(positionVFX - new Vector2(4), 0, 0, ModContent.DustType<LampWood_Dust_fluorescent_appear>());
+			var d = Dust.NewDustDirect(positionVFX - new Vector2(4), 0, 0, ModContent.DustType<LampWood_Dust_Fluorescent_Appear>());
 			d.velocity = newVec * 0.02f + player.velocity;
 			d.rotation = Main.rand.NextFloat(0.4f, 0.8f);
 			d.alpha = 190;

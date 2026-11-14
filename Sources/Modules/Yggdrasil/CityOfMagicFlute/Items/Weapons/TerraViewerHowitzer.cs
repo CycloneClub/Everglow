@@ -45,7 +45,7 @@ public class TerraViewerHowitzer : ModItem
 	{
 		if (player.altFunctionUse == 2)
 		{
-			Projectile.NewProjectile(player.GetSource_ItemUse(Item), Main.MouseWorld, Vector2.Zero, ModContent.ProjectileType<TerraViewerHowitzer_proj>(), 0, Item.knockBack, player.whoAmI);
+			Projectile.NewProjectile(player.GetSource_ItemUse(Item), Main.MouseWorld, Vector2.Zero, ModContent.ProjectileType<TerraViewerHowitzer_Proj>(), 0, Item.knockBack, player.whoAmI);
 			return false;
 		}
 		return true;
@@ -56,9 +56,9 @@ public class TerraViewerHowitzer : ModItem
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		ShootType = type;
-		if (player.ownedProjectileCounts[ModContent.ProjectileType<TerraViewerHowitzer_proj>()] <= 0)
+		if (player.ownedProjectileCounts[ModContent.ProjectileType<TerraViewerHowitzer_Proj>()] <= 0)
 		{
-			Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<TerraViewerHowitzer_proj>(), damage, knockback, player.whoAmI);
+			Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<TerraViewerHowitzer_Proj>(), damage, knockback, player.whoAmI);
 		}
 
 		return false;

@@ -296,8 +296,8 @@ public class GiantJellyBall : ModNPC
 		}
 		Texture2D texture = ModAsset.GiantJellyBall.Value;
 
-		// Texture2D textureG = ModAsset.JellyBall_glow.Value;
-		Texture2D textureB = ModAsset.GiantJellyBall_bloom.Value;
+		// Texture2D textureG = ModAsset.JellyBall_Glow.Value;
+		Texture2D textureB = ModAsset.GiantJellyBall_Bloom.Value;
 		spriteBatch.Draw(textureB, NPC.Center - Main.screenPosition, NPC.frame, new Color(1f, 1f, 1f, 0f) * glowStrength, NPC.rotation, NPC.frame.Size() * 0.5f, NPC.scale, SpriteEffects.None, 0);
 		spriteBatch.Draw(texture, NPC.Center - Main.screenPosition, NPC.frame, Color.Lerp(drawColor * 0.7f, new Color(0.6f, 1f, 1f, 1f), 0.4f), NPC.rotation, NPC.frame.Size() * 0.5f, NPC.scale, SpriteEffects.None, 0);
 

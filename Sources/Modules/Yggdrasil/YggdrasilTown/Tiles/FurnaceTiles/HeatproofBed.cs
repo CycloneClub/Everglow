@@ -69,6 +69,6 @@ public class HeatproofBed : ModTile
 
 	public override void MouseOver(int i, int j)
 	{
-		FurnitureUtils.BedMouseOver<HeatproofBed_item>(i, j);
+		FurnitureUtils.BedMouseOver<HeatproofBed_Item>(i, j);
 	}
 }

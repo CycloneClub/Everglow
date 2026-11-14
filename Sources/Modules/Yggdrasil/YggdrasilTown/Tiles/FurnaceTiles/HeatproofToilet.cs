@@ -117,7 +117,7 @@ public class HeatproofToilet : ModTile
 
 		player.noThrow = 2;
 		player.cursorItemIconEnabled = true;
-		player.cursorItemIconID = ModContent.ItemType<HeatproofToilet_item>();
+		player.cursorItemIconID = ModContent.ItemType<HeatproofToilet_Item>();
 
 		if (Main.tile[i, j].TileFrameX / 18 < 1)
 		{
@@ -138,7 +138,7 @@ public class HeatproofToilet : ModTile
 
 		if (Wiring.CheckMech(spawnX, spawnY, 60))
 		{
-			Projectile.NewProjectile(Wiring.GetProjectileSource(spawnX, spawnY), spawnX * 16 + 8, spawnY * 16 + 12, 0f, 0f, ProjectileID.ToiletEffect, 0, 0f, Main.maxPlayers);
+			Projectile.NewProjectile(Wiring.GetProjectileSource(spawnX, spawnY), spawnX * 16 + 8, spawnY * 16 + 12, 0f, 0f, ProjectileID.ToiletEffect, 0, 0f, -1);
 		}
 	}
 }

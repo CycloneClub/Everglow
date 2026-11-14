@@ -54,7 +54,7 @@ public class SteamBoiler : ModTile
 			offset = Vector2.zeroVector;
 		}
 		var drawPos = new Point(i, j).ToWorldCoordinates() + offset - Main.screenPosition;
-		Texture2D tex = ModAsset.SteamBoiler_glow.Value;
+		Texture2D tex = ModAsset.SteamBoiler_Glow.Value;
 		spriteBatch.Draw(tex, drawPos, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16), new Color(1f, 1f, 1f, 0), 0, new Vector2(8), 1f, SpriteEffects.None, 0);
 		base.PostDraw(i, j, spriteBatch);
 	}

@@ -199,7 +199,7 @@ public class JellyBallElectricKill : ModProjectile
 		lightValue *= 2;
 		if (powerFlow.Count > 3)
 		{
-			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_10_black.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_10_Black.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, powerFlow_dark.ToArray(), 0, powerFlow_dark.Count - 2);
 			if (Projectile.timeLeft > 30)
 			{
@@ -236,7 +236,7 @@ public class JellyBallElectricKill : ModProjectile
 			}
 			if (powerCircleLarge.Count > 3)
 			{
-				Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_thick.Value;
+				Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_Thick.Value;
 				Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, powerCircleLarge.ToArray(), 0, powerCircleLarge.Count - 2);
 			}
 		}

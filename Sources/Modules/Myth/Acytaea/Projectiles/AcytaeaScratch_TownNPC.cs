@@ -7,7 +7,7 @@ public class AcytaeaScratch_TownNPC : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.TownNPCProjectiles;
 
-	public override string Texture => ModAsset.AcytaeaSword_projectile_Mod;
+	public override string Texture => ModAsset.AcytaeaSword_Projectile_Mod;
 
 	public override void SetDefaults()
 	{
@@ -314,7 +314,7 @@ public class AcytaeaScratch_TownNPC : ModProjectile
 
 			if (bars.Count > 2)
 			{
-				Texture2D t = Commons.ModAsset.Trail_black.Value;
+				Texture2D t = Commons.ModAsset.Trail_Black.Value;
 				Main.spriteBatch.End();
 				Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone);
 				Effect effect = ModAsset.AcytaeaScratchEffect.Value;

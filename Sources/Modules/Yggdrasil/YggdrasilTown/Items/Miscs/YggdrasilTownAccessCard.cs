@@ -11,5 +11,7 @@ public class YggdrasilTownAccessCard : ModItem
 		Item.maxStack = 1;
 		Item.rare = ItemRarityID.White;
 		Item.value = 10000;
+
+		Item.questItem = true;
 	}
 }

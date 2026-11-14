@@ -216,7 +216,7 @@ public class FevensChasingProj : ModProjectile, IWarpProjectile
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 
-		t = Commons.ModAsset.Trail_3_black.Value;
+		t = Commons.ModAsset.Trail_3_Black.Value;
 		Main.graphics.GraphicsDevice.Textures[0] = t;
 		if (barsDark.Count > 3)
 		{

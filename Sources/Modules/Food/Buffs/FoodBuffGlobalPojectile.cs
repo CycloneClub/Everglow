@@ -10,8 +10,7 @@ public class FoodBuffGlobalPojectile : GlobalProjectile
 
 	public override void OnSpawn(Projectile projectile, IEntitySource source)
 	{
-		Player player = Main.player[projectile.owner];
-		if (player != null && player.active && !player.dead)
+		if (projectile.friendly && projectile.TryGetOwner(out Player player) && !player.dead)
 		{
 			if (player.GetModPlayer<FoodBuffModPlayer>().BlueHawaiiBuff)
 			{
@@ -32,8 +31,7 @@ public class FoodBuffGlobalPojectile : GlobalProjectile
 
 	public override bool OnTileCollide(Projectile projectile, Vector2 oldVelocity)
 	{
-		Player player = Main.player[projectile.owner];
-		if (player != null && player.active && !player.dead)
+		if (projectile.friendly && projectile.TryGetOwner(out Player player) && !player.dead)
 		{
 			if (player.GetModPlayer<FoodBuffModPlayer>().CaramelPuddingBuff && CaramelPuddingBounce < 1 && projectile.tileCollide)
 			{
@@ -56,8 +54,7 @@ public class FoodBuffGlobalPojectile : GlobalProjectile
 
 	public override void AI(Projectile projectile)
 	{
-		Player player = Main.player[projectile.owner];
-		if (player != null && player.active && !player.dead)
+		if (projectile.friendly && projectile.TryGetOwner(out Player player) && !player.dead)
 		{
 			if (player.GetModPlayer<FoodBuffModPlayer>().DreamYearningBuff)
 			{

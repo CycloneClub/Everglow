@@ -2,7 +2,7 @@ using Everglow.Commons.Utilities;
 
 namespace Everglow.Commons.MEAC;
 
-public abstract partial class MeleeProj_3D : ModProjectile, IWarpProjectile_warpStyle2, IBloomProjectile
+public abstract partial class MeleeProj_3D : ModProjectile, IWarpProjectile_WarpStyle2, IBloomProjectile
 {
 	// Rotation Speed Curve
 	public double BaseMeleeSpeed = 1.4;

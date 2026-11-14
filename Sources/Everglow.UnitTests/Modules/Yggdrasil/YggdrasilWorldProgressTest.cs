@@ -1,7 +1,7 @@
 using System.Reflection;
 using Everglow.Yggdrasil;
 using Everglow.Yggdrasil.Netcode;
-using Everglow.Yggdrasil.YggdrasilTown.Quests;
+using Everglow.Yggdrasil.YggdrasilTown.Quests.Request;
 using Terraria.ModLoader.IO;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs.SquamousShell;
 using SubworldLibrary;
@@ -85,7 +85,7 @@ public class YggdrasilWorldProgressTest
 	{
 		new SquamousShell().OnKill();
 		Assert.IsTrue(YggdrasilWorldSystem.DownedSquamousShell);
-		Assert.IsTrue(new DefendTownQuest().CanOffer(null!));
+		Assert.IsTrue(new Warden_Quest1().CanUnlock());
 	}
 
 	[TestMethod]
@@ -167,7 +167,7 @@ public class YggdrasilWorldProgressTest
 		Main.netMode = NetmodeID.SinglePlayer;
 		new KingJellyBall().OnKill();
 		Assert.IsTrue(YggdrasilWorldSystem.DownedKingJellyBall);
-		Assert.IsTrue(new SelfRelianceQuest().CanOffer(null!));
+		Assert.IsTrue(new Restauranteur_Quest2().CanUnlock());
 	}
 
 	[TestMethod]

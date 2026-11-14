@@ -17,7 +17,7 @@ public class DeathFlame : ModBuff
 		{
 			if (Main.rand.NextBool(2))
 			{
-				var df = new DevilFlame3DSickle_worldCoordDust
+				var df = new DevilFlame3DSickle_WorldCoordDust
 				{
 					Velocity3D = new Vector3(new Vector2(0, Main.rand.NextFloat(1, 2f)).RotatedByRandom(MathHelper.TwoPi) + npc.velocity * 0.2f, 0) + new Vector3(0, -1, 0),
 					Active = true,
@@ -39,7 +39,7 @@ public class DeathFlame : ModBuff
 		{
 			for (int d = 0; d < 40; d++)
 			{
-				var df = new DevilFlame3DSickle_worldCoordDust
+				var df = new DevilFlame3DSickle_WorldCoordDust
 				{
 					Velocity3D = new Vector3(new Vector2(0, Main.rand.NextFloat(6, 9f)).RotatedByRandom(MathHelper.TwoPi), 0),
 					Active = true,

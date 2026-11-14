@@ -11,6 +11,8 @@ public class GoodNeighborCoin : ModItem
 		Item.maxStack = Item.CommonMaxStack;
 		Item.rare = ItemRarityID.Green;
 		Item.value = 0;
+
+		Item.questItem = true;
 	}
 
 	public override bool CanStackInWorld(Item source) => true;

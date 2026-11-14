@@ -1,5 +1,6 @@
 using Everglow.Commons.Mechanics.Quest.WorldSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.Presentation.Icons;
+using Everglow.Example.Quest;
 
 namespace Everglow.Commons.Mechanics.Quest.WorldSide.Tests;
 
@@ -38,7 +39,7 @@ public class TestDeltaSyncObjective : WorldObjectiveBase, IDeltaSyncObjective
 	}
 }
 
-public class TestDeltaSyncQuest : WorldQuestBase
+public class TestDeltaSyncQuest : ExampleWorldQuest
 {
 	public override void Initialize()
 	{

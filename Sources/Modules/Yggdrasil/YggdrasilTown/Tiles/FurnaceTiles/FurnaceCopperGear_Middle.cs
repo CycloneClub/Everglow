@@ -43,7 +43,7 @@ public class FurnaceCopperGear_Middle : ModTile
 		{
 			return true;
 		}
-		var texture = ModAsset.FurnaceCopperGear_Middle_gear.Value;
+		var texture = ModAsset.FurnaceCopperGear_Middle_Gear.Value;
 		var offsetScreen = new Vector2(Main.offScreenRange);
 		if (Main.drawToScreen)
 		{

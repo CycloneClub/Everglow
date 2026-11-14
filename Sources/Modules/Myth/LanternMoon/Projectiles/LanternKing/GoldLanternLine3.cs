@@ -19,7 +19,7 @@ public class GoldLanternLine3 : TrailingProjectile
 		TrailBackgroundDarkness = 0.1f;
 		SelfLuminous = true;
 		TrailTexture = Commons.ModAsset.Trail.Value;
-		TrailTextureBlack = Commons.ModAsset.Trail_black.Value;
+		TrailTextureBlack = Commons.ModAsset.Trail_Black.Value;
 		TrailShader = Commons.ModAsset.Trailing.Value;
 		Projectile.timeLeft = 300;
 		Projectile.hostile = true;

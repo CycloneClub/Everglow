@@ -139,7 +139,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories
 
 				float amplitudeX = cos * (player.width - 4) / 2f;
 				float amplitudeY = sin * 3;
-				var dust = Dust.NewDustPerfect(center + new Vector2(amplitudeX, amplitudeY), ModContent.DustType<LampWood_Dust_fluorescent_appear>(), -player.velocity * 0.2f, Scale: 1f);
+				var dust = Dust.NewDustPerfect(center + new Vector2(amplitudeX, amplitudeY), ModContent.DustType<LampWood_Dust_Fluorescent_Appear>(), -player.velocity * 0.2f, Scale: 1f);
 				dust.alpha = 0;
 				dust.rotation = MathF.Pow(Main.rand.NextFloat(0.2f, 0.9f), 3) * 3f;
 				dust.velocity += new Vector2(amplitudeX * 3, amplitudeY * 0.2f + Main.rand.NextFloat(2, 21)) * 0.2f;

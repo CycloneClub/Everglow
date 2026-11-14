@@ -194,7 +194,7 @@ public class HyperockSpearProj : ModProjectile
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D tex = ModAsset.HyperockSpearProj.Value;
-		Texture2D glow = ModAsset.HyperockSpearProj_glow.Value;
+		Texture2D glow = ModAsset.HyperockSpearProj_Glow.Value;
 
 		Vector2 pos = Projectile.Center - Main.screenPosition - Projectile.velocity.SafeNormalize(Vector2.zeroVector) * 30;
 		if (CollideOnNPC)
@@ -237,7 +237,7 @@ public class HyperockSpearProj : ModProjectile
 	{
 		for (int x = 0; x < 8; x++)
 		{
-			var d = Dust.NewDustDirect(Projectile.position - new Vector2(4), Projectile.width, Projectile.height, ModContent.DustType<RockElemental_fragments>(), 0f, 0f, 0, default, 0.7f);
+			var d = Dust.NewDustDirect(Projectile.position - new Vector2(4), Projectile.width, Projectile.height, ModContent.DustType<RockElemental_Fragments>(), 0f, 0f, 0, default, 0.7f);
 			d.velocity = new Vector2(0, Main.rand.NextFloat(7f, 16f)).RotatedByRandom(6.283);
 		}
 		for (int x = 0; x < 16; x++)
@@ -250,7 +250,7 @@ public class HyperockSpearProj : ModProjectile
 		{
 			for (int x = 0; x < 8; x++)
 			{
-				var d = Dust.NewDustDirect(Projectile.position - new Vector2(4), Projectile.width, Projectile.height, ModContent.DustType<RockElemental_fragments>(), 0f, 0f, 0, default, 0.9f);
+				var d = Dust.NewDustDirect(Projectile.position - new Vector2(4), Projectile.width, Projectile.height, ModContent.DustType<RockElemental_Fragments>(), 0f, 0f, 0, default, 0.9f);
 				d.velocity = new Vector2(0, Main.rand.NextFloat(7f, 26f)).RotatedByRandom(6.283);
 			}
 			for (int x = 0; x < 16; x++)
@@ -275,30 +275,30 @@ public class HyperockSpearProj : ModProjectile
 				Ins.VFXManager.Add(somg);
 			}
 			Vector2 vF = new Vector2(0, Main.rand.NextFloat(0, 15f)).RotatedByRandom(6.28d);
-			Gore.NewGore(null, Projectile.Center + vF, vF, ModContent.Find<ModGore>("Everglow/HyperockSpearProj_gore0").Type, 1f);
+			Gore.NewGore(null, Projectile.Center + vF, vF, ModContent.Find<ModGore>("Everglow/HyperockSpearProj_Gore0").Type, 1f);
 
 			vF = new Vector2(0, Main.rand.NextFloat(0, 15f)).RotatedByRandom(6.28d);
-			Gore.NewGore(null, Projectile.Center + vF, vF, ModContent.Find<ModGore>("Everglow/HyperockSpearProj_gore1").Type, 1f);
+			Gore.NewGore(null, Projectile.Center + vF, vF, ModContent.Find<ModGore>("Everglow/HyperockSpearProj_Gore1").Type, 1f);
 
 			vF = new Vector2(0, Main.rand.NextFloat(0, 15f)).RotatedByRandom(6.28d);
-			Gore.NewGore(null, Projectile.Center + vF, vF, ModContent.Find<ModGore>("Everglow/HyperockSpearProj_gore2").Type, 1f);
+			Gore.NewGore(null, Projectile.Center + vF, vF, ModContent.Find<ModGore>("Everglow/HyperockSpearProj_Gore2").Type, 1f);
 
 			vF = new Vector2(0, Main.rand.NextFloat(0, 15f)).RotatedByRandom(6.28d);
-			Gore.NewGore(null, Projectile.Center + vF, vF, ModContent.Find<ModGore>("Everglow/HyperockSpearProj_gore3").Type, 1f);
+			Gore.NewGore(null, Projectile.Center + vF, vF, ModContent.Find<ModGore>("Everglow/HyperockSpearProj_Gore3").Type, 1f);
 		}
 		else
 		{
 			Vector2 vF = new Vector2(0, Main.rand.NextFloat(0, 3f)).RotatedByRandom(6.28d);
-			Gore.NewGore(null, Projectile.Center + vF, vF, ModContent.Find<ModGore>("Everglow/HyperockSpearProj_gore0").Type, 1f);
+			Gore.NewGore(null, Projectile.Center + vF, vF, ModContent.Find<ModGore>("Everglow/HyperockSpearProj_Gore0").Type, 1f);
 
 			vF = new Vector2(0, Main.rand.NextFloat(0, 3f)).RotatedByRandom(6.28d);
-			Gore.NewGore(null, Projectile.Center + vF, vF, ModContent.Find<ModGore>("Everglow/HyperockSpearProj_gore1").Type, 1f);
+			Gore.NewGore(null, Projectile.Center + vF, vF, ModContent.Find<ModGore>("Everglow/HyperockSpearProj_Gore1").Type, 1f);
 
 			vF = new Vector2(0, Main.rand.NextFloat(0, 3f)).RotatedByRandom(6.28d);
-			Gore.NewGore(null, Projectile.Center + vF, vF, ModContent.Find<ModGore>("Everglow/HyperockSpearProj_gore2").Type, 1f);
+			Gore.NewGore(null, Projectile.Center + vF, vF, ModContent.Find<ModGore>("Everglow/HyperockSpearProj_Gore2").Type, 1f);
 
 			vF = new Vector2(0, Main.rand.NextFloat(0, 3f)).RotatedByRandom(6.28d);
-			Gore.NewGore(null, Projectile.Center + vF, vF, ModContent.Find<ModGore>("Everglow/HyperockSpearProj_gore3").Type, 1f);
+			Gore.NewGore(null, Projectile.Center + vF, vF, ModContent.Find<ModGore>("Everglow/HyperockSpearProj_Gore3").Type, 1f);
 		}
 		SoundEngine.PlaySound(SoundID.DD2_ExplosiveTrapExplode.WithVolume(0.5f), Projectile.Center);
 	}

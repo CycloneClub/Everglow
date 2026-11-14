@@ -24,7 +24,7 @@ namespace Everglow.EternalResolve.Projectiles
 		{
 			for (int x = 0; x < 24; x++)
 			{
-				var dust = Dust.NewDustDirect(StabEndPoint_WorldPos, 0, 0, ModContent.DustType<StarShine_purple_withoutPlayer>());
+				var dust = Dust.NewDustDirect(StabEndPoint_WorldPos, 0, 0, ModContent.DustType<StarShine_Purple_WithoutPlayer>());
 				dust.scale = Main.rand.NextFloat(0.15f, 0.75f);
 				dust.color.R = (byte)(dust.scale * 100f);
 				if (dust.color.R < 25)
@@ -36,7 +36,7 @@ namespace Everglow.EternalResolve.Projectiles
 			}
 			for (int x = 0; x < 12; x++)
 			{
-				var dust = Dust.NewDustDirect(StabEndPoint_WorldPos, 0, 0, ModContent.DustType<StarShine_yellow_withoutPlayer>());
+				var dust = Dust.NewDustDirect(StabEndPoint_WorldPos, 0, 0, ModContent.DustType<StarShine_Yellow_WithoutPlayer>());
 				dust.scale = Main.rand.NextFloat(0.15f, 0.75f);
 				dust.color.R = (byte)(dust.scale * 100f);
 				if (dust.color.R < 25)
@@ -90,7 +90,7 @@ namespace Everglow.EternalResolve.Projectiles
 				effect.Parameters["uTransform"].SetValue(model * projection);
 				effect.Parameters["uProcession"].SetValue(0.5f);
 				effect.CurrentTechnique.Passes[0].Apply();
-				Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_black_thick.Value;
+				Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_Black_Thick.Value;
 				Main.graphics.graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 				Main.spriteBatch.End();
 				Main.spriteBatch.Begin(sBS);
@@ -165,10 +165,10 @@ namespace Everglow.EternalResolve.Projectiles
 				{
 					end = StabEndPoint_WorldPos;
 				}
-				int type = ModContent.DustType<StarShine_yellow_withoutPlayer>();
+				int type = ModContent.DustType<StarShine_Yellow_WithoutPlayer>();
 				if (Main.rand.NextBool(3))
 				{
-					type = ModContent.DustType<StarShine_purple_withoutPlayer>();
+					type = ModContent.DustType<StarShine_Purple_WithoutPlayer>();
 				}
 				var dust = Dust.NewDustDirect(Vector2.Lerp(StabStartPoint_WorldPos, end, Main.rand.NextFloat(0.3f, 1f)) - new Vector2(4), 0, 0, type, 0, 0, 0, default, Main.rand.NextFloat(0.24f, 0.85f));
 				dust.color.R = (byte)(dust.scale * 100f);

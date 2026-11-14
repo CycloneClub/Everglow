@@ -75,6 +75,12 @@ public static class PlayerUtils
 	}
 
 	/// <summary>
+	/// Checks whether a living, active player is currently talking to an active NPC of the specified type.
+	/// </summary>
+	public static bool IsTalkingTo(this Player player, int npcType) => player.active && !player.dead
+		&& player.TalkNPC is { active: true } npc && npc.type == npcType;
+
+	/// <summary>
 	/// Get mouse position of player.
 	/// <br/>Tips: Call <see cref="ListenMouseWorld"/> or <see cref="ListenMouseRotation"/> on every frame if u wanna use this.
 	/// </summary>

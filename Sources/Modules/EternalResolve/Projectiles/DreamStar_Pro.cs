@@ -102,10 +102,10 @@ namespace Everglow.EternalResolve.Projectiles
 			Vector2 vel = Projectile.velocity.RotatedBy(Main.rand.NextFloat(-0.4f, 0.4f)) * Main.rand.NextFloat(0.1f, 0.2f);
 			if (Collision.CanHit(Projectile.Center - Projectile.velocity, 0, 0, pos + vel, 0, 0))
 			{
-				int type = ModContent.DustType<StarShine_yellow>();
+				int type = ModContent.DustType<StarShine_Yellow>();
 				if (Main.rand.NextBool(3))
 				{
-					type = ModContent.DustType<StarShine_purple>();
+					type = ModContent.DustType<StarShine_Purple>();
 				}
 				var dust = Dust.NewDustDirect(pos, Projectile.width, Projectile.height, type, 0, 0, 0, default, Main.rand.NextFloat(0.75f, 1.25f));
 				dust.velocity = vel;
@@ -144,16 +144,16 @@ namespace Everglow.EternalResolve.Projectiles
 				bottomPos2 = bottomPos2 * 0.9f;
 			}
 			float scale = MathF.Sin((float)Main.timeForVisualEffects);
-			DrawFlags(lightColor, -8, 10, ModAsset.DreamStar_flag.Value, bottomPos1 * scale, bottomPos2 * scale);
+			DrawFlags(lightColor, -8, 10, ModAsset.DreamStar_Flag.Value, bottomPos1 * scale, bottomPos2 * scale);
 
-			Texture2D itemTexture = ModAsset.DreamStar_withouFlag.Value;
+			Texture2D itemTexture = ModAsset.DreamStar_WithouFlag.Value;
 			Main.spriteBatch.Draw(itemTexture, ItemDraw.Postion - Main.screenPosition, null, lightColor, ItemDraw.Rotation, itemTexture.Size() / 2f, ItemDraw.Size, ItemDraw.SpriteEffect, 0f);
-			Main.spriteBatch.Draw(ModAsset.DreamStar_glow.Value, ItemDraw.Postion - Main.screenPosition, null, new Color(1f, 1f, 1f, 0), ItemDraw.Rotation, itemTexture.Size() / 2f, ItemDraw.Size, ItemDraw.SpriteEffect, 0f);
+			Main.spriteBatch.Draw(ModAsset.DreamStar_Glow.Value, ItemDraw.Postion - Main.screenPosition, null, new Color(1f, 1f, 1f, 0), ItemDraw.Rotation, itemTexture.Size() / 2f, ItemDraw.Size, ItemDraw.SpriteEffect, 0f);
 		}
 
 		public override void PostDraw(Color lightColor)
 		{
-			Texture2D shadow = Commons.ModAsset.Star2_black.Value;
+			Texture2D shadow = Commons.ModAsset.Star2_Black.Value;
 			Texture2D light = Commons.ModAsset.StabbingProjectile.Value;
 			Vector2 drawOrigin = light.Size() / 2f;
 			Vector2 drawShadowOrigin = shadow.Size() / 2f;

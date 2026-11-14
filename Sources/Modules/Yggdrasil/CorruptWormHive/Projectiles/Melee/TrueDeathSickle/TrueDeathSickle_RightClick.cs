@@ -199,10 +199,10 @@ public class TrueDeathSickle_RightClick : ModProjectile
 			bars.Add(texCoordsProjected[1] + offset, color, texCoordsOrig[1] / size);
 			bars.Add(texCoordsProjected[2] + offset, color, texCoordsOrig[2] / size);
 		}
-		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.TrueDeathSickle_proj.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.TrueDeathSickle_Proj.Value;
 		if (glowMask)
 		{
-			Main.graphics.GraphicsDevice.Textures[0] = ModAsset.TrueDeathSickle_proj_glow.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = ModAsset.TrueDeathSickle_Proj_Glow.Value;
 		}
 		if (bars.Count > 3)
 		{

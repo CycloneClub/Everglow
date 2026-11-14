@@ -503,7 +503,7 @@ public abstract class StabbingProjectile : ModProjectile, IWarpProjectile
 
 	public virtual void DrawDarkAttackEffect(Color lightColor)
 	{
-		Texture2D shadow = ModAsset.Star2_black.Value;
+		Texture2D shadow = ModAsset.Star2_Black.Value;
 		Texture2D light = ModAsset.StabbingProjectile.Value;
 		Vector2 drawOrigin = light.Size() / 2f;
 		Vector2 drawShadowOrigin = shadow.Size() / 2f;
@@ -528,7 +528,7 @@ public abstract class StabbingProjectile : ModProjectile, IWarpProjectile
 
 	public virtual void DrawLightAttackEffect(Color lightColor)
 	{
-		Texture2D shadow = ModAsset.Star2_black.Value;
+		Texture2D shadow = ModAsset.Star2_Black.Value;
 		Texture2D light = ModAsset.StabbingProjectile.Value;
 		Vector2 drawOrigin = light.Size() / 2f;
 		Vector2 drawShadowOrigin = shadow.Size() / 2f;

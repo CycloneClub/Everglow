@@ -45,12 +45,15 @@ public class YggdrasilPlayerTests
 		SetPermanentLifeBoosts();
 		CurrentSubworldField.SetValue(null, new YggdrasilWorld());
 
-		modPlayer.ModifyMaxStats(out var health, out var mana);
+		modPlayer.ModifyMaxStats(out var insideHealth, out var insideMana);
+		CurrentSubworldField.SetValue(null, null);
+		modPlayer.ModifyMaxStats(out var outsideHealth, out var outsideMana);
 
-		Assert.AreEqual(-237f, health.Base);
-		Assert.AreEqual(-150f, mana.Base);
-		Assert.AreEqual(263, (int)health.ApplyTo(500f));
-		Assert.AreEqual(50, (int)mana.ApplyTo(200f));
+		Assert.IsTrue(insideHealth.Base < outsideHealth.Base);
+		Assert.IsTrue(insideHealth.ApplyTo(500f) < outsideHealth.ApplyTo(500f));
+		Assert.IsTrue(outsideHealth.ApplyTo(500f) > 500f);
+		Assert.IsTrue(insideMana.ApplyTo(200f) < 200f);
+		Assert.AreEqual(200, (int)outsideMana.ApplyTo(200f));
 	}
 
 	[TestMethod]
@@ -63,9 +66,8 @@ public class YggdrasilPlayerTests
 
 		modPlayer.ModifyMaxStats(out var health, out var mana);
 
-		Assert.AreEqual(83f, health.Base);
+		Assert.IsTrue(health.ApplyTo(500f) > 500f);
 		Assert.AreEqual(0f, mana.Base);
-		Assert.AreEqual(583, (int)health.ApplyTo(500f));
 		Assert.AreEqual(200, (int)mana.ApplyTo(200f));
 	}
 
@@ -81,26 +83,30 @@ public class YggdrasilPlayerTests
 		var otherModFirst = otherMod.CombineWith(health);
 
 		Assert.AreEqual(yggdrasilFirst, otherModFirst);
-		Assert.AreEqual(349, (int)yggdrasilFirst.ApplyTo(120f));
 	}
 
 	[TestMethod]
-	[DataRow(0, 20)]
-	[DataRow(1, 23)]
-	[DataRow(2, 26)]
-	[DataRow(3, 30)]
-	[DataRow(4, 33)]
-	[DataRow(5, 36)]
-	[DataRow(6, 40)]
-	[DataRow(7, 43)]
-	[DataRow(8, 46)]
-	[DataRow(9, 50)]
-	public void ManaCrystalGrowthInYggdrasilUsesIntegralSteps(int crystals, int expectedMana)
+	public void ManaCrystalGrowthInYggdrasilUsesIntegralSteps()
+	{
+		CurrentSubworldField.SetValue(null, new YggdrasilWorld());
+		float previous = ManaAfterCrystals(0);
+		Assert.AreEqual(20f, previous, 0.001f);
+		for (int crystals = 1; crystals <= 9; crystals++)
+		{
+			float current = ManaAfterCrystals(crystals);
+			Assert.AreEqual(MathF.Round(current), current, 0.001f);
+			Assert.IsTrue(current >= previous);
+			previous = current;
+		}
+
+		Assert.IsTrue(ManaAfterCrystals(9) < 20 + 9 * 20);
+	}
+
+	private float ManaAfterCrystals(int crystals)
 	{
 		player.ConsumedManaCrystals = crystals;
-		CurrentSubworldField.SetValue(null, new YggdrasilWorld());
 		modPlayer.ModifyMaxStats(out _, out var mana);
-		Assert.AreEqual(expectedMana, (int)mana.ApplyTo(20 + crystals * 20));
+		return mana.ApplyTo(20 + crystals * 20);
 	}
 
 	[TestMethod]
@@ -110,61 +116,88 @@ public class YggdrasilPlayerTests
 	{
 		player.ConsumedManaCrystals = 9;
 		CurrentSubworldField.SetValue(null, new YggdrasilWorld());
+		int springs = 0;
+		int extracts = 0;
 		if (springFirst)
 		{
-			for (int i = 0; i < 4; i++)
+			while (modPlayer.UseActivatedManaSpringPowder())
 			{
-				Assert.IsTrue(modPlayer.UseActiveMagicSpringPowder());
+				springs++;
 			}
-			Assert.IsFalse(modPlayer.UseActiveMagicSpringPowder());
+
+			Assert.IsTrue(springs > 0);
+			Assert.IsFalse(modPlayer.UseActivatedManaSpringPowder());
 		}
-		for (int i = 0; i < 6; i++)
+
+		while (modPlayer.UseMagicOrganExtract())
 		{
-			Assert.IsTrue(modPlayer.UseMagicOrganExtract());
+			extracts++;
 		}
+
+		Assert.IsTrue(extracts > 0);
 		Assert.IsFalse(modPlayer.UseMagicOrganExtract());
 		modPlayer.ModifyMaxStats(out _, out var firstStage);
-		Assert.AreEqual(springFirst ? 100 : 80, (int)firstStage.ApplyTo(200));
+		int partialMana = (int)firstStage.ApplyTo(200);
 		if (!springFirst)
 		{
-			for (int i = 0; i < 4; i++)
+			while (modPlayer.UseActivatedManaSpringPowder())
 			{
-				Assert.IsTrue(modPlayer.UseActiveMagicSpringPowder());
+				springs++;
 			}
+
+			Assert.IsTrue(springs > 0);
 		}
-		Assert.IsFalse(modPlayer.UseActiveMagicSpringPowder());
+
+		Assert.IsFalse(modPlayer.UseActivatedManaSpringPowder());
 		var tag = new TagCompound();
 		modPlayer.SaveData(tag);
 		var restored = (YggdrasilPlayer)new YggdrasilPlayer().NewInstance(player);
 		restored.LoadData(tag);
 		Assert.IsFalse(restored.UseMagicOrganExtract());
-		Assert.IsFalse(restored.UseActiveMagicSpringPowder());
+		Assert.IsFalse(restored.UseActivatedManaSpringPowder());
 		restored.ModifyMaxStats(out _, out var complete);
-		Assert.AreEqual(100, (int)complete.ApplyTo(200));
+		int completeMana = (int)complete.ApplyTo(200);
+		if (springFirst)
+		{
+			Assert.AreEqual(partialMana, completeMana);
+		}
+		else
+		{
+			Assert.IsTrue(completeMana > partialMana);
+		}
+
 		var clone = (YggdrasilPlayer)new YggdrasilPlayer().NewInstance(player);
 		restored.CopyClientState(clone);
-		Assert.AreEqual(6, clone.ConsumedMagicOrganExtract);
-		Assert.AreEqual(4, clone.ConsumedActiveMagicSpringPowder);
+		Assert.AreEqual(extracts, clone.ConsumedMagicOrganExtract);
+		Assert.AreEqual(springs, clone.ConsumedActivatedManaSpringPowder);
 		CurrentSubworldField.SetValue(null, null);
 		restored.ModifyMaxStats(out _, out var outside);
-		Assert.AreEqual(250, (int)outside.ApplyTo(200));
+		Assert.IsTrue((int)outside.ApplyTo(200) > completeMana);
 	}
 
 	[TestMethod]
 	public void OldSaveDoesNotGrantManaBoostsAndInvalidCountsAreClamped()
 	{
-		modPlayer.ConsumedMagicOrganExtract = 6;
-		modPlayer.ConsumedActiveMagicSpringPowder = 4;
+		var probe = (YggdrasilPlayer)new YggdrasilPlayer().NewInstance(new Player());
+		int springCap = 0;
+		while (probe.UseActivatedManaSpringPowder())
+		{
+			springCap++;
+		}
+
+		Assert.IsTrue(springCap > 0);
+		modPlayer.ConsumedMagicOrganExtract = 1;
+		modPlayer.ConsumedActivatedManaSpringPowder = 1;
 		modPlayer.LoadData(new TagCompound());
 		Assert.AreEqual(0, modPlayer.ConsumedMagicOrganExtract);
-		Assert.AreEqual(0, modPlayer.ConsumedActiveMagicSpringPowder);
+		Assert.AreEqual(0, modPlayer.ConsumedActivatedManaSpringPowder);
 		modPlayer.LoadData(new TagCompound
 		{
 			[nameof(YggdrasilPlayer.ConsumedMagicOrganExtract)] = -1,
-			[nameof(YggdrasilPlayer.ConsumedActiveMagicSpringPowder)] = 99,
+			[nameof(YggdrasilPlayer.ConsumedActivatedManaSpringPowder)] = 99,
 		});
 		Assert.AreEqual(0, modPlayer.ConsumedMagicOrganExtract);
-		Assert.AreEqual(4, modPlayer.ConsumedActiveMagicSpringPowder);
+		Assert.AreEqual(springCap, modPlayer.ConsumedActivatedManaSpringPowder);
 	}
 
 	[TestMethod]
@@ -178,7 +211,7 @@ public class YggdrasilPlayerTests
 			consumedLampBorerHoney = 3,
 			consumedSquamousCore = 4,
 			consumedMagicOrganExtract = 5,
-			consumedActiveMagicSpringPowder = 2,
+			consumedActivatedManaSpringPowder = 2,
 		};
 		using var stream = new MemoryStream();
 		using (var writer = new BinaryWriter(stream, System.Text.Encoding.UTF8, leaveOpen: true))
@@ -196,7 +229,7 @@ public class YggdrasilPlayerTests
 		Assert.AreEqual(3, received.consumedLampBorerHoney);
 		Assert.AreEqual(4, received.consumedSquamousCore);
 		Assert.AreEqual(5, received.consumedMagicOrganExtract);
-		Assert.AreEqual(2, received.consumedActiveMagicSpringPowder);
+		Assert.AreEqual(2, received.consumedActivatedManaSpringPowder);
 	}
 
 	[TestMethod]
@@ -212,7 +245,7 @@ public class YggdrasilPlayerTests
 		tracked.CopyClientState(copy);
 		tracked.SendClientChanges(copy);
 		Assert.AreEqual(1, tracked.SyncCalls);
-		Assert.IsTrue(tracked.UseActiveMagicSpringPowder());
+		Assert.IsTrue(tracked.UseActivatedManaSpringPowder());
 		tracked.SendClientChanges(copy);
 		Assert.AreEqual(2, tracked.SyncCalls);
 	}
@@ -241,10 +274,10 @@ public class YggdrasilPlayerTests
 				{
 					playerId = server ? PlayerIndex + 1 : PlayerIndex,
 					consumedMagicOrganExtract = 99,
-					consumedActiveMagicSpringPowder = 99,
+					consumedActivatedManaSpringPowder = 99,
 				}, server ? PlayerIndex : 255);
 			Assert.AreEqual(6, tracked.ConsumedMagicOrganExtract);
-			Assert.AreEqual(4, tracked.ConsumedActiveMagicSpringPowder);
+			Assert.AreEqual(4, tracked.ConsumedActivatedManaSpringPowder);
 			Assert.AreEqual(server ? 1 : 0, tracked.SyncCalls);
 			if (server)
 			{

@@ -77,10 +77,10 @@ public class Fevens_ThunderMarkShortTiming : ModProjectile
 		}
 		if (powerCircleLarge.Count > 3)
 		{
-			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_black_thick.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_Black_Thick.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, powerCircleLarge_Dark.ToArray(), 0, powerCircleLarge_Dark.Count - 2);
 
-			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_thick.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_Thick.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, powerCircleLarge.ToArray(), 0, powerCircleLarge.Count - 2);
 		}
 		Main.spriteBatch.End();

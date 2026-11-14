@@ -232,7 +232,7 @@ public class MiningPowerPickaxe_Proj : ModProjectile
 	public override bool PreDraw(ref Color lightColor)
 	{
 		var texture = ModContent.Request<Texture2D>(Owner.HeldItem.ModItem is MiningPowerPickaxe heldPickaxe ? heldPickaxe.Texture : Texture).Value;
-		var textureGlow = ModAsset.MiningPowerPickaxe_glow.Value;
+		var textureGlow = ModAsset.MiningPowerPickaxe_Glow.Value;
 		var textureDrillGlow = ModAsset.MiningPowerPickaxe_DrillGlow.Value;
 		var rotation = Projectile.rotation;
 		float starSize = 1 + MathF.Sin((float)Main.time * 0.8f) * 0.3f;

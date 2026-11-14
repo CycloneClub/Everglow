@@ -37,7 +37,7 @@ public class WorldConsumeItemObjective : WorldObjectiveBase
 	public override void GetObjectivesIcon(QuestIconGroup iconGroup) =>
 		iconGroup.Add(ItemQuestIcon.Create(ItemType, new Item(ItemType).Name));
 
-	public override string GetObjectiveText() => QuestText.Get("Objectives.Consume", ItemDrawer.Create(ItemType), ItemCount, $"({ConsumedCount}/{ItemCount})");
+	public override string GetObjectiveText() => QuestText.Get("Objectives.Consume", ItemDrawer.Create(ItemType, ItemCount), $"({ConsumedCount}/{ItemCount})");
 
 	public override void ResetProgress()
 	{

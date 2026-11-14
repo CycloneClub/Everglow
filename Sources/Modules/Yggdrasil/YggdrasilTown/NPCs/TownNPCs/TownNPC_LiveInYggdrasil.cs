@@ -1,3 +1,4 @@
+using Everglow.Commons.Mechanics.Quest.Core.Dialogue;
 using Everglow.Commons.Coroutines;
 using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.WorldGeneration;
@@ -585,10 +586,15 @@ public abstract class TownNPC_LiveInYggdrasil : ModNPC
 		}
 
 		button2 = Language.GetTextValue("Help");
+		QuestChat.SetChatButton(NPC, ref button2);
 	}
 
 	public override void OnChatButtonClicked(bool firstButton, ref string shopName)
 	{
+		if (QuestChat.OnChatButtonClicked(NPC, firstButton))
+		{
+			return;
+		}
 		if (firstButton && ChallengeClicked)
 		{
 			YggdrasilTownCentralSystem.TryEnterArena();

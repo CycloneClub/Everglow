@@ -752,7 +752,7 @@ public abstract class HangingTile : ModTile, ITileFluentlyDrawn
 			bars.Add(pos + new Vector2(0, hangingSystem.PanelRange * 70).RotatedBy(k / 60f * MathHelper.TwoPi), color, new Vector3(k / 60f, 0, 0));
 			bars.Add(pos + new Vector2(0, hangingSystem.PanelRange * 0).RotatedBy(k / 60f * MathHelper.TwoPi), color, new Vector3(k / 60f, 0.5f, 0));
 		}
-		drawStacks.Enqueue(new DrawStack(ModAsset.Trail_7_black.Value, bars, PrimitiveType.TriangleStrip));
+		drawStacks.Enqueue(new DrawStack(ModAsset.Trail_7_Black.Value, bars, PrimitiveType.TriangleStrip));
 	}
 
 	public virtual void DrawBlockBound(HangingTileAdjustingHelper hangingSystem, Color color, float rotation, ref Queue<DrawStack> drawStacks)
@@ -836,7 +836,7 @@ public abstract class HangingTile : ModTile, ITileFluentlyDrawn
 			new Vertex2D(pos2 + normal, bloomColor, new Vector3(1, 0, 0)),
 			new Vertex2D(pos2 - normal, bloomColor, new Vector3(1, 1, 0)),
 		};
-		drawStacks.Enqueue(new DrawStack(ModAsset.SquareBloom_black.Value, bars, PrimitiveType.TriangleList));
+		drawStacks.Enqueue(new DrawStack(ModAsset.SquareBloom_Black.Value, bars, PrimitiveType.TriangleList));
 	}
 
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)

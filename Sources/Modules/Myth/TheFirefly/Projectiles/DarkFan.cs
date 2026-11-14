@@ -353,7 +353,7 @@ internal class DarkFan : ModProjectile
 			}
 		}
 
-		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.DarknessFan_glow.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.DarknessFan_Glow.Value;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, Vx.ToArray(), 0, Vx.Count / 3);
 	}
 }

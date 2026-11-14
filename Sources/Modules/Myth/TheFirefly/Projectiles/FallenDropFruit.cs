@@ -12,6 +12,7 @@ public class FallenDropFruit : ModProjectile
 	{
 		Projectile.friendly = true;
 		Projectile.hostile = true;
+		Projectile.trap = true;
 		Projectile.timeLeft = 6000;
 		Projectile.tileCollide = true;
 		Projectile.aiStyle = -1;

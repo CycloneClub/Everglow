@@ -6,7 +6,7 @@ public class FemaleLampWoodWall : ModWall
 	{
 		Main.wallHouse[Type] = true;
 		DustType = DustID.WoodFurniture;
-		AddMapEntry(new Color(68, 56, 50));
+		AddMapEntry(new Color(23, 23, 36));
 	}
 
 	public override bool CanExplode(int i, int j)

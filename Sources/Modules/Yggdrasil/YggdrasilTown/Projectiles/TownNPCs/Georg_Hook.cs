@@ -44,6 +44,7 @@ public class Georg_Hook : ModProjectile
 		Projectile.localNPCHitCooldown = 20;
 		Projectile.ArmorPenetration = 0;
 		Projectile.friendly = true;
+		Projectile.npcProj = true;
 		Projectile.timeLeft = 100;
 		Projectile.tileCollide = false;
 		Projectile.penetrate = -1;
@@ -520,7 +521,7 @@ public class Georg_Hook : ModProjectile
 		effect.Parameters["uTransform"].SetValue(model * projection);
 		effect.CurrentTechnique.Passes[0].Apply();
 		Main.graphics.GraphicsDevice.RasterizerState = RasterizerState.CullNone;
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_8_black.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_8_Black.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		if (bars.Count > 3)
 		{

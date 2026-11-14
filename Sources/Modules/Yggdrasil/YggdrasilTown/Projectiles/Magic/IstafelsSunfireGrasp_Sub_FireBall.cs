@@ -22,7 +22,7 @@ public class IstafelsSunfireGrasp_Sub_FireBall : TrailingProjectile
 		TrailBackgroundDarkness = 0.5f;
 		TrailWidth = 20f;
 		TrailTexture = Commons.ModAsset.Trail_8.Value;
-		TrailTextureBlack = Commons.ModAsset.Trail_8_black.Value;
+		TrailTextureBlack = Commons.ModAsset.Trail_8_Black.Value;
 		WarpStrength = 0.3f;
 		SelfLuminous = false;
 		Projectile.magic = true;

@@ -195,7 +195,7 @@ public class Thermoprobe : ModProjectile
 			Texture2D bloom = Commons.ModAsset.Point.Value;
 			var detectLight = new Color(0.7f + 0.3f * DetectLightenValue, 0.7f * DetectLightenValue, 0.6f * DetectLightenValue * DetectLightenValue, 0f);
 			var bloomLight = new Color(0.7f + 0.3f * DetectLightenValue, 0.2f * DetectLightenValue, 0.1f * DetectLightenValue * DetectLightenValue, 0f);
-			Texture2D glow = ModAsset.Thermoprobe_glow.Value;
+			Texture2D glow = ModAsset.Thermoprobe_Glow.Value;
 			Main.EntitySpriteDraw(glow, Projectile.Center - Main.screenPosition, null, detectLight * DetectLightenValue, Projectile.rotation + MathHelper.PiOver2, new Vector2(glow.Width * 0.5f, origin.Y), Projectile.scale, 0, 0);
 			Main.EntitySpriteDraw(bloom, Projectile.Center - Main.screenPosition, null, bloomLight * DetectLightenValue * 0.4f, 0, bloom.Size() * 0.5f, DetectLightenValue * 0.5f + 0.2f, 0, 0);
 			Main.EntitySpriteDraw(star, Projectile.Center - Main.screenPosition, null, detectLight, 0, star.Size() * 0.5f, new Vector2(1, DetectLightenValue) * 0.7f, 0, 0);

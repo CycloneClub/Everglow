@@ -8,7 +8,7 @@ public class WindBladeBallHit : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
 
-	public override string Texture => ModAsset.YggdrasilMoonBlade_friendly_Mod;
+	public override string Texture => ModAsset.YggdrasilMoonBlade_Friendly_Mod;
 
 	public override void SetDefaults()
 	{

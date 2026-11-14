@@ -41,10 +41,10 @@ public class IntroductiontoThermalElectricity_Ball : ModProjectile
 		switch (Main.rand.Next(2))
 		{
 			case 0:
-				SoundEngine.PlaySound(new SoundStyle(ModAsset.Introductiontothermalelectricity_explosion_1_Mod), Projectile.Center);
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.Introductiontothermalelectricity_Explosion_1_Mod), Projectile.Center);
 				break;
 			case 1:
-				SoundEngine.PlaySound(new SoundStyle(ModAsset.Introductiontothermalelectricity_explosion_2_Mod), Projectile.Center);
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.Introductiontothermalelectricity_Explosion_2_Mod), Projectile.Center);
 				break;
 		}
 		TimeToKill = TimeToKillMax;
@@ -235,7 +235,7 @@ public class IntroductiontoThermalElectricity_Ball : ModProjectile
 
 		if (bars_outerRing_dark.Count > 2)
 		{
-			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_black.Value;
+			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_Black.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars_outerRing_dark.ToArray(), 0, bars_outerRing_dark.Count - 2);
 		}
 

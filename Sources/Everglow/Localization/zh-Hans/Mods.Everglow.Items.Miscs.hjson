@@ -372,3 +372,8 @@ YuxiangEggplant: {
 	DisplayName: Yuxiang Eggplant
 	Tooltip: ""
 }
+
+HermCommuterCard: {
+	DisplayName: "赫姆的通勤卡"
+	Tooltip: "交给工会前台时消耗"
+}

@@ -68,11 +68,11 @@ public class ResetIsleOfBloom : ModItem
 			{
 				if (pos.Y - tilePos.Y > value2 * 4 + value0 * 1.2f + 3)
 				{
-					tile.WallType = (ushort)ModContent.WallType<MossProneSandSoilWall>();
+					tile.WallType = (ushort)ModContent.WallType<MossProneSandSoilWall_Unsafe>();
 				}
 				else
 				{
-					tile.WallType = (ushort)ModContent.WallType<OldMossWall>();
+					tile.WallType = (ushort)ModContent.WallType<OldMossWall_Unsafe>();
 				}
 			}
 		}
@@ -84,7 +84,7 @@ public class ResetIsleOfBloom : ModItem
 			radius = MathF.Max(radius, 10) * 1.4f;
 			PlaceCircleAreaOfBlockWithRandomNoise(tilePos + new Point(0, y), radius, ModContent.TileType<Tiles.OldMoss>(), 3, (int)TileChangeState.HasTile);
 			PlaceCircleAreaOfBlockWithRandomNoise(tilePos + new Point(0, y), radius - 3, -1, 3, (int)TileChangeState.Forceful);
-			PlaceCircleAreaOfWallWithRandomNoise(tilePos + new Point(0, y), radius - 1, ModContent.WallType<OldMossWall>(), 3, (int)TileChangeState.HasWall);
+			PlaceCircleAreaOfWallWithRandomNoise(tilePos + new Point(0, y), radius - 1, ModContent.WallType<OldMossWall_Unsafe>(), 3, (int)TileChangeState.HasWall);
 		}
 
 		// SubFloor Cave
@@ -151,7 +151,7 @@ public class ResetIsleOfBloom : ModItem
 					{
 						if (CheckSpaceRight(tilePos.X + checkX, tilePos.Y + y) > 11)
 						{
-							PlaceFrameImportantTiles(tilePos.X + checkX, tilePos.Y + y, 10, 1, ModContent.TileType<IslePeachTree_side>(), 180);
+							PlaceFrameImportantTiles(tilePos.X + checkX, tilePos.Y + y, 10, 1, ModContent.TileType<IslePeachTree_Side>(), 180);
 							IsleOfBloom_FillBlockHorizontally(tilePos + new Point(checkX - 1, y), true);
 						}
 					}
@@ -159,7 +159,7 @@ public class ResetIsleOfBloom : ModItem
 					{
 						if (CheckSpaceLeft(tilePos.X + checkX, tilePos.Y + y) > 11)
 						{
-							PlaceFrameImportantTiles(tilePos.X + checkX - 10, tilePos.Y + y, 10, 1, ModContent.TileType<IslePeachTree_side>(), 0);
+							PlaceFrameImportantTiles(tilePos.X + checkX - 10, tilePos.Y + y, 10, 1, ModContent.TileType<IslePeachTree_Side>(), 0);
 							IsleOfBloom_FillBlockHorizontally(tilePos + new Point(checkX, y), false);
 						}
 					}

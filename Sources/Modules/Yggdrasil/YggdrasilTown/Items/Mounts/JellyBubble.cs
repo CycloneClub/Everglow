@@ -204,7 +204,7 @@ public class JellyBubble : ModMount
 		var scaleFrequencyFact = 0.11f;
 
 		var jellyBallGlowTexture = ModAsset.JellyBubble_JellyBall_Glow.Value;
-		var jellyBallGlowStaminaTexture = ModAsset.JellyBubble_JellyBall_glow2.Value;
+		var jellyBallGlowStaminaTexture = ModAsset.JellyBubble_JellyBall_Glow2.Value;
 		var jellyBallTexture = ModAsset.JellyBubble_JellyBall.Value;
 		var jellyBallPosition = drawPlayer.Bottom - Main.screenPosition + new Vector2(0, -21f);
 		var jellyBallGlowDrawColor = new Color(0f, 0.04f, 0.3f, 0f);

@@ -126,7 +126,7 @@ public class LeafcutterAnt : ModNPC
 		for (int i = 0; i < 5; i++)
 		{
 			Vector2 v0 = new Vector2(0, Main.rand.NextFloat(0, 6f)).RotatedByRandom(MathHelper.TwoPi);
-			int type = ModContent.Find<ModGore>("Everglow/LeafcutterAnt_gore" + i).Type;
+			int type = ModContent.Find<ModGore>("Everglow/LeafcutterAnt_Gore" + i).Type;
 			Gore.NewGore(NPC.GetSource_Death(), NPC.Center, v0, type, NPC.scale);
 		}
 	}

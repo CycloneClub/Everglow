@@ -35,10 +35,10 @@ public class IntroductiontoThermalElectricity : ModItem
 		switch (Main.rand.Next(2))
 		{
 			case 0:
-				SoundEngine.PlaySound(new SoundStyle(ModAsset.Introductiontothermalelectricity_launch_1_Mod), position);
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.Introductiontothermalelectricity_Launch_1_Mod), position);
 				break;
 			case 1:
-				SoundEngine.PlaySound(new SoundStyle(ModAsset.Introductiontothermalelectricity_launch_2_Mod), position);
+				SoundEngine.PlaySound(new SoundStyle(ModAsset.Introductiontothermalelectricity_Launch_2_Mod), position);
 				break;
 		}
 
