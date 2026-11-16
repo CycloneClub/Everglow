@@ -14,7 +14,7 @@ public class TinClub_Item : ClubItem
 		Item.useAnimation = 12;
 		SmashDamageMultiplier = 10f / 15f;
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.TinClub>();
-		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.TinClub_smash>();
+		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.TinClub_Smash>();
 	}
 
 	public override void AddRecipes()

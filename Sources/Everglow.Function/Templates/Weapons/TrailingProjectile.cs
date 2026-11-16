@@ -11,7 +11,7 @@ namespace Everglow.Commons.Templates.Weapons;
 /// · DrawTrail, the most common painting function for trail, called in PreDraw.<br></br>
 /// · DrawSelf, draw projectile eneity, called after DrawTrailDark in DrawTrail.
 /// </summary>
-public abstract class TrailingProjectile : ModProjectile, IWarpProjectile_warpStyle2
+public abstract class TrailingProjectile : ModProjectile, IWarpProjectile_WarpStyle2
 {
 	public override void SetDefaults()
 	{
@@ -29,7 +29,7 @@ public abstract class TrailingProjectile : ModProjectile, IWarpProjectile_warpSt
 		TrailWidth = 30f;
 		TrailLength = 30;
 		TrailTexture = ModAsset.Trail.Value;
-		TrailTextureBlack = ModAsset.Trail_black.Value;
+		TrailTextureBlack = ModAsset.Trail_Black.Value;
 		TrailShader = ModAsset.Trailing.Value;
 		SetCustomDefaults();
 	}
@@ -49,7 +49,7 @@ public abstract class TrailingProjectile : ModProjectile, IWarpProjectile_warpSt
 	/// TrailWidth = 30f;<br></br>
 	/// TrailLength = 30;<br></br>
 	/// TrailTexture = ModAsset.Trail.Value;<br></br>
-	/// TrailTextureBlack = ModAsset.Trail_black.Value;<br></br>
+	/// TrailTextureBlack = ModAsset.Trail_Black.Value;<br></br>
 	/// TrailShader = ModAsset.Trailing.Value;<br></br>
 	/// </summary>
 	public virtual void SetCustomDefaults()
@@ -195,6 +195,7 @@ public abstract class TrailingProjectile : ModProjectile, IWarpProjectile_warpSt
 	{
 		Projectile.velocity = Projectile.oldVelocity;
 		Projectile.friendly = false;
+		Projectile.hostile = false;
 		if (TimeAfterEntityDestroy < 0)
 		{
 			DestroyEntityEffect();

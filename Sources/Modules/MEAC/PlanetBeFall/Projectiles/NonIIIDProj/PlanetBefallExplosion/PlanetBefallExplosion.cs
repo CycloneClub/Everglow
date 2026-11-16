@@ -44,7 +44,7 @@ public class PlanetBefallExplosion : ModProjectile// , IWarpProjectile
 		for (int g = 0; g < frequency * 0.6; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(45f, 125f)).RotatedByRandom(MathHelper.TwoPi);
-			var smog = new RockSmogLine_front
+			var smog = new RockSmogLine_Front
 			{
 				Velocity = newVelocity,
 				Active = true,
@@ -206,13 +206,13 @@ public class PlanetBefallExplosion : ModProjectile// , IWarpProjectile
 		Main.spriteBatch.Draw(shadow, Projectile.Center - Main.screenPosition, null, c * dark, 0, shadow.Size() / 2f, 2.2f * Projectile.ai[0] / 15f * dark, SpriteEffects.None, 0);
 		var cDark = new Color(0, 0, 0, 1f - timeValue);
 
-		// DrawTexCircle(MathF.Sqrt(timeValue) * 12 * Projectile.ai[0], 20 * (1 - timeValue) * Projectile.ai[0], cDark, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_2_black_thick.Value);
+		// DrawTexCircle(MathF.Sqrt(timeValue) * 12 * Projectile.ai[0], 20 * (1 - timeValue) * Projectile.ai[0], cDark, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_2_Black_Thick.Value);
 		// DrawTexCircle(MathF.Sqrt(timeValue) * 12 * Projectile.ai[0], 4 * (1 - timeValue) * Projectile.ai[0], c * 0.4f , Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_6.Value);
 	}
 
 	public override bool PreDraw(ref Color lightColor)
 	{
-		Texture2D shadow = Commons.ModAsset.Point_black.Value;
+		Texture2D shadow = Commons.ModAsset.Point_Black.Value;
 		float timeValue = (200 - Projectile.timeLeft) / 200f;
 		float dark = Math.Max((Projectile.timeLeft - 150) / 25, 0);
 		var c = new Color(1f * MathF.Sqrt(1 - timeValue), 1f * (1 - timeValue) * (1 - timeValue), 0.1f * (1 - timeValue), 0f);

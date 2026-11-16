@@ -302,8 +302,8 @@ public class ActivatedJellyGlandMinion : ModProjectile
 		float glowStrength = HasTarget ? 1f : 0.4f;
 
 		Texture2D textureMain = ModAsset.JellyBall.Value;
-		Texture2D textureGlow = ModAsset.JellyBall_glow.Value;
-		Texture2D textureBloom = ModAsset.JellyBall_bloom.Value;
+		Texture2D textureGlow = ModAsset.JellyBall_Glow.Value;
+		Texture2D textureBloom = ModAsset.JellyBall_Bloom.Value;
 
 		Color drawColor = Lighting.GetColor(Projectile.Center.ToTileCoordinates());
 		int frameWidth = textureMain.Width / 2;

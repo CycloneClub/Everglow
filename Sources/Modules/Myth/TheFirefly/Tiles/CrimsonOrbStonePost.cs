@@ -43,7 +43,7 @@ public class CrimsonOrbStonePost : ModTile
 			zero = Vector2.Zero;
 		}
 
-		Texture2D tex = ModAsset.CrimsonOrbStonePost_glow.Value;
+		Texture2D tex = ModAsset.CrimsonOrbStonePost_Glow.Value;
 
 		spriteBatch.Draw(tex, new Vector2(i * 16, j * 16) - Main.screenPosition + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16), new Color(1f, 1f, 1f, 0), 0, new Vector2(0), 1, SpriteEffects.None, 0);
 		if (tile.TileFrameX == 0 && tile.TileFrameY == 0)
@@ -91,7 +91,7 @@ public class CrimsonOrbStonePost : ModTile
 			effect.Parameters["uTransform"].SetValue(model * projection);
 			effect.CurrentTechnique.Passes[0].Apply();
 			Main.graphics.GraphicsDevice.RasterizerState = RasterizerState.CullNone;
-			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_black.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_Black.Value;
 			Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 			if (bars2.Count > 3)
 			{
@@ -128,7 +128,7 @@ public class CrimsonOrbStonePost : ModTile
 						{
 							if (projectile != null && projectile.active)
 							{
-								if (projectile.type == ModContent.ProjectileType<PylonStonePostProj_crimson>())
+								if (projectile.type == ModContent.ProjectileType<PylonStonePostProj_Crimson>())
 								{
 									if (projectile.ai[1] == i && projectile.ai[2] == j)
 									{
@@ -138,7 +138,7 @@ public class CrimsonOrbStonePost : ModTile
 							}
 						}
 						Vector2 toPlayer = Vector2.Normalize(player.MountedCenter - positionWorld) * 1f;
-						Projectile.NewProjectile(player.GetSource_FromAI(), positionWorld, toPlayer, ModContent.ProjectileType<PylonStonePostProj_crimson>(), 50, 5, player.whoAmI, 0, i, j);
+						Projectile.NewProjectile(player.GetSource_FromAI(), positionWorld, toPlayer, ModContent.ProjectileType<PylonStonePostProj_Crimson>(), 50, 5, player.whoAmI, 0, i, j);
 					}
 				}
 			}

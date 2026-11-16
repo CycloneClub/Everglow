@@ -34,7 +34,7 @@ public abstract class BluishGiantGentianGore : DissolveGore
 		alpha2 = MathF.Sin(alpha2 * MathHelper.Pi);
 		if (Main.rand.NextFloat(5, 100) < Velocity.Length())
 		{
-			Dust dust = Dust.NewDustDirect(Position, Width, Height, ModContent.DustType<BluishGiantGentian_dust_wither>());
+			Dust dust = Dust.NewDustDirect(Position, Width, Height, ModContent.DustType<BluishGiantGentian_Dust_Wither>());
 			dust.velocity = Velocity * Main.rand.NextFloat(0.2f, 0.8f);
 			dust.noGravity = true;
 			dust.alpha = 50;

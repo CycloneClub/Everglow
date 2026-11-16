@@ -385,7 +385,7 @@ public class ToothKnife : MeleeProj, IWarpProjectile
 
 		Effect MeleeTrail = Commons.ModAsset.MeleeTrail.Value;
 		MeleeTrail.Parameters["uTransform"].SetValue(model * projection);
-		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.Wave_slash.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.Wave_Slash.Value;
 		MeleeTrail.Parameters["tex1"].SetValue(ModContent.Request<Texture2D>(TrailColorTex(), ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
 		MeleeTrail.CurrentTechnique.Passes["ArcBladeAffectByEnvironmentLight"].Apply();
 

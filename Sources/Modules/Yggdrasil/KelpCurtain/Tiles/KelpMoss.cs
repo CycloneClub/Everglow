@@ -12,7 +12,7 @@ public class KelpMoss : ModTile, ITileFluentlyDrawn
 		Main.tileSolid[Type] = false;
 		TileID.Sets.IsVine[Type] = true;
 		TileID.Sets.VineThreads[Type] = true;
-		DustType = ModContent.DustType<KelpMoss_dust>();
+		DustType = ModContent.DustType<KelpMoss_Dust>();
 		Main.tileCut[Type] = true;
 		AddMapEntry(new Color(36, 86, 19));
 		HitSound = SoundID.Grass;

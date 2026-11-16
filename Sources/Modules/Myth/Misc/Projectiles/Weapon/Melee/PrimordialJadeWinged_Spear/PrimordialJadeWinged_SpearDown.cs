@@ -182,7 +182,7 @@ public class PrimordialJadeWinged_SpearDown : ModProjectile, IWarpProjectile
 						}
 					}
 					positionVFX.Y += 60 * player.gravDir;
-					var filthy = new FilthyLucreFlame_darkDust
+					var filthy = new FilthyLucreFlame_DarkDust
 					{
 						velocity = newVec,
 						Active = true,
@@ -293,7 +293,7 @@ public class PrimordialJadeWinged_SpearDown : ModProjectile, IWarpProjectile
 			positionVFX = Projectile.Center + velocityLeft * Main.rand.NextFloat(-40f, 40f) + Vector2.Normalize(Projectile.velocity) * Main.rand.NextFloat(-480f, 0f);
 		}
 
-		var filthy = new FilthyLucreFlame_darkDust
+		var filthy = new FilthyLucreFlame_DarkDust
 		{
 			velocity = Vector2.Normalize(Projectile.velocity) * 15f + velocityLeft * Main.rand.NextFloat(-10f, 10f),
 			Active = true,
@@ -413,7 +413,7 @@ public class PrimordialJadeWinged_SpearDown : ModProjectile, IWarpProjectile
 		effect.Parameters["uTransform"].SetValue(model * projection);
 		effect.Parameters["uProcession"].SetValue(0.5f);
 		effect.CurrentTechnique.Passes[0].Apply();
-		Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_black_thick.Value;
+		Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_Black_Thick.Value;
 		Main.graphics.graphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		Main.graphics.graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, barsDark.ToArray(), 0, barsDark.Count - 2);
 

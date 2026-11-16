@@ -99,6 +99,6 @@ public class BlackRingVFX : Visual
 			vertices.Add(new(p, new Vector3(i / 30f, 0, 0), c));
 			vertices.Add(new(p2 - new Vector3(vel.X, vel.Y, 0) * width * 7 * (timeleft / (float)maxtime), new Vector3(i / 30f, 1, 0), c));
 		}
-		Ins.Batch.Draw(Commons.ModAsset.Trail_2_black_thick.Value, vertices, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(Commons.ModAsset.Trail_2_Black_Thick.Value, vertices, PrimitiveType.TriangleStrip);
 	}
 }

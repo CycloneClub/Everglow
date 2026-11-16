@@ -15,7 +15,7 @@ internal class BoneFeatherMagicBook : MagicBookProjectile
 		UseGlow = true;
 
 		FrontTexture = ModAsset.BoneFeatherMagic.Value;
-		PaperTexture = ModAsset.FireFeatherMagic_paper.Value;
+		PaperTexture = ModAsset.FireFeatherMagic_Paper.Value;
 		GlowTexture = ModAsset.BoneFeatherMagic.Value;
 		GlowColor = Color.Transparent;
 		effectColor = new Color(50, 50, 31, 40);

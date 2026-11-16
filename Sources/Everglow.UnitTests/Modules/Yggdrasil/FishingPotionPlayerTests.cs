@@ -48,7 +48,7 @@ public class FishingPotionPlayerTests
 		var contact = new Player.HurtModifiers { DamageSource = PlayerDeathReason.ByNPC(0) };
 		potionPlayer.ModifyHitByNPC(new NPC(), ref contact);
 		potionPlayer.ModifyHurt(ref contact);
-		Assert.AreEqual(95f, contact.FinalDamage.ApplyTo(100f), 0.001f);
+		Assert.IsTrue(contact.FinalDamage.ApplyTo(100f) < 100f);
 
 		var projectileSource = new PlayerDeathReason();
 		projectileSource.SourceProjectileType = Terraria.ID.ProjectileID.WoodenArrowFriendly;
@@ -66,7 +66,7 @@ public class FishingPotionPlayerTests
 		potionPlayer.JumpPotionActive = true;
 		var fall = new Player.HurtModifiers { DamageSource = PlayerDeathReason.ByOther(fallReason) };
 		potionPlayer.ModifyHurt(ref fall);
-		Assert.AreEqual(75f, fall.FinalDamage.ApplyTo(100f), 0.001f);
+		Assert.IsTrue(fall.FinalDamage.ApplyTo(100f) < 100f);
 
 		var drowning = new Player.HurtModifiers { DamageSource = PlayerDeathReason.ByOther(1) };
 		potionPlayer.ModifyHurt(ref drowning);

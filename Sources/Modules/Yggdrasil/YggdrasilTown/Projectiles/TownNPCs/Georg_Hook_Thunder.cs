@@ -144,7 +144,7 @@ public class Georg_Hook_Thunder : ModProjectile
 		}
 		if (powerFlow.Count > 3)
 		{
-			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_10_black.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_10_Black.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, powerFlow_dark.ToArray(), 0, powerFlow_dark.Count - 2);
 
 			for (int i = 0; i < lightValue; i++)
@@ -175,7 +175,7 @@ public class Georg_Hook_Thunder : ModProjectile
 		{
 			drawStarColor_Black *= Projectile.timeLeft / 15f;
 		}
-		Texture2D light_Black = Commons.ModAsset.StarSlash_black.Value;
+		Texture2D light_Black = Commons.ModAsset.StarSlash_Black.Value;
 		Main.spriteBatch.Draw(light_Black, Projectile.Center - Main.screenPosition, new Rectangle(0, 0, light_Black.Width / 2, light_Black.Height), drawStarColor_Black, MathF.Sin(Projectile.whoAmI - Projectile.position.X) * 6, light_Black.Size() / 2f, new Vector2(1f, dark * dark) * 4.05f, SpriteEffects.None, 0);
 		Main.spriteBatch.Draw(light_Black, Projectile.Center - Main.screenPosition, new Rectangle(0, 0, light_Black.Width / 2, light_Black.Height), drawStarColor_Black, MathF.Sin(Projectile.whoAmI) * 6, light_Black.Size() / 2f, new Vector2(0.5f, dark) * 4.05f, SpriteEffects.None, 0);
 		Main.spriteBatch.Draw(light_Black, Projectile.Center - Main.screenPosition, null, drawStarColor_Black, MathF.Sin(Projectile.whoAmI + Projectile.position.Y) * 6, light_Black.Size() / 2f, new Vector2(1f, dark * dark) * 4.05f, SpriteEffects.None, 0);

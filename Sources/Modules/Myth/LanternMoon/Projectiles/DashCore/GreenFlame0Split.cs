@@ -65,10 +65,13 @@ internal class GreenFlame0Split : ModProjectile
 		if (Projectile.timeLeft == 120)
 		{
 			SoundEngine.PlaySound(SoundID.DD2_ExplosiveTrapExplode, Projectile.Center);
-			for (int h = 0; h < 7; h++)
+			if (Main.netMode != NetmodeID.MultiplayerClient)
 			{
-				Vector2 vm = new Vector2(0, Main.rand.NextFloat(Main.rand.NextFloat(0f, 4f), 8f)).RotatedByRandom(6.283);
-				Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, vm + Projectile.velocity, ModContent.ProjectileType<GreenFlame0Little>(), Projectile.damage, 0, Projectile.owner, 0, 0);
+				for (int h = 0; h < 7; h++)
+				{
+					Vector2 vm = new Vector2(0, Main.rand.NextFloat(Main.rand.NextFloat(0f, 4f), 8f)).RotatedByRandom(6.283);
+					Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, vm + Projectile.velocity, ModContent.ProjectileType<GreenFlame0Little>(), Projectile.damage, 0, Projectile.owner, 0, 0);
+				}
 			}
 			Projectile.Kill();
 		}

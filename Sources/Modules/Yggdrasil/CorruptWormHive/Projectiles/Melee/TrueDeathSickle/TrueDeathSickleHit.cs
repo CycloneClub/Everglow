@@ -77,7 +77,7 @@ public class TrueDeathSickleHit : ModProjectile, IWarpProjectile
 		float Dark = Math.Max((Projectile.timeLeft - 150) / 50f, 0);
 		Main.spriteBatch.Draw(Shadow, Projectile.Center - Main.screenPosition, null, Color.White * Dark, 0, Shadow.Size() / 2f, 2.2f * Projectile.ai[0] / 15f, SpriteEffects.None, 0);
 		Texture2D light = Commons.ModAsset.StarSlash.Value;
-		Texture2D dark = Commons.ModAsset.StarSlash_black.Value;
+		Texture2D dark = Commons.ModAsset.StarSlash_Black.Value;
 		Main.spriteBatch.Draw(dark, Projectile.Center - Main.screenPosition, null, new Color(1f, 1f, 1f, 1f), Projectile.ai[1], dark.Size() / 2f, new Vector2(0.5f * Dark * Dark, 0.72f) * Projectile.ai[0] / 3f, SpriteEffects.None, 0);
 		Main.spriteBatch.Draw(light, Projectile.Center - Main.screenPosition, null, new Color(1f - Dark, Dark, 1f, 0), Projectile.ai[1], light.Size() / 2f, new Vector2(0.5f * Dark * Dark, 0.72f) * Projectile.ai[0] / 3f, SpriteEffects.None, 0);
 		Main.spriteBatch.Draw(light, Projectile.Center - Main.screenPosition, null, new Color(1f - Dark, Dark, 1f, 0), Projectile.ai[1], light.Size() / 2f, new Vector2(0.5f * Dark * Dark, 0.72f) * Projectile.ai[0] / 3f, SpriteEffects.None, 0);

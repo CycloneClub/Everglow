@@ -103,7 +103,7 @@ public class SphereLanternProj : ModProjectile
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
-		Texture2D glow = ModAsset.SphereLanternProj_glow.Value;
+		Texture2D glow = ModAsset.SphereLanternProj_Glow.Value;
 		if (ProjEntities.Count > 0)
 		{
 			for (int i = 0; i < ProjEntities.Count; i++)

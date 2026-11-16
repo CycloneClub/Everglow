@@ -11,7 +11,7 @@ public class ShadowDragonAttack : TrailingProjectile
 	public override void SetCustomDefaults()
 	{
 		TrailTexture = Commons.ModAsset.Empty.Value;
-		TrailTextureBlack = Commons.ModAsset.Trail_8_black.Value;
+		TrailTextureBlack = Commons.ModAsset.Trail_8_Black.Value;
 		Projectile.hostile = true;
 		Projectile.friendly = false;
 	}

@@ -72,7 +72,7 @@ public class CyanVineThrowingSpear_Proj : ModProjectile
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D tex = ModAsset.CyanVineThrowingSpear_Proj.Value;
-		Texture2D flag = ModAsset.CyanVineThrowingSpear_flag.Value;
+		Texture2D flag = ModAsset.CyanVineThrowingSpear_Flag.Value;
 
 		Vector2 redKnotPos = Projectile.Center - Main.screenPosition - Projectile.velocity.SafeNormalize(Vector2.zeroVector) * 40;
 		Player player = Main.player[Projectile.owner];

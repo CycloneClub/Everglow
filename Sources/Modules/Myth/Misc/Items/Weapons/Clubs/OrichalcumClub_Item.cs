@@ -14,7 +14,7 @@ public class OrichalcumClub_Item : ClubItem
 		Item.useAnimation = 12;
 		SmashDamageMultiplier = 59f / 34f;
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.OrichalcumClub>();
-		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.OrichalcumClub_smash>();
+		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.OrichalcumClub_Smash>();
 	}
 
 	public override void AddRecipes()

@@ -98,7 +98,7 @@ public class ThunderSpell : ModProjectile
 
 	public override void OnHitPlayer(Player target, Player.HurtInfo info)
 	{
-		Projectile p0 = Projectile.NewProjectileDirect(Projectile.GetSource_OnHit(target), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<ThunderSpell_AttachPlayer>(), 0, 1.5f, Main.maxPlayers);
+		Projectile p0 = Projectile.NewProjectileDirect(Projectile.GetSource_OnHit(target), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<ThunderSpell_AttachPlayer>(), 0, 1.5f, Projectile.owner);
 		ThunderSpell_AttachPlayer tSAP = p0.ModProjectile as ThunderSpell_AttachPlayer;
 		tSAP.AttachedPlayer = target;
 		tSAP.OwnerNPC = OwnerNPC;
@@ -180,9 +180,9 @@ public class ThunderSpell : ModProjectile
 			effects = SpriteEffects.FlipHorizontally;
 		}
 		Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
-		Texture2D tex_shape = ModAsset.Spell_shape.Value;
-		Texture2D tex_glow = ModAsset.ThunderSpell_glow.Value;
-		Texture2D bloom = ModAsset.Spell_bloom.Value;
+		Texture2D tex_shape = ModAsset.Spell_Shape.Value;
+		Texture2D tex_glow = ModAsset.ThunderSpell_Glow.Value;
+		Texture2D bloom = ModAsset.Spell_Bloom.Value;
 		float fade = 1f;
 		if (Projectile.timeLeft < 60f)
 		{

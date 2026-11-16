@@ -283,7 +283,7 @@ public class TyphoonII : ModProjectile, IWarpProjectile
 				bars.Add(new Vertex2D(Projectile.oldPos[i] + normalDir * width * (1 - factorIII) + new Vector2(34f) - Main.screenPosition, c0 * mulColor, new Vector3(0, 0, 0)));
 			}
 		}
-		Texture2D t = Commons.ModAsset.Trail_2_thick.Value;
+		Texture2D t = Commons.ModAsset.Trail_2_Thick.Value;
 		if (Shade)
 		{
 			t = ModAsset.FogTraceShade.Value;

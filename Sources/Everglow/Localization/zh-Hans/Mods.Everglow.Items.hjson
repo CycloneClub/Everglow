@@ -19,19 +19,19 @@ BakedOyster: {
 	Tooltip: "{$Mods.Everglow.Items.Miscs.BakedOyster.Tooltip}"
 }
 
-BellPepper_green: {
-	DisplayName: "{$Mods.Everglow.Items.Materials.BellPepper_green.DisplayName}"
-	Tooltip: "{$Mods.Everglow.Items.Materials.BellPepper_green.Tooltip}"
+BellPepper_Green: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.BellPepper_Green.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.BellPepper_Green.Tooltip}"
 }
 
-BellPepper_red: {
-	DisplayName: "{$Mods.Everglow.Items.Materials.BellPepper_red.DisplayName}"
-	Tooltip: "{$Mods.Everglow.Items.Materials.BellPepper_red.Tooltip}"
+BellPepper_Red: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.BellPepper_Red.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.BellPepper_Red.Tooltip}"
 }
 
-BellPepper_yellow: {
-	DisplayName: "{$Mods.Everglow.Items.Materials.BellPepper_yellow.DisplayName}"
-	Tooltip: "{$Mods.Everglow.Items.Materials.BellPepper_yellow.Tooltip}"
+BellPepper_Yellow: {
+	DisplayName: "{$Mods.Everglow.Items.Materials.BellPepper_Yellow.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Materials.BellPepper_Yellow.Tooltip}"
 }
 
 BloodLamp: {
@@ -419,9 +419,9 @@ MysteriousTablet: {
 	Tooltip: "{$Mods.Everglow.Items.Weapons.Typeless.MysteriousTablet.Tooltip}"
 }
 
-NormalCableCar_item: {
-	DisplayName: "{$Mods.Everglow.Items.Tools.NormalCableCar_item.DisplayName}"
-	Tooltip: "{$Mods.Everglow.Items.Tools.NormalCableCar_item.Tooltip}"
+NormalCableCar_Item: {
+	DisplayName: "{$Mods.Everglow.Items.Tools.NormalCableCar_Item.DisplayName}"
+	Tooltip: "{$Mods.Everglow.Items.Tools.NormalCableCar_Item.Tooltip}"
 }
 
 OrangeIcecream: {

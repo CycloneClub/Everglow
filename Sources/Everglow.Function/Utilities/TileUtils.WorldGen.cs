@@ -213,7 +213,7 @@ public partial class TileUtils
 
 	public static void FillPerlinPixel()
 	{
-		var imageData = ImageReader.Read<SixLabors.ImageSharp.PixelFormats.Rgb24>(ModAsset.World_Gen_Noise_RGB_Mod);
+		var imageData = ImageReader.Read(ModAsset.World_Gen_Noise_RGB_Mod);
 		Vector2 perlinCoordCenter = new Vector2(GenRand.NextFloat(0f, 1f), GenRand.NextFloat(0f, 1f));
 		imageData.ProcessPixelRows(accessor =>
 		{
@@ -232,7 +232,7 @@ public partial class TileUtils
 			}
 		});
 
-		imageData = ImageReader.Read<SixLabors.ImageSharp.PixelFormats.Rgb24>(ModAsset.WorldGenLarge_rgb_Mod);
+		imageData = ImageReader.Read(ModAsset.WorldGenLarge_Rgb_Mod);
 		perlinCoordCenter = new Vector2(GenRand.NextFloat(0f, 1f), GenRand.NextFloat(0f, 1f));
 		imageData.ProcessPixelRows(accessor =>
 		{

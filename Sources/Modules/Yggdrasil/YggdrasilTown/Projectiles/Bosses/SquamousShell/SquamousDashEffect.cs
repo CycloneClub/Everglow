@@ -4,7 +4,7 @@ using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Bosses.SquamousShell;
 
-public class SquamousDashEffect : ModProjectile, IWarpProjectile_warpStyle2
+public class SquamousDashEffect : ModProjectile, IWarpProjectile_WarpStyle2
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
 

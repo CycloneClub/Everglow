@@ -52,7 +52,7 @@ public class CrystalClub : ClubProj
 			if (flyClubCooling <= 0 && Omega > 0.2f)
 			{
 				flyClubCooling = 36;
-				Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<CrystalClub_fly>(), (int)(Projectile.damage * 0.3f), Projectile.knockBack * 0.4f, Projectile.owner);
+				Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<CrystalClub_Fly>(), (int)(Projectile.damage * 0.3f), Projectile.knockBack * 0.4f, Projectile.owner);
 			}
 			GenerateDust();
 		}
@@ -110,7 +110,7 @@ public class CrystalClub : ClubProj
 
 		Effect MeleeTrail = ModAsset.CrystalClubTrail.Value;
 		MeleeTrail.Parameters["uTransform"].SetValue(model * projection);
-		MeleeTrail.Parameters["tex1"].SetValue(ModAsset.CrystalClub_fly.Value);
+		MeleeTrail.Parameters["tex1"].SetValue(ModAsset.CrystalClub_Fly.Value);
 		MeleeTrail.Parameters["Light"].SetValue(lightColor);
 		MeleeTrail.CurrentTechnique.Passes["TrailByOrigTex"].Apply();
 

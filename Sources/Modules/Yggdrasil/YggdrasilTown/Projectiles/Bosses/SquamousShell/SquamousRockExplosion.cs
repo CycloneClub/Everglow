@@ -38,7 +38,7 @@ public class SquamousRockExplosion : ModProjectile, IWarpProjectile
 			}
 			for (int x = 0; x < 2 * Projectile.ai[0]; x++)
 			{
-				var dust = Dust.NewDustDirect(Projectile.Center - new Vector2(4), 0, 0, ModContent.DustType<SquamousShellStone_dark>(), 0f, 0f, 0, default, Main.rand.NextFloat(0.7f, 1.7f));
+				var dust = Dust.NewDustDirect(Projectile.Center - new Vector2(4), 0, 0, ModContent.DustType<SquamousShellStone_Dark>(), 0f, 0f, 0, default, Main.rand.NextFloat(0.7f, 1.7f));
 				dust.velocity = new Vector2(0, Main.rand.NextFloat(0f, 2f * Projectile.ai[0])).RotatedByRandom(MathHelper.TwoPi);
 			}
 		}

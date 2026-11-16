@@ -47,7 +47,7 @@ public class BeetleDashTraceDust : Visual
 
 	public override void Update()
 	{
-		if (ProjectileOwner == null || !ProjectileOwner.active || ProjectileOwner.type != ModContent.ProjectileType<DeadBeetleEgg_beetle>())
+		if (ProjectileOwner == null || !ProjectileOwner.active || ProjectileOwner.type != ModContent.ProjectileType<DeadBeetleEgg_Beetle>())
 		{
 			Active = false;
 			return;

@@ -7,7 +7,7 @@ public class GreenRelicWall_Style2 : ModWall
 	public override void SetStaticDefaults()
 	{
 		Main.wallHouse[Type] = true;
-		DustType = ModContent.DustType<GreenRelicBrick_dust>();
+		DustType = ModContent.DustType<GreenRelicBrick_Dust>();
 		AddMapEntry(new Color(10, 31, 31));
 	}
 

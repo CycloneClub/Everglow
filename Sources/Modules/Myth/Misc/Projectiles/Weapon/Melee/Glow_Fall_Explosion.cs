@@ -3,11 +3,11 @@ using Terraria.DataStructures;
 
 namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee;
 
-public class Glow_Fall_Explosion : ModProjectile, IWarpProjectile_warpStyle2
+public class Glow_Fall_Explosion : ModProjectile, IWarpProjectile_WarpStyle2
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MiscsProjectiles;
 
-	public override string Texture => ModAsset.AcytaeaSword_projectile_Mod;
+	public override string Texture => ModAsset.AcytaeaSword_Projectile_Mod;
 
 	public override void OnSpawn(IEntitySource source)
 	{

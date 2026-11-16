@@ -87,7 +87,7 @@ public class GiantFurnace_Construct : BackgroundSlideBase
 		BackgroundHigherPerformanceHelper.Add_TileBgVertice(this, BgTiles, bars, 3);
 		DrawVertexBackground(this, PrimitiveType.TriangleStrip, bars);
 
-		Texture2D glow = ModAsset.GiantFurnace_Construct_glow.Value;
+		Texture2D glow = ModAsset.GiantFurnace_Construct_Glow.Value;
 		Vector2 pos = WorldAnchor - Main.screenPosition + new Vector2(-412, 288);
 		foreach (var timer in YggdrasilTownFurnaceSystem.MeltingAnimationTimer)
 		{

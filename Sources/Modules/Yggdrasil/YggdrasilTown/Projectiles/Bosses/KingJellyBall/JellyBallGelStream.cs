@@ -30,8 +30,8 @@ public class JellyBallGelStream : TrailingProjectile
 		TrailColor = new Color(0.1f, 0.3f, 1, 0f);
 		TrailWidth = 40f;
 		SelfLuminous = true;
-		TrailTexture = Commons.ModAsset.Trail_2_thick.Value;
-		TrailTextureBlack = Commons.ModAsset.Trail_2_black.Value;
+		TrailTexture = Commons.ModAsset.Trail_2_Thick.Value;
+		TrailTextureBlack = Commons.ModAsset.Trail_2_Black.Value;
 		TrailShader = Commons.ModAsset.Trailing.Value;
 	}
 
@@ -174,7 +174,7 @@ public class JellyBallGelStream : TrailingProjectile
 			dropTrail.Add(drawCenter + normalLeft * 14 - normal * 7 * (k - 2), dropColor, new Vector3(-k / 10f + timeValue, 0.8f, 1 - k / 6f));
 			dropTrail.Add(drawCenter - normalLeft * 14 - normal * 7 * (k - 2), dropColor, new Vector3(-k / 10f + timeValue, 0.2f, 1 - k / 6f));
 		}
-		Effect effect = ModAsset.JellyBallGelStream_Trail_dissolve.Value;
+		Effect effect = ModAsset.JellyBallGelStream_Trail_Dissolve.Value;
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
 		var model = Matrix.CreateTranslation(new Vector3(0)) * Main.GameViewMatrix.TransformationMatrix;
 		effect.Parameters["uTransform"].SetValue(model * projection);
@@ -182,7 +182,7 @@ public class JellyBallGelStream : TrailingProjectile
 		effect.CurrentTechnique.Passes["Test"].Apply();
 		if (dropTrail.Count > 2)
 		{
-			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_thick.Value;
+			Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_Thick.Value;
 			Main.graphics.graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, dropTrail.ToArray(), 0, dropTrail.Count - 2);
 		}
 		Main.spriteBatch.End();

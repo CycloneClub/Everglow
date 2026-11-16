@@ -34,7 +34,7 @@ public class AcroporaSpear : ModItem
 			{
 				if (player.altFunctionUse != 2)
 				{
-					Projectile.NewProjectile(player.GetSource_ItemUse(Item), player.Center, Vector2.Zero, ModContent.ProjectileType<AcroporaSpear_proj>(), player.GetWeaponDamage(Item), Item.knockBack, player.whoAmI);
+					Projectile.NewProjectile(player.GetSource_ItemUse(Item), player.Center, Vector2.Zero, ModContent.ProjectileType<AcroporaSpear_Proj>(), player.GetWeaponDamage(Item), Item.knockBack, player.whoAmI);
 				}
 				else// 右键
 				{

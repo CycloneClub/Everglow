@@ -55,7 +55,7 @@ public class LanternGhostKingPowerAbsorbWave : Visual
 			bars.Add(Position + radius, drawColor, new Vector3(r / (float)count * 3, endCoord, 0));
 			bars.Add(Position + endPos, drawColor, new Vector3(r / (float)count * 3, 0, 0));
 		}
-		Ins.Batch.Draw(Commons.ModAsset.Wave_full_black.Value, bars, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(Commons.ModAsset.Wave_Full_Black.Value, bars, PrimitiveType.TriangleStrip);
 
 		bars = new List<Vertex2D>();
 		drawColor = Color.Lerp(new Color(0.5f, 0f, 0f, 0f), new Color(1f, 0.3f, 0.3f, 0), MathF.Pow(Fade, 2)) * Fade * colorValue;
@@ -68,7 +68,7 @@ public class LanternGhostKingPowerAbsorbWave : Visual
 			bars.Add(Position + radius, drawColor, new Vector3(r / (float)count * 3, endCoord, 0));
 			bars.Add(Position + endPos, drawColor, new Vector3(r / (float)count * 3, 0, 0));
 		}
-		Ins.Batch.Draw(Commons.ModAsset.Wave_full.Value, bars, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(Commons.ModAsset.Wave_Full.Value, bars, PrimitiveType.TriangleStrip);
 
 		bars = new List<Vertex2D>();
 		drawColor = Color.Lerp(new Color(0.5f, 0f, 0f, 0f), new Color(1f, 0.2f, 0.1f, 0), MathF.Pow(Fade, 2)) * Fade * colorValue;

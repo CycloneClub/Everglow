@@ -143,7 +143,7 @@ public class SquamousRockSpike : ModProjectile
 		for (int g = 0; g < Frequency * 3; g++)
 		{
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(1f, 2f)).RotatedByRandom(MathHelper.TwoPi);
-			var somg = new Rock_Concentrating_dust
+			var somg = new Rock_Concentrating_Dust
 			{
 				Velocity = newVelocity,
 				Active = true,
@@ -177,7 +177,7 @@ public class SquamousRockSpike : ModProjectile
 		}
 		for (int x = 0; x < 8; x++)
 		{
-			Dust.NewDust(Projectile.Center - Projectile.velocity * 2 - new Vector2(4), Projectile.width, Projectile.height, ModContent.DustType<SquamousShellStone_dark>(), 0f, 0f, 0, default, 0.7f);
+			Dust.NewDust(Projectile.Center - Projectile.velocity * 2 - new Vector2(4), Projectile.width, Projectile.height, ModContent.DustType<SquamousShellStone_Dark>(), 0f, 0f, 0, default, 0.7f);
 		}
 		for (int x = 0; x < 8; x++)
 		{
@@ -248,7 +248,7 @@ public class SquamousRockSpike : ModProjectile
 					flows.Add(drawCenter + thisJoint - normalWidth, drawColor * fade, new Vector3(i * 0.07f + timeValue + r * 0.2f + addTimeValue, 0, drawWidth));
 					flows.Add(drawCenter + thisJoint + normalWidth, drawColor * fade, new Vector3(i * 0.07f + timeValue + r * 0.2f + addTimeValue, 1, drawWidth));
 				}
-				Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_black_thick.Value;
+				Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_Black_Thick.Value;
 				Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, flows.ToArray(), 0, flows.Count - 2);
 			}
 			for (int r = 0; r < 6; r++)
@@ -276,7 +276,7 @@ public class SquamousRockSpike : ModProjectile
 					flows.Add(drawCenter + thisJoint - normalWidth, drawColor * fade, new Vector3(i * 0.035f + timeValue + r * 0.2f + addTimeValue, 0, drawWidth));
 					flows.Add(drawCenter + thisJoint + normalWidth, drawColor * fade, new Vector3(i * 0.035f + timeValue + r * 0.2f + addTimeValue, 1, drawWidth));
 				}
-				Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_3_black.Value;
+				Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_3_Black.Value;
 				Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, flows.ToArray(), 0, flows.Count - 2);
 			}
 
@@ -305,7 +305,7 @@ public class SquamousRockSpike : ModProjectile
 					flows.Add(drawCenter + thisJoint - normalWidth, drawColor * fade, new Vector3(i * 0.07f + timeValue + r * 0.2f + addTimeValue, 0, drawWidth));
 					flows.Add(drawCenter + thisJoint + normalWidth, drawColor * fade, new Vector3(i * 0.07f + timeValue + r * 0.2f + addTimeValue, 1, drawWidth));
 				}
-				Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_thick.Value;
+				Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_Thick.Value;
 				Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, flows.ToArray(), 0, flows.Count - 2);
 			}
 			for (int r = 0; r < 6; r++)
@@ -367,7 +367,7 @@ public class SquamousRockSpike : ModProjectile
 			{
 				fade = (3520 - Projectile.timeLeft) / 20f;
 			}
-			var texGlow = ModAsset.SquamousRockSpike_glow_crack.Value;
+			var texGlow = ModAsset.SquamousRockSpike_Glow_Crack.Value;
 			float breathValue = 0.8f + 0.2f * MathF.Sin((float)Main.timeForVisualEffects * 0.24f + Projectile.whoAmI);
 			Main.spriteBatch.Draw(texGlow, Projectile.Center - Main.screenPosition, null, new Color(1f, 1f, 1f, breathValue) * breathValue * fade, Projectile.rotation, texGlow.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
 		}
@@ -493,7 +493,7 @@ public class SquamousRockSpike : ModProjectile
 		}
 		if (bars.Count > 2)
 		{
-			Texture2D t = Commons.ModAsset.Trail_4_black.Value;
+			Texture2D t = Commons.ModAsset.Trail_4_Black.Value;
 			Main.graphics.GraphicsDevice.Textures[0] = t;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}

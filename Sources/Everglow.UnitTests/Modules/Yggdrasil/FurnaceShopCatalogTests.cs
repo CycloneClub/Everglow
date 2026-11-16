@@ -25,7 +25,7 @@ public class FurnaceShopCatalogTests
 		string[] furniture = ["Bathtub", "Bed", "Bookcase", "Candelabra", "Candle", "Chair", "Chandelier", "Chest", "Clock", "Door", "Dresser", "Lamp", "Lantern", "Piano", "Sink", "Sofa", "Table", "Toilet", "Workbench"];
 		foreach (var name in furniture)
 		{
-			Bind("Placeables.Furniture.Furnace.Heatproof" + name + "_item");
+			Bind("Placeables.Furniture.Furnace.Heatproof" + name + "_Item");
 		}
 		foreach (var name in new[] { "MagicalBoomerang", "PearShapedNeedle", "ChainGrenade", "ArmorPiercingBlaster", "Caltrop", "IntroductiontoThermalElectricity", "MeltingSideGyroscope", "QuenchingBlade", "ResistanceWireBayonet" })
 		{

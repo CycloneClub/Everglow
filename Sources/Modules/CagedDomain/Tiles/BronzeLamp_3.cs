@@ -12,7 +12,7 @@ public class BronzeLamp_3 : ShapeDataTile
 	public override void SetStaticDefaults()
 	{
 		CustomItemType = ModContent.ItemType<BronzeLamp_3_Item>();
-		DustType = ModContent.DustType<BronzeLamp_dust>();
+		DustType = ModContent.DustType<BronzeLamp_Dust>();
 		TotalWidth = 7;
 		TotalHeight = 17;
 

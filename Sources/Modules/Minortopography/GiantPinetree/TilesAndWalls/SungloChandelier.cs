@@ -76,7 +76,7 @@ public class SungloChandelier : ModTile, ITileFluentlyDrawn, ITileFlameData
 		new TileDrawing.TileFlameData()
 		{
 			flameCount = 1,
-			flameTexture = ModAsset.SungloChandelier_glow.Value,
+			flameTexture = ModAsset.SungloChandelier_Glow.Value,
 			flameRangeXMin = -1,
 			flameRangeXMax = 1,
 			flameRangeMultX = 0.15f,

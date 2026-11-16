@@ -36,7 +36,7 @@ public class TrueDeathSickle_MoonBlade : ModProjectile, IWarpProjectile
 			{
 				Vector2 v0 = startVelocity.RotatedBy(g / 20f * Projectile.ai[1]) * Projectile.ai[0];
 				Vector2 pos = Projectile.Center + v0 - startVelocity * 40f;
-				var df = new DevilFlame3DSickle_worldCoordDust
+				var df = new DevilFlame3DSickle_WorldCoordDust
 				{
 					Velocity3D = new Vector3(startVelocity * 15, 0),
 					Active = true,

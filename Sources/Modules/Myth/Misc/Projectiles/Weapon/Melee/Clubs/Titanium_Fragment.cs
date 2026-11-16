@@ -103,7 +103,7 @@ public class Titanium_Fragment : ModProjectile
 		}
 		TimeValue = (float)(Main.time / Projectile.ai[0] * 5f) + Projectile.whoAmI * 4.3742f;
 		float timeValue2 = TimeValue % MathHelper.TwoPi;
-		if (player.ownedProjectileCounts[ModContent.ProjectileType<TitaniumClub_smash>()] > 0)
+		if (player.ownedProjectileCounts[ModContent.ProjectileType<TitaniumClub_Smash>()] > 0)
 		{
 			MulRange = (float)Utils.Lerp(MulRange, 0, 0.02f);
 		}
@@ -175,11 +175,11 @@ public class Titanium_Fragment : ModProjectile
 	{
 		float mulColor = (255 - Projectile.alpha) / 255f;
 		float timeValue2 = (TimeValue + Projectile.rotation) % MathHelper.TwoPi;
-		Texture2D texture_b = ModAsset.Titanium_Fragment_dark.Value;
+		Texture2D texture_b = ModAsset.Titanium_Fragment_Dark.Value;
 		Texture2D texture = ModAsset.Titanium_Fragment.Value;
-		Texture2D texture_l0 = ModAsset.Titanium_Fragment_highlight0.Value;
-		Texture2D texture_l1 = ModAsset.Titanium_Fragment_highlight1.Value;
-		Texture2D texture_l2 = ModAsset.Titanium_Fragment_highlight2.Value;
+		Texture2D texture_l0 = ModAsset.Titanium_Fragment_Highlight0.Value;
+		Texture2D texture_l1 = ModAsset.Titanium_Fragment_Highlight1.Value;
+		Texture2D texture_l2 = ModAsset.Titanium_Fragment_Highlight2.Value;
 
 		Rectangle frame = new Rectangle(0, 20 * Projectile.frame, 20, 20);
 		Vector2 drawPos = Projectile.Center - Main.screenPosition;

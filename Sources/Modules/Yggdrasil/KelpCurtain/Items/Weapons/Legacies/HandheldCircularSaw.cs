@@ -27,11 +27,11 @@ public class HandheldCircularSaw : ModItem
 
 	public override bool CanUseItem(Player player)
 	{
-		if (player.ownedProjectileCounts[ModContent.ProjectileType<HandheldCircularSaw_proj>()] == 0)
+		if (player.ownedProjectileCounts[ModContent.ProjectileType<HandheldCircularSaw_Proj>()] == 0)
 		{
 			if (Main.myPlayer == player.whoAmI)
 			{
-				var p0 = Projectile.NewProjectileDirect(player.GetSource_ItemUse(Item), player.Center, Vector2.Zero, ModContent.ProjectileType<HandheldCircularSaw_proj>(), player.GetWeaponDamage(Item), Item.knockBack, player.whoAmI);
+				var p0 = Projectile.NewProjectileDirect(player.GetSource_ItemUse(Item), player.Center, Vector2.Zero, ModContent.ProjectileType<HandheldCircularSaw_Proj>(), player.GetWeaponDamage(Item), Item.knockBack, player.whoAmI);
 				Vector2 mouseToPlayer = Main.MouseWorld - player.MountedCenter;
 				mouseToPlayer = Vector2.Normalize(mouseToPlayer);
 				p0.rotation = mouseToPlayer.ToRotation() + MathHelper.PiOver4;

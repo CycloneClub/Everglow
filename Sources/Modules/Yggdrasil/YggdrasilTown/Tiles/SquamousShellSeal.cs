@@ -65,8 +65,8 @@ public class SquamousShellSeal : ModTile
 			}
 
 			Texture2D deadS = ModAsset.DeadSquamousShell.Value;
-			Texture2D frontSeal = ModAsset.SquamousShellSeal_front.Value;
-			Texture2D backSeal = ModAsset.SquamousShellSeal_back.Value;
+			Texture2D frontSeal = ModAsset.SquamousShellSeal_Front.Value;
+			Texture2D backSeal = ModAsset.SquamousShellSeal_Back.Value;
 			Texture2D lightEffect = ModAsset.SquamousShellSeal.Value;
 			Rectangle firstSealRect = new Rectangle(0, 0, 342, 152);
 			if (ReSpawnTimer <= 0)

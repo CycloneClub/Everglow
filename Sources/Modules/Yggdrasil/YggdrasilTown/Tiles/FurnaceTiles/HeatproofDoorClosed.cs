@@ -51,6 +51,6 @@ public class HeatproofDoorClosed : ModTile
 		Player player = Main.LocalPlayer;
 		player.noThrow = 2;
 		player.cursorItemIconEnabled = true;
-		player.cursorItemIconID = ModContent.ItemType<HeatproofDoor_item>();
+		player.cursorItemIconID = ModContent.ItemType<HeatproofDoor_Item>();
 	}
 }

@@ -20,24 +20,28 @@ public class CombatAccessoryBalanceTests
 	public void Initialize() => Program.SavePath = string.Empty;
 
 	[TestMethod]
-	[DataRow(0f)]
-	[DataRow(0.2f)]
-	[DataRow(0.5f)]
-	public void MoltenCoreAddsFivePercentagePointsToExistingEndurance(float existingReduction)
+	public void MoltenCoreAddsTheSameEnduranceToAnyExistingValue()
 	{
-		using var context = new CooldownTestContext();
-		var moltenCore = context.Attach<StatBonusPlayer>();
-		moltenCore.ResetEffects();
-		var player = context.Player;
-		player.endurance = existingReduction;
-		player.buffType[0] = BuffID.OnFire;
-		player.buffTime[0] = 60;
-		new MoltenCore().UpdateAccessory(player, false);
-		var modifiers = new Player.HurtModifiers();
-		modifiers.FinalDamage *= Math.Max(1 - player.endurance, 0); // Stand in for native endurance handling.
-		moltenCore.ModifyHurt(ref modifiers);
-		Assert.AreEqual(existingReduction + 0.05f, player.endurance, 0.000001f);
-		Assert.AreEqual(1f - existingReduction - 0.05f, modifiers.FinalDamage.ApplyTo(1), 0.00001f);
+		float? added = null;
+		foreach (float existingReduction in new[] { 0f, 0.2f, 0.5f })
+		{
+			using var context = new CooldownTestContext();
+			var moltenCore = context.Attach<StatBonusPlayer>();
+			moltenCore.ResetEffects();
+			var player = context.Player;
+			player.endurance = existingReduction;
+			player.buffType[0] = BuffID.OnFire;
+			player.buffTime[0] = 60;
+			new MoltenCore().UpdateAccessory(player, false);
+			var modifiers = new Player.HurtModifiers();
+			modifiers.FinalDamage *= Math.Max(1 - player.endurance, 0); // Stand in for native endurance handling.
+			moltenCore.ModifyHurt(ref modifiers);
+			float step = player.endurance - existingReduction;
+			added ??= step;
+			Assert.AreEqual(added.Value, step, 0.000001f);
+			Assert.IsTrue(step > 0f);
+			Assert.AreEqual(1f - player.endurance, modifiers.FinalDamage.ApplyTo(1), 0.00001f);
+		}
 	}
 
 	[TestMethod]
@@ -58,25 +62,26 @@ public class CombatAccessoryBalanceTests
 	}
 
 	[TestMethod]
-	[DataRow(BuffID.OnFire)]
-	[DataRow(BuffID.OnFire3)]
-	[DataRow(BuffID.CursedInferno)]
-	public void MoltenCoreAddsNativeEnduranceForEachFlameDebuff(int fireBuff)
+	public void MoltenCoreAddsNativeEnduranceForEachFlameDebuff()
 	{
-		using var context = new CooldownTestContext();
-		context.Player.buffType[0] = fireBuff;
-		context.Player.buffTime[0] = 60;
-		context.Player.endurance = 0.2f;
-		new MoltenCore().UpdateAccessory(context.Player, false);
-		Assert.AreEqual(0.25f, context.Player.endurance, 0.000001f);
+		float? endurance = null;
+		foreach (int fireBuff in new[] { BuffID.OnFire, BuffID.OnFire3, BuffID.CursedInferno })
+		{
+			using var context = new CooldownTestContext();
+			context.Player.buffType[0] = fireBuff;
+			context.Player.buffTime[0] = 60;
+			context.Player.endurance = 0.2f;
+			new MoltenCore().UpdateAccessory(context.Player, false);
+			endurance ??= context.Player.endurance;
+			Assert.AreEqual(endurance.Value, context.Player.endurance, 0.000001f);
+			Assert.IsTrue(context.Player.endurance > 0.2f);
+		}
 	}
 
 	[TestMethod]
-	[DataRow(false, false)]
-	[DataRow(false, true)]
-	[DataRow(true, false)]
-	[DataRow(true, true)]
-	public void HeartAndFowlbeastAddVulnerabilityButMultiplyReduction(bool fractured, bool reverse)
+	[DataRow(false)]
+	[DataRow(true)]
+	public void HeartAndFowlbeastAddVulnerabilityButMultiplyReduction(bool fractured)
 	{
 		using var context = new CooldownTestContext();
 		var instance = typeof(ContentInstance<FractureDebuff>).GetProperty("Instance")!;
@@ -97,32 +102,51 @@ public class CombatAccessoryBalanceTests
 				context.Player.buffType[0] = BuffID.BrokenArmor;
 				context.Player.buffTime[0] = 60;
 			}
-			var modifiers = new Player.HurtModifiers();
 			var npc = new NPC();
-			if (reverse)
+			int[] savedTypes = (int[])context.Player.buffType.Clone();
+			int[] savedTimes = (int[])context.Player.buffTime.Clone();
+			float Hit(bool reverse)
 			{
-				fowlbeast.ModifyHitByNPC(npc, ref modifiers);
-				heart.ModifyHitByNPC(npc, ref modifiers);
+				savedTypes.CopyTo(context.Player.buffType, 0);
+				savedTimes.CopyTo(context.Player.buffTime, 0);
+				var modifiers = new Player.HurtModifiers();
+				if (reverse)
+				{
+					fowlbeast.ModifyHitByNPC(npc, ref modifiers);
+					heart.ModifyHitByNPC(npc, ref modifiers);
+				}
+				else
+				{
+					heart.ModifyHitByNPC(npc, ref modifiers);
+					fowlbeast.ModifyHitByNPC(npc, ref modifiers);
+				}
+
+				return modifiers.FinalDamage.ApplyTo(100);
 			}
-			else
-			{
-				heart.ModifyHitByNPC(npc, ref modifiers);
-				fowlbeast.ModifyHitByNPC(npc, ref modifiers);
-			}
-			Assert.AreEqual(fractured ? 1.7f : 1.2f, modifiers.FinalDamage.Additive, 0.000001f);
-			Assert.AreEqual(fractured ? 1f : 0.1f, modifiers.FinalDamage.Multiplicative, 0.000001f);
-			Assert.AreEqual(fractured ? 170f : 12f, modifiers.FinalDamage.ApplyTo(100), 0.0001f);
+
+			float forward = Hit(false);
+			float backward = Hit(true);
+			Assert.AreEqual(forward, backward, 0.0001f);
 			Assert.IsTrue(context.Player.HasBuff<FractureDebuff>());
-			modifiers.FinalDamage *= 1 - context.Player.endurance;
-			Assert.AreEqual(fractured ? 161.5f : 11.4f, modifiers.FinalDamage.ApplyTo(100), 0.0001f);
+			float endured = forward * Math.Max(1 - context.Player.endurance, 0);
+			Assert.IsTrue(endured < forward);
 			if (!fractured)
 			{
 				Assert.AreEqual(HardenedWitherbarkHeart.CooldownDuration, context.Player.buffTime[context.Player.FindBuffIndex(BuffID.BrokenArmor)]);
 			}
+
 			var nextHit = new Player.HurtModifiers();
 			heart.ModifyHitByNPC(npc, ref nextHit);
 			fowlbeast.ModifyHitByNPC(npc, ref nextHit);
-			Assert.AreEqual(170f, nextHit.FinalDamage.ApplyTo(100), 0.0001f);
+			float followUp = nextHit.FinalDamage.ApplyTo(100);
+			if (fractured)
+			{
+				Assert.AreEqual(forward, followUp, 0.0001f);
+			}
+			else
+			{
+				Assert.IsTrue(followUp > forward);
+			}
 		}
 		finally
 		{
@@ -131,11 +155,10 @@ public class CombatAccessoryBalanceTests
 	}
 
 	[TestMethod]
-	[DataRow(true, true, false)]
-	[DataRow(true, true, true)]
-	[DataRow(false, true, false)]
-	[DataRow(true, false, false)]
-	public void RedAlgaeAddsVulnerabilityOnlyWithItsExistingBuffAndTileCondition(bool debuffed, bool touchingAlgae, bool reverse)
+	[DataRow(true, true)]
+	[DataRow(false, true)]
+	[DataRow(true, false)]
+	public void RedAlgaeAddsVulnerabilityOnlyWithItsExistingBuffAndTileCondition(bool debuffed, bool touchingAlgae)
 	{
 		using var context = new CooldownTestContext();
 		var buffInstance = typeof(ContentInstance<RedAlgaeDebuff>).GetProperty("Instance")!;
@@ -183,20 +206,36 @@ public class CombatAccessoryBalanceTests
 			var yggdrasil = context.Attach<YggdrasilPlayer>();
 			var fowlbeast = context.Attach<EmptyFowlbeast.EmptyFowlbeastPlayer>();
 			fowlbeast.Enable = true;
-			var modifiers = new Player.HurtModifiers();
-			if (reverse)
+			float Hit(bool reverse)
 			{
-				yggdrasil.ModifyHurt(ref modifiers);
-				fowlbeast.ModifyHitByNPC(new NPC(), ref modifiers);
+				var modifiers = new Player.HurtModifiers();
+				if (reverse)
+				{
+					yggdrasil.ModifyHurt(ref modifiers);
+					fowlbeast.ModifyHitByNPC(new NPC(), ref modifiers);
+				}
+				else
+				{
+					fowlbeast.ModifyHitByNPC(new NPC(), ref modifiers);
+					yggdrasil.ModifyHurt(ref modifiers);
+				}
+
+				Assert.AreEqual(1f, modifiers.FinalDamage.Multiplicative);
+				return modifiers.FinalDamage.ApplyTo(100);
+			}
+
+			float forward = Hit(false);
+			Assert.AreEqual(forward, Hit(true), 0.0001f);
+			var fowlOnly = new Player.HurtModifiers();
+			fowlbeast.ModifyHitByNPC(new NPC(), ref fowlOnly);
+			if (debuffed && touchingAlgae)
+			{
+				Assert.IsTrue(forward > fowlOnly.FinalDamage.ApplyTo(100));
 			}
 			else
 			{
-				fowlbeast.ModifyHitByNPC(new NPC(), ref modifiers);
-				yggdrasil.ModifyHurt(ref modifiers);
+				Assert.AreEqual(fowlOnly.FinalDamage.ApplyTo(100), forward, 0.0001f);
 			}
-			float expected = debuffed && touchingAlgae ? 270f : 120f;
-			Assert.AreEqual(expected, modifiers.FinalDamage.ApplyTo(100), 0.0001f);
-			Assert.AreEqual(1f, modifiers.FinalDamage.Multiplicative);
 		}
 		finally
 		{

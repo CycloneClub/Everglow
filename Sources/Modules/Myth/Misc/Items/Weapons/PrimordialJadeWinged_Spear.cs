@@ -156,7 +156,7 @@ public class PrimordialJadeWinged_Spear : ModItem
 				NewVelocity = Vector2.Normalize(Main.npc[MaxD].Center + Main.npc[MaxD].velocity * 2 - player.Center) * velocity.Length();
 			}
 
-			Projectile.NewProjectile(source, position, NewVelocity, ModContent.ProjectileType<Projectiles.Weapon.Melee.PrimordialJadeWinged_Spear.PrimordialJadeWinged_Spear_thrust>(), damage * 2, knockback, player.whoAmI, 0f, 0f);
+			Projectile.NewProjectile(source, position, NewVelocity, ModContent.ProjectileType<Projectiles.Weapon.Melee.PrimordialJadeWinged_Spear.PrimordialJadeWinged_Spear_Thrust>(), damage * 2, knockback, player.whoAmI, 0f, 0f);
 
 			player.velocity += NewVelocity * 4;
 			PrimordialJadeWinged_SpearOwner.MouseCooling = 30;

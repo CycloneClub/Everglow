@@ -104,7 +104,7 @@ public class RockSmogLine : Visual
 }
 
 [Pipeline(typeof(RockSmogLinePipeline))]
-public class RockSmogLine_front : Visual
+public class RockSmogLine_Front : Visual
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawProjectiles; // 这个绘制层在火焰之前，是原来的版本
 

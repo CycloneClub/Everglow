@@ -96,7 +96,7 @@ public class Fevens_EnchantingSmash : ModProjectile
 		}
 		EndPosition = checkPos;
 
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_10_black.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_10_Black.Value;
 		if (predictLineDark.Count > 3)
 		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, predictLineDark.ToArray(), 0, predictLineDark.Count - 2);
@@ -136,7 +136,7 @@ public class Fevens_EnchantingSmash : ModProjectile
 			predictDurationDark.Add(rangeCenter + duration, drawDark, new Vector3(i / 20f + timeValue, 0, 0));
 			predictDurationDark.Add(rangeCenter + durationInner, drawDark, new Vector3(i / 20f + timeValue, 1, 0));
 		}
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_10_black.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_10_Black.Value;
 		if (predictRangeDark.Count > 3)
 		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, predictRangeDark.ToArray(), 0, predictRangeDark.Count - 2);
@@ -148,7 +148,7 @@ public class Fevens_EnchantingSmash : ModProjectile
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, predictRange.ToArray(), 0, predictRange.Count - 2);
 		}
 
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_10_black.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_10_Black.Value;
 		if (predictDurationDark.Count > 3)
 		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, predictDurationDark.ToArray(), 0, predictDurationDark.Count - 2);
@@ -171,7 +171,7 @@ public class Fevens_EnchantingSmash : ModProjectile
 		var timeLeftValue = 1 - Projectile.timeLeft / 120f;
 		Vector2 drawPos = position;
 		Texture2D star = Commons.ModAsset.StarSlashGray.Value;
-		Texture2D starBlack = Commons.ModAsset.StarSlash_black.Value;
+		Texture2D starBlack = Commons.ModAsset.StarSlash_Black.Value;
 		var darkDraw = Color.Lerp(Color.White * 0.3f, Color.White * 0.8f, timeLeftValue);
 		var starColor = Color.Lerp(new Color(0.2f, 0.05f, 0.4f, 0), new Color(0.6f, 0.25f, 1f, 0), timeLeftValue);
 		var starColor2 = Color.Lerp(new Color(0.6f, 0.25f, 1f, 0), new Color(1f, 0.85f, 1f, 0), timeLeftValue);

@@ -189,7 +189,7 @@ public class JellyBallLifeAbsorb : ModProjectile
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 		if (powerFlow.Count > 3)
 		{
-			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_9_black.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_9_Black.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, powerFlow_dark.ToArray(), 0, powerFlow_dark.Count - 2);
 
 			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_9.Value;
@@ -213,7 +213,7 @@ public class JellyBallLifeAbsorb : ModProjectile
 			}
 			if (powerCircleLarge.Count > 3)
 			{
-				Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_thick.Value;
+				Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_Thick.Value;
 				Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, powerCircleLarge.ToArray(), 0, powerCircleLarge.Count - 2);
 			}
 		}

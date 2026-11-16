@@ -39,7 +39,7 @@ public class UnionCommandBlock : ModTile
 	{
 		if (SubworldSystem.Current is YggdrasilWorld)
 		{
-			YggdrasilTownCentralSystem.CheckNPC(ModContent.NPCType<Guard_of_YggdrasilTown>());
+			YggdrasilTownCentralSystem.CheckNPC(ModContent.NPCType<Guard_Of_YggdrasilTown>());
 		}
 	}
 }

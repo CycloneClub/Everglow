@@ -119,9 +119,9 @@ public class MagicalBoomerangSubProj : ModProjectile
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D boomerang = ModAsset.MagicalBoomerangSubProj.Value;
-		Texture2D boomerangGlow = ModAsset.MagicalBoomerangSubProj_glow.Value;
-		Texture2D shape = ModAsset.MagicalBoomerangSubProj_shape.Value;
-		Texture2D bloom = ModAsset.MagicalBoomerangSubProj_bloom.Value;
+		Texture2D boomerangGlow = ModAsset.MagicalBoomerangSubProj_Glow.Value;
+		Texture2D shape = ModAsset.MagicalBoomerangSubProj_Shape.Value;
+		Texture2D bloom = ModAsset.MagicalBoomerangSubProj_Bloom.Value;
 		Main.EntitySpriteDraw(boomerang, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, boomerang.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
 		Main.EntitySpriteDraw(boomerangGlow, Projectile.Center - Main.screenPosition, null, new Color(0.3f, 0.7f, 1f, 0), Projectile.rotation, boomerangGlow.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
 		float value = (30 - Timer) / 30f;

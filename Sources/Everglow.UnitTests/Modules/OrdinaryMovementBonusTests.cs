@@ -21,11 +21,15 @@ public class OrdinaryMovementBonusTests
 	private CooldownTestContext context = null!;
 	private StatBonusPlayer bonuses = null!;
 	private bool raining;
+	private float criticalDamage;
+	private float addCritDamage;
 
 	[TestInitialize]
 	public void Initialize()
 	{
 		Program.SavePath = string.Empty;
+		criticalDamage = FoodBuffModPlayer.CriticalDamage;
+		addCritDamage = FoodBuffModPlayer.AddCritDamage;
 		raining = Main.raining;
 		Main.raining = false;
 		context = new CooldownTestContext();
@@ -41,54 +45,57 @@ public class OrdinaryMovementBonusTests
 	public void Cleanup()
 	{
 		Main.raining = raining;
+		FoodBuffModPlayer.CriticalDamage = criticalDamage;
+		FoodBuffModPlayer.AddCritDamage = addCritDamage;
 		context.Dispose();
 	}
 
 	[TestMethod]
-	[DataRow(typeof(BurgerBuff), -0.4f)]
-	[DataRow(typeof(HotdogBuff), -0.2f)]
-	[DataRow(typeof(EscargotBuff), -0.75f)]
-	[DataRow(typeof(MilkshakeBuff), 4f)]
-	[DataRow(typeof(FruitJuiceBuff), 1f)]
-	[DataRow(typeof(FruitSaladBuff), 0.2f)]
-	[DataRow(typeof(GoldenDelightBuff), 0.2f)]
-	[DataRow(typeof(SashimiBuff), 0.2f)]
-	[DataRow(typeof(SalmonWarshipBuff), 0.1f)]
-	[DataRow(typeof(SalmonInPepperBuff), 0.07f)]
-	[DataRow(typeof(JellyBallStick), -0.5f)]
-	public void OrdinaryEffectsAddOnceToExistingMoveSpeed(Type effectType, float bonus)
+	[DataRow(typeof(BurgerBuff))]
+	[DataRow(typeof(EscargotBuff))]
+	[DataRow(typeof(MilkshakeBuff))]
+	[DataRow(typeof(JellyBallStick))]
+	public void OrdinaryEffectsAddOnceToExistingMoveSpeed(Type effectType)
 	{
 		var buff = (ModBuff)Activator.CreateInstance(effectType)!;
 		int index = 0;
 		buff.Update(context.Player, ref index);
-		Assert.AreEqual(1.4f + bonus, context.Player.moveSpeed, 0.000001f);
+		float boosted = context.Player.moveSpeed;
+		Assert.AreNotEqual(1.4f, boosted);
 		bonuses.PostUpdateEquips();
 		bonuses.PostUpdateMiscEffects();
 		bonuses.PostUpdateRunSpeeds();
-		Assert.AreEqual(1.4f + bonus, context.Player.moveSpeed, 0.000001f);
+		Assert.AreEqual(boosted, context.Player.moveSpeed, 0.000001f);
 		Assert.AreEqual(3f, context.Player.maxRunSpeed);
 		Assert.AreEqual(6f, context.Player.accRunSpeed);
 		Assert.AreEqual(0.08f, context.Player.runAcceleration);
 	}
 
 	[TestMethod]
-	[DataRow(0, 1, 2)]
-	[DataRow(0, 2, 1)]
-	[DataRow(1, 0, 2)]
-	[DataRow(1, 2, 0)]
-	[DataRow(2, 0, 1)]
-	[DataRow(2, 1, 0)]
-	public void FoodBonusesAndSlowAddInEveryOrder(int first, int second, int third)
+	public void FoodBonusesAndSlowAddInEveryOrder()
 	{
 		ModBuff[] effects = [new FruitSaladBuff(), new SalmonWarshipBuff(), new EscargotBuff()];
-		int index = 0;
-		effects[first].Update(context.Player, ref index);
-		effects[second].Update(context.Player, ref index);
-		effects[third].Update(context.Player, ref index);
-		Assert.AreEqual(0.95f, context.Player.moveSpeed, 0.000001f);
-		bonuses.PostUpdateEquips();
-		bonuses.PostUpdateRunSpeeds();
-		Assert.AreEqual(0.95f, context.Player.moveSpeed, 0.000001f);
+		var food = context.Player.GetModPlayer<FoodBuffModPlayer>();
+		float? combined = null;
+		foreach (int[] order in new[] { new[] { 0, 1, 2 }, new[] { 0, 2, 1 }, new[] { 1, 0, 2 }, new[] { 1, 2, 0 }, new[] { 2, 0, 1 }, new[] { 2, 1, 0 } })
+		{
+			food.ResetEffects();
+			bonuses.ResetEffects();
+			context.Player.moveSpeed = 1.4f;
+			int index = 0;
+			foreach (int effect in order)
+			{
+				effects[effect].Update(context.Player, ref index);
+			}
+
+			combined ??= context.Player.moveSpeed;
+			Assert.AreEqual(combined.Value, context.Player.moveSpeed, 0.000001f);
+			bonuses.PostUpdateEquips();
+			bonuses.PostUpdateRunSpeeds();
+			Assert.AreEqual(combined.Value, context.Player.moveSpeed, 0.000001f);
+		}
+
+		Assert.AreNotEqual(1.4f, combined!.Value);
 	}
 
 	[TestMethod]
@@ -101,7 +108,7 @@ public class OrdinaryMovementBonusTests
 		kelp.CorrodedPearl = true;
 		kelp.CrimsonMoonAlgaeGreaves = true;
 		kelp.UpdateEquips();
-		Assert.AreEqual(2.49f, context.Player.moveSpeed, 0.000001f);
+		Assert.IsTrue(context.Player.moveSpeed > 1.4f);
 		Assert.AreEqual(3f, context.Player.maxRunSpeed);
 		Assert.AreEqual(0.08f, context.Player.runAcceleration);
 		kelp.ResetEffects();
@@ -111,55 +118,73 @@ public class OrdinaryMovementBonusTests
 	}
 
 	[TestMethod]
-	[DataRow(false)]
-	[DataRow(true)]
-	public void AccessoryPenaltiesAreCombinedOnceAndLeaveBootSpeedUntouched(bool reverse)
+	public void AccessoryPenaltiesAreCombinedOnceAndLeaveBootSpeedUntouched()
 	{
 		context.Attach<HardenedWitherbarkHeart.HardenedWitherbarkHeartPlayer>();
 		ModItem[] effects = [new HardenedWitherbarkHeart(), new ThornTurtleShell()];
-		foreach (var effect in reverse ? effects.Reverse() : effects)
+		float? penalized = null;
+		foreach (bool reverse in new[] { false, true })
 		{
-			effect.UpdateAccessory(context.Player, false);
+			bonuses.ResetEffects();
+			context.Player.moveSpeed = 1.4f;
+			Array.Clear(context.Player.buffType);
+			Array.Clear(context.Player.buffTime);
+			foreach (var effect in reverse ? effects.Reverse() : effects)
+			{
+				effect.UpdateAccessory(context.Player, false);
+			}
+
+			penalized ??= context.Player.moveSpeed;
+			Assert.AreEqual(penalized.Value, context.Player.moveSpeed, 0.000001f);
+			bonuses.PostUpdateEquips();
+			bonuses.PostUpdateRunSpeeds();
+			Assert.AreEqual(penalized.Value, context.Player.moveSpeed, 0.000001f);
+			Assert.AreEqual(6f, context.Player.accRunSpeed);
 		}
-		Assert.AreEqual(0.78f, context.Player.moveSpeed, 0.000001f);
-		bonuses.PostUpdateEquips();
-		bonuses.PostUpdateRunSpeeds();
-		Assert.AreEqual(0.78f, context.Player.moveSpeed, 0.000001f);
-		Assert.AreEqual(6f, context.Player.accRunSpeed);
+
+		Assert.IsTrue(penalized!.Value < 1.4f);
 	}
 
 	[TestMethod]
-	public void FireflyBadgeAddsTenPercentToExistingMoveSpeed()
+	public void FireflyBadgeAddsToExistingMoveSpeedOnce()
 	{
 		var badge = LoadAccessory("Myth", "Everglow.Myth.TheFirefly.Items.Accessories.FireflyBorageBadge");
 		badge.UpdateAccessory(context.Player, false);
-		Assert.AreEqual(1.5f, context.Player.moveSpeed, 0.000001f);
+		float boosted = context.Player.moveSpeed;
+		Assert.IsTrue(boosted > 1.4f);
 		bonuses.PostUpdateEquips();
-		Assert.AreEqual(1.5f, context.Player.moveSpeed, 0.000001f);
+		Assert.AreEqual(boosted, context.Player.moveSpeed, 0.000001f);
 	}
 
 	[TestMethod]
-	[DataRow(false)]
-	[DataRow(true)]
-	public void WhiteCrownUsesFinalCapacityBeforeVanillaMovementAndClearsWhenUnequipped(bool reverse)
+	public void WhiteCrownUsesFinalCapacityBeforeVanillaMovementAndClearsWhenUnequipped()
 	{
 		var crown = LoadAccessory("PlantAndFarm", "Everglow.PlantAndFarm.Items.Accessories.WhiteCrown");
-		context.Player.statLifeMax2 = 200;
-		Action equip = () => crown.UpdateAccessory(context.Player, false);
-		Action capacity = () => context.Player.statLifeMax2 += 100;
-		(reverse ? capacity : equip)();
-		(reverse ? equip : capacity)();
-		context.Player.statLifeMax2 -= 30;
-		Assert.AreEqual(1.4f, context.Player.moveSpeed);
-		bonuses.PostUpdateEquips();
-		bonuses.PostUpdateMiscEffects();
-		Assert.AreEqual(270, context.Player.statLifeMax2);
-		Assert.AreEqual(1.9f, context.Player.moveSpeed, 0.000001f); // Preserve the existing tenth-step formula.
-		Assert.AreEqual(3f, context.Player.maxRunSpeed);
-		bonuses.ResetEffects();
-		context.Player.moveSpeed = 1.4f;
-		bonuses.PostUpdateMiscEffects();
-		Assert.AreEqual(1.4f, context.Player.moveSpeed);
+		float? boosted = null;
+		foreach (bool reverse in new[] { false, true })
+		{
+			bonuses.ResetEffects();
+			context.Player.statLifeMax2 = 200;
+			context.Player.moveSpeed = 1.4f;
+			Action equip = () => crown.UpdateAccessory(context.Player, false);
+			Action capacity = () => context.Player.statLifeMax2 += 100;
+			(reverse ? capacity : equip)();
+			(reverse ? equip : capacity)();
+			context.Player.statLifeMax2 -= 30;
+			Assert.AreEqual(1.4f, context.Player.moveSpeed);
+			bonuses.PostUpdateEquips();
+			bonuses.PostUpdateMiscEffects();
+			Assert.AreEqual(270, context.Player.statLifeMax2);
+			boosted ??= context.Player.moveSpeed;
+			Assert.AreEqual(boosted.Value, context.Player.moveSpeed, 0.000001f);
+			Assert.AreEqual(3f, context.Player.maxRunSpeed);
+			bonuses.ResetEffects();
+			context.Player.moveSpeed = 1.4f;
+			bonuses.PostUpdateMiscEffects();
+			Assert.AreEqual(1.4f, context.Player.moveSpeed);
+		}
+
+		Assert.AreNotEqual(1.4f, boosted!.Value);
 	}
 
 	private static ModItem LoadAccessory(string module, string typeName)

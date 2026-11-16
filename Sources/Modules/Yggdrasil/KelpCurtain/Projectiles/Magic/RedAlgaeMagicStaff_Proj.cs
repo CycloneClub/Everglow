@@ -101,7 +101,7 @@ public class RedAlgaeMagicStaff_Proj : ModProjectile, IRedAlgaeToxinProjectile
 
 	public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 	{
-		RedAlgae_FriendlyDebuff_glocalNPC.HandleProjectileHit(target, Projectile);
+		RedAlgae_FriendlyDebuff_GlocalNPC.HandleProjectileHit(target, Projectile);
 	}
 
 	public override bool PreDraw(ref Color lightColor)

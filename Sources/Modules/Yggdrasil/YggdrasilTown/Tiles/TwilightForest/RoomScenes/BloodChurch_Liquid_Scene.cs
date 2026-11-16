@@ -126,7 +126,7 @@ public class BloodChurch_Liquid_Scene : TileVFX
 		}
 
 		// Fountain blood liquid
-		Texture2D liquidTex = ModAsset.BloodChurch_Scene_FakeLiquid_dark.Value;
+		Texture2D liquidTex = ModAsset.BloodChurch_Scene_FakeLiquid_Dark.Value;
 		Texture2D liquidTex_highlight = ModAsset.BloodChurch_Scene_FakeLiquid.Value;
 		float timeValue = -(float)Main.time / 240f;
 		List<Vertex2D> bars = liquidBars;

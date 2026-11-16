@@ -9,7 +9,7 @@ public class CurseFlame_HighQualityPipeline : Pipeline
 {
 	public override void Load()
 	{
-		effect = ModAsset.CurseFlame_highQuality;
+		effect = ModAsset.CurseFlame_HighQuality;
 	}
 
 	public override void BeginRender()

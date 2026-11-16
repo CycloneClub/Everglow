@@ -118,7 +118,7 @@ public class Wither_Activated_Dog_Summon : ModProjectile
 		float maxRange = 40f;
 		for (int k = 0; k < 30; k++)
 		{
-			var leaf = new ActivatedDogStaff_Leaf_physical
+			var leaf = new ActivatedDogStaff_Leaf_Physical
 			{
 				Velocity = new Vector2(0, Main.rand.NextFloat(7, 12)).RotatedByRandom(Math.PI * 2),
 				Active = true,
@@ -132,7 +132,7 @@ public class Wither_Activated_Dog_Summon : ModProjectile
 		}
 		for (int k = 0; k < 10; k++)
 		{
-			var branch = new ActivatedDogStaff_Branch_physical
+			var branch = new ActivatedDogStaff_Branch_Physical
 			{
 				Velocity = new Vector2(0, Main.rand.NextFloat(7, 12)).RotatedByRandom(Math.PI * 2),
 				Active = true,
@@ -147,7 +147,7 @@ public class Wither_Activated_Dog_Summon : ModProjectile
 		}
 		for (int k = 0; k < 10; k++)
 		{
-			var branch = new ActivatedDogStaff_green_Dust_Trail
+			var branch = new ActivatedDogStaff_Green_Dust_Trail
 			{
 				Velocity = new Vector2(0, Main.rand.NextFloat(7, 12)).RotatedByRandom(Math.PI * 2),
 				Active = true,
@@ -161,7 +161,7 @@ public class Wither_Activated_Dog_Summon : ModProjectile
 		}
 		for (int k = 0; k < 30; k++)
 		{
-			var branch = new ActivatedDogStaff_green_Dust_Trail
+			var branch = new ActivatedDogStaff_Green_Dust_Trail
 			{
 				Velocity = new Vector2(0, Main.rand.NextFloat(4, 8)).RotatedByRandom(Math.PI * 2),
 				Active = true,
@@ -218,7 +218,7 @@ public class Wither_Activated_Dog_Summon : ModProjectile
 			SpriteBatchState sBS = GraphicsUtils.GetState(Main.spriteBatch).Value;
 			Main.spriteBatch.End();
 			Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, Main.GameViewMatrix.TransformationMatrix);
-			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_9_black.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_9_Black.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars_Dark.ToArray(), 0, bars_Dark.Count - 2);
 
 			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_9.Value;
@@ -234,7 +234,7 @@ public class Wither_Activated_Dog_Summon : ModProjectile
 		}
 
 		Texture2D star = Commons.ModAsset.StarSlash.Value;
-		Texture2D star_black = Commons.ModAsset.StarSlash_black.Value;
+		Texture2D star_black = Commons.ModAsset.StarSlash_Black.Value;
 		float scaleValue = Timer / 60f;
 		scaleValue = MathF.Pow(scaleValue, 0.5f);
 		if (Projectile.timeLeft <= 5)

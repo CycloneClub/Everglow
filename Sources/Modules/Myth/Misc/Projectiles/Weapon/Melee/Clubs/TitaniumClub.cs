@@ -6,7 +6,7 @@ public class TitaniumClub : ClubProj
 	{
 		EnableReflection = true;
 		ReflectionStrength = 5f;
-		ReflectionTexture = ModAsset.TitaniumClub_light_Mod;
+		ReflectionTexture = ModAsset.TitaniumClub_Light_Mod;
 		Beta = 0.0062f;
 		MaxOmega = 0.468f;
 	}

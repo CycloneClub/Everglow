@@ -53,7 +53,7 @@ namespace Everglow.EternalResolve.Projectiles
 				effect.Parameters["uTransform"].SetValue(model * projection);
 				effect.Parameters["uProcession"].SetValue(0.5f);
 				effect.CurrentTechnique.Passes[0].Apply();
-				Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_black.Value;
+				Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_Black.Value;
 				Main.graphics.graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 				Main.spriteBatch.End();
 				Main.spriteBatch.Begin(sBS);

@@ -28,7 +28,7 @@ public class DeadBeetleEgg : ModItem
 		Item.value = 11700;
 		Item.rare = ItemRarityID.Green;
 
-		Item.shoot = ModContent.ProjectileType<DeadBeetleEgg_egg>();
+		Item.shoot = ModContent.ProjectileType<DeadBeetleEgg_Egg>();
 		Item.shootSpeed = 0;
 	}
 

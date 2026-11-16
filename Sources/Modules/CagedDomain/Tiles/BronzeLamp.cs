@@ -12,7 +12,7 @@ namespace Everglow.CagedDomain.Tiles
 		public override void SetStaticDefaults()
 		{
 			CustomItemType = ModContent.ItemType<BronzeLamp_Item>();
-			DustType = ModContent.DustType<BronzeLamp_dust>();
+			DustType = ModContent.DustType<BronzeLamp_Dust>();
 			Main.tileFrameImportant[Type] = true;
 			Main.tileLighted[Type] = true;
 			Main.tileNoAttach[Type] = true;

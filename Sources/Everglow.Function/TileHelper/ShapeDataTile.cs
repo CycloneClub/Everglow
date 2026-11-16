@@ -49,11 +49,11 @@ public abstract class ShapeDataTile : ModTile
 	/// <summary>
 	/// 必填项,实际有物块的轮廓
 	/// </summary>
-	public virtual string ShapePath => Texture + "_shape.bmp";
+	public virtual string ShapePath => Texture + "_Shape.bmp";
 
 	public override void Load()
 	{
-		var imageData = ImageReader.Read<SixLabors.ImageSharp.PixelFormats.Rgb24>(ShapePath);
+		var imageData = ImageReader.Read(ShapePath);
 		imageData.ProcessPixelRows(accessor =>
 		{
 			PixelHasTile = new int[accessor.Width, accessor.Height];

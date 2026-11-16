@@ -64,7 +64,7 @@ public class WaterDeliveryHole_V : ModTile, ISceneTile
 				Rotation = (dir - 1) * MathHelper.PiOver2,
 			};
 			Ins.VFXManager.Add(vfx);
-			var warp = new WaterDeliveryHole_VFX_warp
+			var warp = new WaterDeliveryHole_VFX_Warp
 			{
 				Active = true,
 				Visible = true,
@@ -75,7 +75,7 @@ public class WaterDeliveryHole_V : ModTile, ISceneTile
 				Rotation = (dir - 1) * MathHelper.PiOver2,
 			};
 			Ins.VFXManager.Add(warp);
-			var foreground = new WaterDeliveryHole_foreground
+			var foreground = new WaterDeliveryHole_Foreground
 			{
 				Active = true,
 				Visible = true,

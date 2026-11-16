@@ -89,7 +89,7 @@ namespace Everglow.EternalResolve.Projectiles
 				effect.Parameters["uTransform"].SetValue(model * projection);
 				effect.Parameters["uProcession"].SetValue(0.5f);
 				effect.CurrentTechnique.Passes[0].Apply();
-				Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_black_thick.Value;
+				Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_Black_Thick.Value;
 				Main.graphics.graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 				Main.spriteBatch.End();
 				Main.spriteBatch.Begin(sBS);
@@ -186,7 +186,7 @@ namespace Everglow.EternalResolve.Projectiles
 				effect.Parameters["uTransform"].SetValue(model * projection);
 				effect.Parameters["uProcession"].SetValue(0.21f);
 				effect.CurrentTechnique.Passes[0].Apply();
-				Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_7_black.Value;
+				Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_7_Black.Value;
 				Main.graphics.graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 				Main.graphics.graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 				Main.graphics.graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
@@ -220,7 +220,7 @@ namespace Everglow.EternalResolve.Projectiles
 				var p0 = Projectile.NewProjectileDirect(
 					Projectile.GetSource_OnHit(target),
 					target.Center - new Vector2(0, Main.rand.NextFloat(115, 180) * Main.player[Projectile.owner].gravDir).RotatedBy(Main.rand.NextFloat(-0.4f, 0.4f)),
-					Vector2.zeroVector, ModContent.ProjectileType<EternalNight_shadow>(),
+					Vector2.zeroVector, ModContent.ProjectileType<EternalNight_Shadow>(),
 					Projectile.damage / 7, Projectile.knockBack * 0.6f, Projectile.owner, target.whoAmI);
 				p0.timeLeft = 240 + k * 5;
 			}
@@ -235,7 +235,7 @@ namespace Everglow.EternalResolve.Projectiles
 				var p0 = Projectile.NewProjectileDirect(
 					Projectile.GetSource_FromAI(),
 					Projectile.Center + Projectile.velocity * k * 25f - new Vector2(0, Main.rand.NextFloat(80, 180) * Main.player[Projectile.owner].gravDir).RotatedBy(Main.rand.NextFloat(-0.7f, 0.7f)),
-					Vector2.zeroVector, ModContent.ProjectileType<EternalNight_shadow>(),
+					Vector2.zeroVector, ModContent.ProjectileType<EternalNight_Shadow>(),
 					Projectile.damage / 7, Projectile.knockBack * 0.6f, Projectile.owner, -1);
 				p0.timeLeft = 240 + k * 4;
 				p0.rotation = MathF.PI * 0.75f + Main.rand.NextFloat(-1f, 1f);

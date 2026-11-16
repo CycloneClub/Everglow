@@ -14,7 +14,7 @@ public class ShadewoodClub_Item : ClubItem
 		Item.useAnimation = 12;
 		SmashDamageMultiplier = 11f / 12f;
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.ShadewoodClub>();
-		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.ShadewoodClub_smash>();
+		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.ShadewoodClub_Smash>();
 	}
 
 	public override void AddRecipes()

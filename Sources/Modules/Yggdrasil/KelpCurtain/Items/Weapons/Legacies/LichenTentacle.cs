@@ -9,7 +9,7 @@ public class LichenTentacle : WhipItem
 	{
 		Item.width = 40;
 		Item.height = 32;
-		Item.shoot = ModContent.ProjectileType<LichenTentacle_proj>();
+		Item.shoot = ModContent.ProjectileType<LichenTentacle_Proj>();
 		Item.shootSpeed = 5.04f;
 		Item.value = 7000;
 		Item.rare = ItemRarityID.White;

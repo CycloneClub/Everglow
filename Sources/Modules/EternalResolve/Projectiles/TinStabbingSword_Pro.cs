@@ -35,8 +35,8 @@ namespace Everglow.EternalResolve.Projectiles
 				bottomPos1 = bottomPos1 * 0.9f;
 				bottomPos2 = bottomPos2 * 0.9f;
 			}
-			DrawFlags(lightColor, -9, 10, ModAsset.LeadStabbingSword_flag.Value, bottomPos1, bottomPos2);
-			Texture2D itemTexture = ModAsset.LeadStabbingSword_withouFlag.Value;
+			DrawFlags(lightColor, -9, 10, ModAsset.LeadStabbingSword_Flag.Value, bottomPos1, bottomPos2);
+			Texture2D itemTexture = ModAsset.LeadStabbingSword_WithouFlag.Value;
 			Main.spriteBatch.Draw(itemTexture, ItemDraw.Postion - Main.screenPosition, null, lightColor, ItemDraw.Rotation, itemTexture.Size() / 2f, ItemDraw.Size, ItemDraw.SpriteEffect, 0f);
 		}
 	}

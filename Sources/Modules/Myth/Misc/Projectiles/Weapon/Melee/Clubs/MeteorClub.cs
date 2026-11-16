@@ -31,7 +31,7 @@ public class MeteorClub : ClubProj
 			effects = SpriteEffects.FlipHorizontally;
 		}
 
-		Texture2D texture = ModAsset.MeteorClub_glow.Value;
+		Texture2D texture = ModAsset.MeteorClub_Glow.Value;
 		Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, texture.Size() / 2f, Projectile.scale, effects, 0f);
 		for (int i = 0; i < 5; i++)
 		{
@@ -56,7 +56,7 @@ public class MeteorClub : ClubProj
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, model);
 
-		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.MeteorClub_trail.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.MeteorClub_Trail.Value;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(sBS);

@@ -64,9 +64,9 @@ public class DarkGlimmeringRods : ModNPC
 	{
 		for (int f = 0; f < 2; f++)
 		{
-			Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(Main.rand.Next(NPC.width), Main.rand.Next(NPC.height)), NPC.velocity + new Vector2(0, Main.rand.NextFloat(0f, 3f)).RotatedByRandom(MathHelper.TwoPi), ModContent.Find<ModGore>("Everglow/DarkGlimmeringRods_gore0").Type, NPC.scale);
-			Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(Main.rand.Next(NPC.width), Main.rand.Next(NPC.height)), NPC.velocity + new Vector2(0, Main.rand.NextFloat(0f, 3f)).RotatedByRandom(MathHelper.TwoPi), ModContent.Find<ModGore>("Everglow/DarkGlimmeringRods_gore1").Type, NPC.scale);
-			Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(Main.rand.Next(NPC.width), Main.rand.Next(NPC.height)), NPC.velocity + new Vector2(0, Main.rand.NextFloat(0f, 3f)).RotatedByRandom(MathHelper.TwoPi), ModContent.Find<ModGore>("Everglow/DarkGlimmeringRods_gore2").Type, NPC.scale);
+			Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(Main.rand.Next(NPC.width), Main.rand.Next(NPC.height)), NPC.velocity + new Vector2(0, Main.rand.NextFloat(0f, 3f)).RotatedByRandom(MathHelper.TwoPi), ModContent.Find<ModGore>("Everglow/DarkGlimmeringRods_Gore0").Type, NPC.scale);
+			Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(Main.rand.Next(NPC.width), Main.rand.Next(NPC.height)), NPC.velocity + new Vector2(0, Main.rand.NextFloat(0f, 3f)).RotatedByRandom(MathHelper.TwoPi), ModContent.Find<ModGore>("Everglow/DarkGlimmeringRods_Gore1").Type, NPC.scale);
+			Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(Main.rand.Next(NPC.width), Main.rand.Next(NPC.height)), NPC.velocity + new Vector2(0, Main.rand.NextFloat(0f, 3f)).RotatedByRandom(MathHelper.TwoPi), ModContent.Find<ModGore>("Everglow/DarkGlimmeringRods_Gore2").Type, NPC.scale);
 		}
 	}
 

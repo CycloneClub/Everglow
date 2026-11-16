@@ -46,4 +46,18 @@ public class UIRewardsStripeTest
 
 		Assert.IsInstanceOfType<ItemQuestIcon>(stripeItem.Icon);
 	}
+
+	[TestMethod]
+	public void SetRewards_HidesStripeWhenRewardsAreMissing()
+	{
+		var stripe = new UIRewardsStripe();
+
+		stripe.SetRewards(null);
+		Assert.IsFalse(stripe.IsVisible);
+		Assert.IsEmpty(stripe.ChildrenElements);
+
+		stripe.SetRewards([]);
+		Assert.IsFalse(stripe.IsVisible);
+		Assert.IsEmpty(stripe.ChildrenElements);
+	}
 }

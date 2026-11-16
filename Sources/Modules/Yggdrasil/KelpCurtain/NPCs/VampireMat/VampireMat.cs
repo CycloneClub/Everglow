@@ -104,7 +104,7 @@ public class VampireMat : ModNPC
 			return;
 		}
 		Projectile.NewProjectile(NPC.GetSource_FromAI(), position, velocity, type, damage, knockback,
-			Owner: Main.maxPlayers, ai0: NPC.target, ai1: NPC.whoAmI, ai2: initialRotation);
+			Owner: -1, ai0: NPC.target, ai1: NPC.whoAmI, ai2: initialRotation);
 	}
 
 	public override void OnSpawn(IEntitySource source)

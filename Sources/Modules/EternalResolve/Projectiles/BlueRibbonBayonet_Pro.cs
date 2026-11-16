@@ -36,8 +36,8 @@ namespace Everglow.EternalResolve.Projectiles
 				bottomPos2 = bottomPos2 * 0.9f;
 			}
 			float scale = MathF.Sin((float)Main.timeForVisualEffects);
-			DrawFlags(lightColor, -2, -5, ModAsset.BlueRibbonBayonet_flag.Value, bottomPos1 * scale + 0.5f, bottomPos2 * scale + 0.5f);
-			Texture2D itemTexture = ModAsset.BlueRibbonBayonet_withoutFlag.Value;
+			DrawFlags(lightColor, -2, -5, ModAsset.BlueRibbonBayonet_Flag.Value, bottomPos1 * scale + 0.5f, bottomPos2 * scale + 0.5f);
+			Texture2D itemTexture = ModAsset.BlueRibbonBayonet_WithoutFlag.Value;
 			Main.spriteBatch.Draw(itemTexture, ItemDraw.Postion - Main.screenPosition, null, lightColor, ItemDraw.Rotation, itemTexture.Size() / 2f, ItemDraw.Size, ItemDraw.SpriteEffect, 0f);
 		}
 	}

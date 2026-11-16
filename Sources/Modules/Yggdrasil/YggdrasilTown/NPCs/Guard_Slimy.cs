@@ -42,11 +42,11 @@ public class Guard_Slimy : ModNPC
 		{
 			foreach (NPC npc in Main.npc)
 			{
-				if (npc.active && npc.type == ModContent.NPCType<Guard_of_YggdrasilTown>())
+				if (npc.active && npc.type == ModContent.NPCType<Guard_Of_YggdrasilTown>())
 				{
 					if ((npc.Center - NPC.Center).Length() < 2000)
 					{
-						Guard_of_YggdrasilTown goYT = npc.ModNPC as Guard_of_YggdrasilTown;
+						Guard_Of_YggdrasilTown goYT = npc.ModNPC as Guard_Of_YggdrasilTown;
 						if (goYT != null)
 						{
 							if (goYT.MySlimyWhoAmI == NPC.whoAmI)
@@ -74,7 +74,7 @@ public class Guard_Slimy : ModNPC
 			return;
 		}
 		NPC owner = Main.npc[MyYggdrasilTownGuardWhoAmI];
-		Guard_of_YggdrasilTown goYT = owner.ModNPC as Guard_of_YggdrasilTown;
+		Guard_Of_YggdrasilTown goYT = owner.ModNPC as Guard_Of_YggdrasilTown;
 		if (!owner.active || goYT == null || goYT.MySlimyWhoAmI != NPC.whoAmI)
 		{
 			NPC.active = false;

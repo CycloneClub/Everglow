@@ -246,7 +246,7 @@ public class Georg_Hammer_JumpHit : ModProjectile
 		SpriteBatchState sBS = Main.spriteBatch.GetState().Value;
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_1_black.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_1_Black.Value;
 		if (barsDark.Count > 3)
 		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, barsDark.ToArray(), 0, barsDark.Count - 2);

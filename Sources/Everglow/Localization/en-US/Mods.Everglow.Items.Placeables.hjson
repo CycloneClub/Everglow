@@ -213,7 +213,7 @@ BlueDungeonElevator_Item: {
 	Tooltip: ""
 }
 
-BlueGlassbulbBand_item: {
+BlueGlassbulbBand_Item: {
 	DisplayName: Blue Glassbulb Band_item
 	Tooltip: ""
 }
@@ -253,7 +253,7 @@ BronzeLamp_Item: {
 	Tooltip: ""
 }
 
-CableCarJoin_item: {
+CableCarJoin_Item: {
 	DisplayName: Cable Car Join_item
 	Tooltip: ""
 }
@@ -283,7 +283,7 @@ Casserole_Item: {
 	Tooltip: ""
 }
 
-ChainCable_item: {
+ChainCable_Item: {
 	DisplayName: Chain Cable_item
 	Tooltip: ""
 }
@@ -973,7 +973,7 @@ GreenDungeonElevator_Item: {
 	Tooltip: ""
 }
 
-GreenGlassbulbBand_item: {
+GreenGlassbulbBand_Item: {
 	DisplayName: Green Glassbulb Band_item
 	Tooltip: ""
 }
@@ -1003,72 +1003,72 @@ HangingSkyLantern: {
 	Tooltip: ""
 }
 
-HeatproofBathtub_item: {
+HeatproofBathtub_Item: {
 	DisplayName: Heatproof Bathtub
 	Tooltip: ""
 }
 
-HeatproofBed_item: {
+HeatproofBed_Item: {
 	DisplayName: Heatproof Bed
 	Tooltip: ""
 }
 
-HeatproofBookcase_item: {
+HeatproofBookcase_Item: {
 	DisplayName: Heatproof Bookcase
 	Tooltip: ""
 }
 
-HeatproofCandelabra_item: {
+HeatproofCandelabra_Item: {
 	DisplayName: Heatproof Candelabra
 	Tooltip: ""
 }
 
-HeatproofCandle_item: {
+HeatproofCandle_Item: {
 	DisplayName: Heatproof Candle
 	Tooltip: ""
 }
 
-HeatproofChair_item: {
+HeatproofChair_Item: {
 	DisplayName: Heatproof Chair
 	Tooltip: ""
 }
 
-HeatproofChandelier_item: {
+HeatproofChandelier_Item: {
 	DisplayName: Heatproof Chandelier
 	Tooltip: ""
 }
 
-HeatproofChest_item: {
+HeatproofChest_Item: {
 	DisplayName: Heatproof Chest
 	Tooltip: ""
 }
 
-HeatproofClock_item: {
+HeatproofClock_Item: {
 	DisplayName: Heatproof Clock
 	Tooltip: ""
 }
 
-HeatproofDoor_item: {
+HeatproofDoor_Item: {
 	DisplayName: Heatproof Door
 	Tooltip: ""
 }
 
-HeatproofDresser_item: {
+HeatproofDresser_Item: {
 	DisplayName: Heatproof Dresser
 	Tooltip: ""
 }
 
-HeatproofLamp_item: {
+HeatproofLamp_Item: {
 	DisplayName: Heatproof Lamp
 	Tooltip: ""
 }
 
-HeatproofLantern_item: {
+HeatproofLantern_Item: {
 	DisplayName: Heatproof Lantern
 	Tooltip: ""
 }
 
-HeatproofPiano_item: {
+HeatproofPiano_Item: {
 	DisplayName: Heatproof Piano
 	Tooltip: ""
 }
@@ -1078,27 +1078,27 @@ HeatProofPlatingWall_Item: {
 	Tooltip: ""
 }
 
-HeatproofSink_item: {
+HeatproofSink_Item: {
 	DisplayName: Heatproof Sink
 	Tooltip: ""
 }
 
-HeatproofSofa_item: {
+HeatproofSofa_Item: {
 	DisplayName: Heatproof Sofa
 	Tooltip: ""
 }
 
-HeatproofTable_item: {
+HeatproofTable_Item: {
 	DisplayName: Heatproof Table
 	Tooltip: ""
 }
 
-HeatproofToilet_item: {
+HeatproofToilet_Item: {
 	DisplayName: Heatproof Toilet
 	Tooltip: ""
 }
 
-HeatproofWorkbench_item: {
+HeatproofWorkbench_Item: {
 	DisplayName: Heatproof Work Bench
 	Tooltip: ""
 }
@@ -1153,7 +1153,7 @@ IRProbe_Normal_Item: {
 	Tooltip: ""
 }
 
-Ishta_per_The_Venus_painting_Item: {
+Ishta_Per_The_Venus_Painting_Item: {
 	DisplayName: Ishta_per_ The_ Venus_painting_ Item
 	Tooltip: ""
 }
@@ -1188,7 +1188,7 @@ JellyBallSecretionWall_Item: {
 	Tooltip: ""
 }
 
-KelpMoss_largeCreate: {
+KelpMoss_LargeCreate: {
 	DisplayName: Kelp Moss_large Create
 	Tooltip: ""
 }
@@ -1218,7 +1218,7 @@ LampWood_Wood: {
 	Tooltip: ""
 }
 
-LampWood_workBench: {
+LampWood_WorkBench: {
 	DisplayName: Lampwood Work Bench
 	Tooltip: ""
 }
@@ -1313,7 +1313,7 @@ LampWoodToilet: {
 	Tooltip: ""
 }
 
-LampWoodWall_item: {
+LampWoodWall_Item: {
 	DisplayName: Lampwood Wall
 	Tooltip: ""
 }
@@ -1323,7 +1323,7 @@ LapisLazuliDome_Item: {
 	Tooltip: ""
 }
 
-LapisLazuliDome_mini_Item: {
+LapisLazuliDome_Mini_Item: {
 	DisplayName: Lapis Lazuli Dome_mini_ Item
 	Tooltip: ""
 }
@@ -1368,7 +1368,7 @@ LiftWinch: {
 	Tooltip: ""
 }
 
-LightbulbBand_item: {
+LightbulbBand_Item: {
 	DisplayName: Lightbulb Band_item
 	Tooltip: ""
 }
@@ -1648,7 +1648,7 @@ QuestCounter_Item: {
 	Tooltip: ""
 }
 
-RedGlassbulbBand_item: {
+RedGlassbulbBand_Item: {
 	DisplayName: Red Glassbulb Band_item
 	Tooltip: ""
 }
@@ -1813,12 +1813,12 @@ SnowPineChest: {
 	Tooltip: ""
 }
 
-SnowPineChest_fresh: {
+SnowPineChest_Fresh: {
 	DisplayName: Snow Pine Chest_fresh
 	Tooltip: ""
 }
 
-SnowPineChest_gold: {
+SnowPineChest_Gold: {
 	DisplayName: Snow Pine Chest_gold
 	Tooltip: ""
 }
@@ -1918,7 +1918,7 @@ SteampunkElevator_Item: {
 	Tooltip: ""
 }
 
-StoneBridge_Chest_item: {
+StoneBridge_Chest_Item: {
 	DisplayName: Stone Bridge_ Chest_item
 	Tooltip: ""
 }
@@ -2383,7 +2383,7 @@ WoodenElevator_Item: {
 	Tooltip: ""
 }
 
-WoodenRoomDoor_exit_Item: {
+WoodenRoomDoor_Exit_Item: {
 	DisplayName: Wooden Room Door_exit_ Item
 	Tooltip: ""
 }

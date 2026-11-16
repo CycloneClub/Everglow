@@ -74,7 +74,7 @@ public class BlackAwningBoat : BoxEntity
 			}
 			if (shouldReleaseProj)
 			{
-				Projectile p0 = Projectile.NewProjectileDirect(new EntitySource_Misc(nameof(BlackAwningBoat)), Box.Center, Velocity, ModContent.ProjectileType<BlackAwningBoat_WaterDistort>(), 0, 0, Main.maxPlayers);
+				Projectile p0 = Projectile.NewProjectileDirect(new EntitySource_Misc(nameof(BlackAwningBoat)), Box.Center, Velocity, ModContent.ProjectileType<BlackAwningBoat_WaterDistort>(), 0, 0, -1);
 				BlackAwningBoat_WaterDistort bABWD = p0.ModProjectile as BlackAwningBoat_WaterDistort;
 				if (bABWD is not null)
 				{

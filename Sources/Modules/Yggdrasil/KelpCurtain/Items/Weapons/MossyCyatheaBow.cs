@@ -30,7 +30,7 @@ public class MossyCyatheaBow : ModItem
 	{
 		if (type == ProjectileID.WoodenArrowFriendly)
 		{
-			type = ModContent.ProjectileType<CyatheaArrow_proj>();
+			type = ModContent.ProjectileType<CyatheaArrow_Proj>();
 		}
 		int count = 1;
 		if (Main.rand.NextBool(3))

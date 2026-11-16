@@ -124,7 +124,7 @@ public class SquamousRollingStone : ModProjectile
 		Main.spriteBatch.Draw(textureBloom, Projectile.Center - Main.screenPosition, null, new Color(1f, 1f, 1f, 0), Projectile.rotation, textureBloom.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
 
 		Texture2D drawTex = ModAsset.SquamousRollingStone.Value;
-		Texture2D drawGlow = ModAsset.SquamousRollingStone_glow.Value;
+		Texture2D drawGlow = ModAsset.SquamousRollingStone_Glow.Value;
 		Main.spriteBatch.Draw(drawTex, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, drawTex.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
 		if (Projectile.timeLeft <= 60)
 		{

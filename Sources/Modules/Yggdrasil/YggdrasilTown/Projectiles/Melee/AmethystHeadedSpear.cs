@@ -58,7 +58,7 @@ public class AmethystHeadedSpear : ModProjectile
 		{
 			oldPos = Projectile.Center;
 		}
-		Texture2D flag = ModAsset.AmethystHeadedSpear_flag.Value;
+		Texture2D flag = ModAsset.AmethystHeadedSpear_Flag.Value;
 		var normalVel = Vector2.Normalize(Projectile.velocity);
 		float rotation = (Projectile.Center - oldPos).ToRotation() + MathHelper.PiOver2;
 		Main.spriteBatch.Draw(flag, Projectile.Center - Main.screenPosition - normalVel * 28f, null, lightColor, rotation, new Vector2(3, 0), new Vector2(1f, 2f), SpriteEffects.None, 0);

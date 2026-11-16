@@ -222,7 +222,7 @@ public class SquamousRockSpike_Falling_Predict : ModProjectile
 		}
 		EndPosition = checkPos;
 
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_10_black.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_10_Black.Value;
 		if (predictLineDark.Count > 3)
 		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, predictLineDark.ToArray(), 0, predictLineDark.Count - 2);

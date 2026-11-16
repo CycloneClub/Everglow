@@ -68,7 +68,7 @@ public class GreenRelicBrick_Trap : ModTile, ISceneTile
 	{
 		Main.tileSolid[Type] = true;
 		Main.tileBlockLight[Type] = true;
-		DustType = ModContent.DustType<GreenRelicBrick_dust>();
+		DustType = ModContent.DustType<GreenRelicBrick_Dust>();
 		HitSound = SoundID.Dig;
 		MinPick = 400;
 		AddMapEntry(new Color(35, 58, 58));

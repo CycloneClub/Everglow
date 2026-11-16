@@ -53,7 +53,7 @@ public class ValueBarHelper
 	public static void DrawBreakOutEffect(SpriteBatch spriteBatch, Vector2 position, float valueTime, float scale = 1)
 	{
 		var drawScale = scale * (3 + valueTime * 6);
-		var bloom = ModAsset.PieChartBloom_ring.Value;
+		var bloom = ModAsset.PieChartBloom_Ring.Value;
 		spriteBatch.Draw(bloom, position, null, new Color(1f, 1f, 1f, 0) * (1 - valueTime), 0, bloom.Size() / 2, drawScale * 1.5f, SpriteEffects.None, 0);
 	}
 
@@ -69,7 +69,7 @@ public class ValueBarHelper
 	/// <param name="centerIcon">Optional texture drawn at the center of the progress bar.</param>
 	public static void DrawCircleValueBar(SpriteBatch spriteBatch, Vector2 position, float value, Color color0, Color color1, float scale = 1, Texture2D centerIcon = null)
 	{
-		var bloom_shadow = ModAsset.PieChartBloom_black.Value;
+		var bloom_shadow = ModAsset.PieChartBloom_Black.Value;
 		var bloom = ModAsset.PieChartBloom.Value;
 		Color bloomColor = color1;
 		bloomColor.A = 0;

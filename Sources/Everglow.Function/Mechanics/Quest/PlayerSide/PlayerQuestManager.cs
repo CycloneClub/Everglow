@@ -83,7 +83,7 @@ public class PlayerQuestManager
 
 		List<PlayerQuestBase> oldQuests = _quests;
 		_nPCKillCounter = data.NPCKillCounter.ToDictionary();
-		_quests = data.Quests.ToList();
+		_quests = data.Quests.Where(quest => DebugOnlyQuestAttribute.IsEnabled(quest.GetType())).ToList();
 
 		foreach (PlayerQuestBase quest in oldQuests)
 		{
@@ -232,6 +232,12 @@ public class PlayerQuestManager
 	/// <param name="showText">是否在成功添加新任务时显示提示文本。</param>
 	public void AddQuest(PlayerQuestBase quest, PlayerQuestState state, bool showText = true)
 	{
+		if (!DebugOnlyQuestAttribute.IsEnabled(quest.GetType()))
+		{
+			RemoveQuest(quest.Name);
+			return;
+		}
+
 		if (!_quests.Any(m => m.Name == quest.Name))
 		{
 			_quests.Add(quest);
@@ -358,6 +364,10 @@ public class PlayerQuestManager
 					&& mTag.TryGet<TagCompound>("Data", out var data))
 				{
 					var type = Ins.ModuleManager.Types.FirstOrDefault(t => t.FullName == typeName);
+					if (type != null && !DebugOnlyQuestAttribute.IsEnabled(type))
+					{
+						continue;
+					}
 					if (type != null
 						&& Activator.CreateInstance(type) is PlayerQuestBase m)
 					{

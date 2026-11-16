@@ -184,7 +184,7 @@ internal class Fevens_MagicArray : ModProjectile
 		float colorValue = timer / 30f;
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(sBS);
-		Texture2D starBlack = Commons.ModAsset.StarSlash_black.Value;
+		Texture2D starBlack = Commons.ModAsset.StarSlash_Black.Value;
 		Main.spriteBatch.Draw(starBlack, Projectile.Center + new Vector2(-40, 0) - Main.screenPosition, new Rectangle(0, 0, starBlack.Width, starBlack.Height / 2), new Color(0.8f, 0.8f, 0.8f, 0.2f * colorValue), -MathHelper.PiOver2, new Vector2(starBlack.Width * 0.5f, starBlack.Height * 0.5f), new Vector2(0.5f, 1f), SpriteEffects.None, 0);
 		Main.spriteBatch.Draw(starBlack, Projectile.Center + new Vector2(40, 0) - Main.screenPosition, new Rectangle(0, 0, starBlack.Width, starBlack.Height / 2), new Color(0.8f, 0.8f, 0.8f, 0.2f * colorValue), MathHelper.PiOver2, new Vector2(starBlack.Width * 0.5f, starBlack.Height * 0.5f), new Vector2(0.5f, 1f), SpriteEffects.None, 0);
 		Texture2D star = Commons.ModAsset.StarSlash.Value;

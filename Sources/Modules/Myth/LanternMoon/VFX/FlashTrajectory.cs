@@ -28,7 +28,7 @@ public class FlashTrajectory : Visual
 
 	public override void Draw()
 	{
-		Texture2D tex_dark = Commons.ModAsset.StarSlashGray_black.Value;
+		Texture2D tex_dark = Commons.ModAsset.StarSlashGray_Black.Value;
 		Ins.Batch.Draw(tex_dark, Position, null, new Color(Fade, Fade, Fade, Fade), Rotation, new Vector2(tex_dark.Width * 0.5f, 0), new Vector2(Fade, Distance / 256f), SpriteEffects.None);
 		Texture2D tex = Commons.ModAsset.StarSlashGray.Value;
 		Ins.Batch.Draw(tex, Position, null, DrawColor, Rotation, new Vector2(tex.Width * 0.5f, 0), new Vector2(Fade * 0.75f, Distance / 256f), SpriteEffects.None);

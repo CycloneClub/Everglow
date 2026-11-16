@@ -6,11 +6,11 @@ using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
 
-public class IstafelsSunfireGrasp_Explosion : ModProjectile, IWarpProjectile_warpStyle2
+public class IstafelsSunfireGrasp_Explosion : ModProjectile, IWarpProjectile_WarpStyle2
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
 
-	public override string Texture => ModAsset.TerraViewerHowitzer_grenade_fall_Mod;
+	public override string Texture => ModAsset.TerraViewerHowitzer_Grenade_Fall_Mod;
 
 	public int Timer = 0;
 

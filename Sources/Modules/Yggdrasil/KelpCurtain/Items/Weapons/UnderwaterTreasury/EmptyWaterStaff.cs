@@ -32,7 +32,7 @@ public class EmptyWaterStaff : ModItem
 		Item.rare = ItemRarityID.Orange;
 		Item.value = 35000;
 
-		Item.shoot = ModContent.ProjectileType<EmptyWaterStaff_proj>();
+		Item.shoot = ModContent.ProjectileType<EmptyWaterStaff_Proj>();
 		Item.shootSpeed = 8;
 	}
 

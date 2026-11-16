@@ -55,7 +55,7 @@ public class CaterpillarJuiceArrow : ModProjectile
 		if (Main.rand.NextBool(12))
 		{
 			Vector2 afterVelocity = Projectile.velocity * 0.96f;
-			var blood = new CaterpillarJuice_splash
+			var blood = new CaterpillarJuice_Splash
 			{
 				Velocity = afterVelocity,
 				Active = true,

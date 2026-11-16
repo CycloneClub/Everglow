@@ -213,6 +213,6 @@ public class CursedFlamesArray : ModProjectile, IWarpProjectile
 	public void DrawWarp(VFXBatch sb)
 	{
 		Player player = Main.player[Projectile.owner];
-		DrawTexCircle(sb, timer * 1.2f, 52, new Color(64, 7, 255, 0), player.Center + ringPos - Main.screenPosition, Commons.ModAsset.Trail_2_thick.Value, Main.timeForVisualEffects / 17);
+		DrawTexCircle(sb, timer * 1.2f, 52, new Color(64, 7, 255, 0), player.Center + ringPos - Main.screenPosition, Commons.ModAsset.Trail_2_Thick.Value, Main.timeForVisualEffects / 17);
 	}
 }

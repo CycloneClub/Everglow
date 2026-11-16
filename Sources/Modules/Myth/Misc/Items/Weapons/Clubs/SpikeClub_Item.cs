@@ -14,7 +14,7 @@ public class SpikeClub_Item : ClubItem
 		Item.useAnimation = 12;
 		SmashDamageMultiplier = 24f / 26f;
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.SpikeClub>();
-		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.SpikeClub_smash>();
+		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.SpikeClub_Smash>();
 	}
 
 	public override void AddRecipes()

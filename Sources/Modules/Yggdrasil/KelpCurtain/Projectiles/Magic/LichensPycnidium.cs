@@ -112,7 +112,7 @@ public class LichensPycnidium : ModProjectile
 	{
 		if (lichen.active)
 		{
-			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), lichen.attachPos + lichen.attachTarget.Center, Vector2.zeroVector, ModContent.ProjectileType<Pycnidium_explosion>(), 12, Projectile.knockBack * 4f, Projectile.owner, 30);
+			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), lichen.attachPos + lichen.attachTarget.Center, Vector2.zeroVector, ModContent.ProjectileType<Pycnidium_Explosion>(), 12, Projectile.knockBack * 4f, Projectile.owner, 30);
 		}
 	}
 

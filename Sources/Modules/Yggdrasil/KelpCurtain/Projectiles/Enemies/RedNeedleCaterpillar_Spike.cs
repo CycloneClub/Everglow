@@ -76,7 +76,7 @@ public class RedNeedleCaterpillar_Spike : ModProjectile
 
 		if (!Main.dedServ && Main.rand.NextBool(3))
 		{
-			int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<KelpMoss_dust>(), 0f, 0f);
+			int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<KelpMoss_Dust>(), 0f, 0f);
 			Main.dust[dust].noGravity = true;
 			Main.dust[dust].scale = Main.rand.NextFloat(0.6f, 1f);
 		}
@@ -117,7 +117,7 @@ public class RedNeedleCaterpillar_Spike : ModProjectile
 
 		for (int i = 0; i < 4; i++)
 		{
-			int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<KelpMoss_dust>(), 0f, 0f);
+			int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<KelpMoss_Dust>(), 0f, 0f);
 			Main.dust[dust].velocity *= 0.5f;
 			Main.dust[dust].noGravity = true;
 			Main.dust[dust].scale = Main.rand.NextFloat(0.7f, 1.1f);

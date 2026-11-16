@@ -14,7 +14,7 @@ public class StarDancer_Item : ClubItem
 		Item.useAnimation = 12;
 		SmashDamageMultiplier = 25f / 14f;
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.StarDancer>();
-		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.StarDancer_smash>();
+		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.StarDancer_Smash>();
 	}
 
 	public override void AddRecipes()

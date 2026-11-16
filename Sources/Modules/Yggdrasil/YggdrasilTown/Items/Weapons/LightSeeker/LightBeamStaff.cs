@@ -30,7 +30,7 @@ public class LightBeamStaff : ModItem
 		Item.rare = ItemRarityID.Green;
 		Item.value = Item.buyPrice(silver: 8);
 
-		Item.shoot = ModContent.ProjectileType<LightBeamStaff_proj>();
+		Item.shoot = ModContent.ProjectileType<LightBeamStaff_Proj>();
 		Item.shootSpeed = 15f;
 	}
 

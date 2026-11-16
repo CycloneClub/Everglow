@@ -23,8 +23,8 @@ Run commands from the repository root:
 
 ```powershell
 dotnet restore
-dotnet build /p:WarningLevel=0
-dotnet test --verbosity normal /p:WarningLevel=0
+dotnet build /p:Configuration=Release
+dotnet test --configuration Release --no-build --no-restore --verbosity normal
 ```
 
 Do not use tModLoader's in-game **Build Mod** action for this repository. The MSBuild pipeline compiles the module assemblies, processes resources and Effects, and writes `Everglow.tmod` to the local tModLoader Mods directory.
@@ -41,13 +41,13 @@ Do not use tModLoader's in-game **Build Mod** action for this repository. The MS
 
 ## Tests and Verification
 
-Run `dotnet build` for every code change. Run the full test command above when changing `Everglow.Function`, unit tests, or shared logic. For a focused test run:
+Run `dotnet build /p:Configuration=Release` for every code change. That is the CI Release build, and StyleCop warnings stay visible. Run the full test command above when changing `Everglow.Function`, unit tests, or shared logic. For a focused test run:
 
 ```powershell
-dotnet test --filter "FullyQualifiedName~QuestSystem"
+dotnet test --filter "FullyQualifiedName~QuestSystem" --configuration Release
 ```
 
-Tests use MSTest and live in `Sources/Everglow.UnitTests`. Terraria static state makes graphics-dependent tests unsuitable; favor pure logic tests. Before a test first accesses `Terraria.Main`, set `Program.SavePath = string.Empty;` in `[TestInitialize]`. See `.cursor/rules/unit-testing-terraria-main.mdc` before writing those tests.
+Tests use MSTest and live in `Sources/Everglow.UnitTests`. Terraria static state makes graphics-dependent tests unsuitable; favor pure logic tests. Before a test first accesses `Terraria.Main`, set `Program.SavePath = string.Empty;` in `[TestInitialize]`.
 
 Before submitting text-file changes, ensure they contain no UTF-8 BOM. `AGENTS.md` contains the repository's required byte-level verification command.
 

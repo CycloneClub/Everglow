@@ -9,10 +9,10 @@ AcytaeaLaserSword2.DisplayName: Acytaea Laser Sword2
 AcytaeaMagicArray.DisplayName: Acytaea Magic Array
 AcytaeaMagicArraySword.DisplayName: Acytaea Magic Array Sword
 AcytaeaScratch.DisplayName: Acytaea Scratch
-AcytaeaSword_following.DisplayName: Acytaea Sword_following
-AcytaeaSword_projectile_Boss_shoot.DisplayName: Acytaea Sword_projectile_ Boss_shoot
-AcytaeaSword_projectile_Boss.DisplayName: Acytaea Sword_projectile_ Boss
-AcytaeaSword_projectile_Tornado.DisplayName: Acytaea Sword_projectile_ Tornado
+AcytaeaSword_Following.DisplayName: Acytaea Sword_following
+AcytaeaSword_Projectile_Boss_Shoot.DisplayName: Acytaea Sword_projectile_ Boss_shoot
+AcytaeaSword_Projectile_Boss.DisplayName: Acytaea Sword_projectile_ Boss
+AcytaeaSword_Projectile_Tornado.DisplayName: Acytaea Sword_projectile_ Tornado
 AcytaeaSwordArray_0.DisplayName: Acytaea Sword Array_0
 AcytaeaSwordArray_1.DisplayName: Acytaea Sword Array_1
 AcytaeaSwordRain.DisplayName: Acytaea Sword Rain
@@ -55,8 +55,8 @@ LanternFlow.DisplayName: Lantern Flow
 LanternFlowLine.DisplayName: Lantern Flow Line
 LanternGhostKingExplosion.DisplayName: Lantern Ghost King Explosion
 LanternGhostKingPower.DisplayName: Lantern Ghost King Power
-Living_Jawbone_Huge_ground_Wave.DisplayName: Living_ Jawbone_ Huge_ground_ Wave
-Living_Jawbone_Huge_ground.DisplayName: Living_ Jawbone_ Huge_ground
+Living_Jawbone_Huge_Ground_Wave.DisplayName: Living_ Jawbone_ Huge_ground_ Wave
+Living_Jawbone_Huge_Ground.DisplayName: Living_ Jawbone_ Huge_ground
 Living_Jawbone_Huge.DisplayName: Living_ Jawbone_ Huge
 MissileProjHostile.DisplayName: Missile Proj Hostile
 MothBall.DisplayName: Moth Ball
@@ -85,18 +85,18 @@ SquamousAirProj.DisplayName: Squamous Air Proj
 SquamousDashEffect.DisplayName: Squamous Dash Effect
 SquamousMoonBladePredict.DisplayName: Squamous Moon Blade Predict
 SquamousRockExplosion.DisplayName: Squamous Rock Explosion
-SquamousRockProj_small.DisplayName: Squamous Rock Proj_small
+SquamousRockProj_Small.DisplayName: Squamous Rock Proj_small
 SquamousRockProj.DisplayName: Squamous Rock Proj
 SquamousRockSpike_Falling_Predict.DisplayName: Squamous Rock Spike_ Falling_ Predict
 SquamousRockSpike_Falling.DisplayName: Squamous Rock Spike_ Falling
 SquamousRockSpike.DisplayName: Squamous Rock Spike
-SquamousRollingStone_fly.DisplayName: Squamous Rolling Stone_fly
+SquamousRollingStone_Fly.DisplayName: Squamous Rolling Stone_fly
 SquamousRollingStone.DisplayName: Squamous Rolling Stone
-SquamousShell_shade.DisplayName: Squamous Shell_shade
-Tusk_ground_little.DisplayName: Tusk_ground_little
-Tusk_ground.DisplayName: Tusk_ground
-TuskBloodPool_close.DisplayName: Tusk Blood Pool_close
-TuskBloodPool_open.DisplayName: Tusk Blood Pool_open
+SquamousShell_Shade.DisplayName: Squamous Shell_shade
+Tusk_Ground_Little.DisplayName: Tusk_Ground_Little
+Tusk_Ground.DisplayName: Tusk_Ground
+TuskBloodPool_Close.DisplayName: Tusk Blood Pool_close
+TuskBloodPool_Open.DisplayName: Tusk Blood Pool_open
 TuskBloodPool.DisplayName: Tusk Blood Pool
 TuskCurse.DisplayName: Tusk Curse
 TuskSpice_WithGravity.DisplayName: Tusk Spice_ With Gravity

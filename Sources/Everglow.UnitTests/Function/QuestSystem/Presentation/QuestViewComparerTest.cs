@@ -16,7 +16,7 @@ public class QuestViewComparerTest
 			new QuestView { State = QuestViewState.Active, Type = QuestType.Legend },
 			new QuestView { State = QuestViewState.Active, Type = QuestType.Daily },
 			new QuestView { State = QuestViewState.Active, Type = QuestType.Challenge },
-			new QuestView { State = QuestViewState.Active, Type = QuestType.Achievement },
+			new QuestView { State = QuestViewState.Active, Type = QuestType.Request },
 			new QuestView { State = QuestViewState.Active, Type = QuestType.SideStory },
 			new QuestView { State = QuestViewState.Active, Type = QuestType.MainStory },
 		];
@@ -33,7 +33,7 @@ public class QuestViewComparerTest
 			{
 				QuestType.MainStory,
 				QuestType.SideStory,
-				QuestType.Achievement,
+				QuestType.Request,
 				QuestType.Challenge,
 				QuestType.Daily,
 				QuestType.Legend,

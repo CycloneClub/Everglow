@@ -6,7 +6,7 @@ public class AcytaeaSwordArray_0 : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
 
-	public override string Texture => ModAsset.AcytaeaSword_projectile_Mod;
+	public override string Texture => ModAsset.AcytaeaSword_Projectile_Mod;
 
 	public override void SetDefaults()
 	{
@@ -83,7 +83,7 @@ public class AcytaeaSwordArray_0 : ModProjectile
 
 	public override void PostDraw(Color lightColor)
 	{
-		Texture2D tex = ModAsset.AcytaeaFlySword_red.Value;
+		Texture2D tex = ModAsset.AcytaeaFlySword_Red.Value;
 		Rectangle projFrame = new Rectangle(0, Projectile.frame * Projectile.height, Projectile.width, Projectile.height);
 		Main.spriteBatch.Draw(tex, Projectile.Center - Main.screenPosition, projFrame, new Color(255, 0, 215, 155), Projectile.rotation + MathHelper.PiOver4, new Vector2(40), Projectile.scale, SpriteEffects.None, 0);
 	}

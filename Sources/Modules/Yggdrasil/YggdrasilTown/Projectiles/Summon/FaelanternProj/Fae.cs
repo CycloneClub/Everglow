@@ -39,8 +39,8 @@ public class Fae : TrailingProjectile
 		TrailColor = new Color(0.13f, 0.976f, 0.977f, 0f);
 		TrailWidth = 20f;
 		SelfLuminous = true;
-		TrailTexture = Commons.ModAsset.Trail_2_thick.Value;
-		TrailTextureBlack = Commons.ModAsset.Trail_2_black.Value;
+		TrailTexture = Commons.ModAsset.Trail_2_Thick.Value;
+		TrailTextureBlack = Commons.ModAsset.Trail_2_Black.Value;
 	}
 
 	public override bool? CanDamage()

@@ -126,7 +126,7 @@ public class BloodSpell : ModProjectile
 			speed = MathF.Sin(g / 55f * MathHelper.TwoPi) * 0.13f + 1;
 			speed *= 13;
 			velocity = new Vector2(0, speed * Main.rand.NextFloat(0.995f, 1.003f)).RotatedBy(g / 550f * MathHelper.TwoPi);
-			var somg2 = new BloodFlame_dark
+			var somg2 = new BloodFlame_Dark
 			{
 				Velocity = velocity,
 				Active = true,
@@ -213,7 +213,7 @@ public class BloodSpell : ModProjectile
 			lightingCrack = Projectile.velocity.SafeNormalize(Vector2.zeroVector).RotatedBy(MathHelper.PiOver2);
 			lightingCrack *= 1 * MathF.Sin(pos.Length() * 0.22f + Projectile.whoAmI);
 			lightingCrack += lightingCrack.RotatedBy(MathHelper.PiOver2 * MathF.Sin((float)Main.time * 0.07f + Projectile.whoAmI) * 0.2f) * 0.6f * MathF.Sin(Projectile.velocity.Length() * 2f);
-			var somg2 = new BloodFlame_dark
+			var somg2 = new BloodFlame_Dark
 			{
 				Velocity = lightingCrack,
 				Active = true,
@@ -236,7 +236,7 @@ public class BloodSpell : ModProjectile
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D fbm = Commons.ModAsset.FBM.Value;
-		Texture2D shade = Commons.ModAsset.Point_black.Value;
+		Texture2D shade = Commons.ModAsset.Point_Black.Value;
 		Main.spriteBatch.Draw(shade, Projectile.Center - Main.screenPosition - Projectile.velocity, null, new Color(1f, 1f, 1f, 1f), Projectile.rotation, shade.Size() / 2f, Projectile.scale * 0.25f + 0.25f, SpriteEffects.None, 0);
 		Main.spriteBatch.Draw(fbm, Projectile.Center - Main.screenPosition - Projectile.velocity, null, new Color(1f, 0f, 0f, 0f), Projectile.rotation, fbm.Size() / 2f, Projectile.scale * 0.5f + 0.5f, SpriteEffects.None, 0);
 		Main.spriteBatch.Draw(fbm, Projectile.Center - Main.screenPosition - Projectile.velocity, null, new Color(1f, 0f, 0f, 0f), Projectile.rotation + (float)Main.time * 0.02f, fbm.Size() / 2f, Projectile.scale * 0.75f, SpriteEffects.None, 0);
@@ -245,7 +245,7 @@ public class BloodSpell : ModProjectile
 		var TexMain = (Texture2D)ModContent.Request<Texture2D>(Texture);
 		Main.spriteBatch.Draw(TexMain, Projectile.Center - Main.screenPosition - Projectile.velocity, null, new Color(1f, 0f, 0f, 0.5f), Projectile.rotation + (float)Main.time * 0.2f, TexMain.Size() / 2f, Projectile.scale * 0.2f + 0.3f, SpriteEffects.None, 0);
 
-		Texture2D starDark = Commons.ModAsset.StarSlash_black.Value;
+		Texture2D starDark = Commons.ModAsset.StarSlash_Black.Value;
 		Texture2D star = Commons.ModAsset.StarSlash.Value;
 		Main.spriteBatch.Draw(starDark, Projectile.Center - Main.screenPosition, null, Color.White * 0.5f, MathHelper.PiOver2, starDark.Size() / 2f, new Vector2(0.5f, Projectile.scale * 1.35f + 0.15f), SpriteEffects.None, 0);
 		Main.spriteBatch.Draw(starDark, Projectile.Center - Main.screenPosition, null, Color.White * 0.5f, 0, starDark.Size() / 2f, new Vector2(0.5f, Projectile.scale * 0.5f + 0.15f), SpriteEffects.None, 0);
@@ -273,7 +273,7 @@ public class BloodSpell : ModProjectile
 			}
 			velocity = velocity.RotatedBy(Projectile.rotation + Projectile.whoAmI);
 			velocity *= size;
-			var somg = new BloodFlame_dark
+			var somg = new BloodFlame_Dark
 			{
 				Velocity = velocity,
 				Active = true,
@@ -313,7 +313,7 @@ public class BloodSpell : ModProjectile
 		for (int g = 0; g < 120; g++)
 		{
 			Vector2 velocity = new Vector2(0, Main.rand.NextFloat(4.0f, 10.93f)).RotatedBy(g / 40f * MathHelper.TwoPi);
-			var somg = new BloodFlame_trail
+			var somg = new BloodFlame_Trail
 			{
 				Velocity = velocity,
 				Active = true,

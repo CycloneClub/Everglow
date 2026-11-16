@@ -46,9 +46,9 @@ public class MossySpellBook : MagicBookProjectile
 		}
 		if (player.itemTime == 2 && player.HeldItem.type == ItemType)
 		{
-			Projectile.NewProjectileDirect(player.GetSource_ItemUse(player.HeldItem), Main.MouseWorld, new Vector2(0, 1), ModContent.ProjectileType<MossySpell_proj>(), player.GetWeaponDamage(player.HeldItem) * 2, player.HeldItem.knockBack, player.whoAmI);
+			Projectile.NewProjectileDirect(player.GetSource_ItemUse(player.HeldItem), Main.MouseWorld, new Vector2(0, 1), ModContent.ProjectileType<MossySpell_Proj>(), player.GetWeaponDamage(player.HeldItem) * 2, player.HeldItem.knockBack, player.whoAmI);
 
-			// var p2 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, (Main.MouseWorld - Projectile.Center).NormalizeSafe() * 16, ModContent.ProjectileType<MossySpell_proj>(), player.HeldItem.damage * 2, player.HeldItem.knockBack, player.whoAmI);
+			// var p2 = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, (Main.MouseWorld - Projectile.Center).NormalizeSafe() * 16, ModContent.ProjectileType<MossySpell_Proj>(), player.HeldItem.damage * 2, player.HeldItem.knockBack, player.whoAmI);
 			// p2.CritChance = player.GetWeaponCrit(player.HeldItem);
 		}
 	}

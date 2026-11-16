@@ -94,8 +94,8 @@ public class GoldenShowerBomb : ModProjectile, IWarpProjectile
 
 		float timeValue = (200 - Projectile.timeLeft) / 200f;
 		Color cDark = new Color(0, 0, 0, 1f - timeValue) * 0.5f;
-		DrawTexCircle(MathF.Sqrt(timeValue) * 24 * Projectile.ai[0], 20 * (1 - timeValue) * Projectile.ai[0], cDark * dark, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_2_black_thick.Value);
-		DrawTexCircle(MathF.Sqrt(timeValue) * 24 * Projectile.ai[0], 4 * (1 - timeValue) * Projectile.ai[0], new Color(255, 145, 0, 0) * dark, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_10_black.Value);
+		DrawTexCircle(MathF.Sqrt(timeValue) * 24 * Projectile.ai[0], 20 * (1 - timeValue) * Projectile.ai[0], cDark * dark, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_2_Black_Thick.Value);
+		DrawTexCircle(MathF.Sqrt(timeValue) * 24 * Projectile.ai[0], 4 * (1 - timeValue) * Projectile.ai[0], new Color(255, 145, 0, 0) * dark, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_10_Black.Value);
 		DrawTexCircle(MathF.Sqrt(timeValue) * 24 * Projectile.ai[0], 4 * (1 - timeValue) * Projectile.ai[0], new Color(255, 145, 0, 0) * dark, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_10.Value);
 		DrawTexCircle(MathF.Sqrt(timeValue) * 48 * Projectile.ai[0], 40 * Projectile.ai[0], new Color(255, 145, 0, 0) * dark2, Projectile.Center - Main.screenPosition, Commons.ModAsset.Noise_Hive_Cyber.Value);
 	}

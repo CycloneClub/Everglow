@@ -32,7 +32,7 @@ public class NewWaterBolt : TrailingProjectile
 		TrailWidth = 30f;
 		SelfLuminous = true;
 		TrailTexture = Commons.ModAsset.Trail_5.Value;
-		TrailTextureBlack = Commons.ModAsset.Trail_5_black.Value;
+		TrailTextureBlack = Commons.ModAsset.Trail_5_Black.Value;
 	}
 
 	public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)

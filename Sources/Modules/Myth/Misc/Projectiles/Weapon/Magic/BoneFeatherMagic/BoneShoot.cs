@@ -44,7 +44,7 @@ public class BoneShoot : ModProjectile, IWarpProjectile
 		float dark = Math.Max((Projectile.timeLeft - 150) / 50f, 0);
 		Main.spriteBatch.Draw(Shadow, Projectile.Center - Main.screenPosition, null, new Color(1f, 1f, 0.4f, 0) * dark, 0, Shadow.Size() / 2f, 2.2f * Projectile.ai[0] / 15f * dark, SpriteEffects.None, 0);
 		float timeValue = 1 - (200 - Projectile.timeLeft) / 200f;
-		DrawTexCircle((1 - timeValue) * 24 * Projectile.ai[0], 8 * (1 - timeValue) * Projectile.ai[0], new Color(timeValue, timeValue, timeValue, timeValue) * 0.5f, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_black.Value);
+		DrawTexCircle((1 - timeValue) * 24 * Projectile.ai[0], 8 * (1 - timeValue) * Projectile.ai[0], new Color(timeValue, timeValue, timeValue, timeValue) * 0.5f, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_Black.Value);
 		DrawTexCircle((1 - timeValue) * 24 * Projectile.ai[0], 8 * (1 - timeValue) * Projectile.ai[0], new Color(0.6f * timeValue, 0.6f * timeValue, 0.4f * timeValue, 0f), Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_6.Value);
 	}
 

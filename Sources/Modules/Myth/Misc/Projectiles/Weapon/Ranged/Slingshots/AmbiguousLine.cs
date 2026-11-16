@@ -53,7 +53,7 @@ public class AmbiguousLine : ModProjectile
 	public override void PostDraw(Color lightColor)
 	{
 		Texture2D shadow = ModAsset.CursedHit.Value;
-		Texture2D blackHole = ModAsset.BlackHole_texture.Value;
+		Texture2D blackHole = ModAsset.BlackHole_Texture.Value;
 		Texture2D blue = ModAsset.CorruptLight.Value;
 		Main.spriteBatch.Draw(shadow, Projectile.Center - Main.screenPosition, null, Color.White, 0, shadow.Size() / 2f, 0.4f * Projectile.scale, SpriteEffects.None, 0);
 		Main.spriteBatch.Draw(blackHole, Projectile.Center - Main.screenPosition, null, Color.White, 0, blackHole.Size() / 2f, 0.06f * MathF.Sqrt(Projectile.scale), SpriteEffects.None, 0);

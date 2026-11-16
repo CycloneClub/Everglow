@@ -5,7 +5,7 @@ using Everglow.Commons.Mechanics.Events;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Objectives;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Structure;
-using Everglow.Yggdrasil.YggdrasilTown.Quests;
+using Everglow.Yggdrasil.YggdrasilTown.Quests.Request;
 using Everglow.Yggdrasil;
 using Everglow.Yggdrasil.YggdrasilTown.Events;
 using SubworldLibrary;
@@ -639,7 +639,7 @@ public class DrunkenMinerInvasionTest
 	{
 		SetInvasion(invasion, [invasion]);
 		var objective = (WorldObjectiveBase)Activator.CreateInstance(
-			typeof(DefendTownQuest).GetNestedType("DrunkenMinerInvasionObjective", BindingFlags.NonPublic)!, nonPublic: true)!;
+			typeof(Warden_Quest1).GetNestedType("DrunkenMinerInvasionObjective", BindingFlags.NonPublic)!, nonPublic: true)!;
 		objective.Activate(null!);
 		objectives.Add(objective);
 		return objective;

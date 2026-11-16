@@ -40,7 +40,7 @@ public class BladeOfGreenMoss_Proj : MeleeProj
 
 	public override void DrawSelf(SpriteBatch spriteBatch, Color lightColor, Vector4 diagonal = default, Vector2 drawScale = default, Texture2D glowTexture = null)
 	{
-		glowTexture = ModAsset.BladeOfGreenMoss_glow.Value;
+		glowTexture = ModAsset.BladeOfGreenMoss_Glow.Value;
 
 		base.DrawSelf(spriteBatch, lightColor, diagonal, drawScale, glowTexture);
 	}

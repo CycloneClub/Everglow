@@ -81,7 +81,7 @@ public class WizardLantern_Matrix_Curse : ModProjectile
 		}
 		for (int i = 0; i < 1; i++)
 		{
-			var somg = new CurseSpellDust_blue
+			var somg = new CurseSpellDust_Blue
 			{
 				SpinSpeed = -0.03f * Main.rand.NextFloat(0.85f, 1.15f),
 				Active = true,
@@ -185,7 +185,7 @@ public class WizardLantern_Matrix_Curse : ModProjectile
 
 		Main.graphics.GraphicsDevice.Textures[2] = Commons.ModAsset.Noise_Sand_Shallow.Value;
 		Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_RGB_Large.Value;
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Wave_full_black.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Wave_Full_Black.Value;
 		if (bars_shadowRing_dark.Count > 0)
 		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars_shadowRing_dark.ToArray(), 0, bars_shadowRing_dark.Count - 2);

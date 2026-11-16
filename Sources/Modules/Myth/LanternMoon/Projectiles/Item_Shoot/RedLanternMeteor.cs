@@ -14,7 +14,7 @@ public class RedLanternMeteor : TrailingProjectile
 		TrailWidth = 2f;
 		SelfLuminous = true;
 		TrailTexture = Commons.ModAsset.Trail.Value;
-		TrailTextureBlack = Commons.ModAsset.Trail_black.Value;
+		TrailTextureBlack = Commons.ModAsset.Trail_Black.Value;
 		TrailShader = Commons.ModAsset.Trailing.Value;
 		Projectile.timeLeft = 300;
 		Projectile.hostile = true;

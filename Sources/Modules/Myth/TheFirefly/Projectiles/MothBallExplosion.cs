@@ -205,7 +205,7 @@ public class MothBallExplosion : ModProjectile, IWarpProjectile
 		Color c = new Color(0.2f * MathF.Sqrt(1 - timeValue), 0.6f * (1 - timeValue) * (1 - timeValue), 3f * (1 - timeValue), 0f);
 		Main.spriteBatch.Draw(shadow, Projectile.Center - Main.screenPosition, null, c * dark, 0, shadow.Size() / 2f, 2.2f * Projectile.ai[0] / 15f * dark, SpriteEffects.None, 0);
 		Color cDark = new Color(0, 0, 0, 1f - timeValue);
-		DrawTexCircle(MathF.Sqrt(timeValue) * 24 * Projectile.ai[0], 20 * (1 - timeValue) * Projectile.ai[0], cDark, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_2_black_thick.Value);
+		DrawTexCircle(MathF.Sqrt(timeValue) * 24 * Projectile.ai[0], 20 * (1 - timeValue) * Projectile.ai[0], cDark, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_2_Black_Thick.Value);
 		DrawTexCircle(MathF.Sqrt(timeValue) * 24 * Projectile.ai[0], 4 * (1 - timeValue) * Projectile.ai[0], c * 0.4f, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_6.Value);
 	}
 

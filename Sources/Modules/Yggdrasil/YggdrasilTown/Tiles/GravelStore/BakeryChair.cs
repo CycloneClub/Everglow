@@ -90,7 +90,7 @@ public class BakeryChair : ModTile
 
 	public override void MouseOver(int i, int j)
 	{
-		FurnitureUtils.ChairMouseOver<HeatproofChair_item>(i, j);
+		FurnitureUtils.ChairMouseOver<HeatproofChair_Item>(i, j);
 	}
 
 	public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
@@ -103,7 +103,7 @@ public class BakeryChair : ModTile
 			{
 				frame.X += 26;
 			}
-			Texture2D tex = ModAsset.BakeryChair_full.Value;
+			Texture2D tex = ModAsset.BakeryChair_Full.Value;
 			Vector2 zero = new Vector2(Main.offScreenRange);
 			if (Main.drawToScreen)
 			{

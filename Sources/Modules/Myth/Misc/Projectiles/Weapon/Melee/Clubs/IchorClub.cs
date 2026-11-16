@@ -50,14 +50,14 @@ public class IchorClub : ClubProj
 				foreach (Projectile flyingClub in Main.projectile)
 				{
 					if (flyingClub.active && flyingClub.owner == Projectile.owner
-						&& (flyingClub.type == ModContent.ProjectileType<CurseClub_fly>() || flyingClub.type == ModContent.ProjectileType<IchorClub_fly>()))
+						&& (flyingClub.type == ModContent.ProjectileType<CurseClub_Fly>() || flyingClub.type == ModContent.ProjectileType<IchorClub_Fly>()))
 					{
 						flyingClubs++;
 					}
 				}
 				if (flyingClubs < 3)
 				{
-					Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<IchorClub_fly>(), (int)(Projectile.damage * 0.3f), Projectile.knockBack * 0.4f, Projectile.owner);
+					Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<IchorClub_Fly>(), (int)(Projectile.damage * 0.3f), Projectile.knockBack * 0.4f, Projectile.owner);
 				}
 			}
 		}
@@ -77,7 +77,7 @@ public class IchorClub : ClubProj
 			effects = SpriteEffects.FlipHorizontally;
 		}
 
-		Texture2D texture = ModAsset.IchorClub_glow.Value;
+		Texture2D texture = ModAsset.IchorClub_Glow.Value;
 		Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, texture.Size() / 2f, Projectile.scale, effects, 0f);
 		for (int i = 0; i < 5; i++)
 		{

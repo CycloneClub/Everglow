@@ -12,7 +12,7 @@
 
 ## 测试放置与写法
 
-- 使用现有 MSTest 项目，并在 `Sources/Everglow.UnitTests/Function/QuestSystem/` 下按生产边界组织测试：`PlayerSide/`、`WorldSide/`、`Presentation/` 与 `UI/`；继续镜像有意义的 `Abstractions/`、`Structure/`、`Objectives/`、`Adapters/` 与 `Views/` 子目录。`WorldSide/Tests/` 与 `PlayerSide/Tests/` 是模组内示例/调试任务内容，不是 MSTest 测试目录。
+- 使用现有 MSTest 项目，并在 `Sources/Everglow.UnitTests/Function/QuestSystem/` 下按生产边界组织测试：`Core/`、`PlayerSide/`、`WorldSide/`、`Presentation/` 与 `UI/`；继续镜像有意义的 `Abstractions/`、`Structure/`、`Objectives/`、`Adapters/` 与 `Views/` 子目录。`Sources/Modules/Example/Quest/PlayerSide/` 与 `WorldSide/` 是模组内示例任务。
 - 所有任务系统测试保持 `Everglow.UnitTests.Function.QuestSystem` 命名空间，不要让物理目录制造无意义的命名空间差异。测试文件应以主要被测类型命名；单个类型的测试过大时，在该类型的专属目录中按可观察行为拆为 `Type.BehaviorTests.cs`，并用 `partial` 复用局部 Stub 与辅助方法。不要仅为对称而拆分小文件或 UI 内部目录。
 - 优先测试不依赖 Terraria 运行期的纯逻辑。复用邻近测试中的私有 `Stub`/`Test` 派生类、`IGameStateProvider` 测试替身和局部创建方法；不要因单个用例引入全局工厂、Mock 框架或新的测试抽象层。
 - 用公开状态、返回值、事件、持久化数据或 Presentation View/Action 断言可观察结果。只有当公开边界无法表达既有契约时，才沿用邻近测试的反射方式；不要把实现细节锁死在测试中。
@@ -22,14 +22,14 @@
 
 ## 验证与报告
 
-- 每个任务系统代码改动都必须从仓库根目录运行 `dotnet build`。
-- 有任务系统行为改动时，运行 `dotnet test --filter "FullyQualifiedName~QuestSystem"`。跨越 Quest 与其他 Function 子系统、共享基础设施或测试公共状态的改动，还应运行 `dotnet test --verbosity normal /p:WarningLevel=0`。
-- 不需要新增测试但涉及可编译源码、资源或配置的非行为改动，至少运行 `dotnet build`，并按根级指南执行适用的文本、资源或构建配置检查。纯文档改动只需执行根级指南要求的文本检查。不要用新测试替代编译、资源打包或 tML 运行时验证。
+- 每个任务系统代码改动都必须从仓库根目录运行 `dotnet build /p:Configuration=Release`。
+- 有任务系统行为改动时，运行 `dotnet test --filter "FullyQualifiedName~QuestSystem" --configuration Release`。跨越 Quest 与其他 Function 子系统、共享基础设施或测试公共状态的改动，还应运行 `dotnet test --configuration Release --no-build --no-restore --verbosity normal`。
+- 不需要新增测试但涉及可编译源码、资源或配置的非行为改动，至少运行 `dotnet build /p:Configuration=Release`，并按根级指南执行适用的文本、资源或构建配置检查。纯文档改动只需执行根级指南要求的文本检查。不要用新测试替代编译、资源打包或 tML 运行时验证。
 - 最终报告必须分别列出新增/修改的测试、执行过的命令及结果，并明确说明未能在本地验证的多人同步、图形或 tML 运行时行为。
 
 ## Basis
 
-- `README.md` 与 `QUEST_SYSTEM_DESIGN.md`：任务生命周期、目标结构、持久化、多人同步及 Presentation 分层契约。
+- `README.md`：任务生命周期、目标结构、持久化、多人同步及 Presentation 分层的现存说明。`README_EN.md` 只覆盖开头的英文概述。
 - `Sources/Everglow.UnitTests/Everglow.UnitTests.csproj`：MSTest 3.10.2、测试项目引用与现有测试工具。
 - `Sources/Everglow.UnitTests/Function/QuestSystem/`：测试位置、局部 Stub/测试派生类、状态清理、非并行和 `Terraria.Main` 初始化惯例。
 - 根级 `AGENTS.md` 与 `.github/workflows/build-and-test.yml`：构建、筛选测试、完整测试及验证要求。

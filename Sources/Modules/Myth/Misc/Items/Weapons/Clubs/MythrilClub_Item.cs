@@ -14,7 +14,7 @@ public class MythrilClub_Item : ClubItem
 		Item.useAnimation = 12;
 		SmashDamageMultiplier = 50f / 34f;
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.MythrilClub>();
-		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.MythrilClub_smash>();
+		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.MythrilClub_Smash>();
 	}
 
 	public override void AddRecipes()

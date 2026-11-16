@@ -10,7 +10,7 @@ public class AcytaeaLaserSword2 : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
 
-	public override string Texture => ModAsset.AcytaeaSword_projectile_Mod;
+	public override string Texture => ModAsset.AcytaeaSword_Projectile_Mod;
 
 	public override void SetDefaults()
 	{
@@ -157,12 +157,12 @@ public class AcytaeaLaserSword2 : ModProjectile
 		Texture2D tex = ModAsset.AcytaeaFlySword.Value;
 		Rectangle projFrame = new Rectangle(0, Projectile.frame * Projectile.height, Projectile.width, Projectile.height);
 		Main.spriteBatch.Draw(tex, Projectile.Center, projFrame, lightColor, Projectile.rotation + MathHelper.PiOver4, new Vector2(40), Projectile.scale, SpriteEffects.None, 0);
-		Texture2D texglow = ModAsset.AcytaeaFlySword_glow.Value;
+		Texture2D texglow = ModAsset.AcytaeaFlySword_Glow.Value;
 		Main.spriteBatch.Draw(texglow, Projectile.Center, projFrame, new Color(255, 255, 255, 0), Projectile.rotation + MathHelper.PiOver4, new Vector2(40), Projectile.scale, SpriteEffects.None, 0);
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
 		Texture2D star = Commons.ModAsset.StarSlash.Value;
-		Texture2D dark = Commons.ModAsset.StarSlash_black.Value;
+		Texture2D dark = Commons.ModAsset.StarSlash_Black.Value;
 		Vector2 endDrawPos = EndPos - Main.screenPosition;
 		Main.spriteBatch.Draw(dark, endDrawPos, null, Color.White, MathHelper.PiOver2, star.Size() / 2f, width / 4.5f, SpriteEffects.None, 0);
 		Main.spriteBatch.Draw(dark, endDrawPos, null, Color.White, 0, star.Size() / 2f, width / 4.5f, SpriteEffects.None, 0);
@@ -186,7 +186,7 @@ public class AcytaeaLaserSword2 : ModProjectile
 			rings.Add(endDrawPos + arrowFar, new Color(255, 0, 60, 0), new Vector3(x / 45f, 0, 0));
 		}
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_thick.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_Thick.Value;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, rings.ToArray(), 0, rings.Count - 2);
 	}
 
@@ -196,7 +196,7 @@ public class AcytaeaLaserSword2 : ModProjectile
 		{
 			if (proj != null && proj.active)
 			{
-				if (proj.type == ModContent.ProjectileType<AcytaeaSword_following>())
+				if (proj.type == ModContent.ProjectileType<AcytaeaSword_Following>())
 				{
 					return;
 				}
@@ -206,7 +206,7 @@ public class AcytaeaLaserSword2 : ModProjectile
 		{
 			if (npc.type == ModContent.NPCType<Acytaea_Boss>())
 			{
-				Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<AcytaeaSword_following>(), 0, 0f, Projectile.owner, npc.whoAmI);
+				Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<AcytaeaSword_Following>(), 0, 0f, Projectile.owner, npc.whoAmI);
 				break;
 			}
 		}

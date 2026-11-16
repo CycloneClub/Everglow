@@ -14,7 +14,7 @@ public class BorealWoodClub_Item : ClubItem
 		Item.useAnimation = 12;
 		SmashDamageMultiplier = 8f / 9f;
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.BorealWoodClub>();
-		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.BorealWoodClub_smash>();
+		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.BorealWoodClub_Smash>();
 	}
 
 	public override void AddRecipes()

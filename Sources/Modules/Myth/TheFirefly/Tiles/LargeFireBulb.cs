@@ -10,7 +10,7 @@ internal class LargeFireBulbTestItem : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Placeables;
 
-	public override string Texture => ModAsset.LargeFireBulb_item_Mod;
+	public override string Texture => ModAsset.LargeFireBulb_Item_Mod;
 
 	public override void SetDefaults()
 	{
@@ -409,7 +409,7 @@ internal class LargeFireBulb : ModTile, ITileFluentlyDrawn
 
 	private void GenerateProjectile(int i, int j)
 	{
-		Projectile.NewProjectile(WorldGen.GetProjectileSource_TileBreak(i, j), new Vector2(i + 1, j + 5) * 16 + new Vector2(0, 8), Vector2.zeroVector, ModContent.ProjectileType<FallenDropFruit>(), 100, 10, Owner: Main.maxPlayers);
+		Projectile.NewProjectile(WorldGen.GetProjectileSource_TileBreak(i, j), new Vector2(i + 1, j + 5) * 16 + new Vector2(0, 8), Vector2.zeroVector, ModContent.ProjectileType<FallenDropFruit>(), 100, 10, Owner: -1);
 	}
 
 	public override void NumDust(int i, int j, bool fail, ref int num)

@@ -52,7 +52,7 @@ public class UseItemObjective : PlayerObjectiveBase
 			return QuestText.Get("Objectives.UseAny", itemString, ItemCount, progress);
 		}
 
-		return QuestText.Get("Objectives.Use", ItemDrawer.Create(ItemTypes.First()), ItemCount, progress);
+		return QuestText.Get("Objectives.Use", ItemDrawer.Create(ItemTypes.First(), ItemCount), progress);
 	}
 
 	public override void Activate(PlayerQuestBase sourceQuest)

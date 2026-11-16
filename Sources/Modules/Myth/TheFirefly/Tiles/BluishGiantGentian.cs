@@ -26,7 +26,7 @@ public class BluishGiantGentian : ModTile, ITileFluentlyDrawn
 		// Include the inherited 2-pixel padding in the existing 120-pixel style stride.
 		TileObjectData.newTile.CoordinateWidth = 118;
 		TileObjectData.addTile(Type);
-		DustType = ModContent.DustType<BluishGiantGentian_dust>();
+		DustType = ModContent.DustType<BluishGiantGentian_Dust>();
 		AddMapEntry(new Color(8, 110, 255));
 		HitSound = SoundID.Grass;
 	}
@@ -54,7 +54,7 @@ public class BluishGiantGentian : ModTile, ITileFluentlyDrawn
 			switch (Main.rand.Next(5))
 			{
 				case 0:
-					var gore0 = new BluishGiantGentian_gore0
+					var gore0 = new BluishGiantGentian_Gore0
 					{
 						Active = true,
 						Visible = true,
@@ -66,7 +66,7 @@ public class BluishGiantGentian : ModTile, ITileFluentlyDrawn
 					Ins.VFXManager.Add(gore0);
 					break;
 				case 1:
-					var gore1 = new BluishGiantGentian_gore1
+					var gore1 = new BluishGiantGentian_Gore1
 					{
 						Active = true,
 						Visible = true,
@@ -78,7 +78,7 @@ public class BluishGiantGentian : ModTile, ITileFluentlyDrawn
 					Ins.VFXManager.Add(gore1);
 					break;
 				case 2:
-					var gore2 = new BluishGiantGentian_gore2
+					var gore2 = new BluishGiantGentian_Gore2
 					{
 						Active = true,
 						Visible = true,
@@ -90,7 +90,7 @@ public class BluishGiantGentian : ModTile, ITileFluentlyDrawn
 					Ins.VFXManager.Add(gore2);
 					break;
 				case 3:
-					var gore3 = new BluishGiantGentian_gore3
+					var gore3 = new BluishGiantGentian_Gore3
 					{
 						Active = true,
 						Visible = true,
@@ -102,7 +102,7 @@ public class BluishGiantGentian : ModTile, ITileFluentlyDrawn
 					Ins.VFXManager.Add(gore3);
 					break;
 				case 4:
-					var gore4 = new BluishGiantGentian_gore4
+					var gore4 = new BluishGiantGentian_Gore4
 					{
 						Active = true,
 						Visible = true,

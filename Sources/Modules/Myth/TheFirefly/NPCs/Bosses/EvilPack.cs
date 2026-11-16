@@ -95,7 +95,7 @@ public class EvilPack : ModNPC
 						Main.npc[n].velocity = new Vector2(-1, 1);
 						for (int t = 0; t < 24; t++)
 						{
-							Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, new Vector2(-35, 35).RotateRandom(Main.rand.NextFloat(-0.5f, 0.5f) * Main.rand.NextFloat(0.75f, 1.25f)) + new Vector2(0, Main.rand.NextFloat(0.75f, 12.5f)).RotateRandom(6.283), ModContent.ProjectileType<MothSummonEffect>(), 0, 0, Main.maxPlayers, Main.rand.NextFloat(-0.2f, 0.2f));
+							Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, new Vector2(-35, 35).RotateRandom(Main.rand.NextFloat(-0.5f, 0.5f) * Main.rand.NextFloat(0.75f, 1.25f)) + new Vector2(0, Main.rand.NextFloat(0.75f, 12.5f)).RotateRandom(6.283), ModContent.ProjectileType<MothSummonEffect>(), 0, 0, -1, Main.rand.NextFloat(-0.2f, 0.2f));
 						}
 					}
 

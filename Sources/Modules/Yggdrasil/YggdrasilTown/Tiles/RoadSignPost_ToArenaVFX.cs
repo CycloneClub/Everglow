@@ -121,7 +121,7 @@ public class RoadSignPost_ToArenaVFX : TileVFX
 				tile.HasTile = false;
 			}
 		}
-		TileUtils.PlaceFrameImportantTiles(60, 196, 5, 4, ModContent.TileType<WoodenRoomDoor_exit>());
+		TileUtils.PlaceFrameImportantTiles(60, 196, 5, 4, ModContent.TileType<WoodenRoomDoor_Exit>());
 		Point msg = YggdrasilTownCentralSystem.FightingRequestPlayerNPCType;
 		if (msg.X >= 0 && msg.Y >= 0)
 		{

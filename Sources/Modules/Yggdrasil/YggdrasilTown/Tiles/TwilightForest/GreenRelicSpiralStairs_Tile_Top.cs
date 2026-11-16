@@ -55,7 +55,7 @@ public class GreenRelicSpiralStairs_Tile_Top : ModTile, ISceneTile
 	public void AddScene(int i, int j)
 	{
 		Tile tile = TileUtils.SafeGetTile(i, j);
-		GreenRelicSpiralStairs_Top_foreground gRSSTf = new GreenRelicSpiralStairs_Top_foreground { Position = new Vector2(i, j) * 16, Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = Type, MaxDiatanceOutOfScreen = 1800, Origin = new Point(44, 3), Frame = new Rectangle(0, 0, 720, 80) };
+		GreenRelicSpiralStairs_Top_Foreground gRSSTf = new GreenRelicSpiralStairs_Top_Foreground { Position = new Vector2(i, j) * 16, Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = Type, MaxDiatanceOutOfScreen = 1800, Origin = new Point(44, 3), Frame = new Rectangle(0, 0, 720, 80) };
 		Ins.VFXManager.Add(gRSSTf);
 
 		GreenRelicSpiralStairs_Top gRSST1 = new GreenRelicSpiralStairs_Top { Position = new Vector2(i - 15, j) * 16, Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = Type, MaxDiatanceOutOfScreen = 1800, Origin = new Point(0, 4), Frame = new Rectangle(0, 0, 48, 96) };

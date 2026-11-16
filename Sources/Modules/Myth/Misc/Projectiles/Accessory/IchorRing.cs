@@ -214,7 +214,7 @@ public class IchorRing : ModProjectile
 		effect.Parameters["uTransform"].SetValue(model * projection);
 		effect.CurrentTechnique.Passes[0].Apply();
 		Main.graphics.GraphicsDevice.RasterizerState = RasterizerState.CullNone;
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_black.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_Black.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		if (bars2.Count > 3)
 		{
@@ -228,7 +228,7 @@ public class IchorRing : ModProjectile
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_5_black.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_5_Black.Value;
 		if (bars4.Count > 3)
 		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars4.ToArray(), 0, bars4.Count - 2);

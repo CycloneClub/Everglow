@@ -97,10 +97,10 @@ public class KelpCurtainBackground : ModSystem
 		// bool isleOfBloom_Cave_flag0 = MathUtils.IntersectsPolygonAABB(isleOfBloom_CavePolygon, Main.screenPosition, Main.screenPosition + new Vector2(Main.screenWidth, Main.screenHeight));
 		// if (isleOfBloom_Cave_flag0)
 		// {
-		// BackgroundManager.DrawBG_RestrictXY(ModAsset.IsleOfBloom_Underground_sky.Value, float.PositiveInfinity, isleOfBloom_CaveCenter_World, Color.White, isleOfBloom_Cave_minX, isleOfBloom_Cave_maxX, isleOfBloom_Cave_minY, isleOfBloom_Cave_maxY + 160);
-		// BackgroundManager.DrawBG_RestrictXY(ModAsset.IsleOfBloom_Underground_far.Value, 4, isleOfBloom_CaveCenter_World, Color.White, isleOfBloom_Cave_minX, isleOfBloom_Cave_maxX, isleOfBloom_Cave_minY, isleOfBloom_Cave_maxY);
-		// BackgroundManager.DrawBG_RestrictXY(ModAsset.IsleOfBloom_Underground_middle.Value, 2, isleOfBloom_CaveCenter_World, Color.White, isleOfBloom_Cave_minX, isleOfBloom_Cave_maxX, isleOfBloom_Cave_minY, isleOfBloom_Cave_maxY);
-		// BackgroundManager.DrawBG_RestrictXY(ModAsset.IsleOfBloom_Underground_close.Value, 1.2f, isleOfBloom_CaveCenter_World, Color.White, isleOfBloom_Cave_minX, isleOfBloom_Cave_maxX, isleOfBloom_Cave_minY, isleOfBloom_Cave_maxY);
+		// BackgroundManager.DrawBG_RestrictXY(ModAsset.IsleOfBloom_Underground_Sky.Value, float.PositiveInfinity, isleOfBloom_CaveCenter_World, Color.White, isleOfBloom_Cave_minX, isleOfBloom_Cave_maxX, isleOfBloom_Cave_minY, isleOfBloom_Cave_maxY + 160);
+		// BackgroundManager.DrawBG_RestrictXY(ModAsset.IsleOfBloom_Underground_Far.Value, 4, isleOfBloom_CaveCenter_World, Color.White, isleOfBloom_Cave_minX, isleOfBloom_Cave_maxX, isleOfBloom_Cave_minY, isleOfBloom_Cave_maxY);
+		// BackgroundManager.DrawBG_RestrictXY(ModAsset.IsleOfBloom_Underground_Middle.Value, 2, isleOfBloom_CaveCenter_World, Color.White, isleOfBloom_Cave_minX, isleOfBloom_Cave_maxX, isleOfBloom_Cave_minY, isleOfBloom_Cave_maxY);
+		// BackgroundManager.DrawBG_RestrictXY(ModAsset.IsleOfBloom_Underground_Close.Value, 1.2f, isleOfBloom_CaveCenter_World, Color.White, isleOfBloom_Cave_minX, isleOfBloom_Cave_maxX, isleOfBloom_Cave_minY, isleOfBloom_Cave_maxY);
 		// }
 		// }
 	}

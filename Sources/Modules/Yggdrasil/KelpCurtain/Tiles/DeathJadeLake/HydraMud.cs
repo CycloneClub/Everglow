@@ -19,7 +19,7 @@ public class HydraMud : ModTile, ISceneTile
 
 	public void AddScene(int i, int j)
 	{
-		HydraMudTentacles_fore leaf = new HydraMudTentacles_fore { Position = new Vector2(i, j) * 16, Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = Type };
+		HydraMudTentacles_Fore leaf = new HydraMudTentacles_Fore { Position = new Vector2(i, j) * 16, Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = Type };
 		leaf.scale = 1f;
 		leaf.style = (i + j) % 4;
 		Ins.VFXManager.Add(leaf);

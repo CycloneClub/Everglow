@@ -58,7 +58,7 @@ public class TuskWall : BoxEntity
 			if (!StartShake)
 			{
 				Point point = (Position + new Vector2(Size.X * 0.5f, Size.Y)).ToTileCoordinates();
-				Projectile.NewProjectile(WorldGen.GetProjectileSource_TileBreak(point.X, point.Y), Position + new Vector2(Size.X * 0.5f, Size.Y), Vector2.zeroVector, ModContent.ProjectileType<TuskWall_Wave>(), 0, 0, Owner: Main.maxPlayers);
+				Projectile.NewProjectile(WorldGen.GetProjectileSource_TileBreak(point.X, point.Y), Position + new Vector2(Size.X * 0.5f, Size.Y), Vector2.zeroVector, ModContent.ProjectileType<TuskWall_Wave>(), 0, 0, Owner: -1);
 				ShakerManager.AddShaker(Position + new Vector2(Size.X * 0.5f, Size.Y), new Vector2(0, 1), 6, 30, 120, 0.999f, 0.999f, 280);
 				StartShake = true;
 			}
@@ -79,7 +79,7 @@ public class TuskWall : BoxEntity
 				if (!EndShake)
 				{
 					Point point = (Position + new Vector2(Size.X * 0.5f, Size.Y)).ToTileCoordinates();
-					Projectile.NewProjectile(WorldGen.GetProjectileSource_TileBreak(point.X, point.Y), Position + new Vector2(Size.X * 0.5f, Size.Y), Vector2.zeroVector, ModContent.ProjectileType<TuskWall_Wave>(), 0, 0, Owner: Main.maxPlayers);
+					Projectile.NewProjectile(WorldGen.GetProjectileSource_TileBreak(point.X, point.Y), Position + new Vector2(Size.X * 0.5f, Size.Y), Vector2.zeroVector, ModContent.ProjectileType<TuskWall_Wave>(), 0, 0, Owner: -1);
 					ShakerManager.AddShaker(Position + new Vector2(Size.X * 0.5f, Size.Y), new Vector2(0, 1), 60, 30, 120, 0.9f, 0.9f, 120);
 					ShakerManager.AddShaker(Position + new Vector2(Size.X * 0.5f, Size.Y), new Vector2(0, 1), 6, 30, 120, 0.999f, 0.999f, Timer);
 					EndShake = true;

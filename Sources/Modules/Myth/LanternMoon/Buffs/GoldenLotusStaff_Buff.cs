@@ -12,7 +12,7 @@ public class GoldenLotusStaff_Buff : ModBuff
 
 	public override void Update(Player player, ref int buffIndex)
 	{
-		if (player.ownedProjectileCounts[ModContent.ProjectileType<GoldenLotusStaff_proj>()] + player.ownedProjectileCounts[ModContent.ProjectileType<GoldenLotusStaff_subproj>()] <= 0)
+		if (player.ownedProjectileCounts[ModContent.ProjectileType<GoldenLotusStaff_Proj>()] + player.ownedProjectileCounts[ModContent.ProjectileType<GoldenLotusStaff_Subproj>()] <= 0)
 		{
 			if (player.buffTime[buffIndex] > 1)
 			{
@@ -36,7 +36,7 @@ public class GoldenLotusStaff_Buff : ModBuff
 			{
 				if (proj is not null && proj.active && proj.owner == Main.myPlayer)
 				{
-					if (proj.type == ModContent.ProjectileType<GoldenLotusStaff_proj>() || proj.type == ModContent.ProjectileType<GoldenLotusStaff_subproj>())
+					if (proj.type == ModContent.ProjectileType<GoldenLotusStaff_Proj>() || proj.type == ModContent.ProjectileType<GoldenLotusStaff_Subproj>())
 					{
 						proj.Kill();
 					}

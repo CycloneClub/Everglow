@@ -29,7 +29,7 @@ public class FeatheredStaff : ModItem
 		Item.knockBack = 3.25f;
 		Item.mana = 7;
 
-		Item.shoot = ModContent.ProjectileType<FeatheredStaff_staff>();
+		Item.shoot = ModContent.ProjectileType<FeatheredStaff_Staff>();
 		Item.shootSpeed = 10;
 
 		Item.rare = ItemRarityID.Green;

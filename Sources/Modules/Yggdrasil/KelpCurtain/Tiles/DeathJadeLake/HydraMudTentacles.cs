@@ -3,7 +3,7 @@ using Everglow.Commons.VFX.Scene;
 namespace Everglow.Yggdrasil.KelpCurtain.Tiles.DeathJadeLake;
 
 [Pipeline(typeof(WCSPipeline))]
-public class HydraMudTentacles_fore : TileVFX
+public class HydraMudTentacles_Fore : TileVFX
 {
 	public override CodeLayer DrawLayer => CodeLayer.PostDrawPlayers;
 

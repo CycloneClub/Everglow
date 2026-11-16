@@ -90,6 +90,6 @@ public class HeatproofChair : ModTile
 
 	public override void MouseOver(int i, int j)
 	{
-		FurnitureUtils.ChairMouseOver<HeatproofChair_item>(i, j);
+		FurnitureUtils.ChairMouseOver<HeatproofChair_Item>(i, j);
 	}
 }

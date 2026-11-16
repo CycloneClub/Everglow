@@ -108,7 +108,7 @@ public class AncientPhantom_Bow : Fighter
 			else
 			{
 				ShootTimer = 60;
-				Projectile.NewProjectile(NPC.GetSource_FromAI(), shootPos, shootVel, ModContent.ProjectileType<AncientPhantom_Bow_Arrow>(), 20, 0f, Main.maxPlayers);
+				Projectile.NewProjectile(NPC.GetSource_FromAI(), shootPos, shootVel, ModContent.ProjectileType<AncientPhantom_Bow_Arrow>(), 20, 0f, -1);
 
 				float dis_X = Math.Abs(NPC.Center.X - Main.player[NPC.target].Center.X);
 				if (dis_X <= SafeShootDistance || dis_X >= SafeShootDistance + 160)
@@ -294,11 +294,11 @@ public class AncientPhantom_Bow : Fighter
 	{
 		SpriteEffects flip = NPC.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 		float fade = (255 - NPC.alpha) / 255f;
-		Texture2D body_glow = ModAsset.AncientPhantom_Bow_glow.Value;
+		Texture2D body_glow = ModAsset.AncientPhantom_Bow_Glow.Value;
 		spriteBatch.Draw(body_glow, NPC.Center + new Vector2(0, NPC.gfxOffY - 7) - screenPos, NPC.frame, Color.White, 0, NPC.frame.Size() * 0.5f, NPC.scale, flip, 0);
 
 		Texture2D bow = ModAsset.AncientPhantom_Bow_Bow.Value;
-		Texture2D bow_glow = ModAsset.AncientPhantom_Bow_Bow_glow.Value;
+		Texture2D bow_glow = ModAsset.AncientPhantom_Bow_Bow_Glow.Value;
 		float bowRot = -MathHelper.PiOver2 - 0.7f * NPC.spriteDirection;
 		Vector2 bowOffset = new Vector2(8 * NPC.spriteDirection, NPC.gfxOffY);
 		if (CanShoot)

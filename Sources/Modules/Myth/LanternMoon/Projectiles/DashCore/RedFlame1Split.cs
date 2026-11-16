@@ -61,7 +61,7 @@ internal class RedFlame1Split : ModProjectile
 		{
 			projOldColor[f] = projOldColor[f - 1];
 		}
-		if (Projectile.timeLeft % 15 == 0)
+		if (Main.netMode != NetmodeID.MultiplayerClient && Projectile.timeLeft % 15 == 0)
 		{
 			Vector2 vm = Projectile.velocity.RotatedBy(1.57) * 0.35f;
 			Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, vm, ModContent.ProjectileType<RedFlame0Little>(), Projectile.damage, 0, Projectile.owner, 0, 0);

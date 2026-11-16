@@ -35,15 +35,15 @@ public class YggdrasilCyathea : ModTile
 		{
 			for (int x = 0; x < 18; x++)
 			{
-				Gore.NewGore(null, new Vector2(i * 16, j * 16) + new Vector2(Main.rand.NextFloat(16f), 0).RotatedByRandom(6.283), new Vector2(0, Main.rand.NextFloat(1f)).RotatedByRandom(6.283), ModContent.GoreType<CyatheaLeaf_tiny>(), Main.rand.NextFloat(0.65f, 1.45f));
+				Gore.NewGore(null, new Vector2(i * 16, j * 16) + new Vector2(Main.rand.NextFloat(16f), 0).RotatedByRandom(6.283), new Vector2(0, Main.rand.NextFloat(1f)).RotatedByRandom(6.283), ModContent.GoreType<CyatheaLeaf_Tiny>(), Main.rand.NextFloat(0.65f, 1.45f));
 			}
 			for (int x = 0; x < 6; x++)
 			{
-				Gore.NewGore(null, new Vector2(i * 16, j * 16) + new Vector2(Main.rand.NextFloat(16f), 0).RotatedByRandom(6.283), new Vector2(0, Main.rand.NextFloat(1f)).RotatedByRandom(6.283), ModContent.GoreType<CyatheaLeaf_small>(), Main.rand.NextFloat(0.65f, 1.45f));
+				Gore.NewGore(null, new Vector2(i * 16, j * 16) + new Vector2(Main.rand.NextFloat(16f), 0).RotatedByRandom(6.283), new Vector2(0, Main.rand.NextFloat(1f)).RotatedByRandom(6.283), ModContent.GoreType<CyatheaLeaf_Small>(), Main.rand.NextFloat(0.65f, 1.45f));
 			}
 			for (int x = 0; x < 3; x++)
 			{
-				Gore.NewGore(null, new Vector2(i * 16, j * 16) + new Vector2(Main.rand.NextFloat(16f), 0).RotatedByRandom(6.283), new Vector2(0, Main.rand.NextFloat(1f)).RotatedByRandom(6.283), ModContent.GoreType<CyatheaLeaf_large>(), Main.rand.NextFloat(0.65f, 1.45f));
+				Gore.NewGore(null, new Vector2(i * 16, j * 16) + new Vector2(Main.rand.NextFloat(16f), 0).RotatedByRandom(6.283), new Vector2(0, Main.rand.NextFloat(1f)).RotatedByRandom(6.283), ModContent.GoreType<CyatheaLeaf_Large>(), Main.rand.NextFloat(0.65f, 1.45f));
 			}
 			for (int x = 0; x < 64; x++)
 			{
@@ -66,15 +66,15 @@ public class YggdrasilCyathea : ModTile
 		{
 			for (int x = 0; x < 18; x++)
 			{
-				Gore.NewGore(null, new Vector2(i * 16, j * 16) + new Vector2(Main.rand.NextFloat(16f), 0).RotatedByRandom(6.283), new Vector2(0, Main.rand.NextFloat(1f)).RotatedByRandom(6.283), ModContent.GoreType<CyatheaLeaf_tiny>(), Main.rand.NextFloat(0.65f, 1.45f));
+				Gore.NewGore(null, new Vector2(i * 16, j * 16) + new Vector2(Main.rand.NextFloat(16f), 0).RotatedByRandom(6.283), new Vector2(0, Main.rand.NextFloat(1f)).RotatedByRandom(6.283), ModContent.GoreType<CyatheaLeaf_Tiny>(), Main.rand.NextFloat(0.65f, 1.45f));
 			}
 			for (int x = 0; x < 6; x++)
 			{
-				Gore.NewGore(null, new Vector2(i * 16, j * 16) + new Vector2(Main.rand.NextFloat(16f), 0).RotatedByRandom(6.283), new Vector2(0, Main.rand.NextFloat(1f)).RotatedByRandom(6.283), ModContent.GoreType<CyatheaLeaf_small>(), Main.rand.NextFloat(0.65f, 1.45f));
+				Gore.NewGore(null, new Vector2(i * 16, j * 16) + new Vector2(Main.rand.NextFloat(16f), 0).RotatedByRandom(6.283), new Vector2(0, Main.rand.NextFloat(1f)).RotatedByRandom(6.283), ModContent.GoreType<CyatheaLeaf_Small>(), Main.rand.NextFloat(0.65f, 1.45f));
 			}
 			for (int x = 0; x < 3; x++)
 			{
-				Gore.NewGore(null, new Vector2(i * 16, j * 16) + new Vector2(Main.rand.NextFloat(16f), 0).RotatedByRandom(6.283), new Vector2(0, Main.rand.NextFloat(1f)).RotatedByRandom(6.283), ModContent.GoreType<CyatheaLeaf_large>(), Main.rand.NextFloat(0.65f, 1.45f));
+				Gore.NewGore(null, new Vector2(i * 16, j * 16) + new Vector2(Main.rand.NextFloat(16f), 0).RotatedByRandom(6.283), new Vector2(0, Main.rand.NextFloat(1f)).RotatedByRandom(6.283), ModContent.GoreType<CyatheaLeaf_Large>(), Main.rand.NextFloat(0.65f, 1.45f));
 			}
 		}
 	}

@@ -57,8 +57,8 @@ public class GlowWoodClock : ModTile
 		if (tile.TileFrameX == 18 && tile.TileFrameY == 72)
 		{
 			Vector2 offset = new Vector2(3.5f, -47);
-			Texture2D hourHand = ModAsset.GlowWoodClock_hourNeedle.Value;
-			Texture2D minuteHand = ModAsset.GlowWoodClock_minuteNeedle.Value;
+			Texture2D hourHand = ModAsset.GlowWoodClock_HourNeedle.Value;
+			Texture2D minuteHand = ModAsset.GlowWoodClock_MinuteNeedle.Value;
 			spriteBatch.Draw(hourHand, new Vector2(i * 16, j * 16) - Main.screenPosition + zero + offset, null, Color.White, MythUtils.GetHourHandRotation(), new Vector2(0.5f, 6f), 2, SpriteEffects.None, 0);
 			spriteBatch.Draw(minuteHand, new Vector2(i * 16, j * 16) - Main.screenPosition + zero + offset, null, Color.White, MythUtils.GetMinuteHandRotation(), new Vector2(0.5f, 6f), 1.8f, SpriteEffects.None, 0);
 		}

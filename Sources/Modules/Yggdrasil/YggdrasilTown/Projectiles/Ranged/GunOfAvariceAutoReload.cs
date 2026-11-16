@@ -48,7 +48,7 @@ public class GunOfAvariceAutoReload : ModProjectile
 			}
 			for (int i = 0; i < 14; i++)
 			{
-				var dust = Dust.NewDustDirect(Projectile.Center - new Vector2(4), 0, 0, ModContent.DustType<BulletShell_yggdrasil>());
+				var dust = Dust.NewDustDirect(Projectile.Center - new Vector2(4), 0, 0, ModContent.DustType<BulletShell_Yggdrasil>());
 				dust.velocity = new Vector2(0, -Main.rand.NextFloat(5, 8)).RotatedBy(Main.rand.NextFloat(-1.4f, 1.4f));
 			}
 		}

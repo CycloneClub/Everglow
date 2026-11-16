@@ -29,9 +29,9 @@ public class BeadShakeWave : ModProjectile, IWarpProjectile
 		Color c = new Color(0.2f * MathF.Sqrt(1 - timeValue), 0.6f * (1 - timeValue) * (1 - timeValue), 3f * (1 - timeValue), 0f);
 		Color cDark = new Color(0, 0, 0, 1f - timeValue);
 
-		// DrawTexCircle(MathF.Sqrt(timeValue) * 11 * Projectile.ai[0], 20 * (1 - timeValue) * Projectile.ai[0], cDark, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_2_black_thick.Value);
-		DrawTexCircle(MathF.Sqrt(timeValue) * 12 * Projectile.ai[0], 4 * (1 - timeValue) * Projectile.ai[0], cDark * 0.5f, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_black.Value);
-		DrawTexCircle(MathF.Sqrt(timeValue) * 6 * Projectile.ai[0], 3 * (1 - timeValue) * Projectile.ai[0], cDark * 0.5f, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_black.Value);
+		// DrawTexCircle(MathF.Sqrt(timeValue) * 11 * Projectile.ai[0], 20 * (1 - timeValue) * Projectile.ai[0], cDark, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_2_Black_Thick.Value);
+		DrawTexCircle(MathF.Sqrt(timeValue) * 12 * Projectile.ai[0], 4 * (1 - timeValue) * Projectile.ai[0], cDark * 0.5f, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_Black.Value);
+		DrawTexCircle(MathF.Sqrt(timeValue) * 6 * Projectile.ai[0], 3 * (1 - timeValue) * Projectile.ai[0], cDark * 0.5f, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_Black.Value);
 
 		DrawTexCircle(MathF.Sqrt(timeValue) * 12 * Projectile.ai[0], 4 * (1 - timeValue) * Projectile.ai[0], c * 0.8f, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail.Value);
 		DrawTexCircle(MathF.Sqrt(timeValue) * 6 * Projectile.ai[0], 3 * (1 - timeValue) * Projectile.ai[0], c * 0.8f, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail.Value);

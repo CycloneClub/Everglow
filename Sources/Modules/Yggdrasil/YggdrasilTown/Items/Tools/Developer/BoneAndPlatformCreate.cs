@@ -28,7 +28,7 @@ public class BoneAndPlatformCreate : ModItem
 		// {
 		// 	x0 -= 60;
 		// }
-		// TileUtils.PlaceFrameImportantTiles(x0, y0, 60, 1, ModContent.TileType<BoneAndPlatform_tile>(), 0, 0);
+		// TileUtils.PlaceFrameImportantTiles(x0, y0, 60, 1, ModContent.TileType<BoneAndPlatform_Tile>(), 0, 0);
 		return true;
 	}
 

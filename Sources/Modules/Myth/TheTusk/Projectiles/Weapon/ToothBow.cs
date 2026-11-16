@@ -94,7 +94,7 @@ public class ToothBow : HandheldProjectile
 	public override void DrawBaseTexture(Color lightColor)
 	{
 		Player player = Main.player[Projectile.owner];
-		var texMain = ModAsset.ToothBow_bow.Value;
+		var texMain = ModAsset.ToothBow_Bow.Value;
 		var texArrow = ModAsset.ToothBow_BloodArrow.Value;
 		SpriteEffects se = SpriteEffects.None;
 		if (player.direction * player.gravDir == -1)
@@ -126,7 +126,7 @@ public class ToothBow : HandheldProjectile
 
 		bars.Add(drawCenter + (new Vector2(-23, 32) + new Vector2(-5, 0)).RotatedBy(rot), lightColor, new Vector3(0, 1, 0));
 		bars.Add(drawCenter + (new Vector2(-23, 32) + new Vector2(5, 0)).RotatedBy(rot), lightColor, new Vector3(1, 1, 0));
-		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.ToothBow_string.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.ToothBow_String.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		if (bars.Count > 3)
 		{

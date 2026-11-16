@@ -19,7 +19,7 @@ public class DreamWeaver_Rain : TrailingProjectile
 		SelfLuminous = false;
 		TrailLength = 12;
 		TrailTexture = Commons.ModAsset.Trail_1.Value;
-		TrailTextureBlack = Commons.ModAsset.Trail_black.Value;
+		TrailTextureBlack = Commons.ModAsset.Trail_Black.Value;
 		TrailShader = Commons.ModAsset.Trailing.Value;
 		ProjectileID.Sets.DrawScreenCheckFluff[Type] = 10800;
 	}
@@ -118,7 +118,7 @@ public class DreamWeaver_Rain : TrailingProjectile
 			d0.noGravity = true;
 			d0.velocity = new Vector2(0, -Main.rand.NextFloat(0.5f, 2f)) * 2;
 		}
-		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<DreamWeaver_hit>(), Projectile.damage, Projectile.knockBack, Projectile.owner, Main.rand.NextFloat(0.7f, 1.3f));
+		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<DreamWeaver_Hit>(), Projectile.damage, Projectile.knockBack, Projectile.owner, Main.rand.NextFloat(0.7f, 1.3f));
 	}
 
 	public override Color GetTrailColor(int style, Vector2 worldPos, int index, ref float factor, float extraValue0 = 0, float extraValue1 = 0) => base.GetTrailColor(style, worldPos, index, ref factor, extraValue0, extraValue1);

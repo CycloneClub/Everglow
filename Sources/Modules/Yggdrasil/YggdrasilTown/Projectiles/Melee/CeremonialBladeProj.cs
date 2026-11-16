@@ -6,7 +6,7 @@ using Terraria.GameContent;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Melee;
 
-public class CeremonialBladeProj : ModProjectile, IWarpProjectile_warpStyle2
+public class CeremonialBladeProj : ModProjectile, IWarpProjectile_WarpStyle2
 {
 	// We define some constants that determine the swing range of the sword
 	// Not that we use multipliers here since that simplifies the amount of tweaks for these interactions

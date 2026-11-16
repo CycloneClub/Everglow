@@ -235,7 +235,7 @@ namespace Everglow.EternalResolve.Bosses.Projectiles
 				for (int f = MaxDarkAttackUnitCount - 1; f > 0; f--)
 				{
 					DarkAttackEffect[f] = DarkAttackEffect[f - 1];
-					DarkAttackEffect[f].Postion = DarkAttackEffect[f - 1].Postion + Main.player[Projectile.owner].velocity;
+					DarkAttackEffect[f].Postion = DarkAttackEffect[f - 1].Postion + Main.npc[(int)Projectile.ai[0]].velocity;
 					DarkAttackEffect[f].Color.A = (byte)(DarkAttackEffect[f - 1].Color.A * ShadeMultiplicative_Modifier);
 					DarkAttackEffect[f].Size.Y = DarkAttackEffect[f - 1].Size.Y * ScaleMultiplicative_Modifier;
 				}
@@ -250,7 +250,7 @@ namespace Everglow.EternalResolve.Bosses.Projectiles
 			else
 			{
 				DarkAttackEffect[0].Color.A = (byte)(DarkAttackEffect[0].Color.A * ShadeMultiplicative_Modifier);
-				DarkAttackEffect[0].Postion = drawPos + Main.player[Projectile.owner].velocity;
+				DarkAttackEffect[0].Postion = drawPos + Main.npc[(int)Projectile.ai[0]].velocity;
 				DarkAttackEffect[0].Size.Y = drawSize.Y * ScaleMultiplicative_Modifier;
 				DarkAttackEffect[0].Rotation = drawRotation;
 			}
@@ -301,7 +301,7 @@ namespace Everglow.EternalResolve.Bosses.Projectiles
 		/// <param name="flagTopY">旗帜上边缘相对于武器绘制位置的纵向像素偏移，在旋转前使用。</param>
 		public void DrawFlags(Color lightColor, float flagLeftX, float flagTopY, Texture2D flagTexture, float mulVelocityLeft = 1f, float mulVelocityRight = 1f)
 		{
-			Player player = Main.player[Projectile.owner];
+			NPC npc = Main.npc[(int)Projectile.ai[0]];
 			float flagRightX = flagLeftX + flagTexture.Width;
 			Vector2 flagTopLeft = ItemDraw.Postion + new Vector2(flagLeftX, flagTopY).RotatedBy(ItemDraw.Rotation) - Main.screenPosition;
 			Vector2 flagTopRight = ItemDraw.Postion + new Vector2(flagRightX, flagTopY).RotatedBy(ItemDraw.Rotation) - Main.screenPosition;
@@ -310,8 +310,8 @@ namespace Everglow.EternalResolve.Bosses.Projectiles
 				flagTopLeft = ItemDraw.Postion + new Vector2(-flagRightX, flagTopY).RotatedBy(ItemDraw.Rotation) - Main.screenPosition;
 				flagTopRight = ItemDraw.Postion + new Vector2(-flagLeftX, flagTopY).RotatedBy(ItemDraw.Rotation) - Main.screenPosition;
 			}
-			Vector2 flagBottomLeft = flagTopLeft + new Vector2(0, flagTexture.Height) - Projectile.velocity * mulVelocityLeft - player.velocity;
-			Vector2 flagBottomRight = flagTopRight + new Vector2(0, flagTexture.Height) - Projectile.velocity * mulVelocityRight - player.velocity;
+			Vector2 flagBottomLeft = flagTopLeft + new Vector2(0, flagTexture.Height) - Projectile.velocity * mulVelocityLeft - npc.velocity;
+			Vector2 flagBottomRight = flagTopRight + new Vector2(0, flagTexture.Height) - Projectile.velocity * mulVelocityRight - npc.velocity;
 			Vector2 deltaBottom = flagBottomRight - flagBottomLeft;
 			float velBottomLeft = (deltaBottom.X - flagTexture.Width) * 1f;
 			float velBottomRight = -(deltaBottom.X - flagTexture.Width) * 1f;
@@ -342,7 +342,7 @@ namespace Everglow.EternalResolve.Bosses.Projectiles
 
 		public virtual void DrawEffect(Color lightColor)
 		{
-			Texture2D Shadow = Commons.ModAsset.Star2_black.Value;
+			Texture2D Shadow = Commons.ModAsset.Star2_Black.Value;
 			Texture2D light = Commons.ModAsset.StabbingProjectile.Value;
 			Vector2 drawOrigin = light.Size() / 2f;
 			Vector2 drawShadowOrigin = Shadow.Size() / 2f;

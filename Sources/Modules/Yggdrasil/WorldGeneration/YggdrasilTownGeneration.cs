@@ -1004,6 +1004,8 @@ public partial class YggdrasilTownGeneration
 				}
 			}
 		}
+
+		ExtendJellyBallHotbed();
 	}
 
 	/// <summary>
@@ -2156,7 +2158,7 @@ public partial class YggdrasilTownGeneration
 				int checkX = subTowerCenterX - 20 + x * 10;
 				int checkY = subTowerCenterY - 50 + y * 10;
 				Tile tile = SafeGetTile(checkX, checkY);
-				tile.TileType = (ushort)ModContent.TileType<GreenRelicBrick_plating>();
+				tile.TileType = (ushort)ModContent.TileType<GreenRelicBrick_Plating>();
 				if (x == 2 && y == 0)
 				{
 					tile.TileType = (ushort)ModContent.TileType<GreenRelicBrick_BonusKey>();
@@ -2170,7 +2172,7 @@ public partial class YggdrasilTownGeneration
 					tile.TileType = (ushort)ModContent.TileType<GreenRelicBrick_BonusKey>();
 				}
 				tile.HasTile = true;
-				tile.TileFrameX = tile.TileType == (ushort)ModContent.TileType<GreenRelicBrick_plating>() ? (short)(18 * GenRand.Next(2)) : (short)0;
+				tile.TileFrameX = tile.TileType == (ushort)ModContent.TileType<GreenRelicBrick_Plating>() ? (short)(18 * GenRand.Next(2)) : (short)0;
 				if (x == 2 && y == 10)
 				{
 					List<Item> contents = [new Item(ModContent.ItemType<CelticKeyStone>())];
@@ -2842,5 +2844,4 @@ public partial class YggdrasilTownGeneration
 			bonus.Add(potentialList[GenRand.Next(potentialList.Count)]);
 		}
 	}
-
 }

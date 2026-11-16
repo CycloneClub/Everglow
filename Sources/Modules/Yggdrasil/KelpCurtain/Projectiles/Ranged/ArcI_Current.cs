@@ -35,7 +35,7 @@ public class ArcI_Current : ModProjectile
 		Projectile.hide = true;
 	}
 
-	public override string Texture => Commons.ModAsset.Trail_10_black_Mod;
+	public override string Texture => Commons.ModAsset.Trail_10_Black_Mod;
 
 	public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
 	{
@@ -46,7 +46,7 @@ public class ArcI_Current : ModProjectile
 	{
 		foreach (var proj in Main.projectile)
 		{
-			if (proj is not null && proj.active && proj.owner == Projectile.owner && proj.type == ModContent.ProjectileType<ArcI_proj>())
+			if (proj is not null && proj.active && proj.owner == Projectile.owner && proj.type == ModContent.ProjectileType<ArcI_Proj>())
 			{
 				if ((proj.Center - Projectile.Center).Length() < 60)
 				{

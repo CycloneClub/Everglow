@@ -55,7 +55,7 @@ public class TwilightBlueCrystal_2 : ModTile, ISceneTile
 		}
 		if (tile.TileFrameX == 54 && tile.TileFrameY == 0)
 		{
-			TwilightBlueCrystal_2_Mirror mirror = new TwilightBlueCrystal_2_Mirror { Position = new Vector2(i, j) * 16 + new Vector2(8, 8), Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = Type, FlipH = true, Texture = ModAsset.TwilightBlueCrystal_2_Mirror_flipH.Value };
+			TwilightBlueCrystal_2_Mirror mirror = new TwilightBlueCrystal_2_Mirror { Position = new Vector2(i, j) * 16 + new Vector2(8, 8), Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = Type, FlipH = true, Texture = ModAsset.TwilightBlueCrystal_2_Mirror_FlipH.Value };
 			Ins.VFXManager.Add(mirror);
 		}
 	}

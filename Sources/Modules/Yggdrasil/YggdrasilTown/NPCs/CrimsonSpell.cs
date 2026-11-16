@@ -66,7 +66,7 @@ public class CrimsonSpell : ModNPC
 		{
 			if (NPC.ai[0] == 30)
 			{
-				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(-5 * NPC.spriteDirection, 0), Vector2.zeroVector, ModContent.ProjectileType<BloodSpell>(), 10, 1, Main.maxPlayers);
+				Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center + new Vector2(-5 * NPC.spriteDirection, 0), Vector2.zeroVector, ModContent.ProjectileType<BloodSpell>(), 10, 1, -1);
 			}
 			if (NPC.ai[0] < 80)
 			{
@@ -178,7 +178,7 @@ public class CrimsonSpell : ModNPC
 		float alphaValue = NPC.alpha / 255f;
 		drawColor = Color.Lerp(drawColor, new Color(alphaValue, alphaValue * 0.05f, alphaValue * 0.05f, 0), alphaValue);
 		spriteBatch.Draw(texture, NPC.Center + offset - Main.screenPosition, NPC.frame, drawColor, 0, NPC.frame.Size() * 0.5f, 1f, NPC.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
-		Texture2D textureglow = ModAsset.CrimsonSpell_glow.Value;
+		Texture2D textureglow = ModAsset.CrimsonSpell_Glow.Value;
 		spriteBatch.Draw(textureglow, NPC.Center + offset - Main.screenPosition, NPC.frame, Color.White * alphaValue, 0, NPC.frame.Size() * 0.5f, 1f, NPC.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
 		return false;
 	}

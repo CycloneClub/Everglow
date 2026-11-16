@@ -27,7 +27,7 @@ public class OldMoss : ModTile
 		// if (Main.tile[i, j].Slope == SlopeType.Solid && Main.tile[i + 1, j].TileType == Type && Main.tile[i + 1, j].Slope == SlopeType.Solid && Main.tile[i - 1, j].Slope == SlopeType.Solid && Main.tile[i - 1, j].TileType == Type &&
 		// !Main.tile[i, j + 1].HasTile && !Main.tile[i + 1, j + 1].HasTile && !Main.tile[i - 1, j + 1].HasTile)// 巨大帘幕苔
 		// {
-		// WorldGen.PlaceTile(i, j + 1, ModContent.TileType<KelpMoss_large_tile>());
+		// WorldGen.PlaceTile(i, j + 1, ModContent.TileType<KelpMoss_Large_Tile>());
 		// }
 		// if (Main.tile[i, j].Slope == SlopeType.Solid && !Main.tile[i, j + 1].HasTile)// 雨帘苔
 		// {
@@ -45,14 +45,14 @@ public class OldMoss : ModTile
 			int typePlaced = ModContent.TileType<RottenStump_3x2>();
 			if (Main.rand.NextBool())
 			{
-				typePlaced = ModContent.TileType<SucculentHerb_type0>();
+				typePlaced = ModContent.TileType<SucculentHerb_Type0>();
 			}
 			TileUtils.PlaceFrameImportantTilesAbove(i, j, 3, 2, typePlaced, Main.rand.Next(2) * 54);
 			return;
 		}
 		if (TileUtils.CanPlaceMultiAtTopTowardsUpRight(i, j, 2, 2) && Main.rand.NextBool(4))
 		{
-			TileUtils.PlaceFrameImportantTilesAbove(i, j, 2, 2, ModContent.TileType<SucculentHerb_type1>(), Main.rand.Next(2) * 36);
+			TileUtils.PlaceFrameImportantTilesAbove(i, j, 2, 2, ModContent.TileType<SucculentHerb_Type1>(), Main.rand.Next(2) * 36);
 			return;
 		}
 		if (TileUtils.CanPlaceMultiAtTopTowardsUpRight(i, j, 1, 1))
@@ -60,7 +60,7 @@ public class OldMoss : ModTile
 			int typePlaced = ModContent.TileType<KelpCurtainBracken>();
 			if (Main.rand.NextBool(3))
 			{
-				typePlaced = ModContent.TileType<SucculentHerb_bud_type1>();
+				typePlaced = ModContent.TileType<SucculentHerb_Bud_Type1>();
 				if (Main.rand.NextBool(3) && TileUtils.SafeGetTile(i, j - 1).LiquidAmount <= 0)
 				{
 					typePlaced = ModContent.TileType<KelpCurtainBoletus>();

@@ -139,7 +139,7 @@ public class PineSprite : ModProjectile
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D mainTex = ModAsset.PineSprite.Value;
-		Texture2D glowTex = ModAsset.PineSprite_glow.Value;
+		Texture2D glowTex = ModAsset.PineSprite_Glow.Value;
 		Main.spriteBatch.Draw(mainTex, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, mainTex.Size() / 2f, 1f, SpriteEffects.None, 0);
 		Main.spriteBatch.Draw(glowTex, Projectile.Center - Main.screenPosition, null, new Color(1f, 1f, 1f, 0f), Projectile.rotation, glowTex.Size() / 2f, 1f, SpriteEffects.None, 0);
 		return false;

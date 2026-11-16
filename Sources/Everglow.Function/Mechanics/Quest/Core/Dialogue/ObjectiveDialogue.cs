@@ -54,7 +54,7 @@ public interface IQuestDialogueObjective
 
 	int NPCType { get; }
 
-	/// <summary>原版 NPC 聊天框使用的纯文本，不包含任务面板的 StringDrawer 标记。</summary>
+	/// <summary>原版 NPC 聊天框文本。物品用 <c>[i:Type]</c> 或 <c>[i/sStack:Type]</c>，不要使用任务面板的 StringDrawer 标记。</summary>
 	string GetChat();
 
 	/// <summary>返回是否接受提交。联机提交后仍需等待目标进度同步。</summary>

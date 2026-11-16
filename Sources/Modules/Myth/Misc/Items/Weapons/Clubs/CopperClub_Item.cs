@@ -14,7 +14,7 @@ public class CopperClub_Item : ClubItem
 		Item.useAnimation = 12;
 		SmashDamageMultiplier = 9f / 13f;
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.CopperClub>();
-		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.CopperClub_smash>();
+		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.CopperClub_Smash>();
 	}
 
 	public override void AddRecipes()

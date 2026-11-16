@@ -297,8 +297,8 @@ public class ForestRainVineTile_Thick : HangingTile
 
 		// Draw the weapon which player holding.
 		Texture2D tex = ModAsset.VineRepairWand.Value;
-		Texture2D tex_glow = ModAsset.VineRepairWand_glow.Value;
-		Texture2D tex_bloom = ModAsset.VineRepairWand_bloom.Value;
+		Texture2D tex_glow = ModAsset.VineRepairWand_Glow.Value;
+		Texture2D tex_bloom = ModAsset.VineRepairWand_Bloom.Value;
 		Texture2D star = Commons.ModAsset.StarSlash.Value;
 		Vector2 toCenter = rotCenter - player.Center;
 		float rot = toCenter.ToRotationSafe() + MathHelper.PiOver4;
@@ -378,7 +378,7 @@ public class ForestRainVineTile_Thick : HangingTile
 			new Vertex2D(pos2 + normal, bloomColor, new Vector3(1, 0, 0)),
 			new Vertex2D(pos2 - normal, bloomColor, new Vector3(1, 1, 0)),
 		};
-		drawStacks.Enqueue(new DrawStack(ModAsset.ForestRainVine_Cut_Bloom_black.Value, bars, PrimitiveType.TriangleList));
+		drawStacks.Enqueue(new DrawStack(ModAsset.ForestRainVine_Cut_Bloom_Black.Value, bars, PrimitiveType.TriangleList));
 	}
 
 	public override void DrawDirectionRing(HangingTileAdjustingHelper hangingSystem, Color color, float rotation, ref Queue<DrawStack> drawStacks)
@@ -395,7 +395,7 @@ public class ForestRainVineTile_Thick : HangingTile
 			bars.Add(pos + new Vector2(0, hangingSystem.PanelRange * 64).RotatedBy(k / 60f * MathHelper.TwoPi + rotation), Color.White, new Vector3(k / 20f, 0, 0));
 			bars.Add(pos + new Vector2(0, hangingSystem.PanelRange * 0).RotatedBy(k / 60f * MathHelper.TwoPi + rotation), Color.White, new Vector3(k / 20f, 1, 0));
 		}
-		drawStacks.Enqueue(new DrawStack(ModAsset.ForestRainVine_Matrix_black.Value, bars, PrimitiveType.TriangleStrip));
+		drawStacks.Enqueue(new DrawStack(ModAsset.ForestRainVine_Matrix_Black.Value, bars, PrimitiveType.TriangleStrip));
 		bars = new List<Vertex2D>();
 		for (int k = 0; k <= 60; k++)
 		{

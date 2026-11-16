@@ -155,7 +155,7 @@ public class TuskGen : ModSystem
 	/// <param name="type"></param>
 	public static void ShapeTile(string Shapepath, int a, int b, int type)
 	{
-		var imageData = ImageReader.Read<SixLabors.ImageSharp.PixelFormats.Rgb24>("Everglow/Myth/TheTusk/WorldGeneration/" + Shapepath);
+		var imageData = ImageReader.Read("Everglow/Myth/TheTusk/WorldGeneration/" + Shapepath);
 		imageData.ProcessPixelRows(accessor =>
 		{
 			for (int y = 0; y < accessor.Height; y++)

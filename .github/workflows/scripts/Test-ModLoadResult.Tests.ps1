@@ -13,27 +13,20 @@ $cases = @(
 	@{ Name = 'Similar mod name'; Log = ($complete -replace 'Finalizing Content: Everglow ', 'Finalizing Content: EverglowOther '); Code = 0; Timeout = $false; Pass = $false },
 	@{ Name = 'Error after completion'; Log = ($complete + "`n[12:00:02] [Main Thread/ERROR] [tML]: Failed load"); Code = 0; Timeout = $false; Pass = $false }
 )
+$auditComplete = $complete + "`n[12:00:01] [.NET TP Worker/INFO] [CiAssetAudit]: Asset audit passed: Everglow; names=12; textures=12; equipment=3; templates=2."
+$cases += @(
+	@{ Name = 'Audit completed'; Log = $auditComplete; Audit = $true; Pass = $true },
+	@{ Name = 'Audit never ran'; Log = $complete; Audit = $true; Pass = $false },
+	@{ Name = 'Wrong audit target'; Log = ($auditComplete -replace 'passed: Everglow;', 'passed: AnotherMod;'); Audit = $true; Pass = $false },
+	@{ Name = 'Audit reported an error'; Log = ($auditComplete + "`n[12:00:02] [.NET TP Worker/ERROR] [CiAssetAudit]: Missing texture"); Audit = $true; Pass = $false }
+)
+foreach ($field in @('names', 'textures', 'equipment', 'templates')) {
+	$cases += @{ Name = "Zero $field checked"; Log = ($auditComplete -replace "$field=\d+", "$field=0"); Audit = $true; Pass = $false }
+	$cases += @{ Name = "Missing $field result"; Log = ($auditComplete -replace "$field=\d+;?", ''); Audit = $true; Pass = $false }
+}
 foreach ($case in $cases) {
 	$passed = $true
-	try { Assert-ModLoadResult -LogText $case.Log -ExitCode $case.Code -TimedOut $case.Timeout }
-	catch { $passed = $false }
-	if ($passed -ne $case.Pass) { throw "Unexpected result: $($case.Name)" }
-	Write-Host "PASS: $($case.Name)"
-}
-
-# A plain server load must not be accepted as evidence that the asset audit ran.
-$auditComplete = $complete + "`n[12:00:01] [.NET TP Worker/INFO] [CiAssetAudit]: Asset audit passed: Everglow; content=12; equipment=3."
-$auditCases = @(
-	@{ Name = 'Audit never ran'; Log = $complete; Pass = $false },
-	@{ Name = 'Audit completed'; Log = $auditComplete; Pass = $true },
-	@{ Name = 'Wrong audit target'; Log = ($auditComplete -replace 'passed: Everglow;', 'passed: AnotherMod;'); Pass = $false },
-	@{ Name = 'No equipment checked'; Log = ($auditComplete -replace 'equipment=3', 'equipment=0'); Pass = $false },
-	@{ Name = 'No content checked'; Log = ($auditComplete -replace 'content=12', 'content=0'); Pass = $false },
-	@{ Name = 'Missing armor texture'; Log = ($auditComplete + "`n[12:00:02] [.NET TP Worker/ERROR] [CiAssetAudit]: Missing texture: Everglow/Armor/EldamberHelmet_Head"); Pass = $false }
-)
-foreach ($case in $auditCases) {
-	$passed = $true
-	try { Assert-ModLoadResult -LogText $case.Log -ExitCode 0 -TimedOut $false -RequireAssetAudit }
+	try { Assert-ModLoadResult -LogText $case.Log -ExitCode ([int]$case.Code) -TimedOut ([bool]$case.Timeout) -RequireAssetAudit:([bool]$case.Audit) }
 	catch { $passed = $false }
 	if ($passed -ne $case.Pass) { throw "Unexpected result: $($case.Name)" }
 	Write-Host "PASS: $($case.Name)"

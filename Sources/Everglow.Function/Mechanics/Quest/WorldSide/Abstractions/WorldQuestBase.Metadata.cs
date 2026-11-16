@@ -9,18 +9,11 @@ public abstract partial class WorldQuestBase
 
 	public virtual string LocalizationKey => $"Mods.Everglow.Quests.{Name}";
 
-	public virtual string DisplayName
-	{
-		get
-		{
-			string key = LocalizationKey + ".DisplayName";
-			return Language.Exists(key) ? Language.GetTextValue(key) : string.Empty;
-		}
-	}
+	public virtual string DisplayName => Text("DisplayName");
 
-	public virtual string Description => string.Empty;
+	public virtual string Description => Text("Description");
 
-	public virtual string Hint => string.Empty;
+	public virtual string Hint => Text("Hint");
 
 	public virtual QuestHideMode HideMode => QuestHideMode.None;
 
@@ -36,5 +29,12 @@ public abstract partial class WorldQuestBase
 
 	public virtual void Initialize()
 	{
+	}
+
+	/// <summary>读取相对于任务本地化路径的文本，缺失时返回空字符串。</summary>
+	protected string Text(string key, params object[] args)
+	{
+		string fullKey = LocalizationKey + "." + key;
+		return Language.Exists(fullKey) ? Language.GetTextValue(fullKey, args) : string.Empty;
 	}
 }

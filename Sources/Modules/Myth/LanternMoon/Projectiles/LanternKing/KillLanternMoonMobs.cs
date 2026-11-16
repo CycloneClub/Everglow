@@ -52,9 +52,9 @@ public class KillLanternMoonMobs : ModProjectile, IWarpProjectile
 		// KillProjectileType.Add(ModContent.ProjectileType<BloodLanternGhost_PowerBall_Explosion>());
 		KillProjectileType.Add(ModContent.ProjectileType<CurseSpell>());
 
-		// KillProjectileType.Add(ModContent.ProjectileType<CylindricalLantern_explosion>());
+		// KillProjectileType.Add(ModContent.ProjectileType<CylindricalLantern_Explosion>());
 		KillProjectileType.Add(ModContent.ProjectileType<GreenFlameProj>());
-		KillProjectileType.Add(ModContent.ProjectileType<CylindricalLantern_flame>());
+		KillProjectileType.Add(ModContent.ProjectileType<CylindricalLantern_Flame>());
 		KillProjectileType.Add(ModContent.ProjectileType<GreenFlameSharpCrystal>());
 		KillProjectileType.Add(ModContent.ProjectileType<LargeBloodLanternGhost_Matrix_Summon>());
 		KillProjectileType.Add(ModContent.ProjectileType<LargeBloodLanternGhost_Minion>());

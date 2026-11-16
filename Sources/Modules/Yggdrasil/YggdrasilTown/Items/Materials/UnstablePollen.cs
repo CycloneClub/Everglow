@@ -31,7 +31,7 @@ public class UnstablePollen : ModItem
 	public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
 	{
 		Texture2D texture2D = ModAsset.UnstablePollen.Value;
-		Texture2D textureGlow = ModAsset.UnstablePollen_glow.Value;
+		Texture2D textureGlow = ModAsset.UnstablePollen_Glow.Value;
 		int frameCount = (int)(Main.time * 0.33f + MathF.Sin(whoAmI) * 5) % 7;
 		var frame = new Rectangle(0, 30 * frameCount, 30, 30);
 		spriteBatch.Draw(texture2D, Item.Center - Main.screenPosition, frame, lightColor, rotation, new Vector2(15f), scale, SpriteEffects.None, 0);

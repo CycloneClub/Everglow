@@ -16,7 +16,7 @@ public class FlameCylinder : TrailingProjectile
 		TrailWidth = 120f;
 		SelfLuminous = true;
 		TrailTexture = Commons.ModAsset.Trail_0.Value;
-		TrailTextureBlack = Commons.ModAsset.Trail_2_black.Value;
+		TrailTextureBlack = Commons.ModAsset.Trail_2_Black.Value;
 		TrailShader = Commons.ModAsset.Trailing.Value;
 		Projectile.timeLeft = 300;
 		Projectile.hostile = true;

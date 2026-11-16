@@ -47,7 +47,7 @@ public class BlackCorruptRain3 : ModProjectile
 		}
 
 		Ins.Batch.Begin();
-		DrawTexCircle_VFXBatch(Ins.Batch, (30 + 7 * MathF.Sin((float)(Main.time / 3f + Projectile.ai[0]))) * Projectile.scale, width * Projectile.scale, Color.White * 0.1f, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_2_black_thick.Value, (float)(Main.time / 3.8 + Projectile.ai[0]));
+		DrawTexCircle_VFXBatch(Ins.Batch, (30 + 7 * MathF.Sin((float)(Main.time / 3f + Projectile.ai[0]))) * Projectile.scale, width * Projectile.scale, Color.White * 0.1f, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_2_Black_Thick.Value, (float)(Main.time / 3.8 + Projectile.ai[0]));
 		DrawTexCircle_VFXBatch(Ins.Batch, (30 + 7 * MathF.Sin((float)(Main.time / 3f + Projectile.ai[0]))) * Projectile.scale, width * Projectile.scale, new Color(0, 150, 255, 0) * 0.4f, Projectile.Center - Main.screenPosition, Commons.ModAsset.Trail_2.Value, (float)(Main.time / 3.8 + Projectile.ai[0]));
 		Ins.Batch.End();
 	}
@@ -55,7 +55,7 @@ public class BlackCorruptRain3 : ModProjectile
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D light = ModAsset.FixCoinLight3.Value;
-		Texture2D dark = Commons.ModAsset.Point_black.Value;
+		Texture2D dark = Commons.ModAsset.Point_Black.Value;
 		Main.spriteBatch.Draw(dark, Projectile.Center - Main.screenPosition, null, new Color(1f, 1f, 1f, 1f) * 0.7f, Projectile.rotation, dark.Size() / 2f, Projectile.scale * 0.25f, SpriteEffects.None, 0);
 		Main.spriteBatch.Draw(light, Projectile.Center - Main.screenPosition, null, new Color(1f, 1f, 1f, 0), Projectile.rotation, light.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
 		return false;

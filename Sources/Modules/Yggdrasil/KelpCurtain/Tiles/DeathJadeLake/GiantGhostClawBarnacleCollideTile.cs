@@ -16,7 +16,7 @@ public class GiantGhostClawBarnacleCollideTile : ShapeDataTile, ISceneTile
 	public override void Load()
 	{
 		base.Load();
-		var imageData = ImageReader.Read<SixLabors.ImageSharp.PixelFormats.Rgb24>(ShapePath);
+		var imageData = ImageReader.Read(ShapePath);
 		imageData.ProcessPixelRows(accessor =>
 		{
 			PixelHideForeground = new int[accessor.Width, accessor.Height];

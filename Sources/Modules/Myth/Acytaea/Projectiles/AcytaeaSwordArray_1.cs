@@ -8,7 +8,7 @@ public class AcytaeaSwordArray_1 : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
 
-	public override string Texture => ModAsset.AcytaeaSword_projectile_Mod;
+	public override string Texture => ModAsset.AcytaeaSword_Projectile_Mod;
 
 	public override void SetDefaults()
 	{
@@ -202,7 +202,6 @@ public class AcytaeaSwordArray_1 : ModProjectile
 		Vector2 deltaVector = new Vector2(0, Range).RotatedBy(whoAmI / (float)subProjActive.Count * MathHelper.TwoPi + AddRot);
 		Vector2 test = Projectile.Center + deltaVector;
 		SoundEngine.PlaySound(SoundID.DD2_GoblinBomb.WithPitchOffset(-1), Projectile.Center);
-		Player player = Main.player[Projectile.owner];
 		Projectile.tileCollide = false;
 		Projectile.friendly = false;
 		Projectile.ignoreWater = true;
@@ -233,7 +232,7 @@ public class AcytaeaSwordArray_1 : ModProjectile
 
 	public override void PostDraw(Color lightColor)
 	{
-		Texture2D tex = ModAsset.AcytaeaFlySword_red.Value;
+		Texture2D tex = ModAsset.AcytaeaFlySword_Red.Value;
 		Rectangle projFrame = new Rectangle(0, Projectile.frame * Projectile.height, Projectile.width, Projectile.height);
 		List<Vertex2D> bars = new List<Vertex2D>();
 		for (int k = 0; k < subProjActive.Count; k++)

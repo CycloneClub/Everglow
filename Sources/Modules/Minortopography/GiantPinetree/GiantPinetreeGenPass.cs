@@ -892,10 +892,10 @@ public class GiantPinetree : ModSystem
 				type = ModContent.TileType<TilesAndWalls.SnowPineChest>();
 				break;
 			case 1:
-				type = ModContent.TileType<TilesAndWalls.SnowPineChest_fresh>();
+				type = ModContent.TileType<TilesAndWalls.SnowPineChest_Fresh>();
 				break;
 			case 2:
-				type = ModContent.TileType<TilesAndWalls.SnowPineChest_gold>();
+				type = ModContent.TileType<TilesAndWalls.SnowPineChest_Gold>();
 				break;
 		}
 
@@ -1045,7 +1045,7 @@ public class GiantPinetree : ModSystem
 				if (direction.Count > 0)
 				{
 					int frameType = direction[WorldGen.genRand.Next(direction.Count)];
-					tile.TileType = (ushort)ModContent.TileType<PineCone_little>();
+					tile.TileType = (ushort)ModContent.TileType<PineCone_Little>();
 					tile.HasTile = true;
 					switch (frameType)
 					{

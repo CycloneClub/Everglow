@@ -2,18 +2,15 @@ AmberBall.DisplayName: Amber Ball
 AmberLiquidProj_Explosion.DisplayName: Amber Liquid Proj_ Explosion
 AmberLiquidProj.DisplayName: Amber Liquid Proj
 AmberMagicOrb.DisplayName: Amber Magic Orb
-AncientSyringe_proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.AncientSyringe.DisplayName}"
-AncientSyringe_Proj.DisplayName: Ancient Syringe_ Proj
-BacterialAgent_explosion.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.BacterialAgent.DisplayName}"
-BacterialAgent_Explosion.DisplayName: Bacterial Agent_ Explosion
-BacterialAgent_Proj.DisplayName: Bacterial Agent_ Proj
-BacterialAgent_proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.BacterialAgent.DisplayName}"
+AncientSyringe_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.AncientSyringe.DisplayName}"
+BacterialAgent_Explosion.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.BacterialAgent.DisplayName}"
+BacterialAgent_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.BacterialAgent.DisplayName}"
 BlackHole.DisplayName: Black Hole
-BloodySwamp_area.DisplayName: Bloody Swamp_area
-BloodySwamp_shoot_area.DisplayName: Bloody Swamp_shoot_area
-BloodySwamp_shoot.DisplayName: Bloody Swamp_shoot
+BloodySwamp_Area.DisplayName: Bloody Swamp_area
+BloodySwamp_Shoot_Area.DisplayName: Bloody Swamp_shoot_area
+BloodySwamp_Shoot.DisplayName: Bloody Swamp_shoot
 BlueMissilFriendly.DisplayName: Blue Missil Friendly
-BoneFeather_spine.DisplayName: Bone Feather_spine
+BoneFeather_Spine.DisplayName: Bone Feather_spine
 BoneFeather.DisplayName: Bone Feather
 BoneFeatherMagicArray.DisplayName: Bone Feather Magic Array
 BoneFeatherMagicBook.DisplayName: Bone Feather Magic Book
@@ -24,13 +21,13 @@ BookofSkullsBook.DisplayName: Bookof Skulls Book
 BronzeLotusLamp_Blossom.DisplayName: Bronze Lotus Lamp_ Blossom
 BronzeLotusLamp_Flame.DisplayName: Bronze Lotus Lamp_ Flame
 BronzeLotusLamp_SubBlossom.DisplayName: Bronze Lotus Lamp_ Sub Blossom
-BronzeLotusLamp_weapon.DisplayName: Bronze Lotus Lamp_weapon
+BronzeLotusLamp_Weapon.DisplayName: Bronze Lotus Lamp_weapon
 CorruptDust.DisplayName: Corrupt Dust
 CreamChocolateCup_ChocolateBars.DisplayName: Cream Chocolate Cup_ Chocolate Bars
 CreamChocolateCup_CreamFlow.DisplayName: Cream Chocolate Cup_ Cream Flow
-CreamChocolateCupStaff_proj_held.DisplayName: Cream Chocolate Cup Staff_proj_held
-CreamChocolateCupStaff_proj_rightClick.DisplayName: Cream Chocolate Cup Staff_proj_right Click
-CreamChocolateCupStaff_proj.DisplayName: Cream Chocolate Cup Staff_proj
+CreamChocolateCupStaff_Proj_Held.DisplayName: Cream Chocolate Cup Staff_proj_held
+CreamChocolateCupStaff_Proj_RightClick.DisplayName: Cream Chocolate Cup Staff_proj_right Click
+CreamChocolateCupStaff_Proj.DisplayName: Cream Chocolate Cup Staff_proj
 CrystalExplosion.DisplayName: Crystal Explosion
 CrystalStormArray.DisplayName: Crystal Storm Array
 CrystalStormBook.DisplayName: Crystal Storm Book
@@ -42,32 +39,32 @@ CursedFlameHit.DisplayName: Cursed Flame Hit
 CursedFlamesArray.DisplayName: Cursed Flames Array
 CursedFlamesBook.DisplayName: Cursed Flames Book
 CursedFlamesII.DisplayName: Cursed Flames I I
-CyanVineStaff_proj_Explosion.DisplayName: Cyan Vine Staff_proj_ Explosion
-CyanVineStaff_proj_shoot.DisplayName: Cyan Vine Staff_proj_shoot
-CyanVineStaff_proj.DisplayName: Cyan Vine Staff_proj
+CyanVineStaff_Proj_Explosion.DisplayName: Cyan Vine Staff_proj_ Explosion
+CyanVineStaff_Proj_Shoot.DisplayName: Cyan Vine Staff_proj_shoot
+CyanVineStaff_Proj.DisplayName: Cyan Vine Staff_proj
 DarkFlower_Proj.DisplayName: Dark Flower_ Proj
 DemoHit.DisplayName: Demo Hit
 DemonScytheArray.DisplayName: Demon Scythe Array
 DemonScytheBook.DisplayName: Demon Scythe Book
 DemonScythePlus.DisplayName: Demon Scythe Plus
 DemonScythePlusCrack.DisplayName: Demon Scythe Plus Crack
-DevilHeartStaff_proj_II.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.DevilHeartStaff.DisplayName}"
-DevilHeartStaff_proj_Kill.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.DevilHeartStaff.DisplayName}"
-DevilHeartStaff_proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.DevilHeartStaff.DisplayName}"
-DreamWeaver_proj.DisplayName: Dream Weaver_proj
+DevilHeartStaff_Proj_II.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.DevilHeartStaff.DisplayName}"
+DevilHeartStaff_Proj_Kill.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.DevilHeartStaff.DisplayName}"
+DevilHeartStaff_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.DevilHeartStaff.DisplayName}"
+DreamWeaver_Proj.DisplayName: Dream Weaver_proj
 DreamWeaver_Rain.DisplayName: Dream Weaver_ Rain
 DreamWeaverBall.DisplayName: Dream Weaver Ball
 DreamWeaverBook.DisplayName: Dream Weaver Book
 DreamWeaverII.DisplayName: Dream Weaver I I
-EmptyWaterStaff_proj_bubble.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.EmptyWaterStaff.DisplayName}"
-EmptyWaterStaff_proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.EmptyWaterStaff.DisplayName}"
+EmptyWaterStaff_Proj_Bubble.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.EmptyWaterStaff.DisplayName}"
+EmptyWaterStaff_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.EmptyWaterStaff.DisplayName}"
 EyeOfAnabiosis_MagicCircleBack.DisplayName: Eye Of Anabiosis_ Magic Circle Back
 EyeOfAnabiosis_MagicCircleFront.DisplayName: Eye Of Anabiosis_ Magic Circle Front
 EyeOfAnabiosis_Matrix.DisplayName: Eye Of Anabiosis_ Matrix
 EyeOfAnabiosis_Projectile.DisplayName: Eye Of Anabiosis_ Projectile
 EyeOfAnabiosis_Weapon.DisplayName: Eye Of Anabiosis_ Weapon
-FeatheredStaff_break.DisplayName: Feathered Staff_break
-FeatheredStaff_staff.DisplayName: Feathered Staff_staff
+FeatheredStaff_Break.DisplayName: Feathered Staff_break
+FeatheredStaff_Staff.DisplayName: Feathered Staff_staff
 FeatheredStaff.DisplayName: Feathered Staff
 FireFeather.DisplayName: Fire Feather
 FireFeatherMagicArray.DisplayName: Fire Feather Magic Array
@@ -98,8 +95,7 @@ GreenSungloShield_A.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.GreenSungl
 GreenSungloShield_B.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.GreenSungloStaff.DisplayName}"
 GreenSungloSpore.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.GreenSungloStaff.DisplayName}"
 GreenSungloThorns.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.GreenSungloStaff.DisplayName}"
-HandheldCircularSaw_Proj.DisplayName: Handheld Circular Saw_ Proj
-HandheldCircularSaw_proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Melee.HandheldCircularSaw.DisplayName}"
+HandheldCircularSaw_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Melee.HandheldCircularSaw.DisplayName}"
 HexaCrystalStaff_Proj.DisplayName: Hexa Crystal Staff_ Proj
 HexaCrystalStaff_ProjExplosion.DisplayName: Hexa Crystal Staff_ Proj Explosion
 HexaCrystalStaff_SubProj.DisplayName: Hexa Crystal Staff_ Sub Proj
@@ -116,8 +112,8 @@ LargeMossyThornTurtle_Boulder.DisplayName: Large Mossy Thorn Turtle_ Boulder
 LargeMossyThornTurtle_Shockwave.DisplayName: Large Mossy Thorn Turtle_ Shockwave
 LichensPycnidium.DisplayName: Lichens Pycnidium
 LightBeam.DisplayName: Light Beam
-LightBeamStaff_proj.DisplayName: Light Beam Staff_proj
-LightStartEffect_beam.DisplayName: Light Start Effect_beam
+LightBeamStaff_Proj.DisplayName: Light Beam Staff_proj
+LightStartEffect_Beam.DisplayName: Light Start Effect_beam
 LilyHarpNote.DisplayName: Lily Harp Note
 LilyHarpProj.DisplayName: Lily Harp Proj
 LilyHarpWave.DisplayName: Lily Harp Wave
@@ -137,7 +133,7 @@ MeltingFireRing.DisplayName: Melting Fire Ring
 MillionLightStaff_Proj.DisplayName: Million Light Staff_ Proj
 MissileExplosion.DisplayName: Missile Explosion
 MissileProj.DisplayName: Missile Proj
-MossySpell_proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.MossySpell.DisplayName}"
+MossySpell_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.MossySpell.DisplayName}"
 MossySpellArray.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.MossySpell.DisplayName}"
 MossySpellBook.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.MossySpell.DisplayName}"
 NavyThunder.DisplayName: Navy Thunder
@@ -145,16 +141,16 @@ NavyThunderBomb.DisplayName: Navy Thunder Bomb
 NewWaterBolt.DisplayName: New Water Bolt
 NightfireStaff_Projectile.DisplayName: Nightfire Staff_ Projectile
 OrichalcumPedal.DisplayName: Orichalcum Pedal
-Pycnidium_explosion.DisplayName: Pycnidium_explosion
+Pycnidium_Explosion.DisplayName: Pycnidium_Explosion
 RazorbladeTyphoonArray.DisplayName: Razorblade Typhoon Array
 RazorbladeTyphoonBook.DisplayName: Razorblade Typhoon Book
-RedAlgaeMagicSpellBook_proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.RedAlgaeMagicSpellBook.DisplayName}"
+RedAlgaeMagicSpellBook_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.RedAlgaeMagicSpellBook.DisplayName}"
 RedAlgaeMagicStaff_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.RedAlgaeMagicStaff.DisplayName}"
 RipplingWave.DisplayName: Rippling Wave
 RockQuake_Proj.DisplayName: Rock Quake_ Proj
 SkullHand.DisplayName: Skull Hand
 SkullII.DisplayName: Skull I I
-SpringOfQuicksand_Sandflow_subproj.DisplayName: Spring Of Quicksand_ Sandflow_subproj
+SpringOfQuicksand_Sandflow_Subproj.DisplayName: Spring Of Quicksand_ Sandflow_subproj
 SpringOfQuicksand_Sandflow.DisplayName: Spring Of Quicksand_ Sandflow
 StaffOfCorruptDust.DisplayName: Staff Of Corrupt Dust
 Storm.DisplayName: Storm
@@ -175,13 +171,13 @@ VampireMat_Attack_Proj_Ball.DisplayName: Vampire Mat_ Attack_ Proj_ Ball
 VampireMat_Attack_Proj_Tusk.DisplayName: Vampire Mat_ Attack_ Proj_ Tusk
 VitalizedRocksProj_Explosion.DisplayName: Vitalized Rocks Proj_ Explosion
 VitalizedRocksProj.DisplayName: Vitalized Rocks Proj
-VitalizedRocksStone_small.DisplayName: Vitalized Rocks Stone_small
+VitalizedRocksStone_Small.DisplayName: Vitalized Rocks Stone_small
 VitalizedRocksStone.DisplayName: Vitalized Rocks Stone
 WaterBoltArray.DisplayName: Water Bolt Array
 WaterBoltBook.DisplayName: Water Bolt Book
 WaterTeleport.DisplayName: Water Teleport
 WindBladeBallHit.DisplayName: Wind Blade Ball Hit
-YggdrasilAmberLaser_crystal.DisplayName: Yggdrasil Amber Laser_crystal
-YggdrasilAmberLaser_proj.DisplayName: Yggdrasil Amber Laser_proj
-YggdrasilMoonBlade_friendly.DisplayName: Yggdrasil Moon Blade_friendly
+YggdrasilAmberLaser_Crystal.DisplayName: Yggdrasil Amber Laser_crystal
+YggdrasilAmberLaser_Proj.DisplayName: Yggdrasil Amber Laser_proj
+YggdrasilMoonBlade_Friendly.DisplayName: Yggdrasil Moon Blade_friendly
 YggdrasilSlashBall.DisplayName: Yggdrasil Slash Ball

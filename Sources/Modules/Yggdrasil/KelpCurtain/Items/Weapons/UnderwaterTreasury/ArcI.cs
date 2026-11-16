@@ -40,9 +40,9 @@ public class ArcI : ModItem
 	public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 	{
 		ShootType = type;
-		if (player.ownedProjectileCounts[ModContent.ProjectileType<ArcI_proj>()] <= 0)
+		if (player.ownedProjectileCounts[ModContent.ProjectileType<ArcI_Proj>()] <= 0)
 		{
-			Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<ArcI_proj>(), damage, knockback, player.whoAmI);
+			Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<ArcI_Proj>(), damage, knockback, player.whoAmI);
 		}
 		return false;
 	}

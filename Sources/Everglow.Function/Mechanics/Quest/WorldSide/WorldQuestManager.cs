@@ -120,7 +120,7 @@ public class WorldQuestManager
 			{
 				foreach (var m in _quests.Where(m => m.State == WorldQuestState.Locked))
 				{
-					if (m.CanUnlock()
+					if (DebugOnlyQuestAttribute.IsEnabled(m.GetType()) && m.CanUnlock()
 						&& m.State == WorldQuestState.Locked)
 					{
 						m.Unlock();
@@ -292,7 +292,7 @@ public class WorldQuestManager
 
 	public void SaveData(TagCompound tag)
 	{
-		foreach (var m in _quests)
+		foreach (var m in _quests.Where(m => DebugOnlyQuestAttribute.IsEnabled(m.GetType())))
 		{
 			var mTag = new TagCompound();
 			m.SaveData(mTag);
@@ -306,7 +306,7 @@ public class WorldQuestManager
 
 		foreach (var m in _quests)
 		{
-			if (tag.TryGet<TagCompound>(m.Name, out var mTag))
+			if (DebugOnlyQuestAttribute.IsEnabled(m.GetType()) && tag.TryGet<TagCompound>(m.Name, out var mTag))
 			{
 				m.LoadData(mTag);
 			}

@@ -81,19 +81,19 @@ public class MysteriousTablet : ModProjectile
 	{
 		for (int x = 0; x < 8; x++)
 		{
-			var d = Dust.NewDustDirect(Projectile.position - new Vector2(4), Projectile.width, Projectile.height, ModContent.DustType<MysteriousTablet_fragments>(), 0f, 0f, 0, default, 0.7f);
+			var d = Dust.NewDustDirect(Projectile.position - new Vector2(4), Projectile.width, Projectile.height, ModContent.DustType<MysteriousTablet_Fragments>(), 0f, 0f, 0, default, 0.7f);
 			d.velocity = new Vector2(0, Main.rand.NextFloat(1f, 4f)).RotatedByRandom(6.283);
 		}
 		Vector2 goreVel = new Vector2(0, Main.rand.NextFloat(0, 5f)).RotatedByRandom(6.28d);
-		Gore.NewGore(null, Projectile.Center + goreVel, goreVel, ModContent.Find<ModGore>("Everglow/MysteriousTablet_gore0").Type, 1f);
+		Gore.NewGore(null, Projectile.Center + goreVel, goreVel, ModContent.Find<ModGore>("Everglow/MysteriousTablet_Gore0").Type, 1f);
 
 		goreVel = new Vector2(0, Main.rand.NextFloat(0, 5f)).RotatedByRandom(6.28d);
-		Gore.NewGore(null, Projectile.Center + goreVel, goreVel, ModContent.Find<ModGore>("Everglow/MysteriousTablet_gore1").Type, 1f);
+		Gore.NewGore(null, Projectile.Center + goreVel, goreVel, ModContent.Find<ModGore>("Everglow/MysteriousTablet_Gore1").Type, 1f);
 
 		goreVel = new Vector2(0, Main.rand.NextFloat(0, 5f)).RotatedByRandom(6.28d);
-		Gore.NewGore(null, Projectile.Center + goreVel, goreVel, ModContent.Find<ModGore>("Everglow/MysteriousTablet_gore2").Type, 1f);
+		Gore.NewGore(null, Projectile.Center + goreVel, goreVel, ModContent.Find<ModGore>("Everglow/MysteriousTablet_Gore2").Type, 1f);
 
 		goreVel = new Vector2(0, Main.rand.NextFloat(0, 5f)).RotatedByRandom(6.28d);
-		Gore.NewGore(null, Projectile.Center + goreVel, goreVel, ModContent.Find<ModGore>("Everglow/MysteriousTablet_gore1").Type, 1f);
+		Gore.NewGore(null, Projectile.Center + goreVel, goreVel, ModContent.Find<ModGore>("Everglow/MysteriousTablet_Gore1").Type, 1f);
 	}
 }

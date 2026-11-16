@@ -16,7 +16,7 @@ public class Glow_Fall : TrailingProjectile
 	public override void SetCustomDefaults()
 	{
 		TrailColor = new Color(0, 0.7f, 1f, 0);
-		TrailTextureBlack = Commons.ModAsset.Trail_black.Value;
+		TrailTextureBlack = Commons.ModAsset.Trail_Black.Value;
 		SelfLuminous = true;
 		TrailLength = 50;
 		TrailWidth = 20f;

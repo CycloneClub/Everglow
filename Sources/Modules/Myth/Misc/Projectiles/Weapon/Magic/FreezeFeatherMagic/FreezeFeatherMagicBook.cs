@@ -14,8 +14,8 @@ internal class FreezeFeatherMagicBook : MagicBookProjectile
 		MulStartPosByVelocity = 2f;
 		UseGlow = true;
 
-		FrontTexture = ModAsset.FreezeFeatherMagic_book.Value;
-		PaperTexture = ModAsset.FireFeatherMagic_paper.Value;
+		FrontTexture = ModAsset.FreezeFeatherMagic_Book.Value;
+		PaperTexture = ModAsset.FireFeatherMagic_Paper.Value;
 		GlowTexture = ModAsset.FreezeFeatherMagic.Value;
 		effectColor = new Color(95, 100, 125, 100);
 		TexCoordTop = new Vector2(25, 0);

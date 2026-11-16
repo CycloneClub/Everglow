@@ -251,7 +251,7 @@ public class UmbrellaTailThief : ModNPC
 				continue;
 			}
 			Vector2 v0 = new Vector2(0, Main.rand.NextFloat(0, 6f)).RotatedByRandom(MathHelper.TwoPi);
-			int type = ModContent.Find<ModGore>("Everglow/UmbrellaTailThief_gore_" + i).Type;
+			int type = ModContent.Find<ModGore>("Everglow/UmbrellaTailThief_Gore_" + i).Type;
 			Gore.NewGore(NPC.GetSource_Death(), NPC.Center, v0, type, NPC.scale);
 		}
 	}
@@ -278,7 +278,7 @@ public class UmbrellaTailThief : ModNPC
 		else
 		{
 			spriteBatch.Draw(ModAsset.UmbrellaTailThief_Fly.Value, drawPos, NPC.frame, drawColor, NPC.rotation, NPC.frame.Size() * new Vector2(0.5f, 1f), NPC.scale, NPC.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
-			spriteBatch.Draw(ModAsset.UmbrellaTailThief_Fly_glow.Value, drawPos, NPC.frame, new Color(1f, 1f, 1f, 0), NPC.rotation, NPC.frame.Size() * new Vector2(0.5f, 1f), NPC.scale, NPC.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
+			spriteBatch.Draw(ModAsset.UmbrellaTailThief_Fly_Glow.Value, drawPos, NPC.frame, new Color(1f, 1f, 1f, 0), NPC.rotation, NPC.frame.Size() * new Vector2(0.5f, 1f), NPC.scale, NPC.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
 		}
 
 		return false;

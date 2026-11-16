@@ -78,8 +78,8 @@ namespace Everglow.MEAC.PlanetBeFall.Projectiles.NonIIIDProj.PlanetBefallArray
 			Texture2D PlantBeFallIn = ModAsset.PlantBeFallIn.Value;
 			Texture2D PlantBeFallOut = ModAsset.PlantBeFallOut.Value;
 			Texture2D GeoElement = ModAsset.GeoElement.Value;
-			Texture2D GeoElement_black = ModAsset.GeoElement_black.Value;
-			Texture2D GeoElement_glow = ModAsset.GeoElement_glow.Value;
+			Texture2D GeoElement_Black = ModAsset.GeoElement_Black.Value;
+			Texture2D GeoElement_Glow = ModAsset.GeoElement_Glow.Value;
 			float scaleGeo = 0.8f;
 			float timeValue = Projectile.timeLeft / 300f;
 			Vector2 drawCenter = Projectile.Center - Main.screenPosition + new Vector2(0, -100);
@@ -89,9 +89,9 @@ namespace Everglow.MEAC.PlanetBeFall.Projectiles.NonIIIDProj.PlanetBefallArray
 				mulGeoColor = 0;
 			}
 			Color geoColor = new Color(0.9f * MathF.Sin(timeValue * MathHelper.Pi), 0.4f * mulGeoColor, 0, 0f) * mulGeoColor * 2f;
-			Main.spriteBatch.Draw(GeoElement_black, drawCenter, null, Color.White * 0.3f * mulGeoColor, 0, GeoElement_black.Size() / 2f, scaleGeo, SpriteEffects.None, 0);
+			Main.spriteBatch.Draw(GeoElement_Black, drawCenter, null, Color.White * 0.3f * mulGeoColor, 0, GeoElement_Black.Size() / 2f, scaleGeo, SpriteEffects.None, 0);
 			Main.spriteBatch.Draw(GeoElement, drawCenter, null, geoColor, 0, GeoElement.Size() / 2f, scaleGeo, SpriteEffects.None, 0);
-			Main.spriteBatch.Draw(GeoElement_glow, drawCenter, null, geoColor * 0.2f, 0, GeoElement_glow.Size() / 2f, scaleGeo, SpriteEffects.None, 0);
+			Main.spriteBatch.Draw(GeoElement_Glow, drawCenter, null, geoColor * 0.2f, 0, GeoElement_Glow.Size() / 2f, scaleGeo, SpriteEffects.None, 0);
 
 			SpriteBatchState sBS = Main.spriteBatch.GetState().Value;
 			Main.spriteBatch.End();
@@ -100,14 +100,14 @@ namespace Everglow.MEAC.PlanetBeFall.Projectiles.NonIIIDProj.PlanetBefallArray
 
 			Color outideCircleColor = new Color(0.5f, 0.2f, 0.1f, 0f) * mulOutSideCircleColor * 3f * alpha;
 
-			DrawTexCircle(610, 120, Color.White * alpha, drawCenter, ModAsset.PlantBeFallOut_black.Value, Timer * 0.1f);
+			DrawTexCircle(610, 120, Color.White * alpha, drawCenter, ModAsset.PlantBeFallOut_Black.Value, Timer * 0.1f);
 			DrawTexCircle(610, 120, outideCircleColor, drawCenter, PlantBeFallOut, Timer * 0.1f);
 			for (int radious = 450; radious < 620; radious += 50)
 			{
 				float mulCircleColor = MathF.Sin(MathF.Pow(Math.Clamp(2.1f - radious / 800f - timeValue, 0, 1), 24f) * MathHelper.Pi);
 				Color circleColor = new Color(0.9f, 0.6f, 0.1f, 0f) * mulCircleColor * 0.5f;
-				DrawTexCircle(radious, 120, Color.White * mulCircleColor * 0.5f * alpha, Projectile.Center - Main.screenPosition - new Vector2(0, 100), ModAsset.PlantBeFall_black.Value, 0);
-				DrawTexCircle(radious, 120, circleColor * alpha, Projectile.Center - Main.screenPosition - new Vector2(0, 100), ModAsset.PlantBeFall_line.Value, 0);
+				DrawTexCircle(radious, 120, Color.White * mulCircleColor * 0.5f * alpha, Projectile.Center - Main.screenPosition - new Vector2(0, 100), ModAsset.PlantBeFall_Black.Value, 0);
+				DrawTexCircle(radious, 120, circleColor * alpha, Projectile.Center - Main.screenPosition - new Vector2(0, 100), ModAsset.PlantBeFall_Line.Value, 0);
 			}
 			float mulInsideCircleColor = MathF.Sin(MathF.Pow(Math.Clamp(1.4f - timeValue, 0, 1), 10f) * MathHelper.Pi);
 			float mulInsideCircleColorBlack = MathF.Sin(MathF.Pow(Math.Clamp(1.35f - timeValue, 0, 1), 3f) * MathHelper.Pi);
@@ -124,7 +124,7 @@ namespace Everglow.MEAC.PlanetBeFall.Projectiles.NonIIIDProj.PlanetBefallArray
 			barsInside.Add(new Vertex2D(Point3, Color.White * mulInsideCircleColorBlack * alpha, new Vector3(1, 1, 0)));
 			if (barsInside.Count > 0)
 			{
-				Main.graphics.GraphicsDevice.Textures[0] = ModAsset.PlantBeFallIn_black.Value;
+				Main.graphics.GraphicsDevice.Textures[0] = ModAsset.PlantBeFallIn_Black.Value;
 				Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, barsInside.ToArray(), 0, 2);
 			}
 			barsInside = new List<Vertex2D>();
@@ -146,7 +146,7 @@ namespace Everglow.MEAC.PlanetBeFall.Projectiles.NonIIIDProj.PlanetBefallArray
 
 				Main.graphics.GraphicsDevice.Textures[0] = PlantBeFallIn;
 				Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, barsInside.ToArray(), 0, 2);
-				Main.graphics.GraphicsDevice.Textures[0] = ModAsset.PlantBeFallIn_glow.Value;
+				Main.graphics.GraphicsDevice.Textures[0] = ModAsset.PlantBeFallIn_Glow.Value;
 				Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, barsInside.ToArray(), 0, 2);
 				Main.spriteBatch.End();
 				Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);

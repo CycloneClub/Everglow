@@ -28,8 +28,8 @@ public class BrittleRockSlingshotStone : TrailingProjectile
 		TrailColor = new Color(1, 0.3f, 1, 0f);
 		TrailWidth = 40f;
 		SelfLuminous = true;
-		TrailTexture = Commons.ModAsset.Trail_2_thick.Value;
-		TrailTextureBlack = Commons.ModAsset.Trail_2_black.Value;
+		TrailTexture = Commons.ModAsset.Trail_2_Thick.Value;
+		TrailTextureBlack = Commons.ModAsset.Trail_2_Black.Value;
 		TrailShader = Commons.ModAsset.Trailing.Value;
 		TrailBackgroundDarkness = 0.1f;
 	}
@@ -44,7 +44,7 @@ public class BrittleRockSlingshotStone : TrailingProjectile
 		if (Projectile.timeLeft > 540)
 		{
 			float value = (Projectile.timeLeft - 540) / 30f;
-			var d = Dust.NewDustDirect(Projectile.position - new Vector2(12 * Projectile.scale), (int)(Projectile.width + 24 * Projectile.scale), (int)(Projectile.height + 24 * Projectile.scale), ModContent.DustType<RockElemental_Energy_normal>());
+			var d = Dust.NewDustDirect(Projectile.position - new Vector2(12 * Projectile.scale), (int)(Projectile.width + 24 * Projectile.scale), (int)(Projectile.height + 24 * Projectile.scale), ModContent.DustType<RockElemental_Energy_Normal>());
 			d.velocity = Projectile.velocity * 0.5f;
 			d.scale = Main.rand.NextFloat(0.75f, 1f) * Math.Min(value, 1) * Projectile.ai[2];
 			d.noGravity = true;
@@ -61,7 +61,7 @@ public class BrittleRockSlingshotStone : TrailingProjectile
 	{
 		for (int x = 0; x < 3; x++)
 		{
-			var d = Dust.NewDustDirect(Projectile.position - new Vector2(4), Projectile.width, Projectile.height, ModContent.DustType<RockElemental_fragments>(), 0f, 0f, 0, default, 0.7f);
+			var d = Dust.NewDustDirect(Projectile.position - new Vector2(4), Projectile.width, Projectile.height, ModContent.DustType<RockElemental_Fragments>(), 0f, 0f, 0, default, 0.7f);
 			d.velocity = new Vector2(0, Main.rand.NextFloat(0.1f, 1.6f)).RotatedByRandom(6.283);
 		}
 		for (int x = 0; x < 5; x++)

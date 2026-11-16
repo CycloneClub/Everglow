@@ -138,7 +138,7 @@ public class Fevens_MagicLaserArray : ModProjectile
 		var darkDraw = Color.White * value;
 		var timeValue = (float)Main.time * 0.07f;
 
-		Texture2D swirlPointDark = Commons.ModAsset.Point_black.Value;
+		Texture2D swirlPointDark = Commons.ModAsset.Point_Black.Value;
 		Main.spriteBatch.Draw(swirlPointDark, drawPos, null, Color.White * value, timeValue, swirlPointDark.Size() * 0.5f, value * 0.5f, SpriteEffects.None, 0);
 		var circleDark = new List<Vertex2D>();
 		var circle = new List<Vertex2D>();
@@ -151,7 +151,7 @@ public class Fevens_MagicLaserArray : ModProjectile
 			circle.Add(drawPos + radius, drawColor, new Vector3(c / 30f + timeValue, 0, 0));
 			circle.Add(drawPos + radius * width, drawColor, new Vector3(c / 30f + timeValue, 1, 0));
 		}
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_0_black.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_0_Black.Value;
 		if (circleDark.Count > 3)
 		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, circleDark.ToArray(), 0, circleDark.Count - 2);
@@ -230,7 +230,7 @@ public class Fevens_MagicLaserArray : ModProjectile
 					effect.Parameters["uTransform"].SetValue(model * projection);
 					effect.Parameters["uProcession"].SetValue(0.5f);
 					effect.CurrentTechnique.Passes[0].Apply();
-					Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_1_black.Value;
+					Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_1_Black.Value;
 					Main.graphics.graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, laserHeadDark.ToArray(), 0, laserHeadDark.Count - 2);
 
 					Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_1.Value;
@@ -278,7 +278,7 @@ public class Fevens_MagicLaserArray : ModProjectile
 				break;
 			}
 		}
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_0_black.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_0_Black.Value;
 		if (laserDark.Count > 3)
 		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, laserDark.ToArray(), 0, laserDark.Count - 2);
@@ -319,7 +319,7 @@ public class Fevens_MagicLaserArray : ModProjectile
 			circle.Add(drawPos + radius, drawColor, new Vector3(c / 30f + timeValue, 0, 0));
 			circle.Add(drawPos + radius * width, drawColor, new Vector3(c / 30f + timeValue, 1, 0));
 		}
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_0_black.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_0_Black.Value;
 		if (circleDark.Count > 3)
 		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, circleDark.ToArray(), 0, circleDark.Count - 2);

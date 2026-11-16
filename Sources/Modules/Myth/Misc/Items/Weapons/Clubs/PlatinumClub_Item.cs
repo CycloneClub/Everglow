@@ -14,7 +14,7 @@ public class PlatinumClub_Item : ClubItem
 		Item.useAnimation = 12;
 		SmashDamageMultiplier = 16f / 28f;
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.PlatinumClub>();
-		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.PlatinumClub_smash>();
+		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.PlatinumClub_Smash>();
 	}
 
 	public override void AddRecipes()

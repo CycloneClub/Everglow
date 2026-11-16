@@ -116,7 +116,7 @@ public class WhisperingGhost : ModNPC
 	public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
 		Texture2D texture = ModAsset.WhisperingGhost.Value;
-		Texture2D glow = ModAsset.WhisperingGhost_glow.Value;
+		Texture2D glow = ModAsset.WhisperingGhost_Glow.Value;
 		SpriteEffects spriteEffect = SpriteEffects.None;
 		if (NPC.spriteDirection == -1)
 		{
@@ -152,7 +152,7 @@ public class WhisperingGhost : ModNPC
 		{
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 4f)).RotatedByRandom(MathHelper.TwoPi);
 			newVelocity.Y *= 2;
-			Dust dust = Dust.NewDustDirect(NPC.Center - new Vector2(0, 20), 0, 0, ModContent.DustType<WhisperingGhostGas_hot>());
+			Dust dust = Dust.NewDustDirect(NPC.Center - new Vector2(0, 20), 0, 0, ModContent.DustType<WhisperingGhostGas_Hot>());
 			dust.velocity = newVelocity;
 			dust.scale = Main.rand.NextFloat(0.8f, 1.6f);
 			dust.rotation = Main.rand.NextFloat(0.4f, 0.8f);
@@ -176,7 +176,7 @@ public class WhisperingGhost : ModNPC
 		{
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 8f)).RotatedByRandom(MathHelper.TwoPi);
 			newVelocity.Y *= 1.4f;
-			Dust dust = Dust.NewDustDirect(NPC.Center - new Vector2(0, 20), 0, 0, ModContent.DustType<WhisperingGhostGas_hot>());
+			Dust dust = Dust.NewDustDirect(NPC.Center - new Vector2(0, 20), 0, 0, ModContent.DustType<WhisperingGhostGas_Hot>());
 			dust.velocity = newVelocity;
 			dust.scale = Main.rand.NextFloat(0.8f, 1.6f);
 			dust.rotation = Main.rand.NextFloat(0.4f, 0.8f);

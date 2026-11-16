@@ -10,7 +10,7 @@ public class ExampleTrailingProjectile : TrailingProjectile
 	public override void SetCustomDefaults()
 	{
 		TrailTexture = Commons.ModAsset.Trail_8.Value;
-		TrailTextureBlack = Commons.ModAsset.Trail_8_black.Value;
+		TrailTextureBlack = Commons.ModAsset.Trail_8_Black.Value;
 		Projectile.tileCollide = false;
 		TrailLength = 30;
 		TrailBackgroundDarkness = 1;

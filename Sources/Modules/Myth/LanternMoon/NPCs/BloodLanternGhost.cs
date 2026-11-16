@@ -100,7 +100,7 @@ public class BloodLanternGhost : LanternMoonNPC
 		if (Timer == 60)
 		{
 			NPC.velocity *= 0;
-			Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom, Vector2.zeroVector, ModContent.ProjectileType<BloodLanternGhost_PowerBall>(), 20, 0f, Main.maxPlayers);
+			Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Bottom, Vector2.zeroVector, ModContent.ProjectileType<BloodLanternGhost_PowerBall>(), 20, 0f, -1);
 			BloodLanternGhost_PowerBall bLGPB = p0.ModProjectile as BloodLanternGhost_PowerBall;
 			if (bLGPB is not null)
 			{

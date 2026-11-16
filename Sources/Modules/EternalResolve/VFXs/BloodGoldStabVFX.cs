@@ -28,7 +28,7 @@ public class BloodGoldStabVFX : StabVFX
 			vertices.Add(new(p, new Vector3(i / 30f, 0.5f, 0), Color.White * 0.4f));
 			vertices.Add(new(p2 - new Vector3(Velocity.X, Velocity.Y, 0) * Width * 7 * (TimeLeft / (float)MaxTime), new Vector3(i / 30f, 1, 0), Color.White * 0.4f));
 		}
-		Ins.Batch.Draw(Commons.ModAsset.Trail_0_blackWhite.Value, vertices, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(Commons.ModAsset.Trail_0_BlackWhite.Value, vertices, PrimitiveType.TriangleStrip);
 		vertices = new();
 		for (int i = 0; i <= 30; i++)
 		{
@@ -41,6 +41,6 @@ public class BloodGoldStabVFX : StabVFX
 			vertices.Add(new(p, new Vector3(i / 30f, 0, 0), c));
 			vertices.Add(new(p2 - new Vector3(Velocity.X, Velocity.Y, 0) * Width * 7 * (TimeLeft / (float)MaxTime), new Vector3(i / 30f, 0.5f, 0), c));
 		}
-		Ins.Batch.Draw(Commons.ModAsset.Trail_0_blackWhite.Value, vertices, PrimitiveType.TriangleStrip);
+		Ins.Batch.Draw(Commons.ModAsset.Trail_0_BlackWhite.Value, vertices, PrimitiveType.TriangleStrip);
 	}
 }

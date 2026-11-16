@@ -57,12 +57,15 @@ public class TownCrateLootTests
 			List<DropRateInfo> rates = [];
 			themedRule.ReportDroprates(rates, new DropRateInfoChainFeed(1));
 			CollectionAssert.AreEquivalent(expected, rates.Select(rate => rate.itemId).ToArray());
+			float share = rates[0].dropRate;
 			foreach (var rate in rates)
 			{
-				Assert.AreEqual(1f / 9f, rate.dropRate, 0.000001f);
+				Assert.AreEqual(share, rate.dropRate, 0.000001f);
 				Assert.AreEqual(1, rate.stackMin);
 				Assert.AreEqual(1, rate.stackMax);
 			}
+
+			Assert.AreEqual(1f, rates.Sum(rate => rate.dropRate), 0.00001f);
 		}
 		finally
 		{

@@ -129,7 +129,7 @@ public class ThunderSpell_Thunder : ModProjectile, IBloomProjectile
 		}
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-		Effect effect1 = ModAsset.CylindricalLantern_explosion_lightningbolt.Value;
+		Effect effect1 = ModAsset.CylindricalLantern_Explosion_Lightningbolt.Value;
 		effect1.Parameters["uTransform"].SetValue(model * projection);
 		effect1.CurrentTechnique.Passes[0].Apply();
 		if (bars_bolt.Count > 0)

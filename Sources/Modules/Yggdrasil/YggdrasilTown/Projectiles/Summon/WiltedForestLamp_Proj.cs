@@ -95,7 +95,7 @@ public class WiltedForestLamp_Proj : ModProjectile
 					if (Collision.CanHit(Projectile, npc))
 					{
 						Vector2 vel = Vector2.Normalize(npc.Center - Projectile.Center) * 12;
-						Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, vel, ModContent.ProjectileType<WiltedForestLamp_Proj_shoot>(), Projectile.damage, 1, Projectile.owner);
+						Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, vel, ModContent.ProjectileType<WiltedForestLamp_Proj_Shoot>(), Projectile.damage, 1, Projectile.owner);
 					}
 				}
 			}
@@ -143,8 +143,8 @@ public class WiltedForestLamp_Proj : ModProjectile
 	{
 		Texture2D lamp = ModAsset.WiltedForestLamp_Proj.Value;
 		Texture2D lamp2 = ModAsset.WiltedForestLamp_Proj_Wilted.Value;
-		Texture2D lampGlow = ModAsset.WiltedForestLamp_Proj_glow.Value;
-		Texture2D lampGlow2 = ModAsset.WiltedForestLamp_Proj_Wilted_glow.Value;
+		Texture2D lampGlow = ModAsset.WiltedForestLamp_Proj_Glow.Value;
+		Texture2D lampGlow2 = ModAsset.WiltedForestLamp_Proj_Wilted_Glow.Value;
 		Texture2D outLamp = ModAsset.WiltedForestLamp_Proj_OutOfFlame.Value;
 
 		if (Projectile.timeLeft > 110)

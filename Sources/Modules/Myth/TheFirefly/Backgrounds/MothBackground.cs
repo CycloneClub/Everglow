@@ -138,7 +138,7 @@ public class MothBackground : ModSystem
 	/// <exception cref="Exception"> </exception>
 	public void GetGlowPos(string Shapepath)
 	{
-		var imageData = ImageReader.Read<SixLabors.ImageSharp.PixelFormats.Rgb24>("Everglow/Myth/TheFirefly/Backgrounds/" + Shapepath);
+		var imageData = ImageReader.Read("Everglow/Myth/TheFirefly/Backgrounds/" + Shapepath);
 		imageData.ProcessPixelRows(accessor =>
 		{
 			for (int y = 0; y < accessor.Height; y++)
@@ -163,7 +163,7 @@ public class MothBackground : ModSystem
 	/// <exception cref="Exception"> </exception>
 	public void GetGlowPosSec(string Shapepath)
 	{
-		var imageData = ImageReader.Read<SixLabors.ImageSharp.PixelFormats.Rgb24>("Everglow/Myth/TheFirefly/Backgrounds/" + Shapepath);
+		var imageData = ImageReader.Read("Everglow/Myth/TheFirefly/Backgrounds/" + Shapepath);
 		imageData.ProcessPixelRows(accessor =>
 		{
 			for (int y = 0; y < accessor.Height; y++)

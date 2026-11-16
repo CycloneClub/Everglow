@@ -96,7 +96,7 @@ namespace Everglow.EternalResolve.Projectiles
 					dark = restTime / 6f;
 				}
 				Texture2D bloodMark = ModAsset.BloodDrinkingMark.Value;
-				Texture2D bloodMarkBlack = ModAsset.BloodDrinkingMark_dark.Value;
+				Texture2D bloodMarkBlack = ModAsset.BloodDrinkingMark_Dark.Value;
 				if (4f * npc.width * npc.height / 5000f * npc.scale > 1.5f)
 				{
 					spriteBatch.Draw(bloodMarkBlack, npc.Center - Main.screenPosition, null, new Color(dark, dark, dark, dark), 0, bloodMark.Size() * 0.5f, 3f, SpriteEffects.None, 0f);

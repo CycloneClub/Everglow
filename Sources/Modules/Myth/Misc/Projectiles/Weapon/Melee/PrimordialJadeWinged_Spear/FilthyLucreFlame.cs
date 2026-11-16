@@ -48,11 +48,11 @@ internal class FilthyLucreFlamePipeline : Pipeline
 	}
 }
 
-internal class FilthyLucreFlame_darkPipeline : Pipeline
+internal class FilthyLucreFlame_DarkPipeline : Pipeline
 {
 	public override void Load()
 	{
-		effect = ModAsset.FilthyLucreFlame_dark;
+		effect = ModAsset.FilthyLucreFlame_Dark;
 	}
 
 	public override void BeginRender()
@@ -152,19 +152,19 @@ internal class FilthyLucreFlameDust : ShaderDraw
 	}
 }
 
-[Pipeline(typeof(FilthyLucreFlame_darkPipeline))]
-internal class FilthyLucreFlame_darkDust : ShaderDraw
+[Pipeline(typeof(FilthyLucreFlame_DarkPipeline))]
+internal class FilthyLucreFlame_DarkDust : ShaderDraw
 {
 	private Vector2 vsadd = Vector2.Zero;
 	public List<Vector2> oldPos = new List<Vector2>();
 	public float timer;
 	public float maxTime;
 
-	public FilthyLucreFlame_darkDust()
+	public FilthyLucreFlame_DarkDust()
 	{
 	}
 
-	public FilthyLucreFlame_darkDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai)
+	public FilthyLucreFlame_DarkDust(int maxTime, Vector2 position, Vector2 velocity, params float[] ai)
 		: base(position, velocity, ai)
 	{
 		this.maxTime = maxTime;

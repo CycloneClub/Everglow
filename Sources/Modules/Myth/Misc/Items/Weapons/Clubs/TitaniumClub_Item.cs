@@ -14,7 +14,7 @@ public class TitaniumClub_Item : ClubItem
 		Item.useAnimation = 12;
 		SmashDamageMultiplier = 61f / 36f;
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.TitaniumClub>();
-		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.TitaniumClub_smash>();
+		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.TitaniumClub_Smash>();
 	}
 
 	public override void AddRecipes()

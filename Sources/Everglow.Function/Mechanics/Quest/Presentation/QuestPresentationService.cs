@@ -38,7 +38,7 @@ public sealed class QuestPresentationService
 		{
 			entries.Add(CreateEntry(quest));
 		}
-		foreach (WorldQuestBase quest in _worldManager.Quests)
+		foreach (WorldQuestBase quest in _worldManager.Quests.Where(q => DebugOnlyQuestAttribute.IsEnabled(q.GetType())))
 		{
 			entries.Add(CreateEntry(quest));
 		}
@@ -94,7 +94,7 @@ public sealed class QuestPresentationService
 		}
 
 		WorldQuestBase quest = _worldManager.GetQuest(identity.DefinitionId);
-		if (quest is null)
+		if (quest is null || !DebugOnlyQuestAttribute.IsEnabled(quest.GetType()))
 		{
 			return false;
 		}

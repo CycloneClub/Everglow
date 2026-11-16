@@ -973,7 +973,7 @@ Photolysis: {
 	Description: 暴露在光线下会燃烧血液
 }
 
-Photophore_lightPetBuff: {
+Photophore_LightPetBuff: {
 	DisplayName: 灵灯
 	Description: 灵灯为你照明
 }

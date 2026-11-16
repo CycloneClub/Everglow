@@ -25,7 +25,7 @@ public class MossySpell : SpellTomeItem
 		Item.rare = ItemRarityID.Green;
 		Item.UseSound = SoundID.Item42;
 		Item.autoReuse = true;
-		Item.shoot = ModContent.ProjectileType<MossySpell_proj>();
+		Item.shoot = ModContent.ProjectileType<MossySpell_Proj>();
 		Item.shootSpeed = 12f;
 		DecorativeProjectileTypes.Add(ModContent.ProjectileType<MossySpellBook>());
 		DecorativeProjectileTypes.Add(ModContent.ProjectileType<MossySpellArray>());

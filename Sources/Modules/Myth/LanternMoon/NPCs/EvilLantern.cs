@@ -164,7 +164,7 @@ public class EvilLantern : LanternMoonNPC
 
 	public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
-		Texture2D tg = ModAsset.EvilLantern_glow.Value;
+		Texture2D tg = ModAsset.EvilLantern_Glow.Value;
 		SpriteEffects effects = SpriteEffects.None;
 		if (NPC.spriteDirection == 1)
 		{

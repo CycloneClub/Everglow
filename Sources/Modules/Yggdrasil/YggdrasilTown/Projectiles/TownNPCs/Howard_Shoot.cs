@@ -3,7 +3,7 @@ using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.TownNPCs;
 
-public class Howard_Shoot : ModProjectile, IWarpProjectile_warpStyle2
+public class Howard_Shoot : ModProjectile, IWarpProjectile_WarpStyle2
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.TownNPCProjectiles;
 

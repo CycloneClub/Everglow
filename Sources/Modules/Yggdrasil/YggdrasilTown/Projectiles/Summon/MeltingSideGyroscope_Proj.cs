@@ -231,8 +231,8 @@ public class MeltingSideGyroscope_Proj : GyroscopeProjectile
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D texture = ModAsset.MeltingSideGyroscope_Proj.Value;
-		Texture2D textureGlow = ModAsset.MeltingSideGyroscope_Proj_glow.Value;
-		Texture2D textureBloom = ModAsset.MeltingSideGyroscope_Proj_bloom.Value;
+		Texture2D textureGlow = ModAsset.MeltingSideGyroscope_Proj_Glow.Value;
+		Texture2D textureBloom = ModAsset.MeltingSideGyroscope_Proj_Bloom.Value;
 		var frame = new Rectangle(0, 24 * Projectile.frame, 28, 24);
 		if (Projectile.frame >= 4)
 		{

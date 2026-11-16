@@ -4,13 +4,13 @@ ActivatedJellyGlandMinion.DisplayName: Activated Jelly Gland Minion
 AuburnBellMinion.DisplayName: Auburn Bell Minion
 BlackCorruptRain3Friendly.DisplayName: Black Corrupt Rain3 Friendly
 BlackCorruptRainFriendly.DisplayName: Black Corrupt Rain Friendly
-CrimsonMoonAlgaeSummonStaff_minion_Explosion.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.RedAlgaeMinionStaff.DisplayName}"
-CrimsonMoonAlgaeSummonStaff_minion_spore.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.RedAlgaeMinionStaff.DisplayName}"
-CrimsonMoonAlgaeSummonStaff_minion.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.RedAlgaeMinionStaff.DisplayName}"
+CrimsonMoonAlgaeSummonStaff_Minion_Explosion.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.RedAlgaeMinionStaff.DisplayName}"
+CrimsonMoonAlgaeSummonStaff_Minion_Spore.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.RedAlgaeMinionStaff.DisplayName}"
+CrimsonMoonAlgaeSummonStaff_Minion.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.RedAlgaeMinionStaff.DisplayName}"
 DarkFanFly.DisplayName: Dark Fan Fly
-DeadBeetleEgg_beetle_proj.DisplayName: Dead Beetle Egg_beetle_proj
-DeadBeetleEgg_beetle.DisplayName: Dead Beetle Egg_beetle
-DeadBeetleEgg_egg.DisplayName: Dead Beetle Egg_egg
+DeadBeetleEgg_Beetle_Proj.DisplayName: Dead Beetle Egg_beetle_proj
+DeadBeetleEgg_Beetle.DisplayName: Dead Beetle Egg_beetle
+DeadBeetleEgg_Egg.DisplayName: Dead Beetle Egg_egg
 DevilHeartGyroscope_Proj_Hit.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.DevilHeartGyroscope.DisplayName}"
 DevilHeartGyroscope_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.DevilHeartGyroscope.DisplayName}"
 DreamWeaverArray.DisplayName: Dream Weaver Array
@@ -27,13 +27,13 @@ Faelanternbranch.DisplayName: Faelanternbranch
 FaelanternProj.DisplayName: Faelantern Proj
 GlowingButterfly.DisplayName: Glowing Butterfly
 GlowMoth.DisplayName: Glow Moth
-GoldenLotusStaff_proj.DisplayName: Golden Lotus Staff_proj
-GoldenLotusStaff_subproj.DisplayName: Golden Lotus Staff_subproj
-GreenVineWhip_proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.GreenVineWhip.DisplayName}"
-GrilledSquidTentacle_proj.DisplayName: Grilled Squid Tentacle_proj
+GoldenLotusStaff_Proj.DisplayName: Golden Lotus Staff_proj
+GoldenLotusStaff_Subproj.DisplayName: Golden Lotus Staff_subproj
+GreenVineWhip_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.GreenVineWhip.DisplayName}"
+GrilledSquidTentacle_Proj.DisplayName: Grilled Squid Tentacle_proj
 Legume_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.LegumeGyroscope.DisplayName}"
 LegumeGyroscope_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.LegumeGyroscope.DisplayName}"
-LichenTentacle_proj.DisplayName: Lichen Tentacle_proj
+LichenTentacle_Proj.DisplayName: Lichen Tentacle_proj
 MeltingSideGyroscope_Proj.DisplayName: Melting Side Gyroscope_ Proj
 MothMagicArray.DisplayName: Moth Magic Array
 PhantomMoth.DisplayName: Phantom Moth
@@ -45,9 +45,9 @@ RestrictionDroneRE01Laser.DisplayName: Restriction DroneRE01 Laser
 Thermoprobe_Fireball.DisplayName: Thermoprobe_ Fireball
 Thermoprobe.DisplayName: Thermoprobe
 TuskSummon.DisplayName: Tusk Summon
-WiltedForestLamp_Proj_shoot.DisplayName: Wilted Forest Lamp_ Proj_shoot
+WiltedForestLamp_Proj_Shoot.DisplayName: Wilted Forest Lamp_ Proj_shoot
 WiltedForestLamp_Proj.DisplayName: Wilted Forest Lamp_ Proj
-Wither_Activated_Dog_Summon_background.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.ActivatedDogStaff.DisplayName}"
+Wither_Activated_Dog_Summon_Background.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.ActivatedDogStaff.DisplayName}"
 Wither_Activated_Dog_Summon.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.ActivatedDogStaff.DisplayName}"
 Wither_Activated_Dog.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.ActivatedDogStaff.DisplayName}"
 WitherbarkMinion_Leaf.DisplayName: Witherbark Minion_ Leaf

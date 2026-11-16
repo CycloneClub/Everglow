@@ -2,6 +2,7 @@ using System.Reflection;
 using Everglow.Food.Items.Weapons;
 using Everglow.Commons.VFX.CommonVFXDusts;
 using Everglow.Commons.VFX.CommonVFXDusts.Misc;
+using Everglow.Commons.Templates.Weapons;
 using Everglow.UnitTests.Function;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.LightSeeker;
@@ -132,8 +133,12 @@ public class ProjectileSourceOwnerTests
 	}
 
 	[TestMethod]
-	public void EnemyAttackDoesNotBelongToItsPlayerTarget()
+	[DataRow(NetmodeID.SinglePlayer, 0)]
+	[DataRow(NetmodeID.Server, 255)]
+	public void EnemyAttackBelongsToSpawningSideInsteadOfItsPlayerTarget(int netMode, int owner)
 	{
+		Main.netMode = netMode;
+		Main.myPlayer = owner;
 		RegisterProjectile(typeof(Everglow.Yggdrasil.YggdrasilTown.Projectiles.Enemies.BloodSpell));
 		var npc = new NPC { target = 1 };
 		npc.ai[0] = 29;
@@ -149,7 +154,7 @@ public class ProjectileSourceOwnerTests
 			On_NPC.TargetClosest -= keepTarget;
 		}
 		Assert.AreSame(npc, ((EntitySource_Parent)capturedSource!).Entity);
-		Assert.AreEqual(Main.maxPlayers, capturedProjectile!.owner);
+		Assert.AreEqual(owner, capturedProjectile!.owner);
 		Assert.AreEqual(1, npc.target);
 	}
 
@@ -165,7 +170,7 @@ public class ProjectileSourceOwnerTests
 		Main.netMode = netMode;
 		Main.myPlayer = playerIndex;
 		var npc = new NPC { active = true, friendly = true, damage = 30 };
-		var guard = (Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs.Guard_of_YggdrasilTown)new Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs.Guard_of_YggdrasilTown().NewInstance(npc);
+		var guard = (Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs.Guard_Of_YggdrasilTown)new Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs.Guard_Of_YggdrasilTown().NewInstance(npc);
 
 		using var attack = guard.Attack0();
 		Assert.IsTrue(attack.MoveNext());
@@ -184,7 +189,7 @@ public class ProjectileSourceOwnerTests
 	public void AcytaeaSwordKeepsNpcOwnership(int netMode, int playerIndex)
 	{
 		var module = LoadModule("Myth");
-		RegisterProjectile(module.GetType("Everglow.Myth.Acytaea.Projectiles.AcytaeaSword_projectile_TownNPC", true)!);
+		RegisterProjectile(module.GetType("Everglow.Myth.Acytaea.Projectiles.AcytaeaSword_Projectile_TownNPC", true)!);
 		Main.netMode = netMode;
 		Main.myPlayer = playerIndex;
 		var npc = new NPC { active = true, friendly = true };
@@ -228,6 +233,78 @@ public class ProjectileSourceOwnerTests
 		property.SetValue(null, instance);
 	}
 
+	[TestMethod]
+	[DataRow(typeof(Everglow.Yggdrasil.KelpCurtain.Projectiles.TileEffect.UnderwaterLightningMechanism_Lightning))]
+	[DataRow(typeof(Everglow.Yggdrasil.KelpCurtain.Projectiles.TileEffect.FallingSand_DecaySandSoil))]
+	[DataRow(typeof(Everglow.Yggdrasil.KelpCurtain.Projectiles.TileEffect.UnderwaterGuillotine_Projectile))]
+	public void EnvironmentDamageDoesNotAcquirePlayerOwner(Type projectileType)
+	{
+		var projectile = new Projectile { owner = 0 };
+		var content = ((ModProjectile)Activator.CreateInstance(projectileType)!).NewInstance(projectile);
+		content.SetDefaults();
+		Assert.IsTrue(projectile.friendly, "Environment damage must still hit NPCs.");
+		Assert.IsTrue(projectile.hostile, "Environment damage must still hit players.");
+		Assert.IsFalse(projectile.TryGetOwner(out _), "Environment damage must not invoke player equipment hooks.");
+	}
+
+	[TestMethod]
+	public void DestroyedTrailCannotContinueHittingPlayers()
+	{
+		var projectile = new Projectile { friendly = true, hostile = true };
+		var trail = (FadingTrail)new FadingTrail().NewInstance(projectile);
+		trail.DestroyEntity();
+		Assert.IsFalse(projectile.friendly);
+		Assert.IsFalse(projectile.hostile);
+	}
+
+	private sealed class FadingTrail : TrailingProjectile
+	{
+	}
+
+	[TestMethod]
+	[DataRow("BlueFlame1Boom", "BlueFlame0LittleSoon", 120, NetmodeID.MultiplayerClient, false)]
+	[DataRow("GreenFlame0Split", "GreenFlame0Little", 120, NetmodeID.MultiplayerClient, false)]
+	[DataRow("RedFlame0Split", "RedFlame0Little", 120, NetmodeID.MultiplayerClient, false)]
+	[DataRow("GreenFlame1Split", "GreenFlame0Little", 195, NetmodeID.MultiplayerClient, false)]
+	[DataRow("RedFlame1Split", "RedFlame0Little", 195, NetmodeID.MultiplayerClient, false)]
+	[DataRow("RedFlame2Split", "RedFlame0Little", 120, NetmodeID.MultiplayerClient, false)]
+	[DataRow("BlueFlame1Boom", "BlueFlame0LittleSoon", 120, NetmodeID.SinglePlayer, true)]
+	[DataRow("GreenFlame0Split", "GreenFlame0Little", 120, NetmodeID.SinglePlayer, true)]
+	[DataRow("RedFlame0Split", "RedFlame0Little", 120, NetmodeID.SinglePlayer, true)]
+	[DataRow("GreenFlame1Split", "GreenFlame0Little", 195, NetmodeID.SinglePlayer, true)]
+	[DataRow("RedFlame1Split", "RedFlame0Little", 195, NetmodeID.SinglePlayer, true)]
+	[DataRow("RedFlame2Split", "RedFlame0Little", 120, NetmodeID.SinglePlayer, true)]
+	[DataRow("BlueFlame1Boom", "BlueFlame0LittleSoon", 120, NetmodeID.Server, true)]
+	[DataRow("GreenFlame0Split", "GreenFlame0Little", 120, NetmodeID.Server, true)]
+	[DataRow("RedFlame0Split", "RedFlame0Little", 120, NetmodeID.Server, true)]
+	[DataRow("GreenFlame1Split", "GreenFlame0Little", 195, NetmodeID.Server, true)]
+	[DataRow("RedFlame1Split", "RedFlame0Little", 195, NetmodeID.Server, true)]
+	[DataRow("RedFlame2Split", "RedFlame0Little", 120, NetmodeID.Server, true)]
+	public void DashCoreChildrenOnlySpawnOnAuthority(string parentName, string childName, int timeLeft, int netMode, bool shouldSpawn)
+	{
+		var module = LoadModule("Myth");
+		const string prefix = "Everglow.Myth.LanternMoon.Projectiles.DashCore.";
+		RegisterProjectile(module.GetType(prefix + childName, true)!);
+		var projectile = new Projectile { owner = 255, timeLeft = timeLeft, velocity = Vector2.UnitY * 4 };
+		var content = ((ModProjectile)Activator.CreateInstance(module.GetType(prefix + parentName, true)!)!).NewInstance(projectile);
+		Main.player = Enumerable.Range(0, Main.maxPlayers + 1).Select(_ => new Player()).ToArray();
+		context.Player.whoAmI = 0;
+		Main.player[0] = context.Player;
+		Main.netMode = netMode;
+		Main.dedServ = true;
+		On_Lighting.hook_AddLight_int_int_float_float_float ignoreLight = (orig, x, y, r, g, b) => { };
+		On_Lighting.AddLight_int_int_float_float_float += ignoreLight;
+		try
+		{
+			content.AI();
+		}
+		finally
+		{
+			On_Lighting.AddLight_int_int_float_float_float -= ignoreLight;
+		}
+		Assert.AreEqual(shouldSpawn, capturedProjectile != null);
+	}
+
 	private static Assembly LoadModule(string name)
 	{
 		string configuration = new DirectoryInfo(AppContext.BaseDirectory).Parent!.Name;
@@ -246,7 +323,8 @@ public class ProjectileSourceOwnerTests
 	private Projectile Record(IEntitySource source, int type, int damage, int owner)
 	{
 		capturedSource = source;
-		capturedProjectile = new Projectile { type = type, damage = damage, owner = owner, DamageType = DamageClass.Magic };
+		// Match NewProjectile's default-owner handling before applying source stats.
+		capturedProjectile = new Projectile { type = type, damage = damage, owner = owner == -1 ? Main.myPlayer : owner, DamageType = DamageClass.Magic };
 		typeof(Projectile).GetMethod("ApplyStatsFromSource", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)!
 			.Invoke(capturedProjectile, [source]);
 		return capturedProjectile;

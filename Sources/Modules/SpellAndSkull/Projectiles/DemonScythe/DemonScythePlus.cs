@@ -89,8 +89,8 @@ public class DemonScythePlus : ModProjectile
 
 	public override bool PreDraw(ref Color lightColor)
 	{
-		DrawMagicArray(Commons.ModAsset.Trail_5_black.Value, new Color(1f, 1f, 1f, 1f));
-		DrawMagicArray(Commons.ModAsset.Trail_5_black.Value, new Color(1f, 1f, 1f, 1f));
+		DrawMagicArray(Commons.ModAsset.Trail_5_Black.Value, new Color(1f, 1f, 1f, 1f));
+		DrawMagicArray(Commons.ModAsset.Trail_5_Black.Value, new Color(1f, 1f, 1f, 1f));
 		DrawMagicArray(Commons.ModAsset.Trail_5.Value, new Color(0.4f, 0.0f, 0.8f, 0));
 		return false;
 	}

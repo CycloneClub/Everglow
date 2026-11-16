@@ -607,7 +607,7 @@ public class CrystalCell : ModNPC
 		}
 		for (int j = 0; j < 3; j++)
 		{
-			NPC.NewNPCDirect(NPC.GetSource_Death(), NPC.Center, ModContent.NPCType<CrystalCell_small>());
+			NPC.NewNPCDirect(NPC.GetSource_Death(), NPC.Center, ModContent.NPCType<CrystalCell_Small>());
 		}
 		for (int h = 0; h < 30; h++)
 		{
@@ -639,7 +639,7 @@ public class CrystalCell : ModNPC
 
 	public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
-		Texture2D glow = ModAsset.CrystalCell_glow.Value;
+		Texture2D glow = ModAsset.CrystalCell_Glow.Value;
 		spriteBatch.Draw(glow, NPC.Center + new Vector2(0, NPC.gfxOffY) - screenPos, NPC.frame, new Color(1f, 1f, 1f, 0) * (hitTimer / 30f), NPC.rotation, NPC.frame.Size() * 0.5f, NPC.scale, NPC.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
 		base.PostDraw(spriteBatch, screenPos, drawColor);
 	}

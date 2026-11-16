@@ -280,7 +280,7 @@ public class DarkCocoon : ModTile
 					t3.TileFrameY = 0;
 					break;
 				case 4:
-					TileUtils.PlaceFrameImportantTiles(i, j - 2, 1, 2, (ushort)ModContent.TileType<BluishGiantGentian_small>(), 48 * Main.rand.Next(6));
+					TileUtils.PlaceFrameImportantTiles(i, j - 2, 1, 2, (ushort)ModContent.TileType<BluishGiantGentian_Small>(), 48 * Main.rand.Next(6));
 					break;
 			}
 			return;

@@ -14,7 +14,7 @@ public class MeteorClub_Item : ClubItem
 		Item.useAnimation = 12;
 		SmashDamageMultiplier = 26f / 15f;
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.MeteorClub>();
-		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.MeteorClub_smash>();
+		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.MeteorClub_Smash>();
 	}
 
 	public override void AddRecipes()

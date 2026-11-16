@@ -19,7 +19,7 @@ public class GreenFlameSharpCrystal : TrailingProjectile
 		SelfLuminous = false;
 		TrailLength = 24;
 		TrailTexture = Commons.ModAsset.Trail_10.Value;
-		TrailTextureBlack = Commons.ModAsset.Trail_10_black.Value;
+		TrailTextureBlack = Commons.ModAsset.Trail_10_Black.Value;
 		TrailShader = Commons.ModAsset.Trailing.Value;
 		Projectile.timeLeft = 300;
 		Projectile.width = 10;
@@ -108,7 +108,7 @@ public class GreenFlameSharpCrystal : TrailingProjectile
 			color = Lighting.GetColor(Projectile.Center.ToTileCoordinates());
 		}
 		Main.spriteBatch.Draw(texMain, Projectile.Center - Main.screenPosition, null, color, Projectile.rotation, texMain.Size() / 2f, fade, SpriteEffects.None, 0);
-		var texGlow = ModAsset.GreenFlameSharpCrystal_reflect.Value;
+		var texGlow = ModAsset.GreenFlameSharpCrystal_Reflect.Value;
 		float rotValue = ((Projectile.rotation + MathHelper.TwoPi) % MathHelper.TwoPi) / MathHelper.TwoPi / 4f;
 		int glowY = (int)rotValue % 4;
 		Rectangle glowFrame = new Rectangle(0, 14 * glowY, 26, 14);

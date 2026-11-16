@@ -48,7 +48,7 @@ public class GreenRelicBrick_BonusKey : ModTile
 		Main.tileFrameImportant[Type] = true;
 		Main.tileSolid[Type] = false;
 		Main.tileBlockLight[Type] = true;
-		DustType = ModContent.DustType<GreenRelicBrick_dust>();
+		DustType = ModContent.DustType<GreenRelicBrick_Dust>();
 		HitSound = SoundID.Dig;
 		MinPick = 400;
 		AddMapEntry(new Color(13, 13, 13));

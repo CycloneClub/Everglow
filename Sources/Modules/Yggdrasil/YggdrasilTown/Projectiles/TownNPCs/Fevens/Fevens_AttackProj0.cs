@@ -153,11 +153,11 @@ public class Fevens_AttackProj0 : ModProjectile
 			}
 			if (bars.Count > 2)
 			{
-				Texture2D tex = Commons.ModAsset.Trail_2_black_thick.Value;
+				Texture2D tex = Commons.ModAsset.Trail_2_Black_Thick.Value;
 				Main.graphics.GraphicsDevice.Textures[0] = tex;
 				Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, barsDark.ToArray(), 0, barsDark.Count - 2);
 
-				tex = Commons.ModAsset.Trail_2_thick.Value;
+				tex = Commons.ModAsset.Trail_2_Thick.Value;
 				Main.graphics.GraphicsDevice.Textures[0] = tex;
 				Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 			}
@@ -193,11 +193,11 @@ public class Fevens_AttackProj0 : ModProjectile
 			}
 			if (bars.Count > 2)
 			{
-				Texture2D tex = Commons.ModAsset.Trail_2_black_thick.Value;
+				Texture2D tex = Commons.ModAsset.Trail_2_Black_Thick.Value;
 				Main.graphics.GraphicsDevice.Textures[0] = tex;
 				Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, barsDark.ToArray(), 0, barsDark.Count - 2);
 
-				tex = Commons.ModAsset.Trail_2_thick.Value;
+				tex = Commons.ModAsset.Trail_2_Thick.Value;
 				Main.graphics.GraphicsDevice.Textures[0] = tex;
 				Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 				Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);

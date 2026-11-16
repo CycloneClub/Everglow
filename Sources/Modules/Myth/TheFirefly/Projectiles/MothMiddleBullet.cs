@@ -16,7 +16,7 @@ public class MothMiddleBullet : TrailingProjectile
 		Projectile.tileCollide = true;
 		TrailColor = new Color(0.1f, 0.4f, 0.9f, 0);
 		TrailTexture = Commons.ModAsset.Trail_6.Value;
-		TrailTextureBlack = Commons.ModAsset.Trail_0_black.Value;
+		TrailTextureBlack = Commons.ModAsset.Trail_0_Black.Value;
 	}
 
 	public override void OnSpawn(IEntitySource source)
@@ -99,7 +99,7 @@ public class MothMiddleBullet : TrailingProjectile
 
 	public override void DrawSelf()
 	{
-		var texDark = ModAsset.MothMiddleBullet_dark.Value;
+		var texDark = ModAsset.MothMiddleBullet_Dark.Value;
 		var texMain = (Texture2D)ModContent.Request<Texture2D>(Texture);
 		var texStar = Commons.ModAsset.StarSlash.Value;
 		Main.spriteBatch.Draw(texDark, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, texDark.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);

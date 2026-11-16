@@ -7,7 +7,7 @@ public class MythrilClub : ClubProj
 		EnableReflection = true;
 		Beta = 0.005f;
 		MaxOmega = 0.43f;
-		ReflectionTexture = ModAsset.MythrilClub_light_Mod;
+		ReflectionTexture = ModAsset.MythrilClub_Light_Mod;
 		ReflectionStrength = 2f;
 	}
 }

@@ -163,7 +163,7 @@ public class DashingLightEff : ModProjectile, IWarpProjectile
 		effect.Parameters["uTransform"].SetValue(model * projection);
 		effect.Parameters["uProcession"].SetValue(0.5f);
 		effect.CurrentTechnique.Passes[0].Apply();
-		Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_black_thick.Value;
+		Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_Black_Thick.Value;
 		Main.graphics.graphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		Main.graphics.graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, barsDark.ToArray(), 0, barsDark.Count - 2);
 

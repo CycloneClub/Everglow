@@ -197,8 +197,8 @@ public class WaterSluice_Liquid_Scene : TileVFX
 
 	public void DrawWaterPierThinBack(Vector2 worldPos, float offsetY = 0)
 	{
-		// Texture2D liquidTex = ModAsset.WaterSluice_Scene_WaterPier_content.Value;
-		// Texture2D liquidTex_side = ModAsset.WaterSluice_Scene_WaterPier_side.Value;
+		// Texture2D liquidTex = ModAsset.WaterSluice_Scene_WaterPier_Content.Value;
+		// Texture2D liquidTex_side = ModAsset.WaterSluice_Scene_WaterPier_Side.Value;
 		// float timeValue = -(float)Main.time / 120f;
 		// List<Vertex2D> bars = new List<Vertex2D>();
 		// List<Vertex2D> bars_side = new List<Vertex2D>();
@@ -230,7 +230,7 @@ public class WaterSluice_Liquid_Scene : TileVFX
 		// Ins.Batch.Draw(liquidTex, bars, PrimitiveType.TriangleStrip);
 		// Ins.Batch.Draw(Commons.ModAsset.Noise_Flame_2_Pure.Value, bars_wave, PrimitiveType.TriangleStrip);
 		// Ins.Batch.Draw(liquidTex_side, bars_side, PrimitiveType.TriangleStrip);
-		Texture2D liquidTex = ModAsset.WaterSluice_Scene_WaterPier_thin.Value;
+		Texture2D liquidTex = ModAsset.WaterSluice_Scene_WaterPier_Thin.Value;
 		float timeValue = -(float)Main.time / 120f;
 		List<Vertex2D> bars = new List<Vertex2D>();
 		float fade = 0.1f;
@@ -254,7 +254,7 @@ public class WaterSluice_Liquid_Scene : TileVFX
 
 	public void DrawWaterPierThin(Vector2 worldPos, float offsetY, int segments)
 	{
-		Texture2D liquidTex = ModAsset.WaterSluice_Scene_WaterPier_thin_batch.Value;
+		Texture2D liquidTex = ModAsset.WaterSluice_Scene_WaterPier_Thin_Batch.Value;
 		float timeValue = -(float)Main.time / 120f;
 		List<Vertex2D> bars = pierBars;
 		bars.Clear();
@@ -272,8 +272,8 @@ public class WaterSluice_Liquid_Scene : TileVFX
 
 	public void DrawWaterPierThick(Vector2 worldPos, float offsetY, int segments)
 	{
-		Texture2D liquidTex = ModAsset.WaterSluice_Scene_WaterPier_content.Value;
-		Texture2D liquidTex_side = ModAsset.WaterSluice_Scene_WaterPier_side.Value;
+		Texture2D liquidTex = ModAsset.WaterSluice_Scene_WaterPier_Content.Value;
+		Texture2D liquidTex_side = ModAsset.WaterSluice_Scene_WaterPier_Side.Value;
 		float timeValue = -(float)Main.time / 120f;
 		List<Vertex2D> bars = pierBars;
 		List<Vertex2D> bars_side = pierBarsSide;
@@ -304,8 +304,8 @@ public class WaterSluice_Liquid_Scene : TileVFX
 
 	public void DrawWaterFallFlow(Vector2 worldPos, float offsetY, int segments, int Direction)
 	{
-		Texture2D liquidTex = ModAsset.WaterSluice_Scene_WaterPier_content.Value;
-		Texture2D liquidTex_side = ModAsset.WaterSluice_Scene_Waterfall_side.Value;
+		Texture2D liquidTex = ModAsset.WaterSluice_Scene_WaterPier_Content.Value;
+		Texture2D liquidTex_side = ModAsset.WaterSluice_Scene_Waterfall_Side.Value;
 		float timeValue = -(float)Main.time / 120f;
 
 		// Legacy
@@ -454,7 +454,7 @@ public class WaterSluice_Liquid_Scene : TileVFX
 			{
 				Vector2 pos = new Vector2(pierEndPos.X + Main.rand.NextFloat(-width - 1, width + 1), pierEndPos.Y + Main.rand.NextFloat(-4, 0));
 				Dust dust = Dust.NewDustPerfect(Position, ModContent.DustType<GenerateSplash>(), Vector2.zeroVector);
-				var splash = new WaterSluice_Scene_shockwave()
+				var splash = new WaterSluice_Scene_Shockwave()
 				{
 					Position = pos,
 					Fade = fade * Main.rand.NextFloat(0.75f, 1),
@@ -557,7 +557,7 @@ public class WaterSluice_Liquid_Scene : TileVFX
 			{
 				Vector2 pos = new Vector2(waterfallEndPos.X + Main.rand.NextFloat(0, 40) * Direction, waterfallEndPos.Y + Main.rand.NextFloat(-4, -10));
 				Dust dust = Dust.NewDustPerfect(Position, ModContent.DustType<GenerateSplash>(), Vector2.zeroVector);
-				var splash = new WaterSluice_Scene_shockwave()
+				var splash = new WaterSluice_Scene_Shockwave()
 				{
 					Position = pos,
 					Fade = fade,

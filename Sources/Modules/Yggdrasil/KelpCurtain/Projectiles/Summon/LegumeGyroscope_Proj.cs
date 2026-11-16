@@ -206,7 +206,7 @@ public class LegumeGyroscope_Proj : GyroscopeProjectile
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D texture = ModAsset.LegumeGyroscope_Proj.Value;
-		Texture2D textureBloom = ModAsset.LegumeGyroscope_bloom.Value;
+		Texture2D textureBloom = ModAsset.LegumeGyroscope_Bloom.Value;
 		var frame = new Rectangle(0, 28 * Projectile.frame, 38, 28);
 		if (Projectile.frame >= 6)
 		{

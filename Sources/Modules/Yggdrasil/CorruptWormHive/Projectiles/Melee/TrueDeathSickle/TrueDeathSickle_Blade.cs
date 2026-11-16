@@ -8,7 +8,7 @@ using Terraria.Enums;
 
 namespace Everglow.Yggdrasil.CorruptWormHive.Projectiles.Melee.TrueDeathSickle;
 
-public class TrueDeathSickle_Blade : ModProjectile, IWarpProjectile_warpStyle2, IBloomProjectile
+public class TrueDeathSickle_Blade : ModProjectile, IWarpProjectile_WarpStyle2, IBloomProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
 
@@ -177,7 +177,7 @@ public class TrueDeathSickle_Blade : ModProjectile, IWarpProjectile_warpStyle2, 
 	{
 		for (int g = 0; g < frequency; g++)
 		{
-			var df = new DevilFlame3DSickle_worldCoordDust
+			var df = new DevilFlame3DSickle_WorldCoordDust
 			{
 				Velocity3D = new Vector3(new Vector2(0, Main.rand.NextFloat(6, 9f)).RotatedByRandom(MathHelper.TwoPi), 0),
 				Active = true,
@@ -301,7 +301,7 @@ public class TrueDeathSickle_Blade : ModProjectile, IWarpProjectile_warpStyle2, 
 			bars.Add(SmoothTrail[i] + drawPos, drawColor * colorSize, new Vector3(i / flameSize + flameTimer, 0.5f, 0));
 			bars.Add(SmoothTrail[i] * (1f - width / 100f) + drawPos, drawColor * colorSize, new Vector3(i / flameSize * 1.3f + flameTimer, 0f, 0));
 		}
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_0_black.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_0_Black.Value;
 		if (bars.Count > 3)
 		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
@@ -474,10 +474,10 @@ public class TrueDeathSickle_Blade : ModProjectile, IWarpProjectile_warpStyle2, 
 			bars.Add(texCoordsProjected[2] + offset, color, texCoordsOrig[2] / size);
 		}
 
-		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.TrueDeathSickle_proj.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = ModAsset.TrueDeathSickle_Proj.Value;
 		if (glowMask)
 		{
-			Main.graphics.GraphicsDevice.Textures[0] = ModAsset.TrueDeathSickle_proj_glow.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = ModAsset.TrueDeathSickle_Proj_Glow.Value;
 		}
 		if (bars.Count > 3)
 		{

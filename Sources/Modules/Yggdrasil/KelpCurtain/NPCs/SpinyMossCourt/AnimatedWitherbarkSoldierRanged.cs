@@ -420,7 +420,7 @@ public class AnimatedWitherbarkSoldierRanged : ModNPC
 		// A slight upward lob so the boulder arcs onto the prey instead of dropping short.
 		Vector2 velocity = direction * BoulderSpeed;
 		velocity.Y -= 3f;
-		Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity, ModContent.ProjectileType<AnimatedWitherbarkSoldier_Boulder>(), NPC.damage, 0f, Owner: Main.maxPlayers);
+		Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity, ModContent.ProjectileType<AnimatedWitherbarkSoldier_Boulder>(), NPC.damage, 0f, Owner: -1);
 		NPC.netUpdate = true;
 	}
 

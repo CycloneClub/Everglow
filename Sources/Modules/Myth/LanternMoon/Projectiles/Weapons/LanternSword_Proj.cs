@@ -58,7 +58,7 @@ public class LanternSword_Proj : MeleeProj_3D
 					}
 					Owner.immune = true;
 					Owner.immuneTime = 30;
-					var lanternPlayer = Owner.GetModPlayer<LanternSword_player>();
+					var lanternPlayer = Owner.GetModPlayer<LanternSword_Player>();
 					if (lanternPlayer is not null)
 					{
 						lanternPlayer.Active = true;
@@ -206,7 +206,7 @@ public class LanternSword_Proj : MeleeProj_3D
 			if (!Collision.SolidCollision(des - new Vector2(8, 16), 16, 16))
 			{
 				Texture2D mark = ModAsset.LanternSword_NextTargetMark.Value;
-				Texture2D mark_black = ModAsset.LanternSword_NextTargetMark_black.Value;
+				Texture2D mark_black = ModAsset.LanternSword_NextTargetMark_Black.Value;
 				float timeValue = (float)Main.timeForVisualEffects % 30;
 				float fade = 1f;
 				if (NextTargetAvailableTimer < 60)
@@ -278,7 +278,7 @@ public class LanternSword_Proj : MeleeProj_3D
 				if (bars_b.Count > 0)
 				{
 					Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_Perlin.Value;
-					Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Star_black.Value;
+					Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Star_Black.Value;
 					Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars_b.ToArray(), 0, bars_b.Count - 2);
 				}
 

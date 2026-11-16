@@ -73,7 +73,7 @@ namespace Everglow.EternalResolve.Projectiles
 			Lighting.AddLight(Projectile.Center + Projectile.velocity, 0.2f * value, 0.24f * value, 0.3f * value);
 			Player player = Main.player[Projectile.owner];
 			Texture2D itemTexture = TextureAssets.Item[Main.player[Projectile.owner].HeldItem.type].Value;
-			Texture2D shadow = Commons.ModAsset.Star2_black.Value;
+			Texture2D shadow = Commons.ModAsset.Star2_Black.Value;
 			Texture2D light = Commons.ModAsset.StabbingProjectile.Value;
 			Vector2 drawOrigin = light.Size() / 2f;
 			Vector2 drawShadowOrigin = shadow.Size() / 2f;

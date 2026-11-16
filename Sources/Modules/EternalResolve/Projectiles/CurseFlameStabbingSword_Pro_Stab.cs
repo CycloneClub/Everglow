@@ -87,7 +87,7 @@ namespace Everglow.EternalResolve.Projectiles
 				effect.Parameters["uTransform"].SetValue(model * projection);
 				effect.Parameters["uProcession"].SetValue(0.21f);
 				effect.CurrentTechnique.Passes[0].Apply();
-				Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_black.Value;
+				Main.graphics.graphicsDevice.Textures[0] = Commons.ModAsset.Trail_Black.Value;
 				Main.graphics.graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 				Main.spriteBatch.End();
 				Main.spriteBatch.Begin(sBS);
@@ -180,7 +180,7 @@ namespace Everglow.EternalResolve.Projectiles
 				float rot = Main.rand.NextFloat(-0.1f, 0.1f);
 				Vector2 velocity = playerVel + projVel.RotatedBy(Main.rand.NextFloat(-0.05f, 0.05f)) * Main.rand.NextFloat(0.75f, 3.25f);
 				Vector2 position = Projectile.Center + projVel.RotatedBy(rot) * Main.rand.NextFloat(1f, 2.5f);
-				var cf = new CursedFlame_flowDust
+				var cf = new CursedFlame_FlowDust
 				{
 					Velocity = velocity * 0.15f,
 					Active = true,

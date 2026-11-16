@@ -134,7 +134,7 @@ namespace Everglow.EternalResolve.Projectiles
 				}
 			}
 			Main.EntitySpriteDraw(ModAsset.MechanicMosquito_Mosquito.Value, Projectile.Center - Main.screenPosition, new Rectangle(0, 18 * Projectile.frame, 24, 18), lightColor, Projectile.rotation, new Vector2(12, 9), Projectile.scale, Projectile.velocity.X > 0 ? SpriteEffects.None : SpriteEffects.FlipVertically);
-			Main.EntitySpriteDraw(ModAsset.MechanicMosquito_Mosquito_glow.Value, Projectile.Center - Main.screenPosition, new Rectangle(0, 18 * Projectile.frame, 24, 18), new Color(1f, 1f, 1f, 0), Projectile.rotation, new Vector2(12, 9), Projectile.scale, Projectile.velocity.X > 0 ? SpriteEffects.None : SpriteEffects.FlipVertically);
+			Main.EntitySpriteDraw(ModAsset.MechanicMosquito_Mosquito_Glow.Value, Projectile.Center - Main.screenPosition, new Rectangle(0, 18 * Projectile.frame, 24, 18), new Color(1f, 1f, 1f, 0), Projectile.rotation, new Vector2(12, 9), Projectile.scale, Projectile.velocity.X > 0 ? SpriteEffects.None : SpriteEffects.FlipVertically);
 
 			return false;
 		}

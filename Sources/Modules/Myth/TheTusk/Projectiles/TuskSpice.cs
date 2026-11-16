@@ -55,7 +55,7 @@ public class TuskSpice : ModProjectile
 		for (int i = -5; i < 5; i++)
 		{
 			Vector2 pos = Projectile.Center + new Vector2(i * 6, 0).RotatedBy(Projectile.rotation + MathHelper.PiOver2) - new Vector2(0, 4);
-			Dust dust = Dust.NewDustDirect(pos, 0, 0, ModContent.DustType<Dusts.TuskBreak_small>());
+			Dust dust = Dust.NewDustDirect(pos, 0, 0, ModContent.DustType<Dusts.TuskBreak_Small>());
 			dust.velocity = Projectile.velocity;
 		}
 	}

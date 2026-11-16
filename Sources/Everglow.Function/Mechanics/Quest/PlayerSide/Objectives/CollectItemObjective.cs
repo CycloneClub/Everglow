@@ -67,7 +67,7 @@ public class CollectItemObjective : PlayerObjectiveBase
 			return QuestText.Get(textKey + "Any", itemString, ItemCount, progress);
 		}
 
-		return QuestText.Get(textKey, ItemDrawer.Create(ItemTypes.First()), ItemCount, progress);
+		return QuestText.Get(textKey, ItemDrawer.Create(ItemTypes.First(), ItemCount), progress);
 	}
 
 	/// <summary>

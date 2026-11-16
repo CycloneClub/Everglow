@@ -64,9 +64,9 @@ namespace Everglow.EternalResolve.Projectiles
 
 		public override void DrawItem(Color lightColor)
 		{
-			Texture2D itemTexture = ModAsset.VegetationBayonet_withoutFlag.Value;
+			Texture2D itemTexture = ModAsset.VegetationBayonet_WithoutFlag.Value;
 			Main.spriteBatch.Draw(itemTexture, ItemDraw.Postion - Main.screenPosition, null, lightColor, ItemDraw.Rotation, itemTexture.Size() / 2f, ItemDraw.Size, ItemDraw.SpriteEffect, 0f);
-			Texture2D itemGlowTexture = ModAsset.VegetationBayonet_glow_item.Value;
+			Texture2D itemGlowTexture = ModAsset.VegetationBayonet_Glow_Item.Value;
 			Main.spriteBatch.Draw(itemGlowTexture, ItemDraw.Postion - Main.screenPosition, null, new Color(255, 255, 255, 0), ItemDraw.Rotation, itemTexture.Size() / 2f, ItemDraw.Size, ItemDraw.SpriteEffect, 0f);
 
 			if (!Main.gamePaused)
@@ -81,8 +81,8 @@ namespace Everglow.EternalResolve.Projectiles
 				bottomPos2 = bottomPos2 * 0.9f;
 			}
 			float scale = MathF.Sin((float)Main.time * 0.8f);
-			DrawGlowBerry(lightColor, -5, 11, ModAsset.VegetationBayonet_flag.Value, scale);
-			DrawGlowBerry(new Color(255, 255, 255, 0), -5, 11, ModAsset.VegetationBayonet_flag.Value, scale);
+			DrawGlowBerry(lightColor, -5, 11, ModAsset.VegetationBayonet_Flag.Value, scale);
+			DrawGlowBerry(new Color(255, 255, 255, 0), -5, 11, ModAsset.VegetationBayonet_Flag.Value, scale);
 		}
 
 		public void DrawGlowBerry(Color lightColor, float flagLeftX, float flagTopY, Texture2D flagTexture, float addRotation = 0f)
@@ -94,7 +94,7 @@ namespace Everglow.EternalResolve.Projectiles
 		public override void PostDraw(Color lightColor)
 		{
 			Player player = Main.player[Projectile.owner];
-			Texture2D Shadow = Commons.ModAsset.Star2_black.Value;
+			Texture2D Shadow = Commons.ModAsset.Star2_Black.Value;
 			Texture2D light = Commons.ModAsset.StabbingProjectile.Value;
 			Vector2 drawOrigin = light.Size() / 2f;
 			Vector2 drawShadowOrigin = Shadow.Size() / 2f;

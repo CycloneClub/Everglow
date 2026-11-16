@@ -8,7 +8,7 @@ using Terraria.GameContent;
 
 namespace Everglow.Commons.MEAC;
 
-public abstract partial class MeleeProj_3D : ModProjectile, IWarpProjectile_warpStyle2, IBloomProjectile
+public abstract partial class MeleeProj_3D : ModProjectile, IWarpProjectile_WarpStyle2, IBloomProjectile
 {
 	public bool EnableSphereCoordDraw = false;
 
@@ -107,8 +107,8 @@ public abstract partial class MeleeProj_3D : ModProjectile, IWarpProjectile_warp
 	{
 		Vector3 wldPos3D = dust.Position_Space + new Vector3(0, 0, CenterZ);
 		Vector2 wldPos = Project(wldPos3D, ProjectionMatrix()) + Projectile.Center;
-		Texture2D tex_black = ModAsset.NormalDust_small_black.Value;
-		Texture2D tex = ModAsset.NormalDust_small.Value;
+		Texture2D tex_black = ModAsset.NormalDust_Small_Black.Value;
+		Texture2D tex = ModAsset.NormalDust_Small.Value;
 		var dustColor = SlashColor;
 		if (!SelfLuminous)
 		{
@@ -337,7 +337,7 @@ public abstract partial class MeleeProj_3D : ModProjectile, IWarpProjectile_warp
 			DrawSlashVertices(trails_black, ModAsset.Noise_Flame_3_Black.Value);
 			DrawSlashVertices(trails, ModAsset.Noise_Flame_3.Value);
 			DrawSlashVertices(trails_tip, ModAsset.StarSlash.Value);
-			DrawSlashVertices(trails_tip_black, ModAsset.StarSlash_black.Value);
+			DrawSlashVertices(trails_tip_black, ModAsset.StarSlash_Black.Value);
 			DrawSlashVertices(trails_tip, ModAsset.StarSlash.Value);
 			DrawSlashVertices(trails_reflection, ModAsset.Noise_Flame_3.Value);
 		}

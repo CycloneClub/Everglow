@@ -118,7 +118,7 @@ public class DreamWeaverBall : ModProjectile
 
 		antiSphere.CurrentTechnique.Passes[0].Apply();
 
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_black_thick.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_Black_Thick.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.LinearWrap;
 		Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_RGB.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[1] = SamplerState.LinearWrap;
@@ -230,7 +230,7 @@ public class DreamWeaverBall : ModProjectile
 
 		sphere.CurrentTechnique.Passes[0].Apply();
 
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_black_thick.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_Black_Thick.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.LinearWrap;
 		Main.graphics.GraphicsDevice.Textures[1] = Commons.ModAsset.Noise_RGB.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[1] = SamplerState.LinearWrap;

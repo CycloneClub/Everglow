@@ -5,7 +5,7 @@ BlackVine.MapEntry: "{$Mods.Everglow.Items.Placeables.BlackVine.DisplayName}"
 BloodifyPlatform.MapEntry: Bloodify Platform
 BloodyMossWheel.MapEntry: Bloody Moss Wheel
 BloodyMossWheelFinished.MapEntry: Bloody Moss Wheel Finished
-BoneAndPlatform_tile.MapEntry: Bone And Platform_tile
+BoneAndPlatform_Tile.MapEntry: Bone And Platform_tile
 BottleOfNutShellFlowers.MapEntry: "{$Mods.Everglow.Items.Placeables.BottleOfNutShellFlowers.DisplayName}"
 CyanVineBar.MapEntry: "{$Mods.Everglow.Items.Materials.CyanVineBar.DisplayName}"
 CyanVineOreTile.MapEntry: Cyan Vine Ore Tile
@@ -54,21 +54,21 @@ GlowWoodSofa.MapEntry: "{$Mods.Everglow.Items.Placeables.GlowWoodSofa.DisplayNam
 GlowWoodTable.MapEntry: "{$Mods.Everglow.Items.Placeables.GlowWoodTable.DisplayName}"
 GlowWoodTorch.MapEntry: "{$Mods.Everglow.Items.Placeables.GlowWoodTorch.DisplayName}"
 GlowWoodWorkBench.MapEntry: "{$Mods.Everglow.Items.Placeables.GlowWoodWorkBench.DisplayName}"
-HeatproofBathtub.MapEntry: "{$Mods.Everglow.Items.Placeables.HeatproofBathtub_item.DisplayName}"
-HeatproofCandelabra.MapEntry: "{$Mods.Everglow.Items.Placeables.HeatproofCandelabra_item.DisplayName}"
-HeatproofCandle.MapEntry: "{$Mods.Everglow.Items.Placeables.HeatproofCandle_item.DisplayName}"
-HeatproofChandelier.MapEntry: "{$Mods.Everglow.Items.Placeables.HeatproofChandelier_item.DisplayName}"
+HeatproofBathtub.MapEntry: "{$Mods.Everglow.Items.Placeables.HeatproofBathtub_Item.DisplayName}"
+HeatproofCandelabra.MapEntry: "{$Mods.Everglow.Items.Placeables.HeatproofCandelabra_Item.DisplayName}"
+HeatproofCandle.MapEntry: "{$Mods.Everglow.Items.Placeables.HeatproofCandle_Item.DisplayName}"
+HeatproofChandelier.MapEntry: "{$Mods.Everglow.Items.Placeables.HeatproofChandelier_Item.DisplayName}"
 
 HeatproofChest: {
-	MapEntry0: "{$Mods.Everglow.Items.Placeables.HeatproofChest_item.DisplayName}"
-	MapEntry1: "{$Mods.Everglow.Items.Placeables.HeatproofChest_item.DisplayName}"
+	MapEntry0: "{$Mods.Everglow.Items.Placeables.HeatproofChest_Item.DisplayName}"
+	MapEntry1: "{$Mods.Everglow.Items.Placeables.HeatproofChest_Item.DisplayName}"
 }
 
-HeatproofDresser.MapEntry: "{$Mods.Everglow.Items.Placeables.HeatproofDresser_item.DisplayName}"
-HeatproofLantern.MapEntry: "{$Mods.Everglow.Items.Placeables.HeatproofLantern_item.DisplayName}"
-HeatproofPiano.MapEntry: "{$Mods.Everglow.Items.Placeables.HeatproofPiano_item.DisplayName}"
-HeatproofSink.MapEntry: "{$Mods.Everglow.Items.Placeables.HeatproofSink_item.DisplayName}"
-HeatproofSofa.MapEntry: "{$Mods.Everglow.Items.Placeables.HeatproofSofa_item.DisplayName}"
+HeatproofDresser.MapEntry: "{$Mods.Everglow.Items.Placeables.HeatproofDresser_Item.DisplayName}"
+HeatproofLantern.MapEntry: "{$Mods.Everglow.Items.Placeables.HeatproofLantern_Item.DisplayName}"
+HeatproofPiano.MapEntry: "{$Mods.Everglow.Items.Placeables.HeatproofPiano_Item.DisplayName}"
+HeatproofSink.MapEntry: "{$Mods.Everglow.Items.Placeables.HeatproofSink_Item.DisplayName}"
+HeatproofSofa.MapEntry: "{$Mods.Everglow.Items.Placeables.HeatproofSofa_Item.DisplayName}"
 LampWoodBathtub.MapEntry: "{$Mods.Everglow.Items.Placeables.LampWoodBathtub.DisplayName}"
 LampWoodCandelabra.MapEntry: "{$Mods.Everglow.Items.Placeables.LampWoodCandelabra_Item.DisplayName}"
 LampWoodCandle.MapEntry: "{$Mods.Everglow.Items.Placeables.LampWoodCandle_Item.DisplayName}"
@@ -89,13 +89,13 @@ RubyDarkGoldChest_BloodyChurch.MapEntry0: "{$Mods.Everglow.Items.Placeables.Ruby
 RustBronzeTreasureChest_Lock.MapEntry0: Rust Bronze Treasure Chest Lock
 RustBronzeTreasureChest.MapEntry0: "{$Mods.Everglow.Items.Placeables.RustBronzeTreasureChest_Item.DisplayName}"
 SandgoldLantern.MapEntry: "{$Mods.Everglow.Items.Placeables.SandgoldLantern_Item.DisplayName}"
-SnowPineChest_fresh.MapEntry0: "{$Mods.Everglow.Items.Placeables.SnowPineChest_fresh.DisplayName}"
-SnowPineChest_gold.MapEntry0: "{$Mods.Everglow.Items.Placeables.SnowPineChest_gold.DisplayName}"
+SnowPineChest_Fresh.MapEntry0: "{$Mods.Everglow.Items.Placeables.SnowPineChest_Fresh.DisplayName}"
+SnowPineChest_Gold.MapEntry0: "{$Mods.Everglow.Items.Placeables.SnowPineChest_Gold.DisplayName}"
 SnowPineChest.MapEntry0: "{$Mods.Everglow.Items.Placeables.SnowPineChest.DisplayName}"
 
 StoneBridge_Chest: {
-	MapEntry0: "{$Mods.Everglow.Items.Placeables.StoneBridge_Chest_item.DisplayName}"
-	MapEntry1: "{$Mods.Everglow.Items.Placeables.StoneBridge_Chest_item.DisplayName}"
+	MapEntry0: "{$Mods.Everglow.Items.Placeables.StoneBridge_Chest_Item.DisplayName}"
+	MapEntry1: "{$Mods.Everglow.Items.Placeables.StoneBridge_Chest_Item.DisplayName}"
 }
 
 StoneTusk.MapEntry: Stone Tusk

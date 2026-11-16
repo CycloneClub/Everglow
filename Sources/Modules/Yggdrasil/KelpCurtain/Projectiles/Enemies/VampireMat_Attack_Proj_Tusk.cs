@@ -80,7 +80,7 @@ public class VampireMat_Attack_Proj_Tusk : ModProjectile
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
-		Texture2D bloom = ModAsset.VampireMat_Attack_Proj_Tusk_bloom.Value;
+		Texture2D bloom = ModAsset.VampireMat_Attack_Proj_Tusk_Bloom.Value;
 		Texture2D white = ModAsset.VampireMat_Attack_Proj_Tusk_White.Value;
 		float drawScale = Projectile.scale;
 		lightColor = Lighting.GetColor(Projectile.Center.ToTileCoordinates());

@@ -383,7 +383,7 @@ public abstract class StabbingProjectile_Stab : ModProjectile, IWarpProjectile
 			effect.Parameters["uTransform"].SetValue(model * projection);
 			effect.Parameters["uProcession"].SetValue(0.21f);
 			effect.CurrentTechnique.Passes[0].Apply();
-			Main.graphics.graphicsDevice.Textures[0] = ModAsset.Trail_black.Value;
+			Main.graphics.graphicsDevice.Textures[0] = ModAsset.Trail_Black.Value;
 			Main.graphics.graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 			Main.spriteBatch.End();
 			Main.spriteBatch.Begin(sBS);

@@ -4,7 +4,6 @@ using Everglow.Commons.Mechanics.Quest.Presentation.Icons;
 using Everglow.Commons.Mechanics.Quest.WorldSide;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Abstractions;
 using Everglow.Yggdrasil;
-using Everglow.Yggdrasil.YggdrasilTown.Quests;
 using SubworldLibrary;
 using Terraria;
 using Terraria.ID;
@@ -121,11 +120,9 @@ public class WorldQuestUnlockAuthorityTest
 		public bool GamePaused => false;
 	}
 
-	private sealed class TestTownQuest : TownNpcQuest
+	private sealed class TestTownQuest : WorldQuestBase
 	{
-		public override int GiverNpcType => NPCID.Guide;
-
-		public override bool CanOffer(WorldQuestManager manager) => true;
+		public override bool CanUnlock() => true;
 	}
 
 	private sealed class TestQuest : WorldQuestBase

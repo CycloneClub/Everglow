@@ -272,7 +272,7 @@ public class AssassinRaspberry : ModNPC
 		{
 			float scatter = Main.rand.NextFloat(-MaxScatterRadians, MaxScatterRadians);
 			Vector2 velocity = (aim.RotatedBy(scatter) * SpikeSpeed) - (Vector2.UnitY * SpikeLift);
-			Projectile.NewProjectile(NPC.GetSource_FromAI(), origin, velocity, ModContent.ProjectileType<AssassinRaspberry_Spike>(), NPC.damage, 0f, Owner: Main.maxPlayers);
+			Projectile.NewProjectile(NPC.GetSource_FromAI(), origin, velocity, ModContent.ProjectileType<AssassinRaspberry_Spike>(), NPC.damage, 0f, Owner: -1);
 		}
 	}
 

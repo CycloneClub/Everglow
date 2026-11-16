@@ -73,7 +73,7 @@ public class AmberMagicOrb : HandheldProjectile
 	{
 		Player player = Main.player[Projectile.owner];
 		var texMain = (Texture2D)ModContent.Request<Texture2D>(Texture);
-		var texGlow = ModAsset.AmberMagicOrb_glow.Value;
+		var texGlow = ModAsset.AmberMagicOrb_Glow.Value;
 		SpriteEffects se = SpriteEffects.None;
 		if (player.direction * player.gravDir == -1)
 		{
@@ -134,7 +134,7 @@ public class AmberMagicOrb : HandheldProjectile
 		effect.Parameters["uTransform"].SetValue(model * projection);
 		effect.CurrentTechnique.Passes[0].Apply();
 		Main.graphics.GraphicsDevice.RasterizerState = RasterizerState.CullNone;
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_thick.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_Thick.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		if (bars.Count > 3)
 		{

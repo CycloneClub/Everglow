@@ -21,10 +21,10 @@ public class ResistanceWireBayonet : StabbingSwordItem
 		Item.knockBack = 1.5f;
 		Item.rare = ItemRarityID.Green;
 		Item.value = Item.sellPrice(0, 2, 0, 0);
-		Item.shoot = ModContent.ProjectileType<ResistanceWireBayonet_proj>();
+		Item.shoot = ModContent.ProjectileType<ResistanceWireBayonet_Proj>();
 		PowerfulStabDamageFlat = 2f;
 		PowerfulStabCDMax = 42;
-		PowerfulStabProj = ModContent.ProjectileType<ResistanceWireBayonet_proj_stab>();
+		PowerfulStabProj = ModContent.ProjectileType<ResistanceWireBayonet_Proj_Stab>();
 		base.SetDefaults();
 	}
 
@@ -80,9 +80,9 @@ public class ResistanceWireBayonet : StabbingSwordItem
 		{
 			return true;
 		}
-		Texture2D coldItem = ModAsset.ResistanceWireBayonet_cold.Value;
+		Texture2D coldItem = ModAsset.ResistanceWireBayonet_Cold.Value;
 		spriteBatch.Draw(coldItem, position, frame, drawColor, 0, origin, scale, SpriteEffects.None, 0);
-		Texture2D glow = ModAsset.ResistanceWireBayonet_glow.Value;
+		Texture2D glow = ModAsset.ResistanceWireBayonet_Glow.Value;
 		float value = Power / 100f;
 		Color glowColor = new Color(value, value, value, 0);
 		spriteBatch.Draw(glow, position, frame, glowColor, 0, origin, scale, SpriteEffects.None, 0);

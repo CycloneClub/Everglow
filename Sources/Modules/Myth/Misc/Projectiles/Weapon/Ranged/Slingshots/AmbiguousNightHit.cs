@@ -64,7 +64,7 @@ public class AmbiguousNightHit : ModProjectile
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D shadow = ModAsset.CursedHit.Value;
-		Texture2D blackHole = ModAsset.BlackHole_texture.Value;
+		Texture2D blackHole = ModAsset.BlackHole_Texture.Value;
 		Texture2D blue = ModAsset.CorruptLight.Value;
 		float dark = Math.Max(Projectile.timeLeft / 300f, 0);
 

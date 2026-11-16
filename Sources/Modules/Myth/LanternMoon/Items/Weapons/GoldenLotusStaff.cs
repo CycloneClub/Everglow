@@ -28,7 +28,7 @@ public class GoldenLotusStaff : ModItem
 		Item.mana = 24;
 		Item.noMelee = true;
 		Item.shootSpeed = 14f;
-		Item.shoot = ModContent.ProjectileType<GoldenLotusStaff_proj>();
+		Item.shoot = ModContent.ProjectileType<GoldenLotusStaff_Proj>();
 		Item.value = 15000;
 	}
 

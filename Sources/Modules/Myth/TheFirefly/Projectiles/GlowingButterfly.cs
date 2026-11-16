@@ -151,7 +151,7 @@ public class GlowingButterfly : ModProjectile
 			int type = ModContent.DustType<BlueGlowAppear>();
 			// if (Projectile.ai[0] == 0)
 			// {
-			// type = ModContent.DustType<BlueGlowAppear_dark>();
+			// type = ModContent.DustType<BlueGlowAppear_Dark>();
 			// }
 			Dust dust = Dust.NewDustDirect(Projectile.position - new Vector2(8), Projectile.width, Projectile.height, type, 0f, 0f, 100, default, Main.rand.NextFloat(0.9f, 2.2f));
 			dust.velocity = Projectile.velocity * 0.5f;
@@ -347,8 +347,8 @@ public class GlowingButterfly : ModProjectile
 	public override bool PreDraw(ref Color lightColor)
 	{
 		Texture2D tex = ModAsset.GlowingButterfly.Value;
-		// Texture2D texDark = ModAsset.GlowingButterfly_dark.Value;
-		// Texture2D texBound = ModAsset.GlowingButterfly_bound.Value;
+		// Texture2D texDark = ModAsset.GlowingButterfly_Dark.Value;
+		// Texture2D texBound = ModAsset.GlowingButterfly_Bound.Value;
 		Color lightC = new Color(55 - Projectile.alpha, 255 - Projectile.alpha, 255 - Projectile.alpha, (255 - Projectile.alpha) / 2);
 		// if(Projectile.ai[0] == 1)
 		// {

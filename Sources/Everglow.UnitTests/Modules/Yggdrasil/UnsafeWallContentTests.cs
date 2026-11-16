@@ -41,7 +41,7 @@ public class UnsafeWallContentTests
 		typeof(Everglow.Yggdrasil.KelpCurtain.Dusts.OldMossDust),
 		typeof(Everglow.Yggdrasil.KelpCurtain.Dusts.SharpBarnacle_Dust),
 		typeof(Everglow.Yggdrasil.KelpCurtain.Dusts.WaterErodedGreenBrickDust),
-		typeof(Everglow.Yggdrasil.YggdrasilTown.Dusts.TwilightForest.GreenRelicBrick_dust),
+		typeof(Everglow.Yggdrasil.YggdrasilTown.Dusts.TwilightForest.GreenRelicBrick_Dust),
 	];
 
 	[TestInitialize]

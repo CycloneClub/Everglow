@@ -24,7 +24,7 @@ public class CyanBullet : TrailingProjectile
 		WarpStrength = 0.1f;
 		TrailBackgroundDarkness = 0.8f;
 		TrailTexture = Commons.ModAsset.Trail_7.Value;
-		TrailTextureBlack = Commons.ModAsset.Trail_7_black.Value;
+		TrailTextureBlack = Commons.ModAsset.Trail_7_Black.Value;
 		TrailLength = 7;
 		TrailColor = new Color(0.2f, 0.9f, 0.5f, 0f);
 		TrailWidth = 5f;
@@ -59,7 +59,7 @@ public class CyanBullet : TrailingProjectile
 
 	public override void DrawSelf()
 	{
-		Texture2D light_dark = Commons.ModAsset.StarSlash_black.Value;
+		Texture2D light_dark = Commons.ModAsset.StarSlash_Black.Value;
 		Main.spriteBatch.Draw(light_dark, Projectile.Center - Main.screenPosition, null, new Color(0.6f, 0.6f, 0.6f, 0.6f), Projectile.velocity.ToRotationSafe() + MathHelper.PiOver2, light_dark.Size() * 0.5f, 0.7f, SpriteEffects.None, 0);
 		Texture2D light = Commons.ModAsset.StarSlash.Value;
 		Main.spriteBatch.Draw(light, Projectile.Center - Main.screenPosition, null, new Color(0.1f, 0.7f, 0.6f, 0f), Projectile.velocity.ToRotationSafe() + MathHelper.PiOver2, light.Size() * 0.5f, 0.7f, SpriteEffects.None, 0);

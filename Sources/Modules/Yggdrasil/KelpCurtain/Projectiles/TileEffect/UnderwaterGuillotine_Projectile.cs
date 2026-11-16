@@ -22,6 +22,7 @@ public class UnderwaterGuillotine_Projectile : ModProjectile
 		Projectile.timeLeft = 100000;
 		Projectile.friendly = true;
 		Projectile.hostile = true;
+		Projectile.trap = true;
 		base.SetDefaults();
 	}
 

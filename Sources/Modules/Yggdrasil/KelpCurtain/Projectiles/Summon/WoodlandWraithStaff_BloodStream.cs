@@ -15,7 +15,7 @@ public class WoodlandWraithStaff_BloodStream : TrailingProjectile
 		TrailColor = new Color(0.4f, 0.0f, 0.0f, 0f);
 		TrailWidth = 12f;
 		TrailTexture = Commons.ModAsset.Trail_8.Value;
-		TrailTextureBlack = Commons.ModAsset.Trail_8_black.Value;
+		TrailTextureBlack = Commons.ModAsset.Trail_8_Black.Value;
 		TrailLength = 20;
 		Projectile.width = 20;
 		Projectile.height = 20;

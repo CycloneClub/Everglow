@@ -105,7 +105,7 @@ public class ToothBow_BloodArrow : ModProjectile
 	{
 		if (Power > 1f)
 		{
-			Texture2D texGlow = ModAsset.ToothBow_BloodArrow_glow.Value;
+			Texture2D texGlow = ModAsset.ToothBow_BloodArrow_Glow.Value;
 			float value = Power / 40f;
 			Color c0 = new Color(value, value, value, 0);
 			Main.spriteBatch.Draw(texGlow, Projectile.Center - Main.screenPosition, null, c0, Projectile.rotation, texGlow.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
@@ -171,7 +171,7 @@ public class ToothBow_BloodArrow : ModProjectile
 	{
 		for (int i = 0; i < 7; i++)
 		{
-			Gore gore = Gore.NewGoreDirect(null, Projectile.Center + new Vector2(i * 20 - 70, 0).RotatedBy(Projectile.rotation), Projectile.velocity, ModContent.Find<ModGore>("Everglow/ToothBow_BloodArrow_gore" + i).Type, 1f);
+			Gore gore = Gore.NewGoreDirect(null, Projectile.Center + new Vector2(i * 20 - 70, 0).RotatedBy(Projectile.rotation), Projectile.velocity, ModContent.Find<ModGore>("Everglow/ToothBow_BloodArrow_Gore" + i).Type, 1f);
 			gore.position = Projectile.Center + new Vector2(i * 20 - 70, 0).RotatedBy(Projectile.rotation) - new Vector2(gore.Width, gore.Height) / 2f;
 			gore.velocity = Projectile.velocity;
 			gore.rotation = Projectile.rotation;

@@ -450,7 +450,7 @@ public class UIQuestFilter : BaseElement
 
 		if (_innerHoverTargetRotation != null)
 		{
-			var status_highlight = ModAsset.QuestSortRing_Status_highlight.Value;
+			var status_highlight = ModAsset.QuestSortRing_Status_Highlight.Value;
 			int sideLength = status_highlight.Width;
 			var frame0 = new Rectangle(0, 0, sideLength, sideLength);
 			sb.Draw(status_highlight, drawPos, frame0, Color.White, _innerRotation - _innerHoverTargetRotation.Value, frame0.Size() / 2, scale, SpriteEffects.None, 0);
@@ -460,7 +460,7 @@ public class UIQuestFilter : BaseElement
 		}
 		if (_outerHoverTargetRotation != null)
 		{
-			var type_highlight = ModAsset.QuestSortRing_Type_highlight.Value;
+			var type_highlight = ModAsset.QuestSortRing_Type_Highlight.Value;
 			int sideLength = type_highlight.Width;
 			var frame0 = new Rectangle(0, 0, sideLength, sideLength);
 			sb.Draw(type_highlight, drawPos, frame0, Color.White, _outerRotation - _outerHoverTargetRotation.Value, frame0.Size() / 2, scale, SpriteEffects.None, 0);

@@ -9,7 +9,7 @@ public class Acytaea_SmashGround : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.TownNPCProjectiles;
 
-	public override string Texture => ModAsset.AcytaeaSword_projectile_Mod;
+	public override string Texture => ModAsset.AcytaeaSword_Projectile_Mod;
 
 	public override void SetDefaults()
 	{
@@ -97,7 +97,7 @@ public class Acytaea_SmashGround : ModProjectile
 			flame = Color.Lerp(new Color(1f, 0.6f, 0f, 0), new Color(0.5f, 0f, 0f, 0), value * 2f);
 		}
 		Texture2D star = Commons.ModAsset.StarSlash.Value;
-		Texture2D dark = Commons.ModAsset.Point_black.Value;
+		Texture2D dark = Commons.ModAsset.Point_Black.Value;
 		Main.spriteBatch.Draw(dark, Projectile.Center - Main.screenPosition, null, Color.White * value, 0, dark.Size() / 2f, 1f, SpriteEffects.None, 0);
 		Main.spriteBatch.Draw(star, Projectile.Center - Main.screenPosition, null, flame, 0, star.Size() / 2f, newScale * 0.75f, SpriteEffects.None, 0);
 		Main.spriteBatch.Draw(star, Projectile.Center - Main.screenPosition, null, flame, MathHelper.PiOver2, star.Size() / 2f, newScale, SpriteEffects.None, 0);
@@ -117,7 +117,7 @@ public class Acytaea_SmashGround : ModProjectile
 			bars.Add(new Vertex2D(Projectile.Center + radius - Main.screenPosition, flame * colorValue, new Vector3(t / 30f, 0, 0)));
 			bars.Add(new Vertex2D(Projectile.Center + radius * 0.5f - Main.screenPosition, Color.Transparent, new Vector3(t / 30f, 1, 0)));
 		}
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_thick.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_Thick.Value;
 		Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		Main.spriteBatch.End();

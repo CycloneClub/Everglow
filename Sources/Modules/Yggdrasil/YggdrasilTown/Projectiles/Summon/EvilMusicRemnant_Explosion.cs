@@ -59,7 +59,7 @@ public class EvilMusicRemnant_Explosion : ModProjectile
 		for (int i = 0; i < 6; i++)
 		{
 			float size = Main.rand.NextFloat(0.1f, 0.96f);
-			var gore = new EvilMusicRemnant_Minion_gore
+			var gore = new EvilMusicRemnant_Minion_Gore
 			{
 				Velocity = new Vector2(0, Main.rand.NextFloat(12f)).RotatedByRandom(MathHelper.TwoPi),
 				Active = true,

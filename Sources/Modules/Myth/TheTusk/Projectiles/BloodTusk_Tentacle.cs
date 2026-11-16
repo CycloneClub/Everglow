@@ -183,10 +183,10 @@ public class BloodTusk_Tentacle : ModProjectile
 				AddVertexTusk2(barsTusk, i);
 			}
 		}
-		Main.graphics.graphicsDevice.Textures[0] = ModAsset.Tusk_ground.Value;
+		Main.graphics.graphicsDevice.Textures[0] = ModAsset.Tusk_Ground.Value;
 		Main.graphics.graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, barsTusk.ToArray(), 0, barsTusk.Count / 3);
 
-		Main.graphics.graphicsDevice.Textures[0] = ModAsset.Tusk_ground.Value;
+		Main.graphics.graphicsDevice.Textures[0] = ModAsset.Tusk_Ground.Value;
 		Main.graphics.graphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, barsTusk2.ToArray(), 0, barsTusk2.Count / 3);
 
 		Main.graphics.graphicsDevice.Textures[0] = rope;

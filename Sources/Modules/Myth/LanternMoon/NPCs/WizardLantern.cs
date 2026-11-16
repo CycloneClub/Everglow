@@ -84,7 +84,7 @@ public class WizardLantern : LanternMoonNPC
 			switch (Main.rand.Next(3))
 			{
 				case 0:
-					Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<WizardLantern_Matrix_Thunder>(), 0, 0f, Main.maxPlayers);
+					Projectile p0 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<WizardLantern_Matrix_Thunder>(), 0, 0f, -1);
 					WizardLantern_Matrix_Thunder wLMT = p0.ModProjectile as WizardLantern_Matrix_Thunder;
 					if (wLMT is not null)
 					{
@@ -92,7 +92,7 @@ public class WizardLantern : LanternMoonNPC
 					}
 					break;
 				case 1:
-					Projectile p1 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<WizardLantern_Matrix_Curse>(), 0, 0f, Main.maxPlayers);
+					Projectile p1 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<WizardLantern_Matrix_Curse>(), 0, 0f, -1);
 					WizardLantern_Matrix_Curse wLMC = p1.ModProjectile as WizardLantern_Matrix_Curse;
 					if (wLMC is not null)
 					{
@@ -100,7 +100,7 @@ public class WizardLantern : LanternMoonNPC
 					}
 					break;
 				case 2:
-					Projectile p2 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<WizardLantern_Matrix_Witching>(), 0, 0f, Main.maxPlayers);
+					Projectile p2 = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), NPC.Center, Vector2.zeroVector, ModContent.ProjectileType<WizardLantern_Matrix_Witching>(), 0, 0f, -1);
 					WizardLantern_Matrix_Witching wLMW = p2.ModProjectile as WizardLantern_Matrix_Witching;
 					if (wLMW is not null)
 					{
@@ -171,7 +171,7 @@ public class WizardLantern : LanternMoonNPC
 		for (int k = 0; k < 8; k++)
 		{
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(1f, 9f)).RotatedByRandom(MathHelper.TwoPi);
-			var CurseSpark = new CurseSpellDust_blue_normal
+			var CurseSpark = new CurseSpellDust_Blue_Normal
 			{
 				Velocity = newVelocity,
 				Active = true,
@@ -187,7 +187,7 @@ public class WizardLantern : LanternMoonNPC
 		for (int k = 0; k < 16; k++)
 		{
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(1f, 6f)).RotatedByRandom(MathHelper.TwoPi);
-			var CurseSpark = new CurseSpellSmoke_normal
+			var CurseSpark = new CurseSpellSmoke_Normal
 			{
 				Velocity = newVelocity,
 				Active = true,
@@ -246,7 +246,7 @@ public class WizardLantern : LanternMoonNPC
 
 	public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
-		var texture = ModAsset.WizardLantern_body.Value;
+		var texture = ModAsset.WizardLantern_Body.Value;
 		float mulColor = (255 - NPC.alpha) / 255f;
 		SpriteEffects effects = SpriteEffects.None;
 		NPC.spriteDirection = NPC.direction;

@@ -22,7 +22,7 @@ public class RichOxygenSponge : ModTile
 		tile.LiquidType = LiquidID.Water;
 		tile.LiquidAmount = 255;
 		Vector2 pos = new Point(i, j).ToWorldCoordinates();
-		Projectile p0 = Projectile.NewProjectileDirect(WorldGen.GetProjectileSource_TileBreak(i, j), pos, new Vector2(0, -5), ModContent.ProjectileType<SpongeOxygenBubble>(), 20, 0, owner: Main.maxPlayers);
+		Projectile p0 = Projectile.NewProjectileDirect(WorldGen.GetProjectileSource_TileBreak(i, j), pos, new Vector2(0, -5), ModContent.ProjectileType<SpongeOxygenBubble>(), 20, 0, owner: -1);
 		for (int k = 0; k < 6; k++)
 		{
 			Dust dust = Dust.NewDustDirect(pos - new Vector2(4) + new Vector2(-8, 0), 16, 16, ModContent.DustType<SpongeOxygenBubble_Small>());

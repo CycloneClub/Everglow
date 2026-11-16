@@ -19,7 +19,7 @@ public class GreenFlameProj : TrailingProjectile
 		SelfLuminous = true;
 		TrailLength = 24;
 		TrailTexture = Commons.ModAsset.Trail_10.Value;
-		TrailTextureBlack = Commons.ModAsset.Trail_10_black.Value;
+		TrailTextureBlack = Commons.ModAsset.Trail_10_Black.Value;
 		TrailShader = Commons.ModAsset.Trailing.Value;
 		Projectile.timeLeft = 300;
 		Projectile.width = 10;

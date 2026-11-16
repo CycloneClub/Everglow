@@ -19,7 +19,7 @@ function Assert-ModLoadResult {
 	if ($LogText -notmatch '\[tML\]: Mod Load Completed in \d+ms') {
 		throw 'tModLoader did not complete mod loading.'
 	}
-	if ($RequireAssetAudit -and $LogText -notmatch '\[CiAssetAudit\]: Asset audit passed: Everglow; content=[1-9]\d*; equipment=[1-9]\d*\.') {
-		throw 'Missing evidence that the content and equipment texture audit completed.'
+	if ($RequireAssetAudit -and $LogText -notmatch '\[CiAssetAudit\]: Asset audit passed: Everglow; names=[1-9]\d*; textures=[1-9]\d*; equipment=[1-9]\d*; templates=[1-9]\d*\.') {
+		throw 'Missing evidence of a complete content name, texture and map template audit.'
 	}
 }

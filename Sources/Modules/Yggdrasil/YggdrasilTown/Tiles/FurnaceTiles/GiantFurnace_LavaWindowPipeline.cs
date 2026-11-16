@@ -19,6 +19,6 @@ public class GiantFurnace_LavaWindowPipeline : Pipeline
 
 	public override void Load()
 	{
-		effect = ModAsset.GiantFurnace_LavaWindow_shader;
+		effect = ModAsset.GiantFurnace_LavaWindow_Shader;
 	}
 }

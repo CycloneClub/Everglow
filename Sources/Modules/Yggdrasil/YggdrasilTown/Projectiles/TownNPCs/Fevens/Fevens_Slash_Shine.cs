@@ -32,7 +32,7 @@ public class Fevens_Slash_Shine : ModProjectile
 	{
 		float timeLeftValue = 1 - Projectile.timeLeft / 120f;
 		float width = 1 - MathF.Pow(timeLeftValue, 2);
-		Texture2D starBlack = Commons.ModAsset.Star2_black.Value;
+		Texture2D starBlack = Commons.ModAsset.Star2_Black.Value;
 		Texture2D star = Commons.ModAsset.StabbingProjectile.Value;
 		Main.EntitySpriteDraw(starBlack, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, starBlack.Size() * 0.5f, new Vector2(1.6f + width, 0.8f * width), SpriteEffects.None, 0);
 		Main.EntitySpriteDraw(star, Projectile.Center - Main.screenPosition, null, new Color(0.2f, 0f, 0.9f, 0), Projectile.rotation, star.Size() * 0.5f, new Vector2(1.6f + width, 0.8f * width), SpriteEffects.None, 0);

@@ -85,7 +85,7 @@ public class StarDancer : ClubProj
 			effects = SpriteEffects.FlipHorizontally;
 		}
 
-		Texture2D texture = ModAsset.StarDancer_glow.Value;
+		Texture2D texture = ModAsset.StarDancer_Glow.Value;
 		Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, texture.Size() / 2f, Projectile.scale, effects, 0f);
 		for (int i = 0; i < 5; i++)
 		{
@@ -115,7 +115,7 @@ public class StarDancer : ClubProj
 
 		Effect MeleeTrail = ModAsset.CrystalClubTrail.Value;
 		MeleeTrail.Parameters["uTransform"].SetValue(model * projection);
-		MeleeTrail.Parameters["tex1"].SetValue(ModAsset.CrystalClub_trail.Value);
+		MeleeTrail.Parameters["tex1"].SetValue(ModAsset.CrystalClub_Trail.Value);
 		MeleeTrail.Parameters["Light"].SetValue(lightColor);
 		MeleeTrail.CurrentTechnique.Passes["TrailByOrigTex"].Apply();
 

@@ -39,7 +39,7 @@ public class BronzeLotusLamp : ModItem
 		Item.noMelee = true;
 		Item.noUseGraphic = true;
 
-		Item.shoot = ModContent.ProjectileType<BronzeLotusLamp_weapon>();
+		Item.shoot = ModContent.ProjectileType<BronzeLotusLamp_Weapon>();
 		Item.shootSpeed = 8;
 	}
 

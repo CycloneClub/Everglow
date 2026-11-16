@@ -7,7 +7,7 @@ using Terraria.Audio;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
 
-public class IstafelsSunfireGrasp_FireBall : TrailingProjectile, IWarpProjectile_warpStyle2
+public class IstafelsSunfireGrasp_FireBall : TrailingProjectile, IWarpProjectile_WarpStyle2
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
 
@@ -194,7 +194,7 @@ public class IstafelsSunfireGrasp_FireBall : TrailingProjectile, IWarpProjectile
 			{
 				if (Main.rand.NextBool(26))
 				{
-					var dust = Dust.NewDustDirect(Projectile.Center, 0, 0, ModContent.DustType<IstafelsSunfireDrop_glimmer>());
+					var dust = Dust.NewDustDirect(Projectile.Center, 0, 0, ModContent.DustType<IstafelsSunfireDrop_Glimmer>());
 					dust.customData = Projectile;
 					dust.velocity = new Vector2(0, 1).RotatedByRandom(0.4f);
 				}
@@ -237,7 +237,7 @@ public class IstafelsSunfireGrasp_FireBall : TrailingProjectile, IWarpProjectile
 		var drawPos = Projectile.Center - Main.screenPosition;
 		var drawScale = MathHelper.Lerp(InitialScale, 1f, BuildUpProgress);
 		var drawSize = Projectile.width / 2 * drawScale;
-		var blackBall = Commons.ModAsset.Ball_black.Value;
+		var blackBall = Commons.ModAsset.Ball_Black.Value;
 		Main.spriteBatch.Draw(blackBall, drawPos, null, Color.White, 0, blackBall.Size() * 0.5f, drawScale * 0.4f, SpriteEffects.None, 0);
 
 		DrawTrail();

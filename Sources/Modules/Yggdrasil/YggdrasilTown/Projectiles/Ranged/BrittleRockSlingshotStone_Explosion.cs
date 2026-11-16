@@ -7,7 +7,7 @@ public class BrittleRockSlingshotStone_Explosion : ModProjectile, IWarpProjectil
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
 
-	public override string Texture => ModAsset.CyanVineStaff_proj_Mod;
+	public override string Texture => ModAsset.CyanVineStaff_Proj_Mod;
 
 	public override void SetDefaults()
 	{

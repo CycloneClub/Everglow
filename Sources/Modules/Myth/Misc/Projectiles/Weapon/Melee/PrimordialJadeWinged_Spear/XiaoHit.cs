@@ -41,7 +41,7 @@ internal class XiaoHit : ModProjectile
 		var velocity = new Vector2(0, Main.rand.NextFloat(12f, 20f) * Projectile.ai[0]).RotatedByRandom(6.283);
 		var positionVFX = Projectile.Center - velocity;
 
-		var filthy = new FilthyLucreFlame_darkDust
+		var filthy = new FilthyLucreFlame_DarkDust
 		{
 			velocity = velocity,
 			Active = true,

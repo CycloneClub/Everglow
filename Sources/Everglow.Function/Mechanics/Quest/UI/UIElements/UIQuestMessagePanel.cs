@@ -90,7 +90,7 @@ public class UIQuestBlock : UIBlock
 		int y = Info.TotalHitBox.Y;
 		int w = Info.TotalHitBox.Width;
 		int h = Info.TotalHitBox.Height;
-		Texture2D tex_side = ModAsset.QuestMessageBoard_bottom_side.Value;
+		Texture2D tex_side = ModAsset.QuestMessageBoard_Bottom_Side.Value;
 		sb.Draw(tex_side, new Rectangle(x + (w - 177) / 2, y + h - 13, 177, 13), null, Color.White);
 		Texture2D tex_icon = ModAsset.QuestDescription_Icon.Value;
 		if(QuestBlockStyle == 1)

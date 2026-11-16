@@ -14,7 +14,7 @@ public class CrimsonClub_Item : ClubItem
 		Item.useAnimation = 12;
 		SmashDamageMultiplier = 22f / 32f;
 		ProjType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.CrimsonClub>();
-		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.CrimsonClub_smash>();
+		ProjSmashType = ModContent.ProjectileType<Projectiles.Weapon.Melee.Clubs.CrimsonClub_Smash>();
 	}
 
 	public override void AddRecipes()

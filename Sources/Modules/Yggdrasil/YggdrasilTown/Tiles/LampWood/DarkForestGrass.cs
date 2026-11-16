@@ -90,7 +90,7 @@ public class DarkForestGrass : ModTile, ISceneTile
 			{
 				if (TileUtils.CanPlaceMultiAtTopTowardsUpRight(i, j, 8, 13))
 				{
-					LampWood_newStyleTree_0 lampWood_NewStyleTree_0 = TileLoader.GetTile(ModContent.TileType<LampWood_newStyleTree_0>()) as LampWood_newStyleTree_0;
+					LampWood_NewStyleTree_0 lampWood_NewStyleTree_0 = TileLoader.GetTile(ModContent.TileType<LampWood_NewStyleTree_0>()) as LampWood_NewStyleTree_0;
 					lampWood_NewStyleTree_0.PlaceOriginAtBottomLeft(i - 5, j - 1);
 				}
 			}
@@ -98,7 +98,7 @@ public class DarkForestGrass : ModTile, ISceneTile
 			{
 				if (TileUtils.CanPlaceMultiAtTopTowardsUpRight(i, j, 9, 16))
 				{
-					LampWood_newStyleTree_1 lampWood_NewStyleTree_1 = TileLoader.GetTile(ModContent.TileType<LampWood_newStyleTree_1>()) as LampWood_newStyleTree_1;
+					LampWood_NewStyleTree_1 lampWood_NewStyleTree_1 = TileLoader.GetTile(ModContent.TileType<LampWood_NewStyleTree_1>()) as LampWood_NewStyleTree_1;
 					lampWood_NewStyleTree_1.PlaceOriginAtBottomLeft(i - 4, j - 1);
 				}
 			}
@@ -309,7 +309,7 @@ public class DarkForestGrass : ModTile, ISceneTile
 
 	public void AddScene(int i, int j)
 	{
-		DarkForestGrass_grass_fore leaf = new DarkForestGrass_grass_fore { Position = new Vector2(i, j) * 16, Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = Type };
+		DarkForestGrass_Grass_Fore leaf = new DarkForestGrass_Grass_Fore { Position = new Vector2(i, j) * 16, Active = true, Visible = true, OriginTilePos = new Point(i, j), OriginTileType = Type };
 		leaf.scale = 1f;
 		leaf.style = i % 3;
 		Ins.VFXManager.Add(leaf);

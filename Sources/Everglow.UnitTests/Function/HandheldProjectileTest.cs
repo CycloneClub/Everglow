@@ -143,7 +143,7 @@ public class HandheldProjectileTest
 	[TestMethod]
 	public void CrystalBeforeParentSync_WaitsWithoutDereferencingMissingParent()
 	{
-		var crystal = (YggdrasilAmberLaser_crystal)new YggdrasilAmberLaser_crystal().NewInstance(new Projectile { owner = 1, timeLeft = 900 });
+		var crystal = (YggdrasilAmberLaser_Crystal)new YggdrasilAmberLaser_Crystal().NewInstance(new Projectile { owner = 1, timeLeft = 900 });
 		crystal.AI();
 		Assert.IsFalse(crystal.EndAI);
 	}
@@ -160,7 +160,7 @@ public class HandheldProjectileTest
 	public void ReceivedCrystal_InitializesTrackWithoutOnSpawn()
 	{
 		var projectile = new Projectile { owner = 1, timeLeft = 900, Center = new Vector2(120, 140) };
-		var crystal = (YggdrasilAmberLaser_crystal)new YggdrasilAmberLaser_crystal().NewInstance(projectile);
+		var crystal = (YggdrasilAmberLaser_Crystal)new YggdrasilAmberLaser_Crystal().NewInstance(projectile);
 		crystal.AI();
 		Assert.AreEqual(new Vector2(120, 140), crystal.CrystalTrack[0]);
 	}

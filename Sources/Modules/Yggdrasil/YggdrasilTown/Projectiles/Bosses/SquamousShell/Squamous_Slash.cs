@@ -4,7 +4,7 @@ using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Bosses.SquamousShell;
 
-public class Squamous_Slash : ModProjectile, IWarpProjectile_warpStyle2
+public class Squamous_Slash : ModProjectile, IWarpProjectile_WarpStyle2
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
 
@@ -160,7 +160,7 @@ public class Squamous_Slash : ModProjectile, IWarpProjectile_warpStyle2
 			bars.Add(SmoothTrail[i] + drawPos, drawColor, new Vector3(0.5f, i / (float)(SmoothTrail.Count - 1), 0));
 			bars.Add(SmoothTrail[i] * (1f - width / 100f) + drawPos, drawColor, new Vector3(0.44f, i / (float)(SmoothTrail.Count - 1), 0));
 		}
-		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.StarSlash_black.Value;
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.StarSlash_Black.Value;
 		if (bars.Count > 3)
 		{
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);

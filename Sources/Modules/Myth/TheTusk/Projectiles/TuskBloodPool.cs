@@ -55,8 +55,8 @@ public class TuskBloodPool : ModProjectile
 				}
 			}
 		}
-		Projectile projectile = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<TuskBloodPool_open>(), 0, 0, Projectile.owner, Main.rand.NextFloat(1), Main.rand.NextFloat(1));
-		TuskBloodPool_open tbpo = projectile.ModProjectile as TuskBloodPool_open;
+		Projectile projectile = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<TuskBloodPool_Open>(), 0, 0, Projectile.owner, Main.rand.NextFloat(1), Main.rand.NextFloat(1));
+		TuskBloodPool_Open tbpo = projectile.ModProjectile as TuskBloodPool_Open;
 		tbpo.DissolvingTile = DissolvingTile;
 		base.OnSpawn(source);
 	}
@@ -207,8 +207,8 @@ public class TuskBloodPool : ModProjectile
 
 	public override void OnKill(int timeLeft)
 	{
-		Projectile projectile = Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<TuskBloodPool_close>(), 0, 0, Projectile.owner, Main.rand.NextFloat(1), Main.rand.NextFloat(1));
-		TuskBloodPool_close tbpc = projectile.ModProjectile as TuskBloodPool_close;
+		Projectile projectile = Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<TuskBloodPool_Close>(), 0, 0, Projectile.owner, Main.rand.NextFloat(1), Main.rand.NextFloat(1));
+		TuskBloodPool_Close tbpc = projectile.ModProjectile as TuskBloodPool_Close;
 		tbpc.DissolvingTile = DissolvingTile;
 	}
 }

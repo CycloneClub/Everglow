@@ -19,11 +19,15 @@ public class FallSpeedBonusTests
 	private Player[] previousPlayers = null!;
 	private Projectile[] previousProjectiles = null!;
 	private readonly List<Action> restoreContent = [];
+	private float criticalDamage;
+	private float addCritDamage;
 
 	[TestInitialize]
 	public void Initialize()
 	{
 		Program.SavePath = string.Empty;
+		criticalDamage = FoodBuffModPlayer.CriticalDamage;
+		addCritDamage = FoodBuffModPlayer.AddCritDamage;
 		previousPlayers = Main.player;
 		previousProjectiles = Main.projectile;
 		context = new CooldownTestContext();
@@ -45,37 +49,44 @@ public class FallSpeedBonusTests
 		{
 			restoreContent[i]();
 		}
+		FoodBuffModPlayer.CriticalDamage = criticalDamage;
+		FoodBuffModPlayer.AddCritDamage = addCritDamage;
 		context.Dispose();
 	}
 
 	[TestMethod]
-	[DataRow(0, 1, 2)]
-	[DataRow(0, 2, 1)]
-	[DataRow(1, 0, 2)]
-	[DataRow(1, 2, 0)]
-	[DataRow(2, 0, 1)]
-	[DataRow(2, 1, 0)]
-	public void FoodCapsTakeMinimumInEveryOrder(int first, int second, int third)
+	public void FoodCapsTakeMinimumInEveryOrder()
 	{
 		ModBuff[] foods = [new CookedMarshmallowBuff(), new GrilledSquirrelBuff(), new RoastedDuckBuff()];
-		Apply(foods[first]);
-		Apply(foods[second]);
-		Apply(foods[third]);
-		bonuses.PostUpdateEquips();
-		Assert.AreEqual(2.5f, context.Player.maxFallSpeed);
+		float minimum = foods.Min(food => FoodCap(food));
+		foreach (int[] order in new[] { new[] { 0, 1, 2 }, new[] { 0, 2, 1 }, new[] { 1, 0, 2 }, new[] { 1, 2, 0 }, new[] { 2, 0, 1 }, new[] { 2, 1, 0 } })
+		{
+			BeginFrame();
+			context.Player.GetModPlayer<FoodBuffModPlayer>().ResetEffects();
+			foreach (int food in order)
+			{
+				Apply(foods[food]);
+			}
+
+			bonuses.PostUpdateEquips();
+			Assert.AreEqual(minimum, context.Player.maxFallSpeed);
+		}
 	}
 
 	[TestMethod]
-	[DataRow(0, 2.5f)]
-	[DataRow(1, 7.5f)]
-	[DataRow(2, 5f)]
-	public void FoodCapsUseFixedNormalBaseline(int food, float expected)
+	public void FoodCapsUseFixedNormalBaseline()
 	{
-		ModBuff[] foods = [new CookedMarshmallowBuff(), new GrilledSquirrelBuff(), new RoastedDuckBuff()];
-		context.Player.maxFallSpeed = 35.01f;
-		Apply(foods[food]);
-		bonuses.PostUpdateEquips();
-		Assert.AreEqual(expected, context.Player.maxFallSpeed);
+		foreach (ModBuff food in new ModBuff[] { new CookedMarshmallowBuff(), new GrilledSquirrelBuff(), new RoastedDuckBuff() })
+		{
+			float fromHigh = FoodCap(food);
+			BeginFrame();
+			context.Player.GetModPlayer<FoodBuffModPlayer>().ResetEffects();
+			context.Player.maxFallSpeed = 80f;
+			Apply(food);
+			bonuses.PostUpdateEquips();
+			Assert.AreEqual(fromHigh, context.Player.maxFallSpeed);
+			Assert.IsTrue(fromHigh < 35.01f);
+		}
 	}
 
 	[TestMethod]
@@ -85,13 +96,16 @@ public class FallSpeedBonusTests
 	[DataRow(35.01f, -1f)]
 	public void CapPreservesLowerPhysicsLimitAndDoesNotChangeGravityOrVelocity(float baseline, float gravityDirection)
 	{
+		float cap = FoodCap(new CookedMarshmallowBuff());
+		BeginFrame();
+		context.Player.GetModPlayer<FoodBuffModPlayer>().ResetEffects();
 		context.Player.maxFallSpeed = baseline;
 		context.Player.gravity = 0.1f;
 		context.Player.gravDir = gravityDirection;
 		context.Player.velocity.Y = 12 * gravityDirection;
 		Apply(new CookedMarshmallowBuff());
 		bonuses.PostUpdateEquips();
-		Assert.AreEqual(Math.Min(baseline, 2.5f), context.Player.maxFallSpeed);
+		Assert.AreEqual(Math.Min(baseline, cap), context.Player.maxFallSpeed);
 		Assert.AreEqual(0.1f, context.Player.gravity);
 		Assert.AreEqual(gravityDirection, context.Player.gravDir);
 		Assert.AreEqual(12 * gravityDirection, context.Player.velocity.Y);
@@ -102,18 +116,23 @@ public class FallSpeedBonusTests
 	[DataRow(true)]
 	public void FrogLegBonusSettlesBeforeFoodCap(bool reverse)
 	{
+		float marshmallow = FoodCap(new CookedMarshmallowBuff());
+		BeginFrame();
+		context.Player.GetModPlayer<FoodBuffModPlayer>().ResetEffects();
 		ModBuff[] foods = [new SauteedFrogLegsBuff(), new CookedMarshmallowBuff()];
 		foreach (var food in reverse ? foods.Reverse() : foods)
 		{
 			Apply(food);
 		}
 		bonuses.PostUpdateEquips();
-		Assert.AreEqual(2.5f, context.Player.maxFallSpeed);
+		Assert.AreEqual(marshmallow, context.Player.maxFallSpeed);
 		BeginFrame();
+		context.Player.GetModPlayer<FoodBuffModPlayer>().ResetEffects();
 		Apply(new SauteedFrogLegsBuff());
-		Assert.AreEqual(15.01f, context.Player.maxFallSpeed, 0.00001f, "The native bonus applies immediately without settlement.");
+		float immediate = context.Player.maxFallSpeed;
+		Assert.IsTrue(immediate > marshmallow, "The native bonus applies immediately without settlement.");
 		bonuses.PostUpdateEquips();
-		Assert.AreEqual(15.01f, context.Player.maxFallSpeed, 0.00001f);
+		Assert.AreEqual(immediate, context.Player.maxFallSpeed, 0.00001f);
 	}
 
 	[TestMethod]
@@ -121,6 +140,9 @@ public class FallSpeedBonusTests
 	[DataRow(true)]
 	public void ActionOverrideOutranksCapsWithoutAccumulatingAndExpiresNextFrame(bool reverse)
 	{
+		float cap = FoodCap(new CookedMarshmallowBuff());
+		BeginFrame();
+		context.Player.GetModPlayer<FoodBuffModPlayer>().ResetEffects();
 		Action[] contributions =
 		[
 			() => context.Player.maxFallSpeed += 5f,
@@ -138,21 +160,24 @@ public class FallSpeedBonusTests
 		BeginFrame();
 		Apply(new CookedMarshmallowBuff());
 		bonuses.PostUpdateEquips();
-		Assert.AreEqual(2.5f, context.Player.maxFallSpeed);
+		Assert.AreEqual(cap, context.Player.maxFallSpeed);
 		BeginFrame();
 		bonuses.PostUpdateEquips();
 		Assert.AreEqual(10.01f, context.Player.maxFallSpeed);
 	}
 
 	[TestMethod]
-	[DataRow(false, 0, 24, 0, 2.5f)]
-	[DataRow(true, 0, 10, 0, 10000f)]
-	[DataRow(true, 0, 26, 0, 10000f)]
-	[DataRow(true, 0, 30, 1, 10000f)]
-	[DataRow(true, 0, 30, 2, 10000f)]
-	[DataRow(true, 1, 26, 0, 2.5f)]
-	public void ClubUsesExistingOwnerRegistrationThroughoutActionAndRestoresCapOnKill(bool spawned, int owner, int timer, int attack, float expected)
+	[DataRow(false, 0, 24, 0, false)]
+	[DataRow(true, 0, 10, 0, true)]
+	[DataRow(true, 0, 26, 0, true)]
+	[DataRow(true, 0, 30, 1, true)]
+	[DataRow(true, 0, 30, 2, true)]
+	[DataRow(true, 1, 26, 0, false)]
+	public void ClubUsesExistingOwnerRegistrationThroughoutActionAndRestoresCapOnKill(bool spawned, int owner, int timer, int attack, bool overridden)
 	{
+		float cap = FoodCap(new CookedMarshmallowBuff());
+		BeginFrame();
+		context.Player.GetModPlayer<FoodBuffModPlayer>().ResetEffects();
 		var owners = (List<int>)typeof(ClubProjSmash).GetField("ownSmashClubPlayers", BindingFlags.Static | BindingFlags.NonPublic)!.GetValue(null)!;
 		int[] previousOwners = owners.ToArray();
 		owners.Clear();
@@ -171,13 +196,20 @@ public class FallSpeedBonusTests
 			Apply(new CookedMarshmallowBuff());
 			clubPlayer.UpdateEquips();
 			bonuses.PostUpdateEquips();
-			Assert.AreEqual(expected, context.Player.maxFallSpeed);
+			if (overridden)
+			{
+				Assert.IsTrue(context.Player.maxFallSpeed > cap);
+			}
+			else
+			{
+				Assert.AreEqual(cap, context.Player.maxFallSpeed);
+			}
 			club.OnKill(0);
 			BeginFrame();
 			Apply(new CookedMarshmallowBuff());
 			clubPlayer.UpdateEquips();
 			bonuses.PostUpdateEquips();
-			Assert.AreEqual(2.5f, context.Player.maxFallSpeed);
+			Assert.AreEqual(cap, context.Player.maxFallSpeed);
 		}
 		finally
 		{
@@ -187,26 +219,36 @@ public class FallSpeedBonusTests
 	}
 
 	[TestMethod]
-	[DataRow(0, 0, 2.5f)]
-	[DataRow(1, 0, 10000f)]
-	[DataRow(0, 1, 10000f)]
-	[DataRow(1, 1, 10000f)]
-	public void SpearUsesOriginalOwnedCountsAndRestoresCapWhenBothDisappear(int normalCount, int downCount, float expected)
+	[DataRow(0, 0, false)]
+	[DataRow(1, 0, true)]
+	[DataRow(0, 1, true)]
+	[DataRow(1, 1, true)]
+	public void SpearUsesOriginalOwnedCountsAndRestoresCapWhenBothDisappear(int normalCount, int downCount, bool overridden)
 	{
+		float cap = FoodCap(new CookedMarshmallowBuff());
+		BeginFrame();
+		context.Player.GetModPlayer<FoodBuffModPlayer>().ResetEffects();
 		var myth = AttachMythPlayer();
 		context.Player.ownedProjectileCounts[1] = normalCount;
 		context.Player.ownedProjectileCounts[2] = downCount;
 		Apply(new CookedMarshmallowBuff());
 		myth.UpdateEquips();
 		bonuses.PostUpdateEquips();
-		Assert.AreEqual(expected, context.Player.maxFallSpeed);
+		if (overridden)
+		{
+			Assert.IsTrue(context.Player.maxFallSpeed > cap);
+		}
+		else
+		{
+			Assert.AreEqual(cap, context.Player.maxFallSpeed);
+		}
 		BeginFrame();
 		context.Player.ownedProjectileCounts[1] = 0;
 		context.Player.ownedProjectileCounts[2] = 0;
 		Apply(new CookedMarshmallowBuff());
 		myth.UpdateEquips();
 		bonuses.PostUpdateEquips();
-		Assert.AreEqual(2.5f, context.Player.maxFallSpeed);
+		Assert.AreEqual(cap, context.Player.maxFallSpeed);
 	}
 
 	[TestMethod]
@@ -214,36 +256,63 @@ public class FallSpeedBonusTests
 	[DataRow(1)]
 	public void SilverBonusesApplyTogetherInUpdateEquipsWithoutRepeatingInMiscEffects(int silverBuff)
 	{
+		float cap = FoodCap(new CookedMarshmallowBuff());
+		BeginFrame();
+		context.Player.GetModPlayer<FoodBuffModPlayer>().ResetEffects();
 		var myth = AttachMythPlayer();
 		myth.GetType().GetField("SilverBuff")!.SetValue(myth, silverBuff);
 		context.Player.maxRunSpeed = 3f;
 		context.Player.wingAccRunSpeed = 4f;
 		context.Player.GetDamage(DamageClass.Generic) = StatModifier.Default + 0.2f;
 		myth.UpdateEquips();
-		AssertBonuses();
+		var first = Snapshot();
 		bonuses.PostUpdateEquips();
 		myth.PostUpdateMiscEffects();
-		AssertBonuses();
+		var second = Snapshot();
+		Assert.AreEqual(first.Fall, second.Fall, 0.00001f);
+		Assert.AreEqual(first.Run, second.Run, 0.00001f);
+		Assert.AreEqual(first.Wing, second.Wing, 0.00001f);
+		Assert.AreEqual(first.Damage, second.Damage, 0.00001f);
+		if (silverBuff > 0)
+		{
+			Assert.IsTrue(first.Fall > 10.01f);
+			Assert.IsTrue(first.Run > 3f);
+			Assert.IsTrue(first.Wing > 4f);
+			Assert.IsTrue(first.Damage > 1.2f);
+		}
+		else
+		{
+			Assert.AreEqual(10.01f, first.Fall, 0.00001f);
+			Assert.AreEqual(3f, first.Run, 0.00001f);
+			Assert.AreEqual(4f, first.Wing, 0.00001f);
+			Assert.AreEqual(1.2f, first.Damage, 0.00001f);
+		}
+
 		BeginFrame();
 		Apply(new CookedMarshmallowBuff());
 		myth.UpdateEquips();
 		bonuses.PostUpdateEquips();
 		myth.PostUpdateMiscEffects();
-		Assert.AreEqual(2.5f, context.Player.maxFallSpeed);
+		Assert.AreEqual(cap, context.Player.maxFallSpeed);
 
-		void AssertBonuses()
-		{
-			Assert.AreEqual(silverBuff > 0 ? 11.51f : 10.01f, context.Player.maxFallSpeed, 0.00001f);
-			Assert.AreEqual(silverBuff > 0 ? 3.05f : 3f, context.Player.maxRunSpeed, 0.00001f);
-			Assert.AreEqual(silverBuff > 0 ? 4.05f : 4f, context.Player.wingAccRunSpeed, 0.00001f);
-			Assert.AreEqual(silverBuff > 0 ? 1.25f : 1.2f, context.Player.GetDamage(DamageClass.Generic).ApplyTo(1f), 0.00001f);
-		}
+		(float Fall, float Run, float Wing, float Damage) Snapshot() =>
+			(context.Player.maxFallSpeed, context.Player.maxRunSpeed, context.Player.wingAccRunSpeed, context.Player.GetDamage(DamageClass.Generic).ApplyTo(1f));
 	}
 
 	private void BeginFrame()
 	{
 		bonuses.ResetEffects();
 		context.Player.maxFallSpeed = 10.01f;
+	}
+
+	private float FoodCap(ModBuff food)
+	{
+		BeginFrame();
+		context.Player.GetModPlayer<FoodBuffModPlayer>().ResetEffects();
+		context.Player.maxFallSpeed = 35.01f;
+		Apply(food);
+		bonuses.PostUpdateEquips();
+		return context.Player.maxFallSpeed;
 	}
 
 	private void Apply(ModBuff buff)

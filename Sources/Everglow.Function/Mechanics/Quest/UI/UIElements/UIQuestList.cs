@@ -67,6 +67,14 @@ public class UIQuestList : UIBlock
 		newHitBox.Width -= 120;
 		sb.Draw(background, newHitBox, new Rectangle(0, 0, 1, 1), Color.White * 0.5f);
 		base.Draw(sb);
+
+		// 上沿黑边标出列表区域，避免和上方筛选环混在一起。
+		if (newHitBox.Width > 0 && newHitBox.Height > 0)
+		{
+			var topBorder = newHitBox;
+			topBorder.Height = Math.Min(2, newHitBox.Height);
+			sb.Draw(background, topBorder, new Rectangle(0, 0, 1, 1), Color.Black);
+		}
 	}
 
 	/// <summary>

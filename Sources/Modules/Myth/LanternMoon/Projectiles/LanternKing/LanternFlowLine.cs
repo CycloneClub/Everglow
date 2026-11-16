@@ -36,7 +36,7 @@ public class LanternFlowLine : ModProjectile
 		if (Projectile.timeLeft > 120 && Projectile.timeLeft < 600)
 		{
 			float mulScale = Main.rand.NextFloat(0.5f, 1.2f);
-			var gore2 = new LanternFlow_lantern2
+			var gore2 = new LanternFlow_Lantern2
 			{
 				Active = true,
 				Visible = true,
@@ -108,12 +108,12 @@ public class LanternFlowLine : ModProjectile
 		}
 		if (bars_left_Dark.Count > 2)
 		{
-			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_19_black.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_19_Black.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars_left_Dark.ToArray(), 0, bars_left_Dark.Count - 2);
 		}
 		if (bars_Dark.Count > 2)
 		{
-			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_19_black.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_19_Black.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars_Dark.ToArray(), 0, bars_Dark.Count - 2);
 		}
 		int lightValue = 1;
@@ -153,7 +153,7 @@ public class LanternFlowLine : ModProjectile
 		}
 		if (bars.Count > 2)
 		{
-			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_thick.Value;
+			Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Trail_2_Thick.Value;
 			Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		}
 
