@@ -71,6 +71,9 @@ public class TwilightForsetAndRelic : ModBiome
 
 			TwilightClose close = new TwilightClose { WorldAnchor = YggdrasilTownBackground.Stratum1Center };
 			bgSystem.AddBackgroundSlide(close);
+
+			TwilightVeryClose veryClose = new TwilightVeryClose { WorldAnchor = YggdrasilTownBackground.Stratum1Center };
+			bgSystem.AddBackgroundSlide(veryClose);
 		}
 
 		base.OnInBiome(player);

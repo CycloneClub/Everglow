@@ -53,11 +53,11 @@ public class EucaLeafy_EmitGas : Visual
 		float light = lightValue.Length();
 		List<Vertex2D> bars = new List<Vertex2D>()
 		{
-			new Vertex2D(Position + toCorner, new Color(0, 0, pocession), new Vector3(ai[0], timeValue, light)),
-			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 0.5), new Color(0, 1, pocession), new Vector3(ai[0], timeValue + 0.4f, light)),
+			new Vertex2D(Position + toCorner, new Color(0, 0, pocession, 0.1f), new Vector3(ai[0], timeValue, light)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 0.5), new Color(0, 1, pocession, 0.1f), new Vector3(ai[0], timeValue + 0.4f, light)),
 
-			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1.5), new Color(1, 0, pocession), new Vector3(ai[0] + 0.4f, timeValue, light)),
-			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1), new Color(1, 1, pocession), new Vector3(ai[0] + 0.4f, timeValue + 0.4f, light)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1.5), new Color(1, 0, pocession, 0.1f), new Vector3(ai[0] + 0.4f, timeValue, light)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1), new Color(1, 1, pocession, 0.1f), new Vector3(ai[0] + 0.4f, timeValue + 0.4f, light)),
 		};
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);
 	}

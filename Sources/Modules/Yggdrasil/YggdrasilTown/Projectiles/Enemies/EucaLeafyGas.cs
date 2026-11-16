@@ -17,26 +17,29 @@ public class EucaLeafyGas : ModProjectile
 		Projectile.hostile = false;
 		Projectile.ignoreWater = false;
 		Projectile.tileCollide = true;
-		Projectile.timeLeft = 240;
+		Projectile.timeLeft = 3;
 	}
 
 	public override void AI()
 	{
-		for (int g = 0; g < 2; g++)
+		if (Projectile.timeLeft == 2)
 		{
-			Vector2 vel = new Vector2(0, MathF.Sqrt(Main.rand.NextFloat()) * 12f).RotatedByRandom(MathHelper.TwoPi);
-			var somg = new EucaLeafy_EmitGas
+			for (int g = 0; g < 60; g++)
 			{
-				Velocity = vel,
-				Active = true,
-				Visible = true,
-				Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
-				MaxTime = Main.rand.Next(60, 75),
-				Scale = Main.rand.NextFloat(50f, 155f),
-				Rotation = Main.rand.NextFloat(6.283f),
-				ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
-			};
-			Ins.VFXManager.Add(somg);
+				Vector2 vel = new Vector2(0, MathF.Sqrt(Main.rand.NextFloat()) * 15f).RotatedByRandom(MathHelper.TwoPi);
+				var somg = new EucaLeafy_EmitGas
+				{
+					Velocity = vel,
+					Active = true,
+					Visible = true,
+					Position = Projectile.Center + new Vector2(Main.rand.NextFloat(-6f, 6f), 0).RotatedByRandom(6.283),
+					MaxTime = Main.rand.Next(60, 75),
+					Scale = Main.rand.NextFloat(50f, 155f),
+					Rotation = Main.rand.NextFloat(6.283f),
+					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
+				};
+				Ins.VFXManager.Add(somg);
+			}
 		}
 	}
 

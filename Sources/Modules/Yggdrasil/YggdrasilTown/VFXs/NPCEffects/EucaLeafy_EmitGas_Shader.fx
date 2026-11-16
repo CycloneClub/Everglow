@@ -58,7 +58,7 @@ float4 PixelShaderFunction(PSInput input) : COLOR0
     if (light < 0.6)
     {
         float4 colorHeatMap = tex2D(uHeatMapSampler, float2(input.Color.b, 0));
-        colorHeatMap *= float4(input.Texcoord.zzz, 1);
+        colorHeatMap *= float4(input.Texcoord.zzz, input.Color.a);
         return colorHeatMap;
     }
     return float4(0, 0, 0, 0);
