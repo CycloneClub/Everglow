@@ -53,7 +53,7 @@ public abstract class ShapeDataTile : ModTile
 
 	public override void Load()
 	{
-		var imageData = ImageReader.Read<SixLabors.ImageSharp.PixelFormats.Rgb24>(ShapePath);
+		var imageData = ImageReader.Read(ShapePath);
 		imageData.ProcessPixelRows(accessor =>
 		{
 			PixelHasTile = new int[accessor.Width, accessor.Height];
