@@ -1,6 +1,4 @@
-using Everglow.Commons.DeveloperContent.Items;
 using Everglow.Commons.Mechanics.CustomBackground;
-using Everglow.Yggdrasil.KelpCurtain.Background;
 using Everglow.Yggdrasil.WorldGeneration;
 using Everglow.Yggdrasil.YggdrasilTown.Background;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles;
@@ -22,11 +20,9 @@ public class YggdrasilTownBiome : ModBiome
 			{
 				return MusicLoader.GetMusicSlot(Mod, ModAsset.Arena_BGM_Path);
 			}
-			if (YggdrasilTownCentralSystem.InFurnace_YggdrasilTown())
-			{
-				return MusicLoader.GetMusicSlot(Mod, ModAsset.FurnaceArea_BGM_Path);
-			}
-			return !Main.dayTime ? MusicLoader.GetMusicSlot(Mod, ModAsset.NewYggdrasilTownBGM_Path) : MusicLoader.GetMusicSlot(Mod, ModAsset.YggdrasilTownBGM_Path);
+			return YggdrasilTownCentralSystem.InFurnace_YggdrasilTown()
+				? MusicLoader.GetMusicSlot(Mod, ModAsset.FurnaceArea_BGM_Path)
+				: !Main.dayTime ? MusicLoader.GetMusicSlot(Mod, ModAsset.NewYggdrasilTownBGM_Path) : MusicLoader.GetMusicSlot(Mod, ModAsset.YggdrasilTownBGM_Path);
 		}
 		else
 		{
@@ -65,11 +61,7 @@ public class YggdrasilTownBiome : ModBiome
 		{
 			return true;
 		}
-		if (YggdrasilTownCentralSystem.InArena_YggdrasilTown())
-		{
-			return true;
-		}
-		return IsTownLayer(player.Center);
+		return YggdrasilTownCentralSystem.InArena_YggdrasilTown() ? true : IsTownLayer(player.Center);
 	}
 
 	public static bool CheckedBiomeCenter = false;
@@ -145,6 +137,15 @@ public class YggdrasilTownBiome : ModBiome
 		Main.bloodMoon = false;
 
 		BackgroundSystem bgSystem = ModContent.GetInstance<BackgroundSystem>();
+		if (!bgSystem.HasBgSlide("Everglow.Yggdrasil.YggdrasilTown.Background.YggdrasilTownBackgroundSky"))
+		{
+			YggdrasilTownBackgroundSky sky = new YggdrasilTownBackgroundSky
+			{
+				WorldAnchor = BiomeCenter,
+			};
+			bgSystem.AddBackgroundSlide(sky);
+		}
+
 		if (!bgSystem.HasBgSlide("Everglow.Yggdrasil.YggdrasilTown.Background.Town_Close"))
 		{
 			Town_Sky town_Sky = new Town_Sky();

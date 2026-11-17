@@ -1,6 +1,5 @@
+using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
-using Everglow.Yggdrasil.YggdrasilTown.VFXs.NPCEffects;
-using Terraria.Audio;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Enemies;
 
@@ -39,6 +38,13 @@ public class EucaLeafyGas : ModProjectile
 					ai = new float[] { Main.rand.NextFloat(0.0f, 0.93f), 0 },
 				};
 				Ins.VFXManager.Add(somg);
+			}
+			for (int g = 0; g < 60; g++)
+			{
+				Dust d0 = Dust.NewDustDirect(Projectile.Center + new Vector2(4), 0, 0, ModContent.DustType<EucaLeafy_EmitGasDust>());
+				d0.velocity = new Vector2(0, MathF.Sqrt(Main.rand.NextFloat(1f))).RotatedByRandom(MathHelper.TwoPi) * 8f;
+				d0.position += new Vector2(0, MathF.Sqrt(Main.rand.NextFloat(1f))).RotatedByRandom(MathHelper.TwoPi) * 40f;
+				d0.noGravity = true;
 			}
 		}
 	}
