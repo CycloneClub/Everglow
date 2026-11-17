@@ -14,6 +14,11 @@ public abstract class TwilightBackgroundBase : BackgroundSlideBase
 
 	public override bool CanActive()
 	{
-		return ModContent.GetInstance<TwilightForsetAndRelic>().IsBiomeActive(Main.LocalPlayer);
+		TwilightForsetAndRelic biome = ModContent.GetInstance<TwilightForsetAndRelic>();
+		if (!biome.IsBiomeActive(Main.LocalPlayer))
+		{
+			return false;
+		}
+		return biome.IsTheCenterRelic || this is TwilightSky || this is TwilightVeryClose;
 	}
 }

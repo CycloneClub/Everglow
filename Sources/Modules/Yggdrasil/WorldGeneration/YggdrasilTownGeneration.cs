@@ -113,7 +113,7 @@ public partial class YggdrasilTownGeneration
 
 	public static List<int> TwilightBonusList;
 	public static List<int> VanillaJuniorGems;
-	public static List<Vector2> TwilightBubbleCenters = new List<Vector2>();
+	public static List<YggdrasilWorld.TwilightBubble> TwilightBubbles => YggdrasilWorld.TwilightBubbles;
 
 	/// <summary>
 	/// 初始化
@@ -1588,9 +1588,9 @@ public partial class YggdrasilTownGeneration
 				if (bValue < 1f)
 				{
 					bool shouldFill = true;
-					foreach (var pos in TwilightBubbleCenters)
+					foreach (var pos in TwilightBubbles)
 					{
-						if ((new Vector2(x, y) - pos).Length() < 90)
+						if ((new Vector2(x, y) - pos.Center).Length() < 90)
 						{
 							shouldFill = false;
 						}
@@ -1641,7 +1641,7 @@ public partial class YggdrasilTownGeneration
 				}
 			}
 		}
-		TwilightBubbleCenters = new List<Vector2>();
+		TwilightBubbles.Clear();
 
 		// 随机取点300次，但是只生成俩地形
 		for (int i = 0; i < 600; i++)
@@ -1653,10 +1653,10 @@ public partial class YggdrasilTownGeneration
 			{
 				Vector2 basePos = new Vector2(x, y);
 				bool canBuild = true;
-				foreach (Vector2 v in TwilightBubbleCenters)
+				foreach (YggdrasilWorld.TwilightBubble v in TwilightBubbles)
 				{
 					// 空出中心并且与另外一个点保持距离
-					if ((basePos - v).Length() < 420)
+					if ((basePos - v.Center).Length() < 420)
 					{
 						canBuild = false;
 						break;
@@ -1666,7 +1666,7 @@ public partial class YggdrasilTownGeneration
 				{
 					continue;
 				}
-				TwilightBubbleCenters.Add(basePos);
+				TwilightBubbles.Add(new YggdrasilWorld.TwilightBubble(basePos, range));
 				count++;
 				BuildTwilightLand_Shell(basePos, range);
 

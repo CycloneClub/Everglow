@@ -9,7 +9,20 @@ namespace Everglow.Yggdrasil;
 
 public class YggdrasilWorld : Subworld
 {
+	public readonly struct TwilightBubble
+	{
+		public Vector2 Center { get; }
+		public float Radius { get; }
+
+		public TwilightBubble(Vector2 center, float radius)
+		{
+			Center = center;
+			Radius = radius;
+		}
+	}
+
 	public static Point KelpCurtain_IsleOfBloom_CaveCenter;
+	public static readonly List<TwilightBubble> TwilightBubbles = new List<TwilightBubble>();
 
 	public static bool InYggdrasil => SubworldSystem.IsActive<YggdrasilWorld>();
 
@@ -54,6 +67,7 @@ public class YggdrasilWorld : Subworld
 
 	public override void Load()
 	{
+		TwilightBubbles.Clear();
 		On_WorldGen.setWorldSize += WorldGen_setWorldSize;
 	}
 

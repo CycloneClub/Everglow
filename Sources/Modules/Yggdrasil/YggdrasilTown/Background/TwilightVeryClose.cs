@@ -6,6 +6,7 @@ public class TwilightVeryClose : TwilightBackgroundBase
 	{
 		base.SetDefaults();
 		Texture = ModAsset.TwilightVeryClose.Value;
+		UseColorStyle = 0;
 		Distance = 2f;
 	}
 }

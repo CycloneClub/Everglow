@@ -1,5 +1,6 @@
-using Everglow.Yggdrasil.Common;
 using Everglow.Commons.Utilities.BackgroundHelper;
+using Everglow.Yggdrasil.Common;
+using Everglow.Yggdrasil.WorldGeneration;
 using Everglow.Yggdrasil.YggdrasilTown.Background;
 using SubworldLibrary;
 
@@ -23,6 +24,10 @@ public class TwilightForsetAndRelic : ModBiome
 
 	public override Color? BackgroundColor => base.BackgroundColor;
 
+	public bool IsTheCenterRelic = false;
+
+	private const float RelicBiomeRadius = 400f;
+
 	public override void Load()
 	{
 		base.Load();
@@ -32,9 +37,25 @@ public class TwilightForsetAndRelic : ModBiome
 	{
 		if (!SubworldSystem.IsActive<YggdrasilWorld>())
 		{
+			IsTheCenterRelic = false;
 			return false;
 		}
-		return (new Point(Main.maxTilesX / 2, 20000).ToWorldCoordinates() - (Main.screenPosition + new Vector2(Main.screenWidth, Main.screenHeight) * 0.5f)).Length() < 5000;
+
+		Vector2 position = player.Center;
+		IsTheCenterRelic = (position - YggdrasilTownGeneration.TwilightRelicCenter.ToWorldCoordinates()).Length() < RelicBiomeRadius * 16f;
+		if (IsTheCenterRelic)
+		{
+			return true;
+		}
+
+		foreach (YggdrasilWorld.TwilightBubble bubble in YggdrasilWorld.TwilightBubbles)
+		{
+			if ((position - bubble.Center.ToWorldCoordinates()).Length() < bubble.Radius * 16f)
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public override void OnInBiome(Player player)
@@ -54,6 +75,19 @@ public class TwilightForsetAndRelic : ModBiome
 		BackgroundSystem bgSystem = ModContent.GetInstance<BackgroundSystem>();
 		if (!bgSystem.HasBgSlide("Everglow.Yggdrasil.YggdrasilTown.Background.TwilightSky"))
 		{
+			Vector2 veryCloseAnchor = YggdrasilTownBackground.Stratum1Center + new Vector2(0, 2300);
+			if (!IsTheCenterRelic)
+			{
+				foreach (YggdrasilWorld.TwilightBubble bubble in YggdrasilWorld.TwilightBubbles)
+				{
+					if ((player.Center - bubble.Center.ToWorldCoordinates()).Length() < bubble.Radius * 16f)
+					{
+						veryCloseAnchor = bubble.Center.ToWorldCoordinates() + new Vector2(0, bubble.Radius * 5);
+						break;
+					}
+				}
+			}
+
 			TwilightSky sky = new TwilightSky { WorldAnchor = YggdrasilTownBackground.Stratum1Center };
 			bgSystem.AddBackgroundSlide(sky);
 
@@ -72,8 +106,11 @@ public class TwilightForsetAndRelic : ModBiome
 			TwilightClose close = new TwilightClose { WorldAnchor = YggdrasilTownBackground.Stratum1Center };
 			bgSystem.AddBackgroundSlide(close);
 
-			TwilightVeryClose veryClose = new TwilightVeryClose { WorldAnchor = YggdrasilTownBackground.Stratum1Center };
+			TwilightVeryClose veryClose = new TwilightVeryClose { WorldAnchor = veryCloseAnchor };
 			bgSystem.AddBackgroundSlide(veryClose);
+
+			TwilightVeryClose_Glow veryCloseGlow = new TwilightVeryClose_Glow { WorldAnchor = veryCloseAnchor };
+			bgSystem.AddBackgroundSlide(veryCloseGlow);
 		}
 
 		base.OnInBiome(player);

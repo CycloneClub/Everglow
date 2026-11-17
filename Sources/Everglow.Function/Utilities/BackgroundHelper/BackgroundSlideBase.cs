@@ -25,6 +25,7 @@ public abstract class BackgroundSlideBase
 	/// 0 : Sky Color<br/>
 	/// 1 : TileMap Colop<br/>
 	/// 2 : White
+	/// 3 : Glow
 	/// </summary>
 	public int UseColorStyle = 0;
 

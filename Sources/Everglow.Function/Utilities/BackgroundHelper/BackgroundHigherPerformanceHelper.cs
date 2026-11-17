@@ -294,6 +294,9 @@ public static class BackgroundHigherPerformanceHelper
 			case 1:
 				c = Lighting.GetColor((worldPos + new Vector2(-8)).ToTileCoordinates());
 				break;
+			case 2:
+				c = new Color(1f, 1f, 1f, 0);
+				break;
 		}
 		return c * bg.Alpha;
 	}
