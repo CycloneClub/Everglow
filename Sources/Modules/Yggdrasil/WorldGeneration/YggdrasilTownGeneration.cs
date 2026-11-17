@@ -113,6 +113,7 @@ public partial class YggdrasilTownGeneration
 
 	public static List<int> TwilightBonusList;
 	public static List<int> VanillaJuniorGems;
+
 	public static List<YggdrasilWorld.TwilightBubble> TwilightBubbles => YggdrasilWorld.TwilightBubbles;
 
 	/// <summary>

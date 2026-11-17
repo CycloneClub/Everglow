@@ -1,5 +1,5 @@
-using Everglow.Commons.Mechanics.EliminateLight;
 using Everglow.Commons.Mechanics.CustomBackground;
+using Everglow.Commons.Mechanics.EliminateLight;
 using Everglow.Yggdrasil.KelpCurtain.Biomes;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Background;

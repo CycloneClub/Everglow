@@ -1,11 +1,11 @@
 using Everglow.Commons.DeveloperContent.Items;
 using Everglow.Commons.Mechanics.CustomBackground;
 using Everglow.Yggdrasil.KelpCurtain.Background;
+using Everglow.Yggdrasil.WorldGeneration;
 using Everglow.Yggdrasil.YggdrasilTown.Background;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles.FurnaceTiles;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles.TwilightForest;
-using Everglow.Yggdrasil.WorldGeneration;
 using SubworldLibrary;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Biomes;

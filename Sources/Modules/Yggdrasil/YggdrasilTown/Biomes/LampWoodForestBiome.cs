@@ -1,5 +1,5 @@
-using Everglow.Yggdrasil.Common;
 using Everglow.Commons.Mechanics.CustomBackground;
+using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.YggdrasilTown.Background;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Biomes;

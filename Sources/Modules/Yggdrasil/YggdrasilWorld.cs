@@ -12,6 +12,7 @@ public class YggdrasilWorld : Subworld
 	public readonly struct TwilightBubble
 	{
 		public Vector2 Center { get; }
+
 		public float Radius { get; }
 
 		public TwilightBubble(Vector2 center, float radius)

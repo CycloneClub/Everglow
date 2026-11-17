@@ -33,7 +33,12 @@ public class TwilightRelicChestLootTests
 		var chests = Main.chest;
 		var random = WorldGen._genRand;
 		bool basicChest = TileID.Sets.BasicChest[TileID.Containers];
-		restore.Add(() => { Main.chest = chests; WorldGen._genRand = random; TileID.Sets.BasicChest[TileID.Containers] = basicChest; });
+		restore.Add(() =>
+		{
+			Main.chest = chests;
+			WorldGen._genRand = random;
+			TileID.Sets.BasicChest[TileID.Containers] = basicChest;
+		});
 		TileID.Sets.BasicChest[TileID.Containers] = true;
 		Main.chest = new Chest[7];
 		SetItem<WiltedForestLamp>(Primary[0]);
@@ -67,7 +72,12 @@ public class TwilightRelicChestLootTests
 			var tile = Main.tile[x, y];
 			ushort type = tile.TileType;
 			var state = tile.Get<TileWallWireStateData>();
-			restore.Add(() => { var saved = Main.tile[x, y]; saved.TileType = type; saved.Get<TileWallWireStateData>() = state; });
+			restore.Add(() =>
+			{
+				var saved = Main.tile[x, y];
+				saved.TileType = type;
+				saved.Get<TileWallWireStateData>() = state;
+			});
 			tile.HasTile = true;
 			tile.TileType = TileID.Containers;
 			Main.chest[i] = new Chest { x = x, y = y };

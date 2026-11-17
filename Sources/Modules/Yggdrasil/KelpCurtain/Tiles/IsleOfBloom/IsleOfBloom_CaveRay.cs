@@ -1,5 +1,5 @@
-using Everglow.Commons.TileHelper;
 using Everglow.Commons.Mechanics.CustomBackground;
+using Everglow.Commons.TileHelper;
 using Everglow.Commons.VFX.Scene;
 using Everglow.Yggdrasil.KelpCurtain.Background;
 using Everglow.Yggdrasil.KelpCurtain.Dusts;

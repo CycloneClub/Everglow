@@ -24,7 +24,12 @@ internal sealed class CooldownTestContext : IDisposable
 		int netMode = Main.netMode;
 		bool dedicatedServer = Main.dedServ;
 		var resolver = ModIns.PacketResolver;
-		restore.Add(() => { Main.netMode = netMode; Main.dedServ = dedicatedServer; ModIns.PacketResolver = resolver; });
+		restore.Add(() =>
+		{
+			Main.netMode = netMode;
+			Main.dedServ = dedicatedServer;
+			ModIns.PacketResolver = resolver;
+		});
 		Main.netMode = NetmodeID.SinglePlayer;
 		Main.dedServ = false;
 		// Single-player Send returns before accessing the networking dependencies.
