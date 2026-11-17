@@ -62,6 +62,7 @@ public class LampWoodForest : ModBiome
 		BackgroundSystem bgSystem = ModContent.GetInstance<BackgroundSystem>();
 		if (!bgSystem.HasBgSlide("Everglow.Yggdrasil.YggdrasilTown.Background.LampWoodSky"))
 		{
+			LampWoodCenterY = player.Center.Y - Main.screenHeight * 0.5f;
 			Vector2 lampWoodAnchor = new Vector2(YggdrasilTownBiome.GetBiomeCenter().X, LampWoodCenterY);
 
 			LampWoodSky sky = new LampWoodSky { WorldAnchor = lampWoodAnchor };
