@@ -11,6 +11,7 @@ public class YggdrasilTownBackgroundSky : BackgroundSlideBase
 		base.SetDefaults();
 		Texture = ModAsset.YggdrasilTownBackgroundSky.Value;
 		Distance = float.PositiveInfinity;
+		LayerPriority = -1;
 	}
 
 	public override bool CanActive()
