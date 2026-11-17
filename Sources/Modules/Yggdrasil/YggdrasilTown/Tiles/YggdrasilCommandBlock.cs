@@ -1,4 +1,4 @@
-using Everglow.Commons.Utilities.BackgroundHelper;
+using Everglow.Commons.Mechanics.CustomBackground;
 using Everglow.Commons.VFX.Scene;
 using Everglow.Yggdrasil.YggdrasilTown.Background;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;

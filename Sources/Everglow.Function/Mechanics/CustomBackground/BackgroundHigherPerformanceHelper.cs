@@ -2,7 +2,7 @@ using System.Runtime.InteropServices;
 using Everglow.Commons.Vertex;
 using Everglow.Commons.VFX;
 
-namespace Everglow.Commons.Utilities.BackgroundHelper;
+namespace Everglow.Commons.Mechanics.CustomBackground;
 
 /// <summary>
 /// Use unsafe + Lambda closure for extremely high performance rendering.

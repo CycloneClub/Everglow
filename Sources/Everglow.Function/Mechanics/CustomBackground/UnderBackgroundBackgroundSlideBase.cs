@@ -1,7 +1,7 @@
 using Everglow.Commons.Vertex;
 using Everglow.Commons.VFX;
 
-namespace Everglow.Commons.Utilities.BackgroundHelper;
+namespace Everglow.Commons.Mechanics.CustomBackground;
 
 public abstract class UnderBackgroundBackgroundSlideBase : BackgroundSlideBase
 {

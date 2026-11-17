@@ -1,5 +1,5 @@
 using Everglow.Commons.DataStructures;
-using Everglow.Commons.Utilities.BackgroundHelper;
+using Everglow.Commons.Mechanics.CustomBackground;
 using Everglow.Yggdrasil.KelpCurtain.Biomes;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Background;

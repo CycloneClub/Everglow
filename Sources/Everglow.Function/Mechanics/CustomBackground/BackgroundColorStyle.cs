@@ -1,4 +1,4 @@
-namespace Everglow.Commons.Utilities.BackgroundHelper;
+namespace Everglow.Commons.Mechanics.CustomBackground;
 
 public enum BackgroundColorStyle
 {

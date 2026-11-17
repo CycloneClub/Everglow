@@ -1,5 +1,5 @@
 using Everglow.Commons.DeveloperContent.Items;
-using Everglow.Commons.Utilities.BackgroundHelper;
+using Everglow.Commons.Mechanics.CustomBackground;
 using Everglow.Yggdrasil.KelpCurtain.Background;
 using Everglow.Yggdrasil.YggdrasilTown.Background;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles;

@@ -1,5 +1,5 @@
 using System.Timers;
-using Everglow.Commons.Utilities.BackgroundHelper;
+using Everglow.Commons.Mechanics.CustomBackground;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.FurnaceTiles;
 

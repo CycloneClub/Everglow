@@ -1,4 +1,4 @@
-using Everglow.Commons.Utilities.BackgroundHelper;
+using Everglow.Commons.Mechanics.CustomBackground;
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.KelpCurtain.Background;
 using Everglow.Yggdrasil.KelpCurtain.Water;

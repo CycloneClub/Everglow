@@ -1,7 +1,8 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Commons.Enums;
+using Everglow.Commons.Utilities;
 
-namespace Everglow.Commons.Utilities.BackgroundHelper;
+namespace Everglow.Commons.Mechanics.CustomBackground;
 
 public class BackgroundSystem : ModSystem
 {

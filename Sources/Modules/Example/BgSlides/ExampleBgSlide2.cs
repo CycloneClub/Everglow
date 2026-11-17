@@ -1,4 +1,4 @@
-using Everglow.Commons.Utilities.BackgroundHelper;
+using Everglow.Commons.Mechanics.CustomBackground;
 using Everglow.Example.Items;
 
 namespace Everglow.Example.BgSlides;
