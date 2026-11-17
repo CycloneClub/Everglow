@@ -19,6 +19,6 @@ public abstract class TwilightBackgroundBase : BackgroundSlideBase
 		{
 			return false;
 		}
-		return biome.IsTheCenterRelic || this is TwilightSky || this is TwilightVeryClose;
+		return biome.IsTheCenterRelic || this is TwilightSky || this is TwilightVeryClose || this is TwilightVeryClose_Glow;
 	}
 }
