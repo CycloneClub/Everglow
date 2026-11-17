@@ -121,17 +121,7 @@ public abstract class BackgroundSlideBase
 	{
 		Vector2 screenCenter = Main.screenPosition + new Vector2(Main.screenWidth, Main.screenHeight) * 0.5f;
 		Vector2 move = (screenCenter - bg.WorldAnchor) / bg.Distance;
-		Vector2 textureSize = bg.Texture.Size();
-		// Fit the viewport inside the texture without stretching its aspect ratio.
-		// Leave a margin for shaders that clamp texture coordinates to 0.01–0.99.
-		const float uvMargin = 0.01f;
-		float usableSpan = 1f - 2f * uvMargin;
-		float fitScale = Math.Max(1f, Math.Max(Main.screenWidth / (textureSize.X * usableSpan), Main.screenHeight / (textureSize.Y * usableSpan)));
-		textureSize *= fitScale;
-		Vector2 texcoord_Move = move / textureSize;
-		Vector2 halfSpan = new Vector2(Main.screenWidth, Main.screenHeight) / (2f * textureSize);
-		Vector2 maxOffset = Vector2.Max(Vector2.Zero, new Vector2(0.5f - uvMargin) - halfSpan);
-		texcoord_Move = Vector2.Clamp(texcoord_Move, -maxOffset, maxOffset);
+		Vector2 texcoord_Move = move / bg.Texture.Size();
 
 		int[] dirs = new int[] { 0, 1, -1, 2 };
 		var bars = new List<Vertex2D>();
@@ -139,7 +129,7 @@ public abstract class BackgroundSlideBase
 		{
 			Vector2 dir = new Vector2(1, 1).RotatedBy(MathHelper.PiOver2 * dirs[k]);
 			Vector2 screenPoint = new Vector2(-Main.screenWidth, -Main.screenHeight) * dir * 0.5f;
-			Vector2 screen_move = screenPoint / textureSize + texcoord_Move;
+			Vector2 screen_move = screenPoint / bg.Texture.Size() + texcoord_Move;
 			Color drawColor = GetColor(bg, screenCenter + screenPoint);
 			bars.Add(screenCenter + screenPoint - Main.screenPosition, drawColor, new Vector3(screen_move + new Vector2(0.5f), 0));
 		}

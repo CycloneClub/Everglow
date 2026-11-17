@@ -8,12 +8,17 @@ public class BackgroundSystem : ModSystem
 {
 	private const int MaxSingleInstanceNumber = 20;
 	public const int MaxMultipleInstanceNumber = 50;
+	private const float TeleportResetDistance = 1024f;
 
 	private List<BackgroundSlideBase> backgroundSlides;
+	private Vector2? previousPlayerPosition;
+	private int previousPlayerIndex = -1;
 
 	public override void Load()
 	{
 		backgroundSlides = [];
+		previousPlayerPosition = null;
+		previousPlayerIndex = -1;
 	}
 
 	public override void Unload()
@@ -33,6 +38,28 @@ public class BackgroundSystem : ModSystem
 	public override void OnWorldUnload()
 	{
 		backgroundSlides.Clear();
+		previousPlayerPosition = null;
+		previousPlayerIndex = -1;
+	}
+
+	public override void PreUpdateEntities()
+	{
+		if (Main.dedServ || Main.gameMenu || !Main.LocalPlayer.active)
+		{
+			previousPlayerPosition = null;
+			previousPlayerIndex = -1;
+			return;
+		}
+
+		Vector2 position = Main.LocalPlayer.position;
+		if (previousPlayerIndex == Main.myPlayer && previousPlayerPosition is Vector2 oldPosition
+			&& Vector2.DistanceSquared(position, oldPosition) > TeleportResetDistance * TeleportResetDistance)
+		{
+			// Biomes and nearby tiles recreate their layers with destination anchors this tick.
+			backgroundSlides.Clear();
+		}
+		previousPlayerPosition = position;
+		previousPlayerIndex = Main.myPlayer;
 	}
 
 	public override void PostUpdateEverything()
