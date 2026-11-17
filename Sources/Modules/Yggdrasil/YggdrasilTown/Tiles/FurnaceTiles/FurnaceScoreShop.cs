@@ -32,7 +32,7 @@ public class FurnaceScoreShop : BackgroundSlideBase
 		base.SetDefaults();
 		Texture = ModAsset.FurnaceScoreShop.Value;
 		Distance = 1;
-		UseColorStyle = 1;
+		UseColorStyle = BackgroundColorStyle.TileMap;
 		LayerPriority = 1;
 		Shader = Effects.XWrap_YWrap_Shader;
 	}

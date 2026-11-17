@@ -10,7 +10,7 @@ public class MidnightBayou_Middle_0 : BackgroundSlideBase
 		base.SetDefaults();
 		Texture = ModAsset.MidnightBayou_Middle_0.Value;
 		Distance = 10f;
-		UseColorStyle = 2;
+		UseColorStyle = BackgroundColorStyle.White;
 		Shader = Effects.XWrap_YClamp_Shader;
 	}
 

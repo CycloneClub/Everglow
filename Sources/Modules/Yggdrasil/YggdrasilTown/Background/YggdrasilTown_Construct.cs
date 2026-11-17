@@ -89,7 +89,7 @@ public class YggdrasilTown_Construct : BackgroundSlideBase
 		};
 		Texture = ModAsset.YggdrasilTown_Construct.Value;
 		Distance = 1;
-		UseColorStyle = 1;
+		UseColorStyle = BackgroundColorStyle.TileMap;
 		LayerPriority = 0;
 		Shader = Effects.XWrap_YWrap_Shader;
 	}

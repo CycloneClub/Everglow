@@ -12,7 +12,7 @@ public class IsleOfBloom_Underground_Close : BackgroundSlideBase
 		base.SetDefaults();
 		Texture = ModAsset.IsleOfBloom_Underground_Close.Value;
 		Distance = 1.15f;
-		UseColorStyle = 1;
+		UseColorStyle = BackgroundColorStyle.TileMap;
 		LayerPriority = 2;
 		Shader = Effects.XWrap_YClamp_Shader;
 	}

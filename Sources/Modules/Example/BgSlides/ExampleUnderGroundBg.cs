@@ -12,7 +12,7 @@ public class ExampleUnderGroundBg : UnderBackgroundBackgroundSlideBase
 		base.SetDefaults();
 		Texture = Commons.ModAsset.Noise_Wave.Value;
 		Distance = 5f;
-		UseColorStyle = 0;
+		UseColorStyle = BackgroundColorStyle.Sky;
 		Shader = Effects.XWrap_YWrap_Shader;
 	}
 

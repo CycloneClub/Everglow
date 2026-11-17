@@ -13,7 +13,7 @@ public class GreenRelicCentralWall : BackgroundSlideBase
 		base.SetDefaults();
 		Texture = ModAsset.GreenRelicCentralWall.Value;
 		Distance = 1f;
-		UseColorStyle = 1;
+		UseColorStyle = BackgroundColorStyle.TileMap;
 		LayerPriority = 2;
 		Shader = Effects.XClamp_YWrap_Shader;
 	}

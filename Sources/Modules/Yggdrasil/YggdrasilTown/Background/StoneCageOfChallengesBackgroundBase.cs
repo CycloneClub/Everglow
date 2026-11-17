@@ -48,7 +48,7 @@ public abstract class StoneCageOfChallengesBackgroundBase : BackgroundSlideBase
 	public override void SetDefaults()
 	{
 		base.SetDefaults();
-		UseColorStyle = 2;
+		UseColorStyle = BackgroundColorStyle.White;
 		Shader = Effects.XWrap_YClamp_Shader;
 	}
 

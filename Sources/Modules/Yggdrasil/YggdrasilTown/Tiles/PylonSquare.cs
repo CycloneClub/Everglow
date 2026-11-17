@@ -15,7 +15,7 @@ public class PylonSquare : BackgroundSlideBase
 		base.SetDefaults();
 		Texture = ModAsset.PylonSquare.Value;
 		Distance = 1;
-		UseColorStyle = 1;
+		UseColorStyle = BackgroundColorStyle.TileMap;
 		LayerPriority = 2;
 		Shader = Effects.XWrap_YWrap_Shader;
 	}

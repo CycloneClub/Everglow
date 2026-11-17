@@ -18,7 +18,7 @@ public class PylonSquare_Chain : BackgroundSlideBase
 		base.SetDefaults();
 		Texture = ModAsset.PylonSquare_Chain.Value;
 		Distance = 1;
-		UseColorStyle = 1;
+		UseColorStyle = BackgroundColorStyle.TileMap;
 		LayerPriority = 0;
 		Shader = Effects.XClamp_YWrap_Shader;
 	}

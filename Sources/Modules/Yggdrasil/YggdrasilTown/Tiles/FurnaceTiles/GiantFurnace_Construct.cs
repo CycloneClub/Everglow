@@ -16,7 +16,7 @@ public class GiantFurnace_Construct : BackgroundSlideBase
 		base.SetDefaults();
 		Texture = ModAsset.GiantFurnace_Construct.Value;
 		Distance = 1;
-		UseColorStyle = 1;
+		UseColorStyle = BackgroundColorStyle.TileMap;
 		LayerPriority = 1;
 		Shader = Effects.XWrap_YWrap_Shader;
 

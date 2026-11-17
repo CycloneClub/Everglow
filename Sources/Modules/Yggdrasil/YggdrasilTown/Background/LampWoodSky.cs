@@ -10,7 +10,7 @@ public class LampWoodSky : BackgroundSlideBase
 		base.SetDefaults();
 		Texture = ModAsset.LampWoodSky.Value;
 		Distance = float.PositiveInfinity;
-		UseColorStyle = 2;
+		UseColorStyle = BackgroundColorStyle.White;
 		Shader = Effects.XWrap_YClamp_Shader;
 	}
 

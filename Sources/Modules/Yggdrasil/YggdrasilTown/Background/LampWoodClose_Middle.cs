@@ -10,7 +10,7 @@ public class LampWoodClose_Middle : BackgroundSlideBase
 		base.SetDefaults();
 		Texture = ModAsset.LampWoodClose_Middle.Value;
 		Distance = 6f;
-		UseColorStyle = 2;
+		UseColorStyle = BackgroundColorStyle.White;
 		Shader = Effects.XWrap_YClamp_Shader;
 	}
 

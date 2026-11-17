@@ -10,7 +10,7 @@ public class MidnightBayou_Sky : BackgroundSlideBase
 		base.SetDefaults();
 		Texture = ModAsset.MidnightBayou_Sky.Value;
 		Distance = float.PositiveInfinity;
-		UseColorStyle = 2;
+		UseColorStyle = BackgroundColorStyle.White;
 		Shader = Effects.XWrap_YClamp_Shader;
 	}
 

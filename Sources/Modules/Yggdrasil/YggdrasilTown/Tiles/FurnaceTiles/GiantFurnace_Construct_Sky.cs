@@ -13,7 +13,7 @@ public class GiantFurnace_Construct_Sky : BackgroundSlideBase
 		base.SetDefaults();
 		Texture = ModAsset.GiantFurnace_Construct_Sky.Value;
 		Distance = 3;
-		UseColorStyle = 2;
+		UseColorStyle = BackgroundColorStyle.White;
 		LayerPriority = 1;
 		Shader = Effects.XWrap_YClamp_Shader;
 	}

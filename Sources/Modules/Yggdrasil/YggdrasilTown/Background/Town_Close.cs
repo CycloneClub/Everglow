@@ -9,7 +9,7 @@ public class Town_Close : BackgroundSlideBase
 		base.SetDefaults();
 		Texture = ModAsset.Town_Close.Value;
 		Distance = 6f;
-		UseColorStyle = 2;
+		UseColorStyle = BackgroundColorStyle.White;
 		Shader = Effects.XWrap_YClamp_Shader;
 	}
 

@@ -21,13 +21,7 @@ public abstract class BackgroundSlideBase
 
 	public bool Active = true;
 
-	/// <summary>
-	/// 0 : Sky Color<br/>
-	/// 1 : TileMap Colop<br/>
-	/// 2 : White
-	/// 3 : Glow
-	/// </summary>
-	public int UseColorStyle = 0;
+	public BackgroundColorStyle UseColorStyle = default;
 
 	/// <summary>
 	/// It has higher priority in ordering the layer of backgrounds then <see cref="Distance"/>.<br/>
@@ -106,10 +100,10 @@ public abstract class BackgroundSlideBase
 		Color c = Color.White;
 		switch (bg.UseColorStyle)
 		{
-			case 0:
+			case BackgroundColorStyle.Sky:
 				c = Main.ColorOfTheSkies;
 				break;
-			case 1:
+			case BackgroundColorStyle.TileMap:
 				c = Lighting.GetColor((worldPos + new Vector2(-8)).ToTileCoordinates());
 				break;
 		}

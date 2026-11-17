@@ -10,7 +10,7 @@ public class Town_Sky : BackgroundSlideBase
 		base.SetDefaults();
 		Texture = ModAsset.Town_Sky.Value;
 		Distance = float.PositiveInfinity;
-		UseColorStyle = 2;
+		UseColorStyle = BackgroundColorStyle.White;
 		Shader = Effects.XWrap_YWrap_Shader;
 	}
 

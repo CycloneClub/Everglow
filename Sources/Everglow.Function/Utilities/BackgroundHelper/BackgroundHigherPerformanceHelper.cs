@@ -25,7 +25,7 @@ public static class BackgroundHigherPerformanceHelper
 		List<Vertex2D> bars,
 		int samplingUnit = 1)
 	{
-		if (bg.UseColorStyle != 1)
+		if (bg.UseColorStyle != BackgroundColorStyle.TileMap)
 		{
 			Add_TileBgVertice_NolightMap(bg, tiles, bars);
 			return;
@@ -288,13 +288,13 @@ public static class BackgroundHigherPerformanceHelper
 		Color c = Color.White;
 		switch (bg.UseColorStyle)
 		{
-			case 0:
+			case BackgroundColorStyle.Sky:
 				c = Main.ColorOfTheSkies;
 				break;
-			case 1:
+			case BackgroundColorStyle.TileMap:
 				c = Lighting.GetColor((worldPos + new Vector2(-8)).ToTileCoordinates());
 				break;
-			case 2:
+			case BackgroundColorStyle.White:
 				c = new Color(1f, 1f, 1f, 0);
 				break;
 		}

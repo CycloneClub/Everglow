@@ -13,7 +13,7 @@ public class VampireMatCaveWall : BackgroundSlideBase
 		base.SetDefaults();
 		Texture = ModAsset.VampireMatCaveWall.Value;
 		Distance = 1f;
-		UseColorStyle = 1;
+		UseColorStyle = BackgroundColorStyle.TileMap;
 		LayerPriority = 2;
 		Shader = Effects.XWrap_YClamp_Shader;
 	}

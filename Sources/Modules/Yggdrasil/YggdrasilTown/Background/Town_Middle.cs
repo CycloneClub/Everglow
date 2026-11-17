@@ -10,7 +10,7 @@ public class Town_Middle : BackgroundSlideBase
 		base.SetDefaults();
 		Texture = ModAsset.Town_Middle.Value;
 		Distance = 15f;
-		UseColorStyle = 2;
+		UseColorStyle = BackgroundColorStyle.White;
 		Shader = Effects.XWrap_YWrap_Shader;
 	}
 

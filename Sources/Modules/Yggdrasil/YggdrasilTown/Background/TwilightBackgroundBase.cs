@@ -8,7 +8,7 @@ public abstract class TwilightBackgroundBase : BackgroundSlideBase
 	public override void SetDefaults()
 	{
 		base.SetDefaults();
-		UseColorStyle = 2;
+		UseColorStyle = BackgroundColorStyle.White;
 		Shader = Effects.XWrap_YClamp_Shader;
 	}
 

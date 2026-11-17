@@ -12,7 +12,7 @@ public class IsleOfBloom_Underground_Far : BackgroundSlideBase
 		base.SetDefaults();
 		Texture = ModAsset.IsleOfBloom_Underground_Far.Value;
 		Distance = 2.4f;
-		UseColorStyle = 1;
+		UseColorStyle = BackgroundColorStyle.TileMap;
 		LayerPriority = 2;
 		Shader = Effects.XWrap_YClamp_Shader;
 	}

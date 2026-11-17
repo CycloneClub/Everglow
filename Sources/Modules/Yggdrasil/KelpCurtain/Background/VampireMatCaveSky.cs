@@ -12,7 +12,7 @@ public class VampireMatCaveSky : BackgroundSlideBase
 		base.SetDefaults();
 		Texture = ModAsset.VampireMatCaveSky.Value;
 		Distance = 2.8f;
-		UseColorStyle = 2;
+		UseColorStyle = BackgroundColorStyle.White;
 		LayerPriority = 2;
 		Shader = Effects.XWrap_YClamp_Shader;
 	}

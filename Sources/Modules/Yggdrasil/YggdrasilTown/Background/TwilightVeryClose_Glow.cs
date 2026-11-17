@@ -1,3 +1,5 @@
+using Everglow.Commons.Utilities.BackgroundHelper;
+
 namespace Everglow.Yggdrasil.YggdrasilTown.Background;
 
 public class TwilightVeryClose_Glow : TwilightBackgroundBase
@@ -6,7 +8,7 @@ public class TwilightVeryClose_Glow : TwilightBackgroundBase
 	{
 		base.SetDefaults();
 		Texture = ModAsset.TwilightVeryClose_Glow.Value;
-		UseColorStyle = 3;
+		UseColorStyle = BackgroundColorStyle.Glow;
 		Distance = 2f;
 	}
 }
