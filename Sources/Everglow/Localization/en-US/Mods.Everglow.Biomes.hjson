@@ -14,8 +14,8 @@ FireflyBiome: {
 }
 
 FurnaceAreaBiome: {
-	DisplayName: Yggdrasil Forge
-	TownNPCDialogueName: the Yggdrasil Forge
+	DisplayName: Yggdrasil Furnace Area
+	TownNPCDialogueName: the Yggdrasil Furnace Area
 }
 
 HurricaneMazeBiome: {

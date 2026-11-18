@@ -14,8 +14,8 @@ FireflyBiome: {
 }
 
 FurnaceAreaBiome: {
-	DisplayName: 天穹镇炉心区
-	TownNPCDialogueName: 天穹镇炉心区
+	DisplayName: 炉心区
+	TownNPCDialogueName: 炉心区
 }
 
 HurricaneMazeBiome: {
@@ -44,8 +44,8 @@ LampWoodForest: {
 }
 
 MidnightBayouBiome: {
-	DisplayName: 午夜沼泽
-	TownNPCDialogueName: 午夜沼泽
+	DisplayName: 黑沉沼泽
+	TownNPCDialogueName: 黑沉沼泽
 }
 
 TuskBiome: {
@@ -54,8 +54,8 @@ TuskBiome: {
 }
 
 TuskSurfaceBiome: {
-	DisplayName: 颌骨台地地面
-	TownNPCDialogueName: 颌骨台地地面
+	DisplayName: 颌骨台地地表
+	TownNPCDialogueName: 颌骨台地地表
 }
 
 TwilightForsetAndRelic: {
