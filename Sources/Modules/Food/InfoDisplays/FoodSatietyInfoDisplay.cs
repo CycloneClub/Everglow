@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using Terraria.Localization;
 
 namespace Everglow.Food.InfoDisplays;
 
@@ -14,7 +13,8 @@ public class FoodSatietyInfoDisplay : InfoDisplay
 	{
 		int currentSatiety = Main.LocalPlayer.GetModPlayer<FoodModPlayer>().CurrentSatiety;
 		int level = Main.LocalPlayer.GetModPlayer<FoodModPlayer>().SatietyLevel;
-		return Language.GetTextValue("Mods.Everglow.InfoDisplay.Satiety", currentSatiety, Language.GetTextValue($"Mods.Everglow.InfoDisplay.SatietyLevel.{level}"));
+		string levelText = this.GetLocalization($"SatietyLevel.{level}").Value;
+		return this.GetLocalization("Satiety").Format(currentSatiety, levelText);
 	}
 }
 

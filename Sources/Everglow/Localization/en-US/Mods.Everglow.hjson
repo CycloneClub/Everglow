@@ -8,8 +8,24 @@ Bestiary: {
 Common.Message.HasAwoken: has awoken!
 
 InfoDisplays: {
-	FoodSatietyInfoDisplay.DisplayName: Food Satiety Info Display
-	ThirstystateInfoDisplay.DisplayName: Thirstystate Info Display
+	FoodSatietyInfoDisplay: {
+		DisplayName: Food Satiety Info Display
+		Satiety: "Satiety: {0} ({1})"
+		SatietyLevel: {
+			"-3": Starving
+			"-2": Hungry
+			"-1": Peckish
+			"0": Neutral
+			"1": Well Fed
+			"2": Plenty Satisfied
+			"3": Exquisitely Stuffed
+		}
+	}
+	ThirstystateInfoDisplay: {
+		DisplayName: Thirstystate Info Display
+		Thirsty: Thirsty
+		NotThirsty: Not thirsty
+	}
 }
 
 Prefixes: {

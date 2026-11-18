@@ -11,15 +11,8 @@ internal class ThirstystateInfoDisplay : InfoDisplay
 
 	public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)/* tModPorter Suggestion: Set displayColor to InactiveInfoTextColor if your display value is "zero"/shows no valuable information */
 	{
-		bool Thirstystate = Main.LocalPlayer.GetModPlayer<FoodModPlayer>().Thirstystate;
-		if (Thirstystate)
-		{
-			return Terraria.Localization.Language.GetTextValue("Mods.Everglow.InfoDisplay.Thirsty");
-		}
-		else
-		{
-			return Terraria.Localization.Language.GetTextValue("Mods.Everglow.InfoDisplay.NotThirsty");
-		}
+		bool isThirsty = Main.LocalPlayer.GetModPlayer<FoodModPlayer>().Thirstystate;
+		return this.GetLocalization(isThirsty ? "Thirsty" : "NotThirsty").Value;
 	}
 }
 
