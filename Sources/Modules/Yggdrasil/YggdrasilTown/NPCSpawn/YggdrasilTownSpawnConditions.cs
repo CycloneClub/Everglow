@@ -52,9 +52,11 @@ public static class YggdrasilTownSpawnConditions
 			var strip = new Rectangle(left, y * 16, sample.width, 16);
 			foreach (Player player in Main.ActivePlayers)
 			{
-				var safe = new Rectangle((int)player.Center.X - NPC.sWidth / 2 - NPC.safeRangeX,
+				var safe = new Rectangle(
+					(int)player.Center.X - NPC.sWidth / 2 - NPC.safeRangeX,
 					(int)player.Center.Y - NPC.sHeight / 2 - NPC.safeRangeY,
-					NPC.sWidth + NPC.safeRangeX * 2, NPC.sHeight + NPC.safeRangeY * 2);
+					NPC.sWidth + NPC.safeRangeX * 2,
+					NPC.sHeight + NPC.safeRangeY * 2);
 				if (strip.Intersects(safe))
 				{
 					return maxLift;
