@@ -1,0 +1,13 @@
+Thirsty: Thirsty
+NotThirsty: Not thirsty
+
+Satiety: "Satiety: {0} ({1})"
+SatietyLevel: {
+	"-3": Starving
+	"-2": Hungry
+	"-1": Peckish
+	"0": Neutral
+	"1": Well Fed
+	"2": Plenty Satisfied
+	"3": Exquisitely Stuffed
+}
