@@ -1,7 +1,10 @@
 using Everglow.Commons.Coroutines;
 using Everglow.Commons.Mechanics.Quest.Presentation.Icons;
+using Everglow.Food.Items.ModDrink;
+using Everglow.Food.Items.ModFood;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.TownNPCs;
 using SubworldLibrary;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs;
 
@@ -10,6 +13,8 @@ namespace Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs;
 // Schorl, The Teahouse Lady
 public class TeahouseLady : TownNPC_LiveInYggdrasil, INPCQuestIconFrameProvider
 {
+	private bool showingDialogueActions;
+
 	public bool Attacking0 = false;
 	public int Attack0Target = -1;
 	public int Attack1Target = -1;
@@ -18,6 +23,54 @@ public class TeahouseLady : TownNPC_LiveInYggdrasil, INPCQuestIconFrameProvider
 
 	// The sheet also contains sitting/attack frames and separate arms; the icon loops only walking frames.
 	public Rectangle GetQuestIconFrame(int animationFrame) => new(0, animationFrame % 10 * 56, 48, 56);
+
+	public override void AddShops()
+	{
+		var shop = new NPCShop(Type);
+		shop.Add<EggTart>();
+		shop.Add<CaramelPudding>();
+		shop.Add<CantaloupeJelly>();
+		shop.Add<StrawberryIcecream>();
+		shop.Add<OrangeIcecream>();
+		shop.Add<KiwiIceCream>();
+		shop.Add<OrangeJuice>();
+		shop.Add<KiwiJuice>();
+		shop.Add<WaterMelonJuice>();
+		shop.Register();
+	}
+
+	public override string GetChat()
+	{
+		showingDialogueActions = false;
+		return base.GetChat();
+	}
+
+	public override void SetChatButtons(ref string button, ref string button2)
+	{
+		base.SetChatButtons(ref button, ref button2);
+		if (!showingDialogueActions)
+		{
+			button2 = $"{button} / {button2}";
+			button = Language.GetTextValue("LegacyInterface.28");
+		}
+	}
+
+	public override void OnChatButtonClicked(bool firstButton, ref string shopName)
+	{
+		if (showingDialogueActions)
+		{
+			base.OnChatButtonClicked(firstButton, ref shopName);
+			return;
+		}
+
+		if (firstButton)
+		{
+			shopName = "Shop";
+			return;
+		}
+
+		showingDialogueActions = true;
+	}
 
 	public override void SetStaticDefaults()
 	{

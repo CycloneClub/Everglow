@@ -1,13 +1,68 @@
 using Everglow.Commons.Coroutines;
+using Everglow.Food.Items.ModDrink;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.TownNPCs;
 using SubworldLibrary;
+using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs;
 
 [AutoloadHead]
 public class InnKeeper : TownNPC_LiveInYggdrasil
 {
+	private bool showingDialogueActions;
+
 	public bool Attacking0 = false;
+
+	public override void AddShops()
+	{
+		var shop = new NPCShop(Type);
+		shop.Add<RedWine>();
+		shop.Add<B_52>();
+		shop.Add<BlueHawaii>();
+		shop.Add<DreamYearning>();
+		shop.Add<DryMartini>();
+		shop.Add<GreenStorm>();
+		shop.Add<LonelyJellyfish>();
+		shop.Add<PiercoldWind>();
+		shop.Add<PurpleHooter>();
+		shop.Add<QuinceMarry>();
+		shop.Add<Sunrise>();
+		shop.Add<Tricolour>();
+		shop.Register();
+	}
+
+	public override string GetChat()
+	{
+		showingDialogueActions = false;
+		return base.GetChat();
+	}
+
+	public override void SetChatButtons(ref string button, ref string button2)
+	{
+		base.SetChatButtons(ref button, ref button2);
+		if (!showingDialogueActions)
+		{
+			button2 = $"{button} / {button2}";
+			button = Language.GetTextValue("LegacyInterface.28");
+		}
+	}
+
+	public override void OnChatButtonClicked(bool firstButton, ref string shopName)
+	{
+		if (showingDialogueActions)
+		{
+			base.OnChatButtonClicked(firstButton, ref shopName);
+			return;
+		}
+
+		if (firstButton)
+		{
+			shopName = "Shop";
+			return;
+		}
+
+		showingDialogueActions = true;
+	}
 
 	public override void SetStaticDefaults()
 	{
