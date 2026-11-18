@@ -80,7 +80,6 @@ LampWoodPiano.MapEntry: "{$Mods.Everglow.Items.Placeables.LampWoodPiano.DisplayN
 LampWoodSink.MapEntry: "{$Mods.Everglow.Items.Placeables.LampWoodSink.DisplayName}"
 LampWoodSofa.MapEntry: "{$Mods.Everglow.Items.Placeables.LampWoodSofa.DisplayName}"
 LampWoodTable.MapEntry: "{$Mods.Everglow.Items.Placeables.LampWoodTable.DisplayName}"
-LiftLamp.MapEntry: Lift Lamp
 MailBox.MapEntry0: "{$Mods.Everglow.Items.Placeables.MailBox_Item.DisplayName}"
 MossyChest.MapEntry0: 苔藓宝箱
 MothWorldDoor.MapEntry: Moth World Door

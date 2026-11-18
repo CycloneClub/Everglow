@@ -30,9 +30,6 @@ AdvancedMirror: {
 		SurfaceGreen: "Surface G"
 		SurfaceBlue: "Surface B"
 		SurfaceOpacity: "Surface opacity"
-		ReflectionRed: "Reflection R"
-		ReflectionGreen: "Reflection G"
-		ReflectionBlue: "Reflection B"
 		ReflectionOpacity: "Reflection strength"
 		Flip: "Flip entire foreground"
 		On: "On"
@@ -114,8 +111,7 @@ GiveItemQuestTest: {
 
 TestCooldown: {
 	DisplayName: Test Cooldown
-	Description: ""
-	Tooltip: This is a test cooldown for demonstration purposes.
+	Description: This is a test cooldown for demonstration purposes.
 }
 
 TestCooldown2: {
@@ -142,8 +138,6 @@ ElementalResistanceReductionDebuffTest: {
 	DisplayName: Elemental Resistance Reduction Debuff Test
 	Description: ""
 }
-
-OverrideRegistryTestNPC.DisplayName: Override Registry TestNPC
 
 TestSkeletonOwl: {
 	DisplayName: Test Skeleton Owl

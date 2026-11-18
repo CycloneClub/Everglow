@@ -36,8 +36,8 @@ MirrorReflectionQuality: {
 	High.Label: High
 }
 
-EverglowClientConfig: {
-	DisplayName: Everglow Client Config
+AssetReplaceConfig: {
+	DisplayName: Asset Replacement
 
 	Headers: {
 		AudioReplace: Audio Replace Header
@@ -51,11 +51,6 @@ EverglowClientConfig: {
 
 	TextureReplace: {
 		Label: Texture Replace
-		Tooltip: ""
-	}
-
-	TuskAudioReplace: {
-		Label: Tusk Audio Replace
 		Tooltip: ""
 	}
 }
@@ -155,10 +150,4 @@ TextureReplaceMode: {
 	Everglow.Label: Everglow
 	Myth.Label: Myth
 	Terraria.Label: Terraria
-}
-
-TuskAudioReplaceMode: {
-	Tooltip: ""
-	OldTuskFighting.Label: Old Tusk Fighting
-	TuskFighting.Label: Tusk Fighting
 }

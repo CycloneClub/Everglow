@@ -591,11 +591,6 @@ TwilightEucalyptusCuffSickle: {
 	Tooltip: ""
 }
 
-TwilightShamanStaff: {
-	DisplayName: Twilight Shaman Staff
-	Tooltip: ""
-}
-
 VegetationBayonet: {
 	DisplayName: Vegetation Bayonet
 	Tooltip: ""

@@ -47,31 +47,6 @@ FadedRitualCloth: {
 	Tooltip: ""
 }
 
-HollowLampFruitShell: {
-	DisplayName: Hollow Lamp Fruit Shell
-	Tooltip: ""
-}
-
-KnottedOldRope: {
-	DisplayName: Knotted Old Rope
-	Tooltip: ""
-}
-
-LeakingCrystalShell: {
-	DisplayName: Leaking Crystal Shell
-	Tooltip: ""
-}
-
-TwilightFeatherfish: {
-	DisplayName: Twilight Featherfish
-	Tooltip: ""
-}
-
-WaterloggedMenu: {
-	DisplayName: Waterlogged Menu
-	Tooltip: ""
-}
-
 Duskfin: {
 	DisplayName: Twilight Featherfish
 	Tooltip: ""

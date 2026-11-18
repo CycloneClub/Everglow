@@ -30,9 +30,6 @@ AdvancedMirror: {
 		SurfaceGreen: "底色 G"
 		SurfaceBlue: "底色 B"
 		SurfaceOpacity: "底色不透明度"
-		ReflectionRed: "倒影 R"
-		ReflectionGreen: "倒影 G"
-		ReflectionBlue: "倒影 B"
 		ReflectionOpacity: "倒影强度"
 		Flip: "前景整体左右翻转"
 		On: "开启"
@@ -114,8 +111,7 @@ GiveItemQuestTest: {
 
 TestCooldown: {
 	DisplayName: 测试冷却
-	Description: ""
-	Tooltip: 测试用
+	Description: 测试用
 }
 
 TestCooldown2: {
@@ -142,8 +138,6 @@ ElementalResistanceReductionDebuffTest: {
 	DisplayName: 元素抗性降低
 	Description: ""
 }
-
-OverrideRegistryTestNPC.DisplayName: Override Registry TestNPC
 
 TestSkeletonOwl: {
 	DisplayName: Test Skeleton Owl

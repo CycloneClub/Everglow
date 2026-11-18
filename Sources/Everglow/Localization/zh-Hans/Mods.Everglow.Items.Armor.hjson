@@ -539,16 +539,6 @@ EldamberBreastplate: {
 	Tooltip: 所有伤害提高{0}%
 }
 
-EldamberHelmet: {
-	DisplayName: 古珀头盔
-	Tooltip:
-		'''
-		魔法伤害提高{0}%
-		魔力上限增加{1}
-		'''
-	SetBonus: 魔力消耗降低{0}%
-}
-
 EldamberWarhelm: {
 	DisplayName: 古珀战盔
 	Tooltip: 近战伤害提高{0}%

@@ -1516,11 +1516,6 @@ YggdrasilStoneGyroscopeBuff: {
 	Description: 用鞭子抽打陀螺可以充能
 }
 
-JumpBuff: {
-	DisplayName: 跳跃
-	Description: 提高跳跃高度
-}
-
 JumpPotionBuff: {
 	DisplayName: 跳跃
 	Description: 跳跃高度提高20%，摔落伤害降低25%

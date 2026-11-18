@@ -413,18 +413,8 @@ DarkLakeBottomMud_Item: {
 	Tooltip: ""
 }
 
-DarklakeBottomMud_Item: {
-	DisplayName: Darklake Bottom Mud_ Item
-	Tooltip: ""
-}
-
 DarkLakeBottomMudWall_Item: {
 	DisplayName: Dark Lake Bottom Mud Wall
-	Tooltip: ""
-}
-
-DarkSludge_Item: {
-	DisplayName: Dark Sludge_ Item
 	Tooltip: ""
 }
 
@@ -1138,11 +1128,6 @@ HydraMud_Item: {
 	Tooltip: ""
 }
 
-IronTrackScaffolding: {
-	DisplayName: Iron Track Scaffolding
-	Tooltip: ""
-}
-
 IronTrackScaffolding_Item: {
 	DisplayName: Iron Track Scaffolding_ Item
 	Tooltip: ""
@@ -1358,16 +1343,6 @@ LesionElevator_Item: {
 	Tooltip: ""
 }
 
-LiftLamp: {
-	DisplayName: Lift Lamp
-	Tooltip: ""
-}
-
-LiftWinch: {
-	DisplayName: Lift Winch
-	Tooltip: ""
-}
-
 LightbulbBand_Item: {
 	DisplayName: Lightbulb Band_item
 	Tooltip: ""
@@ -1433,11 +1408,6 @@ MeltingButton_Item: {
 	Tooltip: ""
 }
 
-MeltingInputBox_Item: {
-	DisplayName: Melting Input Box_ Item
-	Tooltip: ""
-}
-
 MeteoriteElevator_Indicator_Lamp_Item: {
 	DisplayName: Meteorite Elevator_ Indicator_ Lamp_ Item
 	Tooltip: ""
@@ -1468,23 +1438,8 @@ MetroStationSign_YggdrasilTown_Item: {
 	Tooltip: ""
 }
 
-MissionBoard_Item: {
-	DisplayName: Mission Board_ Item
-	Tooltip: ""
-}
-
-MissionCounter_Item: {
-	DisplayName: Mission Counter_ Item
-	Tooltip: ""
-}
-
 MorphoFrame_Item: {
 	DisplayName: Morpho Frame_ Item
-	Tooltip: ""
-}
-
-MossProneSandSoil: {
-	DisplayName: Moss Prone Sand Soil
 	Tooltip: ""
 }
 
@@ -1548,11 +1503,6 @@ ObsidianElevator_Item: {
 	Tooltip: ""
 }
 
-OldMoss: {
-	DisplayName: Old Moss
-	Tooltip: ""
-}
-
 OldMoss_Item: {
 	DisplayName: Old Moss
 	Tooltip: ""
@@ -1588,18 +1538,8 @@ PierWithSlabs: {
 	Tooltip: ""
 }
 
-PierWithSlabsTop: {
-	DisplayName: Pier With Slabs Top
-	Tooltip: ""
-}
-
 PierWithSlabsTop_Item: {
 	DisplayName: Pier With Slabs Top_ Item
-	Tooltip: ""
-}
-
-PineLiftWinch: {
-	DisplayName: Pine Lift Winch
 	Tooltip: ""
 }
 
@@ -1711,11 +1651,6 @@ RoomBlackBox_Item: {
 RubyDarkGoldChest_BloodyChurch_Item: {
 	DisplayName: Ruby Dark Gold Chest_ Bloody Church_ Item
 	Tooltip: ""
-}
-
-RuinTorch: {
-	DisplayName: Ruin Torch
-	Tooltip: Illuminates the surrounding area
 }
 
 RuinTorch_Item: {
@@ -2275,11 +2210,6 @@ VampireMatCave_BoardSign_Item: {
 
 VampireMatCave_HangingSign_Item: {
 	DisplayName: Vampire Mat Cave_ Hanging Sign_ Item
-	Tooltip: ""
-}
-
-VFXPersonItem: {
-	DisplayName: VFXPerson Item
 	Tooltip: ""
 }
 

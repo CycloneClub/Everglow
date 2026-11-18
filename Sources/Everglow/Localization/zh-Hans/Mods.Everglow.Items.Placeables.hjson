@@ -425,18 +425,8 @@ DarkLakeBottomMud_Item: {
 	Tooltip: ""
 }
 
-DarklakeBottomMud_Item: {
-	DisplayName: 暗湖底泥
-	Tooltip: ""
-}
-
 DarkLakeBottomMudWall_Item: {
 	DisplayName: 暗湖底泥墙
-	Tooltip: ""
-}
-
-DarkSludge_Item: {
-	DisplayName: 黑沼泥
 	Tooltip: ""
 }
 
@@ -1158,11 +1148,6 @@ HydraMud_Item: {
 	Tooltip: ""
 }
 
-IronTrackScaffolding: {
-	DisplayName: 铁支架
-	Tooltip: ""
-}
-
 IronTrackScaffolding_Item: {
 	DisplayName: Iron Track Scaffolding_ Item
 	Tooltip: ""
@@ -1378,16 +1363,6 @@ LesionElevator_Item: {
 	Tooltip: ""
 }
 
-LiftLamp: {
-	DisplayName: 电梯灯
-	Tooltip: ""
-}
-
-LiftWinch: {
-	DisplayName: 电梯绞盘
-	Tooltip: ""
-}
-
 LightbulbBand_Item: {
 	DisplayName: 灯泡灯带
 	Tooltip:
@@ -1461,11 +1436,6 @@ MeltingButton_Item: {
 	Tooltip: 按下后把熔料收纳箱的物体销毁，转化为热能并记录贡献点
 }
 
-MeltingInputBox_Item: {
-	DisplayName: 熔料收纳箱
-	Tooltip: ""
-}
-
 MeteoriteElevator_Indicator_Lamp_Item: {
 	DisplayName: Meteorite Elevator_ Indicator_ Lamp_ Item
 	Tooltip: ""
@@ -1496,23 +1466,8 @@ MetroStationSign_YggdrasilTown_Item: {
 	Tooltip: ""
 }
 
-MissionBoard_Item: {
-	DisplayName: 任务悬赏板
-	Tooltip: ""
-}
-
-MissionCounter_Item: {
-	DisplayName: 任务柜台
-	Tooltip: ""
-}
-
 MorphoFrame_Item: {
 	DisplayName: Morpho Frame_ Item
-	Tooltip: ""
-}
-
-MossProneSandSoil: {
-	DisplayName: 苔基砂土
 	Tooltip: ""
 }
 
@@ -1576,11 +1531,6 @@ ObsidianElevator_Item: {
 	Tooltip: ""
 }
 
-OldMoss: {
-	DisplayName: 古苔
-	Tooltip: ""
-}
-
 OldMoss_Item: {
 	DisplayName: 古苔藓
 	Tooltip: ""
@@ -1616,18 +1566,8 @@ PierWithSlabs: {
 	Tooltip: ""
 }
 
-PierWithSlabsTop: {
-	DisplayName: 石板石墩顶
-	Tooltip: ""
-}
-
 PierWithSlabsTop_Item: {
 	DisplayName: Pier With Slabs Top_ Item
-	Tooltip: ""
-}
-
-PineLiftWinch: {
-	DisplayName: 松树电梯
 	Tooltip: ""
 }
 
@@ -1747,11 +1687,6 @@ RoomBlackBox_Item: {
 RubyDarkGoldChest_BloodyChurch_Item: {
 	DisplayName: Ruby Dark Gold Chest_ Bloody Church_ Item
 	Tooltip: ""
-}
-
-RuinTorch: {
-	DisplayName: 遗迹火把
-	Tooltip: 照亮周围区域
 }
 
 RuinTorch_Item: {
@@ -2311,11 +2246,6 @@ VampireMatCave_BoardSign_Item: {
 
 VampireMatCave_HangingSign_Item: {
 	DisplayName: Vampire Mat Cave_ Hanging Sign_ Item
-	Tooltip: ""
-}
-
-VFXPersonItem: {
-	DisplayName: VFXPerson Item
 	Tooltip: ""
 }
 

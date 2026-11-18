@@ -1,9 +1,4 @@
 FireflyItems: {
-	FFBBadge0: While the Corrupt Moth is present:
-	FFBBadge1: Defense reduced by 20%, up to 10
-	FFBBadge2: 12% increased damage
-	FFBBadge3: 8% increased melee and whip attack speed
-	FFBBadge4: Positive base melee and whip critical strike chances are reduced to zero
 	MEyeBonusTextGlowSword0: Increases the size of the glowing projectiles
 	MEyeBonusTextGlowSword1: 5% increased weapon damage
 	MEyeBonusTextMothBlade: Butterfly projectiles accelerate toward their targets
@@ -15,12 +10,6 @@ FireflyItems: {
 	MEyeBonusTextMothGun1: Firing does not push the player backward
 	MEyeBonusTextMothYoyo: Creates eight additional orbiting projectiles with a wider range
 	MothEyeBonusText: Moth Eye bonus:
-	MothEyeCriteriaText: Additional effects awaken here in Hardmode
-	MothEyeText0: Additional effects are active in the Firefly biome during Hardmode
-	MothEyeText1: 5% increased damage with Firefly weapons
-	MothEyeText2: 5% reduced mana cost
-	MothEyeText3: Reduces the effect of Mana Sickness
-	MothEyeText4: Grants additional effects to certain Firefly weapons
 }
 
 Misc.UnfinishedItem: This item is still under development

@@ -47,31 +47,6 @@ FadedRitualCloth: {
 	Tooltip: ""
 }
 
-HollowLampFruitShell: {
-	DisplayName: 蛀空的灯果壳
-	Tooltip: ""
-}
-
-KnottedOldRope: {
-	DisplayName: 打死结的旧绳团
-	Tooltip: ""
-}
-
-LeakingCrystalShell: {
-	DisplayName: 漏光的空晶壳
-	Tooltip: ""
-}
-
-TwilightFeatherfish: {
-	DisplayName: 暮翎鱼
-	Tooltip: ""
-}
-
-WaterloggedMenu: {
-	DisplayName: 泡烂的点菜单
-	Tooltip: ""
-}
-
 Duskfin: {
 	DisplayName: 暮翎鱼
 	Tooltip: ""

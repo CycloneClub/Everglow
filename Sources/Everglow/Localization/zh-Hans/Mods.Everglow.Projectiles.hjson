@@ -89,7 +89,6 @@ CactusBallSpike.DisplayName: "{$Mods.Everglow.Projectiles.Melee.CactusBallSpike.
 CactusClub_Smash.DisplayName: "{$Mods.Everglow.Projectiles.Melee.CactusClub_Smash.DisplayName}"
 CactusClub.DisplayName: "{$Mods.Everglow.Projectiles.Melee.CactusClub.DisplayName}"
 CactusSlingShot.DisplayName: "{$Mods.Everglow.Projectiles.Ranged.CactusSlingShot.DisplayName}"
-CheeseYoyo_proj.DisplayName: Cheese Yoyo_proj
 CheeseYoyo.DisplayName: "{$Mods.Everglow.Projectiles.Melee.CheeseYoyo.DisplayName}"
 ChlorophyteClub_Fly_2.DisplayName: "{$Mods.Everglow.Projectiles.Melee.ChlorophyteClub_Fly_2.DisplayName}"
 ChlorophyteClub_Fly.DisplayName: "{$Mods.Everglow.Projectiles.Melee.ChlorophyteClub_Fly.DisplayName}"
@@ -151,10 +150,6 @@ CylindricalLantern_Flame.DisplayName: "{$Mods.Everglow.Projectiles.Enemies.Cylin
 DarkFan.DisplayName: "{$Mods.Everglow.Projectiles.Melee.DarkFan.DisplayName}"
 DarkFanFly.DisplayName: "{$Mods.Everglow.Projectiles.Summon.DarkFanFly.DisplayName}"
 DarkFlower_Proj.DisplayName: "{$Mods.Everglow.Projectiles.Magic.DarkFlower_Proj.DisplayName}"
-DarkLantern.DisplayName: Dark Lantern
-DarkLantern3.DisplayName: Dark Lantern3
-DarkLanternBomb2.DisplayName: Dark Lantern Bomb2
-DarkLanternBombExplosion_II.DisplayName: Dark Lantern Bomb Explosion_ I I
 DarkLanternBombExplosion.DisplayName: "{$Mods.Everglow.Projectiles.Enemies.DarkLanternBombExplosion.DisplayName}"
 DarkMassacreDagger_Projectile.DisplayName: "{$Mods.Everglow.Projectiles.Melee.DarkMassacreDagger_Projectile.DisplayName}"
 DashingLightEff.DisplayName: "{$Mods.Everglow.Projectiles.Melee.DashingLightEff.DisplayName}"
@@ -199,7 +194,6 @@ ExampleClubSmash.DisplayName: "{$Mods.Everglow.Projectiles.Melee.ExampleClubSmas
 ExampleEverglowYoyo_Projectile.DisplayName: "{$Mods.Everglow.Projectiles.Melee.ExampleEverglowYoyo_Projectile.DisplayName}"
 ExampleMeleeProjectile.DisplayName: "{$Mods.Everglow.Projectiles.Melee.ExampleMeleeProjectile.DisplayName}"
 ExampleTrailingProjectile.DisplayName: "{$Mods.Everglow.Projectiles.Miscs.ExampleTrailingProjectile.DisplayName}"
-ExplosiveLantern.DisplayName: Explosive Lantern
 Fae.DisplayName: "{$Mods.Everglow.Projectiles.Summon.Fae.DisplayName}"
 FallenDropFruit.DisplayName: "{$Mods.Everglow.Projectiles.Miscs.FallenDropFruit.DisplayName}"
 FanHit.DisplayName: "{$Mods.Everglow.Projectiles.Miscs.FanHit.DisplayName}"
@@ -232,9 +226,6 @@ FixCoinSpeed2.DisplayName: "{$Mods.Everglow.Projectiles.Miscs.FixCoinSpeed2.Disp
 FixCoinSpeed3.DisplayName: "{$Mods.Everglow.Projectiles.Miscs.FixCoinSpeed3.DisplayName}"
 FlameCylinder.DisplayName: "{$Mods.Everglow.Projectiles.Miscs.FlameCylinder.DisplayName}"
 FlameShoot.DisplayName: "{$Mods.Everglow.Projectiles.Magic.FlameShoot.DisplayName}"
-FloatLantern_style2.DisplayName: Float Lantern_style2
-FloatLantern_style3.DisplayName: Float Lantern_style3
-FloatLantern_style4.DisplayName: Float Lantern_style4
 FlowerPetalPurple.DisplayName: "{$Mods.Everglow.Projectiles.Typeless.FlowerPetalPurple.DisplayName}"
 FlowLightMissile.DisplayName: "{$Mods.Everglow.Projectiles.Magic.FlowLightMissile.DisplayName}"
 FocusRay.DisplayName: "{$Mods.Everglow.Projectiles.Melee.FocusRay.DisplayName}"
@@ -420,7 +411,6 @@ PineSprite.DisplayName: "{$Mods.Everglow.Projectiles.Summon.PineSprite.DisplayNa
 PinkFlame0.DisplayName: "{$Mods.Everglow.Projectiles.Bosses.PinkFlame0.DisplayName}"
 PinkFlame0Little.DisplayName: "{$Mods.Everglow.Projectiles.Bosses.PinkFlame0Little.DisplayName}"
 PlanetBeFall_Proj.DisplayName: "{$Mods.Everglow.Projectiles.Melee.PlanetBeFall_Proj.DisplayName}"
-PlanetBeFall.DisplayName: Planet Be Fall
 PlanetBefallArray.DisplayName: "{$Mods.Everglow.Projectiles.Melee.PlanetBefallArray.DisplayName}"
 PlanetBefallExplosion.DisplayName: "{$Mods.Everglow.Projectiles.Melee.PlanetBefallExplosion.DisplayName}"
 PlatinumClub_Smash.DisplayName: "{$Mods.Everglow.Projectiles.Melee.PlatinumClub_Smash.DisplayName}"
@@ -530,7 +520,6 @@ ToothMagicSplit2.DisplayName: "{$Mods.Everglow.Projectiles.Magic.ToothMagicSplit
 ToothSpear_Proj.DisplayName: "{$Mods.Everglow.Projectiles.Melee.ToothSpear_Proj.DisplayName}"
 TopazBead.DisplayName: "{$Mods.Everglow.Projectiles.Ranged.TopazBead.DisplayName}"
 TopazSlingshot.DisplayName: "{$Mods.Everglow.Projectiles.Ranged.TopazSlingshot.DisplayName}"
-TrailProjectile.DisplayName: Trail Projectile
 TsunamiShark_Bullet_Hit.DisplayName: "{$Mods.Everglow.Projectiles.Ranged.TsunamiShark_Bullet_Hit.DisplayName}"
 TsunamiShark_Bullet.DisplayName: "{$Mods.Everglow.Projectiles.Ranged.TsunamiShark_Bullet.DisplayName}"
 TsunamiShark_Flame.DisplayName: "{$Mods.Everglow.Projectiles.Ranged.TsunamiShark_Flame.DisplayName}"

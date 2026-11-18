@@ -139,11 +139,6 @@ Doubanjiang: {
 	Tooltip: "{$Mods.Everglow.Items.Materials.Doubanjiang.Tooltip}"
 }
 
-DragonScaleWoodWall: {
-	DisplayName: Dragon Scale Wood Wall
-	Tooltip: ""
-}
-
 DreamYearning: {
 	DisplayName: "{$Mods.Everglow.Items.Miscs.DreamYearning.DisplayName}"
 	Tooltip: "{$Mods.Everglow.Items.Miscs.DreamYearning.Tooltip}"
@@ -494,11 +489,6 @@ RedWine: {
 	Tooltip: "{$Mods.Everglow.Items.Miscs.RedWine.Tooltip}"
 }
 
-Relic_SquamousShell: {
-	DisplayName: Relic_ Squamous Shell
-	Tooltip: ""
-}
-
 ResetTheYggdrasilTown: {
 	DisplayName: "{$Mods.Everglow.Items.Tools.ResetTheYggdrasilTown.DisplayName}"
 	Tooltip: "{$Mods.Everglow.Items.Tools.ResetTheYggdrasilTown.Tooltip}"
@@ -552,11 +542,6 @@ SoundIDPlayItem: {
 SpicyPepperRing: {
 	DisplayName: "{$Mods.Everglow.Items.Materials.SpicyPepperRing.DisplayName}"
 	Tooltip: "{$Mods.Everglow.Items.Materials.SpicyPepperRing.Tooltip}"
-}
-
-SpicyShield: {
-	DisplayName: Spicy Shield
-	Tooltip: ""
 }
 
 Spinach: {
@@ -629,11 +614,6 @@ TomatoPieces: {
 	Tooltip: "{$Mods.Everglow.Items.Materials.TomatoPieces.Tooltip}"
 }
 
-TreasureBag_SquamousShell: {
-	DisplayName: Treasure Bag_ Squamous Shell
-	Tooltip: ""
-}
-
 TreePlacer: {
 	DisplayName: "{$Mods.Everglow.Items.Tools.TreePlacer.DisplayName}"
 	Tooltip: "{$Mods.Everglow.Items.Tools.TreePlacer.Tooltip}"
@@ -642,11 +622,6 @@ TreePlacer: {
 Tricolour: {
 	DisplayName: "{$Mods.Everglow.Items.Miscs.Tricolour.DisplayName}"
 	Tooltip: "{$Mods.Everglow.Items.Miscs.Tricolour.Tooltip}"
-}
-
-Trophy_SquamousShell: {
-	DisplayName: Trophy_ Squamous Shell
-	Tooltip: ""
 }
 
 TuskMirror: {
