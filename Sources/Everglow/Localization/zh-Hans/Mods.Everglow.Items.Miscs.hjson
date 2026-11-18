@@ -4,7 +4,7 @@ ArcticshellfishWarship: {
 }
 
 B_52: {
-	DisplayName: B_52
+	DisplayName: B-52
 	Tooltip: ""
 }
 
@@ -44,7 +44,7 @@ CrabseedWarship: {
 }
 
 DessertBag_Snow: {
-	DisplayName: Dessert Bag_ Snow
+	DisplayName: 冰雪甜点袋
 	Tooltip: ""
 }
 

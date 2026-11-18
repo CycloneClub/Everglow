@@ -1,16 +1,16 @@
 AmberBall.DisplayName: Amber Ball
-AmberLiquidProj_Explosion.DisplayName: Amber Liquid Proj_ Explosion
+AmberLiquidProj_Explosion.DisplayName: 琥珀液·爆炸
 AmberLiquidProj.DisplayName: Amber Liquid Proj
 AmberMagicOrb.DisplayName: Amber Magic Orb
 AncientSyringe_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.AncientSyringe.DisplayName}"
 BacterialAgent_Explosion.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.BacterialAgent.DisplayName}"
 BacterialAgent_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.BacterialAgent.DisplayName}"
 BlackHole.DisplayName: Black Hole
-BloodySwamp_Area.DisplayName: Bloody Swamp_area
-BloodySwamp_Shoot_Area.DisplayName: Bloody Swamp_shoot_area
-BloodySwamp_Shoot.DisplayName: Bloody Swamp_shoot
+BloodySwamp_Area.DisplayName: 浸血泥沼·影响范围
+BloodySwamp_Shoot_Area.DisplayName: 浸血泥沼·射击范围
+BloodySwamp_Shoot.DisplayName: 浸血泥沼·射击
 BlueMissilFriendly.DisplayName: Blue Missil Friendly
-BoneFeather_Spine.DisplayName: Bone Feather_spine
+BoneFeather_Spine.DisplayName: 骨羽·尖骨
 BoneFeather.DisplayName: Bone Feather
 BoneFeatherMagicArray.DisplayName: Bone Feather Magic Array
 BoneFeatherMagicBook.DisplayName: Bone Feather Magic Book
@@ -18,16 +18,16 @@ BoneShoot.DisplayName: Bone Shoot
 BoneSpike.DisplayName: Bone Spike
 BookofSkullsArray.DisplayName: Bookof Skulls Array
 BookofSkullsBook.DisplayName: Bookof Skulls Book
-BronzeLotusLamp_Blossom.DisplayName: Bronze Lotus Lamp_ Blossom
-BronzeLotusLamp_Flame.DisplayName: Bronze Lotus Lamp_ Flame
-BronzeLotusLamp_SubBlossom.DisplayName: Bronze Lotus Lamp_ Sub Blossom
-BronzeLotusLamp_Weapon.DisplayName: Bronze Lotus Lamp_weapon
+BronzeLotusLamp_Blossom.DisplayName: 青铜莲花灯·莲花
+BronzeLotusLamp_Flame.DisplayName: 青铜莲花灯·火焰
+BronzeLotusLamp_SubBlossom.DisplayName: 青铜莲花灯·副花
+BronzeLotusLamp_Weapon.DisplayName: 青铜莲花灯
 CorruptDust.DisplayName: Corrupt Dust
-CreamChocolateCup_ChocolateBars.DisplayName: Cream Chocolate Cup_ Chocolate Bars
-CreamChocolateCup_CreamFlow.DisplayName: Cream Chocolate Cup_ Cream Flow
-CreamChocolateCupStaff_Proj_Held.DisplayName: Cream Chocolate Cup Staff_proj_held
-CreamChocolateCupStaff_Proj_RightClick.DisplayName: Cream Chocolate Cup Staff_proj_right Click
-CreamChocolateCupStaff_Proj.DisplayName: Cream Chocolate Cup Staff_proj
+CreamChocolateCup_ChocolateBars.DisplayName: 奶油巧克力杯·巧克力棒
+CreamChocolateCup_CreamFlow.DisplayName: 奶油巧克力杯·奶油流
+CreamChocolateCupStaff_Proj_Held.DisplayName: 奶油巧克力杯法杖·手持
+CreamChocolateCupStaff_Proj_RightClick.DisplayName: 奶油巧克力杯法杖·副攻击
+CreamChocolateCupStaff_Proj.DisplayName: 奶油巧克力杯法杖
 CrystalExplosion.DisplayName: Crystal Explosion
 CrystalStormArray.DisplayName: Crystal Storm Array
 CrystalStormBook.DisplayName: Crystal Storm Book
@@ -39,10 +39,10 @@ CursedFlameHit.DisplayName: Cursed Flame Hit
 CursedFlamesArray.DisplayName: Cursed Flames Array
 CursedFlamesBook.DisplayName: Cursed Flames Book
 CursedFlamesII.DisplayName: Cursed Flames I I
-CyanVineStaff_Proj_Explosion.DisplayName: Cyan Vine Staff_proj_ Explosion
-CyanVineStaff_Proj_Shoot.DisplayName: Cyan Vine Staff_proj_shoot
-CyanVineStaff_Proj.DisplayName: Cyan Vine Staff_proj
-DarkFlower_Proj.DisplayName: Dark Flower_ Proj
+CyanVineStaff_Proj_Explosion.DisplayName: 青缎杖·爆炸
+CyanVineStaff_Proj_Shoot.DisplayName: 青缎杖·射击
+CyanVineStaff_Proj.DisplayName: 青缎杖
+DarkFlower_Proj.DisplayName: 暗之花
 DemoHit.DisplayName: Demo Hit
 DemonScytheArray.DisplayName: Demon Scythe Array
 DemonScytheBook.DisplayName: Demon Scythe Book
@@ -51,20 +51,20 @@ DemonScythePlusCrack.DisplayName: Demon Scythe Plus Crack
 DevilHeartStaff_Proj_II.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.DevilHeartStaff.DisplayName}"
 DevilHeartStaff_Proj_Kill.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.DevilHeartStaff.DisplayName}"
 DevilHeartStaff_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.DevilHeartStaff.DisplayName}"
-DreamWeaver_Proj.DisplayName: Dream Weaver_proj
-DreamWeaver_Rain.DisplayName: Dream Weaver_ Rain
+DreamWeaver_Proj.DisplayName: 织梦丝雨
+DreamWeaver_Rain.DisplayName: 织梦丝雨·骤雨
 DreamWeaverBall.DisplayName: Dream Weaver Ball
 DreamWeaverBook.DisplayName: Dream Weaver Book
 DreamWeaverII.DisplayName: Dream Weaver I I
 EmptyWaterStaff_Proj_Bubble.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.EmptyWaterStaff.DisplayName}"
 EmptyWaterStaff_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.EmptyWaterStaff.DisplayName}"
-EyeOfAnabiosis_MagicCircleBack.DisplayName: Eye Of Anabiosis_ Magic Circle Back
-EyeOfAnabiosis_MagicCircleFront.DisplayName: Eye Of Anabiosis_ Magic Circle Front
-EyeOfAnabiosis_Matrix.DisplayName: Eye Of Anabiosis_ Matrix
-EyeOfAnabiosis_Projectile.DisplayName: Eye Of Anabiosis_ Projectile
-EyeOfAnabiosis_Weapon.DisplayName: Eye Of Anabiosis_ Weapon
-FeatheredStaff_Break.DisplayName: Feathered Staff_break
-FeatheredStaff_Staff.DisplayName: Feathered Staff_staff
+EyeOfAnabiosis_MagicCircleBack.DisplayName: 隐生之眼·后方法阵
+EyeOfAnabiosis_MagicCircleFront.DisplayName: 隐生之眼·前方法阵
+EyeOfAnabiosis_Matrix.DisplayName: 隐生之眼·法阵
+EyeOfAnabiosis_Projectile.DisplayName: 隐生之眼
+EyeOfAnabiosis_Weapon.DisplayName: 隐生之眼
+FeatheredStaff_Break.DisplayName: 羽鳍杖·碎片
+FeatheredStaff_Staff.DisplayName: 羽鳍杖·杖身
 FeatheredStaff.DisplayName: Feathered Staff
 FireFeather.DisplayName: Fire Feather
 FireFeatherMagicArray.DisplayName: Fire Feather Magic Array
@@ -79,8 +79,8 @@ FrostBall.DisplayName: Frost Ball
 FrostBomb.DisplayName: Frost Bomb
 GiantBoneFeather.DisplayName: Giant Bone Feather
 GiantBoneFeatherExplosion.DisplayName: Giant Bone Feather Explosion
-GiantDandelion_Boulder.DisplayName: Giant Dandelion_ Boulder
-GiantDandelion_Shockwave.DisplayName: Giant Dandelion_ Shockwave
+GiantDandelion_Boulder.DisplayName: 巨树人·巨石
+GiantDandelion_Shockwave.DisplayName: 巨树人·冲击波
 GiantFireFeather.DisplayName: Giant Fire Feather
 GiantFireFeatherExplosion.DisplayName: Giant Fire Feather Explosion
 GiantFreezeFeather.DisplayName: Giant Freeze Feather
@@ -96,24 +96,24 @@ GreenSungloShield_B.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.GreenSungl
 GreenSungloSpore.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.GreenSungloStaff.DisplayName}"
 GreenSungloThorns.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.GreenSungloStaff.DisplayName}"
 HandheldCircularSaw_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Melee.HandheldCircularSaw.DisplayName}"
-HexaCrystalStaff_Proj.DisplayName: Hexa Crystal Staff_ Proj
-HexaCrystalStaff_ProjExplosion.DisplayName: Hexa Crystal Staff_ Proj Explosion
-HexaCrystalStaff_SubProj.DisplayName: Hexa Crystal Staff_ Sub Proj
+HexaCrystalStaff_Proj.DisplayName: 六棱石花杖
+HexaCrystalStaff_ProjExplosion.DisplayName: 六棱石花杖·爆炸
+HexaCrystalStaff_SubProj.DisplayName: 六棱石花杖·子弹体
 HurricaneMask.DisplayName: Hurricane Mask
 IchorCurrent.DisplayName: Ichor Current
-IntroductiontoThermalElectricity_Ball.DisplayName: Introductionto Thermal Electricity_ Ball
-IstafelsSunfireGrasp_Explosion.DisplayName: Istafels Sunfire Grasp_ Explosion
-IstafelsSunfireGrasp_FireBall.DisplayName: Istafels Sunfire Grasp_ Fire Ball
-IstafelsSunfireGrasp_Scoria.DisplayName: Istafels Sunfire Grasp_ Scoria
-IstafelsSunfireGrasp_SkillVFX.DisplayName: Istafels Sunfire Grasp_ SkillVFX
-IstafelsSunfireGrasp_Sub_FireBall.DisplayName: Istafels Sunfire Grasp_ Sub_ Fire Ball
+IntroductiontoThermalElectricity_Ball.DisplayName: 热电法术绪论·法球
+IstafelsSunfireGrasp_Explosion.DisplayName: 伊斯塔裴尔的炎阳之握·爆炸
+IstafelsSunfireGrasp_FireBall.DisplayName: 伊斯塔裴尔的炎阳之握·火球
+IstafelsSunfireGrasp_Scoria.DisplayName: 伊斯塔裴尔的炎阳之握·熔渣
+IstafelsSunfireGrasp_SkillVFX.DisplayName: 伊斯塔裴尔的炎阳之握·炎阳光效
+IstafelsSunfireGrasp_Sub_FireBall.DisplayName: 伊斯塔裴尔的炎阳之握·小火球
 LargeCrystal.DisplayName: Large Crystal
-LargeMossyThornTurtle_Boulder.DisplayName: Large Mossy Thorn Turtle_ Boulder
-LargeMossyThornTurtle_Shockwave.DisplayName: Large Mossy Thorn Turtle_ Shockwave
+LargeMossyThornTurtle_Boulder.DisplayName: 大型荆棘苔龟·巨石
+LargeMossyThornTurtle_Shockwave.DisplayName: 大型荆棘苔龟·冲击波
 LichensPycnidium.DisplayName: Lichens Pycnidium
 LightBeam.DisplayName: Light Beam
-LightBeamStaff_Proj.DisplayName: Light Beam Staff_proj
-LightStartEffect_Beam.DisplayName: Light Start Effect_beam
+LightBeamStaff_Proj.DisplayName: 灯束法杖
+LightStartEffect_Beam.DisplayName: 光芒·光束
 LilyHarpNote.DisplayName: Lily Harp Note
 LilyHarpProj.DisplayName: Lily Harp Proj
 LilyHarpWave.DisplayName: Lily Harp Wave
@@ -122,7 +122,7 @@ LunarFlareBook.DisplayName: Lunar Flare Book
 LunarFlareHit.DisplayName: Lunar Flare Hit
 LunarFlareII.DisplayName: Lunar Flare I I
 MagicHit.DisplayName: Magic Hit
-MagicOfLightAndShadow_Proj.DisplayName: Magic Of Light And Shadow_ Proj
+MagicOfLightAndShadow_Proj.DisplayName: 灯影戏法
 MagnetSphereArray.DisplayName: Magnet Sphere Array
 MagnetSphereBook.DisplayName: Magnet Sphere Book
 MagnetSphereHit.DisplayName: Magnet Sphere Hit
@@ -130,7 +130,7 @@ MagnetSphereII.DisplayName: Magnet Sphere I I
 MagnetSphereLighting.DisplayName: Magnet Sphere Lighting
 MeltingFireExplode.DisplayName: Melting Fire Explode
 MeltingFireRing.DisplayName: Melting Fire Ring
-MillionLightStaff_Proj.DisplayName: Million Light Staff_ Proj
+MillionLightStaff_Proj.DisplayName: 万光法杖
 MissileExplosion.DisplayName: Missile Explosion
 MissileProj.DisplayName: Missile Proj
 MossySpell_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.MossySpell.DisplayName}"
@@ -139,19 +139,19 @@ MossySpellBook.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.MossySpell.Disp
 NavyThunder.DisplayName: Navy Thunder
 NavyThunderBomb.DisplayName: Navy Thunder Bomb
 NewWaterBolt.DisplayName: New Water Bolt
-NightfireStaff_Projectile.DisplayName: Nightfire Staff_ Projectile
+NightfireStaff_Projectile.DisplayName: 夜火法杖
 OrichalcumPedal.DisplayName: Orichalcum Pedal
-Pycnidium_Explosion.DisplayName: Pycnidium_Explosion
+Pycnidium_Explosion.DisplayName: 分生孢子器·爆炸
 RazorbladeTyphoonArray.DisplayName: Razorblade Typhoon Array
 RazorbladeTyphoonBook.DisplayName: Razorblade Typhoon Book
 RedAlgaeMagicSpellBook_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.RedAlgaeMagicSpellBook.DisplayName}"
 RedAlgaeMagicStaff_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.RedAlgaeMagicStaff.DisplayName}"
 RipplingWave.DisplayName: Rippling Wave
-RockQuake_Proj.DisplayName: Rock Quake_ Proj
+RockQuake_Proj.DisplayName: 重岩爆裂
 SkullHand.DisplayName: Skull Hand
 SkullII.DisplayName: Skull I I
-SpringOfQuicksand_Sandflow_Subproj.DisplayName: Spring Of Quicksand_ Sandflow_subproj
-SpringOfQuicksand_Sandflow.DisplayName: Spring Of Quicksand_ Sandflow
+SpringOfQuicksand_Sandflow_Subproj.DisplayName: 流沙之泉·流沙碎屑
+SpringOfQuicksand_Sandflow.DisplayName: 流沙之泉·流沙
 StaffOfCorruptDust.DisplayName: Staff Of Corrupt Dust
 Storm.DisplayName: Storm
 ThunderBall.DisplayName: Thunder Ball
@@ -162,22 +162,22 @@ ToothMagicBall.DisplayName: Tooth Magic Ball
 ToothMagicSplit.DisplayName: Tooth Magic Split
 ToothMagicSplit2.DisplayName: Tooth Magic Split2
 TyphoonII.DisplayName: Typhoon I I
-VampireMat_Attack_Proj_Absorb.DisplayName: Vampire Mat_ Attack_ Proj_ Absorb
-VampireMat_Attack_Proj_Ball_In_AbsorbVortex.DisplayName: Vampire Mat_ Attack_ Proj_ Ball_ In_ Absorb Vortex
-VampireMat_Attack_Proj_Ball_In_AbsorbVortex2.DisplayName: Vampire Mat_ Attack_ Proj_ Ball_ In_ Absorb Vortex2
-VampireMat_Attack_Proj_Ball_Small_Group_1.DisplayName: Vampire Mat_ Attack_ Proj_ Ball_ Small_ Group_1
-VampireMat_Attack_Proj_Ball_Small_Group.DisplayName: Vampire Mat_ Attack_ Proj_ Ball_ Small_ Group
-VampireMat_Attack_Proj_Ball.DisplayName: Vampire Mat_ Attack_ Proj_ Ball
-VampireMat_Attack_Proj_Tusk.DisplayName: Vampire Mat_ Attack_ Proj_ Tusk
-VitalizedRocksProj_Explosion.DisplayName: Vitalized Rocks Proj_ Explosion
+VampireMat_Attack_Proj_Absorb.DisplayName: 吸血魔毯·吸收
+VampireMat_Attack_Proj_Ball_In_AbsorbVortex.DisplayName: 吸血魔毯·涡流魔球
+VampireMat_Attack_Proj_Ball_In_AbsorbVortex2.DisplayName: 吸血魔毯·涡流魔球Ⅱ
+VampireMat_Attack_Proj_Ball_Small_Group_1.DisplayName: 吸血魔毯·成群的小魔球Ⅰ
+VampireMat_Attack_Proj_Ball_Small_Group.DisplayName: 吸血魔毯·成群的小魔球
+VampireMat_Attack_Proj_Ball.DisplayName: 吸血魔毯·魔球
+VampireMat_Attack_Proj_Tusk.DisplayName: 吸血魔毯·獠牙
+VitalizedRocksProj_Explosion.DisplayName: 活化岩石·爆炸
 VitalizedRocksProj.DisplayName: Vitalized Rocks Proj
-VitalizedRocksStone_Small.DisplayName: Vitalized Rocks Stone_small
+VitalizedRocksStone_Small.DisplayName: 活化岩石·小型
 VitalizedRocksStone.DisplayName: Vitalized Rocks Stone
 WaterBoltArray.DisplayName: Water Bolt Array
 WaterBoltBook.DisplayName: Water Bolt Book
 WaterTeleport.DisplayName: Water Teleport
 WindBladeBallHit.DisplayName: Wind Blade Ball Hit
-YggdrasilAmberLaser_Crystal.DisplayName: Yggdrasil Amber Laser_crystal
-YggdrasilAmberLaser_Proj.DisplayName: Yggdrasil Amber Laser_proj
-YggdrasilMoonBlade_Friendly.DisplayName: Yggdrasil Moon Blade_friendly
+YggdrasilAmberLaser_Crystal.DisplayName: 天琥珀光束·晶体
+YggdrasilAmberLaser_Proj.DisplayName: 天琥珀光束
+YggdrasilMoonBlade_Friendly.DisplayName: 天穹月刃·友方
 YggdrasilSlashBall.DisplayName: Yggdrasil Slash Ball

@@ -1,10 +1,10 @@
 AgedGreenCourtBrick_Item: {
-	DisplayName: Aged Green Court Brick_ Item
+	DisplayName: Aged Green Court Brick
 	Tooltip: ""
 }
 
 AgedGreenCourtWall_Item: {
-	DisplayName: Aged Green Court Wall_ Item
+	DisplayName: Aged Green Court Wall
 	Tooltip: ""
 }
 
@@ -29,147 +29,147 @@ AlgaeExtractor_Item: {
 }
 
 ArrowSign_Item_Down: {
-	DisplayName: Arrow Sign_ Item_ Down
+	DisplayName: Arrow Sign (Down)
 	Tooltip: ""
 }
 
 ArrowSign_Item_Left: {
-	DisplayName: Arrow Sign_ Item_ Left
+	DisplayName: Arrow Sign (Left)
 	Tooltip: ""
 }
 
 ArrowSign_Item_LeftDown: {
-	DisplayName: Arrow Sign_ Item_ Left Down
+	DisplayName: Arrow Sign (Lower Left)
 	Tooltip: ""
 }
 
 ArrowSign_Item_LeftUp: {
-	DisplayName: Arrow Sign_ Item_ Left Up
+	DisplayName: Arrow Sign (Upper Left)
 	Tooltip: ""
 }
 
 ArrowSign_Item_Right: {
-	DisplayName: Arrow Sign_ Item_ Right
+	DisplayName: Arrow Sign (Right)
 	Tooltip: ""
 }
 
 ArrowSign_Item_RightDown: {
-	DisplayName: Arrow Sign_ Item_ Right Down
+	DisplayName: Arrow Sign (Lower Right)
 	Tooltip: ""
 }
 
 ArrowSign_Item_RightUp: {
-	DisplayName: Arrow Sign_ Item_ Right Up
+	DisplayName: Arrow Sign (Upper Right)
 	Tooltip: ""
 }
 
 ArrowSign_Item_Up: {
-	DisplayName: Arrow Sign_ Item_ Up
+	DisplayName: Arrow Sign (Up)
 	Tooltip: ""
 }
 
 AshWoodElevator_Indicator_Lamp_Item: {
-	DisplayName: Ash Wood Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Ash Wood Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 AshWoodElevator_Item: {
-	DisplayName: Ash Wood Elevator_ Item
+	DisplayName: Ash Wood Elevator
 	Tooltip: ""
 }
 
 BakeryBuckHead_Item: {
-	DisplayName: Bakery Buck Head_ Item
+	DisplayName: Bakery Buck Head
 	Tooltip: ""
 }
 
 BakeryChair_Item: {
-	DisplayName: Bakery Chair_ Item
+	DisplayName: Bakery Chair
 	Tooltip: ""
 }
 
 BakeryCounter_Item: {
-	DisplayName: Bakery Counter_ Item
+	DisplayName: Bakery Counter
 	Tooltip: ""
 }
 
 BakeryCounterSide_Item: {
-	DisplayName: Bakery Counter Side_ Item
+	DisplayName: Bakery Counter Side
 	Tooltip: ""
 }
 
 BakeryGlassTable_Item: {
-	DisplayName: Bakery Glass Table_ Item
+	DisplayName: Bakery Glass Table
 	Tooltip: ""
 }
 
 BakeryHangingLamp_Item: {
-	DisplayName: Bakery Hanging Lamp_ Item
+	DisplayName: Bakery Hanging Lamp
 	Tooltip: ""
 }
 
 BakeryMenu_Item: {
-	DisplayName: Bakery Menu_ Item
+	DisplayName: Bakery Menu
 	Tooltip: ""
 }
 
 BakeryShelf_Item: {
-	DisplayName: Bakery Shelf_ Item
+	DisplayName: Bakery Shelf
 	Tooltip: ""
 }
 
 BakerySideLamp_Item: {
-	DisplayName: Bakery Side Lamp_ Item
+	DisplayName: Bakery Side Lamp
 	Tooltip: ""
 }
 
 BakeryTable_Item: {
-	DisplayName: Bakery Table_ Item
+	DisplayName: Bakery Table
 	Tooltip: ""
 }
 
 BakeryVase_GoldFlower: {
-	DisplayName: Bakery Vase_ Gold Flower
+	DisplayName: Bakery Vase with Golden Flowers
 	Tooltip: ""
 }
 
 BakeryVase_LightTanFlower: {
-	DisplayName: Bakery Vase_ Light Tan Flower
+	DisplayName: Bakery Vase with Pale Tan Flowers
 	Tooltip: ""
 }
 
 BakeryVase_RedFlower: {
-	DisplayName: Bakery Vase_ Red Flower
+	DisplayName: Bakery Vase with Red Flowers
 	Tooltip: ""
 }
 
 BallooonElevator_Indicator_Lamp_Item: {
-	DisplayName: Ballooon Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Balloon Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 BallooonElevator_Item: {
-	DisplayName: Ballooon Elevator_ Item
+	DisplayName: Balloon Elevator
 	Tooltip: ""
 }
 
 BambooElevator_Indicator_Lamp_Item: {
-	DisplayName: Bamboo Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Bamboo Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 BambooElevator_Item: {
-	DisplayName: Bamboo Elevator_ Item
+	DisplayName: Bamboo Elevator
 	Tooltip: ""
 }
 
 BarrierBlock_Item: {
-	DisplayName: Barrier Block_ Item
+	DisplayName: Barrier Block
 	Tooltip: ""
 }
 
 BarrierPlatform_Item: {
-	DisplayName: Barrier Platform_ Item
+	DisplayName: Barrier Platform
 	Tooltip: ""
 }
 
@@ -204,37 +204,37 @@ BloodyTuskTrophy: {
 }
 
 BlueDungeonElevator_Indicator_Lamp_Item: {
-	DisplayName: Blue Dungeon Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Blue Dungeon Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 BlueDungeonElevator_Item: {
-	DisplayName: Blue Dungeon Elevator_ Item
+	DisplayName: Blue Dungeon Elevator
 	Tooltip: ""
 }
 
 BlueGlassbulbBand_Item: {
-	DisplayName: Blue Glassbulb Band_item
+	DisplayName: Blue Glassbulb Band
 	Tooltip: ""
 }
 
 BoneElevator_Indicator_Lamp_Item: {
-	DisplayName: Bone Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Bone Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 BoneElevator_Item: {
-	DisplayName: Bone Elevator_ Item
+	DisplayName: Bone Elevator
 	Tooltip: ""
 }
 
 BorealWoodElevator_Indicator_Lamp_Item: {
-	DisplayName: Boreal Wood Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Boreal Wood Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 BorealWoodElevator_Item: {
-	DisplayName: Boreal Wood Elevator_ Item
+	DisplayName: Boreal Wood Elevator
 	Tooltip: ""
 }
 
@@ -244,52 +244,52 @@ BottleOfNutShellFlowers: {
 }
 
 BronzeLamp_3_Item: {
-	DisplayName: Bronze Lamp_3_ Item
+	DisplayName: Bronze Lamp 3
 	Tooltip: ""
 }
 
 BronzeLamp_Item: {
-	DisplayName: Bronze Lamp_ Item
+	DisplayName: Bronze Lamp
 	Tooltip: ""
 }
 
 CableCarJoin_Item: {
-	DisplayName: Cable Car Join_item
+	DisplayName: Cable Car Join
 	Tooltip: ""
 }
 
 CactusElevator_Indicator_Lamp_Item: {
-	DisplayName: Cactus Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Cactus Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 CactusElevator_Item: {
-	DisplayName: Cactus Elevator_ Item
+	DisplayName: Cactus Elevator
 	Tooltip: ""
 }
 
 CanteenDoor_Item: {
-	DisplayName: Canteen Door_ Item
+	DisplayName: Canteen Door
 	Tooltip: ""
 }
 
 CanteenExit_Item: {
-	DisplayName: Canteen Exit_ Item
+	DisplayName: Canteen Exit
 	Tooltip: ""
 }
 
 Casserole_Item: {
-	DisplayName: Casserole_ Item
+	DisplayName: Casserole
 	Tooltip: ""
 }
 
 ChainCable_Item: {
-	DisplayName: Chain Cable_item
+	DisplayName: Chain Cable
 	Tooltip: ""
 }
 
 ChineseKitchenDoor_Item: {
-	DisplayName: Chinese Kitchen Door_ Item
+	DisplayName: Chinese Kitchen Door
 	Tooltip: ""
 }
 
@@ -304,42 +304,42 @@ ChineseStyleFloorLamp: {
 }
 
 ChoppingBlock_Item: {
-	DisplayName: Chopping Block_ Item
+	DisplayName: Chopping Block
 	Tooltip: ""
 }
 
 CleaverRack_Item: {
-	DisplayName: Cleaver Rack_ Item
+	DisplayName: Cleaver Rack
 	Tooltip: ""
 }
 
 ClothesShelf_Feature_Nature_Item: {
-	DisplayName: Clothes Shelf_ Feature_ Nature_ Item
+	DisplayName: Natural Wood Clothes Shelf
 	Tooltip: ""
 }
 
 ClothesShopBonsai_Feature_Nature_Item: {
-	DisplayName: Clothes Shop Bonsai_ Feature_ Nature_ Item
+	DisplayName: Clothing Shop Bonsai
 	Tooltip: ""
 }
 
 ClothesShopModel_Feature_Nature_Item: {
-	DisplayName: Clothes Shop Model_ Feature_ Nature_ Item
+	DisplayName: Clothing Shop Mannequin
 	Tooltip: ""
 }
 
 ClothesShopSofa_Feature_Nature_Item: {
-	DisplayName: Clothes Shop Sofa_ Feature_ Nature_ Item
+	DisplayName: Natural Wood Shop Sofa
 	Tooltip: ""
 }
 
 ClothesShopTable_Feature_Nature_Item: {
-	DisplayName: Clothes Shop Table_ Feature_ Nature_ Item
+	DisplayName: Natural Wood Shop Table
 	Tooltip: ""
 }
 
 CookwareRack_Item: {
-	DisplayName: Cookware Rack_ Item
+	DisplayName: Cookware Rack
 	Tooltip: ""
 }
 
@@ -349,7 +349,7 @@ CorruptOrbStonePost: {
 }
 
 CrackedForestThrone_Item: {
-	DisplayName: Cracked Forest Throne_ Item
+	DisplayName: Cracked Forest Throne
 	Tooltip: ""
 }
 
@@ -364,17 +364,17 @@ CrimsonOrbStonePost: {
 }
 
 CrystalElevator_Indicator_Lamp_Item: {
-	DisplayName: Crystal Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Crystal Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 CrystalElevator_Item: {
-	DisplayName: Crystal Elevator_ Item
+	DisplayName: Crystal Elevator
 	Tooltip: ""
 }
 
 CurrentEnergyTube_Item: {
-	DisplayName: Current Energy Tube_ Item
+	DisplayName: Current Energy Tube
 	Tooltip: ""
 }
 
@@ -404,7 +404,7 @@ DarkCocoonWithPetal: {
 }
 
 DarkForestSoil_Item: {
-	DisplayName: Dark Forest Soil_ Item
+	DisplayName: Dark Forest Soil
 	Tooltip: ""
 }
 
@@ -419,17 +419,17 @@ DarkLakeBottomMudWall_Item: {
 }
 
 DarkSludgeBlock_Item: {
-	DisplayName: Dark Sludge Block_ Item
+	DisplayName: Dark Sludge Block
 	Tooltip: ""
 }
 
 DecayingWood_Item: {
-	DisplayName: Decaying Wood_ Item
+	DisplayName: Decaying Wood
 	Tooltip: ""
 }
 
 DecayingWoodWall_Item: {
-	DisplayName: Decaying Wood Wall_ Item
+	DisplayName: Decaying Wood Wall
 	Tooltip: ""
 }
 
@@ -444,22 +444,22 @@ DecaySandSoilWall_Item: {
 }
 
 Desert_NavyAnkhBanner_Item: {
-	DisplayName: Desert_ Navy Ankh Banner_ Item
+	DisplayName: Desert Navy Ankh Banner
 	Tooltip: ""
 }
 
 Desert_NavyBanner_Item: {
-	DisplayName: Desert_ Navy Banner_ Item
+	DisplayName: Desert Navy Banner
 	Tooltip: ""
 }
 
 Desert_NavyOmegaBanner_Item: {
-	DisplayName: Desert_ Navy Omega Banner_ Item
+	DisplayName: Desert Navy Omega Banner
 	Tooltip: ""
 }
 
 Desert_NavySnakeBanner_Item: {
-	DisplayName: Desert_ Navy Snake Banner_ Item
+	DisplayName: Desert Navy Snake Banner
 	Tooltip: ""
 }
 
@@ -479,7 +479,7 @@ DoubleArmsChineseStreetLamp: {
 }
 
 DragonChest_DarkDragonRoom_Item: {
-	DisplayName: Dragon Chest_ Dark Dragon Room_ Item
+	DisplayName: Dark Dragon Chamber Chest
 	Tooltip: ""
 }
 
@@ -499,22 +499,22 @@ DryIsleBamboo_Item: {
 }
 
 DynastyElevator_Indicator_Lamp_Item: {
-	DisplayName: Dynasty Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Dynasty Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 DynastyElevator_Item: {
-	DisplayName: Dynasty Elevator_ Item
+	DisplayName: Dynasty Elevator
 	Tooltip: ""
 }
 
 EbonwoodElevator_Indicator_Lamp_Item: {
-	DisplayName: Ebonwood Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Ebonwood Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 EbonwoodElevator_Item: {
-	DisplayName: Ebonwood Elevator_ Item
+	DisplayName: Ebonwood Elevator
 	Tooltip: ""
 }
 
@@ -524,27 +524,27 @@ ElevatorManual: {
 }
 
 ExampleElevator_Indicator_Lamp_Item: {
-	DisplayName: Example Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Example Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 ExampleElevator_Item: {
-	DisplayName: Example Elevator_ Item
+	DisplayName: Example Elevator
 	Tooltip: ""
 }
 
 ExamplePylon_Item: {
-	DisplayName: Example Pylon_ Item
+	DisplayName: Example Pylon
 	Tooltip: ""
 }
 
 ExitSignBoard_Item: {
-	DisplayName: Exit Sign Board_ Item
+	DisplayName: Exit Sign Board
 	Tooltip: ""
 }
 
 ExitUnionTile_Item: {
-	DisplayName: Exit Union Tile_ Item
+	DisplayName: Guild Exit
 	Tooltip: ""
 }
 
@@ -559,7 +559,7 @@ FemaleLampWood_Item: {
 }
 
 FevensPortrait_Item: {
-	DisplayName: Fevens Portrait_ Item
+	DisplayName: Fevens Portrait
 	Tooltip: ""
 }
 
@@ -569,7 +569,7 @@ FireCrackerLauncher: {
 }
 
 FireflyMoss_Item: {
-	DisplayName: Firefly Moss_ Item
+	DisplayName: Firefly Moss
 	Tooltip: ""
 }
 
@@ -584,17 +584,17 @@ FireflyPylonItem: {
 }
 
 FleshElevator_Indicator_Lamp_Item: {
-	DisplayName: Flesh Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Flesh Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 FleshElevator_Item: {
-	DisplayName: Flesh Elevator_ Item
+	DisplayName: Flesh Elevator
 	Tooltip: ""
 }
 
 FloorScaleForPlayers_Item: {
-	DisplayName: Floor Scale For Players_ Item
+	DisplayName: Floor Scale For Players
 	Tooltip: ""
 }
 
@@ -614,77 +614,77 @@ FluoriteHangLamp: {
 }
 
 FluoriteLampPost_Item: {
-	DisplayName: Fluorite Lamp Post_ Item
+	DisplayName: Fluorite Lamp Post
 	Tooltip: ""
 }
 
 ForestRainVineTile_Thick_Item: {
-	DisplayName: Forest Rain Vine Tile_ Thick_ Item
+	DisplayName: Thick Forest Rain Vine
 	Tooltip: ""
 }
 
 ForestRainVineTile_Thin_Item: {
-	DisplayName: Forest Rain Vine Tile_ Thin_ Item
+	DisplayName: Thin Forest Rain Vine
 	Tooltip: ""
 }
 
 FrozenElevator_Indicator_Lamp_Item: {
-	DisplayName: Frozen Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Frozen Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 FrozenElevator_Item: {
-	DisplayName: Frozen Elevator_ Item
+	DisplayName: Frozen Elevator
 	Tooltip: ""
 }
 
 FurnaceCopperGear_Large_Item: {
-	DisplayName: Furnace Copper Gear_ Large_ Item
+	DisplayName: Large Furnace Copper Gear
 	Tooltip: ""
 }
 
 FurnaceCopperGear_Middle_Item: {
-	DisplayName: Furnace Copper Gear_ Middle_ Item
+	DisplayName: Medium Furnace Copper Gear
 	Tooltip: ""
 }
 
 FurnaceCopperPipe_Item: {
-	DisplayName: Furnace Copper Pipe_ Item
+	DisplayName: Furnace Copper Pipe
 	Tooltip: ""
 }
 
 FurnaceCopperPipe_Large_Corner_Item: {
-	DisplayName: Furnace Copper Pipe_ Large_ Corner_ Item
+	DisplayName: Large Copper Furnace Pipe Elbow
 	Tooltip: ""
 }
 
 FurnaceCopperPipe_Large_Item: {
-	DisplayName: Furnace Copper Pipe_ Large_ Item
+	DisplayName: Large Furnace Copper Pipe
 	Tooltip: ""
 }
 
 FurnaceEmergencyLamp_Item: {
-	DisplayName: Furnace Emergency Lamp_ Item
+	DisplayName: Furnace Emergency Lamp
 	Tooltip: ""
 }
 
 FurnaceHeatProofPlatingWall_Item: {
-	DisplayName: Furnace Heat Proof Plating Wall_ Item
+	DisplayName: Furnace Heat Proof Plating Wall
 	Tooltip: ""
 }
 
 FurnaceLavaband_Item: {
-	DisplayName: Furnace Lavaband_ Item
+	DisplayName: Furnace Lavaband
 	Tooltip: ""
 }
 
 FurnaceLavaLamp_Item: {
-	DisplayName: Furnace Lava Lamp_ Item
+	DisplayName: Furnace Lava Lamp
 	Tooltip: ""
 }
 
 FurnaceMeltingChest_Item: {
-	DisplayName: Furnace Melting Chest_ Item
+	DisplayName: Furnace Melting Chest
 	Tooltip: ""
 }
 
@@ -699,7 +699,7 @@ FurnaceScoreClear: {
 }
 
 FurnaceTrapDoor_Item: {
-	DisplayName: Furnace Trap Door_ Item
+	DisplayName: Furnace Trap Door
 	Tooltip: ""
 }
 
@@ -729,17 +729,17 @@ GiantGhostClawBarnacle_Item: {
 }
 
 GiantPineTreeElevator_Item: {
-	DisplayName: Giant Pine Tree Elevator_ Item
+	DisplayName: Giant Pine Tree Elevator
 	Tooltip: ""
 }
 
 GlassElevator_Indicator_Lamp_Item: {
-	DisplayName: Glass Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Glass Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 GlassElevator_Item: {
-	DisplayName: Glass Elevator_ Item
+	DisplayName: Glass Elevator
 	Tooltip: ""
 }
 
@@ -914,77 +914,77 @@ GlowWoodWorkBench: {
 }
 
 GoldenElevator_Indicator_Lamp_Item: {
-	DisplayName: Golden Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Golden Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 GoldenElevator_Item: {
-	DisplayName: Golden Elevator_ Item
+	DisplayName: Golden Elevator
 	Tooltip: ""
 }
 
 GraniteElevator_Indicator_Lamp_Item: {
-	DisplayName: Granite Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Granite Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 GraniteElevator_Item: {
-	DisplayName: Granite Elevator_ Item
+	DisplayName: Granite Elevator
 	Tooltip: ""
 }
 
 GravelStoreWall_Thick_Item: {
-	DisplayName: Gravel Store Wall_ Thick_ Item
+	DisplayName: Thick Gravel Store Wall
 	Tooltip: ""
 }
 
 GravelStoreWall_Thin_Item: {
-	DisplayName: Gravel Store Wall_ Thin_ Item
+	DisplayName: Thin Gravel Store Wall
 	Tooltip: ""
 }
 
 GreenCourtBrick_Item: {
-	DisplayName: Green Court Brick_ Item
+	DisplayName: Green Court Brick
 	Tooltip: ""
 }
 
 GreenCourtWall_Item: {
-	DisplayName: Green Court Wall_ Item
+	DisplayName: Green Court Wall
 	Tooltip: ""
 }
 
 GreenDungeonElevator_Indicator_Lamp_Item: {
-	DisplayName: Green Dungeon Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Green Dungeon Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 GreenDungeonElevator_Item: {
-	DisplayName: Green Dungeon Elevator_ Item
+	DisplayName: Green Dungeon Elevator
 	Tooltip: ""
 }
 
 GreenGlassbulbBand_Item: {
-	DisplayName: Green Glassbulb Band_item
+	DisplayName: Green Glassbulb Band
 	Tooltip: ""
 }
 
 GreenRelicBrick_Item: {
-	DisplayName: Green Relic Brick_ Item
+	DisplayName: Green Relic Brick
 	Tooltip: ""
 }
 
 GreenRelicWall_Item: {
-	DisplayName: Green Relic Wall_ Item
+	DisplayName: Green Relic Wall
 	Tooltip: ""
 }
 
 GreenRelicWall_Style2_Item: {
-	DisplayName: Green Relic Wall_ Style2_ Item
+	DisplayName: Green Relic Wall (Style 2)
 	Tooltip: ""
 }
 
 GreyTownBrick_Item: {
-	DisplayName: Grey Town Brick_ Item
+	DisplayName: Grey Town Brick
 	Tooltip: ""
 }
 
@@ -1064,7 +1064,7 @@ HeatproofPiano_Item: {
 }
 
 HeatProofPlatingWall_Item: {
-	DisplayName: Heat Proof Plating Wall_ Item
+	DisplayName: Heat Proof Plating Wall
 	Tooltip: ""
 }
 
@@ -1099,22 +1099,22 @@ HexagonalCeilingLamp: {
 }
 
 Hob_Silver_Item: {
-	DisplayName: Hob_ Silver_ Item
+	DisplayName: Silver Cooktop
 	Tooltip: ""
 }
 
 HolographicPylon_Item: {
-	DisplayName: Holographic Pylon_ Item
+	DisplayName: Holographic Pylon
 	Tooltip: ""
 }
 
 HoneyElevator_Indicator_Lamp_Item: {
-	DisplayName: Honey Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Honey Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 HoneyElevator_Item: {
-	DisplayName: Honey Elevator_ Item
+	DisplayName: Honey Elevator
 	Tooltip: ""
 }
 
@@ -1124,12 +1124,12 @@ HumicMud_Item: {
 }
 
 HydraMud_Item: {
-	DisplayName: Hydra Mud_ Item
+	DisplayName: Hydra Mud
 	Tooltip: ""
 }
 
 IronTrackScaffolding_Item: {
-	DisplayName: Iron Track Scaffolding_ Item
+	DisplayName: Iron Track Scaffolding
 	Tooltip: ""
 }
 
@@ -1139,7 +1139,7 @@ IRProbe_Normal_Item: {
 }
 
 Ishta_Per_The_Venus_Painting_Item: {
-	DisplayName: Ishta_per_ The_ Venus_painting_ Item
+	DisplayName: Portrait of Istafel
 	Tooltip: ""
 }
 
@@ -1169,17 +1169,17 @@ JellyBallCube: {
 }
 
 JellyBallSecretionWall_Item: {
-	DisplayName: Jelly Ball Secretion Wall_ Item
+	DisplayName: Jelly Ball Secretion Wall
 	Tooltip: ""
 }
 
 KelpMoss_LargeCreate: {
-	DisplayName: Kelp Moss_large Create
+	DisplayName: Large Kelp Moss Placer
 	Tooltip: ""
 }
 
 Lamorch_Item: {
-	DisplayName: Lamorch_ Item
+	DisplayName: Lamorch
 	Tooltip: ""
 }
 
@@ -1249,7 +1249,7 @@ LampWoodClock: {
 }
 
 LampWoodCrate_Item: {
-	DisplayName: Lamp Wood Crate_ Item
+	DisplayName: Lamp Wood Crate
 	Tooltip: ""
 }
 
@@ -1304,27 +1304,27 @@ LampWoodWall_Item: {
 }
 
 LapisLazuliDome_Item: {
-	DisplayName: Lapis Lazuli Dome_ Item
+	DisplayName: Lapis Lazuli Dome
 	Tooltip: ""
 }
 
 LapisLazuliDome_Mini_Item: {
-	DisplayName: Lapis Lazuli Dome_mini_ Item
+	DisplayName: Small Lapis Lazuli Dome
 	Tooltip: ""
 }
 
 LargeCrystalShowTable_Blue_Item: {
-	DisplayName: Large Crystal Show Table_ Blue_ Item
+	DisplayName: Large Blue Crystal Display Table
 	Tooltip: ""
 }
 
 LargeCrystalShowTable_Green_Item: {
-	DisplayName: Large Crystal Show Table_ Green_ Item
+	DisplayName: Large Green Crystal Display Table
 	Tooltip: ""
 }
 
 LargeCrystalShowTable_Red_Item: {
-	DisplayName: Large Crystal Show Table_ Red_ Item
+	DisplayName: Large Red Crystal Display Table
 	Tooltip: ""
 }
 
@@ -1334,27 +1334,27 @@ LargeFireBulbTestItem: {
 }
 
 LesionElevator_Indicator_Lamp_Item: {
-	DisplayName: Lesion Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Lesion Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 LesionElevator_Item: {
-	DisplayName: Lesion Elevator_ Item
+	DisplayName: Lesion Elevator
 	Tooltip: ""
 }
 
 LightbulbBand_Item: {
-	DisplayName: Lightbulb Band_item
+	DisplayName: Lightbulb Band
 	Tooltip: ""
 }
 
 LihzahrdElevator_Indicator_Lamp_Item: {
-	DisplayName: Lihzahrd Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Lihzahrd Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 LihzahrdElevator_Item: {
-	DisplayName: Lihzahrd Elevator_ Item
+	DisplayName: Lihzahrd Elevator
 	Tooltip: ""
 }
 
@@ -1369,52 +1369,52 @@ LiveFluorescentWoodWall: {
 }
 
 LivingWoodElevator_Indicator_Lamp_Item: {
-	DisplayName: Living Wood Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Living Wood Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 LivingWoodElevator_Item: {
-	DisplayName: Living Wood Elevator_ Item
+	DisplayName: Living Wood Elevator
 	Tooltip: ""
 }
 
 MailBox_Item: {
-	DisplayName: Mail Box_ Item
+	DisplayName: Mail Box
 	Tooltip: ""
 }
 
 MarbleElevator_Indicator_Lamp_Item: {
-	DisplayName: Marble Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Marble Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 MarbleElevator_Item: {
-	DisplayName: Marble Elevator_ Item
+	DisplayName: Marble Elevator
 	Tooltip: ""
 }
 
 MartianElevator_Indicator_Lamp_Item: {
-	DisplayName: Martian Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Martian Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 MartianElevator_Item: {
-	DisplayName: Martian Elevator_ Item
+	DisplayName: Martian Elevator
 	Tooltip: ""
 }
 
 MeltingButton_Item: {
-	DisplayName: Melting Button_ Item
+	DisplayName: Melting Button
 	Tooltip: ""
 }
 
 MeteoriteElevator_Indicator_Lamp_Item: {
-	DisplayName: Meteorite Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Meteorite Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 MeteoriteElevator_Item: {
-	DisplayName: Meteorite Elevator_ Item
+	DisplayName: Meteorite Elevator
 	Tooltip: ""
 }
 
@@ -1424,22 +1424,22 @@ MetroHelper: {
 }
 
 MetroSign_Item: {
-	DisplayName: Metro Sign_ Item
+	DisplayName: Metro Sign
 	Tooltip: ""
 }
 
 MetroStationSign_PylonSquare_Item: {
-	DisplayName: Metro Station Sign_ Pylon Square_ Item
+	DisplayName: Pylon Square Station Sign
 	Tooltip: ""
 }
 
 MetroStationSign_YggdrasilTown_Item: {
-	DisplayName: Metro Station Sign_ Yggdrasil Town_ Item
+	DisplayName: Yggdrasil Town Station Sign
 	Tooltip: ""
 }
 
 MorphoFrame_Item: {
-	DisplayName: Morpho Frame_ Item
+	DisplayName: Morpho Frame
 	Tooltip: ""
 }
 
@@ -1454,7 +1454,7 @@ MossProneSandSoilWall_Item: {
 }
 
 MossyDockWood_Item: {
-	DisplayName: Mossy Dock Wood_ Item
+	DisplayName: Mossy Dock Wood
 	Tooltip: ""
 }
 
@@ -1464,22 +1464,22 @@ MothRelic: {
 }
 
 MushroomElevator_Indicator_Lamp_Item: {
-	DisplayName: Mushroom Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Mushroom Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 MushroomElevator_Item: {
-	DisplayName: Mushroom Elevator_ Item
+	DisplayName: Mushroom Elevator
 	Tooltip: ""
 }
 
 NebulaElevator_Indicator_Lamp_Item: {
-	DisplayName: Nebula Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Nebula Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 NebulaElevator_Item: {
-	DisplayName: Nebula Elevator_ Item
+	DisplayName: Nebula Elevator
 	Tooltip: ""
 }
 
@@ -1489,17 +1489,17 @@ NoctilucentFluoriteLump_Item: {
 }
 
 NormalEscalator_Item: {
-	DisplayName: Normal Escalator_ Item
+	DisplayName: Normal Escalator
 	Tooltip: ""
 }
 
 ObsidianElevator_Indicator_Lamp_Item: {
-	DisplayName: Obsidian Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Obsidian Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 ObsidianElevator_Item: {
-	DisplayName: Obsidian Elevator_ Item
+	DisplayName: Obsidian Elevator
 	Tooltip: ""
 }
 
@@ -1514,22 +1514,22 @@ OldMossWall_Item: {
 }
 
 PalmWoodElevator_Indicator_Lamp_Item: {
-	DisplayName: Palm Wood Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Palm Wood Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 PalmWoodElevator_Item: {
-	DisplayName: Palm Wood Elevator_ Item
+	DisplayName: Palm Wood Elevator
 	Tooltip: ""
 }
 
 PearlwoodElevator_Indicator_Lamp_Item: {
-	DisplayName: Pearlwood Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Pearlwood Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 PearlwoodElevator_Item: {
-	DisplayName: Pearlwood Elevator_ Item
+	DisplayName: Pearlwood Elevator
 	Tooltip: ""
 }
 
@@ -1539,27 +1539,27 @@ PierWithSlabs: {
 }
 
 PierWithSlabsTop_Item: {
-	DisplayName: Pier With Slabs Top_ Item
+	DisplayName: Pier with Slabs Top
 	Tooltip: ""
 }
 
 PinkDungeonElevator_Indicator_Lamp_Item: {
-	DisplayName: Pink Dungeon Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Pink Dungeon Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 PinkDungeonElevator_Item: {
-	DisplayName: Pink Dungeon Elevator_ Item
+	DisplayName: Pink Dungeon Elevator
 	Tooltip: ""
 }
 
 PlantSpecimen_Branch_Item: {
-	DisplayName: Plant Specimen_ Branch_ Item
+	DisplayName: Branch Specimen
 	Tooltip: ""
 }
 
 PlantSpecimen_Fern_Item: {
-	DisplayName: Plant Specimen_ Fern_ Item
+	DisplayName: Fern Specimen
 	Tooltip: ""
 }
 
@@ -1569,62 +1569,62 @@ PlumBlossomInABowl: {
 }
 
 PumpkinElevator_Indicator_Lamp_Item: {
-	DisplayName: Pumpkin Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Pumpkin Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 PumpkinElevator_Item: {
-	DisplayName: Pumpkin Elevator_ Item
+	DisplayName: Pumpkin Elevator
 	Tooltip: ""
 }
 
 QuestBoard_Item: {
-	DisplayName: Quest Board_ Item
+	DisplayName: Quest Board
 	Tooltip: ""
 }
 
 QuestCounter_Item: {
-	DisplayName: Quest Counter_ Item
+	DisplayName: Quest Counter
 	Tooltip: ""
 }
 
 RedGlassbulbBand_Item: {
-	DisplayName: Red Glassbulb Band_item
+	DisplayName: Red Glassbulb Band
 	Tooltip: ""
 }
 
 ReefElevator_Indicator_Lamp_Item: {
-	DisplayName: Reef Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Reef Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 ReefElevator_Item: {
-	DisplayName: Reef Elevator_ Item
+	DisplayName: Reef Elevator
 	Tooltip: ""
 }
 
 Refrigerator_Silver_Item: {
-	DisplayName: Refrigerator_ Silver_ Item
+	DisplayName: Silver Refrigerator
 	Tooltip: ""
 }
 
 Relic_LanternGhostKing: {
-	DisplayName: Relic_ Lantern Ghost King
+	DisplayName: Lantern Ghost King Relic
 	Tooltip: ""
 }
 
 RestaurantLogoBoard_Item: {
-	DisplayName: Restaurant Logo Board_ Item
+	DisplayName: Restaurant Logo Board
 	Tooltip: ""
 }
 
 RichMahoganyElevator_Indicator_Lamp_Item: {
-	DisplayName: Rich Mahogany Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Rich Mahogany Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 RichMahoganyElevator_Item: {
-	DisplayName: Rich Mahogany Elevator_ Item
+	DisplayName: Rich Mahogany Elevator
 	Tooltip: ""
 }
 
@@ -1639,47 +1639,47 @@ RichOxygenSpongeWall_Item: {
 }
 
 RoadSignPost_ToArena_Item: {
-	DisplayName: Road Sign Post_ To Arena_ Item
+	DisplayName: Road Sign Post to Arena
 	Tooltip: ""
 }
 
 RoomBlackBox_Item: {
-	DisplayName: Room Black Box_ Item
+	DisplayName: Room Black Box
 	Tooltip: ""
 }
 
 RubyDarkGoldChest_BloodyChurch_Item: {
-	DisplayName: Ruby Dark Gold Chest_ Bloody Church_ Item
+	DisplayName: Bloody Church Ruby Dark Gold Chest
 	Tooltip: ""
 }
 
 RuinTorch_Item: {
-	DisplayName: Ruin Torch_ Item
+	DisplayName: Ruin Torch
 	Tooltip: ""
 }
 
 RustBronzeTreasureChest_Item: {
-	DisplayName: Rust Bronze Treasure Chest_ Item
+	DisplayName: Rust Bronze Treasure Chest
 	Tooltip: ""
 }
 
 SandgoldLantern_Item: {
-	DisplayName: Sandgold Lantern_ Item
+	DisplayName: Sandgold Lantern
 	Tooltip: ""
 }
 
 SandstoneElevator_Indicator_Lamp_Item: {
-	DisplayName: Sandstone Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Sandstone Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 SandstoneElevator_Item: {
-	DisplayName: Sandstone Elevator_ Item
+	DisplayName: Sandstone Elevator
 	Tooltip: ""
 }
 
 ServingCounter_ChineseStyle_Item: {
-	DisplayName: Serving Counter_ Chinese Style_ Item
+	DisplayName: Chinese-Style Serving Counter
 	Tooltip: ""
 }
 
@@ -1689,12 +1689,12 @@ ShabbyPylonItem: {
 }
 
 ShadewoodElevator_Indicator_Lamp_Item: {
-	DisplayName: Shadewood Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Shadewood Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 ShadewoodElevator_Item: {
-	DisplayName: Shadewood Elevator_ Item
+	DisplayName: Shadewood Elevator
 	Tooltip: ""
 }
 
@@ -1709,37 +1709,37 @@ SharpBarnacleWall_Item: {
 }
 
 SideHangingLantern_Red: {
-	DisplayName: Side Hanging Lantern_ Red
+	DisplayName: Red Side-Hanging Lantern
 	Tooltip: ""
 }
 
 SideHangingLantern_White: {
-	DisplayName: Side Hanging Lantern_ White
+	DisplayName: White Side-Hanging Lantern
 	Tooltip: ""
 }
 
 SkywareElevator_Indicator_Lamp_Item: {
-	DisplayName: Skyware Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Skyware Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 SkywareElevator_Item: {
-	DisplayName: Skyware Elevator_ Item
+	DisplayName: Skyware Elevator
 	Tooltip: ""
 }
 
 SlimeElevator_Indicator_Lamp_Item: {
-	DisplayName: Slime Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Slime Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 SlimeElevator_Item: {
-	DisplayName: Slime Elevator_ Item
+	DisplayName: Slime Elevator
 	Tooltip: ""
 }
 
 SluiceWallLamp_Item: {
-	DisplayName: Sluice Wall Lamp_ Item
+	DisplayName: Sluice Wall Lamp
 	Tooltip: ""
 }
 
@@ -1749,12 +1749,12 @@ SnowPineChest: {
 }
 
 SnowPineChest_Fresh: {
-	DisplayName: Snow Pine Chest_fresh
+	DisplayName: Fresh Snow Pine Chest
 	Tooltip: ""
 }
 
 SnowPineChest_Gold: {
-	DisplayName: Snow Pine Chest_gold
+	DisplayName: Golden Snow Pine Chest
 	Tooltip: ""
 }
 
@@ -1784,32 +1784,32 @@ SnowPineWoodWall: {
 }
 
 SolarElevator_Indicator_Lamp_Item: {
-	DisplayName: Solar Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Solar Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 SolarElevator_Item: {
-	DisplayName: Solar Elevator_ Item
+	DisplayName: Solar Elevator
 	Tooltip: ""
 }
 
 SpiderElevator_Indicator_Lamp_Item: {
-	DisplayName: Spider Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Spider Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 SpiderElevator_Item: {
-	DisplayName: Spider Elevator_ Item
+	DisplayName: Spider Elevator
 	Tooltip: ""
 }
 
 SpookyElevator_Indicator_Lamp_Item: {
-	DisplayName: Spooky Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Spooky Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 SpookyElevator_Item: {
-	DisplayName: Spooky Elevator_ Item
+	DisplayName: Spooky Elevator
 	Tooltip: ""
 }
 
@@ -1824,37 +1824,37 @@ SquamousShellTrophy: {
 }
 
 StardustElevator_Indicator_Lamp_Item: {
-	DisplayName: Stardust Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Stardust Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 StardustElevator_Item: {
-	DisplayName: Stardust Elevator_ Item
+	DisplayName: Stardust Elevator
 	Tooltip: ""
 }
 
 SteamBoiler_Item: {
-	DisplayName: Steam Boiler_ Item
+	DisplayName: Steam Boiler
 	Tooltip: ""
 }
 
 SteamBox_Item: {
-	DisplayName: Steam Box_ Item
+	DisplayName: Steam Box
 	Tooltip: ""
 }
 
 SteampunkElevator_Indicator_Lamp_Item: {
-	DisplayName: Steampunk Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Steampunk Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 SteampunkElevator_Item: {
-	DisplayName: Steampunk Elevator_ Item
+	DisplayName: Steampunk Elevator
 	Tooltip: ""
 }
 
 StoneBridge_Chest_Item: {
-	DisplayName: Stone Bridge_ Chest_item
+	DisplayName: Stone Bridge Chest
 	Tooltip: ""
 }
 
@@ -1864,12 +1864,12 @@ StoneDragonScaleWood: {
 }
 
 StoneDragonScaleWoodWall_Item: {
-	DisplayName: Stone Dragon Scale Wood Wall_ Item
+	DisplayName: Stone Dragon Scale Wood Wall
 	Tooltip: ""
 }
 
 Stove_Item: {
-	DisplayName: Stove_ Item
+	DisplayName: Stove
 	Tooltip: ""
 }
 
@@ -1894,37 +1894,37 @@ ThatchedWall: {
 }
 
 TotalFurnaceScoreBoard_Item: {
-	DisplayName: Total Furnace Score Board_ Item
+	DisplayName: Total Furnace Score Board
 	Tooltip: ""
 }
 
 TownBrick_Gray_Item: {
-	DisplayName: Town Brick_ Gray_ Item
+	DisplayName: Gray Town Brick
 	Tooltip: ""
 }
 
 TownBrick_Gray_Wall_Item: {
-	DisplayName: Town Brick_ Gray_ Wall_ Item
+	DisplayName: Gray Town Brick Wall
 	Tooltip: ""
 }
 
 TownBrick_Khaki_Item: {
-	DisplayName: Town Brick_ Khaki_ Item
+	DisplayName: Khaki Town Brick
 	Tooltip: ""
 }
 
 TownBrick_Khaki_Wall_Item: {
-	DisplayName: Town Brick_ Khaki_ Wall_ Item
+	DisplayName: Khaki Town Brick Wall
 	Tooltip: ""
 }
 
 TownGatePylon_Item: {
-	DisplayName: Town Gate Pylon_ Item
+	DisplayName: Town Gate Pylon
 	Tooltip: ""
 }
 
 TownSteelBrick_Item: {
-	DisplayName: Town Steel Brick_ Item
+	DisplayName: Town Steel Brick
 	Tooltip: ""
 }
 
@@ -1934,7 +1934,7 @@ Travertine_Item: {
 }
 
 TuskFlesh_Item: {
-	DisplayName: Tusk Flesh_ Item
+	DisplayName: Tusk Flesh
 	Tooltip: ""
 }
 
@@ -1964,12 +1964,12 @@ TuskStatusIV: {
 }
 
 TwilightCrate_Item: {
-	DisplayName: Twilight Crate_ Item
+	DisplayName: Twilight Crate
 	Tooltip: ""
 }
 
 TwilightCrystalMill_Item: {
-	DisplayName: Twilight Crystal Mill_ Item
+	DisplayName: Twilight Crystal Mill
 	Tooltip: ""
 }
 
@@ -2059,7 +2059,7 @@ TwilightEucalyptusSofa: {
 }
 
 TwilightEucalyptusSofa_Type2: {
-	DisplayName: Twilight Eucalyptus Sofa_ Type2
+	DisplayName: Twilight Eucalyptus Sofa (Type 2)
 	Tooltip: ""
 }
 
@@ -2079,7 +2079,7 @@ TwilightEucalyptusWood_Item: {
 }
 
 TwilightEucalyptusWoodWall_Item: {
-	DisplayName: Twilight Eucalyptus Wood Wall_ Item
+	DisplayName: Twilight Eucalyptus Wood Wall
 	Tooltip: ""
 }
 
@@ -2099,127 +2099,127 @@ UnderwaterLightningMechanism_Item: {
 }
 
 Union_Y_Stairs_Item: {
-	DisplayName: Union_ Y_ Stairs_ Item
+	DisplayName: Union Y Stairs
 	Tooltip: ""
 }
 
 UnionAcanthusWallLace_Item: {
-	DisplayName: Union Acanthus Wall Lace_ Item
+	DisplayName: Union Acanthus Wall Lace
 	Tooltip: ""
 }
 
 UnionGiantChandelier_Item: {
-	DisplayName: Union Giant Chandelier_ Item
+	DisplayName: Union Giant Chandelier
 	Tooltip: ""
 }
 
 UnionGiantChandelier_Style1_Item: {
-	DisplayName: Union Giant Chandelier_ Style1_ Item
+	DisplayName: Union Giant Chandelier (Style 1)
 	Tooltip: ""
 }
 
 UnionGoldAcanthusWall_Item: {
-	DisplayName: Union Gold Acanthus Wall_ Item
+	DisplayName: Union Gold Acanthus Wall
 	Tooltip: ""
 }
 
 UnionLampPost_Style0_Item: {
-	DisplayName: Union Lamp Post_ Style0_ Item
+	DisplayName: Union Lamp Post (Style 0)
 	Tooltip: ""
 }
 
 UnionLampPost_Style1_Item: {
-	DisplayName: Union Lamp Post_ Style1_ Item
+	DisplayName: Union Lamp Post (Style 1)
 	Tooltip: ""
 }
 
 UnionLampPost_Style2_Item: {
-	DisplayName: Union Lamp Post_ Style2_ Item
+	DisplayName: Union Lamp Post (Style 2)
 	Tooltip: ""
 }
 
 UnionMarblePost_Body_Khaki_Item: {
-	DisplayName: Union Marble Post_ Body_ Khaki_ Item
+	DisplayName: Khaki Union Marble Column Shaft
 	Tooltip: ""
 }
 
 UnionMarblePost_Bottom_Khaki_Item: {
-	DisplayName: Union Marble Post_ Bottom_ Khaki_ Item
+	DisplayName: Khaki Union Marble Column Base
 	Tooltip: ""
 }
 
 UnionMarblePost_Top_Corinth_Khaki_Item: {
-	DisplayName: Union Marble Post_ Top_ Corinth_ Khaki_ Item
+	DisplayName: Khaki Union Marble Corinthian Capital
 	Tooltip: ""
 }
 
 UnionMarblePost_Top_Doric_Khaki_Item: {
-	DisplayName: Union Marble Post_ Top_ Doric_ Khaki_ Item
+	DisplayName: Khaki Union Marble Doric Capital
 	Tooltip: ""
 }
 
 UnionMarblePost_Top_Ionic_Khaki_Item: {
-	DisplayName: Union Marble Post_ Top_ Ionic_ Khaki_ Item
+	DisplayName: Khaki Union Marble Ionic Capital
 	Tooltip: ""
 }
 
 UnionMarbleTile_Khaki_Item: {
-	DisplayName: Union Marble Tile_ Khaki_ Item
+	DisplayName: Khaki Union Marble Tile
 	Tooltip: ""
 }
 
 UnionMarbleWall_Dark_Item: {
-	DisplayName: Union Marble Wall_ Dark_ Item
+	DisplayName: Dark Union Marble Wall
 	Tooltip: ""
 }
 
 UnionOfficeDoor_Item: {
-	DisplayName: Union Office Door_ Item
+	DisplayName: Union Office Door
 	Tooltip: ""
 }
 
 UnionSideLantern_Style0_Item: {
-	DisplayName: Union Side Lantern_ Style0_ Item
+	DisplayName: Union Side Lantern (Style 0)
 	Tooltip: ""
 }
 
 UnionWallLamp_Style0_Item: {
-	DisplayName: Union Wall Lamp_ Style0_ Item
+	DisplayName: Union Wall Lamp (Style 0)
 	Tooltip: ""
 }
 
 UnionWindow_Style0_Item: {
-	DisplayName: Union Window_ Style0_ Item
+	DisplayName: Union Window (Style 0)
 	Tooltip: ""
 }
 
 UnregisteredPylon_Item: {
-	DisplayName: Unregistered Pylon_ Item
+	DisplayName: Unregistered Pylon
 	Tooltip: ""
 }
 
 UrbanCrate_Item: {
-	DisplayName: Urban Crate_ Item
+	DisplayName: Urban Crate
 	Tooltip: ""
 }
 
 VampireMatCave_BoardSign_Item: {
-	DisplayName: Vampire Mat Cave_ Board Sign_ Item
+	DisplayName: Vampire Mat Cave Board Sign
 	Tooltip: ""
 }
 
 VampireMatCave_HangingSign_Item: {
-	DisplayName: Vampire Mat Cave_ Hanging Sign_ Item
+	DisplayName: Vampire Mat Cave Hanging Sign
 	Tooltip: ""
 }
 
 VortexElevator_Indicator_Lamp_Item: {
-	DisplayName: Vortex Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Vortex Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 VortexElevator_Item: {
-	DisplayName: Vortex Elevator_ Item
+	DisplayName: Vortex Elevator
 	Tooltip: ""
 }
 
@@ -2249,7 +2249,7 @@ WaterErodedRustyCopperChest_Item: {
 }
 
 WhiteCallaLily_Item: {
-	DisplayName: White Calla Lily_ Item
+	DisplayName: White Calla Lily
 	Tooltip: ""
 }
 
@@ -2264,7 +2264,7 @@ WitherWoodBookcase: {
 }
 
 WitherWoodBrazier_Item: {
-	DisplayName: Wither Wood Brazier_ Item
+	DisplayName: Wither Wood Brazier
 	Tooltip: ""
 }
 
@@ -2279,7 +2279,7 @@ WitherWoodChandelier: {
 }
 
 WitherWoodColdFlameTorch_Item: {
-	DisplayName: Wither Wood Cold Flame Torch_ Item
+	DisplayName: Wither Wood Cold Flame Torch
 	Tooltip: ""
 }
 
@@ -2289,7 +2289,7 @@ WitherWoodDoor: {
 }
 
 WitherWoodShutterWall_Item: {
-	DisplayName: Wither Wood Shutter Wall_ Item
+	DisplayName: Wither Wood Shutter Wall
 	Tooltip: ""
 }
 
@@ -2299,32 +2299,32 @@ WitherWoodTable: {
 }
 
 WoodenChest_ForestCastle_Item: {
-	DisplayName: Wooden Chest_ Forest Castle_ Item
+	DisplayName: Forest Castle Wooden Chest
 	Tooltip: ""
 }
 
 WoodenElevator_Indicator_Lamp_Item: {
-	DisplayName: Wooden Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Wooden Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 WoodenElevator_Item: {
-	DisplayName: Wooden Elevator_ Item
+	DisplayName: Wooden Elevator
 	Tooltip: ""
 }
 
 WoodenRoomDoor_Exit_Item: {
-	DisplayName: Wooden Room Door_exit_ Item
+	DisplayName: Wooden Room Door Exit
 	Tooltip: ""
 }
 
 WoodenRoomDoor_Item: {
-	DisplayName: Wooden Room Door_ Item
+	DisplayName: Wooden Room Door
 	Tooltip: ""
 }
 
 WornForestChest_Item: {
-	DisplayName: Worn Forest Chest_ Item
+	DisplayName: Worn Forest Chest
 	Tooltip: ""
 }
 
@@ -2354,12 +2354,12 @@ YggdrasilCyatheaWood: {
 }
 
 YggdrasilGravelStoreGate_Exit_Item: {
-	DisplayName: Yggdrasil Gravel Store Gate_ Exit_ Item
+	DisplayName: Yggdrasil Gravel Store Gate Exit
 	Tooltip: ""
 }
 
 YggdrasilGravelStoreGate_Item: {
-	DisplayName: Yggdrasil Gravel Store Gate_ Item
+	DisplayName: Yggdrasil Gravel Store Gate
 	Tooltip: ""
 }
 
@@ -2374,41 +2374,41 @@ YggdrasilGrayRockWall_Item: {
 }
 
 YggdrasilPlayerRoomDoor_Item: {
-	DisplayName: Yggdrasil Player Room Door_ Item
+	DisplayName: Yggdrasil Player Room Door
 	Tooltip: ""
 }
 
 YggdrasilPlayerRoomDoor_Lock_Item: {
-	DisplayName: Yggdrasil Player Room Door_ Lock_ Item
+	DisplayName: Yggdrasil Player Room Door Lock
 	Tooltip: ""
 }
 
 YggdrasilTownAccessGate_Item: {
-	DisplayName: Yggdrasil Town Access Gate_ Item
+	DisplayName: Yggdrasil Town Access Gate
 	Tooltip: ""
 }
 
 YggdrasilTownAccessGateNFCTrigger_Item: {
-	DisplayName: Yggdrasil Town Access GateNFCTrigger_ Item
+	DisplayName: Yggdrasil Town Access Gate NFC Reader
 	Tooltip: ""
 }
 
 YggdrasilTownElevator_Indicator_Lamp_Item: {
-	DisplayName: Yggdrasil Town Elevator_ Indicator_ Lamp_ Item
+	DisplayName: Yggdrasil Town Elevator Indicator Lamp
 	Tooltip: ""
 }
 
 YggdrasilTownElevator_Item: {
-	DisplayName: Yggdrasil Town Elevator_ Item
+	DisplayName: Yggdrasil Town Elevator
 	Tooltip: ""
 }
 
 YggdrasilTownElevatorTunnelLamp_Item: {
-	DisplayName: Yggdrasil Town Elevator Tunnel Lamp_ Item
+	DisplayName: Yggdrasil Town Elevator Tunnel Lamp
 	Tooltip: ""
 }
 
 YggdrasilWorldPylon_Item: {
-	DisplayName: Yggdrasil World Pylon_ Item
+	DisplayName: Yggdrasil World Pylon
 	Tooltip: ""
 }

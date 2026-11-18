@@ -18,7 +18,7 @@ CanteenMaid: {
 Fevens.DisplayName: Fevens
 
 Guard_Of_YggdrasilTown: {
-	DisplayName: Guard_of_ Yggdrasil Town
+	DisplayName: Guide of Yggdrasil Town
 
 	TownNPCMood: {
 		Content: I am content.
@@ -41,7 +41,7 @@ Herm: {
 	Silence: "..."
 }
 
-Howard_Warden.DisplayName: Howard_ Warden
+Howard_Warden.DisplayName: Warden Howard
 InnKeeper.DisplayName: Inn Keeper
 Restauranteur.DisplayName: Restauranteur
 TeahouseLady.DisplayName: Teahouse Lady

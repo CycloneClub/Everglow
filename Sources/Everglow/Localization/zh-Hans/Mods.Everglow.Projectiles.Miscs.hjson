@@ -1,17 +1,17 @@
-AdamantiteClub_Round_Slash.DisplayName: Adamantite Club_round_slash
-AdamantiteClub_Slash.DisplayName: Adamantite Club_slash
+AdamantiteClub_Round_Slash.DisplayName: 精金棍棒·回旋斩
+AdamantiteClub_Slash.DisplayName: 精金棍棒·斩击
 AmberFlowerHookProjectile.DisplayName: Amber Flower Hook Projectile
 BeadShakeWave.DisplayName: Bead Shake Wave
-BlackAwningBoat_WaterDistort.DisplayName: Black Awning Boat_ Water Distort
+BlackAwningBoat_WaterDistort.DisplayName: 乌篷船·水波
 BloodLampProj.DisplayName: Blood Lamp Proj
 BombShakeWave.DisplayName: Bomb Shake Wave
-ChlorophyteClub_VFX_2.DisplayName: Chlorophyte Club_ V F X_2
-ChlorophyteClub_VFX.DisplayName: Chlorophyte Club_ V F X
+ChlorophyteClub_VFX_2.DisplayName: 叶绿棍棒·光效Ⅱ
+ChlorophyteClub_VFX.DisplayName: 叶绿棍棒·光效
 ClimbingPickaxeProjectile.DisplayName: Climbing Pickaxe Projectile
-ComingGhost_Shimmer.DisplayName: Coming Ghost_ Shimmer
-CrystalClub_Fly_Explosion.DisplayName: Crystal Club_fly_ Explosion
+ComingGhost_Shimmer.DisplayName: 诡弑·微光
+CrystalClub_Fly_Explosion.DisplayName: 水晶棍棒·飞击爆炸
 DemoSpark.DisplayName: Demo Spark
-DreamWeaver_Hit.DisplayName: Dream Weaver_hit
+DreamWeaver_Hit.DisplayName: 织梦丝雨·命中
 ExampleTrailingProjectile.DisplayName: Example Trailing Projectile
 FallenDropFruit.DisplayName: Fallen Drop Fruit
 FanHit.DisplayName: Fan Hit
@@ -38,8 +38,8 @@ FixCoinSpeed2.DisplayName: Fix Coin Speed2
 FixCoinSpeed3.DisplayName: Fix Coin Speed3
 FlameCylinder.DisplayName: Flame Cylinder
 FruitBomb.DisplayName: Fruit Bomb
-GeyserAirBuds_Erupt.DisplayName: Geyser Air Buds_ Erupt
-Glow_Fall_Explosion.DisplayName: Glow_ Fall_ Explosion
+GeyserAirBuds_Erupt.DisplayName: 间歇泉气苞·喷发
+Glow_Fall_Explosion.DisplayName: 流光·坠落爆炸
 GlowBeadGunShootFlame.DisplayName: Glow Bead Gun Shoot Flame
 GlowStarExplosion.DisplayName: Glow Star Explosion
 HandholdProj.DisplayName: Handhold Proj
@@ -50,16 +50,16 @@ KSSlingshotHit.DisplayName: K S Slingshot Hit
 KSSlingshotHitPink.DisplayName: K S Slingshot Hit Pink
 LBloodEffect.DisplayName: L Blood Effect
 LilyHarpNoteKill.DisplayName: Lily Harp Note Kill
-MythrilClub_Shoot.DisplayName: Mythril Club_ Shoot
-MythrilClub_Smash_Explosion.DisplayName: Mythril Club_smash_explosion
-MythrilClub_Smash_Explosion2.DisplayName: Mythril Club_smash_explosion2
+MythrilClub_Shoot.DisplayName: 秘银棍棒·射击
+MythrilClub_Smash_Explosion.DisplayName: 秘银棍棒·重击爆炸
+MythrilClub_Smash_Explosion2.DisplayName: 秘银棍棒·重击爆炸Ⅱ
 PlayerDefence.DisplayName: Player Defence
-PrimordialJadeWinged_SpearShake.DisplayName: Primordial Jade Winged_ Spear Shake
+PrimordialJadeWinged_SpearShake.DisplayName: 和璞鸢震击
 PurpleBallEffect.DisplayName: Purple Ball Effect
-PylonStonePostProj_Corrupt_Explosion.DisplayName: Pylon Stone Post Proj_corrupt_explosion
-PylonStonePostProj_Corrupt.DisplayName: Pylon Stone Post Proj_corrupt
-PylonStonePostProj_Crimson_Explosion.DisplayName: Pylon Stone Post Proj_crimson_explosion
-PylonStonePostProj_Crimson.DisplayName: Pylon Stone Post Proj_crimson
+PylonStonePostProj_Corrupt_Explosion.DisplayName: 晶塔石柱·腐化爆炸
+PylonStonePostProj_Corrupt.DisplayName: 晶塔石柱·腐化
+PylonStonePostProj_Crimson_Explosion.DisplayName: 晶塔石柱·猩红爆炸
+PylonStonePostProj_Crimson.DisplayName: 晶塔石柱·猩红
 RedLanternMeteor.DisplayName: Red Lantern Meteor
 RisingFirework.DisplayName: Rising Firework
 ShadowDragonAttack.DisplayName: Shadow Dragon Attack
@@ -69,9 +69,9 @@ StarProj.DisplayName: Star Proj
 SunFlowerpetal.DisplayName: Sun Flowerpetal
 TeleportToYggdrasil.DisplayName: Teleport To Yggdrasil
 ThermostatBobber.DisplayName: Thermostat Bobber
-TitaniumClub_Smash_Explosion.DisplayName: Titanium Club_smash_explosion
+TitaniumClub_Smash_Explosion.DisplayName: 钛金棍棒·重击爆炸
 TwilightRodBobber.DisplayName: Twilight Rod Bobber
-UnderwaterGuillotine_Projectile.DisplayName: Underwater Guillotine_ Projectile
+UnderwaterGuillotine_Projectile.DisplayName: 水下断头台
 VineEnergyBeam.DisplayName: Vine Energy Beam
 VineEnergyOrb.DisplayName: Vine Energy Orb
 VineProj.DisplayName: Vine Proj

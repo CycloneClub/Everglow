@@ -78,7 +78,7 @@ AuburnSelfReinforcing: {
 }
 
 B_52Buff: {
-	DisplayName: B_52
+	DisplayName: B-52
 	Description:
 		'''
 		+100%远程攻速，+25%远程暴击率，+50%远程伤害（手持发射器时）
@@ -573,7 +573,7 @@ GoldenDelightBuff: {
 }
 
 GoldenLotusStaff_Buff: {
-	DisplayName: Golden Lotus Staff_ Buff
+	DisplayName: 金莲法杖·增益
 	Description: ""
 }
 

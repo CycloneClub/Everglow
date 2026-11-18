@@ -64,7 +64,7 @@ ExampleRopeItem: {
 }
 
 ExampleTrailingProjectile_Emit: {
-	DisplayName: Example Trailing Projectile_ Emit
+	DisplayName: 拖尾弹射器（示例）
 	Tooltip: ""
 }
 
@@ -133,7 +133,7 @@ MiningPowerPickaxe: {
 }
 
 NormalCableCar_Item: {
-	DisplayName: Normal Cable Car_item
+	DisplayName: 缆车
 	Tooltip: ""
 }
 
@@ -232,7 +232,7 @@ YggdrasilImpression: {
 }
 
 YggdrasilTown_TradeUnionGate: {
-	DisplayName: Yggdrasil Town_ Trade Union Gate
+	DisplayName: 天穹镇工会大门
 	Tooltip: ""
 }
 

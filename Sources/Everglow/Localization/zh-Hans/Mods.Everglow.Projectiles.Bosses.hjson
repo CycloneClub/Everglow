@@ -1,7 +1,7 @@
-Acytaea_Lock.DisplayName: Acytaea_ Lock
-Acytaea_ShineStar.DisplayName: Acytaea_ Shine Star
-AcytaeaFlySword_1.DisplayName: Acytaea Fly Sword_1
-AcytaeaFlySword_2.DisplayName: Acytaea Fly Sword_2
+Acytaea_Lock.DisplayName: 雅斯塔亚·锁定
+Acytaea_ShineStar.DisplayName: 雅斯塔亚·星光
+AcytaeaFlySword_1.DisplayName: 雅斯塔亚的飞剑Ⅰ
+AcytaeaFlySword_2.DisplayName: 雅斯塔亚的飞剑Ⅱ
 AcytaeaFlySword.DisplayName: Acytaea Fly Sword
 AcytaeaFlySwordExplosion.DisplayName: Acytaea Fly Sword Explosion
 AcytaeaLaserSword.DisplayName: Acytaea Laser Sword
@@ -9,19 +9,19 @@ AcytaeaLaserSword2.DisplayName: Acytaea Laser Sword2
 AcytaeaMagicArray.DisplayName: Acytaea Magic Array
 AcytaeaMagicArraySword.DisplayName: Acytaea Magic Array Sword
 AcytaeaScratch.DisplayName: Acytaea Scratch
-AcytaeaSword_Following.DisplayName: Acytaea Sword_following
-AcytaeaSword_Projectile_Boss_Shoot.DisplayName: Acytaea Sword_projectile_ Boss_shoot
-AcytaeaSword_Projectile_Boss.DisplayName: Acytaea Sword_projectile_ Boss
-AcytaeaSword_Projectile_Tornado.DisplayName: Acytaea Sword_projectile_ Tornado
-AcytaeaSwordArray_0.DisplayName: Acytaea Sword Array_0
-AcytaeaSwordArray_1.DisplayName: Acytaea Sword Array_1
+AcytaeaSword_Following.DisplayName: 雅斯塔亚的剑·追踪
+AcytaeaSword_Projectile_Boss_Shoot.DisplayName: 雅斯塔亚的剑·首领飞剑
+AcytaeaSword_Projectile_Boss.DisplayName: 雅斯塔亚的剑·首领
+AcytaeaSword_Projectile_Tornado.DisplayName: 雅斯塔亚的剑·剑刃旋风
+AcytaeaSwordArray_0.DisplayName: 雅斯塔亚的剑阵Ⅰ
+AcytaeaSwordArray_1.DisplayName: 雅斯塔亚的剑阵Ⅱ
 AcytaeaSwordRain.DisplayName: Acytaea Sword Rain
 AcytaeaTornado.DisplayName: Acytaea Tornado
 BlackCorruptRain.DisplayName: Black Corrupt Rain
 BlackCorruptRain3.DisplayName: Black Corrupt Rain3
 BloodFountain.DisplayName: Blood Fountain
-BloodTusk_Sleep_Crack.DisplayName: Blood Tusk_ Sleep_ Crack
-BloodTusk_Tentacle.DisplayName: Blood Tusk_ Tentacle
+BloodTusk_Sleep_Crack.DisplayName: 鲜血獠牙·休眠裂隙
+BloodTusk_Tentacle.DisplayName: 鲜血獠牙·触须
 BloodTuskLongSpice.DisplayName: Blood Tusk Long Spice
 BlueFlame0.DisplayName: Blue Flame0
 BlueFlame0Little.DisplayName: Blue Flame0 Little
@@ -34,9 +34,9 @@ BrownFlame0Little.DisplayName: Brown Flame0 Little
 BurningLanternWreck.DisplayName: Burning Lantern Wreck
 ButterflyDream.DisplayName: Butterfly Dream
 CorMoth4DProj.DisplayName: Cor Moth4 D Proj
-CrutchRapier_Hostile.DisplayName: Crutch Rapier_ Hostile
-CrutchRapier_Stab_Hostile.DisplayName: Crutch Rapier_ Stab_ Hostile
-GoldLanternLine_NoTarget.DisplayName: Gold Lantern Line_ No Target
+CrutchRapier_Hostile.DisplayName: 拐杖刺剑·敌方
+CrutchRapier_Stab_Hostile.DisplayName: 拐杖刺剑·敌方突刺
+GoldLanternLine_NoTarget.DisplayName: 金灯连线·无目标
 GoldLanternLine.DisplayName: Gold Lantern Line
 GoldLanternLine3.DisplayName: Gold Lantern Line3
 GreenFlame0.DisplayName: Green Flame0
@@ -44,7 +44,7 @@ GreenFlame0Little.DisplayName: Green Flame0 Little
 GreenFlame0Split.DisplayName: Green Flame0 Split
 GreenFlame1Split.DisplayName: Green Flame1 Split
 ImmuneCircle.DisplayName: Immune Circle
-JellyBall_Electric_Explosion.DisplayName: Jelly Ball_ Electric_ Explosion
+JellyBall_Electric_Explosion.DisplayName: 球冻·电爆
 JellyBallCrystal.DisplayName: Jelly Ball Crystal
 JellyBallElectricKill.DisplayName: Jelly Ball Electric Kill
 JellyBallGelStream.DisplayName: Jelly Ball Gel Stream
@@ -55,9 +55,9 @@ LanternFlow.DisplayName: Lantern Flow
 LanternFlowLine.DisplayName: Lantern Flow Line
 LanternGhostKingExplosion.DisplayName: Lantern Ghost King Explosion
 LanternGhostKingPower.DisplayName: Lantern Ghost King Power
-Living_Jawbone_Huge_Ground_Wave.DisplayName: Living_ Jawbone_ Huge_ground_ Wave
-Living_Jawbone_Huge_Ground.DisplayName: Living_ Jawbone_ Huge_ground
-Living_Jawbone_Huge.DisplayName: Living_ Jawbone_ Huge
+Living_Jawbone_Huge_Ground_Wave.DisplayName: 巨型活颌骨·地面冲击波
+Living_Jawbone_Huge_Ground.DisplayName: 巨型活颌骨·地面
+Living_Jawbone_Huge.DisplayName: 巨型活颌骨
 MissileProjHostile.DisplayName: Missile Proj Hostile
 MothBall.DisplayName: Moth Ball
 MothBallExplosion.DisplayName: Moth Ball Explosion
@@ -70,40 +70,40 @@ PurpleFlame0.DisplayName: Purple Flame0
 PurpleFlame0Little.DisplayName: Purple Flame0 Little
 PurpleGreenFlame0.DisplayName: Purple Green Flame0
 PurpleGreenFlame0Little.DisplayName: Purple Green Flame0 Little
-Rapier_Slash.DisplayName: Rapier_ Slash
+Rapier_Slash.DisplayName: 刺剑·斩击
 RedFlame0.DisplayName: Red Flame0
 RedFlame0Little.DisplayName: Red Flame0 Little
 RedFlame0Split.DisplayName: Red Flame0 Split
 RedFlame1Split.DisplayName: Red Flame1 Split
 RedFlame2Split.DisplayName: Red Flame2 Split
-SmallLanternGroup_LanternRain.DisplayName: Small Lantern Group_ Lantern Rain
+SmallLanternGroup_LanternRain.DisplayName: 小灯笼群·灯雨
 SmallLanternGroup.DisplayName: Small Lantern Group
 SphereLanternProj.DisplayName: Sphere Lantern Proj
-Squamous_HitTile.DisplayName: Squamous_ Hit Tile
-Squamous_Slash.DisplayName: Squamous_ Slash
+Squamous_HitTile.DisplayName: 龙鳞古壳·撞击
+Squamous_Slash.DisplayName: 龙鳞古壳·斩击
 SquamousAirProj.DisplayName: Squamous Air Proj
 SquamousDashEffect.DisplayName: Squamous Dash Effect
 SquamousMoonBladePredict.DisplayName: Squamous Moon Blade Predict
 SquamousRockExplosion.DisplayName: Squamous Rock Explosion
-SquamousRockProj_Small.DisplayName: Squamous Rock Proj_small
+SquamousRockProj_Small.DisplayName: 龙鳞飞石·小型
 SquamousRockProj.DisplayName: Squamous Rock Proj
-SquamousRockSpike_Falling_Predict.DisplayName: Squamous Rock Spike_ Falling_ Predict
-SquamousRockSpike_Falling.DisplayName: Squamous Rock Spike_ Falling
+SquamousRockSpike_Falling_Predict.DisplayName: 龙鳞岩刺·落点预警
+SquamousRockSpike_Falling.DisplayName: 龙鳞岩刺·下落
 SquamousRockSpike.DisplayName: Squamous Rock Spike
-SquamousRollingStone_Fly.DisplayName: Squamous Rolling Stone_fly
+SquamousRollingStone_Fly.DisplayName: 龙鳞滚石·飞击
 SquamousRollingStone.DisplayName: Squamous Rolling Stone
-SquamousShell_Shade.DisplayName: Squamous Shell_shade
-Tusk_Ground_Little.DisplayName: Tusk_Ground_Little
-Tusk_Ground.DisplayName: Tusk_Ground
-TuskBloodPool_Close.DisplayName: Tusk Blood Pool_close
-TuskBloodPool_Open.DisplayName: Tusk Blood Pool_open
+SquamousShell_Shade.DisplayName: 龙鳞古壳·残影
+Tusk_Ground_Little.DisplayName: 獠牙·小型地刺
+Tusk_Ground.DisplayName: 獠牙·地面
+TuskBloodPool_Close.DisplayName: 獠牙血池·闭合
+TuskBloodPool_Open.DisplayName: 獠牙血池·开启
 TuskBloodPool.DisplayName: Tusk Blood Pool
 TuskCurse.DisplayName: Tusk Curse
-TuskSpice_WithGravity.DisplayName: Tusk Spice_ With Gravity
+TuskSpice_WithGravity.DisplayName: 獠牙尖刺·坠刺
 TuskSpice.DisplayName: Tusk Spice
-TuskWall_Wave.DisplayName: Tusk Wall_ Wave
-VampireMat_Tentacle_FromBackground.DisplayName: Vampire Mat_ Tentacle_ From Background
-VampireMat_Tentacle.DisplayName: Vampire Mat_ Tentacle
+TuskWall_Wave.DisplayName: 獠牙墙·波动
+VampireMat_Tentacle_FromBackground.DisplayName: 吸血魔毯·远处的触须
+VampireMat_Tentacle.DisplayName: 吸血魔毯·触须
 WheelShapeLantern3Layer.DisplayName: Wheel Shape Lantern3 Layer
 YellowFlame0.DisplayName: Yellow Flame0
 YellowFlame0Little.DisplayName: Yellow Flame0 Little

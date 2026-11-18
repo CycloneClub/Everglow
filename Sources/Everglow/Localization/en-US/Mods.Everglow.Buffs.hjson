@@ -62,7 +62,7 @@ AuburnSelfReinforcing: {
 }
 
 B_52Buff: {
-	DisplayName: B_52 Buff
+	DisplayName: B-52 Buff
 	Description: "While holding a launcher: +100% ranged attack speed, +25% ranged critical strike chance and +50% ranged damage"
 }
 
@@ -443,7 +443,7 @@ GoldenDelightBuff: {
 }
 
 GoldenLotusStaff_Buff: {
-	DisplayName: Golden Lotus Staff_ Buff
+	DisplayName: Golden Lotus Staff Buff
 	Description: ""
 }
 

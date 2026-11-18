@@ -5,7 +5,7 @@ BlackVine.MapEntry: "{$Mods.Everglow.Items.Placeables.BlackVine.DisplayName}"
 BloodifyPlatform.MapEntry: Bloodify Platform
 BloodyMossWheel.MapEntry: Bloody Moss Wheel
 BloodyMossWheelFinished.MapEntry: Bloody Moss Wheel Finished
-BoneAndPlatform_Tile.MapEntry: Bone And Platform_tile
+BoneAndPlatform_Tile.MapEntry: Bone Platform
 BottleOfNutShellFlowers.MapEntry: "{$Mods.Everglow.Items.Placeables.BottleOfNutShellFlowers.DisplayName}"
 CyanVineBar.MapEntry: "{$Mods.Everglow.Items.Materials.CyanVineBar.DisplayName}"
 CyanVineOreTile.MapEntry: Cyan Vine Ore Tile

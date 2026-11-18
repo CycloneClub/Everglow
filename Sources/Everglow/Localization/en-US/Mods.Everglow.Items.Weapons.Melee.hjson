@@ -4,12 +4,12 @@ AcroporaSpear: {
 }
 
 Acytaea_Sword_Item: {
-	DisplayName: Acytaea_sword_ Item
+	DisplayName: Acytaea’s Sword
 	Tooltip: ""
 }
 
 AdamantiteClub_Item: {
-	DisplayName: Adamantite Club_ Item
+	DisplayName: Adamantite Club
 	Tooltip: ""
 }
 
@@ -75,7 +75,7 @@ BlueRibbonBayonet: {
 }
 
 BorealWoodClub_Item: {
-	DisplayName: Boreal Wood Club_ Item
+	DisplayName: Boreal Wood Club
 	Tooltip: ""
 }
 
@@ -85,7 +85,7 @@ CactusBall: {
 }
 
 CactusClub_Item: {
-	DisplayName: Cactus Club_ Item
+	DisplayName: Cactus Club
 	Tooltip: ""
 }
 
@@ -95,7 +95,7 @@ CeremonialBlade: {
 }
 
 CharonDoubleSickle_Item: {
-	DisplayName: Charon Double Sickle_ Item
+	DisplayName: Charon Double Sickle
 	Tooltip: ""
 }
 
@@ -105,12 +105,12 @@ CheeseYoyo: {
 }
 
 ChlorophyteClub_Item: {
-	DisplayName: Chlorophyte Club_ Item
+	DisplayName: Chlorophyte Club
 	Tooltip: ""
 }
 
 CobaltClub_Item: {
-	DisplayName: Cobalt Club_ Item
+	DisplayName: Cobalt Club
 	Tooltip: ""
 }
 
@@ -125,17 +125,17 @@ CopperBayonet: {
 }
 
 CopperClub_Item: {
-	DisplayName: Copper Club_ Item
+	DisplayName: Copper Club
 	Tooltip: ""
 }
 
 CorruptClub_Item: {
-	DisplayName: Corrupt Club_ Item
+	DisplayName: Corrupt Club
 	Tooltip: ""
 }
 
 CrimsonClub_Item: {
-	DisplayName: Crimson Club_ Item
+	DisplayName: Crimson Club
 	Tooltip: ""
 }
 
@@ -145,12 +145,12 @@ CrutchBayonet: {
 }
 
 CrystalClub_Item: {
-	DisplayName: Crystal Club_ Item
+	DisplayName: Crystal Club
 	Tooltip: ""
 }
 
 CurseClub_Item: {
-	DisplayName: Curse Club_ Item
+	DisplayName: Curse Club
 	Tooltip: Right-click while airborne to smash; cursed and ichor homing clubs share a limit of 3 per player
 }
 
@@ -195,7 +195,7 @@ DreamStar: {
 }
 
 EbonwoodClub_Item: {
-	DisplayName: Ebonwood Club_ Item
+	DisplayName: Ebonwood Club
 	Tooltip: ""
 }
 
@@ -255,7 +255,7 @@ GlowWoodSword: {
 }
 
 GoldClub_Item: {
-	DisplayName: Gold Club_ Item
+	DisplayName: Gold Club
 	Tooltip: ""
 }
 
@@ -290,12 +290,12 @@ IchorBayonet: {
 }
 
 IchorClub_Item: {
-	DisplayName: Ichor Club_ Item
+	DisplayName: Ichor Club
 	Tooltip: Right-click while airborne to smash; cursed and ichor homing clubs share a limit of 3 per player
 }
 
 IronClub_Item: {
-	DisplayName: Iron Club_ Item
+	DisplayName: Iron Club
 	Tooltip: ""
 }
 
@@ -325,7 +325,7 @@ LanternYoyo: {
 }
 
 LeadClub_Item: {
-	DisplayName: Lead Club_ Item
+	DisplayName: Lead Club
 	Tooltip: ""
 }
 
@@ -364,7 +364,7 @@ MechanismHalberd: {
 }
 
 MeteorClub_Item: {
-	DisplayName: Meteor Club_ Item
+	DisplayName: Meteor Club
 	Tooltip: ""
 }
 
@@ -374,27 +374,27 @@ MothYoyo: {
 }
 
 MythrilClub_Item: {
-	DisplayName: Mythril Club_ Item
+	DisplayName: Mythril Club
 	Tooltip: ""
 }
 
 OrichalcumClub_Item: {
-	DisplayName: Orichalcum Club_ Item
+	DisplayName: Orichalcum Club
 	Tooltip: ""
 }
 
 PalladiumClub_Item: {
-	DisplayName: Palladium Club_ Item
+	DisplayName: Palladium Club
 	Tooltip: Right-click while airborne to smash; returning clubs heal after hitting enemies, up to 3 life for a normal smash or 5 for a strong smash
 }
 
 PalmWoodClub_Item: {
-	DisplayName: Palm Wood Club_ Item
+	DisplayName: Palm Wood Club
 	Tooltip: ""
 }
 
 PearlwoodClub_Item: {
-	DisplayName: Pearlwood Club_ Item
+	DisplayName: Pearlwood Club
 	Tooltip: ""
 }
 
@@ -404,7 +404,7 @@ PineStab: {
 }
 
 PlatinumClub_Item: {
-	DisplayName: Platinum Club_ Item
+	DisplayName: Platinum Club
 	Tooltip: ""
 }
 
@@ -414,7 +414,7 @@ PlatinumStabbingSword: {
 }
 
 PrimordialJadeWinged_Spear: {
-	DisplayName: Primordial Jade Winged_ Spear
+	DisplayName: Primordial Jade Winged-Spear
 	Tooltip: ""
 }
 
@@ -454,7 +454,7 @@ ResistanceWireBayonet: {
 }
 
 RichMahoganyClub_Item: {
-	DisplayName: Rich Mahogany Club_ Item
+	DisplayName: Rich Mahogany Club
 	Tooltip: ""
 }
 
@@ -488,7 +488,7 @@ ScarpasScissors: {
 }
 
 ShadewoodClub_Item: {
-	DisplayName: Shadewood Club_ Item
+	DisplayName: Shadewood Club
 	Tooltip: ""
 }
 
@@ -498,7 +498,7 @@ ShadowEulogist: {
 }
 
 SilverClub_Item: {
-	DisplayName: Silver Club_ Item
+	DisplayName: Silver Club
 	Tooltip: ""
 }
 
@@ -508,12 +508,12 @@ SilverStabbingSword: {
 }
 
 SpikeClub_Item: {
-	DisplayName: Spike Club_ Item
+	DisplayName: Spike Club
 	Tooltip: ""
 }
 
 StarDancer_Item: {
-	DisplayName: Star Dancer_ Item
+	DisplayName: Star Dancer
 	Tooltip: ""
 }
 
@@ -528,7 +528,7 @@ SwordfishBeak: {
 }
 
 TinClub_Item: {
-	DisplayName: Tin Club_ Item
+	DisplayName: Tin Club
 	Tooltip: ""
 }
 
@@ -538,7 +538,7 @@ TinStabbingSword: {
 }
 
 TitaniumClub_Item: {
-	DisplayName: Titanium Club_ Item
+	DisplayName: Titanium Club
 	Tooltip:
 		'''
 		Right-click while high above the ground to smash down
@@ -567,7 +567,7 @@ TrueDeathSickle: {
 }
 
 TungstenClub_Item: {
-	DisplayName: Tungsten Club_ Item
+	DisplayName: Tungsten Club
 	Tooltip: ""
 }
 
@@ -611,7 +611,7 @@ VortexVanquisherItem: {
 }
 
 WoodenClub_Item: {
-	DisplayName: Wooden Club_ Item
+	DisplayName: Wooden Club
 	Tooltip: ""
 }
 

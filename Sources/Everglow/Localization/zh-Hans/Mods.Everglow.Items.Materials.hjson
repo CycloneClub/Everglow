@@ -4,17 +4,17 @@ AuburnRodSkeleton: {
 }
 
 BellPepper_Green: {
-	DisplayName: Bell Pepper_green
+	DisplayName: 青椒
 	Tooltip: ""
 }
 
 BellPepper_Red: {
-	DisplayName: Bell Pepper_red
+	DisplayName: 红甜椒
 	Tooltip: ""
 }
 
 BellPepper_Yellow: {
-	DisplayName: Bell Pepper_yellow
+	DisplayName: 黄甜椒
 	Tooltip: ""
 }
 
@@ -159,7 +159,7 @@ Garlic: {
 }
 
 Gelatin_Sheet: {
-	DisplayName: Gelatin_ Sheet
+	DisplayName: 吉利丁片
 	Tooltip: ""
 }
 

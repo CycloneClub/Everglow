@@ -1,10 +1,10 @@
 AgedGreenCourtBrick_Item: {
-	DisplayName: Aged Green Court Brick_ Item
+	DisplayName: 斑驳绿王庭砖
 	Tooltip: ""
 }
 
 AgedGreenCourtWall_Item: {
-	DisplayName: Aged Green Court Wall_ Item
+	DisplayName: 斑驳绿王庭砖墙
 	Tooltip: ""
 }
 
@@ -29,147 +29,147 @@ AlgaeExtractor_Item: {
 }
 
 ArrowSign_Item_Down: {
-	DisplayName: Arrow Sign_ Item_ Down
+	DisplayName: 箭头路牌（向下）
 	Tooltip: ""
 }
 
 ArrowSign_Item_Left: {
-	DisplayName: Arrow Sign_ Item_ Left
+	DisplayName: 箭头路牌（向左）
 	Tooltip: ""
 }
 
 ArrowSign_Item_LeftDown: {
-	DisplayName: Arrow Sign_ Item_ Left Down
+	DisplayName: 箭头路牌（向左下）
 	Tooltip: ""
 }
 
 ArrowSign_Item_LeftUp: {
-	DisplayName: Arrow Sign_ Item_ Left Up
+	DisplayName: 箭头路牌（向左上）
 	Tooltip: ""
 }
 
 ArrowSign_Item_Right: {
-	DisplayName: Arrow Sign_ Item_ Right
+	DisplayName: 箭头路牌（向右）
 	Tooltip: ""
 }
 
 ArrowSign_Item_RightDown: {
-	DisplayName: Arrow Sign_ Item_ Right Down
+	DisplayName: 箭头路牌（向右下）
 	Tooltip: ""
 }
 
 ArrowSign_Item_RightUp: {
-	DisplayName: Arrow Sign_ Item_ Right Up
+	DisplayName: 箭头路牌（向右上）
 	Tooltip: ""
 }
 
 ArrowSign_Item_Up: {
-	DisplayName: Arrow Sign_ Item_ Up
+	DisplayName: 箭头路牌（向上）
 	Tooltip: ""
 }
 
 AshWoodElevator_Indicator_Lamp_Item: {
-	DisplayName: Ash Wood Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 白蜡木电梯指示灯
 	Tooltip: ""
 }
 
 AshWoodElevator_Item: {
-	DisplayName: Ash Wood Elevator_ Item
+	DisplayName: 白蜡木电梯
 	Tooltip: ""
 }
 
 BakeryBuckHead_Item: {
-	DisplayName: Bakery Buck Head_ Item
+	DisplayName: 面包店鹿首挂饰
 	Tooltip: ""
 }
 
 BakeryChair_Item: {
-	DisplayName: Bakery Chair_ Item
+	DisplayName: 面包店椅子
 	Tooltip: ""
 }
 
 BakeryCounter_Item: {
-	DisplayName: Bakery Counter_ Item
+	DisplayName: 面包店柜台
 	Tooltip: ""
 }
 
 BakeryCounterSide_Item: {
-	DisplayName: Bakery Counter Side_ Item
+	DisplayName: 面包店侧柜
 	Tooltip: ""
 }
 
 BakeryGlassTable_Item: {
-	DisplayName: Bakery Glass Table_ Item
+	DisplayName: 面包店玻璃桌
 	Tooltip: ""
 }
 
 BakeryHangingLamp_Item: {
-	DisplayName: Bakery Hanging Lamp_ Item
+	DisplayName: 面包店吊灯
 	Tooltip: ""
 }
 
 BakeryMenu_Item: {
-	DisplayName: Bakery Menu_ Item
+	DisplayName: 面包店菜单
 	Tooltip: ""
 }
 
 BakeryShelf_Item: {
-	DisplayName: Bakery Shelf_ Item
+	DisplayName: 面包店货架
 	Tooltip: ""
 }
 
 BakerySideLamp_Item: {
-	DisplayName: Bakery Side Lamp_ Item
+	DisplayName: 面包店壁灯
 	Tooltip: ""
 }
 
 BakeryTable_Item: {
-	DisplayName: Bakery Table_ Item
+	DisplayName: 面包店餐桌
 	Tooltip: ""
 }
 
 BakeryVase_GoldFlower: {
-	DisplayName: Bakery Vase_ Gold Flower
+	DisplayName: 金花瓶栽
 	Tooltip: ""
 }
 
 BakeryVase_LightTanFlower: {
-	DisplayName: Bakery Vase_ Light Tan Flower
+	DisplayName: 浅褐花瓶栽
 	Tooltip: ""
 }
 
 BakeryVase_RedFlower: {
-	DisplayName: Bakery Vase_ Red Flower
+	DisplayName: 红花瓶栽
 	Tooltip: ""
 }
 
 BallooonElevator_Indicator_Lamp_Item: {
-	DisplayName: Ballooon Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 气球电梯指示灯
 	Tooltip: ""
 }
 
 BallooonElevator_Item: {
-	DisplayName: Ballooon Elevator_ Item
+	DisplayName: 气球电梯
 	Tooltip: ""
 }
 
 BambooElevator_Indicator_Lamp_Item: {
-	DisplayName: Bamboo Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 竹制电梯指示灯
 	Tooltip: ""
 }
 
 BambooElevator_Item: {
-	DisplayName: Bamboo Elevator_ Item
+	DisplayName: 竹制电梯
 	Tooltip: ""
 }
 
 BarrierBlock_Item: {
-	DisplayName: Barrier Block_ Item
+	DisplayName: 屏障块
 	Tooltip: ""
 }
 
 BarrierPlatform_Item: {
-	DisplayName: Barrier Platform_ Item
+	DisplayName: 屏障平台
 	Tooltip: ""
 }
 
@@ -204,12 +204,12 @@ BloodyTuskTrophy: {
 }
 
 BlueDungeonElevator_Indicator_Lamp_Item: {
-	DisplayName: Blue Dungeon Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 蓝砖地牢电梯指示灯
 	Tooltip: ""
 }
 
 BlueDungeonElevator_Item: {
-	DisplayName: Blue Dungeon Elevator_ Item
+	DisplayName: 蓝砖地牢电梯
 	Tooltip: ""
 }
 
@@ -227,22 +227,22 @@ BlueGlassbulbBand_Item: {
 }
 
 BoneElevator_Indicator_Lamp_Item: {
-	DisplayName: Bone Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 骨制电梯指示灯
 	Tooltip: ""
 }
 
 BoneElevator_Item: {
-	DisplayName: Bone Elevator_ Item
+	DisplayName: 骨制电梯
 	Tooltip: ""
 }
 
 BorealWoodElevator_Indicator_Lamp_Item: {
-	DisplayName: Boreal Wood Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 针叶木电梯指示灯
 	Tooltip: ""
 }
 
 BorealWoodElevator_Item: {
-	DisplayName: Boreal Wood Elevator_ Item
+	DisplayName: 针叶木电梯
 	Tooltip: ""
 }
 
@@ -267,12 +267,12 @@ CableCarJoin_Item: {
 }
 
 CactusElevator_Indicator_Lamp_Item: {
-	DisplayName: Cactus Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 仙人掌电梯指示灯
 	Tooltip: ""
 }
 
 CactusElevator_Item: {
-	DisplayName: Cactus Elevator_ Item
+	DisplayName: 仙人掌电梯
 	Tooltip: ""
 }
 
@@ -287,7 +287,7 @@ CanteenExit_Item: {
 }
 
 Casserole_Item: {
-	DisplayName: Casserole_ Item
+	DisplayName: 砂锅
 	Tooltip: ""
 }
 
@@ -326,27 +326,27 @@ CleaverRack_Item: {
 }
 
 ClothesShelf_Feature_Nature_Item: {
-	DisplayName: Clothes Shelf_ Feature_ Nature_ Item
+	DisplayName: 自然风衣架
 	Tooltip: ""
 }
 
 ClothesShopBonsai_Feature_Nature_Item: {
-	DisplayName: Clothes Shop Bonsai_ Feature_ Nature_ Item
+	DisplayName: 自然风服装店盆景
 	Tooltip: ""
 }
 
 ClothesShopModel_Feature_Nature_Item: {
-	DisplayName: Clothes Shop Model_ Feature_ Nature_ Item
+	DisplayName: 自然风服装店模特
 	Tooltip: ""
 }
 
 ClothesShopSofa_Feature_Nature_Item: {
-	DisplayName: Clothes Shop Sofa_ Feature_ Nature_ Item
+	DisplayName: 自然风服装店沙发
 	Tooltip: ""
 }
 
 ClothesShopTable_Feature_Nature_Item: {
-	DisplayName: Clothes Shop Table_ Feature_ Nature_ Item
+	DisplayName: 自然风服装店桌
 	Tooltip: ""
 }
 
@@ -361,7 +361,7 @@ CorruptOrbStonePost: {
 }
 
 CrackedForestThrone_Item: {
-	DisplayName: Cracked Forest Throne_ Item
+	DisplayName: 开裂的森林王座
 	Tooltip: ""
 }
 
@@ -376,12 +376,12 @@ CrimsonOrbStonePost: {
 }
 
 CrystalElevator_Indicator_Lamp_Item: {
-	DisplayName: Crystal Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 水晶电梯指示灯
 	Tooltip: ""
 }
 
 CrystalElevator_Item: {
-	DisplayName: Crystal Elevator_ Item
+	DisplayName: 水晶电梯
 	Tooltip: ""
 }
 
@@ -431,7 +431,7 @@ DarkLakeBottomMudWall_Item: {
 }
 
 DarkSludgeBlock_Item: {
-	DisplayName: Dark Sludge Block_ Item
+	DisplayName: 黑沼泥块
 	Tooltip: ""
 }
 
@@ -441,7 +441,7 @@ DecayingWood_Item: {
 }
 
 DecayingWoodWall_Item: {
-	DisplayName: Decaying Wood Wall_ Item
+	DisplayName: 朽木墙
 	Tooltip: ""
 }
 
@@ -456,22 +456,22 @@ DecaySandSoilWall_Item: {
 }
 
 Desert_NavyAnkhBanner_Item: {
-	DisplayName: Desert_ Navy Ankh Banner_ Item
+	DisplayName: 沙漠海军生命十字旗
 	Tooltip: ""
 }
 
 Desert_NavyBanner_Item: {
-	DisplayName: Desert_ Navy Banner_ Item
+	DisplayName: 沙漠海军旗
 	Tooltip: ""
 }
 
 Desert_NavyOmegaBanner_Item: {
-	DisplayName: Desert_ Navy Omega Banner_ Item
+	DisplayName: 沙漠海军欧米伽旗
 	Tooltip: ""
 }
 
 Desert_NavySnakeBanner_Item: {
-	DisplayName: Desert_ Navy Snake Banner_ Item
+	DisplayName: 沙漠海军蛇纹旗
 	Tooltip: ""
 }
 
@@ -491,7 +491,7 @@ DoubleArmsChineseStreetLamp: {
 }
 
 DragonChest_DarkDragonRoom_Item: {
-	DisplayName: Dragon Chest_ Dark Dragon Room_ Item
+	DisplayName: 暗龙室宝箱
 	Tooltip: ""
 }
 
@@ -511,22 +511,22 @@ DryIsleBamboo_Item: {
 }
 
 DynastyElevator_Indicator_Lamp_Item: {
-	DisplayName: Dynasty Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 王朝木电梯指示灯
 	Tooltip: ""
 }
 
 DynastyElevator_Item: {
-	DisplayName: Dynasty Elevator_ Item
+	DisplayName: 王朝木电梯
 	Tooltip: ""
 }
 
 EbonwoodElevator_Indicator_Lamp_Item: {
-	DisplayName: Ebonwood Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 乌木电梯指示灯
 	Tooltip: ""
 }
 
 EbonwoodElevator_Item: {
-	DisplayName: Ebonwood Elevator_ Item
+	DisplayName: 乌木电梯
 	Tooltip: ""
 }
 
@@ -536,17 +536,17 @@ ElevatorManual: {
 }
 
 ExampleElevator_Indicator_Lamp_Item: {
-	DisplayName: Example Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 示例电梯指示灯
 	Tooltip: ""
 }
 
 ExampleElevator_Item: {
-	DisplayName: Example Elevator_ Item
+	DisplayName: 示例电梯
 	Tooltip: ""
 }
 
 ExamplePylon_Item: {
-	DisplayName: Example Pylon_ Item
+	DisplayName: 示例晶塔
 	Tooltip: ""
 }
 
@@ -571,7 +571,7 @@ FemaleLampWood_Item: {
 }
 
 FevensPortrait_Item: {
-	DisplayName: Fevens Portrait_ Item
+	DisplayName: 霏文士画像
 	Tooltip: ""
 }
 
@@ -581,7 +581,7 @@ FireCrackerLauncher: {
 }
 
 FireflyMoss_Item: {
-	DisplayName: Firefly Moss_ Item
+	DisplayName: 萤火苔
 	Tooltip: ""
 }
 
@@ -596,12 +596,12 @@ FireflyPylonItem: {
 }
 
 FleshElevator_Indicator_Lamp_Item: {
-	DisplayName: Flesh Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 血肉电梯指示灯
 	Tooltip: ""
 }
 
 FleshElevator_Item: {
-	DisplayName: Flesh Elevator_ Item
+	DisplayName: 血肉电梯
 	Tooltip: ""
 }
 
@@ -631,22 +631,22 @@ FluoriteLampPost_Item: {
 }
 
 ForestRainVineTile_Thick_Item: {
-	DisplayName: Forest Rain Vine Tile_ Thick_ Item
+	DisplayName: 粗雨林藤
 	Tooltip: ""
 }
 
 ForestRainVineTile_Thin_Item: {
-	DisplayName: Forest Rain Vine Tile_ Thin_ Item
+	DisplayName: 细雨林藤
 	Tooltip: ""
 }
 
 FrozenElevator_Indicator_Lamp_Item: {
-	DisplayName: Frozen Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 冰冻电梯指示灯
 	Tooltip: ""
 }
 
 FrozenElevator_Item: {
-	DisplayName: Frozen Elevator_ Item
+	DisplayName: 冰冻电梯
 	Tooltip: ""
 }
 
@@ -696,7 +696,7 @@ FurnaceLavaLamp_Item: {
 }
 
 FurnaceMeltingChest_Item: {
-	DisplayName: Furnace Melting Chest_ Item
+	DisplayName: 熔炉熔炼箱
 	Tooltip: ""
 }
 
@@ -741,17 +741,17 @@ GiantGhostClawBarnacle_Item: {
 }
 
 GiantPineTreeElevator_Item: {
-	DisplayName: Giant Pine Tree Elevator_ Item
+	DisplayName: 巨松电梯
 	Tooltip: ""
 }
 
 GlassElevator_Indicator_Lamp_Item: {
-	DisplayName: Glass Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 玻璃电梯指示灯
 	Tooltip: ""
 }
 
 GlassElevator_Item: {
-	DisplayName: Glass Elevator_ Item
+	DisplayName: 玻璃电梯
 	Tooltip: ""
 }
 
@@ -926,32 +926,32 @@ GlowWoodWorkBench: {
 }
 
 GoldenElevator_Indicator_Lamp_Item: {
-	DisplayName: Golden Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 黄金电梯指示灯
 	Tooltip: ""
 }
 
 GoldenElevator_Item: {
-	DisplayName: Golden Elevator_ Item
+	DisplayName: 黄金电梯
 	Tooltip: ""
 }
 
 GraniteElevator_Indicator_Lamp_Item: {
-	DisplayName: Granite Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 花岗岩电梯指示灯
 	Tooltip: ""
 }
 
 GraniteElevator_Item: {
-	DisplayName: Granite Elevator_ Item
+	DisplayName: 花岗岩电梯
 	Tooltip: ""
 }
 
 GravelStoreWall_Thick_Item: {
-	DisplayName: Gravel Store Wall_ Thick_ Item
+	DisplayName: 厚砾石仓库墙
 	Tooltip: ""
 }
 
 GravelStoreWall_Thin_Item: {
-	DisplayName: Gravel Store Wall_ Thin_ Item
+	DisplayName: 薄砾石仓库墙
 	Tooltip: ""
 }
 
@@ -966,12 +966,12 @@ GreenCourtWall_Item: {
 }
 
 GreenDungeonElevator_Indicator_Lamp_Item: {
-	DisplayName: Green Dungeon Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 绿砖地牢电梯指示灯
 	Tooltip: ""
 }
 
 GreenDungeonElevator_Item: {
-	DisplayName: Green Dungeon Elevator_ Item
+	DisplayName: 绿砖地牢电梯
 	Tooltip: ""
 }
 
@@ -999,7 +999,7 @@ GreenRelicWall_Item: {
 }
 
 GreenRelicWall_Style2_Item: {
-	DisplayName: Green Relic Wall_ Style2_ Item
+	DisplayName: 绿遗迹砖墙（二型）
 	Tooltip: ""
 }
 
@@ -1124,17 +1124,17 @@ Hob_Silver_Item: {
 }
 
 HolographicPylon_Item: {
-	DisplayName: Holographic Pylon_ Item
+	DisplayName: 全息晶塔
 	Tooltip: ""
 }
 
 HoneyElevator_Indicator_Lamp_Item: {
-	DisplayName: Honey Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 蜂蜜电梯指示灯
 	Tooltip: ""
 }
 
 HoneyElevator_Item: {
-	DisplayName: Honey Elevator_ Item
+	DisplayName: 蜂蜜电梯
 	Tooltip: ""
 }
 
@@ -1144,12 +1144,12 @@ HumicMud_Item: {
 }
 
 HydraMud_Item: {
-	DisplayName: Hydra Mud_ Item
+	DisplayName: 水螅泥
 	Tooltip: ""
 }
 
 IronTrackScaffolding_Item: {
-	DisplayName: Iron Track Scaffolding_ Item
+	DisplayName: 铁轨脚手架
 	Tooltip: ""
 }
 
@@ -1354,12 +1354,12 @@ LargeFireBulbTestItem: {
 }
 
 LesionElevator_Indicator_Lamp_Item: {
-	DisplayName: Lesion Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 病变电梯指示灯
 	Tooltip: ""
 }
 
 LesionElevator_Item: {
-	DisplayName: Lesion Elevator_ Item
+	DisplayName: 病变电梯
 	Tooltip: ""
 }
 
@@ -1377,12 +1377,12 @@ LightbulbBand_Item: {
 }
 
 LihzahrdElevator_Indicator_Lamp_Item: {
-	DisplayName: Lihzahrd Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 丛林蜥蜴电梯指示灯
 	Tooltip: ""
 }
 
 LihzahrdElevator_Item: {
-	DisplayName: Lihzahrd Elevator_ Item
+	DisplayName: 丛林蜥蜴电梯
 	Tooltip: ""
 }
 
@@ -1397,37 +1397,37 @@ LiveFluorescentWoodWall: {
 }
 
 LivingWoodElevator_Indicator_Lamp_Item: {
-	DisplayName: Living Wood Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 生命木电梯指示灯
 	Tooltip: ""
 }
 
 LivingWoodElevator_Item: {
-	DisplayName: Living Wood Elevator_ Item
+	DisplayName: 生命木电梯
 	Tooltip: ""
 }
 
 MailBox_Item: {
-	DisplayName: Mail Box_ Item
+	DisplayName: 邮箱
 	Tooltip: ""
 }
 
 MarbleElevator_Indicator_Lamp_Item: {
-	DisplayName: Marble Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 大理石电梯指示灯
 	Tooltip: ""
 }
 
 MarbleElevator_Item: {
-	DisplayName: Marble Elevator_ Item
+	DisplayName: 大理石电梯
 	Tooltip: ""
 }
 
 MartianElevator_Indicator_Lamp_Item: {
-	DisplayName: Martian Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 火星电梯指示灯
 	Tooltip: ""
 }
 
 MartianElevator_Item: {
-	DisplayName: Martian Elevator_ Item
+	DisplayName: 火星电梯
 	Tooltip: ""
 }
 
@@ -1437,12 +1437,12 @@ MeltingButton_Item: {
 }
 
 MeteoriteElevator_Indicator_Lamp_Item: {
-	DisplayName: Meteorite Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 陨石电梯指示灯
 	Tooltip: ""
 }
 
 MeteoriteElevator_Item: {
-	DisplayName: Meteorite Elevator_ Item
+	DisplayName: 陨石电梯
 	Tooltip: ""
 }
 
@@ -1452,22 +1452,22 @@ MetroHelper: {
 }
 
 MetroSign_Item: {
-	DisplayName: Metro Sign_ Item
+	DisplayName: 地铁标志
 	Tooltip: ""
 }
 
 MetroStationSign_PylonSquare_Item: {
-	DisplayName: Metro Station Sign_ Pylon Square_ Item
+	DisplayName: 晶塔广场站牌
 	Tooltip: ""
 }
 
 MetroStationSign_YggdrasilTown_Item: {
-	DisplayName: Metro Station Sign_ Yggdrasil Town_ Item
+	DisplayName: 天穹镇站牌
 	Tooltip: ""
 }
 
 MorphoFrame_Item: {
-	DisplayName: Morpho Frame_ Item
+	DisplayName: 闪蝶标本框
 	Tooltip: ""
 }
 
@@ -1482,7 +1482,7 @@ MossProneSandSoilWall_Item: {
 }
 
 MossyDockWood_Item: {
-	DisplayName: Mossy Dock Wood_ Item
+	DisplayName: 生苔的码头木板
 	Tooltip: ""
 }
 
@@ -1492,22 +1492,22 @@ MothRelic: {
 }
 
 MushroomElevator_Indicator_Lamp_Item: {
-	DisplayName: Mushroom Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 蘑菇电梯指示灯
 	Tooltip: ""
 }
 
 MushroomElevator_Item: {
-	DisplayName: Mushroom Elevator_ Item
+	DisplayName: 蘑菇电梯
 	Tooltip: ""
 }
 
 NebulaElevator_Indicator_Lamp_Item: {
-	DisplayName: Nebula Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 星云电梯指示灯
 	Tooltip: ""
 }
 
 NebulaElevator_Item: {
-	DisplayName: Nebula Elevator_ Item
+	DisplayName: 星云电梯
 	Tooltip: ""
 }
 
@@ -1517,17 +1517,17 @@ NoctilucentFluoriteLump_Item: {
 }
 
 NormalEscalator_Item: {
-	DisplayName: Normal Escalator_ Item
+	DisplayName: 自动扶梯
 	Tooltip: ""
 }
 
 ObsidianElevator_Indicator_Lamp_Item: {
-	DisplayName: Obsidian Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 黑曜石电梯指示灯
 	Tooltip: ""
 }
 
 ObsidianElevator_Item: {
-	DisplayName: Obsidian Elevator_ Item
+	DisplayName: 黑曜石电梯
 	Tooltip: ""
 }
 
@@ -1542,22 +1542,22 @@ OldMossWall_Item: {
 }
 
 PalmWoodElevator_Indicator_Lamp_Item: {
-	DisplayName: Palm Wood Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 棕榈木电梯指示灯
 	Tooltip: ""
 }
 
 PalmWoodElevator_Item: {
-	DisplayName: Palm Wood Elevator_ Item
+	DisplayName: 棕榈木电梯
 	Tooltip: ""
 }
 
 PearlwoodElevator_Indicator_Lamp_Item: {
-	DisplayName: Pearlwood Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 珍珠木电梯指示灯
 	Tooltip: ""
 }
 
 PearlwoodElevator_Item: {
-	DisplayName: Pearlwood Elevator_ Item
+	DisplayName: 珍珠木电梯
 	Tooltip: ""
 }
 
@@ -1567,27 +1567,27 @@ PierWithSlabs: {
 }
 
 PierWithSlabsTop_Item: {
-	DisplayName: Pier With Slabs Top_ Item
+	DisplayName: 石板顶桥墩
 	Tooltip: ""
 }
 
 PinkDungeonElevator_Indicator_Lamp_Item: {
-	DisplayName: Pink Dungeon Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 粉砖地牢电梯指示灯
 	Tooltip: ""
 }
 
 PinkDungeonElevator_Item: {
-	DisplayName: Pink Dungeon Elevator_ Item
+	DisplayName: 粉砖地牢电梯
 	Tooltip: ""
 }
 
 PlantSpecimen_Branch_Item: {
-	DisplayName: Plant Specimen_ Branch_ Item
+	DisplayName: 枝条标本
 	Tooltip: ""
 }
 
 PlantSpecimen_Fern_Item: {
-	DisplayName: Plant Specimen_ Fern_ Item
+	DisplayName: 蕨类标本
 	Tooltip: ""
 }
 
@@ -1597,22 +1597,22 @@ PlumBlossomInABowl: {
 }
 
 PumpkinElevator_Indicator_Lamp_Item: {
-	DisplayName: Pumpkin Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 南瓜电梯指示灯
 	Tooltip: ""
 }
 
 PumpkinElevator_Item: {
-	DisplayName: Pumpkin Elevator_ Item
+	DisplayName: 南瓜电梯
 	Tooltip: ""
 }
 
 QuestBoard_Item: {
-	DisplayName: Quest Board_ Item
+	DisplayName: 任务公告板
 	Tooltip: ""
 }
 
 QuestCounter_Item: {
-	DisplayName: Quest Counter_ Item
+	DisplayName: 任务柜台
 	Tooltip: ""
 }
 
@@ -1630,12 +1630,12 @@ RedGlassbulbBand_Item: {
 }
 
 ReefElevator_Indicator_Lamp_Item: {
-	DisplayName: Reef Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 珊瑚礁电梯指示灯
 	Tooltip: ""
 }
 
 ReefElevator_Item: {
-	DisplayName: Reef Elevator_ Item
+	DisplayName: 珊瑚礁电梯
 	Tooltip: ""
 }
 
@@ -1645,7 +1645,7 @@ Refrigerator_Silver_Item: {
 }
 
 Relic_LanternGhostKing: {
-	DisplayName: Relic_ Lantern Ghost King
+	DisplayName: 灯笼鬼王圣物
 	Tooltip: ""
 }
 
@@ -1655,12 +1655,12 @@ RestaurantLogoBoard_Item: {
 }
 
 RichMahoganyElevator_Indicator_Lamp_Item: {
-	DisplayName: Rich Mahogany Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 红木电梯指示灯
 	Tooltip: ""
 }
 
 RichMahoganyElevator_Item: {
-	DisplayName: Rich Mahogany Elevator_ Item
+	DisplayName: 红木电梯
 	Tooltip: ""
 }
 
@@ -1685,12 +1685,12 @@ RoomBlackBox_Item: {
 }
 
 RubyDarkGoldChest_BloodyChurch_Item: {
-	DisplayName: Ruby Dark Gold Chest_ Bloody Church_ Item
+	DisplayName: 血色教堂红宝石暗金箱
 	Tooltip: ""
 }
 
 RuinTorch_Item: {
-	DisplayName: Ruin Torch_ Item
+	DisplayName: 遗迹火把
 	Tooltip: ""
 }
 
@@ -1700,17 +1700,17 @@ RustBronzeTreasureChest_Item: {
 }
 
 SandgoldLantern_Item: {
-	DisplayName: Sandgold Lantern_ Item
+	DisplayName: 沙金灯笼
 	Tooltip: ""
 }
 
 SandstoneElevator_Indicator_Lamp_Item: {
-	DisplayName: Sandstone Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 沙岩电梯指示灯
 	Tooltip: ""
 }
 
 SandstoneElevator_Item: {
-	DisplayName: Sandstone Elevator_ Item
+	DisplayName: 沙岩电梯
 	Tooltip: ""
 }
 
@@ -1725,12 +1725,12 @@ ShabbyPylonItem: {
 }
 
 ShadewoodElevator_Indicator_Lamp_Item: {
-	DisplayName: Shadewood Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 暗影木电梯指示灯
 	Tooltip: ""
 }
 
 ShadewoodElevator_Item: {
-	DisplayName: Shadewood Elevator_ Item
+	DisplayName: 暗影木电梯
 	Tooltip: ""
 }
 
@@ -1755,27 +1755,27 @@ SideHangingLantern_White: {
 }
 
 SkywareElevator_Indicator_Lamp_Item: {
-	DisplayName: Skyware Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 天域电梯指示灯
 	Tooltip: ""
 }
 
 SkywareElevator_Item: {
-	DisplayName: Skyware Elevator_ Item
+	DisplayName: 天域电梯
 	Tooltip: ""
 }
 
 SlimeElevator_Indicator_Lamp_Item: {
-	DisplayName: Slime Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 史莱姆电梯指示灯
 	Tooltip: ""
 }
 
 SlimeElevator_Item: {
-	DisplayName: Slime Elevator_ Item
+	DisplayName: 史莱姆电梯
 	Tooltip: ""
 }
 
 SluiceWallLamp_Item: {
-	DisplayName: Sluice Wall Lamp_ Item
+	DisplayName: 水闸壁灯
 	Tooltip: ""
 }
 
@@ -1820,32 +1820,32 @@ SnowPineWoodWall: {
 }
 
 SolarElevator_Indicator_Lamp_Item: {
-	DisplayName: Solar Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 日耀电梯指示灯
 	Tooltip: ""
 }
 
 SolarElevator_Item: {
-	DisplayName: Solar Elevator_ Item
+	DisplayName: 日耀电梯
 	Tooltip: ""
 }
 
 SpiderElevator_Indicator_Lamp_Item: {
-	DisplayName: Spider Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 蜘蛛电梯指示灯
 	Tooltip: ""
 }
 
 SpiderElevator_Item: {
-	DisplayName: Spider Elevator_ Item
+	DisplayName: 蜘蛛电梯
 	Tooltip: ""
 }
 
 SpookyElevator_Indicator_Lamp_Item: {
-	DisplayName: Spooky Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 阴森木电梯指示灯
 	Tooltip: ""
 }
 
 SpookyElevator_Item: {
-	DisplayName: Spooky Elevator_ Item
+	DisplayName: 阴森木电梯
 	Tooltip: ""
 }
 
@@ -1860,12 +1860,12 @@ SquamousShellTrophy: {
 }
 
 StardustElevator_Indicator_Lamp_Item: {
-	DisplayName: Stardust Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 星尘电梯指示灯
 	Tooltip: ""
 }
 
 StardustElevator_Item: {
-	DisplayName: Stardust Elevator_ Item
+	DisplayName: 星尘电梯
 	Tooltip: ""
 }
 
@@ -1875,17 +1875,17 @@ SteamBoiler_Item: {
 }
 
 SteamBox_Item: {
-	DisplayName: Steam Box_ Item
+	DisplayName: 蒸箱
 	Tooltip: ""
 }
 
 SteampunkElevator_Indicator_Lamp_Item: {
-	DisplayName: Steampunk Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 蒸汽朋克电梯指示灯
 	Tooltip: ""
 }
 
 SteampunkElevator_Item: {
-	DisplayName: Steampunk Elevator_ Item
+	DisplayName: 蒸汽朋克电梯
 	Tooltip: ""
 }
 
@@ -1955,7 +1955,7 @@ TownBrick_Khaki_Wall_Item: {
 }
 
 TownGatePylon_Item: {
-	DisplayName: Town Gate Pylon_ Item
+	DisplayName: 城门晶塔
 	Tooltip: ""
 }
 
@@ -2230,7 +2230,7 @@ UnionWindow_Style0_Item: {
 }
 
 UnregisteredPylon_Item: {
-	DisplayName: Unregistered Pylon_ Item
+	DisplayName: 未登记的晶塔
 	Tooltip: ""
 }
 
@@ -2240,22 +2240,22 @@ UrbanCrate_Item: {
 }
 
 VampireMatCave_BoardSign_Item: {
-	DisplayName: Vampire Mat Cave_ Board Sign_ Item
+	DisplayName: 吸血魔毯洞穴路牌
 	Tooltip: ""
 }
 
 VampireMatCave_HangingSign_Item: {
-	DisplayName: Vampire Mat Cave_ Hanging Sign_ Item
+	DisplayName: 吸血魔毯洞穴吊牌
 	Tooltip: ""
 }
 
 VortexElevator_Indicator_Lamp_Item: {
-	DisplayName: Vortex Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 星旋电梯指示灯
 	Tooltip: ""
 }
 
 VortexElevator_Item: {
-	DisplayName: Vortex Elevator_ Item
+	DisplayName: 星旋电梯
 	Tooltip: ""
 }
 
@@ -2300,7 +2300,7 @@ WitherWoodBookcase: {
 }
 
 WitherWoodBrazier_Item: {
-	DisplayName: Wither Wood Brazier_ Item
+	DisplayName: 枯木火盆
 	Tooltip: ""
 }
 
@@ -2315,7 +2315,7 @@ WitherWoodChandelier: {
 }
 
 WitherWoodColdFlameTorch_Item: {
-	DisplayName: Wither Wood Cold Flame Torch_ Item
+	DisplayName: 枯木冷焰火把
 	Tooltip: ""
 }
 
@@ -2325,7 +2325,7 @@ WitherWoodDoor: {
 }
 
 WitherWoodShutterWall_Item: {
-	DisplayName: Wither Wood Shutter Wall_ Item
+	DisplayName: 枯木百叶窗墙
 	Tooltip: ""
 }
 
@@ -2335,17 +2335,17 @@ WitherWoodTable: {
 }
 
 WoodenChest_ForestCastle_Item: {
-	DisplayName: Wooden Chest_ Forest Castle_ Item
+	DisplayName: 林堡木箱
 	Tooltip: ""
 }
 
 WoodenElevator_Indicator_Lamp_Item: {
-	DisplayName: Wooden Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 木制电梯指示灯
 	Tooltip: ""
 }
 
 WoodenElevator_Item: {
-	DisplayName: Wooden Elevator_ Item
+	DisplayName: 木制电梯
 	Tooltip: ""
 }
 
@@ -2360,7 +2360,7 @@ WoodenRoomDoor_Item: {
 }
 
 WornForestChest_Item: {
-	DisplayName: Worn Forest Chest_ Item
+	DisplayName: 陈旧的森林宝箱
 	Tooltip: ""
 }
 
@@ -2390,12 +2390,12 @@ YggdrasilCyatheaWood: {
 }
 
 YggdrasilGravelStoreGate_Exit_Item: {
-	DisplayName: Yggdrasil Gravel Store Gate_ Exit_ Item
+	DisplayName: 砾石仓库出口
 	Tooltip: ""
 }
 
 YggdrasilGravelStoreGate_Item: {
-	DisplayName: Yggdrasil Gravel Store Gate_ Item
+	DisplayName: 砾石仓库大门
 	Tooltip: ""
 }
 
@@ -2420,27 +2420,27 @@ YggdrasilPlayerRoomDoor_Lock_Item: {
 }
 
 YggdrasilTownAccessGate_Item: {
-	DisplayName: Yggdrasil Town Access Gate_ Item
+	DisplayName: 天穹镇门禁
 	Tooltip: ""
 }
 
 YggdrasilTownAccessGateNFCTrigger_Item: {
-	DisplayName: Yggdrasil Town Access GateNFCTrigger_ Item
+	DisplayName: 天穹镇门禁读卡器
 	Tooltip: ""
 }
 
 YggdrasilTownElevator_Indicator_Lamp_Item: {
-	DisplayName: Yggdrasil Town Elevator_ Indicator_ Lamp_ Item
+	DisplayName: 天穹镇电梯指示灯
 	Tooltip: ""
 }
 
 YggdrasilTownElevator_Item: {
-	DisplayName: Yggdrasil Town Elevator_ Item
+	DisplayName: 天穹镇电梯
 	Tooltip: ""
 }
 
 YggdrasilTownElevatorTunnelLamp_Item: {
-	DisplayName: Yggdrasil Town Elevator Tunnel Lamp_ Item
+	DisplayName: 天穹镇电梯井灯
 	Tooltip: ""
 }
 
