@@ -63,8 +63,8 @@ public class ShadowWingBow : ModItem
 			{
 				tooltips.AddRange(new TooltipLine[]
 				{
-					new(ModIns.Mod, "MothEyeBonusText", Language.GetTextValue("Mods.Everglow.ExtraTooltip.FireflyItems.MothEyeBonusText")),
-					new(ModIns.Mod, "MothEyeBowBonus", Language.GetTextValue("Mods.Everglow.ExtraTooltip.FireflyItems.MEyeBonusTextMothBow")),
+					new(ModIns.Mod, "MothEyeBonusText", MothEye.BonusHeader),
+					new(ModIns.Mod, "MothEyeBowBonus", this.GetLocalizedValue("MothEyeBonus")),
 				});
 			}
 		}

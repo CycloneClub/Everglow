@@ -105,6 +105,7 @@ CorruptEye: {
 CrystalSkull: {
 	DisplayName: Crystal Skull
 	Tooltip: ""
+	SpellbookEnhanced: "{0} has been enhanced"
 }
 
 CyanBranch: {
@@ -176,6 +177,7 @@ FireflyBorageBadge: {
 		Gain another {4}% multiplicative damage and {5}% increased melee and whip attack speed
 		{6}% reduced melee critical strike chance
 		'''
+	UnfinishedItem: This item is still under development
 }
 
 ForestMino: {
@@ -412,6 +414,7 @@ MothEye: {
 		Phosphorescence Gun: bonus bullet damage factor increases from 25% to 35%; equipping prevents recoil movement
 		Moth Yoyo: creates 8 additional outer projectiles, each dealing one-quarter of yoyo projectile damage at twice the inner orbit size
 		'''
+	BonusHeader: Moth Eye bonus:
 }
 
 Odd8Ring: {

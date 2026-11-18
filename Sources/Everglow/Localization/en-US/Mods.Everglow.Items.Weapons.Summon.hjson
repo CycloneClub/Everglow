@@ -20,6 +20,7 @@ DarknessFan: {
 		Right-click to attack at range
 		Marks the last enemy hit as a minion target
 		'''
+	MothEyeBonus: Enhances the summoned glowing butterflies
 }
 
 DeadBeetleEgg: {
@@ -40,6 +41,8 @@ DevilHeartGyroscope: {
 EvilChrysalis: {
 	DisplayName: Evil Chrysalis
 	Tooltip: Summons small moths to fight for you
+	MothEyeTilePenetration: Moth attacks can pass through tiles
+	MothEyeCorruptRain: Moth attacks have a chance to release additional corrupt rain
 }
 
 EvilMusicRemnant: {

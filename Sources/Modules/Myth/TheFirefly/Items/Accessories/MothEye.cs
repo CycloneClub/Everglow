@@ -15,6 +15,8 @@ public class MothEye : ModItem
 
 	public static Player LocalOwner => Main.LocalPlayer;
 
+	internal static string BonusHeader => ModContent.GetInstance<MothEye>().GetLocalizedValue("BonusHeader");
+
 	public override void SetDefaults()
 	{
 		Item.width = 44;

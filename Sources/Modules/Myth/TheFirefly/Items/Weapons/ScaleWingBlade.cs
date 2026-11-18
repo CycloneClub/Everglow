@@ -86,8 +86,8 @@ public class ScaleWingBlade : ModItem
 			{
 				tooltips.AddRange(new TooltipLine[]
 				{
-					new(ModIns.Mod, "MothEyeBonusText", Language.GetTextValue("Mods.Everglow.ExtraTooltip.FireflyItems.MothEyeBonusText")),
-					new(ModIns.Mod, "MothEyeBladeBonus", Language.GetTextValue("Mods.Everglow.ExtraTooltip.FireflyItems.MEyeBonusTextMothBlade")),
+					new(ModIns.Mod, "MothEyeBonusText", MothEye.BonusHeader),
+					new(ModIns.Mod, "MothEyeBladeBonus", this.GetLocalizedValue("MothEyeBonus")),
 				});
 			}
 		}

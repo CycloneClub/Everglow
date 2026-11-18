@@ -16,10 +16,6 @@ namespace Everglow.SpellAndSkull.GlobalItems;
 
 public class MagicBooksReplace : GlobalItem
 {
-	private static string spellbookExtra = "Mods.Everglow.ExtraTooltip.Spellbook.";
-
-	private static string SpellbookGTV(string key) => Language.GetTextValue(spellbookExtra + key);
-
 	public static List<int> MagicBookType = new List<int>();
 
 	public override void SetDefaults(Item entity)
@@ -60,52 +56,10 @@ public class MagicBooksReplace : GlobalItem
 
 	public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
 	{
-		if (Main.LocalPlayer.GetModPlayer<MagicBookPlayer>().MagicBookLevel == 1)
+		if (item.ModItem is null && MagicBookType.Contains(item.type) && Main.LocalPlayer.GetModPlayer<MagicBookPlayer>().MagicBookLevel == 1)
 		{
-			if (item.type == ItemID.WaterBolt)
-			{
-				tooltips.Add(new TooltipLine(ModLoader.GetMod("Everglow"), "ExtraTooltip", SpellbookGTV("WaterBolt")));
-			}
-
-			if (item.type == ItemID.DemonScythe)
-			{
-				tooltips.Add(new TooltipLine(ModLoader.GetMod("Everglow"), "ExtraTooltip", SpellbookGTV("DemonScythe")));
-			}
-
-			if (item.type == ItemID.BookofSkulls)
-			{
-				tooltips.Add(new TooltipLine(ModLoader.GetMod("Everglow"), "ExtraTooltip", SpellbookGTV("BookofSkulls")));
-			}
-
-			if (item.type == ItemID.CrystalStorm)
-			{
-				tooltips.Add(new TooltipLine(ModLoader.GetMod("Everglow"), "ExtraTooltip", SpellbookGTV("CrystalStorm")));
-			}
-
-			if (item.type == ItemID.CursedFlames)
-			{
-				tooltips.Add(new TooltipLine(ModLoader.GetMod("Everglow"), "ExtraTooltip", SpellbookGTV("CursedFlames")));
-			}
-
-			if (item.type == ItemID.GoldenShower)
-			{
-				tooltips.Add(new TooltipLine(ModLoader.GetMod("Everglow"), "ExtraTooltip", SpellbookGTV("GoldenShower")));
-			}
-
-			if (item.type == ItemID.MagnetSphere)
-			{
-				tooltips.Add(new TooltipLine(ModLoader.GetMod("Everglow"), "ExtraTooltip", SpellbookGTV("MagnetSphere")));
-			}
-
-			if (item.type == ItemID.RazorbladeTyphoon)
-			{
-				tooltips.Add(new TooltipLine(ModLoader.GetMod("Everglow"), "ExtraTooltip", SpellbookGTV("RazorbladeTyphoon")));
-			}
-
-			if (item.type == ItemID.LunarFlareBook)
-			{
-				tooltips.Add(new TooltipLine(ModLoader.GetMod("Everglow"), "ExtraTooltip", SpellbookGTV("LunarFlareBook")));
-			}
+			string text = ModContent.GetInstance<CrystalSkull>().GetLocalization("SpellbookEnhanced").Format(Lang.GetItemNameValue(item.type));
+			tooltips.Add(new TooltipLine(Mod, "ExtraTooltip", text));
 		}
 	}
 

@@ -40,7 +40,7 @@ public class FireflyBorageBadge : ModItem
 
 	public override void ModifyTooltips(List<TooltipLine> tooltips)
 	{
-		tooltips.Add(new TooltipLine(ModIns.Mod, "UnfinishedItem", Language.GetTextValue("Mods.Everglow.ExtraTooltip.Misc.UnfinishedItem")));
+		tooltips.Add(new TooltipLine(ModIns.Mod, "UnfinishedItem", this.GetLocalizedValue("UnfinishedItem")));
 	}
 
 	public override void AddRecipes()

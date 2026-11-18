@@ -20,6 +20,7 @@ DarknessFan: {
 		右键可以远程攻击
 		标记最后一个被击中的敌人
 		'''
+	MothEyeBonus: 强化召唤出的发光蝴蝶
 }
 
 DeadBeetleEgg: {
@@ -40,6 +41,8 @@ DevilHeartGyroscope: {
 EvilChrysalis: {
 	DisplayName: 邪茧孵化杖
 	Tooltip: 召唤小飞蛾作战
+	MothEyeTilePenetration: 飞蛾的攻击可以穿过物块
+	MothEyeCorruptRain: 飞蛾攻击时有概率额外释放腐蚀雨
 }
 
 EvilMusicRemnant: {

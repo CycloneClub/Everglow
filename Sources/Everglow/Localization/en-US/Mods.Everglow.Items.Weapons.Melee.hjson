@@ -236,6 +236,8 @@ Glow: {
 GlowWoodSword: {
 	DisplayName: Glow Wood Sword
 	Tooltip: ""
+	MothEyeProjectileSize: Increases the size of the glowing projectiles
+	MothEyeDamage: 5% increased weapon damage
 }
 
 GoldClub_Item: {
@@ -355,6 +357,7 @@ MeteorClub_Item: {
 MothYoyo: {
 	DisplayName: Moth Yoyo
 	Tooltip: Creates a formation of glowing moth projectiles around the yoyo
+	MothEyeBonus: Creates eight additional orbiting projectiles with a wider range
 }
 
 MythrilClub_Item: {
@@ -464,6 +467,7 @@ ScaleWingBlade: {
 		Right-click for a heavy attack
 		With Moth Eye equipped in the Firefly biome, butterfly projectiles accelerate toward targets, even before Hardmode
 		'''
+	MothEyeBonus: Butterfly projectiles accelerate toward their targets
 }
 
 ScarpasScissors: {

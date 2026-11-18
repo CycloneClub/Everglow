@@ -127,14 +127,14 @@ public class PhosphorescenceGun : ModItem
 		{
 			if (mothEyePlayer.MothEyeEquipped || fireflyBiome.IsBiomeActive(Main.LocalPlayer) || Main.hardMode)
 			{
-				tooltips.Add(new TooltipLine(ModIns.Mod, "MothEyeGunBonus1", Language.GetTextValue("Mods.Everglow.ExtraTooltip.FireflyItems.MEyeBonusTextMothGun1")));
+				tooltips.Add(new TooltipLine(ModIns.Mod, "MothEyeGunBonus1", this.GetLocalizedValue("MothEyeRecoil")));
 			}
 			if (mothEyePlayer.MothEyeEquipped && fireflyBiome.IsBiomeActive(Main.LocalPlayer) && Main.hardMode)
 			{
 				tooltips.AddRange(new TooltipLine[]
 				{
-					new(ModIns.Mod, "MothEyeBonusText", Language.GetTextValue("Mods.Everglow.ExtraTooltip.FireflyItems.MothEyeBonusText")),
-					new(ModIns.Mod, "MothEyeGunBonus0", Language.GetTextValue("Mods.Everglow.ExtraTooltip.FireflyItems.MEyeBonusTextMothGun0")),
+					new(ModIns.Mod, "MothEyeBonusText", MothEye.BonusHeader),
+					new(ModIns.Mod, "MothEyeGunBonus0", this.GetLocalizedValue("MothEyeDamage")),
 				});
 			}
 		}

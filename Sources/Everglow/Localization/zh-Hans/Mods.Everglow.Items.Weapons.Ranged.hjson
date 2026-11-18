@@ -241,6 +241,8 @@ PhosphorescenceGun: {
 		装备蛾眼、处于流萤群系或进入困难模式，任一条件满足时射击不会将你向后推
 		困难模式下装备蛾眼且处于流萤群系时，磷光弹伤害由本次射击伤害的25%提高至35%
 		'''
+	MothEyeDamage: 提高磷光弹的伤害
+	MothEyeRecoil: 射击不会将玩家向后推
 }
 
 RampageShark: {
@@ -296,6 +298,7 @@ ShadewoodSlingShot: {
 ShadowWingBow: {
 	DisplayName: 影翼巨弓
 	Tooltip: 蓄力发射更多幻箭
+	MothEyeBonus: 加快蓄力速度
 }
 
 SilveralGun: {

@@ -250,6 +250,8 @@ Glow: {
 GlowWoodSword: {
 	DisplayName: 流萤木剑
 	Tooltip: ""
+	MothEyeProjectileSize: 增大发光弹幕的尺寸
+	MothEyeDamage: 武器伤害提高 5%
 }
 
 GoldClub_Item: {
@@ -369,6 +371,7 @@ MeteorClub_Item: {
 MothYoyo: {
 	DisplayName: 夜蛾球
 	Tooltip: 悠悠球附近会有荧光飞蛾幻方
+	MothEyeBonus: 额外生成八枚范围更大的环绕弹幕
 }
 
 MythrilClub_Item: {
@@ -487,6 +490,7 @@ ScaleWingBlade: {
 		右键可以重击
 		装备蛾眼且处于流萤群系时，蝴蝶弹幕加速追踪目标，困难模式前也可生效
 		'''
+	MothEyeBonus: 蝴蝶弹幕加速追踪目标
 }
 
 ScarpasScissors: {

@@ -67,9 +67,9 @@ public class EvilChrysalis : ModItem
 			{
 				tooltips.AddRange(new TooltipLine[]
 				{
-					new(ModIns.Mod, "MothEyeBonusText", Language.GetTextValue("Mods.Everglow.ExtraTooltip.FireflyItems.MothEyeBonusText")),
-					new(ModIns.Mod, "MothEyeEChryBonus", Language.GetTextValue("Mods.Everglow.ExtraTooltip.FireflyItems.MEyeBonusTextMothChry0")),
-					new(ModIns.Mod, "MothEyeEChryBonus", Language.GetTextValue("Mods.Everglow.ExtraTooltip.FireflyItems.MEyeBonusTextMothChry1")),
+					new(ModIns.Mod, "MothEyeBonusText", MothEye.BonusHeader),
+					new(ModIns.Mod, "MothEyeEChryBonus", this.GetLocalizedValue("MothEyeTilePenetration")),
+					new(ModIns.Mod, "MothEyeEChryBonus", this.GetLocalizedValue("MothEyeCorruptRain")),
 				});
 			}
 		}

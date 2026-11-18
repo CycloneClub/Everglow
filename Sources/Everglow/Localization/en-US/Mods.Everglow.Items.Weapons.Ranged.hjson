@@ -241,6 +241,8 @@ PhosphorescenceGun: {
 		Firing does not push you backward while Moth Eye is equipped, in the Firefly biome, or during Hardmode
 		With Moth Eye equipped in the Firefly biome during Hardmode, phosphorescent projectile damage increases from 25% to 35% of shot damage
 		'''
+	MothEyeDamage: Increases phosphorescent bullet damage
+	MothEyeRecoil: Firing does not push the player backward
 }
 
 RampageShark: {
@@ -296,6 +298,7 @@ ShadewoodSlingShot: {
 ShadowWingBow: {
 	DisplayName: Shadow Wing Bow
 	Tooltip: Hold to charge and release more phantom arrows
+	MothEyeBonus: Charges faster
 }
 
 SilveralGun: {
