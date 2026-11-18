@@ -479,11 +479,6 @@ PinkFourPedal: {
 		'''
 }
 
-PlayerPenetrationTest: {
-	DisplayName: 玩家穿透测试物品
-	Tooltip: 开发者物品
-}
-
 PurpleBall: {
 	DisplayName: 紫绣球吊坠
 	Tooltip:
@@ -600,11 +595,6 @@ SpikedParma: {
 		防御增加{0}点，伤害提高{1}%
 		受伤后获得{2}秒荆棘增益
 		'''
-}
-
-StaminaItem: {
-	DisplayName: 耐力测试物品
-	Tooltip: 开发者物品
 }
 
 TelescopicPlatformAlpha: {

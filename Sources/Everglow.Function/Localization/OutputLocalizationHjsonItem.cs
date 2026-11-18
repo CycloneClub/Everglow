@@ -166,23 +166,16 @@ public class OutputLocalizationHjsonItem : ModItem
 
 	public Dictionary<string, List<string>> GetBuffs()
 	{
-		Dictionary<string, List<string>> keyToName = [];
-		var buffNames = BuffID.Search.Names.Where(x => x.StartsWith(nameof(Everglow))).ToList();
-		keyToName["Buffs"] = buffNames;
-		return keyToName;
+		return Mod.GetContent<ModBuff>()
+			.GroupBy(buff => buff.LocalizationCategory)
+			.ToDictionary(group => group.Key, group => group.Select(buff => buff.Name).ToList());
 	}
 
 	public Dictionary<string, List<string>> GetCooldowns()
 	{
-		var key = "Cooldowns";
-		Dictionary<string, List<string>> keyToName = [];
-		keyToName[key] = [];
-		foreach (var cooldown in Ins.ModuleManager.Types.Where(x => !x.IsAbstract && x.IsAssignableTo(typeof(CooldownBase))))
-		{
-			keyToName[key].Add(cooldown.Name);
-		}
-
-		return keyToName;
+		return Ins.ModuleManager.CreateInstances<CooldownBase>()
+			.GroupBy(cooldown => cooldown.LocalizationGroup)
+			.ToDictionary(group => group.Key, group => group.Select(cooldown => cooldown.TypeID).ToList());
 	}
 
 	public Dictionary<string, List<string>> GetProjectiles()

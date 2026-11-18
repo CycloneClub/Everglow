@@ -323,11 +323,6 @@ TamakoSushi: {
 	Tooltip: ""
 }
 
-TestSkeletonOwl: {
-	DisplayName: Test Skeleton Owl
-	Tooltip: ""
-}
-
 Tricolour: {
 	DisplayName: Tricolour
 	Tooltip: ""

@@ -599,21 +599,6 @@ TamakoSushi: {
 	Tooltip: "{$Mods.Everglow.Items.Miscs.TamakoSushi.Tooltip}"
 }
 
-TestItem: {
-	DisplayName: Test Item
-	Tooltip: ""
-}
-
-TestOpenQuestPanelWithSelectQuestItem: {
-	DisplayName: "{$Mods.Everglow.Items.Tools.TestOpenQuestPanelWithSelectQuestItem.DisplayName}"
-	Tooltip: "{$Mods.Everglow.Items.Tools.TestOpenQuestPanelWithSelectQuestItem.Tooltip}"
-}
-
-TestSkeletonOwl: {
-	DisplayName: "{$Mods.Everglow.Items.Miscs.TestSkeletonOwl.DisplayName}"
-	Tooltip: "{$Mods.Everglow.Items.Miscs.TestSkeletonOwl.Tooltip}"
-}
-
 TileDataReader: {
 	DisplayName: "{$Mods.Everglow.Items.Tools.TileDataReader.DisplayName}"
 	Tooltip: "{$Mods.Everglow.Items.Tools.TileDataReader.Tooltip}"

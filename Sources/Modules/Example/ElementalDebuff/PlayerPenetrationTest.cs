@@ -1,13 +1,13 @@
 using Everglow.Commons.Mechanics.ElementalDebuff.Debuffs;
 using Everglow.Commons.Utilities;
 
-namespace Everglow.Commons.Mechanics.ElementalDebuff.Tests;
+namespace Everglow.Example.ElementalDebuff;
 
 public class PlayerPenetrationTest : ModItem
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
+	public override string LocalizationCategory => LocalizationUtils.Categories.Examples;
 
-	public override string Texture => ModAsset.Point_Mod;
+	public override string Texture => Commons.ModAsset.Point_Mod;
 
 	public override void SetDefaults()
 	{

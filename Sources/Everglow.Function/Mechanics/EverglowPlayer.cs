@@ -33,11 +33,6 @@ public partial class EverglowPlayer : ModPlayer
 
 	public override void OnEnterWorld()
 	{
-		// =================== Testing code ===============
-		// Player.AddCooldown(TestCooldown.ID, 60 * 50000);
-		// Player.AddCooldown(TestCooldown2.ID, 60 * 5000);
-		// Player.AddCooldown(TestCooldown3.ID, 60 * 500);
-		// Player.AddCooldown(TestCooldown4.ID, 60 * 50);
 		foreach (var cd in cooldowns.Values)
 		{
 			SyncCooldownAddition(Main.dedServ, cd);

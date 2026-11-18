@@ -111,3 +111,46 @@ GiveItemQuestTest: {
 		{}
 	]
 }
+
+TestCooldown: {
+	DisplayName: Test Cooldown
+	Description: ""
+	Tooltip: This is a test cooldown for demonstration purposes.
+}
+
+TestCooldown2: {
+	DisplayName: Test Cooldown2
+	Description: ""
+}
+
+TestCooldown3: {
+	DisplayName: Test Cooldown3
+	Description: ""
+}
+
+TestCooldown4: {
+	DisplayName: Test Cooldown4
+	Description: ""
+}
+
+PlayerPenetrationTest: {
+	DisplayName: Player Penetration Test
+	Tooltip: ""
+}
+
+ElementalResistanceReductionDebuffTest: {
+	DisplayName: Elemental Resistance Reduction Debuff Test
+	Description: ""
+}
+
+OverrideRegistryTestNPC.DisplayName: Override Registry TestNPC
+
+TestSkeletonOwl: {
+	DisplayName: Test Skeleton Owl
+	Tooltip: ""
+}
+
+TestOpenQuestPanelWithSelectQuestItem: {
+	DisplayName: Test Open Quest Panel With Select Quest Item
+	Tooltip: ""
+}

@@ -8,7 +8,9 @@ public static class LocalizationUtils
 		public const string Bestiary = "System.Bestiary";
 		public const string Biomes = "Biomes";
 		public const string Buffs = "Buffs";
+		public const string Cooldowns = "Cooldowns";
 		public const string Events = "Events";
+		public const string Examples = "Examples";
 		public const string GameTips = "GameTips";
 
 		// NPCs

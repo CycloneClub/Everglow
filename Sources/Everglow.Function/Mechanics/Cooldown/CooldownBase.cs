@@ -1,10 +1,11 @@
+using Everglow.Commons.Utilities;
 using Terraria.Localization;
 
 namespace Everglow.Commons.Mechanics.Cooldown;
 
 public abstract class CooldownBase
 {
-	public const string LocalizationCategory = "Mods.Everglow.Cooldowns";
+	public const string LocalizationCategory = "Mods.Everglow." + LocalizationUtils.Categories.Cooldowns;
 	public const string LocalizationDisplayNameKey = "DisplayName";
 	public const string LocalizationDescriptionKey = "Description";
 
@@ -54,9 +55,11 @@ public abstract class CooldownBase
 
 	#region Display
 
-	public virtual string DisplayName => Language.GetTextValue($"{LocalizationCategory}.{TypeID}.{LocalizationDisplayNameKey}");
+	public virtual string LocalizationGroup => LocalizationUtils.Categories.Cooldowns;
 
-	public virtual string Discription => Language.GetTextValue($"{LocalizationCategory}.{TypeID}.{LocalizationDescriptionKey}");
+	public virtual string DisplayName => Language.GetTextValue($"Mods.Everglow.{LocalizationGroup}.{TypeID}.{LocalizationDisplayNameKey}");
+
+	public virtual string Discription => Language.GetTextValue($"Mods.Everglow.{LocalizationGroup}.{TypeID}.{LocalizationDescriptionKey}");
 
 	public virtual bool IsVisible => true;
 

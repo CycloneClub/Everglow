@@ -33,27 +33,6 @@ RuinSetCooldown: {
 	Description: 归墟套装技能正在冷却
 }
 
-TestCooldown: {
-	DisplayName: 测试冷却
-	Description: ""
-	Tooltip: 测试用
-}
-
-TestCooldown2: {
-	DisplayName: Test Cooldown2
-	Description: ""
-}
-
-TestCooldown3: {
-	DisplayName: Test Cooldown3
-	Description: ""
-}
-
-TestCooldown4: {
-	DisplayName: Test Cooldown4
-	Description: ""
-}
-
 TheGreenSolarCooldown: {
 	DisplayName: 绿阳涅槃冷却
 	Description: 绿阳之石暂时无法抵挡致命伤害

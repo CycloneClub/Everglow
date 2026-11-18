@@ -429,11 +429,6 @@ PinkFourPedal: {
 	Tooltip: ""
 }
 
-PlayerPenetrationTest: {
-	DisplayName: Player Penetration Test
-	Tooltip: ""
-}
-
 PurpleBall: {
 	DisplayName: Purple Ball
 	Tooltip: ""
@@ -530,11 +525,6 @@ SpikedParma: {
 		+{0} defense and {1}% increased damage
 		Grants the Thorns buff for {2} seconds after being hurt
 		'''
-}
-
-StaminaItem: {
-	DisplayName: Stamina Item
-	Tooltip: ""
 }
 
 TelescopicPlatformAlpha: {

@@ -365,11 +365,6 @@ ElderberryBuff: {
 	Description: "Grants a short dash"
 }
 
-ElementalResistanceReductionDebuffTest: {
-	DisplayName: Elemental Resistance Reduction Debuff Test
-	Description: ""
-}
-
 EscargotBuff: {
 	DisplayName: Escargot Buff
 	Description: "-75% movement speed, -75% jump speed while unmounted, -90% wing flight time; +25% damage reduction"

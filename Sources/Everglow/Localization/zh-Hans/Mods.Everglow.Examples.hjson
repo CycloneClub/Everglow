@@ -111,3 +111,46 @@ GiveItemQuestTest: {
 		{}
 	]
 }
+
+TestCooldown: {
+	DisplayName: 测试冷却
+	Description: ""
+	Tooltip: 测试用
+}
+
+TestCooldown2: {
+	DisplayName: Test Cooldown2
+	Description: ""
+}
+
+TestCooldown3: {
+	DisplayName: Test Cooldown3
+	Description: ""
+}
+
+TestCooldown4: {
+	DisplayName: Test Cooldown4
+	Description: ""
+}
+
+PlayerPenetrationTest: {
+	DisplayName: 玩家穿透测试物品
+	Tooltip: 开发者物品
+}
+
+ElementalResistanceReductionDebuffTest: {
+	DisplayName: 元素抗性降低
+	Description: ""
+}
+
+OverrideRegistryTestNPC.DisplayName: Override Registry TestNPC
+
+TestSkeletonOwl: {
+	DisplayName: Test Skeleton Owl
+	Tooltip: ""
+}
+
+TestOpenQuestPanelWithSelectQuestItem: {
+	DisplayName: Test Open Quest Panel With Select Quest Item
+	Tooltip: ""
+}

@@ -475,11 +475,6 @@ ElderberryBuff: {
 		'''
 }
 
-ElementalResistanceReductionDebuffTest: {
-	DisplayName: 元素抗性降低
-	Description: ""
-}
-
 EscargotBuff: {
 	DisplayName: 食用蜗牛
 	Description:

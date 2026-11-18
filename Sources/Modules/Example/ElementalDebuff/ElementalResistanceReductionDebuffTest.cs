@@ -1,11 +1,13 @@
 using Everglow.Commons.Mechanics.ElementalDebuff.Debuffs;
 using Everglow.Commons.Utilities;
 
-namespace Everglow.Commons.Mechanics.ElementalDebuff.Tests;
+namespace Everglow.Example.ElementalDebuff;
 
 public class ElementalResistanceReductionDebuffTest : ModBuff
 {
-	public override string Texture => ModAsset.Point_Mod;
+	public override string LocalizationCategory => LocalizationUtils.Categories.Examples;
+
+	public override string Texture => Commons.ModAsset.Point_Mod;
 
 	public override void SetStaticDefaults()
 	{

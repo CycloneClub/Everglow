@@ -33,27 +33,6 @@ RuinSetCooldown: {
 	Description: The Ruin armor set skill is recharging
 }
 
-TestCooldown: {
-	DisplayName: Test Cooldown
-	Description: ""
-	Tooltip: This is a test cooldown for demonstration purposes.
-}
-
-TestCooldown2: {
-	DisplayName: Test Cooldown2
-	Description: ""
-}
-
-TestCooldown3: {
-	DisplayName: Test Cooldown3
-	Description: ""
-}
-
-TestCooldown4: {
-	DisplayName: Test Cooldown4
-	Description: ""
-}
-
 TheGreenSolarCooldown: {
 	DisplayName: Green Solar Rebirth Cooldown
 	Description: The Green Solar cannot prevent death yet

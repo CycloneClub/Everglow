@@ -66,7 +66,6 @@ GreenCore.DisplayName: Green Core
 GreenFlameLantern.DisplayName: Green Flame Lantern
 Guard_Slimy.DisplayName: Guard_ Slimy
 GuppyConch.DisplayName: Guppy Conch
-InfoRegisteryTestNPC.DisplayName: Info Registery TestNPC
 JadeSpiritAnglerfish.DisplayName: Jade Spirit Anglerfish
 JellyBall.DisplayName: Jelly Ball
 KingJellyBall.DisplayName: King Jelly Ball
@@ -82,7 +81,6 @@ LittleFireBulb.DisplayName: Little Fire Bulb
 LittleRedPaperFigure.DisplayName: Little Red Paper Figure
 Living_Jawbone.DisplayName: Living_ Jawbone
 MossyThornTurtle.DisplayName: Thorn Mossy Tortoise
-OverrideRegistryTestNPC.DisplayName: Override Registry TestNPC
 PurpleBombCaterpillar.DisplayName: Purple Bomb Caterpillar
 QuestCounter_Consultant.DisplayName: Quest Counter_ Consultant
 QuestCounter_Consultant.Greeting: "Welcome to the climbing guild."
@@ -119,7 +117,6 @@ SmallBrodieFlydragon.DisplayName: Small Brodie Flydragon
 SmallGuppyConch.DisplayName: Small Guppy Conch
 SquamousShell.DisplayName: Squamous Shell
 SummonedButterfly.DisplayName: Summoned Butterfly
-TestNPC.DisplayName: TestNPC
 ToxicToad.DisplayName: Toxic Toad
 UmbrellaTailThief.DisplayName: Umbrella Tail Thief
 VampireMat.DisplayName: Vampire Mat

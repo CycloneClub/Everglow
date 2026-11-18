@@ -186,11 +186,6 @@ SoundIDPlayItem: {
 	Tooltip: ""
 }
 
-TestOpenQuestPanelWithSelectQuestItem: {
-	DisplayName: Test Open Quest Panel With Select Quest Item
-	Tooltip: ""
-}
-
 TileDataReader: {
 	DisplayName: Tile Data Reader
 	Tooltip: ""
