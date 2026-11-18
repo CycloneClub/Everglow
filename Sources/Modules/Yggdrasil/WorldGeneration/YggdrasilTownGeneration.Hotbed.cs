@@ -17,11 +17,6 @@ public partial class YggdrasilTownGeneration
 
 	private static void ExtendJellyBallHotbed()
 	{
-		// 占位材料的试验地形仅在调试模式下生成，沿用现有配置而不增加临时内容类型。
-		if (!EverglowConfig.DebugMode)
-		{
-			return;
-		}
 		var bounds = GetJellyBallHotbedBounds(Main.maxTilesX, Main.maxTilesY);
 		var observatory = new Rectangle(Main.maxTilesX - 104, Main.maxTilesY - 394, 76, 52);
 		ushort jelly = (ushort)ModContent.TileType<JellyBallSecretion>();
