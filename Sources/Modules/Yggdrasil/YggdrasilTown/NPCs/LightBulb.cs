@@ -189,7 +189,7 @@ public class LightBulb : ModNPC
 	public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
 		Texture2D glow = ModAsset.LightBulb_Glow.Value;
-		spriteBatch.Draw(glow, NPC.Center - Main.screenPosition + new Vector2(0, -20), new Rectangle(0, NPC.frame.Y, 160, 90), new Color(1f, 1f, 1f, 0), NPC.rotation, new Vector2(80, 45), NPC.scale, SpriteEffects.None, 0);
+		spriteBatch.Draw(glow, NPC.Center - Main.screenPosition + new Vector2(0, -36), NPC.frame, new Color(1f, 1f, 1f, 0) * 0.5f, NPC.rotation, NPC.frame.Size() * 0.5f, NPC.scale, SpriteEffects.None, 0);
 		base.PostDraw(spriteBatch, screenPos, drawColor);
 	}
 }

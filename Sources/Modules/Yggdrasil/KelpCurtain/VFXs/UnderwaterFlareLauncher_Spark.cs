@@ -72,11 +72,11 @@ public class UnderwaterFlareLauncher_Spark : Visual
 		Vector2 toCorner = new Vector2(0, Scale * 0.2f).RotatedBy(Rotation);
 		List<Vertex2D> bars = new List<Vertex2D>()
 		{
-			new Vertex2D(Position + toCorner + Velocity * 3, new Color(0, 0, pocession, 0.0f), new Vector3(Temperature, 0, 0)),
-			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 0.5), new Color(0, 1, pocession, 0.0f), new Vector3(Temperature, 0, 0)),
+			new Vertex2D(Position + toCorner + Velocity * 3, new Color(0, 0, pocession, 0.0f), new Vector3(1 - Temperature, 0, 0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 0.5), new Color(0, 1, pocession, 0.0f), new Vector3(1 - Temperature, 0, 0)),
 
-			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1.5), new Color(1, 0, pocession, 0.0f), new Vector3(Temperature, 0, 0)),
-			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1) - Velocity, new Color(1, 1, pocession, 0.0f), new Vector3(Temperature, 0, 0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1.5), new Color(1, 0, pocession, 0.0f), new Vector3(1 - Temperature, 0, 0)),
+			new Vertex2D(Position + toCorner.RotatedBy(Math.PI * 1) - Velocity, new Color(1, 1, pocession, 0.0f), new Vector3(1 - Temperature, 0, 0)),
 		};
 
 		Ins.Batch.Draw(bars, PrimitiveType.TriangleStrip);
