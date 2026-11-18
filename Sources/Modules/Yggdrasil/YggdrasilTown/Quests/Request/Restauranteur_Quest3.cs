@@ -20,6 +20,8 @@ public sealed class Restauranteur_Quest3 : WorldQuestBase
 			.Add(new WorldKillNPCObjective(ModContent.NPCType<MossyThornTurtle>(), 1))
 			.Add(new WorldTalkObjective(GiverNpcType)
 				.WithDialogue(d => d.WithText("Dialogue.Objective2")));
+
+		RewardItems.Add(new Item(ItemID.GoldCoin, 2));
 	}
 
 	private int GiverNpcType => ModContent.NPCType<Restauranteur>();

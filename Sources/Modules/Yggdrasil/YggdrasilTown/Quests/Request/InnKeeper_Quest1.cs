@@ -4,7 +4,6 @@ using Everglow.Commons.Mechanics.Quest.Core.Dialogue;
 using Everglow.Commons.Mechanics.Quest.WorldSide;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Objectives;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
-using Everglow.Yggdrasil.YggdrasilTown.Items.Miscs;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables.Ores;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs;
 
@@ -22,7 +21,7 @@ public sealed class InnKeeper_Quest1 : WorldQuestBase
 					.WithText("Dialogue.Intro")
 					.WithCompletionText("Dialogue.Complete")));
 
-		RewardItems.Add(new Item(ModContent.ItemType<GoodNeighborCoin>(), 10));
+		RewardItems.Add(new Item(ItemID.GoldCoin, 1));
 	}
 
 	private int GiverNpcType => ModContent.NPCType<InnKeeper>();

@@ -6,7 +6,6 @@ using Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs.KingJellyBall;
 using Everglow.Yggdrasil.YggdrasilTown.Items.SummonItems;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
-using Everglow.Yggdrasil.YggdrasilTown.Items.Miscs;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Quests.MainStory;
@@ -23,7 +22,7 @@ public sealed class KingJellyBall_Quest : WorldQuestBase
 			.Add(new WorldCollectItemObjective(ModContent.ItemType<JellyBallDaifuku>(), 1))
 			.Add(new WorldKillNPCObjective(ModContent.NPCType<KingJellyBall>(), 1));
 
-		RewardItems.Add(new(ModContent.ItemType<GoodNeighborCoin>(), 100));
+		RewardItems.Add(new Item(ItemID.GoldCoin, 50));
 	}
 
 	public override bool CanUnlock() => true;

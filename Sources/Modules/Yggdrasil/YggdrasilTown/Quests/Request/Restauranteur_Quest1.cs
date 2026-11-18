@@ -17,9 +17,10 @@ public sealed class Restauranteur_Quest1 : WorldQuestBase
 		Objectives
 			.Add(new WorldTalkObjective(GiverNpcType)
 				.WithDialogue(d => d.WithText("Dialogue.Objective0")))
-			// TODO: 策划中的晚饭尚未指定物品；交付流程先独立完成。
 			.Add(new WorldGiveObjective(GiverNpcType, ModContent.ItemType<GrassCarp>(), 5)
 				.WithDialogue(d => d.WithText("Dialogue.Objective1Request").WithCompletionText("Dialogue.Objective1Success")));
+
+		RewardItems.Add(new Item(ItemID.GoldCoin, 1));
 	}
 
 	private int GiverNpcType => ModContent.NPCType<Restauranteur>();

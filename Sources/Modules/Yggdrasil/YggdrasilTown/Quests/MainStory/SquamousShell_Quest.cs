@@ -3,7 +3,6 @@ using Everglow.Commons.Mechanics.Quest.WorldSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Objectives;
 using Everglow.Commons.Mechanics.Quest.WorldSide;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles;
-using Everglow.Yggdrasil.YggdrasilTown.Items.Miscs;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs.SquamousShell;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Quests.MainStory;
@@ -19,7 +18,7 @@ public sealed class SquamousShell_Quest : WorldQuestBase
 				&& TileUtils.ToNearestTypeOfTile(player.Center, ModContent.TileType<SquamousShellSeal>(), 10).Length() < 10 * 16))
 			.Add(new WorldKillNPCObjective(ModContent.NPCType<SquamousShell>(), 1));
 
-		RewardItems.Add(new(ModContent.ItemType<GoodNeighborCoin>(), 150));
+		RewardItems.Add(new Item(ItemID.GoldCoin, 150));
 	}
 
 	public override bool CanUnlock() => WorldQuestManager.Instance?.GetQuest<KingJellyBall_Quest>()?.State == WorldQuestState.Completed;

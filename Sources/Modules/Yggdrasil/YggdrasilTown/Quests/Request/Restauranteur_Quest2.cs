@@ -18,14 +18,17 @@ public sealed class Restauranteur_Quest2 : WorldQuestBase
 			.Add(new WorldTalkObjective(GiverNpcType)
 				.WithDialogue(d => d.WithText("Dialogue.Objective0")))
 			.Add(new WorldCollectItemObjective(ModContent.ItemType<LampFruit>(), 12))
-			// TODO: 灯果汁腌草鱼及配方尚未实现；灯果只检查持有，不消耗。
 			.Add(new WorldTalkObjective(GiverNpcType)
 				.WithDialogue(d => d.WithText("Dialogue.Objective2")));
+
+		RewardItems.Add(new Item(ItemID.GoldCoin, 1));
 	}
 
 	private int GiverNpcType => ModContent.NPCType<Restauranteur>();
 
 	public override QuestSourceBase Source => YggdrasilQuestSources.Restauranteur;
 
-	public override bool CanUnlock() => YggdrasilWorldSystem.DownedKingJellyBall || YggdrasilWorldSystem.DownedSquamousShell;
+	public override bool CanUnlock() =>
+		WorldQuestManager.Instance.GetQuest<Restauranteur_Quest1>()?.State == WorldQuestState.Completed
+		&& (YggdrasilWorldSystem.DownedKingJellyBall || YggdrasilWorldSystem.DownedSquamousShell);
 }

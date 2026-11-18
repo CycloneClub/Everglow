@@ -1,3 +1,4 @@
+using Everglow.Yggdrasil.YggdrasilTown.NPCs;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.Core.Dialogue;
@@ -16,15 +17,17 @@ public sealed class CanteenMaid_Quest2 : WorldQuestBase
 		Objectives
 			.Add(new WorldTalkObjective(GiverNpcType)
 				.WithDialogue(d => d.WithText("Dialogue.Objective0")))
-			// TODO: 策划未明确海盗类型、击杀数量及解锁条件。
-			.Add(new WorldReachObjective(_ => false))
+			.Add(new WorldKillNPCObjective(ModContent.NPCType<UmbrellaTailThief>(), 5))
 			.Add(new WorldTalkObjective(GiverNpcType)
 				.WithDialogue(d => d.WithText("Dialogue.Objective2")));
+
+		RewardItems.Add(new Item(ItemID.GoldCoin, 2));
 	}
 
 	private int GiverNpcType => ModContent.NPCType<CanteenMaid>();
 
 	public override QuestSourceBase Source => YggdrasilQuestSources.CanteenMaid;
 
-	public override bool CanUnlock() => false;
+	public override bool CanUnlock() =>
+		WorldQuestManager.Instance.GetQuest<CanteenMaid_Quest1>()?.State == WorldQuestState.Completed;
 }

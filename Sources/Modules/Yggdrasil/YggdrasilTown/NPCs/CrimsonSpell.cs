@@ -1,4 +1,5 @@
 using Everglow.Yggdrasil.Common;
+using Everglow.Yggdrasil.YggdrasilTown.Events;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Armors.BloodCultist;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Enemies;
 using Terraria.DataStructures;
@@ -35,8 +36,12 @@ public class CrimsonSpell : ModNPC
 
 	public override void OnSpawn(IEntitySource source)
 	{
-		base.OnSpawn(source);
 		NPC.ai[0] = 0;
+		if (source is DrunkenMinerInvasion.SpawnSource)
+		{
+			return;
+		}
+
 		NPC.TargetClosest();
 		Player player = Main.player[NPC.target];
 		Teleport(player);
@@ -185,11 +190,14 @@ public class CrimsonSpell : ModNPC
 
 	public override void OnKill()
 	{
-		for (int i = 0; i < 5; i++)
+		if (!Main.dedServ)
 		{
-			Vector2 v0 = new Vector2(0, Main.rand.NextFloat(0, 6f)).RotatedByRandom(MathHelper.TwoPi);
-			int type = ModContent.Find<ModGore>("Everglow/CrimsonProtestantGore" + i).Type;
-			Gore.NewGore(NPC.GetSource_Death(), NPC.Center, v0, type, NPC.scale);
+			for (int i = 0; i < 5; i++)
+			{
+				Vector2 v0 = new Vector2(0, Main.rand.NextFloat(0, 6f)).RotatedByRandom(MathHelper.TwoPi);
+				int type = ModContent.Find<ModGore>("Everglow/CrimsonProtestantGore" + i).Type;
+				Gore.NewGore(NPC.GetSource_Death(), NPC.Center, v0, type, NPC.scale);
+			}
 		}
 	}
 

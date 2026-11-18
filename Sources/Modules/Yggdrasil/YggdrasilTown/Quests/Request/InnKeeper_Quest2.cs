@@ -1,3 +1,4 @@
+using Everglow.Yggdrasil.KelpCurtain.Items.Placeables;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.Core.Dialogue;
@@ -16,15 +17,17 @@ public sealed class InnKeeper_Quest2 : WorldQuestBase
 		Objectives
 			.Add(new WorldTalkObjective(GiverNpcType)
 				.WithDialogue(d => d.WithText("Dialogue.Objective0")))
-			// TODO: 策划尚未指定要交付的植物及数量。
-			.Add(new WorldReachObjective(_ => false))
+			.Add(new WorldGiveObjective(GiverNpcType, ModContent.ItemType<JadeLakeRedAlgae_Item>(), 5))
 			.Add(new WorldTalkObjective(GiverNpcType)
 				.WithDialogue(d => d.WithText("Dialogue.Objective2")));
+
+		RewardItems.Add(new Item(ItemID.GoldCoin, 2));
 	}
 
 	private int GiverNpcType => ModContent.NPCType<InnKeeper>();
 
 	public override QuestSourceBase Source => YggdrasilQuestSources.InnKeeper;
 
-	public override bool CanUnlock() => YggdrasilWorldSystem.EnteredKelpCurtain;
+	public override bool CanUnlock() => YggdrasilWorldSystem.EnteredKelpCurtain
+		&& WorldQuestManager.Instance.GetQuest<InnKeeper_Quest1>()?.State == WorldQuestState.Completed;
 }

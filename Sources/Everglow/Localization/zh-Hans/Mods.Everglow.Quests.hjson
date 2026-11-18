@@ -119,9 +119,6 @@ Guard_Quest1: {
 	Hint: "踏入天穹树"
 	Objectives: [
 		{
-			Description: "安娜似乎有点小事想请你帮忙，去和她聊聊吧。"
-		}
-		{
 			Description: "安娜想偷偷喝上一点麦芽酒，帮她带些来，记得避开她的上司。"
 		}
 	]
@@ -154,14 +151,10 @@ Guard_Quest3: {
 	}
 	DisplayName: "史莱姆医生"
 	Description: "一个小家伙受了伤，安娜需要帮手照料它。"
-	Hint: "平息醉酒矿工的游行"
+	Hint: "击退警长任务中的第一轮入侵"
 	Objectives: [
 		{
-			Description: "安娜似乎正在照料一个受伤的小家伙，去看看她是否需要帮助。"
-		}
-		{
 			Description: "安娜抽不开身照料受伤的小家伙，帮她带些凝胶来，也许能派上用场。"
-			ObjectiveText: "为安娜收集凝胶。"
 		}
 	]
 }
@@ -169,54 +162,30 @@ Guard_Quest3: {
 Warden_Quest1: {
 	Dialogue: {
 		Objective0: "我有什么麻烦？听说你最近击败了龙鳞古壳，非常好，这证明你确实有实力。正好最近小镇上有一些闹事的混混，镇民都在抱怨，你去教育教育他们。"
-		Objective2: "干得不错，这帮醉酒的矿工总算消停了。不过镇上还有一群飞贼在闹事，恐怕还得请你搭把手。"
-		Objective4: "飞贼的事我听说了，办得漂亮。可镇上还没太平多久，那位千金和刺客又闹出了风波，还得劳烦你去看看。"
-		Objective6: "这场风波总算平息了。不过有人竟然想在街头举行活祭，这可不能放任不管。快去阻止他们！"
-		Objective8: "幸亏你及时阻止了那场活祭，镇民们才没有遭殃。辛苦了，我替天穹镇的大家谢谢你。"
+		Objective2: "干得不错，这帮僵尸总算消停了。不过镇上还有一群飞贼在闹事，恐怕还得请你搭把手。"
 	}
 	Hint: "击败龙鳞古壳"
-	DisplayName: "守卫天穹镇"
+	DisplayName: "守卫天穹镇·其一"
 	Description: "天穹镇接连发生骚乱，霍华德需要有人协助维持秩序。"
 	Objectives: [
 		{
 			Description: "霍华德似乎正为镇上的骚乱发愁，去问问他吧。"
 		}
 		{
-			Description: "醉酒矿工的游行扰乱了小镇的安宁，帮霍华德平息这场骚乱。"
-			ObjectiveText: "前往天穹镇，等待夜幕降临，击退醉酒矿工游行。"
+			Description: "僵尸扰乱了小镇的安宁，帮霍华德平息这场骚乱。"
+			ObjectiveText: "前往天穹镇，等待夜幕降临，击退来袭的十二只僵尸。"
 		}
 		{
-			Description: "醉酒矿工的骚乱暂时平息了，去向霍华德报告情况。"
-		}
-		{
-			Description: "镇上的飞贼又惹出了麻烦，阻止他们继续作乱。"
-			ObjectiveText: "挡住飞贼横行。"
-		}
-		{
-			Description: "飞贼引起的骚乱已经平息，回去问问霍华德镇上的情况。"
-		}
-		{
-			Description: "千金与刺客的风波让小镇再起骚乱，帮助霍华德恢复秩序。"
-			ObjectiveText: "挡住千金与刺客。"
-		}
-		{
-			Description: "千金与刺客的风波暂告一段落，去向霍华德汇报。"
-		}
-		{
-			Description: "有人试图在街头举行活祭，尽快阻止这场暴行。"
-			ObjectiveText: "阻止当街活祭。"
-		}
-		{
-			Description: "街头的活祭已经被阻止，回去告诉霍华德小镇暂时安全了。"
+			Description: "僵尸的骚乱暂时平息了，去向霍华德报告情况。"
 		}
 	]
 }
 
 Restauranteur_Quest1: {
 	Dialogue: {
-		Objective0: "啊，原来你是新来的啊。既然你都问了，那正好这两天的生意太好了，餐厅甚至来不及进货。你帮我弄些[i/s5:Everglow/GrassCarp]来，你的晚饭我就包了。"
-		Objective1Request: "啊，原来你是新来的啊。既然你都问了，那正好这两天的生意太好了，餐厅甚至来不及进货。你帮我弄些[i/s5:Everglow/GrassCarp]来，你的晚饭我就包了。"
-		Objective1Success: "这些鱼还真是肥美。就像我之前说的，你的晚饭我包了。"
+		Objective0: "啊，原来你是新来的啊。既然你都问了，那正好这两天的生意太好了，餐厅甚至来不及进货。你帮我弄些[i/s5:Everglow/GrassCarp]来，我会付你报酬。"
+		Objective1Request: "啊，原来你是新来的啊。既然你都问了，那正好这两天的生意太好了，餐厅甚至来不及进货。你帮我弄些[i/s5:Everglow/GrassCarp]来，我会付你报酬。"
+		Objective1Success: "这些鱼还真是肥美。就像我之前说的，报酬少不了你的。"
 	}
 	DisplayName: "食材补充·其一"
 	Description: "餐厅的生意太好，罗尔来不及补充鱼货。"
@@ -238,7 +207,7 @@ Restauranteur_Quest2: {
 	}
 	DisplayName: "自力更生"
 	Description: "罗尔想教你准备一道能填饱肚子的菜。"
-	Hint: "击败球冻王或龙鳞古壳"
+	Hint: "完成「食材补充·其一」，并击败球冻王或龙鳞古壳"
 	Objectives: [
 		{
 			Description: "罗尔似乎有些做菜的心得想告诉你。"
@@ -299,63 +268,61 @@ CanteenMaid_Quest1: {
 
 CanteenMaid_Quest2: {
 	Dialogue: {
-		Objective0: "那群海盗你知道吧？已经欠了三个月的账了，帮我收回来，有你一份。"
+		Objective0: "那群伞尾贼你知道吧？偷走了餐厅的账款，帮我收回来，有你一份。"
 		Objective2: "谢谢，希望能管用。这种麻烦的客人还是少一点比较好。"
 	}
 	DisplayName: "头疼的客人"
-	Description: "一群海盗拖欠了餐厅的账款，贝蒂希望有人出面处理。"
-	Hint: "贝蒂会提起海盗的欠账"
+	Description: "一群伞尾贼偷走了餐厅的账款，贝蒂希望有人出面处理。"
+	Hint: "完成「伤筋动骨」"
 	Objectives: [
 		{
 			Description: "听听贝蒂遇到了什么麻烦。"
 		}
 		{
-			Description: "找到欠账的海盗，让他们结清餐费。"
-			ObjectiveText: "处理拖欠餐费的海盗。"
+			Description: "伞尾贼白天会在灯木森林出没，找到这些偷钱的家伙，替贝蒂追回账款。"
 		}
 		{
-			Description: "回去告诉贝蒂欠账的事已经处理好了。"
+			Description: "回去告诉贝蒂账款失窃的事已经处理好了。"
 		}
 	]
 }
 
 TeahouseLady_Quest1: {
 	Dialogue: {
-		Objective0: "小家伙，你是冒险者吧？我听说有一种怪物和人类极其相像，能帮姐姐打探打探无主肉傀，然后处理掉这个家伙怎么样？"
+		Objective0: "小家伙，你是冒险者吧？我听说千回矿道里有一种磐石元素，能帮姐姐打探打探磐石元素，然后处理掉这个家伙怎么样？"
 		Objective2: "真是听到了不错的故事呢，小家伙真棒，奖励你摸一下姐姐的尾巴怎么样？"
 	}
 	DisplayName: "茶馆轶事·其一"
-	Description: "夜璃对无主肉傀的传闻很感兴趣。"
+	Description: "夜璃对磐石元素的传闻很感兴趣。"
 	Hint: "踏入天穹树"
 	Objectives: [
 		{
 			Description: "茶馆的夜璃似乎听说了一个奇怪的传闻。"
 		}
 		{
-			Description: "调查那个与人类极其相像的怪物，处理掉无主肉傀。"
-			ObjectiveText: "寻找并处理无主肉傀。"
+			Description: "前往千回矿道调查磐石元素，处理掉这个家伙。"
 		}
 		{
-			Description: "把无主肉傀的故事带回茶馆，讲给夜璃听。"
+			Description: "把磐石元素的故事带回茶馆，讲给夜璃听。"
 		}
 	]
 }
 
 TeahouseLady_Quest2: {
 	Dialogue: {
-		Objective0: "之前的那个怪物你还有印象吧？它身上的那些痕迹想来你也注意到了。去二层打探一下，那里藏着某个教团的造物，应该会有你想要的答案。"
+		Objective0: "之前的那个怪物你还有印象吧？去二层打探一下亡碧湖，回来给姐姐讲讲那里的见闻。"
 		Objective2: "很久没有这样的好消息了。怎么样，今晚姐姐给你庆祝庆祝？"
 	}
 	DisplayName: "茶馆轶事·其二"
-	Description: "怪物身上的痕迹似乎与苍苔帘幕中的某个教团有关。"
-	Hint: "进入苍苔帘幕"
+	Description: "夜璃对苍苔帘幕的亡碧湖很感兴趣。"
+	Hint: "完成「茶馆轶事·其一」，并进入苍苔帘幕"
 	Objectives: [
 		{
 			Description: "夜璃有了新的线索，去茶馆听听她的发现。"
 		}
 		{
-			Description: "顺着怪物身上的痕迹，寻找教团留下的线索。"
-			ObjectiveText: "调查苍苔帘幕中的教团造物。"
+			Description: "前往苍苔帘幕，寻找夜璃提到的亡碧湖。"
+			ObjectiveText: "到达亡碧湖。"
 		}
 		{
 			Description: "带着调查结果返回茶馆。"
@@ -373,17 +340,7 @@ InnKeeper_Quest1: {
 	Hint: "带着青缎矿、青缎锭，或穿上青缎装备，去见格尔格"
 	Objectives: [
 		{
-			ObjectiveText: "带着青缎矿、青缎锭，或穿上青缎装备，去见格尔格。"
-		}
-		{
-			Description: "格尔格注意到了你的青缎材料，问问他需要什么。"
-		}
-		{
 			Description: "寻找青缎矿，帮助格尔格保养义肢。"
-			ObjectiveText: "为格尔格准备青缎矿。"
-		}
-		{
-			Description: "回去看看格尔格的义肢保养得怎么样。"
 		}
 	]
 }
@@ -395,17 +352,82 @@ InnKeeper_Quest2: {
 	}
 	DisplayName: "改变旅馆·其一"
 	Description: "格尔格想用苍苔帘幕中的植物改变旅馆严肃的气氛。"
-	Hint: "进入苍苔帘幕"
+	Hint: "完成「义肢保养」，并进入苍苔帘幕"
 	Objectives: [
 		{
 			Description: "格尔格似乎有了改造旅馆的打算。"
 		}
 		{
-			Description: "为格尔格带回能装点旅馆的植物。"
-			ObjectiveText: "为旅馆寻找苍苔帘幕的植物。"
+			Description: "为格尔格带回能装点旅馆的植物，碧湖红藻生长在苍苔帘幕的亡碧湖。"
 		}
 		{
 			Description: "植物准备好了，回去看看格尔格的布置计划。"
+		}
+	]
+}
+
+Warden_Quest2: {
+	DisplayName: "守卫天穹镇·其二"
+	Description: "镇上的伞尾贼又惹出了麻烦，霍华德想请你继续帮忙。"
+	Hint: "完成「守卫天穹镇·其一」"
+	Dialogue: {
+		Objective0: "上次干得不错。不过镇上还有一群伞尾贼在闹事，恐怕还得请你搭把手。"
+		Objective2: "飞贼引起的骚乱已经平息，办得漂亮。这是说好的报酬。"
+	}
+	Objectives: [
+		{
+			Description: "霍华德似乎正为镇上的骚乱发愁，去问问他吧。"
+		}
+		{
+			Description: "伞尾贼又在镇上作乱。夜间回到天穹镇，阻止它们继续闹事。"
+			ObjectiveText: "击退来袭的十只伞尾贼。"
+		}
+		{
+			Description: "这场骚乱已经平息，回去向霍华德报告情况。"
+		}
+	]
+}
+
+Warden_Quest3: {
+	DisplayName: "守卫天穹镇·其三"
+	Description: "伞尾贼的骚乱刚刚平息，古代幻影的出现又让镇上不得安宁。"
+	Hint: "完成「守卫天穹镇·其二」"
+	Dialogue: {
+		Objective0: "飞贼的事我听说了，办得漂亮。可镇上还没太平多久，又出现了持矛和持弓的古代幻影，还得劳烦你去看看。"
+		Objective2: "古代幻影的事我听说了。辛苦你了，镇民们总算能松口气。"
+	}
+	Objectives: [
+		{
+			Description: "霍华德似乎正为镇上的骚乱发愁，去问问他吧。"
+		}
+		{
+			Description: "持矛和持弓的古代幻影威胁着小镇。夜间前往天穹镇，帮助霍华德击退它们。"
+			ObjectiveText: "击退来袭的持矛、持弓古代幻影各四只。"
+		}
+		{
+			Description: "这场骚乱已经平息，回去向霍华德报告情况。"
+		}
+	]
+}
+
+Warden_Quest4: {
+	DisplayName: "守卫天穹镇·其四"
+	Description: "血月教徒出现在镇上，霍华德担心他们危及镇民。"
+	Hint: "完成「守卫天穹镇·其三」"
+	Dialogue: {
+		Objective0: "古代幻影的风波总算平息了。不过现在又有血月教徒在镇上作乱，这可不能放任不管。快去阻止他们！"
+		Objective2: "幸亏你及时阻止了那些教徒。辛苦了，我替天穹镇的大家谢谢你。"
+	}
+	Objectives: [
+		{
+			Description: "霍华德似乎正为镇上的骚乱发愁，去问问他吧。"
+		}
+		{
+			Description: "血月教徒的行动让霍华德十分担心。夜间前往天穹镇，阻止他们继续作乱。"
+			ObjectiveText: "击退来袭的三名血月教徒。"
+		}
+		{
+			Description: "这场骚乱已经平息，回去向霍华德报告情况。"
 		}
 	]
 }

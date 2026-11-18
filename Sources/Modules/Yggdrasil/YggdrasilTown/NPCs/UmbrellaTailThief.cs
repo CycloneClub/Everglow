@@ -240,19 +240,22 @@ public class UmbrellaTailThief : ModNPC
 
 	public override void OnKill()
 	{
-		for (int i = 0; i < 13; i++)
+		if (!Main.dedServ)
 		{
-			if (i == 5 && Flying)
+			for (int i = 0; i < 13; i++)
 			{
-				continue;
+				if (i == 5 && Flying)
+				{
+					continue;
+				}
+				if (i is >= 1 and <= 3 && !Flying)
+				{
+					continue;
+				}
+				Vector2 v0 = new Vector2(0, Main.rand.NextFloat(0, 6f)).RotatedByRandom(MathHelper.TwoPi);
+				int type = ModContent.Find<ModGore>("Everglow/UmbrellaTailThief_Gore_" + i).Type;
+				Gore.NewGore(NPC.GetSource_Death(), NPC.Center, v0, type, NPC.scale);
 			}
-			if (i is >= 1 and <= 3 && !Flying)
-			{
-				continue;
-			}
-			Vector2 v0 = new Vector2(0, Main.rand.NextFloat(0, 6f)).RotatedByRandom(MathHelper.TwoPi);
-			int type = ModContent.Find<ModGore>("Everglow/UmbrellaTailThief_Gore_" + i).Type;
-			Gore.NewGore(NPC.GetSource_Death(), NPC.Center, v0, type, NPC.scale);
 		}
 	}
 

@@ -2,18 +2,22 @@ using System.Reflection;
 using System.Xml.Linq;
 using Microsoft.Xna.Framework;
 using Everglow.Commons.Mechanics.Events;
+using Everglow.Commons.Mechanics.Quest.WorldSide;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Objectives;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Structure;
 using Everglow.Yggdrasil.YggdrasilTown.Quests.Request;
 using Everglow.Yggdrasil;
 using Everglow.Yggdrasil.YggdrasilTown.Events;
+using Everglow.Yggdrasil.YggdrasilTown.NPCs;
 using SubworldLibrary;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.GameContent.UI.Chat;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
+using Terraria.Utilities;
 
 namespace Everglow.UnitTests.Modules.Yggdrasil;
 
@@ -94,6 +98,7 @@ public class DrunkenMinerInvasionTest
 	[TestMethod]
 	public void ActivationAnnouncesOnceAndRestoringStateDoesNotAnnounce()
 	{
+		Main.dayTime = false;
 		var invasion = CreateInvasion();
 		Assert.IsTrue(EventSystem.Activate(invasion));
 		Assert.HasCount(1, chatMonitor.Messages);
@@ -149,7 +154,6 @@ public class DrunkenMinerInvasionTest
 		Assert.HasCount(0, chatMonitor.Messages);
 
 		Main.netMode = NetmodeID.SinglePlayer;
-		Assert.IsTrue(EventSystem.Activate(invasion));
 		chatMonitor.Clear();
 		EventSystem.Deactivate(invasion);
 		system.ClearWorld();
@@ -157,7 +161,196 @@ public class DrunkenMinerInvasionTest
 	}
 
 	[TestMethod]
-	public void DaytimeObjectiveStartsWhenItBecomesNight()
+	public void FirstStageCannotActivateDuringTheDay()
+	{
+		var invasion = CreateInvasion();
+		Assert.IsFalse(EventSystem.Activate(invasion, 0));
+		Assert.IsFalse(invasion.Active);
+		Assert.HasCount(0, chatMonitor.Messages);
+	}
+
+	[TestMethod]
+	public void DaytimeWardenTalkIsAcceptedBeforeTheInvasionStartsAtNight()
+	{
+		int playerIndex = Main.myPlayer;
+		var originalPlayer = Main.player[playerIndex];
+		var player = new Player { active = true };
+		var originalNPC = Main.npc[0];
+		var talk = typeof(Player).GetProperty(nameof(Player.talkNPC))!;
+		try
+		{
+			var talkObjective = new WorldTalkObjective(NPCID.Guide);
+			var invasion = CreateInvasion();
+			var invasionObjective = CreateObjective(invasion);
+			Main.npc[0] = new NPC { type = NPCID.Guide, active = true };
+			Main.player[playerIndex] = player;
+			player.Center = Main.npc[0].Center;
+			talk.SetValue(player, 0);
+			Assert.IsTrue(talkObjective.TrySubmitObjective(player));
+			Assert.IsTrue(talkObjective.CheckCompletion());
+			invasionObjective.Update();
+			Assert.IsFalse(invasion.Active);
+			Main.dayTime = false;
+			invasionObjective.Update();
+			Assert.IsTrue(invasion.Active);
+		}
+		finally
+		{
+			Main.npc[0] = originalNPC;
+			Main.player[playerIndex] = originalPlayer;
+		}
+	}
+
+	[TestMethod]
+	public void AllFourInvasionStagesAreIndependentWorldRequests()
+	{
+		Type first = typeof(Warden_Quest1);
+		int[] rewardGold = [2, 2, 3, 3];
+		var manager = new WorldQuestManager();
+		var worldQuestSystem = new WorldQuestSystem();
+		typeof(WorldQuestSystem).GetProperty(nameof(WorldQuestSystem.Manager))!.SetValue(worldQuestSystem, manager);
+		PropertyInfo singleton = typeof(ContentInstance<WorldQuestSystem>).GetProperty(nameof(ContentInstance<WorldQuestSystem>.Instance))!;
+		var original = ContentInstance<WorldQuestSystem>.Instance;
+		singleton.SetValue(null, worldQuestSystem);
+		try
+		{
+			WorldQuestBase? previous = null;
+			for (int stage = 0; stage < rewardGold.Length; stage++)
+			{
+				string questName = $"Warden_Quest{stage + 1}";
+				Type? definition = first.Assembly.GetType(first.Namespace + "." + questName);
+				Assert.IsNotNull(definition, $"Missing independent request {questName}.");
+				var quest = (WorldQuestBase)Activator.CreateInstance(definition)!;
+				manager.AddQuest(quest);
+				quest.Initialize();
+
+				Assert.AreEqual(questName, quest.Name);
+				Assert.HasCount(3, quest.Objectives.AllNodes);
+				Assert.IsInstanceOfType<WorldTalkObjective>(quest.Objectives.AllObjectives[0]);
+				Assert.IsInstanceOfType<WorldTalkObjective>(quest.Objectives.AllObjectives[2]);
+				var reward = quest.RewardItems.Single();
+				Assert.AreEqual(ItemID.GoldCoin, reward.type);
+				Assert.AreEqual(rewardGold[stage], reward.stack);
+				Assert.IsFalse(quest.CanClaimReward("Alice"));
+				if (previous is not null)
+				{
+					Assert.IsFalse(quest.CanUnlock(), "An unfinished previous request must block the next stage.");
+					previous.LoadData(new TagCompound { [nameof(WorldQuestBase.State)] = (int)WorldQuestState.Completed });
+					Assert.IsTrue(quest.CanUnlock());
+					Assert.IsTrue(previous.CanClaimReward("Alice"));
+				}
+				previous = quest;
+			}
+		}
+		finally
+		{
+			singleton.SetValue(null, original);
+		}
+	}
+
+	[TestMethod]
+	[DataRow(typeof(UmbrellaTailThief))]
+	[DataRow(typeof(CrimsonSpell))]
+	public void DedicatedServerEnemyDeathSkipsClientOnlyEffects(Type enemyType)
+	{
+		bool originalDedicatedServer = Main.dedServ;
+		var originalRandom = Main.rand;
+		try
+		{
+			Main.dedServ = true;
+			Main.netMode = NetmodeID.Server;
+			Main.rand = new UnifiedRandom(1);
+			var enemy = (ModNPC)Activator.CreateInstance(enemyType)!;
+			typeof(ModNPC).GetProperty("Entity")!.SetValue(enemy, new NPC());
+			enemy.OnKill();
+		}
+		finally
+		{
+			Main.dedServ = originalDedicatedServer;
+			Main.rand = originalRandom;
+		}
+	}
+
+	[TestMethod]
+	public void CrimsonSpellKeepsTheInvasionSpawnPosition()
+	{
+		var spell = new CrimsonSpell();
+		Vector2 spawnPosition = new(200, 400);
+		var npc = new NPC { position = spawnPosition, active = true };
+		typeof(ModNPC).GetProperty("Entity")!.SetValue(spell, npc);
+		var sourceType = typeof(DrunkenMinerInvasion).GetNestedType("SpawnSource", BindingFlags.NonPublic)!;
+		var source = (IEntitySource)Activator.CreateInstance(sourceType, nameof(DrunkenMinerInvasion))!;
+		spell.OnSpawn(source);
+		Assert.AreEqual(spawnPosition, npc.position);
+		Assert.IsTrue(npc.active);
+	}
+
+	[TestMethod]
+	public void MixedStageResumesBothQuotasAndRequiresFourOfEachEnemy()
+	{
+		var spear = ContentInstance<AncientPhantom_Spear>.Instance;
+		var bow = ContentInstance<AncientPhantom_Bow>.Instance;
+		const int spearType = 900;
+		const int bowType = 901;
+		try
+		{
+			SetNpcType(new AncientPhantom_Spear(), spearType);
+			SetNpcType(new AncientPhantom_Bow(), bowType);
+			Main.dayTime = false;
+			var invasion = CreateInvasion();
+			Assert.IsTrue(EventSystem.Activate(invasion, 2));
+			for (int i = 0; i < 5; i++)
+			{
+				DefeatEnemy(spearType);
+			}
+			DefeatEnemy(bowType);
+			Assert.AreEqual(5, invasion.DefeatedEnemies);
+			var tag = new TagCompound();
+			system.SaveWorldData(tag);
+			system.LoadWorldData(tag);
+			Assert.IsTrue(invasion.Active);
+			Assert.AreEqual(4, invasion.DefeatedPrimary);
+			Assert.AreEqual(1, invasion.DefeatedSecondary);
+			DefeatEnemy(bowType);
+			DefeatEnemy(bowType);
+			Assert.IsFalse(invasion.Completed);
+			DefeatEnemy(bowType);
+			Assert.IsTrue(invasion.Completed);
+			Assert.IsFalse(invasion.Active);
+
+			void DefeatEnemy(int type)
+			{
+				var enemy = CreateEnemy();
+				enemy.type = type;
+				TrackEnemy(invasion, enemy);
+				hook.OnKill(enemy);
+			}
+		}
+		finally
+		{
+			SetNpcInstance(spear);
+			SetNpcInstance(bow);
+		}
+	}
+
+	[TestMethod]
+	public void CompletingFirstStageLeavesTheInvasionInactiveUntilAnotherStageIsAuthorized()
+	{
+		var invasion = CreateActiveInvasion();
+		for (int i = 0; i < 12; i++)
+		{
+			var enemy = CreateEnemy();
+			TrackEnemy(invasion, enemy);
+			hook.OnKill(enemy);
+		}
+
+		Assert.IsFalse(invasion.Active);
+		Assert.IsFalse(EventSystem.Activate(invasion, 0));
+		Assert.AreEqual(12, invasion.DefeatedEnemies);
+	}
+
+	[TestMethod]
+	public void ConfirmedStageWaitsUntilNightToSpawn()
 	{
 		Main.dayTime = true;
 		var invasion = CreateInvasion();
@@ -233,7 +426,7 @@ public class DrunkenMinerInvasionTest
 		var invasion = CreateInvasion();
 		var first = CreateObjective(invasion);
 		var second = CreateObjective(invasion);
-		invasion.Downed = true;
+		LoadLegacyVictory(invasion);
 		first.Update();
 		second.Update();
 		Assert.IsTrue(first.CheckCompletion());
@@ -257,6 +450,7 @@ public class DrunkenMinerInvasionTest
 	[TestMethod]
 	public void ObjectiveProgressMapsEventProgressAndResetDoesNotChangeEvent()
 	{
+		Main.dayTime = false;
 		var invasion = CreateInvasion();
 		var objective = CreateObjective(invasion);
 		EventSystem.Activate(invasion);
@@ -280,7 +474,7 @@ public class DrunkenMinerInvasionTest
 		var invasion = CreateInvasion();
 		var objective = CreateObjective(invasion);
 		Main.netMode = NetmodeID.Server;
-		invasion.Downed = true;
+		LoadLegacyVictory(invasion);
 		objective.Update();
 		Assert.AreEqual(1f, objective.Progress);
 		Assert.IsFalse(objective.CheckCompletion());
@@ -290,7 +484,12 @@ public class DrunkenMinerInvasionTest
 		objective.Update();
 		Assert.IsTrue(objective.NeedDeltaSync);
 		Assert.AreEqual(1f, objective.Progress);
-		Transfer(objective.SendDelta, mainObjective.ReceiveDelta);
+		Transfer(objective.SendDelta, reader =>
+		{
+			CurrentWorld.SetValue(null, null);
+			mainObjective.ReceiveDelta(reader);
+			CurrentWorld.SetValue(null, new YggdrasilWorld());
+		});
 		Assert.IsTrue(mainObjective.CheckCompletion());
 		Main.dayTime = false;
 		objective.Update();
@@ -307,7 +506,7 @@ public class DrunkenMinerInvasionTest
 		var objective = CreateObjective(invasion);
 		objective.WithTimeLimit(10);
 		objective.Timer.Update(10);
-		invasion.Downed = true;
+		LoadLegacyVictory(invasion);
 		objective.Update();
 		Assert.IsFalse(objective.CheckCompletion());
 		objective.ResetProgress();
@@ -336,7 +535,7 @@ public class DrunkenMinerInvasionTest
 		var invasion = CreateInvasion();
 		var objective = CreateObjective(invasion);
 		Main.netMode = NetmodeID.MultiplayerClient;
-		invasion.Downed = true;
+		LoadLegacyVictory(invasion);
 		objective.Update();
 		Assert.IsFalse(objective.CheckCompletion());
 		Assert.IsFalse(objective.NeedDeltaSync);
@@ -573,7 +772,7 @@ public class DrunkenMinerInvasionTest
 	}
 
 	[TestMethod]
-	public void DownedSurvivesRestartSaveAndNetworkSnapshotUntilWorldReset()
+	public void DownedSurvivesSaveAndNetworkSnapshotUntilWorldReset()
 	{
 		var invasion = CreateActiveInvasion();
 		for (int i = 0; i < invasion.TargetCount; i++)
@@ -582,10 +781,9 @@ public class DrunkenMinerInvasionTest
 			TrackEnemy(invasion, npc);
 			hook.OnKill(npc);
 		}
-		Assert.IsTrue(EventSystem.Activate(invasion));
 		Assert.IsTrue(invasion.Downed);
-		Assert.IsFalse(invasion.Completed);
-		Assert.AreEqual(0, invasion.DefeatedEnemies);
+		Assert.IsTrue(invasion.Completed);
+		Assert.IsFalse(EventSystem.Activate(invasion));
 
 		var tag = new TagCompound();
 		system.SaveWorldData(tag);
@@ -593,8 +791,8 @@ public class DrunkenMinerInvasionTest
 		Assert.IsFalse(invasion.Downed);
 		system.LoadWorldData(tag);
 		Assert.IsTrue(invasion.Downed);
-		Assert.IsTrue(invasion.Active);
-		Assert.IsFalse(invasion.Completed);
+		Assert.IsFalse(invasion.Active);
+		Assert.IsTrue(invasion.Completed);
 
 		using var stream = new MemoryStream();
 		using var writer = new BinaryWriter(stream);
@@ -604,8 +802,8 @@ public class DrunkenMinerInvasionTest
 		stream.Position = 0;
 		system.NetReceive(new BinaryReader(stream));
 		Assert.IsTrue(invasion.Downed);
-		Assert.IsTrue(invasion.Active);
-		Assert.IsFalse(invasion.Completed);
+		Assert.IsFalse(invasion.Active);
+		Assert.IsTrue(invasion.Completed);
 		system.ClearWorld();
 		Assert.IsFalse(invasion.Downed);
 	}
@@ -616,11 +814,30 @@ public class DrunkenMinerInvasionTest
 		position = new Vector2(100, 100), width = 32, height = 48,
 	};
 
+	private static void SetNpcType<T>(T modNpc, int type)
+		where T : ModNPC
+	{
+		typeof(ModNPC).GetProperty("Entity")!.SetValue(modNpc, new NPC { type = type });
+		SetNpcInstance(modNpc);
+	}
+
+	private static void SetNpcInstance<T>(T? modNpc)
+		where T : ModNPC =>
+		typeof(ContentInstance<T>).GetProperty(nameof(ContentInstance<T>.Instance))!.SetValue(null, modNpc);
+
 	private static void TrackEnemy(DrunkenMinerInvasion invasion, NPC npc) =>
 		typeof(DrunkenMinerInvasion).GetMethod("TrackEnemy", BindingFlags.Instance | BindingFlags.NonPublic)!.Invoke(invasion, [npc]);
 
+	private static void LoadLegacyVictory(DrunkenMinerInvasion invasion) =>
+		invasion.LoadWorldData(invasion.FullName, new TagCompound
+		{
+			[nameof(DrunkenMinerInvasion.TargetCount)] = 12,
+			[nameof(DrunkenMinerInvasion.Downed)] = (byte)1,
+		});
+
 	private static DrunkenMinerInvasion CreateActiveInvasion()
 	{
+		Main.dayTime = false;
 		var invasion = CreateInvasion();
 		Assert.IsTrue(EventSystem.Activate(invasion));
 		return invasion;
@@ -639,7 +856,7 @@ public class DrunkenMinerInvasionTest
 	{
 		SetInvasion(invasion, [invasion]);
 		var objective = (WorldObjectiveBase)Activator.CreateInstance(
-			typeof(Warden_Quest1).GetNestedType("DrunkenMinerInvasionObjective", BindingFlags.NonPublic)!, nonPublic: true)!;
+			typeof(WardenInvasionQuest).GetNestedType("DrunkenMinerInvasionObjective", BindingFlags.NonPublic)!, 0)!;
 		objective.Activate(null!);
 		objectives.Add(objective);
 		return objective;

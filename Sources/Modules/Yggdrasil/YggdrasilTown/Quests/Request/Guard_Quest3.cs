@@ -3,7 +3,6 @@ using Everglow.Commons.Mechanics.Quest.Core;
 using Everglow.Commons.Mechanics.Quest.Core.Dialogue;
 using Everglow.Commons.Mechanics.Quest.WorldSide;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Objectives;
-using Everglow.Yggdrasil.YggdrasilTown.Items.Miscs;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Quests.Request;
@@ -18,7 +17,7 @@ public sealed class Guard_Quest3 : WorldQuestBase
 			.Add(new WorldGiveObjective(GiverNpcType, ItemID.Gel, 10)
 				.WithDialogue(d => d.WithText("Dialogue.Objective0")));
 
-		RewardItems.Add(new Item(ModContent.ItemType<GoodNeighborCoin>(), 10));
+		RewardItems.Add(new Item(ItemID.GoldCoin, 1));
 	}
 
 	private int GiverNpcType => ModContent.NPCType<Guard_Of_YggdrasilTown>();

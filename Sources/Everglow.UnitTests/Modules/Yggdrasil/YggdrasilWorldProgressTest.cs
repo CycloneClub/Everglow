@@ -10,6 +10,9 @@ using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Everglow.Yggdrasil.KelpCurtain;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs.KingJellyBall;
+using Everglow.Commons.Mechanics.Quest.WorldSide;
+using Everglow.Commons.Mechanics.Quest.WorldSide.Abstractions;
+using Terraria.ModLoader;
 
 namespace Everglow.UnitTests.Modules.Yggdrasil;
 
@@ -167,7 +170,31 @@ public class YggdrasilWorldProgressTest
 		Main.netMode = NetmodeID.SinglePlayer;
 		new KingJellyBall().OnKill();
 		Assert.IsTrue(YggdrasilWorldSystem.DownedKingJellyBall);
-		Assert.IsTrue(new Restauranteur_Quest2().CanUnlock());
+		var instance = typeof(ContentInstance<WorldQuestSystem>).GetProperty("Instance")!;
+		var oldQuestSystem = instance.GetValue(null);
+		try
+		{
+			var questSystem = new WorldQuestSystem();
+			var manager = new WorldQuestManager();
+			var prerequisite = new Restauranteur_Quest1();
+			typeof(WorldQuestManager).GetField("_quests", BindingFlags.Instance | BindingFlags.NonPublic)!
+				.SetValue(manager, new List<WorldQuestBase> { prerequisite });
+			typeof(WorldQuestSystem).GetProperty(nameof(WorldQuestSystem.Manager))!.SetValue(questSystem, manager);
+			instance.SetValue(null, questSystem);
+			var cookingQuest = new Restauranteur_Quest2();
+			Assert.IsFalse(cookingQuest.CanUnlock(), "A boss defeat alone does not replace the ingredient quest.");
+			typeof(WorldQuestBase).GetProperty(nameof(WorldQuestBase.State))!
+				.SetValue(prerequisite, WorldQuestState.Completed);
+			Assert.IsTrue(cookingQuest.CanUnlock());
+			YggdrasilWorldSystem.DownedKingJellyBall = false;
+			Assert.IsFalse(cookingQuest.CanUnlock(), "The prerequisite alone does not replace a boss defeat.");
+			YggdrasilWorldSystem.DownedSquamousShell = true;
+			Assert.IsTrue(cookingQuest.CanUnlock(), "Either town boss satisfies the combat milestone.");
+		}
+		finally
+		{
+			instance.SetValue(null, oldQuestSystem);
+		}
 	}
 
 	[TestMethod]
