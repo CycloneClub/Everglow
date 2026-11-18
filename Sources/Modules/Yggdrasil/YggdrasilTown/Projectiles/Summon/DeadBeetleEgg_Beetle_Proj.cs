@@ -12,6 +12,7 @@ public class DeadBeetleEgg_Beetle_Proj : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Summon;
 		Projectile.width = 20;
 		Projectile.height = 20;
 		Projectile.friendly = true;

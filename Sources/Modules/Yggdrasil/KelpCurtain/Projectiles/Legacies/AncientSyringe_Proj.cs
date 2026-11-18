@@ -12,6 +12,7 @@ public class AncientSyringe_Proj : HandheldProjectile
 
 	public override void SetDef()
 	{
+		Projectile.DamageType = DamageClass.Magic;
 		DepartLength = 110;
 		Projectile.usesLocalNPCImmunity = true;
 		Projectile.localNPCHitCooldown = 20;

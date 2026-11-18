@@ -10,6 +10,7 @@ public class TrueDeathSickle_MoonBlade : ModProjectile, IWarpProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Melee;
 		Projectile.friendly = true;
 		Projectile.hostile = false;
 		Projectile.width = 40;

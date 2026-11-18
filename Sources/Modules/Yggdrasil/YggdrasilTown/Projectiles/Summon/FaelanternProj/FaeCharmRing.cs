@@ -10,6 +10,7 @@ public class FaeCharmRing : ModProjectile, IWarpProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Summon;
 		Projectile.width = 120;
 		Projectile.height = 120;
 		Projectile.friendly = true;

@@ -24,6 +24,7 @@ public class GoldenLotusStaff_Proj : TrailingProjectile
 
 	public override void SetCustomDefaults()
 	{
+		Projectile.DamageType = DamageClass.Summon;
 		Projectile.aiStyle = -1;
 		Projectile.width = 16;
 		Projectile.height = 16;

@@ -58,6 +58,7 @@ public abstract class StabbingProjectile_Stab : ModProjectile, IWarpProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Melee;
 		Projectile.width = 24;
 		Projectile.height = 24;
 		Projectile.netImportant = true;

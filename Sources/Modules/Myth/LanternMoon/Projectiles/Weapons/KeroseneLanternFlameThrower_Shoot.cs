@@ -10,6 +10,7 @@ public class KeroseneLanternFlameThrower_Shoot : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Ranged;
 		Projectile.width = 40;
 		Projectile.height = 40;
 		Projectile.friendly = true;

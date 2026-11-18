@@ -8,6 +8,7 @@ public class AmberMagicOrb : HandheldProjectile
 
 	public override void SetDef()
 	{
+		Projectile.DamageType = DamageClass.Magic;
 		DepartLength = 60;
 		TextureRotation = 5 / 18f * MathHelper.Pi;
 		Projectile.usesLocalNPCImmunity = true;

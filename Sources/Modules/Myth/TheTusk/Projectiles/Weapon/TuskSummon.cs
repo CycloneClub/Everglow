@@ -19,7 +19,7 @@ internal class TuskSummon : ModProjectile
 		Projectile.aiStyle = -1;
 		Projectile.width = 10;
 		Projectile.height = 10;
-		Projectile.DamageType = DamageClass.MagicSummonHybrid;
+		Projectile.DamageType = DamageClass.Summon;
 		Projectile.minion = true;
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;

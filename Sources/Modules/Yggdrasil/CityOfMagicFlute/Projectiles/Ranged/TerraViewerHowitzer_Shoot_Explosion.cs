@@ -23,7 +23,7 @@ public class TerraViewerHowitzer_Shoot_Explosion : ModProjectile, IWarpProjectil
 		Projectile.extraUpdates = 2;
 		Projectile.usesLocalNPCImmunity = true;
 		Projectile.localNPCHitCooldown = 20;
-		Projectile.DamageType = DamageClass.Magic;
+		Projectile.DamageType = DamageClass.Ranged;
 		ProjectileID.Sets.DrawScreenCheckFluff[Type] = 30000;
 		ProjectileID.Sets.DrawScreenCheckFluff[Projectile.type] = 14400;
 	}

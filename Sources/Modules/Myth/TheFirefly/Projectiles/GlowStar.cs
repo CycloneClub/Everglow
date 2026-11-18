@@ -9,6 +9,7 @@ public class GlowStar : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Magic;
 		Projectile.width = 10;
 		Projectile.height = 10;
 		Projectile.aiStyle = -1;

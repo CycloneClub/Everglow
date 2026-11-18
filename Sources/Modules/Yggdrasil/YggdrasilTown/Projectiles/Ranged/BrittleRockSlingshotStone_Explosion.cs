@@ -22,7 +22,7 @@ public class BrittleRockSlingshotStone_Explosion : ModProjectile, IWarpProjectil
 		Projectile.extraUpdates = 3;
 		Projectile.usesLocalNPCImmunity = true;
 		Projectile.localNPCHitCooldown = 20;
-		Projectile.DamageType = DamageClass.Magic;
+		Projectile.DamageType = DamageClass.Ranged;
 	}
 
 	public override void OnSpawn(IEntitySource source)

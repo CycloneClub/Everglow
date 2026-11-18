@@ -9,6 +9,7 @@ public class AmbiguousLine : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Ranged;
 		Projectile.width = 10;
 		Projectile.height = 10;
 		Projectile.friendly = true;

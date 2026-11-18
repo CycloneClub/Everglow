@@ -13,6 +13,7 @@ public class LilyHarpNote : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Magic;
 		Projectile.extraUpdates = 1;
 		Projectile.width = 24;
 		Projectile.height = 24;

@@ -15,6 +15,7 @@ namespace Everglow.EternalResolve.Projectiles
 
 		public override void SetDefaults()
 		{
+			Projectile.DamageType = DamageClass.Melee;
 			Projectile.width = 10;
 			Projectile.height = 10;
 			Projectile.netImportant = true;

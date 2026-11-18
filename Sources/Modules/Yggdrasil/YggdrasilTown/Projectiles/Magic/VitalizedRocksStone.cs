@@ -11,6 +11,7 @@ public class VitalizedRocksStone : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Magic;
 		Projectile.magic = true;
 		Projectile.width = 32;
 		Projectile.height = 32;

@@ -13,6 +13,7 @@ public class LanternYoyo_FireYoyo : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.MeleeNoSpeed;
 		Projectile.aiStyle = -1;
 		Projectile.width = 16;
 		Projectile.height = 16;

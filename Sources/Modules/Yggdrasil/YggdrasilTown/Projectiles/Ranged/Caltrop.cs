@@ -8,6 +8,7 @@ public class Caltrop : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Ranged;
 		Projectile.width = 16;
 		Projectile.height = 16;
 

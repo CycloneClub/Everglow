@@ -6,6 +6,7 @@ public class LanternFlameBullet : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Ranged;
 		Projectile.timeLeft = 3600;
 		Projectile.width = 10;
 		Projectile.height = 10;
@@ -39,7 +40,7 @@ public class LanternFlameBullet : ModProjectile
 	public override void OnKill(int timeLeft)
 	{
 		base.OnKill(timeLeft);
-		Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<Lantern_ExplosionEffect>(), Projectile.damage, 2, Projectile.owner, 3);
+		Projectile.NewProjectileDirect(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<LanternFlameBullet_Explosion>(), Projectile.damage, 2, Projectile.owner, 3);
 	}
 
 	public override bool PreDraw(ref Color lightColor)

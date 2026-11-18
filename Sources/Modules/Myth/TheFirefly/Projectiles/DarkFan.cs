@@ -18,7 +18,7 @@ internal class DarkFan : ModProjectile
 		Projectile.timeLeft = 200;
 		Projectile.extraUpdates = 1;
 		Projectile.tileCollide = false;
-		Projectile.DamageType = DamageClass.Melee;
+		Projectile.DamageType = DamageClass.Summon;
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 70;
 	}

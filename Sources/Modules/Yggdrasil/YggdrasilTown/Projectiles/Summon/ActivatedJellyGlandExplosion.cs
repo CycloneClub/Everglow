@@ -10,6 +10,7 @@ public class ActivatedJellyGlandExplosion : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Summon;
 		Projectile.width = 8;
 		Projectile.height = 8;
 		Projectile.aiStyle = -1;

@@ -29,6 +29,7 @@ public class NightfireStaff_Projectile : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Magic;
 		Projectile.width = 8;
 		Projectile.height = 8;
 		Projectile.aiStyle = 0;

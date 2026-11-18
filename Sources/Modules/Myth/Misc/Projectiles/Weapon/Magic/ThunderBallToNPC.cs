@@ -8,6 +8,7 @@ public class ThunderBallToNPC : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Magic;
 		Projectile.width = 10;
 		Projectile.height = 10;
 		Projectile.hostile = false;

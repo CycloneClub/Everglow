@@ -16,7 +16,7 @@ public class FrostSpice : ModProjectile
 		Projectile.height = 20;
 		Projectile.friendly = true;
 		Projectile.hostile = false;
-		Projectile.DamageType = DamageClass.Ranged;
+		Projectile.DamageType = DamageClass.Magic;
 		Projectile.aiStyle = -1;
 		Projectile.penetrate = 6;
 		Projectile.timeLeft = 3600;

@@ -23,7 +23,7 @@ public class DreamWeaver_Proj : ModProjectile, IWarpProjectile
 		Projectile.alpha = 0;
 		Projectile.penetrate = 1;
 		Projectile.scale = 1f;
-		Projectile.DamageType = DamageClass.MagicSummonHybrid;
+		Projectile.DamageType = DamageClass.Magic;
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 20;
 	}

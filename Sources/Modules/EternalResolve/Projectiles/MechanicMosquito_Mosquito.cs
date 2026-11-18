@@ -13,6 +13,7 @@ namespace Everglow.EternalResolve.Projectiles
 
 		public override void SetDefaults()
 		{
+			Projectile.DamageType = DamageClass.Melee;
 			Projectile.timeLeft = 3600000;
 			Projectile.friendly = true;
 			Projectile.hostile = false;

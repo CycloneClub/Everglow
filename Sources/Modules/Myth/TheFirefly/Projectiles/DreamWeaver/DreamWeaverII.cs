@@ -11,6 +11,7 @@ public class DreamWeaverII : TrailingProjectile
 
 	public override void SetCustomDefaults()
 	{
+		Projectile.DamageType = DamageClass.Magic;
 		TrailColor = new Color(0, 0.2f, 0.6f, 0f);
 		TrailBackgroundDarkness = 0.1f;
 		TrailWidth = 8f;

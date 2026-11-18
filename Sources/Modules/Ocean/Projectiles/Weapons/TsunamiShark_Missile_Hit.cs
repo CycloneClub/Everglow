@@ -12,6 +12,7 @@ public class TsunamiShark_Missile_Hit : ModProjectile, IWarpProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Ranged;
 		Projectile.width = 10;
 		Projectile.height = 10;
 		Projectile.friendly = true;

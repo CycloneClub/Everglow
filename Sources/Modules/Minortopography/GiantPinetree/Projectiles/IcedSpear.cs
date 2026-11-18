@@ -10,6 +10,7 @@ public class IcedSpear : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Ranged;
 		Projectile.friendly = true;
 		Projectile.hostile = false;
 		Projectile.width = 20;

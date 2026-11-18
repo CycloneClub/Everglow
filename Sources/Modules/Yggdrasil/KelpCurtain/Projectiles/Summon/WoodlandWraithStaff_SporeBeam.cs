@@ -10,6 +10,7 @@ public class WoodlandWraithStaff_SporeBeam : TrailingProjectile
 
 	public override void SetCustomDefaults()
 	{
+		Projectile.DamageType = DamageClass.Summon;
 		TrailColor = new Color(0.9f, 0.9f, 0.95f, 0f);
 		TrailWidth = 12f;
 		TrailTexture = Commons.ModAsset.Trail_8.Value;

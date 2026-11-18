@@ -15,7 +15,7 @@ public class OrichalcumPedal : ModProjectile
 		Projectile.friendly = true;
 		Projectile.tileCollide = false;
 		Projectile.ignoreWater = false;
-		Projectile.DamageType = DamageClass.Magic;
+		Projectile.DamageType = DamageClass.Melee;
 
 		Projectile.timeLeft = 360;
 	}

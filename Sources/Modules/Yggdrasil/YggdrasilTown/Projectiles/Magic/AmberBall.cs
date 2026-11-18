@@ -11,6 +11,7 @@ public class AmberBall : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Magic;
 		Projectile.usesLocalNPCImmunity = true;
 		Projectile.localNPCHitCooldown = 5;
 		Projectile.ArmorPenetration = 0;

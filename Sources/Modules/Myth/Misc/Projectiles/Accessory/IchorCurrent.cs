@@ -1,5 +1,6 @@
 using Everglow.Commons.VFX.CommonVFXDusts;
 using Terraria.Audio;
+using Terraria.DataStructures;
 
 namespace Everglow.Myth.Misc.Projectiles.Accessory;
 
@@ -25,6 +26,18 @@ public class IchorCurrent : ModProjectile
 		ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		ProjectileID.Sets.TrailCacheLength[Projectile.type] = 15;
 	}
+
+	public override void OnSpawn(IEntitySource source)
+	{
+		if (source is EntitySource_Parent { Entity: Projectile parent } && parent.DamageType == DamageClass.Melee)
+		{
+			Projectile.DamageType = DamageClass.Melee;
+		}
+	}
+
+	public override void SendExtraAI(BinaryWriter writer) => writer.Write(Projectile.DamageType == DamageClass.Melee);
+
+	public override void ReceiveExtraAI(BinaryReader reader) => Projectile.DamageType = reader.ReadBoolean() ? DamageClass.Melee : DamageClass.Magic;
 
 	public void GenerateVFX(int frequency)
 	{

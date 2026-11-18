@@ -24,7 +24,7 @@ public class YoenLeZed_Pro_Stab_HitTile : ModProjectile, IWarpProjectile
 		Projectile.extraUpdates = 12;
 		Projectile.usesLocalNPCImmunity = true;
 		Projectile.localNPCHitCooldown = 20;
-		Projectile.DamageType = DamageClass.Magic;
+		Projectile.DamageType = DamageClass.Melee;
 	}
 
 	public override void AI()

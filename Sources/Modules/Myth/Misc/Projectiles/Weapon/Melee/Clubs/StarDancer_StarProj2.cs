@@ -11,6 +11,7 @@ public class StarDancer_StarProj2 : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Melee;
 		Projectile.timeLeft = 60;
 		Projectile.hostile = false;
 		Projectile.friendly = false;

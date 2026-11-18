@@ -8,6 +8,7 @@ public class PrimordialJadeWinged_SpearSpice : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Melee;
 		Projectile.width = 100;
 		Projectile.height = 100;
 		Projectile.friendly = true;

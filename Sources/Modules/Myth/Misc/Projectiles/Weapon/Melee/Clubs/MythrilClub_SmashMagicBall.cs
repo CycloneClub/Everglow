@@ -11,6 +11,7 @@ public class MythrilClub_SmashMagicBall : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Melee;
 		Projectile.width = 20;
 		Projectile.height = 20;
 		Projectile.friendly = false;

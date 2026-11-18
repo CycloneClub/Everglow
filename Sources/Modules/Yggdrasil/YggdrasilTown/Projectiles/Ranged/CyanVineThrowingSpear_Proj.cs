@@ -9,6 +9,7 @@ public class CyanVineThrowingSpear_Proj : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Ranged;
 		Projectile.friendly = false;
 		Projectile.hostile = false;
 		Projectile.width = 20;

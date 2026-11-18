@@ -20,6 +20,7 @@ public class EmptyWaterStaff_Proj_Bubble : ModProjectile, IWarpProjectile_WarpSt
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Magic;
 		Projectile.friendly = false;
 		Projectile.width = 10;
 		Projectile.height = 10;

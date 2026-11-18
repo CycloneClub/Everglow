@@ -10,6 +10,7 @@ public class GlowMoonBlade : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Melee;
 		Projectile.width = 40;
 		Projectile.height = 40;
 		Projectile.aiStyle = -1;

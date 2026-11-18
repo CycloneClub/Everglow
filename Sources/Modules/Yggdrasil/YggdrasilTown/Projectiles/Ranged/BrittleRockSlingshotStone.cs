@@ -12,6 +12,7 @@ public class BrittleRockSlingshotStone : TrailingProjectile
 
 	public override void SetCustomDefaults()
 	{
+		Projectile.DamageType = DamageClass.Ranged;
 		Projectile.ranged = true;
 		Projectile.width = 16;
 		Projectile.height = 16;

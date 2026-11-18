@@ -10,6 +10,7 @@ public class BacterialAgent_Proj : TrailingProjectile
 
 	public override void SetCustomDefaults()
 	{
+		Projectile.DamageType = DamageClass.Magic;
 		TrailColor = new Color(0.7f, 1f, 0.4f, 0);
 		TrailTexture = Commons.ModAsset.Trail_2.Value;
 		TrailTextureBlack = Commons.ModAsset.Trail_2_Black.Value;

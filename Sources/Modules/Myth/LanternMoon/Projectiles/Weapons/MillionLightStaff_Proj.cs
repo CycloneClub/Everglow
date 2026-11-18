@@ -13,6 +13,7 @@ public class MillionLightStaff_Proj : TrailingProjectile
 
 	public override void SetCustomDefaults()
 	{
+		Projectile.DamageType = DamageClass.Magic;
 		Projectile.aiStyle = -1;
 		Projectile.width = 64;
 		Projectile.height = 64;

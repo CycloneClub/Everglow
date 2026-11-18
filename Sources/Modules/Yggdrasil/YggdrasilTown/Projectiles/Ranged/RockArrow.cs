@@ -11,6 +11,7 @@ public class RockArrow : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Ranged;
 		Projectile.ranged = true;
 		Projectile.width = 10;
 		Projectile.height = 10;

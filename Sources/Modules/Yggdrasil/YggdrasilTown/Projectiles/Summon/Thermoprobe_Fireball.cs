@@ -8,6 +8,7 @@ public class Thermoprobe_Fireball : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Summon;
 		Projectile.width = 16;
 		Projectile.height = 16;
 		Projectile.friendly = true;

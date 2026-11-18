@@ -10,6 +10,7 @@ public class ToothBow_BloodArrow : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Ranged;
 		Projectile.width = 20;
 		Projectile.height = 20;
 		Projectile.netImportant = true;

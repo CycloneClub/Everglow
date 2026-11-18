@@ -18,6 +18,7 @@ public class NavyThunderBomb : ModProjectile, IWarpProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Magic;
 		Projectile.width = 32;
 		Projectile.height = 32;
 		Projectile.friendly = false;

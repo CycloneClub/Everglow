@@ -11,7 +11,7 @@ public class HandheldCircularSaw_Proj : ModProjectile
 	{
 		Projectile.width = 30;
 		Projectile.height = 30;
-		Projectile.DamageType = DamageClass.Magic;
+		Projectile.DamageType = DamageClass.Melee;
 		Projectile.aiStyle = -1;
 		Projectile.penetrate = -1;
 		Projectile.tileCollide = false;

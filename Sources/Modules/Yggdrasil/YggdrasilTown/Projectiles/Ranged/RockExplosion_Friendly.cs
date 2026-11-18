@@ -8,6 +8,7 @@ public class RockExplosion_Friendly : ModProjectile, IWarpProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Ranged;
 		Projectile.ranged = true;
 		Projectile.width = 120;
 		Projectile.height = 120;

@@ -15,6 +15,7 @@ public class HyperockSpearProj : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Melee;
 		Projectile.friendly = false;
 		Projectile.hostile = false;
 		Projectile.width = 20;

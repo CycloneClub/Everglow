@@ -12,6 +12,7 @@ public class PrimordialJadeWinged_Spear_Thrust2 : ModProjectile, IWarpProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Melee;
 		Projectile.extraUpdates = 16;
 		Projectile.timeLeft = 240;
 		Projectile.width = 80;

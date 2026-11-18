@@ -13,6 +13,7 @@ public class ActivatedJellyGlandBeam : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Summon;
 		Projectile.width = 30;
 		Projectile.height = 30;
 		Projectile.aiStyle = -1;

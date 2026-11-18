@@ -21,6 +21,7 @@ public class IntroductiontoThermalElectricity_Ball : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Magic;
 		Projectile.friendly = true;
 		Projectile.timeLeft = 900;
 		Projectile.tileCollide = true;

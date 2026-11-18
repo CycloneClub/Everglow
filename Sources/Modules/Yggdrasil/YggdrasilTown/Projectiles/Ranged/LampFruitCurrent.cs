@@ -8,6 +8,7 @@ public class LampFruitCurrent : TrailingProjectile
 
 	public override void SetCustomDefaults()
 	{
+		Projectile.DamageType = DamageClass.Ranged;
 		Projectile.ranged = true;
 		Projectile.width = 20;
 		Projectile.height = 20;

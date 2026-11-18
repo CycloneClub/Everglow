@@ -12,8 +12,11 @@ public class Lantern_ExplosionEffect : ModProjectile
 
 	public int Timer = 0;
 
+	protected virtual DamageClass ExplosionDamageType => DamageClass.MeleeNoSpeed;
+
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = ExplosionDamageType;
 		Projectile.timeLeft = 10;
 		Projectile.width = 60;
 		Projectile.height = 60;

@@ -16,6 +16,7 @@ public class EvilHalbertBarnacle_Proj_Thrust : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Melee;
 		Projectile.width = 30;
 		Projectile.height = 30;
 		Projectile.aiStyle = -1;

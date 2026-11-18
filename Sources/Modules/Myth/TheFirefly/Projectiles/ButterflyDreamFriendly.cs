@@ -19,6 +19,7 @@ public class ButterflyDreamFriendly : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Melee;
 		Projectile.width = 36;
 		Projectile.height = 34;
 		Projectile.netImportant = true;

@@ -15,6 +15,7 @@ public class Glow_Fall : TrailingProjectile
 
 	public override void SetCustomDefaults()
 	{
+		Projectile.DamageType = DamageClass.Melee;
 		TrailColor = new Color(0, 0.7f, 1f, 0);
 		TrailTextureBlack = Commons.ModAsset.Trail_Black.Value;
 		SelfLuminous = true;

@@ -16,6 +16,7 @@ public class PhantomMoth : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Summon;
 		Projectile.width = 36;
 		Projectile.height = 34;
 		Projectile.netImportant = true;

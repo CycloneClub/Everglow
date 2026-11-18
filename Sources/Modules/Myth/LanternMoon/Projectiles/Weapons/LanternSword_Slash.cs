@@ -27,6 +27,7 @@ public class LanternSword_Slash : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Melee;
 		Projectile.timeLeft = 30;
 		Projectile.width = 10;
 		Projectile.height = 10;

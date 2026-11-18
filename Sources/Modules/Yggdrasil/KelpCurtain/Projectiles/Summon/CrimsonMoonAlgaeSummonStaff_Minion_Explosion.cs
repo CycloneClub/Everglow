@@ -10,6 +10,7 @@ public class CrimsonMoonAlgaeSummonStaff_Minion_Explosion : ModProjectile, IRedA
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Summon;
 		Projectile.width = 60;
 		Projectile.height = 60;
 		Projectile.friendly = true;

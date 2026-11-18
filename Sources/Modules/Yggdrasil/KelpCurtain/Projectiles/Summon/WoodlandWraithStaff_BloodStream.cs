@@ -12,6 +12,7 @@ public class WoodlandWraithStaff_BloodStream : TrailingProjectile
 
 	public override void SetCustomDefaults()
 	{
+		Projectile.DamageType = DamageClass.Summon;
 		TrailColor = new Color(0.4f, 0.0f, 0.0f, 0f);
 		TrailWidth = 12f;
 		TrailTexture = Commons.ModAsset.Trail_8.Value;

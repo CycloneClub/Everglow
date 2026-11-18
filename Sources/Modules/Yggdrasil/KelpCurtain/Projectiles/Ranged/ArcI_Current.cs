@@ -24,6 +24,7 @@ public class ArcI_Current : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Ranged;
 		Projectile.timeLeft = 60;
 		Projectile.extraUpdates = 2;
 		Projectile.aiStyle = -1;

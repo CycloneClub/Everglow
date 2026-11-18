@@ -10,6 +10,7 @@ public class LanternZoneBullet : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Ranged;
 		Projectile.timeLeft = 3600;
 		Projectile.width = 10;
 		Projectile.height = 10;

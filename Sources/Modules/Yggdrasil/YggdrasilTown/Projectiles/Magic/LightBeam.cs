@@ -15,6 +15,7 @@ internal class LightBeam : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Magic;
 		Projectile.magic = true;
 		Projectile.width = 8;
 		Projectile.height = 8;

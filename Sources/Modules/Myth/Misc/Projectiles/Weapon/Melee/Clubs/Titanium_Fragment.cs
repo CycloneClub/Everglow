@@ -11,6 +11,7 @@ public class Titanium_Fragment : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Melee;
 		Projectile.width = 20;
 		Projectile.height = 20;
 		Projectile.hostile = false;

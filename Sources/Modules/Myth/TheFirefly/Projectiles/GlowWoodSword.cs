@@ -12,6 +12,7 @@ public class GlowWoodSword : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Melee;
 		Projectile.width = 16;
 		Projectile.height = 16;
 		Projectile.aiStyle = -1;

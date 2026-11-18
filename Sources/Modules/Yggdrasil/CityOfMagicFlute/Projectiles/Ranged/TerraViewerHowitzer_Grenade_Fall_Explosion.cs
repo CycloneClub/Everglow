@@ -23,7 +23,7 @@ public class TerraViewerHowitzer_Grenade_Fall_Explosion : ModProjectile, IWarpPr
 		Projectile.extraUpdates = 3;
 		Projectile.usesLocalNPCImmunity = true;
 		Projectile.localNPCHitCooldown = 20;
-		Projectile.DamageType = DamageClass.Magic;
+		Projectile.DamageType = DamageClass.Ranged;
 	}
 
 	public void Spark(int count)

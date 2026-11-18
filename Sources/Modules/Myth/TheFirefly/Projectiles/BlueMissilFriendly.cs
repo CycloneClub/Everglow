@@ -10,6 +10,7 @@ public class BlueMissilFriendly : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Magic;
 		Projectile.width = 34;
 		Projectile.height = 34;
 		Projectile.netImportant = true;

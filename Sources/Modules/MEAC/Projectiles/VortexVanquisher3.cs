@@ -16,6 +16,7 @@ public class VortexVanquisher3 : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Melee;
 		Projectile.width = 36;
 		Projectile.height = 36;
 		Projectile.netImportant = true;

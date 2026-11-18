@@ -27,6 +27,7 @@ public class GoldenLotusStaff_Subproj : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Summon;
 		Projectile.aiStyle = -1;
 		Projectile.width = 16;
 		Projectile.height = 16;

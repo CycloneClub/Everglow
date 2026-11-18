@@ -12,6 +12,7 @@ public class YggdrasilSlashBall : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Magic;
 		Projectile.magic = true;
 		Projectile.friendly = true;
 		Projectile.hostile = false;

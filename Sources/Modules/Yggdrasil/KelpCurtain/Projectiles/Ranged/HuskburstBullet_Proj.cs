@@ -11,6 +11,7 @@ public class HuskburstBullet_Proj : TrailingProjectile
 
 	public override void SetCustomDefaults()
 	{
+		Projectile.DamageType = DamageClass.Ranged;
 		Projectile.width = 20;
 		Projectile.height = 20;
 		Projectile.friendly = true;

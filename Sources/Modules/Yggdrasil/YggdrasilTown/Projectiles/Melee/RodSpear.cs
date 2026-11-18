@@ -10,6 +10,7 @@ public class RodSpear : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Melee;
 		Projectile.melee = true;
 		Projectile.friendly = true;
 		Projectile.hostile = false;

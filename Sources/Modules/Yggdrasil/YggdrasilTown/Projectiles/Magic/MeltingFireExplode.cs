@@ -11,6 +11,7 @@ public class MeltingFireExplode : ModProjectile
 
 	public override void SetDefaults()
 	{
+		Projectile.DamageType = DamageClass.Magic;
 		Projectile.width = 80;
 		Projectile.height = 80;
 		Projectile.hostile = false;
