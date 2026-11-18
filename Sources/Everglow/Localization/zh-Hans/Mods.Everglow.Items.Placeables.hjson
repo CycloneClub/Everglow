@@ -1160,7 +1160,7 @@ JadeLakeSargassum_Item: {
 
 JellyBallCube: {
 	DisplayName: 球冻方块
-	Tooltip: ""
+	Tooltip: 看起来软软弹弹的
 }
 
 JellyBallSecretionWall_Item: {

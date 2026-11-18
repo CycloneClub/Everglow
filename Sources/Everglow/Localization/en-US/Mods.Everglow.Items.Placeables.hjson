@@ -1140,7 +1140,7 @@ JadeLakeSargassum_Item: {
 
 JellyBallCube: {
 	DisplayName: Jelly Ball Cube
-	Tooltip: ""
+	Tooltip: Looks soft and bouncy
 }
 
 JellyBallSecretionWall_Item: {
