@@ -4,7 +4,7 @@ namespace Everglow.Commons.Mechanics.NPCSpawn;
 
 internal sealed record SpawnGroupRule(SubworldSpawnRule Rule, Func<Vector2, bool> InRegion);
 
-internal sealed record SpawnGroupContext(string WorldId, NPCSpawnInfo Info, SpawnGroupRule Entry);
+internal sealed record SpawnGroupContext(string WorldId, NPCSpawnInfo Info, SpawnGroupRule Entry, int Capacity);
 
 /// <summary>原生自然生成首只 NPC 后，按表配置追加群体成员；没有独立时钟、预算或实体归属。</summary>
 internal static class SpawnGroup
@@ -17,8 +17,9 @@ internal static class SpawnGroup
 		}
 		var rule = context.Entry.Rule;
 		int count = Main.rand.Next(rule.MinGroupSize, rule.MaxGroupSize + 1);
+		float remaining = context.Capacity - context.Info.Player.nearbyActiveNPCs - first.npcSlots;
 		Vector2 anchor = first.Bottom;
-		for (int member = 1; member < count; member++)
+		for (int member = 1; member < count && first.npcSlots <= remaining; member++)
 		{
 			if (EventSystem.HasActiveSpawnOverride || ModContent.GetInstance<SubworldSpawnSystem>().FindActiveWorld()?.Id != context.WorldId ||
 				!context.Info.Player.active || context.Info.Player.dead)
@@ -37,6 +38,7 @@ internal static class SpawnGroup
 			{
 				break;
 			}
+			remaining -= Main.npc[slot].npcSlots;
 			Main.npc[slot].netUpdate = true;
 			if (Main.netMode == NetmodeID.Server)
 			{

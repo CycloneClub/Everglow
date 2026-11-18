@@ -6,9 +6,6 @@ public sealed class ManagedSpawnGlobalNPC : GlobalNPC
 	public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo) =>
 		ModContent.GetInstance<SubworldSpawnSystem>().EditSpawnPool(pool, spawnInfo);
 
-	public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns) =>
-		ModContent.GetInstance<SubworldSpawnSystem>().EditSpawnRate(player, ref spawnRate, ref maxSpawns);
-
 	public override void SpawnNPC(int npc, int tileX, int tileY)
 	{
 		NPC first = Main.npc[npc];

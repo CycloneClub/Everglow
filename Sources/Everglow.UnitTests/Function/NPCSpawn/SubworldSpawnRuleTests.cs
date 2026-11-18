@@ -1,7 +1,10 @@
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using Everglow.Commons.Mechanics.Events;
 using Everglow.Commons.Mechanics.NPCSpawn;
 using Microsoft.Xna.Framework;
+using MonoMod.Cil;
+using MonoMod.RuntimeDetour;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -13,6 +16,7 @@ public class SubworldSpawnRuleTests
 {
 	private readonly ManagedSpawnGlobalNPC hook = new();
 	private SubworldSpawnSystem system = null!;
+	private ILHook rateHook = null!;
 	private object? previousInstance;
 	private static readonly System.Reflection.PropertyInfo InstanceProperty =
 		typeof(ContentInstance<SubworldSpawnSystem>).GetProperty(nameof(ContentInstance<SubworldSpawnSystem>.Instance))!;
@@ -25,13 +29,88 @@ public class SubworldSpawnRuleTests
 		previousInstance = InstanceProperty.GetValue(null);
 		system = new SubworldSpawnSystem();
 		InstanceProperty.SetValue(null, system);
+		var patch = typeof(SubworldSpawnSystem).GetMethod("PatchRateDispatch", BindingFlags.Instance | BindingFlags.NonPublic)!
+			.CreateDelegate<ILContext.Manipulator>(system);
+		var dispatch = typeof(SubworldSpawnRuleTests).GetMethod(nameof(DispatchNaturalSpawnRate), BindingFlags.Static | BindingFlags.NonPublic)!;
+		rateHook = new ILHook(dispatch, patch);
 	}
 
 	[TestCleanup]
 	public void Cleanup()
 	{
+		rateHook.Dispose();
 		system.Unload();
 		InstanceProperty.SetValue(null, previousInstance);
+	}
+
+	// 保留与自然生成相同的调用点，验证 IL 注入后传给各模组的实际 ref 参数。
+	[MethodImpl(MethodImplOptions.NoInlining)]
+	private static void DispatchNaturalSpawnRate(Player player, ref int rate, ref int capacity) =>
+		NPCLoader.EditSpawnRate(player, ref rate, ref capacity);
+
+	[TestMethod]
+	public void Rate_PatchMatchesInstalledNaturalSpawnMethod()
+	{
+		system.Load();
+	}
+
+	[TestMethod]
+	public void Rate_AllHeightsUseNativeSurfacePacing()
+	{
+		SubworldSpawnSystem.RegisterWorld(new("tree", () => true));
+		var patch = typeof(SubworldSpawnSystem).GetMethod("PatchNaturalSpawnRate", BindingFlags.Instance | BindingFlags.NonPublic)!
+			.CreateDelegate<ILContext.Manipulator>(system);
+		// 只执行实际 SpawnNPC 从初始化到地表事件汇合处的 IL，不创建 NPC 或加载地图。
+		using var slice = new ILHook(typeof(NPC).GetMethod(nameof(NPC.SpawnNPC))!, (ILContext il) =>
+		{
+			var cursor = new ILCursor(il);
+			cursor.GotoNext(i => i.MatchLdsfld<NPC>("defaultSpawnRate"), i => i.MatchStsfld<NPC>("spawnRate"));
+			var start = cursor.MarkLabel();
+			cursor.GotoNext(i => i.MatchLdsfld<Main>(nameof(Main.eclipse)));
+			ILLabel end = null!;
+			cursor.GotoNext(i => i.MatchBrfalse(out end));
+			cursor.Goto(end.Target, MoveType.AfterLabel);
+			cursor.EmitRet();
+			cursor.Index = 0;
+			cursor.EmitBr(start);
+			patch(il);
+		});
+		var rate = typeof(NPC).GetField("spawnRate", BindingFlags.NonPublic | BindingFlags.Static)!;
+		var capacity = typeof(NPC).GetField("maxSpawns", BindingFlags.NonPublic | BindingFlags.Static)!;
+		var previousRate = rate.GetValue(null);
+		var previousCapacity = capacity.GetValue(null);
+		var previousPlayer = Main.player[0];
+		var previousFlags = (Main.dayTime, Main.bloodMoon, Main.hardMode, Main.remixWorld, Main.eclipse, Main.pumpkinMoon, Main.snowMoon);
+		try
+		{
+			Main.player[0] = (Player)RuntimeHelpers.GetUninitializedObject(typeof(Player));
+			Main.remixWorld = Main.pumpkinMoon = Main.snowMoon = false;
+			foreach (float y in new[] { 0f, (float)(Main.rockLayer + 100) * 16, (Main.UnderworldLayer + 100) * 16f })
+			{
+				Main.player[0].position.Y = y;
+				foreach (var (day, blood, hard, eclipse, expectedRate, expectedCapacity) in new[]
+				{
+					(true, false, false, false, 120, 9),
+					(false, false, false, false, 72, 11),
+					(false, true, false, false, 21, 19),
+					(true, false, true, false, 108, 10),
+					(true, false, false, true, 24, 17),
+				})
+				{
+					(Main.dayTime, Main.bloodMoon, Main.hardMode, Main.eclipse) = (day, blood, hard, eclipse);
+					NPC.SpawnNPC();
+					Assert.AreEqual(expectedRate, rate.GetValue(null));
+					Assert.AreEqual(expectedCapacity, capacity.GetValue(null));
+				}
+			}
+		}
+		finally
+		{
+			(Main.dayTime, Main.bloodMoon, Main.hardMode, Main.remixWorld, Main.eclipse, Main.pumpkinMoon, Main.snowMoon) = previousFlags;
+			Main.player[0] = previousPlayer;
+			rate.SetValue(null, previousRate);
+			capacity.SetValue(null, previousCapacity);
+		}
 	}
 
 	[TestMethod]
@@ -121,8 +200,9 @@ public class SubworldSpawnRuleTests
 	[DataRow(5f, 2f, 1, 4, 1)]
 	[DataRow(2f, 5f, 4, 1, 1)]
 	[DataRow(5f, 5f, 1, 4, 1)]
+	[DataRow(5f, 2f, 2, 4, 2, 8f)]
 	public void OverlappingTables_UseWinningRuleForWeightGroupAndRegion(float firstWeight, float secondWeight,
-		int firstCount, int secondCount, int expectedCount)
+		int firstCount, int secondCount, int expectedCount, float nearbySlots = 0f)
 	{
 		bool expanding = false;
 		int firstRegionChecks = 0;
@@ -152,6 +232,10 @@ public class SubworldSpawnRuleTests
 			});
 		var player = (Player)RuntimeHelpers.GetUninitializedObject(typeof(Player));
 		player.active = true;
+		player.nearbyActiveNPCs = nearbySlots;
+		int rate = 600;
+		int capacity = 5;
+		DispatchNaturalSpawnRate(player, ref rate, ref capacity);
 		var pool = new Dictionary<int, float>();
 		hook.EditSpawnPool(pool, new NPCSpawnInfo { Player = player, SpawnTileX = 20, SpawnTileY = 30 });
 		Assert.AreEqual(Math.Max(firstWeight, secondWeight), pool[10]);
@@ -163,6 +247,7 @@ public class SubworldSpawnRuleTests
 			var first = (NPC)RuntimeHelpers.GetUninitializedObject(typeof(NPC));
 			first.netID = 10;
 			first.active = true;
+			first.npcSlots = 1f;
 			Main.npc[0] = first;
 			var random = new GroupCountRandom();
 			Main.rand = random;
@@ -176,8 +261,9 @@ public class SubworldSpawnRuleTests
 				Assert.AreEqual(expectedCount + 1, random.Maximum);
 			}
 			bool firstWins = firstWeight >= secondWeight;
-			Assert.AreEqual(firstWins ? expectedCount - 1 : 0, firstRegionChecks);
-			Assert.AreEqual(firstWins ? 0 : expectedCount - 1, secondRegionChecks);
+			int attempts = nearbySlots >= capacity - first.npcSlots ? 0 : expectedCount - 1;
+			Assert.AreEqual(firstWins ? attempts : 0, firstRegionChecks);
+			Assert.AreEqual(firstWins ? 0 : attempts, secondRegionChecks);
 			hook.SpawnNPC(0, 20, 30);
 			Assert.AreEqual(expectedCount > 1 ? 1 : 0, random.Calls, "The winning rule can only be consumed once.");
 		}
@@ -265,22 +351,51 @@ public class SubworldSpawnRuleTests
 	}
 
 	[TestMethod]
+	[DataRow(2, false, 60, 18)]
+	[DataRow(0, false, int.MaxValue, 0)]
+	[DataRow(2, true, int.MaxValue, 0)]
+	public void Rate_ExternalGlobalReceivesWildernessBase(int multiplier, bool blocked, int expectedRate, int expectedCapacity)
+	{
+		SubworldSpawnSystem.RegisterWorld(new("tree", () => true, _ => !blocked));
+		var list = typeof(NPCLoader).GetField("HookEditSpawnRate", BindingFlags.Static | BindingFlags.NonPublic)!.GetValue(null)!;
+		var globals = list.GetType().GetField("hookGlobals", BindingFlags.Instance | BindingFlags.NonPublic)!;
+		var previous = globals.GetValue(list);
+		try
+		{
+			globals.SetValue(list, new GlobalNPC[] { new SpawnRateTool(multiplier) });
+			int rate = 120;
+			int capacity = 9;
+			DispatchNaturalSpawnRate((Player)RuntimeHelpers.GetUninitializedObject(typeof(Player)), ref rate, ref capacity);
+			Assert.AreEqual(expectedRate, rate);
+			Assert.AreEqual(expectedCapacity, capacity);
+		}
+		finally
+		{
+			globals.SetValue(list, previous);
+		}
+	}
+
+	private sealed class SpawnRateTool(int multiplier) : GlobalNPC
+	{
+		public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
+		{
+			spawnRate = multiplier == 0 ? 0 : spawnRate / multiplier;
+			maxSpawns *= multiplier;
+		}
+	}
+
+	[TestMethod]
 	[DataRow(600, 5)]
-	[DataRow(360, 6)]
-	[DataRow(1800, 3)]
+	[DataRow(60, 18)]
 	[DataRow(int.MaxValue, 0)]
-	[DataRow(1, 60)]
-	public void Rate_OverridesVanillaInputsWithUniformWildernessPacing(int rate, int capacity)
+	public void Rate_DispatchPreservesNativeModifiers(int rate, int capacity)
 	{
 		SubworldSpawnSystem.RegisterWorld(new("tree", () => true));
-		var player = (Player)RuntimeHelpers.GetUninitializedObject(typeof(Player));
-		hook.EditSpawnRate(player, ref rate, ref capacity);
-		Assert.AreEqual(120, rate);
-		Assert.AreEqual(9, capacity);
-		// 重复调用不能叠乘，也不能读取上一次的原版输入。
-		hook.EditSpawnRate(player, ref rate, ref capacity);
-		Assert.AreEqual(120, rate);
-		Assert.AreEqual(9, capacity);
+		int expectedRate = rate;
+		int expectedCapacity = capacity;
+		DispatchNaturalSpawnRate((Player)RuntimeHelpers.GetUninitializedObject(typeof(Player)), ref rate, ref capacity);
+		Assert.AreEqual(expectedRate, rate);
+		Assert.AreEqual(expectedCapacity, capacity);
 	}
 
 	[TestMethod]
@@ -291,12 +406,14 @@ public class SubworldSpawnRuleTests
 		int rate = 600;
 		int capacity = 8;
 		player.Center = new Vector2(99 * 16, 200 * 16);
-		hook.EditSpawnRate(player, ref rate, ref capacity);
+		DispatchNaturalSpawnRate(player, ref rate, ref capacity);
 		Assert.AreEqual(int.MaxValue, rate);
 		Assert.AreEqual(0, capacity);
 
+		rate = 120;
+		capacity = 9;
 		player.Center = new Vector2(100 * 16, 200 * 16);
-		hook.EditSpawnRate(player, ref rate, ref capacity);
+		DispatchNaturalSpawnRate(player, ref rate, ref capacity);
 		Assert.AreEqual(120, rate, "Leaving a safe area must immediately restore full wilderness pacing.");
 		Assert.AreEqual(9, capacity);
 	}
@@ -309,17 +426,18 @@ public class SubworldSpawnRuleTests
 		var player = (Player)RuntimeHelpers.GetUninitializedObject(typeof(Player));
 		int rate = 77;
 		int capacity = 9;
-		hook.EditSpawnRate(player, ref rate, ref capacity);
+		DispatchNaturalSpawnRate(player, ref rate, ref capacity);
 		Assert.AreEqual(77, rate);
 		Assert.AreEqual(9, capacity);
 		active = true;
-		hook.EditSpawnRate(player, ref rate, ref capacity);
+		rate = 120;
+		DispatchNaturalSpawnRate(player, ref rate, ref capacity);
 		Assert.AreEqual(120, rate);
 		Assert.AreEqual(9, capacity);
 		active = false;
 		rate = 600;
 		capacity = 5;
-		hook.EditSpawnRate(player, ref rate, ref capacity);
+		DispatchNaturalSpawnRate(player, ref rate, ref capacity);
 		Assert.AreEqual(600, rate);
 		Assert.AreEqual(5, capacity);
 	}
@@ -373,7 +491,7 @@ public class SubworldSpawnRuleTests
 				EditEventSpawns();
 			}
 			hook.EditSpawnPool(pool, new NPCSpawnInfo { Player = player });
-			hook.EditSpawnRate(player, ref rate, ref capacity);
+			DispatchNaturalSpawnRate(player, ref rate, ref capacity);
 			if (!eventHookFirst)
 			{
 				Assert.AreEqual(1f, pool[0], "Ordinary spawning must leave the incoming pool untouched while yielding.");
@@ -388,7 +506,7 @@ public class SubworldSpawnRuleTests
 			hook.EditSpawnPool(pool, new NPCSpawnInfo { Player = player });
 			Assert.AreEqual(1, pool.Count);
 			Assert.AreEqual(1f, pool[10]);
-			hook.EditSpawnRate(player, ref rate, ref capacity);
+			DispatchNaturalSpawnRate(player, ref rate, ref capacity);
 			Assert.AreEqual(0, capacity, "Ordinary area policy resumes after the event ends.");
 		}
 		finally
@@ -412,9 +530,9 @@ public class SubworldSpawnRuleTests
 			Assert.AreEqual(1f, pool[10]);
 			int rate = 600;
 			int capacity = 8;
-			hook.EditSpawnRate((Player)RuntimeHelpers.GetUninitializedObject(typeof(Player)), ref rate, ref capacity);
-			Assert.AreEqual(120, rate);
-			Assert.AreEqual(9, capacity);
+			DispatchNaturalSpawnRate((Player)RuntimeHelpers.GetUninitializedObject(typeof(Player)), ref rate, ref capacity);
+			Assert.AreEqual(600, rate);
+			Assert.AreEqual(8, capacity);
 		}
 		finally
 		{
@@ -441,9 +559,9 @@ public class SubworldSpawnRuleTests
 			Assert.IsTrue(pool.ContainsKey(10), "Default events must not make ordinary tables yield.");
 			int rate = 600;
 			int capacity = 8;
-			hook.EditSpawnRate(player, ref rate, ref capacity);
-			Assert.AreEqual(120, rate);
-			Assert.AreEqual(9, capacity);
+			DispatchNaturalSpawnRate(player, ref rate, ref capacity);
+			Assert.AreEqual(600, rate);
+			Assert.AreEqual(8, capacity);
 
 			EventSystem.Activate(overridingEvent);
 			pool.Clear();
@@ -488,6 +606,7 @@ public class SubworldSpawnRuleTests
 		Assert.AreEqual(1, pool.Count);
 		Assert.AreEqual(7f, pool[1000]);
 		Assert.AreSame(system, ModContent.GetInstance<SubworldSpawnSystem>());
+		rateHook.Dispose();
 		system.Unload();
 		pool[0] = 1;
 		hook.EditSpawnPool(pool, default);
