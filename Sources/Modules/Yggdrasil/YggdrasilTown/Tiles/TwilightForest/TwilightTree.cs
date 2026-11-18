@@ -4,7 +4,6 @@ using Everglow.Yggdrasil.WorldGeneration;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts.TwilightForest;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 using Terraria.GameContent.Drawing;
-using Terraria.Localization;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.TwilightForest;
 
@@ -53,8 +52,7 @@ public class TwilightTree : ModTile, ITileFluentlyDrawn
 		Main.tileNoAttach[Type] = false;
 
 		TileID.Sets.IsATreeTrunk[Type] = true;
-		var modTranslation = Language.GetText("Mods.Everglow.MapEntry.TwilightTree");
-		AddMapEntry(new Color(58, 53, 50), modTranslation);
+		AddMapEntry(new Color(58, 53, 50), CreateMapEntryName());
 		DustType = ModContent.DustType<TwilightTreeDust>();
 		AdjTiles = new int[] { Type };
 		for (int i = 0; i < 4; i++)

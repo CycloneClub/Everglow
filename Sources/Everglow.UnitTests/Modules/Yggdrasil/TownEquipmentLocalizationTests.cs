@@ -169,7 +169,7 @@ public class TownEquipmentLocalizationTests
 	[DataRow("en-US")]
 	public void GunOfAvariceFormatsDynamicAmmoAndLevelLabels(string culture)
 	{
-		LoadLocalization(culture, "ExtraTooltip");
+		LoadLocalization(culture, "Items.Weapons.Ranged");
 		var gun = (GunOfAvarice)CreateItem(typeof(GunOfAvarice));
 		foreach (var (ammo, level) in new[] { (14, 1), (3, 7), (0, GunOfAvarice.MaxLevel) })
 		{
@@ -186,7 +186,7 @@ public class TownEquipmentLocalizationTests
 		}
 		Assert.AreEqual(
 			culture == "zh-Hans" ? "最高等级" : "Max level",
-			Language.GetTextValue("Mods.Everglow.ExtraTooltip.GunOfAvarice.MaxLevel"));
+			gun.GetLocalizedValue("MaxLevel"));
 	}
 
 	[TestMethod]

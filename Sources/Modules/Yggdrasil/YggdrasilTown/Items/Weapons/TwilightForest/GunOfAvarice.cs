@@ -117,8 +117,8 @@ public class GunOfAvarice : ModItem
 
 	public override void ModifyTooltips(List<TooltipLine> tooltips)
 	{
-		tooltips.Add(new TooltipLine(Mod, "GunOfAvariceAmmo", Language.GetTextValue("Mods.Everglow.ExtraTooltip.GunOfAvarice.Ammo", AmmoAmount, MagazineCapacity)));
-		tooltips.Add(new TooltipLine(Mod, "GunOfAvariceLevel", Language.GetTextValue("Mods.Everglow.ExtraTooltip.GunOfAvarice.Level", Level)));
+		tooltips.Add(new TooltipLine(Mod, "GunOfAvariceAmmo", this.GetLocalization("Ammo").Format(AmmoAmount, MagazineCapacity)));
+		tooltips.Add(new TooltipLine(Mod, "GunOfAvariceLevel", this.GetLocalization("Level").Format(Level)));
 	}
 
 	public override void UpdateInventory(Player player)
@@ -194,13 +194,13 @@ public class GunOfAvarice : ModItem
 
 		// shift the matrix to world position.
 		Color textColor = Color.White;
-		string text = Language.GetTextValue("Mods.Everglow.ExtraTooltip.GunOfAvarice.Level", Level);
+		string text = this.GetLocalization("Level").Format(Level);
 		if (LevelChangeTimer > 80)
 		{
-			text = Language.GetTextValue("Mods.Everglow.ExtraTooltip.GunOfAvarice.Level", OldLevel);
+			text = this.GetLocalization("Level").Format(OldLevel);
 			if (OldLevel == Level && Level == 10)
 			{
-				text = Language.GetTextValue("Mods.Everglow.ExtraTooltip.GunOfAvarice.MaxLevel");
+				text = this.GetLocalizedValue("MaxLevel");
 			}
 		}
 		float drawScale = 1f;

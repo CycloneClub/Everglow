@@ -18,6 +18,7 @@ Desert_NavySnakeBanner.MapEntry: "{$Mods.Everglow.Items.Placeables.Desert_NavySn
 DevilHeartIronBar.MapEntry: "{$Mods.Everglow.Items.Materials.DevilHeartIronBar_Item.DisplayName}"
 DragonChest_DarkDragonRoom.MapEntry0: "{$Mods.Everglow.Items.Placeables.DragonChest_DarkDragonRoom_Item.DisplayName}"
 FireflyPiranhaBanner.MapEntry: "{$Mods.Everglow.Items.Placeables.FireflyPiranhaBanner.DisplayName}"
+FluorescentTree.MapEntry: 荧光树
 
 FurnaceMeltingChest: {
 	MapEntry0: "{$Mods.Everglow.Items.Placeables.FurnaceMeltingChest_Item.DisplayName}"
@@ -121,6 +122,7 @@ TwilightEucalyptusPiano.MapEntry: "{$Mods.Everglow.Items.Placeables.TwilightEuca
 TwilightEucalyptusSink.MapEntry: "{$Mods.Everglow.Items.Placeables.TwilightEucalyptusSink.DisplayName}"
 TwilightEucalyptusSofa_Type2.MapEntry: "{$Mods.Everglow.Items.Placeables.TwilightEucalyptusSofa_Type2.DisplayName}"
 TwilightEucalyptusSofa.MapEntry: "{$Mods.Everglow.Items.Placeables.TwilightEucalyptusSofa.DisplayName}"
+TwilightTree.MapEntry: 暮光桉
 UrbanCrate.MapEntry: "{$Mods.Everglow.Items.Placeables.UrbanCrate_Item.DisplayName}"
 WaterErodedChestInlaidWithGold.MapEntry0: "{$Mods.Everglow.Items.Placeables.WaterErodedChestInlaidWithGold_Item.DisplayName}"
 WaterErodedRustyCopperChest.MapEntry0: "{$Mods.Everglow.Items.Placeables.WaterErodedRustyCopperChest_Item.DisplayName}"

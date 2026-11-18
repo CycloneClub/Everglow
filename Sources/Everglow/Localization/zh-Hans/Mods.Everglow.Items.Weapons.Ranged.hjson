@@ -156,6 +156,9 @@ GunOfAvarice: {
 		爆炸基础伤害为计入换弹前等级加成的武器基础伤害的1.5倍
 		弹匣未满时右键可用0.5秒手动换弹，并将等级重置为1级
 		'''
+	Ammo: "当前弹药：{0}/{1}"
+	Level: "等级：{0}"
+	MaxLevel: 最高等级
 }
 
 HandgunOfEnlightment: {

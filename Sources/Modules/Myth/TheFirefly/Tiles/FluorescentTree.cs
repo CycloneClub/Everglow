@@ -2,7 +2,6 @@ using Everglow.Commons.Physics.MassSpringSystem;
 using Everglow.Commons.TileHelper;
 using Everglow.Myth.TheFirefly.Dusts;
 using Terraria.GameContent.Drawing;
-using Terraria.Localization;
 
 namespace Everglow.Myth.TheFirefly.Tiles;
 
@@ -26,8 +25,7 @@ public class FluorescentTree : ModTile, ITileFluentlyDrawn
 		Main.tileNoAttach[Type] = false;
 
 		TileID.Sets.IsATreeTrunk[Type] = true;
-		var modTranslation = Language.GetOrRegister("Mods.Everglow.MapEntry.FluorescentTree");
-		AddMapEntry(new Color(51, 26, 58), modTranslation);
+		AddMapEntry(new Color(51, 26, 58), CreateMapEntryName());
 		DustType = ModContent.DustType<FluorescentTreeDust>();
 		AdjTiles = new int[] { Type };
 		for (int i = 0; i < 5; i++)
