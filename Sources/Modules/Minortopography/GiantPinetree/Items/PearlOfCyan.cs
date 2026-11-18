@@ -1,7 +1,5 @@
 namespace Everglow.Minortopography.GiantPinetree.Items;
 
-// TODO:翻译
-// Critical hits against NPCs attempt to spawn 3-5 pine needles, each with 4 base damage.
 public class PearlOfCyan : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;

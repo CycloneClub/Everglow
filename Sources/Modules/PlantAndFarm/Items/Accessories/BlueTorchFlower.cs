@@ -6,12 +6,6 @@ public class BlueTorchFlower : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("Increases max mana by 20\nstrike an enemy recovers 2 mana, this effect has a 0.2s CD\n'A varietas of red hot poker'");
-		// Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "增加20魔力上限\n命中敌人回复2魔力,有0.2秒冷却\n'火炬花的一个变种'");
-	}
-
 	public override void SetDefaults()
 	{
 		Item.width = 30;

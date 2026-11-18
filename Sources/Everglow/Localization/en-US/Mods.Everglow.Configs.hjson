@@ -59,8 +59,8 @@ EverglowConfig: {
 	DisplayName: Everglow Config
 
 	debugMode: {
-		Label: debug Mode
-		Tooltip: ""
+		Label: Enable Debug Mode
+		Tooltip: "[For developers] Enable debug mode to allow debug functions to run"
 	}
 
 	combatTestArenas: {

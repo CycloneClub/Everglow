@@ -6,12 +6,6 @@ public class PurpleReedHalo : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("Increases max Hp by 30\nIncreases max mana by 40\n'smells good and looks good'");
-		// Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "生命上限增加30\n魔力上限增加40\n'好闻又好看'");
-	}
-
 	public override void SetDefaults()
 	{
 		Item.width = 46;

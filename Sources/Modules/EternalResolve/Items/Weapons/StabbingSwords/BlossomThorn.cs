@@ -3,7 +3,6 @@ using Everglow.EternalResolve.Projectiles;
 
 namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords
 {
-	// TODO:翻译：红梅落\n每秒最多产生4道方向随机的二级刺锋,每道对同一目标只命中一次\n兼具美观与锋芒
 	public class BlossomThorn : StabbingSwordItem
 	{
 		public override void SetDefaults()

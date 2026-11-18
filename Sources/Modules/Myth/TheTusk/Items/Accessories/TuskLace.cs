@@ -9,12 +9,6 @@ public class TuskLace : ModItem
 
 	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(5, 3, 3);
 
-	public override void SetStaticDefaults()
-	{
-		// //Tooltip.SetDefault("Increases armor penetration by 5\nIncreases damage and crit chance by 5%\n'A tusk was knocked down from mouth of a beast, again you knocked down a small part of it'");
-		// Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "盔甲穿透增加5\n伤害和暴击增加5%\n'一颗獠牙被人从某只猛兽嘴里打了下来,你又敲下了上面的一小部分'");
-	}
-
 	public override void SetDefaults()
 	{
 		Item.width = 44;

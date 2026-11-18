@@ -8,12 +8,6 @@ public class YellowBellFlower : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("Increases damage by (defense * 20%)%\n'Rare and beautiful'");
-		// Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "伤害增加(20%防御力)%\n'稀有又好看'");
-	}
-
 	public override void SetDefaults()
 	{
 		Item.width = 26;

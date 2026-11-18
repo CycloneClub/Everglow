@@ -6,12 +6,6 @@ public class PinkFourPedal : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("Increases max Hp by 40\n'It's said that injured animals will eat it to recover...it's true, but it seems not to be effective to human'");
-		// Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "最大生命值增加40\n'据说受伤的动物会去吃它来疗伤...事实确实如此,但好像对人效果不大'");
-	}
-
 	public override void SetDefaults()
 	{
 		Item.width = 10;

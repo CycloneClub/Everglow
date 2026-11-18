@@ -7,12 +7,6 @@ public class WhiteCrown : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("Increases running speed by (max Hp * 0.2%)\n'A plain white flower, seems to mourn for someone'");
-		// Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "每50生命上限+10%移速\n'一枝素白的郁金香，像是在悼念某人'");
-	}
-
 	public override void SetDefaults()
 	{
 		Item.width = 36;

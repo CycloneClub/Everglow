@@ -34,11 +34,6 @@ public class TuskBiome : ModBiome
 	public override ModSurfaceBackgroundStyle SurfaceBackgroundStyle => ModContent.GetInstance<TuskSurfaceBackgroundStyle>();
 	// public override ModUndergroundBackgroundStyle UndergroundBackgroundStyle => ModContent.Find<ModUndergroundBackgroundStyle>("Everglow/MothUndergroundBackground");
 
-	public override void SetStaticDefaults()
-	{
-		// TODO:×çÖäÖ®ò¢
-	}
-
 	public override bool IsBiomeActive(Player player)
 	{
 		bool b1 = TuskGen.TuskLandActive();

@@ -18,7 +18,7 @@ AntiCorrosiveSole: {
 
 BloodGlucoseMonitor: {
 	DisplayName: 血糖检测仪
-	Tooltip: 显示饥饿值
+	Tooltip: 显示当前饱食度
 }
 
 BloodTearCrystalCrown: {
@@ -143,7 +143,7 @@ DarkHat: {
 	Tooltip:
 		'''
 		增加20魔力上限
-		暴击率增加4%,暴击伤害增加12
+		暴击率增加4%,暴击伤害增加12%
 		'除用于战斗和装饰不建议使用'
 		'''
 }
@@ -641,10 +641,10 @@ ThreeColorCrown: {
 	DisplayName: 三色花环
 	Tooltip:
 		'''
-		击中敌人后随机获得以下三种效果之一,持续7秒
+		击中敌人后随机获得以下三种效果之一，持续7秒
 		红：+22%伤害，+11%暴击率
-		紫:免疫绝大多数减益效果
-		+300魔力
+		紫：免疫绝大多数减益效果
+		蓝：魔力上限增加300点
 		有30秒CD
 		'求别太幸运'
 		'''

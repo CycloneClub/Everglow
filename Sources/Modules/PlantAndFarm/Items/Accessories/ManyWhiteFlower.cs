@@ -6,12 +6,6 @@ public class ManyWhiteFlower : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("Increases melee damege and speed by 8%\n'You don't want these lovely magical flowers to be dameged'");
-		// Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "近战攻速增加8%,近战伤害增加8%\n'你不想让这些神奇又可爱的花被损坏'");
-	}
-
 	public override void SetDefaults()
 	{
 		Item.width = 28;

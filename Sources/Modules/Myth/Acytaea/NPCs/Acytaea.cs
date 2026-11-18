@@ -74,7 +74,6 @@ public class Acytaea : VisualNPC
 
 	public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 	{
-		// TODO hjson
 		string tx1 = "我很喜欢这种鸟语花香的绿色树林";
 		string tx2 = "去抓蝴蝶吗?";
 		if (Language.ActiveCulture.Name == "en-US")
@@ -499,7 +498,6 @@ public class Acytaea : VisualNPC
 	{
 		Talking = true;
 
-		// TODO Hjson 重写
 		IList<string> list = new List<string>();
 		if (Language.ActiveCulture.Name == "zh-Hans")
 		{
@@ -690,7 +688,6 @@ public class Acytaea : VisualNPC
 
 	public override void SetChatButtons(ref string button, ref string button2)
 	{
-		// TODO Hjson
 		if (Language.ActiveCulture.Name == "zh-Hans")
 		{
 			button = Language.GetTextValue("挑战");

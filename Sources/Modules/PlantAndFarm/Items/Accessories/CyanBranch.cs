@@ -4,12 +4,6 @@ public class CyanBranch : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("Increases evade by 8 for 10s after struck\n'It's pretty hard, but also brittle'");
-		// Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "受击后10秒增加8闪避能力\n'它十分坚硬，但也很脆弱'");
-	}
-
 	public override void SetDefaults()
 	{
 		Item.width = 22;

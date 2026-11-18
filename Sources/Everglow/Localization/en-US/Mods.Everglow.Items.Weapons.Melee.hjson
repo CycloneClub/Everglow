@@ -81,7 +81,11 @@ BorealWoodClub_Item: {
 
 CactusBall: {
 	DisplayName: Rolling Cactus
-	Tooltip: ""
+	Tooltip:
+		'''
+		Spin and throw out your cactus ball!
+		Shred enemy armour and make them bleed
+		'''
 }
 
 CactusClub_Item: {

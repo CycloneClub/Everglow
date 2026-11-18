@@ -3,11 +3,6 @@ using Everglow.EternalResolve.Projectiles;
 
 namespace Everglow.EternalResolve.Items.Weapons.StabbingSwords
 {
-	// TODO:翻译
-	// i:普通刺击穿透5点防御
-	// ii:延时一秒在命中处生成三道100%倍率的魔金剑光
-	// 对于1个魔金刺剑,普通刺击每秒最多施加一次剑光标记
-	// 它会腐化你的骨髓
 	public class RottenGoldBayonet : StabbingSwordItem
 	{
 		internal int specialDelay = 0;

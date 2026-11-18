@@ -4,12 +4,6 @@ public class FlowerBrochure : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Materials;
 
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("Allows you to collect wild flowers while in inventory");
-		// Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "携带后可以收集野花");
-	}
-
 	public override void SetDefaults()
 	{
 		Item.width = 24;

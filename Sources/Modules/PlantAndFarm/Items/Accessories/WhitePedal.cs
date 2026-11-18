@@ -4,12 +4,6 @@ public class WhitePedal : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("Increases evade by 2\nIncreases crit chance by 4%\n'It's such a gauzy petal'");
-		// Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "闪避能力增加2\n暴击率增加4%\n'它是如此轻薄'");
-	}
-
 	public override void SetDefaults()
 	{
 		Item.width = 18;

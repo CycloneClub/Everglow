@@ -82,7 +82,11 @@ BorealWoodClub_Item: {
 
 CactusBall: {
 	DisplayName: 滚动的仙人掌
-	Tooltip: ""
+	Tooltip:
+		'''
+		旋转并掷出你的仙人掌球！
+		击碎敌人护甲，并让它们流血
+		'''
 }
 
 CactusClub_Item: {

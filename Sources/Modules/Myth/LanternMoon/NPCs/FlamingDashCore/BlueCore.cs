@@ -8,7 +8,7 @@ namespace Everglow.Myth.LanternMoon.NPCs.FlamingDashCore;
 public class BlueCore : ModNPC
 {
 	public override void SetStaticDefaults()
-	{ // TODO: Localization Needed
+	{
 		Main.npcFrameCount[NPC.type] = 4;
 	}
 

@@ -6,12 +6,6 @@ public class RedTriangle : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("Increases crit damage by 18%\n'It is an aggressive shape in Terrarian culture'");
-		// Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "暴击伤害增加18%\n'在泰拉文化中,这是一种具有攻击性的形状'");
-	}
-
 	public override void SetDefaults()
 	{
 		Item.width = 28;

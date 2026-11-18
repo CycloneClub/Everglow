@@ -1,6 +1,6 @@
 CorruptMothTreasureBag: {
 	DisplayName: 腐檀巨蛾宝藏袋
-	Tooltip: ""
+	Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
 }
 
 SquamousShellTreasureBag: {

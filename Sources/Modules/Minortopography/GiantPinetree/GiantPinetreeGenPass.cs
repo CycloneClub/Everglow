@@ -20,7 +20,6 @@ public class GiantPinetree : ModSystem
 
 		public override void ApplyPass(GenerationProgress progress, GameConfiguration configuration)
 		{
-			// TODO:翻译：建造巨大的雪松
 			BuildGiantPinetree();
 			HasBeenLootChest = new List<int>();
 		}

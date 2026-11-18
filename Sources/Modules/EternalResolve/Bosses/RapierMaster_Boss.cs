@@ -76,8 +76,6 @@ public class RapierMaster_Boss : ModNPC
 		{
 			CombatText.NewText(NPC.Hitbox, new Color(0.1f, 1f, 1f), "格挡！");
 			parryTextCD = 90;
-
-			// TODO : Localization Needed
 		}
 		noAI = 10;
 		for (int g = 0; g < 20; g++)

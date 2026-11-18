@@ -6,12 +6,6 @@ public class WhiteWoodFlower : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("Increases minion slots by 2\n'Fantastic symbiosis'");
-		// Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "召唤栏位增加2\n'奇妙的共生关系'");
-	}
-
 	public override void SetDefaults()
 	{
 		Item.width = 20;

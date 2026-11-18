@@ -6,12 +6,6 @@ public class CactusBall : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeWeapons;
 
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("Spin and throw out your cactus ball!\nShred enemy armour and make them bleed");
-		// Tooltip.AddTranslation(PlantUtils.LocaizationChinese, "旋转并掷出你的仙人掌球！\n击碎敌人护甲，并让它们流血");
-	}
-
 	public override void SetDefaults()
 	{
 		Item.width = 50;

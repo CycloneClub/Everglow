@@ -60,7 +60,7 @@ EverglowConfig: {
 
 	debugMode: {
 		Label: 调试模式
-		Tooltip: ""
+		Tooltip: 供开发者使用。启用调试模式以运行调试功能。
 	}
 
 	combatTestArenas: {

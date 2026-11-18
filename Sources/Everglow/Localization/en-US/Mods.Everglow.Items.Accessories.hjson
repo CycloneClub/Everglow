@@ -18,7 +18,7 @@ AntiCorrosiveSole: {
 
 BloodGlucoseMonitor: {
 	DisplayName: Blood Glucose Monitor
-	Tooltip: ""
+	Tooltip: Displays your current satiety
 }
 
 BloodTearCrystalCrown: {
@@ -41,7 +41,12 @@ BlueGel: {
 
 BlueTorchFlower: {
 	DisplayName: Jade Blue Icy Poker
-	Tooltip: ""
+	Tooltip:
+		'''
+		Increases max mana by 20
+		strike an enemy recovers 2 mana, this effect has a 0.2s CD
+		'A varietas of red hot poker'
+		'''
 }
 
 BurningFrozenHeart: {
@@ -104,12 +109,20 @@ CrystalSkull: {
 
 CyanBranch: {
 	DisplayName: Porcelianized Flower
-	Tooltip: ""
+	Tooltip:
+		'''
+		Increases evade by 8 for 10s after struck
+		'It's pretty hard, but also brittle'
+		'''
 }
 
 CyanPedal: {
 	DisplayName: Four-pointed Borage Flower
-	Tooltip: ""
+	Tooltip:
+		'''
+		Increases evade by 4
+		'The missing petal was converted to your braveness'
+		'''
 }
 
 CyanVineRing: {
@@ -123,7 +136,12 @@ CyanVineRing: {
 
 DarkHat: {
 	DisplayName: Ornamental Poppy
-	Tooltip: ""
+	Tooltip:
+		'''
+		Increases maximum mana by 20
+		Increases crit chance by 4% and crit damage by 12%
+		'Not recommanded to use except for combat or decoration purpose'
+		'''
 }
 
 DukeTooth: {
@@ -215,7 +233,12 @@ GoldLiquidPupil: {
 
 GoldRound: {
 	DisplayName: Marigoldisc
-	Tooltip: ""
+	Tooltip:
+		'''
+		7 defence
+		Increases damage by 7%
+		'Traditional Terrarians usually wear this to keep them healthy'
+		'''
 }
 
 GreenGel: {
@@ -265,7 +288,11 @@ HotAirBalloon: {
 
 HotPinkCrown: {
 	DisplayName: Vitalized Tulip
-	Tooltip: ""
+	Tooltip:
+		'''
+		Increases crit damage by (Max Hp * 5%)%
+		'Catalyzed by Essence of Wind, now it will react to vitality'
+		'''
 }
 
 IstafelsSunfireGrasp: {
@@ -313,7 +340,11 @@ LampWoodPollenBottle: {
 
 LightPurplePen: {
 	DisplayName: Rabit Hair Calligraphy Brush
-	Tooltip: ""
+	Tooltip:
+		'''
+		Increases damege, crit chance and melee speed by 7%
+		'No rabit was hurt during the production process'
+		'''
 }
 
 LivingWoodplate: {
@@ -332,7 +363,11 @@ ManaThermalPipeline: {
 
 ManyWhiteFlower: {
 	DisplayName: Bouquet of Silk Star
-	Tooltip: ""
+	Tooltip:
+		'''
+		Increases melee damege and speed by 8%
+		'You don't want these lovely magical flowers to be dameged'
+		'''
 }
 
 MelterGear: {
@@ -386,12 +421,20 @@ Odd8Ring: {
 
 OrangeCrown: {
 	DisplayName: Tenacious Tulip
-	Tooltip: "+3% of life capacity as defense (rounded down)"
+	Tooltip:
+		'''
+		+3% of life capacity as defense (rounded down)
+		'A tulip blessed by Aeolus, its structural strength is surprisingly high'
+		'''
 }
 
 OrangeStick: {
 	DisplayName: Pennisetum Arantius
-	Tooltip: ""
+	Tooltip:
+		'''
+		After struck, grants 5 defence and immunity to knockback for 3s
+		'Different from most grasses, it stands fast when wind blows fiercely'
+		'''
 }
 
 OrfeoBoots: {
@@ -406,7 +449,7 @@ OrfeoBoots: {
 
 OsmoticPressureMonitor: {
 	DisplayName: Osmotic Pressure Monitor
-	Tooltip: ""
+	Tooltip: Displays your current thirst
 }
 
 PearlOfCyan: {
@@ -416,17 +459,32 @@ PearlOfCyan: {
 
 PinkFourPedal: {
 	DisplayName: Pink Samsara
-	Tooltip: ""
+	Tooltip:
+		'''
+		Increases max Hp by 40
+		'It's said that injured animals will eat it to recover...it's true, but it seems not to be effective to human'
+		'''
 }
 
 PurpleBall: {
 	DisplayName: Purple Hydrangea Pandents
-	Tooltip: ""
+	Tooltip:
+		'''
+		Hitting enemies around you launches an explosion of petals
+		Damage of the petals increases with damage of the attack
+		Has a 0.5s CD
+		'Angry Hydrangea Purpura'
+		'''
 }
 
 PurpleReedHalo: {
 	DisplayName: Purple Reed Headband
-	Tooltip: ""
+	Tooltip:
+		'''
+		Increases max Hp by 30
+		Increases max mana by 40
+		'smells good and looks good'
+		'''
 }
 
 RadialCarapace: {
@@ -456,7 +514,11 @@ RedGel: {
 
 RedTriangle: {
 	DisplayName: Three-pointed Red Blossom
-	Tooltip: ""
+	Tooltip:
+		'''
+		Increases crit damage by 18%
+		'It is an aggressive shape in Terrarian culture'
+		'''
 }
 
 RingOfMatter: {
@@ -481,7 +543,12 @@ ShacklesBall: {
 
 SilverCupFlower: {
 	DisplayName: Royal Goblet
-	Tooltip: ""
+	Tooltip:
+		'''
+		8 defense
+		Increases max Hp by 20
+		'There was a vicious king who has really tried to use it as a goblet, he failed to drink anything'
+		'''
 }
 
 SilverWing: {
@@ -569,7 +636,15 @@ ThornTurtleShell: {
 
 ThreeColorCrown: {
 	DisplayName: Three-colored Wreath
-	Tooltip: ""
+	Tooltip:
+		'''
+		Hitting enemies randomly grants you one of the three effects below for 7s
+		Red:Inceasing damage by 22%, increasing crit chance by 11%
+		Violet:Immunity to most debuffs
+		Blue:Increasing max mana by 300
+		It has a 30s CD
+		'Pray for not being so lucky'
+		'''
 }
 
 TuskLace: {
@@ -593,20 +668,37 @@ WalnutClip: {
 
 WhiteCrown: {
 	DisplayName: Flower of Hope
-	Tooltip: "10% increased movement speed per 50 maximum life"
+	Tooltip:
+		'''
+		10% increased movement speed per 50 maximum life
+		'A plain white tulip seems to mourn for someone'
+		'''
 }
 
 WhitePedal: {
 	DisplayName: Veil of Light
-	Tooltip: ""
+	Tooltip:
+		'''
+		Increases evade by 2
+		Increases crit chance by 4%
+		'It's such a gauzy petal'
+		'''
 }
 
 WhiteWoodFlower: {
 	DisplayName: Snow Ear Flower
-	Tooltip: ""
+	Tooltip:
+		'''
+		Increases minion slots by 2
+		'Fantastic symbiosis'
+		'''
 }
 
 YellowBellFlower: {
 	DisplayName: Banana of the Valley
-	Tooltip: "Increases damage by 0.2% per defense"
+	Tooltip:
+		'''
+		Increases damage by 0.2% per defense
+		'Rare and beautiful'
+		'''
 }

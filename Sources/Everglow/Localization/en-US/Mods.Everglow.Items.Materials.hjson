@@ -145,7 +145,7 @@ Flour: {
 
 FlowerBrochure: {
 	DisplayName: Wild-flower-collecting Handbook
-	Tooltip: ""
+	Tooltip: Allows you to collect wild flowers while in inventory
 }
 
 FrogMeat: {

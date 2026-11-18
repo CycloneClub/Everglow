@@ -6,11 +6,6 @@ public class BloodGlucoseMonitor : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
 
-	public override void SetStaticDefaults()
-	{
-		// Tooltip.SetDefault("显示当前饱食度");
-	}
-
 	public override void SetDefaults()
 	{
 		Item.value = Item.buyPrice(50000);

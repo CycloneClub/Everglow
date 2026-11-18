@@ -20,7 +20,6 @@ public class HookException : Exception
 
 	private static string GetMessage(string message, string file, int line)
 	{
-		// TODO Translation
 		var sb = new StringBuilder();
 		sb.AppendLine($"钩子炸了 {message}");
 		sb.AppendLine($"File: {file}, Line: {line}");
