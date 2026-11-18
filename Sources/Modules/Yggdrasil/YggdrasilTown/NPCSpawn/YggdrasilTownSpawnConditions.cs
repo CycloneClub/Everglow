@@ -1,5 +1,6 @@
 using Everglow.Commons.Mechanics.NPCSpawn;
 using Everglow.Yggdrasil.Common.NPCSpawn;
+using Everglow.Yggdrasil.YggdrasilTown.NPCs;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles.LampWood;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles.TwilightForest;
@@ -17,6 +18,52 @@ public static class YggdrasilTownSpawnConditions
 
 	public static bool InTwilightForest(NPCSpawnInfo info) => CanSpawn(info) &&
 		info.SpawnTileType == ModContent.TileType<TwilightGrassBlock>() && !IsJellyBallHotbed(info);
+
+	internal static int GetEucaLeafyMaxLift(int tileX, int floorY)
+	{
+		const int treeHeight = 7;
+		NPC sample = ModContent.GetInstance<EucaLeafy>().NPC;
+		int left = tileX * 16 + 8 - sample.width / 2;
+		int right = left + sample.width - 1;
+		if (!WorldGen.InWorld(left / 16, floorY - treeHeight, 1) || !WorldGen.InWorld(right / 16, floorY, 1))
+		{
+			return 0;
+		}
+		Tile floor = Main.tile[tileX, floorY];
+		if (!floor.HasUnactuatedTile || floor.TileType != ModContent.TileType<TwilightGrassBlock>())
+		{
+			return 0;
+		}
+
+		int bodyRows = (sample.height + 15) / 16;
+		int maxLift = 0;
+		for (int row = 1; row <= treeHeight; row++)
+		{
+			int y = floorY - row;
+			for (int x = left / 16; x <= right / 16; x++)
+			{
+				Tile tile = Main.tile[x, y];
+				if ((tile.HasUnactuatedTile && Main.tileSolid[tile.TileType]) || tile.LiquidAmount > 0 ||
+					Main.wallHouse[tile.WallType] || !YggdrasilSpawnRegistration.InYggdrasilTown(new Vector2(x * 16, y * 16)))
+				{
+					return maxLift;
+				}
+			}
+			var strip = new Rectangle(left, y * 16, sample.width, 16);
+			foreach (Player player in Main.ActivePlayers)
+			{
+				var safe = new Rectangle((int)player.Center.X - NPC.sWidth / 2 - NPC.safeRangeX,
+					(int)player.Center.Y - NPC.sHeight / 2 - NPC.safeRangeY,
+					NPC.sWidth + NPC.safeRangeX * 2, NPC.sHeight + NPC.safeRangeY * 2);
+				if (strip.Intersects(safe))
+				{
+					return maxLift;
+				}
+			}
+			maxLift = Math.Max(0, row - bodyRows);
+		}
+		return maxLift;
+	}
 
 	public static bool InShallowMine(NPCSpawnInfo info) => CanSpawn(info) && IsMine(info) && info.SpawnTileY < Main.maxTilesY - 520;
 

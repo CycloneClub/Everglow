@@ -1,3 +1,4 @@
+using Everglow.Yggdrasil.YggdrasilTown.NPCSpawn;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Enemies;
 using Terraria.DataStructures;
 
@@ -49,6 +50,16 @@ public class EucaLeafy : ModNPC
 		NPC.HitSound = SoundID.NPCHit1;
 		NPC.DeathSound = SoundID.NPCDeath1;
 		AIType = NPCID.WalkingAntlion;
+	}
+
+	public override int SpawnNPC(int tileX, int tileY)
+	{
+		if (!YggdrasilWorld.InYggdrasil)
+		{
+			return base.SpawnNPC(tileX, tileY);
+		}
+		int maxLift = YggdrasilTownSpawnConditions.GetEucaLeafyMaxLift(tileX, tileY);
+		return maxLift > 0 ? base.SpawnNPC(tileX, tileY - Main.rand.Next(1, maxLift + 1)) : Main.maxNPCs;
 	}
 
 	public override void OnSpawn(IEntitySource source)

@@ -82,40 +82,47 @@ public static class YggdrasilTownSpawnTable
 				? 0.05f : 0f,
 		});
 
-		// 暮光林地：现有四种旧时幻影昼夜均可生成，暂用相同权重。
+		// 暮光林地
 		rules.Add(new SubworldSpawnRule
 		{
 			Type = ModContent.NPCType<AncientPhantom_Sheild>(),
 			SpawnChance = spawnInfo => InTwilightForest(spawnInfo) && SpawnConditions.OnGround(spawnInfo)
-				? 3f : 0f,
+				? 1.2f : 0f,
 		});
 
 		rules.Add(new SubworldSpawnRule
 		{
 			Type = ModContent.NPCType<AncientPhantom_Spear>(),
 			SpawnChance = spawnInfo => InTwilightForest(spawnInfo) && SpawnConditions.OnGround(spawnInfo)
-				? 3f : 0f,
+				? 1.2f : 0f,
 		});
 
 		rules.Add(new SubworldSpawnRule
 		{
 			Type = ModContent.NPCType<AncientPhantom_Bow>(),
 			SpawnChance = spawnInfo => InTwilightForest(spawnInfo) && SpawnConditions.OnGround(spawnInfo)
-				? 3f : 0f,
+				? 1.6f : 0f,
 		});
 
 		rules.Add(new SubworldSpawnRule
 		{
 			Type = ModContent.NPCType<AncientPhantom_Magic>(),
 			SpawnChance = spawnInfo => InTwilightForest(spawnInfo) && SpawnConditions.OnGround(spawnInfo)
-				? 3f : 0f,
+				? 0.8f : 0f,
 		});
 
 		rules.Add(new SubworldSpawnRule
 		{
 			Type = ModContent.NPCType<CrystalCell>(),
 			SpawnChance = spawnInfo => InTwilightForest(spawnInfo) && SpawnConditions.OnGround(spawnInfo)
-				? 1f : 0f,
+				? 3.6f : 0f,
+		});
+
+		rules.Add(new SubworldSpawnRule
+		{
+			Type = ModContent.NPCType<EucaLeafy>(),
+			SpawnChance = spawnInfo => InTwilightForest(spawnInfo) && GetEucaLeafyMaxLift(spawnInfo.SpawnTileX, spawnInfo.SpawnTileY) > 0
+				? 4.8f : 0f,
 		});
 
 		// 原版无幸运修正时，普通史莱姆有 1/180 的机会变为粉史莱姆。
