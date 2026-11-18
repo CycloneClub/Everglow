@@ -11,6 +11,8 @@ public class QuestCounter_Consultant : ModNPC
 {
 	public Point TilePos;
 
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.TownNPCs;
+
 	public override void SetDefaults()
 	{
 		NPC.width = 38;

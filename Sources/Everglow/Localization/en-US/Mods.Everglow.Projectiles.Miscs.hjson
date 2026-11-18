@@ -12,7 +12,6 @@ ComingGhost_Shimmer.DisplayName: Coming Ghost Shimmer
 CrystalClub_Fly_Explosion.DisplayName: Crystal Club Throw Explosion
 DemoSpark.DisplayName: Demo Spark
 DreamWeaver_Hit.DisplayName: Dream Weaver Hit
-ExampleTrailingProjectile.DisplayName: Example Trailing Projectile
 FallenDropFruit.DisplayName: Fallen Drop Fruit
 FanHit.DisplayName: Fan Hit
 FixCoinCrit1.DisplayName: Fix Coin Crit1
@@ -42,8 +41,6 @@ GeyserAirBuds_Erupt.DisplayName: Geyser Air Buds Erupt
 Glow_Fall_Explosion.DisplayName: Glow Fall Explosion
 GlowBeadGunShootFlame.DisplayName: Glow Bead Gun Shoot Flame
 GlowStarExplosion.DisplayName: Glow Star Explosion
-HandholdProj.DisplayName: Handhold Proj
-HandholdProj2.DisplayName: Handhold Proj2
 JungleSlingshotHit.DisplayName: Jungle Slingshot Hit
 KillLanternMoonMobs.DisplayName: Kill Lantern Moon Mobs
 KSSlingshotHit.DisplayName: K S Slingshot Hit
@@ -79,3 +76,6 @@ VineProj2.DisplayName: Vine Proj2
 WorldHit.DisplayName: World Hit
 XiaoBlackWave.DisplayName: Xiao Black Wave
 XiaoHit.DisplayName: Xiao Hit
+FallingSand_DecaySandSoil.DisplayName: Falling Decayed Sand
+SpongeOxygenBubble.DisplayName: Sponge Oxygen Bubble
+UnderwaterLightningMechanism_Lightning.DisplayName: Underwater Lightning Mechanism Lightning

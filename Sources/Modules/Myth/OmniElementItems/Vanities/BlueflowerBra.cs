@@ -4,7 +4,7 @@ namespace Everglow.Myth.OmniElementItems.Vanities;
 [AutoloadEquip(EquipType.Body)]
 public class BlueflowerBra : ModItem
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Vanity;
 
 	public override void SetDefaults()
 	{

@@ -30,16 +30,6 @@ BloodTearCrystalCrown: {
 		'''
 }
 
-BlueflowerBra: {
-	DisplayName: Blueflower Bra
-	Tooltip: ""
-}
-
-BlueflowerCap: {
-	DisplayName: Blueflower Cap
-	Tooltip: ""
-}
-
 BlueGel: {
 	DisplayName: Blue Gel
 	Tooltip:

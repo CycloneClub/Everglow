@@ -12,8 +12,6 @@ InfoDisplays: {
 	ThirstystateInfoDisplay.DisplayName: 口渴状态
 }
 
-NPCName.CorruptMoth: "{$Mods.Everglow.NPCs.CorruptMoth.DisplayName}"
-
 Prefixes: {
 	Accurate.DisplayName: 精准的
 	Aimed.DisplayName: 瞄准的

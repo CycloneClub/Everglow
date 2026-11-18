@@ -30,16 +30,6 @@ BloodTearCrystalCrown: {
 		'''
 }
 
-BlueflowerBra: {
-	DisplayName: 蓝花黑内衣
-	Tooltip: ""
-}
-
-BlueflowerCap: {
-	DisplayName: 蓝花黑阔边帽
-	Tooltip: ""
-}
-
 BlueGel: {
 	DisplayName: 蓝星凝胶
 	Tooltip:

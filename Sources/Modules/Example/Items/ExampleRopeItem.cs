@@ -7,7 +7,7 @@ namespace Everglow.Example.Items;
 
 public class ExampleRopeItem : ModItem
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Tools;
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Examples;
 
 	public Rope ItemRope;
 

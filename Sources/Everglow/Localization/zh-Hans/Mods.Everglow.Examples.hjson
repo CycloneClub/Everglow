@@ -148,3 +148,98 @@ TestOpenQuestPanelWithSelectQuestItem: {
 	DisplayName: Test Open Quest Panel With Select Quest Item
 	Tooltip: ""
 }
+
+ElevatorManual: {
+	DisplayName: Elevator Manual
+	Tooltip: ""
+}
+
+ExampleElevator_Indicator_Lamp_Item: {
+	DisplayName: 示例电梯指示灯
+	Tooltip: ""
+}
+
+ExampleElevator_Item: {
+	DisplayName: 示例电梯
+	Tooltip: ""
+}
+
+ExamplePylon_Item: {
+	DisplayName: 示例晶塔
+	Tooltip: ""
+}
+
+ExampleBackgroundTool: {
+	DisplayName: Example Background Tool
+	Tooltip: ""
+}
+
+ExampleRopeItem: {
+	DisplayName: Example Rope Item
+	Tooltip: ""
+}
+
+ExampleTrailingProjectile_Emit: {
+	DisplayName: 拖尾弹射器（示例）
+	Tooltip: ""
+}
+
+ExampleUndergroundBackgroundTool: {
+	DisplayName: Example Underground Background Tool
+	Tooltip: ""
+}
+
+ExampleVirtualWallLightBlocker: {
+	DisplayName: Example Virtual Wall Light Blocker
+	Tooltip: ""
+}
+
+SoundIDPlayItem: {
+	DisplayName: Sound I D Play Item
+	Tooltip: ""
+}
+
+HandholdItem: {
+	DisplayName: 手持式物品
+	Tooltip: ""
+}
+
+ExampleClub: {
+	DisplayName: Example Club
+	Tooltip: ""
+}
+
+ExampleEverglowYoyo: {
+	DisplayName: Example Everglow Yoyo
+	Tooltip: ""
+}
+
+ExampleMeleeItem: {
+	DisplayName: Example Melee Item
+	Tooltip: ""
+}
+
+ExampleStabbingSword: {
+	DisplayName: Example Stabbing Sword
+	Tooltip: ""
+}
+
+ExamplePerson.DisplayName: Example Person
+
+ExampleClubProj.DisplayName: Example Club Proj
+
+ExampleClubSmash.DisplayName: Example Club Smash
+
+ExampleEverglowYoyo_Projectile.DisplayName: 示例悠悠球
+
+ExampleMeleeProjectile.DisplayName: Example Melee Projectile
+
+ExampleStabbingSword_Pro.DisplayName: 示例刺剑
+
+ExampleStabbingSword_Pro_Stab.DisplayName: 示例刺剑·突刺
+
+ExampleTrailingProjectile.DisplayName: Example Trailing Projectile
+
+HandholdProj.DisplayName: Handhold Proj
+
+HandholdProj2.DisplayName: Handhold Proj2

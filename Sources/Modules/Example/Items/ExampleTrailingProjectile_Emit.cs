@@ -5,7 +5,7 @@ namespace Everglow.Example.Items;
 
 public class ExampleTrailingProjectile_Emit : ModItem
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Tools;
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Examples;
 
 	public override void SetDefaults() => base.SetDefaults();
 

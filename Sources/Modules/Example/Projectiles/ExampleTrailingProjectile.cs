@@ -5,7 +5,7 @@ namespace Everglow.Example.Projectiles;
 
 public class ExampleTrailingProjectile : TrailingProjectile
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MiscsProjectiles;
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Examples;
 
 	public override void SetCustomDefaults()
 	{

@@ -530,26 +530,6 @@ EbonwoodElevator_Item: {
 	Tooltip: ""
 }
 
-ElevatorManual: {
-	DisplayName: Elevator Manual
-	Tooltip: ""
-}
-
-ExampleElevator_Indicator_Lamp_Item: {
-	DisplayName: 示例电梯指示灯
-	Tooltip: ""
-}
-
-ExampleElevator_Item: {
-	DisplayName: 示例电梯
-	Tooltip: ""
-}
-
-ExamplePylon_Item: {
-	DisplayName: 示例晶塔
-	Tooltip: ""
-}
-
 ExitSignBoard_Item: {
 	DisplayName: 安全出口
 	Tooltip: ""
@@ -702,11 +682,6 @@ FurnaceMeltingChest_Item: {
 
 FurnacePlatingBlock: {
 	DisplayName: 炉心镀层块
-	Tooltip: ""
-}
-
-FurnaceScoreClear: {
-	DisplayName: Furnace Score Clear
 	Tooltip: ""
 }
 
@@ -1443,11 +1418,6 @@ MeteoriteElevator_Indicator_Lamp_Item: {
 
 MeteoriteElevator_Item: {
 	DisplayName: 陨石电梯
-	Tooltip: ""
-}
-
-MetroHelper: {
-	DisplayName: Metro Helper
 	Tooltip: ""
 }
 

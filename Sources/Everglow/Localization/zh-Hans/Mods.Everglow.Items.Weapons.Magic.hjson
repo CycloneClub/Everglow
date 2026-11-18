@@ -156,11 +156,6 @@ GreenSungloStaff: {
 		'''
 }
 
-HandholdItem: {
-	DisplayName: 手持式物品
-	Tooltip: ""
-}
-
 HexaCrystalStaff: {
 	DisplayName: 六棱石花杖
 	Tooltip: 射出能分裂成6个的蓝色暮光晶体飞弹，附加暮光晶体脆弱
@@ -247,16 +242,6 @@ RockQuake: {
 	Tooltip: 发射能直接造成伤害的力场，穿透实体方块时会从方块内部长出尖刺
 }
 
-SightOfTile: {
-	DisplayName: 物块记录器
-	Tooltip:
-		'''
-		开发者物品，也供建筑家使用，允许编辑物块地图
-		已具有较完善的GUI和引导系统
-		警告：请勿用于切割箱子
-		'''
-}
-
 SmeltingStaff: {
 	DisplayName: 熔炼魔杖
 	Tooltip:
@@ -288,11 +273,6 @@ ToothMagicBall: {
 TwilightShamanStaff: {
 	DisplayName: 暮光萨满法杖
 	Tooltip: 发射冰霜球
-}
-
-VineRepairWand: {
-	DisplayName: Vine Repair Wand
-	Tooltip: ""
 }
 
 VitalizedRocks: {

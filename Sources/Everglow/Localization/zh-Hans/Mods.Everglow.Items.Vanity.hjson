@@ -7,3 +7,18 @@ WitheredMask: {
 	DisplayName: 枯萎面具
 	Tooltip: ""
 }
+
+BlueflowerBra: {
+	DisplayName: 蓝花黑内衣
+	Tooltip: ""
+}
+
+BlueflowerCap: {
+	DisplayName: 蓝花黑阔边帽
+	Tooltip: ""
+}
+
+BlueflowerDress: {
+	DisplayName: 蓝花黑裙
+	Tooltip: ""
+}

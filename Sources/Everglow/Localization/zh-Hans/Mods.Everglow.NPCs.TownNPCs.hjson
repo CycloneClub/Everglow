@@ -51,3 +51,23 @@ Howard_Warden.DisplayName: 警长霍华德
 InnKeeper.DisplayName: 酒馆老板格尔格
 Restauranteur.DisplayName: 餐厅老板罗尔
 TeahouseLady.DisplayName: 茶馆老板娘夜璃
+
+Acytaea: {
+	DisplayName: 雅斯塔亚
+
+	TownNPCMood: {
+		Content: I am content.
+		DislikeBiome: I dislike {BiomeName}.
+		DislikeCrowded: I dislike how crowded I am.
+		FarFromHome: I am too far from home.
+		HateCrowded: I hate how crowded I am.
+		LikeBiome: I like {BiomeName}.
+		LikeNPC_Princess: I like {NPCName}.
+		LoveSpace: I love having so much space.
+		NoHome: I hate not having a home.
+		Princess_LovesNPC: I like {NPCName}.
+	}
+}
+
+QuestCounter_Consultant.DisplayName: 工会接待员
+QuestCounter_Consultant.Greeting: "欢迎来到攀登者工会。"

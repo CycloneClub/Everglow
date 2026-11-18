@@ -10,7 +10,7 @@ public class VampireMat_Attack_Proj_Ball_Small_Group : ModProjectile
 
 	public int ParentNPCIndex => (int)Projectile.ai[1];
 
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
 
 	public struct SubProj
 	{

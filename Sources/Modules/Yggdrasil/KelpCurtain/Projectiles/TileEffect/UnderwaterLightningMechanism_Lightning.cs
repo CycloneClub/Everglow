@@ -4,7 +4,7 @@ namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.TileEffect;
 
 public class UnderwaterLightningMechanism_Lightning : ModProjectile
 {
-	public override string LocalizationCategory => LocalizationUtils.Categories.RangedProjectiles;
+	public override string LocalizationCategory => LocalizationUtils.Categories.MiscsProjectiles;
 
 	public Vector2 StartPos;
 

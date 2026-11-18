@@ -10,7 +10,7 @@ public class VampireMat_Attack_Proj_Ball_In_AbsorbVortex : ModProjectile
 
 	public int ParentNPCIndex => (int)Projectile.ai[1];
 
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
 
 	public int Timer = 0;
 

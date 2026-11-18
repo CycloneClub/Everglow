@@ -5,6 +5,8 @@ namespace Everglow.Example.Items;
 
 public class ExampleMeleeItem : MeleeItem_3D
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Examples;
+
 	public override void SetCustomDefaults()
 	{
 		Item.width = 82;

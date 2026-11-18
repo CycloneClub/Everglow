@@ -12,8 +12,6 @@ InfoDisplays: {
 	ThirstystateInfoDisplay.DisplayName: Thirstystate Info Display
 }
 
-NPCName.CorruptMoth: "{$Mods.Everglow.NPCs.CorruptMoth.DisplayName}"
-
 Prefixes: {
 	Accurate.DisplayName: Accurate
 	Aimed.DisplayName: Aimed

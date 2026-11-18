@@ -79,8 +79,6 @@ FrostBall.DisplayName: Frost Ball
 FrostBomb.DisplayName: Frost Bomb
 GiantBoneFeather.DisplayName: Giant Bone Feather
 GiantBoneFeatherExplosion.DisplayName: Giant Bone Feather Explosion
-GiantDandelion_Boulder.DisplayName: Giant Dandelion Boulder
-GiantDandelion_Shockwave.DisplayName: Giant Dandelion Shockwave
 GiantFireFeather.DisplayName: Giant Fire Feather
 GiantFireFeatherExplosion.DisplayName: Giant Fire Feather Explosion
 GiantFreezeFeather.DisplayName: Giant Freeze Feather
@@ -108,8 +106,6 @@ IstafelsSunfireGrasp_Scoria.DisplayName: Istafels Sunfire Grasp Scoria
 IstafelsSunfireGrasp_SkillVFX.DisplayName: Istafels Sunfire Grasp Skill Effect
 IstafelsSunfireGrasp_Sub_FireBall.DisplayName: Lesser Sunfire Fireball
 LargeCrystal.DisplayName: Large Crystal
-LargeMossyThornTurtle_Boulder.DisplayName: Large Mossy Thorn Turtle Boulder
-LargeMossyThornTurtle_Shockwave.DisplayName: Large Mossy Thorn Turtle Shockwave
 LichensPycnidium.DisplayName: Lichens Pycnidium
 LightBeam.DisplayName: Light Beam
 LightBeamStaff_Proj.DisplayName: Light Beam Staff
@@ -162,13 +158,6 @@ ToothMagicBall.DisplayName: Tooth Magic Ball
 ToothMagicSplit.DisplayName: Tooth Magic Split
 ToothMagicSplit2.DisplayName: Tooth Magic Split2
 TyphoonII.DisplayName: Typhoon I I
-VampireMat_Attack_Proj_Absorb.DisplayName: Vampire Mat Siphon
-VampireMat_Attack_Proj_Ball_In_AbsorbVortex.DisplayName: Vampire Mat Vortex Orb
-VampireMat_Attack_Proj_Ball_In_AbsorbVortex2.DisplayName: Vampire Mat Vortex Orb II
-VampireMat_Attack_Proj_Ball_Small_Group_1.DisplayName: Vampire Mat Orb Cluster I
-VampireMat_Attack_Proj_Ball_Small_Group.DisplayName: Vampire Mat Orb Cluster
-VampireMat_Attack_Proj_Ball.DisplayName: Vampire Mat Orb
-VampireMat_Attack_Proj_Tusk.DisplayName: Vampire Mat Fang
 VitalizedRocksProj_Explosion.DisplayName: Vitalized Rocks Explosion
 VitalizedRocksProj.DisplayName: Vitalized Rocks Proj
 VitalizedRocksStone_Small.DisplayName: Vitalized Rocks Stone Small

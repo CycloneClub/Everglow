@@ -4,7 +4,7 @@ namespace Everglow.Example.Items;
 
 public class ExampleVirtualWallLightBlocker : ModItem
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Tools;
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Examples;
 
 	public override void HoldItem(Player player)
 	{

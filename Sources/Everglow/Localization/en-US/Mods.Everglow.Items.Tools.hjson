@@ -53,31 +53,6 @@ DragonScaleHammer: {
 	Tooltip: ""
 }
 
-ExampleBackgroundTool: {
-	DisplayName: Example Background Tool
-	Tooltip: ""
-}
-
-ExampleRopeItem: {
-	DisplayName: Example Rope Item
-	Tooltip: ""
-}
-
-ExampleTrailingProjectile_Emit: {
-	DisplayName: Example Trail Emitter
-	Tooltip: ""
-}
-
-ExampleUndergroundBackgroundTool: {
-	DisplayName: Example Underground Background Tool
-	Tooltip: ""
-}
-
-ExampleVirtualWallLightBlocker: {
-	DisplayName: Example Virtual Wall Light Blocker
-	Tooltip: ""
-}
-
 FireflyImpression: {
 	DisplayName: Firefly Impression
 	Tooltip: ""
@@ -181,11 +156,6 @@ ScreenPositionPrintItem: {
 	Tooltip: ""
 }
 
-SoundIDPlayItem: {
-	DisplayName: Sound I D Play Item
-	Tooltip: ""
-}
-
 TileDataReader: {
 	DisplayName: Tile Data Reader
 	Tooltip: ""
@@ -259,4 +229,34 @@ MiningPowerPickaxe_2: {
 MiningPowerPickaxe_3: {
 	DisplayName: Mining Power Pickaxe Mk III
 	Tooltip: Hold right-click to charge; mining consumes charge to mine connected ore
+}
+
+ElectroProbe: {
+	DisplayName: Electro Probe
+	Tooltip: ""
+}
+
+SkeletonSight: {
+	DisplayName: Skeleton Sight
+	Tooltip: ""
+}
+
+FurnaceScoreClear: {
+	DisplayName: Furnace Score Clear
+	Tooltip: ""
+}
+
+MetroHelper: {
+	DisplayName: Metro Helper
+	Tooltip: ""
+}
+
+SightOfTile: {
+	DisplayName: Sight Of Tile
+	Tooltip: ""
+}
+
+VineRepairWand: {
+	DisplayName: Vine Repair Wand
+	Tooltip: ""
 }

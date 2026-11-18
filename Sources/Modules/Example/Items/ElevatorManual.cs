@@ -4,7 +4,7 @@ namespace Everglow.Example.Items;
 
 public class ElevatorManual : ModItem
 {
-	public override string LocalizationCategory => LocalizationUtils.Categories.Placeables;
+	public override string LocalizationCategory => LocalizationUtils.Categories.Examples;
 
 	public bool EnableManual = false;
 

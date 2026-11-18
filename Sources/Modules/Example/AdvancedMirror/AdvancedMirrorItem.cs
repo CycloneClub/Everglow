@@ -7,7 +7,7 @@ public class AdvancedMirrorItem : ModItem
 {
 	internal const string TextKey = "Mods.Everglow.Examples.AdvancedMirror.";
 
-	public override string LocalizationCategory => LocalizationUtils.Categories.Placeables;
+	public override string LocalizationCategory => LocalizationUtils.Categories.Examples;
 
 	public override string Texture => $"Terraria/Images/Item_{ItemID.IceMirror}";
 

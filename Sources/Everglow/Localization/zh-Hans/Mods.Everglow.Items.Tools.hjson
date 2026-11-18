@@ -53,31 +53,6 @@ DragonScaleHammer: {
 	Tooltip: ""
 }
 
-ExampleBackgroundTool: {
-	DisplayName: Example Background Tool
-	Tooltip: ""
-}
-
-ExampleRopeItem: {
-	DisplayName: Example Rope Item
-	Tooltip: ""
-}
-
-ExampleTrailingProjectile_Emit: {
-	DisplayName: 拖尾弹射器（示例）
-	Tooltip: ""
-}
-
-ExampleUndergroundBackgroundTool: {
-	DisplayName: Example Underground Background Tool
-	Tooltip: ""
-}
-
-ExampleVirtualWallLightBlocker: {
-	DisplayName: Example Virtual Wall Light Blocker
-	Tooltip: ""
-}
-
 FireflyImpression: {
 	DisplayName: Firefly Impression
 	Tooltip: ""
@@ -181,11 +156,6 @@ ScreenPositionPrintItem: {
 	Tooltip: ""
 }
 
-SoundIDPlayItem: {
-	DisplayName: Sound I D Play Item
-	Tooltip: ""
-}
-
 TileDataReader: {
 	DisplayName: Tile Data Reader
 	Tooltip: ""
@@ -259,4 +229,39 @@ MiningPowerPickaxe_2: {
 MiningPowerPickaxe_3: {
 	DisplayName: 矿用动力镐 III型
 	Tooltip: 按住右键充能，采矿时消耗能量连锁开采相连矿物
+}
+
+ElectroProbe: {
+	DisplayName: Electro Probe
+	Tooltip: ""
+}
+
+SkeletonSight: {
+	DisplayName: Skeleton Sight
+	Tooltip: ""
+}
+
+FurnaceScoreClear: {
+	DisplayName: Furnace Score Clear
+	Tooltip: ""
+}
+
+MetroHelper: {
+	DisplayName: Metro Helper
+	Tooltip: ""
+}
+
+SightOfTile: {
+	DisplayName: 物块记录器
+	Tooltip:
+		'''
+		开发者物品，也供建筑家使用，允许编辑物块地图
+		已具有较完善的GUI和引导系统
+		警告：请勿用于切割箱子
+		'''
+}
+
+VineRepairWand: {
+	DisplayName: Vine Repair Wand
+	Tooltip: ""
 }

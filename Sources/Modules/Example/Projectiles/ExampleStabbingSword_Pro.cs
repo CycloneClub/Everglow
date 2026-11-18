@@ -6,6 +6,8 @@ namespace Everglow.Example.Projectiles;
 
 public class ExampleStabbingSword_Pro : StabbingProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Examples;
+
 	public override void SetCustomDefaults()
 	{
 		MaxDarkAttackUnitCount = 4;

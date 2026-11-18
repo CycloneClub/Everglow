@@ -9,7 +9,7 @@ namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Enemies;
 /// </summary>
 public class GiantDandelion_Boulder : ModProjectile
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.EnemyProjectiles;
 
 	// Approved artwork is missing from the repository; reuse the existing shared fallback texture
 	// rather than create placeholder art.

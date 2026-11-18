@@ -10,6 +10,8 @@ namespace Everglow.Example.Pylon;
 /// </summary>
 public class ExamplePylon : EverglowPylonBase<ExamplePylonTileEntity>
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Examples;
+
 	public override void SetStaticDefaults()
 	{
 		AddMapEntry(new Color(148, 148, 148));

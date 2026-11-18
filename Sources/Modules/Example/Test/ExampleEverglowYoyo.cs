@@ -4,6 +4,8 @@ namespace Everglow.Example.Test;
 
 public class ExampleEverglowYoyo : YoyoItem
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Examples;
+
 	public override void SetCustomDefaults()
 	{
 		Item.damage = 114514;

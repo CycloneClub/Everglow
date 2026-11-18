@@ -6,7 +6,7 @@ namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.TileEffect;
 
 public class SpongeOxygenBubble : ModProjectile
 {
-	public override string LocalizationCategory => LocalizationUtils.Categories.RangedProjectiles;
+	public override string LocalizationCategory => LocalizationUtils.Categories.MiscsProjectiles;
 
 	public override void SetDefaults()
 	{

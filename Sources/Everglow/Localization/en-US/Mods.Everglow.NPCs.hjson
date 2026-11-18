@@ -1,20 +1,3 @@
-Acytaea: {
-	DisplayName: Acytaea
-
-	TownNPCMood: {
-		Content: I am content.
-		DislikeBiome: I dislike {BiomeName}.
-		DislikeCrowded: I dislike how crowded I am.
-		FarFromHome: I am too far from home.
-		HateCrowded: I hate how crowded I am.
-		LikeBiome: I like {BiomeName}.
-		LikeNPC_Princess: I like {NPCName}.
-		LoveSpace: I love having so much space.
-		NoHome: I hate not having a home.
-		Princess_LovesNPC: I like {NPCName}.
-	}
-}
-
 Acytaea_Boss.DisplayName: Acytaea
 Acytaea_Yggdrasil.DisplayName: Acytaea
 AlgaeOctopus.DisplayName: Algae-Covered Octopus
@@ -47,7 +30,6 @@ DarkGlimmeringRods.DisplayName: Dark Glimmering Rods
 Dendroid_Normal.DisplayName: Dendroid
 EvilLantern.DisplayName: Evil Lantern
 EvilPack.DisplayName: Evil Pack
-ExamplePerson.DisplayName: Example Person
 ExplosiveLantern_Growing.DisplayName: Explosive Lantern
 FireflyPiranha_Small.DisplayName: Firefly Piranha
 FireflyPiranha.DisplayName: Firefly Piranha
@@ -81,8 +63,6 @@ LittleRedPaperFigure.DisplayName: Little Red Paper Figure
 Living_Jawbone.DisplayName: Living Jawbone
 MossyThornTurtle.DisplayName: Thorn Mossy Tortoise
 PurpleBombCaterpillar.DisplayName: Purple Bomb Caterpillar
-QuestCounter_Consultant.DisplayName: Guild Receptionist
-QuestCounter_Consultant.Greeting: "Welcome to the climbing guild."
 Radiolarian.DisplayName: Radiolarian
 RapierMaster_Boss.DisplayName: Rapier Master
 RedCore.DisplayName: Red Core

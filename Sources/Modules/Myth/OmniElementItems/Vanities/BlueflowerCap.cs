@@ -3,7 +3,7 @@ namespace Everglow.Myth.OmniElementItems.Vanities;
 [AutoloadEquip(EquipType.Face)]
 public class BlueflowerCap : ModItem
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Accessories;
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Vanity;
 
 	public override void SetStaticDefaults()
 	{

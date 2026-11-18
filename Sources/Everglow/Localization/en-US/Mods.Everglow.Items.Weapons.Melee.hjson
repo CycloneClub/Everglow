@@ -219,26 +219,6 @@ EvilHalbertBarnacle: {
 		'''
 }
 
-ExampleClub: {
-	DisplayName: Example Club
-	Tooltip: ""
-}
-
-ExampleEverglowYoyo: {
-	DisplayName: Example Everglow Yoyo
-	Tooltip: ""
-}
-
-ExampleMeleeItem: {
-	DisplayName: Example Melee Item
-	Tooltip: ""
-}
-
-ExampleStabbingSword: {
-	DisplayName: Example Stabbing Sword
-	Tooltip: ""
-}
-
 FryingPanItem: {
 	DisplayName: Frying Pan Item
 	Tooltip: ""

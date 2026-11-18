@@ -2,7 +2,7 @@ namespace Everglow.Commons.DeveloperContent.Items;
 
 internal class SkeletonSight : ModItem
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Miscs;
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Tools;
 
 	public override void SetDefaults()
 	{

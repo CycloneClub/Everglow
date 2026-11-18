@@ -25,6 +25,8 @@ public class Acytaea : VisualNPC
 	public int TextureStyle = 0;
 	public int Attack0Cooling = 0;
 
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.TownNPCs;
+
 	public override string HeadTexture => NPC.boss ?
 		ModAsset.Acytaea_Head_Boss_Mod :
 		ModAsset.Acytaea_Head_Mod;

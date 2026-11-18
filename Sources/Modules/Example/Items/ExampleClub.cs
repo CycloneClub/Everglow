@@ -4,6 +4,8 @@ namespace Everglow.Example.Items;
 
 public class ExampleClub : ClubItem
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Examples;
+
 	public override string Texture => ModAsset.ExampleClub_Mod;
 
 	public override void SetCustomDefaults()

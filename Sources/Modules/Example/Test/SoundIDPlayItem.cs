@@ -8,7 +8,7 @@ namespace Everglow.Example.Test;
 /// </summary>
 public class SoundIDPlayItem : ModItem
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Tools;
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Examples;
 
 	public override void SetDefaults()
 	{

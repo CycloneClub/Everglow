@@ -4,6 +4,8 @@ namespace Everglow.Example.Test;
 
 public class ExampleEverglowYoyo_Projectile : YoyoProjectile
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Examples;
+
 	public override void SetStaticDefaults()
 	{
 		ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = 35000000;

@@ -9,7 +9,7 @@ public class VampireMat_Attack_Proj_Tusk : ModProjectile
 
 	public int ParentNPCIndex => (int)Projectile.ai[1];
 
-	public override string LocalizationCategory => LocalizationUtils.Categories.MagicProjectiles;
+	public override string LocalizationCategory => LocalizationUtils.Categories.BossProjectiles;
 
 	public int Timer = 0;
 

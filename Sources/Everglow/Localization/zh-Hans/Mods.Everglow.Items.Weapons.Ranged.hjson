@@ -60,11 +60,6 @@ Caltrop: {
 	Tooltip: “哦，那一定很疼！”
 }
 
-CaterpillarJuiceArrow: {
-	DisplayName: 虫汁箭
-	Tooltip: ""
-}
-
 CeremonialRifle: {
 	DisplayName: 仪式用枪
 	Tooltip: ""
@@ -108,15 +103,6 @@ CyanVineFlintlock: {
 CyanVineThrowingSpear: {
 	DisplayName: 青缎投矛
 	Tooltip: 手持且不攻击时自动蓄力，点击投掷
-}
-
-CyatheaArrow: {
-	DisplayName: 桫椤箭
-	Tooltip:
-		'''
-		命中有25%概率造成3秒中毒
-		命中敌人后向两侧45度方向释放两枚尖刺，各造成一半伤害
-		'''
 }
 
 DevilHeartBow: {
@@ -210,16 +196,6 @@ LampWoodBow: {
 	Tooltip: “在这里，照亮你前路的第一道光”
 }
 
-LightArrow: {
-	DisplayName: 灯油箭
-	Tooltip: 造成4秒光解效果
-}
-
-LightBullet: {
-	DisplayName: 灯火弹
-	Tooltip: 造成4秒光解效果
-}
-
 MossyCyatheaBow: {
 	DisplayName: 青苔桫椤弓
 	Tooltip:
@@ -277,11 +253,6 @@ RazorbeakBow: {
 RichMahoganySlingshot: {
 	DisplayName: 红木弹弓
 	Tooltip: 不消耗弹药，蓄力提升威力
-}
-
-RockArrow: {
-	DisplayName: 岩甲箭
-	Tooltip: ""
 }
 
 RockSpikeBallista: {

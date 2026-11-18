@@ -2,7 +2,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Miscs;
 
 public class ElectroProbe : ModItem
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Miscs;
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Tools;
 
 	public int OwnHelperCooling = 0;
 

@@ -4,6 +4,8 @@ namespace Everglow.Example.Tiles;
 
 public class ExampleElevator_Indicator_Lamp : FloorIndicatorTileBase
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Examples;
+
 	public override void SetCustomDefaults() => base.SetCustomDefaults();
 
 	public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

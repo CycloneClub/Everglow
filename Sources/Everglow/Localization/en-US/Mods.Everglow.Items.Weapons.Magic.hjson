@@ -147,11 +147,6 @@ GreenSungloStaff: {
 		'''
 }
 
-HandholdItem: {
-	DisplayName: Handhold Item
-	Tooltip: ""
-}
-
 HexaCrystalStaff: {
 	DisplayName: Hexa Crystal Staff
 	Tooltip: Fires a blue twilight crystal that splits into six fragments and inflicts Hexa Crystal Weak
@@ -238,11 +233,6 @@ RockQuake: {
 	Tooltip: Fires a damaging force beam that raises spikes inside solid blocks it passes through
 }
 
-SightOfTile: {
-	DisplayName: Sight Of Tile
-	Tooltip: ""
-}
-
 SmeltingStaff: {
 	DisplayName: Smelting Staff
 	Tooltip:
@@ -274,11 +264,6 @@ ToothMagicBall: {
 TwilightShamanStaff: {
 	DisplayName: Twilight Shaman Staff
 	Tooltip: Fires a ball of frost
-}
-
-VineRepairWand: {
-	DisplayName: Vine Repair Wand
-	Tooltip: ""
 }
 
 VitalizedRocks: {

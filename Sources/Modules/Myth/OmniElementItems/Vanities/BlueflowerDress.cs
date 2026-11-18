@@ -3,7 +3,7 @@ namespace Everglow.Myth.OmniElementItems.Vanities;
 [AutoloadEquip(EquipType.Legs)]
 public class BlueflowerDress : ModItem
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Vanity;
 
 	public override void SetDefaults()
 	{

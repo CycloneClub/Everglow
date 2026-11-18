@@ -8,7 +8,7 @@ namespace Everglow.Example.Test;
 /// </summary>
 public class HandholdItem : ModItem
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicWeapons;
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Examples;
 
 	public override void SetDefaults()
 	{

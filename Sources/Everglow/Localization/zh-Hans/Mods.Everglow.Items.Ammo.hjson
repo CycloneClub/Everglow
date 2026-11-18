@@ -12,3 +12,32 @@ EldamberBullet: {
 	DisplayName: 古珀子弹
 	Tooltip: ""
 }
+
+CaterpillarJuiceArrow: {
+	DisplayName: 虫汁箭
+	Tooltip: ""
+}
+
+CyatheaArrow: {
+	DisplayName: 桫椤箭
+	Tooltip:
+		'''
+		命中有25%概率造成3秒中毒
+		命中敌人后向两侧45度方向释放两枚尖刺，各造成一半伤害
+		'''
+}
+
+LightArrow: {
+	DisplayName: 灯油箭
+	Tooltip: 造成4秒光解效果
+}
+
+LightBullet: {
+	DisplayName: 灯火弹
+	Tooltip: 造成4秒光解效果
+}
+
+RockArrow: {
+	DisplayName: 岩甲箭
+	Tooltip: ""
+}

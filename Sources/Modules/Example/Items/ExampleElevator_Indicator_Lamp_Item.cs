@@ -4,7 +4,7 @@ namespace Everglow.Example.Items;
 
 public class ExampleElevator_Indicator_Lamp_Item : ModItem
 {
-	public override string LocalizationCategory => Commons.Utilities.LocalizationUtils.Categories.Placeables;
+	public override string LocalizationCategory => Commons.Utilities.LocalizationUtils.Categories.Examples;
 
 	public override void SetDefaults()
 	{

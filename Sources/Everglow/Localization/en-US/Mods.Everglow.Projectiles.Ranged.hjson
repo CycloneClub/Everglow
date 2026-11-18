@@ -25,14 +25,13 @@ CloudBall.DisplayName: Cloud Ball
 CyanBullet.DisplayName: Cyan Bullet
 CyanVineCrossBow_Proj.DisplayName: Cyan Vine Crossbow
 CyanVineThrowingSpear_Proj.DisplayName: Cyan Vine Throwing Spear
-CyatheaArrow_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Ranged.CyatheaArrow.DisplayName}"
-CyatheaArrow_Spike.DisplayName: "{$Mods.Everglow.Items.Weapons.Ranged.CyatheaArrow.DisplayName}"
+CyatheaArrow_Proj.DisplayName: "{$Mods.Everglow.Items.Ammo.CyatheaArrow.DisplayName}"
+CyatheaArrow_Spike.DisplayName: "{$Mods.Everglow.Items.Ammo.CyatheaArrow.DisplayName}"
 DiamondBead.DisplayName: Diamond Bead
 DiamondSlingshot.DisplayName: Diamond Slingshot
 EbonwoodSlingshot.DisplayName: Ebonwood Slingshot
 EmeraldBead.DisplayName: Emerald Bead
 EmeraldSlingshot.DisplayName: Emerald Slingshot
-FallingSand_DecaySandSoil.DisplayName: Falling Decayed Sand
 FrostSpice.DisplayName: Frost Spice
 GelBall.DisplayName: Gel Ball
 GelSlingshot.DisplayName: Gel Slingshot
@@ -84,7 +83,6 @@ ShadewoodSlingShot.DisplayName: Shadewood Sling Shot
 ShadowWingBow.DisplayName: Shadow Wing Bow
 SpineGun.DisplayName: Spine Gun
 SplieSpineBullet.DisplayName: Splie Spine Bullet
-SpongeOxygenBubble.DisplayName: Sponge Oxygen Bubble
 StarAmmo.DisplayName: Star Ammo
 StarSlingshot.DisplayName: Star Slingshot
 StoneJavelinProjectile.DisplayName: Stone Javelin Projectile
@@ -108,5 +106,4 @@ TsunamiShark_Marking.DisplayName: Tsunami Shark Marking
 TsunamiShark_Missile_Hit.DisplayName: Tsunami Shark Missile Hit
 TsunamiShark_Missile.DisplayName: Tsunami Shark Missile
 TsunamiShark.DisplayName: Tsunami Shark
-UnderwaterLightningMechanism_Lightning.DisplayName: Underwater Lightning Mechanism Lightning
 WoodSlingshot.DisplayName: Wood Slingshot

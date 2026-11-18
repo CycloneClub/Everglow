@@ -6,7 +6,7 @@ namespace Everglow.Example.AdvancedMirror;
 
 public class AdvancedMirrorWall : ModWall
 {
-	public override string LocalizationCategory => LocalizationUtils.Categories.Placeables;
+	public override string LocalizationCategory => LocalizationUtils.Categories.Examples;
 
 	public override string Texture => Commons.ModAsset.White_Mod;
 

@@ -81,12 +81,6 @@ EvilHalbertBarnacle_Proj_Shuttle.DisplayName: "{$Mods.Everglow.Items.Weapons.Mel
 EvilHalbertBarnacle_Proj_Thrust.DisplayName: "{$Mods.Everglow.Items.Weapons.Melee.EvilHalbertBarnacle.DisplayName}"
 EvilHalbertBarnacle_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Melee.EvilHalbertBarnacle.DisplayName}"
 EvilHalbertBarnacle_ShootShuttle.DisplayName: "{$Mods.Everglow.Items.Weapons.Melee.EvilHalbertBarnacle.DisplayName}"
-ExampleClubProj.DisplayName: Example Club Proj
-ExampleClubSmash.DisplayName: Example Club Smash
-ExampleEverglowYoyo_Projectile.DisplayName: Example Everglow Yoyo
-ExampleMeleeProjectile.DisplayName: Example Melee Projectile
-ExampleStabbingSword_Pro_Stab.DisplayName: Example Stabbing Sword Thrust
-ExampleStabbingSword_Pro.DisplayName: Example Stabbing Sword
 FocusRay.DisplayName: Focus Ray
 FryingPan.DisplayName: Frying Pan
 GhostHit.DisplayName: Ghost Hit

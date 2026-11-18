@@ -6,7 +6,7 @@ namespace Everglow.Commons.DeveloperContent.Items;
 
 public class SightOfTile : ModItem
 {
-	public override string LocalizationCategory => Utilities.LocalizationUtils.Categories.MagicWeapons;
+	public override string LocalizationCategory => Utilities.LocalizationUtils.Categories.Tools;
 
 	public override void SetDefaults()
 	{

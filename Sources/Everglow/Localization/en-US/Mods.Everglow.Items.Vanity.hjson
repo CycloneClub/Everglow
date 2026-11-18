@@ -7,3 +7,18 @@ WitheredMask: {
 	DisplayName: Withered Mask
 	Tooltip: ""
 }
+
+BlueflowerBra: {
+	DisplayName: Blueflower Bra
+	Tooltip: ""
+}
+
+BlueflowerCap: {
+	DisplayName: Blueflower Cap
+	Tooltip: ""
+}
+
+BlueflowerDress: {
+	DisplayName: Blueflower Dress
+	Tooltip: ""
+}

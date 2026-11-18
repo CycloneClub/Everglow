@@ -12,3 +12,32 @@ EldamberBullet: {
 	DisplayName: Eldamber Bullet
 	Tooltip: ""
 }
+
+CaterpillarJuiceArrow: {
+	DisplayName: Caterpillar Juice Arrow
+	Tooltip: ""
+}
+
+CyatheaArrow: {
+	DisplayName: Cyathea Arrow
+	Tooltip:
+		'''
+		25% chance to inflict Poisoned for 3 seconds
+		Hitting an enemy releases two spikes at 45-degree angles, each dealing half damage
+		'''
+}
+
+LightArrow: {
+	DisplayName: Lamp-Oil Arrow
+	Tooltip: Inflicts Photolysis for 4 seconds
+}
+
+LightBullet: {
+	DisplayName: Light Bullet
+	Tooltip: Inflicts Photolysis for 4 seconds
+}
+
+RockArrow: {
+	DisplayName: Rock Arrow
+	Tooltip: ""
+}

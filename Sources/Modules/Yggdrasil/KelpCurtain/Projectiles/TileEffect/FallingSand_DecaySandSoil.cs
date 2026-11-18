@@ -6,7 +6,7 @@ namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.TileEffect;
 
 public class FallingSand_DecaySandSoil : ModProjectile
 {
-	public override string LocalizationCategory => LocalizationUtils.Categories.RangedProjectiles;
+	public override string LocalizationCategory => LocalizationUtils.Categories.MiscsProjectiles;
 
 	public override void SetDefaults()
 	{

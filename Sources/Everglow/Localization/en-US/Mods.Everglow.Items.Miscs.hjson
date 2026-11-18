@@ -68,11 +68,6 @@ EggTart: {
 	Tooltip: ""
 }
 
-ElectroProbe: {
-	DisplayName: Electro Probe
-	Tooltip: ""
-}
-
 FireCracker: {
 	DisplayName: Fire Cracker
 	Tooltip: ""
@@ -275,11 +270,6 @@ SalmonWarship: {
 
 SeafoodPizza: {
 	DisplayName: Seafood Pizza
-	Tooltip: ""
-}
-
-SkeletonSight: {
-	DisplayName: Skeleton Sight
 	Tooltip: ""
 }
 

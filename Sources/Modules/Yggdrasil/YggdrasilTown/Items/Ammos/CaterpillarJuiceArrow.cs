@@ -4,7 +4,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Ammos;
 
 public class CaterpillarJuiceArrow : ModItem
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedWeapons;
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Ammo;
 
 	public override void SetDefaults()
 	{

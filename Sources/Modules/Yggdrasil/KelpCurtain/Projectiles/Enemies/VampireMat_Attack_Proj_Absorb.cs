@@ -18,7 +18,7 @@ public class VampireMat_Attack_Proj_Absorb : ModProjectile
 
 	public float rotationValue = 0;
 
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.BossProjectiles;
 
 	public override void SetDefaults()
 	{

@@ -4,7 +4,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Tools.Developer;
 
 public class FurnaceScoreClear : ModItem
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Placeables;
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Tools;
 
 	public override void HoldItem(Player player)
 	{

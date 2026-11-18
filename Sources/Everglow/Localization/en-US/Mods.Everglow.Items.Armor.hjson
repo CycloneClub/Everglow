@@ -59,11 +59,6 @@ BloodStainedVeil: {
 		'''
 }
 
-BlueflowerDress: {
-	DisplayName: Blueflower Dress
-	Tooltip: ""
-}
-
 ConcentratingJacket: {
 	DisplayName: Concentrating Jacket
 	Tooltip:

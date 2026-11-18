@@ -19,6 +19,8 @@ namespace Everglow.Commons.Mechanics.Quest.PlayerSide.Tests.ExampleNPC;
 [AutoloadHead]
 public class ExamplePerson : ModNPC
 {
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Examples;
+
 	public const string ShopName = "Shop";
 
 	public int NumberOfTimesTalkedTo = 0;

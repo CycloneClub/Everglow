@@ -1,20 +1,3 @@
-Acytaea: {
-	DisplayName: 雅斯塔亚
-
-	TownNPCMood: {
-		Content: I am content.
-		DislikeBiome: I dislike {BiomeName}.
-		DislikeCrowded: I dislike how crowded I am.
-		FarFromHome: I am too far from home.
-		HateCrowded: I hate how crowded I am.
-		LikeBiome: I like {BiomeName}.
-		LikeNPC_Princess: I like {NPCName}.
-		LoveSpace: I love having so much space.
-		NoHome: I hate not having a home.
-		Princess_LovesNPC: I like {NPCName}.
-	}
-}
-
 Acytaea_Boss.DisplayName: 雅斯塔亚
 Acytaea_Yggdrasil.DisplayName: 雅斯塔亚
 AlgaeOctopus.DisplayName: 覆藻章鱼
@@ -47,7 +30,6 @@ DarkGlimmeringRods.DisplayName: 金棕飞棍
 Dendroid_Normal.DisplayName: 流萤枯木人
 EvilLantern.DisplayName: 鬼灯笼
 EvilPack.DisplayName: 巨大夜光茧
-ExamplePerson.DisplayName: Example Person
 ExplosiveLantern_Growing.DisplayName: 爆破灯笼
 FireflyPiranha_Small.DisplayName: 流萤虎鱼
 FireflyPiranha.DisplayName: 流萤虎鱼
@@ -81,8 +63,6 @@ LittleRedPaperFigure.DisplayName: 红纸小人
 Living_Jawbone.DisplayName: 活颌骨
 MossyThornTurtle.DisplayName: 荆棘苔龟
 PurpleBombCaterpillar.DisplayName: 紫衣炮弹虫
-QuestCounter_Consultant.DisplayName: 工会接待员
-QuestCounter_Consultant.Greeting: "欢迎来到攀登者工会。"
 Radiolarian.DisplayName: 放射虫
 RapierMaster_Boss.DisplayName: 刺剑大师
 RedCore.DisplayName: 红核心

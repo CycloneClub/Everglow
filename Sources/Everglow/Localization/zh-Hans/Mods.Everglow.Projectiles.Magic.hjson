@@ -79,8 +79,6 @@ FrostBall.DisplayName: Frost Ball
 FrostBomb.DisplayName: Frost Bomb
 GiantBoneFeather.DisplayName: Giant Bone Feather
 GiantBoneFeatherExplosion.DisplayName: Giant Bone Feather Explosion
-GiantDandelion_Boulder.DisplayName: 巨树人·巨石
-GiantDandelion_Shockwave.DisplayName: 巨树人·冲击波
 GiantFireFeather.DisplayName: Giant Fire Feather
 GiantFireFeatherExplosion.DisplayName: Giant Fire Feather Explosion
 GiantFreezeFeather.DisplayName: Giant Freeze Feather
@@ -108,8 +106,6 @@ IstafelsSunfireGrasp_Scoria.DisplayName: 伊斯塔裴尔的炎阳之握·熔渣
 IstafelsSunfireGrasp_SkillVFX.DisplayName: 伊斯塔裴尔的炎阳之握·炎阳光效
 IstafelsSunfireGrasp_Sub_FireBall.DisplayName: 伊斯塔裴尔的炎阳之握·小火球
 LargeCrystal.DisplayName: Large Crystal
-LargeMossyThornTurtle_Boulder.DisplayName: 大型荆棘苔龟·巨石
-LargeMossyThornTurtle_Shockwave.DisplayName: 大型荆棘苔龟·冲击波
 LichensPycnidium.DisplayName: Lichens Pycnidium
 LightBeam.DisplayName: Light Beam
 LightBeamStaff_Proj.DisplayName: 灯束法杖
@@ -162,13 +158,6 @@ ToothMagicBall.DisplayName: Tooth Magic Ball
 ToothMagicSplit.DisplayName: Tooth Magic Split
 ToothMagicSplit2.DisplayName: Tooth Magic Split2
 TyphoonII.DisplayName: Typhoon I I
-VampireMat_Attack_Proj_Absorb.DisplayName: 吸血魔毯·吸收
-VampireMat_Attack_Proj_Ball_In_AbsorbVortex.DisplayName: 吸血魔毯·涡流魔球
-VampireMat_Attack_Proj_Ball_In_AbsorbVortex2.DisplayName: 吸血魔毯·涡流魔球Ⅱ
-VampireMat_Attack_Proj_Ball_Small_Group_1.DisplayName: 吸血魔毯·成群的小魔球Ⅰ
-VampireMat_Attack_Proj_Ball_Small_Group.DisplayName: 吸血魔毯·成群的小魔球
-VampireMat_Attack_Proj_Ball.DisplayName: 吸血魔毯·魔球
-VampireMat_Attack_Proj_Tusk.DisplayName: 吸血魔毯·獠牙
 VitalizedRocksProj_Explosion.DisplayName: 活化岩石·爆炸
 VitalizedRocksProj.DisplayName: Vitalized Rocks Proj
 VitalizedRocksStone_Small.DisplayName: 活化岩石·小型
