@@ -4,7 +4,7 @@ namespace Everglow.Myth.TheFirefly.Projectiles.DreamWeaver;
 
 public class DreamWeaver_Hit : ModProjectile, IWarpProjectile
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MiscsProjectiles;
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
 
 	public override string Texture => ModAsset.DreamWeaverII_Mod;
 

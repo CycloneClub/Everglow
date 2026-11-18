@@ -2,6 +2,8 @@ AcroporaSpear_Proj.DisplayName: 藻刃矛
 AcroporaThumpEff.DisplayName: Acropora Thump Eff
 AcytaeaSword_Projectile.DisplayName: 雅斯塔亚的剑
 AdamantiteClub_Round.DisplayName: 精金棍棒·回旋
+AdamantiteClub_Round_Slash.DisplayName: 精金棍棒·回旋斩
+AdamantiteClub_Slash.DisplayName: 精金棍棒·斩击
 AdamantiteClub_Smash.DisplayName: 精金棍棒·重击
 AdamantiteClub.DisplayName: Adamantite Club
 AmberHeadedSpear.DisplayName: Amber Headed Spear
@@ -30,10 +32,13 @@ ChlorophyteClub_Fly_2.DisplayName: 叶绿棍棒·飞击Ⅱ
 ChlorophyteClub_Fly.DisplayName: 叶绿棍棒·飞击
 ChlorophyteClub_Smash.DisplayName: 叶绿棍棒·重击
 ChlorophyteClub.DisplayName: Chlorophyte Club
+ChlorophyteClub_VFX.DisplayName: 叶绿棍棒·光效
+ChlorophyteClub_VFX_2.DisplayName: 叶绿棍棒·光效Ⅱ
 CobaltClub_Falling_Shoot.DisplayName: 钴棍棒·坠落飞弹
 CobaltClub_Falling.DisplayName: 钴棍棒·下落
 CobaltClub_Smash.DisplayName: 钴棍棒·重击
 CobaltClub.DisplayName: Cobalt Club
+ComingGhost_Shimmer.DisplayName: 诡弑·微光
 ComingGhost_Slash.DisplayName: 诡弑·斩击
 ComingGhost.DisplayName: Coming Ghost
 CopperClub_Smash.DisplayName: 铜棍棒·重击
@@ -47,6 +52,7 @@ CrimsonClub.DisplayName: Crimson Club
 CrutchBayonet_Pro_Stab.DisplayName: 拐刺剑·突刺
 CrutchBayonet_Pro.DisplayName: 拐刺剑
 CrystalClub_Fly.DisplayName: 水晶棍棒·飞击
+CrystalClub_Fly_Explosion.DisplayName: 水晶棍棒·飞击爆炸
 CrystalClub_Smash.DisplayName: 水晶棍棒·重击
 CrystalClub.DisplayName: Crystal Club
 CurseClub_Fly.DisplayName: 咒火棍棒·飞击
@@ -57,7 +63,6 @@ CurseFlameStabbingSword_Pro.DisplayName: 咒火刺剑
 CyanFrostProj.DisplayName: Cyan Frost Proj
 CyanVineShortsword_Proj.DisplayName: 青缎短剑
 CyanVineSword_Projectile.DisplayName: 青缎阔剑
-DarkFan.DisplayName: Dark Fan
 DarkMassacreDagger_Projectile_Thrust.DisplayName: 暗金屠杀刀·突刺
 DarkMassacreDagger_Projectile.DisplayName: 暗金屠杀刀
 DashingLightEff.DisplayName: Dashing Light Eff
@@ -86,6 +91,7 @@ FryingPan.DisplayName: Frying Pan
 GhostHit.DisplayName: Ghost Hit
 Glow_Fall.DisplayName: 流光·坠落
 Glow.DisplayName: Glow
+Glow_Fall_Explosion.DisplayName: 流光·坠落爆炸
 GlowMoonBlade_Ash.DisplayName: 荧月刃·灰烬
 GlowMoonBlade.DisplayName: Glow Moon Blade
 GlowWoodSword.DisplayName: Glow Wood Sword
@@ -98,6 +104,7 @@ GoldRound.DisplayName: Gold Round
 GoldRoundYoyo.DisplayName: Gold Round Yoyo
 GoldShield_BackTextureSubProj.DisplayName: 金盾·盾背
 GoldShield.DisplayName: Gold Shield
+HandheldCircularSaw_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Melee.HandheldCircularSaw.DisplayName}"
 HolyBayonet_Pro_Stab.DisplayName: 神圣刺剑·突刺
 HolyBayonet_Pro.DisplayName: 神圣刺剑
 HolyBayonet_Slash.DisplayName: 神圣刺剑·斩击
@@ -113,6 +120,7 @@ IronStabbingSword_Pro_Stab.DisplayName: 铁刺剑·突刺
 IronStabbingSword_Pro.DisplayName: 铁刺剑
 LampWoodSword_Projectile.DisplayName: 灯木剑
 LampWoodYoyo.DisplayName: Lamp Wood Yoyo
+Lantern_ExplosionEffect.DisplayName: 灯笼·爆炸
 LanternSword_Proj.DisplayName: 灯笼剑
 LanternSword_Slash.DisplayName: 灯笼剑·斩击
 LanternYoyo_FireYoyo.DisplayName: 灯笼悠悠球·火焰悠悠球
@@ -136,11 +144,15 @@ MeteorClub.DisplayName: Meteor Club
 MiningPowerPickaxe_Proj.DisplayName: 矿用动力镐 I型
 MothYoyoProjectile.DisplayName: Moth Yoyo Projectile
 MothYoyoSub.DisplayName: Moth Yoyo Sub
+MythrilClub_Shoot.DisplayName: 秘银棍棒·射击
 MythrilClub_Smash.DisplayName: 秘银棍棒·重击
+MythrilClub_Smash_Explosion.DisplayName: 秘银棍棒·重击爆炸
+MythrilClub_Smash_Explosion2.DisplayName: 秘银棍棒·重击爆炸Ⅱ
 MythrilClub_SmashMagicBall.DisplayName: 秘银棍棒·重击法球
 MythrilClub.DisplayName: Mythril Club
 OrichalcumClub_Smash.DisplayName: 山铜棍棒·重击
 OrichalcumClub.DisplayName: Orichalcum Club
+OrichalcumPedal.DisplayName: Orichalcum Pedal
 OrichalcumPedal_Slash.DisplayName: 山铜花瓣·斩击
 PalladiumClub_Small.DisplayName: 钯金棍棒·小型
 PalladiumClub_Smash.DisplayName: 钯金棍棒·重击
@@ -164,6 +176,7 @@ PrimordialJadeWinged_Spear_Thrust.DisplayName: 和璞鸢·突刺
 PrimordialJadeWinged_Spear_Thrust2.DisplayName: 和璞鸢·突刺Ⅱ
 PrimordialJadeWinged_Spear.DisplayName: 和璞鸢
 PrimordialJadeWinged_SpearDown.DisplayName: 和璞鸢下砸
+PrimordialJadeWinged_SpearShake.DisplayName: 和璞鸢震击
 PrimordialJadeWinged_SpearSpice.DisplayName: 和璞鸢尖刺
 PrisonFireBayonet_Pro_Stab.DisplayName: 狱火刺剑·突刺
 PrisonFireBayonet_Pro.DisplayName: 狱火刺剑
@@ -201,6 +214,7 @@ StarDancer_StarProj2.DisplayName: 星舞者棍棒·星弹Ⅱ
 StarDancer.DisplayName: Star Dancer
 StonePost.DisplayName: Stone Post
 Sunflower.DisplayName: Sunflower
+SunFlowerpetal.DisplayName: 落花
 SwordfishBeak_Pro_Stab.DisplayName: 剑鱼长喙·突刺
 SwordfishBeak_Pro.DisplayName: 剑鱼长喙
 TinClub_Smash.DisplayName: 锡棍棒·重击
@@ -210,6 +224,7 @@ TinStabbingSword_Pro.DisplayName: 锡刺剑
 Titanium_Fragment.DisplayName: 钛金·碎片
 TitaniumClub_Smash.DisplayName: 钛金棍棒·重击
 TitaniumClub.DisplayName: Titanium Club
+TitaniumClub_Smash_Explosion.DisplayName: 钛金棍棒·重击爆炸
 ToothKnife.DisplayName: Tooth Knife
 ToothSpear_Proj.DisplayName: 獠牙矛
 TopazHeadedSpear.DisplayName: Topaz Headed Spear
@@ -237,6 +252,9 @@ VortexVanquisherThump.DisplayName: Vortex Vanquisher Thump
 WoodenClub_Smash.DisplayName: 木棍棒·重击
 WoodenClub.DisplayName: Wooden Club
 World.DisplayName: World
+WorldHit.DisplayName: World Hit
+XiaoBlackWave.DisplayName: Xiao Black Wave
+XiaoHit.DisplayName: Xiao Hit
 YoenLeZed_Pro_Stab_HitTile.DisplayName: 陨雷之劫刺剑·突刺撞击
 YoenLeZed_Pro_Stab.DisplayName: 陨雷之劫刺剑·突刺
 YoenLeZed_Pro.DisplayName: 陨雷之劫刺剑

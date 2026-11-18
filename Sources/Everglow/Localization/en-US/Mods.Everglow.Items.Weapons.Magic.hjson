@@ -133,11 +133,6 @@ GlowBeadGun: {
 	Tooltip: Charge to fire a chain of explosive shots
 }
 
-GoldenLotusStaff: {
-	DisplayName: Golden Lotus Staff
-	Tooltip: ""
-}
-
 GreenSungloStaff: {
 	DisplayName: Green Sunglo Staff
 	Tooltip:
@@ -199,11 +194,6 @@ NavyThunder: {
 NightfireStaff: {
 	DisplayName: Nightfire Staff
 	Tooltip: Fires nightfire missiles
-}
-
-PearShapedNeedle: {
-	DisplayName: Pear Shaped Needle
-	Tooltip: ""
 }
 
 RedAlgaeMagicSpellBook: {

@@ -4,7 +4,7 @@ namespace Everglow.Myth.OmniElementItems.Projectiles;
 
 public class LilyHarpNoteKill : ModProjectile// , IWarpProjectile
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MiscsProjectiles;
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
 
 	public override void SetStaticDefaults()
 	{

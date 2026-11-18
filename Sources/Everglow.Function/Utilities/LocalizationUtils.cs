@@ -38,6 +38,7 @@ public static class LocalizationUtils
 		public const string Tools = "Items.Tools";
 
 		public const string Ammo = "Items.Ammo";
+		public const string Food = "Items.Food";
 		public const string Potions = "Items.Potions";
 		public const string Placeables = "Items.Placeables";
 		public const string Materials = "Items.Materials";

@@ -6,7 +6,7 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 
 internal class DarkFan : ModProjectile
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.SummonProjectiles;
 
 	public override void SetDefaults()
 	{

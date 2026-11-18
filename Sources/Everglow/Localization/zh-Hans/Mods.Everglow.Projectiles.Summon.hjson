@@ -7,13 +7,13 @@ BlackCorruptRainFriendly.DisplayName: Black Corrupt Rain Friendly
 CrimsonMoonAlgaeSummonStaff_Minion_Explosion.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.RedAlgaeMinionStaff.DisplayName}"
 CrimsonMoonAlgaeSummonStaff_Minion_Spore.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.RedAlgaeMinionStaff.DisplayName}"
 CrimsonMoonAlgaeSummonStaff_Minion.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.RedAlgaeMinionStaff.DisplayName}"
+DarkFan.DisplayName: Dark Fan
 DarkFanFly.DisplayName: Dark Fan Fly
 DeadBeetleEgg_Beetle_Proj.DisplayName: 死甲虫卵·甲虫
 DeadBeetleEgg_Beetle.DisplayName: 死甲虫卵·甲虫
 DeadBeetleEgg_Egg.DisplayName: 死甲虫卵·虫卵
 DevilHeartGyroscope_Proj_Hit.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.DevilHeartGyroscope.DisplayName}"
 DevilHeartGyroscope_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.DevilHeartGyroscope.DisplayName}"
-DreamWeaverArray.DisplayName: Dream Weaver Array
 EvilChrysalis.DisplayName: Evil Chrysalis
 EvilChrysalisRightClick.DisplayName: Evil Chrysalis Right Click
 EvilMusicRemnant_Explosion.DisplayName: 魔律残章·爆炸
@@ -25,6 +25,7 @@ Fae.DisplayName: Fae
 FaeCharmRing.DisplayName: Fae Charm Ring
 Faelanternbranch.DisplayName: Faelanternbranch
 FaelanternProj.DisplayName: Faelantern Proj
+FanHit.DisplayName: Fan Hit
 GlowingButterfly.DisplayName: Glowing Butterfly
 GlowMoth.DisplayName: Glow Moth
 GoldenLotusStaff_Proj.DisplayName: 金莲法杖

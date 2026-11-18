@@ -1,19 +1,10 @@
-AdamantiteClub_Round_Slash.DisplayName: 精金棍棒·回旋斩
-AdamantiteClub_Slash.DisplayName: 精金棍棒·斩击
 AmberFlowerHookProjectile.DisplayName: Amber Flower Hook Projectile
 BeadShakeWave.DisplayName: Bead Shake Wave
 BlackAwningBoat_WaterDistort.DisplayName: 乌篷船·水波
 BloodLampProj.DisplayName: Blood Lamp Proj
-BombShakeWave.DisplayName: Bomb Shake Wave
-ChlorophyteClub_VFX_2.DisplayName: 叶绿棍棒·光效Ⅱ
-ChlorophyteClub_VFX.DisplayName: 叶绿棍棒·光效
 ClimbingPickaxeProjectile.DisplayName: Climbing Pickaxe Projectile
-ComingGhost_Shimmer.DisplayName: 诡弑·微光
-CrystalClub_Fly_Explosion.DisplayName: 水晶棍棒·飞击爆炸
 DemoSpark.DisplayName: Demo Spark
-DreamWeaver_Hit.DisplayName: 织梦丝雨·命中
 FallenDropFruit.DisplayName: Fallen Drop Fruit
-FanHit.DisplayName: Fan Hit
 FixCoinCrit1.DisplayName: Fix Coin Crit1
 FixCoinCrit2.DisplayName: Fix Coin Crit2
 FixCoinCrit3.DisplayName: Fix Coin Crit3
@@ -38,20 +29,9 @@ FixCoinSpeed3.DisplayName: Fix Coin Speed3
 FlameCylinder.DisplayName: Flame Cylinder
 FruitBomb.DisplayName: Fruit Bomb
 GeyserAirBuds_Erupt.DisplayName: 间歇泉气苞·喷发
-Glow_Fall_Explosion.DisplayName: 流光·坠落爆炸
-GlowBeadGunShootFlame.DisplayName: Glow Bead Gun Shoot Flame
-GlowStarExplosion.DisplayName: Glow Star Explosion
-JungleSlingshotHit.DisplayName: Jungle Slingshot Hit
 KillLanternMoonMobs.DisplayName: Kill Lantern Moon Mobs
-KSSlingshotHit.DisplayName: K S Slingshot Hit
-KSSlingshotHitPink.DisplayName: K S Slingshot Hit Pink
 LBloodEffect.DisplayName: L Blood Effect
-LilyHarpNoteKill.DisplayName: Lily Harp Note Kill
-MythrilClub_Shoot.DisplayName: 秘银棍棒·射击
-MythrilClub_Smash_Explosion.DisplayName: 秘银棍棒·重击爆炸
-MythrilClub_Smash_Explosion2.DisplayName: 秘银棍棒·重击爆炸Ⅱ
 PlayerDefence.DisplayName: Player Defence
-PrimordialJadeWinged_SpearShake.DisplayName: 和璞鸢震击
 PurpleBallEffect.DisplayName: Purple Ball Effect
 PylonStonePostProj_Corrupt_Explosion.DisplayName: 晶塔石柱·腐化爆炸
 PylonStonePostProj_Corrupt.DisplayName: 晶塔石柱·腐化
@@ -62,20 +42,14 @@ RisingFirework.DisplayName: Rising Firework
 ShadowDragonAttack.DisplayName: Shadow Dragon Attack
 SightOfTileProj.DisplayName: Sight Of Tile Proj
 SightOfTileProjRead.DisplayName: Sight Of Tile Proj Read
-StarProj.DisplayName: Star Proj
-SunFlowerpetal.DisplayName: 落花
 TeleportToYggdrasil.DisplayName: Teleport To Yggdrasil
 ThermostatBobber.DisplayName: Thermostat Bobber
-TitaniumClub_Smash_Explosion.DisplayName: 钛金棍棒·重击爆炸
 TwilightRodBobber.DisplayName: Twilight Rod Bobber
 UnderwaterGuillotine_Projectile.DisplayName: 水下断头台
 VineEnergyBeam.DisplayName: Vine Energy Beam
 VineEnergyOrb.DisplayName: Vine Energy Orb
 VineProj.DisplayName: Vine Proj
 VineProj2.DisplayName: Vine Proj2
-WorldHit.DisplayName: World Hit
-XiaoBlackWave.DisplayName: Xiao Black Wave
-XiaoHit.DisplayName: Xiao Hit
 FallingSand_DecaySandSoil.DisplayName: 下落的腐朽沙土
 SpongeOxygenBubble.DisplayName: Sponge Oxygen Bubble
 UnderwaterLightningMechanism_Lightning.DisplayName: 水下闪电机关·闪电

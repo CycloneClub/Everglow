@@ -10,7 +10,7 @@ namespace Everglow.Myth.LanternMoon.Items.Weapons;
 /// </summary>
 public class GoldenLotusStaff : ModItem
 {
-	public override string LocalizationCategory => LocalizationUtils.Categories.MagicWeapons;
+	public override string LocalizationCategory => LocalizationUtils.Categories.SummonWeapons;
 
 	public override void SetDefaults()
 	{

@@ -5,7 +5,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Weapons;
 
 public class PearShapedNeedle : ModItem
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicWeapons;
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedWeapons;
 
 	public override void SetStaticDefaults()
 	{

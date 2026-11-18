@@ -32,7 +32,6 @@ DiamondSlingshot.DisplayName: Diamond Slingshot
 EbonwoodSlingshot.DisplayName: Ebonwood Slingshot
 EmeraldBead.DisplayName: Emerald Bead
 EmeraldSlingshot.DisplayName: Emerald Slingshot
-FrostSpice.DisplayName: Frost Spice
 GelBall.DisplayName: Gel Ball
 GelSlingshot.DisplayName: Gel Slingshot
 GildingRevolver_Hold.DisplayName: Gilding Revolver (Held)
@@ -45,9 +44,12 @@ HuskburstBullet_Proj.DisplayName: "{$Mods.Everglow.Items.Ammo.HuskburstBullet.Di
 HuskburstBullet_SubProj.DisplayName: "{$Mods.Everglow.Items.Ammo.HuskburstBullet.DisplayName}"
 IcedSpear.DisplayName: Iced Spear
 JungleSlingshot.DisplayName: Jungle Slingshot
+JungleSlingshotHit.DisplayName: Jungle Slingshot Hit
 KeroseneLanternFlameThrower_Hold.DisplayName: Kerosene Lantern Flamethrower (Held)
 KeroseneLanternFlameThrower_Shoot.DisplayName: Kerosene Lantern Flamethrower Shot
 KissOfCthulhu_Projectile.DisplayName: Kiss of Cthulhu
+KSSlingshotHit.DisplayName: K S Slingshot Hit
+KSSlingshotHitPink.DisplayName: K S Slingshot Hit Pink
 LampFruitCurrent.DisplayName: Lamp Fruit Current
 LanternFlameBullet.DisplayName: Lantern Flame Bullet
 LanternPhantomBullet.DisplayName: Lantern Phantom Bullet

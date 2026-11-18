@@ -2,6 +2,8 @@ AcroporaSpear_Proj.DisplayName: Acropora Spear
 AcroporaThumpEff.DisplayName: Acropora Thump Eff
 AcytaeaSword_Projectile.DisplayName: Acytaea’s Sword
 AdamantiteClub_Round.DisplayName: Adamantite Club Round
+AdamantiteClub_Round_Slash.DisplayName: Adamantite Club Round Slash
+AdamantiteClub_Slash.DisplayName: Adamantite Club Slash
 AdamantiteClub_Smash.DisplayName: Adamantite Club Smash
 AdamantiteClub.DisplayName: Adamantite Club
 AmberHeadedSpear.DisplayName: Amber Headed Spear
@@ -30,10 +32,13 @@ ChlorophyteClub_Fly_2.DisplayName: Chlorophyte Club Throw 2
 ChlorophyteClub_Fly.DisplayName: Chlorophyte Club Throw
 ChlorophyteClub_Smash.DisplayName: Chlorophyte Club Smash
 ChlorophyteClub.DisplayName: Chlorophyte Club
+ChlorophyteClub_VFX.DisplayName: Chlorophyte Club Effect
+ChlorophyteClub_VFX_2.DisplayName: Chlorophyte Club Effect 2
 CobaltClub_Falling_Shoot.DisplayName: Cobalt Club Falling Shot
 CobaltClub_Falling.DisplayName: Cobalt Club Falling
 CobaltClub_Smash.DisplayName: Cobalt Club Smash
 CobaltClub.DisplayName: Cobalt Club
+ComingGhost_Shimmer.DisplayName: Coming Ghost Shimmer
 ComingGhost_Slash.DisplayName: Coming Ghost Slash
 ComingGhost.DisplayName: Coming Ghost
 CopperClub_Smash.DisplayName: Copper Club Smash
@@ -47,6 +52,7 @@ CrimsonClub.DisplayName: Crimson Club
 CrutchBayonet_Pro_Stab.DisplayName: Crutch Bayonet Thrust
 CrutchBayonet_Pro.DisplayName: Crutch Bayonet
 CrystalClub_Fly.DisplayName: Crystal Club Throw
+CrystalClub_Fly_Explosion.DisplayName: Crystal Club Throw Explosion
 CrystalClub_Smash.DisplayName: Crystal Club Smash
 CrystalClub.DisplayName: Crystal Club
 CurseClub_Fly.DisplayName: Curse Club Throw
@@ -57,7 +63,6 @@ CurseFlameStabbingSword_Pro.DisplayName: Curse Flame Stabbing Sword
 CyanFrostProj.DisplayName: Cyan Frost Proj
 CyanVineShortsword_Proj.DisplayName: Cyan Vine Shortsword
 CyanVineSword_Projectile.DisplayName: Cyan Vine Sword
-DarkFan.DisplayName: Dark Fan
 DarkMassacreDagger_Projectile_Thrust.DisplayName: Dark Massacre Dagger Thrust
 DarkMassacreDagger_Projectile.DisplayName: Dark Massacre Dagger
 DashingLightEff.DisplayName: Dashing Light Eff
@@ -86,6 +91,7 @@ FryingPan.DisplayName: Frying Pan
 GhostHit.DisplayName: Ghost Hit
 Glow_Fall.DisplayName: Glow Fall
 Glow.DisplayName: Glow
+Glow_Fall_Explosion.DisplayName: Glow Fall Explosion
 GlowMoonBlade_Ash.DisplayName: Glow Moon Blade Ash
 GlowMoonBlade.DisplayName: Glow Moon Blade
 GlowWoodSword.DisplayName: Glow Wood Sword
@@ -98,6 +104,7 @@ GoldRound.DisplayName: Gold Round
 GoldRoundYoyo.DisplayName: Gold Round Yoyo
 GoldShield_BackTextureSubProj.DisplayName: Gold Shield
 GoldShield.DisplayName: Gold Shield
+HandheldCircularSaw_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Melee.HandheldCircularSaw.DisplayName}"
 HolyBayonet_Pro_Stab.DisplayName: Holy Bayonet Thrust
 HolyBayonet_Pro.DisplayName: Holy Bayonet
 HolyBayonet_Slash.DisplayName: Holy Bayonet Slash
@@ -113,6 +120,7 @@ IronStabbingSword_Pro_Stab.DisplayName: Iron Stabbing Sword Thrust
 IronStabbingSword_Pro.DisplayName: Iron Stabbing Sword
 LampWoodSword_Projectile.DisplayName: Lamp Wood Sword
 LampWoodYoyo.DisplayName: Lamp Wood Yoyo
+Lantern_ExplosionEffect.DisplayName: Lantern Explosion Effect
 LanternSword_Proj.DisplayName: Lantern Sword
 LanternSword_Slash.DisplayName: Lantern Sword Slash
 LanternYoyo_FireYoyo.DisplayName: Lantern Yoyo Fire Yoyo
@@ -136,11 +144,15 @@ MeteorClub.DisplayName: Meteor Club
 MiningPowerPickaxe_Proj.DisplayName: Mining Power Pickaxe
 MothYoyoProjectile.DisplayName: Moth Yoyo Projectile
 MothYoyoSub.DisplayName: Dream Butterfly
+MythrilClub_Shoot.DisplayName: Mythril Club Shot
 MythrilClub_Smash.DisplayName: Mythril Club Smash
+MythrilClub_Smash_Explosion.DisplayName: Mythril Club Smash Explosion
+MythrilClub_Smash_Explosion2.DisplayName: Mythril Club Smash Explosion 2
 MythrilClub_SmashMagicBall.DisplayName: Mythril Club Smash Magic Ball
 MythrilClub.DisplayName: Mythril Club
 OrichalcumClub_Smash.DisplayName: Orichalcum Club Smash
 OrichalcumClub.DisplayName: Orichalcum Club
+OrichalcumPedal.DisplayName: Orichalcum Pedal
 OrichalcumPedal_Slash.DisplayName: Orichalcum Pedal Slash
 PalladiumClub_Small.DisplayName: Palladium Club Small
 PalladiumClub_Smash.DisplayName: Palladium Club Smash
@@ -164,6 +176,7 @@ PrimordialJadeWinged_Spear_Thrust.DisplayName: Primordial Jade Winged-Spear Thru
 PrimordialJadeWinged_Spear_Thrust2.DisplayName: Primordial Jade Winged-Spear Thrust 2
 PrimordialJadeWinged_Spear.DisplayName: Primordial Jade Winged-Spear
 PrimordialJadeWinged_SpearDown.DisplayName: Primordial Jade Winged-Spear Plunge
+PrimordialJadeWinged_SpearShake.DisplayName: Primordial Jade Winged-Spear Impact
 PrimordialJadeWinged_SpearSpice.DisplayName: Primordial Jade Winged-Spear Spike
 PrisonFireBayonet_Pro_Stab.DisplayName: Prison Fire Bayonet Thrust
 PrisonFireBayonet_Pro.DisplayName: Prison Fire Bayonet
@@ -201,6 +214,7 @@ StarDancer_StarProj2.DisplayName: Star Dancer Star 2
 StarDancer.DisplayName: Star Dancer
 StonePost.DisplayName: Stone Post
 Sunflower.DisplayName: Sunflower
+SunFlowerpetal.DisplayName: Sun Flowerpetal
 SwordfishBeak_Pro_Stab.DisplayName: Swordfish Beak Thrust
 SwordfishBeak_Pro.DisplayName: Swordfish Beak
 TinClub_Smash.DisplayName: Tin Club Smash
@@ -210,6 +224,7 @@ TinStabbingSword_Pro.DisplayName: Tin Stabbing Sword
 Titanium_Fragment.DisplayName: Titanium Fragment
 TitaniumClub_Smash.DisplayName: Titanium Club Smash
 TitaniumClub.DisplayName: Titanium Club
+TitaniumClub_Smash_Explosion.DisplayName: Titanium Club Smash Explosion
 ToothKnife.DisplayName: Tooth Knife
 ToothSpear_Proj.DisplayName: Tooth Spear
 TopazHeadedSpear.DisplayName: Topaz Headed Spear
@@ -237,6 +252,9 @@ VortexVanquisherThump.DisplayName: Vortex Vanquisher Thump
 WoodenClub_Smash.DisplayName: Wooden Club Smash
 WoodenClub.DisplayName: Wooden Club
 World.DisplayName: World
+WorldHit.DisplayName: World Hit
+XiaoBlackWave.DisplayName: Xiao Black Wave
+XiaoHit.DisplayName: Xiao Hit
 YoenLeZed_Pro_Stab_HitTile.DisplayName: Yoen Le Zed Thrust Impact
 YoenLeZed_Pro_Stab.DisplayName: Yoen Le Zed Thrust
 YoenLeZed_Pro.DisplayName: Yoen Le Zed

@@ -2,7 +2,7 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 
 public class FanHit : ModProjectile, IWarpProjectile
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MiscsProjectiles;
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.SummonProjectiles;
 
 	public override void SetStaticDefaults()
 	{

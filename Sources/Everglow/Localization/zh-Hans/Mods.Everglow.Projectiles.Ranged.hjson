@@ -32,7 +32,6 @@ DiamondSlingshot.DisplayName: Diamond Slingshot
 EbonwoodSlingshot.DisplayName: Ebonwood Slingshot
 EmeraldBead.DisplayName: Emerald Bead
 EmeraldSlingshot.DisplayName: Emerald Slingshot
-FrostSpice.DisplayName: Frost Spice
 GelBall.DisplayName: Gel Ball
 GelSlingshot.DisplayName: Gel Slingshot
 GildingRevolver_Hold.DisplayName: 鎏金左轮·手持
@@ -45,9 +44,12 @@ HuskburstBullet_Proj.DisplayName: "{$Mods.Everglow.Items.Ammo.HuskburstBullet.Di
 HuskburstBullet_SubProj.DisplayName: "{$Mods.Everglow.Items.Ammo.HuskburstBullet.DisplayName}"
 IcedSpear.DisplayName: Iced Spear
 JungleSlingshot.DisplayName: Jungle Slingshot
+JungleSlingshotHit.DisplayName: Jungle Slingshot Hit
 KeroseneLanternFlameThrower_Hold.DisplayName: 煤油灯喷火器·手持
 KeroseneLanternFlameThrower_Shoot.DisplayName: 煤油灯喷火器·射击
 KissOfCthulhu_Projectile.DisplayName: 克苏鲁之吻
+KSSlingshotHit.DisplayName: K S Slingshot Hit
+KSSlingshotHitPink.DisplayName: K S Slingshot Hit Pink
 LampFruitCurrent.DisplayName: Lamp Fruit Current
 LanternFlameBullet.DisplayName: Lantern Flame Bullet
 LanternPhantomBullet.DisplayName: Lantern Phantom Bullet

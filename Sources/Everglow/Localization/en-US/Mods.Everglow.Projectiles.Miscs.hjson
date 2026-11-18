@@ -1,19 +1,10 @@
-AdamantiteClub_Round_Slash.DisplayName: Adamantite Club Round Slash
-AdamantiteClub_Slash.DisplayName: Adamantite Club Slash
 AmberFlowerHookProjectile.DisplayName: Amber Flower Hook Projectile
 BeadShakeWave.DisplayName: Bead Shake Wave
 BlackAwningBoat_WaterDistort.DisplayName: Black Awning Boat Wake
 BloodLampProj.DisplayName: Blood Lamp Proj
-BombShakeWave.DisplayName: Bomb Shake Wave
-ChlorophyteClub_VFX_2.DisplayName: Chlorophyte Club Effect 2
-ChlorophyteClub_VFX.DisplayName: Chlorophyte Club Effect
 ClimbingPickaxeProjectile.DisplayName: Climbing Pickaxe Projectile
-ComingGhost_Shimmer.DisplayName: Coming Ghost Shimmer
-CrystalClub_Fly_Explosion.DisplayName: Crystal Club Throw Explosion
 DemoSpark.DisplayName: Demo Spark
-DreamWeaver_Hit.DisplayName: Dream Weaver Hit
 FallenDropFruit.DisplayName: Fallen Drop Fruit
-FanHit.DisplayName: Fan Hit
 FixCoinCrit1.DisplayName: Fix Coin Crit1
 FixCoinCrit2.DisplayName: Fix Coin Crit2
 FixCoinCrit3.DisplayName: Fix Coin Crit3
@@ -38,20 +29,9 @@ FixCoinSpeed3.DisplayName: Fix Coin Speed3
 FlameCylinder.DisplayName: Flame Cylinder
 FruitBomb.DisplayName: Fruit Bomb
 GeyserAirBuds_Erupt.DisplayName: Geyser Air Buds Erupt
-Glow_Fall_Explosion.DisplayName: Glow Fall Explosion
-GlowBeadGunShootFlame.DisplayName: Glow Bead Gun Shoot Flame
-GlowStarExplosion.DisplayName: Glow Star Explosion
-JungleSlingshotHit.DisplayName: Jungle Slingshot Hit
 KillLanternMoonMobs.DisplayName: Kill Lantern Moon Mobs
-KSSlingshotHit.DisplayName: K S Slingshot Hit
-KSSlingshotHitPink.DisplayName: K S Slingshot Hit Pink
 LBloodEffect.DisplayName: L Blood Effect
-LilyHarpNoteKill.DisplayName: Lily Harp Note Kill
-MythrilClub_Shoot.DisplayName: Mythril Club Shot
-MythrilClub_Smash_Explosion.DisplayName: Mythril Club Smash Explosion
-MythrilClub_Smash_Explosion2.DisplayName: Mythril Club Smash Explosion 2
 PlayerDefence.DisplayName: Player Defence
-PrimordialJadeWinged_SpearShake.DisplayName: Primordial Jade Winged-Spear Impact
 PurpleBallEffect.DisplayName: PurpleBallEffect
 PylonStonePostProj_Corrupt_Explosion.DisplayName: Pylon Stone Post Corrupt Explosion
 PylonStonePostProj_Corrupt.DisplayName: Pylon Stone Post Corrupt
@@ -62,20 +42,14 @@ RisingFirework.DisplayName: Rising Firework
 ShadowDragonAttack.DisplayName: Shadow Dragon Attack
 SightOfTileProj.DisplayName: Sight Of Tile Proj
 SightOfTileProjRead.DisplayName: Sight Of Tile Proj Read
-StarProj.DisplayName: Star Proj
-SunFlowerpetal.DisplayName: Sun Flowerpetal
 TeleportToYggdrasil.DisplayName: Teleport To Yggdrasil
 ThermostatBobber.DisplayName: Thermostat Bobber
-TitaniumClub_Smash_Explosion.DisplayName: Titanium Club Smash Explosion
 TwilightRodBobber.DisplayName: Twilight Rod Bobber
 UnderwaterGuillotine_Projectile.DisplayName: Underwater Guillotine
 VineEnergyBeam.DisplayName: Vine Energy Beam
 VineEnergyOrb.DisplayName: Vine Energy Orb
 VineProj.DisplayName: Vine Proj
 VineProj2.DisplayName: Vine Proj2
-WorldHit.DisplayName: World Hit
-XiaoBlackWave.DisplayName: Xiao Black Wave
-XiaoHit.DisplayName: Xiao Hit
 FallingSand_DecaySandSoil.DisplayName: Falling Decayed Sand
 SpongeOxygenBubble.DisplayName: Sponge Oxygen Bubble
 UnderwaterLightningMechanism_Lightning.DisplayName: Underwater Lightning Mechanism Lightning

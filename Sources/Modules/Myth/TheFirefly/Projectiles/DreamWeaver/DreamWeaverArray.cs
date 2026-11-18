@@ -5,7 +5,7 @@ namespace Everglow.Myth.TheFirefly.Projectiles.DreamWeaver;
 
 internal class DreamWeaverArray : NoTextureProjectile
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.SummonProjectiles;
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
 
 	public override void SetDefaults()
 	{

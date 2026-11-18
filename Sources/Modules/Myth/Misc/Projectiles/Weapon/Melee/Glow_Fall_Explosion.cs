@@ -5,7 +5,7 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee;
 
 public class Glow_Fall_Explosion : ModProjectile, IWarpProjectile_WarpStyle2
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MiscsProjectiles;
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
 
 	public override string Texture => ModAsset.AcytaeaSword_Projectile_Mod;
 

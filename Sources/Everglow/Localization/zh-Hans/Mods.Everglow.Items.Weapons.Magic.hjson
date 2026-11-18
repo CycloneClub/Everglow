@@ -142,11 +142,6 @@ GlowBeadGun: {
 	Tooltip: 蓄力以发射一连串的爆破子
 }
 
-GoldenLotusStaff: {
-	DisplayName: Golden Lotus Staff
-	Tooltip: ""
-}
-
 GreenSungloStaff: {
 	DisplayName: 青须手杖
 	Tooltip:
@@ -208,11 +203,6 @@ NavyThunder: {
 NightfireStaff: {
 	DisplayName: 夜火法杖
 	Tooltip: 射出夜火飞弹
-}
-
-PearShapedNeedle: {
-	DisplayName: Pear Shaped Needle
-	Tooltip: ""
 }
 
 RedAlgaeMagicSpellBook: {

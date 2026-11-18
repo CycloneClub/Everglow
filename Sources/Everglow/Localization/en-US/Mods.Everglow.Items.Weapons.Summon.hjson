@@ -47,6 +47,11 @@ EvilMusicRemnant: {
 	Tooltip: "'A score left behind by ancient European mages; channel mana into it, and it resounds without an instrument'"
 }
 
+GoldenLotusStaff: {
+	DisplayName: Golden Lotus Staff
+	Tooltip: ""
+}
+
 GreenVineWhip: {
 	DisplayName: Green Vine Whip
 	Tooltip:

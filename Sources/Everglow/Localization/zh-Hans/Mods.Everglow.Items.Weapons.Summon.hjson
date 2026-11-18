@@ -47,6 +47,11 @@ EvilMusicRemnant: {
 	Tooltip: “大抵是某些古欧罗巴巫师残留下的乐谱，无需乐器，注入魔力即可引起闷响”
 }
 
+GoldenLotusStaff: {
+	DisplayName: Golden Lotus Staff
+	Tooltip: ""
+}
+
 GreenVineWhip: {
 	DisplayName: 青蔓鞭
 	Tooltip:

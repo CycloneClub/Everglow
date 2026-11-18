@@ -225,6 +225,11 @@ PearlwoodSlingshot: {
 	Tooltip: ""
 }
 
+PearShapedNeedle: {
+	DisplayName: Pear Shaped Needle
+	Tooltip: ""
+}
+
 PhosphorescenceGun: {
 	DisplayName: Phosphorescence Gun
 	Tooltip:

@@ -5,7 +5,7 @@ namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Legacies;
 
 public class HandheldCircularSaw_Proj : ModProjectile
 {
-	public override string LocalizationCategory => LocalizationUtils.Categories.MagicProjectiles;
+	public override string LocalizationCategory => LocalizationUtils.Categories.MeleeProjectiles;
 
 	public override void SetDefaults()
 	{

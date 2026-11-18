@@ -225,6 +225,11 @@ PearlwoodSlingshot: {
 	Tooltip: 不消耗弹药，蓄力提升威力
 }
 
+PearShapedNeedle: {
+	DisplayName: Pear Shaped Needle
+	Tooltip: ""
+}
+
 PhosphorescenceGun: {
 	DisplayName: 磷光枪
 	Tooltip:

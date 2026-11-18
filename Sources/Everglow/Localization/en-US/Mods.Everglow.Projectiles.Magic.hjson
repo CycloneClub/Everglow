@@ -10,6 +10,7 @@ BloodySwamp_Area.DisplayName: Bloody Swamp Area
 BloodySwamp_Shoot_Area.DisplayName: Bloody Swamp Shot Area
 BloodySwamp_Shoot.DisplayName: Bloody Swamp Shot
 BlueMissilFriendly.DisplayName: Blue Missil Friendly
+BombShakeWave.DisplayName: Bomb Shake Wave
 BoneFeather_Spine.DisplayName: Bone Feather Spine
 BoneFeather.DisplayName: Bone Feather
 BoneFeatherMagicArray.DisplayName: Bone Feather Magic Array
@@ -51,8 +52,10 @@ DemonScythePlusCrack.DisplayName: Demon Scythe Plus Crack
 DevilHeartStaff_Proj_II.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.DevilHeartStaff.DisplayName}"
 DevilHeartStaff_Proj_Kill.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.DevilHeartStaff.DisplayName}"
 DevilHeartStaff_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.DevilHeartStaff.DisplayName}"
+DreamWeaver_Hit.DisplayName: Dream Weaver Hit
 DreamWeaver_Proj.DisplayName: Dream Weaver
 DreamWeaver_Rain.DisplayName: Dream Weaver Rain
+DreamWeaverArray.DisplayName: Dream Weaver Array
 DreamWeaverBall.DisplayName: Dream Weaver Ball
 DreamWeaverBook.DisplayName: Dream Weaver Book
 DreamWeaverII.DisplayName: Dream Weaver I I
@@ -77,6 +80,7 @@ FreezeFeatherMagicBook.DisplayName: Freeze Feather Magic Book
 FreezeShoot.DisplayName: Freeze Shoot
 FrostBall.DisplayName: Frost Ball
 FrostBomb.DisplayName: Frost Bomb
+FrostSpice.DisplayName: Frost Spice
 GiantBoneFeather.DisplayName: Giant Bone Feather
 GiantBoneFeatherExplosion.DisplayName: Giant Bone Feather Explosion
 GiantFireFeather.DisplayName: Giant Fire Feather
@@ -84,7 +88,9 @@ GiantFireFeatherExplosion.DisplayName: Giant Fire Feather Explosion
 GiantFreezeFeather.DisplayName: Giant Freeze Feather
 GiantFreezeFeatherExplosion.DisplayName: Giant Freeze Feather Explosion
 GlowBeadGun.DisplayName: Glow Bead Gun
+GlowBeadGunShootFlame.DisplayName: Glow Bead Gun Shoot Flame
 GlowStar.DisplayName: Glow Star
+GlowStarExplosion.DisplayName: Glow Star Explosion
 GoldenShowerArray.DisplayName: Golden Shower Array
 GoldenShowerBomb.DisplayName: Golden Shower Bomb
 GoldenShowerBook.DisplayName: Golden Shower Book
@@ -93,7 +99,6 @@ GreenSungloShield_A.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.GreenSungl
 GreenSungloShield_B.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.GreenSungloStaff.DisplayName}"
 GreenSungloSpore.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.GreenSungloStaff.DisplayName}"
 GreenSungloThorns.DisplayName: "{$Mods.Everglow.Items.Weapons.Magic.GreenSungloStaff.DisplayName}"
-HandheldCircularSaw_Proj.DisplayName: "{$Mods.Everglow.Items.Weapons.Melee.HandheldCircularSaw.DisplayName}"
 HexaCrystalStaff_Proj.DisplayName: Hexa Crystal Staff
 HexaCrystalStaff_ProjExplosion.DisplayName: Hexa Crystal Staff Explosion
 HexaCrystalStaff_SubProj.DisplayName: Hexa Crystal Shard
@@ -111,6 +116,7 @@ LightBeam.DisplayName: Light Beam
 LightBeamStaff_Proj.DisplayName: Light Beam Staff
 LightStartEffect_Beam.DisplayName: Light Start Effect Beam
 LilyHarpNote.DisplayName: Lily Harp Note
+LilyHarpNoteKill.DisplayName: Lily Harp Note Kill
 LilyHarpProj.DisplayName: Lily Harp Proj
 LilyHarpWave.DisplayName: Lily Harp Wave
 LunarFlareArray.DisplayName: Lunar Flare Array
@@ -136,7 +142,6 @@ NavyThunder.DisplayName: Navy Thunder
 NavyThunderBomb.DisplayName: Navy Thunder Bomb
 NewWaterBolt.DisplayName: New Water Bolt
 NightfireStaff_Projectile.DisplayName: Nightfire Staff
-OrichalcumPedal.DisplayName: Orichalcum Pedal
 Pycnidium_Explosion.DisplayName: Pycnidium Explosion
 RazorbladeTyphoonArray.DisplayName: Razorblade Typhoon Array
 RazorbladeTyphoonBook.DisplayName: Razorblade Typhoon Book
@@ -149,6 +154,7 @@ SkullII.DisplayName: Skull I I
 SpringOfQuicksand_Sandflow_Subproj.DisplayName: Spring of Quicksand Sandflow Secondary Shot
 SpringOfQuicksand_Sandflow.DisplayName: Spring of Quicksand Sandflow
 StaffOfCorruptDust.DisplayName: Staff Of Corrupt Dust
+StarProj.DisplayName: Star Proj
 Storm.DisplayName: Storm
 ThunderBall.DisplayName: Thunder Ball
 ThunderBall2.DisplayName: Thunder Ball2

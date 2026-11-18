@@ -2,7 +2,7 @@ namespace Everglow.Myth.TheFirefly.Projectiles;
 
 public class GlowBeadGunShootFlame : ModProjectile, IWarpProjectile, IBloomProjectile
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MiscsProjectiles;
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
 
 	public override string Texture => ModAsset.GlowBeadGunOff_Mod;
 

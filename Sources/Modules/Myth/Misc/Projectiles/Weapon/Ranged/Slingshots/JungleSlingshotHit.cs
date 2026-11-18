@@ -2,7 +2,7 @@ namespace Everglow.Myth.Misc.Projectiles.Weapon.Ranged.Slingshots;
 
 internal class JungleSlingshotHit : ModProjectile
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MiscsProjectiles;
+	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedProjectiles;
 
 	public override void SetDefaults()
 	{
