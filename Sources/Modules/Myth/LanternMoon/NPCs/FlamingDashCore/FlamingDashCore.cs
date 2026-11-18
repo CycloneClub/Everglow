@@ -7,11 +7,6 @@ namespace Everglow.Myth.LanternMoon.NPCs.FlamingDashCore;
 [AutoloadBossHead]
 public class FlamingDashCore : ModNPC
 {
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("Spiritual Fiery Core");
-	}
-
 	public override void SetDefaults()
 	{
 		NPC.damage = 180;

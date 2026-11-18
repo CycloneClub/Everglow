@@ -9,7 +9,6 @@ public class BlueMissil : ModProjectile
 
 	public override void SetStaticDefaults()
 	{
-		// base.DisplayName.SetDefault("蓝鳞粉");
 		Main.projFrames[Projectile.type] = 3;
 	}
 

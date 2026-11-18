@@ -4,12 +4,6 @@ public class CyanHyacinth : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Materials;
 
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("Cyan Hyacinth");
-		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "天青盏");
-	}
-
 	public override void SetDefaults()
 	{
 		Item.width = 22;

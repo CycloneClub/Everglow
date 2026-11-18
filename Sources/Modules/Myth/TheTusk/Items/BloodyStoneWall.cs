@@ -6,11 +6,6 @@ public class BloodyStoneWall : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Placeables;
 
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("Bloody Stone Wall");
-	}
-
 	public override void SetDefaults()
 	{
 		Item.width = 20;

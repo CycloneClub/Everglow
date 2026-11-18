@@ -6,8 +6,6 @@ public class CyanBranch : ModItem
 
 	public override void SetStaticDefaults()
 	{
-		// DisplayName.SetDefault("Porcelianized Flower");
-		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "一束天青");
 		// Tooltip.SetDefault("Increases evade by 8 for 10s after struck\n'It's pretty hard, but also brittle'");
 		// Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "受击后10秒增加8闪避能力\n'它十分坚硬，但也很脆弱'");
 	}

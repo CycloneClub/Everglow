@@ -9,7 +9,6 @@ public class FlowerPetalPurple : ModProjectile
 
 	public override void SetStaticDefaults()
 	{
-		// DisplayName.SetDefault("Flower Petal Purple");
 		Main.projFrames[Projectile.type] = 8;
 	}
 

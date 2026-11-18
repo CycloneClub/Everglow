@@ -8,8 +8,6 @@ public class OrangeStick : ModItem
 
 	public override void SetStaticDefaults()
 	{
-		// DisplayName.SetDefault("Pennisetum Arantius");
-		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "坚橙狼尾");
 		// Tooltip.SetDefault("After struck, grants 5 defence and immunity to knockback for 3s\n'Different from most grasses, it stands fast when wind blows fiercely'");
 		// Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "受击后3秒获得5防御力和击退免疫\n'与大多数草不同,它在狂风中坚挺而不折腰'");
 	}

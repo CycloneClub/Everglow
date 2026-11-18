@@ -8,7 +8,6 @@ public class SunFlowerpetal : ModProjectile
 
 	public override void SetStaticDefaults()
 	{
-		// base.DisplayName.SetDefault("落花");
 		Main.projFrames[Projectile.type] = 8;
 	}
 

@@ -8,8 +8,6 @@ public class AntiCorrosiveSole : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.SetNameOverride("Anti-corrosive Sole");
-
 		Item.width = 28;
 		Item.height = 38;
 

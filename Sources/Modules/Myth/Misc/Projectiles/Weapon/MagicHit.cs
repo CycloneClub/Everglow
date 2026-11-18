@@ -6,11 +6,6 @@ public class MagicHit : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MagicProjectiles;
 
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("");
-	}
-
 	public override void SetDefaults()
 	{
 		Projectile.width = 50;

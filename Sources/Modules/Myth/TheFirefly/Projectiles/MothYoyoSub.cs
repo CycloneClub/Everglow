@@ -11,7 +11,6 @@ public class MothYoyoSub : ModProjectile
 
 	public override void SetStaticDefaults()
 	{
-		// DisplayName.SetDefault("Dream Butterfly");
 		Main.projFrames[Projectile.type] = 4;
 	}
 

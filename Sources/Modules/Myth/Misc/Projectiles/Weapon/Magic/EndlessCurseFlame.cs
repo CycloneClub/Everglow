@@ -4,11 +4,6 @@ public class EndlessCurseFlame : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.TypelessProjectiles;
 
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("EndlessCurseFlame");
-	}
-
 	public override void SetDefaults()
 	{
 		Projectile.width = 210;

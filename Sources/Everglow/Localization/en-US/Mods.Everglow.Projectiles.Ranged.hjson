@@ -21,7 +21,7 @@ ChainGrenadeProj.DisplayName: Chain Grenade Proj
 ChainGrenadeProjExplosion.DisplayName: Chain Grenade Proj Explosion
 ChainGrenadeSub_Proj.DisplayName: Chain Grenade Charge
 ChainGrenadeSub_ProjExplosion.DisplayName: Chain Grenade Blast
-CloudBall.DisplayName: Cloud Ball
+CloudBall.DisplayName: CloudBall
 CyanBullet.DisplayName: Cyan Bullet
 CyanVineCrossBow_Proj.DisplayName: Cyan Vine Crossbow
 CyanVineThrowingSpear_Proj.DisplayName: Cyan Vine Throwing Spear
@@ -82,7 +82,7 @@ SapphireSlingshot.DisplayName: Sapphire Slingshot
 ShadewoodSlingShot.DisplayName: Shadewood Sling Shot
 ShadowWingBow.DisplayName: Shadow Wing Bow
 SpineGun.DisplayName: Spine Gun
-SplieSpineBullet.DisplayName: Splie Spine Bullet
+SplieSpineBullet.DisplayName: SplieSpineBullet
 StarAmmo.DisplayName: Star Ammo
 StarSlingshot.DisplayName: Star Slingshot
 StoneJavelinProjectile.DisplayName: Stone Javelin Projectile

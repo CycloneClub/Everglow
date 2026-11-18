@@ -8,8 +8,6 @@ public class WhiteWoodFlower : ModItem
 
 	public override void SetStaticDefaults()
 	{
-		// DisplayName.SetDefault("Snow Ear Flower");
-		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "银耳花");
 		// Tooltip.SetDefault("Increases minion slots by 2\n'Fantastic symbiosis'");
 		// Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "召唤栏位增加2\n'奇妙的共生关系'");
 	}

@@ -11,7 +11,6 @@ public class GreenCore : ModNPC
 {
 	public override void SetStaticDefaults()
 	{
-		// DisplayName.SetDefault("Green Core");
 		Main.npcFrameCount[NPC.type] = 4;
 	}
 

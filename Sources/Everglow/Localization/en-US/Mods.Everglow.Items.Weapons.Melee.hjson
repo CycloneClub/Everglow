@@ -80,7 +80,7 @@ BorealWoodClub_Item: {
 }
 
 CactusBall: {
-	DisplayName: Cactus Ball
+	DisplayName: Rolling Cactus
 	Tooltip: ""
 }
 

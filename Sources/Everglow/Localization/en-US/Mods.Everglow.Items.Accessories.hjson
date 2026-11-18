@@ -40,7 +40,7 @@ BlueGel: {
 }
 
 BlueTorchFlower: {
-	DisplayName: Blue Torch Flower
+	DisplayName: Jade Blue Icy Poker
 	Tooltip: ""
 }
 
@@ -103,12 +103,12 @@ CrystalSkull: {
 }
 
 CyanBranch: {
-	DisplayName: Cyan Branch
+	DisplayName: Porcelianized Flower
 	Tooltip: ""
 }
 
 CyanPedal: {
-	DisplayName: Cyan Pedal
+	DisplayName: Four-pointed Borage Flower
 	Tooltip: ""
 }
 
@@ -122,7 +122,7 @@ CyanVineRing: {
 }
 
 DarkHat: {
-	DisplayName: Dark Hat
+	DisplayName: Ornamental Poppy
 	Tooltip: ""
 }
 
@@ -214,7 +214,7 @@ GoldLiquidPupil: {
 }
 
 GoldRound: {
-	DisplayName: Gold Round
+	DisplayName: Marigoldisc
 	Tooltip: ""
 }
 
@@ -264,7 +264,7 @@ HotAirBalloon: {
 }
 
 HotPinkCrown: {
-	DisplayName: Hot Pink Crown
+	DisplayName: Vitalized Tulip
 	Tooltip: ""
 }
 
@@ -312,7 +312,7 @@ LampWoodPollenBottle: {
 }
 
 LightPurplePen: {
-	DisplayName: Light Purple Pen
+	DisplayName: Rabit Hair Calligraphy Brush
 	Tooltip: ""
 }
 
@@ -331,7 +331,7 @@ ManaThermalPipeline: {
 }
 
 ManyWhiteFlower: {
-	DisplayName: Many White Flower
+	DisplayName: Bouquet of Silk Star
 	Tooltip: ""
 }
 
@@ -385,12 +385,12 @@ Odd8Ring: {
 }
 
 OrangeCrown: {
-	DisplayName: Orange Crown
+	DisplayName: Tenacious Tulip
 	Tooltip: "+3% of life capacity as defense (rounded down)"
 }
 
 OrangeStick: {
-	DisplayName: Orange Stick
+	DisplayName: Pennisetum Arantius
 	Tooltip: ""
 }
 
@@ -415,17 +415,17 @@ PearlOfCyan: {
 }
 
 PinkFourPedal: {
-	DisplayName: Pink Four Pedal
+	DisplayName: Pink Samsara
 	Tooltip: ""
 }
 
 PurpleBall: {
-	DisplayName: Purple Ball
+	DisplayName: Purple Hydrangea Pandents
 	Tooltip: ""
 }
 
 PurpleReedHalo: {
-	DisplayName: Purple Reed Halo
+	DisplayName: Purple Reed Headband
 	Tooltip: ""
 }
 
@@ -455,7 +455,7 @@ RedGel: {
 }
 
 RedTriangle: {
-	DisplayName: Red Triangle
+	DisplayName: Three-pointed Red Blossom
 	Tooltip: ""
 }
 
@@ -480,7 +480,7 @@ ShacklesBall: {
 }
 
 SilverCupFlower: {
-	DisplayName: Silver Cup Flower
+	DisplayName: Royal Goblet
 	Tooltip: ""
 }
 
@@ -568,12 +568,12 @@ ThornTurtleShell: {
 }
 
 ThreeColorCrown: {
-	DisplayName: Three Color Crown
+	DisplayName: Three-colored Wreath
 	Tooltip: ""
 }
 
 TuskLace: {
-	DisplayName: Tusk Lace
+	DisplayName: Tusk Necklace
 	Tooltip:
 		'''
 		+{0} armor penetration and {1}% increased critical strike chance
@@ -592,21 +592,21 @@ WalnutClip: {
 }
 
 WhiteCrown: {
-	DisplayName: White Crown
+	DisplayName: Flower of Hope
 	Tooltip: "10% increased movement speed per 50 maximum life"
 }
 
 WhitePedal: {
-	DisplayName: White Pedal
+	DisplayName: Veil of Light
 	Tooltip: ""
 }
 
 WhiteWoodFlower: {
-	DisplayName: White Wood Flower
+	DisplayName: Snow Ear Flower
 	Tooltip: ""
 }
 
 YellowBellFlower: {
-	DisplayName: Yellow Bell Flower
+	DisplayName: Banana of the Valley
 	Tooltip: "Increases damage by 0.2% per defense"
 }

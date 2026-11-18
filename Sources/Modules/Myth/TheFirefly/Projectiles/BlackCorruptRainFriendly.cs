@@ -8,11 +8,6 @@ public class BlackCorruptRainFriendly : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.SummonProjectiles;
 
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("Black Corrupt Rain");
-	}
-
 	public override void SetDefaults()
 	{
 		Projectile.DamageType = DamageClass.Summon;

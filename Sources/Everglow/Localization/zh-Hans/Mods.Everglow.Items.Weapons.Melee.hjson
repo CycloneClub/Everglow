@@ -81,7 +81,7 @@ BorealWoodClub_Item: {
 }
 
 CactusBall: {
-	DisplayName: 仙人掌链球
+	DisplayName: 滚动的仙人掌
 	Tooltip: ""
 }
 

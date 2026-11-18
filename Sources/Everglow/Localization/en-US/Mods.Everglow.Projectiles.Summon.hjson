@@ -2,8 +2,8 @@ ActivatedJellyGlandBeam.DisplayName: Activated Jelly Gland Beam
 ActivatedJellyGlandExplosion.DisplayName: Activated Jelly Gland Explosion
 ActivatedJellyGlandMinion.DisplayName: Activated Jelly Gland Minion
 AuburnBellMinion.DisplayName: Auburn Bell Minion
-BlackCorruptRain3Friendly.DisplayName: Black Corrupt Rain3 Friendly
-BlackCorruptRainFriendly.DisplayName: Black Corrupt Rain Friendly
+BlackCorruptRain3Friendly.DisplayName: Black Corrupt Ball
+BlackCorruptRainFriendly.DisplayName: Black Corrupt Rain
 CrimsonMoonAlgaeSummonStaff_Minion_Explosion.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.RedAlgaeMinionStaff.DisplayName}"
 CrimsonMoonAlgaeSummonStaff_Minion_Spore.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.RedAlgaeMinionStaff.DisplayName}"
 CrimsonMoonAlgaeSummonStaff_Minion.DisplayName: "{$Mods.Everglow.Items.Weapons.Summon.RedAlgaeMinionStaff.DisplayName}"

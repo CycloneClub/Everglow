@@ -8,11 +8,6 @@ public class BlackCorruptRain3Friendly : ModProjectile
 
 	public override string Texture => ModAsset.BlackCorruptRain3_Mod;
 
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("Black Corrupt Ball");
-	}
-
 	public override void SetDefaults()
 	{
 		Projectile.DamageType = DamageClass.Summon;

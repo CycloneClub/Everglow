@@ -6,11 +6,6 @@ public class BloodMossStone : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Placeables;
 
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("Blood Moss Stone");
-	}
-
 	public override void SetDefaults()
 	{
 		Item.width = 16;

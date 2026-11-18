@@ -9,7 +9,6 @@ public class ButterflyDream : ModProjectile
 
 	public override void SetStaticDefaults()
 	{
-		// base.DisplayName.SetDefault("蓝蝶幻梦");
 		Main.projFrames[Projectile.type] = 4;
 		// ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
 		// ProjectileID.Sets.TrailingMode[Projectile.type] = 0;

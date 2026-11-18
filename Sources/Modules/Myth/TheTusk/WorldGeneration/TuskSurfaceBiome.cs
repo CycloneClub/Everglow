@@ -23,12 +23,6 @@ public class TuskSurfaceBiome : ModBiome
 
 	public override Color? BackgroundColor => base.BackgroundColor;
 
-	// Use SetStaticDefaults to assign the display name
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("Cursed Jaw");
-	}
-
 	public override void Load()
 	{
 		// On.Terraria.Main.DrawWaters += Main_DrawWaters;

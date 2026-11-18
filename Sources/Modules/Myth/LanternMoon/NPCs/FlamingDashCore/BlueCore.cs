@@ -9,7 +9,6 @@ public class BlueCore : ModNPC
 {
 	public override void SetStaticDefaults()
 	{ // TODO: Localization Needed
-	  // DisplayName.SetDefault("Blue Core");
 		Main.npcFrameCount[NPC.type] = 4;
 	}
 

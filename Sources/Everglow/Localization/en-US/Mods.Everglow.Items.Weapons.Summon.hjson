@@ -131,7 +131,7 @@ ThermoprobeStaff: {
 }
 
 ToothStaff: {
-	DisplayName: Tooth Staff
+	DisplayName: Tusk Staff
 	Tooltip: Summons a tusk to fight for you
 }
 

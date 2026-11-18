@@ -10,7 +10,6 @@ public class ToothMagicBall : ModItem
 
 	public override void SetStaticDefaults()
 	{
-		// DisplayName.SetDefault("Sanguine Orb");
 		CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 	}
 

@@ -9,8 +9,6 @@ public class WhiteCrown : ModItem
 
 	public override void SetStaticDefaults()
 	{
-		// DisplayName.SetDefault("Flower of Hope");
-		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "希望之花");
 		// Tooltip.SetDefault("Increases running speed by (max Hp * 0.2%)\n'A plain white flower, seems to mourn for someone'");
 		// Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "每50生命上限+10%移速\n'一枝素白的郁金香，像是在悼念某人'");
 	}

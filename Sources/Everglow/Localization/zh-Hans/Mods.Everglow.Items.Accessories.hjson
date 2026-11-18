@@ -17,7 +17,7 @@ AntiCorrosiveSole: {
 }
 
 BloodGlucoseMonitor: {
-	DisplayName: 血糖仪
+	DisplayName: 血糖检测仪
 	Tooltip: 显示饥饿值
 }
 
@@ -451,7 +451,7 @@ OrfeoBoots: {
 }
 
 OsmoticPressureMonitor: {
-	DisplayName: 渗透压测定仪
+	DisplayName: 渗透压检测仪
 	Tooltip: 显示渴度
 }
 

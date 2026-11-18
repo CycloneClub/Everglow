@@ -6,11 +6,6 @@ public class MeleeHit : ModProjectile
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.MeleeProjectiles;
 
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("Null");
-	}
-
 	public override void SetDefaults()
 	{
 		Projectile.width = 200;

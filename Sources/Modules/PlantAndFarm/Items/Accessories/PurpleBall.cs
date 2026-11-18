@@ -6,8 +6,6 @@ public class PurpleBall : ModItem
 
 	public override void SetStaticDefaults()
 	{
-		// DisplayName.SetDefault("Purple Hydrangea Pandents");
-		// DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "紫绣球吊坠");
 		// Tooltip.SetDefault("Hitting enemies around you launches an explosion of petals\nDamage of the petals increases with damage of the attack\nHas a 0.5s CD\n'Angry Hydrangea Purpura'");
 		// Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "命中身周的敌人会释放紫色花瓣爆炸\n花瓣伤害随攻击的伤害增加\n有0.5秒冷却\n'愤怒紫绣球'");
 	}

@@ -11,7 +11,6 @@ public class YellowCore : ModNPC
 {
 	public override void SetStaticDefaults()
 	{
-		// DisplayName.SetDefault("Yellow Core");
 		Main.npcFrameCount[NPC.type] = 4;
 	}
 

@@ -11,7 +11,6 @@ public class RedCore : ModNPC
 {
 	public override void SetStaticDefaults()
 	{
-		// DisplayName.SetDefault("Red Core");
 		Main.npcFrameCount[NPC.type] = 4;
 	}
 

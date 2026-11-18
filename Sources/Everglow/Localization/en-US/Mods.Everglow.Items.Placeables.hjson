@@ -1914,22 +1914,22 @@ TuskRelic: {
 }
 
 TuskStatusI: {
-	DisplayName: Tusk Status I
+	DisplayName: Crimson Statue I
 	Tooltip: ""
 }
 
 TuskStatusII: {
-	DisplayName: Tusk StatusII
+	DisplayName: Crimson Statue II
 	Tooltip: ""
 }
 
 TuskStatusIII: {
-	DisplayName: Tusk StatusIII
+	DisplayName: Crimson Statue III
 	Tooltip: ""
 }
 
 TuskStatusIV: {
-	DisplayName: Tusk StatusIV
+	DisplayName: Crimson Statue IV
 	Tooltip: ""
 }
 

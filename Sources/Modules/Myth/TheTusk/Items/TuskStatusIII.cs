@@ -6,11 +6,6 @@ public class TuskStatusIII : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Placeables;
 
-	public override void SetStaticDefaults()
-	{
-		// DisplayName.SetDefault("Crimson Statue III");
-	}
-
 	public override void SetDefaults()
 	{
 		Item.width = 16;

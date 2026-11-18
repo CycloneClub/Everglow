@@ -24,12 +24,12 @@ BlackStarShrub: {
 }
 
 BlueFreeze: {
-	DisplayName: Blue Freeze
+	DisplayName: Icy Poker
 	Tooltip: ""
 }
 
 BluePedal: {
-	DisplayName: Blue Pedal
+	DisplayName: Blue Borage
 	Tooltip: ""
 }
 
@@ -99,7 +99,7 @@ CyanVineBar: {
 }
 
 DarkPoppy: {
-	DisplayName: Dark Poppy
+	DisplayName: Poppy
 	Tooltip: ""
 }
 
@@ -144,7 +144,7 @@ Flour: {
 }
 
 FlowerBrochure: {
-	DisplayName: Flower Brochure
+	DisplayName: Wild-flower-collecting Handbook
 	Tooltip: ""
 }
 
@@ -169,12 +169,12 @@ GlowingPetal: {
 }
 
 GoldCup: {
-	DisplayName: Gold Cup
+	DisplayName: Golden Bell
 	Tooltip: ""
 }
 
 GoldWhip: {
-	DisplayName: Gold Whip
+	DisplayName: Banana of the Valley
 	Tooltip: ""
 }
 
@@ -194,7 +194,7 @@ GroundPotato: {
 }
 
 HotPinkTulip: {
-	DisplayName: Hot Pink Tulip
+	DisplayName: Pink Tulip
 	Tooltip: ""
 }
 
@@ -214,12 +214,12 @@ LightBulbOvule: {
 }
 
 LightChrysanthemum: {
-	DisplayName: Light Chrysanthemum
+	DisplayName: Rounded Golden Chrysanthemum
 	Tooltip: ""
 }
 
 LightPurpleBalls: {
-	DisplayName: Light Purple Balls
+	DisplayName: "\"Purple Balls\""
 	Tooltip: ""
 }
 
@@ -244,7 +244,7 @@ NylonRope: {
 }
 
 OrangeSausage: {
-	DisplayName: Orange Sausage
+	DisplayName: Orange Pennisetum
 	Tooltip: ""
 }
 
@@ -254,7 +254,7 @@ OrangeTulip: {
 }
 
 PinkSun: {
-	DisplayName: Pink Sun
+	DisplayName: Pink Thistle
 	Tooltip: ""
 }
 
@@ -269,12 +269,12 @@ Poultry: {
 }
 
 PurplePhantom: {
-	DisplayName: Purple Phantom
+	DisplayName: Phantom Orchid
 	Tooltip: ""
 }
 
 PurpleTail: {
-	DisplayName: Purple Tail
+	DisplayName: Purple Reed
 	Tooltip: ""
 }
 
@@ -299,7 +299,7 @@ RawXiaoLongBao: {
 }
 
 RedFlame: {
-	DisplayName: Red Flame
+	DisplayName: Red Blossom
 	Tooltip: ""
 }
 
@@ -319,7 +319,7 @@ Scallion: {
 }
 
 ShallowNight: {
-	DisplayName: Shallow Night
+	DisplayName: Heavenly Bloom
 	Tooltip: ""
 }
 
@@ -329,7 +329,7 @@ SichuanPepper: {
 }
 
 SilverClock: {
-	DisplayName: Silver Clock
+	DisplayName: Nine Petals
 	Tooltip: ""
 }
 
@@ -384,7 +384,7 @@ UnstablePollen: {
 }
 
 WhiteStar: {
-	DisplayName: White Star
+	DisplayName: Silk Star
 	Tooltip: ""
 }
 
@@ -394,7 +394,7 @@ WhiteTulip: {
 }
 
 WindMoveSeed: {
-	DisplayName: Wind Move Seed
+	DisplayName: Aeolus' Seed
 	Tooltip: ""
 }
 
