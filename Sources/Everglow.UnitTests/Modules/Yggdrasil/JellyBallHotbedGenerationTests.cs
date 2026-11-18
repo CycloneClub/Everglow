@@ -879,6 +879,85 @@ public class JellyBallHotbedGenerationTests
 	}
 
 	[TestMethod]
+	[DataRow(354f, 497f)]
+	[DataRow(362f, 643.5f)]
+	[DataRow(493f, 867f)]
+	[DataRow(506f, 814f)]
+	[DataRow(556.5f, 826.5f)]
+	[DataRow(601.5f, 801.5f)]
+	[DataRow(662f, 806f)]
+	[DataRow(414f, 824f)]
+	[DataRow(347f, 796f)]
+	public void ImpliedNerveLinksReplaceTissueBetweenCurveFragments(float referenceX, float referenceY)
+	{
+		var type = typeof(YggdrasilTownGeneration).Assembly.GetType("Everglow.Yggdrasil.WorldGeneration.JellyBallHotbedLayout")!;
+		var trace = type.GetMethod("TraceReferenceNerves", BindingFlags.Public | BindingFlags.Static)!;
+		var layout = new byte[330, 486];
+		for (int x = 0; x < 330; x++)
+		{
+			for (int y = 0; y < 486; y++)
+			{
+				layout[x, y] = 2;
+			}
+		}
+		const float surface = 413;
+		float underPool = surface + (476 - surface) * 0.54f;
+		int px = (int)MathF.Round(165 + (referenceX - 420) * 330 / 760f);
+		int py = (int)MathF.Round(referenceY <= 780 ? surface + (referenceY - 780) * 330 / 720f
+			: referenceY <= 820 ? surface + (referenceY - 780) / 40 * (underPool - surface)
+			: underPool + (referenceY - 820) / 90 * (476 - underPool));
+		var result = (byte[,])trace.Invoke(null, [layout])!;
+		Assert.AreNotEqual((byte)0, result[px, py], "The implied connecting curve skipped an existing jelly block.");
+		foreach (byte material in new byte[] { 0, 1, 3, 4, 8, 9, 10 })
+		{
+			layout[px, py] = material;
+			var masked = (byte[,])trace.Invoke(null, [layout])!;
+			Assert.AreEqual((byte)0, masked[px, py], "A connecting curve must not overwrite empty space or protected material.");
+		}
+	}
+
+	[TestMethod]
+	[DataRow(187, 448, 189, 450)]
+	[DataRow(248, 425, 251, 425)]
+	public void NearbyReferenceFragmentsJoinLocallyInsideSolidTissue(int startX, int startY, int endX, int endY)
+	{
+		var type = typeof(YggdrasilTownGeneration).Assembly.GetType("Everglow.Yggdrasil.WorldGeneration.JellyBallHotbedLayout")!;
+		var layout = new byte[330, 486];
+		for (int x = 0; x < 330; x++)
+		{
+			for (int y = 0; y < 486; y++)
+			{
+				layout[x, y] = 2;
+			}
+		}
+		var nerves = (byte[,])type.GetMethod("TraceReferenceNerves", BindingFlags.Public | BindingFlags.Static)!.Invoke(null, [layout])!;
+		Assert.AreNotEqual((byte)0, nerves[startX, startY], "The original fragment endpoint must remain.");
+		Assert.AreNotEqual((byte)0, nerves[endX, endY], "The original parent curve must remain.");
+		var reached = new HashSet<(int X, int Y)> { (startX, startY) };
+		var pending = new Queue<(int X, int Y)>();
+		pending.Enqueue((startX, startY));
+		while (pending.TryDequeue(out var point))
+		{
+			for (int dx = -1; dx <= 1; dx++)
+			{
+				for (int dy = -1; dy <= 1; dy++)
+				{
+					int x = point.X + dx;
+					int y = point.Y + dy;
+					if (x < Math.Min(startX, endX) - 4 || x > Math.Max(startX, endX) + 4
+						|| y < Math.Min(startY, endY) - 4 || y > Math.Max(startY, endY) + 4
+						|| nerves[x, y] == 0 || !reached.Add((x, y)))
+					{
+						continue;
+					}
+					pending.Enqueue((x, y));
+				}
+			}
+		}
+		Assert.IsTrue(reached.Contains((endX, endY)), "A short reference stroke is detached from its nearby parent curve.");
+	}
+
+	[TestMethod]
 	public void ReferenceNervesPreserveTheLayoutAndProtectedMaterials()
 	{
 		var type = typeof(YggdrasilTownGeneration).Assembly.GetType("Everglow.Yggdrasil.WorldGeneration.JellyBallHotbedLayout")!;
