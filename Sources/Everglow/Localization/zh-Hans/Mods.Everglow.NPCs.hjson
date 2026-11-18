@@ -18,10 +18,10 @@ Acytaea: {
 Acytaea_Boss.DisplayName: 雅斯塔亚
 Acytaea_Yggdrasil.DisplayName: 雅斯塔亚
 AlgaeOctopus.DisplayName: 覆藻章鱼
-AnimatedWitherbarkHound.DisplayName: Animated Witherbark Hound
-AnimatedWitherbarkSoldier.DisplayName: 枯木活化士兵
-AnimatedWitherbarkSoldierRanged.DisplayName: 枯木活化士兵（射手）
-AnimatedWitherbarkSoldierSpell.DisplayName: 枯木活化士兵（法师）
+AnimatedWitherbarkHound.DisplayName: 枯木活化猎犬
+AnimatedWitherbarkSoldier.DisplayName: 枯木活化战士
+AnimatedWitherbarkSoldierRanged.DisplayName: 枯木活化射手
+AnimatedWitherbarkSoldierSpell.DisplayName: 枯木活化法师
 ArmoredShrimp.DisplayName: 装甲虾
 AssassinRaspberry.DisplayName: 阿萨辛覆盆子
 BarkSpicyCaterpillar.DisplayName: 树皮刺毛虫
@@ -45,7 +45,7 @@ CyanOreBeetle.DisplayName: 青缎甲虫
 CylindricalLantern.DisplayName: 火柱灯笼
 DarkGlimmeringRods.DisplayName: 金棕飞棍
 Dendroid_Normal.DisplayName: 流萤枯木人
-EvilLantern.DisplayName: Evil Lantern
+EvilLantern.DisplayName: 鬼灯笼
 EvilPack.DisplayName: 巨大夜光茧
 ExamplePerson.DisplayName: Example Person
 ExplosiveLantern_Growing.DisplayName: 爆破灯笼
@@ -54,7 +54,6 @@ FireflyPiranha.DisplayName: 流萤虎鱼
 FireflyPiranhaInfected_Small.DisplayName: 感染流萤虎鱼
 FireflyPiranhaInfected.DisplayName: 感染流萤虎鱼
 FlamingDashCore.DisplayName: 不灭的花火幻魂心
-FloatLantern.DisplayName: 鬼灯笼
 FluorescentHydra.DisplayName: 荧光水螅
 GiantDandelion.DisplayName: 巨树人
 GiantJellyBall.DisplayName: 巨型球冻
@@ -78,48 +77,30 @@ LargeMossyThornTurtle.DisplayName: 大型荆棘苔龟
 LeafcutterAnt.DisplayName: 切叶蚁
 LightBulb.DisplayName: 灯泡花苞
 LittleFireBulb.DisplayName: 小火滴
-LittleRedPaperFigure.DisplayName: Little Red Paper Figure
+LittleRedPaperFigure.DisplayName: 红纸小人
 Living_Jawbone.DisplayName: 活颌骨
 MossyThornTurtle.DisplayName: 荆棘苔龟
-PurpleBombCaterpillar.DisplayName: Purple Bomb Caterpillar
-QuestCounter_Consultant.DisplayName: Quest Counter_ Consultant
+PurpleBombCaterpillar.DisplayName: 紫衣炮弹虫
+QuestCounter_Consultant.DisplayName: 工会接待员
 QuestCounter_Consultant.Greeting: "欢迎来到攀登者工会。"
 Radiolarian.DisplayName: 放射虫
 RapierMaster_Boss.DisplayName: 刺剑大师
 RedCore.DisplayName: 红核心
 RedNeedleCaterpillar.DisplayName: 红针洋辣子
 RedPackBomber.DisplayName: 红包轰炸机
-RedpaperGiant.DisplayName: Redpaper Giant
-
-Resturateur: {
-	DisplayName: Resturateur
-
-	TownNPCMood: {
-		Content: I am content.
-		DislikeBiome: I dislike {BiomeName}.
-		DislikeCrowded: I dislike how crowded I am.
-		FarFromHome: I am too far from home.
-		HateCrowded: I hate how crowded I am.
-		LikeBiome: I like {BiomeName}.
-		LikeNPC_Princess: I like {NPCName}.
-		LoveSpace: I love having so much space.
-		NoHome: I hate not having a home.
-		Princess_LovesNPC: I like {NPCName}.
-	}
-}
+RedpaperGiant.DisplayName: 红纸巨人
 
 RiverSlug.DisplayName: 水蛞蝓
 RockElemental.DisplayName: 磐石元素
 SailfinSnakehead.DisplayName: 帆鳍鳢
 SerpentMoss.DisplayName: 蛇行苔
 ShadowstrikeCaterpillar.DisplayName: 夜行毛虫
-ShadowstrikeCaterpillart.DisplayName: Arboreal Caterpillar
 SmallBrodieFlydragon.DisplayName: 小布罗迪蝇蜓
 SmallGuppyConch.DisplayName: 小格普螺
 SquamousShell.DisplayName: 龙鳞古壳
 SummonedButterfly.DisplayName: 幻影蛾
 ToxicToad.DisplayName: 剧毒蟾蜍
-UmbrellaTailThief.DisplayName: Umbrella Tail Thief
+UmbrellaTailThief.DisplayName: 伞尾贼
 VampireMat.DisplayName: 吸血魔毯
 VerdantRods.DisplayName: 叶飞棍
 WaterStrider.DisplayName: 水黾

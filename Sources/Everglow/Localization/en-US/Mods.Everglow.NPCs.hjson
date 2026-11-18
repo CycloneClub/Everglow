@@ -15,11 +15,11 @@ Acytaea: {
 	}
 }
 
-Acytaea_Boss.DisplayName: Acytaea_ Boss
-Acytaea_Yggdrasil.DisplayName: Acytaea_Yggdrasil
+Acytaea_Boss.DisplayName: Acytaea
+Acytaea_Yggdrasil.DisplayName: Acytaea
 AlgaeOctopus.DisplayName: Algae-Covered Octopus
 AnimatedWitherbarkHound.DisplayName: Animated Witherbark Hound
-AnimatedWitherbarkSoldier.DisplayName: Animated Witherbark Soldier
+AnimatedWitherbarkSoldier.DisplayName: Animated Witherbark Warrior
 AnimatedWitherbarkSoldierRanged.DisplayName: Animated Witherbark Marksman
 AnimatedWitherbarkSoldierSpell.DisplayName: Animated Witherbark Mage
 ArmoredShrimp.DisplayName: Armored Shrimp
@@ -44,17 +44,16 @@ CrimsonSpell.DisplayName: Crimson Spell
 CyanOreBeetle.DisplayName: Cyan Ore Beetle
 CylindricalLantern.DisplayName: Cylindrical Lantern
 DarkGlimmeringRods.DisplayName: Dark Glimmering Rods
-Dendroid_Normal.DisplayName: Dendroid_Normal
+Dendroid_Normal.DisplayName: Dendroid
 EvilLantern.DisplayName: Evil Lantern
 EvilPack.DisplayName: Evil Pack
 ExamplePerson.DisplayName: Example Person
-ExplosiveLantern_Growing.DisplayName: Explosive Lantern_growing
-FireflyPiranha_Small.DisplayName: Firefly Piranha_small
+ExplosiveLantern_Growing.DisplayName: Explosive Lantern
+FireflyPiranha_Small.DisplayName: Firefly Piranha
 FireflyPiranha.DisplayName: Firefly Piranha
-FireflyPiranhaInfected_Small.DisplayName: Firefly Piranha Infected_small
+FireflyPiranhaInfected_Small.DisplayName: Firefly Piranha Infected
 FireflyPiranhaInfected.DisplayName: Firefly Piranha Infected
 FlamingDashCore.DisplayName: Flaming Dash Core
-FloatLantern.DisplayName: Float Lantern
 FluorescentHydra.DisplayName: Fluorescent Hydra
 GiantDandelion.DisplayName: Giant Tree Man
 GiantJellyBall.DisplayName: Giant Jelly Ball
@@ -82,31 +81,14 @@ LittleRedPaperFigure.DisplayName: Little Red Paper Figure
 Living_Jawbone.DisplayName: Living_ Jawbone
 MossyThornTurtle.DisplayName: Thorn Mossy Tortoise
 PurpleBombCaterpillar.DisplayName: Purple Bomb Caterpillar
-QuestCounter_Consultant.DisplayName: Quest Counter_ Consultant
+QuestCounter_Consultant.DisplayName: Guild Receptionist
 QuestCounter_Consultant.Greeting: "Welcome to the climbing guild."
 Radiolarian.DisplayName: Radiolarian
-RapierMaster_Boss.DisplayName: Rapier Master_ Boss
+RapierMaster_Boss.DisplayName: Rapier Master
 RedCore.DisplayName: Red Core
 RedNeedleCaterpillar.DisplayName: Red Needle Caterpillar
 RedPackBomber.DisplayName: Red Pack Bomber
-RedpaperGiant.DisplayName: Redpaper Giant
-
-Resturateur: {
-	DisplayName: Resturateur
-
-	TownNPCMood: {
-		Content: I am content.
-		DislikeBiome: I dislike {BiomeName}.
-		DislikeCrowded: I dislike how crowded I am.
-		FarFromHome: I am too far from home.
-		HateCrowded: I hate how crowded I am.
-		LikeBiome: I like {BiomeName}.
-		LikeNPC_Princess: I like {NPCName}.
-		LoveSpace: I love having so much space.
-		NoHome: I hate not having a home.
-		Princess_LovesNPC: I like {NPCName}.
-	}
-}
+RedpaperGiant.DisplayName: Red Paper Giant
 
 RiverSlug.DisplayName: Water Slug
 RockElemental.DisplayName: Rock Elemental
