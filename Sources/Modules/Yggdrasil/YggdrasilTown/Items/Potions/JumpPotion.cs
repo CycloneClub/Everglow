@@ -37,6 +37,7 @@ public class JumpPotion : ModItem
 			.AddIngredient(ItemID.BottledWater)
 			.AddIngredient<Duskfin>()
 			.AddIngredient<UnstablePollen>()
+			.AddTile(TileID.Bottles)
 			.Register();
 	}
 }

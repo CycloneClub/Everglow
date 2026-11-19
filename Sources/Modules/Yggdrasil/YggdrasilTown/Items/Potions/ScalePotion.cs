@@ -39,7 +39,8 @@ public class ScalePotion : ModItem
 			CreateRecipe()
 				.AddIngredient(ItemID.BottledWater)
 				.AddIngredient<Filefish>()
-				.AddIngredient(ore)
+				.AddIngredient(ModContent.ItemType<CyanVineOre>())
+				.AddTile(TileID.Bottles)
 				.Register();
 		}
 	}
