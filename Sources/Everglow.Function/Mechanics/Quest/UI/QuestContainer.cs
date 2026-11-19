@@ -314,6 +314,12 @@ public class QuestContainer : UIContainerElement
 
 	public override void Update(GameTime gt)
 	{
+		if (Main.playerInventory)
+		{
+			Close();
+			return;
+		}
+
 		// Available/Locked quests do not emit the periodic active-objective events.
 		if (++_entryRefreshTimer >= 20)
 		{
@@ -361,6 +367,12 @@ public class QuestContainer : UIContainerElement
 	/// </exception>
 	public override void Show(params object[] args)
 	{
+		if (Main.playerInventory)
+		{
+			Close();
+			return;
+		}
+
 		// Open quest panel in different mode based on the arguments.
 		if (args.Length == 1) // Open NPC quest panel
 		{
@@ -395,6 +407,10 @@ public class QuestContainer : UIContainerElement
 	public void ShowWithQuest(string questName)
 	{
 		Show();
+		if (!IsVisible)
+		{
+			return;
+		}
 
 		foreach (var questItem in _questList.QuestItems)
 		{
