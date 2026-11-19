@@ -105,7 +105,7 @@ public class ExquisiteTwilightEucalyptusDoorLocked : ModTile
 
 	public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
 	{
-		fail = true;
+		// fail = true;
 	}
 
 	private bool IsLockedColumn(int x, int top)
