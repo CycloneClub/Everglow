@@ -1976,14 +1976,14 @@ public partial class YggdrasilTownGeneration
 					KillRectangleAreaOfTile(roomOriginX + 18, roomOriginY + 2, roomOriginX + 31, roomOriginY + 9);
 					PlaceRectangleAreaOfBlock(roomOriginX + 19, roomOriginY + 2, roomOriginX + 22, roomOriginY + 6, ModContent.TileType<GreenRelicBrick>());
 
-					PlaceFrameImportantTiles(roomOriginX + 19, roomOriginY + 7, 1, 3, ModContent.TileType<TwilightEucalyptusDoorClosed>());
+					PlaceFrameImportantTiles(roomOriginX + 19, roomOriginY + 7, 1, 3, ModContent.TileType<ExquisiteTwilightEucalyptusDoorLocked>());
 				}
 				if (x == 2)
 				{
 					KillRectangleAreaOfTile(roomOriginX - 31, roomOriginY + 2, roomOriginX - 18, roomOriginY + 9);
 					PlaceRectangleAreaOfBlock(roomOriginX - 22, roomOriginY + 2, roomOriginX - 19, roomOriginY + 6, ModContent.TileType<GreenRelicBrick>());
 
-					PlaceFrameImportantTiles(roomOriginX - 20, roomOriginY + 7, 1, 3, ModContent.TileType<TwilightEucalyptusDoorClosed>());
+					PlaceFrameImportantTiles(roomOriginX - 20, roomOriginY + 7, 1, 3, ModContent.TileType<ExquisiteTwilightEucalyptusDoorLocked>());
 				}
 			}
 
