@@ -14,6 +14,7 @@ public class SideHangingLantern_Red : ModTile, ITileFluentlyDrawn
 		Main.tileFrameImportant[Type] = true;
 		Main.tileNoAttach[Type] = true;
 		Main.tileLighted[Type] = true;
+		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
 		DustType = DustID.DynastyWood;
 
 		TileObjectData.newTile.CopyFrom(TileObjectData.Style2xX);

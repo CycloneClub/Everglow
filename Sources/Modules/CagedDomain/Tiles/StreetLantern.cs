@@ -14,6 +14,7 @@ public class StreetLantern : ModTile, ITileFluentlyDrawn
 		Main.tileFrameImportant[Type] = true;
 		Main.tileNoAttach[Type] = true;
 		Main.tileLighted[Type] = true;
+		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
 
 		TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
 		TileObjectData.newTile.Height = 6;
