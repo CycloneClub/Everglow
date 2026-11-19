@@ -22,6 +22,7 @@ public class CrimsonSpell : ModNPC
 		NPC.damage = 24;
 		NPC.defense = 0;
 		NPC.lifeMax = 300;
+		NPC.value = Item.buyPrice(silver: 3);
 		NPC.HitSound = SoundID.NPCHit3;
 		NPC.DeathSound = SoundID.NPCDeath3;
 		NPC.noGravity = true;

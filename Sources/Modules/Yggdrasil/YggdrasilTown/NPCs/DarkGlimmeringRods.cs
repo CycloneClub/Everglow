@@ -20,6 +20,7 @@ public class DarkGlimmeringRods : ModNPC
 		NPC.lifeMax = 120;
 		NPC.damage = 18;
 		NPC.defense = 8;
+		NPC.value = Item.buyPrice(silver: 1);
 		NPC.friendly = false;
 		NPC.aiStyle = -1;
 		NPC.knockBackResist = 0.2f;
