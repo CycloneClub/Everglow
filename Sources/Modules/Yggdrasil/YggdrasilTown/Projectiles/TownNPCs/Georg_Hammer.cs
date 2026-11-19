@@ -1,4 +1,5 @@
 using Everglow.Commons.DataStructures;
+using Terraria.Audio;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.TownNPCs;
@@ -62,6 +63,11 @@ public class Georg_Hammer : ModProjectile
 			Projectile.rotation = Projectile.rotation * 0.6f + 4 * 0.4f;
 			Projectile.ai[1] = 0.4f;
 		}
+		if (Timer == 16)
+		{
+			SoundEngine.PlaySound(SoundID.DD2_MonkStaffSwing, Projectile.Center);
+		}
+
 		if (Timer > 12 && Timer < 16)
 		{
 			Projectile.ai[1] -= 0.03f;

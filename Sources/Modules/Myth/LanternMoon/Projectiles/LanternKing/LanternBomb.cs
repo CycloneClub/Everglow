@@ -62,6 +62,11 @@ public class LanternBomb : ModProjectile
 		}
 		if (Projectile.timeLeft < 3)
 		{
+			if (Projectile.timeLeft == 2)
+			{
+				SoundEngine.PlaySound(SoundID.DD2_BetsyFireballImpact with { MaxInstances = 2 }, Projectile.Center);
+			}
+
 			Projectile.scale += 0.05f;
 			Projectile.hostile = true;
 		}

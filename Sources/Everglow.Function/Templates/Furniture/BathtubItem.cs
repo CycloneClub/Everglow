@@ -21,5 +21,6 @@ public abstract class BathtubItem : ModItem
 		Item.value = 300;
 		Item.maxStack = Item.CommonMaxStack;
 		Item.useAnimation = 14;
+		Item.UseSound = SoundID.Dig;
 	}
 }

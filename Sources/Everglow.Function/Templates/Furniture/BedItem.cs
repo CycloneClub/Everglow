@@ -21,5 +21,6 @@ public abstract class BedItem : ModItem
 		Item.value = 2000;
 		Item.maxStack = Item.CommonMaxStack;
 		Item.useAnimation = 14;
+		Item.UseSound = SoundID.Dig;
 	}
 }

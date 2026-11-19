@@ -13,6 +13,7 @@ public class EvilCocoon : ModItem
 		Item.useAnimation = 45;
 		Item.useTime = 60;
 		Item.useStyle = ItemUseStyleID.HoldUp;
+		Item.UseSound = SoundID.Roar;
 		Item.maxStack = 999;
 		Item.consumable = true;
 	}

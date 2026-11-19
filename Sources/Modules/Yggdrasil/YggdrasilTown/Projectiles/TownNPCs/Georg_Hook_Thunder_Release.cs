@@ -1,3 +1,4 @@
+using Terraria.Audio;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.TownNPCs;
@@ -33,6 +34,11 @@ public class Georg_Hook_Thunder_Release : ModProjectile
 		Timer++;
 		if (Timer % 15 == 0 && Timer >= 90)
 		{
+			if (Timer == 90)
+			{
+				SoundEngine.PlaySound(SoundID.DD2_LightningAuraZap with { MaxInstances = 1 }, Projectile.Center);
+			}
+
 			var addPos = new Vector2(MathF.Sin(Timer) * 540, 0);
 			Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + addPos, Vector2.Zero, ModContent.ProjectileType<Georg_Hook_Thunder_Mark>(), Projectile.damage, Projectile.knockBack, Projectile.owner, addPos.X / 720f + Main.rand.NextFloat(-0.3f, 0.3f));
 		}

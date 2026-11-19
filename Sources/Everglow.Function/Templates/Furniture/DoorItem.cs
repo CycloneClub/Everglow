@@ -21,5 +21,6 @@ public abstract class DoorItem : ModItem
 		Item.value = 200;
 		Item.maxStack = Item.CommonMaxStack;
 		Item.useAnimation = 14;
+		Item.UseSound = SoundID.Dig;
 	}
 }
