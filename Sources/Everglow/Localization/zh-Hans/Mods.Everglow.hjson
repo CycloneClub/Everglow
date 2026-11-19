@@ -1,10 +1,4 @@
 // 共享本地化条目；游戏内容条目位于各自的分类文件中。
-Bestiary: {
-	Acytaea: ""
-	Centipede.Flavor: ""
-	CorruptMoth.Flavor: ""
-}
-
 Common.Message.HasAwoken: 已苏醒！
 
 InfoDisplays: {

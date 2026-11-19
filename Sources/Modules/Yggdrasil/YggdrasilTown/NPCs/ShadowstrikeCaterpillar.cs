@@ -1,3 +1,6 @@
+using Everglow.Commons.Utilities;
+using Everglow.Yggdrasil.YggdrasilTown.Biomes;
+using Terraria.GameContent.Bestiary;
 using Everglow.Commons.Coroutines;
 using Everglow.Commons.Mechanics.Miscs;
 using Everglow.Commons.Templates.Enemies;
@@ -11,6 +14,13 @@ namespace Everglow.Yggdrasil.YggdrasilTown.NPCs;
 [NoGameModeScale]
 public class ShadowstrikeCaterpillar : Caterpillar
 {
+	public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+	{
+		bestiaryEntry.Info.Add(ModContent.GetInstance<LampWoodForest>().ModBiomeBestiaryInfoElement);
+		bestiaryEntry.Info.Add(BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime);
+		bestiaryEntry.Info.Add(new FlavorTextBestiaryInfoElement(LocalizationUtils.GetHabitatLocalizationKey("LampWoodNight")));
+	}
+
 	public override void SetDefaults()
 	{
 		base.SetDefaults();

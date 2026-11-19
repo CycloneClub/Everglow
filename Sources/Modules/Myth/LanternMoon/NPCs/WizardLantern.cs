@@ -1,3 +1,5 @@
+using Everglow.Commons.Utilities;
+using Terraria.GameContent.Bestiary;
 using Everglow.Commons.DataStructures;
 using Everglow.Commons.Physics.MassSpringSystem;
 using Everglow.Myth.LanternMoon.Gores;
@@ -14,6 +16,12 @@ public class WizardLantern : LanternMoonNPC
 	public int SkillTime;
 
 	public Vector2 SkillReleasePosition;
+
+	public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+	{
+		bestiaryEntry.Info.Add(BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime);
+		bestiaryEntry.Info.Add(new FlavorTextBestiaryInfoElement(LocalizationUtils.GetHabitatLocalizationKey("LanternMoon")));
+	}
 
 	public override void SetDefaults()
 	{

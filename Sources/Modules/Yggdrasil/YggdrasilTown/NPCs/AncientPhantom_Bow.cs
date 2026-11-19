@@ -1,3 +1,6 @@
+using Everglow.Commons.Utilities;
+using Everglow.Yggdrasil.YggdrasilTown.Biomes;
+using Terraria.GameContent.Bestiary;
 using Everglow.Commons.Templates.Enemies;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts.TwilightForest;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Enemies;
@@ -21,6 +24,12 @@ public class AncientPhantom_Bow : Fighter
 	public override void SetStaticDefaults()
 	{
 		Main.npcFrameCount[NPC.type] = 12;
+	}
+
+	public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+	{
+		bestiaryEntry.Info.Add(ModContent.GetInstance<TwilightForsetAndRelic>().ModBiomeBestiaryInfoElement);
+		bestiaryEntry.Info.Add(new FlavorTextBestiaryInfoElement(LocalizationUtils.GetHabitatLocalizationKey("TwilightForest")));
 	}
 
 	public override void SetDefaults()

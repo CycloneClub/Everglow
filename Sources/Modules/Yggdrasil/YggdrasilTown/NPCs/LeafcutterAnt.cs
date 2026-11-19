@@ -1,3 +1,6 @@
+using Everglow.Commons.Utilities;
+using Everglow.Yggdrasil.YggdrasilTown.Biomes;
+using Terraria.GameContent.Bestiary;
 using Everglow.Yggdrasil.Common;
 using Terraria.DataStructures;
 
@@ -8,6 +11,13 @@ public class LeafcutterAnt : ModNPC
 	public override void SetStaticDefaults()
 	{
 		Main.npcFrameCount[NPC.type] = 5;
+	}
+
+	public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+	{
+		bestiaryEntry.Info.Add(ModContent.GetInstance<LampWoodForest>().ModBiomeBestiaryInfoElement);
+		bestiaryEntry.Info.Add(BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.DayTime);
+		bestiaryEntry.Info.Add(new FlavorTextBestiaryInfoElement(LocalizationUtils.GetHabitatLocalizationKey("LampWoodDay")));
 	}
 
 	public override void SetDefaults()

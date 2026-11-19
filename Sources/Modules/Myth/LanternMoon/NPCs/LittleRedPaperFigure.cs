@@ -1,3 +1,5 @@
+using Everglow.Commons.Utilities;
+using Terraria.GameContent.Bestiary;
 using Everglow.Commons.VFX.CommonVFXDusts;
 using Everglow.Myth.LanternMoon.Buffs;
 using Everglow.Myth.LanternMoon.Gores;
@@ -32,6 +34,12 @@ public class LittleRedPaperFigure : LanternMoonNPC
 	public int TeleportCooling = 0;
 
 	public int MaxTeleportTime = 60;
+
+	public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+	{
+		bestiaryEntry.Info.Add(BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime);
+		bestiaryEntry.Info.Add(new FlavorTextBestiaryInfoElement(LocalizationUtils.GetHabitatLocalizationKey("LanternMoon")));
+	}
 
 	public override void SetDefaults()
 	{

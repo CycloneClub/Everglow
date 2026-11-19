@@ -1,3 +1,6 @@
+using Everglow.Commons.Utilities;
+using Everglow.Yggdrasil.YggdrasilTown.Biomes;
+using Terraria.GameContent.Bestiary;
 using Everglow.Commons.CustomTiles;
 using Everglow.Commons.DataStructures;
 using Everglow.Commons.Mechanics.Miscs;
@@ -29,6 +32,12 @@ public class RockElemental : ModNPC
 	public bool OpenEyes = true;
 	public Vector2 SuckPoint;
 	public Vector2 NextStandPoint;
+
+	public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+	{
+		bestiaryEntry.Info.Add(ModContent.GetInstance<YggdrasilTownBiome>().ModBiomeBestiaryInfoElement);
+		bestiaryEntry.Info.Add(new FlavorTextBestiaryInfoElement(LocalizationUtils.GetHabitatLocalizationKey("TownMine")));
+	}
 
 	public override void SetDefaults()
 	{
