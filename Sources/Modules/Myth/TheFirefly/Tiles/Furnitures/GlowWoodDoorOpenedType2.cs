@@ -27,6 +27,7 @@ public class GlowWoodDoorOpenedType2 : ModTile
 		DustType = ModContent.DustType<BlueGlow>();
 		AdjTiles = new int[] { TileID.OpenDoor };
 		TileID.Sets.CloseDoorID[Type] = ModContent.TileType<GlowWoodDoorClosedType2>();
+		RegisterItemDrop(ModContent.ItemType<GlowWoodDoorType2>());
 
 		// Placement
 		TileObjectData.newTile.Width = 2;
