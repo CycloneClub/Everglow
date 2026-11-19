@@ -15,7 +15,10 @@ public class DevilHeartIronOre : ModTile
 		TileID.Sets.ChecksForMerge[Type] = true;
 		DustType = ModContent.DustType<DevilHeartIronDust>();
 		MinPick = 110;
-		AddMapEntry(new Color(124, 17, 30));
+		Main.tileSpelunker[Type] = true;
+		Main.tileOreFinderPriority[Type] = 280;
+		TileID.Sets.Ore[Type] = true;
+		AddMapEntry(new Color(124, 17, 30), ModContent.GetInstance<Items.Placeables.DevilHeartIronOre_Item>().DisplayName);
 	}
 
 	public override void ModifyFrameMerge(int i, int j, ref int up, ref int down, ref int left, ref int right, ref int upLeft, ref int upRight, ref int downLeft, ref int downRight)

@@ -17,7 +17,10 @@ public class ManaSpringOre_Tile : ModTile
 		DustType = ModContent.DustType<ManaSpringOreDust>();
 		MinPick = 90;
 		HitSound = SoundID.Shimmer1;
-		AddMapEntry(new Color(0, 149, 214));
+		Main.tileSpelunker[Type] = true;
+		Main.tileOreFinderPriority[Type] = 270;
+		TileID.Sets.Ore[Type] = true;
+		AddMapEntry(new Color(0, 149, 214), ModContent.GetInstance<Items.Materials.ManaSpringOre>().DisplayName);
 	}
 
 	public override bool CanExplode(int i, int j)
