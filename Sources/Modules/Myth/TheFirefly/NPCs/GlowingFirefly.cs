@@ -10,6 +10,7 @@ public class GlowingFirefly : ModNPC
 	public override void SetStaticDefaults()
 	{
 		Main.npcFrameCount[NPC.type] = 8;
+		NPCID.Sets.CountsAsCritter[Type] = true;
 	}
 
 	public override void SetDefaults()
