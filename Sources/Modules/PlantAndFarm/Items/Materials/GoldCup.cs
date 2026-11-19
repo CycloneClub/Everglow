@@ -8,7 +8,7 @@ public class GoldCup : ModItem
 	{
 		Item.width = 32;
 		Item.height = 38;
-		Item.maxStack = 999;
+		Item.maxStack = Item.CommonMaxStack;
 		Item.value = 0;
 		Item.rare = ItemRarityID.White;
 		Item.material = true;

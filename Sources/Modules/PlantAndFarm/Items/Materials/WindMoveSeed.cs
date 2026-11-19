@@ -11,6 +11,6 @@ public class WindMoveSeed : ModItem
 		Item.value = 150;
 		Item.rare = ItemRarityID.White;
 		Item.material = true;
-		Item.maxStack = 999;
+		Item.maxStack = Item.CommonMaxStack;
 	}
 }

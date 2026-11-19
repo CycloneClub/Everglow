@@ -23,7 +23,7 @@ public class CloudBall : ModItem
 		Item.shootSpeed = 4;
 		Item.crit = 2;
 		Item.ammo = Item.type;
-		Item.maxStack = 999;
+		Item.maxStack = Item.CommonMaxStack;
 		Item.consumable = true;
 	}
 

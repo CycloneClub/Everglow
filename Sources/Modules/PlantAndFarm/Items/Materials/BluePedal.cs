@@ -8,7 +8,7 @@ public class BluePedal : ModItem
 	{
 		Item.width = 26;
 		Item.height = 32;
-		Item.maxStack = 999;
+		Item.maxStack = Item.CommonMaxStack;
 		Item.value = 0;
 		Item.rare = ItemRarityID.White;
 		Item.material = true;
