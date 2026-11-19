@@ -62,6 +62,7 @@ public class CorruptMoth : ModNPC
 	public override void SetStaticDefaults()
 	{
 		Main.npcFrameCount[NPC.type] = 11;
+		NPCID.Sets.MPAllowedEnemies[Type] = true;
 		NPCID.Sets.TrailCacheLength[NPC.type] = 4;
 	}
 
