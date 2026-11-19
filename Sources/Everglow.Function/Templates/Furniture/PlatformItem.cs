@@ -11,7 +11,7 @@ public abstract class PlatformItem : ModItem
 
 	public override void SetStaticDefaults()
 	{
-		CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+		CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 200;
 	}
 
 	public override void SetDefaults()
