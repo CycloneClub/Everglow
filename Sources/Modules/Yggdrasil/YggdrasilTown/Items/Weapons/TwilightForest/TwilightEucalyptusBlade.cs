@@ -11,6 +11,8 @@ public class TwilightEucalyptusBlade : ModItem
 	{
 		Item.width = 64;
 		Item.height = 64;
+		Item.rare = ItemRarityID.Green;
+		Item.value = Item.sellPrice(silver: 20);
 
 		Item.DamageType = DamageClass.Melee;
 		Item.damage = 40;

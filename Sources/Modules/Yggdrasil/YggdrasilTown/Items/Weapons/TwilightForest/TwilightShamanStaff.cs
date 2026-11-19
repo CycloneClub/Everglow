@@ -11,6 +11,8 @@ public class TwilightShamanStaff : ModItem
 	{
 		Item.width = 36;
 		Item.height = 34;
+		Item.rare = ItemRarityID.Green;
+		Item.value = Item.sellPrice(silver: 20);
 
 		Item.DamageType = DamageClass.Magic;
 		Item.damage = 30;

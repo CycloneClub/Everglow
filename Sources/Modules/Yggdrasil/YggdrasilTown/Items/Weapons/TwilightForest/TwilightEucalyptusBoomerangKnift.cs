@@ -12,6 +12,8 @@ public class TwilightEucalyptusBoomerangKnift : ModItem
 	{
 		Item.width = 50;
 		Item.height = 40;
+		Item.rare = ItemRarityID.Green;
+		Item.value = Item.sellPrice(silver: 20);
 
 		Item.DamageType = DamageClass.Melee;
 		Item.damage = 30;

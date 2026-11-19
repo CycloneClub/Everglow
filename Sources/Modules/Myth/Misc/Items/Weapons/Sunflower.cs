@@ -20,6 +20,7 @@ public class Sunflower : ModItem
 		Item.noUseGraphic = true;
 		Item.noMelee = true;
 		Item.rare = ItemRarityID.Blue;
+		Item.value = Item.sellPrice(silver: 5);
 		Item.damage = 8;
 		Item.autoReuse = false;
 		Item.knockBack = 2;
