@@ -8,6 +8,7 @@ public class HeatproofLamp : ModTile
 {
 	public override void SetStaticDefaults()
 	{
+		AddMapEntry(new Color(69, 36, 78), ModContent.GetInstance<Items.Placeables.Furniture.Furnace.HeatproofLamp_Item>().DisplayName);
 		// Properties
 		Main.tileTable[Type] = true;
 		Main.tileFrameImportant[Type] = true;

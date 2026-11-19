@@ -9,6 +9,7 @@ public class GlowWoodBookcase : ModTile
 {
 	public override void SetStaticDefaults()
 	{
+		AddMapEntry(new Color(69, 36, 78), ModContent.GetInstance<Items.Furnitures.GlowWoodBookcase>().DisplayName);
 		// Properties
 		Main.tileTable[Type] = true;
 		Main.tileSolidTop[Type] = true;

@@ -47,7 +47,7 @@ public class LampWood_Chest : ModTile
 		TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
 		TileObjectData.addTile(Type);
 
-		AddMapEntry(new Color(85, 72, 126));
+		AddMapEntry(new Color(85, 72, 126), ModContent.GetInstance<Items.Placeables.Furniture.LampWood.LampWood_Chest_Item>().DisplayName, MapChestName);
 	}
 
 	public override bool TileFrame(int i, int j, ref bool resetFrame, ref bool noBreak)

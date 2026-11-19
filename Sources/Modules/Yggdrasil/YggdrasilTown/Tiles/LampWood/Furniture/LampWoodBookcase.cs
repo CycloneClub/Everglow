@@ -8,6 +8,7 @@ public class LampWoodBookcase : ModTile
 {
 	public override void SetStaticDefaults()
 	{
+		AddMapEntry(new Color(69, 36, 78), ModContent.GetInstance<Items.Placeables.Furniture.LampWood.LampWoodBookcase>().DisplayName);
 		// Properties
 		Main.tileTable[Type] = true;
 		Main.tileSolidTop[Type] = true;

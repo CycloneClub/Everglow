@@ -8,6 +8,7 @@ public class GlowWoodLamp : ModTile
 {
 	public override void SetStaticDefaults()
 	{
+		AddMapEntry(new Color(69, 36, 78), ModContent.GetInstance<Items.Furnitures.GlowWoodLamp>().DisplayName);
 		// Properties
 		Main.tileTable[Type] = true;
 		Main.tileFrameImportant[Type] = true;

@@ -44,7 +44,7 @@ public class SnowPineChest_Gold : ModTile
 		TileObjectData.newTile.LavaDeath = false;
 		TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
 		TileObjectData.addTile(Type);
-		AddMapEntry(new Color(150, 117, 72));
+		AddMapEntry(new Color(150, 117, 72), ModContent.GetInstance<Items.SnowPineChest_Gold>().DisplayName, MapChestName);
 	}
 
 	public override IEnumerable<Item> GetItemDrops(int i, int j)

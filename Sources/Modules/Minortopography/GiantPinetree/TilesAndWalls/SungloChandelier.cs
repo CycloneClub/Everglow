@@ -11,6 +11,7 @@ public class SungloChandelier : ModTile, ITileFluentlyDrawn, ITileFlameData
 {
 	public override void SetStaticDefaults()
 	{
+		AddMapEntry(new Color(198, 147, 51), ModContent.GetInstance<Items.SungloChandelier>().DisplayName);
 		Main.tileFrameImportant[Type] = true;
 		Main.tileLavaDeath[Type] = true;
 		Main.tileLighted[Type] = true;

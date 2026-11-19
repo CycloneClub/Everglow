@@ -36,7 +36,7 @@ public class GlowWoodChest : ModTile
 		TileObjectData.addTile(Type);
 
 		LocalizedText name = CreateMapEntryName();
-		AddMapEntry(new Color(69, 36, 78), name);
+		AddMapEntry(new Color(69, 36, 78), name, MapChestName);
 	}
 
 	public override void NumDust(int i, int j, bool fail, ref int num)

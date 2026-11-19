@@ -8,6 +8,7 @@ public class WitherWoodBookcase : ModTile
 {
 	public override void SetStaticDefaults()
 	{
+		AddMapEntry(new Color(69, 36, 78), ModContent.GetInstance<Items.Placeables.DecayingWoodCourt.WitherWoodBookcase>().DisplayName);
 		// Properties
 		Main.tileTable[Type] = true;
 		Main.tileSolidTop[Type] = true;
