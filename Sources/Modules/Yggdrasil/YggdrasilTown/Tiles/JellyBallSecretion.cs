@@ -37,7 +37,7 @@ public class JellyBallSecretion : ModTile
 		var tile = Main.tile[i, j];
 		var ripples = ModContent.GetInstance<JellyRipples>();
 		var point = new Point(i, j);
-		if (tile.IsHalfBlock || tile.Slope != SlopeType.Solid || !tile.HasUnactuatedTile || !TileDrawing.IsVisible(tile) || !ripples.TryGetWave(point, out var face, out float amount, out float tilt))
+		if (tile.IsHalfBlock || tile.Slope != SlopeType.Solid || !tile.HasUnactuatedTile || !TileDrawing.IsVisible(tile) || !ripples.TryGetWave(point, out Vector2 squeeze))
 		{
 			return true;
 		}
@@ -46,25 +46,15 @@ public class JellyBallSecretion : ModTile
 		Vector2 position = point.ToVector2() * 16 - Main.screenPosition + offset;
 		var texture = Main.instance.TilesRenderer.GetTileDrawTexture(tile, i, j);
 		var light = tile.IsTileFullbright ? Color.White : Lighting.GetColor(i, j);
-		var tint = Color.Lerp(light, Color.White, Math.Min(Math.Abs(amount) * 0.035f, 0.22f));
+		var tint = Color.Lerp(light, Color.White, Math.Min(squeeze.Length() * 0.035f, 0.22f));
 		var frame = new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16);
-		if (WorldGen.SolidTile(i - face.X, j - face.Y))
-		{
-			spriteBatch.Draw(texture, position, frame, tint);
-			return false;
-		}
-
-		// Only move the exposed edge. The opposite edge stays joined to the next tile.
-		bool vertical = face.Y != 0;
-		for (int strip = 0; strip < 16; strip += 4)
-		{
-			float inset = MathHelper.Clamp(amount + tilt * ((strip + 2) / 16f - 0.5f), -6f, 6f);
-			var source = vertical ? new Rectangle(frame.X + strip, frame.Y, 4, 16) : new Rectangle(frame.X, frame.Y + strip, 16, 4);
-			var stripPosition = vertical ? new Vector2(strip, face.Y > 0 ? inset : 0) : new Vector2(face.X > 0 ? inset : 0, strip);
-			var scale = vertical ? new Vector2(1, 1 - inset / 16f) : new Vector2(1 - inset / 16f, 1);
-			spriteBatch.Draw(texture, position + stripPosition, source, tint, 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
-		}
-
+		// Positive squeeze compresses an axis. Shared faces stay anchored so the tiles stay joined.
+		float left = WorldGen.SolidTile(i - 1, j) ? 0f : squeeze.X;
+		float right = WorldGen.SolidTile(i + 1, j) ? 0f : squeeze.X;
+		float top = WorldGen.SolidTile(i, j - 1) ? 0f : squeeze.Y;
+		float bottom = WorldGen.SolidTile(i, j + 1) ? 0f : squeeze.Y;
+		var scale = new Vector2(1f - (left + right) / 16f, 1f - (top + bottom) / 16f);
+		spriteBatch.Draw(texture, position + new Vector2(left, top), frame, tint, 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
 		return false;
 	}
 
@@ -100,86 +90,95 @@ public class JellyBallSecretion : ModTile
 
 public class JellyRipples : ModSystem
 {
-	private const int MaxPulses = 24;
-	private readonly Queue<Pulse> pulses = new();
+	private const int MaxPulses = 12;
+	private const int TilesPerPulsePerTick = 96;
+	private const int RingDownTicks = 40;
+	private const int TilesPerAmplitudeHalving = 10;
+	private static readonly float TransmissionPerTile = MathF.Pow(0.5f, 1f / TilesPerAmplitudeHalving);
+	private readonly List<Pulse> pulses = [];
 
-	private sealed record Pulse(ulong Start, Point Origin, Point Direction, float Amplitude, Dictionary<Point, int> Distances);
+	private sealed class Pulse
+	{
+		public readonly Queue<Point> Frontier = [];
+		public readonly Dictionary<Point, (ulong Tick, float Transmission)> Arrivals = [];
+		public Vector2 Squeeze;
+		public ulong LastArrival;
+
+		public void Visit(Point point, ulong now, float transmission)
+		{
+			if (JellyBallSecretion.IsJelly(point) && Arrivals.TryAdd(point, (now, transmission)))
+			{
+				Frontier.Enqueue(point);
+				LastArrival = now;
+			}
+		}
+	}
 
 	public override void ClearWorld() => pulses.Clear();
 
 	public override void PostUpdateEverything()
 	{
-		while (pulses.TryPeek(out var pulse) && Main.GameUpdateCount - pulse.Start >= 52)
+		ulong now = Main.GameUpdateCount;
+		for (int i = pulses.Count - 1; i >= 0; i--)
 		{
-			pulses.Dequeue();
+			var pulse = pulses[i];
+			// Advance at most one connected layer per tick, sharing large layers across frames.
+			int count = Math.Min(pulse.Frontier.Count, TilesPerPulsePerTick);
+			for (int n = 0; n < count; n++)
+			{
+				var p = pulse.Frontier.Dequeue();
+				if (!JellyBallSecretion.IsJelly(p))
+				{
+					continue;
+				}
+
+				float transmission = pulse.Arrivals[p].Transmission * TransmissionPerTile;
+				pulse.Visit(new Point(p.X - 1, p.Y), now, transmission);
+				pulse.Visit(new Point(p.X + 1, p.Y), now, transmission);
+				pulse.Visit(new Point(p.X, p.Y - 1), now, transmission);
+				pulse.Visit(new Point(p.X, p.Y + 1), now, transmission);
+			}
+
+			if (pulse.Frontier.Count == 0 && now - pulse.LastArrival >= RingDownTicks)
+			{
+				pulses.RemoveAt(i);
+			}
 		}
 	}
 
 	internal void Emit(Point origin, Point direction, float speed)
 	{
-		int radius = speed >= 6f ? 12 : 5;
-		var distances = new Dictionary<Point, int> { [origin] = 0 };
-		var frontier = new Queue<Point>();
-		frontier.Enqueue(origin);
-		while (frontier.TryDequeue(out var p))
+		if (pulses.Count >= MaxPulses)
 		{
-			int next = distances[p] + 1;
-			if (next > radius)
+			return;
+		}
+
+		// Compression along the impact axis pushes both perpendicular free faces outward.
+		var axes = direction.X == 0 ? new Vector2(-0.65f, 1f) : new Vector2(1f, -0.65f);
+		var pulse = new Pulse { Squeeze = axes * MathHelper.Clamp(speed * 0.8f, 2f, 8f) };
+		pulse.Visit(origin, Main.GameUpdateCount, 1f);
+		pulses.Add(pulse);
+	}
+
+	internal bool TryGetWave(Point tile, out Vector2 squeeze)
+	{
+		squeeze = Vector2.Zero;
+		foreach (var pulse in pulses)
+		{
+			if (!pulse.Arrivals.TryGetValue(tile, out var arrival))
 			{
 				continue;
 			}
 
-			Visit(new Point(p.X + 1, p.Y));
-			Visit(new Point(p.X - 1, p.Y));
-			Visit(new Point(p.X, p.Y + 1));
-			Visit(new Point(p.X, p.Y - 1));
-
-			void Visit(Point neighbor)
+			ulong age = Main.GameUpdateCount - arrival.Tick;
+			if (age < RingDownTicks)
 			{
-				if (JellyBallSecretion.IsJelly(neighbor) && distances.TryAdd(neighbor, next))
-				{
-					frontier.Enqueue(neighbor);
-				}
+				squeeze += pulse.Squeeze * (arrival.Transmission * MathF.Exp(-0.085f * age) * MathF.Sin(0.56f * age));
 			}
 		}
 
-		if (pulses.Count >= MaxPulses)
-		{
-			pulses.Dequeue();
-		}
-
-		pulses.Enqueue(new Pulse(Main.GameUpdateCount, origin, direction, MathHelper.Clamp(speed * 0.8f, 2f, 8f), distances));
-	}
-
-	internal bool TryGetWave(Point tile, out Point face, out float amount, out float tilt)
-	{
-		face = default;
-		amount = tilt = 0f;
-		float strongest = 0.15f;
-		foreach (var pulse in pulses)
-		{
-			if (pulse.Distances.TryGetValue(tile, out int distance))
-			{
-				float age = (Main.GameUpdateCount - pulse.Start) - distance * 1.25f;
-				if (age < 0)
-				{
-					continue;
-				}
-
-				float envelope = pulse.Amplitude * MathF.Exp(-age * 0.085f) / (1f + distance * 0.22f);
-				if (envelope > strongest)
-				{
-					strongest = envelope;
-					face = pulse.Direction;
-					float phase = age * 0.56f;
-					amount = envelope * MathF.Sin(phase);
-					int tangent = face.Y != 0 ? tile.X - pulse.Origin.X : tile.Y - pulse.Origin.Y;
-					tilt = -Math.Sign(tangent) * envelope * 0.7f * MathF.Cos(phase);
-				}
-			}
-		}
-
-		return face != default;
+		squeeze = Vector2.Clamp(squeeze, new Vector2(-5f), new Vector2(5f));
+		return squeeze.LengthSquared() > 0.01f;
 	}
 }
 
