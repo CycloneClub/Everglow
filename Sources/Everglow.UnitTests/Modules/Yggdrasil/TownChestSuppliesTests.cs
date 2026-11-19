@@ -80,6 +80,7 @@ public class TownChestSuppliesTests
 		int ammoCount = 0;
 		int torchCount = 0;
 		int both = 0;
+		int herbCount = 0;
 		for (int i = 0; i < Samples; i++)
 		{
 			var loot = YggdrasilTownGeneration.NormalChestContents();
@@ -105,12 +106,20 @@ public class TownChestSuppliesTests
 				both++;
 			}
 
+			var herbBag = loot.SingleOrDefault(item => item.type == ItemID.HerbBag);
+			if (herbBag is not null)
+			{
+				herbCount++;
+				Assert.IsTrue(herbBag.stack is >= 1 and <= 3);
+			}
+
 			Assert.IsTrue(loot.All(item => item.stack > 0));
 		}
 
 		double ammoRate = ammoCount / (double)Samples;
 		double torchRate = torchCount / (double)Samples;
 		Assert.AreEqual(ammoRate * torchRate, both / (double)Samples, 0.012, "Ammo and lighting rolls are independent.");
+		Assert.AreEqual(1d / 7d, herbCount / (double)Samples, 0.012, "Herb bags use the snow-pine supply rate.");
 	}
 
 	[TestMethod]

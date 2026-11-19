@@ -2669,6 +2669,10 @@ public partial class YggdrasilTownGeneration
 			int ammo = random.NextBool(2) ? ModContent.ItemType<LightArrow>() : ModContent.ItemType<LightBullet>();
 			chestContents.Add(new Item(ammo, random.Next(25, 51)));
 		}
+		if (random.NextBool(7))
+		{
+			chestContents.Add(new Item(ItemID.HerbBag, random.Next(1, 4)));
+		}
 		chestContents.Add(new Item(ModContent.ItemType<NylonRope>(), random.Next(70, 151)));
 		return chestContents;
 	}
@@ -2711,6 +2715,10 @@ public partial class YggdrasilTownGeneration
 		{
 			int glowstick = random.NextBool(5) ? ItemID.StickyGlowstick : ItemID.Glowstick;
 			contents.Add(new Item(glowstick, random.Next(20, 61)));
+		}
+		if (random.NextBool(7))
+		{
+			contents.Add(new Item(ItemID.HerbBag, random.Next(1, 4)));
 		}
 		if (includeMaterials)
 		{
@@ -2793,6 +2801,10 @@ public partial class YggdrasilTownGeneration
 				break;
 		}
 		chestContents.Add(new Item(setDefaultsToType: potionType, WorldGen.genRand.Next(1, 4)));
+		if (WorldGen.genRand.NextBool(7))
+		{
+			chestContents.Add(new Item(setDefaultsToType: ItemID.HerbBag, WorldGen.genRand.Next(1, 4)));
+		}
 		if (WorldGen.genRand.NextBool(2))
 		{
 			if (WorldGen.genRand.NextBool(5))
