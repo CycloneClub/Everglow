@@ -8,7 +8,7 @@ public class AncientPhantom_MagicBanner : BannerItemBase
 {
 	public override string Texture => BannerItemBase_Mod;
 
-	public override int BannerTileStyle => 0;
+	public override int BannerTileStyle => 15;
 
 	public override int BannerNPCType => ModContent.NPCType<AncientPhantom_Magic>();
 }

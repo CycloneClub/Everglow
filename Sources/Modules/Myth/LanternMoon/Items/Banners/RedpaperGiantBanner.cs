@@ -8,7 +8,7 @@ public class RedpaperGiantBanner : BannerItemBase
 {
 	public override string Texture => BannerItemBase_Mod;
 
-	public override int BannerTileStyle => 0;
+	public override int BannerTileStyle => 8;
 
 	public override int BannerNPCType => ModContent.NPCType<RedpaperGiant>();
 }

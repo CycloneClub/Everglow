@@ -8,7 +8,7 @@ public class CarapaceCaterpillarBanner : BannerItemBase
 {
 	public override string Texture => BannerItemBase_Mod;
 
-	public override int BannerTileStyle => 0;
+	public override int BannerTileStyle => 19;
 
 	public override int BannerNPCType => ModContent.NPCType<CarapaceCaterpillar>();
 }

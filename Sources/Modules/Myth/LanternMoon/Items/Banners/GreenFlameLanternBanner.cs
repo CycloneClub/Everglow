@@ -8,7 +8,7 @@ public class GreenFlameLanternBanner : BannerItemBase
 {
 	public override string Texture => BannerItemBase_Mod;
 
-	public override int BannerTileStyle => 0;
+	public override int BannerTileStyle => 4;
 
 	public override int BannerNPCType => ModContent.NPCType<GreenFlameLantern>();
 }

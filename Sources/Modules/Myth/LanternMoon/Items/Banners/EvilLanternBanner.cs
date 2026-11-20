@@ -8,7 +8,7 @@ public class EvilLanternBanner : BannerItemBase
 {
 	public override string Texture => BannerItemBase_Mod;
 
-	public override int BannerTileStyle => 0;
+	public override int BannerTileStyle => 3;
 
 	public override int BannerNPCType => ModContent.NPCType<EvilLantern>();
 }

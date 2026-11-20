@@ -8,7 +8,7 @@ public class DarkGlimmeringRodsBanner : BannerItemBase
 {
 	public override string Texture => BannerItemBase_Mod;
 
-	public override int BannerTileStyle => 0;
+	public override int BannerTileStyle => 23;
 
 	public override int BannerNPCType => ModContent.NPCType<DarkGlimmeringRods>();
 }

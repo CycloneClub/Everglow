@@ -8,7 +8,7 @@ public class CylindricalLanternBanner : BannerItemBase
 {
 	public override string Texture => BannerItemBase_Mod;
 
-	public override int BannerTileStyle => 0;
+	public override int BannerTileStyle => 2;
 
 	public override int BannerNPCType => ModContent.NPCType<CylindricalLantern>();
 }
