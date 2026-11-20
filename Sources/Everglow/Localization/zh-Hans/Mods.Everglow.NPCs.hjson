@@ -1,6 +1,11 @@
 Acytaea_Boss.DisplayName: 雅斯塔亚
 Acytaea_Yggdrasil.DisplayName: 雅斯塔亚
 AlgaeOctopus.DisplayName: 覆藻章鱼
+AncientPhantom_Bow.DisplayName: 古代幻影弓箭手
+AncientPhantom_Magic.DisplayName: 古代幻影法师
+AncientPhantom_Magic_Orb.DisplayName: 古代幻影法球
+AncientPhantom_Sheild.DisplayName: 古代幻影守卫
+AncientPhantom_Spear.DisplayName: 古代幻影战士
 AnimatedWitherbarkHound.DisplayName: 枯木活化猎犬
 AnimatedWitherbarkSoldier.DisplayName: 枯木活化战士
 AnimatedWitherbarkSoldierRanged.DisplayName: 枯木活化射手
@@ -24,12 +29,15 @@ CentipedeTail.DisplayName: 流萤蜈蚣
 CorruptMoth.DisplayName: 腐檀巨蛾
 CourtCommander.DisplayName: 王庭号令者
 CrimsonSpell.DisplayName: 血月教徒
+CrystalCell.DisplayName: 晶胞虫
+CrystalCell_Small.DisplayName: 晶胞虫
 CyanOreBeetle.DisplayName: 青缎甲虫
 CylindricalLantern.DisplayName: 火柱灯笼
 DarkGlimmeringRods.DisplayName: 金棕飞棍
 Dendroid_Normal.DisplayName: 流萤枯木人
 EvilLantern.DisplayName: 鬼灯笼
 EvilPack.DisplayName: 巨大夜光茧
+EucaLeafy.DisplayName: 拟桉叶虫
 ExplosiveLantern_Growing.DisplayName: 爆破灯笼
 FireflyPiranha_Small.DisplayName: 流萤虎鱼
 FireflyPiranha.DisplayName: 流萤虎鱼

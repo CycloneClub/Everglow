@@ -1,6 +1,11 @@
 Acytaea_Boss.DisplayName: Acytaea
 Acytaea_Yggdrasil.DisplayName: Acytaea
 AlgaeOctopus.DisplayName: Algae-Covered Octopus
+AncientPhantom_Bow.DisplayName: Ancient Phantom Archer
+AncientPhantom_Magic.DisplayName: Ancient Phantom Mage
+AncientPhantom_Magic_Orb.DisplayName: Ancient Phantom Orb
+AncientPhantom_Sheild.DisplayName: Ancient Phantom Guard
+AncientPhantom_Spear.DisplayName: Ancient Phantom Warrior
 AnimatedWitherbarkHound.DisplayName: Animated Witherbark Hound
 AnimatedWitherbarkSoldier.DisplayName: Animated Witherbark Warrior
 AnimatedWitherbarkSoldierRanged.DisplayName: Animated Witherbark Marksman
@@ -24,12 +29,15 @@ CentipedeTail.DisplayName: Centipede Tail
 CorruptMoth.DisplayName: Corrupt Moth
 CourtCommander.DisplayName: Court Commander
 CrimsonSpell.DisplayName: Crimson Spell
+CrystalCell.DisplayName: Crystal Cell Insect
+CrystalCell_Small.DisplayName: Crystal Cell Insect
 CyanOreBeetle.DisplayName: Cyan Ore Beetle
 CylindricalLantern.DisplayName: Cylindrical Lantern
 DarkGlimmeringRods.DisplayName: Dark Glimmering Rods
 Dendroid_Normal.DisplayName: Dendroid
 EvilLantern.DisplayName: Evil Lantern
 EvilPack.DisplayName: Evil Pack
+EucaLeafy.DisplayName: Eucaleafy
 ExplosiveLantern_Growing.DisplayName: Explosive Lantern
 FireflyPiranha_Small.DisplayName: Firefly Piranha
 FireflyPiranha.DisplayName: Firefly Piranha
