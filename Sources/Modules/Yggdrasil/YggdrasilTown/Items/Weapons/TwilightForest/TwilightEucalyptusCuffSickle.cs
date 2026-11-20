@@ -11,6 +11,8 @@ public class TwilightEucalyptusCuffSickle : ModItem
 	{
 		Item.width = 28;
 		Item.height = 28;
+		Item.rare = ItemRarityID.Green;
+		Item.value = Item.sellPrice(silver: 20);
 
 		Item.DamageType = DamageClass.Melee;
 		Item.damage = 22;

@@ -1,3 +1,5 @@
+using Everglow.Commons.Utilities;
+using Terraria.GameContent.Bestiary;
 using Everglow.Myth.LanternMoon.Gores;
 using Everglow.Myth.LanternMoon.Projectiles.PerWave15;
 using Everglow.Myth.LanternMoon.VFX;
@@ -25,6 +27,12 @@ public class LargeBloodLanternGhost : LanternMoonNPC
 	public int ClosingTimeMax = 300;
 
 	public Vector2 SummonPos = Vector2.zeroVector;
+
+	public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+	{
+		bestiaryEntry.Info.Add(BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime);
+		bestiaryEntry.Info.Add(new FlavorTextBestiaryInfoElement(LocalizationUtils.GetHabitatLocalizationKey("LanternMoon")));
+	}
 
 	public override void SetDefaults()
 	{

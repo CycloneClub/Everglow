@@ -19,6 +19,7 @@ public class MidwinterNightmare : ModItem
 
 		Item.useTime = Item.useAnimation = 34;
 		Item.useStyle = ItemUseStyleID.HoldUp;
+		Item.UseSound = SoundID.Item44;
 
 		Item.autoReuse = false;
 		Item.noMelee = true;

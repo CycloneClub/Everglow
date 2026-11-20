@@ -10,6 +10,7 @@ public class Lamorch : ModTile
 {
 	public override void SetStaticDefaults()
 	{
+		AddMapEntry(new Color(69, 36, 78), ModContent.GetInstance<Items.Placeables.Lamorch_Item>().DisplayName);
 		// Properties
 		Main.tileLighted[Type] = true;
 		Main.tileFrameImportant[Type] = true;

@@ -22,6 +22,7 @@ public class SnowPineDoor : ModTile
 		DustType = DustID.BorealWood;
 		AdjTiles = new int[] { TileID.OpenDoor };
 		TileID.Sets.CloseDoorID[Type] = ModContent.TileType<SnowPineDoorClosed>();
+		RegisterItemDrop(ModContent.ItemType<Items.SnowPineDoor>());
 
 		TileObjectData.newTile.Width = 2;
 		TileObjectData.newTile.Height = 3;

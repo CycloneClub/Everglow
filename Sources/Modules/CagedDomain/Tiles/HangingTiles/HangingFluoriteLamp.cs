@@ -8,6 +8,7 @@ public class HangingFluoriteLamp : HangingTile
 {
 	public override void PostSetDefaults()
 	{
+		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
 		RopeUnitMass = 0.6f;
 		HangingItemMass = 200f;
 		MaxWireStyle = 1;

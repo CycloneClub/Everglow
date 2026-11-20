@@ -1,3 +1,5 @@
+using Everglow.Commons.Utilities;
+using Terraria.GameContent.Bestiary;
 using Everglow.Commons.DataStructures;
 using Everglow.Myth.LanternMoon.Gores;
 using Everglow.Myth.LanternMoon.Projectiles.PerWave15;
@@ -37,6 +39,12 @@ public class RedpaperGiant : LanternMoonNPC
 		CloseTarget,
 		Attack,
 		Teleporting,
+	}
+
+	public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+	{
+		bestiaryEntry.Info.Add(BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime);
+		bestiaryEntry.Info.Add(new FlavorTextBestiaryInfoElement(LocalizationUtils.GetHabitatLocalizationKey("LanternMoon")));
 	}
 
 	public override void SetDefaults()

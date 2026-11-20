@@ -21,5 +21,6 @@ public abstract class ChandelierItem : ModItem
 		Item.value = 3000;
 		Item.maxStack = Item.CommonMaxStack;
 		Item.useAnimation = 14;
+		Item.UseSound = SoundID.Dig;
 	}
 }

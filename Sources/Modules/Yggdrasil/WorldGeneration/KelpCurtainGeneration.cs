@@ -4167,6 +4167,10 @@ public class KelpCurtainGeneration
 				break;
 		}
 		contents.Add(new Item(setDefaultsToType: potionType, WorldGen.genRand.Next(3, 6)));
+		if (WorldGen.genRand.NextBool(7))
+		{
+			contents.Add(new Item(setDefaultsToType: ItemID.HerbBag, WorldGen.genRand.Next(1, 4)));
+		}
 
 		// yggdrasil Amber
 		if (WorldGen.genRand.NextBool(5))

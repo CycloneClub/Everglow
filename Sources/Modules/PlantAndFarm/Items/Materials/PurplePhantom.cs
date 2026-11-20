@@ -8,7 +8,7 @@ public class PurplePhantom : ModItem
 	{
 		Item.width = 34;
 		Item.height = 30;
-		Item.maxStack = 999;
+		Item.maxStack = Item.CommonMaxStack;
 		Item.value = 0;
 		Item.rare = ItemRarityID.White;
 		Item.material = true;

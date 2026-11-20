@@ -1,10 +1,4 @@
 // Shared localization entries; content keys live in their category files.
-Bestiary: {
-	Acytaea: ""
-	Centipede.Flavor: ""
-	CorruptMoth.Flavor: ""
-}
-
 Common.Message.HasAwoken: has awoken!
 
 InfoDisplays: {

@@ -5,20 +5,20 @@ CorruptMothTreasureBag: {
 
 SquamousShellTreasureBag: {
 	DisplayName: 龙鳞古壳宝藏袋
-	Tooltip: ""
+	Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
 }
 
 TreasureBag_LanternGhostKing: {
 	DisplayName: 灯笼鬼王宝藏袋
-	Tooltip: ""
+	Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
 }
 
 TuskTreasureBag: {
 	DisplayName: 鲜血獠牙宝藏袋
-	Tooltip: ""
+	Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
 }
 
 VampireMatTreasureBag: {
-	DisplayName: Vampire Mat Treasure Bag
-	Tooltip: ""
+	DisplayName: 吸血魔毯宝藏袋
+	Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
 }

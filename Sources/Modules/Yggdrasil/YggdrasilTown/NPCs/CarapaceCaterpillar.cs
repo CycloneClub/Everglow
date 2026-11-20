@@ -1,3 +1,6 @@
+using Everglow.Commons.Utilities;
+using Everglow.Yggdrasil.YggdrasilTown.Biomes;
+using Terraria.GameContent.Bestiary;
 using Everglow.Commons.Coroutines;
 using Everglow.Commons.Templates.Enemies;
 using Everglow.Yggdrasil.Common;
@@ -10,6 +13,13 @@ namespace Everglow.Yggdrasil.YggdrasilTown.NPCs;
 
 public class CarapaceCaterpillar : Caterpillar
 {
+	public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+	{
+		bestiaryEntry.Info.Add(ModContent.GetInstance<YggdrasilTownBiome>().ModBiomeBestiaryInfoElement);
+		bestiaryEntry.Info.Add(ModContent.GetInstance<JellyBallHotbedBiome>().ModBiomeBestiaryInfoElement);
+		bestiaryEntry.Info.Add(new FlavorTextBestiaryInfoElement(LocalizationUtils.GetHabitatLocalizationKey("TownDeepMineAndHotbed")));
+	}
+
 	public override void SetDefaults()
 	{
 		base.SetDefaults();

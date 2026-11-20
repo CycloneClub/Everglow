@@ -1,0 +1,14 @@
+{
+	Habitats: {
+		LampWoodDay: Found in the Lampwood Forest during the day.
+		LampWoodNight: Found in the Lampwood Forest at night.
+		TwilightForest: Found in the Twilight Forest.
+		TownMineAndHotbed: Found in the shallow and deep mines of Yggdrasil Town and in the Jelly Ball Hotbed.
+		TownMine: Found in the shallow and deep mines of Yggdrasil Town.
+		TownDeepMineAndHotbed: Found in the deep mines of Yggdrasil Town and in the Jelly Ball Hotbed.
+		LanternMoon: Appears during the Lantern Moon invasion at night.
+	}
+	Acytaea: ""
+	Centipede.Flavor: ""
+	CorruptMoth.Flavor: ""
+}

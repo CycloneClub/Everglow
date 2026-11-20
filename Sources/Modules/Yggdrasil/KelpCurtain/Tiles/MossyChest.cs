@@ -44,7 +44,7 @@ public class MossyChest : ModTile
 		TileObjectData.newTile.LavaDeath = false;
 		TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
 		TileObjectData.addTile(Type);
-		AddMapEntry(new Color(127, 96, 104));
+		AddMapEntry(new Color(127, 96, 104), this.GetLocalization("MapEntry0"), MapChestName);
 	}
 
 	public override ushort GetMapOption(int i, int j)

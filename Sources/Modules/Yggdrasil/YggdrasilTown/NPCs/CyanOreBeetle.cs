@@ -1,3 +1,6 @@
+using Everglow.Commons.Utilities;
+using Everglow.Yggdrasil.YggdrasilTown.Biomes;
+using Terraria.GameContent.Bestiary;
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables.Ores;
 using Terraria.DataStructures;
@@ -11,6 +14,13 @@ public class CyanOreBeetle : ModNPC
 	{
 		Main.npcFrameCount[NPC.type] = 5;
 		NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.Confused] = true;
+	}
+
+	public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+	{
+		bestiaryEntry.Info.Add(ModContent.GetInstance<YggdrasilTownBiome>().ModBiomeBestiaryInfoElement);
+		bestiaryEntry.Info.Add(ModContent.GetInstance<JellyBallHotbedBiome>().ModBiomeBestiaryInfoElement);
+		bestiaryEntry.Info.Add(new FlavorTextBestiaryInfoElement(LocalizationUtils.GetHabitatLocalizationKey("TownMineAndHotbed")));
 	}
 
 	public override void SetDefaults()

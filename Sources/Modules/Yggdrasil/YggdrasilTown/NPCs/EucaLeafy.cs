@@ -1,3 +1,6 @@
+using Everglow.Commons.Utilities;
+using Everglow.Yggdrasil.YggdrasilTown.Biomes;
+using Terraria.GameContent.Bestiary;
 using Everglow.Yggdrasil.YggdrasilTown.NPCSpawn;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Enemies;
 using Terraria.DataStructures;
@@ -33,6 +36,12 @@ public class EucaLeafy : ModNPC
 	public override void SetStaticDefaults()
 	{
 		Main.npcFrameCount[NPC.type] = 3;
+	}
+
+	public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+	{
+		bestiaryEntry.Info.Add(ModContent.GetInstance<TwilightForsetAndRelic>().ModBiomeBestiaryInfoElement);
+		bestiaryEntry.Info.Add(new FlavorTextBestiaryInfoElement(LocalizationUtils.GetHabitatLocalizationKey("TwilightForest")));
 	}
 
 	public override void SetDefaults()

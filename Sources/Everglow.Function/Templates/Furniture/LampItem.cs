@@ -21,5 +21,6 @@ public abstract class LampItem : ModItem
 		Item.value = 500;
 		Item.maxStack = Item.CommonMaxStack;
 		Item.useAnimation = 14;
+		Item.UseSound = SoundID.Dig;
 	}
 }

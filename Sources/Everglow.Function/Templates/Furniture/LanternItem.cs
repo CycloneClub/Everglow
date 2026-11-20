@@ -21,5 +21,6 @@ public abstract class LanternItem : ModItem
 		Item.value = 150;
 		Item.maxStack = Item.CommonMaxStack;
 		Item.useAnimation = 14;
+		Item.UseSound = SoundID.Dig;
 	}
 }

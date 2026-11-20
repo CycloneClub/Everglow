@@ -20,7 +20,7 @@ public class GlowWoodTable : ModTile
 		TileID.Sets.IgnoredByNpcStepUp[Type] = true; // This line makes NPCs not try to step up this tile during their movement. Only use this for furniture with solid tops.
 
 		DustType = ModContent.DustType<BlueGlow>();
-		AdjTiles = new int[] { TileID.Bookcases };
+		AdjTiles = new int[] { TileID.Tables };
 
 		// Placement
 		TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);

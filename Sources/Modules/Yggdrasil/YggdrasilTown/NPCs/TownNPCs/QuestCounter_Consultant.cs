@@ -1,4 +1,5 @@
 using Everglow.Commons.Mechanics.Quest.Core.Dialogue;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Valiant;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Miscs;
 using Everglow.Yggdrasil.YggdrasilTown.Items.PermanentBoosters;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Tools;
@@ -91,6 +92,9 @@ public class QuestCounter_Consultant : ModNPC
 		shop.Add<YggdrasilTownAccessCard>();
 		shop.Add<YggdrasilPlayerRoomDoorKey>();
 		shop.Add(new Item(ModContent.ItemType<ClimbingPickaxe>()) { shopCustomPrice = Item.buyPrice(gold: 2) });
+		shop.Add(new Item(ModContent.ItemType<ValiantHelmet>()) { shopCustomPrice = Item.buyPrice(gold: 5) });
+		shop.Add(new Item(ModContent.ItemType<ValiantBreastplate>()) { shopCustomPrice = Item.buyPrice(gold: 10) });
+		shop.Add(new Item(ModContent.ItemType<ValiantLeggings>()) { shopCustomPrice = Item.buyPrice(gold: 5) });
 		shop.Register();
 	}
 }

@@ -6,6 +6,11 @@ public class CyatheaArrow : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Ammo;
 
+	public override void SetStaticDefaults()
+	{
+		Item.ResearchUnlockCount = 99;
+	}
+
 	public override void SetDefaults()
 	{
 		Item.width = 18;

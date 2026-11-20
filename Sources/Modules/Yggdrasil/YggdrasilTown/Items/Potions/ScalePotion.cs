@@ -1,6 +1,7 @@
 using Everglow.Commons.Utilities;
 using Everglow.Yggdrasil.YggdrasilTown.Buffs;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Fishing;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables.Ores;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Potions;
 
@@ -39,7 +40,8 @@ public class ScalePotion : ModItem
 			CreateRecipe()
 				.AddIngredient(ItemID.BottledWater)
 				.AddIngredient<Filefish>()
-				.AddIngredient(ore)
+				.AddIngredient(ModContent.ItemType<CyanVineOre>())
+				.AddTile(TileID.Bottles)
 				.Register();
 		}
 	}

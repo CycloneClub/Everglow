@@ -12,6 +12,7 @@ public class SluiceWallLamp : ModTile
 	{
 		Main.tileFrameImportant[Type] = true;
 		Main.tileLighted[Type] = true;
+		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
 		Main.tileLavaDeath[Type] = false;
 		Main.tileNoAttach[Type] = false;
 		Main.tileWaterDeath[Type] = false;

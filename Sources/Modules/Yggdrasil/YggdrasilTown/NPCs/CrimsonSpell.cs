@@ -1,3 +1,6 @@
+using Everglow.Commons.Utilities;
+using Everglow.Yggdrasil.YggdrasilTown.Biomes;
+using Terraria.GameContent.Bestiary;
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.YggdrasilTown.Events;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Armors.BloodCultist;
@@ -14,6 +17,13 @@ public class CrimsonSpell : ModNPC
 		Main.npcFrameCount[NPC.type] = 11;
 	}
 
+	public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+	{
+		bestiaryEntry.Info.Add(ModContent.GetInstance<LampWoodForest>().ModBiomeBestiaryInfoElement);
+		bestiaryEntry.Info.Add(BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime);
+		bestiaryEntry.Info.Add(new FlavorTextBestiaryInfoElement(LocalizationUtils.GetHabitatLocalizationKey("LampWoodNight")));
+	}
+
 	public override void SetDefaults()
 	{
 		NPC.width = 32;
@@ -22,6 +32,7 @@ public class CrimsonSpell : ModNPC
 		NPC.damage = 24;
 		NPC.defense = 0;
 		NPC.lifeMax = 300;
+		NPC.value = Item.buyPrice(silver: 3);
 		NPC.HitSound = SoundID.NPCHit3;
 		NPC.DeathSound = SoundID.NPCDeath3;
 		NPC.noGravity = true;

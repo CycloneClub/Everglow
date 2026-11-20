@@ -4,6 +4,11 @@ public class CloudBall : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedWeapons;
 
+	public override void SetStaticDefaults()
+	{
+		Item.ResearchUnlockCount = 99;
+	}
+
 	public override void SetDefaults()
 	{
 		Item.damage = 3;
@@ -23,7 +28,7 @@ public class CloudBall : ModItem
 		Item.shootSpeed = 4;
 		Item.crit = 2;
 		Item.ammo = Item.type;
-		Item.maxStack = 999;
+		Item.maxStack = Item.CommonMaxStack;
 		Item.consumable = true;
 	}
 

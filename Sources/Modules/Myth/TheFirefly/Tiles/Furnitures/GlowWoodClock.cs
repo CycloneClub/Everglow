@@ -10,6 +10,7 @@ public class GlowWoodClock : ModTile
 {
 	public override void SetStaticDefaults()
 	{
+		AddMapEntry(new Color(69, 36, 78), ModContent.GetInstance<Items.Furnitures.GlowWoodClock>().DisplayName);
 		// Properties
 		Main.tileFrameImportant[Type] = true;
 		Main.tileNoAttach[Type] = true;

@@ -1,4 +1,5 @@
 using Everglow.Commons.VFX.CommonVFXDusts;
+using Terraria.Audio;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Projectiles.Legacies;
@@ -34,6 +35,11 @@ public class HandheldCircularSaw_Proj : ModProjectile
 		mouseToPlayer = Vector2.Normalize(mouseToPlayer);
 		if (player.controlUseItem)
 		{
+			if (Main.GameUpdateCount % 24 == 0)
+			{
+				SoundEngine.PlaySound(SoundID.Item22 with { MaxInstances = 1 }, Projectile.Center);
+			}
+
 			float aimRot = -MathF.Asin(Vector3.Cross(new Vector3(mouseToPlayer, 0), new Vector3(new Vector2(0, 1).RotatedBy(Projectile.rotation - Math.PI * 0.75), 0)).Z);
 			Projectile.rotation += aimRot * 0.05f;
 			Projectile.Center = armRootPos + new Vector2(0, 1).RotatedBy(Projectile.rotation - Math.PI * 0.75) * 50f;

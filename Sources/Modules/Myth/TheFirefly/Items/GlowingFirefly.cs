@@ -10,6 +10,7 @@ public class GlowingFirefly : ModItem
 
 	public override void SetDefaults()
 	{
+		Item.DefaultToCapturedCritter(ModContent.NPCType<NPCs.GlowingFirefly>());
 		Item.width = 32;
 		Item.height = 22;
 		Item.maxStack = 999;

@@ -5,20 +5,20 @@ CorruptMothTreasureBag: {
 
 SquamousShellTreasureBag: {
 	DisplayName: Squamous Shell Treasure Bag
-	Tooltip: ""
+	Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
 }
 
 TreasureBag_LanternGhostKing: {
 	DisplayName: Lantern Ghost King Treasure Bag
-	Tooltip: ""
+	Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
 }
 
 TuskTreasureBag: {
 	DisplayName: Tusk Treasure Bag
-	Tooltip: ""
+	Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
 }
 
 VampireMatTreasureBag: {
 	DisplayName: Vampire Mat Treasure Bag
-	Tooltip: ""
+	Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
 }

@@ -46,7 +46,7 @@ public class TwilightEucalyptusChest : ModTile
 		TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
 		TileObjectData.addTile(Type);
 
-		AddMapEntry(new Color(85, 72, 126));
+		AddMapEntry(new Color(85, 72, 126), ModContent.GetInstance<Items.Placeables.Furniture.TwilightForest.TwilightEucalyptusChest>().DisplayName, MapChestName);
 	}
 
 	public override bool TileFrame(int i, int j, ref bool resetFrame, ref bool noBreak)

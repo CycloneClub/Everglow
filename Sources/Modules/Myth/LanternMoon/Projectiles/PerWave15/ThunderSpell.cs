@@ -1,6 +1,7 @@
 using Everglow.Commons.Utilities.BuffHelpers;
 using Everglow.Myth.LanternMoon.NPCs;
 using Everglow.Myth.LanternMoon.VFX;
+using Terraria.Audio;
 using Terraria.DataStructures;
 
 namespace Everglow.Myth.LanternMoon.Projectiles.PerWave15;
@@ -122,6 +123,7 @@ public class ThunderSpell : ModProjectile
 
 	public void KillEffect()
 	{
+		SoundEngine.PlaySound(SoundID.DD2_LightningAuraZap with { MaxInstances = 1 }, Projectile.Center);
 		for (int k = 0; k < 16; k++)
 		{
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(7f, 14f)).RotatedByRandom(MathHelper.TwoPi);

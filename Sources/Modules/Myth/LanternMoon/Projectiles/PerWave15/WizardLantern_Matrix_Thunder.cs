@@ -1,5 +1,6 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Myth.LanternMoon.NPCs;
+using Terraria.Audio;
 
 namespace Everglow.Myth.LanternMoon.Projectiles.PerWave15;
 
@@ -112,6 +113,11 @@ public class WizardLantern_Matrix_Thunder : ModProjectile
 			Projectile.Center = OwnerNPC.Center;
 			if (Timer is 10 or 20)
 			{
+				if (Timer == 10)
+				{
+					SoundEngine.PlaySound(SoundID.DD2_LightningAuraZap with { MaxInstances = 1 }, Projectile.Center);
+				}
+
 				for (int i = 0; i < 4; i++)
 				{
 					float addRot = MathHelper.PiOver4;

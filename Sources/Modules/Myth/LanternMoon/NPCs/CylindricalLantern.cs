@@ -1,3 +1,5 @@
+using Everglow.Commons.Utilities;
+using Terraria.GameContent.Bestiary;
 using Everglow.Myth.LanternMoon.Gores;
 using Everglow.Myth.LanternMoon.Projectiles.PerWave15;
 using Terraria.DataStructures;
@@ -11,6 +13,12 @@ public class CylindricalLantern : LanternMoonNPC
 	public float TeleportTimer = 0f;
 
 	public float TeleportMax = 600;
+
+	public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+	{
+		bestiaryEntry.Info.Add(BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime);
+		bestiaryEntry.Info.Add(new FlavorTextBestiaryInfoElement(LocalizationUtils.GetHabitatLocalizationKey("LanternMoon")));
+	}
 
 	public override void SetDefaults()
 	{

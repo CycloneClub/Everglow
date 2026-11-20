@@ -6,6 +6,11 @@ public class LightArrow : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Ammo;
 
+	public override void SetStaticDefaults()
+	{
+		Item.ResearchUnlockCount = 99;
+	}
+
 	public override void SetDefaults()
 	{
 		Item.width = 18;
@@ -28,7 +33,7 @@ public class LightArrow : ModItem
 	public override void AddRecipes()
 	{
 		Recipe recipe = CreateRecipe(30);
-		recipe.AddIngredient(ItemID.MusketBall, 30);
+		recipe.AddIngredient(ItemID.WoodenArrow, 30);
 		recipe.AddIngredient<LampFruit>(1);
 		recipe.AddTile(TileID.WorkBenches);
 		recipe.Register();

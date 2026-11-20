@@ -1,0 +1,14 @@
+{
+	Habitats: {
+		LampWoodDay: 白天出没于灯木森林。
+		LampWoodNight: 夜间出没于灯木森林。
+		TwilightForest: 出没于暮光森林。
+		TownMineAndHotbed: 在天穹镇的浅层和深层矿道中活动，也会出现在球冻温床。
+		TownMine: 在天穹镇的浅层和深层矿道中活动。
+		TownDeepMineAndHotbed: 出没于天穹镇深层矿道和球冻温床。
+		LanternMoon: 在灯笼月的夜间进攻中出现。
+	}
+	Acytaea: ""
+	Centipede.Flavor: ""
+	CorruptMoth.Flavor: ""
+}

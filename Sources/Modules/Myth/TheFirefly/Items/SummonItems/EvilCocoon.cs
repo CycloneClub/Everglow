@@ -13,6 +13,7 @@ public class EvilCocoon : ModItem
 		Item.useAnimation = 45;
 		Item.useTime = 60;
 		Item.useStyle = ItemUseStyleID.HoldUp;
+		Item.UseSound = SoundID.Roar;
 		Item.maxStack = 999;
 		Item.consumable = true;
 	}
@@ -27,12 +28,23 @@ public class EvilCocoon : ModItem
 
 	public override bool CanUseItem(Player player)
 	{
-		if (NPC.CountNPCS(ModContent.NPCType<CorruptMoth>()) < 1)
+		return !NPC.AnyNPCs(ModContent.NPCType<CorruptMoth>());
+	}
+
+	public override bool? UseItem(Player player)
+	{
+		if (!CanUseItem(player))
 		{
-			NPC.NewNPC(null, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y + 50, ModContent.NPCType<EvilPack>(), 0, 0f, 0f, 0f, 0f, 255);
-			Item.stack--;
-			return true;
+			return false;
 		}
-		return false;
+		if (Main.netMode == NetmodeID.SinglePlayer)
+		{
+			NPC.SpawnOnPlayer(player.whoAmI, ModContent.NPCType<CorruptMoth>());
+		}
+		else if (Main.netMode == NetmodeID.MultiplayerClient && player.whoAmI == Main.myPlayer)
+		{
+			NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: ModContent.NPCType<CorruptMoth>());
+		}
+		return true;
 	}
 }

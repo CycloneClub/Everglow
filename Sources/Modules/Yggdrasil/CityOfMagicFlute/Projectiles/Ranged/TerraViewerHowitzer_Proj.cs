@@ -1,4 +1,5 @@
 using Everglow.Yggdrasil.CityOfMagicFlute.Items.Weapons;
+using Terraria.Audio;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.CityOfMagicFlute.Projectiles.Ranged;
@@ -55,6 +56,7 @@ public class TerraViewerHowitzer_Proj : ModProjectile
 		Item item = player.HeldItem;
 		if (item.ModItem is TerraViewerHowitzer)
 		{
+			SoundEngine.PlaySound(SoundID.Item11.WithVolumeScale(0.45f) with { MaxInstances = 2 }, Projectile.Center);
 			Vector2 random = new Vector2(0, Main.rand.NextFloat(1f)).RotatedByRandom(6.283);
 			ScreenShaker Gsplayer = player.GetModPlayer<ScreenShaker>();
 			Gsplayer.FlyCamPosition = new Vector2(0, 2).RotatedByRandom(6.283);
@@ -87,6 +89,7 @@ public class TerraViewerHowitzer_Proj : ModProjectile
 		if (useCount == 10)
 		{
 			Vector2 summonPos = Projectile.Center + new Vector2(Main.rand.NextFloat(-500, 500), -1500);
+			SoundEngine.PlaySound(SoundID.Item61, Projectile.Center);
 			Projectile.NewProjectile(
 			shootSource,
 			summonPos,
@@ -152,6 +155,7 @@ public class TerraViewerHowitzer_Proj : ModProjectile
 				Item item = player.HeldItem;
 				if (item.ModItem is TerraViewerHowitzer)
 				{
+					SoundEngine.PlaySound(SoundID.Item61, Projectile.Center);
 					var p = Projectile.NewProjectileDirect(
 					shootSource,
 					Projectile.Center + offset + toMuzzle,

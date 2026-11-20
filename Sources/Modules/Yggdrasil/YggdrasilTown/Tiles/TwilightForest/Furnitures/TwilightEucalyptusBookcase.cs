@@ -8,6 +8,7 @@ public class TwilightEucalyptusBookcase : ModTile
 {
 	public override void SetStaticDefaults()
 	{
+		AddMapEntry(new Color(69, 36, 78), ModContent.GetInstance<Items.Placeables.Furniture.TwilightForest.TwilightEucalyptusBookcase>().DisplayName);
 		// Properties
 		Main.tileTable[Type] = true;
 		Main.tileSolidTop[Type] = true;

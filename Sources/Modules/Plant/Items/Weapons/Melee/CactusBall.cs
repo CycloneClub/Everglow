@@ -10,6 +10,8 @@ public class CactusBall : ModItem
 	{
 		Item.width = 50;
 		Item.height = 50;
+		Item.rare = ItemRarityID.Blue;
+		Item.value = Item.sellPrice(silver: 20);
 		Item.DamageType = DamageClass.Melee;
 		Item.UseSound = SoundID.Item1;
 		Item.useStyle = ItemUseStyleID.Shoot;

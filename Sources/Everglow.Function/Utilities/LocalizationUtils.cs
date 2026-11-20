@@ -2,10 +2,12 @@ namespace Everglow.Commons.Utilities;
 
 public static class LocalizationUtils
 {
+	public static string GetHabitatLocalizationKey(string habitat) => $"Mods.Everglow.{Categories.Bestiary}.Habitats.{habitat}";
+
 	public static class Categories
 	{
 		// System
-		public const string Bestiary = "System.Bestiary";
+		public const string Bestiary = "Bestiary";
 		public const string Biomes = "Biomes";
 		public const string Buffs = "Buffs";
 		public const string Cooldowns = "Cooldowns";

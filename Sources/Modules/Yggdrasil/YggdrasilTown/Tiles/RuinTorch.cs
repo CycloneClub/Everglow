@@ -10,6 +10,7 @@ public class RuinTorch : ModTile
 {
 	public override void SetStaticDefaults()
 	{
+		AddMapEntry(new Color(35, 58, 58), ModContent.GetInstance<Items.Placeables.RuinTorch_Item>().DisplayName);
 		// Properties
 		Main.tileLighted[Type] = true;
 		Main.tileFrameImportant[Type] = true;

@@ -143,6 +143,7 @@ public class PlannedItemDefaultsTests
 			Main.tileMerge[host.Type] ??= new bool[Main.tileSolid.Length];
 			tile.SetStaticDefaults();
 			Assert.AreEqual(Defaults<MiningPowerPickaxe_3>().pick, tile.MinPick);
+			Assert.AreEqual(Defaults<TwilightCrystalPickaxe>().pick, tile.MinPick, "The ordinary pickaxe route must also unlock mana ore.");
 			Assert.IsTrue(Defaults<MiningPowerPickaxe_2>().pick < tile.MinPick);
 			Assert.IsTrue(Defaults<EldamberPickaxe>().pick < tile.MinPick);
 			Assert.IsFalse(tile.CanExplode(0, 0), "Explosives must not bypass the ore's progression gate.");

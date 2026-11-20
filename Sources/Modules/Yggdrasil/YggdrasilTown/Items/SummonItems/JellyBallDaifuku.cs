@@ -22,34 +22,24 @@ public class JellyBallDaifuku : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 	}
 
-	public override bool ConsumeItem(Player player)
-	{
-		return true;
-	}
-
 	public override bool? UseItem(Player player)
 	{
-		return base.UseItem(player);
+		if (!CanUseItem(player))
+		{
+			return false;
+		}
+		if (Main.netMode != NetmodeID.MultiplayerClient)
+		{
+			var npc = NPC.NewNPCDirect(Item.GetNPCSource_FromThis(), player.Center + new Vector2(player.direction * 1800, 0), ModContent.NPCType<KingJellyBall>());
+			npc.velocity.X = -player.direction * 12;
+			npc.netUpdate = true;
+		}
+		return true;
 	}
 
 	public override bool CanUseItem(Player player)
 	{
-		int type = ModContent.NPCType<KingJellyBall>();
-		if (NPC.CountNPCS(type) <= 0)
-		{
-			var npc = NPC.NewNPCDirect(Item.GetNPCSource_FromThis(), player.Center + new Vector2(player.direction * 1800, 0), type);
-			npc.velocity.X = -player.direction * 12;
-			Item.stack--;
-			if (Item.stack <= 0)
-			{
-				Item.active = false;
-			}
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return !NPC.AnyNPCs(ModContent.NPCType<KingJellyBall>());
 	}
 
 	public override void AddRecipes()

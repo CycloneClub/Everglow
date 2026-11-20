@@ -11,7 +11,7 @@ public abstract class PlatformItem : ModItem
 
 	public override void SetStaticDefaults()
 	{
-		CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+		CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 200;
 	}
 
 	public override void SetDefaults()
@@ -21,5 +21,6 @@ public abstract class PlatformItem : ModItem
 		Item.value = 0;
 		Item.maxStack = Item.CommonMaxStack;
 		Item.useAnimation = 14;
+		Item.UseSound = SoundID.Dig;
 	}
 }

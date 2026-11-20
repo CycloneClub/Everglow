@@ -1,3 +1,6 @@
+using Everglow.Commons.Utilities;
+using Everglow.Yggdrasil.YggdrasilTown.Biomes;
+using Terraria.GameContent.Bestiary;
 using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
@@ -13,6 +16,13 @@ public class DarkGlimmeringRods : ModNPC
 		Main.npcFrameCount[NPC.type] = 8;
 	}
 
+	public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+	{
+		bestiaryEntry.Info.Add(ModContent.GetInstance<LampWoodForest>().ModBiomeBestiaryInfoElement);
+		bestiaryEntry.Info.Add(BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime);
+		bestiaryEntry.Info.Add(new FlavorTextBestiaryInfoElement(LocalizationUtils.GetHabitatLocalizationKey("LampWoodNight")));
+	}
+
 	public override void SetDefaults()
 	{
 		NPC.width = 40;
@@ -20,6 +30,7 @@ public class DarkGlimmeringRods : ModNPC
 		NPC.lifeMax = 120;
 		NPC.damage = 18;
 		NPC.defense = 8;
+		NPC.value = Item.buyPrice(silver: 1);
 		NPC.friendly = false;
 		NPC.aiStyle = -1;
 		NPC.knockBackResist = 0.2f;

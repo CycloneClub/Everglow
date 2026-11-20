@@ -15,7 +15,7 @@ public class GlowWoodChair : ModItem
 	{
 		Item.DefaultToPlaceableTile(ModContent.TileType<Tiles.Furnitures.GlowWoodChair>());
 		Item.value = 1500;
-		Item.maxStack = 99;
+		Item.maxStack = Item.CommonMaxStack;
 		Item.width = 20;
 		Item.height = 36;
 	}

@@ -13,6 +13,7 @@ public class ChinesePartitionLamp : ModTile, ITileFluentlyDrawn
 	{
 		Main.tileFrameImportant[Type] = true;
 		Main.tileNoAttach[Type] = true;
+		AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
 		TileObjectData.newTile.CopyFrom(TileObjectData.Style3x4);
 		Main.tileLighted[Type] = true;
 		TileObjectData.newTile.Direction = TileObjectDirection.PlaceLeft;
