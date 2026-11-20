@@ -1,5 +1,6 @@
 using Everglow.Commons.Utilities;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables.Banners;
 using Terraria.GameContent.Bestiary;
 using Everglow.Commons.Mechanics.Miscs;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
@@ -30,6 +31,8 @@ public class LightBulb : ModNPC
 
 	public override void SetDefaults()
 	{
+		Banner = Type;
+		BannerItem = ModContent.ItemType<LightBulbBanner>();
 		NPC.width = 42;
 		NPC.height = 42;
 		NPC.lifeMax = Main.masterMode ? 90 : Main.expertMode ? 65 : 40;

@@ -1,3 +1,5 @@
+using Everglow.Myth.LanternMoon.Items.Banners;
+
 namespace Everglow.Myth.LanternMoon.NPCs;
 
 public class RedPackBomber : LanternMoonNPC
@@ -9,6 +11,8 @@ public class RedPackBomber : LanternMoonNPC
 
 	public override void SetDefaults()
 	{
+		Banner = Type;
+		BannerItem = ModContent.ItemType<RedPackBomberBanner>();
 		NPC.damage = 100;
 		NPC.lifeMax = 300;
 		NPC.npcSlots = 14f;

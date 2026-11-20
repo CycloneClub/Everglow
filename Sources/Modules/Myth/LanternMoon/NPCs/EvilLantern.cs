@@ -1,4 +1,5 @@
 using Everglow.Commons.Utilities;
+using Everglow.Myth.LanternMoon.Items.Banners;
 using Terraria.GameContent.Bestiary;
 using Everglow.Myth.LanternMoon.Gores;
 using Terraria.DataStructures;
@@ -20,6 +21,8 @@ public class EvilLantern : LanternMoonNPC
 
 	public override void SetDefaults()
 	{
+		Banner = Type;
+		BannerItem = ModContent.ItemType<EvilLanternBanner>();
 		NPC.damage = 36;
 		NPC.lifeMax = 104;
 		NPC.npcSlots = 0.1f;

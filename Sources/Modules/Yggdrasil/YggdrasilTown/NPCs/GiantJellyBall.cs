@@ -1,5 +1,6 @@
 using Everglow.Commons.Utilities;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables.Banners;
 using Terraria.GameContent.Bestiary;
 using Everglow.Commons.CustomTiles;
 using Everglow.Yggdrasil.Common;
@@ -28,6 +29,8 @@ public class GiantJellyBall : ModNPC
 
 	public override void SetDefaults()
 	{
+		Banner = Type;
+		BannerItem = ModContent.ItemType<GiantJellyBallBanner>();
 		NPC.width = 80;
 		NPC.height = 80;
 		NPC.aiStyle = -1;

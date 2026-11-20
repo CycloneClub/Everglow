@@ -1,5 +1,6 @@
 using Everglow.Commons.Utilities;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables.Banners;
 using Terraria.GameContent.Bestiary;
 using Everglow.Commons.Coroutines;
 using Everglow.Commons.Templates.Enemies;
@@ -23,6 +24,8 @@ public class CarapaceCaterpillar : Caterpillar
 	public override void SetDefaults()
 	{
 		base.SetDefaults();
+		Banner = Type;
+		BannerItem = ModContent.ItemType<CarapaceCaterpillarBanner>();
 		SegmentBehavioralSize = 16;
 		SegmentHitBoxSize = 30;
 		SegmentCount = 10;

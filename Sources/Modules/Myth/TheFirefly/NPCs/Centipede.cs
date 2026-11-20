@@ -1,4 +1,5 @@
 using Everglow.Myth.Common;
+using Everglow.Myth.TheFirefly.Items.Banners;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -33,6 +34,8 @@ internal class CentipedeHead : FireWormHead
 
 	public override void SetDefaults()
 	{
+		Banner = Type;
+		BannerItem = ModContent.ItemType<CentipedeHeadBanner>();
 		// Head is 10 defence, body 20, tail 30.
 		NPC.netAlways = true;
 		NPC.noGravity = true;
@@ -526,6 +529,8 @@ internal class CentipedeBody : FireWormBody
 
 	public override void SetDefaults()
 	{
+		Banner = ModContent.NPCType<CentipedeHead>();
+		BannerItem = ModContent.ItemType<CentipedeHeadBanner>();
 		NPC.netAlways = true;
 		NPC.noGravity = true;
 		NPC.noTileCollide = true;
@@ -670,6 +675,8 @@ internal class CentipedeTail : FireWormTail
 
 	public override void SetDefaults()
 	{
+		Banner = ModContent.NPCType<CentipedeHead>();
+		BannerItem = ModContent.ItemType<CentipedeHeadBanner>();
 		NPC.netAlways = true;
 		NPC.noGravity = true;
 		NPC.noTileCollide = true;

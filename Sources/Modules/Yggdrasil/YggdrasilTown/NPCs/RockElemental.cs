@@ -1,5 +1,6 @@
 using Everglow.Commons.Utilities;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables.Banners;
 using Terraria.GameContent.Bestiary;
 using Everglow.Commons.CustomTiles;
 using Everglow.Commons.DataStructures;
@@ -41,6 +42,8 @@ public class RockElemental : ModNPC
 
 	public override void SetDefaults()
 	{
+		Banner = Type;
+		BannerItem = ModContent.ItemType<RockElementalBanner>();
 		NPC.width = 64;
 		NPC.height = 64;
 		NPC.lifeMax = 360;

@@ -1,4 +1,5 @@
 using Everglow.Commons.Utilities;
+using Everglow.Myth.LanternMoon.Items.Banners;
 using Terraria.GameContent.Bestiary;
 using Everglow.Commons.DataStructures;
 using Everglow.Commons.Physics.MassSpringSystem;
@@ -25,6 +26,8 @@ public class WizardLantern : LanternMoonNPC
 
 	public override void SetDefaults()
 	{
+		Banner = Type;
+		BannerItem = ModContent.ItemType<WizardLanternBanner>();
 		NPC.damage = 88;
 		NPC.lifeMax = 1605;
 		NPC.npcSlots = 2.5f;

@@ -1,5 +1,6 @@
 using Everglow.Commons.Utilities;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables.Banners;
 using Terraria.GameContent.Bestiary;
 using Everglow.Commons.Templates.Enemies;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts.TwilightForest;
@@ -34,6 +35,8 @@ public class AncientPhantom_Magic : Fighter
 
 	public override void SetDefaults()
 	{
+		Banner = Type;
+		BannerItem = ModContent.ItemType<AncientPhantom_MagicBanner>();
 		NPC.width = 16;
 		NPC.height = 40;
 		NPC.lifeMax = 110;

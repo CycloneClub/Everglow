@@ -1,5 +1,6 @@
 using Everglow.Commons.Utilities;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables.Banners;
 using Terraria.GameContent.Bestiary;
 using Everglow.Commons.Coroutines;
 using Everglow.Commons.Mechanics.Miscs;
@@ -24,6 +25,8 @@ public class ShadowstrikeCaterpillar : Caterpillar
 	public override void SetDefaults()
 	{
 		base.SetDefaults();
+		Banner = Type;
+		BannerItem = ModContent.ItemType<ShadowstrikeCaterpillarBanner>();
 		NPC.defense = 6;
 		SegmentBehavioralSize = 18;
 		SegmentHitBoxSize = 40;

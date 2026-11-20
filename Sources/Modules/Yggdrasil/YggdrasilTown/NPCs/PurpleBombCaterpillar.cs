@@ -1,5 +1,6 @@
 using Everglow.Commons.Utilities;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables.Banners;
 using Terraria.GameContent.Bestiary;
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Enemies;
@@ -40,6 +41,8 @@ public class PurpleBombCaterpillar : ModNPC
 
 	public override void SetDefaults()
 	{
+		Banner = Type;
+		BannerItem = ModContent.ItemType<PurpleBombCaterpillarBanner>();
 		NPC.width = 88;
 		NPC.height = 36;
 		NPC.lifeMax = 70;

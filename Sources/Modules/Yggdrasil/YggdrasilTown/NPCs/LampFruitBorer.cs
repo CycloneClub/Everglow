@@ -1,5 +1,6 @@
 using Everglow.Commons.Utilities;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables.Banners;
 using Terraria.GameContent.Bestiary;
 using Everglow.Commons.Coroutines;
 using Everglow.Commons.Mechanics.Miscs;
@@ -23,6 +24,8 @@ public class LampFruitBorer : Caterpillar
 	public override void SetDefaults()
 	{
 		base.SetDefaults();
+		Banner = Type;
+		BannerItem = ModContent.ItemType<LampFruitBorerBanner>();
 		NPC.defense = 4;
 
 		SegmentBehavioralSize = 10;

@@ -1,3 +1,4 @@
+using Everglow.Myth.TheFirefly.Items.Banners;
 using Microsoft.Xna.Framework.Audio;
 using Terraria;
 using Terraria.Audio;
@@ -14,6 +15,8 @@ public class FireflyPiranhaInfected_Small : ModNPC
 
 	public override void SetDefaults()
 	{
+		Banner = ModContent.NPCType<FireflyPiranhaInfected>();
+		BannerItem = ModContent.ItemType<FireflyPiranhaInfectedBanner>();
 		NPC.damage = 30;
 		NPC.width = 44;
 		NPC.height = 40;

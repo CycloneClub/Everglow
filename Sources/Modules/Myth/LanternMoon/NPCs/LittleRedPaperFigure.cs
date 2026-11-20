@@ -1,4 +1,5 @@
 using Everglow.Commons.Utilities;
+using Everglow.Myth.LanternMoon.Items.Banners;
 using Terraria.GameContent.Bestiary;
 using Everglow.Commons.VFX.CommonVFXDusts;
 using Everglow.Myth.LanternMoon.Buffs;
@@ -43,6 +44,8 @@ public class LittleRedPaperFigure : LanternMoonNPC
 
 	public override void SetDefaults()
 	{
+		Banner = Type;
+		BannerItem = ModContent.ItemType<LittleRedPaperFigureBanner>();
 		NPC.friendly = false;
 		NPC.damage = 25;
 		NPC.lifeMax = 150;

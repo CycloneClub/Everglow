@@ -1,3 +1,4 @@
+using Everglow.Myth.TheFirefly.Items.Banners;
 using Terraria;
 using Terraria.DataStructures;
 
@@ -12,6 +13,8 @@ public class FireflyPiranha : ModNPC
 
 	public override void SetDefaults()
 	{
+		Banner = Type;
+		BannerItem = ModContent.ItemType<FireflyPiranhaBanner>();
 		NPC.damage = 24;
 		NPC.width = 74;
 		NPC.height = 64;

@@ -1,5 +1,6 @@
 using Everglow.Commons.Utilities;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables.Banners;
 using Terraria.GameContent.Bestiary;
 using Everglow.Yggdrasil.Common;
 using Terraria.DataStructures;
@@ -22,6 +23,8 @@ public class LeafcutterAnt : ModNPC
 
 	public override void SetDefaults()
 	{
+		Banner = Type;
+		BannerItem = ModContent.ItemType<LeafcutterAntBanner>();
 		NPC.width = 50;
 		NPC.height = 30;
 		NPC.lifeMax = 65;

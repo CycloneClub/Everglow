@@ -1,5 +1,6 @@
 using Everglow.Commons.Utilities;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables.Banners;
 using Terraria.GameContent.Bestiary;
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables.Ores;
@@ -25,6 +26,8 @@ public class CyanOreBeetle : ModNPC
 
 	public override void SetDefaults()
 	{
+		Banner = Type;
+		BannerItem = ModContent.ItemType<CyanOreBeetleBanner>();
 		NPC.width = 54;
 		NPC.height = 42;
 		NPC.lifeMax = 50;

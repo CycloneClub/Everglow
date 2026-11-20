@@ -1,5 +1,6 @@
 using Everglow.Commons.Utilities;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables.Banners;
 using Terraria.GameContent.Bestiary;
 using Everglow.Yggdrasil.YggdrasilTown.NPCSpawn;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Enemies;
@@ -46,6 +47,8 @@ public class EucaLeafy : ModNPC
 
 	public override void SetDefaults()
 	{
+		Banner = Type;
+		BannerItem = ModContent.ItemType<EucaLeafyBanner>();
 		NPC.width = 30;
 		NPC.height = 30;
 		NPC.lifeMax = 75;

@@ -33,6 +33,7 @@ public class CrystalCell_Small : ModNPC
 	public override void SetStaticDefaults()
 	{
 		Main.npcFrameCount[NPC.type] = 6;
+		NPCID.Sets.PositiveNPCTypesExcludedFromDeathTally[Type] = true;
 		NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.Confused] = true;
 	}
 
@@ -44,6 +45,7 @@ public class CrystalCell_Small : ModNPC
 
 	public override void SetDefaults()
 	{
+		Banner = ModContent.NPCType<CrystalCell>();
 		NPC.width = 16;
 		NPC.height = 16;
 		NPC.lifeMax = 18;

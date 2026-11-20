@@ -1,5 +1,6 @@
 using Everglow.Commons.Utilities;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables.Banners;
 using Terraria.GameContent.Bestiary;
 using Everglow.Commons.DataStructures;
 using Everglow.Yggdrasil.Common;
@@ -25,6 +26,8 @@ public class DarkGlimmeringRods : ModNPC
 
 	public override void SetDefaults()
 	{
+		Banner = Type;
+		BannerItem = ModContent.ItemType<DarkGlimmeringRodsBanner>();
 		NPC.width = 40;
 		NPC.height = 40;
 		NPC.lifeMax = 120;

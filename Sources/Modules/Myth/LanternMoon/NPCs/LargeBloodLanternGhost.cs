@@ -1,4 +1,5 @@
 using Everglow.Commons.Utilities;
+using Everglow.Myth.LanternMoon.Items.Banners;
 using Terraria.GameContent.Bestiary;
 using Everglow.Myth.LanternMoon.Gores;
 using Everglow.Myth.LanternMoon.Projectiles.PerWave15;
@@ -36,6 +37,8 @@ public class LargeBloodLanternGhost : LanternMoonNPC
 
 	public override void SetDefaults()
 	{
+		Banner = Type;
+		BannerItem = ModContent.ItemType<LargeBloodLanternGhostBanner>();
 		NPC.damage = 75;
 		NPC.lifeMax = 1260;
 		NPC.npcSlots = 2.5f;

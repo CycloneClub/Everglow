@@ -1,5 +1,6 @@
 using Everglow.Commons.Utilities;
 using Everglow.Yggdrasil.YggdrasilTown.Biomes;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables.Banners;
 using Terraria.GameContent.Bestiary;
 using Everglow.Yggdrasil.Common;
 using Terraria.DataStructures;
@@ -30,6 +31,8 @@ public class UmbrellaTailThief : ModNPC
 
 	public override void SetDefaults()
 	{
+		Banner = Type;
+		BannerItem = ModContent.ItemType<UmbrellaTailThiefBanner>();
 		NPC.width = 30;
 		NPC.height = 30;
 		NPC.lifeMax = 75;

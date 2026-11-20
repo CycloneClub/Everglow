@@ -1,4 +1,5 @@
 using Everglow.Myth.Common;
+using Everglow.Myth.TheFirefly.Items.Banners;
 using Everglow.Myth.TheFirefly.Items.Materials;
 using Terraria.DataStructures;
 using Terraria.GameContent.ItemDropRules;
@@ -14,6 +15,8 @@ public class Dendroid_Normal : ModNPC
 
 	public override void SetDefaults()
 	{
+		Banner = Type;
+		BannerItem = ModContent.ItemType<Dendroid_NormalBanner>();
 		NPC.damage = 22;
 		NPC.width = 40;
 		NPC.height = 56;
