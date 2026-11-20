@@ -4,8 +4,6 @@ namespace Everglow.Commons.Templates;
 
 public abstract class BannerItemBase : ModItem
 {
-	public override string Texture => ModAsset.BannerItemBase_Mod;
-
 	public virtual int BannerTileType => ModContent.TileType<BannerTile>();
 
 	public virtual int BannerTileStyle => 0;
