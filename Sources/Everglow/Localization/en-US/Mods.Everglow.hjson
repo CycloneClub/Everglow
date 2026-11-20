@@ -1,5 +1,6 @@
 // Shared localization entries; content keys live in their category files.
 Common.Message.HasAwoken: has awoken!
+Common.BannerNameFormat: "{0} Banner"
 
 InfoDisplays: {
 	FoodSatietyInfoDisplay: {

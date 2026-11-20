@@ -1,5 +1,6 @@
 // 共享本地化条目；游戏内容条目位于各自的分类文件中。
 Common.Message.HasAwoken: 已苏醒！
+Common.BannerNameFormat: "{0}旗帜"
 
 InfoDisplays: {
 	FoodSatietyInfoDisplay: {
