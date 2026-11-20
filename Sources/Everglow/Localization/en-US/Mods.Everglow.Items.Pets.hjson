@@ -3,6 +3,15 @@ Badr: {
 	Tooltip: ""
 }
 
+Badr_Extinguished: {
+	DisplayName: "Extinguished Balder"
+	Tooltip:
+		'''
+		The mining lamp Herm left behind
+		Craft beside the furnace to rekindle its light
+		'''
+}
+
 LampWoodSeed: {
 	DisplayName: Lamp Wood Seed
 	Tooltip: ""

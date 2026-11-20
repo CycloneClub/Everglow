@@ -4,7 +4,6 @@ using Everglow.Commons.Mechanics.Quest.Core.Dialogue;
 using Everglow.Commons.Mechanics.Quest.WorldSide;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Abstractions;
 using Everglow.Commons.Mechanics.Quest.WorldSide.Objectives;
-using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Miscs;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Pets;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Tools;
@@ -82,7 +81,7 @@ public sealed class Herm_Quest : WorldQuestBase
 			.Add(Delivery)
 			.AddBranch(
 				[Search, farewell.WithRewards(new Item(ModContent.ItemType<Badr>()))],
-				[lateSearch, takeExtinguishedLamp.WithRewards(new Item(ModContent.ItemType<ExtinguishedBadr>()))])
+				[lateSearch, takeExtinguishedLamp.WithRewards(new Item(ModContent.ItemType<Badr_Extinguished>()))])
 			.Add(report);
 
 		RewardItems.Add(new Item(ModContent.ItemType<MiningPowerPickaxe>()));

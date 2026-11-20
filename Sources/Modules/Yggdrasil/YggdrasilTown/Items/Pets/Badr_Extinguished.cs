@@ -1,14 +1,11 @@
 using Everglow.Commons.Utilities;
-using Everglow.Yggdrasil.YggdrasilTown.Items.Pets;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles.FurnaceTiles;
 
-namespace Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
+namespace Everglow.Yggdrasil.YggdrasilTown.Items.Pets;
 
-public sealed class ExtinguishedBadr : ModItem
+public sealed class Badr_Extinguished : ModItem
 {
-	public override string LocalizationCategory => LocalizationUtils.Categories.Materials;
-
-	public override string Texture => ModAsset.BrokenMiningLamp_Mod;
+	public override string LocalizationCategory => LocalizationUtils.Categories.Pets;
 
 	public override void SetDefaults()
 	{
