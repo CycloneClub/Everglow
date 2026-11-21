@@ -3,6 +3,11 @@ CorruptMothTreasureBag: {
 	Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
 }
 
+KingJellyBallTreasureBag: {
+	DisplayName: 球冻王宝藏袋
+	Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
+}
+
 SquamousShellTreasureBag: {
 	DisplayName: 龙鳞古壳宝藏袋
 	Tooltip: "{$CommonItemTooltip.RightClickToOpen}"

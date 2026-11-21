@@ -1417,6 +1417,7 @@ public class CorruptMoth : ModNPC
 
 	public override void ModifyNPCLoot(NPCLoot npcLoot)
 	{
+		npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<CorruptMothTrophy>(), 10));
 		npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<CorruptMothTreasureBag>()));
 		npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<MothRelic>()));
 

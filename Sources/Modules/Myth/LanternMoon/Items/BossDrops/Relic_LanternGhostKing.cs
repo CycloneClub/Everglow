@@ -1,6 +1,4 @@
-using Everglow.Myth.LanternMoon.Tiles;
-
-namespace Everglow.Myth.LanternMoon.Items;
+namespace Everglow.Myth.LanternMoon.Items.BossDrops;
 
 public class Relic_LanternGhostKing : ModItem
 {
@@ -22,6 +20,6 @@ public class Relic_LanternGhostKing : ModItem
 		Item.consumable = true;
 		Item.useTurn = true;
 		Item.autoReuse = true;
-		Item.createTile = ModContent.TileType<Relic_LanternGhostKing_Tile>();
+		Item.createTile = ModContent.TileType<Tiles.BossDrops.Relic_LanternGhostKing_Tile>();
 	}
 }

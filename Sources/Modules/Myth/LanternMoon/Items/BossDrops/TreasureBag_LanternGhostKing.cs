@@ -2,7 +2,7 @@ using Everglow.Myth.LanternMoon.Items.Weapons;
 using Terraria.GameContent;
 using Terraria.GameContent.Creative;
 
-namespace Everglow.Myth.LanternMoon.Items;
+namespace Everglow.Myth.LanternMoon.Items.BossDrops;
 
 public class TreasureBag_LanternGhostKing : ModItem
 {

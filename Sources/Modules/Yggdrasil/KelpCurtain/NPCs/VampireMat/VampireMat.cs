@@ -3,7 +3,7 @@ using Everglow.Commons.DataStructures;
 using Everglow.Commons.Mechanics.Miscs;
 using Everglow.Commons.Physics.MassSpringSystem;
 using Everglow.Yggdrasil.Common;
-using Everglow.Yggdrasil.KelpCurtain.Items.Consumables;
+using Everglow.Yggdrasil.KelpCurtain.Items.BossDrops;
 using Everglow.Yggdrasil.KelpCurtain.Items.Misc;
 using Everglow.Yggdrasil.KelpCurtain.Projectiles.Enemies;
 using Everglow.Yggdrasil.KelpCurtain.VFXs.VampireMat;
@@ -1001,6 +1001,8 @@ public class VampireMat : ModNPC
 	public override void ModifyNPCLoot(NPCLoot npcLoot)
 	{
 		npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<VampireMatTreasureBag>()));
+		npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<VampireMatRelic>()));
+		npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<VampireMatTrophy>(), 10));
 		npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FleshOfVampireMat>(), 1, 1, 1));
 		base.ModifyNPCLoot(npcLoot);
 	}

@@ -355,6 +355,11 @@ CookwareRack_Item: {
 	Tooltip: ""
 }
 
+CorruptMothTrophy: {
+	DisplayName: 腐檀巨蛾纪念章
+	Tooltip: ""
+}
+
 CorruptOrbStonePost: {
 	DisplayName: 腐化法术石柱
 	Tooltip: ""
@@ -1173,6 +1178,16 @@ KelpMoss_LargeCreate: {
 	Tooltip: 开发者物品
 }
 
+KingJellyBallRelic: {
+	DisplayName: 球冻王圣物
+	Tooltip: ""
+}
+
+KingJellyBallTrophy: {
+	DisplayName: 球冻王纪念章
+	Tooltip: ""
+}
+
 Lamorch_Item: {
 	DisplayName: 灯把
 	Tooltip: ""
@@ -1295,6 +1310,11 @@ LampWoodToilet: {
 
 LampWoodWall_Item: {
 	DisplayName: 灯木墙
+	Tooltip: ""
+}
+
+LanternGhostKingTrophy: {
+	DisplayName: 灯笼鬼王纪念章
 	Tooltip: ""
 }
 
@@ -2216,6 +2236,16 @@ VampireMatCave_BoardSign_Item: {
 
 VampireMatCave_HangingSign_Item: {
 	DisplayName: 吸血魔毯洞穴吊牌
+	Tooltip: ""
+}
+
+VampireMatRelic: {
+	DisplayName: 吸血魔毯圣物
+	Tooltip: ""
+}
+
+VampireMatTrophy: {
+	DisplayName: 吸血魔毯纪念章
 	Tooltip: ""
 }
 

@@ -110,10 +110,20 @@ public class TownNpcLootTests
 	public void JellyKingMountHasSeparateNormalAndExpertProbabilities()
 	{
 		var rates = Rates<KingJellyBall>().Where(x => x.itemId == ModContent.ItemType<JellyBubbleItem>()).ToArray();
-		Assert.AreEqual(2, rates.Length);
-		float normal = rates.Single(x => x.conditions.Any(c => c is Conditions.NotExpert)).dropRate;
-		float expert = rates.Single(x => x.conditions.Any(c => c is Conditions.IsExpert)).dropRate;
-		Assert.IsTrue(expert > normal && normal > 0f);
+		Assert.AreEqual(1, rates.Length);
+		Assert.IsTrue(rates[0].conditions.Any(c => c is Conditions.NotExpert));
+		Assert.AreEqual(0.25f, rates[0].dropRate, 0.00001f);
+
+		var bag = (KingJellyBallTreasureBag)RuntimeHelpers.GetUninitializedObject(typeof(KingJellyBallTreasureBag));
+		var loot = new ItemLoot(1, new ItemDropDatabase());
+		bag.ModifyItemLoot(loot);
+		List<DropRateInfo> expert = [];
+		foreach (var rule in loot.Get())
+		{
+			rule.ReportDroprates(expert, new DropRateInfoChainFeed(1));
+		}
+
+		Assert.AreEqual(0.5f, expert.Single(x => x.itemId == ModContent.ItemType<JellyBubbleItem>()).dropRate, 0.00001f);
 	}
 
 	[TestMethod]

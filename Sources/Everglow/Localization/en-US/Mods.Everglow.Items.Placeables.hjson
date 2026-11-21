@@ -343,6 +343,11 @@ CookwareRack_Item: {
 	Tooltip: ""
 }
 
+CorruptMothTrophy: {
+	DisplayName: Corrupt Moth Trophy
+	Tooltip: ""
+}
+
 CorruptOrbStonePost: {
 	DisplayName: Corrupt Orb Stone Post
 	Tooltip: ""
@@ -1153,6 +1158,16 @@ KelpMoss_LargeCreate: {
 	Tooltip: ""
 }
 
+KingJellyBallRelic: {
+	DisplayName: King Jelly Ball Relic
+	Tooltip: ""
+}
+
+KingJellyBallTrophy: {
+	DisplayName: King Jelly Ball Trophy
+	Tooltip: ""
+}
+
 Lamorch_Item: {
 	DisplayName: Lamorch
 	Tooltip: ""
@@ -1275,6 +1290,11 @@ LampWoodToilet: {
 
 LampWoodWall_Item: {
 	DisplayName: Lampwood Wall
+	Tooltip: ""
+}
+
+LanternGhostKingTrophy: {
+	DisplayName: Lantern Ghost King Trophy
 	Tooltip: ""
 }
 
@@ -2180,6 +2200,16 @@ VampireMatCave_BoardSign_Item: {
 
 VampireMatCave_HangingSign_Item: {
 	DisplayName: Vampire Mat Cave Hanging Sign
+	Tooltip: ""
+}
+
+VampireMatRelic: {
+	DisplayName: Vampire Mat Relic
+	Tooltip: ""
+}
+
+VampireMatTrophy: {
+	DisplayName: Vampire Mat Trophy
 	Tooltip: ""
 }
 

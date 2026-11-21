@@ -6,6 +6,7 @@ using Everglow.Yggdrasil.Netcode;
 using Everglow.Yggdrasil.Common;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Accessories;
+using Everglow.Yggdrasil.YggdrasilTown.Items.BossDrops;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Armors.JellyBall;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Mounts;
@@ -850,9 +851,15 @@ public class KingJellyBall : ModNPC
 
 	public override void ModifyNPCLoot(NPCLoot npcLoot)
 	{
-		npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<CrystalNucleusOfJellyKing>(), 1, 4, 6));
-		npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<JellyBallCube>(), 1, 24, 40));
-		npcLoot.Add(ItemDropRule.OneFromOptionsNotScalingWithLuck(1, ModContent.ItemType<JellyBallInhibitor>(), ModContent.ItemType<MysteriousTablet>(), ModContent.ItemType<JellyBallBathingCap>()));
-		npcLoot.Add(ItemDropRule.NormalvsExpertNotScalingWithLuck(ModContent.ItemType<JellyBubbleItem>(), 4, 2));
+		npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<KingJellyBallTreasureBag>()));
+		npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<KingJellyBallRelic>()));
+		npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<KingJellyBallTrophy>(), 10));
+
+		var normal = new LeadingConditionRule(new Conditions.NotExpert());
+		normal.OnSuccess(ItemDropRule.Common(ModContent.ItemType<CrystalNucleusOfJellyKing>(), 1, 4, 6));
+		normal.OnSuccess(ItemDropRule.Common(ModContent.ItemType<JellyBallCube>(), 1, 24, 40));
+		normal.OnSuccess(ItemDropRule.OneFromOptionsNotScalingWithLuck(1, ModContent.ItemType<JellyBallInhibitor>(), ModContent.ItemType<MysteriousTablet>(), ModContent.ItemType<JellyBallBathingCap>()));
+		normal.OnSuccess(ItemDropRule.Common(ModContent.ItemType<JellyBubbleItem>(), 4));
+		npcLoot.Add(normal);
 	}
 }
