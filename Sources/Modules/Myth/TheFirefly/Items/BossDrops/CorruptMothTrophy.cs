@@ -1,12 +1,14 @@
+using BossDropTile = Everglow.Myth.TheFirefly.Tiles.BossDrops.CorruptMothTrophy;
+
 namespace Everglow.Myth.TheFirefly.Items.BossDrops;
 
 public class CorruptMothTrophy : ModItem
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Placeables;
+	public override string LocalizationCategory => LocalizationUtils.Categories.Placeables;
 
 	public override void SetDefaults()
 	{
-		Item.DefaultToPlaceableTile(ModContent.TileType<Tiles.BossDrops.CorruptMothTrophy>());
+		Item.DefaultToPlaceableTile(ModContent.TileType<BossDropTile>());
 
 		Item.width = 32;
 		Item.height = 32;

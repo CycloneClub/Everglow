@@ -10,7 +10,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.BossDrops;
 
 public class KingJellyBallTreasureBag : ModItem
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.TreasureBags;
+	public override string LocalizationCategory => LocalizationUtils.Categories.TreasureBags;
 
 	public override void SetDefaults()
 	{

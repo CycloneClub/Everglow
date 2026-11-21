@@ -1,12 +1,14 @@
+using BossDropTile = Everglow.Yggdrasil.YggdrasilTown.Tiles.BossDrops.KingJellyBallRelic;
+
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.BossDrops;
 
 public class KingJellyBallRelic : ModItem
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Placeables;
+	public override string LocalizationCategory => LocalizationUtils.Categories.Placeables;
 
 	public override void SetDefaults()
 	{
-		Item.DefaultToPlaceableTile(ModContent.TileType<Tiles.BossDrops.KingJellyBallRelic>(), 0);
+		Item.DefaultToPlaceableTile(ModContent.TileType<BossDropTile>(), 0);
 
 		Item.width = 30;
 		Item.height = 40;

@@ -1,12 +1,14 @@
+using BossDropTile = Everglow.Myth.LanternMoon.Tiles.BossDrops.LanternGhostKingTrophy;
+
 namespace Everglow.Myth.LanternMoon.Items.BossDrops;
 
 public class LanternGhostKingTrophy : ModItem
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Placeables;
+	public override string LocalizationCategory => LocalizationUtils.Categories.Placeables;
 
 	public override void SetDefaults()
 	{
-		Item.DefaultToPlaceableTile(ModContent.TileType<Tiles.BossDrops.LanternGhostKingTrophy>());
+		Item.DefaultToPlaceableTile(ModContent.TileType<BossDropTile>());
 
 		Item.width = 32;
 		Item.height = 32;
