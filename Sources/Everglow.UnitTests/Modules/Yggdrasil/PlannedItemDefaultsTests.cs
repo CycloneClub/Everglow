@@ -4,10 +4,12 @@ using System.Runtime.CompilerServices;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Tools;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Ammos;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Eldamber;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Potions;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.Eldamber;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Everglow.Yggdrasil.YggdrasilTown.Tiles;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
@@ -131,15 +133,21 @@ public class PlannedItemDefaultsTests
 		var host = new StoneScaleWood();
 		var hostInstance = typeof(ContentInstance<StoneScaleWood>).GetProperty(nameof(ContentInstance<StoneScaleWood>.Instance))!;
 		var dustInstance = typeof(ContentInstance<ManaSpringOreDust>).GetProperty(nameof(ContentInstance<ManaSpringOreDust>.Instance))!;
+		var oreInstance = typeof(ContentInstance<ManaSpringOre>).GetProperty(nameof(ContentInstance<ManaSpringOre>.Instance))!;
 		object? oldHost = hostInstance.GetValue(null);
 		object? oldDust = dustInstance.GetValue(null);
+		object? oldOre = oreInstance.GetValue(null);
 		bool[]? oldMergeRow = Main.tileMerge[host.Type];
 		bool oldMerge = oldMergeRow?[tile.Type] ?? false;
+		bool oldSpelunker = Main.tileSpelunker[tile.Type];
+		short oldPriority = Main.tileOreFinderPriority[tile.Type];
+		bool oldOreSet = TileID.Sets.Ore[tile.Type];
 		try
 		{
 			Main.dedServ = true;
 			hostInstance.SetValue(null, host);
 			dustInstance.SetValue(null, new ManaSpringOreDust());
+			oreInstance.SetValue(null, new NamedManaSpringOre());
 			Main.tileMerge[host.Type] ??= new bool[Main.tileSolid.Length];
 			tile.SetStaticDefaults();
 			Assert.AreEqual(Defaults<MiningPowerPickaxe_3>().pick, tile.MinPick);
@@ -160,8 +168,12 @@ public class PlannedItemDefaultsTests
 				oldMergeRow[tile.Type] = oldMerge;
 			}
 			Main.tileMerge[host.Type] = oldMergeRow!;
+			Main.tileSpelunker[tile.Type] = oldSpelunker;
+			Main.tileOreFinderPriority[tile.Type] = oldPriority;
+			TileID.Sets.Ore[tile.Type] = oldOreSet;
 			hostInstance.SetValue(null, oldHost);
 			dustInstance.SetValue(null, oldDust);
+			oreInstance.SetValue(null, oldOre);
 		}
 	}
 
@@ -177,5 +189,11 @@ public class PlannedItemDefaultsTests
 		Assert.IsTrue(Defaults<EldamberPickaxe>().pick > 0);
 		Assert.IsTrue(Defaults<EldamberShortsword>().shoot > ProjectileID.None && Defaults<EldamberShortsword>().noMelee);
 		Assert.IsTrue(Defaults<EldamberBow>().shootSpeed > 0);
+	}
+
+	// Map registration reads the item display name. A real name needs a loaded mod and language manager.
+	private sealed class NamedManaSpringOre : ManaSpringOre
+	{
+		public override LocalizedText DisplayName => LocalizedText.Empty;
 	}
 }
