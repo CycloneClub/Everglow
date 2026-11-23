@@ -1,6 +1,6 @@
 using Everglow.Commons.Utilities;
 
-namespace Everglow.Yggdrasil.Common.Items;
+namespace Everglow.Commons.Templates;
 
 /// <summary>危险墙物品共用放置设置与原生骷髅标记；安全物品和获取配方保持独立。</summary>
 public abstract class UnsafeWallItem<TWall> : ModItem

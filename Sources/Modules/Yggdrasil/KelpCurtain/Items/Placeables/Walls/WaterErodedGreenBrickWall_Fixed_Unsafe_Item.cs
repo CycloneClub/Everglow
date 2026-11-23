@@ -1,4 +1,4 @@
-using Everglow.Yggdrasil.Common.Items;
+using Everglow.Commons.Templates;
 using Everglow.Yggdrasil.KelpCurtain.Walls;
 
 namespace Everglow.Yggdrasil.KelpCurtain.Items.Placeables.Walls;
