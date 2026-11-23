@@ -153,6 +153,7 @@ public class GildingRevolver_Hold : HandheldProjectile
 
 	private void Shoot()
 	{
+		SoundEngine.PlaySound(SoundID.Item41, Projectile.Center);
 		if (Projectile.owner != Main.myPlayer)
 		{
 			return;
