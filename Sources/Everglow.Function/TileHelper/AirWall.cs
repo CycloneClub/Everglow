@@ -19,10 +19,8 @@ public class AirWallItem : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.useTime = 5;
-		Item.useAnimation = 5;
-		Item.createWall = ModContent.WallType<AirWall>();
-		Item.useStyle = ItemUseStyleID.Swing;
-		Item.autoReuse = true;
+		Item.DefaultToPlaceableWall(ModContent.WallType<AirWall>());
+		Item.consumable = false;
+		Item.maxStack = 1;
 	}
 }
