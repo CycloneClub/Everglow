@@ -6,10 +6,8 @@ public class AirTileItem : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.useTime = 5;
-		Item.useAnimation = 5;
-		Item.createTile = ModContent.TileType<AirTile>();
-		Item.useStyle = ItemUseStyleID.Swing;
-		Item.autoReuse = true;
+		Item.DefaultToPlaceableTile(ModContent.TileType<AirTile>());
+		Item.consumable = false;
+		Item.maxStack = 1;
 	}
 }

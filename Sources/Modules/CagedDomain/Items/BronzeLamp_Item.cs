@@ -8,17 +8,9 @@ public class BronzeLamp_Item : ModItem
 
 	public override void SetDefaults()
 	{
+		Item.DefaultToPlaceableTile(ModContent.TileType<BronzeLamp>());
 		Item.width = 10;
 		Item.height = 30;
-		Item.maxStack = Item.CommonMaxStack;
-		Item.createTile = ModContent.TileType<BronzeLamp>();
-		Item.placeStyle = 0;
-		Item.useTurn = true;
-		Item.autoReuse = true;
-		Item.useAnimation = 15;
-		Item.useTime = 15;
-		Item.useStyle = ItemUseStyleID.Swing;
-		Item.consumable = true;
 		Item.value = Item.sellPrice(0, 0, 1, 0);
 		Item.rare = ItemRarityID.White;
 	}

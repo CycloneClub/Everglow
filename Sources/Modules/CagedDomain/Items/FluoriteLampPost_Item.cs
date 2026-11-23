@@ -8,17 +8,8 @@ public class FluoriteLampPost_Item : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.width = 14;
+		Item.DefaultToPlaceableTile(ModContent.TileType<FluoriteLampPost>());
 		Item.height = 48;
-		Item.maxStack = Item.CommonMaxStack;
-		Item.createTile = ModContent.TileType<FluoriteLampPost>();
-		Item.placeStyle = 0;
-		Item.useTurn = true;
-		Item.autoReuse = true;
-		Item.useAnimation = 15;
-		Item.useTime = 15;
-		Item.useStyle = ItemUseStyleID.Swing;
-		Item.consumable = true;
 		Item.value = Item.sellPrice(0, 0, 1, 0);
 		Item.rare = ItemRarityID.White;
 	}
