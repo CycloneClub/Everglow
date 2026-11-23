@@ -6,6 +6,11 @@ public class YggdrasilBlackRockWall_Item : ModItem
 {
 	public override string LocalizationCategory => LocalizationUtils.Categories.Placeables;
 
+	public override void SetStaticDefaults()
+	{
+		ItemID.Sets.ShimmerTransformToItem[Type] = ModContent.ItemType<YggdrasilBlackRockWall_Unsafe_Item>();
+	}
+
 	public override void SetDefaults()
 	{
 		Item.DefaultToPlaceableWall(ModContent.WallType<YggdrasilBlackRockWall>());

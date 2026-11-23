@@ -6,6 +6,11 @@ public class DecaySandSoilWall_Item : ModItem
 {
 	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Placeables;
 
+	public override void SetStaticDefaults()
+	{
+		ItemID.Sets.ShimmerTransformToItem[Type] = ModContent.ItemType<DecaySandSoilWall_Unsafe_Item>();
+	}
+
 	public override void SetDefaults()
 	{
 		Item.DefaultToPlaceableWall(ModContent.WallType<DecaySandSoilWall>());
