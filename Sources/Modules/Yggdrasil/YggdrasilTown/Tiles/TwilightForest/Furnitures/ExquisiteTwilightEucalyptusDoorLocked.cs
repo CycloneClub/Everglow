@@ -133,7 +133,7 @@ public class ExquisiteTwilightEucalyptusDoorLocked : ModTile
 			{
 				return true;
 			}
-	
+
 			int lockedType = ModContent.TileType<ExquisiteTwilightEucalyptusDoorLocked>();
 			int minX = Math.Max(0, i - 1);
 			int maxX = Math.Min(Main.maxTilesX - 1, i + 1);
@@ -145,7 +145,7 @@ public class ExquisiteTwilightEucalyptusDoorLocked : ModTile
 					return false;
 				}
 			}
-	
+
 			return true;
 		}
 	}
