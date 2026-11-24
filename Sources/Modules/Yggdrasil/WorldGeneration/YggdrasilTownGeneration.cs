@@ -452,11 +452,24 @@ public partial class YggdrasilTownGeneration
 		return new Rectangle(40, worldHeight - 820, worldWidth / 2 + 10, 770);
 	}
 
+	private static Rectangle GetMineTownBounds() => new(230, Main.maxTilesY - 600, 706, 275);
+
+	internal static bool IsInTangledSubmine(Point tile)
+	{
+		if (!GetMineBounds(Main.maxTilesX, Main.maxTilesY).Contains(tile) || GetMineTownBounds().Contains(tile))
+		{
+			return false;
+		}
+
+		int localX = tile.X - MineRoofStartX;
+		return localX >= 0 && localX < MineRoofWidth && tile.Y > Main.maxTilesY - MineRoofBottomOffset + GetMineRoofOffset(localX);
+	}
+
 	/// <summary>挖掘千回矿道并布置矿道小屋。</summary>
 	private static void BuildTangledSubmineTerrain(int leftX, int upY, int rightX, int downY)
 	{
 		float area = (downY - upY) * (rightX - leftX) / 180000f;
-		Rectangle townArea = new Rectangle(230, Main.maxTilesY - 600, 706, 275);
+		Rectangle townArea = GetMineTownBounds();
 		for (int x = 0; x < 110 * area; x++)
 		{
 			DigTangledSubmineTunnel(GenRand.NextFloat(leftX, rightX), GenRand.NextFloat(upY, downY), GenRand.NextFloat(-1, 1), GenRand.NextFloat(0, 1), GenRand.Next(27, 72), GenRand.Next(3, 7), ModContent.TileType<StoneScaleWood>(), false, ModContent.WallType<StoneDragonScaleWoodWall_Unsafe>());
@@ -530,7 +543,7 @@ public partial class YggdrasilTownGeneration
 	/// <returns></returns>
 	public static Vector2D DigTangledSubmineTunnel(double x, double y, double xDir, double yDir, int steps, int size, int type, bool wet = false, int wallType = -1)
 	{
-		Rectangle townArea = new Rectangle(230, Main.maxTilesY - 600, 706, 275);
+		Rectangle townArea = GetMineTownBounds();
 		int embedTownDepth = 0;
 		double startX = x;
 		double startY = y;

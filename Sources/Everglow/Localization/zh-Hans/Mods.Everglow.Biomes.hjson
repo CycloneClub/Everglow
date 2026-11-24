@@ -67,3 +67,8 @@ YggdrasilTownBiome: {
 	DisplayName: 天穹镇
 	TownNPCDialogueName: 天穹镇
 }
+
+TangledSubmineBiome: {
+	DisplayName: 千回矿道
+	TownNPCDialogueName: 千回矿道
+}
