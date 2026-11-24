@@ -2,6 +2,7 @@ using Everglow.Commons.DataStructures;
 using Everglow.Commons.Graphics;
 using Everglow.Commons.Interfaces;
 using Everglow.Commons.Mechanics.Cooldown;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.Localization;
@@ -237,6 +238,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Accessories
 				Player.velocity.Y = -6;
 
 				CollidePosition = Player.Center + new Vector2(0, distance * 16 * Player.gravDir + 24);
+				SoundEngine.PlaySound(SoundID.DoubleJump with { Volume = 0.7f, Pitch = -0.15f }, CollidePosition);
 				Rectangle hitbox = Player.Hitbox;
 				hitbox.Y += 80;
 				CombatText.NewText(hitbox, new Color(0.4f, 1f, 0.8f, 1f), "POP!", true);

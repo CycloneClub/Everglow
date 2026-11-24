@@ -1,3 +1,4 @@
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.Localization;
 
@@ -42,19 +43,13 @@ public class ConcealSpellPlayer : ModPlayer
 
 	public override void PostUpdate()
 	{
-		if (ConcealSpellEnable)
+		if (ConcealSpellEnable && Power < MaxPower)
 		{
-			if (Player.velocity.Length() < 0.05f)
+			float charge = Player.velocity.Length() < 0.05f ? 1f : 0.1f;
+			Power = Math.Min(Power + charge, MaxPower);
+			if (Power == MaxPower && Player.whoAmI == Main.myPlayer)
 			{
-				Power += 1;
-			}
-			else
-			{
-				Power += 0.1f;
-			}
-			if (Power > MaxPower)
-			{
-				Power = MaxPower;
+				SoundEngine.PlaySound(SoundID.MaxMana with { Volume = 0.3f, Pitch = -0.35f }, Player.Center);
 			}
 		}
 		base.PostUpdate();
