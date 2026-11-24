@@ -10,7 +10,7 @@ internal sealed class MirrorWallReflectionCollector
 	internal sealed class ReflectionGroup(MirrorReflectionDefinition definition)
 	{
 		public readonly MirrorReflectionDefinition Definition = definition;
-		public readonly List<(Point Position, Color Tint)> Walls = [];
+		public readonly List<(Rectangle Bounds, Color Tint)> Walls = [];
 	}
 
 	public MirrorWallReflectionCollector(IReadOnlyDictionary<int, MirrorReflectionDefinition> defaults)
@@ -66,7 +66,7 @@ internal sealed class MirrorWallReflectionCollector
 	}
 
 	/// <summary>使用给定材质快照收集可见墙格；每次调用产生独立分组。</summary>
-	public IReadOnlyList<ReflectionGroup> CollectVisibleWalls(IReadOnlyDictionary<int, (MirrorReflectionDefinition Definition, Color Tint)> materials)
+	public IReadOnlyList<ReflectionGroup> CollectVisibleWalls(IReadOnlyDictionary<int, (MirrorReflectionDefinition Definition, Color Tint)> materials, Action<Rectangle, Action<Point, int>> collectBackgroundWalls, Action<Rectangle, Action<Rectangle, int>> collectBackgroundWallRegions)
 	{
 		Dictionary<MirrorReflectionDefinition, ReflectionGroup> parameterGroups = [];
 		Dictionary<int, (ReflectionGroup Group, Color Tint)> wallMaterials = [];
@@ -100,9 +100,38 @@ internal sealed class MirrorWallReflectionCollector
 					continue;
 				}
 				// 不按 HasTile 丢弃整格；随后绘制的前景纹理负责逐像素遮挡。
-				wall.Group.Walls.Add((new Point(x, y), wall.Tint));
+				wall.Group.Walls.Add((new Rectangle(x * 16, y * 16, 16, 16), wall.Tint));
 			}
 		}
+		Rectangle visible = new(startX, startY, endX - startX + 1, endY - startY + 1);
+		collectBackgroundWalls?.Invoke(visible, (position, wallType) =>
+		{
+			if (visible.Contains(position) && Main.tile[position.X, position.Y].WallType == 0 && wallMaterials.TryGetValue(wallType, out var wall))
+			{
+				wall.Group.Walls.Add((new Rectangle(position.X * 16, position.Y * 16, 16, 16), wall.Tint));
+			}
+		});
+		Rectangle pixels = new(visible.X * 16, visible.Y * 16, visible.Width * 16, visible.Height * 16);
+		collectBackgroundWallRegions?.Invoke(pixels, (region, wallType) =>
+		{
+			Rectangle clipped = Rectangle.Intersect(region, pixels);
+			if (clipped.IsEmpty || !wallMaterials.TryGetValue(wallType, out var wall))
+			{
+				return;
+			}
+			// A placed wall hides only its own tile, even if the pane spans several tiles.
+			for (int y = clipped.Top / 16; y <= (clipped.Bottom - 1) / 16; y++)
+			{
+				for (int x = clipped.Left / 16; x <= (clipped.Right - 1) / 16; x++)
+				{
+					if (Main.tile[x, y].WallType == 0)
+					{
+						var cell = new Rectangle(x * 16, y * 16, 16, 16);
+						wall.Group.Walls.Add((Rectangle.Intersect(clipped, cell), wall.Tint));
+					}
+				}
+			}
+		});
 		return parameterGroups.Values.Where(group => group.Walls.Count > 0).ToArray();
 	}
 }
