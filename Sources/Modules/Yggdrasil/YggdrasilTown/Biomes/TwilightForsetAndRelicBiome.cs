@@ -8,7 +8,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Biomes;
 
 public class TwilightForsetAndRelic : ModBiome
 {
-	public override int Music => YggdrasilContent.QuickMusic(ModAsset.NewYggdrasilTownBGM_Path);
+	public override int Music => YggdrasilContent.QuickMusic(ModAsset.TwilightForestBGM_Path);
 
 	public override SceneEffectPriority Priority => SceneEffectPriority.BossMedium;
 
