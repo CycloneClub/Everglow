@@ -33,4 +33,7 @@ public enum CodeLayer
 	PostSaveAndQuit,
 
 	ResolutionChanged,
+
+	PreDrawMinimapAndOverlayIcons,
+	PreDrawFullscreenMapIcons,
 }

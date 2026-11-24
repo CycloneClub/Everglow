@@ -42,7 +42,8 @@ public class YggdrasilTownCentralSystem : ModSystem
 
 	public override void Load()
 	{
-		Ins.HookManager.AddHook(CodeLayer.PostDrawMapIcons, DrawMap_YggdrasilTown);
+		Ins.HookManager.AddHook(CodeLayer.PreDrawMinimapAndOverlayIcons, DrawMap_YggdrasilTown);
+		Ins.HookManager.AddHook(CodeLayer.PreDrawFullscreenMapIcons, DrawMap_YggdrasilTown);
 	}
 
 	private void DrawMap_YggdrasilTown(Vector2 mapTopLeft, Vector2 mapX2Y2AndOff, Rectangle? mapRect, float mapScale)
