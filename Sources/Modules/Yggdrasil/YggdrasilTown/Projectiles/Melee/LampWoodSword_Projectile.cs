@@ -87,6 +87,10 @@ public class LampWoodSword_Projectile : MeleeProj
 				mainAxisDirection += Projectile.DirectionFrom(player.Center) * 3;
 				Projectile.rotation = mainAxisDirection.ToRotation();
 			}
+			if (timer == (int)(20 * timeMul))
+			{
+				AttSound(SoundID.Item1);
+			}
 
 			if (timer > 3 * timeMul && timer < 24 * timeMul)
 			{

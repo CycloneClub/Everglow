@@ -30,7 +30,6 @@ public class ToothKnife : ModItem
 
 		Item.value = 4050;
 		Item.rare = ItemRarityID.Green;
-		Item.UseSound = SoundID.Item1;
 
 		Item.shoot = ModContent.ProjectileType<Projectiles.Weapon.ToothKnife>();
 		Item.shootSpeed = 8f;

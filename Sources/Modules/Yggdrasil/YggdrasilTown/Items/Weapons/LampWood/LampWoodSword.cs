@@ -18,7 +18,6 @@ public class LampWoodSword : ModItem
 		Item.knockBack = 4.5f;
 		Item.damage = 16;
 		Item.rare = ItemRarityID.White;
-		Item.UseSound = SoundID.Item1;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee;
 		Item.noUseGraphic = true;
