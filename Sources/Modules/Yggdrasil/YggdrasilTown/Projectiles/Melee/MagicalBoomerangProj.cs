@@ -63,6 +63,10 @@ public class MagicalBoomerangProj : ModProjectile
 		Player player = Main.player[Projectile.owner];
 		Timer++;
 		Projectile.rotation += 0.3f;
+		if (Timer % 8 == 1)
+		{
+			SoundEngine.PlaySound(SoundID.Item7, Projectile.Center);
+		}
 		if (!Returning && Timer > 60)
 		{
 			Returning = true;

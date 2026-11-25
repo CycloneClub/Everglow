@@ -1,6 +1,7 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Commons.VFX.CommonVFXDusts;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs.TownNPCs;
+using Terraria.Audio;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.TownNPCs;
@@ -110,6 +111,10 @@ public class Georg_Fly_Hammer : ModProjectile
 			}
 			Vector2 toOwner = origToOwner.NormalizeSafe() * (30 + ExtraSpeed * 6);
 			Projectile.velocity = 0.9f * Projectile.velocity + 0.1f * toOwner;
+		}
+		if (Timer >= 30 && Projectile.active && (Timer - 30) % 8 == 0)
+		{
+			SoundEngine.PlaySound(SoundID.Item7, Projectile.Center);
 		}
 	}
 
