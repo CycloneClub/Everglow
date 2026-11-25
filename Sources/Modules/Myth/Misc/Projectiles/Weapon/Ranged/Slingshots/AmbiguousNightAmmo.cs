@@ -84,6 +84,7 @@ public class AmbiguousNightAmmo : SlingshotAmmo
 			radius = 0,
 			ai = new float[] { Main.rand.NextFloat(0.1f, 1f), 2f * size, 44f * size },
 		};
+		SoundEngine.PlaySound(SoundID.Item103 with { PitchRange = (-0.5f, -0.3f) }, Projectile.Center);
 		Ins.VFXManager.Add(darknessWave);
 	}
 
