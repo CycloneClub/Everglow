@@ -1,4 +1,5 @@
 using Everglow.Commons.Templates.Weapons;
+using Terraria.Audio;
 using Terraria.DataStructures;
 
 namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee;
@@ -76,6 +77,8 @@ public class Glow_Fall : TrailingProjectile
 	{
 		TimeAfterEntityDestroy = ProjectileID.Sets.TrailCacheLength[Projectile.type];
 		Projectile.velocity = Projectile.oldVelocity;
-		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center + Projectile.velocity, Vector2.Zero, ModContent.ProjectileType<Glow_Fall_Explosion>(), 0, 0, Projectile.owner, Main.rand.NextFloat(MathHelper.TwoPi));
+		Vector2 impactPosition = Projectile.Center + Projectile.velocity;
+		SoundEngine.PlaySound(new SoundStyle(ModAsset.Crystal_Burst_Normal_Mod) { Volume = 0.4f, MaxInstances = 2 }, impactPosition);
+		Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), impactPosition, Vector2.Zero, ModContent.ProjectileType<Glow_Fall_Explosion>(), 0, 0, Projectile.owner, Main.rand.NextFloat(MathHelper.TwoPi));
 	}
 }

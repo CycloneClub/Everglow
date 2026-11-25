@@ -1,4 +1,5 @@
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
+using Terraria.Audio;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Typeless;
 
@@ -51,6 +52,8 @@ public class MysteriousTablet : ModProjectile
 		{
 			return true;
 		}
+		float impactVolume = MathHelper.Clamp(oldVelocity.Length() / 16f, 0.2f, 0.75f);
+		SoundEngine.PlaySound(SoundID.Dig with { Volume = impactVolume, Pitch = -0.25f }, Projectile.Center);
 		if (Projectile.velocity.X != oldVelocity.X)
 		{
 			Projectile.velocity.X = -oldVelocity.X;
@@ -79,6 +82,7 @@ public class MysteriousTablet : ModProjectile
 
 	public override void OnKill(int timeLeft)
 	{
+		SoundEngine.PlaySound(SoundID.Shatter with { Volume = 0.8f, Pitch = -0.3f }, Projectile.Center);
 		for (int x = 0; x < 8; x++)
 		{
 			var d = Dust.NewDustDirect(Projectile.position - new Vector2(4), Projectile.width, Projectile.height, ModContent.DustType<MysteriousTablet_Fragments>(), 0f, 0f, 0, default, 0.7f);

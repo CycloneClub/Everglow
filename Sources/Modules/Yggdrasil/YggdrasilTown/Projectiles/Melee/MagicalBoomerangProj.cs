@@ -1,4 +1,5 @@
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.WorldBuilding;
 
@@ -80,6 +81,7 @@ public class MagicalBoomerangProj : ModProjectile
 		}
 		if (Timer > 5 && Main.mouseLeft && Main.mouseLeftRelease)
 		{
+			SoundEngine.PlaySound(SoundID.Item14 with { Volume = 0.55f, Pitch = 0.35f }, Projectile.Center);
 			Projectile.Kill();
 			float speed = 13f;
 			Vector2 startVel = new Vector2(0, 1).RotatedByRandom(MathHelper.TwoPi) * speed;

@@ -1,5 +1,6 @@
 using Everglow.Commons.Coroutines;
 using Everglow.Commons.Templates.Weapons;
+using Terraria.Audio;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Summon.FaelanternProj;
@@ -154,6 +155,7 @@ public class Fae : TrailingProjectile
 		Projectile.velocity = Vector2.Lerp(Projectile.velocity, new Vector2(-(float)Math.Sin(0.05f * Timer), -(float)Math.Cos(0.04f * Timer) / 3f), 0.1f);
 		if (i == 30)
 		{
+			SoundEngine.PlaySound(new SoundStyle(CagedDomain.ModAsset.Sounds_GiantBell_Mod) { Volume = 0.55f, Pitch = 0.4f }, Projectile.Center);
 			Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center, Vector2.zeroVector, ModContent.ProjectileType<FaeCharmRing>(), Projectile.damage / 2, 0f, Projectile.owner, 10);
 			foreach (NPC npc in Main.npc)
 			{
