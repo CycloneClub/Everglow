@@ -6,8 +6,6 @@ namespace Everglow.Myth.LanternMoon.Items.Banners;
 
 public class BloodLanternGhostBanner : BannerItemBase
 {
-	public override string Texture => BannerItemBase_Mod;
-
 	public override int BannerTileStyle => 0;
 
 	public override int BannerNPCType => ModContent.NPCType<BloodLanternGhost>();

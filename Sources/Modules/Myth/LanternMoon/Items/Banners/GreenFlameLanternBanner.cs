@@ -6,7 +6,6 @@ namespace Everglow.Myth.LanternMoon.Items.Banners;
 
 public class GreenFlameLanternBanner : BannerItemBase
 {
-	public override string Texture => BannerItemBase_Mod;
 
 	public override int BannerTileStyle => 4;
 
