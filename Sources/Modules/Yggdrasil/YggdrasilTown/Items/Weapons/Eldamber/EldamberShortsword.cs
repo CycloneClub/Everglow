@@ -1,4 +1,5 @@
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
+using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Melee;
 using Terraria.ModLoader;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.Eldamber;
@@ -28,7 +29,7 @@ public class EldamberShortsword : ModItem
 		Item.useStyle = ItemUseStyleID.Rapier;
 		Item.noMelee = true;
 		Item.noUseGraphic = true;
-		Item.shoot = ProjectileID.GoldShortswordStab;
+		Item.shoot = ModContent.ProjectileType<EldamberShortswordStab>();
 		Item.shootSpeed = 2.1f;
 	}
 
