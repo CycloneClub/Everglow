@@ -141,6 +141,7 @@ public class CyanVineSword_Projectile : MeleeProj
 		bars.Add(new Vertex2D(Projectile.Center + mainAxisDirection * 0.15f * Projectile.scale, lightColor, new Vector3(1, 1, 0f)));
 		bars.Add(new Vertex2D(Projectile.Center + mainAxisDirection * Projectile.scale, lightColor, new Vector3(1, 0, 1)));
 
+		var batchState = GraphicsUtils.GetState(Main.spriteBatch).Value;
 		Main.spriteBatch.End();
 		Main.spriteBatch.Begin(SpriteSortMode.Immediate, TrailBlendState(), SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone);
 		var projection = Matrix.CreateOrthographicOffCenter(0, Main.screenWidth, Main.screenHeight, 0, 0, 1);
@@ -149,13 +150,13 @@ public class CyanVineSword_Projectile : MeleeProj
 		Effect MeleeTrail = Commons.ModAsset.MeleeTrail.Value;
 		MeleeTrail.Parameters["uTransform"].SetValue(model * projection);
 
-		MeleeTrail.Parameters["tex0"].SetValue(Commons.ModAsset.Melee.Value);
+		Main.graphics.GraphicsDevice.Textures[0] = Commons.ModAsset.Melee.Value;
 		MeleeTrail.Parameters["tex1"].SetValue(ModAsset.Cyan_Vine_Sword_Melee_Color.Value);
-		MeleeTrail.CurrentTechnique.Passes["TrailWithLight"].Apply();
+		MeleeTrail.CurrentTechnique.Passes[ShaderTypeName].Apply();
 
 		Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, bars.ToArray(), 0, bars.Count - 2);
 		Main.spriteBatch.End();
-		Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
+		Main.spriteBatch.Begin(batchState);
 	}
 
 	public override void DrawWarp(VFXBatch spriteBatch) => base.DrawWarp(spriteBatch);
