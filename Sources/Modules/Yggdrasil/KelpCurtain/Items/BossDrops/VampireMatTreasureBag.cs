@@ -1,4 +1,6 @@
-namespace Everglow.Yggdrasil.KelpCurtain.Items.Consumables;
+using Terraria.GameContent.ItemDropRules;
+
+namespace Everglow.Yggdrasil.KelpCurtain.Items.BossDrops;
 
 public class VampireMatTreasureBag : ModItem
 {
@@ -19,17 +21,16 @@ public class VampireMatTreasureBag : ModItem
 		return true;
 	}
 
-	public override void RightClick(Player player)
+	public override void ModifyItemLoot(ItemLoot itemLoot)
 	{
-		player.QuickSpawnItem(null, ItemID.GoldCoin, 15);
-		base.RightClick(player);
+		itemLoot.Add(ItemDropRule.Common(ItemID.GoldCoin, 1, 15, 15));
 	}
 
 	private int myLightTimer = 0;
 
 	public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
 	{
-		Texture2D t = ModAsset.SquamousShellTreasureBag.Value;
+		Texture2D t = ModAsset.VampireMatTreasureBag.Value;
 		for (int i = 0; i < 4; i++)
 		{
 			Vector2 v = new Vector2(0, 8 * ((float)Math.Sin((double)(Main.GlobalTimeWrappedHourly * 6.28318548f / 4f)) * 0.3f + 0.7f)).RotatedBy((double)(Main.GlobalTimeWrappedHourly * 6.28318548f / 4f) + MathHelper.Pi * i / 2d);

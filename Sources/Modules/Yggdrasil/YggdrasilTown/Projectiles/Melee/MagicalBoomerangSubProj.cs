@@ -1,4 +1,5 @@
 using Everglow.Yggdrasil.YggdrasilTown.VFXs;
+using Terraria.Audio;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Melee;
@@ -70,6 +71,10 @@ public class MagicalBoomerangSubProj : ModProjectile
 		Player player = Main.player[Projectile.owner];
 		Timer++;
 		Projectile.rotation += 0.3f;
+		if (Timer % 8 == 1)
+		{
+			SoundEngine.PlaySound(SoundID.Item7, Projectile.Center);
+		}
 		if (!Returning && Timer > 20)
 		{
 			Returning = true;

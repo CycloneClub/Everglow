@@ -1,4 +1,5 @@
 using SubworldLibrary;
+using Terraria.Audio;
 
 namespace Everglow.Yggdrasil;
 
@@ -22,6 +23,7 @@ public class YggdrasilImpression : ModItem
 		// TODO world
 		if (player.itemAnimation == player.itemAnimationMax)
 		{
+			SoundEngine.PlaySound(SoundID.Item6, player.Center);
 			Ins.VFXManager.Clear();
 			if (SubworldSystem.IsActive<YggdrasilWorld>())
 			{

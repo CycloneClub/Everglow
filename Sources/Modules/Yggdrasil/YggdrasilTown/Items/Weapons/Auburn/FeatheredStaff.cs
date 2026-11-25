@@ -16,7 +16,6 @@ public class FeatheredStaff : ModItem
 		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useAnimation = 35;
 		Item.useTime = 35;
-		Item.UseSound = SoundID.Item20;
 		Item.autoReuse = true;
 		Item.channel = true;
 

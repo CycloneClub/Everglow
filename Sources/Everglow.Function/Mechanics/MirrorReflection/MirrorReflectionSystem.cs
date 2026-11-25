@@ -31,6 +31,12 @@ public class MirrorReflectionSystem : ModSystem
 	/// <param name="provider">每次收集可见墙面时调用一次的参数提供者。</param>
 	public void RegisterWall(int wallType, Func<MirrorReflectionDefinition> provider) => wallCollector.Register(wallType, provider);
 
+	/// <summary>Supplies visible background wall cells and their material IDs to the reflection pass.</summary>
+	public event Action<Rectangle, Action<Point, int>> CollectBackgroundWalls;
+
+	/// <summary>Collects partial wall surfaces in world pixels within the visible pixel bounds.</summary>
+	public event Action<Rectangle, Action<Rectangle, int>> CollectBackgroundWallRegions;
+
 	public override void Load()
 	{
 		wallCollector = new MirrorWallReflectionCollector(VanillaMirrorWallProfiles.Create());
@@ -67,6 +73,8 @@ public class MirrorReflectionSystem : ModSystem
 		normalMaps?.Dispose();
 		normalMaps = null;
 		renderer = null;
+		CollectBackgroundWalls = null;
+		CollectBackgroundWallRegions = null;
 		wallCollector = null;
 		groups = [];
 	}
@@ -170,7 +178,7 @@ public class MirrorReflectionSystem : ModSystem
 		}
 		// 1. 解析材质定义与参数；2. 收集可见墙格并完成分组。
 		var materials = wallCollector.ResolveMaterials();
-		groups = wallCollector.CollectVisibleWalls(materials);
+		groups = wallCollector.CollectVisibleWalls(materials, CollectBackgroundWalls, CollectBackgroundWallRegions);
 		return groups.Count > 0;
 	}
 

@@ -1,6 +1,7 @@
 using Everglow.Myth.Common;
 using Everglow.Myth.TheFirefly.Items.Banners;
 using Everglow.Myth.TheFirefly.Items.Materials;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent.ItemDropRules;
 
@@ -22,6 +23,7 @@ public class Dendroid_Normal : ModNPC
 		NPC.height = 56;
 		NPC.defense = 8;
 		NPC.lifeMax = 120;
+		NPC.HitSound = new SoundStyle(ModAsset.DendroidHit_Mod);
 		NPC.knockBackResist = 0.4f;
 		NPC.value = Item.buyPrice(0, 0, 12, 0);
 		NPC.aiStyle = NPCAIStyleID.Fighter;

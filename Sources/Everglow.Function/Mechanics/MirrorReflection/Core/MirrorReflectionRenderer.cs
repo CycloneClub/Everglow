@@ -44,7 +44,7 @@ internal sealed class MirrorReflectionRenderer
 			{
 				foreach (var wall in groups[index].Walls)
 				{
-					DrawWallReflection(wall.Position, reflections[index], wall.Tint);
+					DrawWallReflection(wall.Bounds, reflections[index], wall.Tint);
 				}
 			}
 		}
@@ -113,9 +113,9 @@ internal sealed class MirrorReflectionRenderer
 		}
 	}
 
-	private static void DrawWallReflection(Point point, Texture2D reflection, Color tint)
+	private static void DrawWallReflection(Rectangle bounds, Texture2D reflection, Color tint)
 	{
-		Rectangle cell = GetScreenRectangle(point.ToVector2() * 16, new Vector2(16), Main.screenPosition, Main.GameViewMatrix.TransformationMatrix);
+		Rectangle cell = GetScreenRectangle(bounds.TopLeft(), bounds.Size(), Main.screenPosition, Main.GameViewMatrix.TransformationMatrix);
 		Rectangle viewport = new(0, 0, reflection.Width, reflection.Height);
 		Rectangle slice = Rectangle.Intersect(cell, viewport);
 		if (slice.Width > 0 && slice.Height > 0)

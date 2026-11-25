@@ -23,6 +23,8 @@ public class HookManager : IHookManager
 		[CodeLayer.PostDrawDusts] = typeof(Action),
 		[CodeLayer.PostDrawNPCs] = typeof(Action),
 		[CodeLayer.PostDrawPlayers] = typeof(Action),
+		[CodeLayer.PreDrawMinimapAndOverlayIcons] = typeof(Action<Vector2, Vector2, Rectangle?, float>),
+		[CodeLayer.PreDrawFullscreenMapIcons] = typeof(Action<Vector2, Vector2, Rectangle?, float>),
 		[CodeLayer.PostDrawMapIcons] = typeof(Action<Vector2, Vector2, Rectangle?, float>),
 		[CodeLayer.PostDrawBG] = typeof(Action),
 		[CodeLayer.PostUpdateEverything] = typeof(Action),

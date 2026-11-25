@@ -1,4 +1,4 @@
-using Everglow.Yggdrasil.Common.Items;
+using Everglow.Commons.Templates;
 using Everglow.Yggdrasil.YggdrasilTown.Walls.TwilightForest;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Placeables.Walls;

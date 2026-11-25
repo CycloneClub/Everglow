@@ -8,5 +8,7 @@ public sealed class DarkForestSoilWall_Unsafe : DarkForestSoilWall
 	{
 		base.SetStaticDefaults();
 		Main.wallHouse[Type] = false;
+		// TODO: 该物品无贴图
+		// ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<Items.Placeables.Walls.DarkForestSoilWall_Item>()] = ModContent.ItemType<Items.Placeables.Walls.DarkForestSoilWall_Unsafe_Item>();
 	}
 }

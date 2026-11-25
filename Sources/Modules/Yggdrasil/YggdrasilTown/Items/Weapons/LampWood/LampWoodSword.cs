@@ -1,6 +1,5 @@
 using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Melee;
-using Terraria.Audio;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.LampWood;
@@ -19,7 +18,6 @@ public class LampWoodSword : ModItem
 		Item.knockBack = 4.5f;
 		Item.damage = 16;
 		Item.rare = ItemRarityID.White;
-		Item.UseSound = SoundID.Item1;
 		Item.autoReuse = true;
 		Item.DamageType = DamageClass.Melee;
 		Item.noUseGraphic = true;
@@ -44,16 +42,6 @@ public class LampWoodSword : ModItem
 			Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 0f, 0f);
 		}
 		return false;
-	}
-
-	public override bool? UseItem(Player player)
-	{
-		if (!Main.dedServ)
-		{
-			SoundEngine.PlaySound(Item.UseSound, player.Center);
-		}
-
-		return null;
 	}
 
 	public override void AddRecipes()

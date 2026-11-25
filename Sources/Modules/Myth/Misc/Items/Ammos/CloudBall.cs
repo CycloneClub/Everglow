@@ -18,6 +18,7 @@ public class CloudBall : ModItem
 		Item.useTime = 20;
 		Item.useAnimation = 20;
 		Item.useStyle = ItemUseStyleID.Swing;
+		Item.UseSound = SoundID.Item1;
 		Item.noUseGraphic = true;
 		Item.noMelee = true;
 		Item.knockBack = 1;

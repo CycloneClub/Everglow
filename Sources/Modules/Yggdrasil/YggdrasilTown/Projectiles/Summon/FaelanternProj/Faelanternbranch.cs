@@ -83,6 +83,11 @@ public class Faelanternbranch : ModProjectile
 			};
 			Ins.VFXManager.Add(somg);
 		}
+		if (Projectile.timeLeft == 35)
+		{
+			var root = direction == 1 ? Projectile.BottomRight : Projectile.BottomLeft;
+			SoundEngine.PlaySound(SoundID.Dig with { Volume = 0.5f, Pitch = -0.15f, PitchVariance = 0.12f }, root);
+		}
 		if (Projectile.timeLeft <= 35 && Projectile.timeLeft >= 27)
 		{
 			Vector2 newVelocity = new Vector2(0, Main.rand.NextFloat(0f, 10f)).RotatedBy(size.ToRotation() + MathHelper.PiOver2 + Main.rand.NextFloat(-0.25f, 0.25f));

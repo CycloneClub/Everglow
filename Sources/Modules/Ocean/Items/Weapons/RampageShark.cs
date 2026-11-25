@@ -99,7 +99,7 @@ public class RampageShark : ModItem
 
 		if (player.ownedProjectileCounts[ModContent.ProjectileType<Projectiles.Weapons.RampageShark>()] <= 0 && CrazyValue > 0)
 		{
-			CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y - 40, player.width, player.height), Color.Orange, "Overheating, please wait for" + (CrazyValue / 3f).ToString() + "s");
+			CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y - 40, player.width, player.height), Color.Orange, $"Overheating, please wait for {CrazyValue / 3f:0.#}s");
 		}
 
 		return false;

@@ -23,6 +23,8 @@ public class BloodTusk : ModNPC
 	// Full body height when the boss is standing.
 	private const int StandingHeight = 184;
 
+	private int fightingMusic;
+
 	/// <summary>
 	/// MapIcon Slot.
 	/// </summary>
@@ -188,6 +190,7 @@ public class BloodTusk : ModNPC
 		NPC.DeathSound = SoundID.DD2_SkeletonDeath;
 		NPC.dontTakeDamage = false;
 		Music = MusicLoader.GetMusicSlot(ModIns.Mod, ModAsset.TuskBiome_Path);
+		fightingMusic = MusicLoader.GetMusicSlot(ModIns.Mod, ModAsset.TuskFighting_Path);
 	}
 
 	public override void OnSpawn(IEntitySource source)
@@ -238,6 +241,7 @@ public class BloodTusk : ModNPC
 	{
 		if (State != (int)States.Sleep)
 		{
+			Music = fightingMusic;
 			NPC.TargetClosest();
 			BloodTuskCoroutine.Update();
 			if (CoroutineList.Count <= 1)

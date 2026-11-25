@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.Audio;
 
 namespace Everglow.Myth.Misc.Projectiles.Weapon.Melee;
 
@@ -22,7 +23,6 @@ public class Sunflower : ModProjectile
 	{
 		if (Projectile.timeLeft > 2950)
 		{
-			Projectile.soundDelay = 10;
 			if (Projectile.velocity.X != oldVelocity.X && Math.Abs(oldVelocity.X) > 1f)
 			{
 				Projectile.velocity.X = oldVelocity.X * -0.9f;
@@ -53,6 +53,10 @@ public class Sunflower : ModProjectile
 		float num7 = (float)Math.Sqrt(Projectile.velocity.X * Projectile.velocity.X + Projectile.velocity.Y * Projectile.velocity.Y);
 		Player p = Main.player[Projectile.owner];
 		Projectile.rotation += 0.05f * num7;
+		if (Projectile.timeLeft % 8 == 0)
+		{
+			SoundEngine.PlaySound(SoundID.Item7, Projectile.Center);
+		}
 		float num6 = (float)Math.Sqrt((p.Center.X - Projectile.Center.X) * (p.Center.X - Projectile.Center.X) + (p.Center.Y - Projectile.Center.Y) * (p.Center.Y - Projectile.Center.Y));
 		if (Projectile.timeLeft <= 2950)
 		{

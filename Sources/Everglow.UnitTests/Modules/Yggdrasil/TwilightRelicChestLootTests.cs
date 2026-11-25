@@ -153,7 +153,7 @@ public class TwilightRelicChestLootTests
 		{
 			Main.chest[0] = null!;
 		}
-		var error = Assert.ThrowsException<TargetInvocationException>(Fill);
+		var error = Assert.Throws<TargetInvocationException>(Fill);
 		Assert.IsInstanceOfType<InvalidOperationException>(error.InnerException);
 	}
 
@@ -162,7 +162,7 @@ public class TwilightRelicChestLootTests
 	{
 		WorldGen._genRand = new UnifiedRandom(1);
 		rooms.Remove(new Point(1, 0));
-		var error = Assert.ThrowsException<TargetInvocationException>(Fill);
+		var error = Assert.Throws<TargetInvocationException>(Fill);
 		Assert.IsInstanceOfType<InvalidOperationException>(error.InnerException);
 	}
 }

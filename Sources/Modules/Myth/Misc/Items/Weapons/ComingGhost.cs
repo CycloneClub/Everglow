@@ -26,7 +26,6 @@ public class ComingGhost : ModItem
 		Item.knockBack = 6;
 		Item.value = 20000;
 		Item.rare = ItemRarityID.Pink;
-		Item.UseSound = SoundID.Item1;
 		Item.autoReuse = true;
 		Item.shoot = ModContent.ProjectileType<Projectiles.Weapon.Melee.ComingGhost>();
 		Item.shootSpeed = 8;

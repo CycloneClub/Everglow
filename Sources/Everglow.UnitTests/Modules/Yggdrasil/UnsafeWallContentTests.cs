@@ -1,5 +1,8 @@
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using Everglow.Yggdrasil.Common.Items;
+using Everglow.Yggdrasil.KelpCurtain.Items.Placeables.Walls;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables.Walls;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -119,6 +122,48 @@ public class UnsafeWallContentTests
 			ItemID.Sets.DrawUnsafeIndicator[itemId] = previousIndicator;
 			Main.dedServ = previousServer;
 			mapInitialized.SetValue(null, previousMapInitialized);
+		}
+	}
+
+	[TestMethod]
+	[DataRow(typeof(YggdrasilBlackRockWall_Item), typeof(YggdrasilBlackRockWall_Unsafe_Item))]
+	[DataRow(typeof(YggdrasilGrayRockWall_Item), typeof(YggdrasilGrayRockWall_Unsafe_Item))]
+	[DataRow(typeof(DarkLakeBottomMudWall_Item), typeof(DarkLakeBottomMudWall_Unsafe_Item))]
+	[DataRow(typeof(DecaySandSoilWall_Item), typeof(DecaySandSoilWall_Unsafe_Item))]
+	[DataRow(typeof(DragonScaleWoodWall_Item), typeof(DragonScaleWoodWall_Unsafe_Item))]
+	[DataRow(typeof(GreenCourtWall_Item), typeof(GreenCourtWall_Unsafe_Item))]
+	[DataRow(typeof(MossProneSandSoilWall_Item), typeof(MossProneSandSoilWall_Unsafe_Item))]
+	[DataRow(typeof(OldMossWall_Item), typeof(OldMossWall_Unsafe_Item))]
+	[DataRow(typeof(SharpBarnacleWall_Item), typeof(SharpBarnacleWall_Unsafe_Item))]
+	[DataRow(typeof(WaterErodedGreenBrickWall_Item), typeof(WaterErodedGreenBrickWall_Fixed_Unsafe_Item))]
+	[DataRow(typeof(GreenRelicWall_Item), typeof(GreenRelicWall_Unsafe_Item))]
+	[DataRow(typeof(LampWoodWall_Item), typeof(LampWood_Wood_Wall_Unsafe_Item))]
+	[DataRow(typeof(StoneDragonScaleWoodWall_Item), typeof(StoneDragonScaleWoodWall_Unsafe_Item))]
+	public void SafeWallItemShimmersIntoItsUnsafeVariant(Type safeType, Type unsafeType)
+	{
+		const int safeId = 1000;
+		const int unsafeId = 1001;
+		var safeItem = (ModItem)RuntimeHelpers.GetUninitializedObject(safeType);
+		var unsafeItem = (ModItem)RuntimeHelpers.GetUninitializedObject(unsafeType);
+		var entity = typeof(ModItem).GetProperty("Entity")!;
+		entity.SetValue(safeItem, new Item { type = safeId });
+		entity.SetValue(unsafeItem, new Item { type = unsafeId });
+		int previousTarget = ItemID.Sets.ShimmerTransformToItem[safeId];
+		var restore = new List<Action>();
+		try
+		{
+			RegisterInstance(unsafeType, unsafeItem, restore);
+			ItemID.Sets.ShimmerTransformToItem[safeId] = -1;
+			safeItem.SetStaticDefaults();
+			Assert.AreEqual(unsafeId, ItemID.Sets.ShimmerTransformToItem[safeId]);
+		}
+		finally
+		{
+			ItemID.Sets.ShimmerTransformToItem[safeId] = previousTarget;
+			foreach (var action in restore)
+			{
+				action();
+			}
 		}
 	}
 

@@ -5,7 +5,6 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Weapons;
 
 public class ResistanceWireBayonet : StabbingSwordItem
 {
-
 	/// <summary>
 	/// 0-100, increse automatically.
 	/// </summary>

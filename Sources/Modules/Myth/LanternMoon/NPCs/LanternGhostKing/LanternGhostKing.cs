@@ -1,7 +1,7 @@
 using Everglow.Commons.DataStructures;
 using Everglow.Commons.Physics.MassSpringSystem;
 using Everglow.Myth.LanternMoon.Gores;
-using Everglow.Myth.LanternMoon.Items;
+using Everglow.Myth.LanternMoon.Items.BossDrops;
 using Everglow.Myth.LanternMoon.Items.Weapons;
 using Everglow.Myth.LanternMoon.LanternCommon;
 using Everglow.Myth.LanternMoon.Projectiles.LanternKing;
@@ -396,6 +396,7 @@ public class LanternGhostKing : LanternMoonNPC
 
 	public override void ModifyNPCLoot(NPCLoot npcLoot)
 	{
+		npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<LanternGhostKingTrophy>(), 10));
 		npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<TreasureBag_LanternGhostKing>()));
 		npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<Relic_LanternGhostKing>()));
 		var rule = new LeadingConditionRule(new Conditions.NotExpert());

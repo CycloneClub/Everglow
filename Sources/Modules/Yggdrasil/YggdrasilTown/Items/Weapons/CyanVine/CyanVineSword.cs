@@ -1,7 +1,6 @@
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Melee;
-using Terraria.Audio;
 using Terraria.DataStructures;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.CyanVine;
@@ -21,7 +20,6 @@ public class CyanVineSword : ModItem
 		Item.damage = 17;
 		Item.rare = ItemRarityID.White;
 		Item.autoReuse = true;
-		Item.UseSound = SoundID.Item1;
 		Item.DamageType = DamageClass.Melee;
 		Item.noUseGraphic = true;
 		Item.noMelee = true;
@@ -45,16 +43,6 @@ public class CyanVineSword : ModItem
 			Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 0f, 0f);
 		}
 		return false;
-	}
-
-	public override bool? UseItem(Player player)
-	{
-		if (!Main.dedServ)
-		{
-			SoundEngine.PlaySound(Item.UseSound, player.Center);
-		}
-
-		return null;
 	}
 
 	public override void AddRecipes()

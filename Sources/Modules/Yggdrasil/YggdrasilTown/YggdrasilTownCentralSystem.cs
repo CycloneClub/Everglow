@@ -42,8 +42,8 @@ public class YggdrasilTownCentralSystem : ModSystem
 
 	public override void Load()
 	{
-		Ins.HookManager.AddHook(CodeLayer.PostDrawMapIcons, DrawMap_YggdrasilTown);
-		base.Load();
+		Ins.HookManager.AddHook(CodeLayer.PreDrawMinimapAndOverlayIcons, DrawMap_YggdrasilTown);
+		Ins.HookManager.AddHook(CodeLayer.PreDrawFullscreenMapIcons, DrawMap_YggdrasilTown);
 	}
 
 	private void DrawMap_YggdrasilTown(Vector2 mapTopLeft, Vector2 mapX2Y2AndOff, Rectangle? mapRect, float mapScale)
@@ -54,12 +54,32 @@ public class YggdrasilTownCentralSystem : ModSystem
 		}
 		Vector2 center = TownTopLeftWorldCoord + new Vector2(268, 162) * 16;
 		Vector2 position = (center / 16f - mapTopLeft) * mapScale + mapX2Y2AndOff;
-		var destination = new Rectangle((int)position.X - 1, (int)position.Y - 1, 2, 2);
-		if (mapRect != null ? destination.Intersects(mapRect.Value) : true)
+		Texture2D texture = ModAsset.TownMap.Value;
+		float scale = mapScale * 0.5f;
+		Vector2 topLeft = position - new Vector2(texture.Width * 0.5f, texture.Height) * scale;
+		if (mapRect is not Rectangle bounds)
 		{
-			Texture2D tex = ModAsset.TownMap.Value;
-			Main.spriteBatch.Draw(tex, position, null, Color.White * 0.5f, 0, tex.Size() * new Vector2(0.5f, 1f), mapScale * 0.5f, SpriteEffects.None, 0);
+			Main.spriteBatch.Draw(texture, topLeft, null, Color.White * 0.5f, 0, Vector2.Zero, scale, SpriteEffects.None, 0);
+			return;
 		}
+
+		int left = (int)MathF.Round(topLeft.X);
+		int top = (int)MathF.Round(topLeft.Y);
+		int right = (int)MathF.Round(topLeft.X + texture.Width * scale);
+		int bottom = (int)MathF.Round(topLeft.Y + texture.Height * scale);
+		Rectangle destination = new(left, top, right - left, bottom - top);
+		Rectangle visible = Rectangle.Intersect(destination, bounds);
+		if (visible.Width <= 0 || visible.Height <= 0)
+		{
+			return;
+		}
+
+		int sourceLeft = (visible.Left - left) * texture.Width / destination.Width;
+		int sourceTop = (visible.Top - top) * texture.Height / destination.Height;
+		int sourceRight = (int)Math.Ceiling((visible.Right - left) * (double)texture.Width / destination.Width);
+		int sourceBottom = (int)Math.Ceiling((visible.Bottom - top) * (double)texture.Height / destination.Height);
+		Rectangle source = new(sourceLeft, sourceTop, sourceRight - sourceLeft, sourceBottom - sourceTop);
+		Main.spriteBatch.Draw(texture, visible, source, Color.White * 0.5f);
 	}
 
 	public override void OnWorldLoad()

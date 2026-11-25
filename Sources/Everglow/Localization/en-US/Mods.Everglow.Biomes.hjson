@@ -67,3 +67,8 @@ YggdrasilTownBiome: {
 	DisplayName: Yggdrasil Town
 	TownNPCDialogueName: Yggdrasil Town
 }
+
+TangledSubmineBiome: {
+	DisplayName: Tangled Submine
+	TownNPCDialogueName: the Tangled Submine
+}

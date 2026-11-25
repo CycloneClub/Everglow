@@ -310,8 +310,6 @@ public class FryingPan : MeleeProj
 		}
 	}
 
-	internal float OldSoundRot = 0;
-
 	public override void AI()
 	{
 		if (currantAttackType == 0)
@@ -324,10 +322,9 @@ public class FryingPan : MeleeProj
 			Projectile.Center += Projectile.velocity;
 			useSlash = true;
 			timer++;
-			if (Projectile.rotation - OldSoundRot > 6.283)
+			if (timer % (8 * Projectile.MaxUpdates) == 1)
 			{
-				OldSoundRot = Projectile.rotation;
-				AttSound(SoundID.Item1);
+				SoundEngine.PlaySound(SoundID.Item7, Projectile.Center);
 			}
 
 			// if (hittimes > 0)

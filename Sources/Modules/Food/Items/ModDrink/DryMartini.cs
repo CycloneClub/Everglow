@@ -39,7 +39,7 @@ public class DryMartini : DrinkBase
 
 	public override void SetDefaults()
 	{
-		Item.DefaultToFood(22, 22, BuffID.WellFed3, 57600);
+		Item.DefaultToFood(22, 22, BuffID.WellFed3, 57600, useGulpSound: true);
 		Item.value = Item.buyPrice(0, 3);
 		Item.rare = ItemRarityID.Blue;
 	}

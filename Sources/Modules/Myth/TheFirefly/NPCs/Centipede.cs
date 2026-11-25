@@ -49,6 +49,7 @@ internal class CentipedeHead : FireWormHead
 		NPC.height = 22;
 		NPC.defense = 16;
 		NPC.lifeMax = 600;
+		NPC.HitSound = SoundID.NPCHit1;
 		NPC.knockBackResist = 0f;
 		NPC.value = 300f;
 		NPC.aiStyle = -1;
@@ -543,6 +544,7 @@ internal class CentipedeBody : FireWormBody
 		NPC.height = 24;
 		NPC.defense = 12;
 		NPC.lifeMax = 600;
+		NPC.HitSound = SoundID.NPCHit1;
 		NPC.knockBackResist = 0f;
 		NPC.value = 300f;
 		NPC.aiStyle = -1;
@@ -689,6 +691,7 @@ internal class CentipedeTail : FireWormTail
 		NPC.height = 24;
 		NPC.defense = 8;
 		NPC.lifeMax = 600;
+		NPC.HitSound = SoundID.NPCHit1;
 		NPC.knockBackResist = 0f;
 		NPC.value = 300f;
 		NPC.aiStyle = -1;

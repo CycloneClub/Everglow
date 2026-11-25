@@ -6,7 +6,7 @@ using Terraria.ObjectData;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.BossDrops;
 
-public class JellyBallRelic : ModTile
+public class KingJellyBallRelic : ModTile
 {
 	public const int FrameWidth = 18 * 3;
 	public const int FrameHeight = 18 * 4;
@@ -17,7 +17,7 @@ public class JellyBallRelic : ModTile
 
 	// Every relic has its own extra floating part, should be 50x50. Optional: Expand this sheet if you want to add more, stacked vertically
 	// If you do not go the optional way, and you extend from this class, you can override this to point to a different texture
-	public virtual string RelicTextureName => ModAsset.Tiles_SquamousShellRelic_Mod;
+	public virtual string RelicTextureName => ModAsset.Tiles_KingJellyBallRelic_Mod;
 
 	// All relics use the same pedestal texture, this one is copied from vanilla
 	public override string Texture => Commons.ModAsset.RelicPedestal_Mod;

@@ -8,16 +8,9 @@ public class LapisLazuliDome_Item : ModItem
 
 	public override void SetDefaults()
 	{
+		Item.DefaultToPlaceableTile(ModContent.TileType<LapisLazuliDome>());
 		Item.width = 48;
 		Item.height = 22;
-		Item.maxStack = Item.CommonMaxStack;
-		Item.createTile = ModContent.TileType<LapisLazuliDome>();
-		Item.useTurn = true;
-		Item.autoReuse = true;
-		Item.useAnimation = 15;
-		Item.useTime = 15;
-		Item.useStyle = ItemUseStyleID.Swing;
-		Item.consumable = true;
 		Item.value = Item.sellPrice(0, 0, 1, 0);
 		Item.rare = ItemRarityID.White;
 	}

@@ -1,3 +1,5 @@
+using Terraria.Audio;
+
 namespace Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
 
 public class FeatheredStaff_Staff : ModProjectile
@@ -63,6 +65,7 @@ public class FeatheredStaff_Staff : ModProjectile
 
 	private void Shoot()
 	{
+		SoundEngine.PlaySound(SoundID.Item20, Projectile.Center);
 		int projectileNumber = 2;
 		Item item = Owner.HeldItem;
 		for (int i = 0; i < projectileNumber; i++)

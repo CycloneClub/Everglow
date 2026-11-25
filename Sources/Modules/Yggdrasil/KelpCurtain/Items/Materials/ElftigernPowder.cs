@@ -11,11 +11,7 @@ public class ElftigernPowder : ModItem
 		Item.value = Item.buyPrice(silver: 25);
 		Item.rare = ItemRarityID.Blue;
 		Item.maxStack = Item.CommonMaxStack;
-		Item.consumable = true;
-		Item.useStyle = ItemUseStyleID.Swing;
 		Item.useTime = 15;
 		Item.useAnimation = 15;
 	}
-
-	public override bool CanUseItem(Player player) => false;
 }

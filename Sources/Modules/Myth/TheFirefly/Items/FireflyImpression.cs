@@ -1,5 +1,6 @@
 using Everglow.Myth.TheFirefly.WorldGeneration;
 using SubworldLibrary;
+using Terraria.Audio;
 
 namespace Everglow.Myth.TheFirefly.Items;
 
@@ -24,6 +25,7 @@ public class FireflyImpression : ModItem
 	{
 		if (player.itemAnimation == player.itemAnimationMax)
 		{
+			SoundEngine.PlaySound(SoundID.Item6, player.Center);
 			if (SubworldSystem.IsActive<MothWorld>())
 			{
 				SubworldSystem.Exit();

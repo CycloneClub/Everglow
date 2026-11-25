@@ -33,7 +33,8 @@ public class ColliderManager : ILoadable
 
 		Ins.HookManager.AddHook(CodeLayer.PostUpdateEverything, Update);
 		Ins.HookManager.AddHook(CodeLayer.PostDrawTiles, Draw);
-		Ins.HookManager.AddHook(CodeLayer.PostDrawMapIcons, DrawToMap);
+		Ins.HookManager.AddHook(CodeLayer.PreDrawMinimapAndOverlayIcons, DrawToMap);
+		Ins.HookManager.AddHook(CodeLayer.PreDrawFullscreenMapIcons, DrawToMap);
 	}
 
 	public void Unload() => rigidbodies = null;

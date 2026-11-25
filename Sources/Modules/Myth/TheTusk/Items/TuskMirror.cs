@@ -1,5 +1,6 @@
 using Everglow.Myth.TheTusk.WorldGeneration;
 using SubworldLibrary;
+using Terraria.Audio;
 
 namespace Everglow.Myth.TheTusk.Items;
 
@@ -24,6 +25,7 @@ public class TuskMirror : ModItem
 	{
 		if (player.itemAnimation == player.itemAnimationMax)
 		{
+			SoundEngine.PlaySound(SoundID.Item6, player.Center);
 			if (SubworldSystem.IsActive<TuskWorld>())
 			{
 				SubworldSystem.Exit();

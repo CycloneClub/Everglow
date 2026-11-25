@@ -1,4 +1,5 @@
 using Everglow.Minortopography.GiantPinetree.Projectiles;
+using Terraria.Audio;
 using Terraria.DataStructures;
 
 namespace Everglow.Minortopography.GiantPinetree.Items;
@@ -36,8 +37,10 @@ public class FrostBomb : ModItem
 			Projectile p0 = Projectile.NewProjectileDirect(source, position, velocity, ModContent.ProjectileType<Projectiles.FrostBomb>(), damage * 2, knockback, player.whoAmI, 1);
 			p0.rotation = Main.rand.NextFloat(6.283f);
 			player.statMana -= Item.mana;
+			SoundEngine.PlaySound(SoundID.Item1, position);
 			return false;
 		}
+		SoundEngine.PlaySound(SoundID.Item1, position);
 		return base.Shoot(player, source, position, velocity, type, damage, knockback);
 	}
 

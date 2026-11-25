@@ -14,8 +14,11 @@ public enum CodeLayer
 	PostDrawDusts,
 	PostDrawNPCs,
 	PostDrawPlayers,
+	[Obsolete("换用PreDrawMinimapAndOverlayIcons和PreDrawFullscreenMapIcons")]
 	PostDrawMapIcons,
 	PostDrawBG,
+	PreDrawMinimapAndOverlayIcons,
+	PreDrawFullscreenMapIcons,
 
 	// 加载
 	PostUpdateEverything,

@@ -1,8 +1,10 @@
 using Everglow.Commons.Enums;
 using Everglow.Commons.Interfaces;
 using MonoMod.Utils;
+using Terraria.GameContent;
 using Terraria.Graphics.Effects;
 using Terraria.Graphics.Renderers;
+using Terraria.Map;
 
 namespace Everglow.Commons.Hooks;
 
@@ -48,6 +50,8 @@ public class HookSystem : ModSystem
 		On_WorldGen.SaveAndQuit += WorldGen_SaveAndQuit;
 		On_WorldGen.SaveAndQuitCallBack += On_WorldGen_SaveAndQuitCallBack;
 
+		On_MapIconOverlay.Draw += MapIconOverlay_Draw;
+		On_CoinLossRevengeSystem.DrawMapIcons += CoinLossRevengeSystem_DrawMapIcons;
 		On_Main.DrawMiscMapIcons += Main_DrawMiscMapIcons;
 		On_Main.DrawBG += Main_DrawBG;
 		On_Main.DrawBackground += Main_DrawBackground;
@@ -70,6 +74,8 @@ public class HookSystem : ModSystem
 		On_WorldGen.SaveAndQuit -= WorldGen_SaveAndQuit;
 		On_WorldGen.SaveAndQuitCallBack -= On_WorldGen_SaveAndQuitCallBack;
 
+		On_MapIconOverlay.Draw -= MapIconOverlay_Draw;
+		On_CoinLossRevengeSystem.DrawMapIcons -= CoinLossRevengeSystem_DrawMapIcons;
 		On_Main.DrawMiscMapIcons -= Main_DrawMiscMapIcons;
 		On_Main.DrawBG -= Main_DrawBG;
 		On_Main.DrawBackground -= Main_DrawBackground;
@@ -159,6 +165,51 @@ public class HookSystem : ModSystem
 	{
 		orig.Invoke(self);
 		Invoke(CodeLayer.PostDrawDusts);
+	}
+
+	private void MapIconOverlay_Draw(On_MapIconOverlay.orig_Draw orig, MapIconOverlay self, Vector2 mapPosition, Vector2 mapOffset, Rectangle? clippingRect, float mapScale, float drawScale, ref string text)
+	{
+		if (!Main.mapFullscreen)
+		{
+			foreach (var handler in _manager.hooks[CodeLayer.PreDrawMinimapAndOverlayIcons].Where(h => h.Enable))
+			{
+				try
+				{
+					var hook = (Action<Vector2, Vector2, Rectangle?, float>)handler.Hook;
+					hook.Invoke(mapPosition, mapOffset, clippingRect, mapScale);
+				}
+				catch (Exception ex)
+				{
+					Debug.Fail(ex.ToString());
+					Ins.Logger.Error($"{handler} 抛出了异常 {ex}");
+					handler.Enable = false;
+				}
+			}
+		}
+		orig(self, mapPosition, mapOffset, clippingRect, mapScale, drawScale, ref text);
+	}
+
+	private CoinLossRevengeSystem.RevengeMarker CoinLossRevengeSystem_DrawMapIcons(On_CoinLossRevengeSystem.orig_DrawMapIcons orig, CoinLossRevengeSystem self, SpriteBatch spriteBatch, Vector2 mapPosition, Vector2 mapOffset, Rectangle? clippingRect, float mapScale, float drawScale, ref string text)
+	{
+		// The fullscreen map draws coin markers before the map overlay and entity heads.
+		if (Main.mapFullscreen)
+		{
+			foreach (var handler in _manager.hooks[CodeLayer.PreDrawFullscreenMapIcons].Where(h => h.Enable))
+			{
+				try
+				{
+					var hook = (Action<Vector2, Vector2, Rectangle?, float>)handler.Hook;
+					hook.Invoke(mapPosition, mapOffset, clippingRect, mapScale);
+				}
+				catch (Exception ex)
+				{
+					Debug.Fail(ex.ToString());
+					Ins.Logger.Error($"{handler} 抛出了异常 {ex}");
+					handler.Enable = false;
+				}
+			}
+		}
+		return orig(self, spriteBatch, mapPosition, mapOffset, clippingRect, mapScale, drawScale, ref text);
 	}
 
 	private void Main_DrawMiscMapIcons(On_Main.orig_DrawMiscMapIcons orig, Main self, SpriteBatch spriteBatch, Vector2 mapTopLeft, Vector2 mapX2Y2AndOff, Rectangle? mapRect, float mapScale, float drawScale, ref string mouseTextString)

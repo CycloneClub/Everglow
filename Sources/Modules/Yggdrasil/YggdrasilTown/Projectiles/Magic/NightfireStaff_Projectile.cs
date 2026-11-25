@@ -104,6 +104,6 @@ public class NightfireStaff_Projectile : ModProjectile
 			Dust.NewDust(Projectile.Center, 2, 2, ModContent.DustType<NightFire>(), Projectile.velocity.X, Projectile.velocity.Y);
 		}
 
-		SoundEngine.PlaySound(SoundID.DD2_BetsysWrathImpact, Projectile.Center);
+		SoundEngine.PlaySound(SoundID.Item10, Projectile.Center);
 	}
 }

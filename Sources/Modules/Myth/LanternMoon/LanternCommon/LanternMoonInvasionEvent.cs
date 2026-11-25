@@ -2,6 +2,7 @@ using Everglow.Commons.DataStructures;
 using Everglow.Commons.Mechanics.Events;
 using Everglow.Myth.LanternMoon.NPCs;
 using Everglow.Myth.LanternMoon.NPCs.LanternGhostKing;
+using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.Localization;
 
@@ -144,6 +145,7 @@ public class LanternMoonInvasionEvent : ReplicaEvent
 
 	public override void OnActivate(params object[] args)
 	{
+		SoundEngine.PlaySound(SoundID.Roar);
 		Initialization();
 		base.OnActivate();
 	}
