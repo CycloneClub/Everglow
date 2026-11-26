@@ -63,6 +63,7 @@ public class YggdrasilStatBonusMigrationTests
 	public void MoltenCoreAddsToShacklesEnduranceRegardlessOfEquipOrder(bool reverse)
 	{
 		var player = context.Player;
+		context.Attach<ShacklesBallPlayer>();
 		var moltenCore = bonuses;
 		player.endurance = 0.2f;
 		player.buffType[0] = BuffID.OnFire;
