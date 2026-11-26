@@ -23,7 +23,6 @@ public partial class YggdrasilTownGeneration
 	{
 		int hostTileType = ModContent.TileType<StoneScaleWood>();
 		ushort amberTileType = (ushort)ModContent.TileType<YggdrasilTown.Tiles.YggdrasilAmber>();
-		int naturalWallType = ModContent.WallType<StoneDragonScaleWoodWall>();
 		var townBounds = new Rectangle(218, Main.maxTilesY - 612, 730, 299);
 		Rectangle generationBounds = GetMineBounds(Main.maxTilesX, Main.maxTilesY);
 		int placedVeinCount = ScatterAmberVeins(generationBounds, townBounds, AmberVeinCount, AmberMinVeinSpacing, WorldGen.genRand, CanPlaceAmber, TryPlaceVein);
@@ -40,7 +39,7 @@ public partial class YggdrasilTownGeneration
 				return false;
 			}
 			Tile tile = Main.tile[point.X, point.Y];
-			return tile.HasTile && tile.TileType == hostTileType && (tile.WallType == WallID.None || tile.WallType == naturalWallType);
+			return tile.HasTile && tile.TileType == hostTileType;
 		}
 
 		bool TryPlaceVein(Point center)
@@ -86,7 +85,7 @@ public partial class YggdrasilTownGeneration
 		{
 			for (int retry = 0; retry < 256; retry++)
 			{
-				var patchCenter = new Point(random.Next(generationBounds.Left, generationBounds.Right), random.Next(generationBounds.Top, generationBounds.Bottom));
+				var patchCenter = SampleMinePoint();
 				if (townBounds.Contains(patchCenter) || !canPlacePatchCenter(patchCenter))
 				{
 					continue;
@@ -107,7 +106,7 @@ public partial class YggdrasilTownGeneration
 			Point veinCenter;
 			if (random.NextBool(10))
 			{
-				veinCenter = new Point(random.Next(generationBounds.Left, generationBounds.Right), random.Next(generationBounds.Top, generationBounds.Bottom));
+				veinCenter = SampleMinePoint();
 			}
 			else
 			{
@@ -128,6 +127,14 @@ public partial class YggdrasilTownGeneration
 			}
 		}
 		return placedCenters.Count;
+
+		Point SampleMinePoint()
+		{
+			int x = random.Next(generationBounds.Left, generationBounds.Right);
+			// Taking the deeper of two samples puts three quarters of candidates in the lower half.
+			int y = Math.Max(random.Next(generationBounds.Top, generationBounds.Bottom), random.Next(generationBounds.Top, generationBounds.Bottom));
+			return new Point(x, y);
+		}
 	}
 
 	private static List<Point> CollectAmberVeinTiles(Point center, HashSet<Point> tileOffsets, Func<Point, bool> canPlaceTile)
