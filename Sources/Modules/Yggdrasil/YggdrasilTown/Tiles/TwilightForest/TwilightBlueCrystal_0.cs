@@ -1,21 +1,9 @@
-using Everglow.Commons.TileHelper;
 using Everglow.Commons.VFX.Scene;
-using Everglow.Yggdrasil.YggdrasilTown.Dusts.TwilightForest;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.TwilightForest;
 
-public class TwilightBlueCrystal_0 : ShapeDataTile, ISceneTile
+public class TwilightBlueCrystal_0 : ShapedTwilightBlueCrystal, ISceneTile
 {
-	public override void SetStaticDefaults()
-	{
-		base.SetStaticDefaults();
-		Main.tileLighted[Type] = true;
-		AddMapEntry(new Color(40, 80, 148));
-		DustType = ModContent.DustType<TwilightCrystalDust>();
-		MinPick = 75;
-		CustomItemType = ModContent.ItemType<Items.Materials.TwilightCrystal>();
-	}
-
 	public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 	{
 		r = 0.1f;

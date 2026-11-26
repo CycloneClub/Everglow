@@ -3,10 +3,11 @@ using Terraria.ObjectData;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Tiles.TwilightForest;
 
-public class TwilightBlueCrystal_5 : ModTile
+public class TwilightBlueCrystal_5 : TwilightBlueCrystalTile
 {
 	public override void SetStaticDefaults()
 	{
+		base.SetStaticDefaults();
 		Main.tileFrameImportant[Type] = true;
 		Main.tileLighted[Type] = true;
 		Main.tileLavaDeath[Type] = false;
@@ -27,8 +28,6 @@ public class TwilightBlueCrystal_5 : ModTile
 		TileObjectData.addTile(Type);
 		AddMapEntry(new Color(40, 80, 148));
 		DustType = ModContent.DustType<TwilightCrystalDust>();
-		MinPick = 75;
-		RegisterItemDrop(ModContent.ItemType<Items.Materials.TwilightCrystal>());
 	}
 
 	public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
