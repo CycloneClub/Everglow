@@ -46,8 +46,6 @@ public class ScaleWingBladeProj : MeleeProj
 
 	public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 	{
-		ScreenShaker Gsplayer = Main.player[Projectile.owner].GetModPlayer<ScreenShaker>();
-
 		if (currantAttackType == 100)
 		{
 			modifiers.FinalDamage *= 3;
@@ -62,7 +60,7 @@ public class ScaleWingBladeProj : MeleeProj
 					proj.CritChance = Projectile.CritChance;
 				}
 			}
-			Gsplayer.FlyCamPosition = new Vector2(0, Math.Min(target.Hitbox.Width * target.Hitbox.Height / 12, 150)).RotatedByRandom(6.283);
+			ScreenShake(Math.Min(target.Hitbox.Width * target.Hitbox.Height / 12, 150));
 		}
 		else
 		{
@@ -76,7 +74,7 @@ public class ScaleWingBladeProj : MeleeProj
 					proj.CritChance = Projectile.CritChance;
 				}
 			}
-			Gsplayer.FlyCamPosition = new Vector2(0, Math.Min(target.Hitbox.Width * target.Hitbox.Height / 50, 50)).RotatedByRandom(6.283);
+			ScreenShake(Math.Min(target.Hitbox.Width * target.Hitbox.Height / 50, 50));
 		}
 	}
 

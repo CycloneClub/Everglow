@@ -80,7 +80,7 @@ public class QuenchingBladeProj : MeleeProj
 			ShakeStrength = 1f;
 		}
 		modifiers.HitDirectionOverride = target.Center.X > Main.player[Projectile.owner].Center.X ? 1 : -1;
-		ShakerManager.AddShaker(Projectile.Center, Vector2.One.RotatedByRandom(MathHelper.Pi), 10 * ShakeStrength, 20f, 120, 0.9f, 0.8f, 30);
+		ScreenShake(Projectile.Center, 10 * ShakeStrength, period: 20f, speed: 120f);
 	}
 
 	public float Omega;

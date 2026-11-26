@@ -49,7 +49,6 @@ public class AcroporaSpear_Proj : MeleeProj
 	public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 	{
 		// 伤害倍率
-		ScreenShaker Gsplayer = Main.player[Projectile.owner].GetModPlayer<ScreenShaker>();
 		float ShakeStrength = 0.2f;
 		if (currantAttackType == 0)
 		{
@@ -57,7 +56,7 @@ public class AcroporaSpear_Proj : MeleeProj
 			ShakeStrength = 1f;
 		}
 
-		Gsplayer.FlyCamPosition = new Vector2(0, Math.Min(target.Hitbox.Width * target.Hitbox.Height / 12f * ShakeStrength, 100)).RotatedByRandom(6.283);
+		ScreenShake(Math.Min(target.Hitbox.Width * target.Hitbox.Height / 12f * ShakeStrength, 100));
 	}
 
 	public override void Attack()
