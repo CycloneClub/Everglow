@@ -1,11 +1,12 @@
 using Everglow.Commons.Templates;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs;
+using Everglow.Yggdrasil.YggdrasilTown.Tiles;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Placeables.Banners;
 
-public class DarkGlimmeringRodsBanner : BannerItemBase
+public class DarkGlimmeringRodsBanner : BannerItemBase<YggdrasilTownBannerTile>
 {
-	public override int BannerTileStyle => 23;
+	public override int BannerTileStyle => 9;
 
 	public override int BannerNPCType => ModContent.NPCType<DarkGlimmeringRods>();
 }

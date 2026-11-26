@@ -1,11 +1,12 @@
 using Everglow.Commons.Templates;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs;
+using Everglow.Yggdrasil.YggdrasilTown.Tiles;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Placeables.Banners;
 
-public class PurpleBombCaterpillarBanner : BannerItemBase
+public class PurpleBombCaterpillarBanner : BannerItemBase<YggdrasilTownBannerTile>
 {
-	public override int BannerTileStyle => 30;
+	public override int BannerTileStyle => 16;
 
 	public override int BannerNPCType => ModContent.NPCType<PurpleBombCaterpillar>();
 }

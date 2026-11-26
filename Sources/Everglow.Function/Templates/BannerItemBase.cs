@@ -2,11 +2,10 @@ using Terraria.Localization;
 
 namespace Everglow.Commons.Templates;
 
-public abstract class BannerItemBase : ModItem
+public abstract class BannerItemBase<TBannerTile> : ModItem
+	where TBannerTile : ModBannerTile
 {
-	public virtual int BannerTileType => ModContent.TileType<BannerTile>();
-
-	public virtual int BannerTileStyle => 0;
+	public abstract int BannerTileStyle { get; }
 
 	public abstract int BannerNPCType { get; }
 
@@ -27,7 +26,7 @@ public abstract class BannerItemBase : ModItem
 
 	public override void SetDefaults()
 	{
-		Item.DefaultToPlaceableTile(BannerTileType, BannerTileStyle);
+		Item.DefaultToPlaceableTile(ModContent.TileType<TBannerTile>(), BannerTileStyle);
 		Item.width = 10;
 		Item.height = 24;
 		Item.value = Item.sellPrice(silver: 2);
