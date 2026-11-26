@@ -98,7 +98,7 @@ public class FoodAndCrownRegressionTests
 		using var context = new CooldownTestContext();
 		var assembly = LoadPlantAndFarm();
 		var crown = (ModItem)Activator.CreateInstance(assembly.GetType("Everglow.PlantAndFarm.Items.Accessories.ThreeColorCrown", true)!)!;
-		var playerType = assembly.GetType("Everglow.PlantAndFarm.Items.Materials.PAFPlayer", true)!;
+		var playerType = assembly.GetType("Everglow.PlantAndFarm.PAFPlayer", true)!;
 		var effects = (ModPlayer)typeof(CooldownTestContext).GetMethod(nameof(CooldownTestContext.Attach))!
 			.MakeGenericMethod(playerType).Invoke(context, null)!;
 		var originalRandom = Main.rand;

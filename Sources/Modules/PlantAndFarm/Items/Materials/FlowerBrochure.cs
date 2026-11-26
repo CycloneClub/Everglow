@@ -11,11 +11,11 @@ public class FlowerBrochure : ModItem
 		Item.maxStack = 1;
 		Item.value = 10000;
 		Item.rare = ItemRarityID.Blue;
-		Item.material = true;
+		Item.accessory = true;
 	}
 
 	public override void UpdateAccessory(Player player, bool hideVisual)
 	{
-		player.GetModPlayer<PAFPlayer>().FlowerBrochure = !hideVisual;
+		player.GetModPlayer<PAFPlayer>().FlowerBrochure = true;
 	}
 }

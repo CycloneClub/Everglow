@@ -1,6 +1,6 @@
 using Everglow.PlantAndFarm.Items.Accessories;
 
-namespace Everglow.PlantAndFarm.Items.Materials;
+namespace Everglow.PlantAndFarm;
 
 public class PAFPlayer : ModPlayer
 {
