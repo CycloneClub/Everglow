@@ -189,6 +189,13 @@ public class JellyBallSecretionPlayer : ModPlayer
 	private Vector2 incoming;
 	private Vector2 startPosition;
 	private float stepDistance;
+	private bool startedGrappling;
+
+	public override void PreUpdate()
+	{
+		// GrappleMovement clears the latch on jump before PreUpdateMovement sees the pull velocity.
+		startedGrappling = Player.grappling[0] >= 0;
+	}
 
 	public override void PreUpdateMovement()
 	{
@@ -208,7 +215,7 @@ public class JellyBallSecretionPlayer : ModPlayer
 		Point source = default;
 		if (HitFace(incoming.X, Player.position.X - startPosition.X) && TryContact(true, Math.Sign(incoming.X), out var wall))
 		{
-			bounced = Math.Abs(incoming.X) >= ImpactSpeed;
+			bounced = !startedGrappling && Math.Abs(incoming.X) >= ImpactSpeed;
 			if (bounced && Player.whoAmI == Main.myPlayer)
 			{
 				Player.velocity.X = -incoming.X * Restitution;
@@ -221,7 +228,7 @@ public class JellyBallSecretionPlayer : ModPlayer
 
 		if (HitFace(incoming.Y, Player.position.Y - startPosition.Y) && TryContact(false, Math.Sign(incoming.Y), out var floor))
 		{
-			bool bounceY = Math.Abs(incoming.Y) >= ImpactSpeed;
+			bool bounceY = !startedGrappling && Math.Abs(incoming.Y) >= ImpactSpeed;
 			bounced |= bounceY;
 			if (bounceY && Player.whoAmI == Main.myPlayer)
 			{
