@@ -166,7 +166,7 @@ public class MechanismHalberd_Proj : MeleeProj
 			}
 			else if (timer == 30)
 			{
-				AttSound(new SoundStyle(Commons.ModAsset.TrueMeleePowerSwing_Mod) with { Volume = 1.4f });
+				AttSound(new SoundStyle(Commons.ModAsset.TrueMeleeSwing_Mod) with { Volume = 1.4f });
 			}
 			else if (timer > 30 && timer < 45)
 			{
