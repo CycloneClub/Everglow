@@ -70,13 +70,7 @@ public partial class YggdrasilTownGeneration
 				{
 					JellyBallHotbedLayout.Jelly => jelly,
 					JellyBallHotbedLayout.Crystal => TileID.DiamondGemspark,
-					_ => TileID.Glass,
-				};
-				tile.TileColor = material switch
-				{
-					JellyBallHotbedLayout.Membrane => PaintID.PinkPaint,
-					JellyBallHotbedLayout.Fresh => PaintID.DeepSkyBluePaint,
-					_ => PaintID.None,
+					_ => (ushort)ModContent.TileType<JellyBallStemCells>(),
 				};
 				tile.TileFrameX = 0;
 				tile.TileFrameY = 0;
@@ -96,8 +90,15 @@ public partial class YggdrasilTownGeneration
 				Tile tile = Main.tile[bounds.X + x, bounds.Y + y];
 				if (tile.HasTile && layout[x, y] is JellyBallHotbedLayout.Jelly or JellyBallHotbedLayout.Fresh)
 				{
-					tile.TileType = TileID.Glass;
-					tile.TileColor = nerves[x, y] == 1 ? PaintID.WhitePaint : PaintID.BlackPaint;
+					if (nerves[x, y] == 1)
+					{
+						tile.TileType = (ushort)ModContent.TileType<JellyBallNerve>();
+					}
+					else
+					{
+						tile.TileType = (ushort)ModContent.TileType<JellyBallNerve_Thin>();
+					}
+					//tile.TileColor = nerves[x, y] == 1 ? PaintID.WhitePaint : PaintID.BlackPaint;
 				}
 			}
 		}
