@@ -145,7 +145,7 @@ Flour: {
 
 FlowerBrochure: {
 	DisplayName: 野花收集指南
-	Tooltip: 携带后可以收集野花
+	Tooltip: 装备后可以收集野花
 }
 
 FrogMeat: {

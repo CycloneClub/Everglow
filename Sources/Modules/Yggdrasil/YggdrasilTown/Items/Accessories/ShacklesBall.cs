@@ -34,10 +34,33 @@ public class ShacklesBall : ModItem
 		// 3. -10% jump speed
 		player.jumpSpeedBoost -= Player.jumpSpeed * JumpSpeedReduction;
 
-		// 4. -5% jump height
-		player.jump = (int)(player.jump * (1 - JumpHeightReduction));
+		player.GetModPlayer<ShacklesBallPlayer>().Equipped = true;
 
 		// 5. Immune to 'Slow' debuff
 		player.buffImmune[BuffID.Slow] = true;
+	}
+}
+
+public class ShacklesBallPlayer : ModPlayer
+{
+	public bool Equipped { get; set; }
+
+	public override void ResetEffects() => Equipped = false;
+
+	public override void PostUpdateMiscEffects()
+	{
+		// Vanilla applies moveSpeed only to the ordinary run cap. Keep the barefoot sprint cap in sync.
+		if (Equipped && Player.accRunSpeed == Player.maxRunSpeed && Player.moveSpeed < 1f)
+		{
+			Player.accRunSpeed *= Math.Max(0f, Player.moveSpeed);
+		}
+	}
+
+	public override void PostUpdateRunSpeeds()
+	{
+		if (Equipped && !Player.mount.Active)
+		{
+			Player.jumpHeight = (int)MathF.Round(Player.jumpHeight * (1f - ShacklesBall.JumpHeightReduction));
+		}
 	}
 }

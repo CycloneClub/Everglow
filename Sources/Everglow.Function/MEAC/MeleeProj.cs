@@ -298,9 +298,38 @@ public abstract class MeleeProj : ModProjectile, IWarpProjectile, IBloomProjecti
 		Utils.PlotTileLine(beamStartPos, beamEndPos, Projectile.width * Projectile.scale, cut);
 	}
 
+	private static bool HitShakeEnabled => !Main.dedServ && MeleeProj_3D_Configs.ShouldMeleeWeaponScreenShake;
+
 	public void ScreenShake()
 	{
-		ShakerManager.AddShaker(Player.Center + mainAxisDirection, new Vector2(0, -1).RotatedByRandom(MathHelper.TwoPi), 6, 0.8f, 16, 0.9f, 0.8f, 30);
+		if (HitShakeEnabled)
+		{
+			ShakerManager.AddShaker(Player.Center + mainAxisDirection, new Vector2(0, -1).RotatedByRandom(MathHelper.TwoPi), 6, 0.8f, 16, 0.9f, 0.8f, 30);
+		}
+	}
+
+	protected void ScreenShake(float ownerCameraStrength)
+	{
+		if (HitShakeEnabled)
+		{
+			Player.GetModPlayer<ScreenShaker>().FlyCamPosition = new Vector2(0, ownerCameraStrength).RotatedByRandom(6.283);
+		}
+	}
+
+	protected void ScreenShake(Vector2 center, float strength)
+	{
+		if (HitShakeEnabled)
+		{
+			ShakerManager.AddShaker(UndirectedShakerInfo.Create(center, strength));
+		}
+	}
+
+	protected void ScreenShake(Vector2 center, float strength, float period, float speed)
+	{
+		if (HitShakeEnabled)
+		{
+			ShakerManager.AddShaker(center, Vector2.One.RotatedByRandom(MathHelper.Pi), strength, period, speed, 0.9f, 0.8f, 30);
+		}
 	}
 
 	public void NextAttackType()

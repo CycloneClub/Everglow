@@ -17,7 +17,7 @@ public class CyanVineBar : ModItem
 	public override void AddRecipes()
 	{
 		CreateRecipe(1)
-			.AddIngredient(ModContent.ItemType<CyanVineOre>(), 4)
+			.AddIngredient(ModContent.ItemType<CyanVineOre>(), 3)
 			.AddTile(TileID.Furnaces)
 			.Register();
 	}

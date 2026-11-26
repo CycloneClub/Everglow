@@ -60,7 +60,7 @@
       SA1300;
       SA1123
     </WarningsAsErrors>
-    <Modules>AssetReplace;CagedDomain;EternalResolve;Example;Food;MEAC;Minortopography;Myth;Ocean;Plant;PlantAndFarm;SpellAndSkull;SubSpace;Yggdrasil</Modules>
+    <Modules>AssetReplace;CagedDomain;EternalResolve;Example;Food;Minortopography;Myth;Ocean;Plant;PlantAndFarm;SpellAndSkull;SubSpace;Yggdrasil</Modules>
     <DefineConstants>$(DefineConstants);$(Modules)</DefineConstants>
     <EnableModBuilder>false</EnableModBuilder>
     <EnablePathGenerator>true</EnablePathGenerator>

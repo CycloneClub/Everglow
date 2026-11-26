@@ -96,6 +96,7 @@ public class CyanVineSword_Projectile : MeleeProj
 			{
 				player.fullRotation = 0;
 				player.legRotation = 0;
+				hasContinueLeftClick = player.controlUseItem;
 				NextAttackType();
 			}
 		}

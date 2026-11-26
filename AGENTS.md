@@ -27,7 +27,7 @@ Sources/
   Everglow.Core/                     Terraria-independent base layer
   Everglow.Function/                 tML-facing shared functionality
   Everglow.UnitTests/                MSTest tests
-  Modules/                           content assemblies (14 active modules)
+  Modules/                           content assemblies (13 active modules)
 Libraries/SubworldLibrary.dll        required external mod dependency; read-only
 Tools/                               build tasks and utilities
 Documents/                           design and workflow documentation

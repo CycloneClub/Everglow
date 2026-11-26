@@ -80,8 +80,7 @@ public class DragonScaleHammerProj : MeleeProj
 
 	public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 	{
-		ScreenShaker Gsplayer = Main.player[Projectile.owner].GetModPlayer<ScreenShaker>();
-		Gsplayer.FlyCamPosition = new Vector2(0, Math.Min(target.Hitbox.Width * target.Hitbox.Height / 50, 50)).RotatedByRandom(6.283);
+		ScreenShake(Math.Min(target.Hitbox.Width * target.Hitbox.Height / 50, 50));
 		base.ModifyHitNPC(target, ref modifiers);
 	}
 

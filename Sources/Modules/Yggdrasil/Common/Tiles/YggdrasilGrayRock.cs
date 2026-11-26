@@ -22,7 +22,6 @@ public class YggdrasilGrayRock : ModTile
 		TileID.Sets.ChecksForMerge[Type] = true;
 
 		DustType = ModContent.DustType<YggdrasilGrayRock_Dust>();
-		MinPick = 180;
 		HitSound = SoundID.Dig;
 		AddMapEntry(new Color(96, 97, 99));
 	}

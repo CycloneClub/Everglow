@@ -1,6 +1,7 @@
 using Everglow.Commons.Mechanics.MirrorReflection;
 using Everglow.Commons.Mechanics.MirrorReflection.Core;
 using Everglow.Commons.Netcode;
+using Everglow.SubSpace;
 using Everglow.Yggdrasil.KelpCurtain;
 using Everglow.Yggdrasil.Netcode;
 using Everglow.Yggdrasil.YggdrasilTown.Walls;
@@ -34,6 +35,11 @@ public class YggdrasilWorldSystem : ModSystem, ICopyWorldData
 	public override void OnWorldLoad()
 	{
 		ClearVanillaEvents();
+		if (BlockVanillaResidents)
+		{
+			// 切换子世界时，清除上一世界留下的原版入住候选。
+			Array.Clear(Main.townNPCCanSpawn, 0, NPCID.Count);
+		}
 		if (NetUtils.IsSubServer)
 		{
 			// 新启动的子服向主服获取最新进度，同时兼容旧子世界存档中的记录。
@@ -120,7 +126,7 @@ public class YggdrasilWorldSystem : ModSystem, ICopyWorldData
 		IL_WorldGen.dropMeteor += SkipEventInYggdrasil;
 		IL_MysticLogFairiesEvent.StartNight += SkipEventInYggdrasil;
 		IL_MysticLogFairiesEvent.UpdateTime += SkipEventInYggdrasil;
-		IL_Main.UpdateTime_SpawnTownNPCs += PreventOldManSpawningInYggdrasil;
+		IL_Main.UpdateTime_SpawnTownNPCs += SkipVanillaResidents;
 		base.Load();
 	}
 
@@ -150,27 +156,23 @@ public class YggdrasilWorldSystem : ModSystem, ICopyWorldData
 		IL_WorldGen.dropMeteor -= SkipEventInYggdrasil;
 		IL_MysticLogFairiesEvent.StartNight -= SkipEventInYggdrasil;
 		IL_MysticLogFairiesEvent.UpdateTime -= SkipEventInYggdrasil;
-		IL_Main.UpdateTime_SpawnTownNPCs -= PreventOldManSpawningInYggdrasil;
+		IL_Main.UpdateTime_SpawnTownNPCs -= SkipVanillaResidents;
 	}
 
-	private static void PreventOldManSpawningInYggdrasil(ILContext il)
+	private static bool BlockVanillaResidents => YggdrasilWorld.InYggdrasil
+		|| (SubworldSystem.IsActive<RoomWorld>() && RoomWorld.OriginalWorld is YggdrasilWorld);
+
+	private static void SkipVanillaResidents(ILContext il)
 	{
-		ILCursor cursor = new(il);
-		if (!cursor.TryGotoNext(
-			MoveType.Before,
-			i => i.MatchLdsfld<NPC>(nameof(NPC.downedBoss3)),
-			i => i.MatchBrtrue(out _),
-			i => i.MatchLdloc(out _),
-			i => i.MatchBrtrue(out _),
-			i => i.MatchCall<NPC>(nameof(NPC.GetSpawnSourceForTownSpawn)),
-			i => i.MatchLdsfld<Main>(nameof(Main.dungeonX))))
+		// 原版在优先候选为 0 时检查居民和地牢老人；分支之后才调用 tML 的模组居民检查。
+		var cursor = new ILCursor(il);
+		if (!cursor.TryGotoNext(MoveType.After, i =>
+			i.MatchLdsfld<WorldGen>(nameof(WorldGen.prioritizedTownNPCType)) && i.Next.MatchBrtrue(out _)))
 		{
-			throw new InvalidOperationException("Failed to locate the Old Man spawn condition in Main.UpdateTime_SpawnTownNPCs.");
+			throw new InvalidOperationException("Vanilla resident selection was not found in Main.UpdateTime_SpawnTownNPCs.");
 		}
 
-		// 天穹树没有原版地牢：仅让老人补生条件跳过，不修改骷髅王进度或后续城镇刷新。
-		cursor.Index++;
-		cursor.EmitDelegate<Func<bool, bool>>(downedSkeletron => downedSkeletron || YggdrasilWorld.InYggdrasil);
+		cursor.EmitDelegate<Func<int, bool>>(priority => priority != 0 || BlockVanillaResidents);
 	}
 
 	public override void PostUpdateEverything()

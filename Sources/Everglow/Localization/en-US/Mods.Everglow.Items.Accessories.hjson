@@ -539,7 +539,7 @@ ShacklesBall: {
 	Tooltip:
 		'''
 		+{0}% damage reduction, -{1}% movement speed
-		Jump speed reduced by {2}% of its base value; remaining jump duration reduced by {3}%
+		Jump speed reduced by {2}% of its base value and jump hold duration reduced by {3}%
 		Immune to Slow
 		'''
 }

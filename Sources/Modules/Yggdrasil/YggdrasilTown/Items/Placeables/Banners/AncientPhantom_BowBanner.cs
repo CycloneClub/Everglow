@@ -1,11 +1,12 @@
 using Everglow.Commons.Templates;
 using Everglow.Yggdrasil.YggdrasilTown.NPCs;
+using Everglow.Yggdrasil.YggdrasilTown.Tiles;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Placeables.Banners;
 
-public class AncientPhantom_BowBanner : BannerItemBase
+public class AncientPhantom_BowBanner : BannerItemBase<YggdrasilTownBannerTile>
 {
-	public override int BannerTileStyle => 14;
+	public override int BannerTileStyle => 0;
 
 	public override int BannerNPCType => ModContent.NPCType<AncientPhantom_Bow>();
 }
