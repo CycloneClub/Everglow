@@ -38,7 +38,7 @@ public class TwilightEucalyptusBoomerangKnift : ModItem
 		Recipe recipe = CreateRecipe();
 		recipe.AddIngredient<TwilightEucalyptusWood_Item>(15);
 		recipe.AddIngredient<TwilightCrystal>(8);
-		recipe.AddTile(TileID.WorkBenches);
+		recipe.AddTile(TileID.Anvils);
 		recipe.Register();
 	}
 }

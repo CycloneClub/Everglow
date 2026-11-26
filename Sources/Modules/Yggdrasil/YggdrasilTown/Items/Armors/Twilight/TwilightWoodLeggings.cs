@@ -105,7 +105,7 @@ public class TwilightWoodLeggings : ModItem
 		Recipe recipe = CreateRecipe();
 		recipe.AddIngredient<TwilightEucalyptusWood_Item>(25);
 		recipe.AddIngredient<TwilightCrystal>(10);
-		recipe.AddTile(TileID.WorkBenches);
+		recipe.AddTile(TileID.Anvils);
 		recipe.Register();
 	}
 }
