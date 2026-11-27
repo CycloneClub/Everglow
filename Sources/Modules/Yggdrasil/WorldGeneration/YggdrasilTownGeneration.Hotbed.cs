@@ -73,7 +73,9 @@ public partial class YggdrasilTownGeneration
 				{
 					JellyBallHotbedLayout.Jelly => jelly,
 					JellyBallHotbedLayout.Crystal => TileID.DiamondGemspark,
-					_ => (ushort)ModContent.TileType<JellyBallStemCells>(),
+					JellyBallHotbedLayout.Fresh => (ushort)ModContent.TileType<JellyBallSecretion_Fresh>(),
+					JellyBallHotbedLayout.Membrane => (ushort)ModContent.TileType<JellyBallStemCells>(),
+					_ => jelly,
 				};
 				tile.TileFrameX = 0;
 				tile.TileFrameY = 0;
@@ -101,7 +103,6 @@ public partial class YggdrasilTownGeneration
 					{
 						tile.TileType = (ushort)ModContent.TileType<JellyBallNerve_Thin>();
 					}
-					//tile.TileColor = nerves[x, y] == 1 ? PaintID.WhitePaint : PaintID.BlackPaint;
 				}
 			}
 		}
