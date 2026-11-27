@@ -26,9 +26,9 @@ public class JellyBallNerve_Thin : ModTile
 
 	public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 	{
-		r = 0.3f;
+		r = 0.45f;
 		g = 0.05f;
-		b = 0.4f;
+		b = 0.6f;
 		base.ModifyLight(i, j, ref r, ref g, ref b);
 	}
 

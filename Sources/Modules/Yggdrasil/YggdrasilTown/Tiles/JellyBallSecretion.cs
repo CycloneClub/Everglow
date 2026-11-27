@@ -17,6 +17,7 @@ public class JellyBallSecretion : ModTile
 		Main.tileBlockLight[Type] = false;
 		Main.tileShine2[Type] = false;
 		Main.tileMerge[Type][ModContent.TileType<JellyBallNerve>()] = true;
+		Main.tileMerge[Type][ModContent.TileType<JellyBallNerve_Thin>()] = true;
 		Main.tileMerge[Type][ModContent.TileType<JellyBallSecretion_Fresh>()] = true;
 
 		DustType = ModContent.DustType<JellyBallGel>();
