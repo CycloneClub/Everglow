@@ -16,9 +16,9 @@ public class JellyBallHotbedGenerationTests
 		return (byte[,])method.Invoke(null, [source, seed])!;
 	}
 
-	private static byte[,] OldHotbed()
+	private static byte[,] OldHotbed(int width = 350, int height = 480)
 	{
-		var source = new byte[350, 480];
+		var source = new byte[width, height];
 		for (int x = 35; x < 315; x++)
 		{
 			for (int y = 45; y < 305; y++)
@@ -955,6 +955,22 @@ public class JellyBallHotbedGenerationTests
 			}
 		}
 		Assert.IsTrue(reached.Contains((endX, endY)), "A short reference stroke is detached from its nearby parent curve.");
+	}
+
+	[TestMethod]
+	public void TrunkBelowPoolMembraneStaysOneTileWide()
+	{
+		var layout = Generate(OldHotbed(330, 486), 42);
+		var type = typeof(YggdrasilTownGeneration).Assembly.GetType("Everglow.Yggdrasil.WorldGeneration.JellyBallHotbedLayout")!;
+		var nerves = (byte[,])type.GetMethod("TraceReferenceNerves")!.Invoke(null, [layout])!;
+
+		// In this seed the vertical trunk crosses rows 431–440 before branching below the pool.
+		for (int y = 431; y <= 440; y++)
+		{
+			Assert.AreEqual((byte)1, nerves[135, y], $"Missing trunk at (135, {y}).");
+			Assert.AreEqual((byte)0, nerves[134, y], $"Doubled trunk at (134, {y}).");
+			Assert.AreEqual((byte)0, nerves[136, y], $"Doubled trunk at (136, {y}).");
+		}
 	}
 
 	[TestMethod]
