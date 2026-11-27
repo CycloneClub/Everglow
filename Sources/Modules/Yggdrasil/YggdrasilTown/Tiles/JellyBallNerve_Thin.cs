@@ -24,6 +24,9 @@ public class JellyBallNerve_Thin : ModTile
 		AddMapEntry(new Color(162, 53, 146));
 	}
 
+	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch) =>
+		Main.dedServ || ModContent.GetInstance<JellyRipples>().PreDrawTile(i, j);
+
 	public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 	{
 		r = 0.45f;

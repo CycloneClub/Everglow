@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
 using Terraria.Audio;
 using Terraria.GameContent.Drawing;
+using Terraria.Graphics;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Tiles;
 
@@ -26,9 +27,6 @@ public class JellyBallSecretion : ModTile
 		AddMapEntry(new Color(57, 70, 181));
 	}
 
-	internal static bool IsJelly(Point p) => WorldGen.InWorld(p.X, p.Y, 1)
-		&& Main.tile[p.X, p.Y].HasUnactuatedTile && Main.tile[p.X, p.Y].TileType == ModContent.TileType<JellyBallSecretion>();
-
 	public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 	{
 		if (Main.dedServ)
@@ -37,28 +35,7 @@ public class JellyBallSecretion : ModTile
 		}
 
 		Lighting.AddLight(i, j, 0, 0.5f, 0.94f);
-		var tile = Main.tile[i, j];
-		var ripples = ModContent.GetInstance<JellyRipples>();
-		var point = new Point(i, j);
-		if (tile.IsHalfBlock || tile.Slope != SlopeType.Solid || !tile.HasUnactuatedTile || !TileDrawing.IsVisible(tile) || !ripples.TryGetWave(point, out Vector2 squeeze))
-		{
-			return true;
-		}
-
-		Vector2 offset = Main.drawToScreen ? Vector2.Zero : new Vector2(Main.offScreenRange);
-		Vector2 position = point.ToVector2() * 16 - Main.screenPosition + offset;
-		var texture = Main.instance.TilesRenderer.GetTileDrawTexture(tile, i, j);
-		var light = tile.IsTileFullbright ? Color.White : Lighting.GetColor(i, j);
-		var tint = Color.Lerp(light, Color.White, Math.Min(squeeze.Length() * 0.035f, 0.22f));
-		var frame = new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16);
-		// Positive squeeze compresses an axis. Shared faces stay anchored so the tiles stay joined.
-		float left = WorldGen.SolidTile(i - 1, j) ? 0f : squeeze.X;
-		float right = WorldGen.SolidTile(i + 1, j) ? 0f : squeeze.X;
-		float top = WorldGen.SolidTile(i, j - 1) ? 0f : squeeze.Y;
-		float bottom = WorldGen.SolidTile(i, j + 1) ? 0f : squeeze.Y;
-		var scale = new Vector2(1f - (left + right) / 16f, 1f - (top + bottom) / 16f);
-		spriteBatch.Draw(texture, position + new Vector2(left, top), frame, tint, 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
-		return false;
+		return ModContent.GetInstance<JellyRipples>().PreDrawTile(i, j);
 	}
 
 	public override void RandomUpdate(int i, int j)
@@ -100,6 +77,108 @@ public class JellyRipples : ModSystem
 	private static readonly float TransmissionPerTile = MathF.Pow(0.5f, 1f / TilesPerAmplitudeHalving);
 	private readonly List<Pulse> pulses = [];
 
+	internal static bool IsJelly(Point point)
+	{
+		if (!WorldGen.InWorld(point.X, point.Y, 1))
+		{
+			return false;
+		}
+
+		var tile = Main.tile[point.X, point.Y];
+		return tile.HasUnactuatedTile && (tile.TileType == ModContent.TileType<JellyBallSecretion>()
+			|| tile.TileType == ModContent.TileType<JellyBallNerve>()
+			|| tile.TileType == ModContent.TileType<JellyBallNerve_Thin>());
+	}
+
+	internal bool PreDrawTile(int i, int j)
+	{
+		var tile = Main.tile[i, j];
+		if (pulses.Count == 0 || tile.IsHalfBlock || tile.Slope != SlopeType.Solid || !tile.HasUnactuatedTile || !TileDrawing.IsVisible(tile))
+		{
+			return true;
+		}
+
+		var point = new Point(i, j);
+		Vector2 topLeft = GetCornerOffset(point, point);
+		Vector2 topRight = GetCornerOffset(point, new Point(i + 1, j));
+		Vector2 bottomLeft = GetCornerOffset(point, new Point(i, j + 1));
+		Vector2 bottomRight = GetCornerOffset(point, new Point(i + 1, j + 1));
+		if (!TryGetWave(point, out var squeeze) && topLeft == Vector2.Zero && topRight == Vector2.Zero && bottomLeft == Vector2.Zero && bottomRight == Vector2.Zero)
+		{
+			return true;
+		}
+
+		Vector2 offset = Main.drawToScreen ? Vector2.Zero : new Vector2(Main.offScreenRange);
+		Vector2 position = new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y) + offset;
+		var texture = Main.instance.TilesRenderer.GetTileDrawTexture(tile, i, j);
+		var light = tile.IsTileFullbright ? Color.White : Lighting.GetColor(i, j);
+		var tint = Color.Lerp(light, Color.White, Math.Min(squeeze.Length() * 0.035f, 0.22f));
+		var frame = new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16);
+		var batch = Main.tileBatch;
+		batch.Draw(texture, new Vector4(position, 16, 16), frame, new VertexColors(tint));
+		// TileBatch queues TL, TR, BL, BR. Move the queued vertices before the terrain pass flushes.
+		var group = batch._batchDrawGroups[batch._lastBatchDrawGroupIndex];
+		var vertices = group.VertexArray.AsSpan(group.VertexCount - 4, 4);
+		vertices[0].Position += new Vector3(topLeft, 0);
+		vertices[1].Position += new Vector3(topRight, 0);
+		vertices[2].Position += new Vector3(bottomLeft, 0);
+		vertices[3].Position += new Vector3(bottomRight, 0);
+		return false;
+	}
+
+	private Vector2 GetCornerOffset(Point owner, Point corner)
+	{
+		Vector2 inward = Vector2.Zero;
+		Span<Point> members = stackalloc Point[4];
+		int count = 0;
+		for (int y = corner.Y - 1; y <= corner.Y; y++)
+		{
+			for (int x = corner.X - 1; x <= corner.X; x++)
+			{
+				var point = new Point(x, y);
+				if (!IsJelly(point))
+				{
+					if (WorldGen.SolidTile(x, y))
+					{
+						return Vector2.Zero;
+					}
+					continue;
+				}
+
+				var tile = Main.tile[x, y];
+				if (tile.IsHalfBlock || tile.Slope != SlopeType.Solid)
+				{
+					return Vector2.Zero;
+				}
+
+				// A diagonal tile belongs to this corner only if one of the two arms connects it.
+				if (x != owner.X && y != owner.Y && !IsJelly(new Point(x, owner.Y)) && !IsJelly(new Point(owner.X, y)))
+				{
+					continue;
+				}
+
+				inward += new Vector2(x == corner.X ? 1 : -1, y == corner.Y ? 1 : -1);
+				members[count++] = point;
+			}
+		}
+
+		// Interior vertices have no exposed face. Only sample waves along the outline.
+		if (inward == Vector2.Zero)
+		{
+			return Vector2.Zero;
+		}
+
+		Vector2 wave = Vector2.Zero;
+		foreach (var point in members[..count])
+		{
+			if (TryGetWave(point, out var squeeze))
+			{
+				wave += squeeze;
+			}
+		}
+		return wave / count * new Vector2(Math.Sign(inward.X), Math.Sign(inward.Y));
+	}
+
 	private sealed class Pulse
 	{
 		public readonly Queue<Point> Frontier = [];
@@ -109,7 +188,7 @@ public class JellyRipples : ModSystem
 
 		public void Visit(Point point, ulong now, float transmission)
 		{
-			if (JellyBallSecretion.IsJelly(point) && Arrivals.TryAdd(point, (now, transmission)))
+			if (IsJelly(point) && Arrivals.TryAdd(point, (now, transmission)))
 			{
 				Frontier.Enqueue(point);
 				LastArrival = now;
@@ -130,7 +209,7 @@ public class JellyRipples : ModSystem
 			for (int n = 0; n < count; n++)
 			{
 				var p = pulse.Frontier.Dequeue();
-				if (!JellyBallSecretion.IsJelly(p))
+				if (!IsJelly(p))
 				{
 					continue;
 				}
@@ -218,7 +297,7 @@ public class JellyBallSecretionPlayer : ModPlayer
 		Point source = default;
 		if (HitFace(incoming.X, Player.position.X - startPosition.X) && TryContact(true, Math.Sign(incoming.X), out var wall))
 		{
-			bounced = !startedGrappling && Math.Abs(incoming.X) >= ImpactSpeed;
+			bounced = CanBounce(wall, incoming.X);
 			if (bounced && Player.whoAmI == Main.myPlayer)
 			{
 				Player.velocity.X = -incoming.X * Restitution;
@@ -231,7 +310,7 @@ public class JellyBallSecretionPlayer : ModPlayer
 
 		if (HitFace(incoming.Y, Player.position.Y - startPosition.Y) && TryContact(false, Math.Sign(incoming.Y), out var floor))
 		{
-			bool bounceY = !startedGrappling && Math.Abs(incoming.Y) >= ImpactSpeed;
+			bool bounceY = CanBounce(floor, incoming.Y);
 			bounced |= bounceY;
 			if (bounceY && Player.whoAmI == Main.myPlayer)
 			{
@@ -273,6 +352,9 @@ public class JellyBallSecretionPlayer : ModPlayer
 	private static bool HitFace(float speed, float travelled) =>
 		Math.Abs(speed) >= 2f && travelled * Math.Sign(speed) < Math.Abs(speed) - 0.001f;
 
+	private bool CanBounce(Point contact, float speed) =>
+		!startedGrappling && Math.Abs(speed) >= ImpactSpeed && Main.tile[contact.X, contact.Y].TileType == ModContent.TileType<JellyBallSecretion>();
+
 	private bool TryContact(bool horizontal, int direction, out Point contact)
 	{
 		float face = horizontal
@@ -281,16 +363,25 @@ public class JellyBallSecretionPlayer : ModPlayer
 		float start = horizontal ? Player.Top.Y : Player.Left.X;
 		float end = horizontal ? Player.Bottom.Y : Player.Right.X;
 		int fixedTile = (int)MathF.Floor((face + direction * 0.1f) / 16f);
+		contact = default;
 		for (int t = (int)MathF.Floor((start + 0.01f) / 16f); t <= (int)MathF.Floor((end - 0.01f) / 16f); t++)
 		{
-			contact = horizontal ? new Point(fixedTile, t) : new Point(t, fixedTile);
-			if (JellyBallSecretion.IsJelly(contact))
+			var point = horizontal ? new Point(fixedTile, t) : new Point(t, fixedTile);
+			if (JellyRipples.IsJelly(point))
 			{
-				return true;
+				// Prefer the original bouncy surface when the player touches both kinds at once.
+				if (Main.tile[point.X, point.Y].TileType == ModContent.TileType<JellyBallSecretion>())
+				{
+					contact = point;
+					return true;
+				}
+				if (contact == default)
+				{
+					contact = point;
+				}
 			}
 		}
 
-		contact = default;
-		return false;
+		return contact != default;
 	}
 }
