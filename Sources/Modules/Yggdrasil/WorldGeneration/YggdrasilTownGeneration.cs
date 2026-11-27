@@ -6,6 +6,7 @@ using Everglow.Yggdrasil.YggdrasilTown.Items.Ammos;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Potions;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Fishing.FishingRods;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
+using Everglow.Yggdrasil.YggdrasilTown.Items.Miscs;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Pets;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables.Furniture.TwilightForest;
@@ -1655,6 +1656,42 @@ public partial class YggdrasilTownGeneration
 					twilightCellPoses.Add(new Vector2(x, y));
 				}
 			}
+		}
+
+		// 暮光地层里、遗迹范围外的箱子中均匀抽出 10 个，各放一把遗迹钥匙。
+		var twilightChests = new List<Chest>();
+		foreach (Chest chest in Main.chest)
+		{
+			if (chest == null || chest.y < upBound - 30 || chest.y >= bottomBound)
+			{
+				continue;
+			}
+			if ((new Vector2(chest.x, chest.y) - TwilightRelicCenter).Length() <= 260f)
+			{
+				continue;
+			}
+			Tile tile = Main.tile[chest.x, chest.y];
+			if (!tile.HasTile || !TileID.Sets.BasicChest[tile.TileType])
+			{
+				continue;
+			}
+			twilightChests.Add(chest);
+		}
+		if (twilightChests.Count < 10)
+		{
+			throw new InvalidOperationException($"Expected at least 10 twilight chests for castle keys, found {twilightChests.Count}.");
+		}
+		int keyType = ModContent.ItemType<TwilightCastleKey>();
+		for (int i = 0; i < 10; i++)
+		{
+			int pick = GenRand.Next(i, twilightChests.Count);
+			(twilightChests[i], twilightChests[pick]) = (twilightChests[pick], twilightChests[i]);
+			int slot = Array.FindIndex(twilightChests[i].item, item => item == null || item.IsAir);
+			if (slot < 0)
+			{
+				throw new InvalidOperationException("Twilight chest has no empty slot for a castle key.");
+			}
+			twilightChests[i].item[slot] = new Item(keyType);
 		}
 		TwilightBubbles.Clear();
 
