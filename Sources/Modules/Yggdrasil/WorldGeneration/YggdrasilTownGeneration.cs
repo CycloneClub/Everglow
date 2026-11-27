@@ -28,6 +28,7 @@ using ModLiquidLib.ModLoader;
 using ReLogic.Utilities;
 using static Everglow.Commons.Utilities.TileUtils;
 using static Everglow.Yggdrasil.WorldGeneration.YggdrasilWorldGeneration;
+using EldamberItem = Everglow.Yggdrasil.YggdrasilTown.Items.Materials.Eldamber;
 
 namespace Everglow.Yggdrasil.WorldGeneration;
 
@@ -2737,7 +2738,7 @@ public partial class YggdrasilTownGeneration
 		{
 			if (random.NextBool(5))
 			{
-				contents.Add(new Item(ModContent.ItemType<YggdrasilTown.Items.Materials.YggdrasilAmber>(), random.Next(5, 15)));
+				contents.Add(new Item(ModContent.ItemType<EldamberItem>(), random.Next(5, 15)));
 			}
 			if (random.NextBool(5))
 			{

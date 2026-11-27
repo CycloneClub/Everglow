@@ -1,8 +1,8 @@
 using Everglow.Yggdrasil.Common.Items;
-using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Everglow.Yggdrasil.YggdrasilTown.Items.Placeables;
 using Everglow.Yggdrasil.YggdrasilTown.Projectiles.Magic;
 using Terraria.DataStructures;
+using EldamberItem = Everglow.Yggdrasil.YggdrasilTown.Items.Materials.Eldamber;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.CyanVine;
 
@@ -35,7 +35,7 @@ public class CyanAmberStaff : ModItem
 	{
 		CreateRecipe()
 			.AddIngredient(ModContent.ItemType<CyanVineStaff>())
-			.AddIngredient(ModContent.ItemType<YggdrasilAmber>(), 3)
+			.AddIngredient(ModContent.ItemType<EldamberItem>(), 3)
 			.AddIngredient(ModContent.ItemType<StoneDragonScaleWood>(), 20)
 			.AddTile(TileID.Anvils)
 			.Register();

@@ -15,7 +15,7 @@ public class TownOreFramingTests
 
 	[TestMethod]
 	[DataRow(typeof(CyanVineStone))]
-	[DataRow(typeof(YggdrasilAmber))]
+	[DataRow(typeof(Eldamber))]
 	public void OreUsesMergeFramesAtHostEdgesAndKeepsExposedEdges(Type contentType)
 	{
 		const ushort oreType = TileID.Iron;

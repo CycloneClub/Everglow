@@ -14,7 +14,7 @@ public class MiningPowerPickaxe_2 : MiningPowerPickaxe
 	{
 		CreateRecipe()
 			.AddIngredient<MiningPowerPickaxe>()
-			.AddIngredient<YggdrasilAmber>(12)
+			.AddIngredient<Eldamber>(12)
 			.AddIngredient<CrystalNucleusOfJellyKing>(4)
 			.AddTile(TileID.Anvils)
 			.Register();

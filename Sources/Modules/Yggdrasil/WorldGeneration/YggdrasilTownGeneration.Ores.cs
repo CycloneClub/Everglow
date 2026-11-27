@@ -22,7 +22,7 @@ public partial class YggdrasilTownGeneration
 	private static void GenerateAmberVeins()
 	{
 		int hostTileType = ModContent.TileType<StoneScaleWood>();
-		ushort amberTileType = (ushort)ModContent.TileType<YggdrasilTown.Tiles.YggdrasilAmber>();
+		ushort amberTileType = (ushort)ModContent.TileType<Eldamber>();
 		var townBounds = new Rectangle(218, Main.maxTilesY - 612, 730, 299);
 		Rectangle generationBounds = GetMineBounds(Main.maxTilesX, Main.maxTilesY);
 		int placedVeinCount = ScatterAmberVeins(generationBounds, townBounds, AmberVeinCount, AmberMinVeinSpacing, WorldGen.genRand, CanPlaceAmber, TryPlaceVein);

@@ -1,6 +1,7 @@
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using EldamberItem = Everglow.Yggdrasil.YggdrasilTown.Items.Materials.Eldamber;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Eldamber;
 
@@ -12,7 +13,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Eldamber;
 [LegacyName("EldamberHelmet")]
 public class EldamberHairpin : ModItem
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
+	public override string LocalizationCategory => LocalizationUtils.Categories.Armor;
 
 	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(4, 40);
 
@@ -51,7 +52,7 @@ public class EldamberHairpin : ModItem
 	public override void AddRecipes()
 	{
 		Recipe recipe = CreateRecipe();
-		recipe.AddIngredient<YggdrasilAmber>(12);
+		recipe.AddIngredient<EldamberItem>(12);
 		recipe.AddIngredient<CrystalNucleusOfJellyKing>(3);
 		recipe.AddTile(TileID.Anvils);
 		recipe.Register();

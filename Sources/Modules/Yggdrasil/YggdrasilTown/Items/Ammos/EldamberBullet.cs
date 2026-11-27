@@ -9,7 +9,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Ammos;
 /// </summary>
 public class EldamberBullet : ModItem
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Ammo;
+	public override string LocalizationCategory => LocalizationUtils.Categories.Ammo;
 
 	public override void SetStaticDefaults()
 	{
@@ -35,7 +35,7 @@ public class EldamberBullet : ModItem
 	public override void AddRecipes()
 	{
 		Recipe recipe = CreateRecipe(100);
-		recipe.AddIngredient<YggdrasilAmber>(1);
+		recipe.AddIngredient<Eldamber>(1);
 		recipe.AddTile(TileID.Anvils);
 		recipe.Register();
 	}

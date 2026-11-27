@@ -50,7 +50,7 @@ public class TownChestSuppliesTests
 		SetItem<RayPotion>(Potions[1]);
 		SetItem<JumpPotion>(Potions[2]);
 		SetItem<ScalePotion>(Potions[3]);
-		SetItem<YggdrasilAmber>(ItemID.Amber);
+		SetItem<Eldamber>(ItemID.Amber);
 		SetItem<CyanVineOre>(ItemID.CopperOre);
 	}
 

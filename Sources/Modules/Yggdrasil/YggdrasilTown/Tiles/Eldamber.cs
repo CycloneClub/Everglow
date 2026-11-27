@@ -1,8 +1,9 @@
 using Everglow.Yggdrasil.YggdrasilTown.Dusts;
+using EldamberItem = Everglow.Yggdrasil.YggdrasilTown.Items.Materials.Eldamber;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Tiles;
 
-public class YggdrasilAmber : ModTile
+public class Eldamber : ModTile
 {
 	public override void SetStaticDefaults()
 	{
@@ -16,9 +17,9 @@ public class YggdrasilAmber : ModTile
 		Main.tileShine2[Type] = false;
 		DustType = ModContent.DustType<YggdrasilAmberDust>();
 		MinPick = 0;
-		RegisterItemDrop(ModContent.ItemType<Items.Materials.YggdrasilAmber>());
+		RegisterItemDrop(ModContent.ItemType<EldamberItem>());
 		HitSound = SoundID.Shimmer1;
-		AddMapEntry(new Color(198, 124, 19, 163));
+		AddMapEntry(new Color(198, 124, 19, 163), ModContent.GetInstance<EldamberItem>().DisplayName);
 	}
 
 	public override bool CanExplode(int i, int j)

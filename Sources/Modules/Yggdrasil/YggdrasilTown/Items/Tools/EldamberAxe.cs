@@ -9,7 +9,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Tools;
 /// </summary>
 public class EldamberAxe : ModItem
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Tools;
+	public override string LocalizationCategory => LocalizationUtils.Categories.Tools;
 
 	public override void SetDefaults()
 	{
@@ -32,7 +32,7 @@ public class EldamberAxe : ModItem
 	public override void AddRecipes()
 	{
 		Recipe recipe = CreateRecipe();
-		recipe.AddIngredient<YggdrasilAmber>(10);
+		recipe.AddIngredient<Eldamber>(10);
 		recipe.AddTile(TileID.Anvils);
 		recipe.Register();
 	}

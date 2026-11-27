@@ -50,7 +50,7 @@ public class TwilightChestLootTests
 		SetItem<RuinTorch_Item>(ItemID.Torch);
 		SetItem<StoneJavelin>(ItemID.Javelin);
 		SetItem<NylonRope>(ItemID.Rope);
-		SetItem<YggdrasilAmber>(ItemID.Amber);
+		SetItem<Eldamber>(ItemID.Amber);
 		SetItem<CyanVineOre>(ItemID.CopperOre);
 	}
 

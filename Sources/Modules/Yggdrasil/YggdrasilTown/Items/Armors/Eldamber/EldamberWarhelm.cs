@@ -1,12 +1,13 @@
 using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Terraria.Localization;
+using EldamberItem = Everglow.Yggdrasil.YggdrasilTown.Items.Materials.Eldamber;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Armors.Eldamber;
 
 [AutoloadEquip(EquipType.Head)]
 public class EldamberWarhelm : ModItem
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Armor;
+	public override string LocalizationCategory => LocalizationUtils.Categories.Armor;
 
 	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(4);
 
@@ -42,7 +43,7 @@ public class EldamberWarhelm : ModItem
 	{
 		// Provisional: use the existing helmet recipe until the warrior recipe is finalized.
 		Recipe recipe = CreateRecipe();
-		recipe.AddIngredient<YggdrasilAmber>(12);
+		recipe.AddIngredient<EldamberItem>(12);
 		recipe.AddIngredient<CrystalNucleusOfJellyKing>(3);
 		recipe.AddTile(TileID.Anvils);
 		recipe.Register();

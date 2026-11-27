@@ -4,7 +4,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Tools;
 
 public class EldamberPickaxe : ModItem
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Tools;
+	public override string LocalizationCategory => LocalizationUtils.Categories.Tools;
 
 	public override void SetDefaults()
 	{
@@ -27,7 +27,7 @@ public class EldamberPickaxe : ModItem
 	public override void AddRecipes()
 	{
 		Recipe recipe = CreateRecipe();
-		recipe.AddIngredient<YggdrasilAmber>(12);
+		recipe.AddIngredient<Eldamber>(12);
 		recipe.AddIngredient<CrystalNucleusOfJellyKing>(4);
 		recipe.AddTile(TileID.Anvils);
 		recipe.Register();

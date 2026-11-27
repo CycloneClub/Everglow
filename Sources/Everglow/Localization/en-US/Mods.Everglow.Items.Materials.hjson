@@ -398,11 +398,6 @@ WindMoveSeed: {
 	Tooltip: ""
 }
 
-YggdrasilAmber: {
-	DisplayName: Yggdrasil Amber
-	Tooltip: ""
-}
-
 GiantBeetleAntennae: {
 	DisplayName: Giant Beetle Antennae
 	Tooltip: ""
@@ -411,4 +406,9 @@ GiantBeetleAntennae: {
 ManaSpringOre: {
 	DisplayName: Mana Spring Ore
 	Tooltip: An exceptionally rare ore imbued with mana
+}
+
+Eldamber: {
+	DisplayName: Eldamber
+	Tooltip: ""
 }

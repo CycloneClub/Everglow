@@ -1,5 +1,5 @@
-using Everglow.Yggdrasil.YggdrasilTown.Items.Materials;
 using Terraria.ModLoader;
+using EldamberItem = Everglow.Yggdrasil.YggdrasilTown.Items.Materials.Eldamber;
 
 namespace Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.Eldamber;
 
@@ -9,7 +9,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Weapons.Eldamber;
 /// </summary>
 public class EldamberBow : ModItem
 {
-	public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.RangedWeapons;
+	public override string LocalizationCategory => LocalizationUtils.Categories.RangedWeapons;
 
 	public override void SetDefaults()
 	{
@@ -35,7 +35,7 @@ public class EldamberBow : ModItem
 	public override void AddRecipes()
 	{
 		Recipe recipe = CreateRecipe();
-		recipe.AddIngredient<YggdrasilAmber>(10);
+		recipe.AddIngredient<EldamberItem>(10);
 		recipe.AddTile(TileID.Anvils);
 		recipe.Register();
 	}

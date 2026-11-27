@@ -5,7 +5,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Tools
 {
 	internal class AmberFlowerHook : ModItem
 	{
-		public override string LocalizationCategory => Everglow.Commons.Utilities.LocalizationUtils.Categories.Tools;
+		public override string LocalizationCategory => LocalizationUtils.Categories.Tools;
 
 		public override void SetDefaults()
 		{
@@ -24,7 +24,7 @@ namespace Everglow.Yggdrasil.YggdrasilTown.Items.Tools
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient<YggdrasilAmber>(15);
+			recipe.AddIngredient<Eldamber>(15);
 			recipe.AddTile(TileID.Anvils);
 			recipe.Register();
 		}
