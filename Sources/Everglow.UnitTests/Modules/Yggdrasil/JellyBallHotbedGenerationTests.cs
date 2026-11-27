@@ -935,26 +935,56 @@ public class JellyBallHotbedGenerationTests
 		Assert.AreNotEqual((byte)0, nerves[endX, endY], "The original parent curve must remain.");
 		var reached = new HashSet<(int X, int Y)> { (startX, startY) };
 		var pending = new Queue<(int X, int Y)>();
+		(int X, int Y)[] directions = [(-1, 0), (1, 0), (0, -1), (0, 1)];
 		pending.Enqueue((startX, startY));
 		while (pending.TryDequeue(out var point))
 		{
-			for (int dx = -1; dx <= 1; dx++)
+			foreach (var direction in directions)
 			{
-				for (int dy = -1; dy <= 1; dy++)
+				int x = point.X + direction.X;
+				int y = point.Y + direction.Y;
+				if (x < Math.Min(startX, endX) - 4 || x > Math.Max(startX, endX) + 4
+					|| y < Math.Min(startY, endY) - 4 || y > Math.Max(startY, endY) + 4
+					|| nerves[x, y] == 0 || !reached.Add((x, y)))
 				{
-					int x = point.X + dx;
-					int y = point.Y + dy;
-					if (x < Math.Min(startX, endX) - 4 || x > Math.Max(startX, endX) + 4
-						|| y < Math.Min(startY, endY) - 4 || y > Math.Max(startY, endY) + 4
-						|| nerves[x, y] == 0 || !reached.Add((x, y)))
-					{
-						continue;
-					}
-					pending.Enqueue((x, y));
+					continue;
 				}
+				pending.Enqueue((x, y));
 			}
 		}
 		Assert.IsTrue(reached.Contains((endX, endY)), "A short reference stroke is detached from its nearby parent curve.");
+	}
+
+	[TestMethod]
+	[DataRow(0)]
+	[DataRow(1)]
+	[DataRow(42)]
+	public void GeneratedNerveTilesMeetAlongAnEdge(int seed)
+	{
+		var layout = Generate(OldHotbed(330, 486), seed);
+		var type = typeof(YggdrasilTownGeneration).Assembly.GetType("Everglow.Yggdrasil.WorldGeneration.JellyBallHotbedLayout")!;
+		var nerves = (byte[,])type.GetMethod("TraceReferenceNerves")!.Invoke(null, [layout])!;
+		int[] diagonalOffsets = [-1, 1];
+		for (int x = 1; x < nerves.GetLength(0) - 1; x++)
+		{
+			for (int y = 1; y < nerves.GetLength(1) - 1; y++)
+			{
+				if (nerves[x, y] == 0)
+				{
+					continue;
+				}
+				bool hasNeighbor = nerves[x - 1, y] + nerves[x + 1, y] + nerves[x, y - 1] + nerves[x, y + 1] > 0;
+				Assert.IsTrue(hasNeighbor, $"Isolated nerve at ({x}, {y}), seed {seed}.");
+				foreach (int dx in diagonalOffsets)
+				{
+					if (nerves[x + dx, y + 1] != 0)
+					{
+						bool hasBend = nerves[x + dx, y] != 0 || nerves[x, y + 1] != 0;
+						Assert.IsTrue(hasBend, $"Diagonal-only contact at ({x}, {y}), seed {seed}.");
+					}
+				}
+			}
+		}
 	}
 
 	[TestMethod]

@@ -34,6 +34,7 @@ public class JellyBallNerve_Thin : ModTile
 
 	public override void ModifyFrameMerge(int i, int j, ref int up, ref int down, ref int left, ref int right, ref int upLeft, ref int upRight, ref int downLeft, ref int downRight)
 	{
+		WorldGen.TileMergeAttempt(Type, ModContent.TileType<JellyBallNerve>(), ref up, ref down, ref left, ref right);
 		WorldGen.TileMergeAttempt(-2, ModContent.TileType<JellyBallSecretion>(), ref up, ref down, ref left, ref right, ref upLeft, ref upRight, ref downLeft, ref downRight);
 	}
 }

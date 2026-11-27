@@ -209,7 +209,66 @@ internal sealed partial class JellyBallHotbedLayout
 		{
 			Draw(trunk, 1, true);
 		}
+		ConnectNerveEdges(nerves, layout);
 		return nerves;
+	}
+
+	private static void ConnectNerveEdges(byte[,] nerves, byte[,] layout)
+	{
+		int width = nerves.GetLength(0);
+		int height = nerves.GetLength(1);
+		int Neighbors(int x, int y) => Math.Sign(nerves[x - 1, y]) + Math.Sign(nerves[x + 1, y])
+			+ Math.Sign(nerves[x, y - 1]) + Math.Sign(nerves[x, y + 1]);
+
+		// 被膜或空洞夹住的对角无法补格，截短一端并保留断口。
+		var trimmed = new HashSet<(int X, int Y)>();
+		bool CanBridge(int x, int y) => layout[x, y] == Jelly && !trimmed.Contains((x, y));
+		bool changed;
+		do
+		{
+			changed = false;
+			for (int y = 4; y < height - 5; y++)
+			{
+				for (int x = 4; x < width - 5; x++)
+				{
+					// 在 2×2 格中只处理恰好互为对角的两个神经格。
+					int top = nerves[x, y] != 0 ? x : x + 1;
+					int bottom = top == x ? x + 1 : x;
+					if (nerves[top, y] == 0 || nerves[bottom, y + 1] == 0 || nerves[bottom, y] != 0 || nerves[top, y + 1] != 0)
+					{
+						continue;
+					}
+
+					bool upperBend = CanBridge(bottom, y);
+					bool lowerBend = CanBridge(top, y + 1);
+					if (upperBend || lowerBend)
+					{
+						// 选邻格更少的一侧，避免转角扩成双线；粗细交会处用支脉补格。
+						bool useUpper = upperBend && (!lowerBend || Neighbors(bottom, y) < Neighbors(top, y + 1));
+						nerves[useUpper ? bottom : top, useUpper ? y : y + 1] = Math.Max(nerves[top, y], nerves[bottom, y + 1]);
+					}
+					else
+					{
+						(int X, int Y) end = Neighbors(top, y) < Neighbors(bottom, y + 1) ? (top, y) : (bottom, y + 1);
+						nerves[end.X, end.Y] = 0;
+						trimmed.Add(end);
+					}
+					changed = true;
+				}
+			}
+		}
+		while (changed);
+
+		for (int x = 4; x < width - 4; x++)
+		{
+			for (int y = 4; y < height - 4; y++)
+			{
+				if (nerves[x, y] != 0 && Neighbors(x, y) == 0)
+				{
+					nerves[x, y] = 0;
+				}
+			}
+		}
 	}
 
 	private static float SampleNerveCurve(float p0, float p1, float p2, float p3, float t)
